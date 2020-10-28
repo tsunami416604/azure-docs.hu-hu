@@ -123,7 +123,7 @@ Set-AzIotHub `
     -FileUploadNotificationMaxDeliveryCount 10
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a IoT Hub fájl feltöltési képességeiről: [fájlok feltöltése eszközről](iot-hub-devguide-file-upload.md).
 

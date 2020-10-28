@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: be2aa75fb7c532d48188493b2ed09adc8b141b6a
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: fe358e35f2d68a3e55e9d9bb4ac57a13f42085e3
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340019"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629238"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>Az igény szerinti (JIT) virtuálisgép-hozzáférés ismertetése
 
@@ -66,6 +66,10 @@ Amikor Security Center megtalál egy olyan gépet, amely kihasználhatja a JIT-t
 ## <a name="faq---questions-about-just-in-time-virtual-machine-access"></a>GYIK – a virtuális gépek igény szerinti elérésével kapcsolatos kérdések
 
 ### <a name="what-permissions-are-needed-to-configure-and-use-jit"></a>Milyen engedélyek szükségesek a JIT konfigurálásához és használatához?
+
+A JIT megköveteli, hogy az [Azure Defender](defender-for-servers-introduction.md) engedélyezze a kiszolgálók számára az előfizetést. 
+
+Az **olvasó** -és **SecurityReader** szerepkörök egyaránt megtekinthetik a JIT-állapotot és a paramétereket.
 
 Ha a JIT-rel használható egyéni szerepköröket szeretne létrehozni, akkor az alábbi táblázatból kell megadnia az adatokat.
 

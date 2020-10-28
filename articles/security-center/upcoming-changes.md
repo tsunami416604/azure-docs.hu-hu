@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/26/2020
 ms.author: memildin
-ms.openlocfilehash: bf89135d3b5d33936d0b5d4142e966fa3f8f52b9
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: ba0c68589f7ea4b32970e3ad81fea5175b998dc7
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92559043"
+ms.locfileid: "92629153"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>A Azure Security Center fontos jövőbeli módosításai
 
@@ -78,7 +78,7 @@ Az előzetes verzióra vonatkozó javaslatok nem jelenítik meg az erőforrás �
 
 Kapcsolódó hivatkozások:
 
-- [További tudnivalók az Azure-biztonsági teljesítménytesztről](../security/benchmarks/introduction.md).
+- [További információ az Azure biztonsági teljesítménytesztről](../security/benchmarks/introduction.md)
 - [További információ az Azure API apps szolgáltatásról](../app-service/app-service-web-tutorial-rest-api.md)
 - [További információ az Azure Function apps szolgáltatásról](../azure-functions/functions-overview.md)
 - [További információ az Azure Web Apps szolgáltatásról](../app-service/overview.md)
@@ -86,6 +86,6 @@ Kapcsolódó hivatkozások:
 - [További információ a Azure Database for MySQL](../mysql/overview.md)
 - [További információ a Azure Database for PostgreSQL](../postgresql/overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A termék legutóbbi változásairól a [Azure Security Center újdonságai](release-notes.md)című témakörben olvashat.
+A termék legutóbbi módosításaival kapcsolatban tekintse [meg az Újdonságok a Azure Security Center?](release-notes.md)című témakört.

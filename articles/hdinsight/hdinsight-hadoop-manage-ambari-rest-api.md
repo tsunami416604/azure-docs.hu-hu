@@ -513,6 +513,6 @@ Ezen a ponton a Ambari webes felület azt jelzi, hogy a Spark szolgáltatást ú
         -Body '{"RequestInfo": {"context": "turning off maintenance mode for SPARK2"},"Body": {"ServiceInfo": {"maintenance_state":"OFF"}}}'
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A REST API teljes körű ismertetését lásd: [Apache AMBARI API Reference v1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).  Lásd még: [felhasználók engedélyezése Apache Ambari-nézetekhez](./hdinsight-authorize-users-to-ambari.md)

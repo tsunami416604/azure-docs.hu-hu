@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 860b1ac1713ac7afb7db2643d68974b399b5236b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 9b75df9df2e81f01543b407b019c752c77ee6807
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207050"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628830"
 ---
 # <a name="app-service-networking-features"></a>Hálózati szolgáltatások App Service
 
@@ -29,6 +29,7 @@ A Azure App Service egy elosztott rendszer. A bejövő HTTP/HTTPS-kérelmeket ke
 | Alkalmazáshoz rendelt címe | Hibrid kapcsolatok |
 | Hozzáférési korlátozások | Átjáró szükséges VNet-integráció |
 | Szolgáltatásvégpontok | VNet-integráció |
+| Privát végpontok ||
 
 Ha másként nincs megadva, az összes funkció együtt használható. A különböző problémák megoldásához kombinálhatja a szolgáltatásokat.
 
@@ -42,8 +43,8 @@ A probléma megoldásához bizonyos használati eseteket is használhat.  A megf
 | Nem megosztott, dedikált bejövő címe az alkalmazáshoz | alkalmazáshoz rendelt címe |
 | Az alkalmazáshoz való hozzáférés korlátozása jól meghatározott címekből | Hozzáférési korlátozások |
 | Az alkalmazáshoz való hozzáférés korlátozása VNet lévő erőforrásokkal | Szolgáltatásvégpontok </br> ILB </br> Privát végpontok |
-| Saját alkalmazás közzététele privát IP-VNet | ILB </br> Privát végpontok </br> magánhálózati IP-cím bejövő Application Gateway szolgáltatási végpontokkal |
-| Az alkalmazás és a webalkalmazási tűzfal (WAF) elleni védelem | Application Gateway + ILB </br> Application Gateway privát végpontokkal </br> Application Gateway szolgáltatás-végpontokkal </br> Azure bejárati ajtó hozzáférési korlátozásokkal |
+| Saját alkalmazás közzététele privát IP-VNet | ILB </br> Privát végpontok </br> Magánhálózati IP-cím bejövő Application Gateway szolgáltatási végpontokkal |
+| Az alkalmazás és a webalkalmazási tűzfal (WAF) elleni védelem | Application Gateway + ILB </br> Application Gateway privát végpontokkal </br> Application Gateway szolgáltatásvégpontokkal </br> Azure bejárati ajtó hozzáférési korlátozásokkal |
 | A különböző régiókban lévő alkalmazások forgalmának elosztása | Azure bejárati ajtó hozzáférési korlátozásokkal | 
 | Azonos régióban lévő forgalom terheléselosztása | [Application Gateway szolgáltatásvégpontokkal][appgwserviceendpoints] | 
 
@@ -89,20 +90,23 @@ Megtudhatja, hogyan állíthatja be az alkalmazáshoz tartozó címeket a [TLS/S
 
 ### <a name="access-restrictions"></a>Hozzáférési korlátozások 
 
-A hozzáférési korlátozások funkció lehetővé teszi a **bejövő** kérések szűrését a kezdeményező IP-cím alapján. A szűrési művelet azon előtér-szerepkörökön történik, amelyek az alkalmazások futtatását végző feldolgozói szerepkörökből származnak. Mivel az előtér-szerepkörök a feldolgozóktól származnak, a hozzáférési korlátozások funkció az alkalmazások hálózati szintű védelmének tekinthető. A funkció lehetővé teszi a prioritási sorrendben kiértékelt engedélyezési és megtagadási címek listájának összeállítását. Ehhez hasonló az Azure Networking hálózati biztonsági csoport (NSG) szolgáltatásához.  Ezt a funkciót a több-bérlős szolgáltatásban is használhatja. A ILB-beadási szolgáltatással való használat esetén korlátozhatja a hozzáférést a privát címekről.
+A hozzáférési korlátozások funkció lehetővé teszi a **bejövő** kérések szűrését. A szűrési művelet azon előtér-szerepkörökön történik, amelyek az alkalmazások futtatását végző feldolgozói szerepkörökből származnak. Mivel az előtér-szerepkörök a feldolgozóktól származnak, a hozzáférési korlátozások funkció az alkalmazások hálózati szintű védelmének tekinthető. A funkció lehetővé teszi a prioritási sorrendben kiértékelt engedélyezési és megtagadási szabályok listájának összeállítását. Ehhez hasonló az Azure Networking hálózati biztonsági csoport (NSG) szolgáltatásához.  Ezt a funkciót a több-bérlős szolgáltatásban is használhatja. ILB-előállítók vagy privát végpontok használata esetén korlátozhatja a hozzáférést a privát címekről.
+> [!NOTE]
+> Akár 512 hozzáférési korlátozási szabály is konfigurálható alkalmazásként. 
 
 ![Hozzáférési korlátozások](media/networking-features/access-restrictions.png)
+#### <a name="ip-based-access-restriction-rules"></a>IP-alapú hozzáférés korlátozási szabályai
 
-A hozzáférési korlátozások szolgáltatás olyan helyzetekben nyújt segítséget, amelyekben korlátozni szeretné az alkalmazás eléréséhez használható IP-címeket. A szolgáltatás használati esetei közé a következők tartoznak:
+Az IP-alapú hozzáférési korlátozások szolgáltatás olyan helyzetekben nyújt segítséget, amelyekben korlátozni szeretné az alkalmazás eléréséhez használható IP-címeket. Az IPv4- és IPv6-címek egyaránt támogatottak. A szolgáltatás használati esetei közé a következők tartoznak:
 
 * Az alkalmazáshoz való hozzáférés korlátozása jól meghatározott címekből 
-* Korlátozza a hozzáférést a terheléselosztási szolgáltatáson keresztül, például az Azure bejárati ajtón keresztül. Ha azt szeretné, hogy a bejövő forgalom az Azure bejárati ajtón legyen zárolva, hozzon létre olyan szabályokat, amelyek engedélyezik a forgalmat a 147.243.0.0/16 és a 2a01:111:2050::/44. 
+* Terheléselosztási szolgáltatáson keresztüli hozzáférés korlátozása, például az Azure bejárati ajtaja
 
 ![Hozzáférési korlátozások a bejárati ajtónál](media/networking-features/access-restrictions-afd.png)
 
-Ha le szeretné zárni az alkalmazáshoz való hozzáférést úgy, hogy az csak az Azure-Virtual Network (VNet) erőforrásaiból legyen elérhető, akkor a forráshoz tartozó VNet statikus nyilvános címnek kell lennie. Ha az erőforrások nem rendelkeznek nyilvános címen, használja helyette a szolgáltatás-végpontok funkciót. Ebből a funkcióból megtudhatja, hogyan engedélyezheti ezt a funkciót a [hozzáférési korlátozások konfigurálásával][iprestrictions]kapcsolatos oktatóanyagban.
+Ebből a funkcióból megtudhatja, hogyan engedélyezheti ezt a funkciót a [hozzáférési korlátozások konfigurálásával][iprestrictions]kapcsolatos oktatóanyagban.
 
-### <a name="service-endpoints"></a>Szolgáltatásvégpontok
+#### <a name="service-endpoint-based-access-restriction-rules"></a>Szolgáltatás-végponton alapuló hozzáférés korlátozási szabályai
 
 A szolgáltatási végpontok lehetővé teszik az alkalmazáshoz való **bejövő** hozzáférés zárolását úgy, hogy a forrás címének a kiválasztott alhálózatokból kell származnia. Ez a funkció az IP-hozzáférési korlátozásokkal együtt működik. A szolgáltatási végpontok nem kompatibilisek a távoli hibakereséssel. Ha a távoli hibakeresést szeretné használni az alkalmazással, az ügyfél nem lehet olyan alhálózatban, amelyen engedélyezve vannak a szolgáltatási végpontok. A szolgáltatási végpontok az IP-hozzáférési korlátozásokkal megegyező felhasználói élményben vannak beállítva. Létrehozhat olyan hozzáférési szabályok engedélyezési/megtagadási listáját, amelyek nyilvános címeket és alhálózatokat is tartalmaznak a virtuális hálózatok. Ez a funkció olyan forgatókönyveket támogat, mint például a következők:
 

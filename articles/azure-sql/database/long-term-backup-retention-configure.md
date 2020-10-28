@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 04/14/2020
-ms.openlocfilehash: a9ff0219a9b811cae15f9b34ec85240d303ab841
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7c66c37be1d200a73aa04854f946946b69c6b76
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450284"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629136"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>A biztonsági másolatok hosszú távú megőrzésének Azure SQL Database kezelése
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ A következő részben bemutatjuk, Azure Portal hogyan konfigurálhatja a hossz�
 
 A SQL Database konfigurálhatja úgy, hogy az [automatizált biztonsági mentéseket](long-term-retention-overview.md) a szolgáltatási szinten megőrzött időtartamnál hosszabb ideig is megőrizze.
 
-1. A Azure Portal válassza ki a SQL Server példányát, majd kattintson a **biztonsági mentések kezelése**lehetőségre. A **házirendek konfigurálása** lapon jelölje be annak az adatbázisnak a jelölőnégyzetét, amelyen a biztonsági másolatok hosszú távú megőrzési szabályzatait be szeretné állítani vagy módosítani kívánja. Ha az adatbázis melletti jelölőnégyzet nincs bejelölve, a házirend módosításai nem lesznek érvényesek az adott adatbázisra.  
+1. A Azure Portal válassza ki a SQL Server példányát, majd kattintson a **biztonsági mentések kezelése** lehetőségre. A **házirendek konfigurálása** lapon jelölje be annak az adatbázisnak a jelölőnégyzetét, amelyen a biztonsági másolatok hosszú távú megőrzési szabályzatait be szeretné állítani vagy módosítani kívánja. Ha az adatbázis melletti jelölőnégyzet nincs bejelölve, a házirend módosításai nem lesznek érvényesek az adott adatbázisra.  
 
    ![biztonsági másolatok kezelése hivatkozás](./media/long-term-backup-retention-configure/ltr-configure-ltr.png)
 
@@ -39,7 +39,7 @@ A SQL Database konfigurálhatja úgy, hogy az [automatizált biztonsági mentés
 
    ![házirendek konfigurálása](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
 
-3. Ha elkészült, kattintson az **alkalmaz**gombra.
+3. Ha elkészült, kattintson az **alkalmaz** gombra.
 
 > [!IMPORTANT]
 > Ha engedélyezi a biztonsági másolatok hosszú távú megőrzési szabályát, akkor akár 7 napig is eltarthat, amíg az első biztonsági mentés láthatóvá válik, és visszaállítható. A LTR biztonsági mentési cadance kapcsolatos részletekért lásd a [biztonsági másolatok hosszú távú megőrzését](long-term-retention-overview.md)ismertető témakört.
@@ -48,7 +48,7 @@ A SQL Database konfigurálhatja úgy, hogy az [automatizált biztonsági mentés
 
 Megtekintheti az adott adatbázis számára a LTR házirenddel megőrzött biztonsági másolatokat, és visszaállíthatja azokat a biztonsági másolatokból.
 
-1. A Azure Portal válassza ki a kiszolgálót, majd kattintson a **biztonsági mentések kezelése**lehetőségre. A **rendelkezésre álló biztonsági másolatok** lapon válassza ki azt az adatbázist, amelynek elérhető biztonsági másolatait szeretné megtekinteni.
+1. A Azure Portal válassza ki a kiszolgálót, majd kattintson a **biztonsági mentések kezelése** lehetőségre. A **rendelkezésre álló biztonsági másolatok** lapon válassza ki azt az adatbázist, amelynek elérhető biztonsági másolatait szeretné megtekinteni.
 
    ![adatbázis kiválasztása](./media/long-term-backup-retention-configure/ltr-available-backups-select-database.png)
 
@@ -82,7 +82,7 @@ A következő részben bemutatjuk, hogyan használható a PowerShell a biztonsá
 
 ### <a name="azure-roles-to-manage-long-term-retention"></a>Azure-szerepkörök a hosszú távú adatmegőrzés kezeléséhez
 
-A **Get-AzSqlDatabaseLongTermRetentionBackup** és a **Restore-AzSqlDatabase**esetében a következő szerepkörök egyikének kell lennie:
+A **Get-AzSqlDatabaseLongTermRetentionBackup** és a **Restore-AzSqlDatabase** esetében a következő szerepkörök egyikének kell lennie:
 
 - Előfizetés tulajdonosi szerepköre vagy
 - SQL Server közreműködő szerepkör vagy
@@ -90,7 +90,7 @@ A **Get-AzSqlDatabaseLongTermRetentionBackup** és a **Restore-AzSqlDatabase**es
 
    Microsoft. SQL/Locations/longTermRetentionBackups/Read Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionBackups/Read Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/READ
 
-A **Remove-AzSqlDatabaseLongTermRetentionBackup**esetében a következő szerepkörök egyikének kell lennie:
+A **Remove-AzSqlDatabaseLongTermRetentionBackup** esetében a következő szerepkörök egyikének kell lennie:
 
 - Előfizetés tulajdonosi szerepköre vagy
 - Egyéni szerepkör a következő engedélyekkel:
@@ -200,6 +200,9 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 
 > [!NOTE]
 > Innen az SQL Server Management Studióval csatlakozhat a visszaállított adatbázishoz a szükséges feladatok végrehajtásához, például egy adatelem kinyeréséhez a visszaállított adatbázisból a meglévő adatbázisba való beillesztés érdekében, vagy a meglévő adatbázis törléséhez és a visszaállított adatbázis átnevezéséhez a meglévő adatbázis nevére. Lásd: [időponthoz való visszaállítás](recovery-using-backups.md#point-in-time-restore).
+
+## <a name="limitations"></a>Korlátozások
+- A LTR biztonsági másolatból történő visszaállításkor a rendszer letiltja az olvasási méretezési tulajdonságot. Ha engedélyezni szeretné a visszaállítást, olvassa el a visszaállított adatbázis méretét, majd frissítse az adatbázist a létrehozás után.
 
 ## <a name="next-steps"></a>Következő lépések
 

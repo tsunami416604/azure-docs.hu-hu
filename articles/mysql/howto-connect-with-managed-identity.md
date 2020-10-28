@@ -205,6 +205,6 @@ Connected!
 MySQL version: 5.7.27
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át a [Azure Active Directory hitelesítéssel](concepts-azure-ad-authentication.md) kapcsolatos általános fogalmakat Azure Database for MySQL

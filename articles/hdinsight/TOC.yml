@@ -137,7 +137,7 @@
                 - name: Egyedi alkalmazások telepítése
                   href: hdinsight-apps-install-custom-applications.md
                 - name: A REST használata alkalmazások telepítéséhez
-                  href: 'https://msdn.microsoft.com/library/mt706515.aspx'
+                  href: /rest/api/hdinsight/hdinsight-application
                 - name: HDInsight-alkalmazások közzététele az Azure Marketplace-en
                   href: hdinsight-apps-publish-applications.md
         - name: Biztonságos
@@ -301,7 +301,7 @@
         - name: Halomürítések engedélyezése az Apache Hadoop-szolgáltatásokhoz
           href: ./hdinsight-hadoop-collect-debug-heap-dump-linux.md
         - name: Segítség kérése a Microsoft Q&A kérdések oldalán
-          href: 'https://docs.microsoft.com/answers/topics/azure-hdinsight.html'
+          href: /answers/topics/azure-hdinsight.html
         - name: Díjkalkulátor
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: A HDInsight Windows-eszközei
@@ -433,8 +433,6 @@
                   href: ./spark/apache-spark-use-with-data-lake-store.md
                 - name: Kapcsolódás az Azure SQL Database-hez
                   href: ./spark/apache-spark-connect-to-sql-database.md
-                - name: Lambdaarchitektúra megvalósítása az Apache Spark és a Cosmos DB használatával
-                  href: ../cosmos-db/lambda-architecture.md
                 - name: Azure ML-feladatok futtatása AutoML használatával
                   href: ./spark/apache-spark-run-machine-learning-automl.md
         - name: Hibaelhárítás

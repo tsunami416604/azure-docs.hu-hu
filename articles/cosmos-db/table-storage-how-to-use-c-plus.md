@@ -98,7 +98,7 @@ Az alkalmazás helyi Windows-alapú számítógépeken való teszteléséhez has
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-Az Azure Storage-emulátor elindításához a Windows asztaláról válassza a **Start** gombot vagy a Windows-kulcsot. *Microsoft Azure Storage Emulator*megadása és futtatása. További információ: [Az Azure Storage Emulator használata fejlesztéshez és teszteléshez](../storage/common/storage-use-emulator.md).
+Az Azure Storage-emulátor elindításához a Windows asztaláról válassza a **Start** gombot vagy a Windows-kulcsot. *Microsoft Azure Storage Emulator* megadása és futtatása. További információ: [Az Azure Storage Emulator használata fejlesztéshez és teszteléshez](../storage/common/storage-use-emulator.md).
 
 ### <a name="retrieve-your-connection-string"></a>A kapcsolati sztring lekérése
 
@@ -499,7 +499,7 @@ else
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-A Visual Studio Community Edition esetében, ha a projekt felépítési hibákat tartalmaz a *storage_account. h* és a *table. h*fájl belefoglalása miatt, távolítsa el a **/permissive-** fordítóprogram kapcsolóját:
+A Visual Studio Community Edition esetében, ha a projekt felépítési hibákat tartalmaz a *storage_account. h* és a *table. h* fájl belefoglalása miatt, távolítsa el a **/permissive-** fordítóprogram kapcsolóját:
 
 1. A **Solution Explorer** (Megoldáskezelő) lapon kattintson a jobb gombbal a projektre, és válassza a **Properties** (Tulajdonságok) elemet.
 1. A **Property Pages** (Tulajdonságlapok) párbeszédpanelen bontsa ki a **Configuration Properties** (Konfigurációs tulajdonságok), majd a **C/C++** csomópontot, és válassza a **Language** (Nyelv) elemet.

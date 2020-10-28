@@ -85,7 +85,7 @@ Most, hogy az alkalmazás már létezik, meg kell győződnie arról, hogy tud b
 
 1. Nyissa meg a *config.js* fájlt a kedvenc szövegszerkesztőben.
 
-1. Másolja és illessze be a következő kódrészletet a *config.js* fájlba, és állítsa be a tulajdonságokat `endpoint` és a `key` Azure Cosmos db végponti URI-t és az elsődleges kulcsot. Az adatbázis, a tárolók nevei a **feladatok** és **elemek**értékre vannak beállítva. Az alkalmazáshoz használni kívánt partíciós kulcs **/category**.
+1. Másolja és illessze be a következő kódrészletet a *config.js* fájlba, és állítsa be a tulajdonságokat `endpoint` és a `key` Azure Cosmos db végponti URI-t és az elsődleges kulcsot. Az adatbázis, a tárolók nevei a **feladatok** és **elemek** értékre vannak beállítva. Az alkalmazáshoz használni kívánt partíciós kulcs **/category** .
 
    :::code language="javascript" source="~/cosmosdb-nodejs-get-started/config.js":::
 
@@ -93,7 +93,7 @@ Most, hogy az alkalmazás már létezik, meg kell győződnie arról, hogy tud b
 
    :::image type="content" source="media/sql-api-nodejs-get-started/node-js-tutorial-keys.png" alt-text="Kulcsok lekérése az Azure Portalról képernyőkép":::
 
-A JavaScript SDK az általános feltételek *tárolóját* és az *elemeket*használja. A tároló lehet egy gyűjtemény, gráf vagy tábla. Az elem lehet egy dokumentum, él/csúcspont vagy sor, és ez jelöli a tárolóban lévő tartalmakat. Az előző kódrészletben a kód a `module.exports = config;` konfigurációs objektum exportálására szolgál, így hivatkozhat rá a *app.js* fájlon belül.
+A JavaScript SDK az általános feltételek *tárolóját* és az *elemeket* használja. A tároló lehet egy gyűjtemény, gráf vagy tábla. Az elem lehet egy dokumentum, él/csúcspont vagy sor, és ez jelöli a tárolóban lévő tartalmakat. Az előző kódrészletben a kód a `module.exports = config;` konfigurációs objektum exportálására szolgál, így hivatkozhat rá a *app.js* fájlon belül.
 
 ## <a name="create-a-database-and-a-container"></a>Adatbázis és tároló létrehozása
 
@@ -123,7 +123,7 @@ A *app.js* fájlban másolja és illessze be a következő kódot, hogy a koráb
 :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="CreateClientObjectDatabaseContainer":::
 
 > [!Note]
-> Ha csatlakozik a **Cosmos db emulátorhoz**, tiltsa le a TLS-ellenőrzést a csomóponti folyamathoz:
+> Ha csatlakozik a **Cosmos db emulátorhoz** , tiltsa le a TLS-ellenőrzést a csomóponti folyamathoz:
 >   ```javascript
 >   process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 >   const client = new CosmosClient({ endpoint, key });
@@ -214,9 +214,9 @@ Majd a terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi 
 node app.js 
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
-Ha ezekre az erőforrásokra már nincs szükség, törölheti az erőforráscsoportot, Azure Cosmos DB fiókot és az összes kapcsolódó erőforrást. Ehhez válassza ki a Azure Cosmos DB fiókhoz használt erőforráscsoportot, válassza a **Törlés**lehetőséget, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
+Ha ezekre az erőforrásokra már nincs szükség, törölheti az erőforráscsoportot, Azure Cosmos DB fiókot és az összes kapcsolódó erőforrást. Ehhez válassza ki a Azure Cosmos DB fiókhoz használt erőforráscsoportot, válassza a **Törlés** lehetőséget, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
 
 ## <a name="next-steps"></a>Következő lépések
 

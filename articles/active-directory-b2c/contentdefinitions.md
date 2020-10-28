@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bd5ae5c60530890f65f8cc9a98171c29820a7762
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd2f7d46df09085d19b19709c7f45cd3d6566988
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85202857"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628660"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -24,7 +24,7 @@ ms.locfileid: "85202857"
 
 Testre szabhatja a [saját maga által vezérelt technikai profilok](self-asserted-technical-profile.md)megjelenését és működését. Azure Active Directory B2C (Azure AD B2C) kódot futtat az ügyfél böngészőjében, és egy modern megközelítést használ az eltérő eredetű erőforrás-megosztás (CORS) néven.
 
-A felhasználói felület testreszabásához a testreszabott HTML-tartalommal rendelkező **ContentDefinition** elemben meg kell adnia egy URL-címet. Az önérvényesített technikai profilban vagy **OrchestrationStep**mutasson erre a tartalom-definíciós azonosítóra. A tartalom definíciója tartalmazhat egy **LocalizedResourcesReferences** elemet, amely meghatározza a betöltendő honosított erőforrások listáját. Azure AD B2C egyesíti a felhasználói felület elemeit az URL-címről betöltött HTML-tartalommal, majd megjeleníti a lapot a felhasználónak.
+A felhasználói felület testreszabásához a testreszabott HTML-tartalommal rendelkező **ContentDefinition** elemben meg kell adnia egy URL-címet. Az önérvényesített technikai profilban vagy **OrchestrationStep** mutasson erre a tartalom-definíciós azonosítóra. A tartalom definíciója tartalmazhat egy **LocalizedResourcesReferences** elemet, amely meghatározza a betöltendő honosított erőforrások listáját. Azure AD B2C egyesíti a felhasználói felület elemeit az URL-címről betöltött HTML-tartalommal, majd megjeleníti a lapot a felhasználónak.
 
 A **ContentDefinitions** elem a HTML5-sablonok URL-címeit tartalmazza, amelyeket a felhasználói utazás során használhat. A HTML5-lap URI-ja a megadott felhasználói felületi lépéshez használatos. Például a bejelentkezés vagy a regisztráció, a jelszó alaphelyzetbe állítása vagy a hibák lapja. A megjelenést és a működést úgy változtathatja meg, hogy felülbírálja a HTML5-fájl Tartalomdefinícióban. Az igényeknek megfelelően új tartalmi definíciókat hozhat létre. Ez az elem honosított erőforrás-hivatkozást tartalmazhat a [honosítási](localization.md) elemben megadott honosítási azonosítóra.
 
@@ -111,7 +111,7 @@ A következő példa a **DataUri** mutatja be `selfasserted` `1.2.0` :
 
 #### <a name="migrating-to-page-layout"></a>Áttelepítés az oldal elrendezésére
 
-Az érték formátumának tartalmaznia kell a szót `contract` : _urn: com: Microsoft: HRE: B2C: Elements:**Szerződés**:p Age-Name: Version_. Ha a régi **DataUri** értéket használó egyéni házirendekben szeretne megadni egy lapelrendezést, a következő táblázat segítségével váltson át az új formátumra.
+Az érték formátumának tartalmaznia kell a szót `contract` : _urn: com: Microsoft: HRE: B2C: Elements: **Szerződés** :p Age-Name: Version_ . Ha a régi **DataUri** értéket használó egyéni házirendekben szeretne megadni egy lapelrendezést, a következő táblázat segítségével váltson át az új formátumra.
 
 | Régi DataUri érték | Új DataUri érték |
 | ----------------- | ----------------- |
@@ -126,6 +126,39 @@ Az érték formátumának tartalmaznia kell a szót `contract` : _urn: com: Micr
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 
+A következő példa a Content definition-azonosítókat és a hozzá tartozó **DataUri** mutatja be: 
+
+```xml
+<ContentDefinitions>
+  <ContentDefinition Id="api.error">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.idpselections">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.idpselections.signup">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.signuporsignin">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.selfasserted">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.selfasserted.profileupdate">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.localaccountsignup">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.localaccountpasswordreset">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.phonefactor">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0</DataUri>
+  </ContentDefinition>
+</ContentDefinitions>
+```
 
 ### <a name="metadata"></a>Metaadatok
 
@@ -133,7 +166,7 @@ A **metaadat** -elemek a következő elemeket tartalmazzák:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| Elem | 0: n | A tartalom-definícióhoz kapcsolódó metaadatok |
+| Item | 0: n | A tartalom-definícióhoz kapcsolódó metaadatok |
 
 A **metaadatok** elem **elem eleme a** következő attribútumokat tartalmazza:
 
@@ -201,7 +234,7 @@ A **ContentDefinition** elem ID attribútuma határozza meg a tartalom-definíci
 | **API. selfasserted. profileUpdate** | [updateprofile. cshtml](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Profil frissítése lap** – megjelenít egy űrlapot, amelyet a felhasználók a profiljuk frissítéséhez tudnak elérni. Ez az oldal hasonló a közösségi fiók regisztrálása oldalhoz, a jelszó-beviteli mezők kivételével. |
 | **API. signuporsignin** | [Unified. cshtml](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Egyesített regisztrációs vagy bejelentkezési oldal** – kezeli a felhasználói regisztrációt és a bejelentkezési folyamatot. A felhasználók a vállalati identitás-szolgáltatók, a közösségi identitás-szolgáltatók, például a Facebook vagy a Google +, vagy a helyi fiókok használatával használhatják a felhasználókat. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felhasználói felület tartalmi definíciók használatával történő testreszabására példát a következő témakörben talál:
 

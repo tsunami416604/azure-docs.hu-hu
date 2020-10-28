@@ -287,7 +287,7 @@ A következő lépések azt ismertetik, hogyan hívható meg a parancsfájl műv
 
 **A HBase replikálásának engedélyezése a Azure Portal**
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Nyissa meg a forrás HBase-fürtöt.
 3. A fürt menüben válassza a **parancsfájlok műveletek** elemet.
 4. A lap tetején válassza az **új küldése** lehetőséget.
@@ -406,7 +406,7 @@ A `print_usage()` [szkript](https://raw.githubusercontent.com/Azure/hbase-utils/
 > Ha törölni kívánja a fürtöt, győződjön meg róla, hogy eltávolítja a forrás-fürt társ-listájából. Ezt úgy teheti meg, hogy a (z) remove_peer "1" parancsot futtatja a hbase-rendszerhéjban. Ha ez nem sikerül, akkor előfordulhat, hogy a fürterőforrás nem működik megfelelően.
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan állíthatja be az Apache HBase-replikációt egy virtuális hálózaton belül vagy két virtuális hálózat között. A HDInsight és az Apache HBase kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

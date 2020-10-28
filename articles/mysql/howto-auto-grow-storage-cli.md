@@ -42,6 +42,6 @@ A kiszolgáló automatikus növekedésének engedélyezése a tárolóban új ki
 az mysql server create --resource-group myresourcegroup --name mydemoserver  --auto-grow Enabled --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Útmutató [riasztások létrehozásához mérőszámokon](howto-alert-on-metric.md).

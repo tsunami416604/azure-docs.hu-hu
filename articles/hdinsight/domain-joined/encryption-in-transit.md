@@ -7,27 +7,27 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: 85382ecd627ec8afc63a85de0debd98f94a89849
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6f043a1cb870d003e371d2f20d0e1f6614c9201e
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544885"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628983"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>IPSec-titkosítás az Azure HDInsight
 
 Ez a cikk az Azure HDInsight-fürtcsomópontok közötti kommunikációhoz használt titkosítás implementációját ismerteti.
 
 > [!Note]
-> Az átvitel közbeni titkosítás jelenleg a következő régiókban engedélyezett: USA keleti régiója, USA déli középső régiója, Nyugat-RÉGIÓJA. 
+> Az átvitel közbeni titkosítás jelenleg a következő régiókban engedélyezett: USA keleti régiója, USA déli középső régiója, Nyugat-RÉGIÓJA.
 
 ## <a name="background"></a>Háttér
 
 Az Azure HDInsight különféle biztonsági funkciókat kínál a vállalati adatai biztonságossá tételéhez. Ezek a megoldások a szegélyhálózati biztonság, a hitelesítés, az engedélyezés, a naplózás, a titkosítás és a megfelelőség pillérei szerint vannak csoportosítva. A titkosítás a REST és az átvitel során egyaránt alkalmazható az adatokra.
 
-A REST-titkosítást az Azure Storage-fiókok kiszolgálóoldali titkosítása, valamint a HDInsight-fürt részét képező Azure-beli virtuális gépek lemezes titkosítása szabályozza.
+A inaktív adatok titkosítását az Azure Storage-fiókok kiszolgálóoldali titkosítása, valamint a HDInsight-fürt részét képező Azure-beli virtuális gépek lemezes titkosítása szabályozza.
 
-A HDInsight-on átvitt adatforgalom titkosítása [Transport Layer Security (TLS) protokollal](../transport-layer-security.md) történik a accssing és a fürt csomópontjai közötti [Internet Protocol biztonság (IPSec)](https://en.wikipedia.org/wiki/IPsec) érdekében. Az IPSec opcionálisan engedélyezhető a főcsomópontok, a feldolgozó csomópontok, a peremhálózati csomópontok és a Zookeeper csomópontok között. Nincs engedélyezve az átjáró vagy az [azonosító-átvitelszervező](./identity-broker.md) csomópontok közötti forgalom, amely a Windows-alapú virtuális gépek és a fürt más Linux-alapú csomópontjai között van.
+A HDInsight átvitt adatok titkosítása [Transport Layer Security (TLS)](../transport-layer-security.md) értékkel érhető el a fürtcsomópontok és a [Internet Protocol biztonság (IPSec)](https://wikipedia.org/wiki/IPsec) csomópontok közötti eléréséhez. Az IPSec opcionálisan engedélyezhető a főcsomópontok, a feldolgozó csomópontok, a peremhálózati csomópontok és a Zookeeper csomópontok között. Nincs engedélyezve az átjáró vagy az [azonosító-átvitelszervező](./identity-broker.md) csomópontok közötti forgalom, amely a Windows-alapú virtuális gépek és a fürt más Linux-alapú csomópontjai között van.
 
 ## <a name="enable-encryption-in-transit"></a>Titkosítás engedélyezése az átvitelben
 
@@ -40,7 +40,7 @@ Ha olyan új fürtöt szeretne létrehozni, amely a Azure Portal használatával
 
     :::image type="content" source="media/encryption-in-transit/create-cluster-security-networking-tab.png" alt-text="Hozzon létre egy fürt – biztonság és hálózatkezelés lapot.":::
 
-1. A **Biztonság és hálózatkezelés** lapon kattintson a **titkosítás engedélyezése a továbbításkor** jelölőnégyzetre.
+1. A **Biztonság és hálózat** lapon jelölje be a **titkosítás engedélyezése a továbbításkor** jelölőnégyzetet.
 
     :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="Hozzon létre egy fürt – biztonság és hálózatkezelés lapot.":::
 
@@ -50,7 +50,7 @@ Az átvitel közbeni titkosítás engedélyezve van a `isEncryptionInTransitEnab
 
 [Letöltheti a minta sablon és a paraméter fájlját](https://github.com/Azure-Samples/hdinsight-enterprise-security). A sablon és az Azure CLI-kódrészlet használata előtt cserélje le a következő helyőrzőket a megfelelő értékekre:
 
-| Helyőrző | Description (Leírás) |
+| Helyőrző | Leírás |
 |---|---|
 | `<SUBSCRIPTION_ID>` | Az Azure-előfizetés azonosítója |
 | `<RESOURCE_GROUP>` | Az az erőforráscsoport, amelyben létre szeretné hozni az új fürtöt és a Storage-fiókot. |

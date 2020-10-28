@@ -5,14 +5,14 @@ services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 10/22/2020
+ms.date: 10/26/2020
 ms.author: lle
-ms.openlocfilehash: d35dd94c8aa264c9b4dd679d3b50f3783acb2fde
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c85e27cedfbcebe7060dfed2f96fc53aea9838c9
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427232"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629378"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul hibáinak megoldása
 
@@ -34,7 +34,7 @@ A saját üzemeltetésű IR/Shared IR-ben futó sikertelen tevékenységek eset�
 
     ![Naplók küldése](media/self-hosted-integration-runtime-troubleshoot-guide/send-logs.png)
 
-1. Kiválaszthatja azokat a naplókat, amelyeket el szeretne küldeni. A *saját*üzemeltetésű integrációs modul esetében feltölthet olyan naplókat, amelyek a sikertelen tevékenységgel vagy a saját üzemeltetésű IR-csomóponton lévő összes naplóval kapcsolatosak. A *megosztott IR*esetében csak a sikertelen tevékenységhez kapcsolódó naplók tölthetők fel.
+1. Kiválaszthatja azokat a naplókat, amelyeket el szeretne küldeni. A *saját* üzemeltetésű integrációs modul esetében feltölthet olyan naplókat, amelyek a sikertelen tevékenységgel vagy a saját üzemeltetésű IR-csomóponton lévő összes naplóval kapcsolatosak. A *megosztott IR* esetében csak a sikertelen tevékenységhez kapcsolódó naplók tölthetők fel.
 
     ![Naplók kiválasztása](media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png)
 
@@ -65,7 +65,7 @@ Ez egy ismert probléma a WCF-ben: A WCF TLS-/SSL-ellenőrzési funkciója csak 
 #### <a name="resolution"></a>Feloldás
 
 Az altartományokra is kibővített tanúsítvány támogatott az Azure Data Factory v2 helyi integrációs moduljában. Ez a probléma általában akkor jelentkezik, ha az SSL-tanúsítvány nem megfelelő. Az SAN utolsó DNS-nevének érvényesnek kell lennie. Az ellenőrzéshez kövesse az alábbi lépéseket. 
-1.  Nyissa meg a felügyeleti konzolt, és a tanúsítvány részletei között kattintson a *tulajdonos* és a *tulajdonos alternatív neve* elemre. A fenti esetben például a *tulajdonos alternatív neve*("DNS Name = Microsoft.com.com") utolsó eleme nem legitim.
+1.  Nyissa meg a felügyeleti konzolt, és a tanúsítvány részletei között kattintson a *tulajdonos* és a *tulajdonos alternatív neve* elemre. A fenti esetben például a *tulajdonos alternatív neve* ("DNS Name = Microsoft.com.com") utolsó eleme nem legitim.
 2.  A hibás DNS-név eltávolításához vegye fel a kapcsolatot a tanúsítvány kiállító vállalatával.
 
 ### <a name="concurrent-jobs-limit-issue"></a>Egyidejű feladatok korlátjával kapcsolatos probléma
@@ -138,7 +138,7 @@ Az SSL-/TLS-kézfogással kapcsolatos esetek kezelésekor előfordulhat, hogy ta
         ```
           Certutil   -URL    <certificate path> 
         ```
-    1. Ezután megnyílik az **URL-lekérési eszköz**. Az AIA-, CDP- és OCSP-tanúsítványok ellenőrzéséhez kattintson a **Beolvasás** gombra.
+    1. Ezután megnyílik az **URL-lekérési eszköz** . Az AIA-, CDP- és OCSP-tanúsítványok ellenőrzéséhez kattintson a **Beolvasás** gombra.
 
         ![Lekérés gomb](media/self-hosted-integration-runtime-troubleshoot-guide/retrieval-button.png)
  
@@ -152,7 +152,7 @@ Az SSL-/TLS-kézfogással kapcsolatos esetek kezelésekor előfordulhat, hogy ta
 
 `Could not load file or assembly 'XXXXXXXXXXXXXXXX, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
  
-Példa: 
+Például: 
 
 `Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
 
@@ -164,8 +164,8 @@ Ha folyamat-figyelőt használ, a következő eredményt láthatja:
 
 > [!TIP] 
 > Az alábbi képernyőképen látható módon állíthatja be a szűrőt.
-> Azt mondja nekünk, hogy a dll- **rendszer. a ValueTuple** nem a GAC-hoz kapcsolódó mappában, vagy a *c:\Program Files\microsoft Integration Runtime\4.0\Gateway*vagy a *c:\Program Files\Microsoft Integration Runtime\4.0\Shared* mappában található.
-> A rendszer a DLL-t alapvetően először a *GAC*-mappából tölti be, majd a *Közös*, végül pedig az *Átjáró* mappából. Ezért a DLL-t bármely olyan elérési útra áthelyezheti, amely hasznos lehet.
+> Azt mondja nekünk, hogy a dll- **rendszer. a ValueTuple** nem a GAC-hoz kapcsolódó mappában, vagy a *c:\Program Files\microsoft Integration Runtime\4.0\Gateway* vagy a *c:\Program Files\Microsoft Integration Runtime\4.0\Shared* mappában található.
+> A rendszer a DLL-t alapvetően először a *GAC* -mappából tölti be, majd a *Közös* , végül pedig az *Átjáró* mappából. Ezért a DLL-t bármely olyan elérési útra áthelyezheti, amely hasznos lehet.
 
 ![Szűrők beállítása](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
 
@@ -179,7 +179,7 @@ Ugyanezt a módszert használhatja más, hiányzó fájllal vagy szerelvénnyel 
 
 Annak oka, hogy a *%windir%\Microsoft.NET\assembly* és a *%windir%\assembly* alatti System.ValueTuple.dll látható, hogy .net-viselkedés. 
 
-Az alábbi hibaüzenetből tisztán láthatja a szerelvény *rendszerét. a ValueTuple* nem létezik. Így ez a probléma akkor fordul elő, amikor az alkalmazás megpróbálja megnézni a szerelvény *System.ValueTuple.dll*.
+Az alábbi hibaüzenetből tisztán láthatja a szerelvény *rendszerét. a ValueTuple* nem létezik. Így ez a probléma akkor fordul elő, amikor az alkalmazás megpróbálja megnézni a szerelvény *System.ValueTuple.dll* .
  
 `<LogProperties><ErrorInfo>[{"Code":0,"Message":"The type initializer for 'Npgsql.PoolManager' threw an exception.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.TypeInitializationException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[{"Code":0,"Message":"Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.IO.FileNotFoundException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[]}]}]</ErrorInfo></LogProperties>`
  
@@ -201,7 +201,7 @@ A kulcs hiányában a helyi integrációs modul hirtelen offline állapotba lép
 
 #### <a name="resolution"></a>Feloldás
 
-Ha a fenti okok egyike sem érvényes, akkor nyissa meg a következő mappát: *%ProgramData%\Microsoft\Data Transfer\DataManagementGateway*, és ellenőrizze, hogy a rendszer törli-e a **konfigurációk** nevű fájlt. Ha igen, akkor kövesse az [itt található](https://www.netwrix.com/how_to_detect_who_deleted_file.html) utasításokat, hogy megtudja, ki törölte a fájlt.
+Ha a fenti okok egyike sem érvényes, akkor nyissa meg a következő mappát: *%ProgramData%\Microsoft\Data Transfer\DataManagementGateway* , és ellenőrizze, hogy a rendszer törli-e a **konfigurációk** nevű fájlt. Ha igen, akkor kövesse az [itt található](https://www.netwrix.com/how_to_detect_who_deleted_file.html) utasításokat, hogy megtudja, ki törölte a fájlt.
 
 ![Konfigurációs fájl keresése](media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png)
 
@@ -210,7 +210,7 @@ Ha a fenti okok egyike sem érvényes, akkor nyissa meg a következő mappát: *
 
 #### <a name="symptoms"></a>Hibajelenségek
 
-Miután létre lett hozva a helyi integrációs modult a forrás- és a céladattárolók esetében is, össze szeretné kapcsolni a két integrációs modult a másolás befejezéséhez. Ha az adattárak különböző virtuális hálózatok vannak konfigurálva, vagy nem tudják megérteni az átjáró mechanizmusát, a következőhöz hasonló hibák lépnek fel: *a forrás illesztőprogramja nem található a cél IR-ben*; *a cél IR nem fér hozzá a forráshoz*.
+Miután létre lett hozva a helyi integrációs modult a forrás- és a céladattárolók esetében is, össze szeretné kapcsolni a két integrációs modult a másolás befejezéséhez. Ha az adattárak különböző virtuális hálózatok vannak konfigurálva, vagy nem tudják megérteni az átjáró mechanizmusát, a következőhöz hasonló hibák lépnek fel: *a forrás illesztőprogramja nem található a cél IR-ben* ; *a cél IR nem fér hozzá a forráshoz* .
  
 #### <a name="cause"></a>Ok
 
@@ -288,14 +288,14 @@ A hiba vizsgálatához lépjen a Integration Runtime eseménynaplóba.
 
 ![IR-Eseménynapló](media/self-hosted-integration-runtime-troubleshoot-guide/ir-event-log.png)
 
-Ha a hiba a fenti *UnauthorizedAccessException*jelenik meg, kövesse az alábbi utasításokat:
+Ha a hiba a fenti *UnauthorizedAccessException* jelenik meg, kövesse az alábbi utasításokat:
 
 
 1. A Windows szolgáltatás paneljén keresse meg a *DIAHostService* bejelentkezési szolgáltatás fiókját.
 
     ![Bejelentkezési szolgáltatásfiók](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
 
-2. Győződjön meg arról, hogy a bejelentkezési szolgáltatás fiókja rendelkezik-e az R/W engedéllyel a (z) *%ProgramData%\Microsoft\DataTransfer\DataManagementGateway*mappában.
+2. Győződjön meg arról, hogy a bejelentkezési szolgáltatás fiókja rendelkezik-e az R/W engedéllyel a (z) *%ProgramData%\Microsoft\DataTransfer\DataManagementGateway* mappában.
 
     - Alapértelmezés szerint, ha a szolgáltatás bejelentkezési fiókja nem módosult, akkor az R/W engedélyének kell lennie.
 
@@ -305,7 +305,7 @@ Ha a hiba a fenti *UnauthorizedAccessException*jelenik meg, kövesse az alábbi 
         1. Törölje a jelenlegi saját üzemeltetésű integrációs modul eltávolítását.
         1. Telepítse a saját üzemeltetésű IR-biteket.
         1. A szolgáltatásfiók módosításához kövesse az alábbi utasításokat: 
-            1. Nyissa meg a selfhosted IR telepítési mappáját, váltson a következő mappára: *Microsoft Integration Runtime\4.0\Shared*.
+            1. Nyissa meg a selfhosted IR telepítési mappáját, váltson a következő mappára: *Microsoft Integration Runtime\4.0\Shared* .
             1. Indítsa el a parancssort emelt szintű jogosultság használatával. Cserélje *\<user>* le *\<password>* a és a nevet a saját felhasználónevére és jelszavára, majd futtassa az alábbi parancsot:
                        
                 ```
@@ -325,7 +325,7 @@ Ha a hiba a fenti *UnauthorizedAccessException*jelenik meg, kövesse az alábbi 
             1. Használhat helyi/tartományi felhasználót az IR szolgáltatás bejelentkezési fiókjához.            
         1. Regisztrálja a Integration Runtime.
 
-Ha a hiba a következőképpen jelenik *meg: "Integration Runtime szolgáltatás" (DIAHostService) indítása sikertelen. Ellenőrizze, hogy rendelkezik-e megfelelő jogosultsággal a rendszerszolgáltatások indításához*, kövesse az alábbi utasításokat:
+Ha a hiba a következőképpen jelenik *meg: "Integration Runtime szolgáltatás" (DIAHostService) indítása sikertelen. Ellenőrizze, hogy rendelkezik-e megfelelő jogosultsággal a rendszerszolgáltatások indításához* , kövesse az alábbi utasításokat:
 
 1. A Windows szolgáltatás paneljén keresse meg a *DIAHostService* bejelentkezési szolgáltatás fiókját.
    
@@ -351,7 +351,7 @@ A **regisztráció** gomb nem található a Configuration Manager felhasználói
 
 #### <a name="cause"></a>Ok
 
-A *Integration Runtime 3,0*-es verziójának megjelenése óta egy meglévő Integration Runtime csomóponton található **regisztráció** gomb el lett távolítva a tisztább és biztonságosabb környezet lehetővé tételéhez. Ha regisztrált egy csomópontot valamilyen integrációs modulba (online vagy nem online), akkor a csomópont másik integrációs modulba történő újraregisztrálásához először el kell távolítania az előző csomópontot, és ezt követően tudja telepíteni és regisztrálni a csomópontot.
+A *Integration Runtime 3,0* -es verziójának megjelenése óta egy meglévő Integration Runtime csomóponton található **regisztráció** gomb el lett távolítva a tisztább és biztonságosabb környezet lehetővé tételéhez. Ha regisztrált egy csomópontot valamilyen integrációs modulba (online vagy nem online), akkor a csomópont másik integrációs modulba történő újraregisztrálásához először el kell távolítania az előző csomópontot, és ezt követően tudja telepíteni és regisztrálni a csomópontot.
 
 #### <a name="resolution"></a>Feloldás
 
@@ -431,7 +431,7 @@ A saját üzemeltetésű integrációs modul nem tud kapcsolódni a Data Factory
     ```
         
    > [!NOTE]     
-   > A szolgáltatás URL-címe eltérő lehet a Data Factory helyétől függően. A szolgáltatás URL-címét az **ADF UI**  >  **Connections**  >  **Integration Runtimes**saját üzemeltetésű  >  **IR**  >  -**csomópontok**  >  **megtekintése szolgáltatás URL-** címének szerkesztése szakaszban találja.
+   > A szolgáltatás URL-címe eltérő lehet a Data Factory helyétől függően. A szolgáltatás URL-címét az **ADF UI**  >  **Connections**  >  **Integration Runtimes** saját üzemeltetésű  >  **IR**  >  - **csomópontok**  >  **megtekintése szolgáltatás URL-** címének szerkesztése szakaszban találja.
             
     A várt válasz a következő:
             
@@ -484,7 +484,7 @@ Ez a viselkedés akkor fordul elő, ha a csomópontok nem tudnak kommunikálni e
 
 #### <a name="resolution"></a>Feloldás
 
-1. Jelentkezzen be a csomópont által üzemeltetett virtuális gépre. Az **alkalmazások és szolgáltatások naplóiban**  >  **Integration Runtime**, nyissa meg Eseménynapló, és szűrje az összes hibát.
+1. Jelentkezzen be a csomópont által üzemeltetett virtuális gépre. Az **alkalmazások és szolgáltatások naplóiban**  >  **Integration Runtime** , nyissa meg Eseménynapló, és szűrje az összes hibát.
 
 1. Győződjön meg arról, hogy a hibanapló a következő hibát tartalmazza-e: 
     
@@ -569,7 +569,7 @@ Végezze el a netmon nyomkövetést, és elemezze tovább.
  
     *Hálózati csomag az A Linux rendszertől a TTL 64-> B TTL 64 mínusz 1 = 63-> C TTL 63 mínusz 1 = 62-> TTL 62 mínusz 1 = 61 saját üzemeltetésű IR*
 
-- Ideális esetben a TTL 128 lesz, ami azt jelenti, hogy a Windows rendszer fut a Data Factory. Ahogy az alábbi példában is látható, a *128 – 107 = 21 ugrás*, ami azt jelenti, hogy a csomaghoz tartozó 21 ugrást a rendszer a TCP 3-kézfogás során Data Factory a saját üzemeltetésű IR-be küldi.
+- Ideális esetben a TTL 128 lesz, ami azt jelenti, hogy a Windows rendszer fut a Data Factory. Ahogy az alábbi példában is látható, a *128 – 107 = 21 ugrás* , ami azt jelenti, hogy a csomaghoz tartozó 21 ugrást a rendszer a TCP 3-kézfogás során Data Factory a saját üzemeltetésű IR-be küldi.
  
     ![TTL 107](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
 
@@ -587,11 +587,11 @@ Ha a 888-es netmon-nyomkövetéssel rendelkező Telnet- **8.8.8.8** próbálja m
 ![netmon nyomkövetés 2](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-2.png)
  
 
-Ez azt jelenti, hogy a **888**-es porton alapuló TCP-csatlakozás nem végezhető el a **8.8.8.8** -kiszolgáló oldalára, így két **SynReTransmit** további csomagot láthat. Mivel a Source **HOST2** nem tudott kapcsolódni az **8.8.8.8** -hez az első csomagban, továbbra is a kapcsolódást fogja végezni.
+Ez azt jelenti, hogy a **888** -es porton alapuló TCP-csatlakozás nem végezhető el a **8.8.8.8** -kiszolgáló oldalára, így két **SynReTransmit** további csomagot láthat. Mivel a Source **HOST2** nem tudott kapcsolódni az **8.8.8.8** -hez az első csomagban, továbbra is a kapcsolódást fogja végezni.
 
 > [!TIP]
-> - Kattintson a **szűrő**  ->  **szabványos szűrő**  ->  **címek**  ->  **IPv4-címek**betöltése lehetőségre.
-> - Adja meg a bemeneti **IPv4.-címek = = 8.8.8.8** szűrőként, majd kattintson az **alkalmaz**gombra. Ezt követően csak a helyi gépről érkező kommunikáció jelenik meg a cél **8.8.8.8**.
+> - Kattintson a **szűrő**  ->  **szabványos szűrő**  ->  **címek**  ->  **IPv4-címek** betöltése lehetőségre.
+> - Adja meg a bemeneti **IPv4.-címek = = 8.8.8.8** szűrőként, majd kattintson az **alkalmaz** gombra. Ezt követően csak a helyi gépről érkező kommunikáció jelenik meg a cél **8.8.8.8** .
 
 ![címek szűrése 1](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-1.png)
         
@@ -630,7 +630,7 @@ Ez az értesítés a következő forgatókönyvekre van hatással:
 ##### <a name="scenario-1-outbound-communication-from-self-hosted-integration-runtime-running-on-premises-behind-the-corporate-firewall"></a>1. forgatókönyv: a vállalati tűzfal mögötti helyszínen futó helyi Integration Runtime kimenő kommunikációja
 Hogyan állapítható meg, hogy hatással van-e a következőkre:
 - Ha a tűzfalszabályok a teljes tartománynevek alapján a következő dokumentumban ismertetett módszerrel vannak meghatározva, akkor nem érinti a rendszer: [tűzfal-konfiguráció és engedélyezési lista beállítása az IP-címekhez](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway).
-- A rendszer akkor is érintett, ha explicit módon engedélyezte a kimenő IP-címeket a vállalati tűzfalon.
+- A rendszer akkor is érintett, ha a kimenő IP-címek engedélyezési listáját explicit módon engedélyezi a vállalati tűzfalon.
 
 Érintett művelet: a hálózati infrastruktúra csapatának értesítése a hálózati konfiguráció frissítéséhez, hogy a legújabb Data Factory IP-címeket a 2020. november 8-án használja.  A legújabb IP-címek letöltéséhez nyissa meg a [szolgáltatás címkék IP-címtartomány letöltési hivatkozását](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files).
 
@@ -639,16 +639,55 @@ Hogyan állapítható meg, hogy hatással van-e a következőkre:
 - Ellenőrizze, hogy van-e olyan kimenő NSG-szabály a magánhálózaton, amely saját üzemeltetésű Integration Runtime tartalmaz. Ha nincsenek kimenő korlátozások, akkor nincs hatása.
 - Ha a kimenő szabályok korlátozásai vannak, ellenőrizze, hogy a szolgáltatás címkéjét használja-e. Ha a szolgáltatás címkét használja, akkor nem kell módosítania vagy semmit hozzáadnia, mivel az új IP-címtartományok a meglévő szolgáltatási címke alatt találhatók. 
  ![Cél-ellenőrzési](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
-- Akkor is hatással van, ha explicit módon engedélyezte a kimenő IP-címeket az Azure-beli virtuális hálózat NSG-szabályainak beállításában.
+- Akkor is hatással van, ha explicit módon engedélyezi a kimenő IP-címek engedélyezési listáját a NSG-szabályok beállításban az Azure-beli virtuális hálózaton.
 
 Érintett művelet: értesítés a hálózati infrastruktúra csapatáról az Azure-beli virtuális hálózati konfiguráció NSG-szabályainak frissítéséhez, hogy a legújabb Data Factory IP-címeket használják a 2020. november 8-án.  A legújabb IP-címek letöltéséhez nyissa meg a [szolgáltatás címkék IP-címtartomány letöltési hivatkozását](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files).
 
 ##### <a name="scenario-3-outbound-communication-from-ssis-integration-runtime-in-customer-managed-azure-virtual-network"></a>3. forgatókönyv: a SSIS Integration Runtime kimenő kommunikációja az ügyfél által felügyelt Azure virtuális hálózaton
 - Ellenőrizze, hogy van-e olyan kimenő NSG-szabály a magánhálózaton, amely SSIS Integration Runtime tartalmaz. Ha nincsenek kimenő korlátozások, akkor nincs hatása.
 - Ha a kimenő szabályok korlátozásai vannak, ellenőrizze, hogy a szolgáltatás címkéjét használja-e. Ha a szolgáltatás címkét használja, akkor nem kell módosítania vagy semmit hozzáadnia, mivel az új IP-címtartományok a meglévő szolgáltatási címke alatt találhatók.
-- Akkor is hatással van, ha explicit módon engedélyezte a kimenő IP-címeket az Azure-beli virtuális hálózat NSG-szabályainak beállításában.
+- Akkor is hatással van, ha explicit módon engedélyezi a kimenő IP-címek engedélyezési listáját a NSG-szabályok beállításban az Azure-beli virtuális hálózaton.
 
 Érintett művelet: értesítés a hálózati infrastruktúra csapatáról az Azure-beli virtuális hálózati konfiguráció NSG-szabályainak frissítéséhez, hogy a legújabb Data Factory IP-címeket használják a 2020. november 8-án.  A legújabb IP-címek letöltéséhez nyissa meg a [szolgáltatás címkék IP-címtartomány letöltési hivatkozását](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files).
+
+### <a name="could-not-establish-trust-relationship-for-the-ssltls-secure-channel"></a>Nem hozható létre megbízhatósági kapcsolat a biztonságos SSLTLS csatornához 
+
+#### <a name="symptoms"></a>Hibajelenségek
+
+A saját üzemeltetésű IR nem tudott kapcsolódni az ADF szolgáltatáshoz.
+
+A következő hibaüzenet jelenik meg, ha ellenőrzi a (z) vagy az ügyfél értesítési naplóit a CustomLogEvent táblában:
+
+`The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.The remote certificate is invalid according to the validation procedure.`
+
+Az ADF szolgáltatás kiszolgálói tanúsítványának megkeresése:
+
+A legegyszerűbb módszer az ADF szolgáltatás URL-címének megnyitása a böngészőben, például megnyitva a számítógépen, ahol a rendszer telepíti a-t https://eu.frontend.clouddatahub.net/ , majd megtekinti a kiszolgálói tanúsítvány információit:
+
+  ![Az ADF szolgáltatás kiszolgálói tanúsítványának keresése](media/self-hosted-integration-runtime-troubleshoot-guide/server-certificate.png)
+
+  ![Kiszolgálói tanúsítvány elérési útjának keresése](media/self-hosted-integration-runtime-troubleshoot-guide/certificate-path.png)
+
+#### <a name="cause"></a>Ok
+
+A probléma két lehetséges oka:
+
+- Az ADF szolgáltatás-kiszolgáló tanúsítványának legfelső szintű HITELESÍTÉSSZOLGÁLTATÓja nem megbízható azon a gépen, amelyen a rendszer telepíti a-t. 
+- A proxyt használja a környezetében, és az ADF-kiszolgáló tanúsítványát a proxy váltja fel, a lecserélt kiszolgáló tanúsítványát pedig nem bízza meg azon a gépen, amelyen a rendszer telepíti a szolgáltatásvezérlő szolgáltatást.
+
+#### <a name="solution"></a>Megoldás
+
+- Az 1. okból győződjön meg arról, hogy az ADF-kiszolgáló tanúsítványát és a tanúsítványát a rendszer megbízhatónak tartja a számítógépen, amelyen telepítve van a rendszer.
+- A 2. okból bízza meg a lecserélt legfelső szintű HITELESÍTÉSSZOLGÁLTATÓT a lecserélt számítógépen, vagy konfigurálja a proxyt, hogy ne cserélje le az ADF-kiszolgáló tanúsítványát
+
+Tekintse át [ezt a cikket](https://docs.microsoft.com/skype-sdk/sdn/articles/installing-the-trusted-root-certificate) a Windows rendszerű tanúsítványok megbízhatóságának részleteiért.
+
+#### <a name="additional-info"></a>További információ
+Egy új SSL-tanúsítványt vezetünk be, amely a DigiCert-ből van aláírva, ellenőrizze, hogy a DigiCert globális root G2 a megbízható legfelső szintű HITELESÍTÉSSZOLGÁLTATÓban van-e.
+
+  ![DigiCert globális root G2](media/self-hosted-integration-runtime-troubleshoot-guide/trusted-root-ca-check.png)
+
+Ha nem, töltse le innen [.](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt ) 
 
 ## <a name="self-hosted-ir-sharing"></a>Saját üzemeltetésű integrációs modul megosztása
 
@@ -663,7 +702,7 @@ Előfordulhat, hogy más adatgyárakat (különböző bérlőket) is meg kell h�
 A saját üzemeltetésű integrációs modul nem osztható meg több Bérlővel.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A hibaelhárítással kapcsolatos további segítségért próbálkozzon a következő erőforrásokkal:
 

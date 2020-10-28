@@ -86,7 +86,7 @@ Ez a videó bemutatja, hogyan fejezhető be az alkalmazás, és hogyan csatlakoz
 
 > [!VIDEO https://www.youtube.com/embed/TcSm2ISfTu8]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha az alkalmazást már nem használja, a következő lépések használatával törölje az oktatóanyag során létrehozott összes erőforrást az Azure Portalon. 
 

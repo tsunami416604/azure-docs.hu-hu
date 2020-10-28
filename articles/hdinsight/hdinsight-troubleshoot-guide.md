@@ -1,20 +1,20 @@
 ---
 title: Azure HDInsight – hibaelhárítási útmutatók
-description: Apache Hadoop munkaterhelések hibakeresése az Azure HDInsight használatával. A részletes dokumentációból megtudhatja, hogyan használhatja a HDInsight-t a Apache Hive, a Apache Spark, az Apache-fonal, az Apache HBase, a HDFS és a Apache Storm gyakori problémáinak megoldásához.
+description: Az Azure HDInsight hibáinak megoldása. A részletes dokumentációból megtudhatja, hogyan használhatja a HDInsight-t a Apache Hive, a Apache Spark, az Apache-fonal, az Apache HBase, a HDFS és a Apache Storm gyakori problémáinak megoldásához.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
-ms.openlocfilehash: 12448d3e5e77d05f3b8fbd474179c4fcf7c57acc
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 343ddbb28be21d4352b4817937dc22442115003e
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535076"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628745"
 ---
-# <a name="troubleshoot-by-using-azure-hdinsight"></a>Hibák az Azure HDInsight használatával
+# <a name="troubleshoot-azure-hdinsight"></a>Az Azure HDInsight hibáinak megoldása
 
 | Apache munkaterhelés | A leggyakoribb kérdések |
 |---|---|

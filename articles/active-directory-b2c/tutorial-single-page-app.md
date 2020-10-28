@@ -11,12 +11,12 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 86d89dc6973e61f0cff80b5c65a8c5b836485575
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e485065588fefa95868df9865f317de54e6ef020
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216526"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628779"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Oktatóanyag: hitelesítés engedélyezése egyoldalas alkalmazásban Azure AD B2C
 
@@ -55,24 +55,24 @@ Ha frissíteni szeretne egy alkalmazást a Azure AD B2C-bérlőben, használhatj
 
 #### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/)
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
-1. Válassza a **Alkalmazásregisztrációk**lehetőséget, válassza a **birtokolt alkalmazások** fület, majd válassza ki a *webapp1* alkalmazást.
-1. A web területen válassza az **URI hozzáadása** hivatkozást, írja be a **következőt**: `http://localhost:6420` .
-1. Az **implicit engedélyezés**területen jelölje be a **hozzáférési jogkivonatok** és **azonosító tokenek** jelölőnégyzetét, ha még nincs kiválasztva, majd válassza a **Mentés**lehetőséget.
+1. A bal oldali menüben válassza a **Azure ad B2C** lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C** lehetőséget.
+1. Válassza a **Alkalmazásregisztrációk** lehetőséget, válassza a **birtokolt alkalmazások** fület, majd válassza ki a *webapp1* alkalmazást.
+1. A web területen válassza az **URI hozzáadása** hivatkozást, írja be a **következőt** : `http://localhost:6420` .
+1. Az **implicit engedélyezés** területen jelölje be a **hozzáférési jogkivonatok** és **azonosító tokenek** jelölőnégyzetét, ha még nincs kiválasztva, majd válassza a **Mentés** lehetőséget.
 1. Válassza az **Áttekintés** lehetőséget.
 1. Jegyezze fel az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra, amikor frissíti a kódot az egyoldalas webalkalmazásban.
 
 #### <a name="applications-legacy"></a>[Alkalmazások (örökölt)](#tab/applications-legacy/)
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
-1. Válassza az **összes szolgáltatás** elemet a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+1. Válassza az **összes szolgáltatás** elemet a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C** .
 1. Válassza az **alkalmazások (örökölt)** lehetőséget, majd válassza ki a *webapp1* alkalmazást.
-1. A **Válasz URL-cím**területen adja hozzá a címet `http://localhost:6420` .
+1. A **Válasz URL-cím** területen adja hozzá a címet `http://localhost:6420` .
 1. Válassza a **Mentés** lehetőséget.
-1. A Tulajdonságok lapon jegyezze fel az **alkalmazás azonosítóját**. Az alkalmazás-azonosítót egy későbbi lépésben kell használni, amikor frissíti a kódot az egyoldalas webalkalmazásban.
+1. A Tulajdonságok lapon jegyezze fel az **alkalmazás azonosítóját** . Az alkalmazás-azonosítót egy későbbi lépésben kell használni, amikor frissíti a kódot az egyoldalas webalkalmazásban.
 
 * * *
 
@@ -93,7 +93,7 @@ Most, hogy beolvasta a mintát, frissítse a kódot a Azure AD B2C bérlői nev�
 1. Nyissa meg a *authConfig.js* fájlt a *JavaScriptSPA* mappában.
 1. Az `msalConfig` objektumban frissítse a következőket:
     * `clientId` egy korábbi lépésben rögzített **alkalmazás-(ügyfél-) azonosítóval** rendelkező értékkel
-    * `authority` URI a Azure AD B2C bérlői nevével és az előfeltételek részeként létrehozott regisztrációs/bejelentkezési felhasználói folyamat nevével (például *B2C_1_signupsignin1*)
+    * `authority` URI a Azure AD B2C bérlői nevével és az előfeltételek részeként létrehozott regisztrációs/bejelentkezési felhasználói folyamat nevével (például *B2C_1_signupsignin1* )
 
     ```javascript
     const msalConfig = {
@@ -116,6 +116,72 @@ Most, hogy beolvasta a mintát, frissítse a kódot a Azure AD B2C bérlői nev�
       scopes: apiConfig.b2cScopes // i.e. ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"]
     };
     ```
+
+1. Nyissa meg a `authConfig.js` fájlt a *JavaScriptSPA* mappában.
+1. Az `msalConfig` objektumban frissítse a következőket:
+    * `clientId`egy korábbi lépésben rögzített **alkalmazás-(ügyfél-) azonosítóval**
+    * `authority` URI a Azure AD B2C bérlői nevével és az előfeltételek részeként létrehozott regisztrációs/bejelentkezési felhasználói folyamat nevével (például *B2C_1_signupsignin1* )
+1. Nyissa meg az `policies.js` fájlt.
+1. Keresse meg a és a bejegyzéseket, `names` `authorities` és cserélje le őket a 2. lépésben létrehozott szabályzatok nevére. Cserélje le a helyére a `fabrikamb2c.onmicrosoft.com` Azure ad B2C bérlő nevét, például: `https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-sign-in-sign-up-policy>` .
+1. Nyissa meg az `apiConfig.js` fájlt.
+1. Keresse meg a hatókörök hozzárendelését, `b2cScopes` és cserélje le az URL-címet a webes API-hoz létrehozott hatókör URL-címére, például: `b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/helloapi/demo.read"]` .
+1. Keresse meg az API URL-címének hozzárendelését, `webApi` és cserélje le az aktuális URL-címet arra az URL-címre, ahol a webes API-t telepítette a 4. lépésben, például: `webApi: http://localhost:5000/hello` .
+
+Az eredményül kapott kódnak a következőképpen kell kinéznie:
+
+### <a name="authconfigjs"></a>authConfig.js
+
+```javascript
+const msalConfig = {
+  auth: {
+    clientId: "e760cab2-b9a1-4c0d-86fb-ff7084abd902",
+    authority: b2cPolicies.authorities.signUpSignIn.authority,
+    validateAuthority: false
+  },
+  cache: {
+    cacheLocation: "localStorage",
+    storeAuthStateInCookie: true
+  }
+};
+
+const loginRequest = {
+  scopes: ["openid", "profile"],
+};
+
+const tokenRequest = {
+  scopes: apiConfig.b2cScopes // i.e. ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"]
+};
+```
+### <a name="policiesjs"></a>policies.js
+
+```javascript
+const b2cPolicies = {
+    names: {
+        signUpSignIn: "b2c_1_susi",
+        forgotPassword: "b2c_1_reset",
+        editProfile: "b2c_1_edit_profile"
+    },
+    authorities: {
+        signUpSignIn: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_susi",
+        },
+        forgotPassword: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_reset",
+        },
+        editProfile: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_edit_profile"
+        }
+    },
+}
+```
+### <a name="apiconfigjs"></a>apiConfig.js
+
+```javascript
+const apiConfig = {
+  b2cScopes: ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"],
+  webApi: "https://fabrikamb2chello.azurewebsites.net/hello"
+};
+```
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
@@ -154,7 +220,7 @@ Ez a minta alkalmazás támogatja a regisztrációt, a bejelentkezést és a jel
 
 1. A **Létrehozás** gombra kattintva helyi fiókot hozhat létre a Azure ad B2C könyvtárban.
 
-A **Létrehozás**gombra kattintva az alkalmazás megjeleníti a bejelentkezett felhasználó nevét.
+A **Létrehozás** gombra kattintva az alkalmazás megjeleníti a bejelentkezett felhasználó nevét.
 
 :::image type="content" source="media/tutorial-single-page-app/web-app-spa-02-logged-in.png" alt-text="A helyileg futó egylapos alkalmazást megjelenítő webböngésző":::
 
