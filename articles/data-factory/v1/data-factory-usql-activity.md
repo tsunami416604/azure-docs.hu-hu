@@ -13,12 +13,12 @@ ms.author: abnarain
 ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 17e5b5eaea90b5f67ad91f0b09a51b2f1aeffd68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5e53cab30f1adca05652a3b3b7541e12ebebbdb
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322615"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631461"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Adatok átalakítása az Azure Data Lake Analyticsben található U-SQL-szkriptek futtatásával 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -48,14 +48,14 @@ A következő táblázat a JSON-definícióban használt általános tulajdonsá
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| **típusa** |A Type tulajdonságot a következőre kell beállítani: **AzureDataLakeAnalytics**. |Igen |
+| **típusa** |A Type tulajdonságot a következőre kell beállítani: **AzureDataLakeAnalytics** . |Igen |
 | **accountName** |Azure Data Lake Analytics fiók neve. |Igen |
 | **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI. |Nem |
 | **subscriptionId** |Azure-előfizetés azonosítója |Nem (ha nincs megadva, a rendszer az adatfeldolgozó előfizetését használja). |
 | **resourceGroupName** |Azure-erőforráscsoport neve |Nem (ha nincs megadva, a rendszer az adatfeldolgozó erőforráscsoportot használja). |
 
 ### <a name="service-principal-authentication-recommended"></a>Egyszerű szolgáltatásnév hitelesítése (ajánlott)
-Az egyszerű szolgáltatás hitelesítésének használatához regisztráljon egy alkalmazás-entitást Azure Active Directory (Azure AD), és adja meg a Data Lake Store elérését. A részletes lépésekért lásd: [szolgáltatások közötti hitelesítés](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Jegyezze fel a következő értékeket, amelyeket a társított szolgáltatás definiálásához használ:
+Az egyszerű szolgáltatás hitelesítésének használatához regisztráljon egy alkalmazás-entitást Azure Active Directory (Azure AD), és adja meg a Data Lake Store elérését. A részletes lépésekért lásd: [szolgáltatások közötti hitelesítés](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md). Jegyezze fel a következő értékeket, amelyeket a társított szolgáltatás definiálásához használ:
 * Alkalmazásazonosító
 * Alkalmazás kulcsa 
 * Bérlőazonosító
@@ -114,7 +114,7 @@ Azt is megteheti, hogy a következő tulajdonságok megadásával felhasználói
 ```
 
 #### <a name="token-expiration"></a>Jogkivonat lejárata
-Az **Engedélyezés** gomb használatával létrehozott engedélyezési kód egy kis idő elteltével lejár. Az alábbi táblázatban megtekintheti a különböző típusú felhasználói fiókok lejárati idejét. A hitelesítési **jogkivonat érvényességének lejárta**után a következő hibaüzenet jelenhet meg: hitelesítőadat-műveleti hiba: INVALID_GRANT-AADSTS70002: hiba történt a hitelesítő adatok érvényesítése során. AADSTS70008: a megadott hozzáférési engedély lejárt vagy visszavont. Nyomkövetési azonosító: d18629e8-af88-43c5-88e3-d8419eb1fca1 korrelációs azonosítója: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 timestamp: 2015-12-15 21:09:31Z
+Az **Engedélyezés** gomb használatával létrehozott engedélyezési kód egy kis idő elteltével lejár. Az alábbi táblázatban megtekintheti a különböző típusú felhasználói fiókok lejárati idejét. A hitelesítési **jogkivonat érvényességének lejárta** után a következő hibaüzenet jelenhet meg: hitelesítőadat-műveleti hiba: INVALID_GRANT-AADSTS70002: hiba történt a hitelesítő adatok érvényesítése során. AADSTS70008: a megadott hozzáférési engedély lejárt vagy visszavont. Nyomkövetési azonosító: d18629e8-af88-43c5-88e3-d8419eb1fca1 korrelációs azonosítója: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 timestamp: 2015-12-15 21:09:31Z
 
 | Felhasználó típusa | Lejárat után lejár |
 |:--- |:--- |
@@ -148,7 +148,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-A kódban használt Data Factory osztályok részleteiért tekintse meg a [AzureDataLakeStoreLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), a [AzureDataLakeAnalyticsLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)és a [AuthorizationSessionGetResponse osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) témakört. Adjon hozzá egy hivatkozást a következőhöz: Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll a WindowsFormsWebAuthenticationDialog osztályhoz. 
+A kódban használt Data Factory osztályok részleteiért tekintse meg a [AzureDataLakeStoreLinkedService Class](/dotnet/api/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice), a [AzureDataLakeAnalyticsLinkedService Class](/dotnet/api/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice)és a [AuthorizationSessionGetResponse osztály](/dotnet/api/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse) témakört. Adjon hozzá egy hivatkozást a következőhöz: Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll a WindowsFormsWebAuthenticationDialog osztályhoz. 
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL-tevékenység
 A következő JSON-kódrészlet egy Data Lake Analytics U-SQL-tevékenységgel rendelkező folyamatot határoz meg. A tevékenység definíciója a korábban létrehozott Azure Data Lake Analytics társított szolgáltatásra mutató hivatkozást tartalmaz.   
@@ -208,7 +208,7 @@ A következő táblázat ismerteti a tevékenységre jellemző tulajdonságok ne
 
 | Tulajdonság            | Leírás                              | Kötelező                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
-| típus                | A Type tulajdonságot **DataLakeAnalyticsU-SQL**értékre kell beállítani. | Igen                                      |
+| típus                | A Type tulajdonságot **DataLakeAnalyticsU-SQL** értékre kell beállítani. | Igen                                      |
 | linkedServiceName   | Hivatkozás a társított szolgáltatásként regisztrált Azure Data Lake Analytics Data Factory | Igen                                      |
 | scriptPath          | A U-SQL-parancsfájlt tartalmazó mappa elérési útja. A fájl neve megkülönbözteti a kis-és nagybetűket. | Nem (ha parancsfájlt használ)                   |
 | Scriptlinkedservice szolgáltatás | Társított szolgáltatás, amely összekapcsolja a parancsfájlt tartalmazó tárolót az adatgyárba | Nem (ha parancsfájlt használ)                   |
@@ -317,7 +317,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-Az U-SQL-parancsfájlban ** \@ lévő** és a ** \@ kimenő** paraméterek értékeit az ADF dinamikusan továbbítja a "parameters" szakasz használatával. Tekintse meg a folyamat definíciójának paraméterek szakaszát.
+Az U-SQL-parancsfájlban **\@ lévő** és a **\@ kimenő** paraméterek értékeit az ADF dinamikusan továbbítja a "parameters" szakasz használatával. Tekintse meg a folyamat definíciójának paraméterek szakaszát.
 
 Egyéb tulajdonságokat is megadhat, például a Analyticsunits és a prioritást, valamint a folyamat definícióját a Azure Data Lake Analytics szolgáltatásban futó feladatok esetében.
 
@@ -331,7 +331,7 @@ A mintavételi folyamat definíciójában a és a kimenő paraméterek rögzíte
 }
 ```
 
-Ehelyett dinamikus paramétereket lehet használni. Példa: 
+Ehelyett dinamikus paramétereket lehet használni. Például: 
 
 ```json
 "parameters": {
@@ -340,6 +340,4 @@ Ehelyett dinamikus paramétereket lehet használni. Példa:
 }
 ```
 
-Ebben az esetben a bemeneti fájlok továbbra is a/datalake/input mappából lesznek kiválasztva, és a kimeneti fájlok a/datalake/output mappában jönnek létre. A fájlnevek dinamikusak a szelet indítási ideje alapján.  
-
-
+Ebben az esetben a bemeneti fájlok továbbra is a/datalake/input mappából lesznek kiválasztva, és a kimeneti fájlok a/datalake/output mappában jönnek létre. A fájlnevek dinamikusak a szelet indítási ideje alapján.

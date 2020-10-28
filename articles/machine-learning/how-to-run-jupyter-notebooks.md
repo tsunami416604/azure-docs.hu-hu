@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 4373618bacad00675d5f639225c435296010949b
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 654c1beb0f8f544219ed802cab92f06055d70960
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221422"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628677"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Jupyter-jegyzetfüzetek futtatása a munkaterületen
 
@@ -32,7 +32,7 @@ Ismerje meg, hogyan teheti meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree), mielőtt hozzákezd.
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree).
 * Machine Learning munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
 ## <a name="create-notebooks"></a><a name="create"></a> Jegyzetfüzetek létrehozása
@@ -42,7 +42,7 @@ A Azure Machine Learning munkaterületen hozzon létre egy új Jupyter-jegyzetf�
 Új jegyzetfüzet létrehozása: 
 
 1. Nyissa meg a munkaterületét [Azure Machine learning Studióban](https://ml.azure.com).
-1. A bal oldalon válassza a **jegyzetfüzetek**lehetőséget. 
+1. A bal oldalon válassza a **jegyzetfüzetek** lehetőséget. 
 1. Válassza az **új fájl létrehozása** ikont a **saját fájlok** szakaszban lévő **felhasználói fájlok** listájának megadásához.
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="Új fájl létrehozása":::
@@ -75,14 +75,14 @@ Az összes git-műveletet egy terminál-ablak használatával érheti el. A rend
 A terminál elérése:
 
 1. Nyissa meg a munkaterületét [Azure Machine learning Studióban](https://ml.azure.com).
-1. A bal oldalon válassza a **jegyzetfüzetek**lehetőséget.
+1. A bal oldalon válassza a **jegyzetfüzetek** lehetőséget.
 1. Válassza ki a bal oldalon a **felhasználói fájlok** szakaszban található bármelyik jegyzetfüzetet.  Ha nincs jegyzetfüzete, először [hozzon létre egy jegyzetfüzetet](#create)
 1. Válasszon ki egy **számítási** célt, vagy hozzon létre egy újat, és várjon, amíg fut.
 1. Válassza a **nyitott terminál** ikont.
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Új fájl létrehozása":::
 
-1. Ha nem látja az ikont, válassza a **...** lehetőséget a számítási cél jobb oldalán, majd válassza a **terminál megnyitása**lehetőséget.
+1. Ha nem látja az ikont, válassza a **...** lehetőséget a számítási cél jobb oldalán, majd válassza a **terminál megnyitása** lehetőséget.
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Új fájl létrehozása":::
 
@@ -113,8 +113,8 @@ A Jupyter vagy a JupyterLab a jegyzetfüzet eszköztáráról is elindíthatja. 
 
 Az aktuális nézet kibontásához használja a fókusz módot, így az aktív lapfülekre koncentrálhat. A fókusz mód elrejti a jegyzetfüzetek fájlkezelőjét.
 
-1. A terminál ablak eszköztárán válassza a **fókusz mód**lehetőséget a   fókusz üzemmód bekapcsolásához. Az ablak szélessége függően ez az eszköztár. **..** menüpontjában lehet.
-1. Fókusz módban a normál **nézet**lehetőségre kattintva térjen vissza a normál nézetbe.
+1. A terminál ablak eszköztárán válassza a **fókusz mód** lehetőséget a fókusz üzemmód bekapcsolásához. Az ablak szélessége függően ez az eszköztár. **..** menüpontjában lehet.
+1. Fókusz módban a normál **nézet** lehetőségre kattintva térjen vissza a normál nézetbe.
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Új fájl létrehozása":::
 
@@ -142,13 +142,13 @@ Az új jegyzetfüzet csak programkódot tartalmaz, és az összes cellának ugya
 
 ### <a name="save-and-checkpoint-a-notebook"></a>Jegyzetfüzet mentése és ellenőrzőpont
 
-A Azure Machine Learning egy *ipynb*-fájl létrehozásakor létrehoz egy ellenőrzőpont-fájlt   .
+A Azure Machine Learning egy *ipynb* -fájl létrehozásakor létrehoz egy ellenőrzőpont-fájlt.
 
 A jegyzetfüzet eszköztárán válassza ki a menüt, majd a **fájl &gt; mentése és ellenőrzőpont** elemet a jegyzetfüzet manuális mentéséhez, és a rendszer hozzáadja a jegyzetfüzethez tartozó ellenőrzőpont-fájlt.
 
 :::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Új fájl létrehozása":::
 
-Minden jegyzetfüzetet 30 másodpercenként kell megtakarítani.Az automatikus mentés szolgáltatás csak a kezdeti *ipynb*   -fájlt frissíti, nem az ellenőrzőpont-fájlt.
+Minden jegyzetfüzetet 30 másodpercenként kell megtakarítani. Az automatikus mentés szolgáltatás csak a kezdeti *ipynb* -fájlt frissíti, nem az ellenőrzőpont-fájlt.
  
 Válassza az **ellenőrzőpontok** lehetőséget a notebook menüben egy elnevezett ellenőrzőpont létrehozásához és a jegyzetfüzet egy mentett ellenőrzőpontra való visszavonásához.
 
@@ -179,7 +179,7 @@ A következő módokon *törölheti* a **felhasználói fájlok** jegyzetfüzete
 Egy kísérlet jegyzetfüzetből való futtatásához először egy futó [számítási példányhoz](concept-compute-instance.md)kell csatlakoznia. Ha nem rendelkezik számítási példánnyal, az alábbi lépésekkel hozhat létre egyet: 
 
 1. Válassza ki **+** a jegyzetfüzet eszköztárát. 
-2. Nevezze el a számítást, és válassza ki a **virtuális gép méretét**. 
+2. Nevezze el a számítást, és válassza ki a **virtuális gép méretét** . 
 3. Kattintson a **Létrehozás** gombra.
 4. A számítási példány automatikusan csatlakozik a jegyzetfüzethez, és most már futtathatja a cellákat.
 
@@ -217,7 +217,7 @@ A jegyzetfüzet automatikusan megkeresi a csatlakoztatott számítási példány
 1. A jegyzetfüzet eszköztárán válassza a [**terminál megnyitása**](#terminal) lehetőséget.
 1. Hozzon létre egy új környezetet a terminálablak használatával.  Az alábbi kód például a következőt hozza létre `newenv` :
     ```shell
-    conda create --name newenv
+    conda create -y --name newenv
     ```
 1. Aktiválja a környezetet.  Például a létrehozása után `newenv` :
 
@@ -227,13 +227,13 @@ A jegyzetfüzet automatikusan megkeresi a csatlakoztatott számítási példány
 1. Telepítse a pip és a ipykernel csomagot az új környezetbe, és hozzon létre egy kernelt az adott Conda env számára
 
     ```shell
-    conda install pip
-    conda install ipykernel
+    conda install -y pip
+    conda install -y ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
 
 > [!NOTE]
-> Jegyzetfüzeten belüli csomagkezelő esetén a **% pip** vagy **% Conda** Magic functions használatával automatikusan telepíthet csomagokat a **jelenleg futó kernelre**, nem pedig **! pip** vagy **! Conda** , amely az összes csomagra vonatkozik (beleértve a jelenleg futó kernelen kívüli csomagokat is)
+> Jegyzetfüzeten belüli csomagkezelő esetén a **% pip** vagy **% Conda** Magic functions használatával automatikusan telepíthet csomagokat a **jelenleg futó kernelre** , nem pedig **! pip** vagy **! Conda** , amely az összes csomagra vonatkozik (beleértve a jelenleg futó kernelen kívüli csomagokat is)
 
 A [rendelkezésre álló Jupyter-kernelek](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) bármelyike telepíthető.
 

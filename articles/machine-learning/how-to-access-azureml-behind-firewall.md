@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 081c07be49178be2415edccbfc2026336eb8a8a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0f30edeb24f3c4abed6f144f3fb7f755cc08a72
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604410"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629459"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Munkaterület használata tűzfal mögött Azure Machine Learning
 
@@ -63,6 +63,8 @@ Az ebben a szakaszban található gazdagépek a Microsoft tulajdonában vannak, 
 | **mcr.microsoft.com** | Microsoft Container Registry az alapszintű Docker-rendszerképekhez |
 | **your-acr-server-name.azurecr.io** | Csak akkor szükséges, ha a Azure Container Registry a virtuális hálózat mögött van. Ebben a konfigurációban a Microsoft-környezetből a saját előfizetésében található ACR-példányhoz privát hivatkozás jön létre. Használja az ACR-kiszolgáló nevét az Azure Machine Learning munkaterülethez. |
 | **\*. notebooks.azure.net** | Azure Machine Learning Studióban található jegyzetfüzetek szükségesek. |
+| **\*. file.core.windows.net** | A fájlkezelő a Azure Machine Learning Studióban szükséges. |
+| **\*. dfs.core.windows.net** | A fájlkezelő a Azure Machine Learning Studióban szükséges. |
 | **graph.windows.net** | Jegyzetfüzetekhez szükséges |
 
 > [!TIP]
@@ -76,7 +78,7 @@ Az ebben a szakaszban található gazdagépek a Python-csomagok telepítéséhez
 | ---- | ---- |
 | **anaconda.com**</br>**\*. anaconda.com** | Az alapértelmezett csomagok telepítéséhez használatos. |
 | **\*. anaconda.org** | A tárház-adatgyűjtéshez használatos. |
-| **pypi.org** | Az alapértelmezett indexből származó függőségek listázására használatos, és az indexet a felhasználói beállítások nem írják felül. Ha a rendszer felülírja az indexet, a ** \* . pythonhosted.org**is engedélyeznie kell. |
+| **pypi.org** | Az alapértelmezett indexből származó függőségek listázására használatos, és az indexet a felhasználói beállítások nem írják felül. Ha a rendszer felülírja az indexet, a **\* . pythonhosted.org** is engedélyeznie kell. |
 
 ## <a name="r-hosts"></a>R-gazdagépek
 

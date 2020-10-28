@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: mvc, devcenter, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: f88960207188779949560218b298fd36d6a8f25e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f105acaa4e2801ca6dc8c33b404fdb9f9d65adc8
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90985239"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633722"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Node.js-webalkalmazás létrehozása az Azure-ban
 
@@ -22,6 +22,7 @@ Ismerkedjen meg Azure App Service azáltal, hogy a Visual Studio Code használat
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension).
+- <a href="https://git-scm.com/" target="_blank">A Git telepítése</a>
 - [Node.js és NPM](https://nodejs.org). A parancs futtatásával `node --version` ellenőrizze, hogy telepítve van-e a Node.js.
 - [Visual Studio Code](https://code.visualstudio.com/).
 - A Visual Studio Code [Azure app Service bővítménye](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice) .
@@ -67,7 +68,7 @@ Ebben a szakaszban az Node.js alkalmazást a VS Code és a Azure App Service bő
 
     ![Bejelentkezés az Azure-ba](media/quickstart-nodejs/sign-in.png)
 
-1. Az **Azure app Service** EXPLORERBEN a vs Code-ban kattintson a kék felfelé mutató nyíl ikonra az alkalmazás üzembe helyezéséhez az Azure-ban. (Ugyanezt a parancsot a **parancssorból** is meghívhatja (**CTRL** + **SHIFT** + **P**) a "üzembe helyezés a webalkalmazásba" parancs beírásával, és a **Azure app Service: üzembe helyezés a webalkalmazásban**) lehetőségre.
+1. Az **Azure app Service** EXPLORERBEN a vs Code-ban kattintson a kék felfelé mutató nyíl ikonra az alkalmazás üzembe helyezéséhez az Azure-ban. (Ugyanezt a parancsot a **parancssorból** is meghívhatja ( **CTRL** + **SHIFT** + **P** ) a "üzembe helyezés a webalkalmazásba" parancs beírásával, és a **Azure app Service: üzembe helyezés a webalkalmazásban** ) lehetőségre.
 
     :::image type="content" source="media/quickstart-nodejs/deploy.png" alt-text="Képernyőkép az Azure app Service-ről a VS Code-ban, amelyen a kék nyíl ikon van kiválasztva.&quot;:::
         
@@ -78,14 +79,14 @@ Ebben a szakaszban az Node.js alkalmazást a VS Code és a Azure App Service bő
     - Linux: válassza az **új Webalkalmazás létrehozása** lehetőséget.
     - Windows: válassza az **új Webalkalmazás létrehozása... lehetőséget. Speciális**
 
-1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az **ENTER**billentyűt. A névnek egyedinek kell lennie az összes Azure-ban, és csak alfanumerikus karaktereket (&quot;A-Z&quot;, &quot;a-z&quot; és &quot;0-9&quot;) és kötőjeleket (&quot;-&quot;) kell használnia.
+1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az **ENTER** billentyűt. A névnek egyedinek kell lennie az összes Azure-ban, és csak alfanumerikus karaktereket (&quot;A-Z&quot;, &quot;a-z&quot; és &quot;0-9&quot;) és kötőjeleket (&quot;-&quot;) kell használnia.
 
 1. A Linux megcélzása esetén válassza ki a Node.js verziót, amikor a rendszer kéri. Az **LTS** -verzió használata javasolt.
 
 1. Ha a Windowst célozza meg, kövesse a további utasításokat:
-    1. Válassza az **Új erőforráscsoport létrehozása**lehetőséget, majd adja meg az erőforráscsoport nevét, például: `AppServiceQS-rg` .
+    1. Válassza az **Új erőforráscsoport létrehozása** lehetőséget, majd adja meg az erőforráscsoport nevét, például: `AppServiceQS-rg` .
     1. Válassza a **Windows** lehetőséget az operációs rendszer számára.
-    1. Válassza az **új App Service terv létrehozása**lehetőséget, majd adja meg a csomag nevét (például `AppServiceQS-plan` ), majd válassza az **ingyenes F1** lehetőséget a díjszabási szinten.
+    1. Válassza az **új App Service terv létrehozása** lehetőséget, majd adja meg a csomag nevét (például `AppServiceQS-plan` ), majd válassza az **ingyenes F1** lehetőséget a díjszabási szinten.
     1. Válassza **a Kihagyás lehetőséget,** amikor a rendszer rákérdez a Application Insightsra.
     1. Válasszon egy Önhöz közeli régiót vagy az elérni kívánt erőforrások közelében.
 
@@ -101,7 +102,7 @@ Ebben a szakaszban az Node.js alkalmazást a VS Code és a Azure App Service bő
 
 1. Ha Windows rendszeren telepíti a rendszert, először be kell állítania a Node.js verziószámát a webalkalmazáshoz:
 
-    1. A VS Code-ban bontsa ki a csomópontot az új App Service-hez, kattintson a jobb gombbal az **Alkalmazásbeállítások**elemre, majd válassza az **új beállítás hozzáadása lehetőséget...**:
+    1. A VS Code-ban bontsa ki a csomópontot az új App Service-hez, kattintson a jobb gombbal az **Alkalmazásbeállítások** elemre, majd válassza az **új beállítás hozzáadása lehetőséget...** :
 
         ![Alkalmazás-beállítási parancs hozzáadása](media/quickstart-nodejs/add-setting.png)
 
@@ -111,7 +112,7 @@ Ebben a szakaszban az Node.js alkalmazást a VS Code és a Azure App Service bő
 
         ![App Service-parancs újraindítása](media/quickstart-nodejs/restart.png)
 
-    1. Kattintson a jobb gombbal az App Service-csomópontra, és válassza a **Tallózás webhely**lehetőséget.
+    1. Kattintson a jobb gombbal az App Service-csomópontra, és válassza a **Tallózás webhely** lehetőséget.
 
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=deploy-app)
@@ -135,7 +136,7 @@ Az alkalmazás módosításait úgy helyezheti üzembe, hogy a VS Code-ban szerk
 
 Az `console.log` alkalmazásból közvetlenül a vs Code kimenet ablakban megtekintheti a napló kimenetét (meghívások).
 
-1. Az **Azure app Service** Explorerben kattintson a jobb gombbal az alkalmazás csomópontjára, és válassza a **streaming naplók indítása**lehetőséget.
+1. Az **Azure app Service** Explorerben kattintson a jobb gombbal az alkalmazás csomópontjára, és válassza a **streaming naplók indítása** lehetőséget.
 
     ![Adatfolyam-naplók indítása](media/quickstart-nodejs/view-logs.png)
 
@@ -150,14 +151,14 @@ Az `console.log` alkalmazásból közvetlenül a vs Code kimenet ablakban megtek
     - Linux: válassza az **új Webalkalmazás létrehozása** lehetőséget.
     - Windows: válassza az **új Webalkalmazás létrehozása... lehetőséget. Speciális**
 
-1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az **ENTER**billentyűt. A névnek egyedinek kell lennie az összes Azure-ban, és csak alfanumerikus karaktereket (&quot;A-Z&quot;, &quot;a-z&quot; és &quot;0-9&quot;) és kötőjeleket (&quot;-&quot;) kell használnia.
+1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az **ENTER** billentyűt. A névnek egyedinek kell lennie az összes Azure-ban, és csak alfanumerikus karaktereket (&quot;A-Z&quot;, &quot;a-z&quot; és &quot;0-9&quot;) és kötőjeleket (&quot;-&quot;) kell használnia.
 
 1. A Linux megcélzása esetén válassza ki a Node.js verziót, amikor a rendszer kéri. Az **LTS** -verzió használata javasolt.
 
 1. Ha a Windowst célozza meg, kövesse a további utasításokat:
-    1. Válassza az **Új erőforráscsoport létrehozása**lehetőséget, majd adja meg az erőforráscsoport nevét, például: `AppServiceQS-rg` .
+    1. Válassza az **Új erőforráscsoport létrehozása** lehetőséget, majd adja meg az erőforráscsoport nevét, például: `AppServiceQS-rg` .
     1. Válassza a **Windows** lehetőséget az operációs rendszer számára.
-    1. Válassza az **új App Service terv létrehozása**lehetőséget, majd adja meg a csomag nevét (például `AppServiceQS-plan` ), majd válassza az **ingyenes F1** lehetőséget a díjszabási szinten.
+    1. Válassza az **új App Service terv létrehozása** lehetőséget, majd adja meg a csomag nevét (például `AppServiceQS-plan` ), majd válassza az **ingyenes F1** lehetőséget a díjszabási szinten.
     1. Válassza **a Kihagyás lehetőséget,** amikor a rendszer rákérdez a Application Insightsra.
     1. Válasszon egy Önhöz közeli régiót vagy az elérni kívánt erőforrások közelében.
 
@@ -182,7 +183,7 @@ Az `console.log` alkalmazásból közvetlenül a vs Code kimenet ablakban megtek
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=tailing-logs)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gratulálunk, sikeresen elvégezte ezt a rövid útmutatót!
 
@@ -220,7 +221,7 @@ Miután telepítette a bővítményt, jelentkezzen be az Azure-fiókjába. A tev
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha a következő hibaüzenet jelenik meg: **"nem található az előfizetés a (z) [előfizetés-azonosítóval]" névvel**, lehetséges, hogy a proxy mögött van, és nem érhető el az Azure API. Konfigurálja a `HTTP_PROXY` és a `HTTPS_PROXY` környezeti változókat a saját proxy-adataival a használatával `export` .
+Ha a következő hibaüzenet jelenik meg: **"nem található az előfizetés a (z) [előfizetés-azonosítóval]" névvel** , lehetséges, hogy a proxy mögött van, és nem érhető el az Azure API. Konfigurálja a `HTTP_PROXY` és a `HTTPS_PROXY` környezeti változókat a saját proxy-adataival a használatával `export` .
 
 ```sh
 export HTTPS_PROXY=https://username:password@proxy:8080
@@ -262,7 +263,7 @@ cd myExpressApp
 npm install
 ```
 
-### <a name="run-the-application"></a>Az alkalmazás futtatása
+### <a name="run-the-application"></a>Alkalmazás futtatása
 
 Ezután győződjön meg arról, hogy az alkalmazás fut. A terminálból indítsa el az alkalmazást a parancs használatával a `npm start` kiszolgáló indításához.
 
@@ -300,14 +301,14 @@ Az **Azure app Service** Explorerben válassza a kék felfelé mutató nyíl iko
     - Linux: válassza az **új Webalkalmazás létrehozása** lehetőséget.
     - Windows: válassza az **új Webalkalmazás létrehozása... lehetőséget. Speciális**
 
-1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az **ENTER**billentyűt. A névnek egyedinek kell lennie az összes Azure-ban, és csak alfanumerikus karaktereket (&quot;A-Z&quot;, &quot;a-z&quot; és &quot;0-9&quot;) és kötőjeleket (&quot;-&quot;) kell használnia.
+1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az **ENTER** billentyűt. A névnek egyedinek kell lennie az összes Azure-ban, és csak alfanumerikus karaktereket (&quot;A-Z&quot;, &quot;a-z&quot; és &quot;0-9&quot;) és kötőjeleket (&quot;-&quot;) kell használnia.
 
 1. A Linux megcélzása esetén válassza ki a Node.js verziót, amikor a rendszer kéri. Az **LTS** -verzió használata javasolt.
 
 1. Ha a Windowst célozza meg, kövesse a további utasításokat:
-    1. Válassza az **Új erőforráscsoport létrehozása**lehetőséget, majd adja meg az erőforráscsoport nevét, például: `AppServiceQS-rg` .
+    1. Válassza az **Új erőforráscsoport létrehozása** lehetőséget, majd adja meg az erőforráscsoport nevét, például: `AppServiceQS-rg` .
     1. Válassza a **Windows** lehetőséget az operációs rendszer számára.
-    1. Válassza az **új App Service terv létrehozása**lehetőséget, majd adja meg a csomag nevét (például `AppServiceQS-plan` ), majd válassza az **ingyenes F1** lehetőséget a díjszabási szinten.
+    1. Válassza az **új App Service terv létrehozása** lehetőséget, majd adja meg a csomag nevét (például `AppServiceQS-plan` ), majd válassza az **ingyenes F1** lehetőséget a díjszabási szinten.
     1. Válassza **a Kihagyás lehetőséget,** amikor a rendszer rákérdez a Application Insightsra.
     1. Válasszon egy Önhöz közeli régiót vagy az elérni kívánt erőforrások közelében.
 
@@ -321,7 +322,7 @@ Az **Azure app Service** Explorerben válassza a kék felfelé mutató nyíl iko
 
 1. Ha Linux rendszerre telepíti a rendszert, válassza a **Tallózás webhely** lehetőséget a kérdésben, hogy a telepítés befejezése után megtekintse a frissen telepített webalkalmazást. A böngészőben meg kell jelennie a következőnek: &quot;„Helló világ!” alkalmazás!" és "-".
 
-1. Válassza ki a **Node.js verzióját**, az LTS használata javasolt.
+1. Válassza ki a **Node.js verzióját** , az LTS használata javasolt.
 
     Az értesítési csatorna az alkalmazáshoz létrehozott Azure-erőforrásokat jeleníti meg.
 
@@ -336,14 +337,14 @@ Az **Azure app Service** Explorerben válassza a kék felfelé mutató nyíl iko
     - Linux: válassza az **új Webalkalmazás létrehozása** lehetőséget.
     - Windows: válassza az **új Webalkalmazás létrehozása... lehetőséget. Speciális**
 
-1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az **ENTER**billentyűt. A névnek egyedinek kell lennie az összes Azure-ban, és csak alfanumerikus karaktereket (&quot;A-Z&quot;, &quot;a-z&quot; és &quot;0-9&quot;) és kötőjeleket (&quot;-&quot;) kell használnia.
+1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az **ENTER** billentyűt. A névnek egyedinek kell lennie az összes Azure-ban, és csak alfanumerikus karaktereket (&quot;A-Z&quot;, &quot;a-z&quot; és &quot;0-9&quot;) és kötőjeleket (&quot;-&quot;) kell használnia.
 
 1. A Linux megcélzása esetén válassza ki a Node.js verziót, amikor a rendszer kéri. Az **LTS** -verzió használata javasolt.
 
 1. Ha a Windowst célozza meg, kövesse a további utasításokat:
-    1. Válassza az **Új erőforráscsoport létrehozása**lehetőséget, majd adja meg az erőforráscsoport nevét, például: `AppServiceQS-rg` .
+    1. Válassza az **Új erőforráscsoport létrehozása** lehetőséget, majd adja meg az erőforráscsoport nevét, például: `AppServiceQS-rg` .
     1. Válassza a **Windows** lehetőséget az operációs rendszer számára.
-    1. Válassza az **új App Service terv létrehozása**lehetőséget, majd adja meg a csomag nevét (például `AppServiceQS-plan` ), majd válassza az **ingyenes F1** lehetőséget a díjszabási szinten.
+    1. Válassza az **új App Service terv létrehozása** lehetőséget, majd adja meg a csomag nevét (például `AppServiceQS-plan` ), majd válassza az **ingyenes F1** lehetőséget a díjszabási szinten.
     1. Válassza **a Kihagyás lehetőséget,** amikor a rendszer rákérdez a Application Insightsra.
     1. Válasszon egy Önhöz közeli régiót vagy az elérni kívánt erőforrások közelében.
 
@@ -368,14 +369,14 @@ Az **Azure app Service** Explorerben válassza a kék felfelé mutató nyíl iko
     - Linux: válassza az **új Webalkalmazás létrehozása** lehetőséget.
     - Windows: válassza az **új Webalkalmazás létrehozása... lehetőséget. Speciális**
 
-1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az **ENTER**billentyűt. A névnek egyedinek kell lennie az összes Azure-ban, és csak alfanumerikus karaktereket (&quot;A-Z&quot;, &quot;a-z&quot; és &quot;0-9&quot;) és kötőjeleket (&quot;-&quot;) kell használnia.
+1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az **ENTER** billentyűt. A névnek egyedinek kell lennie az összes Azure-ban, és csak alfanumerikus karaktereket (&quot;A-Z&quot;, &quot;a-z&quot; és &quot;0-9&quot;) és kötőjeleket (&quot;-&quot;) kell használnia.
 
 1. A Linux megcélzása esetén válassza ki a Node.js verziót, amikor a rendszer kéri. Az **LTS** -verzió használata javasolt.
 
 1. Ha a Windowst célozza meg, kövesse a további utasításokat:
-    1. Válassza az **Új erőforráscsoport létrehozása**lehetőséget, majd adja meg az erőforráscsoport nevét, például: `AppServiceQS-rg` .
+    1. Válassza az **Új erőforráscsoport létrehozása** lehetőséget, majd adja meg az erőforráscsoport nevét, például: `AppServiceQS-rg` .
     1. Válassza a **Windows** lehetőséget az operációs rendszer számára.
-    1. Válassza az **új App Service terv létrehozása**lehetőséget, majd adja meg a csomag nevét (például `AppServiceQS-plan` ), majd válassza az **ingyenes F1** lehetőséget a díjszabási szinten.
+    1. Válassza az **új App Service terv létrehozása** lehetőséget, majd adja meg a csomag nevét (például `AppServiceQS-plan` ), majd válassza az **ingyenes F1** lehetőséget a díjszabási szinten.
     1. Válassza **a Kihagyás lehetőséget,** amikor a rendszer rákérdez a Application Insightsra.
     1. Válasszon egy Önhöz közeli régiót vagy az elérni kívánt erőforrások közelében.
 
@@ -398,7 +399,7 @@ Miután az üzembe helyezés befejeződött, a kérdésben válassza a **Tallóz
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha a következő hibaüzenet jelenik meg: **"nincs engedélye a könyvtár vagy lap megtekintésére."**, akkor az alkalmazás valószínűleg nem indult el megfelelően. Lépjen a következő szakaszra, és tekintse meg a napló kimenetét, és javítsa ki a hibát. Ha nem tudja kijavítani a problémát, lépjen kapcsolatba velünk az alábbi, a **probléma** elhárítása gombra kattintva. Örömmel segítünk!
+Ha a következő hibaüzenet jelenik meg: **"nincs engedélye a könyvtár vagy lap megtekintésére."** , akkor az alkalmazás valószínűleg nem indult el megfelelően. Lépjen a következő szakaszra, és tekintse meg a napló kimenetét, és javítsa ki a hibát. Ha nem tudja kijavítani a problémát, lépjen kapcsolatba velünk az alábbi, a **probléma** elhárítása gombra kattintva. Örömmel segítünk!
 
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=deploy-app)
@@ -411,7 +412,7 @@ Az alkalmazás módosításait ugyanazzal a folyamattal telepítheti, és a megl
 
 Ebből a szakaszból megtudhatja, hogyan tekintheti meg (vagy "farok") a naplókat a futó App Service alkalmazásból. Az `console.log` alkalmazásban megjelenő hívások a Visual Studio Code kimenet ablakában jelennek meg.
 
-Keresse meg az alkalmazást az **Azure app Service** Explorerben, kattintson a jobb gombbal az alkalmazásra, majd válassza a **folyamatos átviteli naplók megtekintése**lehetőséget.
+Keresse meg az alkalmazást az **Azure app Service** Explorerben, kattintson a jobb gombbal az alkalmazásra, majd válassza a **folyamatos átviteli naplók megtekintése** lehetőséget.
 
 Megnyílik a VS Code kimenet ablak a log streamtel létesített kapcsolatban.
 
@@ -426,14 +427,14 @@ Megnyílik a VS Code kimenet ablak a log streamtel létesített kapcsolatban.
     - Linux: válassza az **új Webalkalmazás létrehozása** lehetőséget.
     - Windows: válassza az **új Webalkalmazás létrehozása... lehetőséget. Speciális**
 
-1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az **ENTER**billentyűt. A névnek egyedinek kell lennie az összes Azure-ban, és csak alfanumerikus karaktereket (&quot;A-Z&quot;, &quot;a-z&quot; és &quot;0-9&quot;) és kötőjeleket (&quot;-&quot;) kell használnia.
+1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az **ENTER** billentyűt. A névnek egyedinek kell lennie az összes Azure-ban, és csak alfanumerikus karaktereket (&quot;A-Z&quot;, &quot;a-z&quot; és &quot;0-9&quot;) és kötőjeleket (&quot;-&quot;) kell használnia.
 
 1. A Linux megcélzása esetén válassza ki a Node.js verziót, amikor a rendszer kéri. Az **LTS** -verzió használata javasolt.
 
 1. Ha a Windowst célozza meg, kövesse a további utasításokat:
-    1. Válassza az **Új erőforráscsoport létrehozása**lehetőséget, majd adja meg az erőforráscsoport nevét, például: `AppServiceQS-rg` .
+    1. Válassza az **Új erőforráscsoport létrehozása** lehetőséget, majd adja meg az erőforráscsoport nevét, például: `AppServiceQS-rg` .
     1. Válassza a **Windows** lehetőséget az operációs rendszer számára.
-    1. Válassza az **új App Service terv létrehozása**lehetőséget, majd adja meg a csomag nevét (például `AppServiceQS-plan` ), majd válassza az **ingyenes F1** lehetőséget a díjszabási szinten.
+    1. Válassza az **új App Service terv létrehozása** lehetőséget, majd adja meg a csomag nevét (például `AppServiceQS-plan` ), majd válassza az **ingyenes F1** lehetőséget a díjszabási szinten.
     1. Válassza **a Kihagyás lehetőséget,** amikor a rendszer rákérdez a Application Insightsra.
     1. Válasszon egy Önhöz közeli régiót vagy az elérni kívánt erőforrások közelében.
 
@@ -459,7 +460,7 @@ Néhány másodperc elteltével megjelenik egy üzenet, amely jelzi, hogy csatla
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=tailing-logs)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gratulálunk, sikeresen elvégezte ezt a rövid útmutatót!
 

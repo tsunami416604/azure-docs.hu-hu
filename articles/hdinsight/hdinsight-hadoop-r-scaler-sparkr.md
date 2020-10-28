@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
-ms.openlocfilehash: 5864a5de8ddec60f2072a28827a870c83ece8b9d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c12398ceacf8495a05037422a6501dc8138abc10
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546041"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628694"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>A Scaleer és a Spark kombinálása a HDInsight-ben
 
@@ -506,7 +506,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>Pontozás máshol
 
-A modellt egy másik platformon lévő adatpontozásra is használhatja. Mentse egy RDS-fájlba, majd vigye át és importálja az RDS-et egy cél pontozási környezetbe, például a MIcrosoft SQL Server R Servicesba. Fontos meggyőződni arról, hogy az adatértékek pontszáma megegyezik a modell felépítésének szintjével. Ez a megfeleltetés a modellezési adatokhoz a skálázási `rxCreateColInfo()` függvényen keresztül, majd az oszlop adatainak a bemeneti adatforrásba való alkalmazásával érhető el. A következő részekben a vizsgálati adatkészlet néhány sorát mentjük, majd kinyerjük és felhasználjuk az oszlop információit ebből a mintából az előrejelzési parancsfájlban:
+A modellt egy másik platformon lévő adatpontozásra is használhatja. Mentse egy RDS-fájlba, majd vigye át és importálja az RDS-et egy cél pontozási környezetbe, például Microsoft SQL Server R Servicesbe. Fontos meggyőződni arról, hogy az adatértékek pontszáma megegyezik a modell felépítésének szintjével. Ez a megfeleltetés a modellezési adatokhoz a skálázási `rxCreateColInfo()` függvényen keresztül, majd az oszlop adatainak a bemeneti adatforrásba való alkalmazásával érhető el. A következő példában a vizsgálati adatkészlet néhány sorát mentjük, és kinyerjük és használjuk az oszlop adatait ebből a mintából az előrejelzési parancsfájlban:
 
 ```
 # save the model and a sample of the test dataset 

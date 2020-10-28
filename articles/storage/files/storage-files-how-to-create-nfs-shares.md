@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: d5b394833dbc920612f521b01f4da88af6c3e015
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 293fc1bca47f7c58f89a8dac50cc636be8231d4f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220747"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633501"
 ---
 # <a name="how-to-create-an-nfs-share"></a>NFS-megosztás létrehozása
 
@@ -86,7 +86,7 @@ az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscr
 
 Most, hogy létrehozott egy FileStorage-fiókot, és konfigurálta a hálózatot, létrehozhat egy NFS-fájlmegosztást. A folyamat hasonló az SMB-megosztások létrehozásához, ha a megosztás létrehozásakor az **NFS** -t választja az **SMB** helyett.
 
-1. Navigáljon a Storage-fiókjához, és válassza a **fájlmegosztás**lehetőséget.
+1. Navigáljon a Storage-fiókjához, és válassza a **fájlmegosztás** lehetőséget.
 1. Válassza a **+ fájlmegosztás** lehetőséget egy új fájlmegosztás létrehozásához.
 1. Nevezze el a fájlmegosztást, válasszon ki egy kiosztott kapacitást.
 1. A **protokollnál** válassza az **NFS (előzetes verzió)** lehetőséget.
@@ -152,10 +152,9 @@ Prémium fájlmegosztás Azure CLI-vel való létrehozásához használja az az 
 
 ```azurecli-interactive
 az storage share-rm create \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
+    --storage-account $STORAGEACCT \
     --enabled-protocol NFS \
-    --root-access RootSquash \
+    --root-squash RootSquash \
     --name "myshare" 
 ```
 ---

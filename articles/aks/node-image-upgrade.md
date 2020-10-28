@@ -1,17 +1,15 @@
 ---
 title: Az Azure Kubernetes szolgáltatás (ak) csomópont-rendszerképeinek frissítése
 description: Ismerje meg, hogyan frissítheti a lemezképeket az AK-fürtcsomópontok és-csomópontok csomópontjain.
-author: laurenhughes
-ms.author: lahugh
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 744e62f8a2207cff400a96069fc6ea82866f6e2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6abb0eb98e2548e53ff67a943970613e6981c2b
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89055685"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631121"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Az Azure Kubernetes szolgáltatás (ak) csomópont-rendszerképének frissítése
 

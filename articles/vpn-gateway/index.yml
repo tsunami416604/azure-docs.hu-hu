@@ -10,12 +10,12 @@ metadata:
   author: cherylmc
   ms.author: cherylmc
   ms.date: 08/28/2019
-  ms.openlocfilehash: 5a75e2ef81c2ea584e7819d278f63e5ae53b9ce9
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 93c655eccd49c411064c442799f0c7c5e70e5936
+  ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "70885623"
+  ms.lasthandoff: 10/26/2020
+  ms.locfileid: "92543542"
 landingContent:
 - title: Információk a VPN Gateway-ről
   linkLists:
@@ -35,20 +35,16 @@ landingContent:
       url: vpn-gateway-vpn-faq.md
 - title: Bevezetés
   linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: VPN-átjáró létrehozása
-      url: create-routebased-vpn-gateway-portal.md
-    - text: Helyek közötti kapcsolat létrehozása
-      url: vpn-gateway-howto-site-to-site-resource-manager-portal.md
-    - text: Pont–hely kapcsolat létrehozása
-      url: vpn-gateway-howto-point-to-site-resource-manager-portal.md
   - linkListType: tutorial
     links:
     - text: VPN-átjáró létrehozása és kezelése
       url: vpn-gateway-tutorial-create-gateway-powershell.md
-    - text: Helyek közötti kapcsolat létrehozása és kezelése
-      url: vpn-gateway-tutorial-vpnconnection-powershell.md
+  - linkListType: how-to-guide
+    links:
+    - text: Helyek közötti kapcsolat létrehozása
+      url: vpn-gateway-howto-site-to-site-resource-manager-portal.md
+    - text: Pont–hely kapcsolat létrehozása
+      url: vpn-gateway-howto-point-to-site-resource-manager-portal.md
 - title: VPN-eszközök
   linkLists:
   - linkListType: concept

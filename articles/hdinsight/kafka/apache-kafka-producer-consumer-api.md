@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: ca796b09f10127c68c5a22ff58f95c89cbda2610
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b942fb321d2bceef64930bea0c660f66747508b6
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534396"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629306"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Oktatóanyag: Az Apache Kafka Producer és Consumer API-k használata
 
@@ -217,9 +217,9 @@ A Kafka-ben tárolt rekordok tárolása a partíción belül kapott sorrendben t
 
 ## <a name="common-issues-faced"></a>Gyakori problémák
 
-1. A **témakör létrehozása sikertelen** Ha a fürtön engedélyezve van a vállalati biztonsági csomag, használja az [előre elkészített jar-fájlokat a gyártó és a fogyasztó számára](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Prebuilt-Jars/kafka-producer-consumer-esp.jar). Az ESP-jar az [ `DomainJoined-Producer-Consumer` alkönyvtárból](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)származó kódból is felépíthető. Vegye figyelembe, hogy a gyártó és a fogyasztó tulajdonságai az `CommonClientConfigs.SECURITY_PROTOCOL_CONFIG` ESP-kompatibilis fürtökhöz további tulajdonságot biztosítanak.
+1. A **témakör létrehozása sikertelen** Ha a fürtön engedélyezve van a vállalati biztonsági csomag, használja az [előre elkészített jar-fájlokat a gyártó és a fogyasztó számára](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Prebuilt-Jars/kafka-producer-consumer-esp.jar). Az ESP jar a programkódból is létrehozható az [ `DomainJoined-Producer-Consumer` alkönyvtárban](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer). A gyártó és a fogyasztó tulajdonságai további tulajdonságot `CommonClientConfigs.SECURITY_PROTOCOL_CONFIG` biztosítanak az ESP-kompatibilis fürtökhöz.
 
-2. **Az ESP-kompatibilis fürtökkel kapcsolatos** problémák Ha a termelés és a felhasználás művelet meghiúsul, és egy ESP-kompatibilis fürtöt használ, ellenőrizze, hogy a felhasználó szerepel `kafka` -e az összes Ranger-szabályzatban. Ha nincs jelen, adja hozzá az összes Ranger-szabályzathoz.
+2. **Nem sikerült az ESP-kompatibilis fürtökön** : Ha a termelés és a felhasználás művelet meghiúsul, és ESP-t használó fürtöt használ, ellenőrizze, hogy a felhasználó szerepel `kafka` -e az összes Ranger-házirendben. Ha nincs jelen, adja hozzá az összes Ranger-szabályzathoz.
 
 ## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 

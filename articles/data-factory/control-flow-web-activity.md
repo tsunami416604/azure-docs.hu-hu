@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 95cbb509beba82a14b9f8f8a11c603a6d7b8689d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e74361d6fb3eb1f9708f39f198506d16c7c046c4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87280800"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635099"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Webes tevékenység Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -73,7 +73,7 @@ A webes tevékenység segítségével meghívható egy egyéni REST-végpont egy
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
 name | A webes tevékenység neve | Sztring | Igen
-típus | **Webtevékenységre**kell beállítani. | Sztring | Igen
+típus | **Webtevékenységre** kell beállítani. | Sztring | Igen
 method | A célként megadott végpont REST API-metódusa. | Sztring. <br/><br/>Támogatott típusok: "GET", "POST", "PUT" | Igen
 url | Cél végpontja és elérési útja | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés). A tevékenység 1 perc után időtúllépési hibaüzenetet ad vissza, ha nem kap választ a végponttól. | Igen
 fejlécek | A kérelembe küldendő fejlécek. Például egy kérelem nyelvének és típusának megadásához: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Igen, a Content-Type fejléc megadása kötelező. `"headers":{ "Content-Type":"application/json"}`
@@ -81,7 +81,7 @@ body (Törzs) | A végpontnak elküldhető adattartalmat jelöli.  | Karakterlá
 hitelesítés | A végpont meghívásához használt hitelesítési módszer. A támogatott típusok az "alapszintű vagy ClientCertificate". További információ: [hitelesítés](#authentication) szakasz. Ha nincs szükség hitelesítésre, zárja be ezt a tulajdonságot. | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Nem
 adathalmazok | A végpontnak átadott adatkészletek listája. | Adatkészlet-hivatkozások tömbje. Üres tömb lehet. | Igen
 linkedServices | A végpontnak átadott társított szolgáltatások listája. | Társított szolgáltatási referenciák tömbje. Üres tömb lehet. | Igen
-Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime) modul. Használhatja az Azure Integration Runtime vagy a saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha ez a tulajdonság nincs megadva, a szolgáltatás az alapértelmezett Azure Integration Runtime-t használja. | Az Integration Runtime referenciája. | Nem 
+Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](./concepts-integration-runtime.md) modul. Használhatja az Azure Integration Runtime vagy a saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha ez a tulajdonság nincs megadva, a szolgáltatás az alapértelmezett Azure Integration Runtime-t használja. | Az Integration Runtime referenciája. | Nem 
 
 > [!NOTE]
 > A webes tevékenység által meghívott REST-végpontoknak JSON típusú választ kell visszaadniuk. A tevékenység 1 perc után időtúllépési hibaüzenetet ad vissza, ha nem kap választ a végponttól.
@@ -100,7 +100,7 @@ A következő táblázat a JSON-tartalomra vonatkozó követelményeket mutatja 
 
 Az alábbiakban láthatók a webes tevékenységben támogatott hitelesítési típusok.
 
-### <a name="none"></a>Nincs
+### <a name="none"></a>Nincsenek
 
 Ha nincs szükség hitelesítésre, ne adja meg a "hitelesítés" tulajdonságot.
 
@@ -130,7 +130,7 @@ A PFX-fájl és a jelszó Base64 kódolású tartalmának megadása.
 
 ### <a name="managed-identity"></a>Felügyelt identitás
 
-Itt adhatja meg azt az erőforrás-URI-t, amelynek a hozzáférési jogkivonatát a rendszer az adatok előállítójának felügyelt identitása alapján kéri le. Az Azure Resource Management API meghívásához használja a következőt: `https://management.azure.com/` . További információ a felügyelt identitások működéséről: [felügyelt identitások az Azure-erőforrások áttekintéséhez](/azure/active-directory/managed-identities-azure-resources/overview).
+Itt adhatja meg azt az erőforrás-URI-t, amelynek a hozzáférési jogkivonatát a rendszer az adatok előállítójának felügyelt identitása alapján kéri le. Az Azure Resource Management API meghívásához használja a következőt: `https://management.azure.com/` . További információ a felügyelt identitások működéséről: [felügyelt identitások az Azure-erőforrások áttekintéséhez](../active-directory/managed-identities-azure-resources/overview.md).
 
 ```json
 "authentication": {
@@ -259,7 +259,7 @@ public HttpResponseMessage Execute(JObject payload)
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamatokat:
 
 - [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: d52d172fa4cc435235079cd88999766df93bfdf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55db5cf62e2e4ba2844a47ad405afa88349dc8fd
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86522907"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634912"
 ---
 #  <a name="data-consistency-verification-in-copy-activity-preview"></a>Adatkonzisztencia-ellenőrzés a másolási tevékenységben (előzetes verzió)
 
@@ -79,7 +79,7 @@ linkedServiceName | Az [Azure Blob Storage](connector-azure-blob-storage.md#link
 path | A naplófájlok elérési útja. | Itt adhatja meg a naplófájlok tárolásához használni kívánt elérési utat. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem
 
 >[!NOTE]
->- Ha bináris fájlokat másol a vagy az Azure Blobba vagy Azure Data Lake Storage Gen2ba, az ADF az [Azure Blob API](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) -t és a [Azure Data Lake Storage Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update#request-headers)-t kihasználva blokkolja a szintű MD5 ellenőrzőösszeg-ellenőrzést. Ha az Azure blobon vagy Azure Data Lake Storage Gen2 adatforrásként ContentMD5 vannak, az ADF a fájlok elolvasása után a fájl szintű MD5 ellenőrzőösszeg-ellenőrzést is támogatja. Miután fájlokat másol az Azure Blobba vagy Azure Data Lake Storage Gen2 adatcélhelyként, az ADF az Azure Blobba vagy Azure Data Lake Storage Gen2ba írja az ContentMD5, amelyet az alárendelt alkalmazások tovább használhatnak adatkonzisztencia-ellenőrzés céljából.
+>- Ha bináris fájlokat másol a vagy az Azure Blobba vagy Azure Data Lake Storage Gen2ba, az ADF az [Azure Blob API](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) -t és a [Azure Data Lake Storage Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/update#request-headers)-t kihasználva blokkolja a szintű MD5 ellenőrzőösszeg-ellenőrzést. Ha az Azure blobon vagy Azure Data Lake Storage Gen2 adatforrásként ContentMD5 vannak, az ADF a fájlok elolvasása után a fájl szintű MD5 ellenőrzőösszeg-ellenőrzést is támogatja. Miután fájlokat másol az Azure Blobba vagy Azure Data Lake Storage Gen2 adatcélhelyként, az ADF az Azure Blobba vagy Azure Data Lake Storage Gen2ba írja az ContentMD5, amelyet az alárendelt alkalmazások tovább használhatnak adatkonzisztencia-ellenőrzés céljából.
 >- Az ADF a fájl méretének ellenőrzését végzi a bináris fájlok bármely tárolási tároló közötti másolásakor.
 
 ## <a name="monitoring"></a>Figyelés
@@ -106,15 +106,15 @@ A másolási tevékenység teljes futtatása után megtekintheti az adatkonziszt
 ```
 Az adatkonzisztencia-ellenőrzés részleteit a "dataConsistencyVerification" tulajdonságban tekintheti meg.
 
-**VerificationResult**értéke: 
--   **Ellenőrizve**: a másolt adatai konzisztensek a forrás-és a célhely-tároló között. 
--   **NotVerified**: a másolt adatait nem ellenőrizte, hogy konzisztensek legyenek, mert nem engedélyezte a validateDataConsistency a másolási tevékenységben. 
--   Nem **támogatott**: a másolt adatok nem lettek konzisztensek, mert az adatkonzisztencia-ellenőrzés nem támogatott az adott másolási pár esetében. 
+**VerificationResult** értéke: 
+-   **Ellenőrizve** : a másolt adatai konzisztensek a forrás-és a célhely-tároló között. 
+-   **NotVerified** : a másolt adatait nem ellenőrizte, hogy konzisztensek legyenek, mert nem engedélyezte a validateDataConsistency a másolási tevékenységben. 
+-   Nem **támogatott** : a másolt adatok nem lettek konzisztensek, mert az adatkonzisztencia-ellenőrzés nem támogatott az adott másolási pár esetében. 
 
-**InconsistentData**értéke: 
--   **Found**: Az ADF másolási tevékenysége inkonzisztens adathalmazt talált. 
--   **Kihagyva**: Az ADF-másolási tevékenység megtalálta és kihagyta a inkonzisztens adatértékeket. 
--   **Nincs**: Az ADF másolási tevékenysége nem talált inkonzisztens adathalmazt. Ennek oka az lehet, hogy az adatai konzisztensek a forrás-és a célhelyek között, vagy azért, mert letiltotta a validateDataConsistency a másolási tevékenységben. 
+**InconsistentData** értéke: 
+-   **Found** : Az ADF másolási tevékenysége inkonzisztens adathalmazt talált. 
+-   **Kihagyva** : Az ADF-másolási tevékenység megtalálta és kihagyta a inkonzisztens adatértékeket. 
+-   **Nincs** : Az ADF másolási tevékenysége nem talált inkonzisztens adathalmazt. Ennek oka az lehet, hogy az adatai konzisztensek a forrás-és a célhelyek között, vagy azért, mert letiltotta a validateDataConsistency a másolási tevékenységben. 
 
 ### <a name="session-log-from-copy-activity"></a>Munkamenet-napló a másolási tevékenységből
 
@@ -139,10 +139,8 @@ A fenti naplófájlban láthatja, sample1.csv ki lett hagyva, mert nem sikerült
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd a másolási tevékenység egyéb cikkeit:
 
-- [Másolási tevékenység áttekintése](copy-activity-overview.md)
+- [Másolási tevékenység – áttekintés](copy-activity-overview.md)
 - [Másolási tevékenység hibatűrése](copy-activity-fault-tolerance.md)
-
-

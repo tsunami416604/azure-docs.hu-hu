@@ -48,8 +48,6 @@
           href: costs/manage-automation.md
         - name: Cost Management partnerek számára
           href: costs/get-started-partners.md
-        - name: Választás a Cost Management és a Cloudyn között
-          href: costs/choose-between-azure-cost-management-cloudyn.md
     - name: Lefoglalások
       items:
         - name: Mi az az Azure Reservations?
@@ -440,10 +438,6 @@
           href: cloudyn/overview.md
     - name: Rövid útmutatók
       items:
-        - name: Költségadatok megtekintése
-          href: cloudyn/quick-register-azure-sub.md
-        - name: Költségadatok megtekintése – EA
-          href: cloudyn/quick-register-ea.md
         - name: Költségadatok megtekintése – CSP
           href: cloudyn/quick-register-csp.md
     - name: Oktatóanyagok
@@ -468,8 +462,6 @@
           href: cloudyn/activate-subs-accounts.md
         - name: Kiterjesztett metrikák hozzáadása a virtuális gépekhez
           href: cloudyn/azure-vm-extended-metrics.md
-        - name: Google-fiók csatlakoztatása
-          href: cloudyn/connect-google-account.md
         - name: AWS-fiók csatlakoztatása
           href: cloudyn/connect-aws-account.md
         - name: Tárfiókok konfigurálása

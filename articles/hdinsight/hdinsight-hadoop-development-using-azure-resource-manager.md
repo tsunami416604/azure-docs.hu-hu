@@ -3,17 +3,17 @@ title: Migrálás a HDInsight Azure Resource Manager eszközeire
 description: Migrálás a HDInsight-fürtök Azure Resource Manager fejlesztői eszközeire
 ms.reviewer: jasonh
 author: hrasheed-msft
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.topic: how-to
 ms.date: 02/21/2018
-ms.author: hrasheed
-ms.openlocfilehash: deaf98077e0652dac8bb327839ffa2bf34007c9f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 57dec799cbda03e20717a402a88f1d818d9acd92
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546211"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629476"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrálás Azure Resource Manager-alapú fejlesztői eszközökre HDInsight-fürtökhöz
 
@@ -83,7 +83,7 @@ Az Apache Hadoop MapReduce, Apache Hive és Apache Pig interaktív módon tört�
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>Azure PowerShell migrálása a Azure Resource Managerba
 A Azure Resource Manager módban Azure PowerShell általános információi a [Azure PowerShell Azure Resource Manager használatával](../azure-resource-manager/management/manage-resources-powershell.md)találhatók.
 
-A Azure PowerShell Resource Manager-parancsmagok az ASM-parancsmagokkal egymás mellett telepíthetők. A két mód parancsmagja megkülönböztethető a nevük alapján.  Az erőforrás-kezelő mód az ASM-módban a *AzureHDInsight* összehasonlított parancsmagok neveiben *AzHDInsight* .  Például: *New-AzHDInsightCluster* vs. *New-AzureHDInsightCluster* . A paraméterek és kapcsolók tartalmazhatnak híreket, és a Resource Manager használatakor számos új paraméter érhető el.  Például számos parancsmaghoz szükség van egy *ResourceGroupName* nevű új kapcsolóra. 
+A Azure PowerShell Resource Manager-parancsmagok az ASM-parancsmagokkal egymás mellett telepíthetők. A két mód parancsmagja megkülönböztethető a nevük alapján.  A Resource Manager módban a *AzHDInsight* a régebbi Azure Service Management módban a *AzureHDInsight* összehasonlításával összehasonlított parancsmagok nevei szerepelnek.  Például: *New-AzHDInsightCluster* vs. *New-AzureHDInsightCluster* . A paraméterek és kapcsolók tartalmazhatnak híreket, és a Resource Manager használatakor számos új paraméter érhető el.  Például számos parancsmaghoz szükség van egy *ResourceGroupName* nevű új kapcsolóra.
 
 A HDInsight-parancsmagok használata előtt csatlakoznia kell az Azure-fiókjához, és létre kell hoznia egy új erőforráscsoportot:
 
