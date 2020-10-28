@@ -6,13 +6,13 @@ author: msangapu-msft
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.custom: cli-validate
-ms.openlocfilehash: 9c984daa380f1d4f0a7b067604ab66ba14a0b70b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: cli-validate, devx-track-azurecli
+ms.openlocfilehash: 7945c6c6f834de068665e3400440d2be5dd713ff
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88084507"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743451"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Oktatóanyag: Többtárolós (előzetes verzió) alkalmazás létrehozása a Web App for Containersben
 
@@ -138,7 +138,7 @@ Keresse meg az üzembe helyezett alkalmazást a következő helyen: `http://<app
 
 ![Minta többtárolós alkalmazás a Web Apps for Containersben][1]
 
-**Gratulálunk**, egy többtárolós alkalmazást hozott létre web app for Containersban. A következő lépésben konfigurálja az alkalmazást az Azure Database for MySQL használatára. Egyelőre még ne telepítse a WordPresst.
+**Gratulálunk** , egy többtárolós alkalmazást hozott létre web app for Containersban. A következő lépésben konfigurálja az alkalmazást az Azure Database for MySQL használatára. Egyelőre még ne telepítse a WordPresst.
 
 ## <a name="connect-to-production-database"></a>Kapcsolódás éles adatbázishoz
 
@@ -148,7 +148,7 @@ Keresse meg az üzembe helyezett alkalmazást a következő helyen: `http://<app
 
 Hozzon létre egy Azure Database for MySQL-kiszolgálót a [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) paranccsal.
 
-A következő parancsban cserélje ki a MySQL-kiszolgáló nevét, ahol a _ &lt; MySQL-Server-Name>_ helyőrző jelenik meg (érvényes karakterek:, `a-z` `0-9` és `-` ). Ez a név része a MySQL-kiszolgáló állomásnevének (`<mysql-server-name>.database.windows.net`), és globálisan egyedinek kell lennie.
+A következő parancsban cserélje ki a MySQL-kiszolgáló nevét, ahol a _&lt; MySQL-Server-Name>_ helyőrző jelenik meg (érvényes karakterek:, `a-z` `0-9` és `-` ). Ez a név része a MySQL-kiszolgáló állomásnevének (`<mysql-server-name>.database.windows.net`), és globálisan egyedinek kell lennie.
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name>  --location "South Central US" --admin-user adminuser --admin-password My5up3rStr0ngPaSw0rd! --sku-name B_Gen4_1 --version 5.7
@@ -464,7 +464,7 @@ Végezze el a lépéseket, és telepítse a WordPresst.
 
 ### <a name="connect-wordpress-to-redis"></a>A WordPress csatlakoztatása a Redishez
 
-Jelentkezzen be a WordPress-rendszergazdába. A bal oldali navigációs sávon válassza a **plugins**lehetőséget, majd válassza a **telepített beépülő modulok**lehetőséget.
+Jelentkezzen be a WordPress-rendszergazdába. A bal oldali navigációs sávon válassza a **plugins** lehetőséget, majd válassza a **telepített beépülő modulok** lehetőséget.
 
 ![WordPress beépülő modulok kiválasztása][2]
 
@@ -486,7 +486,7 @@ A WordPress csatlakozik a Redis-kiszolgálóhoz. A kapcsolat **állapota** ugyan
 
 ![A WordPress csatlakozik a Redis-kiszolgálóhoz. A kapcsolat **állapota** ugyanezen az oldalon jelenik meg.][6]
 
-**Gratulálunk**, csatlakoztatta a WordPresst a Redishez. Az éles környezetbe helyezésre kész alkalmazás mostantól az **Azure Database for MySQL-t, az állandó tárolót és a Redist** használja. Így horizontálisan felskálázhatja több példányra az App Service-csomagot.
+**Gratulálunk** , csatlakoztatta a WordPresst a Redishez. Az éles környezetbe helyezésre kész alkalmazás mostantól az **Azure Database for MySQL-t, az állandó tárolót és a Redist** használja. Így horizontálisan felskálázhatja több példányra az App Service-csomagot.
 
 ## <a name="find-docker-container-logs"></a>Docker-tárolónaplók keresése
 

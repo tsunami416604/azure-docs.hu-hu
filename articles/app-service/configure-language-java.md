@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
-ms.custom: seodec18, devx-track-java
+ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 65b31bd39c85ea9073bb9415b9829df12b7d9e35
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 2e77d76ddae540a311655eca36c53b23c418f5e3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171569"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744152"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Java-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -330,29 +330,29 @@ Ez a szakasz bemutatja, hogyan csatlakoztathatók a Linux rendszeren üzembe Azu
 ::: zone pivot="platform-windows"
 
 1. NewRelic-fiók létrehozása a [NewRelic.com](https://newrelic.com/signup) -ben
-2. Töltse le a Java-ügynököt a NewRelic webhelyről, és a fájl neve hasonló lesz a *newrelic-java-x.x.x.ziphoz *.
+2. Töltse le a Java-ügynököt a NewRelic webhelyről, és a fájl neve hasonló lesz a *newrelic-java-x.x.x.ziphoz* .
 3. A licenckulcs másolásához az ügynököt később kell konfigurálnia.
-4. [SSH-t a app Service-példányba](configure-linux-open-ssh-session.md) , és hozzon létre egy új címtár- */Home/site/wwwroot/APM*.
-5. Töltse fel a kicsomagolt NewRelic Java-ügynök fájljait egy könyvtárba a */Home/site/wwwroot/APM*alatt. Az ügynök fájljainak a */Home/site/wwwroot/APM/newrelic*-ben kell lenniük.
+4. [SSH-t a app Service-példányba](configure-linux-open-ssh-session.md) , és hozzon létre egy új címtár- */Home/site/wwwroot/APM* .
+5. Töltse fel a kicsomagolt NewRelic Java-ügynök fájljait egy könyvtárba a */Home/site/wwwroot/APM* alatt. Az ügynök fájljainak a */Home/site/wwwroot/APM/newrelic* -ben kell lenniük.
 6. Módosítsa a YAML fájlt a */Home/site/wwwroot/APM/newrelic/newrelic.YML* címen, és cserélje le a helyőrző licenc értékét a saját licenckulcs használatára.
 7. A Azure Portal tallózással keresse meg az alkalmazást App Service és hozzon létre egy új alkalmazás-beállítást.
 
     - **Java SE** -alkalmazások esetén hozzon létre egy nevű környezeti változót `JAVA_OPTS` az értékkel `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
-    - A **tomcat**esetében hozzon létre egy nevű környezeti változót `CATALINA_OPTS` az értékkel `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
+    - A **tomcat** esetében hozzon létre egy nevű környezeti változót `CATALINA_OPTS` az értékkel `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
 
 ::: zone-end
 ::: zone pivot="platform-linux"
 
 1. NewRelic-fiók létrehozása a [NewRelic.com](https://newrelic.com/signup) -ben
-2. Töltse le a Java-ügynököt a NewRelic webhelyről, és a fájl neve hasonló lesz a *newrelic-java-x.x.x.ziphoz *.
+2. Töltse le a Java-ügynököt a NewRelic webhelyről, és a fájl neve hasonló lesz a *newrelic-java-x.x.x.ziphoz* .
 3. A licenckulcs másolásához az ügynököt később kell konfigurálnia.
-4. [SSH-t a app Service-példányba](configure-linux-open-ssh-session.md) , és hozzon létre egy új címtár- */Home/site/wwwroot/APM*.
-5. Töltse fel a kicsomagolt NewRelic Java-ügynök fájljait egy könyvtárba a */Home/site/wwwroot/APM*alatt. Az ügynök fájljainak a */Home/site/wwwroot/APM/newrelic*-ben kell lenniük.
+4. [SSH-t a app Service-példányba](configure-linux-open-ssh-session.md) , és hozzon létre egy új címtár- */Home/site/wwwroot/APM* .
+5. Töltse fel a kicsomagolt NewRelic Java-ügynök fájljait egy könyvtárba a */Home/site/wwwroot/APM* alatt. Az ügynök fájljainak a */Home/site/wwwroot/APM/newrelic* -ben kell lenniük.
 6. Módosítsa a YAML fájlt a */Home/site/wwwroot/APM/newrelic/newrelic.YML* címen, és cserélje le a helyőrző licenc értékét a saját licenckulcs használatára.
 7. A Azure Portal tallózással keresse meg az alkalmazást App Service és hozzon létre egy új alkalmazás-beállítást.
    
     - **Java SE** -alkalmazások esetén hozzon létre egy nevű környezeti változót `JAVA_OPTS` az értékkel `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
-    - A **tomcat**esetében hozzon létre egy nevű környezeti változót `CATALINA_OPTS` az értékkel `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
+    - A **tomcat** esetében hozzon létre egy nevű környezeti változót `CATALINA_OPTS` az értékkel `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
 
 ::: zone-end
 
@@ -364,8 +364,8 @@ Ez a szakasz bemutatja, hogyan csatlakoztathatók a Linux rendszeren üzembe Azu
 
 1. AppDynamics-fiók létrehozása a [AppDynamics.com](https://www.appdynamics.com/community/register/) -ben
 2. Töltse le a Java-ügynököt a AppDynamics webhelyről, a fájl neve hasonló lesz *AppServerAgent-x.x.x.xxxxx.zip*
-3. Hozzon létre egy új címtár- */Home/site/wwwroot/APM*a [kudu-konzol](https://github.com/projectkudu/kudu/wiki/Kudu-console) használatával.
-4. Töltse fel a Java-ügynök fájljait egy könyvtárba a */Home/site/wwwroot/APM*alatt. Az ügynök fájljainak a */Home/site/wwwroot/APM/appdynamics*-ben kell lenniük.
+3. Hozzon létre egy új címtár- */Home/site/wwwroot/APM* a [kudu-konzol](https://github.com/projectkudu/kudu/wiki/Kudu-console) használatával.
+4. Töltse fel a Java-ügynök fájljait egy könyvtárba a */Home/site/wwwroot/APM* alatt. Az ügynök fájljainak a */Home/site/wwwroot/APM/appdynamics* -ben kell lenniük.
 5. A Azure Portal tallózással keresse meg az alkalmazást App Service és hozzon létre egy új alkalmazás-beállítást.
 
    - **Java SE** -alkalmazások esetén hozzon létre egy nevű környezeti változót, amelynek `JAVA_OPTS` értéke a `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` `<app-name>` app Service neve.
@@ -376,8 +376,8 @@ Ez a szakasz bemutatja, hogyan csatlakoztathatók a Linux rendszeren üzembe Azu
 
 1. AppDynamics-fiók létrehozása a [AppDynamics.com](https://www.appdynamics.com/community/register/) -ben
 2. Töltse le a Java-ügynököt a AppDynamics webhelyről, a fájl neve hasonló lesz *AppServerAgent-x.x.x.xxxxx.zip*
-3. [SSH-t a app Service-példányba](configure-linux-open-ssh-session.md) , és hozzon létre egy új címtár- */Home/site/wwwroot/APM*.
-4. Töltse fel a Java-ügynök fájljait egy könyvtárba a */Home/site/wwwroot/APM*alatt. Az ügynök fájljainak a */Home/site/wwwroot/APM/appdynamics*-ben kell lenniük.
+3. [SSH-t a app Service-példányba](configure-linux-open-ssh-session.md) , és hozzon létre egy új címtár- */Home/site/wwwroot/APM* .
+4. Töltse fel a Java-ügynök fájljait egy könyvtárba a */Home/site/wwwroot/APM* alatt. Az ügynök fájljainak a */Home/site/wwwroot/APM/appdynamics* -ben kell lenniük.
 5. A Azure Portal tallózással keresse meg az alkalmazást App Service és hozzon létre egy új alkalmazás-beállítást.
 
    - **Java SE** -alkalmazások esetén hozzon létre egy nevű környezeti változót, amelynek `JAVA_OPTS` értéke a `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` `<app-name>` app Service neve.
@@ -437,7 +437,7 @@ Ezután állapítsa meg, hogy az adatforrásnak elérhetőnek kell lennie egy al
 
 1. Hozzon létre egy *context.xml* fájlt a projekt *META-INF-* fájljában/könyvtárában. Ha nem létezik, hozza létre a *META-INF/* könyvtárat.
 
-2. A *context.xmlban *adjon hozzá egy `Context` elemet, amely összekapcsolja az adatforrást egy JNDI-címnek. Cserélje le a `driverClassName` helyőrzőt az illesztőprogram osztályának nevére a fenti táblázatból.
+2. A *context.xmlban* adjon hozzá egy `Context` elemet, amely összekapcsolja az adatforrást egy JNDI-címnek. Cserélje le a `driverClassName` helyőrzőt az illesztőprogram osztályának nevére a fenti táblázatból.
 
     ```xml
     <Context>
@@ -515,7 +515,7 @@ Ezután állapítsa meg, hogy az adatforrásnak elérhetőnek kell lennie egy al
 
 1. Hozzon létre egy *context.xml* fájlt a projekt *META-INF-* fájljában/könyvtárában. Ha nem létezik, hozza létre a *META-INF/* könyvtárat.
 
-2. A *context.xmlban *adjon hozzá egy `Context` elemet, amely összekapcsolja az adatforrást egy JNDI-címnek. Cserélje le a `driverClassName` helyőrzőt az illesztőprogram osztályának nevére a fenti táblázatból.
+2. A *context.xmlban* adjon hozzá egy `Context` elemet, amely összekapcsolja az adatforrást egy JNDI-címnek. Cserélje le a `driverClassName` helyőrzőt az illesztőprogram osztályának nevére a fenti táblázatból.
 
     ```xml
     <Context>
@@ -541,16 +541,16 @@ Ezután állapítsa meg, hogy az adatforrásnak elérhetőnek kell lennie egy al
 
 #### <a name="shared-server-level-resources"></a>Megosztott kiszolgálói szintű erőforrások
 
-Megosztott, kiszolgálóoldali adatforrások hozzáadásához a Tomcat server.xml szerkesztésére lesz szükség. Először töltse fel az [indítási parancsfájlt](faq-app-service-linux.md#built-in-images) , és állítsa be a parancsfájl elérési útját a **konfigurációs**  >  **indítási parancsban**. Az indítási parancsfájlt az [FTP](deploy-ftp.md)használatával töltheti fel.
+Megosztott, kiszolgálóoldali adatforrások hozzáadásához a Tomcat server.xml szerkesztésére lesz szükség. Először töltse fel az [indítási parancsfájlt](faq-app-service-linux.md#built-in-images) , és állítsa be a parancsfájl elérési útját a **konfigurációs**  >  **indítási parancsban** . Az indítási parancsfájlt az [FTP](deploy-ftp.md)használatával töltheti fel.
 
 Az indítási parancsfájl [XSL-átalakítót](https://www.w3schools.com/xml/xsl_intro.asp) készít a server.xml fájlra, majd az eredményül kapott XML-fájlt kiírja a következőre: `/usr/local/tomcat/conf/server.xml` . Az indítási parancsfájlnak az apk használatával kell telepítenie a libxslt-t. Az XSL-fájl és az indítási parancsfájl FTP-n keresztül tölthető fel. Az alábbi példa egy indítási parancsfájlt mutat be.
 
 ```sh
-# Install libxslt. Also copy the transform file to /home/tomcat/conf/
+# Install libxslt. Also copy the transform file to /home/tomcat/conf/
 apk add --update libxslt
 
-# Usage: xsltproc --output output.xml style.xsl input.xml
-xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
+# Usage: xsltproc --output output.xml style.xsl input.xml
+xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
 ```
 
 Alább található egy példa XSL-fájl. A példában szereplő XSL-fájl új összekötő csomópontot hoz létre a Tomcat server.xmlhoz.
@@ -678,7 +678,7 @@ Az [adatforrások JBoss EAP-vel való regisztrálása](https://access.redhat.com
     ```
 
 1. Egy tetszőleges FTP-ügyfelet használva feltöltheti a JDBC-illesztőprogramot, a- `jboss-cli-commands.cli` `startup_script.sh` t és a modul definícióját `/site/deployments/tools/` .
-2. Konfigurálja úgy a helyet, hogy `startup_script.sh` a tároló indításakor fusson. Az Azure Portalon navigáljon a **konfiguráció**  >  **általános beállítások**  >  **indítási parancshoz**. Az indítási parancs mező értékét állítsa a következőre: `/home/site/deployments/tools/startup_script.sh` . **Mentse** a módosításokat.
+2. Konfigurálja úgy a helyet, hogy `startup_script.sh` a tároló indításakor fusson. Az Azure Portalon navigáljon a **konfiguráció**  >  **általános beállítások**  >  **indítási parancshoz** . Az indítási parancs mező értékét állítsa a következőre: `/home/site/deployments/tools/startup_script.sh` . **Mentse** a módosításokat.
 
 Annak ellenőrzéséhez, hogy az adatforrást hozzáadta-e a JBoss-kiszolgálóhoz, SSH-t a webappba, és futtassa `$JBOSS_HOME/bin/jboss-cli.sh --connect` . Miután csatlakozott a JBoss-hoz, futtassa a `/subsystem=datasources:read-resource` parancsot az adatforrások listájának kinyomtatásához.
 

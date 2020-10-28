@@ -5,13 +5,13 @@ author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
-ms.custom: mvc, devcenter
-ms.openlocfilehash: cc4912545bedb650268b3d8e4a3e9820b70b5fe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: 3727e9a83827261bf9e8a526ffedb6d3fc644afa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842529"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745975"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Oktatóanyag: Alkalmazás üzembe helyezése a Service Fabric Meshben sablon használatával
 
@@ -196,7 +196,7 @@ A Service Fabric Mesh-alkalmazás egy olyan Azure-erőforrás, amelyet az Azure 
 Ez az oktatóanyag egy teendőlistát használ példaként.  Új sablon és paraméterfájlok létrehozása helyett töltse le a [mesh_rp.windows.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) üzembe helyezési sablont és a [mesh_rp.windows.parameter.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) paramétereket.
 
 ### <a name="parameters"></a>Paraméterek
-Ha a sablon olyan értékeket tartalmaz, amelyek az alkalmazás üzembe helyezését követően vagy üzemelő példányonként várhatóan változni fognak (amennyiben más üzemelő példányokhoz is használni kívánja a sablont), az ajánlott eljárás az értékek paraméterezése. Ehhez hozzon létre egy „paraméterek” szakaszt az üzembe helyezési sablon tetején, majd adja meg a paraméterek neveit és tulajdonságait, amelyekre később az üzembe helyezési sablonban hivatkozhat. A paraméterdefiníciók *type*, *defaultValue* és egy nem kötelező *metadata* szakaszt tartalmaznak *leírással* együtt.
+Ha a sablon olyan értékeket tartalmaz, amelyek az alkalmazás üzembe helyezését követően vagy üzemelő példányonként várhatóan változni fognak (amennyiben más üzemelő példányokhoz is használni kívánja a sablont), az ajánlott eljárás az értékek paraméterezése. Ehhez hozzon létre egy „paraméterek” szakaszt az üzembe helyezési sablon tetején, majd adja meg a paraméterek neveit és tulajdonságait, amelyekre később az üzembe helyezési sablonban hivatkozhat. A paraméterdefiníciók *type* , *defaultValue* és egy nem kötelező *metadata* szakaszt tartalmaznak *leírással* együtt.
 
 A Paraméterek szakasz az üzembe helyezési sablon tetején, az *erőforrások* szakasz előtt van definiálva:
 
@@ -396,7 +396,7 @@ Vizsgálja meg az üzembe helyezett alkalmazás naplóit az `az mesh code-packag
 az mesh code-package-log get --resource-group myResourceGroup --application-name todolistapp --service-name WebFrontEnd --replica-name 0 --code-package-name WebFrontEnd
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 

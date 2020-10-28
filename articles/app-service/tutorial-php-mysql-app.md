@@ -5,14 +5,14 @@ ms.assetid: 14feb4f3-5095-496e-9a40-690e1414bd73
 ms.devlang: php
 ms.topic: tutorial
 ms.date: 06/15/2020
-ms.custom: mvc, cli-validate, seodec18
+ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 0faf269852418ee8694e5fa51ce8010e57a2c054
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1053eb9772650dce040570bda04addf93df49178
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150213"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743556"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure-app-service"></a>Oktatóanyag: PHP-és MySQL-alkalmazás létrehozása Azure App Service
 
@@ -30,7 +30,7 @@ A [Azure app Service](overview.md) a Linux operációs rendszer használatával 
 
 :::image type="content" source="./media/tutorial-php-mysql-app/complete-checkbox-published.png" alt-text="Képernyőkép egy Feladatlista nevű PHP-alkalmazásról.":::
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * MySQL-adatbázis létrehozása az Azure-ban
@@ -107,7 +107,7 @@ composer install
 
 ### <a name="configure-mysql-connection"></a>MySQL-kapcsolat konfigurálása
 
-Hozzon létre egy *.env* nevű fájlt az adattár gyökérkönyvtárjában. Másolja az alábbi változókat a *.env* fájlba. Cserélje le a _ &lt; root_password>_ helyőrzőt a MySQL root felhasználó jelszavára.
+Hozzon létre egy *.env* nevű fájlt az adattár gyökérkönyvtárjában. Másolja az alábbi változókat a *.env* fájlba. Cserélje le a _&lt; root_password>_ helyőrzőt a MySQL root felhasználó jelszavára.
 
 ```txt
 APP_ENV=local
@@ -155,7 +155,7 @@ A PHP leállításához írja be a `Ctrl + C` billentyűparancsot a terminálon.
 
 Ebben a lépésben egy MySQL-adatbázist hoz létre az [Azure Database for MySQL-ben](../mysql/index.yml). Később konfigurálni fogja a PHP-alkalmazást az adatbázishoz való csatlakozásra.
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)] 
 
@@ -205,7 +205,7 @@ az mysql server firewall-rule create --name AllowLocalClient --server <mysql-ser
 
 ### <a name="connect-to-production-mysql-server-locally"></a>Helyi csatlakozás éles MySQL-kiszolgálóhoz
 
-A helyi terminálablakban csatlakozzon az Azure-ban található MySQL-kiszolgálóhoz. Használja a korábban megadott értéket a következőhöz: _ &lt; Admin-User>_ és _ &lt; mysql-Server-Name>_. Amikor a rendszer jelszót kér, használja azt a jelszót, amelyet az adatbázis létrehozásakor adott meg az Azure-ban.
+A helyi terminálablakban csatlakozzon az Azure-ban található MySQL-kiszolgálóhoz. Használja a korábban megadott értéket a következőhöz: _&lt; Admin-User>_ és _&lt; mysql-Server-Name>_ . Amikor a rendszer jelszót kér, használja azt a jelszót, amelyet az adatbázis létrehozásakor adott meg az Azure-ban.
 
 ```bash
 mysql -u <admin-user>@<mysql-server-name> -h <mysql-server-name>.mysql.database.azure.com -P 3306 -p
@@ -242,7 +242,7 @@ Ebben a lépésben csatlakoztatja a PHP-alkalmazást a MySQL-adatbázishoz, amel
 
 ### <a name="configure-the-database-connection"></a>Az adatbázis-kapcsolat konfigurálása
 
-Az adattár gyökérkönyvtárában, hozzon létre a _. env.production_ fájlt, és másolja bele a következő változókat. Cserélje le a placeholder_ &lt; MySQL-Server-name>_t mindkét *DB_HOST* és *DB_USERNAME*.
+Az adattár gyökérkönyvtárában, hozzon létre a _. env.production_ fájlt, és másolja bele a következő változókat. Cserélje le a placeholder_ &lt; MySQL-Server-name>_t mindkét *DB_HOST* és *DB_USERNAME* .
 
 ```
 APP_ENV=production
@@ -379,7 +379,7 @@ Ebben a lépésben üzembe helyezi a MySQL-hez csatlakoztatott PHP-alkalmazást 
 
 Az App Service-ben a környezeti változókat _alkalmazásbeállításként_ adhatja meg az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) paranccsal.
 
-Az alábbi parancs a `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` és `DB_PASSWORD` alkalmazásbeállítást konfigurálja. Cserélje le a helyőrzők _ &lt; alkalmazás neve>_ és a _ &lt; mysql-Server-Name>_.
+Az alábbi parancs a `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` és `DB_PASSWORD` alkalmazásbeállítást konfigurálja. Cserélje le a helyőrzők _&lt; alkalmazás neve>_ és a _&lt; mysql-Server-Name>_ .
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<mysql-server-name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql-server-name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
@@ -408,7 +408,7 @@ A helyi terminálablakban használja a `php artisan` parancsot egy új alkalmaz�
 php artisan key:generate --show
 ```
 
-A Cloud Shell a parancs használatával állítsa be az alkalmazás kulcsát a App Service alkalmazásban [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) . Cserélje le a helyőrzők _ &lt; alkalmazás neve>_ és a _ &lt; outputofphpartisankey:>készítése _elemre.
+A Cloud Shell a parancs használatával állítsa be az alkalmazás kulcsát a App Service alkalmazásban [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) . Cserélje le a helyőrzők _&lt; alkalmazás neve>_ és a _&lt; outputofphpartisankey:>készítése_ elemre.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
@@ -422,13 +422,13 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 Állítsa be a virtuális alkalmazás elérési útját az alkalmazáshoz. Erre a lépésre azért van szükség, mert a [Laravel-alkalmazás életciklusa](https://laravel.com/docs/5.4/lifecycle) az alkalmazás gyökérkönyvtára helyett a _nyilvános_ könyvtárban kezdődik. A többi PHP-keretrendszer, amelynek az életciklusa a gyökérkönyvtárban kezdődik, a virtuális alkalmazáselérési út manuális konfigurálása nélkül is működik.
 
-A Cloud Shellban állítsa be a virtuális alkalmazás elérési útját a [`az resource update`](/cli/azure/resource#az-resource-update) parancs használatával. Cserélje le az _ &lt; alkalmazás neve>_ helyőrzőt.
+A Cloud Shellban állítsa be a virtuális alkalmazás elérési útját a [`az resource update`](/cli/azure/resource#az-resource-update) parancs használatával. Cserélje le az _&lt; alkalmazás neve>_ helyőrzőt.
 
 ```azurecli-interactive
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01
 ```
 
-Alapértelmezés szerint a Azure App Service a virtuális alkalmazás elérési útját ( _/_ ) a telepített alkalmazásfájlok (_sites\wwwroot_) gyökérkönyvtárára mutat.
+Alapértelmezés szerint a Azure App Service a virtuális alkalmazás elérési útját ( _/_ ) a telepített alkalmazásfájlok ( _sites\wwwroot_ ) gyökérkönyvtárára mutat.
 
 ::: zone-end
 
@@ -550,7 +550,7 @@ A módosítás helyi adatbázisban való végrehajtásához futtasson Laravel-ad
 php artisan migrate
 ```
 
-A [Laravel elnevezési szabály](https://laravel.com/docs/5.4/eloquent#defining-models) alapján a `Task` modell (lásd: _app/Task.php_) leképezése alapértelmezés szerint a `tasks` táblára történik.
+A [Laravel elnevezési szabály](https://laravel.com/docs/5.4/eloquent#defining-models) alapján a `Task` modell (lásd: _app/Task.php_ ) leképezése alapértelmezés szerint a `tasks` táblára történik.
 
 ### <a name="update-application-logic"></a>Az alkalmazáslogika frissítése
 
@@ -679,7 +679,7 @@ A naplóstreamelés leállításához írja be a `Ctrl`+`C` billentyűparancsot.
 
 A létrehozott alkalmazás kezeléséhez lépjen a [Azure Portal](https://portal.azure.com) .
 
-A bal oldali menüben kattintson a **app Services**elemre, majd kattintson az Azure-alkalmazás nevére.
+A bal oldali menüben kattintson a **app Services** elemre, majd kattintson az Azure-alkalmazás nevére.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/tutorial-php-mysql-app/access-portal.png)
 

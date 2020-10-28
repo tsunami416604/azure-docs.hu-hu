@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 54985cbd874f6a8a3dd0db08df3ceb4b53c72cac
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 2f4bd040d7e5858fd561444f56dbce7b3f940d9a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093276"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742389"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Külső szolgáltatások használata az Azure API Management szolgáltatásból
 Az Azure API Management szolgáltatásban elérhető házirendek számos hasznos munkát végezhetnek, tisztán a bejövő kérelem, a kimenő válasz és az alapszintű konfigurációs információk alapján. A külső szolgáltatásokkal való interakcióhoz azonban API Management házirendek számos lehetőséget nyitnak meg.
@@ -63,7 +63,7 @@ A Slack a bejövő webhookok fogalma. A bejövő webhookok konfigurálásakor a 
 ![Slack web Hook](./media/api-management-sample-send-request/api-management-slack-webhook.png)
 
 ### <a name="is-fire-and-forget-good-enough"></a>Tűz van, és elég jól elfelejteni?
-Bizonyos kompromisszumok használatakor a rendszer tűz-és felejtsds stílusú kéréseket használ. Ha valamilyen okból kifolyólag a kérés meghiúsul, a rendszer nem küldi el a hibát. Ebben a konkrét helyzetben a másodlagos hibajelentési rendszer és a válaszra való várakozás további teljesítményének összetettsége nem indokolt. Olyan esetekben, amikor elengedhetetlen a válasz ellenőrzését, a [Send-Request](./api-management-advanced-policies.md#SendRequest) házirend jobb megoldás.
+Bizonyos kompromisszumok használatakor a rendszer tűz-és felejtsds stílusú kéréseket használ. Ha valamilyen okból kifolyólag a kérés meghiúsul, a rendszer nem fogja jelenteni a hibát. Ebben a konkrét helyzetben a másodlagos hibajelentési rendszer és a válaszra való várakozás további teljesítményének összetettsége nem indokolt. Olyan esetekben, amikor elengedhetetlen a válasz ellenőrzését, a [Send-Request](./api-management-advanced-policies.md#SendRequest) házirend jobb megoldás.
 
 ## <a name="send-request"></a>Send-Request
 A `send-request` házirend lehetővé teszi, hogy egy külső szolgáltatás összetett feldolgozási funkciókat végezzen, és az API Management szolgáltatásba visszaküldse azokat, amelyeket a házirendek további feldolgozásához is használhatnak.

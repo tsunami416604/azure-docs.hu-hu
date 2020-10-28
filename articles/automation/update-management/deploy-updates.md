@@ -3,14 +3,14 @@ title: Frissítési központi telepítések létrehozása Azure Automation Updat
 description: Ez a cikk a frissítések központi telepítésének ütemezett és állapotának áttekintését ismerteti.
 services: automation
 ms.subservice: update-management
-ms.date: 10/26/2020
+ms.date: 10/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: d6594e1cdd7925a4287cf9edbfd5324b427338f4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 41ccecfb844f11a0d234271bcddc1851d3c02fda
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637598"
+ms.locfileid: "92742295"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Frissítések központi telepítése és eredmények áttekintése
 
@@ -75,9 +75,6 @@ A frissítési központi telepítés ütemezése egy olyan [ütemezési](../shar
 
    > [!NOTE]
    > Nem adhat meg olyan frissítéseket, amelyek felváltották a frissítés központi telepítésbe való felvételét.
-
-   > [!IMPORTANT]
-   > A Red Hat Enterprise esetében a kernel frissítése a YUM-ben csomagokként is megjelenik. Ha nem zárja ki a kernel-frissítéseket tartalmazó frissítéseket, Update Management fogja alkalmazni ezeket a frissítéseket.
 
 9. Válassza az **időzítési beállítások** lehetőséget. Az alapértelmezett kezdési időpont az aktuális időpontnál 30 perccel későbbi időpont. Bármilyen időpontra beállítható a pillanatnyi időt követő 10. perc után.
 

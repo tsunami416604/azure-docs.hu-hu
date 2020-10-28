@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: d6b9ebd8401151d57f103e639e70dd213bde6e33
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 82cb8da1a83e5b1e5430ebecf40f5152c824f6aa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152073"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742493"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata App Service és Azure Functions
 
@@ -33,17 +33,17 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
 
 1. A szokásos módon hozzon létre egy alkalmazást a portálon. Navigáljon a portálon.
 
-2. Ha Function alkalmazást használ, navigáljon a **platform szolgáltatásaihoz**. Más típusú alkalmazások esetén görgessen le a **Beállítások** csoportba a bal oldali navigációs sávon.
+2. Ha Function alkalmazást használ, navigáljon a **platform szolgáltatásaihoz** . Más típusú alkalmazások esetén görgessen le a **Beállítások** csoportba a bal oldali navigációs sávon.
 
-3. Válassza az **identitás**lehetőséget.
+3. Válassza az **identitás** lehetőséget.
 
-4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Kattintson a **Mentés** gombra.
+4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre** . Kattintson a **Mentés** gombra.
 
     ![Felügyelt identitás a App Serviceban](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
 
 > [!NOTE] 
-> Ha szeretné megkeresni a Web App vagy a slot alkalmazás felügyelt identitását a Azure Portalban, a **vállalati alkalmazások**területen tekintse meg a **felhasználói beállítások** szakaszt. A tárolóhely neve általában a következőhöz hasonló: `<app name>/slots/<slot name>` .
+> Ha szeretné megkeresni a Web App vagy a slot alkalmazás felügyelt identitását a Azure Portalban, a **vállalati alkalmazások** területen tekintse meg a **felhasználói beállítások** szakaszt. A tárolóhely neve általában a következőhöz hasonló: `<app name>/slots/<slot name>` .
 
 
 ### <a name="using-the-azure-cli"></a>Az Azure CLI-vel
@@ -198,11 +198,11 @@ Először létre kell hoznia egy felhasználó által hozzárendelt identitás-e
 
 2. A szokásos módon hozzon létre egy alkalmazást a portálon. Navigáljon a portálon.
 
-3. Ha Function alkalmazást használ, navigáljon a **platform szolgáltatásaihoz**. Más típusú alkalmazások esetén görgessen le a **Beállítások** csoportba a bal oldali navigációs sávon.
+3. Ha Function alkalmazást használ, navigáljon a **platform szolgáltatásaihoz** . Más típusú alkalmazások esetén görgessen le a **Beállítások** csoportba a bal oldali navigációs sávon.
 
-4. Válassza az **identitás**lehetőséget.
+4. Válassza az **identitás** lehetőséget.
 
-5. A **felhasználó által hozzárendelt** lapon kattintson a **Hozzáadás**gombra.
+5. A **felhasználó által hozzárendelt** lapon kattintson a **Hozzáadás** gombra.
 
 6. Keresse meg a korábban létrehozott identitást, és válassza ki. Kattintson a **Hozzáadás** parancsra.
 
@@ -324,7 +324,7 @@ A felügyelt identitású alkalmazások esetében két környezeti változó van
 
 A **IDENTITY_ENDPOINT** egy helyi URL-cím, amelyből az alkalmazás jogkivonatokat igényelhet. Egy erőforráshoz tartozó jogkivonat lekéréséhez hajtson végre egy HTTP GET kérelmet erre a végpontra, beleértve a következő paramétereket:
 
-> | Paraméter neve    | In     | Description                                                                                                                                                                                                                                                                                                                                |
+> | Paraméter neve    | In     | Leírás                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | erőforrás          | Lekérdezés  | Annak az erőforrásnak az Azure AD erőforrás-URI azonosítója, amelynek a jogkivonatát meg kell szerezni. Ez lehet az egyik olyan [Azure-szolgáltatás, amely támogatja az Azure ad-hitelesítést](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) vagy bármilyen más erőforrás-URI-t.    |
 > | api-verzió       | Lekérdezés  | A használni kívánt jogkivonat-API verziója. Használja a "2019-08-01" vagy az újabb verziót (kivéve, ha Linux-használatot használ, amely jelenleg csak a "2017-09-01"-ot kínálja) – lásd a fenti megjegyzést.                                                                                                                                                                                                                                                                 |
@@ -338,7 +338,7 @@ A **IDENTITY_ENDPOINT** egy helyi URL-cím, amelyből az alkalmazás jogkivonato
 
 A sikeres 200 OK válasz egy JSON-törzset tartalmaz, amely a következő tulajdonságokkal rendelkezik:
 
-> | Tulajdonság neve | Description                                                                                                                                                                                                                                        |
+> | Tulajdonság neve | Leírás                                                                                                                                                                                                                                        |
 > |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | access_token  | A kért hozzáférési jogkivonat. A hívó webszolgáltatás ezt a tokent használhatja a fogadó webszolgáltatáshoz való hitelesítéshez.                                                                                                                               |
 > | client_id     | A használt identitás ügyfél-azonosítója.                                                                                                                                                                                                       |
@@ -395,7 +395,7 @@ public async Task<HttpResponseMessage> GetToken(string resource)  {
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
-const rp = require('request-promise');
+const rp = require('request-promise');
 const getToken = function(resource, cb) {
     let options = {
         uri: `${process.env["IDENTITY_ENDPOINT"]}/?resource=${resource}&api-version=2019-08-01`,

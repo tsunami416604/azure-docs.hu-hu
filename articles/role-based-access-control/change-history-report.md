@@ -14,13 +14,13 @@ ms.workload: identity
 ms.date: 07/27/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 332d9a9ec28c4309fb1cf1d3e24d3cfd2d7d13d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: H1Hack27Feb2017, devx-track-azurecli
+ms.openlocfilehash: 0ad60e72300e381b57deb00f3db010e69a006441
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87321972"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742934"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Az Azure RBAC változásaival kapcsolatos tevékenységek naplóinak megtekintése
 
@@ -43,7 +43,7 @@ Első lépésként a legegyszerűbb módszer, ha megtekinti a tevékenységnapl�
 
 A portálon a tevékenység naplója több szűrőt tartalmaz. Az Azure RBAC-hez kapcsolódó szűrők:
 
-| Szűrő | Érték |
+| Szűrés | Érték |
 | --------- | --------- |
 | Eseménykategória | <ul><li>Adminisztratív</li></ul> |
 | Művelet | <ul><li>Szerepkör-hozzárendelés létrehozása</li><li>Szerepkör-hozzárendelés törlése</li><li>Egyéni szerepkör-definíció létrehozása vagy frissítése</li><li>Egyéni szerepkör-definíció törlése</li></ul> |
@@ -161,6 +161,6 @@ AzureActivity
 
 ![Tevékenységek naplói a speciális elemzési portál használatával – képernyőfelvétel](./media/change-history-report/azure-log-analytics.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Események megtekintése a tevékenységnaplóban](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 * [Előfizetési tevékenységek monitorozása az Azure-tevékenységnaplóval](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)

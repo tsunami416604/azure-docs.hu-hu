@@ -5,14 +5,14 @@ ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: msangapu
 keywords: Azure app Service, webalkalmazás, Linux, Windows, Docker, tároló
-ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
+ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 0cb1aa2d922db96eff21a128eaa60363b37db9d7
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f3c687d5c8b4e4c6d0b7f4ff912137066fe10bbb
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152102"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743726"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Egyéni szoftver migrálása Azure App Service egyéni tároló használatával
 
@@ -30,8 +30,8 @@ Az oktatóanyag elvégzéséhez:
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Windows rendszerhez készült Docker telepítése</a>.
 - <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">A Docker átváltása Windows-tárolók futtatására</a>.
 - <a href="https://www.visualstudio.com/downloads/" target="_blank">Telepítse a Visual Studio 2019</a> -et a **ASP.net, valamint a webes fejlesztési** és az **Azure-fejlesztési** számítási feladatokkal. Ha már telepítette a Visual Studio 2019-et:
-    - A **Help**  >  **frissítések keresése**lehetőségre kattintva telepítse a legújabb frissítéseket a Visual Studióban.
-    - Adja hozzá a számítási feladatokat a Visual Studióban **az eszközök**  >  **beolvasása eszközök és szolgáltatások lekérése**elemre kattintva.
+    - A **Help**  >  **frissítések keresése** lehetőségre kattintva telepítse a legújabb frissítéseket a Visual Studióban.
+    - Adja hozzá a számítási feladatokat a Visual Studióban **az eszközök**  >  **beolvasása eszközök és szolgáltatások lekérése** elemre kattintva.
 
 ## <a name="set-up-the-app-locally"></a>Az alkalmazás helyi beállítása
 
@@ -66,7 +66,7 @@ A Megoldáskezelőben kattintson jobb gombbal a **CustomFontSample** projektre, 
 
 :::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="Az alapértelmezett böngészőben megjelenített alkalmazást ábrázoló képernyőkép.":::
 
-Válassza a **Docker-összeállítás**  >  **OK**elemet.
+Válassza a **Docker-összeállítás**  >  **OK** elemet.
 
 A projekt mostantól futtatható egy Windows-tárolóban. Egy _Docker-fájl_ lesz hozzáadva a **CustomFontSample** projekthez, illetve egy **docker-compose** projekt a megoldáshoz. 
 
@@ -102,7 +102,7 @@ A Megoldáskezelőben kattintson jobb gombbal a **CustomFontSample** projektre, 
 
 ### <a name="create-registry-and-publish"></a>Beállításjegyzék létrehozása és közzététele
 
-A Közzétételi varázslóban válassza a **Container Registry**  >  **új Azure Container Registry**  >  **Közzététel**lehetőséget.
+A Közzétételi varázslóban válassza a **Container Registry**  >  **új Azure Container Registry**  >  **Közzététel** lehetőséget.
 
 :::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="Az alapértelmezett böngészőben megjelenített alkalmazást ábrázoló képernyőkép.":::
 
@@ -120,7 +120,7 @@ Konfigurálja az új Container Registryt a következő táblázatban javasolt é
 | ----------------- | ------------ | ----|
 |**DNS-előtag**| Megtarthatja a beállításjegyzék létrehozott nevét, vagy módosíthatja egy másik egyedi névre. |  |
 |**Erőforráscsoport**| Kattintson a **New** (Új) lehetőségre, írja be a **myResourceGroup** kifejezést, majd kattintson az **OK** gombra. |  |
-|**Termékváltozat**| Alapszintű | [Árképzési szintek](https://azure.microsoft.com/pricing/details/container-registry/)|
+|**Termékváltozat**| Alapszintű | [Tarifacsomagok](https://azure.microsoft.com/pricing/details/container-registry/)|
 |**Beállításjegyzékbeli hely**| Nyugat-Európa | |
 
 ![Az Azure Container Registry konfigurálása](./media/tutorial-custom-container/configure-registry.png)
@@ -133,21 +133,21 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-A bal oldali menüben válassza az **erőforrás létrehozása**  >  **webes**  >  **Web App for containers**elemet.
+A bal oldali menüben válassza az **erőforrás létrehozása**  >  **webes**  >  **Web App for containers** elemet.
 
 ### <a name="configure-app-basics"></a>Alkalmazás alapalapjainak konfigurálása
 
-Az **alapvető** beállítások lapon konfigurálja a beállításokat az alábbi táblázat szerint, majd kattintson a Tovább gombra **: Docker**.
+Az **alapvető** beállítások lapon konfigurálja a beállításokat az alábbi táblázat szerint, majd kattintson a Tovább gombra **: Docker** .
 
 | Beállítás  | Ajánlott érték | További tudnivalók |
 | ----------------- | ------------ | ----|
 |**Előfizetés**| Győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva. |  |
-|**Erőforráscsoport**| Válassza az **új létrehozása**elemet, írja be a **myResourceGroup**, majd kattintson **az OK**gombra. |  |
+|**Erőforráscsoport**| Válassza az **új létrehozása** elemet, írja be a **myResourceGroup** , majd kattintson **az OK** gombra. |  |
 |**Név**| Írjon be egy egyedi nevet. | A webalkalmazás URL-címe `http://<app-name>.azurewebsites.net`, amelyben az `<app-name>` az alkalmazás neve. |
 |**Közzététel**| Docker-tároló | |
 |**Operációs rendszer**| Windows | |
 |**Régió**| Nyugat-Európa | |
-|**Windows-csomag**| Válassza az **új létrehozása**elemet, írja be a **myAppServicePlan**, majd kattintson **az OK**gombra. | |
+|**Windows-csomag**| Válassza az **új létrehozása** elemet, írja be a **myAppServicePlan** , majd kattintson **az OK** gombra. | |
 
 Az **alapvető beállítások** lap így néz ki:
 
@@ -155,7 +155,7 @@ Az **alapvető beállítások** lap így néz ki:
 
 ### <a name="configure-windows-container"></a>Windows-tároló konfigurálása
 
-A **Docker** lapon konfigurálja az egyéni Windows-tárolót az alábbi táblázatban látható módon, majd válassza a **felülvizsgálat + létrehozás**elemet.
+A **Docker** lapon konfigurálja az egyéni Windows-tárolót az alábbi táblázatban látható módon, majd válassza a **felülvizsgálat + létrehozás** elemet.
 
 | Beállítás  | Ajánlott érték |
 | ----------------- | ------------ |
@@ -213,7 +213,7 @@ A streamelt naplók a következőképpen néznek ki:
 
 A Azure App Service a Docker-tároló technológiáját használja a beépített rendszerképek és az Egyéni rendszerképek üzemeltetéséhez. A beépített rendszerképek listájának megtekintéséhez futtassa az ["az WebApp List-Runtimes--Linux"](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az-webapp-list-runtimes)nevű Azure CLI-parancsot. Ha ezek a képek nem felelnek meg az igényeinek, létrehozhat és üzembe helyezhet egyéni lemezképeket.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy egyéni rendszerképet, ha a beépített rendszerkép nem elégíti ki az igényeinek megfelelőt
@@ -276,9 +276,9 @@ cd docker-django-webapp-linux
 
 ### <a name="download-from-github"></a>Letöltés a GitHubról
 
-A git-klón használata helyett látogasson el a klónozás lehetőségre, [https://github.com/Azure-Samples/docker-django-webapp-linux](https://github.com/Azure-Samples/docker-django-webapp-linux) majd válassza a **zip letöltése**lehetőséget. **Clone** 
+A git-klón használata helyett látogasson el a klónozás lehetőségre, [https://github.com/Azure-Samples/docker-django-webapp-linux](https://github.com/Azure-Samples/docker-django-webapp-linux) majd válassza a **zip letöltése** lehetőséget. **Clone** 
 
-Csomagolja ki a ZIP-fájlt egy *Docker-Django-WebApp-Linux*nevű mappába. 
+Csomagolja ki a ZIP-fájlt egy *Docker-Django-WebApp-Linux* nevű mappába. 
 
 Ezután nyisson meg egy terminál-ablakot a *Docker-Django-WebApp-Linux* mappában.
 
@@ -334,7 +334,7 @@ ENTRYPOINT ["init.sh"]
     Ez [`docker run`](https://docs.docker.com/engine/reference/commandline/run/) a parancs az argumentumot tartalmazó portot adja meg, `-p` amelyet a rendszerkép neve követ. 
     
     > [!TIP]
-    > Ha Windows rendszeren fut, és megtekinti a hibát, *standard_init_linux. go: 211: az exec felhasználói folyamata "nincs ilyen fájl vagy könyvtár"*, a *init.sh* -fájl a várt LF végződés helyett a CR-LF sorok végét tartalmazza. Ez a hiba akkor fordul elő, ha a git használatával klónozott a minta tárházat, de kihagyta a `--config core.autocrlf=input` paramétert. Ebben az esetben a tárházat a "--config" argumentummal újra klónozással. A hiba akkor is megjelenhet, ha szerkesztette a *init.sh* , és CRLF-végződésekkel mentette. Ebben az esetben mentse újra a fájlt csak LF végződéssel.
+    > Ha Windows rendszeren fut, és megtekinti a hibát, *standard_init_linux. go: 211: az exec felhasználói folyamata "nincs ilyen fájl vagy könyvtár"* , a *init.sh* -fájl a várt LF végződés helyett a CR-LF sorok végét tartalmazza. Ez a hiba akkor fordul elő, ha a git használatával klónozott a minta tárházat, de kihagyta a `--config core.autocrlf=input` paramétert. Ebben az esetben a tárházat a "--config" argumentummal újra klónozással. A hiba akkor is megjelenhet, ha szerkesztette a *init.sh* , és CRLF-végződésekkel mentette. Ebben az esetben mentse újra a fájlt csak LF végződéssel.
 
 1. `http://localhost:8000`A webalkalmazás és a tároló megfelelő működésének ellenőrzéséhez keresse fel a következőt:.
 
@@ -342,7 +342,7 @@ ENTRYPOINT ["init.sh"]
 
 [!INCLUDE [Try Cloud Shell](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Ebben a szakaszban és a következő lépésekben olyan erőforrásokat kell kiépíteni az Azure-ban, amelyeken leküldi a lemezképet, majd üzembe helyezi a tárolót Azure App Service. Először hozzon létre egy erőforráscsoportot, amelyben az összes erőforrást össze szeretné gyűjteni.
 
@@ -497,7 +497,7 @@ Ezeket a lépéseket akkor hajthatja végre, ha a rendszerkép leküldése a tá
 
 Ebben a szakaszban módosítja a webalkalmazás kódját, újraépíti a tárolót, majd leküldi a tárolót a beállításjegyzékbe. App Service ezután automatikusan lekéri a frissített rendszerképet a beállításjegyzékből a futó webalkalmazás frissítéséhez.
 
-1. A helyi *Docker-Django-WebApp-Linux* mappában Nyissa meg a file *app/templates/app/index.html*fájlt.
+1. A helyi *Docker-Django-WebApp-Linux* mappában Nyissa meg a file *app/templates/app/index.html* fájlt.
 
 1. Módosítsa az első HTML-elemet úgy, hogy az megfeleljen a következő kódnak.
 
@@ -561,7 +561,7 @@ Ebben a szakaszban módosítja a webalkalmazás kódját, újraépíti a tárol�
 
     A naplófájlokat a böngészőből is megtekintheti a következő címen: `https://<app-name>.scm.azurewebsites.net/api/logs/docker`.
 
-1. Ha bármikor le szeretné állítani a naplózási adatfolyamot, írja be a **CTRL C billentyűt** + **C**.
+1. Ha bármikor le szeretné állítani a naplózási adatfolyamot, írja be a **CTRL C billentyűt** + **C** .
 
 ## <a name="connect-to-the-container-using-ssh"></a>Csatlakozás a tárolóhoz SSH használatával
 
@@ -569,7 +569,7 @@ Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommun
 
 ### <a name="configure-the-container-for-ssh"></a>Az SSH-tároló konfigurálása
 
-Az oktatóanyagban használt minta alkalmazás már rendelkezik a szükséges konfigurációval a *Docker*, amely telepíti az SSH-kiszolgálót, és beállítja a bejelentkezési hitelesítő adatokat is. Ez a szakasz csak tájékoztató információkat tartalmaz. A tárolóhoz való kapcsolódáshoz ugorjon a következő szakaszra
+Az oktatóanyagban használt minta alkalmazás már rendelkezik a szükséges konfigurációval a *Docker* , amely telepíti az SSH-kiszolgálót, és beállítja a bejelentkezési hitelesítő adatokat is. Ez a szakasz csak tájékoztató információkat tartalmaz. A tárolóhoz való kapcsolódáshoz ugorjon a következő szakaszra
 
 ```Dockerfile
 ENV SSH_PASSWD "root:Docker!"
@@ -595,7 +595,7 @@ EXPOSE 8000 2222
 
 Az 2222-es port egy belső port, amely csak a privát virtuális hálózathoz tartozó Bridge hálózaton lévő tárolók számára érhető el. 
 
-Végül, a *init.sh*, elindítja az SSH-kiszolgálót.
+Végül, a *init.sh* , elindítja az SSH-kiszolgálót.
 
 ```bash
 #!/bin/bash
@@ -610,7 +610,7 @@ service ssh start
 
     Megvizsgálhatja például a-ben futó folyamatokat a parancs használatával `top` .
     
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Az ebben a cikkben létrehozott erőforrások folyamatos költségeket okozhatnak. az erőforrások törléséhez csak az azokat tartalmazó erőforráscsoportot kell törölnie:
 

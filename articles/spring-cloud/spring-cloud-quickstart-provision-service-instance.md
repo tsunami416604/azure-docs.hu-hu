@@ -6,14 +6,14 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 09/08/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a248699b47cf99980c9490bf16c10e7196ee6ecf
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 22abdb64a2349045923e148db57f683b4be87636
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091083"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742705"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-service"></a>Gyors útmutató: Azure Spring Cloud Service kiépítése
 
@@ -103,21 +103,21 @@ Az alábbi eljárás az Azure Spring Cloud egy példányát hozza létre a Azure
 
 1. Az új lapon nyissa meg a [Azure Portal](https://ms.portal.azure.com/). 
 
-2. A felső keresőmezőbe keressen az **Azure Spring Cloud**kifejezésre.
+2. A felső keresőmezőbe keressen az **Azure Spring Cloud** kifejezésre.
 
 3. Válassza az **Azure Spring Cloud** lehetőséget az eredmények közül.
 
     ![ASC ikon kezdete](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
-4. Az Azure Spring Cloud oldalon kattintson a **+ Hozzáadás**gombra.
+4. Az Azure Spring Cloud oldalon kattintson a **+ Hozzáadás** gombra.
 
     ![ASC ikon hozzáadása](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
 5. Töltse ki az űrlapot az Azure Spring Cloud **create** oldalon.  Vegye figyelembe a következő irányelveket:
-    - **Előfizetés**: válassza ki azt az előfizetést, amelyet számlázni szeretne az erőforráshoz.
-    - **Erőforráscsoport**: új erőforráscsoportok létrehozása új erőforrásokhoz az ajánlott eljárás. Vegye figyelembe, hogy ezt a későbbi lépések során fogjuk használni **\<resource group name\>** .
-    - **Szolgáltatás adatai/neve**: adja meg a **\<service instance name\>** .  A névnek 4 – 32 karakter hosszúnak kell lennie, és csak kisbetűket, számokat és kötőjeleket tartalmazhat.  A szolgáltatás nevének első karakterének betűnek kell lennie, és az utolsó karakternek betűnek vagy számnak kell lennie.
-    - **Hely**: válassza ki a szolgáltatás példányának helyét.
+    - **Előfizetés** : válassza ki azt az előfizetést, amelyet számlázni szeretne az erőforráshoz.
+    - **Erőforráscsoport** : új erőforráscsoportok létrehozása új erőforrásokhoz az ajánlott eljárás. Vegye figyelembe, hogy ezt a későbbi lépések során fogjuk használni **\<resource group name\>** .
+    - **Szolgáltatás adatai/neve** : adja meg a **\<service instance name\>** .  A névnek 4 – 32 karakter hosszúnak kell lennie, és csak kisbetűket, számokat és kötőjeleket tartalmazhat.  A szolgáltatás nevének első karakterének betűnek kell lennie, és az utolsó karakternek betűnek vagy számnak kell lennie.
+    - **Hely** : válassza ki a szolgáltatás példányának helyét.
 
     ![ASC-portál indítása](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 

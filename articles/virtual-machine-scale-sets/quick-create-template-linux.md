@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: linux
 ms.date: 03/27/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt, subject-armqs
-ms.openlocfilehash: f6ab030b7f807a884b5d05487724fc9c66a6de87
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mimckitt, subject-armqs, devx-track-azurecli
+ms.openlocfilehash: d040215968b0ebb433edba03e4839ffe7add0e5c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88648632"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745867"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-arm-template"></a>Gyors útmutató: linuxos virtuálisgép-méretezési csoport létrehozása ARM-sablonnal
 
@@ -77,7 +77,7 @@ A méretezési csoport teszteléséhez telepítsen egy alapszintű webalkalmazá
 
 A sablon az egyéni szkriptek bővítményét használja a [Bottle](https://bottlepy.org/docs/dev/), a Python webes keretrendszer és egy egyszerű http-kiszolgáló telepítéséhez.
 
-Két parancsfájl van definiálva a **fileUris**  -  *installserver.sh*és a *workserver.py*. A rendszer letölti ezeket a fájlokat a GitHubról, majd a *commandToExecute* futtatja `bash installserver.sh` az alkalmazás telepítését és konfigurálását.
+Két parancsfájl van definiálva a **fileUris**  -  *installserver.sh* és a *workserver.py* . A rendszer letölti ezeket a fájlokat a GitHubról, majd a *commandToExecute* futtatja `bash installserver.sh` az alkalmazás telepítését és konfigurálását.
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
@@ -109,11 +109,11 @@ az network public-ip list \
     --query [*].ipAddress -o tsv
 ```
 
-Adja meg a terheléselosztó nyilvános IP-címét egy webböngészőben a következő formátumban *: http: \/ /publicIpAddress: 9000/do_work*. A terheléselosztó az egyik virtuálisgép-példányra terjeszti a forgalmat, ahogy az a következő példában látható:
+Adja meg a terheléselosztó nyilvános IP-címét egy webböngészőben a következő formátumban *: http: \/ /publicIpAddress: 9000/do_work* . A terheléselosztó az egyik virtuálisgép-példányra terjeszti a forgalmat, ahogy az a következő példában látható:
 
 ![Alapértelmezett weboldal az NGINX-ben](media/virtual-machine-scale-sets-create-template/running-python-app.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha már nincs rájuk szükség, az [az group delete](/cli/azure/group) paranccsal eltávolítható az erőforráscsoport, a méretezési csoport és az összes kapcsolódó erőforrás. A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
 
@@ -121,7 +121,7 @@ Ha már nincs rájuk szükség, az [az group delete](/cli/azure/group) paranccsa
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Linux-méretezési készletet egy ARM-sablonnal, és az egyéni szkriptek bővítmény használatával telepít egy alapszintű Python-webkiszolgálót a VM-példányokon. Ha bővebb információra van szüksége, lépjen tovább az Azure-beli virtuálisgép-méretezési csoportok létrehozásáról és kezeléséről szóló oktatóanyagra.
 

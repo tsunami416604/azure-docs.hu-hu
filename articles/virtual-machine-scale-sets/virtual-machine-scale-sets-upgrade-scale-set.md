@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: f7a61ed039a3d8ed643e3b1b3d79384e35847986
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 7577c8510746d1140c1f8b70081f600d992ae512
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87029297"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745821"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport módosítása
 
@@ -354,7 +354,7 @@ Bizonyos tulajdonságok megváltoztathatók, és az aktuális értéktől függ�
 ### <a name="properties-that-require-deallocation-to-change"></a>A módosítás felszabadítását igénylő tulajdonságok
 Néhány tulajdonság csak akkor módosítható bizonyos értékekre, ha a méretezési csoportba tartozó virtuális gépek fel vannak szabadítva. Ezek a tulajdonságok a következők:
 
-- **SKU neve**– ha az új VIRTUÁLISGÉP-SKU nem támogatott a méretezési csoport által használt hardveren, akkor az SKU nevének módosítása előtt fel kell szabadítania a virtuális gépeket a méretezési csoportból. További információ: Azure-beli [virtuális gép átméretezése](../virtual-machines/windows/resize-vm.md).
+- **SKU neve** – ha az új VIRTUÁLISGÉP-SKU nem támogatott a méretezési csoport által használt hardveren, akkor az SKU nevének módosítása előtt fel kell szabadítania a virtuális gépeket a méretezési csoportból. További információ: Azure-beli [virtuális gép átméretezése](../virtual-machines/windows/resize-vm.md).
 
 
 ## <a name="vm-specific-updates"></a>VM-specifikus frissítések
@@ -364,7 +364,7 @@ Bizonyos módosítások a globális méretezési csoport tulajdonságai helyett 
 ## <a name="scenarios"></a>Forgatókönyvek
 
 ### <a name="application-updates"></a>Alkalmazások frissítései
-Ha egy alkalmazás egy méretezési csoportra van telepítve kiterjesztéseken keresztül, a bővítmény konfigurációjának frissítése az alkalmazás frissítését eredményezi a frissítési szabályzatnak megfelelően. Ha például egy parancsfájl új verziója fut egy egyéni parancsfájl-bővítményben, a *fileUris* tulajdonság frissítésével az új parancsfájlra mutathat. Bizonyos esetekben előfordulhat, hogy egy frissítést is kényszeríteni kíván, bár a bővítmény konfigurációja nem változik (például a parancsfájl URI-azonosítójának módosítása nélkül frissítette a szkriptet). Ezekben az esetekben a *forceUpdateTag* módosításával kényszerítheti a frissítést. Az Azure platform nem értelmezi ezt a tulajdonságot. Ha megváltoztatja az értéket, nincs hatással a bővítmény futtatására. A módosítás egyszerűen kényszeríti a bővítmény újrafuttatását. A *forceUpdateTag*kapcsolatos további információkért tekintse meg a [bővítmények REST API dokumentációját](/rest/api/compute/virtualmachineextensions/createorupdate). Vegye figyelembe, hogy a *forceUpdateTag* minden bővítménnyel használható, nem csak az egyéni szkriptek bővítménye.
+Ha egy alkalmazás egy méretezési csoportra van telepítve kiterjesztéseken keresztül, a bővítmény konfigurációjának frissítése az alkalmazás frissítését eredményezi a frissítési szabályzatnak megfelelően. Ha például egy parancsfájl új verziója fut egy egyéni parancsfájl-bővítményben, a *fileUris* tulajdonság frissítésével az új parancsfájlra mutathat. Bizonyos esetekben előfordulhat, hogy egy frissítést is kényszeríteni kíván, bár a bővítmény konfigurációja nem változik (például a parancsfájl URI-azonosítójának módosítása nélkül frissítette a szkriptet). Ezekben az esetekben a *forceUpdateTag* módosításával kényszerítheti a frissítést. Az Azure platform nem értelmezi ezt a tulajdonságot. Ha megváltoztatja az értéket, nincs hatással a bővítmény futtatására. A módosítás egyszerűen kényszeríti a bővítmény újrafuttatását. A *forceUpdateTag* kapcsolatos további információkért tekintse meg a [bővítmények REST API dokumentációját](/rest/api/compute/virtualmachineextensions/createorupdate). Vegye figyelembe, hogy a *forceUpdateTag* minden bővítménnyel használható, nem csak az egyéni szkriptek bővítménye.
 
 Emellett gyakori, hogy az alkalmazások egyéni rendszerkép használatával legyenek üzembe helyezhetők. Ezt a forgatókönyvet a következő szakasz ismerteti.
 
@@ -379,7 +379,7 @@ Ha egyéni lemezképeket használ, a lemezkép frissítéséhez frissítse a *im
 ## <a name="examples"></a>Példák
 
 ### <a name="update-the-os-image-for-your-scale-set"></a>A méretezési csoport operációsrendszer-rendszerképének frissítése
-Lehet, hogy van egy méretezési csoport, amely az Ubuntu LTS 16,04 régi verzióját futtatja. Az Ubuntu LTS 16,04 újabb verziójára szeretne frissíteni, például a *16.04.201801090*verzióra. A Képhivatkozás verziója tulajdonság nem egy lista részét képezi, ezért ezeket a tulajdonságokat közvetlenül módosíthatja az alábbi parancsok egyikével:
+Lehet, hogy van egy méretezési csoport, amely az Ubuntu LTS 16,04 régi verzióját futtatja. Az Ubuntu LTS 16,04 újabb verziójára szeretne frissíteni, például a *16.04.201801090* verzióra. A Képhivatkozás verziója tulajdonság nem egy lista részét képezi, ezért ezeket a tulajdonságokat közvetlenül módosíthatja az alábbi parancsok egyikével:
 
 - A Azure PowerShell [Update-AzVmss](/powershell/module/az.compute/update-azvmss) a következőképpen történik:
 
@@ -447,8 +447,8 @@ Tegyük fel, hogy rendelkezik egy méretezési csoporttal Azure Load Balancerkal
     ```
 
 >[!NOTE]
-> Ezek a parancsok feltételezik, hogy a méretezési csoport csak egyetlen IP-konfigurációval és terheléselosztó-vel rendelkezik. Ha több is van, előfordulhat, hogy a *nullától*eltérő listát kell használnia.
+> Ezek a parancsok feltételezik, hogy a méretezési csoport csak egyetlen IP-konfigurációval és terheléselosztó-vel rendelkezik. Ha több is van, előfordulhat, hogy a *nullától* eltérő listát kell használnia.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A méretezési csoportokban általános felügyeleti feladatokat is elvégezhet az [Azure CLI](virtual-machine-scale-sets-manage-cli.md) vagy a [Azure PowerShell](virtual-machine-scale-sets-manage-powershell.md)használatával.

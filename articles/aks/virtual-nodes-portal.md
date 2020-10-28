@@ -4,13 +4,13 @@ description: Megtudhatja, hogyan használhatja a Azure Portalt olyan Azure Kuber
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.custom: references_regions
-ms.openlocfilehash: 0fe8c4753cef9fa829a2cb696e164dbdf5f2b8f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: aaada79855b07e390ce3d30a20cd08dc484481c9
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297569"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745482"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Azure Kubernetes Services (ak) fürt létrehozása és konfigurálása virtuális csomópontok használatára a Azure Portalban
 
@@ -28,7 +28,7 @@ Ha korábban még nem használta az ACI-t, regisztrálja a szolgáltatót az el�
 az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
 ```
 
-A *Microsoft. ContainerInstance* szolgáltatónak *regisztráltként*kell jelentenie, ahogy az alábbi példában is látható:
+A *Microsoft. ContainerInstance* szolgáltatónak *regisztráltként* kell jelentenie, ahogy az alábbi példában is látható:
 
 ```output
 Namespace                    RegistrationState    RegistrationPolicy
@@ -36,7 +36,7 @@ Namespace                    RegistrationState    RegistrationPolicy
 Microsoft.ContainerInstance  Registered           RegistrationRequired
 ```
 
-Ha a szolgáltató *NotRegistered*-ként jelenik meg, regisztrálja a szolgáltatót az az [Provider Register][az-provider-register] paranccsal az alábbi példában látható módon:
+Ha a szolgáltató *NotRegistered* -ként jelenik meg, regisztrálja a szolgáltatót az az [Provider Register][az-provider-register] paranccsal az alábbi példában látható módon:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerInstance
@@ -76,18 +76,18 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
-A Azure Portal bal felső sarkában válassza az **erőforrás létrehozása**  >  **Kubernetes-szolgáltatás**elemet.
+A Azure Portal bal felső sarkában válassza az **erőforrás létrehozása**  >  **Kubernetes-szolgáltatás** elemet.
 
 Az **Alapvető beállítások** lapon konfigurálja az alábbiakat:
 
-- *PROJEKT ADATAI*: Válasszon ki egy Azure-előfizetést, majd válasszon ki vagy hozzon létre egy Azure-erőforráscsoportot, például: *myResourceGroup*. Adja meg a **Kubernetes-fürt nevét**, például *myAKSCluster*.
-- *FÜRT ADATAI*: Válasszon egy régiót, Kubernetes-verziót és DNS-névelőtagot az AKS-fürthöz.
-- *Elsődleges csomóponti készlet*: válasszon ki egy virtuálisgép-méretet az AK-csomópontok számára. A virtuálisgép-méret az AKS-fürt telepítését követően **nem** módosítható.
-     - Adja meg a fürtre telepítendő csomópontok számát. Ehhez a cikkhez állítsa a **csomópontok száma** *1*értékre. A csomópontok száma a fürt telepítése után is **módosítható**.
+- *PROJEKT ADATAI* : Válasszon ki egy Azure-előfizetést, majd válasszon ki vagy hozzon létre egy Azure-erőforráscsoportot, például: *myResourceGroup* . Adja meg a **Kubernetes-fürt nevét** , például *myAKSCluster* .
+- *FÜRT ADATAI* : Válasszon egy régiót, Kubernetes-verziót és DNS-névelőtagot az AKS-fürthöz.
+- *Elsődleges csomóponti készlet* : válasszon ki egy virtuálisgép-méretet az AK-csomópontok számára. A virtuálisgép-méret az AKS-fürt telepítését követően **nem** módosítható.
+     - Adja meg a fürtre telepítendő csomópontok számát. Ehhez a cikkhez állítsa a **csomópontok száma** *1* értékre. A csomópontok száma a fürt telepítése után is **módosítható** .
 
-Kattintson a **Tovább: skála**lehetőségre.
+Kattintson a **Tovább: skála** lehetőségre.
 
-A **skála** lapon válassza az *engedélyezve* lehetőséget a **virtuális csomópontok**alatt.
+A **skála** lapon válassza az *engedélyezve* lehetőséget a **virtuális csomópontok** alatt.
 
 ![AK-fürt létrehozása és a virtuális csomópontok engedélyezése](media/virtual-nodes-portal/enable-virtual-nodes.png)
 
@@ -95,7 +95,7 @@ Alapértelmezés szerint létrejön egy Azure Active Directory egyszerű szolgá
 
 A fürt speciális hálózatkezelésre is konfigurálva van. A virtuális csomópontok saját Azure-beli virtuális hálózati alhálózatának használatára vannak konfigurálva. Ez az alhálózat delegált engedélyekkel rendelkezik az Azure-erőforrások az AK-fürthöz való összekapcsolásához. Ha még nem rendelkezik delegált alhálózattal, a Azure Portal létrehozza és konfigurálja az Azure-beli virtuális hálózatot és az alhálózatot a virtuális csomópontokkal való használatra.
 
-Válassza a **Felülvizsgálat + létrehozás** lehetőséget. Az ellenőrzés befejezése után válassza a **Létrehozás**lehetőséget.
+Válassza az **Áttekintés + létrehozás** lehetőséget. Az ellenőrzés befejezése után válassza a **Létrehozás** lehetőséget.
 
 Az AKS-fürt létrehozása és a használatra való előkészítése néhány percet vesz igénybe.
 
@@ -117,7 +117,7 @@ A fürthöz való csatlakozás ellenőrzéséhez használja a [kubectl get][kube
 kubectl get nodes
 ```
 
-A következő példa kimenete az egyetlen virtuálisgép-csomópontot mutatja, majd a Linux, *Virtual-Node-ACI-Linux*virtuális csomópontot:
+A következő példa kimenete az egyetlen virtuálisgép-csomópontot mutatja, majd a Linux, *Virtual-Node-ACI-Linux* virtuális csomópontot:
 
 ```output
 NAME                           STATUS    ROLES     AGE       VERSION

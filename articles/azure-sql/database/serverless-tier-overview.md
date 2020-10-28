@@ -4,19 +4,19 @@ description: Ez a cikk az új kiszolgáló nélküli számítási szintet ismert
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
-ms.custom: test sqldbrb=1
+ms.custom: test sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 9/17/2020
-ms.openlocfilehash: 2d317ac2543289aca3a0741b424f71a2e903c74d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a51d2140528e3f6ed6da0ca699d7b71b91638ec
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321407"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743166"
 ---
 # <a name="azure-sql-database-serverless"></a>Kiszolgáló nélküli Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -148,7 +148,7 @@ A fent felsorolt műveletek bármelyikét végző figyelési, felügyeleti és e
 
 Az automatikusan folytatott művelet az egyes szolgáltatási frissítések központi telepítése során is aktiválódik, amelyekhez az adatbázisnak online állapotra van szüksége.
 
-### <a name="connectivity"></a>Kapcsolat
+### <a name="connectivity"></a>Kapcsolatok
 
 Ha egy kiszolgáló nélküli adatbázis szüneteltetve van, akkor az első bejelentkezés folytatja az adatbázist, és egy hibaüzenetet ad vissza, amely azt jelzi, hogy az adatbázis nem érhető el a 40613-as hibakódú kóddal. Az adatbázis újraindítása után a bejelentkezést újra meg kell próbálni a kapcsolat létrehozásához. A kapcsolódási újrapróbálkozási logikával rendelkező adatbázis-ügyfeleket nem szükséges módosítani.
 
@@ -252,7 +252,7 @@ A kiszolgáló nélküli adatbázisok a kiépített számítási rétegekbe hely
 
 A maximális vagy a minimális virtuális mag, valamint az automatikus szüneteltetés késleltetésének módosítása a PowerShell [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) parancsával történik `MaxVcore` , a, `MinVcore` és `AutoPauseDelayInMinutes` argumentumok használatával.
 
-### <a name="use-the-azure-cli"></a>Az Azure CLI használata
+### <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
 
 A maximális vagy a minimális virtuális mag módosítása, valamint az automatikus szüneteltetés késleltetése az az [SQL db Update](/cli/azure/sql/db#az-sql-db-update) paranccsal hajtható végre az Azure CLI-ben a `capacity` , `min-capacity` , és `auto-pause-delay` argumentumokkal.
 
@@ -314,17 +314,17 @@ Az erőforrás-korlátokat lásd: [kiszolgáló nélküli számítási szintek](
 
 A számlázott számítások mennyisége a felhasznált CPU és a másodpercenként felhasznált memória maximális mennyisége. Ha a felhasznált CPU mennyisége és a felhasznált memória kevesebb, mint az egyesek számára kiépített minimális mennyiség, akkor a kiosztott mennyiség számlázásra kerül. Ha a CPU-t számlázási célokra szeretné összehasonlítani a memóriával, a memória a virtuális mag-egységekbe van normalizálva azáltal, hogy a memória mennyiségét GB-ban, virtuális mag 3 GB-onként átméretezni.
 
-- **Számlázott erőforrás**: CPU és memória
-- **Számlázott összeg**: virtuális mag egység ára * Max (min virtuális mag, virtuális mag felhasznált, minimális memória gb * 1/3, memória GB használatban * 1/3) 
-- **Számlázási gyakoriság**: másodpercenként
+- **Számlázott erőforrás** : CPU és memória
+- **Számlázott összeg** : virtuális mag egység ára * Max (min virtuális mag, virtuális mag felhasznált, minimális memória gb * 1/3, memória GB használatban * 1/3) 
+- **Számlázási gyakoriság** : másodpercenként
 
 A virtuális mag egység díja virtuális mag/másodperc. Egy adott régióban az adott egység áraira vonatkozó [Azure SQL Database díjszabási oldalán](https://azure.microsoft.com/pricing/details/sql-database/single/) talál további információt.
 
 A számlázott számítások mennyiségét a következő metrika teszi elérhetővé:
 
-- **Metrika**: App_cpu_billed (virtuális mag másodperc)
-- **Definíció**: Max (min. virtuális mag, felhasznált virtuális mag, minimális memória gb * 1/3, memória GB használatban * 1/3)
-- **Jelentéskészítés gyakorisága**: percenként
+- **Metrika** : App_cpu_billed (virtuális mag másodperc)
+- **Definíció** : Max (min. virtuális mag, felhasznált virtuális mag, minimális memória gb * 1/3, memória GB használatban * 1/3)
+- **Jelentéskészítés gyakorisága** : percenként
 
 Ezt a mennyiséget másodpercenként számítjuk ki, és 1 percenként összesítjük.
 

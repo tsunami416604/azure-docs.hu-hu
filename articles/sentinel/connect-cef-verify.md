@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 643b28b2e88f233d2924270511d3c87fa4d9b767
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba14e2c475611ed77661060d6e17ae0bcbf0a6ca
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631630"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744208"
 ---
 # <a name="step-3-validate-connectivity"></a>3. lépés: a kapcsolat ellenőrzése
 
@@ -29,18 +29,27 @@ Miután telepítette a napló-továbbítót (az 1. lépésben), és úgy konfigu
 
 - Emelt szintű engedélyekkel (sudo) kell rendelkeznie a log továbbító számítógépén.
 
-- Telepítenie kell a Pythont a naplózási továbbító számítógépén.<br>
+- A **python 2,7** -es verziójának telepítve kell lennie a naplózási továbbító számítógépén.<br>
 A parancs használatával keresse meg a következőt: `python –version` .
+
+- A folyamat egy pontján szükség lehet a munkaterület-AZONOSÍTÓra és a munkaterület elsődleges kulcsára. Ezeket a munkaterület-erőforrásban találja, az **ügynökök kezelése** területen.
 
 ## <a name="how-to-validate-connectivity"></a>A kapcsolat érvényesítése
 
-1. Az Azure Sentinel navigációs menüjében nyissa meg a **naplók**elemet. Futtasson egy lekérdezést a **CommonSecurityLog** sémával, és ellenőrizze, hogy a biztonsági megoldásból kapott-e naplókat.<br>
-Vegye figyelembe, hogy körülbelül 20 percet vesz igénybe, amíg a naplók meg nem jelennek a **log Analyticsban**. 
+1. Az Azure Sentinel navigációs menüjében nyissa meg a **naplók** elemet. Futtasson egy lekérdezést a **CommonSecurityLog** sémával, és ellenőrizze, hogy a biztonsági megoldásból kapott-e naplókat.<br>
+Vegye figyelembe, hogy körülbelül 20 percet vesz igénybe, amíg a naplók meg nem jelennek a **log Analyticsban** . 
 
 1. Ha nem látja az eredményeket a lekérdezésből, ellenőrizze, hogy az események a biztonsági megoldásból származnak-e, vagy próbáljon meg generálni, és ellenőrizze, hogy továbbítva vannak-e a kijelölt syslog-továbbító gépnek. 
 
-1. Futtassa a következő szkriptet a naplózási továbbítón a biztonsági megoldás, a naplózási továbbító és az Azure Sentinel közötti kapcsolat vizsgálatához. Ez a szkript ellenőrzi, hogy a démon figyeli-e a megfelelő portokat, hogy a továbbítás megfelelően van-e konfigurálva, és hogy semmi sem blokkolja a démon és a Log Analytics ügynök közötti kommunikációt. Emellett a "TestCommonEventFormat" nevű ál-üzeneteket is elküldi a végpontok közötti kapcsolat vizsgálatához. <br>
- `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]`
+1. Futtassa a következő szkriptet a log továbbítón (a munkaterület AZONOSÍTÓjának alkalmazása a helyőrző helyett) a biztonsági megoldás, a naplózási továbbító és az Azure Sentinel közötti kapcsolat vizsgálatához. Ez a szkript ellenőrzi, hogy a démon figyeli-e a megfelelő portokat, hogy a továbbítás megfelelően van-e konfigurálva, és hogy semmi sem blokkolja a démon és a Log Analytics ügynök közötti kommunikációt. Emellett a "TestCommonEventFormat" nevű ál-üzeneteket is elküldi a végpontok közötti kapcsolat vizsgálatához. <br>
+
+    ```bash
+    sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]` 
+    ```
+
+   - Előfordulhat, hogy egy olyan üzenetet kap, amely egy parancs futtatásával kijavít egy problémát a ***számítógép* mező leképezésével** . A részletekért tekintse [meg az érvényesítési parancsfájl magyarázatát](#mapping-command) .
+
+    - Előfordulhat, hogy egy olyan üzenetet kap, amely egy parancs futtatásával orvosolja a **Cisco ASA-tűzfalak naplófájljainak elemzésével** kapcsolatos problémát. A részletekért tekintse [meg az érvényesítési parancsfájl magyarázatát](#parsing-command) .
 
 ## <a name="validation-script-explained"></a>Érvényesítési parancsfájl magyarázata
 
@@ -72,21 +81,31 @@ Az érvényesítési parancsfájl a következő ellenőrzéseket hajtja végre:
     </filter>
     ```
 
-1. Ellenőrzi, hogy a tűzfal eseményeihez tartozó Cisco ASA-elemzés a várt módon van-e konfigurálva:
+1. Ellenőrzi, hogy a Cisco ASA-tűzfal eseményeinek elemzése a várt módon van-e konfigurálva a következő parancs használatával: 
 
     ```bash
-    sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" 
-        /opt/microsoft/omsagent/plugin/security_lib.rb && 
-        sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "return ident if ident.include?('%ASA')" /opt/microsoft/omsagent/plugin/security_lib.rb
     ```
 
-1. Ellenőrzi, hogy a syslog-forrás *számítógép* mezője megfelelően van-e leképezve a log Analytics ügynökben:
+    - <a name="parsing-command"></a>Ha probléma merül fel az elemzés során, a parancsfájl hibaüzenetet küld, hogy **manuálisan futtassa a következő parancsot** (a munkaterület azonosítójának alkalmazása a helyőrző helyett). A parancs gondoskodik a megfelelő elemzésről, majd újraindítja az ügynököt.
+    
+        ```bash
+        # Cisco ASA parsing fix
+        sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" /opt/microsoft/omsagent/plugin/security_lib.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
+
+1. Ellenőrzi, hogy a syslog forrás *számítógép* mezőjének megfelelően van-e leképezve a log Analytics ügynökben a következő parancs használatával: 
 
     ```bash
-    sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
-        -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
-        filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
     ```
+
+    - <a name="mapping-command"></a>Ha probléma merül fel a leképezéssel kapcsolatban, a parancsfájl egy hibaüzenetet jelenít meg a **következő parancs manuális futtatásához** (a munkaterület azonosítójának alkalmazása a helyőrző helyett). A parancs biztosítja a megfelelő leképezést, majd újraindítja az ügynököt.
+
+        ```bash
+        # Computer field mapping fix
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 1. Ellenőrzi, hogy vannak-e olyan biztonsági fejlesztések a gépen, amelyek blokkolják a hálózati forgalmat (például a gazda tűzfalat).
 
@@ -155,21 +174,31 @@ Az érvényesítési parancsfájl a következő ellenőrzéseket hajtja végre:
     </filter>
     ```
 
-1. Ellenőrzi, hogy a tűzfal eseményeihez tartozó Cisco ASA-elemzés a várt módon van-e konfigurálva:
+1. Ellenőrzi, hogy a Cisco ASA-tűzfal eseményeinek elemzése a várt módon van-e konfigurálva a következő parancs használatával: 
 
     ```bash
-    sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" 
-        /opt/microsoft/omsagent/plugin/security_lib.rb && 
-        sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "return ident if ident.include?('%ASA')" /opt/microsoft/omsagent/plugin/security_lib.rb
     ```
 
-1. Ellenőrzi, hogy a syslog-forrás *számítógép* mezője megfelelően van-e leképezve a log Analytics ügynökben:
+    - <a name="parsing-command"></a>Ha probléma merül fel az elemzés során, a parancsfájl hibaüzenetet küld, hogy **manuálisan futtassa a következő parancsot** (a munkaterület azonosítójának alkalmazása a helyőrző helyett). A parancs gondoskodik a megfelelő elemzésről, majd újraindítja az ügynököt.
+    
+        ```bash
+        # Cisco ASA parsing fix
+        sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" /opt/microsoft/omsagent/plugin/security_lib.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
+
+1. Ellenőrzi, hogy a syslog forrás *számítógép* mezőjének megfelelően van-e leképezve a log Analytics ügynökben a következő parancs használatával: 
 
     ```bash
-    sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
-        -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
-        filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
     ```
+
+    - <a name="mapping-command"></a>Ha probléma merül fel a leképezéssel kapcsolatban, a parancsfájl egy hibaüzenetet jelenít meg a **következő parancs manuális futtatásához** (a munkaterület azonosítójának alkalmazása a helyőrző helyett). A parancs biztosítja a megfelelő leképezést, majd újraindítja az ügynököt.
+
+        ```bash
+        # Computer field mapping fix
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 1. Ellenőrzi, hogy vannak-e olyan biztonsági fejlesztések a gépen, amelyek blokkolják a hálózati forgalmat (például a gazda tűzfalat).
 

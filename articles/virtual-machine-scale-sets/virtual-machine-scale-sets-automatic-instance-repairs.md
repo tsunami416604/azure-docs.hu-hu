@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 02/28/2020
 ms.reviewer: jushiman
-ms.custom: avverma
-ms.openlocfilehash: 45c316c1d1dd56f6d920423a725b2488df1a5032
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: 383895f2cb5983abd68bfca67d2c8361ee094ea1
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86527421"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744844"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Példányok automatikus javítása az Azure-beli virtuális gépek méretezési csoportjaiban
 
@@ -62,13 +62,13 @@ Az automatikus példány-javítási műveletek kötegekben lesznek elvégezve. E
 
 ### <a name="grace-period"></a>Türelmi időszak
 
-Ha egy példány állapot-módosítási művelettel halad át a méretezési csoporton végrehajtott PUT, PATCH vagy POST művelet miatt (például rendszerkép, újratelepítés, frissítés stb.), akkor az adott példányon végzett javítási műveletek csak a türelmi időszakra való várakozás után történnek. A türelmi időszak azt az időtartamot adja meg, amely lehetővé teszi, hogy a példány Kifogástalan állapotba térjen vissza. A türelmi időszak az állapotváltozás befejeződése után kezdődik. Ez segít elkerülni a korai vagy véletlen javítási műveleteket. A türelmi időszakot a méretezési csoport minden újonnan létrehozott példánya esetében tiszteletben kell venni (beleértve a javítási művelet eredményeképpen létrehozott egyet is). A türelmi időszak ISO 8601 formátumú percekben van megadva, és a *automaticRepairsPolicy. gracePeriod*tulajdonsággal állítható be. A türelmi időszak 30 perc és 90 perc között lehet, és alapértelmezett értéke 30 perc.
+Ha egy példány állapot-módosítási művelettel halad át a méretezési csoporton végrehajtott PUT, PATCH vagy POST művelet miatt (például rendszerkép, újratelepítés, frissítés stb.), akkor az adott példányon végzett javítási műveletek csak a türelmi időszakra való várakozás után történnek. A türelmi időszak azt az időtartamot adja meg, amely lehetővé teszi, hogy a példány Kifogástalan állapotba térjen vissza. A türelmi időszak az állapotváltozás befejeződése után kezdődik. Ez segít elkerülni a korai vagy véletlen javítási műveleteket. A türelmi időszakot a méretezési csoport minden újonnan létrehozott példánya esetében tiszteletben kell venni (beleértve a javítási művelet eredményeképpen létrehozott egyet is). A türelmi időszak ISO 8601 formátumú percekben van megadva, és a *automaticRepairsPolicy. gracePeriod* tulajdonsággal állítható be. A türelmi időszak 30 perc és 90 perc között lehet, és alapértelmezett értéke 30 perc.
 
 ### <a name="suspension-of-repairs"></a>Javítások felfüggesztése 
 
-A virtuálisgép-méretezési csoportok lehetővé teszik, hogy szükség esetén ideiglenesen felfüggessze az automatikus példányok javításait. A virtuálisgép-méretezési csoport *orchestrationServices* tulajdonsága alatt az automatikus javítások *serviceState* az automatikus javítás aktuális állapotát jeleníti meg. Ha egy méretezési csoport automatikus javításokra van beállítva, a *serviceState* paraméter értéke *fut*értékre van állítva. Ha az automatikus javítás fel van függesztve egy méretezési csoportra, a *serviceState* paraméter *felfüggesztve*értékre van állítva. Ha a *automaticRepairsPolicy* definiálva van egy méretezési csoport, de az automatikus javítás funkció nincs engedélyezve, akkor a *ServiceState* paraméter *nem fut*értékre van állítva.
+A virtuálisgép-méretezési csoportok lehetővé teszik, hogy szükség esetén ideiglenesen felfüggessze az automatikus példányok javításait. A virtuálisgép-méretezési csoport *orchestrationServices* tulajdonsága alatt az automatikus javítások *serviceState* az automatikus javítás aktuális állapotát jeleníti meg. Ha egy méretezési csoport automatikus javításokra van beállítva, a *serviceState* paraméter értéke *fut* értékre van állítva. Ha az automatikus javítás fel van függesztve egy méretezési csoportra, a *serviceState* paraméter *felfüggesztve* értékre van állítva. Ha a *automaticRepairsPolicy* definiálva van egy méretezési csoport, de az automatikus javítás funkció nincs engedélyezve, akkor a *ServiceState* paraméter *nem fut* értékre van állítva.
 
-Ha egy méretezési csoport nem kifogástalan állapotának cseréjéhez újonnan létrehozott példányok továbbra is kifogástalan állapotban maradnak, még a javítási műveletek ismételt végrehajtása után is, akkor a platform biztonsági intézkedése frissíti a *serviceState* az automatikus javítások *felfüggesztéséhez*. Újra folytathatja az automatikus javításokat úgy, hogy a *serviceState* értékének megadásával *futtatja*az automatikus javításokat. Részletes utasítások a méretezési csoport [automatikus javítási szabályzatának megtekintési és frissítési állapotának megtekintése és frissítése](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy) című szakaszban olvashatók. 
+Ha egy méretezési csoport nem kifogástalan állapotának cseréjéhez újonnan létrehozott példányok továbbra is kifogástalan állapotban maradnak, még a javítási műveletek ismételt végrehajtása után is, akkor a platform biztonsági intézkedése frissíti a *serviceState* az automatikus javítások *felfüggesztéséhez* . Újra folytathatja az automatikus javításokat úgy, hogy a *serviceState* értékének megadásával *futtatja* az automatikus javításokat. Részletes utasítások a méretezési csoport [automatikus javítási szabályzatának megtekintési és frissítési állapotának megtekintése és frissítése](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy) című szakaszban olvashatók. 
 
 Az automatikus példány javításának folyamata a következőképpen működik:
 
@@ -96,7 +96,7 @@ Ezzel a rövid útmutató [sablonnal](https://github.com/Azure/azure-quickstart-
  
 Az alábbi lépésekkel engedélyezheti az automatikus javítási szabályzatot új méretezési csoport létrehozásakor.
  
-1. Nyissa meg a **virtuálisgép-méretezési csoportokat**.
+1. Nyissa meg a **virtuálisgép-méretezési csoportokat** .
 1. Válassza a **+ Hozzáadás** lehetőséget egy új méretezési csoport létrehozásához.
 1. Lépjen a **Health (állapot** ) lapra. 
 1. Keresse meg az **állapot** szakaszt.
@@ -156,7 +156,7 @@ az vmss create \
   --automatic-repairs-grace-period 30
 ```
 
-A fenti példa egy meglévő Load balancert és egy állapot-mintavételt használ az alkalmazások állapotának figyeléséhez. Ha inkább egy alkalmazás-állapotfigyelő bővítményt szeretne használni a figyeléshez, létrehozhat egy méretezési készletet, beállíthatja az alkalmazás állapotát, majd engedélyezheti az automatikus példány javítása házirendet az az *vmss Update*használatával, a következő szakaszban leírtak szerint.
+A fenti példa egy meglévő Load balancert és egy állapot-mintavételt használ az alkalmazások állapotának figyeléséhez. Ha inkább egy alkalmazás-állapotfigyelő bővítményt szeretne használni a figyeléshez, létrehozhat egy méretezési készletet, beállíthatja az alkalmazás állapotát, majd engedélyezheti az automatikus példány javítása házirendet az az *vmss Update* használatával, a következő szakaszban leírtak szerint.
 
 ## <a name="enabling-automatic-repairs-policy-when-updating-an-existing-scale-set"></a>Automatikus javítási szabályzat engedélyezése egy meglévő méretezési csoport frissítésekor
 
@@ -169,7 +169,7 @@ Egy meglévő méretezési csoport modelljének frissítése után győződjön 
 Egy meglévő méretezési csoport automatikus javítási szabályzatát módosíthatja a Azure Portalon keresztül. 
  
 1. Váltson egy meglévő virtuálisgép-méretezési csoportra.
-1. A bal oldali menü **Beállítások** területén válassza az **állapot és javítás**lehetőséget.
+1. A bal oldali menü **Beállítások** területén válassza az **állapot és javítás** lehetőséget.
 1. Az **alkalmazás állapotának figyelése** lehetőség engedélyezése.
 1. Keresse meg az **automatikus javítási szabályzat** szakaszt.
 1. Kapcsolja **be** az **automatikus javítási** lehetőséget.
@@ -223,7 +223,7 @@ az vmss update \
 
 ### <a name="rest-api"></a>REST API 
 
-A virtuálisgép-méretezési csoporthoz tartozó, 2019-12-01 [-es vagy](/rest/api/compute/virtualmachinescalesets/getinstanceview) újabb API-s verziójú, a *serviceState* az automatikus javításokhoz a *orchestrationServices*tulajdonság alatt megtekintheti. 
+A virtuálisgép-méretezési csoporthoz tartozó, 2019-12-01 [-es vagy](/rest/api/compute/virtualmachinescalesets/getinstanceview) újabb API-s verziójú, a *serviceState* az automatikus javításokhoz a *orchestrationServices* tulajdonság alatt megtekintheti. 
 
 ```http
 GET '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/instanceView?api-version=2019-12-01'
@@ -309,10 +309,10 @@ A példány lehet türelmi időszak. Ez az az időtartam, ameddig a rendszer az 
 
 **A méretezési csoport példányainak alkalmazás-állapotának megtekintése**
 
-A virtuálisgép-méretezési csoport példányaihoz tartozó példányok [megtekintése API](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) használatával megtekintheti az alkalmazás állapotát. A Azure PowerShell a [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) parancsmagot használhatja a *-InstanceView* jelzővel. Az alkalmazás állapotának állapotát a *vmHealth*tulajdonság alatt kell megadnia.
+A virtuálisgép-méretezési csoport példányaihoz tartozó példányok [megtekintése API](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) használatával megtekintheti az alkalmazás állapotát. A Azure PowerShell a [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) parancsmagot használhatja a *-InstanceView* jelzővel. Az alkalmazás állapotának állapotát a *vmHealth* tulajdonság alatt kell megadnia.
 
 A Azure Portal az állapotot is megtekintheti. Váltson egy meglévő méretezési csoportra, válassza a bal oldali menüben a **példányok** lehetőséget, és tekintse **meg az Állapot oszlopban az** egyes méretezési csoportokhoz tartozó állapotok állapotát. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan konfigurálhatja a méretezési csoportokhoz az [alkalmazás állapotának kiterjesztését](./virtual-machine-scale-sets-health-extension.md) vagy a [terheléselosztó állapotát](../load-balancer/load-balancer-custom-probe-overview.md) .

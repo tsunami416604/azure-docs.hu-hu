@@ -84,6 +84,8 @@
       href: concepts/logging-and-diagnostics.md
     - name: Mérőszámok
       href: concepts/metrics.md
+    - name: Hibaelhárítás
+      href: concepts/troubleshooting-info.md
 - name: Példák
   items:
     - name: Csoportos hívás kiemelt mintája
@@ -105,4 +107,4 @@
 - name: További források
   items:
     - name: Kibocsátási megjegyzések
-      href: 'https://github.com/Azure/Communication/blob/master/releasenotes/2020-September-22.md'
+      href: 'https://github.com/Azure/Communication/blob/master/releasenotes'

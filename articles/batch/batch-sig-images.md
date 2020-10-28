@@ -3,13 +3,13 @@ title: Egyéni rendszerkép-készlet létrehozása a megosztott rendszerkép-kat
 description: Az egyéni képkészletek hatékony módszer a számítási csomópontok konfigurálására a Batch-munkaterhelések futtatásához.
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: 31fcbff50a2a66aec1643f1bac351e0401205861
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 4a41e8345bdb4c4e8761debe8e6b39f8588f5a8c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605192"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745522"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Egyéni rendszerkép-készlet létrehozása a megosztott rendszerkép-katalógus használatával
 
@@ -208,7 +208,7 @@ A következő lépésekkel hozhat létre készletet egy megosztott rendszerképb
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 1. Nyissa meg a **Batch-fiókokat** , és válassza ki a fiókját.
 1. Válassza a **készletek** lehetőséget, majd a **Hozzáadás** gombra kattintva hozzon létre egy új készletet.
-1. A **rendszerkép típusa** szakaszban válassza a **megosztott képgyűjtemény**lehetőséget.
+1. A **rendszerkép típusa** szakaszban válassza a **megosztott képgyűjtemény** lehetőséget.
 1. Hajtsa végre a többi szakaszt a felügyelt lemezképpel kapcsolatos információkkal.
 1. Kattintson az **OK** gombra.
 

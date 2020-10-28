@@ -3,13 +3,13 @@ title: Oktatóanyag – rendszerkép létrehozása kód véglegesítve
 description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat egy Azure Container Registry feladatot úgy, hogy automatikusan aktiválja a tároló rendszerképét a felhőben, amikor a forráskódot egy git-tárházba véglegesíti.
 ms.topic: tutorial
 ms.date: 05/04/2019
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 2f70b829e2202c3d28adcfbbb07338923c43e8a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: a4d0a2d3d98bec28e4d6389c9069db3e7b395597
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78402847"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745559"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Oktatóanyag: Tárolólemezképek összeállításának automatizálása a felhőben forráskód véglegesítésekor
 
@@ -264,7 +264,7 @@ da2       taskhelloworld  Linux       Succeeded  Manual      2018-09-17T22:50:59
 da1                       Linux       Succeeded  Manual      2018-09-17T22:29:59Z  00:00:57
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag azt mutatta be, hogyan használhatók a feladatok a tárolórendszerképek összeállításának automatikus aktiválására az Azure-ban, amikor forráskódot véglegesít egy Git-adattárban. Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan hozhat létre olyan feladatokat, amelyek a tárolórendszerképek alapként szolgáló rendszerképeinek frissítésekor aktiválnak összeállításokat.
 

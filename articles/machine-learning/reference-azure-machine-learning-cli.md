@@ -9,13 +9,13 @@ ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 06/22/2020
-ms.custom: seodec18
-ms.openlocfilehash: 50ac8ede9f8272d6956d1ac29e57a9c26d2c0bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 8ce32ab1e7dac6fd1a154fc6e730113428a8291b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708271"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744489"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Telepítse & a CLI-bővítményt használja Azure Machine Learning
 
@@ -32,9 +32,9 @@ A CLI nem helyettesíti a Azure Machine Learning SDK-t. Ez egy kiegészítő esz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A CLI használatához Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* A CLI használatához Azure-előfizetéssel kell rendelkeznie. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
-* Ha a jelen dokumentumban a CLI-parancsokat a **helyi környezetből**szeretné használni, szüksége lesz az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)-re.
+* Ha a jelen dokumentumban a CLI-parancsokat a **helyi környezetből** szeretné használni, szüksége lesz az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)-re.
 
     Ha a [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)használja, a CLI a böngészőn keresztül érhető el, és a felhőben él.
 
@@ -411,7 +411,7 @@ A következő táblázat részletezi a JSON-fájl legfelső szintű mezőjét, t
 
 | JSON-mező | Típus | Leírás |
 |---|---|---|
-| `name` | `string` | A környezet neve. A név nem kezdődhet a **Microsofttal** vagy a **AzureML**. |
+| `name` | `string` | A környezet neve. A név nem kezdődhet a **Microsofttal** vagy a **AzureML** . |
 | `version` | `string` | A környezet verziója. |
 | `environmentVariables` | `{string: string}` | A környezeti változók neveinek és értékeinek kivonata. |
 | `python` | [`PythonSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py&preserve-view=true)a kalap meghatározza a Python-környezetet és a tolmácsot a cél számítási erőforráson való használatra. |

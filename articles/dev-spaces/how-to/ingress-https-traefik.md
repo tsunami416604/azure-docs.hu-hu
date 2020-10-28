@@ -5,13 +5,13 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Ismerje meg, hogyan konfigurálhatja az Azure dev Spaces-t egyéni traefik bemenő vezérlő használatára, és hogyan konfigurálhatja a HTTPS-t az adott bejövő vezérlő használatával
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
-ms.custom: devx-track-js
-ms.openlocfilehash: a30dae3b65a7e877dc20b4d6fae8de338024d3c7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: fb45c310d306813dc10b667db6ce36048eccf217
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973053"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746111"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Egyéni bejövő traefik-vezérlő használata és HTTPS konfigurálása
 
@@ -102,8 +102,8 @@ cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
 Nyissa meg a [Values. YAML][values-yaml] , és végezze el a következő frissítéseket:
-* Cserélje le a *<REPLACE_ME_WITH_HOST_SUFFIX>* összes példányát a *traefik. MY_CUSTOM_DOMAIN* a tartományt a *MY_CUSTOM_DOMAINhoz*. 
-* Cserélje le a *kubernetes.IO/ingress.Class: traefik-azds # dev Spaces-specifikus* with *kubernetes.IO/ingress.Class: traefik # Custom beáramló*. 
+* Cserélje le a *<REPLACE_ME_WITH_HOST_SUFFIX>* összes példányát a *traefik. MY_CUSTOM_DOMAIN* a tartományt a *MY_CUSTOM_DOMAINhoz* . 
+* Cserélje le a *kubernetes.IO/ingress.Class: traefik-azds # dev Spaces-specifikus* with *kubernetes.IO/ingress.Class: traefik # Custom beáramló* . 
 
 Az alábbi példa egy frissített fájlt mutat be `values.yaml` :
 
@@ -212,7 +212,7 @@ spec:
 ```
 
 > [!NOTE]
-> Teszteléshez egy [átmeneti kiszolgáló][letsencrypt-staging-issuer] is használható a *ClusterIssuer*.
+> Teszteléshez egy [átmeneti kiszolgáló][letsencrypt-staging-issuer] is használható a *ClusterIssuer* .
 
 `kubectl`Az alkalmazással használható `letsencrypt-clusterissuer.yaml` .
 
@@ -220,7 +220,7 @@ spec:
 kubectl apply -f letsencrypt-clusterissuer.yaml --namespace traefik
 ```
 
-Távolítsa el az előző *traefik* *ClusterRole* és *ClusterRoleBinding*, majd frissítse a traefik a https használatára a használatával `helm` .
+Távolítsa el az előző *traefik* *ClusterRole* és *ClusterRoleBinding* , majd frissítse a traefik a https használatára a használatával `helm` .
 
 > [!NOTE]
 > Ha az AK-fürtön nincs engedélyezve a RBAC, távolítsa el a *--set RBAC. enabled = True* paramétert.
@@ -262,7 +262,7 @@ az network dns record-set a remove-record \
     --ipv4-address PREVIOUS_EXTERNAL_IP
 ```
 
-A fenti példa frissíti a *MY_CUSTOM_DOMAIN* DNS-zónában *lévő rekordot a* *PREVIOUS_EXTERNAL_IP*használatára.
+A fenti példa frissíti a *MY_CUSTOM_DOMAIN* DNS-zónában *lévő rekordot a* *PREVIOUS_EXTERNAL_IP* használatára.
 
 Frissítse a [Values. YAML][values-yaml] , és adja meg a *CERT-Manager* és a https használatának részleteit. Az alábbi példa egy frissített fájlt mutat be `values.yaml` :
 
@@ -337,7 +337,7 @@ A [BikeSharingWeb/package.js][package-json] frissítése az *URL-* csomagra vona
 ...
 ```
 
-Frissítse a *getApiHostAsync* metódust a [BikeSharingWeb/lib/helpers.jsban ][helpers-js] a https használatára:
+Frissítse a *getApiHostAsync* metódust a [BikeSharingWeb/lib/helpers.jsban][helpers-js] a https használatára:
 
 ```javascript
 ...

@@ -10,13 +10,13 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 2f1eddf33dc02b1afaffdc200ed8b79b18f77aa4
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
+ms.openlocfilehash: 31c9f203a8602b6c078fe2e9c672c539140f9990
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999196"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744441"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Gépi tanulási modell üzembe helyezése Azure App Service (előzetes verzió)
 
@@ -56,7 +56,7 @@ A Azure App Service által nyújtott szolgáltatásokkal kapcsolatos további in
 
 A telepítés előtt meg kell határoznia, hogy mire van szükség a modell webszolgáltatásként való futtatásához. Az alábbi lista a központi telepítéshez szükséges fő elemeket ismerteti:
 
-* Egy __bejegyzési parancsfájl__. Ez a szkript fogadja a kéréseket, a modell használatával szerzi a kérést, és visszaadja az eredményeket.
+* Egy __bejegyzési parancsfájl__ . Ez a szkript fogadja a kéréseket, a modell használatával szerzi a kérést, és visszaadja az eredményeket.
 
     > [!IMPORTANT]
     > A bejegyzési parancsfájl a modellre jellemző. meg kell ismernie a bejövő kérelmek adatainak formátumát, a modell által várt adatformátumot, valamint az ügyfeleknek visszaadott adatformátumot.
@@ -70,9 +70,9 @@ A telepítés előtt meg kell határoznia, hogy mire van szükség a modell webs
 
     A beléptetési parancsfájlokkal kapcsolatos további információkért lásd: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
-* **Függőségek**, például segítő parancsfájlok vagy Python/Conda csomagok, amelyek a belépési parancsfájl vagy modell futtatásához szükségesek
+* **Függőségek** , például segítő parancsfájlok vagy Python/Conda csomagok, amelyek a belépési parancsfájl vagy modell futtatásához szükségesek
 
-Ezek az entitások egy __következtetési konfigurációba__vannak ágyazva. A következtetési konfiguráció a bejegyzés parancsfájljára és további függőségekre hivatkozik.
+Ezek az entitások egy __következtetési konfigurációba__ vannak ágyazva. A következtetési konfiguráció a bejegyzés parancsfájljára és további függőségekre hivatkozik.
 
 > [!IMPORTANT]
 > Ha Azure App Service-vel való használatra vonatkozó következtetési konfigurációt hoz létre, [környezeti](https://docs.microsoft.com//python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true) objektumot kell használnia. Vegye figyelembe, hogy ha egyéni környezetet határoz meg, akkor a >= 1.0.45 verzióval rendelkező azureml kell hozzáadnia pip-függőségként. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. Az alábbi példa bemutatja, hogyan hozható létre egy környezeti objektum, és hogyan használhatja azt egy következtetési konfigurációval:
@@ -97,7 +97,7 @@ További információ a környezetekről: [környezetek létrehozása és kezel�
 További információ a konfigurációval kapcsolatban: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
 > [!IMPORTANT]
-> A Azure App Service való telepítésekor nem kell létrehoznia __központi telepítési konfigurációt__.
+> A Azure App Service való telepítésekor nem kell létrehoznia __központi telepítési konfigurációt__ .
 
 ## <a name="create-the-image"></a>A rendszerkép létrehozása
 
@@ -146,7 +146,7 @@ Ekkor `show_output=True` megjelenik a Docker-létrehozási folyamat kimenete. A 
     }
     ```
 
-    Mentse a __Felhasználónév__ és az egyik __jelszó__értékét.
+    Mentse a __Felhasználónév__ és az egyik __jelszó__ értékét.
 
 1. Ha még nem rendelkezik erőforráscsoport-vagy app Service-csomaggal a szolgáltatás telepítéséhez, a következő parancsok azt mutatják be, hogyan hozható létre egyszerre:
 

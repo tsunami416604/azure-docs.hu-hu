@@ -6,13 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 731e4306575a8bd5f63dd47ca213a0e52a21487b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 03b112466ef094a578d47586a44ab383a5da1a9b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151223"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744895"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR szolgáltatás – hitelesítés
 
@@ -32,7 +32,7 @@ Az oktatóanyag kódja letölthető az [AzureSignalR-minták GitHub-adattárjáb
 
 ![Azure-ban üzemeltetett teljes OAuth-hitelesítés](media/signalr-concept-authenticate-oauth/signalr-oauth-complete-azure.png)
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Új OAuth-alkalmazás regisztrálása a GitHub-fiókkal
@@ -55,16 +55,16 @@ Az oktatóanyag elvégzéséhez az alábbi előfeltételekkel kell rendelkeznie:
 
 1. Nyisson meg egy webböngészőt, navigáljon a `https://github.com` helyre, és jelentkezzen be a fiókjába.
 
-2. A fiókjához navigáljon a **Beállítások**  >  **fejlesztői beállítások** területen, majd kattintson az **új alkalmazás regisztrálása**vagy az **új OAuth alkalmazás** a *OAuth-alkalmazások*alatt lehetőségre.
+2. A fiókjához navigáljon a **Beállítások**  >  **fejlesztői beállítások** területen, majd kattintson az **új alkalmazás regisztrálása** vagy az **új OAuth alkalmazás** a *OAuth-alkalmazások* alatt lehetőségre.
 
 3. Adja meg a következő beállításokat az új OAuth-alkalmazás számára, majd kattintson a **Register application (Alkalmazás regisztrálása)** lehetőségre:
 
-    | Beállítás neve | Ajánlott érték | Description |
+    | Beállítás neve | Ajánlott érték | Leírás |
     | ------------ | --------------- | ----------- |
     | Alkalmazásnév | *Azure SignalR Chat* | A GitHub-felhasználónak képesnek kell lennie a hitelesítéssel rendelkező alkalmazás felismerésére és megbízhatóságára.   |
     | Kezdőlap URL-címe | `http://localhost:5000/home` | |
     | Alkalmazás leírása | *Egy chat room-minta, amely az Azure Signaler szolgáltatást használja GitHub-hitelesítéssel* | Az alkalmazás hasznos leírása, amely információkat nyújt az alkalmazás felhasználóinak az alkalmazott hitelesítés környezetéről. |
-    | Az engedélyezési visszahívás URL-címe | `http://localhost:5000/signin-github` | Ez az OAuth-alkalmazás legfontosabb beállítása. Ez az a visszahívási URL-cím, amelyet a GitHub a sikeres hitelesítés után visszaad a felhasználónak. Ebben az oktatóanyagban az *AspNet.Security.OAuth.GitHub* csomag alapértelmezett visszahívási URL-címét kell használnia: */signin-github*.  |
+    | Az engedélyezési visszahívás URL-címe | `http://localhost:5000/signin-github` | Ez az OAuth-alkalmazás legfontosabb beállítása. Ez az a visszahívási URL-cím, amelyet a GitHub a sikeres hitelesítés után visszaad a felhasználónak. Ebben az oktatóanyagban az *AspNet.Security.OAuth.GitHub* csomag alapértelmezett visszahívási URL-címét kell használnia: */signin-github* .  |
 
 4. Az új OAuth-alkalmazás regisztrálását követően adja hozzá az *Ügyfél-azonosítót* és a *Titkos ügyfélkulcsot* a Secret Managerhez az alábbi parancsokkal. Cserélje le a *Your_GitHub_Client_Id* és a *Your_GitHub_Client_Secret* elemeket az OAuth-alkalmazás értékeire.
 
@@ -550,7 +550,7 @@ A kód üzembe helyezéséhez hajtsa végre az alábbi parancsokat egy Git-rends
 
 A legutolsó dolog, amit el kell végeznie, az a GitHub OAuth-alkalmazás **Homepage URL** (Kezdőlap URL-címe) és **Authorization callback URL** (Engedélyezés-visszahívási URL-cím) tulajdonságának frissítését, hogy azok az új üzemeltetett alkalmazásra mutassanak.
 
-1. Nyisson meg [https://github.com](https://github.com) egy böngészőben, és navigáljon a fiókja **Beállítások**  >  **fejlesztői beállítások**  >  **OAuth-alkalmazásokhoz**.
+1. Nyisson meg [https://github.com](https://github.com) egy böngészőben, és navigáljon a fiókja **Beállítások**  >  **fejlesztői beállítások**  >  **OAuth-alkalmazásokhoz** .
 
 2. Kattintson a hitelesítő alkalmazásra, és a frissítse a **Homepage URL** (Kezdőlap URL-címe) és **Authorization callback URL** (Engedélyezés-visszahívási URL-cím) tulajdonságát a lent látható módon:
 
@@ -563,7 +563,7 @@ A legutolsó dolog, amit el kell végeznie, az a GitHub OAuth-alkalmazás **Home
 
     ![Azure-ban üzemeltetett teljes OAuth-hitelesítés](media/signalr-concept-authenticate-oauth/signalr-oauth-complete-azure.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és a következő oktatóanyagban újból felhasználhatja az ebben a rövid útmutatóban létrehozott erőforrásokat.
 

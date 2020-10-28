@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: references_regions
-ms.openlocfilehash: e57317dce64b58e5c92684152d840955a30df660
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: d7718ebbbf4f9dec3519ce46e5d0d1cdbb5a7460
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441186"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745956"
 ---
 # <a name="using-azure-ultra-disks"></a>Az Azure Ultra Disks használata
 
@@ -29,7 +29,7 @@ Az Azure Ultra Disks nagy teljesítményű, magas IOPS és konzisztens, alacsony
 
 ### <a name="vms-using-availability-zones"></a>Rendelkezésre állási zónákat használó virtuális gépek
 
-Az ultra-lemezek kihasználása érdekében meg kell határoznia, hogy melyik rendelkezésre állási zónát használja. Nem minden régió támogatja a virtuálisgép-méretet az ultra Disks szolgáltatással. Annak megállapításához, hogy a régió, a zóna és a virtuálisgép-méret támogatja-e az ultra-lemezeket, futtassa a következő parancsok egyikét, és először cserélje le a **régiót**, a **vmSize**és az **előfizetési** értékeket:
+Az ultra-lemezek kihasználása érdekében meg kell határoznia, hogy melyik rendelkezésre állási zónát használja. Nem minden régió támogatja a virtuálisgép-méretet az ultra Disks szolgáltatással. Annak megállapításához, hogy a régió, a zóna és a virtuálisgép-méret támogatja-e az ultra-lemezeket, futtassa a következő parancsok egyikét, és először cserélje le a **régiót** , a **vmSize** és az **előfizetési** értékeket:
 
 #### <a name="cli"></a>parancssori felület
 
@@ -122,7 +122,7 @@ Ha több Ultra lemezzel rendelkező virtuális gépet szeretne létrehozni, teki
 
 Ha saját sablont szeretne használni, győződjön meg róla, hogy a **apiVersion** a `Microsoft.Compute/virtualMachines` és a `Microsoft.Compute/Disks` `2018-06-01` (vagy újabb) értékre van beállítva.
 
-Állítsa be a lemez SKU-jának **UltraSSD_LRS**, majd állítsa be a lemez kapacitása, a IOPS, a rendelkezésre állási zóna és az átviteli sebesség (MB/s) értéket egy ultra-lemez létrehozásához.
+Állítsa be a lemez SKU-jának **UltraSSD_LRS** , majd állítsa be a lemez kapacitása, a IOPS, a rendelkezésre állási zóna és az átviteli sebesség (MB/s) értéket egy ultra-lemez létrehozásához.
 
 A virtuális gép üzembe helyezése után particionálhatja és formázhatja az adatlemezeket, és konfigurálhatja azokat a számítási feladatokhoz.
 
@@ -141,18 +141,18 @@ Ez a szakasz a virtuális gép adatlemezként való üzembe helyezését ismerte
 
 ![Képernyőkép a virtuálisgép-létrehozási folyamatról, az alapszintű panelről.](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk-enabled-vm.png)
 
-- A lemezek panelen válassza az **Igen** lehetőséget az **ultravékony lemezek kompatibilitásának engedélyezéséhez**.
+- A lemezek panelen válassza az **Igen** lehetőséget az **ultravékony lemezek kompatibilitásának engedélyezéséhez** .
 - Válassza **a létrehozás lehetőséget, és csatoljon egy új lemezt** egy ultra-lemez csatlakoztatásához.
 
 ![Képernyőkép a virtuálisgép-létrehozási folyamatról, a lemez panelről, az ultra engedélyezve van, és új lemez létrehozása és csatolása van kiemelve.](media/virtual-machines-disks-getting-started-ultra-ssd/enable-and-attach-ultra-disk.png)
 
-- Az **új lemez létrehozása** panelen adjon meg egy nevet, majd válassza a **méret módosítása**lehetőséget.
+- Az **új lemez létrehozása** panelen adjon meg egy nevet, majd válassza a **méret módosítása** lehetőséget.
 
     :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-create-new-disk-flow.png" alt-text="Képernyőfelvétel: új lemez létrehozása panel, méret kiemelve.":::
 
 
-- Módosítsa a **tárolási típust** **Ultra-lemezre**.
-- Módosítsa az **Egyéni lemez méretének (GIB)**, a **lemez IOPS**és a **lemez átviteli sebességének** értékét.
+- Módosítsa a **tárolási típust** **Ultra-lemezre** .
+- Módosítsa az **Egyéni lemez méretének (GIB)** , a **lemez IOPS** és a **lemez átviteli sebességének** értékét.
 - Mindkét panelen válassza **az OK** lehetőséget.
 
     :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="Képernyőfelvétel: új lemez létrehozása panel, méret kiemelve.":::
@@ -165,7 +165,7 @@ Először határozza meg a telepítendő virtuális gép méretét. A támogatot
 
 Ultra-lemez csatlakoztatásához létre kell hoznia egy olyan virtuális gépet, amely képes az ultrakönnyű lemezek használatára.
 
-Cserélje le vagy állítsa be a **$vmname**, **$rgname**, **$diskname**, **$Location**, **$Password**, **$User** változókat a saját értékeivel. Állítsa **$Zone**  értéket a [cikk elejétől](#determine-vm-size-and-region-availability)kapott rendelkezésre állási zóna értékére. Ezután futtassa az alábbi CLI-parancsot egy ultra-kompatibilis virtuális gép létrehozásához:
+Cserélje le vagy állítsa be a **$vmname** , **$rgname** , **$diskname** , **$Location** , **$Password** , **$User** változókat a saját értékeivel. Állítsa **$Zone**  értéket a [cikk elejétől](#determine-vm-size-and-region-availability)kapott rendelkezésre állási zóna értékére. Ezután futtassa az alábbi CLI-parancsot egy ultra-kompatibilis virtuális gép létrehozásához:
 
 ```azurecli-interactive
 az disk create --subscription $subscription -n $diskname -g $rgname --size-gb 1024 --location $location --sku UltraSSD_LRS --disk-iops-read-write 8192 --disk-mbps-read-write 400
@@ -232,28 +232,28 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 Ha a meglévő virtuális gép egy olyan régióban vagy rendelkezésre állási zónában van, amely képes az ultra-lemezek használatára, az új virtuális gép létrehozása nélkül is használhatja az ultra lemezeket. A meglévő virtuális gépen lévő Ultra Disks szolgáltatás engedélyezésével, majd adatlemezként való csatlakoztatásával. Az ultravékony lemezek kompatibilitásának engedélyezéséhez le kell állítania a virtuális gépet. A virtuális gép leállítása után engedélyezheti a kompatibilitást, majd újraindíthatja a virtuális gépet. Ha a kompatibilitási funkció engedélyezve van, akkor az ultra Disk:
 
 - Navigáljon a virtuális géphez, és állítsa le, várja meg, amíg felszabadítja.
-- A virtuális gép kiosztása után válassza a **lemezek**lehetőséget.
+- A virtuális gép kiosztása után válassza a **lemezek** lehetőséget.
 - Válassza a **Szerkesztés** elemet.
 
 ![Képernyőkép egy meglévő virtuálisgép-lemez panelről, a Szerkesztés kiemelve.](media/virtual-machines-disks-getting-started-ultra-ssd/options-selector-ultra-disks.png)
 
-- Válassza az **Igen** lehetőséget az **ultravékony lemezek kompatibilitásának engedélyezéséhez**.
+- Válassza az **Igen** lehetőséget az **ultravékony lemezek kompatibilitásának engedélyezéséhez** .
 
 ![Képernyőfelvétel: az ultravékony lemezek kompatibilitásának engedélyezése.](media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png)
 
-- Kattintson a **Mentés** gombra.
-- Válassza az **adatlemez hozzáadása** lehetőséget, majd a legördülő **listából válassza a** **lemez létrehozása**lehetőséget.
+- Válassza a **Mentés** lehetőséget.
+- Válassza az **adatlemez hozzáadása** lehetőséget, majd a legördülő **listából válassza a** **lemez létrehozása** lehetőséget.
 
 ![Képernyőfelvétel a lemez panelről, új lemez hozzáadása.](media/virtual-machines-disks-getting-started-ultra-ssd/create-and-attach-new-ultra-disk.png)
 
-- Adja meg az új lemez nevét, majd válassza a **méret módosítása**lehetőséget.
-- Módosítsa a **fiók típusát** **Ultra-lemezre**.
-- Módosítsa az **Egyéni lemez méretének (GIB)**, a **lemez IOPS**és a **lemez átviteli sebességének** értékét.
+- Adja meg az új lemez nevét, majd válassza a **méret módosítása** lehetőséget.
+- Módosítsa a **fiók típusát** **Ultra-lemezre** .
+- Módosítsa az **Egyéni lemez méretének (GIB)** , a **lemez IOPS** és a **lemez átviteli sebességének** értékét.
 
     :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="Képernyőfelvétel: új lemez létrehozása panel, méret kiemelve.":::
 
-- Válassza **az OK** , majd a **Létrehozás**lehetőséget.
-- Miután visszatért a lemez paneljére, válassza a **Mentés**lehetőséget.
+- Válassza **az OK** , majd a **Létrehozás** lehetőséget.
+- Miután visszatért a lemez paneljére, válassza a **Mentés** lehetőséget.
 - Indítsa el újra a virtuális gépet.
 
 ![Képernyőfelvétel a virtuális gép lemezek paneljéről.](media/virtual-machines-disks-getting-started-ultra-ssd/saving-and-attaching-new-ultra-disk.png)
@@ -372,13 +372,13 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 
 Az ultra Disks egyedi képességgel rendelkezik, amely lehetővé teszi a teljesítmény módosítását. Ezeket a módosításokat a Azure Portal lemezeken is végrehajthatja.
 
-- Navigáljon a virtuális géphez, és válassza a **lemezek**lehetőséget.
+- Navigáljon a virtuális géphez, és válassza a **lemezek** lehetőséget.
 - Válassza ki azt az ultra lemezt, amelynek a teljesítményét módosítani szeretné.
 
 ![A virtuális gép lemezek paneljének képernyőképe, a lemez kiemelve.](media/virtual-machines-disks-getting-started-ultra-ssd/selecting-ultra-disk-to-modify.png)
 
 - Válassza a **konfiguráció** lehetőséget, majd végezze el a módosításokat.
-- Kattintson a **Mentés** gombra.
+- Válassza a **Mentés** lehetőséget.
 
 ![Képernyőkép a konfiguráció panelről, amely az ultra lemez, a lemez mérete, a IOPS és az átviteli sebesség ki van emelve, a Mentés ki van emelve.](media/virtual-machines-disks-getting-started-ultra-ssd/configuring-ultra-disk-performance-and-size.png)
 

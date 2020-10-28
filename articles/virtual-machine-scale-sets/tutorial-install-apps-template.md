@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: template
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 19eb5ae89598a0ebe040f1ffda5afd2b9e3d5e7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 357d3aaa9cf9e324f8dd27636b9f34f503f566de
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87059257"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746011"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>Oktatóanyag: Alkalmazások telepítése virtuálisgép-méretezési csoportokban Azure-sablonnal
 Ha alkalmazásokat szeretne futtatni egy méretezési csoport virtuálisgép-példányán, először telepítenie kell az alkalmazás összetevőit és szükséges fájljait. Egy korábbi oktatóanyagból megtudhatta, hogyan hozhat létre és használhat egyéni virtuálisgép-rendszerképeket a virtuálisgép-példányok üzembe helyezéséhez. Ez az egyéni rendszerkép tartalmazott manuális alkalmazástelepítéseket és -konfigurációkat. Az egyes virtuálisgép-példányok üzembe helyezése után lehetősége van az alkalmazások méretezési csoportokon történő telepítésének automatizálására, vagy egy a méretezési csoporton már futó alkalmazás frissítésére. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -40,7 +40,7 @@ Az egyéni szkriptbővítmény működés közbeni megtekintéséhez hozzon lét
 
 
 ## <a name="create-custom-script-extension-definition"></a>Definíció létrehozása az egyéni szkriptek bővítményéhez
-Amikor Azure-sablonnal határoz meg egy virtuálisgép-méretezési csoportot, a *Microsoft.Compute/virtualMachineScaleSets* erőforrás-szolgáltató tartalmazhat egy a bővítményekre vonatkozó szakaszt is. Az *extensionsProfile* paraméter megadja a méretezési csoport virtuálisgép-példányain alkalmazandó bővítményeket. Az egyéni szkriptbővítmény használatához adja meg kiadóként a *Microsoft.Azure.Extensions*, típusnak pedig a *CustomScript* értéket.
+Amikor Azure-sablonnal határoz meg egy virtuálisgép-méretezési csoportot, a *Microsoft.Compute/virtualMachineScaleSets* erőforrás-szolgáltató tartalmazhat egy a bővítményekre vonatkozó szakaszt is. Az *extensionsProfile* paraméter megadja a méretezési csoport virtuálisgép-példányain alkalmazandó bővítményeket. Az egyéni szkriptbővítmény használatához adja meg kiadóként a *Microsoft.Azure.Extensions* , típusnak pedig a *CustomScript* értéket.
 
 A *fileUris* tulajdonság használatával meghatározhatók a forrásként szolgáló telepítési szkriptek vagy csomagok. A telepítési folyamat elindításához szükséges szkriptek a *commandToExecute* mezőben vannak meghatározva. Az alábbi példa egy mintaszkriptet határoz meg a GitHubról, amely telepíti és konfigurálja az NGINX-webkiszolgálót:
 
@@ -108,7 +108,7 @@ Ne zárja be a böngészőt, hogy megtekinthesse a frissített verziót a követ
 
 
 ## <a name="update-app-deployment"></a>Alkalmazástelepítés frissítése
-A méretezési csoport életciklusa során előfordulhat, hogy telepítenie kell az alkalmazás frissített verzióját. Az egyéni szkriptek bővítményével hivatkozhat egy frissített telepítési szkriptre, majd alkalmazhatja ismét a bővítményt a méretezési csoporton. Ha a méretezési csoport egy korábbi lépésben lett létrehozva, a *UpgradePolicy* *automatikus*értékre lett állítva. Ez a beállítás lehetővé teszi a méretezési csoportban található virtuálisgép-példányok számára az automatikus frissítést és az alkalmazás legfrissebb verziójának alkalmazását.
+A méretezési csoport életciklusa során előfordulhat, hogy telepítenie kell az alkalmazás frissített verzióját. Az egyéni szkriptek bővítményével hivatkozhat egy frissített telepítési szkriptre, majd alkalmazhatja ismét a bővítményt a méretezési csoporton. Ha a méretezési csoport egy korábbi lépésben lett létrehozva, a *UpgradePolicy* *automatikus* értékre lett állítva. Ez a beállítás lehetővé teszi a méretezési csoportban található virtuálisgép-példányok számára az automatikus frissítést és az alkalmazás legfrissebb verziójának alkalmazását.
 
 Az egyéni szkriptbővítmény definíciójának frissítéséhez módosítsa a sablont úgy, hogy az egy új telepítési szkriptre hivatkozzon. Ahhoz, hogy az egyéni szkriptbővítmény felismerje a módosítást, új fájlnevet kell használnia. Az egyéni szkriptbővítmény nem vizsgálja át a szkript tartalmát, hogy történt-e benne változás. Az alábbi definíció egy frissített telepítési szkriptet használt, amelynek a neve ki lett egészítve a *_v2* kifejezéssel:
 
@@ -147,7 +147,7 @@ A méretezési csoport összes virtuálisgép-példánya automatikusan frissül 
 ![Frissített weboldal az NGINX-ben](media/tutorial-install-apps-template/running-nginx-updated.png)
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 A méretezési csoport és a további erőforrások eltávolításához törölje az erőforráscsoportot és a hozzá tartozó összes erőforrást az [az Group delete](/cli/azure/group)paranccsal. A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
 
 ```azurecli-interactive
@@ -155,7 +155,7 @@ az group delete --name myResourceGroup --no-wait --yes
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez az oktatóanyag bemutatta, hogy telepíthet és frissíthet alkalmazásokat automatikusan a méretezési csoportban Azure-sablonok segítségével:
 
 > [!div class="checklist"]

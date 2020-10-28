@@ -4,13 +4,13 @@ description: Megtudhatja, hogyan konfigurálhatja a webalkalmazásokat futtató 
 ms.topic: quickstart
 ms.date: 10/06/2020
 ms.reviewer: astay; kraigb
-ms.custom: mvc, seodec18, devx-track-python
-ms.openlocfilehash: b489f7daebc9232088020948752c3792dca65095
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 935baef209811146d0b60f4fc02986818fd103a7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018746"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743792"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Linux Python-alkalmazás konfigurálása a Azure App Servicehoz
 
@@ -22,9 +22,9 @@ Ez az útmutató ismerteti a Python-fejlesztők számára a App Service beépít
 
 A konfiguráláshoz használhatja a [Azure Portal](https://portal.azure.com) vagy az Azure CLI-t:
 
-- **Azure Portal**használja az alkalmazás **Beállítások**  >  **konfigurációs** lapját az [Azure Portal app Service alkalmazás konfigurálása](configure-common.md)című cikkben leírtak szerint.
+- **Azure Portal** használja az alkalmazás **Beállítások**  >  **konfigurációs** lapját az [Azure Portal app Service alkalmazás konfigurálása](configure-common.md)című cikkben leírtak szerint.
 
-- **Azure CLI**: két lehetőség közül választhat.
+- **Azure CLI** : két lehetőség közül választhat.
 
     - Futtassa a parancsokat a [Azure Cloud Shellban](../cloud-shell/overview.md), amelyet a kód blokk jobb felső sarkában található **TRY IT (kipróbálás** ) gombra kattintva nyithat meg.
     - Futtassa a parancsokat helyileg az [Azure CLI](/cli/azure/install-azure-cli)legújabb verziójának telepítésével, majd jelentkezzen be az Azure-ba az [az login](/cli/azure/reference-index#az-login)használatával.
@@ -34,9 +34,9 @@ A konfiguráláshoz használhatja a [Azure Portal](https://portal.azure.com) vag
 
 ## <a name="configure-python-version"></a>Python-verzió konfigurálása
 
-- **Azure Portal**: használja a **konfiguráció** lap **általános beállítások** lapját a Linux-tárolók [általános beállításainak konfigurálása](configure-common.md#configure-general-settings) című témakörben leírtak szerint.
+- **Azure Portal** : használja a **konfiguráció** lap **általános beállítások** lapját a Linux-tárolók [általános beállításainak konfigurálása](configure-common.md#configure-general-settings) című témakörben leírtak szerint.
 
-- **Azure CLI**:
+- **Azure CLI** :
 
     -  Az aktuális Python-verzió megjelenítése az [az WebApp config show paranccsal](/cli/azure/webapp/config#az_webapp_config_show):
     
@@ -68,8 +68,8 @@ A Python nem támogatott verzióját a saját tároló rendszerképének létreh
 App Service a Oryx nevű Build-rendszer a következő lépéseket hajtja végre az alkalmazás git vagy zip-csomagok használatával történő telepítésekor:
 
 1. Ha ezt a beállítást adja meg, futtasson egyéni, előkészítő parancsfájlt `PRE_BUILD_COMMAND` .
-1. A `pip install -r requirements.txt` parancs futtatása. A *requirements.txt* fájlnak jelen kell lennie a projekt gyökérkönyvtárában. Ellenkező esetben a fordítási folyamat a következő hibát jelenti: "nem található a setup.py vagy a requirements.txt; Nem fut a pip telepítése. "
-1. Ha a *Manage.py* a tárház gyökerében található (Django-alkalmazást jelez), futtassa a *Manage.py collectstatic*. Ha azonban ez a `DISABLE_COLLECTSTATIC` beállítás `true` , ez a lépés kimarad.
+1. Futtassa a `pip install -r requirements.txt` parancsot. A *requirements.txt* fájlnak jelen kell lennie a projekt gyökérkönyvtárában. Ellenkező esetben a fordítási folyamat a következő hibát jelenti: "nem található a setup.py vagy a requirements.txt; Nem fut a pip telepítése. "
+1. Ha a *Manage.py* a tárház gyökerében található (Django-alkalmazást jelez), futtassa a *Manage.py collectstatic* . Ha azonban ez a `DISABLE_COLLECTSTATIC` beállítás `true` , ez a lépés kimarad.
 1. Ha a beállítás megadja az egyéni létrehozás utáni parancsfájlt, `POST_BUILD_COMMAND`
 
 Alapértelmezés szerint a `PRE_BUILD_COMMAND` , a `POST_BUILD_COMMAND` és a `DISABLE_COLLECTSTATIC` Beállítások üresek. 
@@ -90,7 +90,7 @@ A Python-alkalmazások Linux rendszeren való futtatásával és a App Serviceá
 > `SCM_DO_BUILD_DURING_DEPLOYMENT`Ha A (z) vagy 1 értéket tartalmaz, a rendszer elindítja a Oryx- `true` buildet az üzembe helyezés során. A beállítás igaz a git, az Azure CLI-parancs `az webapp up` és a Visual Studio Code használatával történő üzembe helyezéskor.
 
 > [!NOTE]
-> Mindig relatív elérési utakat használjon az összes előre és post-Build parancsfájlban, mert az a Build-tároló, amelyben a Oryx fut, eltér az alkalmazást futtató futtatókörnyezeti tárolótól. Soha ne támaszkodjon az alkalmazás Project mappájának a tárolón belüli pontos elhelyezésére (például úgy, hogy az a *site/wwwroot*alá van helyezve).
+> Mindig relatív elérési utakat használjon az összes előre és post-Build parancsfájlban, mert az a Build-tároló, amelyben a Oryx fut, eltér az alkalmazást futtató futtatókörnyezeti tárolótól. Soha ne támaszkodjon az alkalmazás Project mappájának a tárolón belüli pontos elhelyezésére (például úgy, hogy az a *site/wwwroot* alá van helyezve).
 
 ## <a name="production-settings-for-django-apps"></a>Django-alkalmazások üzemi beállításai
 
@@ -102,7 +102,7 @@ Az alábbi táblázat az Azure-hoz kapcsolódó éles beállításokat ismerteti
 | --- | --- |
 | `SECRET_KEY` | Tárolja az értéket egy App Service-beállításban az [Access app Settings as környezeti változókként](#access-app-settings-as-environment-variables)leírt módon. Az értéket felválthatja ["secreting"-ként a Azure Key Vault](/azure/key-vault/secrets/quick-create-python). |
 | `DEBUG` | Hozzon létre egy `DEBUG` beállítást a app Service a 0 (false) értékkel, majd töltse be az értéket környezeti változóként. A fejlesztési környezetében hozzon létre egy `DEBUG` környezeti változót az 1 (igaz) értékkel. |
-| `ALLOWED_HOSTS` | Éles környezetben a Django megköveteli, hogy az alkalmazás URL-címét tartalmazza a `ALLOWED_HOSTS` *Settings.py*tömbben. Ezt az URL-címet futásidőben kérheti le a kóddal `os.environ['WEBSITE_HOSTNAME']` . App Service automatikusan beállítja a `WEBSITE_HOSTNAME` környezeti változót az alkalmazás URL-címére. |
+| `ALLOWED_HOSTS` | Éles környezetben a Django megköveteli, hogy az alkalmazás URL-címét tartalmazza a `ALLOWED_HOSTS` *Settings.py* tömbben. Ezt az URL-címet futásidőben kérheti le a kóddal `os.environ['WEBSITE_HOSTNAME']` . App Service automatikusan beállítja a `WEBSITE_HOSTNAME` környezeti változót az alkalmazás URL-címére. |
 | `DATABASES` | Adja meg az adatbázis-kapcsolatok App Service beállításait, és töltse be azokat környezeti változókként a szótár feltöltéséhez [`DATABASES`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-DATABASES) . Az értékeket (különösen a felhasználónevet és a jelszót) a [Azure Key Vault titokként](/azure/key-vault/secrets/quick-create-python)is tárolhatja. |
 
 ## <a name="container-characteristics"></a>A tároló jellemzői
@@ -144,7 +144,7 @@ Django-alkalmazások esetén az App Service a(z) `wsgi.py` nevű fájlt keresi a
 gunicorn --bind=0.0.0.0 --timeout 600 <module>.wsgi
 ```
 
-Ha pontosabban szeretné vezérelni az indítási parancsot, használjon [Egyéni indítási parancsot](#customize-startup-command), cserélje le `<module>` a nevet a *WSGI.py*tartalmazó mappa nevére, és adjon hozzá egy `--chdir` argumentumot, ha a modul nem szerepel a projekt gyökerében. Ha például a *WSGI.py* a *knboard/háttér/konfiguráció* területen található a projekt gyökerénél, használja az argumentumokat `--chdir knboard/backend config.wsgi` .
+Ha pontosabban szeretné vezérelni az indítási parancsot, használjon [Egyéni indítási parancsot](#customize-startup-command), cserélje le `<module>` a nevet a *WSGI.py* tartalmazó mappa nevére, és adjon hozzá egy `--chdir` argumentumot, ha a modul nem szerepel a projekt gyökerében. Ha például a *WSGI.py* a *knboard/háttér/konfiguráció* területen található a projekt gyökerénél, használja az argumentumokat `--chdir knboard/backend config.wsgi` .
 
 Az éles naplózás engedélyezéséhez adja hozzá a `--access-logfile` és a `--error-logfile` paramétereket az [Egyéni indítási parancsokra](#customize-startup-command)vonatkozó példákban látható módon.
 
@@ -172,15 +172,15 @@ Ha az App Service nem talál egyéni parancsot, vagy Django-, illetve Flask-alka
 
 A cikkben korábban leírtaknak megfelelően a Gunicorn konfigurációs beállításait a *gunicorn.conf.py* -fájlon keresztül is megadhatja a projekt gyökerében, a [Gunicorn-konfiguráció áttekintése](https://docs.gunicorn.org/en/stable/configure.html#configuration-file)című témakörben leírtak szerint.
 
-Ha ez a konfiguráció nem elegendő, a tároló indítási viselkedését beállíthatja úgy, hogy egyéni indítási parancsot vagy több parancsot indít el egy indítási parancsfájlban. Az indítási parancsfájl tetszőleges nevet használhat, például *Startup.sh*, *Startup. cmd*, *startup.txt*stb.
+Ha ez a konfiguráció nem elegendő, a tároló indítási viselkedését beállíthatja úgy, hogy egyéni indítási parancsot vagy több parancsot indít el egy indítási parancsfájlban. Az indítási parancsfájl tetszőleges nevet használhat, például *Startup.sh* , *Startup. cmd* , *startup.txt* stb.
 
 Minden parancsnak relatív elérési utakat kell használnia a projekt gyökérkönyvtárához.
 
 Indítási parancs vagy parancsfájl megadásához:
 
-- **Azure Portal**: válassza ki az alkalmazás **konfiguráció** lapját, majd válassza az **általános beállítások**lehetőséget. Az **indítási parancs** mezőben helyezze el az indítási parancs teljes szövegét vagy az indítási parancsfájl nevét. Ezután kattintson a **Mentés** gombra a módosítások alkalmazásához. Lásd: a Linux-tárolók [általános beállításainak konfigurálása](configure-common.md#configure-general-settings) .
+- **Azure Portal** : válassza ki az alkalmazás **konfiguráció** lapját, majd válassza az **általános beállítások** lehetőséget. Az **indítási parancs** mezőben helyezze el az indítási parancs teljes szövegét vagy az indítási parancsfájl nevét. Ezután kattintson a **Mentés** gombra a módosítások alkalmazásához. Lásd: a Linux-tárolók [általános beállításainak konfigurálása](configure-common.md#configure-general-settings) .
 
-- **Azure CLI**: használja az az [WebApp config set](/cli/azure/webapp/config#az_webapp_config_set) parancsot a `--startup-file` paraméterrel az indítási parancs vagy fájl beállításához:
+- **Azure CLI** : használja az az [WebApp config set](/cli/azure/webapp/config#az_webapp_config_set) parancsot a `--startup-file` paraméterrel az indítási parancs vagy fájl beállításához:
 
     ```azurecli-interactive
     az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
@@ -192,7 +192,7 @@ App Service figyelmen kívül hagyja az egyéni indítási parancsok vagy fájlo
 
 ### <a name="example-startup-commands"></a>Példa indítási parancsokra
 
-- **Hozzáadott Gunicorn argumentumai**: a következő példa hozzáadja a `--workers=4` -t egy Gunicorn parancssorhoz egy Django-alkalmazás indításához: 
+- **Hozzáadott Gunicorn argumentumai** : a következő példa hozzáadja a `--workers=4` -t egy Gunicorn parancssorhoz egy Django-alkalmazás indításához: 
 
     ```bash
     # <module-path> is the relative path to the folder that contains the module
@@ -202,7 +202,7 @@ App Service figyelmen kívül hagyja az egyéni indítási parancsok vagy fájlo
 
     További információkért lásd: [A Gunicorn futtatása](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
 
-- A **Django éles naplózásának engedélyezése**: adja hozzá a (z) `--access-logfile '-'` és `--error-logfile '-'` argumentumokat a parancssorhoz:
+- A **Django éles naplózásának engedélyezése** : adja hozzá a (z) `--access-logfile '-'` és `--error-logfile '-'` argumentumokat a parancssorhoz:
 
     ```bash    
     # '-' for the log files means stdout for --access-logfile and stderr for --error-logfile.
@@ -213,7 +213,7 @@ App Service figyelmen kívül hagyja az egyéni indítási parancsok vagy fájlo
 
     További információ: Gunicorn- [naplózás](https://docs.gunicorn.org/en/stable/settings.html#logging) (docs.gunicorn.org).
     
-- **Egyéni lombik főmodulja**: alapértelmezés szerint a app Service feltételezi, hogy a lombik-alkalmazás fő modulja a *application.py* vagy a *app.py*. Ha a fő modul más nevet használ, testre kell szabnia az indítási parancsot. Például YF van egy olyan lombik-alkalmazás, amelynek a fő modulja *Hello.py* , és az abban a fájlban található lombik alkalmazás-objektum neve `myapp` , a parancs a következő:
+- **Egyéni lombik főmodulja** : alapértelmezés szerint a app Service feltételezi, hogy a lombik-alkalmazás fő modulja a *application.py* vagy a *app.py* . Ha a fő modul más nevet használ, testre kell szabnia az indítási parancsot. Például YF van egy olyan lombik-alkalmazás, amelynek a fő modulja *Hello.py* , és az abban a fájlban található lombik alkalmazás-objektum neve `myapp` , a parancs a következő:
 
     ```bash
     gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -225,7 +225,7 @@ App Service figyelmen kívül hagyja az egyéni indítási parancsok vagy fájlo
     gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
     ```
     
-- **Nem Gunicorn-kiszolgáló**használata: Ha másik webkiszolgálót (például [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html)) szeretne használni, használja a megfelelő parancsot indítási parancsként vagy az indítási parancsfájlban:
+- **Nem Gunicorn-kiszolgáló** használata: Ha másik webkiszolgálót (például [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html)) szeretne használni, használja a megfelelő parancsot indítási parancsként vagy az indítási parancsfájlban:
 
     ```bash
     python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
@@ -282,9 +282,9 @@ A naplók a Azure Portalon keresztüli eléréséhez válassza a **figyelés**  
 
     - Ellenőrizze, hogy van-e hibaüzenet a [naplózási adatfolyamban](#access-diagnostic-logs) .
 
-- **A log stream a következőt jeleníti meg: "nem található Setup.py vagy requirements.txt; Nem fut a pip telepítése. "**: a Oryx-létrehozási folyamat nem találta a *requirements.txt* fájlt.
+- **A log stream a következőt jeleníti meg: "nem található Setup.py vagy requirements.txt; Nem fut a pip telepítése. "** : a Oryx-létrehozási folyamat nem találta a *requirements.txt* fájlt.
 
-    - Az SSH vagy a kudu-konzol használatával csatlakozzon közvetlenül a App Servicehoz, és ellenőrizze, hogy a *requirements.txt* létezik-e közvetlenül a *site/wwwroot*alatt. Ha nem létezik, tegye meg a fájlt a tárházban, és tartalmazza a központi telepítés részét képező helyet. Ha egy különálló mappában van, helyezze át a gyökerébe.
+    - Az SSH vagy a kudu-konzol használatával csatlakozzon közvetlenül a App Servicehoz, és ellenőrizze, hogy a *requirements.txt* létezik-e közvetlenül a *site/wwwroot* alatt. Ha nem létezik, tegye meg a fájlt a tárházban, és tartalmazza a központi telepítés részét képező helyet. Ha egy különálló mappában van, helyezze át a gyökerébe.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -11,12 +11,13 @@ ms.author: wesmc
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: d5147d6d7f1bd1fcd43835f6a66196c7642ad4ff
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+- devx-track-azurecli
+ms.openlocfilehash: 3d4d6225434ad89e0cbdb4777d7311fd4a7a1016
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151949"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743768"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>A IoT fejlesztői készlet AZ3166 összekapcsolásával az Azure IoT Hub
 
@@ -76,9 +77,9 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 1. Futtassa az alábbi parancsot a Azure Cloud Shell az eszköz identitásának létrehozásához.
 
-   **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+   **YourIoTHubName** : az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
-   **MyNodeDevice**: a regisztrálni kívánt eszköz neve. Használja a **MyNodeDevice** az ábrán látható módon. Ha más nevet választ az eszközének, ezt a nevet kell használnia ebben a cikkben, és frissítenie kell az eszköz nevét a minta alkalmazásokban a futtatása előtt.
+   **MyNodeDevice** : a regisztrálni kívánt eszköz neve. Használja a **MyNodeDevice** az ábrán látható módon. Ha más nevet választ az eszközének, ezt a nevet kell használnia ebben a cikkben, és frissítenie kell az eszköz nevét a minta alkalmazásokban a futtatása előtt.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyNodeDevice
@@ -95,7 +96,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
   
 1. Futtassa az alábbi parancsokat az Azure Cloud Shellben az imént regisztrált eszköz _eszközkapcsolati sztringjének_ lekéréséhez:
 
-   **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+   **YourIoTHubName** : az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyNodeDevice --output table
@@ -113,7 +114,7 @@ A fejlesztői készlet az IoT hub eszköz-specifikus végpontján csatlakozik, �
 
 1. Töltse le a [GetStarted belső vezérlőprogram](https://aka.ms/devkit/prod/getstarted/latest) legújabb verzióját a IoT fejlesztői készlet.
 
-1. Győződjön meg arról, hogy a IoT fejlesztői készlet csatlakozik a számítógéphez USB-kapcsolaton keresztül. Nyissa meg a Fájlkezelőben a **AZ3166**nevű USB háttértár eszközt.
+1. Győződjön meg arról, hogy a IoT fejlesztői készlet csatlakozik a számítógéphez USB-kapcsolaton keresztül. Nyissa meg a Fájlkezelőben a **AZ3166** nevű USB háttértár eszközt.
 
     ![A Windows Intéző megnyitása](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/az3166-usb.png)
 
@@ -121,7 +122,7 @@ A fejlesztői készlet az IoT hub eszköz-specifikus végpontján csatlakozik, �
 
     ![Belső vezérlőprogram másolása](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/copy-firmware.png)
 
-1. A fejlesztői készlet tartsa lenyomva a **b**gombot, nyomja le és szabadítsa fel az **Alaphelyzetbe állítás** gombot, majd a **b**gombot. A fejlesztői készlet AP-módba lép. A megerősítéshez a képernyő a fejlesztői készlet és a konfigurációs portál IP-címének szolgáltatáskészlet-azonosítóját (SSID-t) jeleníti meg.
+1. A fejlesztői készlet tartsa lenyomva a **b** gombot, nyomja le és szabadítsa fel az **Alaphelyzetbe állítás** gombot, majd a **b** gombot. A fejlesztői készlet AP-módba lép. A megerősítéshez a képernyő a fejlesztői készlet és a konfigurációs portál IP-címének szolgáltatáskészlet-azonosítóját (SSID-t) jeleníti meg.
 
     ![Alaphelyzetbe állítás gomb, B gomb és SSID](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/wifi-ap.jpg)
 
@@ -164,9 +165,9 @@ A következő lépésekkel készítheti elő a fejlesztési környezetet a fejle
 ### <a name="install-visual-studio-code-with-azure-iot-tools-extension-package"></a>A Visual Studio Code telepítése az Azure IoT Tools bővítmény-csomaggal
 
 1. Telepítse az [ARDUINO ide](https://www.arduino.cc/en/Main/Software)-t. Ez biztosítja a szükséges toolchain az Arduino-kódok fordításához és feltöltéséhez.
-    * **Windows**: Windows Installer verzió használata. Ne telepítse az App Store-ból.
-    * **MacOS**: húzza a kibontott **Arduino. app** `/Applications` mappát a mappába.
-    * **Ubuntu**: csomagolja ki a mappát, például `$HOME/Downloads/arduino-1.8.8`
+    * **Windows** : Windows Installer verzió használata. Ne telepítse az App Store-ból.
+    * **MacOS** : húzza a kibontott **Arduino. app** `/Applications` mappát a mappába.
+    * **Ubuntu** : csomagolja ki a mappát, például `$HOME/Downloads/arduino-1.8.8`
 
 2. Telepítse a [Visual Studio Code](https://code.visualstudio.com/)-ot, amely egy platformfüggetlen forráskód-szerkesztő, amely hatékony IntelliSense-, kód-befejezési és hibakeresési támogatást, valamint sokoldalú bővítményeket is telepíthet a Piactérről.
 
@@ -185,27 +186,27 @@ A következő lépésekkel készítheti elő a fejlesztési környezetet a fejle
 
 5. Állítsa be a VS Code-ot az Arduino-beállításokkal.
 
-    A Visual Studio Code-ban kattintson a **fájl > beállítások > beállítások** (MacOS, **kód > beállítások > beállítások**) elemre. Ezután kattintson az **Open settings (JSON)** ikonra a *Beállítások* lap jobb felső sarkában.
+    A Visual Studio Code-ban kattintson a **fájl > beállítások > beállítások** (MacOS, **kód > beállítások > beállítások** ) elemre. Ezután kattintson az **Open settings (JSON)** ikonra a *Beállítások* lap jobb felső sarkában.
 
     ![Az Azure IoT-eszközök telepítése](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/user-settings-arduino.png)
 
     Adja hozzá a következő sorokat, amelyekkel konfigurálható az Arduino. Vegye figyelembe, hogy milyen platformon dolgozik: 
 
-    * **Windows**:
+    * **Windows** :
 
         ```json
         "arduino.path": "C:\\Program Files (x86)\\Arduino",
         "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
         ```
 
-    * **macOS**:
+    * **macOS** :
 
         ```json
         "arduino.path": "/Applications",
         "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
         ```
 
-    * **Ubuntu**:
+    * **Ubuntu** :
 
         Cserélje le az alábbi **{username}** helyőrzőt a felhasználónevére.
 
@@ -214,7 +215,7 @@ A következő lépésekkel készítheti elő a fejlesztési környezetet a fejle
         "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
         ```
 
-6. Kattintson a `F1` parancs paletta megnyitásához, írja be a parancsot, majd válassza az **Arduino: Board Manager**lehetőséget. Keresse meg a **AZ3166** , és telepítse a legújabb verziót.
+6. Kattintson a `F1` parancs paletta megnyitásához, írja be a parancsot, majd válassza az **Arduino: Board Manager** lehetőséget. Keresse meg a **AZ3166** , és telepítse a legújabb verziót.
 
     ![A fejlesztői készlet SDK telepítése](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-az3166-sdk.png)
 
@@ -222,9 +223,9 @@ A következő lépésekkel készítheti elő a fejlesztési környezetet a fejle
 
 A [St-link/v2](https://www.st.com/en/development-tools/st-link-v2.html) az USB-interfész, amelyet a IoT fejlesztői készlet használ a fejlesztői géppel folytatott kommunikációhoz. Ezt telepítenie kell a Windowson, hogy a fordított eszközkódot a DevKiten frissíthesse. Engedélyezze a gépnek, hogy hozzáférjen az eszközhöz. Ehhez kövesse az egyes operációs rendszerek specifikus utasításait.
 
-* **Windows**: töltse le és telepítse az USB-illesztőprogramot a [STMicroelectronics webhelyről](https://www.st.com/en/development-tools/stsw-link009.html).
-* **MacOS**: nem szükséges illesztőprogram a MacOS-hez.
-* **Ubuntu**: Futtassa a parancsokat a terminálon, majd jelentkezzen ki, és jelentkezzen be újra, hogy a csoportmódosítások életbe léphessenek:
+* **Windows** : töltse le és telepítse az USB-illesztőprogramot a [STMicroelectronics webhelyről](https://www.st.com/en/development-tools/stsw-link009.html).
+* **MacOS** : nem szükséges illesztőprogram a MacOS-hez.
+* **Ubuntu** : Futtassa a parancsokat a terminálon, majd jelentkezzen ki, és jelentkezzen be újra, hogy a csoportmódosítások életbe léphessenek:
 
     ```bash
     # Copy the default rules. This grants permission to the group 'plugdev'
@@ -246,9 +247,9 @@ A IoT fejlesztői készlet olyan gyűjteményeket tartalmaz, amelyek segítség�
 
 1. Győződjön meg arról, hogy a IoT fejlesztői készlet nincs **csatlakoztatva** a számítógéphez. Először indítsa el a VS Code-ot, majd kapcsolja össze a fejlesztői készlet a számítógéppel.
 
-1. Kattintson a `F1` parancs palettájának megnyitásához, írja be a parancsot, majd válassza az **Azure IoT Device Workbench: Megnyitás példák..**. lehetőséget. Ezután válassza a **IoT fejlesztői készlet** lehetőséget.
+1. Kattintson a `F1` parancs palettájának megnyitásához, írja be a parancsot, majd válassza az **Azure IoT Device Workbench: Megnyitás példák..** . lehetőséget. Ezután válassza a **IoT fejlesztői készlet** lehetőséget.
 
-1. A IoT Workbench-példák oldalon keresse meg az első **lépéseket** , és kattintson a **minta megnyitása**lehetőségre. Ezután kiválasztja a mintakód letöltésének alapértelmezett elérési útját.
+1. A IoT Workbench-példák oldalon keresse meg az első **lépéseket** , és kattintson a **minta megnyitása** lehetőségre. Ezután kiválasztja a mintakód letöltésének alapértelmezett elérési útját.
 
     ![Minta megnyitása](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/open-sample.png)
 
@@ -299,13 +300,13 @@ Az Azure IoT Hub és az eszköznek a Azure Portalból való kiépítése helyett
 
     ![Válassza ki a táblát és a COM-t](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-com.png)
 
-1. Kattintson a `F1` parancs palettájának megnyitásához, írja be a parancsot, majd válassza az **Azure IoT Device Workbench: eszközbeállítások beállítása...** lehetőséget, majd válassza a **konfigurációs eszköz kapcsolódási karakterlánca > válassza IoT hub eszköz kapcsolódási karakterlánc lehetőséget**.
+1. Kattintson a `F1` parancs palettájának megnyitásához, írja be a parancsot, majd válassza az **Azure IoT Device Workbench: eszközbeállítások beállítása...** lehetőséget, majd válassza a **konfigurációs eszköz kapcsolódási karakterlánca > válassza IoT hub eszköz kapcsolódási karakterlánc lehetőséget** .
 
-1. A fejlesztői készlet-on tartsa lenyomva az **a gombot**, leküldheti és felszabadíthatja az **Alaphelyzetbe állítás** gombot, majd **a "a" gombot**. A fejlesztői készlet konfigurációs módba lép, és menti a kapcsolatok karakterláncát.
+1. A fejlesztői készlet-on tartsa lenyomva az **a gombot** , leküldheti és felszabadíthatja az **Alaphelyzetbe állítás** gombot, majd **a "a" gombot** . A fejlesztői készlet konfigurációs módba lép, és menti a kapcsolatok karakterláncát.
 
     ![Kapcsolati sztring](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/connection-string.png)
 
-1. Kattintson `F1` újra, írja be és válassza az **Azure IoT Device Workbench: eszköz kódjának feltöltése**lehetőséget. Elindul a kód fordítása és feltöltése a fejlesztői készlet.
+1. Kattintson `F1` újra, írja be és válassza az **Azure IoT Device Workbench: eszköz kódjának feltöltése** lehetőséget. Elindul a kód fordítása és feltöltése a fejlesztői készlet.
 
     ![Arduino-feltöltés](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/arduino-upload.png)
 
@@ -330,7 +331,7 @@ A minta alkalmazás sikeresen fut, amikor a következő eredmények jelennek meg
 ![Soros figyelő kimenete](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/result-serial-output.png)
 
 > [!NOTE]
-> Hibát tapasztalhat a tesztelés során, amikor a LED nem villog, a Azure Portal nem jeleníti meg az eszközről érkező bejövő adatok megjelenítését, de az eszköz OLED képernyőjén **fut..**.. A probléma megoldásához nyissa meg a Azure Portal az IoT hub eszközét, és küldjön üzenetet az eszköznek. Ha a VS Code-ban a soros figyelőben a következő válasz jelenik meg, lehetséges, hogy az eszközről való közvetlen kommunikáció le van tiltva az útválasztó szintjén. Keresse meg a csatlakoztatott eszközökhöz konfigurált tűzfal-és útválasztó-szabályokat. Győződjön meg arról is, hogy a 1833-as kimenő port nyitva van.
+> Hibát tapasztalhat a tesztelés során, amikor a LED nem villog, a Azure Portal nem jeleníti meg az eszközről érkező bejövő adatok megjelenítését, de az eszköz OLED képernyőjén **fut..** .. A probléma megoldásához nyissa meg a Azure Portal az IoT hub eszközét, és küldjön üzenetet az eszköznek. Ha a VS Code-ban a soros figyelőben a következő válasz jelenik meg, lehetséges, hogy az eszközről való közvetlen kommunikáció le van tiltva az útválasztó szintjén. Keresse meg a csatlakoztatott eszközökhöz konfigurált tűzfal-és útválasztó-szabályokat. Győződjön meg arról is, hogy a 1833-as kimenő port nyitva van.
 > 
 > Hiba: mqtt_client. c (ln 454): hiba: nem sikerült megnyitni a kapcsolódást a végponthoz  
 > INFORMÁCIÓ:  >>>kapcsolat állapota: leválasztva  
@@ -348,15 +349,15 @@ Az [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-
 
     ![Azure Portal](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
 
-1. A **megosztott elérési házirendek** ablaktáblán kattintson a **iothubowner házirendre**, és jegyezze fel az IoT hub kapcsolati karakterláncát.
+1. A **megosztott elérési házirendek** ablaktáblán kattintson a **iothubowner házirendre** , és jegyezze fel az IoT hub kapcsolati karakterláncát.
 
     ![Azure IoT Hub-beli kapcsolatok karakterlánca](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-portal-conn-string.png)
 
-1. A VS Code-ban kattintson a elemre `F1` , írja be és válassza az **Azure IoT Hub: IoT hub a kapcsolatok karakterláncának beállítása**lehetőséget. Másolja a kapcsolatok karakterláncát.
+1. A VS Code-ban kattintson a elemre `F1` , írja be és válassza az **Azure IoT Hub: IoT hub a kapcsolatok karakterláncának beállítása** lehetőséget. Másolja a kapcsolatok karakterláncát.
 
     ![Azure IoT Hub-beli kapcsolatok karakterláncának beállítása](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/set-iothub-connection-string.png)
 
-1. Bontsa ki az **Azure IOT hub-eszközök** panelt a bal oldalon, kattintson a jobb gombbal a létrehozott eszköz nevére, és válassza a **figyelés a beépített esemény végpontja**lehetőséget.
+1. Bontsa ki az **Azure IOT hub-eszközök** panelt a bal oldalon, kattintson a jobb gombbal a létrehozott eszköz nevére, és válassza a **figyelés a beépített esemény végpontja** lehetőséget.
 
     ![D2C-üzenet figyelése](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/monitor-d2c.png)
 

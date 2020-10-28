@@ -2,15 +2,15 @@
 title: ASP.NET-alkalmazások konfigurálása
 description: Megtudhatja, hogyan konfigurálhat ASP.NET alkalmazást Azure App Serviceban. A cikk a leggyakoribb konfigurációs feladatokat ismerteti.
 ms.devlang: dotnet
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 30fddaec9ca5d0439beadedf7c5ca6b6c7d51d83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ed6835583cc4881b19eee14ed392b193324535e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961703"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744166"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>ASP.NET-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -71,7 +71,7 @@ ConfigurationManager.ConnectionStrings["MyConnection"];
 }
 ```
 
-Ha a App Service és a *web.configban *azonos nevű alkalmazás-beállítást állít be, akkor a app Service érték elsőbbséget élvez a *web.config* értékével szemben. A helyi *web.config* érték lehetővé teszi az alkalmazás helyi hibakeresését, de a app Service érték lehetővé teszi az alkalmazás futtatását a termékben az éles környezetben. A kapcsolatok karakterláncai ugyanúgy működnek. Így megtarthatja az alkalmazási titkokat a Code repositoryn kívül, és a kód módosítása nélkül is elérheti a megfelelő értékeket.
+Ha a App Service és a *web.configban* azonos nevű alkalmazás-beállítást állít be, akkor a app Service érték elsőbbséget élvez a *web.config* értékével szemben. A helyi *web.config* érték lehetővé teszi az alkalmazás helyi hibakeresését, de a app Service érték lehetővé teszi az alkalmazás futtatását a termékben az éles környezetben. A kapcsolatok karakterláncai ugyanúgy működnek. Így megtarthatja az alkalmazási titkokat a Code repositoryn kívül, és a kód módosítása nélkül is elérheti a megfelelő értékeket.
 
 ## <a name="deploy-multi-project-solutions"></a>Több projektből álló megoldások üzembe helyezése
 
@@ -91,7 +91,7 @@ Ha a ASP.NET-alkalmazás kivételt hoz létre a Visual Studio debuggerben, a bö
 </system.web>
 ```
 
-Telepítse újra az alkalmazást a frissített *Web.config*. Ekkor ugyanazt a részletes kivételt ismertető oldalt kell látnia.
+Telepítse újra az alkalmazást a frissített *Web.config* . Ekkor ugyanazt a részletes kivételt ismertető oldalt kell látnia.
 
 ## <a name="access-diagnostic-logs"></a>Diagnosztikai naplók elérése
 

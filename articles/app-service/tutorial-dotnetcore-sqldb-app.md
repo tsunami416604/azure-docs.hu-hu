@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan szerezhet be Azure App Serviceban működő .NE
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.custom: devx-track-csharp, mvc, cli-validate, seodec18
+ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: b83dfbd715a6b27491fd5f5efd41213210092325
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 305137cf371d7a9e3d336d8142ef9a03eb38421f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90982882"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743711"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>Oktatóanyag: ASP.NET Core és Azure SQL Database alkalmazás létrehozása Azure App Service
 
@@ -65,7 +65,7 @@ cd dotnetcore-sqldb-tutorial
 
 A mintaprojekt egy, az [Entity Framework Core](/ef/core/) szolgáltatást használó, alapszintű CRUD (létrehoz-olvas-frissít-töröl) alkalmazást tartalmaz.
 
-### <a name="run-the-application"></a>Az alkalmazás futtatása
+### <a name="run-the-application"></a>Alkalmazás futtatása
 
 Futtassa az alábbi parancsokat a szükséges csomagok telepítéséhez, adatbázisok migrálásához és az alkalmazás elindításához.
 
@@ -75,7 +75,7 @@ dotnet ef database update
 dotnet run
 ```
 
-Egy böngészőben nyissa meg a `http://localhost:5000` oldalt. Kattintson az **Új létrehozása** hivatkozásra, és hozzon létre néhány _teendőt_.
+Egy böngészőben nyissa meg a `http://localhost:5000` oldalt. Kattintson az **Új létrehozása** hivatkozásra, és hozzon létre néhány _teendőt_ .
 
 ![sikeres csatlakozás az SQL Database-hez](./media/tutorial-dotnetcore-sqldb-app/local-app-in-browser.png)
 
@@ -214,7 +214,7 @@ Most, hogy az adatbázis-Migrálás az éles adatbázisban fut, tesztelje az alk
 dotnet run
 ```
 
-Egy böngészőben nyissa meg a `http://localhost:5000` oldalt. Kattintson az **Új létrehozása** hivatkozásra, és hozzon létre néhány _teendőt_. Az alkalmazás most beolvassa és beírja az adatait az éles adatbázisba.
+Egy böngészőben nyissa meg a `http://localhost:5000` oldalt. Kattintson az **Új létrehozása** hivatkozásra, és hozzon létre néhány _teendőt_ . Az alkalmazás most beolvassa és beírja az adatait az éles adatbázisba.
 
 Véglegesítse a helyi módosításokat, majd véglegesítse azt a git-tárházban. 
 
@@ -269,7 +269,7 @@ Az Azure-alkalmazáshoz tartozó kapcsolódási karakterláncok beállításáho
 az webapp config connection-string set --resource-group myResourceGroup --name <app-name> --settings MyDbConnection="<connection-string>" --connection-string-type SQLAzure
 ```
 
-A ASP.NET Core-ben ezt a névvel ellátott kapcsolatok karakterláncát ( `MyDbConnection` ) használja a standard mintával, például a *appsettings.js*által megadott bármely kapcsolattípus. Ebben az esetben a `MyDbConnection` *appsettings.jsban is meg*van határozva. Ha App Service fut, a App Serviceban definiált kapcsolati karakterlánc elsőbbséget élvez a *appsettings.jsban*definiált kapcsolati karakterlánctal szemben. A kód a *appsettings.js* értéket használja a helyi fejlesztés során, és ugyanaz a kód a app Service értéket használja az üzembe helyezéskor.
+A ASP.NET Core-ben ezt a névvel ellátott kapcsolatok karakterláncát ( `MyDbConnection` ) használja a standard mintával, például a *appsettings.js* által megadott bármely kapcsolattípus. Ebben az esetben a `MyDbConnection` *appsettings.jsban is meg* van határozva. Ha App Service fut, a App Serviceban definiált kapcsolati karakterlánc elsőbbséget élvez a *appsettings.jsban* definiált kapcsolati karakterlánctal szemben. A kód a *appsettings.js* értéket használja a helyi fejlesztés során, és ugyanaz a kód a app Service értéket használja az üzembe helyezéskor.
 
 Ha szeretné megtudni, hogyan hivatkoznak a kapcsolati karakterláncra a kódban, tekintse meg az [alkalmazás konfigurálása éles adatbázishoz való kapcsolódáshoz](#configure-app-to-connect-to-production-database)című témakört.
 
@@ -385,7 +385,7 @@ dotnet ef database update
 
 Hajtson végre néhány módosítást a kódban a `Done` tulajdonság használatához. Ebben az oktatóanyagban az egyszerűség kedvéért csak az `Index` és a `Create` nézetet módosítja, így láthatja a tulajdonságot működés közben.
 
-Nyissa meg a _Controllers/TodosController. cs_.
+Nyissa meg a _Controllers/TodosController. cs_ .
 
 Keresse meg a `Create([Bind("ID,Description,CreatedDate")] Todo todo)` metódust, és adja hozzá a `Done` kifejezést a `Bind` attribútum tulajdonságok listájához. Amikor végzett, a `Create()` metódus aláírása a következő kódhoz hasonló:
 
@@ -393,7 +393,7 @@ Keresse meg a `Create([Bind("ID,Description,CreatedDate")] Todo todo)` metódust
 public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")] Todo todo)
 ```
 
-Nyissa meg a _nézetek/teendők/Create. cshtml_.
+Nyissa meg a _nézetek/teendők/Create. cshtml_ .
 
 A Razor-kódban látnia kell a `Description` alá tartozó `<div class="form-group">` elemet és egy másik, `<div class="form-group">` elemet a `CreatedDate` részhez. Közvetlenül ezután a két elem után adjon hozzá egy `<div class="form-group">` elemet a `Done` részhez:
 
@@ -407,7 +407,7 @@ A Razor-kódban látnia kell a `Description` alá tartozó `<div class="form-gro
 </div>
 ```
 
-Nyissa meg a _nézetek/teendők/index. cshtml_.
+Nyissa meg a _nézetek/teendők/index. cshtml_ .
 
 Keresse meg az üres `<th></th>` elemet. Az elem felett adja hozzá a következő Razor-kódot:
 
@@ -449,7 +449,7 @@ git commit -m "added done field"
 git push azure master
 ```
 
-A `git push` befejezését követően navigáljon a app Service alkalmazáshoz, és próbálkozzon a teendők hozzáadásával, és jelölje be a **kész**lehetőséget.
+A `git push` befejezését követően navigáljon a app Service alkalmazáshoz, és próbálkozzon a teendők hozzáadásával, és jelölje be a **kész** lehetőséget.
 
 ![Azure-alkalmazás a kód első áttelepítése után](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
 
@@ -461,8 +461,8 @@ Amíg a ASP.NET Core alkalmazás a Azure App Service fut, a konzolon lévő napl
 
 A minta projekt már a következő útmutatást követi: [ASP.net Core naplózás az Azure-ban](/aspnet/core/fundamentals/logging#azure-app-service-provider) két konfigurációs módosítással:
 
-- Hivatkozást tartalmaz a `Microsoft.Extensions.Logging.AzureAppServices` *DotNetCoreSqlDb. csproj*-ben.
-- Hívások `loggerFactory.AddAzureWebAppDiagnostics()` a *program.cs*-ben.
+- Hivatkozást tartalmaz a `Microsoft.Extensions.Logging.AzureAppServices` *DotNetCoreSqlDb. csproj* -ben.
+- Hívások `loggerFactory.AddAzureWebAppDiagnostics()` a *program.cs* -ben.
 
 A ASP.NET Core [naplózási szintjének](/aspnet/core/fundamentals/logging#log-level) app Service az `Information` alapértelmezett szintről történő beállításához használja a `Error` [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) Cloud shell parancsot.
 
@@ -471,7 +471,7 @@ az webapp log config --name <app-name> --resource-group myResourceGroup --applic
 ```
 
 > [!NOTE]
-> A projekt naplózási szintje már be van állítva `Information` *appsettings.js*be értékre.
+> A projekt naplózási szintje már be van állítva `Information` *appsettings.js* be értékre.
 > 
 
 A log streaming elindításához használja a [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) parancsot a Cloud Shellban.
@@ -488,7 +488,7 @@ A ASP.NET Core naplók testreszabásával kapcsolatos további információkért
 
 ## <a name="manage-your-azure-app"></a>Az Azure-alkalmazás kezelése
 
-A létrehozott alkalmazás megtekintéséhez a [Azure Portal](https://portal.azure.com)keresse meg és válassza a **app Services**lehetőséget.
+A létrehozott alkalmazás megtekintéséhez a [Azure Portal](https://portal.azure.com)keresse meg és válassza a **app Services** lehetőséget.
 
 ![Azure Portal App Services kiválasztása](./media/tutorial-dotnetcore-sqldb-app/app-services.png)
 
@@ -503,7 +503,7 @@ Alapértelmezés szerint a portál az alkalmazás **Áttekintés** lapját jelen
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 <a name="next"></a>
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbiak elvégzését ismerte meg:
 

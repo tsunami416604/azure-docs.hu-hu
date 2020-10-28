@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: a54dfa0f2b072d30cac605937a1b623ef9d4051d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ab02cc7e60870852666c8c01ccc17a1b1102a62
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631494"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742834"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>1. lépés: a naplózási továbbító üzembe helyezése
 
 
 Ebben a lépésben a Linux-gépet fogja kijelölni és konfigurálni, amely továbbítja a naplókat a biztonsági megoldásból az Azure Sentinel-munkaterületre. Ez a gép lehet fizikai vagy virtuális gép a helyszíni környezetben, egy Azure-beli virtuális gépen vagy egy másik felhőben lévő virtuális gépről. A megadott hivatkozás használatával egy parancsfájlt fog futtatni a kijelölt gépen, amely a következő feladatokat hajtja végre:
+
 - Telepíti a Linux rendszerhez készült Log Analytics-ügynököt (más néven OMS-ügynököt), és a következő célokra konfigurálja azt:
     - CEF üzenetek figyelése a beépített Linux syslog démonból a 25226-as TCP-porton
     - az üzenetek biztonságos küldése a TLS-kapcsolaton keresztül az Azure Sentinel-munkaterületre, ahol a rendszer elemzi és gazdagítja azokat
@@ -36,18 +37,25 @@ Ebben a lépésben a Linux-gépet fogja kijelölni és konfigurálni, amely tov�
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A kijelölt linuxos gépen emelt szintű engedélyekkel (sudo) kell rendelkeznie.
-- A Linux gépen telepítve kell lennie a pythonnak.<br>A parancs használatával keresse meg a következőt: `python -version` .
+
+- A Linux-gépen telepítve kell lennie a **python 2,7** -nek.<br>A parancs használatával keresse meg a következőt: `python -version` .
+
 - A Linux rendszerű számítógép nem csatlakoztatható Azure-munkaterületekhez az Log Analytics-ügynök telepítése előtt.
+
+- A folyamat egy pontján szükség lehet a munkaterület-AZONOSÍTÓra és a munkaterület elsődleges kulcsára. Ezeket a munkaterület-erőforrásban találja, az **ügynökök kezelése** területen.
 
 ## <a name="run-the-deployment-script"></a>Az üzembe helyezési szkript futtatása
  
-1. Az Azure Sentinel navigációs menüjében kattintson az **adatösszekötők**elemre. Az összekötők listájában kattintson a **Common Event Format (CEF)** csempére, majd a jobb alsó sarokban található **összekötő megnyitása lap** gombra. 
+1. Az Azure Sentinel navigációs menüjében kattintson az **adatösszekötők** elemre. Az összekötők listájában kattintson a **Common Event Format (CEF)** csempére, majd a jobb alsó sarokban található **összekötő megnyitása lap** gombra. 
 
-1. A **1,2 alatt telepítse a CEF-gyűjtőt a Linux**rendszerű gépre, másolja a **következő szkript futtatásával elérhető hivatkozást a CEF-gyűjtő telepítéséhez és alkalmazásához**, vagy az alábbi szövegből:
+1. A **1,2 alatt telepítse a CEF-gyűjtőt a Linux** rendszerű gépre, másolja a **következő szkript futtatásához tartozó hivatkozást a CEF-gyűjtő telepítéséhez és alkalmazásához** , vagy az alábbi szövegből (a munkaterület-azonosító és az elsődleges kulcs alkalmazása a helyőrzők helyett):
 
-     `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
+    ```bash
+    sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
+    ```
 
 1. A szkript futtatása közben ellenőrizze, hogy nem kap-e hibaüzenetet vagy figyelmeztető üzenetet.
+    - Előfordulhat, hogy egy olyan üzenetet kap, amely egy parancs futtatásával kijavít egy problémát a *számítógép* mező leképezésével. A részletekért tekintse [meg a telepítési parancsfájl magyarázatát](#mapping-command) .
 
 > [!NOTE]
 > **Ugyanazzal a géppel az egyszerű syslog *és* a CEF üzenetek továbbítása**
@@ -122,12 +130,15 @@ A megfelelő leírás megtekintéséhez válassza ki a syslog démont.
 
 1. **A *számítógép* mező a várt módon történő leképezésének ellenőrzése:**
 
-    - Gondoskodik arról, hogy a syslog forrás *számítógép* mezőjének megfelelően legyen leképezve a log Analytics ügynök a parancs futtatásával és az ügynök újraindításával.
+    - Gondoskodik arról, hogy a syslog forrás *számítógép* mezőjének megfelelően legyen leképezve a log Analytics ügynökben a következő parancs használatával: 
 
         ```bash
-        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
-            -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
-            filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
+        ```
+    - <a name="mapping-command"></a>Ha probléma merül fel a leképezéssel kapcsolatban, a parancsfájl egy hibaüzenetet jelenít meg a **következő parancs manuális futtatásához** (a munkaterület azonosítójának alkalmazása a helyőrző helyett). A parancs biztosítja a megfelelő leképezést, majd újraindítja az ügynököt.
+    
+        ```bash
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
         ```
 
 # <a name="syslog-ng-daemon"></a>[syslog-ng démon](#tab/syslogng)
@@ -187,15 +198,16 @@ A megfelelő leírás megtekintéséhez válassza ki a syslog démont.
 
 1. **A *számítógép* mező a várt módon történő leképezésének ellenőrzése:**
 
-    - Gondoskodik arról, hogy a syslog forrás *számítógép* mezőjének megfelelően legyen leképezve a log Analytics ügynök a parancs futtatásával és az ügynök újraindításával.
+    - Gondoskodik arról, hogy a syslog forrás *számítógép* mezőjének megfelelően legyen leképezve a log Analytics ügynökben a következő parancs használatával: 
 
         ```bash
-        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
-            -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
-            filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
         ```
-
-
+    - <a name="mapping-command"></a>Ha probléma merül fel a leképezéssel kapcsolatban, a parancsfájl egy hibaüzenetet jelenít meg a **következő parancs manuális futtatásához** (a munkaterület azonosítójának alkalmazása a helyőrző helyett). A parancs biztosítja a megfelelő leképezést, majd újraindítja az ügynököt.
+    
+        ```bash
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 ## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan helyezheti üzembe a Log Analytics-ügynököt a CEF-berendezések Azure Sentinelhez való összekapcsolásához. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:

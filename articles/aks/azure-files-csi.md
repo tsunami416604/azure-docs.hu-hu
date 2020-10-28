@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 986db4edbf7b8856a12067fb66a370627642e970
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 556aec071ccb59a0223bc07d134f3427755117f3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078357"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745791"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>A Azure Files Container Storage Interface (CSI) illesztőprogramjainak használata az Azure Kubernetes Service-ben (ak) (előzetes verzió)
 
@@ -33,13 +33,13 @@ A Kubernetes-kötetekkel kapcsolatos további információkért lásd: az [AK-be
 
 ## <a name="dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes"></a>Azure Files PVs dinamikus létrehozása a beépített tárolási osztályok használatával
 
-A tárolási osztályok a Azure Files megosztások létrehozásának módját határozzák meg. A rendszer automatikusan létrehoz egy Storage-fiókot a [csomópont-erőforráscsoport][node-resource-group] számára a tárolási osztállyal való használatra a Azure Files megosztások tárolásához. Válasszon az alábbi [Azure Storage-redundancia SKU][storage-skus] - *skuName*közül:
+A tárolási osztályok a Azure Files megosztások létrehozásának módját határozzák meg. A rendszer automatikusan létrehoz egy Storage-fiókot a [csomópont-erőforráscsoport][node-resource-group] számára a tárolási osztállyal való használatra a Azure Files megosztások tárolásához. Válasszon az alábbi [Azure Storage-redundancia SKU][storage-skus] - *skuName* közül:
 
-* **Standard_LRS**: standard, helyileg redundáns tárolás
-* **Standard_GRS**: standard geo-redundáns tárolás
-* **Standard_ZRS**: standard zóna – redundáns tárolás
-* **Standard_RAGRS**: standard olvasási hozzáférésű geo-redundáns tárolás
-* **Premium_LRS**: prémium helyileg redundáns tárolás
+* **Standard_LRS** : standard, helyileg redundáns tárolás
+* **Standard_GRS** : standard geo-redundáns tárolás
+* **Standard_ZRS** : standard zóna – redundáns tárolás
+* **Standard_RAGRS** : standard olvasási hozzáférésű geo-redundáns tárolás
+* **Premium_LRS** : prémium helyileg redundáns tárolás
 
 > [!NOTE]
 > Azure Files támogatja az Azure Premium Storaget. A prémium fájlmegosztás minimális megosztása 100 GB.
@@ -212,7 +212,7 @@ Regisztrálja a `AllowNfsFileShares` szolgáltatás jelölőjét az az [Feature 
 az feature register --namespace "Microsoft.Storage" --name "AllowNfsFileShares"
 ```
 
-Néhány percet vesz igénybe, amíg az állapot *regisztrálva*jelenik meg. Ellenőrizze a regisztrációs állapotot az az [Feature List][az-feature-list] parancs használatával:
+Néhány percet vesz igénybe, amíg az állapot *regisztrálva* jelenik meg. Ellenőrizze a regisztrációs állapotot az az [Feature List][az-feature-list] parancs használatával:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.Storage/AllowNfsFileShares')].{Name:name,State:properties.state}"
@@ -259,7 +259,7 @@ storageclass.storage.k8s.io/azurefile-csi created
 A [stateful set](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) `data.txt` következő parancs az [kubectl Apply][kubectl-apply] paranccsal történő üzembe helyezésével olyan állapot-nyilvántartó készletet helyezhet üzembe, amely időbélyegeket ment egy fájlba:
 
  ```console
-$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/statefulset.yaml
 
 statefulset.apps/statefulset-azurefile created
 ```

@@ -2,16 +2,16 @@
 title: ASP.NET Core alkalmazások konfigurálása
 description: Megtudhatja, hogyan konfigurálhat egy ASP.NET Core alkalmazást a natív Windows-példányokban, vagy egy előre elkészített Linux-tárolóban, Azure App Service. A cikk a leggyakoribb konfigurációs feladatokat ismerteti.
 ms.devlang: dotnet
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 3456adc2b143f1f51115183fe4873938d067d267
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f7047638aa2e2b4a9ac6ffade82fdc117b56cfb
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961669"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744183"
 ---
 # <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>ASP.NET Core alkalmazás konfigurálása Azure App Servicehoz
 
@@ -125,7 +125,7 @@ namespace SomeNamespace
 }
 ```
 
-Ha például a App Service és a *appsettings.js*megegyező nevű Alkalmazásbeállítás van konfigurálva, akkor az App Service érték elsőbbséget élvez az *appsettings.js* értéknél. A helyi *appsettings.json* Value lehetővé teszi az alkalmazás helyi hibakeresését, de a app Service érték lehetővé teszi az alkalmazás futtatását a termékben az éles beállításokkal. A kapcsolatok karakterláncai ugyanúgy működnek. Így megtarthatja az alkalmazási titkokat a Code repositoryn kívül, és a kód módosítása nélkül is elérheti a megfelelő értékeket.
+Ha például a App Service és a *appsettings.js* megegyező nevű Alkalmazásbeállítás van konfigurálva, akkor az App Service érték elsőbbséget élvez az *appsettings.js* értéknél. A helyi *appsettings.json* Value lehetővé teszi az alkalmazás helyi hibakeresését, de a app Service érték lehetővé teszi az alkalmazás futtatását a termékben az éles beállításokkal. A kapcsolatok karakterláncai ugyanúgy működnek. Így megtarthatja az alkalmazási titkokat a Code repositoryn kívül, és a kód módosítása nélkül is elérheti a megfelelő értékeket.
 
 > [!NOTE]
 > Figyelje meg, hogy a *appsettings.json* lévő [hierarchikus konfigurációs adatai](/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data) a `:` .net Core szabványnak megfelelő elválasztóval érhetők el. A App Service adott hierarchikus konfigurációs beállításainak felülbírálásához állítsa az Alkalmazásbeállítások nevét ugyanazzal a tagolt formátummal a kulcsban. a következő példát futtathatja a [Cloud Shellban](https://shell.azure.com):
@@ -175,7 +175,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="detect-https-session"></a>HTTPS-munkamenet észlelése
 
-App Service az [SSL-megszakítás](https://wikipedia.org/wiki/TLS_termination_proxy) a hálózati terheléselosztó esetében történik, így minden HTTPS-kérelem titkosítatlan http-kérésként éri el az alkalmazást. Ha az alkalmazás logikájának tudnia kell, hogy a felhasználói kérések titkosítva vannak-e, vagy sem, konfigurálja a továbbított fejlécek middleware-t a *Startup.cs*-ben:
+App Service az [SSL-megszakítás](https://wikipedia.org/wiki/TLS_termination_proxy) a hálózati terheléselosztó esetében történik, így minden HTTPS-kérelem titkosítatlan http-kérésként éri el az alkalmazást. Ha az alkalmazás logikájának tudnia kell, hogy a felhasználói kérések titkosítva vannak-e, vagy sem, konfigurálja a továbbított fejlécek middleware-t a *Startup.cs* -ben:
 
 - Konfigurálja a middleware-t a [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) , hogy továbbítsa a `X-Forwarded-For` és a `X-Forwarded-Proto` fejléceket a alkalmazásban `Startup.ConfigureServices` .
 - Adjon hozzá magánhálózati IP-címtartományt az ismert hálózatokhoz, hogy a köztes kapcsolat megbízható legyen a App Service Load balancerben.

@@ -8,14 +8,14 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.workload: big-data
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: 1613486880885a3b7838b1bf806c17f88e3be06d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6ef4d63e30aeceec9cba3ae97f69afa1c299ec65
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86231267"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742730"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Gyors útmutató: Azure Stream Analytics-feladatok létrehozása az Azure CLI használatával
 
@@ -71,7 +71,7 @@ A Stream Analytics feladatának meghatározása előtt készítse elő a feladat
 
 A következő Azure CLI-kódrészletek olyan parancsok, amelyek előkészítik a feladathoz szükséges bemeneti adatokat. Tekintse át az egyes szakaszokat a kód értelmezése céljából.
 
-1. Hozzon létre egy IoT Hub az az [IoT hub Create](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) paranccsal. Ez a példa egy **MyASAIoTHub**nevű IoT hub hoz létre. Mivel a IoT Hub nevek egyediek, a saját IoT Hub nevét kell megadnia. Állítsa az SKU-t az F1-re, hogy az ingyenes szintet használja, ha az előfizetése elérhető. Ha nem, válassza a következő legalacsonyabb szintet.
+1. Hozzon létre egy IoT Hub az az [IoT hub Create](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) paranccsal. Ez a példa egy **MyASAIoTHub** nevű IoT hub hoz létre. Mivel a IoT Hub nevek egyediek, a saját IoT Hub nevét kell megadnia. Állítsa az SKU-t az F1-re, hogy az ingyenes szintet használja, ha az előfizetése elérhető. Ha nem, válassza a következő legalacsonyabb szintet.
 
     ```azurecli
     az iot hub create --name "MyASAIoTHub" --resource-group streamanalyticsrg --sku S1
@@ -83,7 +83,7 @@ A következő Azure CLI-kódrészletek olyan parancsok, amelyek előkészítik a
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
     ```
 
-2. Az az [iothub Device-Identity Create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) paranccsal adhat hozzá IoT hub eszközt. Ez a példa egy **MyASAIoTDevice**nevű eszközt hoz létre.
+2. Az az [iothub Device-Identity Create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) paranccsal adhat hozzá IoT hub eszközt. Ez a példa egy **MyASAIoTDevice** nevű eszközt hoz létre.
 
     ```azurecli
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
@@ -266,7 +266,7 @@ az stream-analytics job start
     --output-start-mode JobStartTime
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos átviteli feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megakadályozhatja, hogy a feladat által felhasznált streamelési egységek kiszámlázásra kerüljenek. Ha később is szeretné használni a feladatot, akkor nem kell törölnie, hanem elég, ha leállítja. Ha nem kívánja tovább használni ezt a feladatot, törölje az ebben a rövid útmutatóban létrehozott összes erőforrást a következő parancsmag futtatásával:
 
@@ -276,7 +276,7 @@ az group delete \
     --no-wait
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy egyszerű Stream Analytics feladatot telepített az Azure CLI használatával. A Stream Analytics-feladatokat az [Azure Portallal](stream-analytics-quick-create-portal.md) és a [Visual Studióval](stream-analytics-quick-create-vs.md) is üzembe helyezheti.
 

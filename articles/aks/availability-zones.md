@@ -2,15 +2,15 @@
 title: Rendelkezésre állási zónák használata az Azure Kubernetes szolgáltatásban (ak)
 description: Megtudhatja, hogyan hozhat létre olyan fürtöt, amely a csomópontokat a rendelkezésre állási zónák között osztja el az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
-ms.custom: fasttrack-edit, references_regions
+ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: 5d2c670bc862dadf289171fbf53318e876eff3d3
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 7d91491a2f521d974f15878791739a70a31c1bbe
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165808"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745803"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Rendelkezésre állási zónákat használó Azure Kubernetes-szolgáltatásbeli (ak-) fürt létrehozása
 
@@ -22,7 +22,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy AK-fürtöt, és hogyan oszthatja 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Szüksége lesz az Azure CLI-verzió 2.0.76 vagy újabb verziójára, és konfigurálva van.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI-verzió 2.0.76 vagy újabb verziójára, és konfigurálva van. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
 ## <a name="limitations-and-region-availability"></a>Korlátozások és régiók rendelkezésre állása
 
@@ -56,11 +56,11 @@ Ha állapot-nyilvántartó számítási feladatokat kell futtatnia, használja a
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>Az AK-fürtök rendelkezésre állási zónáinak áttekintése
 
-A rendelkezésre állási zónák olyan magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A zónák egy Azure-régióban található egyedi fizikai helyszínek. Minden rendelkezésreállási zóna egy vagy több, független áramforrással, hűtéssel és hálózatkezelési megoldással ellátott adatközpontból áll. A rugalmasság biztosítása érdekében legalább három különálló zónának kell lennie minden zónában engedélyezett régióban. A rendelkezésreállási zónák régión belüli fizikai elkülönítése védelmet biztosít az alkalmazások és az adatok számára az adatközpont meghibásodása esetén.
+A rendelkezésre állási zónák olyan magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A zónák egy Azure-régióban található egyedi fizikai helyszínek. Minden rendelkezésreállási zóna egy vagy több, független áramforrással, hűtéssel és hálózatkezelési megoldással ellátott adatközpontból áll. A rugalmasság biztosítása érdekében mindig több zóna van az összes zónában engedélyezett régióban. A rendelkezésreállási zónák régión belüli fizikai elkülönítése védelmet biztosít az alkalmazások és az adatok számára az adatközpont meghibásodása esetén.
 
 További információ: [Mik a rendelkezésre állási zónák az Azure-ban?][az-overview].
 
-A rendelkezésre állási zónák használatával üzembe helyezett AK-fürtök több, egyetlen régióban található zónában terjeszthetik a csomópontokat. Az *USA 2. keleti*régiójában található fürt például az   *USA 2. keleti*régiójában mindhárom rendelkezésre állási zónában hozhat létre csomópontokat. Az AK-beli fürt erőforrásainak ezen eloszlása javítja a fürt rendelkezésre állását, mivel azok egy adott zóna meghibásodása esetén rugalmasak.
+A rendelkezésre állási zónák használatával üzembe helyezett AK-fürtök több, egyetlen régióban található zónában terjeszthetik a csomópontokat. Az  *USA 2. keleti* régiójában található fürt például az   *USA 2. keleti* régiójában mindhárom rendelkezésre állási zónában hozhat létre csomópontokat. Az AK-beli fürt erőforrásainak ezen eloszlása javítja a fürt rendelkezésre állását, mivel azok egy adott zóna meghibásodása esetén rugalmasak.
 
 ![AK-csomópont eloszlása a rendelkezésre állási zónák között](media/availability-zones/aks-availability-zones.png)
 
@@ -68,11 +68,11 @@ Ha egyetlen zóna elérhetetlenné válik, az alkalmazások továbbra is futnak,
 
 ## <a name="create-an-aks-cluster-across-availability-zones"></a>AK-fürt létrehozása rendelkezésre állási zónák között
 
-Amikor az az [AK Create][az-aks-create] paranccsal hoz létre fürtöt, a paraméter határozza meg, hogy a rendszer `--zones` mely zónákat telepíti a-ben. A vezérlő sík összetevői, például a etcd három zónában oszlanak meg, ha a `--zones` paramétert fürt létrehozási ideje határozza meg. Azok a zónák, amelyeknek a vezérlési sík összetevői, egymástól függetlenek, függetlenül attól, hogy milyen explicit zónák vannak kiválasztva a kezdeti csomópont-készlethez.
+Amikor az az [AK Create][az-aks-create] paranccsal hoz létre fürtöt, a paraméter határozza meg, hogy a rendszer `--zones` mely zónákat telepíti a-ben. A vezérlő sík összetevői, például a etcd vagy az API a régió elérhető zónái között oszlanak meg, ha a `--zones` paramétert fürt létrehozási időpontjában határozzák meg. Azok a zónák, amelyeknek a vezérlési sík összetevői, egymástól függetlenek, függetlenül attól, hogy milyen explicit zónák vannak kiválasztva a kezdeti csomópont-készlethez.
 
 Ha nem ad meg zónát az alapértelmezett ügynök készletéhez, amikor egy AK-fürtöt hoz létre, a vezérlési sík összetevői nem garantáltak a rendelkezésre állási zónák között. További csomópont-készleteket az [az AK nodepool Add][az-aks-nodepool-add] paranccsal adhat hozzá, és megadhatja `--zones` az új csomópontokat, de a vezérlő síkja nem változik meg a zónák közötti eloszlásban. A rendelkezésre állási zóna beállításai csak a fürt vagy a csomópont-készlet létrehozási ideje alatt definiálhatók.
 
-A következő példában létrehozunk egy *myAKSCluster* nevű AK-fürtöt az *myResourceGroup*nevű erőforráscsoport-csoportban. Összesen *3* csomópont jön létre – egy ügynök az *1*. zónában, egyet *2*-ban, majd egyet *3*-ban.
+A következő példában létrehozunk egy *myAKSCluster* nevű AK-fürtöt az *myResourceGroup* nevű erőforráscsoport-csoportban. Összesen *3* csomópont jön létre – egy ügynök az *1* . zónában, egyet *2* -ban, majd egyet *3* -ban.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus2
@@ -168,7 +168,7 @@ Node:         aks-nodepool1-28993262-vmss000004/10.240.0.8
 
 Ahogy az előző kimenetben látható, az első Pod a 0. csomóponton fut, amely a rendelkezésre állási zónában található `eastus2-1` . A második Pod a 2. csomóponton fut, amely a (z `eastus2-3` ) és a (z) 4. csomópontjában található `eastus2-2` . További konfiguráció nélkül a Kubernetes a három rendelkezésre állási zónában helyesen terjeszti a hüvelyeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk részletesen ismerteti, hogyan hozhat létre rendelkezésre állási zónákat használó AK-fürtöt. A magasan elérhető fürtökkel kapcsolatos további szempontokat lásd: [ajánlott eljárások az üzletmenet folytonossága és a vész-helyreállítás az AK-ban][best-practices-bc-dr].
 

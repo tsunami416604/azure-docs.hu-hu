@@ -7,13 +7,13 @@ ms.subservice: security
 ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 03/15/2019
-ms.custom: seodec18
-ms.openlocfilehash: 0e8ea218aa9c557fb109aee0dba318cfd5f605c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 352c8848b98bfb463c03ceea89ebe3f4b6ad6d5b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836241"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742422"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>Azure Disk Encryption az Azure AD-vel a Windows rendszerű virtuális gépekhez (előző kiadás)
 
@@ -48,7 +48,7 @@ Az Azure piactéren Resource Manager-sablonok használatával engedélyezheti a 
          Get-AzVmDiskEncryptionStatus -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
          ```
 
-     -  Válassza ki a virtuális gépet, majd kattintson a **Beállítások** fejléc alatt található **lemezekre** a titkosítási állapot ellenőrzéséhez a portálon. A táblázatban a **titkosítás**alatt látható, hogy engedélyezve van-e a diagram. 
+     -  Válassza ki a virtuális gépet, majd kattintson a **Beállítások** fejléc alatt található **lemezekre** a titkosítási állapot ellenőrzéséhez a portálon. A táblázatban a **titkosítás** alatt látható, hogy engedélyezve van-e a diagram. 
            ![Azure Portal – a lemez titkosítása engedélyezve](../media/disk-encryption/disk-encryption-fig2.png)
 
 A következő táblázat felsorolja az új virtuális gépekhez tartozó Resource Manager-sablon paramétereit az Azure AD ügyfél-azonosító használatával:
@@ -156,7 +156,7 @@ Az az [VM encryption Enable](/cli/azure/vm/encryption#az-vm-encryption-enable) p
 Az Azure-ban meglévő vagy futó IaaS Windows rendszerű virtuális gépeken is engedélyezheti a lemez titkosítását, ha a [Resource Manager-sablonnal titkosít egy futó Windows rendszerű virtuális gépet](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm).
 
 
-1. Az Azure Gyorsindítás sablonon kattintson az **üzembe helyezés az Azure**-ban lehetőségre.
+1. Az Azure Gyorsindítás sablonon kattintson az **üzembe helyezés az Azure** -ban lehetőségre.
 
 2. Válassza ki az előfizetést, az erőforráscsoportot, az erőforráscsoport helyét, a paramétereket, a jogi feltételeket és a szerződést. Kattintson a **vásárlás** gombra a titkosítás engedélyezéséhez a meglévő vagy futó IaaS virtuális gépen.
 
@@ -168,7 +168,7 @@ A következő táblázat a Resource Manager-sablon azon paramétereit sorolja fe
 | AADClientSecret | Azon Azure AD-alkalmazás ügyfél-titka, amely jogosult a Key vaultba írni a titkos kulcsokat. |
 | keyVaultName | Annak a kulcstárolónak a neve, amelyre a BitLocker-kulcsot fel kell tölteni. A parancsmag `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` vagy az Azure CLI-parancs használatával kérheti le. `az keyvault list --resource-group "MySecureGroup"`|
 |  keyEncryptionKeyURL | A létrehozott BitLocker-kulcs titkosításához használt kulcs titkosítási kulcsának URL-címe. Ez a paraméter nem kötelező, ha a UseExistingKek legördülő listában a **nokek** lehetőséget választja. Ha a UseExistingKek legördülő listában a **KEK** elemet választja, meg kell adnia a _keyEncryptionKeyURL_ értéket. |
-| volumeType | A titkosítási művelet végrehajtásához használt kötet típusa. Az érvényes értékek az _operációs rendszer_, _az adatok_és _az összes_. |
+| volumeType | A titkosítási művelet végrehajtásához használt kötet típusa. Az érvényes értékek az _operációs rendszer_ , _az adatok_ és _az összes_ . |
 | sequenceVersion | A BitLocker-művelet szekvenciális verziója. Minden alkalommal növelje ezt a verziószámot, amikor egy lemezes titkosítási műveletet hajt végre ugyanazon a virtuális gépen. |
 | vmName | Annak a virtuális gépnek a neve, amelyen a titkosítási műveletet végre szeretné állítani. |
 

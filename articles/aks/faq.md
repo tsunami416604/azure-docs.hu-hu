@@ -3,12 +3,12 @@ title: Gyakran ismételt kérdések az Azure Kubernetes szolgáltatásról (ak)
 description: Válaszok az Azure Kubernetes szolgáltatással (ak) kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: c68810e0fd9ee3593aa014243c3f75fb8a63a7fd
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: bbe4d43fde3746e6c992b7f03927f081d3814597
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494523"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745758"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Gyakori kérdések az Azure Kubernetes Service-szel (AKS) kapcsolatban
 
@@ -57,12 +57,12 @@ Az AK számos Azure-infrastruktúra-erőforrásra épül, beleértve a virtuáli
 
 Az architektúra engedélyezéséhez minden AK-beli telepítés két erőforráscsoportot ölel fel:
 
-1. Hozza létre az első erőforráscsoportot. Ez a csoport csak a Kubernetes szolgáltatás erőforrását tartalmazza. Az AK erőforrás-szolgáltatója automatikusan létrehozza a második erőforráscsoportot az üzembe helyezés során. A második erőforráscsoport példája *MC_myResourceGroup_myAKSCluster_eastus*. A második erőforráscsoport nevének megadásával kapcsolatos információkért tekintse meg a következő szakaszt.
-1. A második erőforráscsoport, azaz a csomópont- *erőforráscsoport*a fürthöz társított összes infrastruktúra-erőforrást tartalmazza. Ezek az erőforrások magukban foglalják a Kubernetes csomópontos virtuális gépeket, a virtuális hálózatkezelést és a tárterületet. Alapértelmezés szerint a csomópont-erőforráscsoport neve például *MC_myResourceGroup_myAKSCluster_eastus*. Az AK automatikusan törli a csomópont-erőforrást, amikor a fürt törlődik, ezért csak olyan erőforrásokhoz használható, amelyek osztoznak a fürt életciklusán.
+1. Hozza létre az első erőforráscsoportot. Ez a csoport csak a Kubernetes szolgáltatás erőforrását tartalmazza. Az AK erőforrás-szolgáltatója automatikusan létrehozza a második erőforráscsoportot az üzembe helyezés során. A második erőforráscsoport példája *MC_myResourceGroup_myAKSCluster_eastus* . A második erőforráscsoport nevének megadásával kapcsolatos információkért tekintse meg a következő szakaszt.
+1. A második erőforráscsoport, azaz a csomópont- *erőforráscsoport* a fürthöz társított összes infrastruktúra-erőforrást tartalmazza. Ezek az erőforrások magukban foglalják a Kubernetes csomópontos virtuális gépeket, a virtuális hálózatkezelést és a tárterületet. Alapértelmezés szerint a csomópont-erőforráscsoport neve például *MC_myResourceGroup_myAKSCluster_eastus* . Az AK automatikusan törli a csomópont-erőforrást, amikor a fürt törlődik, ezért csak olyan erőforrásokhoz használható, amelyek osztoznak a fürt életciklusán.
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>Megadhatom a saját nevet az AK-csomópont erőforráscsoporthoz?
 
-Igen. Alapértelmezés szerint a (z) *MC_resourcegroupname_clustername_location*csomópont-erőforráscsoport neve lesz, de a saját nevét is megadhatja.
+Igen. Alapértelmezés szerint a (z) *MC_resourcegroupname_clustername_location* csomópont-erőforráscsoport neve lesz, de a saját nevét is megadhatja.
 
 A saját erőforráscsoport-név megadásához telepítse az [AK – előzetes][aks-preview-cli] VERZIÓJÚ Azure CLI-bővítmény *0.3.2* vagy újabb verzióját. Ha az az [AK Create][az-aks-create] paranccsal hoz létre egy AK-fürtöt, használja a *--Node-Resource-Group* paramétert, és adja meg az erőforráscsoport nevét. Ha [Azure Resource Manager sablont használ][aks-rm-template] egy AK-fürt üzembe helyezéséhez, megadhatja az erőforráscsoport nevét a *nodeResourceGroup* tulajdonság használatával.
 
@@ -95,6 +95,9 @@ Az AK a következő [belépésvezérlés-vezérlőket][admission-controllers]tá
 - *MutatingAdmissionWebhook*
 - *ValidatingAdmissionWebhook*
 - *ResourceQuota*
+- *PodNodeSelector*
+- *PodTolerationRestriction*
+- *ExtendedResourceToleration*
 
 Jelenleg nem módosítható a belépésvezérlés az AK-ban.
 
@@ -109,9 +112,11 @@ namespaceSelector:
       operator: DoesNotExist
 ```
 
+Az AK tűzfalakkal védi az API-kiszolgáló kimenő adatait, így a beléptetési vezérlő webhookoknak elérhetőknek kell lenniük a fürtön belülről.
+
 ## <a name="can-admission-controller-webhooks-impact-kube-system-and-internal-aks-namespaces"></a>A beléptetési vezérlő webhookok hatással vannak a Kube-rendszerek és a belső AK-beli névterekre?
 
-A rendszer stabilitásának biztosítása és az egyéni belépésvezérlés megakadályozása a Kube-rendszer belső szolgáltatásainak befolyásolása érdekében a névtér AK-ban van egy **beléptetési végrehajtó**, amely automatikusan kizárja a Kube-rendszer és az AK belső névtereit. Ez a szolgáltatás biztosítja, hogy az egyéni belépésvezérlés ne befolyásolja a Kube-rendszeren futó szolgáltatásokat.
+A rendszer stabilitásának biztosítása és az egyéni belépésvezérlés megakadályozása a Kube-rendszer belső szolgáltatásainak befolyásolása érdekében a névtér AK-ban van egy **beléptetési végrehajtó** , amely automatikusan kizárja a Kube-rendszer és az AK belső névtereit. Ez a szolgáltatás biztosítja, hogy az egyéni belépésvezérlés ne befolyásolja a Kube-rendszeren futó szolgáltatásokat.
 
 Ha olyan kritikus használati esettel rendelkezik, amely a Kube-rendszeren (nem ajánlott) van telepítve, amelyet az egyéni beléptetési webhooknak kell megadnia, akkor az alábbi címkét vagy jegyzetet is hozzáadhatja, hogy a felvételi kényszerítő figyelmen kívül hagyja azt.
 

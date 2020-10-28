@@ -6,13 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/22/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 4effdbf5fb924b59a540ce16e769633c484c641a
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 6023d1ebd27ebaccacfce85ce0f49b7ef87e17ad
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091066"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742672"
 ---
 # <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>Oktatóanyag: a Service-alkalmazások autoskálázásának beállítása
 
@@ -30,11 +30,11 @@ Az alábbi eljárások követéséhez a következőkre lesz szüksége:
 
 ## <a name="navigate-to-the-autoscale-page-in-the-azure-portal"></a>Navigáljon a Azure Portal
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2. Nyissa meg az Azure Spring Cloud **Áttekintés** oldalát.
 3. Válassza ki a szolgáltatást tartalmazó erőforráscsoportot.
 4. Válassza az **alkalmazások** fület a bal oldali navigációs ablaktábla menü **Beállítások** területén.
-5. Válassza ki azt az alkalmazást, amelyhez be szeretné állítani az autoskálázást. Ebben a példában válassza ki a **bemutató**nevű alkalmazást. Ekkor megjelenik az alkalmazás **Áttekintés** lapja.
+5. Válassza ki azt az alkalmazást, amelyhez be szeretné állítani az autoskálázást. Ebben a példában válassza ki a **bemutató** nevű alkalmazást. Ekkor megjelenik az alkalmazás **Áttekintés** lapja.
 6. A bal oldali navigációs ablaktábla menü **Beállítások** területén válassza a **kibővítés** lapot.
 7. Válassza ki azt az üzembe helyezést, amelyhez be szeretné állítani az autoskálázást. A következő szakaszban láthatók az autoskálázás lehetőségei.
 

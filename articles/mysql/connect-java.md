@@ -4,16 +4,16 @@ description: Ismerje meg, hogyan használható a Java és a JDBC Azure Database 
 author: jdubois
 ms.author: judubois
 ms.service: mysql
-ms.custom: mvc, devcenter
+ms.custom: mvc, devcenter, devx-track-azurecli
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: 793cab8b37872788da259e45148e314faa00ea15
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b7db124f8f5ba56f760dc054491990889e4e738f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545140"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745270"
 ---
 # <a name="use-java-and-jdbc-with-azure-database-for-mysql"></a>A Java és a JDBC használata Azure Database for MySQL
 
@@ -505,7 +505,7 @@ az group delete \
     --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [MySQL-adatbázis migrálása a MySQL-hez készült Azure Database-be memóriakép és visszaállítás használatával](concepts-migrate-dump-restore.md)

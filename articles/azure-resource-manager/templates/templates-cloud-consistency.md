@@ -5,13 +5,13 @@ author: marcvaneijk
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
-ms.custom: seodec18
-ms.openlocfilehash: 72f9e332a4faa98a8a86ef7b6edbefe20357e33f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: ea010a625c3e3cd6228513299d878733bf3775ce
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356885"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744752"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>ARM-sablonok fejlesztése a felhő konzisztenciájához
 
@@ -205,7 +205,7 @@ Egy összetevő abszolút URI-azonosítójának létrehozásához az előnyben r
 }
 ```
 
-Ezzel a módszerrel az összes üzembe helyezési összetevő, beleértve a konfigurációs parancsfájlokat is, ugyanazon a helyen tárolhatók, mint maga a sablon. Az összes hivatkozás helyének módosításához csak meg kell adnia egy másik alap URL-címet a _artifactsLocation paraméterekhez_.
+Ezzel a módszerrel az összes üzembe helyezési összetevő, beleértve a konfigurációs parancsfájlokat is, ugyanazon a helyen tárolhatók, mint maga a sablon. Az összes hivatkozás helyének módosításához csak meg kell adnia egy másik alap URL-címet a _artifactsLocation paraméterekhez_ .
 
 ## <a name="factor-in-differing-regional-capabilities"></a>Eltérő regionális képességekkel rendelkező faktor
 
@@ -487,7 +487,7 @@ Egy helyen elérhető virtuálisgép-rendszerképek listájának lekéréséhez 
 az vm image list -all
 ```
 
-Ugyanezt a listát a [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) Azure PowerShell parancsmaggal kérheti le, és a paraméterrel adhatja meg a kívánt helyet `-Location` . Példa:
+Ugyanezt a listát a [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) Azure PowerShell parancsmaggal kérheti le, és a paraméterrel adhatja meg a kívánt helyet `-Location` . Például:
 
 ```azurepowershell-interactive
 Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage
@@ -590,7 +590,7 @@ Az adott régióhoz elérhető virtuálisgép-bővítmények (ebben a példában
 az vm extension image list --location myLocation
 ```
 
-Végrehajthatja a Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) parancsmagot is, és a használatával `-Location` megadhatja a virtuális gép rendszerképének helyét. Példa:
+Végrehajthatja a Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) parancsmagot is, és a használatával `-Location` megadhatja a virtuális gép rendszerképének helyét. Például:
 
 ```azurepowershell-interactive
 Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageType | Get-AzureRmVMExtensionImage | Select Type, Version
@@ -641,7 +641,7 @@ Az egyes bővítmények verziószáma is megtörténik. Ez a verzió a virtuáli
         ...
 ```
 
-Egy adott virtuálisgép-bővítmény elérhető verzióinak listájának lekéréséhez használja a [Get-AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) parancsmagot. A következő példa lekéri a PowerShell DSC (kívánt állapot konfiguráció) virtuálisgép-bővítményének elérhető verzióit a **myLocation**:
+Egy adott virtuálisgép-bővítmény elérhető verzióinak listájának lekéréséhez használja a [Get-AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) parancsmagot. A következő példa lekéri a PowerShell DSC (kívánt állapot konfiguráció) virtuálisgép-bővítményének elérhető verzióit a **myLocation** :
 
 ```azurepowershell-interactive
 Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerShell -Type DSC | FT

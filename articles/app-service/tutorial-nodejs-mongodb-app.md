@@ -5,14 +5,14 @@ ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.custom: mvc, cli-validate, seodec18, devx-track-js
+ms.custom: mvc, cli-validate, seodec18, devx-track-js, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 4fc79f8508f46f5003b99289d725b303feef78aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c204a07e3c5edff028342af1c88b15ebac0754b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91312022"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743654"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Oktatóanyag: Node.js-és MongoDB-alkalmazás létrehozása az Azure-ban
 
@@ -83,7 +83,7 @@ git clone https://github.com/Azure-Samples/meanjs.git
 
 Ez a mintaadattár a [MEAN.js-adattár](https://github.com/meanjs/mean) másolatát tartalmazza. Módosítva lett az App Service-ben való futtatáshoz (további információért tekintse meg a MEAN.js-adattár [információs fájlját](https://github.com/Azure-Samples/meanjs/blob/master/README.md)).
 
-### <a name="run-the-application"></a>Az alkalmazás futtatása
+### <a name="run-the-application"></a>Alkalmazás futtatása
 
 Futtassa az alábbi parancsokat a szükséges csomagok telepítéséhez és az alkalmazás elindításához.
 
@@ -317,7 +317,7 @@ remote: Handling node.js deployment.
 .
 remote: Deployment successful.
 To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
- * [new branch]      master -> master
+ * [new branch]      master -> master
 </pre>
 
 Azt tapasztalhatja, hogy az üzembehelyezési folyamat az `npm install` után kezdi meg a [Gulp](https://gulpjs.com/) futtatását. Az App Service nem futtatja a Gulp vagy a Grunt feladatait az üzembe helyezés során, ezért ez a mintaadattár két további fájllal rendelkezik a gyökérkönyvtárában ennek lehetővé tételéhez: 
@@ -505,7 +505,7 @@ A `Ctrl+C` billentyűparanccsal bármikor leállíthatja a naplóstreamelést.
 
 A létrehozott alkalmazás megjelenítéséhez nyissa meg a [Azure Portal](https://portal.azure.com) .
 
-A bal oldali menüben kattintson a **app Services**elemre, majd kattintson az Azure-alkalmazás nevére.
+A bal oldali menüben kattintson a **app Services** elemre, majd kattintson az Azure-alkalmazás nevére.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/tutorial-nodejs-mongodb-app/access-portal.png)
 
@@ -516,7 +516,7 @@ Alapértelmezés szerint a portál az alkalmazás **Áttekintés** lapját jelen
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 <a name="next"></a>
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbiak elvégzését ismerte meg:
 

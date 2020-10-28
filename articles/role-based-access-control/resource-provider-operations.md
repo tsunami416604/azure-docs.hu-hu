@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 10/23/2020
 ms.custom: generated
-ms.openlocfilehash: 955e80f31cf08dd703f089d26a03b7f97242eab0
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 905bdf95222a03514b5c5e76e18330cf27da0d3d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631104"
+ms.locfileid: "92745124"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure erőforrás-szolgáltatói műveletek
 
@@ -158,6 +158,7 @@ A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgálta
 | [Microsoft.Intune](#microsoftintune) |
 | **Egyéb** |
 | [Microsoft. BingMaps](#microsoftbingmaps) |
+| [Microsoft. DigitalTwins](#microsoftdigitaltwins) |
 
 
 ## <a name="general"></a>Általános kérdések
@@ -9663,6 +9664,45 @@ Azure-szolgáltatás: [Bing Maps](https://docs.microsoft.com/BingMaps/)
 > | Microsoft. BingMaps/mapApis/listSecrets/művelet | A Microsoft. BingMaps/mapApis titkainak listázása |
 > | Microsoft. BingMaps/mapApis/listUsageMetrics/művelet | A Microsoft. BingMaps/mapApis metrikáinak listázása |
 > | Microsoft. BingMaps/Operations/READ | A Microsoft. BingMaps műveleteinek listázása |
+
+### <a name="microsoftdigitaltwins"></a>Microsoft. DigitalTwins
+
+Azure-szolgáltatás: [Azure digitális Twins](../digital-twins/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | Művelet | Leírás |
+> | --- | --- |
+> | Microsoft. DigitalTwins/regisztráció/művelet | Regisztrálja az előfizetést a digitális Twins erőforrás-szolgáltatóhoz, és engedélyezze a digitális Twins-példányok létrehozását. |
+> | Microsoft. DigitalTwins/regisztráció/művelet | A digitális Twins erőforrás-szolgáltatóhoz tartozó előfizetés regisztrációjának törlése |
+> | Microsoft. DigitalTwins/digitalTwinsInstances/READ | Bármely Microsoft. DigitalTwins/digitalTwinsInstances-erőforrás olvasása |
+> | Microsoft. DigitalTwins/digitalTwinsInstances/Write | Bármely Microsoft. DigitalTwins/digitalTwinsInstances-erőforrás létrehozása vagy frissítése |
+> | Microsoft. DigitalTwins/digitalTwinsInstances/delete | Microsoft. DigitalTwins/digitalTwinsInstances-erőforrás törlése |
+> | Microsoft. DigitalTwins/digitalTwinsInstances/diagnosticSettings/READ | Az erőforrás diagnosztikai beállításainak beolvasása |
+> | Microsoft. DigitalTwins/digitalTwinsInstances/diagnosticSettings/Write | Az erőforrás diagnosztikai beállításainak megadása |
+> | Microsoft. DigitalTwins/digitalTwinsInstances/végpontok/törlés | Digitális Twins-erőforrás bármely végpontjának törlése |
+> | Microsoft. DigitalTwins/digitalTwinsInstances/végpontok/olvasás | Digitális Twins-erőforrás bármely végpontjának beolvasása |
+> | Microsoft. DigitalTwins/digitalTwinsInstances/végpontok/írás | Digitális ikrek erőforrás-végpontjának létrehozása vagy frissítése |
+> | Microsoft. DigitalTwins/digitalTwinsInstances/logDefinitions/READ | Az erőforrás Azure Monitor naplózási beállításainak beolvasása |
+> | Microsoft. DigitalTwins/digitalTwinsInstances/metricDefinitions/READ | Az erőforrás Azure Monitor metrikai beállításainak beolvasása |
+> | Microsoft. DigitalTwins/digitalTwinsInstances/operationsResults/READ | A művelet eredményének beolvasása |
+> | Microsoft. DigitalTwins/Locations/checkNameAvailability/Action | Az erőforrás nevének a digitális Twins erőforrás-szolgáltatóban való rendelkezésre állásának keresése |
+> | Microsoft. DigitalTwins/Locations/operationsResults/READ | A művelet eredményének beolvasása |
+> | Microsoft. DigitalTwins/Operations/READ | Az összes művelet olvasása |
+> | **DataAction** | **Leírás** |
+> | Microsoft. DigitalTwins/lekérdezés/művelet | Bármely digitális Twins-gráf lekérdezése |
+> | Microsoft. DigitalTwins/DigitalTwins/READ | Tetszőleges digitális iker olvasása |
+> | Microsoft. DigitalTwins/DigitalTwins/Write | Tetszőleges digitális iker létrehozása vagy frissítése |
+> | Microsoft. DigitalTwins/DigitalTwins/delete | Tetszőleges digitális Twin törlése |
+> | Microsoft. DigitalTwins/DigitalTwins/parancsok/művelet | Bármilyen parancs meghívása digitális Twin-re |
+> | Microsoft. DigitalTwins/DigitalTwins/kapcsolatok/olvasás | Tetszőleges digitális kettős kapcsolat olvasása |
+> | Microsoft. DigitalTwins/DigitalTwins/kapcsolatok/írás | Tetszőleges digitális kettős kapcsolat létrehozása vagy frissítése |
+> | Microsoft. DigitalTwins/DigitalTwins/kapcsolatok/törlés | Tetszőleges digitális dupla kapcsolat törlése |
+> | Microsoft. DigitalTwins/eventroutes/READ | Bármely esemény útvonalának olvasása |
+> | Microsoft. DigitalTwins/eventroutes/delete | Bármely esemény útvonalának törlése |
+> | Microsoft. DigitalTwins/eventroutes/Write | Bármely esemény útvonalának létrehozása vagy frissítése |
+> | Microsoft. DigitalTwins/modellek/olvasás | Bármely modell olvasása |
+> | Microsoft. DigitalTwins/modellek/írás | Bármely modell létrehozása vagy frissítése |
+> | Microsoft. DigitalTwins/models/delete | Bármely modell törlése |
 
 ## <a name="next-steps"></a>Következő lépések
 

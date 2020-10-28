@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 344e15d3c15474fc8959b120f86bb86f22217ef6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 5c18a904f0ec0f100312ee3fafb53038bd2ccf19
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677007"
+ms.locfileid: "92745673"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Az Azure csatlakoztatása ITSM-eszközökhöz az IT Service Management-összekötő használatával
 
@@ -125,7 +125,7 @@ Kövesse az alábbi eljárást:
 1. A Azure Portal kattintson a  **riasztások** elemre.
 2. A felső ablaktáblán kattintson a  **műveletek kezelése** lehetőségre. Megjelenik a **műveleti csoport hozzáadása** ablak.
 
-    ![Műveletcsoportok](media/itsmc-overview/action-groups.png)
+    [![Műveleti csoportok](media/itsmc-overview/action-groups-selection.png)](media/itsmc-overview/action-groups-selection-big.png)
 
 3. Válassza ki azt az **előfizetést** és **erőforráscsoportot** , amelyben létre szeretné hozni a műveleti csoportot. Adja meg a műveleti csoport **nevét** és **megjelenítendő nevét** . Kattintson a **Next (tovább) gombra: értesítések** .
 
@@ -135,7 +135,7 @@ Kövesse az alábbi eljárást:
 5. A műveletek listában válassza a **ITSM** elemet a **művelet típusa** legördülő menüből. Adja meg a művelet **nevét** , majd kattintson a **Szerkesztés részleteit** jelképező tollra.
 6. Válassza ki azt az **előfizetést** , ahol a log Analytics munkaterület található. Válassza ki a **kapcsolatok** nevét (a ITSM-csatoló nevét), majd a munkaterület nevét. Például: "MyITSMMConnector (Sajátmunkaterület)".
 
-    ![ITSM művelet részletei](media/itsmc-overview/itsm-action-details.png)
+    ![ITSM művelet részletei](media/itsmc-overview/itsm-action-configuration.png)
 
 7. Válassza ki a **munkaelem** típusát a legördülő menüből.
 

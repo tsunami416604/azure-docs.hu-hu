@@ -3,13 +3,13 @@ title: Resource Manager-sablonok üzembe helyezése GitHub-műveletek használat
 description: Leírja, hogyan lehet Azure Resource Manager sablonokat a GitHub-műveletek használatával telepíteni.
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.custom: github-actions-azure,subject-armqs
-ms.openlocfilehash: f982ecd208dfd30757050df48c783718ed2b917a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.custom: github-actions-azure
+ms.openlocfilehash: 69974a8db30f12b255a4bab57ebfa32ba78f67ed
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282850"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746100"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>Azure Resource Manager sablonok üzembe helyezése GitHub-műveletek használatával
 
@@ -75,7 +75,7 @@ Létre kell hoznia egy titkos kulcsot az Azure-beli hitelesítő adataihoz, erő
 
 1. A [githubon](https://github.com/)tallózzon a tárházban.
 
-1. Válassza a **beállítások > titkok > új titok**lehetőséget.
+1. Válassza a **beállítások > titkok > új titok** lehetőséget.
 
 1. Illessze be a teljes JSON-kimenetet az Azure CLI-parancsból a titok érték mezőjébe. Adja meg a titkot a nevet `AZURE_CREDENTIALS` .
 
@@ -91,17 +91,17 @@ Vegyen fel egy Resource Manager-sablont a GitHub-tárházba. Ez a sablon létreh
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-A fájlt bárhová is elhelyezheti a tárházban. A következő szakaszban szereplő munkafolyamat-minta azt feltételezi, hogy a sablonfájl neve **azuredeploy.json**, és a tárház gyökerében tárolódik.
+A fájlt bárhová is elhelyezheti a tárházban. A következő szakaszban szereplő munkafolyamat-minta azt feltételezi, hogy a sablonfájl neve **azuredeploy.json** , és a tárház gyökerében tárolódik.
 
 ## <a name="create-workflow"></a>Munkafolyamat létrehozása
 
-A munkafolyamat-fájlt a tárház gyökerében található **. GitHub/munkafolyamatok** mappában kell tárolni. A munkafolyamat-fájlkiterjesztés lehet **. YML** vagy **. YAML**.
+A munkafolyamat-fájlt a tárház gyökerében található **. GitHub/munkafolyamatok** mappában kell tárolni. A munkafolyamat-fájlkiterjesztés lehet **. YML** vagy **. YAML** .
 
 1. A GitHub-adattárból válassza a felső menü **műveletek** elemét.
-1. Válassza az **Új munkafolyamat**lehetőséget.
-1. Válassza **a munkafolyamat beállítása saját maga**lehetőséget.
-1. Nevezze át a munkafolyamat-fájlt, ha a **Main. YML**helyett más nevet szeretne adni. Például: **deployStorageAccount. YML**.
-1. Cserélje le a YML fájl tartalmát a következőre:
+1. Válassza az **Új munkafolyamat** lehetőséget.
+1. Válassza **a munkafolyamat beállítása saját maga** lehetőséget.
+1. Nevezze át a munkafolyamat-fájlt, ha a **Main. YML** helyett más nevet szeretne adni. Például: **deployStorageAccount. YML** .
+1. Az .yml-fájl tartalmát írja felül a következővel:
 
     ```yml
     on: [push]
@@ -136,12 +136,12 @@ A munkafolyamat-fájlt a tárház gyökerében található **. GitHub/munkafolya
 
     A munkafolyamat-fájl első szakasza a következőket tartalmazza:
 
-    - **Name (név**): a munkafolyamat neve.
-    - **bekapcsolva**: a munkafolyamatot kiváltó GitHub-események neve. A munkafolyamat akkor aktiválódik, ha van egy leküldéses esemény a főágra, amely módosítja a két megadott fájl legalább egyikét. A két fájl a munkafolyamat-fájl és a sablonfájl.
+    - **Name (név** ): a munkafolyamat neve.
+    - **bekapcsolva** : a munkafolyamatot kiváltó GitHub-események neve. A munkafolyamat akkor aktiválódik, ha van egy leküldéses esemény a főágra, amely módosítja a két megadott fájl legalább egyikét. A két fájl a munkafolyamat-fájl és a sablonfájl.
 
-1. Válassza a **véglegesítés indítása**lehetőséget.
-1. Válassza **a végrehajtás közvetlenül a Master ágat**lehetőséget.
-1. Válassza az **új fájl véglegesítés** (vagy a **módosítások elvégzése**) lehetőséget.
+1. Válassza a **véglegesítés indítása** lehetőséget.
+1. Válassza **a végrehajtás közvetlenül a Master ágat** lehetőséget.
+1. Válassza az **új fájl véglegesítés** (vagy a **módosítások elvégzése** ) lehetőséget.
 
 Mivel a munkafolyamatot úgy konfigurálták, hogy a munkafolyamat-fájl vagy a frissítendő sablonfájl aktiválja, a munkafolyamat a módosítások véglegesítése után azonnal elindul.
 
@@ -151,7 +151,7 @@ Mivel a munkafolyamatot úgy konfigurálták, hogy a munkafolyamat-fájl vagy a 
 1. Válassza ki a munkafolyamatot a megnyitásához.
 1. Az üzembe helyezés ellenőrzéséhez válassza az **ARM-telepítés futtatása** lehetőséget a menüből.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha az erőforráscsoport és a tárház már nem szükséges, a telepített erőforrások tisztításához törölje az erőforráscsoportot és a GitHub-tárházat. 
 

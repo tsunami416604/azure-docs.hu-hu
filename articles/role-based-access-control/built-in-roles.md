@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 10/23/2020
 ms.custom: generated
-ms.openlocfilehash: 28de993f51b13e973edb0e42f138217cd35ab8dd
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: ed5d7c3007cf8471da453db93be0ab716805908c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636697"
+ms.locfileid: "92742951"
 ---
 # <a name="azure-built-in-roles"></a>Beépített Azure-szerepkörök
 
@@ -207,6 +207,8 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Támogatási kérelem közreműködői](#support-request-contributor) | Lehetővé teszi a támogatási kérések létrehozását és kezelését | cfd33db0-3dd1-45e3-aa9d-cdbdf3b6f24e |
 > | [Tag közreműködői](#tag-contributor) | Lehetővé teszi a címkék felügyeletét az entitásokban anélkül, hogy hozzáférést kellene biztosítani magukhoz az entitásokhoz. | 4a9ae827-6dc8-4573-8ac7-8239d42aa03f |
 > | **Egyéb** |  |  |
+> | [Azure digitális Twins-adattulajdonos](#azure-digital-twins-data-owner) | Teljes hozzáférési szerepkör a digitális Twins-adatsíkokhoz | bcd981a7-7f74-457b-83e1-cceb9e632ffe |
+> | [Azure digitális Twins-Adatolvasó](#azure-digital-twins-data-reader) | Csak olvasási szerepkör a digitális Twins-adatsíkok tulajdonságaihoz | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
 > | [BizTalk közreműködő](#biztalk-contributor) | Lehetővé teszi a BizTalk Services kezelését, de azokhoz való hozzáférés nélkül. | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
 > | [Asztali virtualizálási felhasználó](#desktop-virtualization-user) | Lehetővé teszi, hogy a felhasználó egy alkalmazáscsoport alkalmazásait használja. | 1d18fff3-a72a-46b5-b4a9-0b38a3cd7e63 |
 > | [Ütemező – feladattípusok közreműködői](#scheduler-job-collections-contributor) | Lehetővé teszi a Scheduler-feladatok összegyűjtését, de nem fér hozzájuk. | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
@@ -9211,6 +9213,102 @@ Lehetővé teszi a címkék felügyeletét az entitásokban anélkül, hogy hozz
 
 ## <a name="other"></a>Egyéb
 
+
+### <a name="azure-digital-twins-data-owner"></a>Azure digitális Twins-adattulajdonos
+
+Teljes körű hozzáférési szerepkör a digitális Twins-adatközpontok számára – [További információ](../digital-twins/concepts-security.md)
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | *nincs* |  |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | [Microsoft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/eventroutes/* |  |
+> | [Microsoft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/* |  |
+> | [Microsoft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/commands/* |  |
+> | [Microsoft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/Relationships/* |  |
+> | [Microsoft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/models/* |  |
+> | [Microsoft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/Query/* |  |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Full access role for Digital Twins data-plane",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/bcd981a7-7f74-457b-83e1-cceb9e632ffe",
+  "name": "bcd981a7-7f74-457b-83e1-cceb9e632ffe",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.DigitalTwins/eventroutes/*",
+        "Microsoft.DigitalTwins/digitaltwins/*",
+        "Microsoft.DigitalTwins/digitaltwins/commands/*",
+        "Microsoft.DigitalTwins/digitaltwins/relationships/*",
+        "Microsoft.DigitalTwins/models/*",
+        "Microsoft.DigitalTwins/query/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Digital Twins Data Owner",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-digital-twins-data-reader"></a>Azure digitális Twins-Adatolvasó
+
+Csak olvasási szerepkör a digitális Twins-adatközpont tulajdonságairól [További információ](../digital-twins/concepts-security.md)
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | *nincs* |  |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | [Microsoft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/READ | Tetszőleges digitális iker olvasása |
+> | [Microsoft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/Relationships/READ | Tetszőleges digitális kettős kapcsolat olvasása |
+> | [Microsoft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/eventroutes/READ | Bármely esemény útvonalának olvasása |
+> | [Microsoft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/models/READ | Bármely modell olvasása |
+> | [Microsoft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/Query/Action | Bármely digitális Twins-gráf lekérdezése |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Read-only role for Digital Twins data-plane properties",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/d57506d4-4c8d-48b1-8587-93c323f6a5a3",
+  "name": "d57506d4-4c8d-48b1-8587-93c323f6a5a3",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.DigitalTwins/digitaltwins/read",
+        "Microsoft.DigitalTwins/digitaltwins/relationships/read",
+        "Microsoft.DigitalTwins/eventroutes/read",
+        "Microsoft.DigitalTwins/models/read",
+        "Microsoft.DigitalTwins/query/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Digital Twins Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
 
 ### <a name="biztalk-contributor"></a>BizTalk közreműködő
 

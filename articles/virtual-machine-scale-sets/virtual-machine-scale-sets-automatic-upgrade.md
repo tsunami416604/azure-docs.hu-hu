@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 06/26/2020
 ms.reviewer: jushiman
-ms.custom: avverma
-ms.openlocfilehash: b5f3305fc5d2595c8b7b08d78ff20edea01c195e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: 334e0c745257354d9548a6f9c8cee4d43fa8da6d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89229837"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744733"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure-beli virtuálisgép-méretezési csoport operációsrendszer-képének automatikus frissítései
 
@@ -68,7 +68,7 @@ A következő platformos SKU-EK jelenleg támogatottak (és a továbbiak rendsze
 
 ## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>Az operációsrendszer-rendszerkép automatikus frissítésének konfigurálására vonatkozó követelmények
 
-- A rendszerkép *Version* tulajdonságát a *legújabb*értékre kell beállítani.
+- A rendszerkép *Version* tulajdonságát a *legújabb* értékre kell beállítani.
 - A nem Service Fabric méretezési csoportokhoz használjon Application Health-mintavételt vagy az [alkalmazás állapotának kiterjesztését](virtual-machine-scale-sets-health-extension.md) .
 - A számítási API 2018-10-01-es vagy újabb verzióját használja.
 - Győződjön meg arról, hogy a méretezési csoport modelljében megadott külső erőforrások elérhetők és frissülnek. Ilyenek például a virtuális gépek bővítményének tulajdonságai, a Storage-fiók hasznos adatai, a modellben található titkos kódok, valamint egyebek között az SAS URI-ja.
@@ -121,14 +121,14 @@ PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/p
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Az [Update-AzVmss](/powershell/module/az.compute/update-azvmss) parancsmaggal konfigurálhatja a méretezési csoport automatikus operációsrendszer-rendszerképének frissítéseit. A következő példa a *myResourceGroup*nevű erőforráscsoport *myScaleSet* nevű méretezési csoportjának automatikus frissítését konfigurálja:
+Az [Update-AzVmss](/powershell/module/az.compute/update-azvmss) parancsmaggal konfigurálhatja a méretezési csoport automatikus operációsrendszer-rendszerképének frissítéseit. A következő példa a *myResourceGroup* nevű erőforráscsoport *myScaleSet* nevű méretezési csoportjának automatikus frissítését konfigurálja:
 
 ```azurepowershell-interactive
 Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -AutomaticOSUpgrade $true
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Az [az vmss Update](/cli/azure/vmss#az-vmss-update) paranccsal konfigurálhatja a méretezési csoport automatikus operációsrendszer-rendszerképének frissítéseit. Használja az Azure CLI-2.0.47 vagy újabb verzióját. A következő példa a *myResourceGroup*nevű erőforráscsoport *myScaleSet* nevű méretezési csoportjának automatikus frissítését konfigurálja:
+Az [az vmss Update](/cli/azure/vmss#az-vmss-update) paranccsal konfigurálhatja a méretezési csoport automatikus operációsrendszer-rendszerképének frissítéseit. Használja az Azure CLI-2.0.47 vagy újabb verzióját. A következő példa a *myResourceGroup* nevű erőforráscsoport *myScaleSet* nevű méretezési csoportjának automatikus frissítését konfigurálja:
 
 ```azurecli-interactive
 az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
@@ -184,7 +184,7 @@ Az alkalmazás-állapot bővítmény a méretezési csoportokra több módon is 
 A méretezési csoporton végrehajtott legújabb verziófrissítések előzményeit a Azure PowerShell, az Azure CLI 2,0 vagy a REST API-k segítségével tekintheti meg. Az elmúlt két hónap során az elmúlt öt operációsrendszer-frissítési kísérlet előzményeit is megszerezheti.
 
 ### <a name="rest-api"></a>REST API
-A következő példa a [REST API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) használatával vizsgálja meg az *myScaleSet* nevű méretezési csoport állapotát a *myResourceGroup*nevű erőforráscsoport-csoportban:
+A következő példa a [REST API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) használatával vizsgálja meg az *myScaleSet* nevű méretezési csoport állapotát a *myResourceGroup* nevű erőforráscsoport-csoportban:
 
 ```
 GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osUpgradeHistory?api-version=2019-12-01`
@@ -228,14 +228,14 @@ A GET hívás a következő példa kimenetéhez hasonló tulajdonságokat ad vis
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Használja a [Get-AzVmss](/powershell/module/az.compute/get-azvmss) parancsmagot a méretezési csoport operációsrendszer-frissítési előzményeinek megtekintéséhez. A következő példa részletesen ismerteti, hogyan tekintheti át egy *myScaleSet* nevű méretezési csoport operációsrendszer-frissítési állapotát a *myResourceGroup*nevű erőforráscsoport:
+Használja a [Get-AzVmss](/powershell/module/az.compute/get-azvmss) parancsmagot a méretezési csoport operációsrendszer-frissítési előzményeinek megtekintéséhez. A következő példa részletesen ismerteti, hogyan tekintheti át egy *myScaleSet* nevű méretezési csoport operációsrendszer-frissítési állapotát a *myResourceGroup* nevű erőforráscsoport:
 
 ```azurepowershell-interactive
 Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -OSUpgradeHistory
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Az az [vmss Get-os-upgrade-History](/cli/azure/vmss#az-vmss-get-os-upgrade-history) paranccsal tekintheti meg a méretezési csoport operációsrendszer-frissítési előzményeit. Használja az Azure CLI-2.0.47 vagy újabb verzióját. A következő példa részletesen ismerteti, hogyan tekintheti át egy *myScaleSet* nevű méretezési csoport operációsrendszer-frissítési állapotát a *myResourceGroup*nevű erőforráscsoport:
+Az az [vmss Get-os-upgrade-History](/cli/azure/vmss#az-vmss-get-os-upgrade-history) paranccsal tekintheti meg a méretezési csoport operációsrendszer-frissítési előzményeit. Használja az Azure CLI-2.0.47 vagy újabb verzióját. A következő példa részletesen ismerteti, hogyan tekintheti át egy *myScaleSet* nevű méretezési csoport operációsrendszer-frissítési állapotát a *myResourceGroup* nevű erőforráscsoport:
 
 ```azurecli-interactive
 az vmss get-os-upgrade-history --resource-group myResourceGroup --name myScaleSet
@@ -269,21 +269,21 @@ Bizonyos esetekben, amikor nem szeretné megvárni, hogy a Orchestrator a legúj
 > Az operációsrendszer-rendszerkép frissítéseinek manuális triggere nem biztosít Automatikus visszaállítási képességeket. Ha egy példány nem állítja helyre az állapotát egy frissítési művelet után, az előző operációsrendszer-lemez nem állítható vissza.
 
 ### <a name="rest-api"></a>REST API
-Az [operációs rendszer verziófrissítésének](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) API-hívásával indítsa el a működés közbeni frissítést, hogy az összes virtuálisgép-méretezési csoport példányai a legújabb elérhető lemezkép operációsrendszer-verzióra lépjenek. Azokat a példányokat, amelyek már futtatják a legújabb elérhető operációsrendszer-verziót, nem érintettek. Az alábbi példa azt ismerteti, hogyan indíthatja el a működés közbeni operációs rendszer frissítését egy *myScaleSet* nevű méretezési csoporton az *myResourceGroup*nevű erőforráscsoport:
+Az [operációs rendszer verziófrissítésének](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) API-hívásával indítsa el a működés közbeni frissítést, hogy az összes virtuálisgép-méretezési csoport példányai a legújabb elérhető lemezkép operációsrendszer-verzióra lépjenek. Azokat a példányokat, amelyek már futtatják a legújabb elérhető operációsrendszer-verziót, nem érintettek. Az alábbi példa azt ismerteti, hogyan indíthatja el a működés közbeni operációs rendszer frissítését egy *myScaleSet* nevű méretezési csoporton az *myResourceGroup* nevű erőforráscsoport:
 
 ```
 POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2019-12-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-A [Start-AzVmssRollingOSUpgrade](/powershell/module/az.compute/Start-AzVmssRollingOSUpgrade) parancsmag használatával tekintse meg a méretezési csoport operációsrendszer-frissítési előzményeit. Az alábbi példa azt ismerteti, hogyan indíthatja el a működés közbeni operációs rendszer frissítését egy *myScaleSet* nevű méretezési csoporton az *myResourceGroup*nevű erőforráscsoport:
+A [Start-AzVmssRollingOSUpgrade](/powershell/module/az.compute/Start-AzVmssRollingOSUpgrade) parancsmag használatával tekintse meg a méretezési csoport operációsrendszer-frissítési előzményeit. Az alábbi példa azt ismerteti, hogyan indíthatja el a működés közbeni operációs rendszer frissítését egy *myScaleSet* nevű méretezési csoporton az *myResourceGroup* nevű erőforráscsoport:
 
 ```azurepowershell-interactive
 Start-AzVmssRollingOSUpgrade -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Az az [vmss Rolling-upgrade Start](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) paranccsal tekintheti meg a méretezési csoport operációsrendszer-frissítési előzményeit. Használja az Azure CLI-2.0.47 vagy újabb verzióját. Az alábbi példa azt ismerteti, hogyan indíthatja el a működés közbeni operációs rendszer frissítését egy *myScaleSet* nevű méretezési csoporton az *myResourceGroup*nevű erőforráscsoport:
+Az az [vmss Rolling-upgrade Start](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) paranccsal tekintheti meg a méretezési csoport operációsrendszer-frissítési előzményeit. Használja az Azure CLI-2.0.47 vagy újabb verzióját. Az alábbi példa azt ismerteti, hogyan indíthatja el a működés közbeni operációs rendszer frissítését egy *myScaleSet* nevű méretezési csoporton az *myResourceGroup* nevű erőforráscsoport:
 
 ```azurecli-interactive
 az vmss rolling-upgrade start --resource-group "myResourceGroup" --name "myScaleSet" --subscription "subscriptionId"

@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: manayar
-ms.openlocfilehash: 0a777b9008864368a6d1731cae0374e55a4c585f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c7574daced9cec078b6e98e378212ce30d6f4f6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842869"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744731"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>Előzetes verzió: Automatikus virtuálisgép-vendég-javítás konfigurálása windowsos virtuális gépek esetében az Azure-ban
 
@@ -28,7 +28,7 @@ Az automatikus VM-vendég javításának jellemzői a következők:
 > [!IMPORTANT]
 > Az automatikus VM vendég javítás jelenleg nyilvános előzetes verzióban érhető el. Az alábbiakban ismertetett nyilvános előzetes funkciók használatához egy opt-in eljárás szükséges.
 > Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="how-does-automatic-vm-guest-patching-work"></a>Hogyan működik az automatikus VM-vendég-javítás?
 
@@ -80,17 +80,20 @@ Az Azure-beli Windows rendszerű virtuális gépek mostantól a következő jav�
 
 **AutomaticByPlatform:**
 - Ez a mód lehetővé teszi, hogy a virtuális gépek automatikus telepítése a Windows rendszerű virtuális gépen megtörténjen, és az Azure-ban az azt követő javításokat.
+- Ez a mód szükséges a rendelkezésre álláshoz – az első javításhoz.
 - A mód beállítása a Windows rendszerű virtuális gépen lévő natív automatikus frissítéseket is letiltja a Duplikálás elkerülése érdekében.
 - Ez a mód csak olyan virtuális gépek esetén támogatott, amelyek a fenti támogatott operációsrendszer-platform rendszerképekkel lettek létrehozva.
 - Ha ezt a módot szeretné használni, állítsa be a tulajdonságot `osProfile.windowsConfiguration.enableAutomaticUpdates=true` , és állítsa be a tulajdonságot  `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatfom` a virtuálisgép-sablonban.
 
 **AutomaticByOS:**
 - Ez a mód lehetővé teszi az automatikus frissítések használatát a Windows rendszerű virtuális gépen, a javítások pedig automatikusan települnek a virtuális gépre.
+- Ez a mód nem támogatja a rendelkezésre állást – az első javításokat.
 - Ez a mód alapértelmezés szerint be van állítva, ha nincs más javítási mód megadva.
 - Ha ezt a módot szeretné használni, állítsa be a tulajdonságot `osProfile.windowsConfiguration.enableAutomaticUpdates=true` , és állítsa be a tulajdonságot  `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByOS` a virtuálisgép-sablonban.
 
 **Kézi**
 - Ez a mód letiltja az automatikus frissítéseket a Windows rendszerű virtuális gépen.
+- Ez a mód nem támogatja a rendelkezésre állást – az első javításokat.
 - Ezt a módot egyéni javítási megoldások használatakor kell beállítani.
 - Ha ezt a módot szeretné használni, állítsa be a tulajdonságot `osProfile.windowsConfiguration.enableAutomaticUpdates=false` , és állítsa be a tulajdonságot  `osProfile.windowsConfiguration.patchSettings.patchMode=Manual` a virtuálisgép-sablonban.
 
@@ -196,7 +199,7 @@ Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Az [az VM Create](/cli/azure/vm#az-vm-create) paranccsal engedélyezheti, hogy az új virtuális gép létrehozásakor az automatikus virtuális gép vendége javításokat hozzon létre. A következő példa egy *myVM* nevű virtuális géphez tartozó automatikus virtuális gép vendég-javítását konfigurálja a *myResourceGroup*nevű erőforráscsoporthoz:
+Az [az VM Create](/cli/azure/vm#az-vm-create) paranccsal engedélyezheti, hogy az új virtuális gép létrehozásakor az automatikus virtuális gép vendége javításokat hozzon létre. A következő példa egy *myVM* nevű virtuális géphez tartozó automatikus virtuális gép vendég-javítását konfigurálja a *myResourceGroup* nevű erőforráscsoporthoz:
 
 ```azurecli-interactive
 az vm create --resource-group myResourceGroup --name myVM --image Win2019Datacenter --enable-agent --enable-auto-update --patch-mode AutomaticByPlatform

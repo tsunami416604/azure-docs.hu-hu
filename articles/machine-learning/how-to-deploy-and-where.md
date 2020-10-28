@@ -10,13 +10,13 @@ author: gvashishtha
 ms.reviewer: larryfr
 ms.date: 09/17/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 40d8d4596e7d93b589e44f2dde2d1cb453566d71
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
+ms.openlocfilehash: 2642af3490cd69a3e793f020c193d83d2966e1ab
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999227"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744618"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése az Azure Machine Learninggel
 
@@ -311,13 +311,13 @@ A modell telepítése során előfordulhat, hogy a szolgáltatás állapota megv
 
 Az alábbi táblázat a különböző szolgáltatás-állapotokat ismerteti:
 
-| Webszolgáltatás állapota | Description | Végső állapot?
+| Webszolgáltatás állapota | Leírás | Végső állapot?
 | ----- | ----- | ----- |
-| Transitioning | A szolgáltatás üzembe helyezési folyamatban van. | No |
-| Nem kifogástalan | A szolgáltatás telepítve van, de jelenleg nem érhető el.  | No |
-| Unschedulable | A szolgáltatás jelenleg nem telepíthető az erőforrások hiánya miatt. | No |
-| Sikertelen | Hiba vagy összeomlás miatt nem sikerült telepíteni a szolgáltatást. | Yes |
-| Kifogástalan | A szolgáltatás kifogástalan állapotban van, és a végpont elérhető. | Yes |
+| Transitioning | A szolgáltatás üzembe helyezési folyamatban van. | Nem |
+| Nem kifogástalan | A szolgáltatás telepítve van, de jelenleg nem érhető el.  | Nem |
+| Unschedulable | A szolgáltatás jelenleg nem telepíthető az erőforrások hiánya miatt. | Nem |
+| Sikertelen | Hiba vagy összeomlás miatt nem sikerült telepíteni a szolgáltatást. | Igen |
+| Kifogástalan | A szolgáltatás kifogástalan állapotban van, és a végpont elérhető. | Igen |
 
 
 ### <a name="batch-inference"></a><a id="azuremlcompute"></a> Batch-következtetés

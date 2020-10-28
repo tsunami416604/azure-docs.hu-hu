@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 4db53b806adc2e29ae9c9a950faf8fc822c9d66b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: how-to, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 5a7d33e163c10a6d56416ea474d7e3a9e8624219
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743981"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744423"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Hozzon létre & a szoftveres környezetek használatával Azure Machine Learning
 
@@ -110,7 +110,7 @@ A [`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.c
 myenv.docker.enabled = True
 ```
 
-Alapértelmezés szerint az újonnan létrehozott Docker-rendszerkép megjelenik a munkaterülethez társított tároló-beállításjegyzékben.  Az adattár neve *azureml/azureml_ \<uuid\> *formátumú. A név egyedi azonosítója (*UUID*) a környezeti konfiguráció alapján számított kivonatnak felel meg. Ez a levelezés lehetővé teszi, hogy a szolgáltatás meghatározhatja, hogy az adott környezethez tartozó rendszerkép már létezik-e az újrafelhasználáshoz.
+Alapértelmezés szerint az újonnan létrehozott Docker-rendszerkép megjelenik a munkaterülethez társított tároló-beállításjegyzékben.  Az adattár neve *azureml/azureml_ \<uuid\>* formátumú. A név egyedi azonosítója ( *UUID* ) a környezeti konfiguráció alapján számított kivonatnak felel meg. Ez a levelezés lehetővé teszi, hogy a szolgáltatás meghatározhatja, hogy az adott környezethez tartozó rendszerkép már létezik-e az újrafelhasználáshoz.
 
 #### <a name="use-a-prebuilt-docker-image"></a>Előre összeépített Docker-rendszerkép használata
 
@@ -259,7 +259,7 @@ myenv.environment_variables = {"MESSAGE":"Hello from Azure Machine Learning"}
 ```
 
 >[!IMPORTANT]
-> Ha ugyanazt a környezeti definíciót használja egy másik futtatáshoz, a Azure Machine Learning szolgáltatás újrahasználja a környezet gyorsítótárazott rendszerképét. Ha például olyan környezetet hoz létre, amely nem rögzített csomag-függőséggel rendelkezik, például a környezet a ```numpy``` _környezet létrehozásakor_telepített csomag verziószámát fogja használni. Emellett a megfelelő definícióval rendelkező jövőbeli környezetek továbbra is a régi verziót használják. További információ: [környezetek kiépítése, gyorsítótárazása és újrafelhasználása](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse).
+> Ha ugyanazt a környezeti definíciót használja egy másik futtatáshoz, a Azure Machine Learning szolgáltatás újrahasználja a környezet gyorsítótárazott rendszerképét. Ha például olyan környezetet hoz létre, amely nem rögzített csomag-függőséggel rendelkezik, például a környezet a ```numpy``` _környezet létrehozásakor_ telepített csomag verziószámát fogja használni. Emellett a megfelelő definícióval rendelkező jövőbeli környezetek továbbra is a régi verziót használják. További információ: [környezetek kiépítése, gyorsítótárazása és újrafelhasználása](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse).
 
 ### <a name="private-python-packages"></a>Privát Python-csomagok
 

@@ -5,13 +5,13 @@ description: Ismerje meg, hogyan használhatja az Azure CLI-t olyan Azure Kubern
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.custom: references_regions
-ms.openlocfilehash: 1e62af4f2ab8233125777bf6edf713758e4f2ec7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 96c47ed59fd904f1523347d9f0ef7bc00edb866f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87543078"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745662"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure Kubernetes Services (ak) fürt létrehozása és konfigurálása virtuális csomópontok használatára az Azure CLI használatával
 
@@ -29,7 +29,7 @@ Ha korábban még nem használta az ACI-t, regisztrálja a szolgáltatót az el�
 az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
 ```
 
-A *Microsoft. ContainerInstance* szolgáltatónak *regisztráltként*kell jelentenie, ahogy az alábbi példában is látható:
+A *Microsoft. ContainerInstance* szolgáltatónak *regisztráltként* kell jelentenie, ahogy az alábbi példában is látható:
 
 ```output
 Namespace                    RegistrationState    RegistrationPolicy
@@ -37,7 +37,7 @@ Namespace                    RegistrationState    RegistrationPolicy
 Microsoft.ContainerInstance  Registered           RegistrationRequired
 ```
 
-Ha a szolgáltató *NotRegistered*-ként jelenik meg, regisztrálja a szolgáltatót az az [Provider Register][az-provider-register] paranccsal az alábbi példában látható módon:
+Ha a szolgáltató *NotRegistered* -ként jelenik meg, regisztrálja a szolgáltatót az az [Provider Register][az-provider-register] paranccsal az alábbi példában látható módon:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerInstance
@@ -79,7 +79,7 @@ A Cloud Shell megnyitásához válassza a **kipróbálás** elemet a kód jobb f
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.49 vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Hozzon létre egy erőforráscsoportot az [az group create][az-group-create] paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *westus* helyen.
 
@@ -89,7 +89,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Hozzon létre egy virtuális hálózatot az az [Network vnet Create][az-network-vnet-create] paranccsal. A következő példában létrehozunk egy *myVnet* nevű virtuális hálózatot a *10.0.0.0/8*, valamint egy *myAKSSubnet*nevű alhálózatot. Ennek az alhálózatnak az alapértelmezett *10.240.0.0/16*előtagja:
+Hozzon létre egy virtuális hálózatot az az [Network vnet Create][az-network-vnet-create] paranccsal. A következő példában létrehozunk egy *myVnet* nevű virtuális hálózatot a *10.0.0.0/8* , valamint egy *myAKSSubnet* nevű alhálózatot. Ennek az alhálózatnak az alapértelmezett *10.240.0.0/16* előtagja:
 
 ```azurecli-interactive
 az network vnet create \
@@ -100,7 +100,7 @@ az network vnet create \
     --subnet-prefix 10.240.0.0/16
 ```
 
-Most hozzon létre egy további alhálózatot a virtuális csomópontok számára az az [Network vnet subnet Create][az-network-vnet-subnet-create] paranccsal. A következő példa létrehoz egy *myVirtualNodeSubnet* nevű alhálózatot a *10.241.0.0/16*előtaggal.
+Most hozzon létre egy további alhálózatot a virtuális csomópontok számára az az [Network vnet subnet Create][az-network-vnet-subnet-create] paranccsal. A következő példa létrehoz egy *myVirtualNodeSubnet* nevű alhálózatot a *10.241.0.0/16* előtaggal.
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -202,7 +202,7 @@ A fürthöz való csatlakozás ellenőrzéséhez használja a [kubectl get][kube
 kubectl get nodes
 ```
 
-A következő példa kimenete az egyetlen virtuálisgép-csomópontot mutatja, majd a Linux, *Virtual-Node-ACI-Linux*virtuális csomópontot:
+A következő példa kimenete az egyetlen virtuálisgép-csomópontot mutatja, majd a Linux, *Virtual-Node-ACI-Linux* virtuális csomópontot:
 
 ```output
 NAME                          STATUS    ROLES     AGE       VERSION

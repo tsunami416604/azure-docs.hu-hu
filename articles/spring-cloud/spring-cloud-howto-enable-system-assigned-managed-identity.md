@@ -6,13 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 1802708c3b9e15a2459f29d15da72f2dc1da1a4f
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 2fbdd46b872c4c70999355d457045f4aac8aa34c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093990"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742799"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>A rendszerhez rendelt felügyelt identitás engedélyezése az Azure Spring Cloud Application szolgáltatáshoz
 
@@ -34,8 +34,8 @@ A [Azure Portal](https://portal.azure.com/)felügyelt identitásának beállít�
 
 1. A szokásos módon hozzon létre egy alkalmazást a portálon. Navigáljon a portálon.
 2. Görgessen le a **Beállítások** csoportba a bal oldali navigációs ablaktáblán.
-3. Válassza az **identitás**lehetőséget.
-4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva *értékre*. Kattintson a **Mentés** gombra.
+3. Válassza az **identitás** lehetőséget.
+4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva *értékre* . Kattintson a **Mentés** gombra.
 
  ![Felügyelt identitás a portálon](./media/spring-cloud-managed-identity/identity-1.png)
 
@@ -72,8 +72,8 @@ A rendszer által hozzárendelt identitások eltávolítása az Azure AD-ből is
 A rendszer által hozzárendelt felügyelt identitás eltávolítása egy olyan alkalmazásból, amely már nem igényel rá:
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) az Azure Spring Cloud-példányt tartalmazó Azure-előfizetéshez társított fiókkal.
-1. Navigáljon a kívánt virtuális géphez, és válassza az **identitás**elemet.
-1. A **rendszerhez rendelt** / **állapot**területen válassza a **ki** lehetőséget, majd kattintson a **Mentés**gombra:
+1. Navigáljon a kívánt virtuális géphez, és válassza az **identitás** elemet.
+1. A **rendszerhez rendelt** / **állapot** területen válassza a **ki** lehetőséget, majd kattintson a **Mentés** gombra:
 
  ![Felügyelt identitás](./media/spring-cloud-managed-identity/remove-identity.png)
 

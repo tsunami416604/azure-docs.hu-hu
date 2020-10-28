@@ -8,17 +8,17 @@ author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: how-to
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: e8fedad40c18818932bf37dfe93c1b236357c30b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a78bfc2b4f0c372c915647c0afa40263079af8e5
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87001604"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746071"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>Terheléselosztás több IP-konfiguráción a PowerShell használatával
 
@@ -141,6 +141,6 @@ Kövesse az alábbi lépéseket a jelen cikkben ismertetett forgatókönyv megva
 
 13. Végezetül konfigurálnia kell a DNS-erőforrásrekordokat úgy, hogy az a Load Balancer megfelelő előtérbeli IP-címére mutasson. A tartományokat Azure DNS-ban üzemeltetheti. A Azure DNS és a Load Balancer használatával kapcsolatos további információkért lásd: a [Azure DNS használata más Azure-szolgáltatásokkal](../dns/dns-for-azure-services.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az Azure terheléselosztási szolgáltatásainak az Azure-beli [terheléselosztási szolgáltatások használatával](../traffic-manager/traffic-manager-load-balancing-azure.md)történő összevonásáról.
 - Ismerje meg, hogyan használhatja a különböző típusú naplókat az Azure-ban a [Azure Load Balancer Azure monitor naplófájljaiban](../load-balancer/load-balancer-monitor-log.md)található Load Balancer kezeléséhez és hibakereséséhez.
