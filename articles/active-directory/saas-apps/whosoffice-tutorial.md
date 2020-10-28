@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 811ba2398b5245be74fd991611ea6a631e0e2b5b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 021497fa7766b7eecfa935d4186ecc98edef8d61
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519186"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633688"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whosoffice"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a WhosOffice
 
@@ -51,15 +51,15 @@ A WhosOffice Azure AD-be való integrálásának konfigurálásához hozzá kell
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **WhosOffice** kifejezést a keresőmezőbe.
 1. Válassza ki a **WhosOffice** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-whosoffice"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a WhosOffice
 
-Konfigurálja és tesztelje az Azure AD SSO-t a WhosOffice a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a WhosOffice-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t a WhosOffice a **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a WhosOffice-ben.
 
 Az Azure AD SSO és a WhosOffice konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -74,8 +74,8 @@ Az Azure AD SSO és a WhosOffice konfigurálásához és teszteléséhez hajtsa 
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/) **WhosOffice** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **WhosOffice** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -103,25 +103,25 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a WhosOffice.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **WhosOffice**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **WhosOffice** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -133,37 +133,37 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként a WhosOffice webhelyre.
 
-1. Kattintson a **Beállítások** elemre, és válassza a **vállalat**lehetőséget.
+1. Kattintson a **Beállítások** elemre, és válassza a **vállalat** lehetőséget.
 
-    ![WhosOffice-konfiguráció](./media/whosoffice-tutorial/configuration1.png)
+    ![A képernyőfelvétel a beállítások közül kiválasztott vállalatot mutatja.](./media/whosoffice-tutorial/configuration1.png)
 
-1. Kattintson az **alkalmazások/integrációk**elemre.
+1. Kattintson az **alkalmazások/integrációk** elemre.
 
-    ![WhosOffice-konfiguráció](./media/whosoffice-tutorial/configuration2.png)
+    ![A képernyőképen a vállalati beállítások közül kiválasztott alkalmazások/integrációk láthatók.](./media/whosoffice-tutorial/configuration2.png)
 
-1. Válassza ki **Microsoft Azure** a szolgáltató legördülő menüből, majd kattintson a **bejelentkezési szolgáltató aktiválása**elemre.
+1. Válassza ki **Microsoft Azure** a szolgáltató legördülő menüből, majd kattintson a **bejelentkezési szolgáltató aktiválása** elemre.
 
-    ![WhosOffice-konfiguráció](./media/whosoffice-tutorial/configuration3.png)
+    ![A képernyőképen a Microsoft Azure kiválasztott bejelentkezési szolgáltató aktiválása látható.](./media/whosoffice-tutorial/configuration3.png)
 
 1. Töltse fel a letöltött összevonási metaadat-fájlt Azure Portal a **feltöltés** lehetőségre kattintva.
     
-    ![WhosOffice-konfiguráció](./media/whosoffice-tutorial/configuration4.png)
+    ![Képernyőfelvétel: a meta-adatfájlok feltöltési lehetőségének megjelenítése.](./media/whosoffice-tutorial/configuration4.png)
 
 ### <a name="create-whosoffice-test-user"></a>WhosOffice-tesztelési felhasználó létrehozása
 
 1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként a WhosOffice webhelyre.
 
-1. Kattintson a **Beállítások** elemre, és válassza a **felhasználók**lehetőséget.
+1. Kattintson a **Beállítások** elemre, és válassza a **felhasználók** lehetőséget.
 
-    ![WhosOffice-konfiguráció](./media/whosoffice-tutorial/user1.png)
+    ![A képernyőfelvételen a beállítások közül kiválasztott felhasználók láthatók.](./media/whosoffice-tutorial/user1.png)
 
-1. Válassza az **új felhasználó létrehozása**lehetőséget.
+1. Válassza az **új felhasználó létrehozása** lehetőséget.
 
-    ![WhosOffice-konfiguráció](./media/whosoffice-tutorial/user2.png)
+    ![Képernyőfelvétel: a kiválasztott új felhasználó létrehozása.](./media/whosoffice-tutorial/user2.png)
 
 1. Adja meg a felhasználó szükséges adatait a szervezete által támasztott követelménynek megfelelően.
 
-    ![WhosOffice-konfiguráció](./media/whosoffice-tutorial/user3.png)
+    ![Képernyőfelvétel: az új felhasználó párbeszédpanel, amelyen megadhatja a felhasználói adatbevitelt.](./media/whosoffice-tutorial/user3.png)
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 

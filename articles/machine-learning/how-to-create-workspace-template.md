@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 1978cfe6ea117a0d30df938c9e4ba1aeb48314fc
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 4a80b1f9bfa5d477c47e340f1dec1b37e4c69258
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057841"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631044"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Munkaterületek létrehozása Azure Machine Learninghez Azure Resource Manager sablon használatával
 
@@ -28,7 +28,7 @@ További információ: [alkalmazások központi telepítése Azure Resource Mana
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy **Azure-előfizetés**. Ha még nem rendelkezik ilyennel, próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+* Egy **Azure-előfizetés** . Ha még nem rendelkezik ilyennel, próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
 * Ha a parancssori felületről szeretne sablont használni, [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)-t kell használnia.
 
@@ -59,7 +59,7 @@ A példa sablon két **kötelező** paraméterrel rendelkezik:
 
     A sablon a legtöbb erőforráshoz kiválasztott helyet fogja használni. A kivétel a Application Insights szolgáltatás, amely nem érhető el a többi szolgáltatás összes helyén. Ha olyan helyet választ, ahol nem érhető el, a szolgáltatás az USA déli középső régiójában lesz létrehozva.
 
-* A **workspaceName**, amely a Azure Machine learning munkaterület rövid neve.
+* A **workspaceName** , amely a Azure Machine learning munkaterület rövid neve.
 
     > [!NOTE]
     > A munkaterület neve megkülönbözteti a kis-és nagybetűket.
@@ -161,9 +161,11 @@ New-AzResourceGroupDeployment `
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy munkaterületet három beállítással:
 
-* A munkaterület magas titoktartási beállításainak engedélyezése
-* A munkaterület titkosításának engedélyezése
-* Egy meglévő Azure Key Vault használ az ügyfél által felügyelt kulcsok lekéréséhez
+* Magas titkosítási beállítások engedélyezése a munkaterületen. Ez létrehoz egy új Cosmos DB példányt.
+* A munkaterület titkosításának engedélyezése.
+* Egy meglévő Azure Key Vault használ az ügyfél által felügyelt kulcsok lekéréséhez. Az ügyfél által felügyelt kulcsok használatával új Cosmos DB példány hozható létre a munkaterülethez.
+
+    [!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
 > [!IMPORTANT]
 > Miután létrehozta a munkaterületet, nem módosíthatja a bizalmas adatok, a titkosítás, a kulcstároló-azonosító vagy a kulcs-azonosítók beállításait. Az értékek módosításához új munkaterületet kell létrehoznia az új értékekkel.
@@ -217,7 +219,7 @@ __To get the values__ A `cmk_keyvault` sablonhoz szükséges (Key Vault) és a `
 
 Az ügyfél által felügyelt kulcsok használatának engedélyezéséhez állítsa be a következő paramétereket a sablon telepítésekor:
 
-* **Encryption_status** **engedélyezett**.
+* **Encryption_status** **engedélyezett** .
 * **cmk_keyvault** az `cmk_keyvault` előző lépések során beszerzett értékre.
 * **resource_cmk_uri** az `resource_cmk_uri` előző lépések során beszerzett értékre.
 
@@ -252,7 +254,7 @@ New-AzResourceGroupDeployment `
 
 Ügyfél által felügyelt kulcs használatakor Azure Machine Learning létrehoz egy másodlagos erőforráscsoportot, amely tartalmazza a Cosmos DB példányt. További információ: [titkosítás a REST-Cosmos DBon](concept-enterprise-security.md#encryption-at-rest).
 
-Az adatai számára további konfigurációt adhat meg, ha a **confidential_data** paramétert True ( **igaz**) értékre állítja. Ezzel a következő műveleteket hajtja végre:
+Az adatai számára további konfigurációt adhat meg, ha a **confidential_data** paramétert True ( **igaz** ) értékre állítja. Ezzel a következő műveleteket hajtja végre:
 
 * Elindítja a Azure Machine Learning számítási fürtök helyi lemezeinek titkosítását, így még nem hozott létre korábbi fürtöket az előfizetésében. Ha korábban már létrehozott egy fürtöt az előfizetésben, nyisson meg egy támogatási jegyet, hogy a számítási fürtökön engedélyezve legyen a lemez titkosítása.
 * A helyi kaparós lemez tisztítása a futtatások között.
@@ -547,8 +549,8 @@ New-AzResourceGroupDeployment `
    * Régió: válassza ki azt az Azure-régiót, ahol létre kívánja hozni az erőforrásokat.
    * Munkaterület neve: a létrehozandó Azure Machine Learning munkaterület nevét fogja használni. A munkaterület nevének 3 és 33 karakter közöttinek kell lennie. Csak alfanumerikus karaktereket és "-" karaktert tartalmazhat.
    * Hely: válassza ki azt a helyet, ahová létre kívánja hozni az erőforrásokat.
-1. Válassza a __Felülvizsgálat + létrehozás__ lehetőséget.
-1. A __felülvizsgálat + létrehozás__ képernyőn fogadja el a felsorolt feltételeket és kikötéseket, majd válassza a __Létrehozás__lehetőséget.
+1. Válassza az __Áttekintés + létrehozás__ lehetőséget.
+1. A __felülvizsgálat + létrehozás__ képernyőn fogadja el a felsorolt feltételeket és kikötéseket, majd válassza a __Létrehozás__ lehetőséget.
 
 További információ: [erőforrások központi telepítése egyéni sablonból](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
@@ -653,7 +655,7 @@ A probléma elkerüléséhez a következő módszerek egyikét javasoljuk:
 
 ### <a name="virtual-network-not-linked-to-private-dns-zone"></a>A virtuális hálózat nem kapcsolódik a magánhálózati DNS-zónához
 
-Ha privát végponttal hoz létre munkaterületet, a sablon létrehoz egy __privatelink.API.azureml.MS__nevű saját DNS zónát. A rendszer automatikusan hozzáadja a __virtuális hálózati kapcsolatot__ ehhez a magánhálózati DNS-zónához. A hivatkozás csak az első munkaterülethez és egy erőforráscsoporthoz létrehozott privát végponthoz lesz hozzáadva. Ha egy másik virtuális hálózatot és munkaterületet hoz létre egy privát végponttal ugyanabban az erőforráscsoportban, előfordulhat, hogy a második virtuális hálózat nem kerül be a magánhálózati DNS-zónába.
+Ha privát végponttal hoz létre munkaterületet, a sablon létrehoz egy __privatelink.API.azureml.MS__ nevű saját DNS zónát. A rendszer automatikusan hozzáadja a __virtuális hálózati kapcsolatot__ ehhez a magánhálózati DNS-zónához. A hivatkozás csak az első munkaterülethez és egy erőforráscsoporthoz létrehozott privát végponthoz lesz hozzáadva. Ha egy másik virtuális hálózatot és munkaterületet hoz létre egy privát végponttal ugyanabban az erőforráscsoportban, előfordulhat, hogy a második virtuális hálózat nem kerül be a magánhálózati DNS-zónába.
 
 A magánhálózati DNS-zónához már meglévő virtuális hálózati kapcsolatok megtekintéséhez használja az alábbi Azure CLI-parancsot:
 

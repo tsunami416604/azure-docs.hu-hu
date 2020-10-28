@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: a6faac66edaaf047f5ba025e94a1522c2313f9ed
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c21b4d746d763f41f4360cf93f67939bcd6dc49f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546670"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632685"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure-beli privát hivatkozás Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-Az Azure Private link használatával az Azure-ban egy privát végponton keresztül kapcsolódhat különböző platformokhoz (a szolgáltatásként) üzemelő példányokhoz. A privát végpont egy magánhálózati IP-cím egy adott virtuális hálózaton és alhálózaton belül. A privát kapcsolati funkciót támogató, a következő helyen található, a Private link [dokumentációját](https://docs.microsoft.com/azure/private-link/)tartalmazó, 
+Az Azure Private link használatával az Azure-ban egy privát végponton keresztül kapcsolódhat különböző platformokhoz (a szolgáltatásként) üzemelő példányokhoz. A privát végpont egy magánhálózati IP-cím egy adott virtuális hálózaton és alhálózaton belül. A privát kapcsolati funkciót támogató, a következő helyen található, a Private link [dokumentációját](../private-link/index.yml)tartalmazó, 
 
 ## <a name="secure-communication-between-customer-networks-and-azure-data-factory"></a>Biztonságos kommunikáció az ügyfél-hálózatok és a Azure Data Factory között 
 Beállíthat egy Azure-beli virtuális hálózatot a hálózat logikai ábrázolásához a felhőben. Ez a következő előnyöket nyújtja:
@@ -67,7 +67,7 @@ A Private link Service minden korábbi kommunikációs csatornán való engedél
 > Társított szolgáltatás létrehozásakor győződjön meg arról, hogy a hitelesítő adatai egy Azure Key vaultban vannak tárolva. Ellenkező esetben a hitelesítő adatok nem fognak működni, ha engedélyezi a Azure Data Factoryban található privát hivatkozást.
 
 ## <a name="set-up-private-link-for-azure-data-factory"></a>Privát hivatkozás beállítása Azure Data Factoryhoz
-[A Azure Portal](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)használatával saját végpontokat is létrehozhat.
+[A Azure Portal](../private-link/create-private-endpoint-portal.md)használatával saját végpontokat is létrehozhat.
 
 Az Azure-beli adatgyárat a Azure Portalban is megtekintheti, és létrehozhat egy privát végpontot, ahogy az itt látható:
 
@@ -89,4 +89,3 @@ Ha le szeretné tiltani az Azure-beli adatgyárhoz való nyilvános hozzáféré
 - [Adat-előállító létrehozása az Azure Data Factory felhasználói felületén](quickstart-create-data-factory-portal.md)
 - [Az Azure Data Factory bemutatása](introduction.md)
 - [Visual authoring in Azure Data Factory](author-visually.md)
-

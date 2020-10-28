@@ -10,12 +10,12 @@ author: linda33wj
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: 6f0a1509a97d2d860b43146ffaf69bb241105910
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc10017da8561cda09658ec9380cc82095f3ef94
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84194633"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632232"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-sql-server-to-azure"></a>Adatok másolása SQL Serverról az Azure-ba a PowerShell használatával
 
@@ -27,9 +27,9 @@ Ez a példa PowerShell-szkript létrehoz egy folyamatot a Azure Data Factoryban,
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **SQL Server**. Ebben a példában egy SQL Server adatbázist használ **forrásként** szolgáló adattárként.
-- **Azure Storage-fiók**. Ebben a példában az Azure Blob Storage-t **célként/fogadó** adattárként kell használni. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozása](../../storage/common/storage-account-create.md) című cikket a létrehozás lépéseihez.
-- **Saját üzemeltetésű integrációs**modul. Töltse le az MSI-fájlt a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=39717) , és futtassa a saját üzemeltetésű integrációs modul telepítéséhez a gépen.  
+- **SQL Server** . Ebben a példában egy SQL Server adatbázist használ **forrásként** szolgáló adattárként.
+- **Azure Storage-fiók** . Ebben a példában az Azure Blob Storage-t **célként/fogadó** adattárként kell használni. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozása](../../storage/common/storage-account-create.md) című cikket a létrehozás lépéseihez.
+- **Saját üzemeltetésű integrációs** modul. Töltse le az MSI-fájlt a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=39717) , és futtassa a saját üzemeltetésű integrációs modul telepítéséhez a gépen.  
 
 ### <a name="create-sample-database-in-sql-server"></a>Mintaadatbázis létrehozása a SQL Serverban
 1. A SQL Server adatbázisban hozzon létre egy **EMP** nevű táblát a következő SQL-parancsfájl használatával:
@@ -90,8 +90,8 @@ Ez a szkript a következő parancsokat használja:
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
+Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/).
 
 További Azure Data Factory PowerShell-szkriptek is találhatók a [Azure Data Factory PowerShell-mintákban](../samples-powershell.md).

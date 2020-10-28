@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9acc369e24d1bac92dea3fb6ae391a410e5f6c3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbc7fd22915af1c9645d915a9898679a3a7c30d0
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73667654"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631512"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory – functions és System változók
 > [!NOTE]
@@ -61,7 +61,7 @@ Az adat-előállítóban a függvények a rendszerváltozókkal együtt a követ
    
     a $ $ nem szükséges a bemeneti függőségi kifejezések megadásához.     
 
-A következő példában a JSON-fájl **sqlReaderQuery** tulajdonsága a függvény által visszaadott értékhez van rendelve `Text.Format` . Ez a minta egy **WindowStart**nevű rendszerváltozót is használ, amely a tevékenység futtatási ablakának kezdési időpontját jelöli.
+A következő példában a JSON-fájl **sqlReaderQuery** tulajdonsága a függvény által visszaadott értékhez van rendelve `Text.Format` . Ez a minta egy **WindowStart** nevű rendszerváltozót is használ, amely a tevékenység futtatási ablakának kezdési időpontját jelöli.
 
 ```json
 {
@@ -70,7 +70,7 @@ A következő példában a JSON-fájl **sqlReaderQuery** tulajdonsága a függv�
 }
 ```
 
-Tekintse meg az [Egyéni dátum-és időformátum-karakterláncok](https://msdn.microsoft.com/library/8kb3ddd4.aspx) témakört, amely leírja a különböző formázási beállításokat (például: ay vagy nn). 
+Tekintse meg az [Egyéni dátum-és időformátum-karakterláncok](/dotnet/standard/base-types/custom-date-and-time-format-strings) témakört, amely leírja a különböző formázási beállításokat (például: ay vagy nn). 
 
 ### <a name="functions"></a>Functions
 A következő táblázatok a Azure Data Factory összes funkcióját felsorolják:
@@ -227,5 +227,4 @@ A SliceStart által jelölt nap helyett az előző naptól származó adatok beo
 }
 ```
 
-Tekintse meg az [Egyéni dátum-és időformátum-karakterláncok](https://msdn.microsoft.com/library/8kb3ddd4.aspx) témakört, amely leírja a különböző formázási beállításokat (például: éé vagy nn). 
-
+Tekintse meg az [Egyéni dátum-és időformátum-karakterláncok](/dotnet/standard/base-types/custom-date-and-time-format-strings) témakört, amely leírja a különböző formázási beállításokat (például: éé vagy nn).

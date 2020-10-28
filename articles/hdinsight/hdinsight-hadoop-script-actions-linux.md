@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: c392ad7a098116a8f2224d6844d38dc40e01d753
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f7959b639b75d912d44670c8b00a7327cb7857d6
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545990"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629442"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Parancsfájl-műveletek fejlesztése a HDInsight
 
@@ -239,7 +239,7 @@ A parancsfájlban a következő segítők használhatók:
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Letölt egy fájlt a forrás URI-ból a megadott elérési útra. Alapértelmezés szerint nem írja felül a meglévő fájlt. |
 | `untar_file TARFILE DESTDIR` |Kibont egy tar-fájlt (a használatával `-xf` ) a cél könyvtárába. |
-| `test_is_headnode` |Ha a fürt fő csomópontján futott, a Return 1; Ellenkező esetben 0. |
+| `test_is_headnode` |Ha a parancsfájl egy fürtcsomópont-csomóponton futott, adja vissza az 1; értéket. Ellenkező esetben 0. |
 | `test_is_datanode` |Ha az aktuális csomópont egy adat (feldolgozó) csomópont, egy 1; értéket ad vissza. Ellenkező esetben 0. |
 | `test_is_first_datanode` |Ha az aktuális csomópont az első adat (Worker) csomópont (workernode0), egy 1 értéket ad vissza. Ellenkező esetben 0. |
 | `get_headnodes` |A fürt átjárócsomópontokkal teljes tartománynevét adja vissza. A nevek vesszővel tagoltak. Hiba esetén üres karakterláncot ad vissza. |
@@ -268,7 +268,7 @@ A környezeti változók beállítását a következő utasítás hajtja végre:
 VARIABLENAME=value
 ```
 
-Ahol a VARIABLENAME a változó neve. A változó eléréséhez használja a következőt: `$VARIABLENAME` . Ha például egy, a jelszó nevű környezeti változóban egy pozíciós paraméter által megadott értéket szeretne hozzárendelni, használja a következő utasítást:
+Az előző példában a a `VARIABLENAME` változó neve. A változó eléréséhez használja a következőt: `$VARIABLENAME` . Ha például egy, a jelszó nevű környezeti változóban egy pozíciós paraméter által megadott értéket szeretne hozzárendelni, használja a következő utasítást:
 
 ```bash
 PASSWORD=$1
@@ -362,7 +362,7 @@ awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 
 Cserélje le az helyére az `INFILE` anyagjegyzéket tartalmazó fájlt. `OUTFILE` egy új fájlnévnek kell lennie, amely az AJ nélkül tartalmazza a parancsfájlt.
 
-## <a name="next-steps"></a><a name="seeAlso"></a>További lépések
+## <a name="next-steps"></a><a name="seeAlso"></a>Következő lépések
 
 * Megtudhatja, hogyan [szabhatja testre a HDInsight-fürtöket parancsfájl-művelet használatával](hdinsight-hadoop-customize-cluster-linux.md)
 * A [HDInsight .net SDK-referenciával](/dotnet/api/overview/azure/hdinsight) többet tudhat meg a HDInsight-t kezelő .NET-alkalmazások létrehozásáról

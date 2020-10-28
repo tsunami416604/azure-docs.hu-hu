@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 3ae12355dddbae40eb84730549ccebcd004ff6be
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: de4661bcfd7106d515480e39dc4660f44f469a3d
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371766"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631699"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory – gyakran ismételt kérdések
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "92371766"
 
 ## <a name="general-questions"></a>Általános kérdések
 ### <a name="what-is-azure-data-factory"></a>Mi az az Azure Data Factory?
-A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amely **automatizálja az adatátvitelt és-átalakítást**. Csakúgy, mint egy olyan gyár, amely a berendezéseket a nyersanyagok begyűjtésére és a kész termékekre alakítja, Data Factory összehangolja a meglévő olyan szolgáltatásokat, amelyek nyers adatokat gyűjtenek, és a használatra kész információkra alakítják át azokat.
+A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amely **automatizálja az adatátvitelt és-átalakítást** . Csakúgy, mint egy olyan gyár, amely a berendezéseket a nyersanyagok begyűjtésére és a kész termékekre alakítja, Data Factory összehangolja a meglévő olyan szolgáltatásokat, amelyek nyers adatokat gyűjtenek, és a használatra kész információkra alakítják át azokat.
 
 Data Factory lehetővé teszi, hogy adatvezérelt munkafolyamatokat hozzon létre az adatok áthelyezéséhez a helyszíni és a Felhőbeli adattárak között, valamint az adatok feldolgozását/átalakítását számítási szolgáltatásokkal, például az Azure HDInsight és a Azure Data Lake Analytics használatával. Ha olyan folyamatot hoz létre, amely a szükséges műveletet végzi, rendszeres időközönként (óránként, naponta, hetente stb.) futtathatja azt.   
 
@@ -41,7 +41,7 @@ A Azure Data Factory díjszabását a [Data Factory díjszabását ismertető ol
 * Útmutató az **adatátalakításhoz** a HDInsight-struktúra tevékenység használatával. Lásd: az [adatfeldolgozás a kaptár-szkript futtatásával a Hadoop-fürtön](data-factory-build-your-first-pipeline.md)
 
 ### <a name="what-is-the-data-factorys-region-availability"></a>Mi a Data Factory régió elérhetősége?
-Data Factory az **USA nyugati** régiójában és **Észak-Európában**érhető el. Az adatfeldolgozók által használt számítási és tárolási szolgáltatások más régiókban is lehetnek. Lásd: [támogatott régiók](data-factory-introduction.md#supported-regions).
+Data Factory az **USA nyugati** régiójában és **Észak-Európában** érhető el. Az adatfeldolgozók által használt számítási és tárolási szolgáltatások más régiókban is lehetnek. Lásd: [támogatott régiók](data-factory-introduction.md#supported-regions).
 
 ### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Milyen korlátozások vonatkoznak az adat-előállítók/folyamatok/tevékenységek/adatkészletek számára?
 Lásd: az [Azure-előfizetés és a szolgáltatás korlátai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) című cikk **Azure Data Factory korlátozások** szakasza.
@@ -141,7 +141,7 @@ A fenti példában a otherLinkedServiceName1 és a otherLinkedServiceName2 olyan
 ### <a name="why-are-my-input-slices-not-in-ready-state"></a>Miért nem kész állapotban vannak a bemeneti szeletek?
 Gyakori hiba, hogy a bemeneti adatkészlet nem állítja be a **külső** tulajdonságot **igaz** értékre, ha a bemeneti adatok kívül vannak az adat-előállítón (amelyet a adat-előállító nem állít elő).
 
-A következő példában a **DataSet1 elemet**-on csak az igaz értékre kell beállítani a **külsőt** .  
+A következő példában a **DataSet1 elemet** -on csak az igaz értékre kell beállítani a **külsőt** .  
 
 **DataFactory1** 1. folyamat: DataSet1 elemet-> activity1-> dataset2-> activity2-> dataset3-folyamat 2: dataset3-> activity3-> dataset4
 
@@ -205,4 +205,4 @@ Ha az összes végrehajtást azonnal le szeretné állítani, az egyetlen módsz
 [adf-pricing-details]: https://go.microsoft.com/fwlink/?LinkId=517777
 [hdinsight-supported-regions]: https://azure.microsoft.com/pricing/details/hdinsight/
 [hdinsight-alternate-storage]: https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx
-[hdinsight-alternate-storage-2]: https://docs.microsoft.com/archive/blogs/cindygross/use-additional-storage-accounts-with-hdinsight-hive
+[hdinsight-alternate-storage-2]: /archive/blogs/cindygross/use-additional-storage-accounts-with-hdinsight-hive

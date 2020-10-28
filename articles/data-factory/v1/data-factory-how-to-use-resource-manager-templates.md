@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: e94445a6cb16eacb496daedbec21379928a4dafd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5df2f9cd0a47e5a89d7ff2eb12aefe593cae7a8
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84194458"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631478"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Sablonok használata Azure Data Factory entitások létrehozásához
 > [!NOTE]
@@ -228,7 +228,7 @@ A folyamatokat a telepíteni kívánt folyamat és tevékenységek definiálás�
 }
 ```
 ## <a name="parameterizing-data-factory-template"></a>Parameterizing Data Factory sablon
-A parameterizing ajánlott eljárásai: [ajánlott eljárások Azure Resource Manager sablonok létrehozásához](../../azure-resource-manager/resource-manager-template-best-practices.md). Általánosságban elmondható, hogy a paraméterek használatának kisebbnek kell lennie, különösen, ha a változók használhatók. Csak a következő helyzetekben adja meg a paramétereket:
+A parameterizing ajánlott eljárásai: [ajánlott eljárások Azure Resource Manager sablonok létrehozásához](../../azure-resource-manager/templates/template-best-practices.md). Általánosságban elmondható, hogy a paraméterek használatának kisebbnek kell lennie, különösen, ha a változók használhatók. Csak a következő helyzetekben adja meg a paramétereket:
 
 * A beállítások a környezettől függően változnak (például: fejlesztés, tesztelés és éles környezetben)
 * Titkok (például jelszavak)

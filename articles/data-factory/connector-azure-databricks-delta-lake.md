@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/28/2020
-ms.openlocfilehash: 4ff1a793b3e8c4fe642aa304f1aa59bd8edefb8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8937cfa5a48903ab53f3015b056a4915240bc525
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91405617"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633127"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Adatok másolása Azure Databricks Delta-tóból és onnan a Azure Data Factory használatával
 
@@ -46,19 +46,19 @@ A Azure Databricks Delta Lake Connector használatához létre kell hoznia egy f
 
 A Databricks-fürtnek hozzáféréssel kell rendelkeznie az Azure Blobhoz vagy Azure Data Lake Storage Gen2 fiókhoz, valamint a forrás/fogadó/előkészítéshez használt tároló-vagy fájlrendszerhez, valamint a Container/file rendszerhez, ahol a Delta Lake-táblákat szeretné írni.
 
-- **Azure Data Lake Storage Gen2**használatához a Apache Spark konfigurációjának részeként konfigurálhat egy **egyszerű szolgáltatásnevet** vagy egy **Storage-fiók hozzáférési kulcsát** a Databricks-fürtön. Kövesse a [közvetlen hozzáférés az egyszerű szolgáltatással](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20) vagy [a közvetlen hozzáférés a Storage-fiók elérési kulcsa használatával](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-using-the-storage-account-access-key)című témakör lépéseit.
+- **Azure Data Lake Storage Gen2** használatához a Apache Spark konfigurációjának részeként konfigurálhat egy **egyszerű szolgáltatásnevet** vagy egy **Storage-fiók hozzáférési kulcsát** a Databricks-fürtön. Kövesse a [közvetlen hozzáférés az egyszerű szolgáltatással](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20) vagy [a közvetlen hozzáférés a Storage-fiók elérési kulcsa használatával](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-using-the-storage-account-access-key)című témakör lépéseit.
 
-- Az **Azure Blob Storage**használatához a Apache Spark konfigurációjának részeként beállíthat egy **Storage-fiók hozzáférési kulcsát** vagy egy **sas-tokent** a Databricks-fürtön. Kövesse az [Azure Blob Storage elérésének lépései a RDD API használatával](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-storage#access-azure-blob-storage-using-the-rdd-api)című témakör lépéseit.
+- Az **Azure Blob Storage** használatához a Apache Spark konfigurációjának részeként beállíthat egy **Storage-fiók hozzáférési kulcsát** vagy egy **sas-tokent** a Databricks-fürtön. Kövesse az [Azure Blob Storage elérésének lépései a RDD API használatával](/azure/databricks/data/data-sources/azure/azure-storage#access-azure-blob-storage-using-the-rdd-api)című témakör lépéseit.
 
 A másolási tevékenység végrehajtása során, ha a konfigurált fürt meg lett szakítva, Data Factory automatikusan elindul. Ha Data Factory szerzői felhasználói felülettel készíti el a folyamatot, az olyan műveletek esetében, mint az adatelőnézet, élő fürtöt kell használnia, Data Factory nem indítja el a fürtöt az Ön nevében.
 
 #### <a name="specify-the-cluster-configuration"></a>A fürtkonfiguráció beállítása
 
-1. A **fürt mód** legördülő menüben válassza a **standard**lehetőséget.
+1. A **fürt mód** legördülő menüben válassza a **standard** lehetőséget.
 
 2. A **Databricks Runtime verziója** legördülő menüben válasszon ki egy Databricks Runtime-verziót.
 
-3. Az [automatikus optimalizálás](https://docs.microsoft.com/azure/databricks/delta/optimizations/auto-optimize) bekapcsolásához adja hozzá a következő tulajdonságokat a [Spark-konfigurációhoz](https://docs.microsoft.com/azure/databricks/clusters/configure#spark-config):
+3. Az [automatikus optimalizálás](/azure/databricks/delta/optimizations/auto-optimize) bekapcsolásához adja hozzá a következő tulajdonságokat a [Spark-konfigurációhoz](/azure/databricks/clusters/configure#spark-config):
 
    ```
    spark.databricks.delta.optimizeWrite.enabled true
@@ -67,7 +67,7 @@ A másolási tevékenység végrehajtása során, ha a konfigurált fürt meg le
 
 4. Konfigurálja a fürtöt az integrációs és a skálázási igényektől függően.
 
-A fürt konfigurációjának részleteiért lásd: [fürtök konfigurálása](https://docs.microsoft.com/azure/databricks/clusters/configure).
+A fürt konfigurációjának részleteiért lásd: [fürtök konfigurálása](/azure/databricks/clusters/configure).
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -81,10 +81,10 @@ A következő tulajdonságok támogatottak Azure Databricks Delta Lake társíto
 
 | Tulajdonság    | Leírás                                                  | Kötelező |
 | :---------- | :----------------------------------------------------------- | :------- |
-| típus        | A Type tulajdonságot **AzureDatabricksDeltaLake**értékre kell beállítani. | Igen      |
+| típus        | A Type tulajdonságot **AzureDatabricksDeltaLake** értékre kell beállítani. | Igen      |
 | domain      | Itt adhatja meg a Azure Databricks munkaterület URL-címét, például: `https://adb-xxxxxxxxx.xx.azuredatabricks.net` . |          |
-| clusterId   | Egy meglévő fürthöz tartozó fürt AZONOSÍTÓjának megadására. Egy már létrehozott interaktív fürtnek kell lennie. <br>Az interaktív fürt Databricks munkaterületen található – > fürtök – > interaktív fürt neve – > Configuration-> címkék. [További információk](https://docs.microsoft.com/azure/databricks/clusters/configure#cluster-tags). |          |
-| accessToken | A hozzáférési token szükséges ahhoz, hogy a Data Factory hitelesíthető legyen a Azure Databricks. A hozzáférési tokent a databricks munkaterületen kell létrehozni. A hozzáférési token megkeresésének részletes lépései [itt](https://docs.microsoft.com/azure/databricks/dev-tools/api/latest/authentication#generate-token)találhatók. |          |
+| clusterId   | Egy meglévő fürthöz tartozó fürt AZONOSÍTÓjának megadására. Egy már létrehozott interaktív fürtnek kell lennie. <br>Az interaktív fürt Databricks munkaterületen található – > fürtök – > interaktív fürt neve – > Configuration-> címkék. [További információ](/azure/databricks/clusters/configure#cluster-tags). |          |
+| accessToken | A hozzáférési token szükséges ahhoz, hogy a Data Factory hitelesíthető legyen a Azure Databricks. A hozzáférési tokent a databricks munkaterületen kell létrehozni. A hozzáférési token megkeresésének részletes lépései [itt](/azure/databricks/dev-tools/api/latest/authentication#generate-token)találhatók. |          |
 | Connectvia tulajdonsággal  | Az adattárhoz való kapcsolódáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhatja az Azure Integration Runtime vagy egy saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime-t használja. | Nem       |
 
 **Példa**
@@ -114,9 +114,9 @@ A Azure Databricks Delta Lake adatkészlet a következő tulajdonságokat támog
 
 | Tulajdonság  | Leírás                                                  | Kötelező                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| típus      | Az adatkészlet Type tulajdonságát **AzureDatabricksDeltaLakeDataset**értékre kell állítani. | Igen                         |
+| típus      | Az adatkészlet Type tulajdonságát **AzureDatabricksDeltaLakeDataset** értékre kell állítani. | Igen                         |
 | adatbázis | Az adatbázis neve. |Nem, forrás, igen, fogadó  |
-| tábla | A különbözeti tábla neve. |Nem, forrás, igen, fogadó  |
+| table | A különbözeti tábla neve. |Nem, forrás, igen, fogadó  |
 
 **Példa**
 
@@ -148,11 +148,11 @@ Azure Databricks Delta-tótól származó adatok másolásához a másolási tev
 
 | Tulajdonság                     | Leírás                                                  | Kötelező |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| típus                         | A másolási tevékenység forrásának Type tulajdonságát **AzureDatabricksDeltaLakeSource**értékre kell állítani. | Igen      |
+| típus                         | A másolási tevékenység forrásának Type tulajdonságát **AzureDatabricksDeltaLakeSource** értékre kell állítani. | Igen      |
 | lekérdezés          | Az adatolvasásra szolgáló SQL-lekérdezés meghatározása. Az időutazások vezérléséhez kövesse az alábbi mintát:<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | Nem       |
 | exportSettings | Az adatok különbözeti táblából való beolvasásához használt speciális beállítások. | Nem       |
-| ***Alatt `exportSettings` :*** |  |  |
-| típus | Az exportálási parancs típusa **AzureDatabricksDeltaLakeExportCommand**értékre van állítva. | Igen |
+| ***Alatt `exportSettings` :** _ |  |  |
+| típus | Az exportálási parancs típusa: _ * AzureDatabricksDeltaLakeExportCommand * *. | Igen |
 | dateFormat | Dátum típusának formázása dátum formátumú karakterláncra. Az egyéni dátumformátum formátuma a következő: [datetime minta](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Ha nincs megadva, az alapértelmezett értéket használja `yyyy-MM-dd` . | Nem |
 | timestampFormat | Az időbélyeg típusának formázása időbélyeg-formátumú karakterláncra. Az egyéni dátumformátum formátuma a következő: [datetime minta](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Ha nincs megadva, az alapértelmezett értéket használja `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | Nem |
 
@@ -162,14 +162,14 @@ Ha a fogadó adattár és a formátum megfelel az ebben a szakaszban ismertetett
 
 - A fogadó **társított szolgáltatás** az [Azure Blob Storage](connector-azure-blob-storage.md) vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md). A fiók hitelesítő adatait előre be kell állítani Azure Databricks fürtkonfiguráció, további információ az [előfeltételekről](#prerequisites).
 
-- A fogadó **adatformátuma** a következő konfigurációkból álló **parketta**, **tagolt szöveg**vagy **Avro** , és a fájl helyett egy mappára mutat.
+- A fogadó **adatformátuma** a következő konfigurációkból álló **parketta** , **tagolt szöveg** vagy **Avro** , és a fájl helyett egy mappára mutat.
 
-    - A **parketta** formátuma esetén a tömörítési kodek **egyike sem**, a **Snappy**vagy a **gzip**.
+    - A **parketta** formátuma esetén a tömörítési kodek **egyike sem** , a **Snappy** vagy a **gzip** .
     - **Tagolt szöveges** formátum esetén:
         - `rowDelimiter` egyetlen karakter.
-        - `compression` a következők **egyike**lehet: none, **bzip2**, **gzip**.
+        - `compression` a következők **egyike** lehet: none, **bzip2** , **gzip** .
         - `encodingName` Az UTF-7 nem támogatott.
-    - **Avro** formátum esetén a tömörítési kodek **egyike sem**, a **deflate**vagy a **Snappy**.
+    - **Avro** formátum esetén a tömörítési kodek **egyike sem** , a **deflate** vagy a **Snappy** .
 
 - A másolási tevékenység forrásában nincs `additionalColumns` megadva.
 - Ha az adatok tagolt szöveggé való másolása, a másolási tevékenység fogadójában a `fileExtension` ". csv" értéknek kell lennie.
@@ -262,11 +262,11 @@ Ha az Adatmásolást Azure Databricks Delta-tóba szeretné másolni, a másolá
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | :------------ | :----------------------------------------------------------- | :------- |
-| típus          | A másolási tevékenység fogadójának Type tulajdonsága **AzureDatabricksDeltaLakeSink**értékre van állítva. | Igen      |
+| típus          | A másolási tevékenység fogadójának Type tulajdonsága **AzureDatabricksDeltaLakeSink** értékre van állítva. | Igen      |
 | preCopyScript | Adja meg a másolási tevékenység futtatásához szükséges SQL-lekérdezést, mielőtt az összes futtatás során Databricks-különbözeti táblába írna. Ezt a tulajdonságot használhatja az előre betöltött adatok törléséhez, illetve egy csonkolt tábla vagy vákuum-utasítás hozzáadásához. | Nem       |
 | importSettings | Az adatkülönbözeti táblába való adatíráshoz használt speciális beállítások. | Nem |
-| ***Alatt `importSettings` :*** |                                                              |  |
-| típus | Az importálási parancs típusa **AzureDatabricksDeltaLakeImportCommand**értékre van állítva. | Igen |
+| **_Alatt `importSettings` :_* _ |                                                              |  |
+| típus | Az importálási parancs típusa: _ * AzureDatabricksDeltaLakeImportCommand * *. | Igen |
 | dateFormat | Formázza a karakterláncot dátum típusúra dátumformátum formájában. Az egyéni dátumformátum formátuma a következő: [datetime minta](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Ha nincs megadva, az alapértelmezett értéket használja `yyyy-MM-dd` . | Nem |
 | timestampFormat | Formázza a karakterláncot timestamp típusúra időbélyeg-formátummal. Az egyéni dátumformátum formátuma a következő: [datetime minta](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Ha nincs megadva, az alapértelmezett értéket használja `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | Nem |
 
@@ -276,14 +276,14 @@ Ha a forrás-adattár és-formátum megfelel az ebben a szakaszban ismertetett f
 
 - A **forrás társított szolgáltatás** az [Azure Blob storage](connector-azure-blob-storage.md) vagy a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md). A fiók hitelesítő adatait előre be kell állítani Azure Databricks fürtkonfiguráció, további információ az [előfeltételekről](#prerequisites).
 
-- A **forrás adatformátuma** a következő konfigurációkból álló **parketta**, **tagolt szöveg**vagy **Avro** , és a fájl helyett egy mappára mutat.
+- A **forrás adatformátuma** a következő konfigurációkból álló **parketta** , **tagolt szöveg** vagy **Avro** , és a fájl helyett egy mappára mutat.
 
-    - A **parketta** formátuma esetén a tömörítési kodek **egyike sem**, a **Snappy**vagy a **gzip**.
+    - A **parketta** formátuma esetén a tömörítési kodek **egyike sem** , a **Snappy** vagy a **gzip** .
     - **Tagolt szöveges** formátum esetén:
         - `rowDelimiter` alapértelmezett vagy egyetlen karakter.
-        - `compression` a következők **egyike**lehet: none, **bzip2**, **gzip**.
+        - `compression` a következők **egyike** lehet: none, **bzip2** , **gzip** .
         - `encodingName` Az UTF-7 nem támogatott.
-    - **Avro** formátum esetén a tömörítési kodek **egyike sem**, a **deflate**vagy a **Snappy**.
+    - **Avro** formátum esetén a tömörítési kodek **egyike sem** , a **deflate** vagy a **Snappy** .
 
 - A másolási tevékenység forrása: 
 
@@ -374,7 +374,7 @@ A szolgáltatás használatához hozzon létre egy [Azure Blob Storage-beli tár
 
 ## <a name="monitoring"></a>Figyelés
 
-Azure Data Factory a [másolási tevékenységek figyelési élményét](copy-activity-monitoring.md) is biztosítja más összekötők számára. Emellett, mivel a (z) és a különbözeti tóból való betöltése a Azure Databricks-fürtön fut, továbbra is [megtekintheti a fürtök részletes naplóit](https://docs.microsoft.com/azure/databricks/clusters/clusters-manage#--view-cluster-logs) , és [figyelheti a teljesítményt](https://docs.microsoft.com/azure/databricks/clusters/clusters-manage#--monitor-performance).
+Azure Data Factory a [másolási tevékenységek figyelési élményét](copy-activity-monitoring.md) is biztosítja más összekötők számára. Emellett, mivel a (z) és a különbözeti tóból való betöltése a Azure Databricks-fürtön fut, továbbra is [megtekintheti a fürtök részletes naplóit](/azure/databricks/clusters/clusters-manage#--view-cluster-logs) , és [figyelheti a teljesítményt](/azure/databricks/clusters/clusters-manage#--monitor-performance).
 
 ## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
 

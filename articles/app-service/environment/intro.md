@@ -7,15 +7,14 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 4e9ea34317951ecd9d3b6649ce42ffcf2f476d03
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 6fff19498e9ca70991d3190165df70a48136f502
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149217"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631138"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Az App Service Environment bemutatása #
- 
 ## <a name="overview"></a>Áttekintés ##
 
 Az Azure App Service Environment egy Azure App Service-funkció, amely teljesen elkülönített és dedikált környezetet biztosít az App Service-alkalmazások biztonságos, nagy léptékű futtatásához. Ez a szolgáltatás a következők üzemeltetésére képes:
@@ -24,7 +23,7 @@ Az Azure App Service Environment egy Azure App Service-funkció, amely teljesen 
 * Linux-webalkalmazások 
 * Docker-tárolók
 * Mobilalkalmazások
-* Függvények
+* Functions
 
 Az App Service Environment (ASE) a következő igényekkel rendelkező összes alkalmazási számítási feladat elvégzésére használható:
 
@@ -32,7 +31,7 @@ Az App Service Environment (ASE) a következő igényekkel rendelkező összes a
 * Elkülönítés és biztonságos hálózati hozzáférés.
 * Magas memóriakihasználtság.
 
-Egy vagy több Azure-régión belül több ASE létrehozásának lehetősége az ügyfelek számára. Az ASE környezetek ennek a rugalmasságnak köszönhetik, hogy ideálisak az állapot nélküli, magas RPS-terhelésű alkalmazásszintek horizontális felskálázásához.
+Egy vagy több Azure-régión belül több ASE létrehozásának lehetősége az ügyfelek számára. Ez a rugalmasság a ASE ideális megoldást kínál az állapot nélküli, nagy mennyiségű kérelmek másodpercenkénti (RPS) számítási feladatainak támogatásához.
 
 A ASE csak egy ügyfélről, az egyik virtuális hálózatok. Az ügyfelek teljes mértékben szabályozhatják az alkalmazás bejövő és kimenő hálózati adatforgalmát. Az alkalmazások nagy sebességű, biztonságos VPN-kapcsolatokat létesíthetnek a helyszíni vállalati erőforrásokkal.
 

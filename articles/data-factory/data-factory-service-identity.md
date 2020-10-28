@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 6b79b2722438403e29851d3a87929ddc67eef727
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 117b0db4f04c3fd631f6692d288945019507f5c6
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123749"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632804"
 ---
 # <a name="managed-identity-for-data-factory"></a>Felügyelt identitás Data Factoryhoz
 
@@ -39,9 +39,9 @@ A Data Factory felügyelt identitása a következő funkciókat nyújtja:
 
 A Data Factory felügyelt identitása a következőképpen jön létre:
 
-- Ha a **Azure Portal vagy a PowerShell**használatával hoz létre adatelőállítót, a rendszer mindig automatikusan létrehozza a felügyelt identitást.
-- Ha az **SDK**-n keresztül hozza létre az adatelőállítót, akkor a felügyelt identitás csak akkor jön létre, ha a gyári objektumban a létrehozáshoz a "Identity = New FactoryIdentity ()" lehetőséget adta meg. Lásd: példa a .net gyors üzembe helyezése [– adatelőállító létrehozása](quickstart-create-data-factory-dot-net.md#create-a-data-factory).
-- Ha a **Rest APIon**keresztül hoz létre adatelőállítót, akkor a felügyelt identitás csak akkor jön létre, ha a kérelem törzsében megadja az "Identity" szakaszt. Lásd: példa a REST rövid útmutatóban [– adatok létrehozása Factory](quickstart-create-data-factory-rest-api.md#create-a-data-factory).
+- Ha a **Azure Portal vagy a PowerShell** használatával hoz létre adatelőállítót, a rendszer mindig automatikusan létrehozza a felügyelt identitást.
+- Ha az **SDK** -n keresztül hozza létre az adatelőállítót, akkor a felügyelt identitás csak akkor jön létre, ha a gyári objektumban a létrehozáshoz a "Identity = New FactoryIdentity ()" lehetőséget adta meg. Lásd: példa a .net gyors üzembe helyezése [– adatelőállító létrehozása](quickstart-create-data-factory-dot-net.md#create-a-data-factory).
+- Ha a **Rest APIon** keresztül hoz létre adatelőállítót, akkor a felügyelt identitás csak akkor jön létre, ha a kérelem törzsében megadja az "Identity" szakaszt. Lásd: példa a REST rövid útmutatóban [– adatok létrehozása Factory](quickstart-create-data-factory-rest-api.md#create-a-data-factory).
 
 Ha úgy találja, hogy az adatok előállítója nem rendelkezik a [felügyelt identitások beolvasására](#retrieve-managed-identity) vonatkozó felügyelt identitással, akkor explicit módon létrehozhatja az egyiket, ha az Identity kezdeményezővel programozottan frissíti az adatok előállítóját:
 
@@ -79,7 +79,7 @@ Hívja meg az alábbi API-t a kérelem törzsének "Identity" szakaszában:
 PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2018-06-01
 ```
 
-**Kérelem törzse**: adja hozzá az "Identity": {"type": "SystemAssigned"}.
+**Kérelem törzse** : adja hozzá az "Identity": {"type": "SystemAssigned"}.
 
 ```json
 {
@@ -92,7 +92,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-**Válasz**: a felügyelt identitás automatikusan létrejön, és az "Identity" szakasz ennek megfelelően van feltöltve.
+**Válasz** : a felügyelt identitás automatikusan létrejön, és az "Identity" szakasz ennek megfelelően van feltöltve.
 
 ```json
 {
@@ -117,7 +117,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 
 ### <a name="generate-managed-identity-using-an-azure-resource-manager-template"></a>Felügyelt identitás létrehozása Azure Resource Manager sablon használatával
 
-**Sablon**: adja hozzá az "Identity": {"type": "SystemAssigned"}.
+**Sablon** : adja hozzá az "Identity": {"type": "SystemAssigned"}.
 
 ```json
 {
@@ -201,7 +201,7 @@ Hívja meg az alábbi API-t a kérelemben:
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}?api-version=2018-06-01
 ```
 
-**Válasz**: az alábbi példában láthatóhoz hasonló választ fog kapni. Az "Identity" szakasz ennek megfelelően van feltöltve.
+**Válasz** : az alábbi példában láthatóhoz hasonló választ fog kapni. Az "Identity" szakasz ennek megfelelően van feltöltve.
 
 ```json
 {
@@ -252,4 +252,4 @@ Tekintse meg a következő témaköröket, amelyek bemutatják, hogy mikor és h
 - [Hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md)
 - [Adatok másolása az Azure-erőforrások hitelesítéséhez tartozó felügyelt identitások használatával vagy Azure Data Lake Storeba](connector-azure-data-lake-store.md)
 
-Lásd: [felügyelt identitások az Azure-erőforrásokhoz – áttekintés](/azure/active-directory/managed-identities-azure-resources/overview) az Azure-erőforrások felügyelt identitásának további hátteréről, amelyet az adatok gyári felügyelt identitása alapul. 
+Lásd: [felügyelt identitások az Azure-erőforrásokhoz – áttekintés](../active-directory/managed-identities-azure-resources/overview.md) az Azure-erőforrások felügyelt identitásának további hátteréről, amelyet az adatok gyári felügyelt identitása alapul.

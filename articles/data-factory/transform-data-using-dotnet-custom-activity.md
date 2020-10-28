@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: 0332b9aab0db456ed4517c09e541bee1b9884d04
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e84f7a2ee8c2f7a57ce1734ad3392a217d6de5fe
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368995"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632107"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 
@@ -36,7 +36,7 @@ Ha olyan adattárból/adattárba szeretne áthelyezni, amely nem támogatja a Da
 Tekintse meg a következő cikkeket, ha új Azure Batch szolgáltatás:
 
 * A Azure Batch szolgáltatás áttekintéséhez [Azure batch alapjai](../batch/batch-technical-overview.md) .
-* A [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) parancsmaggal hozzon létre egy Azure batch-fiókot (vagy) [Azure Portal](../batch/batch-account-create-portal.md) a Azure batch-fiók Azure Portal használatával történő létrehozásához. A parancsmag használatával kapcsolatos részletes utasításokért lásd: a [PowerShell használata Azure batch-fiók kezeléséhez](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) .
+* A [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) parancsmaggal hozzon létre egy Azure batch-fiókot (vagy) [Azure Portal](../batch/batch-account-create-portal.md) a Azure batch-fiók Azure Portal használatával történő létrehozásához. A parancsmag használatával kapcsolatos részletes utasításokért lásd: a [PowerShell használata Azure batch-fiók kezeléséhez](/archive/blogs/windowshpc/using-azure-powershell-to-manage-azure-batch-account) .
 * [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) parancsmag Azure batch készlet létrehozásához.
 
 ## <a name="azure-batch-linked-service"></a>Társított szolgáltatás Azure Batch
@@ -104,7 +104,7 @@ A következő táblázat ismerteti a tevékenységre jellemző tulajdonságok ne
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | A folyamatban szereplő tevékenység neve     | Igen      |
 | leírás           | A tevékenység működését leíró szöveg  | Nem       |
-| típus                  | Egyéni tevékenység esetén a tevékenység típusa **Egyéni**. | Igen      |
+| típus                  | Egyéni tevékenység esetén a tevékenység típusa **Egyéni** . | Igen      |
 | linkedServiceName     | Társított szolgáltatás Azure Batch. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk.  | Igen      |
 | command               | A végrehajtandó egyéni alkalmazás parancsa. Ha az alkalmazás már elérhető a Azure Batch készlet csomóponton, a resourceLinkedService és a folderPath kihagyható. Megadhatja például a következő parancsot `cmd /c dir` :, amelyet natív módon támogat a Windows batch-készlet csomópont. | Igen      |
 | resourceLinkedService | Azure Storage-beli társított szolgáltatás az egyéni alkalmazást tároló Storage-fiókhoz | Nincs &#42;       |
@@ -310,7 +310,7 @@ Egyéni értékeket is elküldhet az egyéni tevékenység kódjából Azure Dat
 
 ## <a name="retrieve-securestring-outputs"></a>SecureString-kimenetek lekérése
 
-A *SecureString*típusként kijelölt bizalmas tulajdonságértékek a jelen cikk néhány példájában láthatók a Data Factory felhasználói felület figyelés lapján.  A folyamat tényleges végrehajtása során azonban a *SecureString* tulajdonság a fájlon belül JSON-ként van szerializálva `activity.json` egyszerű szövegként. Például:
+A *SecureString* típusként kijelölt bizalmas tulajdonságértékek a jelen cikk néhány példájában láthatók a Data Factory felhasználói felület figyelés lapján.  A folyamat tényleges végrehajtása során azonban a *SecureString* tulajdonság a fájlon belül JSON-ként van szerializálva `activity.json` egyszerű szövegként. Például:
 
 ```json
 "extendedProperties": {
@@ -342,7 +342,7 @@ Az alábbi táblázat a Data Factory v2 egyéni tevékenység és az Data Factor
 |Egyéni logika meghatározása      |Végrehajtható fájl biztosításával      |.NET DLL implementálása      |
 |Az egyéni logika végrehajtási környezete      |Windows vagy Linux      |Windows (.NET-keretrendszer 4.5.2)      |
 |Parancsfájlok végrehajtása      |Támogatja a parancsfájlok közvetlen végrehajtását (például "cmd/c echo Hello World") a Windows rendszerű virtuális gépen      |Implementáció szükséges a .NET DLL-ben      |
-|Adatkészlet szükséges      |Választható      |A tevékenységek láncolásához és az információk továbbításához szükséges      |
+|Adatkészlet szükséges      |Nem kötelező      |A tevékenységek láncolásához és az információk továbbításához szükséges      |
 |Információk átadása a tevékenységtől az egyéni logikáig      |ReferenceObjects (LinkedServices és adatkészletek) és Extendedproperties példányt paraméterként (egyéni tulajdonságok)      |Extendedproperties példányt paraméterként (egyéni tulajdonságok), bemeneti és kimeneti adatkészletek      |
 |Információk beolvasása az egyéni logikában      |A végrehajtható fájl ugyanazon mappájában tárolt activity.jselemzése, linkedServices.jsbe-és datasets.js      |.NET SDK-n keresztül (.NET frame 4.5.2)      |
 |Naplózás      |Írás közvetlenül az STDOUT-ba      |A naplózó implementálása a .NET DLL-ben      |
@@ -356,7 +356,7 @@ Ha az 1. verziójú (egyéni) DotNet-tevékenységhez már létezik .NET-kód, m
   - A Microsoft. Azure. Management. DataFactories NuGet csomagra már nincs szükség.
   - Fordítsa le a kódot, töltse fel a végrehajtható fájlt és annak függőségeit az Azure Storage-ba, és adja meg az elérési utat a `folderPath` tulajdonságban.
 
-Az Data Factory 1. verziójában leírt végpontok közötti DLL-és folyamat-minta teljes mintája az egyéni [tevékenységek Azure Data Factory-folyamatokban](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) való átírása Data Factory egyéni tevékenységként: [Data Factory egyéni tevékenység mintája](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFv2CustomActivitySample).
+Az Data Factory 1. verziójában leírt végpontok közötti DLL-és folyamat-minta teljes mintája az egyéni [tevékenységek Azure Data Factory-folyamatokban](./v1/data-factory-use-custom-activities.md) való átírása Data Factory egyéni tevékenységként: [Data Factory egyéni tevékenység mintája](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFv2CustomActivitySample).
 
 ## <a name="auto-scaling-of-azure-batch"></a>Azure Batch automatikus méretezése
 
@@ -376,7 +376,7 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 
 A részletekért lásd: [számítási csomópontok automatikus méretezése egy Azure batch készletben](../batch/batch-automatic-scaling.md) .
 
-Ha a készlet az alapértelmezett [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx)használja, a Batch szolgáltatás 15-30 percet is igénybe vehet, hogy az egyéni tevékenység futtatása előtt előkészítse a virtuális gépet. Ha a készlet eltérő autoScaleEvaluationInterval használ, a Batch szolgáltatás autoScaleEvaluationInterval + 10 percet is igénybe vehet.
+Ha a készlet az alapértelmezett [autoScaleEvaluationInterval](/rest/api/batchservice/pool/enableautoscale)használja, a Batch szolgáltatás 15-30 percet is igénybe vehet, hogy az egyéni tevékenység futtatása előtt előkészítse a virtuális gépet. Ha a készlet eltérő autoScaleEvaluationInterval használ, a Batch szolgáltatás autoScaleEvaluationInterval + 10 percet is igénybe vehet.
 
 ## <a name="next-steps"></a>Következő lépések
 A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adatátalakítást:

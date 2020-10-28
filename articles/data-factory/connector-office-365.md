@@ -11,35 +11,35 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
-ms.openlocfilehash: dda761e12abe7ec866ad9426982563b6f629f6b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 365896fec555340c3932192aa82086d140d4db0c
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513303"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632991"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Adatok másolása az Office 365-ből az Azure-ba Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-A Azure Data Factory integrálható [Microsoft Graph](https://docs.microsoft.com/graph/data-connect-concept-overview)adatkapcsolattal, így méretezhető módon hozhatja létre az Office 365-bérlő gazdag szervezeti adatait az Azure-ban, és elemzési alkalmazásokat készíthet, és elemzéseket nyerhet az értékes adategységek alapján. Az Privileged Access Management integrációja biztonságos hozzáférés-vezérlést biztosít az Office 365 értékes, kiszolgált adataihoz.  Tekintse meg [ezt a hivatkozást](https://docs.microsoft.com/graph/data-connect-concept-overview) a Microsoft Graph adatok összekapcsolásának áttekintéséhez, és tekintse meg [ezt a hivatkozást](https://docs.microsoft.com/graph/data-connect-policies#licensing) a licencelési információkhoz.
+A Azure Data Factory integrálható [Microsoft Graph](/graph/data-connect-concept-overview)adatkapcsolattal, így méretezhető módon hozhatja létre az Office 365-bérlő gazdag szervezeti adatait az Azure-ban, és elemzési alkalmazásokat készíthet, és elemzéseket nyerhet az értékes adategységek alapján. Az Privileged Access Management integrációja biztonságos hozzáférés-vezérlést biztosít az Office 365 értékes, kiszolgált adataihoz.  Tekintse meg [ezt a hivatkozást](/graph/data-connect-concept-overview) a Microsoft Graph adatok összekapcsolásának áttekintéséhez, és tekintse meg [ezt a hivatkozást](/graph/data-connect-policies#licensing) a licencelési információkhoz.
 
 Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az Office 365-ból származó adatok másolásához. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
-Az ADF Office 365-összekötő és a Microsoft Graph adatok összekapcsolása lehetővé teszi az Exchange e-mailek által engedélyezett postaládák, például a címjegyzék-névjegyek, a naptári események, az e-mailek, a felhasználói adatok, a postaláda-beállítások és más típusú adatkészletek méretezését.  A rendelkezésre álló adatkészletek teljes listáját [itt](https://docs.microsoft.com/graph/data-connect-datasets) tekintheti meg.
+Az ADF Office 365-összekötő és a Microsoft Graph adatok összekapcsolása lehetővé teszi az Exchange e-mailek által engedélyezett postaládák, például a címjegyzék-névjegyek, a naptári események, az e-mailek, a felhasználói adatok, a postaláda-beállítások és más típusú adatkészletek méretezését.  A rendelkezésre álló adatkészletek teljes listáját [itt](/graph/data-connect-datasets) tekintheti meg.
 
-Egyelőre egyetlen másolási tevékenységen belül csak az **Office 365 adatait másolhatja át az [Azure Blob Storageba](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1ba](connector-azure-data-lake-store.md)és JSON formátumban [Azure Data Lake Storage Gen2ba](connector-azure-data-lake-storage.md) ** (setOfObjects típus). Ha az Office 365-et más típusú adattárakba vagy más formátumba kívánja betölteni, az első másolási tevékenységet egy későbbi másolási tevékenységgel is felhasználhatja, hogy az összes [támogatott ADF-célhelyre](copy-activity-overview.md#supported-data-stores-and-formats) betöltse az adatmennyiséget (lásd a "támogatott adattárak és formátumok" tábla "fogadó" oszlopát).
+Egyelőre egyetlen másolási tevékenységen belül csak az **Office 365 adatait másolhatja át az [Azure Blob Storageba](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1ba](connector-azure-data-lake-store.md)és JSON formátumban [Azure Data Lake Storage Gen2ba](connector-azure-data-lake-storage.md)** (setOfObjects típus). Ha az Office 365-et más típusú adattárakba vagy más formátumba kívánja betölteni, az első másolási tevékenységet egy későbbi másolási tevékenységgel is felhasználhatja, hogy az összes [támogatott ADF-célhelyre](copy-activity-overview.md#supported-data-stores-and-formats) betöltse az adatmennyiséget (lásd a "támogatott adattárak és formátumok" tábla "fogadó" oszlopát).
 
 >[!IMPORTANT]
 >- Az adat-előállítót és a fogadó adattárat tartalmazó Azure-előfizetésnek ugyanannak a Azure Active Directory (Azure AD) Bérlőnek kell lennie, mint az Office 365-bérlőnek.
->- Győződjön meg arról, hogy a másolási tevékenységhez használt Azure Integration Runtime régió, valamint a célhely abban a régióban van, ahol az Office 365 bérlő felhasználói postaládája található. A Azure IR hely meghatározásának megismeréséhez [tekintse meg a](concepts-integration-runtime.md#integration-runtime-location) következőt:. A támogatott Office-régiók és a hozzájuk tartozó Azure-régiók listájáért tekintse meg a [táblázatot](https://docs.microsoft.com/graph/data-connect-datasets#regions) .
+>- Győződjön meg arról, hogy a másolási tevékenységhez használt Azure Integration Runtime régió, valamint a célhely abban a régióban van, ahol az Office 365 bérlő felhasználói postaládája található. A Azure IR hely meghatározásának megismeréséhez [tekintse meg a](concepts-integration-runtime.md#integration-runtime-location) következőt:. A támogatott Office-régiók és a hozzájuk tartozó Azure-régiók listájáért tekintse meg a [táblázatot](/graph/data-connect-datasets#regions) .
 >- Az egyszerű szolgáltatás hitelesítése az Azure Blob Storage, Azure Data Lake Storage Gen1 és Azure Data Lake Storage Gen2 számára támogatott hitelesítési mechanizmus.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Office 365-ből az Azure-ba másolt adatok másolásához a következő előfeltételek szükségesek:
 
-- Az Office 365-bérlői rendszergazdának be kell fejeznie az [itt](https://docs.microsoft.com/graph/data-connect-get-started)leírtak szerint végrehajtandó műveleteket.
+- Az Office 365-bérlői rendszergazdának be kell fejeznie az [itt](/graph/data-connect-get-started)leírtak szerint végrehajtandó műveleteket.
 - Azure AD-Webalkalmazás létrehozása és konfigurálása Azure Active Directoryban.  Útmutatásért lásd: [Azure ad-alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal).
 - Jegyezze fel a következő értékeket, amelyeket a társított szolgáltatás definiálásához fog használni az Office 365-hoz:
     - Bérlő azonosítója. Útmutatásért lásd: [bérlői azonosító lekérése](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
@@ -51,11 +51,11 @@ Az Office 365-ből az Azure-ba másolt adatok másolásához a következő előf
 
 Ha első alkalommal kér adatokat ehhez a környezethez (az adattábla egy kombinációja, a "folyamatban" állapotba kerül a másolási tevékenység állapota, és csak akkor jelenik meg, ha a ["Részletek" hivatkozásra kattint a műveletek területen](copy-activity-overview.md#monitoring) , és csak akkor jelenik meg, ha az állapot "RequestingConsent" értékre van állítva.  Az adathozzáférés-jóváhagyó csoport tagjának jóvá kell hagynia a kérést a Privileged Access Management az adatgyűjtés folytatásához.
 
-Tekintse [át,](https://docs.microsoft.com/graph/data-connect-tips#approve-pam-requests-via-office-365-admin-portal) hogy a jóváhagyó hogyan hagyja jóvá az adatelérési kérelmet, és tekintse át a Privileged Access Managementával [való általános](https://docs.microsoft.com/graph/data-connect-pam) integrációval kapcsolatos magyarázatot, beleértve az adathozzáférés jóváhagyó csoportjának beállítását is.
+Tekintse [át,](/graph/data-connect-tips#approve-pam-requests-via-office-365-admin-portal) hogy a jóváhagyó hogyan hagyja jóvá az adatelérési kérelmet, és tekintse át a Privileged Access Managementával [való általános](/graph/data-connect-pam) integrációval kapcsolatos magyarázatot, beleértve az adathozzáférés jóváhagyó csoportjának beállítását is.
 
 ## <a name="policy-validation"></a>Szabályzat érvényesítése
 
-Ha az ADF-t egy felügyelt alkalmazás részeként hozza létre, és az Azure házirendek hozzárendelései a felügyeleti erőforráscsoport erőforrásain találhatók, akkor minden másolási tevékenység esetében az ADF ellenőrzi, hogy a szabályzat-hozzárendelések érvénybe léptetése megtörtént-e. A támogatott szabályzatok listáját [itt](https://docs.microsoft.com/graph/data-connect-policies#policies) találja.
+Ha az ADF-t egy felügyelt alkalmazás részeként hozza létre, és az Azure házirendek hozzárendelései a felügyeleti erőforráscsoport erőforrásain találhatók, akkor minden másolási tevékenység esetében az ADF ellenőrzi, hogy a szabályzat-hozzárendelések érvénybe léptetése megtörtént-e. A támogatott szabályzatok listáját [itt](/graph/data-connect-policies#policies) találja.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -120,7 +120,7 @@ Az Office 365-ből származó adatok másolásához a következő tulajdonságok
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **Office365Table** | Igen |
-| tableName | Az Office 365-ből kinyerni kívánt adatkészlet neve. [Itt](https://docs.microsoft.com/graph/data-connect-datasets#datasets) tekintheti meg a kinyeréshez elérhető Office 365-adatkészletek listáját. | Igen |
+| tableName | Az Office 365-ből kinyerni kívánt adatkészlet neve. [Itt](/graph/data-connect-datasets#datasets) tekintheti meg a kinyeréshez elérhető Office 365-adatkészletek listáját. | Igen |
 
 Ha a, a `dateFilterColumn` , `startTime` `endTime` és `userScopeFilterUri` az adatkészletben beállítást választotta, akkor továbbra is támogatott, míg az új modellt a tevékenység forrásaként fogja használni.
 
@@ -156,7 +156,7 @@ Az Office 365-ből származó adatok másolásához a másolási tevékenység *
 | típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **Office365Source** | Igen |
 | allowedGroups | Csoport kiválasztási predikátuma  Ezzel a tulajdonsággal legfeljebb 10 olyan felhasználói csoportot választhat ki, amelyekhez az adott adatlekérdezést kéri.  Ha nincsenek megadva csoportok, akkor a rendszer az összes szervezetre vonatkozó adatvisszaadás után visszaadja az értékeket. | Nem |
 | userScopeFilterUri | Ha a `allowedGroups` tulajdonság nincs megadva, a teljes bérlőn alkalmazott predikátum kifejezés használatával szűrheti az Office 365-ből kinyerni kívánt sorokat. A predikátum formátumának meg kell egyeznie Microsoft Graph API-k lekérdezési formátumával, például `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'` :. | Nem |
-| dateFilterColumn | A DateTime szűrő oszlop neve. Ezzel a tulajdonsággal korlátozhatja azt az időtartományt, amelyre az Office 365-adatkivonatot ki kell olvasni. | Igen, ha az adatkészlet egy vagy több DateTime oszloppal rendelkezik. [Itt](https://docs.microsoft.com/graph/data-connect-filtering#filtering) tekintse meg a DateTime típusú szűrőt igénylő adatkészletek listáját. |
+| dateFilterColumn | A DateTime szűrő oszlop neve. Ezzel a tulajdonsággal korlátozhatja azt az időtartományt, amelyre az Office 365-adatkivonatot ki kell olvasni. | Igen, ha az adatkészlet egy vagy több DateTime oszloppal rendelkezik. [Itt](/graph/data-connect-filtering#filtering) tekintse meg a DateTime típusú szűrőt igénylő adatkészletek listáját. |
 | startTime | A szűréshez kezdjen el DateTime értéket. | Igen, ha meg `dateFilterColumn` van adva |
 | endTime | A szűréshez záró DateTime érték. | Igen, ha meg `dateFilterColumn` van adva |
 | outputColumns | A fogadóba másolandó oszlopok tömbje. | Nem |
@@ -303,5 +303,5 @@ Az Office 365-ből származó adatok másolásához a másolási tevékenység *
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

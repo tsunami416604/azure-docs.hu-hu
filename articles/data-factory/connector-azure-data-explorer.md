@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2020
-ms.openlocfilehash: ba8c35fc1802f7ef3ac54c693c8106bbc40cc185
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa8219db0e11694b6f70547d5f75bd892fbfa1f8
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82560161"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633161"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Adatok másolása az Azure Adatkezelőba vagy onnan a Azure Data Factory használatával
 
@@ -42,7 +42,7 @@ Bármely támogatott forrás adattárból az Azure Adatkezelőba másolhat adato
 
 Az Azure Adatkezelő-összekötővel a következőket teheti:
 
-* Az Adatmásolás Azure Active Directory (Azure AD) alkalmazás-jogkivonat-hitelesítéssel egy **egyszerű szolgáltatás**használatával.
+* Az Adatmásolás Azure Active Directory (Azure AD) alkalmazás-jogkivonat-hitelesítéssel egy **egyszerű szolgáltatás** használatával.
 * Forrásként egy KQL-(Kusto-) lekérdezés használatával lekérheti az adatgyűjtést.
 * Fogadóként fűzze hozzá az adatkészlethez.
 
@@ -67,8 +67,8 @@ Az Azure Adatkezelő-összekötő az egyszerű szolgáltatásnév hitelesítés�
 
 2. Adja meg az egyszerű szolgáltatásnév számára az Azure Adatkezelő megfelelő engedélyeit. A szerepkörökkel és engedélyekkel, valamint az engedélyek kezelésével kapcsolatos részletes információkért tekintse meg az [Azure adatkezelő Database-engedélyek kezelése](/azure/data-explorer/manage-database-permissions) című témakört. Általánosságban a következőket kell tennie:
 
-    - **Forrásként**legalább az **adatbázis-megjelenítői** szerepkört adja meg az adatbázisnak
-    - **As sink**Fogadóként legalább az **adatbázis** betöltési szerepkörét adja meg az adatbázisnak
+    - **Forrásként** legalább az **adatbázis-megjelenítői** szerepkört adja meg az adatbázisnak
+    - **As sink** Fogadóként legalább az **adatbázis** betöltési szerepkörét adja meg az adatbázisnak
 
 >[!NOTE]
 >Ha a Data Factory felhasználói felületet használja a létrehozáshoz, a bejelentkezési felhasználói fiók az Azure Adatkezelő-fürtök,-adatbázisok és-táblák listázására szolgál. Ha nincs engedélye ezekhez a műveletekhez, manuálisan adja meg a nevet.
@@ -77,12 +77,12 @@ Az Azure Adatkezelő társított szolgáltatás a következő tulajdonságokat t
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A **Type** tulajdonságot **AzureDataExplorer**értékre kell beállítani. | Igen |
+| típus | A **Type** tulajdonságot **AzureDataExplorer** értékre kell beállítani. | Igen |
 | endpoint | Az Azure Adatkezelő-fürt végponti URL-címe, amelynek formátuma: `https://<clusterName>.<regionName>.kusto.windows.net` . | Igen |
 | adatbázis | Az adatbázis neve. | Igen |
-| Bérlő | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Ez a [Kusto-kapcsolatok karakterláncának](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)"Authority id" néven ismert. Lekéréséhez vigye az egérmutatót a Azure Portal jobb felső sarkában. | Igen |
-| servicePrincipalId | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. Ez az úgynevezett "HRE Application Client ID" a Kusto-alapú [kapcsolatok karakterláncában](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Igen |
-| servicePrincipalKey | Az alkalmazás kulcsának meghatározása. Ez az úgynevezett "HRE Application Key" néven ismert a [Kusto-kapcsolatok karakterláncában](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Megjelöli ezt a mezőt **SecureString** , hogy biztonságosan tárolja Data Factoryban, vagy [a Azure Key Vault tárolt biztonságos](store-credentials-in-key-vault.md)adattárolásra hivatkozik. | Igen |
+| Bérlő | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Ez a [Kusto-kapcsolatok karakterláncának](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)"Authority id" néven ismert. Lekéréséhez vigye az egérmutatót a Azure Portal jobb felső sarkában. | Igen |
+| servicePrincipalId | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. Ez az úgynevezett "HRE Application Client ID" a Kusto-alapú [kapcsolatok karakterláncában](/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Igen |
+| servicePrincipalKey | Az alkalmazás kulcsának meghatározása. Ez az úgynevezett "HRE Application Key" néven ismert a [Kusto-kapcsolatok karakterláncában](/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Megjelöli ezt a mezőt **SecureString** , hogy biztonságosan tárolja Data Factoryban, vagy [a Azure Key Vault tárolt biztonságos](store-credentials-in-key-vault.md)adattárolásra hivatkozik. | Igen |
 
 **Társított szolgáltatás tulajdonságai – példa:**
 
@@ -109,14 +109,14 @@ Az Azure Adatkezelő társított szolgáltatás a következő tulajdonságokat t
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listájáért lásd: [Adatkészletek Azure Data Factoryban](concepts-datasets-linked-services.md). Ez a szakasz felsorolja az Azure Adatkezelő adatkészlet által támogatott tulajdonságokat.
 
-Ha adatokat szeretne másolni az Azure Adatkezelőba, állítsa az adatkészlet Type (típus) tulajdonságát **AzureDataExplorerTable**értékre.
+Ha adatokat szeretne másolni az Azure Adatkezelőba, állítsa az adatkészlet Type (típus) tulajdonságát **AzureDataExplorerTable** értékre.
 
 A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A **Type** tulajdonságot **AzureDataExplorerTable**értékre kell beállítani. | Igen |
-| tábla | Annak a táblának a neve, amelyre a társított szolgáltatás hivatkozik. | Igen a fogadó számára; Nem a forráshoz |
+| típus | A **Type** tulajdonságot **AzureDataExplorerTable** értékre kell beállítani. | Igen |
+| table | Annak a táblának a neve, amelyre a társított szolgáltatás hivatkozik. | Igen a fogadó számára; Nem a forráshoz |
 
 **Adatkészlet tulajdonságai – példa:**
 
@@ -143,7 +143,7 @@ A tevékenységek definiálásához rendelkezésre álló csoportok és tulajdon
 
 ### <a name="azure-data-explorer-as-source"></a>Azure-Adatkezelő forrásként
 
-Az adatok Azure-Adatkezelőból való másolásához állítsa a **Type (típus** ) tulajdonságot a másolási tevékenység forrása **AzureDataExplorerSource**értékre. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
+Az adatok Azure-Adatkezelőból való másolásához állítsa a **Type (típus** ) tulajdonságot a másolási tevékenység forrása **AzureDataExplorerSource** értékre. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
@@ -153,7 +153,7 @@ Az adatok Azure-Adatkezelőból való másolásához állítsa a **Type (típus*
 | nincs csonkítás | Azt jelzi, hogy le kell-e vágni a visszaadott eredményhalmaz értékét. Alapértelmezés szerint a rendszer a 500 000-es rekordok vagy a 64 megabájt (MB) után csonkolja az eredményt. Erősen ajánlott a csonkítás a tevékenység megfelelő működésének biztosítása érdekében. |Nem |
 
 >[!NOTE]
->Alapértelmezés szerint az Azure Adatkezelő forrásának mérete 500 000 rekord vagy 64 MB. Ha az összes rekordot csonkítás nélkül szeretné lekérni, megadhatja a `set notruncation;` lekérdezés elején. További információ: [lekérdezési korlátok](https://docs.microsoft.com/azure/kusto/concepts/querylimits).
+>Alapértelmezés szerint az Azure Adatkezelő forrásának mérete 500 000 rekord vagy 64 MB. Ha az összes rekordot csonkítás nélkül szeretné lekérni, megadhatja a `set notruncation;` lekérdezés elején. További információ: [lekérdezési korlátok](/azure/kusto/concepts/querylimits).
 
 **Példa**
 
@@ -190,13 +190,13 @@ Az adatok Azure-Adatkezelőból való másolásához állítsa a **Type (típus*
 
 ### <a name="azure-data-explorer-as-sink"></a>Azure-Adatkezelő fogadóként
 
-Az Azure Adatkezelőba való adatmásoláshoz állítsa a másolási tevékenység fogadójának Type (típus) tulajdonságát a **AzureDataExplorerSink**értékre. A másolási tevékenység fogadója szakasz a következő **sink** tulajdonságokat támogatja:
+Az Azure Adatkezelőba való adatmásoláshoz állítsa a másolási tevékenység fogadójának Type (típus) tulajdonságát a **AzureDataExplorerSink** értékre. A másolási tevékenység fogadója szakasz a következő **sink** tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység fogadójának Type tulajdonságát a **következőre** kell beállítani: **AzureDataExplorerSink**. | Igen |
+| típus | A másolási tevékenység fogadójának Type tulajdonságát a **következőre** kell beállítani: **AzureDataExplorerSink** . | Igen |
 | ingestionMappingName | Egy előre létrehozott [hozzárendelés](/azure/kusto/management/mappings#csv-mapping) neve egy Kusto táblán. Ha az oszlopokat a forrásról az Azure-ra Adatkezelő (amely az [összes támogatott forrás-és formátumra](copy-activity-overview.md#supported-data-stores-and-formats)vonatkozik, beleértve a CSV/JSON/Avro formátumokat), használhatja a másolási tevékenység [oszlop-hozzárendelést](copy-activity-schema-and-type-mapping.md) (implicit módon, név vagy explicit módon konfiguráltként) és/vagy az Azure adatkezelő-hozzárendeléseket. | Nem |
-| additionalProperties | Az Azure Adatkezelő fogadó által már nem beállított betöltési tulajdonságok megadásához használható tulajdonság-táska. Különösen hasznos lehet betöltési címkék megadására. További információ az [Azure-beli adatfeldolgozási dokumentációból](https://docs.microsoft.com/azure/data-explorer/ingestion-properties). | Nem |
+| additionalProperties | Az Azure Adatkezelő fogadó által már nem beállított betöltési tulajdonságok megadásához használható tulajdonság-táska. Különösen hasznos lehet betöltési címkék megadására. További információ az [Azure-beli adatfeldolgozási dokumentációból](/azure/data-explorer/ingestion-properties). | Nem |
 
 **Példa**
 
@@ -235,7 +235,7 @@ Az Azure Adatkezelőba való adatmásoláshoz állítsa a másolási tevékenys�
 
 További információ a tulajdonságokról: [keresési tevékenység](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Data Factory másolási tevékenység által forrásként és fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
 

@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: ceespino
 ms.reviewer: daperlov
-ms.openlocfilehash: 9f23155df6d9e63448b35974c331bf78c3e5f90c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bd0421a74679ff0c9498540d722a74ebf3d58af
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426222"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632567"
 ---
 # <a name="troubleshoot-azure-data-factory-ux-issues"></a>A Azure Data Factory UX problémáinak elhárítása
 
@@ -42,7 +42,7 @@ Az ADF UX böngésző-cookie-kat használ a felhasználói munkamenet megőrzés
 
 #### <a name="only-allow-adf-ux-to-use-cookies"></a>Csak a cookie-k használatának engedélyezése az ADF UX számára
 Ha nem kívánja engedélyezni az összes cookie-t, igény szerint egyszerűen engedélyezheti az ADF UX használatát:
-1. Látogasson el a **Chrome://Settings/Cookies**.
+1. Látogasson el a **Chrome://Settings/Cookies** .
 1. Válassza a **Hozzáadás** lehetőséget a **helyek területen a cookie-k mindig használható** lehetőséggel 
 
     ![Az ADF UX hozzáadása az engedélyezett helyekhez a Chrome-ban](media/data-factory-ux-troubleshoot-guide/chrome-only-adf-cookies-1.png)
@@ -63,7 +63,7 @@ Ha nem kívánja engedélyezni az összes cookie-t, igény szerint egyszerűen e
 
 Ha nem kívánja engedélyezni az összes cookie-t, igény szerint egyszerűen engedélyezheti az ADF UX használatát:
 
-1. Látogasson el a **Edge://Settings/Content/Cookies**.
+1. Látogasson el a **Edge://Settings/Content/Cookies** .
 1. Az **Engedélyezés** szakaszban válassza a **Hozzáadás** elemet, és adja hozzá a **ADF.Azure.com** helyet. 
 
     ![Az ADF UX hozzáadása az engedélyezett helyekhez az Edge-ben](media/data-factory-ux-troubleshoot-guide/edge-allow-adf-cookies.png)
@@ -71,17 +71,17 @@ Ha nem kívánja engedélyezni az összes cookie-t, igény szerint egyszerűen e
 
 ## <a name="connection-failed-on-adf-ux"></a>Nem sikerült kapcsolódni az ADF UX-hez
 
-Előfordulhat, hogy a "kapcsolódás sikertelen" hibát észlelt az ADF UX-ben az alábbi képernyőképhez hasonlóan, miután a **Kapcsolódás**, az **előnézet**stb. elemre kattintott.
+Előfordulhat, hogy a "kapcsolódás sikertelen" hibát észlelt az ADF UX-ben az alábbi képernyőképhez hasonlóan, miután a **Kapcsolódás** , az **előnézet** stb. elemre kattintott.
 
 ![Sikertelen volt a hozzáférés](media/data-factory-ux-troubleshoot-guide/connection-failed.png)
 
 Ebben az esetben először próbálkozhat ugyanazzal a művelettel a böngészőben a InPrivate-böngészési módban is.
 
-Ha továbbra sem működik, a böngészőben nyomja meg az F12 billentyűt a **fejlesztői eszközök**megnyitásához. Nyissa meg a **hálózat** lapot, ellenőrizze a **gyorsítótár letiltását**, próbálja megismételni a sikertelen műveletet, és keresse meg a sikertelen kérelmet (piros színnel).
+Ha továbbra sem működik, a böngészőben nyomja meg az F12 billentyűt a **fejlesztői eszközök** megnyitásához. Nyissa meg a **hálózat** lapot, ellenőrizze a **gyorsítótár letiltását** , próbálja megismételni a sikertelen műveletet, és keresse meg a sikertelen kérelmet (piros színnel).
 
 ![Sikertelen kérelem](media/data-factory-ux-troubleshoot-guide/failed-request.png)
 
-Ezután keresse meg az **állomásnév** (ebben az esetben a **dpnortheurope.SVC.DataFactory.Azure.com**) nevet a sikertelen kérelem **URL-címében** .
+Ezután keresse meg az **állomásnév** (ebben az esetben a **dpnortheurope.SVC.DataFactory.Azure.com** ) nevet a sikertelen kérelem **URL-címében** .
 
 Írja be a **gazdagép nevét** közvetlenül a böngésző címsorában. Ha a böngészőben a 404 jelenik meg, ez általában azt jelenti, hogy az ügyfél oldalán ok van, és a probléma az ADF szolgáltatás oldalán található. A támogatási jegyet az ADF UX-hibaüzenetből származó **tevékenység-azonosítóval** együtt küldheti.
 
@@ -91,7 +91,7 @@ Ha nem, vagy a böngészőben hasonló hibaüzenet jelenik meg, ez általában a
 
 ![Ügyféloldali hiba](media/data-factory-ux-troubleshoot-guide/client-side-error.png)
 
-Nyisson meg egy **parancssort** , és írja be az **nslookup dpnortheurope.SVC.DataFactory.Azure.com**parancsot. A normál válasznak az alábbihoz hasonlóan kell kinéznie:
+Nyisson meg egy **parancssort** , és írja be az **nslookup dpnortheurope.SVC.DataFactory.Azure.com** parancsot. A normál válasznak az alábbihoz hasonlóan kell kinéznie:
 
 ![1. parancs válasza](media/data-factory-ux-troubleshoot-guide/command-response-1.png)
 
@@ -120,4 +120,4 @@ További hibaelhárítási segítségért próbálja ki ezeket az erőforrásoka
 * [Data Factory Stack Overflow fóruma](https://stackoverflow.com/questions/tagged/azure-data-factory)
 * [Twitter-információk a Data Factory](https://twitter.com/hashtag/DataFactory)
 * [Azure-videók](https://azure.microsoft.com/resources/videos/index/)
-* [Microsoft Q&egy kérdés oldal](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
+* [Microsoft Q&egy kérdés oldal](/answers/topics/azure-data-factory.html)

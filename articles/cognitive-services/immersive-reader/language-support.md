@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 04/13/2020
-ms.author: metan
-ms.openlocfilehash: c4aa9c22a0350c5d946d2fd45a983eac34681512
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: metang
+ms.openlocfilehash: 80da6776412e0df7b5b9ae5759ac770c04673992
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91320931"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631070"
 ---
 # <a name="language-support-for-immersive-reader"></a>Nyelvi támogatás a lebilincselő olvasó számára
 
@@ -48,11 +48,11 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Kínai (hagyományos) (Tajvan) | zh-Hant-TW |
 | Horvát | ó |
 | Horvát (Horvátország) | hr-HR |
-| Cseh | CS |
+| cseh | CS |
 | Cseh (Cseh Köztársaság) | cs-CZ |
-| Dán | da |
+| dán | da |
 | Dán (Dánia) | da-DK |
-| Holland | nl |
+| holland | nl |
 | Holland (Hollandia) | nl-NL |
 | Angolul | hu |
 | Angol (Ausztrália) | EN-AU |
@@ -63,44 +63,44 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Angol (Új-Zéland) | EN-NZ |
 | angol (Egyesült Királyság) | en-GB |
 | angol (Egyesült Államok) | en-US |
-| Finn | Fi |
+| finn | Fi |
 | Finn (Finnország) | fi-FI |
-| Francia | fr |
+| francia | fr |
 | Francia (Kanada) | fr – CA |
 | Francia (Franciaország) | fr-FR |
 | Francia (Svájc) | fr – CH |
-| Német | de |
+| német | de |
 | Német (Ausztria) | de-AT |
 | Német (Németország) | de-DE |
 | Német (Svájc)| de-CH |
-| Görög | el |
+| görög | el |
 | Görög (Görögország) | el-GR |
-| Héber | ő |
+| héber | ő |
 | Héber (Izrael) | he-IL |
 | Hindi | szia |
 | Hindi (India) | hi-IN |
-| Magyar | hu |
+| magyar | hu |
 | Magyar (Magyarország) | hu-HU |
 | Indonéz | id |
 | Indonéz (Indonézia) | id-ID |
-| Olasz | Ez |
+| olasz | Ez |
 | Olasz (Olaszország) | it-IT |
 | Japán | Japán |
 | Japán (Japán) | ja-JP |
-| Koreai | Ko |
+| koreai | Ko |
 | Koreai (Dél-Korea) | ko-KR |
 | Maláj | MS |
 | Maláj (Malajzia) | ms-MY |
 | Norvég bokmal| NB |
 | Norvég bokmal (Norvégia) | nb-NO |
-| Lengyel | pl |
+| lengyel | pl |
 | Lengyel (Lengyelország) | pl-PL |
-| Portugál | pt |
+| portugál | pt |
 | Portugál (Brazília) | pt-BR |
 | Portugál (Portugália) | pt-PT |  
 | Román | ro |
 | Román (Románia) | ro-RO |
-| Orosz | ru |
+| orosz | ru |
 | Orosz (Oroszország) | ru-RU |
 | Szlovák | sk |
 | Szlovák (Szlovákia) | sk-SK |
@@ -110,7 +110,7 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Spanyol (Latin-Amerika) | es-419 |
 | Spanyol (Mexikó) | es-MX |
 | Spanyol (Spanyolország) | es-ES |
-| Svéd | Sv |
+| svéd | Sv |
 | Svéd (Svédország) | sv-SE |
 | tamil | ta |
 | Tamil (India) | ta-be |
@@ -118,7 +118,7 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Telugu (India) | te-a |
 | Thai | adik |
 | Thai (Thaiföld) | th-TH |
-| Török | TR |
+| török | TR |
 | Török (Törökország) | tr-TR |
 | Vietnámi | VI |
 | Vietnámi (Vietnám) | vi-VN |
@@ -153,12 +153,12 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Kínai (hagyományos) (Tajvan) | zh-Hant-TW |
 | Horvát | ó |
 | Horvát (Horvátország) | hr-HR |
-| Cseh | CS |
+| cseh | CS |
 | Cseh (Cseh Köztársaság) | cs-CZ |
-| Dán | da |
+| dán | da |
 | Dán (Dánia) | da-DK |
 | Dari (Afganisztán) | lekéréses kérelmek |
-| Holland | nl |
+| holland | nl |
 | Holland (Hollandia) | nl-NL |
 | Angolul | hu |
 | Angol (Ausztrália) | EN-AU |
@@ -172,38 +172,38 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Észt | et |
 | Fidzsi | FJ |
 | Filipino | fájl |
-| Finn | Fi |
+| finn | Fi |
 | Finn (Finnország) | fi-FI |
-| Francia | fr |
+| francia | fr |
 | Francia (Kanada) | fr – CA |
 | Francia (Franciaország) | fr-FR |
 | Francia (Svájc) | fr – CH |
-| Német | de |
+| német | de |
 | Német (Ausztria) | de-AT |
 | Német (Németország) | de-DE |
 | Német (Svájc)| de-CH |
 | gudzsaráti | Gu |
-| Görög | el |
+| görög | el |
 | Görög (Görögország) | el-GR |
 | Haiti (kreol) | HT |
-| Héber | ő |
+| héber | ő |
 | Héber (Izrael) | he-IL |
 | Hindi | szia |
 | Hindi (India) | hi-IN |
 | Hmong DAW | MWW |
-| Magyar | hu |
+| magyar | hu |
 | Magyar (Magyarország) | hu-HU |
 | Izlandi | is |
 | Indonéz | id |
 | Indonéz (Indonézia) | id-ID |
 | Ír | GA |
-| Olasz | Ez |
+| olasz | Ez |
 | Olasz (Olaszország) | it-IT |
 | Japán | Japán |
 | Japán (Japán) | ja-JP |
 | kannada | KN |
 | Kiswahili | sw |
-| Koreai | Ko |
+| koreai | Ko |
 | Koreai (Dél-Korea) | ko-KR |
 | Kurd (Közép) | ku |
 | Kurd (északi) | KMR |
@@ -221,16 +221,16 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Oriya | vagy |
 | Pastu (Afganisztán) | PS |
 | perzsa | h |
-| Lengyel | pl |
+| lengyel | pl |
 | Lengyel (Lengyelország) | pl-PL |
-| Portugál | pt |
+| portugál | pt |
 | Portugál (Brazília) | pt-BR |
 | Portugál (Portugália) | pt-PT |  
 | pandzsábi | PA |
 | Querétaro otomi | otq |
 | Román | ro |
 | Román (Románia) | ro-RO |
-| Orosz | ru |
+| orosz | ru |
 | Orosz (Oroszország) | ru-RU |
 | Szamoai | sm |
 | Szerb | SR |
@@ -244,7 +244,7 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Spanyol (Latin-Amerika) | es-419 |
 | Spanyol (Mexikó) | es-MX |
 | Spanyol (Spanyolország) | es-ES |
-| Svéd | Sv |
+| svéd | Sv |
 | Svéd (Svédország) | sv-SE |
 | Tahitian | úlyossága |
 | tamil | ta |
@@ -254,7 +254,7 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Thai | adik |
 | Thai (Thaiföld) | th-TH |
 | Tongai | a következőre: |
-| Török | TR |
+| török | TR |
 | Török (Törökország) | tr-TR |
 | Ukrán | uk |
 | urdu | a |
@@ -286,11 +286,11 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Kínai (hagyományos) (Tajvan) | zh-Hant-TW |
 | Horvát | ó |
 | Horvát (Horvátország) | hr-HR |
-| Cseh | CS |
+| cseh | CS |
 | Cseh (Cseh Köztársaság) | cs-CZ |
-| Dán | da |
+| dán | da |
 | Dán (Dánia) | da-DK |
-| Holland | nl |
+| holland | nl |
 | Holland (Hollandia) | nl-NL |
 | Angolul | hu |
 | Angol (Ausztrália) | EN-AU |
@@ -302,34 +302,34 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | angol (Egyesült Királyság) | en-GB |
 | angol (Egyesült Államok) | en-US |
 | Észt | et |
-| Finn | Fi |
+| finn | Fi |
 | Finn (Finnország) | fi-FI |
-| Francia | fr |
+| francia | fr |
 | Francia (Kanada) | fr – CA |
 | Francia (Franciaország) | fr-FR |
 | Francia (Svájc) | fr – CH |
 | Gallego | GL |
-| Német | de |
+| német | de |
 | Német (Ausztria) | de-AT |
 | Német (Németország) | de-DE |
 | Német (Svájc)| de-CH |
-| Görög | el |
+| görög | el |
 | Görög (Görögország) | el-GR |
-| Héber | ő |
+| héber | ő |
 | Héber (Izrael) | he-IL |
 | Hindi | szia |
 | Hindi (India) | hi-IN |
-| Magyar | hu |
+| magyar | hu |
 | Magyar (Magyarország) | hu-HU |
 | Izlandi | is |
 | Indonéz | id |
 | Indonéz (Indonézia) | id-ID |
-| Olasz | Ez |
+| olasz | Ez |
 | Olasz (Olaszország) | it-IT |
 | Japán | Japán |
 | Japán (Japán) | ja-JP |
 | Kazak | KK |
-| Koreai | Ko |
+| koreai | Ko |
 | Koreai (Dél-Korea) | ko-KR |
 | Lett | lv |
 | Litván | lt |
@@ -338,14 +338,14 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Norvég bokmal| NB |
 | Norvég bokmal (Norvégia) | nb-NO |
 | Norvég nynorsk | pp |
-| Lengyel | pl |
+| lengyel | pl |
 | Lengyel (Lengyelország) | pl-PL |
-| Portugál | pt |
+| portugál | pt |
 | Portugál (Brazília) | pt-BR |
 | Portugál (Portugália) | pt-PT |  
 | Román | ro |
 | Román (Románia) | ro-RO |
-| Orosz | ru |
+| orosz | ru |
 | Orosz (Oroszország) | ru-RU |
 | Szerb (cirill betűs) | SR-Cyrl |
 | Szerb (latin betűs) | SR-Latn |
@@ -357,7 +357,7 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Spanyol (Latin-Amerika) | es-419 |
 | Spanyol (Mexikó) | es-MX |
 | Spanyol (Spanyolország) | es-ES |
-| Svéd | Sv |
+| svéd | Sv |
 | Svéd (Svédország) | sv-SE |
 | tamil | ta |
 | Tamil (India) | ta-be |
@@ -365,7 +365,7 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Telugu (India) | te-a |
 | Thai | adik |
 | Thai (Thaiföld) | th-TH |
-| Török | TR |
+| török | TR |
 | Török (Törökország) | tr-TR |
 | Ukrán | uk |
 | Vietnámi | VI |
@@ -383,11 +383,11 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Katalán (katalán) | ca-ES |
 | Horvát | ó |
 | Horvát (Horvátország) | hr-HR |
-| Cseh | CS |
+| cseh | CS |
 | Cseh (Cseh Köztársaság) | cs-CZ |
-| Dán | da |
+| dán | da |
 | Dán (Dánia) | da-DK |
-| Holland | nl |
+| holland | nl |
 | Holland (Hollandia) | nl-NL |
 | Angolul | hu |
 | Angol (Ausztrália) | EN-AU |
@@ -399,23 +399,23 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | angol (Egyesült Királyság) | en-GB |
 | angol (Egyesült Államok) | en-US |
 | Észt | et |
-| Finn | Fi |
+| finn | Fi |
 | Finn (Finnország) | fi-FI |
-| Francia | fr |
+| francia | fr |
 | Francia (Kanada) | fr – CA |
 | Francia (Franciaország) | fr-FR |
 | Francia (Svájc) | fr – CH |
 | Gallego | GL |
-| Német | de |
+| német | de |
 | Német (Ausztria) | de-AT |
 | Német (Németország) | de-DE |
 | Német (Svájc)| de-CH |
-| Görög | el |
+| görög | el |
 | Görög (Görögország) | el-GR |
-| Magyar | hu |
+| magyar | hu |
 | Magyar (Magyarország) | hu-HU |
 | Izlandi | is |
-| Olasz | Ez |
+| olasz | Ez |
 | Olasz (Olaszország) | it-IT |
 | Kazak | KK |
 | Lett | lv |
@@ -423,14 +423,14 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Norvég bokmal| NB |
 | Norvég bokmal (Norvégia) | nb-NO |
 | Norvég nynorsk | pp |
-| Lengyel | pl |
+| lengyel | pl |
 | Lengyel (Lengyelország) | pl-PL |
-| Portugál | pt |
+| portugál | pt |
 | Portugál (Brazília) | pt-BR |
 | Portugál (Portugália) | pt-PT |  
 | Román | ro |
 | Román (Románia) | ro-RO |
-| Orosz | ru |
+| orosz | ru |
 | Orosz (Oroszország) | ru-RU |
 | Szerb | SR |
 | Szerb (cirill betűs) | SR-Cyrl |
@@ -443,9 +443,9 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Spanyol (Latin-Amerika) | es-419 |
 | Spanyol (Mexikó) | es-MX |
 | Spanyol (Spanyolország) | es-ES |
-| Svéd | Sv |
+| svéd | Sv |
 | Svéd (Svédország) | sv-SE |
-| Török | TR |
+| török | TR |
 | Török (Törökország) | tr-TR |
 | Ukrán | uk |
 | walesi | CY |
@@ -454,9 +454,9 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 
 | Nyelv | Címke |
 |----------|-----|
-| Dán | da |
+| dán | da |
 | Dán (Dánia) | da-DK |
-| Holland | nl |
+| holland | nl |
 | Holland (Hollandia) | nl-NL |
 | Angolul | hu |
 | Angol (Ausztrália) | EN-AU |
@@ -467,35 +467,35 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Angol (Új-Zéland) | EN-NZ |
 | angol (Egyesült Királyság) | en-GB |
 | angol (Egyesült Államok) | en-US |
-| Finn | Fi |
+| finn | Fi |
 | Finn (Finnország) | fi-FI |
-| Francia | fr |
+| francia | fr |
 | Francia (Kanada) | fr – CA |
 | Francia (Franciaország) | fr-FR |
 | Francia (Svájc) | fr – CH |
-| Német | de |
+| német | de |
 | Német (Ausztria) | de-AT |
 | Német (Németország) | de-DE |
 | Német (Svájc)| de-CH |
-| Olasz | Ez |
+| olasz | Ez |
 | Olasz (Olaszország) | it-IT |
 | Japán | Japán |
 | Japán (Japán) | ja-JP |
-| Koreai | Ko |
+| koreai | Ko |
 | Koreai (Dél-Korea) | ko-KR |
 | Norvég bokmal| NB |
 | Norvég bokmal (Norvégia) | nb-NO |
-| Lengyel | pl |
+| lengyel | pl |
 | Lengyel (Lengyelország) | pl-PL |
-| Portugál | pt |
+| portugál | pt |
 | Portugál (Brazília) | pt-BR |
-| Orosz | ru |
+| orosz | ru |
 | Orosz (Oroszország) | ru-RU |
 | spanyol | es |
 | Spanyol (Latin-Amerika) | es-419 |
 | Spanyol (Mexikó) | es-MX |
 | Spanyol (Spanyolország) | es-ES |
-| Svéd | Sv |
+| svéd | Sv |
 | Svéd (Svédország) | sv-SE |
 
 ## <a name="parts-of-speech"></a>A beszéd részei
@@ -504,9 +504,9 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 |----------|-----|
 | Arab (egyiptomi) | AR – EG |
 | Arab (Szaúd-Arábia) | ar-SA |
-| Dán | da |
+| dán | da |
 | Dán (Dánia) | da-DK |
-| Holland | nl |
+| holland | nl |
 | Holland (Hollandia) | nl-NL |
 | Angolul | hu |
 | Angol (Ausztrália) | EN-AU |
@@ -517,36 +517,36 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Angol (Új-Zéland) | EN-NZ |
 | angol (Egyesült Királyság) | en-GB |
 | angol (Egyesült Államok) | en-US |
-| Finn | Fi |
+| finn | Fi |
 | Finn (Finnország) | fi-FI |
-| Francia | fr |
+| francia | fr |
 | Francia (Kanada) | fr – CA |
 | Francia (Franciaország) | fr-FR |
 | Francia (Svájc) | fr – CH |
-| Német | de |
+| német | de |
 | Német (Ausztria) | de-AT |
 | Német (Németország) | de-DE |
 | Német (Svájc)| de-CH |
-| Olasz | Ez |
+| olasz | Ez |
 | Olasz (Olaszország) | it-IT |
 | Japán | Japán |
 | Japán (Japán) | ja-JP |
-| Koreai | Ko |
+| koreai | Ko |
 | Koreai (Dél-Korea) | ko-KR |
 | Norvég bokmal| NB |
 | Norvég bokmal (Norvégia) | nb-NO |
 | Norvég nynorsk | pp |
-| Lengyel | pl |
+| lengyel | pl |
 | Lengyel (Lengyelország) | pl-PL |
-| Portugál | pt |
+| portugál | pt |
 | Portugál (Brazília) | pt-BR |
-| Orosz | ru |
+| orosz | ru |
 | Orosz (Oroszország) | ru-RU |
 | spanyol | es |
 | Spanyol (Latin-Amerika) | es-419 |
 | Spanyol (Mexikó) | es-MX |
 | Spanyol (Spanyolország) | es-ES |
-| Svéd | Sv |
+| svéd | Sv |
 | Svéd (Svédország) | sv-SE |
 
 ## <a name="dictionary"></a>Szótár
@@ -562,15 +562,15 @@ Ez a cikk a teljes olvasó funkcióinak támogatott emberi nyelveit sorolja fel.
 | Angol (Új-Zéland) | EN-NZ |
 | angol (Egyesült Királyság) | en-GB |
 | angol (Egyesült Államok) | en-US |
-| Francia | fr |
+| francia | fr |
 | Francia (Kanada) | fr – CA |
 | Francia (Franciaország) | fr-FR |
 | Francia (Svájc) | fr – CH |
-| Német | de |
+| német | de |
 | Német (Ausztria) | de-AT |
 | Német (Németország) | de-DE |
 | Német (Svájc)| de-CH |
-| Olasz | Ez |
+| olasz | Ez |
 | Olasz (Olaszország) | it-IT |
 | spanyol | es |
 | Spanyol (Latin-Amerika) | es-419 |

@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 01/4/2020
-ms.author: metan
+ms.author: metang
 ms.custom: cog-serv-seo-aug-2020
 keywords: olvasók, nyelvi tanulók, képek megjelenítése, az olvasás javítása, tartalom olvasása, fordítás
-ms.openlocfilehash: a537845c0256316f9c47317a8805fa989a624f60
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0661bd5f917a2bf071f11393ad8ac9af53ddfe97
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90985736"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631239"
 ---
 # <a name="what-is-immersive-reader"></a>Mi az a Modern olvasó?
 
@@ -73,7 +73,7 @@ A gördülékeny olvasó ügyféloldali kódtára C#, JavaScript, Java (Android)
 
 * [Rövid útmutató: az olvasó ügyféloldali függvénytárának használata](quickstarts/client-libraries.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Modern olvasó használatának első lépései:
 

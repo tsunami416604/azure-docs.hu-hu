@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
-ms.openlocfilehash: b7936fcd1e4a629a813c4266920f6c34a15cf9b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24e468007e0e5ea849ac4d7f945b0aaf6377e580
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89438942"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633807"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory – .NET API-változási napló
 > [!NOTE]
@@ -29,52 +29,52 @@ Ez a cikk a Azure Data Factory SDK adott verzióban történt módosításaival 
 Szolgáltatások kiegészítései:
 
 * A következő társított szolgáltatások típusai lettek hozzáadva:
-  * [OnPremisesMongoDbLinkedService](https://msdn.microsoft.com/library/mt765129.aspx)
-  * [AmazonRedshiftLinkedService](https://msdn.microsoft.com/library/mt765121.aspx)
-  * [AwsAccessKeyLinkedService](https://msdn.microsoft.com/library/mt765144.aspx)
+  * [OnPremisesMongoDbLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.onpremisesmongodblinkedservice)
+  * [AmazonRedshiftLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.amazonredshiftlinkedservice)
+  * [AwsAccessKeyLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.awsaccesskeylinkedservice)
 * A következő adatkészlet-típusok lettek hozzáadva:
-  * [MongoDbCollectionDataset](https://msdn.microsoft.com/library/mt765145.aspx)
-  * [AmazonS3Dataset](https://msdn.microsoft.com/library/mt765112.aspx)
+  * [MongoDbCollectionDataset](/dotnet/api/microsoft.azure.management.datafactories.models.mongodbcollectiondataset)
+  * [AmazonS3Dataset](/dotnet/api/microsoft.azure.management.datafactories.models.amazons3dataset)
 * A következő típusú másolási források lettek hozzáadva:
-  * [MongoDbSource](https://msdn.microsoft.com/library/mt765123.aspx)
+  * [MongoDbSource](/dotnet/api/microsoft.azure.management.datafactories.models.mongodbsource)
 
 ## <a name="version-4100"></a>4.10.0 verziója
 * A következő opcionális tulajdonságok lettek hozzáadva a Szövegformátum-hez:
-  * [SkipLineCount](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.skiplinecount.aspx)
-  * [FirstRowAsHeader](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.firstrowasheader.aspx)
-  * [TreatEmptyAsNull](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.treatemptyasnull.aspx)
+  * [SkipLineCount](/dotnet/api/microsoft.azure.management.datafactories.models.textformat)
+  * [FirstRowAsHeader](/dotnet/api/microsoft.azure.management.datafactories.models.textformat)
+  * [TreatEmptyAsNull](/dotnet/api/microsoft.azure.management.datafactories.models.textformat)
 * A következő társított szolgáltatások típusai lettek hozzáadva:
-  * [OnPremisesCassandraLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisescassandralinkedservice.aspx)
-  * [SalesforceLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.salesforcelinkedservice.aspx)
+  * [OnPremisesCassandraLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.onpremisescassandralinkedservice)
+  * [SalesforceLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.salesforcelinkedservice)
 * A következő adatkészlet-típusok lettek hozzáadva:
-  * [OnPremisesCassandraTableDataset](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisescassandratabledataset.aspx)
+  * [OnPremisesCassandraTableDataset](/dotnet/api/microsoft.azure.management.datafactories.models.onpremisescassandratabledataset)
 * A következő típusú másolási források lettek hozzáadva:
-  * [CassandraSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.cassandrasource.aspx)
-* [WebServiceInputs](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azuremlbatchexecutionactivity.webserviceinputs.aspx) tulajdonság hozzáadása a AzureMLBatchExecutionActivity
+  * [CassandraSource](/dotnet/api/microsoft.azure.management.datafactories.models.cassandrasource)
+* [WebServiceInputs](/dotnet/api/microsoft.azure.management.datafactories.models.azuremlbatchexecutionactivity) tulajdonság hozzáadása a AzureMLBatchExecutionActivity
   * Több webszolgáltatás-bemenet átadásának engedélyezése egy Azure Machine Learning kísérletre
 
 ## <a name="version-491"></a>4.9.1 verziója
 ### <a name="bug-fix"></a>Hibajavítás
-* A [WebLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.weblinkedservice.authenticationtype.aspx)WebApi-alapú hitelesítésének elavultnak kell lennie.
+* A [WebLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.weblinkedservice)WebApi-alapú hitelesítésének elavultnak kell lennie.
 
 ## <a name="version-490"></a>4.9.0 verziója
 ### <a name="feature-additions"></a>Szolgáltatások kiegészítései
-* Adja hozzá a [EnableStaging](https://msdn.microsoft.com/library/mt767916.aspx) és a [StagingSettings](https://msdn.microsoft.com/library/mt767918.aspx) tulajdonságot a CopyActivity. A funkció részleteit a [szakaszos másolás](data-factory-copy-activity-performance.md#staged-copy) című részben tekintheti meg.
+* Adja hozzá a [EnableStaging](/dotnet/api/microsoft.azure.management.datafactories.models.copyactivity) és a [StagingSettings](/dotnet/api/microsoft.azure.management.datafactories.models.stagingsettings) tulajdonságot a CopyActivity. A funkció részleteit a [szakaszos másolás](data-factory-copy-activity-performance.md#staged-copy) című részben tekintheti meg.
 
 ### <a name="bug-fix"></a>Hibajavítás
-* A [ActivityWindowOperationExtensions. list](https://msdn.microsoft.com/library/mt767915.aspx) metódus túlterhelésének bevezetése, amely egy [ActivityWindowsByActivityListParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters.aspx) -példányt vesz igénybe.
-* A [WriteBatchSize](https://msdn.microsoft.com/library/dn884293.aspx) és a [WriteBatchTimeout](https://msdn.microsoft.com/library/dn884245.aspx) megjelölése opcionálisként a CopySink-ben.
+* A [ActivityWindowOperationExtensions. list](/dotnet/api/microsoft.azure.management.datafactories.activitywindowoperationsextensions) metódus túlterhelésének bevezetése, amely egy [ActivityWindowsByActivityListParameters](/dotnet/api/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters) -példányt vesz igénybe.
+* A [WriteBatchSize](/dotnet/api/microsoft.azure.management.datafactories.models.copysink) és a [WriteBatchTimeout](/dotnet/api/microsoft.azure.management.datafactories.models.copysink) megjelölése opcionálisként a CopySink-ben.
 
 ## <a name="version-480"></a>4.8.0 verziója
 ### <a name="feature-additions"></a>Szolgáltatások kiegészítései
 * A következő opcionális tulajdonságok lettek hozzáadva a másolási tevékenység típusához a másolási teljesítmény finomhangolásának engedélyezéséhez:
-  * [ParallelCopies](https://msdn.microsoft.com/library/mt767910.aspx)
-  * [CloudDataMovementUnits](https://msdn.microsoft.com/library/mt767912.aspx)
+  * [ParallelCopies](/dotnet/api/microsoft.azure.management.datafactories.models.copyactivity)
+  * [CloudDataMovementUnits](/dotnet/api/microsoft.azure.management.datafactories.models.copyactivity)
 
 ## <a name="version-470"></a>4.7.0 verziója
 ### <a name="feature-additions"></a>Szolgáltatások kiegészítései
-* Új StorageFormat típusú [OrcFormat](https://msdn.microsoft.com/library/mt723391.aspx) -típus hozzáadása a fájlok optimalizált, oszlopos (ORK) formátumban való másolásához.
-* Adja hozzá a [AllowPolyBase](https://msdn.microsoft.com/library/mt723396.aspx) és a PolyBaseSettings tulajdonságot a SqlDWSink.
+* Új StorageFormat típusú [OrcFormat](/dotnet/api/microsoft.azure.management.datafactories.models.orcformat) -típus hozzáadása a fájlok optimalizált, oszlopos (ORK) formátumban való másolásához.
+* Adja hozzá a [AllowPolyBase](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsink) és a PolyBaseSettings tulajdonságot a SqlDWSink.
   * Lehetővé teszi az adatok másolását az Azure szinapszis Analyticsbe (korábban SQL Data Warehouse).
 
 ## <a name="version-461"></a>4.6.1-es verzió
@@ -84,55 +84,55 @@ Szolgáltatások kiegészítései:
 
 ## <a name="version-460"></a>4.6.0 verziója
 ### <a name="feature-additions"></a>Szolgáltatások kiegészítései
-* A következő tulajdonságok lettek hozzáadva a [PipelineProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties_properties.aspx)-hez:
-  * [PipelineMode](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.pipelinemode.aspx)
-  * [ExpirationTime](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.expirationtime.aspx)
-  * [Adatkészletek](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.datasets.aspx)
-* A következő tulajdonságok lettek hozzáadva a [PipelineRuntimeInfo](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.aspx)-hez:
-  * [PipelineState](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.pipelinestate.aspx)
-* Új [StorageFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.storageformat.aspx) típusú [JsonFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.jsonformat.aspx) hozzáadásával meghatározhatja azokat az adatkészleteket, amelyekben az adat JSON formátumú.
+* A következő tulajdonságok lettek hozzáadva a [PipelineProperties](/dotnet/api/microsoft.azure.management.datafactories.models.pipelineproperties)-hez:
+  * [PipelineMode](/dotnet/api/microsoft.azure.management.datafactories.models.pipelineproperties)
+  * [ExpirationTime](/dotnet/api/microsoft.azure.management.datafactories.models.pipelineproperties)
+  * [Adatkészletek](/dotnet/api/microsoft.azure.management.datafactories.models.pipelineproperties)
+* A következő tulajdonságok lettek hozzáadva a [PipelineRuntimeInfo](/dotnet/api/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo)-hez:
+  * [PipelineState](/dotnet/api/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo)
+* Új [StorageFormat](/dotnet/api/microsoft.azure.management.datafactories.models.storageformat) típusú [JsonFormat](/dotnet/api/microsoft.azure.management.datafactories.models.jsonformat) hozzáadásával meghatározhatja azokat az adatkészleteket, amelyekben az adat JSON formátumú.
 
 ## <a name="version-450"></a>4.5.0 verziója
 ### <a name="feature-additions"></a>Szolgáltatások kiegészítései
-* [A List művelet hozzáadva a tevékenység ablakhoz](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.activitywindowoperationsextensions.aspx).
+* [A List művelet hozzáadva a tevékenység ablakhoz](/dotnet/api/microsoft.azure.management.datafactories.activitywindowoperationsextensions).
   * Metódusok hozzáadásával lekérheti a tevékenységek ablakait az entitások típusai (azaz az adat-előállítók, adatkészletek, folyamatok és tevékenységek) alapján.
 * A következő társított szolgáltatások típusai lettek hozzáadva:
-  * [ODataLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.odatalinkedservice.aspx), [WebLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.weblinkedservice.aspx)
+  * [ODataLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.odatalinkedservice), [WebLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.weblinkedservice)
 * A következő adatkészlet-típusok lettek hozzáadva:
-  * [ODataResourceDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.odataresourcedataset.aspx), [WebTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.webtabledataset.aspx)
+  * [ODataResourceDataset](/dotnet/api/microsoft.azure.management.datafactories.models.odataresourcedataset), [WebTableDataset](/dotnet/api/microsoft.azure.management.datafactories.models.webtabledataset)
 * A következő típusú másolási források lettek hozzáadva:     
-  * [Webforrások](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.websource.aspx)
+  * [Webforrások](/dotnet/api/microsoft.azure.management.datafactories.models.websource)
 
 ## <a name="version-440"></a>4.4.0 verziója
 ### <a name="feature-additions"></a>Szolgáltatások kiegészítései
 * A következő társított szolgáltatástípus adatforrásként lett hozzáadva a másolási tevékenységekhez:
-  * [AzureStorageSasLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice.aspx). Az [Azure Storage sas társított szolgáltatásával](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) kapcsolatos fogalmakat és példákat itt tekintheti meg.
+  * [AzureStorageSasLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice). Az [Azure Storage sas társított szolgáltatásával](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) kapcsolatos fogalmakat és példákat itt tekintheti meg.
 
 ## <a name="version-430"></a>4.3.0 verziója
 ### <a name="feature-additions"></a>Szolgáltatások kiegészítései
 * A másolási tevékenységek adatforrásaként a következő társított szolgáltatások lettek hozzáadva:
-  * [HdfsLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.hdfslinkedservice.aspx). Lásd: [adatok áthelyezése a HDFS a Data Factory használatával](data-factory-hdfs-connector.md) elméleti információk és példák.
-  * [OnPremisesOdbcLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisesodbclinkedservice.aspx). Tekintse meg az [adatok áthelyezése az ODBC-adattárakból Azure Data Factory használatával](data-factory-odbc-connector.md) fogalmi információkat és példákat.
+  * [HdfsLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.hdfslinkedservice). Lásd: [adatok áthelyezése a HDFS a Data Factory használatával](data-factory-hdfs-connector.md) elméleti információk és példák.
+  * [OnPremisesOdbcLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.onpremisesodbclinkedservice). Tekintse meg az [adatok áthelyezése az ODBC-adattárakból Azure Data Factory használatával](data-factory-odbc-connector.md) fogalmi információkat és példákat.
 
 ## <a name="version-420"></a>4.2.0 verziója
 ### <a name="feature-additions"></a>Szolgáltatások kiegészítései
-* A következő új tevékenységtípus lett hozzáadva: [AzureMLUpdateResourceActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity.aspx). A tevékenység részletes ismertetését lásd: [Az Azure ml-modellek frissítése az erőforrás frissítése tevékenység használatával](data-factory-azure-ml-batch-execution-activity.md).
-* A [AzureMLLinkedService osztályhoz](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.aspx)új, nem kötelező tulajdonság [updateResourceEndpoint](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.updateresourceendpoint.aspx) lett hozzáadva.
-* A [LongRunningOperationInitialTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationinitialtimeout.aspx) és a [LongRunningOperationRetryTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationretrytimeout.aspx) tulajdonság hozzá lett adva a [datapipelinemanagementclient](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.aspx) osztályhoz.
+* A következő új tevékenységtípus lett hozzáadva: [AzureMLUpdateResourceActivity](/dotnet/api/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity). A tevékenység részletes ismertetését lásd: [Az Azure ml-modellek frissítése az erőforrás frissítése tevékenység használatával](data-factory-azure-ml-batch-execution-activity.md).
+* A [AzureMLLinkedService osztályhoz](/dotnet/api/microsoft.azure.management.datafactories.models.azuremllinkedservice)új, nem kötelező tulajdonság [updateResourceEndpoint](/dotnet/api/microsoft.azure.management.datafactories.models.azuremllinkedservice) lett hozzáadva.
+* A [LongRunningOperationInitialTimeout](/dotnet/api/microsoft.azure.management.datafactories.datafactorymanagementclient) és a [LongRunningOperationRetryTimeout](/dotnet/api/microsoft.azure.management.datafactories.datafactorymanagementclient) tulajdonság hozzá lett adva a [datapipelinemanagementclient](/dotnet/api/microsoft.azure.management.datafactories.datafactorymanagementclient) osztályhoz.
 * Az Data Factory szolgáltatásra irányuló ügyfélkapcsolatok időtúllépési beállításainak engedélyezése.
 
 ## <a name="version-410"></a>4.1.0 verziója
 ### <a name="feature-additions"></a>Szolgáltatások kiegészítései
 * A következő társított szolgáltatások típusai lettek hozzáadva:
-  * [AzureDataLakeStoreLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)
-  * [AzureDataLakeAnalyticsLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)
+  * [AzureDataLakeStoreLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice)
+  * [AzureDataLakeAnalyticsLinkedService](/dotnet/api/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice)
 * A következő tevékenységtípusok lettek hozzáadva:
-  * [DataLakeAnalyticsUSQLActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datalakeanalyticsusqlactivity.aspx)
+  * [DataLakeAnalyticsUSQLActivity](/dotnet/api/microsoft.azure.management.datafactories.models.datalakeanalyticsusqlactivity)
 * A következő adatkészlet-típusok lettek hozzáadva:
-  * [AzureDataLakeStoreDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoredataset.aspx)
+  * [AzureDataLakeStoreDataset](/dotnet/api/microsoft.azure.management.datafactories.models.azuredatalakestoredataset)
 * A másolási tevékenységhez a következő forrás-és fogadó típusok lettek hozzáadva:
-  * [AzureDataLakeStoreSource](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoresource.aspx)
-  * [AzureDataLakeStoreSink](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoresink.aspx)
+  * [AzureDataLakeStoreSource](/dotnet/api/microsoft.azure.management.datafactories.models.azuredatalakestoresource)
+  * [AzureDataLakeStoreSink](/dotnet/api/microsoft.azure.management.datafactories.models.azuredatalakestoresink)
 
 ## <a name="version-401"></a>4.0.1 verzió
 ### <a name="breaking-changes"></a>Kompatibilitástörő változások
@@ -140,12 +140,12 @@ A következő osztályok lettek átnevezve. Az új nevek az osztályok eredeti n
 
 | Név a 4.0.0 | Név a 4.0.1-ban |
 |:--- |:--- |
-| AzureSqlDataWarehouseDataset |[AzureSqlDataWarehouseTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuresqldatawarehousetabledataset.aspx) |
-| AzureSqlDataset |[AzureSqlTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuresqltabledataset.aspx) |
-| AzureDataset |[AzureTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuretabledataset.aspx) |
-| OracleDataset |[OracleTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.oracletabledataset.aspx) |
-| RelationalDataset |[RelationalTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.relationaltabledataset.aspx) |
-| SqlServerDataset |[SqlServerTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.sqlservertabledataset.aspx) |
+| AzureSqlDataWarehouseDataset |[AzureSqlDataWarehouseTableDataset](/dotnet/api/microsoft.azure.management.datafactories.models.azuresqldatawarehousetabledataset) |
+| AzureSqlDataset |[AzureSqlTableDataset](/dotnet/api/microsoft.azure.management.datafactories.models.azuresqltabledataset) |
+| AzureDataset |[AzureTableDataset](/dotnet/api/microsoft.azure.management.datafactories.models.azuretabledataset) |
+| OracleDataset |[OracleTableDataset](/dotnet/api/microsoft.azure.management.datafactories.models.oracletabledataset) |
+| RelationalDataset |[RelationalTableDataset](/dotnet/api/microsoft.azure.management.datafactories.models.relationaltabledataset) |
+| SqlServerDataset |[SqlServerTableDataset](/dotnet/api/microsoft.azure.management.datafactories.models.sqlservertabledataset) |
 
 ## <a name="version-400"></a>4.0.0-s verzió
 ### <a name="breaking-changes"></a>Kompatibilitástörő változások
@@ -153,15 +153,15 @@ A következő osztályok lettek átnevezve. Az új nevek az osztályok eredeti n
 
 | Régi név | Új név |
 |:--- |:--- |
-| ITableOperations |[IDatasetOperations](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.idatasetoperations.aspx) |
-| Táblázat |[Adathalmaz](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.dataset.aspx) |
-| TableProperties |[DatasetProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetproperties.aspx) |
-| TableTypeProprerties |[DatasetTypeProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasettypeproperties.aspx) |
-| TableCreateOrUpdateParameters |[DatasetCreateOrUpdateParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateparameters.aspx) |
-| TableCreateOrUpdateResponse |[DatasetCreateOrUpdateResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateresponse.aspx) |
-| TableGetResponse |[DatasetGetResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetgetresponse.aspx) |
-| TableListResponse |[DatasetListResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetlistresponse.aspx) |
-| CreateOrUpdateWithRawJsonContentParameters |[DatasetCreateOrUpdateWithRawJsonContentParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdatewithrawjsoncontentparameters.aspx) |
+| ITableOperations |[IDatasetOperations](/dotnet/api/microsoft.azure.management.datafactories.idatasetoperations) |
+| Tábla |[Adatkészlet](/dotnet/api/microsoft.azure.management.datafactories.models.dataset) |
+| TableProperties |[DatasetProperties](/dotnet/api/microsoft.azure.management.datafactories.models.datasetproperties) |
+| TableTypeProprerties |[DatasetTypeProperties](/dotnet/api/microsoft.azure.management.datafactories.models.datasettypeproperties) |
+| TableCreateOrUpdateParameters |[DatasetCreateOrUpdateParameters](/dotnet/api/microsoft.azure.management.datafactories.models.datasetcreateorupdateparameters) |
+| TableCreateOrUpdateResponse |[DatasetCreateOrUpdateResponse](/dotnet/api/microsoft.azure.management.datafactories.models.datasetcreateorupdateresponse) |
+| TableGetResponse |[DatasetGetResponse](/dotnet/api/microsoft.azure.management.datafactories.models.datasetgetresponse) |
+| TableListResponse |[DatasetListResponse](/dotnet/api/microsoft.azure.management.datafactories.models.datasetlistresponse) |
+| CreateOrUpdateWithRawJsonContentParameters |[DatasetCreateOrUpdateWithRawJsonContentParameters](/dotnet/api/microsoft.azure.management.datafactories.models.datasetcreateorupdatewithrawjsoncontentparameters) |
 
 * A **lista** metódusai mostantól a lapozható eredményeket adják vissza. Ha a válasz nem üres **NextLink** tulajdonságot tartalmaz, az ügyfélalkalmazásnak továbbra is le kell kérnie a következő lapot, amíg az összes oldalt vissza nem adja.  Alább bemutatunk egy példát:
 
@@ -181,5 +181,5 @@ A következő osztályok lettek átnevezve. Az új nevek az osztályok eredeti n
 * A **List** folyamat API a teljes részletek helyett csak egy folyamat összegzését adja vissza. Például egy folyamat összefoglaló tevékenységei csak a nevet és a típust tartalmazzák.
 
 ### <a name="feature-additions"></a>Szolgáltatások kiegészítései
-* A [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) osztály két új tulajdonságot ( **SliceIdentifierColumnName** és **SqlWriterCleanupScript**) támogat az Azure Azure szinapszis Analytics idempotens-másolásának támogatásához. Ezen tulajdonságokkal kapcsolatos részletekért tekintse meg az [Azure szinapszis Analytics](data-factory-azure-sql-data-warehouse-connector.md) -cikket.
-* A másolási tevékenység részeként mostantól támogatjuk a Azure SQL Database és az Azure szinapszis Analytics-források futtatására szolgáló tárolt eljárást. A [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) és a [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) osztály a következő tulajdonságokkal rendelkezik: **SqlReaderStoredProcedureName** és **StoredProcedureParameters**. Ezekről a tulajdonságokról a Azure.com [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) és az [Azure szinapszis Analytics](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) cikkeiben talál további információkat.  
+* A [SqlDWSink](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsink) osztály két új tulajdonságot ( **SliceIdentifierColumnName** és **SqlWriterCleanupScript** ) támogat az Azure Azure szinapszis Analytics idempotens-másolásának támogatásához. Ezen tulajdonságokkal kapcsolatos részletekért tekintse meg az [Azure szinapszis Analytics](data-factory-azure-sql-data-warehouse-connector.md) -cikket.
+* A másolási tevékenység részeként mostantól támogatjuk a Azure SQL Database és az Azure szinapszis Analytics-források futtatására szolgáló tárolt eljárást. A [SqlSource](/dotnet/api/microsoft.azure.management.datafactories.models.sqlsource) és a [SqlDWSource](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsource) osztály a következő tulajdonságokkal rendelkezik: **SqlReaderStoredProcedureName** és **StoredProcedureParameters** . Ezekről a tulajdonságokról a Azure.com [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) és az [Azure szinapszis Analytics](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) cikkeiben talál további információkat.

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: 70acacb9bacddaf403b79e11b460333c67641aae
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: f4bddf1746a9d680897428f1aa0afdb35d93e470
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202208"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631274"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -40,9 +40,10 @@ A díjszabással kapcsolatos információk [megtekintéséhez](https://azure.mic
 
 Nem. A szolgáltatótól bármilyen sebességű VPN-kapcsolat is megvásárolható. Az Azure-hoz való kapcsolódás azonban a megvásárolt ExpressRoute-áramköri sávszélességre korlátozódik.
 
-### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>Ha fizetnem kell egy adott sávszélesség ExpressRoute, igény szerint magasabb sebességre lehet szükségem?
+### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-use-more-than-my-procured-bandwidth"></a>Ha fizetnem kell egy adott sávszélesség ExpressRoute, akkor használhatom a beszerzett sávszélességet?
 
-Igen. A ExpressRoute-áramkörök úgy vannak konfigurálva, hogy a maximálisan engedélyezett sávszélesség-korlátot akár kétszer is fel lehessen venni. Forduljon a szolgáltatóhoz, és ellenőrizze, hogy támogatják-e ezt a funkciót. Ez nem hosszabb ideig tart, és nem garantált.  Ha a forgalom egy ExpressRoute-átjárón keresztül áramlik, az SKU sávszélessége rögzített, és nem használható fel.
+Igen, a ExpressRoute-áramkör másodlagos kapcsolatán elérhető sávszélességgel akár kétszer is felhasználhatja a sávszélesség-korlátot. Az áramkör beépített redundancia úgy van konfigurálva, hogy az elsődleges és másodlagos kapcsolatok, a megszerzett sávszélesség és a Microsoft vállalati peremhálózati útválasztói (Msee) használatával legyenek beállítva. Ha szükséges, a másodlagos kapcsolaton keresztül elérhető sávszélesség további forgalomhoz is használható. Mivel a másodlagos kapcsolatok a redundancia szempontjából jelentenek, azonban nem garantált, és nem használható tovább a hosszabb ideig tartó forgalomhoz. Ha többet szeretne megtudni arról, hogyan használható mindkét connnections a forgalom továbbítására [, tekintse](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending)meg a következőt:.
+Ha azt tervezi, hogy csak az elsődleges kapcsolatát használja a forgalom továbbítására, a kapcsolat sávszélessége rögzített, és a rendszer a túlfizetésre kísérli meg a csomagokat. Ha a forgalom egy ExpressRoute-átjárón keresztül áramlik, az SKU sávszélessége rögzített, és nem használható fel.
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>Használhatom ugyanazt a magánhálózati hálózati kapcsolatokat a virtuális hálózattal és más Azure-szolgáltatásokkal egyidejűleg?
 
@@ -78,7 +79,7 @@ A ExpressRoute [három útválasztási tartományt](expressroute-circuit-peering
 
 * Virtuális hálózatok, beleértve az összes virtuális gépet és a Cloud Servicest
 
-### <a name="microsoft-peering"></a>Microsoftos társviszony
+### <a name="microsoft-peering"></a>Microsoftos társhálózat-létesítés
 
 Ha a ExpressRoute-áramkör engedélyezve van az Azure Microsoft-partneri kapcsolathoz, az Azure-ban az áramkörön használt [nyilvános IP-címtartományok](../virtual-network/public-ip-addresses.md#public-ip-addresses) is elérhetők. Az Azure Microsoft-partnerek hozzáférést biztosítanak a jelenleg az Azure-ban üzemeltetett szolgáltatásokhoz (az áramköri SKU-tól függően földrajzi korlátozásokkal). Egy adott szolgáltatás rendelkezésre állásának ellenőrzéséhez ellenőrizheti a szolgáltatás dokumentációját, és ellenőrizheti, hogy van-e fenntartott tartomány közzétéve az adott szolgáltatás számára. Ezután keresse meg a cél szolgáltatás IP-tartományait, és hasonlítsa össze az [Azure IP-tartományok és szolgáltatások címkék – nyilvános felhő XML-fájljában](https://www.microsoft.com/download/details.aspx?id=56519)felsorolt tartományokkal. Azt is megteheti, hogy megnyit egy támogatási jegyet a kérdéses szolgáltatáshoz a tisztázás érdekében.
 

@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: 4189aadb6e37fc70bcaeecca2110d6fcc3959dd3
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 5fb82c6098352076307f71eee022074a247e3cd9
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939868"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629340"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Az üzletmenet folytonosságának áttekintése Azure Database for PostgreSQL – egyetlen kiszolgálóval
 
@@ -29,9 +29,9 @@ A következő táblázat összehasonlítja a RTO és a RPO egy tipikus forgatók
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Időponthoz kötött visszaállítás biztonsági másolatból | A megőrzési időtartamon belüli visszaállítási pontok | A megőrzési időtartamon belüli visszaállítási pontok | A megőrzési időtartamon belüli visszaállítási pontok |
 | Geo-visszaállítás földrajzilag replikált biztonsági másolatokból | Nem támogatott | RTO – változó <br/>RPO < 1 óra | RTO – változó <br/>RPO < 1 óra |
-| Olvasási replikák | RTO – perc <br/>RPO < 5 perc * | RTO – perc <br/>RPO < 5 perc *| RTO – perc <br/>RPO < 5 perc *|
+| Olvasási replikák | RTO – perc * <br/>RPO < 5 perc * | RTO – perc * <br/>RPO < 5 perc *| RTO – perc * <br/>RPO < 5 perc *|
 
-\* A RPO egyes esetekben magasabb lehet, többek között az elsődleges adatbázis számítási feladatait és a régiók közötti késést. 
+\* Bizonyos esetekben a RTO és a RPO is sokkal magasabb lehet, többek között az elsődleges adatbázis számítási feladataitól és a régiók közötti késéstől függően. 
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>Kiszolgáló helyreállítása felhasználói vagy alkalmazáshiba miatt
 
