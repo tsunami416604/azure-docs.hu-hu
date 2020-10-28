@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: b692475949645693267ffec69361d9fdc4c328e8
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0dc4528147a144ed9887ae1becfbbe2aa4b9fcf3
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548142"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897693"
 ---
 > [!IMPORTANT]
 > Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja.
@@ -106,10 +106,6 @@ Az alkalmazás **fő** metódusában adjon hozzá hívásokat az ebben a rövid 
 * Egy olyan űrlap URL-címének lekéréséhez, amely a teszteléshez használható, a fenti lépésekkel lekérheti egy egyedi dokumentum SAS URL-címét a blob Storage-ban. Vagy vegyen fel egy máshol található dokumentum URL-címét.
 * A fenti módszer használatával beolvashatja a beérkezési képek URL-címét is.
 
-> [!NOTE]
-> Az útmutatóban szereplő kódrészletek az URL-címek által elért távoli űrlapokat használják. Ha ehelyett a helyi űrlapos dokumentumokat szeretné feldolgozni, tekintse meg a kapcsolódó módszereket a [dokumentációban](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview).
-
-
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_mainvars)]
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_maincalls)]
@@ -161,10 +157,12 @@ A **Main** metódus tetején adja hozzá a következő kódot. Itt két ügyfél
 
 Az űrlap-felismerő használatával felismerheti a dokumentumokban szereplő táblákat, vonalakat és szavakat, anélkül, hogy egy modellt kellene betanítania.
 
-Egy adott URI-fájl tartalmának felismeréséhez használja a **beginRecognizeContentFromUrl** metódust.
+Egy adott URL-címen található fájl tartalmának felismeréséhez használja a **beginRecognizeContentFromUrl** metódust.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_getcontent_call)]
 
+> [!TIP]
+> A tartalmat egy helyi fájlból is lekérheti. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) metódusokat, például a **beginRecognizeContent** . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) található mintakód-kódot.
 
 A visszaadott érték egy **FormPage** -objektum gyűjteménye: egy a beküldött dokumentum minden oldalához. Az alábbi kód megismétli ezeket az objektumokat, és kinyomtatja a kinyert kulcs/érték párokat és a táblák adatait.
 
@@ -192,12 +190,14 @@ Cell has text ET.
 
 Ez a szakasz bemutatja, hogyan ismerheti fel és kinyerheti az Egyesült államokbeli nyugták közös mezőit egy előre képzett beérkezési modell használatával.
 
-A visszaigazolások URI-ból való felismeréséhez használja a **beginRecognizeReceiptsFromUrl** metódust. A visszaadott érték egy **RecognizedReceipt** -objektum gyűjteménye: egy a beküldött dokumentum minden oldalához.
+A visszaigazolások URI-ból való felismeréséhez használja a **beginRecognizeReceiptsFromUrl** metódust. 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_call)]
 
+> [!TIP]
+> Emellett felismerheti a helyi visszaigazolási képeket is. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) metódusokat, például a **beginRecognizeReceipts** . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) található mintakód-kódot.
 
-A kód következő blokkja megismétli a visszaigazolásokat, és kinyomtatja az adatokat a-konzolra.
+A visszaadott érték egy **RecognizedReceipt** -objektum gyűjteménye: egy a beküldött dokumentum minden oldalához. A kód következő blokkja megismétli a visszaigazolásokat, és kinyomtatja az adatokat a-konzolra.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_print)]
 
@@ -305,12 +305,14 @@ Ez a szakasz azt mutatja be, hogyan lehet kinyerni a kulcs/érték információk
 > [!IMPORTANT]
 > Ennek a forgatókönyvnek a megvalósításához már be kell tanítania egy modellt, hogy az ID-t az alábbi metódusba tudja adni. Lásd a [modell betanítása](#train-a-model-without-labels) szakaszt.
 
-A **beginRecognizeCustomFormsFromUrl** metódust fogja használni. A visszaadott érték egy **RecognizedForm** -objektum gyűjteménye: egy a beküldött dokumentum minden oldalához.
+A **beginRecognizeCustomFormsFromUrl** metódust fogja használni. 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_analyze_call)]
 
+> [!TIP]
+> Elemezheti a helyi fájlokat is. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) metódusokat, például a **beginRecognizeCustomForms** . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) található mintakód-kódot.
 
-A következő kód kinyomtatja az elemzési eredményeket a-konzolra. Kinyomtatja az egyes felismert mezőket és a hozzá tartozó értékeket, valamint a megbízhatósági pontszámot.
+A visszaadott érték egy **RecognizedForm** -objektum gyűjteménye: egy a beküldött dokumentum minden oldalához. A következő kód kinyomtatja az elemzési eredményeket a-konzolra. Kinyomtatja az egyes felismert mezőket és a hozzá tartozó értékeket, valamint a megbízhatósági pontszámot.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_analyze_print)]
 

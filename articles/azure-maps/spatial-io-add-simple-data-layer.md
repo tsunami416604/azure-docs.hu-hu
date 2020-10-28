@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 75b193017bbfccbae0f299c0a1db2fe0e34f1810
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90f3cb0ae44be176d3ae248988d098039c140c3e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321798"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896157"
 ---
 # <a name="add-a-simple-data-layer"></a>Egyszerű adatréteg hozzáadása
 
@@ -176,10 +176,10 @@ Ha a funkció egy `Polygon` vagy a `MultiPolygon` , és a `height` tulajdonság 
 További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
-> [SimpleDataLayer](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
+> [SimpleDataLayer](/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
 
 > [!div class="nextstepaction"]
-> [SimpleDataLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
+> [SimpleDataLayerOptions](/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
 
 Az alábbi cikkekben további kódokat talál a Maps-hez való hozzáadáshoz:
 

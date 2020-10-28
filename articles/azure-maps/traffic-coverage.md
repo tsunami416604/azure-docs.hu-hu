@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 3b1b86e47164ce4c1a13a3dfe037c0ecc659fbee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11aa0eb07ed9cb3a1a785b3155b832f8b447708f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310033"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896871"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps forgalom lefedettsége
 
-A Azure Maps a forgalom és az **incidensek**formájában biztosít **részletes forgalmi információkat** . Ezek az adathalmazok megjeleníthetők a térképeken, vagy olyan intelligensebb útvonalak előállítására használhatók, amelyek valós vezetési körülmények között számítanak.
+A Azure Maps a forgalom és az **incidensek** formájában biztosít **részletes forgalmi információkat** . Ezek az adathalmazok megjeleníthetők a térképeken, vagy olyan intelligensebb útvonalak előállítására használhatók, amelyek valós vezetési körülmények között számítanak.
 
 A Maps azonban nem rendelkezik azonos szintű információkkal és pontossággal minden országban vagy régióban. Az alábbi táblázat az egyes országokból vagy régióktól kérhető forgalmi információkról nyújt információt: 
 
@@ -135,4 +135,4 @@ A Maps azonban nem rendelkezik azonos szintű információkkal és pontossággal
 
 ## <a name="next-steps"></a>Következő lépések
 
-Azure Maps forgalmi adatokkal kapcsolatos további információkért tekintse meg a [forgalmi](https://docs.microsoft.com/rest/api/maps/traffic) útmutató lapjait.
+Azure Maps forgalmi adatokkal kapcsolatos további információkért tekintse meg a [forgalmi](/rest/api/maps/traffic) útmutató lapjait.

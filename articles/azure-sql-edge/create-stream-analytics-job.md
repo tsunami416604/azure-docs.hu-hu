@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: f0fcdf7aab5f43a0412cd28a1c15188b19770dc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e75edad9f2e473d27d81c73fc784c568c4e404c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888092"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896140"
 ---
 # <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>Adatátviteli feladatok létrehozása az Azure SQL Edge szolgáltatásban 
 
@@ -103,7 +103,7 @@ Az alábbi példa egy külső stream objektumot hoz létre a helyi adatbázishoz
 
 3. Hozzon létre egy külső adatforrást külső ADATFORRÁS LÉTREHOZÁSával. A következő példa:
 
-    * Létrehoz egy *LocalSQLOutput*nevű külső adatforrást.
+    * Létrehoz egy *LocalSQLOutput* nevű külső adatforrást.
     * A külső adatforrás (LOCATION = ' <vendor> :// <server> [: <port> ] ') azonosítása. A példában az Azure SQL Edge helyi példányára mutat.
     * A korábban létrehozott hitelesítő adatokat használja.
 
@@ -117,7 +117,7 @@ Az alábbi példa egy külső stream objektumot hoz létre a helyi adatbázishoz
     go
     ```
 
-4. Hozza létre a külső stream objektumot. A következő példa egy külső stream objektumot hoz létre, amely egy tábla *dbo mutat. TemperatureMeasurements*az adatbázis *MySQLDatabase*.
+4. Hozza létre a külső stream objektumot. A következő példa egy külső stream objektumot hoz létre, amely egy tábla *dbo mutat. TemperatureMeasurements* az adatbázis *MySQLDatabase* .
 
     ```sql
     CREATE EXTERNAL STREAM TemperatureMeasurements 
@@ -233,7 +233,8 @@ exec sys.sp_get_streaming_job @name=N'StreamingJob1'
 (
        (
        name nvarchar(256),
-       status nvarchar(256)
+       status nvarchar(256),
+       error nvarchar(256)
        )
 )
 ```

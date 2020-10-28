@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 4d6728d4fbde4b7d6cc8ed06e961642264ad31bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cc7c1e0b776574ec7908557108e2cda49bb2a11
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321696"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896660"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Oktatóanyag: a közeli érdekes pontok keresése Azure Maps használatával
 
@@ -31,7 +31,7 @@ Ez az oktatóanyag bemutatja, hogyan állíthat be egy fiókot az Azure Maps has
 <a id="createaccount"></a>
 <a id="getkey"></a>
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 2. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
 
@@ -139,7 +139,7 @@ A térképkezelés API kényelmes ügyféloldali kódtár. Ez az API lehetővé 
 
 ## <a name="add-search-capabilities"></a>Keresési képességek hozzáadása
 
-Ez a szakasz bemutatja, hogyan használhatja a Maps [Search API](https://docs.microsoft.com/rest/api/maps/search) -t egy hasznos hely megtalálásához a térképen. Ez az API egy fejlesztőknek szánt RESTful API, amely lehetővé teszi a címek, hasznos helyek és egyéb földrajzi adatok keresését. A Search szolgáltatás szélességi és hosszúsági koordinátákat rendel egy adott címhez. Az alább ismertetett **Szolgáltatásmodul** segítségével helyekre kereshet a Maps Search API használatával.
+Ez a szakasz bemutatja, hogyan használhatja a Maps [Search API](/rest/api/maps/search) -t egy hasznos hely megtalálásához a térképen. Ez az API egy fejlesztőknek szánt RESTful API, amely lehetővé teszi a címek, hasznos helyek és egyéb földrajzi adatok keresését. A Search szolgáltatás szélességi és hosszúsági koordinátákat rendel egy adott címhez. Az alább ismertetett **Szolgáltatásmodul** segítségével helyekre kereshet a Maps Search API használatával.
 
 ### <a name="service-module"></a>Szolgáltatásmodul
 
@@ -156,7 +156,7 @@ Ez a szakasz bemutatja, hogyan használhatja a Maps [Search API](https://docs.mi
    var searchURL = new atlas.service.SearchURL(pipeline); 
    ```
 
-   A `SubscriptionKeyCredential` létrehoz egy `SubscriptionKeyCredentialPolicy` -t az előfizetési kulccsal Azure Maps HTTP-kérések hitelesítéséhez. A `atlas.service.MapsURL.newPipeline()` veszi a `SubscriptionKeyCredential` szabályzatot, és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline) -példányt. A a `searchURL` Azure Maps [keresési](https://docs.microsoft.com/rest/api/maps/search) műveletekhez tartozó URL-címet jelöli.
+   A `SubscriptionKeyCredential` létrehoz egy `SubscriptionKeyCredentialPolicy` -t az előfizetési kulccsal Azure Maps HTTP-kérések hitelesítéséhez. A `atlas.service.MapsURL.newPipeline()` veszi a `SubscriptionKeyCredential` szabályzatot, és létrehoz egy [folyamat](/javascript/api/azure-maps-rest/atlas.service.pipeline) -példányt. A a `searchURL` Azure Maps [keresési](/rest/api/maps/search) műveletekhez tartozó URL-címet jelöli.
 
 2. Ezután adja hozzá a következő szkriptblokkot a keresőlekérdezés felépítéséhez. A kódrészlet a Search Service alapszintű Fuzzy Search Service (Intelligens keresés) keresési API-ját használja. A Fuzzy Search Service a legtöbb nem teljes egyezésű bemeneti adat, például címek, helyek vagy hasznos helyek (POI) kezelésére is képes. Ez a kód a megadott szélességi és hosszúsági fok megadott sugarában keresi a közeli benzin-állomásokat. Ezután a válaszból Kinyer egy GeoJSON-gyűjteményt `geojson.getFeatures()` , és hozzáadja az adatforráshoz, amely automatikusan azt eredményezi, hogy az adatok a térképen a szimbólum rétegen keresztül jelennek meg. A szkript utolsó része a térkép kameranézetét állítja be az eredmények határolókeretével, a térkép [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) tulajdonságával.
 
@@ -247,7 +247,7 @@ A létrehozott térkép ezen a ponton még csak a keresési eredmények hosszús
 
 Az oktatóanyag teljes kódjának megtekintéséhez kattintson [ide](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html). Az élő minta megtekintéséhez kattintson [ide](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő oktatóanyag bemutatja, hogyan lehet megjeleníteni egy útvonalat két hely között.
 

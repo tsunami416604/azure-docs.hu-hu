@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 3e80ff90e47f45655761abd4c7e8fa9ed04b61ef
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f97d04ca40e69ba2516744adfc9f1f455cba97c0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518891"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896344"
 ---
 # <a name="tutorial---migrate-web-service-from-google-maps"></a>Oktatóanyag – webszolgáltatás migrálása a Google Mapsből
 
@@ -40,15 +40,15 @@ A táblázat megjeleníti a Azure Maps Service API-kat, amelyek hasonló funkci�
 
 | Google Maps szolgáltatás API | Azure Maps Service API                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| Útmutatás              | [Útvonal](https://docs.microsoft.com/rest/api/maps/route)                                     |
-| Távolsági mátrix         | [Útvonal-mátrix](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)       |
-| Geokódolás               | [Search](https://docs.microsoft.com/rest/api/maps/search)                                   |
-| Helyek keresése           | [Search](https://docs.microsoft.com/rest/api/maps/search)                                   |
-| Automatikus kiegészítés      | [Search](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Útmutatás              | [Útvonal](/rest/api/maps/route)                                     |
+| Távolsági mátrix         | [Útvonal-mátrix](/rest/api/maps/route/postroutematrixpreview)       |
+| Geokódolás               | [Search](/rest/api/maps/search)                                   |
+| Helyek keresése           | [Search](/rest/api/maps/search)                                   |
+| Automatikus kiegészítés      | [Search](/rest/api/maps/search)                                   |
 | Elérési út            | Lásd: [útvonalak és utasítások kiszámítása](#calculate-routes-and-directions) szakasz.            |
 | Sebességkorlátozások            | Lásd: [koordináta szakasz fordított geocode](#reverse-geocode-a-coordinate) .                  |
-| Statikus Térkép              | [Megjelenítés](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                       |
-| Időzóna               | [Időzóna](https://docs.microsoft.com/rest/api/maps/timezone)                              |
+| Statikus Térkép              | [Megjelenítés](/rest/api/maps/render/getmapimage)                       |
+| Időzóna               | [Időzóna](/rest/api/maps/timezone)                              |
 
 A következő szolgáltatási API-k jelenleg nem érhetők el Azure Mapsban:
 
@@ -62,8 +62,8 @@ A következő szolgáltatási API-k jelenleg nem érhetők el Azure Mapsban:
 
 Azure Maps számos további REST-webszolgáltatással rendelkezik, amelyek érdekesek lehetnek:
 
-- [Térbeli műveletek](https://docs.microsoft.com/rest/api/maps/spatial): összetett térbeli számítások és műveletek (például geokerítések) kiszervezése szolgáltatáshoz.
-- [Forgalom](https://docs.microsoft.com/rest/api/maps/traffic): a valós idejű forgalom és az incidensek adatforgalmának elérése.
+- [Térbeli műveletek](/rest/api/maps/spatial): összetett térbeli számítások és műveletek (például geokerítések) kiszervezése szolgáltatáshoz.
+- [Forgalom](/rest/api/maps/traffic): a valós idejű forgalom és az incidensek adatforgalmának elérése.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
@@ -77,11 +77,11 @@ A helymeghatározáshoz a címek koordinátabe alakításának folyamata. Az "1 
 
 A Azure Maps számos módszert biztosít a helymeghatározáshoz-címekhez:
 
-- [**Szabad formátumú helymeghatározáshoz**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress): egyetlen címnek megfelelő karakterláncot kell megadni, és azonnal fel kell dolgozni a kérést. az "1 Microsoft Way, Redmond, WA" egy példa egyetlen címtartomány-karakterláncra. Ez az API akkor javasolt, ha gyorsan kell geocode az egyes címeket.
-- [**Strukturált helymeghatározáshoz**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressstructured): egyetlen cím részeit adja meg, például az utca nevét, a várost, az országot/régiót és az irányítószámot, és azonnal feldolgozza a kérést. Ez az API akkor javasolt, ha gyorsan kell geocode az egyes címeket, és az adatai már az egyes címekre is bekerülnek.
-- [**Batch-helymeghatározáshoz**](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatchpreview): hozzon létre egy legfeljebb 10 000 címet tartalmazó kérelmet, és egy adott időszakban dolgozza fel azokat. A rendszer az összes címet párhuzamosan geokódolva a kiszolgálón, és amikor elkészült, a teljes eredményhalmazt letöltheti. Ez a nagyméretű adatkészletek helymeghatározáshoz ajánlott.
-- [**Fuzzy keresés**](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy): ez az API ötvözi a helymeghatározáshoz a keresett ponttal. Ez az API egy szabad formátumú karakterláncot vesz igénybe. Ez a karakterlánc lehet a címe, a hely, a mérföldkő, a hasznos hely vagy az érdeklődési pont kategóriája. Ez az API közel valós időben dolgozza fel a kérelmet. Ez az API olyan alkalmazások esetében ajánlott, amelyekben a felhasználók egy adott szövegmezőben keresik meg a címeket vagy érdekes pontokat.
-- [**Fuzzy batch-keresés**](https://docs.microsoft.com/rest/api/maps/search/postsearchfuzzybatchpreview): hozzon létre egy olyan kérést, amely legfeljebb 10 000 címet, helyet, tereptárgyat vagy érdeklődési pontot tartalmaz, és egy adott időszakban feldolgozható. Az összes adat párhuzamosan lesz feldolgozva a kiszolgálón, és ha elkészült, a teljes eredményhalmaz letölthető.
+- [**Szabad formátumú helymeghatározáshoz**](/rest/api/maps/search/getsearchaddress): egyetlen címnek megfelelő karakterláncot kell megadni, és azonnal fel kell dolgozni a kérést. az "1 Microsoft Way, Redmond, WA" egy példa egyetlen címtartomány-karakterláncra. Ez az API akkor javasolt, ha gyorsan kell geocode az egyes címeket.
+- [**Strukturált helymeghatározáshoz**](/rest/api/maps/search/getsearchaddressstructured): egyetlen cím részeit adja meg, például az utca nevét, a várost, az országot/régiót és az irányítószámot, és azonnal feldolgozza a kérést. Ez az API akkor javasolt, ha gyorsan kell geocode az egyes címeket, és az adatai már az egyes címekre is bekerülnek.
+- [**Batch-helymeghatározáshoz**](/rest/api/maps/search/postsearchaddressbatchpreview): hozzon létre egy legfeljebb 10 000 címet tartalmazó kérelmet, és egy adott időszakban dolgozza fel azokat. A rendszer az összes címet párhuzamosan geokódolva a kiszolgálón, és amikor elkészült, a teljes eredményhalmazt letöltheti. Ez a nagyméretű adatkészletek helymeghatározáshoz ajánlott.
+- [**Fuzzy keresés**](/rest/api/maps/search/getsearchfuzzy): ez az API ötvözi a helymeghatározáshoz a keresett ponttal. Ez az API egy szabad formátumú karakterláncot vesz igénybe. Ez a karakterlánc lehet a címe, a hely, a mérföldkő, a hasznos hely vagy az érdeklődési pont kategóriája. Ez az API közel valós időben dolgozza fel a kérelmet. Ez az API olyan alkalmazások esetében ajánlott, amelyekben a felhasználók egy adott szövegmezőben keresik meg a címeket vagy érdekes pontokat.
+- [**Fuzzy batch-keresés**](/rest/api/maps/search/postsearchfuzzybatchpreview): hozzon létre egy olyan kérést, amely legfeljebb 10 000 címet, helyet, tereptárgyat vagy érdeklődési pontot tartalmaz, és egy adott időszakban feldolgozható. Az összes adat párhuzamosan lesz feldolgozva a kiszolgálón, és ha elkészült, a teljes eredményhalmaz letölthető.
 
 A következő táblázat kereszthivatkozásokat hivatkozik a Google Maps API-paraméterekre a Azure Maps hasonló API-paramétereivel.
 
@@ -105,9 +105,9 @@ A fordított helymeghatározáshoz az a folyamat, amellyel a földrajzi koordin�
 
 Azure Maps több fordított helymeghatározáshoz módszert biztosít:
 
-- [**Fordított geocoder**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse): egyetlen földrajzi koordináta megadásával lekérheti a koordinátanak megfelelő hozzávetőleges címeket. Feldolgozza a kérést közel valós időben.
-- [**Cross Street fordított geocoder**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet): egyetlen földrajzi koordinátat határozhat meg a közeli Cross Street-információk eléréséhez és a kérés azonnali feldolgozásához. Előfordulhat például, hogy a következő Cross Streets, az első Ave és a Main St.
-- [**Fordított geocoder**](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatchpreview): hozzon létre egy legfeljebb 10 000 koordinátákat tartalmazó kérelmet, amely egy adott időszakban feldolgozható. A rendszer minden adatfeldolgozást párhuzamosan dolgoz fel a kiszolgálón. A kérelem befejezésekor letöltheti a teljes eredményt.
+- [**Fordított geocoder**](/rest/api/maps/search/getsearchaddressreverse): egyetlen földrajzi koordináta megadásával lekérheti a koordinátanak megfelelő hozzávetőleges címeket. Feldolgozza a kérést közel valós időben.
+- [**Cross Street fordított geocoder**](/rest/api/maps/search/getsearchaddressreversecrossstreet): egyetlen földrajzi koordinátat határozhat meg a közeli Cross Street-információk eléréséhez és a kérés azonnali feldolgozásához. Előfordulhat például, hogy a következő Cross Streets, az első Ave és a Main St.
+- [**Fordított geocoder**](/rest/api/maps/search/postsearchaddressreversebatchpreview): hozzon létre egy legfeljebb 10 000 koordinátákat tartalmazó kérelmet, amely egy adott időszakban feldolgozható. A rendszer minden adatfeldolgozást párhuzamosan dolgoz fel a kiszolgálón. A kérelem befejezésekor letöltheti a teljes eredményt.
 
 Ez a táblázat a Google Maps API paramétereit a Azure Maps hasonló API-paramétereivel hivatkozik.
 
@@ -137,13 +137,13 @@ A helyek keresési API-ját a Google Maps szolgáltatásban keresheti meg. Ez az
 
 Azure Maps számos keresési API-t biztosít a hasznos helyek számára:
 
-- [**POI-keresés**](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi): érdeklődési pontok keresése név alapján. Például: "Starbucks".
-- [**POI-kategória keresése**](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory): az érdeklődési pontok kategória szerint kereshetők. Például: "étterem".
-- [**Közeli keresés**](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby): megkeresi azokat az érdeklődési pontokat, amelyek egy adott távolságon belül vannak.
-- [**Fuzzy keresés**](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy): ez az API ötvözi a helymeghatározáshoz a keresett ponttal. Ez az API egy olyan szabad formátumú karakterláncot vesz igénybe, amely lehet egy lakcím, egy hely, egy mérföldkő, egy érdekes hely vagy egy érdekes pont. Közel valós időben dolgozza fel a kérelmet. Ez az API olyan alkalmazások esetében ajánlott, amelyekben a felhasználók egy adott szövegmezőben keresik meg a címeket vagy érdekes pontokat.
-- [**Keresés a geometrián belül**](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry): a megadott geometrián belüli érdeklődési pontok keresése. Keressen például egy érdekes pontot egy sokszögen belül.
-- [**Keresés az útvonal mentén**](https://docs.microsoft.com/rest/api/maps/search/postsearchalongroute): keressen olyan pontokat, amelyek egy adott útvonal útvonalán találhatók.
-- [**Fuzzy batch-keresés**](https://docs.microsoft.com/rest/api/maps/search/postsearchfuzzybatchpreview): hozzon létre legfeljebb 10 000 címet, helyet, tereptárgyat vagy érdeklődési pontot tartalmazó kérelmet. A kérelem feldolgozása egy adott időszakon belül megtörtént. A rendszer minden adatfeldolgozást párhuzamosan dolgoz fel a kiszolgálón. Ha a kérés befejezi a feldolgozást, letöltheti az eredmény teljes készletét.
+- [**POI-keresés**](/rest/api/maps/search/getsearchpoi): érdeklődési pontok keresése név alapján. Például: "Starbucks".
+- [**POI-kategória keresése**](/rest/api/maps/search/getsearchpoicategory): az érdeklődési pontok kategória szerint kereshetők. Például: "étterem".
+- [**Közeli keresés**](/rest/api/maps/search/getsearchnearby): megkeresi azokat az érdeklődési pontokat, amelyek egy adott távolságon belül vannak.
+- [**Fuzzy keresés**](/rest/api/maps/search/getsearchfuzzy): ez az API ötvözi a helymeghatározáshoz a keresett ponttal. Ez az API egy olyan szabad formátumú karakterláncot vesz igénybe, amely lehet egy lakcím, egy hely, egy mérföldkő, egy érdekes hely vagy egy érdekes pont. Közel valós időben dolgozza fel a kérelmet. Ez az API olyan alkalmazások esetében ajánlott, amelyekben a felhasználók egy adott szövegmezőben keresik meg a címeket vagy érdekes pontokat.
+- [**Keresés a geometrián belül**](/rest/api/maps/search/postsearchinsidegeometry): a megadott geometrián belüli érdeklődési pontok keresése. Keressen például egy érdekes pontot egy sokszögen belül.
+- [**Keresés az útvonal mentén**](/rest/api/maps/search/postsearchalongroute): keressen olyan pontokat, amelyek egy adott útvonal útvonalán találhatók.
+- [**Fuzzy batch-keresés**](/rest/api/maps/search/postsearchfuzzybatchpreview): hozzon létre legfeljebb 10 000 címet, helyet, tereptárgyat vagy érdeklődési pontot tartalmazó kérelmet. A kérelem feldolgozása egy adott időszakon belül megtörtént. A rendszer minden adatfeldolgozást párhuzamosan dolgoz fel a kiszolgálón. Ha a kérés befejezi a feldolgozást, letöltheti az eredmény teljes készletét.
 
 Jelenleg Azure Maps nem rendelkezik hasonló API-val a Google Maps-beli szöveges keresési API-hoz.
 
@@ -154,7 +154,7 @@ Tekintse át a keresési dokumentációval [kapcsolatos ajánlott eljárásokat]
 
 ### <a name="find-place-from-text"></a>Hely keresése a szövegből
 
-Az érdeklődési pontok kereséséhez használja az Azure Maps [POI Search](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi) és a [fuzzy Search](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) kifejezést.
+Az érdeklődési pontok kereséséhez használja az Azure Maps [POI Search](/rest/api/maps/search/getsearchpoi) és a [fuzzy Search](/rest/api/maps/search/getsearchfuzzy) kifejezést.
 
 A táblázat a Google Maps API paramétereit a hasonló Azure Maps API-paraméterekkel hivatkozik.
 
@@ -169,7 +169,7 @@ A táblázat a Google Maps API paramétereit a hasonló Azure Maps API-paraméte
 
 ### <a name="nearby-search"></a>Közeli keresés
 
-A [közeli keresési](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby) API-val lekérheti a közeli érdeklődési pontokat a Azure maps.
+A [közeli keresési](/rest/api/maps/search/getsearchnearby) API-val lekérheti a közeli érdeklődési pontokat a Azure maps.
 
 A táblázat a Google Maps API paramétereit jeleníti meg az összehasonlítható Azure Maps API-paraméterekkel.
 
@@ -201,9 +201,9 @@ A táblázat a Google Maps API paramétereit jeleníti meg az összehasonlíthat
 
 A Azure Maps útválasztási szolgáltatás a következő API-kat biztosítja az útvonalak kiszámításához:
 
-- [**Útvonal kiszámítása**](https://docs.microsoft.com/rest/api/maps/route/getroutedirections): kiszámítja az útvonalat, és azonnal feldolgozza a kérést. Ez az API a GET és a POST kérelmeket is támogatja. A POST kérések használata nagy számú útpont megadása esetén ajánlott, vagy ha sok útvonal-beállítást használ, hogy az URL-cím kérése ne legyen túl hosszú, és problémákat okozzon. A Azure Maps utáni útvonal iránya olyan lehetőséggel is rendelkezhet, amely több ezer [támogató pontot](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#supportingpoints) is igénybe vehet, és ezek használatával újra létrehozhatja a logikai útvonal elérési útját (a központhoz illesztés). 
-- [**Batch Route**](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview): hozzon létre egy legfeljebb 1 000 útválasztási kérelmet tartalmazó kérelmet, és egy adott időszakban dolgozza fel azokat. Az összes adat párhuzamosan lesz feldolgozva a kiszolgálón, és ha elkészült, a teljes eredményhalmaz letölthető.
-- [**Mobilitási szolgáltatások**](https://docs.microsoft.com/rest/api/maps/mobility): útvonalak és irányok kiszámítása a nyilvános átvitel használatával.
+- [**Útvonal kiszámítása**](/rest/api/maps/route/getroutedirections): kiszámítja az útvonalat, és azonnal feldolgozza a kérést. Ez az API a GET és a POST kérelmeket is támogatja. A POST kérések használata nagy számú útpont megadása esetén ajánlott, vagy ha sok útvonal-beállítást használ, hogy az URL-cím kérése ne legyen túl hosszú, és problémákat okozzon. A Azure Maps utáni útvonal iránya olyan lehetőséggel is rendelkezhet, amely több ezer [támogató pontot](/rest/api/maps/route/postroutedirections#supportingpoints) is igénybe vehet, és ezek használatával újra létrehozhatja a logikai útvonal elérési útját (a központhoz illesztés). 
+- [**Batch Route**](/rest/api/maps/route/postroutedirectionsbatchpreview): hozzon létre egy legfeljebb 1 000 útválasztási kérelmet tartalmazó kérelmet, és egy adott időszakban dolgozza fel azokat. Az összes adat párhuzamosan lesz feldolgozva a kiszolgálón, és ha elkészült, a teljes eredményhalmaz letölthető.
+- [**Mobilitási szolgáltatások**](/rest/api/maps/mobility): útvonalak és irányok kiszámítása a nyilvános átvitel használatával.
 
 A táblázat a Google Maps API paramétereit a Azure Maps hasonló API-paramétereivel hivatkozik.
 
@@ -221,8 +221,8 @@ A táblázat a Google Maps API paramétereit a Azure Maps hasonló API-paraméte
 | `origin`                       | `query`                            |
 | `region`                       | *N/A* – ez a funkció helymeghatározáshoz kapcsolatos. Használja a *countrySet* paramétert a Azure Maps helymeghatározáshoz API használatakor.  |
 | `traffic_model`               | *N/A* – csak azt adhatja meg, hogy a forgalmi adatokat a *Traffic* paraméterrel kell-e használni. |
-| `transit_mode`                | Lásd: [mobilitási szolgáltatások dokumentációja](https://docs.microsoft.com/rest/api/maps/mobility) |
-| `transit_routing_preference` | Lásd: [mobilitási szolgáltatások dokumentációja](https://docs.microsoft.com/rest/api/maps/mobility) |
+| `transit_mode`                | Lásd: [mobilitási szolgáltatások dokumentációja](/rest/api/maps/mobility) |
+| `transit_routing_preference` | Lásd: [mobilitási szolgáltatások dokumentációja](/rest/api/maps/mobility) |
 | `units`                        | *N/A* – Azure Maps csak a metrikus rendszer használatát használja.  |
 | `waypoints`                    | `query`                            |
 
@@ -242,13 +242,13 @@ Azure Maps Routing API további funkciókkal rendelkezik, amelyek nem érhetők 
 - A kereskedelmi jármű útvonalának paramétereinek támogatása. Ilyenek például a járművek méretei, súlyozása, Axel-száma és a rakomány típusa.
 - A jármű maximális sebességének meghatározása.
 
-Ezen kívül a Azure Maps útvonal-szolgáltatása támogatja az [útválasztásos tartományok kiszámítását](https://docs.microsoft.com/rest/api/maps/route/getrouterange). Az átirányítható tartományok kiszámítása izokrón néven is ismert. Magában foglalja egy olyan sokszög előállítását, amely egy olyan területre mutat, amely egy adott kezdőponttól bármilyen irányban átutazható. Az összes megadott időtartam vagy üzemanyag vagy díj alapján.
+Ezen kívül a Azure Maps útvonal-szolgáltatása támogatja az [útválasztásos tartományok kiszámítását](/rest/api/maps/route/getrouterange). Az átirányítható tartományok kiszámítása izokrón néven is ismert. Magában foglalja egy olyan sokszög előállítását, amely egy olyan területre mutat, amely egy adott kezdőponttól bármilyen irányban átutazható. Az összes megadott időtartam vagy üzemanyag vagy díj alapján.
 
 Tekintse át az útválasztási dokumentációval [kapcsolatos ajánlott eljárásokat](how-to-use-best-practices-for-routing.md) .
 
 ## <a name="retrieve-a-map-image"></a>Térkép rendszerképének beolvasása
 
-A Azure Maps egy API-t biztosít a statikus Térkép képének megjelenítéséhez. A [Térkép képmegjelenítési](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile) API-ját Azure Maps a Google Maps statikus Térkép API-ját hasonlítja össze.
+A Azure Maps egy API-t biztosít a statikus Térkép képének megjelenítéséhez. A [Térkép képmegjelenítési](/rest/api/maps/render/getmapimagerytile) API-ját Azure Maps a Google Maps statikus Térkép API-ját hasonlítja össze.
 
 > [!NOTE]
 > Azure Maps a középpontot, az összes jelölőt és az elérési út helyét a "hosszúság, szélesség" formátumban kell koordinálni. Míg a Google Maps a "szélesség, hosszúság" formátumot használja. Először a címeket kell geokódolva.
@@ -278,8 +278,8 @@ További információ: [útmutató a Térkép rendszerkép-renderelési API-hoz]
 
 Egy statikus térképi rendszerkép létrehozásán kívül a Azure Maps Render szolgáltatás lehetővé teszi a térképes csempék közvetlen elérését raszteres (PNG) és vektoros formátumban:
 
-- [**Térkép csempe**](https://docs.microsoft.com/rest/api/maps/render/getmaptile): a RASZTER (PNG) és a vektor csempék lekérése az alaptérképekhez (utak, határok, háttér).
-- [**Térkép képének csempe**](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile): antenna-és műholdas képcsempék lekérése.
+- [**Térkép csempe**](/rest/api/maps/render/getmaptile): a RASZTER (PNG) és a vektor csempék lekérése az alaptérképekhez (utak, határok, háttér).
+- [**Térkép képének csempe**](/rest/api/maps/render/getmapimagerytile): antenna-és műholdas képcsempék lekérése.
 
 > [!TIP]
 > Számos Google Maps-alkalmazás, amely néhány éve az interaktív térképi élményről a statikus térképi képekre váltott át. Ez költségmegtakarítási módszerként történt. A Azure Maps általában költséghatékonyabb, hogy az interaktív térkép vezérlőelemet használja a web SDK-ban. Az interaktív térkép vezérlési díjai a csempék betöltésének száma alapján jelennek meg. Azure Maps a csempék nagy méretűek. Gyakran csak néhány csempét kell létrehoznia, hogy újra létrehozza ugyanazt a leképezési nézetet statikus térképként. A Térkép csempéit a böngésző automatikusan gyorsítótárazza. Így az interaktív térkép vezérlőelem gyakran generál egy tranzakció egy részét, amikor egy statikus Térkép nézetet készít elő. A pásztázás és a nagyítás több csempét is betölt; a Térkép vezérlőelemben azonban lehetőség van a viselkedés letiltására. Az interaktív térkép vezérlőelem sokkal több vizualizációs lehetőséget is biztosít, mint a statikus Térkép-szolgáltatások.
@@ -426,7 +426,7 @@ Adja hozzá a piros vonal fedettségét és a képpont vastagságát a koordiná
 
 Azure Maps a távolsági mátrix API-t biztosítja. Ezzel az API-val kiszámíthatja az utazási időt és a távolságokat a különböző tárolóhelyek között, a távolsági mátrixtal együtt. A Google Maps szolgáltatásban a távolsági mátrix API-hoz hasonló.
 
-- [**Útvonal-mátrix**](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview): aszinkron módon számítja ki az utazási időpontokat és a távolságokat az egyes eredetek és célhelyek esetében. A legfeljebb 700 cellát támogat. Az eredetek száma megszorozva a célhelyek számával. Ennek a korlátozásnak a szem előtt tartva a lehetséges mátrix-dimenziók például a következők: 700x1, 50x10, 10x10, 28x25, 10x70.
+- [**Útvonal-mátrix**](/rest/api/maps/route/postroutematrixpreview): aszinkron módon számítja ki az utazási időpontokat és a távolságokat az egyes eredetek és célhelyek esetében. A legfeljebb 700 cellát támogat. Az eredetek száma megszorozva a célhelyek számával. Ennek a korlátozásnak a szem előtt tartva a lehetséges mátrix-dimenziók például a következők: 700x1, 50x10, 10x10, 28x25, 10x70.
 
 > [!NOTE]
 > A távolsági mátrix API-ra irányuló kérés csak POST-kéréssel hozható létre a kérelem törzsében, a forrás-és a célként megadott információval. Emellett Azure Maps az összes eredetet és célhelyet koordinálni kell. Először a címeket kell geokódolva.
@@ -458,7 +458,7 @@ Tekintse át az útválasztási dokumentációval [kapcsolatos ajánlott eljár�
 
 A Azure Maps egy API-t biztosít a koordináta időzónájának lekéréséhez. A Azure Maps időzóna API hasonló az időzóna API-hoz a Google Maps szolgáltatásban:
 
-- [**Időzóna koordináta szerint**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonebycoordinates): megadási koordináta és a koordináta időzóna-adatainak fogadása.
+- [**Időzóna koordináta szerint**](/rest/api/maps/timezone/gettimezonebycoordinates): megadási koordináta és a koordináta időzóna-adatainak fogadása.
 
 Ez a táblázat a Google Maps API paramétereit a Azure Maps hasonló API-paramétereivel hivatkozik.
 
@@ -471,11 +471,11 @@ Ez a táblázat a Google Maps API paramétereit a Azure Maps hasonló API-param�
 
 Ezen az API-on kívül a Azure Maps számos időzóna API-t biztosít. Ezek az API-k az időzóna neve vagy azonosítói alapján alakítják át az időt:
 
-- [**Időzóna azonosító szerint**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonebyid): a megadott IANA Időzóna-azonosító aktuális, korábbi és jövőbeli időzóna-információit adja vissza.
-- [**Időzóna enumerálása IANA**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneenumiana): az IANA időzóna-azonosítók teljes listáját adja vissza. Az IANA szolgáltatás frissítései egy napon belül megjelennek a rendszeren.
-- [**Időzóna enumerálása Windows**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneenumwindows): a Windows időzóna-azonosítók teljes listáját adja vissza.
-- [**Időzóna – IANA-verzió**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneianaversion): az Azure Maps által használt aktuális IANA-verziószámot adja vissza.
-- [**Időzóna-ablakok az IANA számára**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonewindowstoiana): egy megfelelő IANA-azonosítót ad vissza, amely érvényes Windows időzóna-azonosítót adott meg. Egy Windows-AZONOSÍTÓhoz több IANA-azonosító is visszaküldhető.
+- [**Időzóna azonosító szerint**](/rest/api/maps/timezone/gettimezonebyid): a megadott IANA Időzóna-azonosító aktuális, korábbi és jövőbeli időzóna-információit adja vissza.
+- [**Időzóna enumerálása IANA**](/rest/api/maps/timezone/gettimezoneenumiana): az IANA időzóna-azonosítók teljes listáját adja vissza. Az IANA szolgáltatás frissítései egy napon belül megjelennek a rendszeren.
+- [**Időzóna enumerálása Windows**](/rest/api/maps/timezone/gettimezoneenumwindows): a Windows időzóna-azonosítók teljes listáját adja vissza.
+- [**Időzóna – IANA-verzió**](/rest/api/maps/timezone/gettimezoneianaversion): az Azure Maps által használt aktuális IANA-verziószámot adja vissza.
+- [**Időzóna-ablakok az IANA számára**](/rest/api/maps/timezone/gettimezonewindowstoiana): egy megfelelő IANA-azonosítót ad vissza, amely érvényes Windows időzóna-azonosítót adott meg. Egy Windows-AZONOSÍTÓhoz több IANA-azonosító is visszaküldhető.
 
 ## <a name="client-libraries"></a>Ügyfélkódtárak
 
@@ -487,7 +487,7 @@ Ezek a nyílt forráskódú ügyféloldali kódtárak más programozási nyelvek
 
 - .NET Standard 2,0 – [GitHub Project](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet csomag](https://www.nuget.org/packages/AzureMapsRestToolkit/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Maps REST-szolgáltatásokról:
 

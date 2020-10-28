@@ -10,15 +10,14 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 733a5c899e72809d979dfeeb60e4157c0d587bcf
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 9abfbe03a4192411a3790bb6d6e488d674c13109
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633705"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897160"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning-munkaterületek létrehozása és kezelése 
-
 
 Ebben a cikkben [**Azure Machine learning munkaterületeket**](concept-workspace.md) hozhat létre, tekinthet meg és törölhet [Azure Machine Learning](overview-what-is-azure-ml.md)számára a Azure Portal vagy a [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) használatával
 
@@ -33,48 +32,82 @@ Az igények változásának vagy az automatizálásra vonatkozó követelmények
 
 # <a name="python"></a>[Python](#tab/python)
 
-Ehhez az első példához csak minimális specifikáció szükséges, és a rendszer automatikusan létrehozza az összes függő erőforrást és az erőforráscsoportot is.
+* **Alapértelmezett specifikáció.** Alapértelmezés szerint a függő erőforrások és az erőforráscsoport is automatikusan létrejön. Ez a kód létrehoz egy nevű munkaterületet `myworkspace` és egy nevű erőforráscsoportot `myresourcegroup` `eastus2` .
+    
+    ```python
+    from azureml.core import Workspace
+    
+    ws = Workspace.create(name='myworkspace',
+                   subscription_id='<azure-subscription-id>',
+                   resource_group='myresourcegroup',
+                   create_resource_group=True,
+                   location='eastus2'
+                   )
+    ```
+    Állítsa hamis értékre, `create_resource_group` Ha rendelkezik egy meglévő Azure-erőforráscsoporthoz, amelyet használni szeretne a munkaterülethez.
 
-```python
-from azureml.core import Workspace
-   ws = Workspace.create(name='myworkspace',
-               subscription_id='<azure-subscription-id>',
-               resource_group='myresourcegroup',
-               create_resource_group=True,
-               location='eastus2'
-               )
-```
-Állítsa hamis értékre, `create_resource_group` Ha rendelkezik egy meglévő Azure-erőforráscsoporthoz, amelyet használni szeretne a munkaterülethez.
+* <a name="create-multi-tenant"></a>**Több bérlő.**  Ha több fiókkal rendelkezik, adja meg a használni kívánt Azure Active Directory bérlői AZONOSÍTÓját.  Keresse meg a bérlői AZONOSÍTÓját a [Azure Portal](https://portal.azure.com) **Azure Active Directory, külső identitások** területen.
 
-Létrehozhat egy olyan munkaterületet is, amely meglévő Azure-erőforrásokat használ az Azure erőforrás-azonosító formátumával. Keresse meg az adott Azure-erőforrás azonosítóit a Azure Portal vagy az SDK-val. Ez a példa feltételezi, hogy az erőforráscsoport, a Storage-fiók, a Key Vault, az alkalmazás-felismerés és a tároló-beállításjegyzék már létezik.
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(tenant_id="my-tenant-id")
+    ws = Workspace.create(name='myworkspace',
+                subscription_id='<azure-subscription-id>',
+                resource_group='myresourcegroup',
+                create_resource_group=True,
+                location='eastus2',
+                auth=interactive_auth
+                )
+    ```
 
-```python
-import os
+* **[Szuverén felhő](reference-machine-learning-cloud-parity.md)** . Ha szuverén felhőben dolgozik, további kódokat kell megadnia az Azure-ban való hitelesítéshez.
+
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(cloud="<cloud name>") # for example, cloud="AzureUSGovernment"
+    ws = Workspace.create(name='myworkspace',
+                subscription_id='<azure-subscription-id>',
+                resource_group='myresourcegroup',
+                create_resource_group=True,
+                location='eastus2',
+                auth=interactive_auth
+                )
+    ```
+
+* **Meglévő Azure-erőforrások használata** .  Létrehozhat egy olyan munkaterületet is, amely meglévő Azure-erőforrásokat használ az Azure erőforrás-azonosító formátumával. Keresse meg az adott Azure-erőforrás azonosítóit a Azure Portal vagy az SDK-val. Ez a példa feltételezi, hogy az erőforráscsoport, a Storage-fiók, a Key Vault, az alkalmazás-felismerés és a tároló-beállításjegyzék már létezik.
+
+   ```python
+   import os
    from azureml.core import Workspace
    from azureml.core.authentication import ServicePrincipalAuthentication
 
    service_principal_password = os.environ.get("AZUREML_PASSWORD")
 
    service_principal_auth = ServicePrincipalAuthentication(
-       tenant_id="<tenant-id>",
-       username="<application-id>",
-       password=service_principal_password)
+      tenant_id="<tenant-id>",
+      username="<application-id>",
+      password=service_principal_password)
 
-   ws = Workspace.create(name='myworkspace',
-                         auth=service_principal_auth,
-                         subscription_id='<azure-subscription-id>',
-                         resource_group='myresourcegroup',
-                         create_resource_group=False,
-                         location='eastus2',
-                         friendly_name='My workspace',
-                         storage_account='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.storage/storageaccounts/mystorageaccount',
-                         key_vault='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.keyvault/vaults/mykeyvault',
-                         app_insights='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.insights/components/myappinsights',
-                         container_registry='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.containerregistry/registries/mycontainerregistry',
-                         exist_ok=False)
-```
+                        auth=service_principal_auth,
+                             subscription_id='<azure-subscription-id>',
+                             resource_group='myresourcegroup',
+                             create_resource_group=False,
+                             location='eastus2',
+                             friendly_name='My workspace',
+                             storage_account='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.storage/storageaccounts/mystorageaccount',
+                             key_vault='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.keyvault/vaults/mykeyvault',
+                             app_insights='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.insights/components/myappinsights',
+                             container_registry='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.containerregistry/registries/mycontainerregistry',
+                             exist_ok=False)
+   ```
 
-További információ: [munkaterület SDK-referenciája](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true)
+További információ: [munkaterület SDK-referenciája](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true).
+
+Ha problémája merül fel az előfizetés elérésekor, tekintse [meg a Azure Machine learning erőforrások és munkafolyamatok hitelesítésének beállítása](how-to-setup-authentication.md), valamint a Azure Machine learning jegyzetfüzetben végzett [hitelesítés](https://aka.ms/aml-notebook-auth) című témakört.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -237,6 +270,37 @@ Ha azt tervezi, hogy a munkaterületre hivatkozó helyi környezet programkódj�
 
 Helyezze a fájlt a címtár-struktúrába a Python-szkriptekkel vagy a Jupyter notebookokkal. Ez lehet ugyanabban a címtárban, egy *. azureml* nevű alkönyvtár vagy egy szülő könyvtárban. Számítási példány létrehozásakor a rendszer hozzáadja ezt a fájlt a virtuális gép megfelelő könyvtárába.
 
+## <a name="connect-to-a-workspace"></a>Kapcsolódás munkaterülethez
+
+A Python-kódban létre kell hoznia egy munkaterület-objektumot a munkaterülethez való kapcsolódáshoz.  Ez a kód beolvassa a konfigurációs fájl tartalmát a munkaterület megkereséséhez.  Ha még nincs hitelesítve, a rendszer kérni fogja, hogy jelentkezzen be.
+
+```python
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+```
+
+* <a name="connect-multi-tenant"></a>**Több bérlő.**  Ha több fiókkal rendelkezik, adja meg a használni kívánt Azure Active Directory bérlői AZONOSÍTÓját.  Keresse meg a bérlői AZONOSÍTÓját a [Azure Portal](https://portal.azure.com) **Azure Active Directory, külső identitások** területen.
+
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(tenant_id="my-tenant-id")
+    ws = Workspace.from_config(auth=interactive_auth)
+    ```
+
+* **[Szuverén felhő](reference-machine-learning-cloud-parity.md)** . Ha szuverén felhőben dolgozik, további kódokat kell megadnia az Azure-ban való hitelesítéshez.
+
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(cloud="<cloud name>") # for example, cloud="AzureUSGovernment"
+    ws = Workspace.from_config(auth=interactive_auth)
+    ```
+    
+Ha problémája merül fel az előfizetés elérésekor, tekintse [meg a Azure Machine learning erőforrások és munkafolyamatok hitelesítésének beállítása](how-to-setup-authentication.md), valamint a Azure Machine learning jegyzetfüzetben végzett [hitelesítés](https://aka.ms/aml-notebook-auth) című témakört.
 
 ## <a name="find-a-workspace"></a><a name="view"></a>Munkaterület keresése
 
@@ -254,7 +318,7 @@ Workspace.list('<subscription-id>')
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. A felső Keresés mezőbe írja be a következőt: **Machine learning** .  
 

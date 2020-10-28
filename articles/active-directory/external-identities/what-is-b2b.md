@@ -12,19 +12,19 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7104040e73679b6563b02aba47698b8eac2b7a56
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d10eb3334154f4915aa0bddd488ddc78bde06805
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441385"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897262"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Mi az vendég hozzáférés az Azure Active Directory B2B-ben?
 
 A Azure Active Directory (Azure AD) vállalatok közötti (B2B) együttműködés a külső identitások egyik funkciója, amely lehetővé teszi, hogy meghívja a vendég felhasználókat a szervezettel való együttműködésre. A B2B-együttműködés segítségével biztonságosan megoszthatja vállalata alkalmazásait és szolgáltatásait a vendégekkel bármely más szervezettől, miközben megtarthatja a saját vállalati adatok felügyeletét. Biztonságban, biztosan dolgozhat -nagy vagy kicsi- külső partnerekkel, akkor is, ha nincs is náluk Azure AD vagy IT részleg. Az egyszerű meghívási és érvényesítési folyamat lehetővé teszi, hogy a vállalati erőforrásokhoz a partnerek saját hitelesítő adatokkal férjenek hozzá. A fejlesztők az Azure AD B2B API használatával személyre szabhatják a meghívási folyamatot vagy például önkiszolgáló regisztrációs portál alkalmazásokat írhatnak. A vendég felhasználókkal kapcsolatos licencelési és díjszabási információkért tekintse meg a [Azure Active Directory díjszabását](https://azure.microsoft.com/pricing/details/active-directory/).  
 
    > [!IMPORTANT]
-   > **2021. március 31-ig**a Microsoft többé nem fogja támogatni a meghívások beváltását azáltal, hogy nem felügyelt Azure ad-fiókokat és bérlőket hoz létre vállalatközi együttműködési forgatókönyvek létrehozásához. A felkészülés során javasoljuk, hogy az ügyfelek [e-mail-egyszeri jelszavas hitelesítést](one-time-passcode.md)kérjenek. Szívesen fogadjuk visszajelzését ezen a nyilvános előzetes verzióban, és örömmel vesszük, hogy még több módszert is létre lehetne hozni az együttműködésre.
+   > **2021. március 31-ig** a Microsoft többé nem fogja támogatni a meghívások beváltását azáltal, hogy nem felügyelt Azure ad-fiókokat és bérlőket hoz létre vállalatközi együttműködési forgatókönyvek létrehozásához. A felkészülés során javasoljuk, hogy az ügyfelek [e-mail-egyszeri jelszavas hitelesítést](one-time-passcode.md)kérjenek. Szívesen fogadjuk visszajelzését ezen a nyilvános előzetes verzióban, és örömmel vesszük, hogy még több módszert is létre lehetne hozni az együttműködésre.
 
 ## <a name="collaborate-with-any-partner-using-their-identities"></a>Együttműködés bármely partnerrel saját identitásuk használatával
 
@@ -93,8 +93,8 @@ Az [API-összekötők](api-connectors-overview.md) használatával integrálhatj
 ![A felhasználói folyamatok lapját ábrázoló képernyőfelvétel](media/what-is-b2b/self-service-sign-up-user-flow-overview.png)
 <!--TODO: Add screenshot with API connectors -->
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Azure AD B2B-együttműködés licencelési útmutató](licensing-guidance.md)
+- [Az External Identities díjszabása](external-identities-pricing.md)
 - [B2B közreműködő vendégfelhasználók hozzáadása a portálon](add-users-administrator.md)
 - [A meghívó érvényesítési folyamat ismertetése](redemption-experience.md)

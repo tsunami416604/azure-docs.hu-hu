@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 618c8597f7f10ce669bb340b9f5ea4c96f5c1d3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d15f78c19b5f142f8879d54a1ae32e229ce7f50
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825311"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896582"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Nagyítási szintek és csemperács
 
@@ -74,7 +74,7 @@ var mapWidth = tileSize * Math.pow(2, zoom);
 var mapHeight = mapWidth;
 ```
 
-Mivel a Térkép szélessége és magassága eltér a nagyítási szinttől, a képpontok koordinátáit is használják. A térkép bal felső sarkában található képpontnak mindig van képpont-koordinátái (0, 0). A Térkép jobb alsó sarkában található pixel koordinátái *(width-1, height-1)*, vagy az előző szakaszban szereplő egyenletekre utalnak *(tileSize \* 2<sup>Nagyítás</sup>– 1, tileSize \* 2<sup>Nagyítás</sup>– 1)*. Például, ha a 2. szinten a 512 négyzet alakú csempéket használja, a képpont koordinátái (0, 0) és (2047, 2047) közé esnek, a következőhöz hasonlóan:
+Mivel a Térkép szélessége és magassága eltér a nagyítási szinttől, a képpontok koordinátáit is használják. A térkép bal felső sarkában található képpontnak mindig van képpont-koordinátái (0, 0). A Térkép jobb alsó sarkában található pixel koordinátái *(width-1, height-1)* , vagy az előző szakaszban szereplő egyenletekre utalnak *(tileSize \* 2 <sup>Nagyítás</sup>– 1, tileSize \* 2 <sup>Nagyítás</sup>– 1)* . Például, ha a 2. szinten a 512 négyzet alakú csempéket használja, a képpont koordinátái (0, 0) és (2047, 2047) közé esnek, a következőhöz hasonlóan:
 
 :::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-width-height.png" alt-text="Globális Térkép csempe":::
 
@@ -100,7 +100,7 @@ var numberOfTilesWide = Math.pow(2, zoom);
 var numberOfTilesHigh = numberOfTilesWide;
 ```
 
-Az egyes csempék a bal felső sarokban (0, 0) kezdve az XY koordinátákat adják meg *(2<sup>Nagyítás</sup>– 1, 2<sup>Nagyítás</sup>– 1)* a jobb alsó sarokban. A 3. nagyítási szint esetében például a csempe a következőtől kezdve a (0, 0) és a (7) közötti tartományban van:
+Az egyes csempék a bal felső sarokban (0, 0) kezdve az XY koordinátákat adják meg *(2 <sup>Nagyítás</sup>– 1, 2 <sup>Nagyítás</sup>– 1)* a jobb alsó sarokban. A 3. nagyítási szint esetében például a csempe a következőtől kezdve a (0, 0) és a (7) közötti tartományban van:
 
 :::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png" alt-text="Globális Térkép csempe":::
 
@@ -933,20 +933,20 @@ module AzureMaps {
 
 > [!NOTE]
 > A Azure Maps SDK interaktív térképének vezérlői a térinformatikai pozíciók és a nézetablak képpontja közötti átalakításra szolgáló segítő függvényekből állnak. 
-> - [Web SDK: Térkép képpontban és pozícióban számítások](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
+> - [Web SDK: Térkép képpontban és pozícióban számítások](/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
 
 ## <a name="next-steps"></a>Következő lépések
 
 A Azure Maps REST-szolgáltatásokból közvetlenül elérhetők a Térkép csempéi:
 
 > [!div class="nextstepaction"]
-> [Térkép csempék lekérése](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+> [Térkép csempék lekérése](/rest/api/maps/render/getmaptile)
 
 > [!div class="nextstepaction"]
-> [Forgalmi flow csempék beolvasása](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)
+> [Forgalmi flow csempék beolvasása](/rest/api/maps/traffic/gettrafficflowtile)
 
 > [!div class="nextstepaction"]
-> [Forgalmi incidens csempék beolvasása](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)
+> [Forgalmi incidens csempék beolvasása](/rest/api/maps/traffic/gettrafficincidenttile)
 
 További információ a térinformatikai fogalmakról:
 

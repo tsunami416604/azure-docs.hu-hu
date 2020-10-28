@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84169daa28fc394254ddce211a96d4a462f78cbd
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 61f82e94f506cc403106912e24532f9d5263a60d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441861"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896466"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>B2B-felhasználók engedélyezése az Azure AD-ben a helyszíni alkalmazásokhoz való hozzáféréshez
 
@@ -39,8 +39,8 @@ A következőket kell tennie:
 
 Ahhoz, hogy a B2B-felhasználók hozzáférhessenek az integrált Windows-hitelesítéssel és a Kerberos által korlátozott delegálással védett helyszíni alkalmazásokhoz, a következő összetevőkre van szükség:
 
-- **Hitelesítés az Azure ad Application Proxyon keresztül**. A B2B-felhasználóknak képesnek kell lenniük a hitelesítésre a helyszíni alkalmazásban. Ehhez közzé kell tennie a helyszíni alkalmazást az Azure AD Application Proxyon keresztül. További információkért lásd: [az alkalmazásproxy használatának első lépései, az összekötő telepítése](../manage-apps/application-proxy-add-on-premises-application.md) és [alkalmazások közzététele az Azure ad Application proxy használatával](../manage-apps/application-proxy-add-on-premises-application.md).
-- **Engedélyezés vállalatközi felhasználói objektumon keresztül a helyszíni címtárban**. Az alkalmazásnak képesnek kell lennie a felhasználói hozzáférés ellenőrzéséhez, és hozzáférést kell biztosítania a megfelelő erőforrásokhoz. Az engedélyezés végrehajtásához a IWA és a KCD felhasználói objektumra van szükség a helyszíni Windows Server Active Directory. Az [egyszeri bejelentkezés a KCD](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)-mel való használatával című cikkben leírtak szerint az alkalmazásproxy erre a felhasználói objektumra van szüksége a felhasználó megszemélyesítéséhez és egy Kerberos-token beszerzéséhez az alkalmazáshoz. 
+- **Hitelesítés az Azure ad Application Proxyon keresztül** . A B2B-felhasználóknak képesnek kell lenniük a hitelesítésre a helyszíni alkalmazásban. Ehhez közzé kell tennie a helyszíni alkalmazást az Azure AD Application Proxyon keresztül. További információ: [oktatóanyag: helyszíni alkalmazás hozzáadása távoli eléréshez alkalmazásproxy használatával](../manage-apps/application-proxy-add-on-premises-application.md).
+- **Engedélyezés vállalatközi felhasználói objektumon keresztül a helyszíni címtárban** . Az alkalmazásnak képesnek kell lennie a felhasználói hozzáférés ellenőrzéséhez, és hozzáférést kell biztosítania a megfelelő erőforrásokhoz. Az engedélyezés végrehajtásához a IWA és a KCD felhasználói objektumra van szükség a helyszíni Windows Server Active Directory. Az [egyszeri bejelentkezés a KCD](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)-mel való használatával című cikkben leírtak szerint az alkalmazásproxy erre a felhasználói objektumra van szüksége a felhasználó megszemélyesítéséhez és egy Kerberos-token beszerzéséhez az alkalmazáshoz. 
 
    > [!NOTE]
    > Az Azure-AD Application Proxy konfigurálásakor győződjön meg arról, hogy a **delegált bejelentkezési identitás** az integrált Windows-hitelesítés (IWA) egyszeri bejelentkezési konfigurációjában a **felhasználó egyszerű neve** (alapértelmezett) értékre van beállítva.
@@ -64,7 +64,7 @@ A következő ábra áttekintést nyújt arról, hogyan működik együtt az Azu
 
 ### <a name="lifecycle-management-policies"></a>Életciklus-kezelési szabályzatok
 
-A helyszíni B2B felhasználói objektumokat életciklus-kezelési házirendekkel kezelheti. Példa:
+A helyszíni B2B felhasználói objektumokat életciklus-kezelési házirendekkel kezelheti. Például:
 
 - Beállíthatja a többtényezős hitelesítési (MFA) házirendeket a vendég felhasználó számára, hogy az MFA-t használja az alkalmazásproxy hitelesítése során. További információ: [feltételes hozzáférés vállalatközi együttműködéssel rendelkező felhasználók](conditional-access.md)számára.
 - A felhőalapú B2B-felhasználó által végrehajtott szponzorálások, hozzáférési felülvizsgálatok, fiókok ellenőrzése stb. a helyszíni felhasználókra is érvényesek. Ha például a Felhőbeli felhasználót az életciklus-kezelési szabályzatok segítségével törli, a helyszíni felhasználót is törli a helyi felhasználó, vagy a Azure AD Connect Sync használatával. További információ: [a vendég hozzáférésének kezelése az Azure ad hozzáférési felülvizsgálatokkal](../governance/manage-guest-access-with-access-reviews.md).
@@ -77,7 +77,7 @@ További információ a (z) 2016 Service Pack 1 és a Rendszerfelügyeleti websz
 
 Létezik egy PowerShell-minta parancsfájl, amely kiindulási pontként használható a vendég felhasználói objektumok létrehozásához a helyszíni Active Directory.
 
-A parancsfájlt és a Readme fájlt letöltheti a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=51495). Válassza ki a **parancsfájlt és a readme-t az Azure ad B2B-felhasználók on-prem.zipfájljának lekéréséhez ** .
+A parancsfájlt és a Readme fájlt letöltheti a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=51495). Válassza ki a **parancsfájlt és a readme-t az Azure ad B2B-felhasználók on-prem.zipfájljának lekéréséhez** .
 
 A szkript használata előtt győződjön meg arról, hogy áttekinti az előfeltételeket és a fontos szempontokat a társított readme fájlban. Továbbá Ismerje meg, hogy a szkript csak mintaként érhető el. A fejlesztői csapatnak vagy partnernek a futtatása előtt testre kell szabnia és ellenőriznie kell a parancsfájlt.
 
@@ -85,7 +85,7 @@ A szkript használata előtt győződjön meg arról, hogy áttekinti az előfel
 
 Győződjön meg arról, hogy rendelkezik a megfelelő ügyféllicencekkel a külső vendég felhasználók számára, akik hozzáférnek a helyszíni alkalmazásokhoz. További információ: az [ügyfél-hozzáférési licencek és a felügyeleti licencek](https://www.microsoft.com/licensing/product-licensing/client-access-license.aspx)"külső összekötők" szakasza. Forduljon a Microsoft képviselőjéhez vagy a helyi viszonteladóhoz az adott licencelési igényekkel kapcsolatban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Active Directory B2B-együttműködés hibrid szervezeteknél](hybrid-organizations.md)
 

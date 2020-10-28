@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: dc1da641ba628cef92250549c1c6b6482cf18b51
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5a0f9f9f972ec42987d6152c16e4377e399cdba5
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547333"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896412"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Python-környezet biztonságos kezelése az Azure HDInsightban szkriptműveletekkel
 
@@ -129,6 +129,24 @@ A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettő
     4. Mentse a módosításokat, és indítsa újra az érintett szolgáltatásokat. Ezeknek a változásoknak a Spark2 szolgáltatás újraindítására van szükségük. A Ambari felhasználói felülete kérni fogja a szükséges újraindítási emlékeztetőt, majd kattintson az Újraindítás gombra az összes érintett szolgáltatás újraindításához.
 
         ![Szolgáltatások újraindítása](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+
+    5. Állítsa be a Spark-munkamenet két tulajdonságát, és győződjön meg arról, hogy a feladattípus a frissített Spark-konfigurációra mutat: `spark.yarn.appMasterEnv.PYSPARK_PYTHON` és `spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON` . 
+
+        A terminál vagy egy jegyzetfüzet használatával használja a `spark.conf.set` függvényt.
+
+        ```spark
+        spark.conf.set("spark.yarn.appMasterEnv.PYSPARK_PYTHON", "/usr/bin/anaconda/envs/py35/bin/python")
+        spark.conf.set("spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON", "/usr/bin/anaconda/envs/py35/bin/python")
+        ```
+
+        Ha a Livy-t használja, adja hozzá a következő tulajdonságokat a kérelem törzséhez:
+
+        ```
+        “conf” : {
+        “spark.yarn.appMasterEnv.PYSPARK_PYTHON”:”/usr/bin/anaconda/envs/py35/bin/python”,
+        “spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON”:”/usr/bin/anaconda/envs/py35/bin/python”
+        }
+        ```
 
 4. Ha az újonnan létrehozott virtuális környezetet szeretné használni a Jupyter-on. Módosítsa a Jupyter konfigurációit, és indítsa újra a Jupyter. Futtasson parancsfájl-műveleteket minden olyan fejléc-csomóponton az alábbi utasítással, hogy az új, létrehozott virtuális környezethez Jupyter. Ügyeljen arra, hogy módosítsa a virtuális környezethez megadott előtag elérési útját. A parancsfájl futtatása után indítsa újra a Jupyter szolgáltatást a Ambari felhasználói felületén, hogy elérhetővé tegye ezt a módosítást.
 

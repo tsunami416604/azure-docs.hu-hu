@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: d61cc94ee1b3c5d23135c033b1068aa7411761d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12548b04e5fb967572e17f1be88369b9950661c3
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88033257"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896293"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure Maps mobilitási lefedettség
 
-A Azure Maps [mobilitási szolgáltatás](https://aka.ms/AzureMapsMobilityService) javítja a nyilvános átviteli funkciókkal rendelkező alkalmazások fejlesztési idejét, például a tranzit útválasztást és a közeli nyilvános átvitelek keresését. A felhasználók részletes információkat kérhetnek a továbbítási leállásokról, a sorokról és az ütemtervekről. A mobilitási szolgáltatás azt is lehetővé teszi, hogy a felhasználók leállítsák a leállítási és a vonalas geometriákat, a leállási, a soros és a szolgáltatási területekre vonatkozó riasztásokat, valamint a valós idejű, nyilvános tranzit Emellett a mobilitási szolgáltatás útválasztási funkciókat biztosít a multimodális utazási tervezési lehetőségekkel. A multimodális utazás megtervezése magában foglalja a gyaloglást, a kerékpározást és a nyilvános továbbítási lehetőségeket, mindezt egyetlen útra. A felhasználók a részletes multimodális lépésenkénti útvonalakat is használhatják. 
+A Azure Maps [mobilitási szolgáltatás](/rest/api/maps/mobility) javítja a nyilvános átviteli funkciókkal rendelkező alkalmazások fejlesztési idejét, például a tranzit útválasztást és a közeli nyilvános átvitelek keresését. A felhasználók részletes információkat kérhetnek a továbbítási leállásokról, a sorokról és az ütemtervekről. A mobilitási szolgáltatás azt is lehetővé teszi, hogy a felhasználók leállítsák a leállítási és a vonalas geometriákat, a leállási, a soros és a szolgáltatási területekre vonatkozó riasztásokat, valamint a valós idejű, nyilvános tranzit Emellett a mobilitási szolgáltatás útválasztási funkciókat biztosít a multimodális utazási tervezési lehetőségekkel. A multimodális utazás megtervezése magában foglalja a gyaloglást, a kerékpározást és a nyilvános továbbítási lehetőségeket, mindezt egyetlen útra. A felhasználók a részletes multimodális lépésenkénti útvonalakat is használhatják. 
 
 Azure Maps nem biztosít azonos szintű információt és pontosságot az összes város és ország/régió számára. A nyilvános árutovábbítási adatok meghívásának lehetősége a Metro területtől függ. Emellett előfordulhat, hogy a térképi adatok nem tartalmazzák a metró területét kiszolgáló összes nyilvános átviteli lehetőséget és Ügynökséget.
 
@@ -159,4 +159,4 @@ Megtudhatja, hogyan kérhet valós idejű adatgyűjtést a mobilitási szolgált
 A Azure Maps mobilitási szolgáltatás API dokumentációjának megismerése
 
 > [!div class="nextstepaction"]
-> [A mobilitási szolgáltatás API-dokumentációja](https://aka.ms/AzureMapsMobilityService)
+> [A mobilitási szolgáltatás API-dokumentációja](/rest/api/maps/mobility)

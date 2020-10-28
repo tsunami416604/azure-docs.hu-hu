@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f72c255ddac1889131234fefd7d6b014b453d417
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 4f9cd421224ad134b4df853b06b3bc34333a0613
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441725"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896106"
 ---
 # <a name="self-service-for-azure-ad-b2b-collaboration-sign-up"></a>Önkiszolgáló Azure AD B2B együttműködési regisztrációhoz
 
@@ -30,8 +30,8 @@ Meghívó szervezetként előfordulhat, hogy nem tudja, hogy az egyes külső k�
 
 A szervezetek használhatják a [Microsoft Graph meghívó Manager API](/graph/api/resources/invitation?view=graph-rest-1.0) -t, hogy saját bevezetési tapasztalatokat hozzanak létre a B2B vendég felhasználói számára. Ha önkiszolgáló B2B vendég felhasználói regisztrációt szeretne biztosítani, javasoljuk, hogy használja az [Azure ad-jogosultságok kezelését](../governance/entitlement-management-overview.md). Ha azonban saját felhasználói élményt szeretne létrehozni, a [meghívás API létrehozása](/graph/api/invitation-post?tabs=http&view=graph-rest-1.0) lehetőséggel automatikusan elküldheti a testreszabott meghívót a B2B-felhasználónak, például a következőt:. Vagy az alkalmazás használhatja a létrehozási válaszban visszaadott inviteRedeemUrl a saját meghívóját (a választott kommunikációs mechanizmuson keresztül) a meghívott felhasználó számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
-* [Az Azure AD B2B-együttműködésének licencelése](licensing-guidance.md)
+* [Az External Identities díjszabása](external-identities-pricing.md)
 * [Azure Active Directory vállalatközi együttműködés – gyakori kérdések](faq.md)

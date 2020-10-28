@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 168b3d51b66078b3d4c2e113711d3124820dd6bd
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: be0b2a3a15c77ae0de303f02be078f115b283eb9
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677789"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897143"
 ---
 # <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>Oktatóanyag – webalkalmazás migrálása a Bing Maps szolgáltatásból
 
 A Bing Maps szolgáltatást használó webalkalmazások gyakran a Bing Maps V8 JavaScript SDK-t használják. A Azure Maps web SDK a megfelelő Azure-alapú SDK, amelybe migrálni lehet. A Azure Maps web SDK lehetővé teszi, hogy az interaktív térképeket saját tartalmakkal és képekkel testreszabja a webes vagy mobil alkalmazásaiban való megjelenítéshez. Ez a vezérlő a WebGL-t használja, amely lehetővé teszi nagy adatkészletek nagy teljesítményű renderelését. Fejlessze az SDK-t JavaScript vagy írógéppel használatával.
 
-Ha egy meglévő webalkalmazást telepít át, ellenőrizze, hogy a nyílt forráskódú Térkép vezérlőelem-függvénytárat, például a céziumot, a betegtájékoztatót és a OpenLayers használja-e. Ha így van, és továbbra is használni szeretné ezt a könyvtárat, akkor a Azure Maps csempe-szolgáltatásokhoz (a[közúti csempék](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [műholdas csempéi](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)) csatlakoztatható. Az alábbi hivatkozásokkal megtudhatja, hogyan használhatja a Azure Maps-t néhány gyakran használt nyílt forráskódú Térkép vezérlőelem-függvénytárban.
+Ha egy meglévő webalkalmazást telepít át, ellenőrizze, hogy a nyílt forráskódú Térkép vezérlőelem-függvénytárat, például a céziumot, a betegtájékoztatót és a OpenLayers használja-e. Ha így van, és továbbra is használni szeretné ezt a könyvtárat, akkor a Azure Maps csempe-szolgáltatásokhoz (a[közúti csempék](/rest/api/maps/render/getmaptile) \| [műholdas csempéi](/rest/api/maps/render/getmapimagerytile)) csatlakoztatható. Az alábbi hivatkozásokkal megtudhatja, hogyan használhatja a Azure Maps-t néhány gyakran használt nyílt forráskódú Térkép vezérlőelem-függvénytárban.
 
 -   Cézium – a webes 3D Térkép vezérlőelem. [Mintakód](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [Dokumentáció](https://cesiumjs.org/)
 -   Szórólap – kis méretű 2D Térkép vezérlőelem a weben. [Mintakód](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [Dokumentáció](https://leafletjs.com/)
@@ -68,7 +68,7 @@ A Azure Maps számos további [nyílt forráskódú modult is tartalmaz a webes 
 
 A Bing Maps és a Azure Maps web SDK-k közötti főbb különbségek a következők:
 
--   Amellett, hogy a Azure Maps web SDK eléréséhez üzemeltetett végpontot biztosít, egy NPM-csomag is elérhető a web SDK alkalmazásba való beágyazásához, ha az előnyben részesített. További információkért tekintse meg ezt a [dokumentációt](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) . Ez a csomag írógéppel kapcsolatos definíciókat is tartalmaz.
+-   Amellett, hogy a Azure Maps web SDK eléréséhez üzemeltetett végpontot biztosít, egy NPM-csomag is elérhető a web SDK alkalmazásba való beágyazásához, ha az előnyben részesített. További információkért tekintse meg ezt a [dokumentációt](./how-to-use-map-control.md) . Ez a csomag írógéppel kapcsolatos definíciókat is tartalmaz.
 -   A Bing Maps az SDK két üzemeltetett ágát biztosítja. Kiadás és kísérleti. A kísérleti ág naponta több frissítést is kaphat, amikor új fejlesztés zajlik. Azure Maps csak a kiadási ágakat üzemelteti, de a kísérleti funkciók egyéni modulokként jönnek létre a nyílt forráskódú Azure Maps-mintakód projektben. A Bing Maps-ben egy fagyasztott ág is volt, amely ritkábban frissült, így csökkentve a kiadás miatti változtatások kockázatát. Itt Azure Maps használhatja a NPM modult, és rámutathat bármely korábbi alverzióra.
 
 > [!TIP]
@@ -78,20 +78,20 @@ A Bing Maps és a Azure Maps web SDK-k közötti főbb különbségek a követke
 -   Mindkét platform egy hasonló csemperendszer használatát használja az alaptérképekhez, azonban a Bing Maps csempéi a dimenzióban 256 képpont méretűek, míg a Azure Maps csempéi 512 képpont méretűek. Ennek megfelelően, ha ugyanazt a leképezési nézetet szeretné levonni a Bing Maps Azure Maps, a Bing Maps-ben használt nagyítási szintet egy Azure Maps kell kivonnia.
 -   A Bing Maps-koordinátákat úgy nevezzük, ahogy `latitude, longitude` Azure Maps használja `longitude, latitude` . Ez a formátum a `[x, y]` legtöbb GIS-platform által követett szabványhoz igazodik.
 
--   A Azure Maps web SDK alakzatai a GeoJSON sémán alapulnak. A segítő osztályok az [Atlas. adatnévtéren](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data)keresztül érhetők el. Az Atlas is rendelkezésre áll [. ](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) Az GeoJSON objektumok becsomagolásához használható Shape osztály, amely lehetővé teszi, hogy a rendszer könnyen frissítse és karbantartsa azokat az adatkezelési módszerekkel.
+-   A Azure Maps web SDK alakzatai a GeoJSON sémán alapulnak. A segítő osztályok az [Atlas. adatnévtéren](/javascript/api/azure-maps-control/atlas.data)keresztül érhetők el. Az Atlas is rendelkezésre áll [. ](/javascript/api/azure-maps-control/atlas.shape) Az GeoJSON objektumok becsomagolásához használható Shape osztály, amely lehetővé teszi, hogy a rendszer könnyen frissítse és karbantartsa azokat az adatkezelési módszerekkel.
 -   A Azure Mapsban lévő koordináták olyan pozicionálási objektumok, amelyek egyszerű szám tömbként adhatók meg a formátumban `[longitude, latitude]` vagy `new atlas.data.Position(longitude, latitude)` .
 
 > [!TIP]
-> A position osztály statikus segítő funkcióval rendelkezik a formátumú koordináták importálásához `latitude, longitude` . Az [Atlas. adat. position. fromLatLng](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.position)függvény gyakran helyettesítheti a `new Microsoft.Maps.Location` függvényt a Bing Maps Code-ban.
+> A position osztály statikus segítő funkcióval rendelkezik a formátumú koordináták importálásához `latitude, longitude` . Az [Atlas. adat. position. fromLatLng](/javascript/api/azure-maps-control/atlas.data.position)függvény gyakran helyettesítheti a `new Microsoft.Maps.Location` függvényt a Bing Maps Code-ban.
 
 -   Ahelyett, hogy a térképhez hozzáadott összes alakzaton adja meg a stílusra vonatkozó információkat, Azure Maps elkülöníti az adatok stílusait. Az adatforrások tárolják az adatforrásokat, és olyan renderelési rétegekhez kapcsolódnak, amelyeket Azure Maps kód használ az adatmegjelenítéshez. Ez a megközelítés nagyobb teljesítménybeli előnyt biztosít. Emellett számos réteg támogatja az adatvezérelt stílust, ahol az üzleti logika hozzáadhatók a Rétegstílus beállításaihoz, amely megváltoztatja az egyes alakzatok rétegen belüli megjelenítését az alakzatban definiált tulajdonságok alapján.
 -   A Azure Maps számos hasznos térbeli matematikai függvényt biztosít a `atlas.math` névtérben, azonban ezek eltérnek a Bing Maps térbeli matematikai moduljában található adatoktól. Az elsődleges különbség az, hogy Azure Maps nem biztosít beépített függvényeket olyan bináris műveletekhez, mint például a Union és az metszet, azonban mivel a Azure Maps a nyílt szabványú GeoJSON alapul, számos nyílt forráskódú függvénytár érhető el. Egy népszerű lehetőség, amely jól működik Azure Maps és egy tonna térbeli matematikai képességet biztosít a [Turf js](http://turfjs.org/)-nek.
 
-Lásd még a [Azure Maps szószedetet](https://docs.microsoft.com/azure/azure-maps/glossary) a Azure Mapshoz társított terminológia részletes listájához.
+Lásd még a [Azure Maps szószedetet](./glossary.md) a Azure Mapshoz társított terminológia részletes listájához.
 
 ## <a name="web-sdk-side-by-side-examples"></a>A web SDK párhuzamos példái
 
-A következő gyűjtemény az egyes platformokra vonatkozik, amelyek általános használati eseteket mutatnak be a webalkalmazás a Bing Maps V8 JavaScript SDK-ból a Azure Maps web SDK-ba való migrálása érdekében. A webalkalmazásokhoz kapcsolódó kódok a JavaScriptben érhetők el; a Azure Maps azonban a [NPM-modulon](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)keresztül kiegészítő lehetőségként is biztosít írógéppel-definíciókat.
+A következő gyűjtemény az egyes platformokra vonatkozik, amelyek általános használati eseteket mutatnak be a webalkalmazás a Bing Maps V8 JavaScript SDK-ból a Azure Maps web SDK-ba való migrálása érdekében. A webalkalmazásokhoz kapcsolódó kódok a JavaScriptben érhetők el; a Azure Maps azonban a [NPM-modulon](./how-to-use-map-control.md)keresztül kiegészítő lehetőségként is biztosít írógéppel-definíciókat.
 
 **Témakörök**
 
@@ -230,14 +230,14 @@ A kód böngészőben való futtatásakor megjelenik egy Térkép, amely a köve
 
 ![Azure Maps Térkép](media/migrate-bing-maps-web-app/azure-maps-load-map.jpg)</center>
 
-[Itt](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)talál részletes dokumentációt arról, hogyan kell beállítani és használni a Azure Maps Térkép vezérlőelemet egy webalkalmazásban.
+[Itt](./how-to-use-map-control.md)talál részletes dokumentációt arról, hogyan kell beállítani és használni a Azure Maps Térkép vezérlőelemet egy webalkalmazásban.
 
 > [!TIP]
 > Azure Maps közzéteszi az SDK minified és unminified verzióit is. Távolítsa el `.min` a fájlneveket. A unminified verziója hasznos lehet a hibák hibakeresése során, de ügyeljen arra, hogy a minified-verziót éles környezetben használja, hogy kihasználhassa a kisebb fájlméretet.
 
 **További források**
 
--   A Azure Maps navigációs vezérlőket is biztosít a Térkép nézet elforgatásához és feldobásához az [itt](https://docs.microsoft.com/azure/azure-maps/map-add-controls)dokumentált módon.
+-   A Azure Maps navigációs vezérlőket is biztosít a Térkép nézet elforgatásához és feldobásához az [itt](./map-add-controls.md)dokumentált módon.
 
 ### <a name="localizing-the-map"></a>A Térkép honosítása
 
@@ -281,7 +281,7 @@ map = new atlas.Map('myMap', {
 ```
 
 > [!NOTE]
-> A Azure Maps több térképes példányt is betölthet ugyanazon a lapon, különböző nyelvi és területi beállításokkal. Emellett az is lehetséges, hogy a térképen a betöltés után is frissítheti ezeket a beállításokat. A Azure Maps támogatott nyelveinek részletes listáját [itt](https://docs.microsoft.com/azure/azure-maps/supported-languages)találja.
+> A Azure Maps több térképes példányt is betölthet ugyanazon a lapon, különböző nyelvi és területi beállításokkal. Emellett az is lehetséges, hogy a térképen a betöltés után is frissítheti ezeket a beállításokat. A Azure Maps támogatott nyelveinek részletes listáját [itt](./supported-languages.md)találja.
 
 Itt látható egy példa arra, hogy a "FR" és a "fr-FR" értékre beállított nyelv Azure Maps.
 
@@ -333,8 +333,8 @@ map.setStyle({
 
 **További források**
 
--   [Térképstílus kiválasztása](https://docs.microsoft.com/azure/azure-maps/choose-map-style)
--   [Támogatott térképstílusok](https://docs.microsoft.com/azure/azure-maps/supported-map-styles)
+-   [Térképstílus kiválasztása](./choose-map-style.md)
+-   [Támogatott térképstílusok](./supported-map-styles.md)
 
 ### <a name="adding-a-pushpin"></a>Gombostű hozzáadása
 
@@ -462,16 +462,16 @@ Ha szimbólum réteget használ, az adatforráshoz és a réteghez csatolt adatf
 
 **További források**
 
--   [Adatforrás létrehozása](https://docs.microsoft.com/azure/azure-maps/create-data-source-web-sdk)
--   [Szimbólum réteg hozzáadása](https://docs.microsoft.com/azure/azure-maps/map-add-pin)
--   [Buborék réteg hozzáadása](https://docs.microsoft.com/azure/azure-maps/map-add-bubble-layer)
--   [Fürt pontadatai](https://docs.microsoft.com/azure/azure-maps/clustering-point-data-web-sdk)
--   [HTML-jelölők hozzáadása](https://docs.microsoft.com/azure/azure-maps/map-add-custom-html)
--   [Adatvezérelt stíluskifejezések használata](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
--   [Szimbólum réteg ikonjának beállításai](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)
--   [Szimbólum réteg szövege beállítás](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions)
--   [HTML-jelölő osztálya](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker)
--   [HTML-jelölő beállításai](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
+-   [Adatforrás létrehozása](./create-data-source-web-sdk.md)
+-   [Szimbólum réteg hozzáadása](./map-add-pin.md)
+-   [Buborék réteg hozzáadása](./map-add-bubble-layer.md)
+-   [Fürt pontadatai](./clustering-point-data-web-sdk.md)
+-   [HTML-jelölők hozzáadása](./map-add-custom-html.md)
+-   [Adatvezérelt stíluskifejezések használata](./data-driven-style-expressions-web-sdk.md)
+-   [Szimbólum réteg ikonjának beállításai](/javascript/api/azure-maps-control/atlas.iconoptions)
+-   [Szimbólum réteg szövege beállítás](/javascript/api/azure-maps-control/atlas.textoptions)
+-   [HTML-jelölő osztálya](/javascript/api/azure-maps-control/atlas.htmlmarker)
+-   [HTML-jelölő beállításai](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
 
 ### <a name="adding-a-custom-pushpin"></a>Egyéni gombostű hozzáadása
 
@@ -593,14 +593,14 @@ A Azure Maps az egyéni rendszerképeket is támogatja, de a lemezképet elősz�
 
 **További források**
 
--   [Adatforrás létrehozása](https://docs.microsoft.com/azure/azure-maps/create-data-source-web-sdk)
--   [Szimbólum réteg hozzáadása](https://docs.microsoft.com/azure/azure-maps/map-add-pin)
--   [HTML-jelölők hozzáadása](https://docs.microsoft.com/azure/azure-maps/map-add-custom-html)
--   [Adatvezérelt stíluskifejezések használata](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
--   [Szimbólum réteg ikonjának beállításai](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)
--   [Szimbólum réteg szövege beállítás](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions)
--   [HTML-jelölő osztálya](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker)
--   [HTML-jelölő beállításai](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
+-   [Adatforrás létrehozása](./create-data-source-web-sdk.md)
+-   [Szimbólum réteg hozzáadása](./map-add-pin.md)
+-   [HTML-jelölők hozzáadása](./map-add-custom-html.md)
+-   [Adatvezérelt stíluskifejezések használata](./data-driven-style-expressions-web-sdk.md)
+-   [Szimbólum réteg ikonjának beállításai](/javascript/api/azure-maps-control/atlas.iconoptions)
+-   [Szimbólum réteg szövege beállítás](/javascript/api/azure-maps-control/atlas.textoptions)
+-   [HTML-jelölő osztálya](/javascript/api/azure-maps-control/atlas.htmlmarker)
+-   [HTML-jelölő beállításai](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
 
 ### <a name="adding-a-polyline"></a>Vonallánc hozzáadása
 
@@ -668,9 +668,9 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 **További források**
 
--   [Sorok hozzáadása a térképhez](https://docs.microsoft.com/azure/azure-maps/map-add-line-layer)
--   [Vonal rétegének beállításai](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
--   [Adatvezérelt stíluskifejezések használata](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [Sorok hozzáadása a térképhez](./map-add-line-layer.md)
+-   [Vonal rétegének beállításai](/javascript/api/azure-maps-control/atlas.linelayeroptions)
+-   [Adatvezérelt stíluskifejezések használata](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="adding-a-polygon"></a>Sokszög hozzáadása
 
@@ -744,11 +744,11 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 **További források**
 
--   [Sokszög hozzáadása a térképhez](https://docs.microsoft.com/azure/azure-maps/map-add-shape#use-a-polygon-layer)
--   [Kör hozzáadása a térképhez](https://docs.microsoft.com/azure/azure-maps/map-add-shape#add-a-circle-to-the-map)
--   [Sokszög réteg beállításai](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
--   [Vonal rétegének beállításai](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
--   [Adatvezérelt stíluskifejezések használata](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [Sokszög hozzáadása a térképhez](./map-add-shape.md#use-a-polygon-layer)
+-   [Kör hozzáadása a térképhez](./map-add-shape.md#add-a-circle-to-the-map)
+-   [Sokszög réteg beállításai](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
+-   [Vonal rétegének beállításai](/javascript/api/azure-maps-control/atlas.linelayeroptions)
+-   [Adatvezérelt stíluskifejezések használata](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="display-an-infobox"></a>Bezárása megjelenítése
 
@@ -820,12 +820,12 @@ map.events.add('click', marker, function () {
 
 **További források**
 
--   [Előugró ablak hozzáadása](https://docs.microsoft.com/azure/azure-maps/map-add-popup)
+-   [Előugró ablak hozzáadása](./map-add-popup.md)
 -   [Multimédiás tartalommal rendelkező előugró ablak](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popup%20with%20Media%20Content)
 -   [Felugró ablakok az alakzatokon](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popups%20on%20Shapes)
 -   [Felugró ablak újrahasználata több PIN-kód használatával](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Reusing%20Popup%20with%20Multiple%20Pins)
--   [Felugró osztály](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
--   [Előugró beállítások](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions)
+-   [Felugró osztály](/javascript/api/azure-maps-control/atlas.popup)
+-   [Előugró beállítások](/javascript/api/azure-maps-control/atlas.popupoptions)
 
 ### <a name="pushpin-clustering"></a>Gombostű-fürtözés
 
@@ -947,7 +947,7 @@ Az `DataSource` osztály a következő segítő függvényt használja a fürtte
 | `getClusterExpansionZoom(clusterId: number)`                         | `Promise<number>`                            | Kiszámítja azt a nagyítási szintet, amelyet a fürt elkezd kibővíteni vagy bontani.    |
 | `getClusterLeaves(clusterId: number, limit: number, offset: number)` | `Promise<Feature<Geometry, any> | Shape>` | Egy fürt összes pontjának lekérése. A `limit` gombra kattintva adja vissza a pontok egy részhalmazát, és használja a `offset` to oldalt a pontokon keresztül.    |
 
-Amikor fürtözött adatmegjelenítést alkalmaz a térképen, gyakran a legegyszerűbb, ha két vagy több réteget használ. Az alábbi példa három réteget használ, egy buborék réteget a fürtök mérete alapján méretezett színes körök rajzolásához, egy szimbólum réteget, amely a fürt méretét szövegként jeleníti meg, és egy második szimbólum réteget a nem fürtözött pontok megjelenítéséhez. Számos más módon is megjelenítheti a fürtözött adatmennyiségeket a Azure Maps kiemelve a [fürt pont](https://docs.microsoft.com/azure/azure-maps/clustering-point-data-web-sdk) adatdokumentációjában.
+Amikor fürtözött adatmegjelenítést alkalmaz a térképen, gyakran a legegyszerűbb, ha két vagy több réteget használ. Az alábbi példa három réteget használ, egy buborék réteget a fürtök mérete alapján méretezett színes körök rajzolásához, egy szimbólum réteget, amely a fürt méretét szövegként jeleníti meg, és egy második szimbólum réteget a nem fürtözött pontok megjelenítéséhez. Számos más módon is megjelenítheti a fürtözött adatmennyiségeket a Azure Maps kiemelve a [fürt pont](./clustering-point-data-web-sdk.md) adatdokumentációjában.
 
 A GeoJSON-adat közvetlenül importálható Azure Maps az `importDataFromUrl` osztályban található függvény használatával `DataSource` .
 
@@ -1051,10 +1051,10 @@ A GeoJSON-adat közvetlenül importálható Azure Maps az `importDataFromUrl` os
 
 **További források**
 
--   [Szimbólum réteg hozzáadása](https://docs.microsoft.com/azure/azure-maps/map-add-pin)
--   [Buborék réteg hozzáadása](https://docs.microsoft.com/azure/azure-maps/map-add-bubble-layer)
--   [Fürt pontadatai](https://docs.microsoft.com/azure/azure-maps/clustering-point-data-web-sdk)
--   [Adatvezérelt stíluskifejezések használata](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [Szimbólum réteg hozzáadása](./map-add-pin.md)
+-   [Buborék réteg hozzáadása](./map-add-bubble-layer.md)
+-   [Fürt pontadatai](./clustering-point-data-web-sdk.md)
+-   [Adatvezérelt stíluskifejezések használata](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="add-a-heat-map"></a>Hő-Térkép hozzáadása
 
@@ -1183,10 +1183,10 @@ A Azure Mapsban töltse be a GeoJSON egy adatforrásba, és kapcsolja össze az 
 
 **További források**
 
--   [Hőtérképréteg hozzáadása](https://docs.microsoft.com/azure/azure-maps/map-add-heat-map-layer)
--   [Heat Térkép réteg osztálya](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.heatmaplayer)
--   [Hő-Térkép réteg beállításai](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
--   [Adatvezérelt stíluskifejezések használata](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [Hőtérképréteg hozzáadása](./map-add-heat-map-layer.md)
+-   [Heat Térkép réteg osztálya](/javascript/api/azure-maps-control/atlas.layer.heatmaplayer)
+-   [Hő-Térkép réteg beállításai](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
+-   [Adatvezérelt stíluskifejezések használata](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="overlay-a-tile-layer"></a>Csempe rétegének átfedése
 
@@ -1238,9 +1238,9 @@ map.layers.add(new atlas.layer.TileLayer({
 
 **További források**
 
--   [Csemperétegek hozzáadása](https://docs.microsoft.com/azure/azure-maps/map-add-tile-layer)
--   [Csempe réteg osztálya](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer)
--   [Csempe rétegének beállításai](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.tilelayeroptions)
+-   [Csemperétegek hozzáadása](./map-add-tile-layer.md)
+-   [Csempe réteg osztálya](/javascript/api/azure-maps-control/atlas.layer.tilelayer)
+-   [Csempe rétegének beállításai](/javascript/api/azure-maps-control/atlas.tilelayeroptions)
 
 ### <a name="show-traffic-data"></a>Forgalomadatok megjelenítése
 
@@ -1284,7 +1284,7 @@ Ha a Azure Maps egyik forgalmi ikonjára kattint, további információk jelenne
 
 **További források**
 
--   [Forgalom megjelenítése a térképen](https://docs.microsoft.com/azure/azure-maps/map-show-traffic)
+-   [Forgalom megjelenítése a térképen](./map-show-traffic.md)
 -   [Forgalom átfedési beállításai](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Traffic%20Overlay%20Options)
 -   [Forgalom-ellenőrzés](https://azuremapscodesamples.azurewebsites.net/?sample=Traffic%20controls)
 
@@ -1344,7 +1344,7 @@ A kód böngészőben való futtatásakor megjelenik egy Térkép, amely a köve
 Azure Maps a georeferens képeket a osztály használatával lehet betakarni `atlas.layer.ImageLayer` . Ehhez az osztályhoz a rendszerkép egy URL-címe és egy koordináták halmaza szükséges a rendszerkép négy sarkánál. A rendszerképet ugyanazon a tartományon kell tárolni, vagy engedélyezve kell lennie a CORs.
 
 > [!TIP]
-> Ha csak Észak-, Dél-, Kelet-, Nyugat-és rotációs információkkal rendelkezik, és a képek minden sarkánál nem található koordináták, használhatja a statikus [Atlas. Layer. ImageLayer. getCoordinatesFromEdges](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer#getcoordinatesfromedges-number--number--number--number--number-) függvényt.
+> Ha csak Észak-, Dél-, Kelet-, Nyugat-és rotációs információkkal rendelkezik, és a képek minden sarkánál nem található koordináták, használhatja a statikus [Atlas. Layer. ImageLayer. getCoordinatesFromEdges](/javascript/api/azure-maps-control/atlas.layer.imagelayer#getcoordinatesfromedges-number--number--number--number--number-) függvényt.
 
 ```html
 <!DOCTYPE html>
@@ -1404,8 +1404,8 @@ Azure Maps a georeferens képeket a osztály használatával lehet betakarni `at
 
 **További források**
 
--   [Kép átfedése](https://docs.microsoft.com/azure/azure-maps/map-add-image-layer)
--   [Képréteg osztálya](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer)
+-   [Kép átfedése](./map-add-image-layer.md)
+-   [Képréteg osztálya](/javascript/api/azure-maps-control/atlas.layer.imagelayer)
 
 ### <a name="add-kml-data-to-the-map"></a>KML-adatértékek hozzáadása a térképhez
 
@@ -1467,7 +1467,7 @@ A kód böngészőben való futtatásakor megjelenik egy Térkép, amely a köve
 
 **Utána: Azure Maps**
 
-Azure Maps GeoJSON a web SDK-ban használt fő adatformátum, a további térbeli adatformátumok könnyen integrálhatók a [térbeli IO modul](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)használatával. Ez a modul a térbeli adatok olvasását és írását is magában foglalja, valamint egy egyszerű adatréteget is tartalmaz, amely könnyen megjelenítheti ezeket a térbeli adatformátumokból származó adatok bármelyikét. A térbeli adatfájlokban lévő információk beolvasásához adjon meg egy URL-címet vagy egy nyers adat karakterláncként vagy blobként a `atlas.io.read` függvénybe. Ezzel visszaadja a fájl összes elemzett adatait, amelyet aztán hozzáadhat a térképhez. A KML egy kicsit összetettebb, mint a legtöbb térbeli adatformátum, mivel sokkal több stílussal kapcsolatos információt tartalmaz. Az `SpatialDataLayer` osztály támogatja a stílusok renderelési többségét, azonban a szolgáltatásba való betöltés előtt az ikonokat be kell tölteni a térképbe, és a rendszernek külön fel kell vennie a terepeket a térképbe. Ha egy URL-címen keresztül tölt be egy adatkészletet, azt egy CORs-kompatibilis végponton kell üzemeltetni, vagy a proxy szolgáltatást az olvasási függvénynek kell átadnia.
+Azure Maps GeoJSON a web SDK-ban használt fő adatformátum, a további térbeli adatformátumok könnyen integrálhatók a [térbeli IO modul](/javascript/api/azure-maps-spatial-io/)használatával. Ez a modul a térbeli adatok olvasását és írását is magában foglalja, valamint egy egyszerű adatréteget is tartalmaz, amely könnyen megjelenítheti ezeket a térbeli adatformátumokból származó adatok bármelyikét. A térbeli adatfájlokban lévő információk beolvasásához adjon meg egy URL-címet vagy egy nyers adat karakterláncként vagy blobként a `atlas.io.read` függvénybe. Ezzel visszaadja a fájl összes elemzett adatait, amelyet aztán hozzáadhat a térképhez. A KML egy kicsit összetettebb, mint a legtöbb térbeli adatformátum, mivel sokkal több stílussal kapcsolatos információt tartalmaz. Az `SpatialDataLayer` osztály támogatja a stílusok renderelési többségét, azonban a szolgáltatásba való betöltés előtt az ikonokat be kell tölteni a térképbe, és a rendszernek külön fel kell vennie a terepeket a térképbe. Ha egy URL-címen keresztül tölt be egy adatkészletet, azt egy CORs-kompatibilis végponton kell üzemeltetni, vagy a proxy szolgáltatást az olvasási függvénynek kell átadnia.
 
 ```html
 <!DOCTYPE html>
@@ -1564,9 +1564,9 @@ Azure Maps GeoJSON a web SDK-ban használt fő adatformátum, a további térbel
 
 **További források**
 
--   [Atlas. IO. Read függvény](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io#read-string---arraybuffer---blob--spatialdatareadoptions-)
--   [SimpleDataLayer](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
--   [SimpleDataLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
+-   [Atlas. IO. Read függvény](/javascript/api/azure-maps-spatial-io/atlas.io#read-string---arraybuffer---blob--spatialdatareadoptions-)
+-   [SimpleDataLayer](/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
+-   [SimpleDataLayerOptions](/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
 
 ### <a name="add-drawing-tools"></a>Rajzolási eszközök hozzáadása
 
@@ -1683,7 +1683,7 @@ Azure Maps a rajzolási eszközök modulját be kell tölteni a JavaScript és a
 
 **További források**
 
--   [Dokumentáció](https://docs.microsoft.com/azure/azure-maps/set-drawing-options)
+-   [Dokumentáció](./set-drawing-options.md)
 -   [Kódminták](https://azuremapscodesamples.azurewebsites.net/#Drawing-Tools-Module)
 
 ## <a name="next-steps"></a>Következő lépések
@@ -1703,16 +1703,16 @@ Tekintse át a Bing Maps egyéb funkcióinak áttelepítéséhez kapcsolódó k�
 **Szolgáltatások**
 
 > [!div class="nextstepaction"]
-> [A Azure Maps Services modul használata](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module)
+> [A Azure Maps Services modul használata](./how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
-> [Hasznos helyek keresése](https://docs.microsoft.com/azure/azure-maps/map-search-location)
+> [Hasznos helyek keresése](./map-search-location.md)
 
 > [!div class="nextstepaction"]
-> [Adatok lekérése egy koordinátaből (fordított geocode)](https://docs.microsoft.com/azure/azure-maps/map-get-information-from-coordinate)
+> [Adatok lekérése egy koordinátaből (fordított geocode)](./map-get-information-from-coordinate.md)
 
 > [!div class="nextstepaction"]
-> [Útvonal megjelenítése A-ból B-be](https://docs.microsoft.com/azure/azure-maps/map-route)
+> [Útvonal megjelenítése A-ból B-be](./map-route.md)
 
 > [!div class="nextstepaction"]
 > [Automatikus javaslat keresése a JQuery felhasználói felülettel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Search%20Autosuggest%20and%20JQuery%20UI)
@@ -1729,7 +1729,7 @@ További információ a Azure Maps web SDK-ról.
 > [A rajzolási eszközök modul használata](set-drawing-options.md)
 
 > [!div class="nextstepaction"]
-> [Kódminták](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Kódminták](/samples/browse/?products=azure-maps)
 
 > [!div class="nextstepaction"]
-> [Azure Maps web SDK szolgáltatás API-referenciájának dokumentációja](https://docs.microsoft.com/javascript/api/azure-maps-control/)
+> [Azure Maps web SDK szolgáltatás API-referenciájának dokumentációja](/javascript/api/azure-maps-control/)

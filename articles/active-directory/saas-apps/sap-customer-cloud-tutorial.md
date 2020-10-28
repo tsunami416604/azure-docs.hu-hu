@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: jeedes
-ms.openlocfilehash: feb65d11c525b396e272c8a43ad9619d10a010d8
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 9b244d5e6aa9dd732aa670fd645b6bbc266c9535
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671202"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897279"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-for-customer"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az SAP Cloud-nal az ügyfelek számára
 
@@ -86,13 +86,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az ügyfél-alkalmazáshoz készült SAP-felhő adott formátumban elvárja az SAML-állításokat, így egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
 
-    ![image](common/edit-attribute.png)
+    ![A "felhasználó attribútumai" párbeszédpanelt megjelenítő képernyőkép, amelyben a "szerkesztés" ikon van kiválasztva.](common/edit-attribute.png)
 
 1. A felhasználói **attribútumok** **& a jogcímek** párbeszédpanelen hajtsa végre a következő lépéseket:
 
     a. Kattintson a **Szerkesztés ikonra** a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
-    ![image](./media/sap-customer-cloud-tutorial/tutorial_usermail.png)
+    ![Képernyőfelvétel: a "szerkesztés" ikon kiválasztásával megjelenítheti a "felhasználói attribútumok & jogcímek" kifejezést.](./media/sap-customer-cloud-tutorial/tutorial_usermail.png)
 
     ![image](./media/sap-customer-cloud-tutorial/tutorial_usermailedit.png)
 
@@ -149,11 +149,11 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 2. A menü bal oldalán kattintson az **Identitáskezelő**  >  **vállalati identitás-szolgáltatók**  >  **Hozzáadás** elemre, majd az előugró ablakban adja meg az identitás-szolgáltató nevét (például az **Azure ad** -t), kattintson a **Mentés** , majd a **SAML 2,0-konfiguráció** elemre.
 
-    ![SAP-konfiguráció](./media/sap-customer-cloud-tutorial/configure01.png)
+    ![Képernyőkép, amely megjeleníti a "személyazonosság-szolgáltató hozzáadása" párbeszédpanelt és a kiválasztott "Mentés" gombot.](./media/sap-customer-cloud-tutorial/configure01.png)
 
 3. A **SAML 2,0 konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    ![SAP-konfiguráció](./media/sap-customer-cloud-tutorial/configure02.png)
+    ![A "Tallózás" gomb kiválasztásával megjelenített "S A M L 2,0 konfiguráció".](./media/sap-customer-cloud-tutorial/configure02.png)
 
     a. Kattintson a **Tallózás** gombra az összevonási metaadatok XML-fájljának feltöltéséhez, amelyet a Azure Portal letöltött.
 
@@ -169,7 +169,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek az S
 
 2. A menü bal oldalán kattintson a **felhasználók & engedélyek**  >  **felhasználói kezelés** felhasználó  >  **hozzáadása** elemre.
 
-    ![SAP-konfiguráció](./media/sap-customer-cloud-tutorial/configure03.png)
+    ![Képernyőkép, amely a "felhasználó hozzáadása" gomb kiválasztásával jeleníti meg a "felhasználói kezelés" lapot.](./media/sap-customer-cloud-tutorial/configure03.png)
 
 3. Az **új felhasználó hozzáadása** szakaszban hajtsa végre a következő lépéseket:
 

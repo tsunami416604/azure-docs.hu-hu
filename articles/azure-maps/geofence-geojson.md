@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 27a2fee04afc559a8564aea5e112de07e9c0dcf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e880710b93a6764df50780e685c89b5f569b4ec0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037405"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897194"
 ---
 # <a name="geofencing-geojson-data"></a>Geokerítések GeoJSON-adatbázis
 
@@ -40,7 +40,7 @@ A geokerítésen vagy geofences vonatkozó adatmennyiséget `Feature` objektum �
 
 * Az összes koordináta-érték [hosszúság, szélesség] szerint van megadva a ben `WGS84` .
 * Minden olyan szolgáltatás esetében, amely tartalmazza a, a, `MultiPoint` `MultiLineString` `MultiPolygon` vagy `GeometryCollection` a tulajdonságokat, a rendszer az összes elemre alkalmazza a tulajdonságokat. például: a (z) minden pontja `MultiPoint` ugyanazt a sugarat fogja használni, hogy több kör alakú geokerítésen.
-* A pont-kör forgatókönyvben a kör alakú geometria egy geometriai objektum használatával ábrázolható, `Point` amely a [GeoJSON geometriák kiterjesztésével lett kibővítve](https://docs.microsoft.com/azure/azure-maps/extend-geojson).      
+* A pont-kör forgatókönyvben a kör alakú geometria egy geometriai objektum használatával ábrázolható, `Point` amely a [GeoJSON geometriák kiterjesztésével lett kibővítve](./extend-geojson.md).      
 
 A következő példa egy minta-kérelem törzse, amely egy geokerítésen és egy sugarat használó kör alakú geokerítésen geometriát jelöl `GeoJSON` . A geokerítésen-adatok érvényes időtartama 2018-10-22, 9:00 és 17:00 között, a hétvégén kívül minden nap megismétlődik. `expiredTime` azt jelzi, hogy ez a geokerítésen-érték lejártnak minősül, ha `userTime` a kérelem későbbi, mint `2019-01-01` .  
 

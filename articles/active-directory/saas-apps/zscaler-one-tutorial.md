@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 2111b9421915f7369e524f8438150ead0e331554
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: d55e02bd981a220fee55a0abd540206a2701850a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519792"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896837"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-one"></a>Oktatóanyag: Azure Active Directory integráció az Zscaler One-nal
 
@@ -63,13 +63,13 @@ A Zscaler egy Azure AD-ba való integrálásának konfigurálásához hozzá kel
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Zscaler**kifejezést, válassza ki a **Zscaler egyet** az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Zscaler** kifejezést, válassza ki a **Zscaler egyet** az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![Zscaler egyet az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálhatja és tesztelheti a Zscaler egy **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálhatja és tesztelheti a Zscaler egy **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Zscaler-beli kapcsolódó felhasználó közötti kapcsolatra van szükség.
 
 Az Azure AD egyszeri bejelentkezés az Zscaler való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -87,7 +87,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Ha az Azure AD egyszeri bejelentkezést az Zscaler-mel szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **Zscaler egy** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **Zscaler egy** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -110,25 +110,25 @@ Ha az Azure AD egyszeri bejelentkezést az Zscaler-mel szeretné konfigurálni, 
 
 5. Az Zscaler egy alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
-    ![image](common/edit-attribute.png)
+    ![A képernyőképen a szerkesztési ikonnal jelölt felhasználói attribútumok láthatók.](common/edit-attribute.png)
 
 6. A fentiek mellett a Zscaler egy alkalmazás néhány további attribútumot vár az SAML-válaszban. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
     
-    | Name | Forrás attribútum |
+    | Name (Név) | Forrás attribútum |
     | ---------| ------------ |
     | memberOf     | User. assignedroles |
 
     a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
-    ![image](common/new-save-attribute.png)
+    ![Képernyőfelvétel: a felhasználói jogcímek új jogcím hozzáadására szolgáló lehetőséggel jelennek meg.](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![Képernyőfelvétel: a felhasználói jogcímek kezelése párbeszédpanel, amelyen megadhatja a leírt értékeket.](common/new-attribute-details.png)
 
     b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
 
     c. Hagyja üresen a **névteret** .
 
-    d. Válassza a forrás **attribútumként**lehetőséget.
+    d. Válassza a forrás **attribútumként** lehetőséget.
 
     e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
     
@@ -153,7 +153,7 @@ Ha az Azure AD egyszeri bejelentkezést az Zscaler-mel szeretné konfigurálni, 
 
 ### <a name="configure-zscaler-one-single-sign-on"></a>Zscaler konfigurálása egyetlen Sign-On
 
-1. Ha az Zscaler-n belül szeretné automatizálni a konfigurációt, telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
+1. Ha az Zscaler-n belül szeretné automatizálni a konfigurációt, telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva.
 
     ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
@@ -165,11 +165,11 @@ Ha az Azure AD egyszeri bejelentkezést az Zscaler-mel szeretné konfigurálni, 
 
 4. Lépjen az **adminisztráció > hitelesítés > hitelesítési beállítások** lapra, és hajtsa végre a következő lépéseket:
    
-    ![Felügyelet](./media/zscaler-one-tutorial/ic800206.png "Felügyelet")
+    ![A képernyőképen a Zscaler egy hely jelenik meg, amely a leírt lépéseket ismerteti.](./media/zscaler-one-tutorial/ic800206.png "Felügyelet")
 
-    a. A hitelesítés típusa területen válassza az **SAML**elemet.
+    a. A hitelesítés típusa területen válassza az **SAML** elemet.
 
-    b. Kattintson az **SAML konfigurálása**elemre.
+    b. Kattintson az **SAML konfigurálása** elemre.
 
 5. Az **SAML szerkesztése** ablakban hajtsa végre a következő lépéseket:, majd kattintson a Mentés gombra.  
             
@@ -177,11 +177,11 @@ Ha az Azure AD egyszeri bejelentkezést az Zscaler-mel szeretné konfigurálni, 
     
     a. Az **SAML-portál URL-címe** szövegmezőbe illessze be a Azure Portalból másolt **bejelentkezési URL-címet** .
 
-    b. A **bejelentkezési név attribútum** szövegmezőbe írja be a **NameID**nevet.
+    b. A **bejelentkezési név attribútum** szövegmezőbe írja be a **NameID** nevet.
 
-    c. Kattintson a **feltöltés**gombra, és töltse fel a **nyilvános SSL-tanúsítványban**Azure Portal letöltött Azure SAML-aláíró tanúsítványt.
+    c. Kattintson a **feltöltés** gombra, és töltse fel a **nyilvános SSL-tanúsítványban** Azure Portal letöltött Azure SAML-aláíró tanúsítványt.
 
-    d. Az **SAML automatikus kiépítés engedélyezése**.
+    d. Az **SAML automatikus kiépítés engedélyezése** .
 
     e. A **felhasználó megjelenített név attribútuma** szövegmezőbe írja be a **DisplayName** értéket, ha engedélyezni szeretné az SAML automatikus kiépítési lehetőséget a DisplayName attribútumokhoz.
 
@@ -193,16 +193,16 @@ Ha az Azure AD egyszeri bejelentkezést az Zscaler-mel szeretné konfigurálni, 
 
 6. A **felhasználói hitelesítés konfigurálása** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Felügyelet](./media/zscaler-one-tutorial/ic800207.png)
+    ![Képernyőfelvétel: a felhasználói hitelesítés konfigurálása párbeszédpanel a kiválasztott aktiválással.](./media/zscaler-one-tutorial/ic800207.png)
 
     a. Vigye az egérmutatót a bal alsó sarokban található **aktiválási** menü fölé.
 
-    b. Kattintson az **aktiválás**gombra.
+    b. Kattintson az **aktiválás** gombra.
 
 ## <a name="configuring-proxy-settings"></a>Proxybeállítások konfigurálása
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Proxybeállítások konfigurálása az Internet Explorerben
 
-1. Indítsa el az **Internet Explorert**.
+1. Indítsa el az **Internet Explorert** .
 
 2. **Az Internetbeállítások párbeszédpanel** megnyitásához válassza az **eszközök** menü **Internetbeállítások** elemét.   
     
@@ -218,13 +218,13 @@ Ha az Azure AD egyszeri bejelentkezést az Zscaler-mel szeretné konfigurálni, 
    
     ![Proxykiszolgáló](./media/zscaler-one-tutorial/ic769494.png "Proxykiszolgáló")
 
-    a. Válassza **a proxykiszolgáló használata a LAN**-hoz lehetőséget.
+    a. Válassza **a proxykiszolgáló használata a LAN** -hoz lehetőséget.
 
-    b. A címek szövegmezőbe írja be az **átjáró értéket. Zscaler One.net**.
+    b. A címek szövegmezőbe írja be az **átjáró értéket. Zscaler One.net** .
 
-    c. A port szövegmezőbe írja be a következőt: **80**.
+    c. A port szövegmezőbe írja be a következőt: **80** .
 
-    d. Válassza **a proxykiszolgáló kihagyása helyi címeknél**lehetőséget.
+    d. Válassza **a proxykiszolgáló kihagyása helyi címeknél** lehetőséget.
 
     e. A **helyi hálózati (LAN) beállítások** párbeszédpanel bezárásához kattintson **az OK** gombra.
 
@@ -234,7 +234,7 @@ Ha az Azure AD egyszeri bejelentkezést az Zscaler-mel szeretné konfigurálni, 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -252,21 +252,21 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a Zscaler.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza az **Zscaler egyet**.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza az **Zscaler egyet** .
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza ki a **Zscaler egyet**.
+2. Az alkalmazások listában válassza ki a **Zscaler egyet** .
 
     ![Az Zscaler egy hivatkozást az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -276,15 +276,15 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 5. A **felhasználók és csoportok** párbeszédpanelen válassza ki a **Britta Simon** elemet a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-    ![image](./media/zscaler-one-tutorial/tutorial_zscalerone_users.png)
+    ![Képernyőfelvétel: a felhasználók és csoportok párbeszédpanel, ahol kijelölhet egy felhasználót.](./media/zscaler-one-tutorial/tutorial_zscalerone_users.png)
 
 6. A **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő felhasználói szerepkört a listában, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-    ![image](./media/zscaler-one-tutorial/tutorial_zscalerone_roles.png)
+    ![Képernyőfelvétel: a szerepkör kiválasztása párbeszédpanel, ahol kiválaszthat egy felhasználói szerepkört.](./media/zscaler-one-tutorial/tutorial_zscalerone_roles.png)
 
 7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-    ![image](./media/zscaler-one-tutorial/tutorial_zscalerone_assign.png)
+    ![Képernyőfelvétel: a hozzárendelés hozzáadása párbeszédpanel, ahol kiválaszthatja a hozzárendelés lehetőséget.](./media/zscaler-one-tutorial/tutorial_zscalerone_assign.png)
 
 ### <a name="create-zscaler-one-test-user"></a>Zscaler létrehozása egy tesztelési felhasználóval
 

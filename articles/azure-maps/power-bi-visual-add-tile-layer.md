@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 8a0d930d1c0fd30c48d97b0d1d4b94548077fbca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ab99f32932f39d5ad140b7a16d16ceae30fff54
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86261943"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896208"
 ---
 # <a name="add-a-tile-layer"></a>Mozaikréteg hozzáadása
 
@@ -57,13 +57,13 @@ A csempe URL-címe egy, a csempe URL-sablonjának HTTPS-URL-címe, amely a köve
 -   `{quadkey}` – `quadkey` A csempe azonosítója a Bing Maps csempe rendszerelnevezési konvenciója alapján.
 -   `{bbox-epsg-3857}` – Egy határolókeret karakterlánca, amely a `{west},{south},{east},{north}` EPSG 3857 térbeli hivatkozási rendszer formátumát jelöli.
 
-Az alábbi példa egy formázott csempe-URL-címet mutat be a Azure Maps [időjárási radar csempe szolgáltatásához](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) . Vegye figyelembe, hogy a `[subscription-key]` Azure Maps előfizetési kulcsának helyőrzője.
+Az alábbi példa egy formázott csempe-URL-címet mutat be a Azure Maps [időjárási radar csempe szolgáltatásához](/rest/api/maps/renderv2/getmaptilepreview) . Vegye figyelembe, hogy a `[subscription-key]` Azure Maps előfizetési kulcsának helyőrzője.
 
 > `https://atlas.microsoft.com/map/tile?zoom={z}&x={x}&y={y}&tilesetId=microsoft.weather.radar.main&api-version=2.0&subscription-key=[subscription-key]`
 
-A Azure Maps csempe rendszerével kapcsolatos további információkért lásd: [nagyítási szintek és csempék rácsa](zoom-levels-and-tile-grid.md).
+A Azure Maps csempe rendszerével kapcsolatos további információkért lásd: [nagyítási szintek és csempék rácsa](zoom-levels-and-tile-grid.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További környezet hozzáadása a térképhez:
 

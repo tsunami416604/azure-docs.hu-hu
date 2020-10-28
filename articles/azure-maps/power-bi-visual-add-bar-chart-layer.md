@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 6a686f6915e332893f619e66944591999063a07c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 136676b46df6e32f98dca99fccba19d4aa369dbe
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288170"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896276"
 ---
 # <a name="add-a-bar-chart-layer"></a>Oszlopdiagram-réteg hozzáadása
 
@@ -55,7 +55,7 @@ A következő beállítások szerepelnek a **sávdiagramok réteg** szakaszban e
 > [!NOTE]
 > Ha a sávoknál kis szélességű érték van letiltva, és a **Méretezés szélessége a nagyítási** beállításnál le van tiltva, akkor eltűnnek, ha a kinagyított szélessége nagyobb, mint a képpontnál kisebb méret. Ha azonban a **méretezési szélesség a nagyításkor** beállítás engedélyezve van, további számítások történnek, amikor a nagyítási szint megváltozik, ami hatással lehet a nagyméretű adathalmazok teljesítményére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További környezet hozzáadása a térképhez:
 
@@ -71,7 +71,7 @@ További környezet hozzáadása a térképhez:
 A vizualizáció testreszabása:
 
 > [!div class="nextstepaction"]
-> [Színformázási tippek és trükkök a Power BI-hoz](https://docs.microsoft.com/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
+> [Színformázási tippek és trükkök a Power BI-hoz](/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
 
 > [!div class="nextstepaction"]
-> [A vizualizáció címeinek, háttereinek és jelmagyarázatainak testreszabása](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)
+> [A vizualizáció címeinek, háttereinek és jelmagyarázatainak testreszabása](/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)

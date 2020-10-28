@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4a50a9d6d4a485f7d8e63adb9ae5032f49edc261
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3404c02dc159309ed1e9fcd6f9f6bb593fc7552
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310356"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896939"
 ---
 # <a name="azure-maps-supported-built-in-map-styles"></a>Azure Maps támogatott beépített Térkép stílusa
 
@@ -27,8 +27,8 @@ A **közúti** Térkép egy szabványos Térkép, amely az utakat jeleníti meg.
 
 **Alkalmazható API-k:**
 
-* [Térkép képe](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Térkép csempe](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [Térkép képe](/rest/api/maps/render/getmapimage)
+* [Térkép csempe](/rest/api/maps/render/getmaptile)
 * Web SDK Térkép vezérlőelem
 * Android Térkép vezérlőelem
 * Power BI-vizualizáció
@@ -52,7 +52,7 @@ A **műhold** stílusa a szatellit és a légi felvételek kombinációja.
 
 **Alkalmazható API-k:**
 
-* [Műholdas csempe](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
+* [Műholdas csempe](/rest/api/maps/render/getmapimagerytilepreview)
 * Web SDK Térkép vezérlőelem
 * Android Térkép vezérlőelem
 * Power BI-vizualizáció
@@ -77,8 +77,8 @@ a **szürkeárnyalatos sötét** a közúti Térkép stílusának sötét válto
 
 **Alkalmazható API-k:**
 
-* [Térkép képe](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Térkép csempe](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [Térkép képe](/rest/api/maps/render/getmapimage)
+* [Térkép csempe](/rest/api/maps/render/getmaptile)
 * Web SDK Térkép vezérlőelem
 * Android Térkép vezérlőelem
 * Power BI-vizualizáció
@@ -114,7 +114,7 @@ a **közúti árnyékolt Relief** egy Azure Maps fő stílus, amelyet a föld k�
 
 **Alkalmazható API-k:**
 
-* [Térkép csempe](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [Térkép csempe](/rest/api/maps/render/getmaptile)
 * Web SDK Térkép vezérlőelem
 * Android Térkép vezérlőelem
 * Power BI-vizualizáció
@@ -134,4 +134,4 @@ a **közúti árnyékolt Relief** egy Azure Maps fő stílus, amelyet a föld k�
 
 Ismerje meg, hogyan állíthat be leképezési stílust a Azure Mapsban:
 
-[Térképstílus kiválasztása](https://docs.microsoft.com/azure/azure-maps/choose-map-style)
+[Térképstílus kiválasztása](./choose-map-style.md)

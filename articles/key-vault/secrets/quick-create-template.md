@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 02/27/2020
 ms.author: jgao
-ms.openlocfilehash: cff67e99d40b092341e89c96a9f1e037d8572248
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 68c10ba5581ffe404e8e3c1ac8ce92832cfcd6c4
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88690629"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896429"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-an-arm-template"></a>Gyors útmutató: Azure Key Vault titkos kód beállítása és beolvasása ARM-sablon használatával
 
@@ -32,11 +32,11 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonoka
 
 A cikk elvégzéséhez:
 
-* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+* Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * A sablonnak szüksége van az ÖN Azure AD-felhasználói objektumazonosítójára az engedélyek konfigurálásához. Az alábbi eljárás az objektumazonosító (GUID) beolvasása.
 
-    1. Futtassa a következő Azure PowerShell vagy Azure CLI-parancsot a **kipróbálás**lehetőség kiválasztásával, majd illessze be a szkriptet a rendszerhéj ablaktáblába. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés**lehetőséget.
+    1. Futtassa a következő Azure PowerShell vagy Azure CLI-parancsot a **kipróbálás** lehetőség kiválasztásával, majd illessze be a szkriptet a rendszerhéj ablaktáblába. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés** lehetőséget.
 
         # <a name="cli"></a>[Parancssori felület](#tab/CLI)
         ```azurecli-interactive
@@ -82,15 +82,15 @@ További Azure Key Vault-sablonok találhatók az [Azure Gyorsindítás sablonja
 
     Ha meg van adva, az alapértelmezett érték használatával hozza létre a kulcstartót és a titkos kulcsot.
 
-    * **Előfizetés**: válasszon ki egy Azure-előfizetést.
-    * **Erőforráscsoport**: válassza az **új létrehozása**lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK**gombra.
-    * **Hely**: válasszon ki egy helyet. Például: **USA középső régiója**.
-    * **Key Vault neve**: adja meg a Key Vault nevét, amelynek globálisan egyedinek kell lennie a. Vault.Azure.net névtérben. A telepítés ellenőrzésekor a következő szakaszban kell megadnia a nevet.
-    * **Bérlő azonosítója**: a sablon függvény automatikusan lekéri a bérlő azonosítóját. Ne módosítsa az alapértelmezett értéket.
-    * **Ad felhasználói azonosító**: adja meg az [előfeltételekből](#prerequisites)beolvasott Azure ad felhasználói objektum azonosítóját.
-    * **Titkos kód neve**: adja meg a Key vaultban tárolt titok nevét. Például: **AdminPassword**.
-    * **Titkos érték**: adja meg a titkos értéket. Ha jelszót tárol, azt javasoljuk, hogy használja az előfeltételekben létrehozott generált jelszót.
-    * **Elfogadom a fenti használati feltételeket**: Válassza ezt.
+    * **Előfizetés** : válasszon ki egy Azure-előfizetést.
+    * **Erőforráscsoport** : válassza az **új létrehozása** lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK** gombra.
+    * **Hely** : válasszon ki egy helyet. Például: **USA középső régiója** .
+    * **Key Vault neve** : adja meg a Key Vault nevét, amelynek globálisan egyedinek kell lennie a. Vault.Azure.net névtérben. A telepítés ellenőrzésekor a következő szakaszban kell megadnia a nevet.
+    * **Bérlő azonosítója** : a sablon függvény automatikusan lekéri a bérlő azonosítóját. Ne módosítsa az alapértelmezett értéket.
+    * **Ad felhasználói azonosító** : adja meg az [előfeltételekből](#prerequisites)beolvasott Azure ad felhasználói objektum azonosítóját.
+    * **Titkos kód neve** : adja meg a Key vaultban tárolt titok nevét. Például: **AdminPassword** .
+    * **Titkos érték** : adja meg a titkos értéket. Ha jelszót tárol, azt javasoljuk, hogy használja az előfeltételekben létrehozott generált jelszót.
+    * **Elfogadom a fenti használati feltételeket** : Válassza ezt.
 3. Válassza a **Beszerzés** lehetőséget. A Key Vault sikeres üzembe helyezését követően értesítést kap:
 
     ![ARM-sablon, Key Vault integráció, portál-értesítés üzembe helyezése](../media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
@@ -124,7 +124,7 @@ A kimenet a következőhöz hasonlóan néz ki:
 
 # <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
-![ARM-sablon, Key Vault integráció, portál-ellenőrzési kimenet üzembe helyezése](../media/quick-create-template/resource-manager-template-portal-deployment-cli-output.png)
+![Képernyőkép: a portál érvényesítési kimenetének üzembe helyezése a CLI-ben.](../media/quick-create-template/resource-manager-template-portal-deployment-cli-output.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
@@ -132,7 +132,7 @@ A kimenet a következőhöz hasonlóan néz ki:
 
 ---
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Erre a rövid útmutatóra egyéb Key Vault-útmutatók és oktatóanyagok is épülnek. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, ne törölje ezeket az erőforrásokat.
 Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a kulcstartót és a kapcsolódó erőforrásokat is. Az erőforráscsoport törlése az Azure CLI vagy a Azure PowerShell használatával:

@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d902258c80467380518df3b55583cea1efa76609
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64767f83dfad2b0c2909e8a89b55c849d5c5a9a9
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119310"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896990"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>Oktatóanyag: feltétel használata ARM-sablonokban
 
@@ -26,7 +26,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Gyorsindítási sablon megnyitása
 > * A sablon módosítása
 > * A sablon üzembe helyezése
-> * Az erőforrások eltávolítása
+> * Az erőforrások felszabadítása
 
 Ez az oktatóanyag csak a feltételek használatának alapvető forgatókönyvét tárgyalja. További információkért lásd:
 
@@ -54,7 +54,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 Az Azure Gyorsindítás sablonjai az ARM-sablonok tárháza. Teljesen új sablon létrehozása helyett kereshet egy mintasablont, és testre szabhatja azt. A jelen oktatóanyagban használt sablon [egyszerű, windowsos virtuális gép üzembe helyezése](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) néven található meg.
 
-1. A Visual Studio Code-ból válassza a **fájl** > **megnyitott**fájl elemet.
+1. A Visual Studio Code-ból válassza a **fájl** > **megnyitott** fájl elemet.
 1. A **File name** (Fájlnév) mezőbe illessze be a következő URL-címet:
 
     ```url
@@ -73,7 +73,7 @@ Az Azure Gyorsindítás sablonjai az ARM-sablonok tárháza. Teljesen új sablon
 
     A sablon testreszabása előtt hasznos áttekinteni a sablon hivatkozását.
 
-1. Válassza a **fájl** > **Mentés másként** lehetőséget a fájl másolatának mentéséhez a helyi számítógépre **azuredeploy.js**a következő néven:.
+1. Válassza a **fájl** > **Mentés másként** lehetőséget a fájl másolatának mentéséhez a helyi számítógépre **azuredeploy.js** a következő néven:.
 
 ## <a name="modify-the-template"></a>A sablon módosítása
 
@@ -88,7 +88,7 @@ A következő eljárással hajthatja végre a módosításokat:
 1. Cserélje le a három **változót ("storageAccountName")** a teljes sablonban található **paraméterekkel ("storageAccountName")** .
 1. Távolítsa el az alábbi változódefiníciót:
 
-    ![Resource Manager-sablon használati feltételeinek diagramja](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
+    ![Képernyőkép, amely kiemeli az eltávolítandó változók definícióit.](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
 
 1. Adja hozzá a következő két paramétert a paraméterek szakasz elejéhez:
 
@@ -121,7 +121,7 @@ A következő eljárással hajthatja végre a módosításokat:
 
     A frissített tárfiók-definíció a következőképpen néz ki:
 
-    ![Feltétel használata a Resource Managerben](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
+    ![A Storage-fiók frissített definícióját megjelenítő képernyőkép.](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
 1. Frissítse a virtuális gép erőforrás-definíciójának **storageUri** tulajdonságát a következő értékkel:
 
     ```json
@@ -140,7 +140,7 @@ A következő eljárással hajthatja végre a módosításokat:
 
     ![Azure Portal Cloud Shell fájl feltöltése](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Kattintson a **Fájlok feltöltése/letöltése**, majd a **Feltöltés** elemre. Lásd az előző képernyőképet. Válassza ki a korábbi szakaszban mentett fájlt. A fájl feltöltése után az **ls** parancs és a **Cat** parancs használatával ellenőrizheti, hogy a fájl feltöltése sikeresen megtörtént-e.
+1. Kattintson a **Fájlok feltöltése/letöltése** , majd a **Feltöltés** elemre. Lásd az előző képernyőképet. Válassza ki a korábbi szakaszban mentett fájlt. A fájl feltöltése után az **ls** parancs és a **Cat** parancs használatával ellenőrizheti, hogy a fájl feltöltése sikeresen megtörtént-e.
 
 1. Futtassa a következő PowerShell-szkriptet a sablon telepítéséhez.
 
@@ -172,13 +172,13 @@ A következő eljárással hajthatja végre a módosításokat:
     ```
 
     > [!NOTE]
-    > Az üzembe helyezés meghiúsul, ha a **newOrExisting** paraméter értéke **new**, de a megadott névvel rendelkező tárfiók már létezik.
+    > Az üzembe helyezés meghiúsul, ha a **newOrExisting** paraméter értéke **new** , de a megadott névvel rendelkező tárfiók már létezik.
 
 Próbáljon meg egy másik üzemelő példányt a **newOrExisting** beállítással a "meglévő" értékre állítani, és adjon meg egy meglévő Storage-fiókot. Ha a művelet előtt szeretne létrehozni egy tárfiókot, tekintse meg a [tárfiók létrehozását](../../storage/common/storage-account-create.md) ismertető útmutatót.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
-Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével. Az erőforráscsoport törléséhez válassza a **kipróbálás** lehetőséget a Cloud Shell megnyitásához. A PowerShell-parancsfájl beillesztéséhez kattintson a jobb gombbal a rendszerhéj ablaktáblára, majd válassza a **Beillesztés**lehetőséget.
+Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével. Az erőforráscsoport törléséhez válassza a **kipróbálás** lehetőséget a Cloud Shell megnyitásához. A PowerShell-parancsfájl beillesztéséhez kattintson a jobb gombbal a rendszerhéj ablaktáblára, majd válassza a **Beillesztés** lehetőséget.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name you used in the last procedure"
@@ -189,7 +189,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy olyan sablont állított össze, amellyel a felhasználók maguk dönthetik el, hogy új tárfiókot hoznak létre, vagy egy meglévőt használnak. Ha szeretné megtudni, hogyan kérheti le az Azure Key Vaultban tárolt titkos kódokat, és hogyan használhatja azokat jelszóként sablonok üzembe helyezésekor, tekintse meg a következőt:
 

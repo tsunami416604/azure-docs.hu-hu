@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 9c2160a241243b59ca7adda99fe2100d416c55be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 981697211cf8ee0aff1ac0e3d0db6000c1089c00
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335262"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896849"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Oktatóanyag: tároló-lokátor létrehozása Azure Maps használatával
 
@@ -76,7 +76,7 @@ Az áruházbeli lokátor alkalmazás fejlesztése előtt létre kell hoznia egy 
 
 Az alábbi észrevételeket követve megtekintheti az adatképernyőképet:
 
-* A helyadatok tárolása a **AddressLine**, a **város**, az **önkormányzat** (megye), a **AdminDivision** (állam/tartomány), az **Irányítószám** (postai kód) és az **ország** oszlopai alapján történik.  
+* A helyadatok tárolása a **AddressLine** , a **város** , az **önkormányzat** (megye), a **AdminDivision** (állam/tartomány), az **Irányítószám** (postai kód) és az **ország** oszlopai alapján történik.  
 * A **szélesség** és **hosszúság** oszlop az egyes contoso Coffee Coffee Shop-helyek koordinátáit tartalmazza. Ha nem rendelkezik koordináta-információkkal, a Azure Maps keresési szolgáltatásaival meghatározhatja a hely koordinátáit.
 * Néhány további oszlop a kávézókkal kapcsolatos metaadatokat tartalmaz: egy telefonszámot, egy logikai oszlopot, valamint a nyitó és a záró időpontot 24 órás formátumban. A logikai oszlopok a Wi-Fi és a kerekesszékes kisegítő lehetőségek. Létrehozhat saját oszlopokat is, amelyek a tartózkodási hely adataihoz kapcsolódó metaadatokat tartalmaznak.
 
@@ -87,7 +87,7 @@ Számos módon teheti elérhetővé az adatkészletet az alkalmazás számára. 
 
 Egy másik módszer az adatkészlet átalakítása egy egyszerű szövegfájlba, amelyet a böngésző könnyen elemez. Maga a fájl a többi alkalmazással is üzemeltethető. Ez a lehetőség egyszerűen megtartja a dolgokat, de ez a lehetőség csak kisebb adatkészletek esetében hasznos, mert a felhasználó letölti az összes adatát. Ehhez az adatkészlethez az egyszerű szövegfájlt használjuk, mert az adatfájl mérete kisebb, mint 1 MB.  
 
-Ha a munkafüzetet egy sima szövegfájlba szeretné átalakítani, mentse a munkafüzetet tabulátorral tagolt fájlként. Az egyes oszlopokat tabulátor karakterekkel tagoljuk, így az oszlopok könnyen elemezhetők a kódban. Vesszővel tagolt (CSV) formátumot használhat, de ez a beállítás több elemzési logikát igényel. A körülötte található vesszőt tartalmazó mezők idézőjelekkel lesznek becsomagolva. Ha ezeket az adatfájlokat tabulátorral tagolt fájlként szeretné exportálni az Excelben, válassza a **Mentés másként**lehetőséget. A fájltípus **legördülő listából** válassza a **szöveg (tabulátorral tagolt) (*. txt)** lehetőséget. Nevezze el a fájlt *ContosoCoffee.txt*.
+Ha a munkafüzetet egy sima szövegfájlba szeretné átalakítani, mentse a munkafüzetet tabulátorral tagolt fájlként. Az egyes oszlopokat tabulátor karakterekkel tagoljuk, így az oszlopok könnyen elemezhetők a kódban. Vesszővel tagolt (CSV) formátumot használhat, de ez a beállítás több elemzési logikát igényel. A körülötte található vesszőt tartalmazó mezők idézőjelekkel lesznek becsomagolva. Ha ezeket az adatfájlokat tabulátorral tagolt fájlként szeretné exportálni az Excelben, válassza a **Mentés másként** lehetőséget. A fájltípus **legördülő listából** válassza a **szöveg (tabulátorral tagolt) (*. txt)** lehetőséget. Nevezze el a fájlt *ContosoCoffee.txt* .
 
 ![Képernyőfelvétel a fájltípus párbeszédpanelről](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)
 
@@ -95,17 +95,17 @@ Ha a Jegyzettömbben megnyitja a szövegfájlt, az a következő ábrához hason
 
 ![Képernyőfelvétel egy tabulátorral tagolt adatkészletet megjelenítő Jegyzettömb-fájlról](./media/tutorial-create-store-locator/StoreDataTabFile.png)
 
-## <a name="set-up-the-project"></a>A projekt beállítása
+## <a name="set-up-the-project"></a>A projekt előkészítése
 
-A projekt létrehozásához használhatja a [Visual studiót](https://visualstudio.microsoft.com) vagy az Ön által választott programkód-szerkesztőt. A Project mappában hozzon létre három fájlt: *index.html*, *index. css*és *index.js*. Ezek a fájlok határozzák meg az alkalmazás elrendezését, stílusát és logikáját. Hozzon létre egy *adatmappa nevű mappát* , és adja hozzá *ContosoCoffee.txt* a mappához. Hozzon létre egy másik mappát a *képek*nevű mappában. Ebben az alkalmazásban 10 lemezképet használunk a térképen látható ikonokhoz, gombokhoz és jelölőhöz. [Ezeket a lemezképeket letöltheti](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). A projekt mappájának ekkor az alábbi ábrához hasonlóan kell kinéznie:
+A projekt létrehozásához használhatja a [Visual studiót](https://visualstudio.microsoft.com) vagy az Ön által választott programkód-szerkesztőt. A Project mappában hozzon létre három fájlt: *index.html* , *index. css* és *index.js* . Ezek a fájlok határozzák meg az alkalmazás elrendezését, stílusát és logikáját. Hozzon létre egy *adatmappa nevű mappát* , és adja hozzá *ContosoCoffee.txt* a mappához. Hozzon létre egy másik mappát a *képek* nevű mappában. Ebben az alkalmazásban 10 lemezképet használunk a térképen látható ikonokhoz, gombokhoz és jelölőhöz. [Ezeket a lemezképeket letöltheti](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). A projekt mappájának ekkor az alábbi ábrához hasonlóan kell kinéznie:
 
 ![Az egyszerű tároló-lokátor projekt mappájának képernyőképe](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)
 
 ## <a name="create-the-user-interface"></a>A felhasználói felület létrehozása
 
-A felhasználói felület létrehozásához adja hozzá a kódot *index.html*:
+A felhasználói felület létrehozásához adja hozzá a kódot *index.html* :
 
-1. Adja hozzá a következő `meta` címkéket a `head` *index.html*-hez. A `charset` címke határozza meg a karakterkészletet (UTF-8). Az érték `http-equiv` azt jelzi, hogy az Internet Explorer és a Microsoft Edge a legújabb böngésző-verziókat használja. Az utolsó címke pedig `meta` egy olyan nézőpontot határoz meg, amely jól működik a rugalmas elrendezések esetében.
+1. Adja hozzá a következő `meta` címkéket a `head` *index.html* -hez. A `charset` címke határozza meg a karakterkészletet (UTF-8). Az érték `http-equiv` azt jelzi, hogy az Internet Explorer és a Microsoft Edge a legújabb böngésző-verziókat használja. Az utolsó címke pedig `meta` egy olyan nézőpontot határoz meg, amely jól működik a rugalmas elrendezések esetében.
 
     ```HTML
     <meta charset="utf-8">
@@ -126,7 +126,7 @@ A felhasználói felület létrehozásához adja hozzá a kódot *index.html*:
     <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
     ```
 
-1. Hivatkozások hozzáadása a *index.js* és az *index. css*-hez:
+1. Hivatkozások hozzáadása a *index.js* és az *index. css* -hez:
 
     ```HTML
     <link rel="stylesheet" href="index.css" type="text/css">
@@ -385,7 +385,7 @@ Minden most már be van állítva a felhasználói felületen. Továbbra is hozz
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. Kód hozzáadása a *index.jshoz *. Az alábbi kód inicializálja a térképet. Hozzáadunk egy [esemény-figyelőt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#events) , hogy megvárná, amíg az oldal be nem fejeződik. Ezután a rendszer bekapcsolta az eseményeket a Térkép betöltésének figyeléséhez, és a keresés és a saját hely gomb használatát is lehetővé teheti.
+1. Kód hozzáadása a *index.jshoz* . Az alábbi kód inicializálja a térképet. Hozzáadunk egy [esemény-figyelőt](/javascript/api/azure-maps-control/atlas.map#events) , hogy megvárná, amíg az oldal be nem fejeződik. Ezután a rendszer bekapcsolta az eseményeket a Térkép betöltésének figyeléséhez, és a keresés és a saját hely gomb használatát is lehetővé teheti.
 
    Amikor a felhasználó kiválasztja a Keresés gombot, vagy beír egy helyet a keresőmezőbe, megnyomja az ENTER billentyűt, a rendszer a felhasználó lekérdezésével kapcsolatos intelligens keresést kezdeményez. Adja át az ország/régió ISO 2 értékének egy tömbjét a `countrySet` keresési eredmények ezen országokban/régiókban való korlátozásához. Az országok és régiók keresésének korlátozása segít a visszaadott eredmények pontosságának növelésében. 
   
@@ -931,12 +931,12 @@ Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy alapszintű tárol
  * Lehetővé teszi a felhasználók számára, hogy [egy útvonal mentén szűrhetik a tárolóhelyeket](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route). 
  * Adja [meg a szűrők beállításának](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property)lehetőségét. 
  * Adja meg a támogatást egy kezdeti keresési érték megadásához egy lekérdezési karakterlánc használatával. Ha ezt a lehetőséget használja az áruház lokátorában, a felhasználók könyvjelzőket és megosztási kereséseket is tartalmazhatnak. Emellett egyszerű módszert is biztosít, amellyel egy másik oldalról átadhatja a keresést ezen a lapon.  
- * Az áruházbeli lokátor üzembe helyezése [Azure app Service webalkalmazásként](https://docs.microsoft.com/azure/app-service/quickstart-html). 
- * Tárolja adatait egy adatbázisban, és keressen a közeli helyekre. További információ: [SQL Server térbeli adattípusok áttekintése](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017&preserve-view=true) és [térbeli adatainak lekérdezése a legközelebbi szomszédban](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017&preserve-view=true).
+ * Az áruházbeli lokátor üzembe helyezése [Azure app Service webalkalmazásként](../app-service/quickstart-html.md). 
+ * Tárolja adatait egy adatbázisban, és keressen a közeli helyekre. További információ: [SQL Server térbeli adattípusok áttekintése](/sql/relational-databases/spatial/spatial-data-types-overview?preserve-view=true&view=sql-server-2017) és [térbeli adatainak lekérdezése a legközelebbi szomszédban](/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?preserve-view=true&view=sql-server-2017).
 
 Megtekintheti a [teljes forráskódot](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator), [megtekintheti az élő mintát](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator) , és további információkat tudhat meg a Azure Maps lefedettségéről és képességeiről a [nagyítási szintek és a csempék rácsának](zoom-levels-and-tile-grid.md)használatával. Az üzleti logikára [vonatkozó adatvezérelt stílusú kifejezéseket is használhat](data-driven-style-expressions-web-sdk.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További példakódok és az interaktív kódolási felület bemutatása:
 

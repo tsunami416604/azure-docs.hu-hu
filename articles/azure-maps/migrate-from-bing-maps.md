@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: ab4b4e0ab7d0474dc4fe7692cfe3c46835095f45
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 0045520849ea20d3e53a30101e6db0f5d495ab15
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873744"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897007"
 ---
 # <a name="tutorial---migrate-from-bing-maps-to-azure-maps"></a>Oktatóanyag – Migrálás a Bing Mapsből a Azure Mapsba
 
@@ -52,7 +52,7 @@ Az alábbi táblázat a Bing Maps szolgáltatásainak magas szintű listáját �
 | Térbeli Data Services (SDS)           | Részleges            |
 | Időzóna                             | ✓                  |
 | Forgalmi incidensek                     | ✓                  |
-| Konfigurációs vezérelt térképek             | N.A.                |
+| Konfigurációs vezérelt térképek             | N/A                |
 
 A Bing Maps alapvető kulcs-alapú hitelesítést biztosít. Azure Maps az alapszintű kulcs-alapú hitelesítést, valamint a nagyon biztonságos Azure Active Directory hitelesítést is biztosítja.
 
@@ -69,7 +69,7 @@ A Bing Maps Azure Mapsra való áttelepítéskor a következőket kell figyelemb
 -   [Azure Maps díjszabási oldala](https://azure.microsoft.com/pricing/details/azure-maps/)
 -   [Azure-díjkalkulátor](https://azure.microsoft.com/pricing/calculator/?service=azure-maps)
 -   [Azure Maps használati idő](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (a Microsoft Online Services használati feltételeiben szerepel)
--   [Válassza ki a megfelelő díjszabási szintet Azure Maps](https://docs.microsoft.com/azure/azure-maps/choose-pricing-tier)
+-   [Válassza ki a megfelelő díjszabási szintet Azure Maps](./choose-pricing-tier.md)
 
 ## <a name="suggested-migration-plan"></a>Javasolt áttelepítési terv
 
@@ -77,7 +77,7 @@ A következő egy magas szintű áttelepítési terv.
 
 1.  Készítsen leltárt arról, hogy az alkalmazás milyen Bing Maps SDK-kat és szolgáltatásokat használ, és ellenőrizze, hogy Azure Maps biztosít-e alternatív SDK-kat és-szolgáltatásokat, hogy áttelepítsen.
 2.  Hozzon létre egy Azure-előfizetést (ha még nem rendelkezik ilyennel) a következő címen: <https://azure.com> .
-3.  Hozzon létre egy Azure Maps fiókot ([dokumentációt](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)) és hitelesítési kulcsot, vagy Azure Active Directory ([dokumentáció](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)).
+3.  Hozzon létre egy Azure Maps fiókot ([dokumentációt](./how-to-manage-account-keys.md)) és hitelesítési kulcsot, vagy Azure Active Directory ([dokumentáció](./how-to-manage-authentication.md)).
 4.  Telepítse át az alkalmazás kódját.
 5.  Tesztelje az áttelepített alkalmazást.
 6.  Telepítse az áttelepített alkalmazást éles környezetbe.
@@ -86,10 +86,10 @@ A következő egy magas szintű áttelepítési terv.
 
 Azure Maps fiók létrehozásához és a Azure Maps platform eléréséhez kövesse az alábbi lépéseket:
 
-1. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+1. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 2. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-3. Hozzon létre egy [Azure Maps fiókot](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys). 
-4. [Szerezze be a Azure Maps előfizetési kulcsát](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details) , vagy beállíthatja Azure Active Directory hitelesítését a fokozott biztonság eléréséhez.
+3. Hozzon létre egy [Azure Maps fiókot](./how-to-manage-account-keys.md). 
+4. [Szerezze be a Azure Maps előfizetési kulcsát](./how-to-manage-authentication.md#view-authentication-details) , vagy beállíthatja Azure Active Directory hitelesítését a fokozott biztonság eléréséhez.
 
 ## <a name="azure-maps-technical-resources"></a>Technikai erőforrások Azure Maps
 
@@ -105,7 +105,7 @@ Az alábbi lista a Azure Maps hasznos technikai erőforrásait sorolja fel.
 
 ## <a name="migration-support"></a>Migrálás támogatása
 
-A fejlesztők a [fórumok](https://aka.ms/AzureMapsForums) vagy a számos Azure-támogatási lehetőség közül választhatják a Migrálás támogatását: <https://azure.microsoft.com/support/options/>
+A fejlesztők a [fórumok](/answers/topics/azure-maps.html) vagy a számos Azure-támogatási lehetőség közül választhatják a Migrálás támogatását: <https://azure.microsoft.com/support/options/>
 
 ## <a name="new-terminology"></a>Új terminológia 
 

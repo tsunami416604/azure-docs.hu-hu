@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6ff64f975550a0222fd56325115bc98976fb038a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04773ef279717c7728cf1b07761c6e4c0726a877
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311308"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897126"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Alakzat hozzáadása térképhez Azure Maps Android SDK használatával
 
@@ -21,12 +21,12 @@ Ez a cikk bemutatja, hogyan teheti meg az alakzatokat egy térképen Azure Maps 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikkben szereplő folyamat elvégzéséhez telepítenie kell [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) -t egy Térkép betöltéséhez.
+A cikkben szereplő folyamat elvégzéséhez telepítenie kell [Azure Maps Android SDK](./how-to-use-android-map-control-library.md) -t egy Térkép betöltéséhez.
 
 
 ## <a name="add-a-line-to-the-map"></a>Vonal hozzáadása a térképhez
 
-Az alábbi lépésekkel adhat hozzá sort a térképhez egy vonal **réteg**használatával.
+Az alábbi lépésekkel adhat hozzá sort a térképhez egy vonal **réteg** használatával.
 
 1. Módosítsa a **res > elrendezést > activity_main.xml** így néz ki az alábbiak közül:
 

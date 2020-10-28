@@ -1,15 +1,16 @@
 ---
 title: Az Azure Functions hálózatkezelési lehetőségei
 description: A Azure Functionsben elérhető összes hálózati beállítás áttekintése.
+author: jeffhollan
 ms.topic: conceptual
-ms.date: 4/11/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 271730e57a2d7ef8324420744b4bcd088b9809cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/27/2020
+ms.author: jehollan
+ms.openlocfilehash: 3a44efac274bf5c5d6cfc6a0f044ee89b479cbe6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530088"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897075"
 ---
 # <a name="azure-functions-networking-options"></a>Az Azure Functions hálózatkezelési lehetőségei
 
@@ -66,11 +67,30 @@ A magasabb szintű biztonság érdekében a szolgáltatás-végpontok segítség
 
 További információ: [Virtual Network szolgáltatás-végpontok](../virtual-network/virtual-network-service-endpoints-overview.md).
 
-## <a name="restrict-your-storage-account-to-a-virtual-network"></a>A Storage-fiók korlátozása virtuális hálózatra
+## <a name="restrict-your-storage-account-to-a-virtual-network-preview"></a>A Storage-fiók korlátozása virtuális hálózatra (előzetes verzió)
 
-Egy Function-alkalmazás létrehozásakor létre kell hoznia egy általános célú Azure Storage-fiókot, amely támogatja a blobot, a várólistát és a Table Storage-t. Jelenleg nem használhat virtuális hálózati korlátozásokat ezen a fiókon. Ha egy virtuális hálózati szolgáltatás végpontját konfigurálja a Function alkalmazáshoz használt Storage-fiókon, akkor a konfiguráció megszakítja az alkalmazást.
+Egy Function-alkalmazás létrehozásakor létre kell hoznia egy általános célú Azure Storage-fiókot, amely támogatja a blobot, a várólistát és a Table Storage-t.  Ezt a Storage-fiókot lecserélheti egy, a szolgáltatási végpontokkal vagy privát végponttal védett tárolóval.  Ez az előzetes verziójú funkció jelenleg csak a Nyugat-európai Windows Premium-csomagokkal működik.  Egy privát hálózatra korlátozott Storage-fiókkal rendelkező függvény beállítása:
 
-További információ: a [Storage-fiókra vonatkozó követelmények](./functions-create-function-app-portal.md#storage-account-requirements).
+> [!NOTE]
+> A Storage-fiók korlátozása jelenleg csak a prémium szintű függvények esetében működik a Nyugat-európai Windows rendszerben
+
+1. Hozzon létre egy olyan függvényt, amely nem rendelkezik engedélyezett szolgáltatási végpontokkal.
+1. Konfigurálja a függvényt a virtuális hálózathoz való kapcsolódáshoz.
+1. Hozzon létre vagy konfiguráljon egy másik Storage-fiókot.  Ez lesz az a Storage-fiók, amelyet a szolgáltatási végpontok biztosítanak, és összekapcsolhatjuk a funkciót.
+1. [Hozzon létre egy fájlmegosztást](../storage/files/storage-how-to-create-file-share.md#create-file-share) a biztonságos Storage-fiókban.
+1. Engedélyezze a szolgáltatási végpontokat vagy a magánhálózati végpontot a Storage-fiókhoz.  
+    * Ha szolgáltatási végpontot használ, ügyeljen arra, hogy a Function apps számára dedikált alhálózatot engedélyezze.
+    * Hozzon létre egy DNS-rekordot, és konfigurálja úgy az alkalmazást, hogy a magánhálózati végpontok használata esetén is [működjön a privát végponti végpontokkal](#azure-dns-private-zones) .  A Storage-fióknak szüksége lesz egy privát végpontra a `file` és az `blob` alerőforrásokhoz.  Ha bizonyos képességeket (például Durable Functions) használ, `queue` `table` egy privát végponti kapcsolaton keresztül is szüksége lesz rá, és elérhetővé válik.
+1. Választható Másolja a fájl és a blob tartalmát a Function app Storage-fiókból a biztonságos Storage-fiókba és a fájlmegosztásba.
+1. Másolja ki a Storage-fiókhoz tartozó kapcsolatok karakterláncát.
+1. Frissítse az **alkalmazás beállításait** a Function alkalmazás **konfigurációjában** a következőre:
+    - `AzureWebJobsStorage` a biztonságos Storage-fiókhoz tartozó kapcsolódási karakterláncra.
+    - `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` a biztonságos Storage-fiókhoz tartozó kapcsolódási karakterláncra.
+    - `WEBSITE_CONTENTSHARE` a biztonságos Storage-fiókban létrehozott fájlmegosztás nevével.
+    - Hozzon létre egy új beállítást a név és a érték megadásával `WEBSITE_CONTENTOVERVNET` `1` .
+1. Mentse az alkalmazás beállításait.  
+
+A Function alkalmazás újraindul, és mostantól egy biztonságos Storage-fiókhoz fog csatlakozni.
 
 ## <a name="use-key-vault-references"></a>Key Vault-referenciák használata
 
@@ -87,7 +107,7 @@ Jelenleg a nem HTTP-trigger függvények a következő két módszer egyikével 
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>Prémium csomag virtuális hálózati eseményindítókkal
 
-A Prémium csomag futtatásakor a nem HTTP-trigger függvények a virtuális hálózaton belül futó szolgáltatásokhoz is csatlakoztathatók. Ehhez engedélyeznie kell a Virtual Network trigger támogatását a Function alkalmazás számára. A **futtatókörnyezet-méretezés figyelése** beállítás a [Azure Portal](https://portal.azure.com) **konfigurációs**  >  **függvény futtatókörnyezetének beállításai**területen található.
+A Prémium csomag futtatásakor a nem HTTP-trigger függvények a virtuális hálózaton belül futó szolgáltatásokhoz is csatlakoztathatók. Ehhez engedélyeznie kell a Virtual Network trigger támogatását a Function alkalmazás számára. A **futtatókörnyezet-méretezés figyelése** beállítás a [Azure Portal](https://portal.azure.com) **konfigurációs**  >  **függvény futtatókörnyezetének beállításai** területen található.
 
 :::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 
@@ -99,7 +119,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 A virtuális hálózati eseményindítók a functions futtatókörnyezet 2. x vagy újabb verziójában támogatottak. A következő nem HTTP típusú triggerek támogatottak:
 
-| Mellék | Minimális verzió |
+| Kiterjesztés | Minimális verzió |
 |-----------|---------| 
 |[Microsoft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 vagy újabb |
 |[Microsoft. Azure. webjobs. Extensions. EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 vagy újabb|
@@ -136,8 +156,8 @@ Ha egy prémium szintű csomagban vagy egy virtuális hálózattal rendelkező A
 ## <a name="automation"></a>Automation
 A következő API-k lehetővé teszik a regionális virtuális hálózati integrációk programozott kezelését:
 
-+ **Azure CLI**: [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) regionális virtuális hálózati integrációk hozzáadására, listázására vagy eltávolítására használható parancsokkal.  
-+ **ARM-sablonok**: a regionális virtuális hálózatok integrációja Azure Resource Manager sablon használatával engedélyezhető. Teljes példaként tekintse meg [ezt a functions gyorsindító sablont](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/).
++ **Azure CLI** : [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) regionális virtuális hálózati integrációk hozzáadására, listázására vagy eltávolítására használható parancsokkal.  
++ **ARM-sablonok** : a regionális virtuális hálózatok integrációja Azure Resource Manager sablon használatával engedélyezhető. Teljes példaként tekintse meg [ezt a functions gyorsindító sablont](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

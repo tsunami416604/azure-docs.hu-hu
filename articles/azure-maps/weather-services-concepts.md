@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4430737814ef904e83b2bf3ce25edf3d44e2668d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea8698b7bf402850e506ec126cd2a7bb6ce05823
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90972043"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896727"
 ---
 # <a name="weather-services-in-azure-maps"></a>Időjárási szolgáltatások a Azure Maps
 
-Ez a cikk a [Azure Maps időjárási szolgáltatásokra](https://aka.ms/AzureMapsWeatherService)alkalmazandó fogalmakat ismerteti. Javasoljuk, hogy az időjárási API-k megkezdése előtt végezze el ezt a cikket.
+Ez a cikk a [Azure Maps időjárási szolgáltatásokra](/rest/api/maps/weather)alkalmazandó fogalmakat ismerteti. Javasoljuk, hogy az időjárási API-k megkezdése előtt végezze el ezt a cikket.
 
 ## <a name="unit-types"></a>Egységek típusai
 
@@ -100,7 +100,7 @@ Néhány időjárási szolgáltatás API a válaszban visszaküldi a értéket `
 
 ## <a name="radar-and-satellite-imagery-color-scale"></a>A radar és a műhold képének színskálája
 
-A [Get Map csempe v2 API](https://aka.ms/AzureMapsWeatherTiles) -felhasználók a legújabb radar-és infravörös műhold-rendszerképeket kérhetik. A radar és a műholdas csempék színeinek értelmezéséhez tekintse meg az alábbi útmutatót.
+A [Get Map csempe v2 API](/rest/api/maps/renderv2/getmaptilepreview) -felhasználók a legújabb radar-és infravörös műhold-rendszerképeket kérhetik. A radar és a műholdas csempék színeinek értelmezéséhez tekintse meg az alábbi útmutatót.
 
 ### <a name="radar-images"></a>Radar-lemezképek
 
@@ -475,7 +475,7 @@ Alább látható az infravörös műholdképek részletes palettája.
 
 ## <a name="index-ids-and-index-groups-ids"></a>Index-azonosítók és indexelt csoportok azonosítói
 
-A napi indexek [beolvasása](https://aka.ms/AzureMapsWeatherDailyIndices) lehetővé teszi, hogy a felhasználók a visszaadott eredményeket meghatározott indexekre vagy index csoportokra korlátozzák.
+A napi indexek [beolvasása](/rest/api/maps/weather) lehetővé teszi, hogy a felhasználók a visszaadott eredményeket meghatározott indexekre vagy index csoportokra korlátozzák.
 
 Az alábbi táblázat a rendelkezésre álló index-azonosítókat, azok nevét és a tartományra mutató hivatkozást tartalmazza. A táblázat alatti táblázat a különböző indexelő csoportok listáját tartalmazza.
 
@@ -547,7 +547,7 @@ Alább látható az elérhető indexelt csoportok (indexGroupId) listája:
 
 ## <a name="daily-index-range-sets"></a>Napi indexelési tartomány készletei
 
-A napi indexek [beolvasása API](https://aka.ms/AzureMapsWeatherDailyIndices) a tartományhoz tartozó értéket és a hozzá tartozó kategórianév nevét adja vissza az egyes index-azonosítók esetében. A tartomány-készletek nem egyeznek az összes indexnél. Az alábbi táblázat az [index-azonosítók és az index-csoportok azonosítói](#index-ids-and-index-groups-ids)között felsorolt támogatott indexek által használt különböző tartomány-készleteket mutatja. A jelen dokumentum [index-azonosítók és tárgymutató-csoportok azonosítók](#index-ids-and-index-groups-ids) szakaszában találhatja meg, hogy mely indexek milyen tartományokat használnak.
+A napi indexek [beolvasása API](/rest/api/maps/weather) a tartományhoz tartozó értéket és a hozzá tartozó kategórianév nevét adja vissza az egyes index-azonosítók esetében. A tartomány-készletek nem egyeznek az összes indexnél. Az alábbi táblázat az [index-azonosítók és az index-csoportok azonosítói](#index-ids-and-index-groups-ids)között felsorolt támogatott indexek által használt különböző tartomány-készleteket mutatja. A jelen dokumentum [index-azonosítók és tárgymutató-csoportok azonosítók](#index-ids-and-index-groups-ids) szakaszában találhatja meg, hogy mely indexek milyen tartományokat használnak.
 
 ### <a name="poor-excellent-1"></a>Poor-Excellent 1
 

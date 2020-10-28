@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 02d89226bd2df4bfe5d11897199c50c702e7bc1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60d45febced2f2d678d41682f7f27bf668943de2
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88033223"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896310"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Adatstruktúrák a Azure Maps mobilitási szolgáltatásban
 
-Ez a cikk bemutatja a Metro terület koncepcióját [Azure Maps mobilitási szolgáltatásban](https://aka.ms/AzureMapsMobilityService). Megbeszéljük azokat a gyakori mezőket, amelyeket a rendszer akkor ad vissza, ha a szolgáltatás lekérdezi a nyilvános tranzitot és a sorokat. Javasoljuk, hogy a mobilitási szolgáltatás API-jai fejlesztése előtt olvassa el ezt a cikket.
+Ez a cikk bemutatja a Metro terület koncepcióját [Azure Maps mobilitási szolgáltatásban](/rest/api/maps/mobility). Megbeszéljük azokat a gyakori mezőket, amelyeket a rendszer akkor ad vissza, ha a szolgáltatás lekérdezi a nyilvános tranzitot és a sorokat. Javasoljuk, hogy a mobilitási szolgáltatás API-jai fejlesztése előtt olvassa el ezt a cikket.
 
 ## <a name="metro-area"></a>Metro térség
 
 A mobilitási szolgáltatáshoz tartozó adatterületek támogatott Metro-területek szerint vannak csoportosítva. A Metro-területek nem követik a város határait. A Metro területén több város, sűrűn kitöltött város és Környező városok is szerepelhetnek. Valójában egy ország/régió lehet egy metró terület. 
 
-A `metroID` egy Metro-körzet azonosítója, amellyel hívható meg a [beolvasás Metro környék info API](https://aka.ms/AzureMapsMobilityMetroAreaInfo). Használja a "Metro beolvasása" API-t, hogy átAzure Maps tekintse az átviteli típusokat, az átléptető irodákat, az aktív riasztásokat és a kiválasztott Metro további részleteit. A támogatott Metro-területeket és metroIDs is kérheti. A Metro-területek azonosítói változhatnak.
+A `metroID` egy Metro-körzet azonosítója, amellyel hívható meg a [beolvasás Metro környék info API](/rest/api/maps/mobility/getmetroareainfopreview). Használja a "Metro beolvasása" API-t, hogy átAzure Maps tekintse az átviteli típusokat, az átléptető irodákat, az aktív riasztásokat és a kiválasztott Metro további részleteit. A támogatott Metro-területeket és metroIDs is kérheti. A Metro-területek azonosítói változhatnak.
 
 **metroID:** 522   **neve:** Seattle-Tacoma-Bellevue
 
@@ -33,7 +33,7 @@ A `metroID` egy Metro-körzet azonosítója, amellyel hívható meg a [beolvasá
 
 Az adatátviteli leállásokat két típusú azonosító, az [általános árutovábbítási hírcsatorna-specifikáció (GFTS)](http://gtfs.org/) azonosítója és a Azure Maps leállítása azonosító lehet. A GFTS-azonosító neve stopKey, és a Azure Maps leállítás AZONOSÍTÓját stopID-ként nevezik. Ha gyakran hivatkozik az átvitelre, javasoljuk, hogy használja a Azure Maps leállítás azonosítót. a stopID stabilabb és valószínűleg változatlan marad, amíg a fizikai leállítás megtörténik. A GTFS leállítása azonosító gyakrabban frissül. A GTFS leállítási azonosítója például frissíthető a GTFS-szolgáltatói kérelemben, vagy új GTFS-verzió kiadása esetén. Bár a fizikai leállítás nem változott, a GTFS leállítási azonosítója változhat.
 
-Először is kérheti a közeli átvitelt a [közeli tranzit API](https://aka.ms/AzureMapsMobilityNearbyTransit)-k használatával.
+Először is kérheti a közeli átvitelt a [közeli tranzit API](/rest/api/maps/mobility/getnearbytransitpreview)-k használatával.
 
 ## <a name="line-groups-and-lines"></a>Sorok és sorok
 
@@ -49,7 +49,7 @@ A Sorcsoportok olyan entitások, amelyek az összes olyan sort csoportosítják,
 
 A fentiekben leírtak szerint az egyes sorok egy sor halmazból állnak. Az egyes sorok csoportjai két sorból állnak, és mindegyik sor egy irányt ismertet.  Vannak azonban olyan esetek, amikor több sor alkot egy sornyi csoportot. Például van egy olyan sor, amely időnként egy adott szomszédságban található, és néha nem. Mindkét esetben ugyanazon a sorszámon működik. Emellett egy vonalas csoport is állhat egyetlen sorból. Az egyetlen irányú körkörös vonal egy olyan Ling-csoport, amely egy sorral rendelkezik.
 
-Első lépésként a [beolvasás vonal API](https://aka.ms/AzureMapsMobilityTransitLine)-val kérheti a sorokra vonatkozó kérelmeket.
+Első lépésként a [beolvasás vonal API](/rest/api/maps/mobility/gettransitlineinfopreview)-val kérheti a sorokra vonatkozó kérelmeket.
 
 
 ## <a name="next-steps"></a>Következő lépések
@@ -67,4 +67,4 @@ Megtudhatja, hogyan kérhet valós idejű adatgyűjtést a mobilitási szolgált
 A Azure Maps mobilitási szolgáltatás API dokumentációjának megismerése
 
 > [!div class="nextstepaction"]
-> [A mobilitási szolgáltatás API-dokumentációja](https://aka.ms/AzureMapsMobilityService)
+> [A mobilitási szolgáltatás API-dokumentációja](/rest/api/maps/mobility)

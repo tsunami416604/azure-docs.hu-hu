@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: b1776518816a9b01ce803edfb39e147136dba08d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 35bb05eb019a1284a8a418df0197960130e8d013
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675455"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897296"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az SAP Fiorital
 
@@ -272,11 +272,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     1. Az SAP-ben a **"meghatározatlan" NameID-formátum részletei** alatt jegyezze fel a részleteket:
 
-        ![A NameID "meghatározatlan" párbeszédpanelének részletei az SAP-ben](./media/sapfiori-tutorial/nameiddetails.png)
+        ![Képernyőkép, amely megjeleníti a "nem meghatározott" NameID formátumát ("") az S A P-ben.](./media/sapfiori-tutorial/nameiddetails.png)
 
     1. A Azure Portal **felhasználói attribútumok & jogcímek** területen jegyezze fel az Azure ad által igényelt jogcímeket.
 
-        ![A felhasználói attribútumok & jogcímek párbeszédpanel a Azure Portal](./media/sapfiori-tutorial/claimsaad1.png)
+        ![A "felhasználói attribútumok & jogcímek" párbeszédpanelt megjelenítő képernyőkép.](./media/sapfiori-tutorial/claimsaad1.png)
 
     **2. forgatókönyv** : válassza ki az SAP felhasználói azonosítóját a SU01-ben konfigurált e-mail-cím alapján. Ebben az esetben az e-mail-azonosítót a SU01-ben kell konfigurálni minden olyan felhasználó számára, aki egyszeri bejelentkezést igényel.
 

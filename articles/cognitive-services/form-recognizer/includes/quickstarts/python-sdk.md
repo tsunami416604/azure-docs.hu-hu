@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: a9aa51e46595c7c65b1f83776eb72caca13e0180
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 5ff9c95e51f63de77ca20dee965718687daae5f4
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755744"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897769"
 ---
 > [!IMPORTANT]
 > * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Tekintse meg az alábbi dokumentációt. 
@@ -109,10 +109,12 @@ Hozzá kell adnia a képzési és tesztelési adatok URL-címeire mutató hivatk
 
 Az űrlap-felismerő használatával felismerheti a dokumentumokban szereplő táblákat, vonalakat és szavakat, anélkül, hogy egy modellt kellene betanítania.
 
-Egy adott URL-címen található fájl tartalmának felismeréséhez használja a `begin_recognize_content` metódust. A visszaadott érték objektumok gyűjteménye `FormPage` : egyet a beküldött dokumentum minden lapján. Az alábbi kód megismétli ezeket az objektumokat, és kinyomtatja a kinyert kulcs/érték párokat és a táblák adatait.
+Egy adott URL-címen található fájl tartalmának felismeréséhez használja a `begin_recognize_content_from_url` metódust. A visszaadott érték objektumok gyűjteménye `FormPage` : egyet a beküldött dokumentum minden lapján. Az alábbi kód megismétli ezeket az objektumokat, és kinyomtatja a kinyert kulcs/érték párokat és a táblák adatait.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_getcontent)]
 
+> [!TIP]
+> A helyi rendszerképekből is kérhet tartalmat. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) metódusokat, például: `begin_recognize_content` . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakód-kódot.
 
 ### <a name="output"></a>Kimenet
 
@@ -144,6 +146,8 @@ Ez a szakasz bemutatja, hogyan ismerheti fel és kinyerheti az Egyesült államo
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
 
+> [!TIP]
+> A helyi visszaigazolási képeket is felismerheti. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) metódusokat, például: `begin_recognize_receipts` . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakód-kódot.
 
 ### <a name="output"></a>Kimenet
 
@@ -271,6 +275,9 @@ Ez a szakasz azt mutatja be, hogyan lehet kinyerni a kulcs/érték információk
 A `begin_recognize_custom_forms_from_url` metódust fogja használni. A visszaadott érték objektumok gyűjteménye `RecognizedForm` : egyet a beküldött dokumentum minden lapján. A következő kód kinyomtatja az elemzési eredményeket a-konzolra. Kinyomtatja az egyes felismert mezőket és a hozzá tartozó értékeket, valamint a megbízhatósági pontszámot.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_analyze)]
+
+> [!TIP]
+> A helyi lemezképeket is elemezheti. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) metódusokat, például: `begin_recognize_custom_forms` . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakód-kódot.
 
 
 ### <a name="output"></a>Kimenet

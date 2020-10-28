@@ -1,18 +1,17 @@
 ---
 title: fájl belefoglalása
-description: fájl belefoglalása
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/14/2020
 ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: 3d5b57330775af60341cd65fddc65c10645f2573
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: b17480c1a2a0bd8588289627a51780999e1f311c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92116801"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897712"
 ---
 A megosztott képkatalógus egy olyan szolgáltatás, amely segít felépíteni a lemezképek körét a szerkezet és a szervezet számára. A megosztott képtárak a következőket biztosítják:
 
@@ -46,7 +45,7 @@ A megosztott képkatalógus funkció több erőforrástípust tartalmaz:
 
 A rendszerkép-definíciók egy adott rendszerkép verzióihoz tartozó logikai Csoportosítások. A rendszerkép definíciója információt tartalmaz arról, hogy a rendszerkép hogyan lett létrehozva, melyik operációs rendszer, illetve a rendszerkép használatával kapcsolatos egyéb információk. A rendszerkép definíciója olyan, mint egy csomag, amely az adott rendszerkép létrehozásával kapcsolatos összes részletre vonatkozik. Nem telepít virtuális gépet lemezkép-definícióból, hanem a definícióból létrehozott lemezkép-verziókból.
 
-Az egyes képdefiníciók három paramétert használnak a **Publisherben**, az **ajánlatban** és az **SKU**-ban. Ezek egy adott rendszerkép-definíció megtalálására szolgálnak. Rendelkezhet egy vagy két, de nem mindhárom értékkel rendelkező képverzióval is.  Íme például három képdefiníció és értékeik:
+Az egyes képdefiníciók három paramétert használnak a **Publisherben** , az **ajánlatban** és az **SKU** -ban. Ezek egy adott rendszerkép-definíció megtalálására szolgálnak. Rendelkezhet egy vagy két, de nem mindhárom értékkel rendelkező képverzióval is.  Íme például három képdefiníció és értékeik:
 
 |Rendszerkép-definíció|Publisher|Ajánlat|SKU|
 |---|---|---|---|
@@ -116,7 +115,7 @@ További információ: az [erőforrás-használat korlátainak korlátozása](ht
 ## <a name="scaling"></a>Méretezés
 A megosztott képkatalógus segítségével megadhatja, hogy az Azure hány replikát őrizzen meg a képeken. Ez segítséget nyújt a több virtuális gépre kiterjedő üzembe helyezési forgatókönyvekben, mivel a virtuális gépek központi telepítése különböző replikák számára lehetséges, ami csökkenti annak a valószínűségét, hogy egy replika túlterhelése miatt szabályozható a példány-létrehozási feldolgozás.
 
-A megosztott képtárat mostantól egy virtuálisgép-méretezési csoportba helyezheti üzembe egy 1 000-es virtuálisgép-példányon (a 600-ból felügyelt lemezképekkel). A képreplikák jobb teljesítményt, megbízhatóságot és konzisztenciát biztosítanak a központi telepítéshez. Az egyes célcsoportok között különböző replikákat állíthat be, a régió skálázási igényei alapján. Mivel minden replika a rendszerkép egy részletes másolata, ez segít az üzembe helyezések lineárisan történő méretezésében minden további replikával. Habár a két rendszerkép vagy régió nem egyezik, a következő általános útmutatást láthatjuk, hogyan használhat replikákat egy régióban:
+A megosztott képtárat mostantól egy virtuálisgép-méretezési csoportba helyezheti üzembe egy 1 000-es virtuálisgép-példányon (a 600-ból felügyelt lemezképekkel). A képreplikák jobb teljesítményt, megbízhatóságot és konzisztenciát biztosítanak a központi telepítéshez.  Az egyes célcsoportok között különböző replikákat állíthat be, a régió skálázási igényei alapján. Mivel minden replika a rendszerkép egy részletes másolata, ez segít az üzembe helyezések lineárisan történő méretezésében minden további replikával. Habár a két rendszerkép vagy régió nem egyezik, a következő általános útmutatást láthatjuk, hogyan használhat replikákat egy régióban:
 
 - Nem virtuálisgép-méretezési csoport (VMSS) esetén – minden olyan 20 virtuális gép esetében, amelyet egyszerre hoz létre, javasoljuk, hogy tartsa meg az egyik replikát. Ha például 120 virtuális gépet hoz létre egyidejűleg ugyanazon rendszerkép használatával egy régióban, javasoljuk, hogy legalább 6 replikát őrizzen meg a rendszerképből. 
 - A virtuálisgép-méretezési csoport (VMSS) üzembe helyezése esetén – a legfeljebb 600 példánnyal rendelkező méretezési csoportokhoz legalább egy replikát érdemes megőrizni. Ha például egyszerre 5 méretezési csoportot hoz létre, és mindegyik 600 virtuálisgép-példánnyal ugyanazt a rendszerképet használja egyetlen régióban, javasoljuk, hogy legalább 5 replikát őrizzen meg a rendszerképből. 
@@ -140,7 +139,7 @@ Az a régió, amelyet a megosztott rendszerkép replikál, a rendszer a létreho
 
 ![A képek replikálásának módját bemutató ábra](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Access
+## <a name="access"></a>Hozzáférés
 
 Mivel a megosztott képtára, a képdefiníció és a rendszerkép verziója minden erőforrás, a beépített natív Azure RBAC-vezérlőkkel is megoszthatók. A RBAC használatával ezeket az erőforrásokat megoszthatja más felhasználókkal, egyszerű szolgáltatásokkal és csoportokkal is. Akár a bérlőn kívüli személyekhez is megoszthatja a hozzáférést. Miután egy felhasználó hozzáfér a megosztott lemezkép verziójához, üzembe helyezhet egy virtuális gépet vagy egy virtuálisgép-méretezési készletet.  Itt látható a megosztási mátrix, amely segít megérteni, hogy a felhasználó milyen módon férhet hozzá:
 
@@ -155,8 +154,11 @@ A képek a több-bérlős alkalmazások regisztrálásával is megoszthatók, ak
 
 ## <a name="billing"></a>Számlázás
 A megosztott rendszerkép-katalógus szolgáltatás használata nem díjköteles. A következő erőforrásokért kell fizetnie:
-- A megosztott rendszerkép-verziók tárolásának tárolási költségei. A díj a rendszerkép-verzió replikáinak számától és azon régiók számától függ, amelyre a verzió replikálódik. Ha például két lemezkép van, és mindkettő 3 régióba van replikálva, akkor a méretük alapján 6 felügyelt lemez után kell fizetnie. További információ: [Managed Disks díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/).
-- A hálózati kimenő forgalom díja a forrás régióból a replikált régiókba való első lemezkép-verzió replikálásához. A későbbi replikákat a régión belül kezeljük, így nincs további díj. 
+-   Az egyes replikák tárolásának tárolási költségei. A tárolási költséget pillanatképként számítjuk fel, és a rendszerkép verziószáma, a rendszerkép verziójának replikái, valamint azoknak a régióknak a száma alapján történik, amelyekre a verzió replikálódik. 
+-   A hálózati kimenő forgalom díja a forrás régióból a replikált régiókba való első lemezkép-verzió replikálásához. A későbbi replikákat a régión belül kezeljük, így nincs további díj. 
+
+Tegyük fel például, hogy rendelkezik egy 127 GB-OS operációsrendszer-lemezzel, amely csak 10GB tárterületet foglal le, és egy üres 32 GB adatlemezt. Az egyes képek foglalt mérete csak 10 GB lehet. A rendszerkép három régióba replikálódik, és minden régió két replikával rendelkezik. Hat teljes pillanatkép fog megjelenni, amelyek mindegyike 10 GB-ot használ. Az egyes Pillanatképek tárolási költségeit a 10 GB foglalt méret alapján számítjuk fel. A további két régióba való másoláshoz az első replika hálózati kimenő forgalmi díjait kell megfizetnie. A pillanatképek díjszabásáról az egyes régiókban a [felügyelt lemezek díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/)című témakörben olvashat bővebben. A hálózati kimenő forgalomról további információt a [sávszélesség díjszabása](https://azure.microsoft.com/pricing/details/bandwidth/)című témakörben talál.
+
 
 ## <a name="updating-resources"></a>Erőforrások frissítése
 
@@ -220,9 +222,9 @@ Létrehozhat megosztott képkatalógus-erőforrást sablonok használatával. T�
 Az alábbi lépéseket követve listázhatja az összes megosztott képkatalógus-erőforrást az előfizetések között, amelyekhez hozzáféréssel rendelkezik a Azure Portalban:
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
-1. Görgessen le az oldalra, és válassza az **összes erőforrás**lehetőséget.
+1. Görgessen le az oldalra, és válassza az **összes erőforrás** lehetőséget.
 1. Válassza ki az összes olyan előfizetést, amelyben az összes erőforrást listázni szeretné.
-1. Keresse meg a **megosztott képgyűjtemény**típusú erőforrásokat.
+1. Keresse meg a **megosztott képgyűjtemény** típusú erőforrásokat.
   
 Ha az összes olyan előfizetésben szeretné listázni az összes megosztott képkatalógus-erőforrást, amelyre jogosult, használja a következő parancsot az Azure CLI-ben:
 

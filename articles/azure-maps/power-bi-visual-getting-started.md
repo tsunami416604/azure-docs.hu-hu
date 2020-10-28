@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: aecda5ed9b87ba2345a52923a574919d6a08594f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c89922aef1ba802ee694aaed9bae2ac2dd273ee
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362671"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896242"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Bevezetés a Azure Maps Power BI vizualizáció használatába
 
-<Token>**a következőkre vonatkozik:** ![ Zöld pipa. ](media/power-bi-visual/yes.png) Power BI szolgáltatás a ***fogyasztók*** ![ zöld pipa jelzéssel. ](media/power-bi-visual/yes.png) Power BI szolgáltatás tervezők számára & a fejlesztők ![ zöld pipa jel. ](media/power-bi-visual/yes.png) Power BI Desktop ![ X, amely nem. ](media/power-bi-visual/no.png) Pro vagy Premium licenc szükséges </Token>
+<Token>**a következőkre vonatkozik:** ![ Zöld pipa. ](media/power-bi-visual/yes.png) Power BI szolgáltatás a * *_fogyasztóknál_* _ ![ zöld pipa jel. ](media/power-bi-visual/yes.png) Power BI szolgáltatás tervezők számára & a fejlesztők ![ zöld pipa jel. ](media/power-bi-visual/yes.png) Power BI Desktop ![ X, amely nem. ](media/power-bi-visual/no.png) Pro vagy Premium licenc szükséges</Token>
 
 Ez a cikk bemutatja, hogyan használható a Power BI Microsoft Azure Maps-vizualizációja.
 
@@ -47,9 +47,9 @@ További információ az adatvédelemről és a Azure Maps vizualizációval kap
 
 ## <a name="preview-behavior-and-requirements"></a>Előnézeti viselkedés és követelmények
 
-Ehhez a **Azure Maps**előzetes kiadásához néhány szempontot és követelményt kell figyelembe venni:
+A _ * Azure Maps * * előzetes kiadásának néhány szempontja és követelménye van:
 
--   A **Azure Maps** vizualizáció előzetes verzióban érhető el, és a Power bi Desktopban engedélyezve kell lennie. A **Azure Maps**engedélyezéséhez válassza a **fájl** &gt; **beállításai és beállítások** &gt; **Beállítások** &gt; **előnézet funkciók**lehetőséget, majd jelölje be a **Azure Maps vizualizáció** jelölőnégyzetet. Ha a Azure Maps vizualizáció ezt követően nem érhető el, akkor valószínű, hogy a felügyeleti portálon engedélyezni kell a bérlői rendszergazdai kapcsolót.
+-   A **Azure Maps** vizualizáció előzetes verzióban érhető el, és a Power bi Desktopban engedélyezve kell lennie. A **Azure Maps** engedélyezéséhez válassza a **fájl** &gt; **beállításai és beállítások** &gt; **Beállítások** &gt; **előnézet funkciók** lehetőséget, majd jelölje be a **Azure Maps vizualizáció** jelölőnégyzetet. Ha a Azure Maps vizualizáció ezt követően nem érhető el, akkor valószínű, hogy a felügyeleti portálon engedélyezni kell a bérlői rendszergazdai kapcsolót.
 -   Az adatkészletnek olyan mezőket kell tartalmaznia, amelyek **szélességi** és **hosszúsági** adatokat tartalmaznak. A helymeghatározáshoz egy későbbi frissítésben lesznek hozzáadva.
 -   A Power BI beépített jelmagyarázat-vezérlője jelenleg nem jelenik meg ebben az előzetes verzióban. A későbbiekben egy későbbi frissítés lesz hozzáadva.
 
@@ -173,7 +173,7 @@ További információ a Azure Maps Power BI vizualizációról:
 A vizualizáció testreszabása:
 
 > [!div class="nextstepaction"]
-> [Színformázási tippek és trükkök a Power BI-hoz](https://docs.microsoft.com/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
+> [Színformázási tippek és trükkök a Power BI-hoz](/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
 
 > [!div class="nextstepaction"]
-> [A vizualizáció címeinek, háttereinek és jelmagyarázatainak testreszabása](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)
+> [A vizualizáció címeinek, háttereinek és jelmagyarázatainak testreszabása](/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)

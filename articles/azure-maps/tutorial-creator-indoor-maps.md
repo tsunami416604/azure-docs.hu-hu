@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 731ffe02b16fe832bb5feba34973ca81bf941646
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80d61e69b5e8d666406c378c2d3fece28c822491
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371422"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896779"
 ---
 # <a name="tutorial-use-creator-to-create-indoor-maps"></a>Oktatóanyag: beltéri térképek létrehozása a Creator használatával
 
@@ -44,13 +44,13 @@ Ez az oktatóanyag a [Poster](https://www.postman.com/) alkalmazást használja,
 
 ## <a name="upload-a-drawing-package"></a>Rajzfájl feltöltése
 
-Az [Adatfeltöltő API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) -val feltöltheti a rajzobjektumot Azure Maps erőforrásokra.
+Az [Adatfeltöltő API](/rest/api/maps/data/uploadpreview) -val feltöltheti a rajzobjektumot Azure Maps erőforrásokra.
 
 Az adatfeltöltő API egy hosszú ideig futó tranzakció, amely megvalósítja az itt definiált mintát. A művelet befejezését követően a használatával `udid` elérheti a feltöltött csomagot a konvertáláshoz. Az alábbi lépésekkel szerezheti be a következőt: `udid` .
 
-1. Nyissa meg a Poster alkalmazást. A Poster alkalmazás teteje közelében válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **gyűjtemény**elemet.  Nevezze el a gyűjteményt, és válassza a **Létrehozás** gombot.
+1. Nyissa meg a Poster alkalmazást. A Poster alkalmazás teteje közelében válassza az **új** lehetőséget. Az **új létrehozása** ablakban válassza a **gyűjtemény** elemet.  Nevezze el a gyűjteményt, és válassza a **Létrehozás** gombot.
 
-2. A kérelem létrehozásához válassza az **új** újra lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a kérelem **nevét** . Válassza ki az előző lépésben létrehozott gyűjteményt, majd kattintson a **Mentés**gombra.
+2. A kérelem létrehozásához válassza az **új** újra lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem** lehetőséget. Adja meg a kérelem **nevét** . Válassza ki az előző lépésben létrehozott gyűjteményt, majd kattintson a **Mentés** gombra.
 
 3. Válassza a http **post** metódust a Builder (szerkesztő) lapon, és adja meg a következő URL-címet a rajzfájl a Azure Maps szolgáltatásba való feltöltéséhez. Ehhez a kérelemhez és a cikkben említett egyéb kérelmekhez cserélje le az `{Azure-Maps-Primary-Subscription-key}` elsődleges előfizetési kulcsát.
 
@@ -58,7 +58,7 @@ Az adatfeltöltő API egy hosszú ideig futó tranzakció, amely megvalósítja 
     https://atlas.microsoft.com/mapData/upload?api-version=1.0&dataFormat=zip&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-4. A **fejlécek** lapon a kulcs értékét kell megadnia `Content-Type` . A rajzolási csomag egy tömörített mappa, ezért használja az `application/octet-stream` értéket. A **törzs** lapon válassza a **bináris**elemet. Kattintson a **fájl kiválasztása** lehetőségre, és válasszon egy rajzfájl-csomagot.
+4. A **fejlécek** lapon a kulcs értékét kell megadnia `Content-Type` . A rajzolási csomag egy tömörített mappa, ezért használja az `application/octet-stream` értéket. A **törzs** lapon válassza a **bináris** elemet. Kattintson a **fájl kiválasztása** lehetőségre, és válasszon egy rajzfájl-csomagot.
 
      ![adatkezelés](./media/tutorial-creator-indoor-maps/enter-content-type-dialog.png)
 
@@ -102,7 +102,7 @@ Az adatfeltöltő API egy hosszú ideig futó tranzakció, amely megvalósítja 
 
  Most, hogy a rajzfájl feltöltése megtörtént, a `udid` rendszer a feltöltött csomagra konvertálja a csomagot a leképezési adatként. Az átalakítási API egy hosszú ideig futó tranzakciót használ, amely megvalósítja az [itt](creator-long-running-operation.md)definiált mintát. Ha a művelet befejeződik, a `conversionId` segítségével elérheti a konvertált adategységeket. Az alábbi lépésekkel szerezheti be a következőt: `conversionId` .
 
-1. Válassza az **Új** lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra.
+1. Válassza az **Új** lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem** lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra.
 
 2. Válassza a http **post** metódust a Builder (szerkesztő) lapon, és adja meg a következő URL-címet a feltöltött rajzfájl leképezési adataiba való átalakításához. Használja a `udid` csomagot a feltöltött csomaghoz.
 
@@ -164,11 +164,11 @@ A minta rajzolási csomagot hibák vagy figyelmeztetések nélkül kell konvert�
 
 ## <a name="create-a-dataset"></a>Adathalmaz létrehozása
 
-Az adatkészlet térképi funkciók, például épületek, szintek és szobák gyűjteménye. Adatkészlet létrehozásához használja az [adatkészlet létrehozása API](https://docs.microsoft.com/rest/api/maps/dataset/createpreview)-t. Az adatkészlet létrehozása API veszi át a `conversionId` konvertált rajzfájl értékét, és visszaadja a `datasetId` létrehozott adatkészlet egy részét. Az alábbi lépések bemutatják, hogyan hozhat létre adatkészletet.
+Az adatkészlet térképi funkciók, például épületek, szintek és szobák gyűjteménye. Adatkészlet létrehozásához használja az [adatkészlet létrehozása API](/rest/api/maps/dataset/createpreview)-t. Az adatkészlet létrehozása API veszi át a `conversionId` konvertált rajzfájl értékét, és visszaadja a `datasetId` létrehozott adatkészlet egy részét. Az alábbi lépések bemutatják, hogyan hozhat létre adatkészletet.
 
-1. A Poster alkalmazásban válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra.
+1. A Poster alkalmazásban válassza az **új** lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem** lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra
 
-2. Hozzon létre **post** -kérést az [adatkészlet Create API](https://docs.microsoft.com/rest/api/maps/dataset/createpreview) -hoz egy új adatkészlet létrehozásához. A kérelem elküldése előtt fűzze hozzá az előfizetési kulcsot és a `conversionId` -t az `conversionId` 5. lépésben az átalakítási folyamat során kapott értékhez.  A kérelemnek a következő URL-címhez hasonlóan kell kinéznie:
+2. Hozzon létre **post** -kérést az [adatkészlet Create API](/rest/api/maps/dataset/createpreview) -hoz egy új adatkészlet létrehozásához. A kérelem elküldése előtt fűzze hozzá az előfizetési kulcsot és a `conversionId` -t az `conversionId` 5. lépésben az átalakítási folyamat során kapott értékhez.  A kérelemnek a következő URL-címhez hasonlóan kell kinéznie:
 
     ```http
     https://atlas.microsoft.com/dataset/create?api-version=1.0&conversionID={conversionId}&type=facility&subscription-key={Azure-Maps-Primary-Subscription-key}
@@ -197,7 +197,7 @@ Az adatkészlet térképi funkciók, például épületek, szintek és szobák g
 
 A tileset a térképen megjelenített vektoros csempék halmaza. A tilesets a meglévő adatkészletekből jönnek létre. Egy tileset azonban független attól a DataSet adatkészlettől, amelyről forrásból származik. Ha törli az adatkészletet, a tileset továbbra is fennáll. Tileset létrehozásához kövesse az alábbi lépéseket:
 
-1. A Poster alkalmazásban válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra.
+1. A Poster alkalmazásban válassza az **új** lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem** lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra
 
 2. Tegye a **post** kérést a Builder (szerkesztő) lapon. A kérelem URL-címének a következő URL-címhez hasonlóan kell kinéznie:
 
@@ -224,9 +224,9 @@ A tileset a térképen megjelenített vektoros csempék halmaza. A tilesets a me
 
 ## <a name="query-datasets-with-wfs-api"></a>Adatkészletek lekérdezése a WFS API-val
 
- Az adatkészleteket a  [WFS API](https://docs.microsoft.com/rest/api/maps/wfs)használatával kérdezheti le. A WFS API-val lekérdezheti a szolgáltatások gyűjteményeit, egy adott gyűjteményt vagy egy szolgáltatás **azonosítóját**tartalmazó adott szolgáltatást. A szolgáltatás **azonosítója** egyedileg azonosítja a szolgáltatást az adatkészleten belül. A rendszer például annak azonosítására szolgál, hogy melyik szolgáltatási állapotot kell frissíteni egy adott stateset.
+ Az adatkészleteket a  [WFS API](/rest/api/maps/wfs)használatával kérdezheti le. A WFS API-val lekérdezheti a szolgáltatások gyűjteményeit, egy adott gyűjteményt vagy egy szolgáltatás **azonosítóját** tartalmazó adott szolgáltatást. A szolgáltatás **azonosítója** egyedileg azonosítja a szolgáltatást az adatkészleten belül. A rendszer például annak azonosítására szolgál, hogy melyik szolgáltatási állapotot kell frissíteni egy adott stateset.
 
-1. A Poster alkalmazásban válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra.
+1. A Poster alkalmazásban válassza az **új** lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem** lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra
 
 2. **Get** kéréssel megtekintheti az adatkészletben található gyűjtemények listáját. Cserélje le `<dataset-id>` a helyére a t `datasetId` . A helyőrző helyett használja a Azure Maps elsődleges kulcsát. A kérelemnek a következő URL-címhez hasonlóan kell kinéznie:
 
@@ -234,7 +234,7 @@ A tileset a térképen megjelenített vektoros csempék halmaza. A tilesets a me
     https://atlas.microsoft.com/wfs/datasets/{datasetId}/collections?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
     ```
 
-3. A GeoJSON formátumban fog szerepelni a válasz törzse, és az adatkészlet összes gyűjteményét fogja tartalmazni. Az egyszerűség kedvéért a példa csak a gyűjteményt jeleníti meg `unit` . Ha meg szeretné tekinteni az összes gyűjteményt tartalmazó példát, tekintse meg a [Collections API WFS leírását](https://docs.microsoft.com/rest/api/maps/wfs/collectiondescriptionpreview). Ha többet szeretne megtudni a gyűjteményekről, kattintson a elemen belüli URL-címek bármelyikére `link` .
+3. A GeoJSON formátumban fog szerepelni a válasz törzse, és az adatkészlet összes gyűjteményét fogja tartalmazni. Az egyszerűség kedvéért a példa csak a gyűjteményt jeleníti meg `unit` . Ha meg szeretné tekinteni az összes gyűjteményt tartalmazó példát, tekintse meg a [Collections API WFS leírását](/rest/api/maps/wfs/collectiondescriptionpreview). Ha többet szeretne megtudni a gyűjteményekről, kattintson a elemen belüli URL-címek bármelyikére `link` .
 
     ```json
     {
@@ -302,15 +302,15 @@ A tileset a térképen megjelenített vektoros csempék halmaza. A tilesets a me
 
 ## <a name="create-a-feature-stateset"></a>Szolgáltatás stateset létrehozása
 
-1. A Poster alkalmazásban válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra.
+1. A Poster alkalmazásban válassza az **új** lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem** lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra
 
-2. Hozzon létre **post** -kérelmet a [create Stateset API](https://docs.microsoft.com/rest/api/maps/featurestate/createstatesetpreview)-hoz. Használja a `datasetId` módosítani kívánt állapotot tartalmazó adatkészletet. A kérelemnek a következő URL-címhez hasonlóan kell kinéznie:
+2. Hozzon létre **post** -kérelmet a [create Stateset API](/rest/api/maps/featurestate/createstatesetpreview)-hoz. Használja a `datasetId` módosítani kívánt állapotot tartalmazó adatkészletet. A kérelemnek a következő URL-címhez hasonlóan kell kinéznie:
 
     ```http
     https://atlas.microsoft.com/featureState/stateset?api-version=1.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. A **post** kérelem **fejlécében** állítsa a következőre `Content-Type` : `application/json` . A **törzsben**adja meg az alábbi stílusokat a és az állapot változásainak megfelelően `occupied` `temperature` *states*. Ha elkészült, kattintson a **Küldés**gombra.
+3. A **post** kérelem **fejlécében** állítsa a következőre `Content-Type` : `application/json` . A **törzsben** adja meg az alábbi stílusokat a és az állapot változásainak megfelelően `occupied` `temperature` *states* . Ha elkészült, kattintson a **Küldés** gombra.
 
     ```json
     {
@@ -402,11 +402,11 @@ A tileset a térképen megjelenített vektoros csempék halmaza. A tilesets a me
 
 7. A sikeres frissítés után HTTP-állapotkódot fog kapni `200 OK` . Ha egy beltéri térképhez  [dinamikus stílus van megvalósítva](indoor-map-dynamic-styling.md) , a frissítés a megadott időbélyegzőn jelenik meg a megjelenített térképen.
 
-A szolgáltatások [beolvasása API](https://docs.microsoft.com/rest/api/maps/featurestate/getstatespreview) lehetővé teszi egy szolgáltatás állapotának lekérését a funkciójának használatával `ID` . A stateset és erőforrásait a [szolgáltatás állapota törlés API](https://docs.microsoft.com/rest/api/maps/featurestate/deletestatesetpreview)használatával is törölheti.
+A szolgáltatások [beolvasása API](/rest/api/maps/featurestate/getstatespreview) lehetővé teszi egy szolgáltatás állapotának lekérését a funkciójának használatával `ID` . A stateset és erőforrásait a [szolgáltatás állapota törlés API](/rest/api/maps/featurestate/deletestatesetpreview)használatával is törölheti.
 
 Ha többet szeretne megtudni a jelen cikkben tárgyalt különböző Azure Maps létrehozó szolgáltatásokról, tekintse meg a [Creator beltéri térképeket](creator-indoor-maps.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A beltéri térképek modul használatának megismeréséhez tekintse meg a következőt:
 

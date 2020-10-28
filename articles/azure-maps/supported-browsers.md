@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 5b186901551e421ba365b97a6de6a55ff791e5e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43bf70d66c42bc0ecd5e26e4cc724456bd4bf84e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310186"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896922"
 ---
 # <a name="web-sdk-supported-browsers"></a>A webes SDK által támogatott böngészők
 
-A Azure Maps web SDK egy [Atlas. isSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas#issupported-boolean-)nevű segítő függvényt biztosít. Ez a függvény észleli, hogy a webböngészőnek van-e legalább WebGL-funkciója, amely a Térkép vezérlőelem betöltésének és megjelenítésének támogatásához szükséges. Íme egy példa arra, hogyan használhatja a függvényt:
+A Azure Maps web SDK egy [Atlas. isSupported](/javascript/api/azure-maps-control/atlas#issupported-boolean-)nevű segítő függvényt biztosít. Ez a függvény észleli, hogy a webböngészőnek van-e legalább WebGL-funkciója, amely a Térkép vezérlőelem betöltésének és megjelenítésének támogatásához szükséges. Íme egy példa arra, hogyan használhatja a függvényt:
 
 ```JavaScript
 if (!atlas.isSupported()) {
@@ -40,7 +40,7 @@ A Azure Maps web SDK a következő asztali böngészőket támogatja:
 
 Lásd még: [korábbi böngészők megcélzása](#Target-Legacy-Browsers) a cikk későbbi részében.
 
-## <a name="mobile"></a>Mobil
+## <a name="mobile"></a>Mobiltelefon
 
 A Azure Maps web SDK a következő mobil böngészőket támogatja:
 
@@ -63,7 +63,7 @@ A következő web SDK-modulok is támogatottak a Node.jsban:
 
 ## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>Cél örökölt böngészők
 
-Előfordulhat, hogy olyan régebbi böngészőket szeretne megcélozni, amelyek nem támogatják a WebGL, vagy csak korlátozott támogatással rendelkeznek. Ilyen esetekben javasoljuk, hogy Azure Maps-szolgáltatásokat, valamint egy nyílt forráskódú Térkép vezérlőelemet, például a [betegtájékoztatót](https://leafletjs.com/)használja. Bemutatunk egy példát:
+Előfordulhat, hogy olyan régebbi böngészőket szeretne megcélozni, amelyek nem támogatják a WebGL, vagy csak korlátozott támogatással rendelkeznek. Ilyen esetekben javasoljuk, hogy Azure Maps-szolgáltatásokat, valamint egy nyílt forráskódú Térkép vezérlőelemet, például a [betegtájékoztatót](https://leafletjs.com/)használja. Íme egy példa:
 
 <br/>
 

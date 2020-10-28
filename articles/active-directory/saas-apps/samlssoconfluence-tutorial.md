@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 7c36dd87ac305db62d2d80b74de09f4389722da9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c8f85c6dd42f1f4505474e03e378c0fe48d70005
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675515"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896497"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-confluence-by-resolution-gmbh"></a>Oktatóanyag: Azure Active Directory integráció az SAML SSO-nal a Solution GmbH összefolyásánál
 
@@ -99,7 +99,7 @@ A következő lépésekkel konfigurálhatja az Azure AD egyszeri bejelentkezést
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni:
 
-    ![SAML SSO a Solution GmbH-tartomány és az URL-címek egyszeri bejelentkezési adatainak összefolyásánál](common/idp-intiated.png)
+    ![Képernyőkép, amely az "alapszintű S L konfiguráció" kifejezést jeleníti meg az "azonosító" és "válasz U R L" szövegmezők kiemelésével, valamint a "Mentés" művelet kiválasztásával.](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<server-base-url>/plugins/servlet/samlsso`
 
@@ -124,45 +124,45 @@ A következő lépésekkel konfigurálhatja az Azure AD egyszeri bejelentkezést
 
 2. Mutasson a fogaskerékre, és kattintson a **bővítmények** elemre.
     
-    ![Egyetlen Sign-On konfigurálása](./media/samlssoconfluence-tutorial/addon1.png)
+    ![A legördülő menüben kiválasztott "fogaskerék" ikont és "bővítményeket" megjelenítő képernyőkép.](./media/samlssoconfluence-tutorial/addon1.png)
 
 3. A rendszer átirányítja a rendszergazdai hozzáférés lapra. Adja meg a jelszót, és kattintson a **Confirm (megerősítés** ) gombra.
 
-    ![Egyetlen Sign-On konfigurálása](./media/samlssoconfluence-tutorial/addon2.png)
+    ![Képernyőkép a "rendszergazdai hozzáférés" oldalon a "megerősítés" gomb kiválasztásával.](./media/samlssoconfluence-tutorial/addon2.png)
 
 4. Az **ATLASSIAN-piactér** lapon kattintson az **új bővítmények keresése** elemre. 
 
-    ![Egyetlen Sign-On konfigurálása](./media/samlssoconfluence-tutorial/addon.png)
+    ![Képernyőkép, amely a "Attlassian Marketplace" fület jeleníti meg az "új bővítmények keresése" beállítással.](./media/samlssoconfluence-tutorial/addon.png)
 
 5. Keressen **SAML egyszeri bejelentkezést (SSO) a torkolatánál** , és kattintson a **telepítés** gombra az új SAML beépülő modul telepítéséhez.
 
-    ![Egyetlen Sign-On konfigurálása](./media/samlssoconfluence-tutorial/addon7.png)
+    ![Képernyőkép: az "új bővítmények keresése" lap "S A M L egyszeri bejelentkezés (S O) a" összefolyásánál "a keresőmezőbe és a" telepítés "gomb kiválasztásával.](./media/samlssoconfluence-tutorial/addon7.png)
 
 6. A beépülő modul telepítése megkezdődik. Kattintson a **Bezárás** gombra.
 
-    ![Egyetlen Sign-On konfigurálása](./media/samlssoconfluence-tutorial/addon8.png)
+    ![A "telepítés" párbeszédpanelt megjelenítő képernyőkép.](./media/samlssoconfluence-tutorial/addon8.png)
 
-    ![Egyetlen Sign-On konfigurálása](./media/samlssoconfluence-tutorial/addon9.png)
+    ![Képernyőkép, amely a "telepített és kész" állapotot mutatja. párbeszédablak a "Bezárás" művelettel kiválasztva.](./media/samlssoconfluence-tutorial/addon9.png)
 
 7.  Kattintson a **Kezelés** gombra.
 
-    ![Egyetlen Sign-On konfigurálása](./media/samlssoconfluence-tutorial/addon10.png)
+    ![Képernyőfelvétel: "az M L egyszeri bejelentkezés (S O)" a "Manage" (kezelés) gombbal kiválasztva az alkalmazás oldalára.](./media/samlssoconfluence-tutorial/addon10.png)
     
 8. Az új beépülő modul konfigurálásához kattintson a **Konfigurálás** elemre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/samlssoconfluence-tutorial/addon11.png)
+    ![Képernyőkép, amely a "felügyelet" lapot jeleníti meg a "Konfigurálás" gomb kiválasztásával.](./media/samlssoconfluence-tutorial/addon11.png)
 
 9. Ez az új beépülő modul a **felhasználók & biztonság** lapon is megtalálható.
 
-    ![Egyetlen Sign-On konfigurálása](./media/samlssoconfluence-tutorial/addon3.png)
+    ![Képernyőfelvétel: a "felhasználók & biztonság" lapot jelölte meg "S A M L SingleSignOn".](./media/samlssoconfluence-tutorial/addon3.png)
     
 10. Az **SAML SingleSignon beépülő modul konfigurálása** lapon kattintson az **új identitásszolgáltató hozzáadása** gombra az Identitáskezelő beállításainak konfigurálásához.
 
-    ![Egyetlen Sign-On konfigurálása](./media/samlssoconfluence-tutorial/addon4.png)
+    ![Képernyőfelvétel: az "S A M SingleSignOn beépülő modul konfigurálása" oldal, az "új I d P hozzáadása" gomb kiválasztásával.](./media/samlssoconfluence-tutorial/addon4.png)
 
 11. Az **SAML-identitás szolgáltatójának kiválasztása** lapon hajtsa végre a következő lépéseket:
 
-    ![Egyetlen Sign-On konfigurálása](./media/samlssoconfluence-tutorial/addon5a.png)
+    ![Az "I d P type", a "Name" és a "Description" szövegmezők kiemelésével megjelenő képernyőkép.](./media/samlssoconfluence-tutorial/addon5a.png)
  
     a. Állítsa be az **Azure ad** -t identitásszolgáltató típusként.
     
@@ -174,11 +174,11 @@ A következő lépésekkel konfigurálhatja az Azure AD egyszeri bejelentkezést
     
 12. Az **identitás-szolgáltató konfigurációja** lapon kattintson a **tovább** gombra.
 
-    ![Egyetlen Sign-On konfigurálása](./media/samlssoconfluence-tutorial/addon5b.png)
+    ![Képernyőkép, amely a "következő" gomb kiválasztásával jeleníti meg az "identitás-szolgáltató konfigurációja" lapot.](./media/samlssoconfluence-tutorial/addon5b.png)
 
 13. Az **SAML-identitásszolgáltató metaadatainak importálása** oldalon hajtsa végre a következő lépéseket:
 
-    ![Egyetlen Sign-On konfigurálása](./media/samlssoconfluence-tutorial/addon5c.png)
+    ![Képernyőkép: az "Importálás", "fájl betöltése" és "tovább" gombokkal rendelkező "Importálás" M L I d P metaadatok "oldal.](./media/samlssoconfluence-tutorial/addon5c.png)
 
     a. Kattintson a **fájl betöltése** gombra, és válassza ki az 5. lépésben letöltött metaadatokat tartalmazó XML-fájlt.
 
@@ -190,15 +190,15 @@ A következő lépésekkel konfigurálhatja az Azure AD egyszeri bejelentkezést
     
 14. A **felhasználói azonosító attribútum és átalakítás** lapon kattintson a **tovább** gombra.
 
-    ![Egyetlen Sign-On konfigurálása](./media/samlssoconfluence-tutorial/addon5d.png)
+    ![Képernyőfelvétel: a "Next" gomb kiválasztásával megjelenített "felhasználói azonosító attribútum és átalakítás" oldal.](./media/samlssoconfluence-tutorial/addon5d.png)
     
 15. A **felhasználók létrehozása és frissítése** lapon kattintson a **Mentés gombra &** a beállítások mentése elem mellett.   
     
-    ![Egyetlen Sign-On konfigurálása](./media/samlssoconfluence-tutorial/addon6a.png)
+    ![A "felhasználó létrehozása és frissítése" oldalt megjelenítő képernyőkép, amely a "Mentés & Next" (következő) gombra kattint.](./media/samlssoconfluence-tutorial/addon6a.png)
     
 16. A **beállítások tesztelése** lapon kattintson a **teszt kihagyása & a manuális konfigurálás** lehetőségre a felhasználói teszt azonnali kihagyása érdekében. Ez a következő szakaszban lesz elvégezve, és néhány beállítást igényel a Azure Portalban. 
     
-    ![Egyetlen Sign-On konfigurálása](./media/samlssoconfluence-tutorial/addon6b.png)
+    ![Képernyőfelvétel: "a beállítások tesztelése" lapon a "teszt kihagyása & manuális beállítása" gomb látható.](./media/samlssoconfluence-tutorial/addon6b.png)
     
 17. A megjelenő párbeszédablakban a **teszt kihagyása azt jelenti** , hogy..., kattintson **az OK** gombra.
     
@@ -266,7 +266,7 @@ Az SAML SSO a Solution GmbH összefolyásánál a kiépítés manuális feladat.
 
 2. Mutasson a fogaskerékre, és kattintson a **felhasználó-felügyelet** elemre.
 
-    ![Alkalmazott hozzáadása](./media/samlssoconfluence-tutorial/user1.png) 
+    ![Képernyőkép, amely a menüből kiválasztott "fogaskerék" ikont és a "felhasználói kezelés" elemet mutatja.](./media/samlssoconfluence-tutorial/user1.png) 
 
 3. A felhasználók szakaszban kattintson a **felhasználók hozzáadása** fülre. A **"felhasználó hozzáadása"** párbeszédpanelen hajtsa végre a következő lépéseket:
 

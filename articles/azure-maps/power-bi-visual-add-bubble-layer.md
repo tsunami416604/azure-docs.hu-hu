@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 4443b0f479079a4722a5d62fea40afcb4a58632d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff0d2c8e90995222af79d5be63ca3e9da24b3c45
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86261934"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896225"
 ---
 # <a name="add-a-bubble-layer"></a>Buborékréteg hozzáadása
 
@@ -51,13 +51,13 @@ Ha egy mezőt a **mezők** ablaktábla **Size (méret** ) gyűjtője adja át, a
 | Maximális méret            | A buborék maximális mérete az adatméretezés során.|
 | Méretezési módszer | A relatív buborék méretének meghatározásához használt méretezési algoritmus.<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;• A bemeneti adatok lineáris tartománya lineárisan leképezve a minimális és a maximális méretre. (alapértelmezett)<br/>&nbsp;&nbsp;&nbsp;&nbsp;• A logaritmikusan a minimális és a maximális mérethez leképezett bemeneti adatok naplózási tartománya.<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Cubic-Bezier – a Cubic-Bezier görbe X1, y1, x2, y2 értékének megadása egyéni skálázási módszer létrehozásához. |
 
-Ha a méretezési **módszer** **naplózásra**van beállítva, a következő beállítások lesznek elérhetők.
+Ha a méretezési **módszer** **naplózásra** van beállítva, a következő beállítások lesznek elérhetők.
 
 | Beállítás   | Leírás      |
 |-----------|------------------|
 | Naplózási skála | A buborékok méretének kiszámításakor alkalmazandó logaritmikus skála. |
 
-Ha a méretezési **módszer** a **köbös-Bezier**értékre van állítva, a rendszer a következő beállításokat fogja elérhetővé tenni a skálázási görbe testreszabásához.
+Ha a méretezési **módszer** a **köbös-Bezier** értékre van állítva, a rendszer a következő beállításokat fogja elérhetővé tenni a skálázási görbe testreszabásához.
 
 | Beállítás | Leírás                           |
 |---------|---------------------------------------|
@@ -69,7 +69,7 @@ Ha a méretezési **módszer** a **köbös-Bezier**értékre van állítva, a re
 > [!TIP]
 > [https://cubic-bezier.com/](https://cubic-bezier.com/) a tartalmaz egy praktikus eszközt a Cubic-Bezier görbék paramétereinek létrehozásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megváltoztathatja, hogyan jelenjenek meg az adatai a térképen:
 
@@ -90,7 +90,7 @@ További környezet hozzáadása a térképhez:
 A vizualizáció testreszabása:
 
 > [!div class="nextstepaction"]
-> [Színformázási tippek és trükkök a Power BI-hoz](https://docs.microsoft.com/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
+> [Színformázási tippek és trükkök a Power BI-hoz](/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
 
 > [!div class="nextstepaction"]
-> [A vizualizáció címeinek, háttereinek és jelmagyarázatainak testreszabása](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)
+> [A vizualizáció címeinek, háttereinek és jelmagyarázatainak testreszabása](/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)

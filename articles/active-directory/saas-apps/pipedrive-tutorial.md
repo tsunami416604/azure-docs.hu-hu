@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 00dbde0b207fc6d8406a4844d82581b00ef2255a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f85cb97406e8b6cbb4811268696fc36f47ec3adb
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92506410"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896548"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pipedrive"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Pipedrive
 
@@ -144,15 +144,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson a **felhasználói profil** elemre, és válassza a **Beállítások** lehetőséget.
 
-    ![Pipedrive-konfiguráció](./media/pipedrive-tutorial/configure1.png)
+    ![A "felhasználói profil" menüből kiválasztott "Settings" (beállítások) elemet megjelenítő képernyőkép.](./media/pipedrive-tutorial/configure1.png)
 
 1. Görgessen le a Security Center webhelyre, és válassza az **egyszeri bejelentkezés** lehetőséget.
 
-    ![Pipedrive-konfiguráció](./media/pipedrive-tutorial/configure2.png)
+    ![Képernyőfelvétel: a "Security Center" kiválasztott "egyszeri bejelentkezés".](./media/pipedrive-tutorial/configure2.png)
 
 1. A **Pipedrive SAML-konfiguráció** szakaszának végrehajtásához hajtsa végre a következő lépéseket:
 
-    ![Pipedrive-konfiguráció](./media/pipedrive-tutorial/configure3.png)
+    ![Képernyőkép, amely az összes Kiemelt szövegmezővel jeleníti meg a "S M L konfiguráció a Pipedrive" szakaszt.](./media/pipedrive-tutorial/configure3.png)
 
     a. A **kiállító** szövegmezőbe illessze be az **alkalmazás-összevonási metaadatok URL-címét** , amelyet a Azure Portal másolt.
 
@@ -168,11 +168,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Görgessen le a vállalathoz, és válassza a **felhasználók kezelése** lehetőséget.
 
-    ![Pipedrive-konfiguráció](./media/pipedrive-tutorial/user1.png)
+    ![Képernyőfelvétel: a "vállalati" menüből kiválasztott "felhasználók kezelése".](./media/pipedrive-tutorial/user1.png)
 
 1. Kattintson a **felhasználók hozzáadása** elemre.
     
-    ![Pipedrive-konfiguráció](./media/pipedrive-tutorial/user2.png)
+    ![A jobb oldalon kiválasztott "felhasználók hozzáadása" gombra kattintva megjelenő képernyőkép a "felhasználók kezelése" oldalon látható.](./media/pipedrive-tutorial/user2.png)
 
 1. A **felhasználók kezelése** szakaszban hajtsa végre a következő lépéseket:
 

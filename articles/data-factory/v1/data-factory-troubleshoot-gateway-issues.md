@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 5d83f05c16004edc3ad4842b7e4e9d4b9babe577
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b12ff431b2d164baf4f70fa5341f538b16bca51
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85319067"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896565"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Az adatkezelési átjáró használata közben felmerülő hibák elhárítása
 Ez a cikk a adatkezelés átjáró használatával kapcsolatos hibaelhárítási problémákkal kapcsolatos információkat tartalmaz.
@@ -86,7 +86,7 @@ Az átjáró regisztrálásakor a következő hibaüzenet jelenhet meg:
 
 `Error: The gateway key is invalid or empty. Specify a valid gateway key from the portal.`
 
-![Az átjáró kulcsa érvénytelen vagy üres](media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png)
+![Képernyőkép, amely kiemeli, hogy az átjáró kulcsát jelző hibaüzenet érvénytelen vagy üres.](media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png)
 
 #### <a name="cause"></a>Ok
 Az átjáró kulcsa újra lett előkészítve, vagy az átjáró törlődött a Azure Portalban. Akkor is előfordulhat, ha a adatkezelés-átjáró telepítése nem legújabb.
@@ -107,14 +107,14 @@ Az átjáró regisztrálásakor a következő hibaüzenet jelenhet meg:
 Ez a hiba akkor fordulhat elő, ha az átjárót törölték, vagy a társított átjáró kulcsát újragenerálták.
 
 #### <a name="resolution"></a>Feloldás
-Ha az átjárót törölték, hozza létre újra az átjárót a portálról, kattintson a **regisztráció**elemre, másolja a kulcsot a portálról, illessze be, majd próbálja meg regisztrálni az átjárót.
+Ha az átjárót törölték, hozza létre újra az átjárót a portálról, kattintson a **regisztráció** elemre, másolja a kulcsot a portálról, illessze be, majd próbálja meg regisztrálni az átjárót.
 
 Ha az átjáró még létezik, de a kulcsa újra lett generált, akkor az új kulccsal regisztrálja az átjárót. Ha nem rendelkezik a kulccsal, újra létrehozza a kulcsot a portálról.
 
 ### <a name="7-problem"></a>7. probléma
 Amikor regisztrál egy átjárót, lehet, hogy meg kell adnia egy tanúsítvány elérési útját és jelszavát.
 
-![Tanúsítvány meghatározása](media/data-factory-troubleshoot-gateway-issues/specify-certificate.png)
+![Képernyőfelvétel: Itt adhatja meg a tanúsítvány elérési útját és jelszavát.](media/data-factory-troubleshoot-gateway-issues/specify-certificate.png)
 
 #### <a name="cause"></a>Ok
 Az átjáró korábban már regisztrálva van más gépeken. Egy átjáró kezdeti regisztrálása során egy titkosítási tanúsítvány van társítva az átjáróhoz. A tanúsítványt az átjáró saját maga hozhatja létre, vagy a felhasználó által biztosíthatja.  Ez a tanúsítvány az adattár (társított szolgáltatás) hitelesítő adatainak titkosítására szolgál.  
@@ -233,7 +233,7 @@ Ha az adattár-kapcsolat vagy az illesztőprogrammal kapcsolatos hiba jelenik me
 
 1. Indítsa el adatkezelés átjáró Configuration Manager az átjárót a gépen.
 2. Váltson a **diagnosztika** lapra.
-3. A **tesztelési kapcsolatban**adja hozzá az átjáró-csoportok értékeit.
+3. A **tesztelési kapcsolatban** adja hozzá az átjáró-csoportok értékeit.
 4. Kattintson a **tesztelés** elemre, és ellenőrizze, hogy tud-e csatlakozni a helyszíni adatforráshoz az átjárót tartalmazó számítógépről a kapcsolati információk és a hitelesítő adatok használatával. Amennyiben a kapcsolat tesztelése az illesztő telepítése után is sikertelen, indítsa újra az átjárót, hogy az érvényesítse a legutóbbi módosítást.
 
 ![A kapcsolatok tesztelése a diagnosztika lapon](media/data-factory-troubleshoot-gateway-issues/test-connection-in-diagnostics-tab.png)
@@ -252,7 +252,7 @@ Ha az átjáróval kapcsolatos problémák elhárításához segítségre van sz
 4. Választható A Microsoft webszolgáltatások adatvédelmi nyilatkozatának áttekintéséhez kattintson az **Adatvédelem** elemre.
 5. Ha meggyőződött arról, hogy mire készül a feltöltés, kattintson a **naplók küldése** gombra, hogy az elmúlt hét napban küldje el a naplókat a Microsoftnak a hibaelhárításhoz. A küldési naplók művelet állapotát a következő képernyőképen látható módon kell megtekinteni.
 
-    ![Átjárók küldésének adatkezelési állapota](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
+    ![A küldési naplók művelet állapotának megtekintését bemutató képernyőkép.](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
 6. A művelet befejezése után megjelenik egy párbeszédpanel, ahogy az alábbi képernyőképen is látható.
 
     ![Átjárók küldésének adatkezelési állapota](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-result.png)
@@ -278,7 +278,7 @@ Kattintson az **archív átjáró naplói** hivatkozásra az archiváláshoz és
 ### <a name="locate-gateway-logs"></a>Átjáró naplófájljainak megkeresése
 Az átjárókkal kapcsolatos részletes információkat a Windows-eseménynaplókban találja.
 
-1. Indítsa el a Windows **Eseménynapló**.
+1. Indítsa el a Windows **Eseménynapló** .
 2. Keresse meg a naplókat az **alkalmazás és szolgáltatások naplók**  >  **adatkezelés átjáró** mappájában.
 
    Az átjárókkal kapcsolatos problémák elhárításakor keresse meg a hiba szintű eseményeket az eseménynaplóban.

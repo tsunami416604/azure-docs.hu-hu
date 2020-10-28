@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 06b56566108bb482109d02d8d4f9db66dc2a6995
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 9e0bdbc9cc197deb5028848731f031ff19d5ebf7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755608"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897718"
 ---
 > [!IMPORTANT]
 > Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja.
@@ -91,6 +91,9 @@ Az alkalmazás **program** osztályában hozzon létre változókat az erőforr�
 
 Az alkalmazás **fő** metódusában adjon hozzá egy hívást az ebben a rövid útmutatóban használt aszinkron feladathoz. Később fogja megvalósítani.
 
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
+
+
 ## <a name="object-model"></a>Objektummodell 
 
 Az űrlap-felismerő használatával két különböző típusú ügyfél hozható létre. Az első az, `FormRecognizerClient` hogy a szolgáltatás lekérdezését felismerő űrlapmezők és tartalom használatával kérdezi le. A második a `FormTrainingClient` használatával egyéni modelleket hozhat létre és kezelhet, amelyeket az elismerés javítása érdekében használhat. 
@@ -143,16 +146,11 @@ A **Main (fő** ) alatt hozzon létre egy nevű új metódust `AuthenticateClien
 
 ## <a name="get-assets-for-testing"></a>Eszközök beszerzése teszteléshez 
 
-Az útmutatóban szereplő kódrészletek az URL-címek által elért távoli űrlapokat használják. Ha ehelyett a helyi űrlapos dokumentumokat szeretné feldolgozni, tekintse meg a kapcsolódó módszereket a [dokumentációban](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer) és a [mintákban](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
-
 Emellett a képzési és tesztelési adatok URL-címeihez is hozzá kell adnia a hivatkozásokat. Adja hozzá ezeket a **program** osztályának gyökeréhez.
 
 * Az egyéni modell betanítási adataihoz tartozó SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása** elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás** gombra. Ezután másolja az értéket az **URL** szakaszban. A következő formátumban kell lennie: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 * Ezután a fenti lépésekkel lekérheti egy egyedi dokumentum SAS URL-címét a blob Storage-ban.
 * Végül mentse az alábbi mintákban található minta beérkezési rendszerkép URL-címét (a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms)is elérhető. 
-
-> [!NOTE]
-> Az útmutatóban szereplő kódrészletek az URL-címek által elért távoli űrlapokat használják. Ha ehelyett a helyi űrlapos dokumentumokat szeretné feldolgozni, tekintse meg a kapcsolódó módszereket a [dokumentációban](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/).
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_urls)]
 
@@ -161,9 +159,12 @@ Emellett a képzési és tesztelési adatok URL-címeihez is hozzá kell adnia a
 
 Az űrlap-felismerő használatával felismerheti a dokumentumokban szereplő táblákat, vonalakat és szavakat, anélkül, hogy egy modellt kellene betanítania. A visszaadott érték egy **FormPage** -objektum gyűjteménye: egy a beküldött dokumentum minden oldalához. 
 
-Egy adott URI-fájl tartalmának felismeréséhez használja a `StartRecognizeContentFromUri` metódust.
+Egy adott URL-címen található fájl tartalmának felismeréséhez használja a `StartRecognizeContentFromUri` metódust.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_getcontent_call)]
+
+> [!TIP]
+> A tartalmat egy helyi fájlból is lekérheti. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) metódusokat, például a **StartRecognizeContent** . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) található mintakód-kódot.
 
 A feladat többi része kiírja a tartalmat a konzolra.
 
@@ -208,10 +209,12 @@ Table 0 has 2 rows and 6 columns.
 
 Ez a szakasz bemutatja, hogyan ismerheti fel és kinyerheti az Egyesült államokbeli nyugták közös mezőit egy előre képzett beérkezési modell használatával.
 
-Az URI-ból származó nyugták felismeréséhez használja a `StartRecognizeReceiptsFromUri` metódust. 
+A beérkezések URL-címről való felismeréséhez használja a `StartRecognizeReceiptsFromUri` metódust. 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_call)]
 
+> [!TIP]
+> A helyi visszaigazolási képeket is felismerheti. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) metódusokat, például a **StartRecognizeReceipts** . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) található mintakód-kódot.
 
 A visszaadott érték objektumok gyűjteménye `RecognizedReceipt` : egyet a beküldött dokumentum minden lapján. A következő kód dolgozza fel a nyugtát a megadott URI-n, és kiírja a fő mezőket és értékeket a konzolra.
 
@@ -401,12 +404,14 @@ Ez a szakasz azt mutatja be, hogyan lehet kinyerni a kulcs/érték információk
 > [!IMPORTANT]
 > Ennek a forgatókönyvnek a megvalósításához már be kell tanítania egy modellt, hogy az ID-t az alábbi metódusba tudja adni.
 
-A `StartRecognizeCustomFormsFromUri` metódust fogja használni. A visszaadott érték objektumok gyűjteménye `RecognizedForm` : egyet a beküldött dokumentum minden lapján. 
-
+A `StartRecognizeCustomFormsFromUri` metódust fogja használni. 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_analyze)]
 
-A következő kód kinyomtatja az elemzési eredményeket a-konzolra. Kinyomtatja az egyes felismert mezőket és a hozzá tartozó értékeket, valamint a megbízhatósági pontszámot.
+> [!TIP]
+> Elemezheti a helyi fájlokat is. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) metódusokat, például a **StartRecognizeCustomForms** . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) található mintakód-kódot.
+
+A visszaadott érték objektumok gyűjteménye `RecognizedForm` : egyet a beküldött dokumentum minden lapján. A következő kód kinyomtatja az elemzési eredményeket a-konzolra. Kinyomtatja az egyes felismert mezőket és a hozzá tartozó értékeket, valamint a megbízhatósági pontszámot.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_analyze_response)]
 

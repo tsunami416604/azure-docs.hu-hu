@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 905085d5b0787697d6094bd1337420ee8ae61d90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: faa5e3e3177e18787a73c6b4c43aa04b6bc760b7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311088"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897092"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Csempe réteg hozzáadása térképhez a Azure Maps Android SDK használatával
 
@@ -39,7 +39,7 @@ A csempe rétegbe átadott csempe URL-címének HTTP/HTTPS URL-címnek kell lenn
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikkben szereplő folyamat elvégzéséhez telepítenie kell [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) -t egy Térkép betöltéséhez.
+A cikkben szereplő folyamat elvégzéséhez telepítenie kell [Azure Maps Android SDK](./how-to-use-android-map-control-library.md) -t egy Térkép betöltéséhez.
 
 
 ## <a name="add-a-tile-layer-to-the-map"></a>Csempe réteg hozzáadása a térképhez
@@ -179,4 +179,4 @@ Ha most futtatja az alkalmazást, látnia kell egy vonalat a térképen az aláb
 A Térkép stílusainak beállításával kapcsolatos további tudnivalókért tekintse meg a következő cikket.
 
 > [!div class="nextstepaction"]
-> [Térkép stílusainak módosítása Android-térképeken](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [Térkép stílusainak módosítása Android-térképeken](./set-android-map-styles.md)

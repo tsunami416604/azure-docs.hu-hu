@@ -12,25 +12,25 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ceb1a299fe09afd0551bdade5526a4aeefebaba
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f92b95e38dea6555ca881d56ccf1cf2d68783e53
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441844"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896089"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B-együttműködés – gyakori kérdések
 
 Az Azure Active Directory (Azure AD) vállalatközi (B2B) együttműködéssel kapcsolatos gyakori kérdések (GYIK) rendszeres időközönként frissülnek, hogy új témaköröket tartalmazzanak.
 
    > [!IMPORTANT]
-   > **2021. március 31-ig**a Microsoft többé nem fogja támogatni a meghívások beváltását azáltal, hogy nem felügyelt Azure ad-fiókokat és bérlőket hoz létre vállalatközi együttműködési forgatókönyvek létrehozásához. A felkészülés során javasoljuk, hogy az ügyfelek [e-mail-egyszeri jelszavas hitelesítést](one-time-passcode.md)kérjenek. Szívesen fogadjuk visszajelzését ezen a nyilvános előzetes verzióban, és örömmel vesszük, hogy még több módszert is létre lehetne hozni az együttműködésre.
+   > **2021. március 31-ig** a Microsoft többé nem fogja támogatni a meghívások beváltását azáltal, hogy nem felügyelt Azure ad-fiókokat és bérlőket hoz létre vállalatközi együttműködési forgatókönyvek létrehozásához. A felkészülés során javasoljuk, hogy az ügyfelek [e-mail-egyszeri jelszavas hitelesítést](one-time-passcode.md)kérjenek. Szívesen fogadjuk visszajelzését ezen a nyilvános előzetes verzióban, és örömmel vesszük, hogy még több módszert is létre lehetne hozni az együttműködésre.
 
 ### <a name="can-we-customize-our-sign-in-page-so-its-more-intuitive-for-our-b2b-collaboration-guest-users"></a>Testre szabható a bejelentkezési oldal, így a B2B-együttműködéshez tartozó vendég felhasználói számára még intuitívabb lehet?
 Feltétlenül! A [szolgáltatásról a blogbejegyzésben](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/)talál további információt. A szervezet bejelentkezési oldalának testreszabásával kapcsolatos további információkért lásd: [vállalati arculat hozzáadása a bejelentkezéshez és a hozzáférési panel oldalaihoz](../fundamentals/customize-branding.md).
 
 ### <a name="can-b2b-collaboration-users-access-sharepoint-online-and-onedrive"></a>A B2B-együttműködés felhasználói hozzáférhetnek a SharePoint Online-hoz és a OneDrive-hoz?
-Igen. A meglévő vendég felhasználók a SharePoint Online-ban való keresésének lehetősége azonban alapértelmezés szerint **ki van kapcsolva** a People Picker használatával. Ha be szeretné kapcsolni a meglévő vendég felhasználók keresésének lehetőségét, állítsa be a **ShowPeoplePickerSuggestionsForGuestUsers** beállítást **a**be értékre. Ezt a beállítást a bérlő vagy a webhelycsoport szintjén is bekapcsolhatja. Ezt a beállítást a Set-SPOTenant és Set-SPOSite parancsmagok segítségével módosíthatja. Ezekkel a parancsmagokkal a tagok a címtárban lévő összes meglévő felhasználónál kereshetnek. A bérlői hatókör változásai nem érintik a már kiépített SharePoint Online-helyeket.
+Igen. A meglévő vendég felhasználók a SharePoint Online-ban való keresésének lehetősége azonban alapértelmezés szerint **ki van kapcsolva** a People Picker használatával. Ha be szeretné kapcsolni a meglévő vendég felhasználók keresésének lehetőségét, állítsa be a **ShowPeoplePickerSuggestionsForGuestUsers** beállítást **a** be értékre. Ezt a beállítást a bérlő vagy a webhelycsoport szintjén is bekapcsolhatja. Ezt a beállítást a Set-SPOTenant és Set-SPOSite parancsmagok segítségével módosíthatja. Ezekkel a parancsmagokkal a tagok a címtárban lévő összes meglévő felhasználónál kereshetnek. A bérlői hatókör változásai nem érintik a már kiépített SharePoint Online-helyeket.
 
 ### <a name="is-the-csv-upload-feature-still-supported"></a>A CSV-feltöltési funkció továbbra is támogatott?
 Igen. A. csv fájl feltöltési funkciójával kapcsolatos további információkért tekintse meg [ezt a PowerShell-mintát](code-samples.md).
@@ -64,17 +64,17 @@ Ha egy felhasználó a korlátozott rendszergazda szerepkörhöz van rendelve, a
 Igen! Létrehozhat egy feltételes hozzáférési szabályzatot, amely letiltja az összes vendég és külső felhasználó hozzáférését a Azure Portalhoz. Ha beállítja ezt a házirendet, ügyeljen arra, hogy elkerülje a tagok és a rendszergazdák számára a hozzáférés véletlen blokkolását.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) biztonsági rendszergazdaként vagy feltételes hozzáférésű rendszergazdaként.
-2. A Azure Portal válassza a **Azure Active Directory**lehetőséget. 
-3. A **kezelés**területen válassza a **Biztonság**elemet.
-4. A **védelem**területen válassza a **feltételes hozzáférés**lehetőséget. Válassza az **új szabályzat**lehetőséget.
+2. A Azure Portal válassza a **Azure Active Directory** lehetőséget. 
+3. A **kezelés** területen válassza a **Biztonság** elemet.
+4. A **védelem** területen válassza a **feltételes hozzáférés** lehetőséget. Válassza az **új szabályzat** lehetőséget.
 5. Az **új** lap **név** szövegmezőbe írja be a szabályzat nevét (például "a vendégek blokkolják a portál elérését").
 6. A **Hozzárendelések** alatt válassza a **Felhasználók és csoportok** lehetőséget.
-7. A **beágyazás** lapon válassza a **felhasználók és csoportok kiválasztása**lehetőséget, majd válassza az **összes vendég és külső felhasználó (előzetes verzió)** lehetőséget.
+7. A **beágyazás** lapon válassza a **felhasználók és csoportok kiválasztása** lehetőséget, majd válassza az **összes vendég és külső felhasználó (előzetes verzió)** lehetőséget.
 9. Válassza a **Done** (Kész) lehetőséget.
-10. Az **új** lap **hozzárendelések** területén válassza a **Cloud apps vagy műveletek**elemet.
-11. A **Cloud apps vagy műveletek** lapon válassza az **alkalmazások kiválasztása**, majd a **kiválasztás**lehetőséget.
+10. Az **új** lap **hozzárendelések** területén válassza a **Cloud apps vagy műveletek** elemet.
+11. A **Cloud apps vagy műveletek** lapon válassza az **alkalmazások kiválasztása** , majd a **kiválasztás** lehetőséget.
 12. A **Kiválasztás** lapon válassza a **Microsoft Azure-felügyelet** elemet, majd a **Kiválaszt** lehetőséget.
-13. A **Cloud apps vagy műveletek** lapon válassza a **kész**lehetőséget.
+13. A **Cloud apps vagy műveletek** lapon válassza a **kész** lehetőséget.
 
 ### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>Támogatja az Azure AD B2B együttműködés a többtényezős hitelesítést és a fogyasztói e-mail-fiókokat?
 Igen. A multi-Factor Authentication és a fogyasztói e-mail-fiókok egyaránt támogatottak az Azure AD B2B együttműködésben.
@@ -130,8 +130,8 @@ Igen. További információ: [feltételes hozzáférés vállalatközi együttm�
 Igen. Az Azure AD B2B együttműködés támogatja az engedélyezési és a letiltási listát. 
 
 ### <a name="what-licenses-do-we-need-to-use-azure-ad-b2b"></a>Milyen licencekre van szükségünk az Azure AD B2B használatához?
-További információ a szervezet által az Azure AD B2B használatához szükséges licencekről: [Azure Active Directory B2B együttműködés licencelési útmutatója](licensing-guidance.md).
+További információ arról, hogy a szervezetnek milyen licenceket kell használnia az Azure AD B2B használatához: [külső identitások díjszabása](external-identities-pricing.md).
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 - [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)

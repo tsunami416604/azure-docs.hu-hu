@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 3ece62e671caa0838bbf4713c0ad4a74f19fd6cb
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 61b6f4a530ab1861c67b0bd4983167546e268957
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518874"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896327"
 ---
 # <a name="tutorial---migrate-from-google-maps-to-azure-maps"></a>Oktatóanyag – áttelepítés a Google Mapsből a Azure Mapsba
 
@@ -79,7 +79,7 @@ Ha a Google Maps szolgáltatásból Azure Mapsra végez áttelepítést, vegye f
 - [Azure Maps díjszabási oldala](https://azure.microsoft.com/pricing/details/azure-maps/)
 - [Azure-díjkalkulátor](https://azure.microsoft.com/pricing/calculator/?service=azure-maps)
 - [Azure Maps használati idő](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46) (a Microsoft Online Services használati feltételeiben szerepel)
-- [Válassza ki a megfelelő díjszabási szintet Azure Maps](https://docs.microsoft.com/azure/azure-maps/choose-pricing-tier)
+- [Válassza ki a megfelelő díjszabási szintet Azure Maps](./choose-pricing-tier.md)
 
 ## <a name="suggested-migration-plan"></a>Javasolt áttelepítési terv
 
@@ -87,7 +87,7 @@ A következő egy magas szintű áttelepítési terv.
 
 1. Az alkalmazás által használt Google Maps SDK-k és szolgáltatások leltárba vétele. Ellenőrizze, hogy a Azure Maps biztosít-e alternatív SDK-kat és szolgáltatásokat.
 2. Ha még nem rendelkezik ilyennel, hozzon létre egy Azure-előfizetést a következő címen: [https://azure.com](https://azure.com) .
-3. Hozzon létre egy Azure Maps fiókot ([dokumentációt](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)) és hitelesítési kulcsot, vagy Azure Active Directory ([dokumentáció](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)).
+3. Hozzon létre egy Azure Maps fiókot ([dokumentációt](./how-to-manage-account-keys.md)) és hitelesítési kulcsot, vagy Azure Active Directory ([dokumentáció](./how-to-manage-authentication.md)).
 4. Telepítse át az alkalmazás kódját.
 5. Tesztelje az áttelepített alkalmazást.
 6. Telepítse az áttelepített alkalmazást éles környezetbe.
@@ -98,17 +98,17 @@ Azure Maps fiók létrehozásához és a Azure Maps platform eléréséhez köve
 
 1. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 2. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-3. Hozzon létre egy [Azure Maps fiókot](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys). 
-4. [Szerezze be a Azure Maps előfizetési kulcsát](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details) , vagy beállíthatja Azure Active Directory hitelesítését a fokozott biztonság eléréséhez.
+3. Hozzon létre egy [Azure Maps fiókot](./how-to-manage-account-keys.md). 
+4. [Szerezze be a Azure Maps előfizetési kulcsát](./how-to-manage-authentication.md#view-authentication-details) , vagy beállíthatja Azure Active Directory hitelesítését a fokozott biztonság eléréséhez.
 
 ## <a name="azure-maps-technical-resources"></a>Technikai erőforrások Azure Maps
 
 Az alábbi lista a Azure Maps hasznos technikai erőforrásait sorolja fel.
 
 - Áttekintés [https://azure.com/maps](https://azure.com/maps)
-- Dokumentáció [https://aka.ms/AzureMapsDocs](https://aka.ms/AzureMapsDocs)
+- Dokumentáció [https://aka.ms/AzureMapsDocs](./index.yml)
 - Web SDK-kód minták: [https://aka.ms/AzureMapsSamples](https://aka.ms/AzureMapsSamples)
-- Fejlesztői fórumok: [https://aka.ms/AzureMapsForums](https://aka.ms/AzureMapsForums)
+- Fejlesztői fórumok: [https://aka.ms/AzureMapsForums](/answers/topics/azure-maps.html)
 - Videók [https://aka.ms/AzureMapsVideos](https://aka.ms/AzureMapsVideos)
 - Blog [https://aka.ms/AzureMapsBlog](https://aka.ms/AzureMapsBlog)
 - Technikai blog: [https://aka.ms/AzureMapsTechBlog](https://aka.ms/AzureMapsTechBlog)
@@ -117,9 +117,9 @@ Az alábbi lista a Azure Maps hasznos technikai erőforrásait sorolja fel.
 
 ## <a name="migration-support"></a>Migrálás támogatása
 
-A fejlesztők a [fórumok](https://aka.ms/AzureMapsForums) vagy a számos Azure-támogatási lehetőség közül választhatják a Migrálás támogatását: [https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
+A fejlesztők a [fórumok](/answers/topics/azure-maps.html) vagy a számos Azure-támogatási lehetőség közül választhatják a Migrálás támogatását: [https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan telepítheti át Google Maps-alkalmazását a következő cikkekkel:
 

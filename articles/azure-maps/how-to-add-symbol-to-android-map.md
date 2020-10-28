@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 10969e20cd7ae71cade230f6643a27d5d940ceaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acd5f06a5383308ce736f2860810ebee7e5bce28
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311274"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897109"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Szimbólum-réteg hozzáadása térképhez Azure Maps Android SDK használatával
 
@@ -21,7 +21,7 @@ Ebből a cikkből megtudhatja, hogyan jelenítheti meg a pontok adatait egy adat
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikkben szereplő lépések teljes körű követéséhez telepítenie kell [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) -t egy Térkép betöltéséhez.
+A cikkben szereplő lépések teljes körű követéséhez telepítenie kell [Azure Maps Android SDK](./how-to-use-android-map-control-library.md) -t egy Térkép betöltéséhez.
 
 ## <a name="add-a-symbol-layer"></a>Szimbólumréteg hozzáadása
 
@@ -180,7 +180,7 @@ Ezen a ponton, ha futtatja az alkalmazást, látnia kell egy jelölőt a térké
 Ha további dolgokat szeretne hozzáadni a térképhez, tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
-> [Alakzatok hozzáadása Android-térképhez](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+> [Alakzatok hozzáadása Android-térképhez](./how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
 > [Funkcióinformációk megjelenítése](display-feature-information-android.md)

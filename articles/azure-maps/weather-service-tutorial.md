@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 5499402e94cad8673da597afd68571b77047192a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f020f3d9e23b9f834fd203f6d030656581fb4416
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677696"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896599"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Oktatóanyag: az érzékelő adataihoz való csatlakozás időjárás-előrejelzési adataival Azure Notebooks (Python) használatával
 
@@ -23,11 +23,11 @@ A szélenergia egy alternatív energiaforrás a fosszilis tüzelőanyagok szám�
 Az oktatóanyagban a következőket végezheti el:
 
 > [!div class="checklist"]
-> * A felhőben [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) adatfájlokkal dolgozhat.
+> * A felhőben [Azure Notebooks](../notebooks/index.yml) adatfájlokkal dolgozhat.
 > * Betöltheti a bemutató adatait a fájlból.
 > * Azure Maps REST API-k hívása a Pythonban.
 > * Helyadatok leképezése a térképen.
-> * Azure Maps [napi előrejelzési](https://aka.ms/AzureMapsWeatherDailyForecast) időjárási adattal gazdagíthatja a bemutatókat.
+> * Azure Maps [napi előrejelzési](/rest/api/maps/weather/getdailyforecastpreview) időjárási adattal gazdagíthatja a bemutatókat.
 > * Előrejelzési adatdiagramok ábrázolása.
 
 
@@ -41,7 +41,7 @@ Az oktatóanyag elvégzéséhez először a következőket kell tennie:
 
 A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
 
-Az Azure-jegyzetfüzetek megismeréséhez és az első lépésekhez kövesse az [Azure notebook létrehozása](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebooks-project)című témakör utasításait.
+Az Azure-jegyzetfüzetek megismeréséhez és az első lépésekhez kövesse az [Azure notebook létrehozása](./tutorial-ev-routing.md#create-an-azure-notebooks-project)című témakör utasításait.
 
 > [!Note]
 > A projekthez tartozó Jupyter notebook-fájl az [időjárási térképek Jupyter notebook-tárházból](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data)tölthető le.
@@ -68,7 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>Napi előrejelzési adatgyűjtés kérése
 
-Ebben az esetben napi előrejelzést szeretnénk kérni az egyes érzékelők helyéről. Az alábbi szkript meghívja a Azure Maps időjárási szolgáltatás [napi előrejelzési API](https://aka.ms/AzureMapsWeatherDailyForecast) -ját. Ez az API az aktuális dátumtól számított 15 napra visszaadja az egyes szélturbinák időjárási előrejelzéseit.
+Ebben az esetben napi előrejelzést szeretnénk kérni az egyes érzékelők helyéről. Az alábbi szkript meghívja a Azure Maps időjárási szolgáltatás [napi előrejelzési API](/rest/api/maps/weather/getdailyforecastpreview) -ját. Ez az API az aktuális dátumtól számított 15 napra visszaadja az egyes szélturbinák időjárási előrejelzéseit.
 
 
 ```python
@@ -107,7 +107,7 @@ for i in range(0, len(coords), 2):
 await session.close()
 ```
 
-Az alábbi parancsfájl a turbina-helyet a térképen jeleníti meg a Azure Maps [Térkép rendszerkép-szolgáltatásának](https://docs.microsoft.com/rest/api/maps/render/getmapimage)meghívásával.
+Az alábbi parancsfájl a turbina-helyet a térképen jeleníti meg a Azure Maps [Térkép rendszerkép-szolgáltatásának](/rest/api/maps/render/getmapimage)meghívásával.
 
 ```python
 # Render the turbine locations on the map by calling the Azure Maps Get Map Image service
@@ -184,18 +184,18 @@ Az alábbi diagramok megjelenítik az előrejelzési adatértékeket. A szél se
 
 Ebben az oktatóanyagban megtanulta, hogyan hívhat meg Azure Maps REST API-kat az időjárási előrejelzési adatok beszerzéséhez. Azt is megtanulta, hogyan jelenítheti meg a gráfokban tárolt adatmegjelenítést.
 
-Ha többet szeretne megtudni arról, hogyan hívhat Azure Maps REST API-kat Azure Notebookson belül, tekintse meg az [EV-útválasztást a Azure Notebooks használatával](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing).
+Ha többet szeretne megtudni arról, hogyan hívhat Azure Maps REST API-kat Azure Notebookson belül, tekintse meg az [EV-útválasztást a Azure Notebooks használatával](./tutorial-ev-routing.md).
 
 Az oktatóanyagban használt Azure Maps API-k megismeréséhez tekintse meg a következőt:
 
-* [Napi előrejelzés](https://aka.ms/AzureMapsWeatherDailyForecast)
-* [Render-Térkép képe](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
+* [Napi előrejelzés](/rest/api/maps/weather/getdailyforecastpreview)
+* [Render-Térkép képe](/rest/api/maps/render/getmapimage)
 
-Azure Maps REST API-k teljes listájáért lásd: [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model)-k.
+Azure Maps REST API-k teljes listájáért lásd: [Azure Maps REST API](./consumption-model.md)-k.
 
 ## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Notebooksről:
 
 > [!div class="nextstepaction"]
-> [Azure Notebooks](https://docs.microsoft.com/azure/notebooks)
+> [Azure Notebooks](../notebooks/index.yml)

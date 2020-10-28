@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1f79add26af40abfa320bc23a3287d8246237701
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cf27319fa84ff5d693e74e90664b7a86f4d934a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037439"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897211"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps helymeghatározáshoz lefedettsége
 
-A Azure Maps [Search szolgáltatás](https://docs.microsoft.com/rest/api/maps/search) támogatja a helymeghatározáshoz, ami azt jelenti, hogy az API-kérés tartalmazhat keresési kifejezéseket, például egy lakcímet vagy egy hely nevét, és visszaadja az eredményt szélességi és hosszúsági koordinátákként. Például a Azure Maps [keresési címek API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) fogadja a helyadatok tárolására szolgáló lekérdezéseket, és az eredményeket szélességi és hosszúsági koordinátákként adja vissza.
+A Azure Maps [Search szolgáltatás](/rest/api/maps/search) támogatja a helymeghatározáshoz, ami azt jelenti, hogy az API-kérés tartalmazhat keresési kifejezéseket, például egy lakcímet vagy egy hely nevét, és visszaadja az eredményt szélességi és hosszúsági koordinátákként. Például a Azure Maps [keresési címek API](/rest/api/maps/search/getsearchaddress) fogadja a helyadatok tárolására szolgáló lekérdezéseket, és az eredményeket szélességi és hosszúsági koordinátákként adja vissza.
 
-A Azure Maps [keresési szolgáltatás](https://docs.microsoft.com/rest/api/maps/search) azonban nem rendelkezik azonos szintű információkkal és pontossággal minden régió és ország tekintetében. Ebből a cikkből megtudhatja, hogy milyen típusú helyszíneket megbízhatóan kereshet az egyes régiókban.
+A Azure Maps [keresési szolgáltatás](/rest/api/maps/search) azonban nem rendelkezik azonos szintű információkkal és pontossággal minden régió és ország tekintetében. Ebből a cikkből megtudhatja, hogy milyen típusú helyszíneket megbízhatóan kereshet az egyes régiókban.
 
 Az országokban/régiókban való geocode az helymeghatározáshoz szolgáltatás közúti adatlefedettsége és helymeghatározáshoz pontossága függ. A következő kategorizálással határozható meg az egyes országok/régiók helymeghatározáshoz-támogatásának szintje.
 
@@ -301,4 +301,4 @@ Az országokban/régiókban való geocode az helymeghatározáshoz szolgáltatá
 
 További információ a Azure Maps helymeghatározáshoz:
 > [!div class="nextstepaction"]
-> [Azure Maps Search szolgáltatás](https://docs.microsoft.com/rest/api/maps/search)
+> [Azure Maps Search szolgáltatás](/rest/api/maps/search)

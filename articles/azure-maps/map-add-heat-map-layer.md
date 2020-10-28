@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 5008e3b11a7e00e8f831333551c892113f03dd06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51df9683152d97b899150e240dee98896f8c40ee
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310628"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896378"
 ---
 # <a name="add-a-heat-map-layer"></a>Hőtérképréteg hozzáadása
 
@@ -24,9 +24,9 @@ Több tízezer pont megjelenítésével a szimbólumok a legtöbb térképi ter�
 
 A Heat Maps számos különböző forgatókönyvben használható, beleértve a következőket:
 
-- **Hőmérsékleti információ**: a két adatpont közötti hőmérséklet-érték közelítését biztosítja.
-- A **zaj-érzékelők adatai**: nem csak az érzékelőt tartalmazó zaj erősségét mutatja, de a távolságon keresztül is biztosítható az elszóródás. Előfordulhat, hogy a zajszint egy adott helyen nem magas. Ha a zaj lefedettségi területe több érzékelővel átfedésben van, lehetséges, hogy ez az átfedési terület magasabb zajszintet eredményezhet. Így az átfedésben lévő terület látható lesz a Heat térképen.
-- **GPS-nyomkövetés**: magában foglalja a sebességét súlyozott magassági térképként, ahol az egyes adatpontok intenzitása a sebességen alapul. Ez a funkció például lehetővé teszi, hogy megtekintse a jármű sebességének helyét.
+- **Hőmérsékleti információ** : a két adatpont közötti hőmérséklet-érték közelítését biztosítja.
+- A **zaj-érzékelők adatai** : nem csak az érzékelőt tartalmazó zaj erősségét mutatja, de a távolságon keresztül is biztosítható az elszóródás. Előfordulhat, hogy a zajszint egy adott helyen nem magas. Ha a zaj lefedettségi területe több érzékelővel átfedésben van, lehetséges, hogy ez az átfedési terület magasabb zajszintet eredményezhet. Így az átfedésben lévő terület látható lesz a Heat térképen.
+- **GPS-nyomkövetés** : magában foglalja a sebességét súlyozott magassági térképként, ahol az egyes adatpontok intenzitása a sebességen alapul. Ez a funkció például lehetővé teszi, hogy megtekintse a jármű sebességének helyét.
 
 > [!TIP]
 > Az adatforrásban lévő összes geometriá koordinátáit alapértelmezés szerint a térképi rétegek rétege jeleníti meg. Ha úgy szeretné korlátozni a réteget, hogy az csak a pont geometriájának funkcióit jelenítse meg, állítsa a réteg tulajdonságát a következőre: `filter` `['==', ['geometry-type'], 'Point']` . Ha azt szeretné, hogy a multipoint-funkciók is szerepeljenek, állítsa a réteg tulajdonságát a következőre: `filter` `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` .
@@ -120,10 +120,10 @@ Tekintse meg az CodePen-on található, Azure Maps () által <a href='https://co
 További információ a cikkben használt osztályokról és módszerekről:
 
 > [!div class="nextstepaction"]
-> [HeatMapLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker)
+> [HeatMapLayer](/javascript/api/azure-maps-control/atlas.htmlmarker)
 
 > [!div class="nextstepaction"]
-> [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
+> [HeatMapLayerOptions](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
 
 A térképekhez hozzáadandó további példákat a következő cikkekben talál:
 

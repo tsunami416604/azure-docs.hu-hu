@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: b839d35c27e86a754c19faff65039d350a66c6bd
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 28fb3cb02d978c0a64884771727f33d01d8a4ceb
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755400"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897715"
 ---
 > [!IMPORTANT]
 > * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Tekintse meg az alábbi dokumentációt. 
@@ -123,14 +123,16 @@ Emellett a képzési és tesztelési adatok URL-címeihez is hozzá kell adnia a
 * Az egyéni modell betanítási adataihoz tartozó SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása** elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás** gombra. Ezután másolja az értéket az **URL** szakaszban. A következő formátumban kell lennie: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 * Használja az alábbi mintákban található mintát és beérkezési képeket (a [githubon](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/test-assets)is elérhetők), vagy a fenti lépésekkel lekérheti egy egyedi dokumentum sas URL-címét a blob Storage-ban. 
 
-> [!NOTE]
-> Az útmutatóban szereplő kódrészletek az URL-címek által elért távoli űrlapokat használják. Ha ehelyett a helyi űrlapos dokumentumokat szeretné feldolgozni, tekintse meg a kapcsolódó módszereket a [dokumentációban](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/) és a [mintákban](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples).
 
 ## <a name="recognize-form-content"></a>Űrlap tartalmának felismerése
 
 Az űrlap-felismerő használatával felismerheti a dokumentumokban szereplő táblákat, vonalakat és szavakat, anélkül, hogy egy modellt kellene betanítania. Egy adott URI-fájl tartalmának felismeréséhez használja a `beginRecognizeContentFromUrl` metódust.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_getcontent)]
+
+
+> [!TIP]
+> A tartalmat egy helyi fájlból is lekérheti. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) metódusokat, például a **beginRecognizeContent** . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) található mintakód-kódot.
 
 ### <a name="output"></a>Kimenet
 
@@ -156,6 +158,8 @@ Az URI-ból származó nyugták felismeréséhez használja a `beginRecognizeRec
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
 
+> [!TIP]
+> A helyi visszaigazolási képeket is felismerheti. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) metódusokat, például a **beginRecognizeReceipts** . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) található mintakód-kódot.
 
 ### <a name="output"></a>Kimenet
 
@@ -273,6 +277,9 @@ Ez a szakasz azt mutatja be, hogyan lehet kinyerni a kulcs/érték információk
 A `beginRecognizeCustomFormsFromUrl` metódust fogja használni. A visszaadott érték objektumok gyűjteménye `RecognizedForm` : egyet a beküldött dokumentum minden lapján.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_analyze)]
+
+> [!TIP]
+> A helyi fájlokat is elemezheti. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) metódusokat, például a **beginRecognizeCustomForms** . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) található mintakód-kódot.
 
 
 ### <a name="output"></a>Kimenet

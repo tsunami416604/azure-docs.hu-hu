@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 52ae961a813b6d14592953fdf8662cbaecf662e1
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b82478338603750a76718da956d74e23d242692e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280449"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896534"
 ---
 # <a name="managed-application-metered-billing"></a>Felügyelt alkalmazás mért számlázása 
 
@@ -56,18 +56,18 @@ Egy Azure-ügyfél, amely a CoA szolgáltatásra előfizető, a kiválasztott cs
 
 A számlázási dimenziók használatával kommunikálnak a felhasználóval arról, hogy hogyan lesznek kiszámlázva a szoftver használatáért.  Ezeket a dimenziókat a használati események a Microsoftnak való kommunikációjához is használják. Ezek az alábbiak szerint vannak meghatározva:
 
-* **Dimenzió azonosítója**: a használati események kibocsátása közben megváltoztathatatlan azonosító.
-* **Dimenzió neve**: a dimenzióhoz társított megjelenítendő név, például "szöveges üzenetek elküldve".
-* **Mértékegység**: a számlázási egység leírása, például "szöveges üzenet" vagy "/100 e-mailek".
-* **Díj/egység**: a dimenzió egy egységének díja.
-* **Belefoglalt mennyiség a havi időszakra**: az ismétlődő havi díjat fizető ügyfelek számára havi dimenzióban szereplő mennyiségnek egész számnak kell lennie.
+* **Dimenzió azonosítója** : a használati események kibocsátása közben megváltoztathatatlan azonosító.
+* **Dimenzió neve** : a dimenzióhoz társított megjelenítendő név, például "szöveges üzenetek elküldve".
+* **Mértékegység** : a számlázási egység leírása, például "szöveges üzenet" vagy "/100 e-mailek".
+* **Díj/egység** : a dimenzió egy egységének díja.
+* **Belefoglalt mennyiség a havi időszakra** : az ismétlődő havi díjat fizető ügyfelek számára havi dimenzióban szereplő mennyiségnek egész számnak kell lennie.
 
 A számlázási dimenziók az ajánlat minden csomagjában meg vannak osztva. Egyes attribútumok a dimenzióra vonatkoznak az összes csomagra, és más attribútumok is megtervezve.
 
 A dimenziót definiáló attribútumok az ajánlat minden csomagjában meg vannak osztva. Mielőtt közzéteszi az ajánlatot, az ezen attribútumok bármely csomag kontextusában történt módosítása hatással lesz az összes csomag dimenziójának meghatározására. Miután közzétette az ajánlatot, ezek az attribútumok többé nem lesznek szerkeszthetve. Az attribútumok a következők:
 
 * Azonosító
-* Name
+* Name (Név)
 * Mértékegység
 
 A dimenziók egyéb attribútumai az egyes csomagokra jellemzőek, és a tervtől eltérő értékekkel rendelkezhetnek.  A terv közzététele előtt módosíthatja ezeket az értékeket, és csak ezt a csomagot fogja érinteni. Miután közzétette a csomagot, ezek az attribútumok többé nem lesznek szerkeszthetve. Az attribútumok a következők:
@@ -79,7 +79,7 @@ A dimenziók egyéb attribútumai az egyes csomagokra jellemzőek, és a tervtő
 A méretek két speciális fogalmat is tartalmazhatnak, amelyek "engedélyezve" és "végtelen":
 
 * Az **engedélyezve** érték azt jelzi, hogy ez a csomag részt vesz ebben a dimenzióban.  Ha olyan új csomagot hoz létre, amely nem küldi el ezt a dimenziót, előfordulhat, hogy ezt a beállítást nem kell kijelölnie. Emellett a csomag első közzététele után hozzáadott új dimenziók a már közzétett tervben "nem engedélyezettként" jelennek meg.  A kikapcsolt dimenziók nem jelennek meg az ügyfelek által látott csomag dimenzióinak listájában.
-* A **végtelen**, amelyet a "∞" végtelen szimbólum jelöl, azt jelzi, hogy ez a csomag részt vesz ebben a dimenzióban, a dimenzióra vonatkozó mért használat nélkül. Ha meg szeretné jeleníteni ügyfelei számára, hogy a dimenzió által képviselt funkciók beletartoznak a csomagba, de a használat korlátozás nélkül.  A végtelen használatú dimenziók az ügyfelek által látott csomag dimenzióinak listájában jelennek meg.  Ez a csomag soha nem számít fel díjat.
+* A **végtelen** , amelyet a "∞" végtelen szimbólum jelöl, azt jelzi, hogy ez a csomag részt vesz ebben a dimenzióban, a dimenzióra vonatkozó mért használat nélkül. Ha meg szeretné jeleníteni ügyfelei számára, hogy a dimenzió által képviselt funkciók beletartoznak a csomagba, de a használat korlátozás nélkül.  A végtelen használatú dimenziók az ügyfelek által látott csomag dimenzióinak listájában jelennek meg.  Ez a csomag soha nem számít fel díjat.
 
 >[!Note] 
 >A következő forgatókönyvek explicit módon támogatottak:  <br> – Új dimenziót adhat hozzá egy új tervhez.  Az új dimenzió nem lesz engedélyezve a már közzétett csomagok esetében. <br> – A csomagot rögzített havi díjjal és dimenziók nélkül is közzéteheti, majd hozzáadhat egy új tervet, és konfigurálhat egy új dimenziót az adott tervhez. Az új dimenzió nem lesz engedélyezve a már közzétett tervekhez.
@@ -93,7 +93,7 @@ A Marketplace-mérési szolgáltatással használt dimenzió azt mutatja be, hog
 Ha egy ajánlatot közzétesznek egy dimenzióval, az adott dimenzióra vonatkozó ajánlati szintű adatok már nem módosíthatók:
 
 * Azonosító
-* Name
+* Name (Név)
 * Mértékegység
 
 A csomag közzététele után a terv szintű részletek már nem módosíthatók:
@@ -107,7 +107,7 @@ A csomag közzététele után a terv szintű részletek már nem módosíthatók
 
 ### <a name="upper-limits"></a>Felső határértékek
 
-Az egyetlen ajánlathoz konfigurálható méretek maximális száma 18 egyedi dimenzió lehet.
+Az egyetlen ajánlathoz konfigurálható méretek maximális száma 30 egyedi dimenzió lehet.
 
 ## <a name="get-support"></a>Támogatás kérése
 

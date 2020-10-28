@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 ms.custom: references_regions
 manager: philmea
-ms.openlocfilehash: 5383309143302e0f3fb2052b47e4c497d9a21bf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61e529e44f48343027457f18ba503e4bbb5930f1
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90976881"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896616"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps időjárási lefedettség
 
-Ez a cikk a Azure Maps [időjárási szolgáltatásokra](https://aka.ms/AzureMapsWeatherService)vonatkozó lefedettségi információkat tartalmaz. Azure Maps időjárási adatszolgáltatások olyan részleteket adnak vissza, mint például a radar csempéi, a jelenlegi időjárási feltételek, az időjárás-előrejelzés és az időjárás az útvonal mentén.
+Ez a cikk a Azure Maps [időjárási szolgáltatásokra](/rest/api/maps/weather)vonatkozó lefedettségi információkat tartalmaz. Azure Maps időjárási adatszolgáltatások olyan részleteket adnak vissza, mint például a radar csempéi, a jelenlegi időjárási feltételek, az időjárás-előrejelzés és az időjárás az útvonal mentén.
 
 Azure Maps az összes ország és régió esetében nem rendelkezik azonos szintű információval és pontossággal.
 
@@ -299,4 +299,4 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Törökország                 | ✓ |   | | ✓| 
 | Ukrajna                | ✓ |   | | ✓| 
 | Egyesült Királyság         | ✓ | ✓ | ✓| ✓| 
-| Vatikán           | ✓ |   |✓ | ✓| 
+| Vatikán           | ✓ |   |✓ | ✓|
