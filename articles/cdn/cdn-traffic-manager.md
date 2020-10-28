@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: b75643d0d526bae4d7b2879dffab3d90dbcbe1eb
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: d2d3bd43a0f17167e855d7e678a96cd79fe42237
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875869"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92777741"
 ---
 # <a name="failover-across-multiple-endpoints-with-azure-traffic-manager"></a>Feladatátvétel több végpont között az Azure Traffic Manager
 
@@ -60,34 +60,34 @@ Hozzon létre két vagy több Azure CDN-profilt és-végpontot különböző szo
 ## <a name="create-traffic-manager-profile"></a>Traffic Manager-profil létrehozása
 Hozzon létre egy Azure Traffic Manager-profilt, és konfigurálja a terheléselosztást a CDN-végpontok között. 
 
-1. Hozzon létre egy Azure Traffic Manager-profilt a [Traffic Manager profil létrehozása](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile)című témakör lépéseit követve. 
+1. Hozzon létre egy Azure Traffic Manager-profilt a [Traffic Manager profil létrehozása](../traffic-manager/quickstart-create-traffic-manager-profile.md)című témakör lépéseit követve. 
 
-    * **Útválasztási módszer**, válassza a **Priority (prioritás**) lehetőséget.
+    * **Útválasztási módszer** , válassza a **Priority (prioritás** ) lehetőséget.
 
-2. Adja hozzá a CDN-végpontokat a Traffic Manager profilhoz a Traffic Manager- [végpontok hozzáadása](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile#add-traffic-manager-endpoints) című témakör lépéseit követve.
+2. Adja hozzá a CDN-végpontokat a Traffic Manager profilhoz a Traffic Manager- [végpontok hozzáadása](../traffic-manager/quickstart-create-traffic-manager-profile.md#add-traffic-manager-endpoints) című témakör lépéseit követve.
 
-    * **Írja be**a **külső végpontokat**.
-    * **Prioritás**, adjon meg egy számot.
+    * **Írja be** a **külső végpontokat** .
+    * **Prioritás** , adjon meg egy számot.
 
-    Hozzon létre például egy **1** és **cdndemo101verizon.azureedge.net** prioritással rendelkező **cdndemo101akamai.azureedge.net** a **2-es**prioritással.
+    Hozzon létre például egy **1** és **cdndemo101verizon.azureedge.net** prioritással rendelkező **cdndemo101akamai.azureedge.net** a **2-es** prioritással.
 
    ![CDN Traffic Manager-végpontok](./media/cdn-traffic-manager/cdn-traffic-manager-endpoints.png)
 
 
 ## <a name="configure-custom-domain-on-azure-cdn-and-azure-traffic-manager"></a>Egyéni tartomány konfigurálása a Azure CDN és az Azure Traffic Manager
-A CDN-és Traffic Manager-profilok konfigurálása után kövesse az alábbi lépéseket a DNS-hozzárendelés hozzáadásához és az egyéni tartomány regisztrálásához a CDN-végpontokon. Ebben a példában az Egyéni tartománynév a **cdndemo101. dustydogpetcare. online**.
+A CDN-és Traffic Manager-profilok konfigurálása után kövesse az alábbi lépéseket a DNS-hozzárendelés hozzáadásához és az egyéni tartomány regisztrálásához a CDN-végpontokon. Ebben a példában az Egyéni tartománynév a **cdndemo101. dustydogpetcare. online** .
 
 1. Nyissa meg az egyéni tartomány (például GoDaddy) tartományi szolgáltatójának webhelyét, és hozzon létre két DNS CNAME-bejegyzést. 
 
     a. Az első CNAME-bejegyzéshez rendelje hozzá az egyéni tartományt a cdnverify altartományhoz a CDN-végponthoz. Ez a bejegyzés egy szükséges lépés ahhoz, hogy regisztrálja az egyéni tartományt ahhoz a CDN-végponthoz, amelyet a 2. lépésben Traffic Managerhoz adott hozzá.
 
-      Példa: 
+      Például: 
 
       `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101akamai.azureedge.net`  
 
     b. A második CNAME-bejegyzéshez rendelje hozzá az egyéni tartományt a cdnverify altartomány nélkül a CDN-végponthoz. Ez a bejegyzés az egyéni tartományt az Traffic Managerra képezi le. 
 
-      Példa: 
+      Például: 
       
       `cdndemo101.dustydogpetcare.online  CNAME  cdndemo101.trafficmanager.net`   
 
@@ -96,7 +96,7 @@ A CDN-és Traffic Manager-profilok konfigurálása után kövesse az alábbi lé
     >
 
 
-2.  Az Azure CDN-profilban válassza ki az első CDN-végpontot (Akamai). Válassza az **egyéni tartomány hozzáadása** és a bemeneti **cdndemo101. dustydogpetcare. online**lehetőséget. Győződjön meg arról, hogy az egyéni tartomány érvényesítése zöld színnel történik. 
+2.  Az Azure CDN-profilban válassza ki az első CDN-végpontot (Akamai). Válassza az **egyéni tartomány hozzáadása** és a bemeneti **cdndemo101. dustydogpetcare. online** lehetőséget. Győződjön meg arról, hogy az egyéni tartomány érvényesítése zöld színnel történik. 
 
     Azure CDN a **cdnverify** altartomány használatával ellenőrzi a DNS-hozzárendelést a regisztrációs folyamat befejezéséhez. További információ: [CNAME DNS-rekord létrehozása](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record). Ez a lépés lehetővé teszi, hogy a Azure CDN felismerje az egyéni tartományt, hogy válaszoljon a kéréseire.
     
@@ -106,11 +106,11 @@ A CDN-és Traffic Manager-profilok konfigurálása után kövesse az alábbi lé
 
 3.  Térjen vissza az egyéni tartomány tartományi szolgáltatójának webhelyére. Frissítse az első létrehozott DNS-leképezést. Rendelje hozzá az egyéni tartományt a második CDN-végponthoz.
                              
-    Példa: 
+    Például: 
 
     `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101verizon.azureedge.net`  
 
-4. A Azure CDN profilban válassza a második CDN-végpontot (Verizon), és ismételje meg a 2. lépést. Válassza az **egyéni tartomány hozzáadása**lehetőséget, és írja be a **cdndemo101. dustydogpetcare. online**értéket.
+4. A Azure CDN profilban válassza a második CDN-végpontot (Verizon), és ismételje meg a 2. lépést. Válassza az **egyéni tartomány hozzáadása** lehetőséget, és írja be a **cdndemo101. dustydogpetcare. online** értéket.
  
 A lépések elvégzése után a többszörös CDN szolgáltatás a feladatátvételi képességekkel együtt az Azure Traffic Manager-vel van konfigurálva. 
 
@@ -121,7 +121,4 @@ A funkció teszteléséhez tiltsa le az elsődleges CDN-végpontot, és ellenőr
 ## <a name="next-steps"></a>Következő lépések
 Más útválasztási módszereket (például földrajzi) is beállíthat a különböző CDN-végpontok közötti terhelés kiegyensúlyozására. 
 
-További információ: [a földrajzi forgalom útválasztási módszerének konfigurálása Traffic Manager használatával](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-geographic-routing-method).
-
-
-
+További információ: [a földrajzi forgalom útválasztási módszerének konfigurálása Traffic Manager használatával](../traffic-manager/traffic-manager-configure-geographic-routing-method.md).

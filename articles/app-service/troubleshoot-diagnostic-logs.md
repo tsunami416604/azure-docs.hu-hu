@@ -4,13 +4,13 @@ description: Megtudhatja, hogyan engedélyezheti a diagnosztikai naplózást, é
 ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
-ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 6dffe2c6145e1596d92335defdc764c3c7bc3fa0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
+ms.openlocfilehash: 7b27aae712843ece27fd61927c4bfecff00399fa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264371"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747023"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnosztikai naplózás engedélyezése a Azure App Serviceban lévő alkalmazásokhoz
 ## <a name="overview"></a>Áttekintés
@@ -25,7 +25,7 @@ Ez a cikk a [Azure Portal](https://portal.azure.com) és az Azure CLI-t használ
 
 |Típus|Platform|Hely|Leírás|
 |-|-|-|-|
-| Alkalmazásnaplózás | Windows, Linux | App Service fájlrendszer és/vagy Azure Storage-Blobok | Az alkalmazás kódjában létrehozott üzenetek naplózása. Az üzeneteket a választott webes keretrendszer hozza létre, vagy az alkalmazás kódjából közvetlenül a nyelv szabványos naplózási mintájának használatával. Minden üzenethez a következő kategóriák egyike van rendelve: **kritikus**, **hiba**, **Figyelmeztetés**, **információ**, **hibakeresés**és **nyomkövetés**. Kiválaszthatja, hogy milyen részletességgel szeretné a naplózást beállítani a súlyossági szint beállításával az alkalmazások naplózásának engedélyezésekor.|
+| Alkalmazásnaplózás | Windows, Linux | App Service fájlrendszer és/vagy Azure Storage-Blobok | Az alkalmazás kódjában létrehozott üzenetek naplózása. Az üzeneteket a választott webes keretrendszer hozza létre, vagy az alkalmazás kódjából közvetlenül a nyelv szabványos naplózási mintájának használatával. Minden üzenethez a következő kategóriák egyike van rendelve: **kritikus** , **hiba** , **Figyelmeztetés** , **információ** , **hibakeresés** és **nyomkövetés** . Kiválaszthatja, hogy milyen részletességgel szeretné a naplózást beállítani a súlyossági szint beállításával az alkalmazások naplózásának engedélyezésekor.|
 | Webkiszolgáló naplózása| Windows | App Service fájlrendszer vagy Azure Storage-Blobok| Nyers HTTP-kérelmekre vonatkozó, a [W3C bővített naplófájl formátuma](/windows/desktop/Http/w3c-logging). Minden naplóbejegyzés olyan adatforrást tartalmaz, mint például a HTTP-metódus, az erőforrás URI-ja, az ügyfél IP-címe, az ügyfél portja, a felhasználói ügynök, a válasz kódja stb. |
 | Részletes hibaüzenetek| Windows | App Service fájlrendszer | Az ügyfél böngészőjébe küldendő *. htm* -hibaüzenetek lapjai. Biztonsági okokból a rendszer nem tudja elküldeni a részletes hibaüzeneteket az éles környezetben lévő ügyfeleknek, de App Service a hibaüzenetet minden alkalommal mentheti, amikor olyan alkalmazáshiba történik, amelynek HTTP-kódja 400 vagy nagyobb. A lap tartalmazhat olyan információkat, amelyek segíthetnek meghatározni, hogy a kiszolgáló miért adja vissza a hibakódot. |
 | Sikertelen kérelmek nyomkövetése | Windows | App Service fájlrendszer | Részletes nyomkövetési információk a sikertelen kérelmekről, beleértve a kérés feldolgozásához használt IIS-összetevők nyomkövetését és az egyes összetevőkre vonatkozó időt. Ez akkor hasznos, ha javítani szeretné a hely teljesítményét, vagy egy adott HTTP-hibát szeretne elkülöníteni. A rendszer az összes sikertelen kérelemhez létrehoz egy mappát, amely tartalmazza az XML-naplófájlt, valamint az XSL-stíluslapot, amellyel a naplófájlt megtekintheti. |
@@ -42,9 +42,9 @@ Ez a cikk a [Azure Portal](https://portal.azure.com) és az Azure CLI-t használ
 > [!NOTE]
 > A blob Storage-beli alkalmazások naplózása csak a App Service azonos régióban található tárolási fiókokat használhatja.
 
-Ha engedélyezni szeretné az alkalmazások naplózását a [Azure Portalban](https://portal.azure.com)lévő Windows-alkalmazásokban, navigáljon az alkalmazáshoz, és válassza a **app Service naplók**lehetőséget.
+Ha engedélyezni szeretné az alkalmazások naplózását a [Azure Portalban](https://portal.azure.com)lévő Windows-alkalmazásokban, navigáljon az alkalmazáshoz, és válassza a **app Service naplók** lehetőséget.
 
-Válassza **a** be lehetőséget az **Application Logging (fájlrendszer)** vagy az **Application Logging (blob)**, vagy mindkettő esetében. 
+Válassza **a** be lehetőséget az **Application Logging (fájlrendszer)** vagy az **Application Logging (blob)** , vagy mindkettő esetében. 
 
 A **fájlrendszer** beállítás ideiglenes hibakeresési célokra szolgál, és 12 órán belül kikapcsol. A **blob** beállítás a hosszú távú naplózáshoz szükséges, és blob Storage-tárolóra van szüksége a naplók írásához.  A **blob** lehetőség további információkat is tartalmaz a naplófájlokban, például a NAPLÓÜZENETEK forrás VM-PÉLDÁNYának azonosítóját ( `InstanceId` ), a szál azonosítóját (), `Tid` és egy részletesebb időbélyeg ( [`EventTickCount`](/dotnet/api/system.datetime.ticks) ).
 
@@ -53,64 +53,64 @@ A **fájlrendszer** beállítás ideiglenes hibakeresési célokra szolgál, és
 >
 > Emellett, ha [újragenerálja a Storage-fiók hozzáférési kulcsait](../storage/common/storage-account-create.md), a frissített hozzáférési kulcsok használatához vissza kell állítania a megfelelő naplózási konfigurációt. Ehhez tegye a következőket:
 >
-> 1. A **configure (Konfigurálás** ) lapon állítsa be a megfelelő naplózási funkciót a **kikapcsoláshoz**. Mentse a beállítást.
+> 1. A **configure (Konfigurálás** ) lapon állítsa be a megfelelő naplózási funkciót a **kikapcsoláshoz** . Mentse a beállítást.
 > 2. Engedélyezze újra a naplózást a Storage-fiók blobján. Mentse a beállítást.
 >
 >
 
-Válassza ki a **szintet**, vagy a naplózni kívánt részletességi szintet. A következő táblázat az egyes szintekben található naplózási kategóriákat mutatja be:
+Válassza ki a **szintet** , vagy a naplózni kívánt részletességi szintet. A következő táblázat az egyes szintekben található naplózási kategóriákat mutatja be:
 
 | Szint | Belefoglalt kategóriák |
 |-|-|
-|**Disabled** | Nincs |
+|**Disabled** | Nincsenek |
 |**Hiba** | Hiba, kritikus |
 |**Figyelmeztetés** | Figyelmeztetés, hiba, kritikus|
 |**Tájékoztatás** | Információ, figyelmeztetés, hiba, kritikus|
 |**Részletes** | Nyomkövetés, hibakeresés, információ, figyelmeztetés, hiba, kritikus (minden kategória) |
 
-Ha elkészült, válassza a **Mentés**lehetőséget.
+Ha elkészült, válassza a **Mentés** lehetőséget.
 
 ## <a name="enable-application-logging-linuxcontainer"></a>Alkalmazás naplózásának engedélyezése (Linux/tároló)
 
-Ha engedélyezni szeretné az alkalmazások naplózását a Linux-alkalmazásokhoz vagy az egyéni tároló-alkalmazásokhoz a [Azure Portalban](https://portal.azure.com), navigáljon az alkalmazáshoz, és válassza ki **app Service naplókat**.
+Ha engedélyezni szeretné az alkalmazások naplózását a Linux-alkalmazásokhoz vagy az egyéni tároló-alkalmazásokhoz a [Azure Portalban](https://portal.azure.com), navigáljon az alkalmazáshoz, és válassza ki **app Service naplókat** .
 
-Az **alkalmazás naplózása**területen válassza a **fájlrendszer**lehetőséget.
+Az **alkalmazás naplózása** területen válassza a **fájlrendszer** lehetőséget.
 
 A **kvóta (MB)** mezőben határozza meg az alkalmazás naplóihoz tartozó lemezkvóta-kvótát. A **megőrzési időtartam (nap)** beállításnál adja meg, hogy hány nap elteltével kell megőrizni a naplókat.
 
-Ha elkészült, válassza a **Mentés**lehetőséget.
+Ha elkészült, válassza a **Mentés** lehetőséget.
 
 ## <a name="enable-web-server-logging"></a>Webkiszolgáló naplózásának engedélyezése
 
-Ha engedélyezni szeretné a webkiszolgáló-naplózást a Windows-alkalmazások számára a [Azure Portalban](https://portal.azure.com), navigáljon az alkalmazáshoz, és válassza ki **app Service naplókat**.
+Ha engedélyezni szeretné a webkiszolgáló-naplózást a Windows-alkalmazások számára a [Azure Portalban](https://portal.azure.com), navigáljon az alkalmazáshoz, és válassza ki **app Service naplókat** .
 
-A **webkiszolgáló naplózása**lapon válassza a **Storage (tárolás** ) lehetőséget a blob Storage-ban tárolt naplók tárolásához **, illetve a naplófájlok** tárolásához a app Service fájlrendszerben. 
+A **webkiszolgáló naplózása** lapon válassza a **Storage (tárolás** ) lehetőséget a blob Storage-ban tárolt naplók tárolásához **, illetve a naplófájlok** tárolásához a app Service fájlrendszerben. 
 
 A **megőrzési időtartam (nap)** beállításnál adja meg, hogy hány nap elteltével kell megőrizni a naplókat.
 
 > [!NOTE]
 > Ha [újragenerálja a Storage-fiók hozzáférési kulcsait](../storage/common/storage-account-create.md), a frissített kulcsok használatához vissza kell állítania a megfelelő naplózási konfigurációt. Ehhez tegye a következőket:
 >
-> 1. A **configure (Konfigurálás** ) lapon állítsa be a megfelelő naplózási funkciót a **kikapcsoláshoz**. Mentse a beállítást.
+> 1. A **configure (Konfigurálás** ) lapon állítsa be a megfelelő naplózási funkciót a **kikapcsoláshoz** . Mentse a beállítást.
 > 2. Engedélyezze újra a naplózást a Storage-fiók blobján. Mentse a beállítást.
 >
 >
 
-Ha elkészült, válassza a **Mentés**lehetőséget.
+Ha elkészült, válassza a **Mentés** lehetőséget.
 
 ## <a name="log-detailed-errors"></a>Részletes hibák naplózása
 
-Ha menteni szeretné a Windows-alkalmazásokhoz tartozó hiba-vagy sikertelen kérelmek nyomkövetését a [Azure Portalban](https://portal.azure.com), navigáljon az alkalmazáshoz, és válassza ki **app Service naplókat**.
+Ha menteni szeretné a Windows-alkalmazásokhoz tartozó hiba-vagy sikertelen kérelmek nyomkövetését a [Azure Portalban](https://portal.azure.com), navigáljon az alkalmazáshoz, és válassza ki **app Service naplókat** .
 
-A **részletes hiba naplózása** vagy a **Sikertelen kérelmek nyomkövetése**területen válassza a be lehetőséget, majd válassza **a** **Mentés**lehetőséget.
+A **részletes hiba naplózása** vagy a **Sikertelen kérelmek nyomkövetése** területen válassza a be lehetőséget, majd válassza **a** **Mentés** lehetőséget.
 
 Mindkét típusú naplót a App Service fájlrendszer tárolja. Akár 50 hibát (fájlok/mappák) tartanak fenn. Ha a HTML-fájlok száma meghaladja az 50-as értéket, a rendszer a legrégebbi 26 hibát automatikusan törli.
 
 ## <a name="add-log-messages-in-code"></a>Naplóüzenetek hozzáadása a kódban
 
-Az alkalmazás kódjában a szokásos naplózási létesítményeket használja a naplóüzenetek küldésére az alkalmazás naplófájljaiba. Példa:
+Az alkalmazás kódjában a szokásos naplózási létesítményeket használja a naplóüzenetek küldésére az alkalmazás naplófájljaiba. Például:
 
-- A ASP.NET-alkalmazások a [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) osztály használatával naplózzák az adatokat az Application Diagnostics-naplóba. Példa:
+- A ASP.NET-alkalmazások a [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) osztály használatával naplózzák az adatokat az Application Diagnostics-naplóba. Például:
 
     ```csharp
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
@@ -128,7 +128,7 @@ A naplók valós idejű továbbítása előtt engedélyezze a kívánt naplózá
 
 ### <a name="in-azure-portal"></a>Azure Portal
 
-A [Azure Portal](https://portal.azure.com)adatfolyam-naplóihoz navigáljon az alkalmazáshoz, és válassza a **napló stream**lehetőséget. 
+A [Azure Portal](https://portal.azure.com)adatfolyam-naplóihoz navigáljon az alkalmazáshoz, és válassza a **napló stream** lehetőséget. 
 
 ### <a name="in-cloud-shell"></a>Cloud Shell
 
@@ -138,12 +138,12 @@ A [Cloud Shell](../cloud-shell/overview.md)élő naplók továbbításához hasz
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-Adott események, például hibák szűréséhez használja a **--Filter** paramétert. Példa:
+Adott események, például hibák szűréséhez használja a **--Filter** paramétert. Például:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --filter Error
 ```
-Adott típusú naplók (például HTTP) szűréséhez használja a **--path** paramétert. Példa:
+Adott típusú naplók (például HTTP) szűréséhez használja a **--path** paramétert. Például:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --path http
@@ -170,7 +170,7 @@ Windows-alkalmazások esetén a ZIP-fájl tartalmazza a *D:\Home\LogFiles* köny
 |-|-|-|
 | **Alkalmazás-naplók** |*/LogFiles/Application/* | Egy vagy több szövegfájlt tartalmaz. A naplóüzenetek formátuma a használt naplózási szolgáltatótól függ. |
 | **Sikertelen kérelmek nyomkövetése** | */LogFiles/W3SVC#########/* | XML-fájlokat és XSL-fájlt tartalmaz. A formázott XML-fájlok megtekinthetők a böngészőben. |
-| **Részletes hibák naplói** | */LogFiles/DetailedErrors/* | HTM-hibaüzeneteket tartalmaz. A HTM-fájlok a böngészőben tekinthetők meg.<br/>A sikertelen kérelmek nyomkövetésének másik módja, ha megnyitja az alkalmazás lapját a portálon. A bal oldali menüben válassza a **diagnosztizálás és megoldás problémák**elemet, majd keresse meg a **Sikertelen kérelmek nyomkövetésére vonatkozó naplókat**, majd kattintson a ikonra a kívánt nyomkövetés megkereséséhez és megtekintéséhez. |
+| **Részletes hibák naplói** | */LogFiles/DetailedErrors/* | HTM-hibaüzeneteket tartalmaz. A HTM-fájlok a böngészőben tekinthetők meg.<br/>A sikertelen kérelmek nyomkövetésének másik módja, ha megnyitja az alkalmazás lapját a portálon. A bal oldali menüben válassza a **diagnosztizálás és megoldás problémák** elemet, majd keresse meg a **Sikertelen kérelmek nyomkövetésére vonatkozó naplókat** , majd kattintson a ikonra a kívánt nyomkövetés megkereséséhez és megtekintéséhez. |
 | **Webkiszolgáló-naplók** | */LogFiles/http/RawLogs/* | A [W3C bővített naplófájl formátumának](/windows/desktop/Http/w3c-logging)használatával formázott szövegfájlokat tartalmaz. Ezeket az információkat egy szövegszerkesztővel vagy egy olyan segédprogrammal lehet olvasni, mint például a [log Parser](https://go.microsoft.com/fwlink/?LinkId=246619).<br/>A App Service nem támogatja a `s-computername` , a `s-ip` vagy a `cs-version` mezőket. |
 | **Üzembe helyezési naplók** | */LogFiles/git/* és */Deployments/* | A belső telepítési folyamatok által létrehozott naplókat, valamint a git-példányok naplóit tartalmazza. |
 

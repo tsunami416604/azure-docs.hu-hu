@@ -3,13 +3,13 @@ title: Bejövő/kimenő IP-címek
 description: Megtudhatja, hogyan használja a rendszer a bejövő és kimenő IP-címeket Azure App Serviceban, Mikor változnak, és hogyan keresheti meg az alkalmazás címét.
 ms.topic: article
 ms.date: 08/25/2020
-ms.custom: seodec18
-ms.openlocfilehash: 8fa9fec9219cfd85a8a0b25f50835425766d9043
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: e5b271cc5cd8cb52267b6ee44bc3965d0e4b0aab
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050692"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746145"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Bejövő és kimenő IP-címek Azure App Service
 
@@ -51,7 +51,7 @@ Az alkalmazás kimenő IP-címeinek készlete a következő műveletek valamelyi
 
 - Töröljön egy alkalmazást, és hozza létre újra egy másik erőforráscsoporthoz (a telepítési egység változhat).
 - Törölje az erőforráscsoport _és_ a régió kombinációjában az utolsó alkalmazást, és hozza létre újból (a központi telepítési egység változhat).
-- Az alkalmazás méretezése az alsó szint (**Alapszintű**, **standard**és **prémium**) és a **prémium v2** -szint között (az IP-címek a készletből adhatók hozzá vagy vonhatók ki).
+- Az alkalmazás méretezése az alsó szint ( **Alapszintű** , **standard** és **prémium** ) és a **prémium v2** -szint között (az IP-címek a készletből adhatók hozzá vagy vonhatók ki).
 
 Az alkalmazás által használható kimenő IP-címek készletét az árképzési szintektől függetlenül, a `possibleOutboundIpAddresses` tulajdonság vagy a Azure Portal **Tulajdonságok** paneljének **további kimenő IP-címek** mezőjében találja. Lásd: [kimenő IP](#find-outbound-ips)-címek keresése.
 

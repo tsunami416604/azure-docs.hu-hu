@@ -8,13 +8,13 @@ ms.date: 06/30/2020
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: ee267bda44cde77cf5d3434cd75eecaf34bd5264
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 3328fa7d71138ba75fac0c2aed11d7a85081d03a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978849"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748717"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése egy virtuális Linux-eszközön
 
@@ -55,7 +55,7 @@ Felhőerőforrások:
    az group create --name IoTEdgeResources --location westus2
    ```
 
-## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
+## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 A rövid útmutató elindításához hozzon létre egy IoT hubot az Azure CLI-vel.
 
@@ -63,13 +63,13 @@ A rövid útmutató elindításához hozzon létre egy IoT hubot az Azure CLI-ve
 
 Ehhez a rövid útmutatóhoz az IoT Hub ingyenes csomagja is elegendő. Ha korábban már használta a IoT Hubt, és már rendelkezik egy hubhoz, akkor használhatja ezt az IoT hubot.
 
-A következő kód egy ingyenes **F1** -hubot hoz létre az erőforráscsoport **IoTEdgeResources**. Cserélje le `{hub_name}` az nevet az IoT hub egyedi nevére. A IoT Hub létrehozása néhány percet is igénybe vehet.
+A következő kód egy ingyenes **F1** -hubot hoz létre az erőforráscsoport **IoTEdgeResources** . Cserélje le `{hub_name}` az nevet az IoT hub egyedi nevére. A IoT Hub létrehozása néhány percet is igénybe vehet.
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
    ```
 
-   Ha hibaüzenetet kap, mert az előfizetése már tartalmaz egy ingyenes központot, akkor módosítsa az SKU-t **S1**-re. Mindegyik előfizetés csak egy ingyenes IoT-központtal rendelkezhet. Ha hibaüzenet jelenik meg, hogy a IoT Hub neve nem érhető el, az azt jelenti, hogy valaki más már rendelkezik az adott névvel rendelkező hubhoz. Próbálkozzon új névvel.
+   Ha hibaüzenetet kap, mert az előfizetése már tartalmaz egy ingyenes központot, akkor módosítsa az SKU-t **S1** -re. Mindegyik előfizetés csak egy ingyenes IoT-központtal rendelkezhet. Ha hibaüzenet jelenik meg, hogy a IoT Hub neve nem érhető el, az azt jelenti, hogy valaki más már rendelkezik az adott névvel rendelkező hubhoz. Próbálkozzon új névvel.
 
 ## <a name="register-an-iot-edge-device"></a>IoT Edge-eszköz regisztrálása
 
@@ -141,7 +141,7 @@ A sablon a következő paramétereket veszi figyelembe:
 | **dnsLabelPrefix** | Egy karakterlánc, amely a virtuális gép állomásneve létrehozásához lesz felhasználva. Használja például a **My-Edge-VM-** et, vagy adjon meg egy új karakterláncot. |
 | **adminUsername** | A virtuális gép rendszergazdai fiókjához tartozó Felhasználónév. Használja a példa **azureuser** -t, vagy adjon meg egy új felhasználónevet. |
 | **deviceConnectionString** | A IoT Hub eszköz identitásának kapcsolódási karakterlánca, amely a IoT Edge futtatókörnyezetnek a virtuális gépen való konfigurálására szolgál. A paraméteren belüli CLI-parancs megkeresi a kapcsolatok karakterláncát. Cserélje le a helyőrző szövegét az IoT hub nevére. |
-| **authenticationType** | A rendszergazdai fiók hitelesítési módszere. Ez a rövid útmutató **jelszavas** hitelesítést használ, de ezt a paramétert **sshPublicKey**is beállíthatja. |
+| **authenticationType** | A rendszergazdai fiók hitelesítési módszere. Ez a rövid útmutató **jelszavas** hitelesítést használ, de ezt a paramétert **sshPublicKey** is beállíthatja. |
 | **adminPasswordOrKey** | A rendszergazdai fiók SSH-kulcsának jelszava vagy értéke. Cserélje le a helyőrző szövegét biztonságos jelszóra. A jelszónak legalább 12 karakterből kell állnia, és a következők közül hármat tartalmaznia kell: kisbetűk, nagybetűk, számjegyek és speciális karakterek. |
 
 Az üzembe helyezés befejezése után a virtuális géphez való kapcsolódáshoz használt SSH-adatokat tartalmazó CLI-ből kell fogadnia a JSON-formátumú kimenetet. Másolja a **kimenetek** szakasz **nyilvános SSH** -bejegyzésének értékét:
@@ -220,7 +220,7 @@ Tekintse meg a hőmérséklet-érzékelő modulból küldött üzeneteket:
 
 A [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)-hoz készült Azure IoT hub-bővítmény használatával megtekintheti az IoT hub-ra érkező üzeneteket is.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha tovább szeretne dolgozni az IoT Edge-oktatóanyagokkal, használhatja az ebben a rövid útmutatóban regisztrált és létrehozott eszközt. Ellenkező esetben törölheti a létrehozott Azure-erőforrásokat a díjak elkerülése érdekében.
 

@@ -1,19 +1,19 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 05/04/2020
+ms.date: 10/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: efb32631c5ee1eedece6d2a06b94702b602ed418
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95c55f92304ddd3ec2b3d44d4f07fb64ab815c6d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86276114"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755693"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>Mely régiók érhetők el?
 
@@ -45,6 +45,10 @@ Az RDP és az SSH egy használaton alapuló protokoll. A munkamenetek magas kiha
 
 Jelenleg csak a szövegek másolása és beillesztése támogatott. Az olyan funkciók, mint a fájlmásolás, nem támogatottak. Ossza meg velünk az új funkciókkal kapcsolatos visszajelzéseit az [Azure Bastion visszajelzési oldalán](https://feedback.azure.com/forums/217313-networking?category_id=367303).
 
+### <a name="does-bastion-hardening-work-with-aadj-vm-extension-joined-vms"></a><a name="aadj"></a>A Bastion általi megerősítés a AADJ virtuálisgép-bővítményhez csatlakoztatott virtuális gépekkel is működik?
+
+Ez a funkció nem működik az Azure AD-felhasználókat használó AADJ virtuálisgép-bővítményekkel csatlakoztatott gépekkel. További információ: [Windows Azure-beli virtuális gépek és Azure ad](../articles/active-directory/devices/howto-vm-sign-in-azure-ad-windows.md#requirements).
+
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>Mely böngészők támogatottak?
 
 Használja a Microsoft Edge böngészőt vagy a Google Chrome-ot Windows rendszeren. Apple Mac esetén használja a Google Chrome böngészőt. A Microsoft Edge Chromium a Windows és a Mac rendszereken is támogatott.
@@ -66,7 +70,7 @@ A kapcsolatok létrehozásához a következő szerepkörök szükségesek:
 További tájékoztatás a [díjszabási lapon](https://aka.ms/BastionHostPricing) olvasható.
 
 ### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Szükséges-e az Azure Bastion RDS CAL adminisztratív célokra az Azure által üzemeltetett virtuális gépeken?
-Nem, a Windows Server rendszerű virtuális gépekhez az Azure Bastion-hez való hozzáféréshez nincs szükség [RDS CALra](https://www.microsoft.com/en-us/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) , ha kizárólag adminisztratív célokra használják.
+Nem, a Windows Server rendszerű virtuális gépekhez az Azure Bastion-hez való hozzáféréshez nincs szükség [RDS CALra](https://www.microsoft.com/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) , ha kizárólag adminisztratív célokra használják.
 
 ### <a name="what-keyboard-layouts-are-supported-during-the-bastion-remote-session"></a><a name="keyboard"></a>Milyen billentyűzetkiosztások támogatottak a megerősített távoli munkamenet során?
 

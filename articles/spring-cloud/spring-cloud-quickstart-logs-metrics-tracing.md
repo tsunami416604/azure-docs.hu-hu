@@ -6,14 +6,14 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/04/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: c879b890f9527ea0eee3d702db6f04a38432aa00
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 2af9608006eac37ccdfe76d66e619d5a64cad9f1
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093055"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746652"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Gyors útmutató: Azure Spring Cloud-alkalmazások figyelése naplókkal, metrikákkal és nyomkövetéssel
 
@@ -83,7 +83,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
    [![Szűrő használata mérőszámokban – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter-steeltoe.png#lightbox)
 
-1. Zárja be az előző lépésben létrehozott szűrőt, válassza a **felosztás alkalmazása**lehetőséget, majd válassza `App` az **értékek** lehetőséget a különböző alkalmazások CPU-használatának megjelenítéséhez.
+1. Zárja be az előző lépésben létrehozott szűrőt, válassza a **felosztás alkalmazása** lehetőséget, majd válassza `App` az **értékek** lehetőséget a különböző alkalmazások CPU-használatának megjelenítéséhez.
 
    [![Felosztás alkalmazása mérőszámokban – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-split-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-split-steeltoe.png#lightbox)
 
@@ -142,7 +142,7 @@ Ekkor a következőhöz hasonló naplók láthatók:
 
 Naplók beszerzése Azure Toolkit for IntelliJ használatával:
 
-1. Válassza az **Azure Explorer**, majd a **Spring Cloud**elemet.
+1. Válassza az **Azure Explorer** , majd a **Spring Cloud** elemet.
 
 1. Kattintson a jobb gombbal a futó alkalmazásra.
 
@@ -150,7 +150,7 @@ Naplók beszerzése Azure Toolkit for IntelliJ használatával:
 
    ![Adatfolyam-naplók kiválasztása](media/spring-cloud-intellij-howto/streaming-logs.png)
     
-1. Válassza a **példány**lehetőséget.
+1. Válassza a **példány** lehetőséget.
 
    ![Példány kiválasztása](media/spring-cloud-intellij-howto/select-instance.png)
     
@@ -203,7 +203,7 @@ Naplók beszerzése Azure Toolkit for IntelliJ használatával:
 
 ::: zone-end
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ezekben a gyors útmutatókban olyan Azure-erőforrásokat hozott létre, amelyek továbbra is felhalmozzák a díjakat, ha az előfizetésben maradnak. Ha nem várható, hogy a jövőben szüksége lenne ezekre az erőforrásokra, törölje az erőforráscsoportot a portál használatával, vagy futtassa a következő parancsot a Cloud Shellban:
 

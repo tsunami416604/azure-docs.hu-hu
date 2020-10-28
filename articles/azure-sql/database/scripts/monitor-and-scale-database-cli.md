@@ -4,19 +4,19 @@ description: Egy Azure CLI-parancsfájl használatával figyelheti és méretezh
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: c4df9ecc025bbffb63730273be06f54cf46f613c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b74bf5fc324d8ea6cc113d50d8e11b0e0d994797
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319396"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747396"
 ---
 # <a name="use-the-azure-cli-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>Egyetlen adatbázis figyelése és méretezése az Azure CLI használatával Azure SQL Database
 
@@ -62,7 +62,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az sql server](/cli/azure/sql/server) | Kiszolgálói parancsok. |
 | [az sql db show-usage](/cli/azure/sql#az-sql-show-usage) | Megjeleníti egy adatbázis méretkihasználtsági adatait. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

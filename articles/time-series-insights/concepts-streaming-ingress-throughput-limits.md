@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
+ms.date: 10/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4d1d071a36531ed5f159543e33e9ac043160cd70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2f6cd943e381d53c36867ce960cd99552f3aea6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650765"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746520"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>Adatfolyam-betöltési átviteli sebesség korlátai
 
@@ -28,7 +28,7 @@ Azure Time Series Insights Gen2 adatfolyam-továbbítási korlátozásokat az al
 
 Általánosságban elmondható, hogy a bejövő forgalom díjszabása a szervezet eszközeinek száma, az esemény-emisszió gyakorisága, valamint az egyes események mérete:
 
-* **Az eszközök száma** × **esemény kibocsátásának gyakorisága** × **az egyes események mérete**.
+* **Az eszközök száma** × **esemény kibocsátásának gyakorisága** × **az egyes események mérete** .
 
 Alapértelmezés szerint a Azure Time Series Insights Gen2 **legfeljebb 1 megabájt/másodperc (Mbps)** sebességgel képes befogadni a bejövő adatot Azure Time Series Insights Gen2-környezetben. A [hub-partíciók esetében](./concepts-streaming-ingress-throughput-limits.md#hub-partitions-and-per-partition-limits)további korlátozások vannak érvényben.
 
@@ -41,7 +41,7 @@ Alapértelmezés szerint a Azure Time Series Insights Gen2 **legfeljebb 1 megab�
 
     A contoso szállítása 100 000 olyan eszközzel rendelkezik, amely percenként három alkalommal bocsát ki eseményt. Az események mérete 200 bájt. A IoT Hub négy partíciót használnak a Azure Time Series Insights Gen2-esemény forrásaként.
 
-  * A Azure Time Series Insights Gen2-környezet betöltési sebessége a következő: **100 000-es eszközök * 200 bájt/esemény * (3/60 esemény/másodperc) = 1 Mbps**.
+  * A Azure Time Series Insights Gen2-környezet betöltési sebessége a következő: **100 000-es eszközök * 200 bájt/esemény * (3/60 esemény/másodperc) = 1 Mbps** .
     * A kiegyensúlyozott partíciót feltételezve, hogy a partíciók terhelési aránya 0,25 MB/s.
     * A contoso szállításának betöltési aránya a skálázási korlátokon belül lenne.
 
@@ -49,7 +49,7 @@ Alapértelmezés szerint a Azure Time Series Insights Gen2 **legfeljebb 1 megab�
 
     A contoso Fleet Analytics 40 000 olyan eszközt tartalmaz, amely másodpercenként egy eseményt bocsát ki. Egy Event hub-t használnak, amelynek a partícióinak száma 2, Azure Time Series Insights Gen2 eseményforrás. Az események mérete 200 bájt.
 
-  * A környezet betöltési sebessége a következő: **40 000 eszköz * 200 bájt/esemény * 1 esemény/mp = 8 Mbps**.
+  * A környezet betöltési sebessége a következő: **40 000 eszköz * 200 bájt/esemény * 1 esemény/mp = 8 Mbps** .
     * A kiegyensúlyozott partíciót feltételezve a partíciók aránya 4 MBps.
     * A contoso Fleet Analytics betöltési aránya a környezet és a partíciók korlátain alapul. Kérést küldhetnek Azure Time Series Insights Gen2 a Azure Portalon keresztül, hogy növeljék a környezet betöltési arányát, és hozzon létre egy olyan Event hub-t, amely a határértékeken belül több partícióval rendelkezik.
 
@@ -66,7 +66,7 @@ Event Hubs particionálással kapcsolatos ajánlott eljárások esetében ellen�
 
 Akár új hubot hoz létre a Azure Time Series Insights Gen2-környezethez, vagy egy meglévőt használ, ki kell számítania a partíciók betöltési arányát annak megállapítására, hogy az a határértékeken belül van-e.
 
-Azure Time Series Insights Gen2 jelenleg a **0,5 Mbps-ra vonatkozó általános korláttal**rendelkezik.
+Azure Time Series Insights Gen2 jelenleg a **0,5 Mbps-ra vonatkozó általános korláttal** rendelkezik.
 
 ### <a name="iot-hub-specific-considerations"></a>IoT Hub-specifikus megfontolások
 
@@ -74,7 +74,7 @@ Ha egy eszköz a IoT Hubban jön létre, akkor véglegesen hozzá van rendelve e
 
 A rögzített partíciós hozzárendelés olyan Azure Time Series Insights Gen2-példányokat is érint, amelyek IoT Hub alsóbb rétegből érkező adatok betöltését használják. Ha több eszközről származó üzeneteket továbbítanak a központba ugyanazzal az átjáró-eszköz azonosítójával, akkor előfordulhat, hogy ugyanazon a partíción érkeznek, amely a partíciós méretezési korlátokat is meghaladja.
 
-**Hatás**:
+**Hatás** :
 
 * Ha egy partíció tartósan betöltési sebességet tapasztal a korláton keresztül, lehetséges, hogy Azure Time Series Insights Gen2 nem fogja szinkronizálni az összes eszközt a IoT Hub adatmegőrzési időszak túllépése előtt. Ennek eredményeképpen a továbbított adatmennyiségek elvesznek, ha a betöltési korlátokat folyamatosan túllépik.
 

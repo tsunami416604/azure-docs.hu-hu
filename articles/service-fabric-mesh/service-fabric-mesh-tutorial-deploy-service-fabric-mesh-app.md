@@ -5,13 +5,13 @@ author: georgewallace
 ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: gwallace
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 6305bdd8c892bb0323cd4f7dc61b7ad22652ed73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devcenter , devx-track-azurecli
+ms.openlocfilehash: 51e5fd29d16c3f927dc9b89d9c7145a16f4fd49f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842733"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748244"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Oktatóanyag: Service Fabric Mesh-alkalmazás üzembe helyezése
 
@@ -59,13 +59,13 @@ Ekkor megjelenik a **Service Fabric-alkalmazás közzététele** párbeszédpane
 
 ![Service Fabric Mesh párbeszédpanel a Visual Studióban](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-dialog.png)
 
-Válassza ki az Azure-fiókját és -előfizetését. Válasszon egy **helyet**. Ebben a cikkben az **USA keleti régiója** szerepel.
+Válassza ki az Azure-fiókját és -előfizetését. Válasszon egy **helyet** . Ebben a cikkben az **USA keleti régiója** szerepel.
 
-Az **erőforráscsoport**területen válassza a elemet **\<Create New Resource Group...>** . Ekkor egy párbeszédpanel jelenik meg, ahol új erőforráscsoportot hozhat létre. Ebben a cikkben az **USA keleti régiója** és a **sfmeshTutorial1RG** nevű csoport szerepel (ha a cégnél többen használják ugyanazt az előfizetést, válasszon egyedi csoportnevet).  Kattintson a **Létrehozás** elemre az erőforrás létrehozásához, majd térjen vissza a párbeszédpanelhez.
+Az **erőforráscsoport** területen válassza a elemet **\<Create New Resource Group...>** . Ekkor egy párbeszédpanel jelenik meg, ahol új erőforráscsoportot hozhat létre. Ebben a cikkben az **USA keleti régiója** és a **sfmeshTutorial1RG** nevű csoport szerepel (ha a cégnél többen használják ugyanazt az előfizetést, válasszon egyedi csoportnevet).  Kattintson a **Létrehozás** elemre az erőforrás létrehozásához, majd térjen vissza a párbeszédpanelhez.
 
 ![A Service Fabric Mesh új párbeszédpanelje a Visual Studióban](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-resource-group-dialog.png)
 
-A **Service Fabric alkalmazás közzététele** párbeszédpanel **Azure Container Registry**területén válassza a elemet **\<Create New Container Registry...>** . A **Tárolóregisztrációs adatbázis** párbeszédpanelen használjon egyedi nevet a **Tárolóregisztrációs adatbázis neve** elemhez. Adjon meg egy **helyet** (ebben az oktatóanyagban az **USA keleti régiója** szerepel). A legördülő listában válassza ki az előző lépésben létrehozott **Erőforráscsoportot**, például a **sfmeshTutorial1RG** nevűt. Állítsa **Alapszintűre** a **termékváltozatot**, majd a **Létrehozás** elemre kattintva hozzon létre a privát Azure Container Registryt, és térjen vissza a közzétételi párbeszédpanelhez.
+A **Service Fabric alkalmazás közzététele** párbeszédpanel **Azure Container Registry** területén válassza a elemet **\<Create New Container Registry...>** . A **Tárolóregisztrációs adatbázis** párbeszédpanelen használjon egyedi nevet a **Tárolóregisztrációs adatbázis neve** elemhez. Adjon meg egy **helyet** (ebben az oktatóanyagban az **USA keleti régiója** szerepel). A legördülő listában válassza ki az előző lépésben létrehozott **Erőforráscsoportot** , például a **sfmeshTutorial1RG** nevűt. Állítsa **Alapszintűre** a **termékváltozatot** , majd a **Létrehozás** elemre kattintva hozzon létre a privát Azure Container Registryt, és térjen vissza a közzétételi párbeszédpanelhez.
 
 ![A Service Fabric Mesh új tárolóregisztrációs adatbázisról szóló párbeszédpanelje a Visual Studióban](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
 
@@ -127,7 +127,7 @@ Az „app list” paranccsal lekérheti az előfizetéséhez üzembe helyezett a
 az mesh app list --output table
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 > [!div class="checklist"]

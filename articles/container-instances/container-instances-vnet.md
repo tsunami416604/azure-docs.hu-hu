@@ -3,13 +3,13 @@ title: Tároló csoport üzembe helyezése az Azure Virtual Networkben
 description: Megtudhatja, hogyan helyezhet üzembe egy tároló csoportot egy új vagy meglévő Azure-beli virtuális hálózaton az Azure parancssori felületének használatával.
 ms.topic: article
 ms.date: 07/02/2020
-ms.custom: devx-track-js
-ms.openlocfilehash: f8f61bc74f79c1712c3c662be66384c5ef689eb7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 02cf514e6c19387e3a9e2f1c78b65f346fff764e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518126"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746902"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Tárolópéldányok üzembe helyezése egy Azure virtuális hálózaton
 
@@ -69,7 +69,7 @@ Tároló csoport üzembe helyezése meglévő virtuális hálózaton:
 
 A következő példa egy második tároló-csoportot telepít ugyanarra az alhálózatra, amelyet korábban hozott létre, és ellenőrzi a két tároló példány közötti kommunikációt.
 
-Először szerezze be az elsőként telepített Container-csoport IP-címét, a *appcontainer*:
+Először szerezze be az elsőként telepített Container-csoport IP-címét, a *appcontainer* :
 
 ```azurecli
 az container show --resource-group myResourceGroup \
@@ -77,13 +77,13 @@ az container show --resource-group myResourceGroup \
   --query ipAddress.ip --output tsv
 ```
 
-A kimenet a saját alhálózat tároló csoportjának IP-címét jeleníti meg. Példa:
+A kimenet a saját alhálózat tároló csoportjának IP-címét jeleníti meg. Például:
 
 ```console
 10.0.0.4
 ```
 
-Most állítsa be a `CONTAINER_GROUP_IP` paranccsal lekért IP-címet `az container show` , és hajtsa végre a következő `az container create` parancsot. Ez a második tároló, a *commchecker*egy alpesi Linux-alapú rendszerképet futtat, és `wget` az első tároló csoport privát alhálózatának IP-címén hajtja végre.
+Most állítsa be a `CONTAINER_GROUP_IP` paranccsal lekért IP-címet `az container show` , és hajtsa végre a következő `az container create` parancsot. Ez a második tároló, a *commchecker* egy alpesi Linux-alapú rendszerképet futtat, és `wget` az első tároló csoport privát alhálózatának IP-címén hajtja végre.
 
 ```azurecli
 CONTAINER_GROUP_IP=<container-group-IP-address>
@@ -139,7 +139,7 @@ Példa a kimenetre:
 /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-aci-subnet
 ```
 
-A hálózati profil azonosítója után másolja a következő YAML egy új, *vnet-Deploy-ACI. YAML*nevű fájlba. A alatt `networkProfile` cserélje le az `id` imént beolvasott azonosítójú értéket, majd mentse a fájlt. Ez a YAML létrehoz egy *appcontaineryaml* nevű tároló csoportot a virtuális hálózatában.
+A hálózati profil azonosítója után másolja a következő YAML egy új, *vnet-Deploy-ACI. YAML* nevű fájlba. A alatt `networkProfile` cserélje le az `id` imént beolvasott azonosítójú értéket, majd mentse a fájlt. Ez a YAML létrehoz egy *appcontaineryaml* nevű tároló csoportot a virtuális hálózatában.
 
 ```YAML
 apiVersion: '2019-12-01'
@@ -185,7 +185,7 @@ Name              ResourceGroup    Status    Image                              
 appcontaineryaml  myResourceGroup  Running   mcr.microsoft.com/azuredocs/aci-helloworld  10.0.0.5:80  Private    1.0 core/1.5 gb  Linux     westus
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 ### <a name="delete-container-instances"></a>Tároló példányainak törlése
 
@@ -204,7 +204,7 @@ Ennek a funkciónak jelenleg több további parancsra van szüksége a korábban
 A parancsfájl végrehajtása előtt állítsa a `RES_GROUP` változót a törölni kívánt virtuális hálózatot és alhálózatot tartalmazó erőforráscsoport nevére. Frissítse a virtuális hálózat nevét, ha nem a `aci-vnet` korábban javasolt nevet használta. A parancsfájl a bash-rendszerhéjhoz van formázva. Ha inkább egy másik rendszerhéjt, például a PowerShellt vagy a parancssort részesíti előnyben, akkor ennek megfelelően módosítania kell a változó hozzárendelés és a hozzáférési jogosultságokat.
 
 > [!WARNING]
-> Ez a szkript törli az erőforrásokat! Törli a virtuális hálózatot és a benne található összes alhálózatot. Győződjön meg arról, hogy a parancsfájl futtatása előtt már nincs szüksége a virtuális hálózatban lévő *összes* erőforrásra, beleértve a benne található alhálózatokat is. A törlés után **ezek az erőforrások nem állíthatók helyre**.
+> Ez a szkript törli az erőforrásokat! Törli a virtuális hálózatot és a benne található összes alhálózatot. Győződjön meg arról, hogy a parancsfájl futtatása előtt már nincs szüksége a virtuális hálózatban lévő *összes* erőforrásra, beleértve a benne található alhálózatokat is. A törlés után **ezek az erőforrások nem állíthatók helyre** .
 
 ```azurecli
 # Replace <my-resource-group> with the name of your resource group

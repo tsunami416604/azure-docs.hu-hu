@@ -6,14 +6,14 @@ ms.author: msangapu
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
 ms.date: 10/16/2020
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 173c6ff8bb4bcee7ecc40f9f277fae0e4cb8dd13
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c8542bfe3d1393917a63e4a1feae7d6dfc223031
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152348"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746180"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Rövid útmutató: App Service alkalmazás létrehozása ARM-sablon használatával
 
@@ -23,11 +23,11 @@ A [Azure app Service](overview.md) használatának első lépései a Felhőbeli 
 
 Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
 
-A **Linux**rendszeren történő üzembe helyezéshez használja a következő gombot:
+A **Linux** rendszeren történő üzembe helyezéshez használja a következő gombot:
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-service-docs-linux%2Fazuredeploy.json)
 
-A következő gomb használatával telepítheti a **Windows rendszert**:
+A következő gomb használatával telepítheti a **Windows rendszert** :
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-service-docs-windows%2Fazuredeploy.json)
 
@@ -49,7 +49,7 @@ Két Azure-erőforrás van definiálva a sablonban:
 
 Ez a sablon számos olyan paramétert tartalmaz, amelyek előre definiálva vannak az Ön kényelme érdekében. Tekintse meg az alábbi táblázatot a paraméterek alapértelmezett értékeinek és leírásának megtekintéséhez:
 
-| Paraméterek | Típus    | Alapértelmezett érték                | Description |
+| Paraméterek | Típus    | Alapértelmezett érték                | Leírás |
 |------------|---------|------------------------------|-------------|
 | webAppName | sztring  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Alkalmazás neve |
 | location   | sztring  | "[[resourceGroup (). location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Alkalmazás-régió |
@@ -70,7 +70,7 @@ Két Azure-erőforrás van definiálva a sablonban:
 
 Ez a sablon számos olyan paramétert tartalmaz, amelyek előre definiálva vannak az Ön kényelme érdekében. Tekintse meg az alábbi táblázatot a paraméterek alapértelmezett értékeinek és leírásának megtekintéséhez:
 
-| Paraméterek | Típus    | Alapértelmezett érték                | Description |
+| Paraméterek | Típus    | Alapértelmezett érték                | Leírás |
 |------------|---------|------------------------------|-------------|
 | webAppName | sztring  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Alkalmazás neve |
 | location   | sztring  | "[[resourceGroup (). location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Alkalmazás-régió |
@@ -126,26 +126,26 @@ Egy másik nyelvi verem telepítéséhez a `linuxFxVersion` megfelelő értékek
 
 Tallózással keresse `http://<app_name>.azurewebsites.net/` meg és ellenőrizze, hogy létrejött-e.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha már nincs rá szükség, [törölje az erőforráscsoportot](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-portal#delete-resource-group).
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Üzembe helyezés a helyi Gitből](deploy-local-git.md)
+> [Üzembe helyezés a helyi Gitből](deploy-local-git.md)
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core és SQL Database](tutorial-dotnetcore-sqldb-app.md)
+> [ASP.NET Core és SQL Database](tutorial-dotnetcore-sqldb-app.md)
 
 > [!div class="nextstepaction"]
-> [Python és Postgres](tutorial-python-postgresql-app.md)
+> [Python és Postgres](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [PHP és MySQL](tutorial-php-mysql-app.md)
+> [PHP és MySQL](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
-> [Kapcsolódás az Azure SQL Database-hez a Javával](../azure-sql/database/connect-query-java.md?toc=%252fazure%252fjava%252ftoc.json)
+> [Kapcsolódás az Azure SQL Database-hez a Javával](../azure-sql/database/connect-query-java.md?toc=%252fazure%252fjava%252ftoc.json)
 
 > [!div class="nextstepaction"]
-> [Egyéni tartomány leképezése](app-service-web-tutorial-custom-domain.md)
+> [Egyéni tartomány leképezése](app-service-web-tutorial-custom-domain.md)

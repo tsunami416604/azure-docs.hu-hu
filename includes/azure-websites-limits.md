@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 557e20dcafabb2db0bc66c9dfda4977aca50de50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 800dc50f82fa47228f1a88a143c5b515168812a6
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91745651"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755898"
 ---
 | Erőforrás | Ingyenes | Megosztott | Alapszintű | Standard | Prémium (v3) | Izolált </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -32,6 +32,7 @@ ms.locfileid: "91745651"
 | Hibrid kapcsolatok | | | 5/csomag | 25/csomag | 200/alkalmazás | 200/alkalmazás |
 | [Virtual Network integráció](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
 | Integrált Load Balancer | |X |X |X |X |X<sup>10</sup> |
+| [Hozzáférési korlátozások](../articles/app-service/networking-features.md#access-restrictions) | 512 szabályok/alkalmazás | 512 szabályok/alkalmazás | 512 szabályok/alkalmazás | 512 szabályok/alkalmazás | 512 szabályok/alkalmazás | 512 szabályok/alkalmazás |
 | [Always on](../articles/app-service/configure-common.md) | | |X |X |X |X |
 | [Ütemezett biztonsági mentések](../articles/app-service/manage-backup.md) | | | | Ütemezett biztonsági mentések 2 óránként, legfeljebb 12 biztonsági mentés naponta (manuális + ütemezett) | Ütemezett biztonsági mentések óránként, legfeljebb 50 biztonsági mentéssel (manuális + ütemezett) | Ütemezett biztonsági mentések óránként, legfeljebb 50 biztonsági mentéssel (manuális + ütemezett) |
 | [Automatikus méretezés](../articles/app-service/manage-scale-up.md) | | | |X |X |X |

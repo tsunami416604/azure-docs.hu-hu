@@ -7,13 +7,13 @@ ms.date: 03/12/2020
 author: sabbour
 ms.author: asabbour
 keywords: ARO, openshift, az ARO, Red Hat, CLI
-ms.custom: mvc
-ms.openlocfilehash: 4eab701d22f579a816aa95bd43a74fd9ea07d9e4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 1b9e4d1f1b989caa317384292d013af255530f11
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490237"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748069"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>Azure Active Directory hitelesítés konfigurálása Azure Red Hat OpenShift 4 fürthöz (portál)
 
@@ -36,7 +36,7 @@ echo "OAuth callback URL: https://oauth-openshift.apps.$domain.$location.aroapp.
 
 Jelentkezzen be a Azure Portalba, és lépjen a [Alkalmazásregisztrációk](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)panelre, majd kattintson az **új regisztráció** elemre új alkalmazás létrehozásához.
 
-Adja meg az alkalmazás nevét, például: **ARO-azuread-Auth**, és töltse ki az **átirányítási URI** -t a korábban lekért OAuth visszahívási URL-címének használatával.
+Adja meg az alkalmazás nevét, például: **ARO-azuread-Auth** , és töltse ki az **átirányítási URI** -t a korábban lekért OAuth visszahívási URL-címének használatával.
 
 ![Új alkalmazásregisztráció](media/aro4-ad-registerapp.png)
 
@@ -44,7 +44,7 @@ Navigáljon a **tanúsítványok & a titkok** elemre, és kattintson az **új ü
 
 ![Titkos kulcs létrehozása](media/aro4-ad-clientsecret.png)
 
-Navigáljon az **Áttekintés** elemre, és jegyezze fel az **alkalmazás (ügyfél) azonosítóját** és **KÖNYVTÁRát (bérlői azonosítóját**). Szüksége lesz rájuk egy későbbi fázisban.
+Navigáljon az **Áttekintés** elemre, és jegyezze fel az **alkalmazás (ügyfél) azonosítóját** és **KÖNYVTÁRát (bérlői azonosítóját** ). Szüksége lesz rájuk egy későbbi fázisban.
 
 ![Alkalmazás-(ügyfél-) és könyvtár-(bérlői) azonosítók beolvasása](media/aro4-ad-ids.png)
 
@@ -60,7 +60,7 @@ A következő választható jogcímeket használhatja:
 
 A OpenShift a jogcím használatára konfigurálja, `email` és visszatérhet a következőre `upn` : az előnyben részesített Felhasználónév beállításához adja hozzá a `upn` Azure Active Directory által visszaadott azonosító jogkivonat részét.
 
-Navigáljon a **jogkivonat-konfiguráció (előzetes verzió)** elemre, és kattintson az **opcionális jogcím hozzáadása**lehetőségre. Válassza az **azonosító** lehetőséget, majd jelölje be az **e-mail** és **UPN** jogcímek.
+Navigáljon a **jogkivonat-konfiguráció (előzetes verzió)** elemre, és kattintson az **opcionális jogcím hozzáadása** lehetőségre. Válassza az **azonosító** lehetőséget, majd jelölje be az **e-mail** és **UPN** jogcímek.
 
 ![A hozzáadott e-maileket és UPN-jogcímeket bemutató képernyőkép.](media/aro4-ad-tokens.png)
 
@@ -100,12 +100,12 @@ A fürt konzoljának URL-címét a következő parancs futtatásával érheti el
 
 Indítsa el a konzol URL-címét egy böngészőben, és jelentkezzen be a `kubeadmin` hitelesítő adatok használatával.
 
-Navigáljon az **Adminisztráció**elemre, kattintson a **fürt beállításai**elemre, majd válassza a **globális konfiguráció** fület. Görgessen a **OAuth**kiválasztásához.
+Navigáljon az **Adminisztráció** elemre, kattintson a **fürt beállításai** elemre, majd válassza a **globális konfiguráció** fület. Görgessen a **OAuth** kiválasztásához.
 
-Görgessen le a **Hozzáadás** lehetőség kiválasztásához az **Identity Providers** területen, majd válassza az **OpenID Connect**elemet.
+Görgessen le a **Hozzáadás** lehetőség kiválasztásához az **Identity Providers** területen, majd válassza az **OpenID Connect** elemet.
 ![Válassza az OpenID Connect lehetőséget az identitás-szolgáltatók legördülő listából](media/aro4-oauth-idpdrop.png)
 
-Adja meg a nevet **HRE**, az **ügyfél-azonosítóként** az **alkalmazás-azonosítóként** és az **ügyfél titkos kulcsaként**. A **kiállító URL-címe** a következőképpen van formázva: `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . Cserélje le a helyőrzőt a korábban lekért bérlői AZONOSÍTÓra.
+Adja meg a nevet **HRE** , az **ügyfél-azonosítóként** az **alkalmazás-azonosítóként** és az **ügyfél titkos kulcsaként** . A **kiállító URL-címe** a következőképpen van formázva: `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . Cserélje le a helyőrzőt a korábban lekért bérlői AZONOSÍTÓra.
 
 ![Adja meg a OAuth részleteit](media/aro4-oauth-idp-1.png)
 
@@ -115,6 +115,6 @@ Görgessen le a **jogcímek** szakaszhoz, és frissítse az **előnyben részes�
 
 ## <a name="verify-login-through-azure-active-directory"></a>Bejelentkezés ellenőrzése Azure Active Directory
 
-Ha most kijelentkezik a OpenShift webkonzolon, és megpróbál újra bejelentkezni, megjelenik egy új lehetőség a **HRE**szolgáltatásba való bejelentkezéshez. Előfordulhat, hogy néhány percet várnia kell.
+Ha most kijelentkezik a OpenShift webkonzolon, és megpróbál újra bejelentkezni, megjelenik egy új lehetőség a **HRE** szolgáltatásba való bejelentkezéshez. Előfordulhat, hogy néhány percet várnia kell.
 
 ![Bejelentkezési képernyő Azure Active Directory lehetőséggel](media/aro4-login-2.png)

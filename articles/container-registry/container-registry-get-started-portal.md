@@ -3,13 +3,13 @@ title: Rövid útmutató – beállításjegyzék létrehozása a portálon
 description: Gyorsan megtudhatja, hogyan hozhat létre egy privát Azure Container registryt a Azure Portal használatával.
 ms.topic: quickstart
 ms.date: 08/04/2020
-ms.custom: seodec18, mvc
-ms.openlocfilehash: ace1030923ea226376369941badafafa662d25ce
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: f4f16506a36acfe8845e85caf2d337f992f0f332
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88031798"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746673"
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>Gyors útmutató: Azure Container Registry létrehozása a Azure Portal használatával
 
@@ -25,15 +25,15 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="create-a-container-registry"></a>Tárolóregisztrációs adatbázis létrehozása
 
-Válassza **az erőforrás létrehozása**  >  **tárolók**  >  **Container Registry**elemet.
+Válassza **az erőforrás létrehozása**  >  **tárolók**  >  **Container Registry** elemet.
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-01.png" alt-text="A tároló beállításjegyzékének navigálása a portálon":::
 
-Az **alapvető beállítások** lapon adja meg az **erőforráscsoport** és a **beállításjegyzék nevének**értékét. A tárolóregisztrációs adatbázis nevének egyedinek kell lennie az Azure-ban, és 5–50 alfanumerikus karaktert kell tartalmaznia. Ebben a rövid útmutatóban hozzon létre egy `myResourceGroup` nevű új erőforráscsoportot az `West US` nevű helyen, majd a **Termékváltozat** mezőben válassza az „Alapszintű” lehetőséget.
+Az **alapvető beállítások** lapon adja meg az **erőforráscsoport** és a **beállításjegyzék nevének** értékét. A tárolóregisztrációs adatbázis nevének egyedinek kell lennie az Azure-ban, és 5–50 alfanumerikus karaktert kell tartalmaznia. Ebben a rövid útmutatóban hozzon létre egy `myResourceGroup` nevű új erőforráscsoportot az `West US` nevű helyen, majd a **Termékváltozat** mezőben válassza az „Alapszintű” lehetőséget.
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-03.png" alt-text="A tároló beállításjegyzékének navigálása a portálon":::
 
-Fogadja el az alapértelmezett értékeket a többi beállításhoz. Ezután válassza a **felülvizsgálat + létrehozás**elemet. A beállítások áttekintése után válassza a **Létrehozás**lehetőséget.
+Fogadja el az alapértelmezett értékeket a többi beállításhoz. Ezután válassza a **felülvizsgálat + létrehozás** elemet. A beállítások áttekintése után válassza a **Létrehozás** lehetőséget.
 
 Ebben a rövid útmutatóban egy *alapszintű* beállításjegyzéket hozunk létre, amely egy költséghatékony megoldás a fejlesztők számára a Azure Container Registry megismeréséhez. Az elérhető szolgáltatási szintek (SKU-EK) részletes ismertetését lásd: a [Container Registry szolgáltatási szintjei][container-registry-skus].
 
@@ -41,7 +41,7 @@ Amikor megjelenik az **üzembe helyezés sikeres** üzenet, válassza ki a táro
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="A tároló beállításjegyzékének navigálása a portálon":::
 
-Jegyezze fel a beállításjegyzék nevét és a **bejelentkezési kiszolgáló**értékét. Ezeket az értékeket a következő lépésekben hajthatja végre, amikor a Docker használatával leküldi és lekéri a lemezképeket.
+Jegyezze fel a beállításjegyzék nevét és a **bejelentkezési kiszolgáló** értékét. Ezeket az értékeket a következő lépésekben hajthatja végre, amikor a Docker használatával leküldi és lekéri a lemezképeket.
 
 ## <a name="log-in-to-registry"></a>Bejelentkezés a beállításjegyzékbe
 
@@ -63,22 +63,22 @@ A parancs a `Login Succeeded` üzenetet adja vissza, ha befejeződött.
 
 ## <a name="list-container-images"></a>Tárolórendszerképek listázása
 
-A beállításjegyzékben található rendszerképek listázásához navigáljon a beállításjegyzékhez a portálon, és válassza a **tárak**lehetőséget, majd válassza ki a létrehozott  **Hello-World** tárházat `docker push` .
+A beállításjegyzékben található rendszerképek listázásához navigáljon a beállításjegyzékhez a portálon, és válassza a **tárak** lehetőséget, majd válassza ki a létrehozott  **Hello-World** tárházat `docker push` .
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-09.png" alt-text="A tároló beállításjegyzékének navigálása a portálon":::
 
-A **Hello-World** adattár kiválasztásával megtekintheti a címkével ellátott `v1` képet a **címkék**területen.
+A **Hello-World** adattár kiválasztásával megtekintheti a címkével ellátott `v1` képet a **címkék** területen.
 
 [!INCLUDE [container-registry-quickstart-docker-pull](../../includes/container-registry-quickstart-docker-pull.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Az erőforrások tisztításához navigáljon az **myResourceGroup** erőforráscsoporthoz a portálon. Miután betöltötte az erőforráscsoportot, kattintson az **erőforráscsoport törlése** elemre az erőforráscsoport, a tároló-beállításjegyzék és az ott tárolt tároló-lemezképek eltávolításához.
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-08.png" alt-text="A tároló beállításjegyzékének navigálása a portálon":::
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Azure Container Registryt a Azure Portal, leküldte a tároló képét, és lehúzta és futtatta a rendszerképet a beállításjegyzékből. Folytassa a Azure Container Registry oktatóanyagokkal, és tekintse meg az ACR mélyebb megjelenését.
 

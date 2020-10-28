@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 02/26/2020
 ms.reviewer: jushiman
-ms.custom: avverma
-ms.openlocfilehash: 8c4944da8ffcaa75e6448483918a29809c32830b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: 59720a3e89db29ba3eb0829084dd5252e27e9cc9
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83124057"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746798"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>Példányok védelme az Azure virtuálisgép-méretezési csoport példányai esetében
 
@@ -50,11 +50,11 @@ A méretezési csoport példányain az alábbi példákban ismertetett módon t�
 A méretezési csoporton belül a Azure Portalon keresztül is alkalmazhat méretezési védelmet. Egyszerre csak egy példányt lehet módosítani. Ismételje meg a lépéseket minden védelemmel ellátni kívánt példánynál.
  
 1. Váltson egy meglévő virtuálisgép-méretezési csoportra.
-1. A bal oldali menüben válassza a **példányok** lehetőséget a **Beállítások**területen.
+1. A bal oldali menüben válassza a **példányok** lehetőséget a **Beállítások** területen.
 1. Válassza ki a védelemmel ellátni kívánt példány nevét.
 1. Válassza a **védelmi szabályzat** fület.
 1. A **védelmi szabályzat** panelen válassza a **védelem méretezéssel** lehetőséget.
-1. Kattintson a **Mentés** gombra. 
+1. Válassza a **Mentés** lehetőséget. 
 
 ### <a name="rest-api"></a>REST API
 
@@ -118,11 +118,11 @@ Az alábbi példákban a méretezési csoport műveleteinek védelme több módo
 A méretezési csoport műveleteinek védelmét a Azure Portalon keresztül végezheti el a méretezési csoport egyik példányán. Egyszerre csak egy példányt lehet módosítani. Ismételje meg a lépéseket minden védelemmel ellátni kívánt példánynál.
  
 1. Váltson egy meglévő virtuálisgép-méretezési csoportra.
-1. A bal oldali menüben válassza a **példányok** lehetőséget a **Beállítások**területen.
+1. A bal oldali menüben válassza a **példányok** lehetőséget a **Beállítások** területen.
 1. Válassza ki a védelemmel ellátni kívánt példány nevét.
 1. Válassza a **védelmi szabályzat** fület.
 1. A **védelmi szabályzat** panelen válassza a védelem a **méretezési csoportból művelet** lehetőséget.
-1. Kattintson a **Mentés** gombra. 
+1. Válassza a **Mentés** lehetőséget. 
 
 ### <a name="rest-api"></a>REST API
 
@@ -190,5 +190,5 @@ A példányok védelmét a példányok létrehozása után is alkalmazhatja a m�
 ### <a name="not-able-to-apply-instance-protection"></a>Nem sikerült alkalmazni a példányok védelmét
 A példányok védelme csak a 2019-03-01-es és újabb verziójú API-k esetében támogatott. Tekintse meg a használt API-verziót, és szükség szerint frissítse azt. Előfordulhat, hogy a legújabb verzióra is frissítenie kell a PowerShellt vagy a CLI-t.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Megtudhatja, hogyan [helyezheti üzembe az alkalmazást](virtual-machine-scale-sets-deploy-app.md) a virtuálisgép-méretezési csoportokban.

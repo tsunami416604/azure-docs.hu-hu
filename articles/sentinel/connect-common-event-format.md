@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: d63893ab219854a270652da38c474e3ccad83abc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dae8ce6cbad1ae08898ae439c1f621bef185b5df
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630508"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747898"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>A külső megoldás összekötése a közös esemény formátumával
 
@@ -44,7 +44,7 @@ Másik lehetőségként ez a beállítás akkor is előfordulhat, ha egy másik 
 
 ## <a name="security-considerations"></a>Biztonsági szempontok
 
-Győződjön meg arról, hogy a cég biztonsági szabályzata szerint konfigurálja a gép biztonságát. Konfigurálhatja például a hálózatot úgy, hogy az megfeleljen a vállalati hálózati biztonsági házirendnek, és módosítsa a démon portjait és protokollait úgy, hogy azok megfeleljenek a követelményeinek. A következő útmutatást követve javíthatja a gép biztonsági konfigurációját:  [biztonságos virtuális gép az Azure-ban](../virtual-machines/security-policy.md), [ajánlott eljárások a hálózati biztonsághoz](../security/fundamentals/network-best-practices.md).
+Győződjön meg arról, hogy a cég biztonsági szabályzata szerint konfigurálja a gép biztonságát. Konfigurálhatja például a hálózatot úgy, hogy az megfeleljen a vállalati hálózati biztonsági házirendnek, és módosítsa a démon portjait és protokollait úgy, hogy azok megfeleljenek a követelményeinek. A következő útmutatást követve javíthatja a gép biztonsági konfigurációját:  [biztonságos virtuális gép az Azure-ban](../virtual-machines/security-policy.md), [ajánlott eljárások a hálózati biztonsághoz](../security/fundamentals/network-best-practices.md).
 
 Ahhoz, hogy TLS-kommunikációt lehessen használni a syslog-forrás és a syslog-továbbító között, konfigurálnia kell a syslog démont (rsyslog vagy syslog-ng) a TLS-vel való kommunikációhoz: a [syslog-forgalom titkosítása a TLS-rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), a [naplózási üzenetek titkosítása a TLS – syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)használatával.
  
@@ -55,14 +55,14 @@ Győződjön meg arról, hogy a proxyként használt Linux-gép az alábbi oper�
 - 64 bites
   - CentOS 7 és alverziók, valamint magasabb (nem 6)
   - Amazon Linux 2017,09
-  - Oracle Linux 6 és 7
+  - Oracle Linux 7
   - Red Hat Enterprise Linux (RHEL) Server 7 és alverziók, valamint magasabb (nem 6)
   - Debian GNU/Linux 8 és 9
   - Ubuntu Linux 14,04 LTS, 16,04 LTS és 18,04 LTS
   - SUSE Linux Enterprise Server 12
 - 32 bites
    - CentOS 7
-   - Oracle Linux 6
+   - Oracle Linux 7
    - Red Hat Enterprise Linux Server 7
    - Debian GNU/Linux 8 és 9
    - Ubuntu Linux 14,04 LTS és 16,04 LTS
@@ -79,7 +79,7 @@ Győződjön meg arról, hogy a gép a következő követelményeknek is megfele
 - Engedélyek
     - Emelt szintű engedélyekkel (sudo) kell rendelkeznie a gépen. 
 - Szoftverkövetelmények
-    - Győződjön meg arról, hogy a számítógépen fut-e a Python (2,7 vagy újabb)
+    - Győződjön meg arról, hogy a Python 2,7 fut a gépen.
 
 ## <a name="next-steps"></a>Következő lépések
 

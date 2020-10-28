@@ -7,13 +7,13 @@ ms.date: 03/12/2020
 author: sabbour
 ms.author: asabbour
 keywords: ARO, openshift, az ARO, Red Hat, CLI
-ms.custom: mvc
-ms.openlocfilehash: fd6ea0749cce154ae20479bc54ef9b7374a69d0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 03ecd0e11df5fa20f134b6fd87baf788078a2203
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469422"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748032"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>Azure Active Directory hitelesítés konfigurálása Azure Red Hat OpenShift 4 fürthöz (CLI)
 
@@ -21,7 +21,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 A Azure Active Directory alkalmazás konfigurálásához használni kívánt fürtözött URL-címek beolvasása.
 
-Hozza létre a fürt OAuth visszahívási URL-címét, és tárolja egy változó **oauthCallbackURL**. Ügyeljen arra, hogy a fürt nevével cserélje le az **ARO-RG** nevét és az **ARO-fürtöt** .
+Hozza létre a fürt OAuth visszahívási URL-címét, és tárolja egy változó **oauthCallbackURL** . Ügyeljen arra, hogy a fürt nevével cserélje le az **ARO-RG** nevét és az **ARO-fürtöt** .
 
 > [!NOTE]
 > A `AAD` OAuth visszahívási URL-címében szereplő szakasznak meg kell egyeznie a OAuth-identitás szolgáltatójának nevével.
@@ -210,6 +210,6 @@ oauth.config.openshift.io/cluster configured
 
 ## <a name="verify-login-through-azure-active-directory"></a>Bejelentkezés ellenőrzése Azure Active Directory
 
-Ha most kijelentkezik a OpenShift webkonzolon, és megpróbál újra bejelentkezni, megjelenik egy új lehetőség a **HRE**való bejelentkezéshez. Előfordulhat, hogy néhány percet várnia kell.
+Ha most kijelentkezik a OpenShift webkonzolon, és megpróbál újra bejelentkezni, megjelenik egy új lehetőség a **HRE** való bejelentkezéshez. Előfordulhat, hogy néhány percet várnia kell.
 
 ![Bejelentkezési képernyő Azure Active Directory lehetőséggel](media/aro4-login-2.png)

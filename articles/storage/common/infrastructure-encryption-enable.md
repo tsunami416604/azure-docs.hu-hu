@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 3164de9c3e44001d58d46eab9f823041b440960b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 612ba18ba71a22ad6c346b26008e688195c1d1e4
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984165"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746578"
 ---
 # <a name="create-a-storage-account-with-infrastructure-encryption-enabled-for-double-encryption-of-data"></a>Olyan Storage-fiók létrehozása, amely lehetővé teszi az infrastruktúra-titkosítást az adatmennyiség kettős titkosításához
 
@@ -31,7 +32,7 @@ Ha olyan Storage-fiókot szeretne létrehozni, amelynél engedélyezve van az in
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N.A.
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -79,7 +80,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-N.A.
+N/A
 
 ---
 
@@ -95,7 +96,7 @@ Ha a PowerShell használatával olyan Storage-fiókot szeretne létrehozni, amel
 
 1. A Azure Portal navigáljon a Storage- **fiókok** lapra.
 1. Válassza a **Hozzáadás** gombot egy új általános célú v2 Storage-fiók hozzáadásához.
-1. A **speciális** lapon keresse meg az **infrastruktúra** titkosítása elemet, majd kattintson az **engedélyezve**lehetőségre.
+1. A **speciális** lapon keresse meg az **infrastruktúra** titkosítása elemet, majd kattintson az **engedélyezve** lehetőségre.
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget a Storage-fiók létrehozásának befejezéséhez.
 
     :::image type="content" source="media/infrastructure-encryption-enable/create-account-infrastructure-encryption-portal.png" alt-text="A fiók létrehozásakor az infrastruktúra titkosításának engedélyezését bemutató képernyőkép":::
@@ -178,7 +179,7 @@ A következő JSON-példa egy általános célú v2-es Storage-fiókot hoz létr
 Az alábbi lépéseket követve ellenőrizheti, hogy engedélyezve van-e az infrastruktúra-titkosítás a Azure Portal Storage-fiókhoz:
 
 1. Az Azure Portalon nyissa meg a tárfiókot.
-1. A **Beállítások**területen válassza a **titkosítás**lehetőséget.
+1. A **Beállítások** területen válassza a **titkosítás** lehetőséget.
 
     :::image type="content" source="media/infrastructure-encryption-enable/verify-infrastructure-encryption-portal.png" alt-text="A fiók létrehozásakor az infrastruktúra titkosításának engedélyezését bemutató képernyőkép":::
 
@@ -208,7 +209,7 @@ az storage account show /
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-N.A.
+N/A
 
 ---
 

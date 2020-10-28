@@ -1,39 +1,39 @@
 ---
-author: Juliako
+author: IngridAtMicrosoft
 ms.service: media-services
 ms.topic: include
-ms.date: 03/31/2020
-ms.author: juliako
-ms.openlocfilehash: d6ff823951e6474a35a514036f02c0aabb17bf01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/26/2020
+ms.author: inhenkel
+ms.openlocfilehash: 84aa07ef282dd7100043f7e9bfcc97cb3b3673a5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82997722"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755824"
 ---
 > [!NOTE]
 > A nem rögzített erőforrások esetében nyisson meg egy támogatási jegyet, amely a kvóták növekedését kéri. Ne hozzon létre további Azure Media Services fiókokat a magasabb korlátok beszerzésére tett kísérlet során.
 
 ### <a name="account-limits"></a>Fiók korlátai
 
-| Erőforrás | Alapértelmezett korlát | 
-| --- | --- | 
-| Egyetlen előfizetésben lévő fiókok Media Services | 25 (rögzített) |
+| Erőforrás | Alapértelmezett korlát |
+| --- | --- |
+| Egyetlen előfizetésben lévő fiókok Media Services | 100 (rögzített) |
 
 ### <a name="asset-limits"></a>Eszközök korlátai
 
-| Erőforrás | Alapértelmezett korlát | 
-| --- | --- | 
+| Erőforrás | Alapértelmezett korlát |
+| --- | --- |
 | Eszközök/Media Services fiók | 1,000,000|
 
 ### <a name="storage-media-limits"></a>Tárolási (adathordozó) korlátok
 
-| Erőforrás | Alapértelmezett korlát | 
-| --- | --- | 
+| Erőforrás | Alapértelmezett korlát |
+| --- | --- |
 | Fájlméret| Bizonyos esetekben a Media Services feldolgozásakor támogatott maximális fájlméret megengedett. <sup>1</sup> |
 | Tárfiókok | 100<sup>(2)</sup> (rögzített) |
 
-<sup>1</sup> az egyes Blobok maximális mérete jelenleg legfeljebb 5 TB lehet az Azure Blob Storageban. A további korlátozások a szolgáltatás által használt virtuálisgép-méretek alapján Media Services vonatkoznak. A méretkorlát a feltöltött fájlokra, valamint a Media Services feldolgozás (kódolás vagy elemzés) eredményeképpen generált fájlokra is vonatkozik. Ha a forrásfájl mérete meghaladja a 260 GB-ot, a feladat valószínűleg sikertelen lesz. 
+<sup>1</sup> az egyes Blobok maximális mérete jelenleg legfeljebb 5 TB lehet az Azure Blob Storageban. A további korlátozások a szolgáltatás által használt virtuálisgép-méretek alapján Media Services vonatkoznak. A méretkorlát a feltöltött fájlokra, valamint a Media Services feldolgozás (kódolás vagy elemzés) eredményeképpen generált fájlokra is vonatkozik. Ha a forrásfájl mérete meghaladja a 260 GB-ot, a feladat valószínűleg sikertelen lesz.
 
 Az alábbi táblázat az S1, S2 és S3 Media szolgáltatás számára fenntartott egységek korlátozásait mutatja be. Ha a forrásfájl nagyobb a táblázatban megadott korlátoknál, a kódolási feladata meghiúsul. Ha hosszú ideig kódolja a 4K-feloldási forrásokat, a szükséges teljesítmény eléréséhez S3 Media szolgáltatás számára fenntartott egységeket kell használnia. Ha olyan 4K-tartalommal rendelkezik, amely nagyobb, mint az S3 Media szolgáltatás számára fenntartott egységek 260 GB-os korlátja, nyisson meg egy támogatási jegyet.
 
@@ -47,8 +47,8 @@ Az alábbi táblázat az S1, S2 és S3 Media szolgáltatás számára fenntartot
 
 ### <a name="jobs-encoding--analyzing-limits"></a>Feladatok (kódolási & elemzése) korlátok
 
-| Erőforrás | Alapértelmezett korlát | 
-| --- | --- | 
+| Erőforrás | Alapértelmezett korlát |
+| --- | --- |
 | Feladatok/Media Services fiók | 500 000 <sup>(3)</sup> (rögzített)|
 | Feladathoz tartozó bemenetek száma | 50 (rögzített)|
 | Feladatok kimenete/feladatok | 20 (rögzített) |
@@ -62,8 +62,8 @@ A fiók 90 napnál régebbi feladatait automatikusan törli a rendszer, még akk
 
 ### <a name="live-streaming-limits"></a>Élő közvetítés korlátai
 
-| Erőforrás | Alapértelmezett korlát | 
-| --- | --- | 
+| Erőforrás | Alapértelmezett korlát |
+| --- | --- |
 | Élő események <sup>(4)</sup> /Media Services fiók |5|
 | Élő kimenet/élő esemény |3 <sup>(5)</sup> |
 | Élő kimenet maximális időtartama | [A DVR ablak mérete](../articles/media-services/latest/live-event-cloud-dvr.md) |
@@ -74,9 +74,9 @@ A fiók 90 napnál régebbi feladatait automatikusan törli a rendszer, még akk
 
 ### <a name="packaging--delivery-limits"></a>Csomagolási & kézbesítési korlátok
 
-| Erőforrás | Alapértelmezett korlát | 
-| --- | --- | 
-| Adatfolyam-végpontok (leállított vagy futó) Media Services fiókkal|2 (rögzített)|
+| Erőforrás | Alapértelmezett korlát |
+| --- | --- |
+| Adatfolyam-végpontok (leállított vagy futó) Media Services fiókkal| 2 |
 | Dinamikusjegyzék-szűrők|100|
 | Streamelési szabályok | 100 <sup>(6)</sup> |
 | Egy adott eszközhöz társított egyedi streaming-lokátorok | 100<sup>(7)</sup> (rögzített) |
@@ -87,9 +87,9 @@ A fiók 90 napnál régebbi feladatait automatikusan törli a rendszer, még akk
 
 ### <a name="protection-limits"></a>Védelmi korlátok
 
-| Erőforrás | Alapértelmezett korlát | 
-| --- | --- | 
-| A tartalmi kulcsokra vonatkozó házirend beállításai |30 | 
+| Erőforrás | Alapértelmezett korlát |
+| --- | --- |
+| A tartalmi kulcsokra vonatkozó házirend beállításai | 30 |
 | Licencek havonta az egyes DRM-típusok esetében Media Services Key Delivery Service-fiókban|1,000,000|
 
 ### <a name="support-ticket"></a>Támogatási jegy

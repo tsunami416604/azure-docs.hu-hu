@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 9bb228c81ee180ec337ce52e3c87a4a9684e158a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 609f6d5fd0bf75b1a2056c01c8d22ae9e08ab9cb
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563692"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746829"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Filesszal kapcsolatos gyakori kérdések (GYIK)
 A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő [SMB protokollon](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) és a [Network File System (NFS) protokollon](https://en.wikipedia.org/wiki/Network_File_System) (előzetes verzió) keresztül érhető el. Az Azure-fájlmegosztás párhuzamosan csatlakoztatható a Felhőbeli vagy a Windows, Linux és macOS rendszerű helyszíni környezetekhez. Az Azure-fájlmegosztás a Windows Server rendszerű gépeken is gyorsítótárazható a Azure File Sync használatával a gyors eléréshez, ahol az adott adatforgalomhoz közeledik.
@@ -22,7 +22,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 1. A cikk megjegyzések szakasza.
 2. [A Microsoft Q&az Azure Storage-ra vonatkozó kérdés oldalát](https://docs.microsoft.com/answers/topics/azure-file-storage.html).
 3. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
-4. Microsoft ügyfélszolgálata. Új támogatási kérelem létrehozásához a Azure Portal **Súgó** lapján kattintson a **Súgó + támogatás** gombra, majd válassza az **új támogatási kérelem**lehetőséget.
+4. Microsoft ügyfélszolgálata. Új támogatási kérelem létrehozásához a Azure Portal **Súgó** lapján kattintson a **Súgó + támogatás** gombra, majd válassza az **új támogatási kérelem** lehetőséget.
 
 ## <a name="general"></a>Általános kérdések
 * <a id="why-files-useful"></a>
@@ -107,7 +107,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
     A teljesítmény a környezeti beállításoktól, a konfigurációtól és attól függően változik, hogy ez egy kezdeti szinkronizálás vagy egy folyamatban lévő szinkronizálás. További információ: [Azure file Sync teljesítmény mérőszámai](storage-files-scale-targets.md#azure-file-sync-performance-metrics)
 
 * <a id="afs-conflict-resolution"></a>**Ha ugyanezt a fájlt két kiszolgálón is megváltoztatják egy időben, mi történik?**  
-    A Azure File Sync egy egyszerű ütközés-feloldási stratégiát használ: egyszerre két végponton módosult fájlok változásai is megmaradnak. A legutóbb írt módosítás megtartja az eredeti fájlnevet. A régebbi (LastWriteTime által meghatározott) fájl a végpont nevét és a fájlnévhez hozzáfűzött ütközési számot tartalmaz. A kiszolgálói végpontok esetében a végpont neve a kiszolgáló neve. A Felhőbeli végpontok esetén a végpont neve **felhő**. A név ezt a besorolást követi: 
+    A Azure File Sync egy egyszerű ütközés-feloldási stratégiát használ: egyszerre két végponton módosult fájlok változásai is megmaradnak. A legutóbb írt módosítás megtartja az eredeti fájlnevet. A régebbi (LastWriteTime által meghatározott) fájl a végpont nevét és a fájlnévhez hozzáfűzött ütközési számot tartalmaz. A kiszolgálói végpontok esetében a végpont neve a kiszolgáló neve. A Felhőbeli végpontok esetén a végpont neve **felhő** . A név ezt a besorolást követi: 
    
     \<FileNameWithoutExtension\>-\<endpointName\>\[-#\].\<ext\>  
 
@@ -257,7 +257,25 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 * <a id="ad-multiple-forest"></a>
 **A helyszíni AD DS az Azure-fájlmegosztás hitelesítése támogatja az integrációt egy AD DS környezettel több erdő használatával?**    
 
-    Azure Files helyszíni AD DS hitelesítés csak annak a tartományi szolgáltatásnak az erdőjét integrálja, amelyhez a Storage-fiók regisztrálva van. Egy másik erdő hitelesítésének támogatásához a környezetnek megfelelően konfigurált erdőszintű megbízhatósági kapcsolattal kell rendelkeznie. A Azure Files regisztrálása AD DS szinte ugyanaz, mint egy normál fájlkiszolgáló, ahol identitást (számítógép vagy szolgáltatás bejelentkezési fiókját) hoz létre a hitelesítéshez AD DS. Az egyetlen különbség, hogy a Storage-fiók regisztrált SPN-je "file.core.windows.net" értékkel végződik, amely nem felel meg a tartomány utótagjának. Tekintse meg a tartományi rendszergazdát, és ellenőrizze, hogy szükséges-e a DNS-útválasztási házirend frissítése a különböző tartományi utótag miatti több erdős hitelesítés engedélyezéséhez.
+    Azure Files helyszíni AD DS hitelesítés csak annak a tartományi szolgáltatásnak az erdőjét integrálja, amelyhez a Storage-fiók regisztrálva van. Egy másik erdő hitelesítésének támogatásához a környezetnek megfelelően konfigurált erdőszintű megbízhatósági kapcsolattal kell rendelkeznie. A Azure Files regisztrálása AD DS szinte ugyanaz, mint egy normál fájlkiszolgáló, ahol identitást (számítógép vagy szolgáltatás bejelentkezési fiókját) hoz létre a hitelesítéshez AD DS. Az egyetlen különbség, hogy a Storage-fiók regisztrált SPN-je "file.core.windows.net" értékkel végződik, amely nem felel meg a tartomány utótagjának. Tekintse meg a tartományi rendszergazdát, és ellenőrizze, hogy szükséges-e az utótag-útválasztási házirend frissítése a különböző tartományi utótag miatti több erdős hitelesítés engedélyezéséhez. Az alábbi példát láthatjuk az utótag útválasztási házirendjének konfigurálásához.
+    
+    Példa: Ha egy erdőben lévő felhasználók egy olyan fájlmegosztást szeretnének elérni a B erdőben lévő tartományon regisztrált Storage-fiókkal, akkor ez nem fog automatikusan működni, mert a Storage-fiók egyszerű szolgáltatásnév nem egyezik az A erdőben található egyik tartomány utótagjának megfelelő utótaggal. Ezt a problémát a "file.core.windows.net" egyéni utótagja esetében az "A" erdő "B" erdőre való útválasztási szabályának manuális konfigurálásával lehet kezelni.
+    Először hozzá kell adnia egy új egyéni utótagot a B erdőben. Ellenőrizze, hogy rendelkezik-e a megfelelő rendszergazdai engedélyekkel a konfiguráció módosításához, majd kövesse az alábbi lépéseket:   
+    1. Bejelentkezés a B erdőhöz csatlakozó számítógép-tartományba
+    2.  A "Active Directory tartományok és megbízhatósági kapcsolatok" konzol megnyitása
+    3.  Kattintson a jobb gombbal a "Active Directory tartományok és megbízhatósági kapcsolatok" elemre.
+    4.  Kattintson a Tulajdonságok elemre.
+    5.  Kattintson a "Hozzáadás" gombra.
+    6.  "File.core.windows.net" hozzáadása UPN-utótagként
+    7.  A varázsló bezárásához kattintson az Apply (alkalmaz), majd az OK gombra.
+    
+    Ezután adja hozzá a utótag-útválasztási szabályt az A erdőben, hogy átirányítsa a B erdőre.
+    1.  Bejelentkezés az A erdőhöz csatlakozó számítógép-tartományba
+    2.  A "Active Directory tartományok és megbízhatósági kapcsolatok" konzol megnyitása
+    3.  Kattintson a jobb gombbal arra a tartományra, amelyhez el szeretné érni a fájlmegosztást, majd kattintson a "Megbízhatóságok" fülre, és válassza az erdő B tartomány lehetőséget a kimenő Megbízhatóságok területen. Ha nem konfigurálta a megbízhatóságot a két erdő között, először a megbízhatóságot kell beállítania
+    4.  Kattintson a "tulajdonságok..." elemre. Ezután a "név utótagjának útválasztása"
+    5.  Ellenőrizze, hogy a "*. file.core.windows.net" surffix megjelenik-e. Ha nem, kattintson a frissítés gombra.
+    6.  Válassza a "*. file.core.windows.net" lehetőséget, majd kattintson az "engedélyezés" és az "alkalmaz" gombra.
 
 * <a id=""></a>
 **Mely régiók érhetők el Azure Files AD DS hitelesítéshez?**

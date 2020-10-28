@@ -4,13 +4,13 @@ description: Ebben az Azure Kubernetes Service-hez (AKS-hez) tartozó oktatóany
 services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
-ms.custom: mvc
-ms.openlocfilehash: a9a8a73e2208f7efe01f43fa87e196ffd8c64f14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: e700934a965f836456458cb33dc46125bef4ab72
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576302"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746995"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások skálázása az Azure Kubernetes Service-ben (AKS)
 
@@ -45,7 +45,7 @@ azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 ```
 
-Ha manuálisan szeretné módosítani az *azure-vote-front* üzemelő példány podjainak számát, használja a [kubectl scale][kubectl-scale] parancsot. A következő példa *5*-re növeli az előtérbeli podok számát:
+Ha manuálisan szeretné módosítani az *azure-vote-front* üzemelő példány podjainak számát, használja a [kubectl scale][kubectl-scale] parancsot. A következő példa *5* -re növeli az előtérbeli podok számát:
 
 ```console
 kubectl scale --replicas=5 deployment/azure-vote-front
@@ -74,7 +74,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query kuberne
 ```
 
 > [!NOTE]
-> Ha az AK-fürt kevesebb, mint *1,10*, a metrikák kiszolgálója nem települ automatikusan. A metrikák kiszolgáló telepítési jegyzékfájli a `components.yaml` metrikai kiszolgálók kiadásaiban is elérhetők, ami azt jelenti, hogy egy URL-címen keresztül telepítheti őket. Ha többet szeretne megtudni ezekről a YAML-definíciókkal kapcsolatban, tekintse meg a readme [telepítési][metrics-server-github] szakaszát.
+> Ha az AK-fürt kevesebb, mint *1,10* , a metrikák kiszolgálója nem települ automatikusan. A metrikák kiszolgáló telepítési jegyzékfájli a `components.yaml` metrikai kiszolgálók kiadásaiban is elérhetők, ami azt jelenti, hogy egy URL-címen keresztül telepítheti őket. Ha többet szeretne megtudni ezekről a YAML-definíciókkal kapcsolatban, tekintse meg a readme [telepítési][metrics-server-github] szakaszát.
 > 
 > Telepítési példa:
 > ```console
@@ -174,7 +174,7 @@ Ha a fürt méretezése sikeresen megtörtént, a kimenet a következő példáh
   }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban különböző méretezési funkciókat használtunk a Kubernetes-fürtben. Megtanulta végrehajtani az alábbi műveleteket:
 

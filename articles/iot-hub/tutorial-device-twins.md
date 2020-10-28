@@ -14,12 +14,13 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-js
-ms.openlocfilehash: aecf5c8b71f23e3d51c755c86ec0122d6da05f21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+- devx-track-azurecli
+ms.openlocfilehash: 74d5e5395853bcba20b2012e54dd8f9fea03afe6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842767"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748549"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -27,7 +28,7 @@ ms.locfileid: "91842767"
 
 Az eszközökről érkező telemetriai adatok fogadása mellett háttérszolgáltatásból végrehajtott eszközkonfigurációra is szükség lehet. A kívánt konfiguráció eszközökre történő elküldését követően hasznos, ha az állapotra és a megfelelőségi frissítésekre vonatkozó visszajelzést kap az érintett eszközöktől. Előfordulhat például, hogy működési hőmérsékletre vonatkozó céltartományt szeretne beállítani egy eszközhöz, vagy össze szeretné gyűjteni az eszközök belső vezérlőprogramjainak verzióadatait.
 
-Az állapotinformációk eszköz és IoT-központ közötti szinkronizálásához használjon _ikereszközöket_. Az [ikereszköz](iot-hub-devguide-device-twins.md) egy adott eszközzel társított JSON-dokumentum, melyet az IoT Hub a felhőben tárol, és onnan [le is kérdezhető](iot-hub-devguide-query-language.md). Az ikereszköz _kívánt tulajdonságokból_, _jelentett tulajdonságokból_ és _címkékből_ áll. A kívánt tulajdonságot egy háttéralkalmazás állítja és egy eszköz olvassa be. A jelentett tulajdonságot egy eszköz állítja és egy háttéralkalmazás olvassa be. A címkét egy háttéralkalmazás állítja be, és a rendszer soha nem küldi el az eszközre. A címkék az eszközök rendszerezésére szolgálnak. Ez az oktatóanyag bemutatja, hogyan használhatók a kívánt és jelentett tulajdonságok az állapotinformációk szinkronizálására:
+Az állapotinformációk eszköz és IoT-központ közötti szinkronizálásához használjon _ikereszközöket_ . Az [ikereszköz](iot-hub-devguide-device-twins.md) egy adott eszközzel társított JSON-dokumentum, melyet az IoT Hub a felhőben tárol, és onnan [le is kérdezhető](iot-hub-devguide-query-language.md). Az ikereszköz _kívánt tulajdonságokból_ , _jelentett tulajdonságokból_ és _címkékből_ áll. A kívánt tulajdonságot egy háttéralkalmazás állítja és egy eszköz olvassa be. A jelentett tulajdonságot egy eszköz állítja és egy háttéralkalmazás olvassa be. A címkét egy háttéralkalmazás állítja be, és a rendszer soha nem küldi el az eszközre. A címkék az eszközök rendszerezésére szolgálnak. Ez az oktatóanyag bemutatja, hogyan használhatók a kívánt és jelentett tulajdonságok az állapotinformációk szinkronizálására:
 
 ![Az ikereszközök összefoglalása](media/tutorial-device-twins/DeviceTwins.png)
 
@@ -40,7 +41,7 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -135,7 +136,7 @@ Az alábbi kezelő csak a **fanOn** kívánt tulajdonságon végrehajtott módos
 
 ### <a name="handlers-for-multiple-properties"></a>Több tulajdonsághoz való kezelők
 
-A kívánt tulajdonságok előbbi példájában a **components** alatti **climate** csomópont két tulajdonságból áll: ezek a **minTemperature** és a **maxTemperature**.
+A kívánt tulajdonságok előbbi példájában a **components** alatti **climate** csomópont két tulajdonságból áll: ezek a **minTemperature** és a **maxTemperature** .
 
 Egy eszköz helyi **ikerobjektuma** tárolja a kívánt és jelentett tulajdonságok teljes készletét. Előfordulhat, hogy a háttérrendszerből küldött **delta** változó a kívánt tulajdonságoknak csak egy részét frissíti. A következő kódrészlet, ha a szimulált eszköz frissítést kap a **minTemperature** és a **maxTemperature** tulajdonság egyikéhez, akkor az eszköz konfigurálásához a helyi ikerobjektumban szereplő értéket adja meg a másik tulajdonsághoz:
 
@@ -247,7 +248,7 @@ Az alábbi képernyőfelvételen a háttérbeli alkalmazás kimenete látható, 
 
 ![Háttéralkalmazás](./media/tutorial-device-twins/BackEnd2.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha a következő oktatóanyagot is el kívánja végezni, ne távolítsa el az erőforráscsoportot és az IoT-központot, mert ezeket később újból használhatja.
 
@@ -260,7 +261,7 @@ Ha szeretné, a CLI-t is használhatja:
 az group delete --name tutorial-iot-hub-rg
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag azt ismertette, hogyan szinkronizálhatja az állapotinformációkat az eszközök és az IoT Hub között. Folytassa a következő oktatóanyaggal, ha azt szeretné megtudni, hogyan implementálható ikereszközökkel egy belső vezérlőprogram frissítési folyamata.
 

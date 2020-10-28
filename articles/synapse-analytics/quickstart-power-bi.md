@@ -6,15 +6,15 @@ author: jocaplan
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: business-intelligence
-ms.date: 04/29/2020
+ms.date: 10/27/2020
 ms.author: jocaplan
 ms.reviewer: jrasnick
-ms.openlocfilehash: 52b6524bf9f21b7d61ac3907030ff08c7ac15256
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 36334142595d4a6bd4865a690f154279967a70d5
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171828"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746302"
 ---
 # <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-workspace"></a>Gyors útmutató: Power BI munkaterület összekapcsolása egy szinapszis-munkaterülettel
 
@@ -29,11 +29,11 @@ Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy in
 
 ## <a name="link-power-bi-workspace-to-your-synapse-workspace"></a>Power BI munkaterület összekapcsolása a szinapszis munkaterülettel
 
-1. A szinapszis Studiótól kezdve kattintson a **kezelés**elemre.
+1. A szinapszis Studiótól kezdve kattintson a **kezelés** elemre.
 
     ![A szinapszis Studio kattintson a kezelés elemre.](media/quickstart-link-powerbi/synapse-studio-click-manage.png)
 
-2. A **külső kapcsolatok**területen kattintson a **társított szolgáltatások**elemre.
+2. A **külső kapcsolatok** területen kattintson a **társított szolgáltatások** elemre.
 
     ![Társított szolgáltatások kiemelve.](media/quickstart-link-powerbi/manage-click-linked-services.png)
 
@@ -41,7 +41,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy in
 
     ![+ Az új társított szolgáltatások ki vannak emelve.](media/quickstart-link-powerbi/new-highlighted.png)
 
-4. Kattintson a **Power bi** elemre, majd a **Folytatás**gombra.
+4. Kattintson a **Power bi** elemre, majd a **Folytatás** gombra.
 
     ![Power BI társított szolgáltatás megjelenítése.](media/quickstart-link-powerbi/powerbi-linked-service.png)
 
@@ -49,13 +49,13 @@ Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy in
 
     ![Power BI társított szolgáltatás telepítésének megjelenítése.](media/quickstart-link-powerbi/workspace-link-dialog.png)
 
-6. Kattintson a **Létrehozás** lehetőségre.
+6. Kattintson a **Létrehozás** gombra.
 
 ## <a name="view-power-bi-workspace-in-synapse-studio"></a>Power BI munkaterület megtekintése a szinapszis Studióban
 
 A munkaterületek összekapcsolása után böngészhet a Power BI adatkészletekben, szerkesztheti és létrehozhatja az új Power BI jelentéseket a szinapszis studióból.
 
-1. Kattintson a **fejlesztés**gombra.
+1. Kattintson a **fejlesztés** gombra.
 
     ![A szinapszis Studióban kattintson a fejlesztés elemre.](media/quickstart-link-powerbi/synapse-studio-click-develop.png)
 

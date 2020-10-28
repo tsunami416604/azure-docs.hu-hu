@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: fa37c251e61b1f920edc55ead38f745439f2de92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b54076413d3a6cabf2e3ef0b06e8e17875efbf97
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812862"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746404"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Adatvédelem a Azure Stream Analyticsban 
 
@@ -59,7 +59,7 @@ A megfelelőségi kötelezettségeinek bármely szabályozott iparágban vagy k�
 
 A következő lépésekkel konfigurálhatja a Storage-fiókot a privát adategységekhez. Ez a konfiguráció a Stream Analyticsi feladatokból, és nem a Storage-fiókból történik.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra. 
 
@@ -67,16 +67,12 @@ A következő lépésekkel konfigurálhatja a Storage-fiókot a privát adategys
 
 1. Töltse ki a Stream Analytics feladatot tartalmazó oldalt a szükséges adatokkal, például a név, a régió és a skála lehetőséggel. 
 
-1. Jelölje be a jelölőnégyzetet, amely azt adja meg, hogy a *jelen feladatokban a saját Storage-fiókomban szükséges összes privát adategység biztonságos*legyen.
+1. Jelölje be a jelölőnégyzetet, amely azt adja meg, hogy a *jelen feladatokban a saját Storage-fiókomban szükséges összes privát adategység biztonságos* legyen.
 
 1. Válasszon egy Storage-fiókot az előfizetésből. Vegye figyelembe, hogy ez a beállítás a feladatok életciklusa során nem módosítható. 
 
    ![Magánjellegű adattárolási fiók beállításai](./media/data-protection/storage-account-create.png)
 
-
-
-### <a name="known-issues"></a>Ismert problémák
-Jelenleg létezik egy ismert korlátozás, amelyben az ügyfél által felügyelt kulcsot használó feladatok hibákkal futnak, amikor felügyelt identitást használ a bemenetek és kimenetek hitelesítéséhez.
 
 ## <a name="next-steps"></a>Következő lépések
 

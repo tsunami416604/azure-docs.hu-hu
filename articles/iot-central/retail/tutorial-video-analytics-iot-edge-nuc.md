@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: c41a6679009f1467c5bcd04d9629ef9256238e00
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b74c7c3e9678c89edbe90d648520b9526c8fb569
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127045"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748653"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>Oktatóanyag: IoT Edge-példány létrehozása a video analyticshez (Intel NUC)
 
@@ -27,7 +27,7 @@ IoT Edge ezek a szolgáltatások közvetlenül futnak a platformfüggetlen IoT-e
 
 Ebből az oktatóanyagból megtudhatja, hogyan telepítheti és konfigurálhatja a IoT Edge futtatókörnyezetet egy Intel NUC-eszközön.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * IoT Edge frissítése és konfigurálása
 > * Az IoT Edge-átjáró beállítása
@@ -117,7 +117,7 @@ Konfigurálja IoT Edge a IoT Central alkalmazás regisztrálásához és a hozz�
 
 1. A helyére írja be az `{scope_id}` **azonosító hatókört** , amelyet az előző oktatóanyag *scratchpad.txt* fájljában jegyzett készített.
 
-1. Cserélje le az `{registration_id}` *LVA-Gateway-001*, az előző oktatóanyagban létrehozott eszközt.
+1. Cserélje le az `{registration_id}` *LVA-Gateway-001* , az előző oktatóanyagban létrehozott eszközt.
 
 1. A helyére írja `{symmetric_key}` be az **LVA-Gateway-001** eszköz **elsődleges kulcsát** , és jegyezze fel az előző oktatóanyag *scratchpad.txt* fájljában.
 
@@ -140,7 +140,7 @@ Konfigurálja IoT Edge a IoT Central alkalmazás regisztrálásához és a hozz�
 
 Ha a IoT Edge modulok nem indulnak el megfelelően, tekintse [meg a IoT Edge-eszköz hibáinak megoldása](../../iot-edge/troubleshoot.md)című témakört.
 
-## <a name="collect-the-rstp-stream-from-your-camera"></a>A RSTP stream begyűjtése a kamerából
+## <a name="collect-the-rtsp-stream-from-your-camera"></a>Az RTSP stream begyűjtése a kamerából
 
 Azonosítsa a IoT Edge eszközhöz csatlakoztatott fényképezőgépek RTSP stream URL-címeit, például:
 

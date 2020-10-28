@@ -3,20 +3,20 @@ title: Azure-tevékenység naplójának küldése Log Analytics munkaterületre 
 description: ARM-sablonokkal létrehozhat egy Log Analytics munkaterületet és egy diagnosztikai beállítást, amellyel elküldheti a tevékenység naplóját Azure Monitor naplókba.
 ms.subservice: logs
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 552df72901b9fde7acedd554b429f3a2ce0f671b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: abcaee8cffd36e22c918b9d82f37370df1d61c26
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91631851"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747041"
 ---
 # <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>Gyors útmutató: Azure-beli tevékenység naplójának küldése Log Analytics munkaterületre ARM-sablon használatával
 
-A műveletnapló egy Azure-beli platform-napló, amely betekintést nyújt az előfizetési szintű eseményekre. Ez olyan adatokat tartalmaz, mint amikor egy erőforrás módosul, vagy amikor a virtuális gép elindul. Megtekintheti a tevékenység naplóját a Azure Portal vagy beolvashatja a bejegyzéseket a PowerShell és a parancssori felület használatával. Ez a rövid útmutató azt ismerteti, hogyan használhatók Azure Resource Manager sablonok (ARM-sablonok) egy Log Analytics-munkaterület létrehozásához és egy diagnosztikai beállításhoz, amely a tevékenység naplóját Azure Monitor naplókba küldi, ahol elemezheti a [napló lekérdezésekkel](../log-query/log-query-overview.md) , és más funkciókat is engedélyezhet, például a [naplózási riasztásokat](../platform/alerts-log-query.md) és a [munkafüzeteket](../platform/workbooks-overview.md).
+A Tevékenységnapló az Azure előfizetési szintű eseményekkel kapcsolatos megállapításokat biztosító platformnaplója. Olyan információkat tartalmaz, mint az erőforrások módosításának vagy a virtuális gépek indításának az időpontja. Megtekintheti a tevékenység naplóját a Azure Portal vagy beolvashatja a bejegyzéseket a PowerShell és a parancssori felület használatával. Ez a rövid útmutató azt ismerteti, hogyan használhatók Azure Resource Manager sablonok (ARM-sablonok) egy Log Analytics-munkaterület létrehozásához és egy diagnosztikai beállításhoz, amely a tevékenység naplóját Azure Monitor naplókba küldi, ahol elemezheti a [napló lekérdezésekkel](../log-query/log-query-overview.md) , és más funkciókat is engedélyezhet, például a [naplózási riasztásokat](../platform/alerts-log-query.md) és a [munkafüzeteket](../platform/workbooks-overview.md).
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -29,7 +29,7 @@ A műveletnapló egy Azure-beli platform-napló, amely betekintést nyújt az el
 
 ### <a name="review-the-template"></a>A sablon áttekintése
 
-A következő sablon egy üres Log Analytics munkaterületet hoz létre. Mentse ezt a sablont *CreateWorkspace.jsként*.
+A következő sablon egy üres Log Analytics munkaterületet hoz létre. Mentse ezt a sablont *CreateWorkspace.jsként* .
 
 ```json
 {
@@ -134,7 +134,7 @@ Ez a sablon egy erőforrást definiál:
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-A sablont bármely szabványos módszer használatával üzembe helyezheti [egy ARM-sablon üzembe helyezéséhez](../../azure-resource-manager/templates/deploy-portal.md) , például a parancssori felület és a PowerShell használatával. Cserélje le az **erőforráscsoport**, a **workspaceName**és a **hely** minta értékeit a környezetének megfelelő értékekkel. A munkaterület nevének egyedinek kell lennie az összes Azure-előfizetés között.
+A sablont bármely szabványos módszer használatával üzembe helyezheti [egy ARM-sablon üzembe helyezéséhez](../../azure-resource-manager/templates/deploy-portal.md) , például a parancssori felület és a PowerShell használatával. Cserélje le az **erőforráscsoport** , a **workspaceName** és a **hely** minta értékeit a környezetének megfelelő értékekkel. A munkaterület nevének egyedinek kell lennie az összes Azure-előfizetés között.
 
 # <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
@@ -180,7 +180,7 @@ Get-AzOperationalInsightsWorkspace -Name my-workspace-01 -ResourceGroupName my-r
 
 ### <a name="review-the-template"></a>A sablon áttekintése
 
-A következő sablon egy diagnosztikai beállítást hoz létre, amely elküldi a tevékenység naplóját egy Log Analytics munkaterületre. Mentse ezt a sablont *CreateDiagnosticSetting.jsként*.
+A következő sablon egy diagnosztikai beállítást hoz létre, amely elküldi a tevékenység naplóját egy Log Analytics munkaterületre. Mentse ezt a sablont *CreateDiagnosticSetting.jsként* .
 
 ```json
 {
@@ -248,7 +248,7 @@ Ez a sablon egy erőforrást definiál:
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-A sablont bármely szabványos módszer használatával üzembe helyezheti [egy ARM-sablon üzembe helyezéséhez](../../azure-resource-manager/templates/deploy-portal.md) , például a parancssori felület és a PowerShell használatával. Cserélje le az **erőforráscsoport**, a **workspaceName**és a **hely** minta értékeit a környezetének megfelelő értékekkel. A munkaterület nevének egyedinek kell lennie az összes Azure-előfizetés között.
+A sablont bármely szabványos módszer használatával üzembe helyezheti [egy ARM-sablon üzembe helyezéséhez](../../azure-resource-manager/templates/deploy-portal.md) , például a parancssori felület és a PowerShell használatával. Cserélje le az **erőforráscsoport** , a **workspaceName** és a **hely** minta értékeit a környezetének megfelelő értékekkel. A munkaterület nevének egyedinek kell lennie az összes Azure-előfizetés között.
 
 # <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
@@ -281,7 +281,7 @@ A rendszer csak az Log Analytics munkaterületre küldi el az új tevékenysége
 
 ## <a name="retrieve-data-with-a-log-query"></a>Az adatlekérdezés naplózási lekérdezéssel
 
-Az adatok munkaterületről való lekéréséhez használja a Azure Portal a Log Analytics használatával. A Azure Portal keresse meg, majd válassza a **figyelő**elemet.
+Az adatok munkaterületről való lekéréséhez használja a Azure Portal a Log Analytics használatával. A Azure Portal keresse meg, majd válassza a **figyelő** elemet.
 
 ![Azure Portal](media/quick-collect-activity-log/azure-portal-monitor.png)
 
@@ -289,7 +289,7 @@ A **Azure monitor** menüben válassza a **naplók** lehetőséget. A **példák
 
 ![Log Analytics hatókör](media/quick-collect-activity-log/log-analytics-scope.png)
 
-A lekérdezési ablakban írja be a parancsot, `AzureActivity` majd kattintson a **Futtatás**gombra. Ez egy egyszerű lekérdezés, amely visszaadja a *AzureActivity* tábla összes rekordját, amely a tevékenység naplójából elküldett összes rekordot tartalmazza.
+A lekérdezési ablakban írja be a parancsot, `AzureActivity` majd kattintson a **Futtatás** gombra. Ez egy egyszerű lekérdezés, amely visszaadja a *AzureActivity* tábla összes rekordját, amely a tevékenység naplójából elküldett összes rekordot tartalmazza.
 
 ![Egyszerű lekérdezés](media/quick-collect-activity-log/query-01.png)
 
@@ -301,7 +301,7 @@ Bontsa ki az egyik rekordot a részletes tulajdonságainak megtekintéséhez.
 
 ![Összetett lekérdezés](media/quick-collect-activity-log/query-02.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, érdemes lehet ezeket az erőforrásokat helyben hagyni. Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli a riasztási szabályt és a kapcsolódó erőforrásokat. Az erőforráscsoport törlése az Azure CLI vagy a Azure PowerShell használatával
 

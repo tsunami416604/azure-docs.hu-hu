@@ -3,13 +3,13 @@ title: Leküldéses & lekéréses Docker-rendszerkép
 description: Docker-rendszerképek leküldése és lekérése egy Azure-beli privát tároló beállításjegyzékébe és -jegyzékéből a Docker parancssori felületével
 ms.topic: article
 ms.date: 01/23/2019
-ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 6751a04c3c1bfe826334161704c20c1ba2e5a6d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, H1Hack27Feb2017, devx-track-azurecli
+ms.openlocfilehash: 067b5749332c2c41b86d22e7de60083d5f61a442
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74456353"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746634"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Az első rendszerkép leküldése egy privát Docker-tároló beállításjegyzékébe a Docker parancssori felületével
 
@@ -24,7 +24,7 @@ A következő lépésekben letölt egy hivatalos Nginx- [rendszerképet](https:/
 
 ## <a name="log-in-to-a-registry"></a>Bejelentkezés beállításjegyzékbe
 
-A privát tároló beállításjegyzékének több módja is van a [hitelesítéshez](container-registry-authentication.md) . A parancssorban végzett munka esetén ajánlott módszer az Azure CLI-parancs az [ACR login](/cli/azure/acr?view=azure-cli-latest#az-acr-login). Például egy *myregistry*nevű beállításjegyzékbe való bejelentkezéshez:
+A privát tároló beállításjegyzékének több módja is van a [hitelesítéshez](container-registry-authentication.md) . A parancssorban végzett munka esetén ajánlott módszer az Azure CLI-parancs az [ACR login](/cli/azure/acr?view=azure-cli-latest#az-acr-login). Például egy *myregistry* nevű beállításjegyzékbe való bejelentkezéshez:
 
 ```azurecli
 az acr login --name myregistry
@@ -39,7 +39,7 @@ docker login myregistry.azurecr.io
 Mindkét parancs a `Login Succeeded` Befejezés után visszatér.
 
 > [!TIP]
-> Mindig a teljes beállításjegyzékbeli nevet adja meg (az összes kisbetűs) a használatakor `docker login` , és ha képeket címkéz fel a beállításjegyzékbe való leküldéshez. A cikkben szereplő példákban a teljes név *myregistry.azurecr.IO*.
+> Mindig a teljes beállításjegyzékbeli nevet adja meg (az összes kisbetűs) a használatakor `docker login` , és ha képeket címkéz fel a beállításjegyzékbe való leküldéshez. A cikkben szereplő példákban a teljes név *myregistry.azurecr.IO* .
 
 ## <a name="pull-the-official-nginx-image"></a>A hivatalos Nginx-rendszerkép lekérése
 
@@ -117,7 +117,7 @@ Az Azure Container registryből származó rendszerképek eltávolításához ha
 az acr repository delete --name myregistry --image samples/nginx:latest
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az alapokat, készen áll a beállításjegyzék használatának megkezdésére! Például telepítsen lemezképeket a beállításjegyzékből a következőre:
 

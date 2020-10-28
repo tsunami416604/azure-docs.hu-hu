@@ -3,13 +3,13 @@ title: Tároló-példányok naplóinak beolvasása & események
 description: Megtudhatja, hogyan kérhet le Azure Container Instances tároló naplóit és eseményeit a tárolókkal kapcsolatos problémák elhárítása érdekében
 ms.topic: article
 ms.date: 12/30/2019
-ms.custom: mvc
-ms.openlocfilehash: 0991b9cb1f99606910dbdf2c87b111f67da6da7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 20b6e1cfe6bb8f6ac721a401c3d0831d4f447edb
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78249998"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746963"
 ---
 # <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Tárolónaplók és -események lekérése az Azure Container Instancesben
 
@@ -148,7 +148,7 @@ A kimenet tartalmazza a tároló alapvető tulajdonságait, valamint az üzembe 
   ...
 }
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ismerje meg, hogy miként lehet [elhárítani a Azure Container instances gyakori tároló-és üzembe helyezési problémáit](container-instances-troubleshooting.md) .
 
 Megtudhatja, hogyan küldhet napló-és eseményvezérelt információkat a tárolók csoportjai számára a [naplók Azure monitor](container-instances-log-analytics.md).

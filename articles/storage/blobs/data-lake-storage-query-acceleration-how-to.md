@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: normesta
 ms.reviewer: jamsbak
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 72602e1e74074f21c93950bdb779758e784ce171
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: b7f566f85ebdb6b481797823cba78aa968747e9f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659871"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746430"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Az Adatszűrés Azure Data Lake Storage lekérdezési gyorsítás használatával
 
@@ -32,7 +32,7 @@ A lekérdezési gyorsítás lehetővé teszi, hogy az alkalmazások és az elemz
 
   ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-  Nem alkalmazható
+  Nem értelmezhető
 
   ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -236,7 +236,7 @@ Telepítse Data Lake ügyféloldali kódtárat a JavaScripthez egy terminál abl
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Nem alkalmazható
+Nem értelmezhető
 
 #### <a name="net"></a>[.NET](#tab/dotnet)
 

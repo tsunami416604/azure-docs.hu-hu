@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.custom: cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: bea422514b109f446ee30633b0074730f9b89af0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 64a9143e7a425b35e37f23b233c91b8e7bb70169
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91332566"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92756065"
 ---
 Ismerkedés az Azure Content Moderator Pythonhoz készült ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítse a PiPy csomagot, és próbálja ki az alapszintű feladatok példáját. 
 
@@ -24,11 +24,11 @@ Content Moderator egy AI-szolgáltatás, amely lehetővé teszi a potenciálisan
 
 A Pythonhoz készült Content Moderator ügyféloldali kódtára a következőre használható:
 
-* [Mérsékelt szöveg](#moderate-text)
-* [Egyéni kifejezések listájának használata](#use-a-custom-terms-list)
-* [Közepes méretű képek](#moderate-images)
-* [Egyéni rendszerkép-lista használata](#use-a-custom-image-list)
-* [Felülvizsgálat létrehozása](#create-a-review)
+* Mérsékelt szöveg
+* Egyéni kifejezések listájának használata
+* Közepes méretű képek
+* Egyéni rendszerkép-lista használata
+* Felülvizsgálat létrehozása
 
 [Dokumentáció](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator)  |  [Csomag (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/)  |  [Példák](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
@@ -36,35 +36,38 @@ A Pythonhoz készült Content Moderator ügyféloldali kódtára a következőre
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
 * [Python 3.x](https://www.python.org/)
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator"  title=" hozzon létre egy Content moderator erőforrást, "  target="_blank"> és hozzon létre egy Content moderator-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Várja meg, amíg üzembe helyezi, majd kattintson az **Ugrás erőforrásra** gombra.
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Content Moderatorhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 
-## <a name="create-a-content-moderator-resource"></a>Content Moderator erőforrás létrehozása
 
-Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást Content Moderator a helyi gépen található [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) használatával. További lehetőségek:
+## <a name="setting-up"></a>Beállítás
 
-* Az erőforrás megtekintése a [Azure Portal](https://portal.azure.com/)
+### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
 
-Miután megszerezte a kulcsot az erőforrásból, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és a végpont URL-címéhez `CONTENT_MODERATOR_SUBSCRIPTION_KEY` , illetve `CONTENT_MODERATOR_ENDPOINT`
- 
-## <a name="create-a-new-python-script"></a>Új Python-szkript létrehozása
+A Python telepítése után a következő paranccsal telepítheti a Content Moderator ügyféloldali függvénytárat:
+
+```console
+pip install --upgrade azure-cognitiveservices-vision-contentmoderator
+```
+
+### <a name="create-a-new-python-application"></a>Új Python-alkalmazás létrehozása
 
 Hozzon létre egy új Python-szkriptet, és nyissa meg az előnyben részesített szerkesztőben vagy IDE-ben. Ezután adja hozzá a következő `import` utasításokat a fájl elejéhez.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imports)]
 
-Ezután hozzon létre változókat az erőforrás végpontjának helyéhez és a kulcshoz környezeti változókként. 
+> [!TIP]
+> Egyszerre szeretné megtekinteni a teljes rövid útmutató kódját? Megtalálhatja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py), amely a jelen rövid útmutatóban szereplő példákat tartalmazza.
+
+Ezután hozzon létre változókat az erőforrás végpontjának helyéhez és kulcsához.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_vars)]
 
-> [!NOTE]
-> Ha az alkalmazás elindítása után hozta létre a környezeti változókat, akkor a változók eléréséhez be kell állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a shellt.
-
-## <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
-
-A Content Moderator ügyféloldali függvénytárát a következő paranccsal telepítheti:
-
-```console
-pip install --upgrade azure-cognitiveservices-vision-contentmoderator
-```
+> [!IMPORTANT]
+> Nyissa meg az Azure Portalt. Ha az **Előfeltételek** szakaszban létrehozott Content moderator erőforrás sikeresen telepítve van, kattintson az **Ugrás erőforrásra** gombra a **következő lépések** alatt. A kulcsot és a végpontot az erőforrás- **kezelés** területen, az erőforrás **kulcs és végpont** lapján találja. 
+>
+> Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. Például az [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
 
 ## <a name="object-model"></a>Objektummodell
 
@@ -89,9 +92,6 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 * [Felülvizsgálat létrehozása](#create-a-review)
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
-
-> [!NOTE]
-> Ez a rövid útmutató feltételezi, hogy [létrehozott egy környezeti változót](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) a Content moderator kulcshoz és a végponthoz.
 
 Ügyfelet hoz létre a végponttal és a kulccsal. Hozzon létre egy [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) objektumot a kulccsal, és használja a végpontján egy [ContentModeratorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python) objektum létrehozásához.
 
@@ -331,7 +331,7 @@ Ha ebben a forgatókönyvben visszahívási végpontot használt, akkor a követ
  'type': 'Image'}
 ```
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Futtassa az alkalmazást a gyors üzembe helyezési `python` fájlban található paranccsal.
 
@@ -339,14 +339,14 @@ Futtassa az alkalmazást a gyors üzembe helyezési `python` fájlban találhat�
 python quickstart-file.py
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
 * [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Content Moderator Python-függvénytárat moderálási feladatokra. Következő lépésként tekintse meg a képek vagy más média moderálását egy elméleti útmutató elolvasásával.
 

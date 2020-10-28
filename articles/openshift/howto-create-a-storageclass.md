@@ -1,5 +1,5 @@
 ---
-title: Azure Files StorageClass létrehozása az Azure Red Hat OpenShift 4 rendszeren
+title: Azure Files StorageClass létrehozása az Azure Red Hat OpenShift 4-ben
 description: Megtudhatja, hogyan hozhat létre Azure Files StorageClass az Azure Red Hat OpenShift
 ms.service: container-service
 ms.topic: article
@@ -8,14 +8,14 @@ author: grantomation
 ms.author: b-grodel
 keywords: ARO, openshift, az ARO, Red Hat, CLI, Azure file
 ms.custom: mvc
-ms.openlocfilehash: c0d809324baa095b2ce8262170289e0dfec8bfd1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: a7415a481b133c2f528ba4636c0297ce5cfa23a7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428876"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747886"
 ---
-# <a name="create-an-azure-files-storageclass-on-azure-red-hat-openshift-4"></a>Azure Files StorageClass létrehozása az Azure Red Hat OpenShift 4 rendszeren
+# <a name="create-an-azure-files-storageclass-on-azure-red-hat-openshift-4"></a>Azure Files StorageClass létrehozása az Azure Red Hat OpenShift 4-ben
 
 Ebben a cikkben egy StorageClass hoz létre az Azure Red Hat OpenShift 4 számára, amely dinamikusan kiépíti a ReadWriteMany (RWX) tárolót a Azure Files használatával. A következő témákkal fog megismerkedni:
 
@@ -32,7 +32,7 @@ Helyezzen üzembe egy Azure Red Hat OpenShift 4-fürtöt az előfizetésében: [
 
 ### <a name="set-up-azure-storage-account"></a>Azure Storage-fiók beállítása
 
-Ez a lépés létrehoz egy erőforráscsoportot az Azure Red Hat OpenShift-fürt erőforráscsoport kívül. Ez az erőforráscsoport tartalmazza azokat a Azure Files-megosztásokat, amelyeket az Azure Red Hat OpenShift dinamikus létesítése hozott létre.
+Ez a lépés létrehoz egy erőforráscsoportot az Azure Red Hat OpenShift (ARO) fürtjén kívül. Ez az erőforráscsoport tartalmazza azokat a Azure Files-megosztásokat, amelyeket az Azure Red Hat OpenShift dinamikus létesítése hozott létre.
 
 ```bash
 AZURE_FILES_RESOURCE_GROUP=aro_azure_files
@@ -133,7 +133,7 @@ azure file storage
 ```
 A test.txt fájl is látható lesz a Azure Portal Storage Explorer keresztül. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben a dinamikus állandó tárterületet Microsoft Azure fájlok és az Azure Red Hat OpenShift 4 használatával hozta létre. Megtanulta végrehajtani az alábbi műveleteket:
 

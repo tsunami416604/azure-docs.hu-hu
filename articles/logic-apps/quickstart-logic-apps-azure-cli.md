@@ -5,21 +5,21 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: e492a5f0afdfc2087e5719df65221d08db0a2e77
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e6e53755d9231008d0f48c755ff9da297d7305d7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87499551"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747167"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Gyors útmutató: logikai alkalmazások létrehozása és kezelése az Azure CLI használatával
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre és kezelhet Logic apps-t az [Azure CLI Logic apps bővítmény](/cli/azure/ext/logic/logic?view=azure-cli-latest) ( `az logic` ) használatával. A parancssorból létrehozhat egy logikai alkalmazást a logikai alkalmazások munkafolyamat-definíciójának JSON-fájljának használatával. Ezután kezelheti a logikai alkalmazást olyan műveletek futtatásával, mint `list` `show` a, ( `get` ), `update` és `delete` a parancssorból.
 
 > [!WARNING]
-> Az Azure CLI Logic Apps bővítménye jelenleg *kísérleti jellegű* , és *nem vonatkozik az ügyfélszolgálatra*. Ezt a CLI-bővítményt körültekintően használhatja, különösen akkor, ha a bővítményt éles környezetben használja.
+> Az Azure CLI Logic Apps bővítménye jelenleg *kísérleti jellegű* , és *nem vonatkozik az ügyfélszolgálatra* . Ezt a CLI-bővítményt körültekintően használhatja, különösen akkor, ha a bővítményt éles környezetben használja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -61,7 +61,7 @@ A kimenet a `provisioningState` következőképpen jelenik meg, mint az `Succeed
 
 ## <a name="workflow-definition"></a>Munkafolyamat-definíció
 
-[Új logikai alkalmazás létrehozása](#create-logic-apps-from-cli) vagy [meglévő logikai alkalmazás](#update-logic-apps-from-cli) Azure CLI használatával történő frissítése előtt a logikai alkalmazáshoz munkafolyamat-definíció szükséges. A Azure Portal a logikai alkalmazás mögöttes munkafolyamat-definícióját JSON formátumban tekintheti meg, ha a **tervező** nézetből a **kód nézetre**vált.
+[Új logikai alkalmazás létrehozása](#create-logic-apps-from-cli) vagy [meglévő logikai alkalmazás](#update-logic-apps-from-cli) Azure CLI használatával történő frissítése előtt a logikai alkalmazáshoz munkafolyamat-definíció szükséges. A Azure Portal a logikai alkalmazás mögöttes munkafolyamat-definícióját JSON formátumban tekintheti meg, ha a **tervező** nézetből a **kód nézetre** vált.
 
 A logikai alkalmazás létrehozásához vagy frissítéséhez szükséges parancsok futtatásakor a munkafolyamat-definíció kötelező paraméterként () lesz feltöltve `--definition` . Létre kell hoznia a munkafolyamat-definíciót JSON-fájlként, amely követi a [munkafolyamat-definíció nyelvi sémáját](./logic-apps-workflow-definition-language.md).
 
@@ -90,7 +90,7 @@ A parancsnak tartalmaznia kell a következő [szükséges paramétereket](/cli/a
 | --------- | ----- | ----------- |
 | Munkafolyamat-definíció | `--definition` | Egy JSON-fájl a logikai alkalmazás [munkafolyamatának definíciójában](#workflow-definition). |
 | Hely | `--location -l` | Az az Azure-régió, amelyben a logikai alkalmazás található. |
-| Név | `--name -n` | A logikai alkalmazás neve. A név csak betűket, számokat, kötőjeleket () `-` , aláhúzásokat ( `_` ), zárójeleket ( `()` ) és pontokat ( `.` ) tartalmazhat. A névnek egyedinek kell lennie régiók között is. |
+| Name (Név) | `--name -n` | A logikai alkalmazás neve. A név csak betűket, számokat, kötőjeleket () `-` , aláhúzásokat ( `_` ), zárójeleket ( `()` ) és pontokat ( `.` ) tartalmazhat. A névnek egyedinek kell lennie régiók között is. |
 | Erőforráscsoport neve | `--resource-group -g` | Az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) , amelyben létre szeretné hozni a logikai alkalmazást. [Hozzon létre egy erőforráscsoportot](#example---create-resource-group) , mielőtt elkezdené, ha még nem rendelkezik ilyennel a logikai alkalmazáshoz. |
 
 További [választható paramétereket](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create-optional-parameters) is beállíthat a logikai alkalmazás hozzáférés-vezérlésének, végpontjának, integrációs fiókjának, integrációs szolgáltatási környezetének, állapotának és erőforrás-címkének konfigurálásához.
@@ -148,7 +148,7 @@ A parancsnak tartalmaznia kell a következő [szükséges paramétereket](/cli/a
 
 | Paraméter | Érték | Leírás |
 | --------- | ----- | ----------- |
-| Név | `--name -n` | A logikai alkalmazás neve. |
+| Name (Név) | `--name -n` | A logikai alkalmazás neve. |
 | Erőforráscsoport neve | `-resource-group -g` | Az az erőforráscsoport, amelyben a logikai alkalmazás található. |
 
 A megerősítési kérések kihagyásához [választható paramétert](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-delete-optional-parameters) is hozzáadhat `--yes -y` .
@@ -198,7 +198,7 @@ A parancsnak tartalmaznia kell a következő [szükséges paramétereket](/cli/a
 
 | Paraméter | Érték | Leírás |
 | --------- | ----- | ----------- |
-| Név | `--name -n` | A logikai alkalmazás neve. |
+| Name (Név) | `--name -n` | A logikai alkalmazás neve. |
 | Erőforráscsoport neve | `--resource-group -g` | Azon erőforráscsoport neve, amelyben a logikai alkalmazás található. |
 
 ### <a name="example---get-logic-app"></a>Példa – logikai alkalmazás beolvasása
@@ -272,7 +272,7 @@ A parancsokkal a következő opcionális globális Azure CLI-paramétereket hasz
 | Súgó üzenet | `--help -h` | Súgó megjelenítése párbeszédpanel. |
 | Lekérdezés | `--query` | JMESPath lekérdezési karakterlánc beállítása a JSON-kimenethez. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információkért tekintse meg az [Azure CLI dokumentációját](/cli/azure/?view=azure-cli-latest).
 

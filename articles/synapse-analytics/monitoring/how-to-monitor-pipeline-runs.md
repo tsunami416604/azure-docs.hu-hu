@@ -6,19 +6,19 @@ author: matt1883
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: monitoring
-ms.date: 04/15/2020
+ms.date: 10/27/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 7676f4aeeb9485ce5e3a702027884bc54d79a863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61d860def7209908e65e9456a4bcde87eed522fc
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387319"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746367"
 ---
 # <a name="use-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>A szinapszis Studio használata a munkaterület-feldolgozási folyamatok figyeléséhez
 
-Az Azure szinapszis Analytics segítségével összetett folyamatokat hozhat létre, amelyek automatizálják és összehangolják az adatáthelyezést, az adatátalakítást és a számítási tevékenységeket a megoldáson belül. Ezeket a folyamatokat a szinapszis Studio (előzetes verzió) használatával hozhatja létre és figyelheti.
+Az Azure szinapszis Analytics segítségével összetett folyamatokat hozhat létre, amelyek automatizálják és integrálják az adatáthelyezést, az adatátalakítást és a számítási tevékenységeket a megoldáson belül. Ezeket a folyamatokat a szinapszis Studio (előzetes verzió) használatával hozhatja létre és figyelheti.
 
 Ez a cikk ismerteti, hogyan figyelheti meg a folyamat futásait, így nyomon követheti a folyamatok legújabb állapotát, problémáit és előrehaladását.
 
@@ -50,6 +50,6 @@ A nézetet szűrheti például úgy, hogy csak a "Holiday" nevű folyamathoz tar
 
 A folyamat futtatásával kapcsolatos részletek megtekintéséhez válassza ki a folyamat futtatását. Ezután tekintse meg a folyamat futtatásához társított tevékenységek futtatását. Ha a folyamat továbbra is fut, nyomon követheti a folyamatot. 
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alkalmazások figyelésével kapcsolatos további tudnivalókért tekintse meg a [Apache Spark alkalmazások figyelése](how-to-monitor-spark-applications.md) című cikket. 

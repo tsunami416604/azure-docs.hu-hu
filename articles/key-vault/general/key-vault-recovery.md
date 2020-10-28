@@ -8,12 +8,12 @@ author: ShaneBala-keyvault
 ms.author: sudbalas
 manager: ravijan
 ms.date: 09/30/2020
-ms.openlocfilehash: a0fe5c2af42e8d8095963e29149e1338cc064c90
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: fbeb6f5f223642c09183c149188c6717c1f33a8e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495182"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748494"
 ---
 # <a name="how-to-enable-soft-delete-and-purge-protection"></a>A Soft delete és a Purge Protection engedélyezése
 
@@ -23,11 +23,11 @@ Ez a cikk a Azure Key Vault két helyreállítási funkcióját ismerteti, a Sof
 
 A Soft delete és a Purge Protection két különböző Key Vault helyreállítási funkció.
 > [!IMPORTANT]
-> Az összes kulcstartón engedélyezni kell a Soft delete Protection szolgáltatást. A Soft-delete védelem letiltásának lehetősége december 2020-én megszűnik. A részletes információkat [ **itt**találja.](soft-delete-change.md)
+> Az összes kulcstartón engedélyezni kell a Soft delete Protection szolgáltatást. A Soft-delete védelem letiltásának lehetősége december 2020-én megszűnik. A részletes információkat [ **itt** találja.](soft-delete-change.md)
 
 A **Soft delete** a Key vaultban tárolt kulcstartó és kulcsok, titkos kódok és tanúsítványok véletlen törlésének megelőzésére szolgál. Gondolja át, hogy a Soft-DELETE, például egy Lomtár. Ha töröl egy kulcstartót vagy egy Key Vault-objektumot, az a felhasználó által konfigurálható megőrzési időtartam vagy az alapértelmezett 90 nap után helyreállítható marad. A Soft Deleted állapotú kulcstartók **is törölhetők, ami azt** jelenti, hogy véglegesen törlődnek. Ez lehetővé teszi, hogy újra létrehozza a kulcstartókat és a Key Vault-objektumokat ugyanazzal a névvel. A kulcstartók és objektumok helyreállításához és törléséhez emelt szintű hozzáférési házirendre van szükség. **Ha a helyreállított törlés engedélyezve van, nem lehet letiltani.**
 
-Fontos megjegyezni, hogy a **Key Vault-nevek globálisan egyediek**, ezért nem hozhat létre olyan kulcstartót, amelynek a neve nem azonos a helyreállítható törölt állapotú kulcstartóval. Hasonlóképpen a kulcsok, titkos kódok és tanúsítványok nevei is egyediek a kulcstartón belül. Nem hozhat létre olyan titkos kulcsot, kulcsot vagy tanúsítványt, amelynek a neve megegyezik egy másikkal a helyreállítható törölt állapotban.
+Fontos megjegyezni, hogy a **Key Vault-nevek globálisan egyediek** , ezért nem hozhat létre olyan kulcstartót, amelynek a neve nem azonos a helyreállítható törölt állapotú kulcstartóval. Hasonlóképpen a kulcsok, titkos kódok és tanúsítványok nevei is egyediek a kulcstartón belül. Nem hozhat létre olyan titkos kulcsot, kulcsot vagy tanúsítványt, amelynek a neve megegyezik egy másikkal a helyreállítható törölt állapotban.
 
 A **védelem kiürítése** arra szolgál, hogy megakadályozza a kulcstároló, a kulcsok, a titkos kódok és a tanúsítványok rosszindulatú bennfentesek általi törlését. Gondoljon erre a Lomtárra egy időalapú zárolással. Az elemeket bármikor helyreállíthatja a konfigurálható megőrzési időtartam alatt. **A Key vaultot nem lehet véglegesen törölni vagy kiüríteni, amíg a megőrzési idő el nem telik.** Ha a megőrzési idő eltelt, a Key Vault vagy a Key Vault objektum automatikusan törlődik.
 
@@ -241,14 +241,6 @@ A **védelem kiürítése** arra szolgál, hogy megakadályozza a kulcstároló,
 
     ```powershell
     Get-AzKeyVault -VaultName "ContosoVault"
-    ```
-
-* Helyreállítható Törlés engedélyezése a Key-vaultban
-
-    ```powershell
-    ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"
-
-    Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
     ```
 
 * Key Vault törlése
