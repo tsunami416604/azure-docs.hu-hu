@@ -10,16 +10,21 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: faf66b9a261fd4e8f63779b3d254de4c44d1d731
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8406ee5647d02cc917a0fdb1daf2355611bb781d
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92513902"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792208"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó üzembe helyezéséhez szükséges a NetSuite konfigurálása
 
 Ennek az oktatóanyagnak a célja, hogy megmutassa a NetSuite OneWorld és az Azure AD-ben elvégzendő lépéseket, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az Azure AD-ből a NetSuite-ba.
+
+> [!NOTE]
+> Ez az integráció jelenleg egyszerű hitelesítés (Felhasználónév és jelszó) használatával történik. A NetSuite egy többtényezős hitelesítési követelményt hozott létre, amely megakadályozza, hogy az ügyfelek ezt az integrációt használják, hacsak nem mentesülnek a követelmény alól. Dolgozunk a NetSuite-nal, hogy az integrációt egy újabb hitelesítési módszerre frissítse, hogy a felhasználók ne használják fel újra a kivételt. Ezt a dokumentumot egy egyszer már elérhető ETA-val frissítjük.
+
+Javasolt művelet: Várjon, amíg a rendszer frissítést szabadít fel az integráció hitelesítési viselkedésére, vagy lépjen kapcsolatba a NetSuite támogatási szolgálatával, és érdeklődjön a multi-Factor Authentication követelmény alóli kivételről.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,7 +33,7 @@ Az ebben az oktatóanyagban felvázolt forgatókönyv feltételezi, hogy már re
 *   Egy Azure Active Directory-bérlő.
 *   Egy NetSuite OneWorld-előfizetés. Vegye figyelembe, hogy az automatikus felhasználó-kiépítés jelenleg csak a NetSuite OneWorld támogatott.
 *   Felhasználói fiók a NetSuite-ban rendszergazdai engedélyekkel.
-*   Az Azure AD-integrációhoz 2FA kivétel szükséges. Ehhez a kivételhez forduljon a NetSuite támogatási csapatához.
+*   Az Azure AD-integrációhoz 2FA kivétel szükséges. Ha ezt a kivételt szeretné kérni, forduljon a NetSuite támogatási csapatához.
 
 ## <a name="assigning-users-to-netsuite-oneworld"></a>Felhasználók kiosztása a NetSuite OneWorld
 
@@ -85,7 +90,7 @@ Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active D
 
 1. Kattintson a **Mentés gombra.**
 
-Elindítja a felhasználók és csoportok szakaszban a Netsuitehoz rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. Vegye figyelembe, hogy a kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg a szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat, amelyek leírják a kiépítési szolgáltatás által a NetSuite-alkalmazáson végrehajtott összes műveletet.
+Elindítja a felhasználók és csoportok szakaszban a NetSuitehoz rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. Vegye figyelembe, hogy a kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg a szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat, amelyek leírják a kiépítési szolgáltatás által a NetSuite-alkalmazáson végrehajtott összes műveletet.
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 

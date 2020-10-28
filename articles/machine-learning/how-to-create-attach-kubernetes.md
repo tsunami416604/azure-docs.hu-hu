@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: cade5a4329cdfc11c1b256ba01e9764f60a476a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1126798bdf07f54811c83b932af9928f3e3115dc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667860"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792004"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service-fürt létrehozása és csatolása
 
@@ -54,12 +54,12 @@ A Azure Machine Learning betanított gépi tanulási modelleket telepíthet az A
    
  - Ha a modelleket **GPU** -csomópontokra vagy **FPGA** -csomópontokra (vagy bármely konkrét SKU-ra) szeretné telepíteni, akkor létre kell hoznia egy FÜRTÖt az adott SKU-val. Nem támogatott másodlagos csomópont-készlet létrehozása meglévő fürtben, valamint modellek üzembe helyezése a másodlagos csomópont-készletben.
  
-- Fürt létrehozásakor vagy csatolásakor kiválaszthatja, hogy a fürtöt __fejlesztési-tesztelési__ vagy __éles__környezetben kívánja-e létrehozni. Ha nem éles környezetben szeretné létrehozni a __fejlesztéshez__, az __ellenőrzéshez__és a __teszteléshez__ egy AK-fürtöt, állítsa be a __fürt célját__ a __dev-test__értékre. Ha nem határozza meg a fürt célját, a rendszer létrehoz egy __éles__ fürtöt. 
+- Fürt létrehozásakor vagy csatolásakor kiválaszthatja, hogy a fürtöt __fejlesztési-tesztelési__ vagy __éles__ környezetben kívánja-e létrehozni. Ha nem éles környezetben szeretné létrehozni a __fejlesztéshez__ , az __ellenőrzéshez__ és a __teszteléshez__ egy AK-fürtöt, állítsa be a __fürt célját__ a __dev-test__ értékre. Ha nem határozza meg a fürt célját, a rendszer létrehoz egy __éles__ fürtöt. 
 
     > [!IMPORTANT]
     > A __fejlesztési és tesztelési__ fürtök nem alkalmasak a termelési szint forgalmára, és növelhetik a következtetési időt. A fejlesztési és tesztelési fürtök szintén nem garantálják a hibatűrést.
 
-- Fürt létrehozásakor vagy csatolásakor, ha a fürtöt __éles__környezetben fogja használni, legalább 12 __virtuális processzort__kell tartalmaznia. A virtuális processzorok száma a fürtben lévő __csomópontok számának__ és a kiválasztott virtuálisgép-méret által biztosított __magok__ számának szorzatával számítható ki. Ha például "Standard_D3_v2" virtuálisgép-méretet használ, amely 4 virtuális maggal rendelkezik, akkor a csomópontok számának 3 vagy annál nagyobb értéket kell választania.
+- Fürt létrehozásakor vagy csatolásakor, ha a fürtöt __éles__ környezetben fogja használni, legalább 12 __virtuális processzort__ kell tartalmaznia. A virtuális processzorok száma a fürtben lévő __csomópontok számának__ és a kiválasztott virtuálisgép-méret által biztosított __magok__ számának szorzatával számítható ki. Ha például "Standard_D3_v2" virtuálisgép-méretet használ, amely 4 virtuális maggal rendelkezik, akkor a csomópontok számának 3 vagy annál nagyobb értéket kell választania.
 
     A __fejlesztési-tesztelési__ fürtök esetében legalább 2 virtuális processzort kell újrakövetelni.
 
@@ -85,7 +85,7 @@ Meglévő AK-fürt **csatolásakor** az összes jelenleg támogatott AK-verziót
 > [!NOTE]
 > Lehetnek olyan Edge-esetek, amikor egy régebbi fürttel rendelkezik, amely már nem támogatott. Ebben az esetben a csatolási művelet hibát ad vissza, és felsorolja a jelenleg támogatott verziókat.
 >
-> **Előnézeti** verziókat is csatolhat. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül is elérhetők, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. Az előzetes verziójú verziók használatának támogatása korlátozott lehet. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> **Előnézeti** verziókat is csatolhat. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül is elérhetők, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. Az előzetes verziójú verziók használatának támogatása korlátozott lehet. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ### <a name="available-and-default-versions"></a>Elérhető és alapértelmezett verziók
 
@@ -124,7 +124,7 @@ Result
 1.16.13
 ```
 
-Ha **programozottan szeretné megtekinteni az elérhető verziókat**, használja a [Container Service ügyfél-lista](https://docs.microsoft.com/rest/api/container-service/container%20service%20client/listorchestrators) rendszerszervezőket REST API. Az elérhető verziók megkereséséhez tekintse meg a következő bejegyzéseket: `orchestratorType` `Kubernetes` . A társított `orchestrationVersion` bejegyzések tartalmazzák a munkaterülethez csatlakoztatható elérhető **attached** verziókat.
+Ha **programozottan szeretné megtekinteni az elérhető verziókat** , használja a [Container Service ügyfél-lista](https://docs.microsoft.com/rest/api/container-service/container%20service%20client/listorchestrators) rendszerszervezőket REST API. Az elérhető verziók megkereséséhez tekintse meg a következő bejegyzéseket: `orchestratorType` `Kubernetes` . A társított `orchestrationVersion` bejegyzések tartalmazzák a munkaterülethez csatlakoztatható elérhető **attached** verziókat.
 
 A fürt Azure Machine Learningon keresztüli **létrehozásakor** használt alapértelmezett verzió megkereséséhez keresse meg azt a bejegyzést, ahol `orchestratorType` az a `Kubernetes` és `default` az `true` . A társított `orchestratorVersion` érték az alapértelmezett verzió. A következő JSON-kódrészlet egy példa bejegyzést mutat be:
 
@@ -147,7 +147,7 @@ A fürt Azure Machine Learningon keresztüli **létrehozásakor** használt alap
 
 ## <a name="create-a-new-aks-cluster"></a>Új AK-fürt létrehozása
 
-**Becsült idő**: körülbelül 10 perc.
+**Becsült idő** : körülbelül 10 perc.
 
 Egy AK-fürt létrehozása vagy csatolása egy egyszeri folyamat a munkaterülethez. Ezt a fürtöt több központi telepítéshez is felhasználhatja. Ha törli a fürtöt vagy az azt tartalmazó erőforráscsoportot, létre kell hoznia egy új fürtöt, amikor legközelebb telepítenie kell. A munkaterülethez több AK-alapú fürtök is tartozhatnak.
 
@@ -284,7 +284,7 @@ Az AK-fürtök portálon való csatlakoztatásával kapcsolatos információkér
 A fürt munkaterületről való leválasztásához használja az alábbi módszerek egyikét:
 
 > [!WARNING]
-> A gépi tanuláshoz készült Azure Machine Learning Studio, SDK vagy az Azure CLI bővítmény használata az AK-fürtök leválasztásához **nem törli az AK**-fürtöt. A fürt törléséhez lásd: [Az Azure CLI használata az AK-val](/azure/aks/kubernetes-walkthrough#delete-the-cluster).
+> A gépi tanuláshoz készült Azure Machine Learning Studio, SDK vagy az Azure CLI bővítmény használata az AK-fürtök leválasztásához **nem törli az AK** -fürtöt. A fürt törléséhez lásd: [Az Azure CLI használata az AK-val](/azure/aks/kubernetes-walkthrough#delete-the-cluster).
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -302,7 +302,7 @@ az ml computetarget detach -n myaks -g myresourcegroup -w myworkspace
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Azure Machine Learning Studióban válassza ki a __számítás__, a __következtetési fürtök__és az eltávolítani kívánt fürtöt. A fürt leválasztásához használja a __leválasztási__ hivatkozást.
+Azure Machine Learning Studióban válassza ki a __számítás__ , a __következtetési fürtök__ és az eltávolítani kívánt fürtöt. A fürt leválasztásához használja a __leválasztási__ hivatkozást.
 
 ## <a name="next-steps"></a>Következő lépések
 

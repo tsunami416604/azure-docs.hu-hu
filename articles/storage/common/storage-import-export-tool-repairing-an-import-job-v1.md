@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d67046f799e60db3101dfeb27dee10f92f9aad79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0454e7bcc81c71cdffcddcd859bb6d335cc8aef2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052426"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791817"
 ---
 # <a name="repairing-an-import-job"></a>Importálási feladat javítása
 Előfordulhat, hogy a Microsoft Azure Import/Export szolgáltatás néhány fájlt vagy egy fájl részeit nem tudja átmásolni a Windows Azure Blob szolgáltatásba. A hibák néhány lehetséges okát jelenthetik például:  
@@ -28,19 +28,19 @@ A Microsoft Azure Import/Export eszközt futtathatja az importálási feladatok 
   
 ## <a name="repairimport-parameters"></a>RepairImport paraméterek
 
-A következő paraméterek megadhatók a **RepairImport**: 
+A következő paraméterek megadhatók a **RepairImport** : 
   
 |||  
 |-|-|  
-|**/r:**<RepairFile\>|**Szükséges.** A javítási fájl elérési útja, amely nyomon követi a javítás állapotát, és lehetővé teszi egy megszakított javítás folytatását. Minden meghajtónak rendelkeznie kell egy javítási fájllal. Amikor elindít egy javítást egy adott meghajtón, a helyreállítási fájl elérési útját adja meg, amely még nem létezik. Egy megszakított javítás folytatásához át kell adni egy meglévő javítási fájl nevét. Mindig a célként megadott meghajtóhoz tartozó javítási fájlt határozza meg.|  
-|**/logdir:**<LogDirectory\>|**Választható.** A naplózási könyvtár. A részletes naplófájlokat a rendszer erre a könyvtárba írja. Ha nincs megadva naplózási könyvtár, a rendszer az aktuális könyvtárat fogja használni a napló könyvtáraként.|  
-|**/d:**<TargetDirectories\>|**Szükséges.** Egy vagy több pontosvesszővel tagolt könyvtár, amely tartalmazza az importált eredeti fájlokat. Az importálási meghajtó is felhasználható, de nem kötelező, ha az eredeti fájlok alternatív helyei elérhetők.|  
-|**/BK:**<BitLockerKey\>|**Választható.** Ha azt szeretné, hogy az eszköz feloldja a titkosított meghajtót, ahol az eredeti fájlok elérhetők, akkor a BitLocker-kulcsot is meg kell adni.|  
-|**/SN:**<StorageAccountName\>|**Szükséges.** Az importálási feladatokhoz tartozó Storage-fiók neve.|  
-|**/SK:**<StorageAccountKey\>|**Kötelező** , ha és csak akkor, ha nincs megadva tároló sas. Az importálási feladatokhoz tartozó Storage-fiókhoz tartozó fiók kulcsa.|  
-|**/csas:**<ContainerSas\>|**Kötelező** , ha nincs megadva a Storage-fiók kulcsa. Az importálási feladatokhoz társított Blobok elérésére szolgáló tároló SAS.|  
-|**/CopyLogFile:**<DriveCopyLogFile\>|**Szükséges.** A meghajtó másolási naplófájljának elérési útja (vagy a részletes napló vagy a hibanapló). A fájlt a Windows Azure import/export szolgáltatás hozza létre, és a feladatokhoz társított blob Storage-ból tölthető le. A másolási naplófájl a kijavítani kívánt hibás Blobokkal vagy fájlokkal kapcsolatos információkat tartalmaz.|  
-|**/PathMapFile:**<DrivePathMapFile\>|**Választható.** A kétértelműség feloldásához használt szövegfájl elérési útja, ha több, azonos nevű fájllal rendelkezik, amely ugyanabban a feladatokban lett importálva. Az eszköz első futtatásakor a fájl az összes kétértelmű névvel feltölthető. Az eszköz későbbi futtatása ezt a fájlt használja a kétértelműség feloldásához.|  
+|**/r:** <RepairFile\>|**Szükséges.** A javítási fájl elérési útja, amely nyomon követi a javítás állapotát, és lehetővé teszi egy megszakított javítás folytatását. Minden meghajtónak rendelkeznie kell egy javítási fájllal. Amikor elindít egy javítást egy adott meghajtón, a helyreállítási fájl elérési útját adja meg, amely még nem létezik. Egy megszakított javítás folytatásához át kell adni egy meglévő javítási fájl nevét. Mindig a célként megadott meghajtóhoz tartozó javítási fájlt határozza meg.|  
+|**/logdir:** <LogDirectory\>|**Választható.** A naplózási könyvtár. A részletes naplófájlokat a rendszer erre a könyvtárba írja. Ha nincs megadva naplózási könyvtár, a rendszer az aktuális könyvtárat fogja használni a napló könyvtáraként.|  
+|**/d:** <TargetDirectories\>|**Szükséges.** Egy vagy több pontosvesszővel tagolt könyvtár, amely tartalmazza az importált eredeti fájlokat. Az importálási meghajtó is felhasználható, de nem kötelező, ha az eredeti fájlok alternatív helyei elérhetők.|  
+|**/BK:** <BitLockerKey\>|**Választható.** Ha azt szeretné, hogy az eszköz feloldja a titkosított meghajtót, ahol az eredeti fájlok elérhetők, akkor a BitLocker-kulcsot is meg kell adni.|  
+|**/SN:** <StorageAccountName\>|**Szükséges.** Az importálási feladatokhoz tartozó Storage-fiók neve.|  
+|**/SK:** <StorageAccountKey\>|**Kötelező** , ha és csak akkor, ha nincs megadva tároló sas. Az importálási feladatokhoz tartozó Storage-fiókhoz tartozó fiók kulcsa.|  
+|**/csas:** <ContainerSas\>|**Kötelező** , ha nincs megadva a Storage-fiók kulcsa. Az importálási feladatokhoz társított Blobok elérésére szolgáló tároló SAS.|  
+|**/CopyLogFile:** <DriveCopyLogFile\>|**Szükséges.** A meghajtó másolási naplófájljának elérési útja (vagy a részletes napló vagy a hibanapló). A fájlt a Windows Azure import/export szolgáltatás hozza létre, és a feladatokhoz társított blob Storage-ból tölthető le. A másolási naplófájl a kijavítani kívánt hibás Blobokkal vagy fájlokkal kapcsolatos információkat tartalmaz.|  
+|**/PathMapFile:** <DrivePathMapFile\>|**Választható.** A kétértelműség feloldásához használt szövegfájl elérési útja, ha több, azonos nevű fájllal rendelkezik, amely ugyanabban a feladatokban lett importálva. Az eszköz első futtatásakor a fájl az összes kétértelmű névvel feltölthető. Az eszköz későbbi futtatása ezt a fájlt használja a kétértelműség feloldásához.|  
   
 ## <a name="using-the-repairimport-command"></a>A RepairImport parancs használata  
 Ha a hálózaton keresztüli adatátvitel útján szeretné javítani az importálási adatátvitelt, meg kell adnia azokat a címtárakat, amelyek tartalmazzák az importált eredeti fájlokat a `/d` paraméter használatával. Adja meg a Storage-fiókból letöltött másolási naplófájlt is. A részleges hibákkal rendelkező importálási feladatok kijavításához egy tipikus parancssor a következőképpen néz ki:  
@@ -100,6 +100,6 @@ Miután elvégezte a szükséges fájlok elérhetővé tételét az eszköz szá
 ## <a name="next-steps"></a>Következő lépések
  
 * [Az Azure import/export eszköz beállítása](storage-import-export-tool-setup-v1.md)   
-* [Merevlemezek előkészítése importálási feladatokhoz](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [Merevlemezek előkészítése importálási feladatokhoz](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import-v1)   
 * [Feladatok állapotának áttekintése a másolási naplófájlokkal](storage-import-export-tool-reviewing-job-status-v1.md)   
-* [Exportálási feladat javítása](../storage-import-export-tool-repairing-an-export-job-v1.md)
+* [Exportálási feladat javítása](./storage-import-export-tool-repairing-an-export-job-v1.md)

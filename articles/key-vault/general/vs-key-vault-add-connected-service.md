@@ -9,12 +9,12 @@ ms.custom: vs-azure, devx-track-csharp
 ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: addccf337f82b1695c76ae975c4a33f44ba50f8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c62534acdbfbff7fd4e718bad1f07a92c641626
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448136"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792395"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault hozzáadása a webalkalmazáshoz a Visual Studio csatlakoztatott szolgáltatásainak használatával
 
@@ -24,7 +24,7 @@ A csatlakoztatott szolgáltatások által a projektben a Key Vault engedélyezé
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Egy Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, regisztráljon egy [ingyenes fiókra](https://azure.microsoft.com/pricing/free-trial/).
+- **Egy Azure-előfizetés** . Ha nem rendelkezik előfizetéssel, regisztráljon egy [ingyenes fiókra](https://azure.microsoft.com/pricing/free-trial/).
 - A **Visual Studio 2019 16,3** -es vagy újabb verziója [már letölthető](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 
@@ -32,13 +32,13 @@ A csatlakoztatott szolgáltatások által a projektben a Key Vault engedélyezé
 
 Mielőtt elkezdené, győződjön meg róla, hogy be van jelentkezve a Visual studióba. Jelentkezzen be ugyanazzal a fiókkal, amelyet az Azure-előfizetéséhez használ. Ezután nyisson meg egy ASP.NET 4.7.1 vagy újabb verziót, vagy ASP.NET Core 2,0 webes projektet, és hajtsa végre a következő lépéseket:
 
-1. **Megoldáskezelőban**kattintson a jobb gombbal arra a projektre, amelyhez hozzá kívánja adni a Key Vault-támogatást **Add**, majd válassza a  >  **csatlakoztatott szolgáltatás**hozzáadása Hozzáadás lehetőséget  >  **Add**.
+1. **Megoldáskezelőban** kattintson a jobb gombbal arra a projektre, amelyhez hozzá kívánja adni a Key Vault-támogatást **Add** , majd válassza a  >  **csatlakoztatott szolgáltatás** hozzáadása Hozzáadás lehetőséget  >  **Add** .
    Megjelenik a Connected Service (Csatlakoztatott szolgáltatás) lap a projekthez adható szolgáltatásokkal.
-1. Az elérhető szolgáltatások menüben válassza a **Azure Key Vault** lehetőséget, majd kattintson a **tovább**gombra.
+1. Az elérhető szolgáltatások menüben válassza a **Azure Key Vault** lehetőséget, majd kattintson a **tovább** gombra.
 
    ![Válassza a "Azure Key Vault" lehetőséget](../media/vs-key-vault-add-connected-service/key-vault-connected-service.png)
 
-1. Válassza ki a használni kívánt előfizetést, majd válasszon ki egy meglévő Key Vault, és kattintson a **Befejezés**gombra. 
+1. Válassza ki a használni kívánt előfizetést, majd válasszon ki egy meglévő Key Vault, és kattintson a **Befejezés** gombra. 
 
    ![Az előfizetés kiválasztása](../media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
 
@@ -115,7 +115,7 @@ Beállíthatja a konfigurációt úgy, hogy az web.config-fájlnak a `appSetting
          <add key="<secretNameInYourKeyVault>" value="dummy"/>
         ```
 
-1. Szerkessze a `About` metódust a *HomeController.cs*-ben a megerősítés értékének megjelenítéséhez.
+1. Szerkessze a `About` metódust a *HomeController.cs* -ben a megerősítés értékének megjelenítéséhez.
 
    ```csharp
    public ActionResult About()
@@ -131,12 +131,12 @@ Ha a Key Vault a Visual studióba bejelentkezett másik Microsoft-fiók fut (pé
 
 1. Lépjen a [Azure Portal](https://portal.azure.com) , és nyissa meg a Key Vault.
 
-1. Válassza a **hozzáférési szabályzatok**, majd a **hozzáférési házirend hozzáadása**lehetőséget, és válassza ki azt a fiókot, amelyet a rendszerbiztonsági tagként jelentkezett be.
+1. Válassza a **hozzáférési szabályzatok** , majd a **hozzáférési házirend hozzáadása** lehetőséget, és válassza ki azt a fiókot, amelyet a rendszerbiztonsági tagként jelentkezett be.
 
-1. A Visual Studióban válassza **a**  >  **Fiókbeállítások**lehetőséget.
+1. A Visual Studióban válassza **a**  >  **Fiókbeállítások** lehetőséget.
 Válassza a **fiók hozzáadása** lehetőséget a **minden fiók** szakaszban. Jelentkezzen be azzal a fiókkal, amelyet a hozzáférési szabályzatának elsődlegesen választott.
 
-1. Válassza az **eszközök**  >  **lehetőséget**, és keresse meg az **Azure-szolgáltatás hitelesítése**elemet. Ezután válassza ki azt a fiókot, amelyet az imént hozzáadott a Visual studióhoz.
+1. Válassza az **eszközök**  >  **lehetőséget** , és keresse meg az **Azure-szolgáltatás hitelesítése** elemet. Ezután válassza ki azt a fiókot, amelyet az imént hozzáadott a Visual studióhoz.
 
 Az alkalmazás hibakeresése után a Visual Studio csatlakozik ahhoz a fiókhoz, amelyen a Key Vault található.
 
@@ -204,6 +204,6 @@ A Project file .NET-referenciákat és a `packages.config` (NuGet-hivatkozásoka
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha követte ezt az oktatóanyagot, a Key Vault engedélyei a saját Azure-előfizetéssel való futtatásra vannak beállítva, de előfordulhat, hogy éles környezetben nem kívánatos. Létrehozhat egy felügyelt identitást, amellyel kezelheti Key Vault hozzáférését az alkalmazáshoz. Tekintse meg, [Hogyan hitelesítheti Key Vault](/azure/key-vault/general/authentication) és [hozzárendelhet egy Key Vault hozzáférési szabályzatot](/azure/key-vault/general/assign-access-policy-portal).
+Ha követte ezt az oktatóanyagot, a Key Vault engedélyei a saját Azure-előfizetéssel való futtatásra vannak beállítva, de előfordulhat, hogy éles környezetben nem kívánatos. Létrehozhat egy felügyelt identitást, amellyel kezelheti Key Vault hozzáférését az alkalmazáshoz. Tekintse meg, [Hogyan hitelesítheti Key Vault](./authentication.md) és [hozzárendelhet egy Key Vault hozzáférési szabályzatot](./assign-access-policy-portal.md).
 
 A Key Vault fejlesztésről a [Key Vault fejlesztői útmutatójában](developers-guide.md)olvashat bővebben.

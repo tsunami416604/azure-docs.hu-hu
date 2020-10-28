@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 29ab7def6209483ee891dc0d26bf8163cdc39a23
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 6f216a7f0851661efc61a771fc35feb71e77fd1f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165236"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792480"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Feladatátvevő fürt példányai SQL Server az Azure-ban Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,8 +30,8 @@ SQL Server az Azure-beli virtuális gépeken a Windows Server feladatátvételi 
 
 A cikk további része a feladatátvevő fürt példányainak a SQL Server Azure-beli virtuális gépeken való használatakor felhasználható különbségekre koncentrál. A feladatátvételi fürtszolgáltatás technológiával kapcsolatos további tudnivalókért tekintse meg a következő témakört: 
 
-- [Windows-fürtök technológiái](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
-- [SQL Server feladatátvevő fürt példányai](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Windows-fürtök technológiái](/windows-server/failover-clustering/failover-clustering-overview)
+- [SQL Server feladatátvevő fürt példányai](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
 
 ## <a name="quorum"></a>Kvórumerőforrás
 
@@ -40,7 +40,7 @@ A feladatátvevő fürtök példányai az Azure-SQL Serverokkal Virtual Machines
 További információ: az [Azure-beli SQL Server virtuális gépekkel kapcsolatos ajánlott eljárások](hadr-cluster-best-practices.md#quorum). 
 
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 
 A hagyományos helyszíni fürtözött környezetekben a Windows feladatátvevő fürt a Tárolóhálózati (SAN) tárolót használja, amelyet mindkét csomópont a megosztott tárolóként is elérhet. SQL Server fájlok vannak tárolva a megosztott tárolóban, és csak az aktív csomópont fér hozzá egyszerre a fájlokhoz. 
 
@@ -60,10 +60,10 @@ A szakasz további része felsorolja az Azure-beli virtuális gépeken SQL Serve
 
 Az [Azure Shared Disks](../../../virtual-machines/windows/disks-shared.md) az [Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md)szolgáltatás. A Windows Server feladatátvételi fürtszolgáltatás támogatja az Azure-beli megosztott lemezek feladatátvevő fürt-példánnyal való használatát. 
 
-**Támogatott operációs rendszer**: mind   
-**Támogatott SQL-verzió**: ALL     
+**Támogatott operációs rendszer** : mind   
+**Támogatott SQL-verzió** : ALL     
 
-**Előnyök**: 
+**Előnyök** : 
 - Hasznos az Azure-ba migrálni kívánt alkalmazások számára, miközben a magas rendelkezésre állást és a vész-helyreállítási (HADR) architektúrát is megtartja. 
 - Fürtözött alkalmazásokat telepíthet át az Azure-ba a SCSI-állandó lefoglalások (SCSI PR) támogatása miatt. 
 - Támogatja a közös Azure prémium SSD és az Azure Ultra Disk Storage használatát.
@@ -71,7 +71,7 @@ Az [Azure Shared Disks](../../../virtual-machines/windows/disks-shared.md) az [A
 - Támogatja a FileStream.
 
 
-**Korlátozások**: 
+**Korlátozások** : 
 - A virtuális gépeket ugyanahhoz a rendelkezésre állási csoporthoz és közelségi helyhez kell helyezni.
 - A rendelkezésre állási zónák nem támogatottak.
 - Prémium SSD lemez gyorsítótárazása nem támogatott.
@@ -82,8 +82,8 @@ Első lépésként tekintse meg [SQL Server feladatátvevő fürt példányát a
 
 A [közvetlen tárolóhelyek](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) egy olyan Windows Server-szolgáltatás, amely az Azure Virtual Machines feladatátvételi fürtszolgáltatását támogatja. Egy szoftveres virtuális SAN-t biztosít.
 
-**Támogatott operációs rendszer**: Windows Server 2016 és újabb verziók   
-**Támogatott SQL-verzió**: SQL Server 2016-es és újabb verziók   
+**Támogatott operációs rendszer** : Windows Server 2016 és újabb verziók   
+**Támogatott SQL-verzió** : SQL Server 2016-es és újabb verziók   
 
 
 **Előnyei** 
@@ -104,8 +104,8 @@ Első lépésként tekintse meg [a SQL Server feladatátvevő fürt példányát
 
 A [prémium szintű fájlmegosztás](../../../storage/files/storage-how-to-create-premium-fileshare.md) a [Azure Files](../../../storage/files/index.yml)egyik funkciója. A prémium szintű fájlmegosztás SSD-támogatással rendelkezik, és következetesen alacsony késéssel rendelkezik. Ezek teljes mértékben támogatottak a Windows Server 2012-es vagy újabb verzióiban SQL Server 2012-es vagy újabb feladatátvevő fürt példányaival. A prémium fájlmegosztás nagyobb rugalmasságot biztosít, mivel leállás nélkül átméretezheti és méretezheti a fájlmegosztást.
 
-**Támogatott operációs rendszer**: Windows Server 2012 és újabb verziók   
-**Támogatott SQL-verzió**: SQL Server 2012-es és újabb verziók   
+**Támogatott operációs rendszer** : Windows Server 2012 és újabb verziók   
+**Támogatott SQL-verzió** : SQL Server 2012-es és újabb verziók   
 
 **Előnyei** 
 - Csak megosztott tárolási megoldás a virtuális gépekhez több rendelkezésre állási zónában elosztva. 
@@ -122,8 +122,8 @@ Első lépésként tekintse [meg a prémium szintű fájlmegosztás SQL Server f
 
 A támogatott tárterülethez partner-fürtszolgáltatási megoldások tartoznak. 
 
-**Támogatott operációs rendszer**: mind   
-**Támogatott SQL-verzió**: ALL   
+**Támogatott operációs rendszer** : mind   
+**Támogatott SQL-verzió** : ALL   
 
 Az egyik példa a SIOS DataKeeper használja tárolóként. További információ: a blogbejegyzés [feladatátvételi fürtszolgáltatása és a SIOS DataKeeper](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/).
 
@@ -131,8 +131,8 @@ Az egyik példa a SIOS DataKeeper használja tárolóként. További informáci�
 
 Az iSCSI-tárolók megosztott blokkos tárolóit az Azure ExpressRoute is elérhetővé teheti. 
 
-**Támogatott operációs rendszer**: mind   
-**Támogatott SQL-verzió**: ALL   
+**Támogatott operációs rendszer** : mind   
+**Támogatott SQL-verzió** : ALL   
 
 Például a NetApp Private Storage (NPS) egy iSCSI-célt tesz elérhetővé az ExpressRoute-n keresztül az Azure-beli virtuális gépek Equinix.
 
@@ -155,7 +155,7 @@ A teljes bővítmény olyan funkciókat támogat, mint például az automatikus 
 
 ### <a name="msdtc"></a>MSDTC 
 
-Az Azure Virtual Machines támogatja a Microsoft Elosztott tranzakciók koordinátora (MSDTC) szolgáltatást a Windows Server 2019 rendszeren a fürtözött megosztott kötetek (CSV) és az [azure standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) , illetve az Azure-beli megosztott lemezeket használó SQL Server virtuális gépeken. 
+Az Azure Virtual Machines támogatja a Microsoft Elosztott tranzakciók koordinátora (MSDTC) szolgáltatást a Windows Server 2019 rendszeren a fürtözött megosztott kötetek (CSV) és az [azure standard Load Balancer](../../../load-balancer/load-balancer-overview.md) , illetve az Azure-beli megosztott lemezeket használó SQL Server virtuális gépeken. 
 
 Az Azure Virtual Machines az MSDTC nem támogatott a Windows Server 2016-es vagy korábbi verzióiban fürtözött megosztott kötetekkel, mert:
 
@@ -163,7 +163,7 @@ Az Azure Virtual Machines az MSDTC nem támogatott a Windows Server 2016-es vagy
 - Az alapszintű Load Balancer nem kezeli az RPC-portokat.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a [fürt konfigurációjának ajánlott eljárásait](hadr-cluster-best-practices.md), majd [készítse elő a SQL Server VMt a következőre:](failover-cluster-instance-prepare-vm.md). 
 
@@ -171,4 +171,3 @@ További információkért lásd:
 
 - [Windows-fürtök technológiái](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server feladatátvevő fürt példányai](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
-

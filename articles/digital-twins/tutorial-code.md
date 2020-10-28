@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: e44fe44285a6693583c1b16645ad0d023428c72b
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: dd7c5da84d6330e0214404f55aad9487c71b0a29
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494640"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792429"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Oktatóanyag: kódolás az Azure Digital Twins API-kkal
 
@@ -22,7 +22,7 @@ Gyakori, hogy az Azure Digital Twins-szel dolgozó fejlesztők az Azure Digital 
 > * Projekt beállítása
 > * Első lépések a Project Code-ban   
 > * Kód teljes mintája
-> * Az erőforrások eltávolítása
+> * Az erőforrások felszabadítása
 > * Következő lépések
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -41,11 +41,11 @@ A kezdéshez szükséges lépések:
 
 Ha készen áll az Azure Digital Twins-példánnyal való használatra, kezdje el beállítani az ügyfélalkalmazás-projektet. 
 
-Nyisson meg egy parancssort vagy egy másik konzolablak-ablakot a gépen, és hozzon létre egy üres Project könyvtárat, ahol az oktatóanyag során szeretné tárolni a munkáját. Nevezze el a könyvtárat, amit szeretne (például *DigitalTwinsCodeTutorial*).
+Nyisson meg egy parancssort vagy egy másik konzolablak-ablakot a gépen, és hozzon létre egy üres Project könyvtárat, ahol az oktatóanyag során szeretné tárolni a munkáját. Nevezze el a könyvtárat, amit szeretne (például *DigitalTwinsCodeTutorial* ).
 
 Navigáljon az új könyvtárba.
 
-Egyszer a projekt könyvtárában hozzon létre egy üres .NET-konzol alkalmazás-projektet. A parancssori ablakban futtassa a következő parancsot egy minimális C#-projekt létrehozásához a konzolon:
+Egyszer a projekt könyvtárában **hozzon létre egy üres .net-konzol alkalmazás-projektet** . A parancssori ablakban a következő parancs futtatásával hozhat létre egy minimális C#-projektet a-konzolhoz:
 
 ```cmd/sh
 dotnet new console
@@ -53,16 +53,11 @@ dotnet new console
 
 Ez több fájlt hoz létre a címtárban, például egy *program.cs* , ahol a kód nagy részét fogja írni.
 
-Következő lépésként vegyen fel két szükséges függőséget az Azure Digital Twins-használathoz:
-
-```cmd/sh
-dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-dotnet add package Azure.identity
-```
-
-Az első függőség a .NET- [hez készült Azure digitális Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true). A második függőség olyan eszközöket biztosít, amelyek segítenek az Azure-beli hitelesítésben.
-
 Tartsa megnyitva a parancssorablakot, ahogy az oktatóanyag során is használni fogja.
+
+Ezután **vegyen fel két függőséget a projekthez** , amely szükséges lesz az Azure digitális ikrekkel való együttműködéshez. Az alábbi hivatkozásokat követve megkeresheti a NuGet lévő csomagokat, ahol megtalálhatja a konzol parancsait (beleértve a .NET CLI-t is), hogy hozzáadja az egyes projektekhez tartozó legújabb verziót.
+* [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Ez a csomag a .NET-hez készült [Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)-hoz. 
+* [**Azure. Identity**](https://www.nuget.org/packages/Azure.Identity). Ez a kódtár eszközöket biztosít az Azure-beli hitelesítéshez.
 
 ## <a name="get-started-with-project-code"></a>Első lépések a Project Code-ban
 
@@ -108,7 +103,7 @@ Az alkalmazás első lépéseként hitelesítenie kell magát az Azure Digital T
 
 A hitelesítéshez szüksége lesz az Azure Digital Twins-példány *állomásneve* .
 
-A *program.cs*illessze be a következő kódot a "Hello, World!" alá. a metódus nyomtatási sora `Main` . Állítsa be az értékét az `adtInstanceUrl` Azure Digital Twins-példány *állomásneve*értékre.
+A *program.cs* illessze be a következő kódot a "Hello, World!" alá. a metódus nyomtatási sora `Main` . Állítsa be az értékét az `adtInstanceUrl` Azure Digital Twins-példány *állomásneve* értékre.
 
 ```csharp
 string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>"; 
@@ -126,16 +121,16 @@ dotnet run
 ```
 
 Ezzel visszaállítja a függőségeket az első futtatás után, majd végrehajtja a programot. 
-* Ha nem fordul elő hiba, a program kinyomtatja a *szolgáltatáshoz létrehozott ügyfelet, amely készen áll*.
+* Ha nem fordul elő hiba, a program kinyomtatja a *szolgáltatáshoz létrehozott ügyfelet, amely készen áll* .
 * Mivel ebben a projektben még nincsenek hibák, ha bármilyen hiba történik, a kód kivételt fog látni.
 
 ### <a name="upload-a-model"></a>Modell feltöltése
 
-Az Azure Digital Twins nem rendelkezik belső tartománybeli szókincstel. A környezetben az Azure Digital Twins-ban ábrázolt elemek típusai a **modellek**használatával definiálhatók. A [modellek](concepts-models.md) hasonlók az objektumorientált programozási nyelvekben található osztályokhoz. felhasználói sablonokat biztosítanak a [digitális ikrek](concepts-twins-graph.md) számára a későbbi követéshez és létrehozáshoz. A rendszer a **digitális Twins Definition Language (DTDL)** nevű JSON-szerű nyelven íródott.
+Az Azure Digital Twins nem rendelkezik belső tartománybeli szókincstel. A környezetben az Azure Digital Twins-ban ábrázolt elemek típusai a **modellek** használatával definiálhatók. A [modellek](concepts-models.md) hasonlók az objektumorientált programozási nyelvekben található osztályokhoz. felhasználói sablonokat biztosítanak a [digitális ikrek](concepts-twins-graph.md) számára a későbbi követéshez és létrehozáshoz. A rendszer a **digitális Twins Definition Language (DTDL)** nevű JSON-szerű nyelven íródott.
 
 Az Azure digitális Twins-megoldások létrehozásának első lépéseként legalább egy modellt DTDL-fájlban kell meghatározni.
 
-Hozzon létre egy *SampleModel.js*nevű új *. JSON* fájlt a címtárban, ahol létrehozta a projektet. Illessze be a következő fájlt a szövegtörzsbe: 
+Hozzon létre egy *SampleModel.js* nevű új *. JSON* fájlt a címtárban, ahol létrehozta a projektet. Illessze be a következő fájlt a szövegtörzsbe: 
 
 ```json
 {
@@ -158,7 +153,7 @@ Hozzon létre egy *SampleModel.js*nevű új *. JSON* fájlt a címtárban, ahol 
 ```
 
 > [!TIP]
-> Ha a Visual studiót használja ehhez az oktatóanyaghoz, érdemes kijelölni az újonnan létrehozott JSON-fájlt, és a tulajdonság-ellenőrben a *Másolás a kimeneti könyvtárba* tulajdonságot úgy kell beállítani, hogy az *újabb* vagy a *Másolás Always*. Ez lehetővé teszi a Visual Studio számára, hogy megkeresse a JSON-fájlt az alapértelmezett elérési úttal, amikor az oktatóanyag többi részében futtatja a programot az **F5 billentyűvel** .
+> Ha a Visual studiót használja ehhez az oktatóanyaghoz, érdemes kijelölni az újonnan létrehozott JSON-fájlt, és a tulajdonság-ellenőrben a *Másolás a kimeneti könyvtárba* tulajdonságot úgy kell beállítani, hogy az *újabb* vagy a *Másolás Always* . Ez lehetővé teszi a Visual Studio számára, hogy megkeresse a JSON-fájlt az alapértelmezett elérési úttal, amikor az oktatóanyag többi részében futtatja a programot az **F5 billentyűvel** .
 
 > [!TIP] 
 > A DTDL érvényességének ellenőrzéséhez használhatja a Language-agnosztikus [DTDL-érvényesítő mintát](/samples/azure-samples/dtdl-validator/dtdl-validator) , amellyel ellenőrizhetők a modell dokumentumai. A szolgáltatás a DTDL-elemző könyvtárra épül, amelyről további információt a modellek elemzése [*és ellenőrzése*](how-to-parse-models.md)című témakörben olvashat.
@@ -263,7 +258,7 @@ Ettől a ponttól kezdve az oktatóanyag a kipróbálási és a fogási kezelőb
 
 ### <a name="create-digital-twins"></a>Digitális ikrek létrehozása
 
-Most, hogy feltöltött egy modellt az Azure digitális Twins-ba, a modell definíciójában **digitális ikreket**hozhat létre. A [digitális ikrek](concepts-twins-graph.md) egy modell példányai, és az üzleti környezetben található entitásokat képviselik, például a farmon lévő érzékelők, a helyiségek egy épületben vagy egy autóban található fények. Ez a szakasz néhány digitális ikreket hoz létre a korábban feltöltött modell alapján.
+Most, hogy feltöltött egy modellt az Azure digitális Twins-ba, a modell definíciójában **digitális ikreket** hozhat létre. A [digitális ikrek](concepts-twins-graph.md) egy modell példányai, és az üzleti környezetben található entitásokat képviselik, például a farmon lévő érzékelők, a helyiségek egy épületben vagy egy autóban található fények. Ez a szakasz néhány digitális ikreket hoz létre a korábban feltöltött modell alapján.
 
 Adja hozzá ezeket `using` az új utasításokat felül, mivel ez a mintakód a beépített .net JSON-szerializáló használja a alkalmazásban `System.Text.Json` , valamint a `Serialization` névteret az [Azure Digital Twins SDK for .net (C#)](https://dev.azure.com/azure-sdk/public/_packaging?_a=package&feed=azure-sdk-for-net&view=overview&package=Azure.DigitalTwins.Core&version=1.0.0-alpha.20201020.1&protocolType=NuGet) alkalmazásban [hivatkozás módosítva az előzetes verzióhoz]:
 
@@ -304,7 +299,7 @@ Figyelje meg, hogy az ikrek létrehozásakor a második alkalommal nem fordul el
 
 ### <a name="create-relationships"></a>Kapcsolatok létrehozása
 
-Ezután létrehozhat **kapcsolatokat** a létrehozott ikrek között, és összekapcsolhatja őket egy **különálló gráfban**. A [két gráf](concepts-twins-graph.md) a teljes környezet ábrázolására szolgál.
+Ezután létrehozhat **kapcsolatokat** a létrehozott ikrek között, és összekapcsolhatja őket egy **különálló gráfban** . A [két gráf](concepts-twins-graph.md) a teljes környezet ábrázolására szolgál.
 
 Ha segítségre van a kapcsolatok létrehozásában, ez a mintakód a `Azure.DigitalTwins.Core.Serialization` névteret használja. Ezt a projektet a [*digitális Twins létrehozása*](#create-digital-twins) szakaszban korábban adta hozzá a projekthez.
 
@@ -535,7 +530,7 @@ namespace minimal
     }
 }
 ```
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
  
 Az oktatóanyagban használt példány újra felhasználható a következő oktatóanyagban, [*oktatóanyag: az alapokat egy minta ügyfélalkalmazás segítségével tárja fel*](tutorial-command-line-app.md). Ha továbbra is a következő oktatóanyagot tervezi, megtarthatja az itt beállított Azure digitális Twins-példányt.
  

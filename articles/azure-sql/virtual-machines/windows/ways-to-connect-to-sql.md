@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 26052441d19abb6a0c423a3b3d6f6c2d21478814
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8bee990074debf09cc9bfd19f96470a029b50c9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272055"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793126"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Kapcsolódás SQL Server Azure-beli virtuális géphez
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,7 +33,7 @@ Ha inkább a kiépítéssel és a kapcsolattal kapcsolatos teljes áttekintést 
 
 Az ügyfél SQL Server VMhoz való kapcsolódásának módja az ügyfél helyétől és a hálózati konfigurációtól függően eltérő.
 
-Ha kiépít egy SQL Server VM a Azure Portalban, lehetősége van megadnia az **SQL-kapcsolat**típusát.
+Ha kiépít egy SQL Server VM a Azure Portalban, lehetősége van megadnia az **SQL-kapcsolat** típusát.
 
 ![Nyilvános SQL-kapcsolati beállítás a kiépítés során](./media/ways-to-connect-to-sql/sql-vm-portal-connectivity.png)
 
@@ -65,7 +65,7 @@ Bármely internet-hozzáféréssel rendelkező ügyfél csatlakozhat a SQL Serve
 Server=sqlvmlabel.eastus.cloudapp.azure.com;Integrated Security=false;User ID=<login_name>;Password=<your_password>
 ```
 
-Bár ez a karakterlánc lehetővé teszi az ügyfelekhez való kapcsolódást az interneten keresztül, ez nem jelenti azt, hogy bárki csatlakozhat a SQL Server-példányhoz. Az ügyfeleken kívül a megfelelő felhasználónevet és jelszót kell használniuk. A további biztonság érdekében azonban elkerülheti a jól ismert 1433-as portot is. Ha például az 1500-es port figyelésére, valamint a megfelelő tűzfal-és hálózati biztonsági csoportokra vonatkozó szabályok megadására vonatkozó SQL Server konfigurálását választotta, akkor a portszámnak a kiszolgálónévhez való hozzáfűzésével kapcsolódhat. Az alábbi példa az előzőt változtatja meg az **1500**-as számú egyéni portszám hozzáadásával a kiszolgálónévhez:
+Bár ez a karakterlánc lehetővé teszi az ügyfelekhez való kapcsolódást az interneten keresztül, ez nem jelenti azt, hogy bárki csatlakozhat a SQL Server-példányhoz. Az ügyfeleken kívül a megfelelő felhasználónevet és jelszót kell használniuk. A további biztonság érdekében azonban elkerülheti a jól ismert 1433-as portot is. Ha például az 1500-es port figyelésére, valamint a megfelelő tűzfal-és hálózati biztonsági csoportokra vonatkozó szabályok megadására vonatkozó SQL Server konfigurálását választotta, akkor a portszámnak a kiszolgálónévhez való hozzáfűzésével kapcsolódhat. Az alábbi példa az előzőt változtatja meg az **1500** -as számú egyéni portszám hozzáadásával a kiszolgálónévhez:
 
 ```
 Server=sqlvmlabel.eastus.cloudapp.azure.com,1500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
@@ -76,7 +76,7 @@ Server=sqlvmlabel.eastus.cloudapp.azure.com,1500;Integrated Security=false;User 
 
 ## <a name="connect-to-sql-server-within-a-virtual-network"></a>Kapcsolódás SQL Server virtuális hálózaton belül
 
-Ha a portálon az **SQL-kapcsolati** típushoz **privát** lehetőséget választ, az Azure a legtöbb olyan beállítást konfigurálja, amely azonos a **nyilvános**értékkel. Az egyetlen különbség, hogy nincs olyan hálózati biztonsági csoportra vonatkozó szabály, amely engedélyezi a SQL Server porton kívüli forgalom használatát (alapértelmezés szerint 1433).
+Ha a portálon az **SQL-kapcsolati** típushoz **privát** lehetőséget választ, az Azure a legtöbb olyan beállítást konfigurálja, amely azonos a **nyilvános** értékkel. Az egyetlen különbség, hogy nincs olyan hálózati biztonsági csoportra vonatkozó szabály, amely engedélyezi a SQL Server porton kívüli forgalom használatát (alapértelmezés szerint 1433).
 
 > [!IMPORTANT]
 > A SQL Server Developer és az expressz kiadások virtuálisgép-rendszerképei nem engedélyezik automatikusan a TCP/IP protokollt. Fejlesztői és expressz kiadások esetén a virtuális gép létrehozása után a [TCP/IP protokoll manuális engedélyezéséhez](#manualtcp) SQL Server konfigurációkezelőt kell használnia.
@@ -97,11 +97,11 @@ Server=mysqlvm;Integrated Security=true
 
 A Azure Portal a SQL Server virtuális gép csatlakozási beállításait módosíthatja.
 
-1. A Azure Portal válassza az SQL-alapú **virtuális gépek**elemet.
+1. A Azure Portal válassza az SQL-alapú **virtuális gépek** elemet.
 
 2. Válassza ki a SQL Server VM.
 
-3. A **Beállítások**területen válassza a **Biztonság**elemet.
+3. A **Beállítások** területen válassza a **Biztonság** elemet.
 
 4. Módosítsa az **SQL-kapcsolat szintjét** a kötelező beállításra. Ezt a körzetet igény szerint módosíthatja a SQL Server portot vagy az SQL-hitelesítési beállításokat.
 
@@ -119,7 +119,7 @@ Először kapcsolódjon a SQL Server virtuális géphez a távoli asztal haszná
 
 [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-remote-desktop-connect.md)]
 
-Ezután engedélyezze a TCP/IP protokollt **SQL Server konfigurációkezelő**.
+Ezután engedélyezze a TCP/IP protokollt **SQL Server konfigurációkezelő** .
 
 [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-connection-tcp-protocol.md)]
 
@@ -138,9 +138,9 @@ A következő táblázat az Azure-beli virtuális gépen SQL Serverhoz való kap
 | Követelmény | Leírás |
 |---|---|
 | [SQL Server hitelesítési mód engedélyezése](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | SQL Server hitelesítés szükséges ahhoz, hogy távolról csatlakozhasson a virtuális GÉPHEZ, hacsak nem konfigurálta a Active Directoryt egy virtuális hálózaton. |
-| [SQL-bejelentkezés létrehozása](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | SQL-hitelesítés használata esetén olyan felhasználónévvel és jelszóval rendelkező SQL-bejelentkezésre van szükség, amely a céladatbázis engedélyeivel is rendelkezik. |
+| [SQL-bejelentkezés létrehozása](/sql/relational-databases/security/authentication-access/create-a-login) | SQL-hitelesítés használata esetén olyan felhasználónévvel és jelszóval rendelkező SQL-bejelentkezésre van szükség, amely a céladatbázis engedélyeivel is rendelkezik. |
 | [TCP/IP protokoll engedélyezése](#manualtcp) | A SQL Servernak engedélyeznie kell a TCP protokollon keresztüli kapcsolatokat. |
-| [Tűzfalszabály engedélyezése a SQL Server porthoz](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | A virtuális gépen lévő tűzfalnak engedélyeznie kell a bejövő forgalmat a SQL Server porton (alapértelmezett 1433). |
+| [Tűzfalszabály engedélyezése a SQL Server porthoz](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | A virtuális gépen lévő tűzfalnak engedélyeznie kell a bejövő forgalmat a SQL Server porton (alapértelmezett 1433). |
 | [Hálózati biztonsági csoportra vonatkozó szabály létrehozása a 1433-as TCP-hez](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) | Ha az interneten keresztül szeretne csatlakozni, engedélyeznie kell a virtuális gép számára a SQL Server port forgalmának fogadását (alapértelmezett 1433). A helyi és a virtuális hálózati kapcsolatok esetében nincs szükség erre. Ez az egyetlen szükséges lépés a Azure Portalban. |
 
 > [!TIP]

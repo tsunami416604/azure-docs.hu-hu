@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 01/14/2020
-ms.openlocfilehash: 9b151e566f0cc3e086277c101a796e7dde059ef9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19cec1deeef344ea5897061db0fec88066b90b05
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442563"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791766"
 ---
 # <a name="configure-and-manage-content-reference---azure-sql-database"></a>Tartalmi referenciák konfigurálása és kezelése – Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -56,7 +56,7 @@ Ebben a cikkben a különböző útmutatókra, parancsfájlokra és magyarázato
 
 - [Manuális hangolás](performance-guidance.md)
 - [A teljesítmény monitorozása DMV-kkel](monitoring-with-dmvs.md)
-- [A teljesítmény monitorozása a lekérdezéstár használatával](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
+- [A teljesítmény monitorozása a lekérdezéstár használatával](/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - [Engedélyezze az automatikus hangolást](automatic-tuning-enable.md) , hogy Azure SQL Database optimalizálja a számítási feladatok teljesítményét.
 - Az [automatikus hangolással kapcsolatos e-mail-értesítések engedélyezése](automatic-tuning-email-notifications-configure.md) a hangolási javaslatokkal kapcsolatos információk beszerzéséhez.
 - [Teljesítménnyel kapcsolatos javaslatok alkalmazása](database-advisor-find-recommendations-portal.md) és az adatbázis optimalizálása.
@@ -84,7 +84,7 @@ Ebben a cikkben a különböző útmutatókra, parancsfájlokra és magyarázato
 - [SQL-adatszinkronizálás](sql-data-sync-data-sql-server-sql-database.md)
 - [Adatszinkronizálási ügynök](sql-data-sync-agent-overview.md)
 - [Sémaváltozások replikálása](sql-data-sync-update-sync-schema.md)
-- [Monitorozás az OMS-szel](sql-data-sync-monitor-sync.md)
+- [Monitorozás az OMS-szel](./monitor-tune-overview.md)
 - [Ajánlott eljárások az adatszinkronizáláshoz](sql-data-sync-best-practices.md)
 - [Az adatszinkronizálás hibaelhárítása](sql-data-sync-troubleshoot.md)
 
@@ -111,7 +111,7 @@ Ebben a cikkben a különböző útmutatókra, parancsfájlokra és magyarázato
 
 ## <a name="develop-applications"></a>Alkalmazások fejlesztése
 
-- [Kapcsolatok](connect-query-content-reference-guide.md#libraries)
+- [Kapcsolódás](connect-query-content-reference-guide.md#libraries)
 - [Spark-összekötő használata](spark-connector.md)
 - [Alkalmazás hitelesítése](application-authentication-get-client-id-keys.md)
 - [Kötegelt feldolgozás használata a jobb teljesítmény érdekében](../performance-improve-use-batching.md)

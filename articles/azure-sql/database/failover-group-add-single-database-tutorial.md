@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 06/19/2019
-ms.openlocfilehash: 5fca46e7bf80504632e0894deefa1805a080b3b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4709bf901ed74e0ea7589824a280651f8b73866
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442740"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793381"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Oktatóanyag: Azure SQL Database hozzáadása egy autofeladatátvételi csoporthoz
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -65,7 +65,7 @@ Ebben a lépésben létrehoz egy [feladatátvételi csoportot](auto-failover-gro
 
 Hozza létre a feladatátvételi csoportot, és adja hozzá az adatbázist a Azure Portal használatával.
 
-1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon.
+1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás** lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon.
 1. Válassza ki az 1. szakaszban létrehozott adatbázist, például: `mySampleDatabase` .
 1. A feladatátvételi csoportokat a kiszolgáló szintjén lehet konfigurálni. A kiszolgáló beállításainak megnyitásához válassza a **kiszolgáló neve alatt lévő** kiszolgáló nevét.
 
@@ -75,21 +75,21 @@ Hozza létre a feladatátvételi csoportot, és adja hozzá az adatbázist a Azu
 
    ![Új feladatátvételi csoport hozzáadása](./media/failover-group-add-single-database-tutorial/sqldb-add-new-failover-group.png)
 
-1. A **feladatátvételi csoport** lapon adja meg vagy válassza ki a következő értékeket, majd válassza a **Létrehozás**lehetőséget:
+1. A **feladatátvételi csoport** lapon adja meg vagy válassza ki a következő értékeket, majd válassza a **Létrehozás** lehetőséget:
 
-   - **Feladatátvételi csoport neve**: adjon meg egy egyedi feladatátvételi csoport nevét (például `failovergrouptutorial` ).
-   - **Másodlagos kiszolgáló**: válassza a *szükséges beállítások konfigurálását* , majd válassza az **új kiszolgáló létrehozása**lehetőséget. Másik lehetőségként már meglévő kiszolgálót is választhat másodlagos kiszolgálóként. A következő értékek beírása után válassza a **kiválasztás**lehetőséget.
-      - **Kiszolgáló neve**: írjon be egy egyedi nevet a másodlagos kiszolgálónak, például: `mysqlsecondary` .
-      - **Kiszolgáló-rendszergazdai bejelentkezés**: típus `azureuser`
-      - **Password (jelszó**): írjon be egy olyan összetett jelszót, amely megfelel a jelszó követelményeinek.
-      - **Hely**: válasszon ki egy helyet a legördülő menüből, például: `East US` . Ez a hely nem lehet ugyanazon a helyen, mint az elsődleges kiszolgáló.
+   - **Feladatátvételi csoport neve** : adjon meg egy egyedi feladatátvételi csoport nevét (például `failovergrouptutorial` ).
+   - **Másodlagos kiszolgáló** : válassza a *szükséges beállítások konfigurálását* , majd válassza az **új kiszolgáló létrehozása** lehetőséget. Másik lehetőségként már meglévő kiszolgálót is választhat másodlagos kiszolgálóként. A következő értékek beírása után válassza a **kiválasztás** lehetőséget.
+      - **Kiszolgáló neve** : írjon be egy egyedi nevet a másodlagos kiszolgálónak, például: `mysqlsecondary` .
+      - **Kiszolgáló-rendszergazdai bejelentkezés** : típus `azureuser`
+      - **Password (jelszó** ): írjon be egy olyan összetett jelszót, amely megfelel a jelszó követelményeinek.
+      - **Hely** : válasszon ki egy helyet a legördülő menüből, például: `East US` . Ez a hely nem lehet ugyanazon a helyen, mint az elsődleges kiszolgáló.
 
      > [!NOTE]
      > A kiszolgáló bejelentkezési és tűzfalbeállítások meg kell egyeznie az elsődleges kiszolgálóval.
 
      ![Másodlagos kiszolgáló létrehozása a feladatátvételi csoport számára](./media/failover-group-add-single-database-tutorial/create-secondary-failover-server.png)
 
-   - **Adatbázisok a csoporton belül**: Ha egy másodlagos kiszolgáló van kiválasztva, akkor ez a beállítás fel lesz oldva. Válassza ki a **hozzáadni kívánt adatbázisokat** , majd válassza ki az 1. szakaszban létrehozott adatbázist. Ha hozzáadja az adatbázist a feladatátvételi csoporthoz, a automatikusan elindítja a Geo-replikálási folyamatot.
+   - **Adatbázisok a csoporton belül** : Ha egy másodlagos kiszolgáló van kiválasztva, akkor ez a beállítás fel lesz oldva. Válassza ki a **hozzáadni kívánt adatbázisokat** , majd válassza ki az 1. szakaszban létrehozott adatbázist. Ha hozzáadja az adatbázist a feladatátvételi csoporthoz, a automatikusan elindítja a Geo-replikálási folyamatot.
 
    ![SQL Database hozzáadása a feladatátvételi csoporthoz](./media/failover-group-add-single-database-tutorial/add-sqldb-to-failover-group.png)
 
@@ -211,7 +211,7 @@ Ebben a lépésben a feladatátvételi csoportot átadja a másodlagos kiszolgá
 
 Feladatátvételi teszt a Azure Portal használatával.
 
-1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon.
+1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás** lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon.
 1. Válassza ki a 2. szakaszban létrehozott adatbázist, például: `mySampleDatbase` .
 1. A kiszolgáló beállításainak megnyitásához válassza a **kiszolgáló neve alatt lévő** kiszolgáló nevét.
 
@@ -327,7 +327,7 @@ Az oktatóanyag ezen része a következő Azure CLI-parancsmagokat használja:
 
 ---
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Törölje az erőforrásokat az erőforráscsoport törlésével.
 
@@ -373,7 +373,7 @@ Az oktatóanyag ezen része a következő Azure CLI-parancsmagokat használja:
 
 | Parancs | Jegyzetek |
 |---|---|
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
+| [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ---
 
@@ -417,7 +417,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az SQL feladatátvétel-csoport létrehozása](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | Létrehoz egy feladatátvételi csoportot a Azure SQL Databaseban. |
 | [az SQL feladatátvételi csoport listája](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | A Azure SQL Database kiszolgálójában lévő feladatátvételi csoportok felsorolása. |
 | [az SQL feladatátvétel-csoport beállítása – elsődleges](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | Állítsa be a feladatátvételi csoport elsődlegesét úgy, hogy az a jelenlegi elsődleges kiszolgáló összes adatbázisát elvégzi. |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
+| [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 # <a name="the-portal"></a>[A portál](#tab/azure-portal)
 

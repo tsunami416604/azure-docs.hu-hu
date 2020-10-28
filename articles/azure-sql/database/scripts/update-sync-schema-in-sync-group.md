@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: c60bff122b6ad9bef4e9e4558d9858e1243ebd1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d346d1ff30c138667749822b258bab4c6a621f4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321456"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792718"
 ---
 # <a name="use-powershell-to-update-the-sync-schema-in-an-existing-sync-group"></a>PowerShell használata meglévő szinkronizálási csoport szinkronizálási sémájának frissítéséhez
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -78,13 +78,13 @@ Az **UpdateSyncSchema** szkript a következő parancsokat használja. A tábláz
 
 | Parancs | Jegyzetek |
 |---|---|
-| [Get-AzSqlSyncGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncgroup) | Egy szinkronizálási csoport adatait adja vissza. |
-| [Frissítés – AzSqlSyncGroup](https://docs.microsoft.com/powershell/module/az.sql/update-azsqlsyncgroup) | Frissít egy szinkronizálási csoportot. |
-| [Get-AzSqlSyncMember](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncmember) | Egy szinkronizálási taggal kapcsolatos adatokat ad vissza. |
-| [Get-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncschema) | Egy szinkronizálási sémával kapcsolatos információkat ad vissza. |
-| [Frissítés – AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/update-azsqlsyncschema) | Frissít egy szinkronizálási sémát. |
+| [Get-AzSqlSyncGroup](/powershell/module/az.sql/get-azsqlsyncgroup) | Egy szinkronizálási csoport adatait adja vissza. |
+| [Frissítés – AzSqlSyncGroup](/powershell/module/az.sql/update-azsqlsyncgroup) | Frissít egy szinkronizálási csoportot. |
+| [Get-AzSqlSyncMember](/powershell/module/az.sql/get-azsqlsyncmember) | Egy szinkronizálási taggal kapcsolatos adatokat ad vissza. |
+| [Get-AzSqlSyncSchema](/powershell/module/az.sql/get-azsqlsyncschema) | Egy szinkronizálási sémával kapcsolatos információkat ad vissza. |
+| [Frissítés – AzSqlSyncSchema](/powershell/module/az.sql/update-azsqlsyncschema) | Frissít egy szinkronizálási sémát. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShellről [az Azure PowerShell dokumentációjában](/powershell/azure/) talál további információt.
 
@@ -100,7 +100,7 @@ További információ a SQL-adatszinkronizálásról:
         -  [Az Azure SQL Database és SQL Server közötti adatszinkronizálás a PowerShell használatával](sql-data-sync-sync-data-between-azure-onprem.md)
 - Adatszinkronizálási ügynök – [adatszinkronizálási ügynök SQL-adatszinkronizálás az Azure-ban](../sql-data-sync-agent-overview.md)
 - Ajánlott eljárások – [ajánlott eljárások az Azure](../sql-data-sync-best-practices.md) -beli SQL-adatszinkronizálás
-- Figyelő – [SQL-adatszinkronizálás figyelése Azure monitor naplókkal](../sql-data-sync-monitor-sync.md)
+- Figyelő – [SQL-adatszinkronizálás figyelése Azure monitor naplókkal](../monitor-tune-overview.md)
 - Hibaelhárítás – [Az Azure-SQL-adatszinkronizálás kapcsolatos problémák elhárítása](../sql-data-sync-troubleshoot.md)
 - A szinkronizálási séma frissítése
     - Transact-SQL – [a séma változásainak automatizálása a SQL-adatszinkronizálás az Azure-ban](../sql-data-sync-update-sync-schema.md)
@@ -108,4 +108,4 @@ További információ a SQL-adatszinkronizálásról:
 További információ a SQL Databaseról:
 
 - [SQL Database áttekintése](../sql-database-paas-overview.md)
-- [Az adatbázis életciklusának felügyelete](https://msdn.microsoft.com/library/jj907294.aspx)
+- [Az adatbázis életciklusának felügyelete](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

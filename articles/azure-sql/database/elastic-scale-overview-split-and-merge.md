@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 9303d84b2862b556a9ccc286ffa118bf1e52b715
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a646ffe1d306d7ea13da002715d5bd9b907107b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84047523"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793466"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Adatok mozgatása kiterjesztett felhőalapú adatbázisok között
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -220,7 +220,7 @@ A felosztási-egyesítési szolgáltatás az Azure SDK 2,5-alapú, monitorozási
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> A PowerShell Azure Resource Manager modul továbbra is támogatott, de a jövőbeli fejlesztés az az. SQL modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
+> A PowerShell Azure Resource Manager modul továbbra is támogatott, de a jövőbeli fejlesztés az az. SQL modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
 Ha a NuGet-csomag által biztosított webes és feldolgozói szerepkörök diagnosztikai konfigurációjának használatával szeretné engedélyezni a figyelést és a diagnosztikát, futtassa a következő parancsokat a Azure PowerShell használatával:
 
@@ -244,7 +244,7 @@ A diagnosztikai beállítások konfigurálásával és üzembe helyezésével ka
 
 ## <a name="retrieve-diagnostics"></a>Diagnosztika beolvasása
 
-A diagnosztika a Server Explorer fájának Azure-részében könnyen elérhető a Visual Studio Server Explorerben. Nyisson meg egy Visual Studio-példányt, és a menüsávban kattintson a nézet, majd a Server Explorer elemre. Az Azure-előfizetéshez való kapcsolódáshoz kattintson az Azure ikonra. Ezután navigáljon az Azure-> Storage-> `<your storage account>` -> Tables-> WADLogsTable. További információ: [Server Explorer](https://msdn.microsoft.com/library/x603htbk.aspx).
+A diagnosztika a Server Explorer fájának Azure-részében könnyen elérhető a Visual Studio Server Explorerben. Nyisson meg egy Visual Studio-példányt, és a menüsávban kattintson a nézet, majd a Server Explorer elemre. Az Azure-előfizetéshez való kapcsolódáshoz kattintson az Azure ikonra. Ezután navigáljon az Azure-> Storage-> `<your storage account>` -> Tables-> WADLogsTable. További információ: [Server Explorer](/previous-versions/x603htbk(v=vs.140)).
 
 ![WADLogsTable][2]
 

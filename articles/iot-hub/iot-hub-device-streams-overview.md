@@ -11,12 +11,13 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: 8194f520abf5c8d4e47fa279f6cf82013024e9ec
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+- devx-track-azurecli
+ms.openlocfilehash: bdd9d5fd878094326331e60fc1a639eef08b7ea3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152166"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792463"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub eszköz streamek (előzetes verzió)
 
@@ -56,7 +57,7 @@ Az eszköz SDK-val való programozott létrehozása a következő lépésekkel j
 
 1. Az eszköz a visszahívást előzetesen regisztrálja, hogy értesítést kapjon, amikor új adatfolyamot kezdeményeznek az eszközre. Ez a lépés általában akkor történik meg, amikor az eszköz elindul, és csatlakozik IoT Hubhoz.
 
-2. Ha szükséges, az eszköz AZONOSÍTÓját (_nem_ az IP-címet) adja meg a szolgáltatási oldali program.
+2. Ha szükséges, az eszköz AZONOSÍTÓját ( _nem_ az IP-címet) adja meg a szolgáltatási oldali program.
 
 3. Az IoT hub az 1. lépésben regisztrált visszahívás meghívásával értesíti az eszközön található programot. Az eszköz elfogadhatja vagy elutasíthatja a stream kezdeményezési kérelmét. Ez a logika az alkalmazási forgatókönyvre is jellemző lehet. Ha az eszköz elutasítja az adatfolyam-kérelmet, IoT Hub ennek megfelelően értesíti a szolgáltatást; Ellenkező esetben kövesse az alábbi lépéseket.
 
@@ -103,7 +104,7 @@ A kimenet az összes végpont JSON-objektuma, amelyet a hub eszközének és szo
 ```
 
 > [!NOTE]
-> Győződjön meg arról, hogy telepítette az Azure CLI 2.0.57 vagy újabb verzióját. A legújabb verziót az [Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest) oldaláról töltheti le.
+> Győződjön meg arról, hogy telepítette az Azure CLI 2.0.57 vagy újabb verzióját. A legújabb verziót az [Azure CLI telepítése](/cli/azure/install-azure-cli) oldaláról töltheti le.
 >
 
 ## <a name="allow-outbound-connectivity-to-the-device-streaming-endpoints"></a>Kimenő kapcsolat engedélyezése az eszköz streaming végpontjai számára
@@ -119,28 +120,28 @@ az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> Győződjön meg arról, hogy telepítette az Azure CLI 2.0.57 vagy újabb verzióját. A legújabb verziót az [Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest) oldaláról töltheti le.
+> Győződjön meg arról, hogy telepítette az Azure CLI 2.0.57 vagy újabb verzióját. A legújabb verziót az [Azure CLI telepítése](/cli/azure/install-azure-cli) oldaláról töltheti le.
 >
 
-## <a name="troubleshoot-via-device-streams-activity-logs"></a>Hibák az eszköz stream-tevékenység naplóin keresztül
+## <a name="troubleshoot-via-device-streams-resource-logs"></a>Az eszköz-adatfolyamok erőforrás-naplóin keresztüli hibakeresés
 
-Azure Monitor naplók beállíthatók úgy, hogy összegyűjtsék az eszközön lévő adatfolyamok tevékenységi naplóját a IoT Hub. Ez nagyon hasznos lehet a hibaelhárítási forgatókönyvekben.
+Beállíthatja, hogy Azure Monitor összegyűjtse az erőforrás-naplókat a IoT Hub által kibocsátott [eszköz-adatfolyamok számára](monitor-iot-hub-reference.md#device-streams-preview) . Ez nagyon hasznos lehet a hibaelhárítási forgatókönyvekben.
 
-Kövesse az alábbi lépéseket a IoT Hub Device stream-tevékenységekhez tartozó Azure Monitor naplók konfigurálásához:
+Az alábbi lépéseket követve hozzon létre egy diagnosztikai beállítást, hogy az eszköz stream-naplókat küldjön a IoT Hub Azure Monitor naplókhoz:
 
-1. Navigáljon a IoT Hub *diagnosztikai beállítások* lapjára, és kattintson a *diagnosztika bekapcsolása* hivatkozásra.
+1. A Azure Portalban navigáljon az IoT hubhoz. A bal oldali ablaktábla **figyelés** területén válassza a **diagnosztikai beállítások** elemet. Ezután válassza a **diagnosztikai beállítás hozzáadása** lehetőséget.
 
-   !["Diagnosztikai naplók engedélyezése"](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings-pane.png)
+2. Adja meg a diagnosztikai beállítások nevét, és válassza a **DeviceStreams** lehetőséget a naplók listájából. Ezután válassza **a küldés log Analytics** lehetőséget. Egy meglévő Log Analytics munkaterületet kell választania, vagy újat kell létrehoznia.
 
-2. Adja meg a diagnosztikai beállítások nevét, majd kattintson a *küldés log Analytics* lehetőségre. A rendszer egy meglévő Log Analytics munkaterület-erőforrás kiválasztását vagy egy új létrehozását fogja követni. Emellett a listából is megnézheti a *DeviceStreams* .
+    :::image type="content" source="media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png" alt-text="Eszköz stream-naplóinak engedélyezése":::
 
-    !["Az eszköz stream-naplóinak engedélyezése"](./media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png)
-
-3. Most már elérheti az eszköz stream-naplóit a IoT Hub portáljának *naplók* lapján. Az eszköz stream-tevékenység naplói megjelennek a `AzureDiagnostics` táblázatban, és rendelkeznek `Category=DeviceStreams` .
+3. Miután létrehozta a diagnosztikai beállítást, hogy az eszköz stream-naplóit egy Log Analytics munkaterületre küldje el, a naplók elem kiválasztásával érheti el **a naplókat** **a IoT** hub bal oldali ablaktábláján a Azure Portalban. Az eszköz stream-naplói megjelennek a `AzureDiagnostics` táblában, és rendelkeznek `Category=DeviceStreams` . Vegye figyelembe, hogy a naplókban szereplő művelet végrehajtása több percig is eltarthat a táblázatban.
 
    Ahogy az alább látható, a megcélzott eszköz identitása és a művelet eredménye is elérhető a naplókban.
 
    !["A Device stream-naplók elérése"](./media/iot-hub-device-streams-overview/device-streams-view-logs.png)
+
+Ha többet szeretne megtudni a Azure Monitor és a IoT Hub használatáról, tekintse meg a következőt: [monitoring IoT hub](monitor-iot-hub.md). További információ a IoT Hub rendelkezésre álló összes erőforrás-naplóról, metrikáról és táblázatról: az [Azure IoT hub adathivatkozásának figyelése](monitor-iot-hub-reference.md).
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
@@ -182,7 +183,7 @@ A helyi proxy minta azt mutatja be, hogyan lehet engedélyezni egy meglévő alk
 
 Ez a szakasz azt ismerteti, hogyan használhatók az adatfolyamok a felhasználó számára az eszközökön keresztüli SSH-eszközökre (az RDP vagy más ügyfél/kiszolgáló alkalmazás esetében a protokoll megfelelő portjának használatával).
 
-A telepítő két *helyi proxykiszolgálót* használ az alábbi ábrán látható módon, azaz az *eszköz helyi proxyját* és a *szolgáltatás helyi proxyját*. A helyi proxy programok felelősek az [eszköz stream-kezdeményezési kézfogásának](#device-stream-creation-flow) elvégzéséhez IoT hub használatával, valamint az SSH-ügyfél és az SSH démon és a normál ügyfél/kiszolgáló szoftvercsatornák használatával való interakció.
+A telepítő két *helyi proxykiszolgálót* használ az alábbi ábrán látható módon, azaz az *eszköz helyi proxyját* és a *szolgáltatás helyi proxyját* . A helyi proxy programok felelősek az [eszköz stream-kezdeményezési kézfogásának](#device-stream-creation-flow) elvégzéséhez IoT hub használatával, valamint az SSH-ügyfél és az SSH démon és a normál ügyfél/kiszolgáló szoftvercsatornák használatával való interakció.
 
 !["Az eszköz stream-proxy beállítása SSH/RDP-hez"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png)
 

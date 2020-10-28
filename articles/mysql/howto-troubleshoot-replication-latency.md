@@ -6,15 +6,17 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 10/08/2020
-ms.openlocfilehash: cb02b29c100da7b8d63f214acc78906a757344c0
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.date: 10/25/2020
+ms.openlocfilehash: af82b9e2feee3e03d2a0703d771c68b67ddd08c9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096096"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791579"
 ---
-# <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>Azure Database for MySQL replikációs késésének hibáinak megoldása
+# <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>A replikáció késésének elhárítása az Azure Database for MySQL-ben
+
+[!INCLUDE[applies-to-single-flexible-server](./includes/applies-to-single-flexible-server.md)]
 
 Az [olvasási replika](concepts-read-replicas.md) funkció lehetővé teszi az adatok replikálását egy Azure Database for MySQL-kiszolgálóról egy írásvédett replika kiszolgálóra. A számítási feladatok felskálázása az alkalmazásból a replika kiszolgálókra irányuló olvasási és jelentéskészítési lekérdezések útválasztásával végezhető el. Ez a beállítás csökkenti a forráskiszolgáló terhelését. Emellett az alkalmazás teljes teljesítményét és késését is javítja, ahogy méretezi. 
 
@@ -31,9 +33,9 @@ Ebből a cikkből megtudhatja, hogyan lehet elhárítani a Azure Database for My
 
 ## <a name="replication-concepts"></a>Replikációs fogalmak
 
-Ha engedélyezve van egy bináris napló, a forráskiszolgáló véglegesített tranzakciókat ír a bináris naplóba. A rendszer a bináris naplót használja a replikáláshoz. Alapértelmezés szerint be van kapcsolva minden olyan újonnan kiosztott kiszolgáló számára, amely akár 16 TB tárterületet is támogat. A replika-kiszolgálókon két szál fut minden egyes másodpéldány-kiszolgálón. Az egyik szál az *IO-szál*, a másik pedig az *SQL-szál*:
+Ha engedélyezve van egy bináris napló, a forráskiszolgáló véglegesített tranzakciókat ír a bináris naplóba. A rendszer a bináris naplót használja a replikáláshoz. Alapértelmezés szerint be van kapcsolva minden olyan újonnan kiosztott kiszolgáló számára, amely akár 16 TB tárterületet is támogat. A replika-kiszolgálókon két szál fut minden egyes másodpéldány-kiszolgálón. Az egyik szál az *IO-szál* , a másik pedig az *SQL-szál* :
 
-- Az i/o-szál csatlakozik a forráskiszolgálón, és a frissített bináris naplókat kéri. Ez a szál a bináris napló frissítéseit kapja meg. Ezeket a frissítéseket egy replika-kiszolgálóra menti a rendszer a *Relay-napló*nevű helyi naplóban.
+- Az i/o-szál csatlakozik a forráskiszolgálón, és a frissített bináris naplókat kéri. Ez a szál a bináris napló frissítéseit kapja meg. Ezeket a frissítéseket egy replika-kiszolgálóra menti a rendszer a *Relay-napló* nevű helyi naplóban.
 - Az SQL-szál beolvassa a Relay-naplót, majd alkalmazza az adatmódosításokat a replika-kiszolgálókon.
 
 ## <a name="monitoring-replication-latency"></a>Replikáció késésének figyelése
@@ -237,5 +239,5 @@ Hasznos lehet a binlog_group_commit_sync_delay paraméter beállítása 1000-re 
 
 A sok önálló tranzakciót tartalmazó, alacsony párhuzamosságú számítási feladatokhoz a binlog_group_commit_sync_delay-beállítás növelheti a késést. A késés megnövelhető, mert az IO-szál a tömeges bináris naplók frissítésére vár, még akkor is, ha csak néhány tranzakció véglegesítve van. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a [MySQL BinLog-replikáció áttekintését](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 50e7e597a4fb02919739633529abdbf772bcecea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efab0234d428a8283845946289cdd1e8a17ded26
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443051"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792055"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>Szegmens hozzáadása Elastic Database eszközök használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ Ha a kulcsok új tartománya már nem része egy meglévő leképezésnek, egysz
 
 ### <a name="example--adding-a-shard-and-its-range-to-an-existing-shard-map"></a>Példa: szegmens és a hozzá tartozó tartomány hozzáadása egy meglévő felosztási térképhez
 
-Ez a példa a TryGetShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard), [.net](https://docs.microsoft.com/previous-versions/azure/dn823929(v=azure.100))) használja a CreateShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)), a CreateRangeMapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) metódusokat), és létrehozza a ShardLocation ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)) osztály egy példányát. Az alábbi példában egy **sample_shard_2** nevű adatbázis és a benne található összes szükséges séma objektum a (z) [300, 400) tartományhoz lett létrehozva.  
+Ez a példa a TryGetShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard), [.net](/previous-versions/azure/dn823929(v=azure.100))) használja a CreateShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)), a CreateRangeMapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) metódusokat), és létrehozza a ShardLocation ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)) osztály egy példányát. Az alábbi példában egy **sample_shard_2** nevű adatbázis és a benne található összes szükséges séma objektum a (z) [300, 400) tartományhoz lett létrehozva.  
 
 ```csharp
 // sm is a RangeShardMap object.
@@ -79,6 +79,6 @@ upd.Shard = shard2;
 sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd));
 ```
 
-**Fontos**: csak akkor használja ezt a technikát, ha biztos abban, hogy a frissített leképezés tartománya üres.  Az előző metódusok nem ellenőrzik az áthelyezett tartomány adatait, ezért a legjobb megoldás a kód ellenőrzésének belefoglalása.  Ha sorok találhatók az áthelyezett tartományban, a tényleges adateloszlás nem felel meg a frissített szegmenses térképnek. A művelet elvégzéséhez használja a [Split-Merge eszközt](elastic-scale-overview-split-and-merge.md) a következő esetekben.  
+**Fontos** : csak akkor használja ezt a technikát, ha biztos abban, hogy a frissített leképezés tartománya üres.  Az előző metódusok nem ellenőrzik az áthelyezett tartomány adatait, ezért a legjobb megoldás a kód ellenőrzésének belefoglalása.  Ha sorok találhatók az áthelyezett tartományban, a tényleges adateloszlás nem felel meg a frissített szegmenses térképnek. A művelet elvégzéséhez használja a [Split-Merge eszközt](elastic-scale-overview-split-and-merge.md) a következő esetekben.  
 
 [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]

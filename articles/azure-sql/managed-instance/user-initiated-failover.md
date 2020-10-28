@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 08/31/2020
-ms.openlocfilehash: 3be0695c20eafb71564211d1168bc59813f8800a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebf36c99e6c4dd636c41086d4c72fd6761f6d5ca
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617757"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791630"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Felhasználó által kezdeményezett manuális feladatátvétel a felügyelt SQL-példányon
 
@@ -62,7 +62,7 @@ Connect-AzAccount
 Select-AzSubscription -SubscriptionId $subscription
 ```
 
-Használja az alábbi PowerShell-parancsot: [AzSqlInstanceFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlinstancefailover) a következő példával kezdeményezheti az elsődleges csomópont feladatátvételét, amely a BC és a GP szolgáltatási szintjére is érvényes.
+Használja az alábbi PowerShell-parancsot: [AzSqlInstanceFailover](/powershell/module/az.sql/invoke-azsqlinstancefailover) a következő példával kezdeményezheti az elsődleges csomópont feladatátvételét, amely a BC és a GP szolgáltatási szintjére is érvényes.
 
 ```powershell
 $ResourceGroup = 'enter resource group of your MI'
@@ -96,7 +96,7 @@ az sql mi failover -g myresourcegroup -n myinstancename --replica-type ReadableS
 
 ### <a name="using-rest-api"></a>A REST API-val együtt
 
-A folyamatos tesztelési folyamat vagy az automatizált teljesítmény-elhárító használatával olyan speciális felhasználók számára, akik az SQL-felügyelt példányaik feladatátvételét szeretnék automatizálni, egy API-hívással végezheti el a feladatátvétel kezdeményezését. Lásd: [felügyelt példányok – feladatátvételi REST API](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover) a részletekért.
+A folyamatos tesztelési folyamat vagy az automatizált teljesítmény-elhárító használatával olyan speciális felhasználók számára, akik az SQL-felügyelt példányaik feladatátvételét szeretnék automatizálni, egy API-hívással végezheti el a feladatátvétel kezdeményezését. Lásd: [felügyelt példányok – feladatátvételi REST API](/rest/api/sql/managed%20instances%20-%20failover/failover) a részletekért.
 
 Ha REST API hívással szeretné elindítani a feladatátvételt, először az Ön által választott API-ügyféllel kell előállítania az Auth-tokent. A generált hitelesítési token az API-kérelem fejlécében található engedélyezési tulajdonságként van használatban, és kötelező megadni.
 
@@ -140,7 +140,7 @@ Nem fogja tudni ugyanazt a kimenetet látni a GP szolgáltatási szintjével, mi
 
 > [!IMPORTANT]
 > A felhasználó által kezdeményezett manuális feladatátvétel működési korlátai a következők:
-> - Lehet, hogy egy (1) feladatátvétel a felügyelt példányon **30 percenként**lett kezdeményezve.
+> - Lehet, hogy egy (1) feladatátvétel a felügyelt példányon **30 percenként** lett kezdeményezve.
 > - BC-példányok esetében léteznie kell a feladatátvételi kérelem elfogadásához szükséges replikák Kvórumának.
 > - BC-példányok esetében nem lehet megadni, hogy melyik olvasható másodlagos replika kezdeményezi a feladatátvételt.
 

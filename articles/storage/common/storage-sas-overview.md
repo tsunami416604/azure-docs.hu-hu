@@ -10,12 +10,12 @@ ms.date: 08/17/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 218946fcfbf2268ff3b06eab839d69e6b370e891
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 6c6ac3e6ab6a27e0aca1aa2bebecb86cc1eb3f87
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367907"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792973"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával
 
@@ -127,7 +127,7 @@ A közös hozzáférési aláírások használatára vonatkozó alábbi javaslat
 - **Ismerje meg, hogy a fiók számlázása minden használat után történik, beleértve a SAS-n keresztül is.** Ha írási hozzáférést biztosít egy blobhoz, a felhasználó a 200 GB-os blob feltöltését is választhatja. Ha olvasási hozzáféréssel is rendelkezik, dönthetnek úgy is, hogy 10 alkalommal töltik le, ami 2 TB-ot jelent a kimenő forgalomért. A korlátozott engedélyek megadásával csökkentheti a rosszindulatú felhasználók lehetséges műveleteit. Használja a rövid élettartamú SAS-t a fenyegetés csökkentése érdekében (de legyen szem előtt tartva a Befejezés időpontját).
 - **A SAS használatával írt adatellenőrzés.** Ha egy ügyfélalkalmazás adatot ír a Storage-fiókjába, vegye figyelembe, hogy problémák merülhetnek fel az adott adattal kapcsolatban. Ha az alkalmazás működéséhez az szükséges, hogy az adatok a használatra kész állapotban legyenek, akkor ezt az ellenőrzést az adatok írása után kell végrehajtani, mielőtt az alkalmazás használni fogja őket. Ez a gyakorlat védelmet biztosít a fiókba írt sérült vagy rosszindulatú adatbevitelek ellen, akár egy olyan felhasználó, aki megfelelően megszerezte az SAS-t, vagy egy kiszivárgott SAS-t használó felhasználó.
 - **Ismerje meg, ha nem használ SAS-t.** Előfordulhat, hogy egy adott művelethez kapcsolódó kockázatok a Storage-fiókkal szemben meghaladják a SAS használatának előnyeit. Ilyen műveletekhez hozzon létre egy olyan középszintű szolgáltatást, amely az üzleti szabályok érvényesítése, hitelesítés és naplózás végrehajtása után a Storage-fiókjába ír. Időnként más módokon is egyszerűbb a hozzáférés kezelése. Ha például a tárolóban lévő összes blobot nyilvánosan olvashatóként szeretné végezni, akkor a tárolót nyilvánosra helyezheti ahelyett, hogy minden ügyfél számára elérhetővé tegye a hozzáférést.
-- **Az alkalmazás figyeléséhez használja a Azure Monitor és az Azure Storage-naplókat.** A Azure Monitor és a Storage Analytics naplózásával megfigyelheti az engedélyezési hibákhoz tartozó összes tüskét az SAS-szolgáltató szolgáltatás kimaradása vagy a tárolt hozzáférési szabályzat véletlen eltávolítása miatt. További információ: [Azure Storage-metrikák Azure monitor](monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) és [Azure Storage Analytics naplózás](storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+- **Az alkalmazás figyeléséhez használja a Azure Monitor és az Azure Storage-naplókat.** A Azure Monitor és a Storage Analytics naplózásával megfigyelheti az engedélyezési hibákhoz tartozó összes tüskét az SAS-szolgáltató szolgáltatás kimaradása vagy a tárolt hozzáférési szabályzat véletlen eltávolítása miatt. További információ: [Azure Storage-metrikák Azure monitor](../blobs/monitor-blob-storage.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) és [Azure Storage Analytics naplózás](storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="get-started-with-sas"></a>Az SAS első lépései
 

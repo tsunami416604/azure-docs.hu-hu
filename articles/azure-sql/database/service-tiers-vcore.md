@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 09/30/2020
-ms.openlocfilehash: 44dafd1b0043c2daa7065069f571f13529303a73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4473ea304176615c35205494f342922869b71ea
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614427"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793143"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Virtuális mag-modell áttekintése – Azure SQL Database és az Azure SQL felügyelt példánya 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,8 +34,8 @@ A virtuális mag modellben található szolgáltatási rétegek beállításai k
 |-|**Általános célú**|**Üzletileg kritikus**|**Rugalmas skálázás**|
 |---|---|---|---|
 |A következőkre alkalmas|A legtöbb üzleti számítási feladat. Költséghatékony, kiegyensúlyozott és skálázható számítási és tárolási lehetőségeket nyújt. |Több elkülönített replika használatával a lehető legnagyobb rugalmasságot nyújtja az üzleti alkalmazások számára, és az adatbázis-replikák esetében a legmagasabb I/O-teljesítményt biztosítja.|A legtöbb üzleti számítási feladat nagy mértékben méretezhető tárolási és olvasási méretezési követelményekkel.  Nagyobb rugalmasságot biztosít a hibákhoz azáltal, hogy lehetővé teszi több elkülönített adatbázis-replika konfigurációját. |
-|Storage|Távoli tárterületet használ.<br/>**SQL Database kiépített számítás**:<br/>5 GB – 4 TB<br/>**Kiszolgáló nélküli számítás**:<br/>5 GB – 3 TB<br/>**SQL felügyelt példány**: 32 GB – 8 TB |A helyi SSD-tárolót használ.<br/>**SQL Database kiépített számítás**:<br/>5 GB – 4 TB<br/>**SQL felügyelt példány**:<br/>32 GB – 4 TB |A tárterület rugalmas automatikus növekedése igény szerint. Akár 100 TB tárterületet is támogat. A helyi SSD-tárolót használ a helyi puffer-készlet gyorsítótárához és a helyi adattároláshoz. Az Azure-beli távoli tárterületet használja végső hosszú távú adattárként. |
-|IOPS és átviteli sebesség (hozzávetőleges)|**SQL Database**: az [önálló adatbázisok](resource-limits-vcore-single-databases.md) és a [rugalmas készletek](resource-limits-vcore-elastic-pools.md)erőforrás-korlátai.<br/>**SQL felügyelt példány**: lásd az [Azure SQL felügyelt példányok erőforrás-korlátainak áttekintése](../managed-instance/resource-limits.md#service-tier-characteristics)című témakört.|Tekintse meg az [önálló adatbázisok](resource-limits-vcore-single-databases.md) és a [rugalmas készletek](resource-limits-vcore-elastic-pools.md)erőforrás-korlátozásait.|A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPS és az átviteli sebesség a munkaterheléstól függ.|
+|Storage|Távoli tárterületet használ.<br/>**SQL Database kiépített számítás** :<br/>5 GB – 4 TB<br/>**Kiszolgáló nélküli számítás** :<br/>5 GB – 3 TB<br/>**SQL felügyelt példány** : 32 GB – 8 TB |A helyi SSD-tárolót használ.<br/>**SQL Database kiépített számítás** :<br/>5 GB – 4 TB<br/>**SQL felügyelt példány** :<br/>32 GB – 4 TB |A tárterület rugalmas automatikus növekedése igény szerint. Akár 100 TB tárterületet is támogat. A helyi SSD-tárolót használ a helyi puffer-készlet gyorsítótárához és a helyi adattároláshoz. Az Azure-beli távoli tárterületet használja végső hosszú távú adattárként. |
+|IOPS és átviteli sebesség (hozzávetőleges)|**SQL Database** : az [önálló adatbázisok](resource-limits-vcore-single-databases.md) és a [rugalmas készletek](resource-limits-vcore-elastic-pools.md)erőforrás-korlátai.<br/>**SQL felügyelt példány** : lásd az [Azure SQL felügyelt példányok erőforrás-korlátainak áttekintése](../managed-instance/resource-limits.md#service-tier-characteristics)című témakört.|Tekintse meg az [önálló adatbázisok](resource-limits-vcore-single-databases.md) és a [rugalmas készletek](resource-limits-vcore-elastic-pools.md)erőforrás-korlátozásait.|A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPS és az átviteli sebesség a munkaterheléstól függ.|
 |Rendelkezésre állás|1 replika, nincsenek olvasási méretezésű replikák|3 replika, 1 [olvasási léptékű replika](read-scale-out.md),<br/>zóna – redundáns magas rendelkezésre állás (HA)|1 írható-olvasható replika, valamint 0-4 [-es olvasási léptékű replika](read-scale-out.md)|
 |Biztonsági másolatok|[Olvasási hozzáférés – geo-redundáns tárolás (ra-GRS)](../../storage/common/geo-redundant-design.md), 7-35 nap (alapértelmezés szerint 7 nap)|[Ra-GRS](../..//storage/common/geo-redundant-design.md), 7-35 nap (alapértelmezés szerint 7 nap)|Pillanatkép-alapú biztonsági másolatok az Azure-beli távoli tárolóban. A visszaállítja ezeket a pillanatképeket a gyors helyreállításhoz. A biztonsági másolatok azonnaliek, és nem befolyásolják a számítási I/O-teljesítményt. A visszaállítások gyorsak, és nem az adatmennyiség (óra vagy nap helyett percekben).|
 |Memóriabeli|Nem támogatott|Támogatott|Nem támogatott|
@@ -111,7 +111,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 |Fsv2 sorozat     |-Intel® 8168 (Skylake) processzorok<br>– A 3,4 GHz-es és az összes Core Turbo órajel-sebesség, valamint a 3,7 GHz-es maximális, egyetlen Core Turbo órajel.<br>– Akár 72 virtuális mag (1 virtuális mag = 1 Hyper-thread)|-1,9 GB/virtuális mag<br>– Akár 136 GB-nyi kiépítés|
 |M sorozat     |-Intel® E7-8890 v3 2,5 GHz és Intel® 8280M 2,7 GHz (Cascade Lake) processzorok<br>– Akár 128 virtuális mag (1 virtuális mag = 1 Hyper-thread)|– 29 GB/virtuális mag<br>– Akár 3,7 TB-os kiépítés|
 
-\* A [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dinamikus felügyeleti nézetében az Intel® SP-8160 (Skylake) processzorokat használó adatbázisok hardveres generálása Gen6, míg az Intel® 8272CL (Cascade Lake) használó adatbázisok hardveres generálása Gen7 néven jelenik meg. Az összes Gen5-adatbázis erőforrás-korlátja azonos a processzor típusától (Broadwell, Skylake vagy Cascade Lake) függetlenül.
+\* A [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dinamikus felügyeleti nézetében az Intel® SP-8160 (Skylake) processzorokat használó adatbázisok hardveres generálása Gen6, míg az Intel® 8272CL (Cascade Lake) használó adatbázisok hardveres generálása Gen7 néven jelenik meg. Az összes Gen5-adatbázis erőforrás-korlátja azonos a processzor típusától (Broadwell, Skylake vagy Cascade Lake) függetlenül.
 
 Az erőforrás-korlátokkal kapcsolatos további információkért lásd: [az önálló adatbázisok erőforrás-korlátai (virtuális mag)](resource-limits-vcore-single-databases.md)vagy a [rugalmas készletek erőforrás-korlátai (virtuális mag)](resource-limits-vcore-elastic-pools.md).
 
@@ -138,7 +138,7 @@ Adatbázis esetén az Áttekintés lapon válassza ki a **díjszabási szintet**
 
   ![hardver módosítása](./media/service-tiers-vcore/change-hardware.png)
 
-Készlet esetén az Áttekintés lapon válassza a **Konfigurálás**lehetőséget.
+Készlet esetén az Áttekintés lapon válassza a **Konfigurálás** lehetőséget.
 
 Kövesse a konfiguráció módosításához szükséges lépéseket, és válassza ki a hardver generációját az előző lépésekben leírtak szerint.
 
@@ -168,7 +168,7 @@ Használja a következő PowerShell-parancsfájlt:
 Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -ComputeGeneration Gen5
 ```
 
-További részletekért olvassa el a [set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) parancsot.
+További részletekért olvassa el a [set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance) parancsot.
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -178,7 +178,7 @@ Használja az alábbi CLI-parancsot:
 az sql mi update -g mygroup -n myinstance --family Gen5
 ```
 
-További részletekért az [az SQL mi Update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update) paranccsal tájékozódhat.
+További részletekért az [az SQL mi Update](/cli/azure/sql/mi#az-sql-mi-update) paranccsal tájékozódhat.
 
 ---
 
@@ -238,5 +238,4 @@ Az általános célú és az üzleti szempontból kritikus szolgáltatási szint
 
 - [Azure SQL Database virtuális mag-alapú erőforrás-korlátai](resource-limits-vcore-single-databases.md).
 - [a készletezett Azure SQL Database virtuális mag-alapú erőforrás-korlátai](resource-limits-vcore-elastic-pools.md).
-- [virtuális mag-alapú erőforrás-korlátok az Azure SQL felügyelt példányaihoz](../managed-instance/resource-limits.md). 
-
+- [virtuális mag-alapú erőforrás-korlátok az Azure SQL felügyelt példányaihoz](../managed-instance/resource-limits.md).

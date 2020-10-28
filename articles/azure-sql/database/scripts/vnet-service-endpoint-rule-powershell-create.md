@@ -12,12 +12,12 @@ ms.reviewer: vanto
 ms.date: 04/17/2019
 ms.custom: sqldbrb=1
 tags: azure-synapse
-ms.openlocfilehash: ae92d2000bb2c0dfd7e7a42c6070c143e5b787e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f32599c9d289c8fc5e86eb8c7b0574d9703a6dd4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84170868"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792667"
 ---
 # <a name="powershell-create-a-virtual-service-endpoint-and-vnet-rule-for-azure-sql-database"></a>PowerShell: virtuális szolgáltatási végpont és VNet-szabály létrehozása a Azure SQL Databasehoz
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -30,7 +30,7 @@ A *virtuális hálózati szabályok* egy tűzfal biztonsági funkciója, amely a
 Ez a cikk egy PowerShell-parancsfájlt mutat be, amely a következő műveleteket végzi el:
 
 1. Létrehoz egy Microsoft Azure *virtuális szolgáltatási végpontot* az alhálózaton.
-2. Hozzáadja a végpontot a kiszolgáló tűzfalához a *virtuális hálózati szabály*létrehozásához.
+2. Hozzáadja a végpontot a kiszolgáló tűzfalához a *virtuális hálózati szabály* létrehozásához.
 
 További hátteret [a Azure SQL Database virtuális szolgáltatási végpontok][sql-db-vnet-service-endpoint-rule-overview-735r]című témakörben talál.
 
@@ -40,20 +40,20 @@ További hátteret [a Azure SQL Database virtuális szolgáltatási végpontok][
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de az összes jövőbeli fejlesztés a [ `Az.Sql` parancsmagok](/powershell/module/az.sql)esetében is támogatott. A régebbi modul esetében lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de az összes jövőbeli fejlesztés a [ `Az.Sql` parancsmagok](/powershell/module/az.sql)esetében is támogatott. A régebbi modul esetében lásd: [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
 ## <a name="major-cmdlets"></a>Fő parancsmagok
 
-Ez a cikk a [ **New-AzSqlServerVirtualNetworkRule** parancsmagot](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule) emeli ki, amely hozzáadja az alhálózati végpontot a kiszolgáló hozzáférés-vezérlési listájához (ACL), és ezzel létrehoz egy szabályt.
+Ez a cikk a [ **New-AzSqlServerVirtualNetworkRule** parancsmagot](/powershell/module/az.sql/new-azsqlservervirtualnetworkrule) emeli ki, amely hozzáadja az alhálózati végpontot a kiszolgáló hozzáférés-vezérlési listájához (ACL), és ezzel létrehoz egy szabályt.
 
-Az alábbi lista azokat a *főbb* parancsmagokat mutatja be, amelyeket a **New-AzSqlServerVirtualNetworkRule**hívására való felkészüléshez futtatnia kell. Ebben a cikkben ezek a hívások a ["virtuális hálózati szabály" 3. parancsfájlban](#a-script-30)történnek:
+Az alábbi lista azokat a *főbb* parancsmagokat mutatja be, amelyeket a **New-AzSqlServerVirtualNetworkRule** hívására való felkészüléshez futtatnia kell. Ebben a cikkben ezek a hívások a ["virtuális hálózati szabály" 3. parancsfájlban](#a-script-30)történnek:
 
-1. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig): létrehoz egy alhálózati objektumot.
-2. [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork): létrehozza a virtuális hálózatot, és megadja az alhálózatot.
-3. [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig): virtuális szolgáltatási végpontot rendel az alhálózathoz.
-4. [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetwork): a virtuális hálózaton végzett frissítések megőrzése.
-5. [New-AzSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule): miután az alhálózat egy végpont, hozzáadja az alhálózatot virtuális hálózati szabályként a kiszolgáló ACL-jéhez.
-   - Ez a parancsmag a **-IgnoreMissingVNetServiceEndpoint**paramétert kínálja az Azure RM PowerShell-modul 5.1.1-es verziójától kezdve.
+1. [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig): létrehoz egy alhálózati objektumot.
+2. [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork): létrehozza a virtuális hálózatot, és megadja az alhálózatot.
+3. [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig): virtuális szolgáltatási végpontot rendel az alhálózathoz.
+4. [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork): a virtuális hálózaton végzett frissítések megőrzése.
+5. [New-AzSqlServerVirtualNetworkRule](/powershell/module/az.sql/new-azsqlservervirtualnetworkrule): miután az alhálózat egy végpont, hozzáadja az alhálózatot virtuális hálózati szabályként a kiszolgáló ACL-jéhez.
+   - Ez a parancsmag a **-IgnoreMissingVNetServiceEndpoint** paramétert kínálja az Azure RM PowerShell-modul 5.1.1-es verziójától kezdve.
 
 ## <a name="prerequisites-for-running-powershell"></a>A PowerShell futtatásának előfeltételei
 
@@ -382,7 +382,7 @@ Vagy előfordulhat, hogy nem biztos benne, hogy az alhálózat rendelkezik-e a *
 
 1. Győződjön meg arról, hogy az alhálózat rendelkezik-e a **Microsoft. SQL** típus nevével.
 2. Ha nincs megadva, rendelje hozzá a típus nevét.
-    - A szkript megkéri, hogy *erősítse*meg, mielőtt alkalmazza a hiányzó típus nevét.
+    - A szkript megkéri, hogy *erősítse* meg, mielőtt alkalmazza a hiányzó típus nevét.
 
 ### <a name="phases-of-the-script"></a>A parancsfájl fázisai
 
@@ -391,7 +391,7 @@ A PowerShell-parancsfájl fázisai:
 1. Jelentkezzen be az Azure-fiókjába, és csak egyszer kell bejelentkeznie PS-munkamenetben.  Változók kiosztása.
 2. Keressen rá a virtuális hálózatra, majd az alhálózatra.
 3. Az alhálózat a **Microsoft. SQL** Endpoint Server típusa?
-4. Adja hozzá a **Microsoft. SQL**nevű virtuális szolgáltatási végpontot az alhálózaton.
+4. Adja hozzá a **Microsoft. SQL** nevű virtuális szolgáltatási végpontot az alhálózaton.
 
 > [!IMPORTANT]
 > A szkript futtatása előtt szerkesztenie kell a $-változókhoz rendelt értékeket a szkript felső részén.

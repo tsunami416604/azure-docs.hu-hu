@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 02ec24677519902c299babb72e089f75dcf8b34b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71aad7699c5af6ce2a1b9d82a340138200cfb5e1
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443032"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792072"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Felosztási-egyesítési szolgáltatás üzembe helyezése a szilánkokra osztott adatbázisok közötti adatáthelyezéshez
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,9 +39,9 @@ A fájlok a **Microsoft. Azure. SqlDatabase. ElasticScale. Service. SplitMerge. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. Hozzon létre egy Azure SQL Database-adatbázist, amely a felosztási-egyesítési állapot-adatbázisként lesz felhasználva. Nyissa meg az [Azure Portalt](https://portal.azure.com). Hozzon létre egy új **SQL Database**. Adjon nevet az adatbázisnak, és hozzon létre egy új rendszergazdát és jelszót. Ügyeljen rá, hogy a nevet és a jelszót a későbbi használatra jegyezze fel.
+1. Hozzon létre egy Azure SQL Database-adatbázist, amely a felosztási-egyesítési állapot-adatbázisként lesz felhasználva. Nyissa meg az [Azure Portalt](https://portal.azure.com). Hozzon létre egy új **SQL Database** . Adjon nevet az adatbázisnak, és hozzon létre egy új rendszergazdát és jelszót. Ügyeljen rá, hogy a nevet és a jelszót a későbbi használatra jegyezze fel.
 
-1. Győződjön meg arról, hogy a kiszolgáló engedélyezi az Azure-szolgáltatások számára a kapcsolódást. A portálon, a **tűzfal beállításainál**ellenőrizze, hogy az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás be értékre van **-e állítva.** Kattintson a Save (Mentés) ikonra.
+1. Győződjön meg arról, hogy a kiszolgáló engedélyezi az Azure-szolgáltatások számára a kapcsolódást. A portálon, a **tűzfal beállításainál** ellenőrizze, hogy az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás be értékre van **-e állítva.** Kattintson a Save (Mentés) ikonra.
 
 1. Hozzon létre egy Azure Storage-fiókot a diagnosztika kimenetéhez.
 
@@ -51,14 +51,14 @@ A fájlok a **Microsoft. Azure. SqlDatabase. ElasticScale. Service. SplitMerge. 
 
 ### <a name="split-merge-service-configuration"></a>Split-Merge szolgáltatás konfigurációja
 
-1. Abban a mappában, amelybe letöltötte a Split-Merge szerelvényeket, hozzon létre egy másolatot a *ServiceConfiguration. template. cscfg* fájlról, amely a *SplitMergeService. Cspkg* és a *ServiceConfiguration. cscfg*névre van leszállítva.
+1. Abban a mappában, amelybe letöltötte a Split-Merge szerelvényeket, hozzon létre egy másolatot a *ServiceConfiguration. template. cscfg* fájlról, amely a *SplitMergeService. Cspkg* és a *ServiceConfiguration. cscfg* névre van leszállítva.
 
 1. Nyissa meg a *ServiceConfiguration. cscfg* egy szövegszerkesztőben, például a Visual Studióban, amely érvényesíti a bemeneteket, például a tanúsítvány ujjlenyomatai megfelelnek formátumát.
 
 1. Hozzon létre egy új adatbázist, vagy válasszon egy meglévő adatbázist, amely a Split-Merge műveletekhez tartozó állapot-adatbázisként szolgál, és kérje le az adatbázishoz tartozó kapcsolódási karakterláncot.
 
    > [!IMPORTANT]
-   > Ebben az esetben az állapot-adatbázisnak a latin rendezést kell használnia (az SQL \_ latin \_ általános \_ CP1 \_ CI \_ as). További információ: [Windows rendezési név (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx).
+   > Ebben az esetben az állapot-adatbázisnak a latin rendezést kell használnia (az SQL \_ latin \_ általános \_ CP1 \_ CI \_ as). További információ: [Windows rendezési név (Transact-SQL)](/sql/t-sql/statements/windows-collation-name-transact-sql).
 
    A Azure SQL Database a kapcsolatok karakterlánca általában a következőkből áll:
 
@@ -76,7 +76,7 @@ Az oktatóanyag egyszerű tesztelési célú üzembe helyezése érdekében a sz
 
 ### <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
 
-Hozzon létre egy új könyvtárat, és ebből a könyvtárból hajtsa végre a következő parancsot a [Visual Studio ablakának fejlesztői parancssorában](https://msdn.microsoft.com/library/ms229859.aspx) :
+Hozzon létre egy új könyvtárat, és ebből a könyvtárból hajtsa végre a következő parancsot a [Visual Studio ablakának fejlesztői parancssorában](/dotnet/framework/tools/developer-command-prompt-for-vs) :
 
    ```cmd
    makecert ^
@@ -99,17 +99,17 @@ Futtassa a következő parancsot ugyanabból az ablakból, amelyben a MakeCert v
 
 ### <a name="import-the-client-certificate-into-the-personal-store"></a>Az ügyféltanúsítvány importálása a személyes tárolóba
 
-1. A Windows Intézőben kattintson duplán a *MyCert. pfx*fájlra.
-2. A **tanúsítvány importálása varázslóban** válassza az **aktuális felhasználó** lehetőséget, majd kattintson a **tovább**gombra.
-3. Erősítse meg a fájl elérési útját, és kattintson a **tovább**gombra.
-4. Írja be a jelszót, hagyja bejelölve az **összes kiterjesztett tulajdonságot** , és kattintson a **tovább**gombra.
-5. Hagyja **automatikusan a tanúsítványtároló [...] elemet** , és kattintson a **tovább**gombra.
-6. Kattintson a **Befejezés** , majd **az OK gombra**.
+1. A Windows Intézőben kattintson duplán a *MyCert. pfx* fájlra.
+2. A **tanúsítvány importálása varázslóban** válassza az **aktuális felhasználó** lehetőséget, majd kattintson a **tovább** gombra.
+3. Erősítse meg a fájl elérési útját, és kattintson a **tovább** gombra.
+4. Írja be a jelszót, hagyja bejelölve az **összes kiterjesztett tulajdonságot** , és kattintson a **tovább** gombra.
+5. Hagyja **automatikusan a tanúsítványtároló [...] elemet** , és kattintson a **tovább** gombra.
+6. Kattintson a **Befejezés** , majd **az OK gombra** .
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>A PFX-fájl feltöltése a Cloud Service-be
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
-2. Válassza a **Cloud Services**lehetőséget.
+2. Válassza a **Cloud Services** lehetőséget.
 3. Válassza ki a fent létrehozott felhőalapú szolgáltatást a felosztás/egyesítés szolgáltatáshoz.
 4. A felső menüben kattintson a **tanúsítványok** elemre.
 5. Kattintson az alsó sávban a **feltöltés** elemre.
@@ -144,7 +144,7 @@ Vegye figyelembe, hogy az éles üzembe helyezések esetében külön tanúsítv
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com)
 2. Válassza ki a korábban létrehozott Cloud Service-t.
 3. Kattintson az **Áttekintés** elemre.
-4. Válassza ki az átmeneti környezetet, majd kattintson a **feltöltés**elemre.
+4. Válassza ki az átmeneti környezetet, majd kattintson a **feltöltés** elemre.
 5. A párbeszédpanelen adja meg a központi telepítési címkét. A "csomag" és a "konfiguráció" esetében kattintson a "helyi" lehetőségre, és válassza ki a korábban konfigurált *SplitMergeService. cspkg* fájlt és a cscfg-fájlt.
 6. Győződjön meg arról, hogy az **üzembe helyezés jelölőnégyzet akkor is be van jelölve, ha egy vagy több szerepkör egyetlen példányt tartalmaz** .
 7. Az üzembe helyezés megkezdéséhez kattintson a jobb alsó sarokban található ketyeg gombra. Várhatóan néhány percet is igénybe vehet.
@@ -324,8 +324,8 @@ A felosztott egyesítési művelet végrehajtásához deklarálnia kell az áthe
 1. Minden egyes többszintű tábla esetében hozzon létre egy **ShardedTableInfo** objektumot, amely leírja a tábla fölérendelt sémájának nevét (nem kötelező, alapértelmezés szerint "dbo"), a tábla nevét és az abban a táblában található oszlopnevet, amely a horizontális kulcsot tartalmazza.
 2. Mindegyik hivatkozási táblázathoz hozzon létre egy **ReferenceTableInfo** objektumot, amely leírja a tábla szülő sémájának nevét (nem kötelező, alapértelmezés szerint "dbo") és a tábla nevét.
 3. Adja hozzá a fenti TableInfo objektumokat egy új **SchemaInfo** objektumhoz.
-4. Szerezzen be egy **ShardMapManager** objektumra mutató hivatkozást, és hívja meg a **GetSchemaInfoCollection**.
-5. Adja hozzá a **SchemaInfo** a **SchemaInfoCollection**, amely megadja a szegmens leképezésének nevét.
+4. Szerezzen be egy **ShardMapManager** objektumra mutató hivatkozást, és hívja meg a **GetSchemaInfoCollection** .
+5. Adja hozzá a **SchemaInfo** a **SchemaInfoCollection** , amely megadja a szegmens leképezésének nevét.
 
 Erre egy példa látható a SetupSampleSplitMergeEnvironment.ps1 parancsfájlban.
 
@@ -343,7 +343,7 @@ Ha nem tud elküldeni olyan kérelmeket, amelyek a következőket láthatják:
 
    `[Exception] System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'dbo.InsertRequest'.`
 
-Ebben az esetben vizsgálja meg a konfigurációs fájlt, különösen a **WorkerRoleSynchronizationStorageAccountConnectionString**beállítását. Ez a hiba általában azt jelzi, hogy a feldolgozói szerepkör nem tudta sikeresen inicializálni a metaadat-adatbázist az első használat során.
+Ebben az esetben vizsgálja meg a konfigurációs fájlt, különösen a **WorkerRoleSynchronizationStorageAccountConnectionString** beállítását. Ez a hiba általában azt jelzi, hogy a feldolgozói szerepkör nem tudta sikeresen inicializálni a metaadat-adatbázist az első használat során.
 
 [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]
 

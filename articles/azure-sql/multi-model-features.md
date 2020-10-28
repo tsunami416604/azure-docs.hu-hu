@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: 59a709a206eb29b875272674ee19e414023cc37f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5a067272caf9b072117ba57b7b16f8d78a8b456
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87073308"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791647"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database--sql-managed-instance"></a>Azure SQL Database & SQL felügyelt példányának többmodelles képességei
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -44,7 +44,7 @@ Az Azure SQL termékcsalád termékei a következő többmodelles funkciókat bi
 - A [kulcs-érték párok](#key-value-pairs) nincsenek kifejezetten támogatva speciális funkciókként, mivel a kulcs-érték párok natív módon, kétoszlopos táblákként vannak modellezve.
 
   > [!Note]
-  > Ugyanazzal a Transact-SQL-lekérdezéssel a JSON Path kifejezés, a XQuery/XPath kifejezések, a térbeli függvények és a Graph-lekérdezés kifejezéseket használhatja az adatbázisban tárolt adatok eléréséhez. Emellett a Transact-SQL-lekérdezéseket végrehajtó bármely eszköz vagy programozási nyelv is használhatja a lekérdezési felületet a többmodelles adattípusokhoz való hozzáféréshez. Ez a különbség a többmodelles adatbázisok, például a különböző adatmodellek speciális API-ját biztosító [Azure Cosmos db](/azure/cosmos-db/) összehasonlítva.
+  > Ugyanazzal a Transact-SQL-lekérdezéssel a JSON Path kifejezés, a XQuery/XPath kifejezések, a térbeli függvények és a Graph-lekérdezés kifejezéseket használhatja az adatbázisban tárolt adatok eléréséhez. Emellett a Transact-SQL-lekérdezéseket végrehajtó bármely eszköz vagy programozási nyelv is használhatja a lekérdezési felületet a többmodelles adattípusokhoz való hozzáféréshez. Ez a különbség a többmodelles adatbázisok, például a különböző adatmodellek speciális API-ját biztosító [Azure Cosmos db](../cosmos-db/index.yml) összehasonlítva.
 
 A következő szakaszokban megismerheti az Azure SQL termékcsalád termékeinek legfontosabb többmodelles funkcióit.
 
@@ -142,9 +142,9 @@ CREATE TABLE Collection (
 
 Ezt a kulcs-érték struktúrát úgy szabhatja testre, hogy korlátozás nélkül illeszkedjen az igényeihez. Az érték például lehet XML-dokumentum a `nvarchar(max)` típus helyett, ha az érték JSON-dokumentum, a `CHECK` JSON-tartalom érvényességét ellenőrző korlátozást adhat meg. A további oszlopok egy kulcsával kapcsolatos tetszőleges számú értéket adhat hozzá, a számított oszlopok és indexek hozzáadásával egyszerűsítheti és optimalizálhatja az adatelérést, valamint a tábla memóriához/optimalizált séma-táblaként való definiálásával jobb teljesítményt érhet el.
 
-Megtudhatja, [hogyan használja a BWin a In-Memory OLTP, hogy példátlan teljesítményt és skálázást](https://blogs.msdn.microsoft.com/sqlcat/20../../how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/) biztosítson a ASP.net gyorsítótárazási megoldáshoz, amely másodpercenként 1.200.000-kötegeket ért el, például hogyan lehet hatékonyan használni a viszonyítási modellt a gyakorlatban.
+Megtudhatja, [hogyan használja a BWin a In-Memory OLTP, hogy példátlan teljesítményt és skálázást](/archive/blogs/sqlcat/how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale) biztosítson a ASP.net gyorsítótárazási megoldáshoz, amely másodpercenként 1.200.000-kötegeket ért el, például hogyan lehet hatékonyan használni a viszonyítási modellt a gyakorlatban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure SQL termékcsaládban található többmodelles képességek a legfontosabb SQL Server adatbázismotor-funkciók, amelyek az Azure SQL termékcsalád tagjai között vannak megosztva. Ha többet szeretne megtudni ezekről a funkciókról, látogasson el az SQL-kapcsolati adatbázis dokumentációs oldalaira:
 

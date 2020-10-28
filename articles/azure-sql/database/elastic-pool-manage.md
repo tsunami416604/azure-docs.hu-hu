@@ -9,13 +9,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: bd3917c42859d4240fbb3a75f951ff38a548e204
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seoapril2019 sqldbrb=1, devx-track-azurecli
+ms.openlocfilehash: 5916a687c4eff4c6c8890b14a8c204cbabc145ea
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330808"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792191"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Rugalmas készletek kezelése Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,7 +40,7 @@ Innen az alábbi módosítások bármely kombinációját elvégezheti, és egy 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
 SQL Database rugalmas készletek és készletezett adatbázisok Azure PowerShell használatával történő létrehozásához és kezeléséhez használja a következő PowerShell-parancsmagokat. Ha telepítenie vagy frissítenie kell a PowerShellt, olvassa el a [Azure PowerShell modul telepítése](/powershell/azure/install-az-ps)című témakört. A rugalmas készlethez tartozó kiszolgálók létrehozásához és kezeléséhez lásd: [kiszolgálók létrehozása és kezelése](logical-servers.md). A Tűzfalszabályok létrehozásával és kezelésével kapcsolatban lásd: [Tűzfalszabályok létrehozása és kezelése a PowerShell használatával](firewall-configure.md#use-powershell-to-manage-server-level-ip-firewall-rules).
 
@@ -65,7 +65,7 @@ SQL Database rugalmas készletek és készletezett adatbázisok Azure PowerShell
 
 ## <a name="azure-cli"></a>Azure CLI
 
-SQL Database rugalmas készletek az [Azure CLI](/cli/azure)-vel való létrehozásához és kezeléséhez használja az alábbi [Azure CLI SQL Database](/cli/azure/sql/db) -parancsokat. A [Cloud Shell-lel](/azure/cloud-shell/overview) futtassa a parancssori felületet a böngészőben, vagy [telepítse](/cli/azure/install-azure-cli) macOS, Linux, illetve Windows rendszeren.
+SQL Database rugalmas készletek az [Azure CLI](/cli/azure)-vel való létrehozásához és kezeléséhez használja az alábbi [Azure CLI SQL Database](/cli/azure/sql/db) -parancsokat. A [Cloud Shell-lel](../../cloud-shell/overview.md) futtassa a parancssori felületet a böngészőben, vagy [telepítse](/cli/azure/install-azure-cli) macOS, Linux, illetve Windows rendszeren.
 
 > [!TIP]
 > Az Azure CLI példa parancsfájljaihoz lásd: a [CLI használata egy adatbázis SQL Databaseba való áthelyezéséhez egy rugalmas SQL-készletben](scripts/move-database-between-elastic-pools-cli.md) , és az [Azure CLI használatával MÉRETEZHETŐ egy rugalmas SQL-készlet a Azure SQL Database](scripts/scale-pool-cli.md).
@@ -102,18 +102,18 @@ SQL Database rugalmas készletek és készletezett adatbázisok létrehozásáho
 
 | Parancs | Leírás |
 | --- | --- |
-|[Rugalmas készletek – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/elasticpools/createorupdate)|Létrehoz egy új rugalmas készletet, vagy frissít egy meglévő rugalmas készletet.|
-|[Rugalmas készletek – törlés](https://docs.microsoft.com/rest/api/sql/elasticpools/delete)|Törli a rugalmas készletet.|
-|[Rugalmas készletek – Get](https://docs.microsoft.com/rest/api/sql/elasticpools/get)|Rugalmas készletet kap.|
-|[Rugalmas készletek – kiszolgálók listázása](https://docs.microsoft.com/rest/api/sql/elasticpools/listbyserver)|Egy kiszolgálón lévő rugalmas készletek listáját adja vissza.|
-|[Rugalmas készletek – frissítés](https://docs.microsoft.com/rest/api/sql/elasticpools/listbyserver)|Frissít egy meglévő rugalmas készletet.|
-|[Rugalmas készlettel kapcsolatos tevékenységek](https://docs.microsoft.com/rest/api/sql/elasticpoolactivities)|Rugalmas készlet tevékenységeit adja vissza.|
-|[Rugalmas készlet – adatbázis-tevékenységek](https://docs.microsoft.com/rest/api/sql/elasticpooldatabaseactivities)|A rugalmas készletben lévő adatbázisokon belüli tevékenységeket adja vissza.|
-|[Adatbázisok – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Létrehoz egy új adatbázist, vagy frissít egy meglévő adatbázist.|
-|[Adatbázisok – Get](https://docs.microsoft.com/rest/api/sql/databases/get)|Adatbázis beolvasása.|
-|[Adatbázisok – lista rugalmas készlet alapján](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|Egy rugalmas készletben lévő adatbázisok listáját adja vissza.|
-|[Adatbázisok – kiszolgálók listázása](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|Egy kiszolgáló adatbázisainak listáját adja vissza.|
-|[Adatbázisok – frissítés](https://docs.microsoft.com/rest/api/sql/databases/update)|Frissít egy meglévő adatbázist.|
+|[Rugalmas készletek – létrehozás vagy frissítés](/rest/api/sql/elasticpools/createorupdate)|Létrehoz egy új rugalmas készletet, vagy frissít egy meglévő rugalmas készletet.|
+|[Rugalmas készletek – törlés](/rest/api/sql/elasticpools/delete)|Törli a rugalmas készletet.|
+|[Rugalmas készletek – Get](/rest/api/sql/elasticpools/get)|Rugalmas készletet kap.|
+|[Rugalmas készletek – kiszolgálók listázása](/rest/api/sql/elasticpools/listbyserver)|Egy kiszolgálón lévő rugalmas készletek listáját adja vissza.|
+|[Rugalmas készletek – frissítés](/rest/api/sql/elasticpools/listbyserver)|Frissít egy meglévő rugalmas készletet.|
+|[Rugalmas készlettel kapcsolatos tevékenységek](/rest/api/sql/elasticpoolactivities)|Rugalmas készlet tevékenységeit adja vissza.|
+|[Rugalmas készlet – adatbázis-tevékenységek](/rest/api/sql/elasticpooldatabaseactivities)|A rugalmas készletben lévő adatbázisokon belüli tevékenységeket adja vissza.|
+|[Adatbázisok – létrehozás vagy frissítés](/rest/api/sql/databases/createorupdate)|Létrehoz egy új adatbázist, vagy frissít egy meglévő adatbázist.|
+|[Adatbázisok – Get](/rest/api/sql/databases/get)|Adatbázis beolvasása.|
+|[Adatbázisok – lista rugalmas készlet alapján](/rest/api/sql/databases/listbyelasticpool)|Egy rugalmas készletben lévő adatbázisok listáját adja vissza.|
+|[Adatbázisok – kiszolgálók listázása](/rest/api/sql/databases/listbyserver)|Egy kiszolgáló adatbázisainak listáját adja vissza.|
+|[Adatbázisok – frissítés](/rest/api/sql/databases/update)|Frissít egy meglévő adatbázist.|
 
 ## <a name="next-steps"></a>Következő lépések
 

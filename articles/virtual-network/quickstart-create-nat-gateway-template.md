@@ -1,7 +1,7 @@
 ---
 title: NAT-átjáró létrehozása – Resource Manager-sablon
 titleSuffix: Azure Virtual Network NAT
-description: Ez a rövid útmutató bemutatja, hogyan hozhat létre NAT-átjárót a Azure Resource Manager sablon használatával.
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre NAT-átjárót a Azure Resource Manager sablon (ARM-sablon) használatával.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,72 +13,72 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/09/2020
+ms.date: 10/27/2020
 ms.author: allensu
-ms.custom: subject-armqs
-ms.openlocfilehash: fc4804070e0fa4ca6e9e54dcf6e04aafcc17f91a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: subject-armqs, devx-track-azurecli
+ms.openlocfilehash: 6b953c0183943e895c8836f79c1b8e81a22fb31d
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88053898"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792276"
 ---
-# <a name="create-a-nat-gateway---resource-manager-template"></a>NAT-átjáró létrehozása – Resource Manager-sablon
+# <a name="quickstart-create-a-nat-gateway---arm-template"></a>Rövid útmutató: NAT Gateway-ARM-sablon létrehozása
 
-Virtual Network NAT Azure Resource Manager sablon használatával történő használatának első lépései.  Ez a sablon egy virtuális hálózatot, egy NAT-átjáró erőforrást és egy Ubuntu virtuális gépet helyez üzembe. Az Ubuntu virtuális gép a NAT-átjáró erőforrásához társított alhálózatra van telepítve.
+Ismerkedjen meg Virtual Network NAT-val egy Azure Resource Manager sablon (ARM-sablon) használatával. Ez a sablon egy virtuális hálózatot, egy NAT-átjáró erőforrást és egy Ubuntu virtuális gépet helyez üzembe. Az Ubuntu virtuális gép a NAT-átjáró erőforrásához társított alhálózatra van telepítve.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
 
-## <a name="create-a-nat-gateway-and-supporting-resources"></a>NAT-átjáró és támogató erőforrások létrehozása
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-nat-gateway-1-vm%2Fazuredeploy.json)
 
-Ez a sablon úgy van konfigurálva, hogy létrehozzon egy 
+## <a name="prerequisites"></a>Előfeltételek
 
-* Virtuális hálózat 
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
+## <a name="review-the-template"></a>A sablon áttekintése
+
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-nat-gateway-1-vm) közül származik.
+
+Ez a sablon a következő létrehozására van konfigurálva:
+
+* Virtuális hálózat
 * NAT-átjáró-erőforrás
 * Ubuntu virtuális gép
 
 Az Ubuntu virtuális gép a NAT-átjáró erőforrásához társított alhálózatra van telepítve.
 
-### <a name="review-the-template"></a>A sablon áttekintése
-
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-nat-gateway-1-vm/azuredeploy.json) származik.
-
-:::code language="json" source="~/quickstart-templates/101-nat-gateway-1-vm/azuredeploy.json" range="1-335" highlight="256-282":::
+:::code language="json" source="~/quickstart-templates/101-nat-gateway-1-vm/azuredeploy.json":::
 
 A sablonban kilenc Azure-erőforrás van definiálva:
 
-**Microsoft.Network**
+* **[Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)** : létrehoz egy hálózati biztonsági csoportot.
 
-* **[Microsoft. Network/natGateways](https://docs.microsoft.com/azure/templates/microsoft.network/natgateways)**: létrehoz egy NAT Gateway-erőforrást.
+* **[Microsoft. Network/networkSecurityGroups/securityRules](/azure/templates/microsoft.network/networksecuritygroups/securityrules)** : biztonsági szabály létrehozása.
 
-* **[Microsoft. Network/networkSecurityGroups](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups)**: létrehoz egy hálózati biztonsági csoportot.
+* **[Microsoft. Network/nyilvános IP](/azure/templates/microsoft.network/publicipaddresses)** : létrehoz egy nyilvános IP-címet.
 
-    * **[Microsoft. Network/networkSecurityGroups/securityRules](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules)**: biztonsági szabály létrehozása.
+* **[Microsoft. Network/publicIPPrefixes](/azure/templates/microsoft.network/publicipprefixes)** : létrehoz egy nyilvános IP-előtagot.
 
-* **[Microsoft. Network/nyilvános IP](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)**: létrehoz egy nyilvános IP-címet.
+* **[Microsoft. számítás/virtualMachines](/azure/templates/Microsoft.Compute/virtualMachines)** : létrehoz egy virtuális gépet.
 
-* **[Microsoft. Network/publicIPPrefixes](https://docs.microsoft.com/azure/templates/microsoft.network/publicipprefixes)**: létrehoz egy nyilvános IP-előtagot.
+* **[Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)** : létrehoz egy virtuális hálózatot.
 
-* **[Microsoft. Network/virtualNetworks](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)**: létrehoz egy virtuális hálózatot.
+* **[Microsoft. Network/natGateways](/azure/templates/microsoft.network/natgateways)** : létrehoz egy NAT Gateway-erőforrást.
 
-    * **[Microsoft. Network/virtualNetworks/Subnets](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks/subnets)**: létrehoz egy virtuális hálózati alhálózatot.
+* **[Microsoft. Network/virtualNetworks/Subnets](/azure/templates/microsoft.network/virtualnetworks/subnets)** : létrehoz egy virtuális hálózati alhálózatot.
 
-* **[Microsoft. Network/networkinterfaces](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)**: létrehoz egy hálózati adaptert.
+* **[Microsoft. Network/networkinterfaces](/azure/templates/microsoft.network/networkinterfaces)** : létrehoz egy hálózati adaptert.
 
-**Microsoft.Compute**
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-* **[Microsoft. számítás/virtualMachines](https://docs.microsoft.com/azure/templates/Microsoft.Compute/virtualMachines)**: létrehoz egy virtuális gépet.
-
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
-
-**Azure CLI**
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 read -p "Enter the location (i.e. westcentralus): " location
 resourceGroupName="myResourceGroupNAT"
-templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-nat-gateway-1-vm/azuredeploy.json" 
+templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-nat-gateway-1-vm/azuredeploy.json"
 
 az group create \
 --name $resourceGroupName \
@@ -89,7 +89,7 @@ az group deployment create \
 --template-uri  $templateUri
 ```
 
-**Azure PowerShell**
+### <a name="azure-powershell"></a>Azure PowerShell
 
 ```azurepowershell-interactive
 $location = Read-Host -Prompt "Enter the location (i.e. westcentralus)"
@@ -101,46 +101,46 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri
 ```
 
-**Azure Portal**
+### <a name="azure-portal"></a>Azure Portal
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-nat-gateway-1-vm%2Fazuredeploy.json)
 
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
-2. Válassza ki az **erőforráscsoportok** elemet a bal oldali ablaktáblán.
+1. Válassza ki az **erőforráscsoportok** elemet a bal oldali ablaktáblán.
 
-3. Válassza ki az előző szakaszban létrehozott erőforráscsoportot. Az erőforráscsoport alapértelmezett neve **myResourceGroupNAT**
+1. Válassza ki az előző szakaszban létrehozott erőforráscsoportot. Az erőforráscsoport alapértelmezett neve **myResourceGroupNAT**
 
-4. Ellenőrizze, hogy az erőforráscsoport az alábbi erőforrásokat hozta-e létre:
+1. Ellenőrizze, hogy az erőforráscsoport az alábbi erőforrásokat hozta-e létre:
 
     ![NAT-erőforráscsoport Virtual Network](./media/quick-create-template/nat-gateway-template-rg.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
-**Azure CLI**
+### <a name="azure-cli"></a>Azure CLI
 
 Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-delete) paranccsal eltávolíthatja az erőforráscsoportot és a benne található összes erőforrást.
 
-```azurecli-interactive 
+```azurecli-interactive
   az group delete \
     --name myResourceGroupNAT
 ```
 
-**Azure PowerShell**
+### <a name="azure-powershell"></a>Azure PowerShell
 
-Ha már nincs rá szükség, a [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) paranccsal távolíthatja el az erőforráscsoportot és a benne található összes erőforrást.
+Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal távolíthatja el az erőforráscsoportot és a benne található összes erőforrást.
 
-```azurepowershell-interactive 
+```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroupNAT
 ```
 
-**Azure Portal**
+### <a name="azure-portal"></a>Azure Portal
 
-Ha már nincs rá szükség, törölje az erőforráscsoportot, a NAT-átjárót és az összes kapcsolódó erőforrást. Válassza ki a NAT-átjárót tartalmazó erőforráscsoport- **myResourceGroupNAT** , majd válassza a **Törlés**lehetőséget.
+Ha már nincs rá szükség, törölje az erőforráscsoportot, a NAT-átjárót és az összes kapcsolódó erőforrást. Válassza ki a NAT-átjárót tartalmazó erőforráscsoport- **myResourceGroupNAT** , majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozta a következőket:
 
@@ -148,7 +148,7 @@ Ebben a rövid útmutatóban létrehozta a következőket:
 * Virtuális hálózat
 * Ubuntu virtuális gép
 
-A virtuális gép üzembe helyezése a NAT-átjáróhoz társított virtuális hálózati alhálózaton történik. 
+A virtuális gép üzembe helyezése a NAT-átjáróhoz társított virtuális hálózati alhálózaton történik.
 
 Ha többet szeretne megtudni a Virtual Network NAT-ról és Azure Resource Managerról, folytassa az alábbi cikkekkel.
 

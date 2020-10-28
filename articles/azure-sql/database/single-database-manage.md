@@ -4,19 +4,19 @@ description: Ismerkedjen meg a kiszolgálók és az önálló adatbázisok létr
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 43e28774625db0217dde1227bad160ba87750c8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c487b5bc5c8d5fa01388b2942a70defa0001253
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254990"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791528"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>Kiszolgálók és önálló adatbázisok létrehozása és kezelése Azure SQL Database
 
@@ -58,7 +58,7 @@ Meglévő adatbázis kezeléséhez navigáljon az SQL- **adatbázisok** lapra, �
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
 A következő PowerShell-parancsmagokkal hozhat létre és kezelhet kiszolgálókat, az önálló és a készletezett adatbázisokat, valamint a Azure PowerShell kiszolgáló szintű tűzfalakat. Ha telepítenie vagy frissítenie kell a PowerShellt, olvassa el a [Azure PowerShell modul telepítése](/powershell/azure/install-az-ps)című témakört.
 
@@ -74,7 +74,7 @@ A következő PowerShell-parancsmagokkal hozhat létre és kezelhet kiszolgáló
 |[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)|Létrehoz egy erőforráscsoportot|
 |[Új – AzSqlServer](/powershell/module/az.sql/new-azsqlserver)|Létrehoz egy kiszolgálót|
 |[Get-AzSqlServer](/powershell/module/az.sql/get-azsqlserver)|A kiszolgálókkal kapcsolatos információkat ad vissza.|
-|[Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver)|Egy kiszolgáló tulajdonságainak módosítása|
+|[Set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver)|Egy kiszolgáló tulajdonságainak módosítása|
 |[Remove-AzSqlServer](/powershell/module/az.sql/remove-azsqlserver)|Kiszolgáló eltávolítása|
 |[Új – AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)|Kiszolgálói szintű tűzfalszabály létrehozása |
 |[Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule)|Egy kiszolgáló tűzfalszabályok beolvasása|
@@ -84,7 +84,7 @@ A következő PowerShell-parancsmagokkal hozhat létre és kezelhet kiszolgáló
 
 ## <a name="the-azure-cli"></a>Azure CLI
 
-A kiszolgálók, adatbázisok és tűzfalak [Azure CLI](/cli/azure)-vel történő létrehozásához és kezeléséhez használja az alábbi [Azure CLI](/cli/azure/sql/db) -parancsokat. A [Cloud Shell-lel](/azure/cloud-shell/overview) futtassa a parancssori felületet a böngészőben, vagy [telepítse](/cli/azure/install-azure-cli) macOS, Linux, illetve Windows rendszeren. Rugalmas készletek létrehozásához és kezeléséhez lásd: [rugalmas készletek](elastic-pool-overview.md).
+A kiszolgálók, adatbázisok és tűzfalak [Azure CLI](/cli/azure)-vel történő létrehozásához és kezeléséhez használja az alábbi [Azure CLI](/cli/azure/sql/db) -parancsokat. A [Cloud Shell-lel](../../cloud-shell/overview.md) futtassa a parancssori felületet a böngészőben, vagy [telepítse](/cli/azure/install-azure-cli) macOS, Linux, illetve Windows rendszeren. Rugalmas készletek létrehozásához és kezeléséhez lásd: [rugalmas készletek](elastic-pool-overview.md).
 
 > [!TIP]
 > Azure CLI-gyors útmutató: [egyetlen Azure SQL Database létrehozása az Azure CLI használatával](az-cli-script-samples-content-guide.md). Az Azure CLI példa parancsfájljai esetében lásd: [a CLI használata adatbázis létrehozásához Azure SQL Database és SQL Database tűzfalszabály konfigurálása](scripts/create-and-configure-database-cli.md) , valamint a [CLI használata az adatbázisok figyeléséhez és méretezéséhez Azure SQL Databaseban](scripts/monitor-and-scale-database-cli.md).
@@ -144,24 +144,24 @@ A kiszolgálók, adatbázisok és tűzfalak létrehozásához és kezeléséhez 
 
 | Parancs | Leírás |
 | --- | --- |
-|[Kiszolgálók – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Új kiszolgáló létrehozása vagy frissítése.|
-|[Kiszolgálók – törlés](https://docs.microsoft.com/rest/api/sql/servers/delete)|Töröl egy SQL-kiszolgálót.|
-|[Kiszolgálók – Get](https://docs.microsoft.com/rest/api/sql/servers/get)|Kiszolgáló beolvasása.|
-|[Kiszolgálók – lista](https://docs.microsoft.com/rest/api/sql/servers/list)|Egy előfizetésben található kiszolgálók listáját adja vissza.|
-|[Kiszolgálók – erőforráscsoport szerint listázva](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|Egy erőforráscsoport kiszolgálóinak listáját adja vissza.|
-|[Kiszolgálók – frissítés](https://docs.microsoft.com/rest/api/sql/servers/update)|Frissít egy meglévő kiszolgálót.|
-|[Adatbázisok – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Létrehoz egy új adatbázist, vagy frissít egy meglévő adatbázist.|
-|[Adatbázisok – törlés](https://docs.microsoft.com/rest/api/sql/databases/delete)|Töröl egy adatbázist.|
-|[Adatbázisok – Get](https://docs.microsoft.com/rest/api/sql/databases/get)|Adatbázis beolvasása.|
-|[Adatbázisok – lista rugalmas készlet alapján](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|Egy rugalmas készletben lévő adatbázisok listáját adja vissza.|
-|[Adatbázisok – kiszolgálók listázása](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|Egy kiszolgáló adatbázisainak listáját adja vissza.|
-|[Adatbázisok – frissítés](https://docs.microsoft.com/rest/api/sql/databases/update)|Frissít egy meglévő adatbázist.|
-|[Tűzfalszabályok – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)|Tűzfalszabály létrehozása vagy frissítése.|
-|[Tűzfalszabályok – törlés](https://docs.microsoft.com/rest/api/sql/firewallrules/delete)|Tűzfalszabály törlése.|
-|[Tűzfalszabályok – Get](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|Tűzfalszabály beolvasása.|
-|[Tűzfalszabályok – kiszolgálók listázása](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|A tűzfalszabályok listáját adja vissza.|
+|[Kiszolgálók – létrehozás vagy frissítés](/rest/api/sql/servers/createorupdate)|Új kiszolgáló létrehozása vagy frissítése.|
+|[Kiszolgálók – törlés](/rest/api/sql/servers/delete)|Töröl egy SQL-kiszolgálót.|
+|[Kiszolgálók – Get](/rest/api/sql/servers/get)|Kiszolgáló beolvasása.|
+|[Kiszolgálók – lista](/rest/api/sql/servers/list)|Egy előfizetésben található kiszolgálók listáját adja vissza.|
+|[Kiszolgálók – erőforráscsoport szerint listázva](/rest/api/sql/servers/listbyresourcegroup)|Egy erőforráscsoport kiszolgálóinak listáját adja vissza.|
+|[Kiszolgálók – frissítés](/rest/api/sql/servers/update)|Frissít egy meglévő kiszolgálót.|
+|[Adatbázisok – létrehozás vagy frissítés](/rest/api/sql/databases/createorupdate)|Létrehoz egy új adatbázist, vagy frissít egy meglévő adatbázist.|
+|[Adatbázisok – törlés](/rest/api/sql/databases/delete)|Töröl egy adatbázist.|
+|[Adatbázisok – Get](/rest/api/sql/databases/get)|Adatbázis beolvasása.|
+|[Adatbázisok – lista rugalmas készlet alapján](/rest/api/sql/databases/listbyelasticpool)|Egy rugalmas készletben lévő adatbázisok listáját adja vissza.|
+|[Adatbázisok – kiszolgálók listázása](/rest/api/sql/databases/listbyserver)|Egy kiszolgáló adatbázisainak listáját adja vissza.|
+|[Adatbázisok – frissítés](/rest/api/sql/databases/update)|Frissít egy meglévő adatbázist.|
+|[Tűzfalszabályok – létrehozás vagy frissítés](/rest/api/sql/firewallrules/createorupdate)|Tűzfalszabály létrehozása vagy frissítése.|
+|[Tűzfalszabályok – törlés](/rest/api/sql/firewallrules/delete)|Tűzfalszabály törlése.|
+|[Tűzfalszabályok – Get](/rest/api/sql/firewallrules/get)|Tűzfalszabály beolvasása.|
+|[Tűzfalszabályok – kiszolgálók listázása](/rest/api/sql/firewallrules/listbyserver)|A tűzfalszabályok listáját adja vissza.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A SQL Server-adatbázisok Azure-ba történő áttelepítésével kapcsolatos információkért lásd: [áttelepítés Azure SQL Databasere](migrate-to-database-from-sql-server.md).
 - A támogatott funkciókkal kapcsolatos tudnivalókat lásd: [Funkciók](features-comparison.md).

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 487b668d9a3d934220fecf5c0896f7ef492c6775
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07334d62cee94be8b5b8dd6188c1d6354c4d584b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840489"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792599"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>A kötegelt feldolgozás használata az Azure SQL Database és az Azure SQL felügyelt példányok alkalmazásának teljesítményének növeléséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ A cikk első része a Azure SQL Database vagy az Azure SQL felügyelt példány�
 ### <a name="note-about-timing-results-in-this-article"></a>Megjegyzés a cikk időzítési eredményeiről
 
 > [!NOTE]
-> Az eredmények nem teljesítménytesztek, hanem a **relatív teljesítmény**megjelenítésére szolgálnak. Az időzítések átlagosan legalább 10 teszt futtatásán alapulnak. A műveletek egy üres táblába szúrnak be. Ezeket a teszteket előzetesen Megmértük, és nem feltétlenül felelnek meg a V12-es adatbázisban az új [DTU szolgáltatási rétegekkel](database/service-tiers-dtu.md) vagy [virtuális mag-szolgáltatásokkal](database/service-tiers-vcore.md)megtapasztalható átviteli sebességnek. A batching technika relatív előnye hasonló lehet.
+> Az eredmények nem teljesítménytesztek, hanem a **relatív teljesítmény** megjelenítésére szolgálnak. Az időzítések átlagosan legalább 10 teszt futtatásán alapulnak. A műveletek egy üres táblába szúrnak be. Ezeket a teszteket előzetesen Megmértük, és nem feltétlenül felelnek meg a V12-es adatbázisban az új [DTU szolgáltatási rétegekkel](database/service-tiers-dtu.md) vagy [virtuális mag-szolgáltatásokkal](database/service-tiers-vcore.md)megtapasztalható átviteli sebességnek. A batching technika relatív előnye hasonló lehet.
 
 ### <a name="transactions"></a>Tranzakciók
 
@@ -93,7 +93,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-A tranzakciók ténylegesen használatban vannak mindkét példában. Az első példában minden egyes hívás egy implicit tranzakció. A második példában egy explicit tranzakció az összes hívást lezárja. Az [írási tranzakciós naplóhoz](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)tartozó dokumentáció alapján a rendszer a tranzakció véglegesíte után naplózza a rekordokat a lemezre. Így azáltal, hogy több hívást is megadhat egy tranzakcióban, a tranzakciós naplóba való írás késleltetheti a tranzakció véglegesítését. Érvényben van, ha engedélyezi a kötegelt feldolgozást az írásokhoz a kiszolgáló tranzakciónaplójában.
+A tranzakciók ténylegesen használatban vannak mindkét példában. Az első példában minden egyes hívás egy implicit tranzakció. A második példában egy explicit tranzakció az összes hívást lezárja. Az [írási tranzakciós naplóhoz](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)tartozó dokumentáció alapján a rendszer a tranzakció véglegesíte után naplózza a rekordokat a lemezre. Így azáltal, hogy több hívást is megadhat egy tranzakcióban, a tranzakciós naplóba való írás késleltetheti a tranzakció véglegesítését. Érvényben van, ha engedélyezi a kötegelt feldolgozást az írásokhoz a kiszolgáló tranzakciónaplójában.
 
 Az alábbi táblázat néhány alkalmi tesztelési eredményt mutat be. A tesztek azonos szekvenciális lapkákat hajtottak végre tranzakciókkal és anélkül. További perspektívához az első tesztek távolról, egy laptopról a Microsoft Azure-adatbázisba futottak. A második teszt egy olyan felhőalapú szolgáltatásból és adatbázisból futott, amely mindkettő ugyanazon Microsoft Azure adatközpontban (USA nyugati régiójában) található. A következő táblázat az időtartamot mutatja be ezredmásodpercben, és tranzakció nélkül.
 
@@ -106,7 +106,7 @@ Az alábbi táblázat néhány alkalmi tesztelési eredményt mutat be. A teszte
 | 100 |12662 |10395 |
 | 1000 |128852 |102917 |
 
-**Azure-ról Azure-ra (azonos adatközpont)**:
+**Azure-ról Azure-ra (azonos adatközpont)** :
 
 | Műveletek | Nincs tranzakció (MS) | Tranzakció (MS) |
 | --- | --- | --- |
@@ -120,15 +120,15 @@ Az alábbi táblázat néhány alkalmi tesztelési eredményt mutat be. A teszte
 
 A korábbi tesztek eredményei alapján a tranzakciók egyetlen műveletének becsomagolása ténylegesen csökkenti a teljesítményt. Az egyetlen tranzakción belüli műveletek számának növelésével azonban a teljesítmény növelése nagyobb lesz. A teljesítménybeli különbség akkor is észrevehető, ha az Microsoft Azure adatközponton belül minden művelet bekövetkezik. A Azure SQL Database vagy az Azure SQL felügyelt példányának a Microsoft Azure adatközponton kívülről való használatának nagyobb késése a tranzakciók használatának teljesítménybeli nyereségét is felhasználja.
 
-Bár a tranzakciók használata növelheti a teljesítményt, továbbra is [megfigyelheti a tranzakciók és a kapcsolatok ajánlott eljárásait](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms187484(v=sql.105)). Tartsa a tranzakciót a lehető legrövidebb időn belül, és zárja be az adatbázis-kapcsolatokat a munka befejeződése után. Az előző példában szereplő using utasítás biztosítja, hogy a rendszer lezárja a kapcsolódást, amikor a következő kódrészlet befejeződik.
+Bár a tranzakciók használata növelheti a teljesítményt, továbbra is [megfigyelheti a tranzakciók és a kapcsolatok ajánlott eljárásait](/previous-versions/sql/sql-server-2008-r2/ms187484(v=sql.105)). Tartsa a tranzakciót a lehető legrövidebb időn belül, és zárja be az adatbázis-kapcsolatokat a munka befejeződése után. Az előző példában szereplő using utasítás biztosítja, hogy a rendszer lezárja a kapcsolódást, amikor a következő kódrészlet befejeződik.
 
 Az előző példa azt mutatja be, hogy egy helyi tranzakciót is hozzáadhat a két sorral rendelkező ADO.NET-kódokhoz. A tranzakciók gyors módszert kínálnak a szekvenciális beszúrási, frissítési és törlési műveletet végző kód teljesítményének javítására. A leggyorsabb teljesítmény érdekében azonban érdemes lehet a kódot tovább módosítani, hogy kihasználhassa az ügyféloldali kötegeket, például a táblázat értékű paramétereket.
 
 További információ a ADO.NET-beli tranzakciókról: [helyi tranzakciók a ADO.net-ben](/dotnet/framework/data/adonet/local-transactions).
 
-### <a name="table-valued-parameters"></a>Tábla értékű paraméterek
+### <a name="table-valued-parameters"></a>Ideiglenes értékű paraméterek
 
-A tábla értékű paraméterek a felhasználó által definiált táblázat típusú paramétereket támogatják a Transact-SQL-utasításokban, tárolt eljárásokban és függvényekben. Ez az ügyféloldali batch-eljárás lehetővé teszi több sornyi adat küldését a tábla értékű paraméteren belül. Ha táblázat értékű paramétereket szeretne használni, először adjon meg egy táblát. A következő Transact-SQL-utasítás egy **MyTableType**nevű táblát hoz létre.
+A tábla értékű paraméterek a felhasználó által definiált táblázat típusú paramétereket támogatják a Transact-SQL-utasításokban, tárolt eljárásokban és függvényekben. Ez az ügyféloldali batch-eljárás lehetővé teszi több sornyi adat küldését a tábla értékű paraméteren belül. Ha táblázat értékű paramétereket szeretne használni, először adjon meg egy táblát. A következő Transact-SQL-utasítás egy **MyTableType** nevű táblát hoz létre.
 
 ```sql
     CREATE TYPE MyTableType AS TABLE
@@ -169,7 +169,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Az előző példában a **SqlCommand** objektum sorokat szúr be egy tábla értékű paraméterből, a ** \@ TestTvp**. A korábban létrehozott **DataTable** objektum hozzá van rendelve ehhez a paraméterhez a **SqlCommand. Parameters. Add** metódussal. A beszúrások az egyik hívásban történő kötegelt feldolgozása jelentősen növeli a teljesítményt a szekvenciális lapkákon.
+Az előző példában a **SqlCommand** objektum sorokat szúr be egy tábla értékű paraméterből, a **\@ TestTvp** . A korábban létrehozott **DataTable** objektum hozzá van rendelve ehhez a paraméterhez a **SqlCommand. Parameters. Add** metódussal. A beszúrások az egyik hívásban történő kötegelt feldolgozása jelentősen növeli a teljesítményt a szekvenciális lapkákon.
 
 Az előző példa további javítása érdekében használjon egy tárolt eljárást szöveges parancs helyett. A következő Transact-SQL parancs egy tárolt eljárást hoz létre, amely a **SimpleTestTableType** tábla értékű paramétert veszi fel.
 
@@ -212,7 +212,7 @@ A tábla értékű paraméterekkel kapcsolatos további információkért lásd:
 
 ### <a name="sql-bulk-copy"></a>SQL tömeges másolás
 
-Az SQL tömeges másolás egy másik módszer, amellyel nagy mennyiségű adattal lehet beszúrni a céladatbázisbe. A .NET-alkalmazások használhatják a **SqlBulkCopy** osztályt a tömeges beszúrási műveletek végrehajtásához. A **SqlBulkCopy** a parancssori eszközhöz, **Bcp.exehoz **vagy a Transact-SQL-utasításhoz hasonlóan működik, **bulk INSERT**. A következő mintakód bemutatja, hogyan lehet tömegesen másolni a forrás **DataTable**, Table, a Destination (sajáttábla) táblába a sorokat.
+Az SQL tömeges másolás egy másik módszer, amellyel nagy mennyiségű adattal lehet beszúrni a céladatbázisbe. A .NET-alkalmazások használhatják a **SqlBulkCopy** osztályt a tömeges beszúrási műveletek végrehajtásához. A **SqlBulkCopy** a parancssori eszközhöz, **Bcp.exehoz** vagy a Transact-SQL-utasításhoz hasonlóan működik, **bulk INSERT** . A következő mintakód bemutatja, hogyan lehet tömegesen másolni a forrás **DataTable** , Table, a Destination (sajáttábla) táblába a sorokat.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -293,7 +293,7 @@ A **DataAdapter** osztály lehetővé teszi az **adatkészlet** -objektumok mód
 
 ### <a name="entity-framework"></a>Entity Framework
 
-A [Entity Framework Core](https://docs.microsoft.com/ef/efcore-and-ef6/#saving-data) támogatja a kötegelt feldolgozást.
+A [Entity Framework Core](/ef/efcore-and-ef6/#saving-data) támogatja a kötegelt feldolgozást.
 
 ### <a name="xml"></a>XML
 
@@ -380,7 +380,7 @@ Bár vannak olyan forgatókönyvek, amelyek egyértelműen jelöltek a kötegelt
 
 Vegyünk például egy webalkalmazást, amely nyomon követi az egyes felhasználók navigációs előzményeit. Az alkalmazás minden egyes lapon meghívást készíthet a felhasználó oldal nézetének rögzítéséhez. A nagyobb teljesítmény és méretezhetőség azonban a felhasználók navigációs tevékenységeinek pufferelésével, majd az adatok kötegekben történő elküldésével is megvalósítható. Az adatbázis frissítését elvégezheti az eltelt idő és/vagy a pufferméret méretének elindításával. Egy szabály például megadhatja, hogy a köteg 20 másodperc után legyen feldolgozva, vagy ha a puffer eléri a 1000 elemet.
 
-A következő kód a [reaktív bővítmények-Rx](https://docs.microsoft.com/previous-versions/dotnet/reactive-extensions/hh242985(v=vs.103)) használatával dolgozza fel a figyelési osztály által kiváltott pufferelt eseményeket. A puffer kitöltése vagy időtúllépés elérésekor a rendszer a felhasználói adatköteget egy tábla értékű paraméterrel küldi el az adatbázisba.
+A következő kód a [reaktív bővítmények-Rx](/previous-versions/dotnet/reactive-extensions/hh242985(v=vs.103)) használatával dolgozza fel a figyelési osztály által kiváltott pufferelt eseményeket. A puffer kitöltése vagy időtúllépés elérésekor a rendszer a felhasználói adatköteget egy tábla értékű paraméterrel küldi el az adatbázisba.
 
 A következő NavHistoryData osztály a felhasználói navigáció részleteit modellezi. Alapszintű információkat tartalmaz, például a felhasználói azonosítót, az URL-címet, valamint a hozzáférési időt.
 

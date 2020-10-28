@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: 62e20a10e9709bc69a746a6f62e949c47c3a6d02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4328be0aade0658dedb034dbbb6980b810f771a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620154"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793194"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>A sémák kezelése SaaS-alkalmazásokban az adatbázis-bérlői minta használatával Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
  
 Az adatbázis-alkalmazások fejlődése során az adatbázis-séma vagy a hivatkozási adatváltozások elkerülhetetlenül szükségesek.  Az adatbázis-karbantartási feladatok rendszeres időközönként is szükségesek. Az adatbázist a bérlői mintákon használó alkalmazások kezeléséhez szükséges, hogy ezeket a módosításokat vagy karbantartási feladatokat a bérlői adatbázisok flottáján belül alkalmazza.
 
-Ez az oktatóanyag két forgatókönyvet mutat be – a hivatkozási adatok frissítéseinek üzembe helyezése az összes bérlő számára, valamint a hivatkozási adatokkal rendelkező tábla indexének újraépítése. A [rugalmas feladatok](../../sql-database/elastic-jobs-overview.md) funkció használatával végrehajthatja ezeket a műveleteket az összes bérlői adatbázison és az új bérlői adatbázisok létrehozásához használt sablon-adatbázison.
+Ez az oktatóanyag két forgatókönyvet mutat be – a hivatkozási adatok frissítéseinek üzembe helyezése az összes bérlő számára, valamint a hivatkozási adatokkal rendelkező tábla indexének újraépítése. A [rugalmas feladatok](./elastic-jobs-overview.md) funkció használatával végrehajthatja ezeket a műveleteket az összes bérlői adatbázison és az új bérlői adatbázisok létrehozásához használt sablon-adatbázison.
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
@@ -37,14 +37,14 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
 
-* A Wingtip jegyek SaaS-adatbázisa egy bérlői alkalmazáson van üzembe helyezve. Ha kevesebb, mint öt perc alatt kíván üzembe helyezni, tekintse meg [a Wingtip tickets SaaS-adatbázis üzembe helyezése és megismerése bérlői alkalmazásokban](../../sql-database/saas-dbpertenant-get-started-deploy.md)
-* Az Azure PowerShell telepítve van. Részletes információk: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
-* Telepítve van az SQL Server Management Studio (SSMS) legújabb verziója. [A SSMS letöltése és telepítése](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
+* A Wingtip jegyek SaaS-adatbázisa egy bérlői alkalmazáson van üzembe helyezve. Ha kevesebb, mint öt perc alatt kíván üzembe helyezni, tekintse meg [a Wingtip tickets SaaS-adatbázis üzembe helyezése és megismerése bérlői alkalmazásokban](./saas-dbpertenant-get-started-deploy.md)
+* Az Azure PowerShell telepítve van. Részletes információk: [Ismerkedés az Azure PowerShell-lel](/powershell/azure/get-started-azureps)
+* Telepítve van az SQL Server Management Studio (SSMS) legújabb verziója. [A SSMS letöltése és telepítése](/sql/ssms/download-sql-server-management-studio-ssms)
 
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>Az SaaS-séma felügyeleti mintáinak bemutatása
 
-Az adatbázis/bérlői minta elkülöníti a bérlői adatmennyiséget, de növeli a felügyelni és karbantartani kívánt adatbázisok számát. A [rugalmas feladatok](../../sql-database/elastic-jobs-overview.md) lehetővé teszik több adatbázis felügyeletét és kezelését. A feladatok lehetővé teszik, hogy biztonságosan és megbízhatóan futtasson feladatokat (T-SQL-szkripteket) az adatbázisok egy csoportjára. A feladatok üzembe helyezhetik a sémát és a gyakori hivatkozási adatváltozásokat az alkalmazás összes bérlői adatbázisában. A rugalmas feladatok az új bérlők létrehozásához használt *sablon* -adatbázis fenntartására is használhatók, így biztosítva, hogy mindig a legújabb séma-és hivatkozási adatok legyenek.
+Az adatbázis/bérlői minta elkülöníti a bérlői adatmennyiséget, de növeli a felügyelni és karbantartani kívánt adatbázisok számát. A [rugalmas feladatok](./elastic-jobs-overview.md) lehetővé teszik több adatbázis felügyeletét és kezelését. A feladatok lehetővé teszik, hogy biztonságosan és megbízhatóan futtasson feladatokat (T-SQL-szkripteket) az adatbázisok egy csoportjára. A feladatok üzembe helyezhetik a sémát és a gyakori hivatkozási adatváltozásokat az alkalmazás összes bérlői adatbázisában. A rugalmas feladatok az új bérlők létrehozásához használt *sablon* -adatbázis fenntartására is használhatók, így biztosítva, hogy mindig a legújabb séma-és hivatkozási adatok legyenek.
 
 ![képernyő](./media/saas-tenancy-schema-management/schema-management-dpt.png)
 
@@ -52,7 +52,7 @@ Az adatbázis/bérlői minta elkülöníti a bérlői adatmennyiséget, de növe
 ## <a name="elastic-jobs-public-preview"></a>Rugalmas feladatok nyilvános előzetes verziója
 
 A rugalmas feladatok új verziója már a Azure SQL Database integrált szolgáltatása. A rugalmas feladatok új verziója jelenleg nyilvános előzetes verzióban érhető el. Ez a nyilvános előzetes verzió jelenleg támogatja a PowerShell használatát a feladat-ügynök létrehozásához, valamint a T-SQL-feladatokat a feladatok létrehozásához és kezeléséhez.
-További információt a [Elastic Database feladatok](https://docs.microsoft.com/azure/azure-sql/database/elastic-jobs-overview) című cikkben talál.
+További információt a [Elastic Database feladatok](./elastic-jobs-overview.md) című cikkben talál.
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>A Wingtip tickets SaaS-adatbázis beszerzése bérlői alkalmazás parancsfájljai alapján
 
@@ -62,14 +62,14 @@ Az alkalmazás forráskódja és a felügyeleti szkriptek a [WingtipTicketsSaaS-
 
 Ehhez az oktatóanyaghoz a PowerShell használatával kell létrehoznia a feladatokhoz tartozó ügynököt és a hozzá tartozó feladatkártya-adatbázist. A feladatok ügynökének adatbázisában a feladatütemezés, a feladatok állapota és az előzmények szerepelnek. A feladat-ügynök és az adatbázis létrehozása után azonnal létrehozhatja és figyelheti a feladatokat.
 
-1. **A POWERSHELL ISE-ben**nyissa meg a... \\ Tanulási modulok – \\ séma-felügyeleti \\ *Demo-SchemaManagement.ps1*.
+1. **A POWERSHELL ISE-ben** nyissa meg a... \\ Tanulási modulok – \\ séma-felügyeleti \\ *Demo-SchemaManagement.ps1* .
 1. A szkript futtatásához nyomja le az **F5** billentyűt.
 
 A *Demo-SchemaManagement.ps1* parancsfájl meghívja a *Deploy-SchemaManagement.ps1* parancsfájlt, hogy létrehozzon egy *osagent* nevű adatbázist a katalógus-kiszolgálón. Ezután létrehozza a feladatot, amely az adatbázis paraméterként való használatával jön létre.
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>Feladat létrehozása új referenciaadatok bevezetéséhez az összes bérlőn
 
-A Wingtip tickets alkalmazásban a bérlői adatbázisok a támogatott helyszíneket tartalmazzák. Minden helyszín egy adott típusú helyszín, amely meghatározza a üzemeltethető események típusát, és meghatározza az alkalmazásban használt háttérképet. Ahhoz, hogy az alkalmazás támogassa az új típusú eseményeket, ezeket a hivatkozási adattípusokat frissíteni kell, és új helyszíneket kell hozzáadni.  Ebben a gyakorlatban frissítést helyezhet üzembe az összes bérlői adatbázison két további helyszíntípus hozzáadásához: *Motorkerékpár-verseny* és *Úszóklub*.
+A Wingtip tickets alkalmazásban a bérlői adatbázisok a támogatott helyszíneket tartalmazzák. Minden helyszín egy adott típusú helyszín, amely meghatározza a üzemeltethető események típusát, és meghatározza az alkalmazásban használt háttérképet. Ahhoz, hogy az alkalmazás támogassa az új típusú eseményeket, ezeket a hivatkozási adattípusokat frissíteni kell, és új helyszíneket kell hozzáadni.  Ebben a gyakorlatban frissítést helyezhet üzembe az összes bérlői adatbázison két további helyszíntípus hozzáadásához: *Motorkerékpár-verseny* és *Úszóklub* .
 
 Először tekintse át az egyes bérlői adatbázisokban található helyszín típusait. Kapcsolódjon SQL Server Management Studio (SSMS) egyik bérlői adatbázisához, és vizsgálja meg a VenueTypes táblát.  Ezt a táblázatot a Azure Portal lekérdezés-szerkesztőjében is lekérdezheti, amely az adatbázis lapról érhető el. 
 
@@ -87,12 +87,12 @@ Most hozzon létre egy feladatot, amely frissíti a *VenueTypes* táblát az ös
 
 Figyelje meg a következő elemeket a *DeployReferenceData. SQL* parancsfájlban:
 * az **SP \_ Add \_ Target \_ Group** létrehozza a célcsoport nevét DemoServerGroup.
-* az **SP \_ Add \_ Target \_ Group \_ tag** a célként megadott adatbázisok meghatározására szolgál.  Először adja hozzá a _tenants1-DPT- &lt; User &gt; _ kiszolgálót.  A kiszolgáló célként való hozzáadásával az adott kiszolgálón lévő adatbázisok a feladatok végrehajtásának időpontjában fognak szerepelni a feladatokban. Ezután a _basetenantdb_ -adatbázis és a *adhocreporting* -adatbázis (amelyet egy későbbi oktatóanyagban használ) hozzá lesz adva célként.
-* az **SP \_ Add \_ Job** létrehoz egy _hivatkozási adatok központi telepítés_nevű feladatot.
+* az **SP \_ Add \_ Target \_ Group \_ tag** a célként megadott adatbázisok meghatározására szolgál.  Először adja hozzá a _tenants1-DPT- &lt; User &gt;_ kiszolgálót.  A kiszolgáló célként való hozzáadásával az adott kiszolgálón lévő adatbázisok a feladatok végrehajtásának időpontjában fognak szerepelni a feladatokban. Ezután a _basetenantdb_ -adatbázis és a *adhocreporting* -adatbázis (amelyet egy későbbi oktatóanyagban használ) hozzá lesz adva célként.
+* az **SP \_ Add \_ Job** létrehoz egy _hivatkozási adatok központi telepítés_ nevű feladatot.
 * az **SP \_ Add \_ Jobstep** létrehozza a T-SQL-parancs szövegét tartalmazó feladatot, amely frissíti a VenueTypes.
 * A szkript fennmaradó nézetei megjelenítik, hogy léteznek-e az objektumok, és figyelik a feladat-végrehajtást. Ezekkel a lekérdezésekkel áttekintheti az állapot értékét az **életciklus** oszlopban annak megállapításához, hogy a feladatok befejeződtek-e az összes célként megadott adatbázison.
 
-A parancsfájl befejezését követően ellenőrizheti, hogy frissültek-e a hivatkozási adathalmazok.  A SSMS-ben keresse meg a *contosoconcerthall* adatbázist a *tenants1-DPT- &lt; User &gt; * kiszolgálón, és kérdezze le a *VenueTypes* táblát.  Győződjön meg arról, hogy a *motorkerékpár-verseny* és az *úszó klub* már jelen **van** .
+A parancsfájl befejezését követően ellenőrizheti, hogy frissültek-e a hivatkozási adathalmazok.  A SSMS-ben keresse meg a *contosoconcerthall* adatbázist a *tenants1-DPT- &lt; User &gt;* kiszolgálón, és kérdezze le a *VenueTypes* táblát.  Győződjön meg arról, hogy a *motorkerékpár-verseny* és az *úszó klub* már jelen **van** .
 
 
 ## <a name="create-a-job-to-manage-the-reference-table-index"></a>Feladat létrehozása a referenciatábla indexének kezeléséhez
@@ -123,10 +123,10 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Az összes bérlői adatbázisban lévő hivatkozási érték frissítése
 > * Index létrehozása a táblához az összes bérlői adatbázisban
 
-Ezután próbálja ki az [ad hoc jelentéskészítési oktatóanyagot](../../sql-database/saas-tenancy-cross-tenant-reporting.md) , és vizsgálja meg a bérlői adatbázisok közötti elosztott lekérdezések futtatását.
+Ezután próbálja ki az [ad hoc jelentéskészítési oktatóanyagot](./saas-tenancy-cross-tenant-reporting.md) , és vizsgálja meg a bérlői adatbázisok közötti elosztott lekérdezések futtatását.
 
 
 ## <a name="additional-resources"></a>További források
 
-* [További oktatóanyagok, amelyek az Wingtip tickets SaaS-adatbázisra épülnek a bérlői alkalmazások üzembe helyezése után](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
-* [Kiterjesztett felhőalapú adatbázisok kezelése](../../sql-database/elastic-jobs-overview.md)
+* [További oktatóanyagok, amelyek az Wingtip tickets SaaS-adatbázisra épülnek a bérlői alkalmazások üzembe helyezése után](./saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* [Kiterjesztett felhőalapú adatbázisok kezelése](./elastic-jobs-overview.md)

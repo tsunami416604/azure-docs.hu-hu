@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: b6d46dfc348cc518daf2e6af4d5b9677148c3911
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a5206ed55dfe2632c7f6604c4f3d8e3199e23b99
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503215"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792021"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure Machine Learning Studio használata Azure-beli virtuális hálózaton
 
@@ -36,7 +36,7 @@ Tekintse meg a sorozat egyéb cikkeit:
 
 
 > [!IMPORTANT]
-> Ha a munkaterület __szuverén felhőben__van, például Azure Government vagy az Azure China 21Vianet, az integrált jegyzetfüzetek _nem_ támogatják a virtuális hálózatban lévő tárolók használatát. Ehelyett Jupyter jegyzetfüzeteket használhat egy számítási példányból. További információkért tekintse meg a [hozzáférési adatokat egy számítási példányú jegyzetfüzet](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) szakaszban.
+> Ha a munkaterület __szuverén felhőben__ van, például Azure Government vagy az Azure China 21Vianet, az integrált jegyzetfüzetek _nem_ támogatják a virtuális hálózatban lévő tárolók használatát. Ehelyett Jupyter jegyzetfüzeteket használhat egy számítási példányból. További információkért tekintse meg a [hozzáférési adatokat egy számítási példányú jegyzetfüzet](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) szakaszban.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -53,7 +53,7 @@ Tekintse meg a sorozat egyéb cikkeit:
 
 Ha egy virtuális hálózaton (például egy számítási példányon vagy virtuális gépen) belül található erőforráshoz fér hozzá a studióhoz, engedélyeznie kell a kimenő forgalmat a virtuális hálózatról a studióhoz. 
 
-Ha például hálózati biztonsági csoportokat (NSG) használ a kimenő forgalom korlátozására, adjon hozzá egy szabályt a __AzureFrontDoor. frontend__nevű __szolgáltatási címkéhez__ .
+Ha például hálózati biztonsági csoportokat (NSG) használ a kimenő forgalom korlátozására, adjon hozzá egy szabályt a __AzureFrontDoor. frontend__ nevű __szolgáltatási címkéhez__ .
 
 ## <a name="access-data-using-the-studio"></a>Hozzáférés az adataihoz a Studio használatával
 
@@ -66,9 +66,6 @@ Ha nem engedélyezi a felügyelt identitást, akkor ez a hibaüzenet jelenik meg
 * AutoML-kísérlet küldése.
 * Címkéző projekt elindítása.
 
-> [!NOTE]
-> A ml-ben [támogatott adatfeliratok](how-to-create-labeling-projects.md#use-ml-assisted-labeling) nem támogatják a virtuális hálózat mögött biztonságossá tett alapértelmezett Storage-fiókokat. A ML által támogatott adatcímkézéshez nem alapértelmezett Storage-fiókot kell használnia. A nem alapértelmezett Storage-fiók a virtuális hálózat mögött is biztonságossá tehető. 
-
 A Studio a következő adattár-típusokból származó adatok olvasását támogatja egy virtuális hálózatban:
 
 * Azure-blob
@@ -76,17 +73,21 @@ A Studio a következő adattár-típusokból származó adatok olvasását támo
 * 2. generációs Azure Data Lake Storage
 * Azure SQL Database
 
-### <a name="configure-datastores-to-use-managed-identity"></a>Adattárolók konfigurálása felügyelt identitás használatára
+### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>Munkaterület felügyelt identitás- __olvasó__ hozzáférésének engedélyezése a Storage privát hivatkozásához
+
+Ez a lépés csak akkor szükséges, ha az Azure Storage-fiókot egy [privát végponttal](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)hozzáadta a virtuális hálózathoz. További információkért tekintse meg az [olvasó](../role-based-access-control/built-in-roles.md#reader) beépített szerepkörét.
+
+### <a name="configure-datastores-to-use-workspace-managed-identity"></a>Adattárolók konfigurálása a munkaterület által felügyelt identitás használatára
 
 Azure Machine Learning adattárolókat [használ a Storage-](concept-data.md#datastores) fiókokhoz való kapcsolódáshoz. A következő lépésekkel konfigurálhatja az adattárolókat a felügyelt identitás használatára. 
 
-1. A Studióban __válassza az__adattárolók lehetőséget.
+1. A Studióban __válassza az__ adattárolók lehetőséget.
 
-1. Új adattár létrehozásához válassza az __+ új adattár__lehetőséget.
+1. Új adattár létrehozásához válassza az __+ új adattár__ lehetőséget.
 
-    Meglévő adattár frissítéséhez válassza ki az adattárt, és válassza a __hitelesítő adatok frissítése__lehetőséget.
+    Meglévő adattár frissítéséhez válassza ki az adattárt, és válassza a __hitelesítő adatok frissítése__ lehetőséget.
 
-1. Az adattár beállításainál válassza az __Igen__ lehetőséget a  __Azure Machine learning szolgáltatás számára a munkaterület által felügyelt identitás használatával való elérésének engedélyezéséhez__.
+1. Az adattár beállításainál válassza az __Igen__ lehetőséget a  __Azure Machine learning szolgáltatás számára a munkaterület által felügyelt identitás használatával való elérésének engedélyezéséhez__ .
 
 
 Ezek a lépések hozzáadja a munkaterület által felügyelt identitást __olvasóként__ a Storage szolgáltatáshoz az Azure erőforrás-alapú hozzáférés-vezérlés (Azure RBAC) használatával. Az __olvasói__ hozzáférés lehetővé teszi, hogy a munkaterület beolvassa a tűzfal beállításait, és gondoskodjon arról, hogy a virtuális hálózat ne maradjon meg
@@ -100,7 +101,7 @@ A felügyelt identitásnak a tárolási szolgáltatásokhoz való hozzáférése
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-Az __Azure Blob Storage__esetében a munkaterület által felügyelt identitást is hozzáadja [blob-adatolvasóként](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) , így az adatok a blob Storage-ból is olvashatók.
+Az __Azure Blob Storage__ esetében a munkaterület által felügyelt identitást is hozzáadja [blob-adatolvasóként](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) , így az adatok a blob Storage-ból is olvashatók.
 
 ### <a name="azure-data-lake-storage-gen2-access-control"></a>Azure Data Lake Storage Gen2 hozzáférés-vezérlés
 
@@ -127,15 +128,15 @@ A tervező a munkaterülethez csatolt Storage-fiókot használja a kimenet alap�
 Új alapértelmezett tároló beállítása egy folyamathoz:
 
 1. A folyamat piszkozata lapon válassza a **Beállítások fogaskerék ikont** a folyamat címe közelében.
-1. Válassza az **alapértelmezett adattár kiválasztása**lehetőséget.
+1. Válassza az **alapértelmezett adattár kiválasztása** lehetőséget.
 1. Új adattárt kell megadnia.
 
 Az alapértelmezett adattárat is felülbírálhatja egy modul alapján. Ez lehetővé teszi az egyes modulok tárolási helyének szabályozását.
 
 1. Válassza ki azt a modult, amelynek kimenetét meg kívánja adni.
 1. Bontsa ki a **kimeneti beállítások** szakaszt.
-1. Válassza az **alapértelmezett kimeneti beállítások felülbírálása**lehetőséget.
-1. Válassza a **kimeneti beállítások megadása**lehetőséget.
+1. Válassza az **alapértelmezett kimeneti beállítások felülbírálása** lehetőséget.
+1. Válassza a **kimeneti beállítások megadása** lehetőséget.
 1. Új adattárt kell megadnia.
 
 ## <a name="next-steps"></a>Következő lépések

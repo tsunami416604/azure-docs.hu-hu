@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: dd92e1529b889671bc29939f7e9611eceac7ee20
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a815295c4f2ab78cbd3aff82949d7c28197afd82
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370508"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791919"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Bevezetés az Azure Defender for Kubernetes használatába
 
@@ -20,7 +20,7 @@ Az Azure Kubernetes Service (ak) a Microsoft által felügyelt szolgáltatás a 
 
 A Azure Security Center és az AK a legjobb felhőalapú Kubernetes biztonsági ajánlatot alkotja, és együttesen biztosítja a környezet megkeményedését, a munkaterhelések védelmét és a futásidejű védelmet az alább leírtak szerint.
 
-A Kubernetes-fürtök fenyegetés-észleléséhez engedélyezze **Az Azure Defendert a Kubernetes**számára.
+A Kubernetes-fürtök fenyegetés-észleléséhez engedélyezze **Az Azure Defendert a Kubernetes** számára.
 
 Ha engedélyezi az [Azure Defender for Servers](defender-for-servers-introduction.md)-t, a gazdagép szintű fenyegetések észlelése a linuxos AK-csomópontok esetében elérhető.
 
@@ -72,7 +72,7 @@ Láthatja, hogy a Security Center kapott és elemzett elemek a következők:
 - naplók naplózása az API-kiszolgálóról
 - nyers biztonsági események a Log Analytics-ügynökből
 - a fürt konfigurációs adatai az AK-fürtből
-- munkaterhelés-konfiguráció Azure Policy (a **Kubernetes Azure Policy-bővítményének**használatával). [További információ a számítási feladatok védelmének legjobb gyakorlatáról a Kubernetes belépésvezérlés használatával](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)
+- munkaterhelés-konfiguráció Azure Policy (a **Kubernetes Azure Policy-bővítményének** használatával). [További információ a számítási feladatok védelmének legjobb gyakorlatáról a Kubernetes belépésvezérlés használatával](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)
 
 :::image type="content" source="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png" alt-text="Az Azure Security Center, az Azure Kubernetes szolgáltatás és a Azure Policy közötti interakció magas szintű architektúrája" lightbox="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png":::
 
@@ -114,5 +114,5 @@ Ebben a cikkben megtanulta Security Center Kubernetes-védelmét, beleértve a K
 A kapcsolódó anyagokkal kapcsolatban tekintse meg a következő cikkeket: 
 
 - [Az Azure Defender engedélyezése](security-center-pricing.md)
-- [Riasztások exportálása egy Azure Sentinelbe vagy egy harmadik féltől származó SIEM-be](continuous-export.md)
+- [Riasztások továbbítása SIEM, SOAR vagy IT Service Management megoldásba](export-to-siem.md)
 - [Riasztások hivatkozási táblázata](alerts-reference.md)

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: fd9bc17db3eccc64f35d7295d57dc120364481dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59e28e4a3d630aac0954802e8777058c00261006
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332984"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791443"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Ajánlott eljárások az Azure SQL Data Synchez 
 
@@ -41,11 +41,11 @@ Az SQL Data Sync áttekintéséhez tekintse meg a [több felhőalapú és helysz
 
 ### <a name="database-accounts-with-least-required-privileges"></a>A minimálisan szükséges jogosultságokkal rendelkező adatbázis-fiókok
 
--   **Szinkronizálás beállításakor**. Tábla létrehozása/módosítása; Adatbázis módosítása; Eljárás létrehozása; Séma kiválasztása/módosítása; Hozzon létre User-Defined típust.
+-   **Szinkronizálás beállításakor** . Tábla létrehozása/módosítása; Adatbázis módosítása; Eljárás létrehozása; Séma kiválasztása/módosítása; Hozzon létre User-Defined típust.
 
--   **Folyamatos szinkronizáláshoz**. A szinkronizáláshoz kiválasztott táblák kijelölése/beillesztése/frissítése/törlése, valamint a szinkronizálási metaadatok és nyomon követési táblázatok; Végrehajtási engedély a szolgáltatás által létrehozott tárolt eljárásokhoz; Végrehajtási engedély a felhasználó által definiált táblák típusaihoz.
+-   **Folyamatos szinkronizáláshoz** . A szinkronizáláshoz kiválasztott táblák kijelölése/beillesztése/frissítése/törlése, valamint a szinkronizálási metaadatok és nyomon követési táblázatok; Végrehajtási engedély a szolgáltatás által létrehozott tárolt eljárásokhoz; Végrehajtási engedély a felhasználó által definiált táblák típusaihoz.
 
--   **A**megszüntetéshez. A szinkronizáláshoz a táblázatok részét változtatja; Válassza ki/törölje a szinkronizálási metaadatokat tartalmazó táblákat; A szinkronizálás nyomon követésére szolgáló táblák, tárolt eljárások és felhasználó által definiált típusok vezérlése.
+-   **A** megszüntetéshez. A szinkronizáláshoz a táblázatok részét változtatja; Válassza ki/törölje a szinkronizálási metaadatokat tartalmazó táblákat; A szinkronizálás nyomon követésére szolgáló táblák, tárolt eljárások és felhasználó által definiált típusok vezérlése.
 
 Azure SQL Database csak a hitelesítő adatok egyetlen készletét támogatja. A feladatok ezen a korlátozáson belüli végrehajtásához vegye figyelembe a következő lehetőségeket:
 
@@ -168,7 +168,7 @@ A szinkronizálási csoport és az adatbázis állapotának rendszeres figyelés
 
 ### <a name="avoid-out-of-date-databases-and-sync-groups"></a><a name="avoid-out-of-date-databases-and-sync-groups"></a> Elavult adatbázisok és szinkronizálási csoportok elkerülése
 
-A szinkronizálási csoportban lévő szinkronizálási csoport vagy adatbázis elavult lehet. Ha a szinkronizálási csoport állapota elavult **, a**működése leáll. Ha **az adatbázis állapota elavult, az**adatok elveszhetnek. Érdemes elkerülni ezt a forgatókönyvet ahelyett, hogy helyre kellene állítani.
+A szinkronizálási csoportban lévő szinkronizálási csoport vagy adatbázis elavult lehet. Ha a szinkronizálási csoport állapota elavult **, a** működése leáll. Ha **az adatbázis állapota elavult, az** adatok elveszhetnek. Érdemes elkerülni ezt a forgatókönyvet ahelyett, hogy helyre kellene állítani.
 
 #### <a name="avoid-out-of-date-databases"></a>Elavult adatbázisok elkerülése
 
@@ -195,7 +195,7 @@ Elavult szinkronizálási csoportok megelőzése:
 
 Bizonyos esetekben előfordulhat, hogy az ügyfél ügynökkel való regisztrációjának törlése miatt a szinkronizálás sikertelen lesz.
 
-#### <a name="scenario"></a>Forgatókönyv
+#### <a name="scenario"></a>Használati eset
 
 1. Az A szinkronizálási csoport egy SQL Database-példány és egy SQL Server-adatbázis használatával lett létrehozva, amely az 1. helyi ügynökhöz van társítva.
 2. Ugyanaz a helyszíni adatbázis regisztrálva van a (z) 2. helyi ügynökkel (ez az ügynök nincs hozzárendelve egyetlen szinkronizálási csoporthoz sem).
@@ -238,7 +238,7 @@ További információ a SQL-adatszinkronizálásról:
         -  [Több adatbázis közötti szinkronizálás a Azure SQL Database-ben a PowerShell használatával](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [SQL Database és egy SQL Server-példányban található adatbázis közötti szinkronizálás a PowerShell használatával](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 -   Adatszinkronizálási ügynök – [Az Azure SQL-adatszinkronizálás adatszinkronizálási ügynöke](sql-data-sync-agent-overview.md)
--   Figyelő – [SQL-adatszinkronizálás figyelése Azure monitor naplókkal](sql-data-sync-monitor-sync.md)
+-   Figyelő – [SQL-adatszinkronizálás figyelése Azure monitor naplókkal](./monitor-tune-overview.md)
 -   Hibaelhárítás – [Az Azure SQL-adatszinkronizálás hibáinak elhárítása](sql-data-sync-troubleshoot.md)
 -   A szinkronizálási séma frissítése
     -   A Transact-SQL- [ben – automatizálja a séma változásainak az Azure-ban való replikálását SQL-adatszinkronizálás](sql-data-sync-update-sync-schema.md)
@@ -247,4 +247,4 @@ További információ a SQL-adatszinkronizálásról:
 További információ a SQL Databaseról:
 
 -   [SQL Database áttekintése](sql-database-paas-overview.md)
--   [Adatbázis-életciklus kezelése](https://msdn.microsoft.com/library/jj907294.aspx)
+-   [Adatbázis-életciklus kezelése](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

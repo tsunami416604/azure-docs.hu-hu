@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: 0b8ceee1260e4209420778d7f327d771b858a899
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ed8f6dc90debddd17282f8f96962ffd78055030
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617723"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791664"
 ---
 # <a name="delete-a-subnet-after-deleting-a-managed-instance-of-sql-managed-instance"></a>Alhálózat törlése a felügyelt SQL-példány felügyelt példányának törlése után
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -29,7 +29,7 @@ Ha nem szeretne 12 órát várni, és hamarabb szeretné törölni a virtuális 
 
 > [!IMPORTANT]
 > - A virtuális fürtnek nem tartalmazhat felügyelt példányt, hogy a törlés sikeres legyen. 
-> - A virtuális fürt törlése egy hosszú ideig tartó művelet, amely körülbelül 1,5 óráig tart fenn (lásd: [felügyelt példányok felügyeleti műveletei](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations) a naprakész virtuális fürtök törlési idejére). A folyamat befejezése előtt a virtuális fürt továbbra is látható lesz a portálon.
+> - A virtuális fürt törlése egy hosszú ideig tartó művelet, amely körülbelül 1,5 óráig tart fenn (lásd: [felügyelt példányok felügyeleti műveletei](./sql-managed-instance-paas-overview.md#management-operations) a naprakész virtuális fürtök törlési idejére). A folyamat befejezése előtt a virtuális fürt továbbra is látható lesz a portálon.
 
 ## <a name="delete-a-virtual-cluster-from-the-azure-portal"></a>Virtuális fürt törlése a Azure Portal
 
@@ -37,7 +37,7 @@ Ha a Azure Portal használatával szeretne törölni egy virtuális fürtöt, ke
 
 ![Képernyőkép a Azure Portalről, a keresőmezőbe kiemelve](./media/virtual-cluster-delete/virtual-clusters-search.png)
 
-Miután megtalálta a törölni kívánt virtuális fürtöt, válassza ki ezt az erőforrást, és válassza a **Törlés**lehetőséget. A rendszer felszólítja, hogy erősítse meg a virtuális fürt törlését.
+Miután megtalálta a törölni kívánt virtuális fürtöt, válassza ki ezt az erőforrást, és válassza a **Törlés** lehetőséget. A rendszer felszólítja, hogy erősítse meg a virtuális fürt törlését.
 
 ![Képernyőfelvétel a Azure Portal Virtual Clusters irányítópultról, a törlés lehetőség kiemelve](./media/virtual-cluster-delete/virtual-clusters-delete.png)
 
@@ -48,7 +48,7 @@ Azure Portal értesítések megerősítik, hogy a virtuális fürt törlésére 
 
 ## <a name="delete-a-virtual-cluster-by-using-the-api"></a>Virtuális fürt törlése az API használatával
 
-Ha a virtuális fürtöt az API-n keresztül szeretné törölni, használja a [virtuális fürtök delete metódusában](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete)megadott URI-paramétereket.
+Ha a virtuális fürtöt az API-n keresztül szeretné törölni, használja a [virtuális fürtök delete metódusában](/rest/api/sql/virtualclusters/delete)megadott URI-paramétereket.
 
 ## <a name="next-steps"></a>Következő lépések
 

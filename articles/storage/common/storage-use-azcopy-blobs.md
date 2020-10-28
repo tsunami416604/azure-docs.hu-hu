@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 24c850b9a5302fd0ac684df6e6f1cc319118a75d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 294adce3dc312003d72336bd0752ba3aba5eaace
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488520"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792854"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Adatok átvitele a AzCopy és a blob Storage szolgáltatással
 
@@ -22,7 +22,7 @@ A AzCopy egy parancssori segédprogram, amellyel az adatok átmásolhatók a, a-
 > [!TIP]
 > A cikkben szereplő példák egyetlen idézőjelekkel (' ') rendelkeznek a Path argumentumokkal. Használjon egy idézőjelet az összes parancs-rendszerhéjon, kivéve a Windows parancs-rendszerhéjt (cmd.exe). Ha Windows parancs-rendszerhéjt (cmd.exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé foglalja a Path argumentumokat ("").
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 Tekintse meg az első [lépések a AzCopy](storage-use-azcopy-v10.md) című cikket a AzCopy letöltéséhez és a tárolási szolgáltatás engedélyezési hitelesítő adatainak megadásához szükséges módszerekről.
 
@@ -31,7 +31,7 @@ Tekintse meg az első [lépések a AzCopy](storage-use-azcopy-v10.md) című cik
 >
 > Ha inkább SAS-tokent használ a blob-adathozzáférés engedélyezéséhez, akkor a tokent az erőforrás URL-címéhez is hozzáfűzheti az egyes AzCopy-parancsokban.
 >
-> Például így: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
+> Például: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
@@ -260,7 +260,7 @@ Részletes információk: [azcopy másolási](storage-ref-azcopy-copy.md) dokume
 
 Ha engedélyezte a [Blobok verziószámozását](../blobs/versioning-enable.md), letöltheti a Blobok egy vagy több korábbi verzióját is. 
 
-Először hozzon létre egy szövegfájlt, amely tartalmazza a [verzió-azonosítók](../blobs/versioning-overview.md)listáját. Minden verzióazonosítónak külön sorban kell szerepelnie. Példa: 
+Először hozzon létre egy szövegfájlt, amely tartalmazza a [verzió-azonosítók](../blobs/versioning-overview.md)listáját. Minden verzióazonosítónak külön sorban kell szerepelnie. Például: 
 
 ```
 2020-08-17T05:50:34.2199403Z
@@ -363,7 +363,7 @@ A [szinkronizálási](storage-ref-azcopy-sync.md) parancs összehasonlítja a f�
 Ha a `--delete-destination` jelzőt úgy állítja be, hogy a `true` AzCopy törölje a fájlokat, a kérés megadása nélkül. Ha azt szeretné, hogy a AzCopy törlése előtt megjelenjen egy üzenet, állítsa a jelölőt a következőre: `--delete-destination` `prompt` .
 
 > [!NOTE]
-> A véletlen törlés megelőzése érdekében ügyeljen arra, hogy a jelző használata előtt engedélyezze a [Soft delete](/azure/storage/blobs/storage-blob-soft-delete) funkciót `--delete-destination=prompt|true` .
+> A véletlen törlés megelőzése érdekében ügyeljen arra, hogy a jelző használata előtt engedélyezze a [Soft delete](../blobs/soft-delete-blob-overview.md) funkciót `--delete-destination=prompt|true` .
 
 > [!TIP]
 > A szinkronizálási műveletet opcionális jelzők használatával is megadhatja. Íme néhány példa.

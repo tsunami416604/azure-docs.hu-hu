@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: e3eb6b750c805951a67a2e869c862f1285a342a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a40ffab652a6ae8671d6cd1c0dd9336764ce2c4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448332"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791936"
 ---
 # <a name="respond-to-azure-defender-for-key-vault-alerts"></a>Válaszadás Key Vaulthoz készült Azure Defender-riasztásokra
 Ha értesítést kap a Key Vault Azure Defendertől, javasoljuk, hogy vizsgálja meg a riasztást, és válaszoljon az alább leírtak szerint. Az Azure Defender for Key Vault megvédi az alkalmazásokat és a hitelesítő adatokat, így még akkor is, ha már ismeri a riasztást kiváltó alkalmazást vagy felhasználót, fontos, hogy ellenőrizze az összes riasztást körülvevő helyzetet.  
@@ -72,4 +72,4 @@ Ez az oldal azt ismerteti, hogyan lehet reagálni az Azure Defender és a Key Va
 
 - [A Key Vault Azure Defender bemutatása](defender-for-key-vault-introduction.md)
 - [Riasztások letiltása az Azure Defenderből](alerts-suppression-rules.md)
-- [Biztonsági riasztások exportálása](continuous-export.md)
+- [Security Center-adatfeldolgozás folyamatos exportálása](continuous-export.md)

@@ -4,19 +4,19 @@ description: A Azure Portal, a PowerShell vagy az Azure CLI használatával hozz
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: contperfq1
+ms.custom: contperfq1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/03/2020
-ms.openlocfilehash: 6a0d81cc9954f934395bc275785bda34c55c35bd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ab920a05f255e38905f9ff79f08f2bfa0c6540b6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91263402"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791511"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Rövid útmutató: Azure SQL Database önálló adatbázis létrehozása
 
@@ -37,24 +37,24 @@ Ez a rövid útmutató egyetlen adatbázist hoz létre a [kiszolgáló nélküli
 Egyetlen adatbázis létrehozásához a Azure Portal ez a rövid útmutató az Azure SQL-oldalon indul el.
 
 1. Keresse meg az [SQL-telepítési lehetőség kiválasztása](https://portal.azure.com/#create/Microsoft.AzureSQL) lapot.
-1. Az **SQL-adatbázisok**területen hagyja üresen az **Erőforrás típusa** beállítást **egyetlen adatbázis**értékre, majd válassza a **Létrehozás**lehetőséget.
+1. Az **SQL-adatbázisok** területen hagyja üresen az **Erőforrás típusa** beállítást **egyetlen adatbázis** értékre, majd válassza a **Létrehozás** lehetőséget.
 
    ![Hozzáadás az Azure SQL-hez](./media/single-database-create-quickstart/select-deployment.png)
 
-1. A **SQL Database létrehozása** űrlap **alapok** lapján a **Project Details (projekt részletei**) területen válassza ki a kívánt Azure- **előfizetést**.
-1. Az **erőforráscsoport**területen válassza az **új létrehozása**elemet, írja be a *MyResourceGroup*, majd kattintson **az OK gombra**.
-1. Az **adatbázis neve** mezőbe írja be a következőt: *mySampleDatabase*.
-1. A **kiszolgáló**területen válassza az **új létrehozása**lehetőséget, és töltse ki az **új kiszolgáló** űrlapot a következő értékekkel:
-   - **Kiszolgáló neve**: adja meg a *portra beállított mysqlserver*, és adjon hozzá néhány karaktert az egyediséghez. Nem lehet pontosan megadni a kiszolgáló nevét, mert a kiszolgáló nevének globálisan egyedinek kell lennie az Azure összes kiszolgálóján, nem csak az előfizetésen belül. Tehát írjon be valamit, például mysqlserver12345, és a portálon megtudhatja, hogy elérhető-e vagy sem.
-   - **Kiszolgáló-rendszergazdai bejelentkezés**: írja be az *Azureus*nevet.
-   - **Password (jelszó**): adjon meg egy jelszót, amely megfelel a követelményeknek, majd írja be újra a **Jelszó megerősítése** mezőbe.
-   - **Hely**: válasszon ki egy helyet a legördülő listából.
+1. A **SQL Database létrehozása** űrlap **alapok** lapján a **Project Details (projekt részletei** ) területen válassza ki a kívánt Azure- **előfizetést** .
+1. Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, írja be a *MyResourceGroup* , majd kattintson **az OK gombra** .
+1. Az **adatbázis neve** mezőbe írja be a következőt: *mySampleDatabase* .
+1. A **kiszolgáló** területen válassza az **új létrehozása** lehetőséget, és töltse ki az **új kiszolgáló** űrlapot a következő értékekkel:
+   - **Kiszolgáló neve** : adja meg a *portra beállított mysqlserver* , és adjon hozzá néhány karaktert az egyediséghez. Nem lehet pontosan megadni a kiszolgáló nevét, mert a kiszolgáló nevének globálisan egyedinek kell lennie az Azure összes kiszolgálóján, nem csak az előfizetésen belül. Tehát írjon be valamit, például mysqlserver12345, és a portálon megtudhatja, hogy elérhető-e vagy sem.
+   - **Kiszolgáló-rendszergazdai bejelentkezés** : írja be az *Azureus* nevet.
+   - **Password (jelszó** ): adjon meg egy jelszót, amely megfelel a követelményeknek, majd írja be újra a **Jelszó megerősítése** mezőbe.
+   - **Hely** : válasszon ki egy helyet a legördülő listából.
 
-   Válassza az **OK** lehetőséget.
+   Kattintson az **OK** gombra.
 
-1. Ha **nem**értékre szeretné ÁLLÍTANI az **SQL rugalmas** készletet, ne használja.
+1. Ha **nem** értékre szeretné ÁLLÍTANI az **SQL rugalmas** készletet, ne használja.
 1. A **Számítás + tárolás** területen válassza az **Adatbázis konfigurálása** lehetőséget.
-1. Ez a rövid útmutató kiszolgáló nélküli adatbázist használ, ezért válassza a **kiszolgáló**nélküli lehetőséget, majd kattintson az **alkalmaz**gombra. 
+1. Ez a rövid útmutató kiszolgáló nélküli adatbázist használ, ezért válassza a **kiszolgáló** nélküli lehetőséget, majd kattintson az **alkalmaz** gombra. 
 
       ![kiszolgáló nélküli adatbázis konfigurálása](./media/single-database-create-quickstart/configure-database.png)
 
@@ -62,19 +62,19 @@ Egyetlen adatbázis létrehozásához a Azure Portal ez a rövid útmutató az A
 
    ![Új SQL Database-adatbázis – alapszintű lap](./media/single-database-create-quickstart/new-sql-database-basics.png)
 
-1. A **hálózat** lapon, a **kapcsolati módszernél**válassza a **nyilvános végpont**lehetőséget.
-1. A **Tűzfalszabályok**esetében állítsa az **aktuális ügyfél IP-címének hozzáadása** **Igen értéket**. Hagyja meg, **hogy az Azure-szolgáltatások és-erőforrások hozzáférjenek ehhez a kiszolgálóhoz** a **nem**értékre.
+1. A **hálózat** lapon, a **kapcsolati módszernél** válassza a **nyilvános végpont** lehetőséget.
+1. A **Tűzfalszabályok** esetében állítsa az **aktuális ügyfél IP-címének hozzáadása** **Igen értéket** . Hagyja meg, **hogy az Azure-szolgáltatások és-erőforrások hozzáférjenek ehhez a kiszolgálóhoz** a **nem** értékre.
 1. Válassza a **Tovább: további beállítások** elemet az oldal alján.
 
    ![Hálózatkezelés lap](./media/single-database-create-quickstart/networking.png)
   
 
-1. A **További beállítások** lap **adatforrás** szakaszában, a meglévő adatforrások **használatához**válassza a **minta**lehetőséget. Ez létrehoz egy AdventureWorksLT-mintaadatbázis, így a lekérdezés és a kísérlet során bizonyos táblák és lekérdezések nem üresek az üres adatbázisokkal szemben.
+1. A **További beállítások** lap **adatforrás** szakaszában, a meglévő adatforrások **használatához** válassza a **minta** lehetőséget. Ez létrehoz egy AdventureWorksLT-mintaadatbázis, így a lekérdezés és a kísérlet során bizonyos táblák és lekérdezések nem üresek az üres adatbázisokkal szemben.
 1. A lap alján válassza a **felülvizsgálat + létrehozás** elemet:
 
    ![További beállítások lap](./media/single-database-create-quickstart/additional-settings.png)
 
-1. A **felülvizsgálat + létrehozás** lapon kattintson a **Létrehozás**gombra.
+1. A **felülvizsgálat + létrehozás** lapon kattintson a **Létrehozás** gombra.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -171,7 +171,7 @@ A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy k�
 
 ## <a name="set-parameter-values"></a>Paraméterek értékének beállítása
 
-A következő értékek használatosak az adatbázis és a szükséges erőforrások létrehozásához a következő parancsokban. A kiszolgáló nevének globálisan egyedinek kell lennie az összes Azure-ban, így a kiszolgáló nevének létrehozásához a Get-Random parancsmagot kell használni. Cserélje le az IP-címtartomány 0.0.0.0 értékeit az adott környezetnek megfelelően.
+A következő értékek használatosak az adatbázis és a szükséges erőforrások létrehozásához a következő parancsokban. A kiszolgáló nevének globálisan egyedinek kell lennie az összes Azure-ban, hogy a Get-Random parancsmagot használja a kiszolgáló nevének létrehozásához. Cserélje le az IP-címtartomány 0.0.0.0 értékeit az adott környezetnek megfelelően.
 
 ```azurepowershell-interactive
    # Set variables for your server and database
@@ -256,9 +256,9 @@ Hozzon létre egyetlen adatbázist a [New-AzSqlDatabase](/powershell/module/az.s
 
 Az adatbázis létrehozása után a Azure Portalban használhatja a **lekérdezési szerkesztőt (előzetes verzió)** az adatbázishoz való kapcsolódáshoz és a lekérdezési adataihoz.
 
-1. A portálon keresse meg és válassza ki az **SQL-adatbázisok**elemet, majd válassza ki az adatbázist a listából.
+1. A portálon keresse meg és válassza ki az **SQL-adatbázisok** elemet, majd válassza ki az adatbázist a listából.
 1. Az adatbázis lapon válassza a bal oldali menüben a **Lekérdezés-szerkesztő (előzetes verzió)** lehetőséget.
-1. Adja meg a kiszolgáló-rendszergazdai bejelentkezési adatait, majd kattintson **az OK gombra**.
+1. Adja meg a kiszolgáló-rendszergazdai bejelentkezési adatait, majd kattintson **az OK gombra** .
 
    ![Bejelentkezés a lekérdezés-szerkesztőbe](./media/single-database-create-quickstart/query-editor-login.png)
 
@@ -271,13 +271,13 @@ Az adatbázis létrehozása után a Azure Portalban használhatja a **lekérdez�
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-1. Válassza a **Futtatás**lehetőséget, majd tekintse át a lekérdezési eredményeket az **eredmények** ablaktáblán.
+1. Válassza a **Futtatás** gombot, majd tekintse át a lekérdezési eredményeket az **Eredmények** panelen.
 
    ![A lekérdezési szerkesztő eredményei](./media/single-database-create-quickstart/query-editor-results.png)
 
 1. A **Lekérdezés-szerkesztő** oldal bezárásához kattintson az **OK gombra** , amikor a rendszer a nem mentett módosítások elvetésére kéri.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Tartsa meg az erőforráscsoportot, a kiszolgálót és az önálló adatbázist, és folytassa a következő lépésekkel, és megtudhatja, hogyan csatlakozhat az adatbázishoz, és hogyan kérdezheti le azokat különböző módszerekkel.
 
@@ -287,9 +287,9 @@ Ha elkészült ezeknek az erőforrásoknak a használatával, törölheti a lét
 
 A **myResourceGroup** és az összes erőforrás törlése a Azure Portal használatával:
 
-1. A portálon keresse meg és válassza ki az **erőforráscsoportok**elemet, majd válassza a **myResourceGroup** elemet a listából.
-1. Az erőforráscsoport lapon válassza az **erőforráscsoport törlése**elemet.
-1. **A írja be az erőforráscsoport nevét**mezőbe írja be a *myResourceGroup*nevet, majd válassza a **Törlés**lehetőséget.
+1. A portálon keresse meg és válassza ki az **erőforráscsoportok** elemet, majd válassza a **myResourceGroup** elemet a listából.
+1. Az erőforráscsoport lapon válassza az **erőforráscsoport törlése** elemet.
+1. **A írja be az erőforráscsoport nevét** mezőbe írja be a *myResourceGroup* nevet, majd válassza a **Törlés** lehetőséget.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -309,7 +309,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatbázis [összekötése és lekérdezése](connect-query-content-reference-guide.md) különböző eszközök és nyelvek használatával:
 > [!div class="nextstepaction"]
@@ -320,4 +320,4 @@ Az adatbázis [összekötése és lekérdezése](connect-query-content-reference
 Szeretné optimalizálni és menteni a Felhőbeli kiadásait?
 
 > [!div class="nextstepaction"]
-> [A költségek elemzésének megkezdése a Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [A költségek elemzésének megkezdése a Cost Management](../../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

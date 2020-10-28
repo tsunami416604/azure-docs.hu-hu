@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 493c18efa8bad2e366424c8c8130754ce0098913
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a13c641d50a68d9661b4aa6caf8effb82d53dd7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85250710"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793228"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Több-bérlős SaaS-adatbázisok bérletének mintái
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -193,7 +193,7 @@ A következő táblázat összefoglalja a fő bérleti modellek közötti külö
 | Működési komplexitás | Alacsony – magas. Egyénileg egyszerű, összetett, nagy léptékű. | Alacsony közepes. A minták az összetettséget a skálán kezelik. | Alacsony – magas. Az egyes bérlők kezelése összetett. |
 | &nbsp; ||||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Olyan több-bérlős Wingtip-alkalmazás üzembe helyezése és feltárása, amely az adatbázis-bérlői SaaS-modellt használja – Azure SQL Database][docu-sql-db-saas-tutorial-deploy-wingtip-db-per-tenant-496y]
 
@@ -204,7 +204,7 @@ A következő táblázat összefoglalja a fő bérleti modellek közötti külö
 
 [http-visual-studio-devops-485m]: https://www.visualstudio.com/devops/
 
-[docu-sql-svr-db-row-level-security-947w]: https://docs.microsoft.com/sql/relational-databases/security/row-level-security
+[docu-sql-svr-db-row-level-security-947w]: /sql/relational-databases/security/row-level-security
 
 [docu-elastic-db-client-library-536r]:elastic-database-client-library.md
 [docu-sql-db-saas-tutorial-deploy-wingtip-db-per-tenant-496y]: saas-dbpertenant-get-started-deploy.md
@@ -221,4 +221,3 @@ A következő táblázat összefoglalja a fő bérleti modellek közötti külö
 [image-mt-app-db-per-tenant-pool-153p]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-database-per-tenant-pool-15.png "Több-bérlős alkalmazás tervezése a bérlői adatbázissal, rugalmas készlet használatával."
 
 [image-mt-app-sharded-mt-db-174s]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-sharded-multi-tenant-databases-17.png "Több-bérlős alkalmazás tervezése több-bérlős adatbázisokkal."
-

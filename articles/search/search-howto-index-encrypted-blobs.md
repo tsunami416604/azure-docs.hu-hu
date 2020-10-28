@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 3330b4d5df366a5e886157e875f40d7e370c7442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a4dcec2b50a13a256c82e4a5ec54c9b22aa973f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91543033"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791987"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>Titkosított Blobok indexelése blob-indexelő és szakértelmével használatával az Azure-ban Cognitive Search
 
@@ -56,7 +56,7 @@ A DecryptBlobFile skill minden blobhoz bemenetként fogadja az URL-címet és az
 
 1. Válassza ki azt **az előfizetést, amelyben a Azure Key Vault példány létezik** (ez az útmutató nem fog működni, ha másik előfizetést választ), vagy válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat (ha létrehoz egy újat, ki kell választania egy régiót, amelyet telepíteni szeretne).
 
-1. Válassza a **felülvizsgálat + létrehozás**lehetőséget, győződjön meg arról, hogy elfogadja a feltételeket, majd válassza a **Létrehozás** lehetőséget az Azure-függvény telepítéséhez.
+1. Válassza a **felülvizsgálat + létrehozás** lehetőséget, győződjön meg arról, hogy elfogadja a feltételeket, majd válassza a **Létrehozás** lehetőséget az Azure-függvény telepítéséhez.
 
     ![ARM-sablon a portálon](media/indexing-encrypted-blob-files/arm-template.jpg "ARM-sablon a portálon")
 
@@ -64,13 +64,13 @@ A DecryptBlobFile skill minden blobhoz bemenetként fogadja az URL-címet és az
 
 1. Navigáljon a Azure Key Vault-példányhoz a portálon. [Hozzon létre egy hozzáférési szabályzatot](../key-vault/general/assign-access-policy-portal.md) a Azure Key Vaultban, amely kulcsfontosságú hozzáférést biztosít az egyéni képességhez.
  
-    1. A **Beállítások**területen válassza a **hozzáférési szabályzatok**lehetőséget, majd válassza a **hozzáférési házirend hozzáadása** lehetőséget.
+    1. A **Beállítások** területen válassza a **hozzáférési szabályzatok** lehetőséget, majd válassza a **hozzáférési házirend hozzáadása** lehetőséget.
      
        ![Kulcstartó – hozzáférési szabályzat hozzáadása](media/indexing-encrypted-blob-files/keyvault-access-policies.jpg "Kulcstartó-hozzáférési szabályzatok")
 
-    1. **A konfigurálás sablonból**területen válassza az **Azure Data Lake Storage vagy az Azure Storage**lehetőséget.
+    1. **A konfigurálás sablonból** területen válassza az **Azure Data Lake Storage vagy az Azure Storage** lehetőséget.
 
-    1. A rendszerbiztonsági tag esetében válassza ki az üzembe helyezett Azure-függvény példányát. A 2. lépésben létrehozott erőforrás-előtaggal megkeresheti azt, amely a **psdbf-Function-app**alapértelmezett előtag-értékét használja.
+    1. A rendszerbiztonsági tag esetében válassza ki az üzembe helyezett Azure-függvény példányát. A 2. lépésben létrehozott erőforrás-előtaggal megkeresheti azt, amely a **psdbf-Function-app** alapértelmezett előtag-értékét használja.
 
     1. Ne jelölje ki a jogosultságot az alkalmazásra vonatkozó beállításnál.
      
@@ -86,7 +86,7 @@ A DecryptBlobFile skill minden blobhoz bemenetként fogadja az URL-címet és az
     
         ![Függvény URL-címe](media/indexing-encrypted-blob-files/function-uri.jpg "Hol található az Azure-függvény URL-címe")
 
-    1. A gazdagép kulcsának kódja, amely az **alkalmazás kulcsainak**megnyitásával, az **alapértelmezett** kulcs megjelenítéséhez és az érték másolásával érhető el.
+    1. A gazdagép kulcsának kódja, amely az **alkalmazás kulcsainak** megnyitásával, az **alapértelmezett** kulcs megjelenítéséhez és az érték másolásával érhető el.
      
         ![Function Host kulcs kódja](media/indexing-encrypted-blob-files/function-host-key.jpg "Hol található az Azure Function Host kulcs kódja")
 
@@ -106,9 +106,9 @@ Ahogy az Azure-függvényhez is, szánjon egy kis időt a rendszergazdai kulcs b
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **áttekintése** lapon szerezze be a keresési szolgáltatás nevét. A szolgáltatás nevét a végpont URL-címének áttekintésével ellenőrizheti. Ha a végpont URL-címe volt `https://mydemo.search.windows.net` , a szolgáltatás neve a következő lesz: `mydemo` .
 
-2. A **Beállítások**  >  **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+2. A **Beállítások**  >  **kulcsaiban** kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-   ![A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése](media/search-get-started-javascript/service-name-and-keys.png)
 
 Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kérelem fejlécében. Egy érvényes kulcs a kérést küldő alkalmazás és az azt kezelő szolgáltatás közötti megbízhatósági kapcsolatot hoz létre a kérelmek alapján.
 
@@ -119,7 +119,7 @@ A Poster telepítése és beállítása.
 ### <a name="download-and-install-postman"></a>Poster letöltése és telepítése
 
 1. Töltse le a [Poster-gyűjtemény forráskódját](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/index-encrypted-blobs/Index%20encrypted%20Blob%20files.postman_collection.json).
-1. A **fájl**importálása lehetőség kiválasztásával  >  **Import** importálhatja a forráskódot Poster-ba.
+1. A **fájl** importálása lehetőség kiválasztásával  >  **Import** importálhatja a forráskódot Poster-ba.
 1. Válassza a **gyűjtemények** fület, majd kattintson a **...** (három pont) gombra.
 1. Válassza a **Szerkesztés** elemet. 
    
@@ -137,24 +137,24 @@ Az érték beszerzéséhez `admin-key` használja a korábban feljegyzett Azure 
 |-------------|-----------------|
 | `admin-key` | Az Azure Cognitive Search szolgáltatás **Keys (kulcsok** ) lapján.  |
 | `search-service-name` | Az Azure Cognitive Search szolgáltatás neve. Az URL-cím: `https://{{search-service-name}}.search.windows.net` . | 
-| `storage-connection-string` | A Storage-fiók **hozzáférési kulcsok** lapján válassza a **key1**  >  **kapcsolati karakterlánc**lehetőséget. | 
+| `storage-connection-string` | A Storage-fiók **hozzáférési kulcsok** lapján válassza a **key1**  >  **kapcsolati karakterlánc** lehetőséget. | 
 | `storage-container-name` | Annak a blob-tárolónak a neve, amelybe az indexelni kívánt titkosított fájlok vannak. | 
 | `function-uri` |  Az Azure-függvény főoldalának **alapok** területén. | 
-| `function-code` | Az Azure-függvényben navigáljon az **alkalmazás kulcsaihoz**, és kattintson az **alapértelmezett** kulcs megjelenítéséhez és az érték másolásához. | 
-| `api-version` | **2020-06-30**-ig marad. |
-| `datasource-name` | Maradjon **titkosítva – Blobok – DS**. | 
+| `function-code` | Az Azure-függvényben navigáljon az **alkalmazás kulcsaihoz** , és kattintson az **alapértelmezett** kulcs megjelenítéséhez és az érték másolásához. | 
+| `api-version` | **2020-06-30** -ig marad. |
+| `datasource-name` | Maradjon **titkosítva – Blobok – DS** . | 
 | `index-name` | Maradjon **titkosítatlan Blobok-idx-** ként. | 
-| `skillset-name` | Maradjon **titkosítva – Blobok – SS**. | 
-| `indexer-name` | Maradjon **titkosítva – Blobok – IXR**. | 
+| `skillset-name` | Maradjon **titkosítva – Blobok – SS** . | 
+| `indexer-name` | Maradjon **titkosítva – Blobok – IXR** . | 
 
 ### <a name="review-the-request-collection-in-postman"></a>Tekintse át a Poster kérelem-gyűjteményét
 
 Az útmutató futtatásakor négy HTTP-kérelmet kell kiadnia: 
 
-- **Az index létrehozásának kérése**: ez az index az Azure Cognitive Search által használt és visszaadott adatok tárolására szolgál.
-- **Az adatforrás létrehozásához szükséges post**: ez az adatforrás összekapcsolja az Azure Cognitive Search szolgáltatást a Storage-fiókkal, ezért a titkosított blob-fájlokat. 
-- **Kérelem létrehozása a készségkészlet létrehozásához**: a készségkészlet megadja az Azure-függvény egyéni képességének definícióját, amely visszafejti a blob-fájl adatait, valamint egy [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) , amely a visszafejtés után Kinyeri a szöveget az egyes dokumentumokból.
-- **Put-kérelem az indexelő létrehozásához**: az indexelő beolvassa az adatokat, alkalmazza a készségkészlet, és az eredményeket tárolja. Ezt a kérést utoljára kell futtatnia.
+- **Az index létrehozásának kérése** : ez az index az Azure Cognitive Search által használt és visszaadott adatok tárolására szolgál.
+- **Az adatforrás létrehozásához szükséges post** : ez az adatforrás összekapcsolja az Azure Cognitive Search szolgáltatást a Storage-fiókkal, ezért a titkosított blob-fájlokat. 
+- **Kérelem létrehozása a készségkészlet létrehozásához** : a készségkészlet megadja az Azure-függvény egyéni képességének definícióját, amely visszafejti a blob-fájl adatait, valamint egy [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) , amely a visszafejtés után Kinyeri a szöveget az egyes dokumentumokból.
+- **Put-kérelem az indexelő létrehozásához** : az indexelő beolvassa az adatokat, alkalmazza a készségkészlet, és az eredményeket tárolja. Ezt a kérést utoljára kell futtatnia.
 
 A [forráskód](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/index-encrypted-blobs/Index%20encrypted%20Blob%20files.postman_collection.json) tartalmaz egy Poster-gyűjteményt, amely a négy kérelemmel rendelkezik, valamint néhány hasznos utólagos kérelmet is. A kérések kiadásához a Poster lapon válassza a kérelmek fület, és válassza a **Küldés** lehetőséget.
 

@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: e5792f63025c0be4d9f67a6971707618f12cc8ce
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f16b0fb5cf241604c627925a7cd905c1683399fd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755907"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886588"
 ---
 A beszédfelismerési szolgáltatás egyik fő funkciója az emberi beszéd (más néven beszéd – szöveg) felismerése és átírása. Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Speech SDK-t az alkalmazásaiban és termékeiben a kiváló minőségű beszéd-szöveg átalakítás elvégzéséhez.
 
@@ -147,7 +147,8 @@ function fromFile() {
 fromFile();
 ```
 
-A leküldéses adatfolyamok bemenetként való használata azt feltételezi, hogy a fájl adatfolyamának pozíciója az *adatok elejére* van állítva, kihagyva a fejléceket. Az API bizonyos esetekben továbbra is működni fog, ha a fejléc nem lett kihagyva, de a legjobb eredmény érdekében érdemes lehet a fejlécek olvasásához és a hangadatok elejére állítani a logikát.
+A leküldéses adatfolyamok bemenetként való használata azt feltételezi, hogy a hangadatok egy nyers PCM, például a fejlécek kihagyása.
+Az API bizonyos esetekben továbbra is működni fog, ha a fejléc nem lett kihagyva, de a legjobb eredmény érdekében érdemes lehet a fejlécek olvasására kiolvasni a logikát, hogy az a `fs` *hangadatok kezdetekor* induljon el.
 
 ---
 

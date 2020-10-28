@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 67d1979ccbfbffc17ba450600e605a96911c8331
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35738db5b7bd4a1ac7aaf94e2dc5f1d26a075cdf
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056339"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791834"
 ---
 # <a name="repairing-an-export-job"></a>Exportálási feladat javítása
 Az exportálási feladatok befejezése után a helyszíni Microsoft Azure Import/Export eszközt a következő helyre futtathatja:  
@@ -24,11 +24,11 @@ Az exportálási feladatok befejezése után a helyszíni Microsoft Azure Import
   
 A funkció használatához kapcsolódnia kell az Azure Storage-hoz.  
   
-Az importálási feladatok javítására szolgáló parancs **RepairExport**.
+Az importálási feladatok javítására szolgáló parancs **RepairExport** .
 
 ## <a name="repairexport-parameters"></a>RepairExport paraméterek
 
-A következő paraméterek megadhatók a **RepairExport**:  
+A következő paraméterek megadhatók a **RepairExport** :  
   
 |Paraméter|Leírás|  
 |---------------|-----------------|  
@@ -81,7 +81,7 @@ A másolási naplófájl azt jelzi, hogy hiba történt, miközben a Windows Azu
 ## <a name="using-repairexport-to-validate-drive-contents"></a>A RepairExport használata a meghajtó tartalmának ellenőrzéséhez  
 Az Azure import/export szolgáltatást a **RepairExport** beállítással is használhatja a meghajtó tartalmának ellenőrzéséhez. Az egyes exportálási meghajtókon található jegyzékfájl a meghajtó MD5s tartalmazza.  
   
-Az Azure import/export szolgáltatás az exportálási folyamat során is mentheti a jegyzékfájlokat egy Storage-fiókba. A jegyzékfájlok helye a feladatok [lekérése](/rest/api/storageimportexport/jobs) művelettel érhető el a feladatok befejeződése után. A meghajtó-jegyzékfájl formátumával kapcsolatos további információkért lásd: [importálási/exportálási szolgáltatás jegyzékfájljának formátuma](storage-import-export-file-format-metadata-and-properties.md).  
+Az Azure import/export szolgáltatás az exportálási folyamat során is mentheti a jegyzékfájlokat egy Storage-fiókba. A jegyzékfájlok helye a feladatok [lekérése](/rest/api/storageimportexport/jobs) művelettel érhető el a feladatok befejeződése után. A meghajtó-jegyzékfájl formátumával kapcsolatos további információkért lásd: [importálási/exportálási szolgáltatás jegyzékfájljának formátuma](/previous-versions/azure/storage/common/storage-import-export-file-format-metadata-and-properties).  
   
 Az alábbi példa bemutatja, hogyan futtathatja az Azure import/export eszközt a **/ManifestFile** és a **/CopyLogFile** paraméterekkel:  
   
@@ -153,6 +153,6 @@ Az eszköz letölti az ellenőrzést nem teljesítő összes összetevőt, és a
 ## <a name="next-steps"></a>Következő lépések
  
 * [Az Azure import/export eszköz beállítása](storage-import-export-tool-setup-v1.md)   
-* [Merevlemezek előkészítése importálási feladatokhoz](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [Merevlemezek előkészítése importálási feladatokhoz](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import-v1)   
 * [Feladatok állapotának áttekintése a másolási naplófájlokkal](storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Importálási feladat javítása](storage-import-export-tool-repairing-an-import-job-v1.md)

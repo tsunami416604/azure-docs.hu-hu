@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ae00703805bef6f5e9758bafcb781eda91cd93f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60f781ddfa5717bbe5bcbb05ec8c236c8594c587
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272157"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793092"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Mi az Azure Virtual Machines SQL Server (Windows)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "91272157"
 
 Az [Azure Virtual Machines SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) lehetővé teszi a felhőalapú SQL Server teljes verziójának használatát anélkül, hogy bármilyen helyszíni hardvert kellene kezelnie. A SQL Server virtuális gépek (VM-EK) is leegyszerűsítik a licencelési költségeket, ha Ön fizet.
 
-Világszerte számos [földrajzi régióban](https://azure.microsoft.com/regions/) üzemelnek Azure virtuális gépek. Több különböző [gépméret](../../../virtual-machines/windows/sizes.md) is elérhető. A virtuális gépek rendszerkép-katalógusából a megfelelő verziójú, kiadású és operációs rendszerű, SQL Servert futtató virtuális gépet hozhat létre. Így a virtuális gépek jó választást tesznek lehetővé számos különböző SQL Server munkaterheléshez.
+Világszerte számos [földrajzi régióban](https://azure.microsoft.com/regions/) üzemelnek Azure virtuális gépek. Több különböző [gépméret](../../../virtual-machines/sizes.md) is elérhető. A virtuális gépek rendszerkép-katalógusából a megfelelő verziójú, kiadású és operációs rendszerű, SQL Servert futtató virtuális gépet hozhat létre. Így a virtuális gépek jó választást tesznek lehetővé számos különböző SQL Server munkaterheléshez.
 
 Ha még nem SQL Server Azure-beli virtuális gépeken, tekintse meg az Azure-beli virtuális gépekről szóló [Azure-](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)beli virtuálisgép- *áttekintő videó SQL Serverét* :
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61/player]
@@ -42,7 +42,7 @@ Az Azure Virtual Machines SQL Server az [Automatikus javítás](automated-patchi
 
 Az Azure Virtual Machines SQL Server kihasználhatja az [automatikus biztonsági mentés](automated-backup.md)előnyeit, amely rendszeresen biztonsági másolatokat készít az adatbázisról a blob Storage-ba. Ezt a technikát manuálisan is alkalmazhatja. További információ: [Use Azure Storage for SQL Server Backup and Restore](azure-storage-sql-server-backup-restore-use.md) (Az Azure Storage használata az SQL Server biztonsági mentéséhez és helyreállításához).
 
-Az Azure nagyvállalati szintű biztonsági mentési megoldást is kínál az Azure-beli virtuális gépeken futó SQL Serverhoz. Egy teljes körűen felügyelt biztonsági mentési megoldás, amely támogatja az Always On rendelkezésre állási csoportokat, a hosszú távú adatmegőrzést, az időponthoz kötött helyreállítást, valamint a központi felügyeletet és monitorozást. További információ: [Azure Backup SQL Server Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/backup/backup-azure-sql-database).
+Az Azure nagyvállalati szintű biztonsági mentési megoldást is kínál az Azure-beli virtuális gépeken futó SQL Serverhoz. Egy teljes körűen felügyelt biztonsági mentési megoldás, amely támogatja az Always On rendelkezésre állási csoportokat, a hosszú távú adatmegőrzést, az időponthoz kötött helyreállítást, valamint a központi felügyeletet és monitorozást. További információ: [Azure Backup SQL Server Azure-beli virtuális gépeken](../../../backup/backup-azure-sql-database.md).
   
 
 ## <a name="high-availability"></a>Magas rendelkezésre állás
@@ -80,7 +80,7 @@ Az elérhető SQL Server on Linux virtuálisgép-lemezképek megjelenítéséhez
 ### <a name="bring-your-own-license"></a><a id="BYOL"></a> Saját licenc használata
 Saját licencet is használhat (BYOL). Ebben az esetben csak a virtuális gépért kell fizetnie, az SQL Server licencelésével kapcsolatos egyéb költségek nélkül.  Saját licence használatával hosszú távon pénzt takaríthat meg a folyamatos éles számítási feladatok esetében. A lehetőség követelményeivel kapcsolatos információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](pricing-guidance.md#byol).
 
-Ha saját licencet szeretne létrehozni, lehetősége van a használatban lévő használati SQL Server VM átalakítására, vagy egy rendszerképet is üzembe helyezhet a következővel: **{BYOL}**. A licencelési modellnek a használati és BYOL közötti váltásával kapcsolatos további információkért lásd: [SQL Server VM licencelési modelljének módosítása](licensing-model-azure-hybrid-benefit-ahb-change.md). 
+Ha saját licencet szeretne létrehozni, lehetősége van a használatban lévő használati SQL Server VM átalakítására, vagy egy rendszerképet is üzembe helyezhet a következővel: **{BYOL}** . A licencelési modellnek a használati és BYOL közötti váltásával kapcsolatos további információkért lásd: [SQL Server VM licencelési modelljének módosítása](licensing-model-azure-hybrid-benefit-ahb-change.md). 
 
 | Verzió | Operációs rendszer | Kiadás |
 | --- | --- | --- |
@@ -116,11 +116,11 @@ Az **Azure SQL-erőforrások** oldal eléréséhez válassza az **Azure sql** le
 > [!NOTE]
 > Az Azure SQL gyors és egyszerű módot biztosít az Azure SQL-adatbázisok, rugalmas készletek, logikai kiszolgálók, felügyelt példányok és virtuális gépek elérésére. Az Azure SQL nem szolgáltatás vagy erőforrás. 
 
-A meglévő erőforrások kezeléséhez válassza ki a kívánt elemet a listában. Új Azure SQL-erőforrások létrehozásához válassza a **+ Hozzáadás**lehetőséget. 
+A meglévő erőforrások kezeléséhez válassza ki a kívánt elemet a listában. Új Azure SQL-erőforrások létrehozásához válassza a **+ Hozzáadás** lehetőséget. 
 
 ![Azure SQL-erőforrás létrehozása](./media/sql-server-on-azure-vm-iaas-what-is-overview/create-azure-sql-resource.png)
 
-A **+ Hozzáadás gombra**kattintva további információkat jeleníthet meg a különböző beállításokról a csempék **részleteinek megjelenítése** lehetőség kiválasztásával.
+A **+ Hozzáadás gombra** kattintva további információkat jeleníthet meg a különböző beállításokról a csempék **részleteinek megjelenítése** lehetőség kiválasztásával.
 
 ![adatbázisok csempe részletei](./media/sql-server-on-azure-vm-iaas-what-is-overview/sql-vm-details.png)
 
@@ -135,7 +135,7 @@ Részletes információ:
 Az Azure csak egy virtuálisgép-rendszerképet tart fenn minden egyes támogatott operációs rendszer, verzió és kiadás kombináció számára. Ez azt jelenti, hogy a rendszer folyamatosan frissíti a rendszerképeket, a régebbi rendszerképek pedig el lesznek távolítva. További információkért tekintse meg az [SQL Server virtuális gépek GYIK](frequently-asked-questions-faq.md#images) dokumentumának **Rendszerképek** című szakaszát.
 
 ## <a name="customer-experience-improvement-program-ceip"></a>Felhasználói élmény fokozása program (CEIP)
-A Felhasználói élmény fokozása program (CEIP) alapértelmezés szerint engedélyezve van. Ez a program rendszeres időközönként jelentéseket küld a Microsoftnak az SQL Server fejlesztése érdekében. A CEIP-pel nem kell felügyeleti feladatokat végezni, hacsak nem kívánja letiltani az üzembe helyezés után. A CEIP testreszabásához vagy letiltásához csatlakozzon a virtuális géphez a távoli asztalról. Ezután futtassa az **SQL Server hiba- és használatai jelentések** segédprogramot. A jelentések letiltásához kövesse az utasításokat. Az adatgyűjtésről további információért tekintse meg az [SQL Server adatvédelmi nyilatkozatát](https://docs.microsoft.com/sql/sql-server/sql-server-privacy).
+A Felhasználói élmény fokozása program (CEIP) alapértelmezés szerint engedélyezve van. Ez a program rendszeres időközönként jelentéseket küld a Microsoftnak az SQL Server fejlesztése érdekében. A CEIP-pel nem kell felügyeleti feladatokat végezni, hacsak nem kívánja letiltani az üzembe helyezés után. A CEIP testreszabásához vagy letiltásához csatlakozzon a virtuális géphez a távoli asztalról. Ezután futtassa az **SQL Server hiba- és használatai jelentések** segédprogramot. A jelentések letiltásához kövesse az utasításokat. Az adatgyűjtésről további információért tekintse meg az [SQL Server adatvédelmi nyilatkozatát](/sql/sql-server/sql-server-privacy).
 
 ## <a name="related-products-and-services"></a>Kapcsolódó termékek és szolgáltatások
 ### <a name="windows-virtual-machines"></a>Windows rendszerű virtuális gépek
@@ -150,7 +150,7 @@ A Felhasználói élmény fokozása program (CEIP) alapértelmezés szerint enge
 * [Teljes tartománynév létrehozása az Azure Portalon](../../../virtual-machines/linux/portal-create-fqdn.md)
 
 ### <a name="sql"></a>SQL
-* [SQL Server dokumentáció](https://docs.microsoft.com/sql/index)
+* [SQL Server dokumentáció](/sql/index)
 * [Az Azure SQL Database összehasonlítása](../../azure-sql-iaas-vs-paas-what-is-overview.md)
 
 ## <a name="next-steps"></a>Következő lépések
@@ -165,5 +165,5 @@ Választ kaphat a SQL Server virtuális gépekkel kapcsolatos gyakori kérdések
 
 Az N szintű alkalmazások SQL Server IaaS való futtatására szolgáló hivatkozási architektúrák megtekintése
 
-* [Windows N szintű alkalmazás az Azure-ban SQL Server](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
-* [N szintű alkalmazás futtatása több Azure-régióban a magas rendelkezésre állás érdekében](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)
+* [Windows N szintű alkalmazás az Azure-ban SQL Server](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
+* [N szintű alkalmazás futtatása több Azure-régióban a magas rendelkezésre állás érdekében](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)

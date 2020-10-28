@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 11b41f4dcffad2c98ea5d1f70346ba150fd18c17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 492041e39cf3e7be256bc783afc82fc756e17bf4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278634"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791545"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -69,7 +69,7 @@ Tekintse meg a [figyelő feldolgozásának sorrendjét](https://docs.microsoft.c
 
 Ha nyilvános IP-címet használ végpontként, a nyilvános IP-cím erőforráson megtalálhatja az IP-és DNS-információkat. Vagy keresse meg a portálon az Application Gateway áttekintés lapján. Ha belső IP-címeket használ, keresse meg az információkat az Áttekintés oldalon.
 
-A v2 SKU esetében nyissa meg a nyilvános IP-erőforrást, és válassza a **konfiguráció**lehetőséget. A DNS-név **címke (nem kötelező)** mezője elérhető a DNS-név konfigurálásához.
+A v2 SKU esetében nyissa meg a nyilvános IP-erőforrást, és válassza a **konfiguráció** lehetőséget. A DNS-név **címke (nem kötelező)** mezője elérhető a DNS-név konfigurálásához.
 
 ### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Mik a Keep-Alive időtúllépés és a TCP Üresjárati időkorlát beállításai?
 
@@ -138,7 +138,7 @@ Nem. A Application Gateway v2 még nem támogatja az NTLM-hitelesítéssel rende
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>A Application Gateway affinitás cookie támogatja a SameSite attribútumot?
 Igen, a [Chromium böngésző](https://www.chromium.org/Home) [V80 frissítése](https://chromiumdash.appspot.com/schedule) a SameSite attribútum nélküli http-cookie-kra vonatkozó mandátumot vezetett be SameSite = LAX néven. Ez azt jelenti, hogy a böngésző nem fogja elküldeni a Application Gateway affinitási cookie-t harmadik féltől származó környezetben. 
 
-Ennek a forgatókönyvnek a támogatásához Application Gateway beinjektál egy *ApplicationGatewayAffinityCORS* nevű másik cookie-t a meglévő *ApplicationGatewayAffinity* -cookie mellett.  Ezek a cookie-k hasonlóak, de a *ApplicationGatewayAffinityCORS* -cookie két további attribútummal bővült: *SameSite = none; Biztonságos*. Ezek az attribútumok olyan Sticky-munkameneteket tartanak fenn, amelyek az átszármazási kérelmek esetében is érvényesek További információt a [cookie-alapú affinitás című szakaszban](configuration-http-settings.md#cookie-based-affinity) talál.
+Ennek a forgatókönyvnek a támogatásához Application Gateway beinjektál egy *ApplicationGatewayAffinityCORS* nevű másik cookie-t a meglévő *ApplicationGatewayAffinity* -cookie mellett.  Ezek a cookie-k hasonlóak, de a *ApplicationGatewayAffinityCORS* -cookie két további attribútummal bővült: *SameSite = none; Biztonságos* . Ezek az attribútumok olyan Sticky-munkameneteket tartanak fenn, amelyek az átszármazási kérelmek esetében is érvényesek További információt a [cookie-alapú affinitás című szakaszban](configuration-http-settings.md#cookie-based-affinity) talál.
 
 ## <a name="performance"></a>Teljesítmény
 
@@ -350,7 +350,7 @@ A hitelesítésszolgáltató (CA) böngésző tagjai a közelmúltban közzétet
 * [1649951-es hiba](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)
 * [1650910-es hiba](https://bugzilla.mozilla.org/show_bug.cgi?id=1650910)
 
-Az iparág megfelelőségi követelményeinek megfelelően a CA-szállítók elkezdték visszavonni a nem megfelelő CAs-t és a megfelelő hitelesítésszolgáltatókat, amelyekhez az ügyfeleknek újra ki kell állítani a tanúsítványokat.A Microsoft szorosan együttműködik ezekkel a szállítókkal, hogy csökkentse az Azure-szolgáltatásokkal kapcsolatos lehetséges hatásokat, **azonban a "saját tanúsítvány használata" (BYOC) forgatókönyvekben használt saját tanúsítványok vagy tanúsítványok továbbra is a váratlanul visszavont állapottal rendelkeznek**.
+Az iparág megfelelőségi követelményeinek megfelelően a CA-szállítók elkezdték visszavonni a nem megfelelő CAs-t és a megfelelő hitelesítésszolgáltatókat, amelyekhez az ügyfeleknek újra ki kell állítani a tanúsítványokat.A Microsoft szorosan együttműködik ezekkel a szállítókkal, hogy csökkentse az Azure-szolgáltatásokkal kapcsolatos lehetséges hatásokat, **azonban a "saját tanúsítvány használata" (BYOC) forgatókönyvekben használt saját tanúsítványok vagy tanúsítványok továbbra is a váratlanul visszavont állapottal rendelkeznek** .
 
 Annak ellenőrzése, hogy az alkalmazás által használt tanúsítványok vissza lettek-e vonva a [DigiCert bejelentésére](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement) és a [tanúsítvány-visszavonási nyomon követésre](https://misissued.com/#revoked). Ha visszavonták a tanúsítványokat, vagy visszavonják őket, új tanúsítványokat kell kérnie az alkalmazásokban használt HITELESÍTÉSSZOLGÁLTATÓI gyártótól. Ha el szeretné kerülni az alkalmazás rendelkezésre állását, mert a tanúsítványok váratlanul visszavonják a tanúsítványokat, vagy egy visszavont tanúsítvány frissítését, tekintse meg az Azure Updates-bejegyzéseket az BYOC-t támogató különféle Azure-szolgáltatások szervizelési hivatkozásaira vonatkozóan: https://azure.microsoft.com/updates/certificateauthorityrevocation/
 
@@ -434,9 +434,9 @@ Nem, a AGIC bővítmény felügyelt szolgáltatás, ami azt jelenti, hogy a Micr
 
 A Application Gateway három naplót biztosít: 
 
-* **ApplicationGatewayAccessLog**: a hozzáférési napló tartalmazza az Application Gateway-felületre küldött összes kérelmet. Az adat magában foglalja a hívó IP-címét, a kért URL-címet, a válasz késését, a visszatérési kódot, valamint a bejövő és kimenő bájtokat. Egy-egy rekordot tartalmaz az Application Gateway-ben.
-* **ApplicationGatewayPerformanceLog**: a Teljesítménynapló rögzíti az egyes Application Gateway-átjárók teljesítményadatait. Az adatok közé tartozik az átviteli sebesség, a kiszolgált kérelmek száma, a sikertelen kérelmek száma, valamint az állapot és a nem kifogástalan háttérbeli példányok száma.
-* **ApplicationGatewayFirewallLog**: a WAF-mel konfigurált Application Gateway átjárók esetén a tűzfal naplója az észlelési mód vagy a megelőzési mód használatával naplózott kérelmeket tartalmaz.
+* **ApplicationGatewayAccessLog** : a hozzáférési napló tartalmazza az Application Gateway-felületre küldött összes kérelmet. Az adat magában foglalja a hívó IP-címét, a kért URL-címet, a válasz késését, a visszatérési kódot, valamint a bejövő és kimenő bájtokat. Egy-egy rekordot tartalmaz az Application Gateway-ben.
+* **ApplicationGatewayPerformanceLog** : a Teljesítménynapló rögzíti az egyes Application Gateway-átjárók teljesítményadatait. Az adatok közé tartozik az átviteli sebesség, a kiszolgált kérelmek száma, a sikertelen kérelmek száma, valamint az állapot és a nem kifogástalan háttérbeli példányok száma.
+* **ApplicationGatewayFirewallLog** : a WAF-mel konfigurált Application Gateway átjárók esetén a tűzfal naplója az észlelési mód vagy a megelőzési mód használatával naplózott kérelmeket tartalmaz.
 
 Minden napló gyűjtése 60 másodpercenként történik. További információ: [a háttér állapota, a diagnosztikai naplók és a metrikák a Application Gatewayhoz](application-gateway-diagnostics.md).
 
@@ -472,6 +472,10 @@ Igen. Ha a konfiguráció megfelel a következő forgatókönyvnek, nem jelenik 
 - Telepítette Application Gateway v2-t
 - Rendelkezik egy NSG az Application Gateway alhálózaton
 - Engedélyezte a NSG folyamat naplóit az adott NSG
+
+### <a name="does-application-gateway-store-customer-data"></a>A Application Gateway tárolja az ügyféladatokat?
+
+Nem, Application Gateway nem tárolja az ügyféladatokat.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 3a0b40b91aad388cb42222ead8da4f2bd91947ee
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 848f3cd2d5719d62e39f46c166d51e09ec89bd4c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165239"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792514"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Közvetlen tárolóhelyek (SQL Server Azure-beli virtuális gépeken) létrehozása
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ Az alábbi ábrán a teljes megoldás látható, amely az Azure-beli virtuális 
 
 Az előző ábrán a következő erőforrások láthatók ugyanabban az erőforráscsoportban:
 
-- Két virtuális gép egy Windows Server rendszerű feladatátvevő fürtben. Ha egy virtuális gép feladatátvevő fürtben található, akkor azt is nevezik *fürtcsomópont* vagy *csomópontnak*.
+- Két virtuális gép egy Windows Server rendszerű feladatátvevő fürtben. Ha egy virtuális gép feladatátvevő fürtben található, akkor azt is nevezik *fürtcsomópont* vagy *csomópontnak* .
 - Mindegyik virtuális gép két vagy több adatlemezzel rendelkezik.
 - Közvetlen tárolóhelyek szinkronizálja az adatokat az adatlemezeken, és a szinkronizált tárolót tárolóként jeleníti meg.
 - A tárolási készlet egy Fürt megosztott kötete (CSV) a feladatátvevő fürthöz.
@@ -68,11 +68,11 @@ A cikkben szereplő utasítások elvégzése előtt a következőket kell tennie
 
    Ha a felhasználói felületen szeretné telepíteni a feladatátvételi fürtszolgáltatást, tegye a következőket mindkét virtuális gépen:
 
-   1. A **Kiszolgálókezelőben**válassza a **kezelés**, majd a **szerepkörök és szolgáltatások hozzáadása**lehetőséget.
-   1. A **szerepkörök és szolgáltatások hozzáadása** varázslóban kattintson a **tovább** gombra, amíg ki nem **választja a funkciókat**.
-   1. A **szolgáltatások kiválasztása**területen válassza a **feladatátvételi fürtszolgáltatás**lehetőséget. Adja meg az összes szükséges funkciót és a felügyeleti eszközöket. 
-   1. Válassza a **szolgáltatások hozzáadása**lehetőséget.
-   1. Válassza a **tovább**, majd a **Befejezés** lehetőséget a funkciók telepítéséhez.
+   1. A **Kiszolgálókezelőben** válassza a **kezelés** , majd a **szerepkörök és szolgáltatások hozzáadása** lehetőséget.
+   1. A **szerepkörök és szolgáltatások hozzáadása** varázslóban kattintson a **tovább** gombra, amíg ki nem **választja a funkciókat** .
+   1. A **szolgáltatások kiválasztása** területen válassza a **feladatátvételi fürtszolgáltatás** lehetőséget. Adja meg az összes szükséges funkciót és a felügyeleti eszközöket. 
+   1. Válassza a **szolgáltatások hozzáadása** lehetőséget.
+   1. Válassza a **tovább** , majd a **Befejezés** lehetőséget a funkciók telepítéséhez.
 
    A feladatátvételi fürtszolgáltatás PowerShell használatával történő telepítéséhez futtassa a következő parancsfájlt egy rendszergazdai PowerShell-munkamenetből az egyik virtuális gépen:
 
@@ -81,7 +81,7 @@ A cikkben szereplő utasítások elvégzése előtt a következőket kell tennie
    Invoke-Command  $nodes {Install-WindowsFeature Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools}
    ```
 
-A következő lépésekkel kapcsolatos további információkért tekintse meg a Hiperkonvergens megoldás "3. lépés: Közvetlen tárolóhelyek konfigurálása" című szakaszának utasításait a [Windows Server 2016 közvetlen tárolóhelyek használatával](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-3-configure-storage-spaces-direct).
+A következő lépésekkel kapcsolatos további információkért tekintse meg a Hiperkonvergens megoldás "3. lépés: Közvetlen tárolóhelyek konfigurálása" című szakaszának utasításait a [Windows Server 2016 közvetlen tárolóhelyek használatával](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-3-configure-storage-spaces-direct).
 
 
 ## <a name="validate-the-cluster"></a>A fürt ellenőrzése
@@ -90,18 +90,18 @@ Ellenőrizze a fürtöt a felhasználói felületen vagy a PowerShell használat
 
 A fürt a felhasználói felületen való ellenőrzéséhez tegye a következőket az egyik virtuális gépen:
 
-1. A **Kiszolgálókezelő**területen válassza az **eszközök**, majd a **Feladatátvevőfürt-kezelő**lehetőséget.
-1. A **Feladatátvevőfürt-kezelő**alatt válassza a **művelet**, majd a **Konfiguráció ellenőrzése**lehetőséget.
+1. A **Kiszolgálókezelő** területen válassza az **eszközök** , majd a **Feladatátvevőfürt-kezelő** lehetőséget.
+1. A **Feladatátvevőfürt-kezelő** alatt válassza a **művelet** , majd a **Konfiguráció ellenőrzése** lehetőséget.
 1. Kattintson a **Tovább** gombra.
-1. A **kiszolgálók vagy fürt kijelölése**területen adja meg mindkét virtuális gép nevét.
-1. A **tesztelési beállítások**területen válassza a **csak a kiválasztott tesztek futtatása**lehetőséget. 
+1. A **kiszolgálók vagy fürt kijelölése** területen adja meg mindkét virtuális gép nevét.
+1. A **tesztelési beállítások** területen válassza a **csak a kiválasztott tesztek futtatása** lehetőséget. 
 1. Kattintson a **Tovább** gombra.
-1. A **teszt kiválasztása**területen válassza a minden teszt lehetőséget a **tárolás**kivételével, ahogy az itt látható:
+1. A **teszt kiválasztása** területen válassza a minden teszt lehetőséget a **tárolás** kivételével, ahogy az itt látható:
 
    ![Fürt-ellenőrzési tesztek kiválasztása](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/10-validate-cluster-test.png)
 
 1. Kattintson a **Tovább** gombra.
-1. A **megerősítés**területen válassza a **tovább**lehetőséget.
+1. A **megerősítés** területen válassza a **tovább** lehetőséget.
 
     A **Konfiguráció ellenőrzése** varázsló futtatja az ellenőrző teszteket.
 
@@ -150,9 +150,9 @@ Konfigurálja az üzleti igényeknek leginkább megfelelő kvórum megoldást. B
 
 ## <a name="add-storage"></a>Tároló hozzáadása
 
-A Közvetlen tárolóhelyek lemezének üresnek kell lennie. Nem tartalmazhatnak partíciókat vagy egyéb adatforrásokat. A lemezek tisztításához kövesse az [közvetlen tárolóhelyek üzembe helyezése](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct?redirectedfrom=MSDN#step-31-clean-drives)című témakör utasításait.
+A Közvetlen tárolóhelyek lemezének üresnek kell lennie. Nem tartalmazhatnak partíciókat vagy egyéb adatforrásokat. A lemezek tisztításához kövesse az [közvetlen tárolóhelyek üzembe helyezése](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-31-clean-drives)című témakör utasításait.
 
-1. [Közvetlen tárolóhelyek engedélyezése](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-35-enable-storage-spaces-direct).
+1. [Közvetlen tárolóhelyek engedélyezése](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-35-enable-storage-spaces-direct).
 
    A következő PowerShell-parancsfájl lehetővé teszi a Közvetlen tárolóhelyek:  
 
@@ -160,9 +160,9 @@ A Közvetlen tárolóhelyek lemezének üresnek kell lennie. Nem tartalmazhatnak
    Enable-ClusterS2D
    ```
 
-   **Feladatátvevőfürt-kezelő**a Storage-készletet láthatja.
+   **Feladatátvevőfürt-kezelő** a Storage-készletet láthatja.
 
-1. [Hozzon létre egy kötetet](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-36-create-volumes).
+1. [Hozzon létre egy kötetet](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-36-create-volumes).
 
    A Közvetlen tárolóhelyek automatikusan létrehoz egy tárolási készletet, amikor engedélyezi azt. Most már készen áll egy kötet létrehozására. A PowerShell-parancsmag `New-Volume` automatizálja a kötet létrehozásának folyamatát. Ez a folyamat formázást tartalmaz, hozzáadja a kötetet a fürthöz, és létrehoz egy CSV-t. Ez a példa egy 800 gigabájt (GB) CSV-fájlt hoz létre:
 
@@ -180,7 +180,7 @@ A Közvetlen tárolóhelyek lemezének üresnek kell lennie. Nem tartalmazhatnak
 
 ## <a name="test-cluster-failover"></a>Fürt feladatátvételének tesztelése
 
-Tesztelje a fürt feladatátvételét. A **Feladatátvevőfürt-kezelőban**kattintson a jobb gombbal a fürtre, válassza a **További műveletek**  >  csomópontot az**alapszintű fürt erőforrásainak**  >  **kiválasztásához**, majd válassza ki a fürt másik csomópontját. Helyezze át az alapszintű fürt erőforrását a fürt minden csomópontjára, majd helyezze vissza az elsődleges csomópontra. Ha sikeresen át tudja helyezni a fürtöt az egyes csomópontokra, készen áll a SQL Server telepítésére.  
+Tesztelje a fürt feladatátvételét. A **Feladatátvevőfürt-kezelőban** kattintson a jobb gombbal a fürtre, válassza a **További műveletek**  >  csomópontot az **alapszintű fürt erőforrásainak**  >  **kiválasztásához** , majd válassza ki a fürt másik csomópontját. Helyezze át az alapszintű fürt erőforrását a fürt minden csomópontjára, majd helyezze vissza az elsődleges csomópontra. Ha sikeresen át tudja helyezni a fürtöt az egyes csomópontokra, készen áll a SQL Server telepítésére.  
 
 :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Fürt feladatátvételének tesztelése az alapvető erőforrás más csomópontokra való áthelyezésével":::
 
@@ -190,13 +190,13 @@ Miután konfigurálta a feladatátvevő fürtöt és a fürt összes összetevő
 
 1. Kapcsolódjon az első virtuális géphez RDP használatával.
 
-1. **Feladatátvevőfürt-kezelő**ellenőrizze, hogy az összes alapvető fürterőforrás az első virtuális gépen van-e. Ha szükséges, helyezze át az összes erőforrást az adott virtuális gépre.
+1. **Feladatátvevőfürt-kezelő** ellenőrizze, hogy az összes alapvető fürterőforrás az első virtuális gépen van-e. Ha szükséges, helyezze át az összes erőforrást az adott virtuális gépre.
 
-1. Keresse meg a telepítési adathordozót. Ha a virtuális gép az egyik Azure Marketplace-lemezképet használja, az adathordozó a következő helyen található: `C:\SQLServer_<version number>_Full` . Válassza a **beállítás**lehetőséget.
+1. Keresse meg a telepítési adathordozót. Ha a virtuális gép az egyik Azure Marketplace-lemezképet használja, az adathordozó a következő helyen található: `C:\SQLServer_<version number>_Full` . Válassza a **beállítás** lehetőséget.
 
-1. **SQL Server telepítési központban**válassza a **telepítés**lehetőséget.
+1. **SQL Server telepítési központban** válassza a **telepítés** lehetőséget.
 
-1. Válassza az **új SQL Server feladatátvevő fürt telepítése**lehetőséget. A varázsló utasításait követve telepítse a SQL Server-t.
+1. Válassza az **új SQL Server feladatátvevő fürt telepítése** lehetőséget. A varázsló utasításait követve telepítse a SQL Server-t.
 
    A (z)-es adatkönyvtárak fürtözött tárolón kell lenniük. A Közvetlen tárolóhelyek esetében ez nem egy megosztott lemez, hanem egy, az egyes kiszolgálókon lévő kötetre mutató csatlakoztatási pont. Közvetlen tárolóhelyek szinkronizálja a kötetet mindkét csomópont között. A kötetet a rendszer CSV-fájlként mutatja be a fürt számára. Használja a CSV csatlakoztatási pontot az adatkönyvtárakhoz.
 
@@ -206,12 +206,12 @@ Miután konfigurálta a feladatátvevő fürtöt és a fürt összes összetevő
 
 1. Miután a telepítő telepíti a (z)-t az első csomóponton, csatlakozzon a második csomóponthoz RDP használatával.
 
-1. Nyissa meg a **SQL Server telepítési központot**. Válassza a **telepítés**lehetőséget.
+1. Nyissa meg a **SQL Server telepítési központot** . Válassza a **telepítés** lehetőséget.
 
-1. Válassza **a csomópont hozzáadása SQL Server feladatátvevő fürthöz**lehetőséget. A varázsló utasításait követve telepítse a SQL Servert, és adja hozzá a kiszolgálót a modulhoz.
+1. Válassza **a csomópont hozzáadása SQL Server feladatátvevő fürthöz** lehetőséget. A varázsló utasításait követve telepítse a SQL Servert, és adja hozzá a kiszolgálót a modulhoz.
 
    >[!NOTE]
-   >Ha SQL Servert tartalmazó Azure Marketplace Gallery-rendszerképet használt, SQL Server eszközöket tartalmazott a rendszerképben. Ha nem használja ezeket a képeket, telepítse külön a SQL Server-eszközöket. További információ: [Download SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
+   >Ha SQL Servert tartalmazó Azure Marketplace Gallery-rendszerképet használt, SQL Server eszközöket tartalmazott a rendszerképben. Ha nem használja ezeket a képeket, telepítse külön a SQL Server-eszközöket. További információ: [Download SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
    >
 
 
@@ -237,11 +237,11 @@ Ha a forgalmat az aktuális elsődleges csomópontnak megfelelően szeretné ir�
 
 ## <a name="limitations"></a>Korlátozások
 
-- Az Azure Virtual Machines támogatja a Microsoft Elosztott tranzakciók koordinátora (MSDTC) szolgáltatást a Windows Server 2019-on a CSV és a [standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md)szolgáltatással.
+- Az Azure Virtual Machines támogatja a Microsoft Elosztott tranzakciók koordinátora (MSDTC) szolgáltatást a Windows Server 2019-on a CSV és a [standard Load Balancer](../../../load-balancer/load-balancer-overview.md)szolgáltatással.
 - Az NTFS fájlrendszerrel formázott lemezként csatolt lemezek Közvetlen tárolóhelyek csak akkor használhatók, ha nincs bejelölve a lemezre vonatkozó jogosultsági lehetőség, vagy nincs törölve, amikor a tárolót hozzáadja a fürthöz. 
 - Csak az SQL VM erőforrás-szolgáltatóval való regisztráció [egyszerűsített felügyeleti módban](sql-vm-resource-provider-register.md#management-modes) támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg, állítsa be a kapcsolatot a [virtuális hálózat nevével és az Azure Load balancerrel](failover-cluster-instance-vnn-azure-load-balancer-configure.md) vagy az [elosztott hálózat nevével (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md). 
 

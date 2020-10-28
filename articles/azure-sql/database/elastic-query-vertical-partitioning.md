@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: daa1bbbace55281f81e04c4639b083b3e934b9f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c507a4c618713ba83d25b9defa918092db1a3c8e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443090"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792089"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Különböző sémákkal rendelkező felhőalapú adatbázisok lekérdezése (előzetes verzió)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,10 +36,10 @@ A függőlegesen particionált adatbázisok különböző táblákat használnak
 > A horizontális particionálástól eltérően ezek a DDL-utasítások nem függenek az adatrétegnek a rugalmas adatbázis-ügyfél-függvénytáron keresztüli szegmenses leképezéssel való definiálásával.
 >
 
-1. [FŐKULCS LÉTREHOZÁSA](https://msdn.microsoft.com/library/ms174382.aspx)
-2. [ADATBÁZIS-HATÓKÖRŰ HITELESÍTŐ ADAT LÉTREHOZÁSA](https://msdn.microsoft.com/library/mt270260.aspx)
-3. [KÜLSŐ ADATFORRÁS LÉTREHOZÁSA](https://msdn.microsoft.com/library/dn935022.aspx)
-4. [KÜLSŐ TÁBLA LÉTREHOZÁSA](https://msdn.microsoft.com/library/dn935021.aspx)
+1. [FŐKULCS LÉTREHOZÁSA](/sql/t-sql/statements/create-master-key-transact-sql)
+2. [ADATBÁZIS-HATÓKÖRŰ HITELESÍTŐ ADAT LÉTREHOZÁSA](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)
+3. [KÜLSŐ ADATFORRÁS LÉTREHOZÁSA](/sql/t-sql/statements/create-external-data-source-transact-sql)
+4. [KÜLSŐ TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-external-table-transact-sql)
 
 ## <a name="create-database-scoped-master-key-and-credentials"></a>Adatbázis-hatókörű főkulcs és hitelesítő adatok létrehozása
 
@@ -63,7 +63,7 @@ Szintaxis:
     HITELESÍTő adatok = <credential_name>) [;]
 
 > [!IMPORTANT]
-> A TYPE paramétert **RDBMS**értékre kell beállítani.
+> A TYPE paramétert **RDBMS** értékre kell beállítani.
 
 ### <a name="example"></a>Példa
 
@@ -120,8 +120,8 @@ select * from sys.external_tables;
 
 A rugalmas lekérdezés kiterjeszti a meglévő külső tábla szintaxisát, hogy meghatározza a RDBMS típusú külső adatforrásokat használó külső táblákat. A vertikális particionáláshoz tartozó külső tábla definíciója a következő szempontokat tartalmazza:
 
-* **Séma**: a külső tábla DDL definiál egy sémát, amelyet a lekérdezések használhatnak. A külső tábla definíciójában megadott sémának meg kell egyeznie a távoli adatbázisban a tényleges adatokat tároló táblák sémájával.
-* **Távoli adatbázis-hivatkozás**: a külső tábla DDL egy külső adatforrásra hivatkozik. A külső adatforrás megadja annak a távoli adatbázisnak a nevét és az adatbázis nevét, ahol a rendszer a tényleges tábla adatokat tárolja.
+* **Séma** : a külső tábla DDL definiál egy sémát, amelyet a lekérdezések használhatnak. A külső tábla definíciójában megadott sémának meg kell egyeznie a távoli adatbázisban a tényleges adatokat tároló táblák sémájával.
+* **Távoli adatbázis-hivatkozás** : a külső tábla DDL egy külső adatforrásra hivatkozik. A külső adatforrás megadja annak a távoli adatbázisnak a nevét és az adatbázis nevét, ahol a rendszer a tényleges tábla adatokat tárolja.
 
 Az előző szakaszban ismertetett külső adatforrás használatával a külső táblák létrehozására szolgáló szintaxis a következő:
 
@@ -135,7 +135,7 @@ A következő DDL-utasítás elveszít egy meglévő külső tábla definíciój
 DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]  
 ```
 
-A **külső tábla létrehozásának/ELdobásának engedélyei**: a külső adatforrásokra vonatkozó engedélyek megváltoztatására van szükség a külső tábla DDL esetében, amelyre az alapul szolgáló adatforrásra is szükség van.  
+A **külső tábla létrehozásának/ELdobásának engedélyei** : a külső adatforrásokra vonatkozó engedélyek megváltoztatására van szükség a külső tábla DDL esetében, amelyre az alapul szolgáló adatforrásra is szükség van.  
 
 ## <a name="security-considerations"></a>Biztonsági szempontok
 
@@ -163,7 +163,7 @@ A következő lekérdezés egyirányú összekapcsolást végez a két helyi tá
 
 ## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>A távoli T-SQL végrehajtásának tárolt eljárása: SP \_ execute_remote
 
-A rugalmas lekérdezés egy tárolt eljárást is bevezet, amely közvetlen hozzáférést biztosít a távoli adatbázishoz. A tárolt eljárás neve [SP \_ Execute \_ Remote](https://msdn.microsoft.com/library/mt703714) , és használható távoli tárolt eljárások vagy T-SQL-kód végrehajtásához a távoli adatbázisban. A következő paramétereket veszi figyelembe:
+A rugalmas lekérdezés egy tárolt eljárást is bevezet, amely közvetlen hozzáférést biztosít a távoli adatbázishoz. A tárolt eljárás neve [SP \_ Execute \_ Remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) , és használható távoli tárolt eljárások vagy T-SQL-kód végrehajtásához a távoli adatbázisban. A következő paramétereket veszi figyelembe:
 
 * Adatforrás neve (nvarchar): a RDBMS típusú külső adatforrás neve.
 * Query (nvarchar): a távoli adatbázison végrehajtandó T-SQL-lekérdezés.
@@ -195,7 +195,7 @@ A hagyományos SQL Server kapcsolati karakterláncokkal csatlakoztathatja a BI-�
 * A vertikális particionálással kapcsolatos oktatóanyagért lásd: [Bevezetés az adatbázisok közötti lekérdezéssel (vertikális particionálás)](elastic-query-getting-started-vertical.md).
 * A horizontális particionálással (skálázással) kapcsolatos oktatóanyagért lásd: az [első lépések a rugalmas lekérdezéssel a horizontális particionáláshoz](elastic-query-getting-started.md).
 * A horizontálisan particionált információk szintaxisát és mintáit lásd: [vízszintesen particionált adatlekérdezés](elastic-query-horizontal-partitioning.md)
-* Lásd: az [SP \_ \_ távoli futtatása](https://msdn.microsoft.com/library/mt703714) olyan tárolt eljáráshoz, amely Transact-SQL-utasítást hajt végre egyetlen távoli Azure SQL Database vagy egy horizontális particionálási sémában szegmensként szolgáló adatbázis-készleten.
+* Lásd: az [SP \_ \_ távoli futtatása](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) olyan tárolt eljáráshoz, amely Transact-SQL-utasítást hajt végre egyetlen távoli Azure SQL Database vagy egy horizontális particionálási sémában szegmensként szolgáló adatbázis-készleten.
 
 <!--Image references-->
 [1]: ./media/elastic-query-vertical-partitioning/verticalpartitioning.png

@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: af6db76a5d752396ca965c5ed98682ebcab7da6a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9c0ed50cc0f7ef3580d1441fe2f361065e6f8524
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92756019"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886593"
 ---
 <a name="HOLTop"></a>
 
@@ -107,7 +107,7 @@ Ezután Definiáljon egy függvényt, `computerVision` és deklaráljon egy aszi
 Az ebben a szakaszban található kód elemzi a távoli képeket a különböző vizualizációs funkciók kinyeréséhez. Ezeket a műveleteket az **analyzeImage** metódusának részeként is elvégezheti, vagy meghívhatja őket az egyes metódusok használatával. A részletekért tekintse meg a [dokumentációt](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) .
 
 > [!NOTE]
-> Elemezheti a helyi rendszerképet is. A helyi rendszerképeket érintő forgatókönyvek a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) találhatók.
+> Elemezheti a helyi rendszerképet is. Tekintse meg a [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) metódusokat, például a **analyzeImageInStream** . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) található mintakód-kódot.
 
 ### <a name="get-image-description"></a>Rendszerkép lekérése – Leírás
 
@@ -219,14 +219,14 @@ A segítő függvény megadása `describeType` :
 
 A Computer Vision kinyerheti a képen látható szöveget, és átalakíthatja a karakteres adatfolyamba. Ez a példa az olvasási műveleteket használja.
 
-> [!NOTE]
-> Helyi rendszerképből is beolvashat szöveget. A helyi rendszerképeket érintő forgatókönyvek a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) találhatók.
-
 ### <a name="set-up-test-images"></a>Tesztelési lemezképek beállítása
 
 Mentse annak a lemezképnek az URL-címét, amelyből szöveget szeretne kinyerni.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_images)]
+
+> [!NOTE]
+> Helyi rendszerképből is beolvashat szöveget. Tekintse meg a [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) metódusokat, például a **readInStream** . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) található mintakód-kódot.
 
 ### <a name="call-the-read-api"></a>Az olvasási API meghívása
 
@@ -235,11 +235,11 @@ Adja meg a következő mezőket a függvényben az olvasási hívási állapot �
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_statuses)]
 
 
-Adja hozzá az alábbi kódot, amely meghívja a `readTextFromURL` és a `readTextFromFile` függvényeket az adott lemezképekhez.
+Adja hozzá az alábbi kódot, amely meghívja a `readTextFromURL` függvényt az adott lemezképekhez.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
 
-Adja meg a `readTextFromURL` és a `readTextFromFile` függvényeket. Ezek meghívja a **READ** és a **readInStream** metódust az ügyfél objektumon, amely egy műveleti azonosítót ad vissza, és elindít egy aszinkron folyamatot a rendszerkép tartalmának olvasásához. Ezután a művelet AZONOSÍTÓját használják a művelet állapotának vizsgálatára, amíg az eredmények vissza nem állnak. Ezután visszaadják a kinyert eredményeket.
+Adja meg a `readTextFromURL` függvényt. Ez a hívás a művelethez tartozó **olvasási** metódust adja meg az ügyfél objektumon, amely egy műveleti azonosítót ad vissza, és elindít egy aszinkron folyamatot a rendszerkép tartalmának olvasásához. Ezután a műveleti azonosító használatával vizsgálja meg a művelet állapotát, amíg vissza nem adja az eredményeket. A kinyert eredményeket adják vissza.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_helper)]
 

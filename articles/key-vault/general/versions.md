@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 06/30/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 58c5fdcfef5e866d0c69d65412582c0ed649f7c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2396aac67a17352987d9d6e3b49535c19ffe8917
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86230825"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792378"
 ---
 # <a name="key-vault-versions"></a>Key Vault-verziók
 
@@ -33,7 +33,7 @@ A privát végpontok már előzetes verzióban érhetők el. Az Azure Private li
 ## <a name="2019"></a>2019
 
 - A következő generációs Azure Key Vault SDK-k kiadása. A használatra vonatkozó példákért tekintse meg a [Python](../secrets/quick-create-python.md), a [.net](../secrets/quick-create-net.md), a [Java](../secrets/quick-create-java.md)és a [Node.js](../secrets/quick-create-node.md) Azure Key Vault titkos útmutatóit
-- Új Azure-szabályzatok a Key Vault-tanúsítványok kezeléséhez. Tekintse [meg a Key Vault Azure Policy beépített definícióit](../policy-samples.md).
+- Új Azure-szabályzatok a Key Vault-tanúsítványok kezeléséhez. Tekintse [meg a Key Vault Azure Policy beépített definícióit](../policy-reference.md).
 - A Azure Key Vault virtuálisgép-bővítmény már általánosan elérhető.  Lásd: [Key Vault virtuálisgép-bővítmény a Linux](../../virtual-machines/extensions/key-vault-linux.md) rendszerhez és [Key Vault virtuálisgép-bővítmény a Windowshoz](../../virtual-machines/extensions/key-vault-windows.md).
 - Az Azure Key Vault-alapú, eseményvezérelt titkok kezelése már elérhető a Azure Event Gridban. További információ: [a Event Grid sémája az eseményekhez a Azure Key Vault] (.. /.. /Event-Grid/Event-Schema-Key-Vault.MD], és megtudhatja, hogyan [fogadhat és reagálhat a Key Vault-értesítésekre Azure Event Grid](event-grid-tutorial.md)használatával.
 
@@ -49,8 +49,8 @@ Ebben az évben megjelent új funkciók és integrációk:
 
 Az idei évben megjelent új funkciók:
 
-- Felügyelt Storage-fiókok kulcsai. A Storage-fiók kulcsainak funkció az Azure Storage-nal való egyszerűbb integrációt teszi ki. További információért tekintse meg az Áttekintés témakört, amely a [felügyelt Storage-fiókok kulcsairól nyújt áttekintést](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-storage-keys).
-- Helyreállítható törlés. A Soft-delete funkció javítja a kulcstartók és a Key Vault-objektumok adatvédelmi védelmét. További információért lásd az áttekintést [ismertető témakört.](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
+- Felügyelt Storage-fiókok kulcsai. A Storage-fiók kulcsainak funkció az Azure Storage-nal való egyszerűbb integrációt teszi ki. További információért tekintse meg az Áttekintés témakört, amely a [felügyelt Storage-fiókok kulcsairól nyújt áttekintést](../secrets/overview-storage-keys.md).
+- Áltörlés. A Soft-delete funkció javítja a kulcstartók és a Key Vault-objektumok adatvédelmi védelmét. További információért lásd az áttekintést [ismertető témakört.](./soft-delete-overview.md)
 
 ## <a name="2015"></a>2015
 
@@ -64,7 +64,7 @@ Az általános elérhetőség (2015-06-01-es verzió) a 2015. június 24-én jel
 - Egy kulcs visszaállítása – "használat" mező eltávolítva.     
 - A "RSA_OAEP" elem "RSA-OAEP" értékre módosult RSA-algoritmusokhoz. Lásd: [a kulcsok, a titkok és a tanúsítványok ismertetése](about-keys-secrets-certificates.md).    
  
-A második előzetes verzió (2015-02-01-es verzió – előzetes verzió) bejelentve: 2015. április 20. További információ: [REST API Update](https://docs.microsoft.com/archive/blogs/kv/rest-api-update) blog post. A következő feladatok frissültek:
+A második előzetes verzió (2015-02-01-es verzió – előzetes verzió) bejelentve: 2015. április 20. További információ: [REST API Update](/archive/blogs/kv/rest-api-update) blog post. A következő feladatok frissültek:
  
 - Egy tár által hozzáadott többoldalas támogatásban lévő kulcsok listázása a művelethez.
 - Egy kulccsal felvett művelet verzióinak listázása a kulcsok verzióinak listázásához.  
@@ -82,7 +82,7 @@ A második előzetes verzió (2015-02-01-es verzió – előzetes verzió) bejel
  
 Az első előzetes verzió (2014-12-08-es verzió – előzetes verzió) a 2015. január 8-án jelent meg.  
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A kulcsok, titkos kódok és tanúsítványok ismertetése](about-keys-secrets-certificates.md)
 - [Kulcsok](../keys/index.yml)

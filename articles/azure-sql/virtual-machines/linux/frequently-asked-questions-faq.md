@@ -11,12 +11,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: afd36eb079b6e5f29fa664050cded3c5ddd17d8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad991974df30060e552d21a44d5796cd2ba165e2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84669460"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792548"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-virtual-machines"></a>SQL Server on Linux virtuális gépekkel kapcsolatos gyakori kérdések
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -61,7 +61,7 @@ Ez a cikk a [SQL Server on Linux virtuális gépek](sql-server-on-linux-vm-what-
 
 1. **Hogyan telepíthetem az SQL Server egy licencelt példányát egy Azure-beli virtuális gépen?**
 
-   Először hozzon létre egy csak Linux RENDSZERű virtuális gépet. Ezután futtassa a [SQL Server telepítési lépéseket](https://docs.microsoft.com/sql/linux/sql-server-linux-setup#platforms) a Linux-disztribúcióhoz. Ha nem a SQL Server ingyenes licenccel rendelkező kiadását telepíti, akkor az Azure-ban SQL Server licenccel és [licenchordozhatóság frissítési garancia keretébental](https://azure.microsoft.com/pricing/license-mobility/)is rendelkeznie kell.
+   Először hozzon létre egy csak Linux RENDSZERű virtuális gépet. Ezután futtassa a [SQL Server telepítési lépéseket](/sql/linux/sql-server-linux-setup#platforms) a Linux-disztribúcióhoz. Ha nem a SQL Server ingyenes licenccel rendelkező kiadását telepíti, akkor az Azure-ban SQL Server licenccel és [licenchordozhatóság frissítési garancia keretébental](https://azure.microsoft.com/pricing/license-mobility/)is rendelkeznie kell.
 
 1. **Van-e a SQL Server saját licencű (BYOL) linuxos virtuálisgép-lemezképei?**
 
@@ -75,7 +75,7 @@ Ez a cikk a [SQL Server on Linux virtuális gépek](sql-server-on-linux-vm-what-
 
 1. **Kezelhetem a SQL Servert futtató Linux rendszerű virtuális gépeket SQL Server Management Studio (SSMS) használatával?**
 
-   Igen, de a SSMS jelenleg csak Windows-eszköz. A Windows rendszerű gépekről távolról kell csatlakoznia ahhoz, hogy SSMS-t használjon SQL Server rendszert futtató linuxos virtuális gépekkel. A Linuxon helyileg az új [MSSQL-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) eszköz számos felügyeleti feladatot képes végrehajtani. Platformfüggetlen adatbázis-kezelő eszköz esetén tekintse meg a következőt: [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is).
+   Igen, de a SSMS jelenleg csak Windows-eszköz. A Windows rendszerű gépekről távolról kell csatlakoznia ahhoz, hogy SSMS-t használjon SQL Server rendszert futtató linuxos virtuális gépekkel. A Linuxon helyileg az új [MSSQL-conf](/sql/linux/sql-server-linux-configure-mssql-conf) eszköz számos felügyeleti feladatot képes végrehajtani. Platformfüggetlen adatbázis-kezelő eszköz esetén tekintse meg a következőt: [Azure Data Studio](/sql/azure-data-studio/what-is).
 
 1. **Eltávolíthatom teljesen az SQL Servert egy SQL Server-alapú virtuális gépről?**
 
@@ -85,7 +85,7 @@ Ez a cikk a [SQL Server on Linux virtuális gépek](sql-server-on-linux-vm-what-
 
 1. **Hogyan frissíteni egy Azure-beli virtuális gépen lévő SQL Server új verziójára/kiadására?**
 
-   Jelenleg nincs helyszíni frissítés az Azure-beli virtuális gépeken futtatott SQL Serverhez. Hozzon létre egy új Azure-beli virtuális gépet a kívánt SQL Server-verzióval vagy -kiadással, majd migrálja az adatbázisait az új kiszolgálóra [a szokásos adatmigrálási eljárásokkal](https://docs.microsoft.com/sql/linux/sql-server-linux-migrate-overview).
+   Jelenleg nincs helyszíni frissítés az Azure-beli virtuális gépeken futtatott SQL Serverhez. Hozzon létre egy új Azure-beli virtuális gépet a kívánt SQL Server-verzióval vagy -kiadással, majd migrálja az adatbázisait az új kiszolgálóra [a szokásos adatmigrálási eljárásokkal](/sql/linux/sql-server-linux-migrate-overview).
 
 ## <a name="general"></a>Általános kérdések
 
@@ -95,13 +95,13 @@ Ez a cikk a [SQL Server on Linux virtuális gépek](sql-server-on-linux-vm-what-
 
 ## <a name="resources"></a>További források
 
-**Linux rendszerű virtuális gépek**:
+**Linux rendszerű virtuális gépek** :
 
 * [Linux rendszerű virtuális gépen lévő SQL Server áttekintése](sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [SQL Server kiépítése Linux rendszerű virtuális gépen](sql-vm-create-portal-quickstart.md)
-* [SQL Server on Linux dokumentáció](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
+* [SQL Server on Linux dokumentáció](/sql/linux/sql-server-linux-overview)
 
-**Windows rendszerű virtuális gépek**:
+**Windows rendszerű virtuális gépek** :
 
 * [Windows rendszerű virtuális gépek SQL Server áttekintése](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [SQL Server kiépítése Windows rendszerű virtuális gépen](../windows/sql-vm-create-portal-quickstart.md)

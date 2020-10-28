@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/15/2020
-ms.openlocfilehash: 421763769ff0bd7ffe2b06eb48e1ac5ecbbb545e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 10/26/2020
+ms.openlocfilehash: c66845a801b93db4ba718bc0aba5c39eabdd24b4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537966"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791970"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Olvasási replikák az Azure Database for MySQL-ben
 
@@ -36,9 +36,6 @@ Gyakori forgatókönyv, hogy a BI-és analitikai munkaterhelések az olvasási r
 Mivel a replikák csak olvashatók, nem csökkentik közvetlenül az írási kapacitás terheit a főkiszolgálón. Ez a funkció nem a nagy írási igényű számítási feladatokhoz ideális.
 
 Az olvasási replika funkció MySQL aszinkron replikálást használ. A funkció nem a szinkron replikációs forgatókönyvek esetében jelent meg. A forrás és a replika között mérhető késleltetés történik. A replikán lévő adatok végül konzisztensek maradnak a főkiszolgálón lévő adatokkal. Használja ezt a szolgáltatást olyan számítási feladatokhoz, amelyek alkalmasak erre a késésre.
-
-> [!IMPORTANT]
-> Az Azure Database for MySQL **SOR** alapú bináris naplózást használ. Ha a táblázatból hiányzik egy elsődleges kulcs, akkor a rendszer a táblázat összes sorában ellenőrzi a DML-műveleteket. Ez megnövekedett replikációs késést okoz. Ahhoz, hogy a replika képes legyen lépést tartani a forrás változásaival, általában azt javasoljuk, hogy adjon hozzá egy elsődleges kulcsot a forráskiszolgálón lévő táblázatokhoz, mielőtt replikakiszolgálót hozna létre, vagy mielőtt újból létrehozná a replikakiszolgálót, ha már van.
 
 ## <a name="cross-region-replication"></a>Régiók közötti replikáció
 A forráskiszolgáló egy másik régióban is létrehozhat egy olvasási replikát. A régiók közötti replikáció hasznos lehet olyan forgatókönyvek esetén, mint például a vész-helyreállítási tervezés vagy az adatok közelebb hozása a felhasználókhoz.
@@ -79,7 +76,7 @@ Megtudhatja, hogyan [hozhat létre olvasási replikát a Azure Portalban](howto-
 
 ## <a name="connect-to-a-replica"></a>Kapcsolódás replikához
 
-A létrehozáskor a replika örökli a forráskiszolgáló tűzfalszabályok szabályait. Ezt követően ezek a szabályok függetlenek a forráskiszolgálóról.
+A létrehozáskor a replika örökli a forráskiszolgáló tűzfalszabályok szabályait. Ezt követően ezek a szabályok függetlenek a forráskiszolgálón.
 
 A replika örökli a rendszergazdai fiókot a forráskiszolgálóról. A forráskiszolgáló összes felhasználói fiókja replikálódik az olvasási replikára. Csak olvasási replikához csatlakozhat a forráskiszolgálón elérhető felhasználói fiókok használatával.
 
@@ -95,7 +92,7 @@ A parancssorba írja be a felhasználói fiókhoz tartozó jelszót.
 
 A Azure Database for MySQL a **replikáció késését a Azure monitor másodpercben** mért metrikája biztosítja. Ez a metrika csak replikák esetében érhető el. Ezt a mérőszámot a `seconds_behind_master` MySQL parancsában elérhető metrika alapján számítjuk ki `SHOW SLAVE STATUS` . Állítson be egy riasztást, amely tájékoztatja arról, ha a replikációs késés olyan értéket ér el, amely nem fogadható el a munkaterhelés számára.
 
-Ha megtekinti a replikálás nagyobb késését, a [replikációs késéssel kapcsolatos hibák](howto-troubleshoot-replication-latency.md) a lehetséges okok megoldásához és megismeréséhez.
+Ha megtekinti a replikálás nagyobb késését, tekintse meg a [replikációs késés hibaelhárítása](howto-troubleshoot-replication-latency.md) és a lehetséges okok megismerése című témakört.
 
 ## <a name="stop-replication"></a>Replikáció leállítása
 
@@ -215,7 +212,7 @@ Ha a GTID engedélyezve van a forráskiszolgálón, az újonnan létrehozott rep
 - Győződjön meg arról, hogy a forráskiszolgáló táblái rendelkeznek elsődleges kulccsal. Az elsődleges kulcsok hiánya replikációs késést eredményezhet a forrás-és a replikák között.
 - A MySQL- [dokumentációban](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) található MySQL-replikálási korlátozások teljes listájának áttekintése
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portal használatával](howto-read-replicas-portal.md)
 - Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI és a REST API használatával](howto-read-replicas-cli.md)

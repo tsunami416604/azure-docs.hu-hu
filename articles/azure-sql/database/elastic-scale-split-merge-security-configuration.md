@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: b90f86576928e44e00c548f4f3ad3c22c27b8bb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 235efc550fd47d4244a5bf081c75d5e824a8e4b4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85829433"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793432"
 ---
 # <a name="split-merge-security-configuration"></a>Felosztás – biztonsági konfiguráció egyesítése
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,18 +32,18 @@ A tanúsítványok két módon vannak konfigurálva.
 
 ## <a name="to-obtain-certificates"></a>Tanúsítványok beszerzése
 
-A tanúsítványok a nyilvános hitelesítésszolgáltatóktól (CA) vagy a [Windows Certificate Service szolgáltatásból](https://msdn.microsoft.com/library/windows/desktop/aa376539.aspx)szerezhetők be. A tanúsítványok beszerzésének előnyben részesített módszerei.
+A tanúsítványok a nyilvános hitelesítésszolgáltatóktól (CA) vagy a [Windows Certificate Service szolgáltatásból](/windows/win32/seccrypto/certificate-services)szerezhetők be. A tanúsítványok beszerzésének előnyben részesített módszerei.
 
-Ha ezek a beállítások nem érhetők el, **önaláírt tanúsítványokat**is létrehozhat.
+Ha ezek a beállítások nem érhetők el, **önaláírt tanúsítványokat** is létrehozhat.
 
 ## <a name="tools-to-generate-certificates"></a>Tanúsítványok létrehozásához szükséges eszközök
 
-* [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
-* [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
+* [makecert.exe](/previous-versions/dotnet/netframework-4.0/bfsktky3(v=vs.100))
+* [pvk2pfx.exe](/windows-hardware/drivers/devtest/pvk2pfx)
 
 ### <a name="to-run-the-tools"></a>Az eszközök futtatása
 
-* A Visual studiók fejlesztői parancssorában tekintse meg a [Visual Studio parancssorát](https://msdn.microsoft.com/library/ms229859.aspx) . 
+* A Visual studiók fejlesztői parancssorában tekintse meg a [Visual Studio parancssorát](/dotnet/framework/tools/developer-command-prompt-for-vs) . 
   
     Ha telepítve van, lépjen a következőre:
   
@@ -124,7 +124,7 @@ Az alapértelmezett konfiguráció megtagadja a HTTP-végponthoz való hozzáfé
 Az alapértelmezett konfiguráció lehetővé teszi a HTTPS-végponthoz való hozzáférést. Ez a beállítás továbbra is korlátozható.
 
 ### <a name="changing-the-configuration"></a>A konfiguráció módosítása
-A és a végpontra vonatkozó hozzáférés-vezérlési szabályok csoportja a **\<EndpointAcls>** **szolgáltatás konfigurációs fájljának**szakaszában van konfigurálva.
+A és a végpontra vonatkozó hozzáférés-vezérlési szabályok csoportja a **\<EndpointAcls>** **szolgáltatás konfigurációs fájljának** szakaszában van konfigurálva.
 
 ```xml
 <EndpointAcls>
@@ -441,25 +441,25 @@ Kövesse az alábbi lépéseket:
 
 1. mmc.exe futtatása.
 2. Fájl – > beépülő modul hozzáadása/eltávolítása...
-3. Válassza a **tanúsítványok**lehetőséget.
+3. Válassza a **tanúsítványok** lehetőséget.
 4. Kattintson a **Hozzáadás** parancsra.
 5. Válassza ki a tanúsítványtároló helyét.
 6. Kattintson a **Finish** (Befejezés) gombra.
 7. Kattintson az **OK** gombra.
-8. Bontsa ki a **tanúsítványok**csomópontot.
+8. Bontsa ki a **tanúsítványok** csomópontot.
 9. Bontsa ki a tanúsítványtároló csomópontot.
 10. Bontsa ki a tanúsítvány gyermek csomópontját.
 11. Válasszon ki egy tanúsítványt a listában.
 
 ## <a name="export-certificate"></a>Tanúsítvány exportálása
-A **Tanúsítvány exportálása varázslóban**:
+A **Tanúsítvány exportálása varázslóban** :
 
 1. Kattintson a **Tovább** gombra.
-2. Válassza az **Igen**lehetőséget, majd **exportálja a titkos kulcsot**.
+2. Válassza az **Igen** lehetőséget, majd **exportálja a titkos kulcsot** .
 3. Kattintson a **Tovább** gombra.
 4. Válassza ki a kívánt kimeneti fájlformátumot.
 5. Keresse meg a kívánt beállításokat.
-6. Győződjön meg róla, hogy a **jelszó**.
+6. Győződjön meg róla, hogy a **jelszó** .
 7. Adjon meg egy erős jelszót, és erősítse meg.
 8. Kattintson a **Tovább** gombra.
 9. Írja be vagy tallózással keresse meg azt a fájlnevet, amelyben tárolni kívánja a tanúsítványt (a-t használja. PFX-bővítmény).
@@ -484,16 +484,16 @@ A tanúsítvány importálása varázslóban:
 7. Válassza ki a kívánt tárolót.
 8. Kattintson a **Finish** (Befejezés) gombra.
    
-   * Ha a megbízható legfelső szintű hitelesítésszolgáltató tárolót választotta, kattintson az **Igen**gombra.
+   * Ha a megbízható legfelső szintű hitelesítésszolgáltató tárolót választotta, kattintson az **Igen** gombra.
 9. Kattintson **az OK** gombra az összes párbeszédablak-ablakban.
 
 ## <a name="upload-certificate"></a>Tanúsítvány feltöltése
 A [Azure Portal](https://portal.azure.com/)
 
-1. Válassza a **Cloud Services**lehetőséget.
+1. Válassza a **Cloud Services** lehetőséget.
 2. Válassza ki a Cloud Service-t.
-3. A felső menüben kattintson a **tanúsítványok**elemre.
-4. Az alsó sávban kattintson a **feltöltés**elemre.
+3. A felső menüben kattintson a **tanúsítványok** elemre.
+4. Az alsó sávban kattintson a **feltöltés** elemre.
 5. Válassza ki a tanúsítványfájl.
 6. Ha a. PFX-fájl, adja meg a titkos kulcs jelszavát.
 7. Ha elkészült, másolja a tanúsítvány ujjlenyomatát a lista új bejegyzéséről.
@@ -508,4 +508,3 @@ A jelen dokumentumban ismertetett TLS-beállítások titkosítják a szolgáltat
 Az adatbázisban tárolt hitelesítő adatok titkosítva vannak. Az ajánlott eljárás szerint azonban győződjön meg arról, hogy a szolgáltatás központi telepítésének webes és feldolgozói szerepkörei naprakészek és biztonságosak, mivel mindkettő hozzáfér a metaadat-adatbázishoz, valamint a tárolt hitelesítő adatok titkosításához és visszafejtéséhez használt tanúsítványhoz. 
 
 [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]
-

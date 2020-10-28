@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
-ms.openlocfilehash: ced546f8f4375433d9fcd59f7ce46f9604f72921
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 148c4828309738a18dbda5fd35ea634e8384bfde
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443119"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792106"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>A kibővített felhőalapú adatbázisok (előzetes verzió) közötti jelentéskészítés
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,10 +40,10 @@ A nem többrétegű adatbázisok esetében lásd: [lekérdezés a Felhőbeli ada
 
 Ezek az utasítások a rugalmas lekérdezési adatbázisban létrehozzák a szilánkokra bontott adatcsomag metaadat-ábrázolását.
 
-1. [FŐKULCS LÉTREHOZÁSA](https://msdn.microsoft.com/library/ms174382.aspx)
-2. [ADATBÁZIS-HATÓKÖRŰ HITELESÍTŐ ADAT LÉTREHOZÁSA](https://msdn.microsoft.com/library/mt270260.aspx)
-3. [KÜLSŐ ADATFORRÁS LÉTREHOZÁSA](https://msdn.microsoft.com/library/dn935022.aspx)
-4. [KÜLSŐ TÁBLA LÉTREHOZÁSA](https://msdn.microsoft.com/library/dn935021.aspx)
+1. [FŐKULCS LÉTREHOZÁSA](/sql/t-sql/statements/create-master-key-transact-sql)
+2. [ADATBÁZIS-HATÓKÖRŰ HITELESÍTŐ ADAT LÉTREHOZÁSA](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)
+3. [KÜLSŐ ADATFORRÁS LÉTREHOZÁSA](/sql/t-sql/statements/create-external-data-source-transact-sql)
+4. [KÜLSŐ TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-external-table-transact-sql)
 
 ## <a name="11-create-database-scoped-master-key-and-credentials"></a>1,1 adatbázis-hatókörű főkulcs és hitelesítő adatok létrehozása
 
@@ -57,7 +57,7 @@ SECRET = '<password>'
 ```
 
 > [!NOTE]
-> Győződjön meg arról, hogy a " * \<username\> "* nem tartalmazza a *" \@ servername"* utótagot.
+> Győződjön meg arról, hogy a " *\<username\> "* nem tartalmazza a *" \@ servername"* utótagot.
 
 ## <a name="12-create-external-data-sources"></a>1,2 külső adatforrások létrehozása
 
@@ -163,7 +163,7 @@ A DISTRIBUTion záradék meghatározza az ehhez a táblához használt adatelosz
 2. A **replikált** érték azt jelenti, hogy a tábla azonos példányszámban szerepel az egyes adatbázisokon. Az Ön felelőssége, hogy a replikák azonosak legyenek az adatbázisok között.
 3. **Kör alakú \_ A ROBIN** azt jelenti, hogy a tábla vízszintesen particionálva van egy alkalmazás-függő terjesztési módszer használatával.
 
-**Adatcsomag-referenciák**: a külső tábla DDL egy külső adatforrásra hivatkozik. A külső adatforrás egy szegmenses térképet határoz meg, amely a külső táblát biztosítja az adatrétegben található összes adatbázis megkereséséhez szükséges információkkal.
+**Adatcsomag-referenciák** : a külső tábla DDL egy külső adatforrásra hivatkozik. A külső adatforrás egy szegmenses térképet határoz meg, amely a külső táblát biztosítja az adatrétegben található összes adatbázis megkereséséhez szükséges információkkal.
 
 ### <a name="security-considerations"></a>Biztonsági szempontok
 
@@ -194,7 +194,7 @@ A következő lekérdezés háromféleképpen csatlakozik a raktárak, a megrend
 
 ## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>A távoli T-SQL végrehajtásának tárolt eljárása: SP \_ execute_remote
 
-A rugalmas lekérdezés egy tárolt eljárást is bevezet, amely közvetlen hozzáférést biztosít a szegmensekhez. A tárolt eljárás neve [SP \_ Execute \_ Remote](https://msdn.microsoft.com/library/mt703714) , és használható távoli tárolt eljárások vagy T-SQL-kód végrehajtásához a távoli adatbázisokon. A következő paramétereket veszi figyelembe:
+A rugalmas lekérdezés egy tárolt eljárást is bevezet, amely közvetlen hozzáférést biztosít a szegmensekhez. A tárolt eljárás neve [SP \_ Execute \_ Remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) , és használható távoli tárolt eljárások vagy T-SQL-kód végrehajtásához a távoli adatbázisokon. A következő paramétereket veszi figyelembe:
 
 * Adatforrás neve (nvarchar): a RDBMS típusú külső adatforrás neve.
 * Query (nvarchar): az egyes szegmenseken végrehajtandó T-SQL-lekérdezés.
@@ -228,7 +228,7 @@ Az alkalmazáshoz, a BI-hoz és az adatintegrációs eszközökhöz a külső t�
 * A vertikális particionálással kapcsolatos oktatóanyagért lásd: [Bevezetés az adatbázisok közötti lekérdezéssel (vertikális particionálás)](elastic-query-getting-started-vertical.md).
 * A függőlegesen particionált információk szintaxisát és mintáit lásd: [függőlegesen particionált adatlekérdezés](elastic-query-vertical-partitioning.md)
 * A horizontális particionálással (skálázással) kapcsolatos oktatóanyagért lásd: az [első lépések a rugalmas lekérdezéssel a horizontális particionáláshoz](elastic-query-getting-started.md).
-* Lásd: az [SP \_ \_ távoli futtatása](https://msdn.microsoft.com/library/mt703714) olyan tárolt eljáráshoz, amely Transact-SQL-utasítást hajt végre egyetlen távoli Azure SQL Database vagy egy horizontális particionálási sémában szegmensként szolgáló adatbázis-készleten.
+* Lásd: az [SP \_ \_ távoli futtatása](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) olyan tárolt eljáráshoz, amely Transact-SQL-utasítást hajt végre egyetlen távoli Azure SQL Database vagy egy horizontális particionálási sémában szegmensként szolgáló adatbázis-készleten.
 
 <!--Image references-->
 [1]: ./media/elastic-query-horizontal-partitioning/horizontalpartitioning.png

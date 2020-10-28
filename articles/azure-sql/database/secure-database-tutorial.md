@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: bec60875561a9d821642d850c27e47d4f906aba3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9afb35a0e8a1c2513ce032030271599d181cd14
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90885417"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792684"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Oktatóanyag: adatbázis biztonságossá tétele Azure SQL Databaseban
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,16 +39,16 @@ A Azure SQL Database a következőket teszi biztonságossá:
 > [!NOTE]
 > Az Azure SQL felügyelt példányát hálózati biztonsági szabályok és privát végpontok védik az [Azure SQL felügyelt példány](../managed-instance/sql-managed-instance-paas-overview.md) és [kapcsolat architektúrája](../managed-instance/connectivity-architecture-overview.md)című témakörben leírtak szerint.
 
-További tudnivalókat a [Azure SQL Database biztonsági áttekintése](/azure/sql-database/sql-database-security-index) és [képességei](security-overview.md) című cikkben talál.
+További tudnivalókat a [Azure SQL Database biztonsági áttekintése](./security-overview.md) és [képességei](security-overview.md) című cikkben talál.
 
 > [!TIP]
-> A következő Microsoft Learn modul segít megtanulni az adatbázis biztonságossá tételét [Azure SQL Databaseban](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/).
+> A következő Microsoft Learn modul segít megtanulni az adatbázis biztonságossá tételét [Azure SQL Databaseban](/learn/modules/secure-your-azure-sql-database/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a következő előfeltételekkel:
 
-- [Az SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
 - Egy [kiszolgáló](logical-servers.md) és egy önálló adatbázis
   - Létrehozás a [Azure Portal](single-database-create-quickstart.md), a [CLI](az-cli-script-samples-content-guide.md)vagy a [PowerShell használatával](powershell-script-content-guide.md)
 
@@ -62,7 +62,7 @@ Az oktatóanyagban szereplő összes lépésnél jelentkezzen be a [Azure Portal
 
 A SQL Databaseban található adatbázisokat az Azure-beli tűzfalak védik. Alapértelmezés szerint a rendszer visszautasítja a kiszolgáló és az adatbázis összes kapcsolatát. További információ: [kiszolgálói szintű és adatbázis-szintű tűzfalszabályok](firewall-configure.md).
 
-Állítsa **be az** **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítást a legbiztonságosabb konfigurációhoz. Ezután hozzon létre egy [fenntartott IP-címet (klasszikus központi telepítést)](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) ahhoz az erőforráshoz, amelyhez csatlakoznia kell, például egy Azure-beli virtuális gépet vagy egy felhőalapú szolgáltatást, és csak az IP-cím elérését engedélyezze a tűzfalon keresztül. Ha a [Resource Manager](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) -alapú üzemi modellt használja, az egyes erőforrásokhoz dedikált nyilvános IP-címet kell megadni.
+Állítsa **be az** **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítást a legbiztonságosabb konfigurációhoz. Ezután hozzon létre egy [fenntartott IP-címet (klasszikus központi telepítést)](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) ahhoz az erőforráshoz, amelyhez csatlakoznia kell, például egy Azure-beli virtuális gépet vagy egy felhőalapú szolgáltatást, és csak az IP-cím elérését engedélyezze a tűzfalon keresztül. Ha a [Resource Manager](../../virtual-network/public-ip-addresses.md) -alapú üzemi modellt használja, az egyes erőforrásokhoz dedikált nyilvános IP-címet kell megadni.
 
 > [!NOTE]
 > Az SQL Database az 1433-as porton kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, lehetséges, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem tud csatlakozni a kiszolgálóhoz, ha a rendszergazda megnyitja a 1433-es portot.
@@ -78,11 +78,11 @@ Kiszolgáló szintű tűzfalszabály beállítása:
     ![kiszolgálói tűzfalszabály](./media/secure-database-tutorial/server-name.png)
 
     > [!NOTE]
-    > Ügyeljen arra, hogy a teljes kiszolgálónevet (például *YourServer.database.Windows.net*) másolja az oktatóanyag későbbi részében való használatra.
+    > Ügyeljen arra, hogy a teljes kiszolgálónevet (például *YourServer.database.Windows.net* ) másolja az oktatóanyag későbbi részében való használatra.
 
-1. Az **Áttekintés** lapon válassza a **kiszolgáló tűzfalának beállítása**lehetőséget. Ekkor megnyílik a kiszolgáló **tűzfalbeállítások** lapja.
+1. Az **Áttekintés** lapon válassza a **kiszolgáló tűzfalának beállítása** lehetőséget. Ekkor megnyílik a kiszolgáló **tűzfalbeállítások** lapja.
 
-   1. Válassza az **ügyfél IP-** címének hozzáadása lehetőséget az eszköztáron az aktuális IP-cím új tűzfalszabályként való hozzáadásához. A szabály az 1433-as portot egyetlen IP-cím vagy IP-címtartomány számára nyithatja meg. Kattintson a **Mentés** gombra.
+   1. Válassza az **ügyfél IP-** címének hozzáadása lehetőséget az eszköztáron az aktuális IP-cím új tűzfalszabályként való hozzáadásához. A szabály az 1433-as portot egyetlen IP-cím vagy IP-címtartomány számára nyithatja meg. Válassza a **Mentés** lehetőséget.
 
       ![kiszolgálótűzfal-szabály beállítása](./media/secure-database-tutorial/server-firewall-rule2.png)
 
@@ -98,7 +98,7 @@ Adatbázis szintű tűzfalszabály beállítása:
 
 1. Kapcsolódjon az adatbázishoz, például [SQL Server Management Studio](connect-query-ssms.md)használatával.
 
-1. **Object Explorer**kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés**elemet.
+1. **Object Explorer** kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés** elemet.
 
 1. A lekérdezési ablakban adja hozzá ezt az utasítást, és módosítsa az IP-címet a nyilvános IP-címére:
 
@@ -119,21 +119,21 @@ Győződjön meg arról, hogy a megfelelő Azure Active Directory (AD) felügyel
 
 Az Azure AD-rendszergazda beállítása:
 
-1. A Azure Portal az **SQL Server** lapon válassza a **Active Directory rendszergazda**elemet. Ezután válassza a **rendszergazda beállítása**lehetőséget.
+1. A Azure Portal az **SQL Server** lapon válassza a **Active Directory rendszergazda** elemet. Ezután válassza a **rendszergazda beállítása** lehetőséget.
 
     ![az Active Directory kiválasztása](./media/secure-database-tutorial/admin-settings.png)  
 
     > [!IMPORTANT]
     > A feladat végrehajtásához "vállalati rendszergazda" vagy "globális rendszergazda" értékűnek kell lennie.
 
-1. A **rendszergazda hozzáadása** lapon keresse meg és válassza ki az ad felhasználót vagy csoportot, majd válassza a **kiválasztás**lehetőséget. A Active Directory összes tagja és csoportja szerepel a felsorolásban, és a szürkén megadott bejegyzések nem támogatottak Azure AD-rendszergazdákként. Lásd: [Azure ad-szolgáltatások és korlátozások](authentication-aad-overview.md#azure-ad-features-and-limitations).
+1. A **rendszergazda hozzáadása** lapon keresse meg és válassza ki az ad felhasználót vagy csoportot, majd válassza a **kiválasztás** lehetőséget. A Active Directory összes tagja és csoportja szerepel a felsorolásban, és a szürkén megadott bejegyzések nem támogatottak Azure AD-rendszergazdákként. Lásd: [Azure ad-szolgáltatások és korlátozások](authentication-aad-overview.md#azure-ad-features-and-limitations).
 
     ![rendszergazda kiválasztása](./media/secure-database-tutorial/admin-select.png)
 
     > [!IMPORTANT]
     > A szerepköralapú hozzáférés-vezérlés (RBAC) csak a portálra vonatkozik, és a rendszer nem propagálja SQL Serverra.
 
-1. A **Active Directory-rendszergazda** lap tetején válassza a **Mentés**lehetőséget.
+1. A **Active Directory-rendszergazda** lap tetején válassza a **Mentés** lehetőséget.
 
     A rendszergazdák módosításának folyamata több percet is igénybe vehet. Az új rendszergazda megjelenik a **Active Directory felügyeleti** mezőben.
 
@@ -155,9 +155,9 @@ Az adatbázis-hozzáférés kezeléséhez felhasználókat adhat hozzá az adatb
 
 Felhasználók hozzáadásához válassza ki az adatbázis-hitelesítés típusát:
 
-- **SQL-hitelesítés**, Felhasználónév és jelszó használata a bejelentkezésekhez, és csak a kiszolgálón belüli adott adatbázis kontextusában érvényesek.
+- **SQL-hitelesítés** , Felhasználónév és jelszó használata a bejelentkezésekhez, és csak a kiszolgálón belüli adott adatbázis kontextusában érvényesek.
 
-- **Azure ad-hitelesítés**, az Azure ad által felügyelt identitások használata
+- **Azure ad-hitelesítés** , az Azure ad által felügyelt identitások használata
 
 ### <a name="sql-authentication"></a>SQL-hitelesítés
 
@@ -165,7 +165,7 @@ SQL-hitelesítéssel rendelkező felhasználó hozzáadása:
 
 1. Kapcsolódjon az adatbázishoz, például [SQL Server Management Studio](connect-query-ssms.md)használatával.
 
-1. **Object Explorer**kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés**elemet.
+1. **Object Explorer** kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés** elemet.
 
 1. A lekérdezési ablakban adja meg a következő parancsot:
 
@@ -201,7 +201,7 @@ Azure AD-hitelesítéssel rendelkező felhasználó hozzáadása:
 
 1. Kapcsolódjon az Azure-kiszolgálóhoz egy Azure AD-fiókkal legalább a *felhasználói engedély megváltoztatásával* .
 
-1. **Object Explorer**kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés**elemet.
+1. **Object Explorer** kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés** elemet.
 
 1. A lekérdezési ablakban írja be a következő parancsot, és módosítsa az `<Azure_AD_principal_name>` Azure ad-felhasználó egyszerű nevére vagy az Azure ad-csoport megjelenítendő nevére:
 
@@ -225,7 +225,7 @@ Biztonságos kapcsolódási sztring másolása:
 
 1. A Azure Portal válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd válassza ki az adatbázist az **SQL-adatbázisok** lapon.
 
-1. Az **Áttekintés** lapon válassza az **adatbázis-kapcsolati karakterláncok megjelenítése**lehetőséget.
+1. Az **Áttekintés** lapon válassza az **adatbázis-kapcsolati karakterláncok megjelenítése** lehetőséget.
 
 1. Válassza ki az illesztőprogram fület, és másolja a teljes hálózati karakterláncot.
 
@@ -248,9 +248,9 @@ Az Azure Defender for SQL engedélyezése:
 
 1. Az **Áttekintés** lapon válassza a **kiszolgáló neve** hivatkozást. Ekkor megnyílik a kiszolgáló lap.
 
-1. Az **SQL Server** oldalon keresse meg a **Biztonság** szakaszt, és válassza a **Security Center**elemet.
+1. Az **SQL Server** oldalon keresse meg a **Biztonság** szakaszt, és válassza a **Security Center** elemet.
 
-   1. A **funkció engedélyezéséhez válassza az** **Azure Defender for SQL** lehetőséget. Válasszon egy Storage-fiókot a sebezhetőségi felmérés eredményeinek mentéséhez. Ez után válassza a **Mentés** lehetőséget.
+   1. A **funkció engedélyezéséhez válassza az** **Azure Defender for SQL** lehetőséget. Válasszon egy Storage-fiókot a sebezhetőségi felmérés eredményeinek mentéséhez. Kattintson a **Mentés** gombra.
 
       ![Navigációs panel](./media/secure-database-tutorial/threat-settings.png)
 
@@ -272,7 +272,7 @@ A naplózás engedélyezése:
 
 1. A Azure Portal válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd válassza ki az adatbázist az **SQL-adatbázisok** lapon.
 
-1. A **Biztonság** szakaszban válassza a **naplózás**lehetőséget.
+1. A **Biztonság** szakaszban válassza a **naplózás** lehetőséget.
 
 1. A **naplózási** beállítások területen állítsa be a következő értékeket:
 
@@ -280,19 +280,19 @@ A naplózás engedélyezése:
 
    1. Válassza ki a **napló célhelyét** az alábbi módon:
 
-       - **Storage**, egy Azure Storage-fiók, amely az eseménynaplókat menti, és *. xel* fájlként tölthető le.
+       - **Storage** , egy Azure Storage-fiók, amely az eseménynaplókat menti, és *. xel* fájlként tölthető le.
 
           > [!TIP]
           > Ugyanazt a Storage-fiókot használja az összes auditált adatbázishoz, hogy a lehető legtöbbet hozza ki a jelentési sablonokból.
 
-       - **Log Analytics**, amely automatikusan tárolja az eseményeket lekérdezés vagy további elemzés céljából
+       - **Log Analytics** , amely automatikusan tárolja az eseményeket lekérdezés vagy további elemzés céljából
 
            > [!NOTE]
            > **Log Analytics munkaterület** szükséges a speciális funkciók, például az elemzés, az egyéni riasztási szabályok és az Excel-vagy Power bi-exportálás támogatásához. Munkaterület nélkül csak a lekérdezés-szerkesztő érhető el.
 
-       - **Event hub**, amely lehetővé teszi, hogy az események más alkalmazásokban való használatra legyenek átirányítva
+       - **Event hub** , amely lehetővé teszi, hogy az események más alkalmazásokban való használatra legyenek átirányítva
 
-   1. Kattintson a **Mentés** gombra.
+   1. Válassza a **Mentés** lehetőséget.
 
       ![Naplózási beállítások](./media/secure-database-tutorial/audit-settings.png)
 
@@ -311,13 +311,13 @@ Az adatmaszkolás engedélyezése:
 
 1. A Azure Portal válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd válassza ki az adatbázist az **SQL-adatbázisok** lapon.
 
-1. A **Biztonság** szakaszban válassza a **dinamikus adatmaszkolás**lehetőséget.
+1. A **Biztonság** szakaszban válassza a **dinamikus adatmaszkolás** lehetőséget.
 
 1. A **dinamikus adatmaszkolási** beállítások területen válassza a **maszk hozzáadása** lehetőséget a maszkolási szabály hozzáadásához. Az Azure automatikusan feltölti az elérhető adatbázis-sémákat, táblákat és oszlopokat, amelyek közül választhat.
 
     ![Maszk beállításai](./media/secure-database-tutorial/mask-settings.png)
 
-1. Kattintson a **Mentés** gombra. A kiválasztott információk mostantól az adatvédelem során maszkoltak.
+1. Válassza a **Mentés** lehetőséget. A kiválasztott információk mostantól az adatvédelem során maszkoltak.
 
     ![Példa maszkra](./media/secure-database-tutorial/mask-query.png)
 
@@ -329,16 +329,16 @@ A titkosítás engedélyezése vagy ellenőrzése:
 
 1. A Azure Portal válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd válassza ki az adatbázist az **SQL-adatbázisok** lapon.
 
-1. A **Biztonság** szakaszban válassza az **transzparens adattitkosítás**lehetőséget.
+1. A **Biztonság** szakaszban válassza az **transzparens adattitkosítás** lehetőséget.
 
-1. Ha szükséges, állítsa be az **adattitkosítást** **a**következőre:. Kattintson a **Mentés** gombra.
+1. Ha szükséges, állítsa be az **adattitkosítást** **a** következőre:. Válassza a **Mentés** lehetőséget.
 
     ![Transzparens adattitkosítás](./media/secure-database-tutorial/encryption-settings.png)
 
 > [!NOTE]
 > A titkosítási állapot megtekintéséhez kapcsolódjon az adatbázishoz az [SSMS](connect-query-ssms.md) használatával, és kérdezze le a `encryption_state` [sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) nézet oszlopát. A állapot `3` azt jelzi, hogy az adatbázis titkosítva van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogy csak néhány egyszerű lépéssel javítsa az adatbázis biztonságát. Megtanulta végrehajtani az alábbi műveleteket:
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: cawa
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 96b6b262765a361befeadd9b5a42d37ca5e66497
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 57cda5104551f8b62d157e443a42c5e3c75e4ddf
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372055"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792412"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Titkos alkalmazás-beállítások biztonságos mentése webalkalmazásokhoz
 
@@ -30,7 +30,7 @@ Annak érdekében, hogy a fejlesztési folyamat biztonságos legyen, az eszköz�
 ## <a name="aspnet-and-net-core-applications"></a>ASP.NET és .NET Core-alkalmazások
 
 ### <a name="save-secret-settings-in-user-secret-store-that-is-outside-of-source-control-folder"></a>Titkos beállítások mentése a felhasználói titkos tárolóban, amely a verziókövetés mappáján kívül esik
-Ha gyors prototípust végez, vagy nem rendelkezik internet-hozzáféréssel, kezdje a titkos beállítások áthelyezését a verziókövetés mappáján kívül a felhasználói titkos tárolóba. A felhasználói titkos tároló egy, a User Profiler mappában mentett fájl, ezért a rendszer nem ellenőrzi, hogy nincsenek-e bejelentkezve a forrás vezérlőelembe. Az alábbi ábra bemutatja, hogyan működik a [felhasználói titok](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio) .
+Ha gyors prototípust végez, vagy nem rendelkezik internet-hozzáféréssel, kezdje a titkos beállítások áthelyezését a verziókövetés mappáján kívül a felhasználói titkos tárolóba. A felhasználói titkos tároló egy, a User Profiler mappában mentett fájl, ezért a rendszer nem ellenőrzi, hogy nincsenek-e bejelentkezve a forrás vezérlőelembe. Az alábbi ábra bemutatja, hogyan működik a [felhasználói titok](/aspnet/core/security/app-secrets?tabs=visual-studio) .
 
 ![A felhasználói titok a forrás vezérlőelemen kívül tartja a titkos beállításokat](../media/vs-secure-secret-appsettings/aspnetcore-usersecret.PNG)
 
@@ -43,7 +43,7 @@ Ha projektet fejleszt, és a forráskódot biztonságosan kell megosztania, hasz
 
     ![Azure Key Vault létrehozása](../media/vs-secure-secret-appsettings/create-keyvault.PNG)
 
-2. A Key Vaulthoz való hozzáférés biztosítása Önnek és a csoport tagjainak. Ha nagyméretű csapattal rendelkezik, létrehozhat egy [Azure Active Directory csoportot](../../active-directory/active-directory-groups-create-azure-portal.md) , és hozzáadhatja a biztonsági csoportnak a Key Vaulthoz való hozzáférését. A *titkos engedélyek* legördülő menüben tekintse meg a *beolvasás* és *Listázás* a *titkos felügyeleti műveletekben*részt.
+2. A Key Vaulthoz való hozzáférés biztosítása Önnek és a csoport tagjainak. Ha nagyméretű csapattal rendelkezik, létrehozhat egy [Azure Active Directory csoportot](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) , és hozzáadhatja a biztonsági csoportnak a Key Vaulthoz való hozzáférését. A *titkos engedélyek* legördülő menüben tekintse meg a *beolvasás* és *Listázás* a *titkos felügyeleti műveletekben* részt.
 Ha már létrehozta a webalkalmazást, adja meg a webalkalmazáshoz való hozzáférést a Key Vault számára, hogy az alkalmazás beállításaiban és fájljaiban ne tárolja titkos konfigurációját. Keresse meg a webalkalmazás nevét, és adja hozzá a felhasználók hozzáférésének megadásához.
 
     ![Key Vault hozzáférési szabályzat hozzáadása](../media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
@@ -103,7 +103,7 @@ A folytatáshoz [töltse le a .net-4.7.1](https://www.microsoft.com/download/det
 ### <a name="save-secret-settings-in-a-secret-file-that-is-outside-of-source-control-folder"></a>Titkos beállítások mentése a forrás-ellenőrzési mappán kívüli titkos fájlba
 Ha gyors prototípust ír, és nem szeretné kiépíteni az Azure-erőforrásokat, folytassa ezt a lehetőséget.
 
-1. Kattintson a jobb gombbal a projektre, és válassza a **felhasználói titkok kezelése**lehetőséget. Ez egy NuGet-csomagot telepít **Microsoft.Configuration.ConfigurationBuilders. UserSecrets** , létrehoz egy fájlt a titkos beállítások mentéséhez web.config fájlon kívül, és a web.config fájlban adja hozzá a szakasz **konfigurációkészítők** .
+1. Kattintson a jobb gombbal a projektre, és válassza a **felhasználói titkok kezelése** lehetőséget. Ez egy NuGet-csomagot telepít **Microsoft.Configuration.ConfigurationBuilders. UserSecrets** , létrehoz egy fájlt a titkos beállítások mentéséhez web.config fájlon kívül, és a web.config fájlban adja hozzá a szakasz **konfigurációkészítők** .
 
 2. Adja meg a titkos elem alatti titkos beállításokat. az alábbiakban egy példa látható
 

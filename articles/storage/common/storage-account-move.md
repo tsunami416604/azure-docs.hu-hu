@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: c372dafdbfa5e9cafb208673128038dc23b30f5a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b70beb90fae794eb5512cb8b466524169c4c7b53
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488826"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792990"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Azure Storage-fiók áthelyezése másik régióba
 
 A tárfiókok áthelyezéséhez létre kell hozni egy másolatot a tárfiókról egy másik régióban. Ezután helyezze át az adatait a fiókba a AzCopy használatával vagy más választott eszközzel.
 
-Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
+Ebből a cikkből megtudhatja, hogyan:
 
 > [!div class="checklist"]
 > 
@@ -51,11 +51,11 @@ Ez a sablon a tárfiókot leíró beállításokat tartalmazza.
 
 Sablon exportálása az Azure Portallal:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 2. Válassza a **minden erőforrás** lehetőséget, majd válassza ki a Storage-fiókját.
 
-3. Válassza > **Beállítások**  >  **Exportálás sablon**lehetőséget.
+3. Válassza > **Beállítások**  >  **Exportálás sablon** lehetőséget.
 
 4. Válassza a **Letöltés** lehetőséget a **sablon exportálása** panelen.
 
@@ -101,19 +101,19 @@ A sablont a tárfióknév és a régió megváltoztatásával módosíthatja.
 
 A sablon üzembe helyezése Azure Portal használatával:
 
-1. A Azure Portal válassza az **erőforrás létrehozása**lehetőséget.
+1. A Azure Portal válassza az **erőforrás létrehozása** lehetőséget.
 
-2. A **Keresés a piactéren**mezőbe írja be a **sablon központi telepítése**kifejezést, majd nyomja le az **ENTER**billentyűt.
+2. A **Keresés a piactéren** mezőbe írja be a **sablon központi telepítése** kifejezést, majd nyomja le az **ENTER** billentyűt.
 
-3. Válassza a **template Deployment**lehetőséget.
+3. Válassza a **template Deployment** lehetőséget.
 
     ![Azure Resource Manager-sablonkönyvtár](./media/storage-account-move/azure-resource-manager-template-library.png)
 
 4. Kattintson a **Létrehozás** gombra.
 
-5. Válassza **a saját sablon létrehozása lehetőséget a szerkesztőben**.
+5. Válassza **a saját sablon létrehozása lehetőséget a szerkesztőben** .
 
-6. Válassza a **fájl betöltése**lehetőséget, majd kövesse az utasításokat az utolsó szakaszban letöltött fájl **template.js** betöltéséhez.
+6. Válassza a **fájl betöltése** lehetőséget, majd kövesse az utasításokat az utolsó szakaszban letöltött fájl **template.js** betöltéséhez.
 
 7. A fájl **template.js** a Storage-fiók nevének alapértelmezett értékének megadásával nevezze el a cél Storage-fiókot. Ez a példa a Storage-fiók nevének alapértelmezett értékét állítja be értékre `mytargetaccount` .
     
@@ -137,7 +137,7 @@ A sablon üzembe helyezése Azure Portal használatával:
          "location": "centralus"
          }]          
     ```
-    A régióbeli hely kódjának beszerzéséhez tekintse meg az [Azure-helyeket](https://azure.microsoft.com/global-infrastructure/locations/).  A régió kódja a régió neve szóközök nélkül, **Közép-USA**  =  **CentralUS**.
+    A régióbeli hely kódjának beszerzéséhez tekintse meg az [Azure-helyeket](https://azure.microsoft.com/global-infrastructure/locations/).  A régió kódja a régió neve szóközök nélkül, **Közép-USA**  =  **CentralUS** .
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -186,11 +186,11 @@ A sablon üzembe helyezésével új tárfiókot hozhat létre a célrégióban.
 
 2. Adja meg vagy válassza ki a tulajdonságértékek értékét:
 
-- **Előfizetés**: válasszon ki egy Azure-előfizetést.
+- **Előfizetés** : válasszon ki egy Azure-előfizetést.
 
-- **Erőforráscsoport**: Válassza az **Új létrehozása** lehetőséget, majd adjon nevet az erőforráscsoportnak.
+- **Erőforráscsoport** : Válassza az **Új létrehozása** lehetőséget, majd adjon nevet az erőforráscsoportnak.
 
-- **Hely**: válasszon ki egy Azure-helyet.
+- **Hely** : válasszon ki egy Azure-helyet.
 
 3. Jelölje **be az Elfogadom a fenti feltételeket és kikötéseket** jelölőnégyzetet, majd kattintson a **Vásárlás kiválasztása** gombra.
 
@@ -255,9 +255,9 @@ Tárfiók eltávolítása az Azure Portal használatával:
 
 1. A Azure Portalban bontsa ki a bal oldalon található menüt a szolgáltatások menüjének megnyitásához, majd válassza a **Storage-fiókok** lehetőséget a Storage-fiókok listájának megjelenítéséhez.
 
-2. Keresse meg a törölni kívánt cél Storage-fiókot, és kattintson a jobb gombbal a lista jobb oldalán található **további** gombra (**...**).
+2. Keresse meg a törölni kívánt cél Storage-fiókot, és kattintson a jobb gombbal a lista jobb oldalán található **további** gombra ( **...** ).
 
-3. Válassza a **Törlés**lehetőséget, és erősítse meg.
+3. Válassza a **Törlés** lehetőséget, és erősítse meg.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -273,5 +273,5 @@ Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storage
 Ebben az oktatóanyagban egy Azure Storage-fiókot helyezett át egyik régióból a másikba, és megtisztította a forrás erőforrásait.  Ha többet szeretne megtudni a régiók és a vész-helyreállítás között az Azure-ban, tekintse meg a következőt:
 
 
-- [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](/azure/azure-resource-manager/resource-group-move-resources)
-- [Azure-beli virtuális gépek áthelyezése egy másik régióba](/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Azure-beli virtuális gépek áthelyezése egy másik régióba](../../site-recovery/azure-to-azure-tutorial-migrate.md)

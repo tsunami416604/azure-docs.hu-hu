@@ -11,14 +11,14 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: dbf5c06adcddb5b3dfa3cdf2e0127f8a36c59885
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5a2336728d4507544fa621961c2f346746c2bb9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620103"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792650"
 ---
-# <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>Riasztások létrehozása az Azure SQL felügyelt példányaihoz a Azure Portal használatával
+# <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>Riasztások létrehozása felügyelt Azure SQL-példány esetében az Azure Portalon
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Ebből a cikkből megtudhatja, hogyan állíthatja be a riasztásokat az Azure SQL felügyelt példány-adatbázisában lévő adatbázisokhoz a Azure Portal használatával. A riasztások küldhetnek e-mailt, meghívhatnak webhookot, végrehajthatnak egy Azure-függvényt, -runbookot, meghívhatnak külső, ITSM-kompatibilis jegykezelési rendszert, felhívhatják telefonon vagy küldhetnek SMS-t, ha egy adott metrika (például a példány tárterületének mérete vagy a processzorhasználat) elér egy előre meghatározott küszöbértéket. Ez a cikk a riasztási időszakok beállításának ajánlott eljárásait is tartalmazza.
@@ -145,5 +145,5 @@ Meglévő riasztások megtekintése, felfüggesztése, aktiválása, módosítá
 * Tudnivalók Azure Monitor riasztási rendszerről: [a riasztások áttekintése Microsoft Azure](../../azure-monitor/platform/alerts-overview.md)
 * További információ a metrikus riasztásokról: [a metrikai riasztások működésének ismertetése Azure monitor](../../azure-monitor/platform/alerts-metric-overview.md)
 * További tudnivalók a webhookok riasztásokban való konfigurálásáról: [webhook meghívása klasszikus metrikus riasztással](../../azure-monitor/platform/alerts-webhooks.md)
-* Tudnivalók a riasztások PowerShell használatával történő konfigurálásáról és kezeléséről: [műveleti szabályok](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)
-* További információ a riasztások API-val történő konfigurálásáról és kezeléséről: [Azure Monitor REST API referenciája](https://docs.microsoft.com/rest/api/monitor/) 
+* Tudnivalók a riasztások PowerShell használatával történő konfigurálásáról és kezeléséről: [műveleti szabályok](/powershell/module/az.monitor/add-azmetricalertrulev2)
+* További információ a riasztások API-val történő konfigurálásáról és kezeléséről: [Azure Monitor REST API referenciája](/rest/api/monitor/)

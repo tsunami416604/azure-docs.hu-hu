@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: b4458a2b37a3da83591e101344d08c3090868696
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 6ffb6ced6fc828733dd627943a3d4b54e8293ad2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341804"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791902"
 ---
 # <a name="stream-alerts-to-a-siem-soar-or-it-service-management-solution"></a>Riasztások továbbítása SIEM, SOAR vagy IT Service Management megoldásba
 
@@ -63,14 +63,14 @@ Ezzel az API-val a **teljes bérlő** (és számos más Microsoft biztonsági te
 - **Power bi**  -  [Kapcsolódjon a Microsoft Graph biztonsági API-hoz Power bi Desktop](/power-bi/connect-data/desktop-connect-graph-security)
 - **ServiceNow**  -  [Kövesse a Microsoft Graph Security API-alkalmazás ServiceNow-tárolóból történő telepítésének és konfigurálásának utasításait](https://docs.servicenow.com/bundle/orlando-security-management/page/product/secops-integration-sir/secops-integration-ms-graph/task/ms-graph-install.html)
 - **QRadar**  -  [IBM eszköz-támogatási modulja Azure Security Center Microsoft Graph API-n keresztül](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/com.ibm.dsm.doc/c_dsm_guide_ms_azure_security_center_overview.html) 
-- **Palo Alto hálózatok**, **Anomali**, **kilátó**, **inspark**és több [Microsoft Graph biztonsági API](https://www.microsoft.com/security/business/graph-security-api#office-MultiFeatureCarousel-09jr2ji)
+- **Palo Alto hálózatok** , **Anomali** , **kilátó** , **inspark** és több [Microsoft Graph biztonsági API](https://www.microsoft.com/security/business/graph-security-api#office-MultiFeatureCarousel-09jr2ji)
 
 [További információ a Microsoft Graph biztonsági API-ról](https://www.microsoft.com/security/business/graph-security-api).
 
 
 ## <a name="stream-alerts-with-azure-monitor"></a>Stream-riasztások Azure Monitor 
 
-Riasztások továbbítása a **ArcSight**, a **splunk**, a **SumoLogic**, a syslog-kiszolgálókra, a **LogRhythm**, a Logz.IO Cloud betekintési **platformra**és más figyelési megoldásokra. Security Center összekapcsolhatók az Azure monitorral az Azure Event Hubs használatával:
+Riasztások továbbítása a **ArcSight** , a **splunk** , a **SumoLogic** , a syslog-kiszolgálókra, a **LogRhythm** , a Logz.IO Cloud betekintési **platformra** és más figyelési megoldásokra. Security Center összekapcsolhatók az Azure monitorral az Azure Event Hubs használatával:
 
 1. Engedélyezze a [folyamatos exportálást](continuous-export.md) a stream Security Center a riasztásokat egy dedikált Azure Event hubhoz az előfizetés szintjén. 
     > [!TIP]
@@ -90,4 +90,4 @@ Ez az oldal azt ismerteti, hogyan biztosítható, hogy a Azure Security Center r
 
 - [Mi az Azure Sentinel?](../sentinel/overview.md)
 - [Riasztások érvényesítése Azure Security Centerban](security-center-alert-validation.md) – ellenőrizze, hogy a riasztások megfelelően vannak-e konfigurálva
-- [Biztonsági riasztások és javaslatok folyamatos exportálása](continuous-export.md)
+- [Security Center-adatfeldolgozás folyamatos exportálása](continuous-export.md)

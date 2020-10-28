@@ -7,12 +7,12 @@ ms.date: 09/22/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6670f654685f8d5cdcaf55d2b1679738a57ecab4
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 958402e61f6dc81a3e6618dbcd4df4c8dd6b9ced
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042796"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793058"
 ---
 # <a name="how-to-connect-an--iot-plug-and-play-bridge-sample-running-on-linux-or-windows-to-iot-hub"></a>Linux vagy Windows rendszeren futó IoT Plug and Play híd-minta összekapcsolása IoT Hub
 
@@ -30,14 +30,14 @@ Ez a rövid útmutató feltételezi, hogy a Ubuntu Linux használja. A rövid ú
 
 A gyors útmutató Linuxon való elvégzéséhez telepítse a következő szoftvereket a helyi linuxos környezetbe:
 
-Telepítse a **GCC**, a **git**, a **CMAK**és az összes szükséges függőséget a `apt-get` parancs használatával:
+Telepítse a **GCC** , a **git** , a **CMAK** és az összes szükséges függőséget a `apt-get` parancs használatával:
 
 ```sh
 sudo apt-get update
 sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
 ```
 
-Ellenőrizze, hogy a verziója `cmake` meghaladja-e a **2.8.12** , és hogy a **GCC** verziója meghaladja-e a **4.4.7**-t.
+Ellenőrizze, hogy a verziója `cmake` meghaladja-e a **2.8.12** , és hogy a **GCC** verziója meghaladja-e a **4.4.7** -t.
 
 ```sh
 cmake --version
@@ -107,9 +107,13 @@ A művelet elvégzése több percet is igénybe vehet.
 
 Miután klónozott a IoT Plug and Play Bridge-tárházat a gépre, navigáljon a `pnpbridge/docs/schema` klónozott adattár könyvtárába, ahol megtalálja a [konfiguráció JSON](https://aka.ms/iot-pnp-bridge-env-config) -t vagy a `config.json` híd környezeti érzékelő mintáját. A konfigurációs fájlokról a [IoT Plug and Play Bridge-fogalmakat ismertető dokumentumban](concepts-iot-pnp-bridge.md)olvashat bővebben.
 
-A `root-_interface_model_id` mezőhöz másolni kell a IoT Plug and Play modell azonosítóját, amely az eszköz modelljét azonosítja. Ebben a példában ez `dtmi:com:example:SampleDevice;1`. Módosítsa a következő paramétereket a fájl **pnp_bridge_parameters** csomópontjában a `config.json` ":
+A `root-_interface_model_id` mezőhöz másolni kell a IoT Plug and Play modell azonosítóját, amely az eszköz modelljét azonosítja. Ebben a példában ez `dtmi:com:example:SampleDevice;1`. Módosítsa a következő paramétereket a fájl **pnp_bridge_parameters** csomópontjában `config.json` :
 
-  A kapcsolatok karakterláncának használata (Megjegyzés: a symmetric_keynak meg kell egyeznie az SAS-kulccsal a következő kapcsolatban:
+* connection_string 
+* symmetric_key 
+
+>[!NOTE]
+> A symmetric_keynak meg kell egyeznie az SAS-kulccsal a kapcsolatok karakterláncában.
 
   ```JSON
     {
@@ -126,7 +130,7 @@ A `root-_interface_model_id` mezőhöz másolni kell a IoT Plug and Play modell 
   }
   ```
 
- Ha kitöltötte a fájlt, a következőhöz `config.json` hasonlónak kell lennie:
+ Miután kitöltötte a fájlt, a következőhöz `config.json` hasonlónak kell lennie:
 
    ```JSON
     {

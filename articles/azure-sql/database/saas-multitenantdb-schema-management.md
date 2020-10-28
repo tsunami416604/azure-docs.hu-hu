@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 4dc28b51e33de6bf08995064404d2d4cc6ca9b58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d222234cd6ff3d910e6dbc51a394695ce467edce
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619576"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793296"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-databases"></a>Séma kezelése egy több-bérlős adatbázisokat használó SaaS-alkalmazásban
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,7 +31,7 @@ Ez az oktatóanyag a következő két forgatókönyvet vizsgálja:
 - Az összes bérlőre vonatkozó hivatkozási adatfrissítések üzembe helyezése.
 - Hozzon létre egy indexet a táblázatban, amely tartalmazza a hivatkozási adatkészletet.
 
-A Azure SQL Database [rugalmas feladatok](../../sql-database/elastic-jobs-overview.md) funkciójának használatával végrehajthatja ezeket a műveleteket a bérlői adatbázisok között. A feladatok a sablon bérlői adatbázisán is működnek. Az Wingtip tickets minta alkalmazásban ez a sablon-adatbázis egy új bérlői adatbázis kiépítésére lett másolva.
+A Azure SQL Database [rugalmas feladatok](./elastic-jobs-overview.md) funkciójának használatával végrehajthatja ezeket a műveleteket a bérlői adatbázisok között. A feladatok a sablon bérlői adatbázisán is működnek. Az Wingtip tickets minta alkalmazásban ez a sablon-adatbázis egy új bérlői adatbázis kiépítésére lett másolva.
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
@@ -44,20 +44,20 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A Wingtip jegyek több-bérlős adatbázis-alkalmazást már üzembe kell helyezni:
-    - Útmutatásért tekintse meg az első oktatóanyagot, amely bemutatja a Wingtip tickets SaaS több-bérlős adatbázis-alkalmazást:<br />[Helyezzen üzembe és vizsgáljon meg egy több-bérlős, Azure SQL Database-t használó több-bérlős alkalmazást](../../sql-database/saas-multitenantdb-get-started-deploy.md).
+    - Útmutatásért tekintse meg az első oktatóanyagot, amely bemutatja a Wingtip tickets SaaS több-bérlős adatbázis-alkalmazást:<br />[Helyezzen üzembe és vizsgáljon meg egy több-bérlős, Azure SQL Database-t használó több-bérlős alkalmazást](./saas-multitenantdb-get-started-deploy.md).
         - Az üzembe helyezési folyamat öt percnél kevesebb ideig fut.
     - A Wingtip *több-bérlős, több-bérlős* verzióját kell telepíteni. Az *önálló* és az *adatbázis-bérlői* verziók nem támogatják ezt az oktatóanyagot.
 
-- Telepíteni kell a SQL Server Management Studio (SSMS) legújabb verzióját. [Töltse le és telepítse a SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+- Telepíteni kell a SQL Server Management Studio (SSMS) legújabb verzióját. [Töltse le és telepítse a SSMS](/sql/ssms/download-sql-server-management-studio-ssms).
 
-- Azure PowerShell kell telepíteni. Részletekért lásd: [a Azure PowerShell első lépései](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+- Azure PowerShell kell telepíteni. Részletekért lásd: [a Azure PowerShell első lépései](/powershell/azure/get-started-azureps).
 
 > [!NOTE]
 > Ez az oktatóanyag egy korlátozott előzetes verzióban ([rugalmas adatbázis-feladatok](elastic-database-client-library.md)) található Azure SQL Database szolgáltatás funkcióit használja. Ha ezt az oktatóanyagot szeretné elvégezni, adja meg az előfizetés-AZONOSÍTÓját a *SaaSFeedback \@ Microsoft.com* tulajdonos = rugalmas feladatok előzetes verziójával. Miután megkapta a megerősítést az előfizetésének engedélyezéséről, [töltse le és telepítse a legújabb kiadás előtti feladatok parancsmagjait](https://github.com/jaredmoo/azure-powershell/releases). Ez az előzetes verzió korlátozott, ezért forduljon a *SaaSFeedback \@ Microsoft.com* kapcsolódó kérdésekhez vagy támogatáshoz.
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>Az SaaS-séma felügyeleti mintáinak bemutatása
 
-A mintában használt többbérlős adatbázis-modell lehetővé teszi, hogy egy bérlői adatbázis egy vagy több bérlőt tartalmazzon. Ez a példa feltárja a több-bérlős és egy bérlős adatbázisok kombinációjának használatát, amely lehetővé teszi a *hibrid* bérlői felügyeleti modell használatát. Az adatbázisok változásainak kezelése bonyolult lehet. A [rugalmas feladatok](../../sql-database/elastic-jobs-overview.md) megkönnyítik a nagy számú adatbázis felügyeletét és kezelését. A feladatok segítségével biztonságosan és megbízhatóan futtathat Transact-SQL-parancsfájlokat a bérlői adatbázisok egy csoportján. A feladatok függetlenek a felhasználói interakciótól vagy bemenettől. Ezzel a módszerrel a séma módosításait vagy a közös referenciákat az alkalmazás összes bérlője számára is telepítheti. A rugalmas feladatok is használhatók az adatbázis arany sablonos példányának karbantartásához. A sablon új bérlők létrehozására szolgál, és mindig gondoskodik a legújabb séma-és hivatkozási adatszolgáltatások használatáról.
+A mintában használt többbérlős adatbázis-modell lehetővé teszi, hogy egy bérlői adatbázis egy vagy több bérlőt tartalmazzon. Ez a példa feltárja a több-bérlős és egy bérlős adatbázisok kombinációjának használatát, amely lehetővé teszi a *hibrid* bérlői felügyeleti modell használatát. Az adatbázisok változásainak kezelése bonyolult lehet. A [rugalmas feladatok](./elastic-jobs-overview.md) megkönnyítik a nagy számú adatbázis felügyeletét és kezelését. A feladatok segítségével biztonságosan és megbízhatóan futtathat Transact-SQL-parancsfájlokat a bérlői adatbázisok egy csoportján. A feladatok függetlenek a felhasználói interakciótól vagy bemenettől. Ezzel a módszerrel a séma módosításait vagy a közös referenciákat az alkalmazás összes bérlője számára is telepítheti. A rugalmas feladatok is használhatók az adatbázis arany sablonos példányának karbantartásához. A sablon új bérlők létrehozására szolgál, és mindig gondoskodik a legújabb séma-és hivatkozási adatszolgáltatások használatáról.
 
 ![képernyő](./media/saas-multitenantdb-schema-management/schema-management.png)
 
@@ -75,7 +75,7 @@ A Wingtip jegyek SaaS több-bérlős adatbázis-szkriptek és az alkalmazás for
 
 Ez az oktatóanyag megköveteli, hogy a PowerShell-lel hozza létre a Job Agent-adatbázist és a feladatot ügynökét. Az SQL Agent által használt MSDB-adatbázishoz hasonlóan a feladatok ügynöke a Azure SQL Database adatbázisát használja a feladatdefiníciók, a feladatok állapotának és az előzményeknek a tárolására. A feladat-ügynök létrehozása után azonnal létrehozhatja és figyelheti a feladatokat.
 
-1. A **POWERSHELL ISE**-ben nyissa meg a *... \\ Tanulási modulok – \\ séma-felügyeleti \\Demo-SchemaManagement.ps1*.
+1. A **POWERSHELL ISE** -ben nyissa meg a *... \\ Tanulási modulok – \\ séma-felügyeleti \\Demo-SchemaManagement.ps1* .
 2. A szkript futtatásához nyomja le az **F5** billentyűt.
 
 A *Demo-SchemaManagement.ps1* parancsfájl meghívja a *Deploy-SchemaManagement.ps1* parancsfájlt, hogy létrehozzon egy _jobagent_ nevű adatbázist a katalógus-kiszolgálón. A szkript ezután létrehozza a feladatot, és paraméterként átadja a _jobagent_ -adatbázist.
@@ -84,7 +84,7 @@ A *Demo-SchemaManagement.ps1* parancsfájl meghívja a *Deploy-SchemaManagement.
 
 #### <a name="prepare"></a>Előkészítés
 
-Az egyes bérlői adatbázisok a **VenueTypes** táblában tartalmazzák a helyszín típusait. Minden egyes helyszín típusa határozza meg, hogy milyen típusú eseményeket lehet üzemeltetni a helyszínen. Ezek a helyszín típusok a bérlői események alkalmazásban megjelenő háttérképnek felelnek meg.  Ebben a gyakorlatban egy frissítést telepít az összes adatbázisra, hogy két további típusú helyszínt adjon hozzá: *motorkerékpár-verseny* és az *úszó Club*.
+Az egyes bérlői adatbázisok a **VenueTypes** táblában tartalmazzák a helyszín típusait. Minden egyes helyszín típusa határozza meg, hogy milyen típusú eseményeket lehet üzemeltetni a helyszínen. Ezek a helyszín típusok a bérlői események alkalmazásban megjelenő háttérképnek felelnek meg.  Ebben a gyakorlatban egy frissítést telepít az összes adatbázisra, hogy két további típusú helyszínt adjon hozzá: *motorkerékpár-verseny* és az *úszó Club* .
 
 Először tekintse át az egyes bérlői adatbázisokban található helyszín típusait. Kapcsolódjon SQL Server Management Studio (SSMS) egyik bérlői adatbázisához, és vizsgálja meg a VenueTypes táblát.  Ezt a táblázatot a Azure Portal lekérdezés-szerkesztőjében is lekérdezheti, amely az adatbázis lapról érhető el.
 
@@ -105,11 +105,11 @@ Most hozzon létre egy feladatot a **VenueTypes** tábla minden bérlői adatbá
 
 3. A *VenueTypes* tábla lekérdezése annak megerősítéséhez, hogy a *motorkerékpár-verseny* és az *úszó klub* még nem szerepel az eredmények listáján.
 
-4. Kapcsolódjon a katalógus *-MT- &lt; user &gt; . database.Windows.net*-hez.
+4. Kapcsolódjon a katalógus *-MT- &lt; user &gt; . database.Windows.net* -hez.
 
 5. Kapcsolódjon a _jobagent_ -adatbázishoz a katalógus-kiszolgálón.
 
-6. A SSMS-ben nyissa meg a fájlt *... \\ Learning-modulok \\ séma-felügyeleti \\ DeployReferenceData. SQL*.
+6. A SSMS-ben nyissa meg a fájlt *... \\ Learning-modulok \\ séma-felügyeleti \\ DeployReferenceData. SQL* .
 
 7. Módosítsa az utasítást: set @User = &lt; User &gt; , és cserélje le a Wingtip tickets SaaS több-bérlős adatbázis-alkalmazás üzembe helyezésekor használt felhasználói értéket.
 
@@ -119,22 +119,22 @@ Most hozzon létre egy feladatot a **VenueTypes** tábla minden bérlői adatbá
 
 Figyelje meg a következő elemeket a *DeployReferenceData. SQL* parancsfájlban:
 
-- az **SP \_ Add \_ Target \_ Group** létrehozza a célcsoport nevét, és hozzáadja a *DemoServerGroup*a csoporthoz.
+- az **SP \_ Add \_ Target \_ Group** létrehozza a célcsoport nevét, és hozzáadja a *DemoServerGroup* a csoporthoz.
 
 - az **SP \_ Add \_ Target \_ Group \_ tag** hozzáadja a következő elemeket:
     - Egy *kiszolgáló* -megcélzott tag típusa.
-        - Ez a *tenants1-MT- &lt; User &gt; * kiszolgáló, amely a bérlői adatbázisokat tartalmazza.
+        - Ez a *tenants1-MT- &lt; User &gt;* kiszolgáló, amely a bérlői adatbázisokat tartalmazza.
         - A kiszolgáló belefoglalása tartalmazza a bérlői adatbázisokat is, amelyek a feladatok végrehajtásának időpontjában léteznek.
-    - A *katalógus-MT- &lt; User &gt; * kiszolgálón található sablon-adatbázishoz (*basetenantdb*) *tartozó céladatbázis-* tag típusa
+    - A *katalógus-MT- &lt; User &gt;* kiszolgálón található sablon-adatbázishoz ( *basetenantdb* ) *tartozó céladatbázis-* tag típusa
     - Egy *adatbázis* -megcélzott tag típusa, amely tartalmazza a *adhocreporting* -adatbázist, amelyet egy későbbi oktatóanyagban használtak.
 
-- az **SP \_ Add \_ Job** létrehoz egy *hivatkozási adatok központi telepítés*nevű feladatot.
+- az **SP \_ Add \_ Job** létrehoz egy *hivatkozási adatok központi telepítés* nevű feladatot.
 
 - az **SP \_ Add \_ Jobstep** létrehozza a T-SQL-parancs szövegét tartalmazó feladatot, amely frissíti a VenueTypes.
 
 - A szkript fennmaradó nézetei megjelenítik, hogy léteznek-e az objektumok, és figyelik a feladat-végrehajtást. Ezekkel a lekérdezésekkel áttekintheti az állapot értékét az **életciklus** oszlopban annak megállapításához, hogy a feladatok befejeződtek-e. A feladatok frissítik a bérlői adatbázist, és frissítik a hivatkozási táblázatot tartalmazó két további adatbázist.
 
-A SSMS-ben keresse meg a *tenants1-MT- &lt; User &gt; * kiszolgálón található bérlői adatbázist. A *VenueTypes* tábla lekérdezésével erősítse meg, hogy a *motorkerékpár-verseny* és az *úszó klub* már hozzá van adva a táblához. A helyszínek típusának teljes számát kettővel kell növelni.
+A SSMS-ben keresse meg a *tenants1-MT- &lt; User &gt;* kiszolgálón található bérlői adatbázist. A *VenueTypes* tábla lekérdezésével erősítse meg, hogy a *motorkerékpár-verseny* és az *úszó klub* már hozzá van adva a táblához. A helyszínek típusának teljes számát kettővel kell növelni.
 
 ## <a name="create-a-job-to-manage-the-reference-table-index"></a>Feladat létrehozása a referenciatábla indexének kezeléséhez
 
@@ -142,7 +142,7 @@ Ezzel a gyakorlattal létrejön egy feladat, amely az indexet újraépíti a hiv
 
 1. A SSMS-ben kapcsolódjon a _jobagent_ adatbázishoz a *Catalog-MT- &lt; User &gt; . database.Windows.net* -kiszolgálón.
 
-2. A SSMS nyissa meg a *... \\ Learning-modulok \\ séma-felügyeleti \\ Sémakezelés. SQL*.
+2. A SSMS nyissa meg a *... \\ Learning-modulok \\ séma-felügyeleti \\ Sémakezelés. SQL* .
 
 3. A szkript futtatásához nyomja le az **F5** billentyűt.
 
@@ -150,7 +150,7 @@ Ezzel a gyakorlattal létrejön egy feladat, amely az indexet újraépíti a hiv
 
 Figyelje meg a következő elemeket a *Sémakezelés. SQL* parancsfájlban:
 
-* az **SP \_ Add \_ Job** létrehoz egy új feladatot, amelyet *online reindex PK \_ \_ VenueTyp \_ \_ 265E44FD7FD4C885*.
+* az **SP \_ Add \_ Job** létrehoz egy új feladatot, amelyet *online reindex PK \_ \_ VenueTyp \_ \_ 265E44FD7FD4C885* .
 
 * az **SP \_ Add \_ Jobstep** létrehozza a T-SQL-parancs szövegét tartalmazó feladatot, amely frissíti az indexet.
 
@@ -161,7 +161,7 @@ Figyelje meg a következő elemeket a *Sémakezelés. SQL* parancsfájlban:
 <!-- TODO: Additional tutorials that build upon the Wingtip Tickets SaaS Multi-tenant Database application deployment (*Tutorial link to come*)
 (saas-multitenantdb-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 -->
-* [Kiterjesztett felhőalapú adatbázisok kezelése](../../sql-database/elastic-jobs-overview.md)
+* [Kiterjesztett felhőalapú adatbázisok kezelése](./elastic-jobs-overview.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -172,5 +172,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Az összes bérlői adatbázisban lévő hivatkozási érték frissítése
 > * Index létrehozása a táblához az összes bérlői adatbázisban
 
-Ezután próbálja ki az [ad hoc jelentéskészítési oktatóanyagot](../../sql-database/saas-multitenantdb-adhoc-reporting.md) , és vizsgálja meg a bérlői adatbázisok közötti elosztott lekérdezések futtatását.
-
+Ezután próbálja ki az [ad hoc jelentéskészítési oktatóanyagot](./saas-multitenantdb-adhoc-reporting.md) , és vizsgálja meg a bérlői adatbázisok közötti elosztott lekérdezések futtatását.

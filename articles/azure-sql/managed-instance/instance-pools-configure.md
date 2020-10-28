@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: 5798220ad92a99f32f757ffa20f9233b8c79151b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 732a9bab018103321a9a3a759b31495bd67a209e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617434"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793109"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Az Azure SQL felügyelt példányának üzembe helyezése egy példány-készleten
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -41,7 +41,7 @@ A következő táblázat a példány-készletekhez kapcsolódó elérhető műve
 |Adatbázis létrehozása példányban a készleten belül|Igen|Igen|
 |SQL felügyelt példányról származó adatbázis törlése|Igen|Igen|
 
-Elérhető [PowerShell-parancsok](https://docs.microsoft.com/powershell/module/az.sql/):
+Elérhető [PowerShell-parancsok](/powershell/module/az.sql/):
 
 |Parancsmag |Leírás |
 |:---|:---|
@@ -52,7 +52,7 @@ Elérhető [PowerShell-parancsok](https://docs.microsoft.com/powershell/module/a
 |[Get-AzSqlInstancePoolUsage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | Az SQL felügyelt példány-készlet használatára vonatkozó adatokat adja vissza. |
 
 
-A PowerShell használatához [telepítse a PowerShell Core legújabb verzióját](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell), és kövesse az utasításokat az [Azure PowerShell modul telepítéséhez](https://docs.microsoft.com/powershell/azure/install-az-ps).
+A PowerShell használatához [telepítse a PowerShell Core legújabb verzióját](/powershell/scripting/install/installing-powershell#powershell), és kövesse az utasításokat az [Azure PowerShell modul telepítéséhez](/powershell/azure/install-az-ps).
 
 A készleteken és az önálló példányokon belüli példányokkal kapcsolatos műveletekhez használja a szabványos [felügyelt példányok parancsait](api-references-create-manage-instance.md#powershell-create-and-configure-managed-instances), de a *példány neve* tulajdonságot fel kell tölteni, ha egy készlet egy példányához használja ezeket a parancsokat.
 

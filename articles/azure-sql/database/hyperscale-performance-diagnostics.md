@@ -10,12 +10,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: 7bd2b404627e21a80fc41a4561300d7252d1519c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed31ff5d77b258d141a77fc174c2d5452adf7d01
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84324392"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791715"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL nagy kapacitású Performance hibaelhárítási diagnosztika
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -97,7 +97,7 @@ A RBPEX által az összes többi adatfájlon végzett összesített olvasások a
 
 ## <a name="data-io-in-resource-utilization-statistics"></a>Adat IO az erőforrás-kihasználtsági statisztikában
 
-A nem nagy kapacitású adatbázisokban az adatfájlok összevont olvasási és írási IOPS az [erőforrás-irányítási](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance) adatIOPSi korláthoz viszonyítva az oszlopban [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) és [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) nézetek szerepelnek `avg_data_io_percent` . Ugyanezt az értéket jelenti a Azure Portal _Adatio százalékként_.
+A nem nagy kapacitású adatbázisokban az adatfájlok összevont olvasási és írási IOPS az [erőforrás-irányítási](./resource-limits-logical-server.md#resource-governance) adatIOPSi korláthoz viszonyítva az oszlopban [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) és [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) nézetek szerepelnek `avg_data_io_percent` . Ugyanezt az értéket jelenti a Azure Portal _Adatio százalékként_ .
 
 A nagy kapacitású-adatbázisokban ez az oszlop csak a számítási replikán lévő helyi tárterületre vonatkozó korláttal, kifejezetten a RBPEX és a értékekkel kapcsolatos IOPS-kihasználtságot jelenti `tempdb` . Ebben az oszlopban az 100% érték azt jelzi, hogy az erőforrás-szabályozás korlátozza a helyi tárterület IOPS. Ha ez egy teljesítménnyel kapcsolatos problémával összefügg, állítsa be úgy a számítási feladatot, hogy kevesebb IO-t állítson elő, vagy növelje az adatbázis-szolgáltatás célkitűzését, hogy növelje az erőforrás-szabályozás _maximális IOPS_ [korlátját](resource-limits-vcore-single-databases.md). A RBPEX-olvasások és-írások erőforrás-szabályozása esetében a rendszer az egyes 8 KB-os IOs-et, nem pedig a SQL Server adatbázismotor által kiállított nagyobb IOs-t számítja fel.
 

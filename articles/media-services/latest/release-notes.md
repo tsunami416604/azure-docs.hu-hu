@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4a741834637900ec0c78105790bac2453d759e2f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: d825a30cf43b3e7f9017638138df91d5145d280e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514486"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791596"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -46,6 +46,16 @@ A hangelemzési beállításkészlet mostantól egy alapszintű mód díjszabás
 Az indexelő v1 és az indexelő v2-et használó ügyfeleknek át kell térniük az alapszintű hangelemzési készletre.
 
 További információ az alapszintű audio Analyzer módból: [videó-és hangfájlok elemzése](analyzing-video-audio-files-concept.md).  Az alapszintű hangelemző mód és a REST API használatának megismeréséhez tekintse meg az [alapszintű hang átalakításának létrehozása](how-to-create-basic-audio-transform.md)című témakört.
+
+## <a name="live-events"></a>Élő események
+
+A legtöbb tulajdonság frissítése mostantól engedélyezett az élő események leállításakor. Emellett a felhasználók megadhatnak egy előtagot a statikus állomásnévhez az élő esemény bemeneti és előnézeti URL-címeihez. A VanityUrl most úgy lett meghívva `useStaticHostName` , hogy jobban tükrözze a tulajdonság szándékát.
+
+Az élő események mostantól készenléti állapottal rendelkeznek.  Tekintse [meg az élő eseményeket és a Media Services élő kimeneteit](https://docs.microsoft.com/azure/media-services/latest/live-events-outputs-concept).
+
+Egy élő esemény támogatja A különböző bemeneti méretarányok fogadását. A stretch mód lehetővé teszi, hogy az ügyfelek megadják a kimenet nyújtásának viselkedését.
+
+Az élő kódolás mostantól lehetővé teszi a rögzített kulcstároló-töredékek 0,5 – 20 másodperc közötti kiépítésének lehetőségét.
 
 ## <a name="august-2020"></a>2020. augusztus
 
@@ -99,7 +109,7 @@ Azure Media Player dokumentumok át lettek telepítve az [Azure-dokumentációba
 
 ### <a name="azure-government-cloud-updates"></a>Azure Government Felhőbeli frissítések
 
-Media Services GA'ed a következő Azure Government régiókban: *USA Korm. Arizona* és *USA Korm. Texas*.
+Media Services GA'ed a következő Azure Government régiókban: *USA Korm. Arizona* és *USA Korm. Texas* .
 
 ## <a name="december-2019"></a>2019. december
 
@@ -163,7 +173,7 @@ Media Services v3 bejelenti az élő események élő lineáris kódolásának 2
 
 #### <a name="deprecation-of-media-processors"></a>Adathordozó-processzorok elavulása
 
-Bejelentjük, hogy a *Azure Media Indexer* elavult, és *Azure Media Indexer 2 előzetes*verzió. A nyugdíjazási dátumokért tekintse meg az  [örökölt összetevőkkel](../previous/legacy-components.md) foglalkozó cikket. A [Azure Media Services video Indexer](../video-indexer/index.yml) ezeket a régi adathordozó-processzorokat váltja fel.
+Bejelentjük, hogy a *Azure Media Indexer* elavult, és *Azure Media Indexer 2 előzetes* verzió. A nyugdíjazási dátumokért tekintse meg az  [örökölt összetevőkkel](../previous/legacy-components.md) foglalkozó cikket. A [Azure Media Services video Indexer](../video-indexer/index.yml) ezeket a régi adathordozó-processzorokat váltja fel.
 
 További információ: [áttelepítés Azure Media Indexerról és Azure Media Indexer 2 – Azure Media Services video Indexer](../previous/migrate-indexer-v1-v2.md).
 
@@ -265,10 +275,10 @@ Ne módosítsa vagy távolítsa el az MPI-fájlt, vagy az ilyen fájl létezés�
 
 A V3 API GA-kiadásának frissítései a következők:
        
-* A **PresentationTimeRange** tulajdonságai többé nem szükségesek az **eszközök** és a **fiókok szűrőinek**kiszűréséhez. 
+* A **PresentationTimeRange** tulajdonságai többé nem szükségesek az **eszközök** és a **fiókok szűrőinek** kiszűréséhez. 
 * A **feladatok** és **átalakítások** $Top és $skip lekérdezési beállításai el lettek távolítva, és $OrderBy lettek hozzáadva. Az új rendezési funkció hozzáadásának részeként a rendszer azt észlelte, hogy a $top és $skip lehetőség korábban még nem volt elérhető, noha nincsenek implementálva.
 * A számbavétel bővíthetőségét újra engedélyezték. Ez a funkció engedélyezve volt az SDK előzetes verzióiban, és véletlenül le lett tiltva a GA verzióban.
-* Két előre megadott folyamatos átviteli házirend lett átnevezve. A **SecureStreaming** mostantól **MultiDrmCencStreaming**. A **SecureStreamingWithFairPlay** most már **Predefined_MultiDrmStreaming**.
+* Két előre megadott folyamatos átviteli házirend lett átnevezve. A **SecureStreaming** mostantól **MultiDrmCencStreaming** . A **SecureStreamingWithFairPlay** most már **Predefined_MultiDrmStreaming** .
 
 ## <a name="november-2018"></a>2018. november
 

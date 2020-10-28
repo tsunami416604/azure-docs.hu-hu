@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: memildin
-ms.openlocfilehash: ac50b17826f9f3d06d01d3cce9704094fddf1b1d
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 6b54f02b39e233dcf35f0d18682ca102883d76c3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945617"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791868"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>E-mail-értesítések konfigurálása biztonsági riasztásokhoz 
 
@@ -26,8 +26,8 @@ A biztonsági riasztásoknak el kell érniük a szervezete megfelelő személyei
 
 Az értesítő e-mailek saját beállításainak megadásához Azure Security Center **e-mail-értesítéseinek** beállításai oldalon a következő lehetőségek közül választhat:
 
-- ** *kinek* kell értesítést** küldeni – az e-maileket elküldheti az egyéni felhasználóknak vagy egy adott Azure-szerepkörrel rendelkező felhasználók számára az előfizetéshez. 
-- ** *mit* kell** kapniuk a szolgáltatásról – módosítsa azokat a súlyossági szinteket, amelyekre Security Center küldi az értesítéseket.
+- **_kinek_ kell értesítést** küldeni – az e-maileket elküldheti az egyéni felhasználóknak vagy egy adott Azure-szerepkörrel rendelkező felhasználók számára az előfizetéshez. 
+- **_mit_ kell** kapniuk a szolgáltatásról – módosítsa azokat a súlyossági szinteket, amelyekre Security Center küldi az értesítéseket.
 
 A riasztások fáradtságának elkerülése érdekében Security Center korlátozza a kimenő levelek mennyiségét. Az egyes előfizetésekhez Security Center a következőt küldi el:
 
@@ -52,19 +52,20 @@ A riasztások fáradtságának elkerülése érdekében Security Center korláto
 
 E-mailes értesítéseket küldhet magánszemélyeknek vagy az adott Azure-szerepkörökkel rendelkező felhasználóknak is.
 
-1. A Security Center **díjszabása & beállítások** területen válassza ki a megfelelő előfizetést, és válassza az **e-mail értesítések**lehetőséget.
+1. A Security Center **díjszabása & beállítások** területen válassza ki a megfelelő előfizetést, és válassza az **e-mail értesítések** lehetőséget.
 
 1. Adja meg az értesítések címzettjeit az alábbi lehetőségek egyikével vagy mindkettővel:
 
     - A legördülő listából válassza ki az elérhető szerepkörök közül.
     - Adja meg a megadott e-mail-címeket vesszővel elválasztva. A megadható e-mail-címek száma nincs korlátozva.
 
-1. A biztonsági kapcsolattartási adatok előfizetésre való alkalmazásához válassza a **Mentés**lehetőséget.
+1. A biztonsági kapcsolattartási adatok előfizetésre való alkalmazásához válassza a **Mentés** lehetőséget.
 
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>Következő lépések
+
 A biztonsági riasztásokkal kapcsolatos további tudnivalókért tekintse meg a következő lapokat:
 
 - [Biztonsági riasztások – útmutató](alerts-reference.md)a Azure Security Center veszélyforrások elleni védelmi moduljában esetlegesen megjelenő biztonsági riasztások megismeréséhez
 - [Biztonsági riasztások kezelése és válaszadás a Azure Security Center-ben](security-center-managing-and-responding-alerts.md)– útmutató a biztonsági riasztások kezeléséhez és megválaszolásához
-- [Munkafolyamat-automatizálás](workflow-automation.md)– a riasztásokra adott válaszok automatizálása egyéni értesítési logikával
+- A [Security Center eseményindítóra adott válaszok automatizálása](workflow-automation.md)– az automatizálással válaszolhat Security Center triggerekre egyéni értesítési logikával

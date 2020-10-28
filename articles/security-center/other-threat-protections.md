@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: 63b93db314701d281f3f4fff195671f43cdb9dbc
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: dd4a7537e01c9e97997be64bb478e86a64f4325b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340886"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792259"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>További veszélyforrások elleni védelem Azure Security Center
 A beépített [Azure Defender-védelem](azure-defender.md)mellett a Azure Security Center a következő veszélyforrások elleni védelmi képességeket is biztosítja.
@@ -48,10 +48,10 @@ A Azure Resource Manager (előzetes verzió) riasztások listáját a [riasztás
 >[!NOTE]
 > Az előző elemzések közül több Microsoft Cloud App Security van. Ezen elemzések kihasználása érdekében aktiválni kell egy Cloud App Security licencet. Ha Cloud App Security licenccel rendelkezik, ezek a riasztások alapértelmezés szerint engedélyezve vannak. A riasztások letiltása:
 >
-> 1. A Security Center menüjében válassza a **díjszabás & beállítások**lehetőséget.
+> 1. A Security Center menüjében válassza a **díjszabás & beállítások** lehetőséget.
 > 1. Válassza ki a módosítani kívánt előfizetést.
-> 1. Válassza a **veszélyforrások észlelése**lehetőséget.
-> 1. Törölje a **Microsoft Cloud app Security az adataim elérésének engedélyezése**jelölőnégyzet jelölését, majd válassza a **Mentés**lehetőséget.
+> 1. Válassza a **veszélyforrások észlelése** lehetőséget.
+> 1. Törölje a **Microsoft Cloud app Security az adataim elérésének engedélyezése** jelölőnégyzet jelölését, majd válassza a **Mentés** lehetőséget.
 
 
 >[!NOTE]
@@ -59,7 +59,7 @@ A Azure Resource Manager (előzetes verzió) riasztások listáját a [riasztás
 
 1. Állítsa be azt a munkaterületet, amelyre telepíteni kívánja az ügynököt. Győződjön meg arról, hogy a munkaterület ugyanahhoz az előfizetéshez tartozik, amelyet Security Center használ, és hogy rendelkezik írási/olvasási engedéllyel a munkaterületen.
 
-1. Engedélyezze az **Azure Defendert**, majd válassza a **Mentés**lehetőséget.
+1. Engedélyezze az **Azure Defendert** , majd válassza a **Mentés** lehetőséget.
 
 
 ## <a name="threat-protection-for-azure-cosmos-db-preview"></a>Veszélyforrások elleni védelem Azure Cosmos DB (előzetes verzió)<a name="cosmos-db"></a>
@@ -101,4 +101,4 @@ Ha többet szeretne megtudni a veszélyforrások elleni védelmi funkciókkal ka
 * [Az összes Azure Security Center-riasztás hivatkozási táblázata](alerts-reference.md)
 * [Biztonsági riasztások az Azure Security Centerben](security-center-alerts-overview.md)
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md)
-* [Biztonsági riasztások és javaslatok exportálása (előzetes verzió)](continuous-export.md)
+* [Security Center-adatfeldolgozás folyamatos exportálása](continuous-export.md)

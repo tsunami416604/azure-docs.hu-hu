@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/07/2018
-ms.openlocfilehash: 1545f9cde15f010ba3d7d52c6fea1ef233d2fac5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 896f4edb1e94c1eca06b046382727a5042375e3b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619474"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793279"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>A Azure SQL Databaset használó önálló egybérlős alkalmazás üzembe helyezése és megismerése
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -60,13 +60,13 @@ Telepítse az alkalmazást a három megadott bérlőhöz:
     > Bizonyos hitelesítési és kiszolgálói tűzfalak szándékosan nem biztonságosak a demonstrációs célokra. **Hozzon létre egy új erőforráscsoportot** az egyes alkalmazások telepítéséhez.  Ne használjon meglévő erőforráscsoportot. Ne használja az alkalmazást vagy az általa létrehozott erőforrásokat éles környezetben. Törölje az összes erőforráscsoportot, ha elkészült az alkalmazásokkal a kapcsolódó számlázás leállításához.
 
     A legjobb, ha csak kisbetűket, számokat és kötőjeleket használ az erőforrásnevek.
-    * Az **erőforráscsoport**területen válassza az új létrehozása lehetőséget, majd adja meg az erőforráscsoport kisbetűs nevét. **Wingtip-SA- \<venueName\> - \<user\> ** az ajánlott minta.  A (z) esetében \<venueName\> cserélje le a helyszín nevét szóköz nélkül. A esetében \<user\> cserélje le a felhasználói értéket alulról.  Ezzel a mintával az erőforráscsoportok nevei lehetnek *Wingtip-SA-contosoconcerthall-AF1*, *Wingtip-SA-dogwooddojo-AF1*, *Wingtip-SA-fabrikamjazzclub-AF1*.
+    * Az **erőforráscsoport** területen válassza az új létrehozása lehetőséget, majd adja meg az erőforráscsoport kisbetűs nevét. **Wingtip-SA- \<venueName\> - \<user\>** az ajánlott minta.  A (z) esetében \<venueName\> cserélje le a helyszín nevét szóköz nélkül. A esetében \<user\> cserélje le a felhasználói értéket alulról.  Ezzel a mintával az erőforráscsoportok nevei lehetnek *Wingtip-SA-contosoconcerthall-AF1* , *Wingtip-SA-dogwooddojo-AF1* , *Wingtip-SA-fabrikamjazzclub-AF1* .
     * Válasszon ki egy **helyet** a legördülő listából.
 
-    * **Felhasználó** számára – egy rövid felhasználói értéket ajánlunk, például a monogramját és egy számjegyét: például *AF1*.
+    * **Felhasználó** számára – egy rövid felhasználói értéket ajánlunk, például a monogramját és egy számjegyét: például *AF1* .
 
 
-3. **Telepítse az alkalmazást**.
+3. **Telepítse az alkalmazást** .
 
     * Kattintson ide a feltételek és kikötések elfogadásához.
     * Kattintson a **Purchase** (Vásárlás) gombra.
@@ -102,16 +102,16 @@ Nézzük meg az üzembe helyezett erőforrásokat:
 
 1. A [Azure Portal](https://portal.azure.com)tallózással keresse meg az erőforráscsoportok listáját.
 2. Ekkor látnia kell a három bérlői erőforráscsoportot.
-3. Nyissa meg a **Wingtip-SA-Fabrikam- &lt; User &gt; ** erőforráscsoportot, amely a fabrikam Jazz Club üzembe helyezésének erőforrásait tartalmazza.  A **fabrikamjazzclub- &lt; User &gt; ** kiszolgáló tartalmazza a **fabrikamjazzclub** -adatbázist.
+3. Nyissa meg a **Wingtip-SA-Fabrikam- &lt; User &gt;** erőforráscsoportot, amely a fabrikam Jazz Club üzembe helyezésének erőforrásait tartalmazza.  A **fabrikamjazzclub- &lt; User &gt;** kiszolgáló tartalmazza a **fabrikamjazzclub** -adatbázist.
 
 Minden bérlői adatbázis 50 DTU *önálló* adatbázis.
 
 ## <a name="additional-resources"></a>További források
 
 <!--
-* Additional [tutorials that build on the Wingtip SaaS application](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* Additional [tutorials that build on the Wingtip SaaS application](./saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * To learn about elastic pools, see [*What is an Azure SQL elastic pool*](elastic-pool-overview.md)
-* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](../../sql-database/elastic-jobs-overview.md)
+* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](./elastic-jobs-overview.md)
 -->
 
 - A több-bérlős SaaS-alkalmazásokkal kapcsolatos további információkért lásd: [tervezési minták a több-bérlős SaaS-alkalmazásokhoz](saas-tenancy-app-design-patterns.md).
@@ -131,5 +131,3 @@ Ez az oktatóanyag bemutatta az alábbiakat:
 > * Mintavételi erőforrások törlése a kapcsolódó számlázás leállításához.
 
 Ezután próbálja ki a kiépítéssel [és a katalógussal](saas-standaloneapp-provision-and-catalog.md) foglalkozó oktatóanyagot, amelyben megtekintheti a bérlők katalógusának használatát, amely több bérlős forgatókönyv, például a séma-felügyeleti és a bérlői elemzések széles körét teszi lehetővé.
- 
-

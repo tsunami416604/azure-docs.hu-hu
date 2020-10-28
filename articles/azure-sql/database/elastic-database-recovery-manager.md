@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: fdd5f7d291d9c56361c17547628795b378091109
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91bcd998849c619a328a198c97bb8c977b9d8232
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443449"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792225"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Horizontális skálázási térképek javítása a RecoveryManager osztállyal
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-A [recoverymanager osztállyal](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager) osztály lehetővé teszi a ADO.NET-alkalmazások számára, hogy könnyen észlelje és javítsa a globális szegmenses Térkép (GSM) és a helyi szegmensek (LSM) közötti következetlenségeket a szilánkokra osztott adatbázis-környezetekben.
+A [recoverymanager osztállyal](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager) osztály lehetővé teszi a ADO.NET-alkalmazások számára, hogy könnyen észlelje és javítsa a globális szegmenses Térkép (GSM) és a helyi szegmensek (LSM) közötti következetlenségeket a szilánkokra osztott adatbázis-környezetekben.
 
 A GSM-és a LSM az egyes adatbázisok hozzárendelését egy horizontálisan eltárolt környezetben követheti nyomon. Alkalmanként a GSM és a LSM közötti szünet történik. Ebben az esetben használja a Recoverymanager osztállyal osztályt a törés észleléséhez és javításához.
 
@@ -33,11 +33,11 @@ A kifejezések definícióit lásd: [Elastic Database eszközök Szószedet](ela
 
 ## <a name="why-use-the-recovery-manager"></a>Miért érdemes a Recovery Managert használni?
 
-A többrétegű adatbázis-környezetekben az adatbázis egy bérlője, a kiszolgálón pedig sok adatbázis található. A környezetben számos kiszolgáló is lehet. Minden adatbázis le van képezve a szegmenses térképen, ezért a rendszer a megfelelő kiszolgálóhoz és adatbázishoz irányítja a hívásokat. Az adatbázisok követése egy horizontális Felskálázási **kulcs**szerint történik, és minden **szegmenshez**hozzá van rendelve egy tartomány. Egy horizontális Felskálázási kulcs például a "D" értékről az "F" értékre nevezheti az ügyfelek nevét. Az összes szegmens hozzárendelését (más néven adatbázisokat) és a leképezési tartományokat a globális szegmenses **Térkép (GSM)** tartalmazza. Minden adatbázis tartalmaz egy térképet is a szegmensben található tartományokból, amelyek a helyi szegmensek **(LSM)** néven ismertek. Amikor egy alkalmazás egy szegmenshez csatlakozik, a leképezést a rendszer a gyors lekéréshez az alkalmazással gyorsítótárazza. A LSM a gyorsítótárazott adatértékek ellenőrzésére szolgál.
+A többrétegű adatbázis-környezetekben az adatbázis egy bérlője, a kiszolgálón pedig sok adatbázis található. A környezetben számos kiszolgáló is lehet. Minden adatbázis le van képezve a szegmenses térképen, ezért a rendszer a megfelelő kiszolgálóhoz és adatbázishoz irányítja a hívásokat. Az adatbázisok követése egy horizontális Felskálázási **kulcs** szerint történik, és minden **szegmenshez** hozzá van rendelve egy tartomány. Egy horizontális Felskálázási kulcs például a "D" értékről az "F" értékre nevezheti az ügyfelek nevét. Az összes szegmens hozzárendelését (más néven adatbázisokat) és a leképezési tartományokat a globális szegmenses **Térkép (GSM)** tartalmazza. Minden adatbázis tartalmaz egy térképet is a szegmensben található tartományokból, amelyek a helyi szegmensek **(LSM)** néven ismertek. Amikor egy alkalmazás egy szegmenshez csatlakozik, a leképezést a rendszer a gyors lekéréshez az alkalmazással gyorsítótárazza. A LSM a gyorsítótárazott adatértékek ellenőrzésére szolgál.
 
 Előfordulhat, hogy a GSM-és LSM a következő okok miatt nem lehet szinkronban:
 
-1. Annak a szegmensnek a törlése, amelynek a tartománya már nem használatban van, vagy egy szegmens átnevezése nem lehetséges. A szegmensek törlése árva szegmensek **leképezését**eredményezi. Hasonlóképpen, az átnevezett adatbázis árva szegmensek leképezését is okozhatja. A változás céljától függően előfordulhat, hogy a szegmenst el kell távolítani, vagy frissíteni kell a szegmens helyét. A törölt adatbázisok helyreállításáról a [törölt adatbázis visszaállítása](recovery-using-backups.md)című cikkből tájékozódhat.
+1. Annak a szegmensnek a törlése, amelynek a tartománya már nem használatban van, vagy egy szegmens átnevezése nem lehetséges. A szegmensek törlése árva szegmensek **leképezését** eredményezi. Hasonlóképpen, az átnevezett adatbázis árva szegmensek leképezését is okozhatja. A változás céljától függően előfordulhat, hogy a szegmenst el kell távolítani, vagy frissíteni kell a szegmens helyét. A törölt adatbázisok helyreállításáról a [törölt adatbázis visszaállítása](recovery-using-backups.md)című cikkből tájékozódhat.
 2. Földrajzi feladatátvételi esemény történik. A folytatáshoz frissítenie kell a kiszolgáló nevét és az adatbázis nevét az alkalmazásban, majd frissítenie kell a szegmensben lévő szegmensek összes szegmenséhez tartozó szegmens-hozzárendelés részleteit. Ha van földrajzi feladatátvétel, a helyreállítási logikának automatizáltnak kell lennie a feladatátvételi munkafolyamaton belül. A helyreállítási műveletek automatizálása lehetővé teszi a Geo-kompatibilis adatbázisok súrlódás nélküli kezelhetőségét, és elkerüli a manuális emberi műveleteket. Az adatbázisok helyreállításának lehetőségeiről az adatközpont meghibásodása esetén az [üzletmenet folytonossága](business-continuity-high-availability-disaster-recover-hadr-overview.md) és a vész- [helyreállítás](disaster-recovery-guidance.md)című témakörben olvashat.
 3. Egy szilánk vagy a ShardMapManager-adatbázis egy korábbi időpontra van visszaállítva. A biztonsági másolatok használatával történő időpontra történő helyreállításról a [biztonsági másolatok használatával történő helyreállítással](recovery-using-backups.md)foglalkozó témakörben olvashat.
 
@@ -49,7 +49,7 @@ A Azure SQL Database Elastic Database eszközökről, a Geo-replikációról és
 
 ## <a name="retrieving-recoverymanager-from-a-shardmapmanager"></a>Recoverymanager osztállyal beolvasása egy ShardMapManager
 
-Első lépésként hozzon létre egy Recoverymanager osztállyal-példányt. A [GetRecoveryManager metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager) visszaadja a helyreállítási kezelőt az aktuális [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) -példányhoz. A szegmenses Térkép következetlenségének kezeléséhez először le kell kérnie az adott szegmens Térkép Recoverymanager osztállyal.
+Első lépésként hozzon létre egy Recoverymanager osztállyal-példányt. A [GetRecoveryManager metódus](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager) visszaadja a helyreállítási kezelőt az aktuális [ShardMapManager](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) -példányhoz. A szegmenses Térkép következetlenségének kezeléséhez először le kell kérnie az adott szegmens Térkép Recoverymanager osztállyal.
 
    ```java
     ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnectionString,  
@@ -63,7 +63,7 @@ Mivel ez az alkalmazási kód manipulálja magát a szegmenses leképezést, a g
 
 ## <a name="removing-a-shard-from-the-shardmap-after-a-shard-is-deleted"></a>Szegmens eltávolítása a ShardMap a szegmens törlése után
 
-A [DetachShard metódus](https://docs.microsoft.com/previous-versions/azure/dn842083(v=azure.100)) leválasztja az adott szegmenst a szegmens térképről, és törli a szegmenshez társított leképezéseket.  
+A [DetachShard metódus](/previous-versions/azure/dn842083(v=azure.100)) leválasztja az adott szegmenst a szegmens térképről, és törli a szegmenshez társított leképezéseket.  
 
 * A Location paraméter a leválasztott szegmens helye, különösen a kiszolgáló neve és az adatbázis neve.
 * A shardMapName paraméter a szegmensek közötti Térkép neve. Erre csak akkor van szükség, ha ugyanaz a szegmenses Térkép-kezelő több szegmenses térképet kezel. Választható.
@@ -83,7 +83,7 @@ Mivel a rendszer feltételezi, hogy az adatbázis-törlés szándékos volt, a v
 
 ## <a name="to-detect-mapping-differences"></a>A leképezési különbségek észlelése
 
-A [DetectMappingDifferences metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences) kiválasztja és visszaadja az egyik szegmenses térképet (helyi vagy globális) az igazság forrásaként, és összehangolja mindkét szegmens térképének leképezéseit (GSM és LSM).
+A [DetectMappingDifferences metódus](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences) kiválasztja és visszaadja az egyik szegmenses térképet (helyi vagy globális) az igazság forrásaként, és összehangolja mindkét szegmens térképének leképezéseit (GSM és LSM).
 
    ```java
    rm.DetectMappingDifferences(location, shardMapName);
@@ -94,19 +94,19 @@ A [DetectMappingDifferences metódus](https://docs.microsoft.com/dotnet/api/micr
 
 ## <a name="to-resolve-mapping-differences"></a>A leképezési különbségek feloldása
 
-A [ResolveMappingDifferences metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences) kiválasztja az egyik szegmenses leképezést (helyi vagy globális) az igazság forrásaként, és összehangolja mindkét szegmens térképének leképezéseit (GSM és LSM).
+A [ResolveMappingDifferences metódus](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences) kiválasztja az egyik szegmenses leképezést (helyi vagy globális) az igazság forrásaként, és összehangolja mindkét szegmens térképének leképezéseit (GSM és LSM).
 
    ```java
    ResolveMappingDifferences (RecoveryToken, MappingDifferenceResolution.KeepShardMapping);
    ```
 
 * A *RecoveryToken* paraméter a GSM és az adott szegmens LSM közötti leképezések különbségeit sorolja fel.
-* A [MappingDifferenceResolution enumerálás](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution) a szegmens-hozzárendelések közötti különbség feloldására szolgál.
+* A [MappingDifferenceResolution enumerálás](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution) a szegmens-hozzárendelések közötti különbség feloldására szolgál.
 * A **MappingDifferenceResolution. KeepShardMapping** javasolt, hogy ha a LSM tartalmazza a pontos leképezést, ezért a szegmensben lévő leképezést kell használni. Ez általában abban az esetben történik, ha feladatátvétel van: a szegmens most egy új kiszolgálón található. Mivel a szegmenst először el kell távolítani a GSM-ről (a Recoverymanager osztállyal. DetachShard metódus használatával), a leképezés már nem létezik a GSM-kiszolgálón. Ezért a LSM újra létre kell hozni a szegmensek leképezésének újbóli létrehozásához.
 
 ## <a name="attach-a-shard-to-the-shardmap-after-a-shard-is-restored"></a>Szegmens csatolása a ShardMap egy szegmens visszaállítása után
 
-A [AttachShard metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard) csatolja az adott szegmenst a szegmens térképhez. Ezután észleli a szegmensek közötti leképezések következetlenségeit, és frissíti a leképezéseket, hogy azok megfeleljenek a szegmens visszaállítási pontjának. A rendszer azt feltételezi, hogy az adatbázist a rendszer átnevezi, hogy tükrözze az eredeti adatbázisnevet (a szegmens visszaállítása előtt), mivel az időponthoz tartozó visszaállítás alapértelmezett értéke egy új adatbázis, amely az időbélyeggel van hozzáfűzve.
+A [AttachShard metódus](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard) csatolja az adott szegmenst a szegmens térképhez. Ezután észleli a szegmensek közötti leképezések következetlenségeit, és frissíti a leképezéseket, hogy azok megfeleljenek a szegmens visszaállítási pontjának. A rendszer azt feltételezi, hogy az adatbázist a rendszer átnevezi, hogy tükrözze az eredeti adatbázisnevet (a szegmens visszaállítása előtt), mivel az időponthoz tartozó visszaállítás alapértelmezett értéke egy új adatbázis, amely az időbélyeggel van hozzáfűzve.
 
    ```java
    rm.AttachShard(location, shardMapName)

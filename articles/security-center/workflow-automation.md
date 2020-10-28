@@ -6,24 +6,20 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: 015b3fb116c4eb16e4280e2f71873e88dccff278
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: bbd46237e0b3b21b822b088c545c91f678a8034e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92344032"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792293"
 ---
-# <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>Automatikus válaszok létrehozása riasztásokhoz és javaslatokhoz munkafolyamat-automatizálással
+# <a name="automate-responses-to-security-center-triggers"></a>Security Center eseményindítóra adott válaszok automatizálása
 
 Minden biztonsági program több munkafolyamatot tartalmaz az incidensek megválaszolásához. Ezek a folyamatok magukban foglalhatják az érintett érintett felek értesítését, a módosítási felügyeleti folyamat indítását és az adott szervizelési lépések alkalmazását. A biztonsági szakértők azt ajánlják, hogy az eljárások több lépésének automatizálására legyen lehetőség. Az Automation csökkenti a terhelést. Emellett javíthatja a biztonságot, mivel biztosítja, hogy a folyamat lépései gyorsan, következetesen és az előre meghatározott követelményeknek megfelelően történjenek.
 
 Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatását ismerteti. Ez a funkció a biztonsági riasztások és javaslatok Logic Apps indítását is elvégezheti. Előfordulhat például, hogy egy adott felhasználót szeretne e-mailben elküldeni a Security Center riasztás esetén. Azt is megtudhatja, hogyan hozhat létre Logic Apps a [Azure Logic apps](../logic-apps/logic-apps-overview.md)használatával.
-
-> [!NOTE]
-> Ha korábban a forgatókönyvek (előzetes verzió) nézetet használta az oldalsávon, akkor ugyanazokat a funkciókat fogja használni, mint az új munkafolyamat-automatizálási oldalon kibontott funkciókkal.
-
 
 
 ## <a name="availability"></a>Rendelkezésre állás
@@ -40,28 +36,35 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatás�
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>Logikai alkalmazás létrehozása és az automatikus futtatásának meghatározása 
 
-1. A Security Center oldalsávján válassza a **munkafolyamat-automatizálás**elemet.
+1. A Security Center oldalsávján válassza a **munkafolyamat-automatizálás** elemet.
 
     :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="Munkafolyamat-automatizálások listája&quot;:::
 
     Ebből a lapról új Automation-szabályokat hozhat létre, valamint engedélyezheti, letilthatja vagy törölheti a meglévőket.
 
-1. Új munkafolyamat definiálásához kattintson a **munkafolyamat-automatizálás hozzáadása**lehetőségre. 
+1. Új munkafolyamat definiálásához kattintson a **munkafolyamat-automatizálás hozzáadása** lehetőségre. 
 
     Megjelenik egy ablaktábla az új automatizálási beállításokkal. Itt megadhatja a következőket:
     1. Az automatizálás neve és leírása.
-    1. Az automatikus munkafolyamatot kezdeményező eseményindítók. Előfordulhat például, hogy azt szeretné, hogy a logikai alkalmazás akkor fusson, amikor az &quot;SQL" kifejezést tartalmazó biztonsági riasztást hoz létre.
+    1. Az automatikus munkafolyamatot kezdeményező eseményindítók. Előfordulhat például, hogy azt szeretné, hogy a logikai alkalmazás akkor fusson, amikor az &quot;SQL&quot; kifejezést tartalmazó biztonsági riasztást hoz létre.
+
+        > [!NOTE]
+        > Ha az trigger olyan javaslat, amely &quot;alárendelt – ajánlásokat" tartalmaz, például az **SQL-adatbázisokra vonatkozó sebezhetőségi felmérési eredményeket kell szervizelni** , a logikai alkalmazás nem aktiválódik minden új biztonsági keresésnél. csak a szülő javaslat állapotának megváltozásakor.
+
     1. Az a logikai alkalmazás, amely az aktiválási feltételek teljesülése esetén fog futni. 
 
         :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="Munkafolyamat-automatizálások listája&quot;:::
 
     Ebből a lapról új Automation-szabályokat hozhat létre, valamint engedélyezheti, letilthatja vagy törölheti a meglévőket.
 
-1. Új munkafolyamat definiálásához kattintson a **munkafolyamat-automatizálás hozzáadása**lehetőségre. 
+1. Új munkafolyamat definiálásához kattintson a **munkafolyamat-automatizálás hozzáadása** lehetőségre. 
 
     Megjelenik egy ablaktábla az új automatizálási beállításokkal. Itt megadhatja a következőket:
     1. Az automatizálás neve és leírása.
-    1. Az automatikus munkafolyamatot kezdeményező eseményindítók. Előfordulhat például, hogy azt szeretné, hogy a logikai alkalmazás akkor fusson, amikor az &quot;SQL":::
+    1. Az automatikus munkafolyamatot kezdeményező eseményindítók. Előfordulhat például, hogy azt szeretné, hogy a logikai alkalmazás akkor fusson, amikor az &quot;SQL&quot; kifejezést tartalmazó biztonsági riasztást hoz létre.
+
+        > [!NOTE]
+        > Ha az trigger olyan javaslat, amely &quot;alárendelt – ajánlásokat":::
 
 1. A műveletek szakaszban kattintson az **új létrehozása** lehetőségre a logikai alkalmazás létrehozási folyamatának megkezdéséhez.
 
@@ -69,11 +72,14 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatás�
 
     [![Új logikai alkalmazás létrehozása](media/workflow-automation/logic-apps-create-new.png)](media/workflow-automation/logic-apps-create-new.png#lightbox)
 
-1. Adja meg a nevet, az erőforráscsoportot és a helyet, majd kattintson a **Létrehozás**gombra.
+1. Adja meg a nevet, az erőforráscsoportot és a helyet, majd kattintson a **Létrehozás** gombra.
 
 1. Az új logikai alkalmazásban a biztonsági kategóriából választhat a beépített, előre definiált sablonok közül. Megadhat egyéni folyamatokat is, amelyek a folyamat indításakor történnek.
 
-    A Logic app Designerben a Security Center összekötők következő eseményindítói támogatottak:
+    > [!TIP]
+    > Esetenként logikai alkalmazásokban a paraméterek a karakterlánc részeként szerepelnek az összekötőben, és nem a saját mezőiben. A paraméterek kinyerésének az EAN példája: #14 a [Logic app-paraméterek használatának lépései Azure Security Center munkafolyamat-automatizálások kialakítása során](https://techcommunity.microsoft.com/t5/azure-security-center/working-with-logic-app-parameters-while-building-azure-security/ba-p/1342121).
+
+    A Logic app Designer a következő Security Center eseményindítókat támogatja:
 
     * **Azure Security Center javaslat létrehozásakor vagy elindításakor** – ha a logikai alkalmazás egy elavult vagy lecserélt javaslatra támaszkodik, az automatizálás leáll, és frissítenie kell az aktiválást. A javaslatok változásainak nyomon követéséhez lásd: [Azure Security Center kibocsátási megjegyzések](release-notes.md).
 
@@ -95,13 +101,99 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatás�
 
 Logic Apps manuálisan is futtathatja a biztonsági riasztások és javaslatok megtekintésekor.
 
-Logikai alkalmazás manuális futtatásához nyisson meg egy riasztást vagy javaslatot, és kattintson a **logikai alkalmazás elindítása**lehetőségre:
+Logikai alkalmazás manuális futtatásához nyisson meg egy riasztást vagy javaslatot, és kattintson a **logikai alkalmazás elindítása** lehetőségre:
 
 [![Logikai alkalmazás manuális elindítása](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
+
+
+## <a name="configure-workflow-automation-at-scale-using-the-supplied-policies"></a>A munkafolyamatok automatizálásának konfigurálása a megadott szabályzatok használatával
+
+A szervezet figyelési és incidens-reagálási folyamatainak automatizálása nagy mértékben növelheti a biztonsági incidensek kivizsgálásához és enyhítéséhez szükséges időt.
+
+Az Automation-konfigurációk szervezeten belüli üzembe helyezéséhez használja az alább ismertetett Azure Policy "DeployIfNotExist" szabályzatokat a munkafolyamat-automatizálási eljárások létrehozásához és konfigurálásához.
+
+Ismerkedés a [munkafolyamat-automatizálási sablonokkal](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation).
+
+A szabályzatok megvalósítása:
+
+1. Az alábbi táblázatból válassza ki az alkalmazni kívánt szabályzatot:
+
+    |Cél  |Szabályzat  |Házirend-azonosító  |
+    |---------|---------|---------|
+    |Biztonsági riasztások munkafolyamat-automatizálása|[Azure Security Center-riasztásokat automatizáló munkafolyamat üzembe helyezése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff1525828-9a90-4fcf-be48-268cdd02361e)|f1525828-9a90-4fcf-be48-268cdd02361e|
+    |Munkafolyamat-automatizálás biztonsági javaslatokhoz|[Azure Security Center-javaslatokat automatizáló munkafolyamat üzembe helyezése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-2475-4850-afd6-43795f3492ef)|73d6ab6c-2475-4850-afd6-43795f3492ef|
+    ||||
+
+    > [!TIP]
+    > Ezeket a Azure Policy keresésével is megtalálhatja:
+    > 1. Nyissa meg Azure Policy.
+    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="Munkafolyamat-automatizálások listája&quot;:::
+
+    Ebből a lapról új Automation-szabályokat hozhat létre, valamint engedélyezheti, letilthatja vagy törölheti a meglévőket.
+
+1. Új munkafolyamat definiálásához kattintson a **munkafolyamat-automatizálás hozzáadása** lehetőségre. 
+
+    Megjelenik egy ablaktábla az új automatizálási beállításokkal. Itt megadhatja a következőket:
+    1. Az automatizálás neve és leírása.
+    1. Az automatikus munkafolyamatot kezdeményező eseményindítók. Előfordulhat például, hogy azt szeretné, hogy a logikai alkalmazás akkor fusson, amikor az &quot;SQL&quot; kifejezést tartalmazó biztonsági riasztást hoz létre.
+
+        > [!NOTE]
+        > Ha az trigger olyan javaslat, amely &quot;alárendelt – ajánlásokat":::
+    > 2. A Azure Policy menüben válassza a **definíciók** lehetőséget, és keressen rájuk név alapján. 
+
+1. A megfelelő Azure Policy lapon válassza a **hozzárendelés** lehetőséget.
+    :::image type="content" source="./media/workflow-automation/export-policy-assign.png" alt-text="Munkafolyamat-automatizálások listája&quot;:::
+
+    Ebből a lapról új Automation-szabályokat hozhat létre, valamint engedélyezheti, letilthatja vagy törölheti a meglévőket.
+
+1. Új munkafolyamat definiálásához kattintson a **munkafolyamat-automatizálás hozzáadása** lehetőségre. 
+
+    Megjelenik egy ablaktábla az új automatizálási beállításokkal. Itt megadhatja a következőket:
+    1. Az automatizálás neve és leírása.
+    1. Az automatikus munkafolyamatot kezdeményező eseményindítók. Előfordulhat például, hogy azt szeretné, hogy a logikai alkalmazás akkor fusson, amikor az &quot;SQL&quot; kifejezést tartalmazó biztonsági riasztást hoz létre.
+
+        > [!NOTE]
+        > Ha az trigger olyan javaslat, amely &quot;alárendelt – ajánlásokat":::
+
+1. Nyissa meg az egyes lapokat, és adja meg a kívánt paramétereket:
+    1. Az **alapvető beállítások** lapon állítsa be a házirend hatókörét. A központosított felügyelet használatához rendelje hozzá a szabályzatot a munkafolyamat-automatizálási konfigurációt használó előfizetéseket tartalmazó felügyeleti csoporthoz. 
+    1. A **Parameters (paraméterek** ) lapon állítsa be az erőforráscsoport és az adattípus részleteit. 
+        > [!TIP]
+        > Minden paraméterhez tartozik egy elemleírás, amely ismerteti az Ön számára elérhető lehetőségeket.
+        >
+        > Azure Policy paraméterek lapja (1) hozzáférést biztosít a hasonló konfigurációs beállításokhoz, mint Security Center munkafolyamat-automatizálási lapja (2).
+        > :::image type="content" source="./media/workflow-automation/azure-policy-next-to-workflow-automation.png" alt-text="Munkafolyamat-automatizálások listája&quot;:::
+
+    Ebből a lapról új Automation-szabályokat hozhat létre, valamint engedélyezheti, letilthatja vagy törölheti a meglévőket.
+
+1. Új munkafolyamat definiálásához kattintson a **munkafolyamat-automatizálás hozzáadása** lehetőségre. 
+
+    Megjelenik egy ablaktábla az új automatizálási beállításokkal. Itt megadhatja a következőket:
+    1. Az automatizálás neve és leírása.
+    1. Az automatikus munkafolyamatot kezdeményező eseményindítók. Előfordulhat például, hogy azt szeretné, hogy a logikai alkalmazás akkor fusson, amikor az &quot;SQL&quot; kifejezést tartalmazó biztonsági riasztást hoz létre.
+
+        > [!NOTE]
+        > Ha az trigger olyan javaslat, amely &quot;alárendelt – ajánlásokat" lightbox="./media/workflow-automation/azure-policy-next-to-workflow-automation.png":::
+
+    1. Ha a hozzárendelést meglévő előfizetésekre szeretné alkalmazni, nyissa meg a **szervizelés** lapot, és válassza a Szervizelési feladat létrehozása lehetőséget.
+
+1. Tekintse át az összefoglalás lapot, és válassza a **Létrehozás** lehetőséget.
+
 
 ## <a name="data-types-schemas"></a>Adattípusok sémái
 
 A logikai alkalmazás-példánynak átadott biztonsági riasztások vagy javaslatok eseményeinek nyers esemény-sémáit a munkafolyamat- [automatizálási adattípusok sémái](https://aka.ms/ASCAutomationSchemas)között tekintheti meg. Ez olyan esetekben lehet hasznos, amikor nem használja a fent említett Security Center beépített logikai alkalmazás-összekötőit, de ehelyett a Logic app általános HTTP-összekötőjét használja – az Event JSON-sémával manuálisan elemezheti azt, ahogy jónak látja.
+
+
+## <a name="faq-for-workflow-automation"></a>A munkafolyamatok automatizálásával kapcsolatos gyakori kérdések
+
+### <a name="does-workflow-automation-support-any-business-continuity-or-disaster-recovery-bcdr-scenarios"></a>Támogatja a Munkafolyamat-automatizálás az üzletmenet folytonosságát vagy a vész-helyreállítási (BCDR) forgatókönyveket?
+
+Ha a környezetet olyan BCDR-forgatókönyvek esetében készíti elő, amelyekben a cél erőforrás leállás vagy más katasztrófa esetén fordul elő, akkor a szervezet felelőssége az adatvesztés megelőzése azáltal, hogy az Azure Event Hubs, Log Analytics munkaterület és a Logic app irányelvek alapján hozza létre a biztonsági mentéseket.
+
+Javasoljuk, hogy minden aktív automatizáláshoz hozzon létre egy azonos (letiltott) automatizálást, és tárolja azt egy másik helyen. Leállás esetén engedélyezheti ezeket a biztonsági mentési automatizálásokat, és megtarthatja a normál működést.
+
+További információ az [üzletmenet folytonosságáról és a Azure Logic apps vész-helyreállításáról](../logic-apps/business-continuity-disaster-recovery-guidance.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

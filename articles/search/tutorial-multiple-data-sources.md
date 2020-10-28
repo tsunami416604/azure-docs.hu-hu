@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c964e3c02148c461c601eab4bc5bfb0abb4ac052
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 6a1a7e19e598980b21ee6c41f6984de38d6a6f2b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013304"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791613"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Oktatóanyag: több adatforrásból származó index a .NET SDK használatával
 
@@ -66,11 +66,11 @@ Ez a példa két kisebb adathalmazt használ, amelyek a hét kitalált szállod�
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd navigáljon a Azure Cosmos db-fiók áttekintő oldalára.
 
-1. Válassza a **adatkezelő** lehetőséget, majd válassza az **új adatbázis**lehetőséget.
+1. Válassza a **adatkezelő** lehetőséget, majd válassza az **új adatbázis** lehetőséget.
 
    :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-newdb.png" alt-text="Új adatbázis létrehozása" border="false":::
 
-1. Adja meg a **Hotel-Rooms-db**nevet. Fogadja el az alapértelmezett értékeket a többi beállításhoz.
+1. Adja meg a **Hotel-Rooms-db** nevet. Fogadja el az alapértelmezett értékeket a többi beállításhoz.
 
    :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-dbname.png" alt-text="Új adatbázis létrehozása" border="false":::
 
@@ -78,7 +78,7 @@ Ez a példa két kisebb adathalmazt használ, amelyek a hét kitalált szállod�
 
    :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-add-container.png" alt-text="Új adatbázis létrehozása" border="false":::
 
-1. Válassza a **hotelek**területen található **elemek** elemet, majd kattintson az **elem feltöltése** gombra a parancssorban. Keresse meg, majd válassza ki a **cosmosdb/HotelsDataSubset_CosmosDb.js** fájlt a Project mappában.
+1. Válassza a **hotelek** területen található **elemek** elemet, majd kattintson az **elem feltöltése** gombra a parancssorban. Keresse meg, majd válassza ki a **cosmosdb/HotelsDataSubset_CosmosDb.js** fájlt a Project mappában.
 
    :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-upload.png" alt-text="Új adatbázis létrehozása" border="false":::
 
@@ -88,17 +88,17 @@ Ez a példa két kisebb adathalmazt használ, amelyek a hét kitalált szállod�
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), navigáljon az Azure Storage-fiókjához, kattintson a **Blobok**elemre, majd a **+ tároló**elemre.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), navigáljon az Azure Storage-fiókjához, kattintson a **Blobok** elemre, majd a **+ tároló** elemre.
 
 1. [Hozzon létre egy](../storage/blobs/storage-quickstart-blobs-portal.md) " **Hotel-Rooms** " nevű BLOB-tárolót a minta szállodai szoba JSON-fájljainak tárolásához. Megadhatja a nyilvános hozzáférési szintet bármelyik érvényes értékéhez.
 
    :::image type="content" source="media/tutorial-multiple-data-sources/blob-add-container.png" alt-text="Új adatbázis létrehozása" border="false":::
 
-1. A tároló létrehozása után nyissa meg, majd válassza a parancssáv **feltöltés** elemét. Navigáljon a minta fájlokat tartalmazó mappához. Jelölje ki az összeset, majd kattintson a **feltöltés**elemre.
+1. A tároló létrehozása után nyissa meg, majd válassza a parancssáv **feltöltés** elemét. Navigáljon a minta fájlokat tartalmazó mappához. Jelölje ki az összeset, majd kattintson a **feltöltés** elemre.
 
    :::image type="content" source="media/tutorial-multiple-data-sources/blob-upload.png" alt-text="Új adatbázis létrehozása" border="false":::
 
-1. Másolja a Storage-fiók nevét és egy kapcsolati karakterláncot a **hozzáférési kulcsok** lapról a Jegyzettömbbe. Egy későbbi lépésben aappsettings.jsértékeit is ** meg** kell adni.
+1. Másolja a Storage-fiók nevét és egy kapcsolati karakterláncot a **hozzáférési kulcsok** lapról a Jegyzettömbbe. Egy későbbi lépésben aappsettings.jsértékeit is **meg** kell adni.
 
 ### <a name="azure-cognitive-search"></a>Azure Cognitive Search
 
@@ -110,15 +110,15 @@ A keresési szolgáltatás hitelesítéséhez szüksége lesz a szolgáltatás U
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-1. A **Beállítások**  >  **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+1. A **Beállítások**  >  **kulcsaiban** kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="Új adatbázis létrehozása" border="false":::
+   :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="Új adatbázis létrehozása" border="false":::
 
 Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
 ## <a name="2---set-up-your-environment"></a>2 – a környezet beállítása
 
-1. Indítsa el a Visual studiót, és az **eszközök** menüben válassza a **NuGet csomagkezelő** elemet, majd a **megoldáshoz tartozó NuGet-csomagokat..**. lehetőséget. 
+1. Indítsa el a Visual studiót, és az **eszközök** menüben válassza a **NuGet csomagkezelő** elemet, majd a **megoldáshoz tartozó NuGet-csomagokat..** . lehetőséget. 
 
 1. A **Tallózás** lapon keresse meg és telepítse **Azure.Search.Documents** (11,0-es vagy újabb verzió). A telepítés befejezéséhez kattintson a további párbeszédablakok lehetőségre.
 
@@ -126,7 +126,7 @@ A keresési szolgáltatás hitelesítéséhez szüksége lesz a szolgáltatás U
 
 1. Keressen rá a **Microsoft.Extensions.Configszülő** , és **Microsoft.Extensions.Configuration.Jsa** NuGet-csomagokra, és telepítse azokat is.
 
-1. Nyissa meg a megoldás fájljának **/v11/AzureSearchMultipleDataSources.SLN**.
+1. Nyissa meg a megoldás fájljának **/v11/AzureSearchMultipleDataSources.SLN** .
 
 1. A Megoldáskezelőban szerkessze a fájl **appsettings.jsját** a kapcsolódási adatok hozzáadásához.  
 
@@ -240,7 +240,7 @@ private static async Task CreateAndRunCosmosDbIndexerAsync(string indexName, Sea
     await indexerClient.CreateOrUpdateDataSourceConnectionAsync(cosmosDbDataSource);
 ```
 
-Az adatforrás létrehozása után a program beállítja a **Hotel-Rooms-Cosmos-indexelő**nevű Azure Cosmos db indexelő.
+Az adatforrás létrehozása után a program beállítja a **Hotel-Rooms-Cosmos-indexelő** nevű Azure Cosmos db indexelő.
 
 A program frissíti az azonos nevű meglévő indexelő adatokat, és felülírja a meglévő indexelő a fenti kód tartalmával. Az alaphelyzetbe állítási és futtatási műveleteket is magában foglalja abban az esetben, ha egynél többször szeretné futtatni ezt a példát.
 
@@ -306,7 +306,7 @@ private static async Task CreateAndRunBlobIndexerAsync(string indexName, SearchI
     await indexerClient.CreateOrUpdateDataSourceConnectionAsync(blobDataSource);
 ```
 
-Az adatforrás létrehozása után a program egy **Hotel-Rooms-blob-indexelő**nevű blob-indexet állít be az alább látható módon.
+Az adatforrás létrehozása után a program egy **Hotel-Rooms-blob-indexelő** nevű blob-indexet állít be az alább látható módon.
 
 A JSON-Blobok egy nevű kulcs mezőt tartalmaznak a **`Id`** helyett **`HotelId`** . A kód a osztály használatával közli `FieldMapping` az indexelő, hogy a **`Id`** mező értékét az **`HotelId`** indexben lévő dokumentum kulcsára irányítsa.
 
@@ -381,7 +381,7 @@ A mintakód ellenőrzi a meglévő objektumokat, és törli vagy frissíti őket
 
 A portál segítségével indexeket, indexelő fájlokat és adatforrásokat is törölhet.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 

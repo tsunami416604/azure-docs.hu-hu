@@ -7,12 +7,12 @@ ms.service: sql-db-mi
 ms.subservice: service
 ms.topic: conceptual
 ms.date: 09/13/2020
-ms.openlocfilehash: a273b9aaae083bb4566d289e9680b50c686d4e9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0a10744d2b48fa620b48b731144222199f711c7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91343768"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792531"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-sql-database--sql-managed-instance"></a>A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ változásának megismerése Azure SQL Database & SQL felügyelt példányon
 
@@ -79,4 +79,4 @@ Mivel ez a frissítés ügyféloldali módosítás, ha az ügyfél a másodpéld
 Mivel ez a konfiguráció ügyféloldali, az információk nem érhetők el a kiszolgálói oldalon.
 
 ### <a name="what-if-i-have-further-questions"></a>Mi a teendő, ha további kérdéseim vannak?
-Ha támogatási csomaggal rendelkezik, és technikai segítségre van szüksége, hozzon létre Azure-támogatási kérést, és tekintse meg [Az Azure-támogatási kérelem létrehozása](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)című témakört.
+Ha támogatási csomaggal rendelkezik, és technikai segítségre van szüksége, hozzon létre Azure-támogatási kérést, és tekintse meg [Az Azure-támogatási kérelem létrehozása](../../azure-portal/supportability/how-to-create-azure-support-request.md)című témakört.

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 0b381e2dbdbfd30d10f37637b30bcdfbab8ed99a
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: eddb0c8339069025f0742e9bcbc371efbef094ee
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331940"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793330"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Új bérlők kiépítése és katalógusa egy SaaS-alkalmazásban többvállalatos több-bérlős Azure SQL Database használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -109,7 +109,7 @@ Ebben az oktatóanyagban a bérlői kiépítési szkriptek az alábbi forgatók�
 - Bérlő kiépítés egy meglévő, más bérlők által megosztott adatbázisba.
 - Bérlő kiépítés a saját adatbázisába.
 
-A bérlői adatai ezután inicializálva és regisztrálva vannak a katalógus szegmensének térképén. A minta alkalmazásban a több bérlőt tartalmazó adatbázisok általános nevet kapnak, például *tenants1* vagy *tenants2*. Az egyetlen bérlőt tartalmazó adatbázisok a bérlő nevét kapják meg. A mintában használt egyedi elnevezési konvenciók nem kritikus részét képezik a mintának, mivel a katalógus használata lehetővé teszi a nevek hozzárendelését az adatbázishoz.
+A bérlői adatai ezután inicializálva és regisztrálva vannak a katalógus szegmensének térképén. A minta alkalmazásban a több bérlőt tartalmazó adatbázisok általános nevet kapnak, például *tenants1* vagy *tenants2* . Az egyetlen bérlőt tartalmazó adatbázisok a bérlő nevét kapják meg. A mintában használt egyedi elnevezési konvenciók nem kritikus részét képezik a mintának, mivel a katalógus használata lehetővé teszi a nevek hozzárendelését az adatbázishoz.
 
 <a name="goto_1_tutorial"></a>
 
@@ -127,9 +127,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
 
-- Az Azure PowerShell telepítve van. Részletes információk: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
+- Az Azure PowerShell telepítve van. Részletes információk: [Ismerkedés az Azure PowerShell-lel](/powershell/azure/get-started-azureps)
 
-- A Wingtip tickets SaaS több-bérlős adatbázis-alkalmazás telepítve van. Ha kevesebb mint öt perc alatt kíván üzembe helyezni, tekintse meg [a Wingtip tickets SaaS több-bérlős adatbázis-alkalmazás üzembe helyezése és megismerése](../../sql-database/saas-multitenantdb-get-started-deploy.md) című részt
+- A Wingtip tickets SaaS több-bérlős adatbázis-alkalmazás telepítve van. Ha kevesebb mint öt perc alatt kíván üzembe helyezni, tekintse meg [a Wingtip tickets SaaS több-bérlős adatbázis-alkalmazás üzembe helyezése és megismerése](./saas-multitenantdb-get-started-deploy.md) című részt
 
 - A Wingtip parancsfájljainak és forráskódjának beolvasása:
     - A Wingtip jegyek SaaS több-bérlős adatbázis-parancsfájljai és az alkalmazás forráskódja a [WingtipTicketsSaaS-MultitenantDB GitHub-](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) tárházban érhető el.
@@ -143,12 +143,12 @@ Ebben a szakaszban a PowerShell-parancsfájlok által végzett kiépítés főbb
 
 A következő a kiépítési munkafolyamat legfontosabb elemei:
 
-- **Az új bérlői kulcs kiszámítása**: a rendszer egy kivonatoló függvényt használ a bérlői kulcs létrehozásához a bérlő nevéből.
-- **Ellenőrizze, hogy a bérlői kulcs már létezik**-e: a katalógus be van jelölve, hogy a kulcs még ne legyen regisztrálva.
-- **Bérlő inicializálása az alapértelmezett bérlői adatbázisban**: a bérlői adatbázis frissítve lett az új bérlői adatok hozzáadására.
-- **Bérlő regisztrálása a katalógusban**: az új bérlői kulcs és a meglévő tenants1-adatbázis közötti leképezés hozzá lesz adva a katalógushoz.
-- **Adja hozzá a bérlő nevét egy katalógus-kiterjesztési táblához**: a rendszer hozzáadja a helyszín nevét a katalógus bérlők táblájához.  Ez a Hozzáadás azt mutatja be, hogyan terjeszthető ki a katalógus-adatbázis további alkalmazásspecifikus adatok támogatásához.
-- **Nyissa meg az Events (események) lapot az új bérlő számára**: megnyílik a *Bushwillow blues* Events oldal a böngészőben.
+- **Az új bérlői kulcs kiszámítása** : a rendszer egy kivonatoló függvényt használ a bérlői kulcs létrehozásához a bérlő nevéből.
+- **Ellenőrizze, hogy a bérlői kulcs már létezik** -e: a katalógus be van jelölve, hogy a kulcs még ne legyen regisztrálva.
+- **Bérlő inicializálása az alapértelmezett bérlői adatbázisban** : a bérlői adatbázis frissítve lett az új bérlői adatok hozzáadására.
+- **Bérlő regisztrálása a katalógusban** : az új bérlői kulcs és a meglévő tenants1-adatbázis közötti leképezés hozzá lesz adva a katalógushoz.
+- **Adja hozzá a bérlő nevét egy katalógus-kiterjesztési táblához** : a rendszer hozzáadja a helyszín nevét a katalógus bérlők táblájához.  Ez a Hozzáadás azt mutatja be, hogyan terjeszthető ki a katalógus-adatbázis további alkalmazásspecifikus adatok támogatásához.
+- **Nyissa meg az Events (események) lapot az új bérlő számára** : megnyílik a *Bushwillow blues* Events oldal a böngészőben.
 
    ![Képernyőkép, amely az új bérlő eseményeinek oldalát jeleníti meg.](./media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
 
@@ -156,24 +156,24 @@ A következő a kiépítési munkafolyamat legfontosabb elemei:
 
 Annak megismeréséhez, hogy a Wingtip alkalmazás hogyan valósítja meg az új bérlők üzembe helyezését egy megosztott adatbázisban, adjon hozzá egy töréspontot és egy lépést a munkafolyamaton keresztül:
 
-1. A *POWERSHELL ISE*-ben nyissa meg a... \\ A Learning \\ -modulok ProvisionTenants \\ *Demo-ProvisionTenants.ps1* , és a következő paramétereket kell megadni:
-   - **$TenantName**  =  **Bushwillow blues**, egy új helyszín neve.
-   - **$VenueType**  =  **blues**, az egyik előre definiált helyszín típusa: blues, ClassicalMusic, Dance, jazz, judo, Motorsport, többcélú, Opera, rockzene, Soccer (kisbetűs, nincs szóköz).
-   - **$DemoScenario**  =  **1**. a bérlők kiépítése egy megosztott adatbázisban más bérlők használatával.
+1. A *POWERSHELL ISE* -ben nyissa meg a... \\ A Learning \\ -modulok ProvisionTenants \\ *Demo-ProvisionTenants.ps1* , és a következő paramétereket kell megadni:
+   - **$TenantName**  =  **Bushwillow blues** , egy új helyszín neve.
+   - **$VenueType**  =  **blues** , az egyik előre definiált helyszín típusa: blues, ClassicalMusic, Dance, jazz, judo, Motorsport, többcélú, Opera, rockzene, Soccer (kisbetűs, nincs szóköz).
+   - **$DemoScenario**  =  **1** . a bérlők kiépítése egy megosztott adatbázisban más bérlők használatával.
 
-2. Adjon hozzá egy töréspontot úgy, hogy a kurzort bárhová helyezi a 38. sorban, a *New-bérlőt*tartalmazó sorban, majd nyomja le az **F9**billentyűt.
+2. Adjon hozzá egy töréspontot úgy, hogy a kurzort bárhová helyezi a 38. sorban, a *New-bérlőt* tartalmazó sorban, majd nyomja le az **F9** billentyűt.
 
    ![Képernyőkép, amely kiemeli az új bérlőt tartalmazó sort.](./media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
 
-3. Futtassa a szkriptet az **F5**billentyű lenyomásával.
+3. Futtassa a szkriptet az **F5** billentyű lenyomásával.
 
 4. Miután a szkript végrehajtása leáll a törésponton, nyomja le az **F11** billentyűt a kód beléptetéséhez.
 
    ![A képernyőképen a hibakeresési menüt tartalmazó Windows PowerShell integrált parancsprogram-kezelési környezet látható, majd válassza ki a kiválasztott elemet.](./media/saas-multitenantdb-provision-and-catalog/debug.png)
 
-5. A szkript végrehajtásának nyomon követéséhez használja a **Debug** menüpontot, az **F10** és az **F11**billentyűt a függvények meghívásához.
+5. A szkript végrehajtásának nyomon követéséhez használja a **Debug** menüpontot, az **F10** és az **F11** billentyűt a függvények meghívásához.
 
-A PowerShell-parancsfájlok hibakeresésével kapcsolatos további információkért lásd: [Tippek a PowerShell-parancsfájlok használatához és hibakereséséhez](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
+A PowerShell-parancsfájlok hibakeresésével kapcsolatos további információkért lásd: [Tippek a PowerShell-parancsfájlok használatához és hibakereséséhez](/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
 
 ## <a name="provision-a-tenant-in-its-own-database"></a>Bérlő kiépítése a *saját* adatbázisában
 
@@ -181,14 +181,14 @@ A PowerShell-parancsfájlok hibakeresésével kapcsolatos további információk
 
 Az alábbiakban a parancsfájl nyomkövetésének lépésein áthaladó munkafolyamat legfontosabb elemei láthatók:
 
-- **Az új bérlői kulcs kiszámítása**: a rendszer egy kivonatoló függvényt használ a bérlői kulcs létrehozásához a bérlő nevéből.
-- **Ellenőrizze, hogy a bérlői kulcs már létezik**-e: a katalógus be van jelölve, hogy a kulcs még ne legyen regisztrálva.
-- **Új bérlői adatbázis létrehozása**: az adatbázist a *Basetenantdb* -adatbázis Resource Manager-sablonnal történő másolásával hozza létre a rendszer.  Az új adatbázis neve a bérlő neve alapján történik.
-- **Adatbázis hozzáadása a katalógushoz**: az új bérlői adatbázis a katalógusban szegmensként van regisztrálva.
-- **Bérlő inicializálása az alapértelmezett bérlői adatbázisban**: a bérlői adatbázis frissítve lett az új bérlői adatok hozzáadására.
-- **Bérlő regisztrálása a katalógusban**: az új bérlői kulcs és a *sequoiasoccer* -adatbázis közötti leképezés hozzá lesz adva a katalógushoz.
-- A **bérlő neve hozzá van adva a katalógushoz**: a rendszer hozzáadja a helyszín nevét a katalógus bérlői bővítmény táblájához.
-- **Nyissa meg az Events (események) lapot az új bérlő számára**: a *Sequoia Soccer* Events oldal megnyílik a böngészőben.
+- **Az új bérlői kulcs kiszámítása** : a rendszer egy kivonatoló függvényt használ a bérlői kulcs létrehozásához a bérlő nevéből.
+- **Ellenőrizze, hogy a bérlői kulcs már létezik** -e: a katalógus be van jelölve, hogy a kulcs még ne legyen regisztrálva.
+- **Új bérlői adatbázis létrehozása** : az adatbázist a *Basetenantdb* -adatbázis Resource Manager-sablonnal történő másolásával hozza létre a rendszer.  Az új adatbázis neve a bérlő neve alapján történik.
+- **Adatbázis hozzáadása a katalógushoz** : az új bérlői adatbázis a katalógusban szegmensként van regisztrálva.
+- **Bérlő inicializálása az alapértelmezett bérlői adatbázisban** : a bérlői adatbázis frissítve lett az új bérlői adatok hozzáadására.
+- **Bérlő regisztrálása a katalógusban** : az új bérlői kulcs és a *sequoiasoccer* -adatbázis közötti leképezés hozzá lesz adva a katalógushoz.
+- A **bérlő neve hozzá van adva a katalógushoz** : a rendszer hozzáadja a helyszín nevét a katalógus bérlői bővítmény táblájához.
+- **Nyissa meg az Events (események) lapot az új bérlő számára** : a *Sequoia Soccer* Events oldal megnyílik a böngészőben.
 
    ![események](./media/saas-multitenantdb-provision-and-catalog/sequoiasoccer.png)
 
@@ -197,15 +197,15 @@ Az alábbiakban a parancsfájl nyomkövetésének lépésein áthaladó munkafol
 Most járjon végig a parancsfájlon, amikor a bérlőt a saját adatbázisában hozza létre:
 
 1. Továbbra is.. \\ . A tanulási modulok \\ ProvisionTenants \\ *Demo-ProvisionTenants.ps1* a következő paramétereket adja meg:
-   - **$TenantName**  =  **Sequoia Soccer**, egy új helyszín neve.
-   - **$VenueType**  =  **futball**, az egyik előre definiált helyszín típusa: blues, ClassicalMusic, Dance, jazz, judo, Motorsport, többcélú, Opera, rockzene, Soccer (kisbetű, nem szóköz).
-   - **$DemoScenario**  =  **2**. a bérlő kiépítése a saját adatbázisba.
+   - **$TenantName**  =  **Sequoia Soccer** , egy új helyszín neve.
+   - **$VenueType**  =  **futball** , az egyik előre definiált helyszín típusa: blues, ClassicalMusic, Dance, jazz, judo, Motorsport, többcélú, Opera, rockzene, Soccer (kisbetű, nem szóköz).
+   - **$DemoScenario**  =  **2** . a bérlő kiépítése a saját adatbázisba.
 
-2. Vegyen fel egy új töréspontot úgy, hogy a kurzort bárhová helyezi a 57. sorban, a következő sorral: * & &nbsp; $PSScriptRoot \new-tenantanddatabase '*, és nyomja le az **F9**billentyűt.
+2. Vegyen fel egy új töréspontot úgy, hogy a kurzort bárhová helyezi a 57. sorban, a következő sorral: *& &nbsp; $PSScriptRoot \new-tenantanddatabase '* , és nyomja le az **F9** billentyűt.
 
    ![töréspont](./media/saas-multitenantdb-provision-and-catalog/breakpoint2.png)
 
-3. Futtassa a szkriptet az **F5**billentyű lenyomásával.
+3. Futtassa a szkriptet az **F5** billentyű lenyomásával.
 
 4. Miután a szkript végrehajtása leáll a törésponton, nyomja le az **F11** billentyűt a kód beírásához.  A végrehajtás nyomon követéséhez használja az **F10** és az **F11** billentyűt, és lépjen be a függvényekbe.
 
@@ -213,14 +213,14 @@ Most járjon végig a parancsfájlon, amikor a bérlőt a saját adatbázisában
 
 Ez a gyakorlat 17 bérlős köteget foglal le. Javasoljuk, hogy a bérlők számára kiépítse ezt a köteget, mielőtt más Wingtip-jegyeket is megkezdenén, hogy több adatbázis működjön együtt a szolgáltatással.
 
-1. A *POWERSHELL ISE*-ben nyissa meg a... \\ A Learning \\ -modulok ProvisionTenants \\ *Demo-ProvisionTenants.ps1* , és a *$DemoScenario* paramétert a 4 értékre kell módosítani:
-   - **$DemoScenario**  =  **4**. a bérlők kötegének kiépítése egy megosztott adatbázisba.
+1. A *POWERSHELL ISE* -ben nyissa meg a... \\ A Learning \\ -modulok ProvisionTenants \\ *Demo-ProvisionTenants.ps1* , és a *$DemoScenario* paramétert a 4 értékre kell módosítani:
+   - **$DemoScenario**  =  **4** . a bérlők kötegének kiépítése egy megosztott adatbázisba.
 
 2. Nyomja le az **F5** billentyűt, és futtassa a szkriptet.
 
 ### <a name="verify-the-deployed-set-of-tenants"></a>Bérlők telepített készletének ellenőrzése
 
-Ebben a szakaszban egy megosztott adatbázisban üzembe helyezett és a saját adatbázisaiba helyezett bérlők együttese szerepel. A Azure Portal a létrehozott adatbázisok vizsgálatára is használható. A [Azure Portal](https://portal.azure.com)nyissa meg a **tenants1-MT- \<USER\> ** Servert az SQL-kiszolgálók listájának tallózásával.  Az **SQL-adatbázisok** listájának tartalmaznia kell a megosztott **tenants1** -adatbázist és a saját adatbázisában lévő bérlők adatbázisait:
+Ebben a szakaszban egy megosztott adatbázisban üzembe helyezett és a saját adatbázisaiba helyezett bérlők együttese szerepel. A Azure Portal a létrehozott adatbázisok vizsgálatára is használható. A [Azure Portal](https://portal.azure.com)nyissa meg a **tenants1-MT- \<USER\>** Servert az SQL-kiszolgálók listájának tallózásával.  Az **SQL-adatbázisok** listájának tartalmaznia kell a megosztott **tenants1** -adatbázist és a saját adatbázisában lévő bérlők adatbázisait:
 
    ![adatbázislista](./media/saas-multitenantdb-provision-and-catalog/Databases.png)
 
@@ -237,13 +237,13 @@ A bérlők és az azokhoz tartozó adatbázisok teljes listája elérhető a kat
 - A bérlő nevét a bérlők táblában tárolja a rendszer.
 - Az adatbázis nevét a rendszer a szegmens felügyeleti táblázatokban tárolja.
 
-1. A SQL Server Management Studio (SSMS) alkalmazásban kapcsolódjon a bérlők kiszolgálójához a **Catalog-Mt. \<USER\> címen. database.windows.net**, bejelentkezés = **Developer**és Password = **P \@ ssword1**
+1. A SQL Server Management Studio (SSMS) alkalmazásban kapcsolódjon a bérlők kiszolgálójához a **Catalog-Mt. \<USER\> címen. database.windows.net** , bejelentkezés = **Developer** és Password = **P \@ ssword1**
 
     ![SSMS-kapcsolatok párbeszédpanel](./media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 
 2. A SSMS Object Explorer tallózással keresse meg a nézeteket a *tenantcatalog* adatbázisban.
 
-3. Kattintson a jobb gombbal a nézet *TenantsExtended* , és válassza a **legfelső 1000-sorok kiválasztása**lehetőséget. Jegyezze fel a bérlő neve és az adatbázis közötti leképezést a különböző bérlők számára.
+3. Kattintson a jobb gombbal a nézet *TenantsExtended* , és válassza a **legfelső 1000-sorok kiválasztása** lehetőséget. Jegyezze fel a bérlő neve és az adatbázis közötti leképezést a különböző bérlők számára.
 
     ![ExtendedTenants nézet a SSMS](./media/saas-multitenantdb-provision-and-catalog/extendedtenantsview.png)
 
@@ -263,12 +263,12 @@ Az ilyen típusú automatizált szolgáltatás egyszerű vagy összetett lehet. 
 
 ## <a name="additional-resources"></a>További források
 
-<!-- - Additional [tutorials that build upon the Wingtip SaaS application](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)-->
+<!-- - Additional [tutorials that build upon the Wingtip SaaS application](./saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)-->
 - [Elastic Database-ügyfélkódtár](elastic-database-client-library.md)
-- [Parancsfájlok hibakeresése Windows PowerShell integrált parancsprogram-kezelési környezet](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)
+- [Parancsfájlok hibakeresése Windows PowerShell integrált parancsprogram-kezelési környezet](/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
@@ -277,5 +277,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * További bérlők kötegelt kiépítése
 > * A bérlők kiépítési és a katalógusba való regisztrálásának részletei
 
-Próbálja ki a [Teljesítményfigyelés oktatóanyagot](../../sql-database/saas-multitenantdb-performance-monitoring.md).
-
+Próbálja ki a [Teljesítményfigyelés oktatóanyagot](./saas-multitenantdb-performance-monitoring.md).

@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/16/2020
-ms.openlocfilehash: 41760eb91d2a8406d4deb52cd8e247731239e2b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d24143a440c0d30c3abcd6eb5efd454033b8f71c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309863"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791477"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Önálló adatbázis erőforrásainak skálázása az Azure SQL Database-ben
 
 Ez a cikk azt ismerteti, hogyan méretezheti a számítási és a tárolási erőforrásokat a kiépített számítási szinten lévő Azure SQL Database számára. Azt is megteheti, hogy a [kiszolgáló nélküli számítási](serverless-tier-overview.md) csomag számítási automatikus skálázást és másodpercenkénti számlázást biztosít a felhasznált számítási feladatokhoz.
 
-A virtuális mag vagy a DTU számának kezdeti kiválasztását követően a [Azure Portal](single-database-manage.md#the-azure-portal), a [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql#examples-1), a [PowerShell](/powershell/module/az.sql/set-azsqldatabase), az [Azure CLI](/cli/azure/sql/db#az-sql-db-update)vagy a [REST API](https://docs.microsoft.com/rest/api/sql/databases/update)használatával dinamikusan méretezheti az önálló adatbázisokat a tényleges tapasztalatok alapján.
+A virtuális mag vagy a DTU számának kezdeti kiválasztását követően a [Azure Portal](single-database-manage.md#the-azure-portal), a [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), a [PowerShell](/powershell/module/az.sql/set-azsqldatabase), az [Azure CLI](/cli/azure/sql/db#az-sql-db-update)vagy a [REST API](/rest/api/sql/databases/update)használatával dinamikusan méretezheti az önálló adatbázisokat a tényleges tapasztalatok alapján.
 
 A következő videó bemutatja, hogyan lehet dinamikusan módosítani a szolgáltatási szintet és a számítási méretet, hogy az elérhető DTU egyetlen adatbázishoz lehessen emelni.
 
@@ -58,7 +58,7 @@ A szolgáltatási réteg módosításának becsült késése, az önálló adatb
 |**Rugalmas skálázás**|N.A.|N.A.|N.A.|&bull;&nbsp;Állandó időbeli késés a felhasznált területtől függetlenül</br>&bull;&nbsp;Általában kevesebb, mint 2 perc|
 
 > [!NOTE]
-> Emellett a standard (S2-S12) és a általános célú-adatbázisok esetében a rugalmas készletből vagy a rugalmas készletekből származó adatbázisok áthelyezésének késése az adatbázis méretétől függ, ha az adatbázis a prémium szintű fájlmegosztás ([PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)) tárolót használja.
+> Emellett a standard (S2-S12) és a általános célú-adatbázisok esetében a rugalmas készletből vagy a rugalmas készletekből származó adatbázisok áthelyezésének késése az adatbázis méretétől függ, ha az adatbázis a prémium szintű fájlmegosztás ([PFS](../../storage/files/storage-files-introduction.md)) tárolót használja.
 >
 > Annak megállapításához, hogy egy adatbázis PFS-tárolót használ-e, hajtsa végre a következő lekérdezést az adatbázis környezetében. Ha a AccountType oszlop értéke `PremiumFileStorage` vagy `PremiumFileStorage-ZRS` , az adatbázis PFS-tárolót használ.
  
@@ -72,7 +72,7 @@ WHERE s.type_desc IN ('ROWS', 'LOG');
 ```
 
 > [!TIP]
-> A folyamatban lévő műveletek figyeléséhez tekintse meg a következő témakört: [műveletek kezelése az SQL REST API használatával](https://docs.microsoft.com/rest/api/sql/operations/list), műveletek [kezelése a CLI](/cli/azure/sql/db/op)használatával, a műveletek [FIGYELÉSe a T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) használatával és a következő két PowerShell-paranccsal: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) és [stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> A folyamatban lévő műveletek figyeléséhez tekintse meg a következő témakört: [műveletek kezelése az SQL REST API használatával](/rest/api/sql/operations/list), műveletek [kezelése a CLI](/cli/azure/sql/db/op)használatával, a műveletek [FIGYELÉSe a T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) használatával és a következő két PowerShell-paranccsal: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) és [stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
 ## <a name="cancelling-changes"></a>Módosítások megszakítása
 
@@ -84,7 +84,7 @@ Az adatbázis-Áttekintés panelen navigáljon az **értesítésekhez** , és ka
 
 ![Folyamatban lévő művelet](./media/single-database-scale/ongoing-operations.png)
 
-Ezután kattintson a **művelet megszakítása**feliratú gombra.
+Ezután kattintson a **művelet megszakítása** feliratú gombra.
 
 ![Folyamatban lévő művelet megszakítása](./media/single-database-scale/cancel-ongoing-operation.png)
 
@@ -122,7 +122,7 @@ A számlázás minden órában megtörténik, amely az adott órában alkalmazot
 ### <a name="vcore-based-purchasing-model"></a>Virtuálismag-alapú vásárlási modell
 
 - A tárterület az adattároló maximális mérete 1 GB-os növekmények használatával állítható be. A minimálisan konfigurálható adattárolás 1 GB. Tekintse meg az erőforrás-korlátozási dokumentációs lapokat az [önálló adatbázisokhoz](resource-limits-vcore-single-databases.md) és a [rugalmas készletekhez](resource-limits-vcore-elastic-pools.md) az adattárolók maximális méretére az egyes szolgáltatási célkitűzéseknél
-- Az önálló adatbázisok adattárolása a maximális méret növelésével vagy csökkentésével végezhető el a [Azure Portal](https://portal.azure.com), a [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql#examples-1), a [PowerShell](/powershell/module/az.sql/set-azsqldatabase), az [Azure CLI](/cli/azure/sql/db#az-sql-db-update)vagy a [REST API](https://docs.microsoft.com/rest/api/sql/databases/update)használatával. Ha a maximális méret értéke bájtban van megadva, akkor az 1 GB-nál többnek kell lennie (1073741824 bájt).
+- Az önálló adatbázisok adattárolása a maximális méret növelésével vagy csökkentésével végezhető el a [Azure Portal](https://portal.azure.com), a [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), a [PowerShell](/powershell/module/az.sql/set-azsqldatabase), az [Azure CLI](/cli/azure/sql/db#az-sql-db-update)vagy a [REST API](/rest/api/sql/databases/update)használatával. Ha a maximális méret értéke bájtban van megadva, akkor az 1 GB-nál többnek kell lennie (1073741824 bájt).
 - Az adatbázisok adatfájljaiban tárolható adatmennyiséget a beállított adattároló maximális mérete korlátozza. A tárterületen kívül a Azure SQL Database automatikusan 30%-kal több tárterületet foglal le a tranzakciónaplóhoz való használathoz.
 - A Azure SQL Database automatikusan 32 GB-ot foglal le virtuális mag az `tempdb` adatbázishoz. `tempdb` a minden szolgáltatási szinten a helyi SSD-tárolóban található.
 - Egy önálló adatbázis vagy egy rugalmas készlet tárterületének díja az adattárolási és a tranzakciónapló-tárolók összege, a szolgáltatási szint tárolási egységének díjszabása. A díját a díj `tempdb` tartalmazza. A tárolási díjszabással kapcsolatos részletekért tekintse meg a [Azure SQL Database díjszabását](https://azure.microsoft.com/pricing/details/sql-database/).
@@ -133,7 +133,7 @@ A számlázás minden órában megtörténik, amely az adott órában alkalmazot
 ### <a name="dtu-based-purchasing-model"></a>DTU-alapú vásárlási modell
 
 - Az önálló adatbázisok DTU ára bizonyos mennyiségű tárterületet foglal magában, többletköltség nélkül. A benne foglalt mennyiségen túli extra tárterület kiépíthető a maximális méretkorlát 250 GB-ig, 1 TB-ig, majd 256 GB-onként 1 TB-nál nagyobb mértékben. A foglalt tárolási és a maximális méretkorlát esetében lásd [: önálló adatbázis: a tárolási méretek és a számítási méretek](resource-limits-dtu-single-databases.md#single-database-storage-sizes-and-compute-sizes).
-- Az önálló adatbázisok extra tárterületének növeléséhez a Azure Portal, a [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql#examples-1), a [PowerShell](/powershell/module/az.sql/set-azsqldatabase), az [Azure CLI](/cli/azure/sql/db#az-sql-db-update)vagy a [REST API](https://docs.microsoft.com/rest/api/sql/databases/update)használatával növelheti a maximális méretet.
+- Az önálló adatbázisok extra tárterületének növeléséhez a Azure Portal, a [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), a [PowerShell](/powershell/module/az.sql/set-azsqldatabase), az [Azure CLI](/cli/azure/sql/db#az-sql-db-update)vagy a [REST API](/rest/api/sql/databases/update)használatával növelheti a maximális méretet.
 - Az önálló adatbázisok extra tárterületének díja a szolgáltatás rétegének extra tárolási egységével megszorzott extra tárterület. További információ az extra tárterület díjszabásáról: [Azure SQL Database díjszabása](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
@@ -156,4 +156,3 @@ A prémium szinten több mint 1 TB tárterület jelenleg minden régióban elér
 ## <a name="next-steps"></a>Következő lépések
 
 A teljes erőforrás-korlátokkal kapcsolatban lásd: [Azure SQL Database virtuális mag-alapú erőforrás-korlátok – önálló adatbázisok](resource-limits-vcore-single-databases.md) és [Azure SQL Database DTU-alapú erőforrás-korlátok – önálló adatbázisok](resource-limits-dtu-single-databases.md).
- 

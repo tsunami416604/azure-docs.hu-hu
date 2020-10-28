@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5c54da3621df1e5d49e7269781e6ae33fc9c0923
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 47cface4efbf38f2cec630745d498db674c936d3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675666"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791953"
 ---
 # <a name="how-to-use-azuresearchdocuments-in-a-c-net-application"></a>A Azure.Search.Documents használata C# .NET-alkalmazásokban
 
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan hozhat létre és kezelhet keresési objektumokat a 
 
 ## <a name="about-version-11"></a>A 11-es verzió
 
-A .NET-hez készült Azure SDK egy új ügyféloldali kódtárat hoz létre az Azure SDK-csapattól, amely a [Microsoft. Azure](/dotnet/api/overview/azure/search/client10) Néhány példa [`AzureKeyCredential`](/dotnet/api/azure.azurekeycredential) a kulcsos hitelesítésre, és [ aSystem.Text.Js. ](/dotnet/api/system.text.json.serialization) A JSON-szerializálás szerializálása.
+A .NET-hez készült Azure SDK egy új [**Azure.Search.Documents**](/dotnet/api/overview/azure/search) az Azure SDK-csapattól, amely a [Microsoft. Azure. Search](/dotnet/api/overview/azure/search/client10) ügyfél-kódtárakkal egyenértékű, de szükség esetén közös megközelítéseket és konvenciókat használ. Néhány példa [`AzureKeyCredential`](/dotnet/api/azure.azurekeycredential) a kulcsos hitelesítésre, és [ aSystem.Text.Js. ](/dotnet/api/system.text.json.serialization) A JSON-szerializálás szerializálása.
 
 A korábbi verziókhoz hasonlóan a következő függvénytárat használhatja:
 
