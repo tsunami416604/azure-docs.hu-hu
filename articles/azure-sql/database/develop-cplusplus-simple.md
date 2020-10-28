@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: 38e4839a41ad8e58e575e552e877303a5105ff36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e891c5797c9ce93e6cab7a07d2f68de1a9157249
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443660"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674758"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Kapcsolódás SQL Database C és C++ használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ Győződjön meg róla, hogy rendelkezik az alábbi elemekkel:
 
 * Aktív Azure-fiók. Ha még nincs fiókja, regisztrálhat az [Azure ingyenes próbaverziójára](https://azure.microsoft.com/pricing/free-trial/).
 * [Visual Studio](https://www.visualstudio.com/downloads/). A minta létrehozásához és futtatásához telepítenie kell a C++ nyelvi összetevőit.
-* A [Visual Studio Linux fejlesztése](https://docs.microsoft.com/cpp/linux/?view=vs-2019). Ha Linux rendszeren fejleszt, a Visual Studio Linux-bővítményt is telepítenie kell.
+* A [Visual Studio Linux fejlesztése](/cpp/linux/?view=vs-2019). Ha Linux rendszeren fejleszt, a Visual Studio Linux-bővítményt is telepítenie kell.
 
 ## <a name="azure-sql-database-and-sql-server-on-virtual-machines"></a><a id="AzureSQL"></a>Azure SQL Database és SQL Server virtuális gépeken
 
@@ -39,7 +39,7 @@ Az Azure jelenleg két lehetőséggel rendelkezik az SQL Server számítási fel
 
 ## <a name="data-access-technologies-odbc-and-ole-db"></a><a id="ODBC"></a>Adatelérési technológiák: ODBC és OLE DB
 
-A Azure SQL Databasehoz való csatlakozás nem különbözik, és jelenleg kétféleképpen lehet csatlakozni az adatbázisokhoz: ODBC (nyílt adatbázis-kapcsolat) és OLE DB (objektum-csatolás és beágyazási adatbázis). Az elmúlt években a Microsoft az ODBC-vel igazította a [natív kapcsolati adathozzáférést](https://blogs.msdn.microsoft.com/sqlnativeclient/20../../microsoft-is-aligning-with-odbc-for-native-relational-data-access/). Az ODBC viszonylag egyszerű, és sokkal gyorsabb, mint a OLE DB. Az egyetlen kivétel az, hogy az ODBC a régi C stílusú API-t használja.
+A Azure SQL Databasehoz való csatlakozás nem különbözik, és jelenleg kétféleképpen lehet csatlakozni az adatbázisokhoz: ODBC (nyílt adatbázis-kapcsolat) és OLE DB (objektum-csatolás és beágyazási adatbázis). Az elmúlt években a Microsoft az ODBC-vel igazította a [natív kapcsolati adathozzáférést](/archive/blogs/sqlnativeclient/microsoft-is-aligning-with-odbc-for-native-relational-data-access). Az ODBC viszonylag egyszerű, és sokkal gyorsabb, mint a OLE DB. Az egyetlen kivétel az, hogy az ODBC a régi C stílusú API-t használja.
 
 ## <a name="step-1--creating-your-azure-sql-database"></a><a id="Create"></a>1. lépés: a Azure SQL Database létrehozása
 
@@ -143,7 +143,7 @@ Az ebben a cikkben szereplő összes mintát tartalmazó GetStarted-megoldás me
 ## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át a [SQL Database fejlesztés áttekintését](develop-overview.md)
-* További információ az [ODBC API-referenciáról](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)
+* További információ az [ODBC API-referenciáról](/sql/odbc/reference/syntax/odbc-api-reference/)
 
 ## <a name="additional-resources"></a>További források
 

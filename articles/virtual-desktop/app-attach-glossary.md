@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f3cc8495f673c8b428aa9e6ace2747a70c5b0847
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6107ffea4fe4d615a42973ab1b231ca9f6b5241f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88556287"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674955"
 ---
 # <a name="msix-app-attach-glossary"></a>MSIX-alkalmazás szószedetének csatolása
 
@@ -25,7 +25,7 @@ Az MSIX-tárolók a MSIX-alkalmazások futtatására szolgálnak. További infor
 
 ## <a name="msix-application"></a>MSIX-alkalmazás 
 
-Egy MSIX fájlban tárolt alkalmazás.
+Egy alkalmazásban tárolt alkalmazás. MSIX-fájl.
 
 ## <a name="msix-package"></a>MSIX-csomag 
 
@@ -35,13 +35,17 @@ Az MSIX-csomag egy MSIX-fájl vagy-alkalmazás.
 
 Az MSIX-megosztás egy olyan hálózati megosztás, amely kibővített MSIX-csomagokat tart fenn. A MSIX-megosztások támogatják az SMB 3 vagy újabb verzióját. Az alkalmazások ettől a MSIX-megosztástól kezdve nem kell az alkalmazás fájljait áthelyezni a rendszermeghajtóra.
 
+## <a name="msix-image"></a>MSIX-rendszerkép
+
+Az MSIX-rendszerkép olyan VHD-, VHDx-vagy CIM-fájl, amely egy vagy több MSIX csomagolt alkalmazást tartalmaz. Minden alkalmazást a MSIX-rendszerképben továbbítanak a MSIXMGR eszközzel.
+
 ## <a name="repackage"></a>Átcsomagolni
 
 Az újracsomagolás egy nem MSIX alkalmazást használ, és átalakítja a MSIX a MSIX Packaging Tool (MPT) használatával. További információ: MSIX- [csomagoló eszköz – áttekintés](/windows/msix/packaging-tool/tool-overview).
 
-## <a name="expand"></a>Kibontás
+## <a name="expand-an-msix-package"></a>MSIX-csomag kibontása
 
-A MSIX-csomag kiterjesztése több lépésből álló folyamat. Ez a MSIX-fájlt veszi át, és a tartalmát egy VHD (x) vagy CIM fájlba helyezi. 
+A MSIX-csomagok kiterjesztése egy többlépéses folyamat. A bővítés a MSIX-fájlt veszi át, és a tartalmát egy VHD (x) vagy CIM fájlba helyezi. 
 
 MSIX-csomag kibontása:
 
@@ -63,11 +67,11 @@ A MSIX-csomagok feltöltése magában foglalja a kibontott MSIX csomagot tartalm
 
 A Windows rendszerű virtuális asztali gépeken a feltöltések MSIX-megosztáson keresztül történnek. A csomagok feltöltése után az azonos előfizetésben lévő összes gazdagép hivatkozhat rá.
 
-## <a name="publish-an-msix-package"></a>MSIX-csomag közzététele
+## <a name="add-an-msix-package"></a>MSIX-csomag hozzáadása
 
-A Windows rendszerű virtuális asztali gépeken egy MSIX-csomag közzététele egy távoli alkalmazáshoz vagy asztali kapcsolathoz.
+A Windows rendszerű virtuális asztali gépeken egy MSIX-csomag hozzáadása egy gazdagép-készlethez kapcsolódik.
 
-## <a name="assign-an-msix-package"></a>MSIX-csomag kiosztása 
+## <a name="publish-an-msix-package"></a>MSIX-csomag közzététele 
 
 A Windows rendszerű virtuális asztali számítógépeken a közzétett MSIX-csomagokat hozzá kell rendelni egy Active Directory-tartomány szolgáltatáshoz (AD DS) vagy Azure Active Directory (Azure AD) felhasználóhoz vagy felhasználói csoporthoz.
 
@@ -118,4 +122,3 @@ A következő táblázat a VHD-k és a CimFS közötti teljesítmény-összehaso
 ## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az MSIX alkalmazáshoz, tekintse át az [áttekintést](what-is-app-attach.md) és a [gyakori kérdéseket](app-attach-faq.md). Ellenkező esetben Ismerkedjen [meg az alkalmazások csatlakoztatásának beállítása](app-attach.md)című lépéssel.
-

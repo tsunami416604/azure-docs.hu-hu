@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d4c1005d300a5b326ff2f41d9fa3838dbb1c7552
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e29aeb7570ad6daba9d6fc652291471fa246bf0a
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278024"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674627"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Marketplace mért számlázási API-k
 
@@ -34,7 +34,7 @@ Egy naptári nap minden órájában csak egy használati eseményt lehet kiáll�
 
 Erőforráson belül egy naptári nap minden órájában csak egy használati esemény lehet kibocsátva. Ha egy órában több egység is használatban van, akkor az óránként felhasznált összes egységet összesíti, majd egyetlen esemény keretében bocsátja ki. A használati események csak az elmúlt 24 órában állíthatók elő. Ha 8:00 és 8:59:59 közötti időszakban bármikor bocsát ki használati eseményt, és a 8:00 és az 8:59:59 közötti időszakra vonatkozó további eseményt küld, akkor azt a rendszer duplikálja.
 
-**Post**: `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**Post** : `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
@@ -67,7 +67,7 @@ Erőforráson belül egy naptári nap minden órájában csak egy használati es
 >[!NOTE]
 >`resourceId` az SaaS-alkalmazás és az egyéni fogyasztásmérőt kibocsátó felügyelt alkalmazások esetében eltérő jelentéssel rendelkezik. 
 
-Az Azure Application Managed apps-csomagok esetében a a `resourceId` `resourceUsageId` `billingDetails` felügyelt alkalmazás metaadatainak objektuma alatt található. Az [Azure által felügyelt identitások jogkivonat használatával](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token)a beolvasáshoz példaként használható parancsfájl található. 
+Az Azure Application Managed apps-csomagok esetében a `resourceId` felügyelt alkalmazás `resource group Id` . Az [Azure által felügyelt identitások jogkivonat használatával](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token)a beolvasáshoz példaként használható parancsfájl található. 
 
 SaaS-ajánlatok esetén a a `resourceId` SaaS-előfizetés azonosítója. Az SaaS-előfizetésekkel kapcsolatos további információkért lásd: [előfizetések listázása](./pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions).
 
@@ -151,7 +151,7 @@ A Batch-használati esemény API lehetővé teszi, hogy egyszerre több megvás�
 
 *Lekérdezési paraméterek:*
 
-| Paraméterek  | Ajánlás     |
+| Paraméter  | Ajánlás     |
 | ---------- | -------------------- |
 | `ApiVersion` | 2018-08-31 használata. |
 
@@ -191,7 +191,7 @@ A Batch-használati esemény API lehetővé teszi, hogy egyszerre több megvás�
 >[!NOTE]
 >`resourceId` az SaaS-alkalmazás és az egyéni fogyasztásmérőt kibocsátó felügyelt alkalmazások esetében eltérő jelentéssel rendelkezik. 
 
-Az Azure Application Managed apps-csomagok esetében a a `resourceId` `resourceUsageId` `billingDetails` felügyelt alkalmazás metaadatainak objektuma alatt található. Az [Azure által felügyelt identitások jogkivonat használatával](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token)a beolvasáshoz példaként használható parancsfájl található. 
+Az Azure Application Managed apps-csomagok esetében a `resourceId` felügyelt alkalmazás `resource group Id` . Az [Azure által felügyelt identitások jogkivonat használatával](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token)a beolvasáshoz példaként használható parancsfájl található. 
 
 SaaS-ajánlatok esetén a a `resourceId` SaaS-előfizetés azonosítója. Az SaaS-előfizetésekkel kapcsolatos további információkért lásd: [előfizetések listázása](./pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions).
 

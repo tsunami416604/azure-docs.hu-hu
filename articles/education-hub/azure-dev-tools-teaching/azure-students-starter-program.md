@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: c581eb79a158dcb2645bcb9fd830a4f83dba1e0d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 87f44c1529055458f341fa6c4c5285560d878d2d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87102051"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674968"
 ---
 # <a name="azure-for-students-starter"></a>Azure for Students Starter
 
@@ -33,8 +33,8 @@ Ez az ajánlat csak egy Azure diákoknak kezdő előfizetésre korlátozódik jo
 
 Az Azure diákoknak kezdő ajánlathoz nem szükséges hitelkártya. Az utólagos elszámolású előfizetések azonban bármikor frissíthetők, így az [Azure-fiók portálon](https://account.azure.com/)keresztül érheti el az összes Azure-szolgáltatást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Segítség kérése bejelentkezési hibákhoz](troubleshoot-login.md)
 - [Szoftver letöltése (Azure diákoknak kezdőknek)](download-software.md)
 - [Azure diákoknak program](azure-students-program.md)
-- [Microsoft Learn: ingyenes online tanulási platform](https://docs.microsoft.com/learn/)
+- [Microsoft Learn: ingyenes online tanulási platform](/learn/)

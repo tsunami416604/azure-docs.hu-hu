@@ -6,17 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: d6c29cb41d38e5473a9b24dbc89fd99d3e19c16f
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 9a70dcbabea9bc55703a5e9875df05b534eb372a
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638329"
+ms.locfileid: "92674753"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>Log Analytics munkaterület állapotának figyelése Azure Monitor
 A Log Analytics munkaterület teljesítményének és rendelkezésre állásának Azure Monitor-ban való fenntartásához képesnek kell lennie proaktív módon észlelni a felmerülő problémákat. Ez a cikk azt ismerteti, hogyan figyelheti a Log Analytics munkaterület állapotát a [műveleti](https://docs.microsoft.com/azure/azure-monitor/reference/tables/operation) tábla adatai alapján. Ez a táblázat minden Log Analytics-munkaterület része, és a munkaterületen előforduló hibákat és figyelmeztetéseket tartalmazza. Rendszeresen tekintse át ezeket az adatait, és hozzon létre riasztásokat, amelyekkel proaktívan értesítheti, ha vannak olyan fontos incidensek a munkaterületen.
 
 ## <a name="_logoperation-function"></a>_LogOperation függvény
+
 Azure Monitor naplók a probléma előfordulásakor a munkaterületen lévő [művelet](https://docs.microsoft.com/azure/azure-monitor/reference/tables/operation) táblájában lévő hibák részleteit küldi el. A **_LogOperation** System függvény a **műveleti** táblázaton alapul, és egyszerűsített információt nyújt az elemzéshez és a riasztásokhoz.
 
 ## <a name="columns"></a>Oszlopok
@@ -36,6 +37,7 @@ A **_LogOperation** függvény az alábbi táblázatban szereplő oszlopokat adj
 
 
 ## <a name="categories"></a>Kategóriák
+
 Az alábbi táblázat a _LogOperation függvény kategóriáit ismerteti. 
 
 | Kategória | Leírás |

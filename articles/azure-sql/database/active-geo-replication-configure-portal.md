@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 5ddc79721355924f125acedd7420cab5f487c065
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71c73fec4f559b34b097556243617636acd77480
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445045"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673265"
 ---
 # <a name="tutorial-configure-active-geo-replication-and-failover-in-the-azure-portal-azure-sql-database"></a>Oktatóanyag: az aktív földrajzi replikálás és feladatátvétel konfigurálása a Azure Portalban (Azure SQL Database)
 
@@ -35,7 +35,7 @@ Az aktív geo-replikáció a Azure Portal használatával történő konfigurál
 * Egy adatbázis a Azure SQL Databaseban: az elsődleges adatbázis, amelyet egy másik földrajzi régióba kíván replikálni.
 
 > [!Note]
-> Azure Portal használatakor a rendszer csak egy másodlagos adatbázist hozhat létre ugyanazon az előfizetésen belül, mint az elsődleges. Ha egy másodlagos adatbázisnak másik előfizetéshez kell tartoznia, használja az [adatbázis létrehozása REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) vagy az [Alter Database Transact-SQL API-](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql)t.
+> Azure Portal használatakor a rendszer csak egy másodlagos adatbázist hozhat létre ugyanazon az előfizetésen belül, mint az elsődleges. Ha egy másodlagos adatbázisnak másik előfizetéshez kell tartoznia, használja az [adatbázis létrehozása REST API](/rest/api/sql/databases/createorupdate) vagy az [Alter Database Transact-SQL API-](/sql/t-sql/statements/alter-database-transact-sql)t.
 
 ## <a name="add-a-secondary-database"></a>Másodlagos adatbázis hozzáadása
 
@@ -50,7 +50,7 @@ A másodlagos létrehozása és összevetése után az adatok megkezdik az első
 > Ha a partner-adatbázis már létezik (például egy korábbi földrajzi replikálási kapcsolat megszakítása miatt), a parancs sikertelen lesz.
 
 1. A [Azure Portal](https://portal.azure.com)keresse meg a Geo-replikációhoz beállítani kívánt adatbázist.
-2. A SQL Database lapon válassza a **geo-replikálás**lehetőséget, majd válassza ki a régiót a másodlagos adatbázis létrehozásához. Bármelyik régiót kiválaszthatja, amely nem az elsődleges adatbázist üzemeltető régió, hanem a [párosított régiót](../../best-practices-availability-paired-regions.md)is ajánljuk.
+2. A SQL Database lapon válassza a **geo-replikálás** lehetőséget, majd válassza ki a régiót a másodlagos adatbázis létrehozásához. Bármelyik régiót kiválaszthatja, amely nem az elsődleges adatbázist üzemeltető régió, hanem a [párosított régiót](../../best-practices-availability-paired-regions.md)is ajánljuk.
 
     ![Aktív georeplikáció konfigurálása](./media/active-geo-replication-configure-portal/configure-geo-replication.png)
 3. Válassza ki vagy konfigurálja a másodlagos adatbázis kiszolgálóját és díjszabási szintjét.
@@ -70,8 +70,8 @@ A másodlagos létrehozása és összevetése után az adatok megkezdik az első
 A másodlagos adatbázis átváltható elsődlegesként.  
 
 1. A [Azure Portal](https://portal.azure.com)tallózással keresse meg az elsődleges adatbázist a Geo-replikálási partnerségben.
-2. A SQL Database panelen válassza a **minden beállítás**  >  **földrajzi replikálás**lehetőséget.
-3. A **formátumú másodlagos zónák** listában válassza ki azt az adatbázist, amelynek az új elsődlegesnek kell lennie, majd kattintson a **kényszerített feladatátvétel**elemre.
+2. A SQL Database panelen válassza a **minden beállítás**  >  **földrajzi replikálás** lehetőséget.
+3. A **formátumú másodlagos zónák** listában válassza ki azt az adatbázist, amelynek az új elsődlegesnek kell lennie, majd kattintson a **kényszerített feladatátvétel** elemre.
 
     ![feladatátvétel](./media/active-geo-replication-configure-portal/secondaries.png)
 4. A feladatátvétel elindításához kattintson az **Igen** gombra.
@@ -88,9 +88,9 @@ Van egy rövid időszak, amelyben mindkét adatbázis nem érhető el (0 és 25 
 Ez a művelet véglegesen leállítja a replikálást a másodlagos adatbázisba, és a másodlagos szerepkört egy normál írási-olvasási adatbázisra módosítja. Ha a másodlagos adatbázishoz való kapcsolódás megszakad, a parancs sikeres lesz, de a másodlagos nem írható-olvasható, amíg a kapcsolat vissza nem áll.  
 
 1. A [Azure Portal](https://portal.azure.com)tallózással keresse meg az elsődleges adatbázist a Geo-replikálási partnerségben.
-2. Az SQL Database lapon válassza a **geo-replikáció**lehetőséget.
+2. Az SQL Database lapon válassza a **geo-replikáció** lehetőséget.
 3. A **formátumú másodlagos zónák** listából válassza ki azt az adatbázist, amelyet el szeretne távolítani a földrajzi replikálási partnerségből.
-4. Kattintson a **replikálás leállítása**elemre.
+4. Kattintson a **replikálás leállítása** elemre.
 
     ![Másodlagos eltávolítása](./media/active-geo-replication-configure-portal/remove-secondary.png)
 5. Megnyílik egy megerősítő ablak. Az **Igen** gombra kattintva távolítsa el az adatbázist a földrajzi replikálási partnerségből. (Állítsa azt egy írható-olvasható adatbázisba, amely nem része egyetlen replikációnak sem.)

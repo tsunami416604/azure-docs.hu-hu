@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
 ROBOTS: NOINDEX
-ms.openlocfilehash: cd2f8ce45ef9270866941cdedb7c768529c3175f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70fb956af7ff45c7b54f04d7ed441ec39f9d80a5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033302"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673806"
 ---
 # <a name="monitor-create-and-manage-sftp-files-in-azure-logic-apps"></a>SFTP-fájlok figyelése, létrehozása és kezelése Azure Logic Apps
 
@@ -45,10 +45,10 @@ Az SFTP-összekötő csak a *50 MB vagy annál kisebb* fájlokat kezeli, és nem
   > Az SFTP-összekötő a következő titkos kulcsok formátumait támogatja: OpenSSH, ssh.com és Putty
   >
   > A logikai alkalmazás létrehozása után az SFTP-trigger vagy a kívánt művelet hozzáadása után meg kell adnia az SFTP-kiszolgáló kapcsolódási adatait. 
-  > Ha SSH titkos kulcsot használ, győződjön meg arról, hogy a kulcsot a titkos SSH-kulcs fájljából ***másolja*** , majd ***illessze*** be az adott kulcsot a kapcsolat részleteibe, ***ne adja meg manuálisan a kulcsot, vagy szerkessze a kulcsot***, ami miatt a kapcsolat sikertelen lehet. 
+  > Ha egy titkos SSH-kulcsot használ, győződjön meg róla, hogy * **másolja** a kulcsot a titkos SSH-kulcs fájljából, és _*_illessze_*_ be a kulcsot a kapcsolat részleteibe, _*_ne manuálisan adja meg vagy szerkessze a kulcsot_*_ , ami miatt előfordulhat, hogy a kapcsolat meghiúsul. 
   > További információkért tekintse meg a cikk későbbi lépéseit.
 
-* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+_ Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 * Az a logikai alkalmazás, ahová el szeretné érni az SFTP-fiókját. Ha egy SFTP-triggert szeretne kezdeni, [hozzon létre egy üres logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ha SFTP-műveletet szeretne használni, indítsa el a logikai alkalmazást egy másik eseményindítóval, például az **ismétlődési** eseményindítóval.
 
@@ -74,9 +74,9 @@ Ha egy trigger új fájlt talál, az trigger ellenőrzi, hogy az új fájl elké
 
    -vagy-
 
-   Meglévő Logic apps esetén az utolsó lépésben, amelyhez műveletet szeretne hozzáadni, válassza az **új lépés**lehetőséget. A keresőmezőbe írja be az "SFTP" kifejezést a szűrőként. A műveletek listában válassza ki a kívánt műveletet.
+   Meglévő Logic apps esetén az utolsó lépésben, amelyhez műveletet szeretne hozzáadni, válassza az **új lépés** lehetőséget. A keresőmezőbe írja be az "SFTP" kifejezést a szűrőként. A műveletek listában válassza ki a kívánt műveletet.
 
-   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
+   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása** lehetőséget.
 
 1. Adja meg a kapcsolathoz szükséges adatokat.
 
@@ -89,13 +89,13 @@ Ha egy trigger új fájlt talál, az trigger ellenőrzi, hogy az új fájl elké
 
    1. Nyissa meg az SSH titkos kulcs fájlját egy szövegszerkesztőben. Ezek a lépések példaként használják a jegyzettömböt.
 
-   1. A Jegyzettömb **Szerkesztés** menüjében válassza az **összes kijelölése**lehetőséget.
+   1. A Jegyzettömb **Szerkesztés** menüjében válassza az **összes kijelölése** lehetőséget.
 
-   1. Válassza **Edit**a  >  **Másolás**szerkesztése lehetőséget.
+   1. Válassza **Edit** a  >  **Másolás** szerkesztése lehetőséget.
 
-   1. Az SFTP-triggerben vagy a hozzáadott műveletben illessze be az **SSH titkos kulcs** tulajdonságba másolt *teljes* kulcsot, amely több sort is támogat. ***Ügyeljen rá, hogy illessze be*** a kulcsot. ***Ne adja meg manuálisan a kulcsot, vagy szerkessze***azt.
+   1. Az SFTP-triggerben vagy a hozzáadott műveletben illessze be az **SSH titkos kulcs** tulajdonságba másolt *teljes* kulcsot, amely több sort is támogat. **_Ügyeljen rá, hogy a kulcsot illessze be_* a kulcsba. _*_Ne adja meg manuálisan a kulcsot, vagy szerkessze_*_ azt.
 
-1. Ha végzett a kapcsolat részleteinek megadásával, válassza a **Létrehozás**lehetőséget.
+1. Ha végzett a kapcsolat részleteinek megadásával, válassza a _ * létrehozás * * elemet.
 
 1. Adja meg a kiválasztott trigger vagy művelet szükséges adatait, és folytassa a logikai alkalmazás munkafolyamatának összeállítását.
 
@@ -107,7 +107,7 @@ Ha egy trigger új fájlt talál, az trigger ellenőrzi, hogy az új fájl elké
 
 Ez az aktiválás egy logikai alkalmazás munkafolyamatát indítja el, amikor egy fájlt hozzáadnak vagy módosítanak egy SFTP-kiszolgálón. Hozzáadhat például egy olyan feltételt, amely ellenőrzi a fájl tartalmát, és beolvassa a tartalmat attól függően, hogy a tartalom megfelel-e a megadott feltételnek. Ezután hozzáadhat egy műveletet, amely beolvassa a fájl tartalmát, és az SFTP-kiszolgáló egy mappájába helyezi a tartalmat.
 
-**Vállalati példa**: ezt az triggert használhatja az ügyfél-megrendeléseket képviselő új fájlok SFTP-mappájának figyelésére. Ezután használhat egy SFTP-műveletet, például a **fájlok beolvasása** lehetőséget, így a sorrend tartalmát megtekintve további feldolgozást hajthat végre, és a rendelést egy Orders adatbázisban tárolhatja.
+**Vállalati példa** : ezt az triggert használhatja az ügyfél-megrendeléseket képviselő új fájlok SFTP-mappájának figyelésére. Ezután használhat egy SFTP-műveletet, például a **fájlok beolvasása** lehetőséget, így a sorrend tartalmát megtekintve további feldolgozást hajthat végre, és a rendelést egy Orders adatbázisban tárolhatja.
 
 <a name="get-content"></a>
 
@@ -117,7 +117,7 @@ Ez a művelet lekérdezi a tartalmat egy SFTP-kiszolgálón lévő fájlból. Í
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/azure/data-factory/connector-sftp).
+Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](../data-factory/connector-sftp.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

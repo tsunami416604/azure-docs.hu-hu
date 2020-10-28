@@ -10,18 +10,18 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
 ms.custom: sqldbrb=1
-ms.openlocfilehash: 1e0ab1d6c1266b37dfcba461fbbdc373fc526783
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae7baeac6cee2a692928642e3e38ce0adad17d1c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362163"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674891"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-using-ssms"></a>Oktatóanyag: a SSMS-t használó, Azure SQL Databaseban található viszonyítási adatbázis tervezése
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 
-A Azure SQL Database a Microsoft Cloud (Azure) szolgáltatásban a DBaaS (). Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket az Azure Portal és az [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) használatával:
+A Azure SQL Database a Microsoft Cloud (Azure) szolgáltatásban a DBaaS (). Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket az Azure Portal és az [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS) használatával:
 
 > [!div class="checklist"]
 >
@@ -35,7 +35,7 @@ A Azure SQL Database a Microsoft Cloud (Azure) szolgáltatásban a DBaaS (). Ez 
 * Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 > [!TIP]
-> A következő Microsoft Learn modul segít megtanulni az ingyenes ASP.NET- [alkalmazások fejlesztését és konfigurálását, amely lekérdezi a Azure SQL Database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/), beleértve egy egyszerű adatbázis létrehozását is.
+> A következő Microsoft Learn modul segít megtanulni az ingyenes ASP.NET- [alkalmazások fejlesztését és konfigurálását, amely lekérdezi a Azure SQL Database](/learn/modules/develop-app-that-queries-azure-sql/), beleértve egy egyszerű adatbázis létrehozását is.
 > [!NOTE]
 > Ebben az oktatóanyagban a Azure SQL Database használjuk. Egy készletezett adatbázist rugalmas készletben vagy SQL felügyelt példányban is használhat. SQL felügyelt példányhoz való csatlakozáshoz tekintse meg a következő SQL felügyelt példányok rövid útmutatóját: gyors útmutató [: az Azure virtuális gép konfigurálása Azure SQL felügyelt példányhoz való csatlakozáshoz](../managed-instance/connect-vm-instance-configure.md) és rövid útmutató [: pont – hely kapcsolat konfigurálása egy Azure SQL felügyelt példányhoz a helyszínen](../managed-instance/point-to-site-p2s-configure.md).
 
@@ -43,12 +43,12 @@ A Azure SQL Database a Microsoft Cloud (Azure) szolgáltatásban a DBaaS (). Ez 
 
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a következőt:
 
-- [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (legújabb verzió)
+- [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (legújabb verzió)
 - [BCP és Sqlcmd](https://www.microsoft.com/download/details.aspx?id=36433) (legújabb verzió)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-database-in-azure-sql-database"></a>Üres adatbázis létrehozása Azure SQL Database
 
@@ -84,7 +84,7 @@ Az alábbi lépéseket követve hozzon létre egy üres adatbázist.
 5. Kattintson a **Kiválasztás** elemre.
 6. Kattintson a **Tarifacsomag** parancsra a szolgáltatási szint, a DTU-k vagy virtuális magok száma és a tárterületméret megadásához. Megvizsgálhatja az egyes szolgáltatási szintek számára elérhető DTU/virtuális mag és tárhelyek számát.
 
-    Miután kiválasztotta a szolgáltatási szintet, a DTU vagy a virtuális mag számát, valamint a tárterület méretét, kattintson az **alkalmaz**gombra.
+    Miután kiválasztotta a szolgáltatási szintet, a DTU vagy a virtuális mag számát, valamint a tárterület méretét, kattintson az **alkalmaz** gombra.
 
 7. Adja meg az üres adatbázis **rendezését** (ebben az oktatóanyagban használja az alapértelmezett értéket). A rendezésekkel kapcsolatos további információkért lásd: [Rendezések](/sql/t-sql/statements/collations)
 
@@ -134,7 +134,7 @@ Kapcsolat létesítése az adatbázissal a [SQL Server Management Studio](/sql/s
    | Beállítás       | Ajánlott érték | Leírás |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Server type (Kiszolgáló típusa)** | Adatbázismotor | Kötelezően megadandó érték. |
-   | **Kiszolgáló neve** | A teljes kiszolgálónév | Például: *YourServer.database.Windows.net*. |
+   | **Kiszolgáló neve** | A teljes kiszolgálónév | Például: *YourServer.database.Windows.net* . |
    | **Hitelesítés** | SQL Server-hitelesítés | Az SQL-hitelesítés az egyetlen hitelesítési típus, amelyet ebben az oktatóanyagban konfiguráltunk. |
    | **Bejelentkezés** | A kiszolgálói rendszergazdafiók | Az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |
    | **Jelszó** | A kiszolgálói rendszergazdai fiók jelszava | A kiszolgáló létrehozásakor megadott jelszó. |
@@ -147,7 +147,7 @@ Kapcsolat létesítése az adatbázissal a [SQL Server Management Studio](/sql/s
 
 4. Kattintson a **Csatlakozás** gombra. Megnyílik a **Object Explorer** ablak a SSMS.
 
-5. Az **Object Explorerban**bontsa ki az **adatbázisok** csomópontot, majd bontsa ki a *yourDatabase* elemet, és tekintse meg a mintaadatbázis objektumait.
+5. Az **Object Explorerban** bontsa ki az **adatbázisok** csomópontot, majd bontsa ki a *yourDatabase* elemet, és tekintse meg a mintaadatbázis objektumait.
 
    ![adatbázis-objektumok](./media/design-first-database-tutorial/connected.png)  
 
@@ -160,14 +160,14 @@ A [Transact-SQL](/sql/t-sql/language-reference) használatával hozzon létre eg
 - Tanuló
 - Kredit
 
-Az alábbi ábrán látható, hogyan kapcsolódnak ezek a táblázatok egymáshoz. Ezen táblázatok némelyike más táblák oszlopaira hivatkozik. A *tanulói* tábla például a *személy* tábla *számú personid* oszlopára hivatkozik. Tanulmányozza a diagramot az ebben az oktatóanyagban szereplő táblák kapcsolatainak megértéséhez. A hatékony adatbázistáblák létrehozásának részleteiért lásd: [Hatékony adatbázistáblák létrehozása](https://msdn.microsoft.com/library/cc505842.aspx). Az adattípusok kiválasztására vonatkozó további információkért lásd: [Adattípusok](/sql/t-sql/data-types/data-types-transact-sql).
+Az alábbi ábrán látható, hogyan kapcsolódnak ezek a táblázatok egymáshoz. Ezen táblázatok némelyike más táblák oszlopaira hivatkozik. A *tanulói* tábla például a *személy* tábla *számú personid* oszlopára hivatkozik. Tanulmányozza a diagramot az ebben az oktatóanyagban szereplő táblák kapcsolatainak megértéséhez. A hatékony adatbázistáblák létrehozásának részleteiért lásd: [Hatékony adatbázistáblák létrehozása](/previous-versions/tn-archive/cc505842(v=technet.10)). Az adattípusok kiválasztására vonatkozó további információkért lásd: [Adattípusok](/sql/t-sql/data-types/data-types-transact-sql).
 
 > [!NOTE]
 > Használhatja az [SQL Server Management Studio táblatervezőjét](/sql/ssms/visual-db-tools/design-database-diagrams-visual-database-tools) is a táblák létrehozásához és tervezéséhez.
 
 ![Táblák közötti kapcsolatok](./media/design-first-database-tutorial/tutorial-database-tables.png)
 
-1. A **Object Explorer**kattintson a jobb gombbal a *yourDatabase* elemre, és válassza az **Új lekérdezés**elemet. Megnyílik egy, az adatbázishoz csatlakoztatott üres lekérdezési ablak.
+1. A **Object Explorer** kattintson a jobb gombbal a *yourDatabase* elemre, és válassza az **Új lekérdezés** elemet. Megnyílik egy, az adatbázishoz csatlakoztatott üres lekérdezési ablak.
 
 2. A lekérdezési ablakban hozzon létre négy táblát az adatbázisban a következő lekérdezés futtatásával:
 
@@ -231,7 +231,7 @@ Az alábbi ábrán látható, hogyan kapcsolódnak ezek a táblázatok egymásho
 
 3. Nyisson meg egy parancssori ablakot, és navigáljon a *sampleData* mappára.
 
-4. A következő parancsok végrehajtásával szúrhat be mintaadatok a táblázatba, és cserélje le a *kiszolgáló*, az *adatbázis*, a *felhasználó*és a *jelszó* értékeit a környezetéhez tartozó értékekre.
+4. A következő parancsok végrehajtásával szúrhat be mintaadatok a táblázatba, és cserélje le a *kiszolgáló* , az *adatbázis* , a *felhasználó* és a *jelszó* értékeit a környezetéhez tartozó értékekre.
 
    ```cmd
    bcp Course in SampleCourseData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
@@ -244,7 +244,7 @@ Ezzel mintaadatokat töltött be a korábban létrehozott táblákba.
 
 ## <a name="query-data"></a>Adatok lekérdezése
 
-Hajtsa végre a következő lekérdezéseket az adatbázistáblákban lévő információk lekéréséhez. További információ az SQL-lekérdezések írásához: [SQL-lekérdezések írása](https://technet.microsoft.com/library/bb264565.aspx) . Az első lekérdezés összekapcsolja mind a négy táblázatot, hogy megkeresse a "Dominika Pope" által tanított tanulókat, akik 75%-nál magasabb szintűek. A második lekérdezés mind a négy táblát összekapcsolja, és megkeresi azokat a tanfolyamokat, amelyekben a "Noe Coleman" már regisztrálva volt.
+Hajtsa végre a következő lekérdezéseket az adatbázistáblákban lévő információk lekéréséhez. További információ az SQL-lekérdezések írásához: [SQL-lekérdezések írása](/previous-versions/sql/sql-server-2005/express-administrator/bb264565(v=sql.90)) . Az első lekérdezés összekapcsolja mind a négy táblázatot, hogy megkeresse a "Dominika Pope" által tanított tanulókat, akik 75%-nál magasabb szintűek. A második lekérdezés mind a négy táblát összekapcsolja, és megkeresi azokat a tanfolyamokat, amelyekben a "Noe Coleman" már regisztrálva volt.
 
 1. Az SQL Server Management Studio lekérdezési ablakában hajtsa végre a következő lekérdezést:
 
@@ -272,7 +272,7 @@ Hajtsa végre a következő lekérdezéseket az adatbázistáblákban lévő inf
        AND person.LastName = 'Coleman'
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban számos alapvető adatbázis-feladatot tanult meg. Megtanulta végrehajtani az alábbi műveleteket:
 

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 66008012dd9b3eb6000e96f251d18cf14a9c8dc1
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: ee1753932018d0ea3a627ff2a6c7b85dc0a65de1
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495245"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674856"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>Fejlesztési környezet beállítása Azure Machine Learninghoz
 
@@ -43,7 +43,7 @@ Ez a cikk további használati tippeket is tartalmaz a következő eszközökhö
 
 ### <a name="local-and-dsvm-only-create-a-workspace-configuration-file"></a><a id="workspace"></a> (Csak helyi és DSVM) Munkaterület-konfigurációs fájl létrehozása
 
-A munkaterület-konfigurációs fájl egy JSON-fájl, amely közli az SDK-val, hogyan kommunikálhat a Azure Machine Learning munkaterülettel. A fájl neve *config.json*, és a formátuma a következő:
+A munkaterület-konfigurációs fájl egy JSON-fájl, amely közli az SDK-val, hogyan kommunikálhat a Azure Machine Learning munkaterülettel. A fájl neve *config.json* , és a formátuma a következő:
 
 ```json
 {
@@ -53,7 +53,7 @@ A munkaterület-konfigurációs fájl egy JSON-fájl, amely közli az SDK-val, h
 }
 ```
 
-A JSON-fájlnak a Python-szkripteket vagy Jupyter-jegyzetfüzeteket tartalmazó címtár-struktúrában kell lennie. Ez lehet ugyanabban a címtárban, egy *. azureml*nevű alkönyvtár vagy egy szülő könyvtárban.
+A JSON-fájlnak a Python-szkripteket vagy Jupyter-jegyzetfüzeteket tartalmazó címtár-struktúrában kell lennie. Ez lehet ugyanabban a címtárban, egy *. azureml* nevű alkönyvtár vagy egy szülő könyvtárban.
 
 Ha ezt a fájlt a kódból szeretné használni, használja a [`Workspace.from_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#from-config-path-none--auth-none---logger-none---file-name-none-&preserve-view=true) metódust. Ez a kód betölti az adatokat a fájlból, és csatlakozik a munkaterülethez.
 
@@ -61,13 +61,13 @@ Hozzon létre egy munkaterület-konfigurációs fájlt az alábbi módszerek egy
 
 * Azure Portal
 
-    **Töltse le a fájlt**: a [Azure Portal](https://ms.portal.azure.com)válassza a  **config.jsletöltése** elemet a munkaterület **Áttekintés** szakaszában.
+    **Töltse le a fájlt** : a [Azure Portal](https://ms.portal.azure.com)válassza a  **config.jsletöltése** elemet a munkaterület **Áttekintés** szakaszában.
 
     ![Azure Portal](./media/how-to-configure-environment/configure.png)
 
 * Python SDK Azure Machine Learning
 
-    Hozzon létre egy parancsfájlt a Azure Machine Learning munkaterülethez való kapcsolódáshoz, és a [`write_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) metódus használatával hozza létre a fájlt, és mentse *. azureml/config.js*. Győződjön meg arról, hogy a, a `subscription_id` `resource_group` és a és a együtt van lecserélve `workspace_name` .
+    Hozzon létre egy parancsfájlt a Azure Machine Learning munkaterülethez való kapcsolódáshoz, és a [`write_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) metódus használatával hozza létre a fájlt, és mentse *. azureml/config.js* . Győződjön meg arról, hogy a, a `subscription_id` `resource_group` és a és a együtt van lecserélve `workspace_name` .
 
     ```python
     from azureml.core import Workspace
@@ -122,6 +122,9 @@ Helyi Jupyter Notebook-kiszolgáló futtatásakor javasoljuk, hogy hozzon létre
 
 A Azure Machine Learning és a Jupyter notebookok megismeréséhez tekintse meg a [Azure Machine learning notebook-tárházat](https://github.com/Azure/MachineLearningNotebooks) .
 
+> [!NOTE]
+> A példák Közösség által vezérelt tárháza a következő címen érhető el: https://github.com/Azure/azureml-examples .
+
 ### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio Code
 
 A Visual Studio Code használata a fejlesztéshez:
@@ -169,7 +172,7 @@ A DSVM használata fejlesztési környezetként
 
     * [Ubuntu](data-science-virtual-machine/dsvm-ubuntu-intro.md) -vagy [Windows](data-science-virtual-machine/provision-vm.md) -DSVM létrehozásához használja a Azure Portal.
     * [Hozzon létre egy DSVM ARM-sablonok használatával](data-science-virtual-machine/dsvm-tutorial-resource-manager.md).
-    * Az Azure CLI használata
+    * Az Azure parancssori felületének használata
 
         Ubuntu-DSVM létrehozásához használja a következő parancsot:
 
@@ -240,7 +243,7 @@ A folytatás előtt várjon, amíg a fürt fut.
 
 Ha a fürt fut, [hozzon létre egy függvénytárat](https://docs.databricks.com/user-guide/libraries.html#create-a-library) , hogy csatolja a megfelelő Azure Machine learning SDK-csomagot a fürthöz. Az automatikus [gépi tanulás című szakaszban a Databricks-hez készült SDK](#sdk-for-databricks-with-automated-machine-learning)-hoz az automatikus ml-re ugorjon.
 
-1. Kattintson a jobb gombbal arra a munkaterület-mappára, ahol a könyvtárat tárolni szeretné. Válassza **Create**a  >  **könyvtár**létrehozása lehetőséget.
+1. Kattintson a jobb gombbal arra a munkaterület-mappára, ahol a könyvtárat tárolni szeretné. Válassza **Create** a  >  **könyvtár** létrehozása lehetőséget.
 
 1. Válassza a következő lehetőséget (más SDK-telepítés nem támogatott)
 
@@ -251,15 +254,15 @@ Ha a fürt fut, [hozzon létre egy függvénytárat](https://docs.databricks.com
    > [!Warning]
    > Más SDK-extrák nem telepíthetők. Válassza a csak a [ `databricks` ] lehetőséget.
 
-   * Ne válassza **az Automatikus csatolás az összes fürthöz**lehetőséget.
+   * Ne válassza **az Automatikus csatolás az összes fürthöz** lehetőséget.
    * Válassza a  **csatolás** elemet a fürt neve mellett.
 
-1. A hibák figyelése, amíg az állapot a **csatolt**értékre módosul, ami több percet is igénybe vehet.  Ha ez a lépés meghiúsul:
+1. A hibák figyelése, amíg az állapot a **csatolt** értékre módosul, ami több percet is igénybe vehet.  Ha ez a lépés meghiúsul:
 
    Próbálja meg újraindítani a fürtöt a alábbiak szerint:
-   1. A bal oldali ablaktáblán válassza a **fürtök**lehetőséget.
+   1. A bal oldali ablaktáblán válassza a **fürtök** lehetőséget.
    1. A táblázatban válassza ki a fürt nevét.
-   1. A **tárak** lapon válassza az **Újraindítás**lehetőséget.
+   1. A **tárak** lapon válassza az **Újraindítás** lehetőséget.
 
    Vegye figyelembe a következőket is:
    + A AutoML config Azure Databricks használatakor adja hozzá a következő paramétereket:

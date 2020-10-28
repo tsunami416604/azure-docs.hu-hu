@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 88a8dcb53ab2f845f52121b11c96c23ad0a3e791
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef74c4b799c3a24636f88a8e704bf726104b034f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87078926"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674315"
 ---
 # <a name="sensor-partner-integration"></a>Érzékelői partner integrációja
 
@@ -48,7 +48,7 @@ Az API-k a hencegés műszaki dokumentációját tartalmazzák. További inform�
 
 A FarmBeats Microsoft Azure Active Directory hitelesítést használ.A Azure App Service beépített hitelesítési és engedélyezési támogatást biztosít.
 
-További információ: [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization).
+További információ: [Azure Active Directory](../../app-service/overview-authentication-authorization.md).
 
 A FarmBeats Datahub tulajdonosi hitelesítést használ, amelynek a következő hitelesítő adatokra van szüksége:
    - Ügyfél-azonosító
@@ -126,10 +126,10 @@ A JSON egy közös nyelvtől független adatformátum, amely tetszőleges adatst
 
 A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszik az eszközök partnerei számára az eszköz vagy az érzékelő metaadatainak létrehozását és felügyeletét.
 
-- /**DeviceModel**: a DeviceModel megfelel az eszköz metaadatainak, például a gyártónak és az eszköz típusának, amely átjáró vagy csomópont.
-- /**Eszköz**: az eszköz a farmon található fizikai eszköznek felel meg.
-- /**SensorModel**: a SensorModel megfelel az érzékelő metaadatainak, például a gyártó, az érzékelő típusa, amely az analóg vagy a digitális, valamint az érzékelő mértékét, például a környezeti hőmérsékletet és a nyomást.
-- /**Érzékelő**: az érzékelő olyan fizikai érzékelőnek felel meg, amely értékeket rögzít. Az érzékelő általában eszköz-AZONOSÍTÓval van csatlakoztatva egy eszközhöz.
+- /**DeviceModel** : a DeviceModel megfelel az eszköz metaadatainak, például a gyártónak és az eszköz típusának, amely átjáró vagy csomópont.
+- /**Eszköz** : az eszköz a farmon található fizikai eszköznek felel meg.
+- /**SensorModel** : a SensorModel megfelel az érzékelő metaadatainak, például a gyártó, az érzékelő típusa, amely az analóg vagy a digitális, valamint az érzékelő mértékét, például a környezeti hőmérsékletet és a nyomást.
+- /**Érzékelő** : az érzékelő olyan fizikai érzékelőnek felel meg, amely értékeket rögzít. Az érzékelő általában eszköz-AZONOSÍTÓval van csatlakoztatva egy eszközhöz.
 
   DeviceModel | Leírás |
   --- | ---
@@ -201,7 +201,7 @@ A telemetria-adatainak feldolgozásra az Azure Event Hubs közzétett kanonikus 
 
 ## <a name="send-telemetry-data-to-farmbeats"></a>Telemetria-FarmBeats küldése
 
-Ha telemetria-adatokat szeretne küldeni a FarmBeats, hozzon létre egy ügyfelet, amely üzeneteket küld egy FarmBeats lévő Event hubhoz. További információ a telemetria-adatokról: [telemetria küldése az Event hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)-ba.
+Ha telemetria-adatokat szeretne küldeni a FarmBeats, hozzon létre egy ügyfelet, amely üzeneteket küld egy FarmBeats lévő Event hubhoz. További információ a telemetria-adatokról: [telemetria küldése az Event hub](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)-ba.
 
 Itt található egy Python-kód, amely a telemetria ügyfélként küldi el a megadott Event hub-nak.
 
@@ -324,7 +324,7 @@ Az eszközök partnerei lehetővé teszik az ügyfeleknek, hogy szerkesszék a F
 
 ## <a name="view-the-last-telemetry-sent"></a>Az utoljára eljuttatott telemetria megtekintése
 
-Az eszközök partnerei lehetővé teszik az ügyfeleknek, hogy megtekintsék az elindított utolsó telemetria időbélyegét, amely a **telemetria elküldése**alatt található. Ez az az idő, amikor a legújabb telemetria sikeresen elküldtük a FarmBeats.
+Az eszközök partnerei lehetővé teszik az ügyfeleknek, hogy megtekintsék az elindított utolsó telemetria időbélyegét, amely a **telemetria elküldése** alatt található. Ez az az idő, amikor a legújabb telemetria sikeresen elküldtük a FarmBeats.
 
 ## <a name="troubleshooting-and-error-management"></a>Hibaelhárítás és hibák kezelése
 
@@ -348,6 +348,6 @@ Az eszközök gyártói vagy partnerei az alábbi ellenőrzőlista segítségév
    - Ellenőrizze, hogy az API-hívás sikeres-e a kapott hozzáférési jogkivonattal.
    - Ellenőrizze, hogy létrejött-e a EventHub-ügyfélkapcsolat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a REST APIről: [REST API](rest-api-in-azure-farmbeats.md).

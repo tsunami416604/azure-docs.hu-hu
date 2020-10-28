@@ -13,12 +13,12 @@ ms.date: 07/15/2020
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: be5cb1c1e6ff428b3c4d4305c915e07d3880839c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c29e1e3fd42702e0eb02531f995c550738839a9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258387"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673717"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Útmutató: alkalmazás-Szerepkörök hozzáadása az alkalmazáshoz és fogadása a jogkivonatban
 
@@ -34,12 +34,12 @@ Ezek az alkalmazási szerepkörök az alkalmazás regisztrációs jegyzékfájlj
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Alkalmazás szerepköreinek deklarálása Azure Portal használatával
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán.
 1. A **Kedvencek** vagy az **összes könyvtár** listában válassza ki azt a Active Directory bérlőt, ahová regisztrálni kívánja az alkalmazást.
-1. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
+1. A Azure Portal keresse meg és válassza a **Azure Active Directory** lehetőséget.
 1. Az  **Azure Active Directory** ablaktáblán válassza a **Alkalmazásregisztrációk** lehetőséget az alkalmazások listájának megtekintéséhez.
-1. Válassza ki azt az alkalmazást, amelyben az alkalmazás-szerepköröket meg szeretné adni. Ezután válassza a **jegyzékfájl**lehetőséget.
+1. Válassza ki azt az alkalmazást, amelyben az alkalmazás-szerepköröket meg szeretné adni. Ezután válassza a **jegyzékfájl** lehetőséget.
 1. Szerkessze az alkalmazás-jegyzékfájlt úgy, hogy megkeresi a `appRoles` beállítást, és hozzáadja az összes alkalmazás-szerepkört.
 
      > [!NOTE]
@@ -76,7 +76,7 @@ Az alábbi példa azt szemlélteti, hogy milyen műveleteket `appRoles` lehet ho
 > [!NOTE]
 >A tartalmazhat `displayName` szóközt.
 
-Megadhatja az alkalmazáshoz tartozó szerepköröket, `users` `applications` vagy mindkettőt. Ha elérhető, az alkalmazás `applications` szerepkörei a **kezelés** szakaszban > API-engedélyek területen jelennek meg, **> > engedély hozzáadása a saját API-kkal > válasszon API > alkalmazási engedélyeket**. Az alábbi példa egy alkalmazás-szerepkört mutat be a felé `Application` .
+Megadhatja az alkalmazáshoz tartozó szerepköröket, `users` `applications` vagy mindkettőt. Ha elérhető, az alkalmazás `applications` szerepkörei a **kezelés** szakaszban > API-engedélyek területen jelennek meg, **> > engedély hozzáadása a saját API-kkal > válasszon API > alkalmazási engedélyeket** . Az alábbi példa egy alkalmazás-szerepkört mutat be a felé `Application` .
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -126,7 +126,7 @@ Ha a különböző alkalmazás-szerepkörökhöz hozzárendelt felhasználók be
 ## <a name="next-steps"></a>Következő lépések
 
 - [Engedélyezés hozzáadása az alkalmazás szerepköreinek & a szerepkörök jogcímeinek használata egy ASP.NET Core webalkalmazáshoz](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
-- [Engedélyezés alkalmazása az alkalmazásokban a Microsoft Identity platformmal (videó)](https://www.youtube.com/watch?v=LRoc-na27l0)
+- [Engedélyezés alkalmazása az alkalmazásokban a Microsoft Identity platformmal (videó)](https://www.youtube.com/watch?v=HdBSBSbgYQQ)
 - [Azure Active Directory, a Group jogcímek és az alkalmazás szerepköreivel](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
 - [Azure Active Directory-alkalmazás jegyzékfájlja](./reference-app-manifest.md)
 - [Azure AD hozzáférési jogkivonatok](access-tokens.md)

@@ -11,17 +11,17 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
-ms.custom: aaddev
-ms.openlocfilehash: b7316756aab7875dce50a3783cb95ca42676b970
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: aaddev, devx-track-js
+ms.openlocfilehash: 05258e201c65138e53e861f0631eb33e08c9c199
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87027087"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673600"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>JavaScript-alapú egyoldalas alkalmazás migrálása implicit engedélyről az Auth Code flow-ba
 
-A Microsoft hitelesítési könyvtára a JavaScripthez (MSAL.js) a 2.0-s verzióban támogatja az engedélyezési kód áramlását a PKCE és a CORS használatával egyoldalas alkalmazásokhoz a Microsoft Identity platformon. Az alábbi szakaszokban ismertetett lépéseket követve áttelepítheti a MSAL.js 1. x alkalmazást a MSAL.js 2.0 + (a továbbiakban *2. x*) és az Auth kód folyamatával.
+A Microsoft hitelesítési könyvtára a JavaScripthez (MSAL.js) a 2.0-s verzióban támogatja az engedélyezési kód áramlását a PKCE és a CORS használatával egyoldalas alkalmazásokhoz a Microsoft Identity platformon. Az alábbi szakaszokban ismertetett lépéseket követve áttelepítheti a MSAL.js 1. x alkalmazást a MSAL.js 2.0 + (a továbbiakban *2. x* ) és az Auth kód folyamatával.
 
 MSAL.js 2. x a MSAL.js 1. x verzióban javítja az engedélyezési kód folyamatát a böngészőben az implicit engedélyezési folyamat helyett. MSAL.js 2. x nem **támogatja az** implicit folyamatot.
 
@@ -30,7 +30,7 @@ MSAL.js 2. x a MSAL.js 1. x verzióban javítja az engedélyezési kód folyamat
 Ha szeretné frissíteni az alkalmazást MSAL.js 2. x-re és az Auth kód folyamatára, három fő lépésből áll:
 
 1. Átválthatja az [alkalmazás regisztrációs](#switch-redirect-uris-to-spa-platform) ÁTirányítási URI-ját a **webes** platformról **egyoldalas alkalmazás** platformra.
-1. Frissítse a [kódját](#switch-redirect-uris-to-spa-platform) MSAL.js 1. x és **2. x**között.
+1. Frissítse a [kódját](#switch-redirect-uris-to-spa-platform) MSAL.js 1. x és **2. x** között.
 1. Ha a regisztrációt megosztó összes alkalmazás frissítve lett MSAL.js 2. x és az Auth kód folyamatára, tiltsa le az [implicit hozzáférést](#disable-implicit-grant-settings) az alkalmazás regisztrálásakor.
 
 A következő szakaszok további részletekben ismertetik az egyes lépéseket.
@@ -42,11 +42,11 @@ Ha továbbra is szeretné használni a meglévő alkalmazás-regisztrációt az 
 Kövesse az alábbi **lépéseket a webplatform-** átirányítási URI-k által jelenleg konfigurált alkalmazások regisztrálásához:
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza ki a **Azure Active Directory** bérlőt.
-1. A **Alkalmazásregisztrációk**területen válassza ki az alkalmazást, majd a **hitelesítést**.
-1. A **webplatform csempén az** URI-k **átirányítása**területen válassza a figyelmeztetési szalagcímet, amely jelzi, hogy át kell telepítenie az URI-ket.
+1. A **Alkalmazásregisztrációk** területen válassza ki az alkalmazást, majd a **hitelesítést** .
+1. A **webplatform csempén az** URI-k **átirányítása** területen válassza a figyelmeztetési szalagcímet, amely jelzi, hogy át kell telepítenie az URI-ket.
 
     :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-01-implicit-warning-banner.png" alt-text="Implicit flow figyelmeztetési szalagcím a webalkalmazás csempén Azure Portal":::
-1. *Csak* azokat az átirányítási URI-ket válassza, amelyek alkalmazásai MSAL.js 2. x-et használják, majd válassza a **Konfigurálás**lehetőséget.
+1. *Csak* azokat az átirányítási URI-ket válassza, amelyek alkalmazásai MSAL.js 2. x-et használják, majd válassza a **Konfigurálás** lehetőséget.
 
     :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="Implicit flow figyelmeztetési szalagcím a webalkalmazás csempén Azure Portal":::
 
@@ -88,7 +88,7 @@ Ha törli az implicit engedélyezési beállításokat az alkalmazás regisztrá
 
 Az összes alkalmazás MSAL.js 2. x és a [PublicClientApplication][msal-js-publicclientapplication]való frissítése előtt **ne tiltsa le** az implicit engedélyezési folyamatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az engedélyezési kód folyamatáról, beleértve az implicit és az Auth kód közötti különbségeket, tekintse meg a [Microsoft Identity platform és a OAuth 2,0 engedélyezési kód](v2-oauth2-auth-code-flow.md)folyamatát.
 

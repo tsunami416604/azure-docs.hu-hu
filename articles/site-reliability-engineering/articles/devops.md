@@ -8,12 +8,12 @@ ms.service: site-reliability-engineering
 ms.topic: article
 ms.date: 09/14/2020
 ms.author: dnb
-ms.openlocfilehash: 3d0698f2780a4ccc41eedbde70fddea1766c5f21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62872443c386c45d9821053dc901ad8e0055b74f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090329"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674276"
 ---
 # <a name="frequently-asked-questions-whats-the-relationship-between-sre-and-devops"></a>Gyakori kérdések: mi a kapcsolat a SRE és a DevOps között?
 
@@ -50,7 +50,7 @@ Ha ezt a SRE-definíciót használjuk a [site megbízhatósági központ](../ind
 
 ezt követően könnyű lenne kimondani, hogy a SRE szó "megbízhatóság". Ha a név közepén van, akkor is remek bizonyítékot nyújt erre a jogcímre.
 
-Ha ezt a DevOps-definíciót használjuk az [Azure DevOps Resource Centerből](https://docs.microsoft.com/azure/devops/learn/):
+Ha ezt a DevOps-definíciót használjuk az [Azure DevOps Resource Centerből](/azure/devops/learn/):
 
 > A DevOps emberek, folyamatok és termékek egyesülése a végfelhasználók számára történő folyamatos értékközvetítésért.
 
@@ -80,4 +80,4 @@ Reméljük, hogy az előző válaszok a két működési gyakorlat átfedését 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Szeretne többet megtudni a site megbízhatóság mérnöki vagy DevOps? Tekintse meg a [site megbízhatósági központ](../index.yml) és az [Azure DevOps Resource centert](https://docs.microsoft.com/azure/devops/learn/).
+Szeretne többet megtudni a site megbízhatóság mérnöki vagy DevOps? Tekintse meg a [site megbízhatósági központ](../index.yml) és az [Azure DevOps Resource centert](/azure/devops/learn/).

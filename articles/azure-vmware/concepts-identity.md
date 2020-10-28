@@ -3,18 +3,18 @@ title: Fogalmak – identitás és hozzáférés
 description: Ismerje meg az Azure VMware-megoldás identitás-és hozzáférési fogalmait
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 9d5b7b4c7c2e0d55cffc99a3f371494f40320a16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7127109801d92d2177f6edac3efcaf76ddf217e6
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88750584"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674645"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Az Azure VMware megoldás identitásával kapcsolatos fogalmak
 
-A vCenter-kiszolgáló és a NSX-T kezelő kiépítése a privát felhő telepítésekor történik. A vCenter használatával felügyelheti a virtuális gépek számítási feladatait és a NSX-T kezelőt a saját felhőalapú szoftver által meghatározott hálózat kibővítéséhez.
+Privát felhő telepítésekor a rendszer kiépíti a vCenter-kiszolgálót és a NSX-T kezelőt. A vCenter használatával kezelheti a virtuális gépek (VM) munkaterheléseit. A NSX-T Manager használatával kiterjesztheti a saját felhőalapú szoftver által meghatározott hálózatot.
 
-A hozzáférés és az Identitáskezelés a CloudAdmin csoport jogosultságait használja a vCenter és a korlátozott rendszergazdai jogokkal a NSX-T Manager számára. Ez a szabályzat biztosítja, hogy a saját felhőalapú platformja automatikusan frissíthető legyen. Ez rendszeresen biztosítja a legújabb funkciókat és javításokat. A privát felhő frissítéseivel kapcsolatos további részletekért tekintse meg a [Private Cloud Upgrades fogalmait ismertető cikket][concepts-upgrades] .
+A hozzáférés és az Identitáskezelés a CloudAdmin csoport jogosultságait használja a vCenter és a korlátozott rendszergazdai jogokkal a NSX-T Manager számára. Gondoskodik arról, hogy a saját felhőalapú platformja automatikusan, a legújabb funkciókkal és javításokkal legyen frissítve.  További információ: [Private Cloud upgrade Concepts cikk][concepts-upgrades].
 
 ## <a name="vcenter-access-and-identity"></a>vCenter-hozzáférés és-identitás
 
@@ -33,9 +33,9 @@ A CloudAdmin és a CloudGlobalAdmin jogosultság az alábbi táblázatban látha
 |  ESX-ügynök kezelője       |  --  |         --       |  A Microsoft minden műveletet elvégez.  |
 |  Mappa                  |  A CloudAdmin-felhasználók minden mappa jogosultsággal rendelkeznek.     |  --  |  --  |
 |  Globális                  |  Global. CancelTask, Global. GlobalTag, Global. Health, Global. LogEvent, Global. ManageCustomFields, Global. ServiceManagers, Global. SetCustomField, Global.SystemTag         |                  |    |
-|  Gazda                    |  Host. HBR. HbrManagement      |        --          |  A Microsoft minden más gazdagép-műveletet hajt végre.  |
+|  Gazdagép                    |  Host. HBR. HbrManagement      |        --          |  A Microsoft minden más gazdagép-műveletet hajt végre.  |
 |  InventoryService        |  InventoryService. tagging      |        --          |  --  |
-|  Network (Hálózat)                 |  Network. assign    |                  |  A Microsoft minden más hálózati műveletet hajt végre.  |
+|  Hálózat                 |  Network. assign    |                  |  A Microsoft minden más hálózati műveletet hajt végre.  |
 |  Engedélyek             |  --  |        --       |  A Microsoft minden engedély műveletet végez.  |
 |  Profil alapú tárolás  |  --  |        --       |  A Microsoft minden profillal kapcsolatos műveletet végez.  |
 |  Erőforrás                |  A CloudAdmin-felhasználók minden erőforrás-jogosultsággal rendelkeznek.        |      --       | --   |
@@ -49,9 +49,9 @@ A CloudAdmin és a CloudGlobalAdmin jogosultság az alábbi táblázatban látha
 
 ## <a name="nsx-t-manager-access-and-identity"></a>NSX – T Manager-hozzáférés és-identitás
 
-A NSX-T Manager a "rendszergazda" fiók használatával érhető el. Ez a fiók teljes körű jogosultságokkal rendelkezik, és lehetővé teszi T1 útválasztók, logikai kapcsolók és minden szolgáltatás létrehozását és kezelését. A NSX-T teljes körű jogosultságai biztosítják a NSX-T T0 útválasztó elérését is. A t0 útválasztóra való váltás a hálózat teljesítményének csökkenését vagy a privát felhőhöz való hozzáférés elvesztését eredményezheti. A támogatási követelmények teljesítéséhez szükség van arra, hogy egy támogatási kérést nyisson meg a Azure Portalban, hogy az NSX-T T0-útválasztón bármilyen módosítást igényeljen.
+A "rendszergazda" fiók használatával férhet hozzá a NSX-T kezelőhöz. Teljes körű jogosultságokkal rendelkezik, és lehetővé teszi T1 útválasztók, logikai kapcsolók és minden szolgáltatás létrehozását és kezelését. A jogosultságok hozzáférést biztosítanak az NSX-T T0 útválasztóhoz. A t0 útválasztóra való váltás a hálózati teljesítmény romlása vagy a saját Felhőbeli hozzáférés nélkül is csökkenhet. Nyisson meg egy támogatási kérést a Azure Portalban, hogy az NSX-T T0-útválasztón bármilyen módosítást igényeljen.
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépés a [saját Felhőbeli frissítési fogalmak][concepts-upgrades]megismerése.
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
-ms.custom: aaddev
-ms.openlocfilehash: ab072fa53d3ecc3f856b6765acfb8c19da3ff298
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.custom: aaddev devx-track-js
+ms.openlocfilehash: 327280c193c3c2fb829e468bccfc352f35edfdb5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442252"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673511"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>A JavaScript használata a Microsoft Authentication Library használatával Azure AD B2C
 
@@ -56,7 +56,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="step-3-configure-authentication"></a>3. lépés: a hitelesítés konfigurálása
 
-1. Nyissa meg a `config.json` fájlt a mintában.
+1. Nyissa meg a *config.js* fájlt a mintában.
 
 2. Konfigurálja a mintát az alkalmazás regisztrálásakor korábban beszerzett hitelesítő adatokkal. Módosítsa a kód következő sorait úgy, hogy lecseréli az értékeket a bérlő nevére, az ügyfél-AZONOSÍTÓra és a házirend nevére.
 
@@ -169,7 +169,7 @@ A következő lépések feltételezik, hogy már követte az előző [JavaScript
 
 ### <a name="step-2-catch-and-handle-authentication-errors-in-your-login-method"></a>2. lépés: hitelesítési hibák elfogása és kezelése a bejelentkezési módszerben
 
-Ha a felhasználó **elfelejtette a jelszót**, az alkalmazás olyan hibát jelez, amelyet a kódban fel kell fogni, majd a megfelelő felhasználói folyamat bemutatásával kell kezelnie. Ebben az esetben a `b2c_1_reset` jelszó-visszaállítási folyamat.
+Ha a felhasználó **elfelejtette a jelszót** , az alkalmazás olyan hibát jelez, amelyet a kódban fel kell fogni, majd a megfelelő felhasználói folyamat bemutatásával kell kezelnie. Ebben az esetben a `b2c_1_reset` jelszó-visszaállítási folyamat.
 
 1. A bejelentkezési módszert a következőképpen bővítheti:
 
@@ -211,7 +211,7 @@ Ha a felhasználó **elfelejtette a jelszót**, az alkalmazás olyan hibát jele
 
     További információ a hibakódokról és a kezelési kivételekről: [MSAL hiba és kivételek kódjai](msal-handling-exceptions.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ ezekről a Azure AD B2C fogalmakról:
 

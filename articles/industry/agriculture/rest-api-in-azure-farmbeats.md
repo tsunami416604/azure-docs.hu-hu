@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: f15bee7e802b04d04a3c87d7f84fc975b88bf260
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 292374bcce90da042dc6bd672feaad3750759aa9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86536572"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674507"
 ---
 # <a name="azure-farmbeats-apis"></a>Azure FarmBeats API-k
 
@@ -143,23 +143,23 @@ Ebben a példában a farm létrehozásakor a kötelező "Name" mező nem lett me
 
 Az Azure FarmBeats API-kat egy felhasználó vagy egy alkalmazás-regisztráció Azure Active Directoryban érheti el. Ha Azure Active Directory szeretné létrehozni az alkalmazás regisztrációját, kövesse az alábbi lépéseket:
 
-1. Lépjen a [Azure Portalra](https://portal.azure.com), és válassza a **Azure Active Directory**  >  **Alkalmazásregisztrációk**  >  **új regisztráció**lehetőséget. Másik lehetőségként használhat egy meglévő fiókot is.
+1. Lépjen a [Azure Portalra](https://portal.azure.com), és válassza a **Azure Active Directory**  >  **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget. Másik lehetőségként használhat egy meglévő fiókot is.
 2. Új fiók esetén tegye a következőket:
 
     - Adjon meg egy nevet.
-    - **Csak a szervezeti címtárban válassza ki a fiókokat (egyetlen bérlő)**.
+    - **Csak a szervezeti címtárban válassza ki a fiókokat (egyetlen bérlő)** .
     - Használja a többi mező alapértelmezett értékeit.
     - Válassza a **Regisztráció** lehetőséget.
 
 3. Az új és meglévő alkalmazás-regisztráció **– Áttekintés** panelen tegye a következőket:
 
-    - Rögzítse az **ügyfél-azonosítót** és a **bérlő azonosítóját**.
-    - Nyissa meg a **tanúsítványokat és a titkokat** egy új ügyfél-titkos kód létrehozásához, és rögzítse az **ügyfél titkos kulcsát**.
-    - Lépjen vissza az **Áttekintés**elemre, és válassza az **alkalmazás kezelése a helyi címtárban**lehetőséget.
-    - Az **objektumazonosító**rögzítéséhez lépjen a **Tulajdonságok menüpontba** .
+    - Rögzítse az **ügyfél-azonosítót** és a **bérlő azonosítóját** .
+    - Nyissa meg a **tanúsítványokat és a titkokat** egy új ügyfél-titkos kód létrehozásához, és rögzítse az **ügyfél titkos kulcsát** .
+    - Lépjen vissza az **Áttekintés** elemre, és válassza az **alkalmazás kezelése a helyi címtárban** lehetőséget.
+    - Az **objektumazonosító** rögzítéséhez lépjen a **Tulajdonságok menüpontba** .
 
 4. Nyissa meg a Datahub hencegő (https:// <yourdatahub> . azurewebsites.net/swagger/index.html), és tegye a következőket:
-    - Nyissa meg a **ROLEASSIGNMENT API**-t.
+    - Nyissa meg a **ROLEASSIGNMENT API** -t.
     - A POST művelettel hozzon létre egy **RoleAssignment** objektumot az imént létrehozott **objektumazonosító** számára.
  
 ```json
@@ -172,7 +172,7 @@ Az Azure FarmBeats API-kat egy felhasználó vagy egy alkalmazás-regisztráció
 ```
 
   > [!NOTE]
-  > A felhasználók hozzáadásával és Active Directory regisztrációval kapcsolatos további információkért lásd: [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+  > A felhasználók hozzáadásával és Active Directory regisztrációval kapcsolatos további információkért lásd: [Azure Active Directory](../../active-directory/develop/howto-create-service-principal-portal.md).
 
 Az előző lépések befejezése után az alkalmazás regisztrálása (ügyfél) az Azure FarmBeats API-kat a tulajdonosi hitelesítésen keresztül egy hozzáférési jogkivonat használatával hívhatja meg.
 

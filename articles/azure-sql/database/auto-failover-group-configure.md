@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 08/14/2019
-ms.openlocfilehash: ab057e1328efbff294faa1d68f2a27c5a1f03ade
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98f2a8fb0ce48dab0e1e5f7610d73d55526969eb
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577509"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675107"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Feladatátvételi csoport konfigurálása Azure SQL Databasehoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -40,7 +40,7 @@ Vegye figyelembe a következő előfeltételeket:
 
 Hozza létre a feladatátvételi csoportot, és adja hozzá az önálló adatbázisát a Azure Portal használatával.
 
-1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon.
+1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás** lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon.
 1. Válassza ki a feladatátvételi csoportba felvenni kívánt adatbázist.
 1. A kiszolgáló beállításainak megnyitásához válassza a **kiszolgáló neve alatt lévő** kiszolgáló nevét.
 
@@ -50,9 +50,9 @@ Hozza létre a feladatátvételi csoportot, és adja hozzá az önálló adatbá
 
    ![Új feladatátvételi csoport hozzáadása](./media/auto-failover-group-configure/sqldb-add-new-failover-group.png)
 
-1. A **feladatátvételi csoport** lapon adja meg vagy válassza ki a szükséges értékeket, majd válassza a **Létrehozás**lehetőséget.
+1. A **feladatátvételi csoport** lapon adja meg vagy válassza ki a szükséges értékeket, majd válassza a **Létrehozás** lehetőséget.
 
-   - **Csoportba tartozó adatbázisok**: válassza ki a feladatátvételi csoportba felvenni kívánt adatbázist. Ha hozzáadja az adatbázist a feladatátvételi csoporthoz, a automatikusan elindítja a Geo-replikálási folyamatot.
+   - **Csoportba tartozó adatbázisok** : válassza ki a feladatátvételi csoportba felvenni kívánt adatbázist. Ha hozzáadja az adatbázist a feladatátvételi csoporthoz, a automatikusan elindítja a Geo-replikálási folyamatot.
 
    ![SQL Database hozzáadása a feladatátvételi csoporthoz](./media/auto-failover-group-configure/add-sqldb-to-failover-group.png)
 
@@ -115,7 +115,7 @@ A feladatátvételi csoport feladatátvételi tesztje a Azure Portal vagy a Powe
 
 A feladatátvételi csoport feladatátvételi tesztje a Azure Portal használatával.
 
-1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az "Azure SQL" kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon.
+1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás** lehetőséget, majd írja be az "Azure SQL" kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon.
 1. Válassza ki a feladatátvételi csoportba felvenni kívánt adatbázist.
 
    ![Kiszolgáló megnyitása egyetlen adatbázishoz](./media/auto-failover-group-configure/open-sql-db-server.png)
@@ -210,7 +210,7 @@ Hozza létre a rugalmas készlet feladatátvételi csoportját a Azure Portal va
 
 Hozza létre a feladatátvételi csoportot, és adja hozzá rugalmas készletét a Azure Portal használatával.
 
-1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az "Azure SQL" kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon.
+1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás** lehetőséget, majd írja be az "Azure SQL" kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon.
 1. Válassza ki a feladatátvevő csoportba felvenni kívánt rugalmas készletet.
 1. Az **Áttekintés** ablaktáblán válassza ki a kiszolgáló nevét a kiszolgáló **neve** alatt a kiszolgáló beállításainak megnyitásához.
   
@@ -220,7 +220,7 @@ Hozza létre a feladatátvételi csoportot, és adja hozzá rugalmas készletét
 
    ![Új feladatátvételi csoport hozzáadása](./media/auto-failover-group-configure/sqldb-add-new-failover-group.png)
 
-1. A **feladatátvételi csoport** lapon adja meg vagy válassza ki a szükséges értékeket, majd válassza a **Létrehozás**lehetőséget. Hozzon létre egy új másodlagos kiszolgálót, vagy válasszon ki egy meglévő másodlagos kiszolgálót.
+1. A **feladatátvételi csoport** lapon adja meg vagy válassza ki a szükséges értékeket, majd válassza a **Létrehozás** lehetőséget. Hozzon létre egy új másodlagos kiszolgálót, vagy válasszon ki egy meglévő másodlagos kiszolgálót.
 
 1. Válassza ki az **adatbázisokat a csoporton belül** , majd válassza ki azt a rugalmas készletet, amelyet hozzá szeretne adni a feladatátvételi csoporthoz. Ha egy rugalmas készlet még nem létezik a másodlagos kiszolgálón, egy figyelmeztetés jelenik meg, amely arra kéri, hogy hozzon létre egy rugalmas készletet a másodlagos kiszolgálón. Válassza ki a figyelmeztetést, majd kattintson az **OK** gombra a rugalmas készlet létrehozásához a másodlagos kiszolgálón.
 
@@ -282,7 +282,7 @@ A rugalmas készlet feladatátvételének tesztelése a Azure Portal vagy a Powe
 
 A feladatátvételi csoport feladatátvétele a másodlagos kiszolgálóra történik, majd a Azure Portal használatával visszatérhet.
 
-1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az "Azure SQL" kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon.
+1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás** lehetőséget, majd írja be az "Azure SQL" kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon.
 1. Válassza ki a feladatátvevő csoportba felvenni kívánt rugalmas készletet.
 1. Az **Áttekintés** ablaktáblán válassza ki a kiszolgáló nevét a kiszolgáló **neve** alatt a kiszolgáló beállításainak megnyitásához.
 
@@ -342,7 +342,7 @@ Feladatátvétel a másodlagos kiszolgálóra:
 > [!IMPORTANT]
 > Ha törölnie kell a másodlagos adatbázist, a törlése előtt távolítsa el a feladatátvételi csoportból. Ha egy másodlagos adatbázist töröl a feladatátvételi csoportból való eltávolítása előtt, akkor kiszámíthatatlan viselkedést okozhat.
 
-## <a name="sql-managed-instance"></a>Felügyelt SQL-példány
+## <a name="sql-managed-instance"></a>SQL Managed Instance
 
 A Azure Portal vagy a PowerShell használatával hozzon létre egy feladatátvételi csoportot a felügyelt Azure SQL-példány két felügyelt példánya között.
 
@@ -371,11 +371,11 @@ Ha még nem konfigurálta a [ExpressRoute](../../expressroute/expressroute-howto
 Hozza létre az elsődleges virtuális hálózati átjárót a Azure Portal használatával.
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg az erőforráscsoportot, és válassza ki a **virtuális hálózati** erőforrást az elsődleges felügyelt példányhoz.
-1. Válassza ki az **alhálózatok** lehetőséget a **Beállítások** területen, majd válassza a lehetőséget egy új **átjáró-alhálózat**hozzáadásához. Hagyja meg az alapértelmezett értékeket.
+1. Válassza ki az **alhálózatok** lehetőséget a **Beállítások** területen, majd válassza a lehetőséget egy új **átjáró-alhálózat** hozzáadásához. Hagyja meg az alapértelmezett értékeket.
 
    ![Átjáró hozzáadása az elsődleges felügyelt példányhoz](./media/auto-failover-group-configure/add-subnet-gateway-primary-vnet.png)
 
-1. Az alhálózat-átjáró létrehozása után válassza az **erőforrás létrehozása** lehetőséget a bal oldali navigációs ablaktáblán, majd írja be `Virtual network gateway` a keresőmezőbe a kifejezést. Válassza ki a **Microsoft**által közzétett **Virtual Network Gateway** -erőforrást.
+1. Az alhálózat-átjáró létrehozása után válassza az **erőforrás létrehozása** lehetőséget a bal oldali navigációs ablaktáblán, majd írja be `Virtual network gateway` a keresőmezőbe a kifejezést. Válassza ki a **Microsoft** által közzétett **Virtual Network Gateway** -erőforrást.
 
    ![Új virtuális hálózati átjáró létrehozása](./media/auto-failover-group-configure/create-virtual-network-gateway.png)
 
@@ -388,7 +388,7 @@ Hozza létre az elsődleges virtuális hálózati átjárót a Azure Portal hasz
     | **Előfizetés** |  Az az előfizetés, amelyben az elsődleges felügyelt példánya. |
     | **Név** | A virtuális hálózati átjáró neve. |
     | **Régió** | Az a régió, ahol az elsődleges felügyelt példánya van. |
-    | **Átjáró típusa** | Válassza a **VPN**lehetőséget. |
+    | **Átjáró típusa** | Válassza a **VPN** lehetőséget. |
     | **VPN-típus** | **Útvonal-alapú** |
     | **Termékváltozat**| Hagyja meg az alapértelmezett értéket `VpnGw1` . |
     | **Hely**| A másodlagos felügyelt példány és a másodlagos virtuális hálózat helye.   |
@@ -450,7 +450,7 @@ A következő táblázat a másodlagos felügyelt példány átjárója számár
    | **Előfizetés** |  Az előfizetés, amelyben a másodlagos felügyelt példánya van. |
    | **Név** | A virtuális hálózati átjáró neve, például: `secondary-mi-gateway` . |
    | **Régió** | Az a régió, amelyben a másodlagos felügyelt példány található. |
-   | **Átjáró típusa** | Válassza a **VPN**lehetőséget. |
+   | **Átjáró típusa** | Válassza a **VPN** lehetőséget. |
    | **VPN-típus** | **Útvonal-alapú** |
    | **Termékváltozat**| Hagyja meg az alapértelmezett értéket `VpnGw1` . |
    | **Hely**| A másodlagos felügyelt példány és a másodlagos virtuális hálózat helye.   |
@@ -509,15 +509,15 @@ Hozzon létre kapcsolatokat a két átjáró között a Azure Portal használat�
 1. Válassza az **erőforrás létrehozása** lehetőséget a [Azure Portal](https://portal.azure.com).
 1. Írja be `connection` a keresőmezőbe, majd nyomja le az ENTER billentyűt a kereséshez, amely a Microsoft által közzétett **kapcsolódási** erőforrásra viszi.
 1. Válassza a **Létrehozás** lehetőséget a kapcsolódás létrehozásához.
-1. Az **alapvető beállítások** lapon válassza ki a következő értékeket, majd kattintson az **OK gombra**.
-    1. Válassza `VNet-to-VNet` a **kapcsolattípus**lehetőséget.
+1. Az **alapvető beállítások** lapon válassza ki a következő értékeket, majd kattintson az **OK gombra** .
+    1. Válassza `VNet-to-VNet` a **kapcsolattípus** lehetőséget.
     1. Válassza ki előfizetését a legördülő listából.
     1. Válassza ki a felügyelt példányhoz tartozó erőforráscsoportot a legördülő menüből.
     1. Válassza ki az elsődleges felügyelt példány helyét a legördülő menüből.
-1. A **Beállítások** lapon válassza ki vagy adja meg a következő értékeket, majd kattintson az **OK gombra**:
-    1. Válassza ki az **első virtuális hálózati átjáró**elsődleges hálózati átjáróját, például: `Primary-Gateway` .  
-    1. Válassza ki a **második virtuális hálózati átjáró**másodlagos hálózati átjáróját, például: `Secondary-Gateway` .
-    1. Jelölje be a **kétirányú kapcsolat létesítése**melletti jelölőnégyzetet.
+1. A **Beállítások** lapon válassza ki vagy adja meg a következő értékeket, majd kattintson az **OK gombra** :
+    1. Válassza ki az **első virtuális hálózati átjáró** elsődleges hálózati átjáróját, például: `Primary-Gateway` .  
+    1. Válassza ki a **második virtuális hálózati átjáró** másodlagos hálózati átjáróját, például: `Secondary-Gateway` .
+    1. Jelölje be a **kétirányú kapcsolat létesítése** melletti jelölőnégyzetet.
     1. Hagyja meg az alapértelmezett elsődleges kapcsolódási nevet, vagy nevezze át tetszőleges értékre.
     1. Adjon meg egy **megosztott kulcsot (PSK)** a kapcsolatban, például: `mi1m2psk` .
 
@@ -564,9 +564,9 @@ Hozza létre a felügyelt példányok feladatátvételi csoportját a Azure Port
 
 Hozza létre a feladatátvételi csoportot az SQL felügyelt példányaihoz a Azure Portal használatával.
 
-1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon.
+1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás** lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon.
 1. Válassza ki azt az elsődleges felügyelt példányt, amelyet hozzá szeretne adni a feladatátvételi csoporthoz.  
-1. A **Beállítások**területen navigáljon a **példány feladatátvételi csoportok** elemre, majd válassza a **Csoport hozzáadása** lehetőséget a **példány feladatátvételi csoport** lap megnyitásához.
+1. A **Beállítások** területen navigáljon a **példány feladatátvételi csoportok** elemre, majd válassza a **Csoport hozzáadása** lehetőséget a **példány feladatátvételi csoport** lap megnyitásához.
 
    ![Feladatátvételi csoport hozzáadása](./media/auto-failover-group-configure/add-failover-group.png)
 
@@ -665,7 +665,7 @@ A privát hivatkozások lehetővé teszik, hogy egy logikai kiszolgálót egy ad
 
 Ha privát hivatkozást szeretne használni a feladatátvételi csoporttal, tegye a következőket:
 
-1. Győződjön meg arról, hogy az elsődleges és a másodlagos kiszolgáló egy [párosított régióban](/azure/best-practices-availability-paired-regions)van. 
+1. Győződjön meg arról, hogy az elsődleges és a másodlagos kiszolgáló egy [párosított régióban](../../best-practices-availability-paired-regions.md)van. 
 1. Hozza létre a virtuális hálózatot és az alhálózatot az egyes régiókban az elsődleges és a másodlagos kiszolgálókhoz tartozó privát végpontok üzemeltetéséhez, hogy azok ne legyenek átfedésben az IP-címekkel. Például a 10.0.0.0/16 elsődleges virtuális hálózati címtartomány és a 10.0.0.1/16 másodlagos virtuális hálózati címtartomány átfedésben van. A virtuális hálózati címtartományok részletes ismertetését az Azure-beli [virtuális hálózatok tervezése](https://devblogs.microsoft.com/premier-developer/understanding-cidr-notation-when-designing-azure-virtual-networks-and-subnets/)című blogban találja.
 1. Hozzon létre egy [privát végpontot és egy Azure saját DNS zónát az elsődleges kiszolgálóhoz](../../private-link/create-private-endpoint-portal.md#create-a-private-endpoint). 
 1. Hozzon létre egy privát végpontot a másodlagos kiszolgálóhoz is, de ezúttal úgy dönt, hogy újrahasznosítja ugyanazt a saját DNS zónát, amely az elsődleges kiszolgálóhoz lett létrehozva. 

@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
-ms.openlocfilehash: a2677b5343b2d65a39e7c9f6d5006db599c1ac73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 661147769d8ae845066e912a84118c9fd3f93486
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86496995"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674911"
 ---
 # <a name="weather-partner-integration"></a>Időjárási partner integrációja
 
@@ -28,7 +28,7 @@ Az időjárási partnereknek meg kell adniuk egy Docker-rendszerképet/programot
 - Ügyfél-specifikus API-kulcsok/hitelesítő adatok az időjárási partner rendszerből származó adatok eléréséhez
 - VM SKU-részletek (a partnerek biztosíthatják ezt az esetet, ha a Docker speciális virtuálisgép-követelményekkel rendelkezik, ellenkező esetben az ügyfelek választhatnak az Azure-ban támogatott virtuálisgép-SKU-ból)
 
-A fenti Docker-információk használatával az ügyfél egy időjárási partnert fog regisztrálni a FarmBeats-példányban. Ha többet szeretne megtudni arról, hogy az ügyfelek hogyan használhatják a Docker-t az időjárási információk FarmBeats való betöltéséhez, tekintse meg az [időjárási információk beszerzését](https://docs.microsoft.com/azure/industry/agriculture/get-weather-data-from-weather-partner) ismertető útmutatót.
+A fenti Docker-információk használatával az ügyfél egy időjárási partnert fog regisztrálni a FarmBeats-példányban. Ha többet szeretne megtudni arról, hogy az ügyfelek hogyan használhatják a Docker-t az időjárási információk FarmBeats való betöltéséhez, tekintse meg az [időjárási információk beszerzését](./get-weather-data-from-weather-partner.md) ismertető útmutatót.
 
 ## <a name="connector-docker-development"></a>Összekötő Docker-fejlesztés
 
@@ -71,9 +71,9 @@ Annak engedélyezéséhez, hogy az ügyfelek a Docker-végrehajtás során hitel
    }
 }
 ```
-Az API szolgáltatás szerializálja ezt a dict, és egy kulcstartóban tárolja [azt.](https://docs.microsoft.com/azure/key-vault/basic-concepts)
+Az API szolgáltatás szerializálja ezt a dict, és egy kulcstartóban tárolja [azt.](../../key-vault/general/basic-concepts.md)
 
-[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) az időjárási feladatok összekapcsolására szolgál, és az erőforrásokat a Docker-kód végrehajtásához használja fel. Emellett egy mechanizmust is biztosít az adatok biztonságos továbbítására a virtuális gépre, amelyen a Docker-feladatot végrehajtja. A kulcstartóban biztonságosan tárolt API-hitelesítő adatokat a kulcstartó biztonságos karakterláncként tárolja, és a Docker-activity.jstároló munkakönyvtárában elérhetővé tett kiterjesztett tulajdonságokként (Path a fájl "/mnt/working_dir/activity.json") a Docker-kód a Futtatás ideje alatt elolvashatja a fájl hitelesítő adatait, hogy hozzáférhessen a partneri API-khoz az ügyfél nevében. A hitelesítő adatok a következő módon lesznek elérhetők a fájlban:
+[Azure Data Factory](../../data-factory/introduction.md) az időjárási feladatok összekapcsolására szolgál, és az erőforrásokat a Docker-kód végrehajtásához használja fel. Emellett egy mechanizmust is biztosít az adatok biztonságos továbbítására a virtuális gépre, amelyen a Docker-feladatot végrehajtja. A kulcstartóban biztonságosan tárolt API-hitelesítő adatokat a kulcstartó biztonságos karakterláncként tárolja, és a Docker-activity.jstároló munkakönyvtárában elérhetővé tett kiterjesztett tulajdonságokként (Path a fájl "/mnt/working_dir/activity.json") a Docker-kód a Futtatás ideje alatt elolvashatja a fájl hitelesítő adatait, hogy hozzáférhessen a partneri API-khoz az ügyfél nevében. A hitelesítő adatok a következő módon lesznek elérhetők a fájlban:
 
 ```json
 { 
@@ -89,7 +89,7 @@ A FarmBeats lib segítő függvények lehetővé teszik a partnerek számára a 
 
 A fájl élettartama csak a Docker-kód végrehajtása során lesz törölve, és a Docker futtatásának befejeződése után törlődik.
 
-További információ az ADF-folyamatok és-tevékenységek működéséről: [https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping](https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping) .
+További információ az ADF-folyamatok és-tevékenységek működéséről: [https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping](../../data-factory/copy-activity-schema-and-type-mapping.md) .
 
 **HTTP-kérelmek fejlécei**
 
@@ -107,7 +107,7 @@ A JSON egy közös nyelvtől független adatformátum, amely tetszőleges adatst
 
 ## <a name="docker-specifications"></a>Docker-specifikációk
 
-A Docker programnak két összetevővel kell rendelkeznie **: a** rendszerindításhoz és a **feladatokhoz**. Több feladattípus is lehet.
+A Docker programnak két összetevővel kell rendelkeznie **: a** rendszerindításhoz és a **feladatokhoz** . Több feladattípus is lehet.
 
 ### <a name="bootstrap"></a>Bootstrap
 
@@ -123,8 +123,8 @@ A folyamat részeként a következő metaadatok jönnek létre.
  > [!NOTE]
  > **Vegye figyelembe** , hogy ha a [hivatkozás megvalósításában](https://github.com/azurefarmbeats/noaa_docker)említettek szerint frissíti a bootstrap_manifest.jsa fájlon, nem kell létrehoznia az alábbi metaadatokat, mivel a rendszerindítási fájl a jegyzékfájl alapján hozza létre a fájlt.
 
-- /**WeatherDataModel**: a WeatherDataModel olyan modell, amely az időjárási adatmennyiséget jelöli, és a forrás által biztosított különböző adatkészleteknek felel meg. Előfordulhat például, hogy egy DailyForecastSimpleModel átlagos hőmérséklet-, páratartalom-és csapadék-információt biztosít a napi egyszer, míg egy DailyForecastAdvancedModel sokkal több információt biztosíthat az óránkénti részletességgel. Tetszőleges számú WeatherDataModels is létrehozhat.
-- /**JobType**: a FarmBeats bővíthető felügyeleti rendszerrel rendelkezik. Időjárási adatszolgáltatóként különböző adatkészleteket/API-kat (például GetDailyForecasts) használhat, a FarmBeats-ben JobType-ként engedélyezheti azokat. A JobType létrehozása után az ügyfél elindíthatja az adott típusú feladatokat, hogy az időjárási adatok beolvassák a helyüket/farmot (lásd: JobType és Job API-k a [FarmBeats](https://aka.ms/farmbeatsswagger)-ben).
+- /**WeatherDataModel** : a WeatherDataModel olyan modell, amely az időjárási adatmennyiséget jelöli, és a forrás által biztosított különböző adatkészleteknek felel meg. Előfordulhat például, hogy egy DailyForecastSimpleModel átlagos hőmérséklet-, páratartalom-és csapadék-információt biztosít a napi egyszer, míg egy DailyForecastAdvancedModel sokkal több információt biztosíthat az óránkénti részletességgel. Tetszőleges számú WeatherDataModels is létrehozhat.
+- /**JobType** : a FarmBeats bővíthető felügyeleti rendszerrel rendelkezik. Időjárási adatszolgáltatóként különböző adatkészleteket/API-kat (például GetDailyForecasts) használhat, a FarmBeats-ben JobType-ként engedélyezheti azokat. A JobType létrehozása után az ügyfél elindíthatja az adott típusú feladatokat, hogy az időjárási adatok beolvassák a helyüket/farmot (lásd: JobType és Job API-k a [FarmBeats](https://aka.ms/farmbeatsswagger)-ben).
 
 ### <a name="jobs"></a>Feladatok
 
@@ -180,7 +180,7 @@ Az összekötő Docker-nek képesnek kell lennie frissítések küldésére a me
 
 ## <a name="weather-data-telemetry-specifications"></a>Időjárási adatok (telemetria) – specifikációk
 
-Az időjárási adatszolgáltatások egy olyan kanonikus üzenetre vannak leképezve, amelyet egy Azure Event hub-ba küldenek feldolgozásra. Az Azure EventHub egy olyan szolgáltatás, amely lehetővé teszi a valós idejű adatok (telemetria) betöltését a csatlakoztatott eszközökről és alkalmazásokból. Az időjárási adatokat FarmBeats küldéséhez létre kell hoznia egy ügyfelet, amely üzeneteket küld egy FarmBeats lévő Event hub-nak. Ha többet szeretne megtudni a telemetria küldéséről, tekintse meg a [telemetria küldése az Event hubhoz](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send) című témakört.
+Az időjárási adatszolgáltatások egy olyan kanonikus üzenetre vannak leképezve, amelyet egy Azure Event hub-ba küldenek feldolgozásra. Az Azure EventHub egy olyan szolgáltatás, amely lehetővé teszi a valós idejű adatok (telemetria) betöltését a csatlakoztatott eszközökről és alkalmazásokból. Az időjárási adatokat FarmBeats küldéséhez létre kell hoznia egy ügyfelet, amely üzeneteket küld egy FarmBeats lévő Event hub-nak. Ha többet szeretne megtudni a telemetria küldéséről, tekintse meg a [telemetria küldése az Event hubhoz](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) című témakört.
 
 Itt található egy Python-kód, amely a telemetria ügyfélként küldi el a megadott Event hub-nak.
 
@@ -267,6 +267,6 @@ A FarmBeats támogatja az új szenzor mértékének típusát és egységeit. Ve
 
 További információ a/ExtendedType API-ról: [hencegés](https://aka.ms/FarmBeatsSwagger).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már rendelkezik egy összekötő Docker-vel, amely integrálható a FarmBeats. A következőben láthatja, hogyan szerezhet be időjárási adatait a Docker használatával a FarmBeats. Lásd: [időjárási információk beolvasása](get-weather-data-from-weather-partner.md).

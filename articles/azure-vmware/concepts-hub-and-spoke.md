@@ -1,18 +1,18 @@
 ---
 title: Koncepció – Azure VMware-megoldás üzembe helyezésének integrálása egy sugaras architektúrával
-description: Ismerje meg az Azure VMware-megoldások üzembe helyezését egy meglévő vagy egy új, az Azure-ban, az Azure-ban.
+description: Ismerje meg, hogyan integrálhat egy Azure-beli VMware-megoldás üzembe helyezését az Azure-ban a sugaras architektúrával.
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 66c6cc4841b4b36775fda89b29dc588100c3ad87
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.date: 10/26/2020
+ms.openlocfilehash: 93c11ad9253fe78e1935da7b40e7251788f1f037
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058471"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674679"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Azure VMware-megoldás integrálása egy sugaras architektúrával
 
-Ebben a cikkben javaslatot teszünk egy Azure VMware-megoldás üzembe helyezésének integrálására egy meglévő vagy egy új, az Azure [-ban küllő architektúrában](/azure/architecture/reference-architectures/hybrid-networking/shared-services) . 
+Ez a cikk ajánlásokat tartalmaz egy Azure VMware-megoldás üzembe helyezéséhez egy meglévő vagy egy új, az Azure [-ban küllő architektúrában](/azure/architecture/reference-architectures/hybrid-networking/shared-services) . 
 
 
 A hub és küllős forgatókönyv hibrid felhőalapú környezetet feltételez a következő munkaterhelésekkel:
@@ -46,7 +46,7 @@ Az architektúra a következő fő összetevőkből áll:
 
 
   > [!NOTE]
-  > **S2S VPN-megfontolások:** Az Azure VMware megoldás éles környezetekben való üzembe helyezése esetén az Azure S2S VPN a VMware HCX hálózati követelményei miatt nem támogatott. Azonban PoC-telepítéshez is használható.
+  > **S2S VPN-megfontolások:** Az Azure VMware megoldás éles környezetekben való üzembe helyezése esetén az Azure S2S VPN a VMware HCX hálózati követelményei miatt nem támogatott. Egy PoC-telepítéshez azonban használhatja.
 
 
 -   **Hub virtuális hálózata:** Központi kapcsolódási pontként működik a helyszíni hálózat és az Azure VMware-megoldás privát felhője számára.
@@ -81,9 +81,9 @@ Az Azure VMware megoldás hálózatkezelésével és a kapcsolati fogalmakkal ka
 
 ### <a name="traffic-segmentation"></a>Forgalom szegmentálása
 
-[Azure Firewall](../firewall/index.yml) a hub virtuális hálózatán üzembe helyezett hub és küllős topológia központi eleme. Használjon Azure Firewall vagy egy másik Azure által támogatott hálózati virtuális készüléket a forgalmi szabályok létrehozásához és a különböző küllők és az Azure VMware-megoldás számítási feladataihoz kapcsolódó kommunikáció szegmentálásához.
+[Azure Firewall](../firewall/index.yml) a hub-beli virtuális hálózaton üzembe helyezett központ és küllős topológia központi eleme. Használjon Azure Firewall vagy egy másik Azure által támogatott hálózati virtuális készüléket a forgalmi szabályok létrehozásához és a különböző küllők és az Azure VMware-megoldás számítási feladataihoz kapcsolódó kommunikáció szegmentálásához.
 
-Hozzon létre útválasztási táblákat a Azure Firewall felé irányuló forgalom irányításához.  A küllős virtuális hálózatok esetében hozzon létre egy útvonalat, amely a Azure Firewall belső felületének alapértelmezett útvonalát állítja be, így ha a Virtual Network munkaterhelésének el kell érnie az Azure VMware-megoldási címtartomány elérését, a tűzfal kiértékelheti azt, és alkalmazhatja a megfelelő forgalmi szabályt, hogy az engedélyezze vagy megtagadja.  
+Hozzon létre útválasztási táblákat a Azure Firewall felé irányuló forgalom irányításához.  A küllős virtuális hálózatok esetében hozzon létre egy útvonalat, amely a Azure Firewall belső felületének alapértelmezett útvonalát állítja be. Így amikor a Virtual Network munkaterhelésének el kell érnie az Azure VMware-megoldás címtartomány elérését, a tűzfal kiértékelheti azt, és alkalmazhatja a megfelelő forgalmi szabályt, hogy az engedélyezze vagy megtagadja.  
 
 :::image type="content" source="media/hub-spoke/create-route-table-to-direct-traffic.png" alt-text="Azure VMware Solution hub és küllős integrációs üzembe helyezés" lightbox="media/hub-spoke/create-route-table-to-direct-traffic.png":::
 
@@ -91,7 +91,7 @@ Hozzon létre útválasztási táblákat a Azure Firewall felé irányuló forga
 > [!IMPORTANT]
 > A **GatewaySubnet** beállításban a 0.0.0.0/0 előtaggal rendelkező útvonal nem támogatott.
 
-Adja meg a megfelelő útválasztási táblázatban megadott hálózatok útvonalait. Például az Azure VMware-megoldás felügyeletéhez és a kihelyezett számítási feladatokhoz tartozó IP-előtagokhoz és fordítva.
+Adja meg a megfelelő útválasztási táblázatban megadott hálózatok útvonalait. Például az Azure VMware-megoldás felügyeletéhez és a kihelyezett számítási feladatokhoz tartozó IP-előtagokhoz, valamint a körülötte lévő egyéb módszerekhez tartozó útvonalakat is elérheti.
 
 :::image type="content" source="media/hub-spoke/specify-gateway-subnet-for-route-table.png" alt-text="Azure VMware Solution hub és küllős integrációs üzembe helyezés" lightbox="media/hub-spoke/specify-gateway-subnet-for-route-table.png":::
 
@@ -111,7 +111,7 @@ A részletekért és a követelményekért tekintse át [Application Gateway](./
 
 ### <a name="jump-box-and-azure-bastion"></a>Jump Box és az Azure Bastion
 
-Hozzáférés az Azure VMware megoldási környezethez a Jump Box szolgáltatással, amely egy Windows 10 vagy Windows Server rendszerű virtuális gép, amelyet a hub virtuális hálózatán belül, a megosztott szolgáltatási alhálózaton helyeztek üzembe.
+Hozzáférés az Azure VMware megoldási környezethez egy Jump Box, amely egy Windows 10 vagy Windows Server rendszerű virtuális gép, amelyet a hub virtuális hálózatán belül, a megosztott szolgáltatás alhálózatán helyeztek üzembe.
 
 >[!IMPORTANT]
 >Az Azure Bastion az a szolgáltatás, amely a Jump Box-hoz való kapcsolódáshoz ajánlott, hogy megakadályozza az Azure VMware-megoldás az interneten való kihelyezését. Az Azure Bastion nem használható az Azure VMware-megoldás virtuális gépekhez való kapcsolódáshoz, mivel azok nem Azure IaaS-objektumok.  
@@ -137,11 +137,11 @@ A legjobb megoldás, ha az Azure VMware-megoldás, a helyszíni környezet és a
 
 Általános tervezési javaslatként használja a meglévő Azure DNS infrastruktúrát (ebben az esetben Active Directory integrált DNS-t), amely legalább két, a hub virtuális hálózatban üzembe helyezett Azure-beli virtuális gépre van telepítve, és a küllős virtuális hálózatokban van konfigurálva, hogy a DNS-beállításokban ezeket a Azure DNS kiszolgálókat használják.
 
-Az Azure saját DNS továbbra is használható, ahol az Azure saját DNS zónája a virtuális hálózatokhoz van társítva, a DNS-kiszolgálók pedig hibrid feloldóként használhatók, feltételes továbbítással az Azure saját DNS-infrastruktúrát használó helyszíni/Azure VMware-megoldáshoz.
+Használhatja az Azure saját DNSt, ahol az Azure saját DNS-zóna a virtuális hálózatra mutat.  A DNS-kiszolgálók hibrid feloldóként használhatók feltételes továbbítással a helyszíni vagy az Azure VMware-megoldáshoz, amely az Azure saját DNS-infrastruktúrát használó DNS-t használja. 
 
 Több szempontot figyelembe kell venni a Azure DNS privát zónák esetében:
 
-* Az automatikus regisztrációt engedélyezni kell a Azure DNS számára, hogy automatikusan kezelhesse a küllős virtuális hálózatokon belül üzembe helyezett virtuális gépek DNS-rekordjainak életciklusát.
+* Az automatikus regisztrációt engedélyezni kell a Azure DNS számára, hogy automatikusan kezelhesse a DNS-rekordok életciklusát a küllős virtuális hálózatokon belül üzembe helyezett virtuális gépeknél.
 * Az automatikus regisztrációval rendelkező virtuális hálózatok maximális száma csak egy lehet.
 * Azon magánhálózati DNS-zónák maximális száma, amelyekhez a virtuális hálózat 1000, az automatikus regisztráció engedélyezése nélkül lehet kapcsolni.
 
@@ -149,7 +149,7 @@ A helyszíni és az Azure VMware megoldás-kiszolgálókat feltételes továbbí
 
 ## <a name="identity-considerations"></a>Identitással kapcsolatos megfontolások
 
-A legjobb megoldás az, ha a központi telepítés során legalább egy AD-tartományvezérlőt üzembe helyez az elosztón a megosztott szolgáltatás alhálózatának használatával, ideális esetben kettőt a zóna által terjesztett módon vagy a virtuális gép rendelkezésre állási csoportján belül. A helyszíni AD-tartomány Azure-ra való kiterjesztését [Azure Architecture Center](/azure/architecture/reference-architectures/identity/adds-extend-domain) tekintheti meg.
+Az azonosításhoz ajánlott módszer az, ha legalább egy AD-tartományvezérlő üzembe helyezését végzi a központban. Két megosztott szolgáltatási alhálózatot használjon a zónák elosztott vagy a virtuális gép rendelkezésre állási csoportjában. A helyszíni AD-tartomány Azure-ra való kiterjesztését [Azure Architecture Center](/azure/architecture/reference-architectures/identity/adds-extend-domain) tekintheti meg.
 
 Emellett helyezzen üzembe egy másik tartományvezérlőt az Azure VMware megoldás oldalán, hogy identitásként és DNS-forrásként működjön a vSphere-környezetben.
 

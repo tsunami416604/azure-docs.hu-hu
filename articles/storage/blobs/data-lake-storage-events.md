@@ -9,12 +9,12 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8df4de01750de92222bfa9021b66828927804e85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8b4b86656e7b1b4dfd8b69cbc8386f5b6ff6a8c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005479"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674928"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Oktatóanyag: a Databricks-különbözeti tábla frissítéséhez a adattó rögzítési mintájának megvalósítása
 
@@ -22,7 +22,7 @@ Ez az oktatóanyag bemutatja, hogyan kezelheti az eseményeket egy hierarchikus 
 
 Egy kis megoldást fog kiépíteni, amely lehetővé teszi, hogy a felhasználó feltöltse egy Databricks-különbözeti táblázatot egy olyan vesszővel tagolt (CSV) fájl feltöltésével, amely leírja az értékesítési sorrendet. Ezt a megoldást egy Event Grid-előfizetés, egy Azure-függvény és egy Azure Databricks- [feladat](https://docs.azuredatabricks.net/user-guide/jobs.html) összekapcsolásával fogja felépíteni.
 
-Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+Az oktatóanyagban a következőket végezheti el:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Event Grid-előfizetést, amely meghív egy Azure-függvényt.
@@ -60,7 +60,7 @@ Először hozzon létre egy CSV-fájlt, amely leírja az értékesítési sorren
 
    További információ a Storage Explorer használatáról: [Azure Storage Explorer használata az adatok Azure Data Lake Storage Gen2 fiókban való kezeléséhez](data-lake-storage-explorer.md).
 
-2. Az **adattárolóban** hozzon létre egy **bemenet**nevű mappát.
+2. Az **adattárolóban** hozzon létre egy **bemenet** nevű mappát.
 
 3. Illessze be a következő szöveget egy szövegszerkesztőbe.
 
@@ -69,7 +69,7 @@ Először hozzon létre egy CSV-fájlt, amely leírja az értékesítési sorren
    536365,85123A,WHITE HANGING HEART T-LIGHT HOLDER,6,12/1/2010 8:26,2.55,17850,United Kingdom
    ```
 
-4. Mentse ezt a fájlt a helyi számítógépre, és adjon neki nevet **data.csvnak **.
+4. Mentse ezt a fájlt a helyi számítógépre, és adjon neki nevet **data.csvnak** .
 
 5. A Storage Explorerban töltse fel ezt a fájlt a **bemeneti** mappába.  
 
@@ -87,7 +87,7 @@ Ebben a szakaszban a következő feladatokat hajtja végre:
 
 Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure Portal használatával.
 
-1. A Azure Portal válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Azure Databricks**lehetőséget.
+1. A Azure Portal válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Azure Databricks** lehetőséget.
 
     ![Databricks Azure Portal](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Databricks Azure Portal")
 
@@ -99,9 +99,9 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
 ### <a name="create-a-spark-cluster-in-databricks"></a>Spark-fürt létrehozása a Databricks használatával
 
-1. A [Azure Portal](https://portal.azure.com)lépjen a létrehozott Azure Databricks munkaterületre, majd válassza a **munkaterület indítása**elemet.
+1. A [Azure Portal](https://portal.azure.com)lépjen a létrehozott Azure Databricks munkaterületre, majd válassza a **munkaterület indítása** elemet.
 
-2. A rendszer átirányítja az Azure Databricks portáljára. A portálon válassza az **új**  >  **fürt**lehetőséget.
+2. A rendszer átirányítja az Azure Databricks portáljára. A portálon válassza az **új**  >  **fürt** lehetőséget.
 
     ![Databricks az Azure-ban](./media/data-lake-storage-events/databricks-on-azure.png "Databricks az Azure-ban")
 
@@ -114,7 +114,7 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
     * Adjon egy nevet a fürtnek.
     * Mindenképpen jelölje be a **Leállítás 120 percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
 
-4. Válassza a **fürt létrehozása**lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
+4. Válassza a **fürt létrehozása** lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
 
 További információt a fürtök létrehozásáról a [Spark-fürtök az Azure Databricks használatával történő létrehozását](https://docs.azuredatabricks.net/user-guide/clusters/create.html) ismertető szakaszban talál.
 
@@ -126,7 +126,7 @@ További információt a fürtök létrehozásáról a [Spark-fürtök az Azure 
 
 2. A **Jegyzetfüzet létrehozása** párbeszédpanelen adja meg a jegyzetfüzet nevét. Válassza a **Python** nyelvet, majd válassza ki a korábban létrehozott Spark-fürtöt.
 
-    ![Jegyzetfüzet létrehozása a Databricks-ben](./media/data-lake-storage-events/new-databricks-notebook.png "Jegyzetfüzet létrehozása a Databricks-ben")
+    ![A jegyzetfüzet létrehozása párbeszédpanelt és a Python nyelvként való kiválasztásának helyét bemutató képernyőkép.](./media/data-lake-storage-events/new-databricks-notebook.png "Jegyzetfüzet létrehozása a Databricks-ben")
 
     Kattintson a **Létrehozás** gombra.
 
@@ -150,7 +150,7 @@ További információt a fürtök létrehozásáról a [Spark-fürtök az Azure 
     customerTablePath = adlsPath + 'delta-tables/customers'
     ```
 
-    Ez a kód létrehoz egy **source_file**nevű widgetet. Később létrehoz egy Azure-függvényt, amely meghívja ezt a kódot, és átadja egy fájl elérési útját az adott widgetnek.  Ez a kód is hitelesíti a szolgáltatásnevet a Storage-fiókkal, és létrehoz néhány változót, amelyet más cellákban fog használni.
+    Ez a kód létrehoz egy **source_file** nevű widgetet. Később létrehoz egy Azure-függvényt, amely meghívja ezt a kódot, és átadja egy fájl elérési útját az adott widgetnek.  Ez a kód is hitelesíti a szolgáltatásnevet a Storage-fiókkal, és létrehoz néhány változót, amelyet más cellákban fog használni.
 
     > [!NOTE]
     > Éles környezetben érdemes megfontolni a hitelesítési kulcs tárolását Azure Databricks-ben. Ezután adjon hozzá egy megkeresési kulcsot a kódjához a hitelesítési kulcs helyett. <br><br>Például a következő kódrészlet használata helyett: `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")` , az alábbi kódrészletet fogja használni: `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))` . <br><br>Az oktatóanyag elvégzése után tekintse meg a Azure Databricks webhelyén található [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) cikket, ahol megtekintheti a megközelítés példáit.
@@ -238,9 +238,9 @@ További információt a fürtök létrehozásáról a [Spark-fürtök az Azure 
 
 Hozzon létre egy feladatot, amely a korábban létrehozott jegyzetfüzetet futtatja. Később létre fog hozni egy Azure-függvényt, amely egy esemény bekövetkezésekor futtatja ezt a feladatot.
 
-1. Kattintson a **feladatok**lehetőségre.
+1. Kattintson a **feladatok** lehetőségre.
 
-2. A **feladatok** lapon kattintson a **feladat létrehozása**elemre.
+2. A **feladatok** lapon kattintson a **feladat létrehozása** elemre.
 
 3. Adjon nevet a feladatoknak, majd válassza ki a `upsert-order-data` munkafüzetet.
 
@@ -250,7 +250,7 @@ Hozzon létre egy feladatot, amely a korábban létrehozott jegyzetfüzetet futt
 
 Hozzon létre egy Azure-függvényt, amely futtatja a feladatot.
 
-1. A Databricks munkaterület felső sarkában válassza a személyek ikont, majd válassza a **felhasználói beállítások**lehetőséget.
+1. A Databricks munkaterület felső sarkában válassza a személyek ikont, majd válassza a **felhasználói beállítások** lehetőséget.
 
    ![Fiók kezelése](./media/data-lake-storage-events/generate-token.png "Felhasználói beállítások")
 
@@ -258,7 +258,7 @@ Hozzon létre egy Azure-függvényt, amely futtatja a feladatot.
 
    Ügyeljen arra, hogy a tokent biztonságos helyre másolja. Az Azure-függvénynek szüksége van erre a tokenre a Databricks való hitelesítéshez, hogy az képes legyen futtatni a feladatot.
   
-3. Válassza a Azure Portal bal felső sarkában található **erőforrás létrehozása** gombot, majd válassza a **számítási > függvényalkalmazás**lehetőséget.
+3. Válassza a Azure Portal bal felső sarkában található **erőforrás létrehozása** gombot, majd válassza a **számítási > függvényalkalmazás** lehetőséget.
 
    ![Azure-függvény létrehozása](./media/data-lake-storage-events/function-app-create-flow.png "Azure-függvény létrehozása")
 
@@ -266,9 +266,9 @@ Hozzon létre egy Azure-függvényt, amely futtatja a feladatot.
 
    ![A függvényalkalmazás konfigurálása](./media/data-lake-storage-events/new-function-app.png "A függvényalkalmazás konfigurálása")
 
-5. A függvényalkalmazás **Áttekintés** lapján kattintson a **konfiguráció**elemre.
+5. A függvényalkalmazás **Áttekintés** lapján kattintson a **konfiguráció** elemre.
 
-   ![A függvényalkalmazás konfigurálása](./media/data-lake-storage-events/configure-function-app.png "A függvényalkalmazás konfigurálása")
+   ![Képernyőkép, amely kiemeli a konfigurált funkciók területen található konfigurációs lehetőséget.](./media/data-lake-storage-events/configure-function-app.png "A függvényalkalmazás konfigurálása")
 
 6. Az **Alkalmazásbeállítások** lapon válassza az **új alkalmazás beállítása** gombot az egyes beállítások hozzáadásához.
 
@@ -285,13 +285,13 @@ Hozzon létre egy Azure-függvényt, amely futtatja a feladatot.
 
    ![Új függvény](./media/data-lake-storage-events/new-function.png "Új függvény")
 
-8. Válassza ki **Azure Event Grid triggert**.
+8. Válassza ki **Azure Event Grid triggert** .
 
    Ha a rendszer kéri, telepítse a **Microsoft. Azure. webjobs. Extensions. EventGrid** kiterjesztést. Ha telepítenie kell, a függvény létrehozásához ki kell választania **Azure Event Grid triggert** .
 
    Megjelenik az **új függvény** panel.
 
-9. Az **új függvény** ablaktáblán nevezze el a függvény **UpsertOrder**, majd kattintson a **Létrehozás** gombra.
+9. Az **új függvény** ablaktáblán nevezze el a függvény **UpsertOrder** , majd kattintson a **Létrehozás** gombra.
 
 10. Cserélje le a kód tartalmát a kódnak megfelelően, majd kattintson a **Save (Mentés** ) gombra:
 
@@ -345,13 +345,13 @@ Ebben a szakaszban olyan Event Grid-előfizetést hoz létre, amely meghívja az
 
 1. A függvény kódja lapon kattintson az **Event Grid előfizetés hozzáadása** gombra.
 
-   ![Új esemény-előfizetés](./media/data-lake-storage-events/new-event-subscription.png "Új esemény-előfizetés")
+   ![Képernyőkép, amely kiemeli az Event Grid előfizetés hozzáadása gombot.](./media/data-lake-storage-events/new-event-subscription.png "Új esemény-előfizetés")
 
 2. Az **esemény-előfizetés létrehozása** lapon nevezze el az előfizetést, majd használja a lapon található mezőket a Storage-fiók kiválasztásához.
 
    ![Új esemény-előfizetés](./media/data-lake-storage-events/new-event-subscription-2.png "Új esemény-előfizetés")
 
-3. A **szűrő az események típusai** legördülő listából válassza ki a **létrehozott blobot**, és a **blob által törölt** eseményeket, majd kattintson a **Létrehozás** gombra.
+3. A **szűrő az események típusai** legördülő listából válassza ki a **létrehozott blobot** , és a **blob által törölt** eseményeket, majd kattintson a **Létrehozás** gombra.
 
 ## <a name="test-the-event-grid-subscription"></a>A Event Grid előfizetés tesztelése
 
@@ -407,11 +407,11 @@ Ebben a szakaszban olyan Event Grid-előfizetést hoz létre, amely meghívja az
 
    ![A frissített rekord megjelenik a táblában](./media/data-lake-storage-events/final_query-2.png "A frissített rekord megjelenik a táblában")
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
-Ha már nincs rájuk szükség, törölje az erőforráscsoportot és az összes kapcsolódó erőforrást. Ehhez válassza ki a Storage-fiókhoz tartozó erőforráscsoportot, és válassza a **Törlés**lehetőséget.
+Ha már nincs rájuk szükség, törölje az erőforráscsoportot és az összes kapcsolódó erőforrást. Ehhez válassza ki a Storage-fiókhoz tartozó erőforráscsoportot, és válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Reagálás Blob Storage-eseményekre](storage-blob-event-overview.md)

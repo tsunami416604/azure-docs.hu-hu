@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
-ms.openlocfilehash: d90cc76da20861ae9eca7aaf59a49e5f3e866c92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a57de3d6beda5336f480f20137a9ccaa014b012d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444439"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675084"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Azure Active Directory hitelesítés használata
 
@@ -118,7 +118,7 @@ A Azure SQL Database, SQL felügyelt példányban vagy Azure Szinapszisban táro
   - `SUSER_ID(<admin name>)`
   - `SUSER_SID(<admin name>)`
 
-### <a name="sql-managed-instance"></a>Felügyelt SQL-példány
+### <a name="sql-managed-instance"></a>SQL Managed Instance
 
 - A [felügyelt SQL-példányok](../managed-instance/sql-managed-instance-paas-overview.md)támogatják az Azure ad-kiszolgálói rendszerbiztonsági tag (bejelentkezések) és a felhasználók támogatását.
 - Az Azure ad-kiszolgáló rendszerbiztonsági tagjai (bejelentkezések) adatbázis-tulajdonosként való beállítása nem támogatott az [SQL felügyelt példányain](../managed-instance/sql-managed-instance-paas-overview.md).
@@ -153,21 +153,21 @@ Az Azure AD Server-rendszerbiztonsági tag (Logins) esetében az alábbi hiteles
   - Az SQL felügyelt példányaihoz tartozó Azure AD-kiszolgálói rendszerbiztonsági tag (login) hozzáadása lehetővé teszi több Azure AD-kiszolgáló rendszerbiztonsági tag (bejelentkezés) létrehozását, amelyek hozzáadhatók a `sysadmin` szerepkörhöz.
 - Először csak egy Azure AD-rendszergazda csatlakozhat a kiszolgálóhoz vagy a felügyelt példányhoz egy Azure Active Directory fiók használatával. A Active Directory rendszergazda konfigurálhatja a következő Azure AD-adatbázis felhasználóit.
 - Javasoljuk, hogy a kapcsolat időtúllépését 30 másodpercre állítsa be.
-- SQL Server 2016 Management Studio és SQL Server Data Tools a Visual Studio 2015 (14.0.60311.1 április 2016-ös vagy újabb verziója) támogatja a Azure Active Directory hitelesítést. (Az Azure AD-hitelesítést a **.NET-keretrendszer SQLServer-adatszolgáltatója**támogatja; legalább a .NET-keretrendszer 4,6-es verziója). Ezért az eszközök és az adatrétegbeli alkalmazások (DAC és BACPAC) legújabb verziói az Azure AD-hitelesítést használhatják.
+- SQL Server 2016 Management Studio és SQL Server Data Tools a Visual Studio 2015 (14.0.60311.1 április 2016-ös vagy újabb verziója) támogatja a Azure Active Directory hitelesítést. (Az Azure AD-hitelesítést a **.NET-keretrendszer SQLServer-adatszolgáltatója** támogatja; legalább a .NET-keretrendszer 4,6-es verziója). Ezért az eszközök és az adatrétegbeli alkalmazások (DAC és BACPAC) legújabb verziói az Azure AD-hitelesítést használhatják.
 - A 15.0.1 verziótól kezdődően a [Sqlcmd segédprogram](/sql/tools/sqlcmd-utility) és a [bcp segédprogram](/sql/tools/bcp-utility) támogatja Active Directory interaktív hitelesítést multi-Factor Authentication használatával.
-- A Visual Studio 2015 SQL Server Data Tools használatához legalább az Adateszközök (14.0.60311.1-verzió) április 2016-es verziója szükséges. Az Azure AD-felhasználók jelenleg nem jelennek meg a SSDT Object Explorer. Áthidaló megoldásként tekintse meg [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx)felhasználóit.
+- A Visual Studio 2015 SQL Server Data Tools használatához legalább az Adateszközök (14.0.60311.1-verzió) április 2016-es verziója szükséges. Az Azure AD-felhasználók jelenleg nem jelennek meg a SSDT Object Explorer. Áthidaló megoldásként tekintse meg [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql)felhasználóit.
 - [A SQL Server rendszerhez készült Microsoft JDBC-6,0 illesztőprogram támogatja az](https://www.microsoft.com/download/details.aspx?id=11774) Azure ad-hitelesítést. Lásd még: [a kapcsolatok tulajdonságainak beállítása](/sql/connect/jdbc/setting-the-connection-properties).
 - Az Azure AD-hitelesítéssel nem végezhető el a hitelesítés.
 - Az Azure AD-hitelesítés a Azure SQL Database és az Azure szinapszis számára is támogatott a Azure Portal **importálási adatbázis** és az **adatbázis exportálása** lapok használatával. Az Azure AD-hitelesítéssel történő Importálás és exportálás a PowerShell-parancsokból is támogatott.
-- Az Azure AD-hitelesítés támogatott a SQL Database, az SQL felügyelt példányok és az Azure szinapszis használatával a parancssori felülettel. További információ: [Azure ad-hitelesítés konfigurálása és kezelése SQL Database vagy Azure szinapszis](authentication-aad-configure.md) és [SQL Server – az SQL Server](https://docs.microsoft.com/cli/azure/sql/server)segítségével.
+- Az Azure AD-hitelesítés támogatott a SQL Database, az SQL felügyelt példányok és az Azure szinapszis használatával a parancssori felülettel. További információ: [Azure ad-hitelesítés konfigurálása és kezelése SQL Database vagy Azure szinapszis](authentication-aad-configure.md) és [SQL Server – az SQL Server](/cli/azure/sql/server)segítségével.
 
 ## <a name="next-steps"></a>Következő lépések
 
 - Az Azure AD-példányok létrehozásával és feltöltésével, valamint a Azure SQL Database, SQL felügyelt példánnyal vagy az Azure szinapszis szolgáltatással való konfigurálásával kapcsolatban tekintse meg a [Azure Active Directory hitelesítés konfigurálása és kezelése SQL Database, SQL felügyelt példány vagy Azure szinapszis](authentication-aad-configure.md)használatával című témakört.
 - Az Azure AD Server rendszerbiztonsági példányok (bejelentkezések) SQL felügyelt példánnyal való használatával kapcsolatos oktatóanyagért lásd: [Azure ad Server rendszerbiztonsági tag (bejelentkezések) az SQL felügyelt példányával](../managed-instance/aad-security-configure-tutorial.md)
 - A bejelentkezések, a felhasználók, az adatbázis-szerepkörök és a SQL Databaseban lévő engedélyek áttekintését lásd: [bejelentkezések, felhasználók, adatbázis-szerepkörök és engedélyek](logins-create-manage.md).
-- További információ az adatbázis résztvevőivel kapcsolatban: [Résztvevők](https://msdn.microsoft.com/library/ms181127.aspx).
-- További információ az adatbázis-szerepkörökkel kapcsolatban: [Adatbázis-szerepkörök](https://msdn.microsoft.com/library/ms189121.aspx).
+- További információ az adatbázis résztvevőivel kapcsolatban: [Résztvevők](/sql/relational-databases/security/authentication-access/principals-database-engine).
+- További információ az adatbázis-szerepkörökkel kapcsolatban: [Adatbázis-szerepkörök](/sql/relational-databases/security/authentication-access/database-level-roles).
 - Az SQL felügyelt példányához tartozó Azure AD-kiszolgálói rendszerbiztonsági tag (login) létrehozásával kapcsolatos szintaxisért lásd:  [create login (bejelentkezés létrehozása](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)).
 - További információ az SQL Database tűzfalszabályaival kapcsolatban: [SQL Database tűzfalszabályok](firewall-configure.md).
 

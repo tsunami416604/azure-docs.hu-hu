@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: 711d1cfccb6cdfe4a2fcb48a8ada7b33f744c317
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d0242ceec62db6548d91e5e58c21981a4f0246a0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479085"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672509"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Database és az Azure szinapszis Analytics kapcsolati architektúrája
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "92479085"
 Ez a cikk ismerteti a különböző összetevők architektúráját, amelyek közvetlen hálózati forgalmat Azure SQL Database vagy Azure szinapszis Analytics-kiszolgálóra irányítanak. Ismerteti továbbá a különböző kapcsolati szabályzatokat, valamint azt, hogy a hogyan befolyásolja az Azure-ból és az Azure-on kívülről csatlakozó ügyfelektől érkező ügyfeleket.
 
 > [!IMPORTANT]
-> Ez a cikk *nem* vonatkozik az **Azure SQL felügyelt példányaira**. Tekintse át a [felügyelt példány kapcsolati architektúráját](../managed-instance/connectivity-architecture-overview.md).
+> Ez a cikk *nem* vonatkozik az **Azure SQL felügyelt példányaira** . Tekintse át a [felügyelt példány kapcsolati architektúráját](../managed-instance/connectivity-architecture-overview.md).
 
 ## <a name="connectivity-architecture"></a>Kapcsolati architektúra
 
@@ -51,7 +51,7 @@ A SQL Database és az Azure szinapszis-kiszolgálók a következő három lehet�
 
 - **Alapértelmezett:** Ez a kapcsolódási házirend a létrehozás után minden kiszolgálón érvényben van, kivéve, ha explicit módon módosítja a kapcsolódási házirendet a vagy a rendszerre `Proxy` `Redirect` . Az alapértelmezett házirend az `Redirect` Azure-ból (például egy Azure-beli virtuális gépről) és `Proxy` a kívülről származó összes ügyfélkapcsolatra (például a helyi munkaállomásról létesített kapcsolatokra) vonatkozó összes ügyfélkapcsolat.
 
-A kapcsolati szabályzatot a `Redirect` `Proxy` legalacsonyabb késés és a legmagasabb átviteli sebesség érdekében javasoljuk. Azonban meg kell felelnie a fentiekben ismertetett hálózati forgalom engedélyezésének további követelményeinek. Ha az ügyfél egy Azure-beli virtuális gép, ezt a hálózati biztonsági csoportok (NSG) és a [szolgáltatás-címkék](../../virtual-network/security-overview.md#service-tags)használatával végezheti el. Ha az ügyfél helyszíni munkaállomásról csatlakozik, akkor előfordulhat, hogy a hálózati rendszergazdával kell dolgoznia a vállalati tűzfalon keresztüli hálózati forgalom engedélyezéséhez.
+A kapcsolati szabályzatot a `Redirect` `Proxy` legalacsonyabb késés és a legmagasabb átviteli sebesség érdekében javasoljuk. Azonban meg kell felelnie a fentiekben ismertetett hálózati forgalom engedélyezésének további követelményeinek. Ha az ügyfél egy Azure-beli virtuális gép, ezt a hálózati biztonsági csoportok (NSG) és a [szolgáltatás-címkék](../../virtual-network/network-security-groups-overview.md#service-tags)használatával végezheti el. Ha az ügyfél helyszíni munkaállomásról csatlakozik, akkor előfordulhat, hogy a hálózati rendszergazdával kell dolgoznia a vállalati tűzfalon keresztüli hálózati forgalom engedélyezéséhez.
 
 ## <a name="connectivity-from-within-azure"></a>Csatlakozás az Azure-ból
 
@@ -66,7 +66,7 @@ Ha az Azure-on kívülről csatlakozik, a kapcsolatok alapértelmezés szerint c
 ![Diagram, amely bemutatja, hogyan történik a TCP-munkamenet létrehozása a Azure SQL Database átjárón és az összes további csomagon az átjárón keresztül.](./media/connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
-> Emellett a 1434-es és a 14000-14999-as TCP-porton is megnyitható a [DAC](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
+> Emellett a 1434-es és a 14000-14999-as TCP-porton is megnyitható a [DAC](/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
 
 ## <a name="gateway-ip-addresses"></a>Átjáró IP-címei
 
@@ -124,6 +124,6 @@ A forgalom áttelepítésének részletei az egyes régiókban lévő új átjá
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A kiszolgálók Azure SQL Database-kapcsolódási házirendjének módosításáról további információt a [Conn-Policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy)című témakörben talál.
+- A kiszolgálók Azure SQL Database-kapcsolódási házirendjének módosításáról további információt a [Conn-Policy](/cli/azure/sql/server/conn-policy)című témakörben talál.
 - A ADO.NET 4,5-as vagy újabb verziót használó ügyfelek Azure SQL Database-kapcsolatainak működéséről további információért lásd: [a 1433-nál nagyobb portok a ADO.NET 4,5](adonet-v12-develop-direct-route-ports.md)-ban.
 - Az alkalmazások fejlesztésének általános áttekintését lásd: [SQL Database alkalmazásfejlesztés áttekintése](develop-overview.md).

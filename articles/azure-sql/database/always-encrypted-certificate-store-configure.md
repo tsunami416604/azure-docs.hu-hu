@@ -12,28 +12,28 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: a966579e1acc02f1479c41520dcbbc58d420647c
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 60dea826a12ea475806adb6db88faa88e26463a1
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164516"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674827"
 ---
 # <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>Always Encrypted konfigurálása a Windows tanúsítványtároló használatával
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Ez a cikk bemutatja, hogyan védheti meg a bizalmas adatokat Azure SQL Database vagy az Azure SQL felügyelt példányában az adatbázis-titkosítással [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx) [Always encrypted varázslójával](/sql/relational-databases/security/encryption/always-encrypted-wizard) . Emellett azt is bemutatja, hogyan tárolhatja a titkosítási kulcsokat a Windows-tanúsítványtárolóban.
+Ez a cikk bemutatja, hogyan védheti meg a bizalmas adatokat Azure SQL Database vagy az Azure SQL felügyelt példányában az adatbázis-titkosítással [SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms) [Always encrypted varázslójával](/sql/relational-databases/security/encryption/always-encrypted-wizard) . Emellett azt is bemutatja, hogyan tárolhatja a titkosítási kulcsokat a Windows-tanúsítványtárolóban.
 
-A Always Encrypted egy adattitkosítási technológia, amely segít a kiszolgálón tárolt bizalmas adatok védelme során, az ügyfél és a kiszolgáló közötti váltás során, és az adatok használatban vannak, így biztosítva, hogy a bizalmas adatok soha nem jelennek meg az adatbázis-rendszeren belüli egyszerű szövegként. Az adattitkosítást követően csak a kulcsokhoz hozzáférő ügyfélalkalmazások vagy kiszolgálóalkalmazások férhetnek hozzá az egyszerű szöveges adataihoz. Részletes információ: [Always encrypted (adatbázismotor)](https://msdn.microsoft.com/library/mt163865.aspx).
+A Always Encrypted egy adattitkosítási technológia, amely segít a kiszolgálón tárolt bizalmas adatok védelme során, az ügyfél és a kiszolgáló közötti váltás során, és az adatok használatban vannak, így biztosítva, hogy a bizalmas adatok soha nem jelennek meg az adatbázis-rendszeren belüli egyszerű szövegként. Az adattitkosítást követően csak a kulcsokhoz hozzáférő ügyfélalkalmazások vagy kiszolgálóalkalmazások férhetnek hozzá az egyszerű szöveges adataihoz. Részletes információ: [Always encrypted (adatbázismotor)](/sql/relational-databases/security/encryption/always-encrypted-database-engine).
 
 Miután a Always Encrypted használatára konfigurálta az adatbázist, a Visual Studióval kell létrehoznia egy ügyfélalkalmazás a C#-ban, hogy működjön a titkosított adattal.
 
 A cikk lépéseit követve megtudhatja, hogyan állíthat be Always Encrypted SQL Database vagy SQL felügyelt példányhoz. Ebből a cikkből megtudhatja, hogyan hajthatja végre a következő feladatokat:
 
-* [Always encrypted kulcsok](https://msdn.microsoft.com/library/mt163865.aspx#Anchor_3)létrehozásához használja a SSMS Always encrypted varázslóját.
-  * Hozzon létre egy [oszlop főkulcsát (CMK)](https://msdn.microsoft.com/library/mt146393.aspx).
-  * Hozzon létre egy [oszlop titkosítási kulcsát (CEK)](https://msdn.microsoft.com/library/mt146372.aspx).
+* [Always encrypted kulcsok](/sql/relational-databases/security/encryption/always-encrypted-database-engine#Anchor_3)létrehozásához használja a SSMS Always encrypted varázslóját.
+  * Hozzon létre egy [oszlop főkulcsát (CMK)](/sql/t-sql/statements/create-column-master-key-transact-sql).
+  * Hozzon létre egy [oszlop titkosítási kulcsát (CEK)](/sql/t-sql/statements/create-column-encryption-key-transact-sql).
 * Adatbázis-tábla létrehozása és oszlopok titkosítása.
 * Hozzon létre egy alkalmazást, amely beszúrja, kiválasztja és megjeleníti a titkosított oszlopok adatait.
 
@@ -43,15 +43,15 @@ Ebben az oktatóanyagban a következőkre lesz szüksége:
 
 * Azure-fiók és -előfizetés. Ha még nem rendelkezik ilyennel, regisztráljon az [ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/).
 - [Azure SQL Database](single-database-create-quickstart.md) vagy [Azure SQL felügyelt példányban](../managed-instance/instance-create-quickstart.md)található adatbázis.
-* [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) 13.0.700.242 vagy újabb verzió.
-* A [.NET-keretrendszer 4,6](https://msdn.microsoft.com/library/w0x726c2.aspx) -es vagy újabb verziója (az ügyfélszámítógépen).
+* [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) 13.0.700.242 vagy újabb verzió.
+* A [.NET-keretrendszer 4,6](/dotnet/framework/) -es vagy újabb verziója (az ügyfélszámítógépen).
 * [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
 
 ## <a name="enable-client-application-access"></a>Ügyfélalkalmazások hozzáférésének engedélyezése
 
 Engedélyeznie kell az ügyfélalkalmazás számára SQL Database vagy SQL felügyelt példány elérését egy Azure Active Directory (HRE) alkalmazás beállításával és az alkalmazás hitelesítéséhez szükséges *alkalmazás-azonosító* és *kulcs* másolásával.
 
-Az *alkalmazás azonosítójának* és *kulcsának*beszerzéséhez kövesse az [erőforrásokhoz hozzáférő Azure Active Directory alkalmazás és egyszerű szolgáltatás létrehozása](../../active-directory/develop/howto-create-service-principal-portal.md)című témakör lépéseit.
+Az *alkalmazás azonosítójának* és *kulcsának* beszerzéséhez kövesse az [erőforrásokhoz hozzáférő Azure Active Directory alkalmazás és egyszerű szolgáltatás létrehozása](../../active-directory/develop/howto-create-service-principal-portal.md)című témakör lépéseit.
 
 
 
@@ -70,8 +70,8 @@ Ha megnyílik az **Új tűzfalszabály** ablak, jelentkezzen be az Azure-ba, és
 
 Ebben a szakaszban létre fog hozni egy táblázatot a páciensek számára. Ez egy normál táblázat, amely a következő szakaszban fogja konfigurálni a titkosítást.
 
-1. Bontsa ki az **adatbázisok**csomópontot.
-2. Kattintson a jobb gombbal a **Klinika** -adatbázisra, majd kattintson az **Új lekérdezés**elemre.
+1. Bontsa ki az **adatbázisok** csomópontot.
+2. Kattintson a jobb gombbal a **Klinika** -adatbázisra, majd kattintson az **Új lekérdezés** elemre.
 3. Illessze be a következő Transact-SQL (T-SQL) T az új lekérdezési ablakba, és **hajtsa végre** .
     
     ```tsql
@@ -94,20 +94,20 @@ Ebben a szakaszban létre fog hozni egy táblázatot a páciensek számára. Ez 
 
 A SSMS a CMK, a CEK és a titkosított oszlopok beállításával megkönnyíti a Always Encrypted egyszerű konfigurálását.
 
-1. Bontsa ki az **adatbázisok**  >  **Klinika**  >  **táblái**elemet.
+1. Bontsa ki az **adatbázisok**  >  **Klinika**  >  **táblái** elemet.
 2. Kattintson a jobb gombbal a **páciensek** táblára, és válassza az **oszlopok titkosítása** lehetőséget a Always encrypted varázsló megnyitásához:
 
     ![Képernyőkép, amely megjeleníti a titkosítás Colunns... menüpont a betegek táblában.](./media/always-encrypted-certificate-store-configure/encrypt-columns.png)
 
-A Always Encrypted varázsló a következő szakaszokat tartalmazza: **Oszlop kijelölése**, **főkulcs konfigurálása** (CMK), **Érvényesítés**és **Összefoglalás**.
+A Always Encrypted varázsló a következő szakaszokat tartalmazza: **Oszlop kijelölése** , **főkulcs konfigurálása** (CMK), **Érvényesítés** és **Összefoglalás** .
 
 ### <a name="column-selection"></a>Oszlop kijelölése
 
-A **Bevezetés** lapon a **tovább** gombra kattintva nyissa meg az **Oszlop kijelölése** lapot. Ezen az oldalon kiválaszthatja, hogy mely oszlopokat kívánja titkosítani, [a titkosítás típusát és a használni kívánt CEK-kulcsot](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) .
+A **Bevezetés** lapon a **tovább** gombra kattintva nyissa meg az **Oszlop kijelölése** lapot. Ezen az oldalon kiválaszthatja, hogy mely oszlopokat kívánja titkosítani, [a titkosítás típusát és a használni kívánt CEK-kulcsot](/sql/relational-databases/security/encryption/always-encrypted-wizard#Anchor_2) .
 
 A **Taj** és a **születési** adatok titkosítása minden betegnél. A **SSN** oszlop a determinisztikus titkosítást fogja használni, amely támogatja az egyenlőségi kereséseket, az illesztéseket és a csoportosítást. A **születési** oszlop véletlenszerű titkosítást használ, amely nem támogatja a műveleteket.
 
-Állítsa az **SSN** oszlop **titkosítási típusát** **determinisztikus** értékre, a **születési** oszlop pedig **véletlenszerű**értékre. Kattintson a **Tovább** gombra.
+Állítsa az **SSN** oszlop **titkosítási típusát** **determinisztikus** értékre, a **születési** oszlop pedig **véletlenszerű** értékre. Kattintson a **Tovább** gombra.
 
 ![Oszlopok titkosítása](./media/always-encrypted-certificate-store-configure/column-selection.png)
 
@@ -115,15 +115,15 @@ A **Taj** és a **születési** adatok titkosítása minden betegnél. A **SSN**
 
 A **főkulcs konfigurálása** lapon beállíthatja a CMK, és kiválaszthatja azt a kulcstároló-szolgáltatót, ahol a CMK tárolni fogja. Jelenleg a Windows tanúsítványtárolóban, Azure Key Vault vagy hardveres biztonsági modulban (HSM) is tárolhat CMK. Ez az oktatóanyag bemutatja, hogyan tárolhatók a kulcsok a Windows-tanúsítványtárolóban.
 
-Ellenőrizze, hogy a **Windows tanúsítványtároló** van-e kiválasztva, majd kattintson a **tovább**gombra.
+Ellenőrizze, hogy a **Windows tanúsítványtároló** van-e kiválasztva, majd kattintson a **tovább** gombra.
 
 ![Főkulcs konfigurálása](./media/always-encrypted-certificate-store-configure/master-key-configuration.png)
 
 ### <a name="validation"></a>Érvényesítés
 
-Ezután titkosíthatja az oszlopokat, vagy mentheti a PowerShell-parancsfájlt, hogy később fusson. Ebben az oktatóanyagban válassza a **Folytatás a befejezéshez** lehetőséget, és kattintson a **tovább**gombra.
+Ezután titkosíthatja az oszlopokat, vagy mentheti a PowerShell-parancsfájlt, hogy később fusson. Ebben az oktatóanyagban válassza a **Folytatás a befejezéshez** lehetőséget, és kattintson a **tovább** gombra.
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 
 Ellenőrizze, hogy a beállítások helyesek-e, majd kattintson a **Befejezés** gombra a Always encrypted telepítésének befejezéséhez.
 
@@ -137,17 +137,17 @@ A varázsló befejezése után az adatbázis Always Encrypted lesz beállítva. 
 * Létrehozott egy CEK.
 * Konfigurálta a kijelölt oszlopokat a titkosításhoz. A **páciensek** táblája jelenleg nem rendelkezik adattal, de a kijelölt oszlopokban lévő összes meglévő adattal titkosítva van.
 
-A kulcsok SSMS való létrehozását a **Klinika**  >  **biztonsági**  >  **Always encrypted kulcsainak**segítségével ellenőrizheti. Most már megtekintheti a varázsló által létrehozott új kulcsokat.
+A kulcsok SSMS való létrehozását a **Klinika**  >  **biztonsági**  >  **Always encrypted kulcsainak** segítségével ellenőrizheti. Most már megtekintheti a varázsló által létrehozott új kulcsokat.
 
 ## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>A titkosított adattal használható ügyfélalkalmazás létrehozása
 
 Most, hogy a Always Encrypted be van állítva, létrehozhat egy olyan alkalmazást, amely végrehajtja a *beszúrásokat* , és *kiválasztja* a titkosított oszlopokat. A minta alkalmazás sikeres futtatásához ugyanazon a számítógépen kell futnia, amelyen a Always Encrypted varázslót futtatta. Az alkalmazás másik számítógépen való futtatásához telepítenie kell a Always Encrypted tanúsítványokat az ügyfélalkalmazás futtató számítógépre.  
 
 > [!IMPORTANT]
-> Az alkalmazásnak [SqlParameter](https://msdn.microsoft.com/library/system.data.sqlclient.sqlparameter.aspx) -objektumokat kell használnia, amikor Always encrypted oszlopokkal továbbítja a szöveges adatait a kiszolgálónak. A literális értékek SqlParameter objektumok használata nélkül való átadása kivételt eredményez.
+> Az alkalmazásnak [SqlParameter](/dotnet/api/system.data.sqlclient.sqlparameter) -objektumokat kell használnia, amikor Always encrypted oszlopokkal továbbítja a szöveges adatait a kiszolgálónak. A literális értékek SqlParameter objektumok használata nélkül való átadása kivételt eredményez.
 
 1. Nyissa meg a Visual studiót, és hozzon létre egy új C#-konzol alkalmazást. Győződjön meg arról, hogy a projekt a **.NET-keretrendszer 4,6** -es vagy újabb verziójára van beállítva.
-2. Nevezze el a projekt **AlwaysEncryptedConsoleApp** , és kattintson **az OK**gombra.
+2. Nevezze el a projekt **AlwaysEncryptedConsoleApp** , és kattintson **az OK** gombra.
 
 ![Képernyőkép, amely az újonnan elnevezett AlwaysEncryptedConsoleApp projektet mutatja.](./media/always-encrypted-certificate-store-configure/console-app.png)
 
@@ -155,9 +155,9 @@ Most, hogy a Always Encrypted be van állítva, létrehozhat egy olyan alkalmaz�
 
 Ez a szakasz azt ismerteti, hogyan engedélyezhető a Always Encrypted az adatbázis-kapcsolódási karakterláncban. Az imént létrehozott konzol alkalmazást a következő, "Always Encrypted minta konzol alkalmazás" című szakaszban fogja módosítani.
 
-A Always Encrypted engedélyezéséhez hozzá kell adnia az **oszlop titkosítási beállításához** tartozó kulcsszót a kapcsolódási karakterlánchoz, és be kell állítania azt az **engedélyezett**értékre.
+A Always Encrypted engedélyezéséhez hozzá kell adnia az **oszlop titkosítási beállításához** tartozó kulcsszót a kapcsolódási karakterlánchoz, és be kell állítania azt az **engedélyezett** értékre.
 
-Ezt közvetlenül a kapcsolatok karakterláncában állíthatja be, vagy beállíthatja egy [SqlConnectionStringBuilder](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx)használatával is. A következő szakaszban a minta alkalmazás a **SqlConnectionStringBuilder**használatát mutatja be.
+Ezt közvetlenül a kapcsolatok karakterláncában állíthatja be, vagy beállíthatja egy [SqlConnectionStringBuilder](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder)használatával is. A következő szakaszban a minta alkalmazás a **SqlConnectionStringBuilder** használatát mutatja be.
 
 > [!NOTE]
 > Ez az egyetlen olyan módosítás, amely a Always Encryptedra jellemző ügyfélalkalmazás esetében szükséges. Ha olyan meglévő alkalmazással rendelkezik, amely külsőleg tárolja a kapcsolati karakterláncot (azaz egy konfigurációs fájlban), akkor előfordulhat, hogy a kód módosítása nélkül is engedélyezheti Always Encrypted.
@@ -170,7 +170,7 @@ Adja hozzá a következő kulcsszót a kapcsolódási karakterlánchoz:
 
 ### <a name="enable-always-encrypted-with-a-sqlconnectionstringbuilder"></a>Always Encrypted engedélyezése SqlConnectionStringBuilder
 
-A következő kód bemutatja, hogyan engedélyezheti a Always Encryptedt a [SqlConnectionStringBuilder. ColumnEncryptionSetting](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting.aspx) [beállítás engedélyezésével.](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectioncolumnencryptionsetting.aspx)
+A következő kód bemutatja, hogyan engedélyezheti a Always Encryptedt a [SqlConnectionStringBuilder. ColumnEncryptionSetting](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting) [beállítás engedélyezésével.](/dotnet/api/system.data.sqlclient.sqlconnectioncolumnencryptionsetting)
 
 ```csharp
 // Instantiate a SqlConnectionStringBuilder.
@@ -514,9 +514,9 @@ Láthatja, hogy a titkosított oszlopok nem tartalmaznak egyszerű szöveges inf
 
 Ahhoz, hogy a SSMS használatával hozzáférhessen az egyszerű szöveges információhoz, hozzáadhatja az **oszlop titkosítási beállítás = engedélyezve** paramétert a kapcsolathoz.
 
-1. A SSMS kattintson a jobb gombbal a kiszolgálóra **Object Explorer**, majd kattintson a **Leválasztás**elemre.
-2. Kattintson az adatbázismotor **kapcsolódása**elemre  >  **Database Engine** a **Kapcsolódás a kiszolgálóhoz** ablak megnyitásához, majd kattintson a **Beállítások**elemre.
-3. Kattintson a **további kapcsolatok paramétereinek** és típus **oszlop titkosítási beállítás = engedélyezve**elemre.
+1. A SSMS kattintson a jobb gombbal a kiszolgálóra **Object Explorer** , majd kattintson a **Leválasztás** elemre.
+2. Kattintson az adatbázismotor **kapcsolódása** elemre  >  **Database Engine** a **Kapcsolódás a kiszolgálóhoz** ablak megnyitásához, majd kattintson a **Beállítások** elemre.
+3. Kattintson a **további kapcsolatok paramétereinek** és típus **oszlop titkosítási beállítás = engedélyezve** elemre.
 
     ![Képernyőfelvétel: a további kapcsolatok paramétereinek lapja, amelynél az oszlop titkosítási beállítása = engedélyezve típus szerepel a mezőben.](./media/always-encrypted-certificate-store-configure/ssms-connection-parameter.png)
 4. Futtassa a következő lekérdezést a **Klinika** adatbázisán.
@@ -532,19 +532,19 @@ Ahhoz, hogy a SSMS használatával hozzáférhessen az egyszerű szöveges infor
 > [!NOTE]
 > Ha egy másik számítógépről csatlakozik a SSMS (vagy bármely ügyféllel), nem fog tudni hozzáférni a titkosítási kulcsokhoz, és nem tudja visszafejteni az adatok visszafejtését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután létrehozta a Always Encryptedt használó adatbázist, a következőket teheti:
 
 * Ezt a mintát egy másik számítógépről futtassa. Nem lesz hozzáférése a titkosítási kulcsokhoz, így nem fog hozzáférni az egyszerű szöveges információhoz, és nem fog sikeresen futni.
-* [A kulcsok elforgatása és karbantartása](https://msdn.microsoft.com/library/mt607048.aspx).
-* [Always encrypted-mel már titkosított adatáttelepítés](https://msdn.microsoft.com/library/mt621539.aspx).
-* [Always encrypted tanúsítványokat telepíthet más ügyfélszámítógépekre](https://msdn.microsoft.com/library/mt723359.aspx#Anchor_1) (lásd: "a tanúsítványok elérhetővé tétele az alkalmazások és a felhasználók számára" szakasz).
+* [A kulcsok elforgatása és karbantartása](/sql/relational-databases/security/encryption/configure-always-encrypted-using-sql-server-management-studio).
+* [Always encrypted-mel már titkosított adatáttelepítés](/sql/relational-databases/security/encryption/migrate-sensitive-data-protected-by-always-encrypted).
+* [Always encrypted tanúsítványokat telepíthet más ügyfélszámítógépekre](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted#Anchor_1) (lásd: "a tanúsítványok elérhetővé tétele az alkalmazások és a felhasználók számára" szakasz).
 
 ## <a name="related-information"></a>Kapcsolódó információk
 
-* [Always Encrypted (ügyfél-fejlesztés)](https://msdn.microsoft.com/library/mt147923.aspx)
-* [Transzparens adattitkosítás](https://msdn.microsoft.com/library/bb934049.aspx)
-* [Titkosítás SQL Server](https://msdn.microsoft.com/library/bb510663.aspx)
-* [Always Encrypted varázsló](https://msdn.microsoft.com/library/mt459280.aspx)
-* [Always Encrypted blog](https://docs.microsoft.com/archive/blogs/sqlsecurity/always-encrypted-key-metadata)
+* [Always Encrypted (ügyfél-fejlesztés)](/sql/relational-databases/security/encryption/always-encrypted-client-development)
+* [Transzparens adattitkosítás](/sql/relational-databases/security/encryption/transparent-data-encryption)
+* [Titkosítás SQL Server](/sql/relational-databases/security/encryption/sql-server-encryption)
+* [Always Encrypted varázsló](/sql/relational-databases/security/encryption/always-encrypted-wizard)
+* [Always Encrypted blog](/archive/blogs/sqlsecurity/always-encrypted-key-metadata)

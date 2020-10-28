@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: e9444291c40ef504a674ee18351ba581695d1dd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00f98a5086b9a9bf21054138cf01d26a550338da
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394517"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673851"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Kényszerített bújtatás konfigurálása az Azure Resource Manager-alapú üzemi modellel
 
@@ -53,6 +53,7 @@ A kényszerített bújtatás az Azure-ban virtuális hálózat felhasználó ál
 * Ez az eljárás felhasználó által megadott útvonalakat (UDR) használ egy útválasztási tábla létrehozásához az alapértelmezett útvonal hozzáadásához, majd az útválasztási táblázatot a VNet-alhálózathoz társítja, hogy engedélyezze a kényszerített bújtatást ezeken az alhálózatokon.
 * A kényszerített bújtatást olyan VNet kell társítani, amely egy Route-alapú VPN-átjáróval rendelkezik. Az "alapértelmezett hely" beállítást kell beállítani a virtuális hálózathoz csatlakoztatott telephelyi helyi telephelyek között. Emellett a helyszíni VPN-eszközt a 0.0.0.0/0 protokollal kell konfigurálni a forgalmi választóként. 
 * A ExpressRoute kényszerített bújtatása nem ezen a mechanizmuson keresztül van konfigurálva, hanem a ExpressRoute BGP-társítási munkameneteken keresztüli alapértelmezett útvonal hirdetésével van engedélyezve. További információkért tekintse meg a [ExpressRoute dokumentációját](https://azure.microsoft.com/documentation/services/expressroute/).
+* Ha a VPN Gateway és a ExpressRoute átjáró ugyanazon a VNet van telepítve, a felhasználó által megadott útvonalakat (UDR) már nincs szükség, mert a ExpressRoute-átjáró az "alapértelmezett hely" kifejezést hirdeti meg a VNet.
 
 ## <a name="configuration-overview"></a>Konfiguráció áttekintése
 

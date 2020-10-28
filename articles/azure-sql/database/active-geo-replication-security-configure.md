@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 92a0c7fd3733b5e27c34c6fd0fe157bfb466a0fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 317b530fbaa34ca5689bb505126892e4eba06bd9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444887"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674804"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Azure SQL Database biztonsági beállítások konfigurálása és kezelése geo-visszaállításhoz vagy feladatátvételhez
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Ez a cikk az [aktív földrajzi replikálási](active-geo-replication-overview.m
 
 ## <a name="disaster-recovery-with-contained-users"></a>Vész-helyreállítás a befoglalt felhasználókkal
 
-A hagyományos felhasználóktól eltérően, amelyeket a Master adatbázisban lévő bejelentkezésekhez kell leképezni, a tárolt felhasználókat az adatbázis teljes mértékben kezeli. Ez két előnnyel jár. A vész-helyreállítási forgatókönyvben a felhasználók továbbra is csatlakozhatnak az új elsődleges adatbázishoz vagy az adatbázis helyreállításához a Geo-visszaállítás használatával, további konfiguráció nélkül, mert az adatbázis kezeli a felhasználókat. A konfiguráció a bejelentkezési perspektívából is lehetséges méretezhetőségi és teljesítménybeli előnyökkel jár. További információt a [tartalmazottadatbázis-felhasználókkal kapcsolatos, az adatbázis hordozhatóvá tételével foglalkozó](https://msdn.microsoft.com/library/ff929188.aspx) cikkben talál.
+A hagyományos felhasználóktól eltérően, amelyeket a Master adatbázisban lévő bejelentkezésekhez kell leképezni, a tárolt felhasználókat az adatbázis teljes mértékben kezeli. Ez két előnnyel jár. A vész-helyreállítási forgatókönyvben a felhasználók továbbra is csatlakozhatnak az új elsődleges adatbázishoz vagy az adatbázis helyreállításához a Geo-visszaállítás használatával, további konfiguráció nélkül, mert az adatbázis kezeli a felhasználókat. A konfiguráció a bejelentkezési perspektívából is lehetséges méretezhetőségi és teljesítménybeli előnyökkel jár. További információt a [tartalmazottadatbázis-felhasználókkal kapcsolatos, az adatbázis hordozhatóvá tételével foglalkozó](/sql/relational-databases/security/contained-database-users-making-your-database-portable) cikkben talál.
 
 A fő kompromisszum az, hogy a vész-helyreállítási folyamat nagyobb kihívást jelent. Ha több adatbázissal is rendelkezik, amelyek ugyanazt a bejelentkezést használják, a hitelesítő adatoknak a több adatbázisba foglalt felhasználókkal való megőrzése megtagadhatja a befoglalt felhasználók előnyeit. Például a jelszó-elforgatási házirend megköveteli, hogy a módosítások a főadatbázisban egyszer a bejelentkezéshez használt jelszó módosítása helyett több adatbázisban is konzisztensek legyenek. Ezért ha több olyan adatbázissal rendelkezik, amelyek ugyanazt a felhasználónevet és jelszót használják, a foglalt felhasználók használata nem ajánlott.
 
@@ -34,7 +34,7 @@ A fő kompromisszum az, hogy a vész-helyreállítási folyamat nagyobb kihívá
 Ha bejelentkezési adatokat és felhasználókat használ (nem a tárolt felhasználók helyett), akkor további lépéseket kell tennie annak biztosításához, hogy ugyanazokat a bejelentkezéseket a Master adatbázis tartalmazza. A következő fejezetek az érintett lépéseket és a további szempontokat ismertetik.
 
   >[!NOTE]
-  > Az adatbázisok kezeléséhez Azure Active Directory (HRE) bejelentkezés is lehetséges. További információ: [Azure SQL-bejelentkezések és felhasználók](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins).
+  > Az adatbázisok kezeléséhez Azure Active Directory (HRE) bejelentkezés is lehetséges. További információ: [Azure SQL-bejelentkezések és felhasználók](./logins-create-manage.md).
 
 ### <a name="set-up-user-access-to-a-secondary-or-recovered-database"></a>Felhasználói hozzáférés beállítása másodlagos vagy helyreállított adatbázishoz
 
@@ -82,7 +82,7 @@ WHERE [type_desc] = 'SQL_USER'
 ```
 
 > [!NOTE]
-> A **INFORMATION_SCHEMA** és a **sys** felhasználók *Null* SID azonosítóval rendelkeznek, és a **vendég** SID **kell lennie 0x00**. A **dbo** SID a *0x01060000000001648000000000048454*-vel kezdődhet, ha az adatbázis létrehozója a kiszolgáló rendszergazdája volt a **DbManager**tagja helyett.
+> A **INFORMATION_SCHEMA** és a **sys** felhasználók *Null* SID azonosítóval rendelkeznek, és a **vendég** SID **kell lennie 0x00** . A **dbo** SID a *0x01060000000001648000000000048454* -vel kezdődhet, ha az adatbázis létrehozója a kiszolgáló rendszergazdája volt a **DbManager** tagja helyett.
 
 #### <a name="3-create-the-logins-on-the-target-server"></a>3. a bejelentkezések létrehozása a célkiszolgálón
 
@@ -106,7 +106,7 @@ SID = <desired login SID>
 ## <a name="next-steps"></a>Következő lépések
 
 * Az adatbázis-hozzáférés és a bejelentkezések kezelésével kapcsolatos további információkért lásd [: SQL Database biztonság: az adatbázis-hozzáférés és a bejelentkezési biztonság kezelése](logins-create-manage.md).
-* További információ a tárolt adatbázis-felhasználókról: [tárolt adatbázis-felhasználók – az adatbázis hordozhatóvé tétele](https://msdn.microsoft.com/library/ff929188.aspx).
+* További információ a tárolt adatbázis-felhasználókról: [tárolt adatbázis-felhasználók – az adatbázis hordozhatóvé tétele](/sql/relational-databases/security/contained-database-users-making-your-database-portable).
 * Az aktív geo-replikációval kapcsolatos információkért lásd: [aktív földrajzi replikálás](active-geo-replication-overview.md).
 * További információ az automatikus feladatátvételi csoportokról: [automatikus feladatátvételi csoportok](auto-failover-group-overview.md).
 * További információ a Geo-visszaállítás használatáról: [geo-visszaállítás](recovery-using-backups.md#geo-restore)

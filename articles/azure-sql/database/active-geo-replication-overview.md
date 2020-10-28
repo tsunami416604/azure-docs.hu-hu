@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: 344d4e6b57082eb9ccfcd0642732d05216ad3978
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 35aff26eac3dd456db55204b662cb9b8a6bb9f2b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426326"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672980"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Active geo-Replication-Azure SQL Database létrehozása és használata
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ Az aktív geo-replikáció egy Azure SQL Database funkció, amely lehetővé tes
 Az aktív földrajzi replikálás olyan üzletmenet-folytonossági megoldás, amely lehetővé teszi, hogy az alkalmazás az egyes adatbázisok gyors vész-helyreállítását regionális katasztrófa vagy nagy léptékű leállás esetén hajtsa végre. Ha a Geo-replikáció engedélyezve van, az alkalmazás feladatátvételt kezdeményezhet egy másik Azure-régióban található másodlagos adatbázisba. Akár négy formátumú másodlagos zónák is támogatott ugyanazon vagy különböző régiókban, és a formátumú másodlagos zónák csak olvasási hozzáférési lekérdezésekhez használható. A feladatátvételt az alkalmazásnak vagy a felhasználónak manuálisan kell kezdeményeznie. A feladatátvételt követően az új elsődleges végpont eltérő kapcsolódási ponttal rendelkezik.
 
 > [!NOTE]
-> Az aktív geo-replikáció replikálja a változásokat az adatfolyam-adatbázis tranzakciós naplója szerint. Nem kapcsolódik a [tranzakciós replikációhoz](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication), amely a DML (INSERT, Update, DELETE) parancsok végrehajtásával replikálja a módosításokat.
+> Az aktív geo-replikáció replikálja a változásokat az adatfolyam-adatbázis tranzakciós naplója szerint. Nem kapcsolódik a [tranzakciós replikációhoz](/sql/relational-databases/replication/transactional/transactional-replication), amely a DML (INSERT, Update, DELETE) parancsok végrehajtásával replikálja a módosításokat.
 
 Az alábbi ábra egy geo-redundáns felhőalapú alkalmazás tipikus konfigurációját szemlélteti az aktív geo-replikáció használatával.
 
@@ -46,15 +46,15 @@ Az egyes adatbázisok replikálását és feladatátvételét kezelheti egy kisz
 - [PowerShell: önálló adatbázis](scripts/setup-geodr-and-failover-database-powershell.md)
 - [PowerShell: rugalmas készlet](scripts/setup-geodr-and-failover-elastic-pool-powershell.md)
 - [Transact-SQL: önálló adatbázis vagy rugalmas készlet](/sql/t-sql/statements/alter-database-azure-sql-database)
-- [REST API: önálló adatbázis](https://docs.microsoft.com/rest/api/sql/replicationlinks)
+- [REST API: önálló adatbázis](/rest/api/sql/replicationlinks)
 
-Az aktív geo-replikáció az adatbázismotor [Always On rendelkezésre állási csoportjának](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) technológiáját használja, hogy a pillanatkép-elkülönítés használatával aszinkron módon replikálja a véglegesített tranzakciókat az elsődleges adatbázison egy másodlagos adatbázisba. Az automatikus feladatátvételi csoportok lehetővé teszik a csoportos szemantika használatát az aktív földrajzi replikáláson, de ugyanazt az aszinkron replikációs módszert használják. Amíg a másodlagos adatbázis egy adott ponton nem lehet az elsődleges adatbázis mögött, a másodlagos adat garantáltan soha nem lesz részleges tranzakció. A régiók közötti redundancia lehetővé teszi az alkalmazások számára, hogy a természeti katasztrófák, a katasztrofális emberi hibák vagy a kártékony tevékenységek által okozott teljes adatközpontok vagy adatközpontok részeinek végleges elvesztésével gyorsan helyreállítsák az alkalmazásokat. Az adott RPO-információk az [üzletmenet folytonosságának áttekintése című témakörben](business-continuity-high-availability-disaster-recover-hadr-overview.md)találhatók.
+Az aktív geo-replikáció az adatbázismotor [Always On rendelkezésre állási csoportjának](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) technológiáját használja, hogy a pillanatkép-elkülönítés használatával aszinkron módon replikálja a véglegesített tranzakciókat az elsődleges adatbázison egy másodlagos adatbázisba. Az automatikus feladatátvételi csoportok lehetővé teszik a csoportos szemantika használatát az aktív földrajzi replikáláson, de ugyanazt az aszinkron replikációs módszert használják. Amíg a másodlagos adatbázis egy adott ponton nem lehet az elsődleges adatbázis mögött, a másodlagos adat garantáltan soha nem lesz részleges tranzakció. A régiók közötti redundancia lehetővé teszi az alkalmazások számára, hogy a természeti katasztrófák, a katasztrofális emberi hibák vagy a kártékony tevékenységek által okozott teljes adatközpontok vagy adatközpontok részeinek végleges elvesztésével gyorsan helyreállítsák az alkalmazásokat. Az adott RPO-információk az [üzletmenet folytonosságának áttekintése című témakörben](business-continuity-high-availability-disaster-recover-hadr-overview.md)találhatók.
 
 > [!NOTE]
 > Ha a két régió között hálózati hiba történik, a kapcsolatok újbóli létrehozásához 10 másodpercenként próbálkozunk.
 
 > [!IMPORTANT]
-> Annak biztosításához, hogy a feladatátvétel előtt a rendszer replikálja az elsődleges adatbázis kritikus módosításait, kényszerítse a szinkronizálást, hogy biztosítsa a kritikus módosítások (például a jelszavak frissítései) replikálását. A kényszerített szinkronizálás hatással van a teljesítményre, mert blokkolja a hívó szálat, amíg az összes véglegesített tranzakció replikálódik. Részletekért lásd: [sp_wait_for_database_copy_sync](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync). Az elsődleges adatbázis és a Geo-másodlagos közötti replikációs késés figyeléséhez lásd: [sys.dm_geo_replication_link_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).
+> Annak biztosításához, hogy a feladatátvétel előtt a rendszer replikálja az elsődleges adatbázis kritikus módosításait, kényszerítse a szinkronizálást, hogy biztosítsa a kritikus módosítások (például a jelszavak frissítései) replikálását. A kényszerített szinkronizálás hatással van a teljesítményre, mert blokkolja a hívó szálat, amíg az összes véglegesített tranzakció replikálódik. Részletekért lásd: [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync). Az elsődleges adatbázis és a Geo-másodlagos közötti replikációs késés figyeléséhez lásd: [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).
 
 Az alábbi ábra egy olyan aktív geo-replikálási példát mutat be, amely az Egyesült Államok északi középső régiójában, az USA déli középső régiójában, a másodlagos régióban található.
 
@@ -64,8 +64,8 @@ Mivel a másodlagos adatbázisok olvashatók, használhatók csak olvasható mun
 
 A vész-helyreállítási aktív földrajzi replikáción kívül a következő esetekben is használhatók:
 
-- **Adatbázis-áttelepítés**: az aktív geo-replikálás használatával áttelepíthet egy adatbázist az egyik kiszolgálóról a másikra minimális állásidővel.
-- **Alkalmazások frissítése**: az alkalmazások frissítése során további másodlagosként is létrehozhat egy feladat-visszavételi másolatot.
+- **Adatbázis-áttelepítés** : az aktív geo-replikálás használatával áttelepíthet egy adatbázist az egyik kiszolgálóról a másikra minimális állásidővel.
+- **Alkalmazások frissítése** : az alkalmazások frissítése során további másodlagosként is létrehozhat egy feladat-visszavételi másolatot.
 
 A valós Üzletmenet-folytonosság eléréséhez az adatközpontok közötti adatbázis-redundancia csak a megoldás része. Egy alkalmazás (szolgáltatás) teljes körű helyreállítása végzetes hiba után a szolgáltatást és a függő szolgáltatásokat alkotó összes összetevő helyreállítását igényli. Ezen összetevők közé tartoznak például az ügyfélszoftverek (például egy egyéni JavaScripttel rendelkező böngésző), a webes kezelőfelületek, a tárterület és a DNS. Kritikus fontosságú, hogy minden összetevő azonos hibákra legyen rugalmas, és az alkalmazás helyreállítási idő célkitűzésén (RTO) belül elérhetővé váljon. Ezért az összes függő szolgáltatást azonosítania kell, és ismernie kell az általuk nyújtott garanciákat és képességeket. Ezt követően meg kell tennie a megfelelő lépéseket annak biztosításához, hogy a szolgáltatás a szolgáltatások feladatátvétele alatt működjön, amelytől függ. A megoldásoknak a vész-helyreállításhoz való kialakításával kapcsolatos további információkért lásd: [felhőalapú megoldások tervezése a vész-helyreállításhoz az aktív földrajzi replikálás használatával](designing-cloud-solutions-for-disaster-recovery.md).
 
@@ -244,7 +244,7 @@ Annak érdekében, hogy az elsődleges adatbázison végrehajtott, a másodlagos
 
 ## <a name="programmatically-managing-active-geo-replication"></a>Az aktív földrajzi replikáció programozott kezelése
 
-Amint azt korábban már említettük, az aktív geo-replikáció programozott módon felügyelhető Azure PowerShell és a REST API használatával is. A következő táblázatok ismertetik az elérhető parancsok készletét. Az aktív geo-replikálás Azure Resource Manager API-kat tartalmaz a felügyelethez, beleértve a [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) és [Azure PowerShell parancsmagokat](https://docs.microsoft.com/powershell/azure/). Ezek az API-k az erőforráscsoportok használatát igénylik, és támogatják a szerepköralapú biztonságot (RBAC). A hozzáférési szerepkörök megvalósításával kapcsolatos további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md).
+Amint azt korábban már említettük, az aktív geo-replikáció programozott módon felügyelhető Azure PowerShell és a REST API használatával is. A következő táblázatok ismertetik az elérhető parancsok készletét. Az aktív geo-replikálás Azure Resource Manager API-kat tartalmaz a felügyelethez, beleértve a [Azure SQL Database REST API](/rest/api/sql/) és [Azure PowerShell parancsmagokat](/powershell/azure/). Ezek az API-k az erőforráscsoportok használatát igénylik, és támogatják a szerepköralapú biztonságot (RBAC). A hozzáférési szerepkörök megvalósításával kapcsolatos további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL: az önálló és a készletezett adatbázisok feladatátvételének kezelése
 
@@ -253,9 +253,9 @@ Amint azt korábban már említettük, az aktív geo-replikáció programozott m
 
 | Parancs | Leírás |
 | --- | --- |
-| [ADATBÁZIS MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Másodlagos adatbázis hozzáadása egy meglévő adatbázishoz, és az adatreplikálás elindításához használja a másodlagos kiszolgáló hozzáadása argumentumot. |
-| [ADATBÁZIS MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Feladatátvétel vagy FORCE_FAILOVER_ALLOW_DATA_LOSS használatával váltson át másodlagos adatbázist elsődlegesre a feladatátvétel indításához |
-| [ADATBÁZIS MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Használja a másodlagos eltávolítása a kiszolgálón lehetőséget a SQL Database és a megadott másodlagos adatbázis közötti adatreplikáció megszakításához. |
+| [ADATBÁZIS MÓDOSÍTÁSA](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |Másodlagos adatbázis hozzáadása egy meglévő adatbázishoz, és az adatreplikálás elindításához használja a másodlagos kiszolgáló hozzáadása argumentumot. |
+| [ADATBÁZIS MÓDOSÍTÁSA](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |Feladatátvétel vagy FORCE_FAILOVER_ALLOW_DATA_LOSS használatával váltson át másodlagos adatbázist elsődlegesre a feladatátvétel indításához |
+| [ADATBÁZIS MÓDOSÍTÁSA](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |Használja a másodlagos eltávolítása a kiszolgálón lehetőséget a SQL Database és a megadott másodlagos adatbázis közötti adatreplikáció megszakításához. |
 | [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |A kiszolgálón található egyes adatbázisokhoz tartozó összes meglévő replikációs hivatkozás információit adja vissza. |
 | [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Lekéri a legutóbbi replikálási időt, a legutóbbi replikálási késést és az adott adatbázis replikációs hivatkozásával kapcsolatos egyéb információkat. |
 | [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Megjeleníti az összes adatbázis-művelet állapotát, beleértve a replikációs hivatkozások állapotát is. |
@@ -266,15 +266,15 @@ Amint azt korábban már említettük, az aktív geo-replikáció programozott m
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
+> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
 | Parancsmag | Leírás |
 | --- | --- |
-| [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase) |Egy vagy több adatbázist kér le. |
-| [Új – AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasesecondary) |Létrehoz egy másodlagos adatbázist egy meglévő adatbázishoz, és elkezdi az adatok replikálását. |
-| [Set-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesecondary) |Egy másodlagos adatbázist elsődlegessé tesz, hogy feladatátvételt kezdeményezzen. |
-| [Remove-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesecondary) |Leállítja az adatreplikációt egy SQL-adatbázis és a megadott másodlagos adatbázis között. |
-| [Get-AzSqlDatabaseReplicationLink](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasereplicationlink) |Lekéri a Geo-replikációs hivatkozásokat egy Azure SQL Database és egy erőforráscsoport vagy logikai SQL Server között. |
+| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) |Egy vagy több adatbázist kér le. |
+| [Új – AzSqlDatabaseSecondary](/powershell/module/az.sql/new-azsqldatabasesecondary) |Létrehoz egy másodlagos adatbázist egy meglévő adatbázishoz, és elkezdi az adatok replikálását. |
+| [Set-AzSqlDatabaseSecondary](/powershell/module/az.sql/set-azsqldatabasesecondary) |Egy másodlagos adatbázist elsődlegessé tesz, hogy feladatátvételt kezdeményezzen. |
+| [Remove-AzSqlDatabaseSecondary](/powershell/module/az.sql/remove-azsqldatabasesecondary) |Leállítja az adatreplikációt egy SQL-adatbázis és a megadott másodlagos adatbázis között. |
+| [Get-AzSqlDatabaseReplicationLink](/powershell/module/az.sql/get-azsqldatabasereplicationlink) |Lekéri a Geo-replikációs hivatkozásokat egy Azure SQL Database és egy erőforráscsoport vagy logikai SQL Server között. |
 |  | |
 
 > [!IMPORTANT]
@@ -284,16 +284,16 @@ Amint azt korábban már említettük, az aktív geo-replikáció programozott m
 
 | API | Leírás |
 | --- | --- |
-| [Adatbázis létrehozása vagy frissítése (createMode = Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Egy elsődleges vagy egy másodlagos adatbázis létrehozása, frissítése vagy visszaállítása. |
-| [Adatbázis-létrehozási vagy-frissítési állapot beolvasása](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Az állapotot adja vissza egy létrehozási művelet során. |
-| [Másodlagos adatbázis beállítása elsődlegesként (tervezett feladatátvétel)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failover) |Meghatározza, hogy melyik másodlagos adatbázis legyen elsődleges, ha az aktuális elsődleges adatbázisból feladatátvételt hajt végre. **Ez a beállítás nem támogatott az SQL felügyelt példányain.**|
-| [Másodlagos adatbázis beállítása elsődlegesként (nem tervezett feladatátvétel)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failoverallowdataloss) |Meghatározza, hogy melyik másodlagos adatbázis legyen elsődleges, ha az aktuális elsődleges adatbázisból feladatátvételt hajt végre. A művelet adatvesztéshez vezethet. **Ez a beállítás nem támogatott az SQL felügyelt példányain.**|
-| [Replikációs hivatkozás beolvasása](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Egy adott adatbázis adott replikációs hivatkozásának beolvasása egy földrajzi replikálási partnerségben. Lekéri az sys.geo_replication_links Catalog nézetben látható információkat. **Ez a beállítás nem támogatott az SQL felügyelt példányain.**|
-| [Replikációs hivatkozások – lista adatbázis szerint](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Az adott adatbázishoz tartozó összes replikációs hivatkozás beolvasása egy földrajzi replikálási partnerségben. Lekéri az sys.geo_replication_links Catalog nézetben látható információkat. |
-| [Replikációs hivatkozás törlése](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | Töröl egy adatbázis-replikációs hivatkozást. Feladatátvétel közben nem végezhető el. |
+| [Adatbázis létrehozása vagy frissítése (createMode = Restore)](/rest/api/sql/databases/createorupdate) |Egy elsődleges vagy egy másodlagos adatbázis létrehozása, frissítése vagy visszaállítása. |
+| [Adatbázis-létrehozási vagy-frissítési állapot beolvasása](/rest/api/sql/databases/createorupdate) |Az állapotot adja vissza egy létrehozási művelet során. |
+| [Másodlagos adatbázis beállítása elsődlegesként (tervezett feladatátvétel)](/rest/api/sql/replicationlinks/failover) |Meghatározza, hogy melyik másodlagos adatbázis legyen elsődleges, ha az aktuális elsődleges adatbázisból feladatátvételt hajt végre. **Ez a beállítás nem támogatott az SQL felügyelt példányain.**|
+| [Másodlagos adatbázis beállítása elsődlegesként (nem tervezett feladatátvétel)](/rest/api/sql/replicationlinks/failoverallowdataloss) |Meghatározza, hogy melyik másodlagos adatbázis legyen elsődleges, ha az aktuális elsődleges adatbázisból feladatátvételt hajt végre. A művelet adatvesztéshez vezethet. **Ez a beállítás nem támogatott az SQL felügyelt példányain.**|
+| [Replikációs hivatkozás beolvasása](/rest/api/sql/replicationlinks/get) |Egy adott adatbázis adott replikációs hivatkozásának beolvasása egy földrajzi replikálási partnerségben. Lekéri az sys.geo_replication_links Catalog nézetben látható információkat. **Ez a beállítás nem támogatott az SQL felügyelt példányain.**|
+| [Replikációs hivatkozások – lista adatbázis szerint](/rest/api/sql/replicationlinks/listbydatabase) | Az adott adatbázishoz tartozó összes replikációs hivatkozás beolvasása egy földrajzi replikálási partnerségben. Lekéri az sys.geo_replication_links Catalog nézetben látható információkat. |
+| [Replikációs hivatkozás törlése](/rest/api/sql/replicationlinks/delete) | Töröl egy adatbázis-replikációs hivatkozást. Feladatátvétel közben nem végezhető el. |
 |  | |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A minta parancsfájlokat lásd:
   - [Önálló adatbázis konfigurálása és a feladatainak átvétele aktív georeplikációval](scripts/setup-geodr-and-failover-database-powershell.md)

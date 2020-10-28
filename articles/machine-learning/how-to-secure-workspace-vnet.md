@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 3001b8829660f2891cb051269026bf7100a8f938
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 1dc7c343087e4fc11aef20e95bc9cafea20a99b4
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460995"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672853"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Azure Machine Learning munkaterület biztonságossá tétele virtuális hálózatokkal
 
@@ -74,23 +74,28 @@ Ha egy virtuális hálózatban lévő munkaterülethez Azure Storage-fiókot sze
 
    [![Az Azure Machine Learning munkaterülethez csatolt tárterület](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
 
-1. A Storage-szolgáltatásfiók lapon válassza a __tűzfalak és virtuális hálózatok__lehetőséget.
+1. A Storage-szolgáltatásfiók lapon válassza a __tűzfalak és virtuális hálózatok__ lehetőséget.
 
    ![A Azure Portal Azure Storage lapjának "tűzfalak és virtuális hálózatok" területén](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
 
 1. A __tűzfalak és virtuális hálózatok__ oldalon hajtsa végre a következő műveleteket:
     1. Válassza a __Kijelölt hálózatok__ lehetőséget.
-    1. A __virtuális hálózatok__területen válassza a __meglévő virtuális hálózati kapcsolat hozzáadása__ elemet. Ez a művelet hozzáadja azt a virtuális hálózatot, ahol a számítás található (lásd: 1. lépés).
+    1. A __virtuális hálózatok__ területen válassza a __meglévő virtuális hálózati kapcsolat hozzáadása__ elemet. Ez a művelet hozzáadja azt a virtuális hálózatot, ahol a számítás található (lásd: 1. lépés).
 
         > [!IMPORTANT]
         > A Storage-fióknak ugyanabban a virtuális hálózatban és alhálózatban kell lennie, mint a képzéshez vagy következtetéshez használt számítási példányok vagy fürtök.
 
-    1. Jelölje be a __megbízható Microsoft-szolgáltatások számára a Storage-fiók elérésének engedélyezése__ jelölőnégyzetet.
+    1. Jelölje be a __megbízható Microsoft-szolgáltatások számára a Storage-fiók elérésének engedélyezése__ jelölőnégyzetet. Ez nem biztosít hozzáférést az összes Azure-szolgáltatáshoz a Storage-fiókhoz.
+    
+        * Az **előfizetésében regisztrált** egyes szolgáltatások erőforrásai hozzáférhetnek az **előfizetésben található Storage-** fiókhoz a Select műveletekhez. Például naplókat írhat vagy biztonsági másolatokat készíthet.
+        * Egyes szolgáltatások erőforrásai explicit módon férhetnek hozzá a Storage-fiókhoz, ha __egy Azure-szerepkört rendel__ hozzá a rendszerhez rendelt felügyelt identitáshoz.
+
+        További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](../storage/common/storage-network-security.md#trusted-microsoft-services).
 
     > [!IMPORTANT]
     > Ha a Azure Machine Learning SDK-val dolgozik, a fejlesztési környezetnek képesnek kell lennie csatlakozni az Azure Storage-fiókhoz. Ha a Storage-fiók egy virtuális hálózaton belül van, a tűzfalnak engedélyeznie kell a hozzáférést a fejlesztői környezet IP-címéről.
     >
-    > A Storage-fiókhoz való hozzáférés engedélyezéséhez keresse fel a Storage-fiókhoz tartozó __tűzfalakat és virtuális hálózatokat__ a *fejlesztői ügyfél webböngészőjéből*. Ezután használja az __ügyfél IP-címének hozzáadása__ jelölőnégyzetet az ügyfél IP-címének a __címtartományból__való hozzáadásához. A __címtartomány__ mező használatával manuálisan is megadhatja a fejlesztési környezet IP-címét. Miután hozzáadta az ügyfél IP-címét, az SDK-val elérheti a Storage-fiókot.
+    > A Storage-fiókhoz való hozzáférés engedélyezéséhez keresse fel a Storage-fiókhoz tartozó __tűzfalakat és virtuális hálózatokat__ a *fejlesztői ügyfél webböngészőjéből* . Ezután használja az __ügyfél IP-címének hozzáadása__ jelölőnégyzetet az ügyfél IP-címének a __címtartományból__ való hozzáadásához. A __címtartomány__ mező használatával manuálisan is megadhatja a fejlesztési környezet IP-címét. Miután hozzáadta az ügyfél IP-címét, az SDK-val elérheti a Storage-fiókot.
 
    [![A Azure Portal tűzfalak és virtuális hálózatok panelje](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
 
@@ -170,12 +175,12 @@ Ha Azure Machine Learning kísérletezési képességeket szeretne használni a 
 
 1. Lépjen a munkaterülethez társított Key Vault.
 
-1. A __Key Vault__ oldalon, a bal oldali ablaktáblán válassza a __hálózatkezelés__lehetőséget.
+1. A __Key Vault__ oldalon, a bal oldali ablaktáblán válassza a __hálózatkezelés__ lehetőséget.
 
 1. A __tűzfalak és virtuális hálózatok__ lapon végezze el a következő műveleteket:
-    1. __A hozzáférés engedélyezése lehetőségnél__válassza a __privát végpont és a kiválasztott hálózatok__elemet.
-    1. A __virtuális hálózatok__területen válassza a __meglévő virtuális hálózatok hozzáadása__ lehetőséget annak a virtuális hálózatnak a hozzáadásához, ahol a kísérletezési számítás található.
-    1. A __megbízható Microsoft-szolgáltatások a tűzfal megkerülésének engedélyezése__területen válassza az __Igen__lehetőséget.
+    1. __A hozzáférés engedélyezése lehetőségnél__ válassza a __privát végpont és a kiválasztott hálózatok__ elemet.
+    1. A __virtuális hálózatok__ területen válassza a __meglévő virtuális hálózatok hozzáadása__ lehetőséget annak a virtuális hálózatnak a hozzáadásához, ahol a kísérletezési számítás található.
+    1. A __megbízható Microsoft-szolgáltatások a tűzfal megkerülésének engedélyezése__ területen válassza az __Igen__ lehetőséget.
 
    [![A Key Vault panel "tűzfalak és virtuális hálózatok" szakasza](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png#lightbox)
 
@@ -289,7 +294,7 @@ A követelmények teljesítése után a következő lépésekkel engedélyezheti
     > [!IMPORTANT]
     > Ne törölje ezt a végpontot! Ha véletlenül törli, újra alkalmazhatja a sablont ebben a lépésben, hogy újat hozzon létre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk egy négy részből álló virtuális hálózati sorozat első része. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
 
