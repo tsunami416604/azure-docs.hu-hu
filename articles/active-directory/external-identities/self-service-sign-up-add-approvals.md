@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d2ff176d7569f6f67c8f0dd37e0073314a07289
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e46dabc665d383279a12fc6bd8eb67475d88a2ea
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441623"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896072"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Egyéni jóváhagyási munkafolyamat hozzáadása az önkiszolgáló regisztrációhoz
 
@@ -32,25 +32,25 @@ Ez a cikk bemutatja, hogyan integrálható egy jóváhagyási rendszerrel. Ebben
 Regisztrálnia kell a jóváhagyási rendszerét alkalmazásként az Azure AD-bérlőben, hogy az képes legyen hitelesíteni az Azure AD-vel, és jogosult legyen a felhasználók létrehozására. További információ a [Microsoft Graph hitelesítési és engedélyezési alapjairól](/graph/auth/auth-concepts).
 
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com) Azure ad-rendszergazdaként.
-2. Az **Azure-szolgáltatások**területen válassza a **Azure Active Directory**lehetőséget.
-3. A bal oldali menüben válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza az **új regisztráció**lehetőséget.
-4. Adja meg az alkalmazás **nevét** (például: _regisztráció jóváhagyása_).
+2. Az **Azure-szolgáltatások** területen válassza a **Azure Active Directory** lehetőséget.
+3. A bal oldali menüben válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza az **új regisztráció** lehetőséget.
+4. Adja meg az alkalmazás **nevét** (például: _regisztráció jóváhagyása_ ).
 
    <!-- ![Register an application for the approval system](./self-service-sign-up-add-approvals/approvals/register-an-approvals-application.png) -->
 
 5. Válassza a **Regisztráció** lehetőséget. Más mezőket is hagyhat az alapértelmezett értékeken.
 
-   ![Alkalmazás-oldal regisztrálása](media/self-service-sign-up-add-approvals/register-approvals-app.png)
+   ![Képernyőfelvétel: a regisztráció gomb kiemelése.](media/self-service-sign-up-add-approvals/register-approvals-app.png)
 
-6. A bal oldali menü **kezelés** területén válassza az **API-engedélyek**lehetőséget, majd kattintson az **engedély hozzáadása**lehetőségre.
-7. Az **API-engedélyek kérése** lapon válassza a **Microsoft Graph**lehetőséget, majd válassza az **alkalmazás engedélyei**lehetőséget.
-8. Az **engedélyek kiválasztása**alatt bontsa ki a **felhasználó**elemet, majd válassza a **User. ReadWrite. All** jelölőnégyzetet. Ez az engedély lehetővé teszi a jóváhagyási rendszer számára, hogy jóváhagyás után létrehozza a felhasználót. Ezután válassza az **engedélyek hozzáadása**lehetőséget.
+6. A bal oldali menü **kezelés** területén válassza az **API-engedélyek** lehetőséget, majd kattintson az **engedély hozzáadása** lehetőségre.
+7. Az **API-engedélyek kérése** lapon válassza a **Microsoft Graph** lehetőséget, majd válassza az **alkalmazás engedélyei** lehetőséget.
+8. Az **engedélyek kiválasztása** alatt bontsa ki a **felhasználó** elemet, majd válassza a **User. ReadWrite. All** jelölőnégyzetet. Ez az engedély lehetővé teszi a jóváhagyási rendszer számára, hogy jóváhagyás után létrehozza a felhasználót. Ezután válassza az **engedélyek hozzáadása** lehetőséget.
 
    ![Alkalmazás-oldal regisztrálása](media/self-service-sign-up-add-approvals/request-api-permissions.png)
 
-9. Az **API-engedélyek** lapon válassza a **rendszergazdai jóváhagyás megadása (a bérlő neve)** lehetőséget, majd válassza az **Igen**lehetőséget.
-10. A bal oldali menü **kezelés** területén válassza a **tanúsítványok & titkok**lehetőséget, majd válassza az **új ügyfél titka**lehetőséget.
-11. Adja meg a titok **leírását** , például a _jóváhagyások ügyfél titkát_, és válassza ki azt az időtartamot, ameddig az ügyfél titkos kulcsa **lejár**. Ezután válassza a **Hozzáadás** elemet.
+9. Az **API-engedélyek** lapon válassza a **rendszergazdai jóváhagyás megadása (a bérlő neve)** lehetőséget, majd válassza az **Igen** lehetőséget.
+10. A bal oldali menü **kezelés** területén válassza a **tanúsítványok & titkok** lehetőséget, majd válassza az **új ügyfél titka** lehetőséget.
+11. Adja meg a titok **leírását** , például a _jóváhagyások ügyfél titkát_ , és válassza ki azt az időtartamot, ameddig az ügyfél titkos kulcsa **lejár** . Ezután válassza a **Hozzáadás** elemet.
 12. Másolja ki az ügyfél titkos kulcsának értékét.
 
     ![Az ügyfél titkos kulcsának másolása a jóváhagyási rendszerbe való használatra](media/self-service-sign-up-add-approvals/client-secret-value-copy.png)
@@ -61,7 +61,7 @@ Regisztrálnia kell a jóváhagyási rendszerét alkalmazásként az Azure AD-b�
 
 Ezután [létrehozza az API-összekötőket](self-service-sign-up-add-api-connector.md#create-an-api-connector) az önkiszolgáló bejelentkezési felhasználói folyamathoz. A jóváhagyási rendszerapi-nak két összekötőre és megfelelő végpontokra van szüksége, például az alább látható példákhoz. Ezek az API-összekötők a következőket végzik el:
 
-- **Jóváhagyás állapotának bejelölése**. Közvetlenül az identitás-szolgáltatóval való bejelentkezés után küldje el a jóváhagyási rendszer hívását, és ellenőrizze, hogy a felhasználó rendelkezik-e meglévő jóváhagyási kéréssel, vagy már meg lett tagadva. Ha a jóváhagyási rendszere csak automatikus jóváhagyási döntéseket tartalmaz, előfordulhat, hogy ez az API-összekötő nem szükséges. Példa a "jóváhagyás állapotának engedélyezése" API-összekötőre.
+- **Jóváhagyás állapotának bejelölése** . Közvetlenül az identitás-szolgáltatóval való bejelentkezés után küldje el a jóváhagyási rendszer hívását, és ellenőrizze, hogy a felhasználó rendelkezik-e meglévő jóváhagyási kéréssel, vagy már meg lett tagadva. Ha a jóváhagyási rendszere csak automatikus jóváhagyási döntéseket tartalmaz, előfordulhat, hogy ez az API-összekötő nem szükséges. Példa a "jóváhagyás állapotának engedélyezése" API-összekötőre.
 
   ![A jóváhagyási állapot API-összekötő konfigurációjának engedélyezése](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
 
@@ -76,13 +76,13 @@ Az összekötők létrehozásához kövesse az API- [összekötő létrehozása]
 Most adja hozzá az API-összekötőket önkiszolgáló bejelentkezési felhasználói folyamathoz a következő lépésekkel:
 
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) Azure ad-rendszergazdaként.
-2. Az **Azure-szolgáltatások**területen válassza a **Azure Active Directory**lehetőséget.
-3. A bal oldali menüben válassza a **külső identitások**lehetőséget.
+2. Az **Azure-szolgáltatások** területen válassza a **Azure Active Directory** lehetőséget.
+3. A bal oldali menüben válassza a **külső identitások** lehetőséget.
 4. Válassza a **felhasználói folyamatok (előzetes verzió)** lehetőséget, majd válassza ki azt a felhasználói folyamatot, amely számára engedélyezni kívánja az API-összekötőt.
-5. Válassza az **API-összekötők**lehetőséget, majd válassza ki azokat az API-végpontokat, amelyeket a felhasználói folyamat következő lépéseiben szeretne meghívni:
+5. Válassza az **API-összekötők** lehetőséget, majd válassza ki azokat az API-végpontokat, amelyeket a felhasználói folyamat következő lépéseiben szeretne meghívni:
 
-   - Az **identitás-szolgáltatóval való bejelentkezés után**: válassza ki a jóváhagyási állapot API-összekötőt, például a _jóváhagyási állapot ellenőrzését_.
-   - **A felhasználó létrehozása előtt**: válassza ki a jóváhagyási kérelem API-összekötőjét, például a _kérelem jóváhagyását_.
+   - Az **identitás-szolgáltatóval való bejelentkezés után** : válassza ki a jóváhagyási állapot API-összekötőt, például a _jóváhagyási állapot ellenőrzését_ .
+   - **A felhasználó létrehozása előtt** : válassza ki a jóváhagyási kérelem API-összekötőjét, például a _kérelem jóváhagyását_ .
 
    ![API-k hozzáadása a felhasználói folyamathoz](./media/self-service-sign-up-add-approvals/api-connectors-user-flow-api.png)
 
@@ -207,7 +207,7 @@ Az API-nak küldött pontos jogcímek attól függnek, hogy milyen adatokat gyű
 
 A **kérelem-jóváhagyási** API-végpontnak a következőket kell visszaadnia, ha:
 
-- A felhasználó **_automatikusan jóváhagyható_**.
+- A felhasználó **_automatikusan jóváhagyható_** .
 
 A folytatási válasz példája:
 
@@ -386,7 +386,7 @@ Content-type: application/json
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg az [Azure Function](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)gyors üzembe helyezési mintákkal.
 - Az [önkiszolgáló regisztrációt a vendég felhasználók manuális jóváhagyási mintával regisztrálhatják](code-samples-self-service-sign-up.md#custom-approval-workflows).

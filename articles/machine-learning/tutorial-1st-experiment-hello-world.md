@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 980347c658c65a0c08dfc50c08f50741fb9a00fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afc851be08e6708efc0138dc45931cda147c67c1
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372544"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895885"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Oktatóanyag: a "Helló világ!" futtatása Python-szkript (2. rész/4)
 
@@ -24,7 +24,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Pythonhoz készü
 
 Ez az oktatóanyag *egy négy részből álló oktatóanyag-Sorozat 2. része* , amelyben megismerheti a Azure Machine learning és az Azure-ban végzett feladatok-alapú gépi tanulási feladatok alapjait. Ez az oktatóanyag az [1. rész: a helyi gép beállítása Azure Machine Learninghoz című részben](tutorial-1st-experiment-sdk-setup-local.md)leírtak szerint épül fel.
 
-Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+Az oktatóanyagban a következőket végezheti el:
 
 > [!div class="checklist"]
 > * Hozzon létre és futtasson egy "Helló világ!" Python-szkript helyileg.
@@ -143,6 +143,9 @@ Futtassa a vezérlési parancsfájlt, amely viszont a `hello.py` [telepítési o
 python 03-run-hello.py
 ```
 
+> [!TIP]
+> Ha ezt a kódot futtatja, akkor a hitelesítési beállításokkal kapcsolatos információkért tekintse meg a [Kapcsolódás munkaterülethez](how-to-manage-workspace.md?tab=python#connect-multi-tenant) című témakört.
+
 ## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a>A kód figyelése a felhőben a Studio használatával
 
 A kimenet tartalmazni fog egy hivatkozást a studióhoz, amely a következőhöz hasonlóan néz ki: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>` .
@@ -175,7 +178,7 @@ A 8. sorban a "Helló világ!" kifejezés látható kimeneti.
 
 A `70_driver_log.txt` fájl egy futtatásból származó standard kimenetet tartalmaz. Ez a fájl akkor lehet hasznos, ha távoli futtatásokat végez a felhőben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy egyszerű "Helló világ!" szkriptet, és futtatta azt az Azure-ban. Megismerte, hogyan csatlakozhat a Azure Machine Learning-munkaterülethez, létrehozhat egy kísérletet, és elküldheti a `hello.py` kódot a felhőbe.
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 4ee89f4bba70bb5e81eef21247d556f65a2a1f16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8d05293359cff16bb6d8c9a629a1fbf68104365
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80065196"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896038"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Adatkezelés átjáró – magas rendelkezésre állás és méretezhetőség (előzetes verzió)
 > [!NOTE]
@@ -29,10 +29,10 @@ Ez a cikk segítséget nyújt a magas rendelkezésre állást és méretezhetős
 > [!NOTE]
 > Ez a cikk azt feltételezi, hogy már ismeri a Integration Runtime (korábbi adatkezelés átjáró) alapjait. Ha nem, tekintse meg [adatkezelés átjárót](data-factory-data-management-gateway.md).
 > 
-> **Ez az előzetes verziójú funkció hivatalosan támogatott a adatkezelés-átjáró 2.12. xxxx. x vagy újabb verziójában**. Győződjön meg arról, hogy a 2.12. xxxx. x vagy újabb verziót használja. Töltse le az adatkezelés-átjáró legújabb verzióját [itt](https://www.microsoft.com/download/details.aspx?id=39717).
+> **Ez az előzetes verziójú funkció hivatalosan támogatott a adatkezelés-átjáró 2.12. xxxx. x vagy újabb verziójában** . Győződjön meg arról, hogy a 2.12. xxxx. x vagy újabb verziót használja. Töltse le az adatkezelés-átjáró legújabb verzióját [itt](https://www.microsoft.com/download/details.aspx?id=39717).
 
 ## <a name="overview"></a>Áttekintés
-Olyan adatkezelési átjárókat társíthat, amelyek több helyszíni gépre vannak telepítve, egyetlen logikai átjáróval a portálon. Ezeket a gépeket **csomópontoknak**nevezzük. Egy logikai átjáróhoz legfeljebb **négy csomópont** társítható. A logikai átjárók számára a következő előnyökkel jár, ha több csomópontot (helyszíni gépeket telepítettek az átjáróval):  
+Olyan adatkezelési átjárókat társíthat, amelyek több helyszíni gépre vannak telepítve, egyetlen logikai átjáróval a portálon. Ezeket a gépeket **csomópontoknak** nevezzük. Egy logikai átjáróhoz legfeljebb **négy csomópont** társítható. A logikai átjárók számára a következő előnyökkel jár, ha több csomópontot (helyszíni gépeket telepítettek az átjáróval):  
 
 - A helyszíni és a Felhőbeli adattárak közötti adatáthelyezési teljesítmény javítása.  
 - Ha a csomópontok valamelyike valamilyen okból leáll, más csomópontok továbbra is elérhetők az adatáthelyezéshez. 
@@ -47,13 +47,13 @@ Az alábbi ábra az adatkezelés átjáró skálázhatósági és rendelkezésre
 
 ![Adatkezelés átjáró – magas rendelkezésre állás és méretezhetőség](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-high-availability-and-scalability.png)
 
-A **logikai átjáró** a Azure Portal egy adatgyárhoz hozzáadott átjáró. Korábban egy logikai átjáróval telepített adatkezelés átjáróval rendelkező helyszíni Windows-gépet is hozzárendelhet. Ezt a helyszíni átjárót tartalmazó számítógépet csomópontnak nevezzük. Most akár **négy fizikai csomópontot** is hozzárendelhet logikai átjáróval. A több csomóponttal rendelkező logikai átjárókat **több csomópontos átjárónak**nevezzük.  
+A **logikai átjáró** a Azure Portal egy adatgyárhoz hozzáadott átjáró. Korábban egy logikai átjáróval telepített adatkezelés átjáróval rendelkező helyszíni Windows-gépet is hozzárendelhet. Ezt a helyszíni átjárót tartalmazó számítógépet csomópontnak nevezzük. Most akár **négy fizikai csomópontot** is hozzárendelhet logikai átjáróval. A több csomóponttal rendelkező logikai átjárókat **több csomópontos átjárónak** nevezzük.  
 
-Ezek a csomópontok **aktívak**. Az adatáthelyezési feladatok feldolgozásával az adatok a helyszíni és a Felhőbeli adattárak között helyezhetők át. Az egyik csomópont a diszpécserként és a feldolgozóként is működik. A csoportok további csomópontjai munkavégző csomópontok. A **kiosztó** csomópont lekéri az adatáthelyezési feladatokat/feladatokat a Cloud Service-ből, és elküldi őket a feldolgozó csomópontoknak (beleértve a saját magát). A **feldolgozó csomópont** adatáthelyezési feladatokat hajt végre az adatok helyszíni és felhőalapú adattárak közötti mozgatásához. Minden csomópont feldolgozó. Csak egy csomópont lehet a küldő és a feldolgozó is.    
+Ezek a csomópontok **aktívak** . Az adatáthelyezési feladatok feldolgozásával az adatok a helyszíni és a Felhőbeli adattárak között helyezhetők át. Az egyik csomópont a diszpécserként és a feldolgozóként is működik. A csoportok további csomópontjai munkavégző csomópontok. A **kiosztó** csomópont lekéri az adatáthelyezési feladatokat/feladatokat a Cloud Service-ből, és elküldi őket a feldolgozó csomópontoknak (beleértve a saját magát). A **feldolgozó csomópont** adatáthelyezési feladatokat hajt végre az adatok helyszíni és felhőalapú adattárak közötti mozgatásához. Minden csomópont feldolgozó. Csak egy csomópont lehet a küldő és a feldolgozó is.    
 
 Általában egy csomóponttal kezdődhet, és **kibővítheti** a további csomópontok hozzáadását, mivel a meglévő csomópont (ok) túlterhelt az adatáthelyezési terheléssel. Az átjáró-csomópontok adatáthelyezési képességeinek növelésével a csomóponton futtatható egyidejű feladatok **számát is növelheti** . Ez a funkció egy egycsomópontos átjáróval is elérhető (még akkor is, ha a méretezhetőség és a rendelkezésre állási funkció nincs engedélyezve). 
 
-A több csomóponttal rendelkező átjárók az összes csomóponton szinkronizálják az adattár hitelesítő adatait. Csomópontok közötti csatlakozási probléma esetén előfordulhat, hogy a hitelesítő adatok nem szinkronizálhatók. Amikor átjárót használó helyszíni adattár hitelesítő adatait állítja be, a hitelesítő adatokat ment a diszpécser/feldolgozó csomóponton. A diszpécser csomópont más munkavégző csomópontokkal szinkronizál. Ezt a folyamatot **hitelesítő adatok szinkronizálásának**nevezzük. A csomópontok közötti kommunikációs csatornát egy nyilvános SSL/TLS-tanúsítvány **titkosíthatja** . 
+A több csomóponttal rendelkező átjárók az összes csomóponton szinkronizálják az adattár hitelesítő adatait. Csomópontok közötti csatlakozási probléma esetén előfordulhat, hogy a hitelesítő adatok nem szinkronizálhatók. Amikor átjárót használó helyszíni adattár hitelesítő adatait állítja be, a hitelesítő adatokat ment a diszpécser/feldolgozó csomóponton. A diszpécser csomópont más munkavégző csomópontokkal szinkronizál. Ezt a folyamatot **hitelesítő adatok szinkronizálásának** nevezzük. A csomópontok közötti kommunikációs csatornát egy nyilvános SSL/TLS-tanúsítvány **titkosíthatja** . 
 
 ## <a name="set-up-a-multi-node-gateway"></a>Több csomópontos átjáró beállítása
 Ez a szakasz azt feltételezi, hogy elvégezte a következő két cikket, vagy ismeri az alábbi cikkekben ismertetett fogalmakat: 
@@ -79,16 +79,16 @@ Ez a szakasz azt feltételezi, hogy elvégezte a következő két cikket, vagy i
         ![Adatkezelés Gateway – expressz telepítés sikeres](media/data-factory-data-management-gateway-high-availability-scalability/express-setup-success.png)
     2. A következő [utasításokat](data-factory-data-management-gateway.md#configuration-manager)követve indítsa el adatkezelés Configuration Manager az átjáróhoz. Megjelenik az átjáró neve, a csomópont neve, az állapot stb.
 
-        ![Adatkezelés átjáró – sikeres telepítés](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
-4. Ha a **manuális telepítést**választja:
+        ![Képernyőkép, amely megmutatja, hol láthatja az átjáró nevét, a csomópont nevét és az állapotot.](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
+4. Ha a **manuális telepítést** választja:
     1. Töltse le a telepítőcsomagot a Microsoft letöltőközpontból, és futtassa az átjáró telepítéséhez a gépen.
     2. A **configure (Konfigurálás** ) lapon használja a **hitelesítési kulcsot** az átjáró regisztrálásához.
     
-        ![Adatkezelés átjáró – sikeres telepítés](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-authentication-key.png)
+        ![A hitelesítési kulcs használatának helyét bemutató képernyőkép.](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-authentication-key.png)
     3. Az **új átjáró csomópont** lapon megadhatja az átjáró csomópontjának egyéni **nevét** . Alapértelmezés szerint a csomópont neve megegyezik a számítógépnévvel.    
 
         ![Átjáró adatkezelés-adja meg a nevet](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-name.png)
-    4. A következő lapon megadhatja, hogy **engedélyezi-e a titkosítást a csomópontok közötti kommunikációhoz**. Kattintson a **kihagyás** gombra a titkosítás letiltásához (alapértelmezett).
+    4. A következő lapon megadhatja, hogy **engedélyezi-e a titkosítást a csomópontok közötti kommunikációhoz** . Kattintson a **kihagyás** gombra a titkosítás letiltásához (alapértelmezett).
 
         ![Adatkezelés átjáró – titkosítás engedélyezése](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-node-encryption.png)  
     
@@ -99,16 +99,16 @@ Ez a szakasz azt feltételezi, hogy elvégezte a következő két cikket, vagy i
     5. Az átjáró sikeres telepítése után kattintson az Indítás gombra Configuration Manager:
     
         ![Manuális telepítés – a Configuration Manager elindítása](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)   
-    6. megjelenik adatkezelés átjáró Configuration Manager a csomóponton (helyszíni Windows-gépen), amely a kapcsolat állapotát, az **átjáró nevét**és a **csomópont nevét**mutatja.  
+    6. megjelenik adatkezelés átjáró Configuration Manager a csomóponton (helyszíni Windows-gépen), amely a kapcsolat állapotát, az **átjáró nevét** és a **csomópont nevét** mutatja.  
 
         ![Adatkezelés átjáró – sikeres telepítés](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
 
         > [!NOTE]
         > Ha az átjárót egy Azure-beli virtuális gépen építi ki, akkor [ezt a Azure Resource Manager sablont](https://github.com/Azure/azure-quickstart-templates/tree/master/101-mutiple-vms-with-data-management-gateway)használhatja. Ez a szkript létrehoz egy logikai átjárót, beállítja a virtuális gépeket adatkezelés telepített átjáró szoftverrel, és regisztrálja őket a logikai átjáróval. 
 6. Az Azure Portalban indítsa el az **átjáró** lapot: 
-    1. A portálon, a portálon kattintson a **társított szolgáltatások**elemre.
+    1. A portálon, a portálon kattintson a **társított szolgáltatások** elemre.
     
-        ![Data factory kezdőlap](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-home-page.png)
+        ![Képernyőkép, amely kiemeli a társított szolgáltatások csempéjét.](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-home-page.png)
     2. Válassza ki **az átjárót** az **átjáró** lap megjelenítéséhez:
     
         ![Data factory kezdőlap](media/data-factory-data-management-gateway-high-availability-scalability/linked-services-gateway.png)
@@ -133,7 +133,7 @@ Ez a szakasz azt feltételezi, hogy elvégezte a következő két cikket, vagy i
 Egy meglévő átjárót frissítheti a magas rendelkezésre állás és méretezhetőség szolgáltatás használatára. Ez a szolgáltatás csak olyan csomópontokkal működik, amelyeken >= 2.12. xxxx verziójú adatkezelési átjáró van. A számítógépen telepített adatkezelési átjáró verziója a adatkezelés Configuration Manager átjárójának **Súgó** lapján tekinthető meg. 
 
 1. Frissítse az átjárót a helyszíni gépen a legújabb verzióra egy MSI-telepítőcsomag letöltésével és futtatásával a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=39717). A részletekért lásd a [telepítés](data-factory-data-management-gateway.md#installation) című szakaszt.  
-2. Lépjen az Azure Portalra. Indítsa el az adatelőállító **Data Factory lapját** . Kattintson a társított szolgáltatások csempére a **társított szolgáltatások lap**elindításához. Válassza ki az átjárót az **átjáró oldalának**elindításához. Kattintson és engedélyezze az **előnézet funkciót** az alábbi képen látható módon: 
+2. Lépjen az Azure Portalra. Indítsa el az adatelőállító **Data Factory lapját** . Kattintson a társított szolgáltatások csempére a **társított szolgáltatások lap** elindításához. Válassza ki az átjárót az **átjáró oldalának** elindításához. Kattintson és engedélyezze az **előnézet funkciót** az alábbi képen látható módon: 
 
     ![Adatkezelés átjáró – Előnézet funkció engedélyezése](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-existing-gateway-enable-high-availability.png)   
 2. Ha az előzetes verzió funkció engedélyezve van a portálon, akkor zárjunk be minden oldalt. Nyissa meg újra az **átjáró lapot** az új előzetes verziójú felhasználói felület (UI) megtekintéséhez.
@@ -144,7 +144,7 @@ Egy meglévő átjárót frissítheti a magas rendelkezésre állás és mérete
 
     > [!NOTE]
     > A frissítés során az első csomópont neve a gép neve. 
-3. Most adjon hozzá egy csomópontot. Az **átjáró** lapon kattintson a **Csomópont hozzáadása**elemre.  
+3. Most adjon hozzá egy csomópontot. Az **átjáró** lapon kattintson a **Csomópont hozzáadása** elemre.  
 
     ![Adatkezelés átjáró – csomópont hozzáadása menü](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-add-node-menu.png)
 
@@ -164,8 +164,8 @@ Az Integration Runtime-csomópontok közötti kommunikáció biztonságossá té
 - Minden egyes Integration Runtime-csomópontnak meg kell bíznia a tanúsítványban, valamint a Hitelesítőadat-kezelő alkalmazást futtató ügyfélszámítógépen. 
   > [!NOTE]
   > A Hitelesítőadat-kezelő alkalmazást a rendszer a hitelesítő adatok a másolási varázslóból/Azure Portalról való biztonságos beállításakor használja. Ez pedig bármely, a helyszíni/privát adattárral azonos hálózaton belüli gépről elvégezhető.
-- A Wild Card-tanúsítványok támogatottak. Ha a teljes tartománynév neve **node1.domain.contoso.com**, a ***. domain.contoso.com** nevet használhatja a tanúsítvány tulajdonos neveként.
-- A SAN-tanúsítványok használata nem ajánlott, mert a rendszer csak a tulajdonos alternatív neveinek utolsó tételét fogja használni, és az összes többi figyelmen kívül lesz hagyva a jelenlegi korlátozás miatt. Például olyan SAN-tanúsítvánnyal rendelkezik, amelynek SAN a **node1.domain.contoso.com** és a **node2.domain.contoso.com**, ezt a tanúsítványt csak olyan gépen használhatja, amelynek teljes tartományneve **node2.domain.contoso.com**.
+- A Wild Card-tanúsítványok támogatottak. Ha a teljes tartománynév neve **node1.domain.contoso.com** , a * *_. domain.contoso.com_* nevet használhatja a tanúsítvány tulajdonos neveként.
+- A SAN-tanúsítványok használata nem ajánlott, mert a rendszer csak a tulajdonos alternatív neveinek utolsó tételét fogja használni, és az összes többi figyelmen kívül lesz hagyva a jelenlegi korlátozás miatt. Például olyan SAN-tanúsítvánnyal rendelkezik, amelynek SAN a **node1.domain.contoso.com** és a **node2.domain.contoso.com** , ezt a tanúsítványt csak olyan gépen használhatja, amelynek teljes tartományneve **node2.domain.contoso.com** .
 - A a Windows Server 2012 R2 által támogatott bármely, a TLS/SSL-tanúsítványokra vonatkozó kulcs méretét támogatja.
 - A CNG-kulcsokat használó tanúsítvány nem támogatott.
 
@@ -181,24 +181,24 @@ A Azure Portal az erőforrások kihasználtságának közel valós idejű pillan
 
 ![Adatkezelés átjáró – több csomópont figyelése](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png)
 
-A **Speciális beállítások** megadásával az **átjáró** lapon megtekintheti a speciális mérőszámokat, például a **hálózati**(in/out), a **szerepkör & a hitelesítő adatokat**, amelyek hasznosak lehetnek az átjárókkal kapcsolatos problémák megoldásához, valamint az **egyidejű feladatok** (Futtatás/korlát), amely a teljesítmény finomhangolása során módosítható/módosítható. Az alábbi táblázat az **átjáró-csomópontok** listájában szereplő oszlopok leírását tartalmazza:  
+A **Speciális beállítások** megadásával az **átjáró** lapon megtekintheti a speciális mérőszámokat, például a **hálózati** (in/out), a **szerepkör & a hitelesítő adatokat** , amelyek hasznosak lehetnek az átjárókkal kapcsolatos problémák megoldásához, valamint az **egyidejű feladatok** (Futtatás/korlát), amely a teljesítmény finomhangolása során módosítható/módosítható. Az alábbi táblázat az **átjáró-csomópontok** listájában szereplő oszlopok leírását tartalmazza:  
 
 Figyelési tulajdonság | Leírás
 :------------------ | :---------- 
-Név | Az átjáróhoz társított logikai átjáró és csomópontok neve.  
+Name (Név) | Az átjáróhoz társított logikai átjáró és csomópontok neve.  
 status | A logikai átjáró és az átjáró csomópontjainak állapota. Példa: online/offline/korlátozott/stb. További információ ezekről az állapotokról: [átjáró állapota](#gateway-status) szakasz. 
 Verzió | Megjeleníti a logikai átjáró és az egyes átjáró-csomópontok verzióját. A logikai átjáró verziószáma a csoport csomópontjainak többsége alapján van meghatározva. Ha a logikai átjáró beállításában különböző verziójú csomópontok vannak, akkor csak a logikai átjáróval megegyező verziószámmal rendelkező csomópontok működnek. Mások korlátozott módban vannak, és manuálisan kell frissíteni (csak abban az esetben, ha az automatikus frissítés meghiúsul). 
 Igénybe vehető memória | Rendelkezésre álló memória egy átjáró-csomóponton. Ez az érték a közel valós idejű pillanatkép. 
 Processzorhasználat | Egy átjáró-csomópont CPU-kihasználtsága. Ez az érték a közel valós idejű pillanatkép. 
 Hálózatkezelés (be/ki) | Átjáró-csomópontok hálózati kihasználtsága. Ez az érték a közel valós idejű pillanatkép. 
 Egyidejű feladatok (futó/korlát) | Az egyes csomópontokon futó feladatok vagy feladatok száma. Ez az érték a közel valós idejű pillanatkép. A korlát az egyes csomópontok maximális egyidejű feladatait jelzi. Ez az érték a gép méretétől függően van meghatározva. Az egyidejű feladatok végrehajtásának korlátját növelheti speciális forgatókönyvekben, ahol a CPU/memória/hálózat nincs használatban, a tevékenységek azonban időtúllépést okozhatnak. Ez a funkció egy egycsomópontos átjáróval is elérhető (még akkor is, ha a méretezhetőség és a rendelkezésre állási funkció nincs engedélyezve). További információ: [méretezési megfontolások](#scale-considerations) szakasz. 
-Szerepkör | A szerepköröknek két típusa van: Diszpécser és feldolgozó. Minden csomópont munkavégző, ami azt jelenti, hogy mind a feladatok végrehajtásához használhatók. Csak egy kiosztó csomópont létezik, amely a feladatok/feladatok a Cloud servicesből való lekérésére, valamint a különböző munkavégző csomópontokra (beleértve a saját magára) történő küldésére szolgál. 
+Role | A szerepköröknek két típusa van: Diszpécser és feldolgozó. Minden csomópont munkavégző, ami azt jelenti, hogy mind a feladatok végrehajtásához használhatók. Csak egy kiosztó csomópont létezik, amely a feladatok/feladatok a Cloud servicesből való lekérésére, valamint a különböző munkavégző csomópontokra (beleértve a saját magára) történő küldésére szolgál. 
 
 ![Adatkezelés-átjáró – több csomópontos figyelés](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring-advanced.png)
 
 ### <a name="gateway-status"></a>Átjáró állapota
 
-Az alábbi táblázat egy **átjáró-csomópont**lehetséges állapotát tartalmazza: 
+Az alábbi táblázat egy **átjáró-csomópont** lehetséges állapotát tartalmazza: 
 
 status  | Megjegyzések/forgatókönyvek
 :------- | :------------------
@@ -209,7 +209,7 @@ Korlátozott | Kapcsolódási probléma miatt. A hiba oka lehet a 8050-es HTTP-p
 Inaktív | A csomópont más többségi csomópontok konfigurációjától eltérő konfigurációban található.<br/><br/> Egy csomópont inaktív lehet, ha nem tud csatlakozni más csomópontokhoz. 
 
 
-A következő táblázat a **logikai átjáró**lehetséges állapotait tartalmazza. Az átjáró állapota az átjáró csomópontjainak állapotától függ. 
+A következő táblázat a **logikai átjáró** lehetséges állapotait tartalmazza. Az átjáró állapota az átjáró csomópontjainak állapotától függ. 
 
 status | Megjegyzések
 :----- | :-------
@@ -228,7 +228,7 @@ A Azure Portal egy folyamat-figyelési élményt biztosít részletes csomópont
 ## <a name="scale-considerations"></a>Méretezési szempontok
 
 ### <a name="scale-out"></a>Horizontális felskálázás
-Ha a **rendelkezésre álló memória alacsony** , és a **CPU-használat magas**, új csomópont hozzáadásával kibővítheti a terhelést a gépek között. Ha a tevékenységek sikertelenek, mert az időtúllépés vagy az átjáró csomópontja offline állapotban van, akkor segít, ha csomópontot ad hozzá az átjáróhoz.
+Ha a **rendelkezésre álló memória alacsony** , és a **CPU-használat magas** , új csomópont hozzáadásával kibővítheti a terhelést a gépek között. Ha a tevékenységek sikertelenek, mert az időtúllépés vagy az átjáró csomópontja offline állapotban van, akkor segít, ha csomópontot ad hozzá az átjáróhoz.
  
 ### <a name="scale-up"></a>Vertikális felskálázás
 Ha a rendelkezésre álló memória és a CPU nem jól működik, de az üresjárati kapacitás 0, akkor a csomóponton futtatható egyidejű feladatok számának növelésével növelje a skálázást. Érdemes lehet vertikális felskálázást végezni, ha a tevékenységek időtúllépés miatt megtörténik, mert az átjáró túlterhelt. Ahogy az az alábbi ábrán is látható, növelheti a csomópontok maximális kapacitását. Javasoljuk, hogy a kezdéshez a következővel kezdjen.  
@@ -255,7 +255,7 @@ Az előzetes verzióról történő visszaállításhoz törölje az összes cso
 A törlés után kattintson az **előnézet szolgáltatások** elemre ugyanabban a Azure Portal oldalon, és tiltsa le az előzetes verzió funkciót. Alaphelyzetbe állítja az átjárót egy Node GA-(általános rendelkezésre állási) átjáróra.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse át a következő cikkeket:
 - [Adatkezelés átjáró](data-factory-data-management-gateway.md) – részletes áttekintést nyújt az átjáróról.
 - Az [adatáthelyezés a helyszíni és a Felhőbeli adattárak között](data-factory-move-data-between-onprem-and-cloud.md) – egy olyan bemutatót tartalmaz, amely részletes útmutatást nyújt egy átjáró egyetlen csomóponttal való használatához. 

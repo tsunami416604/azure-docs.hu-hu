@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
 ms.custom: subject-armqs
-ms.openlocfilehash: e7c3f2f50d9ac1fb1731f70f7b442ab4a2e44425
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 223006193219afe4179f3161d5e60e6439207b22
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088924"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896055"
 ---
 # <a name="quickstart-create-a-front-door-using-an-arm-template"></a>Rövid útmutató: első ajtó létrehozása ARM-sablonnal
 
@@ -40,7 +40,7 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonoka
 
 Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-front-door-create-basic) közül származik.
 
-Ebben a rövid útmutatóban egy előtérben lévő konfigurációt hoz létre egyetlen háttérrel, és egyetlen alapértelmezett elérési utat, amely megfelel a "/*" értéknek. 
+Ebben a rövid útmutatóban egy előtérben lévő konfigurációt hoz létre egyetlen háttérrel és egyetlen alapértelmezett elérési úttal `/*` .
 
 :::code language="json" source="~/quickstart-templates/101-front-door-create-basic/azuredeploy.json":::
 
@@ -50,7 +50,7 @@ A sablonban egyetlen Azure-erőforrás van definiálva:
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-1. Válassza a **kipróbálás** a következő kódrészletből lehetőséget a Azure Cloud Shell megnyitásához, majd kövesse az utasításokat az Azure-ba való bejelentkezéshez. 
+1. Válassza a **kipróbálás** a következő kódrészletből lehetőséget a Azure Cloud Shell megnyitásához, majd kövesse az utasításokat az Azure-ba való bejelentkezéshez.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -69,11 +69,11 @@ A sablonban egyetlen Azure-erőforrás van definiálva:
 
 1. A PowerShell-szkript másolásához válassza a **Másolás** az előző kódrészletből lehetőséget.
 
-1. Kattintson a jobb gombbal a rendszerhéj-konzol ablaktáblára, majd válassza a **Beillesztés**lehetőséget.
+1. Kattintson a jobb gombbal a rendszerhéj-konzol ablaktáblára, majd válassza a **Beillesztés** lehetőséget.
 
 1. Adja meg az értékeket.
 
-    A sablon üzembe helyezése egy bejárati ajtót hoz létre egyetlen háttérrel. Ebben a példában a * <span>Microsoft.</span> a com* -t a rendszer **backendAddress**használja.
+    A sablon üzembe helyezése egy bejárati ajtót hoz létre egyetlen háttérrel. Ebben a példában `microsoft.com` a **backendAddress** használják.
 
     Az erőforráscsoport neve a projekt neve **RG** hozzáfűzéssel.
 
@@ -98,7 +98,7 @@ A Azure PowerShell a sablon üzembe helyezésére szolgál. A Azure PowerShellon
 
     :::image type="content" source="./media/quickstart-create-front-door-template/front-door-overview.png" alt-text="Az előtérben lévő Resource Manager-sablon PowerShell-telepítésének kimenete":::
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha már nincs szüksége a bejárati ajtó szolgáltatásra, törölje az erőforráscsoportot. Ezzel eltávolítja a bejárati ajtót és az összes kapcsolódó erőforrást.
 
@@ -110,8 +110,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozta a következőket:
-* Front Door
+Ebben a rövid útmutatóban létrehozott egy bejárati ajtót.
 
 Ha szeretné megtudni, hogyan adhat hozzá egyéni tartományt a bejárati ajtóhoz, folytassa az előtérben lévő oktatóanyagokkal.
 

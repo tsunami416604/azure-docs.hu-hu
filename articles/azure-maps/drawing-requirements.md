@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 1f25aadf716b7768b6122a4fb165466aef7f8a16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c3e46bf386e70cbe35d96728ede896d6bf0dc7d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90053392"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895834"
 ---
 # <a name="drawing-package-requirements"></a>Rajzolási csomag követelményei
 
-A feltöltött rajzok leképezési adatai a [Azure Maps átalakítási szolgáltatás](https://docs.microsoft.com/rest/api/maps/conversion)használatával alakíthatók át. Ez a cikk az átalakítási API-hoz tartozó rajzi csomagok követelményeit ismerteti. Egy minta csomag megtekintéséhez letöltheti a minta [rajzolási csomagot](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
+A feltöltött rajzok leképezési adatai a [Azure Maps átalakítási szolgáltatás](/rest/api/maps/conversion)használatával alakíthatók át. Ez a cikk az átalakítási API-hoz tartozó rajzi csomagok követelményeit ismerteti. Egy minta csomag megtekintéséhez letöltheti a minta [rajzolási csomagot](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -25,13 +25,13 @@ A rajzfájl DWG formátumban mentett rajzokat tartalmaz, amely az Autodesk AutoC
 
 Bármelyik CAD-szoftvert kiválaszthatja a rajzok létrehozásához a rajzolási csomagban.  
 
-A [Azure Maps átalakítási szolgáltatás](https://docs.microsoft.com/rest/api/maps/conversion) átalakítja a rajzolási csomagot a leképezési adatként. Az átalakítási szolgáltatás az AutoCAD DWG fájlformátumával működik. `AC1032` a a DWG-fájlok belső formátumának verziója, ezért érdemes kiválasztani a `AC1032` belső DWG fájlformátum verzióját.  
+A [Azure Maps átalakítási szolgáltatás](/rest/api/maps/conversion) átalakítja a rajzolási csomagot a leképezési adatként. Az átalakítási szolgáltatás az AutoCAD DWG fájlformátumával működik. `AC1032` a a DWG-fájlok belső formátumának verziója, ezért érdemes kiválasztani a `AC1032` belső DWG fájlformátum verzióját.  
 
 ## <a name="glossary-of-terms"></a>Kifejezések jegyzéke
 
 Az egyszerű hivatkozáshoz itt talál néhány olyan kifejezést és definíciót, amelyek fontosak a cikk elolvasása során.
 
-| Időszak  | Definíció |
+| Időszak  | Meghatározás |
 |:-------|:------------|
 | Réteg | Egy AutoCAD DWG-réteg.|
 | Szint | Egy épület területe egy beállított jogosultságszint-emeléssel. Például egy épület padlója. |
@@ -50,13 +50,13 @@ A DWG-fájlokat bármilyen módon rendszerezheti a mappában, de a jegyzékfájl
 
 ## <a name="dwg-files-requirements"></a>DWG-fájlok követelményei
 
-A létesítmény egyes szintjeihez egyetlen DWG-fájl szükséges. A szintnek csak egyetlen DWG-fájlban kell szerepelnie. A külső hivatkozásokat (_xrefeket_) a fölérendelt rajzhoz kell kötni. Továbbá minden DWG-fájl:
+A létesítmény egyes szintjeihez egyetlen DWG-fájl szükséges. A szintnek csak egyetlen DWG-fájlban kell szerepelnie. A külső hivatkozásokat ( _xrefeket_ ) a fölérendelt rajzhoz kell kötni. Továbbá minden DWG-fájl:
 
-* Meg kell határoznia a _külső_ és az _egység_ rétegeit. A következő választható rétegeket is megadhatja: _Wall_, _Door_, _UnitLabel_, _Zone_és _ZoneLabel_.
+* Meg kell határoznia a _külső_ és az _egység_ rétegeit. A következő választható rétegeket is megadhatja: _Wall_ , _Door_ , _UnitLabel_ , _Zone_ és _ZoneLabel_ .
 * A nem tartalmazhat több szintből származó szolgáltatásokat.
 * A nem tartalmazhat több létesítményből származó szolgáltatásokat.
 
-A [Azure Maps konverziós szolgáltatás](https://docs.microsoft.com/rest/api/maps/conversion) a következő szolgáltatási osztályokat tudja kibontani egy DWG-fájlból:
+A [Azure Maps konverziós szolgáltatás](/rest/api/maps/conversion) a következő szolgáltatási osztályokat tudja kibontani egy DWG-fájlból:
 
 * Szintek
 * Egység
@@ -73,13 +73,13 @@ A DWG-rétegeknek a következő feltételeket is követniük kell:
 
 * Az összes DWG-fájlhoz tartozó rajzok eredetét ugyanahhoz a szélességhez és hosszúsághoz kell igazítani.
 * Minden szintnek ugyanabban a tájolásban kell lennie, mint a többi szintnek.
-* Az önmetsző sokszögek automatikusan kijavításra kerülnek, és a [Azure Maps konverziós szolgáltatás](https://docs.microsoft.com/rest/api/maps/conversion) figyelmeztetést vált ki. A kijavított eredményeket manuálisan kell megvizsgálni, mert előfordulhat, hogy nem egyeznek a várt eredményekkel.
+* Az önmetsző sokszögek automatikusan kijavításra kerülnek, és a [Azure Maps konverziós szolgáltatás](/rest/api/maps/conversion) figyelmeztetést vált ki. A kijavított eredményeket manuálisan kell megvizsgálni, mert előfordulhat, hogy nem egyeznek a várt eredményekkel.
 
 Minden rétegbeli entitásnak a következő típusok egyikének kell lennie: vonal, vonallánc, sokszög, körkörös ív, kör vagy szöveg (egyetlen vonal). A rendszer figyelmen kívül hagyja a többi entitás típusát.
 
-Az alábbi táblázat az egyes rétegekhez tartozó támogatott entitások típusait és támogatott funkcióit ismerteti. Ha egy réteg nem támogatott entitás-típusokat tartalmaz, akkor a [Azure Maps konverziós szolgáltatás](https://docs.microsoft.com/rest/api/maps/conversion) figyelmen kívül hagyja ezeket az entitásokat.  
+Az alábbi táblázat az egyes rétegekhez tartozó támogatott entitások típusait és támogatott funkcióit ismerteti. Ha egy réteg nem támogatott entitás-típusokat tartalmaz, akkor a [Azure Maps konverziós szolgáltatás](/rest/api/maps/conversion) figyelmen kívül hagyja ezeket az entitásokat.  
 
-| Réteg | Entitástípusok | Szolgáltatások |
+| Réteg | Entitástípusok | Funkciók |
 | :----- | :-------------------| :-------
 | [Külső](#exterior-layer) | Sokszög, vonallánc (lezárt), kör | Szintek
 | [Egység](#unit-layer) |  Sokszög, vonallánc (lezárt), kör | Vertikális behatolások, egységek
@@ -168,11 +168,11 @@ Láthat egy példát a ZoneLabel rétegre a [minta rajzolási csomagban](https:/
 
 ## <a name="manifest-file-requirements"></a>Manifest-fájlra vonatkozó követelmények
 
-A zip-mappának tartalmaznia kell egy jegyzékfájlt a könyvtár legfelső szintjén, és a fájlnak **manifest.js**nevűnek kell lennie. Leírja azokat a DWG-fájlokat, amelyek lehetővé teszik a [Azure Maps átalakítási szolgáltatás](https://docs.microsoft.com/rest/api/maps/conversion) számára a tartalom elemzését. Csak a jegyzékfájl által azonosított fájlok kerülnek betöltésre. A rendszer figyelmen kívül hagyja a zip mappában található, de a jegyzékfájlban nem szereplő fájlokat.
+A zip-mappának tartalmaznia kell egy jegyzékfájlt a könyvtár legfelső szintjén, és a fájlnak **manifest.js** nevűnek kell lennie. Leírja azokat a DWG-fájlokat, amelyek lehetővé teszik a [Azure Maps átalakítási szolgáltatás](/rest/api/maps/conversion) számára a tartalom elemzését. Csak a jegyzékfájl által azonosított fájlok kerülnek betöltésre. A rendszer figyelmen kívül hagyja a zip mappában található, de a jegyzékfájlban nem szereplő fájlokat.
 
 A jegyzékfájl objektumában lévő fájlelérési utaknak a `buildingLevels` zip-mappa gyökeréhez viszonyítva kell lenniük. A DWG-fájl nevének pontosan egyeznie kell a létesítmény szintjének nevével. Például az "alagsor" szinthez tartozó DWG-fájl "alagsor. DWG". A 2. szintű DWG-fájl neve "level_2. DWG". Ha a szint neve szóközt tartalmaz, használjon aláhúzást.
 
-Bár a jegyzékfájl-objektumok használatakor követelmények vannak, nem minden objektumra van szükség. A következő táblázat a [Azure Maps átalakítási szolgáltatás](https://docs.microsoft.com/rest/api/maps/conversion)1,1-es verziójához szükséges és választható objektumokat tartalmazza.
+Bár a jegyzékfájl-objektumok használatakor követelmények vannak, nem minden objektumra van szükség. A következő táblázat a [Azure Maps átalakítási szolgáltatás](/rest/api/maps/conversion)1,1-es verziójához szükséges és választható objektumokat tartalmazza.
 
 | Objektum | Kötelező | Leírás |
 | :----- | :------- | :------- |
@@ -404,7 +404,7 @@ Az alábbi példa a minta rajzolási csomag mintáját tartalmazó jegyzékfájl
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha a rajzfájl megfelel a követelményeknek, a [Azure Maps átalakítási szolgáltatással](https://docs.microsoft.com/rest/api/maps/conversion) átalakíthatja a csomagot térképi adatkészletbe. Ezt követően használhatja az adatkészletet egy beltéri Térkép létrehozásához a beltéri térképek modul használatával.
+Ha a rajzfájl megfelel a követelményeknek, a [Azure Maps átalakítási szolgáltatással](/rest/api/maps/conversion) átalakíthatja a csomagot térképi adatkészletbe. Ezt követően használhatja az adatkészletet egy beltéri Térkép létrehozásához a beltéri térképek modul használatával.
 
 > [!div class="nextstepaction"]
 >[A beltéri térképek létrehozója](creator-indoor-maps.md)

@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 360fc4af688e393bb8639ee773f0bf0de603a425
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69c5b9d15c0ba3c7c8b6b01643beac1905c404ad
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83598387"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895868"
 ---
 # <a name="creator-long-running-operation-api"></a>Creator Long-Running Operation API
 
-Azure Maps egyes API-k [aszinkron Request-Reply mintát](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply)használnak. Ez a minta lehetővé teszi, hogy a Azure Maps a rendelkezésre álló és a rugalmas szolgáltatásokat biztosítson. Ez a cikk ismerteti az Azure Map adott implementációját a hosszú ideig futó aszinkron háttér-feldolgozáshoz.
+Azure Maps egyes API-k [aszinkron Request-Reply mintát](/azure/architecture/patterns/async-request-reply)használnak. Ez a minta lehetővé teszi, hogy a Azure Maps a rendelkezésre álló és a rugalmas szolgáltatásokat biztosítson. Ez a cikk ismerteti az Azure Map adott implementációját a hosszú ideig futó aszinkron háttér-feldolgozáshoz.
 
 ## <a name="submitting-a-request"></a>Kérelem elküldése
 

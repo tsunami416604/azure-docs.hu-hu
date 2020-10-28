@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 14cf5238d29ede1ea229604316eee875b417e50e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04a43e3e2fa9ad77e11f82ff38a144a1de3add78
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361534"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895936"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Rajz átalakítási hibái és figyelmeztetései
 
-A [Azure Maps konverziós szolgáltatás](https://docs.microsoft.com/rest/api/maps/conversion) lehetővé teszi a feltöltött rajzok leképezési adatként való átalakítását. A rajzolási csomagoknak meg kell felelniük a [rajzolási csomagok követelményeinek](drawing-requirements.md). Ha egy vagy több követelmény nem teljesül, az átalakítási szolgáltatás hibákat vagy figyelmeztetéseket ad vissza. Ez a cikk az átalakítási hibát és a figyelmeztetési kódokat sorolja fel, és javaslatokat tesz a megoldására. Emellett néhány példát is tartalmaz a rajzok számára, amelyek hatására az átalakítási szolgáltatás visszaadja ezeket a kódokat.
+A [Azure Maps konverziós szolgáltatás](/rest/api/maps/conversion) lehetővé teszi a feltöltött rajzok leképezési adatként való átalakítását. A rajzolási csomagoknak meg kell felelniük a [rajzolási csomagok követelményeinek](drawing-requirements.md). Ha egy vagy több követelmény nem teljesül, az átalakítási szolgáltatás hibákat vagy figyelmeztetéseket ad vissza. Ez a cikk az átalakítási hibát és a figyelmeztetési kódokat sorolja fel, és javaslatokat tesz a megoldására. Emellett néhány példát is tartalmaz a rajzok számára, amelyek hatására az átalakítási szolgáltatás visszaadja ezeket a kódokat.
 
 Az átalakítási szolgáltatás akkor fog sikerülni, ha van valamilyen konverziós figyelmeztetés. Javasoljuk azonban, hogy tekintse át és oldja fel az összes figyelmeztetést. Egy figyelmeztetés a konverzió egy részét figyelmen kívül hagyta vagy automatikusan rögzítették. A figyelmeztetések feloldása hibát okozhat az utóbbi folyamatokban.
 
@@ -159,7 +159,7 @@ A **redundantAttribution** figyelmeztetés akkor fordul elő, ha a jegyzékfájl
 
 #### <a name="how-to-fix-redundantattribution"></a>*A redundantAttribution javítása*
 
-A **redundantAttribution* figyelmeztetés kijavításához távolítsa el a redundáns vagy ütköző objektum tulajdonságait.
+A * *redundantAttribution* figyelmeztetés kijavításához távolítsa el a redundáns vagy ütköző objektum tulajdonságait.
 
 ### <a name="manifestwarning"></a>**manifestWarning**
 
@@ -175,7 +175,7 @@ Egy **manifestWarning** akkor következik be, amikor a jegyzékfájl olyan unitP
 
 #### <a name="how-to-fix-manifestwarning"></a>*A manifestWarning javítása*
 
-Egy **manifestWarning**kijavításához távolítsa el a nem használt `unitProperties` vagy az `zoneProperties` objektumot a jegyzékfájlból, vagy adjon hozzá egy egység/zóna címkét a rajzhoz, hogy a tulajdonságok objektum a konverzió során legyen használatban.
+Egy **manifestWarning** kijavításához távolítsa el a nem használt `unitProperties` vagy az `zoneProperties` objektumot a jegyzékfájlból, vagy adjon hozzá egy egység/zóna címkét a rajzhoz, hogy a tulajdonságok objektum a konverzió során legyen használatban.
 
 ## <a name="wall-warnings"></a>Fali figyelmeztetések
 
@@ -267,7 +267,7 @@ Az alábbi képen egy olyan zóna látható, amely nem tartalmaz címkét.
 
 #### <a name="how-to-fix-zonewarning"></a>*A zoneWarning javítása*
 
-Egy **zoneWarning**kijavításához ellenőrizze, hogy minden zónának van-e egyetlen címkéje.
+Egy **zoneWarning** kijavításához ellenőrizze, hogy minden zónának van-e egyetlen címkéje.
 
 ## <a name="label-warnings"></a>Feliratok figyelmeztetései
 
@@ -291,7 +291,7 @@ Az alábbi képen egy címke látható két zónán belül.
 
 #### <a name="how-to-fix-labelwarning"></a>*A labelWarning javítása*
 
-A **labelWarning**javításához a következőket kell tennie:
+A **labelWarning** javításához a következőket kell tennie:
 
 * Minden egység felirata egységben van.
 * Az összes zóna felirata zónán belül van.
@@ -311,7 +311,7 @@ A **labelWarning**javításához a következőket kell tennie:
 
 A **invalidArchiveFormat** hibáinak kijavításához ellenőrizze a következőket:
 
-* Az archív fájl neve a _. zip_fájlban végződik.
+* Az archív fájl neve a _. zip_ fájlban végződik.
 * A ZIP-archívumban adatok szerepelnek.
 * Megnyithatja a ZIP-archívumot.
 
@@ -347,7 +347,7 @@ A **dwgError** akkor következik be, amikor a RAJZFÁJL olyan DWG-fájlt tartalm
 
 #### <a name="how-to-fix-dwgerror"></a>*A dwgError javítása*
 
-A **dwgError**kijavításához tekintse meg a _manifest.jsa_ fájlban ellenőrizze, hogy:
+A **dwgError** kijavításához tekintse meg a _manifest.jsa_ fájlban ellenőrizze, hogy:
 
 * A ZIP-archívumban található összes DWG-fájl érvényes AutoCAD DWG formátumú rajzok, amelyek mindegyikét az AutoCADben nyitják meg. Távolítsa el vagy javítsa ki az összes érvénytelen rajzot.
 * A _manifest.js_  található DWG-fájlok listája megegyezik a ZIP-archívumban található DWG-fájlokkal.
@@ -422,7 +422,7 @@ Az átalakítási szolgáltatás **ütközési** hibát ad vissza, ha egynél t�
 
 #### <a name="how-to-fix-conflict"></a>*Az ütközés elhárítása*
 
-Az **ütközési** hibák elhárításához vizsgálja _ meg amanifest.jst_ , és távolítsa el az ütköző információkat.
+Az **ütközési** hibák elhárításához vizsgálja _meg amanifest.jst_ , és távolítsa el az ütköző információkat.
 
 ### <a name="invalidgeoreference"></a>**invalidGeoreference**
 

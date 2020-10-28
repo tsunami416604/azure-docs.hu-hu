@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 539145836849bb66bcf1f12a97ea405fe84c47bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f27f7532d074428fafe74e4a453628f5c61d2b8
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311376"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895970"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Adatvezérelt stílusú kifejezések (web SDK)
 
@@ -90,11 +90,11 @@ Az adatkifejezések hozzáférést biztosítanak a szolgáltatásban található
 |------------|-------------|-------------|
 | `['at', number, array]` | object | Egy elem lekérése egy tömbből. |
 | `['geometry-type']` | sztring | A szolgáltatás geometriai típusának beolvasása: pont, multipoint, LineString, MultiLineString, sokszög és többsokszög. |
-| `['get', string]` | érték | A tulajdonság értékének beolvasása az aktuális funkció tulajdonságaiból. Null értéket ad vissza, ha a kért tulajdonság hiányzik. |
-| `['get', string, object]` | érték | A tulajdonság értékének beolvasása a megadott objektum tulajdonságaiból. Null értéket ad vissza, ha a kért tulajdonság hiányzik. |
+| `['get', string]` | value | A tulajdonság értékének beolvasása az aktuális funkció tulajdonságaiból. Null értéket ad vissza, ha a kért tulajdonság hiányzik. |
+| `['get', string, object]` | value | A tulajdonság értékének beolvasása a megadott objektum tulajdonságaiból. Null értéket ad vissza, ha a kért tulajdonság hiányzik. |
 | `['has', string]` | boolean | Meghatározza, hogy a szolgáltatás tulajdonságai rendelkeznek-e a megadott tulajdonsággal. |
 | `['has', string, object]` | boolean | Meghatározza, hogy az objektum tulajdonságai rendelkeznek-e a megadott tulajdonsággal. |
-| `['id']` | érték | A szolgáltatás AZONOSÍTÓjának beolvasása, ha rendelkezik ilyennel. |
+| `['id']` | value | A szolgáltatás AZONOSÍTÓjának beolvasása, ha rendelkezik ilyennel. |
 | `['length', string | array]` | szám | Egy karakterlánc vagy tömb hosszának beolvasása. |
 | `['in', boolean | string | number, array]` | boolean | Meghatározza, hogy egy elem létezik-e tömbben |
 | `['in', substring, string]` | boolean | Meghatározza, hogy létezik-e egy alsztring egy karakterláncban. |
@@ -475,13 +475,13 @@ A színkifejezések egyszerűbbé teszik a színértékek létrehozását és ke
 
 | Expression | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
-| `['rgb', number, number, number]` | szín | Egy színértéket hoz létre a *vörös*, *zöld*és *kék* összetevőkből a és a között `0` `255` , és egy alfa-összetevőt `1` . Ha bármelyik összetevő tartományon kívül esik, a kifejezés hibát jelez. |
-| `['rgba', number, number, number, number]` | szín | Egy színértéket hoz létre a *vörös*, *zöld*és *kék* összetevők között, amelyeknek a és a közötti tartományba kell `0` `255` esnie, valamint egy alfa-összetevőt a és a tartományban `0` `1` . Ha bármelyik összetevő tartományon kívül esik, a kifejezés hibát jelez. |
-| `['to-rgba']` | \[szám, szám, szám, szám\] | Egy négy elemből álló tömböt ad vissza, amely a bemeneti szín *vörös*, *zöld*, *kék*és *alfa* összetevőit tartalmazza ebben a sorrendben. |
+| `['rgb', number, number, number]` | szín | Egy színértéket hoz létre a *vörös* , *zöld* és *kék* összetevőkből a és a között `0` `255` , és egy alfa-összetevőt `1` . Ha bármelyik összetevő tartományon kívül esik, a kifejezés hibát jelez. |
+| `['rgba', number, number, number, number]` | szín | Egy színértéket hoz létre a *vörös* , *zöld* és *kék* összetevők között, amelyeknek a és a közötti tartományba kell `0` `255` esnie, valamint egy alfa-összetevőt a és a tartományban `0` `1` . Ha bármelyik összetevő tartományon kívül esik, a kifejezés hibát jelez. |
+| `['to-rgba']` | \[szám, szám, szám, szám\] | Egy négy elemből álló tömböt ad vissza, amely a bemeneti szín *vörös* , *zöld* , *kék* és *alfa* összetevőit tartalmazza ebben a sorrendben. |
 
 **Példa**
 
-Az alábbi példa egy olyan RGB színértéket hoz létre, amely *vörös* értékkel rendelkezik `255` , valamint *zöld* és *kék* értékeket tartalmaz, amelyek kiszámítása a `2.5` tulajdonság értékének szorzatával történik `temperature` . Ahogy a hőmérséklet változik, a szín különböző árnyalatú *vörös*színűre változik.
+Az alábbi példa egy olyan RGB színértéket hoz létre, amely *vörös* értékkel rendelkezik `255` , valamint *zöld* és *kék* értékeket tartalmaz, amelyek kiszámítása a `2.5` tulajdonság értékének szorzatával történik `temperature` . Ahogy a hőmérséklet változik, a szín különböző árnyalatú *vörös* színűre változik.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -647,7 +647,7 @@ Speciális kifejezések, amelyek csak bizonyos rétegekre érvényesek.
 
 ### <a name="heat-map-density-expression"></a>Hő-Térkép sűrűségének kifejezése
 
-A Heat Map sűrűség kifejezés lekérdezi a Heat Térkép sűrűségének értékét egy hő-Térkép réteg minden egyes képpontjához, és definiálva van `['heatmap-density']` . Ez az érték a és a közötti szám `0` `1` . Egy vagy kifejezéssel együtt használatos, amely `interpolation` `step` meghatározza a Heat Térkép színezéséhez használt színátmenetet. Ez a kifejezés csak a Heat Map réteg [szín beállításában](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions#color) használható.
+A Heat Map sűrűség kifejezés lekérdezi a Heat Térkép sűrűségének értékét egy hő-Térkép réteg minden egyes képpontjához, és definiálva van `['heatmap-density']` . Ez az érték a és a közötti szám `0` `1` . Egy vagy kifejezéssel együtt használatos, amely `interpolation` `step` meghatározza a Heat Térkép színezéséhez használt színátmenetet. Ez a kifejezés csak a Heat Map réteg [szín beállításában](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions#color) használható.
 
 > [!TIP]
 > A 0 indexű szín egy interpolációs kifejezésben vagy egy lépés színének alapértelmezett színe határozza meg annak a területnek a színét, ahol nincs adatmennyiség. A 0. indexben szereplő szín használható a háttér színének meghatározására. Számos előnyben részesítette ezt az értéket áttetszőre vagy félig átlátszó feketére állítani.
@@ -954,16 +954,16 @@ Az alábbi cikkekben további kódokat talál a kifejezések megvalósításáho
 További információ a kifejezéseket támogató rétegbeli lehetőségekről:
 
 > [!div class="nextstepaction"] 
-> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions)
+> [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions)
 
 > [!div class="nextstepaction"] 
-> [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
+> [HeatMapLayerOptions](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
 
 > [!div class="nextstepaction"] 
-> [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
+> [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions)
 
 > [!div class="nextstepaction"] 
-> [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
+> [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
 
 > [!div class="nextstepaction"] 
-> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions)
+> [SymbolLayerOptions](/javascript/api/azure-maps-control/atlas.symbollayeroptions)
