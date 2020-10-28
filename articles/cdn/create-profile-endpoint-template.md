@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: ca74c5f54cfb513f4611fafc40d34378707ff949
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 0612445d0a1bfa10182eb8ce827001d0856f4d9b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746488"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92777905"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>Gyors útmutató: Azure CDN profil és végpont-ARM sablon létrehozása
 
@@ -46,7 +46,7 @@ Ez a sablon a következő létrehozására van konfigurálva:
 
 A sablonban egyetlen Azure-erőforrás van definiálva:
 
-* **[Microsoft. CDN/profilok](https://docs.microsoft.com/azure/templates/microsoft.cdn/profiles)**
+* **[Microsoft. CDN/profilok](/azure/templates/microsoft.cdn/profiles)**
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
@@ -107,7 +107,7 @@ Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-dele
 
 ### <a name="powershell"></a>PowerShell
 
-Ha már nincs rá szükség, a [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) paranccsal távolíthatja el az erőforráscsoportot és a benne található összes erőforrást.
+Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=latest) paranccsal távolíthatja el az erőforráscsoportot és a benne található összes erőforrást.
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroupCDN

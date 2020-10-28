@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
-ms.openlocfilehash: aa3c190912c0fbd62b08182018c99b985354811b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a226682c2580a871e1b2fc4db71f369f3bcc3abb
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86201810"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778634"
 ---
 # <a name="how-caching-works"></a>A gyorsítótárazás működése
 
@@ -65,7 +65,7 @@ A gyorsítótár frissességének meghatározásához két fejléc használható
 ## <a name="cache-directive-headers"></a>Cache-direktíva fejlécek
 
 > [!IMPORTANT]
-> Alapértelmezés szerint a DSA-ra optimalizált Azure CDN-végpont figyelmen kívül hagyja a gyorsítótár-direktíva fejléceit, és megkerüli a gyorsítótárazást. A **Verizon** és a Akamai-profiloktól **Azure CDN standard** szintű Azure CDN esetében beállíthatja, hogy egy Azure CDN végpont hogyan kezelje ezeket a fejléceket a [CDN gyorsítótárazási szabályainak](cdn-caching-rules.md) használatával a gyorsítótárazás engedélyezéséhez. A csak Verizon-profilokból **származó Azure CDN Premium** esetén a [szabályok motor](cdn-rules-engine.md) használatával engedélyezheti a gyorsítótárazást.
+> Alapértelmezés szerint a DSA-ra optimalizált Azure CDN-végpont figyelmen kívül hagyja a gyorsítótár-direktíva fejléceit, és megkerüli a gyorsítótárazást. A **Verizon** és a Akamai-profiloktól **Azure CDN standard** szintű Azure CDN esetében beállíthatja, hogy egy Azure CDN végpont hogyan kezelje ezeket a fejléceket a [CDN gyorsítótárazási szabályainak](cdn-caching-rules.md) használatával a gyorsítótárazás engedélyezéséhez. A csak Verizon-profilokból **származó Azure CDN Premium** esetén a [szabályok motor](./cdn-verizon-premium-rules-engine.md) használatával engedélyezheti a gyorsítótárazást.
 
 Azure CDN támogatja a következő HTTP-gyorsítótár-direktívák fejléceit, amelyek meghatározzák a gyorsítótár időtartamát és a gyorsítótár megosztását.
 
@@ -127,16 +127,13 @@ Az alábbi táblázat a Azure CDN termékek alapértelmezett gyorsítótárazás
 |    | Microsoft: általános webes kézbesítés | Verizon: általános webes kézbesítés | Verizon: DSA | Akamai: általános webes kézbesítés | Akamai: DSA | Akamai: nagyméretű fájl letöltése | Akamai: általános vagy VOD média streaming |
 |------------------------|--------|-------|------|--------|------|-------|--------|
 | **A becsület forrása**       | Igen    | Igen   | Nem   | Igen    | Nem   | Igen   | Igen    |
-| **CDN gyorsítótárának időtartama** | 2 nap |7 nap | Nincs | 7 nap | Nincs | 1 nap | 1 év |
+| **CDN gyorsítótárának időtartama** | 2 nap |7 nap | Nincsenek | 7 nap | Nincsenek | 1 nap | 1 év |
 
-**Becsület forrása**: Megadja, hogy a rendszer a támogatott gyorsítótár-direktíva fejléceket adja-e meg, ha azok szerepelnek a forráskiszolgáló http-válaszában.
+**Becsület forrása** : Megadja, hogy a rendszer a támogatott gyorsítótár-direktíva fejléceket adja-e meg, ha azok szerepelnek a forráskiszolgáló http-válaszában.
 
-**CDN-gyorsítótár időtartama**: azt határozza meg, hogy mennyi ideig legyen gyorsítótárazva az erőforrás a Azure CDN. Ha azonban a **becsület forrása** igen, és a forráskiszolgáló http-válasza tartalmazza a gyorsítótár-direktíva fejlécét `Expires` , vagy a `Cache-Control: max-age` Azure CDN a fejlécben megadott időtartam értéket használja. 
+**CDN-gyorsítótár időtartama** : azt határozza meg, hogy mennyi ideig legyen gyorsítótárazva az erőforrás a Azure CDN. Ha azonban a **becsület forrása** igen, és a forráskiszolgáló http-válasza tartalmazza a gyorsítótár-direktíva fejlécét `Expires` , vagy a `Cache-Control: max-age` Azure CDN a fejlécben megadott időtartam értéket használja. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha szeretné megtudni, hogyan szabhatja testre és felülbírálhatja a CDN alapértelmezett gyorsítótárazási viselkedését a gyorsítótárazási szabályokon keresztül, tekintse meg a következő témakört: a gyorsítótárazási [szabályok kezelése Azure CDN](cdn-caching-rules.md) 
 - Ha meg szeretné tudni, hogyan használhatja a lekérdezési karakterláncokat a gyorsítótárazási viselkedés vezérlésére, tekintse meg a [vezérlési karakterláncokkal Azure CDN gyorsítótárazási viselkedés szabályozása](cdn-query-string.md)
-
-
-

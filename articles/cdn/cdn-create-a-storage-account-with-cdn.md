@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 4086a8f354e5e906325d9c324410f3546a32f658
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b80437fa1ac41bb240565923eb40e562c8cf8c5b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82996163"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778897"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Gyors útmutató: Azure Storage-fiók integrálása Azure CDN
 
@@ -42,25 +42,25 @@ Tárfiók létrehozásához a társított előfizetés szolgáltatás-rendszerga
 
 1. A Azure Portal válassza az **erőforrás létrehozása** lehetőséget a bal felső sarokban. Ekkor megnyílik az **Új** panel.
 
-1. Keressen rá a **Storage-fiókra** , és válassza a **Storage Account-blob, fájl, tábla, üzenetsor** lehetőséget a legördülő listából. Ezután válassza a **Létrehozás**elemet:
+1. Keressen rá a **Storage-fiókra** , és válassza a **Storage Account-blob, fájl, tábla, üzenetsor** lehetőséget a legördülő listából. Ezután válassza a **Létrehozás** elemet:
     
     ![Tárolási erőforrás kiválasztása](./media/cdn-create-a-storage-account-with-cdn/cdn-select-new-storage-account.png)
 
-1. A **Storage-fiók létrehozása panelen**adja meg a következő adatokat:
+1. A **Storage-fiók létrehozása panelen** adja meg a következő adatokat:
 
     | Beállítás | Érték | 
     | --- | --- |
-    | Projekt részletei > erőforráscsoport | Válassza az **új létrehozása** elemet, és használja a *CDNQuickstart-RG*nevet. Ha szeretné, használhat egy meglévő erőforráscsoportot is. |
-    | Példány részletei > Storage-fiók neve | Adja meg a fiók nevét a 3-24 kisbetűs betűk és számok használatával. A névnek egyedinek kell lennie az Azure-ban, és annak az URL-címnek kell lennie, amely az előfizetés blob, üzenetsor vagy tábla erőforrásainak kezelésére szolgál. Ha egy tároló-erőforrást szeretne kezelni a blob Storage-ban, használjon egy URI-t a következő formátumban: http://* &lt; storageaccountname &gt; *. blob.Core.Windows.net/* &lt; Container-name &gt; *.
+    | Projekt részletei > erőforráscsoport | Válassza az **új létrehozása** elemet, és használja a *CDNQuickstart-RG* nevet. Ha szeretné, használhat egy meglévő erőforráscsoportot is. |
+    | Példány részletei > Storage-fiók neve | Adja meg a fiók nevét a 3-24 kisbetűs betűk és számok használatával. A névnek egyedinek kell lennie az Azure-ban, és annak az URL-címnek kell lennie, amely az előfizetés blob, üzenetsor vagy tábla erőforrásainak kezelésére szolgál. Ha egy tároló-erőforrást szeretne kezelni a blob Storage-ban, használjon egy URI-t a következő formátumban: http:// *&lt; storageaccountname &gt;* . blob.Core.Windows.net/ *&lt; Container-name &gt;* .
     | Példány részletei > helye | Válasszon ki egy közeli Azure-régiót a legördülő listából. |
     
-    Hagyja meg az összes többi adatot az alapértelmezett értékekre, majd válassza a **felülvizsgálat + létrehozás**lehetőséget.
+    Hagyja meg az összes többi adatot az alapértelmezett értékekre, majd válassza a **felülvizsgálat + létrehozás** lehetőséget.
 
 1. A Storage-fiók létrehozása több percet is igénybe vehet. A létrehozás befejezése után válassza az **erőforrás** megnyitása lehetőséget a Storage-fiók oldalának megnyitásához a következő lépéshez.
 
 ## <a name="enable-azure-cdn-for-the-storage-account"></a>Az Azure CDN engedélyezése a tárfiókhoz
 
-1. A Storage-fiók lapján válassza **Blob service**  >  a bal oldali menü blob Service**Azure CDN** elemét. Megjelenik az **Azure CDN** oldal.
+1. A Storage-fiók lapján válassza **Blob service**  >  a bal oldali menü blob Service **Azure CDN** elemét. Megjelenik az **Azure CDN** oldal.
 
     ![CDN-végpont létrehozása](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-endpoint-configuration.png)
     
@@ -68,9 +68,9 @@ Tárfiók létrehozásához a társított előfizetés szolgáltatás-rendszerga
 
     | Beállítás  | Érték |
     | -------- | ----- |
-    | **CDN-profil** | Válassza az **új létrehozása** elemet, és adja meg a profil nevét, például: *CDN-profil-123*. A profil végpontok gyűjteménye. |
-    | **Tarifacsomag** | Válasszon az egyik **szabványos** lehetőség közül, például a **Microsoft szabványos**. |
-    | **CDN-végpont neve** | Adja meg a végpont nevét, például: *CDN-Endpoint-123*. Ennek a névnek globálisan egyedinek kell lennie az Azure-ban, mert a gyorsítótárazott erőforrásaihoz az URL _ &lt; -végpont – name &gt; _. azureedge.NET hozzáfér. |
+    | **CDN-profil** | Válassza az **új létrehozása** elemet, és adja meg a profil nevét, például: *CDN-profil-123* . A profil végpontok gyűjteménye. |
+    | **Tarifacsomag** | Válasszon az egyik **szabványos** lehetőség közül, például a **Microsoft szabványos** . |
+    | **CDN-végpont neve** | Adja meg a végpont nevét, például: *CDN-Endpoint-123* . Ennek a névnek globálisan egyedinek kell lennie az Azure-ban, mert a gyorsítótárazott erőforrásaihoz az URL _&lt; -végpont – name &gt;_ . azureedge.NET hozzáfér. |
     | **Forrás gazdaneve** | Alapértelmezés szerint egy új CDN-végpont a tárfiók eszköznevét használja forráskiszolgálóként. |
 
 1. Kattintson a **Létrehozás** gombra. A létrejött végpont megjelenik a végpontok listájában.
@@ -95,7 +95,7 @@ Ha korlátozott hozzáférést szeretne biztosítani a privát tárolók számá
 
 A CDN-en lévő gyorsítótárazott tartalmakhoz való hozzáféréshez használja a CDN portálon megadott URL-címét. A gyorsítótárazott blobok címének formátuma a következő:
 
-http://<*Endpoint-Name* \> . azureedge.net/<*myPublicContainer* \> /< *BlobName*\>
+http://< *Endpoint-Name* \> . azureedge.net/< *myPublicContainer* \> /< *BlobName*\>
 
 > [!NOTE]
 > Miután engedélyezte a tárfiókhoz való hozzáférést az Azure CDN számára, az összes nyilvánosan elérhető objektum jogosult a CDN POP gyorsítótárazásra. Ha módosítja a CDN egyik gyorsítótárazott objektumát, az új tartalom nem lesz elérhető az Azure CDN-en keresztül, amíg az Azure CDN nem frissíti a tartalmát a gyorsítótárazott tartalom élettartamának lejártát követően.
@@ -104,25 +104,25 @@ http://<*Endpoint-Name* \> . azureedge.net/<*myPublicContainer* \> /< *BlobName*
 
 Ha egy objektumot nem szeretne a továbbiakban gyorsítótárazni az Azure CDN-ben, hajtsa végre a következő műveletek valamelyikét:
 
-- Állítsa a tárolót privátra (nyilvános helyett). További információ: [Névtelen olvasási hozzáférés tárolók és Blobok kezelésére](../storage/blobs/storage-manage-access-to-resources.md).
+- Állítsa a tárolót privátra (nyilvános helyett). További információ: [Névtelen olvasási hozzáférés tárolók és Blobok kezelésére](../storage/blobs/anonymous-read-access-configure.md).
 - Tiltsa le vagy törölje a CDN-végpontot az Azure Portalon.
 - Módosítsa az üzemeltetett szolgáltatást, hogy ne válaszoljon az objektumra vonatkozó kérelmekre.
 
 Egy, az Azure CDN-ben már gyorsítótárazott objektum mindaddig gyorsítótárazva marad, amíg az adott objektum élettartama le nem jár, vagy amíg a végpontot [véglegesen nem törli](cdn-purge-endpoint.md). Amikor az élettartam lejár, az Azure CDN megállapítja, hogy a CDN-végpont továbbra is érvényes, az objektum pedig névtelenül továbbra is elérhető-e. Ha nem, az objektum a továbbiakban nem lesz gyorsítótárazva.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 A korábbi lépésekben létrehozott egy CDN-profilt és egy végpontot egy erőforráscsoportban. Mentse ezeket az erőforrásokat, ha a [Következő lépésekre](#next-steps) szeretne lépni, és meg szeretné tudni, hogyan adhat egyéni tartományt a végpontjához. Ugyanakkor ha a jövőben nem várható ezen erőforrások használata, törölheti őket az erőforráscsoport törlésével, így elkerülheti a további díjakat:
 
 1. A Azure Portal bal oldali menüjében válassza az **erőforráscsoportok** lehetőséget, majd válassza a * CDNQuickstart-RG * * elemet.
 
-2. Az **erőforráscsoport** lapon válassza az **erőforráscsoport törlése**elemet, írja be a *CDNQuickstart-RG* karakterláncot a szövegmezőbe, majd válassza a **Törlés**lehetőséget.
+2. Az **erőforráscsoport** lapon válassza az **erőforráscsoport törlése** elemet, írja be a *CDNQuickstart-RG* karakterláncot a szövegmezőbe, majd válassza a **Törlés** lehetőséget.
 
     Ezzel törli a gyors útmutatóban létrehozott erőforráscsoportot, profilt és a végpontot.
 
 3. A törlendő tárfiókot jelölje ki az irányítópulton, majd válassza ki a **Törlés** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure CDN-profil és -végpont létrehozása](cdn-create-new-endpoint.md)

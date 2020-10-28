@@ -4,12 +4,12 @@ description: Választ ad az Azure VMware megoldással kapcsolatos gyakori kérd�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 816f64f9987abbdcd49de93b3bc218ec1606d9f3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 91be1c51639aa3ae8acbf0c37f5c4a8174b5a592
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461651"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779441"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Gyakran ismételt kérdések az Azure VMware-megoldásról
 
@@ -19,7 +19,7 @@ Válaszok az Azure VMware megoldással kapcsolatos gyakori kérdésekre.
 
 #### <a name="what-is-azure-vmware-solution"></a>Mi az az Azure VMware Solution?
 
-Mivel a vállalatok az informatikai modernizációs stratégiákat követve javítják az üzleti rugalmasságot, csökkentik a költségeket, és felgyorsítják az innovációt, a hibrid felhőalapú platformok az ügyfelek digitális átalakításának kulcsfontosságú segítői jelentek meg. Az Azure VMware megoldás a VMware szoftveres adatközpont-(SDDC-) szoftverét kombinálja Microsoft Azure globális felhőalapú szolgáltatás-ökoszisztémával. Az Azure VMware megoldás a teljesítményre, a rendelkezésre állásra, a biztonságra és a megfelelőségre vonatkozó követelmények teljesítése érdekében van kezelve.
+Mivel a vállalatok az informatikai modernizációs stratégiákat követve javítják az üzleti rugalmasságot, csökkentik a költségeket, és felgyorsítják az innovációt, a hibrid felhőalapú platformok az ügyfelek digitális átalakításának kulcsfontosságú segítői jelentek meg. Az Azure VMware-megoldás a VMware Software-Defined adatközpont-(SDDC-) szoftverét kombinálja Microsoft Azure globális felhőalapú szolgáltatás-ökoszisztémával. Az Azure VMware megoldás a teljesítményre, a rendelkezésre állásra, a biztonságra és a megfelelőségre vonatkozó követelmények teljesítése érdekében van kezelve.
 
 ## <a name="azure-vmware-solution-service"></a>Azure VMware megoldás szolgáltatás
 
@@ -49,7 +49,7 @@ Igen. A VM-Migrálás és a vMotion segítségével a virtuális gépek áthelye
 
 #### <a name="is-a-specific-version-of-vsphere-required-in-on-premises-environments"></a>A vSphere adott verziója szükséges a helyszíni környezetekben?
 
-Mivel az összes felhőalapú környezet a VMware HCX, a vSphere 5,5-es vagy újabb verziójával rendelkezik a vMotion helyszíni környezetekben.
+Az összes felhőalapú környezet a VMware HCX, a vSphere 5,5-es vagy újabb verziókkal rendelkezik a vMotion helyszíni környezetekben.
 
 #### <a name="what-does-the-change-control-process-look-like"></a>Mire hasonlít a változás-ellenőrzési folyamat?
 
@@ -57,7 +57,7 @@ A szolgáltatásban végzett frissítések a Microsoft Azure szokásos módosít
 
 #### <a name="how-is-this-different-from-azure-vmware-solution-by-cloudsimple"></a>Miben különbözik a CloudSimple Azure VMware-megoldástól?
 
-Az új Azure VMware-megoldással a Microsoft és a VMware közvetlen felhőalapú szolgáltatói partnerséggel rendelkezik. Az új megoldást a Microsoft tervezte, építi és támogatja, és a VMware támogatja. Építészeti szempontból a megoldások konzisztensek, és a VMware Technology stack egy Azure dedikált infrastruktúrán fut.
+Az új Azure VMware-megoldással a Microsoft és a VMware közvetlen felhőalapú szolgáltatói partnerséggel rendelkezik. Az új megoldást a Microsoft tervezte, építi és támogatja, és a VMware támogatja. Az építészeti megoldások konzisztensek, és a VMware Technology stack egy dedikált Azure-infrastruktúrán fut.
 
 #### <a name="are-red-hat-solutions-supported-on-azure-vmware-solution"></a>A Red Hat-megoldások támogatottak az Azure VMware-megoldásokban?
 
@@ -68,7 +68,7 @@ A Microsoft és a Red hat olyan integrált, közösen elhelyezett támogatási c
 A VMware HCX Enterprise Edition (EE) elérhető az Azure VMware-megoldással, amely *előzetes* funkcióként vagy szolgáltatásként érhető el. Habár az Azure VMware-megoldáshoz készült VMware HCX EE előzetes verzióban érhető el, ingyenes funkció vagy szolgáltatás, és az előzetes verziójú szolgáltatási feltételek és kikötések érvényesek. Miután a VMware HCX EE szolgáltatás elérhetővé válik, 30 napos értesítést kap arról, hogy a számlázás átvált. Kikapcsolhatja vagy letilthatja a szolgáltatást.
 
 #### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Az Azure VMware-megoldás virtuális gépei a VMRC-ben kezelhetők?
-Igen, ha a telepített rendszer be van kapcsolva, hozzáférhet a saját Felhőbeli vCenter, és nyilvános DNS-t használ (így az ESXi-gazdagépeket képes megoldani).
+Igen, ha a telepített rendszer be van kapcsolva, hozzáférhet a saját Felhőbeli vCenter, és nyilvános DNS-t használ az ESXi-állomásnevek feloldásához.
 
 #### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>Van-e speciális útmutatás a VMRC Azure VMware-megoldású virtuális gépekkel történő telepítéséhez és használatához?
 Nem, használja a [VMware által megadott utasításokat](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) , és teljesíti az utasításokban megadott virtuálisgép-előfeltételeket. 
@@ -102,7 +102,7 @@ Az ESXi-gazdagépek két vSAN diskgroups rendelkeznek, amelyek kapacitása 15,2 
 
 #### <a name="how-much-network-bandwidth-is-available-in-each-esxi-host"></a>Mennyi hálózati sávszélesség érhető el az egyes ESXi-gazdagépeken?
 
-Mindegyik ESXi-gazdagép az Azure VMware-megoldás 4 25-Gbps hálózati adapterrel van konfigurálva, és két hálózati adapterrel rendelkezik, amelyek az ESXi rendszerforgalmához és két hálózati terheléselosztási forgalomhoz vannak kiépítve. 
+Az Azure VMware-megoldás minden ESXi-állomása 4 25 GB/s hálózati adapterekkel, két, ESXi rendszerforgalomhoz kiépített hálózati adapterrel és két hálózati terheléselosztási forgalomhoz van konfigurálva. 
 
 #### <a name="is-data-stored-on-the-vsan-datastores-encrypted-at-rest"></a>Titkosítva vannak-e a vSAN-adattárolókban tárolt adatok a nyugalmi állapotban?
 
@@ -116,9 +116,9 @@ Amennyire tudjuk, minden olyan biztonsági mentési megoldás, amely a HotAdd á
 
 Mivel ezeket a biztonsági mentési megoldásokat az ügyfelek telepítik és kezelik, a megfelelő ISV-t is elérheti a támogatáshoz. 
 
-#### <a name="what-is-the-correct-storage-policy-for-the-dedup-setup"></a>Mi a megfelelő tárolási szabályzat a deduplikáció telepítéséhez?
+#### <a name="what-is-the-correct-storage-policy-for-the-dedupe-setup"></a>Mi a helyes tárolási szabályzat a dedupe telepítőhöz?
 
-Használja a virtuálisgép-sablon *thin_provision* tárolási házirendjét.  Az alapértelmezett érték *thick_provision*.
+Használja a virtuálisgép-sablon *thin_provision* tárolási házirendjét.  Az alapértelmezett érték *thick_provision* .
 
 #### <a name="are-the-snmp-infrastructure-logs-shared"></a>Megosztották-e az SNMP-infrastruktúra naplóit?
 
@@ -130,7 +130,7 @@ Nem.
 
 Nem, a saját Felhőbeli gazdagépek és fürtök dedikált és biztonságos törlésre kerülnek a használat előtt és után.
 
-#### <a name="what-are-the-minimum-and-maximum-number-of-hosts-per-cluster"></a>A gazdagépek minimális és maximális száma egy fürtön
+#### <a name="what-are-the-minimum-and-the-maximum-number-of-hosts-per-cluster"></a>Mi a minimális és a gazdagépek maximális száma egy fürtön?
 
 A fürtök 3 és 16 ESXi-gazdagép között is méretezhetők. A próbaverziós fürtök három gazdagépre korlátozódnak.
 
@@ -140,7 +140,7 @@ Igen, a fürtök az ESXi-gazdagépek minimális és maximális száma között m
 
 #### <a name="what-are-trial-clusters"></a>Mik azok a próbaverziós fürtök?
 
-A próbaverziós fürtök három, az Azure VMware-megoldás privát felhőkének egy hónapos értékeléséhez használt gazdagép-fürt.
+A próbaverziós fürtök három gazdagép-fürtből állnak, amelyek az Azure VMware-megoldás privát felhők egyhónapos értékeléséhez használatosak.
 
 #### <a name="can-i-use-high-end-hosts-for-trial-clusters"></a>Használhatok magas szintű gazdagépeket a próbaverziós fürtökhöz?
 
@@ -154,7 +154,7 @@ A privát felhők a vSphere 6,7, a vSAN 6,7, a VMware HCX és a NSX-T 2,5-es ver
 
 #### <a name="do-private-clouds-use-vmware-nsx"></a>A privát felhők a VMware NSX-t használják?
 
-Igen, a NSX-T 2,5 az Azure VMware megoldás privát felhőkben definiált szoftveres hálózatkezeléshez használatos.
+Igen, a NSX-T 2,5 a szoftveresen definiált hálózatkezeléshez használatos az Azure VMware-megoldás privát felhőkben.
 
 #### <a name="can-i-use-vmware-nsx-v-in-a-private-cloud"></a>Használhatom a VMware NSX-V-t egy privát felhőben?
 
@@ -166,17 +166,17 @@ Nem, nem szükséges a helyszíni NSX használata.
 
 #### <a name="what-is-the-upgrade-and-update-schedule-for-vmware-software-in-a-private-cloud"></a>Mi a VMware-szoftverek frissítési és frissítési ütemterve egy privát felhőben?
 
-A Private Cloud szoftvercsomag frissítései a szoftvernek a VMware szoftverből származó legújabb kiadásának egy-egy verzióján belül maradnak. A Private Cloud Software-verziók eltérőek lehetnek az egyes szoftver-összetevők legújabb verzióiban (ESXi, NSX-T, vCenter, vSAN).
+A Private Cloud szoftvercsomag frissítései megtartják a szoftvert a VMware-től a legújabb szoftvercsomag-kiadás egyik verzióján belül. A Private Cloud Software-verziók eltérhetnek az egyes szoftver-összetevők legújabb verzióitól (ESXi, NSX-T, vCenter, vSAN).
 
 #### <a name="how-often-will-the-private-cloud-software-stack-be-updated"></a>Milyen gyakran frissül a Private Cloud Software stack?
 
-A privát felhőalapú szoftverek olyan ütemterv szerint frissülnek, amely nyomon követi a VMware-től származó szoftveres csomag kiadását. A saját felhő nem igényel állásidőt a frissítésekhez.
+A privát felhőalapú szoftverek olyan ütemterv szerint frissülnek, amely nyomon követi a szoftveres csomag VMware-ről való kiadását. A saját felhő nem igényel állásidőt a frissítésekhez.
 
 ## <a name="connectivity"></a>Kapcsolatok
 
 #### <a name="what-network-ip-address-planning-is-required-to-incorporate-private-clouds-with-on-premises-environments"></a>Milyen hálózati IP-cím megtervezésére van szükség a privát felhők helyszíni környezetekben való beépítéséhez?
 
-Az Azure VMware-megoldás saját Felhőbeli üzembe helyezéséhez magánhálózat/22 címterület szükséges. Ez a magánhálózati címterület nem fedi át az előfizetésben lévő más virtuális hálózatokat, illetve a helyszíni hálózatokat.
+Az Azure VMware-megoldás saját Felhőbeli üzembe helyezéséhez magánhálózat/22 címterület szükséges. Ez a magánhálózati címterület nem fedi át az előfizetésben vagy a helyszíni hálózatokon lévő más virtuális hálózatokat.
  
 #### <a name="how-do-i-connect-from-on-premises-environments-to-an-azure-vmware-solution-private-cloud"></a>Hogyan csatlakozni a helyszíni környezetekről egy Azure VMware-megoldás privát felhőbe?
 
@@ -228,7 +228,7 @@ A díjszabással kapcsolatos általános kérdésekért tekintse meg az Azure VM
 
 #### <a name="who-supports-azure-vmware-solution"></a>Ki támogatja az Azure VMware-megoldást?
 
-Az Azure VMware-megoldás támogatását a Microsoft továbbítja. Egy [támogatási kérelmet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)is küldhet.
+A Microsoft támogatást nyújt az Azure VMware-megoldáshoz. Egy [támogatási kérelmet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)is küldhet.
 
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>Milyen fiókokra van szükségem egy Azure VMware-megoldás saját Felhőbeli létrehozásához?
 
@@ -239,10 +239,10 @@ Egy Azure-előfizetésben Azure-fiókra lesz szüksége.
 * Szüksége lesz egy [Azure nagyvállalati Szerződésra (EA)](../cost-management-billing/manage/ea-portal-agreements.md) a Microsofttal.
 * Egy Azure-előfizetésben Azure-fiókra lesz szüksége.
 
-Az Azure VMware-megoldási erőforrás létrehozása előtt egy támogatási jegyet kell benyújtania a csomópontok lefoglalásához. A kérés megerősítése és a csomópontok lefoglalása akár öt munkanapot is igénybe vesz. Ha van egy meglévő Azure VMware-megoldás saját felhője, és több csomópontot szeretne lefoglalni, akkor ugyanezt a folyamatot kell megtennie.
+Az Azure VMware-megoldási erőforrás létrehozása előtt támogatási jegyet kell benyújtania a csomópontok lefoglalásához. A kérés megerősítése és a csomópontok lefoglalása akár öt munkanapot is igénybe vesz. Ha van egy meglévő Azure VMware-megoldás saját felhője, és több csomópontot szeretne lefoglalni, akkor ugyanezt a folyamatot kell megtennie.
 
 
-1. A Azure Portal a Súgó és **támogatás**területen hozzon létre egy **[új támogatási kérést](https://rc.portal.azure.com/#create/Microsoft.Support)** , és adja meg a következő információkat a jegyhez:
+1. A Azure Portal a Súgó és **támogatás** területen hozzon létre egy **[új támogatási kérést](https://rc.portal.azure.com/#create/Microsoft.Support)** , és adja meg a következő információkat a jegyhez:
    - **Probléma típusa:** Technikai
    - **Előfizetés:** Előfizetés kiválasztása
    - **Szolgáltatás:** Minden szolgáltatás > Azure VMware-megoldás
@@ -272,9 +272,9 @@ Az Azure VMware-megoldási erőforrás létrehozása előtt egy támogatási jeg
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
-   ```
+   `"
 
-   Az erőforrás-szolgáltató regisztrálásának további módjaiért tekintse meg az [Azure erőforrás-szolgáltatók és-típusok](../azure-resource-manager/management/resource-providers-and-types.md)című témakört.
+   For additional ways to register the resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md).
 
 <!-- LINKS - external -->
 [kb2106952]: https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=21069522

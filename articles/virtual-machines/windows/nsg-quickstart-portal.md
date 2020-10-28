@@ -1,18 +1,18 @@
 ---
 title: Portok megnyitása virtuális géphez a Azure Portal használatával
-description: Megtudhatja, hogyan nyithat meg egy portot/hozzon létre egy végpontot a Windows rendszerű virtuális géphez a Azure Portal használatával
+description: Megtudhatja, hogyan nyithat meg egy portot/hozzon létre egy végpontot a virtuális géphez a Azure Portal használatával
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/27/2020
 ms.author: cynthn
-ms.openlocfilehash: 06f682bc697f93d436e2cd71b161c01e1360944a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1c3c39dd8c907f780876f97f9703857653d4e359
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973988"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92777758"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Portok megnyitása virtuális géphez a Azure Portal
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -23,7 +23,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 
-1. Keresse meg és válassza ki a virtuális géphez tartozó erőforráscsoportot, válassza a **Hozzáadás**lehetőséget, majd keresse meg és válassza ki a **hálózati biztonsági csoportot**.
+1. Keresse meg és válassza ki a virtuális géphez tartozó erőforráscsoportot, válassza a **Hozzáadás** lehetőséget, majd keresse meg és válassza ki a **hálózati biztonsági csoportot** .
 
 1. Kattintson a **Létrehozás** gombra.
 
@@ -41,15 +41,15 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 1. Válassza ki az új hálózati biztonsági csoportot. 
 
-1. A bal oldali menüben válassza a **bejövő biztonsági szabályok** lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+1. A bal oldali menüben válassza a **bejövő biztonsági szabályok** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
 
     ![Váltás a speciális lapra](./media/nsg-quickstart-portal/advanced.png)
 
 1. A **bejövő biztonsági szabály hozzáadása** lapon váltson át a **speciális** elemre az **alapszintű** oldalon a lap tetején. 
 
-1. Válasszon egy közös **szolgáltatást** a legördülő menüből, például **http**. A **Custom (egyéni** ) lehetőséget is választhatja, ha a használni kívánt portot szeretné megadni. 
+1. Válasszon egy közös **szolgáltatást** a legördülő menüből, például **http** . A **Custom (egyéni** ) lehetőséget is választhatja, ha a használni kívánt portot szeretné megadni. 
 
-1. Szükség esetén módosíthatja a **prioritást** vagy a **nevet**. A prioritás befolyásolja a szabályok alkalmazásának sorrendjét: minél kisebb a numerikus érték, annál korábbi a szabály alkalmazása.
+1. Szükség esetén módosíthatja a **prioritást** vagy a **nevet** . A prioritás befolyásolja a szabályok alkalmazásának sorrendjét: minél kisebb a numerikus érték, annál korábbi a szabály alkalmazása.
 
 1. A szabály létrehozásához válassza a **Hozzáadás** lehetőséget.
 
@@ -57,7 +57,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 Az utolsó lépés a hálózati biztonsági csoport társítása egy alhálózattal vagy egy adott hálózati adapterrel. Ebben a példában a hálózati biztonsági csoportot egy alhálózattal társítjuk. 
 
-1. Válassza ki az **alhálózatok** elemet a bal oldali menüben, majd válassza a **hozzárendelés**lehetőséget.
+1. Válassza ki az **alhálózatok** elemet a bal oldali menüben, majd válassza a **hozzárendelés** lehetőséget.
 
 1. Válassza ki a virtuális hálózatot, majd válassza ki a megfelelő alhálózatot.
 

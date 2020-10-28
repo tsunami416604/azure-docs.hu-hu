@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2018
 ms.author: allensu
-ms.openlocfilehash: 2f0968af5cb52904f6044e130adba8b0ba9a6cd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fb414680b8ff64d057f9f68d7b97380baeaa551
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192568"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778209"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Eszközök előzetes betöltése Azure CDN-végponton
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -37,17 +37,17 @@ Ez az oktatóanyag végigvezeti a gyorsítótárazott tartalom előzetes betölt
 1. A [Azure Portal](https://portal.azure.com)keresse meg azt a CDN-profilt, amely az előre betölteni kívánt végpontot tartalmazza. Megnyílik a profil panel.
     
 2. Kattintson a végpontra a listában. Megnyílik a végpont ablaktábla.
-3. A CDN-végpont ablaktáblán válassza a **Betöltés**lehetőséget.
+3. A CDN-végpont ablaktáblán válassza a **Betöltés** lehetőséget.
    
     ![CDN-végpont panel](./media/cdn-preload-endpoint/cdn-endpoint-blade.png)
    
     Megnyílik a **Load (Betöltés** ) ablaktábla.
    
     ![CDN betöltési panel](./media/cdn-preload-endpoint/cdn-load-blade.png)
-4. A **tartalom elérési útja**mezőbe írja be a betölteni kívánt eszközök teljes elérési útját (például: `/pictures/kitten.png` ).
+4. A **tartalom elérési útja** mezőbe írja be a betölteni kívánt eszközök teljes elérési útját (például: `/pictures/kitten.png` ).
    
    > [!TIP]
-   > A szöveg bevitelének megkezdése után a további **tartalom elérési útja** szövegmezők lehetővé teszik, hogy több eszköz listáját is felépítse. Ha törölni szeretné az eszközöket a listából, válassza a három pontot (...), majd kattintson a **Törlés**gombra.
+   > A szöveg bevitelének megkezdése után a további **tartalom elérési útja** szövegmezők lehetővé teszik, hogy több eszköz listáját is felépítse. Ha törölni szeretné az eszközöket a listából, válassza a három pontot (...), majd kattintson a **Törlés** gombra.
    > 
    > Minden tartalom elérési útjának relatív URL-címnek kell lennie, amely megfelel a következő [reguláris kifejezéseknek](/dotnet/standard/base-types/regular-expression-language-quick-reference):  
    > - Egyetlen fájl elérési útjának betöltése: `^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
@@ -58,7 +58,7 @@ Ez az oktatóanyag végigvezeti a gyorsítótárazott tartalom előzetes betölt
    > 
    
     ![Betöltés gomb](./media/cdn-preload-endpoint/cdn-load-paths.png)
-5. Ha végzett a tartalom elérési útjainak beírásával, válassza a **Betöltés**lehetőséget.
+5. Ha végzett a tartalom elérési útjainak beírásával, válassza a **Betöltés** lehetőséget.
    
 
 > [!NOTE]
@@ -68,6 +68,5 @@ Ez az oktatóanyag végigvezeti a gyorsítótárazott tartalom előzetes betölt
 
 ## <a name="see-also"></a>Lásd még
 * [Azure CDN végpont kiürítése](cdn-purge-endpoint.md)
-* [Azure CDN REST API-hivatkozás: tartalom előzetes betöltése egy végponton](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
-* [Azure CDN REST API-hivatkozás: tartalom kiürítése egy végpontból](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)
-
+* [Azure CDN REST API-hivatkozás: tartalom előzetes betöltése egy végponton](/rest/api/cdn/endpoints/loadcontent)
+* [Azure CDN REST API-hivatkozás: tartalom kiürítése egy végpontból](/rest/api/cdn/endpoints/purgecontent)

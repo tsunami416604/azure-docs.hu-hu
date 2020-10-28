@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
-ms.openlocfilehash: 43527e8e5860e0bbfc50643210156be943d2f174
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48b74a5507eb4a1d48b7bf70133e476a30fe8169
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85985190"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779951"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Teljesítmény optimalizálása a memóriában lévő technológiák használatával Azure SQL Database és az Azure SQL felügyelt példányain
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -37,7 +37,7 @@ A memóriában tárolt technológiák javíthatják ezeknek a számítási felad
 
 A Azure SQL Database és az Azure SQL felügyelt példányai a következő memóriabeli technológiákkal rendelkeznek:
 
-- *[A memóriában tárolt OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)* növeli a tranzakciók másodpercenkénti számát, és csökkenti a tranzakció-feldolgozás késését. A In-Memory OLTP származó forgatókönyvek a következők: nagy átviteli sebességű tranzakciós feldolgozás, például kereskedelmi és szerencsejátékok, adatok betöltése eseményekről vagy IoT eszközökről, gyorsítótárazás, adatterhelés és ideiglenes tábla és táblázat változó forgatókönyvek.
+- *[A memóriában tárolt OLTP](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)* növeli a tranzakciók másodpercenkénti számát, és csökkenti a tranzakció-feldolgozás késését. A In-Memory OLTP származó forgatókönyvek a következők: nagy átviteli sebességű tranzakciós feldolgozás, például kereskedelmi és szerencsejátékok, adatok betöltése eseményekről vagy IoT eszközökről, gyorsítótárazás, adatterhelés és ideiglenes tábla és táblázat változó forgatókönyvek.
 - A *fürtözött oszlopcentrikus indexek* csökkentik a tárolási lábnyomot (akár 10 alkalommal), és javítják a jelentéskészítési és elemzési lekérdezések teljesítményét. Az adatközpontokban lévő egyedkapcsolat-táblázatokkal több adathoz fér hozzá az adatbázisban, és javíthatja a teljesítményt. Azt is megteheti, hogy az operatív adatbázisban lévő korábbi adatokkal archiválja az adatait, és akár 10-szer több adattal is tud lekérdezni.
 - A HTAP-alapú, nem *fürtözött oszlopcentrikus-indexek* segítségével valós idejű betekintést nyerhet a vállalatba az operatív adatbázis közvetlen lekérdezésével anélkül, hogy költséges kinyerési, átalakítási és betöltési (etl) folyamatot kellene futtatnia, és várnia kell az adattárház feltöltését. A nem fürtözött oszlopcentrikus indexek lehetővé teszik az elemzési lekérdezések gyors végrehajtását a OLTP-adatbázisban, miközben csökkentik az üzemeltetési terhelésre gyakorolt hatást.
 - A HTAP *memória-optimalizált fürtözött oszlopcentrikus indexei* lehetővé teszik a gyors tranzakció-feldolgozást, valamint az elemzési lekérdezések *egyidejű* futtatását ugyanazon az adatokon.
@@ -93,7 +93,7 @@ Gyors ismertető a In-Memory OLTP: [1. rövid útmutató: In-Memory OLTP Technol
 Részletes videók a technológiákról:
 
 - [Memóriában tárolt OLTP](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) (amely a teljesítménnyel kapcsolatos előnyök bemutatóját tartalmazza, valamint az eredmények saját maga általi újbóli létrehozásához szükséges lépéseket)
-- [Memóriában tárolt OLTP-videók: Mi az, és mikor/hogyan kell használni](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
+- [Memóriában tárolt OLTP-videók: Mi az, és mikor/hogyan kell használni](/archive/blogs/sqlserverstorageengine/in-memory-oltp-video-what-it-is-and-whenhow-to-use-it)
 
 Megtudhatja, hogy egy adott adatbázis támogatja-e In-Memory OLTP. A következő Transact-SQL-lekérdezést végezheti el:
 
@@ -101,7 +101,7 @@ Megtudhatja, hogy egy adott adatbázis támogatja-e In-Memory OLTP. A következ�
 SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 ```
 
-Ha a lekérdezés **1**értéket ad vissza, akkor a In-Memory OLTP ebben az adatbázisban támogatott. A következő lekérdezések azonosítják azokat az objektumokat, amelyeket el kell távolítani az adatbázis visszaminősítése előtt általános célú, standard vagy alapszintű értékre:
+Ha a lekérdezés **1** értéket ad vissza, akkor a In-Memory OLTP ebben az adatbázisban támogatott. A következő lekérdezések azonosítják azokat az objektumokat, amelyeket el kell távolítani az adatbázis visszaminősítése előtt általános célú, standard vagy alapszintű értékre:
 
 ```sql
 SELECT * FROM sys.tables WHERE is_memory_optimized=1
@@ -111,7 +111,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 ### <a name="data-size-and-storage-cap-for-in-memory-oltp"></a>Adatméret és tárterület-korlát In-Memory OLTP
 
-In-Memory OLTP a memóriára optimalizált táblákat tartalmaz, amelyek a felhasználói adatok tárolására szolgálnak. Ezek a táblák a memóriába való illeszkedéshez szükségesek. Mivel a memóriát közvetlenül a SQL Database felügyeli, a felhasználói adatmennyiségre vonatkozó kvóta fogalma van. Ezt a gondolatot *a memóriában tárolt OLTP-tárolónak*nevezzük.
+In-Memory OLTP a memóriára optimalizált táblákat tartalmaz, amelyek a felhasználói adatok tárolására szolgálnak. Ezek a táblák a memóriába való illeszkedéshez szükségesek. Mivel a memóriát közvetlenül a SQL Database felügyeli, a felhasználói adatmennyiségre vonatkozó kvóta fogalma van. Ezt a gondolatot *a memóriában tárolt OLTP-tárolónak* nevezzük.
 
 Az egyes támogatott önálló adatbázisok díjszabási szintjei és a rugalmas készletek díjszabási szintjei bizonyos mennyiségű In-Memory OLTP-tárterületet foglalnak magukban.
 
@@ -149,7 +149,7 @@ A csomag visszaminősítése azonban negatív hatással lehet az adatbázisra. A
 
 Mielőtt visszaminősíti az adatbázist általános célú, standard vagy alapszintű verzióra, távolítsa el az összes memóriára optimalizált táblát és táblát, valamint az összes natív módon lefordított T-SQL-modult.
 
-*Erőforrások skálázása üzletileg kritikus*szinten: a memóriába optimalizált táblákban lévő adatoknak az adatbázis vagy a felügyelt példány szintjéhez társított In-Memory OLTP-tárolóban kell lenniük, vagy elérhetők a rugalmas készletben. Ha a réteg leskálázását vagy az adatbázis olyan készletre való áthelyezését kísérli meg, amely nem rendelkezik elegendő rendelkezésre álló In-Memory OLTP-tárolóval, a művelet sikertelen lesz.
+*Erőforrások skálázása üzletileg kritikus* szinten: a memóriába optimalizált táblákban lévő adatoknak az adatbázis vagy a felügyelt példány szintjéhez társított In-Memory OLTP-tárolóban kell lenniük, vagy elérhetők a rugalmas készletben. Ha a réteg leskálázását vagy az adatbázis olyan készletre való áthelyezését kísérli meg, amely nem rendelkezik elegendő rendelkezésre álló In-Memory OLTP-tárolóval, a művelet sikertelen lesz.
 
 ## <a name="in-memory-columnstore"></a>Memóriában tárolt oszlopcentrikus
 
@@ -164,13 +164,13 @@ Kétféle oszlopcentrikus-modellt használhat az adatai rendszerezéséhez:
 
 Részletes videó a technológiáról:
 
-- [Oszlopcentrikus index: memóriabeli elemzési videók a Ignite 2016-ből](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/)
+- [Oszlopcentrikus index: memóriabeli elemzési videók a Ignite 2016-ből](/archive/blogs/sqlserverstorageengine/columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016)
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>Az adatméret és a oszlopcentrikus indexek tárolása
 
 A oszlopcentrikus indexek nem szükségesek a memóriához való illeszkedéshez. Ezért az indexek méretének egyetlen korlátja a teljes adatbázis mérete, amely a [DTU-alapú vásárlási modellben](database/service-tiers-dtu.md) és a [virtuális mag-alapú vásárlási modell](database/service-tiers-vcore.md) cikkeiben van dokumentálva.
 
-Fürtözött oszlopcentrikus indexek használatakor az oszlopos tömörítést az alaptábla tárolója használja. Ez a tömörítés jelentősen csökkentheti a felhasználói adatai tárolási lábnyomát, ami azt jelenti, hogy az adatbázisban több adatmennyiség is elfér. A tömörítés pedig az [oszlopos archiválási tömörítéssel](https://msdn.microsoft.com/library/cc280449.aspx#using-columnstore-and-columnstore-archive-compression)tovább növelhető. Az elérni kívánt tömörítési mennyiség az adatok természetétől függ, a tömörítés azonban tízszer nem ritka.
+Fürtözött oszlopcentrikus indexek használatakor az oszlopos tömörítést az alaptábla tárolója használja. Ez a tömörítés jelentősen csökkentheti a felhasználói adatai tárolási lábnyomát, ami azt jelenti, hogy az adatbázisban több adatmennyiség is elfér. A tömörítés pedig az [oszlopos archiválási tömörítéssel](/sql/relational-databases/data-compression/data-compression#using-columnstore-and-columnstore-archive-compression)tovább növelhető. Az elérni kívánt tömörítési mennyiség az adatok természetétől függ, a tömörítés azonban tízszer nem ritka.
 
 Ha például olyan adatbázisa van, amelynek maximális mérete 1 terabájt (TB), és a oszlopcentrikus indexek használatával 10 alkalommal éri el a tömörítést, akkor az adatbázisban összesen 10 TB felhasználói adat fér el.
 
@@ -187,9 +187,9 @@ Ha **fürtözött** oszlopcentrikus indextel rendelkezik, a teljes táblázat el
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [1. gyors útmutató: In-Memory OLTP Technologies a T-SQL teljesítményének növeléséhez](https://msdn.microsoft.com/library/mt694156.aspx)
+- [1. gyors útmutató: In-Memory OLTP Technologies a T-SQL teljesítményének növeléséhez](/sql/relational-databases/in-memory-oltp/survey-of-initial-areas-in-in-memory-oltp)
 - [In-Memory OLTP használata meglévő Azure SQL-alkalmazásban](in-memory-oltp-configure.md)
 - [In-Memory OLTP-tároló figyelése](in-memory-oltp-monitor-space.md) In-Memory OLTP
 - [Memóriabeli funkciók kipróbálása](in-memory-sample.md)
@@ -200,18 +200,18 @@ Ha **fürtözött** oszlopcentrikus indextel rendelkezik, a teljes táblázat el
 
 - [Ismerje meg, hogy a kvórum megduplázza a kulcsfontosságú adatbázis számítási feladatait, miközben 70%-kal csökkenti a DTU a In-Memory OLTP SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 - [Memóriában tárolt OLTP blogbejegyzés](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
-- [Tudnivalók a In-Memory OLTP](https://msdn.microsoft.com/library/dn133186.aspx)
-- [Tudnivalók a oszlopcentrikus indexekről](https://msdn.microsoft.com/library/gg492088.aspx)
-- [Tudnivalók a valós idejű operatív elemzésekről](https://msdn.microsoft.com/library/dn817827.aspx)
-- Lásd: [gyakori számítási feladatok mintái és áttelepítési megfontolások](https://msdn.microsoft.com/library/dn673538.aspx) (amelyek a munkaterhelési mintákat ismertetik, ahol a In-Memory OLTP gyakran jelentős teljesítményt nyújt)
+- [Tudnivalók a In-Memory OLTP](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
+- [Tudnivalók a oszlopcentrikus indexekről](/sql/relational-databases/indexes/columnstore-indexes-overview)
+- [Tudnivalók a valós idejű operatív elemzésekről](/sql/relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics)
+- Lásd: [gyakori számítási feladatok mintái és áttelepítési megfontolások](/previous-versions/dn673538(v=msdn.10)) (amelyek a munkaterhelési mintákat ismertetik, ahol a In-Memory OLTP gyakran jelentős teljesítményt nyújt)
 
 ### <a name="application-design"></a>Az alkalmazás kialakítása
 
-- [Memóriában tárolt OLTP (memórián belüli optimalizálás)](https://msdn.microsoft.com/library/dn133186.aspx)
+- [Memóriában tárolt OLTP (memórián belüli optimalizálás)](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
 - [In-Memory OLTP használata meglévő Azure SQL-alkalmazásban](in-memory-oltp-configure.md)
 
 ### <a name="tools"></a>Eszközök
 
 - [Azure Portal](https://portal.azure.com/)
-- [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
-- [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)
+- [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)
+- [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt)

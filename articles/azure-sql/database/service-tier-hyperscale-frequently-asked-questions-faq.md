@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: be8e38d38408bd7cf11608d71035bd7cf0808b60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 400dd66827e82c1ede496526c49977e6f5383487
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488901"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780189"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database nagy kapacitású – gyakori kérdések
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -45,12 +45,12 @@ A virtuális mag-alapú szolgáltatási rétegek a következő táblázatban le�
 | **A következőkre alkalmas** |Mind|A költségvetés-orientált kiegyensúlyozott számítási és tárolási lehetőségeket kínál.|A legtöbb üzleti számítási feladat. A tárterület automatikus skálázása 100 TB-ig, gyors vertikális és horizontális számítási skálázás, gyors adatbázis-visszaállítás.|OLTP alkalmazások nagy tranzakciós sebességgel és alacsony IO-késéssel. Maximális rugalmasságot biztosít a hibák és a gyors feladatátvételek esetében, több szinkronban frissített replika használatával.|
 |  **Erőforrás típusa** ||SQL Database/SQL felügyelt példány | Önálló adatbázis | SQL Database/SQL felügyelt példány |
 | **Számítási méret**|SQL Database * | 1 – 80 virtuális mag | 1 – 80 virtuális mag * | 1 – 80 virtuális mag |
-| **Számítási méret**|Felügyelt SQL-példány | 8, 16, 24, 32, 40, 64, 80 virtuális mag | N.A. | 8, 16, 24, 32, 40, 64, 80 virtuális mag |
+| **Számítási méret**|SQL Managed Instance | 8, 16, 24, 32, 40, 64, 80 virtuális mag | N/A | 8, 16, 24, 32, 40, 64, 80 virtuális mag |
 | **Tárolási típus** | Mind |Prémium szintű távoli tárterület (/példány) | A leválasztott tárterület helyi SSD-gyorsítótárral (/példány) | Villámgyors helyi SSD-tároló (példány) |
 | **Tárterület mérete** | SQL Database *| 5 GB – 4 TB | Akár 100 TB | 5 GB – 4 TB |
-| **Tárterület mérete** | Felügyelt SQL-példány  | 32 GB – 8 TB | N.A. | 32 GB – 4 TB |
+| **Tárterület mérete** | SQL Managed Instance  | 32 GB – 8 TB | N/A | 32 GB – 4 TB |
 | **IOPS** | Önálló adatbázis | 500 IOPS/virtuális mag 7000 maximális IOPS | A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPS a munkaterheléstől függ. | 5000 IOPS 200 000 maximális IOPS|
-| **IOPS** | Felügyelt SQL-példány | Fájlmérettől függ | N.A. | 1375 IOPS/virtuális mag |
+| **IOPS** | SQL Managed Instance | Fájlmérettől függ | N/A | 1375 IOPS/virtuális mag |
 |**Rendelkezésre állás**|Mind|1 replika, nincs olvasási felskálázás, nincs helyi gyorsítótár | Több replika, legfeljebb 4 olvasási felskálázás, részleges helyi gyorsítótár | 3 replika, 1 olvasási felskálázás, zóna – redundáns HA, teljes helyi tárterület |
 |**Biztonsági másolatok**|Mind|RA-GRS, 7-35 napos megőrzés (alapértelmezés szerint 7 nap)| RA-GRS, 7 napos megőrzés, állandó időpontok közötti helyreállítási idő (PITR) | RA-GRS, 7-35 napos megőrzés (alapértelmezés szerint 7 nap) |
 
@@ -136,7 +136,7 @@ Nem.
 
 ### <a name="how-many-read-scale-out-replicas-are-supported"></a>Hány olvasási kibővített replika támogatott
 
-Alapértelmezés szerint a nagy kapacitású-adatbázisok egyetlen olvasási kibővített replikával (két replikával, köztük az elsődlegesvel) jönnek létre. Az írásvédett replikák számát 0 és 4 között méretezheti [Azure Portal](https://portal.azure.com) vagy [REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)használatával.
+Alapértelmezés szerint a nagy kapacitású-adatbázisok egyetlen olvasási kibővített replikával (két replikával, köztük az elsődlegesvel) jönnek létre. Az írásvédett replikák számát 0 és 4 között méretezheti [Azure Portal](https://portal.azure.com) vagy [REST API](/rest/api/sql/databases/createorupdate)használatával.
 
 ### <a name="for-high-availability-do-i-need-to-provision-additional-compute-replicas"></a>A magas rendelkezésre állás érdekében további számítási replikákat kell kiépíteni
 
@@ -198,7 +198,7 @@ Igen, beleértve a sort, az oldalt és a oszlopcentrikus tömörítést.
 
 ### <a name="if-i-have-a-huge-table-does-my-table-data-get-spread-out-across-multiple-data-files"></a>Ha óriási táblázattal rendelkezem, a táblázat adatai több adatfájlba kerülnek
 
-Igen. Egy adott táblához tartozó adatlapokon több adatfájl is végződhet, amelyek mindegyike azonos fájlcsoportja tartozik. A SQL Server [arányos kitöltési stratégiát](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups#file-and-filegroup-fill-strategy) használ az adatfájlokon keresztüli adatterjesztésre.
+Igen. Egy adott táblához tartozó adatlapokon több adatfájl is végződhet, amelyek mindegyike azonos fájlcsoportja tartozik. A SQL Server [arányos kitöltési stratégiát](/sql/relational-databases/databases/database-files-and-filegroups#file-and-filegroup-fill-strategy) használ az adatfájlokon keresztüli adatterjesztésre.
 
 ## <a name="data-migration-questions"></a>Az adatáttelepítés kérdései
 
@@ -231,9 +231,9 @@ A nagy kapacitású képes az új/módosított adatok 100 MB/s értékének felh
 
 ### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-in-azure-synapse-analytics"></a>Beolvasható az adatok a blob Storage-ból, és gyors betöltési műveletek (például az Azure szinapszis Analyticsben az alapszintű)
 
-Lehet, hogy egy ügyfélalkalmazás beolvassa az Azure Storage-ból származó adatait, és betölti az adatterhelést egy nagy kapacitású-adatbázisba (ugyanúgy, mint bármely más adatbázishoz Azure SQL Database). A Azure SQL Database jelenleg nem támogatja a Base használatát. A gyors betöltéshez használhatja a [Azure Data Factoryt](https://docs.microsoft.com/azure/data-factory/), vagy használhat egy Spark-feladatot a [Azure Databricksban](https://docs.microsoft.com/azure/azure-databricks/) az SQL- [hez készült Spark-összekötővel](spark-connector.md). A Spark-összekötő az SQL-hez támogatja a tömeges beszúrást.
+Lehet, hogy egy ügyfélalkalmazás beolvassa az Azure Storage-ból származó adatait, és betölti az adatterhelést egy nagy kapacitású-adatbázisba (ugyanúgy, mint bármely más adatbázishoz Azure SQL Database). A Azure SQL Database jelenleg nem támogatja a Base használatát. A gyors betöltéshez használhatja a [Azure Data Factoryt](../../data-factory/index.yml), vagy használhat egy Spark-feladatot a [Azure Databricksban](/azure/azure-databricks/) az SQL- [hez készült Spark-összekötővel](spark-connector.md). A Spark-összekötő az SQL-hez támogatja a tömeges beszúrást.
 
-Az Azure Blob Store-ból az BULK INSERT vagy a OPENROWSET használatával tömegesen is olvashatók az adatok, [például az azure blob Storageban tárolt adatok tömeges hozzáférésére](https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location).
+Az Azure Blob Store-ból az BULK INSERT vagy a OPENROWSET használatával tömegesen is olvashatók az adatok, [például az azure blob Storageban tárolt adatok tömeges hozzáférésére](/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location).
 
 Az egyszerű helyreállítás vagy a tömeges naplózási modell nem támogatott a nagy kapacitású. A magas rendelkezésre állás és az időponthoz tartozó helyreállítás biztosításához teljes helyreállítási modell szükséges. A nagy kapacitású-naplózási architektúra azonban jobb adatfeldolgozási sebességet biztosít a többi Azure SQL Database szolgáltatási szintjéhez képest.
 
@@ -277,7 +277,7 @@ Nem. A biztonsági mentéseket a tárolási alrendszer kezeli, és a tárolási 
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>Végezhetek geo-visszaállítást egy nagy kapacitású-adatbázissal
 
-Igen. A Geo-visszaállítás teljes mértékben támogatott. Az időponthoz képesti visszaállítástól eltérően a Geo-visszaállításhoz adatmennyiség-adatműveletre van szükség. Az adatfájlok másolása párhuzamosan történik, így a művelet időtartama elsősorban az adatbázis legnagyobb fájljának méretétől függ, nem pedig az adatbázis teljes méretétől. A Geo-visszaállítási idő jelentősen rövidebb lesz, ha a rendszer visszaállítja az adatbázist az Azure-régióban, amely a forrás-adatbázis régiójával [párosítva](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) van.
+Igen. A Geo-visszaállítás teljes mértékben támogatott. Az időponthoz képesti visszaállítástól eltérően a Geo-visszaállításhoz adatmennyiség-adatműveletre van szükség. Az adatfájlok másolása párhuzamosan történik, így a művelet időtartama elsősorban az adatbázis legnagyobb fájljának méretétől függ, nem pedig az adatbázis teljes méretétől. A Geo-visszaállítási idő jelentősen rövidebb lesz, ha a rendszer visszaállítja az adatbázist az Azure-régióban, amely a forrás-adatbázis régiójával [párosítva](../../best-practices-availability-paired-regions.md) van.
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>Beállítható a Geo-replikáció a nagy kapacitású-adatbázissal
 
@@ -357,7 +357,7 @@ Nem. Csak az elsődleges számítási replika fogad írási/olvasási kérelmeke
 
 ### <a name="how-many-secondary-compute-replicas-can-i-provision"></a>Hány másodlagos számítási replikát lehet kiépíteni
 
-Alapértelmezés szerint egy másodlagos replikát hozunk létre a nagy kapacitású-adatbázisokhoz. Ha módosítani szeretné a replikák számát, [Azure Portal](https://portal.azure.com) vagy [REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)használatával teheti meg.
+Alapértelmezés szerint egy másodlagos replikát hozunk létre a nagy kapacitású-adatbázisokhoz. Ha módosítani szeretné a replikák számát, [Azure Portal](https://portal.azure.com) vagy [REST API](/rest/api/sql/databases/createorupdate)használatával teheti meg.
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-replicas"></a>Hogyan kapcsolódás ehhez a másodlagos számítási replikához
 

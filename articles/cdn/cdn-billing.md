@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
-ms.openlocfilehash: bd6b4831b29a99ed6694f75e64202f339385b7ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa2f00a732a3978524fc017481285859c9535387
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88191168"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779169"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Az Azure CDN számlázásának ismertetése
 
@@ -38,7 +38,7 @@ A számlázási régió egy földrajzi terület, amelynek alapján megállapíth
 
 - 5. zóna: India
 
-További információ a pontok közötti (POP) régiókkal kapcsolatban: [Azure CDN pop-helyszínek régiónként](https://docs.microsoft.com/azure/cdn/cdn-pop-locations). A Mexikóban lévő POP például a Észak-Amerika régióban található, ezért az 1. zónában szerepel. 
+További információ a pontok közötti (POP) régiókkal kapcsolatban: [Azure CDN pop-helyszínek régiónként](./cdn-pop-locations.md). A Mexikóban lévő POP például a Észak-Amerika régióban található, ezért az 1. zónában szerepel. 
 
 További információ a Azure CDN díjszabásáról: [Content Delivery Network díjszabása](https://azure.microsoft.com/pricing/details/cdn/).
 
@@ -48,7 +48,7 @@ A Azure CDN számlázási régió a forrás-kiszolgáló azon helyén alapul, am
 Ha például egy Mexikóban található felhasználó kiadja a kérést, és ezt a kérést egy, az Egyesült Államok-előugróban található kiszolgáló szervizeli vagy forgalmi feltételek miatt, a számlázási régió lesz a Egyesült Államok.
 
 ## <a name="what-is-a-billable-azure-cdn-transaction"></a>Mi az a számlázható Azure CDN tranzakció?
-Minden olyan HTTP-kérelem, amely a CDN-nél leáll, számlázható esemény, amely minden választ tartalmaz: sikeres, sikertelen vagy egyéb. Azonban a különböző válaszok különböző forgalmi mennyiségeket hozhatnak. Például a *304 nem módosult* , és a csak más fejlécekre adott válaszok kis forgalmat eredményeznek, mert kis fejlécre választanak. Hasonlóképpen, a hibaüzenetek (például a *404 nem található*) számlázva vannak, de a kis-és nagyszámú válasz miatt kisebb költségekkel járnak.
+Minden olyan HTTP-kérelem, amely a CDN-nél leáll, számlázható esemény, amely minden választ tartalmaz: sikeres, sikertelen vagy egyéb. Azonban a különböző válaszok különböző forgalmi mennyiségeket hozhatnak. Például a *304 nem módosult* , és a csak más fejlécekre adott válaszok kis forgalmat eredményeznek, mert kis fejlécre választanak. Hasonlóképpen, a hibaüzenetek (például a *404 nem található* ) számlázva vannak, de a kis-és nagyszámú válasz miatt kisebb költségekkel járnak.
 
 ## <a name="what-other-azure-costs-are-associated-with-azure-cdn-use"></a>Milyen egyéb Azure-költségek vannak társítva Azure CDN használatra?
 A Azure CDN használata az objektumok forrásaként használt szolgáltatások használati díját is megterheli. Ezek a költségek jellemzően a CDN teljes használati költségének kis hányadát jelentik.
@@ -66,7 +66,7 @@ Ha az Azure Blob Storage-t használja a tartalom forrásaként, a gyorsítótár
 
 Az Azure Storage számlázási szolgáltatásával kapcsolatos további információkért lásd: az [Azure Storage számlázásának ismertetése – sávszélesség, tranzakciók és kapacitás](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
 
-Ha *üzemeltetett szolgáltatás-kézbesítést*használ, a következő díjakat kell fizetnie:
+Ha *üzemeltetett szolgáltatás-kézbesítést* használ, a következő díjakat kell fizetnie:
 
 - Azure számítási idő: a forrásként szolgáló számítási példányok.
 
@@ -119,4 +119,4 @@ Ha a következő Azure-szolgáltatások egyikét használja CDN-forrásként, ne
 - Azure Cache for Redis
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>Hogyan a költségek leghatékonyabban kezelhetők?
-Állítsa be a leghosszabb ÉLETTARTAMot a tartalomban. 
+Állítsa be a leghosszabb ÉLETTARTAMot a tartalomban.

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: fa144c7ebd68e6f5dd192fca83dc6f306d7b8d63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 599ec041837460c30b4655531b822eab5f0eafa3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81254104"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778914"
 ---
 # <a name="china-content-delivery-with-azure-cdn"></a>A kínai tartalom kézbesítése Azure CDN
 
@@ -40,7 +40,7 @@ Azure CDN a Global és a Azure CDN China a következő funkciókat tartalmazza:
 
      - Négy díjszabási szint: Microsoft standard, Verizon standard, Verizon Premium és Akamai standard
 
-     - [Dokumentáció](https://docs.microsoft.com/azure/cdn/)
+     - [Dokumentáció](./index.yml)
 
 - Azure CDN Kínában:
 
@@ -53,7 +53,7 @@ Azure CDN a Global és a Azure CDN China a következő funkciókat tartalmazza:
      - [Dokumentáció](https://docs.azure.cn/en-us/cdn/)
  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Azure CDN Kínával kapcsolatban, tekintse meg a következőt:
 
@@ -63,7 +63,4 @@ Ha többet szeretne megtudni a Azure CDN Kínával kapcsolatban, tekintse meg a 
 
 - [Az Azure Content Delivery Network használata](https://docs.azure.cn/en-us/cdn/cdn-how-to-use)
 
-- [Azure-szolgáltatás elérhetősége Kínában](https://docs.microsoft.com/azure/china/concepts-service-availability)
-
-
-
+- [Azure-szolgáltatás elérhetősége Kínában](/azure/china/concepts-service-availability)

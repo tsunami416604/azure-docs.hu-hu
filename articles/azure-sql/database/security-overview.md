@@ -12,23 +12,23 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 10/26/2020
-ms.openlocfilehash: bb9e17a4befcdcf1a322734c6cc5d75d653f23e6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1485f06af2bb3c4912df3e34cb23c409b7db3dc2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676140"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780359"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>A Azure SQL Database és az SQL felügyelt példányának biztonsági képességeinek áttekintése
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Ez a cikk a [Azure SQL Database](sql-database-paas-overview.md) és az [Azure SQL felügyelt példányát](../managed-instance/sql-managed-instance-paas-overview.md)használó alkalmazások adatszintjeinek biztonságossá tételének alapjait ismerteti. A leírt biztonsági stratégia az alábbi képen látható, többrétegű védelem részletes megközelítését követi, és a következőn kívülről lép:
+Ez a cikk a [Azure SQL Database](sql-database-paas-overview.md), az [Azure SQL felügyelt példányával](../managed-instance/sql-managed-instance-paas-overview.md)és az [Azure szinapszis Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)szolgáltatással való alkalmazás adatszintjeinek biztonságossá tételének alapjait ismerteti. A leírt biztonsági stratégia az alábbi képen látható, többrétegű védelem részletes megközelítését követi, és a következőn kívülről lép:
 
 ![A réteges védelem részletes ábrája. A vásárlói adatok a hálózati biztonság, a hozzáférés-kezelés, a fenyegetések és az adatvédelem rétegeibe vannak befoglalva.](./media/security-overview/sql-security-layer.png)
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-A Microsoft Azure SQL Database és az SQL felügyelt példánya a Felhőbeli és a vállalati alkalmazások számára biztosít egy kapcsolódó adatbázis-szolgáltatást. Az ügyféladatok védelme érdekében a tűzfalak megakadályozzák a kiszolgálóhoz való hálózati hozzáférést, amíg az IP-cím vagy az Azure-beli virtuális hálózati forgalom nem engedélyezi a hozzáférést explicit módon.
+A Microsoft Azure SQL Database, az SQL felügyelt példánya és az Azure szinapszis Analytics egy kapcsolódó adatbázis-szolgáltatást biztosít a felhőalapú és vállalati alkalmazásokhoz. Az ügyféladatok védelme érdekében a tűzfalak megakadályozzák a kiszolgálóhoz való hálózati hozzáférést, amíg az IP-cím vagy az Azure-beli virtuális hálózati forgalom nem engedélyezi a hozzáférést explicit módon.
 
 ### <a name="ip-firewall-rules"></a>IP-tűzfalszabályok
 
@@ -36,7 +36,7 @@ Az IP-tűzfalszabályok az egyes kérések származó IP-címe alapján biztosí
 
 ### <a name="virtual-network-firewall-rules"></a>Virtuális hálózat tűzfalszabályai
 
-A [virtuális hálózati szolgáltatás végpontok](../../virtual-network/virtual-network-service-endpoints-overview.md) kiterjesztik a virtuális hálózati kapcsolatot az Azure-gerinc fölé, és lehetővé teszik Azure SQL Database azon virtuális hálózati alhálózat azonosítását, amelyből a forgalom származik. Ha engedélyezni szeretné, hogy a forgalom elérje a Azure SQL Database, használja az SQL- [szolgáltatás címkéit](../../virtual-network/security-overview.md) , hogy engedélyezze a kimenő forgalmat a hálózati biztonsági csoportokon keresztül.
+A [virtuális hálózati szolgáltatás végpontok](../../virtual-network/virtual-network-service-endpoints-overview.md) kiterjesztik a virtuális hálózati kapcsolatot az Azure-gerinc fölé, és lehetővé teszik Azure SQL Database azon virtuális hálózati alhálózat azonosítását, amelyből a forgalom származik. Ha engedélyezni szeretné, hogy a forgalom elérje a Azure SQL Database, használja az SQL- [szolgáltatás címkéit](../../virtual-network/network-security-groups-overview.md) , hogy engedélyezze a kimenő forgalmat a hálózati biztonsági csoportokon keresztül.
 
 A [virtuális hálózati szabályok](vnet-service-endpoint-rule-overview.md) lehetővé teszik, hogy a Azure SQL Database csak a virtuális hálózaton belüli kijelölt alhálózatokból továbbított kommunikációt fogadják.
 
@@ -99,7 +99,7 @@ A komplex veszélyforrások elleni védelem a naplók elemzésével azonosíthat
 
 A SQL Database, az SQL felügyelt példánya és az Azure szinapszis Analytics biztonságos ügyféladatokat biztosít a [Transport Layer Security (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)használatával végzett adattitkosítással.
 
-Az SQL Database, az SQL felügyelt példánya és az Azure szinapszis minden kapcsolat esetében mindig kikényszeríti a titkosítást (SSL/TLS). Ez biztosítja, hogy az összes adatforgalom titkosítva legyen az ügyfél és a kiszolgáló között, függetlenül attól, hogy a **titkosítás** vagy a **TrustServerCertificate** a kapcsolati sztringben van-e beállítva.
+Az SQL Database, az SQL felügyelt példánya és az Azure szinapszis Analytics minden kapcsolat esetében minden alkalommal kikényszeríti a titkosítást (SSL/TLS). Ez biztosítja, hogy az összes adatforgalom titkosítva legyen az ügyfél és a kiszolgáló között, függetlenül attól, hogy a **titkosítás** vagy a **TrustServerCertificate** a kapcsolati sztringben van-e beállítva.
 
 Ajánlott eljárásként Azt javasoljuk, hogy az alkalmazás által használt kapcsolati sztringben egy titkosított kapcsolatot határozzon meg, és _**ne**_ Bízzon meg a kiszolgálói tanúsítványban. Ez arra kényszeríti az alkalmazást, hogy ellenőrizze a kiszolgáló tanúsítványát, így megakadályozza, hogy az alkalmazás sebezhető legyen a középső típusú támadásokban lévő ember számára.
 

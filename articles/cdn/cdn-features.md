@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/15/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: c8d8b01e8c5f4ea3054e639ecc9dd8b14bbf048b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f1ea8d16a441230323b4f0213229d223a0b035bc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148733"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778647"
 ---
 # <a name="what-are-the-comparisons-between-azure-cdn-product-features"></a>Milyen összehasonlítások vannak a Azure CDN termék szolgáltatásai között?
 
@@ -23,41 +23,41 @@ Az Azure Content Delivery Network (CDN) négy terméket tartalmaz:
 * **Azure CDN standard a Microsofttól**
 * **Azure CDN standard a Akamai**
 * **Azure CDN standard a Verizontól**
-* **Azure CDN Premium a verizontól**. 
+* **Azure CDN Premium a verizontól** . 
 
 Az alábbi táblázat az egyes termékek szolgáltatásait hasonlítja össze.
 
 | **Teljesítménnyel kapcsolatos szolgáltatások és optimalizálási lehetőségek** | **Standard Microsoft** | **Standard Akamai** | **Standard Verizon** | **Verizon Premium** |
 | --- | --- | --- | --- | --- |
-| [Dinamikus helygyorsítás](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration)  | Az [Azure bejárati ajtó szolgáltatásán](https://docs.microsoft.com/azure/frontdoor/front-door-overview) keresztül elérhető | **&#x2713;**  | **&#x2713;** | **&#x2713;** |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Dinamikus helygyorsítás – Adaptív képtömörítés](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#adaptive-image-compression-azure-cdn-from-akamai-only)  |  | **&#x2713;**  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Dinamikus helygyorsítás – Előzetes objektumbetöltés](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#object-prefetch-azure-cdn-from-akamai-only)  |  | **&#x2713;**  |  |  |
-| [Általános webes kézbesítés optimalizálása](https://docs.microsoft.com/azure/cdn/cdn-optimization-overview#general-web-delivery)  | **&#x2713;** | **&#x2713;**, akkor válassza ezt az optimalizálási típust, ha az átlagos fájlméret kisebb, mint 10 MB  | **&#x2713;** |  **&#x2713;** |
-| [Videó-adatfolyam optimalizálása](https://docs.microsoft.com/azure/cdn/cdn-media-streaming-optimization)  | Általános webes Kézbesítésen keresztül | **&#x2713;**  | Általános webes Kézbesítésen keresztül |  Általános webes Kézbesítésen keresztül |
-| [Nagyméretű fájlok optimalizálása](https://docs.microsoft.com/azure/cdn/cdn-large-file-optimization)  | Általános webes Kézbesítésen keresztül | **&#x2713;**, akkor válassza ezt az optimalizálási típust, ha az átlagos fájlméret meghaladja a 10 MB-ot   | Általános webes Kézbesítésen keresztül |  Általános webes Kézbesítésen keresztül |
+| [Dinamikus helygyorsítás](./cdn-dynamic-site-acceleration.md)  | Az [Azure bejárati ajtó szolgáltatásán](../frontdoor/front-door-overview.md) keresztül elérhető | **&#x2713;**  | **&#x2713;** | **&#x2713;** |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Dinamikus helygyorsítás – Adaptív képtömörítés](./cdn-dynamic-site-acceleration.md#adaptive-image-compression-azure-cdn-from-akamai-only)  |  | **&#x2713;**  |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Dinamikus helygyorsítás – Előzetes objektumbetöltés](./cdn-dynamic-site-acceleration.md#object-prefetch-azure-cdn-from-akamai-only)  |  | **&#x2713;**  |  |  |
+| [Általános webes kézbesítés optimalizálása](./cdn-optimization-overview.md#general-web-delivery)  | **&#x2713;** | **&#x2713;** , akkor válassza ezt az optimalizálási típust, ha az átlagos fájlméret kisebb, mint 10 MB  | **&#x2713;** |  **&#x2713;** |
+| [Videó-adatfolyam optimalizálása](./cdn-media-streaming-optimization.md)  | Általános webes Kézbesítésen keresztül | **&#x2713;**  | Általános webes Kézbesítésen keresztül |  Általános webes Kézbesítésen keresztül |
+| [Nagyméretű fájlok optimalizálása](./cdn-large-file-optimization.md)  | Általános webes Kézbesítésen keresztül | **&#x2713;** , akkor válassza ezt az optimalizálási típust, ha az átlagos fájlméret meghaladja a 10 MB-ot   | Általános webes Kézbesítésen keresztül |  Általános webes Kézbesítésen keresztül |
 | Optimalizálás típusának módosítása | |**&#x2713;** | | |
-| Forrás port |Minden TCP-port |[Engedélyezett származási portok](https://docs.microsoft.com/previous-versions/azure/mt757337(v%3Dazure.100)#allowed-origin-ports) |Minden TCP-port |Minden TCP-port |
-| [Globális kiszolgálói terheléselosztás (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Gyors végleges törlés](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;**, a Akamai jelenleg nem támogatja az összes törlést és a helyettesítő karakterek kiürítését Azure CDN |**&#x2713;** |**&#x2713;** |
+| Forrás port |Minden TCP-port |[Engedélyezett származási portok](/previous-versions/azure/mt757337(v%3Dazure.100)#allowed-origin-ports) |Minden TCP-port |Minden TCP-port |
+| [Globális kiszolgálói terheléselosztás (GSLB)](../traffic-manager/traffic-manager-load-balancing-azure.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| [Gyors végleges törlés](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;** , a Akamai jelenleg nem támogatja az összes törlést és a helyettesítő karakterek kiürítését Azure CDN |**&#x2713;** |**&#x2713;** |
 | [Objektumok előzetes betöltése](cdn-preload-endpoint.md)  |  | |**&#x2713;** |**&#x2713;** |
 | Gyorsítótár-/fejlécbeállítások (a [gyorsítótárszabályokkal](cdn-caching-rules.md))  |**&#x2713;** a [Standard Rules Engine](cdn-standard-rules-engine.md) használatával  |**&#x2713;** |**&#x2713;** | |
-| Testreszabható, szabályokon alapuló Content Delivery Engine |**&#x2713;** a [Standard Rules Engine](cdn-standard-rules-engine.md) használatával  | | |**&#x2713;** [szabályok motor](cdn-rules-engine.md) használatával |
-| Gyorsítótár/fejléc beállításai  |**&#x2713;** a [Standard Rules Engine](cdn-standard-rules-engine.md) használatával | | |**&#x2713;** [Premium Rules Engine](cdn-rules-engine.md) használatával |
-| URL-átirányítás/újraírás |**&#x2713;** a [Standard Rules Engine](cdn-standard-rules-engine.md) használatával  | | |**&#x2713;** [Premium Rules Engine](cdn-rules-engine.md) használatával |
-| Mobileszköz-szabályok  |**&#x2713;** a [Standard Rules Engine](cdn-standard-rules-engine.md) használatával | | |**&#x2713;** [Premium Rules Engine](cdn-rules-engine.md) használatával |
+| Testreszabható, szabályokon alapuló Content Delivery Engine |**&#x2713;** a [Standard Rules Engine](cdn-standard-rules-engine.md) használatával  | | |**&#x2713;** [szabályok motor](./cdn-verizon-premium-rules-engine.md) használatával |
+| Gyorsítótár/fejléc beállításai  |**&#x2713;** a [Standard Rules Engine](cdn-standard-rules-engine.md) használatával | | |**&#x2713;** [Premium Rules Engine](./cdn-verizon-premium-rules-engine.md) használatával |
+| URL-átirányítás/újraírás |**&#x2713;** a [Standard Rules Engine](cdn-standard-rules-engine.md) használatával  | | |**&#x2713;** [Premium Rules Engine](./cdn-verizon-premium-rules-engine.md) használatával |
+| Mobileszköz-szabályok  |**&#x2713;** a [Standard Rules Engine](cdn-standard-rules-engine.md) használatával | | |**&#x2713;** [Premium Rules Engine](./cdn-verizon-premium-rules-engine.md) használatával |
 | [Lekérdezési karakterlánc gyorsítótárazása](cdn-query-string.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | Kettős verem (IPv4/IPv6) | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [HTTP/2-támogatás](cdn-http2.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 ||||
  **Biztonság** | **Standard Microsoft** | **Standard Akamai** | **Standard Verizon** | **Verizon Premium** | 
 | HTTPS-támogatás CDN-végponttal | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Egyéni tartomány HTTPS](cdn-custom-ssl.md)  | **&#x2713;** | **&#x2713;**, közvetlen CNAME-t igényel az engedélyezéshez |**&#x2713;** |**&#x2713;** |
+| [Egyéni tartomány HTTPS](cdn-custom-ssl.md)  | **&#x2713;** | **&#x2713;** , közvetlen CNAME-t igényel az engedélyezéshez |**&#x2713;** |**&#x2713;** |
 | [Egyéni tartománynevek támogatása](cdn-map-content-to-custom-domain.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Geoszűrés](cdn-restrict-access-by-country.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Jogkivonat-alapú hitelesítés](cdn-token-auth.md)  |  |  |  |**&#x2713;**| 
 | [DDOS-védelem](https://www.us-cert.gov/ncas/tips/ST04-015)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Saját tanúsítvány használata](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#tlsssl-certificates) |**&#x2713;** |  | **&#x2713;** | **&#x2713;** |
-| Támogatott TLS-verziók | TLS 1,2, TLS 1.0/1.1 – [konfigurálható](https://docs.microsoft.com/rest/api/cdn/customdomains/enablecustomhttps#usermanagedhttpsparameters) | TLS 1.2 | TLS 1.2 | TLS 1.2 |
+| Támogatott TLS-verziók | TLS 1,2, TLS 1.0/1.1 – [konfigurálható](/rest/api/cdn/customdomains/enablecustomhttps#usermanagedhttpsparameters) | TLS 1.2 | TLS 1.2 | TLS 1.2 |
 ||||
 | **Elemzések és jelentéskészítés** | **Standard Microsoft** | **Standard Akamai** | **Standard Verizon** | **Verizon Premium** | 
 | [Azure diagnosztikai naplók](cdn-azure-diagnostic-logs.md)  | **&#x2713;** | **&#x2713;** |**&#x2713;** |**&#x2713;** |
@@ -69,9 +69,9 @@ Az alábbi táblázat az egyes termékek szolgáltatásait hasonlítja össze.
 | [Valós idejű riasztások](cdn-real-time-alerts.md)  |  | | |**&#x2713;** |
 ||||
 | **Egyszerű használat** | **Standard Microsoft** | **Standard Akamai** | **Standard Verizon** | **Verizon Premium** | 
-| Egyszerű integráció a [Storage](cdn-create-a-storage-account-with-cdn.md), a [Web Apps](cdn-add-to-web-app.md), a [Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md) és egyéb Azure-szolgáltatásokkal  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| Egyszerű integráció a [Storage](cdn-create-a-storage-account-with-cdn.md), a [Web Apps](cdn-add-to-web-app.md), a [Media Services](../media-services/previous/media-services-portal-manage-streaming-endpoints.md) és egyéb Azure-szolgáltatásokkal  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | Felügyelet [REST API](/rest/api/cdn/), [.NET](cdn-app-dev-net.md), [Node.js](cdn-app-dev-node.md) vagy [PowerShell](cdn-manage-powershell.md) használatával  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Tömörítési MIME-típusok](https://docs.microsoft.com/azure/cdn/cdn-improve-performance)  |Csak alapértelmezett |Konfigurálható |Konfigurálható  |Konfigurálható  |
+| [Tömörítési MIME-típusok](./cdn-improve-performance.md)  |Csak alapértelmezett |Konfigurálható |Konfigurálható  |Konfigurálható  |
 | Tömörítési kódolások  |gzip, brotli |gzip |gzip, deflate, bzip2, brotili  |gzip, deflate, bzip2, brotili  |
 
 ## <a name="migration"></a>Migrálás
@@ -84,6 +84,3 @@ A **Verizon Azure CDN Standard** típusú profilok **Verizon Azure CDN Premium**
 ## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Azure CDNról](cdn-overview.md).
-
-
-

@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: c1302822715a37ef1b85007130067ac02a8fd17a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e58c1177fb3c4d241a3efe1759b3900abbd04ca1
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887596"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778390"
 ---
 # <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>Azure CDN profil migrálása a standard Verizonból a Premium Verizonba
 
@@ -42,13 +42,12 @@ A **Verizon-profilokból Azure CDN Premium** a következő lényeges különbsé
 
 A **Verizon-profilokból Azure CDN Premium** a következő funkciókat tartalmazza:
 - [Jogkivonat-hitelesítés](cdn-token-auth.md): lehetővé teszi a felhasználók számára, hogy a biztonságos erőforrások beolvasásához jogkivonatot kérjenek és használjanak.
-- [Szabályok motorja](cdn-rules-engine.md): lehetővé teszi a HTTP-kérések kezelésének testreszabását.
+- [Szabályok motorja](./cdn-verizon-premium-rules-engine.md): lehetővé teszi a HTTP-kérések kezelésének testreszabását.
 - Speciális elemzési eszközök:
    - [Részletes HTTP-elemzés](cdn-advanced-http-reports.md)
    - [Edge Performance Analytics](cdn-edge-performance.md)
    - [Valós idejű elemzések](cdn-real-time-alerts.md)
 
 
-## <a name="next-steps"></a>További lépések
-Ha többet szeretne megtudni a szabályok motorról, tekintse meg a [Azure CDN Rules Engine-referenciát](cdn-rules-engine-reference.md).
-
+## <a name="next-steps"></a>Következő lépések
+Ha többet szeretne megtudni a szabályok motorról, tekintse meg a [Azure CDN Rules Engine-referenciát](./cdn-verizon-premium-rules-engine-reference.md).

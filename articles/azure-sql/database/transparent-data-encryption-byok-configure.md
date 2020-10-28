@@ -5,19 +5,19 @@ description: Megtudhatja, hogyan konfigurálhat egy Azure SQL Database és az Az
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: e2cdf7d5213f1667b0b588cc5bfa9f105245b6b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38be8b97b3255e4e63301e693d2a5f295e8d801b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619117"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779968"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell és az Azure CLI: transzparens adattitkosítás engedélyezése az ügyfél által felügyelt kulccsal Azure Key Vault
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -36,11 +36,11 @@ Ez a cikk bemutatja, hogyan használhatja a Azure Key Vault for transzparens ada
 - A kulcsnak a következő attribútumokkal kell rendelkeznie a TDE való használathoz:
   - Nincs lejárati dátum
   - Nincs letiltva
-  - Képes a *Get*, a *wrap Key*, a *dewrap Key* Operations művelet végrehajtására
+  - Képes a *Get* , a *wrap Key* , a *dewrap Key* Operations művelet végrehajtására
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Az Az modul telepítési útmutatását [az Azure PowerShell telepítését](/powershell/azure/install-az-ps) ismertető cikkben találja. Adott parancsmagok esetén lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/).
+Az Az modul telepítési útmutatását [az Azure PowerShell telepítését](/powershell/azure/install-az-ps) ismertető cikkben találja. Adott parancsmagok esetén lásd: [AzureRM. SQL](/powershell/module/AzureRM.Sql/).
 
 A Key Vault kapcsolatos részletekért tekintse meg a [Key Vault PowerShell-utasításokat](../../key-vault/secrets/quick-create-powershell.md) , valamint a [Key Vault a PowerShell használatával történő törlését](../../key-vault/general/soft-delete-powershell.md).
 
@@ -123,7 +123,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Az Azure CLI (2,0-es vagy újabb verzió) szükséges verziójának telepítéséhez és az Azure-előfizetéshez való kapcsolódáshoz tekintse meg [Az Azure platformfüggetlen Command-Line Interface 2,0 telepítése és konfigurálása](https://docs.microsoft.com/cli/azure/install-azure-cli)című témakört.
+Az Azure CLI (2,0-es vagy újabb verzió) szükséges verziójának telepítéséhez és az Azure-előfizetéshez való kapcsolódáshoz tekintse meg [Az Azure platformfüggetlen Command-Line Interface 2,0 telepítése és konfigurálása](/cli/azure/install-azure-cli)című témakört.
 
 A Key Vault kapcsolatos részletekért tekintse meg a [Key Vault kezelése a cli 2,0 használatával](../../key-vault/general/manage-with-cli2.md) és a parancssori felülettel [történő Key Vault-törlés használata](../../key-vault/general/soft-delete-cli.md)című témakört.
 
@@ -239,7 +239,7 @@ Ha probléma merül fel, ellenőrizze a következőket:
 
 - Ha az új kulcs nem adható hozzá a kiszolgálóhoz, vagy az új kulcs nem frissíthető TDE-védőként, ellenőrizze a következőket:
    - A kulcs nem rendelkezhet lejárati dátummal
-   - A kulcsnak engedélyezve kell lennie a *Get*, a *wrap Key*és a *dewrap Key* műveletnek.
+   - A kulcsnak engedélyezve kell lennie a *Get* , a *wrap Key* és a *dewrap Key* műveletnek.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: c06af1cc7f068070954669fc4ec269c9e679f278
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2ef1367cbbb1fb71159c4520c3d1481904c1769
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84886056"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779322"
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Használati statisztikák elemzése az Azure CDN speciális HTTP-jelentéseivel
 ## <a name="overview"></a>Áttekintés
@@ -33,7 +33,7 @@ Ez a dokumentum a speciális HTTP-jelentéskészítést ismerteti Microsoft Azur
     ![CDN-profil panel kezelése gomb](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
    
     Megnyílik a CDN felügyeleti portál.
-2. Vigye az egérmutatót az **elemzés** lapra, majd vigye a kurzort a **speciális http-jelentések** menü fölé.  Kattintson a **http nagyméretű platform**elemre.
+2. Vigye az egérmutatót az **elemzés** lapra, majd vigye a kurzort a **speciális http-jelentések** menü fölé.  Kattintson a **http nagyméretű platform** elemre.
    
     ![CDN felügyeleti portál – speciális jelentések menü](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
    
@@ -202,6 +202,5 @@ Közvetlenül a sávdiagram alatt a következő információk szerepelnek a legf
 ## <a name="see-also"></a>Lásd még
 * [Azure tartalomkézbesítési hálózat (CDN) – áttekintés](cdn-overview.md)
 * [Microsoft Azure CDN valós idejű statisztikái](cdn-real-time-stats.md)
-* [Az alapértelmezett HTTP-viselkedés felülbírálása a szabályok motor használatával](cdn-rules-engine.md)
+* [Az alapértelmezett HTTP-viselkedés felülbírálása a szabályok motor használatával](./cdn-verizon-premium-rules-engine.md)
 * [Edge-teljesítmény elemzése](cdn-edge-performance.md)
-

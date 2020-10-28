@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/04/2017
 ms.author: juliako
-ms.openlocfilehash: 6beaee98e78e79c48270801f5696e4e487b0a2c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5807d38e22d8cecf40b5ad4262f9e4662b77ec4c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84883710"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779135"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Azure CDN gyorsítótárazási házirend kezelése Azure Media Services
 A Azure Media Services HTTP-alapú adaptív streaming és progresszív letöltést biztosít. A HTTP-alapú folyamatos átvitel a proxy-és CDN-rétegek gyorsítótárazásának előnyei, valamint az ügyféloldali gyorsítótárazás előnyeit kínálja. A folyamatos átviteli végpontok általános átviteli képességeket biztosítanak, valamint a HTTP-gyorsítótár fejléceit is konfigurálják. A folyamatos átviteli végpontok beállítja a HTTP Cache-Control: Max-Age és a fejlécek elévülését. További információt a HTTP-gyorsítótár fejlécek a [w3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html)-ből című témakörben kaphat.
@@ -40,10 +40,9 @@ A gyorsítótár-fejléc értékeinek konfigurálásához Azure Portal vagy Azur
 
 1. Ha Azure Portal használatával szeretné konfigurálni a gyorsítótár-fejléceket, tekintse meg a folyamatos átviteli végpontok [kezelése](../media-services/previous/media-services-portal-manage-streaming-endpoints.md) című szakaszt a streaming Endpoint konfigurálása című részben.
 2. Azure Media Services REST API, [streamvégpontok](/rest/api/media/operations/streamingendpoint#StreamingEndpointCacheControl).
-3. Azure Media Services .NET SDK, [StreamingEndpointCacheControl tulajdonságok](https://go.microsoft.com/fwlink/?LinkId=615302).
+3. Azure Media Services .NET SDK, [StreamingEndpointCacheControl tulajdonságok](/dotnet/api/microsoft.windowsazure.mediaservices.client.streamingendpointcachecontrol).
 
 ## <a name="cache-configuration-precedence-order"></a>Gyorsítótár-konfiguráció sorrendjének sorrendje
 1. Azure Media Services konfigurált gyorsítótár-érték felülbírálja az alapértelmezett értéket.
 2. Ha nincs manuális konfiguráció, a rendszer az alapértelmezett értékeket alkalmazza.
 3. Alapértelmezés szerint a 2 másodperces gyorsítótár-fejlécek az élő streaming jegyzékfájlra (Playlist) vonatkoznak, függetlenül az Azure adathordozótól vagy az Azure Storage-konfigurációtól, és ennek az értéknek a felülbírálása nem érhető el.
-

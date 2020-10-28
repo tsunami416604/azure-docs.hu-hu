@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: dc1599fc0c2f8c55c709ab674c10dd53c8d8dc04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8119c56c26ed32db136064d93775d21a71f238f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887703"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778657"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Az élcsomópontok teljesítményének elemzése a Microsoft Azure CDN szolgáltatásban
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -55,7 +55,7 @@ Ez az irányítópult a következőkből áll:
     ![CDN-profil panel kezelése gomb](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     Megnyílik a CDN felügyeleti portál.
-2. Vigye az egérmutatót az **elemzés** lapra, majd vigye az egérmutatót az **Edge Performance Analytics** menü fölé.  Kattintson az **irányítópult**elemre.
+2. Vigye az egérmutatót az **elemzés** lapra, majd vigye az egérmutatót az **Edge Performance Analytics** menü fölé.  Kattintson az **irányítópult** elemre.
    
     Megjelenik az Edge Node Analytics irányítópultja.
 
@@ -143,7 +143,7 @@ A modul minden jelentése tartalmaz egy diagramot és statisztikát a különbö
     ![CDN-profil panel kezelése gomb](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     Megnyílik a CDN felügyeleti portál.
-2. Vigye az egérmutatót az **elemzés** lapra, majd vigye az egérmutatót az **Edge Performance Analytics** menü fölé.  Kattintson a **nagyméretű http-objektumra**.
+2. Vigye az egérmutatót az **elemzés** lapra, majd vigye az egérmutatót az **Edge Performance Analytics** menü fölé.  Kattintson a **nagyméretű http-objektumra** .
    
     Megjelenik az Edge Node Analytics-jelentések képernyője.
 
@@ -186,6 +186,5 @@ A modul minden jelentése tartalmaz egy diagramot és statisztikát a különbö
 ## <a name="see-also"></a>Lásd még
 * [Azure tartalomkézbesítési hálózat (CDN) – áttekintés](cdn-overview.md)
 * [Microsoft Azure CDN valós idejű statisztikái](cdn-real-time-stats.md)
-* [Az alapértelmezett HTTP-viselkedés felülbírálása a szabályok motor használatával](cdn-rules-engine.md)
+* [Az alapértelmezett HTTP-viselkedés felülbírálása a szabályok motor használatával](./cdn-verizon-premium-rules-engine.md)
 * [Speciális HTTP-jelentések](cdn-advanced-http-reports.md)
-

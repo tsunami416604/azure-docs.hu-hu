@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mazha
-ms.openlocfilehash: bded48b59d10e47a9bbf476583fed78b5b97431d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21ef06f37e6840df08b1477f9c0ff24f6e15d1a3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887435"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778015"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Azure CDN-eszközök védelme jogkivonat-hitelesítéssel
 
@@ -64,7 +64,7 @@ A következő folyamatábra azt ismerteti, hogyan Azure CDN érvényesít egy ü
 
     ![CDN-profil kezelése gomb](./media/cdn-token-auth/cdn-manage-btn.png)
 
-2. Vigye a kurzort a **nagyméretű http**-n keresztül, majd válassza a **jogkivonat-hitelesítés** elemet a menüben. A titkosítási kulcs és a titkosítási paraméterek a következőképpen állíthatók be:
+2. Vigye a kurzort a **nagyméretű http** -n keresztül, majd válassza a **jogkivonat-hitelesítés** elemet a menüben. A titkosítási kulcs és a titkosítási paraméterek a következőképpen állíthatók be:
 
    1. Hozzon létre egy vagy több titkosítási kulcsot. A titkosítási kulcs megkülönbözteti a kis-és nagybetűket, és alfanumerikus karakterek tetszőleges kombinációját tartalmazhatja. Bármilyen más típusú karakter, beleértve a szóközöket, nem megengedett. A maximális hossz 250 karakter. Annak érdekében, hogy a titkosítási kulcsok véletlenszerűek legyenek, azt javasoljuk, hogy az [OpenSSL eszköz](https://www.openssl.org/)használatával hozza létre őket. 
 
@@ -80,9 +80,9 @@ A következő folyamatábra azt ismerteti, hogyan Azure CDN érvényesít egy ü
     
    2. Adjon meg egy egyedi titkosítási kulcsot az **elsődleges kulcs** mezőben, és szükség esetén adjon meg egy biztonsági mentési kulcsot a **biztonsági mentési kulcs** mezőben.
 
-   3. Válassza ki az egyes kulcsok minimális titkosítási verzióját a **titkosítási verziók minimális** listájáról, majd válassza a **frissítés**elemet:
-      - **V2**: azt jelzi, hogy a kulcs a 2,0-es és 3,0-es verziójú tokenek előállítására használható. Ezt a lehetőséget csak akkor használja, ha örökölt 2,0-es verziójú titkosítási kulcsról 3,0-es verzióra való áttérést végez.
-      - **V3**: (ajánlott) azt jelzi, hogy a kulcs csak 3,0-es verziójú tokenek létrehozásához használható.
+   3. Válassza ki az egyes kulcsok minimális titkosítási verzióját a **titkosítási verziók minimális** listájáról, majd válassza a **frissítés** elemet:
+      - **V2** : azt jelzi, hogy a kulcs a 2,0-es és 3,0-es verziójú tokenek előállítására használható. Ezt a lehetőséget csak akkor használja, ha örökölt 2,0-es verziójú titkosítási kulcsról 3,0-es verzióra való áttérést végez.
+      - **V3** : (ajánlott) azt jelzi, hogy a kulcs csak 3,0-es verziójú tokenek létrehozásához használható.
 
       ![CDN-jogkivonat hitelesítési kulcsának beállítása](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
     
@@ -164,26 +164,26 @@ A következő folyamatábra azt ismerteti, hogyan Azure CDN érvényesít egy ü
 
       A jogkivonat létrehozása után az megjelenik a **generált jogkivonat** mezőben. A jogkivonat használatához fűzze hozzá lekérdezési karakterláncként a fájl végéhez az URL-cím elérési útjában. Például: `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`.
         
-   8. Ha szeretné, tesztelje a tokent a visszafejtés eszközzel, hogy megtekintse a jogkivonat paramétereit. Illessze be a jogkivonat értékét a **visszafejteni kívánt jogkivonat** mezőbe. Válassza ki a **kulcsról a visszafejtéshez** használni kívánt titkosítási kulcsot, majd válassza a **Visszafejtés**lehetőséget.
+   8. Ha szeretné, tesztelje a tokent a visszafejtés eszközzel, hogy megtekintse a jogkivonat paramétereit. Illessze be a jogkivonat értékét a **visszafejteni kívánt jogkivonat** mezőbe. Válassza ki a **kulcsról a visszafejtéshez** használni kívánt titkosítási kulcsot, majd válassza a **Visszafejtés** lehetőséget.
 
       A jogkivonat visszafejtése után a paraméterek az **eredeti paraméterek** mezőben jelennek meg.
 
-   9. Igény szerint testre szabhatja a kérelem elutasításakor visszaadott válasz kódját. Válassza az **engedélyezve**lehetőséget, majd válassza ki a válasz kódját a **Válasz kódja** listából. A **fejléc neve** automatikusan **helyre**van állítva. Válassza a **Mentés** lehetőséget az új válasz kódjának megvalósításához. Bizonyos hibakódok esetén a **fejléc értéke** mezőben meg kell adnia a hiba oldal URL-címét is. Alapértelmezés szerint a **403** -es válasz kód (tiltott) van kiválasztva. 
+   9. Igény szerint testre szabhatja a kérelem elutasításakor visszaadott válasz kódját. Válassza az **engedélyezve** lehetőséget, majd válassza ki a válasz kódját a **Válasz kódja** listából. A **fejléc neve** automatikusan **helyre** van állítva. Válassza a **Mentés** lehetőséget az új válasz kódjának megvalósításához. Bizonyos hibakódok esetén a **fejléc értéke** mezőben meg kell adnia a hiba oldal URL-címét is. Alapértelmezés szerint a **403** -es válasz kód (tiltott) van kiválasztva. 
 
-3. A **nagyméretű http**területen válassza a **szabályok motor**elemet. A szabályok motor használatával határozhatja meg a szolgáltatás alkalmazásához szükséges elérési utakat, engedélyezheti a jogkivonat-hitelesítés funkciót, és engedélyezheti a további jogkivonat-hitelesítéssel kapcsolatos képességeket. További információ: [szabályok motor referenciája](cdn-rules-engine-reference.md).
+3. A **nagyméretű http** területen válassza a **szabályok motor** elemet. A szabályok motor használatával határozhatja meg a szolgáltatás alkalmazásához szükséges elérési utakat, engedélyezheti a jogkivonat-hitelesítés funkciót, és engedélyezheti a további jogkivonat-hitelesítéssel kapcsolatos képességeket. További információ: [szabályok motor referenciája](./cdn-verizon-premium-rules-engine-reference.md).
 
    1. Válasszon ki egy meglévő szabályt, vagy hozzon létre egy új szabályt annak az eszköznek vagy elérési útnak a megadásához, amelynek a jogkivonat-hitelesítését alkalmazni kívánja. 
-   2. Ha engedélyezni szeretné a jogkivonat-hitelesítést egy szabályon, válassza a **[jogkivonat](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth.htm)** -hitelesítés elemet a **szolgáltatások** listából, majd válassza az **engedélyezve**lehetőséget. Válassza a **frissítés** lehetőséget, ha a szabályt vagy a **hozzáadást** egy szabály létrehozásakor frissíti.
+   2. Ha engedélyezni szeretné a jogkivonat-hitelesítést egy szabályon, válassza a **[jogkivonat](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth.htm)** -hitelesítés elemet a **szolgáltatások** listából, majd válassza az **engedélyezve** lehetőséget. Válassza a **frissítés** lehetőséget, ha a szabályt vagy a **hozzáadást** egy szabály létrehozásakor frissíti.
         
       ![CDN-szabályok a motor jogkivonat-hitelesítésének engedélyezése példa](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
-4. A szabályok motorban engedélyezheti a további jogkivonat-hitelesítéssel kapcsolatos funkciókat is. A következő szolgáltatások bármelyikének engedélyezéséhez válassza ki a **szolgáltatások** listából, majd válassza az **engedélyezve**lehetőséget.
+4. A szabályok motorban engedélyezheti a további jogkivonat-hitelesítéssel kapcsolatos funkciókat is. A következő szolgáltatások bármelyikének engedélyezéséhez válassza ki a **szolgáltatások** listából, majd válassza az **engedélyezve** lehetőséget.
     
-   - **[Jogkivonat-Auth-elutasítási kód](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Denial-Code.htm)**: meghatározza, hogy a rendszer milyen típusú választ ad vissza a felhasználónak, ha a kérelem megtagadva. Az itt beállított szabályok felülbírálják a jogkivonat-alapú hitelesítés lapon a **Custom tagadás-kezelési** szakaszban beállított hibakódot.
+   - **[Jogkivonat-Auth-elutasítási kód](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Denial-Code.htm)** : meghatározza, hogy a rendszer milyen típusú választ ad vissza a felhasználónak, ha a kérelem megtagadva. Az itt beállított szabályok felülbírálják a jogkivonat-alapú hitelesítés lapon a **Custom tagadás-kezelési** szakaszban beállított hibakódot.
 
-   - **[Jogkivonat-hitelesítés figyelmen kívül hagyása URL-cím esetén](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Ignore-URL-Case.htm)**: meghatározza, hogy a jogkivonat érvényesítéséhez használt URL-cím megkülönbözteti-e a kis-és
+   - **[Jogkivonat-hitelesítés figyelmen kívül hagyása URL-cím esetén](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Ignore-URL-Case.htm)** : meghatározza, hogy a jogkivonat érvényesítéséhez használt URL-cím megkülönbözteti-e a kis-és
 
-   - **[Jogkivonat-hitelesítési paraméter](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Parameter.htm)**: átnevezi a jogkivonat-hitelesítés lekérdezési karakterláncának paraméterét, amely megjelenik a kért URL-címen. 
+   - **[Jogkivonat-hitelesítési paraméter](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Parameter.htm)** : átnevezi a jogkivonat-hitelesítés lekérdezési karakterláncának paraméterét, amely megjelenik a kért URL-címen. 
         
      ![CDN-szabályok a motor token hitelesítési beállításai – példa](./media/cdn-token-auth/cdn-rules-engine2.png)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: 0710f2f31510ae299fafe89dc1798f40e325e8b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c7e4ff05307452da67c37b23bf492db8855e2ef
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192588"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778368"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Azure CDN optimalizálása a tartalom kézbesítésének típusára
 
@@ -39,7 +39,7 @@ A **Microsoft-profilokkal Azure CDN standard** a következő optimalizálásokat
 * [Általános webes kézbesítés](#general-web-delivery). Ez az optimalizálás a médiaadatfolyam-továbbításhoz és a nagyméretű fájlok letöltéséhez is használatos.
 
 > [!NOTE]
-> A Microsoft által kínált dinamikus webhely-gyorsítás az Azure-beli [bejárati ajtó szolgáltatáson](https://docs.microsoft.com/azure/frontdoor/front-door-overview)keresztül érhető el.
+> A Microsoft által kínált dinamikus webhely-gyorsítás az Azure-beli [bejárati ajtó szolgáltatáson](../frontdoor/front-door-overview.md)keresztül érhető el.
 
 **Azure CDN** a Verizon és a **Azure CDN Premium rendszerhez készült** standard a Verizon-profilokból a következő optimalizálásokat támogatja:
 
@@ -70,7 +70,7 @@ CDN-végpont létrehozásakor válasszon olyan optimalizálási típust, amely a
 
     ![Végpont kiválasztása](./media/cdn-optimization-overview/01_Akamai.png)
 
-2. A beállítások területen válassza az **optimalizálás**lehetőséget. Ezután válasszon egy típust az **optimalizált** legördülő listából.
+2. A beállítások területen válassza az **optimalizálás** lehetőséget. Ezután válasszon egy típust az **optimalizált** legördülő listából.
 
     ![Optimalizálás és típus kiválasztása](./media/cdn-optimization-overview/02_Select.png)
 
@@ -95,7 +95,7 @@ A médiaadatfolyam-továbbítás időérzékeny, mivel az ügyfélen későn ér
 
 Ez a forgatókönyv gyakori az Azure Media Service ügyfelei számára. Az Azure Media Services használatakor egyetlen folyamatos átviteli végpontot kap, amely élő és igény szerinti folyamatos átvitelhez is használható. Ebben a forgatókönyvben az ügyfeleknek nem kell átváltaniuk egy másik végpontra, amikor az élőról igény szerinti folyamatos átvitelre változnak. Az általános médiaadatfolyam-továbbítási optimalizálás támogatja az ilyen típusú forgatókönyvet.
 
-A **microsofttól Azure CDN standard**, a **verizontól Azure CDN a standard**, a **verizontól a prémium Azure CDN**pedig az általános webes kézbesítési optimalizálási típus használatával továbbíthatja az általános adatfolyam-tartalmat.
+A **microsofttól Azure CDN standard** , a **verizontól Azure CDN a standard** , a **verizontól a prémium Azure CDN** pedig az általános webes kézbesítési optimalizálási típus használatával továbbíthatja az általános adatfolyam-tartalmat.
 
 A médiaadatfolyam-továbbítás optimalizálásával kapcsolatos további információkért lásd: [Médiaadatfolyam-továbbítás optimalizálása](cdn-media-streaming-optimization.md).
 
@@ -103,7 +103,7 @@ A médiaadatfolyam-továbbítás optimalizálásával kapcsolatos további infor
 
 Az igény szerinti video-adatfolyam-optimalizálás javítja az igény szerinti video-adatfolyam-tartalmat. Ha a videó igény szerinti átviteléhez végpontot használ, használja ezt a lehetőséget.
 
-A Azure CDN **microsofttól Azure CDN szabványtól**, a **Verizontól a standard**szinttől és a Verizon-profilokkal való **Azure CDN prémium** szinttől függően az általános webes kézbesítés optimalizálási típusával továbbíthatja az igény szerinti videó-továbbítási tartalmat.
+A Azure CDN **microsofttól Azure CDN szabványtól** , a **Verizontól a standard** szinttől és a Verizon-profilokkal való **Azure CDN prémium** szinttől függően az általános webes kézbesítés optimalizálási típusával továbbíthatja az igény szerinti videó-továbbítási tartalmat.
 
 A médiaadatfolyam-továbbítás optimalizálásával kapcsolatos további információkért lásd: [Médiaadatfolyam-továbbítás optimalizálása](cdn-media-streaming-optimization.md).
 
@@ -115,22 +115,19 @@ A médiaadatfolyam-továbbítás optimalizálásával kapcsolatos további infor
 
 A Akamai-profiloktól **Azure CDN standard szintű** fájlok esetében a nagyméretű fájlok letöltése 10 MB-nál nagyobb tartalomra van optimalizálva. Ha az átlagos fájlméret 10 MB-nál kisebb, használja az általános webes kézbesítést. Ha az átlagos fájlméretek mérete folyamatosan meghaladja a 10 MB-ot, akkor lehet, hogy hatékonyabb, ha egy különálló végpontot hoz létre a nagyméretű fájlokhoz. Például a belső vezérlőprogram vagy a szoftverfrissítések általában nagy méretű fájlok. A 1,8 GB-nál nagyobb fájlok továbbításához a nagyméretű fájlok letöltésének optimalizálása szükséges.
 
-A **microsofttól Azure CDN standard**, a **verizontól Azure CDN a standard**, a Verizon-profiloktól a **prémium Azure CDN** pedig a nagyméretű fájlok letöltéséhez használt általános webes kézbesítés optimalizálási típussal. A fájl letöltési mérete nincs korlátozva.
+A **microsofttól Azure CDN standard** , a **verizontól Azure CDN a standard** , a Verizon-profiloktól a **prémium Azure CDN** pedig a nagyméretű fájlok letöltéséhez használt általános webes kézbesítés optimalizálási típussal. A fájl letöltési mérete nincs korlátozva.
 
 A nagyméretű fájlok optimalizálásával kapcsolatos további információkért lásd: [nagyméretű fájlok optimalizálása](cdn-large-file-optimization.md).
 
 ### <a name="dynamic-site-acceleration"></a>Dinamikus helygyorsítás
 
- A dinamikus hely gyorsulása (DSA) **Azure CDN standard Akamai**, **Azure CDN standard from Verizon**és a verizon-profilok **prémium Azure CDN** . Ez az optimalizálás a használat további díját is magában foglalja. További információ: [Content Delivery Network díjszabása](https://azure.microsoft.com/pricing/details/cdn/).
+ A dinamikus hely gyorsulása (DSA) **Azure CDN standard Akamai** , **Azure CDN standard from Verizon** és a verizon-profilok **prémium Azure CDN** . Ez az optimalizálás a használat további díját is magában foglalja. További információ: [Content Delivery Network díjszabása](https://azure.microsoft.com/pricing/details/cdn/).
 
 > [!NOTE]
-> A Microsoft által kínált dinamikus webhely-gyorsítás az [Azure bejárati szolgáltatásán](https://docs.microsoft.com/azure/frontdoor/front-door-overview) keresztül érhető el, amely a Microsoft saját globális hálózatát hasznosító, az alkalmazás számítási feladatainak ellátására szolgáló globális [önkiszolgáló szolgáltatás](https://en.wikipedia.org/wiki/Anycast) .
+> A Microsoft által kínált dinamikus webhely-gyorsítás az [Azure bejárati szolgáltatásán](../frontdoor/front-door-overview.md) keresztül érhető el, amely a Microsoft saját globális hálózatát hasznosító, az alkalmazás számítási feladatainak ellátására szolgáló globális [önkiszolgáló szolgáltatás](https://en.wikipedia.org/wiki/Anycast) .
 
 A DSA különféle technikákat tartalmaz, amelyek kihasználják a dinamikus tartalmak késését és teljesítményét. A technikák közé tartozik az útvonal és a hálózat optimalizálása, a TCP-optimalizálás és egyebek. 
 
 Ezzel az optimalizálással felgyorsíthatja a webalkalmazást, amely számos, nem gyorsítótárazható választ tartalmaz. Ilyenek például a keresési eredmények, a pénztári tranzakciók vagy a valós idejű adatmennyiség. Továbbra is használhatja az alapszintű Azure CDN gyorsítótárazási funkcióit a statikus adatkezeléshez. 
 
 A dinamikus hely gyorsításával kapcsolatos további információkért lásd: [dinamikus hely gyorsítás](cdn-dynamic-site-acceleration.md).
-
-
-

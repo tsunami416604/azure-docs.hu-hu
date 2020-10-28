@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: bae131c086e8fbf062015ee27c563bb988731cad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5387fdc224cd77ee5273767df5033a51dc27608c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84888541"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778863"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Dinamikus hely gyorsítás Azure CDNon keresztül
 
@@ -27,7 +27,7 @@ A közösségi média, az elektronikus kereskedelem és a Hyper-személyre szabo
 
 A standard Content Delivery Network (CDN) funkció lehetővé teszi a fájlok a végfelhasználók számára történő gyorsítótárazását a statikus fájlok továbbításának felgyorsításához. A dinamikus webalkalmazások esetében azonban a tartalom az Edge-helyekre való gyorsítótárazása nem lehetséges, mert a kiszolgáló a felhasználói viselkedésre válaszul hozza létre a tartalmat. Az ilyen tartalmak továbbításának felgyorsítása bonyolultabb, mint a hagyományos peremhálózat-gyorsítótárazás, és egy teljes körű megoldást igényel, amely az összes elemet a kezdetektől fogva a teljes adatelérési út mentén tökéletesen lehangolja. Az Azure CDN Dynamic site Acceleration (DSA) optimalizálásával a dinamikus tartalommal rendelkező weblapok teljesítménye mérhetővé fejlődött.
 
-A Akamai-ből és a **Azure CDN-ből származó** **Azure CDN** a DSA-optimalizálást a végpontok létrehozásakor a menüre **optimalizált** menüben biztosítjuk. A Microsoft által kínált dinamikus webhely-gyorsítás az Azure-beli [bejárati ajtó szolgáltatáson](https://docs.microsoft.com/azure/frontdoor/front-door-overview)keresztül érhető el.
+A Akamai-ből és a **Azure CDN-ből származó** **Azure CDN** a DSA-optimalizálást a végpontok létrehozásakor a menüre **optimalizált** menüben biztosítjuk. A Microsoft által kínált dinamikus webhely-gyorsítás az Azure-beli [bejárati ajtó szolgáltatáson](../frontdoor/front-door-overview.md)keresztül érhető el.
 
 > [!Important]
 > A **Akamai** -profilokból való Azure CDN esetében lehetősége van egy CDN-végpont optimalizálásának módosítására a létrehozása után.
@@ -40,21 +40,21 @@ Ha egy CDN-végpontot úgy szeretne konfigurálni, hogy optimalizálja a dinamik
 
 **CDN-végpont konfigurálása a DSA-optimalizáláshoz a Azure Portal használatával:**
 
-1. A **CDN-profil** lapon válassza a **végpont**lehetőséget.
+1. A **CDN-profil** lapon válassza a **végpont** lehetőséget.
 
    ![Új CDN-végpont hozzáadása](./media/cdn-dynamic-site-acceleration/cdn-endpoint-profile.png) 
 
    Megjelenik a **Végpont hozzáadása** panel.
 
-2. **A rendszerre optimalizált**területen válassza a **dinamikus hely gyorsítás**lehetőséget.
+2. **A rendszerre optimalizált** területen válassza a **dinamikus hely gyorsítás** lehetőséget.
 
     ![Új CDN-végpont létrehozása a DSA-vel](./media/cdn-dynamic-site-acceleration/cdn-endpoint-dsa.png)
 
-3. A mintavételi **útvonalhoz**adjon meg egy érvényes elérési utat a fájlhoz.
+3. A mintavételi **útvonalhoz** adjon meg egy érvényes elérési utat a fájlhoz.
 
     A mintavételi útvonal a DSA-re jellemző szolgáltatás, és a létrehozáshoz érvényes elérési út szükséges. A DSA egy kisméretű mintavételi *elérésiút* -fájlt használ a forrás-kiszolgálón, hogy optimalizálja a CDN hálózati útválasztási konfigurációit. A mintavételi útvonal fájljában letöltheti és feltöltheti a fájlt a webhelyére, vagy használhat egy olyan meglévő eszközt, amely körülbelül 10 KB méretű.
 
-4. Adja meg a többi szükséges végponti beállítást (további információért lásd: [új CDN-végpont létrehozása](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)), majd válassza a **Hozzáadás**lehetőséget.
+4. Adja meg a többi szükséges végponti beállítást (további információért lásd: [új CDN-végpont létrehozása](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)), majd válassza a **Hozzáadás** lehetőséget.
 
    A CDN-végpont létrehozása után a rendszer az összes olyan fájlhoz alkalmazza a DSA-optimalizálást, amely megfelel bizonyos feltételeknek. 
 
@@ -63,11 +63,11 @@ Ha egy CDN-végpontot úgy szeretne konfigurálni, hogy optimalizálja a dinamik
 
 1. A **CDN-profil** lapon válassza ki a módosítani kívánt végpontot.
 
-2. A bal oldali panelen válassza az **optimalizálás**lehetőséget. 
+2. A bal oldali panelen válassza az **optimalizálás** lehetőséget. 
 
    Megjelenik az **optimalizálás** lap.
 
-3. **A rendszerre optimalizált**területen válassza a **dinamikus hely gyorsítás**lehetőséget, majd kattintson a **Mentés**gombra.
+3. **A rendszerre optimalizált** területen válassza a **dinamikus hely gyorsítás** lehetőséget, majd kattintson a **Mentés** gombra.
 
 > [!Note]
 > A DSA extra díjat számít fel. További információ: [Content Delivery Network díjszabása](https://azure.microsoft.com/pricing/details/cdn/).
@@ -109,9 +109,9 @@ A TCP *lassú indítás* a TCP protokoll algoritmusa, amely megakadályozza a h�
 
 1. Az állapot-és sávszélesség-figyelés az Edge PoP-kiszolgálók közötti kapcsolatok sávszélességének mérésére szolgál.
     
-2. A metrikák az Edge PoP-kiszolgálók között vannak megosztva, hogy mindegyik kiszolgáló tisztában legyen a hálózati feltételekkel és a többi durranás kiszolgáló állapotával.  
+2. A metrikák az Edge PoP-kiszolgálók között vannak megosztva, hogy mindegyik kiszolgáló tisztában legyen a hálózati feltételekkel és a többi durranás kiszolgáló állapotával.  
     
-3. A CDN Edge-kiszolgálók feltételezik néhány továbbítási paramétert, például azt, hogy mi az optimális ablakméret, ha más CDN Edge-kiszolgálókkal kommunikál a közelségében. Ez a lépés azt jelenti, hogy a kezdeti torlódási ablak mérete növelhető, ha a CDN Edge-kiszolgálók közötti kapcsolat állapota nagyobb adatátviteli kapacitást biztosít.  
+3. A CDN Edge-kiszolgálók feltételezik néhány továbbítási paramétert, például azt, hogy mi az optimális ablakméret, ha más CDN Edge-kiszolgálókkal kommunikál a közelségében. Ez a lépés azt jelenti, hogy a kezdeti torlódási ablak mérete növelhető, ha a CDN Edge-kiszolgálók közötti kapcsolat állapota nagyobb adatátviteli kapacitást biztosít.  
 
 #### <a name="leveraging-persistent-connections"></a>Állandó kapcsolatok kihasználása
 
@@ -157,7 +157,7 @@ A **Verizon** és a Akamai-profiloktól **Azure CDN standard** szintű Azure CDN
 
 A gyorsítótárazási szabályok elérése:
 
-1. A **CDN-profil** lap beállítások területén válassza a **gyorsítótárazási szabályok**elemet.  
+1. A **CDN-profil** lap beállítások területén válassza a **gyorsítótárazási szabályok** elemet.  
     
     ![CDN-gyorsítótárszabályok gomb](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
 
@@ -165,17 +165,17 @@ A gyorsítótárazási szabályok elérése:
 
 2. Hozzon létre egy globális vagy egyéni gyorsítótárazási szabályt a DSA-végpont gyorsítótárazásának bekapcsolásához. 
 
-Csak a Verizon-profilokból **származó Azure CDN Premium** esetén a [szabályok motor](cdn-rules-engine.md)használatával kapcsolja be a gyorsítótárazást adott DSA-végpontokra. A létrehozott szabályok csak a DSA-ra optimalizált profilhoz tartozó végpontokat érintik. 
+Csak a Verizon-profilokból **származó Azure CDN Premium** esetén a [szabályok motor](./cdn-verizon-premium-rules-engine.md)használatával kapcsolja be a gyorsítótárazást adott DSA-végpontokra. A létrehozott szabályok csak a DSA-ra optimalizált profilhoz tartozó végpontokat érintik. 
 
 A szabályok motor elérése:
     
-1. A **CDN-profil** lapon válassza a **kezelés**lehetőséget.  
+1. A **CDN-profil** lapon válassza a **kezelés** lehetőséget.  
     
     ![CDN-profil kezelése gomb](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 
     Megnyílik a CDN felügyeleti portál.
 
-2. A CDN felügyeleti portálján válassza az **ADN**, majd a **szabályok motor**elemet. 
+2. A CDN felügyeleti portálján válassza az **ADN** , majd a **szabályok motor** elemet. 
 
     ![A DSA szabályainak motorja](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
 
@@ -183,7 +183,4 @@ A szabályok motor elérése:
 
 Azt is megteheti, hogy két CDN-végpontot is használhat: egy DSA-val optimalizált végpontot, amely dinamikus eszközöket és egy statikus optimalizálási típussal optimalizált másik végpontot (például általános webes kézbesítés) biztosít a gyorsítótárazható eszközök kézbesítéséhez. Módosítsa a weblap URL-címeit, hogy közvetlenül a használni kívánt CDN-végponton lévő eszközre hivatkozzon. 
 
-Például: `mydynamic.azureedge.net/index.html` egy dinamikus lap, és betöltődik a DSA-végpontból.A HTML-oldal több olyan statikus objektumra hivatkozik, mint például a JavaScript-kódtárak vagy a statikus CDN-végpontról betöltött képek, például a `mystatic.azureedge.net/banner.jpg` és a `mystatic.azureedge.net/scripts.js` . 
-
-
-
+Például: `mydynamic.azureedge.net/index.html` egy dinamikus lap, és betöltődik a DSA-végpontból.  A HTML-oldal több olyan statikus objektumra hivatkozik, mint például a JavaScript-kódtárak vagy a statikus CDN-végpontról betöltött képek, például a `mystatic.azureedge.net/banner.jpg` és a `mystatic.azureedge.net/scripts.js` .

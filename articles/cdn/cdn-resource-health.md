@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 65b3d5a29028214a52e6b26430472394c91c6f27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81c92b6ef5bdf89391364bc238f55200eb3679f6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887058"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778161"
 ---
 # <a name="monitor-the-health-of-azure-cdn-resources"></a>Az Azure CDN-erőforrások állapotának figyelése
   
-A Azure CDN Resource Health az [Azure Resource Health](../resource-health/resource-health-overview.md)részhalmaza.  Az Azure Resource Health szolgáltatással figyelheti a CDN-erőforrások állapotát, és gyakorlati útmutatást kaphat a problémák elhárításához.
+A Azure CDN Resource Health az [Azure Resource Health](../service-health/resource-health-overview.md)részhalmaza.  Az Azure Resource Health szolgáltatással figyelheti a CDN-erőforrások állapotát, és gyakorlati útmutatást kaphat a problémák elhárításához.
 
 >[!IMPORTANT] 
 >A Azure CDN Resource Health szolgáltatás jelenleg csak a globális CDN-kézbesítés és az API-képességek állapotának megfelelő fiókokkal rendelkezik.  Azure CDN erőforrás-állapot nem ellenőrzi az egyes CDN-végpontokat.
@@ -38,7 +38,7 @@ A Azure CDN Resource Health az [Azure Resource Health](../resource-health/resour
 
     ![Beállítások gomb](./media/cdn-resource-health/cdn-profile-settings.png)
 
-3. A *támogatás + hibaelhárítás*területen kattintson az **erőforrás állapota**elemre.
+3. A *támogatás + hibaelhárítás* területen kattintson az **erőforrás állapota** elemre.
 
     ![CDN-erőforrás állapota](./media/cdn-resource-health/cdn-resource-health3.png)
 
@@ -51,7 +51,7 @@ A Azure CDN Resource Health az [Azure Resource Health](../resource-health/resour
 
 A Azure CDN erőforrás-állapottal kapcsolatos állapotok alább találhatók.
 
-|Üzenet | Javasolt művelet |
+|Üzenet | Javasolt művelet |
 |---|---|
 |Előfordulhat, hogy egy vagy több CDN-végpontot leállított, eltávolított vagy helytelenül konfigurált | Előfordulhat, hogy egy vagy több CDN-végpontot leállított, eltávolított vagy helytelenül konfigurált.|
 |Sajnáljuk, de a CDN-kezelési szolgáltatás jelenleg nem érhető el | Térjen vissza ide az állapot frissítéseihez; Ha a probléma a várt megoldási idő után sem szűnik meg, forduljon az ügyfélszolgálathoz.|
@@ -60,8 +60,8 @@ A Azure CDN erőforrás-állapottal kapcsolatos állapotok alább találhatók.
 |Sajnáljuk, de a kiegészítő portál betöltése közben problémák merültek fel | Térjen vissza ide az állapot frissítéseihez; Ha a probléma a várt megoldási idő után sem szűnik meg, forduljon az ügyfélszolgálathoz.|
 Sajnáljuk, de problémák merültek fel néhány CDN-szolgáltatónkkal kapcsolatban | Térjen vissza ide az állapot frissítéseihez; Ha a probléma a várt megoldási idő után sem szűnik meg, forduljon az ügyfélszolgálathoz. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Resource Health áttekintése](../resource-health/resource-health-overview.md)
+- [Az Azure Resource Health áttekintése](../service-health/resource-health-overview.md)
 - [CDN-tömörítéssel kapcsolatos problémák elhárítása](./cdn-troubleshoot-compression.md)
 - [404 hibával kapcsolatos hibák elhárítása](./cdn-troubleshoot-endpoint.md)

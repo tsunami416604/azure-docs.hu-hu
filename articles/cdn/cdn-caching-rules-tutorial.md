@@ -14,17 +14,17 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 3d52b9a6842c13e9141fd081e10156e3866c163f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae217352b83617600fd983a747d578f8f28e7ddd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81254308"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779237"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>Oktatóanyag: Azure CDN-gyorsítótárazási szabályok beállítása
 
 > [!NOTE] 
-> A gyorsítótárazási szabályok csak a **Verizon Azure CDN standard** csomagból és a Akamai-profilokból **Azure CDN standard** csomagból érhetők el. A **Microsoft** -profilokból Azure CDN a [standard szintű szabályok motorját](cdn-standard-rules-engine-reference.md) kell használnia a Verizon-profilokkal való **Azure CDN premiumhoz** , a **felügyeleti portálon** a hasonló funkciókhoz a [Verizon Premium Rules motort](cdn-rules-engine.md) kell használnia.
+> A gyorsítótárazási szabályok csak a **Verizon Azure CDN standard** csomagból és a Akamai-profilokból **Azure CDN standard** csomagból érhetők el. A **Microsoft** -profilokból Azure CDN a [standard szintű szabályok motorját](cdn-standard-rules-engine-reference.md) kell használnia a Verizon-profilokkal való **Azure CDN premiumhoz** , a **felügyeleti portálon** a hasonló funkciókhoz a [Verizon Premium Rules motort](./cdn-verizon-premium-rules-engine.md) kell használnia.
  
 
 Ez az oktatóanyag leírja, hogyan használhatók az Azure Content Delivery Network (CDN) gyorsítótárazási szabályai az alapértelmezett gyorsítótár-lejárati viselkedés globális vagy egyéni feltételek megadásával, például URL-elérési úttal vagy fájlkiterjesztéssel történő módosítására. Az Azure CDN két gyorsítótárazási szabálytípust biztosít:
@@ -84,7 +84,7 @@ Hozzon létre egy egyéni gyorsítótárszabályt a következők szerint:
     ![Egyéni gyorsítótárszabályok](./media/cdn-caching-rules/cdn-custom-caching-rules.png)
 
     
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Az előző lépésekben gyorsítótárazási szabályokat hozott létre. Ha már nem szeretné használni ezeket a gyorsítótárazási szabályokat, a következő lépések követésével távolíthatja el őket:
  
@@ -114,6 +114,3 @@ Lépjen tovább a következő cikkre, ahol további gyorsítótárszabályok be�
 
 > [!div class="nextstepaction"]
 > [Az Azure CDN gyorsítótárazási viselkedésének vezérlése gyorsítótárszabályokkal](cdn-caching-rules.md)
-
-
-

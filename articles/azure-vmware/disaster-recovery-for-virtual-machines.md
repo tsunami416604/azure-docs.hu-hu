@@ -3,20 +3,20 @@ title: A virtuális gépek vész-helyreállításának befejezése
 description: Ez a cikk bemutatja, hogyan végezheti el a virtuális gépek vész-helyreállítását az Azure VMware-megoldás használatával
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 3608243600eb5d00dcfe10db5bc6b907ecb9aee8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 688d91bc181e1479f5090a10af4b3b262d7ddb7f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92508434"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779611"
 ---
-# <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>A virtuális gépek vész-helyreállításának befejezése az Azure VMware-megoldás használatával
+# <a name="complete-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>A virtuális gépek vész-helyreállításának befejezése Azure VMware-megoldás használatával
 
 Ez a cikk a virtuális gépek (VM-EK) VMware HCX-megoldással való vész-helyreállításának folyamatát, valamint egy Azure VMware-megoldás saját felhőjét használja helyreállítási vagy célhelyként.
 
 A VMware HCX különböző műveleteket biztosít, amelyek a replikációs házirendekben részletes szabályozást és részletességet biztosítanak. Az elérhető műveletek a következők:
 
-- **Fordított** – katasztrófa után. A reverse segít a B helynek a forrás helyének és helyének a megadásában, ahol a védett virtuális gép már él.
+- **Fordított** – katasztrófa után. A reverse segítséget nyújt a B helynek a forrás-és a webhelynek, ahol a védett virtuális gép most már él.
 
 - **Szüneteltetés** – szünetelteti a kiválasztott virtuális géphez társított aktuális replikációs házirendet.
 
@@ -26,7 +26,7 @@ A VMware HCX különböző műveleteket biztosít, amelyek a replikációs házi
 
 - **Szinkronizálás most** – a kötött szinkronizálási forrás virtuális gépről a védett virtuális gépre.
 
-Ebben az útmutatóban a következő replikációs forgatókönyvek tartoznak:
+Ez az útmutató a következő replikációs forgatókönyvekre terjed ki:
 
 - Virtuális gép vagy virtuális gépek egy csoportja elleni védelem.
 
@@ -38,11 +38,11 @@ Ebben az útmutatóban a következő replikációs forgatókönyvek tartoznak:
 
 ## <a name="protect-vms"></a>A virtuális gépek védelme
 
-1. Jelentkezzen be a **vSphere-ügyfélbe** a forrás helyén, és nyissa meg a **HCX beépülő modult**.
+1. Jelentkezzen be a **vSphere-ügyfélbe** a forrás helyén, és nyissa meg a **HCX beépülő modult** .
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/hcx-vsphere.png" alt-text="HCX beállítás a vSphere" border="true":::
 
-1. Adja meg a vész- **helyreállítási** területeket, és válassza a **virtuális gépek védelem**lehetőséget.
+1. Adja meg a vész- **helyreállítási** területeket, és válassza a **virtuális gépek védelem** lehetőséget.
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-virtual-machine.png" alt-text="HCX beállítás a vSphere" border="true" lightbox="./media/disaster-recovery-virtual-machines/protect-virtual-machine.png":::
 
@@ -56,13 +56,13 @@ Ebben az útmutatóban a következő replikációs forgatókönyvek tartoznak:
 
    - **Quiescence engedélyezése:** Szünetelteti a virtuális gépet annak biztosítására, hogy a konzisztens másolat szinkronizálva legyen a távoli hellyel.
 
-   - **Cél tárterülete:** A védett virtuális gépek távoli adattárát, valamint egy Azure VMware-megoldás saját felhőjét, a vSAN adattárnak kell lennie.
+   - **Cél tárterülete:** A védett virtuális gépek távoli adattára, valamint egy Azure VMware-megoldás saját felhőben, amely a vSAN adattár.
 
    - **Számítási tároló:** Távoli vSphere-fürt vagy erőforráskészlet.
 
-   - **Célmappa:** Távoli célmappa, amely nem kötelező, és ha nincs kiválasztva mappa, a virtuális gépek közvetlenül a kijelölt fürt alá kerülnek.
+   - **Célmappa:** A távoli célmappa, amely nem kötelező, és ha nincs kiválasztva mappa, a virtuális gépek közvetlenül a kijelölt fürtön lesznek elhelyezve.
 
-   - **RPO:** A forrás virtuális gép és a védett virtuális gép közötti szinkronizálási időköz, amely 5 perc és 24 óra között lehet.
+   - **RPO:** A forrás virtuális gép és a védett virtuális gép közötti szinkronizálási időköz. 5 perc és 24 óra között lehet.
 
    - **Pillanatkép időköze:** A pillanatképek közötti intervallum.
 
@@ -84,14 +84,14 @@ Ebben az útmutatóban a következő replikációs forgatókönyvek tartoznak:
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/list-of-snapshots.png" alt-text="HCX beállítás a vSphere" border="true" lightbox="./media/disaster-recovery-virtual-machines/list-of-snapshots.png":::
 
-   A sárga háromszög azt jelenti, hogy a pillanatképek és a virtuális nem tesztelt teszt-helyreállítási műveletben.
+   A sárga háromszög azt jelenti, hogy a pillanatképek és a virtuális gépek nem lettek tesztelve egy teszt helyreállítási műveletben.
 
-   Fontos különbségek vannak a kikapcsolt virtuális gépek és az azt bekapcsoló virtuális gépek között. A képen látható a szinkronizált folyamat a virtuális gépeken. Elindítja a szinkronizálási folyamatot egészen addig, amíg be nem fejeződik az első pillanatkép, amely a virtuális gép teljes másolata, majd befejezi a következőket a beállított intervallumban. A kikapcsolt virtuális gépek esetében szinkronizál egy másolatot, majd a virtuális gép inaktívként jelenik meg, és a védelmi művelet befejeződött.  Amikor a virtuális gép be van kapcsolva, elindítja a szinkronizálási folyamatot a távoli helyre.
+   Fontos különbségek vannak a kikapcsolt virtuális gépek és a rajta lévők között. A képen egy bekapcsolt virtuális gép szinkronizálási folyamata látható. Elindítja a szinkronizálási folyamatot egészen addig, amíg be nem fejeződik az első pillanatkép, amely a virtuális gép teljes másolata, majd befejezi a következőket a beállított intervallumban. Szinkronizál egy másolatot egy kikapcsolt virtuális géphez, majd a virtuális gép inaktívként jelenik meg, és a védelmi művelet befejezve állapotba kerül.  Amikor a virtuális gép be van kapcsolva, elindítja a szinkronizálási folyamatot a távoli helyre.
 
 ## <a name="complete-a-test-recover-of-vms"></a>Virtuális gépek teszt-helyreállításának befejezése
 
 1. Jelentkezzen be a **vSphere-ügyfélbe** a távoli helyen, amely az Azure VMware megoldás privát felhője. 
-1. A **HCX beépülő modulban**, a vész-helyreállítási területen jelölje ki a függőleges ellipsziseket bármelyik virtuális gépen az operatív menü megjelenítéséhez, majd válassza a **virtuális gép helyreállítása**lehetőséget.
+1. A **HCX beépülő modulban** , a vész-helyreállítási területen jelölje ki a függőleges ellipsziseket bármelyik virtuális gépen az operatív menü megjelenítéséhez, majd válassza a **virtuális gép helyreállítása** lehetőséget.
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/test-recover-virtual-machine.png" alt-text="HCX beállítás a vSphere" border="true":::
 
@@ -99,7 +99,7 @@ Ebben az útmutatóban a következő replikációs forgatókönyvek tartoznak:
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/choose-snapshot.png" alt-text="HCX beállítás a vSphere" border="true":::
 
-1. A **teszt**kiválasztása után megkezdődik a helyreállítási művelet.
+1. A **teszt** kiválasztása után megkezdődik a helyreállítási művelet.
 
 1. Ha elkészült, megtekintheti az új virtuális gépet az Azure VMware-megoldás saját Felhőbeli vCenter.
 
@@ -111,11 +111,11 @@ Ebben az útmutatóban a következő replikációs forgatókönyvek tartoznak:
 
 ## <a name="recover-vms"></a>Virtuális gépek helyreállítása
 
-1. Jelentkezzen be a **vSphere-ügyfélre** a távoli helyen, amely az Azure VMware megoldás privát felhője, és hozzáfér a **HCX beépülő modulhoz**.
+1. Jelentkezzen be a **vSphere-ügyfélre** a távoli helyen, amely az Azure VMware megoldás privát felhője, és hozzáfér a **HCX beépülő modulhoz** .
 
    A helyreállítási forgatókönyvhöz a példaként használt virtuális gépek egy csoportja.
 
-1. Válassza ki a listából a helyreállítani kívánt virtuális gépet, nyissa meg a **műveletek** menüt, és válassza a **virtuális gépek helyreállítása**lehetőséget.
+1. Válassza ki a listából a helyreállítani kívánt virtuális gépet, nyissa meg a **műveletek** menüt, és válassza a **virtuális gépek helyreállítása** lehetőséget.
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/recover-virtual-machines.png" alt-text="HCX beállítás a vSphere" border="true":::
 
@@ -127,12 +127,12 @@ Ebben az útmutatóban a következő replikációs forgatókönyvek tartoznak:
 
 ## <a name="complete-a-reverse-replication-on-vms"></a>Visszirányú replikálás végrehajtása a virtuális gépeken
 
-1. Jelentkezzen be a **vSphere-ügyfélre** az Azure VMware-megoldás saját felhőbe, és nyissa meg a **HCX beépülő modult**.
+1. Jelentkezzen be a **vSphere-ügyfélre** az Azure VMware-megoldás saját felhőbe, és nyissa meg a **HCX beépülő modult** .
    
    >[!NOTE]
-   >A visszirányú replikálás megkezdése előtt győződjön meg arról, hogy a forrás helyén lévő eredeti virtuális gépek ki vannak kapcsolva. A művelet meghiúsul, ha a virtuális gépek nincsenek kikapcsolva.
+   > A visszirányú replikálás megkezdése előtt győződjön meg arról, hogy a forrás helyén lévő eredeti virtuális gépek ki vannak kapcsolva. A művelet meghiúsul, ha a virtuális gépek nincsenek kikapcsolva.
 
-1. A listából válassza ki a forrás helyre replikálni kívánt virtuális gépeket, nyissa meg a **műveletek** menüt, és válassza a **fordított**lehetőséget. 
+1. A listából válassza ki a forrás helyre replikálni kívánt virtuális gépeket, nyissa meg a **műveletek** menüt, és válassza a **fordított** lehetőséget. 
 1. A replikáció indításához válassza a **fordított** lehetőséget.
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/reverse-operation-virtual-machines.png" alt-text="HCX beállítás a vSphere" border="true":::
@@ -145,7 +145,7 @@ Ebben az útmutatóban a következő replikációs forgatókönyvek tartoznak:
 
 A VMware HCX jelenleg nem rendelkezik beépített mechanizmussal a vész-helyreállítási terv létrehozásához és automatizálásához. A VMware HCX azonban REST API-kat biztosít, beleértve a vész-helyreállítási művelethez szükséges API-kat is. Az API-specifikáció a VMware HCX Managerben érhető el az URL-címben.
 
-Ezek az API-k a vész-helyreállítás következő műveleteit tárgyalják.
+Ezek az API-k a következő műveleteket fedezik a vész-helyreállítás során.
 
 - Védelem
 
@@ -241,4 +241,4 @@ Az alábbi példa egy helyreállítási művelet hasznos adatait mutatja be a JS
 ]
 ```
 
-Ezen API-k használatával az ügyfél létrehozhat egy egyéni mechanizmust a vész-helyreállítási terv létrehozásának és végrehajtásának automatizálására.
+Ezekkel az API-kkal egyéni mechanizmust hozhat létre a vész-helyreállítási terv létrehozásának és végrehajtásának automatizálására.

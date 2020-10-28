@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 89adc283fa9d6edc49536cb9459a479710c94435
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7edf790e526329dd285d03a31137a26220e52ee
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85921165"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778931"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Azure CDN használata a CORS
 ## <a name="what-is-cors"></a>Mi az a CORS?
@@ -69,13 +69,13 @@ A Microsoft Azure CDN standard verziójában létrehozhat egy szabályt a [stand
 ![Szabályok példa a Standard Rules Engine-re](./media/cdn-cors/cdn-standard-cors.png)
 
 > [!TIP]
-> További műveleteket is hozzáadhat a szabályhoz a további válaszok fejlécek, például a **hozzáférés-vezérlés-engedélyezés-metódusok**módosításához.
+> További műveleteket is hozzáadhat a szabályhoz a további válaszok fejlécek, például a **hozzáférés-vezérlés-engedélyezés-metódusok** módosításához.
 > 
 
-A **Akamai Azure CDN standard**esetében az egyetlen olyan mechanizmus, amely lehetővé teszi, hogy a helyettesítő karakterek használata nélkül több kezdőpontot engedélyezzen a [lekérdezési karakterlánc gyorsítótárazásának](cdn-query-string.md)használata. Engedélyezze a CDN-végpont lekérdezési karakterlánc beállítását, majd használjon egy egyedi lekérdezési karakterláncot az egyes engedélyezett tartományokból érkező kérésekhez. Ennek eredményeképpen a CDN gyorsítótárazása külön objektumot ad meg minden egyes egyedi lekérdezési karakterlánchoz. Ez a megközelítés nem ideális, mivel ez a fájl több másolatát is eredményezi a CDN-gyorsítótárban.  
+A **Akamai Azure CDN standard** esetében az egyetlen olyan mechanizmus, amely lehetővé teszi, hogy a helyettesítő karakterek használata nélkül több kezdőpontot engedélyezzen a [lekérdezési karakterlánc gyorsítótárazásának](cdn-query-string.md)használata. Engedélyezze a CDN-végpont lekérdezési karakterlánc beállítását, majd használjon egy egyedi lekérdezési karakterláncot az egyes engedélyezett tartományokból érkező kérésekhez. Ennek eredményeképpen a CDN gyorsítótárazása külön objektumot ad meg minden egyes egyedi lekérdezési karakterlánchoz. Ez a megközelítés nem ideális, mivel ez a fájl több másolatát is eredményezi a CDN-gyorsítótárban.  
 
 ### <a name="azure-cdn-premium-from-verizon"></a>Prémium Azure CDN a Verizontól
-A Verizon Premium Rules Engine használatával [létre kell hoznia egy szabályt](cdn-rules-engine.md) a kérelemben szereplő **forrás** fejléc vizsgálatához.  Ha érvényes a forrás, a szabály az **Access-Control-Allow-Origin** fejlécet fogja beállítani a kérelemben megadott forrással.  Ha **a forrás fejlécben** megadott forrás nem engedélyezett, a szabálynak el kell hagynia a **hozzáférés-vezérlés-engedélyezés-eredet** fejlécet, ami miatt a böngésző elutasítja a kérést. 
+A Verizon Premium Rules Engine használatával [létre kell hoznia egy szabályt](./cdn-verizon-premium-rules-engine.md) a kérelemben szereplő **forrás** fejléc vizsgálatához.  Ha érvényes a forrás, a szabály az **Access-Control-Allow-Origin** fejlécet fogja beállítani a kérelemben megadott forrással.  Ha **a forrás fejlécben** megadott forrás nem engedélyezett, a szabálynak el kell hagynia a **hozzáférés-vezérlés-engedélyezés-eredet** fejlécet, ami miatt a böngésző elutasítja a kérést. 
 
 Ezt kétféleképpen teheti meg a prémium szabályok motorral. Mindkét esetben a rendszer figyelmen kívül hagyja a fájl forráskiszolgáló **hozzáférés-vezérlés-engedélyezés-eredet** fejlécét, és a CDN-szabályok motorja teljes mértékben felügyeli az engedélyezett CORS-eredeteket.
 
@@ -91,7 +91,7 @@ https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.co
 > 
 > 
 
-Ha a reguláris kifejezés megfelel, a szabály a forrástól a kérést küldő forrásból származó **hozzáférés-vezérlési engedélyezési-származási** fejlécet (ha van) lecseréli.  További CORS-fejléceket is hozzáadhat, például a **hozzáférés-vezérlés-engedélyezési metódusokat**.
+Ha a reguláris kifejezés megfelel, a szabály a forrástól a kérést küldő forrásból származó **hozzáférés-vezérlési engedélyezési-származási** fejlécet (ha van) lecseréli.  További CORS-fejléceket is hozzáadhat, például a **hozzáférés-vezérlés-engedélyezési metódusokat** .
 
 ![Szabályok – példa reguláris kifejezéssel](./media/cdn-cors/cdn-cors-regex.png)
 
@@ -103,7 +103,4 @@ A reguláris kifejezések helyett külön szabályt hozhat létre minden olyan f
 > [!TIP]
 > A fenti példában a helyettesítő karakter használata * megadja a szabályok motorjának a HTTP és a HTTPS egyeztetését.
 > 
-> 
-
-
-
+>

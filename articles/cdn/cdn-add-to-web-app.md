@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 470324799cd157c8b33311e1cae8b5b698433e1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0abe13c7c6a9f26746278aeede199a0860a54c0d
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88079909"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779544"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Oktatóanyag: Azure CDN hozzáadása egy Azure App Service-webalkalmazáshoz
 
@@ -43,7 +43,7 @@ Ismertetett témák:
 Az oktatóanyag elvégzéséhez:
 
 - [A Git telepítése](https://git-scm.com/)
-- [Az Azure CLI összetevő telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Az Azure CLI összetevő telepítése](/cli/azure/install-azure-cli)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -76,7 +76,7 @@ Az **Azure Content Delivery Network** lapon adja meg az **Új végpont** beáll�
 | ------- | --------------- | ----------- |
 | **CDN-profil** | myCDNProfile | A CDN-profil ugyanabba a tarifacsomagba tartozó CDN-végpontok gyűjteménye. |
 | **Tarifacsomag** | Standard Akamai | A [tarifacsomag](cdn-features.md) határozza meg a szolgáltatót és az elérhető szolgáltatásokat. Ez az oktatóanyag a *Standard Akamai* szolgáltatást használja. |
-| **CDN-végpont neve** | Bármely egyedi név az azureedge.net tartományban | A gyorsítótárazott erőforrásokat a * &lt; végpontneve &gt; *. azureedge.net tartományba érheti el.
+| **CDN-végpont neve** | Bármely egyedi név az azureedge.net tartományban | A gyorsítótárazott erőforrásokat a *&lt; végpontneve &gt;* . azureedge.net tartományba érheti el.
 
 Válassza a **Létrehozás** lehetőséget egy új CDN-profil létrehozásához.
 
@@ -91,7 +91,7 @@ Az Azure létrehozza a profilt és a végpontot. Az új végpont megjelenik a **
    - Az **Akamai Azure CDN Standard** típusú profilok propagálása általában egy percen belül befejeződik. 
    - A **Verizon Azure CDN Standard** és a **Verizon Azure CDN Premium** típusú profilok propagálása általában 90 percen belül fejeződik be. 
 
-Ugyanehhez az alkalmazáshoz tartozik egy *index.html* fájl, valamint *css*, *img* és *js* mappák is, amelyek egyéb statikus objektumokat tartalmaznak. Az összes fájl tartalmának elérési útjai megegyezik a CDN-végponton. Például a következő két URL egyaránt a *bootstrap.css* fájlra mutat a *css* mappában:
+Ugyanehhez az alkalmazáshoz tartozik egy *index.html* fájl, valamint *css* , *img* és *js* mappák is, amelyek egyéb statikus objektumokat tartalmaznak. Az összes fájl tartalmának elérési útjai megegyezik a CDN-végponton. Például a következő két URL egyaránt a *bootstrap.css* fájlra mutat a *css* mappában:
 
 ```
 http://<appname>.azurewebsites.net/css/bootstrap.css
@@ -210,7 +210,7 @@ Az Azure Portal **CDN-végpont** lapján válassza a **Gyorsítótár** lehetős
 
 Válassza a **Minden egyedi URL-cím gyorsítótárazása** lehetőséget a **Lekérdezési sztringek gyorsítótárazásának működése** legördülő menüben.
 
-Kattintson a **Mentés** gombra.
+Válassza a **Mentés** lehetőséget.
 
 ![Lekérdezési sztringek gyorsítótárazási működésének kiválasztása](media/cdn-add-to-web-app/portal-select-caching-behavior.png)
 
@@ -256,7 +256,7 @@ További információkért lásd: [Az Azure CDN gyorsítótárazási viselkedés
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbiak elvégzését ismerte meg:
 
@@ -269,5 +269,3 @@ A CDN teljesítményének optimalizálását a következő cikkekben sajátítha
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Egyéni tartomány hozzáadása az Azure CDN-végponthoz](cdn-map-content-to-custom-domain.md)
-
-
