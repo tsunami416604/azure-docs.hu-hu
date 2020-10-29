@@ -3,12 +3,12 @@ title: Több beállításjegyzékbeli hitelesítés az ACR-feladatból
 description: Egy Azure Container Registry feladat (ACR-feladat) konfigurálása az Azure-erőforrások felügyelt identitásának használatával való hozzáféréshez egy másik privát Azure Container registryhez
 ms.topic: article
 ms.date: 07/06/2020
-ms.openlocfilehash: 8b961a2ff6a795f03798cc6f6a7d303391036ef8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a460102eafa5c1eda2f37330887d985387d5df5
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86057355"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026258"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Több beállításjegyzékbeli hitelesítés egy ACR-feladatban egy Azure által felügyelt identitás használatával 
 
@@ -30,8 +30,8 @@ A valós forgatókönyvekben a szervezetek az összes fejlesztői csapat által 
 
 Ehhez a cikkhez két Azure Container-nyilvántartóra van szükség:
 
-* Az első beállításjegyzék használatával ACR-feladatokat hozhat létre és futtathat. Ebben a cikkben a beállításjegyzék neve *myregistry*. 
-* A második beállításjegyzékben található egy rendszerkép létrehozására szolgáló feladathoz használt alaprendszerkép. Ebben a cikkben a második beállításjegyzék neve *mybaseregistry*. 
+* Az első beállításjegyzék használatával ACR-feladatokat hozhat létre és futtathat. Ebben a cikkben a beállításjegyzék neve *myregistry* . 
+* A második beállításjegyzékben található egy rendszerkép létrehozására szolgáló feladathoz használt alaprendszerkép. Ebben a cikkben a második beállításjegyzék neve *mybaseregistry* . 
 
 Cserélje le a változót a saját beállításjegyzékbeli nevére a későbbi lépésekben.
 
@@ -39,16 +39,12 @@ Ha még nem rendelkezik a szükséges Azure Container-nyilvántartásokkal, teki
 
 ## <a name="prepare-base-registry"></a>Alapszintű beállításjegyzék előkészítése
 
-Először hozzon létre egy munkakönyvtárat, majd hozzon létre egy Docker nevű fájlt az alábbi tartalommal. Ez az egyszerű példa egy Node.js alaprendszerképet hoz létre egy nyilvános rendszerképből a Docker hub-ban.
-    
-```bash
-echo FROM node:9-alpine > Dockerfile
-```
+A demonstrációs célokra egyszeri műveletként futtassa az [az ACR import] [az-ACR-import] parancsot, hogy importáljon egy nyilvános Node.js rendszerképet a Docker hub-ból az alap beállításjegyzékbe. A gyakorlatban a szervezet egy másik csapata vagy folyamata a lemezképeket az alapszintű beállításjegyzékben is megtarthatja.
 
-Az aktuális könyvtárban futtassa az az [ACR Build][az-acr-build] parancsot az alaprendszerkép kiépítéséhez és az alap beállításjegyzékbe való leküldéséhez. A gyakorlatban a szervezet egy másik csapata vagy folyamata is megtarthatja az alap beállításjegyzéket.
-    
 ```azurecli
-az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file Dockerfile .
+az acr import --name mybaseregistry \
+  --source docker.io/library/node:9-alpine \
+  --image baseimages/node:9-alpine 
 ```
 
 ## <a name="define-task-steps-in-yaml-file"></a>Feladat lépéseinek meghatározása a YAML fájlban
@@ -88,7 +84,7 @@ az acr task create \
 
 ### <a name="give-identity-pull-permissions-to-the-base-registry"></a>Identitás-lekérési engedélyek megadása az alap beállításjegyzékhez
 
-Ebben a szakaszban adja meg a felügyelt identitás engedélyeit az alapszintű beállításjegyzékből való lekéréshez, *mybaseregistry*.
+Ebben a szakaszban adja meg a felügyelt identitás engedélyeit az alapszintű beállításjegyzékből való lekéréshez, *mybaseregistry* .
 
 Használja az az [ACR show][az-acr-show] parancsot az alapszintű beállításjegyzék erőforrás-azonosítójának lekéréséhez és egy változóban való tárolásához:
 
@@ -127,7 +123,7 @@ az acr task create \
 
 ### <a name="give-identity-pull-permissions-to-the-base-registry"></a>Identitás-lekérési engedélyek megadása az alap beállításjegyzékhez
 
-Ebben a szakaszban adja meg a felügyelt identitás engedélyeit az alapszintű beállításjegyzékből való lekéréshez, *mybaseregistry*.
+Ebben a szakaszban adja meg a felügyelt identitás engedélyeit az alapszintű beállításjegyzékből való lekéréshez, *mybaseregistry* .
 
 Használja az az [ACR show][az-acr-show] parancsot az alapszintű beállításjegyzék erőforrás-azonosítójának lekéréséhez és egy változóban való tárolásához:
 
@@ -223,7 +219,7 @@ The push refers to repository [myregistry.azurecr.io/hello-world]
 Run ID: cf10 was successful after 32s
 ```
 
-Futtassa az az [ACR repository show-Tags][az-acr-repository-show-tags] parancsot annak ellenőrzéséhez, hogy a rendszerkép létrehozva lett-e, és sikeresen leküldve a *myregistry*:
+Futtassa az az [ACR repository show-Tags][az-acr-repository-show-tags] parancsot annak ellenőrzéséhez, hogy a rendszerkép létrehozva lett-e, és sikeresen leküldve a *myregistry* :
 
 ```azurecli
 az acr repository show-tags --name myregistry --repository hello-world --output tsv
@@ -235,7 +231,7 @@ Példa a kimenetre:
 cf10
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [felügyelt identitások ACR-feladatokban való engedélyezéséről](container-registry-tasks-authentication-managed-identity.md).
 * Lásd az [ACR-feladatok YAML-referenciáját](container-registry-tasks-reference-yaml.md)

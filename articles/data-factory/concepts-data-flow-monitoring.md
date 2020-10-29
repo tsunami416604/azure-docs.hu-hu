@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/19/2020
-ms.openlocfilehash: 77dda42b27aa6f5fb505fe65667876523cb3f5d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9636e7227671cd5a8ed31904e6bc27782d3bd6a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88650893"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025833"
 ---
 # <a name="monitor-data-flows"></a>Adatfolyamatok figyelése
 
@@ -23,15 +23,15 @@ Az adatfolyamatok kiépítésének és hibakeresésének befejezése után az ad
 
 A folyamat végrehajtásakor nyomon követheti a folyamatot és az összes olyan tevékenységet, amely a folyamat során szerepel, beleértve az adatfolyam tevékenységét is. Kattintson a figyelés ikonra a bal oldali Azure Data Factory felhasználói felület paneljén. Egy, az alábbihoz hasonló képernyő jelenik meg. A Kiemelt ikonok lehetővé teszik a folyamat tevékenységeinek részletezését, beleértve az adatfolyam tevékenységeit is.
 
-![Adatfolyam-figyelés](media/data-flow/mon001.png "Adatfolyam-figyelés")
+![A képernyőképen a folyamatok számára kiválasztható ikonok láthatók. További információ:.](media/data-flow/mon001.png "Adatfolyam-figyelés")
 
 Ezen a szinten láthatja a statisztikát is, beleértve a futtatási időpontokat és az állapotot. A futtatási azonosító a tevékenység szintjén eltér a folyamat szintjén lévő futtatási AZONOSÍTÓtól. A futtatási azonosító az előző szinten a folyamathoz szükséges. A szemüvegek kiválasztásával részletes információkhoz jutunk az adatfolyamok végrehajtásáról.
 
-![Adatfolyam-figyelés](media/data-flow/monitoring-details.png "Adatfolyam-figyelés")
+![Képernyőfelvétel: a szemüvegek ikonja az adatfolyam-végrehajtás részleteinek megtekintéséhez.](media/data-flow/monitoring-details.png "Adatfolyam-figyelés")
 
 Ha a grafikus csomópont figyelési nézetében van, az Adatfolyam-diagram egyszerűsített, csak megtekintésre kész verzióját láthatja.
 
-![Adatfolyam-figyelés](media/data-flow/mon003.png "Adatfolyam-figyelés")
+![A képernyőképen a gráf csak megtekintésre szolgáló verziója látható.](media/data-flow/mon003.png "Adatfolyam-figyelés")
 
 Az alábbi videó áttekintést nyújt az adatfolyamatok teljesítményének figyeléséről az ADF-figyelés képernyőn:
 
@@ -41,7 +41,7 @@ Az alábbi videó áttekintést nyújt az adatfolyamatok teljesítményének fig
 
 Ha az adatfolyamot a Sparkban hajtja végre, Azure Data Factory meghatározza a kódok optimális elérési útját az adatfolyam teljes egészében. Emellett a végrehajtási útvonalak különböző kibővíthető csomópontokon és adatpartíción is előfordulhatnak. Ezért a figyelési gráf a folyamat kialakítását jelképezi, figyelembe véve az átalakítások végrehajtási útvonalát. Az egyes csomópontok kijelölésekor a fürtön együtt végrehajtott kódokat jelölő "Csoportosítások" láthatók. Az időzítések és a megjelenő számadatok ezeket a csoportokat jelölik, a terv egyes lépéseivel szemben.
 
-![Adatfolyam-figyelés](media/data-flow/mon004.png "Adatfolyam-figyelés")
+![Képernyőfelvétel: az adatfolyam oldalát jeleníti meg.](media/data-flow/mon004.png "Adatfolyam-figyelés")
 
 * Ha kijelöli a Megnyitás helyet a figyelés ablakban, az alsó ablaktáblán látható statisztika megjeleníti az egyes fogadók időzítését és sorait, valamint az átalakítási vonal számára a fogadó adatokhoz vezető átalakításokat.
 
@@ -56,7 +56,7 @@ Ha az adatfolyamot a Sparkban hajtja végre, Azure Data Factory meghatározza a 
   * Fürt indítási ideje: a JIT Spark számítási környezet beolvasásához szükséges idő az adatfolyam-végrehajtáshoz
   * Átalakítások száma: hány átalakítási lépést hajt végre a folyamaton belül
   
-![Adatfolyam-figyelés](media/data-flow/monitornew.png "Adatfolyam-figyelés – új")
+![Képernyőfelvétel: a frissítési lehetőség.](media/data-flow/monitornew.png "Adatfolyam-figyelés – új")
 
 ## <a name="total-sink-processing-time-vs-transformation-processing-time"></a>Teljes fogadó feldolgozási idő és átalakítás feldolgozási ideje
 
@@ -85,6 +85,6 @@ Amikor kijelöl egy fogadó transzformációs ikont a térképen, a jobb oldalon
 
 Ez az ikon azt jelenti, hogy az átalakítási adatgyűjtés már gyorsítótárazva van a fürtön, így az időzítések és a végrehajtás elérési útja figyelembe vette a következőt:
 
-![Adatfolyam-figyelés](media/data-flow/mon005.png "Adatfolyam-figyelés")
+![A képernyőképen a lemez ikon látható.](media/data-flow/mon005.png "Adatfolyam-figyelés")
 
 Az átalakításban a zöld kör ikonjai is megjelennek. Ezek a mosdók számát jelölik, amelyekben az adatforgalom beáramlik.

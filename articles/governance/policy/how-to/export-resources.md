@@ -1,15 +1,15 @@
 ---
 title: Azure Policy-erőforrások exportálása
 description: Megtudhatja, hogyan exportálhat Azure Policy erőforrásokat a GitHubra, például házirend-definíciók és szabályzat-hozzárendelések számára.
-ms.date: 09/30/2020
+ms.date: 10/29/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 691e0a026c5f4f1a0a68c744ee81b1da8da9e70b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c16ceed755cab3228b8f9e401f486a0629f3a60d
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777088"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025714"
 ---
 # <a name="export-azure-policy-resources"></a>Azure Policy-erőforrások exportálása
 
@@ -23,16 +23,16 @@ A házirend-definíció Azure Portalból való exportálásához kövesse az al�
 
 1. A Azure Policy lap bal oldalán válassza a **definíciók** lehetőséget.
 
-1. Használja a **definíciók exportálása** gombot, vagy válasszon egy házirend-definíció sorában található három pontot, majd válassza az **Exportálás definícióját**.
+1. Használja a **definíciók exportálása** gombot, vagy válasszon egy házirend-definíció sorában található három pontot, majd válassza az **Exportálás definícióját** .
 
 1. Válassza a **Bejelentkezés a GitHub** gombbal lehetőséget. Ha még nem hitelesítette a GitHubot, hogy engedélyezze Azure Policy az erőforrás exportálását, tekintse át a megnyíló új ablakban a [GitHub-műveletre](https://github.com/features/actions) vonatkozó igényeket, és válassza a **AzureGitHubActions engedélyezése** lehetőséget az exportálási folyamat folytatásához. Ha elkészült, az új ablak saját bezárása.
 
 1. Az **alapvető** beállítások lapon adja meg a következő beállításokat, majd válassza a **házirendek** lapot vagy a **Tovább: házirendek** gombot az oldal alján.
 
-   - **Adattár szűrője**: állítsa a saját _Tárházak_ lehetőségre, hogy csak az Ön tulajdonában lévő adattárakat, illetve az _összes tárházat_ lássuk, hogy a GitHub-művelethez való hozzáférése megtörténjen.
-   - **Adattár**: állítsa be azt a tárházat, amelybe exportálni szeretné a Azure Policy erőforrásokat.
-   - **Ág**: az ág beállítása a tárházban. Az alapértelmezetttől eltérő ág használata jó módszer a frissítések érvényesítésére, mielőtt a forráskódba összevonja őket.
-   - **Könyvtár**: a _legfelső szintű mappa_ , amelybe exportálni szeretné a Azure Policy erőforrásokat. A könyvtár alatti almappákat a rendszer az exportált erőforrások alapján hozza létre.
+   - **Adattár szűrője** : állítsa a saját _Tárházak_ lehetőségre, hogy csak az Ön tulajdonában lévő adattárakat, illetve az _összes tárházat_ lássuk, hogy a GitHub-művelethez való hozzáférése megtörténjen.
+   - **Adattár** : állítsa be azt a tárházat, amelybe exportálni szeretné a Azure Policy erőforrásokat.
+   - **Ág** : az ág beállítása a tárházban. Az alapértelmezetttől eltérő ág használata jó módszer a frissítések érvényesítésére, mielőtt a forráskódba összevonja őket.
+   - **Könyvtár** : a _legfelső szintű mappa_ , amelybe exportálni szeretné a Azure Policy erőforrásokat. A könyvtár alatti almappákat a rendszer az exportált erőforrások alapján hozza létre.
 
 1. A **házirendek** lapon állítsa be a keresési hatókört úgy, hogy kijelöli a három pontot, és kiválasztja a felügyeleti csoportok, előfizetések vagy erőforráscsoportok kombinációját.
    
@@ -47,7 +47,7 @@ A házirend-definíció Azure Portalból való exportálásához kövesse az al�
 
 1. Tekintse meg a GitHub-tárház, az ág és a _gyökér szintű mappát_ , és ellenőrizze, hogy a kiválasztott erőforrások mostantól a verziókövetés felé lettek-e exportálva.
 
-A Azure Policy-erőforrások a kiválasztott GitHub-adattár és a _gyökér szintű mappa_következő struktúrájába lesznek exportálva:
+A Azure Policy-erőforrások a kiválasztott GitHub-adattár és a _gyökér szintű mappa_ következő struktúrájába lesznek exportálva:
 
 ```text
 |
@@ -84,7 +84,7 @@ Azure Policy a definíciók, a kezdeményezések és a hozzárendelések ugyanú
 Íme egy példa arra, hogyan történik a JSON beszerzése egy _VirtualMachineStorage_ **nevű** szabályzat-definícióhoz:
 
 ```azurepowershell-interactive
-Get-AzPolicyDefinition -Name 'VirtualMachineStorage'
+Get-AzPolicyDefinition -Name 'VirtualMachineStorage' | ConvertTo-Json -Depth 10
 ```
 
 ## <a name="next-steps"></a>Következő lépések

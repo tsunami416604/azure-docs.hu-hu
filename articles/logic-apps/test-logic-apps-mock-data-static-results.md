@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
-ms.openlocfilehash: b71aae91f4a065b70537a300aa0bd7016edfd4b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 711d753203aeaeba50cea692053a37fcab2e9c7b
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74790278"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027703"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Logic Apps-alkalmazások tesztelése statikus eredmények beállításával
 
@@ -37,11 +37,11 @@ Ha például az Outlook 365 küldési műveletének statikus eredményeit állí
 
 1. Hajtsa végre az alábbi lépéseket azon a műveleten, amelynek statikus eredményeit szeretné beállítani: 
 
-   1. A művelet jobb felső sarkában válassza a három pontot (*..*.), és válassza a **statikus eredmény**lehetőséget, például:
+   1. A művelet jobb felső sarkában válassza a három pontot ( *..* .), és válassza a **statikus eredmény** lehetőséget, például:
 
       ![Válassza a "statikus eredmény" > "statikus eredmény engedélyezése" lehetőséget.](./media/test-logic-apps-mock-data-static-results/select-static-result.png)
 
-   1. Válassza a **statikus eredmény engedélyezése**lehetőséget. A kötelező (*) tulajdonságoknál adja meg a művelet válaszára visszaadni kívánt Mock kimeneti értékeket.
+   1. Válassza a **statikus eredmény engedélyezése** lehetőséget. A kötelező (*) tulajdonságoknál adja meg a művelet válaszára visszaadni kívánt Mock kimeneti értékeket.
 
       Például itt láthatók a HTTP-művelet kötelező tulajdonságai:
 
@@ -60,7 +60,7 @@ Ha például az Outlook 365 küldési műveletének statikus eredményeit állí
 
       ![Választható tulajdonságok kiválasztása](./media/test-logic-apps-mock-data-static-results/optional-properties.png)
 
-1. Ha készen áll a mentésre, válassza a **kész**lehetőséget.
+1. Ha készen áll a mentésre, válassza a **kész** lehetőséget.
 
    A művelet jobb felső sarkában a címsor most egy teszt főzőpohár ikont jelenít meg ( ![ statikus eredmények ikonja ](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png) ), amely azt jelzi, hogy engedélyezte a statikus eredményeket.
 
@@ -76,7 +76,7 @@ Ha a logikai alkalmazás rendelkezik egy korábbi futtatással, és a kimenetek 
 
 1. Ha még nem tette meg, a [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic apps Designerben.
 
-1. A logikai alkalmazás főmenüjében válassza az **Áttekintés**lehetőséget.
+1. A logikai alkalmazás főmenüjében válassza az **Áttekintés** lehetőséget.
 
 1. A futtatási **Előzmények** szakaszban válassza ki a kívánt logikai alkalmazást.
 
@@ -110,15 +110,15 @@ Ha a logikai alkalmazás rendelkezik egy korábbi futtatással, és a kimenetek 
 
 A logikai alkalmazás futtatási előzményei azonosítják azokat a futtatásokat, amelyekben a műveletek statikus eredményeket használnak. A futtatások megkereséséhez kövesse az alábbi lépéseket:
 
-1. A logikai alkalmazás főmenüjében válassza az **Áttekintés**lehetőséget. 
+1. A logikai alkalmazás főmenüjében válassza az **Áttekintés** lehetőséget. 
 
-1. A jobb oldali ablaktábla **futtatási előzmények**területén keresse meg a **statikus eredmények** oszlopot. 
+1. A jobb oldali ablaktábla **futtatási előzmények** területén keresse meg a **statikus eredmények** oszlopot. 
 
-   Minden olyan Futtatás, amely az eredménnyel rendelkező műveleteket tartalmazza, a **statikus eredmények** oszlop **engedélyezve**értékre van állítva, például:
+   Minden olyan Futtatás, amely az eredménnyel rendelkező műveleteket tartalmazza, a **statikus eredmények** oszlop **engedélyezve** értékre van állítva, például:
 
    ![Futtatási előzmények – statikus eredmények oszlop](./media/test-logic-apps-mock-data-static-results/run-history.png)
 
-1. A statikus eredményeket használó műveletek megtekintéséhez válassza ki azt a futtatást, ahol a **statikus eredmények** oszlop **engedélyezve**értékre van állítva.
+1. A statikus eredményeket használó műveletek megtekintéséhez válassza ki azt a futtatást, ahol a **statikus eredmények** oszlop **engedélyezve** értékre van állítva.
 
    A statikus eredményeket használó műveletek a teszt főzőpohár ( ![ statikus eredmények ikonja ](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png) ) ikont jelenítenek meg, például:
 
@@ -130,16 +130,16 @@ A statikus eredmények kikapcsolása nem dobja el az utolsó beállítás érté
 
 1. Keresse meg azt a műveletet, ahol le szeretné tiltani a statikus kimeneteket. A művelet jobb felső sarkában válassza a teszt főzőpohár ikont ( ![ statikus eredmények ikonja ](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png) ).
 
-   ![Statikus eredmények letiltása](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
+   ![A képernyőképen egy H T T P művelet látható, ahol kiválaszthatja a teszt főzőpohár ikonját.](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
 
-1. Válassza a **statikus eredmény letiltása**lehetőséget  >  **Done**.
+1. Válassza a **statikus eredmény letiltása** lehetőséget  >  **Done** .
 
-   ![Statikus eredmények letiltása](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
+   ![A képernyőfelvételen a statikus eredmény letiltása lehetőség látható.](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 
 ## <a name="reference"></a>Referencia
 
 További információ erről a beállításról a mögöttes munkafolyamat-definíciókban: [statikus eredmények – séma-hivatkozás a munkafolyamat-definíciós nyelvhez](../logic-apps/logic-apps-workflow-definition-language.md#static-results) és [runtimeConfiguration. staticResult – futásidejű konfigurációs beállítások](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-configuration-settings)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Azure Logic apps](../logic-apps/logic-apps-overview.md)

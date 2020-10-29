@@ -4,12 +4,12 @@ description: Az Azure-felhőben Azure Container Registry parancsokkal gyorsan k�
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 36921900f64d458f1f2591897e32c98f6d22a550
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4ea3f1bb86bcf3f6583cc438b2a27429f5b69d14
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91538207"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027686"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Gyors útmutató: tároló-rendszerkép létrehozása és futtatása Azure Container Registry feladatokkal
 
@@ -17,7 +17,7 @@ Ebben a rövid útmutatóban [Azure Container Registry feladatok][container-regi
 
 Ebből a rövid [útmutatóból](container-registry-tutorial-quick-task.md)MEGISMERHETI az ACR-feladatok fejlettebb funkcióit az oktatóanyagok használatával. Az ACR-feladatok a programkódok véglegesítve vagy az alapképek frissítései alapján automatizálják a képbuildeket, vagy több tárolót tesztelnek párhuzamosan más forgatókönyvek között. 
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot][azure-account], mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot][azure-account].
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -46,10 +46,10 @@ Ez a példa egy *alapszintű* beállításjegyzéket hoz létre, amely egy költ
 
 ## <a name="build-and-push-image-from-a-dockerfile"></a>Rendszerkép létrehozása és leküldése egy Docker
 
-Most a Azure Container Registry használatával hozzon létre és küldjön le egy rendszerképet. Először hozzon létre egy helyi munkakönyvtárat, majd hozzon létre egy *Docker* nevű Docker az egy sorral: `FROM hello-world` . Ez egy egyszerű példa arra, hogy Linux-tárolót hozzon létre a `hello-world` rendszerképből a Docker hub-ban. Létrehozhat saját standard szintű Docker, és képeket készíthet más platformokhoz is. Ha bash-rendszerhéjon dolgozik, hozza létre a Docker a következő paranccsal:
+Most a Azure Container Registry használatával hozzon létre és küldjön le egy rendszerképet. Először hozzon létre egy helyi munkakönyvtárat, majd hozzon létre egy *Docker* nevű Docker az egy sorral: `FROM mcr.microsoft.com/hello-world` . Ez egy egyszerű példa arra, hogy Linux-tárolót hozzon létre a `hello-world` Microsoft Container Registryban üzemeltetett rendszerképből. Létrehozhat saját standard szintű Docker, és képeket készíthet más platformokhoz is. Ha bash-rendszerhéjon dolgozik, hozza létre a Docker a következő paranccsal:
 
 ```bash
-echo FROM hello-world > Dockerfile
+echo FROM mcr.microsoft.com/hello-world > Dockerfile
 ```
 
 Futtassa az az [ACR Build][az-acr-build] parancsot, amely létrehozza a rendszerképet, és a rendszerkép sikeres létrehozása után leküldi a beállításjegyzékbe. A következő példa létrehozza és leküldi a `sample/hello-world:v1` rendszerképet. A `.` parancs végén adja meg a Docker helyét, ebben az esetben az aktuális könyvtárat.
@@ -78,8 +78,8 @@ Waiting for agent...
 2019/03/18 21:57:00 Successfully obtained source code and scanned for dependencies
 2019/03/18 21:57:00 Launching container with name: build
 Sending build context to Docker daemon  13.82kB
-Step 1/1 : FROM hello-world
-latest: Pulling from library/hello-world
+Step 1/1 : FROM mcr.microsoft.com/hello-world
+latest: Pulling from hello-world
 Digest: sha256:2557e3c07ed1e38f26e389462d03ed943586fxxxx21577a99efb77324b0fe535
 Successfully built fce289e99eb9
 Successfully tagged mycontainerregistry008.azurecr.io/sample/hello-world:v1
@@ -170,7 +170,7 @@ For more examples and ideas, visit:
 Run ID: cab was successful after 6s
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha már nincs rá szükség, az az [Group delete][az-group-delete] paranccsal eltávolítható az erőforráscsoport, a tároló-beállításjegyzék és az ott tárolt tároló-lemezképek.
 
@@ -178,7 +178,7 @@ Ha már nincs rá szükség, az az [Group delete][az-group-delete] paranccsal el
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban az ACR-feladatok funkcióit használta a Docker-tárolói rendszerképek gyors létrehozására, leküldésére és futtatására az Azure-ban, helyi Docker-telepítés nélkül. Folytassa a Azure Container Registry feladatok oktatóanyagával, amelyből megtudhatja, hogyan használhatja az ACR-feladatokat a rendszerkép-buildek és a frissítések automatizálására.
 

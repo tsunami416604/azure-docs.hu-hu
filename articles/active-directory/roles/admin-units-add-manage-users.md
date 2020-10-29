@@ -14,51 +14,60 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a68295594b0153a7d062ae3dac34e6dcba5b04f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c877878fe25d4c6c8904840c3c3350fbe2acf7b5
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376137"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026666"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Felhasználók hozzáadása és kezelése egy felügyeleti egységben Azure Active Directory
 
-A Azure Active Directory (Azure AD) szolgáltatásban hozzáadhat felhasználókat egy felügyeleti egységhez (AU) az irányítás részletesebb felügyeleti hatóköréhez.
+A Azure Active Directory (Azure AD) szolgáltatásban hozzáadhat felhasználókat egy felügyeleti egységhez a vezérlés részletesebb felügyeleti hatóköre érdekében.
 
-A PowerShell és a Microsoft Graph felügyeleti egység felügyeletéhez való előkészítésének lépéseiért lásd: első [lépések](admin-units-manage.md#get-started).
+A PowerShell és a Microsoft Graph használatának előkészítése a felügyeleti egység felügyeletéhez: első [lépések](admin-units-manage.md#get-started).
 
-## <a name="add-users-to-an-au"></a>Felhasználók hozzáadása AU-hoz
+## <a name="add-users-to-an-administrative-unit"></a>Felhasználók hozzáadása egy felügyeleti egységhez
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-A felhasználókat felügyeleti egységekhez egyenként vagy tömeges műveletekben rendelheti hozzá.
+A felhasználókat a felügyeleti egységekhez egyenként vagy tömeges műveletként is hozzárendelheti.
 
-- Egyéni hozzárendelés felhasználói profilból
-
-   1. Jelentkezzen be az [Azure ad felügyeleti központba](https://portal.azure.com) a Kiemelt szerepkörű rendszergazdai engedélyekkel.
-   1. Válassza a **felhasználók** lehetőséget, majd válassza ki a rendszergazda egységhez hozzárendelendő felhasználót a felhasználó profiljának megnyitásához.
-   1. Válassza a **felügyeleti egységek**lehetőséget. A felhasználó hozzárendelhető egy vagy több felügyeleti egységhez, ha a **hozzárendelés a felügyeleti egységhez** lehetőséget választja, és kiválasztja azokat a felügyeleti egységeket, amelyekhez a felhasználót hozzá szeretné rendelni.
-
-       ![Válassza a Hozzáadás lehetőséget, majd adja meg a felügyeleti egység nevét.](./media/admin-units-add-manage-users/assign-users-individually.png)
-
-- Egyéni hozzárendelés egy felügyeleti egységből
+- Egyéni felhasználók társítása felhasználói profilból:
 
    1. Jelentkezzen be az [Azure ad felügyeleti központba](https://portal.azure.com) a Kiemelt szerepkörű rendszergazdai engedélyekkel.
-   1. Válassza a **felügyeleti egységek** lehetőséget, majd válassza ki azt a felügyeleti egységet, amelyben a felhasználókat hozzá szeretné rendelni.
-   1. Válassza a **minden felhasználó** lehetőséget, majd válassza a **tag hozzáadása** lehetőséget, ha ki szeretne választani egy vagy több felhasználót, amelyet a felügyeleti egységhez szeretne rendelni a **tag hozzáadása** panelen.
 
-        ![Válasszon ki egy felügyeleti egységet, majd válassza a tag hozzáadása elemet.](./media/admin-units-add-manage-users/assign-to-admin-unit.png)
+   1. Válassza a **felhasználók** lehetőséget, majd a felhasználó profiljának megnyitásához válassza ki a felügyeleti egységhez hozzárendelendő felhasználót.
+   
+   1. Válassza a **felügyeleti egységek** lehetőséget. 
+   
+   1. Ha a felhasználót egy vagy több felügyeleti egységhez szeretné rendelni, válassza a **hozzárendelés felügyeleti egységhez** lehetőséget, majd a jobb oldali ablaktáblán válassza ki azokat a felügyeleti egységeket, amelyekhez hozzá szeretné rendelni a felhasználót.
 
-- Tömeges hozzárendelés
+       ![Képernyőkép a "felügyeleti egységekről" panelről, amely a felhasználót egy felügyeleti egységhez rendeli hozzá.](./media/admin-units-add-manage-users/assign-users-individually.png)
+
+- Egyéni felhasználók társítása egy felügyeleti egységből:
 
    1. Jelentkezzen be az [Azure ad felügyeleti központba](https://portal.azure.com) a Kiemelt szerepkörű rendszergazdai engedélyekkel.
-   1. Válassza a **felügyeleti egységek**lehetőséget.
-   1. Válassza ki azt a felügyeleti egységet, ahová a felhasználókat hozzá szeretné adni.
-   1. Nyissa meg az **összes felhasználót**  >  **. csv-fájlból származó tagok hozzáadása elemet**. Ezután letöltheti a vesszővel tagolt értékeket tartalmazó (CSV) sablont, és szerkesztheti a fájlt. A formátum egyszerű, és az egyes sorokban hozzá kell adni egyetlen egyszerű felhasználónevet. Ha a fájl elkészült, mentse a fájlt egy megfelelő helyre, majd töltse fel a lépés részeként.
+   1. Válassza a **felügyeleti egységek** lehetőséget, majd válassza ki azt a felügyeleti egységet, amelyben a felhasználót hozzá szeretné rendelni.
+   1. Válassza a **minden felhasználó** lehetőséget, válassza a **tag hozzáadása** lehetőséget, majd a **tag hozzáadása** panelen válasszon ki egy vagy több olyan felhasználót, amelyet hozzá szeretne rendelni a felügyeleti egységhez.
 
-    ![felhasználók tömeges kiosztása egy felügyeleti egységhez](./media/admin-units-add-manage-users/bulk-assign-to-admin-unit.png)
+        ![Képernyőkép a "felhasználók" panelről, amely a felhasználó felügyeleti egységhez való hozzárendelésére használható.](./media/admin-units-add-manage-users/assign-to-admin-unit.png)
 
-### <a name="powershell"></a>PowerShell
+- Felhasználók kiosztása tömeges műveletként:
+
+   1. Jelentkezzen be az [Azure ad felügyeleti központba](https://portal.azure.com) a Kiemelt szerepkörű rendszergazdai engedélyekkel.
+
+   1. Válassza a **felügyeleti egységek** lehetőséget.
+
+   1. Válassza ki azt a felügyeleti egységet, amelyhez felhasználókat szeretne felvenni.
+
+   1. Válassza a **felhasználók**  >  **tömeges tevékenységek**  >  **tömeges Hozzáadás tagok** elemet. Ezután letöltheti a vesszővel tagolt értékeket tartalmazó (CSV) sablont, és szerkesztheti a fájlt. A formátum egyszerű, és az egyes sorokban hozzá kell adni egyetlen egyszerű felhasználónevet. Miután a fájl elkészült, mentse azt egy megfelelő helyre, majd töltse fel a lépés részeként.
+
+      ![Képernyőfelvétel a "felhasználók" panelről, amely a felhasználókat egy felügyeleti egységhez tömeges műveletként rendeli hozzá.](./media/admin-units-add-manage-users/bulk-assign-to-admin-unit.png)
+
+### <a name="use-powershell"></a>A PowerShell használata
+
+A PowerShellben a `Add-AzureADAdministrativeUnitMember` következő példában szereplő parancsmag használatával adja hozzá a felhasználót a felügyeleti egységhez. Annak a felügyeleti egységnek az azonosítója, amelyhez hozzá szeretné adni a felhasználót és a hozzáadni kívánt felhasználó objektumazonosítóát argumentumként. Módosítsa a Kiemelt szakaszt az adott környezethez szükséges módon.
 
 ```powershell
 $administrativeunitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
@@ -66,9 +75,10 @@ $UserObj = Get-AzureADUser -Filter "UserPrincipalName eq 'billjohn@fabidentity.o
 Add-AzureADMSAdministrativeUnitMember -Id $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
 ```
 
-A fenti példában a parancsmag Add-AzureADAdministrativeUnitMember a felhasználó a felügyeleti egységhez való hozzáadására szolgál. Annak a felügyeleti egységnek az azonosítója, amelyhez a felhasználót hozzá kívánja adni, valamint a hozzáadni kívánt felhasználó objektumazonosító argumentumként. A Kiemelt szakasz szükség szerint módosítható az adott környezetben.
 
-### <a name="microsoft-graph"></a>Microsoft Graph
+### <a name="use-microsoft-graph"></a>Microsoft Graph használata
+
+Cserélje le a helyőrzőt a tesztelési adatokra, és futtassa a következő parancsot:
 
 ```http
 Http request
@@ -87,66 +97,87 @@ Példa:
 }
 ```
 
-## <a name="list-administrative-units-for-a-user"></a>Felhasználók felügyeleti egységeinek listázása
+## <a name="view-a-list-of-administrative-units-for-a-user"></a>A felhasználó felügyeleti egységeinek listájának megtekintése
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-A Azure Portal a következőket teheti meg a felhasználó profiljának megnyitásával:
+A Azure Portal a következő módon nyithatja meg a felhasználó profilját:
 
-1. **Azure ad**-  >  **felhasználók**megnyitása.
+1. Nyissa meg az **Azure ad** -t, majd válassza a **felhasználók** lehetőséget.
 
-1. Válassza ki a felhasználót a felhasználó profiljának megnyitásához.
+1. Válassza ki azt a felhasználót, akinek a profilját meg szeretné tekinteni.
 
-1. Válassza ki a **felügyeleti egységek** elemet azon felügyeleti egységek listájának megtekintéséhez, amelyekben a felhasználó hozzá van rendelve.
+1. Válassza ki a **felügyeleti egységeket** azon felügyeleti egységek listájának megjelenítéséhez, amelyekhez a felhasználó hozzá lett rendelve.
 
-   ![Felhasználó felügyeleti egységének listázása](./media/admin-units-add-manage-users/list-user-admin-units.png)
+   ![Képernyőfelvétel azon felügyeleti egységekről, amelyekhez a felhasználó hozzá van rendelve.](./media/admin-units-add-manage-users/list-user-admin-units.png)
 
-### <a name="powershell"></a>PowerShell
+### <a name="use-powershell"></a>A PowerShell használata
+
+Futtassa az alábbi parancsot:
 
 ```powershell
 Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -Id $_.ObjectId | where {$_.RefObjectId -eq $userObjId} }
 ```
-Megjegyzés: alapértelmezés szerint a Get-AzureADAdministrativeUnitMember csak 100 tagot ad vissza, a "-All $true" lehetőséggel további tagokat kérhet le.
+> [!NOTE]
+> Alapértelmezés szerint a `Get-AzureADAdministrativeUnitMember` csak a felügyeleti egység 100 tagjait adja vissza. További tagok beolvasásához hozzáadhatja a következőt: `"-All $true"` .
 
-### <a name="microsoft-graph"></a>Microsoft Graph
+### <a name="use-microsoft-graph"></a>Microsoft Graph használata
+
+Cserélje le a helyőrzőt a tesztelési adatokra, és futtassa a következő parancsot:
 
 ```http
 https://graph.microsoft.com/v1.0/users/{id}/memberOf/$/Microsoft.Graph.AdministrativeUnit
 ```
 
-## <a name="remove-a-single-user-from-an-au"></a>Egyetlen felhasználó eltávolítása egy AU-ból
+## <a name="remove-a-single-user-from-an-administrative-unit"></a>Egyetlen felhasználó eltávolítása egy felügyeleti egységből
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-A felhasználókat kétféleképpen lehet eltávolítani egy felügyeleti egységből. A Azure Portal megnyithatja a felhasználó profilját az **Azure ad**-  >  **felhasználók**lehetőséggel. Válassza ki a felhasználót a felhasználó profiljának megnyitásához. Válassza ki azt a felügyeleti egységet, amelyről el szeretné távolítani a felhasználót, majd válassza az **Eltávolítás a felügyeleti egységből**lehetőséget.
+A felhasználókat kétféleképpen távolíthatja el egy felügyeleti egységből: 
 
-![Felhasználó eltávolítása felügyeleti egységből a felhasználói profilból](./media/admin-units-add-manage-users/user-remove-admin-units.png)
+* A Azure Portal nyissa meg az **Azure ad** -t, majd válassza a **felhasználók** lehetőséget. 
+  1. Válassza ki a felhasználót a felhasználó profiljának megnyitásához. 
+  1. Válassza ki azt a felügyeleti egységet, amelyből el szeretné távolítani a felhasználót, majd válassza az **Eltávolítás a felügyeleti egységből** lehetőséget.
 
-Egy felhasználót az **Azure ad**  >  **felügyeleti egységekben** is eltávolíthat, ha kiválasztja azt a felügyeleti egységet, amelyből el szeretné távolítani a felhasználókat. Válassza ki a felhasználót, és válassza a **tag eltávolítása**lehetőséget.
+     ![Képernyőfelvétel: a felhasználó eltávolítása egy felügyeleti egységből a felhasználó profil paneljéről.](./media/admin-units-add-manage-users/user-remove-admin-units.png)
+
+* A Azure Portal nyissa meg az **Azure ad** -t, majd válassza a **felügyeleti egységek** elemet.
+  1. Válassza ki azt a felügyeleti egységet, amelyből el szeretné távolítani a felhasználót. 
+  1. Válassza ki a felhasználót, majd válassza a **tag eltávolítása** lehetőséget.
   
-![Felhasználó eltávolítása a felügyeleti egység szintjén](./media/admin-units-add-manage-users/admin-units-remove-user.png)
+     ![A felhasználó felügyeleti egység szintjén való eltávolítását bemutató képernyőkép.](./media/admin-units-add-manage-users/admin-units-remove-user.png)
 
-### <a name="powershell"></a>PowerShell
+### <a name="use-powershell"></a>A PowerShell használata
+
+Futtassa az alábbi parancsot:
 
 ```powershell
 Remove-AzureADMSAdministrativeUnitMember -Id $auId -MemberId $memberUserObjId
 ```
 
-### <a name="microsoft-graph"></a>Microsoft Graph
+### <a name="use-microsoft-graph"></a>Microsoft Graph használata
 
-   https://graph.microsoft.com/v1.0/directory/administrativeUnits/{adminunit-id}/members/{user-id}/$ref
+Cserélje le a helyőrzőket a tesztelési adatokkal, és futtassa a következő parancsot:
 
-## <a name="bulk-remove-more-than-one-user"></a>Egynél több felhasználó tömeges eltávolítása
+`https://graph.microsoft.com/v1.0/directory/administrativeUnits/{adminunit-id}/members/{user-id}/$ref`
 
-Nyissa meg az Azure AD > felügyeleti egységeket, és válassza ki azt a felügyeleti egységet, amelyből el szeretné távolítani a felhasználókat. Kattintson a tömeges eltávolítási tag elemre. Töltse le a CSV-sablont az eltávolítandó felhasználók listájának biztosításához.
+## <a name="remove-multiple-users-as-a-bulk-operation"></a>Több felhasználó eltávolítása tömeges műveletként
 
-Szerkessze a letöltött CSV-sablont a megfelelő felhasználói bejegyzésekkel. Ne távolítsa el a sablon első két sorát. Minden sorban adjon hozzá egy egyszerű felhasználónevet.
+Ha több felhasználót szeretne eltávolítani egy felügyeleti egységből, tegye a következőket:
 
-![A CSV-fájl szerkesztése a tömeges felhasználói eltávolításhoz a felügyeleti egységekből](./media/admin-units-add-manage-users/bulk-user-entries.png)
+1. A Azure Portal nyissa meg az **Azure ad** -t.
 
-Miután mentette a fájlban szereplő bejegyzéseket, töltse fel a fájlt, majd válassza a **Submit (Küldés**) lehetőséget.
+1. Válassza a **felügyeleti egységek** lehetőséget, majd válassza ki azt a felügyeleti egységet, amelyből el szeretné távolítani a felhasználókat. 
 
-![A tömeges feltöltési fájl elküldése](./media/admin-units-add-manage-users/bulk-user-remove.png)
+1. Válassza a **tömeges eltávolítás tagok** lehetőséget, majd töltse le a használni kívánt CSV-sablont az eltávolítandó felhasználók listázásához.
+
+   ![A "felhasználók" panel "tagok eltávolítása" hivatkozását bemutató képernyőkép.](./media/admin-units-add-manage-users/bulk-user-remove.png)
+
+1. Szerkessze a letöltött CSV-sablont a megfelelő felhasználói bejegyzésekkel. Ne távolítsa el a sablon első két sorát. Adjon hozzá egy egyszerű felhasználónevet (UPN) az egyes sorokban.
+
+   ![Képernyőkép egy szerkesztett CSV-fájlról, amely tömegesen távolítja el a felhasználókat egy felügyeleti egységből.](./media/admin-units-add-manage-users/bulk-user-entries.png)
+
+1. Mentse a módosításokat, töltse fel a fájlt, majd válassza a **Submit (Küldés** ) lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

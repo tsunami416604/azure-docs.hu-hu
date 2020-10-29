@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: f4bddf1746a9d680897428f1aa0afdb35d93e470
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: b8ef1c14089744defaf6de5b3cf9e72d281452b6
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631274"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027108"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -35,6 +35,10 @@ Kiválaszthat egy regionális fuvarozót és egy, a támogatott Exchange-szolgá
 ### <a name="how-much-does-expressroute-cost"></a>Mennyibe kerül a ExpressRoute?
 
 A díjszabással kapcsolatos információk [megtekintéséhez](https://azure.microsoft.com/pricing/details/expressroute/) .
+
+### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-this-bandwidth-allocated-for-ingress-and-egress-traffic-separately"></a>Ha fizetnem kell egy adott sávszélesség ExpressRoute, akkor a bejövő és a kimenő forgalomhoz külön-külön kell lefoglalni a sávszélességet?
+
+Igen, a ExpressRoute áramköri sávszélesség duplex. Ha például egy 200 Mbps ExpressRoute áramkört vásárol, a kimenő forgalomért 200 Mbps-t, a kimenő forgalmat pedig 200 Mbps-ra vásárolhatja meg.
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>Ha fizetnem kell egy adott sávszélesség ExpressRoute, akkor a hálózati szolgáltatótól vásárolt VPN-kapcsolatnak azonos sebességgel kell lennie?
 
@@ -96,7 +100,7 @@ Ha a ExpressRoute-áramkör engedélyezve van az Azure Microsoft-partneri kapcso
 
 * Tartalomkézbesítési hálózat (CDN)
 * Azure Front Door
-* [Windows virtuális asztal](https://azure.microsoft.com/services/virtual-desktop/)
+* [Windows Virtual Desktop](https://azure.microsoft.com/services/virtual-desktop/)
 * Multi-Factor Authentication kiszolgáló (örökölt)
 * Traffic Manager
 

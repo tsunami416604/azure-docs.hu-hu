@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: a706ced5c65b9de3cb3bfdb623d810bb1ea43623
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 879ea141a4621fac9e1774df64a63e9e56549012
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707982"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026955"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Gyakori kérdések a Microsoft kereskedelmi piactérről
 
@@ -20,7 +20,7 @@ Ez a cikk a kereskedelmi piactérsel kapcsolatos gyakori kérdésekre ad válasz
 
 ## <a name="general"></a>Általános kérdések
 
-### <a name="what-is-the-microsoft-commercial-marketplace"></a>Mi a Microsoft kereskedelmi piactér?
+### <a name="what-is-the-microsoft-commercial-marketplace"></a>Mit az a Microsoft kereskedelmi piactér?
 
 A kereskedelmi piactér a partnereink által készített megoldásokkal köti össze az üzleti és kormányzati szerveket. Partnereink az ajánlatokat a partner Centerben hozhatják létre és kezelhetik, és az ügyfelek a terméken belüli tapasztalatokkal, például a Microsoft AppSource, az Azure piactéren, a felhőalapú megoldás-szolgáltatói programban, valamint az értékesítési csapatokon keresztül vásárolhatnak és vásárolhatnak megoldásokat a közös értékesítés keretében.
 
@@ -58,10 +58,10 @@ Ha regisztrálni szeretne a kereskedelmi piactér-közzétevőre, lépjen a [par
 
 Az ügyfelek által a kereskedelmi Marketplace-ajánlat használatának módja az ajánlatok létrehozásának módjától függ.
 
-- Az Ön által automatikusan biztosított megoldásokért, akár fizetős, akár saját licenccel (BYOL), akár díjmentesen, javasoljuk, hogy az ügyfelek *most kapják meg*.
-- A tesztvezetés (bemutató) támogató ajánlatok az ügyfelet a *meghajtó tesztelésére*kérik. 
-- A kereskedelmi piactéren kívüli próbaverziót biztosító szolgáltatott szoftver (SaaS) ajánlat *ingyenes próbaverziót*biztosít.
-- Az egyszerű Listázás lehetővé teszi, hogy az ügyfél *kapcsolatba lépjen velem*.
+- Az Ön által automatikusan biztosított megoldásokért, akár fizetős, akár saját licenccel (BYOL), akár díjmentesen, javasoljuk, hogy az ügyfelek *most kapják meg* .
+- A tesztvezetés (bemutató) támogató ajánlatok az ügyfelet a *meghajtó tesztelésére* kérik. 
+- A kereskedelmi piactéren kívüli próbaverziót biztosító szolgáltatott szoftver (SaaS) ajánlat *ingyenes próbaverziót* biztosít.
+- Az egyszerű Listázás lehetővé teszi, hogy az ügyfél *kapcsolatba lépjen velem* .
 
 ### <a name="how-do-i-create-offers-for-the-commercial-marketplace"></a>Hogyan ajánlatokat hozhat létre a kereskedelmi piactéren?
 
@@ -99,10 +99,10 @@ Igen, a Azure Government piactér Azure Government régiókban érhető el, és 
 
 A partneri központ hozzáférését négy releváns szerepkör szabályozza.
 
-- *Kezelő*: engedélyeket biztosít a fiókpartner-felhasználók felügyeletéhez a címtárban, valamint ajánlatokat hozhat létre és frissíthet.
-- *Fejlesztő*: lehetővé teszi, hogy a felhasználó ajánlatokat hozzon létre és frissítsen.
-- *Pénzügyi közreműködő*: engedélyeket biztosít a kifizetési jelentések megtekintésére.
-- *Tulajdonos*: beállíthatja a kifizetési fiókot és az adózási profilt. Az a felhasználó, aki elfogadta a közzétevői szerződést, alapértelmezés szerint a tulajdonos lesz.
+- *Kezelő* : engedélyeket biztosít a fiókpartner-felhasználók felügyeletéhez a címtárban, valamint ajánlatokat hozhat létre és frissíthet.
+- *Fejlesztő* : lehetővé teszi, hogy a felhasználó ajánlatokat hozzon létre és frissítsen.
+- *Pénzügyi közreműködő* : engedélyeket biztosít a kifizetési jelentések megtekintésére.
+- *Tulajdonos* : beállíthatja a kifizetési fiókot és az adózási profilt. Az a felhasználó, aki elfogadta a közzétevői szerződést, alapértelmezés szerint a tulajdonos lesz.
 
 Azure Active Directory (Azure AD) *globális rendszergazdai* engedélyek szükségesek az új felhasználói fiókok létrehozásához vagy a vendég fiókjainak meghívásához az alapul szolgáló könyvtárban. A partner Center az Azure AD-t az Identity modelre alkalmazza, és a szervezet Azure AD-példányát gyakran az IT-vagy biztonsági csapatok felügyelik és ellenőrzik.
 
@@ -303,7 +303,7 @@ További információ: [a kifizetési fiók és az adózási űrlapok beállít�
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>A visszaadja és a kereskedelmi piactéren támogatott visszatérítéseket?
 
-A visszatérítések fogadásához az ügyfelek egy megadott időkereten belül törölhetik az előfizetéseket. Havi előfizetések esetén 24 óra, éves előfizetések esetén pedig 14 nap. Az olyan ajánlatok, amelyeknek a használata a megoldás alkalmazása után történik, nem jogosultak a visszatérítésre.
+A visszatérítések bizonyos feltételek és bizonyos költségek esetén az ügyfelek rendelkezésére állnak. Az ismétlődő díjak visszatérítésére vonatkozó kérelmeket a vásárlást vagy megújítást követően 24 órán belül meg kell kapni. Hasonlóképpen, a vásárlást és a megújítást követő 14 napon belül meg kell kapnia az ismétlődő díjak visszatérítésére vonatkozó kérelmeket. Ez a típusú visszatérítés nem vonatkozik a használatból eredő díjakra (a virtuális gépek ajánlatai vagy a mért számlázás alapján).
 
 ## <a name="resources"></a>További források
 
@@ -311,7 +311,7 @@ A visszatérítések fogadásához az ügyfelek egy megadott időkereten belül 
 
 Íme néhány erőforrás a kezdéshez:
 
-- [Mi a Microsoft kereskedelmi piactér?](overview.md)
+- [Mit az a Microsoft kereskedelmi piactér?](overview.md)
 - [Microsoft kereskedelmi piactér – partneri központ](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
 
 ### <a name="how-can-i-engage-with-microsoft-and-other-partners"></a>Hogyan vehetek részt a Microsoft és más partnerek között?
@@ -323,7 +323,7 @@ A következő erőforrásokat javasoljuk:
 
 ### <a name="where-can-i-learn-more-about-partner-center"></a>Hol tudhatok meg többet a partner Center szolgáltatásról?
 
-- [A partner Center dokumentációja](/partner-center/)
+- [Partnerközpont dokumentációja](/partner-center/)
 - [Üdvözöljük a kereskedelmi piactéren](index.yml)
 
 ### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>Hol tudhatok meg többet a Microsoft felügyeleti központról?

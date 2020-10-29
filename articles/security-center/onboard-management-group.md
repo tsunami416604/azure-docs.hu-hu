@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2020
 ms.author: memildin
-ms.openlocfilehash: ce0858f61ca1fe3b81c3d0c8a3c97954827def80
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 4ecd436b548c29c520a7538970d4d703cc8488d2
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950618"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027567"
 ---
 # <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>Security Center engedélyezése egy felügyeleti csoportban lévő összes előfizetésben
 
@@ -25,7 +25,7 @@ A Azure Policy használatával engedélyezheti a Azure Security Centert az ugyan
 
 Egy felügyeleti csoport és az összes előfizetése bevezetéséhez:
 
-1. A **biztonsági rendszergazdai** engedélyekkel rendelkező felhasználóként nyissa meg Azure Policy és keresse meg a definíció **engedélyezése Azure Security Center az előfizetésében**.
+1. A **biztonsági rendszergazdai** engedélyekkel rendelkező felhasználóként nyissa meg Azure Policy és keresse meg a definíció **engedélyezése Azure Security Center az előfizetésében** .
 
     :::image type="content" source="./media/security-center-get-started/enable-security-center-policy.png" alt-text="A Azure Policy definíciója engedélyezi a Azure Security Center az előfizetésen":::
 
@@ -43,7 +43,7 @@ Egy felügyeleti csoport és az összes előfizetése bevezetéséhez:
     A Szervizelési feladat ezután engedélyezi a nem megfelelő előfizetések Security Centerét ingyen.
 
 > [!IMPORTANT]
-> A házirend-definíció csak a **meglévő** előfizetések Security centerét teszi lehetővé. Az újonnan létrehozott előfizetések regisztrálásához az újonnan létrehozott előfizetések regisztrálásához nyissa meg a megfelelőség lapot, válassza ki a megfelelő nem megfelelő előfizetéseket, és hozzon létre egy szervizelési feladatot. Ismételje meg ezt a lépést, ha egy vagy több új előfizetéssel szeretne figyelni Security Center.
+> A házirend-definíció csak a **meglévő** előfizetések Security centerét teszi lehetővé. Az újonnan létrehozott előfizetések regisztrálásához nyissa meg a megfelelőség lapot, válassza ki a megfelelő nem megfelelő előfizetéseket, és hozzon létre egy szervizelési feladatot. Ismételje meg ezt a lépést, ha egy vagy több új előfizetéssel szeretne figyelni Security Center.
 
 ## <a name="optional-modifications"></a>Nem kötelező módosítások
 

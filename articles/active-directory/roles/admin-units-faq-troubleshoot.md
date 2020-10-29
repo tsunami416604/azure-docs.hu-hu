@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c92359c9bbdb985cd4b01c84911b561554fd7d2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 56bb9ab927c3383c49106a3a7b263ff8e137db9c
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376128"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026513"
 ---
 # <a name="azure-ad-administrative-units-troubleshooting-and-faq"></a>Azure AD felügyeleti egységek: Hibaelhárítás és gyakori kérdések
 
-A Azure Active Directory (Azure AD) részletesebb felügyeleti felügyeletéhez a felhasználókat hozzárendelheti egy Azure AD-szerepkörhöz olyan hatókörrel, amely egy vagy több felügyeleti egységre (AUs) korlátozódik. A gyakori feladatokhoz használható PowerShell-parancsfájlokat lásd: [a felügyeleti egységek használata](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true).
+A Azure Active Directory (Azure AD) részletesebb felügyeleti felügyeletéhez a felhasználókat hozzárendelheti egy Azure AD-szerepkörhöz olyan hatókörrel, amely egy vagy több felügyeleti egységre van korlátozva. A gyakori feladatokhoz használható PowerShell-parancsfájlokat lásd: [a felügyeleti egységek használata](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true).
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -31,27 +31,29 @@ A Azure Active Directory (Azure AD) részletesebb felügyeleti felügyeletéhez 
 
 **A:** Csak a *globális rendszergazda* vagy a *Kiemelt szerepkörű rendszergazda* hozhat létre felügyeleti egységet az Azure ad-ben. Győződjön meg arról, hogy a felügyeleti egységet létrehozó felhasználó hozzá van rendelve a *globális rendszergazda* vagy a *Kiemelt szerepkörű rendszergazda* szerepkörhöz.
 
-**K: hozzáadtam egy csoportot a felügyeleti egységhez. Miért még nem jelennek meg a csoporttagok?**
+**K: hozzáadtam egy csoportot egy felügyeleti egységhez. Miért még nem jelennek meg a csoporttagok?**
 
-**A:** Ha hozzáad egy csoportot a felügyeleti egységhez, az nem eredményezi a csoport összes tagjának hozzáadását. A felhasználókat közvetlenül a felügyeleti egységhez kell rendelni.
+**A:** Amikor csoportot ad hozzá egy felügyeleti egységhez, az nem eredményezi a csoport összes tagjának hozzáadását. A felhasználókat közvetlenül a felügyeleti egységhez kell rendelni.
 
 **K: most Hozzáadtam (vagy eltávolítottam) a felügyeleti egység egyik tagját. Miért nem jelenik meg a tag (vagy még nem jelenik meg) a felhasználói felületen?**
 
-**A:** Előfordulhat, hogy a felügyeleti egység egy vagy több tagja hozzáadásának vagy eltávolításának feldolgozása néhány percet igénybe vehet a **felügyeleti egységek** lapon. Azt is megteheti, hogy közvetlenül a kapcsolódó erőforrás tulajdonságait látja el, és megtekinti, hogy a művelet befejeződött-e. További információ a felhasználókról és csoportokról az AUs-ban: a [felhasználók felügyeleti egységeinek listázása](admin-units-add-manage-users.md) és a [csoportok felügyeleti egységeinek listázása](admin-units-add-manage-groups.md).
+**A:** Előfordulhat, hogy egy felügyeleti egység egy vagy több tagjának hozzáadása vagy eltávolítása eltarthat néhány percig a **felügyeleti egységek** ablaktáblán. Azt is megteheti, hogy közvetlenül a kapcsolódó erőforrás tulajdonságait látja el, és megtekinti, hogy a művelet befejeződött-e. A felügyeleti egységekben lévő felhasználókról és csoportokról további információt a [felügyeleti egységek listájának megtekintése a felhasználók](admin-units-add-manage-users.md) számára című témakörben talál, és [megtekintheti egy csoport felügyeleti egységeinek listáját](admin-units-add-manage-groups.md).
 
 **K: delegált jelszavas rendszergazda vagyok egy felügyeleti egységen. Miért nem lehet alaphelyzetbe állítani egy adott felhasználó jelszavát?**
 
-**A:** Rendszergazdai egység rendszergazdájaként csak a felügyeleti egységhez rendelt felhasználók jelszavait állíthatja alaphelyzetbe. Győződjön meg arról, hogy a jelszó-visszaállítást elmulasztó felhasználó tartozik ahhoz a felügyeleti egységhez, amelyhez hozzá van rendelve. Ha a felhasználó ugyanahhoz a felügyeleti egységhez tartozik, de továbbra sem tudja visszaállítani a jelszavát, ellenőrizze a felhasználóhoz rendelt szerepköröket. 
+**A:** Rendszergazdai egység rendszergazdájaként csak a felügyeleti egységhez rendelt felhasználók jelszavait állíthatja alaphelyzetbe. Győződjön meg arról, hogy a jelszó-visszaállítást elmulasztó felhasználó tartozik ahhoz a felügyeleti egységhez, amelyhez hozzá van rendelve. Ha a felhasználó ugyanahhoz a felügyeleti egységhez tartozik, de továbbra sem tudja alaphelyzetbe állítani a felhasználó jelszavát, ellenőrizze a felhasználóhoz rendelt szerepköröket. 
 
 A Jogosultságszint-emelés megszerzésének megakadályozása érdekében a felügyeleti egység hatókörű rendszergazdája nem állíthatja alaphelyzetbe egy olyan felhasználó jelszavát, aki egy, a szervezetre kiterjedő hatókörrel rendelkező szerepkörhöz van rendelve.
 
 **K: Miért szükségesek a felügyeleti egységek? Nem sikerült használni a biztonsági csoportokat a hatókör definiálásának módjaként?**
 
-**A:** A biztonsági csoportok meglévő célra és engedélyezési modellel rendelkeznek. A *felhasználói rendszergazdák*például kezelhetik az Azure ad-szervezet összes biztonsági csoportjának tagságát. A szerepkör csoportok használatával kezelheti az olyan alkalmazásokhoz való hozzáférést, mint a Salesforce. A *felhasználói rendszergazda* nem tudja kezelni magát a delegálási modellt, ami azt eredményezheti, hogy a biztonsági csoportok kiterjeszthetők az "erőforrás-csoportosítás" forgatókönyvek támogatására. A felügyeleti egységek (például a Windows Server Active Directory szervezeti egységei) célja, hogy lehetővé teszik a címtár-objektumok széles körének felügyeletét. Maguk a biztonsági csoportok az erőforrás-hatókörök tagjai lehetnek. Biztonsági csoportok használata a rendszergazda által kezelhető biztonsági csoportok meghatározásához zavaró lehet.
+**A:** A biztonsági csoportok meglévő célra és engedélyezési modellel rendelkeznek. A *felhasználói rendszergazdák* például kezelhetik az Azure ad-szervezet összes biztonsági csoportjának tagságát. A szerepkör csoportok használatával kezelheti az olyan alkalmazásokhoz való hozzáférést, mint a Salesforce. A *felhasználói rendszergazda* nem tudja kezelni magát a delegálási modellt, ami azt eredményezheti, hogy a biztonsági csoportok kiterjeszthetők az "erőforrás-csoportosítás" forgatókönyvek támogatására. 
+
+A felügyeleti egységek (például a Windows Server Active Directory szervezeti egységei) célja, hogy lehetővé teszik a címtár-objektumok széles körének felügyeletét. Maguk a biztonsági csoportok az erőforrás-hatókörök tagjai lehetnek. Biztonsági csoportok használata a rendszergazda által kezelhető biztonsági csoportok meghatározásához zavaró lehet.
 
 **K: mit jelent a csoport hozzáadása egy felügyeleti egységhez?**
 
-**A:** Ha hozzáad egy csoportot egy felügyeleti egységhez, a csoport maga az adott felügyeleti egységre is kiterjedő *felhasználói rendszergazda* felügyeleti hatókörbe kerül. A felügyeleti egység felhasználói rendszergazdái a csoport nevét és tagságát is kezelhetik. Nem biztosítja a *rendszergazda* számára a felügyeleti egység engedélyeit a csoport felhasználóinak kezeléséhez (például a jelszavuk alaphelyzetbe állításához). Ahhoz, hogy *a felhasználók felügyelhetik a felhasználókat* , a felhasználóknak közvetlenül a felügyeleti egység tagjainak kell lenniük.
+**A:** Ha hozzáad egy csoportot egy felügyeleti egységhez, a csoport maga az adott felügyeleti egységre is kiterjedő *felhasználói rendszergazda* felügyeleti hatókörbe kerül. A felügyeleti egység felhasználói rendszergazdái a csoport nevét és tagságát is kezelhetik. Nem biztosítja a *felhasználónak* a csoport felhasználóinak felügyeletére vonatkozó engedélyeit (például a jelszavuk alaphelyzetbe állításához). Ahhoz, hogy *a felhasználók felügyelhetik a felhasználókat* , a felhasználóknak közvetlenül a felügyeleti egység tagjainak kell lenniük.
 
 **K: lehet, hogy egy erőforrás (felhasználó vagy csoport) egynél több felügyeleti egység tagja?**
 

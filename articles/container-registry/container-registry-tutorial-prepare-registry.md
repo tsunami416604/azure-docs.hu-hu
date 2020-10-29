@@ -4,12 +4,12 @@ description: Létrehozhat egy Azure Container Registryt, georeplikációt konfig
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: c473e3cd891214c2c5789bd43b0d293cb25d660a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 804f07762bef596f4631fbc5f694ecc6b308bfad
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739486"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027227"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Oktatóanyag: Georeplikált Azure Container Registry előkészítése
 
@@ -42,7 +42,7 @@ Ebben az oktatóanyagban szüksége lesz egy Azure Container registryre a prémi
 > [!TIP]
 > Ha korábban létrehozott egy beállításjegyzéket, és frissítenie kell, tekintse meg a [rétegek módosítása](container-registry-skus.md#changing-tiers)című témakört. 
 
-Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 Válassza **az erőforrás létrehozása**  >  **tárolók**  >  **Azure Container Registry** elemet.
 
@@ -123,19 +123,19 @@ Ha a `git` nincs telepítve, közvetlenül a GitHubról [töltheti le a ZIP-arch
 
 ## <a name="update-dockerfile"></a>A Dockerfile frissítése
 
-A mintában szereplő Dockerfile bemutatja a tároló összeállításának menetét. Egy hivatalos [aspnetcore][dockerhub-aspnetcore]-rendszerképből indul ki, a tárolóba másolja az alkalmazásfájlokat, telepíti a függőségeket, összeállítja a hivatalos [aspnetcore-build][dockerhub-aspnetcore-build]-rendszerképet, és végül egy optimalizált aspnetcore-rendszerképet hoz létre.
+A mintában szereplő Dockerfile bemutatja a tároló összeállításának menetét. Egy hivatalos ASP.NET Core Runtime-rendszerképből indul, átmásolja az alkalmazás fájljait a tárolóba, telepíti a függőségeket, lefordítja a kimenetet a hivatalos .NET Core SDK képpel, végül pedig egy optimalizált aspnetcore-rendszerképet hoz létre.
 
 A [Dockerfile][dockerfile] a klónozott forrásban a következő helyen található: `./AcrHelloworld/Dockerfile`.
 
 ```Dockerfile
-FROM microsoft/aspnetcore:2.0 AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS base
 # Update <acrName> with the name of your registry
 # Example: uniqueregistryname.azurecr.io
 ENV DOCKER_REGISTRY <acrName>.azurecr.io
 WORKDIR /app
 EXPOSE 80
 
-FROM microsoft/aspnetcore-build:2.0 AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
 WORKDIR /src
 COPY *.sln ./
 COPY AcrHelloworld/AcrHelloworld.csproj AcrHelloworld/
@@ -187,8 +187,8 @@ Több kimeneti sor jelenik meg a Docker-rendszerkép összeállításakor (itt c
 
 ```bash
 Sending build context to Docker daemon  523.8kB
-Step 1/18 : FROM microsoft/aspnetcore:2.0 AS base
-2.0: Pulling from microsoft/aspnetcore
+Step 1/18 : FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS base
+2.2: Pulling from mcr.microsoft.com/dotnet/core/aspnet
 3e17c6eae66c: Pulling fs layer
 
 [...]
@@ -245,6 +245,4 @@ Folytassa a következő oktatóanyaggal, amely üzembe helyezi a tárolót több
 <!-- LINKS - External -->
 [acr-helloworld-zip]: https://github.com/Azure-Samples/acr-helloworld/archive/master.zip
 [aspnet-core]: https://dot.net
-[dockerhub-aspnetcore]: https://hub.docker.com/r/microsoft/aspnetcore/
-[dockerhub-aspnetcore-build]: https://store.docker.com/community/images/microsoft/aspnetcore-build
 [dockerfile]: https://github.com/Azure-Samples/acr-helloworld/blob/master/AcrHelloworld/Dockerfile

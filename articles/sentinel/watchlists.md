@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: 25252b73f25a96f85d5e2cf1d68b76f9eaa3ca75
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1267f040b13184f50c9d98fe0fb13fb24db0f4f7
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979583"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026836"
 ---
 # <a name="use-azure-sentinel-watchlists"></a>Az Azure Sentinel lists használata
 
@@ -27,28 +27,31 @@ A listák használatának gyakori forgatókönyvei a következők:
 
 - **Üzleti adathalmazok importálása** listára. Például importálhatja a felhasználói listát a rendszerjogosultságú rendszerhozzáféréssel vagy a leállított alkalmazottakkal, majd a listával létrehozhat engedélyezési és letiltási listát, amelyekkel észlelhetők vagy letilthatók a felhasználók a hálózatra.
 
-- A **riasztások fáradtságának csökkentése**. Hozzon létre engedélyezési listát, amely letiltja a riasztásokat a felhasználók egy csoportjából, például olyan meghatalmazott IP-címekről származó felhasználókat, amelyek általában a riasztást kiváltó feladatokat látnak el, és megakadályozzák, hogy a jóindulatú események riasztások legyenek.
+- A **riasztások fáradtságának csökkentése** . Hozzon létre engedélyezési listát, amely letiltja a riasztásokat a felhasználók egy csoportjából, például olyan meghatalmazott IP-címekről származó felhasználókat, amelyek általában a riasztást kiváltó feladatokat látnak el, és megakadályozzák, hogy a jóindulatú események riasztások legyenek.
 
-- **Az események bővítése**. A listák használatával gazdagíthatja az események adatait a külső adatforrásokból származtatott név-érték kombinációkkal.
+- **Az események bővítése** . A listák használatával gazdagíthatja az események adatait a külső adatforrásokból származtatott név-érték kombinációkkal.
 
 ## <a name="create-a-new-watchlist"></a>Új listának létrehozása
 
-1. A Azure Portal navigáljon az **Azure Sentinel**  >  **Configuration**  >  **listához** , majd válassza az **új hozzáadása**elemet.
+1. A Azure Portal navigáljon az **Azure Sentinel**  >  **Configuration**  >  **listához** , majd válassza az **új hozzáadása** elemet.
 
     > [!div class="mx-imgBorder"]
     > ![új List](./media/watchlists/sentinel-watchlist-new.png)
 
-1. Az **általános** lapon adja meg a listához a nevet, a leírást és az aliast, majd kattintson a **tovább**gombra.
+1. Az **általános** lapon adja meg a listához a nevet, a leírást és az aliast, majd kattintson a **tovább** gombra.
 
     > [!div class="mx-imgBorder"]
     > ![List General lap](./media/watchlists/sentinel-watchlist-general.png)
 
-1. A **forrás** lapon válassza ki az adatkészlet típusát, töltsön fel egy fájlt, majd kattintson a **tovább**gombra.
+1. A **forrás** lapon válassza ki az adatkészlet típusát, töltsön fel egy fájlt, majd kattintson a **tovább** gombra.
 
     :::image type="content" source="./media/watchlists/sentinel-watchlist-source.png" alt-text="List forrás lapja" lightbox="./media/watchlists/sentinel-watchlist-source.png":::
 
+    > [!NOTE]
+    >
+    > A fájlfeltöltés jelenleg legfeljebb 3,8 MB méretű fájlokra korlátozódik.
 
-1. Tekintse át az adatokat, ellenőrizze, hogy helyes-e, majd válassza a **Létrehozás**lehetőséget.
+1. Tekintse át az adatokat, ellenőrizze, hogy helyes-e, majd válassza a **Létrehozás** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![List felülvizsgálati oldal](./media/watchlists/sentinel-watchlist-review.png)
@@ -57,13 +60,11 @@ A listák használatának gyakori forgatókönyvei a következők:
 
     :::image type="content" source="./media/watchlists/sentinel-watchlist-complete.png" alt-text="List forrás lapja" lightbox="./media/watchlists/sentinel-watchlist-complete.png":::
 
-
 ## <a name="use-watchlists-in-queries"></a>A lists használata a lekérdezésekben
 
-1. A Azure Portal navigáljon az **Azure Sentinel**  >  **Configuration**  >  **listához**, válassza ki a használni kívánt listát, majd válassza a **nézet lehetőséget log Analytics**.
+1. A Azure Portal navigáljon az **Azure Sentinel**  >  **Configuration**  >  **listához** , válassza ki a használni kívánt listát, majd válassza a **nézet lehetőséget log Analytics** .
 
     :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-list.png" alt-text="List forrás lapja" lightbox="./media/watchlists/sentinel-watchlist-queries-list.png":::
-
 
 1. A rendszer automatikusan kibontja a listához tartozó elemeket a lekérdezéshez, és az **eredmények** lapon fog megjelenni. Az alábbi példa a **servername** és az **IP** -cím mezők kinyerésének eredményét mutatja.
 
@@ -74,14 +75,13 @@ A listák használatának gyakori forgatókönyvei a következők:
     
 ## <a name="use-watchlists-in-analytics-rules"></a>A lists használata az elemzési szabályokban
 
-Ha az elemzési szabályokban a felsorolásokat szeretné használni, a Azure Portalból navigáljon az **Azure Sentinel**  >  **Configuration**  >  **Analytics**szolgáltatáshoz, és hozzon létre egy szabályt a `_GetWatchlist('<watchlist>')` lekérdezésben szereplő függvénnyel.
+Ha az elemzési szabályokban a felsorolásokat szeretné használni, a Azure Portalból navigáljon az **Azure Sentinel**  >  **Configuration**  >  **Analytics** szolgáltatáshoz, és hozzon létre egy szabályt a `_GetWatchlist('<watchlist>')` lekérdezésben szereplő függvénnyel.
 
 :::image type="content" source="./media/watchlists/sentinel-watchlist-analytics-rule.png" alt-text="List forrás lapja" lightbox="./media/watchlists/sentinel-watchlist-analytics-rule.png":::
 
-
 ## <a name="view-list-of-watchlists-aliases"></a>Listázási aliasok listájának megtekintése
 
-A listához tartozó-aliasok listájának lekéréséhez a Azure Portalból navigáljon az **Azure Sentinel**  >  **általános**  >  **naplóihoz**, és futtassa a következő lekérdezést: `_GetWatchlistAlias` . Az aliasok listáját a **Results (eredmények** ) lapon tekintheti meg.
+A listához tartozó-aliasok listájának lekéréséhez a Azure Portalból navigáljon az **Azure Sentinel**  >  **általános**  >  **naplóihoz** , és futtassa a következő lekérdezést: `_GetWatchlistAlias` . Az aliasok listáját a **Results (eredmények** ) lapon tekintheti meg.
 
 > [!div class="mx-imgBorder"]
 > ![listák listázása](./media/watchlists/sentinel-watchlist-alias.png)

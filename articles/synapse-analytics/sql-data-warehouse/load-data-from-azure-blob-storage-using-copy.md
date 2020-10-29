@@ -11,12 +11,12 @@ ms.date: 05/31/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: d2c2673e6863725e064f3ad8561ab77eb1b051eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb5984ba5d5764ee2ffa3f28e2d95612c14f7e27
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371524"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025935"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Oktatóanyag: a New York taxik-adatkészlet betöltése
 
@@ -52,7 +52,7 @@ Az alábbi lépéseket követve hozzon létre egy üres adatbázist.
 
 2. Az **új oldalon válassza az** **adatbázisok** lehetőséget, majd az **új** oldal **Kiemelt** részén válassza az **Azure szinapszis Analytics** elemet.
 
-    ![adattárház létrehozása](./media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
+    ![A képernyőképen a Azure Portal adatbázisokból kiválasztott SQL Data Warehouse látható.](./media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
 
 3. Adja meg az alábbi adatokat az űrlapon:
 
@@ -63,9 +63,9 @@ Az alábbi lépéseket követve hozzon létre egy üres adatbázist.
    | **Erőforráscsoport** | myResourceGroup       | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ismertető cikket. |
    | **Forrás kiválasztása**  | Üres adatbázis        | Megköveteli egy üres adatbázis létrehozását. Megjegyzés: Az adattárház az adatbázisok egy típusa. |
 
-    ![adattárház létrehozása](./media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
+    ![A képernyőképen a SQL Data Warehouse panel látható, ahol megadhatja ezeket az értékeket.](./media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
 
-4. Válassza a **Kiszolgáló** lehetőséget új kiszolgáló létrehozásához és konfigurálásához az új adatbázis számára. Adja meg az alábbi adatokat az **Új kiszolgálóűrlapon**:
+4. Válassza a **Kiszolgáló** lehetőséget új kiszolgáló létrehozásához és konfigurálásához az új adatbázis számára. Adja meg az alábbi adatokat az **Új kiszolgálóűrlapon** :
 
     | Beállítás                | Ajánlott érték          | Leírás                                                  |
     | ---------------------- | ------------------------ | ------------------------------------------------------------ |
@@ -80,7 +80,7 @@ Az alábbi lépéseket követve hozzon létre egy üres adatbázist.
 
 6. Válassza a **teljesítményszint** lehetőséget annak megadásához, hogy az adatraktár Gen1 vagy Gen2, valamint az adatraktár-egységek számát.
 
-7. Ebben az oktatóanyagban válassza az SQL Pool **Gen2**elemet. Alapértelmezés szerint a csúszka a **DW1000c** értékre van állítva.  Csúsztassa fel és le, hogy kipróbálja a működését a gyakorlatban.
+7. Ebben az oktatóanyagban válassza az SQL Pool **Gen2** elemet. Alapértelmezés szerint a csúszka a **DW1000c** értékre van állítva.  Csúsztassa fel és le, hogy kipróbálja a működését a gyakorlatban.
 
     ![teljesítmény konfigurálása](./media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
@@ -100,7 +100,7 @@ A kiszolgáló szintjén található tűzfal, amely megakadályozza, hogy a kül
 > [!NOTE]
 > Az Azure szinapszis Analytics a 1433-as porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem tud csatlakozni a kiszolgálóhoz, kivéve, ha az informatikai részleg megnyitja a 1433-es portot.
 
-1. Az üzembe helyezés befejezése után válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd válassza a **MySampleDatabase** lehetőséget az **SQL-adatbázisok** lapon. Megnyílik az adatbázis áttekintő lapja, amely megjeleníti a teljes kiszolgálónevet (például **mynewserver-20180430.database.Windows.net**), és további konfigurálási lehetőségeket biztosít.
+1. Az üzembe helyezés befejezése után válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd válassza a **MySampleDatabase** lehetőséget az **SQL-adatbázisok** lapon. Megnyílik az adatbázis áttekintő lapja, amely megjeleníti a teljes kiszolgálónevet (például **mynewserver-20180430.database.Windows.net** ), és további konfigurálási lehetőségeket biztosít.
 
 2. Másolja le ezt a teljes kiszolgálónevet, mert a későbbi rövid útmutatók során szüksége lesz rá a kiszolgálóhoz és az adatbázisokhoz való csatlakozáshoz. Ezután válassza ki a kiszolgáló nevét a kiszolgáló beállításainak megnyitásához.
 
@@ -116,7 +116,7 @@ A kiszolgáló szintjén található tűzfal, amely megakadályozza, hogy a kül
 
 5. Válassza az **ügyfél IP-** címének hozzáadása lehetőséget az eszköztáron az aktuális IP-cím új tűzfalszabályként való hozzáadásához. A tűzfalszabály az 1433-as portot egy egyedi IP-cím vagy egy IP-címtartomány számára nyithatja meg.
 
-6. Kattintson a **Mentés** gombra. A rendszer létrehoz egy kiszolgálói szintű tűzfalszabály-szabályt az aktuális IP-címhez, amely megnyitja az 1433-es portot a kiszolgálón.
+6. Válassza a **Mentés** lehetőséget. A rendszer létrehoz egy kiszolgálói szintű tűzfalszabály-szabályt az aktuális IP-címhez, amely megnyitja az 1433-es portot a kiszolgálón.
 
 7. Kattintson **az OK gombra** , majd a **tűzfalbeállítások** oldal bezárásához.
 
@@ -131,7 +131,7 @@ Szerezze be a kiszolgáló teljes nevét a Azure Portalban. Később ezt a telje
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Válassza ki az **Azure szinapszis Analytics** elemet a bal oldali menüben, és válassza ki az adatbázist az **Azure szinapszis Analytics** oldalán.
-3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét**. Ebben a példában a teljes név mynewserver-20180430.database.windows.net.
+3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét** . Ebben a példában a teljes név mynewserver-20180430.database.windows.net.
 
     ![kapcsolatadatok](././media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
 
@@ -146,14 +146,14 @@ Ez a szakasz [SQL Server Management Studio](/sql/ssms/download-sql-server-manage
     | Beállítás        | Ajánlott érték                            | Leírás                                                  |
     | -------------- | ------------------------------------------ | ------------------------------------------------------------ |
     | Server type (Kiszolgáló típusa)    | Adatbázismotor                            | Kötelezően megadandó érték                                       |
-    | Kiszolgálónév    | A teljes kiszolgálónév            | A névnek a következőhöz hasonlónak kell lennie: **mynewserver-20180430.database.Windows.net**. |
+    | Kiszolgálónév    | A teljes kiszolgálónév            | A névnek a következőhöz hasonlónak kell lennie: **mynewserver-20180430.database.Windows.net** . |
     | Hitelesítés | SQL Server-hitelesítés                  | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
     | Bejelentkezés          | A kiszolgálói rendszergazdafiók                   | Ezt a fiókot adta meg a kiszolgáló létrehozásakor. |
     | Jelszó       | A kiszolgálói rendszergazdai fiók jelszava | Ez az a jelszó, amely a kiszolgáló létrehozásakor lett megadva. |
 
     ![kapcsolódás a kiszolgálóhoz](./media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-3. Kattintson a **Csatlakozás** gombra. Megnyílik az Object Explorer ablak az SSMS-ben.
+3. Válassza a **Kapcsolódás** lehetőséget. Megnyílik az Object Explorer ablak az SSMS-ben.
 
 4. Az Object Explorerben bontsa ki a **Databases** (Adatbázisok) elemet. Ezután bontsa ki a **System databases** (Rendszeradatbázisok) és a **master** elemeket az objektumok megtekintéséhez a master adatbázisban.  Bontsa ki a **mySampleDatabase** csomópontot az új adatbázisban található objektumok megtekintéséhez.
 
@@ -167,7 +167,7 @@ A kiszolgáló rendszergazdai fiókjának célja, hogy felügyeleti műveleteket
 
 Mivel jelenleg a kiszolgálói rendszergazdaként csatlakozik, létrehozhat bejelentkezéseket és felhasználókat. Kövesse ezeket a lépéseket egy **LoaderRC20** nevű fiók és felhasználó létrehozásához. Ezután rendelje hozzá a felhasználót a **staticrc20** erőforrásosztályhoz.
 
-1. A SSMS kattintson a jobb gombbal a **Master** elemre a legördülő menü megjelenítéséhez, majd válassza az **Új lekérdezés**lehetőséget. Megnyílik egy új lekérdezési ablak.
+1. A SSMS kattintson a jobb gombbal a **Master** elemre a legördülő menü megjelenítéséhez, majd válassza az **Új lekérdezés** lehetőséget. Megnyílik egy új lekérdezési ablak.
 
     ![Új lekérdezés a master adatbázisban](./media/load-data-from-azure-blob-storage-using-polybase/create-loader-login.png)
 
@@ -198,13 +198,13 @@ Mivel jelenleg a kiszolgálói rendszergazdaként csatlakozik, létrehozhat beje
 
 Az adatok betöltésének első lépése a LoaderRC20-ként való bejelentkezés.  
 
-1. A Object Explorer területen válassza a **kapcsolat** legördülő menüt, és válassza az **adatbázismotor**lehetőséget. A **Connect to Server** (Kapcsolódás a kiszolgálóhoz) párbeszédpanel jelenik meg.
+1. A Object Explorer területen válassza a **kapcsolat** legördülő menüt, és válassza az **adatbázismotor** lehetőséget. A **Connect to Server** (Kapcsolódás a kiszolgálóhoz) párbeszédpanel jelenik meg.
 
     ![Csatlakozás az új fiókkal](./media/load-data-from-azure-blob-storage-using-polybase/connect-as-loading-user.png)
 
 2. Gépelje be a teljes kiszolgálónevet, és adja meg a **LoaderRC20** felhasználónévként.  Adja meg a LoaderRC20-hoz tartozó jelszót.
 
-3. Kattintson a **Csatlakozás** gombra.
+3. Válassza a **Kapcsolódás** lehetőséget.
 
 4. Ha a kapcsolat készen áll, az Object Explorerben két kiszolgálói kapcsolat lesz látható. Az egyik kapcsolat ServerAdmin-ként, a másik pedig MedRCLogin-ként jelenik meg.
 
@@ -492,7 +492,7 @@ Ez a szakasz a [másolási utasítás használatával tölti be](https://docs.mi
 
     ![A betöltött táblák megtekintése](./media/load-data-from-azure-blob-storage-using-polybase/view-loaded-tables.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Az adattárházába betöltött számítási erőforrások és adatok díjkötelesek. Ezeket külön-külön számlázzuk.
 
@@ -503,15 +503,15 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza ki az adattárházat.
 
-    ![Az erőforrások eltávolítása](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
+    ![Az erőforrások felszabadítása](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. A számítás szüneteltetéséhez kattintson a **szüneteltetés** gombra. Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  A számítás folytatásához kattintson a **Start**gombra.
+2. A számítás szüneteltetéséhez kattintson a **szüneteltetés** gombra. Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  A számítás folytatásához kattintson a **Start** gombra.
 
-3. Ha el szeretné távolítani az adattárházat, így nem számítja fel a számítás vagy a tárolás díját, válassza a **Törlés**lehetőséget.
+3. Ha el szeretné távolítani az adattárházat, így nem számítja fel a számítás vagy a tárolás díját, válassza a **Törlés** lehetőséget.
 
-4. A létrehozott kiszolgáló eltávolításához válassza a **mynewserver-20180430.database.Windows.net** lehetőséget az előző képen, majd válassza a **Törlés**lehetőséget.  Ezzel kapcsolatban legyen körültekintő, mert a kiszolgáló törlésével a kiszolgálóhoz rendelt összes adatbázis is törölve lesz.
+4. A létrehozott kiszolgáló eltávolításához válassza a **mynewserver-20180430.database.Windows.net** lehetőséget az előző képen, majd válassza a **Törlés** lehetőséget.  Ezzel kapcsolatban legyen körültekintő, mert a kiszolgáló törlésével a kiszolgálóhoz rendelt összes adatbázis is törölve lesz.
 
-5. Az erőforráscsoport eltávolításához válassza a **myResourceGroup**lehetőséget, majd válassza az **erőforráscsoport törlése**lehetőséget.
+5. Az erőforráscsoport eltávolításához válassza a **myResourceGroup** lehetőséget, majd válassza az **erőforráscsoport törlése** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

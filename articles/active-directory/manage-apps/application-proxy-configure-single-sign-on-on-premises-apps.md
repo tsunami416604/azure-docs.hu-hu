@@ -16,34 +16,34 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c706de8a7638c16f3778d0d5295069c13b79d98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90838b0b613c043ae41a71c76b5e9023d21df3a6
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387268"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025850"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>SAML egyszeri bejelentkezés a helyszíni alkalmazásokhoz alkalmazásproxy használatával
 
 Az egyszeri bejelentkezést (SSO) az SAML-hitelesítéssel védett helyszíni alkalmazások számára is biztosíthatja, és az alkalmazás-proxyn keresztül távoli hozzáférést biztosíthat ezekhez az alkalmazásokhoz. Az SAML egyszeri bejelentkezéssel az Azure Active Directory (Azure AD) a felhasználó Azure AD-fiókjának használatával hitelesíti az alkalmazást. Az Azure AD a bejelentkezési adatokat kapcsolati protokollon keresztül továbbítja az alkalmazásnak. A felhasználókat az SAML-jogcímek által meghatározott szabályok alapján adott alkalmazási szerepkörökre is leképezheti. A SAML SSO mellett az alkalmazásproxy engedélyezésével a felhasználók külső hozzáféréssel fognak rendelkezni az alkalmazáshoz és a zökkenőmentes SSO-élményhez.
 
-Az alkalmazásoknak képesnek kell lenniük a **Azure Active Directory**által kiadott SAML-tokenek felhasználására. Ez a konfiguráció nem vonatkozik a helyszíni identitás-szolgáltatót használó alkalmazásokra. Ezen forgatókönyvek esetében javasoljuk, hogy tekintse [át az alkalmazások Azure ad-ba való áttelepítésének erőforrásait](migration-resources.md).
+Az alkalmazásoknak képesnek kell lenniük a **Azure Active Directory** által kiadott SAML-tokenek felhasználására. Ez a konfiguráció nem vonatkozik a helyszíni identitás-szolgáltatót használó alkalmazásokra. Ezen forgatókönyvek esetében javasoljuk, hogy tekintse [át az alkalmazások Azure ad-ba való áttelepítésének erőforrásait](migration-resources.md).
 
 Az SAML SSO és az Application proxy is együttműködik az SAML-jogkivonat titkosítási funkciójával. További információ: az [Azure ad SAML-jogkivonat titkosításának konfigurálása](howto-saml-token-encryption.md).
 
 Az alábbi protokollok a szolgáltató által kezdeményezett (SP által kezdeményezett) folyamat és az identitás-szolgáltató által kezdeményezett (identitásszolgáltató által kezdeményezett) folyamat egyszeri bejelentkezési folyamatát írják le. Az alkalmazásproxy az SAML SSO-nal működik, ha gyorsítótárazza az SAML-kérelmet, és választ küld a helyi alkalmazásnak és a szolgáltatásnak.
 
-  ![SAML SP-folyamat](./media/application-proxy-configure-single-sign-on-on-premises-apps/saml-sp-initiated-flow.png)
+  ![A diagram az alkalmazás, az alkalmazásproxy, az ügyfél és az Azure A D műveleteit mutatja a P által kezdeményezett egyszeri bejelentkezéshez.](./media/application-proxy-configure-single-sign-on-on-premises-apps/saml-sp-initiated-flow.png)
 
-  ![SAML SP-folyamat](./media/application-proxy-configure-single-sign-on-on-premises-apps/saml-idp-initiated-flow.png)
+  ![A diagramon az alkalmazás, az alkalmazásproxy, az ügyfél és az Azure A D interakciói láthatók az I d P által kezdeményezett egyszeri bejelentkezéshez.](./media/application-proxy-configure-single-sign-on-on-premises-apps/saml-idp-initiated-flow.png)
 
 ## <a name="create-an-application-and-set-up-saml-sso"></a>Alkalmazás létrehozása és SAML SSO beállítása
 
-1. A Azure Portal válassza a **Azure Active Directory > vállalati alkalmazások** lehetőséget, és válassza az **új alkalmazás**lehetőséget.
+1. A Azure Portal válassza a **Azure Active Directory > vállalati alkalmazások** lehetőséget, és válassza az **új alkalmazás** lehetőséget.
 
-2. Adja meg az új alkalmazás megjelenítendő nevét, válassza a katalógusban **nem található bármely más alkalmazás integrálása**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
+2. Adja meg az új alkalmazás megjelenítendő nevét, válassza a katalógusban **nem található bármely más alkalmazás integrálása** lehetőséget, majd válassza a **Létrehozás** lehetőséget.
 
-3. Az alkalmazás **Áttekintés** lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+3. Az alkalmazás **Áttekintés** lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
 4. Válassza az **SAML** lehetőséget az egyszeri bejelentkezési módszerként.
 
@@ -52,13 +52,13 @@ Az alábbi protokollok a szolgáltató által kezdeményezett (SP által kezdem�
 6. Adjon hozzá legalább egy felhasználót az alkalmazáshoz, és győződjön meg arról, hogy a teszt fiók hozzáfér az alkalmazáshoz. Ha csatlakozik a vállalati hálózathoz, a tesztelési fiók használatával ellenőrizheti, hogy van-e egyszeri bejelentkezés az alkalmazásba. 
 
    > [!NOTE]
-   > Az alkalmazásproxy beállítása után visszatérhet és frissítheti az SAML **-Válasz URL-címét**.
+   > Az alkalmazásproxy beállítása után visszatérhet és frissítheti az SAML **-Válasz URL-címét** .
 
 ## <a name="publish-the-on-premises-application-with-application-proxy"></a>A helyszíni alkalmazás közzététele az Application proxyval
 
 A helyszíni alkalmazásokhoz való egyszeri bejelentkezés biztosítása előtt engedélyeznie kell az alkalmazásproxy használatát, és telepítenie kell egy összekötőt. Tekintse meg az [Azure ad-beli Application proxyn keresztüli távelérés helyszíni alkalmazás hozzáadása](application-proxy-add-on-premises-application.md) a helyszíni környezet előkészítését, az összekötők telepítését és regisztrálását, valamint az összekötő tesztelését ismertető oktatóanyagot. Ezután kövesse az alábbi lépéseket az új alkalmazás alkalmazás-proxyval való közzétételéhez. Az alább nem említett egyéb beállításokért tekintse [meg a helyszíni alkalmazás hozzáadása az Azure ad-](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad) hez című szakaszt az oktatóanyagban.
 
-1. Ha az alkalmazás továbbra is meg van nyitva a Azure Portalban, válassza az **alkalmazásproxy**lehetőséget. Adja meg az alkalmazás **belső URL-címét** . Ha egyéni tartományt használ, fel kell töltenie az alkalmazás TLS/SSL-tanúsítványát is. 
+1. Ha az alkalmazás továbbra is meg van nyitva a Azure Portalban, válassza az **alkalmazásproxy** lehetőséget. Adja meg az alkalmazás **belső URL-címét** . Ha egyéni tartományt használ, fel kell töltenie az alkalmazás TLS/SSL-tanúsítványát is. 
    > [!NOTE]
    > Ajánlott eljárásként használjon egyéni tartományokat, amikor lehetséges az optimalizált felhasználói élmény. További információ az [Egyéni tartományok Azure ad Application proxy-beli használatáról](application-proxy-configure-custom-domain.md).
 
@@ -70,9 +70,9 @@ A helyszíni alkalmazásokhoz való egyszeri bejelentkezés biztosítása előtt
 
 ## <a name="update-the-saml-configuration"></a>Az SAML-konfiguráció frissítése
 
-1. Ha az alkalmazás továbbra is meg van nyitva a Azure Portalban, válassza az **egyszeri bejelentkezés**lehetőséget. 
+1. Ha az alkalmazás továbbra is meg van nyitva a Azure Portalban, válassza az **egyszeri bejelentkezés** lehetőséget. 
 
-2. Az **egyszeres Sign-On beállítása SAML** használatával lapon lépjen az **alapszintű SAML-konfiguráció** fejlécére, és válassza ki annak **szerkesztési** ikonját (egy ceruza). Győződjön meg arról, hogy az alkalmazásproxy-ban konfigurált **külső URL** -cím fel van töltve az **azonosító**, a **Válasz URL-cím**és a **kijelentkezési URL-cím** mezőkbe. Ezek az URL-címek szükségesek ahhoz, hogy az alkalmazásproxy megfelelően működjön. 
+2. Az **egyszeres Sign-On beállítása SAML** használatával lapon lépjen az **alapszintű SAML-konfiguráció** fejlécére, és válassza ki annak **szerkesztési** ikonját (egy ceruza). Győződjön meg arról, hogy az alkalmazásproxy-ban konfigurált **külső URL** -cím fel van töltve az **azonosító** , a **Válasz URL-cím** és a **kijelentkezési URL-cím** mezőkbe. Ezek az URL-címek szükségesek ahhoz, hogy az alkalmazásproxy megfelelően működjön. 
 
 3. Szerkessze a korábban konfigurált **Válasz URL-címet** , hogy a tartomány elérhető legyen az interneten az alkalmazásproxy használatával. Ha például a **külső URL** -cím `https://contosotravel-f128.msappproxy.net` , és az eredeti **Válasz URL-címe** `https://contosotravel.com/acs` , akkor frissítenie kell az eredeti **Válasz URL-címét** a következőre: `https://contosotravel-f128.msappproxy.net/acs` .
 
@@ -95,7 +95,7 @@ Az összes lépés elvégzése után az alkalmazásnak futnia kell. Az alkalmaz�
 1. Nyisson meg egy böngészőt, és navigáljon arra a **külső URL-címre** , amelyet az alkalmazás közzétételekor hozott létre. 
 1. Jelentkezzen be az alkalmazáshoz hozzárendelt tesztelési fiókkal. Képesnek kell lennie az alkalmazás betöltésére és az egyszeri bejelentkezésre az alkalmazásba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hogyan biztosítja az Azure AD Application Proxy az egyszeri bejelentkezést?](application-proxy-single-sign-on.md)
 - [Alkalmazásproxyval kapcsolatos hibaelhárítás](application-proxy-troubleshoot.md)

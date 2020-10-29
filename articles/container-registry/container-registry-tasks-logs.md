@@ -3,12 +3,12 @@ title: Feladat-futtatási naplók megtekintése – feladatok
 description: Az ACR-feladatok által létrehozott futtatási naplók megtekintése és kezelése.
 ms.topic: article
 ms.date: 03/09/2020
-ms.openlocfilehash: f7098f470a3f8a0cdac019f4bf8eb8fe14330337
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2a10d4a3a2746acf38445673af994c6317c77de
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91871932"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027176"
 ---
 # <a name="view-and-manage-task-run-logs"></a>Feladat-futtatási naplók megtekintése és kezelése
 
@@ -65,14 +65,14 @@ Ha egy feladat automatikusan aktiválódik, például a forráskód frissítése
 A futtatási naplók megtekintése a portálon:
 
 1. Navigáljon a tároló-beállításjegyzékhez.
-1. A **szolgáltatások**területen válassza a **feladatok**  >  **Futtatás**lehetőséget.
+1. A **szolgáltatások** területen válassza a **feladatok**  >  **Futtatás** lehetőséget.
 1. Válassza ki a futtatási **azonosítót** a futtatási állapot megtekintéséhez és a naplók futtatásához. A napló ugyanazokat az információkat tartalmazza, mint a továbbított napló, ha van ilyen.
 
 ![A feladat futtatási bejelentkezési portáljának megtekintése](./media/container-registry-tasks-logs/portal-task-run-logs.png)
 
 Ha az Azure CLI-vel szeretné megtekinteni a naplót, futtassa az [az ACR Task logs](/cli/azure/acr/task#az-acr-task-logs) parancsot, és adjon meg egy futtatási azonosítót, egy feladatnév vagy egy, a létrehozási feladat által létrehozott rendszerképet. Ha meg van adva a feladat neve, a parancs az utolsó létrehozott Futtatás naplóját jeleníti meg.
 
-A következő példa a futtatási naplót a *CF4*azonosítóval adja eredményül:
+A következő példa a futtatási naplót a *CF4* azonosítóval adja eredményül:
 
 ```azurecli
 az acr task logs --registry mycontainerregistry1220 \
@@ -94,18 +94,10 @@ az acr task logs --registry mycontainerregistry1220 \
 
 Helyi naplófájlokat is menthet az Azure Storage szolgáltatásba. Például az [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md), a [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md)vagy más módszerek használatával tölthet fel fájlokat egy Storage-fiókba.
 
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Azure Container Registry feladatokról](container-registry-tasks-overview.md)
 
-<!-- LINKS - External -->
-[base-alpine]: https://hub.docker.com/_/alpine/
-[base-dotnet]: https://hub.docker.com/r/microsoft/dotnet/
-[base-node]: https://hub.docker.com/_/node/
-[base-windows]: https://hub.docker.com/r/microsoft/nanoserver/
-[sample-archive]: https://github.com/Azure-Samples/acr-build-helloworld-node/archive/master.zip
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli

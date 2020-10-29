@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/26/2020
 ms.author: memildin
-ms.openlocfilehash: ba0c68589f7ea4b32970e3ad81fea5175b998dc7
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 549a95b0b2ffc2b2d2bf5670a961e0454683e33a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629153"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026717"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>A Azure Security Center fontos jövőbeli módosításai
 
@@ -42,27 +42,19 @@ Ha a legújabb kibocsátási megjegyzéseket keresi, a [Azure Security Center ú
 
 Az Azure biztonsági teljesítményteszt a Microsoft által létrehozott, Azure-specifikus irányelvek a biztonsági és megfelelőségi szabályzatok közös megfelelőségi keretrendszereken alapuló bevált eljárásaihoz. [További tudnivalók az Azure-biztonsági teljesítménytesztről](../security/benchmarks/introduction.md).
 
-A következő 29 új javaslat jelenik meg Security Center a teljesítményteszt lefedettségének növeléséhez.
+A következő 18 új javaslat jelenik meg Security Center a teljesítményteszt lefedettségének növeléséhez.
 
 Az előzetes verzióra vonatkozó javaslatok nem jelenítik meg az erőforrás állapotát, és nem tartoznak bele a biztonságos pontszám számításaiba. Ha lehetséges, javítsa őket, hogy ha az előzetes verzió időtartama lejár, a pontszáma is hozzájárul. További információ a javaslatokról a [Azure Security Centerban található javaslatok szervizelése](security-center-remediate-recommendations.md)című témakörben található.
 
 - Azure Backup engedélyezni kell a virtuális gépeket
-- Az SQL serverek naplózási megőrzését legalább 90 napra kell beállítani
-- A diagnosztikai naplókat engedélyezni kell App Service 
 - Az SSL-kapcsolat kényszerített engedélyezése a MySQL adatbázis-kiszolgálókon
 - Az SSL-kapcsolat betartatását engedélyezni kell a PostgreSQL-adatbázis-kiszolgálók esetében
-- FTPS szükséges az API-alkalmazásban
-- A FTPS kötelező megadni a Function alkalmazásban
-- A FTPS kötelező megadni a webalkalmazásban
 - A Geo-redundáns biztonsági mentést engedélyezni kell a Azure Database for MariaDB
 - A Geo-redundáns biztonsági mentést engedélyezni kell a Azure Database for MySQL
 - A Geo-redundáns biztonsági mentést engedélyezni kell a Azure Database for PostgreSQL
 - A Java-t az API-alkalmazás legújabb verziójára kell frissíteni
 - A Java-t a Function app legújabb verziójára kell frissíteni
 - A Java-t a webalkalmazás legújabb verziójára kell frissíteni
-- A felügyelt identitást az API-alkalmazásban kell használni
-- A felügyelt identitást a Function alkalmazásban kell használni
-- A felügyelt identitást a webalkalmazásban kell használni
 - A PHP-t az API-alkalmazás legújabb verziójára kell frissíteni
 - A PHP-t a webalkalmazás legújabb verziójára kell frissíteni
 - A privát végpontot engedélyezni kell a MariaDB-kiszolgálókon
@@ -71,9 +63,6 @@ Az előzetes verzióra vonatkozó javaslatok nem jelenítik meg az erőforrás �
 - A Pythont az API-alkalmazás legújabb verziójára kell frissíteni
 - A Pythont a Function alkalmazás legújabb verziójára kell frissíteni
 - A Pythont a webalkalmazás legújabb verziójára kell frissíteni
-- A TLS-t frissíteni kell az API-alkalmazás legújabb verziójára
-- A TLS-t frissíteni kell a Function alkalmazás legújabb verziójára
-- A TLS-t a webalkalmazás legújabb verziójára kell frissíteni
 - A webalkalmazásoknak SSL-tanúsítványt kell igényelnie minden bejövő kérelemhez
 
 Kapcsolódó hivatkozások:

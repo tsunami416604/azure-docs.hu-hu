@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/17/2020
-ms.openlocfilehash: 445cd7c55de58b6e5266f76a06d2cbabc75c18b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/28/2020
+ms.openlocfilehash: fb5aca1739fbb4a77cbcb7eed6b9dce1b3ccc182
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907166"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027584"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Adatok továbbítása bemenetként Stream Analytics
 
@@ -55,7 +55,7 @@ Az alábbi táblázat a Azure Portal **új bemeneti** lapján lévő összes tul
 | **Eseményközpont neve** | Az Event hub bemenetként használandó neve. |
 | **Eseményközpont szabályzatának neve** | Az Event hub elérését biztosító közös hozzáférési szabályzat. Minden megosztott hozzáférési házirend rendelkezik egy névvel, a beállított engedélyekkel és a hozzáférési kulcsokkal. Ez a beállítás automatikusan ki van töltve, kivéve, ha az Event hub beállításainak manuális megadását választja.|
 | **Event hub fogyasztói csoport** (ajánlott) | Kifejezetten ajánlott külön fogyasztói csoportot használni minden Stream Analytics feladathoz. Ez a karakterlánc azonosítja az Event hub adatainak betöltéséhez használandó fogyasztói csoportot. Ha nincs megadva fogyasztói csoport, a Stream Analytics-feladatokhoz a $Default fogyasztói csoportot használja.  |
-| **Partíciókulcs** | Ha a bemenetet egy tulajdonság particionálja, akkor a tulajdonság nevét is hozzáadhatja. A partíciós kulcsok nem kötelezőek, és a lekérdezés teljesítményének növelésére szolgálnak, ha ezen a tulajdonságon a partíció vagy a GROUP BY záradék szerepel. |
+| **Partíciókulcs** | Ez egy opcionális mező, amely csak akkor érhető el, ha a feladatokhoz a 1,2-es vagy magasabb [kompatibilitási szint](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) használatára van konfigurálva. Ha a bemenetet egy tulajdonság particionálja, itt adhatja hozzá ennek a tulajdonságnak a nevét. Ez a lekérdezés teljesítményének javítására szolgál, ha ez a tulajdonság a (z) PARTÍCIÓt vagy GROUP BY záradékot tartalmaz. Ha ez a művelet a 1,2-es vagy magasabb kompatibilitási szintet használja, a mező alapértelmezett értéke "PartitionId". |
 | **Eseményszerializációs formátum** | A bejövő adatfolyam szerializálási formátuma (JSON, CSV, Avro vagy [other (protopuf, XML, tulajdonos...)](custom-deserializer.md)).  Győződjön meg arról, hogy a JSON formátum a specifikációhoz igazodik, és nem tartalmazza a kezdő 0 számjegyek számjegyeit. |
 | **Kódolás** | Az UTF-8 jelenleg az egyetlen támogatott kódolási formátum. |
 | **Esemény tömörítési típusa** | A bejövő adatfolyam olvasásához használt tömörítési típus, például none (alapértelmezett), GZip vagy deflating. |
@@ -105,7 +105,7 @@ Az alábbi táblázat a Azure Portal **új bemeneti** oldalának minden tulajdon
 | **Megosztott hozzáférési szabályzat neve** | A IoT Hub elérését biztosító közös hozzáférési szabályzat. Minden megosztott hozzáférési házirend rendelkezik egy névvel, a beállított engedélyekkel és a hozzáférési kulcsokkal. |
 | **Megosztott elérési házirend kulcsa** | A IoT Hub elérésének engedélyezéséhez használt megosztott elérési kulcs.  Ezt a beállítást automatikusan kitölti a rendszer, hacsak nem kiválasztja a IOT hub beállításainak manuális megadására szolgáló lehetőséget. |
 | **Fogyasztói csoport** | Javasoljuk, hogy minden Stream Analytics feladatokhoz használjon egy másik fogyasztói csoportot. A fogyasztói csoport a IoT Hub adatainak betöltésére szolgál. Stream Analytics a $Default fogyasztói csoportot használja, hacsak nem ad meg mást.  |
-| **Partíciókulcs** | Ha a bemenetet egy tulajdonság particionálja, akkor a tulajdonság nevét is hozzáadhatja. A partíciós kulcsok nem kötelezőek, és a lekérdezés teljesítményének növelésére szolgálnak, ha ezen a tulajdonságon a partíció vagy a GROUP BY záradék szerepel. |
+| **Partíciókulcs** | Ez egy opcionális mező, amely csak akkor érhető el, ha a feladatokhoz a 1,2-es vagy magasabb [kompatibilitási szint](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) használatára van konfigurálva. Ha a bemenetet egy tulajdonság particionálja, itt adhatja hozzá ennek a tulajdonságnak a nevét. Ez a lekérdezés teljesítményének javítására szolgál, ha ez a tulajdonság a (z) PARTÍCIÓt vagy GROUP BY záradékot tartalmaz. Ha ez a művelet a 1,2-es vagy magasabb kompatibilitási szintet használja, a mező alapértelmezett értéke "PartitionId". |
 | **Eseményszerializációs formátum** | A bejövő adatfolyam szerializálási formátuma (JSON, CSV, Avro vagy [other (protopuf, XML, tulajdonos...)](custom-deserializer.md)).  Győződjön meg arról, hogy a JSON formátum a specifikációhoz igazodik, és nem tartalmazza a kezdő 0 számjegyek számjegyeit. |
 | **Kódolás** | Az UTF-8 jelenleg az egyetlen támogatott kódolási formátum. |
 | **Esemény tömörítési típusa** | A bejövő adatfolyam olvasásához használt tömörítési típus, például none (alapértelmezett), GZip vagy deflating. |
@@ -159,7 +159,8 @@ A következő táblázat a Azure Portal **új bemeneti** oldalának egyes tulajd
 | **Elérésiút-minta** (nem kötelező) | A megadott tárolóban található Blobok megkereséséhez használt fájl elérési útja. Ha a tároló gyökeréből kívánja beolvasni a blobokat, ne állítson be elérésiút-mintát. Az elérési úton megadhatja a következő három változó egy vagy több példányát: `{date}` , `{time}` vagy `{partition}`<br/><br/>1. példa: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>2. példa: `cluster1/logs/{date}`<br/><br/>A `*` karakter nem engedélyezett érték az elérési út előtagja számára. Csak érvényes <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure Blob-karakterek</a> engedélyezettek. Ne foglalja bele a tároló nevét vagy fájlnevét. |
 | **Dátumformátum** (nem kötelező) | Ha az elérési úton a Date változót használja, akkor a fájlok rendszerezésének dátumformátum. Például: `YYYY/MM/DD` <br/><br/> Ha a blob bemenete `{date}` vagy annak `{time}` elérési útja, a mappák növekvő sorrendben lesznek megvizsgálva.|
 | **Idő formátuma** (nem kötelező) |  Ha az elérési úton a Time változót használja, akkor a fájlok rendszerezésének időformátuma. Jelenleg az egyetlen támogatott érték `HH` óra. |
-| **Partíciókulcs** | Ha a bemenetet egy tulajdonság particionálja, akkor a tulajdonság nevét is hozzáadhatja. A partíciós kulcsok nem kötelezőek, és a lekérdezés teljesítményének növelésére szolgálnak, ha ezen a tulajdonságon a partíció vagy a GROUP BY záradék szerepel. |
+| **Partíciókulcs** | Ez egy opcionális mező, amely csak akkor érhető el, ha a feladatokhoz a 1,2-es vagy magasabb [kompatibilitási szint](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) használatára van konfigurálva. Ha a bemenetet egy tulajdonság particionálja, itt adhatja hozzá ennek a tulajdonságnak a nevét. Ez a lekérdezés teljesítményének javítására szolgál, ha ez a tulajdonság a (z) PARTÍCIÓt vagy GROUP BY záradékot tartalmaz. Ha ez a művelet a 1,2-es vagy magasabb kompatibilitási szintet használja, a mező alapértelmezett értéke "PartitionId". |
+| **Bemeneti partíciók száma** | Ez a mező csak akkor jelenik meg, ha a (() {Partition} szerepel az elérésiút-mintában. Ennek a tulajdonságnak az értéke >= 1 egész szám. Ha a pathPattern-ben a {Partition} érték jelenik meg, akkor a rendszer 0 és az 1. mező közötti számot használ. |
 | **Eseményszerializációs formátum** | A bejövő adatfolyam szerializálási formátuma (JSON, CSV, Avro vagy [other (protopuf, XML, tulajdonos...)](custom-deserializer.md)).  Győződjön meg arról, hogy a JSON formátum a specifikációhoz igazodik, és nem tartalmazza a kezdő 0 számjegyek számjegyeit. |
 | **Kódolás** | A CSV és a JSON esetében az UTF-8 jelenleg az egyetlen támogatott kódolási formátum. |
 | **Tömörítés** | A bejövő adatfolyam olvasásához használt tömörítési típus, például none (alapértelmezett), GZip vagy deflating. |

@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/29/2020
-ms.openlocfilehash: 4075e27c3711cbc4c584005126b53f7c99942049
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 7ddfb3221c73c740a339dd8d9d4f60cca46c6425
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926725"
+ms.locfileid: "93026768"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>OperationalInsights API-verziójának nyugdíjazása
-A Microsoft legalább 12 hónappal korábban értesítést küld egy API kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra. Megjelent egy új verzió (2020-08-01) a **OperationalInsights** erőforrás-szolgáltató API-khoz, és minden korábbi API-verziót 2014. február 29-én kivonja.
+A Microsoft legalább 12 hónappal korábban értesítést küld egy API kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra. Megjelent egy új verzió (2020-08-01) a **OperationalInsights** erőforrás-szolgáltató API-khoz, és minden korábbi API-verziót kivonja a 2024. február 29-én.
 
 Javasoljuk, hogy a 2020-08-01-es verzió használatának megkezdéséhez használja az új funkciók előnyeit, például a [dedikált fürtöt](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters), az [ügyfél által felügyelt kulcsokat](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys), a [privát kapcsolatot](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security) és az [adatexportálást](https://docs.microsoft.com/azure/azure-monitor/platform/logs-data-export). Emellett az új funkciók és funkciók és optimalizációk csak az aktuális API-hoz lesznek hozzáadva.
 
-2014. február 29-én Azure Monitor többé nem támogatja a korábbi API-verziókat, mint a 2020-08-01. Ha inkább nem szeretné frissíteni, a korábbi verziókból küldött kérelmeket a Azure Monitor szolgáltatás a 2014. február 29-én továbbra is kiszolgálja.
+A 2024. február 29. után a Azure Monitor már nem fogja támogatni a 2020-08-01-nál korábbi API-verziókat. Ha nem szeretné frissíteni, a korábbi verziókból küldött kérelmeket a Azure Monitor szolgáltatás a 2024. február 29-én továbbra is kiszolgálja.
 
 ## <a name="migration-steps"></a>A migrálás lépései
 A használt konfigurációs módszertől függően frissítenie kell az új verziót a **Rest** -kérelmekben és a **Resource Manager-sablonokban** . Az API verziójának frissítéséhez kövesse az alábbi példákat:

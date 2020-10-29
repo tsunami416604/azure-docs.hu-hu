@@ -1,6 +1,6 @@
 ---
 title: Csoportok hozzáadása, eltávolítása és listázása egy felügyeleti egységben – Azure Active Directory | Microsoft Docs
-description: Csoportok és szerepkörük engedélyeinek kezelése egy felügyeleti egységben Azure Active Directory
+description: A csoportok és a szerepkörük engedélyei a Azure Active Directory felügyeleti egységében kezelhetők.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,38 +14,56 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec566fecb0dd14a4e56a2a3b9a59745bfe549faf
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: eee8ae8eeebfff61dd90aedc35a3dc04a88d6758
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376149"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026734"
 ---
-# <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Csoportok hozzáadása és kezelése felügyeleti egységekben Azure Active Directory
+# <a name="add-and-manage-groups-in-an-administrative-unit-in-azure-active-directory"></a>Csoportok hozzáadása és kezelése egy felügyeleti egységben Azure Active Directory
 
-A Azure Active Directory (Azure AD) szolgáltatásban hozzáadhat csoportokat egy felügyeleti egységhez (AU) az irányítás részletesebb felügyeleti hatóköréhez.
+A Azure Active Directory (Azure AD) szolgáltatásban hozzáadhat csoportokat egy felügyeleti egységhez a vezérlés részletesebb felügyeleti hatóköre érdekében.
 
-A PowerShell és a Microsoft Graph felügyeleti egység felügyeletéhez való előkészítésének lépéseiért lásd: első [lépések](admin-units-manage.md#get-started).
+A PowerShell és a Microsoft Graph használatának előkészítése a felügyeleti egység felügyeletéhez: első [lépések](admin-units-manage.md#get-started).
 
-## <a name="add-groups-to-an-au"></a>Csoportok hozzáadása AU-hoz
+## <a name="add-groups-to-an-administrative-unit"></a>Csoportok hozzáadása egy felügyeleti egységhez
 
-### <a name="azure-portal"></a>Azure Portal
+A felügyeleti egységekhez a Azure Portal, a PowerShell vagy a Microsoft Graph használatával adhat hozzá csoportokat.
 
-A csoportokat csak egyenként rendelheti hozzá egy felügyeleti egységhez. A csoportok tömeges kiosztása nem lehetséges egy felügyeleti egységben. A portálon a következő két módszer egyikével rendelhet hozzá egy csoportot egy felügyeleti egységhez:
+### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-1. Az **Azure AD > csoportok** lapról
+Csak az egyes csoportokat lehet hozzárendelni egy felügyeleti egységhez. Nincs lehetőség a csoportok tömeges műveletként való hozzárendelésére. A Azure Portal két módon rendelhet hozzá egy csoportot egy felügyeleti egységhez:
 
-    Nyissa meg a csoportok áttekintése lapot az Azure AD-ben, és válassza ki azt a csoportot, amelyet hozzá kell rendelni a felügyeleti egységhez. A bal oldalon válassza ki a **felügyeleti egységek** elemet azon felügyeleti egységek listázásához, amelyekre a csoport hozzá van rendelve. A felső részen megtalálja a felügyeleti egységhez való hozzárendelés lehetőséget, majd a gombra kattintva a felügyeleti egységet kiválaszthatja a jobb oldali panelen.
+* A **csoportok** ablaktáblán:
 
-    ![Csoport társítása egyenként egy felügyeleti egységhez](./media/admin-units-add-manage-groups/assign-to-group-1.png)
+  1. A Azure Portal nyissa meg az **Azure ad** -t.
+  1. Válassza a **csoportok** lehetőséget, majd válassza ki azt a csoportot, amelyet hozzá szeretne rendelni a felügyeleti egységhez. 
+  1. A bal oldali ablaktáblán válassza a **felügyeleti egységek** lehetőséget azon felügyeleti egységek listájának megjelenítéséhez, amelyekhez a csoport hozzá van rendelve. 
 
-1. Az **Azure AD > felügyeleti egységek > minden csoport** oldalon
+     ![Képernyőkép a "hozzárendelés felügyeleti egységhez" hivatkozásra a "felügyeleti egység" panelen.](./media/admin-units-add-manage-groups/assign-to-group-1.png)
 
-    Nyissa meg a minden csoport panelt az Azure AD > felügyeleti egységekben. Ha vannak olyan csoportok, amelyek már hozzá vannak rendelve a felügyeleti egységhez, akkor a jobb oldalon jelennek meg. A felső és a jobb oldali panelen válassza a **Hozzáadás** lehetőséget, majd az Azure ad-szervezetben elérhető csoportok listázásával. Válasszon ki egy vagy több olyan csoportot, amelyet hozzá szeretne rendelni a felügyeleti egységekhez.
+  1. Válassza **a hozzárendelés felügyeleti egységhez** lehetőséget.
+  1. A jobb oldali ablaktáblán válassza ki a felügyeleti egységet.
 
-    ![Válasszon ki egy felügyeleti egységet, majd válassza a tag hozzáadása elemet.](./media/admin-units-add-manage-groups/assign-to-admin-unit.png)
+* A **felügyeleti egységek**  >  **minden csoport** paneljén:
 
-### <a name="powershell"></a>PowerShell
+  1. A Azure Portal nyissa meg az **Azure ad** -t.
+  
+  1. A bal oldali ablaktáblán válassza a **felügyeleti egységek** , majd az **összes csoport** lehetőséget. 
+     A felügyeleti egységhez már hozzárendelt csoportok a jobb oldali ablaktáblán jelennek meg. 
+
+  1. A **csoportok** ablaktáblán válassza a **Hozzáadás** lehetőséget.
+    A jobb oldali ablaktábla az Azure AD-szervezet összes elérhető csoportját listázza. 
+
+     ![Képernyőkép – a Hozzáadás gombra kattintva hozzáadhat egy csoportot egy felügyeleti egységhez.](./media/admin-units-add-manage-groups/assign-to-admin-unit.png)
+
+  1. Válasszon ki egy vagy több olyan csoportot, amelyet hozzá szeretne rendelni a felügyeleti egységhez, majd kattintson a **kiválasztás** gombra.
+
+### <a name="use-powershell"></a>A PowerShell használata
+
+A következő példában a `Add-AzureADMSAdministrativeUnitMember` parancsmagot használva vegye fel a csoportot a felügyeleti egységbe. A felügyeleti egység és a hozzáadni kívánt csoport objektumazonosító-azonosítója argumentumként történik. Módosítsa a Kiemelt szakaszt az adott környezethez szükséges módon.
+
 
 ```powershell
 $administrative unitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
@@ -53,9 +71,9 @@ $GroupObj = Get-AzureADGroup -Filter "displayname eq 'TestGroup'"
 Add-AzureADMSAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId -RefObjectId $GroupObj.ObjectId
 ```
 
-Ebben a példában a Add-AzureADMSAdministrativeUnitMember parancsmagot használjuk a csoport felügyeleti egységhez való hozzáadásához. A felügyeleti egység és a hozzáadni kívánt csoport objektumazonosító-azonosítója argumentumként történik. A Kiemelt szakasz szükség szerint módosítható az adott környezetben.
+### <a name="use-microsoft-graph"></a>Microsoft Graph használata
 
-### <a name="microsoft-graph"></a>Microsoft Graph
+Futtassa az alábbi parancsot:
 
 ```http
 Http request
@@ -75,22 +93,28 @@ Példa:
 }
 ```
 
-## <a name="list-groups-in-an-au"></a>AU-beli csoportok listázása
+## <a name="view-a-list-of-groups-in-an-administrative-unit"></a>A csoportok listájának megtekintése egy felügyeleti egységben
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-Nyissa meg az **Azure AD > felügyeleti egységeket** a portálon. Válassza ki azt a felügyeleti egységet, amelynek a felhasználóit szeretné listázni. Alapértelmezés szerint az **összes felhasználó** már a bal oldali panelen van kiválasztva. Válassza az **összes csoport** lehetőséget, és a jobb oldalon megtalálja azon csoportok listáját, amelyek a kiválasztott felügyeleti egység tagjai.
+1. A Azure Portal nyissa meg az **Azure ad** -t.
 
-![Felügyeleti egységben lévő csoportok listázása](./media/admin-units-add-manage-groups/list-groups-in-admin-units.png)
+1. A bal oldali ablaktáblán válassza a **felügyeleti egységek** lehetőséget, majd válassza ki azt a felügyeleti egységet, amelynek a csoportjait meg szeretné tekinteni. Alapértelmezés szerint az **összes felhasználó** ki van választva a bal oldali ablaktáblán. 
 
-### <a name="powershell"></a>PowerShell
+1. A bal oldali ablaktáblán válassza a **csoportok** lehetőséget. A jobb oldali ablaktábla megjeleníti azoknak a csoportoknak a listáját, amelyek a kiválasztott felügyeleti egység tagjai.
+
+   ![Képernyőkép a "csoportok" panelről, amely egy felügyeleti egységben lévő csoportok listáját jeleníti meg.](./media/admin-units-add-manage-groups/list-groups-in-admin-units.png)
+
+### <a name="use-powershell"></a>A PowerShell használata
+
+A felügyeleti egység összes tagjának listájának megjelenítéséhez futtassa a következő parancsot: 
 
 ```powershell
 $administrative unitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
 Get-AzureADMSAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId
 ```
 
-Ez segítséget nyújt a felügyeleti egység összes tagjának beszerzéséhez. Ha meg szeretné jeleníteni az összes olyan csoportot, amely tagja a felügyeleti egységnek, használhatja az alábbi kódrészletet:
+Az összes olyan csoport megjelenítéséhez, amely tagja a felügyeleti egységnek, használja a következő kódrészletet:
 
 ```http
 foreach ($member in (Get-AzureADMSAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId)) 
@@ -102,7 +126,9 @@ Get-AzureADGroup -ObjectId $member.ObjectId
 }
 ```
 
-### <a name="microsoft-graph"></a>Microsoft Graph
+### <a name="use-microsoft-graph"></a>Microsoft Graph használata
+
+Futtassa az alábbi parancsot:
 
 ```http
 HTTP request
@@ -111,54 +137,71 @@ Request body
 {}
 ```
 
-## <a name="list-aus-for-a-group"></a>Csoporthoz tartozó AUs listázása
+## <a name="view-a-list-of-administrative-units-for-a-group"></a>Egy csoport felügyeleti egységeinek listájának megtekintése
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-Az Azure AD-portálon **csoportok**megnyitásával nyithatja meg a csoport adatait. Válasszon ki egy csoportot a csoport profiljának megnyitásához. Válassza a **felügyeleti egységek** lehetőséget az összes olyan felügyeleti egység listázásához, ahol a csoport tagja.
+1. A Azure Portal nyissa meg az **Azure ad** -t.
 
-![Csoport felügyeleti egységeinek listázása](./media/admin-units-add-manage-groups/list-group-au.png)
+1. A bal oldali ablaktáblán válassza a **csoportok** lehetőséget a csoportok listájának megjelenítéséhez.
 
-### <a name="powershell"></a>PowerShell
+1. Válasszon ki egy csoportot a csoport profiljának megnyitásához. 
+
+1. A bal oldali ablaktáblán válassza a **felügyeleti egységek** lehetőséget az összes olyan felügyeleti egység listázásához, ahol a csoport tagja.
+
+   ![Képernyőkép a "felügyeleti egységek" panelről, amely megjeleníti a csoporthoz rendelt felügyeleti egységek listáját.](./media/admin-units-add-manage-groups/list-group-au.png)
+
+### <a name="use-powershell"></a>A PowerShell használata
+
+Futtassa az alábbi parancsot:
 
 ```powershell
 Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $groupObjId} }
 ```
 
-### <a name="microsoft-graph"></a>Microsoft Graph
+### <a name="use-microsoft-graph"></a>Microsoft Graph használata
+
+Futtassa az alábbi parancsot:
 
 ```http
 https://graph.microsoft.com/v1.0/groups/<group-id>/memberOf/$/Microsoft.Graph.AdministrativeUnit
 ```
 
-## <a name="remove-a-group-from-an-au"></a>Csoport eltávolítása egy AU-ból
+## <a name="remove-a-group-from-an-administrative-unit"></a>Csoport eltávolítása felügyeleti egységből
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-A Azure Portal két módon távolíthatja el a csoportot egy felügyeleti egységből.
+A Azure Portal kétféleképpen távolíthatja el egy felügyeleti egységből:
 
-- Eltávolítás egy csoportból – áttekintés
+- Eltávolítás egy csoportból – Áttekintés:
 
-  1. Nyissa meg az **Azure ad**  >  -**csoportokat** , és nyissa meg a felügyeleti egységből eltávolítani kívánt csoport profilját.
-  1. Válassza a **felügyeleti egységek** lehetőséget a bal oldali panelen az összes olyan felügyeleti egység listázásához, ahol a csoport tagja. Válassza ki azt a felügyeleti egységet, amelyből el szeretné távolítani a csoportot, majd válassza az **Eltávolítás a felügyeleti egységből**lehetőséget.
+  1. A Azure Portal nyissa meg az **Azure ad** -t.
+  1. A bal oldali ablaktáblán válassza a **csoportok** lehetőséget, majd nyissa meg annak a csoportnak a profilját, amelyet el szeretne távolítani egy felügyeleti egységből.
+  1. A bal oldali ablaktáblán válassza a **felügyeleti egységek** lehetőséget az összes olyan felügyeleti egység listázásához, amelyhez a csoport hozzá van rendelve. 
+  1. Válassza ki azt a felügyeleti egységet, amelyből el szeretné távolítani a csoportot, majd válassza az **Eltávolítás a felügyeleti egységből** lehetőséget.
 
-    ![Csoport eltávolítása felügyeleti egységből](./media/admin-units-add-manage-groups/group-au-remove.png)
+     ![Képernyőkép a "felügyeleti egységek" panelről, amely a kiválasztott felügyeleti egységhez rendelt csoportok listáját jeleníti meg.](./media/admin-units-add-manage-groups/group-au-remove.png)
 
-- Eltávolítás felügyeleti egységből
+- Távolítsa el a felügyeleti egységből:
 
-  1. Nyissa meg az **Azure ad**  >  **felügyeleti egységeket** , és válassza ki azt a felügyeleti egységet, amelyben a csoport tagja.
-  1. Válassza a **csoportok** lehetőséget a bal oldali panelen a tagok listájának listázásához.
-  1. Válassza ki a felügyeleti egységből eltávolítani kívánt csoportot, majd válassza a **csoportok eltávolítása**lehetőséget.
+  1. A Azure Portal nyissa meg az **Azure ad** -t.
+  1. A bal oldali ablaktáblán válassza a **felügyeleti egységek** lehetőséget, majd válassza ki azt a felügyeleti egységet, amelyhez a csoport hozzá van rendelve.
+  1. A bal oldali ablaktáblán válassza a **csoportok** lehetőséget a felügyeleti egységhez rendelt összes csoport listázásához.
+  1. Válassza ki az eltávolítani kívánt csoportot, majd válassza a **csoportok eltávolítása** lehetőséget.
 
-    ![Felügyeleti egységben lévő csoportok listázása](./media/admin-units-add-manage-groups/list-groups-in-admin-units.png)
+    ![Képernyőfelvétel a "csoportok" panelről, amely egy felügyeleti egységben található csoportok listáját jeleníti meg.](./media/admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
-### <a name="powershell"></a>PowerShell
+### <a name="use-powershell"></a>A PowerShell használata
+
+Futtassa az alábbi parancsot:
 
 ```powershell
 Remove-AzureADMSAdministrativeUnitMember -ObjectId $auId -MemberId $memberGroupObjId
 ```
 
-### <a name="microsoft-graph"></a>Microsoft Graph
+### <a name="use-microsoft-graph"></a>Microsoft Graph használata
+
+Futtassa az alábbi parancsot:
 
 ```http
 https://graph.microsoft.com/v1.0/directory/AdministrativeUnits/<adminunit-id>/members/<group-id>/$ref

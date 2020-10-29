@@ -11,12 +11,12 @@ ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4d66a1174b1b4adc94b24c6aecd55b2b8679f2f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa5025e0a2bd260adeb23b4ab7c4d5f8bd83a43a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85211884"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026802"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>A Gen2 cache figyelése
 
@@ -26,15 +26,15 @@ A Gen2-tároló architektúrája automatikusan lekéri a leggyakrabban lekérdez
  
 ## <a name="troubleshoot-using-the-azure-portal"></a>Hibakeresés a Azure Portal használatával
 
-Az Azure Monitor használatával megtekintheti a Gen2 gyorsítótár-metrikáit a lekérdezés teljesítményének hibakereséséhez. Először lépjen a Azure Portalra, és kattintson a **figyelés**, a **metrikák** és a **+ hatókör kijelölése**elemre:
+Az Azure Monitor használatával megtekintheti a Gen2 gyorsítótár-metrikáit a lekérdezés teljesítményének hibakereséséhez. Először lépjen a Azure Portalra, és kattintson a **figyelés** , a **metrikák** és a **+ hatókör kijelölése** elemre:
 
-![Azure Monitor](./media/sql-data-warehouse-how-to-monitor-cache/cache-0.png)
+![A képernyőképen a Azure Portal Metrikái közül kiválasztott hatókör kiválasztása látható.](./media/sql-data-warehouse-how-to-monitor-cache/cache-0.png)
 
 Az adattárház megkereséséhez használja a keresési és a legördülő sávokat. Ezután válassza az alkalmaz lehetőséget.
 
-![Azure Monitor](./media/sql-data-warehouse-how-to-monitor-cache/cache-1.png)
+![A képernyőképen a hatókör kiválasztása panel látható, ahol kiválaszthatja az adattárházat.](./media/sql-data-warehouse-how-to-monitor-cache/cache-1.png)
 
-A Gen2 gyorsítótár hibaelhárításának legfontosabb mérőszámai a **gyorsítótár-találatok százalékos aránya** és a **gyorsítótárban használt százalék**. Válassza a **gyorsítótár találati százaléka** lehetőséget, majd a **metrika hozzáadása** gombbal adja hozzá a **gyorsítótár használt százalékát**. 
+A Gen2 gyorsítótár hibaelhárításának legfontosabb mérőszámai a **gyorsítótár-találatok százalékos aránya** és a **gyorsítótárban használt százalék** . Válassza a **gyorsítótár találati százaléka** lehetőséget, majd a **metrika hozzáadása** gombbal adja hozzá a **gyorsítótár használt százalékát** . 
 
 ![Gyorsítótár Metrikái](./media/sql-data-warehouse-how-to-monitor-cache/cache-2.png)
 
@@ -58,5 +58,5 @@ Az alábbi mátrix a gyorsítótár metrikáinak értékein alapuló forgatókö
 > [!IMPORTANT]
 > Ha a gyorsítótár-találatok százalékos aránya vagy a gyorsítótár kihasználtsági aránya nem frissül a munkaterhelés újbóli futtatása után, a munkakészlete már a memóriában is tartózkodik. A rendszer csak a fürtözött oszlopcentrikus-táblákat gyorsítótárazza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az általános lekérdezési teljesítmény finomhangolásával kapcsolatos további információkért lásd: a [lekérdezés-végrehajtás figyelése](sql-data-warehouse-manage-monitor.md#monitor-query-execution).

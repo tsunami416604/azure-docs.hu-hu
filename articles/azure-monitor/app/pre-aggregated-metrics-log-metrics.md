@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f7bfa15b12618715bf0d911e4b4927a1fa327107
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b93ac774dffb837d93853353e83b8da4ab4d8d4
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539129"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027159"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Naplóalapú és előre összesített metrikák az Application Insightsban
 
@@ -40,6 +40,28 @@ Az újabb SDK-k ([Application Insights 2,7](https://www.nuget.org/packages/Micro
 Az olyan SDK-k esetében, amelyek nem implementálják az előzetes összesítést (azaz Application Insights SDK-k régebbi verziói vagy a böngésző-rendszerállapotok), az Application Insights háttérrendszer továbbra is feltölti az új metrikákat az Application Insights esemény-gyűjtési végpont által fogadott események összesítésével. Ez azt jelenti, hogy ha nem használja ki a hálózaton keresztül továbbított adatmennyiséget, továbbra is használhatja az előre összevont mérőszámokat, és a közel valós idejű dimenziós riasztások jobb teljesítményét és támogatását is kihasználhatja az olyan SDK-k esetében, amelyek nem összesítik az előre összevont mérőszámokat a gyűjtemény során.
 
 Érdemes megemlíteni, hogy a gyűjtemény végpontja előre összesíti az eseményeket a betöltési mintavételezés előtt, ami azt jelenti, hogy a betöltési [mintavételezés](./sampling.md) soha nem befolyásolja az előre aggregált mérőszámok pontosságát, függetlenül az alkalmazáshoz használt SDK-verziótól.  
+
+### <a name="sdk-supported-pre-aggregated-metrics-table"></a>Az SDK által támogatott előre összesített mérőszámok táblázata
+
+| Aktuális üzemi SDK-k | Standard mérőszámok (SDK előzetes összesítés) | Egyéni metrikák (az SDK előzetes összesítése nélkül) | Egyéni metrikák (az SDK előzetes összesítésével)|
+|------------------------------|-----------------------------------|----------------------------------------------|---------------------------------------|
+| .NET Core-és .NET-keretrendszer | Támogatott (V 2.13.1 +)| [TrackMetric](api-custom-events-metrics.md#trackmetric) -n keresztül támogatott| Támogatott (V 2.7.2 +) [GetMetric](get-metric.md) keresztül |
+| Java                         | Nem támogatott       | [TrackMetric](api-custom-events-metrics.md#trackmetric) -n keresztül támogatott| Nem támogatott                           |
+| Node.js                      | Nem támogatott       | [TrackMetric](api-custom-events-metrics.md#trackmetric) -n keresztül támogatott| Nem támogatott                           |
+| Python                       | Nem támogatott       | Támogatott                                 | [OpenCensus. stats](opencensus-python.md#metrics) használatával támogatott |  
+
+
+### <a name="codeless-supported-pre-aggregated-metrics-table"></a>Kód nem támogatott előre összesített mérőszámok táblázata
+
+| Aktuális üzemi SDK-k | Standard mérőszámok (SDK előzetes összesítés) | Egyéni metrikák (az SDK előzetes összesítése nélkül) | Egyéni metrikák (az SDK előzetes összesítésével)|
+|-------------------------|--------------------------|-------------------------------------------|-----------------------------------------|
+| ASP.NET                 | Támogatott <sup> 1<sup>    | Nem támogatott                             | Nem támogatott                           |
+| ASP.NET Core            | Támogatott <sup> 2<sup>    | Nem támogatott                             | Nem támogatott                           |
+| Java                    | Nem támogatott            | Nem támogatott                             | [Támogatott](java-in-process-agent.md#metrics) |
+| Node.js                 | Nem támogatott            | Nem támogatott                             | Nem támogatott                           |
+
+1. A ASP.NET-kód App Service csak a teljes figyelési módban lévő mérőszámokat bocsátja ki. A ASP.NET-kód nélküli csatolás App Service, VM/VMSS, a helyszíni standard mérőszámok pedig méretek nélkül. Az SDK minden dimenzióhoz szükséges.
+2. ASP.NET Core a kód nélküli csatolás a App Service standard mérőszámokat bocsát ki dimenziók nélkül. Az SDK minden dimenzióhoz szükséges.
 
 ## <a name="using-pre-aggregation-with-application-insights-custom-metrics"></a>Előzetes összesítés használata Application Insights egyéni metrikákkal
 

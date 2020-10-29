@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 01a22aa5d2ec7ed54be62f0975b0fefbafd84cd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53c68f44273b14658bd4d95ce7cf3cf847c077d0
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85211561"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025952"
 ---
 # <a name="monitor-workload---azure-portal"></a>Munkaterhelés figyelése – Azure Portal
 
@@ -32,9 +32,9 @@ Navigáljon Log Analytics munkaterületek Tallózás paneljére, és hozzon lét
 
 ![Log Analytics-munkaterületek](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspaces.png)
 
-![Elemzési munkaterület hozzáadása](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace.png)
+![Képernyőfelvétel: a Log Analytics munkaterületek, ahol a Hozzáadás lehetőséget választhatja.](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace.png)
 
-![Elemzési munkaterület hozzáadása](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace_2.png)
+![A képernyőképen a Log Analytics munkaterület látható, ahol értékeket adhat meg.](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace_2.png)
 
 A munkaterületekkel kapcsolatos további információkért tekintse meg az alábbi [dokumentációt](../../azure-monitor/learn/quick-create-workspace.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsond#create-a-workspace).
 
@@ -95,6 +95,6 @@ AzureDiagnostics
 | summarize totalQueuedQueries = dcount(RequestId_s)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy beállította és konfigurálta az Azure monitor-naplókat, [testreszabhatja az Azure-irányítópultokat](../../azure-portal/azure-portal-dashboards.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a csapaton belüli megosztáshoz.

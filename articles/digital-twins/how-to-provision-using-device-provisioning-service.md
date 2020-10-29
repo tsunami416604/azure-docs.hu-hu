@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b6dbcaf317efb8589a92275527f992029b7eb8a6
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 0c82114f697227b96e3548fff24314d4774455b9
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494749"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026445"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Eszközök automatikus felügyelete az Azure Digital Twins-ben a Device kiépítési szolgáltatás (DPS) használatával
 
@@ -29,12 +29,12 @@ A kiépítés beállítása előtt rendelkeznie kell egy, a modelleket és az ik
 Ha még nem rendelkezik ezzel a beállítással, létrehozhatja azt az Azure Digital Twins [*oktatóanyagának használatával: Kapcsolódás végpontok közötti megoldáshoz*](tutorial-end-to-end.md). Az oktatóanyag végigvezeti egy Azure digitális Twins-példány beállításán, amely modellekkel és ikrekkel, csatlakoztatott Azure- [IoT Hubokkal](../iot-hub/about-iot-hub.md)és számos [Azure-funkcióval](../azure-functions/functions-overview.md) rendelkezik az adatfolyamok propagálásához.
 
 A példány beállításakor az alábbi értékekre lesz szüksége a cikk későbbi részében. Ha újra össze kell gyűjtenie ezeket az értékeket, az alábbi hivatkozásokat követve adhat meg útmutatást.
-* Azure digitális Twins-példány **_állomásneve_** ([Keresés a portálon](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
-* Az Azure Event Hubs a kapcsolatok karakterláncának **_összekapcsolási karakterlánca_** ([Keresés a portálon](../event-hubs/event-hubs-get-connection-string.md#get-connection-string-from-the-portal))
+* Azure digitális Twins-példány **_állomásneve_** ( [Keresés a portálon](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
+* Az Azure Event Hubs a kapcsolatok karakterláncának **_összekapcsolási karakterlánca_** ( [Keresés a portálon](../event-hubs/event-hubs-get-connection-string.md#get-connection-string-from-the-portal))
 
 Ez a minta egy **eszköz-szimulátort** is használ, amely az eszközök kiépítési szolgáltatásával történő telepítést is magában foglalja. Az eszköz-szimulátor itt található: [Azure digitális Twins és IoT hub integrációs minta](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/). Szerezze be a minta projektet a gépen a minta hivatkozásra kattintva, majd a cím alatt található *zip letöltése* gombra kattintva. Bontsa ki a letöltött mappát.
 
-Az eszköz-szimulátor **Node.js**10.0. x vagy újabb verzión alapul. [*A fejlesztési környezet előkészítése*](https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md) leírja, hogyan telepítheti a Windows vagy Linux rendszerhez készült Node.js az oktatóanyaghoz.
+Az eszköz-szimulátor **Node.js** 10.0. x vagy újabb verzión alapul. [*A fejlesztési környezet előkészítése*](https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md) leírja, hogyan telepítheti a Windows vagy Linux rendszerhez készült Node.js az oktatóanyaghoz.
 
 ## <a name="solution-architecture"></a>Megoldásarchitektúra
 
@@ -77,7 +77,7 @@ az iot dps create --name <Device Provisioning Service name> --resource-group <re
 
 ### <a name="create-an-azure-function"></a>Azure-függvény létrehozása
 
-Ezután létre fog hozni egy HTTP-kérelem által aktivált függvényt egy Function alkalmazáson belül. Használhatja a teljes körű oktatóanyagban létrehozott Function alkalmazást ([*oktatóanyag: végpontok közötti megoldás összekapcsolását*](tutorial-end-to-end.md)) vagy a sajátját.
+Ezután létre fog hozni egy HTTP-kérelem által aktivált függvényt egy Function alkalmazáson belül. Használhatja a teljes körű oktatóanyagban létrehozott Function alkalmazást ( [*oktatóanyag: végpontok közötti megoldás összekapcsolását*](tutorial-end-to-end.md)) vagy a sajátját.
 
 Ezt a függvényt az eszköz kiépítési szolgáltatása fogja használni egy [Egyéni kiosztási szabályzatban](../iot-dps/how-to-use-custom-allocation-policies.md) egy új eszköz kiépítéséhez. További információ a HTTP-kérelmek Azure functions használatával történő használatáról: [*Azure HTTP-kérelem trigger Azure functions*](../azure-functions/functions-bindings-http-webhook-trigger.md).
 
@@ -233,7 +233,7 @@ Mentse a fájlt, majd tegye közzé újra a Function alkalmazást. A Function al
 
 ### <a name="configure-your-function"></a>A függvény konfigurálása
 
-A következő lépésben környezeti változókat kell beállítania a Function alkalmazásban, amely tartalmazza a létrehozott Azure digitális Twins-példányra mutató hivatkozást. Ha a teljes körű oktatóanyagot használta ([*oktatóanyag: végpontok közötti megoldás összekötése*](tutorial-end-to-end.md)), a beállítás már konfigurálva lesz.
+A következő lépésben környezeti változókat kell beállítania a Function alkalmazásban, amely tartalmazza a létrehozott Azure digitális Twins-példányra mutató hivatkozást. Ha a teljes körű oktatóanyagot használta ( [*oktatóanyag: végpontok közötti megoldás összekötése*](tutorial-end-to-end.md)), a beállítás már konfigurálva lesz.
 
 Adja hozzá a beállítást az alábbi Azure CLI-paranccsal:
 
@@ -243,18 +243,11 @@ az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure
 
 Győződjön meg arról, hogy az engedélyek és a felügyelt identitás szerepkör-hozzárendelés helyesen van konfigurálva a Function alkalmazáshoz a teljes körű oktatóanyagban az [*engedélyek hozzárendelése a Function alkalmazáshoz*](tutorial-end-to-end.md#assign-permissions-to-the-function-app) című szakaszban leírtak szerint.
 
-<!-- 
-* Azure AD app registration **_Application (client) ID_** ([find in portal](../articles/digital-twins/how-to-set-up-instance-portal.md#collect-important-values))
-
-```azurecli-interactive
-az functionapp config appsettings set --settings "AdtAppId=<Application (client)" ID> -g <resource group> -n <your App Service (function app) name> 
-``` -->
-
 ### <a name="create-device-provisioning-enrollment"></a>Eszköz kiépítési regisztrációjának létrehozása
 
-Ezután létre kell hoznia egy regisztrációt az eszköz kiépítési szolgáltatásában egy **Egyéni foglalási függvénnyel**. Az egyéni kiosztási szabályzatokról szóló cikk az eszköz üzembe helyezése [*és az*](../iot-dps/how-to-use-custom-allocation-policies.md#create-the-enrollment) [*egyedi eszközök kulcsai*](../iot-dps/how-to-use-custom-allocation-policies.md#derive-unique-device-keys) szakasza című cikkben ismertetett útmutatást követve végezze el az alábbi utasításokat.
+Ezután létre kell hoznia egy regisztrációt az eszköz kiépítési szolgáltatásában egy **Egyéni foglalási függvénnyel** . Az egyéni kiosztási szabályzatokról szóló cikk az eszköz üzembe helyezése [*és az*](../iot-dps/how-to-use-custom-allocation-policies.md#create-the-enrollment) [*egyedi eszközök kulcsai*](../iot-dps/how-to-use-custom-allocation-policies.md#derive-unique-device-keys) szakasza című cikkben ismertetett útmutatást követve végezze el az alábbi utasításokat.
 
-A folyamat során a rendszer az imént létrehozott függvényhez csatolja a beléptetést, ha kiválasztja a függvényt a lépés során, hogy **kiválassza, hogyan kívánja hozzárendelni az eszközöket a hubokhoz**. A regisztráció létrehozása után a rendszer később a beléptetési nevet és az elsődleges vagy másodlagos SAS-kulcsot fogja használni az eszköz szimulátorjának konfigurálásához ehhez a cikkhez.
+A folyamat során a rendszer az imént létrehozott függvényhez csatolja a beléptetést, ha kiválasztja a függvényt a lépés során, hogy **kiválassza, hogyan kívánja hozzárendelni az eszközöket a hubokhoz** . A regisztráció létrehozása után a rendszer később a beléptetési nevet és az elsődleges vagy másodlagos SAS-kulcsot fogja használni az eszköz szimulátorjának konfigurálásához ehhez a cikkhez.
 
 ### <a name="set-up-the-device-simulator"></a>Az eszköz-szimulátor beállítása
 
@@ -266,7 +259,7 @@ Nyisson meg egy parancssorablakot, és navigáljon a letöltött mappába, majd 
 npm install
 ```
 
-Ezután másolja a *. env. template* fájlt egy új, *. env*nevű fájlba, és töltse ki az alábbi beállításokat:
+Ezután másolja a *. env. template* fájlt egy új, *. env* nevű fájlba, és töltse ki az alábbi beállításokat:
 
 ```cmd
 PROVISIONING_HOST = "global.azure-devices-provisioning.net"
@@ -318,18 +311,18 @@ Az alábbi szakasz végigvezeti az automatikus kivonási folyamat beállításá
 Most létre kell hoznia egy Azure [Event hub](../event-hubs/event-hubs-about.md)-t, amely a IoT hub életciklus eseményeinek fogadására szolgál majd. 
 
 Az alábbi információk segítségével hajtsa végre az [*Event hub létrehozása*](../event-hubs/event-hubs-create.md) rövid útmutatójában ismertetett lépéseket:
-* Ha a teljes körű oktatóanyagot használja ([*oktatóanyag: végpontok közötti megoldás összekötése*](tutorial-end-to-end.md)), akkor újra felhasználhatja a végpontok közötti oktatóanyaghoz létrehozott erőforráscsoportot.
-* Nevezze el az Event hub- *lifecycleevents*, vagy válasszon ki egy másikat, és jegyezze fel a létrehozott névteret. Ezeket akkor fogja használni, amikor beállítja az életciklus függvényt, és IoT Hub útvonalat a következő szakaszokban.
+* Ha a teljes körű oktatóanyagot használja ( [*oktatóanyag: végpontok közötti megoldás összekötése*](tutorial-end-to-end.md)), akkor újra felhasználhatja a végpontok közötti oktatóanyaghoz létrehozott erőforráscsoportot.
+* Nevezze el az Event hub- *lifecycleevents* , vagy válasszon ki egy másikat, és jegyezze fel a létrehozott névteret. Ezeket akkor fogja használni, amikor beállítja az életciklus függvényt, és IoT Hub útvonalat a következő szakaszokban.
 
 ### <a name="create-an-azure-function"></a>Azure-függvény létrehozása
 
-Ezután létre fog hozni egy Event Hubs által aktivált függvényt egy Function alkalmazásban. Használhatja a teljes körű oktatóanyagban létrehozott Function alkalmazást ([*oktatóanyag: végpontok közötti megoldás összekapcsolását*](tutorial-end-to-end.md)) vagy a sajátját. 
+Ezután létre fog hozni egy Event Hubs által aktivált függvényt egy Function alkalmazásban. Használhatja a teljes körű oktatóanyagban létrehozott Function alkalmazást ( [*oktatóanyag: végpontok közötti megoldás összekapcsolását*](tutorial-end-to-end.md)) vagy a sajátját. 
 
-Nevezze el az Event hub-eseményindítót *lifecycleevents*, és kapcsolódjon az Event hub-eseményindítóhoz az előző lépésben létrehozott Event hubhoz. Ha más Event hub-nevet használt, módosítsa úgy, hogy az az alábbi eseményindító nevével egyezzen.
+Nevezze el az Event hub-eseményindítót *lifecycleevents* , és kapcsolódjon az Event hub-eseményindítóhoz az előző lépésben létrehozott Event hubhoz. Ha más Event hub-nevet használt, módosítsa úgy, hogy az az alábbi eseményindító nevével egyezzen.
 
 Ez a függvény a IoT Hub eszköz életciklusa eseményt fogja használni egy meglévő eszköz kivonásához. Az életciklus eseményeivel kapcsolatos további információkért lásd: [*IoT hub nem telemetria események*](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events). További információ a Event Hubs Azure functions használatával történő használatáról: [*azure Event Hubs trigger Azure Functionshoz*](../azure-functions/functions-bindings-event-hubs-trigger.md).
 
-A közzétett Function alkalmazásban vegyen fel egy *Event hub eseményindító*típusú új függvényt, és illessze be az alábbi kódot.
+A közzétett Function alkalmazásban vegyen fel egy *Event hub eseményindító* típusú új függvényt, és illessze be az alábbi kódot.
 
 ```C#
 using System;
@@ -445,7 +438,7 @@ Mentse a projektet, majd tegye közzé újra a Function alkalmazást. A Function
 
 ### <a name="configure-your-function"></a>A függvény konfigurálása
 
-A következő lépésben környezeti változókat kell beállítania a Function alkalmazásban, amely tartalmazza a létrehozott Azure digitális Twins-példányra és az Event hub-ra mutató hivatkozást. Ha a teljes körű oktatóanyagot használta ([*oktatóanyag: végpontok közötti megoldás összekötése*](./tutorial-end-to-end.md)), az első beállítás már konfigurálva lesz.
+A következő lépésben környezeti változókat kell beállítania a Function alkalmazásban, amely tartalmazza a létrehozott Azure digitális Twins-példányra és az Event hub-ra mutató hivatkozást. Ha a teljes körű oktatóanyagot használta ( [*oktatóanyag: végpontok közötti megoldás összekötése*](./tutorial-end-to-end.md)), az első beállítás már konfigurálva lesz.
 
 Adja hozzá a beállítást az Azure CLI-paranccsal. A parancs [Cloud Shell](https://shell.azure.com)vagy helyileg is futtatható, ha telepítve van az Azure CLI a [gépen](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 
@@ -493,7 +486,7 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 Látnia kell, hogy az eszköz két része nem található az Azure Digital Twins-példányban.
 :::image type="content" source="media/how-to-provision-using-dps/show-retired-twin.png" alt-text="Egy eszköz és számos Azure-szolgáltatás áttekintése egy végpontok közötti forgatókönyvben. Az adatforgalom a termosztátos eszköz és a DPS közötti kapcsolaton keresztül zajlik. Az adatok a DPS-ből a IoT Hubba és az Azure digitális Twins-ba is áramlanak a &quot;kiosztás&quot; címkével ellátott Azure-függvény használatával. A manuális &quot;eszköz törlése&quot; műveletből származó adatok IoT Hub > Event Hubs > Azure Functions > Azure digitális Ikreken keresztül áramlanak.":::
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha már nincs szüksége az ebben a cikkben létrehozott erőforrásokra, a következő lépésekkel törölheti őket.
 

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 4f84ccbddc6f5244ac8f4334b716d770e0ed4afc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64d40de50f21811a56318971de1836abc8fbf8c9
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328921"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027261"
 ---
 # <a name="http-features"></a>HTTP-funkciók
 
@@ -57,7 +57,7 @@ A koordináló [ügyfél-kötés](durable-functions-bindings.md#orchestration-cl
 
 # <a name="python"></a>[Python](#tab/python)
 
-**__init__. a**
+**__init__ . a**
 
 ```python
 import logging
@@ -140,7 +140,7 @@ Az összes beépített HTTP API leírását a [http API-referenciában](durable-
 
 ### <a name="async-operation-tracking"></a>Aszinkron művelet követése
 
-A korábban említett HTTP-válasz úgy lett kialakítva, hogy segítse a hosszú ideig futó HTTP aszinkron API-k megvalósítását Durable Functions. Ezt a mintát más néven a *lekérdezési fogyasztói mintának*nevezzük. Az ügyfél/kiszolgáló folyamat a következőképpen működik:
+A korábban említett HTTP-válasz úgy lett kialakítva, hogy segítse a hosszú ideig futó HTTP aszinkron API-k megvalósítását Durable Functions. Ezt a mintát más néven a *lekérdezési fogyasztói mintának* nevezzük. Az ügyfél/kiszolgáló folyamat a következőképpen működik:
 
 1. Az ügyfél egy HTTP-kérést bocsát ki egy hosszú ideig futó folyamat indításához, például egy Orchestrator függvényhez.
 1. A cél HTTP-trigger egy HTTP 202 választ ad vissza, amelynek a helye fejléce "statusQueryGetUri" értékkel rendelkezik.
@@ -304,7 +304,7 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 
     # get a list of the Azure subscriptions that I have access to
     restart_response = yield context.call_http("POST", 
-        f"https://management.azure.com/subscriptions/${subscription_id}/resourceGroups/${resource_group}/providers/Microsoft.Compute/virtualMachines/${vm_name}/restart?api-version=${api_version}",
+        f"https://management.azure.com/subscriptions/{subscription_id}/resourceGroups/{resource_group}/providers/Microsoft.Compute/virtualMachines/{vm_name}/restart?api-version={api_version}",
         None,
         None,
         token_source)

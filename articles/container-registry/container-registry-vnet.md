@@ -3,12 +3,12 @@ title: Hozzáférés korlátozása szolgáltatás-végpont használatával
 description: Az Azure Container Registry elérésének korlátozása egy Azure-beli virtuális hálózat szolgáltatási végpontjának használatával. A szolgáltatás-végponti hozzáférés a prémium szintű szolgáltatási szint egyik funkciója.
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 3472549827781c6ed2f6be0417866747c81edd93
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 5f9bc7c9a6c8f2061765510a6396611502fd4a2a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215501"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026224"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Tároló-beállításjegyzékhez való hozzáférés korlátozása egy Azure-beli virtuális hálózat szolgáltatási végpontjának használatával
 
@@ -53,7 +53,7 @@ Ebben a szakaszban úgy konfigurálja a tároló-beállításjegyzéket, hogy en
 
 ### <a name="add-a-service-endpoint-to-a-subnet"></a>Szolgáltatási végpont hozzáadása egy alhálózathoz
 
-Amikor létrehoz egy virtuális GÉPET, az Azure alapértelmezés szerint ugyanahhoz az erőforráscsoporthoz hoz létre egy virtuális hálózatot. A virtuális hálózat neve a virtuális gép nevén alapul. Ha például a virtuális gép *myDockerVM*nevezi el, az alapértelmezett virtuális hálózat neve *myDockerVMVNET*, és egy *myDockerVMSubnet*nevű alhálózattal rendelkezik. Ennek ellenőrzéséhez használja az az [Network vnet List][az-network-vnet-list] parancsot:
+Amikor létrehoz egy virtuális GÉPET, az Azure alapértelmezés szerint ugyanahhoz az erőforráscsoporthoz hoz létre egy virtuális hálózatot. A virtuális hálózat neve a virtuális gép nevén alapul. Ha például a virtuális gép *myDockerVM* nevezi el, az alapértelmezett virtuális hálózat neve *myDockerVMVNET* , és egy *myDockerVMSubnet* nevű alhálózattal rendelkezik. Ennek ellenőrzéséhez használja az az [Network vnet List][az-network-vnet-list] parancsot:
 
 ```azurecli
 az network vnet list \
@@ -169,7 +169,7 @@ Helyettesítse be a beállításjegyzék nevét a következő az [ACR Update][az
 az acr update --name myContainerRegistry --default-action Allow
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha az összes Azure-erőforrást ugyanabban az erőforráscsoporthoz hozta létre, és már nincs rájuk szükség, akkor az erőforrásokat egyetlen [az Group delete](/cli/azure/group) paranccsal törölheti:
 
@@ -189,7 +189,6 @@ az group delete --name myResourceGroup
 
 
 <!-- LINKS - External -->
-[aci-helloworld]: https://hub.docker.com/r/microsoft/aci-helloworld/
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

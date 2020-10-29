@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 09/02/2020
-ms.openlocfilehash: 7d73d832f96d087964c46c6c735c0385832c08db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32f1602c91d17ef2ad3283d4bc03d00d432641aa
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370912"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027601"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Az adatfolyamatok leképezése Azure Data Factory
 
@@ -27,7 +27,7 @@ Az adatforgalom leképezése teljes körű vizuális élményt biztosít, és ni
 
 ## <a name="getting-started"></a>Első lépések
 
-Az adatfolyamatok a gyári erőforrások ablaktábláról jönnek létre, például a folyamatok és az adatkészletek. Adatfolyamat létrehozásához válassza ki a **gyári erőforrások**melletti pluszjelet, majd válassza az **adatfolyam**lehetőséget. 
+Az adatfolyamatok a gyári erőforrások ablaktábláról jönnek létre, például a folyamatok és az adatkészletek. Adatfolyamat létrehozásához válassza ki a **gyári erőforrások** melletti pluszjelet, majd válassza az **adatfolyam** lehetőséget. 
 
 ![Új adatfolyam](media/data-flow/new-data-flow.png "új adatfolyam")
 
@@ -37,13 +37,13 @@ Ez a művelet végigvezeti az adatáramlási vászonon, ahol létrehozhatja az �
 
 A leképezési folyamat egy egyedi szerzői vászon, amely megkönnyíti az átalakítási logika kiépítése. Az adatfolyam-vászon három részből áll: a felső sáv, a gráf és a konfigurációs panel. 
 
-![Vászon](media/data-flow/canvas1.png "Vászon")
+![Képernyőfelvétel: az adatáramlási vászon a felső sáv, a gráf és a konfigurációs panel feliratú.](media/data-flow/canvas1.png "Vászon")
 
 ### <a name="graph"></a>Graph
 
-A gráf megjeleníti az átalakítási adatfolyamot. Megjeleníti a forrásadatok vonalát, mivel az egy vagy több mosogatóba áramlik. Új forrás hozzáadásához válassza a **forrás hozzáadása**elemet. Új átalakítás hozzáadásához válassza a meglévő átalakítás jobb alsó sarkában látható plusz jelre. További információ [az adatfolyam-gráf kezeléséről](concepts-data-flow-manage-graph.md).
+A gráf megjeleníti az átalakítási adatfolyamot. Megjeleníti a forrásadatok vonalát, mivel az egy vagy több mosogatóba áramlik. Új forrás hozzáadásához válassza a **forrás hozzáadása** elemet. Új átalakítás hozzáadásához válassza a meglévő átalakítás jobb alsó sarkában látható plusz jelre. További információ [az adatfolyam-gráf kezeléséről](concepts-data-flow-manage-graph.md).
 
-![Vászon](media/data-flow/canvas2.png "Vászon")
+![A képernyőfelvétel a vászon Graph részét jeleníti meg egy keresési szövegmezővel.](media/data-flow/canvas2.png "Vászon")
 
 ### <a name="configuration-panel"></a>Konfigurációs panel
 

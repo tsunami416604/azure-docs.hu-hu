@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: 5edea4b3d3834d8f99159546c0279394ec3986f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11ddb2f40ee56b51c5ecbae11465093abb8e4feb
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324348"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027482"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Séma-eltolódás a leképezési adatfolyamban
 
@@ -43,7 +43,7 @@ A forrás-átalakításban a séma-eltolódás olyan oszlopok olvasására van m
 
 ![Séma-drift forrás](media/data-flow/schemadrift001.png "Séma-drift forrás")
 
-Ha engedélyezve van a séma-eltolódás, a rendszer az összes bejövő mezőt beolvassa a forrásból a végrehajtás során, és a teljes folyamatot átadja a fogadónak. Alapértelmezés szerint az összes újonnan észlelt oszlop (más néven *lebegő oszlop*) sztring adattípusként érkezik. Ha azt szeretné, hogy az adatfolyam automatikusan kikövetkeztetse az oszlopok adattípusait, ellenőrizze, hogy a **kikövetkeztetett oszlop típusa** szerepel-e a forrás beállításai között.
+Ha engedélyezve van a séma-eltolódás, a rendszer az összes bejövő mezőt beolvassa a forrásból a végrehajtás során, és a teljes folyamatot átadja a fogadónak. Alapértelmezés szerint az összes újonnan észlelt oszlop (más néven *lebegő oszlop* ) sztring adattípusként érkezik. Ha azt szeretné, hogy az adatfolyam automatikusan kikövetkeztetse az oszlopok adattípusait, ellenőrizze, hogy a **kikövetkeztetett oszlop típusa** szerepel-e a forrás beállításai között.
 
 ## <a name="schema-drift-in-sink"></a>Séma-eltolódás a fogadóban
 
@@ -69,11 +69,11 @@ Az oszlopok mintáinak megvalósításával kapcsolatos további információké
 
 A lebegő oszlopok explicit módon történő hivatkozásához gyorsan létrehozhat leképezéseket ezekhez az oszlopokhoz az adatelőnézet gyors művelete révén. Ha a [hibakeresési mód](concepts-data-flow-debug-mode.md) be van kapcsolva, nyissa meg az adatelőnézet lapot, és kattintson a **frissítés** gombra az adatelőnézet beolvasásához. Ha az adatelőállító észleli, hogy az elsodródott oszlopok léteznek, kattintson az **Elsodródott térképre** , és készítsen egy származtatott oszlopot, amely lehetővé teszi, hogy az összes áthelyezett oszlopra hivatkozzon a séma nézeteiben.
 
-![Térkép felúszik](media/data-flow/mapdrifted1.png "Térkép felúszik")
+![Képernyőfelvétel: az adatelőnézet lap, amelyen a Térkép látható.](media/data-flow/mapdrifted1.png "Térkép felúszik")
 
 A generált származtatott oszlop transzformációjában minden egyes lebegő oszlop az észlelt névvel és adattípussal van leképezve. A fenti adatelőnézetben a "movieId" oszlop egész számként van észlelve. Ha a **leképezési** felszínre kattintott, a MovieId a származtatott oszlopban van definiálva, `toInteger(byName('movieId'))` és a séma nézeteiben szerepel az alsóbb rétegbeli átalakításokban.
 
-![Térkép felúszik](media/data-flow/mapdrifted2.png "Térkép felúszik")
+![Képernyőfelvétel: a származtatott oszlop beállításainak lapja.](media/data-flow/mapdrifted2.png "Térkép felúszik")
 
 ## <a name="next-steps"></a>Következő lépések
 Az [adatáramlás kifejezésének nyelvén](data-flow-expression-functions.md)további létesítményeket talál az oszlopok és a séma drift esetében, beleértve az "byName" és a "ByPosition" típust is.

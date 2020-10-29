@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 84cb7e7e98e81e242ec1cac554fe073370e45645
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 7f5ca063bcc784498dddf87f34f0f7974b95ecaf
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495781"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027313"
 ---
 # <a name="write-client-app-authentication-code"></a>Ügyfél-alkalmazás hitelesítési kódjának írása
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan szerezhet be hitelesítő adatokat az `Azure.Identit
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Először végezze el a telepítési lépéseket a következő [*útmutatóban: példány és hitelesítés beállítása*](how-to-set-up-instance-portal.md). Ez biztosítja, hogy rendelkezik egy Azure digitális Twins-példánnyal, a felhasználó rendelkezik hozzáférési engedélyekkel, és beállította az ügyfélalkalmazások engedélyeit. Az összes beállítás után készen áll az ügyfélalkalmazás kódjának írására.
+Először végezze el a telepítési lépéseket a következő [*útmutatóban: példány és hitelesítés beállítása*](how-to-set-up-instance-portal.md). Így biztosíthatja, hogy rendelkezik egy Azure digitális Twins-példánnyal, és hogy a felhasználó rendelkezik hozzáférési engedélyekkel. A telepítés után készen áll az ügyfélalkalmazás írására.
 
 A folytatáshoz szüksége lesz egy ügyfélalkalmazás-projektre, amelyben a kódot írja. Ha még nem rendelkezik beállított ügyfélalkalmazás-projekttel, hozzon létre egy alapszintű projektet a választott nyelven az oktatóanyag használatával.
 
@@ -37,7 +37,7 @@ A folytatáshoz szüksége lesz egy ügyfélalkalmazás-projektre, amelyben a k�
 * [Python](/python/api/overview/azure/identity-readme?preserve-view=true&view=azure-python)
 
 Három gyakori hitelesítő adat – a metódusok beszerzése `Azure.Identity` :
-* A [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) az `TokenCredential` Azure-ban üzembe helyezett alkalmazások alapértelmezett hitelesítési folyamatát biztosítja, és **a helyi fejlesztéshez ajánlott választás**. Emellett engedélyezhető az ebben a cikkben javasolt két módszer kipróbálására is. a rendszer becsomagolja `ManagedIdentityCredential` és hozzáfér `InteractiveBrowserCredential` egy konfigurációs változóhoz.
+* A [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) az `TokenCredential` Azure-ban üzembe helyezett alkalmazások alapértelmezett hitelesítési folyamatát biztosítja, és **a helyi fejlesztéshez ajánlott választás** . Emellett engedélyezhető az ebben a cikkben javasolt két módszer kipróbálására is. a rendszer becsomagolja `ManagedIdentityCredential` és hozzáfér `InteractiveBrowserCredential` egy konfigurációs változóhoz.
 * A [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?preserve-view=true&view=azure-dotnet) remekül működik olyan esetekben, amikor [felügyelt identitásokat (MSI)](../active-directory/managed-identities-azure-resources/overview.md)kell használnia, és jó választás a Azure functions és az Azure-szolgáltatások üzembe helyezésére.
 * A [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) interaktív alkalmazásokhoz készült, és használható egy hitelesített SDK-ügyfél létrehozásához.
 
@@ -60,7 +60,7 @@ Ezután adjon hozzá programkódot a hitelesítő adatok beszerzéséhez a egyik
 
 ### <a name="defaultazurecredential-method"></a>DefaultAzureCredential metódus
 
-A [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) az `TokenCredential` Azure-ban üzembe helyezett alkalmazások alapértelmezett hitelesítési folyamatát biztosítja, és **a helyi fejlesztéshez ajánlott választás**.
+A [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) az `TokenCredential` Azure-ban üzembe helyezett alkalmazások alapértelmezett hitelesítési folyamatát biztosítja, és **a helyi fejlesztéshez ajánlott választás** .
 
 Az alapértelmezett Azure-beli hitelesítő adatok használatához szüksége lesz az Azure Digital Twins-példány URL-címére (a[keresendő utasítások](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).
 
@@ -110,8 +110,8 @@ client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
 Az [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) metódus interaktív alkalmazásokhoz készült, és egy webböngészőt hoz létre a hitelesítéshez. Ezt felhasználhatja `DefaultAzureCredential` olyan esetekben is, ahol interaktív hitelesítést igényel.
 
 Az interaktív böngésző hitelesítő adatainak használatához szüksége lesz egy alkalmazás- **regisztrációra** , amely jogosult az Azure Digital Twins API-khoz. Az alkalmazás regisztrálásának lépéseivel kapcsolatban lásd: [*útmutató: alkalmazás regisztrációjának létrehozása*](how-to-create-app-registration.md). Ha az alkalmazás regisztrálása be van állítva, szüksége lesz...
-* az alkalmazás regisztrációs *alkalmazásának (ügyfél) azonosítója* (a[keresendő utasítások](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
-* az alkalmazás regisztrációs *címtárának (bérlői) azonosítója* (a[keresett utasítások](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
+* az alkalmazás regisztrációs *alkalmazásának (ügyfél) azonosítója* (a [keresendő utasítások](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
+* az alkalmazás regisztrációs *címtárának (bérlői) azonosítója* (a [keresett utasítások](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
 * Az Azure digitális Twins-példány URL-címe (a[keresendő utasítások](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
 
 Íme egy példa arra a kódra, amellyel hitelesített SDK-ügyfelet hozhat létre a használatával `InteractiveBrowserCredential` .

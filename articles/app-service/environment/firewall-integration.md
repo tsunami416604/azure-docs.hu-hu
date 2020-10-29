@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/24/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: 8acd0a6992c26266f20aaf46dd225a9fff9d6974
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: e5f9cd361d4f130d725f608614159d67fb7b56d1
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172013"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026360"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service Environment zárolása
 
@@ -61,11 +61,11 @@ A meglévő és a Azure Firewall rendszerből kifelé irányuló kimenő forgalo
    
    ![Alkalmazás-szabály hozzáadása][1]
    
-1. A Azure Firewall felhasználói felület > szabályok > hálózati szabály gyűjteménye területen válassza a hálózati szabálygyűjtemény hozzáadása elemet. Adjon meg egy nevet, egy prioritást, és állítsa be az Engedélyezés lehetőséget. A szabályok szakaszban az IP-címek területen adjon meg egy nevet, válasszon ki egy **tetszőleges**protokollt, állítsa be a forrás és a cél címet, majd állítsa a portokat 123-re. Ez a szabály lehetővé teszi, hogy a rendszerállapot-szinkronizálást az NTP használatával hajtsa végre. Hozzon létre egy másik szabályt úgy, hogy az a 12000-es porttal azonos módon segítse a rendszerproblémák osztályozását. 
+1. A Azure Firewall felhasználói felület > szabályok > hálózati szabály gyűjteménye területen válassza a hálózati szabálygyűjtemény hozzáadása elemet. Adjon meg egy nevet, egy prioritást, és állítsa be az Engedélyezés lehetőséget. A szabályok szakaszban az IP-címek területen adjon meg egy nevet, válasszon ki egy **tetszőleges** protokollt, állítsa be a forrás és a cél címet, majd állítsa a portokat 123-re. Ez a szabály lehetővé teszi, hogy a rendszerállapot-szinkronizálást az NTP használatával hajtsa végre. Hozzon létre egy másik szabályt úgy, hogy az a 12000-es porttal azonos módon segítse a rendszerproblémák osztályozását. 
 
    ![NTP hálózati szabály hozzáadása][3]
    
-1. A Azure Firewall felhasználói felület > szabályok > hálózati szabály gyűjteménye területen válassza a hálózati szabálygyűjtemény hozzáadása elemet. Adjon meg egy nevet, egy prioritást, és állítsa be az Engedélyezés lehetőséget. A szabályok szakaszban a szolgáltatás címkék területén adjon meg egy nevet, válasszon ki egy **tetszőleges**protokollt, állítsa * a forrás címekre, válassza ki a AzureMonitor szolgáltatási címkéjét, és állítsa a portokat 80, 443 értékre. Ez a szabály lehetővé teszi, hogy a Azure Monitor állapot-és mérőszámokkal kapcsolatos információkat adjon meg.
+1. A Azure Firewall felhasználói felület > szabályok > hálózati szabály gyűjteménye területen válassza a hálózati szabálygyűjtemény hozzáadása elemet. Adjon meg egy nevet, egy prioritást, és állítsa be az Engedélyezés lehetőséget. A szabályok szakaszban a szolgáltatás címkék területén adjon meg egy nevet, válasszon ki egy **tetszőleges** protokollt, állítsa * a forrás címekre, válassza ki a AzureMonitor szolgáltatási címkéjét, és állítsa a portokat 80, 443 értékre. Ez a szabály lehetővé teszi, hogy a Azure Monitor állapot-és mérőszámokkal kapcsolatos információkat adjon meg.
 
    ![NTP szolgáltatási címke hálózati szabályának hozzáadása][6]
    
@@ -255,6 +255,7 @@ A Azure Firewall automatikusan megkapja a teljes tartománynév-címkékkel konf
 |security.ubuntu.com:80 |
 |oryx-cdn.microsoft.io:443 |
 | \*. cdn.mscr.io:443 |
+| \*. data.mcr.microsoft.com:443 |
 |mcr.microsoft.com:443 |
 |\*. data.mcr.microsoft.com:443 |
 |packages.fluentbit.io:80 |
