@@ -1,0 +1,59 @@
+### YamlMime:Landing
+title: Az Azure DDoS Protection Standard dokumentációja
+summary: Ismerje meg, hogy az Azure DDoS Protection Standard a DDoS-támadások elleni védelem érdekében hogyan kombinálható az alkalmazástervezés ajánlott eljárásaival.
+metadata:
+  description: Ismerje meg, hogy az Azure DDoS Protection Standard a DDoS-támadások elleni védelem érdekében hogyan kombinálható az alkalmazástervezés ajánlott eljárásaival.
+  keywords: azure ddos protection standard
+  author: yitoh
+  ms.author: yitoh
+  ms.date: 09/04/2019
+  ms.service: ddos-protection
+  ms.topic: landing-page
+  ms.custom: azure-ddos-protection
+  ms.openlocfilehash: cfc0a8c4856711c4f011805322e2b28942866573
+  ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 10/28/2020
+  ms.locfileid: "92904708"
+landingContent:
+- title: Tudnivalók az Azure DDoS Protection Standardről
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure DDoS Protection Standard?
+      url: ddos-protection-overview.md
+  - linkListType: architecture
+    links:
+    - text: Az Azure DDoS Protection Standard szolgáltatásai
+      url: ddos-protection-standard-features.md
+    - text: Referenciaarchitektúrák
+      url: ddos-protection-reference-architectures.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: DDoS Protection-csomag létrehozása – Portal
+      url: manage-ddos-protection.md
+- title: Támadáselemzés konfigurálása
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: DDoS Protection-telemetria megtekintése és konfigurálása
+      url: telemetry-monitoring-alerting.md
+    - text: DDoS-támadások mérséklési jelentéseinek és forgalomnaplóinak konfigurálása
+      url: reports-and-flow-logs.md
+- title: Reagálás a DDoS-támadásokra
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: A támadások típusai
+      url: types-of-attacks.md
+    - text: Alapvető ajánlott eljárások
+      url: fundamental-best-practices.md
+    - text: A DDoS-válaszstratégiák összetevői
+      url: ddos-response-strategy.md
+  - linkListType: how-to-guide
+    links:
+    - text: Kapcsolatfelvétel a DDoS Rapid Response (DRR) csapatával
+      url: ddos-rapid-response.md

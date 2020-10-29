@@ -500,7 +500,7 @@
           items:
             - name: A MapReduce használata az Apache Hadooppal
               items:
-                - name: A MapReduce áttekintése
+                - name: A MapReduce használata
                   href: ./hadoop/hdinsight-use-mapreduce.md
                 - name: Az SSH használata
                   href: ./hadoop/apache-hadoop-use-mapreduce-ssh.md

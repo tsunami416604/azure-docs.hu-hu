@@ -16,6 +16,7 @@
     - name: Python
       href: quick-create-python.md
     - name: ARM-sablon
+      displayName: Resource Manager
       href: quick-create-template.md
 - name: Oktatóanyagok
   items:

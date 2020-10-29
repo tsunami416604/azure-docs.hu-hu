@@ -11,12 +11,12 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 4979405c7675b5eff9f6940cd34e0c974ebad217
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: af057750e81086bf691b87057da97af3de19cd3b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538272"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909641"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
@@ -52,7 +52,7 @@ A MQTT esetében egyes SDK-k az IoT Hub-t használják, hogy kiállítsák a lev
 
 ### <a name="cause-2"></a>2\. ok
 
-A IoT Hub nem tudta hitelesíteni az Auth fejlécét, szabályát vagy kulcsát.
+A IoT Hub nem tudta hitelesíteni az Auth fejlécét, szabályát vagy kulcsát. Ezt az okozhatja, hogy a jelenségek egyike a tüneteket idézi elő.
 
 ## <a name="solution"></a>Megoldás
 
@@ -66,10 +66,13 @@ Ha a hibák mennyisége aggodalomra ad okot, váltson a C SDK-ra, amely megújí
 
 Általánosságban elmondható, hogy a hibaüzenet kijavításának módját a következő üzenet ismerteti:. Ha valamilyen okból nem fér hozzá a hibaüzenet részleteihez, ügyeljen a következőre:
 
-- Az SAS vagy más használt biztonsági jogkivonat nem járt le. 
-- Az engedélyezési hitelesítő adat jól formázott a használt protokollhoz. További információ: [IoT hub hozzáférés-vezérlés](iot-hub-devguide-security.md).
+- Az SAS vagy más használt biztonsági jogkivonat nem járt le.
+- Az X. 509 Tanúsítványos hitelesítéshez az eszköz tanúsítványa vagy az eszközhöz rendelt HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány nem járt le. Ha meg szeretné tudni, hogyan regisztrálhat X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat IoT Hub használatával, tekintse meg az [x. 509-Biztonság beállítása az Azure IoT hub-ban](iot-hub-security-x509-get-started.md)című témakört.
+- Az X. 509 tanúsítvány ujjlenyomatának hitelesítéséhez az eszköz tanúsítványának ujjlenyomata IoT Hub van regisztrálva.
+- Az engedélyezési hitelesítő adat jól formázott a használt protokollhoz. További információ: [a IoT hub hozzáférésének szabályozása](iot-hub-devguide-security.md).
 - A használt engedélyezési szabály jogosult a kért műveletre.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ahhoz, hogy könnyebben IoT Hub a hitelesítés, javasoljuk, hogy az [Azure IoT SDK](iot-hub-devguide-sdks.md)-kat használja.
+- Ahhoz, hogy könnyebben IoT Hub a hitelesítés, javasoljuk, hogy az [Azure IoT SDK](iot-hub-devguide-sdks.md)-kat használja.
+- A IoT Hub használatával történő hitelesítés részletes ismertetését lásd: [a IoT hub hozzáférésének szabályozása](iot-hub-devguide-security.md).
