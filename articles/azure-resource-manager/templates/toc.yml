@@ -48,7 +48,7 @@
               href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Stream Analytics
               href: ../../stream-analytics/quick-create-azure-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Synapse Analytics
+            - name: Synapse Analytics SQL-készlet
               href: ../../synapse-analytics/sql-data-warehouse/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Blokklánc
           items:
@@ -158,6 +158,10 @@
               href: ../../application-gateway/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Content Delivery Network
               href: ../../cdn/create-profile-endpoint-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: DNS
+              href: ../../dns/dns-get-started-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: ExpressRoute
+              href: ../../expressroute/quickstart-create-expressroute-vnet-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Tűzfal – Availability Zones
               href: ../../firewall/deploy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Tűzfal – IP-csoportok
@@ -166,20 +170,26 @@
               href: ../../firewall/quick-create-multiple-ip-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Firewall Manager
               href: ../../firewall-manager/quick-secure-virtual-hub.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Load Balancer
+            - name: Load Balancer – nyilvános
               href: ../../load-balancer/quickstart-load-balancer-standard-public-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: NAT-átjáró
+              href: ../../virtual-network/quickstart-create-nat-gateway-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Privát végpont
               href: ../../private-link/create-private-endpoint-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Privát kapcsolati szolgáltatás
               href: ../../private-link/create-private-link-service-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Traffic Manager
+              href: ../../traffic-manager/quickstart-create-traffic-manager-profile-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Web Application Firewall (Webalkalmazási tűzfal)
               href: ../../web-application-firewall/ag/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Biztonság
           items:
             - name: Igazolás
               href: ../../attestation/quickstart-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Key Vault
+            - name: Key Vault – titkos kulcs
               href: ../../key-vault/secrets/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Security Center
+              href: ../../security-center/quickstart-automation-alert.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Storage
           items:
             - name: Data Share
@@ -188,6 +198,8 @@
               href: ../../storage/common/storage-account-create.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Web
           items:
+            - name: API Management
+              href: ../../api-management/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: App Service
               href: ../../app-service/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Notification Hubs
@@ -343,36 +355,42 @@
             - name: Kimenetek
               displayName: 'iteration,copy'
               href: copy-outputs.md
-    - name: Sablon tulajdonságainak felfedezése
-      items:
-        - name: Sablon exportálása
-          href: export-template-portal.md
-        - name: Erőforrások felfedezése
-          href: view-resources.md
-    - name: Sablonok ellenőrzése
-      items:
-        - name: What-if típusú üzembe helyezés
-          href: template-deploy-what-if.md
-        - name: Tesztelési eszközkészlet
-          href: test-toolkit.md
-        - name: Tesztelési esetek
-          href: test-cases.md
     - name: Sablonok üzembe helyezése
       items:
-        - name: Üzembe helyezés – portál
-          displayName: deployment
-          href: deploy-portal.md
-        - name: Üzembe helyezés – CLI
-          displayName: deployment
-          href: deploy-cli.md
-        - name: Üzembe helyezés – PowerShell
-          displayName: deployment
-          href: deploy-powershell.md
-        - name: Üzembe helyezés – REST API
-          displayName: deployment
-          href: deploy-rest.md
-        - name: Üzembe helyezés a GitHubból
-          href: deploy-to-azure-button.md
+        - name: Üzembehelyezési műveletek
+          items:
+            - name: Üzembe helyezés – portál
+              displayName: deployment
+              href: deploy-portal.md
+            - name: Üzembe helyezés – CLI
+              displayName: deployment
+              href: deploy-cli.md
+            - name: Üzembe helyezés – PowerShell
+              displayName: deployment
+              href: deploy-powershell.md
+            - name: Üzembe helyezés – REST API
+              displayName: deployment
+              href: deploy-rest.md
+            - name: Üzembe helyezés – GitHub
+              href: deploy-to-azure-button.md
+            - name: Üzembe helyezés – Cloud Shell
+              href: deploy-cloud-shell.md
+        - name: Hatókörök
+          items:
+            - name: Erőforráscsoport
+              href: deploy-to-resource-group.md
+            - name: Előfizetés
+              href: deploy-to-subscription.md
+            - name: Felügyeleti csoport
+              href: deploy-to-management-group.md
+            - name: Bérlő
+              href: deploy-to-tenant.md
+            - name: Bővítmény-erőforrások
+              href: scope-extension-resources.md
+            - name: Függvények különböző hatókörökben
+              href: scope-functions.md
+        - name: What-if típusú üzembe helyezés
+          href: template-deploy-what-if.md
         - name: Újratelepítés hiba esetén
           displayName: rollback
           href: rollback-on-error.md
@@ -380,16 +398,6 @@
           href: secure-template-with-sas-token.md
         - name: Üzembehelyezési előzmények megtekintése
           href: deployment-history.md
-    - name: Hatókörön belüli üzembe helyezés
-      items:
-        - name: Előfizetés
-          href: deploy-to-subscription.md
-        - name: Felügyeleti csoport
-          href: deploy-to-management-group.md
-        - name: Bérlő
-          href: deploy-to-tenant.md
-        - name: Hatókörközi üzemelő példányok
-          href: cross-scope-deployment.md
     - name: Paraméterek megadása
       items:
         - name: Paraméterfájl létrehozása
@@ -397,12 +405,24 @@
         - name: Bizalmas értékek átadása
           displayname: key vault
           href: key-vault-parameter.md
+    - name: Tesztsablonok
+      items:
+        - name: Tesztelési eszközkészlet
+          href: test-toolkit.md
+        - name: Tesztelési esetek
+          href: test-cases.md
     - name: CI/CD
       items:
         - name: ARM-sablonok folyamatokkal
           href: add-template-to-azure-pipelines.md
         - name: Üzembe helyezés – GitHub-műveletek
           href: deploy-github-actions.md
+    - name: Sablon tulajdonságainak felfedezése
+      items:
+        - name: Sablon exportálása
+          href: export-template-portal.md
+        - name: Erőforrások felfedezése
+          href: view-resources.md
     - name: Szerkesztőeszközök használata
       items:
         - name: Visual Studio
