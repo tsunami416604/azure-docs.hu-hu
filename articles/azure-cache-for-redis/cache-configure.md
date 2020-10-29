@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: f0d0742994b14f692c2aea9130edc73d779cff52
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 10/29/2020
 ms.locfileid: "92544766"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Az Azure cache konfigurálása a Redis-hez
@@ -33,7 +33,7 @@ A következő beállításokat tekintheti meg és konfigurálhatja az **erőforr
 * [Áttekintés](#overview)
 * [Tevékenységnapló](#activity-log)
 * [Hozzáférés-vezérlés (IAM)](#access-control-iam)
-* [Címkéket](#tags)
+* [Címkék](#tags)
 * [Problémák diagnosztizálása és megoldása](#diagnose-and-solve-problems)
 * [Beállítások](#settings)
     * [Elérési kulcs](#access-keys)
@@ -74,7 +74,7 @@ A gyorsítótárban végrehajtott műveletek megtekintéséhez kattintson a **m�
 
 A **hozzáférés-vezérlés (iam)** szakasz az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) támogatását biztosítja a Azure Portalban. Ez a konfiguráció segít a szervezeteknek egyszerűen és pontosan teljesíteni a hozzáférés-kezelési követelményeiket. További információ: [Azure szerepköralapú hozzáférés-vezérlés a Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
-### <a name="tags"></a>Címkéket
+### <a name="tags"></a>Címkék
 
 A **címkék** szakasz segít az erőforrások rendszerezésében. További információkért lásd: [Az Azure-erőforrások rendszerezése címkék használatával](../azure-resource-manager/management/tag-resources.md) című cikket.
 
