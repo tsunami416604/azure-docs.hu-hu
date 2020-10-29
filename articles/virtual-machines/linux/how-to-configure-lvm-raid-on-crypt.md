@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: b65c37ab06092be63cbb2ad9fb5e23cdb8324e80
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c8ffe78e885eedd84c4cf6948954a7d3477a5cff
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476161"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911817"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>Az LVM és a RAID konfigurálása titkosított eszközökön
 
@@ -287,7 +287,7 @@ Az eszköz neve helyett az egyes lemezek/dev/Mapper elérési útjait használva
 
 ### <a name="configure-lvm-on-top-of-the-encrypted-layers"></a>Az LVM konfigurálása a titkosított rétegek felett
 #### <a name="create-the-physical-volumes"></a>Fizikai kötetek létrehozása
-Megjelenik egy figyelmeztetés, amely megkérdezi, hogy rendben van-e a fájlrendszer aláírásának törlése. Folytassa az **y**érték megadásával, vagy használja az **echo "y" karaktert** az alábbiak szerint:
+Megjelenik egy figyelmeztetés, amely megkérdezi, hogy rendben van-e a fájlrendszer aláírásának törlése. Folytassa az **y** érték megadásával, vagy használja az **echo "y" karaktert** az alábbiak szerint:
 
 ```bash
 echo "y" | pvcreate /dev/mapper/c49ff535-1df9-45ad-9dad-f0846509f052
@@ -298,7 +298,7 @@ echo "y" | pvcreate /dev/mapper/4159c60a-a546-455b-985f-92865d51158c
 ![Fizikai kötet létrehozásának ellenőrzése](./media/disk-encryption/lvm-raid-on-crypt/014-lvm-raid-pvcreate.png)
 
 >[!NOTE] 
->A/dev/Mapper/Device nevét a **lsblk**kimenete alapján kell kicserélni a tényleges értékekre.
+>A/dev/Mapper/Device nevét a **lsblk** kimenete alapján kell kicserélni a tényleges értékekre.
 
 #### <a name="verify-the-information-for-physical-volumes"></a>A fizikai kötetek adatainak ellenőrzése
 ```bash
@@ -368,9 +368,9 @@ mount -a
 lsblk -fs
 df -h
 ```
-![Csatlakoztatott fájlrendszerek információi](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png)
+![A képernyőképen egy data0 és Data1-ként csatlakoztatott fájlrendszerek láthatók.](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png)
 
-A **lsblk**ezen változatában a függőségeket a fordított sorrendben megjelenítő eszközöket listázjuk. Ezzel a beállítással azonosíthatók azok az eszközök, amelyek a logikai kötet szerint csoportosítva vannak, az eredeti/dev/SD [Disk]-eszközök nevei helyett.
+A **lsblk** ezen változatában a függőségeket a fordított sorrendben megjelenítő eszközöket listázjuk. Ezzel a beállítással azonosíthatók azok az eszközök, amelyek a logikai kötet szerint csoportosítva vannak, az eredeti/dev/SD [Disk]-eszközök nevei helyett.
 
 Fontos, hogy a **nem** megfelelő beállítás bekerüljön a Azure Disk Encryption használatával titkosított eszközön létrehozott LVM kötetek csatlakoztatási pontjának beállításaiba. Megakadályozza, hogy az operációs rendszer elragadjon a rendszerindítási folyamat során (vagy karbantartási módban).
 
@@ -406,7 +406,7 @@ mdadm --create /dev/md10 \
 ![A konfigurált RAID adatai a mdadm parancs használatával](./media/disk-encryption/lvm-raid-on-crypt/019-lvm-raid-md-creation.png)
 
 >[!NOTE] 
->A/dev/Mapper/Device nevét a **lsblk**kimenete alapján a tényleges értékekkel kell helyettesíteni.
+>A/dev/Mapper/Device nevét a **lsblk** kimenete alapján a tényleges értékekkel kell helyettesíteni.
 
 ### <a name="checkmonitor-raid-creation"></a>RAID-létrehozás ellenőrzés/figyelése
 ```bash
@@ -437,7 +437,7 @@ Ellenőrizze, hogy az új fájlrendszer csatlakoztatva van-e:
 lsblk -fs
 df -h
 ```
-![Csatlakoztatott fájlrendszerek információi](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
+![A képernyőképen egy, a raiddata csatlakoztatott fájlrendszerrel rendelkező konzolablak látható.](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
 
 Fontos, hogy a **nem** megfelelő beállítás bekerüljön a Azure Disk Encryption használatával titkosított eszközön létrehozott RAID-kötetek csatlakoztatási pontjának beállításaiba. Megakadályozza, hogy az operációs rendszer elragadjon a rendszerindítási folyamat során (vagy karbantartási módban).
 

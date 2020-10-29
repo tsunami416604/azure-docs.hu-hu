@@ -8,34 +8,43 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: dcfae72d5f15399dc4c759ab859ad8059134f11d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d178ae39d3af6b39047501f0bc47acbc6e792f48
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91279790"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911494"
 ---
 # <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>A Linux rendszerű virtuális gépekre Azure Disk Encryption minta szkriptek
 
-Ez a cikk példákat tartalmaz az előre titkosított virtuális merevlemezek és egyéb feladatok előkészítéséhez.
+Ez a cikk példákat tartalmaz az előre titkosított virtuális merevlemezek és egyéb feladatok előkészítéséhez.  
 
- 
+> [!NOTE]
+> Minden parancsfájl az ADE legújabb, nem HRE verziójára hivatkozik, kivéve a következőt:.
 
 ## <a name="sample-powershell-scripts-for-azure-disk-encryption"></a>PowerShell-parancsfájlok Azure Disk Encryptionhoz 
 
 - **Az előfizetésben található összes titkosított virtuális gép listázása**
+  
+  Az összes ADE-titkosítású virtuális gép és a bővítmény verziója megtalálható az előfizetésben található összes erőforráscsoport számára ezen a [PowerShell-parancsfájl](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VM.ps1)használatával.
 
-     ```azurepowershell-interactive
-     $osVolEncrypted = {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
-     $dataVolEncrypted= {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
-     Get-AzVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
-     ```
+  Másik lehetőségként ezek a parancsmagok az összes ADE-titkosítású virtuális gépet megjelenítik (a bővítmény verziószáma nem):
+
+   ```azurepowershell-interactive
+   $osVolEncrypted = {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
+   $dataVolEncrypted= {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
+   Get-AzVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
+   ```
+
+- **Az előfizetéshez tartozó összes titkosított VMSS-példány listázása**
+    
+    Az összes ADE-titkosítású VMSS-példányt és a bővítmény verzióját a jelen [PowerShell-parancsfájl](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VMSS.ps1)használatával az előfizetésben található összes erőforráscsoporthoz megtalálhatja.
 
 - **A Key vaultban lévő virtuális gépek titkosításához használt összes lemez-titkosítási titok listázása** 
 
-     ```azurepowershell-interactive
-     Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
-     ```
+   ```azurepowershell-interactive
+   Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
+   ```
 
 ### <a name="using-the-azure-disk-encryption-prerequisites-powershell-script"></a>Az Azure Disk Encryption előfeltételek PowerShell-parancsfájl használata
 Ha már ismeri a Azure Disk Encryption előfeltételeit, használhatja az [Azure Disk Encryption előfeltételek PowerShell-szkriptet](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). A PowerShell-szkriptek használatára példát a [virtuális gépek titkosítása](disk-encryption-powershell-quickstart.md)– gyors útmutató című témakörben talál. A parancsfájl egy szakaszának megjegyzéseit eltávolíthatja a meglévő erőforráscsoporthoz tartozó meglévő virtuális gépek összes lemezének titkosításához a 211. sorban kezdődően. 
@@ -53,14 +62,13 @@ A következő táblázat a PowerShell-parancsfájlban használható paraméterek
 |$aadClientSecret|A korábban létrehozott Azure AD-alkalmazás ügyfél-titka.|Hamis|
 |$keyEncryptionKeyName|A kulcstartóban nem kötelező kulcs-titkosítási kulcs neve. Ha az egyik nem létezik, a rendszer létrehoz egy új kulcsot a névvel.|Hamis|
 
-
 ### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>Virtuális gépek titkosítása vagy visszafejtése Azure AD-alkalmazás nélkül
 
 - [A lemez titkosításának engedélyezése meglévő vagy futó Linux rendszerű virtuális gépen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)  
 - [Titkosítás letiltása futó Linux rendszerű virtuális gépen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
     - A titkosítás letiltása csak a Linux rendszerű virtuális gépek adatkötetein engedélyezett.  
 
-### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>Virtuális gépek titkosítása vagy visszafejtése Azure AD-alkalmazással (korábbi kiadás) 
+### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>Virtuális gépek titkosítása vagy visszafejtése Azure AD-alkalmazással (korábbi kiadás)
  
 - [A lemez titkosításának engedélyezése meglévő vagy futó Linux rendszerű virtuális gépen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)    
 
@@ -71,10 +79,6 @@ A következő táblázat a PowerShell-parancsfájlban használható paraméterek
 
 - [Új titkosított felügyelt lemez létrehozása egy előre titkosított VHD/Storage-blobból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
     - Létrehoz egy új titkosított felügyelt lemezt, amely egy előre titkosított VHD-t és a hozzá tartozó titkosítási beállításokat biztosított.
-
-
-
-
 
 ## <a name="encrypting-an-os-drive-on-a-running-linux-vm"></a>OPERÁCIÓSRENDSZER-meghajtó titkosítása futó Linux rendszerű virtuális gépen
 
@@ -227,7 +231,7 @@ Az alábbi lépések végrehajtásával konfigurálhatja a titkosítást az Azur
     fi
    ```
 
-2. Módosítsa a */etc/crypttab*található Crypt-konfigurációt. Ennek így kell kinéznie:
+2. Módosítsa a */etc/crypttab* található Crypt-konfigurációt. Ennek így kell kinéznie:
    ```
     xxx_crypt uuid=xxxxxxxxxxxxxxxxxxxxx none luks,discard,keyscript=/usr/local/sbin/azure_crypt_key.sh
     ```
@@ -254,7 +258,7 @@ Az alábbi lépések végrehajtásával konfigurálhatja a titkosítást az Azur
 
 ### <a name="opensuse-132"></a>openSUSE 13,2
 A titkosítás konfigurálásához végezze el a következő lépéseket:
-1. A lemezek particionálásakor válassza a **kötet csoport titkosítása**lehetőséget, majd adja meg a jelszót. Ez a jelszó, amelyet fel fog tölteni a kulcstartóba.
+1. A lemezek particionálásakor válassza a **kötet csoport titkosítása** lehetőséget, majd adja meg a jelszót. Ez a jelszó, amelyet fel fog tölteni a kulcstartóba.
 
    ![openSUSE 13,2 telepítő – kötet csoportjának titkosítása](./media/disk-encryption/opensuse-encrypt-fig1.png)
 

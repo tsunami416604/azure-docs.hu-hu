@@ -8,18 +8,22 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: allensu
 ms.date: 09/14/2020
-ms.openlocfilehash: aa68dad2f8f018a9f3f70f2f02fd5e989ccbad4e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 41c90bb58e6ece968f8e2bf211a14e4e4e98211f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047760"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910865"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>Rövid útmutató: belső terheléselosztó létrehozása a virtuális gépek terheléselosztásához ARM-sablon használatával
 
 Ez a rövid útmutató azt ismerteti, hogyan használható egy Azure Resource Manager sablon (ARM-sablon) egy belső Azure Load Balancer létrehozásához.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-2-vms-internal-load-balancer%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -49,7 +53,7 @@ A Azure Load Balancer kapcsolódó további sablonok kereséséhez tekintse meg 
 ```azurecli-interactive
 read -p "Enter the location (i.e. westcentralus): " location
 resourceGroupName="myResourceGroupLB"
-templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.json" 
+templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.json"
 
 az group create \
 --name $resourceGroupName \
@@ -64,19 +68,19 @@ az deployment group create \
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Válassza ki az **erőforráscsoportok** elemet a bal oldali ablaktáblán.
+1. Válassza ki az **erőforráscsoportok** elemet a bal oldali ablaktáblán.
 
-3. Válassza ki az előző szakaszban létrehozott erőforráscsoportot. Az erőforráscsoport alapértelmezett neve **myresourcegrouplb erőforráscsoportban**
+1. Válassza ki az előző szakaszban létrehozott erőforráscsoportot. Az erőforráscsoport alapértelmezett neve **myresourcegrouplb erőforráscsoportban**
 
-4. Ellenőrizze, hogy az erőforráscsoport az alábbi erőforrásokat hozta-e létre:
+1. Ellenőrizze, hogy az erőforráscsoport az alábbi erőforrásokat hozta-e létre:
 
 :::image type="content" source="media/quickstart-load-balancer-standard-internal-template/verify-creation.png" alt-text="Felhasználói Azure Portal az erőforrások létrehozásának ellenőrzéséhez." border="true":::
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-delete) paranccsal eltávolíthatja az erőforráscsoportot és a benne található összes erőforrást.
 
-```azurecli-interactive 
+```azurecli-interactive
   az group delete \
     --name myResourceGroupLB
 ```

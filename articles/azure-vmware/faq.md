@@ -4,12 +4,12 @@ description: Választ ad az Azure VMware megoldással kapcsolatos gyakori kérd�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 91be1c51639aa3ae8acbf0c37f5c4a8174b5a592
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 64b2955b1417d6931172b41f83f05d5f1b560708
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779441"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911885"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Gyakran ismételt kérdések az Azure VMware-megoldásról
 
@@ -76,7 +76,7 @@ Nem, használja a [VMware által megadott utasításokat](https://docs.vmware.co
 #### <a name="is-vmware-hcx-supported-on-vpns"></a>A VMware HCX támogatott a VPN-en?
 Nem, a sávszélesség és a késési követelmények miatt.
 
-#### <a name="can-azure-bastion-be-used-for-connecting-to-avs-vms"></a>Használható az Azure Bastion az AVS virtuális gépekhez való csatlakozáshoz?
+#### <a name="can-azure-bastion-be-used-for-connecting-to-azure-vmware-solution-vms"></a>Használható az Azure Bastion az Azure VMware Megoldásbeli virtuális gépekhez való csatlakozáshoz?
 Az Azure Bastion az a szolgáltatás, amely a Jump Box-hoz való kapcsolódáshoz ajánlott, hogy megakadályozza az Azure VMware-megoldás az interneten való kihelyezését. Az Azure Bastion nem használható az Azure VMware-megoldás virtuális gépekhez való kapcsolódáshoz, mivel azok nem Azure IaaS-objektumok.
 
 #### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>Használható meglévő ExpressRoute-átjáró az Azure VMware-megoldáshoz való kapcsolódáshoz?

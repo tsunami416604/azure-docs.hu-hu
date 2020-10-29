@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 10/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ce922e3ce39bc3df9f4c242558644922e5713300
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 2ea8840a4c66ff05bea22c5c7c063e31d09f9dc8
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494814"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911749"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Végpontok és útvonalak kezelése az Azure Digital Twinsban (API-k és parancssori felület)
 
@@ -64,15 +64,15 @@ Miután létrehozta a témakört, összekapcsolhatja azt az Azure Digital Twins-
 az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
-Az Event Grid témakör az Azure Digital Twins-beli végpontként érhető el, az `--endpoint-name` argumentummal megadott néven. Ezt a nevet általában egy **esemény-útvonal**céljaként fogja használni, amelyet [később a jelen cikkben](#create-an-event-route) , az Azure Digital Twins szolgáltatás API használatával hozhat létre.
+Az Event Grid témakör az Azure Digital Twins-beli végpontként érhető el, az `--endpoint-name` argumentummal megadott néven. Ezt a nevet általában egy **esemény-útvonal** céljaként fogja használni, amelyet [később a jelen cikkben](#create-an-event-route) , az Azure Digital Twins szolgáltatás API használatával hozhat létre.
 
 ### <a name="create-an-event-hubs-or-service-bus-endpoint"></a>Event Hubs vagy Service Bus végpont létrehozása
 
 Event Hubs vagy Service Bus végpontok létrehozásának folyamata hasonló a fent látható Event Grid folyamathoz.
 
 Először hozza létre a végpontként használni kívánt erőforrásokat. A következők szükségesek:
-* Service Bus: _Service Bus névtér_, _Service Bus témakör_, _engedélyezési szabály_
-* Event Hubs: _Event Hubs névtér_, _Event hub_, _engedélyezési szabály_
+* Service Bus: _Service Bus névtér_ , _Service Bus témakör_ , _engedélyezési szabály_
+* Event Hubs: _Event Hubs névtér_ , _Event hub_ , _engedélyezési szabály_
 
 Ezután használja a következő parancsokat a végpontok létrehozásához az Azure Digital Twinsban: 
 
@@ -88,7 +88,7 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 ### <a name="create-an-endpoint-with-dead-lettering"></a>Végpont létrehozása a kézbesítetlen levelekkel
 
-Ha egy végpont nem tud eseményt kézbesíteni egy adott időszakon belül, vagy ha az eseményt bizonyos számú alkalommal próbálta kézbesíteni, akkor a kézbesítetlen eseményt elküldheti egy Storage-fiókba. Ezt a folyamatot **Kézbesítetlen levélnek**nevezzük.
+Ha egy végpont nem tud eseményt kézbesíteni egy adott időszakon belül, vagy ha az eseményt bizonyos számú alkalommal próbálta kézbesíteni, akkor a kézbesítetlen eseményt elküldheti egy Storage-fiókba. Ezt a folyamatot **Kézbesítetlen levélnek** nevezzük.
 
 Ha olyan végpontot szeretne létrehozni, amelyen engedélyezve van a kézbesítetlen üzenetek használata, a végpont létrehozásához a [ARM API-kat](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) kell használnia. 
 
@@ -152,11 +152,11 @@ Itt látható egy példa a [kettős létrehozási értesítésre](how-to-interpr
 
 ## <a name="create-an-event-route"></a>Esemény útvonalának létrehozása
 
-Az Azure digitális Twins-ból egy végpontba küldött adatok tényleges elküldéséhez meg kell határoznia egy **esemény-útvonalat**. Az Azure Digital Twins **EventRoutes API-jai** lehetővé teszik a fejlesztők számára, hogy az események áramlását a rendszeren és az alárendelt szolgáltatásokon keresztül. További információk az esemény-útvonalakról a [*fogalmakban: az Azure Digital Twins eseményeinek továbbítása*](concepts-route-events.md).
+Az Azure digitális Twins-ból egy végpontba küldött adatok tényleges elküldéséhez meg kell határoznia egy **esemény-útvonalat** . Az Azure Digital Twins **EventRoutes API-jai** lehetővé teszik a fejlesztők számára, hogy az események áramlását a rendszeren és az alárendelt szolgáltatásokon keresztül. További információk az esemény-útvonalakról a [*fogalmakban: az Azure Digital Twins eseményeinek továbbítása*](concepts-route-events.md).
 
 Az ebben a szakaszban szereplő minták a [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)-t használják.
 
-**Előfeltétel**: a cikk korábbi részében leírtak szerint hozzon létre végpontokat, mielőtt továbblép az útvonal létrehozásához. Ha befejezte a végpontok beállítását, folytassa az esemény-útvonal létrehozásával.
+**Előfeltétel** : a cikk korábbi részében leírtak szerint hozzon létre végpontokat, mielőtt továbblép az útvonal létrehozásához. Ha befejezte a végpontok beállítását, folytassa az esemény-útvonal létrehozásával.
 
 >[!NOTE]
 >Ha nemrég telepítette a végpontokat, ellenőrizze, hogy készen állnak-e a telepítésre, **mielőtt** új esemény-útvonalra próbálja használni őket. Ha az útválasztás telepítése sikertelen, mert a végpontok nem állnak készen, várjon néhány percet, és próbálkozzon újra.
@@ -179,27 +179,29 @@ Az egyik útvonalnak engedélyezni kell több értesítés és eseménytípus ki
 `CreateEventRoute` egy esemény-útvonal hozzáadására szolgáló SDK-hívás. Íme egy példa a használatra:
 
 ```csharp
-EventRoute er = new EventRoute("endpointName");
+EventRoute er = new EventRoute("<your-endpointName>");
 er.Filter = "true"; //Filter allows all messages
-await client.CreateEventRoute("routeName", er);
+await CreateEventRoute(client, "routeName", er);
 ```
-
+    
 > [!TIP]
 > Minden SDK-függvény szinkron és aszinkron verzióban érhető el.
 
 ### <a name="event-route-sample-code"></a>Event Route-mintakód
 
-Az alábbi mintakód bemutatja, hogyan hozhat létre, listázhat és törölhet egy esemény-útvonalat:
+Az alábbi példa bemutatja, hogyan hozhat létre, listázhat és törölhet egy esemény-útvonalat:
 ```csharp
-try
+private async static Task CreateEventRoute(DigitalTwinsClient client, String routeName, EventRoute er)
 {
+  try
+  {
     Console.WriteLine("Create a route: testRoute1");
-    EventRoute er = new EventRoute("< your - endpoint - name >");
+            
     // Make a filter that passes everything
     er.Filter = "true";
-    client.CreateEventRoute("< your - route - name >", er);
+    await client.CreateEventRouteAsync(routeName, er);
     Console.WriteLine("Create route succeeded. Now listing routes:");
-    Pageable <EventRoute> result = client.GetEventRoutes();
+    Pageable<EventRoute> result = client.GetEventRoutes();
     foreach (EventRoute r in result)
     {
         Console.WriteLine($"Route {r.Id} to endpoint {r.EndpointName} with filter {r.Filter} ");
@@ -210,11 +212,12 @@ try
         Console.WriteLine($"Deleting route {r.Id}:");
         client.DeleteEventRoute(r.Id);
     }
-}
-catch (RequestFailedException e)
-{
-    Console.WriteLine($"*** Error in event route processing ({e.ErrorCode}):\n${e.Message}");
-}
+  }
+    catch (RequestFailedException e)
+    {
+        Console.WriteLine($"*** Error in event route processing ({e.ErrorCode}):\n${e.Message}");
+    }
+  }
 ```
 
 ## <a name="filter-events"></a>Események szűrése

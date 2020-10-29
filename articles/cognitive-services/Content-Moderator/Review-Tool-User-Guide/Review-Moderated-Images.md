@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: b02324923e3f004395105b8e04165390cb950fe7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfda4d7970c734d92c9f2355d553721ef6165e43
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73044116"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911851"
 ---
 # <a name="create-human-reviews"></a>Emberi felülvizsgálatok létrehozása
 
@@ -28,7 +28,7 @@ Ebből az útmutatóból megtudhatja, hogyan állíthat be [felülvizsgálatokat
 ## <a name="image-reviews"></a>Képekre vonatkozó vélemények
 
 1. Lépjen a [felülvizsgálati eszközre](https://contentmoderator.cognitive.microsoft.com/), válassza a **Try (kipróbálás** ) fület, és töltsön fel néhány képet az áttekintéshez.
-1. A feltöltött lemezképek feldolgozásának befejeződése után lépjen a **felülvizsgálat** lapra, és válassza a **kép**lehetőséget.
+1. A feltöltött lemezképek feldolgozásának befejeződése után lépjen a **felülvizsgálat** lapra, és válassza a **kép** lehetőséget.
 
     ![Chrome böngésző, amely a felülvizsgálati eszközt jeleníti meg a kép áttekintése lehetőség kiemelésével](images/review-images-1.png)
 
@@ -38,7 +38,7 @@ Ebből az útmutatóból megtudhatja, hogyan állíthat be [felülvizsgálatokat
 
     ![Chrome-böngésző, amely a felülvizsgálati eszközt tartalmazza a címkézett rendszerképekkel a felülvizsgálathoz](images/review-images-2.png)
 
-1. Ha további információkat szeretne látni egy képpel kapcsolatban, kattintson a három pontra a miniatűrben, és válassza a **részletek megtekintése**lehetőséget. Hozzáadhat egy rendszerképet egy alcsapathoz az **Áthelyezés** lehetőséggel (lásd a [csapatok](./configure.md#manage-team-and-subteams) szakaszt az alcsoportok megismeréséhez).
+1. Ha további információkat szeretne látni egy képpel kapcsolatban, kattintson a három pontra a miniatűrben, és válassza a **részletek megtekintése** lehetőséget. Hozzáadhat egy rendszerképet egy alcsapathoz az **Áthelyezés** lehetőséggel (lásd a [csapatok](./configure.md#manage-team-and-subteams) szakaszt az alcsoportok megismeréséhez).
 
     ![Egy, a részletek megtekintése lehetőséget kiemelő rendszerkép](images/review-images-3.png)
 
@@ -54,6 +54,6 @@ A szöveges értékelések hasonlóan működnek a képelemzésekhez. A tartalom
 
 ![Képernyőkép a megjelöléssel ellátott szövegről egy Chrome-böngészőablakban](../images/reviewresults_text.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az útmutatóban megtanulta, hogyan állíthat be és használhat felülvizsgálatokat a Content Moderator [felülvizsgálati eszközből](https://contentmoderator.cognitive.microsoft.com). Ezután tekintse meg a [REST API útmutatót](../try-review-api-review.md) vagy a [.net SDK](../dotnet-sdk-quickstart.md) gyors útmutatóját, amelyből megtudhatja, hogyan hozhat létre programozott módon az értékeléseket.
+Ebben az útmutatóban megtanulta, hogyan állíthat be és használhat felülvizsgálatokat a Content Moderator [felülvizsgálati eszközből](https://contentmoderator.cognitive.microsoft.com). Ezután tekintse meg a [REST API útmutatót](../try-review-api-review.md) vagy a [.net SDK](../client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp) gyors útmutatóját, amelyből megtudhatja, hogyan hozhat létre programozott módon az értékeléseket.

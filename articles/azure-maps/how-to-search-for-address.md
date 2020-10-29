@@ -3,21 +3,22 @@ title: Hely keresése Azure Maps Search Services használatával
 description: További információ a Azure Maps Search szolgáltatásról. Tekintse meg, hogyan használhatók ezen API-k a helymeghatározáshoz, a fordított helymeghatározáshoz, a zavaros keresések és a fordított keresztek közötti keresésekhez.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/21/2020
+ms.date: 10/05/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9628ecada2e427f6220ae2a5154cebb8e4958bd0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 00ddb53276c052d538d658f2c40384e86cf72aee
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895698"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910984"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Hely keresése Azure Maps Search Services használatával
 
 A [Azure Maps Search Service](/rest/api/maps/search) olyan REST API-k készlete, amelyek segítségével a fejlesztők megkereshetik a címeket, a helyeket és az üzleti listákat név, kategória és egyéb földrajzi információk alapján. A hagyományos helymeghatározáshoz-támogatás mellett a szolgáltatások a földrajzi szélesség és a hosszúságok alapján is visszafordítják a címeket és a geocode. A keresés által visszaadott szélességi és hosszúsági értékek más Azure Maps szolgáltatásokban, például [útvonal](/rest/api/maps/route) -és [időjárási](/rest/api/maps/weather) szolgáltatásokban is használhatók paraméterként.
+
 
 Ebből a cikkből megtudhatja, hogyan:
 
@@ -44,9 +45,7 @@ Ebben a példában a Azure Maps [keresési címek API](/rest/api/maps/search/get
 
 2. A kérelem létrehozásához válassza az **új** újra lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem** lehetőséget. Adja meg a kérelem **nevét** . Válassza ki az előző lépésben létrehozott gyűjteményt, majd kattintson a **Mentés** gombra.
 
-3. Válassza a http **lekérése** módszert a Builder (szerkesztő) lapon, és adja meg a következő URL-címet. Ebben a kérésben egy adott címeket keresünk: `400 Braod St, Seattle, WA 98109` .
-
-    Ehhez a kérelemhez és a cikkben említett egyéb kérelmekhez cserélje le az `{Azure-Maps-Primary-Subscription-key}` elsődleges előfizetési kulcsát. A kérelemnek a következő URL-címhez hasonlóan kell kinéznie:
+3. Válassza a http **lekérése** módszert a Builder (szerkesztő) lapon, és adja meg a következő URL-címet. Ebben a kérésben egy adott címeket keresünk: `400 Braod St, Seattle, WA 98109` . Ehhez a kérelemhez és a cikkben említett egyéb kérelmekhez cserélje le az `{Azure-Maps-Primary-Subscription-key}` elsődleges előfizetési kulcsát.
 
     ```http
     https://atlas.microsoft.com/search/address/json?&subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&language=en-US&query=400 Broad St, Seattle, WA 98109
@@ -60,7 +59,7 @@ Ebben a példában a Azure Maps [keresési címek API](/rest/api/maps/search/get
 
 6. Ezután próbálja meg beállítani a `query` kulcsot `400 Broa` .
 
-7. Kattintson a **Küldés** gombra.  Láthatja, hogy a válasz több országból származó válaszokat is tartalmaz. Ahhoz, hogy a felhasználók a megfelelő területen geobias az eredményeket, mindig adja hozzá a kéréshez a lehető legtöbb helyet.
+7. Kattintson a **Küldés** gombra. Láthatja, hogy a válasz több országból származó válaszokat is tartalmaz. Ahhoz, hogy a felhasználók a megfelelő területen geobias az eredményeket, mindig adja hozzá a kéréshez a lehető legtöbb helyet.
 
 ## <a name="using-fuzzy-search-api"></a>A fuzzy Search API használata
 
@@ -78,7 +77,7 @@ Ebben a példában a alkalmazásban a teljes világ keresésére használjuk a f
 
 1. Nyissa meg a Poster alkalmazást, kattintson az **új** elemre, majd válassza a **kérelem** lehetőséget. Adja meg a kérelem **nevét** . Válassza ki az előző szakaszban létrehozott gyűjteményt, vagy hozzon létre egy újat, majd válassza a **Mentés** lehetőséget.
 
-2. Válassza a http **lekérése** módszert a Builder (szerkesztő) lapon, és adja meg a következő URL-címet. Ehhez a kérelemhez és a cikkben említett egyéb kérelmekhez cserélje le az `{Azure-Maps-Primary-Subscription-key}` elsődleges előfizetési kulcsát. A kérelemnek a következő URL-címhez hasonlóan kell kinéznie:
+2. Válassza a http **lekérése** módszert a Builder (szerkesztő) lapon, és adja meg a következő URL-címet. Ehhez a kérelemhez és a cikkben említett egyéb kérelmekhez cserélje le az `{Azure-Maps-Primary-Subscription-key}` elsődleges előfizetési kulcsát.
 
     ```http
    https://atlas.microsoft.com/search/fuzzy/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=pizza

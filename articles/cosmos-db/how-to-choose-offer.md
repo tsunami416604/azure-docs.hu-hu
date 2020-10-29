@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: dech
-ms.openlocfilehash: 0365238fd70e2e098e5a228ee71d5b9e0e584c71
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f7fd40c48f94b4337c5ec342499203f83763299b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279819"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909930"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>A standard (manuális) és az automatikus méretezés kiépített átviteli sebességének kiválasztása 
 
@@ -83,7 +83,7 @@ Most elemezzük az előzményeket. Tegyük fel, hogy az alábbi táblázatban is
 
 Vegye figyelembe, hogy az 1. órában 6%-os használat esetén az autoskálázás a maximális RU/s érték 10%-ában számlázza a RU/s-t, ami a minimum óránkénti. Bár az automatikus skálázás díja bizonyos óráknál nagyobb lehet, mint a manuális átviteli sebesség, ha az átlagos kihasználtság az összes órában kevesebb mint 66%-kal csökken, az automatikus skálázás összességében olcsóbbá válik.
 
-|  | Kihasználtság |Számlázott autoskálázási RU/s  |1. lehetőség: manuális 30 000 RU/s  | 2. lehetőség: 3000 – 30 000 RU/s közötti autoskálázás |
+|Időtartam  | Kihasználtság |Számlázott autoskálázási RU/s  |1. lehetőség: manuális 30 000 RU/s  | 2. lehetőség: 3000 – 30 000 RU/s közötti autoskálázás |
 |---------|---------|---------|---------|---------|
 |1. óra  | 6%  |     3000  |  30 000 * 0,008/100 = $2,40        |   3000 * 0,012/100 = $0,36      |
 |Óra 2  | 100%  |     30 000    |  30 000 * 0,008/100 = $2,40       |  30 000 * 0,012/100 = $3,60      |
@@ -102,7 +102,7 @@ Tegyük fel, hogy a kihasználtsági előzményeket a táblázat ismerteti. A h�
 
 Általánosságban elmondható, hogy ha egy hónap alatt az 730 óra átlagos kihasználtsága nagyobb, mint 66%, akkor a manuális átviteli sebesség használatával mentjük. 
 
-|  | Kihasználtság |Számlázott autoskálázási RU/s  |1. lehetőség: manuális 30 000 RU/s  | 2. lehetőség: 3000 – 30 000 RU/s közötti autoskálázás |
+| Időtartam | Kihasználtság |Számlázott autoskálázási RU/s  |1. lehetőség: manuális 30 000 RU/s  | 2. lehetőség: 3000 – 30 000 RU/s közötti autoskálázás |
 |---------|---------|---------|---------|---------|
 |1. óra  | 72%  |     21 600   |  30 000 * 0,008/100 = $2,40        |   21600 * 0,012/100 = $2,59      |
 |Óra 2  | 93%  |     28 000    |  30 000 * 0,008/100 = $2,40       |  28 000 * 0,012/100 = $3,36       |
@@ -116,18 +116,18 @@ Tegyük fel, hogy a kihasználtsági előzményeket a táblázat ismerteti. A h�
 A legmagasabb RU/s mennyiségű, óránkénti méretezési számlák. A normalizált RU-felhasználás időbeli alakulásának elemzésekor fontos a legmagasabb kihasználtságot óránként használni az átlag kiszámításakor. 
 
 A legmagasabb kihasználtság átlagának kiszámítása az egész órában:
-1. Állítsa be az **összesítést** a nem leállított ru-használati metrikán a **Max**értékre.
+1. Állítsa be az **összesítést** a nem leállított ru-használati metrikán a **Max** értékre.
 1. Válassza ki az **idő részletességét** 1 órára.
-1. Navigáljon a **diagram beállításaihoz**.
+1. Navigáljon a **diagram beállításaihoz** .
 1. Válassza a oszlopdiagram lehetőséget. 
-1. A **megosztás**területen válassza a **Letöltés az Excel programba** lehetőséget. A generált táblázatból számítsa ki az átlagos kihasználtságot az egész órában. 
+1. A **megosztás** területen válassza a **Letöltés az Excel programba** lehetőséget. A generált táblázatból számítsa ki az átlagos kihasználtságot az egész órában. 
 
 :::image type="content" source="media/how-to-choose-offer/variable-workload-highest-util-by-hour.png" alt-text="Számítási feladatok változó forgalommal – a normalizált RU-fogyasztás 6% és 100% között az összes órában":::
 
 ## <a name="measure-and-monitor-your-usage"></a>A használat mérése és figyelése
 Idővel, az átviteli sebesség típusának kiválasztása után figyelje az alkalmazást, és szükség szerint végezze el a szükséges módosításokat. 
 
-Ha autoskálázást használ, a Azure Monitor használatával megtekintheti a kiépített autoskálázási Max RU/s (az**autoskálázás maximális átviteli sebessége**) és a rendszer jelenleg (**kiépített átviteli sebesség**) méretét. Az alábbi példa egy változót vagy kiszámíthatatlan munkaterhelést mutat be az autoscale használatával. Vegye figyelembe, hogy ha nincs forgalom, a rendszer az RU/s-t a maximális RU/s érték legalább 10%-át méretezi, ami ebben az esetben 5000 RU/s és 50 000 RU/s. 
+Ha autoskálázást használ, a Azure Monitor használatával megtekintheti a kiépített autoskálázási Max RU/s (az **autoskálázás maximális átviteli sebessége** ) és a rendszer jelenleg ( **kiépített átviteli sebesség** ) méretét. Az alábbi példa egy változót vagy kiszámíthatatlan munkaterhelést mutat be az autoscale használatával. Vegye figyelembe, hogy ha nincs forgalom, a rendszer az RU/s-t a maximális RU/s érték legalább 10%-át méretezi, ami ebben az esetben 5000 RU/s és 50 000 RU/s. 
 
 :::image type="content" source="media/how-to-choose-offer/autoscale-metrics-azure-monitor.png" alt-text="Számítási feladatok változó forgalommal – a normalizált RU-fogyasztás 6% és 100% között az összes órában":::
 

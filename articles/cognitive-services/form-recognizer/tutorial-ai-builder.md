@@ -9,19 +9,19 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 90e6c41ad9f6b3d13f29e76d053287395eb88aed
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: bb4b69902f73a22cbd2b0fd5ad97c547ceb76a5c
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92889901"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912327"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Oktatóanyag: űrlap-feldolgozó alkalmazás létrehozása AI-szerkesztővel
 
-Az [AI Builder](https://docs.microsoft.com/ai-builder/overview) egy olyan energiagazdálkodási képesség, amely lehetővé teszi a folyamatok automatizálását és előrejelzését az üzleti teljesítmény javítása érdekében. A mesterséges intelligenciát használó űrlapok feldolgozásával olyan AI-modelleket hozhat létre, amelyek azonosítják és kinyerik a kulcs-érték párokat és a táblák adatait az űrlap dokumentumaiból.
+Az [AI Builder](/ai-builder/overview) egy olyan energiagazdálkodási képesség, amely lehetővé teszi a folyamatok automatizálását és előrejelzését az üzleti teljesítmény javítása érdekében. A mesterséges intelligenciát használó űrlapok feldolgozásával olyan AI-modelleket hozhat létre, amelyek azonosítják és kinyerik a kulcs-érték párokat és a táblák adatait az űrlap dokumentumaiból.
 
 > [!NOTE]
-> Ez a projekt [Microsoft Learn modulként](https://docs.microsoft.com/learn/modules/get-started-with-form-processing/)is elérhető.
+> Ez a projekt [Microsoft Learn modulként](/learn/modules/get-started-with-form-processing/)is elérhető.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -43,7 +43,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 1. A bal oldali panelen válassza az **AI Builder**  >  **Build** elemet.
 1. Válassza ki az **űrlap feldolgozására** szolgáló kártyát.
 1. Adja meg a modell nevét.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="upload-and-analyze-documents"></a>Dokumentumok feltöltése és elemzése
 
@@ -129,11 +129,11 @@ Ha elégedett a modellel, válassza a **Közzététel**  lehetőséget a közzé
 > [!div class="mx-imgBorder"]
 > ![modell közzététele lap](./media/tutorial-ai-builder/model-page.png)
 
-Miután közzétette az űrlap-feldolgozási modellt, használhatja azt egy [Power apps vászon alkalmazásban](https://docs.microsoft.com/ai-builder/form-processor-component-in-powerapps) vagy a [Power gyorsbüféban](https://docs.microsoft.com/ai-builder/form-processing-model-in-flow).
+Miután közzétette az űrlap-feldolgozási modellt, használhatja azt egy [Power apps vászon alkalmazásban](/ai-builder/form-processor-component-in-powerapps) vagy a [Power gyorsbüféban](/ai-builder/form-processing-model-in-flow).
 
 ## <a name="next-steps"></a>Következő lépések
 
 Az űrlap-feldolgozási modell használatához kövesse a mesterséges intelligencia-szerkesztő dokumentációját.
 
-* [Az űrlap-processzor összetevő használata a Power Appsben](https://docs.microsoft.com/ai-builder/form-processor-component-in-powerapps)
-* [Űrlap-feldolgozási modell használata a Power Gyorsbüféban](https://docs.microsoft.com/ai-builder/form-processing-model-in-flow)
+* [Az űrlap-processzor összetevő használata a Power Appsben](/ai-builder/form-processor-component-in-powerapps)
+* [Űrlap-feldolgozási modell használata a Power Gyorsbüféban](/ai-builder/form-processing-model-in-flow)

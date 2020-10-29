@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 9e233b93a1dc054e6d9f713e790e706d589bf01e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e35dc35746f08f48150a738b927433065fc1c67
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89503992"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910270"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Apache HBase-fürt migrálása egy új verzióra
 
@@ -52,9 +52,9 @@ Az Apache HBase-fürt Azure HDInsight való frissítéséhez hajtsa végre a kö
 
 1. [Hozzon létre egy új cél HDInsight-fürtöt](../hdinsight-hadoop-provision-linux-clusters.md) ugyanazzal a Storage-fiókkal, de egy másik tároló nevével:
 
-    ![Használja ugyanazt a Storage-fiókot, de hozzon létre egy másik tárolót.](./media/apache-hbase-migrate-new-version/same-storage-different-container.png)
+   ![Használja ugyanazt a Storage-fiókot, de hozzon létre egy másik tárolót.](./media/apache-hbase-migrate-new-version/same-storage-different-container.png)
 
-1. Ürítse ki a forrás HBase-fürtöt, amely a frissíteni kívánt fürt. A HBase beírja a beérkező adatot a memóriában tárolt tárolóba, amelyet _memstore_nevezünk. Ha a memstore elér egy adott méretet, a HBase kiüríti azt a lemezre a fürt Storage-fiókjában lévő hosszú távú tároláshoz. A régi fürt törlésekor a rendszer újrahasznosítja a memstores, ami esetleg elveszíti az adatvesztést. Az egyes táblák memstore manuális kiürítéséhez futtassa az alábbi szkriptet. A szkript legújabb verziója az Azure [githubon](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh)érhető el.
+1. Ürítse ki a forrás HBase-fürtöt, amely a frissíteni kívánt fürt. A HBase beírja a beérkező adatot a memóriában tárolt tárolóba, amelyet _memstore_ nevezünk. Ha a memstore elér egy adott méretet, a HBase kiüríti azt a lemezre a fürt Storage-fiókjában lévő hosszú távú tároláshoz. A régi fürt törlésekor a rendszer újrahasznosítja a memstores, ami esetleg elveszíti az adatvesztést. Az egyes táblák memstore manuális kiürítéséhez futtassa az alábbi szkriptet. A szkript legújabb verziója az Azure [githubon](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh)érhető el.
 
     ```bash
     #!/bin/bash
@@ -182,20 +182,50 @@ Az Apache HBase-fürt Azure HDInsight való frissítéséhez hajtsa végre a kö
 
     ![Jelölje be a karbantartási mód bekapcsolása a HBase jelölőnégyzetet, majd erősítse meg](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
 
-1. Jelentkezzen be a Ambari-be az új HDInsight-fürtön. Módosítsa a `fs.defaultFS` HDFS beállítást úgy, hogy az az eredeti fürt által használt tároló nevére mutasson. Ez a beállítás a **HDFS > konfigurációk területen > advanced > Advanced Core-site**.
+1. Ha nem használ HBase-fürtöket a továbbfejlesztett írási funkcióval, hagyja ki ezt a lépést. Csak a továbbfejlesztett írási funkcióval rendelkező HBase-fürtökre van szükség.
 
-    ![A Ambari-ben kattintson a szolgáltatások > HDFS > konfigurációk > speciális elemre.](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
+   Készítsen biztonsági mentést a WAL dir parancsra a HDFS alatt. Ehhez futtassa az alábbi parancsokat egy SSH-munkamenetből az eredeti fürt bármely Zookeeper-csomópontján vagy munkavégző csomópontján.
+   
+   ```bash
+   hdfs dfs -mkdir /hbase-wal-backup**
+   hdfs dfs -cp hdfs://mycluster/hbasewal /hbase-wal-backup**
+   ```
+    
+1. Jelentkezzen be a Ambari-be az új HDInsight-fürtön. Módosítsa a `fs.defaultFS` HDFS beállítást úgy, hogy az az eredeti fürt által használt tároló nevére mutasson. Ez a beállítás a **HDFS > konfigurációk területen > advanced > Advanced Core-site** .
 
-    ![A Ambari módosítsa a tároló nevét](./media/apache-hbase-migrate-new-version/change-container-name.png)
+   ![A Ambari-ben kattintson a szolgáltatások > HDFS > konfigurációk > speciális elemre.](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
+
+   ![A Ambari módosítsa a tároló nevét](./media/apache-hbase-migrate-new-version/change-container-name.png)
 
 1. Ha nem használ HBase-fürtöket a továbbfejlesztett írási funkcióval, hagyja ki ezt a lépést. Csak a továbbfejlesztett írási funkcióval rendelkező HBase-fürtökre van szükség.
 
    Módosítsa az `hbase.rootdir` elérési utat úgy, hogy az az eredeti fürt tárolójára mutasson.
 
-    ![A Ambari módosítsa a HBase rootdir tartozó tároló nevét.](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+   ![A Ambari módosítsa a HBase rootdir tartozó tároló nevét.](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+    
+1. Ha nem használ HBase-fürtöket a továbbfejlesztett írási funkcióval, hagyja ki ezt a lépést. Csak a továbbfejlesztett írási funkcióval rendelkező HBase-fürtökre van szükség, és csak olyan esetekben, amikor az eredeti fürt HBase-fürt volt a továbbfejlesztett írási funkcióval.
 
+   Tisztítsa meg az új fürthöz tartozó Zookeeper és a WAL FS-adatkészletet. Adja ki a következő parancsokat a Zookeeper-csomópontok vagy munkavégző csomópontok valamelyikében:
+
+   ```bash
+   hbase zkcli
+   rmr /hbase-unsecure
+   quit
+
+   hdfs dfs -rm -r hdfs://mycluster/hbasewal**
+   ```
+
+1. Ha nem használ HBase-fürtöket a továbbfejlesztett írási funkcióval, hagyja ki ezt a lépést. Csak a továbbfejlesztett írási funkcióval rendelkező HBase-fürtökre van szükség.
+   
+   Állítsa vissza a WAL dir szolgáltatást az új fürt HDFS egy SSH-munkamenetből az új fürt bármely Zookeeper-csomópontján vagy munkavégző csomópontján.
+   
+   ```bash
+   hdfs dfs -cp /hbase-wal-backup/hbasewal hdfs://mycluster/**
+   ```
+   
 1. Ha a HDInsight 3,6-et 4,0-re frissíti, kövesse az alábbi lépéseket, ellenkező esetben ugorjon a 10. lépésre:
-    1. Indítsa újra az összes szükséges szolgáltatást a Ambari-ben a **szolgáltatások**  >  **újraindítása**lehetőség kiválasztásával.
+
+    1. Indítsa újra az összes szükséges szolgáltatást a Ambari-ben a **szolgáltatások**  >  **újraindítása** lehetőség kiválasztásával.
     1. Állítsa le a HBase szolgáltatást.
     1. SSH-t a Zookeeper csomóponthoz, és hajtsa végre a [zkCli](https://github.com/go-zkcli/zkcli) parancsot, `rmr /hbase-unsecure` hogy eltávolítsa a HBase gyökérszintű znode a Zookeeper.
     1. Indítsa újra a HBase.

@@ -8,35 +8,47 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e9dc6acf33208de44eec2b5b9706b9f0b176f0d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 255e284cf8d54a9be59f09f5613cb2728417d234
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87284472"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912038"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption – mintaszkriptek 
 
 Ez a cikk példákat tartalmaz az előre titkosított virtuális merevlemezek és egyéb feladatok előkészítéséhez.
 
+> [!NOTE]
+> Minden parancsfájl az ADE legújabb, nem HRE verziójára hivatkozik, kivéve a következőt:.
+
+## <a name="sample-powershell-scripts-for-azure-disk-encryption"></a>PowerShell-parancsfájlok Azure Disk Encryptionhoz 
+
+
+- **Az előfizetésben található összes titkosított virtuális gép listázása**
+
+  Az összes ADE-titkosítású virtuális gép és a bővítmény verziója megtalálható az előfizetésben található összes erőforráscsoport számára ezen a [PowerShell-parancsfájl](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VM.ps1)használatával.
+
+  Másik lehetőségként ezek a parancsmagok az összes ADE-titkosítású virtuális gépet megjelenítik (a bővítmény verziószáma nem):
+
+    ```azurepowershell-interactive
+    $osVolEncrypted = {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
+    $dataVolEncrypted= {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
+    Get-AzVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
+    ```
+
+- **Az előfizetéshez tartozó összes titkosított VMSS-példány listázása**
+    
+    Az összes ADE-titkosítású VMSS-példányt és a bővítmény verzióját a jelen [PowerShell-parancsfájl](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VMSS.ps1)használatával az előfizetésben található összes erőforráscsoporthoz megtalálhatja.
  
-
-## <a name="list-vms-and-secrets"></a>Virtuális gépek és titkok listázása
-
-Az előfizetésben található összes titkosított virtuális gép listázása:
-
-```azurepowershell-interactive
-$osVolEncrypted = {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
-$dataVolEncrypted= {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
-Get-AzVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
-```
-A Key vaultban lévő virtuális gépek titkosításához használt összes lemezes titkosítási titok listázása:
+- **A Key vaultban lévő virtuális gépek titkosításához használt összes lemez-titkosítási titok listázása**
 
 ```azurepowershell-interactive
 Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
 ```
 
-## <a name="the-azure-disk-encryption-prerequisites-scripts"></a>A Azure Disk Encryption előfeltételek parancsfájljai
+### <a name="using-the-azure-disk-encryption-prerequisites-powershell-script"></a>Az Azure Disk Encryption előfeltételek PowerShell-parancsfájl használata
+
 Ha már ismeri a Azure Disk Encryption előfeltételeit, használhatja az [Azure Disk Encryption előfeltételek PowerShell-szkriptet](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). A PowerShell-szkriptek használatára példát a [virtuális gépek titkosítása](disk-encryption-powershell-quickstart.md)– gyors útmutató című témakörben talál. A parancsfájl egy szakaszának megjegyzéseit eltávolíthatja a meglévő erőforráscsoporthoz tartozó meglévő virtuális gépek összes lemezének titkosításához a 211. sorban kezdődően. 
 
 A következő táblázat a PowerShell-parancsfájlban használható paramétereket mutatja be: 
@@ -69,7 +81,7 @@ A következő táblázat a PowerShell-parancsfájlban használható paraméterek
 Az alábbi szakaszoknak az Azure IaaS-ben titkosított virtuális merevlemezként való üzembe helyezéséhez egy előre titkosított Windows virtuális merevlemez előkészítéséhez van szükségük. Az információk segítségével új Windowsos virtuális gépet (VHD-t) készíthet a Azure Site Recovery vagy az Azure-ban. A virtuális merevlemezek előkészítésével és feltöltésével kapcsolatos további információkért lásd: [általánosított virtuális merevlemez feltöltése és használata új virtuális gépek létrehozásához az Azure-ban](upload-generalized-managed.md).
 
 ### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>Csoportházirend frissítése, hogy az operációs rendszer védelmét nem TPM-t engedélyezze
-Konfigurálja a BitLocker csoportházirend beállítást **BitLocker meghajtótitkosítás**, amelyet a **helyi számítógép-házirend**  >  **Számítógép konfigurációja**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**szakaszban talál. Ha módosítani szeretné az **operációs rendszer meghajtóit**  >  ,**további hitelesítésre van szükség az indításkor**  >  ,**kompatibilis TPM nélkül**, az alábbi ábrán látható módon:
+Konfigurálja a BitLocker csoportházirend beállítást **BitLocker meghajtótitkosítás** , amelyet a **helyi számítógép-házirend**  >  **Számítógép konfigurációja**  >  **Felügyeleti sablonok**  >  **Windows-összetevők** szakaszban talál. Ha módosítani szeretné az **operációs rendszer meghajtóit**  >  , **további hitelesítésre van szükség az indításkor**  >  , **kompatibilis TPM nélkül** , az alábbi ábrán látható módon:
 
 ![Microsoft Antimalware szolgáltatás az Azure-ban](../media/disk-encryption/disk-encryption-fig8.png)
 

@@ -7,69 +7,65 @@ ms.service: postgresql
 ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/07/2019
-ms.openlocfilehash: 2ecf5c540c3fce7a60ebf256d871993400a731ed
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.date: 10/28/2020
+ms.openlocfilehash: 2ee616bfe9e88f2f3da37f1e4963ec7a73d59468
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92481193"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912089"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rövid útmutató: a Python használata az Azure Database for PostgreSQL-kiszolgálóval való kapcsolódáshoz és az adatlekérdezéshez
 
-Ebben a rövid útmutatóban egy Azure Database for PostgreSQL használhat a Python használatával macOS, Ubuntu Linux vagy Windows rendszeren. A rövid útmutató bemutatja, hogyan csatlakozhat az adatbázishoz, és hogyan lehet SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni. A cikk feltételezi, hogy már ismeri a Pythont, de a Azure Database for PostgreSQL használatának új módszere.
+Ebből a rövid útmutatóból megtudhatja, hogyan csatlakozhat az adatbázishoz Azure Database for PostgreSQL egyetlen kiszolgálón, és hogyan futtathat SQL-utasításokat a Python macOS, Ubuntu Linux vagy Windows rendszeren történő lekérdezéséhez.
 
 > [!TIP]
 > Ha Django-alkalmazást szeretne felépíteni a PostgreSQL-sel, akkor adja ki az oktatóanyagot, [és telepítsen egy Django-webalkalmazást a PostgreSQL](../app-service/tutorial-python-postgresql-app.md) oktatóanyaggal.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
+Ehhez a rövid útmutatóhoz a következőkre lesz szüksége:
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free).
+- Azure Database for PostgreSQL önálló kiszolgáló létrehozása [Azure Portal](./quickstart-create-server-database-portal.md) használatával <br/> vagy az [Azure CLI](./quickstart-create-server-database-azure-cli.md) -vel, ha még nem rendelkezik ilyennel.
+- Attól függően, hogy nyilvános vagy privát hozzáférést használ-e, a kapcsolat engedélyezéséhez hajtsa végre az alábbi műveletek **egyikét** .
 
-- A rövid útmutató befejezése [: hozzon létre egy Azure Database for PostgreSQL kiszolgálót a Azure Portal vagy a](quickstart-create-server-database-portal.md) rövid útmutatóban [: hozzon létre egy Azure Database for POSTGRESQL az Azure CLI használatával](quickstart-create-server-database-azure-cli.md).
-  
+  |Művelet| Kapcsolati mód|Útmutató|
+  |:--------- |:--------- |:--------- |
+  | **Tűzfalszabályok konfigurálása** | Nyilvános | [Portál](./howto-manage-firewall-using-portal.md) <br/> [Parancssori felület](./howto-manage-firewall-using-cli.md)|
+  | **Szolgáltatási végpont konfigurálása** | Nyilvános | [Portál](./howto-manage-vnet-using-portal.md) <br/> [Parancssori felület](./howto-manage-vnet-using-cli.md)|
+  | **Privát hivatkozás konfigurálása** | Személyes | [Portál](./howto-configure-privatelink-portal.md) <br/> [Parancssori felület](./howto-configure-privatelink-cli.md) |
+
 - [Python](https://www.python.org/downloads/) 2.7.9 + vagy 3.4 +.
-  
+
 - Legújabb [pip](https://pip.pypa.io/en/stable/installing/) -csomag telepítője.
-
-## <a name="install-the-python-libraries-for-postgresql"></a>Python-kódtárak telepítése a PostgreSQL-hez
-A [psycopg2](https://pypi.python.org/pypi/psycopg2/) modul lehetővé teszi a PostgreSQL-adatbázishoz való csatlakozást és azok lekérdezését, és Linux, MacOS vagy Windows [Wheel](https://pythonwheels.com/) csomagként érhető el. Telepítse a modul bináris verzióját, beleértve az összes függőséget. A `psycopg2` telepítéssel és a követelményekkel kapcsolatos további információkért lásd: [telepítés](http://initd.org/psycopg/docs/install.html). 
-
-A telepítéséhez `psycopg2` Nyisson meg egy terminált vagy egy parancssort, és futtassa a parancsot `pip install psycopg2` .
+- Telepítse [psycopg2](https://pypi.python.org/pypi/psycopg2/) a psycopg2 `pip install psycopg2` -t egy terminál vagy parancssori ablak használatával. További információ: [How to install `psycopg2` ](http://initd.org/psycopg/docs/install.html).
 
 ## <a name="get-database-connection-information"></a>Adatbázis-kapcsolatok adatainak beolvasása
 Azure Database for PostgreSQL-adatbázishoz való csatlakozáshoz a teljes kiszolgálónév és a bejelentkezési hitelesítő adatok szükségesek. Ezt az információt a Azure Portalból kérheti le.
 
-1. A [Azure Portal](https://portal.azure.com/)keresse meg és válassza ki a Azure Database for PostgreSQL-kiszolgáló nevét. 
-1. A kiszolgáló **Áttekintés** lapján másolja a teljes **kiszolgálónevet** és a **rendszergazdai felhasználónevet**. A teljes **kiszolgálónév** mindig a form * \<my-server-name> . postgres.database.Azure.com*, a **rendszergazdai Felhasználónév** pedig mindig *\<my-admin-username>@\<my-server-name>* az űrlap. 
-   
-   Szüksége lesz a rendszergazdai jelszavára is. Ha elfelejti, ezt a lapról állíthatja vissza. 
-   
+1. A [Azure Portal](https://portal.azure.com/)keresse meg és válassza ki a Azure Database for PostgreSQL-kiszolgáló nevét.
+1. A kiszolgáló **Áttekintés** lapján másolja a teljes **kiszolgálónevet** és a **rendszergazdai felhasználónevet** . A teljes **kiszolgálónév** mindig a form *\<my-server-name> . postgres.database.Azure.com* , a **rendszergazdai Felhasználónév** pedig mindig *\<my-admin-username>@\<my-server-name>* az űrlap.
+
+   Szüksége lesz a rendszergazdai jelszavára is. Ha elfelejti, ezt a lapról állíthatja vissza.
+
    :::image type="content" source="./media/connect-python/1-connection-string.png" alt-text="Azure Database for PostgreSQL-kiszolgáló neve":::
 
-## <a name="how-to-run-the-python-examples"></a>A Python-példák futtatása
+> [!IMPORTANT]
+>  Cserélje le a következő értékeket:
+>   - `<server-name>` és a `<admin-username>` Azure Portalból másolt értékekkel.
+>   - `<admin-password>` a kiszolgáló jelszavával.
+>   - `<database-name>` a kiszolgáló létrehozásakor a rendszer automatikusan létrehozta a *postgres* nevű alapértelmezett adatbázist. Átnevezheti az adatbázist, vagy [létrehozhat egy új adatbázist](https://www.postgresql.org/docs/9.0/sql-createdatabase.html) az SQL-parancsok használatával.
 
-A cikkben szereplő kódok mindegyike esetében:
-
-1. Hozzon létre egy új fájlt egy szövegszerkesztőben. 
-   
-1. Adja hozzá a példában szereplő kódot a fájlhoz. A kódban cserélje le a következőket:
-   - `<server-name>` és a `<admin-username>` Azure Portalból másolt értékekkel.
-   - `<admin-password>` a kiszolgáló jelszavával.
-   - `<database-name>` a Azure Database for PostgreSQL-adatbázis nevével. A kiszolgáló létrehozásakor a rendszer automatikusan létrehozta a *postgres* nevű alapértelmezett adatbázist. Átnevezheti az adatbázist, vagy létrehozhat egy új adatbázist az SQL-parancsok használatával. 
-   
-1. Mentse a fájlt a Project mappájába *.* file kiterjesztéssel, például *postgres-INSERT.py*. Windows esetén győződjön meg arról, hogy az UTF-8 kódolás van kiválasztva a fájl mentésekor. 
-   
-1. A fájl futtatásához váltson egy parancssori felületen a Project mappára, és írja be például a következőt `python` : `python postgres-insert.py` .
-
-## <a name="create-a-table-and-insert-data"></a>Tábla létrehozása és az adatbeszúrás
-A következő kódrészlet a [psycopg2. csatlakoztatási](http://initd.org/psycopg/docs/connection.html) függvénnyel csatlakozik a Azure Database for PostgreSQL-adatbázishoz, és betölti az adatait egy SQL **Insert** utasítással. Az [cursor.exeCute](http://initd.org/psycopg/docs/cursor.html#execute) függvény végrehajtja az SQL-lekérdezést az adatbázison. 
+## <a name="step-1-connect-and-insert-data"></a>1. lépés: az adatkapcsolat és az adatbeszúrás
+Az alábbi kódrészlet a következő példában csatlakozik a Azure Database for PostgreSQL-adatbázishoz a használatával
+-  [psycopg2. Csatlakoztassa](http://initd.org/psycopg/docs/connection.html) a függvényt, és betölti az adatok egy SQL **Insert** utasítással.
+- [cursor.exeCute](http://initd.org/psycopg/docs/cursor.html#execute) függvény végrehajtja az SQL-lekérdezést az adatbázison.
 
 ```Python
 import psycopg2
 
-# Update connection string information 
+# Update connection string information
 host = "<server-name>"
 dbname = "<database-name>"
 user = "<admin-username>"
@@ -78,7 +74,7 @@ sslmode = "require"
 
 # Construct connection string
 conn_string = "host={0} user={1} dbname={2} password={3} sslmode={4}".format(host, user, dbname, password, sslmode)
-conn = psycopg2.connect(conn_string) 
+conn = psycopg2.connect(conn_string)
 print("Connection established")
 
 cursor = conn.cursor()
@@ -107,25 +103,15 @@ A kód sikeres futtatásakor a következő kimenetet hozza létre:
 
 :::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="Azure Database for PostgreSQL-kiszolgáló neve":::
 
-## <a name="read-data"></a>Adatok olvasása
-A következő kódrészlet a Azure Database for PostgreSQL-adatbázishoz kapcsolódik, és az SQL **Select** utasítással az adatok beolvasásához használja az [cursor.exeCute](http://initd.org/psycopg/docs/cursor.html#execute) kifejezést. Ez a függvény elfogad egy lekérdezést, és visszaad egy eredményhalmaz értékét a [cursor. fetchall ()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall)használatával. 
+
+[Problémák léptek fel? Tudassa velünk](https://aka.ms/postgres-doc-feedback)
+
+## <a name="step-2-read-data"></a>2. lépés: az adatolvasás
+A következő mintakód a Azure Database for PostgreSQL-adatbázishoz kapcsolódik, és használja
+- [cursor.exe](http://initd.org/psycopg/docs/cursor.html#execute) az SQL **Select** utasítással az adatok olvasásához.
+- a [cursor. fetchall ()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall) fogad egy lekérdezést, és visszaadja egy eredményhalmaz értékét a következő használatával:
 
 ```Python
-import psycopg2
-
-# Update connection string information
-host = "<server-name>"
-dbname = "<database-name>"
-user = "<admin-username>"
-password = "<admin-password>"
-sslmode = "require"
-
-# Construct connection string
-conn_string = "host={0} user={1} dbname={2} password={3} sslmode={4}".format(host, user, dbname, password, sslmode)
-conn = psycopg2.connect(conn_string) 
-print("Connection established")
-
-cursor = conn.cursor()
 
 # Fetch all rows from table
 cursor.execute("SELECT * FROM inventory;")
@@ -135,72 +121,40 @@ rows = cursor.fetchall()
 for row in rows:
     print("Data row = (%s, %s, %s)" %(str(row[0]), str(row[1]), str(row[2])))
 
-# Cleanup
-conn.commit()
-cursor.close()
-conn.close()
-```
 
-## <a name="update-data"></a>Adatok frissítése
-A következő kódrészlet a Azure Database for PostgreSQL-adatbázishoz kapcsolódik, és az SQL **Update** utasítással az adatok frissítésére szolgáló [cursor.exeCute](http://initd.org/psycopg/docs/cursor.html#execute) -t használja. 
+```
+[Problémák léptek fel? Tudassa velünk](https://aka.ms/postgres-doc-feedback)
+
+## <a name="step-3-update-data"></a>3. lépés: az Adatfrissítés
+Az alábbi kódrészlet az SQL **Update** utasítással frissíti az adatok frissítéséhez [cursor.exeCute](http://initd.org/psycopg/docs/cursor.html#execute) kifejezést.
 
 ```Python
-import psycopg2
-
-# Update connection string information
-host = "<server-name>"
-dbname = "<database-name>"
-user = "<admin-username>"
-password = "<admin-password>"
-sslmode = "require"
-
-# Construct connection string
-conn_string = "host={0} user={1} dbname={2} password={3} sslmode={4}".format(host, user, dbname, password, sslmode)
-conn = psycopg2.connect(conn_string) 
-print("Connection established")
-
-cursor = conn.cursor()
 
 # Update a data row in the table
 cursor.execute("UPDATE inventory SET quantity = %s WHERE name = %s;", (200, "banana"))
 print("Updated 1 row of data")
 
-# Cleanup
-conn.commit()
-cursor.close()
-conn.close()
 ```
+[Problémák léptek fel? Tudassa velünk](https://aka.ms/postgres-doc-feedback)
 
-## <a name="delete-data"></a>Adat törlése
-A következő kódrészlet a Azure Database for PostgreSQL-adatbázishoz kapcsolódik, és az SQL **delete** utasítással [cursor.exearanyos](http://initd.org/psycopg/docs/cursor.html#execute) használatával törli a korábban beszúrt leltározási elemeket. 
+## <a name="step-5-delete-data"></a>5. lépés: az adattörlés
+A következő kódrészlet a korábban beszúrt leltári elemek törléséhez az SQL **delete** utasítással [cursor.exearanyos](http://initd.org/psycopg/docs/cursor.html#execute) .
 
 ```Python
-import psycopg2
-
-# Update connection string information
-host = "<server-name>"
-dbname = "<database-name>"
-user = "<admin-username>"
-password = "<admin-password>"
-sslmode = "require"
-
-# Construct connection string
-conn_string = "host={0} user={1} dbname={2} password={3} sslmode={4}".format(host, user, dbname, password, sslmode)
-conn = psycopg2.connect(conn_string) 
-print("Connection established")
-
-cursor = conn.cursor()
 
 # Delete data row from table
 cursor.execute("DELETE FROM inventory WHERE name = %s;", ("orange",))
 print("Deleted 1 row of data")
 
-# Cleanup
-conn.commit()
-cursor.close()
-conn.close()
 ```
+
+[Problémák léptek fel? Tudassa velünk](https://aka.ms/postgres-doc-feedback)
 
 ## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
-> [Adatbázis migrálása exportálással és importálással](./howto-migrate-using-export-and-import.md)
+> [Azure Database for MySQL-kiszolgáló kezelése a portál használatával](./howto-create-manage-server-portal.md)<br/>
+
+> [!div class="nextstepaction"]
+> [Azure Database for MySQL-kiszolgáló kezelése a parancssori felület használatával](./how-to-manage-server-cli.md)<br/>
+
+[Nem találja, amit keres? Tudassa velünk.](https://aka.ms/postgres-doc-feedback)

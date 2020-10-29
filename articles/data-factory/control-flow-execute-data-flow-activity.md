@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 04/30/2020
-ms.openlocfilehash: 5593b0d633b133c8a8295634b674218d5e6c6daf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/28/2020
+ms.openlocfilehash: 753d72b31e4f813d0e7abbbd223e050fd3390411
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89485037"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910763"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Adatfolyam-tevékenység Azure Data Factory
 
@@ -56,11 +56,11 @@ Az adatfolyam tevékenységgel átalakíthatja és áthelyezheti az adatait a le
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-adatfolyam | A végrehajtandó adatfolyamra mutató hivatkozás | DataFlowReference | Igen
-integrationRuntime | Az a számítási környezet, amelyen az adatfolyam fut. Ha nincs megadva, a rendszer az Azure Integration Runtime automatikus feloldását fogja használni. | IntegrationRuntimeReference | Nem
-számítás. coreCount | A Spark-fürtben használt magok száma. Csak akkor adható meg, ha az Azure Integration Runtime automatikus feloldása használatban van | 8, 16, 32, 48, 80, 144, 272 | Nem
-számítás. computeType | A Spark-fürtben használt számítási típus. Csak akkor adható meg, ha az Azure Integration Runtime automatikus feloldása használatban van | "Általános", "ComputeOptimized", "MemoryOptimized" | Nem
-előkészítés. linkedService | Ha Azure-beli szinapszis Analytics-forrást vagy-fogadót használ, a rendszer a alapszintű előkészítéshez használt Storage-fiókot használja. | Linkedservicereference sématulajdonsággal | Csak akkor, ha az adatfolyam beolvassa vagy ír egy Azure szinapszis Analyticsbe
+adatfolyam | A végrehajtandó adatfolyamra mutató hivatkozás | DataFlowReference | Yes
+integrationRuntime | Az a számítási környezet, amelyen az adatfolyam fut. Ha nincs megadva, a rendszer az Azure Integration Runtime automatikus feloldását fogja használni. | IntegrationRuntimeReference | No
+számítás. coreCount | A Spark-fürtben használt magok száma. Csak akkor adható meg, ha az Azure Integration Runtime automatikus feloldása használatban van | 8, 16, 32, 48, 80, 144, 272 | No
+számítás. computeType | A Spark-fürtben használt számítási típus. Csak akkor adható meg, ha az Azure Integration Runtime automatikus feloldása használatban van | "Általános", "ComputeOptimized", "MemoryOptimized" | No
+előkészítés. linkedService | Ha Azure-beli szinapszis Analytics-forrást vagy-fogadót használ, határozza meg a alapszintű előkészítéshez használt Storage-fiókot.<br/><br/>Ha az Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor a Storage-fiókon engedélyezve van a "megbízható Microsoft-szolgáltatás engedélyezése" nevű felügyelt identitás-hitelesítés, lásd: a [VNet szolgáltatás-végpontok Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)-ban való használatának következményei. Ismerje meg az [Azure Blob](connector-azure-blob-storage.md#managed-identity) és a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) szükséges konfigurációit is.<br/> | Linkedservicereference sématulajdonsággal | Csak akkor, ha az adatfolyam beolvassa vagy ír egy Azure szinapszis Analyticsbe
 előkészítés. folderPath | Ha Azure szinapszis Analytics-forrást vagy-fogadót használ, a mappa elérési útja a blob Storage-fiókban | Sztring | Csak akkor, ha az adatfolyam beolvassa vagy ír az Azure szinapszis Analyticsbe
 
 ![Adatfolyam végrehajtása](media/data-flow/activity-data-flow.png "Adatfolyam végrehajtása")
@@ -116,7 +116,7 @@ A hibakeresési folyamat az aktív hibakeresési fürtön fut, nem az adatáraml
 
 ## <a name="monitoring-the-data-flow-activity"></a>Az adatfolyam tevékenységének figyelése
 
-Az adatfolyam-tevékenység speciális figyelési felülettel rendelkezik, ahol megtekintheti a particionálást, a szakasz időpontját és az adatvonal-információkat. Nyissa meg a figyelés panelt a **műveletek**területen található szemüvegek ikon használatával. További információ: [az adatfolyamatok figyelése](concepts-data-flow-monitoring.md).
+Az adatfolyam-tevékenység speciális figyelési felülettel rendelkezik, ahol megtekintheti a particionálást, a szakasz időpontját és az adatvonal-információkat. Nyissa meg a figyelés panelt a **műveletek** területen található szemüvegek ikon használatával. További információ: [az adatfolyamatok figyelése](concepts-data-flow-monitoring.md).
 
 ### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>Adatfolyam-tevékenységek eredményeinek használata egy későbbi tevékenységben
 

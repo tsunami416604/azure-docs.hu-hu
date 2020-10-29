@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b16ee98b44e52482423229a0940c8927a94d4c83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f4ad8db5b750a8e75a921a6d459a1a294a4bad0
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88118671"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910032"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Felhasználók számára bejelentkező webalkalmazás: alkalmazás regisztrálása
 
@@ -24,7 +24,7 @@ Ez a cikk ismerteti az alkalmazások regisztrálási sajátosságait egy olyan w
 
 Az alkalmazás regisztrálásához a következőket használhatja:
 
-- A [webalkalmazás](#register-an-app-by-using-the-quickstarts)rövid útmutatói. Amellett, hogy kiválóan használja az alkalmazások létrehozását, a Azure Portalban található rövid útmutatók tartalmaznak egy **, a módosítást**elnevező gombot. Ezt a gombot használhatja a szükséges tulajdonságok beállításához még egy meglévő alkalmazáshoz is. A tulajdonságok értékeit a saját esetéhez kell igazítania. Különösen az alkalmazás webes API URL-címe valószínűleg eltér a javasolt alapértelmezetttől, ami a kijelentkezési URI-t is érinti.
+- A [webalkalmazás](#register-an-app-by-using-the-quickstarts)rövid útmutatói. Amellett, hogy kiválóan használja az alkalmazások létrehozását, a Azure Portalban található rövid útmutatók tartalmaznak egy **, a módosítást** elnevező gombot. Ezt a gombot használhatja a szükséges tulajdonságok beállításához még egy meglévő alkalmazáshoz is. A tulajdonságok értékeit a saját esetéhez kell igazítania. Különösen az alkalmazás webes API URL-címe valószínűleg eltér a javasolt alapértelmezetttől, ami a kijelentkezési URI-t is érinti.
 - Az Azure Portal az [alkalmazás manuális regisztrálásához](#register-an-app-by-using-the-azure-portal).
 - PowerShell és parancssori eszközök.
 
@@ -43,39 +43,39 @@ Ezeket a hivatkozásokat használhatja a webalkalmazás létrehozásához:
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával. Másik lehetőségként jelentkezzen be a nemzeti felhőhöz [választott Azure Portal](./authentication-national-cloud.md#app-registration-endpoints) .
 2. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókját a jobb felső sarokban. Ezután állítsa be a portál munkamenetét a kívánt Azure Active Directory (Azure AD) bérlőre.
-3. A bal oldali ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást, majd válassza **Alkalmazásregisztrációk**  >  **új regisztráció**lehetőséget.
+3. A bal oldali ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást, majd válassza **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
    1. Válassza ki az alkalmazás támogatott fiók-típusait. (Lásd: [támogatott fióktípus](./v2-supported-account-types.md).)
-   1. A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára. Írja be például a következőt: **AspNetCore-WebApp**.
-   1. Az **átirányítási URI**esetében adja hozzá az alkalmazás típusát és az URI célhelyet, amely a sikeres hitelesítés után a visszaadott jogkivonat-válaszokat fogja fogadni. Adja meg például a következőt: **https://localhost:44321** . Ezután válassza a **regisztráció**lehetőséget.
-   ![regisztráció](media/scenario-webapp/scenario-webapp-app-registration-1.png)
+   1. A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára. Írja be például a következőt: **AspNetCore-WebApp** .
+   1. Az **átirányítási URI** esetében adja hozzá az alkalmazás típusát és az URI célhelyet, amely a sikeres hitelesítés után a visszaadott jogkivonat-válaszokat fogja fogadni. Adja meg például a következőt: **https://localhost:44321** . Ezután válassza a **regisztráció** lehetőséget.
+   ![Képernyőfelvétel: az alkalmazás regisztrálása oldal, ahol a regisztráció lehetőséget választhatja.](media/scenario-webapp/scenario-webapp-app-registration-1.png)
 1. Válassza a **hitelesítés** menüt, majd adja hozzá a következő adatokat:
-   1. A **Válasz URL-cím**mezőbe **https://localhost:44321/signin-oidc** írja be a **web**típusú értéket.
+   1. A **Válasz URL-cím** mezőbe **https://localhost:44321/signin-oidc** írja be a **web** típusú értéket.
    1. A **Speciális beállítások** szakaszban állítsa be a **KIJELENTKEZÉSI URL-címet** a következőre: **https://localhost:44321/signout-oidc** .
    1. Az **Implicit engedély** területen válassza az **Azonosítói jogkivonatok** elemet.
    1. Kattintson a **Mentés** gombra.
-  ![regisztráció](media/scenario-webapp/scenario-webapp-app-registration-2.png)
+  ![A képernyőképen a hitelesítési beállítások láthatók, ahol elvégezheti a módosításokat.](media/scenario-webapp/scenario-webapp-app-registration-2.png)
  
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 1. Amikor megjelenik az **alkalmazás regisztrálása lap** , adja meg az alkalmazás regisztrációs adatait:
    1. Válassza ki az alkalmazás támogatott fiók-típusait. (Lásd: [támogatott fióktípus](./v2-supported-account-types.md).)
-   1. A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára. Írja be például a következőt: **MailApp-openidconnect-v2**.
+   1. A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára. Írja be például a következőt: **MailApp-openidconnect-v2** .
    1. Az **átirányítási URI (nem kötelező)** szakaszban a kombinált listában válassza a **web** lehetőséget, és adja meg a következő átirányítási URI-t: **https://localhost:44326/** .
 1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 1. Válassza a **hitelesítés** menüt.
-1. A **Speciális beállítások**  |  **implicit támogatás** szakaszban válassza az **azonosító tokenek**elemet. Ehhez a mintához engedélyezni kell, hogy az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó számára.
-1. Kattintson a **Mentés** gombra.
+1. A **Speciális beállítások**  |  **implicit támogatás** szakaszban válassza az **azonosító tokenek** elemet. Ehhez a mintához engedélyezni kell, hogy az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó számára.
+1. Válassza a **Mentés** lehetőséget.
 
 # <a name="java"></a>[Java](#tab/java)
 
-1. Amikor megjelenik az **alkalmazás regisztrálása lap** , adja meg az alkalmazás megjelenítendő nevét. Írja be például a következőt: **Java-WebApp**.
-1. Válassza **a fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban (például Skype, Xbox, Outlook.com)**, majd válassza a webalkalmazás **/API** lehetőséget az **alkalmazás típusához**.
+1. Amikor megjelenik az **alkalmazás regisztrálása lap** , adja meg az alkalmazás megjelenítendő nevét. Írja be például a következőt: **Java-WebApp** .
+1. Válassza **a fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban (például Skype, Xbox, Outlook.com)** , majd válassza a webalkalmazás **/API** lehetőséget az **alkalmazás típusához** .
 1. Az alkalmazás regisztrálásához válassza a **regisztráció** lehetőséget.
-1. A bal oldali menüben válassza a **hitelesítés**lehetőséget. Az **átirányítási URI**-k területen válassza a **web**lehetőséget.
+1. A bal oldali menüben válassza a **hitelesítés** lehetőséget. Az **átirányítási URI** -k területen válassza a **web** lehetőséget.
 
 1. Adjon meg két átirányítási URI-t: egyet a bejelentkezési oldalhoz, egy pedig a Graph oldalhoz. Mindkettő esetében ugyanazt a gazdagépet és portszámot kell használnia, amelyet a bejelentkezési oldal **/msal4jsample/Secure/aad** , valamint a felhasználói adatok oldalának **msal4jsample/Graph/Me** elemében követ.
 
@@ -84,30 +84,30 @@ Ezeket a hivatkozásokat használhatja a webalkalmazás létrehozásához:
    - **http://localhost:8080/msal4jsample/secure/aad**
    - **http://localhost:8080/msal4jsample/graph/me**
 
-  Ezután válassza a **Mentés**lehetőséget.
+  Ezután válassza a **Mentés** lehetőséget.
 
 1. Válassza a **tanúsítványok & a titkok** lehetőséget a menüből.
-1. Az **ügyfél titkai** szakaszban válassza az **új ügyfél titka**elemet, majd a következőket:
+1. Az **ügyfél titkai** szakaszban válassza az **új ügyfél titka** elemet, majd a következőket:
 
    1. Adja meg a kulcs leírását.
-   1. Válassza ki a kulcs időtartamát **1 évben**.
-   1. Válassza a **Hozzáadás** lehetőséget.
+   1. Válassza ki a kulcs időtartamát **1 évben** .
+   1. Válassza a **Hozzáadás** elemet.
    1. Ha a kulcs értéke megjelenik, másolja később. Ez az érték nem jelenik meg újra, vagy bármilyen más módon lekérdezhető.
 
 # <a name="python"></a>[Python](#tab/python)
 
 1. Amikor megjelenik az **alkalmazás regisztrálása lap** , adja meg az alkalmazás regisztrációs adatait:
-   1. A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára. Adja meg például a **Python-WebApp**értéket.
-   1. A **támogatott fióktípus** módosítása **bármely szervezeti címtárban és személyes Microsoft-fiókban (például Skype, Xbox, Outlook.com)**.
+   1. A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára. Adja meg például a **Python-WebApp** értéket.
+   1. A **támogatott fióktípus** módosítása **bármely szervezeti címtárban és személyes Microsoft-fiókban (például Skype, Xbox, Outlook.com)** .
    1. Az **átirányítási URI (nem kötelező)** szakaszban a kombinált listában válassza a **web** lehetőséget, és adja meg a következő átirányítási URI-t: **http://localhost:5000/getAToken** .
 1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 1. Az alkalmazás **Áttekintés** lapján keresse meg az **alkalmazás (ügyfél) azonosító** értékét, és jegyezze fel később. Ehhez a projekthez a Visual Studio konfigurációs fájlját kell konfigurálnia.
-1. A bal oldali menüben válassza a **tanúsítványok & Secrets**elemet.
-1. Az **ügyfél titkai** szakaszban válassza az **új ügyfél titka**elemet, majd a következőket:
+1. A bal oldali menüben válassza a **tanúsítványok & Secrets** elemet.
+1. Az **ügyfél titkai** szakaszban válassza az **új ügyfél titka** elemet, majd a következőket:
 
    1. Adja meg a kulcs leírását.
-   1. Adja **meg az 1 év**kulcsának időtartamát.
-   1. Válassza a **Hozzáadás** lehetőséget.
+   1. Adja **meg az 1 év** kulcsának időtartamát.
+   1. Válassza a **Hozzáadás** elemet.
    1. Ha a kulcs értéke megjelenik, másolja. Erre később még szüksége lesz.
 ---
 

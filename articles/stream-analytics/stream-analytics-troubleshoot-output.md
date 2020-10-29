@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
-ms.date: 03/31/2020
+ms.date: 10/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1fa9a8aa24cf6a8c8c2223836ae80b8b47807c81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c063fec3eac962d22ead12e0ca11f4b9fc155b5d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87903187"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910151"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics kimenetek hibáinak megoldása
 
@@ -67,7 +67,7 @@ A feladatok normál működése során a kimenet hosszabb és hosszabb késésse
 * Azt jelzi, hogy a felsőbb rétegbeli forrás szabályozva van-e
 * Azt jelzi, hogy a lekérdezés feldolgozási logikája nagy számítási igényű-e
 
-A kimenet részleteinek megtekintéséhez válassza ki a folyamatos átviteli feladatot a Azure Portal, majd válassza a **feladatütemezés**lehetőséget. Minden egyes bemenethez partíción várakozó esemény-metrika található. Ha a metrika továbbra is növekszik, a rendszer azt jelzi, hogy a rendszererőforrások korlátozottak. A növekedés a kimeneti fogadó szabályozása vagy a magas CPU-használat miatt lehetséges. További információ: [adatvezérelt hibakeresés a feladatütemezés használatával](stream-analytics-job-diagram-with-metrics.md).
+A kimenet részleteinek megtekintéséhez válassza ki a folyamatos átviteli feladatot a Azure Portal, majd válassza a **feladatütemezés** lehetőséget. Minden egyes bemenethez partíción várakozó esemény-metrika található. Ha a metrika továbbra is növekszik, a rendszer azt jelzi, hogy a rendszererőforrások korlátozottak. A növekedés a kimeneti fogadó szabályozása vagy a magas CPU-használat miatt lehetséges. További információ: [adatvezérelt hibakeresés a feladatütemezés használatával](stream-analytics-job-diagram-with-metrics.md).
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Kulcs megsértése figyelmeztetés Azure SQL Database kimenettel
 
@@ -81,7 +81,29 @@ A IGNORE_DUP_KEY különböző típusú indexekhez való konfigurálásakor vegy
 
 * A IGNORE_DUP_KEY nem állítható be egy elsődleges kulcson vagy egy olyan egyedi korlátozáson, amely az ALTER INDEXet használja. El kell dobnia az indexet, majd újra létre kell hoznia.  
 * Megadhatja IGNORE_DUP_KEY az ALTER INDEX használatával egy egyedi indexhez. Ez a példány különbözik az elsődleges kulcs/egyedi korlátozástól, és egy CREATE INDEX vagy INDEX definíció használatával jön létre.  
-* Az IGNORE_DUP_KEY lehetőség nem vonatkozik az oszlopok tárolására szolgáló indexekre, mert nem kényszerítheti ki rajtuk egyediségét.  
+* Az IGNORE_DUP_KEY lehetőség nem vonatkozik az oszlopok tárolására szolgáló indexekre, mert nem kényszerítheti ki rajtuk egyediségét.
+
+## <a name="sql-output-retry-logic"></a>SQL-kimenet újrapróbálkozási logikája
+
+Amikor az SQL kimenettel rendelkező Stream Analytics-feladatok megkapják az első köteget, a következő lépések történnek:
+
+1. A feladatok megpróbálnak csatlakozni az SQL-hez.
+2. A művelet beolvassa a céltábla sémáját.
+3. A feladattípus ellenőrzi az oszlopnevek és a típusokat a céltábla sémáján.
+4. A feladatsor felkészíti a memóriában tárolt adattáblázatot a köteg kimeneti rekordjaiból.
+5. A feladatsor a bulkcopy objektum céloszlopa [API](/dotnet/api/system.data.sqlclient.sqlbulkcopy.writetoserver?view=dotnet-plat-ext-3.1)használatával írja az adattáblát az SQL-re.
+
+A fenti lépések során az SQL-kimenet a következő típusú hibákat képes megtapasztalni:
+
+* Az exponenciális leállítási újrapróbálkozási stratégiájának használatával újrapróbált átmeneti [hibák](/azure/azure-sql/database/troubleshoot-common-errors-issues#transient-fault-error-messages-40197-40613-and-others) . A minimális újrapróbálkozási időköz az egyes hibakódtól függ, de az intervallumok jellemzően kisebbek, mint 60 másodperc. A felső korlát legfeljebb öt perc lehet. 
+
+   A [bejelentkezési hibák](/azure/azure-sql/database/troubleshoot-common-errors-issues#unable-to-log-in-to-the-server-errors-18456-40531) és a [tűzfal problémái](/azure/azure-sql/database/troubleshoot-common-errors-issues#cannot-connect-to-server-due-to-firewall-issues) legalább 5 perccel az előző próbálkozás után újrapróbálkoznak, és a rendszer újrapróbálkozik, amíg azok nem sikerül.
+
+* Az adathibák, például a hibák és a séma megkötésének megsértése a kimeneti hibák házirendjével kezelhetők. Ezeket a hibákat a bináris felosztott kötegek újrapróbálkozásával kezeli a rendszer, amíg a hibát okozó egyedi rekordot kihagyja vagy újra nem kezeli. Az elsődleges egyedi kulcs korlátozásának megsértését [mindig kezeli](./stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output)a rendszer.
+
+* A nem átmeneti hibák akkor fordulhatnak elő, ha SQL-szolgáltatással kapcsolatos problémák vagy belső hibakódok vannak. Ha például a (1132 rugalmas készlet-es kódú) hibák megkeresik a tárolási korlátját, az újrapróbálkozások nem oldják meg a hibát. Ezekben a forgatókönyvekben a Stream Analytics a feladatok [romlását](job-states.md)tapasztalják.
+* `BulkCopy` az időtúllépések `BulkCopy` az 5. lépésben történnek. `BulkCopy` időnként a művelet időtúllépéseit is megtapasztalhatja. Az alapértelmezett minimálisan konfigurált időkorlát öt perc, és a rendszer kétszer is megduplázódik, ha egymás után következik be.
+Ha az időkorlát 15 percet vesz igénybe, a rendszer a Batch maximális méretre mutató tippet `BulkCopy` 100-ig csökkenti, amíg a kötegek száma lejár.
 
 ## <a name="column-names-are-lowercase-in-azure-stream-analytics-10"></a>Az oszlopnevek kisbetűsek Azure Stream Analytics (1,0)
 

@@ -118,10 +118,6 @@
           href: concepts-data-in-replication.md
         - name: Olvasási replikák
           href: concepts-read-replicas.md
-    - name: Áthelyezés régiók között
-      items:
-        - name: Azure Portal
-          href: howto-move-regions-portal.md
 - name: Útmutatók
   items:
     - name: Kiszolgáló kezelése
@@ -240,6 +236,10 @@
           href: howto-restart-server-cli.md
         - name: Azure PowerShell
           href: howto-restart-server-powershell.md
+    - name: Áthelyezés régiók között
+      items:
+        - name: Azure Portal
+          href: howto-move-regions-portal.md
 - name: Referencia
   items:
     - name: Azure CLI

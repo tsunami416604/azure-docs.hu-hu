@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
-ms.openlocfilehash: 2a986afa1916d179834c516a26f76a2789f82452
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc400922115f348090677661cd1b30434be19b72
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87511887"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910474"
 ---
 # <a name="monitor-azure-data-share"></a>Az Azure Data Share monitorozása  
 
@@ -36,13 +36,13 @@ A meghívónak három állapota lehet:
 
 ## <a name="monitor-share-subscriptions"></a>Megosztási előfizetések figyelése
 
-Megtekintheti a megosztási előfizetések állapotát, ha az eljuttatott megosztások – > megosztási előfizetések – gombra kattint. Ezzel a meghívót elfogadva megtekintheti az adatfogyasztók által létrehozott aktív előfizetésekre vonatkozó adatokat. Az adatfogyasztó jövőbeli frissítéseit az előfizetés megosztása és a *Visszavonás*lehetőség kiválasztásával állíthatja le. 
+Megtekintheti a megosztási előfizetések állapotát, ha az eljuttatott megosztások – > megosztási előfizetések – gombra kattint. Ezzel a meghívót elfogadva megtekintheti az adatfogyasztók által létrehozott aktív előfizetésekre vonatkozó adatokat. Az adatfogyasztó jövőbeli frissítéseit az előfizetés megosztása és a *Visszavonás* lehetőség kiválasztásával állíthatja le. 
 
 ## <a name="snapshot-history"></a>Pillanatkép-előzmények 
 
 Egy megosztás **Előzmények** lapján megtekintheti, hogy mikor másolja az adatok az adatszolgáltatóról az adatfogyasztó adattárára. Lehetősége van az egyes Pillanatképek gyakoriságának, időtartamának és állapotának figyelésére. 
 
-![Pillanatkép-előzmények](./media/sent-shares.png "Pillanatkép-előzmények") 
+![A képernyőképen a Azure Portal eljuttatott megosztások láthatók.](./media/sent-shares.png "Pillanatkép-előzmények") 
 
 A pillanatképek futtatásával kapcsolatos további részletekért tekintse meg a Futtatás kezdő dátumra kattintva. Ezután az egyes adatkészletek állapotára kattintva megtekintheti az átvitt adatok mennyiségét, a másolt fájlok/rekordok számát, a pillanatkép időtartamát, a felhasznált virtuális mag számát és a hibaüzenetet, ha van ilyen. 
 
@@ -50,9 +50,9 @@ A pillanatképek előzményeinek akár 30 napja is megjelenik. Ha mentenie kell,
 
 ## <a name="diagnostic-setting"></a>Diagnosztikai beállítás
 
-A diagnosztikai beállításokat a naplófájlok és az események mentéséhez is konfigurálhatja. Navigáljon a figyelés – > diagnosztikai beállítások elemre, és válassza a **diagnosztikai beállítás hozzáadása**lehetőséget. Válassza ki a naplózni kívánt vagy az Önt érdeklő eseményeket, és hogy hol szeretné tárolni vagy elküldeni azokat. 
+A diagnosztikai beállításokat a naplófájlok és az események mentéséhez is konfigurálhatja. Navigáljon a figyelés – > diagnosztikai beállítások elemre, és válassza a **diagnosztikai beállítás hozzáadása** lehetőséget. Válassza ki a naplózni kívánt vagy az Önt érdeklő eseményeket, és hogy hol szeretné tárolni vagy elküldeni azokat. 
 
-![Pillanatkép-előzmények](./media/diagnostic-settings.png "Diagnosztikai beállítások") 
+![A képernyőképen a Azure Portal diagnosztikai beállítások lapja látható.](./media/diagnostic-settings.png "Diagnosztikai beállítások") 
 
 ## <a name="next-steps"></a>Következő lépések 
 

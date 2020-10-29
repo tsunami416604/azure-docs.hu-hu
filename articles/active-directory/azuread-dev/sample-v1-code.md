@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1efae6563b88f82318f9b8358d255b234c6cb7fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 484a44a7a9840409e3f5770c743e5cd62e0cef66
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116206"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910304"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory kód mintái (v 1.0 végpont)
 
@@ -53,19 +53,19 @@ Az alábbi példák bemutatják a felhasználók aláírására szolgáló webal
 
  Platform | Csak a felhasználókhoz tartozó jelek | Hívások Microsoft Graph | Egy másik ASP.NET vagy ASP.NET Core 2,0 webes API meghívása
  -------- | ------------------- | --------------------- | -------------------------
-![Ez a képen a ASP.NET embléma látható](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2,0 | [DotNet-WebApp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [WebApp-webapi-több-bérlős-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(HRE gráf) | [DotNet-WebApp-webapi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
-![Ez a képen a ASP.NET embléma látható](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 |  </p> [WebApp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [DotNet-WebApp-webapi-oauth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [DotNet-WebApp-több-bérlős openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (HRE gráf) |
+![Ez a képen a ASP.NET Core embléma látható](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2,0 | [DotNet-WebApp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [WebApp-webapi-több-bérlős-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(HRE gráf) | [DotNet-WebApp-webapi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
+![Ez a képen a ASP.NET-keretrendszer emblémája látható](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 |  </p> [WebApp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [DotNet-WebApp-webapi-oauth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [DotNet-WebApp-több-bérlős openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (HRE gráf) |
 ![Ez a képen a Python-embléma látható](media/sample-v2-code/logo-python.png) | | [Python-WebApp-graphapi](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)  |
 ![Ez a rendszerkép a Java-naplót jeleníti meg](media/sample-v2-code/logo-java.png)  | | [Java-WebApp-openidconnect](https://github.com/azure-samples/active-directory-java-webapp-openidconnect)  |
 ![Ez a rendszerkép a PHP-emblémát jeleníti meg](media/sample-v2-code/logo-php.png) | | [PHP-graphapi-web](https://github.com/Azure-Samples/active-directory-php-graphapi-web)  |
 
 ### <a name="web-applications-demonstrating-role-based-access-control-authorization"></a>Szerepköralapú hozzáférés-vezérlést bemutató webalkalmazások (Engedélyezés)
 
-A következő példák bemutatják, hogyan valósítható meg a szerepköralapú hozzáférés-vezérlés (RBAC). A RBAC egy webalkalmazás bizonyos szolgáltatásai engedélyeinek bizonyos felhasználókra való korlátozására szolgál. A felhasználók jogosultak attól függően, hogy egy **Azure ad-csoporthoz** tartoznak-e, vagy egy adott alkalmazási **szerepkörrel**rendelkeznek.
+A következő példák bemutatják, hogyan valósítható meg a szerepköralapú hozzáférés-vezérlés (RBAC). A RBAC egy webalkalmazás bizonyos szolgáltatásai engedélyeinek bizonyos felhasználókra való korlátozására szolgál. A felhasználók jogosultak attól függően, hogy egy **Azure ad-csoporthoz** tartoznak-e, vagy egy adott alkalmazási **szerepkörrel** rendelkeznek.
 
 Platform | Sample |
  -------- | ------------------- |
-![Ez a képen a ASP.NET embléma látható](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [DotNet-WebApp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [DotNet-WebApp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Azure AD- **szerepköröket** használó .net 4,5 MVC-alapú webalkalmazások engedélyezéséhez
+![Ez a képen a ASP.NET-keretrendszer emblémája látható](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [DotNet-WebApp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [DotNet-WebApp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Azure AD- **szerepköröket** használó .net 4,5 MVC-alapú webalkalmazások engedélyezéséhez
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Microsoft Graph vagy webes API-t hívó asztali és mobil nyilvános ügyfélalkalmazások
 
@@ -92,9 +92,9 @@ A következő minták olyan asztali vagy webalkalmazásokat mutatnak be, amelyek
 
 Ügyfélalkalmazás | Platform | Folyamat/támogatás | ASP.NET vagy ASP.NET Core 2,0 webes API meghívása
 ------------------ | -------- | ---------- | -------------------- 
-Daemon-alkalmazás (konzol)          | ![Ez a rendszerkép a .NET-emblémát jeleníti meg](media/sample-v2-code/logo-netframework.png) | Ügyfél hitelesítő adatai az alkalmazás titkos kódjával vagy tanúsítvánnyal | [DotNet-Daemon](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [DotNet-Daemon-Certificate-hitelesítőadat](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
-Daemon-alkalmazás (konzol)         | ![Ez a rendszerkép a .NET-emblémát jeleníti meg](media/sample-v2-code/logo-netcore.png) | Ügyfél hitelesítő adatai tanúsítvánnyal| [dotnetcore-Daemon-Certificate-hitelesítőadat](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)
-ASP.NET-webalkalmazás  | ![Ez a rendszerkép a .NET-emblémát jeleníti meg](media/sample-v2-code/logo-netframework.png) | Ügyfél-hitelesítő adatok | [DotNet-WebApp-webapi-oauth2-appidentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity)
+Daemon-alkalmazás (konzol)          | ![Ez a rendszerkép a .NET-keretrendszer emblémáját mutatja](media/sample-v2-code/logo-netframework.png) | Ügyfél hitelesítő adatai az alkalmazás titkos kódjával vagy tanúsítvánnyal | [DotNet-Daemon](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [DotNet-Daemon-Certificate-hitelesítőadat](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
+Daemon-alkalmazás (konzol)         | ![Ez a rendszerkép a .NET Core emblémát jeleníti meg](media/sample-v2-code/logo-netcore.png) | Ügyfél hitelesítő adatai tanúsítvánnyal| [dotnetcore-Daemon-Certificate-hitelesítőadat](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)
+ASP.NET-webalkalmazás  | ![Ez a rendszerkép a .NET-keretrendszer emblémáját mutatja](media/sample-v2-code/logo-netframework.png) | Ügyfél-hitelesítő adatok | [DotNet-WebApp-webapi-oauth2-appidentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity)
 
 ## <a name="web-apis"></a>Webes API-k
 
@@ -102,7 +102,7 @@ ASP.NET-webalkalmazás  | ![Ez a rendszerkép a .NET-emblémát jeleníti meg](m
 
 Az alábbi példa bemutatja, hogyan lehet védelemmel ellátni egy node.js webes API-t az Azure AD-vel.
 
-A cikk előző részeiben más mintákat is megtalálhat, amelyek egy ASP.NET vagy ASP.NET Core **webes API**-t **hívó** ügyfélalkalmazás bemutatnak. Ezek a minták még nem szerepelnek ebben a szakaszban, de a fenti táblázatok utolsó oszlopában is megtalálhatók.
+A cikk előző részeiben más mintákat is megtalálhat, amelyek egy ASP.NET vagy ASP.NET Core **webes API** -t **hívó** ügyfélalkalmazás bemutatnak. Ezek a minták még nem szerepelnek ebben a szakaszban, de a fenti táblázatok utolsó oszlopában is megtalálhatók.
 
 | Platform | Sample |
 |--------|-------------------|
@@ -114,7 +114,7 @@ Az alábbi példák egy webes API-t mutatnak be, amely egy másik webes API-t h�
 
 | Platform |  Hívások Microsoft Graph | Egy másik ASP.NET vagy ASP.NET Core 2,0 webes API meghívása |
 | -------- |  --------------------- | ------------------------- |
-| ![Ez a képen a ASP.NET embléma látható](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [DotNet-webapi-onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [DotNet-webapi-onbehalfof-CA](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) | [DotNet-webapi-onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [DotNet-webapi-onbehalfof-CA](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) |
+| ![Ez a képen a ASP.NET-keretrendszer emblémája látható](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [DotNet-webapi-onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [DotNet-webapi-onbehalfof-CA](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) | [DotNet-webapi-onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [DotNet-webapi-onbehalfof-CA](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) |
 
 ## <a name="other-microsoft-graph-samples"></a>Egyéb Microsoft Graph minták
 

@@ -2,22 +2,22 @@
 title: Diagnosztikai naplók beállítása – Azure Event hub | Microsoft Docs
 description: Ismerje meg, hogyan állíthatja be a tevékenységek naplóit és a diagnosztikai naplókat az Azure-beli Event hubokhoz.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: ccd38d8924765df7bfd91b4fc26bb5304f6f180d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/27/2020
+ms.openlocfilehash: a7230746dc4225b04b0507c872416368aa14442b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88927731"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912599"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Diagnosztikai naplók beállítása az Azure-eseményközpontokhoz
 
 Az Azure Event Hubs-hoz két típusú naplót tekinthet meg:
 
-* **[Tevékenységnaplók](../azure-monitor/platform/platform-logs-overview.md)**: ezek a naplók egy adott feladaton végzett műveletekkel kapcsolatos információkat tartalmaznak. A naplók mindig engedélyezve vannak. A tevékenység naplójának bejegyzései a Azure Portalban az Event hub-névtér bal oldali ablaktábláján a **műveletnapló** lehetőség kiválasztásával láthatók. Például: "névtér létrehozása vagy frissítése", "az Event hub létrehozása vagy frissítése".
+* **[Tevékenységnaplók](../azure-monitor/platform/platform-logs-overview.md)** : ezek a naplók egy adott feladaton végzett műveletekkel kapcsolatos információkat tartalmaznak. A naplók mindig engedélyezve vannak. A tevékenység naplójának bejegyzései a Azure Portalban az Event hub-névtér bal oldali ablaktábláján a **műveletnapló** lehetőség kiválasztásával láthatók. Például: "névtér létrehozása vagy frissítése", "az Event hub létrehozása vagy frissítése".
 
     ![Event Hubs névtérhez tartozó műveletnapló](./media/event-hubs-diagnostic-logs/activity-log.png)
-* **[Diagnosztikai naplók](../azure-monitor/platform/platform-logs-overview.md)**: a diagnosztikai naplók részletes információkat biztosítanak a névtérhez az API használatával vagy a Language SDK felügyeleti ügyfelein keresztül végrehajtott műveletekről és műveletekről. 
+* **[Diagnosztikai naplók](../azure-monitor/platform/platform-logs-overview.md)** : a diagnosztikai naplók részletes információkat biztosítanak a névtérhez az API használatával vagy a Language SDK felügyeleti ügyfelein keresztül végrehajtott műveletekről és műveletekről. 
     
     A következő szakasz bemutatja, hogyan engedélyezheti a diagnosztikai naplókat egy Event Hubs névtérhez.
 
@@ -25,7 +25,7 @@ Az Azure Event Hubs-hoz két típusú naplót tekinthet meg:
 A diagnosztikai naplók alapértelmezés szerint le vannak tiltva. A diagnosztikai naplók engedélyezéséhez kövesse az alábbi lépéseket:
 
 1.  A [Azure Portal](https://portal.azure.com)navigáljon a Event Hubs-névtérhez. 
-2. A bal oldali ablaktábla **figyelés** területén válassza a **diagnosztikai beállítások** lehetőséget, majd válassza a **+ diagnosztikai beállítás hozzáadása**elemet. 
+2. A bal oldali ablaktábla **figyelés** területén válassza a **diagnosztikai beállítások** lehetőséget, majd válassza a **+ diagnosztikai beállítás hozzáadása** elemet. 
 
     ![Diagnosztikai beállítások lap – diagnosztikai beállítás hozzáadása](./media/event-hubs-diagnostic-logs/diagnostic-settings-page.png)
 4. A **Kategória részletei** szakaszban válassza ki az engedélyezni kívánt **diagnosztikai naplók típusait** . Ezekről a kategóriákról a jelen cikk későbbi részében talál részleteket. 
@@ -188,7 +188,6 @@ A Kafka felhasználói hibanapló JSON a következő táblázatban felsorolt ele
 | `Message` | Tájékoztató üzenet, amely a hibával kapcsolatos részleteket tartalmaz |
 
 ## <a name="event-hubs-virtual-network-connection-event-schema"></a>Event Hubs virtuális hálózati kapcsolati esemény sémája
-
 Event Hubs Virtual Network (VNet) kapcsolati esemény JSON az alábbi táblázatban felsorolt elemeket tartalmazza:
 
 | Név | Leírás |
@@ -196,10 +195,12 @@ Event Hubs Virtual Network (VNet) kapcsolati esemény JSON az alábbi táblázat
 | `SubscriptionId` | Azure-előfizetés azonosítója |
 | `NamespaceName` | Névtér neve |
 | `IPAddress` | Az Event Hubs szolgáltatáshoz csatlakozó ügyfél IP-címe |
-| `Action` | A Event Hubs szolgáltatás által a kapcsolódási kérelmek kiértékelése során végzett művelet. A támogatott műveletek **elfogadják a kapcsolatokat** , és **megtagadják a kapcsolatokat**. |
+| `Action` | A Event Hubs szolgáltatás által a kapcsolódási kérelmek kiértékelése során végzett művelet. A támogatott műveletek **elfogadják a kapcsolatokat** , és **megtagadják a kapcsolatokat** . |
 | `Reason` | A művelet elvárt okát adja meg |
 | `Count` | Az adott művelet előfordulásainak száma |
 | `ResourceId` | Azure Resource Manager erőforrás-azonosító. |
+
+A virtuális hálózati naplók csak akkor jönnek létre, ha a névtér engedélyezi a hozzáférést a **kiválasztott hálózatokról** vagy **adott IP-címekről** (IP-szűrési szabályok). Ha nem szeretné korlátozni a névtér elérését ezekkel a szolgáltatásokkal, és továbbra is szeretné lekérni a virtuális hálózati naplókat a Event Hubs névtérhez csatlakozó ügyfelek IP-címeinek nyomon követéséhez, az alábbi megkerülő megoldást használhatja. Engedélyezze az IP-szűrést, és adja hozzá a teljes címezhető IPv4-tartományt (1.0.0.0/1-255.0.0.0/1). A Event Hubs nem támogatja az IPv6-tartományokat. 
 
 ### <a name="example"></a>Példa
 

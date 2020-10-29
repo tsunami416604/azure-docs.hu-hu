@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
-ms.openlocfilehash: 540cdc2948cbcd97bf7c8872f3aace2862280434
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bfa911921e9bacde2649ee8c4f0d4bc31b56f54
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87513489"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910542"
 ---
 # <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share"></a>Adatkészletek hozzáadása meglévő megosztáshoz az Azure-beli adatmegosztásban
 
@@ -23,13 +23,13 @@ Az adatkészletek megosztás létrehozásakor történő hozzáadásával kapcso
 
 Az Azure-adatmegosztás területen navigáljon az elküldett megosztáshoz, és válassza az **adatkészletek** lapot. További adathalmazok hozzáadásához kattintson az **+ adatkészletek hozzáadása** gombra.
 
-![Adatkészletek hozzáadása](./media/how-to/how-to-add-datasets/add-datasets.png)
+![Képernyőkép: a kiválasztott adatkészletek hozzáadása.](./media/how-to/how-to-add-datasets/add-datasets.png)
 
-A jobb oldali panelen válassza ki a hozzáadni kívánt adatkészlet típusát, majd kattintson a **tovább**gombra. Válassza ki azt az előfizetést és erőforráscsoportot, amelyet hozzá szeretne adni. A legördülő nyilak használatával keresse meg, majd jelölje be a hozzáadandó adatmező melletti jelölőnégyzetet.
+A jobb oldali panelen válassza ki a hozzáadni kívánt adatkészlet típusát, majd kattintson a **tovább** gombra. Válassza ki azt az előfizetést és erőforráscsoportot, amelyet hozzá szeretne adni. A legördülő nyilak használatával keresse meg, majd jelölje be a hozzáadandó adatmező melletti jelölőnégyzetet.
 
-![Adatkészletek hozzáadása](./media/how-to/how-to-add-datasets/add-datasets-side.png)
+![Képernyőfelvétel: a Blob Storage hozzáadása panel, ahol kiválaszthatja az adatelemet.](./media/how-to/how-to-add-datasets/add-datasets-side.png)
 
-Ha az **adatkészletek hozzáadása**gombra kattint, a rendszer hozzáadja az adatkészleteket a megosztáshoz. Megjegyzés: a felhasználóknak el kell indítaniuk a pillanatképet ahhoz, hogy megjelenjenek az új adatkészletek. Ha vannak beállított pillanatkép-beállítások, a felhasználók a következő ütemezett pillanatkép befejeződése után láthatják az új adatkészleteket. A pillanatkép-beállítások konfigurálása nélkül a felhasználónak manuálisan kell elindítania az adatok teljes vagy növekményes másolatát a frissítések fogadásához. A pillanatképekkel kapcsolatos további információkért lásd: [Pillanatképek](terminology.md).
+Ha az **adatkészletek hozzáadása** gombra kattint, a rendszer hozzáadja az adatkészleteket a megosztáshoz. Megjegyzés: a felhasználóknak el kell indítaniuk a pillanatképet ahhoz, hogy megjelenjenek az új adatkészletek. Ha vannak beállított pillanatkép-beállítások, a felhasználók a következő ütemezett pillanatkép befejeződése után láthatják az új adatkészleteket. A pillanatkép-beállítások konfigurálása nélkül a felhasználónak manuálisan kell elindítania az adatok teljes vagy növekményes másolatát a frissítések fogadásához. A pillanatképekkel kapcsolatos további információkért lásd: [Pillanatképek](terminology.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a [címzettek meglévő adatmegosztáshoz való hozzáadásáról](how-to-add-recipients.md).
