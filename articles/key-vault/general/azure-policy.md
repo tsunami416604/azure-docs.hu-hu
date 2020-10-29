@@ -7,12 +7,12 @@ ms.date: 10/15/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 6c1ccbfc221970980d5d0b15e82f9f8483c48bce
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6ac4d0e0744bfc82a686671234e013b2dd717146
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043765"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927753"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Az Azure Key Vault integrálása az Azure Policyval
 
@@ -29,9 +29,9 @@ Példa használati forgatókönyvekre:
 
 ## <a name="types-of-policy-effects-and-guidance"></a>A házirend hatásának és útmutatásának típusai
 
-**Naplózás**: Ha egy házirend hatása naplózásra van beállítva, a házirend nem okoz változást a környezetében. Csak olyan összetevőkre figyelmeztet, amelyek nem felelnek meg a szabályzat-definícióknak egy adott hatókörön belül, ha ezeket az összetevőket nem megfelelőként jelöli meg a szabályzat megfelelőségi irányítópultján. A naplózás alapértelmezett, ha nincs kiválasztva házirend-effektus.
+**Naplózás** : Ha egy házirend hatása naplózásra van beállítva, a házirend nem okoz változást a környezetében. Csak olyan összetevőkre figyelmeztet, amelyek nem felelnek meg a szabályzat-definícióknak egy adott hatókörön belül, ha ezeket az összetevőket nem megfelelőként jelöli meg a szabályzat megfelelőségi irányítópultján. A naplózás alapértelmezett, ha nincs kiválasztva házirend-effektus.
 
-**Megtagadás**: Ha egy házirend hatására a Megtagadás érték van beállítva, a házirend letiltja az új összetevők, például a tanúsítványok létrehozását, valamint a meglévő összetevők olyan új verzióinak letiltását, amelyek nem felelnek meg a házirend-definíciónak. A kulcstartón belüli meglévő, nem megfelelő erőforrások nem érintettek. A "naplózás" funkció továbbra is működni fog.
+**Megtagadás** : Ha egy házirend hatására a Megtagadás érték van beállítva, a házirend letiltja az új összetevők, például a tanúsítványok létrehozását, valamint a meglévő összetevők olyan új verzióinak letiltását, amelyek nem felelnek meg a házirend-definíciónak. A kulcstartón belüli meglévő, nem megfelelő erőforrások nem érintettek. A "naplózás" funkció továbbra is működni fog.
 
 ## <a name="available-built-in-policy-definitions"></a>Elérhető "beépített" szabályzat-definíciók
 
@@ -91,9 +91,9 @@ A szolgáltatás leállást tapasztalhat, ha egy nem megfelelően figyelt tanús
 
 Ha azt szeretné, hogy a kulcsok a megadott számú napnál hosszabb ideig ne legyenek aktívak, akkor ezzel a házirenddel naplózhatja, hogy a kulcs mennyi ideig aktív.
 
-**Ha a kulcs aktiválási dátummal van beállítva**, akkor ez a szabályzat a kulcs **aktiválási dátumával** eltelt napok számát számítja ki az aktuális dátumra. Ha a napok száma meghaladja a beállított küszöbértéket, a kulcs a szabályzatnak nem megfelelőként lesz megjelölve.
+**Ha a kulcs aktiválási dátummal van beállítva** , akkor ez a szabályzat a kulcs **aktiválási dátumával** eltelt napok számát számítja ki az aktuális dátumra. Ha a napok száma meghaladja a beállított küszöbértéket, a kulcs a szabályzatnak nem megfelelőként lesz megjelölve.
 
-**Ha a kulcs nem rendelkezik aktiválási dátummal beállítva**, akkor ez a szabályzat a kulcs **létrehozási dátumától** számított napok számát számítja ki az aktuális dátumra. Ha a napok száma meghaladja a beállított küszöbértéket, a kulcs a szabályzatnak nem megfelelőként lesz megjelölve.
+**Ha a kulcs nem rendelkezik aktiválási dátummal beállítva** , akkor ez a szabályzat a kulcs **létrehozási dátumától** számított napok számát számítja ki az aktuális dátumra. Ha a napok száma meghaladja a beállított küszöbértéket, a kulcs a szabályzatnak nem megfelelőként lesz megjelölve.
 
 ### <a name="keys-should-be-the-specified-cryptographic-type-rsa-or-ec-preview"></a>A kulcsnak a megadott RSA vagy EC titkosítási típusnak kell lennie (előzetes verzió)
 
@@ -139,9 +139,9 @@ A szervezeti megfelelőségi követelmények kezeléséhez adja meg azt a maxim�
 
 Ha azt szeretné, hogy a titkos kódok a megadott számú napnál hosszabb ideig ne legyenek aktívak, akkor ezt a házirendet követve naplózhatja, hogy mennyi ideig volt aktív a titka.
 
-**Ha a titkos kulcs aktiválási dátummal van beállítva**, akkor ez a szabályzat a titok **aktiválási dátumával** eltelt napok számát számítja ki az aktuális dátumra. Ha a napok száma meghaladja a beállított küszöbértéket, a titkos kulcs a szabályzatnak nem megfelelőként lesz megjelölve.
+**Ha a titkos kulcs aktiválási dátummal van beállítva** , akkor ez a szabályzat a titok **aktiválási dátumával** eltelt napok számát számítja ki az aktuális dátumra. Ha a napok száma meghaladja a beállított küszöbértéket, a titkos kulcs a szabályzatnak nem megfelelőként lesz megjelölve.
 
-**Ha a titka nem rendelkezik aktiválási dátummal**, akkor ez a szabályzat a titok **létrehozásának dátumától** számított napok számát számítja ki az aktuális dátumig. Ha a napok száma meghaladja a beállított küszöbértéket, a titkos kulcs a szabályzatnak nem megfelelőként lesz megjelölve.
+**Ha a titka nem rendelkezik aktiválási dátummal** , akkor ez a szabályzat a titok **létrehozásának dátumától** számított napok számát számítja ki az aktuális dátumig. Ha a napok száma meghaladja a beállított küszöbértéket, a titkos kulcs a szabályzatnak nem megfelelőként lesz megjelölve.
 
 ### <a name="secrets-should-have-content-type-set-preview"></a>A titkoknak rendelkezniük kell a tartalomtípus-készlettel (előzetes verzió)
 
@@ -175,51 +175,51 @@ Az 100-es tanúsítványokat tartalmazó több csapat által használt kulcstart
 ### <a name="select-a-policy-definition"></a>Házirend-definíció kiválasztása
 
 1. Jelentkezzen be az Azure Portalra. 
-1. Keressen rá a "szabályzat" kifejezésre a keresősáv alatt, és válassza a **házirend**lehetőséget.
+1. Keressen rá a "szabályzat" kifejezésre a keresősáv alatt, és válassza a **házirend** lehetőséget.
 
-    ![A Azure Key Vault működésének áttekintése](../media/policy-img1.png)
+    ![A keresősáv megjelenítő képernyőkép.](../media/policy-img1.png)
 
-1. A házirend ablakban válassza a **definíciók**lehetőséget.
+1. A házirend ablakban válassza a **definíciók** lehetőséget.
 
-    ![A Azure Key Vault működésének áttekintése](../media/policy-img2.png)
+    ![Képernyőkép a definíciók beállításról.](../media/policy-img2.png)
 
-1. A kategória szűrőben törölje az **összes kijelölése** lehetőséget, majd válassza a **Key Vault**lehetőséget. 
+1. A kategória szűrőben törölje az **összes kijelölése** lehetőséget, majd válassza a **Key Vault** lehetőséget. 
 
-    ![A Azure Key Vault működésének áttekintése](../media/policy-img3.png)
+    ![A Kategória szűrőt és a kiválasztott Key Vault kategóriát megjelenítő képernyőkép.](../media/policy-img3.png)
 
 1. Most meg kell jelennie a nyilvános előzetes verzióhoz elérhető összes házirendnek, Azure Key Vault. Győződjön meg arról, hogy elolvasta és megértette a szabályzattal kapcsolatos útmutatást, és válassza ki azt a szabályzatot, amelyet hozzá szeretne rendelni egy hatókörhöz.  
 
-    ![A Azure Key Vault működésének áttekintése](../media/policy-img4.png)
+    ![A nyilvános előzetes verzióhoz elérhető szabályzatokat bemutató képernyőkép.](../media/policy-img4.png)
 
 ### <a name="assign-a-policy-to-a-scope"></a>Szabályzat társítása hatókörhöz 
 
 1. Válassza ki az alkalmazni kívánt szabályzatot, ebben a példában a **tanúsítvány kezelése érvényességi időszaka** házirend látható. Kattintson a hozzárendelés gombra a bal felső sarokban.
 
-    ![A Azure Key Vault működésének áttekintése](../media/policy-img5.png)
+    ![A tanúsítvány érvényességi időtartamának kezelése házirendet megjelenítő képernyőkép.](../media/policy-img5.png)
   
 1. Válassza ki azt az előfizetést, amelyre alkalmazni szeretné a szabályzatot. Dönthet úgy, hogy az előfizetésen belül csak egy erőforráscsoporthoz korlátozza a hatókört. Ha a szabályzatot a teljes előfizetésre szeretné alkalmazni, és néhány erőforráscsoportot kizár, akkor a kizárási listát is konfigurálhatja. Állítsa be úgy a házirend-kényszerítési választót, hogy **engedélyezve** legyen, ha azt szeretné, hogy a házirend hatása (naplózás vagy megtagadás) **ki legyen kapcsolva** . 
 
-    ![A Azure Key Vault működésének áttekintése](../media/policy-img6.png)
+    ![Képernyőfelvétel: Itt választhatja ki, hogy a hatókör csak egyetlen erőforráscsoport számára legyen korlátozva egy előfizetésen belül.](../media/policy-img6.png)
 
 1. Kattintson a képernyő felső részén található parameters (paraméterek) fülre, hogy megadja a maximális érvényességi időtartamot a kívánt hónapokban. A fenti részekben ismertetett útmutatást követve válassza a **naplózás** vagy a **Megtagadás** lehetőséget a szabályzat hatásához. Ezután válassza a felülvizsgálat + létrehozás gombot. 
 
-    ![A Azure Key Vault működésének áttekintése](../media/policy-img7.png)
+    ![A parameters (paraméterek) lapot megjelenítő képernyőkép, amelyen megadhatja a maximális érvényességi időtartamot a kívánt hónapokban.](../media/policy-img7.png)
 
 ### <a name="view-compliance-results"></a>Megfelelési eredmények megtekintése
 
 1. Lépjen vissza a szabályzat panelre, és válassza a megfelelőség lapot. Kattintson arra a szabályzat-hozzárendelésre, amelyben meg szeretné tekinteni a megfelelőségi eredményeket.
 
-    ![A Azure Key Vault működésének áttekintése](../media/policy-img8.png)
+    ![A megfelelőség lapot megjelenítő képernyőkép, ahol kiválaszthatja azt a szabályzat-hozzárendelést, amelyre vonatkozóan meg szeretné tekinteni a megfelelőségi eredményeket.](../media/policy-img8.png)
 
 1. Ezen a lapon a megfelelő vagy nem megfelelő tárolók alapján szűrheti az eredményeket. Itt láthatja a szabályzat-hozzárendelés hatókörén belül nem megfelelő kulcstartók listáját. A tár nem megfelelőnek minősül, ha a tároló egyik összetevője (tanúsítványa) nem megfelelő. Kiválaszthat egy egyéni tárolót az egyes nem megfelelő összetevők (tanúsítványok) megtekintéséhez. 
 
 
-    ![A Azure Key Vault működésének áttekintése](../media/policy-img9.png)
+    ![Képernyőkép, amely a szabályzat-hozzárendelés hatókörén belüli nem megfelelő kulcstartók listáját jeleníti meg.](../media/policy-img9.png)
 
 1. A nem megfelelő tárolóban található összetevők nevének megtekintése
 
 
-    ![A Azure Key Vault működésének áttekintése](../media/policy-img10.png)
+    ![Képernyőfelvétel: Itt megtekintheti a nem megfelelő tárolóban található összetevők nevét.](../media/policy-img10.png)
 
 1. Ha ellenőriznie kell, hogy a felhasználók megtagadják-e az erőforrások létrehozását a Key vaulton belül, kattintson az **összetevő-események (előzetes verzió)** fülre, és tekintse meg a megtagadott tanúsítvány-műveletek összefoglalását a kérelmező és a kérelmek időbélyegével. 
 

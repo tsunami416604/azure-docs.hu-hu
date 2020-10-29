@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 10/22/2020
 ms.author: jeedes
-ms.openlocfilehash: 083c454390327972da2c2e63175021f2d9c2bd8f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7bc2ebf394eb5b20e5f0a7d3722f8bcc2a9127a6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458999"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92928025"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>Oktatóanyag: Azure Active Directory integráció a KnowBe4 biztonsági felvilágosító képzéssel
 
@@ -26,9 +26,6 @@ Az Azure AD-vel való KnowBe4 biztonsági ismeretek betanítása a következő e
 * Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá a KnowBe4 biztonsági ismereteinek betanításához.
 * Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek, hogy az Azure AD-fiókjával KnowBe4 a biztonsági ismeretek betanítását (egyszeri bejelentkezés).
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,73 +42,50 @@ Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Az
 
 * A KnowBe4 biztonsági ismereteinek betanítása a felhasználói üzembe helyezést **csak időben** támogatja
 
-## <a name="adding-knowbe4-security-awareness-training-from-the-gallery"></a>KnowBe4 biztonsági tudatosságnövelő képzés felvétele a katalógusból
+> [!NOTE]
+> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
 
-A KnowBe4 biztonsági tudatosságnövelő Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a KnowBe4 biztonsági tudatosságnövelő képzését a katalógusból a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-knowbe4-from-the-gallery"></a>KnowBe4 hozzáadása a gyűjteményből
 
-**A KnowBe4 biztonsági ismereteinek a katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
+A KnowBe4 Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a KnowBe4 a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **KnowBe4** kifejezést a keresőmezőbe.
+1. Válassza ki a **KnowBe4** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-sso"></a>Az Azure AD SSO konfigurálása és tesztelése
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az KnowBe4-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a KnowBe4 kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+Az Azure AD egyszeri bejelentkezés KnowBe4 való konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad SSO teszteléséhez a Britta Simon használatával.
+    * **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon használatának engedélyezése az Azure ad SSO használatával.
+2. **[KnowBe4 biztonsági tudatosságnövelő betanítás konfigurálása](#configure-knowbe4-security-awareness-training-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    * **[KnowBe4 biztonsági tudaton alapuló betanítási teszt felhasználó](#create-knowbe4-security-awareness-training-test-user)** – a Britta Simon partnere, amely az Azure ad-képviselethez kapcsolódik a KnowBe4 biztonsági ismereteinek betanításához.
+3. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-4. A keresőmezőbe írja be a következőt: **KnowBe4 Security betanítása**, válassza az **KnowBe4 biztonsági betanítása** az eredmények paneljéről lehetőséget, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-     ![A KnowBe4 biztonsági ismereteinek betanítása az eredmények listájában](common/search-new-app.png)
+1. A Azure Portal **KnowBe4** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálhatja és tesztelheti a KnowBe4 biztonsági ismereteinek betanításával a **Britta Simon**nevű teszt felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolati kapcsolatra van szükség a KnowBe4 biztonsági tudatosságnövelő képzésben.
+1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-Az Azure AD egyszeri bejelentkezés konfigurálásához és teszteléséhez a KnowBe4 biztonsági ismereteinek betanításához a következő építőelemeket kell elvégeznie:
-
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. Az **[KnowBe4 biztonsági tájékoztatójának konfigurálása egyszeri bejelentkezéssel](#configure-knowbe4-security-awareness-training-single-sign-on)** – az alkalmazás oldalának egyetlen Sign-On beállításának konfigurálása.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[KnowBe4 biztonsági tudaton alapuló betanítási teszt felhasználó](#create-knowbe4-security-awareness-training-test-user)** – a Britta Simon partnere, amely az Azure ad-képviselethez kapcsolódik a KnowBe4 biztonsági ismereteinek betanításához.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
-
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
-
-Az Azure AD egyszeri bejelentkezés a KnowBe4 biztonsági betanítással való konfigurálásához hajtsa végre a következő lépéseket:
-
-1. A [Azure Portal](https://portal.azure.com/)a **KnowBe4 Security tudatosságnövelő betanítása** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
-
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
-
-3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
-
-    ![A KnowBe4 biztonsági ismereteinek betanítása és az URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
-
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.KnowBe4.com/auth/saml/<instancename>`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<companyname>.KnowBe4.com/auth/saml/<instancename>`
 
     > [!NOTE]
     > A bejelentkezési URL-cím értéke nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a [KnowBe4 Security tudatosságnövelő](mailto:support@KnowBe4.com) ügyfélszolgálatához. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatot is megtekintheti.
-
-    b. Az **azonosító (entitás azonosítója)** szövegmezőbe írja be a karakterlánc értékét: `KnowBe4`
-
-    > [!NOTE]
-    > Ez megkülönbözteti a kis-és nagybetűket.
 
 5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (RAW)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
@@ -121,86 +95,49 @@ Az Azure AD egyszeri bejelentkezés a KnowBe4 biztonsági betanítással való k
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
-    b. Azure ad-azonosító
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-    c. Kijelentkezési URL-cím
-
-### <a name="configure-knowbe4-security-awareness-training-single-sign-on"></a>KnowBe4 biztonsági tudatosságnövelő képzés konfigurálása egyetlen Sign-On
-
-Ha az **KnowBe4 biztonsági ismereteinek** bevezetéséhez az egyszeri bejelentkezést szeretné beállítani, el kell küldenie a letöltött **tanúsítványt (RAW)** és a megfelelő másolt url-címeket a Azure Portalről, hogy [KnowBe4 a biztonsági tudatosságnövelő képzési csapatot](mailto:support@KnowBe4.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
-
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
-
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
-
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
-
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
-
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
-    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
-    Például: BrittaSimon@contoso.com
-
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
-
-    d. Kattintson a **Létrehozás** lehetőségre.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a KnowBe4 biztonsági ismereteinek betanításához.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a KnowBe4.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **KnowBe4 biztonsági betanítása**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **KnowBe4** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+## <a name="configure-knowbe4-security-awareness-training-sso"></a>KnowBe4 biztonsági tudatosságnövelő betanítás konfigurálása SSO
 
-2. Az alkalmazások listáról válassza a **KnowBe4 biztonsági tájékoztatási képzés**lehetőséget.
-
-    ![A KnowBe4 biztonsággal kapcsolatos ismeretek betanítása hivatkozás az alkalmazások listájában](common/all-applications.png)
-
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
-
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+Ha az **KnowBe4 biztonsági ismereteinek** bevezetéséhez az egyszeri bejelentkezést szeretné beállítani, el kell küldenie a letöltött **tanúsítványt (RAW)** és a megfelelő másolt url-címeket a Azure Portalről, hogy [KnowBe4 a biztonsági tudatosságnövelő képzési csapatot](mailto:support@KnowBe4.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-knowbe4-security-awareness-training-test-user"></a>KnowBe4 biztonsági tudatosságnövelő tanfolyam létrehozása
 
-Ennek a szakasznak a célja, hogy egy Britta Simon nevű felhasználót hozzon létre a KnowBe4 Security tudatosságnövelő képzésben. A KnowBe4 biztonsági betanítási szolgáltatás az igény szerinti üzembe helyezést is támogatja, amely alapértelmezés szerint engedélyezve van.
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a KnowBe4-ben. A KnowBe4 támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a KnowBe4-ben, a rendszer egy újat hoz létre a hitelesítés után.
 
-Ez a szakasz nem tartalmaz műveleti elemeket. A rendszer egy új felhasználót hoz létre a KnowBe4 biztonsági ismereteinek elérésére tett kísérlet során, ha még nem létezik.
+### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-> [!NOTE]
-> Ha manuálisan kell létrehoznia egy felhasználót, lépjen kapcsolatba a [KnowBe4 Security tudatosságnövelő oktatási csapatával](mailto:support@KnowBe4.com).
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+1. Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a KnowBe4 bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot. 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+2. Lépjen közvetlenül a KnowBe4 bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
-Ha a hozzáférési panelen a KnowBe4 biztonsági tájékoztatási képzés csempére kattint, automatikusan be kell jelentkeznie a KnowBe4 biztonsági ismereteinek betanításához, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+3. Használhatja a Microsoft Access panelt. Ha a hozzáférési panelen a KnowBe4 csempére kattint, a rendszer átirányítja a KnowBe4 bejelentkezési URL-címére. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További források
+## <a name="next-steps"></a>Következő lépések
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
+A KnowBe4 konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-
-- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)

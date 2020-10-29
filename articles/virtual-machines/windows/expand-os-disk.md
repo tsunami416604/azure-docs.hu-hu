@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: b739bb94911e24002b359aabfa23583ecfc9de85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3908e5f4b7b246fe1c74e5ac4d20053242ece9f6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336003"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927685"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Virtuális gép operációsrendszer-meghajtójának bővítése
 
@@ -32,22 +32,23 @@ Amikor új virtuális gépet (VM) hoz létre egy erőforráscsoporthoz egy rends
 > [!IMPORTANT]
 > Egy Azure-beli virtuális gép operációs rendszerének vagy adatlemezének átméretezéséhez a virtuális gépet fel kell osztani.
 >
-> A lemezek bővítése után [ki kell bővíteni a kötetet az operációs rendszeren belül](#expand-the-volume-within-the-os) , hogy kihasználhassa a nagyobb lemezt.
+> Egy meglévő lemez zsugorodása nem támogatott, és az adatvesztést okozhat.
 > 
+> A lemezek bővítése után [ki kell bővíteni a kötetet az operációs rendszeren belül](#expand-the-volume-within-the-os) , hogy kihasználhassa a nagyobb lemezt.
 
 ## <a name="resize-a-managed-disk-in-the-azure-portal"></a>Felügyelt lemez átméretezése a Azure Portal
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg azt a virtuális gépet, amelyben ki szeretné bővíteni a lemezt. A virtuális gép felszabadításához válassza a **Leállítás** lehetőséget.
-2. Ha a virtuális gép le van állítva, a bal oldali menüben a **Beállítások**területen válassza a **lemezek**elemet.
+2. Ha a virtuális gép le van állítva, a bal oldali menüben a **Beállítások** területen válassza a **lemezek** elemet.
 
     :::image type="content" source="./media/expand-os-disk/select-disks.png" alt-text="A menü Beállítások szakaszában kiválasztott lemezek lehetőséget megjelenítő képernyőkép.":::
 
  
-3. A **lemez neve**területen válassza ki az átméretezni kívánt lemezt.
+3. A **lemez neve** területen válassza ki az átméretezni kívánt lemezt.
 
     :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="A menü Beállítások szakaszában kiválasztott lemezek lehetőséget megjelenítő képernyőkép.":::
 
-4. A **Beállítások**területen a bal oldali menüben válassza a **Konfigurálás**lehetőséget.
+4. A **Beállítások** területen a bal oldali menüben válassza a **Konfigurálás** lehetőséget.
 
     :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="A menü Beállítások szakaszában kiválasztott lemezek lehetőséget megjelenítő képernyőkép.":::
 
@@ -59,7 +60,7 @@ Amikor új virtuális gépet (VM) hoz létre egy erőforráscsoporthoz egy rends
 
     :::image type="content" source="./media/expand-os-disk/size.png" alt-text="A menü Beállítások szakaszában kiválasztott lemezek lehetőséget megjelenítő képernyőkép.":::
 
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
 
     :::image type="content" source="./media/expand-os-disk/save.png" alt-text="A menü Beállítások szakaszában kiválasztott lemezek lehetőséget megjelenítő képernyőkép.":::
 
@@ -230,11 +231,11 @@ Hasonlóképpen a virtuális géphez csatolt más adatlemezekre is hivatkozhat, 
 
 ## <a name="expand-the-volume-within-the-os"></a>A kötet kibontása az operációs rendszeren belül
 
-Ha kibontotta a virtuális gép lemezét, be kell lépnie az operációs rendszerbe, és ki kell bontania a kötetet, hogy az kiterjedjen az új területre. A partíciók kibővítésének számos módja van. Ez a szakasz a virtuális gép RDP-kapcsolaton keresztüli csatlakoztatását ismerteti a partíció a **DiskPart**használatával történő kibontásához.
+Ha kibontotta a virtuális gép lemezét, be kell lépnie az operációs rendszerbe, és ki kell bontania a kötetet, hogy az kiterjedjen az új területre. A partíciók kibővítésének számos módja van. Ez a szakasz a virtuális gép RDP-kapcsolaton keresztüli csatlakoztatását ismerteti a partíció a **DiskPart** használatával történő kibontásához.
 
 1. Nyisson meg egy RDP-kapcsolat a virtuális géppel.
 
-2. Nyisson meg egy parancssort, és írja be a **DiskPart**parancsot.
+2. Nyisson meg egy parancssort, és írja be a **DiskPart** parancsot.
 
 3. A **DiskPart** parancssorba írja be a következőt: `list volume` . Jegyezze fel a kiterjeszteni kívánt kötetet.
 

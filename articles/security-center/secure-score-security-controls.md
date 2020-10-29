@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/21/2020
 ms.author: memildin
-ms.openlocfilehash: 920f6cc7eaef6d25fa700e2f8ca8277efee671d1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 0bc8b4f7bd2bf02d4d034ebacc0fc45b17cd3e15
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425338"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92928093"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Biztonsági pontszám az Azure Security Centerben
 
@@ -29,7 +29,7 @@ Azure Security Center két fő célja van:
 - az aktuális biztonsági helyzet megismerése érdekében
 - a biztonság hatékonyságának és hatékony javításának elősegítése érdekében
 
-A Security Center központi funkciója, amely lehetővé teszi a célok elérését **biztonságos pontszámként**.
+A Security Center központi funkciója, amely lehetővé teszi a célok elérését **biztonságos pontszámként** .
 
 Security Center folyamatosan felméri az erőforrásokat, az előfizetéseket és a szervezetet a biztonsági problémákra. Ezután összesíti az összes megállapítást egyetlen pontszámba, így eldöntheti, hogy az aktuális biztonsági helyzet: minél magasabb a pontszám, annál alacsonyabb az azonosított kockázati szint.
 
@@ -39,7 +39,7 @@ A biztonságos pontszám a Azure Portal oldalakon százalékos értékként jele
 
 A biztonság növelése érdekében tekintse át a Security Center ajánlásainak lapját a pontszám növeléséhez szükséges kiemelkedő műveletekhez. Minden javaslat útmutatást tartalmaz az adott probléma megoldásához.
 
-A javaslatok **biztonsági vezérlőkbe**vannak csoportosítva. Az egyes vezérlők a kapcsolódó biztonsági javaslatok logikai csoportjai, és a sebezhető támadási felületeket tükrözik. A pontszám csak akkor javul, ha egy vezérlőelemen belül egy adott erőforráshoz tartozó *összes* javaslatot szervizeli. Ha szeretné megtudni, hogy a szervezet milyen jól védi az egyes támadási felületeket, tekintse át az egyes biztonsági vezérlők pontszámait.
+A javaslatok **biztonsági vezérlőkbe** vannak csoportosítva. Az egyes vezérlők a kapcsolódó biztonsági javaslatok logikai csoportjai, és a sebezhető támadási felületeket tükrözik. A pontszám csak akkor javul, ha egy vezérlőelemen belül egy adott erőforráshoz tartozó *összes* javaslatot szervizeli. Ha szeretné megtudni, hogy a szervezet milyen jól védi az egyes támadási felületeket, tekintse át az egyes biztonsági vezérlők pontszámait.
 
 További információ: [a biztonságos pontszám kiszámítása](secure-score-security-controls.md#how-your-secure-score-is-calculated) alább. 
 
@@ -88,7 +88,7 @@ Az Azure Resource Graph azonnali hozzáférést biztosít az erőforrás-inform�
 
 Az ARG-sel rendelkező több előfizetés biztonságos pontszámának elérése:
 
-1. A Azure Portal nyissa meg az **Azure Resource Graph Explorert**.
+1. A Azure Portal nyissa meg az **Azure Resource Graph Explorert** .
 
     :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Általános biztonsági pontszám a portálon látható módon" :::
 
@@ -112,7 +112,7 @@ Az ARG-sel rendelkező több előfizetés biztonságos pontszámának elérése:
         | project SecureControl , unhealthy, currentscore, maxscore
         ```
 
-1. Válassza a **lekérdezés futtatása**lehetőséget.
+1. Válassza a **lekérdezés futtatása** lehetőséget.
 
 ## <a name="how-your-secure-score-is-calculated"></a>A biztonságos pontszám kiszámításának módja 
 
@@ -162,6 +162,14 @@ A pontszám javításának egy másik módja, és gondoskodhat arról, hogy a fe
 
 Az alábbi táblázat a Azure Security Center biztonsági vezérlőit sorolja fel. Az egyes vezérlőknél megtekintheti a biztonságos pontszámhoz adható pontok maximális számát, ha a vezérlőben felsorolt *összes* javaslatot kijavítja az *összes* erőforráshoz. 
 
+A Security Center által biztosított biztonsági javaslatok készlete az egyes szervezeti környezetekben elérhető erőforrásokra van szabva. A javaslatok részletesebben testreszabhatók, ha [letiltják a házirendeket](tutorial-security-policy.md#disable-security-policies-and-disable-recommendations) , és az [adott erőforrásokra vonatkozó javaslat alól kivételt jelentenek](exempt-resource.md). 
+ 
+Javasoljuk, hogy minden szervezet körültekintően tekintse át a hozzájuk rendelt Azure Policy kezdeményezéseket. 
+
+> [!TIP]
+> A kezdeményezések áttekintésével és szerkesztésével kapcsolatos részletekért lásd: [a biztonsági szabályzatok használata](tutorial-security-policy.md). 
+
+Bár az Security Center alapértelmezett biztonsági kezdeményezése az iparági ajánlott eljárások és szabványok alapján történik, előfordulhat, hogy az alább felsorolt beépített javaslatok nem teljesen illeszkednek a szervezetéhez. Ennek következtében időnként szükség lehet az alapértelmezett kezdeményezés módosítására – a biztonság veszélyeztetése nélkül – annak biztosítása érdekében, hogy az összhangban legyen a szervezet saját házirendjeivel. az iparági szabványok, a szabályozási szabványok és a szükséges referenciaértékek.<br><br>
 <div class="foo">
 
 <style type="text/css"> . TG {Border-Collapse: Collapse; szegély – térköz: 0;}. TG TF {Border-Color: fekete; szegély stílusa: Solid; Border-width: 1px; betűkészlet-család: Arial, Sans-Serif; betűméret: 14px; túlcsordulás: rejtett; kitöltés: 10px 5px; Word-break: Normal;}. TG th {Border-Color: Black; Border-Style: Solid; Szegély szélessége: 1px; betűkészlet-család: Arial, Sans-Serif; betűkészlet-méret: 18px; font-Weight: Normal; túlcsordulás: rejtett; kitöltés: 10px 5px; Word-break: Normal;}. TG. TG-cly1 {Text-igazítás: balra; függőleges igazítás: középső}. TG. TG-lboi {Border-Color: öröklés; szöveg-igazítás: balra; függőleges igazítás: középső} </style>
@@ -257,7 +265,7 @@ Igen. Javasoljuk, hogy tiltsa le a javaslatokat, ha azok nem alkalmazhatók a k�
 ### <a name="if-a-security-control-offers-me-zero-points-towards-my-secure-score-should-i-ignore-it"></a>Ha egy biztonsági vezérlő nulla pontot biztosít a biztonságos pontszám felé, figyelmen kívül hagyhatom?
 Bizonyos esetekben a vezérlőelem maximális pontszáma nullánál nagyobb lesz, de a hatás nulla. Ha az erőforrások kijavításának növekményes pontszáma elhanyagolható, a rendszer nulla értékűre kerekíti. Ne hagyja figyelmen kívül ezeket az ajánlásokat, mivel azok továbbra is biztonsági javítást tesznek lehetővé. Az egyetlen kivétel a "további ajánlott eljárás" vezérlő. Szervizelését ezekkel az ajánlásokkal nem növeli a pontszámát, de a teljes biztonságot is növeli.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk a biztonságos pontszámot és az általa bevezetett biztonsági ellenőrzéseket ismerteti. A kapcsolódó anyagokkal kapcsolatban tekintse meg a következő cikkeket:
 

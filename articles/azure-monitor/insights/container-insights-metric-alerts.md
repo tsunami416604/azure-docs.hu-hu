@@ -2,13 +2,13 @@
 title: Metrikai riasztások Azure Monitorről tárolók számára
 description: Ez a cikk a Azure Monitor for containers nyilvános előzetes verziójában elérhető javasolt metrikai riasztásokat tekinti át.
 ms.topic: conceptual
-ms.date: 10/09/2020
-ms.openlocfilehash: 7d9e6cb9a89dfe65777f8bcf507186e24d38a422
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.date: 10/28/2020
+ms.openlocfilehash: cda5639fdf72f5731af851860f37afa888e7d965
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308647"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927821"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Ajánlott metrikai riasztások (előzetes verzió) Azure Monitorről tárolók számára
 
@@ -24,12 +24,12 @@ Mielőtt elkezdené, erősítse meg a következőket:
 
 * Az egyéni metrikák csak az Azure-régiók egy részhalmazában érhetők el. A támogatott régiók listája a [támogatott régiókban](../platform/metrics-custom-overview.md#supported-regions)van dokumentálva.
 
-* A metrikus riasztások támogatásához és a további mérőszámok bevezetéséhez az ügynök minimálisan szükséges verziója a **Microsoft/OMS: ciprod05262020** for AK és a **Microsoft/OMS: Ciprod09252020** for Azure arc enabled Kubernetes-fürt.
+* A metrikus riasztások támogatásához és a további mérőszámok bevezetéséhez az ügynök minimálisan szükséges verziójának **MCR.microsoft.com/azuremonitor/containerinsights/ciprod:ciprod05262020** kell lennie az Azure arc-kompatibilis Kubernetes-fürthöz tartozó AK-hoz és **MCR.microsoft.com/azuremonitor/containerinsights/ciprod:ciprod09252020** -hez.
 
     Annak ellenőrzéséhez, hogy a fürt az ügynök újabb verzióját futtatja-e, a következők közül választhat:
 
     * Futtassa a parancsot: `kubectl describe <omsagent-pod-name> --namespace=kube-system` . A visszaadott állapotban jegyezze fel a kimenet omsagent található **rendszerkép** *a következőben* :. 
-    * A **csomópontok** lapon válassza ki a fürtcsomópont csomópontot, majd a jobb oldalon a **Tulajdonságok** ablaktáblán jegyezze fel az értéket az **ügynök képcímkéje**területen.
+    * A **csomópontok** lapon válassza ki a fürtcsomópont csomópontot, majd a jobb oldalon a **Tulajdonságok** ablaktáblán jegyezze fel az értéket az **ügynök képcímkéje** területen.
 
     Az AK-hoz megadott értéknek **ciprod05262020** vagy újabb verziójúnak kell lennie. Az Azure arc-kompatibilis Kubernetes-fürtön látható értéknek **ciprod09252020** vagy újabb verziójúnak kell lennie. Ha a fürt rendelkezik egy régebbi verzióval, tekintse meg a [Hogyan lehet frissíteni a Azure monitor for containers Agent](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) című témakört a legújabb verzió beszerzésének lépéseihez.
 
@@ -74,7 +74,7 @@ A következő riasztási alapú metrikák egyedi viselkedési jellemzőkkel rend
 
 * a *oomKilledContainerCount* metrikát csak akkor küldik el, ha a rendszer a bácsi által leölt tárolókat.
 
-* a *cpuExceededPercentage*, a *MemoryRssExceededPercentage*és a *memoryWorkingSetExceededPercentage* mérőszámok akkor lesznek elküldése, ha a processzor, a memória RSS-és a memória-munkakészletének értéke meghaladja a beállított küszöbértéket (az alapértelmezett küszöbérték 95%). Ezek a küszöbértékek kizárólag a vonatkozó riasztási szabályhoz megadott riasztási feltétel küszöbértékét jelentik. Ha ezeket a metrikákat szeretné összegyűjteni és elemezni a [metrikák Intézőből](../platform/metrics-getting-started.md), javasoljuk, hogy a küszöbértéket a riasztási küszöbértéknél alacsonyabb értékre konfigurálja. A tároló erőforrás-kihasználtsági küszöbértékek gyűjtési beállításaival kapcsolatos konfiguráció felülbírálható a szakasz ConfigMaps fájljában `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` . A ConfigMap konfigurációs fájljának konfigurálásával kapcsolatos részletekért tekintse meg a [riasztásos metrikák konfigurálása című ConfigMaps](#configure-alertable-metrics-in-configmaps) .
+* a *cpuExceededPercentage* , a *MemoryRssExceededPercentage* és a *memoryWorkingSetExceededPercentage* mérőszámok akkor lesznek elküldése, ha a processzor, a memória RSS-és a memória-munkakészletének értéke meghaladja a beállított küszöbértéket (az alapértelmezett küszöbérték 95%). Ezek a küszöbértékek kizárólag a vonatkozó riasztási szabályhoz megadott riasztási feltétel küszöbértékét jelentik. Ha ezeket a metrikákat szeretné összegyűjteni és elemezni a [metrikák Intézőből](../platform/metrics-getting-started.md), javasoljuk, hogy a küszöbértéket a riasztási küszöbértéknél alacsonyabb értékre konfigurálja. A tároló erőforrás-kihasználtsági küszöbértékek gyűjtési beállításaival kapcsolatos konfiguráció felülbírálható a szakasz ConfigMaps fájljában `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` . A ConfigMap konfigurációs fájljának konfigurálásával kapcsolatos részletekért tekintse meg a [riasztásos metrikák konfigurálása című ConfigMaps](#configure-alertable-metrics-in-configmaps) .
 
 * a rendszer akkor továbbítja az *pvUsageExceededPercentage* metrikát, ha a kötet állandó kihasználtságának százalékos aránya meghaladja a beállított küszöbértéket (az alapértelmezett küszöbérték 60%). Ez a küszöbérték kizárólag a megfelelő riasztási szabályhoz megadott riasztási feltétel küszöbértékét határozza meg. Ha ezeket a metrikákat szeretné összegyűjteni és elemezni a [metrikák Intézőből](../platform/metrics-getting-started.md), javasoljuk, hogy a küszöbértéket a riasztási küszöbértéknél alacsonyabb értékre konfigurálja. Az állandó kötet-kihasználtsági küszöbértékek gyűjtési beállításaival kapcsolatos konfiguráció felülbírálható a szakasz ConfigMaps fájljában `[alertable_metrics_configuration_settings.pv_utilization_thresholds]` . A ConfigMap konfigurációs fájljának konfigurálásával kapcsolatos részletekért tekintse meg a [riasztásos metrikák konfigurálása című ConfigMaps](#configure-alertable-metrics-in-configmaps) . Alapértelmezés szerint ki van zárva az állandó mennyiségi mérőszámok gyűjteménye, amely jogcímeket tartalmaz a *Kube-System* névtérben. Ha engedélyezni szeretné a gyűjteményt ebben a névtérben, használja a `[metric_collection_settings.collect_kube_system_pv_metrics]` ConfigMap fájljának szakaszát. Részletekért lásd a [metrika-gyűjtemény beállításait](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-agent-config#metric-collection-settings) .
 
@@ -114,11 +114,11 @@ Ez a szakasz bemutatja, hogyan engedélyezhető a tárolók metrikai riasztása 
 
 2. A tárolók metrikáinak riasztása (előzetes verzió) szolgáltatáshoz Azure Monitor való hozzáféréshez közvetlenül egy AK-fürtből lehet hozzáférni, ha a Azure Portal bal oldali ablaktáblájában **kijelöli** az eredményeket.
 
-3. A parancssorban válassza a **javasolt riasztások**lehetőséget.
+3. A parancssorban válassza a **javasolt riasztások** lehetőséget.
 
     ![A Azure Monitor ajánlott riasztások lehetőség a tárolók esetében](./media/container-insights-metric-alerts/command-bar-recommended-alerts.png)
 
-4. Az **ajánlott riasztások** tulajdonságlapja automatikusan megjelenik az oldal jobb oldalán. Alapértelmezés szerint a listában szereplő összes riasztási szabály le van tiltva. Az **Engedélyezés**lehetőség kiválasztását követően létrejön a riasztási szabály, és a szabály neve frissül, hogy tartalmazza a riasztási erőforrásra mutató hivatkozást.
+4. Az **ajánlott riasztások** tulajdonságlapja automatikusan megjelenik az oldal jobb oldalán. Alapértelmezés szerint a listában szereplő összes riasztási szabály le van tiltva. Az **Engedélyezés** lehetőség kiválasztását követően létrejön a riasztási szabály, és a szabály neve frissül, hogy tartalmazza a riasztási erőforrásra mutató hivatkozást.
 
     ![Ajánlott riasztások tulajdonságai ablaktábla](./media/container-insights-metric-alerts/recommended-alerts-pane.png)
 
@@ -126,7 +126,7 @@ Ez a szakasz bemutatja, hogyan engedélyezhető a tárolók metrikai riasztása 
 
     ![Riasztási szabály engedélyezése](./media/container-insights-metric-alerts/recommended-alerts-pane-enable.png)
 
-5. A riasztási szabályok nincsenek olyan [műveleti csoportokhoz](../platform/action-groups.md) társítva, amelyek értesítik a felhasználókat arról, hogy riasztást váltottak ki. Válassza a **nincs hozzárendelve műveleti csoport** elemet, és a **műveleti csoportok** lapon adjon meg egy meglévőt, vagy hozzon létre egy műveleti csoportot a **Hozzáadás** vagy a **Létrehozás**lehetőség kiválasztásával.
+5. A riasztási szabályok nincsenek olyan [műveleti csoportokhoz](../platform/action-groups.md) társítva, amelyek értesítik a felhasználókat arról, hogy riasztást váltottak ki. Válassza a **nincs hozzárendelve műveleti csoport** elemet, és a **műveleti csoportok** lapon adjon meg egy meglévőt, vagy hozzon létre egy műveleti csoportot a **Hozzáadás** vagy a **Létrehozás** lehetőség kiválasztásával.
 
     ![Válasszon műveleti csoportot](./media/container-insights-metric-alerts/select-action-group.png)
 
@@ -148,15 +148,15 @@ Az alapszintű lépések a következők:
 
 2. Ha egyéni sablont szeretne üzembe helyezni a portálon, válassza az **erőforrás létrehozása** lehetőséget a [Azure Portal](https://portal.azure.com).
 
-3. Keressen rá a **sablon**kifejezésre, majd válassza a **template Deployment**lehetőséget.
+3. Keressen rá a **sablon** kifejezésre, majd válassza a **template Deployment** lehetőséget.
 
-4. Kattintson a **Létrehozás** gombra.
+4. Válassza a **Létrehozás** lehetőséget.
 
-5. A sablonok létrehozásához több lehetőség is megjelenik, válassza **a saját sablon létrehozása a szerkesztőben**lehetőséget.
+5. A sablonok létrehozásához több lehetőség is megjelenik, válassza **a saját sablon létrehozása a szerkesztőben** lehetőséget.
 
-6. A **Sablon szerkesztése lapon**válassza a **fájl betöltése** lehetőséget, majd válassza ki a sablonfájlt.
+6. A **Sablon szerkesztése lapon** válassza a **fájl betöltése** lehetőséget, majd válassza ki a sablonfájlt.
 
-7. A **Sablon szerkesztése** lapon válassza a **Mentés**lehetőséget.
+7. A **Sablon szerkesztése** lapon válassza a **Mentés** lehetőséget.
 
 8. Az **Egyéni telepítés** lapon adja meg a következőket, majd amikor a Befejezés gombra, válassza a **vásárlás** lehetőséget a sablon telepítéséhez és a riasztási szabály létrehozásához.
 
@@ -200,14 +200,14 @@ Az alapszintű lépések a következők:
 
 Megtekintheti és kezelheti Azure Monitor a tárolók riasztási szabályaihoz, a küszöbértékének szerkesztéséhez vagy egy [műveleti csoport](../platform/action-groups.md) konfigurálásához az AK-fürthöz. Ha ezeket a műveleteket a Azure Portal és az Azure parancssori felületéről is végrehajtja, akkor közvetlenül az AK-fürtből is elvégezhető a tárolók Azure Monitor.
 
-1. A parancssorban válassza a **javasolt riasztások**lehetőséget.
+1. A parancssorban válassza a **javasolt riasztások** lehetőséget.
 
-2. A küszöbérték módosításához a **javasolt riasztások** panelen jelölje ki az engedélyezett riasztást. A **szabály szerkesztése**területen válassza ki a szerkeszteni kívánt **riasztási feltételeket** .
+2. A küszöbérték módosításához a **javasolt riasztások** panelen jelölje ki az engedélyezett riasztást. A **szabály szerkesztése** területen válassza ki a szerkeszteni kívánt **riasztási feltételeket** .
 
-    * A riasztási szabály küszöbértékének módosításához válassza ki a **feltételt**.
+    * A riasztási szabály küszöbértékének módosításához válassza ki a **feltételt** .
     * Meglévő vagy létrehozott műveleti csoport megadásához válassza a **Hozzáadás** vagy **Létrehozás** a **műveleti csoportban** lehetőséget.
 
-Az engedélyezett szabályokhoz létrehozott riasztások megtekintéséhez az **ajánlott riasztások** panelen válassza a **megtekintés a riasztásokban**lehetőséget. A rendszer átirányítja az AK-fürt riasztási menüjére, ahol a fürthöz jelenleg létrehozott összes riasztást láthatja.
+Az engedélyezett szabályokhoz létrehozott riasztások megtekintéséhez az **ajánlott riasztások** panelen válassza a **megtekintés a riasztásokban** lehetőséget. A rendszer átirányítja az AK-fürt riasztási menüjére, ahol a fürthöz jelenleg létrehozott összes riasztást láthatja.
 
 ## <a name="configure-alertable-metrics-in-configmaps"></a>Riasztásos metrikák konfigurálása a ConfigMaps-ben
 

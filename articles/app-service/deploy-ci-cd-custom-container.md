@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: b73c7e62c6b621d3ac86cfb99b10b567460534f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a51fbcb7b7504b9a16e8d0025856c2b007070a9
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961856"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92928008"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Folyamatos üzembe helyezés a Web App for Containers használatával
 
@@ -35,7 +35,7 @@ Ebben az oktatóanyagban a folyamatos üzembe helyezést konfigurálja a felügy
 
 Miután engedélyezte a folyamatos üzembe helyezést, megtekintheti az újonnan létrehozott webhookot a Azure Container Registry webhookok oldalán.
 
-![Képernyőfelvétel az ACR webhookról](./media/deploy-ci-cd-custom-container/ci-cd-acr-03.png)
+![Képernyőkép, amely bemutatja, hol tekintheti meg az újonnan létrehozott webhookot a Azure Container Registry webhookok oldalán.](./media/deploy-ci-cd-custom-container/ci-cd-acr-03.png)
 
 Az aktuális webhookok megtekintéséhez a Container Registry kattintson a webhookok elemre.
 

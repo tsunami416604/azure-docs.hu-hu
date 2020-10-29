@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 622ead2ab58075fe6edbe2c013f14391624fd2b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b911181abea06894873e64da51afbb8799f1066a
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88590455"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927838"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Az Azure dedikált HSM szolgáltatás hibaelhárítása
 
@@ -71,7 +71,7 @@ Ha egy adott bélyegző vagy régió megtelt, azaz szinte minden ingyenes HSM ki
 ###  <a name="how-do-i-see-hsms-when-provisioned"></a>Hogyan tekintse meg a HSM a kiépítés során?
 Mivel a dedikált HSM egy engedélyezési szolgáltatás, a Azure Portal rejtett típusnak minősül. A HSM-erőforrások megtekintéséhez a "rejtett típusok megjelenítése" jelölőnégyzetet kell bejelölnie az alább látható módon. A NIC-erőforrás mindig a HSM-et követi, és jó kiindulópont a HSM IP-címének megkereséséhez, mielőtt az SSH-t használja a kapcsolódáshoz.
 
-![Alhálózat delegálása](./media/troubleshoot/hsm-provisioned.png)
+![Képernyőfelvétel a rejtett típusok megjelenítése](./media/troubleshoot/hsm-provisioned.png)
 
 ## <a name="networking-resources"></a>Hálózati erőforrások
 
@@ -85,7 +85,7 @@ A dedikált HSM a ExpressRoute átjárót használja "alagútként" az ügyfél 
 
 A dedikált HSM-hez biztosított sablonok azt feltételezik, hogy a HSM IP-címet a rendszer automatikusan egy adott alhálózati tartományból veszi át. Megadhat egy explicit IP-címet a HSM számára az ARM-sablon "NetworkInterfaces" attribútumán keresztül. 
 
-![Alhálózat delegálása](./media/troubleshoot/private-ip-address.png)
+![Képernyőkép, amely a dedikált HSM-sablon mintáját jeleníti meg.](./media/troubleshoot/private-ip-address.png)
 
 ## <a name="hsm-initialization"></a>HSM-inicializálás
 
@@ -150,6 +150,6 @@ Csak akkor, ha a HSM teljes mértékben elkészült, kiépíthető, majd a Micro
 
 A HSM-hez készült Azure-erőforrás csak akkor törölhető, ha a HSM "zéró" állapotban van.  Ezért az összes fontos anyagot törölni kell, mielőtt erőforrásként törölné. A zeroize leggyorsabb módja, ha a HSM-rendszergazda jelszava 3 alkalommal nem megfelelő (Megjegyzés: Ez a HSM-rendszergazda, és nem a készülék szintjének felügyeletére vonatkozik). A Luna-rendszerhéjnak van egy `hsm -factoryreset` parancsa, amely zeroizes, de csak a soros porton keresztül hajtható végre, és az ügyfeleknek nincs hozzáférésük ehhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk betekintést nyújt a HSM üzembe helyezési életciklusára, amely problémákba ütközik, vagy hibaelhárítást vagy alapos megfontolást igényelhet. Remélhetőleg ez a cikk segít elkerülni a szükségtelen késéseket és a frusztrációt, és ha releváns kiegészítésekkel vagy módosításokkal rendelkezik, a Microsofttal támogatási kérést emelhet, és tudassa velünk. 

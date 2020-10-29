@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c706ba6847334648fade1e8983e00433d3fa618
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: dcabd01cfbda8cd892c82b391bf649b2b464d6fb
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978203"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927770"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>SAP HANA rendelkezésre állás egy Azure-régión belül
 Ez a cikk számos rendelkezésre állási forgatókönyvet ismertet egy Azure-régión belül. Az Azure számos régióval rendelkezik, és a világ minden pontján elterjedt. Az Azure-régiók listájáért lásd: [Azure-régiók](https://azure.microsoft.com/regions/). Az Azure-régión belüli virtuális gépeken való SAP HANA üzembe helyezéséhez a Microsoft egy HANA-példánnyal rendelkező egyetlen virtuális gép üzembe helyezését kínálja. A rendelkezésre állás érdekében két, HANA-példánnyal rendelkező virtuális gépet telepíthet egy olyan Azure-beli rendelkezésre állási [csoporton](../../windows/tutorial-availability-sets.md) belül, amely HANA rendszerreplikációt használ a rendelkezésre álláshoz. 
@@ -78,7 +78,7 @@ Az egyik legkezdetlegesebb beállítás a biztonsági másolatok használata. K�
 
 Az architektúra a következőképpen néz ki:
 
-![Két virtuális gép diagramja tárolási replikálással](./media/sap-hana-availability-one-region/two_vm_storage_replication.PNG) 
+![Diagram, amely a tárolási replikációval rendelkező két virtuális gép architektúráját mutatja be.](./media/sap-hana-availability-one-region/two_vm_storage_replication.PNG) 
 
 Ez a beállítás nem alkalmas a helyreállítási időkorlát (RPO) és a helyreállítási idő célkitűzés (RTO) idejének elérésére. A RTO idő különösen a teljes adatbázisnak a másolt biztonsági másolatok használatával történő teljes visszaállításának szükségessége miatt csökkenhet. Ez a beállítás azonban hasznos lehet a fő példányok nem szándékolt adattörlésének helyreállításához. Ezzel a beállítással bármikor visszaállíthat egy adott időpontra, kinyerheti az adatait, és importálhatja a törölt adatait a fő példányba. Ezért érdemes lehet egy biztonsági másolati módszert használni más magas rendelkezésre állású funkciókkal kombinálva. 
 

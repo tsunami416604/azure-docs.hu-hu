@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 200f74ee8d99c80956f1d27599769401d30c3f95
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4cb706bfa1c10e941e6d2d44358c784549973302
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537949"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927974"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – rugalmas kiszolgáló (előzetes verzió)
 
@@ -84,6 +84,17 @@ További információért lásd a [hálózatkezelési fogalmakat](concepts-netwo
 A rugalmas kiszolgáló szolgáltatás három SKU-szinten érhető el: feltört, általános célú és memória-optimalizálva. A feltört réteg az alacsony költséghatékonyságú fejlesztési és alacsony párhuzamosságú munkaterhelésekhez ideális megoldás, amelyeknek nincs szükségük teljes számítási kapacitásra. Az optimalizált általános célú és memória jobban alkalmazkodik a magas párhuzamosságot, méretezést és kiszámítható teljesítményt igénylő éles munkaterhelésekhez. Az első alkalmazást egy kis adatbázison hozhatja létre havonta néhány dollárért, majd zökkenőmentesen módosíthatja a méretezést a megoldás igényeinek megfelelően. A tárolási skálázás online állapotban van, és támogatja a tárterület automatikus növekedését. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak a felhasznált erőforrásokért kell fizetnie. 
 
 További információért lásd a [számítási és tárolási fogalmakat](concepts-compute-storage.md) .
+
+## <a name="scale-out-your-read-workload-with-up-to-10-read-replicas"></a>Az olvasási munkaterhelés felskálázása legfeljebb 10 olvasási replikával
+
+A MySQL az egyik népszerű adatbázismotor a webes és mobil alkalmazások futtatásához. Számos ügyfelünk a saját online oktatási szolgáltatásaihoz, a video streaming-szolgáltatásokhoz, a digitális fizetési megoldásokhoz, az e-kereskedelmi platformokhoz, a szerencsejáték-szolgáltatásokhoz, a hírek portálokhoz, a kormányzati és az egészségügyi webhelyekhez használható. Ezek a szolgáltatások a webes vagy mobil alkalmazások forgalmának növeléséhez és méretezéséhez szükségesek.
+
+Az alkalmazások oldalon az alkalmazás általában Java vagy PHP nyelven lett kifejlesztve, és át lett telepítve az [Azure-beli virtuálisgép-méretezési csoportokon](/azure/virtual-machine-scale-sets/overview.md)vagy az Azure app Services-on való futtatásra,   vagy az [Azure App Services](/azure/app-service/overview.md)    [Azure Kubernetes szolgáltatásban (ak)](/azure/aks/intro-kubernetes.md)való futtatásra. A virtuálisgép-méretezési csoport, a App Service vagy az AK az alapul szolgáló infrastruktúrának megfelelően egyszerűsíti az alkalmazások skálázását azáltal, hogy azonnal kiépíti az új virtuális gépeket, és replikálja az alkalmazás állapot nélküli összetevőit, hogy azok a kérések ellátására szolgálnak, de gyakran az adatbázis a központosított állapot-nyilvántartó összetevőként végződik.
+
+Az olvasási replika funkció lehetővé teszi az adatok replikálását egy Azure Database for MySQL rugalmas kiszolgálóról egy írásvédett kiszolgálóra. A forrás-kiszolgálóról **legfeljebb 10 replikára** lehet replikálni. A replikák aszinkron módon frissülnek a MySQL motor natív [bináris naplójának (BinLog) fájljának pozíció-alapú replikációs technológiájának](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)használatával. A terheléselosztó proxy-megoldásait, például a [ProxySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042) -t használva zökkenőmentesen kibővítheti az alkalmazás számítási feladatait a replikák olvasására az alkalmazás újraszámítási díja nélkül. 
+
+További információért olvassa el a [replika-fogalmak beolvasása](concepts-read-replicas.md) című témakört. 
+
 
 ## <a name="stopstart-server-to-optimize-cost"></a>A kiszolgáló leállítása/elindítása a Cost optimalizálásához
 

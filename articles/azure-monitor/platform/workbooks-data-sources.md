@@ -8,12 +8,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.openlocfilehash: a0349a3fe21bdc0b73252bce1207c9f3b53dc15f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d41629dd9a56272af89a06cb55e9bd88b604baee
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143731"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927906"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitor munkafüzetek adatforrásai
 
@@ -77,7 +77,7 @@ A munkafüzetek lehetővé teszik az Azure Resource Health beszerzését és má
 
 Ha szeretné, hogy egy lekérdezés vezérlőelem használja ezt az adatforrást, a **lekérdezés típusa** legördülő listából válassza ki az Azure Health elemet, és válassza ki a célként használni kívánt erőforrásokat. Az állapot-szűrő legördülő lista használatával kiválaszthatja az elemzési igényekhez tartozó erőforrás-problémák érdekes részét.
 
-![A riasztások lekérdezésének képernyőképe](./media/workbooks-overview/resource-health.png)
+![Képernyőkép – a riasztások lekérdezése, amely az állapot-szűrőlisták listáját jeleníti meg.](./media/workbooks-overview/resource-health.png)
 
 ## <a name="json"></a>JSON
 
@@ -100,7 +100,7 @@ Ha szeretné, hogy a lekérdezés vezérlőelem használja ezt az adatforrást, 
 
 A munkafüzetek bármilyen külső forrásból származó adatok beolvasását támogatják. Ha az adatai az Azure-on kívül vannak, akkor ez az adatforrás-típus használatával a munkafüzetekbe is helyezhető.
 
-Ha szeretné, hogy egy lekérdezés vezérlőelem használja ezt az adatforrást, az _adatforrás_ legördülő menüjéből válassza az _Egyéni végpont_lehetőséget. Adja meg a megfelelő paramétereket, például,, `Http method` `url` `headers` `url parameters` és/vagy `body` . Győződjön meg arról, hogy az adatforrás támogatja a [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) , máskülönben a kérelem sikertelen lesz.
+Ha szeretné, hogy egy lekérdezés vezérlőelem használja ezt az adatforrást, az _adatforrás_ legördülő menüjéből válassza az _Egyéni végpont_ lehetőséget. Adja meg a megfelelő paramétereket, például,, `Http method` `url` `headers` `url parameters` és/vagy `body` . Győződjön meg arról, hogy az adatforrás támogatja a [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) , máskülönben a kérelem sikertelen lesz.
 
 Ha nem szeretne automatikusan hívásokat kezdeményezni a nem megbízható gazdagépekhez sablonok használatakor, a felhasználónak megbízhatóként kell megjelölni a használt gazdagépeket. Ezt úgy teheti meg, hogy a _Hozzáadás megbízhatóként_ gombra kattint, vagy ha megbízható gazdagépként hozzáadja a munkafüzet-beállításokhoz. Ezek a beállítások a webes feldolgozók IndexDb támogató böngészőkben lesznek mentve. További információ [itt](https://caniuse.com/#feat=indexeddb)található.
 

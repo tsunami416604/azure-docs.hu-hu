@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: a79a030c4f57c3dabdd14c01aa2062cab7026cd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f915652110524aac06d641d636155bc6a5fcd256
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611520"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927923"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Ideiglenes operációsrendszer-lemezek Azure-beli virtuális gépekhez
 
@@ -34,7 +34,7 @@ Az állandó és az elmúló operációsrendszer-lemezek közötti fő különbs
 
 |                             | Állandó operációsrendszer-lemez                          | Rövid élettartamú operációsrendszer-lemez                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
-| **OPERÁCIÓSRENDSZER-lemezre vonatkozó méretkorlát**      | 2 TiB                                                                                        | A virtuális gép méretének vagy 2TiB a gyorsítótár mérete, attól függően, hogy melyik a kisebb. A **GIB gyorsítótár-méretének**megtekintéséhez lásd [: DS](sizes-general.md), [es](sizes-memory.md), [M](sizes-memory.md), [FS](sizes-compute.md)és [GS](sizes-previous-gen.md#gs-series)              |
+| **OPERÁCIÓSRENDSZER-lemezre vonatkozó méretkorlát**      | 2 TiB                                                                                        | A virtuális gép méretének vagy 2TiB a gyorsítótár mérete, attól függően, hogy melyik a kisebb. A **GIB gyorsítótár-méretének** megtekintéséhez lásd [: DS](sizes-general.md), [es](sizes-memory.md), [M](sizes-memory.md), [FS](sizes-compute.md)és [GS](sizes-previous-gen.md#gs-series)              |
 | **Támogatott VM-méretek**          | Mind                                                                                          | A Premium Storage-t támogató virtuálisgép-méretek, például DSv1, DSv2, DSv3, Esv3, FS, FsV2, GS, M                                               |
 | **Lemez típusának támogatása**           | Felügyelt és nem felügyelt operációsrendszer-lemez                                                                | Csak felügyelt operációsrendszer-lemez                                                               |
 | **Régiós támogatás**              | Minden régió                                                                                  | Minden régió                              |
@@ -42,7 +42,8 @@ Az állandó és az elmúló operációsrendszer-lemezek közötti fő különbs
 | **Lefoglalt állapot leállítása**      | A virtuális gépek és a méretezési csoport példányai leállíthatók, és a Leállított állapotból indíthatók újra. | A virtuális gépek és a méretezési csoport példányai nem állíthatók le – nem foglalható le.                                  |
 | **Speciális operációsrendszer-lemezek támogatása** | Igen                                                                                          | Nem                                                                                 |
 | **OPERÁCIÓSRENDSZER-lemez átméretezése**              | A virtuális gép létrehozásakor és a virtuális gép leállítása után támogatott                                | Csak a virtuális gépek létrehozásakor támogatott                                                  |
-| **Átméretezés új virtuálisgép-méretre**   | Az operációsrendszer-lemezre vonatkozó adatmegőrzés                                                                    | Az operációsrendszer-lemezen lévő adatlemez törölve lett, az operációs rendszer újból kiépítve                                      |
+| **Átméretezés új virtuálisgép-méretre**   | Az operációsrendszer-lemezre vonatkozó adatmegőrzés                                                                    | Az operációsrendszer-lemezen lévő adatlemez törölve lett, az operációs rendszer újból kiépítve       
+| **Lapozófájl elhelyezése**   | Windows esetén a lapozófájl tárolása az erőforrás-lemezen történik                                              | Windows esetén a lapozófájlt az operációsrendszer-lemezen tárolja a rendszer.   |
 
 ## <a name="size-requirements"></a>Méretre vonatkozó követelmények
 
@@ -87,13 +88,13 @@ A méretezési csoportok esetében ugyanazt a paramétert használja az az `--ep
 
 ## <a name="portal"></a>Portál   
 
-A Azure Portal a **lemezek** lap **speciális** szakaszának megnyitásával kiválaszthatja, hogy a virtuális gépek üzembe helyezése során az ideiglenes lemezeket használja-e. Az **ideiglenes operációsrendszer-lemez használata** beállításnál válassza az **Igen**lehetőséget.
+A Azure Portal a **lemezek** lap **speciális** szakaszának megnyitásával kiválaszthatja, hogy a virtuális gépek üzembe helyezése során az ideiglenes lemezeket használja-e. Az **ideiglenes operációsrendszer-lemez használata** beállításnál válassza az **Igen** lehetőséget.
 
 ![Képernyőfelvétel: az elmúló operációsrendszer-lemez használatának kiválasztására szolgáló választógombot ábrázoló gomb](./media/virtual-machines-common-ephemeral/ephemeral-portal.png)
 
 Ha egy ideiglenes lemez használatának lehetősége szürkén jelenik meg, lehetséges, hogy olyan virtuálisgép-méretet választott ki, amely nem rendelkezik az operációsrendszer-lemezképnél nagyobb gyorsítótár-mérettel, vagy amely nem támogatja a Premium Storage-ot. Lépjen vissza az **alapvető beállítások** lapra, és válasszon másik virtuális gép méretét.
 
-A portálon létrehozhat olyan méretezési csoportokat is, amelyek elmúló operációsrendszer-lemezzel rendelkeznek. Csak győződjön meg arról, hogy a virtuális gép méretét nagy méretű gyorsítótár-mérettel, majd az **elmúló operációsrendszer-lemez használata** területen válassza az **Igen**lehetőséget.
+A portálon létrehozhat olyan méretezési csoportokat is, amelyek elmúló operációsrendszer-lemezzel rendelkeznek. Csak győződjön meg arról, hogy a virtuális gép méretét nagy méretű gyorsítótár-mérettel, majd az **elmúló operációsrendszer-lemez használata** területen válassza az **Igen** lehetőséget.
 
 ![Képernyőfelvétel: a választógomb, amely a méretezési csoport elmúló operációsrendszer-lemezének kiválasztására használható](./media/virtual-machines-common-ephemeral/scale-set.png)
 

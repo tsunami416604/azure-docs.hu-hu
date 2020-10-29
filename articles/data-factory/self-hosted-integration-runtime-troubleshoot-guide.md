@@ -2,17 +2,17 @@
 title: A Azure Data Factory saját üzemeltetésű integrációs moduljának hibakeresése
 description: Ismerje meg, hogy miként lehet elhárítani a Azure Data Factory a saját üzemeltetésű integrációs modul hibáit.
 services: data-factory
-author: lrtoyou1223
+author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 10/26/2020
+ms.date: 10/29/2020
 ms.author: lle
-ms.openlocfilehash: 3598db409e5493737753a8a1b03de168af5c664b
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: ca8d359638d97f77377f02d47d824fa216acdcc8
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637190"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92928110"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul hibáinak megoldása
 

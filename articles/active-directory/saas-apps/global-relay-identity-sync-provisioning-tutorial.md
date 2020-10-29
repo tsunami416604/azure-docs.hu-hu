@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2020
 ms.author: Zhchia
-ms.openlocfilehash: 400e82780abd08e0db4f49d72b352e290ea1f212
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 9445004170fb06a3d563982da51f89535464e328
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900295"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927991"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>Oktatóanyag: a globális továbbító identitás-szinkronizálásának konfigurálása a felhasználók automatikus kiépítéséhez
 
@@ -33,6 +33,10 @@ Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a globális tovább
 > * A globális Relay Identity Sync felhasználóinak eltávolítása, ha már nincs szükség hozzáférésre
 > * A felhasználói attribútumok szinkronizálása az Azure AD és a globális továbbító identitás-szinkronizálás között
 > * Csoportok és csoporttagságok kiépítése a globális Relay Identity Sync szolgáltatásban
+
+
+> [!NOTE]
+> A globális továbbító Identity Sync kiépítési összekötője olyan SCIM-hitelesítési módszert használ, amely már nem támogatott biztonsági okokból. A globális továbbítással zajló erőfeszítések egy biztonságosabb hitelesítési módszerre válthatnak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
