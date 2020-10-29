@@ -8,12 +8,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 01/15/2019
-ms.openlocfilehash: 780ddc614feef492dafa54862abbea9552496274
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b0afdd90f2a1413c7f8364fc4518c4d1116454a
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87539815"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913585"
 ---
 # <a name="threat-modeling-tool-ga-release-71509112---9122018"></a>Threat Modeling Tool GA kiadás 7.1.50911.2-9/12/2018
 
@@ -65,13 +65,13 @@ A felhasználó rákattinthat a kockázatcsökkentő szövegre, és a normál Wi
 
 Az előzetes verzió "Megnyitás a OneDrive" funkciójának eltávolítása megtörtént. A OneDrive mentett "legutóbb megnyitott modellekkel" rendelkező felhasználók a következő hibaüzenetet kapják.
 
-![OneDrive szolgáltatás eltávolítva](./media/threat-modeling-tool-releases-71509112/tmt_save_error-300x131.png)
+![A képernyőképek hibaüzenetet jelenítenek meg: a fájl objektum hivatkozásának megnyitása nem az objektum egy példányára van beállítva.](./media/threat-modeling-tool-releases-71509112/tmt_save_error-300x131.png)
 
 #### <a name="workaround"></a>Áthidaló megoldás
 
 A OneDrive felhasználói a Microsoft [OneDrive for Windows](https://onedrive.live.com/about/en-us/download/) Client használatával férhetnek hozzá a OneDrive tárolt fájlokhoz a standard és a "modell megnyitása" párbeszédablakon keresztül.
 
-![OneDrive szolgáltatás eltávolítva](./media/threat-modeling-tool-releases-71509112/tmt_save_onedrive-300x149.png)
+![A képernyőkép a modell megnyitása párbeszédpanelen kiválasztott OneDrive jeleníti meg.](./media/threat-modeling-tool-releases-71509112/tmt_save_onedrive-300x149.png)
 
 ### <a name="my-organization-uses-the-2016-version-of-the-tool-can-i-use-the-azure-stencil-set"></a>A szervezetem az eszköz 2016-es verzióját használja, használhatom az Azure stencil set szolgáltatást?
 

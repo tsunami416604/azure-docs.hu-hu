@@ -52,6 +52,8 @@
           href: node-quota.md
         - name: Karbantartás és frissítések
           href: cloudsimple-maintenance-updates.md
+        - name: Tiltott műveletek
+          href: forbidden-actions.md
         - name: GYIK
           href: cloudsimple-faq.md
     - name: Oktatóanyagok

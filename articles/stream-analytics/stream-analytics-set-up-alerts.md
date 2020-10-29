@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 06/21/2019
-ms.openlocfilehash: 271cae3504601ffa42c077029541cef8c7726053
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35fb02717f706f026862790b7d618036d764c7a8
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461036"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92914010"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Riasztások beállítása Azure Stream Analytics feladatokhoz
 
@@ -30,15 +30,15 @@ Az alábbi példa bemutatja, hogyan állíthatja be a riasztásokat, amikor a fe
 
 2. A **feladatok** lapon navigáljon a **figyelés** szakaszhoz.  
 
-3. Válassza a **metrikák**, majd az **új riasztási szabály**lehetőséget.
+3. Válassza a **metrikák** , majd az **új riasztási szabály** lehetőséget.
 
    ![Azure Portal Stream Analytics riasztások beállítása](./media/stream-analytics-set-up-alerts/stream-analytics-set-up-alerts.png)  
 
-4. A Stream Analytics feladatának neve automatikusan megjelenik az **erőforrás**területen. Kattintson a **feltétel hozzáadása**elemre, majd válassza az **összes felügyeleti műveletet** a **jel logikájának konfigurálása**területen.
+4. A Stream Analytics feladatának neve automatikusan megjelenik az **erőforrás** területen. Kattintson a **feltétel hozzáadása** elemre, majd válassza az **összes felügyeleti műveletet** a **jel logikájának konfigurálása** területen.
 
    ![Adja meg a Stream Analytics riasztáshoz tartozó jel nevét](./media/stream-analytics-set-up-alerts/stream-analytics-condition-signal.png)  
 
-5. A **jel logikájának konfigurálása**területen az **események szintje** az **összes** értékre változik, és a változás **állapota** **sikertelen**értékre vált. Hagyja üresen **az eseményt** , és válassza a **kész**lehetőséget.
+5. A **jel logikájának konfigurálása** területen az **események szintje** az **összes** értékre változik, és a változás **állapota** **sikertelen** értékre vált. Hagyja üresen **az eseményt** , és válassza a **kész** lehetőséget.
 
    ![Stream Analytics riasztáshoz tartozó jel logikájának konfigurálása](./media/stream-analytics-set-up-alerts/stream-analytics-configure-signal-logic.png) 
 
@@ -46,13 +46,13 @@ Az alábbi példa bemutatja, hogyan állíthatja be a riasztásokat, amikor a fe
 
    ![Riasztás beállítása Azure streaming Analytics-feladatokhoz](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
 
-7. Az **erőforrásnak**, a **feltételnek**és a **műveleti csoportnak** szerepelnie kell egy bejegyzésben. Vegye figyelembe, hogy ahhoz, hogy a riasztások tüzet, a meghatározott feltételeknek teljesülnie kell. Mérheti például egy metrika átlagos értékét az elmúlt 15 percben 5 percenként.
+7. Az **erőforrásnak** , a **feltételnek** és a **műveleti csoportnak** szerepelnie kell egy bejegyzésben. Vegye figyelembe, hogy ahhoz, hogy a riasztások tüzet, a meghatározott feltételeknek teljesülnie kell. Mérheti például egy metrika átlagos értékét az elmúlt 15 percben 5 percenként.
 
-   ![Stream Analytics riasztási szabály létrehozása](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
+   ![Képernyőfelvétel: a szabály létrehozása párbeszédpanel az erőforrás, a feltétel és a műveleti csoport mezővel.](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
 
-   Adja hozzá a riasztási **szabály nevét**, **leírását**és az **erőforráscsoportot** a **riasztás részleteihez** , majd kattintson a **riasztási szabály létrehozása** elemre a stream Analyticsi feladathoz tartozó szabály létrehozásához.
+   Adja hozzá a riasztási **szabály nevét** , **leírását** és az **erőforráscsoportot** a **riasztás részleteihez** , majd kattintson a **riasztási szabály létrehozása** elemre a stream Analyticsi feladathoz tartozó szabály létrehozásához.
 
-   ![Stream Analytics riasztási szabály létrehozása](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
+   ![Képernyőfelvétel: a szabály létrehozása párbeszédpanel a riasztás RÉSZLETEIvel.](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
    
 ## <a name="scenarios-to-monitor"></a>Monitorozandó forgatókönyvek
 

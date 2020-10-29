@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3278a1522fe3967dd1de5551e90732e63b7666f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a70b10f7d22c9cc04427bdfbb44243fad457ba0
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88931556"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913483"
 ---
 # <a name="specify-a-face-detection-model"></a>Arcfelismerési modell megadása
 
@@ -110,9 +110,9 @@ A és a modellek teljesítményének összehasonlítására a legjobb módszer, 
 
 Ebben a cikkben megtanulta, hogyan határozhatja meg a különböző Face API-kkal használandó észlelési modellt. Ezután kövessen egy rövid útmutatót a Arcfelismerés használatának megkezdéséhez.
 
-* [Face .NET SDK](../Quickstarts/csharp-sdk.md)
-* [Face Python SDK](../Quickstarts/python-sdk.md)
-* [Face go SDK](../Quickstarts/go-sdk.md)
+* [Face .NET SDK](../quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)
+* [Face Python SDK](../quickstarts/client-libraries.md?pivots=programming-language-python%253fpivots%253dprogramming-language-python)
+* [Face go SDK](../quickstarts/client-libraries.md?pivots=programming-language-go%253fpivots%253dprogramming-language-go)
 
 [Face – Detect]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [Face - Find Similar]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237

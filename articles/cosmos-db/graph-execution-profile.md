@@ -2,19 +2,18 @@
 title: A Azure Cosmos DB Gremlin API-ban található lekérdezések kiértékeléséhez használja a végrehajtási profilt
 description: Ismerje meg, hogyan oldhatja meg és javíthatja a Gremlin-lekérdezéseket a végrehajtási profil lépésével.
 services: cosmos-db
-author: jasonwhowell
-manager: kfile
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 03/27/2019
-ms.author: jasonh
-ms.openlocfilehash: 2d34c91cab157fcd51d58521d739fcb081fe03ea
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.author: chrande
+ms.openlocfilehash: ff49889977bc4e5d9097d81ea7b05387900bedd4
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490594"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926376"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>Gremlin-lekérdezések kiértékelése a végrehajtási profil lépés segítségével
 
@@ -22,7 +21,7 @@ Ez a cikk áttekinti, hogyan használható a végrehajtási profil lépés az Az
 
 Ennek a lépésnek a használatához egyszerűen fűzze hozzá a `executionProfile()` függvény hívását a Gremlin-lekérdezés végén. **A rendszer végrehajtja a Gremlin-lekérdezést** , és a művelet eredménye egy JSON-válasz objektumot ad vissza a lekérdezés végrehajtási profiljával.
 
-Példa:
+Például:
 
 ```java
     // Basic traversal
@@ -139,12 +138,12 @@ Az alábbi példa a visszaadott kimenetre mutat be egy megjegyzést:
 ## <a name="execution-profile-response-objects"></a>Végrehajtási profil válaszának objektumai
 
 A executionProfile () függvény válasza a JSON-objektumok hierarchiáját fogja eredményezni a következő szerkezettel:
-  - **Gremlin műveleti objektum**: a teljes Gremlin műveletet jelöli. A következő tulajdonságokat tartalmazza.
+  - **Gremlin műveleti objektum** : a teljes Gremlin műveletet jelöli. A következő tulajdonságokat tartalmazza.
     - `gremlin`: A végrehajtott explicit Gremlin utasítás.
     - `totalTime`: Az az idő (ezredmásodpercben), amelyet a lépés végrehajtása során felmerült. 
     - `metrics`: Egy tömb, amely a lekérdezés teljesítéséhez végrehajtott Cosmos DB futtatókörnyezeti operátorokat tartalmazza. Ezt a listát a rendszer a végrehajtás sorrendjében rendezi.
     
-  - **Cosmos db futásidejű operátorok**: a teljes Gremlin művelet összes összetevőjét képviseli. Ezt a listát a rendszer a végrehajtás sorrendjében rendezi. Minden objektum a következő tulajdonságokat tartalmazza:
+  - **Cosmos db futásidejű operátorok** : a teljes Gremlin művelet összes összetevőjét képviseli. Ezt a listát a rendszer a végrehajtás sorrendjében rendezi. Minden objektum a következő tulajdonságokat tartalmazza:
     - `name`: Az operátor neve. A kiértékelt és végrehajtott lépés típusa. További tudnivalókat az alábbi táblázatban talál.
     - `time`: Az adott operátor által tartott időtartam ezredmásodpercben.
     - `annotations`: További információkat tartalmaz, amelyek a végrehajtás alatt álló operátorra vonatkoznak.
@@ -177,7 +176,7 @@ A következő példák olyan gyakori optimalizációkat mutatnak be, amelyeket a
 
 ### <a name="blind-fan-out-query-patterns"></a>Blind fan-out lekérdezési minták
 
-Tegyük fel, hogy a következő végrehajtási profilt választ egy **particionált gráfból**:
+Tegyük fel, hogy a következő végrehajtási profilt választ egy **particionált gráfból** :
 
 ```json
 [
@@ -220,7 +219,7 @@ Tegyük fel, hogy a következő végrehajtási profilt választ egy **particion�
 
 A következő következtetések hozhatók létre belőle:
 - A lekérdezés egyetlen AZONOSÍTÓval való keresés, mivel a Gremlin utasítás a mintát követi `g.V('id')` .
-- A metrika megítélése `time` szerint a lekérdezés késése úgy tűnik, hogy magas, mert [több mint 10ms egyetlen pont – olvasási művelethez](./introduction.md#guaranteed-low-latency-at-99th-percentile-worldwide).
+- A metrika megítélése `time` szerint a lekérdezés késése úgy tűnik, hogy magas, mert [több mint 10ms egyetlen pont – olvasási művelethez](./introduction.md#guaranteed-speed-at-any-scale).
 - Ha megnézzük az `storeOps` objektumot, láthatjuk, hogy az `fanoutFactor` az `5` , ami azt jelenti, hogy ez a művelet [5 partíciót](./partitioning-overview.md) használt.
 
 Az elemzés befejezésekor meghatározhatjuk, hogy az első lekérdezés a szükségesnél több partíciót is elér. Ez a következő lehet: a lekérdezésben szereplő particionáló kulcs megadásával predikátumként. Ez kevesebb késést és lekéréses költségeket eredményez. További információ a [Graph particionálásról](graph-partitioning.md). Az optimális lekérdezés lenne `g.V('tt0093640').has('partitionKey', 't1001')` .

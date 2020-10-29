@@ -10,19 +10,19 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: bf89e99842efa726e6ca05a08998c9d058dc02e3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5eb392fdfc1ffdb6d7cfee64734cca32c9abcd33
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019375"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913279"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Oktatóanyag: gépi tanulási modell létrehozása az R használatával (előzetes verzió)
 
 
 > [!IMPORTANT]
 > A Azure Machine Learning R SDK jelenleg nyilvános előzetes verzióban érhető el.
-> Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ebben az oktatóanyagban a Azure Machine Learning R SDK-t (előzetes verzió) használja egy logisztikai regressziós modell létrehozásához, amely előrejelzést készít egy autóbaleset valószínűségéről. Megtudhatja, hogyan működik a Azure Machine Learning felhő erőforrásai az R-vel, hogy méretezhető környezetet biztosítson a modell betanításához és üzembe helyezéséhez.  
 
@@ -45,12 +45,12 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fi�
 
 Az Azure Machine Learning munkaterület a felhőben található alapvető erőforrás, amely a gépi tanulási modellek kipróbálásához, betanításához és üzembe helyezéséhez használható. Az Azure-előfizetést és az erőforráscsoportot egy könnyen felhasználható objektumhoz fűzi a szolgáltatásban. 
 
-A munkaterületet az Azure-erőforrások kezeléséhez használható webalapú konzolon Azure Portal segítségével hozhatja létre. 
+[A munkaterület többféleképpen is létrehozható](how-to-manage-workspace.md). Ebben az oktatóanyagban egy munkaterületet hoz létre az Azure-erőforrások kezeléséhez használható webalapú konzolon Azure Portal használatával. 
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT] 
-> Jegyezze fel a **munkaterületet** és az **előfizetést**. Ezekre azért van szükség, hogy a megfelelő helyen hozza létre a kísérletet. 
+> Jegyezze fel a **munkaterületet** és az **előfizetést** . Ezekre azért van szükség, hogy a megfelelő helyen hozza létre a kísérletet. 
 
 
 ## <a name="open-rstudio"></a><a name="open"></a>RStudio megnyitása
@@ -74,7 +74,7 @@ A https://github.com/Azure/azureml-sdk-for-r GitHub-tárház klónozása az okta
 
 1. Futtassa a parancsot `git clone https://github.com/Azure/azureml-sdk-for-r` a terminálban a tárház klónozásához.
 
-1. A RStudio-ben navigáljon a klónozott *azureml-SDK-for-r* mappa *matricák* mappájába.  A *matricák*területen válassza a *vonat-és üzembe helyezés – első modell elemet. RMD* -fájl az oktatóanyagban használt matrica kereséséhez. A matricához használt további fájlok a *vonat és üzembe helyezés – első modell* almappájában találhatók. Miután megnyitotta a matricát, állítsa be a munkakönyvtárat a fájl helyére a **munkamenet > a munkakönyvtár > beállítása a forrásfájl helyére**. 
+1. A RStudio-ben navigáljon a klónozott *azureml-SDK-for-r* mappa *matricák* mappájába.  A *matricák* területen válassza a *vonat-és üzembe helyezés – első modell elemet. RMD* -fájl az oktatóanyagban használt matrica kereséséhez. A matricához használt további fájlok a *vonat és üzembe helyezés – első modell* almappájában találhatók. Miután megnyitotta a matricát, állítsa be a munkakönyvtárat a fájl helyére a **munkamenet > a munkakönyvtár > beállítása a forrásfájl helyére** . 
 
 > [!Important]
 > A cikk többi része ugyanazokat a tartalmakat tartalmazza, mint az  *első modellben. RMD* -fájl. Ha a RMarkdown-t használja, nyugodtan használhatja az adott fájl kódját.  Vagy másolhatja vagy beillesztheti a kódrészleteket onnan, vagy ebből a cikkből egy R-parancsfájlba vagy a parancssorba. 
@@ -188,7 +188,7 @@ A betanítási szkriptet a `accidents.R` következő, a *betanítási és üzemb
 
 * A betanítási parancsfájl egy argumentummal `-d` keresi meg a betanítási adatkészletet tartalmazó könyvtárat. Amikor később definiálja és elküldi a feladatot, erre az argumentumra az adattárra mutat. Az Azure ML a betanítási feladatokhoz csatlakoztatja a tárolási mappát a távoli fürthöz.
 * A betanítási szkript az Azure ML-ben a következő használatával naplózza a végső pontosságot metrikaként a futtatási rekordhoz `log_metric_to_run()` . Az Azure ML SDK számos naplózási API-készletet biztosít a különböző metrikák naplózásához a betanítási futtatások során. A rendszer rögzíti a metrikákat, és megőrzi a kísérlet futtatási rekordját. A metrikák ezután bármikor elérhetők, vagy megtekinthetők a [Studio](https://ml.azure.com)Futtatás részletei lapján. Tekintse meg a naplózási módszerek teljes készletére vonatkozó [referenciát](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) `log_*()` .
-* A betanítási szkript egy **kimenet**nevű könyvtárba menti a modellt. A `./outputs` mappa speciális kezelést kap az Azure ml-ben. A betanítás során a rendszer automatikusan feltölti a fájlokra írt fájlokat `./outputs` Az Azure ml-ben, és összetevőkként megőrzi a futtatási rekordokat. Ha menti a betanított modellt `./outputs` , a Futtatás után is elérheti és lekérheti a modell fájlját, és már nem férhet hozzá a távoli képzési környezethez.
+* A betanítási szkript egy **kimenet** nevű könyvtárba menti a modellt. A `./outputs` mappa speciális kezelést kap az Azure ml-ben. A betanítás során a rendszer automatikusan feltölti a fájlokra írt fájlokat `./outputs` Az Azure ml-ben, és összetevőkként megőrzi a futtatási rekordokat. Ha menti a betanított modellt `./outputs` , a Futtatás után is elérheti és lekérheti a modell fájlját, és már nem férhet hozzá a távoli képzési környezethez.
 
 ### <a name="create-an-estimator"></a>Becslő létrehozása
 
@@ -212,7 +212,7 @@ est <- estimator(source_directory = "train-and-deploy-first-model",
 
 ### <a name="submit-the-job-on-the-remote-cluster"></a>A feladatot a távoli fürtön küldje el
 
-Végül küldje el a feladatot a fürtön való futtatáshoz. `submit_experiment()` egy futtatási objektumot ad vissza, amelyet ezután a futtatással való kapcsolódáshoz használ. Összességében az első futtatás **körülbelül 10 percet**vesz igénybe. A későbbi futtatások esetében azonban ugyanazt a Docker-rendszerképet használja a rendszer, amíg a parancsfájl függőségei nem változnak.  Ebben az esetben a rendszer gyorsítótárazza a rendszerképet, és a tároló indítási ideje sokkal gyorsabb.
+Végül küldje el a feladatot a fürtön való futtatáshoz. `submit_experiment()` egy futtatási objektumot ad vissza, amelyet ezután a futtatással való kapcsolódáshoz használ. Összességében az első futtatás **körülbelül 10 percet** vesz igénybe. A későbbi futtatások esetében azonban ugyanazt a Docker-rendszerképet használja a rendszer, amíg a parancsfájl függőségei nem változnak.  Ebben az esetben a rendszer gyorsítótárazza a rendszerképet, és a tároló indítási ideje sokkal gyorsabb.
 
 ```R
 run <- submit_experiment(exp, est)
@@ -329,7 +329,7 @@ Ebben az oktatóanyagban üzembe helyezi a szolgáltatást az ACI-ban. Ez a kód
 aci_config <- aci_webservice_deployment_config(cpu_cores = 1, memory_gb = 0.5)
 ```
 
-Most üzembe helyezi a modellt webszolgáltatásként. Az üzembe helyezés **több percet is igénybe**vehet. 
+Most üzembe helyezi a modellt webszolgáltatásként. Az üzembe helyezés **több percet is igénybe** vehet. 
 
 ```R
 aci_service <- deploy_model(ws, 
@@ -369,7 +369,7 @@ A webszolgáltatás HTTP-végpontját is beolvashatja, amely fogadja a REST-ügy
 aci_service$scoring_uri
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha már nincs szüksége rájuk, törölje az erőforrásokat. Ne töröljön olyan erőforrást, amelyet még használni szeretne. 
 
@@ -392,7 +392,7 @@ delete_compute(compute)
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, és válassza a **Törlés**lehetőséget.
+Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, és válassza a **Törlés** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

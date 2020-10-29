@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: d84fd9e66c03fd92f3824b685bc550c70d4a6340
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8dee3d9c91ac2b4fe97ada6069591f8f474c8c24
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92886596"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92924977"
 ---
 Ismerkedjen meg az arc-felismeréssel a Face ügyféloldali kódtár for go használatával. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Face szolgáltatás hozzáférést biztosít a speciális algoritmusokhoz a képeken található emberi arcok észleléséhez és felismeréséhez.
 
@@ -34,7 +34,7 @@ A következőhöz való ugráshoz használja a Face Service ügyféloldali függ
 * Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" hozzon létre egy Face-erőforrást "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
     * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Face APIhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
     * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
-* A kulcs és a végpont beszerzése után [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcshoz és a végponthoz, a nevet és a-t `FACE_SUBSCRIPTION_KEY` `FACE_ENDPOINT` .
+* A kulcs és a végpont beszerzése után [hozzon létre környezeti változókat](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) a kulcshoz és a végponthoz, a nevet és a-t `FACE_SUBSCRIPTION_KEY` `FACE_ENDPOINT` .
 
 ## <a name="setting-up"></a>Beállítás
 
@@ -112,7 +112,7 @@ Ezek a kódrészletek bemutatják, hogyan végezheti el az alapszintű feladatok
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
 > [!NOTE] 
-> Ez a rövid útmutató azt feltételezi, hogy [létrehozott egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) az arc kulcsához és a végponthoz, illetve a nevet `FACE_SUBSCRIPTION_KEY` `FACE_ENDPOINT` .
+> Ez a rövid útmutató azt feltételezi, hogy [létrehozott egy környezeti változót](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) az arc kulcsához és a végponthoz, illetve a nevet `FACE_SUBSCRIPTION_KEY` `FACE_ENDPOINT` .
 
 Hozzon létre egy **fő** függvényt, és adja hozzá a következő kódot egy ügyfél létrehozásához a végponttal és a kulccsal. Hozzon létre egy **[CognitiveServicesAuthorizer](https://godoc.org/github.com/Azure/go-autorest/autorest#CognitiveServicesAuthorizer)** objektumot a kulccsal, és használja azt a végponttal egy **[ügyfél](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client)** -objektum létrehozásához. Ez a kód egy környezeti objektumot is létrehoz, amely az ügyfélalkalmazások létrehozásához szükséges. Emellett olyan távoli helyet is meghatároz, ahol a rövid útmutatóban szereplő néhány minta lemezkép található.
 

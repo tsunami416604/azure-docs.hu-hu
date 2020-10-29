@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: e95edf21b7d6dce29b31220533269439fac120e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1b7564988c8a4d63a37b53d18ed3a7359e65d72
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91281952"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926410"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>Az OPC Vault Certificate Management szolgáltatás használata
 
@@ -40,7 +40,7 @@ Ha még nem tette meg, hozza létre a kiállító HITELESÍTÉSSZOLGÁLTATÓI ta
 > Egy alkalmazás regisztrálásához az író szerepkör szükséges.
 
 1. Nyissa meg a tanúsítványszolgáltatásokat a (z) helyen `https://myResourceGroup-app.azurewebsites.net` , és jelentkezzen be.
-2. Lépjen az **új regisztrálása**gombra. Egy alkalmazás regisztrálásához a felhasználónak legalább a hozzárendelt író szerepkörrel kell rendelkeznie.
+2. Lépjen az **új regisztrálása** gombra. Egy alkalmazás regisztrálásához a felhasználónak legalább a hozzárendelt író szerepkörrel kell rendelkeznie.
 2. A nevezési űrlap az OPC UA elnevezési konvencióit követi. Az alábbi képernyőképen látható, hogy az OPC ua- [hivatkozási kiszolgáló](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/Applications/ReferenceServer) mintája az OPC ua .NET Standard stackben jelenik meg:
 
    ![Az UA-hivatkozási kiszolgáló regisztrációjának képernyőképe](media/howto-opc-vault-secure/reference-server-registration.png "UA-hivatkozási kiszolgáló regisztrálása")
@@ -53,7 +53,7 @@ Az OPC UA-alkalmazás biztonságossá tételéhez tanúsítvány-aláírási ké
 
 #### <a name="request-a-new-certificate-with-a-new-keypair"></a>Új tanúsítvány igénylése új kulcspárt
 
-1. Nyissa meg az **alkalmazásokat**.
+1. Nyissa meg az **alkalmazásokat** .
 3. Válassza ki az **új kérelem** elemet a felsorolt alkalmazásokhoz.
 
    ![A kérelem új tanúsítványának képernyőképe](media/howto-opc-vault-secure/request-new-certificate.png "Új tanúsítvány igénylése")
@@ -64,21 +64,21 @@ Az OPC UA-alkalmazás biztonságossá tételéhez tanúsítvány-aláírási ké
 
 4. Töltse ki az űrlapot a tárgy és a tartománynevek között. A titkos kulcshoz válassza a PEM vagy a PFX jelszót. Válassza az **új kulcspár** létrehozása lehetőséget a tanúsítványkérelem létrehozásához.
 
-   ![A tanúsítványkérelem megtekintésére vonatkozó információk képernyőképe](media/howto-opc-vault-secure/approve-reject.png "Tanúsítvány jóváhagyása")
+   ![Képernyőfelvétel: a tanúsítvány kérésének részletei képernyő és az új kulcspár előállítása gomb.](media/howto-opc-vault-secure/approve-reject.png "Tanúsítvány jóváhagyása")
 
 5. A jóváhagyáshoz a jóváhagyó szerepkörrel rendelkező felhasználónak, valamint a Azure Key Vault aláírási engedélyekkel kell rendelkeznie. A tipikus munkafolyamatban a jóváhagyó és a kérelmező szerepkört különböző felhasználókhoz kell rendelni. A kulcspár és az aláírási művelet tényleges létrehozásának elindításához vagy megszakításához válassza a **jóváhagyás** vagy az **elutasítás** lehetőséget. Az új kulcspár létrehozása és tárolása biztonságosan történik Azure Key Vaultban, amíg a tanúsítvány kérelmezője le nem tölti. A HITELESÍTÉSSZOLGÁLTATÓ aláírja az eredményül kapott tanúsítványt a nyilvános kulccsal. Ezek a műveletek eltarthat néhány másodpercig a befejezésig.
 
    ![Képernyőfelvétel a tanúsítványkérelem részleteiről, a jóváhagyási üzenettel alul](media/howto-opc-vault-secure/view-key-pair.png "Kulcspár megtekintése")
 
 7. Az eredményül kapott titkos kulcs (PFX vagy PEM) és tanúsítvány (DER) innen tölthető le a bináris fájlok letöltése lehetőséggel kiválasztva. A Base64 kódolású verzió is elérhető, például a tanúsítvány parancssori vagy szöveges bejegyzésbe való másolásához és beillesztéséhez. 
-8. A titkos kulcs letöltése és biztonságos tárolása után kiválaszthatja a **titkos kulcs törlése**lehetőséget. A nyilvános kulccsal rendelkező tanúsítvány jövőbeli használatra továbbra is elérhető marad.
+8. A titkos kulcs letöltése és biztonságos tárolása után kiválaszthatja a **titkos kulcs törlése** lehetőséget. A nyilvános kulccsal rendelkező tanúsítvány jövőbeli használatra továbbra is elérhető marad.
 9. A CA által aláírt tanúsítvány használata miatt a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány és a tanúsítvány-visszavonási lista (CRL) is letölthető.
 
 Most az OPC UA-eszköztől függ, hogyan alkalmazza az új kulcspárt. A HITELESÍTÉSSZOLGÁLTATÓ tanúsítványát és a CRL-t általában egy mappába másolja a rendszer `trusted` , míg az alkalmazás tanúsítványának nyilvános és titkos kulcsa a tanúsítványtároló egyik mappájára lesz alkalmazva `own` . Előfordulhat, hogy egyes eszközök már támogatják a kiszolgálók leküldését a tanúsítvány frissítéseire. Tekintse át az OPC UA-eszköz dokumentációját.
 
 #### <a name="request-a-new-certificate-with-a-csr"></a>Új tanúsítvány igénylése CSR-sel 
 
-1. Nyissa meg az **alkalmazásokat**.
+1. Nyissa meg az **alkalmazásokat** .
 3. Válassza ki az **új kérelem** elemet a felsorolt alkalmazásokhoz.
 
    ![A kérelem új tanúsítványának képernyőképe](media/howto-opc-vault-secure/request-new-certificate.png "Új tanúsítvány igénylése")
@@ -87,16 +87,16 @@ Most az OPC UA-eszköztől függ, hogyan alkalmazza az új kulcspárt. A HITELES
 
    ![Képernyőfelvétel új tanúsítvány létrehozásáról](media/howto-opc-vault-secure/generate-new-certificate.png "Új tanúsítvány előállítása")
 
-4. Töltse fel a CSR-t egy helyi fájl kiválasztásával, vagy egy Base64 kódolású CSR beillesztésével az űrlapon. Válassza az **új tanúsítvány előállítása**lehetőséget.
+4. Töltse fel a CSR-t egy helyi fájl kiválasztásával, vagy egy Base64 kódolású CSR beillesztésével az űrlapon. Válassza az **új tanúsítvány előállítása** lehetőséget.
 
    ![A tanúsítványkérelem megtekintésére vonatkozó információk képernyőképe](media/howto-opc-vault-secure/approve-reject-csr.png "CSR jóváhagyása")
 
 5. A jóváhagyáshoz a jóváhagyó szerepkörrel rendelkező felhasználónak, valamint a Azure Key Vault aláírási engedélyekkel kell rendelkeznie. A tényleges aláírási művelet elindításához vagy megszakításához válassza a **jóváhagyás** vagy az **elutasítás** lehetőséget. A HITELESÍTÉSSZOLGÁLTATÓ aláírja az eredményül kapott tanúsítványt a nyilvános kulccsal. Ez a művelet eltarthat néhány másodpercig.
 
-   ![Képernyőfelvétel a tanúsítványkérelem részleteiről, a jóváhagyási üzenettel alul](media/howto-opc-vault-secure/view-cert-csr.png "Tanúsítvány megtekintése")
+   ![A tanúsítvány megtekintésére vonatkozó kérés részleteit megjelenítő képernyőkép, amely egy jóváhagyási üzenetet tartalmaz alul.](media/howto-opc-vault-secure/view-cert-csr.png "Tanúsítvány megtekintése")
 
 6. Az eredményül kapott tanúsítvány (DER) innen tölthető le bináris fájlként. A Base64 kódolású verzió is elérhető, például a tanúsítvány parancssori vagy szöveges bejegyzésbe való másolásához és beillesztéséhez. 
-10. A tanúsítvány letöltése és biztonságos tárolása után válassza a **tanúsítvány törlése**lehetőséget.
+10. A tanúsítvány letöltése és biztonságos tárolása után válassza a **tanúsítvány törlése** lehetőséget.
 11. A CA által aláírt tanúsítvány használata miatt a HITELESÍTÉSSZOLGÁLTATÓ tanúsítványát és a CRL-t is le kell tölteni.
 
 Most az OPC UA-eszköztől függ, hogyan alkalmazza az új tanúsítványt. A HITELESÍTÉSSZOLGÁLTATÓ tanúsítványát és a CRL-t általában egy mappába másolja a rendszer `trusted` , miközben az alkalmazás tanúsítványa a tanúsítványtároló egyik mappájára van alkalmazva `own` . Előfordulhat, hogy egyes eszközök már támogatják a kiszolgálók leküldését a tanúsítvány frissítéseire. Tekintse át az OPC UA-eszköz dokumentációját.

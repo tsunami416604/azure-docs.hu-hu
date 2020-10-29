@@ -3,15 +3,15 @@ title: Alkalmazás hitelesítése az Azure Event Hubs-erőforrások eléréséhe
 description: Ez a cikk a Azure Active Directory Azure Event Hubs-erőforrások eléréséhez való hitelesítésével kapcsolatos információkat tartalmaz.
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 6eac2ef362705ecb68212166f8b691ac969a40ff
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 25ec5f11ca7b5e801e18155f1a3da6474c8e66e2
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359934"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913313"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Alkalmazás hitelesítése Azure Active Directory használatával Event Hubs erőforrások eléréséhez
-A Microsoft Azure Azure Active Directory (Azure AD) alapján integrált hozzáférés-vezérlési felügyeletet biztosít az erőforrásokhoz és alkalmazásokhoz. Az Azure AD és az Azure Event Hubs használatának egyik legfőbb előnye, hogy a hitelesítő adatait többé nem kell a kódban tárolnia. Ehelyett OAuth 2,0 hozzáférési tokent igényelhet a Microsoft Identity platformon. A jogkivonatot kérő erőforrás neve `https://eventhubs.azure.net/` (a Kafka-ügyfelek esetében a jogkivonat igénylésére szolgáló erőforrás `https://<namespace>.servicebus.windows.net` ). Az Azure AD az alkalmazást futtató rendszerbiztonsági tag (felhasználó, csoport vagy egyszerű szolgáltatás) hitelesítését végzi. Ha a hitelesítés sikeres, az Azure AD egy hozzáférési jogkivonatot ad vissza az alkalmazásnak, és az alkalmazás a hozzáférési token használatával engedélyezheti az Azure Event Hubs-erőforrásokra vonatkozó kéréseket.
+A Microsoft Azure Azure Active Directory (Azure AD) alapján integrált hozzáférés-vezérlési felügyeletet biztosít az erőforrásokhoz és alkalmazásokhoz. Az Azure AD és az Azure Event Hubs használatának egyik legfőbb előnye, hogy a hitelesítő adatait többé nem kell a kódban tárolnia. Ehelyett OAuth 2,0 hozzáférési tokent igényelhet a Microsoft Identity platformon. A jogkivonatot kérő erőforrás neve `https://eventhubs.azure.net/` , és az összes felhő/bérlő esetében ugyanaz, mint a Kafka-ügyfelek esetében, a jogkivonat igényléséhez szükséges erőforrás `https://<namespace>.servicebus.windows.net` . Az Azure AD az alkalmazást futtató rendszerbiztonsági tag (felhasználó, csoport vagy egyszerű szolgáltatás) hitelesítését végzi. Ha a hitelesítés sikeres, az Azure AD egy hozzáférési jogkivonatot ad vissza az alkalmazásnak, és az alkalmazás a hozzáférési token használatával engedélyezheti az Azure Event Hubs-erőforrásokra vonatkozó kéréseket.
 
 Ha egy szerepkört egy Azure AD-rendszerbiztonsági tag rendel hozzá, az Azure hozzáférést biztosít ezen erőforrásokhoz az adott rendszerbiztonsági tag számára. A hozzáférés hatóköre az előfizetés, az erőforráscsoport, a Event Hubs névtér vagy az alatta lévő erőforrás szintjére is kiterjed. Az Azure AD-biztonság szerepköröket rendelhet egy felhasználóhoz, egy csoporthoz, egy egyszerű alkalmazáshoz vagy egy [felügyelt identitáshoz az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md). 
 
@@ -43,12 +43,12 @@ Az Azure AD Event Hubs erőforrások engedélyezésére való használatának el
 
 A következő képek a webalkalmazások regisztrálásának lépéseit mutatják be:
 
-![Egy alkalmazás regisztrálása](./media/authenticate-application/app-registrations-register.png)
+![Alkalmazás regisztrálása](./media/authenticate-application/app-registrations-register.png)
 
 > [!Note]
 > Ha natív alkalmazásként regisztrálja az alkalmazást, megadhat bármely érvényes URI-t az átirányítási URI-hoz. Natív alkalmazások esetén ennek az értéknek nem kell valódi URL-címnek lennie. Webalkalmazások esetén az átirányítási URI azonosítónak érvényes URI-nak kell lennie, mert meghatározza azt az URL-címet, amelyhez a tokenek meg vannak határozva.
 
-Az alkalmazás regisztrálását követően megjelenik az **alkalmazás (ügyfél) azonosítója** a **Beállítások**területen:
+Az alkalmazás regisztrálását követően megjelenik az **alkalmazás (ügyfél) azonosítója** a **Beállítások** területen:
 
 ![A regisztrált alkalmazás alkalmazás-azonosítója](./media/authenticate-application/application-id.png)
 
@@ -60,7 +60,7 @@ Az alkalmazásnak szüksége van egy ügyfél titkos kulcsára, hogy igazolja az
 
 1. Navigáljon az alkalmazás regisztrálásához a Azure Portal.
 1. Válassza ki a **tanúsítványok & titkok** beállítást.
-1. Az **ügyfél**titkos kulcsa területen válassza az **új** titkos kulcs lehetőséget egy új titok létrehozásához.
+1. Az **ügyfél** titkos kulcsa területen válassza az **új** titkos kulcs lehetőséget egy új titok létrehozásához.
 1. Adja meg a titkos kulcs leírását, és válassza ki a kívánt lejárati időközt.
 1. Az új titok értékének azonnali másolása biztonságos helyre. A kitöltési érték csak egyszer jelenik meg.
 
@@ -75,7 +75,7 @@ Az alkalmazás regisztrálását követően az alkalmazás egyszerű Event Hubs 
 
     ![Válassza ki az Event hub-t](./media/authenticate-application/select-event-hub.png)
 1. Válassza a **Access Control (iam)** lehetőséget az Event hub hozzáférés-vezérlési beállításainak megjelenítéséhez. 
-1. Válassza ki a **szerepkör-hozzárendelések** lapot a szerepkör-hozzárendelések listájának megtekintéséhez. Kattintson a **Hozzáadás** gombra az eszköztáron, majd válassza a **szerepkör-hozzárendelés hozzáadása**elemet. 
+1. Válassza ki a **szerepkör-hozzárendelések** lapot a szerepkör-hozzárendelések listájának megtekintéséhez. Kattintson a **Hozzáadás** gombra az eszköztáron, majd válassza a **szerepkör-hozzárendelés hozzáadása** elemet. 
 
     ![Hozzáadás gomb az eszköztáron](./media/authenticate-application/role-assignments-add-button.png)
 1. A **szerepkör-hozzárendelés hozzáadása** oldalon hajtsa végre a következő lépéseket:

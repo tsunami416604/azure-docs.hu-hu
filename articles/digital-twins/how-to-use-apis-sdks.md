@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 52ecc1f7de2afb83d3f37ddae6b1b618a8a8e34d
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 1ad9d72d69e23e4029de163ded1a71ae4dfb82fb
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636017"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913772"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Az Azure Digital Twins API-k és SDK-k használata
 
@@ -63,10 +63,12 @@ Az adatsík API-k használata:
    - Az SDK-forrást a GitHubon találja: az [Azure IoT Digital Twins ügyféloldali kódtára a Javához](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
    - megtekintheti az [SDK-referenciák dokumentációját](/java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-preview)
 * Használhatja a **JavaScript** SDK-t. A JavaScript SDK használata...
-   - a csomagot a NPM-ből tekintheti meg és telepítheti: [Azure Azure digitális Twins ügyféloldali kódtár a javascripthez](https://www.npmjs.com/package/@azure/digital-twins).
+   - a csomagot a NPM-ből tekintheti meg és telepítheti: [Azure Azure digitális Twins ügyféloldali kódtár a javascripthez](https://www.npmjs.com/package/@azure/digital-twins-core).
    - megtekintheti az [SDK-referenciák dokumentációját](/javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest).
+   - Az SDK-forrást a GitHubon találja: [Azure Azure Digital Twins Core ügyféloldali kódtár a javascripthez](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core)
 * Használhatja a **Python** SDK-t. A Python SDK használata...
    - megtekintheti és telepítheti a csomagot: az [Azure Azure Digital Twins Core ügyféloldali kódtára a Pythonhoz](https://pypi.org/project/azure-digitaltwins-core/1.0.0b1/).
+   - Az SDK forrását a GitHubon találja: az [Azure Azure Digital Twins Core ügyféloldali kódtára a Pythonhoz](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
 * Az autorest használatával egy másik nyelvhez is létrehozhat SDK-t. Kövesse az útmutató [*: egyéni SDK-k létrehozása az Azure digitális ikrekhez az autorest használatával*](how-to-create-custom-sdks.md)című témakör utasításait.
 
 A Date Plant API-kat a [CLI](how-to-use-cli.md)használatával is használhatja az Azure digitális ikrekkel.

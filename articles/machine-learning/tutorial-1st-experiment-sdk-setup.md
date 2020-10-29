@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 5e9fd3b3d2d5bceb766651c2758f956b9ef105e0
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 601e124c1ad87724babfabffc95e9265bc962d87
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494948"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913296"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>Oktatóanyag: első lépések a Azure Machine Learning Jupyter-jegyzetfüzetekben
 
@@ -36,12 +36,12 @@ Az Azure Machine Learning munkaterület a felhőben található alapvető erőfo
 
 Ha már rendelkezik Azure Machine Learning munkaterülettel, ugorjon a [notebook klónozása mappába](#clone) .  
 
-A munkaterületet az Azure-erőforrások kezeléséhez használható webalapú konzolon Azure Portal segítségével hozhatja létre.
+[A munkaterület többféleképpen is létrehozható](how-to-manage-workspace.md).  Ebben az oktatóanyagban egy munkaterületet hoz létre az Azure-erőforrások kezeléséhez használható webalapú konzolon Azure Portal használatával.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT]
-> Jegyezze fel a *munkaterületet* és az *előfizetést*. Ezekre az információkra szüksége lesz, hogy a megfelelő helyen hozza létre a kísérletet.
+> Jegyezze fel a *munkaterületet* és az *előfizetést* . Ezekre az információkra szüksége lesz, hogy a megfelelő helyen hozza létre a kísérletet.
 
 ## <a name="run-a-notebook-in-your-workspace"></a><a name="azure"></a>Jegyzetfüzet futtatása a munkaterületen
 
@@ -59,7 +59,7 @@ Hajtsa végre a következő kísérlet beállítását, és futtassa a lépések
 
 1. Válassza ki az előfizetését és a létrehozott munkaterületet.
 
-1. A bal oldalon válassza a **jegyzetfüzetek**lehetőséget.
+1. A bal oldalon válassza a **jegyzetfüzetek** lehetőséget.
 
 1. A felső részen válassza a **minták** lapot.
 
@@ -67,7 +67,7 @@ Hajtsa végre a következő kísérlet beállítását, és futtassa a lépések
 
 1. Nyissa meg a mappát egy verziószámmal. Ez a szám a Python SDK jelenlegi kiadását jelöli.
 
-1. Kattintson az **oktatóanyagok** mappa jobb oldalán található **...** gombra, majd válassza a **klónozás**lehetőséget.
+1. Kattintson az **oktatóanyagok** mappa jobb oldalán található **...** gombra, majd válassza a **klónozás** lehetőséget.
 
     :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png" alt-text="A klón oktatóanyagok mappát megjelenítő képernyőkép.":::
 
@@ -103,7 +103,7 @@ Hajtsa végre a következő kísérlet beállítását, és futtassa a lépések
 
 1. Ha a virtuális gép elérhető, megjelenik a felső eszköztáron. Most már futtathatja a jegyzetfüzetet az eszköztáron az **összes futtatása** lehetőséggel, vagy a **SHIFT + ENTER billentyűkombinációt** a jegyzetfüzet kódjában.
 
-Ha egyéni widgetekkel rendelkezik, vagy szívesebben szeretné használni a Jupyter vagy a JupyterLab, válassza a jobb szélen a **Jupyter** legördülő listát. Ezután válassza a **Jupyter** vagy a **JupyterLab**lehetőséget. Megnyílik az új böngészőablak.
+Ha egyéni widgetekkel rendelkezik, vagy szívesebben szeretné használni a Jupyter vagy a JupyterLab, válassza a jobb szélen a **Jupyter** legördülő listát. Ezután válassza a **Jupyter** vagy a **JupyterLab** lehetőséget. Megnyílik az új böngészőablak.
 
 ## <a name="next-steps"></a>Következő lépések
 

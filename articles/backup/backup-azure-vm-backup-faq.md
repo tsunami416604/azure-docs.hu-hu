@@ -4,12 +4,12 @@ description: Ebből a cikkből megismerheti az Azure-beli virtuális gépek Azur
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: f318d785fdfa5b72050bdd805ecfe801d307b9a7
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 74e2facfd9fd6073acc1f939c3d2ba922e3ac931
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172840"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925577"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése
 
@@ -76,6 +76,10 @@ Igen. A biztonsági mentési feladatot megszakíthatja a **Pillanatképek állap
 Ha zárolja az Azure Backup szolgáltatás által létrehozott erőforráscsoportot, a biztonsági mentések sikertelenek lesznek, mivel a rendszer legfeljebb 18 visszaállítási pontot tud megkezdeni.
 
 Távolítsa el a zárolást, és törölje a visszaállítási pont gyűjteményét az adott erőforráscsoporthoz, hogy a biztonsági mentések sikeresek legyenek. A visszaállítási pontok gyűjteményének eltávolításához [kövesse az alábbi lépéseket](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) .
+
+### <a name="i-have-a-lock-at-the-resource-group-level-that-contains-all-the-resources-related-to-my-virtual-machine-will-my-backup-work"></a>A virtuális géppel kapcsolatos összes erőforrást tartalmazó erőforráscsoport-szinten van zárolásom. Működik majd a biztonsági mentés?
+
+A Azure Backup egy külön erőforráscsoportot hoz létre a `AzureBackupRG_<geo>_<number>` ResourcePointCollections-objektumok tárolásához. Mivel ez az erőforráscsoport a szolgáltatás tulajdonosa, a zárolás azt eredményezi, hogy a biztonsági mentések sikertelenek lesznek. A zárolásokat csak az ügyfél által létrehozott erőforráscsoportok esetében lehet alkalmazni.
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disks"></a>Támogatja a Azure Backup a standard SSD által felügyelt lemezeket?
 
@@ -145,7 +149,7 @@ Igen. Még ha törli is a virtuális gépet, a tárolóban található megfelel�
 
 ### <a name="how-do-i-restore-a-vm-to-the-same-availability-sets"></a>Hogyan egy virtuális gépet ugyanarra a rendelkezésre állási csoportra visszaállítani?
 
-A felügyelt lemezes Azure-beli virtuális gépek esetében a rendelkezésre állási csoportokra való visszaállítást engedélyezheti, ha a sablonban a felügyelt lemezként való visszaállításkor lehetőséget biztosít. Ez a sablon tartalmazza a **rendelkezésre állási készletek**nevű bemeneti paramétert.
+A felügyelt lemezes Azure-beli virtuális gépek esetében a rendelkezésre állási csoportokra való visszaállítást engedélyezheti, ha a sablonban a felügyelt lemezként való visszaállításkor lehetőséget biztosít. Ez a sablon tartalmazza a **rendelkezésre állási készletek** nevű bemeneti paramétert.
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>Hogyan lehet gyorsabb visszaállítási teljesítményt kapni?
 
@@ -181,7 +185,7 @@ A virtuális gép biztonsági mentése a módosított vagy az új szabályzatban
 
    1. Keresse meg a virtuális gép helyét.
    2. Keressen egy erőforráscsoportot a következő elnevezési mintával: `AzureBackupRG_<location of your VM>_1` . Például *AzureBackupRG_westus2_1*
-   3. A Azure Portalban tekintse meg a **rejtett típusok megjelenítése**részt.
+   3. A Azure Portalban tekintse meg a **rejtett típusok megjelenítése** részt.
    4. Keresse meg a **Microsoft. számítás/restorePointCollections** típusú erőforrást, amely az elnevezési mintával rendelkezik `AzureBackup_<name of your VM that you're trying to move>_###########` .
    5. Az erőforrás törlése. Ez a művelet csak az azonnali helyreállítási pontokat törli, a tárolóban lévő biztonsági másolatból nem.
    6. A törlési művelet befejezése után áthelyezheti a virtuális gépet.
@@ -199,7 +203,7 @@ Miután áthelyezte a virtuális gépet egy új erőforráscsoporthoz, a virtuá
 
 Ha szükséges, a régi virtuális gép visszaállítási pontjai a visszaállításhoz lesznek elérhetők. Ha nincs szüksége erre a biztonsági mentési adatokra, leállíthatja a régi virtuális gép védelmét az adatok törlése lehetőséggel.
 
-### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy"></a>Van korlátozva a virtuális gépek száma, amelyek ugyanahhoz a biztonsági mentési szabályzathoz társíthatók?
+### <a name="is-there-a-limit-on-number-of-vms-that-can-be-associated-with-the-same-backup-policy"></a>Van korlátozva a virtuális gépek száma, amelyek ugyanahhoz a biztonsági mentési szabályzathoz társíthatók?
 
 Igen, legfeljebb 100 virtuális gép lehet, amely ugyanahhoz a biztonsági mentési szabályzathoz társítható a portálról. Javasoljuk, hogy több mint 100 virtuális gépen hozzon létre több biztonsági mentési szabályzatot ugyanazzal az ütemtervtel vagy eltérő ütemtervtel.
 

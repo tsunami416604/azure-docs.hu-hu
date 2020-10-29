@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 10/29/2020
 ms.author: jingwang
-ms.openlocfilehash: b0335f4f58645ae481b0fb4127a1235c4d0800f1
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: bd41a2c3a101dd678be665fd7102b8ff33957824
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636391"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925764"
 ---
 # <a name="binary-format-in-azure-data-factory"></a>Bináris formátum a Azure Data Factoryban
 
@@ -36,8 +36,8 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 | típus             | Az adatkészlet Type tulajdonságát **bináris** értékre kell beállítani. | Igen      |
 | location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz tartozik a saját hely típusa és a támogatott tulajdonságai `location` . **Tekintse meg a részleteket az összekötő cikk-> adatkészlet tulajdonságai szakaszban** . | Igen      |
 | tömörítés | A fájltömörítés konfigurálására szolgáló tulajdonságok csoportja. Akkor konfigurálja ezt a szakaszt, ha a tevékenység végrehajtása során tömörítést vagy kibontást szeretne végezni. | Nem |
-| típus | A bináris fájlok olvasásához/írásához használt tömörítési kodek. <br>Az engedélyezett értékek a **bzip2** , a **gzip** , a **deflate** , a **ZipDeflate** vagy a **TarGzip** . <br>**Megjegyzés** : Ha a másolási tevékenységgel kibontja a **ZipDeflate** / **TarGzip** -fájl (oka) t, és az írás a fájl alapú fogadó adattárba történik, az alapértelmezett fájlok a mappába kerülnek, a `<path specified in dataset>/<folder named as source compressed file>/` `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` [másolási tevékenység forrásaként](#binary-as-source) pedig megadhatja, hogy meg kell-e őrizni a tömörített fájl (ok) nevét a mappa szerkezeteként.| Nem       |
-| szint | A tömörítési arány. Akkor alkalmazza, ha az adatkészletet a másolási tevékenység fogadójában használják.<br>Az engedélyezett értékek az **optimálisak** vagy a **leggyorsabbek** .<br>- **Leggyorsabb:** A tömörítési műveletnek a lehető leggyorsabban kell elvégeznie, még akkor is, ha az eredményül kapott fájl nem tömöríthető optimálisan.<br>- **Optimális** : a tömörítési műveletet optimálisan kell tömöríteni, még akkor is, ha a művelet végrehajtása hosszú időt vesz igénybe. További információ: [tömörítési szint](/dotnet/api/system.io.compression.compressionlevel) témakör. | Nem       |
+| típus | A bináris fájlok olvasásához/írásához használt tömörítési kodek. <br>Az engedélyezett értékek a **bzip2** , a **gzip** , a **deflate** , a **ZipDeflate** , a **tar** vagy a **TarGzip** . <br>**Megjegyzés** : Ha a másolási tevékenységgel kibontja a **ZipDeflate** / **TarGzip** / **tar** -fájl (oka) t, és az írás a fájl alapú fogadó adattárba történik, az alapértelmezett fájlok a mappába kerülnek, a `<path specified in dataset>/<folder named as source compressed file>/` `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` [másolási tevékenység forrásaként](#binary-as-source) pedig megadhatja, hogy meg kell-e őrizni a tömörített fájl (ok) nevét a mappa szerkezeteként.| Nem       |
+| szint | A tömörítési arány. Akkor alkalmazza, ha az adatkészletet a másolási tevékenység fogadójában használják.<br>Az engedélyezett értékek az **optimálisak** vagy a **leggyorsabbek** .<br>- **Leggyorsabb:** A tömörítési műveletnek a lehető leggyorsabban kell elvégeznie, még akkor is, ha az eredményül kapott fájl nem tömöríthető optimálisan.<br>- **Optimális** : a tömörítési műveletet optimálisan kell tömöríteni, még akkor is, ha a művelet végrehajtása hosszú időt vesz igénybe. További információ: [tömörítési szint](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) témakör. | Nem       |
 
 Az alábbi példa az Azure Blob Storage bináris adatkészletét mutatja be:
 
@@ -88,7 +88,7 @@ Támogatott **bináris olvasási beállítások** a következő alatt `formatSet
 | típus          | A formatSettings típusát **BinaryReadSettings** értékre kell beállítani. | Igen      |
 | compressionProperties | Egy adott tömörítési kodekhez tartozó adatok kibontására szolgáló tulajdonságok csoportja. | Nem       |
 | preserveZipFileNameAsFolder<br>( *a `compressionProperties` -ben -> ) `type` `ZipDeflateReadSettings`* | Akkor érvényes, ha a bemeneti adatkészlet **ZipDeflate** tömörítéssel van konfigurálva. Azt jelzi, hogy a forrás zip-fájlnevet a másolás során a mappa szerkezeteként kell-e megőrizni.<br>– Ha **true (alapértelmezett)** értékre van állítva, Data Factory a kibontott fájlokat ír a következőre: `<path specified in dataset>/<folder named as source zip file>/` .<br>– Ha **hamis** értékre van állítva, Data Factory a kibontott fájlokat közvetlenül a következőre írja: `<path specified in dataset>` . A versenyzés vagy a váratlan viselkedés elkerülése érdekében ügyeljen arra, hogy ne legyenek duplikált fájlnevek különböző zip-fájlokban.  | Nem |
-| preserveCompressionFileNameAsFolder<br>( *a `compressionProperties` -ben -> ) `type` `TarGZipReadSettings`* | Akkor érvényes, ha a bemeneti adatkészlet **TarGzip** tömörítéssel van konfigurálva. Azt jelzi, hogy a forrás tömörített fájlnevet a másolás során a mappa szerkezeteként kell-e megőrizni.<br>– Ha **true (alapértelmezett)** értékre van állítva, Data Factory a kibontott fájlokat ír a következőre: `<path specified in dataset>/<folder named as source compressed file>/` . <br>-Ha **hamis** értékre van állítva, Data Factory a kibontott fájlokat közvetlenül a következőre írja: `<path specified in dataset>` . A versenyzés vagy a váratlan viselkedés elkerülése érdekében ügyeljen arra, hogy ne legyenek duplikált fájlnevek a különböző forrásfájlok között. | Nem |
+| preserveCompressionFileNameAsFolder<br>( *a `compressionProperties` -> `type` `TarGZipReadSettings` -ban `TarReadSettings` vagy a* -ben) | Akkor érvényes, ha a bemeneti adatkészlet **TarGzip** / **tar** tömörítéssel van konfigurálva. Azt jelzi, hogy a forrás tömörített fájlnevet a másolás során a mappa szerkezeteként kell-e megőrizni.<br>– Ha **true (alapértelmezett)** értékre van állítva, Data Factory a kibontott fájlokat ír a következőre: `<path specified in dataset>/<folder named as source compressed file>/` . <br>-Ha **hamis** értékre van állítva, Data Factory a kibontott fájlokat közvetlenül a következőre írja: `<path specified in dataset>` . A versenyzés vagy a váratlan viselkedés elkerülése érdekében ügyeljen arra, hogy ne legyenek duplikált fájlnevek a különböző forrásfájlok között. | Nem |
 
 ```json
 "activities": [

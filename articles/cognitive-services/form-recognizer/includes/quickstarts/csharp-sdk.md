@@ -9,17 +9,17 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 9e0bdbc9cc197deb5028848731f031ff19d5ebf7
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 164b3f9e0426db1f36360fee8f836216d4cad86a
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897718"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925019"
 ---
 > [!IMPORTANT]
 > Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja.
 
-[Dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer)  |  [Példák](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
+[Dokumentáció](/dotnet/api/overview/azure/ai.formrecognizer-readme)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer)  |  [Példák](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -85,7 +85,7 @@ Az alkalmazás **program** osztályában hozzon létre változókat az erőforr�
 > [!IMPORTANT]
 > Nyissa meg az Azure Portalt. Ha az **Előfeltételek** szakaszban létrehozott Fprm-felismerő erőforrás sikeresen telepítve van, kattintson az **Ugrás erőforrásra** gombra a **következő lépések** alatt. A kulcsot és a végpontot az erőforrás- **kezelés** területen, az erőforrás **kulcs és végpont** lapján találja. 
 >
-> Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. További információt a Cognitive Services [biztonsági](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) cikkben talál.
+> Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. További információt a Cognitive Services [biztonsági](../../../cognitive-services-security.md) cikkben talál.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_creds)]
 
@@ -118,7 +118,7 @@ Az űrlap-felismerő használatával két különböző típusú ügyfél hozhat
 Tekintse át a [modell betanítására](#train-a-custom-model) és az [egyéni modellek kezelésére](#manage-custom-models)szolgáló példákat.
 
 > [!NOTE]
-> A modellek grafikus felhasználói felülettel is betanítható, például az [űrlap-felismerő címkéző eszköz](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)használatával.
+> A modellek grafikus felhasználói felülettel is betanítható, például az [űrlap-felismerő címkéző eszköz](../../quickstarts/label-tool.md)használatával.
 
 ## <a name="code-examples"></a>Kódpéldák
 
@@ -139,7 +139,7 @@ A **Main (fő** ) alatt hozzon létre egy nevű új metódust `AuthenticateClien
 > [!IMPORTANT]
 > Szerezze be a kulcsot és a végpontot a Azure Portalból. Ha az **Előfeltételek** szakaszban létrehozott űrlap-felismerő erőforrás sikeresen telepítve van, kattintson az **Ugrás erőforrásra** gombra a **következő lépések** alatt. A kulcsot és a végpontot az erőforrás- **kezelés** területen, az erőforrás **kulcs és végpont** lapján találja. 
 >
-> Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. Például az [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
+> Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. Például az [Azure Key Vault](../../../../key-vault/general/overview.md).
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_auth)]
 

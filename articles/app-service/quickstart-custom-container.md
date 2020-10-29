@@ -7,12 +7,12 @@ ms.date: 10/21/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 1411491906e763a52ee1b6a66df1dea183b91973
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b3d9e2e275b4c0d000759878557e5e14f7dfc04f
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425867"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925747"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Egyéni tároló futtatása az Azure-ban
 
@@ -34,24 +34,24 @@ Az oktatóanyag elvégzéséhez:
 - <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">A Docker átváltása Windows-tárolók futtatására</a>.
 - <a href="https://www.visualstudio.com/downloads/" target="_blank">Telepítse a Visual Studio 2019</a> -et a **ASP.net, valamint a webes fejlesztési** és az **Azure-fejlesztési** számítási feladatokkal. Ha már telepítette a Visual Studio 2019-et:
 
-    - A **Help**  >  **frissítések keresése**lehetőség kiválasztásával telepítse a legújabb frissítéseket a Visual Studióban.
-    - Adja hozzá a számítási feladatokat a Visual Studióban **az eszközök**  >  **beolvasása eszközök és szolgáltatások beszerzése lehetőség**kiválasztásával.
+    - A **Help**  >  **frissítések keresése** lehetőség kiválasztásával telepítse a legújabb frissítéseket a Visual Studióban.
+    - Adja hozzá a számítási feladatokat a Visual Studióban **az eszközök**  >  **beolvasása eszközök és szolgáltatások beszerzése lehetőség** kiválasztásával.
 
 ## <a name="create-an-aspnet-web-app"></a>ASP.NET-webapp létrehozása
 
 Hozzon létre egy ASP.NET-webalkalmazást a következő lépések végrehajtásával:
 
-1. Nyissa meg a Visual studiót, majd válassza **az új projekt létrehozása**lehetőséget.
+1. Nyissa meg a Visual studiót, majd válassza **az új projekt létrehozása** lehetőséget.
 
-1. Az **új projekt létrehozása**területen keresse meg és válassza a **ASP.net webalkalmazás (.NET-keretrendszer)** elemet a C# számára, majd kattintson a **tovább**gombra.
+1. Az **új projekt létrehozása** területen keresse meg és válassza a **ASP.net webalkalmazás (.NET-keretrendszer)** elemet a C# számára, majd kattintson a **tovább** gombra.
 
-1. Az **új projekt konfigurálása**lapon nevezze el az alkalmazás _myfirstazurewebapp_, majd válassza a **Létrehozás**lehetőséget.
+1. Az **új projekt konfigurálása** lapon nevezze el az alkalmazás _myfirstazurewebapp_ , majd válassza a **Létrehozás** lehetőséget.
 
    ![A webalkalmazás-projekt konfigurálása](./media/quickstart-custom-container/configure-web-app-project-container.png)
 
 1. Bármilyen ASP.NET-webappot üzembe helyezhet az Azure-ban. Ebben a rövid útmutatóban válassza az **MVC** sablont.
 
-1. Válassza a **Docker-támogatás**lehetőséget, és győződjön meg arról, hogy a hitelesítés beállítása **Nincs hitelesítés**. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Docker-támogatás** lehetőséget, és győződjön meg arról, hogy a hitelesítés beállítása **Nincs hitelesítés** . Válassza a **Létrehozás** lehetőséget.
 
    ![ASP.NET-Webalkalmazás létrehozása](./media/quickstart-custom-container/select-mvc-template-for-container.png)
 
@@ -69,19 +69,19 @@ Hozzon létre egy ASP.NET-webalkalmazást a következő lépések végrehajtás�
 
 ## <a name="publish-to-docker-hub"></a>Közzététel a Docker Hubon
 
-1. A **megoldáskezelő**kattintson a jobb gombbal a **myfirstazurewebapp** projektre, és válassza a **Közzététel**lehetőséget.
+1. A **megoldáskezelő** kattintson a jobb gombbal a **myfirstazurewebapp** projektre, és válassza a **Közzététel** lehetőséget.
 
-1. Válassza a **app Service** lehetőséget, majd válassza a **Közzététel**lehetőséget.
+1. Válassza a **app Service** lehetőséget, majd válassza a **Közzététel** lehetőséget.
 
-1. A **közzétételi cél**kiválasztása lapon válassza ki a **Container Registry** és a **Docker hub**elemet, majd kattintson a **Közzététel**elemre.
+1. A **közzétételi cél** kiválasztása lapon válassza ki a **Container Registry** és a **Docker hub** elemet, majd kattintson a **Közzététel** elemre.
 
    ![Közzététel a projekt áttekintő oldaláról](./media/quickstart-custom-container/publish-to-docker-vs2019.png)
 
-1. Adja meg a Docker hub-fiók hitelesítő adatait, majd válassza a **Mentés**lehetőséget.
+1. Adja meg a Docker hub-fiók hitelesítő adatait, majd válassza a **Mentés** lehetőséget.
 
    Várjon, amíg az üzembe helyezés befejeződik. A **közzétételi** oldal mostantól megjeleníti az adattár nevét, amelyet később használni szeretne.
 
-   ![Közzététel a projekt áttekintő oldaláról](./media/quickstart-custom-container/published-docker-repository-vs2019.png)
+   ![Képernyőkép, amely kiemeli az adattár nevét.](./media/quickstart-custom-container/published-docker-repository-vs2019.png)
 
 1. Másolja az adattár nevét későbbi felhasználásra.
 
@@ -91,15 +91,15 @@ Hozzon létre egy ASP.NET-webalkalmazást a következő lépések végrehajtás�
 
 1. Válassza az Azure Portal bal felső sarkában az **Erőforrás létrehozása** lehetőséget.
 
-1. Az Azure Marketplace-erőforrások listájának megadásához keresse meg a **Web App for containers**, és válassza a **Létrehozás**lehetőséget.
+1. Az Azure Marketplace-erőforrások listájának megadásához keresse meg a **Web App for containers** , és válassza a **Létrehozás** lehetőséget.
 
-1. A **Webalkalmazás létrehozása lapon**válassza ki az előfizetését és egy **erőforráscsoportot**. Szükség esetén új erőforráscsoportot is létrehozhat.
+1. A **Webalkalmazás létrehozása lapon** válassza ki az előfizetését és egy **erőforráscsoportot** . Szükség esetén új erőforráscsoportot is létrehozhat.
 
-1. Adja meg az alkalmazás nevét, például a *Win-Container-demót* , és válassza a **Windows** **operációs rendszer**lehetőséget. A folytatáshoz kattintson a **Tovább gombra: Docker** .
+1. Adja meg az alkalmazás nevét, például a *Win-Container-demót* , és válassza a **Windows** **operációs rendszer** lehetőséget. A folytatáshoz kattintson a **Tovább gombra: Docker** .
 
    ![Web App for Containers létrehozása](media/quickstart-custom-container/create-web-app-continer.png)
 
-1. A **Képforráshoz**válassza a **Docker hub** lehetőséget, majd a **rendszerkép és a címke**mezőben adja meg a [Közzététel a Docker hub](#publish-to-docker-hub)-ban másolt adattár nevét.
+1. A **Képforráshoz** válassza a **Docker hub** lehetőséget, majd a **rendszerkép és a címke** mezőben adja meg a [Közzététel a Docker hub](#publish-to-docker-hub)-ban másolt adattár nevét.
 
    ![A Web App for Containers konfigurálása](media/quickstart-custom-container/configure-web-app-continer.png)
 
@@ -115,7 +115,7 @@ Hozzon létre egy ASP.NET-webalkalmazást a következő lépések végrehajtás�
 
 1. Kattintson az **Erőforrás megnyitása** lehetőségre.
 
-1. Az erőforrás áttekintésében kövesse az **URL-cím**melletti hivatkozást.
+1. Az erőforrás áttekintésében kövesse az **URL-cím** melletti hivatkozást.
 
 Megnyílik egy új böngésző oldal a következő lapra:
 
@@ -146,7 +146,7 @@ A streamelt naplók a következőképpen néznek ki:
 
 ## <a name="update-locally-and-redeploy"></a>Frissítés helyileg és ismételt üzembe helyezés
 
-1. A Visual Studióban **Megoldáskezelőban**nyissa meg a **views**  >  **Home**  >  **index. cshtml**.
+1. A Visual Studióban **Megoldáskezelőban** nyissa meg a **views**  >  **Home**  >  **index. cshtml** .
 
 1. Keresse meg a `<div class="jumbotron">` HTML-címkét felül, és cserélje le az egész elemet az alábbi kódra:
 
@@ -157,11 +157,11 @@ A streamelt naplók a következőképpen néznek ki:
    </div>
    ```
 
-1. Az Azure-ba történő ismételt üzembe helyezéshez kattintson a jobb gombbal a **myfirstazurewebapp** projektre **megoldáskezelő** , majd válassza a **Közzététel**lehetőséget.
+1. Az Azure-ba történő ismételt üzembe helyezéshez kattintson a jobb gombbal a **myfirstazurewebapp** projektre **megoldáskezelő** , majd válassza a **Közzététel** lehetőséget.
 
 1. A közzétételi oldalon válassza a **Publish** (Közzététel) elemet, és várja meg, amíg a közzététel végbemegy.
 
-1. Ahhoz, hogy az App Service-nek előírhassa az új rendszerkép a Docker Hubból történő lekérését, az alkalmazás újraindítása szükséges. A portál alkalmazás lapján kattintson az **Újraindítás**  >  **Igen**gombra.
+1. Ahhoz, hogy az App Service-nek előírhassa az új rendszerkép a Docker Hubból történő lekérését, az alkalmazás újraindítása szükséges. A portál alkalmazás lapján kattintson az **Újraindítás**  >  **Igen** gombra.
 
    ![Webalkalmazás újraindítása az Azure-ban](./media/quickstart-custom-container/portal-restart-app.png)
 
@@ -169,7 +169,7 @@ A streamelt naplók a következőképpen néznek ki:
 
 ![Frissített webalkalmazás az Azure-ban](./media/quickstart-custom-container/azure-web-app-updated.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Áttelepítés az Azure-ban található Windows-tárolókba](tutorial-custom-container.md)
@@ -217,7 +217,7 @@ Ezután ellenőrizze, hogy a Docker telepítve van-e és fut-e. A következő pa
 docker --version
 ```
 
-Végezetül ellenőrizze, hogy a Azure Container Registry csatlakoztatva van-e. Ehhez válassza ki a Docker-emblémát a tevékenység sávjában, majd navigáljon **a**beállításjegyzékek elemre.
+Végezetül ellenőrizze, hogy a Azure Container Registry csatlakoztatva van-e. Ehhez válassza ki a Docker-emblémát a tevékenység sávjában, majd navigáljon **a** beállításjegyzékek elemre.
 
 ![Képernyőfelvétel: a beállításjegyzékek értéke az Azure Expanded értékkel, valamint egy, a dot i o filename bővítménnyel rendelkező fájl.](./media/quickstart-docker/registries.png)
 
@@ -225,7 +225,7 @@ Végezetül ellenőrizze, hogy a Azure Container Registry csatlakoztatva van-e. 
 
 Most, hogy minden be van állítva, telepítheti a lemezképet [Azure app Service](https://azure.microsoft.com/services/app-service/) közvetlenül a Docker bővítmény Explorerrel.
 
-Keresse meg a rendszerképet **a** **Docker** Explorer beállításjegyzékek csomópontjában, és bontsa ki a címkék megjelenítéséhez. Kattintson a jobb gombbal a címkére, majd válassza a **lemezkép központi telepítése Azure app Service**lehetőséget.
+Keresse meg a rendszerképet **a** **Docker** Explorer beállításjegyzékek csomópontjában, és bontsa ki a címkék megjelenítéséhez. Kattintson a jobb gombbal a címkére, majd válassza a **lemezkép központi telepítése Azure app Service** lehetőséget.
 
 Itt az alábbi utasításokat követve választhatja ki az előfizetést, egy globálisan egyedi alkalmazás nevét, egy erőforráscsoportot és egy App Service tervet. Válassza a **B1 alapszintű** lehetőséget a díjszabási szinthez és a régióhoz.
 
@@ -242,7 +242,7 @@ A rendszer az üzembe helyezés során megnyílik a **kimeneti** panel, hogy jel
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=quickstart-docker&step=deploy-app)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gratulálunk, sikeresen elvégezte ezt a rövid útmutatót!
 

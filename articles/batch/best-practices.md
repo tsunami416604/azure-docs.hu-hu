@@ -3,12 +3,12 @@ title: Ajánlott eljárások
 description: Ismerje meg az ajánlott eljárásokat és hasznos tippeket a Azure Batch megoldás fejlesztéséhez.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0663d1910e2b67b8302e41a96509bdd84cd1a3a0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: dff6668050e45d9179cd985aa10670b56afe5377
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102778"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913228"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch ajánlott eljárások
 
@@ -20,7 +20,7 @@ A [készletek](nodes-and-pools.md#pools) a Batch szolgáltatásban a feladatok v
 
 ### <a name="pool-configuration-and-naming"></a>Készlet konfigurációja és elnevezése
 
-- **Készlet lefoglalási módja** Batch-fiók létrehozásakor választhat két készlet kiosztási módja közül: **Batch szolgáltatás** vagy **felhasználói előfizetés**. A legtöbb esetben az alapértelmezett batch szolgáltatás módot kell használnia, amelyben a készletek a Batch által felügyelt előfizetésekben a színfalak mögött vannak lefoglalva. A szintén választható „Felhasználói előfizetés” mód esetében a Batch virtuális gépei és egyéb erőforrásai közvetlenül az előfizetésben jönnek létre egy készlet létrehozásakor. A felhasználói előfizetési fiókok elsődlegesen a fontos, de a forgatókönyvek kis részhalmazának engedélyezésére használatosak. A felhasználói előfizetési móddal kapcsolatos további információkért tekintse meg a [felhasználói előfizetés üzemmódjának további konfigurációját](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
+- **Készlet lefoglalási módja** Batch-fiók létrehozásakor választhat két készlet kiosztási módja közül: **Batch szolgáltatás** vagy **felhasználói előfizetés** . A legtöbb esetben az alapértelmezett batch szolgáltatás módot kell használnia, amelyben a készletek a Batch által felügyelt előfizetésekben a színfalak mögött vannak lefoglalva. A szintén választható „Felhasználói előfizetés” mód esetében a Batch virtuális gépei és egyéb erőforrásai közvetlenül az előfizetésben jönnek létre egy készlet létrehozásakor. A felhasználói előfizetési fiókok elsődlegesen a fontos, de a forgatókönyvek kis részhalmazának engedélyezésére használatosak. A felhasználói előfizetési móddal kapcsolatos további információkért tekintse meg a [felhasználói előfizetés üzemmódjának további konfigurációját](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
 
 - **Vegye figyelembe a feladat és a feladat futási idejét a készlet hozzárendelésének meghatározásakor.**
     Ha a feladatok elsősorban rövid ideig futó tevékenységekből állnak, és a tevékenységek várható összesített száma kicsi, így a feladat teljes várható futási ideje nem hosszú, ne foglaljon le új készletet az egyes feladatokhoz. A csomópontok lefoglalási ideje csökkenti a feladatok futási idejét.
@@ -41,7 +41,7 @@ A [készletek](nodes-and-pools.md#pools) a Batch szolgáltatásban a feladatok v
 A készlet élettartama eltérő lehet a készlet-konfigurációra alkalmazott foglalási és beállítási módtól függően. A készletek tetszőleges időtartammal rendelkezhetnek, és a készletben lévő számítási csomópontok száma bármikor megadható. Az Ön felelőssége, hogy a készletben lévő számítási csomópontokat explicit módon, vagy a szolgáltatás által biztosított szolgáltatások (az autoscale vagy az autopool) segítségével kezelje.
 
 - **A készletek frissen tartása.**
-    A készleteket a csomópontok legújabb frissítéseinek és hibajavításának biztosítása érdekében minden hónapban nulla értékűre kell méreteznie. A készlet nem kapja meg a csomópont-ügynök frissítéseit, kivéve, ha újból létrehozták, vagy 0 számítási csomópontra méretezi át őket. A készlet újbóli létrehozása vagy átméretezése előtt javasoljuk, hogy [a csomópontok szakaszban](#nodes) ismertetett módon letöltse a csomóponti ügynökök naplóit a hibakereséshez.
+    A készleteket a [csomópontok legújabb frissítéseinek és hibajavításának](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)biztosítása érdekében minden hónapban nulla értékűre kell méreteznie. A készlet nem kapja meg a csomópont-ügynök frissítéseit, kivéve, ha újból létrehozták, vagy 0 számítási csomópontra méretezi át őket. A készlet újbóli létrehozása vagy átméretezése előtt javasoljuk, hogy [a csomópontok szakaszban](#nodes) ismertetett módon letöltse a csomóponti ügynökök naplóit a hibakereséshez.
 
 - **Készlet ismételt létrehozása** Hasonló megjegyzés esetén nem ajánlott napi rendszerességgel törölni és újból létrehozni a készleteket. Ehelyett hozzon létre egy új készletet, és frissítse a meglévő feladatokat, hogy az új készletre mutasson. Miután az összes feladatot áthelyezte az új készletbe, törölje a régi készletet.
 
@@ -67,7 +67,7 @@ A készleteket az Azure Marketplace-en közzétett harmadik féltől származó 
 
 ### <a name="azure-region-dependency"></a>Azure region-függőség
 
-Azt javasoljuk, hogy ne függjön egyetlen Azure-régiótól, ha időérzékeny vagy éles számítási feladattal rendelkezik. Ritkán előfordul, hogy olyan problémák merülnek fel, amelyek befolyásolhatják a teljes régiót. Ha például a feldolgozásnak egy adott időpontban kell kezdődnie, érdemes lehet a készletet az elsődleges régióban is felmérni a *kezdési időpont előtt*. Ha a készlet skálázása meghiúsul, visszatérhet egy készlet egy biztonsági mentési régióban (vagy régiókban) való méretezésére. A különböző régiókban lévő több fiókból álló készletek egy kész, könnyen hozzáférhető biztonsági mentést biztosítanak, ha egy másik készlettel valamilyen hiba történik. További információ: [az alkalmazás megtervezése a magas rendelkezésre állás érdekében](high-availability-disaster-recovery.md).
+Azt javasoljuk, hogy ne függjön egyetlen Azure-régiótól, ha időérzékeny vagy éles számítási feladattal rendelkezik. Ritkán előfordul, hogy olyan problémák merülnek fel, amelyek befolyásolhatják a teljes régiót. Ha például a feldolgozásnak egy adott időpontban kell kezdődnie, érdemes lehet a készletet az elsődleges régióban is felmérni a *kezdési időpont előtt* . Ha a készlet skálázása meghiúsul, visszatérhet egy készlet egy biztonsági mentési régióban (vagy régiókban) való méretezésére. A különböző régiókban lévő több fiókból álló készletek egy kész, könnyen hozzáférhető biztonsági mentést biztosítanak, ha egy másik készlettel valamilyen hiba történik. További információ: [az alkalmazás megtervezése a magas rendelkezésre állás érdekében](high-availability-disaster-recovery.md).
 
 ## <a name="jobs"></a>Feladatok
 

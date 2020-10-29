@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: ad3dd64bb55ccd657b74bacff3e4441ce63f0cf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cea061c1fd36bed9fa1e43c874fbca347707f78d
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569373"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925867"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>CSR létrehozása és egyesítése Key Vault
 
@@ -23,7 +23,7 @@ Azure Key Vault támogatja a kulcstartóban tetszőleges hitelesítésszolgálta
 
 A tanúsítványokkal kapcsolatos további általános információkért lásd: [Azure Key Vault tanúsítványok](/azure/key-vault/certificates/about-certificates).
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="adding-certificate-in-key-vault-issued-by-a-non-trusted-ca"></a>Nem megbízható HITELESÍTÉSSZOLGÁLTATÓ által kiadott Key Vault tanúsítvány hozzáadása
 
@@ -34,7 +34,7 @@ A következő lépések segítséget nyújtanak olyan hitelesítésszolgáltató
 
 
 
-1.  Először **hozza létre a tanúsítvány-házirendet**. Key Vault nem fogja regisztrálni vagy megújítani a tanúsítványt a kiállítótól a felhasználó nevében, mivel az ebben a forgatókönyvben kiválasztott HITELESÍTÉSSZOLGÁLTATÓ nem támogatott, és így a IssuerName ismeretlenre van állítva.
+1.  Először **hozza létre a tanúsítvány-házirendet** . Key Vault nem fogja regisztrálni vagy megújítani a tanúsítványt a kiállítótól a felhasználó nevében, mivel az ebben a forgatókönyvben kiválasztott HITELESÍTÉSSZOLGÁLTATÓ nem támogatott, és így a IssuerName ismeretlenre van állítva.
 
     ```azurepowershell
     $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=www.contosoHRApp.com" -ValidityInMonths 1  -IssuerName Unknown
@@ -62,19 +62,19 @@ A következő lépések segítséget nyújtanak olyan hitelesítésszolgáltató
 ### <a name="azure-portal"></a>Azure Portal
 
 1.  Ha az Ön által választott HITELESÍTÉSSZOLGÁLTATÓhoz szeretne CSR-t előállítani, navigáljon ahhoz a kulcstartóhoz, amelyhez hozzá szeretné adni a tanúsítványt.
-2.  A Key Vault tulajdonságok lapon válassza a **tanúsítványok**lehetőséget.
+2.  A Key Vault tulajdonságok lapon válassza a **tanúsítványok** lehetőséget.
 3.  Válassza a **létrehozó/importálás** fület.
 4.  A **tanúsítvány létrehozása** képernyőn válassza ki a következő értékeket:
     - **Tanúsítvány létrehozásának módszere:** Létrehoz.
     - **Tanúsítvány neve:** ContosoManualCSRCertificate.
     - **A hitelesítésszolgáltató típusa (CA):** Nem integrált HITELESÍTÉSSZOLGÁLTATÓ által kiállított tanúsítvány
     - **Tárgy:**`"CN=www.contosoHRApp.com"`
-    - Válassza ki a többi értéket a kívánt módon. Kattintson a **Létrehozás** elemre.
+    - Válassza ki a többi értéket a kívánt módon. Kattintson a **Létrehozás** gombra.
 
     ![Tanúsítvány tulajdonságai](../media/certificates/create-csr-merge-csr/create-certificate.png)
 6.  Látni fogja, hogy a tanúsítvány már hozzá lett adva a tanúsítványok listájában. Válassza ki az imént létrehozott új tanúsítványt. A tanúsítvány aktuális állapota "Letiltva" lesz, mivel még nem állította ki a HITELESÍTÉSSZOLGÁLTATÓ.
-7. Kattintson a **tanúsítvány művelete** fülre, és válassza a **CSR letöltése**lehetőséget.
- ![Tanúsítvány tulajdonságai](../media/certificates/create-csr-merge-csr/download-csr.png)
+7. Kattintson a **tanúsítvány művelete** fülre, és válassza a **CSR letöltése** lehetőséget.
+ ![Képernyőfelvétel: a CSR letöltése gomb.](../media/certificates/create-csr-merge-csr/download-csr.png)
 
 8.  Írja be a. CSR fájlt a HITELESÍTÉSSZOLGÁLTATÓhoz az aláírásra vonatkozó kéréshez.
 9.  Miután a HITELESÍTÉSSZOLGÁLTATÓ aláírja a kérést, hozza vissza a tanúsítványfájl-t az **aláírt kérelem egyesítéséhez** ugyanabban a tanúsítvány-művelet képernyőn.
@@ -109,7 +109,7 @@ Példa
 
 További információkért tekintse meg a [tanúsítványok műveleteit a Key Vault REST API-referenciában](/rest/api/keyvault). Az engedélyek létrehozásával kapcsolatos információkért lásd: tárolók [– Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és tárolók [– frissítési hozzáférési szabályzat](/rest/api/keyvault/vaults/updateaccesspolicy).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hitelesítés, kérések és válaszok](../general/authentication-requests-and-responses.md)
 - [Key Vault fejlesztői útmutató](../general/developers-guide.md)

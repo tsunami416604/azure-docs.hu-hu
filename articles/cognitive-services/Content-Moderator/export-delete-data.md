@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: 81713bf8d424b9f272f6b1bccf3657810160d4cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f74fdc9cd30e1dfbd4df6c94842a9dccb435ef4
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73744786"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913653"
 ---
 # <a name="export-or-delete-user-data-in-content-moderator"></a>Felhasználói adatexportálás vagy-törlés Content Moderator
 
-A Content Moderator felhasználói adatokat gyűjt a szolgáltatás üzemeltetéséhez, de az ügyfelek teljes hozzáféréssel rendelkeznek az adatok megtekintésére, exportálására és törlésére a [felülvizsgálati eszközzel](https://contentmoderator.cognitive.microsoft.com/) , valamint a [moderálási és felülvizsgálati API](https://docs.microsoft.com/azure/cognitive-services/content-moderator/api-reference)-k használatával.
+A Content Moderator felhasználói adatokat gyűjt a szolgáltatás üzemeltetéséhez, de az ügyfelek teljes hozzáféréssel rendelkeznek az adatok megtekintésére, exportálására és törlésére a [felülvizsgálati eszközzel](https://contentmoderator.cognitive.microsoft.com/) , valamint a [moderálási és felülvizsgálati API](./api-reference.md)-k használatával.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -33,4 +33,3 @@ A Content Moderator felhasználói adatainak exportálásával és törlésével
 | Címkék | N/A | Használja az egyes címkékhez elérhető **delete** ikont a felhasználói felület áttekintése címke beállításai lapon. Vagy használja a **csapat törlése** gombot a [felhasználói felületi](https://contentmoderator.cognitive.microsoft.com/) csoport beállításainak áttekintése lapon. |
 | Felülvizsgálatok | A [Get felülvizsgálati API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2) meghívása | Használja a **csapat törlése** gombot a [felhasználói felületi](https://contentmoderator.cognitive.microsoft.com/) csoport beállításainak áttekintése lapon.
 | Felhasználók | N/A | Használja az egyes felhasználók számára elérhető **delete** ikont a [felhasználói felületi](https://contentmoderator.cognitive.microsoft.com/) csoport beállításainak áttekintése lapon. Vagy használja a **csapat törlése** gombot a [felhasználói felületi](https://contentmoderator.cognitive.microsoft.com/) csoport beállításainak áttekintése lapon. |
-

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: jomore
 ms.custom: fasttrack-new
-ms.openlocfilehash: fa4828d8b2752168d5f66a4f80c00611f80f0176
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc8e7314c941035207ecf809a9d85ef46bd58379
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306633"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913755"
 ---
 # <a name="use-private-link-in-virtual-wan"></a>Privát hivatkozás használata a virtuális WAN-ban
 
@@ -72,7 +72,7 @@ $ sqlcmd -S wantest.database.windows.net -U $username -P $password -Q "$query"
 10.1.3.75
 ```
 
-Amint láthatja, egy speciális SQL-lekérdezést használunk, amely megadja a forrás IP-címet, amelyet az SQL Server az ügyféltől lát. Ebben az esetben a kiszolgáló látja az ügyfelet saját IP-címével ( `10.1.3.75` ), ami azt jelenti, hogy a forgalom nem a nyilvános interneten halad át, hanem egyenesen a privát végpontba kerül.
+Amint láthatja, egy speciális SQL-lekérdezést használunk, amely megadja a forrás IP-címet, amelyet az SQL Server az ügyféltől lát. Ebben az esetben a kiszolgáló a saját magánhálózati IP-címével () látja az ügyfelet `10.1.3.75` , ami azt jelenti, hogy a forgalom a VNet egyenesen a privát végpontba kerül.
 
 Vegye figyelembe, hogy az útmutatóban szereplő példáknak megfelelően be kell állítania a változókat `username` , és meg kell `password` egyeznie a Azure SQL Databaseban definiált hitelesítő adatokkal.
 

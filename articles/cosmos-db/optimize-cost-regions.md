@@ -5,49 +5,38 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: 047e2855949b800a88ca87bcc50e0df06f420aa8
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.date: 10/23/2020
+ms.openlocfilehash: 723a1fbe05919f2e797c7b29715cd3995bf42cad
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475497"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926292"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Több régióban való üzemeltetés költségeinek optimalizálása az Azure Cosmos DB-ben
 
-Bármikor hozzáadhat és eltávolíthat régiókat az Azure Cosmos-fiókjához. A különböző Azure Cosmos-adatbázisokhoz és-tárolóhoz konfigurált átviteli sebesség a fiókhoz társított minden régióban le van foglalva. Ha az óránként kiépített átviteli sebesség az Azure Cosmos-fiók összes adatbázisán és tárolóján konfigurált RU/s összege, `T` valamint az adatbázis-fiókhoz társított Azure-régiók száma `N` , akkor a Cosmos-fiók teljes kiosztott átviteli sebessége az adott órában egyenlő:
-
-1. `T x N RU/s` Ha az Azure Cosmos-fiókja egyetlen írási régióval van konfigurálva. 
-
-1. `T x (N+1) RU/s` Ha az Azure Cosmos-fiókja minden olyan régióval konfigurálva van, amely képes az írási műveletek feldolgozására. 
+Bármikor hozzáadhat és eltávolíthat régiókat az Azure Cosmos-fiókjához. A különböző Azure Cosmos-adatbázisokhoz és-tárolóhoz konfigurált átviteli sebesség a fiókhoz társított minden régióban le van foglalva. Ha az óránként kiépített átviteli sebesség az Azure Cosmos-fiók összes adatbázisán és tárolóján konfigurált RU/s összege, `T` valamint az adatbázis-fiókhoz társított Azure-régiók száma `N` , akkor a Cosmos-fiók teljes kiosztott átviteli sebessége egy adott órában egyenlő `T x N RU/s` .
 
 A kiosztott átviteli sebesség költsége egy írási régió esetén: 0,008 USD/óra másodpercenként 100 kérelemegységre vonatkozóan; a kiosztott átviteli sebesség költsége több írható régió esetén: 0,016 USD/óra másodpercenként 100 kérelemegységre vonatkozóan. További információt a Azure Cosmos DB [díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/cosmos-db/)talál.
 
 ## <a name="costs-for-multiple-write-regions"></a>Több írási régió díja
 
-A többrégiós írások esetében a rendelkezésre álló, írási műveletekhez elérhető net RUs az `N` `N` írási régiók számát is növeli. Az egyrégiós írásokkal ellentétben az egyes régiók már írhatók, és támogatniuk kell az ütközés feloldását. Az írók munkaterhelésének mennyisége nőtt. A költségmegtakarítás szempontjából, ha `M` ru/s értékre van szükség a globális írásokhoz, az M-t `RUs` egy tárolóban vagy adatbázis szintjén kell kiépíteni. Ezt követően annyi régiót adhat hozzá, amennyit csak szeretne, és ezeket az írásokhoz is felhasználhatja a globális írási műveletek elvégzéséhez `M` . 
+A többrégiós írások esetében a rendelkezésre álló, írási műveletekhez elérhető net RUs az `N` `N` írási régiók számát is növeli. Az egyrégiós írásokkal ellentétben az egyes régiók már írhatók, és támogatják az ütközés feloldását. A költségmegtakarítás szempontjából, ha `M` ru/s értékre van szükség a globális írásokhoz, az M-t `RUs` egy tárolóban vagy adatbázis szintjén kell kiépíteni. Ezt követően annyi régiót adhat hozzá, amennyit csak szeretne, és ezeket az írásokhoz is felhasználhatja a globális írási műveletek elvégzéséhez `M` .
 
 ### <a name="example"></a>Példa
 
-Vegye figyelembe, hogy az USA nyugati régiójában a (z) 10K RU/s-vel lett kiépítve, és ebben a hónapban 1 TB-nyi adat van tárolva. Tegyük fel, hogy három régiót vesz fel – az USA keleti régiója, Észak-Európa és Kelet-Ázsia, amelyek mindegyike ugyanazzal a tárolóval és adatátvitelsel rendelkezik, és a globálisan elosztott alkalmazásokból mind a négy régióban szeretné írni a tárolókat. Havonta a havi számla (feltéve, hogy 31 nap) a következő:
+Vegye figyelembe, hogy az USA nyugati régiójában olyan tároló van, amely az egyrégiós írásokhoz van konfigurálva, és a (z) 10K RU/s-vel van kiépítve Tegyük fel, hogy hozzáad egy régiót, az USA keleti régióját ugyanazzal a tárolóval és átviteli sebességgel, és azt szeretné, hogy az alkalmazásból mindkét régióban lévő tárolókban lehessen írni. Havonta a havi számla (feltéve, hogy 31 nap) a következő:
 
-|**Elem**|**Használat (havi)**|**Sebesség**|**Havi költség**|
+|**Item**|**Használat (havi)**|**Sebesség**|**Havi költség**|
 |----|----|----|----|
-|Adatátviteli számla az USA nyugati régiójában lévő tárolóhoz (több írási régió) |10K RU/s * 24 * 31 |$0,016/100 RU/s óránként |$1 190,40 |
-|Adatátviteli számla 3 további régióhoz – az USA keleti régiója, Észak-Európa és Kelet-Ázsia (több írási régió) |(3 + 1) * 10K RU/s * 24 * 31 |$0,016/100 RU/s óránként |$4 761,60 |
+|Az USA nyugati régiójában lévő tároló átviteli sebessége (egyszeri írási régiók) |10K RU/s * 24 óra * 31 nap |$0,008/100 RU/s óránként |$584,06 |
+|Adatforgalmi számla a 2 régióban található tárolóhoz – USA nyugati régiója & USA keleti régiója (több írási régió) |2 * 10K RU/s * 24 óra * 31 nap|$0,016/100 RU/s óránként |$2 336,26 |
 |Storage-számla az USA nyugati régiójában lévő tárolóhoz |1 TB (vagy 1 024 GB) |0,25/GB |$256 |
-|Storage-számla 3 további régióhoz – az USA keleti régiója, Észak-Európa és Kelet-Ázsia |3 * 1 TB (vagy 3 072 GB) |0,25/GB |$768 |
-|**Összesen**|||**$6 976** |
+|Storage-számla 2 régióban – USA nyugati régiója & USA keleti régiója |2 * 1 TB (vagy 3 072 GB) |0,25/GB |$768 |
 
 ## <a name="improve-throughput-utilization-on-a-per-region-basis"></a>Az adatforgalom kihasználtságának növelése régiónként-alapon
 
-Ha nem hatékony kihasználtságot használ, például egy vagy több, a használaton kívüli vagy túlhasznált régiót, a következő lépések végrehajtásával javíthatja az átviteli sebesség kihasználtságát:  
-
-1. Győződjön meg arról, hogy először optimalizálja a kiépített átviteli sebességet (RUs) az írási régióban, majd az olvasási régiókban használja az RUs maximálisan megengedett használatát a beolvasási régióból stb. 
-
-2. Több írási régió olvasása és írása is méretezhető az Azure Cosmos-fiókhoz társított összes régióban. 
-
-3. A régiókban figyelheti a tevékenységeket, és igény szerint hozzáadhat és eltávolíthat régiókat az olvasási és írási sebesség méretezéséhez.
+Ha nem hatékony kihasználtságot használ, például egy vagy több használatban lévő olvasási régiót, akkor hajtsa végre a lépéseket, hogy az olvasási régiókban a hírcsatornák maximálisan használhatók legyenek az olvasási régióból, vagy helyezze át egy másik másodlagosra, ha túlzott kihasználtságú. Először gondoskodnia kell a kiépített átviteli sebesség (RUs) optimalizálásáról az írási régióban. A drágább, mint az olvasási költségeket, kivéve, ha nagyon nagy lekérdezések, így a még kihasználtság fenntartása is kihívást jelenthet. Összességében nyomon követheti a régiókban felhasznált adatátviteli sebességet, és az olvasási és írási sebesség méretezése érdekében igény szerint hozzáadhat vagy eltávolíthat régiókat, így biztos lehet abban, hogy az adott régióban üzembe helyezett alkalmazások késésére is hatással van.
 
 ## <a name="next-steps"></a>Következő lépések
 

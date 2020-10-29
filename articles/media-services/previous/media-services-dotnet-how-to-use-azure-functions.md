@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 90cd9605a166a00412ed77caf3727ffb3ad3e1fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba5bca9b0d5907d9900741d0fe2c319f141f810b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262114"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913636"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Azure Functions fejlesztése Media Services
 
@@ -49,37 +49,37 @@ Media Services függvények fejlesztésekor hasznos lehet olyan környezeti vál
 
 A jelen cikkben definiált függvény a következő környezeti változókat feltételezi az alkalmazás beállításaiban:
 
-**AMSAADTenantDomain**: Azure ad-bérlői végpont. Az AMS API-hoz való csatlakozással kapcsolatos további információkért tekintse meg [ezt](media-services-use-aad-auth-to-access-ams-api.md) a cikket.
+**AMSAADTenantDomain** : Azure ad-bérlői végpont. Az AMS API-hoz való csatlakozással kapcsolatos további információkért tekintse meg [ezt](media-services-use-aad-auth-to-access-ams-api.md) a cikket.
 
-**AMSRESTAPIEndpoint**: az REST API végpontot jelölő URI. 
+**AMSRESTAPIEndpoint** : az REST API végpontot jelölő URI. 
 
-**AMSClientId**: Azure ad-alkalmazás ügyfél-azonosítója.
+**AMSClientId** : Azure ad-alkalmazás ügyfél-azonosítója.
 
-**AMSClientSecret**: Azure ad-alkalmazás-ügyfél titka.
+**AMSClientSecret** : Azure ad-alkalmazás-ügyfél titka.
 
-**StorageConnection**: a Media Services fiókhoz társított fiók tárolási kapcsolatai. Ezt az értéket használja a fájl **function.jsjában** , és **futtassa a. CSX** fájlt (lásd alább).
+**StorageConnection** : a Media Services fiókhoz társított fiók tárolási kapcsolatai. Ezt az értéket használja a fájl **function.jsjában** , és **futtassa a. CSX** fájlt (lásd alább).
 
 ## <a name="create-a-function"></a>Függvény létrehozása
 
 Miután telepítette a Function alkalmazást, a **App Services** Azure functions között találhatja meg.
 
-1. Válassza ki a Function alkalmazást, és kattintson az **új függvény**elemre.
+1. Válassza ki a Function alkalmazást, és kattintson az **új függvény** elemre.
 2. Válassza ki a **C#** nyelvét és az **adatfeldolgozási** forgatókönyvet.
-3. Válassza a **BlobTrigger** -sablon lehetőséget. Ez a függvény akkor aktiválódik, amikor egy blob fel van töltve a **bemeneti** tárolóba. A **bemeneti** nevet a rendszer az **elérési úton**adja meg a következő lépésben.
+3. Válassza a **BlobTrigger** -sablon lehetőséget. Ez a függvény akkor aktiválódik, amikor egy blob fel van töltve a **bemeneti** tárolóba. A **bemeneti** nevet a rendszer az **elérési úton** adja meg a következő lépésben.
 
-    ![fájlok](./media/media-services-azure-functions/media-services-azure-functions004.png)
+    ![A képernyőképen a sablon választása párbeszédpanel jelenik meg, amelyen a BlobTrigger be van jelölve.](./media/media-services-azure-functions/media-services-azure-functions004.png)
 
-4. Miután kiválasztotta a **BlobTrigger**-t, néhány további vezérlő jelenik meg az oldalon.
+4. Miután kiválasztotta a **BlobTrigger** -t, néhány további vezérlő jelenik meg az oldalon.
 
-    ![fájlok](./media/media-services-azure-functions/media-services-azure-functions005.png)
+    ![A képernyőképen a függvény neve jelenik meg.](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
-4. Kattintson a **Létrehozás** lehetőségre. 
+4. Kattintson a **Létrehozás** gombra. 
 
 ## <a name="files"></a>Files
 
 Az Azure-függvény az ebben a szakaszban ismertetett kódrészletekhez és egyéb fájlokhoz van társítva. Ha a Azure Portal használatával hoz létre egy függvényt, **function.jsbe** és **futtatni. CSX** jönnek létre. Fel kell vennie vagy fel kell töltenie egy **project.js** fájlt. A szakasz további része röviden ismerteti az egyes fájlokat, és megjeleníti a definíciókat.
 
-![fájlok](./media/media-services-azure-functions/media-services-azure-functions003.png)
+![A képernyőfelvételen a projektben található JSON-fájlok láthatók.](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 ### <a name="functionjson"></a>function.json
 
@@ -138,7 +138,7 @@ Az ebben a szakaszban meghatározott példa bemutatja a következőt:
 
 A valós életben forgatókönyvben legvalószínűbb, hogy nyomon szeretné követni a feladatok előrehaladását, majd közzéteszi a kódolt objektumot. További információ: [Media Services feladatok értesítéseinek figyelése az Azure Webhookok használatával](media-services-dotnet-check-job-progress-with-webhooks.md). További Példákért lásd: [Media Services Azure functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).  
 
-Cserélje le a meglévő Run. CSX fájl tartalmát a következő kódra: Ha elkészült, kattintson a **Mentés és Futtatás**gombra.
+Cserélje le a meglévő Run. CSX fájl tartalmát a következő kódra: Ha elkészült, kattintson a **Mentés és Futtatás** gombra.
 
 ```csharp
 #r "Microsoft.WindowsAzure.Storage"
@@ -336,8 +336,8 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 A függvény teszteléséhez fel kell töltenie egy MP4-fájlt a kapcsolódási karakterláncban megadott Storage-fiók **bemeneti** tárolójába.  
 
 1. Válassza ki a **StorageConnection** környezeti változóban megadott Storage-fiókot.
-2. Kattintson a **Blobok**elemre.
-3. Kattintson a **+ Tároló** lehetőségre. Nevezze el a tároló **bemenetét**.
+2. Kattintson a **Blobok** elemre.
+3. Kattintson a **+ Tároló** lehetőségre. Nevezze el a tároló **bemenetét** .
 4. Kattintson a **feltöltés** gombra, és keresse meg a feltölteni kívánt. MP4-fájlt.
 
 >[!NOTE]

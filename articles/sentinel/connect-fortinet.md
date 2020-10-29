@@ -1,6 +1,6 @@
 ---
 title: Fortinet-adatbázis összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
-description: A Fortinet készülék az Azure Sentinelhez való összekapcsolásával megtekintheti az irányítópultokat, létrehozhat egyéni riasztásokat, és javíthatja a vizsgálatot. 
+description: A Fortinet készülék az Azure Sentinelhez való összekapcsolásával megtekintheti az irányítópultokat, létrehozhat egyéni riasztásokat, és javíthatja a vizsgálatot.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 8aa8599cbaab6af00d7b4122b94c9e24870881f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60be22f439547d006f54e489833b63171e617e3e
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511330"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913993"
 ---
 # <a name="connect-fortinet-to-azure-sentinel"></a>A Fortinet és az Azure Sentinel összekötése
 
@@ -38,26 +38,26 @@ Konfigurálja a Fortinet a syslog-üzenetek CEF formátumban való továbbítás
 
     ```console
     config log syslogd setting
+    set status enable
     set format cef
     set port 514
     set server <ip_address_of_Receiver>
-    set status enable
     end
     ```
 
     - Cserélje le a kiszolgáló **IP-címét** az ügynök IP-címére.
     - Állítsa a **syslog portot** **514** -re vagy az ügynökön beállított portra.
-    - Ha a CEF formátumot szeretné engedélyezni a korai FortiOS-verziókban, előfordulhat, hogy futtatnia kell a **CSV-letiltási**parancsot.
+    - Ha a CEF formátumot szeretné engedélyezni a korai FortiOS-verziókban, előfordulhat, hogy futtatnia kell a **CSV-letiltási** parancsot.
  
    > [!NOTE] 
-   > További információért keresse fel a [Fortinet dokumentumtárat](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary). Válassza ki a verziót, és használja a **kézikönyv** és a **napló üzenetének hivatkozását**.
+   > További információért keresse fel a [Fortinet dokumentumtárat](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary). Válassza ki a verziót, és használja a **kézikönyv** és a **napló üzenetének hivatkozását** .
 
 1. Ha a megfelelő sémát szeretné használni Azure Monitor Log Analytics a Fortinet-eseményekhez, keresse meg a következőt: `CommonSecurityLog` .
 
 1. Folytassa a [3. lépéssel: a kapcsolat ellenőrzése](connect-cef-verify.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta, hogyan csatlakoztathatók a Fortinet-készülékek az Azure Sentinel szolgáltatáshoz. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

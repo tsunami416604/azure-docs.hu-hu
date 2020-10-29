@@ -3,12 +3,12 @@ title: Kapcsolódjon a Apache Spark-alkalmazáshoz – Azure Event Hubs | Micros
 description: Ez a cikk tájékoztatást nyújt arról, hogyan használható a Apache Spark az Azure Event Hubs for Kafka szolgáltatással.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 8535b7dc81da8c46685e12c3861793b919296cb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84184ed3dffee97863b93c592d1cd577df313605
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061580"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913738"
 ---
 # <a name="connect-your-apache-spark-application-with-azure-event-hubs"></a>Apache Spark-alkalmazás összekötése az Azure-Event Hubs
 Ez az oktatóanyag végigvezeti a Spark-alkalmazás a valós idejű folyamatos átvitelhez Event Hubs való csatlakoztatásának lépésein. Ez az integráció lehetővé teszi a streaming használatát anélkül, hogy módosítani kellene a protokoll ügyfelét, vagy futtatnia kell a saját Kafka-vagy Zookeeper-fürtöket. Ehhez az oktatóanyaghoz Apache Spark v 2.4 + és Apache Kafka 2.0 + verzió szükséges.
@@ -62,7 +62,7 @@ val df = spark.readStream
     .option("kafka.request.timeout.ms", "60000")
     .option("kafka.session.timeout.ms", "30000")
     .option("kafka.group.id", GROUP_ID)
-    .option("failOnDataLoss", "false")
+    .option("failOnDataLoss", "true")
     .load()
 
 //Use dataframe like normal (in this example, write to console)

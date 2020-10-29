@@ -2,14 +2,14 @@
 title: Oktatóanyag – a Docker-összeállítás használata többtárolós csoport üzembe helyezéséhez
 description: Hozzon létre és futtasson egy többtárolós alkalmazást a Docker-összeállítás használatával, majd hozza létre az alkalmazást a Azure Container Instances
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.date: 10/28/2020
 ms.custom: ''
-ms.openlocfilehash: 1e8a5cd856358a0dc3e9c356cb3a55f75db29c86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a71ff438feaef555a85c33d818c287c64621d40d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90709661"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913840"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-docker-compose"></a>Oktatóanyag: több tárolós csoport üzembe helyezése a Docker-összeállítás használatával 
 
@@ -67,14 +67,16 @@ Nyissa meg a Docker-levélírás. YAML egy szövegszerkesztőben. A fájl konfig
 version: '3'
 services:
   azure-vote-back:
-    image: redis
+    image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
     container_name: azure-vote-back
+    environment:
+      ALLOW_EMPTY_PASSWORD: "yes"
     ports:
         - "6379:6379"
 
   azure-vote-front:
     build: ./azure-vote
-    image: azure-vote-front
+    image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
     container_name: azure-vote-front
     environment:
       REDIS: azure-vote-back
@@ -84,7 +86,7 @@ services:
 
 A `azure-vote-front` konfigurációban hajtsa végre a következő két módosítást:
 
-1. Frissítse a `image` tulajdonságot a `azure-vote-front` szolgáltatásban. Előtagként adja meg a rendszerkép nevét az Azure Container Registry ( \<acrName\> . azurecr.IO) bejelentkezési kiszolgálójának nevével. Ha például a beállításjegyzék neve *myregistry*, a bejelentkezési kiszolgáló neve *myregistry.azurecr.IO* (mind kisbetűs), a rendszerkép tulajdonság pedig ezután `myregistry.azurecr.io/azure-vote-front` .
+1. Frissítse a `image` tulajdonságot a `azure-vote-front` szolgáltatásban. Előtagként adja meg a rendszerkép nevét az Azure Container Registry ( \<acrName\> . azurecr.IO) bejelentkezési kiszolgálójának nevével. Ha például a beállításjegyzék neve *myregistry* , a bejelentkezési kiszolgáló neve *myregistry.azurecr.IO* (mind kisbetűs), a rendszerkép tulajdonság pedig ezután `myregistry.azurecr.io/azure-vote-front` .
 1. Módosítsa a leképezést a következőre: `ports` `80:80` . Mentse a fájlt.
 
 A frissített fájlnak a következőhöz hasonlóan kell kinéznie:
@@ -93,8 +95,10 @@ A frissített fájlnak a következőhöz hasonlóan kell kinéznie:
 version: '3'
 services:
   azure-vote-back:
-    image: redis
+    image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
     container_name: azure-vote-back
+    environment:
+      ALLOW_EMPTY_PASSWORD: "yes"
     ports:
         - "6379:6379"
 
@@ -128,7 +132,7 @@ $ docker images
 
 REPOSITORY                                TAG        IMAGE ID            CREATED             SIZE
 myregistry.azurecr.io/azure-vote-front    latest     9cc914e25834        40 seconds ago      944MB
-redis                                     latest     a1b99da73d05        7 days ago          104MB
+mcr.microsoft.com/oss/bitnami/redis       6.0.8      3a54a920bb6c        4 weeks ago          103MB
 tiangolo/uwsgi-nginx-flask                python3.6  788ca94b2313        9 months ago        9444MB
 ```
 
@@ -137,9 +141,9 @@ Futtassa a [docker ps](https://docs.docker.com/engine/reference/commandline/ps/)
 ```
 $ docker ps
 
-CONTAINER ID        IMAGE                                   COMMAND                  CREATED             STATUS              PORTS                           NAMES
-82411933e8f9        myregistry.azurecr.io/azure-vote-front  "/entrypoint.sh /sta…"   57 seconds ago      Up 30 seconds       443/tcp, 0.0.0.0:80->80/tcp   azure-vote-front
-b68fed4b66b6        redis                                   "docker-entrypoint.s…"   57 seconds ago      Up 30 seconds       0.0.0.0:6379->6379/tcp          azure-vote-back
+CONTAINER ID        IMAGE                                      COMMAND                  CREATED             STATUS              PORTS                           NAMES
+82411933e8f9        myregistry.azurecr.io/azure-vote-front     "/entrypoint.sh /sta…"   57 seconds ago      Up 30 seconds       443/tcp, 0.0.0.0:80->80/tcp   azure-vote-front
+b62b47a7d313        mcr.microsoft.com/oss/bitnami/redis:6.0.8  "/opt/bitnami/script…"   57 seconds ago      Up 30 seconds       0.0.0.0:6379->6379/tcp          azure-vote-back
 ```
 
 A futó alkalmazás megtekintéséhez lépjen a `http://localhost:80` helyre egy helyi böngészőben. A mintaalkalmazás betöltődik az alábbi példában látható módon:
@@ -205,16 +209,16 @@ docker ps
 Példa a kimenetre:
 
 ```
-CONTAINER ID                           IMAGE                                    COMMAND             STATUS              PORTS
-azurevotingappredis_azure-vote-back    redis                                                        Running             52.179.23.131:6379->6379/tcp
-azurevotingappredis_azure-vote-front   myregistry.azurecr.io/azure-vote-front                       Running             52.179.23.131:80->80/tcp
+CONTAINER ID                           IMAGE                                         COMMAND             STATUS              PORTS
+azurevotingappredis_azure-vote-back    mcr.microsoft.com/oss/bitnami/redis:6.0.8                         Running             52.179.23.131:6379->6379/tcp
+azurevotingappredis_azure-vote-front   myregistry.azurecr.io/azure-vote-front                            Running             52.179.23.131:80->80/tcp
 ```
 
 A futó alkalmazás Felhőbeli megjelenítéséhez adja meg a megjelenített IP-címet egy helyi böngészőben. Ebben a példában írja be a következőt: `52.179.23.131` . A mintaalkalmazás betöltődik az alábbi példában látható módon:
 
 :::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="A szavazási alkalmazás képe":::
 
-Az előtér-tároló naplófájljainak megtekintéséhez futtassa a [Docker logs](https://docs.docker.com/engine/reference/commandline/logs) parancsot. Például:
+Az előtér-tároló naplófájljainak megtekintéséhez futtassa a [Docker logs](https://docs.docker.com/engine/reference/commandline/logs) parancsot. Példa:
 
 ```console
 docker logs azurevotingappredis_azure-vote-front
@@ -230,7 +234,7 @@ docker compose down
 
 Ez a parancs törli a tároló csoportot Azure Container Instancesban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a Docker-összeállítást használta a többtárolós alkalmazások helyi futtatására a Azure Container Instances-ben való futtatáshoz. Megtanulta végrehajtani az alábbi műveleteket:
 

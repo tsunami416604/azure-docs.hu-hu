@@ -10,17 +10,17 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 28fb3cb02d978c0a64884771727f33d01d8a4ceb
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: c2a49e10f4407c59a8e4e2bfbb78d889560c7136
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897715"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925017"
 ---
 > [!IMPORTANT]
 > * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Tekintse meg az alábbi dokumentációt. 
 
-[Dokumentáció](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/formrecognizer/ai-form-recognizer/)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/ai-form-recognizer)  |  [Példák](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples)
+[Dokumentáció](../../index.yml)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/formrecognizer/ai-form-recognizer/)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/ai-form-recognizer)  |  [Példák](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -94,7 +94,7 @@ Az űrlap-felismerő használatával két különböző típusú ügyfél hozhat
 * Egyéni modell másolása az egyik űrlap-felismerő erőforrásból egy másikba.
 
 > [!NOTE]
-> A modellek grafikus felhasználói felülettel is betanítható, például az [űrlap-felismerő címkéző eszköz](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)használatával.
+> A modellek grafikus felhasználói felülettel is betanítható, például az [űrlap-felismerő címkéző eszköz](../../quickstarts/label-tool.md)használatával.
 
 
 ## <a name="code-examples"></a>Kódpéldák

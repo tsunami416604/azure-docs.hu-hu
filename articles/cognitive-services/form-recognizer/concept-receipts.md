@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 16d90aea8edc47750dfb7e64de7b50885971f632
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 5125fff0ef8987d313c6611e4d5de08d090f2263
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893686"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913194"
 ---
 # <a name="receipt-concepts"></a>Nyugtákra vonatkozó fogalmak
 
@@ -449,7 +449,7 @@ A nyugta kimenete is hasznos lehet az üzleti vagy személyes használatra való
 
 A nyugták hasznos információkat tartalmaznak, amelyek segítségével elemezheti a fogyasztói viselkedést és a vásárlási trendeket.
 
-A beérkezési API a [AIBuilder-visszaigazolás feldolgozási funkcióját](https://docs.microsoft.com/ai-builder/prebuilt-receipt-processing)is felhasználja.
+A beérkezési API a [AIBuilder-visszaigazolás feldolgozási funkcióját](/ai-builder/prebuilt-receipt-processing)is felhasználja.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -459,4 +459,4 @@ A beérkezési API a [AIBuilder-visszaigazolás feldolgozási funkcióját](http
 ## <a name="see-also"></a>Lásd még
 
 * [Mi a Form Recognizer?](./overview.md)
-* [REST API dokumentációs dokumentumok](https://docs.microsoft.com/azure/cognitive-services/form-recognizer)
+* [REST API dokumentációs dokumentumok](./index.yml)

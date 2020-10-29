@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad1567a3a6cba2c2fbc519ffe5d384aba25ab51d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec29b6489712eeb67783aef03261a3606a390125
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88648989"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926614"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>SAP-tevékenységprofil az Azure-beli virtuális gépek támogatott forgatókönyveiben
 Az SAP NetWeaver, a Business One `Hybris` vagy a S/4HANA rendszerek Azure-architektúrájának tervezése számos különböző lehetőséget kínál a különböző architektúrák és eszközök számára, amelyek segítségével méretezhető, hatékony és nagy mértékben elérhető üzembe helyezést érhet el. Bár a használt operációs rendszertől vagy adatbázis-kezelőtől függ, korlátozások vannak érvényben. A helyszíni támogatás nem minden esetben támogatott ugyanúgy az Azure-ban. Ez a dokumentum a támogatott nem magas rendelkezésre állású konfigurációkon és a magas rendelkezésre állású konfigurációkon és architektúrán keresztül kizárólag az Azure-beli virtuális gépeket használja. A [Hana Large-példányokkal](./hana-overview-architecture.md)támogatott forgatókönyvek esetében tekintse [meg a Hana Large instances által támogatott forgatókönyvek](./hana-supported-scenario.md)című cikket. 
@@ -46,7 +46,7 @@ Ilyen konfigurációk esetén az SAP-alkalmazás réteget és az adatbázis-keze
 
 A grafikus ábrázolás így néz ki:
 
-![Egyszerű, kétrétegű konfiguráció](./media/sap-planning-supported-configurations/three-tier-simple-configuration.png)
+![Egy egyszerű, 3 rétegből álló konfigurációt bemutató diagram.](./media/sap-planning-supported-configurations/three-tier-simple-configuration.png)
 
 Az ilyen típusú konfigurációt a Windows, a Red Hat, a SUSE és a Oracle Linux támogatja a SQL Server, az Oracle, a DB2, a SAP HANA, a maxDB és az SAP-alapú Rendszerfelügyeleti webszolgáltatások rendszeréhez a termelési és nem üzemi esetekben. Ez az [Azure HANA nagyméretű példányainak](./hana-overview-architecture.md)alapértelmezett üzembe helyezési konfigurációja. Az SAP-alkalmazási rétegben az SAP központi szolgáltatások és az SAP-párbeszédpanel példányai nem különböztetik meg az egyszerűséget. Ebben az egyszerű, 3 rétegű konfigurációban nem lenne magas rendelkezésre állású védelem az SAP központi szolgáltatásai számára.
 
@@ -83,7 +83,7 @@ Sok esetben több párbeszédpanel is üzembe lett helyezve operációs rendszer
 
 Ha az Azure-beli virtuális gépeken több SAP-párbeszédpanelt futtató példány fut, akkor a következő 3 szintű konfigurációban lehet kinézni:
 
-![Több adatbázis-kezelő példány egy egységben](./media/sap-planning-supported-configurations/multiple-dialog-instances.png)
+![Az Azure-beli virtuális gépeken futó, 3 rétegből álló konfigurációt megjelenítő diagram.](./media/sap-planning-supported-configurations/multiple-dialog-instances.png)
 
 Az SAP-alkalmazási rétegben az SAP központi szolgáltatások és az SAP-párbeszédpanel példányai nem különböztetik meg az egyszerűséget. Ebben az egyszerű, 3 rétegű konfigurációban nem lenne magas rendelkezésre állású védelem az SAP központi szolgáltatásai számára. Éles rendszerek esetében nem ajánlott a nem védett SAP központi szolgáltatásokat hagyni. Az SAP központi példányai és az ilyen többszörös SID-konfigurációk magas rendelkezésre állása esetén az úgynevezett több SID-konfigurációra vonatkozó részletekért lásd a dokumentum későbbi szakaszait.
 
@@ -208,7 +208,7 @@ A konfigurációt az [Azure-beli virtuális gépeken futó SAP NetWeaver magas r
 
 A sorba helyezni replikációs kiszolgálóval rendelkező több SID-fürt sematikusan úgy néz ki, mint
 
-![Adatbázis-kezelő és ASCS HA konfiguráció](./media/sap-planning-supported-configurations/high-available-multi-system-configuration.png)
+![A sorba helyezni replikációs kiszolgálóval rendelkező több SID-fürtöt bemutató diagram.](./media/sap-planning-supported-configurations/high-available-multi-system-configuration.png)
 
 
 ## <a name="sap-hana-scale-out-scenarios"></a>Felskálázási forgatókönyvek SAP HANA

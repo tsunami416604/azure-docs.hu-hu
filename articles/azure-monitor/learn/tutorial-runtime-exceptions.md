@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: af8479f6460a6cc555d7ea67dcfe65c779878624
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 057b211179c6932d4214e6118e3fa97b95145ba0
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357862"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926631"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Futásidejű kivételek észlelése és diagnosztizálása az Azure Application Insights segítségével
 
@@ -81,9 +81,9 @@ A Snapshot Debugger az alkalmazásában leggyakrabban előforduló kivételekrő
 
 3. A **ValidZipCode** az első hívás, amely érvényes értékkel rendelkezik, és láthatjuk, hogy egy olyan, betűkkel megadott irányítószámot kaptunk, amelyet nem lehet egész számra fordítani.  Úgy tűnik, ez az a hiba, amelyet ki kell javítani.
 
-    ![Hibakeresési pillanatkép](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
+    ![Képernyőkép, amely a helyesbíteni kívánt kód hibáját mutatja.    ](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
 
-4. Ezután letöltheti ezt a pillanatképet a Visual studióba, ahol megtalálhatja a javítani kívánt kódot. Ehhez kattintson a **Pillanatkép letöltése**elemre.
+4. Ezután letöltheti ezt a pillanatképet a Visual studióba, ahol megtalálhatja a javítani kívánt kódot. Ehhez kattintson a **Pillanatkép letöltése** elemre.
 5. A rendszer betölti a pillanatfelvételt a Visual Studióba.
 6. Most már futtathat egy hibakeresési munkamenetet a Visual Studio Enterprise-ban, amely gyorsan azonosítja a kivételt okozó kód sorát.
 
@@ -108,7 +108,7 @@ Ha az Application Insights alkalmazást egy követőrendszerhez csatlakoztatja, 
 
     ![Új munkaelem](media/tutorial-runtime-exceptions/new-work-item.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most már megtanulta, hogyan azonosíthatja a futásidejű kivételeket. Térjen át a következő oktatóanyagra, hogy megtanulja, hogyan azonosíthatja és diagnosztizálhatja a teljesítménybeli problémákat.
 
 > [!div class="nextstepaction"]

@@ -9,12 +9,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: 38fc21ee45db25f015a6b8b534b0d922efa636f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1401108a594e30790e842ec379724603f11d493f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84310546"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913704"
 ---
 # <a name="content-moderator-encryption-of-data-at-rest"></a>Content Moderator inaktív adatok titkosítása
 
@@ -36,9 +36,8 @@ A Content Moderator felülvizsgálati csapat adattitkosításának engedélyezé
 > [!NOTE]
 > Meg kell adnia egy erőforrás- _azonosítót_ a Content moderator E0 díjszabási szintjével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A CMK támogató szolgáltatások teljes listájáért lásd: [ügyfél által felügyelt kulcsok Cognitive Services](../encryption/cognitive-services-encryption-keys-portal.md)
-* [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?
+* [Mi az Azure Key Vault](../../key-vault/general/overview.md)?
 * [Cognitive Services Customer-Managed kulcs kérésének űrlapja](https://aka.ms/cogsvc-cmk)
-

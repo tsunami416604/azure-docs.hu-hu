@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: e89a7d9bc71d48be1b7d7ea40246b2394c95e84b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 000de084cf9375347704cc4d3905ca36bdd77ff8
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543780"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926189"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Válassza ki a megfelelő MySQL-kiszolgáló lehetőséget az Azure-ban
 
@@ -55,7 +55,7 @@ A fenti lehetőségek közötti fő különbségek a következő táblázatban l
 | Magas rendelkezésre állás | Az egyetlen rendelkezésre állási zónán belül beépített HA| Beépített HA a rendelkezésre állási zónákon belül és között van | A fürtözés, a replikálás stb. használatával kezelt egyéni felügyelet|
 | Zónaredundancia | Nem támogatott | Támogatott | Támogatott|
 | Hibrid forgatókönyvek | Támogatott [felhőbe irányuló replikálás](./concepts-data-in-replication.md)| Nem érhető el előzetes verzióban | Végfelhasználók által felügyelt |
-| Olvasási replikák | Támogatott| Támogatott | Végfelhasználók által felügyelt |
+| Olvasási replikák | Támogatott (legfeljebb 5 replika)| Támogatott (legfeljebb 10 replika)| Végfelhasználók által felügyelt |
 | Backup | Automatizált, 7-35 napos megőrzéssel | Automatizált, 1-35 napos megőrzéssel | Végfelhasználók által felügyelt |
 | Adatbázis-műveletek figyelése | Támogatott | Támogatott | Végfelhasználók által felügyelt |
 | Vészhelyreállítás | A Geo-redundáns biztonsági mentési tár és a régiók közötti olvasási replikák támogatása | Előzetes verzióban nem támogatott| Egyéni felügyelt replikációs technológiákkal |

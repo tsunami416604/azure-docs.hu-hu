@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: kgremban
-ms.openlocfilehash: b1aa12bd73772b5d6332a36d749ec4d7d10d4026
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: abb3aa9ca7c9697fef1cf456964154249f0d69f3
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048185"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913976"
 ---
 # <a name="set-up-an-azure-iot-edge-device-with-x509-certificate-authentication"></a>Azure IoT Edge eszköz beállítása X. 509 tanúsítványalapú hitelesítéssel
 
@@ -26,11 +26,11 @@ A cikkben ismertetett lépések végigvezetik a manuális kiépítés folyamatá
 
 A manuális kiépítés esetén két lehetősége van IoT Edge eszközök hitelesítésére:
 
-* **Szimmetrikus kulcs**: amikor új eszköz-identitást hoz létre IoT Hubban, a szolgáltatás két kulcsot hoz létre. Elhelyezi a kulcsok egyikét az eszközön, és megjeleníti a hitelesítő IoT Hub kulcsát.
+* **Szimmetrikus kulcs** : amikor új eszköz-identitást hoz létre IoT Hubban, a szolgáltatás két kulcsot hoz létre. Elhelyezi a kulcsok egyikét az eszközön, és megjeleníti a hitelesítő IoT Hub kulcsát.
 
   Ez a hitelesítési módszer gyorsabb a kezdéshez, de nem biztonságos.
 
-* **X. 509 önaláírt**: két x. 509 identitás-tanúsítványt hoz létre, és elhelyezi őket az eszközön. Amikor új eszköz-identitást hoz létre IoT Hubban, mindkét tanúsítványból ujjlenyomatai megfelelnek biztosít. Amikor az eszköz hitelesíti IoT Hub, megjeleníti a tanúsítványait, és IoT Hub ellenőrizheti, hogy egyeznek-e a ujjlenyomatai megfelelnek.
+* **X. 509 önaláírt** : két x. 509 identitás-tanúsítványt hoz létre, és elhelyezi őket az eszközön. Amikor új eszköz-identitást hoz létre IoT Hubban, mindkét tanúsítványból ujjlenyomatai megfelelnek biztosít. Amikor az eszköz hitelesíti IoT Hub, megjeleníti a tanúsítványait, és IoT Hub ellenőrizheti, hogy egyeznek-e a ujjlenyomatai megfelelnek.
 
   Ez a hitelesítési módszer biztonságosabb, és éles környezetekben ajánlott.
 
@@ -44,9 +44,24 @@ Az X. 509 tanúsítvánnyal történő manuális üzembe helyezéshez IoT Edge 1
 
 ## <a name="create-certificates-and-thumbprints"></a>Tanúsítványok és ujjlenyomatai megfelelnek létrehozása
 
+Az eszköz-identitás tanúsítványa egy levélbeli tanúsítvány, amely egy megbízható tanúsítványlánc használatával csatlakozik az első X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványhoz. Az eszköz azonosító tanúsítványának köznapi nevének (CN) meg kell egyeznie annak az eszköz-AZONOSÍTÓnak a nevével, amelyhez az eszköznek az IoT hub-ban szüksége van.
 
+Az eszköz-azonosító tanúsítványokat csak az IoT Edge eszköz kiépítési és az Azure-IoT Hub hitelesítő eszköz használatával lehet használni. A tanúsítványokat nem aláírják, ellentétben a IoT Edge eszköz által a moduloknak vagy a Leaf eszközöknek az ellenőrzés céljából megjelenített HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokkal. További információ: [Azure IoT Edge tanúsítvány-használati adatok](iot-edge-certs.md).
 
-<!-- TODO -->
+Az eszköz azonosító tanúsítványának létrehozása után két fájlt kell tartalmaznia: egy. cer vagy. PEM fájlt, amely tartalmazza a tanúsítvány nyilvános részét, valamint egy. cer vagy. PEM fájlt a tanúsítvány titkos kulcsával.
+
+Az X. 509 manuális kiépítés esetén a következő fájlokat kell megadnia:
+
+* Az eszköz-identitási tanúsítványok és a titkos kulcsokra vonatkozó tanúsítványok két készlete. A IoT Edge futtatókörnyezet egy tanúsítvány-vagy kulcsfájl-készletet biztosít.
+* Ujjlenyomatai megfelelnek mindkét eszköz identitás-tanúsítványa alapján. Az ujjlenyomatok értéke 40 – hexadecimális karakter az SHA-1 kivonatokhoz, vagy 64 – hexadecimális karakter az SHA-256 kivonatokhoz. Mindkét ujjlenyomatai megfelelnek az eszköz regisztrálásakor IoT Hub biztosítanak.
+
+Ha nem érhető el tanúsítvány, [létrehozhat bemutató tanúsítványokat IoT Edge eszköz funkcióinak teszteléséhez](how-to-create-test-certificates.md). A tanúsítvány-létrehozási parancsfájlok beállításához kövesse az ebben a cikkben található utasításokat, hozzon létre egy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt, majd hozzon létre két IoT Edge eszköz identitás-tanúsítványát.
+
+A tanúsítvány ujjlenyomatának lekérésének egyik módja a következő OpenSSL-parancs:
+
+```cmd
+openssl x509 -in <certificate filename>.pem -text -fingerprint
+```
 
 ## <a name="register-a-new-device"></a>Új eszköz regisztrálása
 
@@ -54,7 +69,7 @@ A IoT Hubhoz csatlakozó összes eszközhöz tartozik egy eszköz-azonosító, a
 
 X. 509 tanúsítványalapú hitelesítés esetén ezt az információt az *ujjlenyomatai megfelelnek* származó adatok formájában kell megadnia. Ezek a ujjlenyomatai megfelelnek az eszköz regisztrációjának időpontjában IoT Hub kapnak, hogy a szolgáltatás felismerje az eszközt a csatlakozáskor.
 
-Számos eszköz használatával regisztrálhat egy új IoT Edge eszközt a IoT Hub, és feltöltheti a tanúsítvány-ujjlenyomatai megfelelnek. 
+Számos eszköz használatával regisztrálhat egy új IoT Edge eszközt a IoT Hub, és feltöltheti a tanúsítvány-ujjlenyomatai megfelelnek.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -68,7 +83,7 @@ A Azure Portal IoT Hub a IoT Edge eszközöket külön hozza létre és kezeli a
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon az IoT hubhoz.
 
-1. A bal oldali ablaktáblán válassza a menü **IoT Edge** elemét, majd válassza a **IoT Edge eszköz hozzáadása**lehetőséget.
+1. A bal oldali ablaktáblán válassza a menü **IoT Edge** elemét, majd válassza a **IoT Edge eszköz hozzáadása** lehetőséget.
 
    ![IoT Edge-eszköz hozzáadása a Azure Portal](./media/how-to-manual-provision-symmetric-key/portal-add-iot-edge-device.png)
 
@@ -78,7 +93,7 @@ A Azure Portal IoT Hub a IoT Edge eszközöket külön hozza létre és kezeli a
    * Válassza az **X. 509 önaláírt** hitelesítési típusként lehetőséget.
    * Adja meg az elsődleges és a másodlagos identitás tanúsítványának ujjlenyomatai megfelelnek. Az ujjlenyomatok értéke 40 – hexadecimális karakter az SHA-1 kivonatokhoz, vagy 64 – hexadecimális karakter az SHA-256 kivonatokhoz.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="view-iot-edge-devices-in-the-azure-portal"></a>IoT Edge eszközök megtekintése a Azure Portal
 
@@ -96,7 +111,7 @@ Az IoT hub-hoz csatlakozó összes Edge-kompatibilis eszköz megjelenik a **IoT 
 
 ### <a name="create-an-iot-edge-device-with-the-azure-cli"></a>IoT Edge-eszköz létrehozása az Azure CLI-vel
 
-Az az [IOT hub Device-Identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) paranccsal hozzon létre egy új eszköz-identitást az IOT hub-ban. Például:
+Az az [IOT hub Device-Identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) paranccsal hozzon létre egy új eszköz-identitást az IOT hub-ban. Példa:
 
    ```azurecli
    az iot hub device-identity create --device-id [device id] --hub-name [hub name] --edge-enabled --auth-method x509_thumbprint --primary-thumbprint [SHA thumbprint] --secondary-thumbprint [SHA thumbprint]
@@ -113,7 +128,7 @@ Ez a parancs több paramétert is tartalmaz:
 
 ### <a name="view-iot-edge-devices-with-the-azure-cli"></a>IoT Edge eszközök megtekintése az Azure CLI-vel
 
-Az az [IOT hub Device-Identity List](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-list) paranccsal megtekintheti az IOT hub összes eszközét. Például:
+Az az [IOT hub Device-Identity List](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-list) paranccsal megtekintheti az IOT hub összes eszközét. Példa:
 
    ```azurecli
    az iot hub device-identity list --hub-name [hub name]
@@ -121,7 +136,7 @@ Az az [IOT hub Device-Identity List](/cli/azure/ext/azure-iot/iot/hub/device-ide
 
 Adja hozzá a jelzőt, `--edge-enabled` vagy `--ee` csak az IoT hub IoT Edge eszközeit listázhatja.
 
-A IoT Edge eszközként regisztrált eszközökön a tulajdonság képességei lesznek. a **iotEdge** értéke **true (igaz**).
+A IoT Edge eszközként regisztrált eszközökön a tulajdonság képességei lesznek. a **iotEdge** értéke **true (igaz** ).
 
 --- 
 
@@ -160,10 +175,10 @@ Linux-eszközön ezeket az információkat a config. YAML fájl szerkesztéséve
 
 1. Frissítse a következő mezőket:
 
-   * **iothub_hostname**: a IoT hub állomásneve, amelyhez az eszköz csatlakozni fog. Például: `{IoT hub name}.azure-devices.net`.
-   * **device_id**: az eszköz regisztrálása során megadott azonosító.
-   * **identity_cert**: URI az eszközön lévő identitási tanúsítványhoz. Például: `file:///path/identity_certificate.pem`.
-   * **identity_pk**: a megadott identitás tanúsítványához tartozó titkos kulcs fájljának URI-ja. Például: `file:///path/identity_key.pem`.
+   * **iothub_hostname** : a IoT hub állomásneve, amelyhez az eszköz csatlakozni fog. Például: `{IoT hub name}.azure-devices.net`.
+   * **device_id** : az eszköz regisztrálása során megadott azonosító.
+   * **identity_cert** : URI az eszközön lévő identitási tanúsítványhoz. Például: `file:///path/identity_certificate.pem`.
+   * **identity_pk** : a megadott identitás tanúsítványához tartozó titkos kulcs fájljának URI-ja. Például: `file:///path/identity_key.pem`.
 
 1. Mentse és zárja be a fájlt.
 
@@ -202,10 +217,10 @@ Linux-eszközön ezeket az információkat a config. YAML fájl szerkesztéséve
 
 3. Ha a rendszer kéri, adja meg a következő információkat:
 
-   * **IotHubHostName**: az az IoT hub állomásneve, amelyhez az eszköz csatlakozni fog. Például: `{IoT hub name}.azure-devices.net`.
-   * **DeviceID**: az eszköz regisztrálása során megadott azonosító.
-   * **X509IdentityCertificate**: az eszközön lévő identitási tanúsítvány abszolút elérési útja. Például: `C:\path\identity_certificate.pem`.
-   * **X509IdentityPrivateKey**: a megadott identitási tanúsítványhoz tartozó titkos kulcs fájljának abszolút elérési útja. Például: `C:\path\identity_key.pem`.
+   * **IotHubHostName** : az az IoT hub állomásneve, amelyhez az eszköz csatlakozni fog. Például: `{IoT hub name}.azure-devices.net`.
+   * **DeviceID** : az eszköz regisztrálása során megadott azonosító.
+   * **X509IdentityCertificate** : az eszközön lévő identitási tanúsítvány abszolút elérési útja. Például: `C:\path\identity_certificate.pem`.
+   * **X509IdentityPrivateKey** : a megadott identitási tanúsítványhoz tartozó titkos kulcs fájljának abszolút elérési útja. Például: `C:\path\identity_key.pem`.
 
 Amikor manuálisan épít ki egy eszközt, további paramétereket is használhat a folyamat módosításához, beleértve a következőket:
 

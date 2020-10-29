@@ -4,12 +4,12 @@ description: Útmutatás az Recovery Services-tárolók Azure-előfizetések és
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: bd1870e803f5051e2a65a6cddbb72406421d4fc3
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 5a73963970b5fad7b3992d501d9aac5cc7229622
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171613"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926682"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services-tároló áthelyezése az Azure-előfizetések és-erőforráscsoportok között
 
@@ -17,11 +17,7 @@ Ez a cikk azt ismerteti, hogyan helyezhet át egy Recovery Services-tárolót az
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-A Recovery Services-tár erőforrás-áthelyezését a Kelet-Ausztrália támogatja. Kelet-Ausztrália, Közép-Kanada, Kelet-Kanada, Dél-Kelet-Ázsia, Kelet-Ázsia, az USA középső régiója, az USA északi középső régiója, az USA keleti régiója, USA 2. keleti régiója, Dél-Európa, Közép-India, Dél-India, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Dél-Korea , Észak-Európa, Nyugat-Európa, Dél-Afrika északi régiója, Dél-Afrika nyugati régiója, Egyesült Királyság déli régiója és Egyesült Királyság nyugati régiója.
-
-## <a name="unsupported-regions"></a>Nem támogatott régiók
-
-Közép-Franciaország, Dél-Franciaország, Északkelet-Németország, Közép-Németország, US Gov Iowa, Észak-Kína, Kína North2, Kelet-Kína, Kína készletek
+Az összes nyilvános régió és szuverén régió támogatott, kivéve a közép-Franciaország, Dél-Franciaország, Kelet-Németország, Közép-Németország, Észak-Kína, Kína North2, Kelet-Kína és Kína készletek.
 
 ## <a name="prerequisites-for-moving-recovery-services-vault"></a>Recovery Services-tároló áthelyezésének előfeltételei
 
@@ -46,7 +42,7 @@ Közép-Franciaország, Dél-Franciaország, Északkelet-Németország, Közép-
 
 > [!NOTE]
 > Az Azure-régiók Azure Backup Recovery Services-tárolóinak áthelyezése nem támogatott.<br><br>
-> Ha olyan virtuális gépeket (Azure IaaS-t, Hyper-V-t, VMware-et) vagy fizikai gépeket állított be, amelyeken a **Azure site Recovery**-t használja, az áthelyezési művelet le lesz tiltva. Ha Azure Site Recovery tárolóit szeretné áthelyezni, tekintse át [ezt a cikket](../site-recovery/move-vaults-across-regions.md) , és ismerkedjen meg a tárolók manuális mozgatásával.
+> Ha olyan virtuális gépeket (Azure IaaS-t, Hyper-V-t, VMware-et) vagy fizikai gépeket állított be, amelyeken a **Azure site Recovery** -t használja, az áthelyezési művelet le lesz tiltva. Ha Azure Site Recovery tárolóit szeretné áthelyezni, tekintse át [ezt a cikket](../site-recovery/move-vaults-across-regions.md) , és ismerkedjen meg a tárolók manuális mozgatásával.
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Recovery Services-tár másik erőforráscsoporthoz való áthelyezéséhez használja a Azure Portal
 
@@ -61,7 +57,7 @@ Recovery Services-tároló és a hozzá tartozó erőforrások áthelyezése kü
 
    ![Alapvető információk lap](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
-3. A tároló áttekintése menüben kattintson az **erőforráscsoport**melletti **módosítás** elemre az **erőforrások áthelyezése** panel megnyitásához.
+3. A tároló áttekintése menüben kattintson az **erőforráscsoport** melletti **módosítás** elemre az **erőforrások áthelyezése** panel megnyitásához.
 
    ![Erőforráscsoport módosítása](./media/backup-azure-move-recovery-services/change-resource-group.png)
 
@@ -90,7 +86,7 @@ Egy Recovery Services-tárolót és a hozzá tartozó erőforrásokat egy másik
 
     ![Alapvető információk lap](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
-3. A tároló áttekintő menüjében válassza az **előfizetés**melletti **módosítás** lehetőséget az **erőforrások áthelyezése** panel megnyitásához.
+3. A tároló áttekintő menüjében válassza az **előfizetés** melletti **módosítás** lehetőséget az **erőforrások áthelyezése** panel megnyitásához.
 
    ![Előfizetés módosítása](./media/backup-azure-move-recovery-services/change-resource-subscription.png)
 
@@ -103,7 +99,7 @@ Egy Recovery Services-tárolót és a hozzá tartozó erőforrásokat egy másik
 
    ![Előfizetés hozzáadása](./media/backup-azure-move-recovery-services/add-subscription.png)
 
-7. Válassza a **megértettem, hogy az áthelyezett erőforrásokhoz társított eszközök és parancsfájlok nem fognak működni, amíg nem frissítem őket az új erőforrás-azonosítók** beállítás megadásához, majd válassza **az OK**gombot.
+7. Válassza a **megértettem, hogy az áthelyezett erőforrásokhoz társított eszközök és parancsfájlok nem fognak működni, amíg nem frissítem őket az új erőforrás-azonosítók** beállítás megadásához, majd válassza **az OK** gombot.
 
 > [!NOTE]
 > A több előfizetés biztonsági mentése (az RS-tároló és a védett virtuális gépek különböző előfizetésekben találhatók) nem támogatott forgatókönyv. Emellett a helyi redundáns tárterületről (LRS) származó tárterület-redundancia a globális redundáns tárterületre (GRS), és fordítva nem módosítható a tár áthelyezési művelete során.
@@ -161,9 +157,9 @@ Egy új tárolóban a munkaterhelések védelme érdekében a jelenlegi védelme
 
 1. A tároló tulajdonságaiban tiltsa le a nem kötelező törlést. A Soft delete letiltásához kövesse az [alábbi lépéseket](backup-azure-security-feature-cloud.md#disabling-soft-delete-using-azure-portal) .
 
-2. Állítsa le a védelmet, és törölje a biztonsági mentéseket az aktuális tárból. A tároló irányítópultjának menüjében válassza a **biztonsági másolati elemek elemet**. Az itt felsorolt elemeket, amelyeket át kell helyezni az új tárolóba, el kell távolítani a biztonsági másolati adatokkal együtt. Lásd: [védett elemek törlése a felhőben](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) és a [védett elemek törlése a helyszínen](backup-azure-delete-vault.md#delete-protected-items-on-premises).
+2. Állítsa le a védelmet, és törölje a biztonsági mentéseket az aktuális tárból. A tároló irányítópultjának menüjében válassza a **biztonsági másolati elemek elemet** . Az itt felsorolt elemeket, amelyeket át kell helyezni az új tárolóba, el kell távolítani a biztonsági másolati adatokkal együtt. Lásd: [védett elemek törlése a felhőben](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) és a [védett elemek törlése a helyszínen](backup-azure-delete-vault.md#delete-protected-items-on-premises).
 
-3. Ha az AFS (Azure-fájlmegosztás), az SQL-kiszolgálók vagy a SAP HANA-kiszolgálók áthelyezését tervezi, akkor regisztrálnia kell a regisztrációt is. A tároló irányítópultjának menüjében válassza a **biztonsági mentési infrastruktúra**elemet. Tekintse meg [az SQL Server regisztrációjának](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance)megszüntetését, az [Azure-fájlmegosztáshoz társított Storage-fiók regisztrációjának](manage-afs-backup.md#unregister-a-storage-account)megszüntetését és a [SAP HANA példány regisztrációjának](sap-hana-db-manage.md#unregister-an-sap-hana-instance)megszüntetését ismertető témakört.
+3. Ha az AFS (Azure-fájlmegosztás), az SQL-kiszolgálók vagy a SAP HANA-kiszolgálók áthelyezését tervezi, akkor regisztrálnia kell a regisztrációt is. A tároló irányítópultjának menüjében válassza a **biztonsági mentési infrastruktúra** elemet. Tekintse meg [az SQL Server regisztrációjának](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance)megszüntetését, az [Azure-fájlmegosztáshoz társított Storage-fiók regisztrációjának](manage-afs-backup.md#unregister-a-storage-account)megszüntetését és a [SAP HANA példány regisztrációjának](sap-hana-db-manage.md#unregister-an-sap-hana-instance)megszüntetését ismertető témakört.
 
 4. Miután eltávolította őket a régi tárolóból, folytassa a számítási feladatok biztonsági mentésének konfigurálását az új tárolóban.
 

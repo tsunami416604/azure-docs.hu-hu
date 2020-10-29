@@ -3,16 +3,16 @@ title: Csomópontok és készletek a Azure Batchban
 description: Ismerje meg a számítási csomópontokat és készleteket, valamint azt, hogyan használják őket egy Azure Batch munkafolyamatban fejlesztési szempontból.
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: a6422976f5362e9ff32cd41cc167a00441ab7aec
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c85c50d0b30e30563390d2ffb05942f199047d67
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371443"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913806"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Csomópontok és készletek a Azure Batchban
 
-Egy Azure Batch munkafolyamatban egy *számítási csomópont* (vagy *csomópont*) egy olyan virtuális gép, amely az alkalmazás munkaterhelésének egy részét dolgozza fel. A *készlet* ezen csomópontok gyűjteménye, amelyeken az alkalmazás fut. Ez a cikk további tudnivalókat tartalmaz a csomópontokról és a készletekről, valamint a Azure Batch munkafolyamatokban való létrehozásával és használatával kapcsolatos szempontokat.
+Egy Azure Batch munkafolyamatban egy *számítási csomópont* (vagy *csomópont* ) egy olyan virtuális gép, amely az alkalmazás munkaterhelésének egy részét dolgozza fel. A *készlet* ezen csomópontok gyűjteménye, amelyeken az alkalmazás fut. Ez a cikk további tudnivalókat tartalmaz a csomópontokról és a készletekről, valamint a Azure Batch munkafolyamatokban való létrehozásával és használatával kapcsolatos szempontokat.
 
 ## <a name="nodes"></a>Csomópontok
 
@@ -25,7 +25,7 @@ A csomópontok minden olyan végrehajtható fájlt vagy parancsprogramot képese
 A Batch szolgáltatásban működő számítási csomópontok emellett a következőket is tartalmazzák:
 
 - Szabványos [mappastruktúra](files-and-directories.md), valamint az ehhez tartozó [környezeti változók](jobs-and-tasks.md), amelyekre a tevékenységek hivatkozni tudnak.
-- A hozzáférés vezérléséhez konfigurált **tűzfalbeállítások**.
+- A hozzáférés vezérléséhez konfigurált **tűzfalbeállítások** .
 - [Távelérés](error-handling.md#connect-to-compute-nodes) a Windows (RDP protokoll (RDP) és a Linux (Secure Shell)-csomópontokhoz (kivéve, ha [a készletet a távoli hozzáférés letiltásával hozza létre](pool-endpoint-configuration.md)).
 
 Alapértelmezés szerint a csomópontok képesek kommunikálni egymással, de nem tudnak kommunikálni olyan virtuális gépekkel, amelyek nem azonos készlet részét képezik. Ahhoz, hogy a csomópontok biztonságosan kommunikáljanak más virtuális gépekkel vagy helyszíni hálózattal, a készletet egy [Azure-beli virtuális hálózat (VNet) alhálózatában](batch-virtual-network.md)is kiépítheti. Ha így tesz, a csomópontok nyilvános IP-címeken keresztül is elérhetők. Ezeket a nyilvános IP-címeket a Batch hozza létre, és a készlet élettartamára változhat. Létrehozhat egy Ön által vezérelt [statikus nyilvános IP-címmel rendelkező készletet](create-pool-public-ip.md) is, amely biztosítja, hogy a rendszer váratlanul ne változzon meg.
@@ -68,11 +68,11 @@ A Batch-ben két típusú készlet-konfiguráció érhető el.
 
 A **virtuális gép konfigurációja** megadja, hogy a készlet Azure-beli virtuális gépekből áll. Ezek a virtuális gépek Linux- vagy Windows-rendszerképből is létrehozhatók.
 
-Ha a virtuálisgép-konfiguráción alapuló készletet hoz létre, a csomópontok mérete és a létrehozásukhoz használt rendszerképek forrása mellett a **virtuális gép képhivatkozását** és a csomópontokra telepítendő **Batch-csomóponti ügynök SKU-ját** is meg kell adnia. A készlet e tulajdonságainak megadásával kapcsolatos további információk: [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md) (Linuxos számítási csomópontok kiépítése Azure Batch-készletekben). Csatolhat egy vagy több üres adatlemezt a Marketplace-ről származó lemezképekből létrehozott virtuális gépek készletté alakításához, vagy adatlemezeket foglalhat az egyéni rendszerképekbe a virtuális gépek létrehozásához. Az adatlemezek belefoglalásakor a lemezeket csatlakoztatnia kell a virtuális gépről, és formázni kell őket a használatuk során.
+A [Batch-csomóponti ügynök](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md) egy olyan program, amely a készlet minden egyes csomópontján fut, és a parancs-és vezérlési felületet biztosítja a csomópont és a Batch szolgáltatás között. A csomópont-ügynök különböző implementációkat mutat be különböző operációs rendszerekhez. Ha a virtuálisgép-konfiguráción alapuló készletet hoz létre, a csomópontok mérete és a létrehozásukhoz használt rendszerképek forrása mellett a **virtuális gép képhivatkozását** és a csomópontokra telepítendő **Batch-csomóponti ügynök SKU-ját** is meg kell adnia. A készlet e tulajdonságainak megadásával kapcsolatos további információk: [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md) (Linuxos számítási csomópontok kiépítése Azure Batch-készletekben). Csatolhat egy vagy több üres adatlemezt a Marketplace-ről származó lemezképekből létrehozott virtuális gépek készletté alakításához, vagy adatlemezeket foglalhat az egyéni rendszerképekbe a virtuális gépek létrehozásához. Az adatlemezek belefoglalásakor a lemezeket csatlakoztatnia kell a virtuális gépről, és formázni kell őket a használatuk során.
 
 ### <a name="cloud-services-configuration"></a>Cloud Services konfiguráció
 
-A **Cloud Services konfiguráció** azt adja meg, hogy a készlet az Azure Cloud Services-csomópontokból tevődik össze. A Cloud Services *csak*a Windows számítási csomópontjait biztosítja.
+A **Cloud Services konfiguráció** azt adja meg, hogy a készlet az Azure Cloud Services-csomópontokból tevődik össze. A Cloud Services *csak* a Windows számítási csomópontjait biztosítja.
 
 A Cloud Services-konfigurációval beállított készletekhez elérhető operációs rendszerek listáját az [Azure Guest OS releases and SDK compatibility matrix](../cloud-services/cloud-services-guestos-update-matrix.md) (Vendég operációs rendszerek kiadásai és SDK-kompatibilitási mátrix az Azure-hoz) című cikk ismerteti. Ha Cloud Services csomópontokat tartalmazó készletet hoz létre, meg kell adnia a csomópont méretét és az *operációsrendszer-családját* (amely meghatározza, hogy a .net melyik verzióit telepíti az operációs rendszer). Cloud Services a Windows rendszerű virtuális gépeknél gyorsabban üzembe helyezhető az Azure-ban. Ha windowsos számítási csomópontok készleteire van szükség, előfordulhat, hogy a Cloud Services üzembe helyezési idő szempontjából teljesítményelőnyt nyújt.
 
@@ -105,7 +105,7 @@ Az alacsony prioritású csomópontok akkor is előzik, ha az Azure-ban nincs el
 
 Ugyanabban a készletben alacsony prioritású és dedikált csomópontok is lehetnek. A csomópontok minden típusa saját célértéket tartalmaz, amelynél megadhatja a csomópontok kívánt számát.
 
-A számítási csomópontok számát azért nevezzük *cél*-értéknek, mert előfordulhat, hogy a készletben nem lehet a kívánt számú csomópontot alkalmazni. Egy készlet például nem érheti el a célértéket, ha először a Batch-fiók [magkvótáját](batch-quota-limit.md) éri el. Vagy előfordulhat, hogy a készlet nem éri el a célt, ha egy automatikus skálázási képletet alkalmazott a készlethez, amely korlátozza a csomópontok maximális számát.
+A számítási csomópontok számát azért nevezzük *cél* -értéknek, mert előfordulhat, hogy a készletben nem lehet a kívánt számú csomópontot alkalmazni. Egy készlet például nem érheti el a célértéket, ha először a Batch-fiók [magkvótáját](batch-quota-limit.md) éri el. Vagy előfordulhat, hogy a készlet nem éri el a célt, ha egy automatikus skálázási képletet alkalmazott a készlethez, amely korlátozza a csomópontok maximális számát.
 
 Az alacsony prioritású és a dedikált csomópontok díjszabásáról a [Batch díjszabása](https://azure.microsoft.com/pricing/details/batch/)című témakörben olvashat.
 
@@ -142,7 +142,7 @@ A [csomópontonkénti maximális tevékenység](batch-parallel-node-tasks.md) ko
 
 Az alapértelmezett konfiguráció meghatározza, hogy egyszerre egy tevékenység fut egy csomóponton, de bizonyos esetekben előnyös lehet, ha kettő vagy több feladat is végrehajtható egyszerre egy csomóponton. Nézze meg a [csomópontokon végzett egyidejű tevékenységekről szóló cikkben](batch-parallel-node-tasks.md) szereplő [mintaforgatókönyvet](batch-parallel-node-tasks.md#example-scenario), ha kíváncsi rá, hogy milyen esetekben lehet hasznos, ha több tevékenység fut az egyes csomópontokon.
 
-Megadhat egy *kitöltési típust*is, amely meghatározza, hogy a Batch egyenletesen osztja-e el a tevékenységeket a készlet összes csomópontján, vagy az egyes csomópontokat a maximális számú tevékenységgel, mielőtt hozzárendeli a tevékenységeket egy másik csomóponthoz.
+Megadhat egy *kitöltési típust* is, amely meghatározza, hogy a Batch egyenletesen osztja-e el a tevékenységeket a készlet összes csomópontján, vagy az egyes csomópontokat a maximális számú tevékenységgel, mielőtt hozzárendeli a tevékenységeket egy másik csomóponthoz.
 
 ## <a name="communication-status"></a>Kommunikációs állapot
 

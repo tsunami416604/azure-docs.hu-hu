@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: eba175eb831ef0c472c2e11d2d03f134a0d3b052
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8e24dd6cb8a1fa90f1a6caf9117ab3c344c00b12
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547673"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913874"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-cli"></a>Azure Database for PostgreSQL rugalmas kiszolgáló kezelése az Azure CLI használatával
 
@@ -40,7 +40,7 @@ az account set --subscription <subscription id>
 
 ## <a name="scale-compute-and-storage"></a>Számítási és tárolási méretezés
 
-A számítási szintet, a virtuális mag és a tárterületet könnyedén méretezheti a következő parancs használatával. Az összes olyan kiszolgálói műveletet megtekintheti, amelyet futtat az [postgres flexibilis-Server Server Overview](https://azure.microsoft.com/services/postgresql/)
+A számítási szintet, a virtuális mag és a tárterületet könnyedén méretezheti a következő parancs használatával. Az összes olyan kiszolgálói műveletet megtekintheti, amelyet futtat az [postgres flexibilis-Server Server Overview](https://docs.microsoft.com/cli/azure/postgres/flexible-server)
 
 ```azurecli-interactive
 az postgres flexible-server update --resource-group myresourcegroup --name mydemoserver --sku-name Standard_D4ds_v3 --storage-size 6144
@@ -123,7 +123,7 @@ az postgres flexible-server update --resource-group myresourcegroup --name mydem
 
 ## <a name="delete-a-server"></a>Kiszolgáló törlése
 
-Ha csak szeretné törölni a PostgreSQL rugalmas kiszolgálót, futtathatja az [az postgres flexibilis-Server delete](/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) parancsot.
+Ha csak szeretné törölni a PostgreSQL rugalmas kiszolgálót, futtathatja az [az postgres flexibilis-Server delete](https://docs.microsoft.com/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) parancsot.
 
 ```azurecli-interactive
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver

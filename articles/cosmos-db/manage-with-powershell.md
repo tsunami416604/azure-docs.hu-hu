@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: c56f3b561dbced9f00bb2616f5709a51fa02fbcb
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3b5cc1dd61b4f01e40c1cc812e93a448855ad92d
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92481006"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926512"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>Azure Cosmos DB Core (SQL) API-erőforrások kezelése a PowerShell használatával
 
@@ -78,7 +78,7 @@ New-AzCosmosDBAccount `
 * `$resourceGroupName` Az Azure-erőforráscsoport, amelybe telepíteni kívánja a Cosmos-fiókot. Már léteznie kell.
 * `$locations` Az adatbázis-fiók régiói, a régió, amely `FailoverPriority 0` az írási régió.
 * `$accountName` Az Azure Cosmos-fiók neve. Egyedinek, kisbetűsnek kell lennie, csak alfanumerikus és "-" karaktereket tartalmazhat, és 3 – 31 karakter hosszú lehet.
-* `$apiKind` A létrehozandó Cosmos-fiók típusa. További információ: [Cosmos db API-](introduction.md#develop-applications-on-cosmos-db-using-popular-open-source-software-oss-apis)k.
+* `$apiKind` A létrehozandó Cosmos-fiók típusa. További információ: [Cosmos db API-](introduction.md#simplified-application-development)k.
 * `$consistencyPolicy`, `$maxStalenessInterval` és `$maxStalenessPrefix` Az Azure Cosmos-fiók alapértelmezett konzisztencia-szintje és beállításai. További információ: [Azure Cosmos db egységességi szintjei](consistency-levels.md).
 
 Az Azure Cosmos-fiókok IP-tűzfallal, Virtual Network szolgáltatási végpontokkal és privát végpontokkal konfigurálhatók. További információ a Azure Cosmos DB IP-tűzfalának konfigurálásáról: az [IP-tűzfal konfigurálása](how-to-configure-firewall.md). További információ a Azure Cosmos DB szolgáltatási végpontjának engedélyezéséről: [virtuális hálózatok elérésének konfigurálása](how-to-configure-vnet-service-endpoint.md). További információ a Azure Cosmos DB magánhálózati végpontjának engedélyezéséről: [hozzáférés konfigurálása privát végpontokról](how-to-configure-private-endpoints.md).

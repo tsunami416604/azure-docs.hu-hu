@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/22/2020
+ms.date: 10/29/2020
 ms.author: jingwang
-ms.openlocfilehash: 89ac5645ccbb9c926bc5ff70605dd1e5de14e823
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 342d0aabe2222393f33aa4ce93646da9f29cf1fb
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427615"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926461"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Adatok másolása a Xero a Azure Data Factory használatával
 
@@ -55,13 +55,13 @@ A Xero társított szolgáltatás a következő tulajdonságokat támogatja:
 |:--- |:--- |:--- |
 | típus | A Type tulajdonságot a következőre kell beállítani: **Xero** | Igen |
 | connectionProperties | A Xero való kapcsolódás módját meghatározó tulajdonságok csoportja. | Igen |
-| **_Alatt `connectionProperties` :_*_ | | |
+| **_Alatt `connectionProperties` :_* _ | | |
 | gazda | A Xero-kiszolgáló () végpontja `api.xero.com` .  | Igen |
 | authenticationType | Az engedélyezett értékek: `OAuth_2.0` és `OAuth_1.0` . | Igen |
 | consumerKey | A Xero alkalmazáshoz társított fogyasztói kulcs. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
-| privateKey | A Xero privát alkalmazásához létrehozott. PEM fájl titkos kulcsa. a [nyilvános/titkos kulcspár létrehozása](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key)című témakörben talál további információt. Vegye figyelembe, hogy*a privatekey. PEM a numbits 512** használatával történő létrehozásához a `openssl genrsa -out privatekey.pem 512` 1024 nem támogatott. Adja meg a. PEM fájl összes szövegét, beleértve a UNIX-sorok végződését (\n), lásd az alábbi mintát.<br/>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
+| privateKey | A Xero privát alkalmazásához létrehozott. PEM fájl titkos kulcsa. a [nyilvános/titkos kulcspár létrehozása](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key)című témakörben talál további információt. Vegye figyelembe, hogy *a privatekey. PEM a numbits 512* * használatával történő létrehozásához a `openssl genrsa -out privatekey.pem 512` 1024 nem támogatott. Adja meg a. PEM fájl összes szövegét, beleértve a UNIX-sorok végződését (\n), lásd az alábbi mintát.<br/>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
 | tenantId | A Xero-alkalmazáshoz társított bérlői azonosító. A OAuth 2,0-hitelesítésre alkalmazható.<br>Megtudhatja, hogyan kérheti le a bérlő AZONOSÍTÓját, hogy [ellenőrizzék a jogosult bérlőket](https://developer.xero.com/documentation/oauth2/auth-flow). | Igen a OAuth 2,0-hitelesítéshez |
-| refreshToken | A OAuth 2,0-hitelesítésre alkalmazható.<br/>A OAuth 2,0 frissítési token társítva van a Xero alkalmazáshoz, és a hozzáférési token frissítésére szolgál. a hozzáférési jogkivonat 30 perc után lejár. Ismerje meg, hogyan működik a Xero engedélyezési folyamata, és hogyan kérheti le a frissítési tokent [ebből a cikkből](https://developer.xero.com/documentation/oauth2/auth-flow). A frissítési jogkivonat beszerzéséhez a [offline_access hatókört](https://developer.xero.com/documentation/oauth2/scopes)kell kérnie. <br/>A **know korlátozása**: Megjegyzés a Xero alaphelyzetbe állítja a frissítési tokent, miután használta a hozzáférési jogkivonat frissítését. A működés közbeni munkaterhelések esetében az egyes másolási tevékenységek futtatása előtt érvényes frissítési tokent kell beállítania az ADF használatához.<br/>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen a OAuth 2,0-hitelesítéshez |
+| refreshToken | A OAuth 2,0-hitelesítésre alkalmazható.<br/>A OAuth 2,0 frissítési token társítva van a Xero alkalmazáshoz, és a hozzáférési token frissítésére szolgál. a hozzáférési jogkivonat 30 perc után lejár. Ismerje meg, hogyan működik a Xero engedélyezési folyamata, és hogyan kérheti le a frissítési tokent [ebből a cikkből](https://developer.xero.com/documentation/oauth2/auth-flow). A frissítési jogkivonat beszerzéséhez a [offline_access hatókört](https://developer.xero.com/documentation/oauth2/scopes)kell kérnie. <br/>A **know korlátozása** : Megjegyzés a Xero alaphelyzetbe állítja a frissítési tokent, miután használta a hozzáférési jogkivonat frissítését. A működés közbeni munkaterhelések esetében az egyes másolási tevékenységek futtatása előtt érvényes frissítési tokent kell beállítania az ADF használatához.<br/>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen a OAuth 2,0-hitelesítéshez |
 | useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték az igaz.  | Nem |
 | useHostVerification | Azt adja meg, hogy az állomásnév kötelező-e a kiszolgáló tanúsítványában, hogy az megfeleljen a kiszolgáló állomásneve a TLS protokollal való csatlakozáskor. Az alapértelmezett érték az igaz.  | Nem |
 | usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | Nem |
@@ -139,7 +139,7 @@ Adja meg a. PEM fájl összes szövegét, beleértve a UNIX-sorok végződését
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a Xero adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Az adatok Xero való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **XeroObject**értékre. A következő tulajdonságok támogatottak:
+Az adatok Xero való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **XeroObject** értékre. A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
@@ -169,12 +169,12 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 ### <a name="xero-as-source"></a>Xero forrásként
 
-Az adatok Xero való másolásához állítsa a forrás típusát a másolás tevékenység **XeroSource**értékére. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
+Az adatok Xero való másolásához állítsa a forrás típusát a másolás tevékenység **XeroSource** értékére. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **XeroSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például így: `"SELECT * FROM Contacts"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM Contacts"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
 **Példa**
 
@@ -210,9 +210,9 @@ Az adatok Xero való másolásához állítsa a forrás típusát a másolás te
 
 A Xero-lekérdezés megadásakor vegye figyelembe a következőket:
 
-- Az összetett elemeket tartalmazó táblák több táblára lesznek felosztva. A banki tranzakciók például a "listaelemek" komplex adatstruktúrával rendelkeznek, így a banki tranzakciós adat a táblára van leképezve `Bank_Transaction` , és a (z) és a (z `Bank_Transaction_Line_Items` `Bank_Transaction_ID` ) összekapcsolására szolgáló külső kulccsal.
+- Az összetett elemeket tartalmazó táblák több táblára lesznek felosztva. A banki tranzakciók például a "listaelemek" nevű összetett adatstruktúrával rendelkeznek, így a banki tranzakciós adat a táblára van leképezve, a másik pedig az, `Bank_Transaction` `Bank_Transaction_Line_Items` hogy az `Bank_Transaction_ID` idegen kulccsal együtt csatolja őket.
 
-- A Xero-adatbázis két sémán keresztül érhető el: `Minimal` (alapértelmezett) és `Complete` . A teljes séma előfeltételként szükséges hívási táblákat tartalmaz, amelyek további adatértékeket (például azonosító oszlopot) igényelnek a kívánt lekérdezés végrehajtása előtt.
+- A Xero-adatbázis két sémán keresztül érhető el: `Minimal` (alapértelmezett) és `Complete` . A teljes séma olyan előfeltételként szükséges hívási táblákat tartalmaz, amelyek további adatértékeket igényelnek (például azonosító oszlop) a kívánt lekérdezés végrehajtása előtt.
 
 Az alábbi táblázatokban ugyanazok az adatok szerepelnek a minimális és a teljes sémában. Az API-hívások számának csökkentéséhez használja a minimális sémát (alapértelmezett).
 
@@ -267,5 +267,5 @@ A következő táblázatok csak a teljes sémával kérhetők le:
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A másolási tevékenység által támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: a12fe837bfd9606d07c7be71851880d2cebb9d61
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bd45284bfea09935ea48445d816f3b91272f68fc
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89055481"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925849"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Az ASP.NET Core-webalkalmazás monitorozásának indítása
 
@@ -42,7 +42,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 Az Application Insights bármely, az internethez csatlakozó alkalmazásról képes telemetriaadatokat gyűjteni, függetlenül attól, hogy az a helyszínen vagy a felhőben fut-e. Az adatok megjelenítéséhez hajtsa végre az alábbi lépéseket.
 
-1. Válassza **az erőforrás létrehozása**  >  **fejlesztői eszközök**  >  **Application Insights**elemet.
+1. Válassza **az erőforrás létrehozása**  >  **fejlesztői eszközök**  >  **Application Insights** elemet.
 
    > [!NOTE]
    >Ha első alkalommal hoz létre egy Application Insights-erőforrást, további információt az [Application Insights erőforrás létrehozása](../app/create-new-resource.md) doc webhelyén olvashat.
@@ -55,25 +55,25 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
    | **Erőforráscsoport**     | myResourceGroup      | Az új erőforráscsoport neve az alkalmazás-elemzési adatforrások üzemeltetéséhez. Létrehozhat egy új erőforráscsoportot, vagy használhat egy meglévőt is. |
    | **Hely** | USA keleti régiója | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
 
-2. Kattintson a **Létrehozás** elemre.
+2. Kattintson a **Létrehozás** gombra.
 
 
 
 ## <a name="configure-app-insights-sdk"></a>Az App Insights SDK konfigurálása
 
-1. Nyissa meg az ASP.NET Core-webalkalmazás **projektet** a Visual Studióban, majd kattintson a jobb gombbal az alkalmazás nevére a **Megoldáskezelőben**, és válassza a **Hozzáadás** > **Application Insights Telemetria** elemet.
+1. Nyissa meg az ASP.NET Core-webalkalmazás **projektet** a Visual Studióban, majd kattintson a jobb gombbal az alkalmazás nevére a **Megoldáskezelőben** , és válassza a **Hozzáadás** > **Application Insights Telemetria** elemet.
 
     ![Application Insights Telemetria hozzáadása](./media/dotnetcore-quick-start/2vsaddappinsights.png)
 
 2. Kattintson az **első lépések** gombra
 
-3. Válassza ki a fiókját és az előfizetést > válassza ki a Azure Portal létrehozott **meglévő erőforrást** > kattintson a **regisztráció**elemre.
+3. Válassza ki a fiókját és az előfizetést > válassza ki a Azure Portal létrehozott **meglévő erőforrást** > kattintson a **regisztráció** elemre.
 
 4. Válassza a **projekt**  >  **NuGet-csomagok kezelése**  >  **csomag forrása: nuget.org**  >  **frissítse** a Application Insights SDK-csomagokat a legújabb stabil kiadásra.
 
 5. Válassza a **hibakeresés**  >  **Indítás hibakeresés nélkül** (CTRL + F5) lehetőséget az alkalmazás indításához
 
-    ![Az Application Insights áttekintése menü](./media/dotnetcore-quick-start/3debug.png)
+    ![Képernyőkép, amely megjeleníti a hibakeresési lehetőség nélkül menüpontot.](./media/dotnetcore-quick-start/3debug.png)
 
 > [!NOTE]
 > 3–5 percet is igénybe vehet, mire az adatok elkezdenek megjelenni a portálon. Ha az alkalmazás egy alacsony forgalmú tesztalkalmazás, vegye figyelembe, hogy a legtöbb metrika rögzítése csak akkor történik, ha aktív kérések és műveletek vannak folyamatban.
@@ -88,7 +88,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
    ![Alkalmazástérkép](./media/dotnetcore-quick-start/5appmap.png)
 
-3. Kattintson az **app Analytics** ikon ![ alkalmazás-Térkép ikon ](./media/dotnetcore-quick-start/006.png) **nézet az elemzés**elemre. Megnyílik az **Application Insights Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
+3. Kattintson az **app Analytics** ikon ![ alkalmazás-Térkép ikon ](./media/dotnetcore-quick-start/006.png) **nézet az elemzés** elemre. Megnyílik az **Application Insights Analytics** , amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
 
    ![Az adott időtartamon belüli felhasználói kéréseket mutató elemzési diagram](./media/dotnetcore-quick-start/6analytics.png)
 
@@ -96,20 +96,20 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
    ![Az Állapotáttekintési időegyenes diagramjai](./media/dotnetcore-quick-start/7kpidashboards.png)
 
-5. A bal oldali kattintson a **metrikák**elemre. Az erőforrás állapotának és kihasználtságának vizsgálatához használja a metrikák Explorert. Az **Új diagram hozzáadása** gombra kattintva további egyéni nézeteket adhat hozzá, a **Szerkesztés** gombra kattintva pedig módosíthatja a meglévő diagramok típusát, magasságát, színpalettáját, csoportosításait és metrikáit. Létrehozhat például egy olyan diagramot, amely megjeleníti a böngésző átlagos betöltési idejét úgy, hogy kiveszi a "böngésző oldal betöltési ideje" lehetőséget a metrikák legördülő menüből és az "AVG" összesítésből való kiválasztásával. Ha többet szeretne megtudni az Azure Metrikaböngésző-ról, látogasson el [az azure Metrikaböngésző](../platform/metrics-getting-started.md)használatába.
+5. A bal oldali kattintson a **metrikák** elemre. Az erőforrás állapotának és kihasználtságának vizsgálatához használja a metrikák Explorert. Az **Új diagram hozzáadása** gombra kattintva további egyéni nézeteket adhat hozzá, a **Szerkesztés** gombra kattintva pedig módosíthatja a meglévő diagramok típusát, magasságát, színpalettáját, csoportosításait és metrikáit. Létrehozhat például egy olyan diagramot, amely megjeleníti a böngésző átlagos betöltési idejét úgy, hogy kiveszi a "böngésző oldal betöltési ideje" lehetőséget a metrikák legördülő menüből és az "AVG" összesítésből való kiválasztásával. Ha többet szeretne megtudni az Azure Metrikaböngésző-ról, látogasson el [az azure Metrikaböngésző](../platform/metrics-getting-started.md)használatába.
 
      ![Metrikák lap: az átlagos böngészőbeli betöltési idő diagramja](./media/dotnetcore-quick-start/8metrics.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 Ha végzett a teszteléssel, törölheti az erőforráscsoportot és az összes kapcsolódó erőforrást. Ehhez kövesse az alábbi lépéseket.
 
 > [!NOTE]
 > Ha meglévő erőforráscsoportot használt, az alábbi utasítások nem fognak működni, és csak törölni kell az egyéni Application Insights erőforrást. Tartsa szem előtt, hogy bármikor törli az erőforráscsoportot az összes mögöttes erőforrás, amely a csoport tagjai lesznek.
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a **myResourceGroup** elemre.
-2. Az erőforráscsoport lapon kattintson a **Törlés**elemre, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd kattintson a **Törlés**gombra.
+2. Az erőforráscsoport lapon kattintson a **Törlés** elemre, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Futásidejű kivételek észlelése és diagnosztizálása](./tutorial-runtime-exceptions.md)

@@ -7,8 +7,6 @@
       href: overview.md
 - name: Rövid útmutatók
   items:
-    - name: A bemutatówebhely megismerése
-      href: quickstarts/explore-demo.md
     - name: A webes portál használata
       href: quickstarts/web-portal.md
     - name: A REST API használata
@@ -40,9 +38,9 @@
     - name: Metrics Advisor API
       href: 'https://go.microsoft.com/fwlink/?linkid=2141634'
     - name: Azure CLI-referencia
-      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+      href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
     - name: PowerShell-dokumentáció
-      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+      href: /powershell/module/azurerm.cognitiveservices/
 - name: További források
   items:
     - name: Támogatási lehetőségek

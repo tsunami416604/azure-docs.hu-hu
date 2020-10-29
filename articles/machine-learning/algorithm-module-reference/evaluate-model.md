@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 6dfee84c44643823a4ec76c32e750febc6646be5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9405eb01dbe2d7ea9d4a9e64bf7dd79ca356e9f5
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908052"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926988"
 ---
 # <a name="evaluate-model-module"></a>Modell modul kiértékelése
 
@@ -34,13 +34,21 @@ Ezzel a modullal mérhető a betanított modell pontossága. Olyan adatkészlete
 
 
 ## <a name="how-to-use-evaluate-model"></a>Az értékelés modell használata
-1. Kapcsolja össze a pontszám [-](./assign-data-to-clusters.md) [modell](./score-model.md) vagy az eredmények adatkészlet **-kimenetét** a **kiértékelési modell**bal oldali bemeneti portjához. 
+1. Kapcsolja össze a pontszám [-](./assign-data-to-clusters.md) [modell](./score-model.md) vagy az eredmények adatkészlet **-kimenetét** a **kiértékelési modell** bal oldali bemeneti portjához. 
     > [!NOTE] 
     > Ha olyan modulokat használ, mint például az "Oszlopok kiválasztása az adatkészletben" lehetőséget a bemeneti adatkészlet egy részének kiválasztásához, győződjön meg róla, hogy a tényleges címke oszlop (tanításban használatos), a "pontszámmal rendelkező valószínűségek" oszlop és a "pontozott feliratok" oszlop létezik a metrikák, például a AUC, a bináris besorolás
     > A tényleges felirat oszlop, a "felhorzsolt címkék" oszlop létezik a többosztályos besorolás/regresszió metrikáinak kiszámításához.
     > "Hozzárendelések" oszlop, oszlop: "DistancesToClusterCenter". X ' (X a középpontját index, amely a 0,... számú centroids-1) létezik a fürtözés metrikáinak kiszámításához.
 
-2. Választható Kapcsolja össze **a** [pontszám-modell](./score-model.md) vagy az eredmények adatkészlet-kimenetét az adatok kiosztása fürtökhöz a második modellnek **megfelelő** bemeneti portra a **modell kiértékeléséhez**. Az eredményeket egyszerűen összehasonlíthatja két különböző modellből ugyanazon adatok alapján. A két bemeneti algoritmusnak azonos algoritmus típusúnak kell lennie. Másik lehetőségként összehasonlíthatja azokat a két különböző futtatásból származó pontszámokat, amelyek különböző paraméterekkel rendelkeznek.
+    > [!IMPORTANT]
+    > + Az eredmények kiértékeléséhez a kimeneti adatkészletnek tartalmaznia kell egy adott pontszám-oszlop nevét, amely megfelel a modell modul követelményeinek.
+    > + Az `Labels` oszlop tényleges feliratként lesz értelmezve.
+    > + A regressziós feladathoz a kiértékelni kívánt adatkészletnek egy nevű oszlopból kell állnia, amely a pontozott `Regression Scored Labels` címkéket jelképezi.
+    > + A bináris besorolási feladathoz a kiértékelni kívánt adatkészlet két oszlopból áll, amelyek neve a következő: `Binary Class Scored Labels` `Binary Class Scored Probabilities` .
+    > + A többtényezős besorolás feladathoz a kiértékelni kívánt adatkészletnek egy nevű oszlopból kell állnia, amely a pontozott `Multi Class Scored Labels` címkéket jelképezi.
+    > Ha a felsőbb rétegbeli modul kimenete nem rendelkezik ezekkel az oszlopokkal, a fenti követelményeknek megfelelően módosítania kell.
+
+2. Választható Kapcsolja össze **a** [pontszám-modell](./score-model.md) vagy az eredmények adatkészlet-kimenetét az adatok kiosztása fürtökhöz a második modellnek **megfelelő** bemeneti portra a **modell kiértékeléséhez** . Az eredményeket egyszerűen összehasonlíthatja két különböző modellből ugyanazon adatok alapján. A két bemeneti algoritmusnak azonos algoritmus típusúnak kell lennie. Másik lehetőségként összehasonlíthatja azokat a két különböző futtatásból származó pontszámokat, amelyek különböző paraméterekkel rendelkeznek.
 
     > [!NOTE]
     > Az algoritmus típusa a "kétosztályos besorolás", a "többosztályos besorolás", a "regresszió", a "fürtözés" kifejezésre hivatkozik a "Machine Learning algoritmusok" alatt. 
@@ -49,14 +57,14 @@ Ezzel a modullal mérhető a betanított modell pontossága. Olyan adatkészlete
 
 ## <a name="results"></a>Results (Eredmények)
 
-A **kiértékelési modell**futtatása után válassza ki a modult, és nyissa meg a **modell kiértékelése** navigációs panelt a jobb oldalon.  Ezután válassza a **kimenetek + naplók** fület, és a lapon az **adatkimenetek** szakaszban több ikon látható. A **vizualizáció ikon egy** oszlopdiagram ikont tartalmaz, és első módszer az eredmények megjelenítésére.
+A **kiértékelési modell** futtatása után válassza ki a modult, és nyissa meg a **modell kiértékelése** navigációs panelt a jobb oldalon.  Ezután válassza a **kimenetek + naplók** fület, és a lapon az **adatkimenetek** szakaszban több ikon látható. A **vizualizáció ikon egy** oszlopdiagram ikont tartalmaz, és első módszer az eredmények megjelenítésére.
 
 Ha bináris besorolást szeretne, az ikon **megjelenítése** lehetőségre kattintva megjelenítheti a bináris zavart mátrixot.
 A többszörös besorolás érdekében a következőhöz hasonló **kimenetek és naplók** lapon találhatja meg a zavart mátrix nyomtatási fájlját:
 > [!div class="mx-imgBorder"]
 > ![Feltöltött rendszerkép előnézete](media/module/multi-class-confusion-matrix.png)
 
-Ha adatkészleteket hoz létre a **kiértékelési modell**mindkét bemenetéhez, akkor az eredmények mindkét adathalmazra, vagy mindkét modellre vonatkozó metrikákat tartalmaznak.
+Ha adatkészleteket hoz létre a **kiértékelési modell** mindkét bemenetéhez, akkor az eredmények mindkét adathalmazra, vagy mindkét modellre vonatkozó metrikákat tartalmaznak.
 A bal oldali porthoz csatolt modellnek vagy adatoknak először a jelentésben kell megjelenni, amelyet a DataSet adatkészlethez tartozó metrikák, illetve a jobb oldali porthoz csatolt modell mutat.  
 
 Az alábbi ábrán például az azonos adatokra épülő két fürtözött modell eredményeinek összehasonlítása, de különböző paraméterekkel.  
@@ -67,7 +75,7 @@ Mivel ez egy fürtözési modell, a kiértékelési eredmények eltérnek, mint 
 
 ## <a name="metrics"></a>Mérőszámok
 
-Ez a szakasz a **kiértékelési modellel**használható, adott típusú modellek által visszaadott mérőszámokat ismerteti:
+Ez a szakasz a **kiértékelési modellel** használható, adott típusú modellek által visszaadott mérőszámokat ismerteti:
 
 + [besorolási modellek](#metrics-for-classification-models)
 + [regressziós modellek](#metrics-for-regression-models)
@@ -105,7 +113,7 @@ A regressziós modellekhez visszaadott metrikák a hibák mennyiségének becsl�
   
 
   
-- A **meghatározási együttható**(más néven R<sup>2</sup>) a modell prediktív erejét mutatja 0 és 1 közötti értékként. Nulla érték azt jelenti, hogy a modell véletlenszerű (semmit sem jelent); 1 a tökéletes illeszkedést jelenti. Azonban körültekintően kell használni az R<sup>2</sup> értékek értelmezését, mivel az alacsony értékek teljesen normálisak lehetnek, és a magas értékek gyanúja is lehet.
+- A **meghatározási együttható** (más néven R <sup>2</sup>) a modell prediktív erejét mutatja 0 és 1 közötti értékként. Nulla érték azt jelenti, hogy a modell véletlenszerű (semmit sem jelent); 1 a tökéletes illeszkedést jelenti. Azonban körültekintően kell használni az R<sup>2</sup> értékek értelmezését, mivel az alacsony értékek teljesen normálisak lehetnek, és a magas értékek gyanúja is lehet.
 
 ###  <a name="metrics-for-clustering-models"></a>A fürtözési modellek metrikái
 
@@ -117,15 +125,15 @@ Mivel a fürtözési modellek nagy mértékben különböznek a besorolási és 
   
 A következő metrikákat kell jelenteni a fürtszolgáltatási modellek kiértékeléséhez.
     
--   Az oszlopban lévő pontszámok, az **átlagos távolság a másik központtól**, a fürt minden egyes pontja esetében az összes többi fürt centroids.   
+-   Az oszlopban lévő pontszámok, az **átlagos távolság a másik központtól** , a fürt minden egyes pontja esetében az összes többi fürt centroids.   
 
--   Az oszlopban lévő pontszámok, amelyek a **fürt középpontjának átlagos távolsága**, a fürt összes pontjának a fürt középpontját való közelségét jelölik.  
+-   Az oszlopban lévő pontszámok, amelyek a **fürt középpontjának átlagos távolsága** , a fürt összes pontjának a fürt középpontját való közelségét jelölik.  
   
 -   A **pontok száma** oszlopban látható, hogy hány adatpontot rendeltek hozzá az egyes fürtökhöz, valamint a fürtben lévő adatpontok összesített számát.  
   
      Ha a fürtökhöz rendelt adatpontok száma kevesebb, mint az elérhető adatpontok teljes száma, az azt jelenti, hogy az adatpontokat nem lehet fürthöz rendelni.  
   
--   Az oszlopban lévő pontszámok, a **cluster Center értékének maximális távolsága**, az egyes pontok közötti távolságok maximális száma, valamint az adott pont fürt középpontját.  
+-   Az oszlopban lévő pontszámok, a **cluster Center értékének maximális távolsága** , az egyes pontok közötti távolságok maximális száma, valamint az adott pont fürt középpontját.  
   
      Ha ez a szám magas, akkor azt jelentheti, hogy a fürt széles körben elszórtan van. Tekintse át ezt a statisztikát, valamint az **átlagos távolságot a fürt közepétől** a fürt eloszlásának meghatározásához.   
 

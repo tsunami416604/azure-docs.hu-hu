@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5341c2613624c6a52f1649dcd8a64b6746b84f67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b35b66615bd5c577dd73faca77d3ea20468442f8
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332389"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913517"
 ---
 # <a name="example-use-the-large-scale-feature"></a>Példa: a nagyméretű szolgáltatás használata
 
@@ -31,7 +31,7 @@ A minták C# nyelven íródnak az Azure Cognitive Services Face ügyféloldali k
 
 ## <a name="step-1-initialize-the-client-object"></a>1. lépés: az ügyfél objektumának inicializálása
 
-Az arc ügyféloldali kódtár használatakor az előfizetési kulcsot és az előfizetés végpontját a rendszer a FaceClient osztály konstruktorán keresztül adja át. Például:
+Az arc ügyféloldali kódtár használatakor az előfizetési kulcsot és az előfizetés végpontját a rendszer a FaceClient osztály konstruktorán keresztül adja át. Példa:
 
 ```csharp
 string SubscriptionKey = "<Subscription Key>";
@@ -232,7 +232,7 @@ Példa munkafolyamat:
 
 Ha a viszonylag hosszú késés elfogadható, nem szükséges a vonat működésének elindításához közvetlenül az új adatértékek hozzáadása után. Ehelyett a betanítás művelet a fő működésről leválasztva indítható rendszeresen. Ez a stratégia alkalmas olyan dinamikus forgatókönyvekhez, amelyek elfogadható késéssel rendelkeznek. A vonatok gyakoriságának további csökkentése érdekében statikus forgatókönyvekre is alkalmazható.
 
-Tegyük fel `TrainLargePersonGroup` , hogy a függvény hasonló a következőhöz: `TrainLargeFaceList` . A LargePersonGroup önálló betanításának tipikus megvalósítása a [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) következő osztály meghívásával `System.Timers` :
+Tegyük fel `TrainLargePersonGroup` , hogy a függvény hasonló a következőhöz: `TrainLargeFaceList` . A LargePersonGroup önálló betanításának tipikus megvalósítása a [`Timer`](/dotnet/api/system.timers.timer) következő osztály meghívásával `System.Timers` :
 
 ```csharp
 private static void Main()
@@ -269,7 +269,7 @@ Ebben az útmutatóban megtanulta, hogyan telepítheti át a meglévő PersonGro
 - A LargePersonGroup és a LargeFaceList hasonló módon működnek, mint a PersonGroup vagy a FaceList, azzal a különbséggel, hogy a LargeFaceList a vonatok műveletét igényli.
 - A nagyméretű adathalmazok dinamikus adatfrissítéséhez végezze el a megfelelő betanítási stratégiát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő útmutatóból megtudhatja, hogyan adhat hozzá arcokat egy PersonGroup, vagy hogyan írhat parancsfájlokat az azonosítási művelet PersonGroup való elvégzéséhez.
 

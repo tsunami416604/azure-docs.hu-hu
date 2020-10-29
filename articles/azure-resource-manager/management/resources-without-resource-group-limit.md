@@ -2,13 +2,13 @@
 title: 800-os korláttal nem rendelkező erőforrások száma
 description: Azokat az Azure-erőforrásokat sorolja fel, amelyek több mint 800 példányt tartalmazhatnak egy erőforráscsoporthoz.
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: e7a15607b144f1d7916f310948f15dc28d76a205
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/28/2020
+ms.openlocfilehash: cec7ea87bbe81d3bfcca37f3133ac650e66f849f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330757"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913500"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Az erőforrások nem korlátozódnak 800 példányra az erőforráscsoport esetében
 
@@ -81,6 +81,7 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 
 ## <a name="microsoftdevtestlab"></a>Microsoft. segédösszetevője
 
+* Labs/virtualMachines – alapértelmezés szerint 800 példányra korlátozódik. Ezt a korlátot a támogatási szolgálattal növelheti.
 * menetrend
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
@@ -173,6 +174,10 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 
 * workspaceCollections – alapértelmezés szerint 800 példányra korlátozódik. Ezt a korlátot a támogatási szolgálattal növelheti.
 
+## <a name="microsoftpowerbidedicated"></a>Microsoft. PowerBIDedicated
+
+* kapacitás – alapértelmezés szerint 800 példányra korlátozódik. Ezt a korlátot a támogatási szolgálattal növelheti.
+
 ## <a name="microsoftrelay"></a>Microsoft. Relay
 
 * névterek
@@ -185,18 +190,21 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 
 * névterek
 
-## <a name="microsoftservicefabricmesh"></a>Microsoft. ServiceFabricMesh
+## <a name="microsoftsingularity"></a>Microsoft. szingularitás
 
-* alkalmazások
-* containerGroups
-* átjárók
-* hálózatok
-* titkok
-* volumes
+* fiókok
+* fiókok/accountQuotaPolicies
+* fiókok/groupPolicies
+* fiókok/feladatok
+* fiókok/storageContainers
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 * storageAccounts
+
+## <a name="microsoftsql"></a>Microsoft.Sql
+
+* kiszolgálók/adatbázisok
 
 ## <a name="microsoftweb"></a>Microsoft. Web
 

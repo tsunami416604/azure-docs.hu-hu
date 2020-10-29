@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 78231fa5cc6e5061ab3e2b26faf97da76da83b32
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: f06c5f2b2938505380ea668a7c4113015c852b1d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427903"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913959"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>A Windows rendszerhez készült virtuálisgép-bővítmény Key Vault
 
@@ -81,7 +81,7 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
 > Ennek az az oka, hogy az `/secrets` elérési út a teljes tanúsítványt adja vissza, beleértve a titkos kulcsot is, míg az `/certificates` elérési út nem. A tanúsítványokkal kapcsolatos további információkért tekintse meg a következőt: [Key Vault tanúsítványok](../../key-vault/general/about-keys-secrets-certificates.md)
 
 > [!IMPORTANT]
-> A "authenticationSettings" tulajdonság csak a **felhasználó által hozzárendelt identitással**rendelkező virtuális gépek esetében **szükséges** .
+> A "authenticationSettings" tulajdonság csak a **felhasználó által hozzárendelt identitással** rendelkező virtuális gépek esetében **szükséges** .
 > Meghatározza az Key Vault hitelesítéshez használandó identitást.
 
 
@@ -92,13 +92,13 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
 | apiVersion | 2019-07-01 | dátum |
 | közzétevő | Microsoft.Azure.KeyVault | sztring |
 | típus | KeyVaultForWindows | sztring |
-| typeHandlerVersion | 1.0 | int |
+| typeHandlerVersion | 1,0 | int |
 | pollingIntervalInS | 3600 | sztring |
 | certificateStoreName | MY | sztring |
 | linkOnRenewal | hamis | boolean |
 | certificateStoreLocation  | LocalMachine vagy CurrentUser (kis-és nagybetűk megkülönböztetése) | sztring |
 | requiredInitialSync | true | boolean |
-| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | karakterlánc-tömb
+| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate","https://myvault.vault.azure.net/secrets/mycertificate2"] | karakterlánc-tömb
 | msiEndpoint | http://169.254.169.254/metadata/identity | sztring |
 | msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | sztring |
 
@@ -132,7 +132,7 @@ A virtuálisgép-bővítmények JSON-konfigurációját a sablon virtuálisgép-
           "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
           "certificateStoreName": <certificate store name, e.g.: "MY">,
           "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
-          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
+          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: ["https://myvault.vault.azure.net/secrets/mycertificate", "https://myvault.vault.azure.net/secrets/mycertificate2"]>
         }      
       }
       }
@@ -154,7 +154,7 @@ A Azure PowerShell használatával telepítheti a Key Vault virtuálisgép-bőv�
         { "pollingIntervalInS": "' + <pollingInterval> + 
         '", "certificateStoreName": "' + <certStoreName> + 
         '", "certificateStoreLocation": "' + <certStoreLoc> + 
-        '", "observedCertificates": ["' + <observedCerts> + '"] } }'
+        '", "observedCertificates": ["' + <observedCert1> + '","' + <observedCert2> + '"] } }'
         $extName =  "KeyVaultForWindows"
         $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForWindows"
@@ -174,7 +174,7 @@ A Azure PowerShell használatával telepítheti a Key Vault virtuálisgép-bőv�
         { "pollingIntervalInS": "' + <pollingInterval> + 
         '", "certificateStoreName": "' + <certStoreName> + 
         '", "certificateStoreLocation": "' + <certStoreLoc> + 
-        '", "observedCertificates": ["' + <observedCerts> + '"] } }'
+        '", "observedCertificates": ["' + <observedCert1> + '","' + <observedCert2> + '"] } }'
         $extName = "KeyVaultForWindows"
         $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForWindows"
@@ -200,7 +200,7 @@ Az Azure CLI használatával telepítheti a Key Vault virtuálisgép-bővítmén
          --publisher Microsoft.Azure.KeyVault `
          -resource-group "<resourcegroup>" `
          --vm-name "<vmName>" `
-         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCerts> \"] }}'
+         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 
 * A bővítmény üzembe helyezése virtuálisgép-méretezési csoporton:
@@ -211,7 +211,7 @@ Az Azure CLI használatával telepítheti a Key Vault virtuálisgép-bővítmén
          --publisher Microsoft.Azure.KeyVault `
          -resource-group "<resourcegroup>" `
          --vmss-name "<vmName>" `
-         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCerts> \"] }}'
+         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 
 Vegye figyelembe a következő korlátozásokat/követelményeket:
@@ -221,31 +221,30 @@ Vegye figyelembe a következő korlátozásokat/követelményeket:
 
 ## <a name="troubleshoot-and-support"></a>Hibakeresés és támogatás
 
-### <a name="troubleshoot"></a>Hibaelhárítás
-
-A bővítmények állapotával kapcsolatos adatok beolvashatók a Azure Portalból és a Azure PowerShell használatával. Egy adott virtuális gép bővítményeinek telepítési állapotának megtekintéséhez futtassa az alábbi parancsot a Azure PowerShell használatával.
-
 ### <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 * A beállítható observedCertificates száma korlátozott?
   Nem, Key Vault virtuálisgép-bővítmény nem korlátozza a observedCertificates számát.
 
-## <a name="azure-powershell"></a>Azure PowerShell
+### <a name="troubleshoot"></a>Hibaelhárítás
+
+A bővítmények állapotával kapcsolatos adatok beolvashatók a Azure Portalból és a Azure PowerShell használatával. Egy adott virtuális gép bővítményeinek telepítési állapotának megtekintéséhez futtassa az alábbi parancsot a Azure PowerShell használatával.
+
+**Azure PowerShell**
 ```powershell
 Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+**Azure CLI**
 ```azurecli
  az vm get-instance-view --resource-group <resource group name> --name  <vmName> --query "instanceView.extensions"
 ```
 
-A bővítmény végrehajtásának kimenete a következő fájlba van naplózva:
+#### <a name="logs-and-configuration"></a>Naplók és konfiguráció
 
 ```
 %windrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows\<version>\akvvm_service_<date>.log
 ```
-
 
 ### <a name="support"></a>Támogatás
 

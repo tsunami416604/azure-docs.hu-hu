@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 68a393865038722f2fd7fa5e42334f8d5e760951
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3de5a449e90452307f3c9b02c725050df6fdd873
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70078851"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925679"
 ---
 # <a name="sap-hana-availability-across-azure-regions"></a>SAP HANA rendelkezésre állás Azure-régiók között
 
@@ -74,7 +74,7 @@ A több cél replikálással rendelkező lehetséges architektúra a következő
 
 Ha a szervezet a második (DR) Azure-régióban magas rendelkezésre állási készültségi követelményekkel rendelkezik, akkor az architektúra a következőképpen fog kinézni:
 
-![Három virtuális gép ábrázolása két régióban Milti – cél](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
+![Diagram, amely a második (DR) Azure-régióban magas rendelkezésre állási készültségi követelményekkel rendelkező szervezetet mutat be.](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
 
 
 A logreplay as Operations mód használata esetén ez a konfiguráció egy alacsony RTO rendelkező RPO = 0 értéket biztosít az elsődleges régión belül. A konfiguráció emellett a tisztességes RPO is biztosítja, ha a második régióba való áttérés is részt vesz. A második régió RTO időpontja attól függ, hogy az adatkészlet előre be van-e töltve. Számos ügyfél használja a másodlagos régióban található virtuális gépet egy tesztelési rendszer futtatásához. Ebben az esetben az adathalmaz nem tölthető be előre.
@@ -82,7 +82,7 @@ A logreplay as Operations mód használata esetén ez a konfiguráció egy alacs
 > [!IMPORTANT]
 > A különböző rétegek közötti műveleti módoknak homogénnek kell lenniük. Az 1. és a 2. szinten **nem** használhatja a logreply, és a 3. szintű delta_datashipping. Az összes réteghez konzisztensnek kell lennie, vagy más működési módot kell választania. Mivel a delta_datashipping nem alkalmas a RPO = 0 érték megadására, a többrétegű konfigurációk esetében az egyetlen ésszerű működési mód marad a logreplay. A működési módokkal és bizonyos korlátozásokkal kapcsolatos részletekért tekintse meg az SAP-cikkek [működési módjait SAP HANA rendszer-replikáláshoz](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html)című témakört. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A konfigurációk Azure-beli beállításával kapcsolatos részletes útmutatásért lásd:
 

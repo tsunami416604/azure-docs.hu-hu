@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.custom: contperfq1
 ms.date: 06/18/2020
-ms.openlocfilehash: ed5c7eee1e8261c65decba4748e1d9c6a4d7212b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18270a2f435428824714067749fc18ce2addc535
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91459812"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913041"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Azure Stream Analyticsek hibakeresése erőforrás-naplók használatával
 
@@ -38,13 +38,13 @@ Stream Analytics kétféle naplót kínál:
 
 A Tevékenységnaplók alapértelmezés szerint be vannak kapcsolva, és magas szintű betekintést nyújtanak a Stream Analytics-feladatok által végrehajtott műveletekre. A tevékenység naplóiban található információk segíthetnek megtalálni a feladatát befolyásoló problémák kiváltó okát. A következő lépések végrehajtásával használhatja a Stream Analyticsi tevékenység naplóit:
 
-1. Jelentkezzen be a Azure Portalba, és válassza a **műveletnapló** lehetőséget az **Áttekintés**területen.
+1. Jelentkezzen be a Azure Portalba, és válassza a **műveletnapló** lehetőséget az **Áttekintés** területen.
 
    ![Stream Analytics tevékenység naplója](./media/stream-analytics-job-diagnostic-logs/stream-analytics-menu.png)
 
 2. A végrehajtott műveletek listája látható. Minden olyan művelet, amely a feladat hibáját okozta, piros információs buborékmal rendelkezik.
 
-3. Kattintson egy műveletre az összesítő nézet megtekintéséhez. Az itt található információk gyakran korlátozottak. Ha további információt szeretne megtudni a műveletről, kattintson a **JSON**elemre.
+3. Kattintson egy műveletre az összesítő nézet megtekintéséhez. Az itt található információk gyakran korlátozottak. Ha további információt szeretne megtudni a műveletről, kattintson a **JSON** elemre.
 
    ![Stream Analytics tevékenység naplózási műveletének összegzése](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
 
@@ -62,29 +62,29 @@ Az erőforrás-naplók bekapcsolása és a Azure Monitor naplókba való elküld
 
 1.  Ha még nem rendelkezik ilyennel, hozzon létre egy Log Analytics munkaterületet. Azt javasoljuk, hogy a Log Analytics munkaterülete ugyanabban a régióban legyen, mint a Stream Analytics feladatokkal.
 
-2.  Jelentkezzen be a Azure Portalba, és navigáljon a Stream Analytics feladatokhoz. A **figyelés**területen válassza a **diagnosztikai naplók**lehetőséget. Ezután kattintson **a diagnosztika bekapcsolása**elemre.
+2.  Jelentkezzen be a Azure Portalba, és navigáljon a Stream Analytics feladatokhoz. A **figyelés** területen válassza a **diagnosztikai naplók** lehetőséget. Ezután kattintson **a diagnosztika bekapcsolása** elemre.
 
     ![Panel navigálás az erőforrás-naplókhoz](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  Adjon meg egy **nevet** a **diagnosztikai beállítások nevében** **, és**keresse meg a **végrehajtáshoz** és a **szerzői** műveletekhez tartozó jelölőnégyzeteket a **AllMetrics** **alatt.** Ezután válassza a **küldés log Analytics** lehetőséget, és válassza ki a munkaterületet. Kattintson a **Mentés** gombra.
+2.  Adjon meg egy **nevet** a **diagnosztikai beállítások nevében** **, és** keresse meg a **végrehajtáshoz** és a **szerzői** műveletekhez tartozó jelölőnégyzeteket a **AllMetrics** **alatt.** Ezután válassza a **küldés log Analytics** lehetőséget, és válassza ki a munkaterületet. Kattintson a **Mentés** gombra.
 
     ![Az erőforrás-naplók beállításai](./media/stream-analytics-job-diagnostic-logs/logs-setup.png)
 
 3. A Stream Analytics-feladatok indításakor a rendszer átirányítja az erőforrás-naplókat a Log Analytics-munkaterületre. Ha meg szeretné tekinteni a feladathoz tartozó erőforrás-naplókat, válassza a **figyelés** szakaszban található **naplók** lehetőséget.
 
-   ![Erőforrás-naplók a figyelés alatt](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
+   ![Képernyőfelvétel: az általános menü, ahol a naplók ki vannak választva.](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
 
-4. Stream Analytics olyan előre definiált lekérdezéseket biztosít, amelyek segítségével könnyedén megkeresheti a kívánt naplókat. Bármelyik előre definiált lekérdezést kiválaszthatja a bal oldali ablaktáblán, majd a **Futtatás**elemet is kiválaszthatja. A lekérdezés eredményei az alsó ablaktáblán jelennek meg. 
+4. Stream Analytics olyan előre definiált lekérdezéseket biztosít, amelyek segítségével könnyedén megkeresheti a kívánt naplókat. Bármelyik előre definiált lekérdezést kiválaszthatja a bal oldali ablaktáblán, majd a **Futtatás** elemet is kiválaszthatja. A lekérdezés eredményei az alsó ablaktáblán jelennek meg. 
 
-   ![Erőforrás-naplók a figyelés alatt](./media/stream-analytics-job-diagnostic-logs/logs-example.png)
+   ![A képernyőképen egy Stream Analytics feladatokhoz tartozó naplók láthatók.](./media/stream-analytics-job-diagnostic-logs/logs-example.png)
 
 ## <a name="resource-log-categories"></a>Erőforrás-naplók kategóriái
 
 Azure Stream Analytics az erőforrás-naplók két kategóriáját rögzíti:
 
-* **Szerzői**műveletek: rögzíti a feladatok létrehozásához kapcsolódó műveleteket, például a feladatok létrehozását, a bemenetek és kimenetek hozzáadását és törlését, a lekérdezés hozzáadását és frissítését, valamint a feladatok elindítását és leállítását.
+* **Szerzői** műveletek: rögzíti a feladatok létrehozásához kapcsolódó műveleteket, például a feladatok létrehozását, a bemenetek és kimenetek hozzáadását és törlését, a lekérdezés hozzáadását és frissítését, valamint a feladatok elindítását és leállítását.
 
-* **Végrehajtás**: rögzíti a feladatok végrehajtása során előforduló eseményeket.
+* **Végrehajtás** : rögzíti a feladatok végrehajtása során előforduló eseményeket.
     * Csatlakozási hibák
     * Adatfeldolgozási hibák, beleértve az alábbiakat:
         * Azok az események, amelyek nem felelnek meg a lekérdezés definíciójának (nem egyező mezőtípus és értékek, hiányzó mezők stb.)
@@ -98,11 +98,11 @@ Az összes napló JSON formátumban van tárolva. Mindegyik bejegyzés a követk
 Név | Leírás
 ------- | -------
 time | A napló időbélyegzője (UTC).
-resourceId | Annak az erőforrásnak az azonosítója, amelyre a művelet bekerült, nagybetűvel. Magában foglalja az előfizetés-azonosítót, az erőforráscsoportot és a feladatnév nevét. Például: **/Subscriptions/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/My-Resource-Group/Providers/Microsoft. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
-category | Napló kategóriája, **végrehajtás** vagy **szerzői**művelet.
-operationName | A naplózott művelet neve. Például az **események küldése: az SQL kimeneti írási hiba mysqloutput**.
+resourceId | Annak az erőforrásnak az azonosítója, amelyre a művelet bekerült, nagybetűvel. Magában foglalja az előfizetés-azonosítót, az erőforráscsoportot és a feladatnév nevét. Például: **/Subscriptions/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/My-Resource-Group/Providers/Microsoft. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB** .
+category | Napló kategóriája, **végrehajtás** vagy **szerzői** művelet.
+operationName | A naplózott művelet neve. Például az **események küldése: az SQL kimeneti írási hiba mysqloutput** .
 status | A művelet állapota. Például sikertelen vagy **sikeres** **volt** .
-szint | Naplózási szint. Például: **hiba**, **Figyelmeztetés**vagy **tájékoztató**.
+szint | Naplózási szint. Például: **hiba** , **Figyelmeztetés** vagy **tájékoztató** .
 properties | Naplóbejegyzés-specifikus részletek, JSON-karakterláncként szerializálva. További információkért tekintse meg a cikk következő részeit.
 
 ### <a name="execution-log-properties-schema"></a>Végrehajtási napló tulajdonságai sémája
@@ -117,16 +117,16 @@ Név | Leírás
 ------- | -------
 Forrás | A feladathoz tartozó bemenet vagy kimenet neve, ahol a hiba történt.
 Üzenet | A hibához tartozó üzenet.
-Típus | A hiba típusa. Például: **DataConversionError**, **CsvParserError**vagy **ServiceBusPropertyColumnMissingError**.
+Típus | A hiba típusa. Például: **DataConversionError** , **CsvParserError** vagy **ServiceBusPropertyColumnMissingError** .
 Adatok | Olyan információkat tartalmaz, amelyek hasznosak a hiba forrásának pontos megtalálásához. A mérettől függően a csonkítás függ.
 
 A **operationName** értékétől függően az adathibák a következő sémával rendelkeznek:
 
 * Az **események szerializálása** az esemény-olvasási műveletek során következik be. Akkor fordulnak elő, ha a bemeneti adatok nem felelnek meg a lekérdezési sémának az alábbi okok valamelyike miatt:
 
-   * A következő *típus nem egyezik az esemény (de) szerializálásakor*: a hibát okozó mezőt azonosítja.
+   * A következő *típus nem egyezik az esemény (de) szerializálásakor* : a hibát okozó mezőt azonosítja.
 
-   * *Nem lehet olvasni egy eseményt, érvénytelen szerializálás*: felsorolja a bemeneti adatok azon helyével kapcsolatos információkat, ahol a hiba történt. Tartalmazza a Blobok bemenetének, eltolásának és az adatok mintájának a nevét.
+   * *Nem lehet olvasni egy eseményt, érvénytelen szerializálás* : felsorolja a bemeneti adatok azon helyével kapcsolatos információkat, ahol a hiba történt. Tartalmazza a Blobok bemenetének, eltolásának és az adatok mintájának a nevét.
 
 * Az **események küldése** az írási műveletek során történik. A hibát okozó folyamatos átviteli eseményt azonosítják.
 
@@ -138,7 +138,7 @@ Név | Leírás
 -------- | --------
 Hiba | választható Hiba adatai. Általában ez a kivételi információ, ha elérhető.
 Üzenet| A naplózási üzenet.
-Típus | Az üzenet típusa. Leképezés a hibák belső kategorizálására. Például: **JobValidationError** vagy **BlobOutputAdapterInitializationFailure**.
+Típus | Az üzenet típusa. Leképezés a hibák belső kategorizálására. Például: **JobValidationError** vagy **BlobOutputAdapterInitializationFailure** .
 Korrelációs azonosító | GUID, amely egyedileg azonosítja a feladatok végrehajtását. Az összes végrehajtási naplóbejegyzés abban az időponttól kezdve, amíg a feladatoknak nem kell megegyezniük a **korrelációs azonosító** értékével.
 
 ## <a name="next-steps"></a>Következő lépések

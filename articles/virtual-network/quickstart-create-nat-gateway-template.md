@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: allensu
 ms.custom: subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 6b953c0183943e895c8836f79c1b8e81a22fb31d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 95856db9288e5860dfab47dce506d1e7d6de1ffc
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792276"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913330"
 ---
 # <a name="quickstart-create-a-nat-gateway---arm-template"></a>Rövid útmutató: NAT Gateway-ARM-sablon létrehozása
 
@@ -54,26 +54,18 @@ Az Ubuntu virtuális gép a NAT-átjáró erőforrásához társított alhálóz
 A sablonban kilenc Azure-erőforrás van definiálva:
 
 * **[Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)** : létrehoz egy hálózati biztonsági csoportot.
-
 * **[Microsoft. Network/networkSecurityGroups/securityRules](/azure/templates/microsoft.network/networksecuritygroups/securityrules)** : biztonsági szabály létrehozása.
-
 * **[Microsoft. Network/nyilvános IP](/azure/templates/microsoft.network/publicipaddresses)** : létrehoz egy nyilvános IP-címet.
-
 * **[Microsoft. Network/publicIPPrefixes](/azure/templates/microsoft.network/publicipprefixes)** : létrehoz egy nyilvános IP-előtagot.
-
 * **[Microsoft. számítás/virtualMachines](/azure/templates/Microsoft.Compute/virtualMachines)** : létrehoz egy virtuális gépet.
-
 * **[Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)** : létrehoz egy virtuális hálózatot.
-
 * **[Microsoft. Network/natGateways](/azure/templates/microsoft.network/natgateways)** : létrehoz egy NAT Gateway-erőforrást.
-
 * **[Microsoft. Network/virtualNetworks/Subnets](/azure/templates/microsoft.network/virtualnetworks/subnets)** : létrehoz egy virtuális hálózati alhálózatot.
-
 * **[Microsoft. Network/networkinterfaces](/azure/templates/microsoft.network/networkinterfaces)** : létrehoz egy hálózati adaptert.
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-### <a name="azure-cli"></a>Azure CLI
+**Azure CLI**
 
 ```azurecli-interactive
 read -p "Enter the location (i.e. westcentralus): " location
@@ -89,7 +81,7 @@ az group deployment create \
 --template-uri  $templateUri
 ```
 
-### <a name="azure-powershell"></a>Azure PowerShell
+**Azure PowerShell**
 
 ```azurepowershell-interactive
 $location = Read-Host -Prompt "Enter the location (i.e. westcentralus)"
@@ -101,13 +93,13 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri
 ```
 
-### <a name="azure-portal"></a>Azure Portal
+**Azure Portal**
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-nat-gateway-1-vm%2Fazuredeploy.json)
 
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Válassza ki az **erőforráscsoportok** elemet a bal oldali ablaktáblán.
 
@@ -119,7 +111,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
-### <a name="azure-cli"></a>Azure CLI
+**Azure CLI**
 
 Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-delete) paranccsal eltávolíthatja az erőforráscsoportot és a benne található összes erőforrást.
 
@@ -128,7 +120,7 @@ Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-dele
     --name myResourceGroupNAT
 ```
 
-### <a name="azure-powershell"></a>Azure PowerShell
+**Azure PowerShell**
 
 Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal távolíthatja el az erőforráscsoportot és a benne található összes erőforrást.
 
@@ -136,7 +128,7 @@ Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.re
 Remove-AzResourceGroup -Name myResourceGroupNAT
 ```
 
-### <a name="azure-portal"></a>Azure Portal
+**Azure Portal**
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a NAT-átjárót és az összes kapcsolódó erőforrást. Válassza ki a NAT-átjárót tartalmazó erőforráscsoport- **myResourceGroupNAT** , majd válassza a **Törlés** lehetőséget.
 

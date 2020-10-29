@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan dolgozhat párhuzamos számítási feladatait a
 ms.topic: how-to
 ms.date: 06/01/2018
 ms.custom: H1Hack27Feb2017, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 9cbf7dcb5b0f6f43b4fc5d69127e817dceea650e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 704b73ab43f40a5542e80ffebc4ab34edfc446dc
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108065"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913789"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Linuxos számítási csomópontok kiépítése a Batch-készletekben
 
@@ -37,7 +37,7 @@ A virtuálisgép-rendszerképek hivatkozásának konfigurálásakor meg kell adn
 | --- | --- |
 | Publisher |Canonical |
 | Ajánlat |UbuntuServer |
-| SKU |18,04 – LTS |
+| Termékváltozat |18,04 – LTS |
 | Verzió |legújabb |
 
 > [!TIP]
@@ -46,7 +46,8 @@ A virtuálisgép-rendszerképek hivatkozásának konfigurálásakor meg kell adn
 >
 
 ### <a name="node-agent-sku"></a>Csomópont-ügynök SKU
-A Batch-csomóponti ügynök egy olyan program, amely a készlet minden egyes csomópontján fut, és a parancs-és vezérlési felületet biztosítja a csomópont és a Batch szolgáltatás között. A csomópont-ügynök különböző implementációkat mutat be különböző operációs rendszerekhez. Alapvetően a virtuálisgép-konfiguráció létrehozásakor először meg kell adnia a virtuális gép rendszerképének hivatkozását, majd meg kell adnia a rendszerképre telepítendő csomópont-ügynököt. Az egyes csomópontok ügynökei általában több virtuálisgép-lemezképtel kompatibilisek. Íme néhány példa a Node Agent-SKU-ra:
+
+A [Batch-csomóponti ügynök](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md) egy olyan program, amely a készlet minden egyes csomópontján fut, és a parancs-és vezérlési felületet biztosítja a csomópont és a Batch szolgáltatás között. A csomópont-ügynök különböző implementációkat mutat be különböző operációs rendszerekhez. Alapvetően a virtuálisgép-konfiguráció létrehozásakor először meg kell adnia a virtuális gép rendszerképének hivatkozását, majd meg kell adnia a rendszerképre telepítendő csomópont-ügynököt. Az egyes csomópontok ügynökei általában több virtuálisgép-lemezképtel kompatibilisek. Íme néhány példa a Node Agent-SKU-ra:
 
 * Batch. Node. Ubuntu 18,04
 * Batch. Node. CentOS 7
@@ -276,11 +277,11 @@ tvm-1219235766_4-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50001
 Jelszó helyett egy nyilvános SSH-kulcsot is megadhat, amikor felhasználót hoz létre egy csomóponton. A Python SDK-ban használja a **ssh_public_key** paramétert a [ComputeNodeUser][py_computenodeuser]. A .NET-ben használja a [ComputeNodeUser][net_computenodeuser]. [SshPublicKey][net_ssh_key] tulajdonság.
 
 ## <a name="pricing"></a>Díjszabás
-Azure Batch az Azure Cloud Servicesra és az Azure Virtual Machines technológiára épül. Maga a Batch szolgáltatás díjmentesen érhető el, ami azt jelenti, hogy kizárólag a Batch-megoldások által felhasznált számítási erőforrások (és a hozzájuk kapcsolódó költségek) után kell fizetni. Ha **Cloud Services konfigurációt**választ, a [Cloud Services díjszabási][cloud_services_pricing] struktúra alapján kell fizetnie. A **virtuális gép konfigurációjának**kiválasztásakor a [Virtual Machines díjszabási][vm_pricing] struktúra alapján kell fizetnie.
+Azure Batch az Azure Cloud Servicesra és az Azure Virtual Machines technológiára épül. Maga a Batch szolgáltatás díjmentesen érhető el, ami azt jelenti, hogy kizárólag a Batch-megoldások által felhasznált számítási erőforrások (és a hozzájuk kapcsolódó költségek) után kell fizetni. Ha **Cloud Services konfigurációt** választ, a [Cloud Services díjszabási][cloud_services_pricing] struktúra alapján kell fizetnie. A **virtuális gép konfigurációjának** kiválasztásakor a [Virtual Machines díjszabási][vm_pricing] struktúra alapján kell fizetnie.
 
 Ha [alkalmazáscsomag](batch-application-packages.md)használatával helyezi üzembe az alkalmazásokat a Batch-csomópontokon, akkor az alkalmazáscsomag által felhasznált Azure Storage-erőforrásokért is fizetnie kell.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A GitHubon az [Azure-batch-Samples][github_samples] adattárában található [Python-kód][github_samples_py] olyan parancsfájlokat tartalmaz, amelyek bemutatják, hogyan hajtható végre az általános batch-műveletek, például a készlet, a feladat és a feladat létrehozása. A Python-mintákhoz tartozó [readme][github_py_readme] tartalmazza a szükséges csomagok telepítésének részleteit.
 

@@ -9,17 +9,17 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 5ff9c95e51f63de77ca20dee965718687daae5f4
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: b09dfe8e585dbcb6b8b1289fc551cec12d86c6db
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897769"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92924975"
 ---
 > [!IMPORTANT]
 > * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Tekintse meg az alábbi dokumentációt. 
 
-[Dokumentáció](https://docs.microsoft.com/python/api/azure-ai-formrecognizer)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Csomag (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Példák](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
+[Dokumentáció](/python/api/azure-ai-formrecognizer)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Csomag (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Példák](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -75,7 +75,7 @@ Az űrlap-felismerő használatával két különböző típusú ügyfél hozhat
 * Egyéni modell másolása az egyik űrlap-felismerő erőforrásból egy másikba.
 
 > [!NOTE]
-> A modellek grafikus felhasználói felülettel is betanítható, például az [űrlap-felismerő címkéző eszköz](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)használatával.
+> A modellek grafikus felhasználói felülettel is betanítható, például az [űrlap-felismerő címkéző eszköz](../../quickstarts/label-tool.md)használatával.
 
 ## <a name="code-examples"></a>Kódpéldák
 
@@ -103,7 +103,7 @@ Hozzá kell adnia a képzési és tesztelési adatok URL-címeire mutató hivatk
 * Használja az alábbi mintákban található minta-és beérkezési képeket (a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) is elérhetők), vagy a fenti lépésekkel lekérheti az egyes dokumentumok sas URL-címét a blob Storage-ban. 
 
 > [!NOTE]
-> Az útmutatóban szereplő kódrészletek az URL-címek által elért távoli űrlapokat használják. Ha ehelyett a helyi űrlapos dokumentumokat szeretné feldolgozni, tekintse meg a kapcsolódó módszereket a [dokumentációban](https://docs.microsoft.com/python/api/azure-ai-formrecognizer) és a [mintákban](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
+> Az útmutatóban szereplő kódrészletek az URL-címek által elért távoli űrlapokat használják. Ha ehelyett a helyi űrlapos dokumentumokat szeretné feldolgozni, tekintse meg a kapcsolódó módszereket a [dokumentációban](/python/api/azure-ai-formrecognizer) és a [mintákban](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
 
 ## <a name="recognize-form-content"></a>Űrlap tartalmának felismerése
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/12/2020
-ms.openlocfilehash: 7dd23f481409eb3498893c1c7f9c0fd8311b9af2
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 0a06bbeb4946f03b9cb6e5b1400521a0abffdd7f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901606"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913534"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-sql-data-warehouse-by-using-azure-data-factory"></a>Adatmásolás és átalakítás az Azure szinapszis Analyticsben (korábban SQL Data Warehouse) a használatával Azure Data Factory
 
@@ -42,7 +42,7 @@ Másolási tevékenység esetén ez az Azure szinapszis Analytics-összekötő a
 
 - Adatmásolás SQL-hitelesítéssel és Azure Active Directory (Azure AD) alkalmazás-jogkivonat hitelesítéssel az Azure-erőforrásokhoz tartozó egyszerű szolgáltatásnév vagy felügyelt identitás használatával.
 - Forrásként egy SQL-lekérdezés vagy tárolt eljárás használatával kérhet le egy adatforrást. A részleteket az Azure szinapszis Analytics-forrásból [származó párhuzamos](#parallel-copy-from-synapse-analytics) másolással is megtekintheti.
-- Fogadóként az adatok betöltését a [Base](#use-polybase-to-load-data-into-azure-synapse-analytics) vagy a [copy utasítás](#use-copy-statement) (előzetes verzió) vagy a tömeges Beszúrás használatával. A jobb másolási teljesítmény érdekében javasolt a Base vagy a COPY utasítás (előzetes verzió). Az összekötő támogatja a céltábla automatikus létrehozását is, ha az nem létezik a forrásoldali séma alapján.
+- Fogadóként az adatok betöltése a [Base](#use-polybase-to-load-data-into-azure-synapse-analytics) vagy a [copy utasítás](#use-copy-statement) vagy a tömeges Beszúrás használatával. A jobb másolási teljesítmény érdekében javasolt a Base vagy a COPY utasítás használata. Az összekötő támogatja a céltábla automatikus létrehozását is, ha az nem létezik a forrásoldali séma alapján.
 
 > [!IMPORTANT]
 > Ha Azure Data Factory Integration Runtime használatával másol Adatmásolást, konfigurálja a [kiszolgálói szintű tűzfalszabály](../azure-sql/database/firewall-configure.md) használatát, hogy az Azure-szolgáltatások hozzáférhessenek a [logikai SQL-kiszolgálóhoz](../azure-sql/database/logical-servers.md).
@@ -51,7 +51,7 @@ Másolási tevékenység esetén ez az Azure szinapszis Analytics-összekötő a
 ## <a name="get-started"></a>Bevezetés
 
 > [!TIP]
-> A legjobb teljesítmény eléréséhez használja a Base-t az adatok Azure szinapszis Analyticsbe való betöltéséhez. Az [adatok Azure szinapszis analyticsbe való betöltéséhez használja](#use-polybase-to-load-data-into-azure-synapse-analytics) a következőt:. A használati eseteket bemutató bemutatóért lásd: [1 TB betöltése az Azure szinapszis Analytics szolgáltatásba 15 perc alatt, Azure Data Factory](load-azure-sql-data-warehouse.md).
+> A legjobb teljesítmény eléréséhez használja a Base vagy a COPY utasítást az adatok Azure szinapszis Analyticsbe való betöltéséhez. Az [adatoknak az Azure szinapszis analyticsbe való betöltéséhez](#use-polybase-to-load-data-into-azure-synapse-analytics) , valamint a [copy utasítás használatával az adatok Azure szinapszis Analytics-szakaszban való betöltéséhez](#use-copy-statement) használja a következőt:. A használati eseteket bemutató bemutatóért lásd: [1 TB betöltése az Azure szinapszis Analytics szolgáltatásba 15 perc alatt, Azure Data Factory](load-azure-sql-data-warehouse.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -478,7 +478,7 @@ A [Base](/sql/relational-databases/polybase/polybase-guide) használatával nagy
 - Ha a forrás adattárat és a formátumot eredetileg nem a Base támogatja, használja a **[szakaszos másolást a kiindulási funkció használatával](#staged-copy-by-using-polybase)** . Az előkészített másolási funkció jobb átviteli sebességet is biztosít. A szolgáltatás automatikusan konvertálja az adatok alap-kompatibilis formátumba, tárolja az Azure Blob Storage-ban tárolt adatok mennyiségét, majd az adatok betöltését kéri az Azure szinapszis Analyticsbe.
 
 > [!TIP]
-> További információ a [Base használatának ajánlott eljárásairól](#best-practices-for-using-polybase). Ha Azure Integration Runtime-nal használ, a hatékony adatintegrációs egységek (DIUs-EK) mindig 2. A DIU finomhangolása nem befolyásolja a teljesítményt, mivel a tárolóból származó adatok betöltését a szinapszis motorja látja el.
+> További információ a [Base használatának ajánlott eljárásairól](#best-practices-for-using-polybase). Ha a Azure Integration Runtime-nal, a közvetlen vagy a többfázisú tároláshoz szükséges hatékony [adatintegrációs egységek (DIU-EK)](copy-activity-performance-features.md#data-integration-units) használatakor a rendszer mindig 2. A DIU finomhangolása nem befolyásolja a teljesítményt, mivel a tárolóból származó adatok betöltését a szinapszis motorja látja el.
 
 A másolási tevékenység alatt a következő alapbeállítások támogatottak `polyBaseSettings` :
 
@@ -507,7 +507,8 @@ Ha a követelmények nem teljesülnek, Azure Data Factory ellenőrzi a beállít
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Fiók kulcsának hitelesítése, felügyelt identitások hitelesítése |
 
     >[!IMPORTANT]
-    >Ha az Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor felügyelt identitás-hitelesítést kell használnia – a [VNet szolgáltatás-végpontok Azure Storage-ban való használatának következményeire](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)utal. Ismerje meg az [Azure Blob által felügyelt identitás-hitelesítés](connector-azure-blob-storage.md#managed-identity) és a [Azure Data Lake Storage Gen2 által felügyelt identitás-hitelesítési](connector-azure-data-lake-storage.md#managed-identity) szakasz Data Factory szükséges konfigurációit.
+    >- Ha felügyelt identitás-hitelesítést használ a Storage-beli társított szolgáltatáshoz, olvassa el az [Azure blobhoz](connector-azure-blob-storage.md#managed-identity) szükséges konfigurációkat, illetve a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .
+    >- Ha az Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor a Storage-fiókon engedélyezve van a "megbízható Microsoft-szolgáltatás engedélyezése" nevű felügyelt identitás-hitelesítés, lásd: a [VNet szolgáltatás-végpontok Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)-ban való használatának következményei.
 
 2. A **forrásadatok formátuma** a következő konfigurációkkal rendelkező **parketta** , **ork** vagy **tagolt szöveg** :
 
@@ -567,7 +568,8 @@ Ha a forrásadatok nem natív módon kompatibilisek a-alapú alkalmazásokkal, e
 A szolgáltatás használatához hozzon létre egy [azure blob Storage társított szolgáltatást](connector-azure-blob-storage.md#linked-service-properties) , vagy [Azure Data Lake Storage Gen2 társított szolgáltatást](connector-azure-data-lake-storage.md#linked-service-properties) olyan **fiók kulccsal vagy felügyelt identitás-hitelesítéssel** , amely az Azure Storage-fiókra hivatkozik átmeneti tárolóként.
 
 >[!IMPORTANT]
->Ha az előkészítési Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor felügyelt identitás-hitelesítést kell használnia – a [VNet szolgáltatás-végpontok Azure Storage-ban való használatának következményeire](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)utal. Az [Azure Blob által felügyelt identitás-hitelesítés](connector-azure-blob-storage.md#managed-identity) és a [Azure Data Lake Storage Gen2 által felügyelt identitás-hitelesítés](connector-azure-data-lake-storage.md#managed-identity)Data Factory szükséges konfigurációinak megismerése.
+>- Ha a felügyelt identitások hitelesítését használja az átmeneti társított szolgáltatáshoz, olvassa el az [Azure Blob](connector-azure-blob-storage.md#managed-identity) szükséges konfigurációit, illetve a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .
+>- Ha az előkészítési Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor a Storage-fiókban engedélyezve van a "megbízható Microsoft-szolgáltatás engedélyezése" nevű felügyelt identitás-hitelesítés, lásd: a [VNet szolgáltatás-végpontok Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)-ban való használatának következményei. 
 
 ```json
 "activities":[
@@ -673,7 +675,7 @@ Az Azure szinapszis Analytics [copy utasítása](/sql/t-sql/statements/copy-into
 >Jelenleg Data Factory csak a COPY utasítással kompatibilis, alább említett forrásokból származó másolást támogatja.
 
 >[!TIP]
->A COPY utasítás Azure Integration Runtime használatával történő használatakor a hatékony adatintegrációs egységek (DIUs-EK) mindig 2. A DIU finomhangolása nem befolyásolja a teljesítményt, mivel a tárolóból származó adatok betöltését a szinapszis motorja látja el.
+>A COPY utasítás Azure Integration Runtime használatával történő használatakor a hatékony [adatintegrációs egységek (DIU-EK)](copy-activity-performance-features.md#data-integration-units) mindig 2. A DIU finomhangolása nem befolyásolja a teljesítményt, mivel a tárolóból származó adatok betöltését a szinapszis motorja látja el.
 
 A COPY utasítás használata a következő konfigurációt támogatja:
 
@@ -687,7 +689,8 @@ A COPY utasítás használata a következő konfigurációt támogatja:
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | [Tagolt szöveg](format-delimited-text.md)<br/>[Parquet](format-parquet.md)<br/>[ORC](format-orc.md) | Fiók kulcsának hitelesítése, egyszerű szolgáltatásnév hitelesítése, felügyelt identitások hitelesítése |
 
     >[!IMPORTANT]
-    >Ha az Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor felügyelt identitás-hitelesítést kell használnia – a [VNet szolgáltatás-végpontok Azure Storage-ban való használatának következményeire](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)utal. Ismerje meg az [Azure Blob által felügyelt identitás-hitelesítés](connector-azure-blob-storage.md#managed-identity) és a [Azure Data Lake Storage Gen2 által felügyelt identitás-hitelesítési](connector-azure-data-lake-storage.md#managed-identity) szakasz Data Factory szükséges konfigurációit.
+    >- Ha felügyelt identitás-hitelesítést használ a Storage-beli társított szolgáltatáshoz, olvassa el az [Azure blobhoz](connector-azure-blob-storage.md#managed-identity) szükséges konfigurációkat, illetve a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .
+    >- Ha az Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor a Storage-fiókon engedélyezve van a "megbízható Microsoft-szolgáltatás engedélyezése" nevű felügyelt identitás-hitelesítés, lásd: a [VNet szolgáltatás-végpontok Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)-ban való használatának következményei.
 
 2. A formátum beállításai a következők:
 
@@ -769,7 +772,10 @@ Az Azure szinapszis Analytics szolgáltatáshoz tartozó beállítások a forrá
 
 **Bemenet** Válassza ki, hogy a forrást egy táblán, ```Select * from <table-name>``` vagy egy egyéni SQL-lekérdezést adjon meg.
 
-**Előkészítés engedélyezése** Javasoljuk, hogy ezt a beállítást a szinapszis DW-forrásokkal rendelkező éles számítási feladatokban használja. Ha egy folyamatból Synapase-forrásokkal rendelkező adatfolyam-tevékenységet hajt végre, az ADF egy átmeneti tárolási hely Storage-fiókját fogja kérni, és ezt fogja használni az előkészített adatok betöltéséhez. Ez a leggyorsabb mechanizmus a szinapszis DW-ből származó adatok betöltéséhez.
+**Előkészítés engedélyezése** Erősen ajánlott ezt a lehetőséget az éles számítási feladatokhoz használni az Azure szinapszis analitikai forrásaival. Amikor az Azure szinapszis Analytics-forrásokból [adatáramlási tevékenységet](control-flow-execute-data-flow-activity.md) hajt végre egy folyamatból, az ADF megkéri az előkészítési hely Storage-fiókját, és az előkészített adatok betöltését fogja használni. Ez az Azure szinapszis Analyticsből származó adatok betöltésének leggyorsabb mechanizmusa.
+
+- Ha felügyelt identitás-hitelesítést használ a Storage-beli társított szolgáltatáshoz, olvassa el az [Azure blobhoz](connector-azure-blob-storage.md#managed-identity) szükséges konfigurációkat, illetve a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .
+- Ha az Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor a Storage-fiókon engedélyezve van a "megbízható Microsoft-szolgáltatás engedélyezése" nevű felügyelt identitás-hitelesítés, lásd: a [VNet szolgáltatás-végpontok Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)-ban való használatának következményei.
 
 **Lekérdezés** : Ha a beviteli mezőben a lekérdezés lehetőséget választotta, adjon meg egy SQL-lekérdezést a forráshoz. Ez a beállítás felülbírálja az adatkészletben kiválasztott összes táblát. Az **Order by** záradékok itt nem támogatottak, de a teljes select from utasítással is megadható. A felhasználó által definiált Table functions is használható. a **select * from udfGetData ()** egy olyan UDF az SQL-ben, amely egy táblázatot ad vissza. Ez a lekérdezés létrehoz egy forrástábla, amelyet az adatfolyamatában használhat. A lekérdezések használata nagyszerű lehetőséget nyújt a sorok tesztelésre vagy keresésekre való csökkentésére is.
 
@@ -798,7 +804,10 @@ Az Azure szinapszis Analytics szolgáltatáshoz tartozó beállítások a fogad�
 - Újból létrehozva: a tábla eldobása és újbóli létrehozása megtörténik. Új tábla dinamikus létrehozásakor szükséges.
 - Csonkítás: a céltábla összes sora el lesz távolítva.
 
-**Előkészítés engedélyezése:** Meghatározza, hogy az Azure szinapszis Analytics szolgáltatásba való íráskor kell-e használni a [viszonyítási alapot](/sql/relational-databases/polybase/polybase-guide)
+**Előkészítés engedélyezése:** Meghatározza, hogy az Azure szinapszis Analytics szolgáltatásba való íráskor kell-e használni a [bázisterület](/sql/relational-databases/polybase/polybase-guide) használatát. Az előkészítési tároló az adatfolyam- [művelet végrehajtása tevékenységben](control-flow-execute-data-flow-activity.md)van konfigurálva. 
+
+- Ha felügyelt identitás-hitelesítést használ a Storage-beli társított szolgáltatáshoz, olvassa el az [Azure blobhoz](connector-azure-blob-storage.md#managed-identity) szükséges konfigurációkat, illetve a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .
+- Ha az Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor a Storage-fiókon engedélyezve van a "megbízható Microsoft-szolgáltatás engedélyezése" nevű felügyelt identitás-hitelesítés, lásd: a [VNet szolgáltatás-végpontok Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)-ban való használatának következményei.
 
 **Köteg mérete** : azt határozza meg, hogy hány sort kell megírni az egyes gyűjtők. A nagyobb méretű kötegek növelik a tömörítési és a memória-optimalizálást, de a gyorsítótárban tárolt adatmennyiség miatt kifogytak a memória
 

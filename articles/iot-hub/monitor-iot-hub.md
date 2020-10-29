@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: 5e2f5e067f0a1d5c13179b3d6175b3aebf6a43fd
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a8f9c46487422deb4513768dff04f559af952f7b
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548551"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926257"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Az Azure IoT Hub figyelése
 
@@ -54,11 +54,14 @@ A platform metrikáit és a tevékenység naplóját a rendszer automatikusan ö
 
 Az erőforrás-naplók gyűjtése és tárolása addig nem történik meg, amíg létre nem hozza a diagnosztikai beállításokat, és egy vagy több helyre irányítja őket.
 
-A metrikák és naplók átirányíthatók egy Log Analytics munkaterületre, ahol Azure Monitor naplók használatával elemezhetők. Az Azure Storage-ba archiválásra és offline elemzésre; vagy egy Event Hubs-végpontra, ahol külső alkalmazások, például harmadik féltől származó SIEM-eszközök is olvashatók.
+A metrikák és naplók több helyen is átirányíthatók, többek között:
+- A Azure Monitor naplók tárolása egy társított Log Analytics-munkaterületen keresztül. Ezeket a Log Analytics használatával lehet elemezni.
+- Azure Storage archiválásra és offline elemzésre 
+- Egy Event Hubs-végpont, ahol külső alkalmazások, például harmadik féltől származó SIEM-eszközök is olvashatók.
 
 Azure Portal a IoT hub bal oldali paneljén a **figyelés** elemre kattintva, majd a diagnosztikai beállítások **hozzáadása** lehetőséggel **kiválaszthatja** az IoT hub által kibocsátott naplókra és platform-metrikára kiterjedő diagnosztikai beállításokat.
 
-Az alábbi képernyőképen egy diagnosztikai beállítás látható az erőforrás-naplókban és az összes platform metrikájában a Log Analytics munkaterületre való útválasztási kapcsolódási műveletekhez.
+Az alábbi képernyőfelvételen egy diagnosztikai beállítás látható az erőforrás-napló típusának *kapcsolódási műveleteinek* és minden platform metrikájának egy log Analytics munkaterületre történő átirányításához.
 
 :::image type="content" source="media/monitor-iot-hub/diagnostic-setting-portal.png" alt-text="Alapértelmezett metrikai diagramok az IoT hub – áttekintés oldalon.":::
 
@@ -86,7 +89,7 @@ Egyes IoT Hub mérőszámok, például [útválasztási metrikák](monitor-iot-h
 
 ## <a name="analyzing-logs"></a>Naplók elemzése
 
-Azure Monitor naplókban lévő, az egyes táblákban található, egyedi tulajdonságokkal rendelkező táblázatokban tárolt adathalmazok. Az Azure Monitor naplókról további információt a Azure Monitor dokumentációjának [Azure monitor naplók áttekintése](/azure/azure-monitor/platform/data-platform-logs) című részében talál. 
+Azure Monitor naplókban lévő, az egyes táblákban található, egyedi tulajdonságokkal rendelkező táblázatokban tárolt adathalmazok. A táblázatok adatai Log Analytics munkaterülethez vannak társítva, és Log Analyticsban kérhetők le. Az Azure Monitor naplókról további információt a Azure Monitor dokumentációjának [Azure monitor naplók áttekintése](/azure/azure-monitor/platform/data-platform-logs) című részében talál. 
 
 Az adatok Azure Monitor naplókba való továbbításához létre kell hoznia egy diagnosztikai beállítást, amely erőforrás-naplókat vagy platform-metrikákat küld egy Log Analytics munkaterületre. További információ: [gyűjtemény és útválasztás](#collection-and-routing).
 
@@ -128,7 +131,7 @@ A következő táblázat a különböző Azure IoT SDK-k által használt SDK-ne
 | com. microsoft. Azure. iothub. Service. SDK | Java Service SDK |
 | com. microsoft. Azure. SDK. IOT. IOT-Device-Client | Java-eszköz SDK |
 | com. microsoft. Azure. SDK. IOT. IOT-Service-Client | Java Service SDK |
-| C | Beágyazott C |
+| C# | Beágyazott C |
 | C + (OSSimplified = Azure RTOS) | Azure RTOS |
 
 Ha IoT Hub erőforrás-naplókon végez lekérdezéseket, kinyerheti az SDK Version tulajdonságát. A következő lekérdezés például kinyeri az SDK Version tulajdonságát (és az eszköz AZONOSÍTÓját) a kapcsolatok műveletek által visszaadott tulajdonságokból. Ez a két tulajdonság a művelet időpontjával és annak az IoT hub erőforrás-azonosítójával együtt íródik, amelyhez az eszköz csatlakozik.

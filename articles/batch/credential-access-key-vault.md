@@ -2,18 +2,18 @@
 title: A Key Vault biztonságos elérése a Batch használatával
 description: Megtudhatja, hogyan férhet hozzá programozott módon a hitelesítő adataihoz Key Vault a Azure Batch használatával.
 ms.topic: how-to
-ms.date: 02/13/2020
+ms.date: 10/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6938d0fcd2357efcf03053b0c9b2bde3954270b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71e647c05a84c70fe61a66458801bf7390dcb653
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079438"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913211"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>A Key Vault biztonságos elérése a Batch használatával
 
-Ebből a cikkből megtudhatja, hogyan állíthatja be a Batch-csomópontokat a Azure Key Vault tárolt hitelesítő adatok biztonságos eléréséhez. Nincs értelme a rendszergazdai hitelesítő adatoknak a Key Vault-ben való elhelyezésében, majd a Key Vault parancsfájlokból való eléréséhez szükséges merevlemez-kódolási hitelesítő adatokkal. A megoldás egy olyan tanúsítvány használata, amely engedélyezi a Batch-csomópontok számára a Key Vault elérését. Néhány lépéssel a Batch biztonságos kulcstárolóját is megvalósíthatja.
+Ebből a cikkből megtudhatja, hogyan állíthatja be a Batch-csomópontokat a [Azure Key Vault](../key-vault/general/overview.md)tárolt hitelesítő adatok biztonságos eléréséhez. Nincs értelme a rendszergazdai hitelesítő adatoknak a Key Vault-ben való elhelyezésében, majd a Key Vault parancsfájlokból való eléréséhez szükséges merevlemez-kódolási hitelesítő adatokkal. A megoldás egy olyan tanúsítvány használata, amely engedélyezi a Batch-csomópontok számára a Key Vault elérését.
 
 A Batch-csomópontok Azure Key Vault való hitelesítéséhez a következők szükségesek:
 
@@ -46,12 +46,7 @@ pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificat
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-A Key Vaulthoz való hozzáférést egy **felhasználó** vagy egy **egyszerű szolgáltatásnév**kapja meg. Ha programozott módon szeretné elérni Key Vault, használjon egy egyszerű szolgáltatást az előző lépésben létrehozott tanúsítvánnyal.
-
-Az Azure-szolgáltatásokkal kapcsolatos további információkért lásd: [alkalmazás-és szolgáltatásnév-objektumok Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md).
-
-> [!NOTE]
-> Az egyszerű szolgáltatásnak ugyanabban az Azure AD-bérlőben kell lennie, mint a Key Vault.
+A Key Vaulthoz való hozzáférést egy **felhasználó** vagy egy **egyszerű szolgáltatásnév** kapja meg. Ha programozott módon szeretné elérni Key Vault, használjon egy [egyszerű szolgáltatást](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) az előző lépésben létrehozott tanúsítvánnyal. Az egyszerű szolgáltatásnak ugyanabban az Azure AD-bérlőben kell lennie, mint a Key Vault.
 
 ```powershell
 $now = [System.DateTime]::Parse("2020-02-10")
@@ -72,7 +67,7 @@ Az alkalmazás URL-címei nem fontosak, mivel csak Key Vault-hozzáféréshez ha
 
 ## <a name="grant-rights-to-key-vault"></a>Jogosultságok megadása Key Vault
 
-Az előző lépésben létrehozott egyszerű szolgáltatásnév jogosult a titkok beolvasására Key Vaultból. Az engedélyek a Azure Portalon vagy az alábbi PowerShell-parancson keresztül adhatók meg.
+Az előző lépésben létrehozott egyszerű szolgáltatásnév jogosult a titkok beolvasására Key Vaultból. Az engedélyek a [Azure Portalon](/key-vault/general/assign-access-policy-portal.md) vagy az alábbi PowerShell-parancson keresztül adhatók meg.
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"https://batch.mydomain.com' -PermissionsToSecrets 'Get'
@@ -82,13 +77,13 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"
 
 Hozzon létre egy batch-készletet, majd nyissa meg a készlet tanúsítvány lapját, és rendelje hozzá a létrehozott tanúsítványt. A tanúsítvány most már az összes batch-csomóponton található.
 
-Ezután a tanúsítványt a Batch-fiókhoz kell rendelni. A tanúsítványnak a fiókhoz való hozzárendelésével lehetővé válik, hogy hozzárendelje a készletekhez, majd a csomópontokhoz. Ennek a legegyszerűbb módja, ha a Batch-fiókját megnyitja a portálon, navigáljon a **tanúsítványokhoz**, és válassza a **Hozzáadás**lehetőséget. Töltse fel a `.pfx` [Tanúsítvány beszerzése](#obtain-a-certificate) és a jelszó megadásával létrehozott fájlt. Ha elkészült, a rendszer hozzáadja a tanúsítványt a listához, és ellenőrizheti az ujjlenyomatot.
+Ezután rendelje hozzá a tanúsítványt a Batch-fiókhoz. A tanúsítványnak a fiókhoz való hozzárendelésével a Batch hozzárendelheti a készletekhez, majd a csomópontokhoz. Ennek a legegyszerűbb módja, ha a Batch-fiókját megnyitja a portálon, navigáljon a **tanúsítványokhoz** , és válassza a **Hozzáadás** lehetőséget. Töltse fel a `.pfx` korábban létrehozott fájlt, és adja meg a jelszót. Ha elkészült, a rendszer hozzáadja a tanúsítványt a listához, és ellenőrizheti az ujjlenyomatot.
 
-Most, amikor létrehoz egy batch-készletet, megteheti a készletben lévő **tanúsítványokat** , és hozzárendelheti a készlethez létrehozott tanúsítványt. Ha így tesz, győződjön meg róla, hogy az áruház helyének **LocalMachine** választja. A tanúsítvány a készlet összes köteg csomópontjára betöltődik.
+Miután létrehoz egy batch-készletet, megnyithatja a készletben lévő **tanúsítványokat** , és hozzárendelheti a készlethez létrehozott tanúsítványt. Ha így tesz, győződjön meg róla, hogy az áruház helyének **LocalMachine** választja. A tanúsítvány a készlet összes köteg csomópontjára betöltődik.
 
 ## <a name="install-azure-powershell"></a>Az Azure PowerShell telepítése
 
-Ha a csomópontokon PowerShell-parancsfájlok használatával tervezi a Key Vault elérését, akkor telepítenie kell a Azure PowerShell könyvtárat. Ezt többféleképpen is megteheti, ha a csomópontjain telepítve van a Windows Management Framework (WMF) 5, az install-Module paranccsal pedig letöltheti azt. Ha olyan csomópontokat használ, amelyek nem rendelkeznek a WMF 5-öt, akkor a telepítés legegyszerűbb módja, ha a Azure PowerShell `.msi` fájlt a Batch-fájlokkal együtt szeretné felépíteni, majd hívja meg a telepítőt a Batch indítási parancsfájl első részeként. A részletekért tekintse meg a következő példát:
+Ha a csomópontokon PowerShell-parancsfájlok használatával tervezi a Key Vault elérését, akkor telepítenie kell a Azure PowerShell könyvtárat. Ha a csomópontjain telepítve van a Windows Management Framework (WMF) 5, az install-Module paranccsal töltheti le. Ha olyan csomópontokat használ, amelyek nem rendelkeznek a WMF 5-öt, a telepítés legegyszerűbb módja, ha a Azure PowerShell `.msi` fájlt a Batch-fájlokkal együtt csomagolja, majd a Batch indítási parancsfájl első részeként hívja meg a telepítőt. A részletekért tekintse meg a következő példát:
 
 ```powershell
 $psModuleCheck=Get-Module -ListAvailable -Name Azure -Refresh
@@ -99,7 +94,7 @@ if($psModuleCheck.count -eq 0) {
 
 ## <a name="access-key-vault"></a>A Key Vault elérése
 
-Most már minden beállítással elérheti Key Vault a Batch-csomópontokon futó parancsfájlokban. Ha egy parancsfájlból szeretne Key Vault hozzáférni, mindössze annyit kell tennie, hogy a parancsfájlt a tanúsítvány használatával hitelesítse az Azure AD-ben. Ehhez a PowerShellben a következő példában szereplő parancsokat használhatja. Adja meg az **ujjlenyomathoz**tartozó megfelelő GUID azonosítót, az **alkalmazás azonosítóját** (az egyszerű szolgáltatásnév azonosítóját) és a **bérlő azonosítóját** (az a bérlő, ahol a szolgáltatás létezik).
+Most már készen áll a Batch-csomópontokon futó parancsfájlokban való Key Vault elérésére. Ha egy parancsfájlból szeretne Key Vault hozzáférni, mindössze annyit kell tennie, hogy a parancsfájlt a tanúsítvány használatával hitelesítse az Azure AD-ben. Ehhez a PowerShellben a következő példában szereplő parancsokat használhatja. Adja meg az **ujjlenyomathoz** tartozó megfelelő GUID azonosítót, az **alkalmazás azonosítóját** (az egyszerű szolgáltatásnév azonosítóját) és a **bérlő azonosítóját** (az a bérlő, ahol a szolgáltatás létezik).
 
 ```powershell
 Add-AzureRmAccount -ServicePrincipal -CertificateThumbprint -ApplicationId
@@ -112,3 +107,9 @@ $adminPassword=Get-AzureKeyVaultSecret -VaultName BatchVault -Name batchAdminPas
 ```
 
 Ezek a parancsfájlban használandó hitelesítő adatok.
+
+## <a name="next-steps"></a>Következő lépések
+
+- További információ a [Azure Key Vaultról](../key-vault/general/overview.md).
+- Tekintse át a [Batch Azure biztonsági alaptervét](security-baseline.md).
+- Ismerkedjen meg a Batch-szolgáltatásokkal, például a [számítási csomópontokhoz való hozzáférés konfigurálásával](pool-endpoint-configuration.md), a [Linux számítási csomópontok használatával](batch-linux-nodes.md)és [a privát végpontok használatával](private-connectivity.md).

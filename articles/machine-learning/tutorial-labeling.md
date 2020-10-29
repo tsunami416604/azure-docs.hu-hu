@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 9e24a652bb4e577ff9b604b6b4f5284883723ee5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36c5f0103908ea150cbe6eb373e25f7d741127f5
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906707"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913262"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Oktatóanyag: címkézési projekt létrehozása a többosztályos képek besorolásához 
 
@@ -42,7 +42,7 @@ Ebben az oktatóanyagban a macskák és kutyák képeit fogja használni.  Mivel
 
 Az Azure Machine Learning munkaterület a felhőben található alapvető erőforrás, amely a gépi tanulási modellek kipróbálásához, betanításához és üzembe helyezéséhez használható. Az Azure-előfizetést és az erőforráscsoportot egy könnyen felhasználható objektumhoz fűzi a szolgáltatásban.
 
-A munkaterületet az Azure-erőforrások kezeléséhez használható webalapú konzolon Azure Portal segítségével hozhatja létre.
+[A munkaterület többféleképpen is létrehozható](how-to-manage-workspace.md). Ebben az oktatóanyagban egy munkaterületet hoz létre az Azure-erőforrások kezeléséhez használható webalapú konzolon Azure Portal használatával.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
@@ -58,19 +58,19 @@ Ezután a Azure Machine Learning Studióban felügyeli az adatcímkéző projekt
 
 Azure Machine Learning adattárolók a kapcsolódási adatok tárolására szolgálnak, például az előfizetés-AZONOSÍTÓval és a jogkivonat-hitelesítéssel. Itt egy adattárral csatlakozhat ahhoz a Storage-fiókhoz, amely az oktatóanyaghoz tartozó lemezképeket tartalmazza.
 
-1. A munkaterület bal **oldalán válassza az**adattárolók lehetőséget.
+1. A munkaterület bal **oldalán válassza az** adattárolók lehetőséget.
 
-1. Válassza az **+ új adattár**lehetőséget.
+1. Válassza az **+ új adattár** lehetőséget.
 
 1. Töltse ki az űrlapot a következő beállításokkal:
 
     Mező|Leírás 
     ---|---
-    Adattár neve | Adja meg az adattár nevét.  Itt a **labeling_tutorial**használjuk.
-    Adattár típusa | Válassza ki a tároló típusát.  Itt az **Azure Blob Storaget**használjuk, a lemezképek előnyben részesített tárhelyét.
-    Fiók kiválasztása módszer | Válassza az **ENTER manuálisan**lehetőséget.
+    Adattár neve | Adja meg az adattár nevét.  Itt a **labeling_tutorial** használjuk.
+    Adattár típusa | Válassza ki a tároló típusát.  Itt az **Azure Blob Storaget** használjuk, a lemezképek előnyben részesített tárhelyét.
+    Fiók kiválasztása módszer | Válassza az **ENTER manuálisan** lehetőséget.
     URL-cím | `https://azureopendatastorage.blob.core.windows.net/openimagescontainer`
-    Hitelesítéstípus | Válasszon **sas-tokent**.
+    Hitelesítéstípus | Válasszon **sas-tokent** .
     Fiókkulcs | `?sv=2019-02-02&ss=bfqt&srt=sco&sp=rl&se=2025-03-25T04:51:17Z&st=2020-03-24T20:51:17Z&spr=https&sig=7D7SdkQidGT6pURQ9R4SUzWGxZ%2BHlNPCstoSRRVg8OY%3D`
 
 1. Válassza a **Létrehozás** lehetőséget az adattár létrehozásához.
@@ -79,9 +79,9 @@ Azure Machine Learning adattárolók a kapcsolódási adatok tárolására szolg
 
 Most, hogy hozzáfér a címkével ellátni kívánt adataihoz, hozza létre a címkézési projektet.
 
-1. A lap tetején válassza a **projektek**lehetőséget.
+1. A lap tetején válassza a **projektek** lehetőséget.
 
-1. Válassza a **+ projekt hozzáadása**elemet.
+1. Válassza a **+ projekt hozzáadása** elemet.
 
     :::image type="content" source="media/tutorial-labeling/create-project.png" alt-text="Projekt létrehozása":::
 
@@ -91,22 +91,22 @@ Most, hogy hozzáfér a címkével ellátni kívánt adataihoz, hozza létre a c
 
     Mező|Leírás 
     ---|---
-    Projektnév | Adjon nevet a projektnek.  Itt az **oktatóanyag-macskák-n-Dogs**-ket fogjuk használni.
-    Feladattípus címkézése | Válassza a **Képbesorolás többosztályos**lehetőséget.  
+    Projektnév | Adjon nevet a projektnek.  Itt az **oktatóanyag-macskák-n-Dogs** -ket fogjuk használni.
+    Feladattípus címkézése | Válassza a **Képbesorolás többosztályos** lehetőséget.  
     
     Kattintson a **tovább** gombra a projekt létrehozásának folytatásához.
 
 ### <a name="select-or-create-a-dataset"></a>Adatkészlet kiválasztása vagy létrehozása
 
-1.   A **válasszon ki vagy hozzon létre egy adatkészletet** űrlapon válassza a második lehetőséget, **hozzon létre egy adatkészletet**, majd válassza ki a hivatkozást az **adattárból**.
+1.   A **válasszon ki vagy hozzon létre egy adatkészletet** űrlapon válassza a második lehetőséget, **hozzon létre egy adatkészletet** , majd válassza ki a hivatkozást az **adattárból** .
 
 1. Használja a következő inputot az **adatkészlet létrehozása adattárból** űrlapból:
 
-    1. Az **alapszintű információ** űrlapon adjon meg egy nevet, itt a **képek-for-tutorial**használatát fogjuk használni.  Ha szeretné, adja meg a leírást.  Ezután kattintson a **Tovább** gombra.
-    1. Az **adattár kiválasztása** űrlapon a legördülő listából válassza ki a **korábban létrehozott**adattárat, például **tutorial_images (Azure Blob Storage)**
-    1. Ezután továbbra is az **adattár kiválasztása** űrlapon válassza a **Tallózás** lehetőséget, majd válassza a **többosztályos DogsCats**lehetőséget.  Válassza a **Mentés** lehetőséget a **/MultiClass-DogsCats** elérési útvonalként való használatához.
+    1. Az **alapszintű információ** űrlapon adjon meg egy nevet, itt a **képek-for-tutorial** használatát fogjuk használni.  Ha szeretné, adja meg a leírást.  Ezután kattintson a **Tovább** gombra.
+    1. Az **adattár kiválasztása** űrlapon a legördülő listából válassza ki a **korábban létrehozott** adattárat, például **tutorial_images (Azure Blob Storage)**
+    1. Ezután továbbra is az **adattár kiválasztása** űrlapon válassza a **Tallózás** lehetőséget, majd válassza a **többosztályos DogsCats** lehetőséget.  Válassza a **Mentés** lehetőséget a **/MultiClass-DogsCats** elérési útvonalként való használatához.
     1. A **tovább** gombra kattintva erősítse meg a részleteket, majd **hozzon** létre az adatkészlet létrehozásához.
-    1. Válassza ki az adatkészlet neve melletti kört a listában, például **képek-for-tutorial**.
+    1. Válassza ki az adatkészlet neve melletti kört a listában, például **képek-for-tutorial** .
 
 1. Kattintson a **tovább** gombra a projekt létrehozásának folytatásához.
 
@@ -118,7 +118,7 @@ A folytatáshoz válassza a **Tovább** gombot.
 
 ### <a name="label-classes"></a>Címkézési osztályok
 
-1. A **címkézési osztályok** űrlapon írja be a címke nevét, majd válassza a **+ címke hozzáadása** lehetőséget a következő címke beírásához.  Ebben a projektben a címkék a következők: **Cat**, **Dog**és **bizonytalan**.
+1. A **címkézési osztályok** űrlapon írja be a címke nevét, majd válassza a **+ címke hozzáadása** lehetőséget a következő címke beírásához.  Ebben a projektben a címkék a következők: **Cat** , **Dog** és **bizonytalan** .
 
 1. Válassza a **tovább** lehetőséget, ha az összes címkét felvette.
 
@@ -134,7 +134,7 @@ A folytatáshoz válassza a **Tovább** gombot.
 
 1. Válassza a **Create project** (Projekt létrehozása) lehetőséget.
 
-Ez a lap nem frissül automatikusan. Egy szüneteltetés után manuálisan frissítse a lapot, amíg a projekt állapota **létre**nem változik.
+Ez a lap nem frissül automatikusan. Egy szüneteltetés után manuálisan frissítse a lapot, amíg a projekt állapota **létre** nem változik.
 
 ## <a name="start-labeling"></a>Címkézés indítása
 
@@ -142,17 +142,17 @@ Most beállította az Azure-erőforrásokat, és konfigurált egy adatcímkéző
 
 ### <a name="tag-the-images"></a>A képek címkézése
 
-Az oktatóanyagnak ebben a részében a *projekt rendszergazdájától* származó szerepköröket egy *Labeler*kell váltania.  Bárki, aki közreműködői hozzáféréssel rendelkezik a munkaterülethez, Labeler válhat.
+Az oktatóanyagnak ebben a részében a *projekt rendszergazdájától* származó szerepköröket egy *Labeler* kell váltania.  Bárki, aki közreműködői hozzáféréssel rendelkezik a munkaterülethez, Labeler válhat.
 
 1. A [Machine learning Studióban](https://ml.azure.com)válassza a bal oldalon található **adatfelirat** lehetőséget a projekt megkereséséhez.  
 
 1. Válassza ki a projekthez tartozó **címke hivatkozást** .
 
-1. Olvassa el az utasításokat, majd válassza a **feladatok**lehetőséget.
+1. Olvassa el az utasításokat, majd válassza a **feladatok** lehetőséget.
 
 1. Válasszon ki egy miniatűr képet a jobb oldalon, és jelenítse meg a felcímkézni kívánt képek számát egy ugrásban. Az összes lemezképet fel kell címkéznie, mielőtt továbblép. Csak akkor váltson át elrendezést, ha a címkézetlen adatlapok friss lapja van. Az elrendezések váltás törli az oldal folyamatban lévő címkézési feltételeit.
 
-1. Válasszon ki egy vagy több rendszerképet, majd válasszon ki egy címkét, amelyet alkalmazni szeretne a kijelölésre. A címke a rendszerkép alatt jelenik meg.  Folytassa az összes rendszerkép kijelölését és címkézését az oldalon.  Az összes megjelenített kép egyidejű kiválasztásához válassza **az összes kijelölése**lehetőséget. Válasszon ki legalább egy képet a címke alkalmazásához.
+1. Válasszon ki egy vagy több rendszerképet, majd válasszon ki egy címkét, amelyet alkalmazni szeretne a kijelölésre. A címke a rendszerkép alatt jelenik meg.  Folytassa az összes rendszerkép kijelölését és címkézését az oldalon.  Az összes megjelenített kép egyidejű kiválasztásához válassza **az összes kijelölése** lehetőséget. Válasszon ki legalább egy képet a címke alkalmazásához.
 
 
     > [!TIP]
@@ -178,7 +178,7 @@ Vezetőként érdemes áttekinteni a Labeler munkáját.
 
 1. Az irányítópulton a projekt előrehaladása látható.
 
-1. Az oldal **tetején válassza az adatelemet**.
+1. Az oldal **tetején válassza az adatelemet** .
 
 1. A címkézett képek megtekintéséhez a bal oldalon válassza a **címkézett adat** lehetőséget.  
 
@@ -194,18 +194,18 @@ A képfeliratokat [kókusz formátumban](http://cocodataset.org/#format-data) va
 
 1. Válassza ki a projekt neve hivatkozást.
 
-1. Válassza az **Exportálás** lehetőséget, majd válassza **az Exportálás Azure ml-adatkészletként**lehetőséget. 
+1. Válassza az **Exportálás** lehetőséget, majd válassza **az Exportálás Azure ml-adatkészletként** lehetőséget. 
 
     Az Exportálás állapota közvetlenül az **Exportálás** gomb alatt jelenik meg. 
 
 1. A címkék sikeres exportálása után a bal oldalon található **adatkészletek** elemre kattintva megtekintheti az eredményeket.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a képeket címkézte.  Most használja a címkével ellátott adatait:
 

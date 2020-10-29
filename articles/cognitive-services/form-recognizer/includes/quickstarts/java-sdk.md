@@ -10,17 +10,17 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 0dc4528147a144ed9887ae1becfbbe2aa4b9fcf3
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: fa15b48cff73b567187aa078bec02aa82e41e665
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897693"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92924992"
 ---
 > [!IMPORTANT]
 > Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja.
 
-[Dokumentáció](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme?view=azure-java-preview)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src)  |  [Csomag (Maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer)  |  [Példák](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
+[Dokumentáció](/java/api/overview/azure/ai-formrecognizer-readme?view=azure-java-preview)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src)  |  [Csomag (Maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer)  |  [Példák](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -134,7 +134,7 @@ Az űrlap-felismerő használatával két különböző típusú ügyfél hozhat
 - Egyéni modell másolása az egyik űrlap-felismerő erőforrásból egy másikba.
 
 > [!NOTE]
-> A modellek grafikus felhasználói felülettel is betanítható, például az [űrlap-felismerő címkéző eszköz](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)használatával.
+> A modellek grafikus felhasználói felülettel is betanítható, például az [űrlap-felismerő címkéző eszköz](../../quickstarts/label-tool.md)használatával.
 
 ## <a name="code-examples"></a>Kódpéldák
 

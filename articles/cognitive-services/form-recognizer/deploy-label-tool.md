@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c7c4e1cc854fdd2fbf03d2274992bbc4a3bb93af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df800938d568af0b94cfb1d368ef32e9b085b6eb
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88717897"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913109"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>A mintacímkézési eszköz üzembe helyezése
 
@@ -43,7 +43,7 @@ Az alábbi lépéseket követve hozzon létre egy új erőforrást a Azure Porta
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/signin/index/).
 2. Válassza az **Erőforrás létrehozása** lehetőséget. 
-3. Ezután válassza a **webalkalmazás**lehetőséget. 
+3. Ezután válassza a **webalkalmazás** lehetőséget. 
 
    > [!div class="mx-imgBorder"]
    > ![Webalkalmazás kiválasztása](./media/quickstarts/formre-create-web-app.png)
@@ -95,14 +95,14 @@ Az alábbi lépéseket követve hozzon létre egy új erőforrást a Azure Porta
    > [!div class="mx-imgBorder"]
    > ![A Docker konfigurálása](./media/quickstarts/formre-configure-docker.png)
 
-7. Ennyi az egész. Ezután válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás** lehetőséget a webalkalmazás üzembe helyezéséhez. Ha elkészült, elérheti a webalkalmazást az erőforrás **áttekintésében** megadott URL-címen.
+7. Ennyi az egész. Ezután válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás** lehetőséget a webalkalmazás üzembe helyezéséhez. Ha elkészült, elérheti a webalkalmazást az erőforrás **áttekintésében** megadott URL-címen.
 
 > [!NOTE]
 > A webalkalmazás létrehozásakor konfigurálhatja az engedélyezést és a hitelesítést is. Ez nem szükséges a kezdéshez. 
 
 ### <a name="azure-cli"></a>Azure CLI
 
-A Azure Portal használatának alternatívájaként az Azure CLI használatával is létrehozhat egy erőforrást. A folytatás előtt telepítenie kell az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)-t. Ezt a lépést kihagyhatja, ha már dolgozik az Azure CLI-vel. 
+A Azure Portal használatának alternatívájaként az Azure CLI használatával is létrehozhat egy erőforrást. A folytatás előtt telepítenie kell az [Azure CLI](/cli/azure/install-azure-cli)-t. Ezt a lépést kihagyhatja, ha már dolgozik az Azure CLI-vel. 
 
 Itt van néhány dolog, amit tudnia kell a paranccsal kapcsolatban:
 
@@ -149,12 +149,12 @@ az container create \
 
 ### <a name="connect-to-azure-ad-for-authorization"></a>Kapcsolódás az Azure AD-hez az engedélyezéshez
 
-Javasoljuk, hogy a webalkalmazást Azure Active Directoryhoz kapcsolja. Ez biztosítja, hogy csak érvényes hitelesítő adatokkal rendelkező felhasználók jelentkezhetnek be és használhatják a webalkalmazást. A Azure Active Directoryhoz való kapcsolódáshoz kövesse az [app Service alkalmazás konfigurálása](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) című témakör utasításait.
+Javasoljuk, hogy a webalkalmazást Azure Active Directoryhoz kapcsolja. Ez biztosítja, hogy csak érvényes hitelesítő adatokkal rendelkező felhasználók jelentkezhetnek be és használhatják a webalkalmazást. A Azure Active Directoryhoz való kapcsolódáshoz kövesse az [app Service alkalmazás konfigurálása](../../app-service/configure-authentication-provider-aad.md) című témakör utasításait.
 
 ## <a name="open-source-on-github"></a>Nyílt forráskód a GitHubon
 
 Az OCR űrlap címkéző eszköze nyílt forráskódú projektként is elérhető a GitHubon. Az eszköz egy reakciós + Redux használatával létrehozott webalkalmazás, amely írógéppel van írva. További részletekért lásd: [OCR űrlap címkézése eszköz](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A betanítási](./quickstarts/label-tool.md) útmutató segítségével megtudhatja, hogyan használhatja az eszközt a betanítási adatok manuális címkézéséhez és a felügyelt tanulás végrehajtásához.
