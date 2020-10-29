@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: fa292f0441369ed13f3f85035a2ec8cc3f5c6723
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae49a8738ba711ac6c77f2e299852ad61f70be56
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85800091"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912905"
 ---
 # <a name="learn-text-moderation-concepts"></a>A szöveg moderálásával kapcsolatos fogalmak megismerése
 
@@ -34,7 +34,7 @@ A szolgáltatástól érkező válaszban az alábbi információk szerepelnek:
 
 ## <a name="profanity"></a>Trágár kifejezések
 
-Ha az API bármely [támogatott nyelven](Text-Moderation-API-Languages.md)észleli a profán kifejezéseket, a válasz tartalmazza ezeket a kifejezéseket. A válasz `Index` az eredeti szöveg helyét () is tartalmazza. A `ListId` következő példában szereplő JSON az [Egyéni kifejezési listában](try-terms-list-api.md) található kifejezésekre vonatkozik, ha vannak ilyenek.
+Ha az API bármely [támogatott nyelven](./language-support.md)észleli a profán kifejezéseket, a válasz tartalmazza ezeket a kifejezéseket. A válasz `Index` az eredeti szöveg helyét () is tartalmazza. A `ListId` következő példában szereplő JSON az [Egyéni kifejezési listában](try-terms-list-api.md) található kifejezésekre vonatkozik, ha vannak ilyenek.
 
 ```json
 "Terms": [
@@ -47,13 +47,13 @@ Ha az API bármely [támogatott nyelven](Text-Moderation-API-Languages.md)észle
 ```
 
 > [!NOTE]
-> A **Language** paraméterhez rendelje hozzá, `eng` vagy hagyja üresen, hogy megjelenjen a gép által támogatott **besorolási** válasz (előzetes verzió funkció). **Ez a funkció csak az angol nyelvet támogatja**.
+> A **Language** paraméterhez rendelje hozzá, `eng` vagy hagyja üresen, hogy megjelenjen a gép által támogatott **besorolási** válasz (előzetes verzió funkció). **Ez a funkció csak az angol nyelvet támogatja** .
 >
 > A **trágár kifejezések** észleléséhez használja a cikkben felsorolt támogatott nyelvek [ISO 639-3 kódját](http://www-01.sil.org/iso639-3/codes.asp) , vagy hagyja üresen.
 
-## <a name="classification"></a>Osztályozás
+## <a name="classification"></a>Besorolás
 
-Content Moderator géppel támogatott **szöveg besorolási funkciója** **csak az angol nyelvet**támogatja, és segít felderíteni a vélhetően nemkívánatos tartalmakat. A megjelölt tartalmat a környezettől függően nem megfelelőként lehet értékelni. Ez az egyes kategóriák valószínűségét közvetíti, és az emberi felülvizsgálatot is javasolhatja. A szolgáltatás egy betanított modellt használ a lehetséges visszaélésszerű, különbözeti vagy diszkriminatív nyelv azonosítására. Ez magában foglalja a szlenget, a rövidített szavakat, a sértőt és a szándékosan hibásan írt szavakat véleményezésre. 
+Content Moderator géppel támogatott **szöveg besorolási funkciója** **csak az angol nyelvet** támogatja, és segít felderíteni a vélhetően nemkívánatos tartalmakat. A megjelölt tartalmat a környezettől függően nem megfelelőként lehet értékelni. Ez az egyes kategóriák valószínűségét közvetíti, és az emberi felülvizsgálatot is javasolhatja. A szolgáltatás egy betanított modellt használ a lehetséges visszaélésszerű, különbözeti vagy diszkriminatív nyelv azonosítására. Ez magában foglalja a szlenget, a rövidített szavakat, a sértőt és a szándékosan hibásan írt szavakat véleményezésre. 
 
 A JSON-kivonat következő kivonata egy példa kimenetet mutat be:
 
@@ -142,7 +142,7 @@ Ha automatikus javítást kér, a válasz tartalmazza a szöveg javított verzi�
 Habár a kifejezések alapértelmezett globális listája a legtöbb esetben remekül működik, érdemes lehet az üzleti igényeknek megfelelő kifejezéseket használni. Előfordulhat például, hogy a felhasználók által létrehozott bejegyzésekből ki szeretné szűrni a versenytárs márkaneveit.
 
 > [!NOTE]
-> A maximális korlát **5 kifejezéslista**, amelyek egyenként **nem haladhatják meg a 10 000 kifejezést**.
+> A maximális korlát **5 kifejezéslista** , amelyek egyenként **nem haladhatják meg a 10 000 kifejezést** .
 >
 
 A következő példa a megfelelő lista AZONOSÍTÓját mutatja be:
@@ -159,6 +159,6 @@ A következő példa a megfelelő lista AZONOSÍTÓját mutatja be:
 
 A Content Moderator egy [kifejezés-lista API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) -t biztosít az egyéni kifejezések listáinak kezelésére szolgáló műveletekkel. Kezdje a [kifejezést a lists API-konzolra](try-terms-list-api.md) , és használja a REST API kódot. Tekintse meg a [.net](term-lists-quickstart-dotnet.md) gyors útmutató listáját is, ha ismeri a Visual studiót és a C#-ot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tesztelje az API-kat a [text moderációs API-konzollal](try-text-api.md). Tekintse meg az [értékeléseket, a munkafolyamatokat és a feladatokat](./review-api.md) , amelyekből megtudhatja, hogyan állíthatja be az emberi felülvizsgálatokat.

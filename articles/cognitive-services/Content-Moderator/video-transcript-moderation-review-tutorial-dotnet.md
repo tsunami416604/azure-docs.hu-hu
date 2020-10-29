@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1f5a68bcf0069663d8ef1101407bea7ee26e9e8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1648bd9a073bca696299e9ed703536db745e7edb
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919289"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912837"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Oktatóanyag: Video- és átiratmoderálás
 
@@ -35,7 +35,7 @@ Ez az oktatóanyag a következőket mutatja be:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Regisztráljon a [Content moderator felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) webhelyére, és hozzon létre egyéni címkéket. Ha segítségre van szüksége ehhez a lépéshez, tekintse meg a [címkék használata](Review-Tool-User-Guide/tags.md) című témakört.
+- Regisztráljon a [Content moderator felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) webhelyére, és hozzon létre egyéni címkéket. Ha segítségre van szüksége ehhez a lépéshez, tekintse meg a [címkék használata](./review-tool-user-guide/configure.md#tags) című témakört.
 
     ![képernyőkép a videó-moderálás egyéni címkékről](images/video-tutorial-custom-tags.png)
 - A minta alkalmazás futtatásához Azure-fiókra, Azure Media Services erőforrásra, Azure Content Moderator erőforrásra és Azure Active Directory hitelesítő adatokra van szükség. Az erőforrások beszerzésével kapcsolatos tudnivalókat a [videó moderálási API](video-moderation-api.md) -útmutatója tartalmazza.
@@ -45,7 +45,7 @@ Ez az oktatóanyag a következőket mutatja be:
 
 Szerkessze a `App.config` fájlt, és adja hozzá a Active Directory bérlő nevét, a szolgáltatási végpontokat és a által jelzett előfizetési kulcsokat `#####` . A következő adatokra lesz szüksége:
 
-|Kulcs|Leírás|
+|Kulcs|Description|
 |-|-|
 |`AzureMediaServiceRestApiEndpoint`|Az Azure Media Services (AMS) API végpontja|
 |`ClientSecret`|Az Azure Media Services előfizetési kulcsa|
@@ -83,7 +83,7 @@ A `Main()` a következő parancssori argumentumokat kezeli:
 Ha nincs parancssori argumentum, a `Main()` meghívja a `GetUserInputs()` parancsot. Ez a metódus arra kéri a felhasználót, hogy adja meg egy videofájl elérési útvonalát, valamint szabja meg, hogy készüljön-e szöveges átirat.
 
 > [!NOTE]
-> A konzol alkalmazás a [Azure Media INDEXER API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) -t használja átiratok létrehozásához a feltöltött videó hangsávján. Az eredmények WebVTT formátumban vannak megadva. További információt erről a formátumról a [webes videók szövegsávos formátumáról](https://developer.mozilla.org/docs/Web/API/WebVTT_API) szóló cikkben találhat.
+> A konzol alkalmazás a [Azure Media INDEXER API](../../media-services/previous/legacy-components.md) -t használja átiratok létrehozásához a feltöltött videó hangsávján. Az eredmények WebVTT formátumban vannak megadva. További információt erről a formátumról a [webes videók szövegsávos formátumáról](https://developer.mozilla.org/docs/Web/API/WebVTT_API) szóló cikkben találhat.
 
 ### <a name="initialize-and-processvideo-methods"></a>Inicializálás és ProcessVideo-módszerek
 
@@ -224,7 +224,7 @@ A videomoderálási feladat eredménye (lásd: [videomoderálás gyors útmutat�
 A `GenerateVTT` jelölő használatakor hangátirat is készül.
 
 > [!NOTE]
-> A konzol alkalmazás a [Azure Media INDEXER API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) -t használja átiratok létrehozásához a feltöltött videó hangsávján. Az eredmények WebVTT formátumban vannak megadva. További információt erről a formátumról a [webes videók szövegsávos formátumáról](https://developer.mozilla.org/docs/Web/API/WebVTT_API) szóló cikkben találhat.
+> A konzol alkalmazás a [Azure Media INDEXER API](../../media-services/previous/legacy-components.md) -t használja átiratok létrehozásához a feltöltött videó hangsávján. Az eredmények WebVTT formátumban vannak megadva. További információt erről a formátumról a [webes videók szövegsávos formátumáról](https://developer.mozilla.org/docs/Web/API/WebVTT_API) szóló cikkben találhat.
 
 ## <a name="create-a-human-review"></a>Emberi felülvizsgálat létrehozása
 
@@ -249,7 +249,7 @@ A következő kép egy az előző lépések eredményeit mutatja.
 
 ## <a name="process-the-transcript"></a>A átirat feldolgozása
 
-Az oktatóanyagban használt kódok eddig a vizuális tartalmakhoz tartoztak. A beszédtartalom értékelése egy különálló (de nem kötelező) folyamat, amely – ahogyan korábban említettük – a hangsávból kinyert átiratot alkalmazza. Ideje megvizsgálnunk a szöveges átiratok készítési folyamatát, valamint azok felhasználását a felülvizsgálat során. Az átiratok készítése az [Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-index-content) szolgáltatás szerepköre.
+Az oktatóanyagban használt kódok eddig a vizuális tartalmakhoz tartoztak. A beszédtartalom értékelése egy különálló (de nem kötelező) folyamat, amely – ahogyan korábban említettük – a hangsávból kinyert átiratot alkalmazza. Ideje megvizsgálnunk a szöveges átiratok készítési folyamatát, valamint azok felhasználását a felülvizsgálat során. Az átiratok készítése az [Azure Media Indexer](../../media-services/previous/media-services-index-content.md) szolgáltatás szerepköre.
 
 Az alkalmazás a következő feladatokat hajtja végre:
 
@@ -319,7 +319,7 @@ Következő lépésként beolvassuk az elemzett szöveges feliratokat a Content 
 
 A `TextScreen()` egy összetett metódus, ezért részletesen ismertetjük.
 
-1. A metódus először soronként elolvassa az átiratot. Az üres sorokat és megbízhatósági pontszámmal rendelkező `NOTE`-elemeket figyelmen kívül hagyja. Kinyeri az időbélyegzőket és szöveges elemeket a fájl *jeleiből*. A jelek a hangsáv szövegét képviselik, és kezdési és befejezési idővel rendelkeznek. A jelek a(z) `-->` sztringet tartalmazó időbélyegvonallal kezdődnek. Ezt egy vagy több sornyi szöveg követi.
+1. A metódus először soronként elolvassa az átiratot. Az üres sorokat és megbízhatósági pontszámmal rendelkező `NOTE`-elemeket figyelmen kívül hagyja. Kinyeri az időbélyegzőket és szöveges elemeket a fájl *jeleiből* . A jelek a hangsáv szövegét képviselik, és kezdési és befejezési idővel rendelkeznek. A jelek a(z) `-->` sztringet tartalmazó időbélyegvonallal kezdődnek. Ezt egy vagy több sornyi szöveg követi.
 
 1. A (`TranscriptProfanity.cs` elemben meghatározott) `CaptionScreentextResult` példányai tárolják az egyes jelek elemzett adatait.  Új időbélyegsor észlelésekor vagy a maximális szöveghossz (1024 karakter) elérésekor a program új `CaptionScreentextResult` elemet ad hozzá a következőhöz: `csrList`. 
 
@@ -358,7 +358,7 @@ Video review successfully completed...
 Total Elapsed Time: 00:05:56.8420355
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban olyan alkalmazást állít be, amely moderálja a videó tartalmát, &mdash; beleértve &mdash; az átirat tartalmát, és a felülvizsgálati eszközben hozza létre az értékeléseket. Következő lépésként tekintse meg a videó moderálásának részleteit.
 

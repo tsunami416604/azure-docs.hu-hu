@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 1aba86efb9ea76fbf060e80b47f9f2f6cdf8ee71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69a66c49d64ab9ba589050e1f20399f7f193b76e
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91872051"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912956"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>Tartalom-moderálási felülvizsgálatok, munkafolyamatok és feladatok
 
@@ -35,7 +35,7 @@ A munkafolyamat egy felhőalapú, testreszabott szűrő a tartalomhoz. A munkafo
 
 ### <a name="view-workflows"></a>Munkafolyamatok megtekintése
 
-A meglévő munkafolyamatok megtekintéséhez nyissa meg a [felülvizsgálati eszközt](https://contentmoderator.cognitive.microsoft.com/) , és válassza a **Beállítások**  >  **munkafolyamatok**lehetőséget.
+A meglévő munkafolyamatok megtekintéséhez nyissa meg a [felülvizsgálati eszközt](https://contentmoderator.cognitive.microsoft.com/) , és válassza a **Beállítások**  >  **munkafolyamatok** lehetőséget.
 
 ![Alapértelmezett munkafolyamat](images/default-workflow-listed.PNG)
 
@@ -72,8 +72,8 @@ A moderálási feladatok egyfajta burkolóként szolgálnak a tartalom moderál�
 
 A feladatok használatának megkezdéséhez tekintse meg a [REST API útmutatót](./try-review-api-job.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tesztelje a [feladatok API-konzolját](try-review-api-job.md), és használja a REST API-kód mintáit. Ha már ismeri a Visual studiót és a C#-ot, tekintse meg a [Jobs .net](moderation-jobs-quickstart-dotnet.md)gyors útmutatóját is. 
-* Felülvizsgálatok esetén Ismerkedjen meg a [felülvizsgálati API-konzollal](try-review-api-review.md), és használja a REST API-kód mintáit. Ezután tekintse meg a [.net](dotnet-sdk-quickstart.md)gyors útmutatójának értékelések szakaszát.
+* Felülvizsgálatok esetén Ismerkedjen meg a [felülvizsgálati API-konzollal](try-review-api-review.md), és használja a REST API-kód mintáit. Ezután tekintse meg a [.net](./client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)gyors útmutatójának értékelések szakaszát.
 * Videós [felülvizsgálatok](video-reviews-quickstart-dotnet.md)esetén használja a videó-felülvizsgálati útmutatót, és Ismerje meg, hogyan [adhat hozzá átiratokat a videó felülvizsgálatához](video-transcript-reviews-quickstart-dotnet.md).

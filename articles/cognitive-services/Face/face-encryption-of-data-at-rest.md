@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: eab90fc2cb30ae8e9f1c19bdbefc6fbc88c32f76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c6f4f7db312355b719deb434bf6a46fa55eec9d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079268"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912786"
 ---
 # <a name="face-service-encryption-of-data-at-rest"></a>Az inaktív adatok arc-szolgáltatásbeli titkosítása
 
@@ -30,5 +30,5 @@ A Face szolgáltatás automatikusan titkosítja az adatait, amikor azt a felhőb
 ## <a name="next-steps"></a>Következő lépések
 
 * A CMK támogató szolgáltatások teljes listájáért lásd: [ügyfél által felügyelt kulcsok Cognitive Services](../encryption/cognitive-services-encryption-keys-portal.md)
-* [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?
+* [Mi az Azure Key Vault](../../key-vault/general/overview.md)?
 * [Cognitive Services Customer-Managed kulcs kérésének űrlapja](https://aka.ms/cogsvc-cmk)

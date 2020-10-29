@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: 6ddb2ecef3a70ed6a56b404e64cef5b78b7abd13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb0aff6692a12ca7fb00090c0585e46f37c84ace
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980467"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913024"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>A Threat Modeling Tool első lépései
 
-A Microsoft Threat Modeling Tool 2018-2018 as verziójának kiadása ingyenes **[kattintással letölthető](https://aka.ms/threatmodelingtool)**. A kézbesítési mechanizmus változása lehetővé teszi számunkra, hogy a legújabb javításokat és hibajavításokat minden alkalommal leküldje az ügyfeleknek, amikor megnyitják az eszközt, így egyszerűbbé válik a karbantartás és a használat.
+A Microsoft Threat Modeling Tool 2018-2018 as verziójának kiadása ingyenes **[kattintással letölthető](https://aka.ms/threatmodelingtool)** . A kézbesítési mechanizmus változása lehetővé teszi számunkra, hogy a legújabb javításokat és hibajavításokat minden alkalommal leküldje az ügyfeleknek, amikor megnyitják az eszközt, így egyszerűbbé válik a karbantartás és a használat.
 Ebből a cikkből megtudhatja, hogyan hozhatja létre a Microsoft SDL Threat modellezési módszerét, és bemutatja, hogyan fejlesztheti az eszközt a biztonsági folyamat gerincét képező nagy veszélyforrású modellek fejlesztéséhez.
 
 Ez a cikk az SDL-veszélyforrások modellezési megközelítésének meglévő ismeretét építi fel. A gyors áttekintéshez tekintse meg a **[veszélyforrások modellezése webalkalmazások](https://msdn.microsoft.com/library/ms978516.aspx)** és a **[biztonsági hiányosságok](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** archivált változatát az 2006-ben közzétett lépéseket ismertető MSDN-cikkben.
@@ -80,7 +80,7 @@ Folyamatban van az első veszélyforrások modelljének fejlesztése.
 > - Parancsokat küldenek a webkiszolgálónak – a kört
 > - A webkiszolgáló egy adatbázishoz nyújt tanácsadást (két párhuzamos vonal)
 
-Azt mutatta, hogy Ricardo egy DFD, röviden az **[adatáramlási diagramhoz](https://en.wikipedia.org/wiki/Data_flow_diagram)**. A Threat Modeling Tool lehetővé teszi a felhasználók számára, hogy megadják a megbízhatósági határokat, amelyeket a piros pontozott vonalak jeleznek, hogy a különböző entitások hol vannak a vezérlésben A rendszergazdák például Active Directory rendszert igényelnek hitelesítési célokra, így a Active Directory kívül esnek a vezérlőn.
+Azt mutatta, hogy Ricardo egy DFD, röviden az **[adatáramlási diagramhoz](https://en.wikipedia.org/wiki/Data_flow_diagram)** . A Threat Modeling Tool lehetővé teszi a felhasználók számára, hogy megadják a megbízhatósági határokat, amelyeket a piros pontozott vonalak jeleznek, hogy a különböző entitások hol vannak a vezérlésben A rendszergazdák például Active Directory rendszert igényelnek hitelesítési célokra, így a Active Directory kívül esnek a vezérlőn.
 
 > Cristina: megkeresi a jogot. Mi a helyzet a fenyegetésekkel?
 > Ricardo: megmutatom Önnek.
@@ -101,7 +101,7 @@ Először is a két rajzsablon közötti interakció van kiemelve
 
 Másodszor, a fenyegetéssel kapcsolatos további információk jelennek meg a fenyegetés Tulajdonságok ablak
 
-![Interakciós információ](./media/threat-modeling-tool-getting-started/interactioninfo.png)
+![A képernyőképen látható a fenyegetés Tulajdonságok ablak, amely tartalmazza a címet, a kategóriát, a leírást, az interakciót és a prioritást.](./media/threat-modeling-tool-getting-started/interactioninfo.png)
 
 A generált fenyegetés segít megérteni a lehetséges tervezési hibákat. A LÉPÉSHOSSZ kategorizálása a potenciális támadási vektorokra mutat, míg a további leírások pontosan azt jelzik, hogy mi a probléma, valamint a lehetséges megoldási módszerekkel. A szerkeszthető mezők használatával megjegyzéseket írhat az indoklás részleteiben, vagy megváltoztathatja a prioritási minősítéseket a szervezete programhiba-sávjától függően.
 
@@ -118,7 +118,7 @@ A meglévő enyhítések vagy biztonsági garanciák miatt a tervezésre nem alk
 
 Miután Ricardo megkezdi a listát Cristina-val, fontos megjegyzéseket, enyhítő és indoklást, prioritást és állapot-változásokat tesz elérhetővé, kiválasztja a jelentések-> teljes jelentés készítése – > mentési jelentést, amely kinyomtat egy szép jelentést, amely lehetővé teszi a munkatársainak a megfelelő biztonsági feladatok megvalósítását.
 
-![Interakciós információ](./media/threat-modeling-tool-feature-overview/report.png)
+![A képernyőképen egy reprezentatív veszélyforrás modellezési jelentés látható.](./media/threat-modeling-tool-feature-overview/report.png)
 
 Ha Ricardo Ehelyett a fájlt szeretné megosztani, egyszerűen megteheti a szervezete OneDrive-fiókjában való mentéssel. Ha ezt elvégezte, átmásolhatja a dokumentum hivatkozását, és megoszthatja azt a kollégáival. 
 

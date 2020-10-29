@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b389841bdba107ba27371387d4a6e5d1f009d41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd813c6db9d03b0b7c84497e5b44f6ecdb591437
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919352"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912854"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>Videotartalom elemzése a kifogásolt anyagokhoz C-ben #
 
 Ez a cikk a .NET-hez készült [Content MODERATOR SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) -val való ismerkedéshez nyújt segítséget és példákat a videó tartalmának felnőtt vagy zamatos tartalomra való vizsgálatához.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd. 
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 - A [Visual Studio 2015 vagy 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
@@ -33,17 +33,17 @@ A Content Moderator videó-moderálási képessége ingyenes nyilvános előzete
 
 ### <a name="create-an-azure-media-services-account"></a>Azure Media Services-fiók létrehozása
 
-Az AMS-re való előfizetéshez és a társított Azure Storage-fiók létrehozásához kövesse az [Azure Media Services fiók létrehozása](https://docs.microsoft.com/azure/media-services/media-services-portal-create-account) című témakör utasításait. Ebben a Storage-fiókban hozzon létre egy új blob Storage-tárolót.
+Az AMS-re való előfizetéshez és a társított Azure Storage-fiók létrehozásához kövesse az [Azure Media Services fiók létrehozása](../../media-services/previous/media-services-portal-create-account.md) című témakör utasításait. Ebben a Storage-fiókban hozzon létre egy új blob Storage-tárolót.
 
 ### <a name="create-an-azure-active-directory-application"></a>Azure Active Directory-alkalmazás létrehozása
 
-Navigáljon az új AMS-előfizetéshez a Azure Portal, és válassza az **API-hozzáférés** lehetőséget az oldal menüjéből. Válassza **a kapcsolódás Azure Media Services az egyszerű szolgáltatással**lehetőséget. Jegyezze fel a **REST API Endpoint (végpont** ) mezőben lévő értéket. erre később szüksége lesz.
+Navigáljon az új AMS-előfizetéshez a Azure Portal, és válassza az **API-hozzáférés** lehetőséget az oldal menüjéből. Válassza **a kapcsolódás Azure Media Services az egyszerű szolgáltatással** lehetőséget. Jegyezze fel a **REST API Endpoint (végpont** ) mezőben lévő értéket. erre később szüksége lesz.
 
 Az **Azure ad alkalmazás** szakaszban válassza az **új létrehozása** elemet, és nevezze el az új Azure ad-alkalmazás regisztrációját (például "VideoModADApp"). Kattintson a **Save (Mentés** ) gombra, és várjon néhány percet, amíg az alkalmazás konfigurálva van. Ezután meg kell jelennie az új alkalmazás regisztrálásának az oldal **Azure ad-alkalmazás** szakaszában.
 
-Válassza ki az alkalmazás regisztrációját, és kattintson az alatta lévő **alkalmazás kezelése** gombra. Jegyezze fel az **alkalmazás azonosító** mezőjében szereplő értéket; erre később szüksége lesz. Válassza a **Beállítások**  >  **kulcsok**lehetőséget, és adja meg az új kulcs leírását (például "VideoModKey"). Kattintson a **Mentés**gombra, és figyelje meg az új kulcs értékét. Másolja ezt a karakterláncot, és mentse biztonságos helyre.
+Válassza ki az alkalmazás regisztrációját, és kattintson az alatta lévő **alkalmazás kezelése** gombra. Jegyezze fel az **alkalmazás azonosító** mezőjében szereplő értéket; erre később szüksége lesz. Válassza a **Beállítások**  >  **kulcsok** lehetőséget, és adja meg az új kulcs leírását (például "VideoModKey"). Kattintson a **Mentés** gombra, és figyelje meg az új kulcs értékét. Másolja ezt a karakterláncot, és mentse biztonságos helyre.
 
-A fenti folyamat alaposabb áttekintése: az [Azure ad-hitelesítés első lépései](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad).
+A fenti folyamat alaposabb áttekintése: az [Azure ad-hitelesítés első lépései](../../media-services/previous/media-services-portal-get-started-with-aad.md).
 
 Ezt követően két különböző módon használhatja a videó-moderálási adathordozó-processzort.
 
@@ -55,7 +55,7 @@ A Azure Media Services Explorer egy felhasználóbarát előtér az AMS-hez. Has
 
 ## <a name="create-the-visual-studio-project"></a>A Visual Studio-projekt létrehozása
 
-1. A Visual Studióban hozzon létre egy új **Console app (.NET-keretrendszer)** projektet, és nevezze el **VideoModeration**. 
+1. A Visual Studióban hozzon létre egy új **Console app (.NET-keretrendszer)** projektet, és nevezze el **VideoModeration** . 
 1. Ha más projektek is vannak a megoldásban, válassza ki ezt a projektet az egyedüli kezdőprojektként.
 1. Szerezze be a szükséges NuGet-csomagokat. A Solution Explorer (Megoldáskezelő) felületén kattintson a jobb gombbal a projektre és válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget, majd keresse meg és telepítse a következő csomagokat:
     - windowsazure. Mediaservices
@@ -84,7 +84,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>Erőforrás-hivatkozások beállítása
 
-Adja hozzá a következő statikus mezőket a **program** osztályhoz a _program.cs_-ben. Ezek a mezők az AMS-előfizetéshez való csatlakozáshoz szükséges információkat rendelkeznek. Töltse ki azokat a következő lépésekben kapott értékekkel. Vegye figyelembe `CLIENT_ID` , hogy az Azure ad-alkalmazás **azonosító** értéke, és az `CLIENT_SECRET` adott alkalmazáshoz létrehozott "VideoModKey" értéke.
+Adja hozzá a következő statikus mezőket a **program** osztályhoz a _program.cs_ -ben. Ezek a mezők az AMS-előfizetéshez való csatlakozáshoz szükséges információkat rendelkeznek. Töltse ki azokat a következő lépésekben kapott értékekkel. Vegye figyelembe `CLIENT_ID` , hogy az Azure ad-alkalmazás **azonosító** értéke, és az `CLIENT_SECRET` adott alkalmazáshoz létrehozott "VideoModKey" értéke.
 
 ```csharp
 // declare constants and globals
@@ -121,7 +121,7 @@ private static readonly string CONTENT_MODERATOR_PRESET_FILE = "preset.json";
 
 Ha helyi videofájl (legegyszerűbb eset) használatát kívánja használni, adja hozzá a projekthez, és adja meg az elérési útját `INPUT_FILE` (relatív elérési utak a végrehajtási könyvtárhoz viszonyítva).
 
-Emellett létre kell hoznia a _preset.js_ az aktuális könyvtárban található fájlon, és a verziószámot kell használnia. Például:
+Emellett létre kell hoznia a _preset.js_ az aktuális könyvtárban található fájlon, és a verziószámot kell használnia. Példa:
 
 ```JSON
 {
@@ -365,9 +365,9 @@ static void StateChanged(object sender, JobStateChangedEventArgs e)
 A Content moderációs feladatok befejezése után elemezze a JSON-választ. Ezek az elemek a következők:
 
 - Videó információinak összegzése
-- **Felvételek** "**töredékek**"
-- **Key frames** "**Események**" **reviewRecommended "(= TRUE vagy FALSE)"** jelzővel a **felnőtt** és a **zamatos** pontszámok alapján
-- a **Start**, az **időtartam**, a **totalDuration**és az **időbélyeg** "ketyeg". Osztás az **időskála** alapján a szám másodpercben való lekéréséhez.
+- **Felvételek** " **töredékek** "
+- **Key frames** " **Események** " **reviewRecommended "(= TRUE vagy FALSE)"** jelzővel a **felnőtt** és a **zamatos** pontszámok alapján
+- a **Start** , az **időtartam** , a **totalDuration** és az **időbélyeg** "ketyeg". Osztás az **időskála** alapján a szám másodpercben való lekéréséhez.
  
 > [!NOTE]
 > - `adultScore` a tartalom lehetséges jelenléti és előrejelzési pontszámát jelöli, amely bizonyos helyzetekben szexuálisan explicit vagy felnőttnek tekinthető.
@@ -427,7 +427,7 @@ A Content moderációs feladatok befejezése után elemezze a JSON-választ. Eze
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan hozhatja ki a moderálási kimenetből származó [video-felülvizsgálatokat](video-reviews-quickstart-dotnet.md) .
 

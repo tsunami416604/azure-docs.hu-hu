@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: ad365c2d4c171105d8dec89d818ef481361d1ff8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 664c4289cbfa1f6ce2fce9f9f83b0240bd2d592c
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81272593"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912871"
 ---
 # <a name="moderate-text-from-the-api-console"></a>Mérsékelt szöveg az API-konzolból
 
@@ -33,7 +33,7 @@ Nyissa meg a [szöveges MODERÁLÁS API-referenciáját](https://westus.dev.cogn
 
 ## <a name="open-the-api-console"></a>Az API-konzol megnyitása
 
-Az **Open API Testing Console**esetében válassza ki azt a régiót, amely a legszorosabban leírja a helyét. 
+Az **Open API Testing Console** esetében válassza ki azt a régiót, amely a legszorosabban leírja a helyét. 
 
   ![Szöveg-képernyő oldal régió kiválasztása](images/test-drive-region.png)
 
@@ -43,20 +43,20 @@ Az **Open API Testing Console**esetében válassza ki azt a régiót, amely a le
 
 ### <a name="parameters"></a>Paraméterek
 
-Válassza ki a szöveges képernyőn használni kívánt lekérdezési paramétereket. Ebben a példában az alapértelmezett értéket használja a **Language (nyelv**) beállításnál. Azt is üresen hagyhatja, mert a művelet végrehajtása során a rendszer automatikusan felismeri a valószínűsíthető nyelvet.
+Válassza ki a szöveges képernyőn használni kívánt lekérdezési paramétereket. Ebben a példában az alapértelmezett értéket használja a **Language (nyelv** ) beállításnál. Azt is üresen hagyhatja, mert a művelet végrehajtása során a rendszer automatikusan felismeri a valószínűsíthető nyelvet.
 
 > [!NOTE]
-> A **Language** paraméterhez rendelje hozzá, `eng` vagy hagyja üresen, hogy megjelenjen a gép által támogatott **besorolási** válasz (előzetes verzió funkció). **Ez a funkció csak az angol nyelvet támogatja**.
+> A **Language** paraméterhez rendelje hozzá, `eng` vagy hagyja üresen, hogy megjelenjen a gép által támogatott **besorolási** válasz (előzetes verzió funkció). **Ez a funkció csak az angol nyelvet támogatja** .
 >
 > A **trágár kifejezések** észleléséhez használja a cikkben felsorolt támogatott nyelvek [ISO 639-3 kódját](http://www-01.sil.org/iso639-3/codes.asp) , vagy hagyja üresen.
 
-Az **Automatikus javítás** **, a**személyes adatok és a **besorolás (előzetes verzió)** beállításnál válassza az **igaz**lehetőséget. Hagyja üresen a **ListId** mezőt.
+Az **Automatikus javítás** **, a** személyes adatok és a **besorolás (előzetes verzió)** beállításnál válassza az **igaz** lehetőséget. Hagyja üresen a **ListId** mezőt.
 
   ![Szöveges képernyős konzol lekérdezési paraméterei](images/text-api-console-inputs.PNG)
 
 ### <a name="content-type"></a>Tartalomtípus
 
-A **Content-Type (tartalom típusa**) mezőben válassza ki a képernyőn megjelenő tartalom típusát. Ebben a példában az alapértelmezett **text/plain** tartalomtípust használjuk. Az **OCP-APIM-Subscription-Key** mezőbe írja be az előfizetési kulcsot.
+A **Content-Type (tartalom típusa** ) mezőben válassza ki a képernyőn megjelenő tartalom típusát. Ebben a példában az alapértelmezett **text/plain** tartalomtípust használjuk. Az **OCP-APIM-Subscription-Key** mezőbe írja be az előfizetési kulcsot.
 
 ### <a name="sample-text-to-scan"></a>Vizsgálandó mintaszöveg
 
@@ -135,6 +135,6 @@ Az alábbi válasz az API különböző bepillantást jeleníti meg. A szolgált
 
 A JSON-válasz összes részének részletes ismertetését a [szöveges moderálás](text-moderation-api.md) fogalmi útmutatójában találja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Használja a kódban szereplő REST API, vagy kövesse a [.net SDK](dotnet-sdk-quickstart.md) gyors üzembe helyezését az alkalmazással való integráláshoz.
+Használja a kódban szereplő REST API, vagy kövesse a [.net SDK](./client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp) gyors üzembe helyezését az alkalmazással való integráláshoz.
