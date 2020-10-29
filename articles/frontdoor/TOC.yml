@@ -14,6 +14,7 @@
     - name: Belépési pont létrehozása – parancssori felület
       href: quickstart-create-front-door-cli.md
     - name: Belépési pont létrehozása – ARM-sablon
+      displayName: Resource Manager
       href: quickstart-create-front-door-template.md
 - name: Oktatóanyagok
   items:

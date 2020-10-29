@@ -79,7 +79,33 @@
         - name: TypeScript
           href: /samples/browse/?products=azure-functions&languages=typescript
     - name: Azure CLI
-      href: functions-cli-samples.md
+      items:
+        - name: CLI-mintaindex
+          href: functions-cli-samples.md
+        - name: Függvényalkalmazás létrehozása
+          items:
+            - name: Kiszolgáló nélküli függvényalkalmazás
+              href: ./scripts/functions-cli-create-serverless.md
+            - name: Kiszolgáló nélküli Python-alkalmazás
+              href: ./scripts/functions-cli-create-serverless-python.md
+            - name: Skálázható prémium szintű csomagú alkalmazás
+              href: ./scripts/functions-cli-create-premium-plan.md
+            - name: Dedikált (App Service-) csomagú alkalmazás
+              href: ./scripts/functions-cli-create-app-service-plan.md
+        - name: Integrált szolgáltatások
+          items:
+            - name: Csatlakozás az Azure Storage-hoz
+              href: ./scripts/functions-cli-create-function-app-connect-to-storage-account.md
+            - name: Csatlakozás az Azure Cosmos DB-hez
+              href: ./scripts/functions-cli-create-function-app-connect-to-cosmos-db.md
+            - name: Python-csatlakoztatás fájlmegosztás
+              href: ./scripts/functions-cli-mount-files-storage-linux.md
+        - name: Folyamatos üzembe helyezés
+          items:
+            - name: GitHub üzembe helyezése
+              href: ./scripts/functions-cli-create-function-app-github-continuous.md
+            - name: DevOps üzembe helyezése
+              href: ./scripts/functions-cli-create-function-app-vsts-continuous.md
 - name: Alapelvek
   items:
     - name: Futtatókörnyezet-verziók összehasonlítása

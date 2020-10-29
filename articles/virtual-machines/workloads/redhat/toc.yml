@@ -1,5 +1,9 @@
 - name: Áttekintés
   href: overview.md
+- name: Red Hat gyorsútmutatók
+  items: null
+- name: Gyorsútmutató – WildFly a CentOS-en
+  href: wildfly-on-centos.md
 - name: Red Hat Enterprise Linux-rendszerképek
   items:
     - name: Red Hat Enterprise Linux-rendszerkép áttekintése

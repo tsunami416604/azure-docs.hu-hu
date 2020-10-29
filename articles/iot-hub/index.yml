@@ -11,12 +11,12 @@ metadata:
   manager: eliotgra
   ms.date: 03/23/2020
   ms.custom: amqp
-  ms.openlocfilehash: 5459129d5d49324839bfe36e2031d5be8d1e0521
-  ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+  ms.openlocfilehash: 11145abb06fb84f533ee6d556cafe1e943579131
+  ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/26/2020
-  ms.locfileid: "92545378"
+  ms.lasthandoff: 10/28/2020
+  ms.locfileid: "92890224"
 landingContent:
 - title: Első lépések
   linkLists:
@@ -40,12 +40,6 @@ landingContent:
     links:
     - text: Munkavégzés ikereszközökkel a Node.js használatával
       url: iot-hub-node-node-twin-getstarted.md
-    - text: Az IoT Hub monitorozása
-      url: monitor-iot-hub.md
-    - text: Az IoT Hub monitorozása – adatreferencia
-      url: monitor-iot-hub-reference.md
-    - text: IoT-kapcsolatbontások monitorozása, diagnosztikája és hibaelhárítása
-      url: iot-hub-troubleshoot-connectivity.md
 - title: A megoldás méretezése
   linkLists:
   - linkListType: concept
@@ -92,6 +86,18 @@ landingContent:
       url: iot-hub-create-use-iot-toolkit.md
     - text: IoT Explorer
       url: ../iot-pnp/howto-use-iot-explorer.md
+- title: Az IoT Hub monitorozása és hibaelhárítása
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Az IoT Hub monitorozása
+      url: monitor-iot-hub.md
+    - text: Az IoT Hub monitorozása – adatreferencia
+      url: monitor-iot-hub-reference.md
+    - text: IoT Hub-kapcsolatbontások monitorozása, diagnosztikája és hibaelhárítása
+      url: iot-hub-troubleshoot-connectivity.md
+    - text: Eszközkapcsolati események megrendelése az Azure IoT Hubról az Azure Cosmos DB használatával
+      url: iot-hub-how-to-order-connection-state-events.md
 - title: Biztonsági IoT-tanúsítványok használata
   linkLists:
   - linkListType: concept
