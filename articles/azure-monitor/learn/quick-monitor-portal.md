@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: ed7cec34b4bca1882d069997d4f89677cda32447
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dd262b942d6ce4e423f524c7381574afd501f466
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88080949"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927549"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Az ASP.NET-alkalmazás monitorozásának indítása
 
@@ -52,7 +52,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 Az Application Insights a futtatás helyétől függetlenül telemetriai adatokat gyűjt az alkalmazásról. Az adatok megjelenítéséhez hajtsa végre az alábbi lépéseket.
 
-1. Application Insights **megnyitásához kattintson a**  ->  **más Windows**  ->  **Application Insights keresés**lehetőségre.  Megjelenik az aktuális munkamenetből származó telemetria.<BR><br>![Telemetria a Visual Studióban](./media/quick-monitor-portal/telemetry-in-vs.png)
+1. Application Insights **megnyitásához kattintson a**  ->  **más Windows**  ->  **Application Insights keresés** lehetőségre.  Megjelenik az aktuális munkamenetből származó telemetria.<BR><br>![Telemetria a Visual Studióban](./media/quick-monitor-portal/telemetry-in-vs.png)
 
 2. A kérés részleteinek megtekintéséhez kattintson a lista első kérésére (ebben a példában: GET Home/Index). Figyelje meg, hogy az állapotkód és a válaszidő is megtalálható a részletek között, a kérésre vonatkozó más értékes információkkal együtt.<br><br>![Válasz részletei a Visual Studióban](media/quick-monitor-portal/request-details.png)
 
@@ -60,15 +60,15 @@ Az Application Insights a futtatás helyétől függetlenül telemetriai adatoka
 
 Most megnyithatja az Application Insightst az Azure Portalon a futó alkalmazás különböző részleteinek megtekintéséhez.
 
-1. Bontsa ki a **csatlakoztatott szolgáltatások** mappát (felhő és beépülő ikon) a megoldáskezelő, majd kattintson a jobb gombbal a **Application Insights** mappára, és kattintson a **Megnyitás Application Insights portál**elemre.  Megjelenik számos lehetőség és néhány információ az alkalmazásról.
+1. Bontsa ki a **csatlakoztatott szolgáltatások** mappát (felhő és beépülő ikon) a megoldáskezelő, majd kattintson a jobb gombbal a **Application Insights** mappára, és kattintson a **Megnyitás Application Insights portál** elemre.  Megjelenik számos lehetőség és néhány információ az alkalmazásról.
 
-    ![Alkalmazástérkép](media/quick-monitor-portal/04-overview.png)
+    ![Képernyőkép, amely az alkalmazással kapcsolatos információkat jeleníti meg a Application Insights-portálon belül.](media/quick-monitor-portal/04-overview.png)
 
 2. Kattintson az **Alkalmazástérkép** elemre az alkalmazás-összetevők függőségi viszonyait mutató vizuális elrendezés megjelenítéséhez.  Minden egyes összetevőnél megjelennek a KPI-k, például a terhelés, a teljesítmény, a hibák és a riasztások.
 
     ![Alkalmazástérkép](media/quick-monitor-portal/05-appmap.png)
 
-3. Az alkalmazás-összetevők egyikén kattintson az **app Analytics** ikon ![ alkalmazás-hozzárendelési ](media/quick-monitor-portal/app-viewinlogs-icon.png) **nézetére a naplók (Analitika)** elemre. Ekkor megnyílik a **naplók (Analitika)**, amely részletes lekérdezési nyelvet biztosít a Application Insights által összegyűjtött összes adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
+3. Kattintson **az App Analytics ikonra** az ![ app Analytics ikonján.](media/quick-monitor-portal/app-viewinlogs-icon.png) **Megtekintheti a naplókban (Analitika)** az egyik alkalmazás-összetevőn. Ekkor megnyílik a **naplók (Analitika)** , amely részletes lekérdezési nyelvet biztosít a Application Insights által összegyűjtött összes adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
 
     ![Elemzés](media/quick-monitor-portal/6viewanalytics.png)
 
@@ -101,12 +101,12 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 
 További információt a [nyílt forráskódú JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)-ra vonatkozó GitHub-adattárban talál.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 Ha végzett a teszteléssel, törölheti az erőforráscsoportot és az összes kapcsolódó erőforrást. Ehhez kövesse az alábbi lépéseket.
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a **myResourceGroup** elemre.
-2. Az erőforráscsoport lapon kattintson a **Törlés**elemre, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd kattintson a **Törlés**gombra.
+2. Az erőforráscsoport lapon kattintson a **Törlés** elemre, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban engedélyezte az alkalmazás figyelését az Azure Application Insights.  Folytassa a további oktatóanyagokkal, amelyekből megtudhatja, hogyan használhatja a statisztika monitorozására és az alkalmazáshibák észlelésére is.
 
 > [!div class="nextstepaction"]

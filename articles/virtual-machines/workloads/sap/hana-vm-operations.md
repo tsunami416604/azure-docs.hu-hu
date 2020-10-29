@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 602e3f58ac5f8f194ad4704a4e792d4f0aec3a3e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 19abb3f12dc1a0fd2a3dff548ecdc9e7fff47659
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978781"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927668"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban
 Ez a dokumentum útmutatást nyújt az Azure-infrastruktúra és az Azure natív virtuális gépeken üzembe helyezett operációs SAP HANA rendszerek konfigurálásához. A dokumentum a M128s virtuális gép SKU-jának SAP HANA kibővíthető konfigurációs adatait is tartalmazza. Ez a dokumentum nem helyettesíti a szabványos SAP-dokumentációt, amely a következő tartalmakat tartalmazza:
@@ -135,11 +135,11 @@ A/Hana/Shared esetében javasoljuk a [Azure NetApp Files](https://azure.microsof
 
 A kibővíthető konfiguráció egyetlen csomópontjának alapszintű kialakítása a következőhöz fog hasonlítani:
 
-![Egyetlen csomópont kibővíthető alapjai](media/hana-vm-operations/scale-out-basics-anf-shared.PNG)
+![Diagram, amely egy kibővíthető konfiguráció egyetlen csomópontjának általános kialakítását mutatja be.](media/hana-vm-operations/scale-out-basics-anf-shared.PNG)
 
 A SAP HANA kibővíthető virtuálisgép-csomópontok alapszintű konfigurációja a következőhöz hasonlóan néz ki:
 
-- A **/Hana/Shared**a Azure NetApp Fileson keresztül biztosított natív NFS szolgáltatást használja. 
+- A **/Hana/Shared** a Azure NetApp Fileson keresztül biztosított natív NFS szolgáltatást használja. 
 - Az összes többi lemez mennyisége nem oszlik meg a különböző csomópontok között, és nem az NFS-en alapul. A nem megosztott **/Hana/Data** és **/Hana/log** rendelkező, kibővíthető HANA-példányok telepítési konfigurációi és lépései a dokumentum későbbi részében is elérhetők. A felhasználható HANA-tárolók esetében tekintse meg a [SAP HANA Azure-beli virtuális gépek tárolási konfigurációit](./hana-vm-operations-storage.md)ismertető cikket.
 
 

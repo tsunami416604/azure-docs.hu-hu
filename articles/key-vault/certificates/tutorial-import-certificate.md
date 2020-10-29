@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: ebf687716c8898acffb5e081fbf2f6217fe0f943
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b58f402766e369894fcf014836ab9f24c231c489
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503123"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927498"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Oktatóanyag: tanúsítvány importálása Azure Key Vault
 
@@ -33,7 +33,7 @@ Ez az oktatóanyag a következőket mutatja be:
 
 Mielőtt elkezdené, olvassa el [Key Vault alapvető fogalmakat](../general/basic-concepts.md). 
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -41,22 +41,22 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="create-a-vault"></a>Tároló létrehozása
 
-1. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget.
+1. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása** lehetőséget.
 2. A keresőmezőbe írja be a **Key Vault** kifejezést.
 3. Az eredmények listájában válassza a **Key Vault** lehetőséget.
 4. A Key Vault szakaszban kattintson a **Létrehozás** gombra.
 5. A **Kulcstartó létrehozása** szakaszban adja meg a következő információkat:
-    - **Név**: Egy egyedi nevet kell megadnia. Ebben a rövid útmutatóban **például a-vaultot**használjuk. 
-    - **Előfizetés**: Válassza ki az előfizetést.
-    - Az **erőforráscsoport**területen válassza az **új létrehozása** elemet, és adjon meg egy erőforráscsoport-nevet.
+    - **Név** : Egy egyedi nevet kell megadnia. Ebben a rövid útmutatóban **például a-vaultot** használjuk. 
+    - **Előfizetés** : Válassza ki az előfizetést.
+    - Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, és adjon meg egy erőforráscsoport-nevet.
     - A **Hely** legördülő menüből válassza ki a helyet.
     - A többi beállítást hagyja az alapértelmezett értéken.
 6. A fenti adatok megadása után válassza a **Létrehozás** elemet.
 
 Jegyezze fel az alábbi két tulajdonságot:
 
-* Tár **neve**: a példában ez **például a-Vault**. Ezt a nevet fogja majd más lépésekben is használni.
-* **Tár URI-ja**: A példában ez a https://example-vault.vault.azure.net/. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
+* Tár **neve** : a példában ez **például a-Vault** . Ezt a nevet fogja majd más lépésekben is használni.
+* **Tár URI-ja** : A példában ez a https://example-vault.vault.azure.net/. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
 
 Jelenleg csak az Azure-fiókja jogosult arra, hogy műveleteket végezzen ezen az új kulcstartón.
 
@@ -64,21 +64,21 @@ Jelenleg csak az Azure-fiókja jogosult arra, hogy műveleteket végezzen ezen a
 
 ## <a name="import-a-certificate-to-key-vault"></a>Tanúsítvány importálása Key Vault
 
-Ha tanúsítványt szeretne importálni a tárolóba, rendelkeznie kell egy, a lemezen található PEM-vagy PFX-tanúsítványfájl-fájllal. Ebben az esetben egy **ExampleCertificate**nevű tanúsítványt fogunk importálni.
+Ha tanúsítványt szeretne importálni a tárolóba, rendelkeznie kell egy, a lemezen található PEM-vagy PFX-tanúsítványfájl-fájllal. Ebben az esetben egy **ExampleCertificate** nevű tanúsítványt fogunk importálni.
 
 > [!IMPORTANT]
 > Az Azure Key Vault által támogatott tanúsítványformátumok a PFX és a PEM. 
 > - a. PEM fájlformátum egy vagy több X509 tartalmaz.
 > - a. pfx fájlformátum egy Archív fájlformátum, amely több kriptográfiai objektumot tárol egyetlen fájlban, például a tartományhoz tartozó kiszolgálói tanúsítványt, a hozzá tartozó titkos kulcsot, és szükség esetén egy közbenső HITELESÍTÉSSZOLGÁLTATÓT is tartalmazhat.  
 
-1. A Key Vault tulajdonságok lapon válassza a **tanúsítványok**lehetőséget.
+1. A Key Vault tulajdonságok lapon válassza a **tanúsítványok** lehetőséget.
 2. Kattintson a **Létrehozás/Importálás** gombra.
 3. A **tanúsítvány létrehozása** képernyőn válassza ki a következő értékeket:
-    - **Tanúsítvány létrehozásának módszere**: importálás.
-    - **Tanúsítvány neve**: ExampleCertificate.
-    - **Tanúsítványfájl feltöltése**: válassza ki a fájlt a lemezről.
+    - **Tanúsítvány létrehozásának módszere** : importálás.
+    - **Tanúsítvány neve** : ExampleCertificate.
+    - **Tanúsítványfájl feltöltése** : válassza ki a fájlt a lemezről.
     - **Password** (jelszó): jelszóval védett tanúsítványfájl feltöltésekor itt adja meg a jelszót. Ellenkező esetben hagyja üresen. A tanúsítványfájl sikeres importálása után a Key Vault eltávolítja ezt a jelszót.
-4. Kattintson a **Létrehozás** elemre.
+4. Kattintson a **Létrehozás** gombra.
 
 ![Tanúsítvány tulajdonságai](../media/certificates/tutorial-import-cert/cert-import.png)
 
@@ -86,7 +86,7 @@ A tanúsítvány **importálási** módszerrel való hozzáadásával az Azure K
 
 Miután megkapta az üzenetet, hogy a tanúsítvány importálása sikeresen megtörtént, a tulajdonságok megtekintéséhez kattintson rá a listában. 
 
-![Tanúsítvány tulajdonságai](../media/certificates/tutorial-import-cert/current-version-hidden.png)
+![A tanúsítvány tulajdonságainak megtekintését bemutató képernyőkép.](../media/certificates/tutorial-import-cert/current-version-hidden.png)
 
 ## <a name="import-a-certificate-using-azure-cli"></a>Tanúsítvány importálása az Azure CLI-vel
 
@@ -138,7 +138,7 @@ Import-AzureKeyVaultCertificate
 További információ a [paraméterekről](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0).
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Erre a rövid útmutatóra egyéb Key Vault-útmutatók és oktatóanyagok is épülnek. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, ne törölje ezeket az erőforrásokat.
 Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a kulcstartót és a kapcsolódó erőforrásokat is. Az erőforráscsoport törlése a Portalon keresztül:
@@ -148,7 +148,7 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a k
 3. Az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe írja be az erőforráscsoport nevét, és válassza a **Törlés** lehetőséget.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy Key Vault, és importált egy tanúsítványt. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 

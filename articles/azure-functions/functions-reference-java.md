@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a Javával.
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: fcacfd96ece68424c876b0349ceb49d3eaabb598
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b25e548fe56c22458fe625f617fb076be13525cd
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736690"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927515"
 ---
 # <a name="azure-functions-java-developer-guide"></a>A Java fejlesztői útmutató Azure Functions
 
@@ -49,7 +49,7 @@ Ha a terminálról szeretne parancssori fejlesztést használni, a Java-alapú f
 
 Az alábbi parancs egy új Java-függvény projektet hoz létre a következő archetípus használatával:
 
-```
+```bash
 mvn archetype:generate \
     -DarchetypeGroupId=com.microsoft.azure \
     -DarchetypeArtifactId=azure-functions-archetype 

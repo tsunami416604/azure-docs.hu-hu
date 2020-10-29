@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: aa65508c4f8df2c11bab74cd34f3311b21c63d9c
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: c953c31792b8d01199d409cbd91124138a6ebb15
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164601"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927447"
 ---
 # <a name="create-an-external-app-service-environment"></a>Külső App Service-környezet létrehozása
 
@@ -47,9 +47,9 @@ A bekészítés létrehozása után a következők nem módosíthatók:
 
 A következő három módon hozható létre:
 
-- **App Service terv létrehozásakor**. Ez a módszer egyetlen lépésben hozza létre a központot és a App Service tervet.
-- **Önálló műveletként**. Ez a módszer egy önálló beadási módszert hoz létre, amely egy nem megfelelő beadási csomag. Ez a módszer egy fejlettebb folyamat a beadási technológia létrehozásához. Ezzel létrehoz egy ILB-t tartalmazó szolgáltatót.
-- **Egy Azure Resource Manager sablonból**. Ez a módszer speciális felhasználók számára érhető el. További információ: a bekészítés [létrehozása sablonból][MakeASEfromTemplate].
+- **App Service terv létrehozásakor** . Ez a módszer egyetlen lépésben hozza létre a központot és a App Service tervet.
+- **Önálló műveletként** . Ez a módszer egy önálló beadási módszert hoz létre, amely egy nem megfelelő beadási csomag. Ez a módszer egy fejlettebb folyamat a beadási technológia létrehozásához. Ezzel létrehoz egy ILB-t tartalmazó szolgáltatót.
+- **Egy Azure Resource Manager sablonból** . Ez a módszer speciális felhasználók számára érhető el. További információ: a bekészítés [létrehozása sablonból][MakeASEfromTemplate].
 
 A külső kiegészítő szolgáltatás egy nyilvános virtuális IP-címmel rendelkezik, ami azt jelenti, hogy a központba tartozó alkalmazásokra irányuló összes HTTP/HTTPS-forgalom internetről elérhető IP-címet tartalmaz. Egy ILB rendelkező beadási pont IP-címmel rendelkezik a szolgáltató által használt alhálózatból. Az egy ILB-beosztásban üzemeltetett alkalmazások nem jelennek meg közvetlenül az interneten.
 
@@ -59,7 +59,7 @@ Az App Service terv az alkalmazások tárolója. Amikor App Serviceban hoz létr
 
 A beApp Servicei csomag létrehozásakor hozzon létre egy kiegészítő csomagot:
 
-1. A [Azure Portal](https://portal.azure.com/)válassza az **erőforrás létrehozása**  >  **web és mobil**  >  **webalkalmazás**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)válassza az **erőforrás létrehozása**  >  **web és mobil**  >  **webalkalmazás** lehetőséget.
 
     ![Képernyőfelvétel: az Azure Marketplace-en kiválasztott Web és mobil kiválasztott Azure Portal és a jobb oldalon megnyitott új webalkalmazás létrehozásának képernyője.][1]
 
@@ -69,27 +69,27 @@ A beApp Servicei csomag létrehozásakor hozzon létre egy kiegészítő csomago
 
 4. Válassza ki az operációs rendszerét (Windows, Linux vagy Docker). 
 
-5. Válassza ki a App Service tervet, majd válassza az **új létrehozása**lehetőséget. A Linux Web Apps és a Windows Web Apps nem lehet ugyanabban a App Service csomagban, de ugyanabban a App Service Environmentban lehet. 
+5. Válassza ki a App Service tervet, majd válassza az **új létrehozása** lehetőséget. A Linux Web Apps és a Windows Web Apps nem lehet ugyanabban a App Service csomagban, de ugyanabban a App Service Environmentban lehet. 
 
     ![Képernyőfelvétel: a webalkalmazás panelt, az App Service-csomag ablaktábláját és az új App Service terv panelt bemutató Azure Portal.][2]
 
 6. A **hely** legördülő listában válassza ki azt a régiót, ahol létre kívánja hozni a központot. Ha kijelöl egy meglévő beadási lehetőséget, akkor a rendszer nem hoz létre új kiegészítőt. A App Service tervet a kiválasztott szakszolgáltatásban hozza létre a rendszer. 
 
-7. Válassza ki az **árképzési szintet**, és válasszon az **elkülönített** díjszabási SKU közül. Ha egy **elkülönített** SKU-kártyát és egy olyan helyet választ, amely nem a betekintő, akkor az adott helyen létrejön egy új kiegészítő szolgáltatás. A létrehozási folyamat elindításához válassza a **kiválasztás**lehetőséget. Az **elkülönített** SKU csak a központtal együtt érhető el. Nem használhat más díjszabási SKU-t az **elkülönített**kiegészítő csomagon kívül is. 
+7. Válassza ki az **árképzési szintet** , és válasszon az **elkülönített** díjszabási SKU közül. Ha egy **elkülönített** SKU-kártyát és egy olyan helyet választ, amely nem a betekintő, akkor az adott helyen létrejön egy új kiegészítő szolgáltatás. A létrehozási folyamat elindításához válassza a **kiválasztás** lehetőséget. Az **elkülönített** SKU csak a központtal együtt érhető el. Nem használhat más díjszabási SKU-t az **elkülönített** kiegészítő csomagon kívül is. 
 
     ![Árképzési szintek kiválasztása][3]
 
-8. Adja meg a beadás nevét. Ez a név az alkalmazások címezhető nevében használatos. Ha a _appsvcenvdemo_neve, a tartománynév a *. appsvcenvdemo.p.azurewebsites.net*. Ha létrehoz egy *mytestapp*nevű alkalmazást, a címe a következő címen található: mytestapp.appsvcenvdemo.p.azurewebsites.net. Nem használhat szóközt a névben. Nagybetűs karakterek használata esetén a tartománynév a név teljes kisbetűs verziója.
+8. Adja meg a beadás nevét. Ez a név az alkalmazások címezhető nevében használatos. Ha a _appsvcenvdemo_ neve, a tartománynév a *. appsvcenvdemo.p.azurewebsites.net* . Ha létrehoz egy *mytestapp* nevű alkalmazást, a címe a következő címen található: mytestapp.appsvcenvdemo.p.azurewebsites.net. Nem használhat szóközt a névben. Nagybetűs karakterek használata esetén a tartománynév a név teljes kisbetűs verziója.
 
     ![Új App Service csomag neve][4]
 
-9. Adja meg az Azure-beli virtuális hálózatkezelés részleteit. Válassza az **új létrehozása** vagy a **meglévő kiválasztása**lehetőséget. A meglévő VNet kiválasztásának lehetősége csak akkor érhető el, ha a kiválasztott régió VNet rendelkezik. Ha az **új létrehozása**lehetőséget választja, adja meg a VNet nevét. Létrejön egy új Resource Manager-VNet ezzel a névvel. A kiválasztott régióban lévő címterület használatával működik `192.168.250.0/23` . Ha a **meglévő kiválasztása**lehetőséget választja, a következőket kell tennie:
+9. Adja meg az Azure-beli virtuális hálózatkezelés részleteit. Válassza az **új létrehozása** vagy a **meglévő kiválasztása** lehetőséget. A meglévő VNet kiválasztásának lehetősége csak akkor érhető el, ha a kiválasztott régió VNet rendelkezik. Ha az **új létrehozása** lehetőséget választja, adja meg a VNet nevét. Létrejön egy új Resource Manager-VNet ezzel a névvel. A kiválasztott régióban lévő címterület használatával működik `192.168.250.0/23` . Ha a **meglévő kiválasztása** lehetőséget választja, a következőket kell tennie:
 
     a. Ha egynél többre van szüksége, válassza ki a VNet.
 
     b. Adja meg az új alhálózat nevét.
 
-    c. Válassza ki az alhálózat méretét. *Ne feledje, hogy elég nagy méretűre kell kiválasztania, hogy megfeleljen a beadásának jövőbeli növekedésének.* Azt javasoljuk `/24` , hogy a 128-es címekkel rendelkezik, és képes legyen a maximális méretű betekintő szolgáltatás kezelésére. Nem ajánlott `/28` például, mert csak 16 cím érhető el. Az infrastruktúra legalább hét címet használ, és az Azure Networking egy másik 5-öt használ. Egy `/28` alhálózatban marad a 4 app Service-es csomag-példányok, amelyek egy külső BEILBnek, és mindössze 3 app Service megtervezik az előfizetést.
+    c. Válassza ki az alhálózat méretét. *Ne feledje, hogy elég nagy méretűre kell kiválasztania, hogy megfeleljen a beadásának jövőbeli növekedésének.* Azt javasoljuk `/24` , hogy a 256-es címekkel rendelkezik, és képes legyen a maximális méretű betekintő szolgáltatás kezelésére. Nem ajánlott `/28` például, mert csak 16 cím érhető el. Az infrastruktúra legalább hét címet használ, és az Azure Networking egy másik 5-öt használ. Egy `/28` alhálózatban marad a 4 app Service-es csomag-példányok, amelyek egy külső BEILBnek, és mindössze 3 app Service megtervezik az előfizetést.
 
     d. Válassza ki az alhálózat IP-tartományát.
 
@@ -105,21 +105,21 @@ A beApp Servicei csomag létrehozásakor hozzon létre egy kiegészítő csomago
 
 1. Válasszon ki vagy hozzon létre egy erőforráscsoportot. Az erőforráscsoportok segítségével a kapcsolódó Azure-erőforrásokat egységként kezelheti. Az erőforráscsoportok akkor is hasznosak, ha Role-Based Access Control szabályokat hoz létre az alkalmazásaihoz. További információért lásd [az Azure Resource Manager áttekintését][ARMOverview].
 
-1. Válassza ki a App Service tervet, majd válassza az **új létrehozása**lehetőséget. A Linux Web Apps és a Windows Web Apps nem lehet ugyanabban a App Service csomagban, de ugyanabban a App Service Environmentban lehet. 
+1. Válassza ki a App Service tervet, majd válassza az **új létrehozása** lehetőséget. A Linux Web Apps és a Windows Web Apps nem lehet ugyanabban a App Service csomagban, de ugyanabban a App Service Environmentban lehet. 
 
     ![Képernyőkép a Web App for Containers ablaktáblát, az App Service-csomag ablaktáblát és az új App Servicei terv panelt megjelenítő Azure Portal.][8]
 
 1. A **hely** legördülő listában válassza ki azt a régiót, ahol létre kívánja hozni a központot. Ha kijelöl egy meglévő beadási lehetőséget, akkor a rendszer nem hoz létre új kiegészítőt. A App Service tervet a kiválasztott szakszolgáltatásban hozza létre a rendszer. 
 
-1. Válassza ki az **árképzési szintet**, és válasszon az **elkülönített** díjszabási SKU közül. Ha egy **elkülönített** SKU-kártyát és egy olyan helyet választ, amely nem a betekintő, akkor az adott helyen létrejön egy új kiegészítő szolgáltatás. A létrehozási folyamat elindításához válassza a **kiválasztás**lehetőséget. Az **elkülönített** SKU csak a központtal együtt érhető el. Nem használhat más díjszabási SKU-t az **elkülönített**kiegészítő csomagon kívül is. 
+1. Válassza ki az **árképzési szintet** , és válasszon az **elkülönített** díjszabási SKU közül. Ha egy **elkülönített** SKU-kártyát és egy olyan helyet választ, amely nem a betekintő, akkor az adott helyen létrejön egy új kiegészítő szolgáltatás. A létrehozási folyamat elindításához válassza a **kiválasztás** lehetőséget. Az **elkülönített** SKU csak a központtal együtt érhető el. Nem használhat más díjszabási SKU-t az **elkülönített** kiegészítő csomagon kívül is. 
 
     ![Árképzési szintek kiválasztása][3]
 
-1. Adja meg a beadás nevét. Ez a név az alkalmazások címezhető nevében használatos. Ha a _appsvcenvdemo_neve, a tartománynév a *. appsvcenvdemo.p.azurewebsites.net*. Ha létrehoz egy *mytestapp*nevű alkalmazást, a címe a következő címen található: mytestapp.appsvcenvdemo.p.azurewebsites.net. Nem használhat szóközt a névben. Nagybetűs karakterek használata esetén a tartománynév a név teljes kisbetűs verziója.
+1. Adja meg a beadás nevét. Ez a név az alkalmazások címezhető nevében használatos. Ha a _appsvcenvdemo_ neve, a tartománynév a *. appsvcenvdemo.p.azurewebsites.net* . Ha létrehoz egy *mytestapp* nevű alkalmazást, a címe a következő címen található: mytestapp.appsvcenvdemo.p.azurewebsites.net. Nem használhat szóközt a névben. Nagybetűs karakterek használata esetén a tartománynév a név teljes kisbetűs verziója.
 
     ![Új App Service csomag neve][4]
 
-1. Adja meg az Azure-beli virtuális hálózatkezelés részleteit. Válassza az **új létrehozása** vagy a **meglévő kiválasztása**lehetőséget. A meglévő VNet kiválasztásának lehetősége csak akkor érhető el, ha a kiválasztott régió VNet rendelkezik. Ha az **új létrehozása**lehetőséget választja, adja meg a VNet nevét. Létrejön egy új Resource Manager-VNet ezzel a névvel. A kiválasztott régióban lévő címterület használatával működik `192.168.250.0/23` . Ha a **meglévő kiválasztása**lehetőséget választja, a következőket kell tennie:
+1. Adja meg az Azure-beli virtuális hálózatkezelés részleteit. Válassza az **új létrehozása** vagy a **meglévő kiválasztása** lehetőséget. A meglévő VNet kiválasztásának lehetősége csak akkor érhető el, ha a kiválasztott régió VNet rendelkezik. Ha az **új létrehozása** lehetőséget választja, adja meg a VNet nevét. Létrejön egy új Resource Manager-VNet ezzel a névvel. A kiválasztott régióban lévő címterület használatával működik `192.168.250.0/23` . Ha a **meglévő kiválasztása** lehetőséget választja, a következőket kell tennie:
 
     a. Ha egynél többre van szüksége, válassza ki a VNet.
 
@@ -141,9 +141,9 @@ A beApp Servicei csomag létrehozásakor hozzon létre egy kiegészítő csomago
 
 Ha önálló kisegítő lehetőséget hoz létre, azzal semmi sincs benne. Egy üres bevezetési szolgáltatás továbbra is havi díjat számít fel az infrastruktúra számára. Kövesse az alábbi lépéseket egy ILB létrehozásához, vagy egy saját erőforráscsoport létrehozásához. A szolgáltató létrehozása után a normál folyamat használatával létrehozhat alkalmazásokat. Válassza ki az új beadási helyet.
 
-1. Keresse meg **app Service Environment**az Azure Marketplace piactéren, vagy válassza az **erőforrás létrehozása**  >  **web Mobile**  >  **app Service Environment**lehetőséget. 
+1. Keresse meg **app Service Environment** az Azure Marketplace piactéren, vagy válassza az **erőforrás létrehozása**  >  **web Mobile**  >  **app Service Environment** lehetőséget. 
 
-1. Adja meg a beadás nevét. A rendszer ezt a nevet használja a központhoz létrehozott alkalmazásokhoz. Ha a név *mynewdemoase*, az altartomány neve: *. mynewdemoase.p.azurewebsites.net*. Ha létrehoz egy *mytestapp*nevű alkalmazást, a címe a következő címen található: mytestapp.mynewdemoase.p.azurewebsites.net. Nem használhat szóközt a névben. Nagybetűs karakterek használata esetén a tartománynév a név teljes kisbetűs verziója. Ha ILB használ, a beléptetési név nem használatos az altartományban, hanem explicit módon meg van határozva a központilag történő létrehozás során.
+1. Adja meg a beadás nevét. A rendszer ezt a nevet használja a központhoz létrehozott alkalmazásokhoz. Ha a név *mynewdemoase* , az altartomány neve: *. mynewdemoase.p.azurewebsites.net* . Ha létrehoz egy *mytestapp* nevű alkalmazást, a címe a következő címen található: mytestapp.mynewdemoase.p.azurewebsites.net. Nem használhat szóközt a névben. Nagybetűs karakterek használata esetén a tartománynév a név teljes kisbetűs verziója. Ha ILB használ, a beléptetési név nem használatos az altartományban, hanem explicit módon meg van határozva a központilag történő létrehozás során.
 
     ![Beosztási elnevezés][5]
 
@@ -159,15 +159,15 @@ Ha önálló kisegítő lehetőséget hoz létre, azzal semmi sincs benne. Egy �
     
     * Az új VNet a 192.168.250.0/23 címtartomány és az alapértelmezett nevű alhálózat szerepel. Az alhálózat 192.168.250.0/24-ként van definiálva. Csak Resource Manager-VNet választhat. A virtuális IP-cím **típusának** meghatározása meghatározza, hogy a központilag elérhető-e közvetlenül az internetről (külső), vagy ha ILB használ. További információ ezekről a lehetőségekről: [belső terheléselosztó létrehozása és használata app Service környezettel][MakeILBASE]. 
 
-      * Ha a **VIP típushoz**a **külső** lehetőséget választja, kiválaszthatja, hogy a rendszer hány külső IP-címet hozzon létre az IP-alapú SSL-célokra. 
+      * Ha a **VIP típushoz** a **külső** lehetőséget választja, kiválaszthatja, hogy a rendszer hány külső IP-címet hozzon létre az IP-alapú SSL-célokra. 
     
-      * Ha a **VIP-típushoz**a **belső** lehetőséget választja, meg kell adnia azt a tartományt, amelyet a benyújtó használ. Központilag is üzembe helyezhet egy olyan VNet, amely nyilvános vagy privát címtartományt használ. Ha nyilvános címtartományt használó VNet szeretne használni, akkor előre létre kell hoznia a VNet. 
+      * Ha a **VIP-típushoz** a **belső** lehetőséget választja, meg kell adnia azt a tartományt, amelyet a benyújtó használ. Központilag is üzembe helyezhet egy olyan VNet, amely nyilvános vagy privát címtartományt használ. Ha nyilvános címtartományt használó VNet szeretne használni, akkor előre létre kell hoznia a VNet. 
     
     * Ha kiválaszt egy meglévő VNet, akkor létrejön egy új alhálózat, amikor létrejön a beadási pont. *A portálon nem használhat előre létrehozott alhálózatot. Ha Resource Manager-sablont használ, létrehozhat egy meglévő alhálózattal rendelkező bevezetőt is.* Ha egy sablonból szeretne létrehozni egy előkészítő-t, olvassa el a [app Service Environment sablonból][MakeASEfromTemplate]való létrehozását ismertető témakört.
 
 ## <a name="app-service-environment-v1"></a>App Service-környezet v1
 
-Továbbra is létrehozhatja a App Service Environment (ASEv1) első verziójának példányait. A folyamat elindításához keressen a piactéren **app Service Environment v1**. A bevezetőt ugyanúgy hozza létre, mint az önálló központot. Ha elkészült, a ASEv1 két előtérrel és két feldolgozóval rendelkezik. A ASEv1 az előtér-és a feldolgozókat kell kezelnie. Ezeket a rendszer nem adja hozzá automatikusan a App Service csomagok létrehozásakor. A kezelőfelületek HTTP/HTTPS-végpontként működnek, és a feldolgozóknak küldenek forgalmat. A feldolgozók az alkalmazásokat üzemeltető szerepkörök. Az előfizetések mennyiségét és a feldolgozókat a bekészítés után módosíthatja. 
+Továbbra is létrehozhatja a App Service Environment (ASEv1) első verziójának példányait. A folyamat elindításához keressen a piactéren **app Service Environment v1** . A bevezetőt ugyanúgy hozza létre, mint az önálló központot. Ha elkészült, a ASEv1 két előtérrel és két feldolgozóval rendelkezik. A ASEv1 az előtér-és a feldolgozókat kell kezelnie. Ezeket a rendszer nem adja hozzá automatikusan a App Service csomagok létrehozásakor. A kezelőfelületek HTTP/HTTPS-végpontként működnek, és a feldolgozóknak küldenek forgalmat. A feldolgozók az alkalmazásokat üzemeltető szerepkörök. Az előfizetések mennyiségét és a feldolgozókat a bekészítés után módosíthatja. 
 
 További információ a ASEv1: [a app Service Environment v1 bemutatása][ASEv1Intro]. A ASEv1 méretezésével, kezelésével és figyelésével kapcsolatos további információkért lásd: [app Service Environment konfigurálása][ConfigureASEv1].
 

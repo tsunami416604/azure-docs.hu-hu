@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 83725a3839d36fc753bb43803e67acaca7571a6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 052418924e73252a780689aea33e84d5bfdbc3f6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85851828"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927651"
 ---
 # <a name="custom-commands-concepts-and-definitions"></a>Egyéni parancsok – fogalmak és definíciók
 
@@ -40,7 +40,7 @@ Az interakciós szabályok további szabályok, amelyek az összetettebb vagy ö
 
 A paraméterek a feladatok végrehajtásához szükséges parancsok. Összetett forgatókönyvekben a paramétereket az egyéni műveleteket kiváltó feltételek definiálására is használhatja.
 
-### <a name="name"></a>Name (Név)
+### <a name="name"></a>Name
 A Name tulajdonság azonosítja a paramétereket. Mindig adjon egy leíró nevet a paraméternek. A paraméterek több szakaszban is szerepelhetnek, például a feltételek, a beszédfelismerési válaszok vagy más műveletek összeállításakor.
  
 ### <a name="isglobal"></a>IsGlobal
@@ -62,10 +62,10 @@ Az összes ilyen típusú paraméter támogatja az alapértelmezett érték konf
 ### <a name="configuration"></a>Konfiguráció
 A Configuration paraméter csak a karakterlánc típusú tulajdonsághoz van definiálva. A következő értékek támogatottak:
 
-* **Nincs**.
-* **Teljes bevitel elfogadása**: Ha engedélyezve van, a paraméter fogadja az összes bemenetet. Ez a beállítás akkor hasznos, ha a felhasználónak a teljes kilépéssel rendelkező paraméterre van szüksége. Ilyenek például a postai címek.
-* **Előre megadott bemeneti értékek elfogadása külső katalógusból**: ez az érték egy olyan paraméter konfigurálására szolgál, amely az értékek széles skáláját feltételezheti. Ilyen például egy értékesítési katalógus. Ebben az esetben a katalógus egy külső webes végponton fut, és egymástól függetlenül is konfigurálható.
-* **Előre megadott bemeneti értékek elfogadása belső katalógusból**: ez az érték egy olyan paraméter konfigurálására szolgál, amely néhány értéket feltételez. Ebben az esetben az értékeket a Speech Studióban kell konfigurálni.
+* **Nincs** .
+* **Teljes bevitel elfogadása** : Ha engedélyezve van, a paraméter fogadja az összes bemenetet. Ez a beállítás akkor hasznos, ha a felhasználónak a teljes kilépéssel rendelkező paraméterre van szüksége. Ilyenek például a postai címek.
+* **Előre megadott bemeneti értékek elfogadása külső katalógusból** : ez az érték egy olyan paraméter konfigurálására szolgál, amely az értékek széles skáláját feltételezheti. Ilyen például egy értékesítési katalógus. Ebben az esetben a katalógus egy külső webes végponton fut, és egymástól függetlenül is konfigurálható.
+* **Előre megadott bemeneti értékek elfogadása belső katalógusból** : ez az érték egy olyan paraméter konfigurálására szolgál, amely néhány értéket feltételez. Ebben az esetben az értékeket a Speech Studióban kell konfigurálni.
 
 
 ### <a name="validation"></a>Érvényesítés
@@ -75,49 +75,52 @@ Az érvényesítés olyan paraméterekre vonatkozik, amelyek lehetővé teszik a
 * Szám
 
 ## <a name="rules-configuration"></a>Szabályok konfigurálása
-Az egyéni parancsok szabályait olyan *feltételek* határozzák meg, amelyek teljesülése esetén végrehajtják a *műveletek*egy csoportját. A szabályok Emellett lehetővé teszik a *végrehajtás utáni állapot* konfigurálását és a *várakozást* a következő bekapcsoláshoz.
+Az egyéni parancsok szabályait olyan *feltételek* határozzák meg, amelyek teljesülése esetén végrehajtják a *műveletek* egy csoportját. A szabályok Emellett lehetővé teszik a *végrehajtás utáni állapot* konfigurálását és a *várakozást* a következő bekapcsoláshoz.
 
 ### <a name="types"></a>Típusok
 Az egyéni parancsok a következő szabályok kategóriáit támogatják:
 
-* **Befejezési szabályok**: ezeket a szabályokat a parancs teljesítése után kell végrehajtani. Az ebben a szakaszban konfigurált összes szabályt, amely esetében a feltételek teljesülnek, végrehajtja a rendszer. 
-* **Interakciós szabályok**: ezekkel a szabályokkal további egyéni érvényesítéseket, megerősítéseket és egylépéses korrekciókat konfigurálhat, vagy bármilyen más egyéni párbeszédpanel-logikát is elvégezheti. A rendszer kiértékeli az interakciós szabályokat a feldolgozás minden egyes bekapcsolásakor, és felhasználható a befejezési szabályok elindítására.
+* **Befejezési szabályok** : ezeket a szabályokat a parancs teljesítése után kell végrehajtani. Az ebben a szakaszban konfigurált összes szabályt, amely esetében a feltételek teljesülnek, végrehajtja a rendszer. 
+* **Interakciós szabályok** : ezekkel a szabályokkal további egyéni érvényesítéseket, megerősítéseket és egylépéses korrekciókat konfigurálhat, vagy bármilyen más egyéni párbeszédpanel-logikát is elvégezheti. A rendszer kiértékeli az interakciós szabályokat a feldolgozás minden egyes bekapcsolásakor, és felhasználható a befejezési szabályok elindítására.
 
 A szabály részeként konfigurált különböző műveleteket a szerzői portálon megjelenő sorrendben hajtja végre a rendszer.
 
 ### <a name="conditions"></a>Feltételek
 A feltételek azon követelmények, amelyeknek teljesülnie kell egy szabály végrehajtásához. A szabályok feltételei a következők lehetnek:
 
-* A **paraméter értéke egyenlő**: a konfigurált paraméter értéke egy adott értékkel egyenlő.
-* **Nincs paraméter értéke**: a konfigurált paraméterek nem rendelkezhetnek értékkel.
-* **Szükséges paraméterek**: a konfigurált paraméter értékkel rendelkezik.
-* Az **összes kötelező paraméter**: a kötelezőként megjelölt összes paraméternek értékkel kell rendelkeznie.
-* **Frissített paraméterek**: a rendszer egy vagy több paraméter értékét frissítette az aktuális bevitel (teljes vagy tevékenység) feldolgozásának eredményeképpen.
-* A **megerősítés sikeres volt**: a bemeneti vagy a tevékenység sikeres megerősítést kapott (igen).
-* A **megerősítés megtagadva**: a bemenő adat vagy tevékenység nem volt sikeres megerősítés (nem).
-* A **korábbi parancsot frissíteni kell**: ezt a feltételt akkor használja a rendszer, ha egy adott frissítéssel együtt el szeretné érni a megtagadást. A színfalak mögött ez az állapot akkor van konfigurálva, amikor a párbeszédpanel-motor negatív megerősítést észlel, ha a cél ugyanaz, mint az előző kanyar, és a felhasználó egy frissítéssel válaszolt.
+* A **paraméter értéke egyenlő** : a konfigurált paraméter értéke egy adott értékkel egyenlő.
+* **Nincs paraméter értéke** : a konfigurált paraméterek nem rendelkezhetnek értékkel.
+* **Szükséges paraméterek** : a konfigurált paraméter értékkel rendelkezik.
+* Az **összes kötelező paraméter** : a kötelezőként megjelölt összes paraméternek értékkel kell rendelkeznie.
+* **Frissített paraméterek** : a rendszer egy vagy több paraméter értékét frissítette az aktuális bevitel (teljes vagy tevékenység) feldolgozásának eredményeképpen.
+* A **megerősítés sikeres volt** : a bemeneti vagy a tevékenység sikeres megerősítést kapott (igen).
+* A **megerősítés megtagadva** : a bemenő adat vagy tevékenység nem volt sikeres megerősítés (nem).
+* A **korábbi parancsot frissíteni kell** : ezt a feltételt akkor használja a rendszer, ha egy adott frissítéssel együtt el szeretné érni a megtagadást. A színfalak mögött ez az állapot akkor van konfigurálva, amikor a párbeszédpanel-motor negatív megerősítést észlel, ha a cél ugyanaz, mint az előző kanyar, és a felhasználó egy frissítéssel válaszolt.
 
 ### <a name="actions"></a>Műveletek
-* **Beszédfelismerési válasz küldése**: beszédfelismerési válasz küldése az ügyfélnek.
-* **Frissítési paraméter értéke**: a parancs paramétereinek értékét egy megadott értékre frissíti.
-* **Paraméter értékének törlése**: törölje a parancs paraméterének értékét.
-* **Webes végpont hívása**: Hívás kezdeményezése webes végpontra.
-* **Tevékenység küldése az ügyfélnek**: egyéni tevékenység küldése az ügyfélnek.
+* **Beszédfelismerési válasz küldése** : beszédfelismerési válasz küldése az ügyfélnek.
+* **Frissítési paraméter értéke** : a parancs paramétereinek értékét egy megadott értékre frissíti.
+* **Paraméter értékének törlése** : törölje a parancs paraméterének értékét.
+* **Webes végpont hívása** : Hívás kezdeményezése webes végpontra.
+* **Tevékenység küldése az ügyfélnek** : egyéni tevékenység küldése az ügyfélnek.
 
 ### <a name="expectations"></a>Elvárások
 Az elvárások a következő felhasználói bevitel feldolgozására vonatkozó tippeket konfigurálják. A következő típusok támogatottak:
 
-* A **felhasználó jóváhagyását várta**: Ez a várakozás azt adja meg, hogy az alkalmazás megerősítést vár (igen/nem) a következő felhasználói bevitelhez.
-* A **rendszer paraméter (ek) et vár a felhasználótól**: Ez a várakozás egy vagy több olyan parancssori paramétert határoz meg, amelyet az alkalmazás a felhasználói beviteltől várt.
+* A **felhasználó jóváhagyását várta** : Ez a várakozás azt adja meg, hogy az alkalmazás megerősítést vár (igen/nem) a következő felhasználói bevitelhez.
+* A **rendszer paraméter (ek) et vár a felhasználótól** : Ez a várakozás egy vagy több olyan parancssori paramétert határoz meg, amelyet az alkalmazás a felhasználói beviteltől várt.
 
 ### <a name="post-execution-state"></a>Végrehajtás utáni állapot
 A végrehajtás utáni állapot az aktuális bevitel (teljes vagy tevékenység) feldolgozását követő párbeszédpanel-állapot. A következő típusokból áll:
 
-* A **parancs befejeződött**: fejezze be a parancsot, és a rendszer nem dolgozza fel a parancs további szabályait.
-* **Végrehajtás befejezési szabályai**: hajtsa végre az összes érvényes befejezési szabályt.
-* **Várja meg a felhasználó bemenetét**: várjon a következő felhasználói bevitelre.
+* **Jelenlegi állapot megőrzése** : csak az aktuális állapot tartása.
+* **Fejezze be a parancsot** : fejezze be a parancsot, és a rendszer nem dolgozza fel a parancs további szabályait.
+* **Végrehajtás befejezési szabályai** : hajtsa végre az összes érvényes befejezési szabályt.
+* **Várja meg a felhasználó bemenetét** : várjon a következő felhasználói bevitelre.
 
-## <a name="next-steps"></a>További lépések
+
+
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Minták megtekintése a GitHubon](https://aka.ms/speech/cc-samples)

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 574592d4434b9d8c49086b82bab0b8775fb67e03
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0a68c2b9c857205dda7f5da846085f9f3823da20
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371732"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927634"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Biztonságos hozzáférés az adatokhoz az Azure Cosmos DB-ben
 
@@ -20,7 +20,7 @@ Ez a cikk áttekintést nyújt a [Microsoft Azure Cosmos DBban](https://azure.mi
 
 Azure Cosmos DB kétféle kulcsot használ a felhasználók hitelesítéséhez és az adataihoz és erőforrásaihoz való hozzáférés biztosításához. 
 
-|Kulcs típusa|Erőforrások|
+|Kulcs típusa|További források|
 |---|---|
 |[Elsődleges kulcsok](#primary-keys) |Felügyeleti erőforrásokhoz használatos: adatbázis-fiókok, adatbázisok, felhasználók és engedélyek|
 |[Erőforrás-tokenek](#resource-tokens)|Alkalmazás-erőforrásokhoz használatos: tárolók, dokumentumok, mellékletek, tárolt eljárások, eseményindítók és UDF|
@@ -119,6 +119,12 @@ Az engedélyezési erőforrás egy felhasználóhoz van társítva, és a tárol
 > [!NOTE]
 > A tárolt eljárások futtatásához a felhasználónak az összes engedéllyel kell rendelkeznie arra a tárolóra, amelyben a tárolt eljárás futni fog.
 
+Ha engedélyezi a [diagnosztikai naplókat az adatsík-kérelmek](cosmosdb-monitor-resource-logs.md)esetében, az engedélyhez tartozó következő két tulajdonságot naplózza a rendszer:
+
+* **resourceTokenPermissionId** – ez a tulajdonság a megadott erőforrás-jogkivonat engedélyének azonosítóját jelöli. 
+
+* **resourceTokenPermissionMode** – ez a tulajdonság azt az engedélyezési módot jelzi, amelyet az erőforrás-jogkivonat létrehozásakor beállított. Az engedélyezési mód rendelkezhet olyan értékekkel, mint az "all" vagy az "READ".
+
 ### <a name="code-sample-to-create-permission"></a>Kód mintája az engedély létrehozásához
 
 Az alábbi mintakód bemutatja, hogyan hozhat létre egy engedélyezési erőforrást, beolvashatja az engedélyezési erőforrás erőforrás-jogkivonatát, és társíthatja az engedélyeket a fent létrehozott [felhasználóhoz](#users) .
@@ -150,9 +156,9 @@ CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrR
 Ha Azure Cosmos DB fiók-olvasóhoz szeretne hozzáférni a felhasználói fiókjához, a következő lépéseket kell elvégeznie a Azure Portalban.
 
 1. Nyissa meg a Azure Portal, és válassza ki Azure Cosmos DB-fiókját.
-2. Kattintson a **hozzáférés-vezérlés (iam)** fülre, majd a  **+ szerepkör-hozzárendelés hozzáadása**lehetőségre.
-3. A **szerepkör-hozzárendelés hozzáadása** panelen, a **szerepkör** mezőben válassza a **Cosmos db fiók-olvasó szerepkör**lehetőséget.
-4. A **hozzáférés kiosztása mezőben**válassza az **Azure ad-felhasználó,-csoport vagy-alkalmazás**lehetőséget.
+2. Kattintson a **hozzáférés-vezérlés (iam)** fülre, majd a  **+ szerepkör-hozzárendelés hozzáadása** lehetőségre.
+3. A **szerepkör-hozzárendelés hozzáadása** panelen, a **szerepkör** mezőben válassza a **Cosmos db fiók-olvasó szerepkör** lehetőséget.
+4. A **hozzáférés kiosztása mezőben** válassza az **Azure ad-felhasználó,-csoport vagy-alkalmazás** lehetőséget.
 5. Válassza ki a címtárban azt a felhasználót, csoportot vagy alkalmazást, amelyhez hozzáférést szeretne biztosítani.  A címtárban a megjelenítendő név, e-mail-cím vagy objektumazonosító alapján kereshet.
     A kiválasztott felhasználó, csoport vagy alkalmazás megjelenik a kijelölt tagok listájában.
 6. Kattintson a **Mentés** gombra.

@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: b457c3b0ec0f68dd6a8213fbebe7a2596bed4c2e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b7b46f2d280577f40f927a0d8eb6fcf2ed33e04a
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519673"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927430"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Gyors útmutató: olyan függvény létrehozása az Azure-ban, amely válaszol a HTTP-kérelmekre
 
@@ -88,7 +88,7 @@ Egy üres mappában futtassa a következő parancsot a Functions-projekt [Maven 
 > + Akkor használja, `-DjavaVersion=11` Ha a függvényeit Java 11 rendszeren szeretné futtatni. További információ: Java- [verziók](functions-reference-java.md#java-versions). 
 > + A `JAVA_HOME` környezeti változót a JDK megfelelő verziójának telepítési helyére kell beállítani a cikk elvégzéséhez.
 
-# <a name="bash"></a>[bash](#tab/bash)
+# <a name="bash"></a>[Bash](#tab/bash)
 ```bash
 mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -DjavaVersion=8
 ```
@@ -114,7 +114,7 @@ Ha a rendszer kéri, adja meg a következő értékeket:
 
 `Y`A megerősítéshez írja be vagy nyomja le az ENTER billentyűt.
 
-A Maven létrehoz egy új, _artifactId_nevű mappában található projektfájlt, amely ebben a példában a `fabrikam-functions` . 
+A Maven létrehoz egy új, _artifactId_ nevű mappában található projektfájlt, amely ebben a példában a `fabrikam-functions` . 
 
 ::: zone-end  
 Navigáljon a projekt mappájába:
@@ -140,7 +140,7 @@ Ha szeretné, kihagyhatja [a függvény helyi futtatását](#run-the-function-lo
 ::: zone pivot="programming-language-csharp"
 #### <a name="httpexamplecs"></a>HttpExample.cs
 
-A *HttpExample.cs* olyan `Run` metódust tartalmaz, amely a változóban fogadja a `req` [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) , amely a **HttpTriggerAttribute**díszített, amely meghatározza az trigger viselkedését. 
+A *HttpExample.cs* olyan `Run` metódust tartalmaz, amely a változóban fogadja a `req` [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) , amely a **HttpTriggerAttribute** díszített, amely meghatározza az trigger viselkedését. 
 
 :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
 
@@ -170,41 +170,41 @@ Az archetípus is létrehoz egy egység tesztet a függvényhez. Ha módosítja 
 ::: zone pivot="programming-language-python"
 #### <a name="__init__py"></a>\_\_init \_ \_ . a
 
-az * \_ \_ init \_ \_ .* a (z `main()` ) egy Python-függvényt tartalmaz, amely a *function.js*konfigurációjának megfelelően aktiválódik.
+az *\_ \_ init \_ \_ .* a (z `main()` ) egy Python-függvényt tartalmaz, amely a *function.js* konfigurációjának megfelelően aktiválódik.
 
 :::code language="python" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/__init__.py":::
 
-HTTP-trigger esetén a függvény a `req` *function.json*megadottak szerint fogadja a kérelmeket a változóban. `req` az [Azure. functions. HttpRequest osztály](/python/api/azure-functions/azure.functions.httprequest)egy példánya. Afunction.json értékben definiált visszatérési objektum az `$return` [Azure. functions. HttpResponse osztály](/python/api/azure-functions/azure.functions.httpresponse)egy példánya. *function.json* További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](./functions-bindings-http-webhook.md?tabs=python).
+HTTP-trigger esetén a függvény a `req` *function.json* megadottak szerint fogadja a kérelmeket a változóban. `req` az [Azure. functions. HttpRequest osztály](/python/api/azure-functions/azure.functions.httprequest)egy példánya. Afunction.json értékben definiált visszatérési objektum az `$return` [Azure. functions. HttpResponse osztály](/python/api/azure-functions/azure.functions.httpresponse)egy példánya. *function.json* További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](./functions-bindings-http-webhook.md?tabs=python).
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
 #### <a name="indexjs"></a>index.js
 
-*index.js* exportál egy olyan függvényt, amely a *function.js*beállításának megfelelően aktiválódik.
+*index.js* exportál egy olyan függvényt, amely a *function.js* beállításának megfelelően aktiválódik.
 
 :::code language="javascript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js":::
 
-HTTP-trigger esetén a függvény a `req` *function.json*megadottak szerint fogadja a kérelmeket a változóban. A (z `$return` ) *function.jsban*definiált visszatérési objektum a válasz. További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](./functions-bindings-http-webhook.md?tabs=javascript).
+HTTP-trigger esetén a függvény a `req` *function.json* megadottak szerint fogadja a kérelmeket a változóban. A (z `$return` ) *function.jsban* definiált visszatérési objektum a válasz. További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](./functions-bindings-http-webhook.md?tabs=javascript).
 ::: zone-end
 
 ::: zone pivot="programming-language-typescript"
 #### <a name="indexts"></a>index. TS
 
-az *index. TS* olyan függvényt exportál, amely a *function.js*konfigurációjának megfelelően aktiválódik.
+az *index. TS* olyan függvényt exportál, amely a *function.js* konfigurációjának megfelelően aktiválódik.
 
 :::code language="typescript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-TypeScript/index.ts":::
 
-HTTP-trigger esetén a függvény a HttpRequest típusú változóban fogadja a kérelmeket a `req` *function.json*értékben meghatározottak szerint. **HttpRequest** A (z `$return` ) *function.jsban*definiált visszatérési objektum a válasz. 
+HTTP-trigger esetén a függvény a HttpRequest típusú változóban fogadja a kérelmeket a `req` *function.json* értékben meghatározottak szerint. **HttpRequest** A (z `$return` ) *function.jsban* definiált visszatérési objektum a válasz. 
 ::: zone-end
 
 ::: zone pivot="programming-language-powershell"
 #### <a name="runps1"></a>run.ps1
 
-*run.ps1* definiál egy olyan függvény-parancsfájlt, amely a *function.js*beállításának megfelelően aktiválódik.
+*run.ps1* definiál egy olyan függvény-parancsfájlt, amely a *function.js* beállításának megfelelően aktiválódik.
 
 :::code language="powershell" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-PowerShell/run.ps1":::
 
-A HTTP-triggerek esetében a függvény fogadja a `$Request` *function.js*által megadott paraméternek átadott kérelmeket. A rendszer a (z)function.jsban definiált visszaadott objektumot adja `Response` át *function.json* `Push-OutputBinding` válaszként a parancsmagnak. 
+A HTTP-triggerek esetében a függvény fogadja a `$Request` *function.js* által megadott paraméternek átadott kérelmeket. A rendszer a (z)function.jsban definiált visszaadott objektumot adja `Response` át *function.json* `Push-OutputBinding` válaszként a parancsmagnak. 
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
@@ -369,10 +369,10 @@ mvn azure-functions:deploy
 
 Ez a következő erőforrásokat hozza létre az Azure-ban:
 
-+ Erőforráscsoport. Neve: _Java-functions-Group_.
++ Erőforráscsoport. Neve: _Java-functions-Group_ .
 + Storage-fiók. A függvények igénylik. A név véletlenszerűen jön létre a Storage-fióknév követelményei alapján.
-+ Üzemeltetési csomag. A _westus_ régióban lévő Function App kiszolgáló nélküli üzemeltetése. A név a _Java-functions-app-Service-Plan_.
-+ Function alkalmazás. A functions alkalmazás a függvények üzembe helyezési és végrehajtási egysége. A név véletlenszerűen jön létre a _artifactId_alapján, amely véletlenszerűen generált számmal van hozzáfűzve. 
++ Üzemeltetési csomag. A _westus_ régióban lévő Function App kiszolgáló nélküli üzemeltetése. A név a _Java-functions-app-Service-Plan_ .
++ Function alkalmazás. A functions alkalmazás a függvények üzembe helyezési és végrehajtási egysége. A név véletlenszerűen jön létre a _artifactId_ alapján, amely véletlenszerűen generált számmal van hozzáfűzve. 
 
 A központi telepítés a Project fájljait csomagolja és telepíti az új Function alkalmazásba a [zip-telepítés](functions-deployment-technologies.md#zip-deploy)használatával. A kód a központi telepítési csomagból fut az Azure-ban.
 ::: zone-end
@@ -390,7 +390,7 @@ Másolja a publish (közzététel) parancs kimenetében megjelenő teljes **Megh
 
 # <a name="curl"></a>[Curl](#tab/curl)
 
-Futtassa a parancsot [`curl`](https://curl.haxx.se/) a **Meghívási URL-címmel**, és illessze be a paramétert `&name=Functions` . A parancs kimenetének a "Hello functions" szövegnek kell lennie.
+Futtassa a parancsot [`curl`](https://curl.haxx.se/) a **Meghívási URL-címmel** , és illessze be a paramétert `&name=Functions` . A parancs kimenetének a "Hello functions" szövegnek kell lennie.
 
 ![A függvény kimenete az Azure-on a curl használatával fut](./media/functions-create-first-azure-function-azure-cli/function-test-cloud-curl.png)
 
@@ -404,7 +404,7 @@ Futtassa a parancsot [`curl`](https://curl.haxx.se/) a **Meghívási URL-címmel
 >   func azure functionapp logstream <APP_NAME> --browser
 >   ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha folytatja a következő lépéssel, [vegyen fel egy Azure Storage-üzenetsor kimeneti kötését](functions-add-output-binding-storage-queue-cli.md), tartsa meg az összes erőforrását, mivel a már elkészült dolgokra épít.
 

@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: keli19
 author: likebupt
 ms.reviewer: peterlu
-ms.date: 10/12/2020
+ms.date: 10/29/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy, studio
-ms.openlocfilehash: e2f3e0b596847000af62aa6e23da5b137ee9de33
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 0d98d5103e26eb0b4ee0d31b95f1d07cdaa396ae
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999007"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927583"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>A Studio használata a Designerben betanított modellek üzembe helyezéséhez
 
@@ -56,7 +56,7 @@ A betanítási folyamat befejeződése után regisztrálja a betanított modellt
 
     ![A Train Model modul jobb oldali ablaktáblájának képernyőképe](./media/how-to-deploy-model-designer/train-model-right-pane.png)
 
-1. Adja meg a modell nevét, majd válassza a **Mentés**lehetőséget.
+1. Adja meg a modell nevét, majd válassza a **Mentés** lehetőséget.
 
 A modell regisztrálása után megkeresheti a Studio **modellek** eszköz lapján.
     
@@ -104,8 +104,8 @@ A szükséges fájlok letöltése után már készen áll a modell üzembe helye
 
     - Adja meg a végpont nevét.
     - Válassza a modell üzembe helyezését az [Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md) vagy az [Azure Container instance](how-to-deploy-azure-container-instance.md)szolgáltatásban.
-    - Töltse fel a `score.py` **bejegyzést a bejegyzési parancsfájlba**.
-    - Töltse fel a `conda_env.yml` **Conda-függőségek fájlját**. 
+    - Töltse fel a `score.py` **bejegyzést a bejegyzési parancsfájlba** .
+    - Töltse fel a `conda_env.yml` **Conda-függőségek fájlját** . 
 
     >[!TIP]
     > A **speciális** beállításban beállíthatja a CPU/memória kapacitását és egyéb paramétereket az üzembe helyezéshez. Ezek a beállítások bizonyos modellek, például a PyTorch modellek esetében fontosak, amelyek jelentős mennyiségű mémeket használnak (körülbelül 4 GB).
@@ -299,6 +299,7 @@ score_params = dict(
 ## <a name="next-steps"></a>Következő lépések
 
 * [Modell betanítása a tervezőben](tutorial-designer-automobile-price-train-score.md)
+* [Modellek üzembe helyezése Azure Machine Learning SDK-val](how-to-deploy-and-where.md)
 * [Sikertelen üzembe helyezés hibáinak megoldása](how-to-troubleshoot-deployment.md)
 * [Üzembe helyezés az Azure Kubernetes Service-ben](how-to-deploy-azure-kubernetes-service.md)
 * [Ügyfélalkalmazások létrehozása webszolgáltatások felhasználásához](how-to-consume-web-service.md)

@@ -6,16 +6,16 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: b4e2b5afd7742791218394422d00ee8ee46cb23a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 161e3e7fbc5b343ee73142f0e968367c3cbfaa6b
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212608"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927413"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions kötési kifejezés mintái
 
-Az [Eseményindítók és kötések](./functions-triggers-bindings.md) egyik leghatékonyabb funkciója a *kötés kifejezése*. A fájl *function.jsján* és a függvény paraméterei és kódjában használhat olyan kifejezéseket, amelyek különböző forrásokból származó értékekre vannak feloldva.
+Az [Eseményindítók és kötések](./functions-triggers-bindings.md) egyik leghatékonyabb funkciója a *kötés kifejezése* . A fájl *function.jsján* és a függvény paraméterei és kódjában használhat olyan kifejezéseket, amelyek különböző forrásokból származó értékekre vannak feloldva.
 
 A legtöbb ilyen kifejezés könnyen azonosítható, mivel kapcsos zárójelek között vannak. Egy üzenetsor-kiváltó függvényben például a rendszer `{queueTrigger}` feloldja az üzenetsor-üzenet szövegét. Ha `path` egy blob kimeneti kötés tulajdonsága `container/{queueTrigger}` és a függvény üzenetsor-üzenettel aktiválódik `HelloWorld` , a rendszer létrehoz egy nevű blobot `HelloWorld` .
 
@@ -30,7 +30,7 @@ Kötéskifejezések típusai
 
 ## <a name="binding-expressions---app-settings"></a>Kötési kifejezések – Alkalmazásbeállítások
 
-Ajánlott eljárásként a titkokat és a kapcsolatok karakterláncait az Alkalmazásbeállítások használatával kell felügyelni, nem pedig a konfigurációs fájlokat. Ez korlátozza a hozzáférést ezekhez a titkokhoz, és biztonságos módon tárolja a fájlokat, például * afunction.jst a* nyilvános forrású vezérlő adattárakban.
+Ajánlott eljárásként a titkokat és a kapcsolatok karakterláncait az Alkalmazásbeállítások használatával kell felügyelni, nem pedig a konfigurációs fájlokat. Ez korlátozza a hozzáférést ezekhez a titkokhoz, és biztonságos módon tárolja a fájlokat, például *afunction.jst a* nyilvános forrású vezérlő adattárakban.
 
 Az Alkalmazásbeállítások akkor is hasznosak, ha módosítani szeretné a környezet alapján a konfigurációt. Tesztelési környezetben például érdemes lehet figyelni egy másik üzenetsor-vagy blob Storage-tárolót.
 
@@ -41,7 +41,7 @@ Ha egy függvény helyileg fut, az Alkalmazásbeállítások értéke a fájl *l
 > [!NOTE]
 > Az `connection` Eseményindítók és kötések tulajdonsága egy speciális eset, amely automatikusan feloldja az értékeket az Alkalmazásbeállítások nélkül, százalékban megadva. 
 
-Az alábbi példa egy Azure Queue Storage-trigger, amely egy Alkalmazásbeállítások használatával `%input-queue-name%` határozza meg, hogy a várólista aktiválva legyen.
+Az alábbi példa egy Azure Queue Storage-trigger, amely egy Alkalmazásbeállítások használatával `%input_queue_name%` határozza meg, hogy a várólista aktiválva legyen.
 
 ```json
 {
@@ -50,7 +50,7 @@ Az alábbi példa egy Azure Queue Storage-trigger, amely egy Alkalmazásbeállí
       "name": "order",
       "type": "queueTrigger",
       "direction": "in",
-      "queueName": "%input-queue-name%",
+      "queueName": "%input_queue_name%",
       "connection": "MY_STORAGE_ACCT_APP_SETTING"
     }
   ]
@@ -62,7 +62,7 @@ Ugyanezt a megközelítést használhatja az osztályok könyvtáraiban:
 ```csharp
 [FunctionName("QueueTrigger")]
 public static void Run(
-    [QueueTrigger("%input-queue-name%")]string myQueueItem, 
+    [QueueTrigger("%input_queue_name%")]string myQueueItem, 
     ILogger log)
 {
     log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
@@ -292,7 +292,7 @@ public class BlobName
 
 ## <a name="create-guids"></a>GUID-azonosítók létrehozása
 
-A `{rand-guid}` kötési kifejezés létrehoz egy GUID azonosítót. Egy fájl következő blob-elérési útja `function.json` létrehoz egy blobot egy olyan névvel, mint a *50710cb5-84b9-4d87-9d83-a03d6976a682.txt*.
+A `{rand-guid}` kötési kifejezés létrehoz egy GUID azonosítót. Egy fájl következő blob-elérési útja `function.json` létrehoz egy blobot egy olyan névvel, mint a *50710cb5-84b9-4d87-9d83-a03d6976a682.txt* .
 
 ```json
 {
@@ -305,7 +305,7 @@ A `{rand-guid}` kötési kifejezés létrehoz egy GUID azonosítót. Egy fájl k
 
 ## <a name="current-time"></a>Aktuális idő
 
-A kötési kifejezés a következőhöz lesz `DateTime` feloldva: `DateTime.UtcNow` . Egy fájl következő blob-elérési útja `function.json` létrehoz egy blobot egy olyan névvel, mint a *2018-02-16T17-59-55Z.txt*.
+A kötési kifejezés a következőhöz lesz `DateTime` feloldva: `DateTime.UtcNow` . Egy fájl következő blob-elérési útja `function.json` létrehoz egy blobot egy olyan névvel, mint a *2018-02-16T17-59-55Z.txt* .
 
 ```json
 {

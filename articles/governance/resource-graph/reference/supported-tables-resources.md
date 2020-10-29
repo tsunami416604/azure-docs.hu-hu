@@ -1,15 +1,15 @@
 ---
 title: Támogatott Azure Resource Manager erőforrástípusok
 description: Adja meg az Azure Resource Graph és a Change History által támogatott Azure Resource Manager-erőforrástípusok listáját.
-ms.date: 09/30/2020
+ms.date: 10/28/2020
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 385ee96fa821b8d90ff529fecb52dbec9803dea2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e604fe7c5e3a7f40e31f43db64bcd59ae0545ac0
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91740003"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927566"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Az Azure Resource Graph táblázat-és erőforrástípus-referenciája
 
@@ -30,14 +30,14 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 
 - Microsoft. guestconfiguration/guestconfigurationassignments
 
-## <a name="healthresources"></a>healthresources
-
-- Microsoft. resourcehealth/események
-
 ## <a name="maintenanceresources"></a>maintenanceresources
 
 - Microsoft. Maintenance/configurationassignments
 - Microsoft. Maintenance/Updates
+
+## <a name="policyresources"></a>policyresources
+
+- Microsoft. policyinsights/policystates
 
 ## <a name="resourcecontainers"></a>resourcecontainers
 
@@ -71,6 +71,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. alertsmanagement/smartdetectoralertrules
 - Microsoft. AnalysisServices/kiszolgálók
 - Microsoft. apimanagement/szolgáltatás
+- Microsoft. appassessment/migrateprojects
 - Microsoft. appconfiguration/configurationstores
 - Microsoft. appplatform/Spring
 - Microsoft. Archive/Collections
@@ -107,6 +108,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - microsoft.batChai/fileservers
 - microsoft.batChai/feladatok
 - microsoft.batChai/munkaterületek
+- Microsoft. Bing/fiókok
 - Microsoft. bingmaps/mapapis
 - Microsoft. biztalkservices/BizTalk
 - Microsoft. blockchain/blockchainmembers
@@ -135,6 +137,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. Cognition/syntheticsaccounts
 - Microsoft. cognitiveservices/fiókok
 - Microsoft. számítás/availabilitysets
+- Microsoft. számítás/cloudservices
 - Microsoft. számítás/diskaccesses
 - Microsoft. számítás/diskencryptionsets
 - Microsoft. számítás/lemezek
@@ -202,6 +205,8 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. dbforpostgresql/kiszolgálók
 - Microsoft. dbforpostgresql/serversv2
 - Microsoft. dbforpostgresql/singleservers
+- Microsoft. delegatednetwork/delegatedsubnets
+- Microsoft. delegatednetwork/orchestratorinstances
 - Microsoft. deploymentmanager/artifactsources
 - Microsoft. deploymentmanager/bevezetések
 - Microsoft. deploymentmanager/servicetopologies
@@ -251,8 +256,10 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. healthcareapis/szolgáltatások/privateendpointconnections
 - Microsoft. hybridcompute/gépek
 - Microsoft. hybridcompute/gépek/bővítmények
+- Microsoft. hybridcompute/privatelinkscopes
 - Microsoft. hybriddata/datamanagers
 - Microsoft. hybridnetwork/eszközök
+- Microsoft. hybridnetwork/networkfunctions
 - Microsoft. hybridnetwork/virtualnetworkfunctions
 - Microsoft. importexport/feladatok
 - Microsoft. industrydatalifecycle/basemodels
@@ -297,6 +304,8 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. machinelearningservices/munkaterületek
 - Microsoft. machinelearningservices/munkaterületek/inferenceendpoints
 - Microsoft. machinelearningservices/munkaterületek/inferenceendpoints/központi telepítések
+- Microsoft. machinelearningservices/munkaterületek/onlineendpoints
+- Microsoft. machinelearningservices/munkaterületek/onlineendpoints/központi telepítések
 - Microsoft. Maintenance/maintenanceconfigurations
 - Microsoft. Maintenance/maintenancepolicies
 - Microsoft. managedidentity/csoportok
@@ -395,9 +404,12 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. objectstore/osnamespaces
 - Microsoft. offazure/hypervsites
 - Microsoft. offazure/importsites
+- Microsoft. offazure/mastersites
 - Microsoft. offazure/serversites
 - Microsoft. offazure/vmwaresites
+- Microsoft. openlogisticsplatform/munkaterületek
 - Microsoft. operationalinsights/fürtök
+- Microsoft. operationalinsights/querypacks
 - Microsoft. operationalinsights/munkaterületek
 - Microsoft. operationsmanagement/megoldások
 - Microsoft. operationsmanagement/nézetek
@@ -417,6 +429,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. redhatopenshift/openshiftclusters
 - Microsoft. Relay/névterek
 - Microsoft. RemoteApp/gyűjtemények
+- Microsoft. rugalmasság/chaosexperiments
 - Microsoft. resourcegraph/lekérdezések
 - Microsoft. Resources/deploymentscripts
 - Microsoft. Resources/templatespecs
@@ -471,6 +484,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. streamanalytics/fürtök
 - Microsoft. streamanalytics/streamingjobs
 - Microsoft. szalangána/virtualmachines
+- Microsoft. szalangána/virtualmachinesnapshots
 - Microsoft. szinapszis/privatelinkhubs
 - Microsoft. szinapszis/munkaterületek
 - Microsoft. szinapszis/munkaterületek/bigdatapools
@@ -553,6 +567,10 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. Security/regulatorycompliancestandards/regulatorycompliancecontrols/regulatorycomplianceassessments
 - Microsoft. Security/securescores
 - Microsoft. Security/securescores/securescorecontrols
+
+## <a name="servicehealthresources"></a>servicehealthresources
+
+- Microsoft. resourcehealth/események
 
 ## <a name="next-steps"></a>Következő lépések
 

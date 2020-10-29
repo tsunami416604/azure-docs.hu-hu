@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: eeceb1279579055bfff33f0a4413f0798418faed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59b57e292275888140045bf94ff36995f312b6c1
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83201514"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927481"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>Oktatóanyag: a tanúsítvány automatikus elforgatásának konfigurálása Key Vaultban
 
@@ -33,7 +33,7 @@ Ez az oktatóanyag a következőket mutatja be:
 
 Mielőtt elkezdené, olvassa el [Key Vault alapvető fogalmakat](../general/basic-concepts.md).
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -41,13 +41,13 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="create-a-vault"></a>Tároló létrehozása
 
-Hozzon létre egy kulcstartót, vagy válassza ki a meglévő tárolót a műveletek végrehajtásához (lásd: [Key Vault létrehozási lépései](../quick-create-portal.md)). A példában a kulcstároló neve **például a-Vault**.
+Hozzon létre egy kulcstartót, vagy válassza ki a meglévő tárolót a műveletek végrehajtásához (lásd: [Key Vault létrehozási lépései](../quick-create-portal.md)). A példában a kulcstároló neve **például a-Vault** .
 
 ![Kimenet a Key Vault létrehozásának befejeződése után](../media/certificates/tutorial-import-cert/vault-properties.png)
 
 ## <a name="create-a-certificate-in-key-vault"></a>Tanúsítvány létrehozása Key Vaultban
 
-Hozzon létre egy tanúsítványt, vagy importáljon egy tanúsítványt a kulcstartóba (lásd: a [tanúsítvány létrehozásának lépései a Key Vault](../quick-create-portal.md)). Ebben az esetben egy **ExampleCertificate**nevű tanúsítványon fog dolgozni.
+Hozzon létre egy tanúsítványt, vagy importáljon egy tanúsítványt a kulcstartóba (lásd: a [tanúsítvány létrehozásának lépései a Key Vault](../quick-create-portal.md)). Ebben az esetben egy **ExampleCertificate** nevű tanúsítványon fog dolgozni.
 
 ## <a name="update-certificate-lifecycle-attributes"></a>A tanúsítvány életciklus-attribútumainak frissítése
 
@@ -73,38 +73,38 @@ Key Vault automatikusan elforgatja a tanúsítványokat a CAs használatával l�
 
 ### <a name="update-certificate-lifecycle-attributes-at-the-time-of-creation"></a>A tanúsítvány életciklus-attribútumainak frissítése a létrehozás időpontjában
 
-1. A Key Vault tulajdonságok lapon válassza a **tanúsítványok**lehetőséget.
-1. Válassza a **készítés/importálás**lehetőséget.
+1. A Key Vault tulajdonságok lapon válassza a **tanúsítványok** lehetőséget.
+1. Válassza a **készítés/importálás** lehetőséget.
 1. A **tanúsítvány létrehozása** képernyőn frissítse a következő értékeket:
 
-   - **Érvényességi időszak**: adja meg az értéket (hónapokban). A rövid élettartamú tanúsítványok létrehozása ajánlott biztonsági eljárás. Alapértelmezés szerint az újonnan létrehozott tanúsítvány érvényességi értéke 12 hónap.
-   - **Élettartam művelet típusa**: válassza ki a tanúsítvány automatikus megújítási és riasztási műveletét, majd frissítse a **százalékos élettartamot** vagy **a lejárat előtti napok számát**. Alapértelmezés szerint a tanúsítvány automatikus megújítása az élettartamának 80%-ában van beállítva. A legördülő menüben válassza az alábbi lehetőségek egyikét.
+   - **Érvényességi időszak** : adja meg az értéket (hónapokban). A rövid élettartamú tanúsítványok létrehozása ajánlott biztonsági eljárás. Alapértelmezés szerint az újonnan létrehozott tanúsítvány érvényességi értéke 12 hónap.
+   - **Élettartam művelet típusa** : válassza ki a tanúsítvány automatikus megújítási és riasztási műveletét, majd frissítse a **százalékos élettartamot** vagy **a lejárat előtti napok számát** . Alapértelmezés szerint a tanúsítvány automatikus megújítása az élettartamának 80%-ában van beállítva. A legördülő menüben válassza az alábbi lehetőségek egyikét.
 
         |  Automatikus megújítás egy adott időpontban| Minden Névjegy küldése egy adott időpontban |
         |-----------|------|
         |Ha kiválasztja ezt a lehetőséget, *bekapcsolja* az autorotációt. | Ha ezt a beállítást választja, *nem* fog automatikusan elforgatni, de csak a névjegyeket fogja riasztani.|
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ![Tanúsítvány életciklusa](../media/certificates/tutorial-rotate-cert/create-cert-lifecycle.png)
 
 ### <a name="update-lifecycle-attributes-of-a-stored-certificate"></a>Tárolt tanúsítvány életciklus-attribútumainak frissítése
 
 1. Válassza ki a kulcstartót.
-1. A Key Vault tulajdonságok lapon válassza a **tanúsítványok**lehetőséget.
-1. Válassza ki a frissíteni kívánt tanúsítványt. Ebben az esetben egy **ExampleCertificate**nevű tanúsítványon fog dolgozni.
+1. A Key Vault tulajdonságok lapon válassza a **tanúsítványok** lehetőséget.
+1. Válassza ki a frissíteni kívánt tanúsítványt. Ebben az esetben egy **ExampleCertificate** nevű tanúsítványon fog dolgozni.
 1. Válassza ki a **kiállítási szabályzat** elemet a felső menüsorban.
 
-   ![Tanúsítvány tulajdonságai](../media/certificates/tutorial-rotate-cert/cert-issuance-policy.png)
+   ![Képernyőfelvétel: a kiállítási szabályzat gombjának kiemelése.](../media/certificates/tutorial-rotate-cert/cert-issuance-policy.png)
 
 1. A **kiállítási szabályzat** képernyőn frissítse a következő értékeket:
 
-   - **Érvényességi időszak**: frissítse az értéket (hónapokban).
-   - **Élettartam művelet típusa**: válassza ki a tanúsítvány automatikus megújítási és riasztási műveletét, majd frissítse a **százalékos élettartamot** vagy a **lejárat előtti napok számát**.
+   - **Érvényességi időszak** : frissítse az értéket (hónapokban).
+   - **Élettartam művelet típusa** : válassza ki a tanúsítvány automatikus megújítási és riasztási műveletét, majd frissítse a **százalékos élettartamot** vagy a **lejárat előtti napok számát** .
 
    ![Tanúsítvány tulajdonságai](../media/certificates/tutorial-rotate-cert/cert-policy-change.png)
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 > [!IMPORTANT]
 > Ha módosítja egy tanúsítvány élettartamának típusát, a rendszer azonnal rögzíti a meglévő tanúsítványok módosításait.
@@ -136,7 +136,7 @@ Set-AzureKeyVaultCertificatePolicy -VaultName $vaultName
 > 
 A paraméterekkel kapcsolatos további tudnivalókért tekintse meg az [az Key Vault Certificate](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-set-attributes)című témakört.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Más Key Vault oktatóanyagok erre az oktatóanyagra épülnek. Ha ezeket az oktatóanyagokat szeretné használni, érdemes lehet a meglévő erőforrásokat helyben hagyni.
 Ha már nincs szüksége rájuk, törölje az erőforráscsoportot, amely törli a kulcstartót és a kapcsolódó erőforrásokat.
@@ -145,10 +145,10 @@ Az erőforráscsoport törlése a portál használatával:
 
 1. Adja meg az erőforráscsoport nevét a portál felső részén található **keresőmezőbe** . Ha az ebben a rövid útmutatóban használt erőforráscsoport megjelenik a keresési eredmények között, válassza ki.
 1. Válassza az **Erőforráscsoport törlése** elemet.
-1. A **írja be az ERŐFORRÁSCSOPORT nevét:** mezőbe írja be az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
+1. A **írja be az ERŐFORRÁSCSOPORT nevét:** mezőbe írja be az erőforráscsoport nevét, majd válassza a **Törlés** lehetőséget.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban frissítette a tanúsítvány életciklus-attribútumait. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa a következő cikkekkel:
 

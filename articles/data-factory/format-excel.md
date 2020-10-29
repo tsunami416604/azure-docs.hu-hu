@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 10/29/2020
 ms.author: jingwang
-ms.openlocfilehash: ecca75f294cf70ba8f7d82fcce7bdd3e9611b21a
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 74cfabff22074ee405d7b417e306da62ef69ae19
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636340"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927113"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Excel-formátum Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -38,8 +38,8 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 | firstRowAsHeader | Meghatározza, hogy az adott munkalap vagy tartomány első sorát fejlécként kell-e kezelni az oszlopok neveivel.<br>Az engedélyezett értékek: **true** és **false** (alapértelmezett). | Nem       |
 | nullValue        | Megadja a null értékű karakterlánc-ábrázolást. <br>Az alapértelmezett érték **üres karakterlánc** . | Nem       |
 | tömörítés | A fájltömörítés konfigurálására szolgáló tulajdonságok csoportja. Akkor konfigurálja ezt a szakaszt, ha a tevékenység végrehajtása során tömörítést vagy kibontást szeretne végezni. | Nem |
-| típus<br/>( *alatt `compression`* ) | A JSON-fájlok olvasásához/írásához használt tömörítési kodek. <br>Az engedélyezett értékek a **bzip2** , a **gzip** , a **deflate** , a **ZipDeflate** , a **TarGzip** , a **Snappy** vagy a **lz4** . Az alapértelmezett érték nincs tömörítve.<br>**Megjegyzés:** a másolási tevékenység nem támogatja a "snappy" & "lz4", és a leképezési adatfolyam nem támogatja a "ZipDeflate".<br>**Vegye figyelembe** , hogy ha másolási tevékenységet használ a **ZipDeflate** -fájl (ok) kibontásához és a fájl alapú fogadó adattárba való íráshoz, a fájlok kikerülnek a mappába: `<path specified in dataset>/<folder named as source zip file>/` . | Nem.  |
-| szint<br/>( *alatt `compression`* ) | A tömörítési arány. <br>Az engedélyezett értékek az **optimálisak** vagy a **leggyorsabbek** .<br>- **Leggyorsabb:** A tömörítési műveletnek a lehető leggyorsabban kell elvégeznie, még akkor is, ha az eredményül kapott fájl nem tömöríthető optimálisan.<br>- **Optimális** : a tömörítési műveletet optimálisan kell tömöríteni, még akkor is, ha a művelet végrehajtása hosszú időt vesz igénybe. További információ: [tömörítési szint](/dotnet/api/system.io.compression.compressionlevel) témakör. | Nem       |
+| típus<br/>( *alatt `compression`* ) | A JSON-fájlok olvasásához/írásához használt tömörítési kodek. <br>Az engedélyezett értékek a **bzip2** , a **gzip** , a **deflate** , a **ZipDeflate** , a **TarGzip** , a **tar** , a **Snappy** vagy a **lz4** . Az alapértelmezett érték nincs tömörítve.<br>**Megjegyzés:** jelenleg a másolási tevékenység nem támogatja a "snappy" & "lz4", és a leképezési folyamat nem támogatja a "ZipDeflate", a "TarGzip" és a "tar" típust.<br>**Vegye figyelembe** , hogy ha másolási tevékenységet használ a **ZipDeflate** -fájl (ok) kibontásához és a fájl alapú fogadó adattárba való íráshoz, a fájlok kikerülnek a mappába: `<path specified in dataset>/<folder named as source zip file>/` . | Nem.  |
+| szint<br/>( *alatt `compression`* ) | A tömörítési arány. <br>Az engedélyezett értékek az **optimálisak** vagy a **leggyorsabbek** .<br>- **Leggyorsabb:** A tömörítési műveletnek a lehető leggyorsabban kell elvégeznie, még akkor is, ha az eredményül kapott fájl nem tömöríthető optimálisan.<br>- **Optimális** : a tömörítési műveletet optimálisan kell tömöríteni, még akkor is, ha a művelet végrehajtása hosszú időt vesz igénybe. További információ: [tömörítési szint](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) témakör. | Nem       |
 
 Az alábbi példa az Azure Blob Storage Excel-adatkészletet mutatja be:
 
