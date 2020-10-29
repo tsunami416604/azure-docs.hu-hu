@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: eb3c45c01b2e3ca1761e86f3ac991d67f7813856
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb978f30104b1e38bd8930ccb058c4057d394e51
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504315"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899670"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Kinyerés, átalakítás és betöltés (ETL) skálán
 
@@ -27,7 +27,7 @@ A következő szakaszok az ETL fázisok és a hozzájuk társított összetevők
 
 ## <a name="orchestration"></a>Vezénylés
 
-Az összehangolás az ETL-folyamat minden fázisában megível. A HDInsight-ben található ETL-feladatok gyakran több különböző, egymással együtt működő terméket is tartalmaznak. Példa:
+Az összehangolás az ETL-folyamat minden fázisában megível. A HDInsight-ben található ETL-feladatok gyakran több különböző, egymással együtt működő terméket is tartalmaznak. Például:
 
 - Előfordulhat, hogy a Apache Hive használatával törli az adatmennyiséget, az Apache Pig pedig egy másik rész tisztítására.
 - Előfordulhat, hogy a Azure Data Factory használatával tölti be az adatait a Azure Data Lake Store Azure SQL Databaseba.
@@ -86,7 +86,7 @@ Az adatkészletek terabájt tartományban való feltöltéséhez a hálózati k�
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Az Azure szinapszis Analytics megfelelő választás az előkészített eredmények tárolására. Az Azure HDInsight használatával a Zure szinapszis Analytics szolgáltatáshoz is elvégezheti ezeket a szolgáltatásokat.
+Az Azure szinapszis Analytics (korábbi nevén SQL DW) megfelelő választás az előkészített eredmények tárolására. Az Azure HDInsight segítségével az Azure szinapszis Analytics szolgáltatáshoz is elvégezheti ezeket a szolgáltatásokat.
 
 Az Azure szinapszis Analytics egy, az analitikus számítási feladatokra optimalizált, összehasonlítható adatbázis-tároló. Particionált táblák alapján méretezhető. A táblák több csomópont között is particionálva lehetnek. A csomópontok a létrehozáskor vannak kiválasztva. Az is előfordulhat, hogy a tény után méretezhetők, de ez egy aktív folyamat, amely adatáthelyezést igényelhet. További információ: [a számítások kezelése az Azure szinapszis Analyticsben](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 

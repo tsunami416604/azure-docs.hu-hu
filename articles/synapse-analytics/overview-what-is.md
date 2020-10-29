@@ -6,33 +6,33 @@ author: saveenr
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
-ms.date: 09/12/2020
+ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: c4338152579170bf809577262992f0db9a1a95ff
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 09429e26c5b7192141262e1a31c0ef90427bdd32
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90524946"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899041"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Mi az Azure szinapszis Analytics (munkaterületek előzetes verziója)?
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
-A nagyvállalati elemzésnek bármilyen típusú, nyers, finomított vagy nagy mértékben feldolgozható adatmennyiséget kell biztosítania. Ez a szükséges vállalatok összevarrják a big data és az adattárház-technológiákat, például a Sparkot és az SQL-t olyan gazdag adatfolyamatokkal, amelyek a kapcsolódó tárolókban és az adattavakban egyaránt működnek. Az ehhez hasonló megoldások nehezen hozhatók létre, biztonságosak és karbantarthatók. Az Insight Enteprises igénybe vételéhez szükséges összetettségi késések.
+A nagyvállalati elemzési szolgáltatásnak bármilyen típusú, nyers, finomított vagy nagy teljesítményű adatmennyiségen kell működnie. Ehhez általában a vállalatoknak össze kell fűzve a big data és az adattárház-technológiákat olyan összetett adatfolyamatokban, amelyek a kapcsolati tárolókban és az adattavakban tárolt adatmennyiségek között működnek. Ilyen típusú megoldások, például nehéz felépíteni, karbantartani és biztonságossá tenni a megoldásokat. Az Insight Enteprises szükséges összetettségi késések.
 
-Az **Azure szinapszis** egy integrált elemzési szolgáltatás, amely felgyorsítja az adattárházak és a Big Data elemzési rendszerek elemzésének idejét. A legfontosabb, hogy az Azure szinapszis a nagyvállalati adattárházak, a big data használt **Spark** -technológiák, valamint az adatintegrációs **és ETL** /elt által használt **SQL** -technológiák közül a legjobbat egyesíti. A szinapszis egy webalapú **stúdió** , amely egyetlen helyet biztosít a felügyelethez, a monitorozáshoz, a kódoláshoz és a biztonsághoz. A szinapszis a többi Azure-szolgáltatással, például a **PowerBI**, a **CosmosDB**és a **AzureML**való szoros integrációt is tartalmaz.
+Az **Azure szinapszis** egy integrált elemzési szolgáltatás, amely felgyorsítja az adattárházak és a Big Data rendszerek betekintésének idejét. Az Azure szinapszis a nagyvállalati adattárházban, a big data használt **Spark** -technológiákban, valamint az adatintegrációs és az ETL/elt- **adatcsatornákhoz** használt **SQL** -technológiákat egyesíti. A **szinapszis Studio** egységes felhasználói élményt nyújt a felügyelethez, a monitorozáshoz, a kódoláshoz és a biztonsághoz. A szinapszis szoros integrációt tartalmaz más Azure-szolgáltatásokkal, például a **PowerBI** , a **CosmosDB** és a **AzureML** .
 
 ## <a name="key-features--benefits"></a>A főbb funkciók & előnyök
 
 ### <a name="industry-leading-sql"></a>Piacvezető SQL
 
-* A **SZINAPSZIS SQL** egy elosztott lekérdezési rendszer, amely lehetővé teszi, hogy a vállalatok adattárház-és adatvirtualizációs forgatókönyveket alkalmazzanak az adatmérnökök számára ismerős standard T-SQL-élmények használatával. Emellett kibővíti az SQL képességeit a streaming és a gépi tanulási forgatókönyvek kezeléséhez.
+* A **SZINAPSZIS SQL** egy elosztott lekérdezési rendszer, amely lehetővé teszi a vállalatok számára az adattárházak és az adatvirtualizációs forgatókönyvek megvalósítását standard és ismerős T-SQL-élmények használatával. Emellett kibővíti az SQL képességeit a streaming és a gépi tanulási forgatókönyvek kezeléséhez.
 
 * A szinapszis SQL **kiszolgáló** nélküli és **dedikált** erőforrás-modelleket is kínál, amelyek az igényeinek megfelelő felhasználási és számlázási lehetőségeket kínálnak. A kiszámítható teljesítmény és a költséghatékonyság érdekében hozzon létre dedikált SQL-készleteket az SQL-táblákban tárolt adatfeldolgozási teljesítmény fenntartásához. Nem tervezett vagy feltört számítási feladatokhoz használja a mindig elérhető, kiszolgáló nélküli SQL-végpontot.
 * A Felhőbeli adatforrásokból származó adatoknak az SQL-táblákba való beépítésére szolgáló beépített **streaming** -funkciók használata
-* A AI és az SQL integrálása **gépi tanulási** modellek használatával a [T-SQL előrejelzési függvény](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest) használatával
+* A AI és az SQL integrálása **gépi tanulási** modellekkel az adatpontszámhoz a [T-SQL prediktív függvény](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest) használatával
 
 ### <a name="industry-standard-apache-spark"></a>Iparági szabványnak megfelelő Apache Spark
 
@@ -56,7 +56,7 @@ Az Azure szinapszis eltávolítja a hagyományos technológiai korlátokat az SQ
 Az Azure szinapszis beépített, ugyanazzal az adatintegrációs motorral és tapasztalatokkal rendelkezik, mint a Azure Data Factory, ami lehetővé teszi, hogy a szinapszis-elemzések elhagyása nélkül hozzon létre gazdag, méretezhető ETL-folyamatokat.
 
 * Adatok beolvasása 90 és adatforrásból
-* Kód – ingyenes ETL adatáramlási tevékenységekkel
+* Code-Free ETL adatáramlási tevékenységekkel
 * A notebookok, a Spark-feladatok, a tárolt eljárások, az SQL-parancsfájlok és egyebek összehangolása
 
 ### <a name="unified-management-monitoring-and-security"></a>Egységes felügyelet, figyelés és biztonság
@@ -75,7 +75,7 @@ A **szinapszis Studio** az a webes felület, amely az adatmérnökökkel együtt
 * Piacvezető termelékenység az adatmérnökök számára az SQL vagy a Spark kód írásához: szerzői műveletek, hibakeresés és teljesítmény optimalizálása
 * Integrálás vállalati CI/CD-folyamatokkal
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerkedés az Azure szinapszis Analytics szolgáltatással](get-started.md)
 * [Munkaterület létrehozása](quickstart-create-workspace.md)

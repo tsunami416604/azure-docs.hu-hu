@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: sashan
 ms.author: sashan
 ms.reviewer: sstein, sashan
-ms.date: 08/12/2020
-ms.openlocfilehash: c616ba1971fcbb0674a42583b30c25f6ccda6874
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 10/28/2020
+ms.openlocfilehash: c0c925f68e8edbae00f980d9445c59d7213a4b25
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791783"
+ms.locfileid: "92901315"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Magas rendelkezésre állás Azure SQL Database és SQL felügyelt példányhoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -116,7 +116,7 @@ A [gyorsított adatbázis-helyreállítás (ADR)](../accelerated-database-recove
 
 ## <a name="testing-application-fault-resiliency"></a>Az alkalmazás hibatűrési rugalmasságának tesztelése
 
-A magas rendelkezésre állás az SQL Database és felügyelt SQL-példány platform alapvető részét képezi, amely átláthatóan működik az adatbázis-alkalmazás tekintetében. Felismertük azonban, hogy érdemes lehet tesztelnie, hogy a tervezett vagy nem tervezett események során kezdeményezett automatikus feladatátvételi műveletek milyen hatással lennének az alkalmazásokra, mielőtt üzembe helyezné őket az éles környezetben. A feladatátvételt manuálisan is aktiválhatja, ha egy speciális API meghívásával újraindít egy adatbázist, egy rugalmas készletet vagy egy felügyelt példányt. Egy zóna redundáns adatbázis vagy rugalmas készlet esetén az API-hívás eredményeképpen az ügyfélkapcsolatok átirányítása egy olyan rendelkezésre állási zónában lévő új elsődlegesre, amely eltér a régi elsődleges hely rendelkezésre állási zónájától. Így azt is megvizsgálhatja, hogy a feladatátvétel hogyan befolyásolja a meglévő adatbázis-munkameneteket, azt is ellenőrizheti, hogy a hálózati késés változása miatt a végpontok közötti teljesítményt módosítja-e. Mivel az újraindítási művelet zavaró, és nagy számú közülük a platform kihangsúlyozása, az egyes adatbázisok, rugalmas készletek vagy felügyelt példányok esetében minden 30 percenként csak egy feladatátvételi hívás engedélyezett.
+A magas rendelkezésre állás az SQL Database és felügyelt SQL-példány platform alapvető részét képezi, amely átláthatóan működik az adatbázis-alkalmazás tekintetében. Felismertük azonban, hogy érdemes lehet tesztelnie, hogy a tervezett vagy nem tervezett események során kezdeményezett automatikus feladatátvételi műveletek milyen hatással lennének az alkalmazásokra, mielőtt üzembe helyezné őket az éles környezetben. A feladatátvételt manuálisan is aktiválhatja, ha egy speciális API meghívásával újraindít egy adatbázist, egy rugalmas készletet vagy egy felügyelt példányt. Egy zóna redundáns adatbázis vagy rugalmas készlet esetén az API-hívás eredményeképpen az ügyfélkapcsolatok átirányítása egy olyan rendelkezésre állási zónában lévő új elsődlegesre, amely eltér a régi elsődleges hely rendelkezésre állási zónájától. Így azt is megvizsgálhatja, hogy a feladatátvétel hogyan befolyásolja a meglévő adatbázis-munkameneteket, azt is ellenőrizheti, hogy a hálózati késés változása miatt a végpontok közötti teljesítményt módosítja-e. Mivel az újraindítási művelet zavaró, és nagy számú közülük a platform kihangsúlyozása, csak egy feladatátvételi hívás engedélyezett 15 percenként minden adatbázishoz, rugalmas készlethez vagy felügyelt példányhoz.
 
 A feladatátvétel a PowerShell, a REST API vagy az Azure CLI használatával indítható el:
 

@@ -5,19 +5,19 @@ description: Ismerje meg, hogyan hozhat létre dinamikusan állandó kötetet Az
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: fd2bc698a107599dccf8f142b0d318400b40aaf3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad51bfdf8c494e763921de880926b839cdb7be62
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299323"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900756"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Állandó kötet létrehozása és használata Azure-lemezekkel az Azure Kubernetes szolgáltatásban (ak)
 
 Az állandó kötet a Kubernetes hüvelyekkel való használatra kiépített tárterületet jelöli. Egy állandó kötetet egy vagy több hüvely is használhat, és dinamikusan vagy statikusan kiépíthető. Ebből a cikkből megtudhatja, hogyan hozhat létre dinamikusan állandó köteteket az Azure-lemezekkel az Azure Kubernetes Service-(ak-) fürtben található egyetlen Pod használatával.
 
 > [!NOTE]
-> Az Azure-lemezeket csak a ReadWriteOnce *hozzáférési móddal* lehet *ReadWriteOnce*csatlakoztatni, ami elérhetővé teszi az AK-ban lévő egyik csomópont számára. Ha egy állandó kötetet több csomóponton kell megosztania, használja a [Azure Files][azure-files-pvc].
+> Az Azure-lemezeket csak a ReadWriteOnce *hozzáférési móddal* lehet *ReadWriteOnce* csatlakoztatni, ami elérhetővé teszi az AK-ban lévő egyik csomópont számára. Ha egy állandó kötetet több csomóponton kell megosztania, használja a [Azure Files][azure-files-pvc].
 
 A Kubernetes-kötetekkel kapcsolatos további információkért lásd: az [AK-beli alkalmazások tárolási beállításai][concepts-storage].
 
@@ -25,7 +25,7 @@ A Kubernetes-kötetekkel kapcsolatos további információkért lásd: az [AK-be
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
 ## <a name="built-in-storage-classes"></a>Beépített tárolási osztályok
 
@@ -78,7 +78,7 @@ spec:
 ```
 
 > [!TIP]
-> Szabványos tárolót használó lemez létrehozásához használja a `storageClassName: default` nem *felügyelt prémium szintűt*.
+> Szabványos tárolót használó lemez létrehozásához használja a `storageClassName: default` nem *felügyelt prémium szintűt* .
 
 Hozza létre az állandó kötet jogcímet a [kubectl Apply][kubectl-apply] paranccsal, és adja meg az *Azure-Premium. YAML* fájlt:
 
@@ -90,7 +90,7 @@ persistentvolumeclaim/azure-managed-disk created
 
 ## <a name="use-the-persistent-volume"></a>Az állandó kötet használata
 
-Miután létrehozta az állandó kötet jogcímet, és a lemez sikeresen kiépítve, a lemezhez hozzáféréssel rendelkező Pod hozható létre. A következő jegyzékfájl létrehoz egy alapszintű NGINX-Pod-t, amely az *Azure-Managed-Disk* nevű állandó mennyiségi jogcímet használja az Azure-lemez csatlakoztatásához az elérési úton `/mnt/azure` . Windows Server-tárolók esetén a Windows PATH Convention (például *'d:*) használatával válasszon egy *mountPath* .
+Miután létrehozta az állandó kötet jogcímet, és a lemez sikeresen kiépítve, a lemezhez hozzáféréssel rendelkező Pod hozható létre. A következő jegyzékfájl létrehoz egy alapszintű NGINX-Pod-t, amely az *Azure-Managed-Disk* nevű állandó mennyiségi jogcímet használja az Azure-lemez csatlakoztatásához az elérési úton `/mnt/azure` . Windows Server-tárolók esetén a Windows PATH Convention (például *'d:* ) használatával válasszon egy *mountPath* .
 
 Hozzon létre egy nevű fájlt `azure-pvc-disk.yaml` , és másolja a következő jegyzékbe.
 
@@ -102,7 +102,7 @@ metadata:
 spec:
   containers:
   - name: mypod
-    image: nginx:1.15.5
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m
@@ -159,7 +159,7 @@ Az ultra Disk kihasználása lásd: az [Azure Kubernetes Service (ak) szolgálta
 
 Az állandó köteten lévő adatok biztonsági mentéséhez készítsen pillanatképet a kötet felügyelt lemezéről. Ezt a pillanatképet használhatja a visszaállított lemez létrehozásához és a hüvelyekhez való csatolásához az adatok visszaállításához.
 
-Először szerezze be a kötet nevét a `kubectl get pvc` paranccsal, például az *Azure által felügyelt lemez*nevű PVC esetében:
+Először szerezze be a kötet nevét a `kubectl get pvc` paranccsal, például az *Azure által felügyelt lemez* nevű PVC esetében:
 
 ```console
 $ kubectl get pvc azure-managed-disk
@@ -176,7 +176,7 @@ $ az disk list --query '[].id | [?contains(@,`pvc-faf0f176-8b8d-11e8-923b-deb28c
 /subscriptions/<guid>/resourceGroups/MC_MYRESOURCEGROUP_MYAKSCLUSTER_EASTUS/providers/MicrosoftCompute/disks/kubernetes-dynamic-pvc-faf0f176-8b8d-11e8-923b-deb28c58d242
 ```
 
-A lemez azonosítójával hozzon létre egy pillanatkép-lemezt az [az Snapshot Create][az-snapshot-create]paranccsal. A következő példa létrehoz egy *pvcSnapshot* nevű pillanatképet ugyanabban az erőforráscsoporthoz, mint az AK-fürtöt (*MC_myResourceGroup_myAKSCluster_eastus*). Ha pillanatképeket hoz létre, és helyreállítja a lemezeket azokon az erőforráscsoportok között, amelyekhez az AK-fürt nem fér hozzá, akkor az engedélyek problémákba ütközhet.
+A lemez azonosítójával hozzon létre egy pillanatkép-lemezt az [az Snapshot Create][az-snapshot-create]paranccsal. A következő példa létrehoz egy *pvcSnapshot* nevű pillanatképet ugyanabban az erőforráscsoporthoz, mint az AK-fürtöt ( *MC_myResourceGroup_myAKSCluster_eastus* ). Ha pillanatképeket hoz létre, és helyreállítja a lemezeket azokon az erőforráscsoportok között, amelyekhez az AK-fürt nem fér hozzá, akkor az engedélyek problémákba ütközhet.
 
 ```azurecli-interactive
 $ az snapshot create \
@@ -189,7 +189,7 @@ A lemezen lévő adatok mennyiségétől függően a pillanatkép létrehozása 
 
 ## <a name="restore-and-use-a-snapshot"></a>Pillanatkép visszaállítása és használata
 
-A lemez visszaállításához és a Kubernetes-Pod használatával történő használatához használja a pillanatképet forrásként, amikor létrehoz egy lemezt az [az Disk Create][az-disk-create]paranccsal. Ez a művelet megőrzi az eredeti erőforrást, ha ezt követően el kell érnie az eredeti adatpillanatképet. A következő példa létrehoz egy *pvcRestored* nevű lemezt a *pvcSnapshot*nevű pillanatképből:
+A lemez visszaállításához és a Kubernetes-Pod használatával történő használatához használja a pillanatképet forrásként, amikor létrehoz egy lemezt az [az Disk Create][az-disk-create]paranccsal. Ez a művelet megőrzi az eredeti erőforrást, ha ezt követően el kell érnie az eredeti adatpillanatképet. A következő példa létrehoz egy *pvcRestored* nevű lemezt a *pvcSnapshot* nevű pillanatképből:
 
 ```azurecli-interactive
 az disk create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name pvcRestored --source pvcSnapshot
@@ -201,7 +201,7 @@ A helyreállított lemez Pod-vel való használatához határozza meg a lemez AZ
 az disk show --resource-group MC_myResourceGroup_myAKSCluster_eastus --name pvcRestored --query id -o tsv
 ```
 
-Hozzon létre egy nevű Pod-jegyzékfájlt `azure-restored.yaml` , és határozza meg az előző lépésben beszerzett lemez URI-ját. Az alábbi példa egy alapszintű NGINX-webkiszolgálót hoz létre, amelynek a visszaállított lemeze kötetként van csatlakoztatva a */mnt/Azure*-ben:
+Hozzon létre egy nevű Pod-jegyzékfájlt `azure-restored.yaml` , és határozza meg az előző lépésben beszerzett lemez URI-ját. Az alábbi példa egy alapszintű NGINX-webkiszolgálót hoz létre, amelynek a visszaállított lemeze kötetként van csatlakoztatva a */mnt/Azure* -ben:
 
 ```yaml
 kind: Pod
@@ -211,7 +211,7 @@ metadata:
 spec:
   containers:
   - name: mypodrestored
-    image: nginx:1.15.5
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m

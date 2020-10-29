@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2020
 ms.author: Zhchia
-ms.openlocfilehash: c1e2d64bb30b6451e232c85a5892771157d32928
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 400e82780abd08e0db4f49d72b352e290ea1f212
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514401"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900295"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>Oktatóanyag: a globális továbbító identitás-szinkronizálásának konfigurálása a felhasználók automatikus kiépítéséhez
 
-Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a globális továbbító identitás-szinkronizálásban és Azure Active Directory (Azure AD) a felhasználók automatikus kiépítésének konfigurálásához kell végrehajtania. Ha konfigurálva van, az Azure AD automatikusan kiépíti a felhasználókat és csoportokat a [globális továbbító identitás-szinkronizálásra](https://portalalpha1.globalrelay.com/) az Azure ad-létesítési szolgáltatás használatával. A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../manage-apps/user-provisioning.md). 
+Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a globális továbbító identitás-szinkronizálásban és Azure Active Directory (Azure AD) a felhasználók automatikus kiépítésének konfigurálásához kell végrehajtania. Ha konfigurálva van, az Azure AD automatikusan kiépíti a felhasználókat és csoportokat a globális továbbító identitás-szinkronizálásra az Azure AD-létesítési szolgáltatás használatával. A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../manage-apps/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Támogatott képességek
@@ -71,7 +71,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **globális továbbító identitás-szinkronizálás**lehetőséget.
+2. Az alkalmazások listában válassza a **globális továbbító identitás-szinkronizálás** lehetőséget.
 
     ![A globális Relay Identity Sync hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -83,7 +83,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
     ![Kiépítés lap automatikus](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a globális továbbító identitás-szinkronizálási **bérlői URL-címét**. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a globális Relay Identity Sync szolgáltatáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a globális Relay Identity Sync-fiók rendelkezik rendszergazdai engedélyekkel, és a probléma megoldásához lépjen kapcsolatba a globális továbbító képviselőjével.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a globális továbbító identitás-szinkronizálási **bérlői URL-címét** . Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a globális Relay Identity Sync szolgáltatáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a globális Relay Identity Sync-fiók rendelkezik rendszergazdai engedélyekkel, és a probléma megoldásához lépjen kapcsolatba a globális továbbító képviselőjével.
 
     ![Engedélyezés gomb](media/global-relay-identity-sync-provisioning-tutorial/authorization.png)
 
@@ -93,7 +93,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a globális továbbító identitás-szinkronizáláshoz**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a globális továbbító identitás-szinkronizáláshoz** lehetőséget.
 
 9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található, a globális Relay Identity Sync szolgáltatásban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a globális továbbító Identity Sync felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Ha úgy dönt, hogy megváltoztatja a [megfelelő cél attribútumot](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), akkor biztosítania kell, hogy a globális továbbító Identity Sync API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
@@ -103,7 +103,6 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
    |active|Logikai|
    |displayName|Sztring|
    |cím|Sztring|
-   |emails[type eq "work"].value|Sztring|
    |preferredLanguage|Sztring|
    |name.givenName|Sztring|
    |name.familyName|Sztring|
@@ -170,7 +169,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
 
 
-10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a globális továbbító identitás-szinkronizáláshoz**lehetőséget.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a globális továbbító identitás-szinkronizáláshoz** lehetőséget.
 
 11. Tekintse át az Azure AD-ből szinkronizált csoport-attribútumokat az **attribútum-hozzárendelési** szakaszban található, a globális Relay Identity Sync szolgáltatásban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a globális továbbító identitás-szinkronizálásban található csoportokkal egyeznek a frissítési műveletek során. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
@@ -202,7 +201,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 2. A [folyamatjelzőn](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
 3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) találhat további információt.  
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

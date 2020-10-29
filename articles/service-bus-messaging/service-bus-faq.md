@@ -3,12 +3,12 @@ title: Azure Service Bus gyakori kérdések (GYIK) | Microsoft Docs
 description: Ez a cikk a Azure Service Bus kapcsolatos gyakori kérdések (GYIK) néhány válaszát tartalmazza.
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: ec79b6988fdbc78dc4f45e504f84179e617589cc
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 38745d1cc2b1961da10a0c9e9f2c90c3b7dc48a7
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518755"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899530"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus – gyakran ismételt kérdések (GYIK)
 
@@ -26,7 +26,7 @@ A [névtér](service-bus-create-namespace-portal.md) egy hatókör-tárolót biz
 A [Service Bus üzenetsor](service-bus-queues-topics-subscriptions.md) olyan entitás, amelyben az üzenetek tárolódnak. A várólisták akkor hasznosak, ha több alkalmazással vagy egy elosztott alkalmazás több részével kell kommunikálni egymással. A várólista hasonló ahhoz a terjesztési központhoz, amelyben több termék (üzenet) érkezett, majd az adott helyről lesz küldve.
 
 ### <a name="what-are-azure-service-bus-topics-and-subscriptions"></a>Mik azok a Azure Service Bus témakörök és előfizetések?
-A témakörök üzenetsorként és több előfizetés használata esetén is megjeleníthetők, így gazdagabb üzenetkezelési modellvé válnak. lényegében egy-a-többhöz kommunikációs eszköz. Ez a közzétételi/előfizetési modell (vagy a *pub/sub*) lehetővé teszi egy alkalmazás számára, hogy több előfizetéssel rendelkező témakörhöz üzenetet küldjön, hogy több alkalmazás fogadja az üzenetet.
+A témakörök üzenetsorként és több előfizetés használata esetén is megjeleníthetők, így gazdagabb üzenetkezelési modellvé válnak. lényegében egy-a-többhöz kommunikációs eszköz. Ez a közzétételi/előfizetési modell (vagy a *pub/sub* ) lehetővé teszi egy alkalmazás számára, hogy több előfizetéssel rendelkező témakörhöz üzenetet küldjön, hogy több alkalmazás fogadja az üzenetet.
 
 ### <a name="what-is-a-partitioned-entity"></a>Mi az a particionált entitás?
 Egy hagyományos üzenetsor vagy témakör kezelése egyetlen Message Broker által történik, és egy üzenetkezelő tárolóban tárolódik. A csak az alapszintű és a standard szintű üzenetkezelési szinten támogatott, a [particionált üzenetsor vagy a témakör](service-bus-partitioning.md) több üzenet-átvitelszervező által kezelhető, és több üzenetkezelési tárolóban tárolódik. Ez a funkció azt jelenti, hogy egy particionált üzenetsor vagy témakör teljes átviteli sebességét már nem korlátozza egyetlen Message Broker vagy üzenetküldési tároló teljesítménye. Emellett az üzenetküldési tároló átmeneti kimaradása nem jeleníti meg a particionált üzenetsor vagy témakör nem érhető el.
@@ -41,17 +41,28 @@ Azure Service Bus az ügyféladatokat tárolja. Ezeket az adategységeket a Serv
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Milyen portokat kell megnyitni a tűzfalon? 
 Az üzenetek küldéséhez és fogadásához a következő protokollokat használhatja Azure Service Bus:
 
-- Advanced Message Queueing Protocol (AMQP)
-- Service Bus üzenetküldési protokoll (SBMP)
-- HTTP
+- Advanced Message Queueing Protocol 1,0 (AMQP)
+- 1,1 Hypertext Transfer Protocol TLS-vel (HTTPS)
 
-Az alábbi táblázat tartalmazza azokat a kimenő portokat, amelyeket meg kell nyitni a protokollok Azure Event Hubs-vel való kommunikációhoz való használatához. 
+Az alábbi táblázat tartalmazza azokat a kimenő TCP-portokat, amelyeket meg kell nyitni, hogy a protokollok használatával kommunikáljanak a Azure Service Bus:
 
-| Protokoll | Portok | Részletek | 
+| Protokoll | Port | Részletek | 
 | -------- | ----- | ------- | 
-| AMQP | 5671 és 5672 | Lásd: [AMQP protokoll – útmutató](service-bus-amqp-protocol-guide.md) | 
-| SBMP | 9350 – 9354 | Lásd: [kapcsolati mód](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet&preserve-view=true) |
-| HTTP, HTTPS | 80, 443 | 
+| AMQP | 5671 | AMQP TLS-vel. Lásd: [AMQP protokoll – útmutató](service-bus-amqp-protocol-guide.md) | 
+| HTTPS | 443 | Ez a port a HTTP/REST API és a AMQP-WebSockets esetében használatos |
+
+A kimenő kommunikációhoz általában a HTTPS-portra van szükség, ha a AMQP a 5671-as porton keresztül használja, mivel az ügyfél SDK-k több felügyeleti műveletet hajtanak végre, és a tokenek beszerzése Azure Active Directory (ha használatban van) HTTPS protokollon keresztül történik. 
+
+A hivatalos Azure SDK-k általában az AMQP protokollt használják a Service Bus üzenetek küldésére és fogadására. A AMQP-over-WebSockets protokoll az 443-as TCP-porton fut, ugyanúgy, mint a HTTP API, de egyébként az egyszerű AMQP eltérően működik. Ez a beállítás nagyobb kezdeti kapcsolati késést biztosít az extra kézfogások miatt, és valamivel nagyobb terhelést jelent, mint a HTTPS-port megosztásának kompromisszuma. Ha ez a mód be van jelölve, a 443-es TCP-port elegendő a kommunikációhoz. A következő lehetőségek lehetővé teszik az egyszerű AMQP vagy a AMQP WebSockets mód kiválasztását:
+
+| Nyelv | Beállítás   |
+| -------- | ----- |
+| .NET     | [ServiceBusConnection. TransportType](/dotnet/api/microsoft.azure.servicebus.servicebusconnection.transporttype?view=azure-dotnet) tulajdonság a [TransportType. Amqp](/dotnet/api/microsoft.azure.servicebus.transporttype?view=azure-dotnet) vagy a [TransportType. AmqpWebSockets](/dotnet/api/microsoft.azure.servicebus.transporttype?view=azure-dotnet) |
+| Java     | [com. microsoft. Azure. servicebus. ClientSettings](/java/api/com.microsoft.azure.servicebus.clientsettings.clientsettings?view=azure-java-stable) a [com. microsoft. Azure. servicebus. primitívs. TransportType. AMQP](/java/api/com.microsoft.azure.servicebus.primitives.transporttype?view=azure-java-stable) vagy [com.microsoft.Azure.servicebus.primitives.TransportType.AMQP_WEB_SOCKETS](/java/api/com.microsoft.azure.servicebus.primitives.transporttype?view=azure-java-stable) |
+| Csomópont  | A [ServiceBusClientOptions](/javascript/api/@azure/service-bus/servicebusclientoptions?view=azure-node-latest) `webSocket` konstruktor argumentummal rendelkezik. |
+| Python | [ServiceBusClient.transport_type](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-servicebus/latest/azure.servicebus.html#azure.servicebus.ServiceBusClient) [TransportType. Amqp](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-servicebus/latest/azure.servicebus.html#azure.servicebus.TransportType) vagy [TransportType. AmqpOverWebSocket](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-servicebus/latest/azure.servicebus.html#azure.servicebus.TransportType) |
+
+A .NET-keretrendszer régebbi WindowsAzure. ServiceBus csomagja lehetőséget biztosít az örökölt "Service Bus Messaging Protocol" (SBMP) használatára, más néven "NetMessaging". Ez a protokoll a 9350-9354-es TCP-portot használja. A csomag alapértelmezett módja annak automatikus észlelése, hogy a portok elérhetők-e a kommunikációhoz, és az 443-as porton keresztül a TLS-t használó WebSockets-re váltson, ha ez nem így van. Felülbírálhatja ezt a beállítást, és kényszerítheti ezt a módot úgy, hogy a `Https` beállítás [ConnectivityMode](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) állítja be [`ServiceBusEnvironment.SystemConnectivity`](/dotnet/api/microsoft.servicebus.servicebusenvironment.systemconnectivity?view=azure-dotnet) , amely globálisan vonatkozik az alkalmazásra.
 
 ### <a name="what-ip-addresses-do-i-need-to-add-to-allow-list"></a>Milyen IP-címeket kell hozzáadni az engedélyezési listához?
 Az alábbi lépéseket követve megkeresheti a kapcsolatok listájához hozzáadandó megfelelő IP-címeket:

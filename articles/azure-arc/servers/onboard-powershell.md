@@ -1,14 +1,14 @@
 ---
 title: Hibrid gépek összekötése az Azure-ba a PowerShell használatával
 description: Ebből a cikkből megtudhatja, hogyan telepítheti az ügynököt, és hogyan csatlakoztatható egy gép az Azure-hoz az Azure arc-kompatibilis kiszolgálók használatával a PowerShell használatával.
-ms.date: 10/27/2020
+ms.date: 10/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: bb114ec3e279a7ea696d834af8eb7240cb892dc1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0755846ef02377edade98b69e478908a111ab247
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891941"
+ms.locfileid: "92901527"
 ---
 # <a name="connect-hybrid-machines-to-azure-using-powershell"></a>Hibrid gépek összekötése az Azure-ba a PowerShell használatával
 
@@ -22,7 +22,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure PowerShell-t futtató számítógép. Útmutatásért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/).
+- Azure PowerShell tartalmazó gép. Útmutatásért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/).
 
 Mielőtt a Azure PowerShell használatával kezelhesse a virtuálisgép-bővítményeket az arc-kompatibilis kiszolgálók által felügyelt hibrid kiszolgálón, telepítenie kell a `Az.ConnectedMachine` modult. Futtassa a következő parancsot az ív használatára képes kiszolgálón:
 
@@ -44,21 +44,21 @@ A telepítés befejeztével a következő üzenet jelenik meg:
 
     * Az Azure-hoz közvetlenül kommunikáló célszámítógépen található csatlakoztatott számítógép-ügynök telepítéséhez futtassa a következőt:
 
-    ```azurepowershell
-    Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e
-    ```
+        ```azurepowershell
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e
+        ```
     
     * A csatlakoztatott számítógép ügynökének a proxykiszolgálón keresztül kommunikáló célszámítógépen való telepítéséhez futtassa a következőt:
-    
-    ```azurepowershell
-    Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e -proxy http://<proxyURL>:<proxyport>
-    ```
+        
+        ```azurepowershell
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e -proxy http://<proxyURL>:<proxyport>
+        ```
 
 Ha a telepítés befejezése után az ügynök nem indul el, ellenőrizze a naplókat a részletes hibaüzenetek megtekintéséhez. Windows on *%ProgramData%\AzureConnectedMachineAgent\Log\himds.log* és Linux rendszeren a */var/opt/azcmagent/log/himds.log* címen.
 
 ## <a name="install-and-connect-using-powershell-remoting"></a>Telepítés és kapcsolat a PowerShell-távelérés használatával
 
-A cél Windows-kiszolgáló vagy-gép Azure arc-kompatibilis kiszolgálókhoz való konfigurálásához hajtsa végre a következő lépéseket. A távoli számítógépen engedélyezni kell a PowerShell távelérését. Használja a `Enable-PSRemoting` parancsmagot a PowerShell távelérésének engedélyezéséhez.
+A következő lépések végrehajtásával konfigurálhat egy vagy több Windows-kiszolgálót az Azure arc-kompatibilis kiszolgálókkal. A távoli gépen engedélyezni kell a PowerShell távelérését. Használja a `Enable-PSRemoting` parancsmagot a PowerShell távelérésének engedélyezéséhez.
 
 1. Nyisson meg egy PowerShell-konzolt rendszergazdaként.
 
@@ -66,25 +66,32 @@ A cél Windows-kiszolgáló vagy-gép Azure arc-kompatibilis kiszolgálókhoz va
 
 3. A csatlakoztatott számítógép ügynökének telepítéséhez használja `Connect-AzConnectedMachine` a, a `-Name` `-ResourceGroupName` és a `-Location` paramétereket. A `-SubscriptionId` paraméter használatával felülbírálhatja az alapértelmezett előfizetést a bejelentkezés után létrehozott Azure-környezet eredményeképpen.
 
-A következő parancs futtatásával telepítheti a csatlakoztatott gépi ügynököt a célszámítógépen, amely közvetlenül tud kommunikálni az Azure-ban:
+    * A következő parancs futtatásával telepítheti a csatlakoztatott gépi ügynököt a célszámítógépen, amely közvetlenül tud kommunikálni az Azure-ban:
+    
+        ```azurepowershell
+        $session = Connect-PSSession -ComputerName myMachineName
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -PSSession $session
+        ```
+    
+    * Ha egyszerre több távoli gépen szeretné telepíteni a csatlakoztatott gépi ügynököt, adja hozzá a távoli gépek nevének vesszővel elválasztott listáját.
 
-```azurepowershell
-$session = Connect-PSSession -ComputerName myMachineName
-Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -PSSession $session
-```
+        ```azurepowershell
+        $session = Connect-PSSession -ComputerName myMachineName1, myMachineName2, myMachineName3
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -PSSession $session
+        ```
 
-A következő példa a parancs eredménye:
-
-```azurepowershell
-time="2020-08-07T13:13:25-07:00" level=info msg="Onboarding Machine. It usually takes a few minutes to complete. Sometimes it may take longer depending on network and server load status."
-time="2020-08-07T13:13:25-07:00" level=info msg="Check network connectivity to all endpoints..."
-time="2020-08-07T13:13:29-07:00" level=info msg="All endpoints are available... continue onboarding"
-time="2020-08-07T13:13:50-07:00" level=info msg="Successfully Onboarded Resource to Azure" VM Id=f65bffc7-4734-483e-b3ca-3164bfa42941
-
-Name           Location OSName   Status     ProvisioningState
-----           -------- ------   ------     -----------------
-myMachineName  eastus   windows  Connected  Succeeded
-```
+    A következő példa egy egyetlen gépet célzó parancs eredményeit jeleníti meg:
+    
+    ```azurepowershell
+    time="2020-08-07T13:13:25-07:00" level=info msg="Onboarding Machine. It usually takes a few minutes to complete. Sometimes it may take longer depending on network and server load status."
+    time="2020-08-07T13:13:25-07:00" level=info msg="Check network connectivity to all endpoints..."
+    time="2020-08-07T13:13:29-07:00" level=info msg="All endpoints are available... continue onboarding"
+    time="2020-08-07T13:13:50-07:00" level=info msg="Successfully Onboarded Resource to Azure" VM Id=f65bffc7-4734-483e-b3ca-3164bfa42941
+    
+    Name           Location OSName   Status     ProvisioningState
+    ----           -------- ------   ------     -----------------
+    myMachineName  eastus   windows  Connected  Succeeded
+    ```
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Az Azure Arc csatlakozásának ellenőrzése
 

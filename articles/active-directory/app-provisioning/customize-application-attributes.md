@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: kenwith
-ms.openlocfilehash: bf88782cf771c01a6a167d4584ad86dc69795c59
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: aaafd3833c63458f8403dfeb3620d76f631315b5
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781481"
+ms.locfileid: "92899181"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>A felhasználó kiépítési attribútumának testreszabása – SaaS-alkalmazások leképezése Azure Active Directory
 
@@ -142,10 +142,7 @@ A SCIM RFC egy alapszintű felhasználót és csoportot határoz meg, és lehet�
    4. Válassza **a AppName szerkesztése** elemet.
    5. Az attribútum lista alján adja meg az egyéni attribútum adatait a megadott mezőkben. Ezután válassza az **attribútum hozzáadása** elemet.
 
-A SCIM alkalmazások esetében az attribútum nevének az alábbi példában látható mintázatot kell követnie. A "CustomExtensionName" és a "CustomAttribute" testreszabható az alkalmazás követelményei szerint, például:  
- * urn: IETF: params: scim: sémák: bővítmény: CustomExtensionName: 2.0: felhasználó: CustomAttribute 
- * urn: IETF: params: scim: sémák: bővítmény: 2.0: CustomExtensionName: CustomAttribute  
- * urn: IETF: params: scim: sémák: kiterjesztés: CustomExtensionName: 2.0: User: CustomAttributeName: Value
+A SCIM alkalmazások esetében az attribútum nevének az alábbi példában látható mintázatot kell követnie. A "CustomExtensionName" és a "CustomAttribute" testreszabható az alkalmazás követelményei szerint, például: urn: IETF: params: scim: schemas: Extension: CustomExtensionName: 2.0: User: CustomAttribute 
 
 Ezek az utasítások csak a SCIM-kompatibilis alkalmazásokra vonatkoznak. Az olyan alkalmazások, mint a ServiceNow és a Salesforce, nem integráltak az Azure AD-vel a SCIM használatával, ezért nem igénylik ezt az adott névteret egyéni attribútumok hozzáadásakor.
 

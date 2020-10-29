@@ -4,12 +4,12 @@ description: Megtudhatja, milyen módokon telepíthet programkódot a Azure Func
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 3865e6906b39633e14c86619770188f1c73fed8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3988f30d0e6429a8cac450711d4033e4b2603d46
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88641959"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900175"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Üzembe helyezési technológiák Azure Functions
 
@@ -33,7 +33,7 @@ Míg az adott függvények központi telepítései a környezetük alapján a le
 
 Azure Functions támogatja a többplatformos helyi fejlesztést és üzemeltetést Windows és Linux rendszeren. Jelenleg három üzemeltetési csomag érhető el:
 
-+ [Felhasználás](functions-scale.md#consumption-plan)
++ [Fogyasztás](functions-scale.md#consumption-plan)
 + [Prémium](functions-scale.md#premium-plan)
 + [Dedikált (App Service)](functions-scale.md#app-service-plan)
 
@@ -128,7 +128,7 @@ Telepítheti a Function alkalmazást tartalmazó Linux-tároló lemezképét.
 
 >__Használat:__ Hozzon létre egy Linux-függvény alkalmazást a prémium vagy a dedikált csomagban, és adja meg, melyik tárolót szeretné futtatni. Ezt két módon teheti meg:
 >
->* Hozzon létre egy Linux-függvény alkalmazást egy Azure App Service csomaggal a Azure Portal. A **közzétételhez**válassza a **Docker-rendszerkép**lehetőséget, majd konfigurálja a tárolót. Adja meg azt a helyet, ahol a rendszerkép található.
+>* Hozzon létre egy Linux-függvény alkalmazást egy Azure App Service csomaggal a Azure Portal. A **közzétételhez** válassza a **Docker-rendszerkép** lehetőséget, majd konfigurálja a tárolót. Adja meg azt a helyet, ahol a rendszerkép található.
 >* Hozzon létre egy Linux-függvény alkalmazást egy App Service csomagon az Azure CLI használatával. További információ: [függvény létrehozása Linux rendszeren egyéni rendszerkép használatával](functions-create-function-linux-custom-image.md#create-supporting-azure-resources-for-your-function).
 >
 >Ha egy meglévő alkalmazást szeretne üzembe helyezni egy egyéni tároló használatával, a [Azure functions Core Toolsban](functions-run-local.md)használja az [`func deploy`](functions-run-local.md#publish) parancsot.
@@ -210,11 +210,11 @@ Központi telepítés esetén az összes meglévő végrehajtás engedélyezett 
 
 Ha ennél az átmenetnél több vezérlésre van szüksége, használja az üzembe helyezési pontokat.
 
-## <a name="deployment-slots"></a>Üzembehelyezési pontok
+## <a name="deployment-slots"></a>Üzembe helyezési pontok
 
-Amikor üzembe helyezi a Function alkalmazást az Azure-ban, az üzembe helyezést külön üzembe helyezheti közvetlenül az éles környezet helyett. Az üzembe helyezési pontokkal kapcsolatos további információkért tekintse meg a részleteket a [Azure functions üzembe helyezési](../app-service/deploy-staging-slots.md) pontok dokumentációjában.
+Amikor üzembe helyezi a Function alkalmazást az Azure-ban, az üzembe helyezést külön üzembe helyezheti közvetlenül az éles környezet helyett. Az üzembe helyezési pontokkal kapcsolatos további információkért tekintse meg a részleteket a [Azure functions üzembe helyezési](functions-deployment-slots.md) pontok dokumentációjában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el ezeket a cikkeket a Function apps üzembe helyezésével kapcsolatos további információkért:
 

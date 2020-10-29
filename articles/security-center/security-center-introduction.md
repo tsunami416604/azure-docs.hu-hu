@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: e72d1161f80ad92c1e4cfc7fd2c9fde0d46e77b9
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 97853f0524b794169de3aaaec33cf1b30949d930
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332008"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92901553"
 ---
 # <a name="what-is-azure-security-center"></a>Mi az az Azure Security Center?
 
@@ -37,11 +37,11 @@ Az Azure Security Center a három legsürgetőbb biztonsági kihívásra reagál
 
 A Security Center eszközeivel megvédheti magát a fenti kihívásokkal szemben, és a következőket teheti:
 
--   A **biztonsági helyzet megerősítése**: Security Center felméri a környezetet, és lehetővé teszi az erőforrások állapotának megismerését, és hogy azok biztonságosak-e.
+-   A **biztonsági helyzet megerősítése** : Security Center felméri a környezetet, és lehetővé teszi az erőforrások állapotának megismerését, és hogy azok biztonságosak-e.
 
--   **Fenyegetések elleni védelem**: Security Center felméri a számítási feladatokat, és növeli a veszélyforrások megelőzésére vonatkozó ajánlásokat és biztonsági riasztásokat.
+-   **Fenyegetések elleni védelem** : Security Center felméri a számítási feladatokat, és növeli a veszélyforrások megelőzésére vonatkozó ajánlásokat és biztonsági riasztásokat.
 
--   **Gyorsabb biztonság**: A Security Centerben minden a felhőkörnyezetek sebességével történik. A natív integrációnak köszönhetően a Security Center üzembe helyezése könnyű, ezután pedig kihasználhatja az automatikus kiépítés és az Azure-szolgáltatások nyújtotta védelem előnyeit.
+-   **Gyorsabb biztonság** : A Security Centerben minden a felhőkörnyezetek sebességével történik. A natív integrációnak köszönhetően a Security Center üzembe helyezése könnyű, ezután pedig kihasználhatja az automatikus kiépítés és az Azure-szolgáltatások nyújtotta védelem előnyeit.
 
 > [!NOTE]
 > Ez a szolgáltatás támogatja az [Azure Lighthouse](../lighthouse/overview.md)-t, amely lehetővé teszi a szolgáltatók számára, hogy bejelentkezzenek a saját bérlőbe az ügyfelek által delegált előfizetések és erőforráscsoportok kezeléséhez. Azure Security Center forgatókönyvek esetén az előfizetést különálló erőforráscsoportok helyett delegálni kell.
@@ -62,11 +62,11 @@ Azure Security Center lehetővé teszi a biztonsági helyzet megerősítését. 
 
 ### <a name="manage-organization-security-policy-and-compliance"></a>A szervezet biztonsági házirendjének és megfelelőségének kezelése
 
-Ez egy biztonsági alapszintű, és gondoskodik arról, hogy a munkaterhelések biztonságosak legyenek, és a rendszer a testre szabott biztonsági házirendekkel kezdődik. Mivel a Security Center összes házirendje Azure Policy vezérlőelemekre épül, a **világszínvonalú házirend-megoldás**teljes skáláját és rugalmasságát tapasztalja. A Security Centerban beállíthatja, hogy a szabályzatok a felügyeleti csoportokon, az előfizetések között, vagy akár egy teljes bérlőn fussanak.
+Ez egy biztonsági alapszintű, és gondoskodik arról, hogy a munkaterhelések biztonságosak legyenek, és a rendszer a testre szabott biztonsági házirendekkel kezdődik. Mivel a Security Center összes házirendje Azure Policy vezérlőelemekre épül, a **világszínvonalú házirend-megoldás** teljes skáláját és rugalmasságát tapasztalja. A Security Centerban beállíthatja, hogy a szabályzatok a felügyeleti csoportokon, az előfizetések között, vagy akár egy teljes bérlőn fussanak.
 
 :::image type="content" source="./media/security-center-intro/sc-dashboard.png" alt-text="Házirend-kezelés lap":::
 
-Security Center segít **AZONOSÍTANI az árnyék-előfizetéseket**. Ha az irányítópulton **nem** szereplő előfizetéseket keres, azonnal megtudhatja, hogy vannak-e újonnan létrehozott előfizetések, és gondoskodjon róla, hogy a szabályzatok hatálya alá legyenek szabva, és Azure Security Center által védettek legyenek.
+Security Center segít **AZONOSÍTANI az árnyék-előfizetéseket** . Ha az irányítópulton **nem** szereplő előfizetéseket keres, azonnal megtudhatja, hogy vannak-e újonnan létrehozott előfizetések, és gondoskodjon róla, hogy a szabályzatok hatálya alá legyenek szabva, és Azure Security Center által védettek legyenek.
 
 :::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="Házirend-kezelés lap":::
 
@@ -74,13 +74,13 @@ Security Center segít **AZONOSÍTANI az árnyék-előfizetéseket**. Ha az irá
 
 Security Center folyamatosan felfedi a számítási feladatok során üzembe helyezett új erőforrásokat, és megállapítja, hogy az ajánlott biztonsági eljárásoknak megfelelően vannak-e konfigurálva, és ha nem, akkor a rendszer megjelöli őket, és megtekinti azokat a javaslatokat, amelyeket a gépek védelme érdekében javítania kell.
 
-Annak megértéséhez, hogy az egyes javaslatok milyen fontosak az általános biztonsági helyzethez, Security Center csoportosítsa a javaslatokat a biztonsági ellenőrzésekben, és hozzáadja a **biztonságos pontszám** értéket az egyes vezérlőkhöz. Ez kulcsfontosságú a **biztonsági feladatok rangsorolásának**lehetővé tételéhez.
+Annak megértéséhez, hogy az egyes javaslatok milyen fontosak az általános biztonsági helyzethez, Security Center csoportosítsa a javaslatokat a biztonsági ellenőrzésekben, és hozzáadja a **biztonságos pontszám** értéket az egyes vezérlőkhöz. Ez kulcsfontosságú a **biztonsági feladatok rangsorolásának** lehetővé tételéhez.
 
 :::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Házirend-kezelés lap":::
 
 ### <a name="network-map"></a>Hálózati Térkép
 
-Az egyik leghatékonyabb eszköz Security Center biztosítja a hálózat biztonsági állapotának folyamatos figyelését a **hálózati Térkép**. A térkép segítségével megtekintheti a számítási feladatok topológiáját, így megtekintheti, hogy az egyes csomópontok megfelelően vannak-e konfigurálva. Láthatja, hogy a csomópontok hogyan kapcsolódnak egymáshoz, ami segít letiltani a nemkívánatos kapcsolatokat, amelyek megkönnyítik a támadók számára a hálózatra való csúszást.
+Az egyik leghatékonyabb eszköz Security Center biztosítja a hálózat biztonsági állapotának folyamatos figyelését a **hálózati Térkép** . A térkép segítségével megtekintheti a számítási feladatok topológiáját, így megtekintheti, hogy az egyes csomópontok megfelelően vannak-e konfigurálva. Láthatja, hogy a csomópontok hogyan kapcsolódnak egymáshoz, ami segít letiltani a nemkívánatos kapcsolatokat, amelyek megkönnyítik a támadók számára a hálózatra való csúszást.
 
 :::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Házirend-kezelés lap":::
 
@@ -103,9 +103,9 @@ Security Center fenyegetés elleni védelme magában foglalja a Fusion kill-Chai
 
 :::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Házirend-kezelés lap":::
 
-### <a name="integration-with-microsoft-defender-advanced-threat-protection"></a>Integráció a Microsoft Defender komplex veszélyforrások elleni védelemmel
+### <a name="integration-with-microsoft-defender-for-endpoint"></a>A Microsoft Defender és a végpont közötti integráció
 
-A Security Center tartalmaz automatikus, natív integrációt a Microsoft Defender komplex veszélyforrások elleni védelemmel. Ez azt jelenti, hogy konfiguráció nélkül a Windows és a Linux rendszerű gépek teljes mértékben integrálva vannak Security Center javaslataival és értékelésével.
+A Security Center tartalmaz automatikus, natív integrációt a Microsoft Defender és a végpont számára. Ez azt jelenti, hogy konfiguráció nélkül a Windows és a Linux rendszerű gépek teljes mértékben integrálva vannak Security Center javaslataival és értékelésével.
 
 Emellett a Security Center lehetővé teszi az alkalmazás-vezérlési házirendek automatizálását kiszolgálói környezetekben. A Security Center adaptív alkalmazás-vezérlői lehetővé teszik a teljes körű alkalmazás-jóváhagyási listát a Windows-kiszolgálókon. Nincs szükség a szabályok létrehozására és a szabálysértések vizsgálatára, mindezt automatikusan elvégezheti Önnek.
 
@@ -123,7 +123,7 @@ A Security Center olyan képességeket tartalmaz, amelyek segítenek az adatok a
 
 ## <a name="get-secure-faster"></a>Gyorsabb biztonságos használat
 
-A natív Azure-integráció (beleértve a Azure Policy és a Azure Monitor naplókat is) a más Microsoft biztonsági megoldásokkal való zökkenőmentes integrációval együtt, például a Microsoft Cloud App Security és a Windows Defender komplex veszélyforrások elleni védelem segítségével biztosíthatja, hogy a biztonsági megoldás átfogó, valamint a bevezetéshez és a bevezetéshez egyszerű legyen.
+A natív Azure-integráció (beleértve a Azure Policy és a Azure Monitor naplókat is), valamint a más Microsoft biztonsági megoldásokkal való zökkenőmentes integrációt, például a Microsoft Cloud App Securityt és a Microsoft Defender for Endpoint súgóját biztosíthatja, hogy a biztonsági megoldás átfogó, valamint a bevezetéshez és a bevezetéshez.
 
 Emellett a teljes megoldást az Azure-on kívül is kiterjesztheti a többi felhőben és a helyszíni adatközpontokban futó számítási feladatokhoz.
 
@@ -133,7 +133,7 @@ A Security Center zökkenőmentes, natív integrációt biztosít az Azure-és a
 
 Kiterjedt naplózási gyűjtemény – a Windows és a Linux rendszerből származó naplók mind kihasználva vannak a biztonsági elemzési motorban, és javaslatok és riasztások létrehozásához használatosak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 

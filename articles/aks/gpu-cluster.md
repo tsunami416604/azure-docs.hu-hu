@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 4dfaa329dd0472b52de2d3306e6a3b61f660e666
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52fd4867532832e0304a27317b21950bf131de79
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89443058"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900782"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>A GPU használata nagy számítási igényű munkaterhelésekhez az Azure Kubernetes szolgáltatásban (ak)
 
-A grafikus feldolgozási egységek (GPU-k) gyakran nagy számítási igényű munkaterhelésekhez, például grafikus és vizualizációs munkaterhelésekhez használatosak. Az AK támogatja a GPU-kompatibilis csomópont-készletek létrehozását a nagy számítási igényű munkaterhelések Kubernetes való futtatásához. További információ a GPU-t használó elérhető virtuális gépekről: GPU-ra optimalizált virtuálisgép- [méretek az Azure-ban][gpu-skus]. AK-csomópontok esetén a *Standard_NC6*minimális mérete javasolt.
+A grafikus feldolgozási egységek (GPU-k) gyakran nagy számítási igényű munkaterhelésekhez, például grafikus és vizualizációs munkaterhelésekhez használatosak. Az AK támogatja a GPU-kompatibilis csomópont-készletek létrehozását a nagy számítási igényű munkaterhelések Kubernetes való futtatásához. További információ a GPU-t használó elérhető virtuális gépekről: GPU-ra optimalizált virtuálisgép- [méretek az Azure-ban][gpu-skus]. AK-csomópontok esetén a *Standard_NC6* minimális mérete javasolt.
 
 > [!NOTE]
 > A GPU-kompatibilis virtuális gépek olyan speciális hardvert tartalmaznak, amely magasabb díjszabási és régióbeli rendelkezésre állást biztosít. További információt a [díjszabási][azure-pricing] eszköz és a [régió rendelkezésre állása][azure-availability]című témakörben talál.
@@ -26,7 +26,7 @@ Jelenleg a GPU-t használó csomópont-készletek használata csak Linux-csomóp
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel a GPU-t támogató csomópontokkal. Az AK-fürtnek a 1,10-es vagy újabb Kubernetes kell futnia. Ha szüksége van egy AK-fürtre, amely megfelel ezeknek a követelményeknek, tekintse meg a cikk első szakaszát [egy AK-fürt létrehozásához](#create-an-aks-cluster).
 
-Szüksége lesz az Azure CLI 2.0.64 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI 2.0.64 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
@@ -58,7 +58,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 Mielőtt a csomópontokon a GPU-k használhatók legyenek, telepítenie kell egy Daemonset elemet az NVIDIA-eszköz beépülő modulhoz. Ez a Daemonset elemet minden csomóponton futtat egy Pod-t, hogy megadja a GPU-k számára szükséges illesztőprogramokat.
 
-Először hozzon létre egy névteret a [kubectl Create Namespace][kubectl-create] paranccsal, például a *GPU-erőforrások*használatával:
+Először hozzon létre egy névteret a [kubectl Create Namespace][kubectl-create] paranccsal, például a *GPU-erőforrások* használatával:
 
 ```console
 kubectl create namespace gpu-resources
@@ -97,7 +97,7 @@ spec:
         operator: Exists
         effect: NoSchedule
       containers:
-      - image: nvidia/k8s-device-plugin:1.11
+      - image: mcr.microsoft.com/oss/nvidia/k8s-device-plugin:1.11
         name: nvidia-device-plugin-ctr
         securityContext:
           allowPrivilegeEscalation: false
@@ -134,7 +134,7 @@ Regisztrálja a `GPUDedicatedVHDPreview` szolgáltatást:
 az feature register --name GPUDedicatedVHDPreview --namespace Microsoft.ContainerService
 ```
 
-Több percet is igénybe vehet, amíg az állapot **regisztrálva**jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) parancs használatával tekintheti meg:
+Több percet is igénybe vehet, amíg az állapot **regisztrálva** jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) parancs használatával tekintheti meg:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/GPUDedicatedVHDPreview')].{Name:name,State:properties.state}"
@@ -198,7 +198,7 @@ aks-nodepool1-28993262-0   Ready    agent   13m   v1.12.7
 
 Most a [kubectl leíró csomópont][kubectl-describe] paranccsal ellenőrizze, hogy a GPU-k ütemezhető-e. A *kapacitás* szakaszban a GPU-nak a következőképpen kell szerepelnie `nvidia.com/gpu:  1` .
 
-A következő tömörített példa azt mutatja, hogy a GPU elérhető a (z) *nodepool1-18821093-0*nevű csomóponton:
+A következő tömörített példa azt mutatja, hogy a GPU elérhető a (z) *nodepool1-18821093-0* nevű csomóponton:
 
 ```console
 $ kubectl describe node aks-nodepool1-28993262-0
@@ -289,7 +289,7 @@ kubectl apply -f samples-tf-mnist-demo.yaml
 
 ## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>A GPU-t használó munkaterhelés állapotának és kimenetének megtekintése
 
-Figyelje meg a feladat előrehaladását a [kubectl Get Jobs][kubectl-get] paranccsal az `--watch` argumentummal. Eltarthat néhány percig, amíg először lekéri a rendszerképet, és feldolgozza az adatkészletet. Ha a *Befejezés* oszlopban a *1/1*látható, a feladatot sikeresen befejezte. Kilépés a `kubetctl --watch` parancsból a *CTRL-C*paranccsal:
+Figyelje meg a feladat előrehaladását a [kubectl Get Jobs][kubectl-get] paranccsal az `--watch` argumentummal. Eltarthat néhány percig, amíg először lekéri a rendszerképet, és feldolgozza az adatkészletet. Ha a *Befejezés* oszlopban a *1/1* látható, a feladatot sikeresen befejezte. Kilépés a `kubetctl --watch` parancsból a *CTRL-C* paranccsal:
 
 ```console
 $ kubectl get jobs samples-tf-mnist-demo --watch
@@ -386,7 +386,7 @@ Accuracy at step 490: 0.9494
 Adding run metadata for 499
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 A cikkben létrehozott társított Kubernetes-objektumok eltávolításához használja a [kubectl delete Job][kubectl delete] parancsot a következő módon:
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: fab4943cad1a87bda70a4c4332ab6135ed99bf1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c7143b6d3479cf3083cfc730301c68dcf4eb705
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022275"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900813"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a pod Security számára az Azure Kubernetes szolgáltatásban (ak)
 
@@ -29,13 +29,13 @@ Emellett elolvashatja a [fürt biztonságával][best-practices-cluster-security]
 
 **Ajánlott eljárási útmutató** – egy másik felhasználóként vagy csoportként való futtatásra, valamint a mögöttes csomópont-folyamatok és-szolgáltatások elérésének korlátozására, a pod biztonsági környezet beállításainak megadása. Rendelje hozzá a minimálisan szükséges jogosultságokat.
 
-Ahhoz, hogy az alkalmazások megfelelően fussanak, a hüvelyeket definiált felhasználóként vagy csoportként kell futtatni, és nem *root*-ként. A `securityContext` for a pod vagy a Container lehetővé teszi olyan beállítások megadását, mint például a *runAsUser* vagy a *fsGroup* , hogy a megfelelő engedélyeket tegyük fel. Csak a szükséges felhasználói vagy csoportos engedélyeket rendelje hozzá, és ne használja a biztonsági környezetet a további engedélyek feltételezéséhez. A *runAsUser*, a jogosultság-eszkaláció és az egyéb linuxos képességek beállításai csak Linux-csomópontokon és hüvelyeken érhetők el.
+Ahhoz, hogy az alkalmazások megfelelően fussanak, a hüvelyeket definiált felhasználóként vagy csoportként kell futtatni, és nem *root* -ként. A `securityContext` for a pod vagy a Container lehetővé teszi olyan beállítások megadását, mint például a *runAsUser* vagy a *fsGroup* , hogy a megfelelő engedélyeket tegyük fel. Csak a szükséges felhasználói vagy csoportos engedélyeket rendelje hozzá, és ne használja a biztonsági környezetet a további engedélyek feltételezéséhez. A *runAsUser* , a jogosultság-eszkaláció és az egyéb linuxos képességek beállításai csak Linux-csomópontokon és hüvelyeken érhetők el.
 
 Ha nem legfelső szintű felhasználóként fut, a tárolók nem köthetők a 1024-es alatti privilegizált portokhoz. Ebben az esetben a Kubernetes Services segítségével elrejtheti azt a tényt, hogy egy alkalmazás egy adott porton fut.
 
 A pod biztonsági környezet további képességeket és engedélyeket is meghatározhat a folyamatok és szolgáltatások eléréséhez. A következő általános biztonsági környezeti definíciók állíthatók be:
 
-* a **allowPrivilegeEscalation** határozza meg, hogy a pod lehet-e *root* jogosultságot feltételezni. Tervezze meg az alkalmazásait, hogy ezt a beállítást mindig *hamis*értékre állítsa.
+* a **allowPrivilegeEscalation** határozza meg, hogy a pod lehet-e *root* jogosultságot feltételezni. Tervezze meg az alkalmazásait, hogy ezt a beállítást mindig *hamis* értékre állítsa.
 * A **Linux-funkciók** lehetővé teszik, hogy a pod hozzáférjen az alapul szolgáló csomópont-folyamatokhoz Ügyeljen a képességek kiosztására. Rendelje hozzá a minimálisan szükséges jogosultságokat. További információ: Linux- [képességek][linux-capabilities].
 * A **SELinux labels** egy Linux kernel biztonsági modul, amely lehetővé teszi hozzáférési szabályzatok definiálását a szolgáltatások, a folyamatok és a fájlrendszer eléréséhez. Ismét rendelje hozzá a minimálisan szükséges jogosultságokat. További információ: [SELinux-beállítások a Kubernetes-ben][selinux-labels]
 
@@ -55,7 +55,7 @@ spec:
     fsGroup: 2000
   containers:
     - name: security-context-demo
-      image: nginx:1.15.5
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
       securityContext:
         runAsUser: 1000
         allowPrivilegeEscalation: false

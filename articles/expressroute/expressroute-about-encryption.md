@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: 83fa16265106e1033cb77ab4175b606714ec66d7
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 693d2304324bdfcac298b3e20ddd0d882a16533c
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996844"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899875"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute titkosítása
  
@@ -31,7 +31,7 @@ Nem. Ha a MACsec konfigurálva van, és a kulcs nem egyezik, elveszíti a kapcso
 ### <a name="will-enabling-macsec-on-expressroute-direct-degrade-network-performance"></a>Engedélyezi a MACsec a ExpressRoute a hálózati teljesítmény közvetlen romlását?
 A MACsec titkosítás és visszafejtés az általunk használt útválasztó hardverén történik. Az oldalunkon nincs hatással a teljesítményre. Érdemes azonban megkeresni a hálózati szolgáltatót a használt eszközökhöz, és látnia kell, hogy a MACsec rendelkezik-e teljesítménnyel.
 ### <a name="which-cipher-suites-are-supported-for-encryption"></a>Mely titkosítási csomagok támogatottak a titkosításhoz?
-A AES128 és a AES256 [kiterjesztett csomagok számozási](https://1.ieee802.org/security/802-1aebw/) verzióját is támogatjuk. Továbbá tiltsa le az eszközön a MACsec konfigurációjában a [biztonságos csatorna azonosítóját (sci)](https://en.wikipedia.org/wiki/IEEE_802.1AE) . 
+Csak az AES-128 és az AES-256 [kiterjesztett csomagok számozási](https://1.ieee802.org/security/802-1aebw/) verziója támogatott. Emellett le kell tiltania a [biztonságos csatorna azonosítóját (sci)](https://wikipedia.org/wiki/IEEE_802.1AE) az eszköz MACsec-konfigurációjában. 
 
 ## <a name="end-to-end-encryption-by-ipsec-faq"></a>Végpontok közötti titkosítás az IPsec-ben – gyakori kérdések
 Az IPsec egy [IETF standard](https://tools.ietf.org/html/rfc6071). A Internet Protocol (IP) szintjén vagy a 3. hálózati rétegben titkosítja az adatfájlokat. A helyszíni hálózat és az Azure-beli virtuális hálózat (VNET) közötti végpontok közötti kapcsolat titkosításához használhatja az IPsec protokollt. Tekintse meg az alábbi további gyakori kérdéseket.

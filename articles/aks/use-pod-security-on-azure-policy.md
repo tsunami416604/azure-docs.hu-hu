@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/22/2020
 author: jluk
-ms.openlocfilehash: b833b45f5243e446ac507ee913abe256a12ac01d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5178aa30c3bfec014dd10e2c4f3de182aaef7e68
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368468"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900121"
 ---
 # <a name="secure-pods-with-azure-policy"></a>Podok biztonságossá tétele az Azure Policyval
 
@@ -61,7 +61,7 @@ A következő általános korlátozások érvényesek a Kubernetes-fürtök Azur
 A következő korlátozások érvényesek az AK-ra vonatkozó Azure Policy-bővítményre:
 
 - Az [AK Pod biztonsági szabályzat (előzetes verzió)](use-pod-security-policies.md) és az AK Azure Policy bővítménye nem engedélyezhető egyszerre. 
-- A Azure Policy bővítmény által automatikusan kizárt névterek a következő kiértékeléshez: _Kube-System_, _forgalomirányító-System_és _AK-periszkóp_.
+- A Azure Policy bővítmény által automatikusan kizárt névterek a következő kiértékeléshez: _Kube-System_ , _forgalomirányító-System_ és _AK-periszkóp_ .
 
 ### <a name="recommendations"></a>Javaslatok
 
@@ -108,8 +108,8 @@ A beépített kezdeményezések mind a [Kubernetes származó Pod biztonsági sz
 |A gazda fájlrendszer használatának korlátozása|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75)| Igen | Igen
 |A Linux-funkciók korlátozása az [alapértelmezett készletre](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) | Igen | Igen
 |Meghatározott mennyiségi típusok használatának korlátozása|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F16697877-1118-4fb1-9b65-9898ec2509ec)| - | Igen – engedélyezett kötetek típusai:,,, `configMap` `emptyDir` `projected` `downwardAPI` , `persistentVolumeClaim`|
-|Jogosultság-eszkaláció a gyökérhez|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) | - | Igen |
-|A tároló felhasználói és csoportjai azonosítóinak korlátozása|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Igen|
+|Jogosultság-eszkaláció a gyökérhez|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) | - | Yes |
+|A tároló felhasználói és csoportjai azonosítóinak korlátozása|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Yes|
 |A pod köteteit birtokló FSGroup foglalásának korlátozása|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Igen – az engedélyezett szabályok a következők:,, `runAsUser: mustRunAsNonRoot` `supplementalGroup: mustRunAs 1:65536` `fsGroup: mustRunAs 1:65535` `runAsGroup: mustRunAs 1:65535` .  |
 |Seccompot-profilt igényel|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F975ce327-682c-4f2e-aa46-b9598289b86c) | - | Igen, a allowedProfiles * `docker/default` vagy `runtime/default` |
 
@@ -150,7 +150,7 @@ If the built-in initiatives to address pod security do not match your requiremen
 > [!WARNING]
 > Az olyan rendszergazdai névterekben található hüvelyek, mint például a Kube-System kell futniuk ahhoz, hogy a fürt kifogástalan maradjon, a szükséges névtér eltávolítása az alapértelmezett kizárt névterek listájáról a szükséges rendszer-Pod miatt megsértheti a házirend megsértését.
 
-Az ak-nak szüksége van a rendszerhüvelyek futtatására a fürtön a kritikus szolgáltatások, például a DNS-feloldás biztosításához. A pod funkcióit korlátozó szabályzatok hatással lehetnek a System Pod stabilitására. Ennek eredményeképpen a következő névterek **ki vannak zárva a házirend kiértékelése során a létrehozási, frissítési és házirend-naplózás során beléptetési kérelmek során**. Ez kényszeríti az ilyen névterek új központi telepítéseit az Azure-szabályzatokból való kizárásra.
+Az ak-nak szüksége van a rendszerhüvelyek futtatására a fürtön a kritikus szolgáltatások, például a DNS-feloldás biztosításához. A pod funkcióit korlátozó szabályzatok hatással lehetnek a System Pod stabilitására. Ennek eredményeképpen a következő névterek **ki vannak zárva a házirend kiértékelése során a létrehozási, frissítési és házirend-naplózás során beléptetési kérelmek során** . Ez kényszeríti az ilyen névterek új központi telepítéseit az Azure-szabályzatokból való kizárásra.
 
 1. Kube – rendszerek
 1. forgalomirányító – System
@@ -209,7 +209,7 @@ metadata:
 spec:
   containers:
     - name: nginx-privileged
-      image: nginx
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
       securityContext:
         privileged: true
 ```
@@ -244,7 +244,7 @@ metadata:
 spec:
   containers:
     - name: nginx-unprivileged
-      image: nginx
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 ```
 
 Hozza létre a pod-t a [kubectl Apply][kubectl-apply] paranccsal, és adja meg a YAML-jegyzék nevét:
@@ -253,7 +253,7 @@ Hozza létre a pod-t a [kubectl Apply][kubectl-apply] paranccsal, és adja meg a
 kubectl apply -f nginx-unprivileged.yaml
 ```
 
-A pod sikeresen ütemezve. Ha a [kubectl Get hüvely][kubectl-get] parancs használatával tekinti meg a pod állapotát, a pod a következőket *futtatja*:
+A pod sikeresen ütemezve. Ha a [kubectl Get hüvely][kubectl-get] parancs használatával tekinti meg a pod állapotát, a pod a következőket *futtatja* :
 
 ```console
 $ kubectl get pods

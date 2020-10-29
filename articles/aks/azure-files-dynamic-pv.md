@@ -5,12 +5,12 @@ description: Megtudhatja, hogyan hozhat létre dinamikusan állandó kötetet Az
 services: container-service
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 515994f07e524685df014a784309cd692a9491b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad252118a56402386691d1cdf7d975ef69ec45ad
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299269"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900441"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Állandó kötet létrehozása és használata Azure Files az Azure Kubernetes szolgáltatásban (ak)
 
@@ -22,11 +22,11 @@ A Kubernetes-kötetekkel kapcsolatos további információkért lásd: az [AK-be
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
 ## <a name="create-a-storage-class"></a>Tárolási osztály létrehozása
 
-A tárolási osztály segítségével határozható meg az Azure-fájlmegosztás létrehozása. A rendszer automatikusan létrehoz egy Storage-fiókot a [csomópont-erőforráscsoport][node-resource-group] számára, hogy az Azure-fájlmegosztás tárolására használja a Storage osztályt. Válasszon a következő [Azure Storage-redundancia][storage-skus] *skuName*:
+A tárolási osztály segítségével határozható meg az Azure-fájlmegosztás létrehozása. A rendszer automatikusan létrehoz egy Storage-fiókot a [csomópont-erőforráscsoport][node-resource-group] számára, hogy az Azure-fájlmegosztás tárolására használja a Storage osztályt. Válasszon a következő [Azure Storage-redundancia][storage-skus] *skuName* :
 
 * *Standard_LRS* – standard, helyileg redundáns tárolás (LRS)
 * *Standard_GRS* – szabványos geo-redundáns tárolás (GRS)
@@ -40,7 +40,7 @@ A tárolási osztály segítségével határozható meg az Azure-fájlmegosztás
 
 A Azure Files Kubernetes tárolási osztályaival kapcsolatos további információkért lásd: [Kubernetes tárolási][kubernetes-storage-classes]osztályok.
 
-Hozzon létre egy nevű fájlt `azure-file-sc.yaml` , és másolja a következő példában szereplő jegyzékfájlba. További információ a *mountOptions*: [csatlakoztatási beállítások][mount-options] szakasz.
+Hozzon létre egy nevű fájlt `azure-file-sc.yaml` , és másolja a következő példában szereplő jegyzékfájlba. További információ a *mountOptions* : [csatlakoztatási beállítások][mount-options] szakasz.
 
 ```yaml
 kind: StorageClass
@@ -86,7 +86,7 @@ spec:
 ```
 
 > [!NOTE]
-> Ha a tárolási osztályhoz tartozó *Premium_LRS* SKU-t használja, a *tárterület* minimális értékének *100Gi*kell lennie.
+> Ha a tárolási osztályhoz tartozó *Premium_LRS* SKU-t használja, a *tárterület* minimális értékének *100Gi* kell lennie.
 
 Hozza létre az állandó kötet jogcímet a [kubectl Apply][kubectl-apply] paranccsal:
 
@@ -105,7 +105,7 @@ my-azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        R
 
 ## <a name="use-the-persistent-volume"></a>Az állandó kötet használata
 
-A következő YAML létrehoz egy Pod-t, amely a *saját azurefile* állandó mennyiségi jogcím használatával csatlakoztatja az Azure-fájlmegosztást a */mnt/Azure* útvonalon. Windows Server-tárolók esetén a Windows PATH Convention (például *'d:*) használatával válasszon egy *mountPath* .
+A következő YAML létrehoz egy Pod-t, amely a *saját azurefile* állandó mennyiségi jogcím használatával csatlakoztatja az Azure-fájlmegosztást a */mnt/Azure* útvonalon. Windows Server-tárolók esetén a Windows PATH Convention (például *'d:* ) használatával válasszon egy *mountPath* .
 
 Hozzon létre egy nevű fájlt `azure-pvc-files.yaml` , és másolja a következő YAML. Győződjön meg arról, hogy a *claimName* megegyezik az utolsó lépésben létrehozott PVC-vel.
 
@@ -117,7 +117,7 @@ metadata:
 spec:
   containers:
   - name: mypod
-    image: nginx:1.15.5
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m
@@ -165,7 +165,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Csatlakoztatási beállítások
 
-A *fileMode* és a *dirMode* alapértelmezett értéke *0777* a Kubernetes 1.13.0-es vagy újabb verziójához. Ha egy tárolási osztállyal dinamikusan hozza létre az állandó kötetet, a tárolási osztály objektumon meg lehet adni a csatlakoztatási beállításokat. A következő példa a *0777*-es készletet állítja be:
+A *fileMode* és a *dirMode* alapértelmezett értéke *0777* a Kubernetes 1.13.0-es vagy újabb verziójához. Ha egy tárolási osztállyal dinamikusan hozza létre az állandó kötetet, a tárolási osztály objektumon meg lehet adni a csatlakoztatási beállításokat. A következő példa a *0777* -es készletet állítja be:
 
 ```yaml
 kind: StorageClass

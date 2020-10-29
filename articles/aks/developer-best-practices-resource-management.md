@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: e52bd150f72ba663c504b81832ce83d3e38cbf04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbbd5dbbc51cdb3b0d3c3783fa6ed72b76d26284
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986773"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900368"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az alkalmazások fejlesztői számára az erőforrások kezeléséhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -27,7 +27,7 @@ Ez az ajánlott eljárás a fürt és a számítási feladatok alkalmazások fej
 
 ## <a name="define-pod-resource-requests-and-limits"></a>Pod-erőforrásokra vonatkozó kérelmek és korlátok meghatározása
 
-**Ajánlott eljárási útmutató** – a pod-kérelmek és-korlátozások beállítása a YAML-jegyzékekben található összes hüvelyre. Ha az AK-fürt *erőforrás-kvótákat*használ, előfordulhat, hogy a rendszer elutasítja a telepítést, ha nem adja meg ezeket az értékeket.
+**Ajánlott eljárási útmutató** – a pod-kérelmek és-korlátozások beállítása a YAML-jegyzékekben található összes hüvelyre. Ha az AK-fürt *erőforrás-kvótákat* használ, előfordulhat, hogy a rendszer elutasítja a telepítést, ha nem adja meg ezeket az értékeket.
 
 A számítási erőforrások egy AK-fürtön belüli kezelésének elsődleges módja a pod-kérelmek és-korlátok használata. Ezek a kérelmek és korlátok lehetővé teszik, hogy a Kubernetes Scheduler tudja, milyen számítási erőforrásokat kell hozzárendelni a pod-hoz.
 
@@ -60,7 +60,7 @@ metadata:
 spec:
   containers:
   - name: mypod
-    image: nginx:1.15.5
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: cbe6adc37025f0b727fa5f5d3ace46ed34afaa9e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: a7341362183aee4a23556a164677bc320babdfec
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895222"
+ms.locfileid: "92900842"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>Security Center eseményindítóra adott válaszok automatizálása
 
@@ -29,7 +29,7 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatás�
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|Ingyenes|
 |Szükséges szerepkörök és engedélyek:|**Biztonsági rendszergazdai szerepkör** vagy **tulajdonos** az erőforráscsoporthoz<br>A cél erőforráshoz is írási engedéllyel kell rendelkeznie<br><br>Azure Logic Apps munkafolyamatok használatához a következő Logic Apps szerepköröket/engedélyeket is meg kell adni:<br> - A [Logic app-operátor](../role-based-access-control/built-in-roles.md#logic-app-operator) engedélyei kötelezőek vagy logikai alkalmazások olvasási/aktiválási hozzáférése (ez a szerepkör nem tud logikai alkalmazásokat létrehozni vagy szerkeszteni, csak a meglévőket *futtathatja* )<br> - A logikai alkalmazás létrehozásához és módosításához a [Logic app közreműködői](../role-based-access-control/built-in-roles.md#logic-app-contributor) engedélyei szükségesek<br>Ha logikai alkalmazás-összekötőket szeretne használni, további hitelesítő adatokra lehet szüksége a saját szolgáltatásaiba való bejelentkezéshez (például az Outlook/csapatok/Slack-példányok esetében)|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 
@@ -77,7 +77,7 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatás�
 1. Az új logikai alkalmazásban a biztonsági kategóriából választhat a beépített, előre definiált sablonok közül. Megadhat egyéni folyamatokat is, amelyek a folyamat indításakor történnek.
 
     > [!TIP]
-    > Esetenként logikai alkalmazásokban a paraméterek a karakterlánc részeként szerepelnek az összekötőben, és nem a saját mezőiben. A paraméterek kinyerésének az EAN példája: #14 a [Logic app-paraméterek használatának lépései Azure Security Center munkafolyamat-automatizálások kialakítása során](https://techcommunity.microsoft.com/t5/azure-security-center/working-with-logic-app-parameters-while-building-azure-security/ba-p/1342121).
+    > Esetenként logikai alkalmazásokban a paraméterek a karakterlánc részeként szerepelnek az összekötőben, és nem a saját mezőiben. A paraméterek kinyeréséről a következő témakörben talál példát: a [Logic app-paraméterek használatának #14e Azure Security Center munkafolyamat-automatizálások létrehozásakor](https://techcommunity.microsoft.com/t5/azure-security-center/working-with-logic-app-parameters-while-building-azure-security/ba-p/1342121).
 
     A Logic app Designer a következő Security Center eseményindítókat támogatja:
 

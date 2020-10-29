@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a0851e9d032d4d1bf9751d63061141839e95d510
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: edd79d08d18e95d27e557a26f0adc36868097bb3
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491291"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900268"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud – gyakori kérdések
 
@@ -39,6 +39,9 @@ A biztonság és az adatvédelem az Azure és az Azure Spring Cloud ügyfeleinek
 
 USA keleti régiója, USA 2. keleti régiója, USA középső régiója, USA déli középső régiója, USA nyugati régiója, Nyugat-Európa, Észak-Európa, Egyesült Királyság déli régiója, Délkelet-Ázsia és Kelet-Ausztrália.
 
+### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>A megadott régión kívül tárolt ügyféladatok?
+
+Az Azure Spring Cloud egy regionális szolgáltatás. Az Azure Spring Cloud-beli ügyféladatokat a rendszer a megadott régión belül több régióban tárolja a redundancia érdekében. A földrajzi és a régióval kapcsolatos további tudnivalókért tekintse meg az [adattárolás az Azure-ban](https://azure.microsoft.com/global-infrastructure/data-residency/)című témakört.
 
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Mik az Azure Spring Cloud ismert korlátai?
 
@@ -72,7 +75,7 @@ Az Azure Spring Cloud támogatja a Java 8 és a 11 platformot. Lásd: [Java-futt
 
 A metrikák kereséséhez az alkalmazás áttekintése lapon és a [Azure monitor](../azure-monitor/platform/data-platform-metrics.md#interacting-with-azure-monitor-metrics) lapon.
 
-Az Azure Spring Cloud támogatja a Spring Cloud Application-naplók és-mérőszámok exportálását az Azure Storage, a EventHub és a [log Analyticsba](../azure-monitor/platform/data-platform-logs.md#log-queries). A Log Analytics *AppPlatformLogsforSpring*a táblázat neve. Ha szeretné megtudni, hogyan engedélyezheti, tekintse meg a [diagnosztikai szolgáltatásokat](diagnostic-services.md)ismertető témakört.
+Az Azure Spring Cloud támogatja a Spring Cloud Application-naplók és-mérőszámok exportálását az Azure Storage, a EventHub és a [log Analyticsba](../azure-monitor/platform/data-platform-logs.md#log-queries). A Log Analytics *AppPlatformLogsforSpring* a táblázat neve. Ha szeretné megtudni, hogyan engedélyezheti, tekintse meg a [diagnosztikai szolgáltatásokat](diagnostic-services.md)ismertető témakört.
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Támogatja az Azure Spring Cloud az elosztott nyomkövetést?
 

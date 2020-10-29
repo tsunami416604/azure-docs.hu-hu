@@ -1,5 +1,5 @@
 ---
-title: Kapcsolódás Power BI Professional rendszerhez
+title: Kapcsolódás a szinapszis SQL-hez Power BI Professional használatával
 description: Ebben az oktatóanyagban áttekintjük, hogyan csatlakoztatható Power BI asztal az SQL on-demand (előzetes verzió) szolgáltatáshoz.
 services: synapse-analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 48b6639ad8228347737669fffca06eb660a25874
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d88406646099a136d196a104f9cf4352a367f6d2
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288698"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899114"
 ---
 # <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Kapcsolódás a szinapszis SQL-hez Power BI Professional használatával
 
@@ -35,7 +35,7 @@ A lekérdezések kiküldéséhez a következő eszközök szükségesek:
 - Tetszőleges SQL-ügyfél:
 
   - Azure Data Studio
-  - Az SQL Server Management Studio
+  - SQL Server Management Studio
 
 - Power BI asztali telepítés
 
@@ -75,7 +75,7 @@ A lekérdezések futtatása előtt létre kell hoznia a hitelesítő adatokat. E
 > [!NOTE]
 > A Storage-fiókhoz való hozzáféréshez hitelesítő adatokat kell létrehoznia. Bár az SQL igény szerint a különböző régiókban is elérheti a tárolókat, a Storage és az Azure szinapszis munkaterület az adott régióban jobb teljesítményt nyújt.
 
-Kódrészlet **a népszámlálási adattárolók hitelesítő adatainak létrehozásához**:
+Kódrészlet **a népszámlálási adattárolók hitelesítő adatainak létrehozásához** :
 
 ```sql
 IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')
@@ -98,7 +98,7 @@ Nyissa meg a Power BI asztali alkalmazást, és válassza az **adatlekérdezés*
 
 ### <a name="step-1---select-data-source"></a>1. lépés – adatforrás kiválasztása
 
-Válassza ki az **Azure** -t a menüben, majd **Azure SQL Database**.
+Válassza ki az **Azure** -t a menüben, majd **Azure SQL Database** .
 ![Válassza ki az adatforrást.](./media/get-started-power-bi-professional/step-1-select-data-source.png)
 
 ### <a name="step-2---select-database"></a>2. lépés – adatbázis kiválasztása
@@ -106,7 +106,7 @@ Válassza ki az **Azure** -t a menüben, majd **Azure SQL Database**.
 Írja be az adatbázis URL-címét és annak az adatbázisnak a nevét, ahol a nézet található.
 ![Válassza ki az adatbázist a végponton.](./media/get-started-power-bi-professional/step-2-db.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [Storage-fájlok lekérdezésével](get-started-azure-data-studio.md) megtudhatja, hogyan CSATLAKOZHAT az SQL on-demandhoz a Azure Data Studio használatával.
  

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/03/2020
-ms.openlocfilehash: 9088b36acead9f47e94949ee102d66a8aff2d226
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/28/2020
+ms.openlocfilehash: 1f3ab61c6030c2871356f494db228711305e5466
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87529602"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92901591"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Adatok másolása az SAP ECC-ból Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -47,6 +47,13 @@ Ez az SAP ECC-összekötő a következőket támogatja:
 
 - Adatok másolása egyszerű hitelesítés használatával.
 
+Az 7,0-es vagy újabb verzió az SAP NetWeaver verziójára hivatkozik, az SAP ECC verziója helyett. Például az SAP ECC 6,0 EHP Hotels 7 általánosan a NetWeaver verziója >= 7,4. Ha nem biztos a környezetében, a következő lépésekkel ellenőrizheti a verziót az SAP-rendszerből:
+
+1. Az SAP-rendszerhez való kapcsolódáshoz használja az SAP GUI-t. 
+2. Nyissa **meg a**  ->  **rendszerállapotot** . 
+3. Ellenőrizze a SAP_BASIS kiadását, és győződjön meg arról, hogy a mérete egyenlő vagy nagyobb, mint 701.  
+      ![SAP_BASIS keresése](./media/connector-sap-table/sap-basis.png)
+
 >[!TIP]
 >Az SAP ECC-adatok SAP-táblán vagy nézeten keresztüli másolásához használja az [SAP Table](connector-sap-table.md) Connectort, amely gyorsabb és skálázható.
 
@@ -54,9 +61,9 @@ Ez az SAP ECC-összekötő a következőket támogatja:
 
 Az SAP ECC-összekötő használatához az SAP ECC-entitásokat a OData Services szolgáltatáson keresztül kell kitenni az SAP Gateway használatával. Pontosabban:
 
-- **Állítsa be az SAP Gatewayt**. Az SAP NetWeaver 7,4-nál újabb verzióval rendelkező kiszolgálók esetében az SAP Gateway már telepítve van. A korábbi verziók esetében telepítenie kell a beágyazott SAP-átjárót vagy az SAP Gateway hub-rendszerét, mielőtt az SAP ECC-adatok OData-szolgáltatásokon keresztül elérhetővé tehetők. Az SAP Gateway beállításához tekintse meg a [telepítési útmutatót](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm).
+- **Állítsa be az SAP Gatewayt** . Az SAP NetWeaver 7,4-nál újabb verzióval rendelkező kiszolgálók esetében az SAP Gateway már telepítve van. A korábbi verziók esetében telepítenie kell a beágyazott SAP-átjárót vagy az SAP Gateway hub-rendszerét, mielőtt az SAP ECC-adatok OData-szolgáltatásokon keresztül elérhetővé tehetők. Az SAP Gateway beállításához tekintse meg a [telepítési útmutatót](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm).
 
-- **Aktiválja és konfigurálja az SAP OData szolgáltatást**. A OData szolgáltatást másodpercek alatt aktiválhatja a TCODE SICF használatával. Azt is beállíthatja, hogy mely objektumokat kell elérhetővé tenni. További információ: [lépésenkénti útmutató](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/).
+- **Aktiválja és konfigurálja az SAP OData szolgáltatást** . A OData szolgáltatást másodpercek alatt aktiválhatja a TCODE SICF használatával. Azt is beállíthatja, hogy mely objektumokat kell elérhetővé tenni. További információ: [lépésenkénti útmutató](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/).
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -72,11 +79,11 @@ Az SAP ECC társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| `type` | A tulajdonságot a következőre kell `type` beállítani: `SapEcc` . | Igen |
-| `url` | Az SAP ECC OData szolgáltatás URL-címe. | Igen |
-| `username` | Az SAP ECC-hoz való kapcsolódáshoz használt Felhasználónév. | Nem |
-| `password` | Az SAP ECC-hoz való kapcsolódáshoz használt egyszerű szöveges jelszó. | Nem |
-| `connectVia` | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nem ad meg futtatókörnyezetet, a rendszer az alapértelmezett Azure Integration Runtime-t használja. | Nem |
+| `type` | A tulajdonságot a következőre kell `type` beállítani: `SapEcc` . | Yes |
+| `url` | Az SAP ECC OData szolgáltatás URL-címe. | Yes |
+| `username` | Az SAP ECC-hoz való kapcsolódáshoz használt Felhasználónév. | No |
+| `password` | Az SAP ECC-hoz való kapcsolódáshoz használt egyszerű szöveges jelszó. | No |
+| `connectVia` | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nem ad meg futtatókörnyezetet, a rendszer az alapértelmezett Azure Integration Runtime-t használja. | No |
 
 ### <a name="example"></a>Példa
 
@@ -111,7 +118,7 @@ A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| `path` | Az SAP ECC OData entitás elérési útja. | Igen |
+| `path` | Az SAP ECC OData entitás elérési útja. | Yes |
 
 ### <a name="example"></a>Példa
 
@@ -144,10 +151,10 @@ A másolási tevékenység szakasza a következő tulajdonságokat támogatja `s
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| `type` | A `type` másolási tevékenység `source` szakaszának tulajdonságát be kell állítani `SapEccSource` . | Igen |
-| `query` | Az OData lekérdezési beállításai az adatszűréshez. Például:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>Az SAP ECC-összekötő az összesített URL-címről másolja az adatait:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>További információ: [OData URL-összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
-| `sapDataColumnDelimiter` | Az a karakter, amelyet a rendszer elválasztóként használ az SAP RFC számára a kimeneti adatokat felosztva. | Nem |
-| `httpRequestTimeout` | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Ha nincs megadva, az alapértelmezett érték **00:30:00** (30 perc). | Nem |
+| `type` | A `type` másolási tevékenység `source` szakaszának tulajdonságát be kell állítani `SapEccSource` . | Yes |
+| `query` | Az OData lekérdezési beállításai az adatszűréshez. Például:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>Az SAP ECC-összekötő az összesített URL-címről másolja az adatait:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>További információ: [OData URL-összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | No |
+| `sapDataColumnDelimiter` | Az a karakter, amelyet a rendszer elválasztóként használ az SAP RFC számára a kimeneti adatokat felosztva. | No |
+| `httpRequestTimeout` | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Ha nincs megadva, az alapértelmezett érték **00:30:00** (30 perc). | No |
 
 ### <a name="example"></a>Példa
 
@@ -210,6 +217,6 @@ Az SAP ECC-ból történő adatmásoláskor a következő leképezések használ
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Data Factoryban a másolási tevékenység által a forrásként és a nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

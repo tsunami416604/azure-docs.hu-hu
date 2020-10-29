@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 90993ea2ee66a23b5b629dfaf5bb34298ce15d9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93d90232fb530a6c14c40558fc6a9974a1da42de
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936282"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900914"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>Szöveg keresése egy egyéni kifejezési listáról C-ben #
 
@@ -33,7 +33,7 @@ Ez a cikk ahhoz biztosít információt és kódmintákat, hogy elvégezhesse a 
 - Listaadatok szerkesztése.
 - Frissítse az indexet, hogy az új beolvasások észleljék a lista módosításait.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd. 
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/). 
 
 ## <a name="sign-up-for-content-moderator-services"></a>Regisztráció a Content Moderator szolgáltatásaiba
 
@@ -137,7 +137,7 @@ private const double latencyDelay = 0.5;
 Kifejezéslistát a **ContentModeratorClient.ListManagementTermLists.Create** segítségével hozhat létre. A **létrehozás** első paramétere egy sztring, amely egy MIME-típust tartalmaz, ez pedig az „application/json” típus kell, hogy legyen. További információkért lásd az [API-referenciát](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). A második paraméter egy **Törzs** objektum, amely az új kifejezéslista nevét és leírását tartalmazza.
 
 > [!NOTE]
-> A maximális korlát **5 kifejezéslista**, amelyek egyenként **nem haladhatják meg a 10 000 kifejezést**.
+> A maximális korlát **5 kifejezéslista** , amelyek egyenként **nem haladhatják meg a 10 000 kifejezést** .
 
 Adja hozzá az alábbi metódusdefiníciót a TermLists névtér Program osztályához.
 
@@ -270,7 +270,7 @@ Szövegek egy adott kifejezéslista alapján való szűrését a **ContentModera
 
 További információkért lásd az [API-referenciát](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f).
 
-A **ScreenText** egy **Screen** objektumot ad vissza, amely rendelkezik egy **Terms** tulajdonsággal. Ez felsorolja az összes kifejezést, amelyeket a Content Moderator észlelt a szöveg átvizsgálásakor. Ha a Content Moderator nem talált egyetlen kifejezést sem az átvizsgálás során, akkor a **Terms** tulajdonság értéke **null**.
+A **ScreenText** egy **Screen** objektumot ad vissza, amely rendelkezik egy **Terms** tulajdonsággal. Ez felsorolja az összes kifejezést, amelyeket a Content Moderator észlelt a szöveg átvizsgálásakor. Ha a Content Moderator nem talált egyetlen kifejezést sem az átvizsgálás során, akkor a **Terms** tulajdonság értéke **null** .
 
 Adja hozzá az alábbi metódusdefiníciót a TermLists névtér Program osztályához.
 
@@ -296,7 +296,7 @@ static void ScreenText (ContentModeratorClient client, string list_id, string te
             Console.WriteLine(String.Format("Found term: \"{0}\" from list ID {1} at index {2}.", term.Term, term.ListId, term.Index));
         }
     }
-    read.Sleep(throttleRate);
+    Thread.Sleep(throttleRate);
 }
 ```
 
@@ -304,9 +304,9 @@ static void ScreenText (ContentModeratorClient client, string list_id, string te
 
 Egy kifejezés vagy egy lista törlése nagyon egyszerű. Az SDK segítségével végezhetők el a következő feladatok:
 
-- Egy kifejezés törlése. (**ContentModeratorClient.ListManagementTerm.DeleteTerm**)
-- Egy listán szereplő összes kifejezés törlése a lista törlése nélkül. (**ContentModeratorClient.ListManagementTerm.DeleteAllTerms**)
-- Egy lista törlése annak teljes tartalmával együtt. (**ContentModeratorClient.ListManagementTermLists.Delete**)
+- Egy kifejezés törlése. ( **ContentModeratorClient.ListManagementTerm.DeleteTerm** )
+- Egy listán szereplő összes kifejezés törlése a lista törlése nélkül. ( **ContentModeratorClient.ListManagementTerm.DeleteAllTerms** )
+- Egy lista törlése annak teljes tartalmával együtt. ( **ContentModeratorClient.ListManagementTermLists.Delete** )
 
 ### <a name="delete-a-term"></a>Egy kifejezés törlése
 
@@ -365,7 +365,7 @@ static void DeleteTermList (ContentModeratorClient client, string list_id)
 
 ## <a name="compose-the-main-method"></a>A Main metódus összeállítása
 
-Adja hozzá a **fő** metódus definícióját a Namespace **TermLists**, a Class **programhoz**. Végül zárjuk be a **program** osztályt és a **TermLists** névteret.
+Adja hozzá a **fő** metódus definícióját a Namespace **TermLists** , a Class **programhoz** . Végül zárjuk be a **program** osztályt és a **TermLists** névteret.
 
 ```csharp
 static void Main(string[] args)
