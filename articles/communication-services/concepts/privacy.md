@@ -1,0 +1,82 @@
+---
+title: Régió rendelkezésre állása és az adattárolás az Azure kommunikációs szolgáltatásokhoz
+description: Ismerje meg az Azure kommunikációs szolgáltatások adattárolási és adatkezelési kérdéseit
+author: chpalm
+manager: anvalent
+services: azure-communication-services
+ms.author: chpalm
+ms.date: 10/03/2020
+ms.topic: overview
+ms.service: azure-communication-services
+ms.openlocfilehash: 6b8145666ab92432d01b2f039685afe5534f0958
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043585"
+---
+# <a name="region-availability-and-data-residency"></a>Regionális elérhetőség és adattárolási hely
+
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+
+Az Azure kommunikációs szolgáltatás elkötelezett ahhoz, hogy ügyfeleink megfeleljenek az adatvédelmi és személyes adatokra vonatkozó követelményeiknek. A kommunikációs szolgáltatásokat használó fejlesztőknek, akik az alkalmazás használatával közvetlen kapcsolatban állnak az emberekkel, lehetséges, hogy az adataik vezérlői. Mivel az Azure kommunikációs szolgáltatás tárolja ezeket az adattárolást az Ön nevében, valószínűleg az ilyen típusú adatfeldolgozót használjuk. Ez az oldal összefoglalja, hogyan őrzi meg a szolgáltatás az adatait, és hogyan azonosíthatja, exportálhatja és törölheti ezeket az adatfájlokat.
+
+## <a name="data-residency"></a>Adattárolási hely
+
+A kommunikációs szolgáltatások erőforrásának létrehozásakor meg kell adnia egy **földrajzot** (nem Azure-adatközpontot). A kommunikációs szolgáltatások által tárolt összes adat az adott földrajzban megmarad a kommunikációs szolgáltatások által belsőleg kiválasztott adatközpontban. Az adatátvitel azonban más földrajzi területeken is átadható vagy feldolgozható, ezek a globális végpontok nagy teljesítményű, kis késleltetésű felhasználói élményt biztosítanak a végfelhasználók számára a helyüktől függetlenül.
+
+## <a name="relating-humans-to-azure-communication-services-identities"></a>Az Azure kommunikációs szolgáltatások identitásával kapcsolatos emberek
+
+Az alkalmazás kezeli az emberi felhasználók és a kommunikációs szolgáltatás identitásának kapcsolatát. Ha egy emberi felhasználóhoz tartozó adattörlést szeretne törölni, törölnie kell az összes, a felhasználóhoz kapcsolódó kommunikációs szolgáltatás identitásával kapcsolatos adatforgalmat.
+
+A kommunikációs szolgáltatási adatmennyiség két kategóriába sorolhatók:
+- **API-adatértékek.** Ezeket az adatforgalmat a kommunikációs szolgáltatás API-k hozzák létre és kezelik, amelyek egy tipikus példa csevegési API-kon keresztül felügyelt üzenetek küldésére.
+- **Naplók Azure monitor** Ezeket az adatkészleteket a szolgáltatás hozza létre és felügyeli a Azure Monitor adatplatformon keresztül. Ezek az adatok telemetria és mérőszámokat tartalmaznak, amelyek segítenek megérteni a kommunikációs szolgáltatások használatát. Ezt a kommunikációs szolgáltatás API-jai nem kezelik.
+
+## <a name="api-data"></a>API-adatértékek
+
+### <a name="identities"></a>Identitások
+
+Az Azure kommunikációs szolgáltatások megőrzik az identitások könyvtárát, és a [DeleteIdentity](https://docs.microsoft.com/rest/api/communication/communicationidentity/delete) API használatával távolítják el azokat. Az identitás törlésével visszavonja az összes társított hozzáférési jogkivonatot, és törölni fogja a csevegési üzeneteiket. Az identitás eltávolításával kapcsolatos további információkért [tekintse meg ezt a lapot](../quickstarts/access-tokens.md).
+
+- DeleteIdentity
+
+### <a name="azure-resource-manager"></a>Azure Resource Manager
+
+A kommunikációs szolgáltatásokkal rendelkező Azure Portal vagy Azure Resource Manager API-k használatával személyes adatai is létrehozhatók. [Ezen a lapon megtudhatja, hogyan kezelheti Azure Resource Manager rendszerekben tárolt személyes információkat.](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-manager-personal-data)
+
+### <a name="telephone-number-management"></a>Telefonos szám kezelése
+
+Az Azure kommunikációs szolgáltatások fenntartják a kommunikációs szolgáltatások erőforrásaihoz társított telefonszámok könyvtárát. Ezen API-k használatával lekérheti a telefonszámokat, és törölheti őket:
+- `Release Phone Number`
+
+### <a name="chat"></a>Csevegés
+
+A csevegési szálak és üzenetek csak explicit törlés után maradnak meg. A rendszer 30 nap után automatikusan törli A teljesen üresjáratban lévő szálat. Üzenetek beolvasása, listázása, frissítése és törlése [csevegési API](https://docs.microsoft.com/rest/api/communication/chat/deletechatmessage/deletechatmessage) -k használatával.
+
+- `Get Thread`
+- `Get Message`
+- `Delete Thread`
+- `Delete Message`
+
+### <a name="sms"></a>SMS
+
+Az SMS-üzenetek küldését és fogadását a szolgáltatás elmúlóan dolgozza fel, és nem őrzi meg. 
+
+### <a name="pstn-voice-calling"></a>PSTN hanghívása
+
+A szolgáltatás elmúló módon dolgozza fel a hang-és video-kommunikációt, és a Azure Monitor-naplóktól eltérő erőforrásban nem őrzi meg az adatait.
+
+### <a name="internet-voice-and-video-calling"></a>Internetes hang-és videohívás-hívás
+
+A szolgáltatás elmúló módon dolgozza fel a hang-és video-kommunikációt, és a Azure Monitor-naplóktól eltérő erőforrásban nem őrzi meg az adatait.
+
+## <a name="azure-monitor-and-log-analytics"></a>Azure Monitor és Log Analytics
+
+Az Azure kommunikációs szolgáltatások a szolgáltatás működési állapotának és kihasználtságának megértéséhez Azure Monitor naplózási adataiba kerülnek. Ezek a naplók a kommunikációs szolgáltatás identitásait és telefonszámait tartalmazzák. A potenciálisan személyes adatértékek törléséhez [használja ezeket az eljárásokat a Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt). Előfordulhat, hogy [az Azure monitor alapértelmezett megőrzési időtartamát](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)is be szeretné állítani.
+
+## <a name="additional-resources"></a>További erőforrások
+
+- [Azure-beli adattulajdonosi kérelmek a GDPR és a CCPA](https://docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-azure?view=o365-worldwide&preserve-view=true)
+- [Microsoft Adatvédelmi központ](https://www.microsoft.com/trust-center/privacy/data-location)
+- [Azure interaktív Térkép – hol található a vásárlói adataim?](https://azuredatacentermap.azurewebsites.net/)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 5c18a904f0ec0f100312ee3fafb53038bd2ccf19
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1da7221b511cb07e5000f09e4015fc8bd4a0a928
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745673"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043311"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Az Azure csatlakoztatása ITSM-eszközökhöz az IT Service Management-összekötő használatával
 
@@ -57,7 +57,7 @@ A kapcsolatok létrehozása előtt hozzá kell adnia a ITSM-csatoló megoldást.
 3. A **OMS munkaterület** szakaszban válassza ki azt az Azure log Analytics-munkaterületet, amelyre telepíteni kívánja a megoldást.
    >[!NOTE]
    > * A Microsoft Operations Management Suite (OMS) és a Azure Monitor közötti folyamatos áttérés részeként a OMS-munkaterületek már Log Analytics munkaterületek.
-   > * A ITSM-csatoló csak Log Analytics munkaterületekre telepíthető a következő régiókban: USA keleti régiója, Nyugat-RÉGIÓJA, USA déli középső régiója, USA nyugati középső régiója, Fairfax, Közép-Kanada, Nyugat-Európa, Dél-Egyesült Királyság, Délkelet-Ázsia, Kelet-Japán, Közép-India, Délkelet-Ausztrália.
+   > * A ITSM-csatoló csak Log Analytics munkaterületekre telepíthető a következő régiókban: USA keleti régiója, Nyugat-RÉGIÓJA, az USA déli középső régiója, az USA nyugati középső régiója, US Gov Arizona, US Gov Virginia, Közép-Kanada, Nyugat-Európa, Dél-Egyesült Királyság, Délkelet-Ázsia, Kelet-Japán, Közép-India, Délkelet-Ausztrália.
 
 4. A **OMS-munkaterület beállításai** szakaszban válassza ki azt a ResourceGroup, amelyben létre szeretné hozni a megoldás erőforrását.
 

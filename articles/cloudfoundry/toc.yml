@@ -8,15 +8,15 @@
 - name: Oktatóanyagok
   items:
     - name: CF létrehozása az Azure-on
-      href: /azure/cloudfoundry/create-cloud-foundry-on-azure
+      href: ./create-cloud-foundry-on-azure.md
     - name: CF-alkalmazás üzembe helyezése az Azure-ban
-      href: /azure/cloudfoundry/cloudfoundry-deploy-your-first-app
+      href: ./cloudfoundry-deploy-your-first-app.md
     - name: Cloud Foundry az Azure-on
-      href: /azure/cloudfoundry/cloudfoundry-get-started
+      href: ./cloudfoundry-get-started.md
     - name: A CF OMS Nozzle üzembe helyezése
-      href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
+      href: ./cloudfoundry-oms-nozzle.md
     - name: A Cloud Foundry Azure-ral való integrálása
-      href: /azure/cloudfoundry/how-cloud-foundry-integrates-with-azure
+      href: ./how-cloud-foundry-integrates-with-azure.md
 - name: További források
   items:
     - name: Azure-ütemterv

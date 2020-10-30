@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 0e14bba7b2982dd12fcca0d7aedc864b2a65288f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1683977d5c8be965cb329611c5a7fd6602a1cd97
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259951"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043368"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>A számítási erőforrások kezelése Azure Functions használatával az Azure szinapszis Analytics SQL-készletben
 
@@ -44,7 +44,7 @@ A sablon üzembe helyezésekor három új erőforrást talál: egy ingyenes Azur
 
 ## <a name="change-the-compute-level"></a>A számítási szint módosítása
 
-1. Navigáljon a Függvényalkalmazás szolgáltatást. Ha az alapértelmezett értékekkel helyezte üzembe a sablont, a szolgáltatás neve *DWOperations*. A Függvényalkalmazás megnyitása után megfigyelheti, hogy a rendszer öt függvényt helyezett üzembe a Függvényalkalmazás szolgáltatásban.
+1. Navigáljon a Függvényalkalmazás szolgáltatást. Ha az alapértelmezett értékekkel helyezte üzembe a sablont, a szolgáltatás neve *DWOperations* . A Függvényalkalmazás megnyitása után megfigyelheti, hogy a rendszer öt függvényt helyezett üzembe a Függvényalkalmazás szolgáltatásban.
 
    ![Sablonnal üzembe helyezett függvények](./media/manage-compute-with-azure-functions/five-functions.png)
 
@@ -68,7 +68,7 @@ A sablon üzembe helyezésekor három új erőforrást talál: egy ingyenes Azur
 
 ## <a name="change-the-time-of-the-scale-operation"></a>A skálázási művelet időpontjának módosítása
 
-1. Navigáljon a Függvényalkalmazás szolgáltatást. Ha az alapértelmezett értékekkel helyezte üzembe a sablont, a szolgáltatás neve *DWOperations*. A Függvényalkalmazás megnyitása után megfigyelheti, hogy a rendszer öt függvényt helyezett üzembe a Függvényalkalmazás szolgáltatásban.
+1. Navigáljon a Függvényalkalmazás szolgáltatást. Ha az alapértelmezett értékekkel helyezte üzembe a sablont, a szolgáltatás neve *DWOperations* . A Függvényalkalmazás megnyitása után megfigyelheti, hogy a rendszer öt függvényt helyezett üzembe a Függvényalkalmazás szolgáltatásban.
 
 2. Válassza ki a *DWScaleDownTrigger* vagy a *DWScaleUpTrigger* elemet attól függően, hogy a vertikális fel- vagy leskálázás számítási értékét szeretné módosítani. A függvények kiválasztásakor az ablaktáblán az *index.js* fájlnak kell megjelennie.
 
@@ -97,9 +97,9 @@ A sablon jelenleg csak két méretezési függvényt tartalmaz. Ezekkel a függv
 
 1. Hozzon létre egy új üres függvényt. Kattintson a *+* függvények helye melletti gombra a Function sablon panel megjelenítéséhez.
 
-   ![Új függvény létrehozása](./media/manage-compute-with-azure-functions/create-new-function.png)
+   ![Képernyőkép, amely a "functions" ikon melletti "Plus" ikonnal jeleníti meg a "Function apps" menüt.](./media/manage-compute-with-azure-functions/create-new-function.png)
 
-2. A nyelv területen válassza a *JavaScript*lehetőséget, majd válassza a *TimerTrigger*lehetőséget.
+2. A nyelv területen válassza a *JavaScript* lehetőséget, majd válassza a *TimerTrigger* lehetőséget.
 
    ![Új függvény létrehozása](./media/manage-compute-with-azure-functions/timertrigger-js.png)
 

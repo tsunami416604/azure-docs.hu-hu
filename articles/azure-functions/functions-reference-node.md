@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 86a512ea0e07f5eb2ce00ff27427139c5221d229
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 758e11a9c043fbd1238d1e3533a2d83804ec0b73
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164822"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043103"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
 
@@ -18,7 +18,7 @@ Ez az útmutató részletes információkat tartalmaz, amelyek segítenek a Azur
 
 Express.js, Node.js vagy JavaScript-fejlesztőként, ha még nem ismeri a Azure Functionst, először olvassa el a következő cikkek egyikét:
 
-| Első lépések | Fogalmak| Interaktív tanulás |
+| Első lépések | Alapelvek| Interaktív tanulás |
 | -- | -- | -- | 
 | <ul><li>[Node.js függvény a Visual Studio Code használatával](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)</li><li>[Node.js függvény a Terminal/Command parancssorral](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Írógéppel függvények](#typescript)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> | <ul><li>[Kiszolgáló nélküli alkalmazás létrehozása](/learn/paths/create-serverless-applications/)</li><li>[Refrakció Node.js és expressz API-k kiszolgáló nélküli API-khoz](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
@@ -107,13 +107,13 @@ A JavaScriptben a [kötések](functions-triggers-bindings.md) konfigurálva és 
 
 ### <a name="inputs"></a>Bevitelek
 A bemenet két kategóriára oszlik Azure Functionsban: az egyik az trigger bemenete, a másik pedig a további bemenet. Az trigger és más bemeneti kötések (-kötések `direction === "in"` ) háromféle módon olvashatók be a függvényekben:
- - **_[Ajánlott]_ A függvénynek átadott paraméterek.** A függvénynek ugyanolyan sorrendben kell átadni őket, mint *function.js*. A `name` *function.json* elemben definiált tulajdonságnak nem kell megegyeznie a paraméter nevével, bár ennek a következőnek kell lennie:.
+ - **_[Ajánlott]_ A függvénynek átadott paraméterek.** A függvénynek ugyanolyan sorrendben kell átadni őket, mint *function.js* . A `name` *function.json* elemben definiált tulajdonságnak nem kell megegyeznie a paraméter nevével, bár ennek a következőnek kell lennie:.
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
    
- - **Az objektum tagjaként [`context.bindings`](#contextbindings-property) .** Minden egyes tagot afunction.jsáltal `name` meghatározott tulajdonság nevez *function.json*el.
+ - **Az objektum tagjaként [`context.bindings`](#contextbindings-property) .** Minden egyes tagot afunction.jsáltal `name` meghatározott tulajdonság nevez *function.json* el.
  
    ```javascript
    module.exports = async function(context) { 
@@ -138,7 +138,7 @@ A () kimeneteit a `direction === "out"` függvény számos módon képes írni. 
 
 Az alábbi módszerek egyikével rendelhet adatokat a kimeneti kötésekhez (ne kombinálja ezeket a metódusokat):
 
-- **_[Több kimenet esetén ajánlott)_ Objektum visszaadása.** Ha aszinkron/Promise returning függvényt használ, a hozzárendelt kimeneti adatokat tartalmazó objektumot adhat vissza. Az alábbi példában a kimeneti kötések neve "httpResponse" és "queueOutput", *function.jsa*következőben:.
+- **_[Több kimenet esetén ajánlott)_ Objektum visszaadása.** Ha aszinkron/Promise returning függvényt használ, a hozzárendelt kimeneti adatokat tartalmazó objektumot adhat vissza. Az alábbi példában a kimeneti kötések neve "httpResponse" és "queueOutput", *function.jsa* következőben:.
 
   ```javascript
   module.exports = async function(context) {
@@ -317,7 +317,7 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 ```
 
 > [!NOTE]  
-> Ne használja `console.log` a-t nyomkövetési kimenetek írásához. Mivel `console.log` a rendszer a függvény alkalmazási szintjén rögzíti a kimenetet, nem kötődik egy adott függvény hívásához, és nem jelenik meg egy adott függvény naplóiban. Emellett a függvények futtatókörnyezetének 1. x verziója nem támogatja a használatát a `console.log` -konzolra való íráshoz.
+> Ne használja `console.log` nyomkövetési kimenetek írásához. Mivel `console.log` a rendszer a függvény alkalmazási szintjén rögzíti a kimenetet, nem kötődik egy adott függvény hívásához, és nem jelenik meg egy adott függvény naplóiban. Emellett a függvények futtatókörnyezetének 1. x verziója nem támogatja a használatát a `console.log` -konzolra való íráshoz.
 
 ### <a name="trace-levels"></a>Nyomkövetési szintek
 
@@ -325,10 +325,10 @@ Az alapértelmezett szinten kívül a következő naplózási módszerek is elé
 
 | Metódus                 | Leírás                                |
 | ---------------------- | ------------------------------------------ |
-| **hiba (_üzenet_)**   | Hiba szintű eseményt ír a naplókba.   |
-| **Figyelmeztetés (_üzenet_)**    | Figyelmeztetési szintű eseményt ír a naplókba. |
-| **információ (_üzenet_)**    | Az adatszintű naplózás vagy az alacsonyabb értékre írja az adatokat.    |
-| **részletes (_üzenet_)** | Írás a részletes szintű naplózásba.           |
+| **hiba ( _üzenet_ )**   | Hiba szintű eseményt ír a naplókba.   |
+| **Figyelmeztetés ( _üzenet_ )**    | Figyelmeztetési szintű eseményt ír a naplókba. |
+| **információ ( _üzenet_ )**    | Az adatszintű naplózás vagy az alacsonyabb értékre írja az adatokat.    |
+| **részletes ( _üzenet_ )** | Írás a részletes szintű naplózásba.           |
 
 Az alábbi példa a figyelmeztetési nyomkövetési szinten ugyanazt a naplót írja be az információs szint helyett:
 
@@ -358,7 +358,7 @@ A naplókba és a konzolba írt összes nyomkövetés küszöbértékének megad
 }  
 ```
 
-A **consoleLevel** értékei a metódusok neveinek felelnek meg `context.log` . Ha le szeretné tiltani az összes nyomkövetési naplózást a konzolon, állítsa a **consoleLevel** beállítást _ki_értékre. További információ: [host.jsa v1. x dokumentációjában](functions-host-json-v1.md).
+A **consoleLevel** értékei a metódusok neveinek felelnek meg `context.log` . Ha le szeretné tiltani az összes nyomkövetési naplózást a konzolon, állítsa a **consoleLevel** beállítást _ki_ értékre. További információ: [host.jsa v1. x dokumentációjában](functions-host-json-v1.md).
 
 ---
 
@@ -545,12 +545,12 @@ A függvényalkalmazás kétféleképpen telepíthet csomagokat:
 ### <a name="using-kudu"></a>A kudu használata
 1. Nyissa meg a következőt: `https://<function_app_name>.scm.azurewebsites.net`.
 
-2. Kattintson a **hibakeresési konzol**  >  **cmd**elemre.
+2. Kattintson a **hibakeresési konzol**  >  **cmd** elemre.
 
 3. Nyissa meg a ( `D:\home\site\wwwroot` z) parancsot, majd húzza a package.jsfájlt a **wwwroot** mappába a lap felső részén.  
     Más módokon is feltölthet fájlokat a Function alkalmazásba. További információ: [Function app Files frissítése](functions-reference.md#fileupdate). 
 
-4. A package.jsfájl feltöltése után futtassa a `npm install` parancsot a **kudu távoli végrehajtási konzolon**.  
+4. A package.jsfájl feltöltése után futtassa a `npm install` parancsot a **kudu távoli végrehajtási konzolon** .  
     Ez a művelet letölti a package.jsfájlban jelzett csomagokat, és újraindítja a Function alkalmazást.
 
 ## <a name="environment-variables"></a>Környezeti változók
@@ -776,7 +776,7 @@ module.exports = async function (context) {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkat találhat az alábbi forrásokban:
 

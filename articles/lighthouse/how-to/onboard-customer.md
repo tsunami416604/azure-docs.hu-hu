@@ -3,12 +3,12 @@ title: Ügyfél előkészítése az Azure Lighthouse-hoz
 description: Ismerje meg, hogyan végezheti el az ügyfelek Azure világítótoronyba való bevezetését, így az erőforrásaik a saját bérlőn keresztül érhetők el és kezelhetők az Azure-beli delegált erőforrás-kezelés használatával.
 ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: b5a6d60d10b2cee7f26ae405ed95b980f423b42e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d80fef21e4b7cf1705b67df3c8d08f91bac589bf
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426335"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042861"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Ügyfél előkészítése az Azure Lighthouse-hoz
 
@@ -38,7 +38,7 @@ Ha még nem rendelkezik ezekkel az azonosító értékekkel, a következő módo
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A bérlő AZONOSÍTÓját a Azure Portal jobb felső sarkában lévő fiók neve fölé helyezve, vagy a **könyvtár váltása**lehetőség kiválasztásával lehet látni. A bérlői azonosító kiválasztásához és másolásához keressen a "Azure Active Directory" kifejezésre a portálon, majd válassza a **Tulajdonságok** lehetőséget, és másolja ki a **címtár-azonosító** mezőben megjelenő értéket. Az előfizetés ügyfél-bérlőben történő megkereséséhez keressen rá az "előfizetések" kifejezésre, majd válassza ki a megfelelő előfizetés-azonosítót.
+A bérlő AZONOSÍTÓját a Azure Portal jobb felső sarkában lévő fiók neve fölé helyezve, vagy a **könyvtár váltása** lehetőség kiválasztásával lehet látni. A bérlői azonosító kiválasztásához és másolásához keressen a "Azure Active Directory" kifejezésre a portálon, majd válassza a **Tulajdonságok** lehetőséget, és másolja ki a **címtár-azonosító** mezőben megjelenő értéket. Az előfizetés ügyfél-bérlőben történő megkereséséhez keressen rá az "előfizetések" kifejezésre, majd válassza ki a megfelelő előfizetés-azonosítót.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -66,10 +66,10 @@ Szolgáltatóként több feladatot is el lehet végezni egyetlen ügyfél szám�
 
 A felügyelet egyszerűbbé tételéhez ajánlott az Azure AD felhasználói csoportok használata az egyes szerepkörökhöz. Ez rugalmasságot biztosít az egyes felhasználók hozzáadásához vagy eltávolításához a hozzáféréssel rendelkező csoport számára, így nem kell megismételni a bevezetési folyamatot a felhasználói módosítások elvégzéséhez. A szerepköröket hozzárendelhet egy egyszerű szolgáltatáshoz, ami automatizálási forgatókönyvekhez hasznos lehet.
 
-Az engedélyek meghatározásakor ügyeljen arra, hogy kövesse a legalacsonyabb jogosultsági szint elvét, hogy a felhasználók csak a feladataik elvégzéséhez szükséges engedélyekkel rendelkezzenek. A támogatott szerepkörökkel kapcsolatos irányelvek és információk: [bérlők, felhasználók és szerepkörök az Azure Lighthouse-forgatókönyvekben](../concepts/tenants-users-roles.md).
-
 > [!IMPORTANT]
-> Az Azure AD-csoport engedélyeinek hozzáadásához a **csoport típusát** **biztonsági**értékre kell állítani. Ez a beállítás a csoport létrehozásakor van kiválasztva. További információkért lásd: [alapszintű csoport létrehozása és Tagok hozzáadása Azure Active Directory használatával](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+> Az Azure AD-csoport engedélyeinek hozzáadásához a **csoport típusát** **biztonsági** értékre kell állítani. Ez a beállítás a csoport létrehozásakor van kiválasztva. További információkért lásd: [alapszintű csoport létrehozása és Tagok hozzáadása Azure Active Directory használatával](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+
+Az engedélyek meghatározásakor ügyeljen arra, hogy kövesse a legalacsonyabb jogosultsági szint elvét, hogy a felhasználók csak a feladataik elvégzéséhez szükséges engedélyekkel rendelkezzenek. A támogatott szerepkörökkel kapcsolatos irányelvek és információk: [bérlők, felhasználók és szerepkörök az Azure Lighthouse-forgatókönyvekben](../concepts/tenants-users-roles.md).
 
 Az engedélyek definiálásához ismernie kell az egyes felhasználók, felhasználói csoportok vagy egyszerű szolgáltatásnév azonosító értékeit abban a szolgáltatói bérlőn, amelyhez hozzáférést szeretne biztosítani. A hozzárendelni kívánt beépített szerepkörökhöz is szüksége lesz a szerepkör-definíciós AZONOSÍTÓra. Ha még nem rendelkezik velük, lekérheti őket az alábbi parancsok futtatásával a szolgáltatói bérlőn belül.
 
@@ -128,7 +128,7 @@ A bevezetési folyamathoz szükség van egy Azure Resource Manager sablonra (a [
 > [!IMPORTANT]
 > Az itt leírt folyamat külön üzembe helyezést igényel minden előfizetéshez, még akkor is, ha az előfizetések ugyanabban az ügyfél-bérlőben vannak bevezetésben. A különálló központi telepítések akkor is szükségesek, ha több erőforráscsoportot is előkészít ugyanazon ügyfél bérlője különböző előfizetéseken belül. Egy adott előfizetésen belül több erőforráscsoport bevezetését azonban egyetlen központi telepítésben is elvégezheti.
 >
-> Külön központi telepítések is szükségesek ahhoz, hogy több ajánlat is alkalmazható legyen ugyanarra az előfizetésre (vagy az előfizetésen belüli erőforráscsoportok). Minden egyes alkalmazásnak eltérő **mspOfferName**kell használnia.
+> Külön központi telepítések is szükségesek ahhoz, hogy több ajánlat is alkalmazható legyen ugyanarra az előfizetésre (vagy az előfizetésen belüli erőforráscsoportok). Minden egyes alkalmazásnak eltérő **mspOfferName** kell használnia.
 
 A választott sablon attól függ, hogy teljes előfizetést, erőforráscsoportot vagy több erőforráscsoportot készít elő egy előfizetésen belül. Egy olyan sablont is biztosítunk, amely az Azure Marketplace-en közzétett, felügyelt szolgáltatási ajánlatot megvásárló ügyfelek számára is felhasználható, ha így szeretne előfizetni.
 
@@ -211,8 +211,8 @@ Az üzembe helyezés a Azure Portal a PowerShell vagy az Azure CLI használatáv
 ### <a name="azure-portal"></a>Azure Portal
 
 1. A [GitHub](https://github.com/Azure/Azure-Lighthouse-samples/)-tárházban válassza az **üzembe helyezés az Azure** -ban gombot, amely a használni kívánt sablon mellett látható. A sablon az Azure Portalon fog megnyílni.
-1. Adja meg az **MSP-ajánlat neve**, az **MSP-ajánlat leírása**, a **bérlői azonosító**és a **jogosultságok**által kezelt értékeket. Ha szeretné, a **Paraméterek szerkesztése** lehetőség kiválasztásával megadhatja a,,, `mspOfferName` `mspOfferDescription` `managedbyTenantId` és `authorizations` közvetlenül a paraméter fájljának értékét. Ne felejtse el frissíteni ezeket az értékeket a sablon alapértelmezett értékeinek használata helyett.
-1. Válassza a **felülvizsgálat és létrehozás**, majd a **Létrehozás**lehetőséget.
+1. Adja meg az **MSP-ajánlat neve** , az **MSP-ajánlat leírása** , a **bérlői azonosító** és a **jogosultságok** által kezelt értékeket. Ha szeretné, a **Paraméterek szerkesztése** lehetőség kiválasztásával megadhatja a,,, `mspOfferName` `mspOfferDescription` `managedbyTenantId` és `authorizations` közvetlenül a paraméter fájljának értékét. Ne felejtse el frissíteni ezeket az értékeket a sablon alapértelmezett értékeinek használata helyett.
+1. Válassza a **felülvizsgálat és létrehozás** , majd a **Létrehozás** lehetőséget.
 
 Néhány perc elteltével megjelenik egy értesítés arról, hogy a telepítés befejeződött.
 
@@ -296,7 +296,7 @@ Get-AzContext
 az account list
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).
 - [Megtekintheti és kezelheti az ügyfeleket](view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a59939fc7988e1a94bdfb9fac2d77011422e4983
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b763a1cda91886946bba211f589c37940e7c3ae1
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87274680"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042807"
 ---
 # <a name="conditional-access-grant"></a>Feltételes hozzáférés: Engedélyezés
 
@@ -70,7 +70,7 @@ Az [OAuth folyamat](../develop/v2-oauth2-device-code.md)használatakor a felügy
 
 A szervezeteknek meg kell követelniük, hogy a kiválasztott felhőalapú alkalmazásokhoz való hozzáférési kísérletet egy jóváhagyott ügyfélalkalmazás alapján kell végrehajtani. Ezek a jóváhagyott ügyfélalkalmazások a mobileszköz-kezelési (MDM) megoldástól függetlenül támogatják az [Intune app Protection-szabályzatokat](/intune/app-protection-policy) .
 
-Ennek a támogatásnak a kihasználása érdekében a feltételes hozzáférés megköveteli, hogy az eszköz regisztrálva legyen Azure Active Directoryban, amelyhez közvetítő alkalmazást kell használni. Ez lehet az iOS-es Microsoft Authenticator vagy az androidos eszközökre készült Microsoft Intune vállalati portál. Ha egy közvetítő alkalmazás nincs telepítve az eszközön, amikor a felhasználó megkísérli a hitelesítést, a rendszer átirányítja a felhasználót az App Store-ba a Broker alkalmazás telepítéséhez.
+Ennek a támogatásnak a kihasználása érdekében a feltételes hozzáférés megköveteli, hogy az eszköz regisztrálva legyen Azure Active Directoryban, amelyhez közvetítő alkalmazást kell használni. A közvetítő alkalmazás a Microsoft Authenticator iOS-hez, vagy az Microsoft Authenticator vagy a Microsoft vállalati portál Android-eszközökhöz. Ha egy közvetítő alkalmazás nincs telepítve az eszközön, amikor a felhasználó megkísérli a hitelesítést, a rendszer átirányítja a felhasználót a megfelelő app/Play áruházba a szükséges közvetítő alkalmazás telepítéséhez.
 
 Ez a beállítás a következő iOS-és Android-alkalmazásokra vonatkozik:
 
@@ -167,7 +167,7 @@ Ha a jelszó-módosítási vezérlő használatával konfigurál egy házirendet
 
 Ha a szervezet létrehozta a használati feltételeket, az engedélyezési vezérlők területen további beállítások is láthatók. Ezek a beállítások lehetővé teszik a rendszergazdák számára, hogy a szabályzat által védett erőforrások elérésének feltétele megkövetelje a használati feltételek visszaigazolását. A használati feltételekkel kapcsolatos további információkért tekintse meg a cikkben [Azure Active Directory használati feltételeket](terms-of-use.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Feltételes hozzáférés: munkamenet-vezérlők](concept-conditional-access-session.md)
 

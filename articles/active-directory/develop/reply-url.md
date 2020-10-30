@@ -5,18 +5,18 @@ description: A Microsoft Identity platform által kényszerített átirányítá
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 08/07/2020
+ms.date: 10/29/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
-ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: bd6f88db2b55a5f0f445659e4b5ef609d3e146e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: marsma, lenalepa, manrath
+ms.openlocfilehash: e7635aad85352887646a1319b4d0bfbf64924bf9
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030310"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042909"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Átirányítási URI (válasz URL-cím) korlátozásai és korlátozásai
 
@@ -24,7 +24,7 @@ Az átirányítási URI-vagy válasz-URL-cím az a hely, ahol az engedélyezési
 
  Az átirányítási URI-k esetében a következő korlátozások érvényesek:
 
-* Az átirányítási URI-nak a sémával kell kezdődnie `https` .
+* Az átirányítási URI-nak a sémával kell kezdődnie `https` . A localhost átirányítási URI-k néhány [kivételt jelentenek](#localhost-exceptions) .
 
 * Az átirányítási URI megkülönbözteti a kis-és nagybetűket. Az esetnek egyeznie kell a futó alkalmazás URL-címének elérési útjával. Ha például az alkalmazás az elérési út részeként szerepel `.../abc/response-oidc` , ne adja meg `.../ABC/response-oidc` az átirányítási URI-t. Mivel a webböngésző a kis-és nagybetűket megkülönböztető módon kezeli az elérési utakat, a hozzájuk társított cookie-k `.../abc/response-oidc` kizárható, ha a rendszer átirányítja a kis-és nagybetűket `.../ABC/response-oidc` .
 
@@ -64,11 +64,10 @@ Fejlesztési szempontból ez néhány dolgot jelent:
 
 * Ne regisztráljon több átirányítási URI-t, ahol csak a port különbözik. A bejelentkezési kiszolgáló egy tetszőlegesen kiválasztható, és az átirányítási URI-hoz társított viselkedést (például a `web` -, `native` -vagy `spa` -Type átirányítás) használja.
 * Ha több átirányítási URI-t kell regisztrálnia a localhost-on a különböző folyamatok teszteléséhez a fejlesztés során, akkor az URI *elérési útja* összetevővel kell megkülönböztetni őket. A nem egyezik például a következővel: `http://127.0.0.1/MyWebApp` `http://127.0.0.1/MyNativeApp` .
-* Az RFC-útmutató alapján nem használhatja az `localhost` átirányítási URI-t. Ehelyett használja a tényleges visszacsatolási IP-címet `127.0.0.1` . Ez megakadályozza, hogy az alkalmazást hibásan konfigurált tűzfalak vagy átnevezett hálózati adapterek lehessen megszakítani.
+* Az IPv6-visszacsatolási cím ( `[::1]` ) jelenleg nem támogatott.
+* Ha meg szeretné akadályozni, hogy az alkalmazás hibás módon konfigurált tűzfalakkal vagy átnevezett hálózati adapterekkel megszakadjon, a helyett használja az `127.0.0.1` átirányítási URI-ban található IP-szövegkonstans-visszacsatolási címet `localhost` .
 
-    Ha a `http` sémát a localhost helyett a visszacsatolási címhez (127.0.0.1) szeretné használni, szerkesztenie kell az [alkalmazás jegyzékfájlját](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#replyurls-attribute). 
-
-    Az IPv6-visszacsatolási cím ( `[::1]` ) jelenleg nem támogatott.
+    Ha a `http` sémát az IP-szövegkonstans visszacsatolási címével szeretné használni `127.0.0.1` , a [replyUrlsWithType](reference-app-manifest.md#replyurlswithtype-attribute) attribútumot jelenleg módosítania kell az [alkalmazás jegyzékfájljában](reference-app-manifest.md).
 
 ## <a name="restrictions-on-wildcards-in-redirect-uris"></a>Helyettesítő karakterek korlátozásai az átirányítási URI-k között
 
@@ -78,9 +77,9 @@ A helyettesítő URI-k jelenleg nem támogatottak a személyes Microsoft-fiókok
 
 A munkahelyi vagy iskolai fiókba bejelentkező alkalmazás-regisztrációhoz helyettesítő URI-azonosítókkal ellátott átirányítási URI-k hozzáadásához a Azure Portal [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) alkalmazás jegyzékfájl-szerkesztőjét kell használnia. Bár lehetséges, hogy egy helyettesítő URI-t a manifest Editor használatával is be kell állítani egy helyettesítő karakterrel *, javasoljuk,* hogy tartsa be az [RFC 6749 3.1.2. szakaszát](https://tools.ietf.org/html/rfc6749#section-3.1.2) , és csak abszolút URI-kat használjon.
 
-Ha a forgatókönyvben a maximálisan megengedettnél több átirányítási URI szükséges, vegye figyelembe a [következő módszert](#use-a-state-parameter) a helyettesítő karakteres átirányítási URI-k hozzáadása helyett.
+Ha a forgatókönyvben a maximálisan megengedettnél több átirányítási URI-t igényel, akkor a helyettesítő karakteres átirányítási URI-k hozzáadása helyett vegye figyelembe a következő [State paramétert](#use-a-state-parameter) .
 
-### <a name="use-a-state-parameter"></a>Állapot paraméterének használata
+#### <a name="use-a-state-parameter"></a>Állapot paraméterének használata
 
 Ha több altartománnyal rendelkezik, és a forgatókönyv megköveteli, hogy a sikeres hitelesítés során a felhasználókat ugyanarra az oldalra irányítsa át, amelyről elindították, az állapot paraméterének használata hasznos lehet.
 

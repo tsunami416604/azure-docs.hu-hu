@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 300c4bcdb948665b2cdf4ce0eb429499208660b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0e8540d9488e9cc3756eb09c69349ac90d20b83
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970752"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043386"
 ---
 # <a name="availability-alerts"></a>Rendelkezésre állási riasztások
 
@@ -28,11 +28,11 @@ Alapértelmezés szerint automatikusan engedélyezve vannak a riasztások, de a 
 
 1. A rendelkezésre állási teszt mentése után a Részletek lapon kattintson a három pontra az imént létrehozott teszt alapján. Kattintson a "riasztás szerkesztése" elemre.
 
-   ![Szerkesztés mentés után](./media/availability-alerts/edit-alert.png)
+   ![A képernyőképen a menüben kiválasztott szerkesztési riasztás látható.](./media/availability-alerts/edit-alert.png)
 
 2. Állítsa be a kívánt súlyossági szintet, a szabály leírását és a legfontosabb – a riasztási szabályhoz használni kívánt értesítési beállításokat tartalmazó műveleti csoportot.
 
-   ![Szerkesztés mentés után](./media/availability-alerts/set-action-group.png)
+   ![Képernyőfelvétel: a szabályok kezelése oldal, ahol szerkesztheti a szabályt.](./media/availability-alerts/set-action-group.png)
 
 > [!NOTE]
 > Az ezzel a tapasztalattal létrehozott rendelkezésre állási riasztások állapota. Ez azt jelenti, hogy ha a riasztási feltételek teljesülnek, egyetlen riasztás jön létre, ha a rendszer nem elérhetőként észleli a helyet. Ha a hely továbbra is a riasztás feltételeinek legközelebb kiértékelése után következik be, akkor ez nem eredményez új riasztást. Így ha a hely egy órán belül leállt, és egy e-mail-riasztást állított be, akkor csak akkor kap e-mailt, ha a hely leállt, és egy további e-mailt, amikor a hely biztonsági mentése történt. Nem kap folyamatos riasztást arra vonatkozóan, hogy a hely még nem volt elérhető.

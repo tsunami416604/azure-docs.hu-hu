@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/14/2020
 ms.author: jeedes
-ms.openlocfilehash: fe591c55065372245d95210ab0282a0070c96434
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2ec4bafac46526c95d48a1a8d9c8faaa7a49df98
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318788"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043443"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Amazon Web Servicestal (AWS)
 
@@ -71,15 +71,15 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 Amazon Web Services (AWS) Azure AD-be való integrálásának konfigurálásához hozzá kell adnia Amazon Web Services (AWS) szolgáltatást a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi fiók, iskolai fiók vagy személyes Microsoft-fiók használatával.
-1. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
-1. A Azure Active Directory áttekintése menüben válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
+1. A Azure Portal keresse meg és válassza a **Azure Active Directory** lehetőséget.
+1. A Azure Active Directory áttekintése menüben válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
 1. Alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **Amazon Web Services (AWS)** kifejezést a keresőmezőbe.
 1. Válassza az **Amazon Web Services (AWS)** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-sso-for-amazon-web-services-aws"></a>Azure AD SSO konfigurálása és tesztelése Amazon Web Serviceshoz (AWS)
 
-Konfigurálja és tesztelje az Azure AD SSO-t Amazon Web Services (AWS) egy **B. Simon**nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között Amazon Web Services (AWS).
+Konfigurálja és tesztelje az Azure AD SSO-t Amazon Web Services (AWS) egy **B. Simon** nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között Amazon Web Services (AWS).
 
 Az Azure AD SSO Amazon Web Services (AWS) használatával történő konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -95,8 +95,8 @@ Az Azure AD SSO Amazon Web Services (AWS) használatával történő konfigurál
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/) **Amazon Web Services (AWS)** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **Amazon Web Services (AWS)** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -119,11 +119,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     | Szerepkör            | User. assignedroles |  `https://aws.amazon.com/SAML/Attributes` |
     | SessionDuration             | "900 másodperc (15 perc) és 43200 másodperc (12 óra) közötti értéket adjon meg" |  `https://aws.amazon.com/SAML/Attributes` |
 
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** (3. lépés) párbeszédpanelen válassza a **tanúsítvány hozzáadása**elemet.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** (3. lépés) párbeszédpanelen válassza a **tanúsítvány hozzáadása** elemet.
 
     ![Új SAML-tanúsítvány létrehozása](common/add-saml-certificate.png)
 
-1. Új SAML-aláíró tanúsítvány létrehozása, majd az **új tanúsítvány**kiválasztása. Adjon meg egy e-mail-címet a tanúsítványok értesítéseihez.
+1. Új SAML-aláíró tanúsítvány létrehozása, majd az **új tanúsítvány** kiválasztása. Adjon meg egy e-mail-címet a tanúsítványok értesítéseihez.
    
     ![Új SAML-tanúsítvány](common/new-saml-certificate.png) 
 
@@ -139,27 +139,27 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
-1. A Azure Active Directory áttekintése menüben válassza a **felhasználók**  >  **minden felhasználó**lehetőséget.
+1. A Azure Portal keresse meg és válassza a **Azure Active Directory** lehetőséget.
+1. A Azure Active Directory áttekintése menüben válassza a **felhasználók**  >  **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát, ha hozzáférést biztosít a Amazon Web Services (AWS) szolgáltatáshoz.
 
-1. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
-1. A Azure Active Directory áttekintése menüben válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
+1. A Azure Portal keresse meg és válassza a **Azure Active Directory** lehetőséget.
+1. A Azure Active Directory áttekintése menüben válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
 1. Az alkalmazás listában válassza a **Amazon Web Services (AWS)** lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -171,15 +171,15 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 1. Egy másik böngészőablakban jelentkezzen be az AWS vállalati webhelyre rendszergazdaként.
 
-2. Válassza az **AWS Kezdőlap**lehetőséget.
+2. Válassza az **AWS Kezdőlap** lehetőséget.
 
     ![Képernyőfelvétel az AWS vállalati webhelyről, az AWS Home ikon kiemelve][11]
 
-3. Válassza **az identitás-és hozzáférés-kezelés**lehetőséget.
+3. Válassza **az identitás-és hozzáférés-kezelés** lehetőséget.
 
     ![Képernyőfelvétel az AWS-szolgáltatások oldalról, a IAM kiemelve][12]
 
-4. Válassza az **identitás-szolgáltatók**  >  **Létrehozás szolgáltató**elemet.
+4. Válassza az **identitás-szolgáltatók**  >  **Létrehozás szolgáltató** elemet.
 
     ![A IAM oldal, a személyazonosság-szolgáltatók és a Kiemelt szolgáltató létrehozása Képernyőkép][13]
 
@@ -187,19 +187,19 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     ![A szolgáltató konfigurálásának képernyőképe][14]
 
-    a. A **szolgáltató típusa**beállításnál válassza az **SAML**lehetőséget.
+    a. A **szolgáltató típusa** beállításnál válassza az **SAML** lehetőséget.
 
-    b. A **szolgáltató neve**mezőbe írja be a szolgáltató nevét (például: *WAAD*).
+    b. A **szolgáltató neve** mezőbe írja be a szolgáltató nevét (például: *WAAD* ).
 
-    c. A letöltött metaadat- **fájl** Azure Portal való feltöltéséhez válassza a **fájl kiválasztása**lehetőséget.
+    c. A letöltött metaadat- **fájl** Azure Portal való feltöltéséhez válassza a **fájl kiválasztása** lehetőséget.
 
-    d. Válassza a **következő lépés**lehetőséget.
+    d. Válassza a **következő lépés** lehetőséget.
 
-6. A **szolgáltatói adatok ellenőrzése** lapon válassza a **Létrehozás**lehetőséget.
+6. A **szolgáltatói adatok ellenőrzése** lapon válassza a **Létrehozás** lehetőséget.
 
     ![Képernyőkép a szolgáltatói információk ellenőrzéséről, a létrehozás kiemelve][15]
 
-7. Válassza a **szerepkörök**  >  **szerepkör létrehozása**lehetőséget.
+7. Válassza a **szerepkörök**  >  **szerepkör létrehozása** lehetőséget.
 
     ![A szerepkörök lap képernyőképe][16]
 
@@ -207,15 +207,15 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     ![A szerepkör létrehozása lap képernyőképe][19]
 
-    a. A **megbízható entitás típusának kiválasztása**területen válassza az **SAML 2,0-összevonás**lehetőséget.
+    a. A **megbízható entitás típusának kiválasztása** területen válassza az **SAML 2,0-összevonás** lehetőséget.
 
-    b. Az **saml 2,0-szolgáltató kiválasztása**területen válassza ki a korábban létrehozott **SAML-szolgáltatót** (például: *WAAD*).
+    b. Az **saml 2,0-szolgáltató kiválasztása** területen válassza ki a korábban létrehozott **SAML-szolgáltatót** (például: *WAAD* ).
 
-    c. Válassza **a programozott és AWS felügyeleti konzol hozzáférésének engedélyezése**lehetőséget.
+    c. Válassza **a programozott és AWS felügyeleti konzol hozzáférésének engedélyezése** lehetőséget.
   
     d. Válassza a **Next: Permissions** (Tovább: Engedélyek) lehetőséget.
 
-9. Az **engedélyezési házirendek csatolása** párbeszédpanelen csatolja a megfelelő szabályzatot a szervezeten belül. Ezután válassza a **Tovább: felülvizsgálat**lehetőséget.  
+9. Az **engedélyezési házirendek csatolása** párbeszédpanelen csatolja a megfelelő szabályzatot a szervezeten belül. Ezután válassza a **Tovább: felülvizsgálat** lehetőséget.  
 
     ![Az engedélyek házirend csatolása párbeszédpanel képernyőképe][33]
 
@@ -223,21 +223,21 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     ![A felülvizsgálati párbeszédpanel képernyőképe][34]
 
-    a. A **szerepkör neve**mezőben adja meg a szerepkör nevét.
+    a. A **szerepkör neve** mezőben adja meg a szerepkör nevét.
 
-    b. A **szerepkör leírása**mezőben adja meg a leírást.
+    b. A **szerepkör leírása** mezőben adja meg a leírást.
 
-    c. Válassza a **szerepkör létrehozása**lehetőséget.
+    c. Válassza a **szerepkör létrehozása** lehetőséget.
 
     d. Szükség szerint hozzon létre annyi szerepkört, és rendelje őket az identitás-szolgáltatóhoz.
 
 11. Az AWS szolgáltatásfiók hitelesítő adataival beolvashatja a szerepköröket az AWS-fiókból az Azure AD-felhasználók üzembe helyezése során. Ehhez nyissa meg az AWS-konzolt kezdőlapját.
 
-12. Válassza a **szolgáltatások**lehetőséget. A **biztonság, identitás & megfelelőség**területen válassza a **iam**lehetőséget.
+12. Válassza a **szolgáltatások** lehetőséget. A **biztonság, identitás & megfelelőség** területen válassza a **iam** lehetőséget.
 
     ![Képernyőfelvétel az AWS-konzol kezdőlapján, a szolgáltatások és a IAM kiemelve](./media/amazon-web-service-tutorial/fetchingrole1.png)
 
-13. A IAM szakaszban válassza a **házirendek**elemet.
+13. A IAM szakaszban válassza a **házirendek** elemet.
 
     ![Az IAM szakasz képernyőképe – Kiemelt szabályzatok](./media/amazon-web-service-tutorial/fetchingrole2.png)
 
@@ -249,7 +249,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     ![Képernyőkép a szabályzat létrehozása lapról a JSON kijelölve](./media/amazon-web-service-tutorial/policy1.png)
 
-    a. A **házirend létrehozása**lapon válassza a **JSON** fület.
+    a. A **házirend létrehozása** lapon válassza a **JSON** fület.
 
     b. A házirend dokumentumban adja hozzá a következő JSON-t:
 
@@ -276,19 +276,19 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     ![A házirend létrehozása lap képernyőképe, a név és leírás mezők kiemelve](./media/amazon-web-service-tutorial/policy2.png)
 
-    a. A **név**mezőbe írja be a következőt: **AzureAD_SSOUserRole_Policy**.
+    a. A **név** mezőbe írja be a következőt: **AzureAD_SSOUserRole_Policy** .
 
-    b. A **Leírás**mezőbe írja be a szabályzatot, **amely lehetővé teszi, hogy az AWS-fiókokból beolvassa a szerepköröket**.
+    b. A **Leírás** mezőbe írja be a szabályzatot, **amely lehetővé teszi, hogy az AWS-fiókokból beolvassa a szerepköröket** .
 
     c. Válassza a **Create policy** (Szabályzat létrehozása) lehetőséget.
 
 17. Hozzon létre egy új felhasználói fiókot az AWS IAM szolgáltatásban.
 
-    a. Az AWS IAM-konzolon válassza a **felhasználók**lehetőséget.
+    a. Az AWS IAM-konzolon válassza a **felhasználók** lehetőséget.
 
     ![Képernyőfelvétel az AWS IAM-konzolról, Kiemelt felhasználók](./media/amazon-web-service-tutorial/policy3.png)
 
-    b. Új felhasználó létrehozásához válassza a **felhasználó hozzáadása**elemet.
+    b. Új felhasználó létrehozásához válassza a **felhasználó hozzáadása** elemet.
 
     ![A felhasználó hozzáadása gomb képernyőképe](./media/amazon-web-service-tutorial/policy4.png)
 
@@ -296,21 +296,21 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     ![A felhasználó hozzáadása lap képernyőképe, a Felhasználónév és a hozzáférés típusa kiemelve](./media/amazon-web-service-tutorial/adduser1.png)
 
-    * Adja meg a felhasználónevet **AzureADRoleManager**.
+    * Adja meg a felhasználónevet **AzureADRoleManager** .
 
-    * A hozzáférési típushoz válassza a **programozott hozzáférés**lehetőséget. Így a felhasználó meghívhatja az API-kat, és beolvashatja a szerepköröket az AWS-fiókból.
+    * A hozzáférési típushoz válassza a **programozott hozzáférés** lehetőséget. Így a felhasználó meghívhatja az API-kat, és beolvashatja a szerepköröket az AWS-fiókból.
 
-    * Válassza a **következő engedélyek**lehetőséget.
+    * Válassza a **következő engedélyek** lehetőséget.
 
 18. Hozzon létre egy új szabályzatot ehhez a felhasználóhoz.
 
     ![Képernyőfelvétel: a felhasználó hozzáadása lap, amelyen létrehozhat egy szabályzatot a felhasználó számára.](./media/amazon-web-service-tutorial/adduser2.png)
 
-    a. Válassza a **meglévő házirendek csatolása közvetlenül**lehetőséget.
+    a. Válassza a **meglévő házirendek csatolása közvetlenül** lehetőséget.
 
-    b. Keresse meg az újonnan létrehozott szabályzatot a szűrő szakaszban **AzureAD_SSOUserRole_Policy**.
+    b. Keresse meg az újonnan létrehozott szabályzatot a szűrő szakaszban **AzureAD_SSOUserRole_Policy** .
 
-    c. Válassza ki a szabályzatot, majd kattintson a **Tovább gombra: Áttekintés**.
+    c. Válassza ki a szabályzatot, majd kattintson a **Tovább gombra: Áttekintés** .
 
 19. Tekintse át a szabályzatot a csatlakoztatott felhasználó számára.
 
@@ -318,13 +318,13 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     a. Tekintse át a felhasználóhoz rendelt felhasználónevet, hozzáférési típust és házirendet.
 
-    b. Válassza a **felhasználó létrehozása**lehetőséget.
+    b. Válassza a **felhasználó létrehozása** lehetőséget.
 
 20. Töltse le a felhasználó felhasználói hitelesítő adatait.
 
     ![A felhasználói hitelesítő adatok beolvasásához a felhasználó hozzáadása lap Letöltés c s v gombját jeleníti meg.](./media/amazon-web-service-tutorial/adduser4.png)
 
-    a. Másolja a felhasználói **hozzáférési kulcs azonosítóját** és a **titkos elérési kulcsot**.
+    a. Másolja a felhasználói **hozzáférési kulcs azonosítóját** és a **titkos elérési kulcsot** .
 
     b. Adja meg ezeket a hitelesítő adatokat az Azure AD-felhasználó kiépítési szakaszában a szerepkörök az AWS-konzolról való beolvasásához.
 
@@ -332,7 +332,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 ### <a name="how-to-configure-role-provisioning-in-amazon-web-services-aws"></a>A szerepkör-kiépítés konfigurálása Amazon Web Servicesban (AWS)
 
-1. Az Azure AD felügyeleti portálon, az AWS alkalmazásban lépjen a **kiépítés**elemre.
+1. Az Azure AD felügyeleti portálon, az AWS alkalmazásban lépjen a **kiépítés** elemre.
 
     ![Képernyőfelvétel az AWS-alkalmazásról a kiépítés kiemelésével](./media/amazon-web-service-tutorial/provisioning.png)
 
@@ -344,11 +344,11 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     b. Adja meg az AWS felhasználói titkot a **titkos jogkivonat** mezőben.
 
-    c. Válassza a **kapcsolatok tesztelése**lehetőséget.
+    c. Válassza a **kapcsolatok tesztelése** lehetőséget.
 
-    d. Mentse a beállítást a **Mentés**lehetőség kiválasztásával.
+    d. Mentse a beállítást a **Mentés** lehetőség kiválasztásával.
 
-3. A **Beállítások** szakaszban a **kiépítési állapotnál**válassza **a**be lehetőséget. Kattintson a **Mentés** gombra.
+3. A **Beállítások** szakaszban a **kiépítési állapotnál** válassza **a** be lehetőséget. Kattintson a **Mentés** gombra.
 
     ![Képernyőkép a Settings (beállítások) szakaszról a Kiemelt](./media/amazon-web-service-tutorial/provisioning2.png)
 
@@ -356,7 +356,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 > A kiépítési szolgáltatás csak az AWS-ből az Azure AD-be importálja a szerepköröket. A szolgáltatás nem nyújt felhasználókat és csoportokat az Azure AD-ből AWS-re.
 
 > [!NOTE]
-> A kiépítési hitelesítő adatok mentése után meg kell várnia, hogy a kezdeti szinkronizálási ciklus fusson. A szinkronizálás általában körülbelül 40 percet vesz igénybe. Az állapotot a **kiépítési** lap alján, az **aktuális állapot**alatt tekintheti meg.
+> A kiépítési hitelesítő adatok mentése után meg kell várnia, hogy a kezdeti szinkronizálási ciklus fusson. A szinkronizálás általában körülbelül 40 percet vesz igénybe. Az állapotot a **kiépítési** lap alján, az **aktuális állapot** alatt tekintheti meg.
 
 ### <a name="create-amazon-web-services-aws-test-user"></a>Amazon Web Services (AWS) tesztelési felhasználó létrehozása
 
@@ -381,8 +381,9 @@ Ha a hozzáférési panelen a Amazon Web Services (AWS) csempére kattint, autom
 * A szerepköröknek a következő követelményeknek kell megfelelniük, hogy az AWS-ből az Azure AD-be való importálásra jogosult legyen:
 
   * A szerepköröknek pontosan egy SAML-szolgáltatót kell meghatároznia az AWS-ben
+  * A szerepkörhöz tartozó ARN (Amazon-erőforrás neve) és a társított SAML-szolgáltatóhoz tartozó ARN együttes hossza nem haladja meg a 119 karaktert
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
 

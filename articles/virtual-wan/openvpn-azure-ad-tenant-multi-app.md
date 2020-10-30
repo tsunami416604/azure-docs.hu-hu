@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: 57fd36366eef284e2975633fbb34549f4316cde6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fcc79991918aecfc26933f2ef5b6e80ea7fa88c
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90988267"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043438"
 ---
 # <a name="create-an-azure-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory (AD) bérlő létrehozása a P2S OpenVPN protokoll kapcsolataihoz
 
@@ -53,13 +53,13 @@ A pont–hely konfiguráció határozza meg a távoli ügyfelek csatlakoztatás�
 
 2. Válassza ki azt a hubot, amelyhez hozzá szeretné rendelni a VPN-kiszolgáló konfigurációját, majd kattintson a három pontra (...).
 
-    ![új hely](media/openvpn-azure-ad-tenant-multi-app/p2s4.jpg)
+    ![A képernyőképen a menüben kiválasztott virtuális központ szerkesztése látható.](media/openvpn-azure-ad-tenant-multi-app/p2s4.jpg)
 
-3. Kattintson a **virtuális központ szerkesztése**elemre.
+3. Kattintson a **virtuális központ szerkesztése** elemre.
 
 4. Jelölje be a **pont – hely átjáró belefoglalása** jelölőnégyzetet, és válassza ki a kívánt **átjáró-méretezési egységet** .
 
-    ![új hely](media/openvpn-azure-ad-tenant-multi-app/p2s2.jpg)
+    ![Képernyőfelvétel: a virtuális központ szerkesztése párbeszédpanel, amelyen kiválaszthatja az átjáró méretezési egységét.](media/openvpn-azure-ad-tenant-multi-app/p2s2.jpg)
 
 5. Adja meg azt a **címkészletet** , amelyből a VPN-ügyfelek IP-címeket rendelnek.
 
@@ -71,9 +71,9 @@ A pont–hely konfiguráció határozza meg a távoli ügyfelek csatlakoztatás�
 
 A VPN-profillal konfigurálhatja az ügyfeleket.
 
-1. A virtuális WAN lapján kattintson a **felhasználói VPN-konfigurációk**elemre.
+1. A virtuális WAN lapján kattintson a **felhasználói VPN-konfigurációk** elemre.
 
-2. A lap tetején kattintson a **felhasználói VPN-konfiguráció letöltése**elemre.
+2. A lap tetején kattintson a **felhasználói VPN-konfiguráció letöltése** elemre.
 
 3. Miután befejeződött a fájl létrehozása, a hivatkozásra kattintva letöltheti.
 
@@ -99,53 +99,53 @@ Ezzel a [hivatkozással](https://go.microsoft.com/fwlink/?linkid=2117554) tölth
 
 #### <a name="to-import-a-client-profile"></a><a name="import"></a>Ügyféloldali profil importálása
 
-1. A lapon válassza az **Importálás**lehetőséget.
+1. A lapon válassza az **Importálás** lehetőséget.
 
-    ![importálása](./media/openvpn-azure-ad-tenant-multi-app/import/import1.jpg)
+    ![A képernyőképen a plusz menüből kiválasztott importálás látható.](./media/openvpn-azure-ad-tenant-multi-app/import/import1.jpg)
 
-2. Keresse meg a profil XML-fájlját, és jelölje ki. A fájl kijelölése után válassza a **Megnyitás**lehetőséget.
+2. Keresse meg a profil XML-fájlját, és jelölje ki. A fájl kijelölése után válassza a **Megnyitás** lehetőséget.
 
-    ![importálása](./media/openvpn-azure-ad-tenant-multi-app/import/import2.jpg)
+    ![Képernyőfelvétel: megnyílik egy megnyitott párbeszédpanel, ahol kiválaszthat egy fájlt.](./media/openvpn-azure-ad-tenant-multi-app/import/import2.jpg)
 
-3. Adja meg a profil nevét, majd válassza a **Mentés**lehetőséget.
+3. Adja meg a profil nevét, majd válassza a **Mentés** lehetőséget.
 
-    ![importálása](./media/openvpn-azure-ad-tenant-multi-app/import/import3.jpg)
+    ![Képernyőfelvétel: a hozzáadott kapcsolatok neve és a Mentés gomb kiválasztva.](./media/openvpn-azure-ad-tenant-multi-app/import/import3.jpg)
 
 4. Válassza a **Csatlakozás** lehetőséget a VPN-hez való csatlakozáshoz.
 
-    ![importálása](./media/openvpn-azure-ad-tenant-multi-app/import/import4.jpg)
+    ![A képernyőképen az imént létrehozott kapcsolathoz tartozó csatlakoztatás gomb látható.](./media/openvpn-azure-ad-tenant-multi-app/import/import4.jpg)
 
-5. A csatlakozás után az ikon zöldre vált, és a rendszer a **csatlakozást**.
+5. A csatlakozás után az ikon zöldre vált, és a rendszer a **csatlakozást** .
 
-    ![importálása](./media/openvpn-azure-ad-tenant-multi-app/import/import5.jpg)
+    ![A képernyőfelvételen a kapcsolat bontása lehetőséggel összekapcsolt állapotban látható.](./media/openvpn-azure-ad-tenant-multi-app/import/import5.jpg)
 
 #### <a name="to-delete-a-client-profile"></a><a name="delete"></a>Ügyféloldali profil törlése
 
-1. Válassza a törölni kívánt ügyféloldali profil melletti három pontot (...). Ezután válassza az **Eltávolítás**lehetőséget.
+1. Válassza a törölni kívánt ügyféloldali profil melletti három pontot (...). Ezután válassza az **Eltávolítás** lehetőséget.
 
-    ![delete](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
+    ![A képernyőképen látható a kijelölés eltávolítása a menüből.](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
 
 2. Válassza az **Eltávolítás** elemet a törléshez.
 
-    ![delete](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
+    ![A képernyőképen egy megerősítő párbeszédpanel jelenik meg, amelyen törölhető vagy megszakítható a lehetőség.](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
 
 #### <a name="to-diagnose-connection-issues"></a><a name="diagnose"></a>A kapcsolódási problémák diagnosztizálása
 
-1. A kapcsolódási problémák diagnosztizálásához használhatja a **Diagnosztizálás** eszközt. Válassza ki a használni kívánt VPN-kapcsolat melletti három pontot (...) a menü megjelenítéséhez. Ezután válassza a **Diagnosztizálás**lehetőséget.
+1. A kapcsolódási problémák diagnosztizálásához használhatja a **Diagnosztizálás** eszközt. Válassza ki a használni kívánt VPN-kapcsolat melletti három pontot (...) a menü megjelenítéséhez. Ezután válassza a **Diagnosztizálás** lehetőséget.
 
-    ![diagnosztizálása](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose1.jpg)
+    ![A képernyőképen a menüből kiválasztott diagnosztika látható.](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose1.jpg)
 
-2. A **kapcsolatok tulajdonságai** lapon válassza a **diagnosztika futtatása**lehetőséget.
+2. A **kapcsolatok tulajdonságai** lapon válassza a **diagnosztika futtatása** lehetőséget.
 
-    ![diagnosztizálása](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose2.jpg)
+    ![A következő képernyőfelvételen látható a kapcsolatok futtatásának diagnosztizálása gomb.](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose2.jpg)
 
 3. Jelentkezzen be a hitelesítő adataival.
 
-    ![diagnosztizálása](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose3.jpg)
+    ![Képernyőfelvétel: a művelet bejelentkezési párbeszédpanelje.](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose3.jpg)
 
 4. A diagnosztika eredményeinek megtekintése.
 
-    ![diagnosztizálása](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose4.jpg)
+    ![Képernyőkép: a diagnosztika eredményeit jeleníti meg.](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose4.jpg)
 
 ## <a name="10-view-your-virtual-wan"></a><a name="viewwan"></a>10. a virtuális WAN megtekintése
 
@@ -155,7 +155,7 @@ Ezzel a [hivatkozással](https://go.microsoft.com/fwlink/?linkid=2117554) tölth
 
 3. Az elosztók és kapcsolatok szakaszában láthatja az elosztók állapotát, helyét, régióját, VPN-kapcsolati állapotát, valamint a bájtban kifejezett be- és kimenő forgalmát.
 
-## <a name="clean-up-resources"></a><a name="cleanup"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a><a name="cleanup"></a>Az erőforrások felszabadítása
 
 Ha már nincs szükség ezekre az erőforrásokra, a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal törölheti az erőforráscsoportot és az összes benne található erőforrást. A „myResourceGroup” helyére írja be az erőforráscsoport nevét, és futtassa a következő PowerShell-parancsot:
 

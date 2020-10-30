@@ -11,12 +11,12 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfc5126c0cce89502b0f1d8b17c06519f338fe52
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1709bd42fb77bd4f18b8a5e9d1af6e07be67b6c4
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370848"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043080"
 ---
 # <a name="what-is-azure-active-directory"></a>Mi az az Azure Active Directory?
 
@@ -93,7 +93,7 @@ Az Azure AD és a hozzá tartozó dokumentáció jobb megismerése érdekében j
 |Fiókadminisztrátor|Ez a klasszikus előfizetés-rendszergazdai szerepkör fogalmilag egy előfizetés számlázási tulajdonosa. Ez a szerepkör hozzáfér a [Azure Fiókközponthoz](https://account.azure.com/Subscriptions) , és lehetővé teszi a fiókban lévő összes előfizetés kezelését. További információ: [klasszikus előfizetés-rendszergazdai szerepkörök, Azure-szerepkörök és Azure ad-rendszergazdai szerepkörök](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
 |Szolgáltatás-rendszergazda|Ez a klasszikus előfizetés-rendszergazdai szerepkör lehetővé teszi az összes Azure-erőforrás kezelését, beleértve a hozzáférést is. Ez a szerepkör egyenértékű hozzáféréssel rendelkezik egy olyan felhasználóhoz, aki az előfizetés hatókörében tulajdonosi szerepkört rendelt hozzá. További információ: [klasszikus előfizetés-rendszergazdai szerepkörök, Azure-szerepkörök és Azure ad-rendszergazdai szerepkörök](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
 |Tulajdonos|Ez a szerepkör segít az összes Azure-erőforrás kezelésében, beleértve a hozzáférést is. Ez a szerepkör az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) nevű újabb engedélyezési rendszerre épül, amely részletes hozzáférés-kezelést biztosít az Azure-erőforrásokhoz. További információ: [klasszikus előfizetés-rendszergazdai szerepkörök, Azure-szerepkörök és Azure ad-rendszergazdai szerepkörök](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
-|Globális Azure AD-rendszergazda|Ez a rendszergazdai szerepkör automatikusan hozzá lett rendelve az Azure AD-bérlőhöz. A globális rendszergazdák az Azure AD összes felügyeleti funkcióját és az Azure AD-be összevonása szolgáltatásokat (például Exchange Online, SharePoint Online és Skype vállalati online) is elvégezhetik. Több globális rendszergazda is lehet, de csak a globális rendszergazdák rendelhetnek rendszergazdai szerepköröket (beleértve más globális rendszergazdák hozzárendelését is) a felhasználók számára. Vegye figyelembe, hogy ez a rendszergazdai szerepkör a Azure Portal globális rendszergazdája, de a Microsoft Graph API **-ban** és az Azure ad PowerShellben is ismert. a különböző rendszergazdai szerepkörökkel kapcsolatos további információkért tekintse meg a [rendszergazdai szerepkör engedélyeit a Azure Active Directoryban](../roles/permissions-reference.md).|
+|Globális Azure AD-rendszergazda|Ez a rendszergazdai szerepkör automatikusan hozzá lett rendelve az Azure AD-bérlőhöz. A globális rendszergazdák az Azure AD összes felügyeleti funkcióját és az Azure AD-be összevonása szolgáltatásokat (például Exchange Online, SharePoint Online és Skype vállalati online) is elvégezhetik. Több globális rendszergazda is lehet, de csak a globális rendszergazdák rendelhetnek rendszergazdai szerepköröket (beleértve más globális rendszergazdák hozzárendelését is) a felhasználók számára. Vegye figyelembe, hogy ez a rendszergazdai szerepkör a Azure Portal globális rendszergazdája, a Microsoft Graph API-ban és az Azure AD PowerShell-ben pedig a **vállalati rendszergazda** néven is ismert. A különböző rendszergazdai szerepkörökkel kapcsolatos további információkért lásd: [rendszergazdai szerepkör engedélyei Azure Active Directory](../roles/permissions-reference.md).|
 |Azure-előfizetés| Az Azure Cloud Services fizetésére használatos. Több előfizetéssel is rendelkezhet, és ezek egy hitelkártyához vannak társítva.|
 |Azure-bérlő| Az Azure AD dedikált és megbízható példánya, amely akkor jön létre automatikusan, amikor a szervezet regisztrál egy Microsoft Cloud Service-előfizetésre, például Microsoft Azure, Microsoft Intune vagy Microsoft 365. Az Azure-bérlő egyetlen szervezetet jelöl.|
 |Egybérlős alkalmazás| A dedikált környezetben más szolgáltatásokhoz hozzáférő Azure-bérlők egyetlen bérlőnek tekintendők.|

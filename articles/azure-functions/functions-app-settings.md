@@ -3,12 +3,12 @@ title: Azure Functions – alkalmazásbeállítási referencia
 description: A Azure Functions Alkalmazásbeállítások vagy környezeti változók dokumentációja.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: d22ab643fb4ed7eae477c8f77d9621266d9146be
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 3d3def7057eeb022b3e207cbecf06ee3074a91af
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165766"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043237"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions – alkalmazásbeállítási referencia
 
@@ -131,7 +131,7 @@ Megadja a kulcstárolóhoz használandó tárházat vagy szolgáltatót. Jelenle
 
 |Kulcs|Mintaérték|
 |---|------------|
-|AzureWebJobsSecretStorageType|Files|
+|AzureWebJobsSecretStorageType|Fájlok|
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
@@ -227,6 +227,14 @@ Csak a prémium csomagok fogyasztása &. A Storage-fiókhoz tartozó, a Function
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol = https; AccountName = [név]; AccountKey = [kulcs]|
 
+## <a name="website_contentovervnet"></a>WEBHELY \_ CONTENTOVERVNET
+
+Csak a prémium csomagokhoz. Az érték `1` lehetővé teszi a Function alkalmazás méretezését, ha a Storage-fiókja egy virtuális hálózatra van korlátozva. Ezt a beállítást akkor érdemes engedélyezni, ha a Storage-fiókot egy virtuális hálózatra korlátozza. További információ: [a Storage-fiók korlátozása egy virtuális hálózatra](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network-preview). 
+
+|Kulcs|Mintaérték|
+|---|------------|
+|WEBSITE_CONTENTOVERVNET|1|
+
 ## <a name="website_contentshare"></a>WEBHELY \_ CONTENTSHARE
 
 Csak a prémium csomagok fogyasztása &. A függvény alkalmazás kódjának és konfigurációjának elérési útja. WEBSITE_CONTENTAZUREFILECONNECTIONSTRING használatával használható. Az alapértelmezett érték egy egyedi karakterlánc, amely a Function alkalmazás nevével kezdődik. Lásd: [Function-alkalmazás létrehozása](functions-infrastructure-as-code.md#create-a-function-app).
@@ -276,7 +284,7 @@ Lehetővé teszi a Function alkalmazás időzónájának beállítását.
 
 [!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Ismerje meg, hogyan frissítheti az alkalmazás beállításait](functions-how-to-use-azure-function-app-settings.md#settings)
 

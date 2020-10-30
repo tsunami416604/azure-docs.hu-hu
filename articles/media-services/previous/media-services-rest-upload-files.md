@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: bc0369e99552859393da206e791477040681ccc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49863bec4cbd367b6b309ef5a79e7287cb53ee5b
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91281065"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042971"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Fájlok feltöltése Media Services-fiókba a REST használatával
 
@@ -72,7 +72,7 @@ Az oktatóanyaghoz tartozó Poster beállításának lépéseit lásd: [Poster k
 
     Az első öt változó értékének beolvasásához tekintse meg [a Azure Media Services API Azure ad-hitelesítéssel való elérését](media-services-use-aad-auth-to-access-ams-api.md)ismertető témakört. 
 
-    ![Fájl feltöltése](./media/media-services-rest-upload-files/postman-import-env.png)
+    ![Képernyőkép, amely a jobb felső sarokban kiválasztott "fogaskerék" ikont és a "felügyeleti környezetek" lapról kiválasztott első öt változót jeleníti meg.](./media/media-services-rest-upload-files/postman-import-env.png)
 2. A **MediaFileName** környezeti változó értékének megadása.
 
     Adja meg a feltölteni kívánt média fájlnevét. Ebben a példában a BigBuckBunny.mp4 fogja feltölteni. 
@@ -90,17 +90,17 @@ Az oktatóanyaghoz tartozó Poster beállításának lépéseit lásd: [Poster k
         ]
     }
     ```
-4. A **Poster** ablak bal oldalán kattintson az **1 gombra. HRE-hitelesítési jogkivonat**beszerzése  ->  **Azure ad-jogkivonat beszerzése az egyszerű szolgáltatásnév számára**.
+4. A **Poster** ablak bal oldalán kattintson az **1 gombra. HRE-hitelesítési jogkivonat** beszerzése  ->  **Azure ad-jogkivonat beszerzése az egyszerű szolgáltatásnév számára** .
 
     Az URL-cím része a **AzureADSTSEndpoint** környezeti változóval van kitöltve (az oktatóanyag korábbi részében a gyűjteményt támogató környezeti változók értékeit adja meg).
 
-    ![Fájl feltöltése](./media/media-services-rest-upload-files/postment-get-token.png)
+    ![Képernyőkép, amely az "1" kifejezést mutatja. Egy D hitelesítési jogkivonat beszerzése – Azure-beli D-token beszerzése a (z) "Poster" ablakból kiválasztva, a "Küldés" gomb kiválasztásával.](./media/media-services-rest-upload-files/postment-get-token.png)
 
 5. Kattintson a **Küldés** gombra.
 
     Láthatja a "access_token" kifejezést tartalmazó választ. A "teszt" szkript ezt az értéket veszi át, és beállítja a **AccessToken** környezeti változót (a fent leírtak szerint). Ha megvizsgálja a környezeti változókat, láthatja, hogy ez a változó már tartalmazza a művelet többi részében használt hozzáférési jogkivonat (tulajdonosi jogkivonat) értékét. 
 
-    Ha a jogkivonat lejár, ugorjon az "Azure AD-jogkivonat beszerzése az egyszerű szolgáltatásnév számára" lépésre. 
+    Ha a jogkivonat lejár, ugorjon az "Azure AD-jogkivonat beszerzése az egyszerű szolgáltatásnév számára" lépésre. 
 
 ## <a name="create-an-access-policy-with-write-permission"></a>Hozzáférési szabályzat létrehozása írási engedéllyel
 
@@ -113,10 +113,10 @@ A fájlok blob Storage-ba való feltöltése előtt állítsa be a hozzáférés
 
 ### <a name="create-an-access-policy"></a>Hozzáférési szabályzat létrehozása
 
-1. Válassza **AccessPolicy**  ->  **a AccessPolicy létrehozás AccessPolicy lehetőséget a feltöltéshez**.
+1. Válassza **AccessPolicy**  ->  **a AccessPolicy létrehozás AccessPolicy lehetőséget a feltöltéshez** .
 2. Kattintson a **Küldés** gombra.
 
-    ![Fájl feltöltése](./media/media-services-rest-upload-files/postman-access-policy.png)
+    ![Képernyőkép, amely a bal oldali menüben a "AccessPolicy-Create AccessPolicy for upload" (feltöltés) elemet jeleníti meg, és a "Küldés" gomb van kiválasztva.](./media/media-services-rest-upload-files/postman-access-policy.png)
 
     A "teszt" szkript lekéri a AccessPolicy azonosítóját, és beállítja a megfelelő környezeti változót.
 
@@ -126,7 +126,7 @@ A fájlok blob Storage-ba való feltöltése előtt állítsa be a hozzáférés
 
 Az [eszköz](/rest/api/media/operations/asset) a Media Servicesban található objektumok különböző típusaihoz vagy csoportjaihoz tartozó tároló, beleértve a videó, a hang, a képek, a miniatűr gyűjtemények, a szöveges számok és a kódolt feliratok fájljait. A REST APIban az adategység létrehozásához POST-kérést kell küldenie Media Services és az objektumra vonatkozó összes tulajdonságot a kérelem törzsében kell elhelyezni.
 
-Az adategységek létrehozásakor felvehető tulajdonságok egyike a **Beállítások**. A következő titkosítási beállítások egyikét megadhatja: **none** (alapértelmezett, nem használt titkosítás), **StorageEncrypted** (az ügyféloldali tárolási titkosítással előre titkosított tartalomhoz), a **CommonEncryptionProtected**vagy a **EnvelopeEncryptionProtected**. Ha titkosított eszközzel rendelkezik, konfigurálnia kell egy kézbesítési házirendet. További információ: az [eszközök kézbesítési házirendjeinek konfigurálása](media-services-rest-configure-asset-delivery-policy.md).
+Az adategységek létrehozásakor felvehető tulajdonságok egyike a **Beállítások** . A következő titkosítási beállítások egyikét megadhatja: **none** (alapértelmezett, nem használt titkosítás), **StorageEncrypted** (az ügyféloldali tárolási titkosítással előre titkosított tartalomhoz), a **CommonEncryptionProtected** vagy a **EnvelopeEncryptionProtected** . Ha titkosított eszközzel rendelkezik, konfigurálnia kell egy kézbesítési házirendet. További információ: az [eszközök kézbesítési házirendjeinek konfigurálása](media-services-rest-configure-asset-delivery-policy.md).
 
 Ha az eszköz titkosítva van, létre kell hoznia egy **ContentKey** , és csatolnia kell az eszközhöz a következő cikkben leírtak szerint: [ContentKey létrehozása](media-services-rest-create-contentkey.md). Miután feltöltötte a fájlokat az objektumba, frissítenie kell a **AssetFile** entitás titkosítási tulajdonságait az **eszköz** titkosítása során kapott értékekkel. Ezt az **egyesítési** HTTP-kérelem használatával teheti meg. 
 
@@ -134,10 +134,10 @@ Ebben a példában egy titkosítatlan eszközt hozunk létre.
 
 ### <a name="create-an-asset"></a>Adategység létrehozása
 
-1. Válassza az **eszközök**eszköz  ->  **létrehozása**lehetőséget.
+1. Válassza az **eszközök** eszköz  ->  **létrehozása** lehetőséget.
 2. Kattintson a **Küldés** gombra.
 
-    ![Fájl feltöltése](./media/media-services-rest-upload-files/postman-create-asset.png)
+    ![Képernyőfelvétel: a "gyűjtemények" menüből kiválasztott "eszközök – létrehozási egység", valamint a "Küldés" gomb kiválasztásának megjelenítése.](./media/media-services-rest-upload-files/postman-create-asset.png)
 
     A "teszt" szkript lekéri az eszköz azonosítóját, és beállítja a megfelelő környezeti változót.
 
@@ -165,18 +165,18 @@ Vegye figyelembe a következőket:
 
 ### <a name="create-a-sas-locator"></a>SAS-lokátor létrehozása
 
-1. Válassza a **lokátor**  ->  **sas-lokátor létrehozása**lehetőséget.
+1. Válassza a **lokátor**  ->  **sas-lokátor létrehozása** lehetőséget.
 2. Kattintson a **Küldés** gombra.
 
     A "teszt" szkript létrehozza a "feltöltési URL-címet" a megadott médiafájl neve és az SAS-lokátor adatai alapján, és beállítja a megfelelő környezeti változót.
 
-    ![Fájl feltöltése](./media/media-services-rest-upload-files/postman-create-sas-locator.png)
+    ![Képernyőkép: a "gyűjtemények" menüből kiválasztott "lokátor – s" lokátor létrehozása ", és a" Küldés "gomb van kiválasztva.](./media/media-services-rest-upload-files/postman-create-sas-locator.png)
 
 ## <a name="upload-a-file-to-blob-storage-using-the-upload-url"></a>Fájl feltöltése a blob Storage-ba a feltöltési URL-cím használatával
 
 ### <a name="overview"></a>Áttekintés
 
-Most, hogy már rendelkezik a feltöltési URL-címmel, írnia kell egy kódot az Azure Blob API-k használatával közvetlenül a fájlnak a SAS-tárolóba való feltöltéséhez. További információkért tekintse át a következő cikkeket:
+Most, hogy már rendelkezik a feltöltési URL-címmel, írnia kell egy kódot az Azure Blob API-k használatával közvetlenül a fájlnak a SAS-tárolóba való feltöltéséhez. További információkat az következő cikkekben talál:
 
 - [Az Azure Storage REST API használata](../../storage/common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [BLOB elhelyezése](/rest/api/storageservices/put-blob)
@@ -191,19 +191,19 @@ A feltöltési kérelem nem része a **AzureMedia** gyűjteménynek.
 Új kérelem létrehozása és beállítása:
 1. Nyomja meg **+** az gombot egy új kérelem lap létrehozásához.
 2. Az URL-címben válassza a **put** művelet és a **{{UploadURL}}** beillesztése lehetőséget.
-2. Hagyja változatlanul az **Engedélyezés** lapot (ne állítsa a **tulajdonosi jogkivonatra**).
-3. A **fejlécek** lapon adja meg a következőt: **kulcs**: "x-MS-blob-type" és **Value**: "BlockBlob".
-2. A **törzs** lapon kattintson a **bináris**elemre.
+2. Hagyja változatlanul az **Engedélyezés** lapot (ne állítsa a **tulajdonosi jogkivonatra** ).
+3. A **fejlécek** lapon adja meg a következőt: **kulcs** : "x-MS-blob-type" és **Value** : "BlockBlob".
+2. A **törzs** lapon kattintson a **bináris** elemre.
 4. Válassza ki a **MediaFileName** környezeti változóban megadott nevű fájlt.
 5. Kattintson a **Küldés** gombra.
 
-    ![Fájl feltöltése](./media/media-services-rest-upload-files/postman-upload-file.png)
+    ![Képernyőkép, amely megjeleníti a "(UploadU R L)" lapot.](./media/media-services-rest-upload-files/postman-upload-file.png)
 
 ##  <a name="create-a-metadata-in-the-asset"></a>Metaadatok létrehozása az eszközben
 
 A fájl feltöltése után létre kell hoznia egy metaadatokat az adategységben az eszközhöz társított blob Storage-ba feltöltött médiafájlhoz.
 
-1. Válassza ki a **AssetFiles**  ->  **CreateFileInfos**.
+1. Válassza ki a **AssetFiles**  ->  **CreateFileInfos** .
 2. Kattintson a **Küldés** gombra.
 
     ![Fájl feltöltése](./media/media-services-rest-upload-files/postman-create-file-info.png)

@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: 99ea17dad4f99cdab3fb44b8031e60e6cf69879c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6617c778c0b79a55058eafb40fd9b49b627819ea
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543151"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043260"
 ---
 # <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID Broker (előzetes verzió)
 
@@ -83,7 +83,7 @@ Ha új szerepkört ad hozzá a `idbrokernode` következő attribútumokkal a sab
         {
             "autoscale": null,
             "name": "idbrokernode",
-            "targetInstanceCount": 1,
+            "targetInstanceCount": 2,
             "hardwareProfile": {
                 "vmSize": "Standard_A2_V2"
             },
@@ -100,6 +100,9 @@ Ha új szerepkört ad hozzá a `idbrokernode` következő attribútumokkal a sab
 .
 .
 ```
+
+Az ARM-sablonok teljes mintájának megtekintéséhez tekintse meg az [itt](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template)közzétett sablont.
+
 
 ## <a name="tool-integration"></a>Eszköz-integráció
 
@@ -132,6 +135,8 @@ Az OAuth-jogkivonat beszerzése után a HTTP-kérelem engedélyezési fejlécéb
 ```bash
 curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://<clustername>-int.azurehdinsight.net/livy/batches" -H "X-Requested-By:<username@domain.com>"
 ``` 
+
+A Beeline és a Livy használata esetén az [itt](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/HIB/HIBSamples) megadott példákkal is követheti az ügyfelet a OAuth használatára és a fürthöz való kapcsolódásra.
 
 ## <a name="next-steps"></a>Következő lépések
 

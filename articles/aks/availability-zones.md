@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: 7d91491a2f521d974f15878791739a70a31c1bbe
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2f7132ffa1fa55d1dfd8043677bf9695a589b7af
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745803"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043026"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Rendelkezésre állási zónákat használó Azure Kubernetes-szolgáltatásbeli (ak-) fürt létrehozása
 
@@ -52,7 +52,7 @@ A következő korlátozások érvényesek az AK-fürtök rendelkezésre állási
 
 Az Azure Managed Disks-t használó kötetek jelenleg nem redundáns erőforrások. A kötetek nem csatlakoztathatók több zónához, és ugyanabban a zónában kell lenniük, mint a cél pod-t üzemeltető adott csomópont.
 
-Ha állapot-nyilvántartó számítási feladatokat kell futtatnia, használja a csomópont-készletet a pod specs-ban, hogy csoportosítsa a pod-ütemezést a lemezekkel megegyező zónában. Azt is megteheti, hogy olyan hálózati tárterületet használ, mint például a Azure Files, amelyek a zónák közötti ütemezés szerint csatolhatók a hüvelyekhez.
+A Kubernetes a 1,12-es verzió óta ismeri az Azure rendelkezésre állási zónáit. Telepíthet olyan PersistentVolumeClaim objektumot, amely egy Azure felügyelt lemezre hivatkozik egy többzónás AK-fürtben, és a Kubernetes gondoskodik a megfelelő rendelkezésre állási zónában a PVC-t igénylő Pod [ütemezéséről](https://kubernetes.io/docs/setup/best-practices/multiple-zones/#storage-access-for-zones) .
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>Az AK-fürtök rendelkezésre állási zónáinak áttekintése
 
@@ -120,7 +120,20 @@ Name:       aks-nodepool1-28993262-vmss000002
 
 Ha további csomópontokat ad hozzá egy ügynök-készlethez, az Azure platform automatikusan elosztja a mögöttes virtuális gépeket a megadott rendelkezésre állási zónák között.
 
-Vegye figyelembe, hogy az újabb verziókban (1.17.0 és újabb verziók) az Kubernetes az újabb címkét használja az `topology.kubernetes.io/zone` elavult érték mellett `failure-domain.beta.kubernetes.io/zone` .
+Vegye figyelembe, hogy az újabb verziókban (1.17.0 és újabb verziók) az Kubernetes az újabb címkét használja az `topology.kubernetes.io/zone` elavult érték mellett `failure-domain.beta.kubernetes.io/zone` . A következő szkript futtatásával ugyanaz az eredmény adható meg:
+
+```console
+kubectl get nodes -o custom-columns=NAME:'{.metadata.name}',REGION:'{.metadata.labels.topology\.kubernetes\.io/region}',ZONE:'{metadata.labels.topology\.kubernetes\.io/zone}'
+```
+
+Ez egy tömörebb kimenetet nyújt:
+
+```console
+NAME                                REGION   ZONE
+aks-nodepool1-34917322-vmss000000   eastus   eastus-1
+aks-nodepool1-34917322-vmss000001   eastus   eastus-2
+aks-nodepool1-34917322-vmss000002   eastus   eastus-3
+```
 
 ## <a name="verify-pod-distribution-across-zones"></a>A pod-eloszlás ellenőrzése a zónák között
 

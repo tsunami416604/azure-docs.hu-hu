@@ -1,18 +1,18 @@
 ---
 title: 'Rövid útmutató: Azure-adatbázis létrehozása PostgreSQL-ARM-sablonhoz'
 description: Ebből a cikkből megtudhatja, hogyan hozhat létre Azure Database for PostgreSQL önálló kiszolgálót egy Azure Resource Manager sablon használatával.
-author: mgblythe
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: b73bf82b7fba4c7c618dbae81873efabec61051d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bf53b6673da57428b648c0043a1454560f64e4bb
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90906450"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042927"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>Gyors útmutató: ARM-sablon használata Azure Database for PostgreSQL – egyetlen kiszolgáló létrehozásához
 
@@ -70,32 +70,32 @@ A következő hivatkozásra kattintva telepítheti a Azure Database for PostgreS
 
 A **Azure Database for PostgreSQL üzembe helyezése a VNet** oldalon:
 
-1. Az **erőforráscsoport**területen válassza az **új létrehozása**lehetőséget, adja meg az új erőforráscsoport nevét, majd kattintson **az OK gombra**.
+1. Az **erőforráscsoport** területen válassza az **új létrehozása** lehetőséget, adja meg az új erőforráscsoport nevét, majd kattintson **az OK gombra** .
 
 2. Ha létrehozott egy új erőforráscsoportot, válassza ki az erőforráscsoport és az új kiszolgáló **helyét** .
 
-3. Adja meg a **kiszolgáló nevét**, a **rendszergazdai bejelentkezési azonosítót**és a **rendszergazdai bejelentkezési jelszót**.
+3. Adja meg a **kiszolgáló nevét** , a **rendszergazdai bejelentkezési azonosítót** és a **rendszergazdai bejelentkezési jelszót** .
 
     :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png" alt-text="Üzembe helyezés az Azure-ban":::
 
 4. Ha szeretné, módosítsa a többi alapértelmezett beállítást:
 
-    * **Előfizetés**: a kiszolgálóhoz használni kívánt Azure-előfizetés.
-    * **SKU-kapacitás**: a virtuális mag kapacitása, amely lehet *2* (alapértelmezett), *4*, *8*, *16*, *32*vagy *64*.
-    * **SKU neve**: az SKU-rétegek előtagja, az SKU-család és az SKU-kapacitás, aláhúzások, például *B_Gen5_1*, *GP_Gen5_2* (alapértelmezett) vagy *MO_Gen5_32*.
-    * **SKU mérete MB**: a Azure Database for PostgreSQL kiszolgáló tárterületének mérete (MB) (alapértelmezett *51200*).
-    * **SKU-szint**: az üzembe helyezési szint, például *alapszintű,* *GeneralPurpose* (alapértelmezett) vagy *MemoryOptimized*.
-    * **SKU-család**: *Gen4* vagy *Gen5* (alapértelmezett), amely a kiszolgáló telepítésének hardveres generálását jelzi.
-    * **PostgreSQL-verzió**: a telepített PostgreSQL-kiszolgáló verziója, például *9,5*, *9,6*, *10*vagy *11* (az alapértelmezett).
-    * **Biztonsági másolatok megőrzési napjai**: a földrajzi redundáns biztonsági másolatok megőrzésének kívánt időtartama napokban (alapértelmezett *7*).
-    * **Geo redundáns biztonsági mentés**: *engedélyezve* vagy *Letiltva* (az alapértelmezett) a Geo-vész-helyreállítási (Geo-Dr) követelményektől függően.
-    * **Virtual Network neve**: a virtuális hálózat neve (alapértelmezett *azure_postgresql_vnet*).
-    * **Alhálózat neve**: az alhálózat neve (alapértelmezett *azure_postgresql_subnet*).
-    * **Virtual Network szabály neve**: az alhálózatot engedélyező virtuális hálózati szabály neve (alapértelmezett *AllowSubnet*).
-    * **Vnet-címek előtagja**: a virtuális hálózat címe (alapértelmezett *10.0.0.0/16*).
-    * **Alhálózat-előtag**: az alhálózat 10.0.0.0 (alapértelmezett érték */16*).
+    * **Előfizetés** : a kiszolgálóhoz használni kívánt Azure-előfizetés.
+    * **SKU-kapacitás** : a virtuális mag kapacitása, amely lehet *2* (alapértelmezett), *4* , *8* , *16* , *32* vagy *64* .
+    * **SKU neve** : az SKU-rétegek előtagja, az SKU-család és az SKU-kapacitás, aláhúzások, például *B_Gen5_1* , *GP_Gen5_2* (alapértelmezett) vagy *MO_Gen5_32* .
+    * **SKU mérete MB** : a Azure Database for PostgreSQL kiszolgáló tárterületének mérete (MB) (alapértelmezett *51200* ).
+    * **SKU-szint** : az üzembe helyezési szint, például *alapszintű,* *GeneralPurpose* (alapértelmezett) vagy *MemoryOptimized* .
+    * **SKU-család** : *Gen4* vagy *Gen5* (alapértelmezett), amely a kiszolgáló telepítésének hardveres generálását jelzi.
+    * **PostgreSQL-verzió** : a telepített PostgreSQL-kiszolgáló verziója, például *9,5* , *9,6* , *10* vagy *11* (az alapértelmezett).
+    * **Biztonsági másolatok megőrzési napjai** : a földrajzi redundáns biztonsági másolatok megőrzésének kívánt időtartama napokban (alapértelmezett *7* ).
+    * **Geo redundáns biztonsági mentés** : *engedélyezve* vagy *Letiltva* (az alapértelmezett) a Geo-vész-helyreállítási (Geo-Dr) követelményektől függően.
+    * **Virtual Network neve** : a virtuális hálózat neve (alapértelmezett *azure_postgresql_vnet* ).
+    * **Alhálózat neve** : az alhálózat neve (alapértelmezett *azure_postgresql_subnet* ).
+    * **Virtual Network szabály neve** : az alhálózatot engedélyező virtuális hálózati szabály neve (alapértelmezett *AllowSubnet* ).
+    * **Vnet-címek előtagja** : a virtuális hálózat címe (alapértelmezett *10.0.0.0/16* ).
+    * **Alhálózat-előtag** : az alhálózat 10.0.0.0 (alapértelmezett érték */16* ).
 
-5. Olvassa el a használati feltételeket, majd válassza az Elfogadom **a fenti feltételeket és**kikötéseket lehetőséget.
+5. Olvassa el a használati feltételeket, majd válassza az Elfogadom **a fenti feltételeket és** kikötéseket lehetőséget.
 
 6. Válassza a **Vásárlás** lehetőséget.
 
@@ -148,7 +148,7 @@ read -p "Press [ENTER] to continue: "
 
 Az alábbi lépéseket követve tekintheti meg az új Azure Database for PostgreSQL-kiszolgáló áttekintését:
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki **Azure Database for PostgreSQL kiszolgálókat**.
+1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki **Azure Database for PostgreSQL kiszolgálókat** .
 
 2. Az adatbázis listában válassza ki az új kiszolgálót. Megjelenik az új Azure Database for PostgreSQL-kiszolgáló **Áttekintés** lapja.
 
@@ -175,19 +175,19 @@ read -p "Press [ENTER] to continue: "
 
 ---
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli az erőforráscsoport erőforrásait.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki az **erőforráscsoportok**elemet.
+1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki az **erőforráscsoportok** elemet.
 
 2. Az erőforráscsoport listán válassza ki az erőforráscsoport nevét.
 
-3. Az erőforráscsoport **Áttekintés** lapján válassza az **erőforráscsoport törlése**elemet.
+3. Az erőforráscsoport **Áttekintés** lapján válassza az **erőforráscsoport törlése** elemet.
 
-4. A megerősítő párbeszédpanelen írja be az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
+4. A megerősítő párbeszédpanelen írja be az erőforráscsoport nevét, majd válassza a **Törlés** lehetőséget.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
@@ -207,7 +207,7 @@ read -p "Press [ENTER] to continue: "
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sablonok létrehozásának folyamatát ismertető, lépésenkénti oktatóanyagért lásd:
 

@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: eb508831d7a10537f27bb5b4e55f3a0627ce1f3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2e899a9d98d43f826bfa63e62458adf1601f071
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265966"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042993"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Az élő közvetítés áttekintése Media Services használatával
 
@@ -53,11 +53,11 @@ A Media Services segítségével kihasználhatja a [dinamikus csomagolás](media
 
 ## <a name="streaming-endpoints-channels-programs"></a>Folyamatos átviteli végpontok, csatornák, programok
 
-Az Azure Media Services szolgáltatásokban a **csatornák**, a **programok** és a **streamvégpontok** felelősek az élő adatfolyamokkal kapcsolatos minden feladatért, beleértve a feldolgozást, a formázást, a DVR-t, a biztosítást, a méretezhetőséget és a redundanciát is.
+Az Azure Media Services szolgáltatásokban a **csatornák** , a **programok** és a **streamvégpontok** felelősek az élő adatfolyamokkal kapcsolatos minden feladatért, beleértve a feldolgozást, a formázást, a DVR-t, a biztosítást, a méretezhetőséget és a redundanciát is.
 
 A **csatorna** egy olyan folyamatot jelent, amely az élő adatfolyamok tartalmát dolgozza fel. A csatornák a következő módokon képesek egy élő adatfolyam-továbbítás bemenetét fogadni:
 
-* A helyszíni élő kódolók többféle sávszélességű **RTMP** vagy **Smooth Streaming** (töredékes MP4) tartalmakat küldenek a csatornának, amely **áteresztő** továbbításra van konfigurálva. Az **áteresztő** továbbítás azt jelenti, hogy a feldolgozott adatfolyamok további feldolgozás nélkül haladnak át a **csatornán**. Használhatja a következő élő kódolókat, amelyek a többszörös sávszélességű Smooth Streaming: MediaExcel, Ateme, Imagine Communications, envivio, Cisco és Elemental. A következő élő kódolók kimenete RTMP: stream Wirecast, Haivision, Teradek transcoders.  Az élő kódolók olyan csatornákra is tudnak egyféle sávszélességű adatfolyamot küldeni, amelyeken az élő kódolás nincs engedélyezve, ez azonban nem ajánlott. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
+* A helyszíni élő kódolók többféle sávszélességű **RTMP** vagy **Smooth Streaming** (töredékes MP4) tartalmakat küldenek a csatornának, amely **áteresztő** továbbításra van konfigurálva. Az **áteresztő** továbbítás azt jelenti, hogy a feldolgozott adatfolyamok további feldolgozás nélkül haladnak át a **csatornán** . Használhatja a következő élő kódolókat, amelyek a többszörös sávszélességű Smooth Streaming: MediaExcel, Ateme, Imagine Communications, envivio, Cisco és Elemental. A következő élő kódolók kimenete RTMP: stream Wirecast, Haivision, Teradek transcoders.  Az élő kódolók olyan csatornákra is tudnak egyféle sávszélességű adatfolyamot küldeni, amelyeken az élő kódolás nincs engedélyezve, ez azonban nem ajánlott. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
 
   > [!NOTE]
   > Valamely áteresztő módszer használata a leggazdaságosabb megoldás, ha hosszú időn át több eseményt is közvetít élő adatfolyamként, és már befektetett helyszíni kódolókba. További információt a [díjszabás](https://azure.microsoft.com/pricing/details/media-services/) nyújt.
@@ -92,7 +92,7 @@ Az alábbi táblázat a Media Services által támogatott két csatorna típusá
 
 A következő diagramon láthatók a AMS platform azon fontosabb részei, amelyek szerepet játszanak az **áteresztő** munkafolyamatban.
 
-![Élő munkafolyamat](./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png)
+![Az "áteresztő" munkafolyamathoz tartozó M S platform főbb részeit bemutató diagram.](./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png)
 
 Tovább információk: [Helyszíni kódolóktól többféle sávszélességű adatfolyamot fogadó csatornák használata](media-services-live-streaming-with-onprem-encoders.md)
 
@@ -142,11 +142,11 @@ Ha a csatornát továbbra is le szeretné állítani a számlázási adatokból,
 ### <a name="channel-states-and-how-they-map-to-the-billing-mode"></a><a id="states"></a>Csatornák állapota és a számlázási módra való leképezésük módja
 Egy csatorna aktuális állapota. A lehetséges értékek a következők:
 
-* **Leállítva**. Ez a csatorna kezdeti állapota a létrehozás után (kivéve, ha az autostart ki lett választva a portálon.) Ebben az állapotban nem történik számlázás. Ebben az állapotban a csatorna tulajdonságai frissíthetők, de a folyamatos átvitel nem engedélyezett.
-* **Kezdés**: A csatorna indítása folyamatban van. Ebben az állapotban nem történik számlázás. Ebben az állapotban nem engedélyezett a frissítés vagy a folyamatos átvitel. Ha hiba történik, a csatorna visszaállított állapotba tér vissza.
-* **Fut**. A csatorna képes az élő streamek feldolgozására. Most már számlázási használat. A további számlázás elkerülése érdekében le kell állítania a csatornát.
-* **Leállítás folyamatban**. A csatorna leállítása folyamatban van. Ebben az átmeneti állapotban nem történik számlázás. Ebben az állapotban nem engedélyezett a frissítés vagy a folyamatos átvitel.
-* **Törlés**folyamatban. A csatorna törlése folyamatban van. Ebben az átmeneti állapotban nem történik számlázás. Ebben az állapotban nem engedélyezett a frissítés vagy a folyamatos átvitel.
+* **Leállítva** . Ez a csatorna kezdeti állapota a létrehozás után (kivéve, ha az autostart ki lett választva a portálon.) Ebben az állapotban nem történik számlázás. Ebben az állapotban a csatorna tulajdonságai frissíthetők, de a folyamatos átvitel nem engedélyezett.
+* **Kezdés** : A csatorna indítása folyamatban van. Ebben az állapotban nem történik számlázás. Ebben az állapotban nem engedélyezett a frissítés vagy a folyamatos átvitel. Ha hiba történik, a csatorna visszaállított állapotba tér vissza.
+* **Fut** . A csatorna képes az élő streamek feldolgozására. Most már számlázási használat. A további számlázás elkerülése érdekében le kell állítania a csatornát.
+* **Leállítás folyamatban** . A csatorna leállítása folyamatban van. Ebben az átmeneti állapotban nem történik számlázás. Ebben az állapotban nem engedélyezett a frissítés vagy a folyamatos átvitel.
+* **Törlés** folyamatban. A csatorna törlése folyamatban van. Ebben az átmeneti állapotban nem történik számlázás. Ebben az állapotban nem engedélyezett a frissítés vagy a folyamatos átvitel.
 
 Az alábbi táblázat azt mutatja be, hogy a csatorna állapotai hogyan képezhetők le a számlázási módra.
 

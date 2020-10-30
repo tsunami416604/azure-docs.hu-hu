@@ -2,13 +2,13 @@
 title: Azure Event Grid kézbesítés és újrapróbálkozás
 description: Leírja, hogy Azure Event Grid hogyan kézbesíti az eseményeket, és hogyan kezeli a kézbesítetlen üzeneteket.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 924abaa1e5c12c4477bddf888541e7414b7bdbec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/29/2020
+ms.openlocfilehash: 483a868022d4ae8f7c564e51344dfbede4314232
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324093"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042950"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid üzenet kézbesítése és újrapróbálkozás
 
@@ -78,14 +78,16 @@ A végpontok kézbesítési meghibásodások esetén a Event Grid megkezdi a ké
 A késleltetett kézbesítés funkcionális célja a nem megfelelő állapotú végpontok, valamint a Event Grid rendszer megóvása. A nem kifogástalan állapotú végpontokra történő kézbesítés nélkül, Event Grid az újrapróbálkozási szabályzat és a mennyiségi képességek könnyedén elérhetik a rendszereket.
 
 ## <a name="dead-letter-events"></a>Kézbesítetlen levelek eseményei
-Ha Event Grid egy adott időszakon belül nem tud eseményt kézbesíteni, vagy ha az eseményt bizonyos számú alkalommal próbálta kézbesíteni, akkor a kézbesítetlen eseményt egy Storage-fiókba küldheti. Ezt a folyamatot **Kézbesítetlen levélnek**nevezzük. **A következő feltételek valamelyikének** teljesülése esetén Event Grid a kézbesítetlen leveleket. 
+Ha Event Grid egy adott időszakon belül nem tud eseményt kézbesíteni, vagy ha az eseményt bizonyos számú alkalommal próbálta kézbesíteni, akkor a kézbesítetlen eseményt egy Storage-fiókba küldheti. Ezt a folyamatot **Kézbesítetlen levélnek** nevezzük. **A következő feltételek valamelyikének** teljesülése esetén Event Grid a kézbesítetlen leveleket. 
 
-- Az esemény nem az adott időszakon belül érkezik
-- Az esemény kézbesítésére tett kísérletek száma túllépte a korlátot
+- Az esemény nem az adott időszakon belül **kerül** kézbesítésre. 
+- Az esemény kézbesítésére tett **kísérletek száma** túllépte a korlátot.
 
 Ha a feltételek bármelyike teljesül, az esemény eldobása vagy elutasítása nem történik meg.  Alapértelmezés szerint a Event Grid nem kapcsolja be a kézbesítetlen betűket. Az engedélyezéshez meg kell adnia egy Storage-fiókot, amely az esemény-előfizetés létrehozásakor nem kézbesítési eseményeket tart fenn. A kézbesítések feloldásához le kell kérnie az eseményeket ebből a Storage-fiókból.
 
 Event Grid küld egy eseményt a kézbesítetlen levelek helyére, amikor megpróbálta az összes újrapróbálkozási kísérletet. Ha a Event Grid 400 (hibás kérés) vagy 413 (kérelem entitás túl nagy) választ kap, az azonnal elküldi az eseményt a kézbesítetlen levelek végpontjának. Ezek a hibakódok jelzik, hogy az esemény kézbesítése soha nem fog sikerülni.
+
+Az élettartam lejáratát csak a következő ütemezett kézbesítési kísérletnél ellenőrzi a rendszer. Ezért annak ellenére, hogy a következő ütemezett kézbesítési kísérlet előtt lejárnak az események, az esemény lejárati idejét csak a következő kézbesítéskor kell ellenőrizni, majd ezt követően kézbesíteni kell. 
 
 Az utolsó kísérlet az esemény kézbesítése és a kézbesítetlen levél helyére való továbbítása között öt perc késéssel jár. Ez a késleltetés a blob Storage-műveletek számának csökkentésére szolgál. Ha a kézbesítetlen levelek helye négy órán keresztül nem érhető el, a rendszer elveti az eseményt.
 
