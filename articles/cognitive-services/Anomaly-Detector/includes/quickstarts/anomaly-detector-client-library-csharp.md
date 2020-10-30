@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/22/2020
 ms.author: mbullwin
-ms.openlocfilehash: 22732ae10fb328839c47194e0a33faf18514ff45
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 14b361ae2163636864b37d2a063ad10886a9e3c8
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018460"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93029463"
 ---
 Ismerkedés az anomália-detektor .NET-hez készült ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot a szolgáltatás által biztosított algoritmusok használatával. Az anomália-detektor szolgáltatás lehetővé teszi, hogy az idősoros adataiban az adatsorozatok adatait automatikusan a legjobb illeszkedő modellekkel találja, függetlenül az iparágtól, a forgatókönyvtől vagy az adatmennyiségtől.
 
@@ -39,7 +39,7 @@ Használja a következőhöz tartozó rendellenesség-Kiderítő ügyféloldali 
 
 ### <a name="create-a-new-net-core-application"></a>Új .NET Core-alkalmazás létrehozása
 
-A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `anomaly-detector-quickstart` . Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" projektet hoz létre egyetlen C# forrásfájl használatával: *program.cs*.
+A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `anomaly-detector-quickstart` . Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" projektet hoz létre egyetlen C# forrásfájl használatával: *program.cs* .
 
 ```dotnetcli
 dotnet new console -n anomaly-detector-quickstart
@@ -66,7 +66,7 @@ Build succeeded.
 Az alkalmazás könyvtárában telepítse a következő paranccsal a .NET-hez készült rendellenesség-Kiderítő ügyféloldali kódtárat:
 
 ```dotnetcli
-dotnet add package Azure.AI.AnomalyDetector --version 3.0.0-preview.2
+dotnet add package Microsoft.Azure.CognitiveServices.AnomalyDetector
 ```
 
 A projekt könyvtárában nyissa meg a *program.cs* fájlt, és adja hozzá a következőt a használatával `directives` :
@@ -104,8 +104,8 @@ Egy új metódusban hozza létre az ügyfelet a végponttal és a kulccsal. Hozz
 ## <a name="load-time-series-data-from-a-file"></a>Adatsorozat-adatok betöltése fájlból
 
 A rövid útmutatóhoz tartozó példa adatainak letöltése a [githubról](https://github.com/Azure-Samples/AnomalyDetector/blob/master/example-data/request-data.csv):
-1. A böngészőben kattintson a jobb gombbal a **RAW**elemre.
-2. Kattintson **a hivatkozás mentése másként**elemre.
+1. A böngészőben kattintson a jobb gombbal a **RAW** elemre.
+2. Kattintson **a hivatkozás mentése másként** elemre.
 3. Mentse a fájlt egy. csv-fájlként az alkalmazás könyvtárába.
 
 Ez az idősoros adat. csv-fájlként van formázva, és a rendszer elküldi a rendellenesség-Kiderítő API-nak.
