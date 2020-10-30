@@ -6,6 +6,8 @@
       href: oracle-vm-solutions.md
     - name: Melyik megoldásokkal futtatható az Oracle WebLogic Server az Azure Virtual Machinesben?
       href: oracle-weblogic.md
+    - name: Milyen megoldásokkal futtatható az Oracle WebLogic Server az Azure Kubernetes Service-en?
+      href: weblogic-aks.md
     - name: Megoldások az OCI-vel
       href: oracle-oci-overview.md
 - name: Rövid útmutatók

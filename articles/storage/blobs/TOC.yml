@@ -679,6 +679,8 @@
           href: data-lake-storage-best-practices.md
         - name: Lekérdezésgyorsítás
           href: data-lake-storage-query-acceleration.md
+        - name: A Data Lake Storage prémium szintje
+          href: premium-tier-for-data-lake-storage.md
         - name: Architektúra
           items:
             - name: Azure Blob File System-illesztőprogram Hadoophoz

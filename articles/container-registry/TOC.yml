@@ -59,6 +59,8 @@
           href: container-registry-geo-replication.md
         - name: Ajánlott eljárások a beállításjegyzék használatához
           href: container-registry-best-practices.md
+        - name: Nyilvános rendszerképek kezelése
+          href: buffer-gate-public-content.md
     - name: Útmutatók
       expanded: false
       items:
