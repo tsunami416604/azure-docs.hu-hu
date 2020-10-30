@@ -1,24 +1,25 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 10/29/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 0068bd151c3d7d243b05c326ec73a201f4131296
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 393b29245141b2970e7c1a227d6e8b1b131c445c
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67179011"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061619"
 ---
 Ha a tanúsítvány létrehozásához használttól eltérő ügyfélszámítógépről szeretne pont–hely kapcsolatot létesíteni, akkor telepítenie kell egy ügyféltanúsítványt. Az ügyféltanúsítvány telepítésekor szükség lesz az ügyféltanúsítvány exportálásakor létrehozott jelszóra.
 
-1. Keresse meg, és másolja a *.pfx* fájlt az ügyfélszámítógépre. Az ügyfélszámítógépen kattintson duplán a *.pfx* fájlra annak telepítéséhez. Hagyja meg a **Tárolás helye** esetében az **Aktuális felhasználó** értéket, és kattintson a **Tovább** gombra.
-2. A **Fájl** importálása lapon nem kell semmit módosítania. Kattintson a **Tovább** gombra.
-3. A **titkos kulcs védelme** lapon adja meg a tanúsítvány jelszavát, vagy ellenőrizze, hogy a rendszerbiztonsági tag megfelelő-e, majd kattintson a **tovább**gombra.
-4. A **Tanúsítványtároló** lapon ne módosítsa az alapértelmezett helyet, majd kattintson a **Tovább** gombra.
-5. Kattintson a **Finish** (Befejezés) gombra. A tanúsítványtelepítés **Biztonsági figyelmeztetés** párbeszédpanelén kattintson az **Igen** gombra. Nyugodtan rákattinthat az Igenre, mivel már létrehozta a tanúsítványt. A rendszer ezután sikeresen importálja a tanúsítványt.
+1. Keresse meg, és másolja a *.pfx* fájlt az ügyfélszámítógépre. Az ügyfélszámítógépen kattintson duplán a *.pfx* fájlra annak telepítéséhez. Hagyja meg az **áruház helyét** **aktuális felhasználóként** , majd kattintson a **tovább** gombra.
+1. A **Fájl** importálása lapon nem kell semmit módosítania. Kattintson a **Tovább** gombra.
+1. A **titkos kulcs védelme** lapon adja meg a tanúsítvány jelszavát, vagy ellenőrizze, hogy a rendszerbiztonsági tag megfelelő-e, majd kattintson a **tovább** gombra.
+1. A **tanúsítványtároló** lapon hagyja meg az alapértelmezett helyet, majd kattintson a **tovább** gombra.
+1. Válassza a **Befejezés** lehetőséget. A tanúsítvány telepítéséhez szükséges **biztonsági figyelmeztetésnél** válassza az **Igen** lehetőséget. A biztonsági figyelmeztetéshez kényelmesen kiválaszthatja az Igen lehetőséget, mivel a tanúsítványt generálta.
+1. A rendszer ezután sikeresen importálja a tanúsítványt.

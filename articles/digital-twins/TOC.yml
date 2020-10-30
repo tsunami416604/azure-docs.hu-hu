@@ -23,8 +23,6 @@
   items:
     - name: Egyéni modellek
       href: concepts-models.md
-    - name: Iparági szabványoknak megfelelő modellek konvertálása
-      href: concepts-convert-models.md
     - name: Digitális ikermodellek és az ikergráf
       href: concepts-twins-graph.md
     - name: Lekérdezés nyelve
@@ -63,6 +61,8 @@
       items:
         - name: Egyéni modellek kezelése
           href: how-to-manage-model.md
+        - name: Iparági szabványoknak megfelelő modellek konvertálása
+          href: how-to-convert-models.md
         - name: Modellek elemzése és ellenőrzése
           href: how-to-parse-models.md
         - name: Címkék hozzáadása
@@ -176,11 +176,15 @@
             - name: Java SDK – forrás
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
             - name: JavaScript SDK – NPM
-              href: 'https://www.npmjs.com/package/@azure/digital-twins/'
+              href: 'https://www.npmjs.com/package/@azure/digital-twins-core'
             - name: JavaScript SDK – referencia
               href: /javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest
+            - name: JavaScript SDK – forrás
+              href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core'
             - name: Python SDK – PyPi
               href: 'https://pypi.org/project/azure-digitaltwins-core/1.0.0b1/'
+            - name: Python SDK – forrás
+              href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
     - name: Digital Twins CLI
       items:
         - name: Digital Twins CLI-referencia

@@ -1,26 +1,28 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/19/2020
+ms.date: 10/29/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e85dc8c079205484db9b7b7c43a0086f69feb3be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8e3df77df53b887c4367e46b05d8a7ea4eed2f6
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80059924"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061616"
 ---
 ## <a name="create-a-self-signed-root-certificate"></a><a name="rootcert"></a>Önaláírt főtanúsítvány létrehozása
 
 Önaláírt főtanúsítvány létrehozásához használja a New-SelfSignedCertificate parancsmagot. További információ a paraméterekről: [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
 1. Windows 10 vagy Windows Server 2016 operációs rendszert futtató számítógépről nyisson meg egy emelt szintű jogosultságokkal rendelkező Windows PowerShell-konzolt. Ezek a példák nem működnek a "kipróbálás" Azure Cloud Shell. Ezeket a példákat helyileg kell futtatnia.
-2. A következő példa használatával hozza létre az önaláírt főtanúsítványt. A következő példa létrehoz egy "P2SRootCert" nevű önaláírt főtanúsítványt, amely automatikusan települ a "Certificates-current User\Personal\Certificates" tulajdonságban. A tanúsítványt a *certmgr. msc*megnyitásával vagy *felhasználói tanúsítványok kezelésével*tekintheti meg.
+1. A következő példa használatával hozza létre az önaláírt főtanúsítványt. A következő példa létrehoz egy "P2SRootCert" nevű önaláírt főtanúsítványt, amely automatikusan települ a "Certificates-current User\Personal\Certificates" tulajdonságban. A tanúsítványt a *certmgr. msc* megnyitásával vagy *felhasználói tanúsítványok kezelésével* tekintheti meg.
+
+   Jelentkezzen be a `Connect-AzAccount` parancsmag használatával. Ezután futtassa a következő példát a szükséges módosításokkal.
 
    ```powershell
    $cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
@@ -28,7 +30,8 @@ ms.locfileid: "80059924"
    -HashAlgorithm sha256 -KeyLength 2048 `
    -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
    ```
- 3. Ha közvetlenül a főtanúsítvány létrehozása után szeretné létrehozni az ügyféltanúsítványt, hagyja nyitva a PowerShell-konzolt.
+
+1. Hagyja nyitva a PowerShell-konzolt, és folytassa a következő lépésekkel az Ügyféltanúsítványok létrehozásához.
 
 ## <a name="generate-a-client-certificate"></a><a name="clientcert"></a>Ügyféltanúsítvány létrehozása
 
@@ -61,7 +64,8 @@ Ha további ügyféltanúsítványt hoz létre, vagy nem ugyanazt a PowerShell-m
    ```powershell
    Get-ChildItem -Path "Cert:\CurrentUser\My"
    ```
-2. Keresse meg a tulajdonos nevét a visszaadott listából, majd másolja a mellette található ujjlenyomatot egy szövegfájlba. A következő példában két tanúsítvány van. A CN Name annak az önaláírt főtanúsítványnak a neve, amelyből alárendelt tanúsítványt szeretne előállítani. Ebben az esetben a "P2SRootCert".
+
+1. Keresse meg a tulajdonos nevét a visszaadott listából, majd másolja a mellette található ujjlenyomatot egy szövegfájlba. A következő példában két tanúsítvány van. A CN Name annak az önaláírt főtanúsítványnak a neve, amelyből alárendelt tanúsítványt szeretne előállítani. Ebben az esetben a "P2SRootCert".
 
    ```
    Thumbprint                                Subject
@@ -69,7 +73,8 @@ Ha további ügyféltanúsítványt hoz létre, vagy nem ugyanazt a PowerShell-m
    AED812AD883826FF76B4D1D5A77B3C08EFA79F3F  CN=P2SChildCert4
    7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655  CN=P2SRootCert
    ```
-3. Deklaráljon egy változót a főtanúsítványhoz az előző lépés ujjlenyomatának használatával. Cserélje le az UJJLENYOMATot annak a főtanúsítványnak az ujjlenyomatával, amelyből alárendelt tanúsítványt kíván előállítani.
+
+1. Deklaráljon egy változót a főtanúsítványhoz az előző lépés ujjlenyomatának használatával. Cserélje le az UJJLENYOMATot annak a főtanúsítványnak az ujjlenyomatával, amelyből alárendelt tanúsítványt kíván előállítani.
 
    ```powershell
    $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\THUMBPRINT"
@@ -80,7 +85,8 @@ Ha további ügyféltanúsítványt hoz létre, vagy nem ugyanazt a PowerShell-m
    ```powershell
    $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655"
    ```
-4. Módosítsa és futtassa a példát az ügyféltanúsítvány létrehozásához. Ha a következő példát a módosítás nélkül futtatja, az eredmény egy "P2SChildCert" nevű ügyféltanúsítvány. Ha a gyermek tanúsítvány nevet szeretné használni, módosítsa a CN-értéket. A példa futtatásakor ne módosítsa a TextExtension. A létrehozott ügyféltanúsítvány automatikusan települ a számítógép "tanúsítványok – aktuális User\Personal\Certificates" mappájába.
+
+1. Módosítsa és futtassa a példát az ügyféltanúsítvány létrehozásához. Ha a következő példát a módosítás nélkül futtatja, az eredmény egy "P2SChildCert" nevű ügyféltanúsítvány. Ha a gyermek tanúsítvány nevet szeretné használni, módosítsa a CN-értéket. A példa futtatásakor ne módosítsa a TextExtension. A létrehozott ügyféltanúsítvány automatikusan települ a számítógép "tanúsítványok – aktuális User\Personal\Certificates" mappájába.
 
    ```powershell
    New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature `

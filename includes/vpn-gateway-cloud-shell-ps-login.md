@@ -1,36 +1,38 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/10/2020
+ms.date: 10/29/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 50ce8530aca40eed07741f35be1a57bbd7cc1868
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24d146da7946176c92902698d0f52ae01baf79ee
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77133602"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061618"
 ---
-Emelt szintű jogosultságokkal nyissa meg a PowerShell-konzolt.
+Ha a PowerShellt helyileg futtatja, nyissa meg emelt szintű jogosultságokkal a PowerShell-konzolt, és kapcsolódjon az Azure-fiókjához. A *AzAccount* parancsmag hitelesítő adatokat kér. A hitelesítés után letölti a fiók beállításait, hogy elérhetők legyenek Azure PowerShell számára.
 
-Ha Azure PowerShell helyileg futtatja, kapcsolódjon az Azure-fiókjához. A *AzAccount* parancsmag hitelesítő adatokat kér. A hitelesítés után letölti a fiók beállításait, hogy elérhetők legyenek Azure PowerShell számára. Ha ehelyett Azure Cloud Shell használ, nem kell futtatnia a *AzAccount*. Azure Cloud Shell automatikusan csatlakozik Azure-fiókjához.
+Ha a PowerShell helyi futtatása helyett Azure Cloud Shell használ, láthatja, hogy nem kell futtatnia a *AzAccount* . Ha a **kipróbálás** lehetőséget választja, a Azure Cloud Shell automatikusan csatlakozik az Azure-fiókjához.
 
-```azurepowershell
-Connect-AzAccount
-```
+1. Ha helyileg futtatja a PowerShellt, jelentkezzen be.
 
-Ha egynél több előfizetéssel rendelkezik, szerezze be az Azure-előfizetések listáját.
+   ```azurepowershell
+   Connect-AzAccount
+   ```
 
-```azurepowershell-interactive
-Get-AzSubscription
-```
+1. Ha egynél több előfizetéssel rendelkezik, szerezze be az Azure-előfizetések listáját.
 
-Válassza ki a használni kívánt előfizetést.
+   ```azurepowershell-interactive
+   Get-AzSubscription
+   ```
 
-```azurepowershell-interactive
-Select-AzSubscription -SubscriptionName "Name of subscription"
-```
+1. Válassza ki a használni kívánt előfizetést.
+
+   ```azurepowershell-interactive
+   Select-AzSubscription -SubscriptionName "Name of subscription"
+   ```
