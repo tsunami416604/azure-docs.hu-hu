@@ -11,22 +11,21 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 719258933dfadf34b8678bf03ee07ee6cc76e331
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f459a804b4c375eea17cbc22ded2f41f808c1b82
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84789905"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041169"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>A hatókörön kívüli felhasználói fiókok törlésének kihagyása
 
 Alapértelmezés szerint az Azure AD-létesítési motor Soft törli vagy letiltja a hatókörön kívüli felhasználókat. Bizonyos forgatókönyvek esetében azonban, például az AD-felhasználók bejövő kiépítéséhez, ez a viselkedés nem a várt módon lehetséges, és érdemes lehet felülbírálni ezt az alapértelmezett viselkedést.  
 
-Ez a cikk azt ismerteti, hogyan használható a Microsoft Graph API és a Microsoft Graph API Explorer a hatókörön kívüli fiókok feldolgozását vezérlő jelző ***SkipOutOfScopeDeletions*** beállításához. 
-* Ha a ***SkipOutOfScopeDeletions*** értéke 0 (hamis), akkor a hatókörön kívüli fiókok le lesznek tiltva a célhelyen.
-* Ha a ***SkipOutOfScopeDeletions*** értéke 1 (igaz), akkor a hatókörön kívüli fiókok nem lesznek letiltva a célhelyen. Ez a jelző a *kiépítési alkalmazás* szintjén van beállítva, és a Graph API használatával konfigurálható. 
+Ez a cikk azt ismerteti, hogyan használható a Microsoft Graph API és a Microsoft Graph API Explorer a hatókörön kívüli fiókok feldolgozásának szabályozására a * **SkipOutOfScopeDeletions** _ beállítással. _ Ha * **SkipOutOfScopeDeletions** _ értéke 0 (hamis), akkor a hatókörön kívüli fiókok le lesznek tiltva a célhelyen.
+_ If * **SkipOutOfScopeDeletions** _ értéke 1 (igaz), a hatókörön kívüli fiókok nem lesznek letiltva a célhelyen. Ez a jelző a _Provisioning alkalmazás * szintjén van beállítva, és a Graph API használatával konfigurálható. 
 
-Mivel ezt a konfigurációt széles körben használják a *Munkanapokon Active Directory a felhasználók kiépítési* alkalmazásához, a következő lépésekben a munkanap alkalmazás képernyőképei szerepelnek. A konfiguráció azonban *más alkalmazásokkal*is használható, például a ServiceNow, a Salesforce és a Dropbox használatával.
+Mivel ezt a konfigurációt széles körben használják a *Munkanapokon Active Directory a felhasználók kiépítési* alkalmazásához, a következő lépésekben a munkanap alkalmazás képernyőképei szerepelnek. A konfiguráció azonban *más alkalmazásokkal* is használható, például a ServiceNow, a Salesforce és a Dropbox használatával.
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>1. lépés: a kiépítési App Service rendszerbiztonsági tag AZONOSÍTÓjának beolvasása (objektumazonosító)
 
@@ -69,9 +68,9 @@ Itt látható a leképezéshez hozzáadandó JSON-blokk.
 
 ## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>4. lépés: a titkok végpontjának frissítése a SkipOutOfScopeDeletions jelzővel
 
-A Graph Explorerben futtassa az alábbi parancsot a Secrets végpont ***SkipOutOfScopeDeletions*** jelzővel való frissítéséhez. 
+A Graph Explorerben futtassa az alábbi parancsot a Secrets végpont * *_SkipOutOfScopeDeletions_* _ jelzővel való frissítéséhez. 
 
-Az alábbi URL-címben cserélje le a [servicePrincipalId] elemet az [1. lépésből](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)kinyert **servicePrincipalId** . 
+Az alábbi URL-címben cserélje le a [servicePrincipalId] elemet az [1. lépésből](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)kinyert _ *servicePrincipalId* * elemre. 
 
 ```http
    PUT https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
@@ -90,7 +89,7 @@ A kimenetet "sikeres – állapotkód 204" értékre kell beolvasni.
 
 Ezt a jelzőt tesztelheti a várt viselkedés alapján, ha frissíti a hatóköri szabályokat egy adott felhasználó kihagyásához. Az alábbi példában egy új hatókör-szabály hozzáadásával kizárja a 21173-as AZONOSÍTÓJÚ alkalmazottat (aki korábban a hatókörben volt): 
 
-   ![Hatókör – példa](./media/skip-out-of-scope-deletions/skip-07.png)
+   ![A "hatókör-szűrő hozzáadása" szakaszt bemutató képernyőkép, amely egy példával jelölt felhasználóra mutat.](./media/skip-out-of-scope-deletions/skip-07.png)
 
 A következő üzembe helyezési ciklusban az Azure AD kiépítési szolgáltatás megállapítja, hogy a 21173-es felhasználó kikerült a hatókörből, és ha a SkipOutOfScopeDeletions tulajdonság engedélyezve van, akkor az adott felhasználó szinkronizálási szabálya az alábbi képen látható üzenetet jeleníti meg: 
 

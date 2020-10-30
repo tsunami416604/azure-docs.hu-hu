@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 06/20/2019
-ms.openlocfilehash: 08aaec23b0edc0e797d26d4b51081f6daa5b5c19
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 10/29/2020
+ms.openlocfilehash: 30a511caec82ead406f0a80f107e4261a707bfdb
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671227"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040172"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: BACPAC-fájl importálása Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázisba
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -62,9 +62,11 @@ Ha az adatbázist egy BACPAC-fájlból egy [Azure SQL felügyelt példányba](..
 
 ## <a name="using-sqlpackage"></a>A SqlPackage használata
 
-Ha SQL Server adatbázist szeretne importálni a [SqlPackage](/sql/tools/sqlpackage) parancssori segédprogrammal, tekintse meg a [paraméterek és tulajdonságok importálása](/sql/tools/sqlpackage#import-parameters-and-properties)című témakört. [A Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt) [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) és SQL Server Data Tools tartalmazza a SqlPackage. A legújabb [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) a Microsoft letöltőközpontból is letöltheti.
+Ha SQL Server adatbázist szeretne importálni a [SqlPackage](/sql/tools/sqlpackage) parancssori segédprogrammal, tekintse meg a [paraméterek és tulajdonságok importálása](/sql/tools/sqlpackage#import-parameters-and-properties)című témakört. [A Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt) [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) és SQL Server Data Tools tartalmazza a SqlPackage. A legújabb [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) a Microsoft letöltőközpontból is letöltheti. 
 
 A méretezés és a teljesítmény érdekében javasoljuk, hogy a SqlPackage a legtöbb éles környezetben használja a Azure Portal használata helyett. Az SQL Server Customer tanácsadó csapatának blogja a fájlok használatával történő áttelepítéssel kapcsolatban `BACPAC` lásd: [áttelepítés SQL Serverról Azure SQL DATABASEre BACPAC-fájlok használatával](/archive/blogs/sqlcat/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files).
+
+A DTU-alapú kiépítési modell az egyes rétegek adatbázis-maximális méretének értékét támogatja. Az adatbázisok importálásakor a [támogatott értékek valamelyikét kell használnia](/sql/t-sql/statements/create-database-transact-sql). 
 
 A következő SqlPackage-utasítás importálja a **AdventureWorks2008R2** -adatbázist a helyi tárolóból egy **MYNEWSERVER20170403** nevű logikai SQL Server-kiszolgálóra. Létrehoz egy **myMigratedDatabase** nevű új adatbázist egy **prémium** szintű szolgáltatási szinttel és egy **P6** szolgáltatás-célkitűzéssel. A környezetnek megfelelően módosítsa ezeket az értékeket.
 
@@ -94,7 +96,7 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [!IMPORTANT]
 > A PowerShell Azure Resource Manager (RM) modul továbbra is támogatott, de a jövőbeli fejlesztés az az. SQL modulhoz készült. A AzureRM modul továbbra is megkapja a hibajavításokat, amíg legalább december 2020-ra nem kerül sor.  Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A kompatibilitással kapcsolatos további információkért lásd: [az új Azure PowerShell bemutatása az Module](/powershell/azure/new-azureps-module-az).
 
-A [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport) parancsmag használatával küldje el az importálási adatbázisra vonatkozó kérelmet az Azure-ba. Az adatbázis méretétől függően az importálás hosszabb időt is igénybe vehet.
+A [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport) parancsmag használatával küldje el az importálási adatbázisra vonatkozó kérelmet az Azure-ba. Az adatbázis méretétől függően az importálás hosszabb időt is igénybe vehet. A DTU-alapú kiépítési modell az egyes rétegek adatbázis-maximális méretének értékét támogatja. Az adatbázisok importálásakor a [támogatott értékek valamelyikét kell használnia](/sql/t-sql/statements/create-database-transact-sql). 
 
 ```powershell
 $importRequest = New-AzSqlDatabaseImport -ResourceGroupName "<resourceGroupName>" `
@@ -126,7 +128,7 @@ $importStatus
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Az az [-SQL-db-import](/cli/azure/sql/db#az-sql-db-import) paranccsal küldje el az importálási adatbázisra vonatkozó kérelmet az Azure-nak. Az adatbázis méretétől függően az importálás hosszabb időt is igénybe vehet.
+Az az [-SQL-db-import](/cli/azure/sql/db#az-sql-db-import) paranccsal küldje el az importálási adatbázisra vonatkozó kérelmet az Azure-nak. Az adatbázis méretétől függően az importálás hosszabb időt is igénybe vehet. A DTU-alapú kiépítési modell az egyes rétegek adatbázis-maximális méretének értékét támogatja. Az adatbázisok importálásakor a [támogatott értékek valamelyikét kell használnia](/sql/t-sql/statements/create-database-transact-sql). 
 
 ```azurecli
 # get the storage account key

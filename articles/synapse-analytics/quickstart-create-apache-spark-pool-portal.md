@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: ea32126e19c4520a6d5a40f38f60ec44e9a119cd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7578ca12c46ec6de626eeb1340ce680eda6bbb92
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91260869"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041312"
 ---
 # <a name="quickstart-create-a-new-apache-spark-pool-using-the-azure-portal"></a>Gyors útmutató: új Apache Spark-készlet létrehozása a Azure Portal használatával
 
@@ -39,13 +39,13 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
 ## <a name="navigate-to-the-synapse-workspace"></a>Navigáljon a szinapszis munkaterületre 
 1. Navigáljon ahhoz a szinapszis-munkaterülethez, ahol a Apache Spark-készletet hozza létre, majd írja be a szolgáltatás nevét (vagy az erőforrás nevét közvetlenül) a keresősávba.
 ![Azure Portal keresési sáv, amelyben szinapszis-munkaterületek vannak beírva.](media/quickstart-create-sql-pool/create-sql-pool-00a.png)
-1. A munkaterületek listájából írja be a megnyitni kívánt munkaterület nevét (vagy annak egy részét). Ebben a példában egy **contosoanalytics**nevű munkaterületet fogunk használni.
+1. A munkaterületek listájából írja be a megnyitni kívánt munkaterület nevét (vagy annak egy részét). Ebben a példában egy **contosoanalytics** nevű munkaterületet fogunk használni.
 ![A contoso nevet tartalmazó szinapszis-munkaterületek listázása.](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
 
 
 ## <a name="create-new-apache-spark-pool"></a>Új Apache Spark-készlet létrehozása
 
-1. Válassza ki az **új Apache Spark készlet**elemet abban a szinapszis munkaterületen, ahol létre szeretné hozni a Apache Spark készletet.
+1. Válassza ki az **új Apache Spark készlet** elemet abban a szinapszis munkaterületen, ahol létre szeretné hozni a Apache Spark készletet.
     ![A szinapszis munkaterület áttekintése, amely egy új Apache Spark készlet létrehozásához szükséges vörös mezővel rendelkezik a parancs körül](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-01.png)
 2. Az **alapok** lapon adja meg a következő adatokat:
 
@@ -62,25 +62,25 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
     > Vegye figyelembe, hogy a Apache Spark-készletek által használható nevekre vonatkozó korlátozások érvényesek. A név csak betűket vagy számokat tartalmazhat, legfeljebb 15 karakterből állhat, betűvel kell kezdődnie, nem tartalmazhat fenntartott szavakat, és egyedinek kell lennie a munkaterületen.
 
 3. Válassza a **Tovább: további beállítások** elemet, és tekintse át az alapértelmezett beállításokat. Ne módosítsa az alapértelmezett beállításokat.
-    ![Apache Spark készlet folyamat létrehozása – további beállítások lap.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-03.png)
+    ![Képernyőkép: a "További beállítások" lapon megjelenik a "Apache Spark készlet létrehozása" oldal.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-03.png)
 
-4. Kattintson a **Tovább gombra: címkék**. Ne adjon hozzá címkéket.
+4. Kattintson a **Tovább gombra: címkék** . Ne adjon hozzá címkéket.
     ![Apache Spark készlet folyamat létrehozása – további beállítások lap.](media/quickstart-create-apache-spark-pool/create-spark-pool-03-tags.png)
 
-5. Válassza az **Áttekintés + létrehozás** lehetőséget.
+5. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
 
-6. Győződjön meg arról, hogy a korábban megadott adatok alapján a részletek helyesek, majd válassza a **Létrehozás**lehetőséget.
+6. Győződjön meg arról, hogy a korábban megadott adatok alapján a részletek helyesek, majd válassza a **Létrehozás** lehetőséget.
     ![Apache Spark készlet létrehozása folyamat – felülvizsgálati beállítások lap.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-05.png)
 
 7. Ezen a ponton az erőforrás-kiépítési folyamat elindul, ami azt jelzi, hogy a művelet befejeződött.
-    ![Apache Spark készlet folyamat létrehozása – erőforrás-kiépítés.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-06.png)
+    ![Az "az üzembe helyezés befejeződött" üzenet jelenik meg az "áttekintés" oldalon.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-06.png)
 
 8. A kiépítés befejezése után lépjen vissza a munkaterületre, majd megjelenik egy új bejegyzés az újonnan létrehozott Apache Spark-készlethez.
     ![Apache Spark készlet folyamat létrehozása – erőforrás-kiépítés.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-07.png)
 
 9. Ezen a ponton nincsenek futó erőforrások, a Spark díjszabása nélkül létrehozott metaadatokat a létrehozni kívánt Spark-példányokkal kapcsolatban.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Az alábbi lépések végrehajtásával törölje a Apache Spark-készletet a munkaterületről.
 > [!WARNING]
@@ -89,14 +89,14 @@ Az alábbi lépések végrehajtásával törölje a Apache Spark-készletet a mu
 Ha törölni szeretné a Apache Spark-készletet, tegye a következőket:
 
 1. Navigáljon a munkaterületen a Apache Spark készletek panelre.
-2. Válassza ki a törölni kívánt Apache Spark-készletet (ebben az esetben a **contosospark**).
-3. Nyomja le a **delete**billentyűt.
+2. Válassza ki a törölni kívánt Apache Spark-készletet (ebben az esetben a **contosospark** ).
+3. Nyomja le a **delete** billentyűt.
  ![Apache Spark készletek felsorolása a legutóbb létrehozott készlettel.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-08.png)
 4. Erősítse meg a törlést, majd nyomja le a **delete (Törlés** ) gombot.
  ![Megerősítő párbeszédpanel a kiválasztott Apache Spark-készlet törléséhez.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-10.png)
 5. Ha a folyamat sikeresen befejeződik, a Apache Spark-készlet többé nem jelenik meg a munkaterület erőforrásaiban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg a rövid útmutató [: Apache Spark jegyzetfüzet létrehozása](quickstart-apache-spark-notebook.md)című témakört.
 - Lásd [: gyors útmutató: SZINAPSZIS SQL-készlet létrehozása a Azure Portal használatával](quickstart-create-sql-pool-portal.md).

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 7cc9e8a1cf51d57bf10523174179b5a9f2ef6e97
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 010e2a206ef08677651572c274cfc38fd516ecc9
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363691"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041118"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Automatikus felhasználóátadást használó üzembe helyezés tervezése
 
@@ -34,13 +34,13 @@ A felhasználók üzembe helyezése létrehoz egy alapot a folyamatos identitás
 
 Az automatikus felhasználó-kiépítés engedélyezésének fő előnyei a következők:
 
-* **Megnövekedett termelékenység**. Az SaaS-alkalmazásokban felhasználói identitásokat egyetlen felhasználói üzembe helyezési kezelőfelülettel kezelhet. Ez az illesztőfelület egyetlen kiépítési szabályzattal rendelkezik.
+* **Megnövekedett termelékenység** . Az SaaS-alkalmazásokban felhasználói identitásokat egyetlen felhasználói üzembe helyezési kezelőfelülettel kezelhet. Ez az illesztőfelület egyetlen kiépítési szabályzattal rendelkezik.
 
-* **Kockázatkezelés**. Növelheti a biztonságot úgy, hogy a szerepköröket és/vagy a hozzáférést meghatározó alkalmazotti állapot vagy csoporttagságok alapján automatizálja a módosításokat.
+* **Kockázatkezelés** . Növelheti a biztonságot úgy, hogy a szerepköröket és/vagy a hozzáférést meghatározó alkalmazotti állapot vagy csoporttagságok alapján automatizálja a módosításokat.
 
-* **Foglalkozzon a megfelelőséggel és a szabályozással**. Az Azure AD minden felhasználói kiépítési kérelem esetében támogatja a natív naplózási naplókat. A kérelmeket a forrás-és a célszámítógépen is végrehajtja a rendszer. Így nyomon követheti, hogy ki férhet hozzá az alkalmazásokhoz egyetlen képernyőről.
+* **Foglalkozzon a megfelelőséggel és a szabályozással** . Az Azure AD minden felhasználói kiépítési kérelem esetében támogatja a natív naplózási naplókat. A kérelmeket a forrás-és a célszámítógépen is végrehajtja a rendszer. Így nyomon követheti, hogy ki férhet hozzá az alkalmazásokhoz egyetlen képernyőről.
 
-* **Csökkentse a költségeket**. Az automatikus felhasználó-kiépítés csökkenti a költségeket azáltal, hogy elkerüli a hatékonyságot és az emberi hibát a manuális kiépítés során. Ez csökkenti az egyéni fejlesztésű felhasználói megoldások, parancsfájlok és naplók igényét.
+* **Csökkentse a költségeket** . Az automatikus felhasználó-kiépítés csökkenti a költségeket azáltal, hogy elkerüli a hatékonyságot és az emberi hibát a manuális kiépítés során. Ez csökkenti az egyéni fejlesztésű felhasználói megoldások, parancsfájlok és naplók igényét.
 
 ### <a name="licensing"></a>Licencek
 
@@ -66,7 +66,7 @@ Ez a cikk a következő kifejezéseket használja:
 
 ### <a name="training-resources"></a>Erőforrások betanítása
 
-| Erőforrások| Hivatkozás és leírás |
+| További források| Hivatkozás és leírás |
 | - | - |
 | Igény szerinti webináriumok| [Vállalati alkalmazások kezelése az Azure AD-vel](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Ismerje meg, hogyan segítheti az Azure AD az egyszeri bejelentkezést a vállalati SaaS-alkalmazásokhoz és a hozzáférés szabályozására vonatkozó ajánlott eljárásokhoz. |
 | Videók| [Mi a felhasználók üzembe helyezése az aktív Azure-címtárban?](https://youtu.be/_ZjARPpI6NI) <br> [A felhasználók üzembe helyezésének központi telepítése az Active Directory Azure-címtárban](https://youtu.be/pKzyts6kfrw) <br> [A Salesforce integrálása az Azure AD-vel: a felhasználók üzembe helyezésének automatizálása](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
@@ -99,7 +99,7 @@ Ebben a példában a felhasználók és a csoportok egy helyszíni címtárhoz c
 
 Ebben a példában a felhasználó létrehozása az Azure AD-ben történik, az Azure AD-létesítési szolgáltatás pedig felügyeli az automatikus felhasználót a cél (SaaS) alkalmazásokhoz.
 
-![2. kép](./media/plan-auto-user-provisioning/cloudprovisioning.png)
+![Diagram, amely megjeleníti a felhasználó/csoport létrehozási folyamatát egy helyszíni H R-alkalmazásból az Azure A D kiépítési szolgáltatásával az a cél S a S alkalmazásoknak.](./media/plan-auto-user-provisioning/cloudprovisioning.png)
 
 **Munkafolyamat leírása:**
 
@@ -316,7 +316,7 @@ A kiépítés során esetlegesen felmerülő problémák elhárításához tekin
 
 * [Azure AD Connect kiépítési ügynök: verziók kiadásának előzményei](provisioning-agent-release-version-history.md)
 
-#### <a name="resources"></a>Erőforrások
+#### <a name="resources"></a>További források
 
 * [Termékkel kapcsolatos visszajelzés küldése](https://feedback.azure.com/forums/169401-azure-active-directory)
 

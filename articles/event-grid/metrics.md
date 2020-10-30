@@ -3,12 +3,12 @@ title: Azure Event Grid által támogatott metrikák
 description: Ez a cikk a Azure Event Grid szolgáltatás által támogatott Azure Monitor mérőszámokat tartalmazza.
 ms.topic: conceptual
 ms.date: 08/13/2020
-ms.openlocfilehash: 06c43b1990efc977cae33ced3f66f02e2de0b9c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87c91077c8eeca2134da53774979c212a82e3b7d
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88225172"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042135"
 ---
 # <a name="metrics-supported-by-azure-event-grid"></a>Azure Event Grid által támogatott metrikák
 Ez a cikk a névterek által kategorizált Event Grid mérőszámok listáját tartalmazza. 
@@ -26,6 +26,8 @@ Ez a cikk a névterek által kategorizált Event Grid mérőszámok listáját t
 |PublishFailCount|Igen|Sikertelen események közzététele|Darabszám|Összesen|A témakörben nem sikerült közzétenni az összes eseményt|Témakör, ErrorType, hiba|
 |PublishSuccessCount|Igen|Közzétett események|Darabszám|Összesen|A témakörben közzétett összes esemény|Témakör|
 |PublishSuccessLatencyInMs|Igen|Sikeres közzétételi késés|Ezredmásodpercben|Összesen|Sikeres közzétételi késés (ezredmásodpercben)|Nincsenek méretek|
+| AdvancedFilterEvaluationCount | Igen | Speciális szűrési értékelések | Darabszám | Összesen | Az esemény-előfizetések között kiértékelt speciális szűrők összesen | EventSubscriptionName |
+
 
 
 ## <a name="microsofteventgrideventsubscriptions"></a>Microsoft. EventGrid/eventSubscriptions
@@ -64,6 +66,8 @@ Ez a cikk a névterek által kategorizált Event Grid mérőszámok listáját t
 |PublishSuccessCount|Igen|Közzétett események|Darabszám|Összesen|A témakörben közzétett összes esemény|Nincsenek méretek|
 |PublishSuccessLatencyInMs|Igen|Sikeres közzétételi késés|Ezredmásodpercben|Összesen|Sikeres közzétételi késés (ezredmásodpercben)|Nincsenek méretek|
 |UnmatchedEventCount|Igen|Páratlan események|Darabszám|Összesen|A témakörben szereplő esemény-előfizetéseknek nem megfelelő események összesen|Nincsenek méretek|
+| AdvancedFilterEvaluationCount | Igen | Speciális szűrési értékelések | Darabszám | Összesen | Az esemény-előfizetések között kiértékelt speciális szűrők összesen | EventSubscriptionName |
+
 
 
 ## <a name="microsofteventgridtopics"></a>Microsoft. EventGrid/témakörök
@@ -80,6 +84,7 @@ Ez a cikk a névterek által kategorizált Event Grid mérőszámok listáját t
 |PublishSuccessCount|Igen|Közzétett események|Darabszám|Összesen|A témakörben közzétett összes esemény|Nincsenek méretek|
 |PublishSuccessLatencyInMs|Igen|Sikeres közzétételi késés|Ezredmásodpercben|Összesen|Sikeres közzétételi késés (ezredmásodpercben)|Nincsenek méretek|
 |UnmatchedEventCount|Igen|Páratlan események|Darabszám|Összesen|A témakörben szereplő esemény-előfizetéseknek nem megfelelő események összesen|Nincsenek méretek|
+| AdvancedFilterEvaluationCount | Igen | Speciális szűrési értékelések | Darabszám | Összesen | Az esemény-előfizetések között kiértékelt speciális szűrők összesen | Témakör, EventSubscriptionName, DomainEventSubscriptionName |
 
 ## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő cikket: [diagnosztikai naplók](diagnostic-logs.md)

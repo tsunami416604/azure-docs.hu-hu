@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a249d5f3c47e8e8789f91f355c791cc50341ab01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b8fdabc3f4f33627936eead9dda57e67c7b0da8
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827907"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040510"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Gyakori kérdések az identitások védelméről Azure Active Directory
 
 ## <a name="dismiss-user-risk-known-issues"></a>Felhasználói kockázattal kapcsolatos ismert problémák bezárása
 
-A **felhasználói kockázat elvetése** a klasszikus Identity Protectionben az **Azure ad**-ben a felhasználó kockázati előzményeiben szereplő tulajdonost állítja be.
+A **felhasználói kockázat elvetése** a klasszikus Identity Protectionben az **Azure ad** -ben a felhasználó kockázati előzményeiben szereplő tulajdonost állítja be.
 
 A **felhasználói kockázat elvetése** az Identity Protection szolgáltatásban a felhasználó kockázati előzményeiben szereplő tulajdonost állítja be az Identity Protectionben **\<Admin’s name with a hyperlink pointing to user’s blade\>** .
 
@@ -38,13 +38,19 @@ A klasszikus Identity Protection **összes eseményének** bezárásakor a kock�
 
 ## <a name="risky-sign-ins-report-known-issues"></a>Kockázatos bejelentkezések – ismert problémák
 
-A kockázatkezelési **megoldás** a **kockázatalapú szabályzat által vezérelt MFA-t használó felhasználók számára**állítja be az állapotot.
+A kockázatkezelési **megoldás** a **kockázatalapú szabályzat által vezérelt MFA-t használó felhasználók számára** állítja be az állapotot.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 ### <a name="why-is-a-user-is-at-risk"></a>Miért van kockázat a felhasználó számára?
 
 Ha Ön Azure AD Identity Protection ügyfél, lépjen a [kockázatos felhasználók](howto-identity-protection-investigate-risk.md#risky-users) nézetre, és kattintson a veszélyeztetett felhasználóra. A lap alján található "kockázati előzmények" lapon megjelenik az összes olyan esemény, amely a felhasználó kockázati változásához vezetett. Ha szeretné megtekinteni az összes kockázatos bejelentkezést a felhasználó számára, kattintson a "felhasználó kockázatos bejelentkezések" elemre. Ha meg szeretné tekinteni a felhasználó összes kockázati észlelését, kattintson a "felhasználó kockázati észlelése" elemre.
+
+## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>Miért tiltották le a bejelentkezést, de az Identity Protection nem generált kockázati észlelést?
+A bejelentkezések több okból is letiltható. Fontos megjegyezni, hogy az Identity Protection csak akkor generál kockázati észleléseket, ha a hitelesítési kérelemben a megfelelő hitelesítő adatok vannak használatban. Ha a felhasználó helytelen hitelesítő adatokat használ, a rendszer nem jelöli meg az identitások védelme miatt, mert nem áll fenn a hitelesítő adatok sérülése, kivéve, ha egy hibás szereplő a megfelelő hitelesítő adatokat használja. Bizonyos okok miatt előfordulhat, hogy a felhasználók nem tudnak az Identity Protection-észlelést előidéző aláírásból a következőket:
+* Az **IP-cím letiltható** az IP-címről érkező kártékony tevékenységek miatt. Az IP-cím letiltott üzenete nem különbözteti meg a hitelesítő adatok helyességét. Ha az IP-cím le van tiltva, és a rendszer nem használja a helyes hitelesítő adatokat, akkor nem hoz létre Identity Protection-észlelést
+* Az **[intelligens zárolás](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)** blokkolhatja a fiókot több sikertelen kísérlet után.
+* A **feltételes hozzáférési szabályzat** kényszeríthető, amely a kockázati szinttől eltérő feltételeket használ a hitelesítési kérelem letiltásához.
 
 ### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>Hogyan szerezhetek be egy adott típusú észlelési jelentést?
 
@@ -81,7 +87,7 @@ Az összes kockázati észlelésről szóló cikkben a [Mi a kockázat](concept-
 - Ezen felül a kockázatkezelési rendszerek jövőbeli fejlesztései esetében is biztosítjuk az információkat a gépi tanulási rendszerekhez.
 
     > [!NOTE]
-    > Ha a felhasználó már szervizelve van, ne kattintson a **Biztonság megerősítése** elemre, mert a bejelentkezési és a felhasználói kockázati állapotot a rendszer **visszaigazolja** a feltört és a kockázati szint **magas**szintre való visszalépésével.
+    > Ha a felhasználó már szervizelve van, ne kattintson a **Biztonság megerősítése** elemre, mert a bejelentkezési és a felhasználói kockázati állapotot a rendszer **visszaigazolja** a feltört és a kockázati szint **magas** szintre való visszalépésével.
 
 **Biztonság megerősítése** (bejelentkezéskor) – tájékoztatja Azure ad Identity Protection, hogy a bejelentkezést az identitás tulajdonosa végezte el, és nem jelent kompromisszumot.
 

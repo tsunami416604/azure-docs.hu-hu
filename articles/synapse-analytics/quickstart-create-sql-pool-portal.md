@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c89bd01cb2e6947df5ed192d66e0dbae08cf66d5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6c9d49d8d4d1951542268d35e22822ab62449278
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91260631"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041216"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-preview-using-the-azure-portal"></a>Rövid útmutató: szinapszis SQL-készlet létrehozása (előzetes verzió) a Azure Portal használatával
 
@@ -37,7 +37,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
 
 1. Navigáljon ahhoz a szinapszis-munkaterülethez, ahol az SQL-készletet hozza létre, majd írja be a szolgáltatás nevét (vagy az erőforrás nevét közvetlenül) a keresősávba.
 ![Azure Portal keresési sáv, amely szinapszis-munkaterületeket írt ](media/quickstart-create-sql-pool/create-sql-pool-00a.png) be. 
-1. A munkaterületek listájából írja be a megnyitni kívánt munkaterület nevét (vagy annak egy részét). Ebben a példában egy **contosoanalytics**nevű munkaterületet fogunk használni.
+1. A munkaterületek listájából írja be a megnyitni kívánt munkaterület nevét (vagy annak egy részét). Ebben a példában egy **contosoanalytics** nevű munkaterületet fogunk használni.
 ![A contoso nevet tartalmazó szinapszis-munkaterületek listázása.](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
 
 ## <a name="create-new-sql-pool"></a>Új SQL-készlet létrehozása
@@ -60,12 +60,12 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
 4. Válassza a **nincs** lehetőséget, ha az SQL-készletet adatnélkül szeretné kiépíteni. Hagyja bejelölve az alapértelmezett rendezést.
 ![SQL-készlet folyamat létrehozása – további beállítások lap.](media/quickstart-create-sql-pool/create-sql-pool-portal-03.png)
 
-5. Válassza az **Áttekintés + létrehozás** lehetőséget.
-6. Győződjön meg arról, hogy a korábban megadott adatok alapján a részletek helyesek. Kattintson a **Létrehozás** gombra.
+5. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
+6. Győződjön meg arról, hogy a korábban megadott adatok alapján a részletek helyesek. Válassza a **Létrehozás** lehetőséget.
 ![SQL-készlet létrehozása folyamat – felülvizsgálati beállítások lap.](media/quickstart-create-sql-pool/create-sql-pool-portal-04.png)
 
 7. Ekkor elindul az erőforrás-kiépítési folyamat.
- ![SQL-készlet folyamat létrehozása – erőforrás-kiépítés.](media/quickstart-create-sql-pool/create-sql-pool-portal-06.png)
+ ![Képernyőkép, amely az "üzembe helyezés befejezése" lapot mutatja.](media/quickstart-create-sql-pool/create-sql-pool-portal-06.png)
 
 8. A kiépítés befejezése után lépjen vissza a munkaterületre, majd egy új bejegyzést fog látni az újonnan létrehozott SQL-készlethez.
  ![SQL-készlet folyamat létrehozása – erőforrás-kiépítés.](media/quickstart-create-sql-pool/create-sql-pool-portal-07.png)
@@ -73,7 +73,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
 
 Az SQL-készlet létrehozása után elérhető lesz a munkaterületen az adatok betöltéséhez, a streamek feldolgozásához, a tótól való olvasáshoz stb.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Az alábbi lépéseket követve törölheti az SQL-készletet a munkaterületről.
 > [!WARNING]
@@ -82,12 +82,12 @@ Az alábbi lépéseket követve törölheti az SQL-készletet a munkaterületrő
 Ha törölni szeretné az SQL-készletet, hajtsa végre a következő lépéseket:
 
 1. Navigáljon az SQL-készletek panelre a munkaterület panelen
-1. Válassza ki a törölni kívánt SQL-készletet (ebben az esetben **contosowdw**)
+1. Válassza ki a törölni kívánt SQL-készletet (ebben az esetben **contosowdw** )
 1. A kijelölés után nyomja le a **delete** billentyűt.
 1. Erősítse meg a törlést, **majd nyomja le a DELETE gomb** ![ SQL Pool (Törlés megerősítése) elemet.](media/quickstart-create-sql-pool/create-sql-pool-portal-11.png)
 1. Ha a folyamat sikeresen befejeződik, az SQL-készlet többé nem jelenik meg a munkaterület erőforrásaiban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd [: rövid útmutató: Apache Spark-készlet létrehozása a szinapszis Studióban webes eszközök használatával](quickstart-apache-spark-notebook.md).
 - Lásd [: rövid útmutató: Apache Spark készlet létrehozása a Azure Portal használatával](quickstart-create-apache-spark-pool-portal.md).

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: 5fdec829ceeefce2426a5fd08b4245e66bd0a08c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 1a106874277f64a006584f9deb98fb9729263b1b
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016671"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040718"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Arcok kivonása Azure Media Analytics bemutatóval
 
@@ -30,7 +30,7 @@ ms.locfileid: "92016671"
 
 A **Azure Media redactor** egy [Azure Media Analytics](./legacy-components.md) Media Processor (mp), amely méretezhető arc-kivonást biztosít a felhőben. Az Arcfelismerés lehetővé teszi a videó módosítását, hogy a kijelölt személyek ne legyenek elmosódottak. Érdemes lehet a Face kivonási szolgáltatást használni a közbiztonság és a hírek adathordozóján. Néhány perces felvétel, amely több arcot tartalmaz, manuálisan is eltarthat, de ezzel a szolgáltatással az arc-kivonási folyamat csak néhány egyszerű lépést igényelhet. További információkért tekintse meg [ezt a](https://azure.microsoft.com/blog/azure-media-redactor/) blogot.
 
-A  **Azure Media redactor**kapcsolatos részletekért tekintse meg a [Face kivonások áttekintése](media-services-face-redaction.md) című témakört.
+A  **Azure Media redactor** kapcsolatos részletekért tekintse meg a [Face kivonások áttekintése](media-services-face-redaction.md) című témakört.
 
 Ez a témakör részletesen bemutatja, hogyan futtathat teljes kivonási munkafolyamatot a Azure Media Services Explorer (AMSE) és a Azure Media Redactor megjelenítő (nyílt forráskódú eszköz) használatával.
 
@@ -47,7 +47,7 @@ A redactor első lépéseinek legegyszerűbb módja a nyílt forráskódú AMSE 
 
     A fiók neve és a legfontosabb információk beszerzéséhez látogasson el az [Azure-portálra](https://portal.azure.com/), és válassza ki AMS-fiókját. Ezután válassza a beállítások > kulcsok elemet. A Kulcsok kezelése ablakban megtalálja a fiók nevét, valamint az elsődleges és másodlagos kulcsot. Másolja ki a fióknév és az elsődleges kulcs értékeit.
 
-![Arcszerkesztés](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough001.png)
+![Képernyőfelvétel: Microsoft Azure Media Services, ahol megadhatja a fiók nevét és kulcsát.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough001.png)
 
 ### <a name="first-pass--analyze-mode"></a>Első lépés – elemzési mód
 
@@ -55,32 +55,32 @@ A redactor első lépéseinek legegyszerűbb módja a nyílt forráskódú AMSE 
 1. Kattintson a jobb gombbal, és dolgozza fel a médiafájlt Media Analytics – > Azure Media Redactor – > elemzése mód használatával. 
 
 
-![Arcszerkesztés](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough002.png)
+![A képernyőképen egy olyan menü látható, amely Azure Media Redactor.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough002.png)
 
-![Arcszerkesztés](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough003.png)
+![A képernyőképen az első lépés: kiválasztott elemzési mód Azure Media Redactor látható.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough003.png)
 
 A kimenet tartalmazni fog egy széljegyzeteket tartalmazó JSON-fájlt, amely a Face Location adatokat, valamint az összes észlelt arc jpg-fájlját tartalmazza. 
 
-![Arcszerkesztés](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough004.png)
+![A képernyőképen az elemzés kimenete látható.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough004.png)
 
 ### <a name="second-pass--redact-mode"></a>Második pass – kivonási mód
 
 1. Töltse fel az eredeti video-eszközét az első menetből származó kimenetre, és állítsa be elsődleges eszközként. 
 
-    ![Arcszerkesztés](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough005.png)
+    ![A képernyőfelvételen a feltöltés és a beállítás elsődleges gombként jelenik meg.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough005.png)
 
 2. Választható Töltsön fel egy "Dance_idlist.txt" fájlt, amely tartalmazza a kitakarni kívánt azonosítók sortöréssel tagolt listáját. 
 
-    ![Arcszerkesztés](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
+    ![A képernyőképen a szövegfájl feltöltésének lehetősége látható.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
 
 3. Választható Szerkessze a annotations.jsa fájlban, például növelje a határolókeret határait. 
 4. Kattintson a jobb gombbal a kimeneti eszközre az első lépésből, válassza ki a redactor, és futtassa a **kivonási** módot. 
 
-    ![Arcszerkesztés](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
+    ![A képernyőképen Azure Media Redactor a második pass: kivonási mód van kiválasztva.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
 
 5. Töltse le vagy ossza meg a végső kivont kimeneti eszközt. 
 
-    ![Arcszerkesztés](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
+    ![Képernyőfelvétel: a letöltés gomb.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
 
 ## <a name="azure-media-redactor-visualizer-open-source-tool"></a>Azure Media Redactor megjelenítő nyílt forráskódú eszköz
 
@@ -94,12 +94,12 @@ Ha a fejlesztők a JSON-megjegyzési adatokat szeretnék elemezni, tekintse meg 
 
 1.  Töltse le és hozza létre a teljes megoldást. 
 
-    ![Arcszerkesztés](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
+    ![A képernyőképen a menüből kiválasztott Build megoldás látható.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
 
 2.  Az FFMPEG-t [innen](https://ffmpeg.org/download.html)töltheti le. A projekt eredetileg a be1d324 (2016-10-04) verzióval lett kifejlesztve statikus összekapcsolással. 
 3.  Másolja ffmpeg.exe és ffprobe.exe ugyanarra a kimeneti mappára, mint AzureMediaRedactor.exe. 
 
-    ![Arcszerkesztés](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
+    ![A képernyőképen a mappa tartalma látható, beleértve az FFmpeg és a ffprobe.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
 
 4. AzureMediaRedactor.exe futtatása. 
 
@@ -109,11 +109,11 @@ Ha a fejlesztők a JSON-megjegyzési adatokat szeretnék elemezni, tekintse meg 
 2. Töltse le az eredeti videofájl és a kivonási elemzési feladatok kimenetét. 
 3. Futtassa a megjelenítő alkalmazást, és válassza ki a fenti fájlokat. 
 
-    ![Arcszerkesztés](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough011.png)
+    ![A képernyőképen Azure Media Redactor fájlok feltöltése látható.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough011.png)
 
 4. A fájl előnézete. Válassza ki, hogy mely arcok legyenek elmosódottak a jobb oldalon található oldalsávon keresztül. 
     
-    ![Arcszerkesztés](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
+    ![Képernyőfelvétel: a Azure Media Redactor, ahol megtekintheti az arcokat, és kiválaszthatja az elmosódást.](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
 
 5.  Az alsó szövegmező a Face ID-val fog frissülni. Hozzon létre egy "idlist.txt" nevű fájlt ezekkel az azonosítókkal egy sortöréssel tagolt listaként. 
 

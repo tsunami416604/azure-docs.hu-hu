@@ -74,6 +74,8 @@
       href: concepts/sdk-options.md
     - name: Díjszabási modell
       href: concepts/pricing.md
+    - name: Adatvédelem
+      href: concepts/privacy.md
     - name: Hitelesítés
       href: concepts/authentication.md
     - name: Eseménykezelés

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/08/2020
-ms.openlocfilehash: 8f8cfef5ed98682a1d03f7d36caa2008f4ff03b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 424d5a7ade04c2b72a0bc8ec379a6fad09216f39
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84660403"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042678"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Betöltés az Azure Data Lake Storage Gen2ba Azure Data Factory
 
@@ -29,7 +29,7 @@ A Azure Data Factory (ADF) egy teljes körűen felügyelt felhőalapú adatinteg
 
 A Azure Data Factory kibővíthető, felügyelt adatátviteli megoldást kínál. Az ADF kibővített architektúrája miatt az adatok nagy adatátviteli sebességgel is beolvashatók. Részletekért lásd: [másolási tevékenység teljesítménye](copy-activity-performance.md).
 
-Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszköz az _Amazon Web Services S3 szolgáltatásból_ _Azure Data Lake Storage Gen2ba_való adatok betöltéséhez. Az adatok más típusú adattárakból történő másolásához hasonló lépéseket kell követnie.
+Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszköz az _Amazon Web Services S3 szolgáltatásból_ _Azure Data Lake Storage Gen2ba_ való adatok betöltéséhez. Az adatok más típusú adattárakból történő másolásához hasonló lépéseket kell követnie.
 
 >[!TIP]
 >Az adatok Azure Data Lake Storage Gen1ból a Gen2 való másolásához tekintse meg [ezt a konkrét bemutatót](load-azure-data-lake-storage-gen2-from-gen1.md).
@@ -42,19 +42,19 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
 
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
-1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **adatok és Analitika**  >  **Data Factory**:
+1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **adatok és Analitika**  >  **Data Factory** :
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 2. Az **új adat-előállító** lapon adja meg a következő mezők értékét:
  
-    * **Név**: adjon meg egy globálisan egyedi nevet az Azure-beli adatgyár számára. Ha "a *YourDataFactoryName* nem érhető el" hibaüzenet jelenik meg, adjon meg egy másik nevet az adatelőállítónak. Használhatja például a _**sajátneve**_**ADFTutorialDataFactory**nevet. Próbálkozzon újra az adatelőállító létrehozásával. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
-    * **Előfizetés**: válassza ki azt az Azure-előfizetést, amelyben létre kívánja hozni az adatelőállítót. 
-    * **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot a legördülő listából, vagy válassza az **új létrehozása** lehetőséget, és adja meg az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
-    * **Verzió**: Válassza a **V2** lehetőséget.
-    * **Hely**: válassza ki az adatelőállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. A Refactory által használt adattárak más helyszíneken és régiókban is lehetnek. 
+    * **Név** : adjon meg egy globálisan egyedi nevet az Azure-beli adatgyár számára. Ha "a *YourDataFactoryName* nem érhető el" hibaüzenet jelenik meg, adjon meg egy másik nevet az adatelőállítónak. Használhatja például a _**sajátneve**_**ADFTutorialDataFactory** nevet. Próbálkozzon újra az adatelőállító létrehozásával. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+    * **Előfizetés** : válassza ki azt az Azure-előfizetést, amelyben létre kívánja hozni az adatelőállítót. 
+    * **Erőforráscsoport** : válasszon ki egy meglévő erőforráscsoportot a legördülő listából, vagy válassza az **új létrehozása** lehetőséget, és adja meg az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
+    * **Verzió** : Válassza a **V2** lehetőséget.
+    * **Hely** : válassza ki az adatelőállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. A Refactory által használt adattárak más helyszíneken és régiókban is lehetnek. 
 
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
 
 4. A létrehozás befejezése után nyissa meg az adatait a gyárban. Megjelenik a **Data Factory** kezdőlapja, ahogy az a következő képen látható: 
    
@@ -66,10 +66,10 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
 
 1. Az Adatok másolása eszköz elindításához az **Első lépések** oldalon kattintson az **Adatok másolása** csempére.
 
-2. A **Tulajdonságok** lapon adja meg a **CopyFromAmazonS3ToADLS** mezőt a **feladat neve** mezőben, majd kattintson a **Tovább gombra**.
+2. A **Tulajdonságok** lapon adja meg a **CopyFromAmazonS3ToADLS** mezőt a **feladat neve** mezőben, majd kattintson a **Tovább gombra** .
 
     ![Tulajdonságok lap](./media/load-azure-data-lake-storage-gen2/copy-data-tool-properties-page.png)
-3. A **Forrásadattár** oldalon kattintson az **Új kapcsolat létrehozása** lehetőségre. Válassza ki az **Amazon S3** elemet az összekötő-katalógusból, és válassza a **Folytatás**lehetőséget.
+3. A **Forrásadattár** oldalon kattintson az **Új kapcsolat létrehozása** lehetőségre. Válassza ki az **Amazon S3** elemet az összekötő-katalógusból, és válassza a **Folytatás** lehetőséget.
     
     ![Forrás adattár S3 oldal](./media/load-azure-data-lake-storage-gen2/source-data-store-page-s3.png)
     
@@ -77,7 +77,7 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
 
    1. Itt adhatja meg a **hozzáférési kulcs azonosítójának** értékét.
    2. A **titkos hozzáférési kulcs** értékének megadása.
-   3. Kattintson a **Kapcsolódás tesztelése** elemre a beállítások ellenőrzéséhez, majd válassza a **Létrehozás**lehetőséget.
+   3. Kattintson a **Kapcsolódás tesztelése** elemre a beállítások ellenőrzéséhez, majd válassza a **Létrehozás** lehetőséget.
 
       ![Amazon S3-fiók meghatározása](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
    4. Ekkor megjelenik egy új AmazonS3-kapcsolatok létrehozása. Kattintson a **Tovább** gombra. 
@@ -88,9 +88,9 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
 
 6. A **rekurzív** és a **bináris másolási** beállítások ellenőrzésével határozza meg a másolási viselkedést. Kattintson a **Tovább** gombra.
 
-    ![Kimeneti mappa meghatározása](./media/load-azure-data-lake-storage-gen2/specify-binary-copy.png)
+    ![A képernyőfelvételen a bemeneti fájl vagy mappa kiválasztása látható, ahol kiválaszthatja a bináris másolás és rekurzív módon lehetőséget.](./media/load-azure-data-lake-storage-gen2/specify-binary-copy.png)
     
-7. A **cél adattár** lapon kattintson az **+ új kapcsolatok létrehozása**lehetőségre, majd válassza a **Azure Data Lake Storage Gen2**lehetőséget, majd a **Folytatás**lehetőséget.
+7. A **cél adattár** lapon kattintson az **+ új kapcsolatok létrehozása** lehetőségre, majd válassza a **Azure Data Lake Storage Gen2** lehetőséget, majd a **Folytatás** lehetőséget.
 
     ![Céladattár lap](./media/load-azure-data-lake-storage-gen2/destination-data-storage-page.png)
 
@@ -101,15 +101,15 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
 
         ![Azure Data Lake Storage Gen2 fiók meghatározása](./media/load-azure-data-lake-storage-gen2/specify-azure-data-lake-storage.png)
 
-9. A **kimeneti fájl vagy mappa kiválasztása** lapon adja meg a **copyfroms3** a kimeneti mappa neveként, majd kattintson a **tovább**gombra. Az ADF a másolás során létrehozza a megfelelő ADLS Gen2 fájlrendszert és almappákat, ha az nem létezik.
+9. A **kimeneti fájl vagy mappa kiválasztása** lapon adja meg a **copyfroms3** a kimeneti mappa neveként, majd kattintson a **tovább** gombra. Az ADF a másolás során létrehozza a megfelelő ADLS Gen2 fájlrendszert és almappákat, ha az nem létezik.
 
-    ![Kimeneti mappa meghatározása](./media/load-azure-data-lake-storage-gen2/specify-adls-path.png)
+    ![Képernyőfelvétel: a megadott mappa elérési útja.](./media/load-azure-data-lake-storage-gen2/specify-adls-path.png)
 
 10. A **Beállítások** lapon kattintson a **Tovább** gombra az alapértelmezett beállítások használatához.
 
     ![Beállítások lap](./media/load-azure-data-lake-storage-gen2/copy-settings.png)
 
-11. Az **Összefoglalás** lapon tekintse át a beállításokat, majd kattintson a **Tovább gombra**.
+11. Az **Összefoglalás** lapon tekintse át a beállításokat, majd kattintson a **Tovább gombra** .
 
     ![Összefoglaló lap](./media/load-azure-data-lake-storage-gen2/copy-summary.png)
 
@@ -129,7 +129,7 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
 
 16. Ellenőrizze, hogy a rendszer átmásolta-e az adatait a Data Lake Storage Gen2-fiókjába.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Másolási tevékenység áttekintése](copy-activity-overview.md)
+* [Másolási tevékenység – áttekintés](copy-activity-overview.md)
 * [Azure Data Lake Storage Gen2-összekötő](connector-azure-data-lake-storage.md)

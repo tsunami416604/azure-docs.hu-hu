@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: e87331cb2bbfb11a9d49888462b8be3b55e18118
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: eaf12fe1d757c3a5a76307d87151bf71aa720b2b
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460869"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042400"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>A Linuxhoz készült Log Analytics-ügynökkel kapcsolatos hibák elhárítása 
 
@@ -55,6 +55,15 @@ További részletekért tekintse meg a [GitHub dokumentációját](https://githu
  >[!NOTE]
  >Ha probléma merül fel, futtassa a log Collector eszközt. A naplók kezdetben nagy mértékben segítik a támogatási csapatot a probléma gyorsabb megoldásában.
 
+## <a name="purge-and-re-install-the-linux-agent"></a>A Linux-ügynök kiürítése és Re-Install
+
+Láttuk, hogy az ügynök tiszta újratelepítése megoldja a legtöbb problémát. Valójában ez a támogatás első olyan javaslata, amellyel az ügynököt uncurropted-állapotba veheti a támogatási csapattól. A hibakereső futtatása, a napló gyűjtése és a tiszta újratelepítési kísérlet megkönnyíti a problémák megoldását.
+
+1. Töltse le a kiürítési parancsfájlt:
+- `$ wget https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/tools/purge_omsagent.sh`
+2. Futtassa a kiürítési parancsfájlt (sudo engedélyekkel):
+- `$ sudo sh purge_omsagent.sh`
+
 ## <a name="important-log-locations-and-log-collector-tool"></a>Fontos naplózási helyszínek és a log Collector eszköz
 
  Fájl | Elérési út
@@ -83,9 +92,9 @@ További részletekért tekintse meg a [GitHub dokumentációját](https://githu
 | NOT_DEFINED | Mivel a szükséges függőségek nincsenek telepítve, a auoms naplózott beépülő modul nem lesz telepítve. | Sikertelen volt a auoms telepítése, a csomag naplózása megtörtént. |
 | 2 | Érvénytelen beállítás van megadva a rendszerhéj-csomagban. Futtatás `sudo sh ./omsagent-*.universal*.sh --help` használatra |
 | 3 | A rendszerhéj-csomagban nincs megadva lehetőség. Futtatás `sudo sh ./omsagent-*.universal*.sh --help` a használathoz. |
-| 4 | Érvénytelen a csomag típusa vagy a proxybeállítások érvénytelenek; omsagent –*rpm*. sh csomagok csak rpm-alapú rendszereken telepíthetők, és a omsagent-*deb*. sh csomagok csak a Debian-alapú rendszereken telepíthetők. Javasoljuk, hogy a [legújabb kiadásban](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux)használja az univerzális telepítőt. Tekintse át a proxybeállítások ellenőrzését is. |
+| 4 | Érvénytelen a csomag típusa vagy a proxybeállítások érvénytelenek; omsagent – *rpm* . sh csomagok csak rpm-alapú rendszereken telepíthetők, és a omsagent- *deb* . sh csomagok csak a Debian-alapú rendszereken telepíthetők. Javasoljuk, hogy a [legújabb kiadásban](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux)használja az univerzális telepítőt. Tekintse át a proxybeállítások ellenőrzését is. |
 | 5 | A rendszerhéj-csomagot root-ként kell végrehajtani, vagy 403 hiba történt az előkészítés során. Futtassa a parancsot a használatával `sudo` . |
-| 6 | Érvénytelen a csomag architektúrája, vagy hiba történt a bevezetéskor visszaadott 200-es hiba miatt. a omsagent-*x64.sh csomagok csak 64 bites rendszerekre telepíthetők, és a omsagent-* x86.sh csomagok csak 32 bites rendszereken telepíthetők. Töltse le a megfelelő csomagot az architektúrához a [legújabb kiadásban](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest). |
+| 6 | Érvénytelen a csomag architektúrája, vagy hiba történt a bevezetéskor visszaadott 200-es hiba miatt. a omsagent- *x64.sh csomagok csak 64 bites rendszerekre telepíthetők, és a omsagent-* x86.sh csomagok csak 32 bites rendszereken telepíthetők. Töltse le a megfelelő csomagot az architektúrához a [legújabb kiadásban](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest). |
 | 17 | Nem sikerült telepíteni a OMS-csomagot. Tekintse át a parancs kimenetét a gyökérszintű hiba miatt. |
 | 19 | Nem sikerült telepíteni a a "a" csomagot. Tekintse át a parancs kimenetét a gyökérszintű hiba miatt. |
 | 20 | Az SCX-csomag telepítése nem sikerült. Tekintse át a parancs kimenetét a gyökérszintű hiba miatt. |
@@ -454,7 +463,7 @@ A probléma megoldásához hajtsa végre az alábbi lépéseket.
 1. Távolítsa el a bővítményt a Azure Portalból.
 2. Telepítse az ügynököt az [utasításokat](../learn/quick-collect-linux-computer.md)követve.
 3. Indítsa újra az ügynököt a következő parancs futtatásával: `sudo /opt/microsoft/omsagent/bin/service_control restart` .
-* Várjon néhány percet, és a kiépítés állapota **sikeresen kiépítve**értékre változik.
+* Várjon néhány percet, és a kiépítés állapota **sikeresen kiépítve** értékre változik.
 
 
 ## <a name="issue-the-log-analytics-agent-upgrade-on-demand"></a>Probléma: a Log Analytics ügynök igény szerinti frissítése

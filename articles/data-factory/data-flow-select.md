@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/02/2020
-ms.openlocfilehash: 70e0a95a85920562af8bf9d3fffa6633709dccc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d8c4d1915e22ccabf193f1b34c5fc4797ead549
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84322090"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040229"
 ---
 # <a name="select-transformation-in-mapping-data-flow"></a>Átalakítás kiválasztása az adatforgalom leképezése elemben
 
@@ -44,13 +44,13 @@ A rögzített leképezések használatával egy hierarchikus oszlop aloszlopa k�
 
 Ha egyszerre sok oszlopot szeretne leképezni, vagy átadni a lebegő oszlopokat, a szabályok alapján történő leképezés használatával definiálhatja a leképezéseket az oszlopok mintázatával. Egyezés a,, `name` `type` `stream` és `position` oszlopok alapján. A rögzített és a szabályokon alapuló leképezések tetszőleges kombinációja lehet. Alapértelmezés szerint az 50-nál nagyobb számú összes kivetítés alapértelmezett értéke egy olyan szabály-alapú hozzárendelés, amely minden oszlop esetében megfelel, és a megjelenő nevet adja eredményül. 
 
-Szabály alapú hozzárendelés hozzáadásához kattintson a **leképezés hozzáadása** elemre, és válassza a **szabály alapú leképezés**lehetőséget.
+Szabály alapú hozzárendelés hozzáadásához kattintson a **leképezés hozzáadása** elemre, és válassza a **szabály alapú leképezés** lehetőséget.
 
-![szabály alapú leképezés](media/data-flow/rule2.png "Szabály alapú leképezés")
+![Képernyőfelvétel: a leképezés hozzáadása lehetőséggel kiválasztott szabály alapú leképezés.](media/data-flow/rule2.png "Szabály alapú leképezés")
 
 Minden szabály alapú leképezéshez két bemenet szükséges: az a feltétel, amelynek a megfeleltetése a és az egyes leképezett oszlopok neve. Mindkét érték a [Kifejezésszerkesztő](concepts-data-flow-expression-builder.md)használatával van megadva. A bal oldali kifejezés mezőbe írja be a logikai egyezési feltételt. A jobb oldali kifejezés mezőben adja meg, hogy az egyeztetett oszlop hogyan lesz leképezve.
 
-![szabály alapú leképezés](media/data-flow/rule-based-mapping.png "Szabály alapú leképezés")
+![A képernyőfelvétel egy leképezést mutat be.](media/data-flow/rule-based-mapping.png "Szabály alapú leképezés")
 
 `$$`Szintaxis használatával hivatkozhat egy egyező oszlop bemeneti nevére. Tegyük fel, hogy a fenti képen egy felhasználó szeretne egyeztetni az összes olyan karakterlánc-oszlopon, amelynek a neve 6 karakternél rövidebb. Ha az egyik bejövő oszlop neve `test` , a kifejezés `$$ + '_short'` átnevezi az oszlopot `test_short` . Ha ez az egyetlen olyan leképezés, amely nem felel meg a feltételnek, a rendszer elveti a kiszolgált adatokból.
 
@@ -60,7 +60,7 @@ A minták egymásba sodródott és definiált oszlopokkal egyeznek meg. Ha szere
 
 Ha a lefelé mutató Chevron ikonra kattint, megadhat egy regex-leképezési feltételt. A regex-leképezési feltétel minden olyan oszlopnevet megfelel, amely megfelel a megadott regex-feltételnek. Ez használható a szabványos szabályokon alapuló leképezésekkel együtt.
 
-![szabály alapú leképezés](media/data-flow/regex-matching.png "Szabály alapú leképezés")
+![Képernyőfelvétel: a regex-leképezési feltétel a hierarchia szintjével és a név egyezésével.](media/data-flow/regex-matching.png "Szabály alapú leképezés")
 
 A fenti példa a regex mintára `(r)` vagy bármely olyan oszlop nevére illeszkedik, amely egy kisbetű r betűt tartalmaz. A szabványos szabályokon alapuló leképezéshez hasonlóan az összes egyező oszlop a megfelelő szintaxis használatával módosul `$$` .
 
@@ -70,7 +70,7 @@ Ha az oszlopnév több regex-egyezéssel rendelkezik, akkor az `$n` "n" kifejez�
 
 Ha a megadott leképezés rendelkezik hierarchiával, akkor a szabályokon alapuló leképezés használatával képezhető le a hierarchiák aloszlopai. Meg kell adnia egy megfelelő feltételt és azt a komplex oszlopot, amelynek aloszlopait szeretné leképezni. Minden egyező aloszlop kimenete a jobb oldalon megadott "Name as" szabály használatával történik.
 
-![szabály alapú leképezés](media/data-flow/rule-based-hierarchy.png "Szabály alapú leképezés")
+![A képernyőfelvétel egy, a hierarchiát használó szabály alapú leképezést mutat be.](media/data-flow/rule-based-hierarchy.png "Szabály alapú leképezés")
 
 A fenti példa a komplex oszlopok összes aloszlopára illeszkedik `a` . `a` két aloszlopot tartalmaz `b` , és `c` . A kimeneti séma két oszlopot fog tartalmazni, `b` és `c` a "Name as" feltételnek kell lennie `$$` .
 
@@ -132,5 +132,5 @@ DerivedColumn1 select(mapColumn(
     skipDuplicateMapOutputs: true) ~> Select1
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Miután a Select paranccsal átnevezi, átrendezi és alias oszlopokat, a fogadó [transzformáció](data-flow-sink.md) használatával az adatait egy adattárba helyezheti.

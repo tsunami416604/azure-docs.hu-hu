@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
-ms.openlocfilehash: f95f35fe0d17afdeec864674d3360fc3b172cad1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac84ce17f53145ffd85ffa31b6633d8b4b184962
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83683363"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042654"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Az átalakítás összekapcsolása a leképezési adatfolyamban
 
@@ -59,7 +59,7 @@ Ha explicit módon szeretne létrehozni egy teljes Descartes-szorzatot, használ
 
 1. Válassza ki, hogy melyik adatfolyamot kívánja csatlakoztatni a **megfelelő stream** legördülő menüben.
 1. Válassza ki az **illesztés típusát**
-1. Válassza ki, hogy mely kulcs oszlopokat szeretné összekapcsolni a csatlakozás feltételéhez. Alapértelmezés szerint az adatforgalom az egyes adatfolyamok egy oszlopa között keresi az egyenlőséget. Számított érték alapján történő összehasonlításhoz vigye az egérmutatót az oszlop legördülő menüjére, és válassza a **számított oszlop**lehetőséget.
+1. Válassza ki, hogy mely kulcs oszlopokat szeretné összekapcsolni a csatlakozás feltételéhez. Alapértelmezés szerint az adatforgalom az egyes adatfolyamok egy oszlopa között keresi az egyenlőséget. Számított érték alapján történő összehasonlításhoz vigye az egérmutatót az oszlop legördülő menüjére, és válassza a **számított oszlop** lehetőséget.
 
 ![Csatlakozás az átalakításhoz](media/data-flow/join.png "Csatlakozás")
 
@@ -75,13 +75,13 @@ Az egyesítési illesztéstől eltérően az olyan eszközökhöz, mint a SSIS, 
 
 ![Összekapcsolási átalakítás optimalizálása](media/data-flow/joinoptimize.png "Csatlakozás optimalizálása")
 
-Az illesztések, a keresések és a meglévő átalakítások esetében, ha az egyik vagy mindkét adatfolyam a feldolgozó csomóponti memóriába illeszkedik, a **szórás**engedélyezésével optimalizálhatja a teljesítményt. Alapértelmezés szerint a Spark-motor automatikusan eldönti, hogy az egyik oldalt kívánja-e közvetíteni. A közvetíteni kívánt oldal manuális kiválasztásához válassza a **rögzített**lehetőséget.
+Az illesztések, a keresések és a meglévő átalakítások esetében, ha az egyik vagy mindkét adatfolyam a feldolgozó csomóponti memóriába illeszkedik, a **szórás** engedélyezésével optimalizálhatja a teljesítményt. Alapértelmezés szerint a Spark-motor automatikusan eldönti, hogy az egyik oldalt kívánja-e közvetíteni. A közvetíteni kívánt oldal manuális kiválasztásához válassza a **rögzített** lehetőséget.
 
 Nem ajánlott letiltani a szórást a **kikapcsolási** lehetőséggel, kivéve, ha az illesztések időtúllépési hibákkal futnak.
 
 ## <a name="self-join"></a>Self-Join
 
-Ha önmagához szeretne csatlakoztatni egy adatfolyamot, alias egy meglévő streamet egy kiválasztott átalakítással. Hozzon létre egy új ágat a transzformáció melletti plusz ikonra kattintva, majd válassza az **új ág**lehetőséget. Adjon hozzá egy Select transzformációt az eredeti stream aliasához. Vegyen fel egy JOIN transzformációt, és válassza ki az eredeti streamet a **bal oldali streamként** , a **jobb oldali**adatfolyamként pedig válassza az átalakítás lehetőséget.
+Ha önmagához szeretne csatlakoztatni egy adatfolyamot, alias egy meglévő streamet egy kiválasztott átalakítással. Hozzon létre egy új ágat a transzformáció melletti plusz ikonra kattintva, majd válassza az **új ág** lehetőséget. Adjon hozzá egy Select transzformációt az eredeti stream aliasához. Vegyen fel egy JOIN transzformációt, és válassza ki az eredeti streamet a **bal oldali streamként** , a **jobb oldali** adatfolyamként pedig válassza az átalakítás lehetőséget.
 
 ![Önálló csatlakozás](media/data-flow/selfjoin.png "Önálló csatlakozás")
 
@@ -108,7 +108,7 @@ Az alábbi példa egy nevű összekapcsolási átalakítás, `JoinMatchedData` a
 
 Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 
-![Példa csatlakoztatásra](media/data-flow/join-script1.png "Példa csatlakoztatásra")
+![A képernyőképen az összekapcsolási beállítások lap van kiválasztva, valamint egy belső illesztési típus látható.](media/data-flow/join-script1.png "Példa csatlakoztatásra")
 
 Az átalakításhoz tartozó adatfolyam-szkript az alábbi kódrészletben található:
 
@@ -130,7 +130,7 @@ Az alábbi példa egy nevű összekapcsolási átalakítás, `JoiningColumns` am
 
 Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 
-![Példa csatlakoztatásra](media/data-flow/join-script2.png "Példa csatlakoztatásra")
+![A képernyőképen az összekapcsolási beállítások lap van kiválasztva, valamint az egyéni (Cross) illesztési típus látható.](media/data-flow/join-script2.png "Példa csatlakoztatásra")
 
 Az átalakításhoz tartozó adatfolyam-szkript az alábbi kódrészletben található:
 
@@ -143,6 +143,6 @@ LeftStream, RightStream
     )~> JoiningColumns
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adategyesítést követően hozzon létre egy [származtatott oszlopot](data-flow-derived-column.md) [, és az](data-flow-sink.md) adatait egy célhely adattárba.

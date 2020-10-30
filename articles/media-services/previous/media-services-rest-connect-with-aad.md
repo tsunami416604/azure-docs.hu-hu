@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: 958bfa605e0195b5f4fde2c0ff53a8ce567f50a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bea4c049c3d7ea17e173f069a3e99cbcca1fe48
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89257143"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041994"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>A Media Services API és a REST hozzáférése Azure AD-hitelesítéssel
 
@@ -56,7 +56,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 - Tekintse át a [hozzáférés Azure Media Services API-t az Azure ad-hitelesítés áttekintésével foglalkozó](media-services-use-aad-auth-to-access-ams-api.md) cikkben.
 - Telepítse a [Poster](https://www.getpostman.com/) Rest-ügyfelet, hogy végrehajtsa a cikkben látható REST API-kat. 
 
-    Ebben az oktatóanyagban a **Poster** -t használjuk, de minden Rest-eszköz megfelelő lenne. Más alternatívák: **Visual Studio Code** a REST beépülő modullal vagy a **Telerik Hegedűs**. 
+    Ebben az oktatóanyagban a **Poster** -t használjuk, de minden Rest-eszköz megfelelő lenne. Más alternatívák: **Visual Studio Code** a REST beépülő modullal vagy a **Telerik Hegedűs** . 
 
 ## <a name="get-the-authentication-information-from-the-azure-portal"></a>Hitelesítő adatok beolvasása a Azure Portal
 
@@ -71,16 +71,16 @@ Media Services API eléréséhez a következő adatpontokat kell összegyűjteni
 |Ügyfél-azonosító (alkalmazás azonosítója)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Azure AD-alkalmazás (ügyfél) azonosítója. A hozzáférési jogkivonat beszerzéséhez az ügyfél-azonosító szükséges. |
 |Titkos ügyfélkulcs|+ mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq + Dbim0 =|Azure AD-alkalmazás kulcsai (ügyfél titka). A hozzáférési jogkivonat beszerzéséhez az ügyfél titkos kulcsa szükséges.|
 
-### <a name="get-aad-auth-info-from-the-azure-portal"></a>HRE-hitelesítési adatok beolvasása a Azure Portal
+### <a name="get-azure-active-directory-auth-info-from-the-azure-portal"></a>Azure Active Directory hitelesítési adatok beolvasása a Azure Portal
 
 Az információk beszerzéséhez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Navigáljon az AMS-példányhoz.
-3. Válassza az **API-hozzáférés**lehetőséget.
-4. Kattintson a **kapcsolódás Azure Media Services API-hoz az egyszerű szolgáltatásnév**lehetőségre.
+3. Válassza az **API-hozzáférés** lehetőséget.
+4. Kattintson a **kapcsolódás Azure Media Services API-hoz az egyszerű szolgáltatásnév** lehetőségre.
 
-    ![API-hozzáférés](./media/connect-with-rest/connect-with-rest01.png)
+    ![A "Media Services" menüből kiválasztott "A P I hozzáférés", a jobb oldali ablaktáblán pedig a "kapcsolódás Azure Media Services A P I és a szolgáltatáshoz](./media/connect-with-rest/connect-with-rest01.png)
 
 5. Válasszon ki egy meglévő **Azure ad-alkalmazást** , vagy hozzon létre egy újat (alább látható).
 
@@ -89,12 +89,12 @@ Az információk beszerzéséhez kövesse az alábbi lépéseket:
 
     Ha új AD-alkalmazást kell létrehoznia, kövesse az alábbi lépéseket:
     
-   1. Kattintson a **Create New (új létrehozása**) gombra.
+   1. Kattintson a **Create New (új létrehozása** ) gombra.
    2. Adjon meg egy nevet.
    3. Kattintson ismét az **új létrehozása** gombra.
    4. Kattintson a **Mentés** gombra.
 
-      ![API-hozzáférés](./media/connect-with-rest/new-app.png)
+      ![A "Create app" (új alkalmazás létrehozása) szövegmezővel és a "Mentés" gomb kiválasztásával megjelenített képernyőkép.](./media/connect-with-rest/new-app.png)
 
       Az új alkalmazás megjelenik az oldalon.
 
@@ -103,15 +103,15 @@ Az információk beszerzéséhez kövesse az alábbi lépéseket:
    1. Válassza ki az alkalmazást.
    2. Szerezze be az **ügyfél-azonosítót** a jobb oldalon található ablakból. 
 
-      ![API-hozzáférés](./media/connect-with-rest/existing-client-id.png)
+      ![Képernyőfelvétel: az "Azure A D alkalmazás" és az "alkalmazás kezelése" lehetőség van kiválasztva, és a jobb oldali ablaktáblán a "Client I D" elem van kiemelve.](./media/connect-with-rest/existing-client-id.png)
 
 7. Az alkalmazás **kulcsának** (az ügyfél titkos kulcsa) beolvasása. 
 
-   1. Kattintson az **alkalmazás kezelése** gombra (figyelje meg, hogy az ügyfél-azonosító információ az **alkalmazás azonosítója**alatt található). 
-   2. Nyomja meg a **kulcsok**gombot.
+   1. Kattintson az **alkalmazás kezelése** gombra (figyelje meg, hogy az ügyfél-azonosító információ az **alkalmazás azonosítója** alatt található). 
+   2. Nyomja meg a **kulcsok** gombot.
     
-       ![API-hozzáférés](./media/connect-with-rest/manage-app.png)
-   3. Az alkalmazás kulcsának (az ügyfél titkos kulcsa) előállításához töltse ki a **leírást** , és nyomja **le** a **Mentés gombot**.
+       ![Képernyőkép: az "alkalmazás kezelése" gomb kiválasztásakor az "Application I D" a középső ablaktáblán látható, a jobb oldali ablaktáblán pedig a "kulcsok" lehetőség van kiválasztva.](./media/connect-with-rest/manage-app.png)
+   3. Az alkalmazás kulcsának (az ügyfél titkos kulcsa) előállításához töltse ki a **leírást** , és nyomja **le** a **Mentés gombot** .
     
        A **Mentés** gomb megnyomásakor megjelenik a kulcs értéke. Másolja a kulcs értékét a panel elhagyása előtt.
 
@@ -124,18 +124,18 @@ Az AD-kapcsolódási paraméterekhez értékeket adhat hozzá a web.config vagy 
 
 ## <a name="get-the-access-token-using-postman"></a>Hozzáférési jogkivonat beszerzése a Poster használatával
 
-Ez a szakasz bemutatja, hogyan használható a **Poster** egy olyan REST API végrehajtásához, amely egy JWT tulajdonosi tokent (hozzáférési tokent) ad vissza. Bármely Media Services REST API meghívásához hozzá kell adnia az "engedélyezés" fejlécet a hívásokhoz, és hozzá kell adnia a "tulajdonos *your_access_token*" értéket az egyes hívásokhoz (ahogy az oktatóanyag következő szakaszában is látható). 
+Ez a szakasz bemutatja, hogyan használható a **Poster** egy olyan REST API végrehajtásához, amely egy JWT tulajdonosi tokent (hozzáférési tokent) ad vissza. Bármely Media Services REST API meghívásához hozzá kell adnia az "engedélyezés" fejlécet a hívásokhoz, és hozzá kell adnia a "tulajdonos *your_access_token* " értéket az egyes hívásokhoz (ahogy az oktatóanyag következő szakaszában is látható). 
 
-1. A **Poster**megnyitása.
+1. A **Poster** megnyitása.
 2. Válassza a **POST** lehetőséget.
-3. Adja meg a bérlő nevét tartalmazó URL-címet a következő formátumban: a bérlő nevének a **. onmicrosoft.com** értékkel kell végződnie, és az URL-címnek **oauth2/tokenrel**kell végződnie: 
+3. Adja meg a bérlő nevét tartalmazó URL-címet a következő formátumban: a bérlő nevének a **. onmicrosoft.com** értékkel kell végződnie, és az URL-címnek **oauth2/tokenrel** kell végződnie: 
 
     `https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token`
 
 4. Válassza a **fejlécek** fület.
 5. Adja meg a **fejlécek** adatait a "kulcs/érték" adatrács használatával. 
 
-    ![Adatrács](./media/connect-with-rest/headers-data-grid.png)
+    ![A "headers" (fejlécek) lapot és a "tömeges szerkesztés" műveletet megjelenítő képernyőkép.](./media/connect-with-rest/headers-data-grid.png)
 
     Azt is megteheti, hogy a Poster-ablak jobb oldalán található **tömeges szerkesztés** hivatkozásra kattint, és beilleszti a következő kódot.
 
@@ -160,19 +160,19 @@ Ez a szakasz bemutatja, hogyan használható a **Poster** egy olyan REST API vé
 
 8. Kattintson a **Küldés** gombra.
 
-    ![jogkivonat beolvasása](./media/connect-with-rest/connect-with-rest04.png)
+    ![Képernyőkép, amely megjeleníti a "post" szövegmezőt, a "headers" és a "Body" fület, valamint a "access_token", valamint a "Küldés" gombot.](./media/connect-with-rest/connect-with-rest04.png)
 
 A visszaadott válasz tartalmazza azt a **hozzáférési jogkivonatot** , amelyet az AMS API-k eléréséhez használnia kell.
 
 ## <a name="test-the-assets-api-using-the-access-token"></a>Az **assets** API tesztelése a hozzáférési jogkivonat használatával
 
-Ez a szakasz bemutatja, hogyan érheti el az **assets** API-t a **Poster**használatával.
+Ez a szakasz bemutatja, hogyan érheti el az **assets** API-t a **Poster** használatával.
 
-1. A **Poster**megnyitása.
+1. A **Poster** megnyitása.
 2. Válassza a **GET** lehetőséget.
 3. Illessze be a REST API végpontot (például: https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
 4. Válassza az **Engedélyezés** lapot. 
-5. Jelölje ki a **tulajdonosi jogkivonatot**.
+5. Jelölje ki a **tulajdonosi jogkivonatot** .
 6. Illessze be az előző szakaszban létrehozott jogkivonatot.
 
     ![jogkivonat beolvasása](./media/connect-with-rest/connect-with-rest05.png)
@@ -182,7 +182,7 @@ Ez a szakasz bemutatja, hogyan érheti el az **assets** API-t a **Poster**haszn�
 
    ![Hitelesítési fejléc](./media/connect-with-rest/auth-header.png)
 
-7. Válassza a **fejlécek**lehetőséget.
+7. Válassza a **fejlécek** lehetőséget.
 5. A Poster ablak jobb oldalán kattintson a **tömeges szerkesztés** hivatkozásra.
 6. Illessze be a következő fejléceket:
 

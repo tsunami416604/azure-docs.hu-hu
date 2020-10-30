@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/28/2020
-ms.openlocfilehash: a4fcdad0efda1ab2a43be65865e3aac59f7ef3e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70787f1d918064b48d37ce051bfdd2aba49472ea
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84187612"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040181"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Keresési átalakítás a leképezési adatfolyamban
 
@@ -27,7 +27,7 @@ A keresési transzformáció hasonló a bal külső illesztéshez. Az elsődlege
 
 ## <a name="configuration"></a>Konfiguráció
 
-![Keresési transzformáció](media/data-flow/lookup1.png "Keresés")
+![Képernyőfelvétel: a keresési beállítások lap, amely az alábbi szövegben ismertetett feliratokat tartalmazza.](media/data-flow/lookup1.png "Keresés")
 
 **Elsődleges stream:** A bejövő adatfolyam. Ez az adatfolyam megegyezik a csatlakozás bal oldalával.
 
@@ -65,7 +65,7 @@ Ha hibakeresési módban végzi a keresési átalakítást az adatelőnézet has
 
 ![Szórásos csatlakozás](media/data-flow/broadcast.png "Szórásos csatlakozás")
 
-Az illesztések, a keresések és a meglévő átalakítások esetében, ha az egyik vagy mindkét adatfolyam a feldolgozó csomóponti memóriába illeszkedik, a **szórás**engedélyezésével optimalizálhatja a teljesítményt. Alapértelmezés szerint a Spark-motor automatikusan eldönti, hogy az egyik oldalt kívánja-e közvetíteni. A közvetíteni kívánt oldal manuális kiválasztásához válassza a **rögzített**lehetőséget.
+Az illesztések, a keresések és a meglévő átalakítások esetében, ha az egyik vagy mindkét adatfolyam a feldolgozó csomóponti memóriába illeszkedik, a **szórás** engedélyezésével optimalizálhatja a teljesítményt. Alapértelmezés szerint a Spark-motor automatikusan eldönti, hogy az egyik oldalt kívánja-e közvetíteni. A közvetíteni kívánt oldal manuális kiválasztásához válassza a **rögzített** lehetőséget.
 
 Nem ajánlott letiltani a szórást a **kikapcsolási** lehetőséggel, kivéve, ha az illesztések időtúllépési hibákkal futnak.
 
@@ -85,7 +85,7 @@ Nem ajánlott letiltani a szórást a **kikapcsolási** lehetőséggel, kivéve,
 ```
 ### <a name="example"></a>Példa
 
-![Keresési transzformáció](media/data-flow/lookup-dsl-example.png "Keresés")
+![A képernyőképen a következő kódhoz tartozó keresési beállítások lap látható.](media/data-flow/lookup-dsl-example.png "Keresés")
 
 A fenti keresési konfiguráció adatáramlási parancsfájlja az alábbi kódrészletben található.
 
@@ -97,7 +97,7 @@ SQLProducts, DimProd lookup(ProductID == ProductKey,
     broadcast: 'auto')~> LookupKeys
 ```
 ## 
-További lépések
+Következő lépések
 
 * A [JOIN](data-flow-join.md) és a [meglévő](data-flow-exists.md) átalakítások egyszerre több stream-bemenetet is igénybe vehetik
 * [Feltételes felosztású átalakítás](data-flow-conditional-split.md) használata a paranccsal a ```isMatch()``` sorok felosztása a megfeleltetés és a nem egyező értékek alapján

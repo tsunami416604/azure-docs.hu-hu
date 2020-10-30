@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fde0afcd37cd464b0b87e5ccd257d4a7a684eeb0
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76277357"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040757"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Azure Log Analytics-szívófej üzembe helyezése Cloud Foundry rendszer-figyeléshez
 
@@ -59,15 +59,15 @@ A Log Analytics munkaterületet manuálisan vagy sablon használatával is létr
 #### <a name="to-create-the-workspace-manually"></a>A munkaterület manuális létrehozása:
 
 1. A Azure Portal keresse meg a szolgáltatások listáját az Azure piactéren, majd válassza a Log Analytics munkaterületek lehetőséget.
-2. Válassza a **Létrehozás**lehetőséget, majd válassza ki a kívánt beállításokat a következő elemekhez:
+2. Válassza a **Létrehozás** lehetőséget, majd válassza ki a kívánt beállításokat a következő elemekhez:
 
-   * **Log Analytics munkaterület**: írja be a munkaterület nevét.
-   * **Előfizetés**: Ha több előfizetéssel rendelkezik, válassza ki azt, amelyik megegyezik a CF üzembe helyezésével.
-   * **Erőforráscsoport**: létrehozhat egy új erőforráscsoportot, vagy használhatja ugyanezt a CF-telepítéssel.
-   * **Hely**: adja meg a helyet.
-   * **Árképzési szintek**: válassza **az OK gombot** a befejezéshez.
+   * **Log Analytics munkaterület** : írja be a munkaterület nevét.
+   * **Előfizetés** : Ha több előfizetéssel rendelkezik, válassza ki azt, amelyik megegyezik a CF üzembe helyezésével.
+   * **Erőforráscsoport** : létrehozhat egy új erőforráscsoportot, vagy használhatja ugyanezt a CF-telepítéssel.
+   * **Hely** : adja meg a helyet.
+   * **Árképzési szintek** : válassza **az OK gombot** a befejezéshez.
 
-További információ: Ismerkedés [a Azure monitor-naplókkal](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
+További információ: Ismerkedés [a Azure monitor-naplókkal](../azure-monitor/overview.md).
 
 #### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>Az Log Analytics munkaterület létrehozása a figyelési sablonnal az Azure Market helyről:
 
@@ -76,13 +76,13 @@ További információ: Ismerkedés [a Azure monitor-naplókkal](https://docs.mic
 1. A keresés ablakban írja be a "Cloud Foundry" kifejezést, majd válassza a "Cloud Foundry figyelési megoldás" lehetőséget.
 1. A Cloud Foundry figyelési megoldás sablonjának elülső lapja betöltődik, majd a Létrehozás gombra kattintva elindíthatja a sablon panelt.
 1. Adja meg a szükséges paramétereket:
-    * **Előfizetés**: válassza ki a log Analytics munkaterülethez tartozó Azure-előfizetést, amely általában megegyezik a Cloud Foundry üzemelő példányával.
-    * **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat a log Analytics munkaterülethez.
-    * **Erőforráscsoport helye**: válassza ki az erőforráscsoport helyét.
-    * **OMS_Workspace_Name**: adjon meg egy munkaterület-nevet, ha a munkaterület nem létezik, akkor a sablon egy újat hoz létre.
-    * **OMS_Workspace_Region**: válassza ki a munkaterület helyét.
-    * **OMS_Workspace_Pricing_Tier**: válassza ki a log Analytics munkaterület SKU-t. Tekintse meg az [árképzési útmutatót](https://azure.microsoft.com/pricing/details/log-analytics/) a hivatkozáshoz.
-    * **Jogi feltételek**: kattintson a jogi feltételek elemre, majd a "létrehozás" gombra a jogi kifejezés elfogadásához.
+    * **Előfizetés** : válassza ki a log Analytics munkaterülethez tartozó Azure-előfizetést, amely általában megegyezik a Cloud Foundry üzemelő példányával.
+    * **Erőforráscsoport** : válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat a log Analytics munkaterülethez.
+    * **Erőforráscsoport helye** : válassza ki az erőforráscsoport helyét.
+    * **OMS_Workspace_Name** : adjon meg egy munkaterület-nevet, ha a munkaterület nem létezik, akkor a sablon egy újat hoz létre.
+    * **OMS_Workspace_Region** : válassza ki a munkaterület helyét.
+    * **OMS_Workspace_Pricing_Tier** : válassza ki a log Analytics munkaterület SKU-t. Tekintse meg az [árképzési útmutatót](https://azure.microsoft.com/pricing/details/log-analytics/) a hivatkozáshoz.
+    * **Jogi feltételek** : kattintson a jogi feltételek elemre, majd a "létrehozás" gombra a jogi kifejezés elfogadásához.
 1. Az összes paraméter megadása után a sablon üzembe helyezéséhez kattintson a "létrehozás" gombra. Ha a telepítés befejeződött, az állapot megjelenik az értesítés lapon.
 
 
@@ -183,15 +183,15 @@ Ha manuálisan hozta létre a Log Analytics munkaterületet, kövesse az alábbi
 
 ### <a name="1-import-the-oms-view"></a>1. importálja a OMS nézetet
 
-A OMS-portálon keresse meg a **Designer**-  >  **Importálás**  >  **tallózását**, és válassza ki az egyik omsview-fájlt. Válassza például a *Cloud Foundry. omsview*elemet, és mentse a nézetet. Most egy csempe jelenik meg az **Áttekintés** oldalon. Jelölje ki a vizualizációs mérőszámok megjelenítéséhez.
+A OMS-portálon keresse meg a **Designer** -  >  **Importálás**  >  **tallózását** , és válassza ki az egyik omsview-fájlt. Válassza például a *Cloud Foundry. omsview* elemet, és mentse a nézetet. Most egy csempe jelenik meg az **Áttekintés** oldalon. Jelölje ki a vizualizációs mérőszámok megjelenítéséhez.
 
-Ezeket a nézeteket testreszabhatja, vagy létrehozhat új nézeteket a **Tervező nézet**használatával.
+Ezeket a nézeteket testreszabhatja, vagy létrehozhat új nézeteket a **Tervező nézet** használatával.
 
 A *"Cloud Foundry. omsview"* a Cloud Foundry OMS View sablon előzetes verziója. Ez egy teljesen konfigurált, alapértelmezett sablon. Ha javaslata vagy visszajelzése van a sablonról, küldje el őket a [probléma szakaszba](https://github.com/Azure/oms-log-analytics-firehose-nozzle/issues).
 
 ### <a name="2-create-alert-rules"></a>2. riasztási szabályok létrehozása
 
-[Létrehozhatók a riasztások](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts), és igény szerint testre szabhatók a lekérdezések és a küszöbértékek. A következő ajánlott riasztások:
+[Létrehozhatók a riasztások](../azure-monitor/platform/alerts-overview.md), és igény szerint testre szabhatók a lekérdezések és a küszöbértékek. A következő ajánlott riasztások:
 
 | Keresési lekérdezés                                                                  | Riasztás előállítása a következő alapján | Leírás                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |

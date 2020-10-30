@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7bc7b0ce521522e677e0dc53809c8c33e0743f0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87239e361b518a85cf30352374e7a9b5e530928e
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327918"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042620"
 ---
 # <a name="what-is-risk"></a>Mit jelent a kockázat?
 
@@ -24,11 +24,14 @@ A Azure AD Identity Protection kockázati észlelése magában foglalja a címt�
 
 Az Identity Protection lehetővé teszi a szervezetek számára a hatékony erőforrásokhoz való hozzáférést, így gyorsan megtekintheti és reagálhat ezekre a gyanús műveletekre. 
 
+>**Megjegyzés:** Az Identity Protection csak a megfelelő hitelesítő adatok használata esetén hoz létre kockázati észleléseket. Ha a bejelentkezés során helytelen hitelesítő adatok szerepelnek, akkor nem a hitelesítő adatok biztonságának kockázatát jelzi.
+
 ![A kockázatos felhasználókat és bejelentkezéseket bemutató biztonsági áttekintés](./media/concept-identity-protection-risks/identity-protection-security-overview.png)
+
 
 ## <a name="risk-types-and-detection"></a>Kockázati típusok és észlelés
 
-Kétféle kockázati **felhasználó** és **Bejelentkezés** , valamint két típusú észlelési vagy számítási módszer áll rendelkezésre a **valós időben** és a **kapcsolat nélküli üzemmódban**.
+Kétféle kockázati **felhasználó** és **Bejelentkezés** , valamint két típusú észlelési vagy számítási módszer áll rendelkezésre a **valós időben** és a **kapcsolat nélküli üzemmódban** .
 
 A valós idejű észlelések nem jelennek meg a jelentéskészítésben öt – tíz percen belül. Előfordulhat, hogy az offline észlelések nem jelennek meg a jelentéskészítésben két-huszonnégy órán keresztül.
 

@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: makromer
-ms.openlocfilehash: 3d2ef6fb0cd7af444b9bff755eee4eee70d03d15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d93cb49c77a4c8164a8b4e9bca349a805f39678
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82691904"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041633"
 ---
 # <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>Normalizált adatbázisséma migrálása Azure SQL Database-ből denormalizált Azure Cosmos DB-tárolóba
 
@@ -50,7 +50,7 @@ Az eredményül kapott CosmosDB-tároló egyetlen dokumentumba ágyazza be a bel
 
 2. Adatfolyam-tevékenység hozzáadása
 
-3. Az adatfolyam tevékenységben válassza az **új leképezési**adatfolyam lehetőséget.
+3. Az adatfolyam tevékenységben válassza az **új leképezési** adatfolyam lehetőséget.
 
 4. Ezt az adatáramlási gráfot az alábbi grafikonon fogjuk létrehozni
 
@@ -96,15 +96,15 @@ Az eredményül kapott CosmosDB-tároló egyetlen dokumentumba ágyazza be a bel
 
 19. A fogadó beállításainál a partíció kulcs ```\SalesOrderID``` és gyűjtemény művelet "újbóli létrehozás" elemre. Győződjön meg arról, hogy a leképezés lap így néz ki:
 
-![Fogadó beállításai](media/data-flow/cosmosb7.png)
+![Képernyőfelvétel: a leképezés lapot jeleníti meg.](media/data-flow/cosmosb7.png)
 
 20. Kattintson az adatelőnézet elemre, és győződjön meg arról, hogy ezek a 32-sorok úgy vannak beállítva, hogy új dokumentumként beszúrják az új tárolóba:
 
-![Fogadó beállításai](media/data-flow/cosmosb8.png)
+![A képernyőképen az adatelőnézet lap látható.](media/data-flow/cosmosb8.png)
 
 Ha minden jól látható, most már készen áll egy új folyamat létrehozására, ezt az adatfolyam-tevékenységet hozzáadja a folyamathoz, és végrehajtja. Végrehajtható hibakeresésből vagy aktivált futtatásból. Néhány perc elteltével a CosmosDB-adatbázis "Orders" nevű új, denormalizált tárolóját kell használnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Hozza létre a többi adatáramlási logikát az adatforgalom- [átalakítások](concepts-data-flow-overview.md)leképezése használatával.
 * [Töltse le az oktatóanyaghoz tartozó befejezett folyamat sablont](https://github.com/kromerm/adfdataflowdocs/blob/master/sampledata/SQL%20Orders%20to%20CosmosDB.zip) , és importálja a sablont a gyárba.

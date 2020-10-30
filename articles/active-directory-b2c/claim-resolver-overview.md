@@ -8,21 +8,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/21/2020
+ms.date: 10/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 466e590ba22efe1c2fbb457c15bc7f979f8a172e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39b61815c33f933e0cdf08bd46382e74eea2f806
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259636"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040451"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Tudnivalók a jogcímek feloldóinak Azure Active Directory B2C egyéni házirendekben
 
 A Azure Active Directory B2C (Azure AD B2C) [Egyéni szabályzatok](custom-policy-overview.md) által felismert feloldók az engedélyezési kérelemre vonatkozó környezeti információkat biztosítanak, például a szabályzat nevét, a kérelem KORRELÁCIÓs azonosítóját, a felhasználói felület nyelvét és egyebeket.
 
-Ha a jogcím-feloldót egy bemeneti vagy kimeneti jogcímben szeretné használni, Definiáljon egy karakterlánc- **claimType**a [ClaimsSchema](claimsschema.md) elem alatt, majd állítsa be a **DefaultValue** -feloldót a bemeneti vagy kimeneti jogcím elemben. Azure AD B2C beolvassa a jogcím-feloldó értékét, és a technikai profilban szereplő értéket használja.
+Ha a jogcím-feloldót egy bemeneti vagy kimeneti jogcímben szeretné használni, Definiáljon egy karakterlánc- **claimType** a [ClaimsSchema](claimsschema.md) elem alatt, majd állítsa be a **DefaultValue** -feloldót a bemeneti vagy kimeneti jogcím elemben. Azure AD B2C beolvassa a jogcím-feloldó értékét, és a technikai profilban szereplő értéket használja.
 
 A következő példában egy nevű jogcím-típus `correlationId` van definiálva egy **adattípussal** `string` .
 
@@ -66,16 +66,16 @@ A következő fejezetei az elérhető jogcímek feloldóit sorolja fel.
 
 | Jogcím | Leírás | Példa |
 | ----- | ----------- | --------|
-| {OIDC: AuthenticationContextReferences} |A `acr_values` lekérdezési karakterlánc paraméter. | N.A. |
+| {OIDC: AuthenticationContextReferences} |A `acr_values` lekérdezési karakterlánc paraméter. | N/A |
 | {OIDC: ClientId} |A `client_id`  lekérdezési karakterlánc paraméter. | 00000000-0000-0000-0000-000000000000 |
 | {OIDC: DomainHint} |A `domain_hint`  lekérdezési karakterlánc paraméter. | facebook.com |
 | {OIDC: LoginHint} |  A `login_hint` lekérdezési karakterlánc paraméter. | someone@contoso.com |
-| {OIDC: MaxAge} | `max_age`. | N.A. |
+| {OIDC: MaxAge} | `max_age`. | N/A |
 | {OIDC: alkalom} |A `Nonce`  lekérdezési karakterlánc paraméter. | defaultNonce |
 | {OIDC: Password}| Az [erőforrás-tulajdonos jelszava hitelesíti](ropc-custom.md) a felhasználói jelszót.| jelszó1| 
 | {OIDC: prompt} | A `prompt` lekérdezési karakterlánc paraméter. | bejelentkezés |
 | {OIDC: RedirectUri} |A `redirect_uri`  lekérdezési karakterlánc paraméter. | https://jwt.ms |
-| {OIDC: erőforrás} |A `resource`  lekérdezési karakterlánc paraméter. | N.A. |
+| {OIDC: erőforrás} |A `resource`  lekérdezési karakterlánc paraméter. | N/A |
 | {OIDC: hatókör} |A `scope`  lekérdezési karakterlánc paraméter. | OpenID |
 | {OIDC: username}| Az [erőforrás-tulajdonos jelszavának hitelesítő adatai folyamat](ropc-custom.md) felhasználójának felhasználóneve.| emily@contoso.com| 
 
@@ -106,14 +106,14 @@ Egy OIDC-vagy OAuth2-kérelem részeként megadott paraméter neve a felhasznál
 | {OAUTH-KV: campaignId} | Egy lekérdezési karakterlánc paraméter. | Hawaii |
 | {OAUTH-KV: app_session} | Egy lekérdezési karakterlánc paraméter. | A3C5R |
 | {OAUTH-KV: loyalty_number} | Egy lekérdezési karakterlánc paraméter. | 1234 |
-| {OAUTH-KV: bármely egyéni lekérdezési karakterlánc} | Egy lekérdezési karakterlánc paraméter. | N.A. |
+| {OAUTH-KV: bármely egyéni lekérdezési karakterlánc} | Egy lekérdezési karakterlánc paraméter. | N/A |
 
 ### <a name="oauth2"></a>OAuth2
 
 | Jogcím | Leírás | Példa |
 | ----- | ----------------------- | --------|
-| {oauth2: access_token} | A hozzáférési jogkivonat. | N.A. |
-| {oauth2: refresh_token} | A frissítési jogkivonat. | N.A. |
+| {oauth2: access_token} | A hozzáférési jogkivonat. | N/A |
+| {oauth2: refresh_token} | A frissítési jogkivonat. | N/A |
 
 
 ### <a name="saml"></a>SAML
@@ -127,12 +127,13 @@ Egy OIDC-vagy OAuth2-kérelem részeként megadott paraméter neve a felhasznál
 | {SAML: ForceAuthn} | Az `ForceAuthN` attribútum értéke az SAML- `AuthnRequest` kérelem eleme alapján. | Igaz |
 | {SAML: ProviderName} | Az `ProviderName` attribútum értéke az SAML- `AuthnRequest` kérelem eleme alapján.| Contoso.com |
 | {SAML: RelayState} | A `RelayState` lekérdezési karakterlánc paraméter.| 
+| {SAML: tárgy} | Az `Subject` SAML-AuthN kérelem NameId eleme.| 
 
 ## <a name="using-claim-resolvers"></a>Jogcímek feloldóinak használata
 
 A jogcímek feloldóit a következő elemekkel használhatja:
 
-| Elem | Elem | Beállítások |
+| Item | Elem | Beállítások |
 | ----- | ----------------------- | --------|
 |Application Insights műszaki profil |`InputClaim` | |
 |[Azure Active Directory](active-directory-technical-profile.md) műszaki profil| `InputClaim`, `OutputClaim`| 1, 2|

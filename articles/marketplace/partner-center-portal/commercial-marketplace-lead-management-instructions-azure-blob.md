@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/01/2020
-ms.openlocfilehash: e6ad75178bdc8ce7db18555508e2b819f08352f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd0b708ac3a1b16804430584dfcb01b3d2a4fae2
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86121911"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042382"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Az Azure Blob Storage használata a kereskedelmi Piactéri érdeklődők felügyeletéhez
 
@@ -51,9 +51,9 @@ ms.locfileid: "86121911"
      DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net
      ```
 
-    ![Azure Storage-kulcs](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-keys-2.png)
+    ![Képernyőkép, amely a "kapcsolati sztring" szövegmezővel jelenik meg a "hozzáférési kulcsok" oldalon.](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-keys-2.png)
 
-6. A Storage-fiók lapon válassza a **Blobok**lehetőséget.
+6. A Storage-fiók lapon válassza a **Blobok** lehetőséget.
 
    ![Azure Storage-kulcs](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
 
@@ -63,7 +63,7 @@ ms.locfileid: "86121911"
 
     Mentse ezt az értéket, mivel ez a *tároló neve* érték, amelyet a közzétételi portálon kell megadnia, hogy fogadja az érdeklődőket a Piactéri ajánlathoz.
 
-9. Adja meg a tároló nyilvános hozzáférésének szintjét **magánjellegűként (névtelen hozzáférés nélkül)**.
+9. Adja meg a tároló nyilvános hozzáférésének szintjét **magánjellegűként (névtelen hozzáférés nélkül)** .
 
 10. A tároló létrehozásához válassza az **OK** gombot.
 
@@ -74,7 +74,7 @@ ms.locfileid: "86121911"
 Ha készen áll az ajánlathoz tartozó érdeklődői felügyeleti információk konfigurálására a közzétételi portálon, kövesse az alábbi lépéseket:
 
 1. Navigáljon az ajánlat **telepítési** lapjára.
-2. Az **ügyfél-érdeklődők** szakaszban válassza a **kapcsolat**lehetőséget.
+2. Az **ügyfél-érdeklődők** szakaszban válassza a **kapcsolat** lehetőséget.
 
     :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-blob/customer-leads.png" alt-text="Ügyfél-érdeklődők":::
 
@@ -87,7 +87,7 @@ Ha készen áll az ajánlathoz tartozó érdeklődői felügyeleti információk
     * Példa a tároló nevére: `marketplaceleadcontainer`
     * A Storage-fiók kapcsolatainak karakterlánc-példája: a `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![ kapcsolatok részletei](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
 
-5. Kattintson a **Mentés** gombra.
+5. Válassza a **Mentés** lehetőséget.
 
     > [!NOTE]
     > Be kell fejeznie az ajánlat többi részének konfigurálását, és közzé kell tennie az ajánlathoz tartozó érdeklődők fogadása előtt.

@@ -14,12 +14,12 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 5d4ac5435281f521c71556123f77d737ee6916e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65d8ade438228d7af71de1fc66639e5b6de2edda
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73161780"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040806"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Pivotal Cloud Foundry-fürt létrehozása az Azure-ban
 
@@ -36,13 +36,13 @@ A nyilvános Secure Shell-(SSH-) kulcs többféleképpen is létrehozható Windo
 ssh-keygen -t rsa -b 2048
 ```
 
-További információ: SSH- [kulcsok használata az Azure-ban Windowson](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows).
+További információ: SSH- [kulcsok használata az Azure-ban Windowson](../virtual-machines/linux/ssh-from-windows.md).
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
 > [!NOTE]
 >
-> Egyszerű szolgáltatásnév létrehozásához tulajdonosi fiókra van szükség. Emellett parancsfájlt is írhat az egyszerű szolgáltatás létrehozásának automatizálására. Használhatja például az Azure CLI az [ad SP Create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest).
+> Egyszerű szolgáltatásnév létrehozásához tulajdonosi fiókra van szükség. Emellett parancsfájlt is írhat az egyszerű szolgáltatás létrehozásának automatizálására. Használhatja például az Azure CLI az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest).
 
 1. Jelentkezzen be Azure-fiókjába.
 
@@ -50,7 +50,7 @@ További információ: SSH- [kulcsok használata az Azure-ban Windowson](https:/
 
     ![Azure CLI-bejelentkezés](media/deploy/az-login-output.png )
  
-    Másolja az "id" értéket előfizetés- **azonosítóként**, és másolja a "tenantId" értéket a későbbi használatra.
+    Másolja az "id" értéket előfizetés- **azonosítóként** , és másolja a "tenantId" értéket a későbbi használatra.
 
 2. Állítsa be az alapértelmezett előfizetést ehhez a konfigurációhoz.
 
@@ -84,7 +84,7 @@ További információ: SSH- [kulcsok használata az Azure-ban Windowson](https:/
 
     `az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}`
 
-7. Hozzon létre egy. JSON fájlt a következő formátumban. Használja a korábban átmásolt **előfizetés-azonosítót**, a **tenantID**, a **clientID**és a **clientSecret** értékeket. Mentse a fájlt.
+7. Hozzon létre egy. JSON fájlt a következő formátumban. Használja a korábban átmásolt **előfizetés-azonosítót** , a **tenantID** , a **clientID** és a **clientSecret** értékeket. Mentse a fájlt.
 
     ```json
     {
@@ -98,7 +98,7 @@ További információ: SSH- [kulcsok használata az Azure-ban Windowson](https:/
 ## <a name="get-the-pivotal-network-token"></a>A Pivotal hálózati jogkivonat beszerzése
 
 1. Regisztráljon vagy jelentkezzen be a [Pivotal hálózati](https://network.pivotal.io) fiókjába.
-2. Válassza ki a profil nevét az oldal jobb felső sarkában. Válassza a **Profil szerkesztése**lehetőséget.
+2. Válassza ki a profil nevét az oldal jobb felső sarkában. Válassza a **Profil szerkesztése** lehetőséget.
 3. Görgessen a lap aljára, és másolja az **örökölt API-jogkivonat** értékét. Ez az érték a **Pivotal hálózati jogkivonat** értéke, amelyet később használ.
 
 ## <a name="provision-your-cloud-foundry-cluster-on-azure"></a>A Cloud Foundry-fürt kiépítése az Azure-ban
@@ -128,4 +128,3 @@ Adja meg a paramétereket, és hozza létre a PCF-fürtöt.
 5. A PCF Ops Manager megjeleníti az üzembe helyezett Azure-példányokat. Most már üzembe helyezheti és kezelheti az alkalmazásait.
                
     ![Üzembe helyezett Azure-példány a Pivotal](media/deploy/ops-mgr.png )
- 

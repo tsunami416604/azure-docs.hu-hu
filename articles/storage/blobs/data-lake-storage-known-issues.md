@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/08/2020
+ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 1c887093972507904b007c696214708eb0e2b039
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: bffe69dd5b7d3cdfcba1df3420d494dcffc33f9a
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282205"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042665"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Ismert problémák a Azure Data Lake Storage Gen2
 
@@ -68,13 +68,13 @@ Az ACL-változások rekurzív módon történő alkalmazása a szülő könyvtá
 
 ## <a name="azcopy"></a>AzCopy
 
-Csak a AzCopy legújabb verzióját használja ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)).A AzCopy korábbi verziói (például a AzCopy v 8.1) nem támogatottak.
+Csak a AzCopy legújabb verzióját használja ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). A AzCopy korábbi verziói (például a AzCopy v 8.1) nem támogatottak.
 
 <a id="storage-explorer"></a>
 
 ## <a name="azure-storage-explorer"></a>Azure Storage Explorer
 
-Csak a vagy újabb verziókat használja  `1.6.0`   .
+Csak a vagy újabb verziókat használja `1.6.0` .
 
 <a id="explorer-in-portal"></a>
 
@@ -84,7 +84,7 @@ Az ACL-ek még nem támogatottak.
 
 <a id="third-party-apps"></a>
 
-## <a name="thirdpartyapplications"></a>Harmadik féltől származó alkalmazások
+## <a name="third-party-applications"></a>Harmadik féltől származó alkalmazások
 
 A REST API-kat használó harmadik féltől származó alkalmazások továbbra is működni fognak, ha a blob API-kat hívó Data Lake Storage Gen2 alkalmazásokkal valószínűleg működni fognak.
 
@@ -92,38 +92,15 @@ A REST API-kat használó harmadik féltől származó alkalmazások továbbra i
 
 Ha a tárolóhoz [Névtelen olvasási hozzáférés](storage-manage-access-to-resources.md) van megadva, akkor az ACL-ek nincsenek hatással a tárolóra vagy a tárolóban lévő fájlokra.
 
-### <a name="diagnostic-logs"></a>Diagnosztikai naplók
+## <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
 A megőrzési napok beállítása még nem támogatott, de a naplókat manuálisan is törölheti bármilyen támogatott eszközzel, például a Azure Storage Explorer, a REST vagy az SDK használatával.
 
-## <a name="issues-specific-to-premium-performance-blockblobstorage-storage-accounts"></a>Prémium szintű BlockBlobStorage Storage-fiókokra vonatkozó problémák
+## <a name="lifecycle-management-policies-with-premium-tier-for-azure-data-lake-storage"></a>Életciklus-kezelési szabályzatok prémium szintű Azure Data Lake Storage
 
-### <a name="diagnostic-logs"></a>Diagnosztikai naplók
+A prémium szinten tárolt adatok nem helyezhetők át a gyakori, a ritka elérésű és az archív rétegek között. A prémium szintről azonban átmásolhatja az adatait egy másik fiókhoz tartozó gyors elérési szintre.
 
-A diagnosztikai naplók még nem engedélyezhetők a Azure Portal használatával. A PowerShell használatával is engedélyezheti őket. Például:
-
-```powershell
-#To login
-Connect-AzAccount
-
-#Set default block blob storage account.
-Set-AzCurrentStorageAccount -Name premiumGen2Account -ResourceGroupName PremiumGen2Group
-
-#Enable logging
-Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays 14
-```
-
-### <a name="lifecycle-management-policies"></a>Életciklus-kezelési szabályzatok
-
-- Az életciklus-kezelési házirendek csak az általános célú v2-fiókok esetében támogatottak. A Premium BlockBlobStorage Storage-fiókokban még nem támogatottak.
-- Az adatok nem helyezhetők át a prémium szintről az alacsonyabb szintekre.
-
-
-### <a name="hdinsight-support"></a>HDInsight-támogatás
-
-N HDInsight-fürt létrehozásakor még nem választhat olyan BlockBlobStorage-fiókot, amelyen engedélyezve van a hierarchikus névtér funkció. A fiókot azonban a létrehozása után is csatlakoztathatja a fürthöz.
-
-### <a name="dremio-support"></a>Dremio-támogatás
+## <a name="dremio-support-with-premium-performance-blockblobstorage-storage-accounts"></a>Dremio-támogatás prémium teljesítményű BlockBlobStorage Storage-fiókokkal
 
 A Dremio még nem csatlakozik olyan BlockBlobStorage-fiókhoz, amelyen engedélyezve van a hierarchikus névtér funkció. 
 

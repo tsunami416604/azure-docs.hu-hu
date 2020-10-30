@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: ddf631601510e725d77cc391ad41192a47ab0cf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d34641fdecfe334e84347efe1a2f64482cae74b
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84752476"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040262"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Webalkalmazási tűzfal kérelmek méretének korlátai és kizárási listája
 
@@ -38,11 +38,11 @@ Megadhat egy pontos kérelem fejlécét, törzsét, cookie-t vagy lekérdezési 
 
 A támogatott egyeztetési feltételek operátorai a következők:
 
-- **Egyenlő**: ez az operátor pontos egyezést használ. Például a **bearerToken**nevű fejléc kiválasztásához használja az Equals operátort a választó **bearerToken**.
-- A következővel **kezdődik**: ez az operátor megegyezik a megadott választó értékkel kezdődő összes mezővel.
-- **Végződik**: ez az operátor a megadott választó értékkel végződő összes kérelem mezőre illeszkedik.
-- **Tartalmazza**: ez az operátor megfelel az összes olyan kérelem mezőnek, amely tartalmazza a megadott választó értéket.
-- **Egyenlő**: ez az operátor megfelel az összes kérelem mezőnek. * a választók értéke lesz.
+- **Egyenlő** : ez az operátor pontos egyezést használ. Például a **bearerToken** nevű fejléc kiválasztásához használja az Equals operátort a választó **bearerToken** .
+- A következővel **kezdődik** : ez az operátor megegyezik a megadott választó értékkel kezdődő összes mezővel.
+- **Végződik** : ez az operátor a megadott választó értékkel végződő összes kérelem mezőre illeszkedik.
+- **Tartalmazza** : ez az operátor megfelel az összes olyan kérelem mezőnek, amely tartalmazza a megadott választó értéket.
+- **Egyenlő** : ez az operátor megfelel az összes kérelem mezőnek. * a választók értéke lesz.
 
 Minden esetben a nem megkülönbözteti a kis-és nagybetűket, és a reguláris kifejezés nem engedélyezett választóként.
 
@@ -81,7 +81,7 @@ $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
    -SelectorMatchOperator "StartsWith" `
    -Selector "user"
 ```
-Így ha az URL-címet átadja `http://www.contoso.com/?user%281%29=fdafdasfda` a WAF, nem értékeli ki a **fdafdasfda**karakterláncot, de továbbra is kiértékeli a **(z) %281 %29**nevű paramétert. 
+Így ha az URL-címet átadja `http://www.contoso.com/?user%281%29=fdafdasfda` a WAF, nem értékeli ki a **fdafdasfda** karakterláncot, de továbbra is kiértékeli a **(z) %281 %29** nevű paramétert. 
 
 ## <a name="waf-request-size-limits"></a>WAF kérelmek méretének korlátai
 
@@ -89,7 +89,7 @@ $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
 
 A webalkalmazási tűzfal lehetővé teszi, hogy az alsó és felső határokon belül konfigurálja a kérelmek méretére vonatkozó korlátozásokat. A következő két méretkorlát-konfiguráció érhető el:
 
-- A kérelem törzsének maximális mérete mezője kilobájtban van megadva, és a kérelmek teljes méretére vonatkozó korlátozásokat a fájlok feltöltése nélkül szabályozza. Ez a mező 1 KB-os minimum 128 – KB-os maximális értékre terjedhet. Az alapértelmezett érték a kérelem törzsének mérete 128 KB.
+- A kérelem törzsének maximális mérete mezője kilobájtban van megadva, és a kérelmek teljes méretére vonatkozó korlátozásokat a fájlok feltöltése nélkül szabályozza. Ebben a mezőben a minimális érték 1 KB, a maximális érték 128 KB. Az alapértelmezett érték a kérelem törzsének mérete 128 KB.
 - A fájlfeltöltés korlátozása mező a MB-ban van megadva, és a maximálisan megengedett fájlfeltöltés-méretet szabályozza. Ennek a mezőnek legalább 1 MB-nyi értéke lehet, a következő maximális értékekkel:
 
    - 100 MB v1 közepes WAF-átjárók esetén
@@ -100,6 +100,6 @@ A webalkalmazási tűzfal lehetővé teszi, hogy az alsó és felső határokon 
 
 A WAF egy konfigurálható gombot is kínál a kérelem törzsének be-és kikapcsolásához. Alapértelmezés szerint a kérelem törzsének ellenőrzése engedélyezve van. Ha a kérelem törzsének ellenőrzése ki van kapcsolva, a WAF nem értékeli ki a HTTP-üzenet törzsének tartalmát. Ilyen esetekben a WAF folytatja a WAF-szabályok betartatását a fejléceken, a cookie-kon és az URI-n. Ha a kérelem törzsének ellenőrzése ki van kapcsolva, a kérelem törzsének maximális mérete mezője nem alkalmazható, és nem állítható be. A kérelem törzsének kikapcsolásával a 128 KB-nál nagyobb üzenetek küldhetők a WAF, de az üzenettörzs nem kerül ellenőrzésre a biztonsági rések esetében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A WAF beállításainak konfigurálása után megtudhatja, hogyan tekintheti meg a WAF-naplókat. További információ: [Application Gateway diagnosztika](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging).

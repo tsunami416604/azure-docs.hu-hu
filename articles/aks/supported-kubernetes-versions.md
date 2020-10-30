@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: a10340d4c2bd2811204af41fba5b32cbe9c4e905
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 649f02097a18a141d186434a91539563c64e72ba
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735065"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042128"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (AKS) támogatott Kubernetes-verziók
 
@@ -131,7 +131,7 @@ az aks get-versions --location eastus --output table
 
 ## <a name="aks-kubernetes-release-calendar"></a>AK Kubernetes kiadási naptár
 
-A korábbi kiadási előzményekért lásd [itt](https://en.wikipedia.org/wiki/Kubernetes#History).
+A korábbi kiadási előzményekért lásd: [Kubernetes](https://en.wikipedia.org/wiki/Kubernetes#History).
 
 |  K8s verziója | Felsőbb rétegbeli kiadás  | AK – előzetes verzió  | AK-GA  | Elhasználódott |
 |--------------|-------------------|--------------|---------|-------------|
@@ -139,8 +139,10 @@ A korábbi kiadási előzményekért lásd [itt](https://en.wikipedia.org/wiki/K
 | 1,17  | Dec-09-19  | Jan 2019   | Jul 2020  | 1,20 GA | 
 | 1,18  | Mar-23-20  | 2020. május   | Augusztus 2020  | 1,21 GA | 
 | 1,19  | Aug-04-20  | Sep 2020   | November 2020  | 1,22 GA | 
-| 1,20  | Dec-08-20  | Jan 2021   | Mar 2021  | 1,23 GA | 
-\* Az AK-i ünnepek miatt a 1,16. november 2020. és január 2021 között kiterjesztik az élettartamot. [További információk](https://github.com/Azure/AKS/releases/tag/2020-10-12)
+| 1,20  | Dec-08-20  | Jan 2021   | Mar 2021  | 1,23 GA |
+
+\* A nyaralási szezon miatt az AK 1,16 november 2020-2021 ig meghosszabbítja a-es élettartamot. [További információk](https://github.com/Azure/AKS/releases/tag/2020-10-12).
+
 
 ## <a name="faq"></a>GYIK
 

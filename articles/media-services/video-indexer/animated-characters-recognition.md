@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 9d304767cf28c0e9230c93d5b9e7504b03ed25d4
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 1ac27f8fe0c6c608bfc261e9ac2d96651c94b341
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018882"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040083"
 ---
 # <a name="animated-character-detection-preview"></a>Animált karakterek felismerése (előzetes verzió)
 
@@ -75,11 +75,11 @@ Az alábbi lépéseket követve összekapcsolhatja Custom Vision fiókját Video
     > [!NOTE]
     > Az összes kulcs megadásához két különálló erőforrásra van szükség a Custom Visionban, egyet a betanításhoz, egyet pedig az előrejelzéshez.
 1. Tallózással keresse meg és jelentkezzen be a [video Indexerba](https://vi.microsoft.com/).
-1. Kattintson a lap jobb felső sarkában látható kérdőjelre, és válassza az API- **hivatkozás**lehetőséget.
+1. Kattintson a lap jobb felső sarkában látható kérdőjelre, és válassza az API- **hivatkozás** lehetőséget.
 1. Győződjön meg arról, hogy előfizetett API Management a **Products (termékek** ) lapra kattintva. Ha van egy API-val csatlakoztatva, folytassa a következő lépéssel, ellenkező esetben: előfizetés. 
-1. A fejlesztői portálon kattintson a **teljes API-referenciára** , és keresse meg a **műveleteket**.  
-1. Válassza a **kapcsolat Custom Vision fiók (előzetes verzió)** lehetőséget, majd kattintson a **kipróbálás**gombra.
-1. Töltse ki a kötelező mezőket, valamint a hozzáférési jogkivonatot, és kattintson a **Küldés**gombra. 
+1. A fejlesztői portálon kattintson a **teljes API-referenciára** , és keresse meg a **műveleteket** .  
+1. Válassza a **kapcsolat Custom Vision fiók (előzetes verzió)** lehetőséget, majd kattintson a **kipróbálás** gombra.
+1. Töltse ki a kötelező mezőket, valamint a hozzáférési jogkivonatot, és kattintson a **Küldés** gombra. 
 
     A Video Indexer hozzáférési token beszerzésével kapcsolatos további információkért látogasson el a [fejlesztői portálra](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token?), és tekintse meg a [kapcsolódó dokumentációt](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api).  
 1. Ha a hívás visszaadja a 200 OK választ, a fiókja csatlakoztatva van.
@@ -96,9 +96,9 @@ Az alábbi lépéseket követve összekapcsolhatja Custom Vision fiókját Video
 1. Nyissa meg a [Video Indexer](https://vi.microsoft.com/) webhelyét, és jelentkezzen be.
 1. Kattintson a tartalmi modell testreszabása gombra a lap jobb felső sarkában.
 
-    ![Tartalmi modell testreszabása](./media/animated-characters-recognition/content-model-customization.png)
+    ![Képernyőfelvétel: a "Video Indexer" oldal, amely a jobb felső sarokban kiválasztott "tartalmi modell testreszabása" gombot jeleníti meg.](./media/animated-characters-recognition/content-model-customization.png)
 1. Nyissa meg a modell testreszabása szakasz **animált karakterek** lapját.
-1. Kattintson a **modell hozzáadása**lehetőségre.
+1. Kattintson a **modell hozzáadása** lehetőségre.
 1. Adja meg a modell nevét, majd kattintson az ENTER gombra a név mentéséhez.
 
 > [!NOTE]
@@ -108,8 +108,8 @@ Az alábbi lépéseket követve összekapcsolhatja Custom Vision fiókját Video
 
 1. A felső menüben kattintson a **feltöltés** gombra.
 1. Válassza ki a feltölteni kívánt videót (fájlból vagy URL-címről).
-1. Kattintson a **Speciális beállítások**elemre.
-1. Az **emberek/animált karakterek** területen válassza az **animációs modellek**lehetőséget.
+1. Kattintson a **Speciális beállítások** elemre.
+1. Az **emberek/animált karakterek** területen válassza az **animációs modellek** lehetőséget.
 1. Ha az egyik modellt választja, a rendszer automatikusan kiválasztja, és ha több modellel rendelkezik, kiválaszthatja a legördülő menü megfelelő részét.
 1. Kattintson a feltöltés gombra.
 1. A videó indexelése után a **rendszer az** észlelt karaktereket az észlelések ablaktábla **animált karakterek** szakaszában tekinti meg.
@@ -129,7 +129,7 @@ Az alábbi lépéseket követve összekapcsolhatja Custom Vision fiókját Video
 
         Nyissa meg a Testreszabás lapot, és kattintson az **animált karakterek** fülre, majd kattintson a **vonat** gombra a modell betanításához.
          
-        Ha díjköteles fiókkal rendelkezik, a **modellek kezelése a Customer látási** kapcsolaton lehetőségre kattintva (az alább látható módon). Ezután a modell oldalára kerül a **Custom Vision**.
+        Ha díjköteles fiókkal rendelkezik, a **modellek kezelése a Customer látási** kapcsolaton lehetőségre kattintva (az alább látható módon). Ezután a modell oldalára kerül a **Custom Vision** .
  
         ![Tartalmi modell testreszabása](./media/animated-characters-recognition/content-model-customization-tab.png)
 

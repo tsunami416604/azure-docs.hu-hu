@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: daebd6a4a00d82706ceda68f94736f21b8fe5a84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1dd4baecd0e1f817c93652fbc0766069ccf5583
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81606399"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040132"
 ---
 # <a name="creating-a-new-branch-in-mapping-data-flow"></a>Új ág létrehozása a leképezési adatfolyamban
 
@@ -23,8 +23,8 @@ Egy új ág hozzáadásával több művelet és átalakítás végezhető el ugy
 
 Az átalakítási listáról más átalakításokhoz hasonló új ág is felvehető. Az **új ág** csak akkor érhető el műveletként, ha már van egy meglévő átalakítás, amely azt követi, hogy milyen átalakítást végez az elágazásban.
 
-![Új ág hozzáadása](media/data-flow/new-branch2.png "Új ág hozzáadása")
+![Képernyőfelvétel: az új ág lehetőség a több bemenet/kimenet menüben.](media/data-flow/new-branch2.png "Új ág hozzáadása")
 
 Az alábbi példában az adatfolyam beolvassa a taxi-adatforgalmat. A napi és a szállító által összesített kimenet megadása kötelező. Ahelyett, hogy két különálló adatfolyamatot hozna létre ugyanabból a forrásból, új ágat adhat hozzá. Így az összesítések ugyanúgy hajthatók végre, mint az adatfolyamatok részeként. 
 
-![Új ág hozzáadása](media/data-flow/new-branch.png "Új ág hozzáadása")
+![A képernyőfelvételen a forrás két ága látható az adatfolyam.](media/data-flow/new-branch.png "Új ág hozzáadása")

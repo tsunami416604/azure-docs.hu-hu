@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 07/09/2020
 ms.author: joflore
-ms.openlocfilehash: f257a186f05dc94923d1d39829b5ed68b518f20c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 30fc6b0b7eae6b3dd3477944a5d9ddacf83c677a
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967630"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041677"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Azure Active Directory Domain Services felügyelt tartomány létrehozása Azure Resource Manager sablon használatával
 
@@ -42,12 +42,12 @@ Azure AD DS felügyelt tartomány létrehozásakor meg kell adnia egy DNS-nevet.
 
 * **Beépített tartomány neve:** Alapértelmezés szerint a rendszer a könyvtár beépített tartománynevét használja (a *. onmicrosoft.com* utótagot). Ha engedélyezni szeretné a biztonságos LDAP-hozzáférést a felügyelt tartományhoz az interneten keresztül, nem hozhat létre digitális tanúsítványt a kapcsolat védelméhez ezzel az alapértelmezett tartománnyal. A Microsoft tulajdonosa a *. onmicrosoft.com* tartomány, így a hitelesítésszolgáltató (CA) nem bocsát ki tanúsítványt.
 * **Egyéni tartománynevek:** A leggyakoribb módszer egy egyéni tartománynév megadása, amely általában az egyik, amelyet már birtokol, és irányítható. Ha irányítható, egyéni tartományt használ, a forgalom az alkalmazások támogatásához szükséges módon képes megfelelően átáramlani.
-* **Nem irányítható tartomány utótagja:** Általában azt javasoljuk, hogy kerülje a nem átirányítható tartománynevek utótagját, például a *contoso. local*nevet. A *. local* utótag nem irányítható, és a DNS-feloldással kapcsolatos problémákat okozhat.
+* **Nem irányítható tartomány utótagja:** Általában azt javasoljuk, hogy kerülje a nem átirányítható tartománynevek utótagját, például a *contoso. local* nevet. A *. local* utótag nem irányítható, és a DNS-feloldással kapcsolatos problémákat okozhat.
 
 > [!TIP]
 > Ha egyéni tartománynevet hoz létre, gondoskodjon a meglévő DNS-névterekről. Azt javasoljuk, hogy a tartománynevet a meglévő Azure-beli vagy helyszíni DNS-névtértől elkülönítve használja.
 >
-> Ha például meglévő DNS- *contoso.com*rendelkezik, hozzon létre egy felügyelt tartományt a *aaddscontoso.com*egyéni tartománynevével. Ha biztonságos LDAP-t kell használnia, regisztrálnia kell az egyéni tartománynevet a szükséges tanúsítványok létrehozásához.
+> Ha például meglévő DNS- *contoso.com* rendelkezik, hozzon létre egy felügyelt tartományt a *aaddscontoso.com* egyéni tartománynevével. Ha biztonságos LDAP-t kell használnia, regisztrálnia kell az egyéni tartománynevet a szükséges tanúsítványok létrehozásához.
 >
 > Előfordulhat, hogy létre kell hoznia néhány további DNS-rekordot a környezetében lévő más szolgáltatásokhoz, vagy feltételes DNS-továbbítókat a környezet meglévő DNS-neve között. Ha például olyan webkiszolgálót futtat, amely a gyökér DNS-nevet használja, akkor olyan elnevezési ütközések lehetnek, amelyek további DNS-bejegyzéseket igényelnek.
 >
@@ -71,10 +71,10 @@ Először regisztrálja a Azure AD Domain Services erőforrás-szolgáltatót a 
 Register-AzResourceProvider -ProviderNamespace Microsoft.AAD
 ```
 
-Hozzon létre egy Azure AD-szolgáltatásnevet az Azure AD DS [új-azureadserviceprincipal parancsmagot][New-AzureADServicePrincipal] parancsmagjának használatával, hogy kommunikáljon és hitelesítse magát. A rendszer egy adott alkalmazásspecifikus azonosítót használ a *2565BD9D-DA50-47D4-8B85-4C97F669DC36*azonosítóval rendelkező *tartományvezérlői szolgáltatások* névvel. Ne módosítsa az alkalmazás AZONOSÍTÓját.
+Hozzon létre egy Azure AD-szolgáltatásnevet az Azure AD DS [új-azureadserviceprincipal parancsmagot][New-AzureADServicePrincipal] parancsmagjának használatával, hogy kommunikáljon és hitelesítse magát. A rendszer egy adott alkalmazásspecifikus azonosítót használ a *6BA9A5D4-8456-4118-B521-9C5CA10CDF84* azonosítóval rendelkező *tartományvezérlői szolgáltatások* névvel. Ne módosítsa az alkalmazás AZONOSÍTÓját.
 
 ```powershell
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 ```
 
 Most hozzon létre egy *HRE DC-rendszergazdák* nevű Azure ad [-csoportot a New-AzureADGroup][New-AzureADGroup] parancsmag használatával. A csoportba felvett felhasználók engedélyeket kapnak az adminisztrációs feladatok végrehajtásához a felügyelt tartományon.

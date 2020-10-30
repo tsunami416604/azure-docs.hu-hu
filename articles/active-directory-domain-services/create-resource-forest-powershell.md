@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: joflore
-ms.openlocfilehash: e914c273adc632449ed31915127fe6d261a8d56c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 32ec3eface215330aba9e40b46e45b97b5c07091
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960949"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041101"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Hozzon létre egy Azure Active Directory Domain Services erőforrás-erdőt és a kimenő erdőszintű megbízhatóságot a helyszíni tartományba Azure PowerShell
 
@@ -74,12 +74,12 @@ Mielőtt elkezdené, győződjön meg róla, hogy tisztában van a [hálózati m
 
 Az Azure AD DS használatához az Azure AD-ből adatokat kell szinkronizálni a szolgáltatással. Ezt a rendszerbiztonsági tag létrehozása előtt létre kell hozni az Azure AD-bérlőben, mielőtt létrehozta a felügyelt tartományi erőforrás-erdőt.
 
-Hozzon létre egy Azure AD egyszerű szolgáltatást az Azure AD DS számára a kommunikációhoz és a hitelesítéshez. A rendszer egy adott alkalmazásspecifikus azonosítót használ a *2565BD9D-DA50-47D4-8B85-4C97F669DC36*azonosítóval rendelkező *tartományvezérlői szolgáltatások* névvel. Ne módosítsa az alkalmazás AZONOSÍTÓját.
+Hozzon létre egy Azure AD egyszerű szolgáltatást az Azure AD DS számára a kommunikációhoz és a hitelesítéshez. A rendszer egy adott alkalmazásspecifikus azonosítót használ a *6BA9A5D4-8456-4118-B521-9C5CA10CDF84* azonosítóval rendelkező *tartományvezérlői szolgáltatások* névvel. Ne módosítsa az alkalmazás AZONOSÍTÓját.
 
 Hozzon létre egy Azure AD-szolgáltatásnevet a [New-azureadserviceprincipal parancsmagot][New-AzureADServicePrincipal] parancsmag használatával:
 
 ```powershell
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 ```
 
 ## <a name="create-a-managed-domain-resource-forest"></a>Felügyelt tartományhoz tartozó erőforrás-erdő létrehozása
@@ -105,21 +105,21 @@ Felügyelt tartományi erőforrás-erdő létrehozásához használja a `New-Azu
     | Name                         | Parancsfájl paramétere          | Leírás |
     |:-----------------------------|---------------------------|:------------|
     | Előfizetés                 | *-azureSubscriptionId*    | Az Azure AD DS számlázáshoz használt előfizetés-azonosító. A [Get-AzureRMSubscription][Get-AzureRMSubscription] parancsmag használatával lekérheti az előfizetések listáját. |
-    | Resource Group               | *-aaddsResourceGroupName* | A felügyelt tartomány és a kapcsolódó erőforrások erőforráscsoport neve. |
+    | Erőforráscsoport               | *-aaddsResourceGroupName* | A felügyelt tartomány és a kapcsolódó erőforrások erőforráscsoport neve. |
     | Hely                     | *-aaddsLocation*          | Az Azure-régió, amely a felügyelt tartományt üzemelteti. Az elérhető régiók esetében tekintse meg [Az Azure AD DS támogatott régiói](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all) című témakört. |
     | Azure AD DS-rendszergazda    | *-aaddsAdminUser*         | Az első felügyelt tartományi rendszergazda egyszerű felhasználóneve. Ennek a fióknak a Azure Active Directory meglévő felhőalapú felhasználói fiókjának kell lennie. A felhasználó és a parancsfájlt futtató felhasználó hozzá lesz adva a *HRE DC rendszergazdák* csoportjához. |
     | Azure AD DS tartomány neve      | *-aaddsDomainName*        | A felügyelt tartomány teljes tartományneve az erdő nevének kiválasztására vonatkozó korábbi útmutatás alapján. |
 
     A `New-AzureAaddsForest` szkript létrehozhatja az Azure-beli virtuális hálózatot és az azure AD DS alhálózatot, ha ezek az erőforrások még nem léteznek. A parancsfájl opcionálisan létrehozhatja a számítási feladatok alhálózatait, ha meg van adva:
 
-    | Name                              | Parancsfájl paramétere                  | Description |
+    | Name                              | Parancsfájl paramétere                  | Leírás |
     |:----------------------------------|:----------------------------------|:------------|
     | Virtuális hálózat neve              | *-aaddsVnetName*                  | A felügyelt tartomány virtuális hálózatának neve.|
     | Címtér                     | *-aaddsVnetCIDRAddressSpace*      | A virtuális hálózat CIDR jelölése (a virtuális hálózat létrehozásakor).|
     | Azure AD DS alhálózat neve           | *-aaddsSubnetName*                | A felügyelt tartományt üzemeltető *aaddsVnetName* virtuális hálózat alhálózatának neve. Ne helyezzen üzembe saját virtuális gépeket és munkaterheléseket ebbe az alhálózatba. |
-    | Azure AD DS-címtartomány         | *-aaddsSubnetCIDRAddressRange*    | Az alhálózati címtartomány a CIDR-ben a HRE DS-példányhoz, például *192.168.1.0/24*. A címtartományt a virtuális hálózat címtartomány és más alhálózatok között kell tartalmaznia. |
+    | Azure AD DS-címtartomány         | *-aaddsSubnetCIDRAddressRange*    | Az alhálózati címtartomány a CIDR-ben a HRE DS-példányhoz, például *192.168.1.0/24* . A címtartományt a virtuális hálózat címtartomány és más alhálózatok között kell tartalmaznia. |
     | Számítási feladatok alhálózatának neve (nem kötelező)   | *-workloadSubnetName*             | A *aaddsVnetName* virtuális hálózatban a saját alkalmazások számítási feladataihoz létrehozandó alhálózat nem kötelezően megadandó neve. Virtuális gépek és alkalmazások, valamint az Azure-beli virtuális hálózatokhoz is csatlakoztathatók. |
-    | Munkaterhelés-címtartomány (nem kötelező) | *-workloadSubnetCIDRAddressRange* | Opcionális alhálózat-címtartomány az alkalmazás számítási feladataihoz (például *192.168.2.0/24*) CIDR. A címtartományt a virtuális hálózat címtartomány és más alhálózatok között kell tartalmaznia.|
+    | Munkaterhelés-címtartomány (nem kötelező) | *-workloadSubnetCIDRAddressRange* | Opcionális alhálózat-címtartomány az alkalmazás számítási feladataihoz (például *192.168.2.0/24* ) CIDR. A címtartományt a virtuális hálózat címtartomány és más alhálózatok között kell tartalmaznia.|
 
 1. Most hozzon létre egy felügyelt tartományi erőforrás-erdőt a `New-AzureAaaddsForest` szkript használatával. Az alábbi példa egy *addscontoso.com* nevű erdőt hoz létre, és létrehoz egy munkaterhelés-alhálózatot. Adja meg a saját paraméterek nevét és IP-címtartományt, vagy a meglévő virtuális hálózatokat.
 
@@ -163,7 +163,7 @@ Mielőtt elkezdené, győződjön meg róla, hogy tisztában van a [hálózati m
     * Győződjön meg arról, hogy a helyszíni tartományvezérlő a vagy a távoli asztal használatával tud csatlakozni a felügyelt virtuális géphez `ping` , például:.
     * Győződjön meg arról, hogy a felügyeleti virtuális gép képes csatlakozni a helyszíni tartományvezérlőkre, majd egy olyan segédprogramot használva, mint például a `ping` .
 
-1. A Azure Portal keresse meg és válassza a **Azure ad Domain Services**lehetőséget. Válassza ki a felügyelt tartományt (például *aaddscontoso.com* ), és várjon, amíg a jelentés **futtatása folyamatban**állapotú.
+1. A Azure Portal keresse meg és válassza a **Azure ad Domain Services** lehetőséget. Válassza ki a felügyelt tartományt (például *aaddscontoso.com* ), és várjon, amíg a jelentés **futtatása folyamatban** állapotú.
 
     A futtatásakor [frissítse az Azure-beli virtuális hálózat DNS-beállításait](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network) , majd [engedélyezze az Azure AD DS felhasználói fiókjainak](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) a felügyelt tartományi erőforrás-erdő konfigurációinak véglegesítését.
 
@@ -193,16 +193,16 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 Most adja meg a parancsfájlt a következő információkkal:
 
-| Name                               | Parancsfájl paramétere     | Description |
+| Name                               | Parancsfájl paramétere     | Leírás |
 |:-----------------------------------|:---------------------|:------------|
 | Azure AD DS tartomány neve            | *-ManagedDomainFqdn* | A felügyelt tartomány teljes tartományneve, például *aaddscontoso.com* |
 | Helyszíni AD DS tartomány neve      | *-TrustFqdn*         | A megbízható erdő teljes tartományneve, például *onprem.contoso.com* |
 | Megbízhatósági kapcsolat rövid neve                | *-TrustFriendlyName* | A megbízhatósági kapcsolat rövid neve. |
 | Helyszíni AD DS DNS IP-címei | *-TrustDnsIPs*       | A listán szereplő megbízható tartomány DNS-kiszolgálói IPv4-címeinek vesszővel tagolt listája. |
 | Megbízhatósági kapcsolat jelszava                     | *-TrustPassword*     | A megbízhatósági kapcsolathoz tartozó összetett jelszó. Ezt a jelszót akkor is meg kell adni, ha az egyirányú bejövő megbízhatóságot a helyszíni AD DSon hozza létre. |
-| Hitelesítő adatok                        | *– Hitelesítő adatok*       | Az Azure-ban való hitelesítéshez használt hitelesítő adatok. A felhasználónak a *HRE DC-rendszergazdák csoportban*kell lennie. Ha nincs megadva, a parancsfájl kéri a hitelesítést. |
+| Hitelesítő adatok                        | *– Hitelesítő adatok*       | Az Azure-ban való hitelesítéshez használt hitelesítő adatok. A felhasználónak a *HRE DC-rendszergazdák csoportban* kell lennie. Ha nincs megadva, a parancsfájl kéri a hitelesítést. |
 
-A következő példa létrehoz egy *myAzureADDSTrust* nevű megbízhatósági kapcsolatot a *onprem.contoso.com*. Használja a saját paraméterek nevét és jelszavát:.
+A következő példa létrehoz egy *myAzureADDSTrust* nevű megbízhatósági kapcsolatot a *onprem.contoso.com* . Használja a saját paraméterek nevét és jelszavát:.
 
 ```azurepowershell
 Add-AaddsResourceForestTrust `
@@ -221,9 +221,9 @@ Add-AaddsResourceForestTrust `
 A felügyelt tartomány helyszíni környezetből való megfelelő feloldásához lehetséges, hogy továbbítókat kell hozzáadnia a meglévő DNS-kiszolgálókhoz. Ha nem konfigurálja a helyszíni környezetet a felügyelt tartománysal való kommunikációra, hajtsa végre a következő lépéseket a helyszíni AD DS tartomány felügyeleti munkaállomásán:
 
 1. Válassza a **Start | Felügyeleti eszközök | DNS**
-1. Kattintson a jobb gombbal a DNS-kiszolgáló, például a *myAD01*lehetőségre, majd válassza a **Tulajdonságok** lehetőséget.
-1. Válassza a **továbbítók**, majd a **Szerkesztés** lehetőséget a további továbbítók hozzáadásához.
-1. Adja hozzá a felügyelt tartomány IP-címeit, például a *10.0.1.4* és a *10.0.1.5*.
+1. Kattintson a jobb gombbal a DNS-kiszolgáló, például a *myAD01* lehetőségre, majd válassza a **Tulajdonságok** lehetőséget.
+1. Válassza a **továbbítók** , majd a **Szerkesztés** lehetőséget a további továbbítók hozzáadásához.
+1. Adja hozzá a felügyelt tartomány IP-címeit, például a *10.0.1.4* és a *10.0.1.5* .
 1. Helyi parancssorból ellenőrizze a névfeloldást a felügyelt tartomány erőforrás-erdő tartománynevének **nslookup** paranccsal. Például a `Nslookup aaddscontoso.com` felügyelt tartományi erőforrás-erdő két IP-címét kell visszaadnia.
 
 ## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>Bejövő erdőszintű megbízhatóság létrehozása a helyszíni tartományban
@@ -233,13 +233,13 @@ A helyszíni AD DS tartománynak rendelkeznie kell egy bejövő erdőszintű meg
 A helyi AD DS tartomány bejövő megbízhatóságának konfigurálásához hajtsa végre az alábbi lépéseket a helyszíni AD DS tartomány felügyeleti munkaállomásáról:
 
 1. Válassza a **Start | Felügyeleti eszközök | Tartományok és megbízhatósági kapcsolatok Active Directory**
-1. Kattintson a jobb gombbal a tartomány, például a *onprem.contoso.com*, majd a **Tulajdonságok** elemre.
+1. Kattintson a jobb gombbal a tartomány, például a *onprem.contoso.com* , majd a **Tulajdonságok** elemre.
 1. Válassza a **Megbízhatóságok** lapot, majd az **új megbízhatóság** elemet.
-1. Adja meg a felügyelt tartomány nevét, például *aaddscontoso.com*, majd kattintson a **Next (tovább** ) gombra.
-1. Válassza az **erdőszintű megbízhatóság**létrehozása lehetőséget, majd hozzon létre egy **módszert: bejövő** megbízhatóság.
-1. Válassza **ezt a tartományt csak**a megbízhatósági kapcsolat létrehozásához. A következő lépésben létrehozza a megbízhatóságot a felügyelt tartomány Azure Portalban.
-1. Válassza az **erdőszintű hitelesítés**használata lehetőséget, majd adja meg és erősítse meg a megbízhatósági jelszót. Ugyanezt a jelszót is megadta a Azure Portal a következő szakaszban.
-1. Lépjen be a következő néhány Windows alapértelmezett beállításokkal, majd válassza a nem lehetőséget **, ne erősítse meg a kimenő megbízhatóságot**. A megbízhatósági kapcsolat nem érvényesíthető, mert a felügyelt tartomány erőforrás-erdőhöz delegált rendszergazdai fiókja nem rendelkezik a szükséges engedélyekkel. Ez a működésmód szándékos.
+1. Adja meg a felügyelt tartomány nevét, például *aaddscontoso.com* , majd kattintson a **Next (tovább** ) gombra.
+1. Válassza az **erdőszintű megbízhatóság** létrehozása lehetőséget, majd hozzon létre egy **módszert: bejövő** megbízhatóság.
+1. Válassza **ezt a tartományt csak** a megbízhatósági kapcsolat létrehozásához. A következő lépésben létrehozza a megbízhatóságot a felügyelt tartomány Azure Portalban.
+1. Válassza az **erdőszintű hitelesítés** használata lehetőséget, majd adja meg és erősítse meg a megbízhatósági jelszót. Ugyanezt a jelszót is megadta a Azure Portal a következő szakaszban.
+1. Lépjen be a következő néhány Windows alapértelmezett beállításokkal, majd válassza a nem lehetőséget **, ne erősítse meg a kimenő megbízhatóságot** . A megbízhatósági kapcsolat nem érvényesíthető, mert a felügyelt tartomány erőforrás-erdőhöz delegált rendszergazdai fiókja nem rendelkezik a szükséges engedélyekkel. Ez a működésmód szándékos.
 1. Válassza a **Befejezés** lehetőséget
 
 ## <a name="validate-resource-authentication"></a>Erőforrás-hitelesítés ellenőrzése
@@ -288,21 +288,21 @@ A felügyelt tartományi erőforrás-erdőhöz csatlakoztatott Windows Server re
     > [!TIP]
     > A Azure AD Domain Serviceshoz csatlakozó virtuális gépekhez való biztonságos csatlakozáshoz használhatja az Azure-beli [megerősített gazdagép szolgáltatást](../bastion/bastion-overview.md) a támogatott Azure-régiókban.
 
-1. Nyissa meg a **Windows-beállításokat**, majd keresse meg és válassza ki a **hálózati és megosztási központot**.
+1. Nyissa meg a **Windows-beállításokat** , majd keresse meg és válassza ki a **hálózati és megosztási központot** .
 1. Válassza a **Speciális megosztási beállítások módosítása** lehetőséget.
-1. A **tartományi profil**területen válassza a **fájl-és nyomtatómegosztás bekapcsolása** , majd a **módosítások mentése**lehetőséget.
-1. **A hálózati és megosztási központ**bezárásához.
+1. A **tartományi profil** területen válassza a **fájl-és nyomtatómegosztás bekapcsolása** , majd a **módosítások mentése** lehetőséget.
+1. **A hálózati és megosztási központ** bezárásához.
 
 #### <a name="create-a-security-group-and-add-members"></a>Biztonsági csoport létrehozása és Tagok hozzáadása
 
 1. Nyissa meg az **Active Directory – felhasználók és számítógépek** beépülő modult.
-1. Kattintson a jobb gombbal a tartománynévre, válassza az **új**, majd a **szervezeti egység**elemet.
-1. A név mezőbe írja be a *LocalObjects*nevet, majd kattintson az **OK gombra**.
-1. Válassza ki, majd kattintson a jobb gombbal a **LocalObjects** elemre a navigációs ablaktáblán. Válassza az **új** , majd a **csoport**lehetőséget.
-1. Írja *FileServerAccess* be a FileServerAccess **nevet a csoport neve** mezőbe. A **Csoport hatóköre**területen válassza a **tartomány helyi**lehetőséget, majd kattintson **az OK gombra**.
-1. A tartalom ablaktáblán kattintson duplán a **FileServerAccess**elemre. Válassza a **tagok**lehetőséget, válassza a **Hozzáadás**, majd a **helyszínek**lehetőséget.
-1. Válassza ki a helyszíni Active Directory a **hely** nézetből, majd kattintson **az OK gombra**.
-1. Írja be a *tartományi felhasználók* értéket az **adja meg a kijelölendő objektumok nevét** mezőbe. Jelölje be a Névellenőrzés **jelölőnégyzetet**, adja meg a helyszíni Active Directory hitelesítő adatait, majd kattintson **az OK gombra**.
+1. Kattintson a jobb gombbal a tartománynévre, válassza az **új** , majd a **szervezeti egység** elemet.
+1. A név mezőbe írja be a *LocalObjects* nevet, majd kattintson az **OK gombra** .
+1. Válassza ki, majd kattintson a jobb gombbal a **LocalObjects** elemre a navigációs ablaktáblán. Válassza az **új** , majd a **csoport** lehetőséget.
+1. Írja *FileServerAccess* be a FileServerAccess **nevet a csoport neve** mezőbe. A **Csoport hatóköre** területen válassza a **tartomány helyi** lehetőséget, majd kattintson **az OK gombra** .
+1. A tartalom ablaktáblán kattintson duplán a **FileServerAccess** elemre. Válassza a **tagok** lehetőséget, válassza a **Hozzáadás** , majd a **helyszínek** lehetőséget.
+1. Válassza ki a helyszíni Active Directory a **hely** nézetből, majd kattintson **az OK gombra** .
+1. Írja be a *tartományi felhasználók* értéket az **adja meg a kijelölendő objektumok nevét** mezőbe. Jelölje be a Névellenőrzés **jelölőnégyzetet** , adja meg a helyszíni Active Directory hitelesítő adatait, majd kattintson **az OK gombra** .
 
     > [!NOTE]
     > Meg kell adnia a hitelesítő adatokat, mert a megbízhatósági kapcsolat csak egy módszer. Ez azt jelenti, hogy a felügyelt tartományba tartozó felhasználók nem férhetnek hozzá az erőforrásokhoz, vagy megkereshetik a megbízható (helyszíni) tartományban lévő felhasználókat vagy csoportokat.
@@ -311,27 +311,27 @@ A felügyelt tartományi erőforrás-erdőhöz csatlakoztatott Windows Server re
 
 #### <a name="create-a-file-share-for-cross-forest-access"></a>Fájlmegosztás létrehozása erdők közötti hozzáféréshez
 
-1. A felügyelt tartomány erőforrás-erdőhöz csatlakozó Windows Server rendszerű virtuális gépen hozzon létre egy mappát, és adja meg a nevet (például *CrossForestShare*).
-1. Kattintson a jobb gombbal a mappára, és válassza a **Tulajdonságok**lehetőséget.
-1. Válassza a **Biztonság** fület, majd kattintson a **Szerkesztés**elemre.
-1. A *CrossForestShare engedélyei* párbeszédpanelen válassza a **Hozzáadás**lehetőséget.
-1. Írja be a *FileServerAccess* **nevet az írja be a kijelölendő objektumok nevét**, majd kattintson **az OK gombra**.
-1. A **csoportok vagy a felhasználónevek** listából válassza a *FileServerAccess* lehetőséget. A **FileServerAccess engedélyei** listán válassza az *Engedélyezés lehetőséget* a **módosítási** és **írási** engedélyekhez, majd kattintson **az OK gombra**.
+1. A felügyelt tartomány erőforrás-erdőhöz csatlakozó Windows Server rendszerű virtuális gépen hozzon létre egy mappát, és adja meg a nevet (például *CrossForestShare* ).
+1. Kattintson a jobb gombbal a mappára, és válassza a **Tulajdonságok** lehetőséget.
+1. Válassza a **Biztonság** fület, majd kattintson a **Szerkesztés** elemre.
+1. A *CrossForestShare engedélyei* párbeszédpanelen válassza a **Hozzáadás** lehetőséget.
+1. Írja be a *FileServerAccess* **nevet az írja be a kijelölendő objektumok nevét** , majd kattintson **az OK gombra** .
+1. A **csoportok vagy a felhasználónevek** listából válassza a *FileServerAccess* lehetőséget. A **FileServerAccess engedélyei** listán válassza az *Engedélyezés lehetőséget* a **módosítási** és **írási** engedélyekhez, majd kattintson **az OK gombra** .
 1. Válassza a **megosztás** fület, majd kattintson a speciális megosztás elemre. **..**
-1. Válassza a **mappa megosztása**lehetőséget, majd adjon meg egy emlékezetes nevet a fájlmegosztás számára a **megosztás nevében** , például *CrossForestShare*.
-1. Válassza az **engedélyek**lehetőséget. Az **engedélyek mindenki** számára listában válassza az **Engedélyezés lehetőséget** a **módosítási** engedélyhez.
-1. Kattintson kétszer **az OK** , majd a **Bezárás**gombra.
+1. Válassza a **mappa megosztása** lehetőséget, majd adjon meg egy emlékezetes nevet a fájlmegosztás számára a **megosztás nevében** , például *CrossForestShare* .
+1. Válassza az **engedélyek** lehetőséget. Az **engedélyek mindenki** számára listában válassza az **Engedélyezés lehetőséget** a **módosítási** engedélyhez.
+1. Kattintson kétszer **az OK** , majd a **Bezárás** gombra.
 
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>Erdők közötti hitelesítés ellenőrzése erőforráshoz
 
 1. Jelentkezzen be a helyszíni Active Directoryhoz csatlakoztatott Windows-számítógép használatával a helyszíni Active Directory felhasználói fiókjával.
-1. A **Windows Intéző**használatával kapcsolódjon a létrehozott megosztáshoz a teljes állomásnévvel és a megosztással, például: `\\fs1.aaddscontoso.com\CrossforestShare` .
-1. Az írási engedély ellenőrzéséhez kattintson a jobb gombbal a mappára, válassza az **új**, majd a **szöveges dokumentum**lehetőséget. Használja az alapértelmezett név **új szöveges dokumentumot**.
+1. A **Windows Intéző** használatával kapcsolódjon a létrehozott megosztáshoz a teljes állomásnévvel és a megosztással, például: `\\fs1.aaddscontoso.com\CrossforestShare` .
+1. Az írási engedély ellenőrzéséhez kattintson a jobb gombbal a mappára, válassza az **új** , majd a **szöveges dokumentum** lehetőséget. Használja az alapértelmezett név **új szöveges dokumentumot** .
 
     Ha az írási engedélyek helyesen vannak beállítva, létrejön egy új szöveges dokumentum. A következő lépésekkel megnyithatja, szerkesztheti és szükség szerint törölheti a fájlt.
-1. Az olvasási engedély ellenőrzéséhez nyissa meg az **új szöveges dokumentumot**.
-1. A módosítási engedély érvényességének ellenőrzéséhez adjon hozzá szöveget a fájlhoz, és lépjen be a **Jegyzettömbbe**. Amikor a rendszer kéri a módosítások mentését, válassza a **Mentés**lehetőséget.
-1. A törlési engedély ellenőrzéséhez kattintson a jobb gombbal az **új szöveges dokumentum** elemre, és válassza a **Törlés**lehetőséget. A fájl törlésének megerősítéséhez válassza az **Igen** lehetőséget.
+1. Az olvasási engedély ellenőrzéséhez nyissa meg az **új szöveges dokumentumot** .
+1. A módosítási engedély érvényességének ellenőrzéséhez adjon hozzá szöveget a fájlhoz, és lépjen be a **Jegyzettömbbe** . Amikor a rendszer kéri a módosítások mentését, válassza a **Mentés** lehetőséget.
+1. A törlési engedély ellenőrzéséhez kattintson a jobb gombbal az **új szöveges dokumentum** elemre, és válassza a **Törlés** lehetőséget. A fájl törlésének megerősítéséhez válassza az **Igen** lehetőséget.
 
 ## <a name="update-or-remove-outbound-forest-trust"></a>Kimenő erdő megbízhatóságának frissítése vagy eltávolítása
 
@@ -349,7 +349,7 @@ Az alábbi példák bemutatják, hogyan frissíthet egy meglévő megbízhatós�
     Install-Script -Name Get-AaddsResourceForestTrusts,Set-AaddsResourceForestTrust
     ```
 
-1. A meglévő megbízhatósági kapcsolatok frissítése előtt először kérje le a megbízhatósági erőforrást a `Get-AaddsResourceForestTrusts` parancsfájl használatával. A következő példában a meglévő megbízhatósági kapcsolat hozzá van rendelve egy *existingTrust*nevű objektumhoz. A frissítéshez adja meg a saját felügyelt tartományi erdő nevét és a helyszíni erdő nevét:
+1. A meglévő megbízhatósági kapcsolatok frissítése előtt először kérje le a megbízhatósági erőforrást a `Get-AaddsResourceForestTrusts` parancsfájl használatával. A következő példában a meglévő megbízhatósági kapcsolat hozzá van rendelve egy *existingTrust* nevű objektumhoz. A frissítéshez adja meg a saját felügyelt tartományi erdő nevét és a helyszíni erdő nevét:
 
     ```powershell
     $existingTrust = Get-AaddsResourceForestTrust `
@@ -388,9 +388,9 @@ Ha már nincs szüksége az egyirányú kimenő erdő megbízhatóságára a fel
 Ha el szeretné távolítani az egyirányú bejövő megbízhatóságot a helyszíni AD DS erdőből, kapcsolódjon a helyszíni AD DS erdőhöz hozzáféréssel rendelkező felügyeleti számítógéphez, és végezze el a következő lépéseket:
 
 1. Válassza a **Start | Felügyeleti eszközök | Tartományok és megbízhatósági kapcsolatok Active Directory**
-1. Kattintson a jobb gombbal a tartomány, például a *onprem.contoso.com*, majd a **Tulajdonságok** elemre.
+1. Kattintson a jobb gombbal a tartomány, például a *onprem.contoso.com* , majd a **Tulajdonságok** elemre.
 1. Válassza a **Megbízhatóságok** lapot, majd válassza ki a felügyelt tartomány erdőből a meglévő bejövő megbízhatóságot.
-1. Válassza az **Eltávolítás**lehetőséget, majd erősítse meg, hogy el kívánja távolítani a bejövő megbízhatóságot.
+1. Válassza az **Eltávolítás** lehetőséget, majd erősítse meg, hogy el kívánja távolítani a bejövő megbízhatóságot.
 
 ## <a name="next-steps"></a>Következő lépések
 

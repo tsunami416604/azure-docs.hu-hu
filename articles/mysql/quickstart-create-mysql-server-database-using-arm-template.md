@@ -1,18 +1,18 @@
 ---
 title: 'Rövid útmutató: Azure-adatbázis létrehozása MySQL-ARM-sablonhoz'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Database for MySQL-kiszolgálót virtuális hálózati integrációval Azure Resource Manager sablon használatával.
-author: mgblythe
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
 ms.date: 05/19/2020
-ms.openlocfilehash: 97a16bd81fd79646fb3693ec2dc4b8a40b9a6a3b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 952bfa7182997511ce072c051d872140c3b907cb
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90896160"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041205"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>Gyors útmutató: Azure Database for MySQL-kiszolgáló létrehozása ARM-sablonnal
 
@@ -70,32 +70,32 @@ A következő hivatkozásra kattintva telepítheti a Azure Database for MySQL-ki
 
 A **Azure Database for MySQL üzembe helyezése a VNet** oldalon:
 
-1. Az **erőforráscsoport**területen válassza az **új létrehozása**lehetőséget, adja meg az új erőforráscsoport nevét, majd kattintson **az OK gombra**.
+1. Az **erőforráscsoport** területen válassza az **új létrehozása** lehetőséget, adja meg az új erőforráscsoport nevét, majd kattintson **az OK gombra** .
 
 2. Ha létrehozott egy új erőforráscsoportot, válassza ki az erőforráscsoport és az új kiszolgáló **helyét** .
 
-3. Adja meg a **kiszolgáló nevét**, a **rendszergazdai bejelentkezési azonosítót**és a **rendszergazdai bejelentkezési jelszót**.
+3. Adja meg a **kiszolgáló nevét** , a **rendszergazdai bejelentkezési azonosítót** és a **rendszergazdai bejelentkezési jelszót** .
 
     :::image type="content" source="./media/quickstart-create-mysql-server-database-using-arm-template/deploy-azure-database-for-mysql-with-vnet.png" alt-text="Üzembe helyezés az Azure-ban":::
 
 4. Ha szeretné, módosítsa a többi alapértelmezett beállítást:
 
-    * **Előfizetés**: a kiszolgálóhoz használni kívánt Azure-előfizetés.
-    * **SKU-kapacitás**: a virtuális mag kapacitása, amely lehet *2* (alapértelmezett), *4*, *8*, *16*, *32*vagy *64*.
-    * **SKU neve**: az SKU-rétegek előtagja, az SKU-család és az SKU-kapacitás, aláhúzások, például *B_Gen5_1*, *GP_Gen5_2* (alapértelmezett) vagy *MO_Gen5_32*.
-    * **SKU mérete MB**: a Azure Database for MySQL kiszolgáló tárterületének mérete (MB) (alapértelmezett *5120*).
-    * **SKU-szint**: az üzembe helyezési szint, például *alapszintű,* *GeneralPurpose* (alapértelmezett) vagy *MemoryOptimized*.
-    * **SKU-család**: *Gen4* vagy *Gen5* (alapértelmezett), amely a kiszolgáló telepítésének hardveres generálását jelzi.
-    * **MySQL-verzió**: a telepítendő MySQL-kiszolgáló verziója, például *5,6* vagy *5,7* (alapértelmezett).
-    * **Biztonsági másolatok megőrzési napjai**: a földrajzi redundáns biztonsági másolatok megőrzésének kívánt időtartama napokban (alapértelmezett *7*).
-    * **Geo redundáns biztonsági mentés**: *engedélyezve* vagy *Letiltva* (az alapértelmezett) a Geo-vész-helyreállítási (Geo-Dr) követelményektől függően.
-    * **Virtual Network neve**: a virtuális hálózat neve (alapértelmezett *azure_mysql_vnet*).
-    * **Alhálózat neve**: az alhálózat neve (alapértelmezett *azure_mysql_subnet*).
-    * **Virtual Network szabály neve**: az alhálózatot engedélyező virtuális hálózati szabály neve (alapértelmezett *AllowSubnet*).
-    * **Vnet-címek előtagja**: a virtuális hálózat címe (alapértelmezett *10.0.0.0/16*).
-    * **Alhálózat-előtag**: az alhálózat 10.0.0.0 (alapértelmezett érték */16*).
+    * **Előfizetés** : a kiszolgálóhoz használni kívánt Azure-előfizetés.
+    * **SKU-kapacitás** : a virtuális mag kapacitása, amely lehet *2* (alapértelmezett), *4* , *8* , *16* , *32* vagy *64* .
+    * **SKU neve** : az SKU-rétegek előtagja, az SKU-család és az SKU-kapacitás, aláhúzások, például *B_Gen5_1* , *GP_Gen5_2* (alapértelmezett) vagy *MO_Gen5_32* .
+    * **SKU mérete MB** : a Azure Database for MySQL kiszolgáló tárterületének mérete (MB) (alapértelmezett *5120* ).
+    * **SKU-szint** : az üzembe helyezési szint, például *alapszintű,* *GeneralPurpose* (alapértelmezett) vagy *MemoryOptimized* .
+    * **SKU-család** : *Gen4* vagy *Gen5* (alapértelmezett), amely a kiszolgáló telepítésének hardveres generálását jelzi.
+    * **MySQL-verzió** : a telepítendő MySQL-kiszolgáló verziója, például *5,6* vagy *5,7* (alapértelmezett).
+    * **Biztonsági másolatok megőrzési napjai** : a földrajzi redundáns biztonsági másolatok megőrzésének kívánt időtartama napokban (alapértelmezett *7* ).
+    * **Geo redundáns biztonsági mentés** : *engedélyezve* vagy *Letiltva* (az alapértelmezett) a Geo-vész-helyreállítási (Geo-Dr) követelményektől függően.
+    * **Virtual Network neve** : a virtuális hálózat neve (alapértelmezett *azure_mysql_vnet* ).
+    * **Alhálózat neve** : az alhálózat neve (alapértelmezett *azure_mysql_subnet* ).
+    * **Virtual Network szabály neve** : az alhálózatot engedélyező virtuális hálózati szabály neve (alapértelmezett *AllowSubnet* ).
+    * **Vnet-címek előtagja** : a virtuális hálózat címe (alapértelmezett *10.0.0.0/16* ).
+    * **Alhálózat-előtag** : az alhálózat 10.0.0.0 (alapértelmezett érték */16* ).
 
-5. Olvassa el a használati feltételeket, majd válassza az Elfogadom **a fenti feltételeket és**kikötéseket lehetőséget.
+5. Olvassa el a használati feltételeket, majd válassza az Elfogadom **a fenti feltételeket és** kikötéseket lehetőséget.
 
 6. Válassza a **Vásárlás** lehetőséget.
 
@@ -153,7 +153,7 @@ echo "Press [ENTER] to continue ..."
 
 Az alábbi lépéseket követve tekintheti meg az új Azure Database for MySQL-kiszolgáló áttekintését:
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki **Azure Database for MySQL kiszolgálókat**.
+1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki **Azure Database for MySQL kiszolgálókat** .
 
 2. Az adatbázis listában válassza ki az új kiszolgálót. Megjelenik az új Azure Database for MySQL-kiszolgáló **Áttekintés** lapja.
 
@@ -181,19 +181,19 @@ az resource show --resource-group $resourcegroupName --name $serverName --resour
 
 ---
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli az erőforráscsoport erőforrásait.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki az **erőforráscsoportok**elemet.
+1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki az **erőforráscsoportok** elemet.
 
 2. Az erőforráscsoport listán válassza ki az erőforráscsoport nevét.
 
-3. Az erőforráscsoport **Áttekintés** lapján válassza az **erőforráscsoport törlése**elemet.
+3. Az erőforráscsoport **Áttekintés** lapján válassza az **erőforráscsoport törlése** elemet.
 
-4. A megerősítő párbeszédpanelen írja be az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
+4. A megerősítő párbeszédpanelen írja be az erőforráscsoport nevét, majd válassza a **Törlés** lehetőséget.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
@@ -214,7 +214,7 @@ echo "Press [ENTER] to continue ..."
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ARM-sablonok létrehozásának folyamatát ismertető lépésenkénti oktatóanyagért lásd:
 

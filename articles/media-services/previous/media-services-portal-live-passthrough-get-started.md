@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 15b876104dfa1a35077a34aa178d650e2d68855e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 707c12cac6bbceee925c4710eff29482f687d47f
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266731"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040735"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Élő stream továbbítása helyszíni kódolókkal Azure Portal használatával
 
@@ -133,7 +133,7 @@ Az átmenő csatornákról az [élő stream többszörös átviteli sebességű 
 ## <a name="get-ingest-urls"></a>A betöltési URL-címek beolvasása
 A csatorna létrehozása után beolvashatja a betöltési URL-címeket. Ezeket kell megadnia az élő kódolónak. A kódoló ezekre az URL-címekre küldi a bemeneti élő streamet.
 
-![Létrehozva](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
+![Képernyőkép, amely az "élő közvetítés" oldalt jeleníti meg egy kiválasztott csatornával és a csatorna ablaktáblán.](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
 
 ## <a name="watch-the-event"></a>Esemény megtekintése
 Ha meg szeretne tekinteni egy eseményt, kattintson az Azure Portal **Watch** (Megtekintés) elemére. 
@@ -151,7 +151,7 @@ Az átmenő csatornákról az [élő stream többszörös átviteli sebességű 
 ## <a name="view-archived-content"></a>Archivált tartalom megtekintése
 Ha már leállította és törölte is az eseményt, a felhasználók igény szerinti videóként le tudják játszani az archivált tartalmat mindaddig, amíg az objektumot nem törli. Olyan objektumot nem lehet törölni, amelyet használ egy esemény. Először az eseményt kell törölni. 
 
-Az eszközök kezeléséhez válassza a **beállítás** lehetőséget, majd kattintson az **eszközök**elemre.
+Az eszközök kezeléséhez válassza a **beállítás** lehetőséget, majd kattintson az **eszközök** elemre.
 
 ![Objektumok](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 

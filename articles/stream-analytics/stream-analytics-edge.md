@@ -6,14 +6,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: how-to
-ms.date: 03/16/2020
+ms.date: 10/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 136d0627e701104e9958d51b2e37256de5659f25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a084b2d0582f53d4372ba3332194629ad29a4ec
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87271416"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041860"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>IoT Edge-eszközökön futó Azure Stream Analytics
  
@@ -24,10 +24,10 @@ A IoT Edge-eszközökön futó Azure Stream Analytics a [Azure IoT Edge](https:/
 ## <a name="scenarios"></a>Forgatókönyvek
 ![IoT Edge magas szintű diagramja](media/stream-analytics-edge/ASAedge-highlevel-diagram.png)
 
-* **Kis késleltetésű parancs és vezérlés**: például a gyártási biztonsági rendszereknek rendkívül alacsony késéssel kell válaszolniuk az operatív adatszolgáltatásokra. Az ASA on IoT Edge segítségével közel valós időben elemezheti az érzékelőket, és parancsokat adhat ki, amikor a gép leállítása vagy a riasztások kiváltása miatt rendellenességeket észlel.
-*   **Korlátozott kapcsolódás a felhőhöz: a**kritikus fontosságú rendszerek, például a távoli adatbányászati berendezések, a csatlakoztatott hajók vagy a offshore fúrások esetében az adatelemzést és az adatkezelést akkor is meg kell vizsgálni, ha a Felhőbeli kapcsolat időszakos. Az ASA esetében a folyamatos átviteli logikája a hálózati kapcsolattól függetlenül fut, és kiválaszthatja, hogy mit küld a felhőbe további feldolgozásra vagy tárolásra.
-* **Korlátozott sávszélesség**: a Jet-motorok vagy a csatlakoztatott autók által előállított adatok mennyisége olyan nagy lehet, hogy az adatokat szűrni kell, vagy előre fel kell dolgozni a felhőbe való küldés előtt. Az ASA használatával szűrheti vagy összesítheti a felhőbe küldendő adatokat.
-* **Megfelelőség**: a szabályozás megfelelősége miatt előfordulhat, hogy bizonyos adatokat helyileg kell névtelenül vagy összesíteni, mielőtt elküldi őket a felhőbe.
+* **Kis késleltetésű parancs és vezérlés** : például a gyártási biztonsági rendszereknek rendkívül alacsony késéssel kell válaszolniuk az operatív adatszolgáltatásokra. Az ASA on IoT Edge segítségével közel valós időben elemezheti az érzékelőket, és parancsokat adhat ki, amikor a gép leállítása vagy a riasztások kiváltása miatt rendellenességeket észlel.
+*   **Korlátozott kapcsolódás a felhőhöz: a** kritikus fontosságú rendszerek, például a távoli adatbányászati berendezések, a csatlakoztatott hajók vagy a offshore fúrások esetében az adatelemzést és az adatkezelést akkor is meg kell vizsgálni, ha a Felhőbeli kapcsolat időszakos. Az ASA esetében a folyamatos átviteli logikája a hálózati kapcsolattól függetlenül fut, és kiválaszthatja, hogy mit küld a felhőbe további feldolgozásra vagy tárolásra.
+* **Korlátozott sávszélesség** : a Jet-motorok vagy a csatlakoztatott autók által előállított adatok mennyisége olyan nagy lehet, hogy az adatokat szűrni kell, vagy előre fel kell dolgozni a felhőbe való küldés előtt. Az ASA használatával szűrheti vagy összesítheti a felhőbe küldendő adatokat.
+* **Megfelelőség** : a szabályozás megfelelősége miatt előfordulhat, hogy bizonyos adatokat helyileg kell névtelenül vagy összesíteni, mielőtt elküldi őket a felhőbe.
 
 ## <a name="edge-jobs-in-azure-stream-analytics"></a>Edge-feladatok a Azure Stream Analyticsban
 ### <a name="what-is-an-edge-job"></a>Mi az "Edge"-feladatok?
@@ -47,7 +47,7 @@ A magas szintű lépéseket az alábbi táblázat ismerteti. További részletek
 | Lépés | Jegyzetek |
 | --- | --- |
 | **Tároló létrehozása** | A tárolók a IoT-eszközök által elérhető feladatdefiníció mentésére szolgálnak. <br>  A meglévő tárolókat újra felhasználhatja. |
-| **ASA Edge-feladatok létrehozása** | Hozzon létre egy új feladatot, és válassza az **Edge** lehetőséget **üzemeltetési környezetként**. <br> Ezek a feladatok a felhőből jönnek létre/kezelhetők, és a saját IoT Edge eszközein futnak. |
+| **ASA Edge-feladatok létrehozása** | Hozzon létre egy új feladatot, és válassza az **Edge** lehetőséget **üzemeltetési környezetként** . <br> Ezek a feladatok a felhőből jönnek létre/kezelhetők, és a saját IoT Edge eszközein futnak. |
 | **Az eszköz (ek) IoT Edge környezetének beállítása** | Windows vagy [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) [rendszerre](https://docs.microsoft.com/azure/iot-edge/quickstart) vonatkozó utasítások.|
 | **Az ASA üzembe helyezése IoT Edge eszközön (k)** | Az ASA-feladatdefiníció a korábban létrehozott Storage-tárolóba lett exportálva. |
 
@@ -60,8 +60,8 @@ A magas szintű lépéseket az alábbi táblázat ismerteti. További részletek
 Az ASA lefordított lekérdezés és a feladatok konfigurációjának exportálásához tárolóra van szükség. Az ASA Docker-rendszerkép az adott lekérdezéssel való konfigurálására szolgál. 
 1. Az [alábbi utasításokat](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) követve hozzon létre egy Storage-fiókot a Azure Portal. Az összes alapértelmezett beállítást megtarthatja a fiók ASA-vel való használatához.
 2. Az újonnan létrehozott Storage-fiókban hozzon létre egy blob Storage-tárolót:
-    1. Kattintson a **Blobok**, majd a **+ tároló**elemre. 
-    2. Adjon meg egy nevet, és tartsa **magánjellegűként**a tárolót.
+    1. Kattintson a **Blobok** , majd a **+ tároló** elemre. 
+    2. Adjon meg egy nevet, és tartsa **magánjellegűként** a tárolót.
 
 #### <a name="create-an-asa-edge-job"></a>ASA Edge-feladatok létrehozása
 > [!Note]
@@ -73,16 +73,16 @@ Az ASA lefordított lekérdezés és a feladatok konfigurációjának exportál�
 
    ![Stream Analytics-feladatok létrehozása az Edge-ben](media/stream-analytics-edge/create-asa-edge-job.png)
 3. Feladatdefiníció
-    1. **Adja meg a bemeneti stream (eke) t**. Definiáljon egy vagy több bemeneti streamet a feladathoz.
+    1. **Adja meg a bemeneti stream (eke) t** . Definiáljon egy vagy több bemeneti streamet a feladathoz.
     2. Adja meg a hivatkozási adattípusokat (nem kötelező).
-    3. **Kimeneti adatfolyamok definiálása**. Adjon meg egy vagy több kimeneti adatfolyamot a feladatokhoz. 
-    4. **Lekérdezés definiálása**. Adja meg az ASA-lekérdezést a felhőben a beágyazott szerkesztő használatával. A fordító automatikusan ellenőrzi az ASA Edge-hez engedélyezett szintaxist. A lekérdezést a mintaadatok feltöltésével is tesztelheti. 
+    3. **Kimeneti adatfolyamok definiálása** . Adjon meg egy vagy több kimeneti adatfolyamot a feladatokhoz. 
+    4. **Lekérdezés definiálása** . Adja meg az ASA-lekérdezést a felhőben a beágyazott szerkesztő használatával. A fordító automatikusan ellenőrzi az ASA Edge-hez engedélyezett szintaxist. A lekérdezést a mintaadatok feltöltésével is tesztelheti. 
 
 4. Adja meg a Storage-tároló adatait a **IoT Edge beállítások** menüjében.
 
 5. Választható beállítások megadása
-    1. **Események rendezése**. A nem megrendelési szabályzatokat a portálon konfigurálhatja. A dokumentáció [itt](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)érhető el.
-    2. **Területi beállítás**. Állítsa be a internalizálása formátumát.
+    1. **Események rendezése** . A nem megrendelési szabályzatokat a portálon konfigurálhatja. A dokumentáció [itt](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)érhető el.
+    2. **Területi beállítás** . Állítsa be a internalizálása formátumát.
 
 
 
@@ -103,14 +103,14 @@ Ezek a lépések a [Windows](https://docs.microsoft.com/azure/iot-edge/quickstar
 ####  <a name="deployment-asa-on-your-iot-edge-devices"></a>Üzembe helyezési ASA a IoT Edge eszközön (k)
 ##### <a name="add-asa-to-your-deployment"></a>ASA hozzáadása az üzemelő példányhoz
 - A Azure Portal nyissa meg a IoT Hubt, navigáljon a **IoT Edge** elemre, és kattintson arra az eszközre, amelyet meg szeretne célozni ehhez a központi telepítéshez.
-- Válassza a **modulok beállítása**, majd a **+ Hozzáadás** lehetőséget, és válassza **Azure stream Analytics modult**.
+- Válassza a **modulok beállítása** , majd a **+ Hozzáadás** lehetőséget, és válassza **Azure stream Analytics modult** .
 - Válassza ki az előfizetést és a létrehozott ASA Edge-feladatot. Kattintson a Mentés gombra.
 ![ASA-modul hozzáadása az üzemelő példányban](media/stream-analytics-edge/add-stream-analytics-module.png)
 
 
 > [!Note]
 > Ebben a lépésben az ASA létrehoz egy "EdgeJobs" nevű mappát a tárolóban (ha még nem létezik). Az egyes központi telepítések esetében új almappa jön létre a "EdgeJobs" mappában.
-> Ha IoT Edge-eszközökre helyezi üzembe a feladatot, az ASA létrehoz egy közös hozzáférési aláírást (SAS) a feladatdefiníció fájlhoz. Az SAS-kulcs biztonságosan továbbítva van a IoT Edge eszközöknek a Twin eszköz használatával. A kulcs lejárta a létrehozás napjától számított három év. Amikor frissít egy IoT Edge feladatot, az SAS megváltoztatja, de a rendszerkép verziószáma nem változik. A **frissítés**után kövesse az üzembe helyezési munkafolyamatot, és a rendszer egy frissítési értesítést naplóz az eszközön.
+> Ha IoT Edge-eszközökre helyezi üzembe a feladatot, az ASA létrehoz egy közös hozzáférési aláírást (SAS) a feladatdefiníció fájlhoz. Az SAS-kulcs biztonságosan továbbítva van a IoT Edge eszközöknek a Twin eszköz használatával. A kulcs lejárta a létrehozás napjától számított három év. Amikor frissít egy IoT Edge feladatot, az SAS megváltoztatja, de a rendszerkép verziószáma nem változik. A **frissítés** után kövesse az üzembe helyezési munkafolyamatot, és a rendszer egy frissítési értesítést naplóz az eszközön.
 
 
 IoT Edge központi telepítésekkel kapcsolatos további információkért tekintse meg [ezt a lapot](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
@@ -132,11 +132,11 @@ Az ASA-feladatban létrehozott bemenetek és kimenetek nevei végpontként haszn
 }
 
 ```
-Ez a példa az alábbi képen bemutatott forgatókönyv útvonalait mutatja be. Egy "**ASA**" nevű peremhálózati feladatot tartalmaz, egy "**hőmérséklet**" nevű bemenettel és egy "**riasztás**" nevű kimenettel.
+Ez a példa az alábbi képen bemutatott forgatókönyv útvonalait mutatja be. Egy " **ASA** " nevű peremhálózati feladatot tartalmaz, egy " **hőmérséklet** " nevű bemenettel és egy " **riasztás** " nevű kimenettel.
 ![Diagram – példa az üzenet-útválasztásra](media/stream-analytics-edge/edge-message-routing-example.png)
 
 Ez a példa a következő útvonalakat határozza meg:
-- A rendszer a **tempSensor** származó összes üzenetet elküldi az **ASA** nevű modulnak a megadott **hőmérsékleti**értékre.
+- A rendszer a **tempSensor** származó összes üzenetet elküldi az **ASA** nevű modulnak a megadott **hőmérsékleti** értékre.
 - Az **ASA** -modul összes kimenetét az eszközhöz kapcsolódó IoT hub küldi a rendszer ($upstream),
 - A rendszer az **ASA** -modul összes kimenetét elküldi a **tempSensor** **vezérlő** végpontjának.
 
@@ -206,23 +206,23 @@ A referenciák frissítése kétféleképpen lehetséges:
 
 A verzióra vonatkozó információk utolsó frissítése 2019-06-27:
 
-- Kép: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-linux-amd64`
-   - alaprendszerkép: Microsoft/DotNet: 2.1.6-Runtime-Alpine 3.7
+- Kép: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.9-linux-amd64`
+   - alaprendszerkép: mcr.microsoft.com/dotnet/core/runtime:2.1.13-alpine
    - platform
       - architektúra: amd64
       - operációs rendszer: Linux
-  
-- Kép: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-linux-arm32v7`
-   - alaprendszerkép: Microsoft/DotNet: 2.1.6-Runtime-Bionic-arm32v7
+ 
+- Kép: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.9-linux-arm32v7`
+   - alaprendszerkép: mcr.microsoft.com/dotnet/core/runtime:2.1.13-bionic-arm32v7
    - platform
       - architektúra: ARM
       - operációs rendszer: Linux
-  
-- Kép: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-windows-amd64`
-   - alaprendszerkép: Microsoft/DotNet: 2.1.6-Runtime-nanoserver-1809
+ 
+- Kép: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.9-linux-arm64`
+   - alaprendszerkép: mcr.microsoft.com/dotnet/core/runtime:3.0-bionic-arm64v8
    - platform
-      - architektúra: amd64
-      - operációs rendszer: Windows
+      - architektúra: arm64
+      - operációs rendszer: Linux
       
       
 ## <a name="get-help"></a>Segítség kérése

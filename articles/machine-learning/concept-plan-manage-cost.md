@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 031ec44cec473d9f2b2f05669aa3fc18084985f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e6e59ad237cdc1f23181375894512e69eba86ff
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704728"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042170"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>A Azure Machine Learning költségeinek megtervezése és kezelése
 
@@ -41,7 +41,7 @@ További információért az Azure Cost Management adataihoz való hozzáférés
 
 ## <a name="estimate-costs"></a>A költségek megbecslése
 
-Az [Azure díjszabási számológépével](https://azure.microsoft.com/pricing/calculator/) megbecsülheti a költségeket, mielőtt létrehozza az erőforrásokat egy Azure Machine learning-fiókban. A bal oldalon válassza az **AI + Machine learning**lehetőséget, majd a kezdéshez válassza a **Azure Machine learning** lehetőséget.  
+Az [Azure díjszabási számológépével](https://azure.microsoft.com/pricing/calculator/) megbecsülheti a költségeket, mielőtt létrehozza az erőforrásokat egy Azure Machine learning-fiókban. A bal oldalon válassza az **AI + Machine learning** lehetőséget, majd a kezdéshez válassza a **Azure Machine learning** lehetőséget.  
 
 A következő képernyőkép a kalkulátor használatával mutatja be a költségbecslést:
 
@@ -61,7 +61,9 @@ A Azure Machine Learningekkel rendelkező erőforrások használatakor költség
 
 A költségeket diagramokban és táblákban is megtekintheti a különböző időintervallumokhoz. A költségeket a költségvetések és az előre jelzett költségek között is megtekintheti. Ha a hosszabb nézetekre vált, az idő múlásával azonosíthatja a kiadási trendeket, és megtekintheti, hogy hol történt a túltöltés. Ha költségvetéseket hozott létre, tekintse meg a hol túlléptéket.  
 
-Nem jelenik meg külön szolgáltatási rész a Machine Learning számára.  Ehelyett a Machine Learning-munkaterületekhez hozzáadott különböző erőforrásokat fogja látni.
+Nem jelenik meg külön szolgáltatási rész a Machine Learning számára.  Ehelyett a Machine Learning-munkaterületekhez hozzáadott különböző erőforrásokat fogja látni. 
+
+Vegye figyelembe, hogy noha a Machine Learning munkaterület nem rendelkezik közvetlen díjszabással, a felügyelt számítási erőforrásokért kell fizetnie. Ezért ha címkéket adott hozzá a munkaterületekhez, mert nincs közvetlen díj, akkor a Cost Analysis (ár elemzése) ablaktábla fogja tükrözni ezt a munkaterületet. A címkék használatával történő pontos felügyelethez a társított számítási erőforrásokat kell megcímkézni.  
 
 ## <a name="use-azure-machine-learning-compute-cluster-amlcompute"></a>Azure Machine Learning számítási fürt (AmlCompute) használata
 

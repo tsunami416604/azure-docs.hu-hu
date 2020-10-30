@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 10/02/2020
 ms.author: joflore
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4b2ea0806f70d9f99982b9d9af9c462ff0099966
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 46fdaed4a3e1dbbe5575cd573061a480bf330389
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967953"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041947"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Azure Active Directory Domain Services engedélyezése a PowerShell használatával
 
@@ -44,15 +44,15 @@ A cikk végrehajtásához a következő erőforrásokra van szükség:
 
 Az Azure AD DS használatához egy egyszerű szolgáltatásnév és egy Azure AD-csoport szükséges. Ezek az erőforrások lehetővé teszik, hogy az Azure AD DS felügyelt tartomány szinkronizálja az adatokat, és meghatározhatja, hogy mely felhasználók rendelkeznek rendszergazdai jogosultságokkal a felügyelt tartományban.
 
-Először hozzon létre egy Azure AD-szolgáltatásnevet az Azure AD DS számára a kommunikációhoz és a hitelesítéshez. A rendszer egy adott alkalmazásspecifikus azonosítót használ a *2565BD9D-DA50-47D4-8B85-4C97F669DC36*azonosítóval rendelkező *tartományvezérlői szolgáltatások* névvel. Ne módosítsa az alkalmazás AZONOSÍTÓját.
+Először hozzon létre egy Azure AD-szolgáltatásnevet az Azure AD DS számára a kommunikációhoz és a hitelesítéshez. A rendszer egy adott alkalmazásspecifikus azonosítót használ a *6BA9A5D4-8456-4118-B521-9C5CA10CDF84* azonosítóval rendelkező *tartományvezérlői szolgáltatások* névvel. Ne módosítsa az alkalmazás AZONOSÍTÓját.
 
 Hozzon létre egy Azure AD-szolgáltatásnevet a [New-azureadserviceprincipal parancsmagot][New-AzureADServicePrincipal] parancsmag használatával:
 
 ```powershell
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 ```
 
-Most hozzon létre egy *HRE DC-rendszergazdák*nevű Azure ad-csoportot. A csoportba felvett felhasználók engedélyeket kapnak az adminisztrációs feladatok végrehajtásához a felügyelt tartományon.
+Most hozzon létre egy *HRE DC-rendszergazdák* nevű Azure ad-csoportot. A csoportba felvett felhasználók engedélyeket kapnak az adminisztrációs feladatok végrehajtásához a felügyelt tartományon.
 
 Először a [Get-AzureADGroup][Get-AzureADGroup] parancsmag használatával szerezze be a *HRE DC rendszergazdák* csoportjának azonosítóját. Ha a csoport nem létezik, hozza létre a *HRE DC-rendszergazdák* csoporttal a [New-AzureADGroup][New-AzureADGroup] parancsmag használatával:
 
@@ -109,7 +109,7 @@ New-AzResourceGroup `
   -Location $AzureLocation
 ```
 
-Hozza létre a virtuális hálózatot és az alhálózatokat a Azure AD Domain Serviceshoz. Két alhálózat jön létre – egy a *DomainServices*, egy pedig a számítási *feladatok*számára. Az Azure AD DS üzembe helyezése a dedikált *DomainServices* alhálózaton történik. Ne helyezzen üzembe más alkalmazásokat vagy munkaterheléseket ebbe az alhálózatba. A többi virtuális gép esetében használja a különálló *munkaterheléseket* vagy más alhálózatokat.
+Hozza létre a virtuális hálózatot és az alhálózatokat a Azure AD Domain Serviceshoz. Két alhálózat jön létre – egy a *DomainServices* , egy pedig a számítási *feladatok* számára. Az Azure AD DS üzembe helyezése a dedikált *DomainServices* alhálózaton történik. Ne helyezzen üzembe más alkalmazásokat vagy munkaterheléseket ebbe az alhálózatba. A többi virtuális gép esetében használja a különálló *munkaterheléseket* vagy más alhálózatokat.
 
 Hozza létre az alhálózatokat a [New-AzVirtualNetworkSubnetConfig][New-AzVirtualNetworkSubnetConfig] parancsmaggal, majd hozza létre a virtuális hálózatot a [New-AzVirtualNetwork][New-AzVirtualNetwork] parancsmag használatával.
 
@@ -200,7 +200,7 @@ $vnet | Set-AzVirtualNetwork
 
 ## <a name="create-a-managed-domain"></a>Felügyelt tartomány létrehozása
 
-Most hozzon létre egy felügyelt tartományt. Állítsa be az Azure-előfizetés AZONOSÍTÓját, majd adja meg a felügyelt tartomány nevét (például *aaddscontoso.com*). Az előfizetés-azonosítót a [Get-AzSubscription][Get-AzSubscription] parancsmaggal kérheti le.
+Most hozzon létre egy felügyelt tartományt. Állítsa be az Azure-előfizetés AZONOSÍTÓját, majd adja meg a felügyelt tartomány nevét (például *aaddscontoso.com* ). Az előfizetés-azonosítót a [Get-AzSubscription][Get-AzSubscription] parancsmaggal kérheti le.
 
 Ha olyan régiót választ, amely támogatja az Availability Zones-t, az Azure AD DS erőforrásai a további redundancia érdekében a zónák között oszlanak meg.
 
@@ -252,7 +252,7 @@ Connect-AzureAD
 Connect-AzAccount
 
 # Create the service principal for Azure AD Domain Services.
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 
 # First, retrieve the object ID of the 'AAD DC Administrators' group.
 $GroupObjectId = Get-AzureADGroup `

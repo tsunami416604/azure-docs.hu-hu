@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 17531c6e38447fba7fe8761a963be39ecfc8f489
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 4064acd6d2857ebc00a38ea7f6ff5d5e30bbd699
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044156"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041384"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>A fejlesztési és tesztelési környezet előkészítése IoT Edge
 
@@ -83,7 +83,7 @@ Az éles környezetekben csak a IoT Edge futtatókörnyezet támogatott, az alá
 | Eszköz | Más néven | Támogatott platformok | A következőkre alkalmas |
 | ---- | ------------- | ------------------- | --------- |
 | IoT EdgeHub dev eszköz  | iotedgehubdev | Windows, Linux, macOS | Eszköz szimulálása hibakeresési modulokhoz. |
-| IoT Edge dev-tároló | Microsoft/iotedgedev | Windows, Linux, macOS | Fejlesztés a függőségek telepítése nélkül. |
+| IoT Edge dev-tároló | iotedgedev | Windows, Linux, macOS | Fejlesztés a függőségek telepítése nélkül. |
 | IoT Edge-futtatókörnyezet egy tárolóban | iotedgec | Windows, Linux, macOS, ARM | Tesztelés olyan eszközön, amely esetleg nem támogatja a futtatókörnyezetet. |
 | IoT Edge eszköz tárolója | toolboc/Azure-IOT-Edge-Device-Container | Windows, Linux, macOS, ARM | Egy forgatókönyv tesztelése számos IoT Edge eszközzel nagy léptékben. |
 
@@ -99,7 +99,7 @@ További információért és a telepítéshez tekintse meg az [Azure IoT EdgeHu
 
 A Azure IoT Edge fejlesztői tároló egy olyan Docker-tároló, amely a IoT Edge-fejlesztéshez szükséges összes függőséggel rendelkezik. Ez a tároló megkönnyíti az első lépéseket, például a C#, a Python, a Node.js és a Java nyelveket. A telepítéshez csak a Docker vagy a Moby rendszernek kell telepítenie a tárolót a fejlesztői gépre.
 
-További információ: [Azure IoT Edge fejlesztői tároló](https://hub.docker.com/r/microsoft/iotedgedev/).
+További információ: [Azure IoT Edge fejlesztői tároló](https://github.com/Azure/iotedgedev/wiki/quickstart-with-iot-edge-dev-container).
 
 ### <a name="iot-edge-runtime-in-a-container"></a>IoT Edge-futtatókörnyezet egy tárolóban
 

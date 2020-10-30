@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: a833fd808049cfce95b182910e50e38d3c39f4e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 248799d70e0741efcaea1714c12f4d92a42cef25
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84691339"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041910"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Jelenetek, felvételek és kulcsképkockák
 
@@ -48,7 +48,7 @@ A videóhoz tartozó nagy felbontású kulcsképek kinyeréséhez először fel 
 
 A kulcsképek kinyeréséhez használja a Video Indexer webhelyet, töltse fel és indexelje a videóját. Az indexelési feladatok befejezését követően kattintson a **Letöltés** gombra, és válassza az összetevők **(zip)** lehetőséget. Ezzel letölti az összetevők mappát a számítógépére. 
 
-![Kulcsképek](./media/scenes-shots-keyframes/extracting-keyframes2.png)
+![Képernyőfelvétel: a "Letöltés" legördülő lista "összetevőkkel" van kiválasztva.](./media/scenes-shots-keyframes/extracting-keyframes2.png)
  
 Bontsa ki és nyissa meg a mappát. A *_KeyframeThumbnail* mappában a videóból kinyert összes kulcsképek megtalálhatók. 
 
@@ -127,6 +127,6 @@ További jellemzők:
 * Több arc: több mint két személy.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Vizsgálja meg az API által létrehozott Video Indexer kimenetet](video-indexer-output-json-v2.md#scenes)

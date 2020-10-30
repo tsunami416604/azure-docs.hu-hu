@@ -7,12 +7,12 @@ ms.subservice: workloads
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 793a8f291be4fcca6fad19d486849253dddc089f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18f9f62ba28595289d37975200352c26788e69cc
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84754503"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040032"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Az első alkalmazás üzembe helyezése Cloud Foundry on Microsoft Azure
 
@@ -95,7 +95,7 @@ A legtöbb alkalmazást telepítheti Cloud Foundry a `push` paranccsal:
 cf push
 ```
 
-Egy alkalmazás *leküldésekor* Cloud Foundry észleli az alkalmazás típusát (ebben az esetben egy Java-alkalmazást), és azonosítja a függőségeit (ebben az esetben a Spring Framework). Ezután csomagokat helyez el a kód futtatásához egy önálló tároló-rendszerképbe, amely egy *feldolgozó*. Végezetül Cloud Foundry a környezet egyik elérhető számítógépén ütemezze az alkalmazást, és létrehoz egy URL-címet, ahol elérheti azt, amely a parancs kimenetében is elérhető.
+Egy alkalmazás *leküldésekor* Cloud Foundry észleli az alkalmazás típusát (ebben az esetben egy Java-alkalmazást), és azonosítja a függőségeit (ebben az esetben a Spring Framework). Ezután csomagokat helyez el a kód futtatásához egy önálló tároló-rendszerképbe, amely egy *feldolgozó* . Végezetül Cloud Foundry a környezet egyik elérhető számítógépén ütemezze az alkalmazást, és létrehoz egy URL-címet, ahol elérheti azt, amely a parancs kimenetében is elérhető.
 
 ![Kimenet a CF push parancsból][cf-push-output]
 
@@ -114,7 +114,7 @@ A Cloud Foundry CLI használatával megtekintheti az alkalmazás naplóit a nev�
 cf logs hello-spring-cloud
 ```
 
-Alapértelmezés szerint a naplók parancs a *tail*parancsot használja, amely a megírt új naplókat jeleníti meg. Az új naplók megjelenítéséhez frissítse a Hello-Spring-Cloud alkalmazást a böngészőben.
+Alapértelmezés szerint a naplók parancs a *tail* parancsot használja, amely a megírt új naplókat jeleníti meg. Az új naplók megjelenítéséhez frissítse a Hello-Spring-Cloud alkalmazást a böngészőben.
 
 A már megírt naplók megtekintéséhez adja hozzá a `recent` kapcsolót:
 
@@ -133,7 +133,7 @@ cf scale -i 2 hello-spring-cloud
 A `cf app` parancs futtatása az alkalmazásban azt mutatja, hogy Cloud Foundry az alkalmazás egy másik példányát hozza létre. Az alkalmazás elindítása után Cloud Foundry automatikusan elindítja a terheléselosztási forgalmat.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Cloud Foundry dokumentációjának elolvasása][cloudfoundry-docs]
 - [Az Cloud Foundry Azure DevOps Services beépülő moduljának beállítása][vsts-plugin]
@@ -146,7 +146,7 @@ A `cf app` parancs futtatása az alkalmazásban azt mutatja, hogy Cloud Foundry 
 [oss-cf-bosh]: https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs
 [pcf-azuremarketplace-pivotaldocs]: https://docs.pivotal.io/pivotalcf/customizing/pcf_azure.html
 [cf-cli]: https://github.com/cloudfoundry/cli
-[cloudshell-docs]: https://docs.microsoft.com/azure/cloud-shell/overview
+[cloudshell-docs]: ../cloud-shell/overview.md
 [cf-orgs-spaces-docs]: https://docs.cloudfoundry.org/concepts/roles.html
 [spring-boot]: https://projects.spring.io/spring-boot/
 [spring-framework]: https://spring.io
