@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: a0b7a1c600fe81081fbfe8d33c3878f68e730888
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: d8583a1fee96d0a6eb3300882b2b115f057cbeec
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547358"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135971"
 ---
 A végpont [állapotának beolvasása](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) a REST API megadja a végpontok állapotát, valamint a legutóbbi ismert hibát, hogy azonosítsa a végpontok állapotának okát. Az alábbi táblázat a leggyakoribb hibákat sorolja fel.
 
 |Utolsó ismert hiba|Leírás/Ha előfordul|Lehetséges enyhítés|
 |-----|-----|-----|
-|Átmeneti|Átmeneti hiba történt, és IoT Hub újrapróbálkozik a művelettel.|Megfigyelheti az [útvonalak erőforrás-naplófájljait](https://docs.microsoft.com/azure/iot-hub/monitor-service-reference#routes).|
-|InternalError|Hiba történt egy üzenetnek a végponthoz való kézbesítése közben.|Ez egy belső kivétel, de az [útvonalak erőforrás-naplófájljai](https://docs.microsoft.com/azure/iot-hub/monitor-service-reference#routes)is megfigyelhetők.|
+|Átmeneti|Átmeneti hiba történt, és IoT Hub újrapróbálkozik a művelettel.|Megfigyelheti az [útvonalak erőforrás-naplófájljait](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub-reference#routes).|
+|InternalError|Hiba történt egy üzenetnek a végponthoz való kézbesítése közben.|Ez egy belső kivétel, de az [útvonalak erőforrás-naplófájljai](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub-reference#routes)is megfigyelhetők.|
 |Nem engedélyezett|IoT Hub nincs jogosultsága arra, hogy üzeneteket küldjön a megadott végpontnak.|Ellenőrizze, hogy a végpont számára a kapcsolódási karakterlánc naprakész-e. Ha módosult, vegyen fel egy frissítést a IoT Hub. Ha a végpont felügyelt identitást használ, ellenőrizze, hogy a IoT Hub rendszerbiztonsági tag rendelkezik-e a szükséges engedélyekkel a célhelyen.|
 |Szabályozott|Az üzenetek a végpontba írásakor a IoT Hub szabályozása folyamatban van.|Tekintse át az érintett végpont szabályozási korlátait. Szükség esetén módosítsa a végpont konfigurációit a vertikális felskálázáshoz.|
 |Időtúllépés|Művelet időtúllépése.|Próbálja meg újra a műveletet.|

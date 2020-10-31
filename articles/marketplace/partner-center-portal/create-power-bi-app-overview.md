@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 04/02/2020
-ms.openlocfilehash: 2f34723bec6dc2212f8897eca849e6535d737fc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af77f18771d8e18ee86b79360ac03307d3330cb0
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397419"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131428"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI alkalmazás-létrehozás áttekintése
 
@@ -33,22 +33,22 @@ A kereskedelmi piactéren való közzététel előnyei:
 
 Ezek a legfontosabb közzétételi lépések:
 
-1. Hozza létre az alkalmazást Power BIban. A csomag telepítési hivatkozását fogja kapni, amely az ajánlat fő technikai eszköze. Az ajánlat a partner Centerben való létrehozása előtt küldje el a tesztelési csomagot előzetes gyártásra. Részletekért lásd: [Mik a Power bi alkalmazások?](https://docs.microsoft.com/power-bi/service-template-apps-overview).
+1. Hozza létre az alkalmazást Power BIban. A csomag telepítési hivatkozását fogja kapni, amely az ajánlat fő technikai eszköze. Az ajánlat a partner Centerben való létrehozása előtt küldje el a tesztelési csomagot előzetes gyártásra. Részletekért lásd: [Mik a Power bi alkalmazások?](/power-bi/service-template-apps-overview).
 2. Adja hozzá a marketing-anyagokat, például a hivatalos nevet, a leírást és az emblémákat.
 3. Adja meg az ajánlat jogi és támogatási dokumentumait, például a használati feltételeket, az adatvédelmi szabályzatot, a támogatási szabályzatot és a felhasználói súgót.
 4. Ajánlat létrehozása – a partner Center használatával szerkesztheti a részleteket, beleértve az ajánlat leírását, a marketing-anyagokat, a jogi információkat, a támogatási információkat és az eszközök specifikációit.
 5. Küldje el közzétételre.
 6. Figyelje a folyamatot a partner Centerben, ahol a AppSource bevezetési csapata teszteli, ellenőrzi és tanúsítja az alkalmazást.
 7. A minősítés után tekintse át az alkalmazást a tesztelési környezetben, és szabadítsa fel. Ez a lista a AppSource ("élő") jelenik meg.
-8. A Power BIban küldje el a csomagot éles környezetben. Részletekért lásd: [a Power bi alkalmazás kiadásának kezelése](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release).
+8. A Power BIban küldje el a csomagot éles környezetben. Részletekért lásd: [a Power bi alkalmazás kiadásának kezelése](/power-bi/service-template-apps-create#manage-the-template-app-release).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 Tekintse át az alábbi hivatkozásokat, amelyek sablonokat, tippeket és mintákat biztosítanak.
 
-- [Power BI-alkalmazás létrehozása](https://docs.microsoft.com/power-bi/service-template-apps-create)
-- [Tippek Power BI-alkalmazások készítéséhez](https://docs.microsoft.com/power-bi/service-template-apps-tips)
-- [Példák](https://docs.microsoft.com/power-bi/service-template-apps-samples)
+- [Power BI-alkalmazás létrehozása](/power-bi/service-template-apps-create)
+- [Tippek Power BI-alkalmazások készítéséhez](/power-bi/service-template-apps-tips)
+- [Példák](/power-bi/service-template-apps-samples)
 
 ## <a name="requirements"></a>Követelmények
 
@@ -56,13 +56,13 @@ Ahhoz, hogy közzé lehessen tenni a kereskedelmi piactéren, a Power BI alkalma
 
 ### <a name="technical-requirements"></a>Technikai követelmények
 
-A legfontosabb technikai eszköznek egy [Power bi alkalmazásnak](https://go.microsoft.com/fwlink/?linkid=2028636)kell lennie. Ez az elsődleges adatkészletek, jelentések vagy irányítópultok gyűjteménye. Emellett az opcionálisan csatlakoztatott szolgáltatásokat és beágyazott adatkészleteket is tartalmazza, korábbi nevén a [Content Pack](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction). Az ilyen típusú alkalmazások fejlesztésével kapcsolatos további információkért lásd: [Mi a Power bi alkalmazás?](https://go.microsoft.com/fwlink/?linkid=2028636).
+A legfontosabb technikai eszköznek egy [Power bi alkalmazásnak](/power-bi/connect-data/service-template-apps-overview)kell lennie. Ez az elsődleges adatkészletek, jelentések vagy irányítópultok gyűjteménye. Emellett az opcionálisan csatlakoztatott szolgáltatásokat és beágyazott adatkészleteket is tartalmazza, korábbi nevén a [Content Pack](/power-bi/service-organizational-content-pack-introduction). Az ilyen típusú alkalmazások fejlesztésével kapcsolatos további információkért lásd: [Mi a Power bi alkalmazás?](/power-bi/connect-data/service-template-apps-overview).
 
 #### <a name="get-an-installation-web-address"></a>Telepítési webcímek beszerzése
 
 [Power bi](https://powerbi.microsoft.com/) -környezetben csak Power bi alkalmazást hozhat létre.
 
-1. Jelentkezzen be [Power bi Pro licenccel](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro).
+1. Jelentkezzen be [Power bi Pro licenccel](/power-bi/service-admin-purchasing-power-bi-pro).
 2. Az alkalmazás létrehozása és tesztelése Power BIban.
 3. Amikor megkapja az alkalmazás-telepítési webcímet, adja hozzá a partner Center **technikai konfigurációs** lapjához.
 

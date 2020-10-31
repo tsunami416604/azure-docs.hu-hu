@@ -5,36 +5,37 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: 38fffd7793e1f5bd59ac6dde4499b2eb25009b52
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 74866c65111fae9e6fb3b79d9b59819b14b03c16
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91303852"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131472"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rövid útmutató: új alkalmazás létrehozása a LUIS portálon
 
-Ebben a rövid útmutatóban egy új alkalmazást hoz létre a LUIS portálon. Először hozza létre az alkalmazás, a **szándékok**és az **entitások**alapvető részeit. Ezt követően tesztelje az alkalmazást úgy, hogy az interaktív tesztelési panelen megadta a minta felhasználótól az előre jelzett szándékot.
+Ebben a rövid útmutatóban egy új alkalmazást hoz létre a LUIS portálon. Először hozza létre az alkalmazás, a **szándékok** és az **entitások** alapvető részeit. Ezt követően tesztelje az alkalmazást úgy, hogy az interaktív tesztelési panelen megadta a minta felhasználótól az előre jelzett szándékot.
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 ## <a name="create-an-app"></a>Alkalmazás létrehozása
 
-1. A helyi eszköztáron válassza az **+ új alkalmazás** lehetőséget, majd válassza az **+ új alkalmazás lehetőséget a beszélgetéshez** .
+Alkalmazás létrehozásához kattintson az  **+ új alkalmazás** lehetőségre. 
 
-    > [!div class="mx-imgBorder"]
-    > [![Képernyőkép az új alkalmazás létrehozásáról a LUIS Portalon](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
+A megjelenő ablakban adja meg a következő adatokat:
 
-1. Az előugró ablakban konfigurálja az alkalmazást a következő beállításokkal, majd válassza a **kész**lehetőséget.
+|Név  |Leírás  |
+|---------|---------|
+|Név     | Az alkalmazás neve. Például: "Home Automation". Kötelező.        |
+|Kultúra     | A nyelv, amelyet az alkalmazás megértett és beszél. Kötelező.   |
+|Leírás | Az alkalmazás leírása. Választható.
+|Előrejelzési erőforrás | Az előrejelzési erőforrás, amely a lekérdezéseket fogja kapni. Választható. |
 
-   |Beállítás neve| Érték | Rendeltetés|
-   |--|--|--|
-   |Név|`myEnglishApp`|Egyedi LUIS-alkalmazás neve<br>kötelező|
-   |Kultúra|**Angol**|A felhasználók hosszúságú kimondott szöveg nyelve, **en-us**<br>kötelező|
-   |Leírás (nem kötelező)|`App made with LUIS Portal`|Az alkalmazás leírása<br>választható|
-   |Előrejelzési erőforrás (nem kötelező) |-  |Ne válassza a lehetőséget. A LUIS egy alapszintű kulcsot biztosít a szerzői műveletek és a 1 000-es előrejelzési végpontokra vonatkozó kérések használatához. |
+Válassza a **Done** (Kész) lehetőséget.
 
-   ![Képernyőkép az új Alkalmazásbeállítások megadásáról](./media/get-started-portal-build-app/create-new-app-settings.png)
+>[!NOTE]
+>A kulturális környezet az alkalmazás létrehozása után nem módosítható.
+
 
 ## <a name="create-intents"></a>Szándékok létrehozása
 
@@ -52,22 +53,17 @@ Az alkalmazás két különböző _szándéka az alábbi célokhoz_ igazodik:
 
 A leképezések létrehozásához hajtsa végre a következő lépéseket:
 
-1. Az alkalmazás létrehozása után a **Build** szakasz **szándékok** lapján található. Kattintson a **Létrehozás** gombra.
+1. Az alkalmazás létrehozása után győződjön meg arról, hogy a **Build** szakasz **cél** lapján található. Válassza a **Létrehozás** lehetőséget.
 
    [![Képernyőkép: a Létrehozás gombra kattintva hozzon létre új leképezést](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
-1. Adja meg a leképezés nevét, `FindForm` majd kattintson a **kész**gombra.
+1. Adja meg a leképezés nevét, `FindForm` majd kattintson a **kész** gombra.
 
 ## <a name="add-an-example-utterance"></a>Példa Kimondás hozzáadása
 
-A leképezések létrehozása után példaként adja hozzá a hosszúságú kimondott szöveg. Például a hosszúságú kimondott szöveg olyan szöveg, amelyet a felhasználó egy csevegési robotba vagy más ügyfélalkalmazásba ír. A felhasználó szövegének szándékát egy LUIS-szándékra képezik le.
+A leképezések létrehozása után példaként adja hozzá a hosszúságú kimondott szöveg. Például a hosszúságú kimondott szöveg olyan szöveg, amelyet a felhasználó egy csevegési robotba vagy más ügyfélalkalmazásba ír. A felhasználó szövegének szándékát egy LUIS-szándékra képezik le. Ebben a példában az alkalmazás `FindForm` célja, például a hosszúságú kimondott szöveg fogja tartalmazni az űrlapot. Az ügyfélalkalmazás számára szükséges, hogy megfeleljen a felhasználó kérelmének, ezért fontos, hogy belefoglalja azt a teljességbe.
 
-Ebben a példában az alkalmazás `FindForm` célja, például a hosszúságú kimondott szöveg fogja tartalmazni az űrlapot. Az ügyfélalkalmazás számára szükséges, hogy megfeleljen a felhasználó kérelmének, ezért fontos, hogy belefoglalja azt a teljességbe.
-
-> [!div class="mx-imgBorder"]
-> [![Képernyőkép a FindForm szándékának példás hosszúságú kimondott szöveg](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
-
-Adja hozzá a következő 15 példa hosszúságú kimondott szöveg a `FindForm` szándékhoz.
+A **cél** lapon `FindForm` adja hozzá a következő példát a hosszúságú kimondott szöveg ( **példa: Kimondás** ). 
 
 |#|Példák kimondott szövegekre|
 |--|--|
@@ -106,7 +102,7 @@ Ha vissza szeretné állítani az űrlap számát a futásidejű előrejelzési 
 
 1. Adja meg a nevet `FormNumber` , válassza ki a **regex** entitás típusát.
 
-1. Adja meg a reguláris kifejezést a `hrf-[0-9]{6}` **regex** mezőben. Ez a bejegyzés megegyezik a literális karakterekkel, `hrf-` és lehetővé teszi pontosan hat számjegy használatát, majd válassza a **Létrehozás**lehetőséget.
+1. Adja meg a reguláris kifejezést a `hrf-[0-9]{6}` **regex** mezőben. Ez a bejegyzés megegyezik a literális karakterekkel, `hrf-` és lehetővé teszi pontosan hat számjegy használatát, majd válassza a **Létrehozás** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![A reguláris kifejezés entitás létrehozásának képernyőképe](./media/get-started-portal-build-app/create-regular-expression-entity.png)
@@ -161,11 +157,11 @@ A LUIS-portál interaktív **teszt** paneljén ellenőrizheti, hogy az entitás 
 
    A felső előre jelzett szándék megfelelően **FindForm** , több mint 90%-os megbízhatósággal (0,977). A **FormNumber** entitás a hrf-234098 értékkel van kinyerve.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha ezzel a rövid útmutatóval végzett, és nem a következő rövid útmutatóra vált, válassza a **saját alkalmazások** lehetőséget a felső navigációs menüből. Ezután jelölje be az alkalmazás bal oldali jelölőnégyzetét a listából, majd válassza a  **Törlés** lehetőséget a lista fölötti helyi eszköztáron.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [2. alkalmazás üzembe helyezése](get-started-portal-deploy-app.md)

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: trbye
-ms.openlocfilehash: 613ee87064cc3b0bbbae8b8ac2e31a5ed60d39f2
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: eae4aece79cd387aaa7e708591ca31442eaa05c3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097201"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135981"
 ---
 Ez az útmutató bemutatja, hogyan telepítheti a Pythonhoz készült [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t. Ha csak azt szeretné, hogy a csomag neve a saját számára legyen megkezdve, futtassa a parancsot `pip install azure-cognitiveservices-speech` .
 
@@ -20,25 +20,20 @@ Ez az útmutató bemutatja, hogyan telepítheti a Pythonhoz készült [SPEECH SD
 - A Python Speech SDK csomag elérhető a következő operációs rendszerekhez:
   - Windows: x64 és x86
   - Mac: macOS X 10,12 vagy újabb verzió
-  - Linux: Ubuntu 16.04/18.04, Debian 9, RHEL 7/8, CentOS 7/8 x64-ben
+  - Linux Tekintse meg a [támogatott Linux-disztribúciók és a megcélzott architektúrák](~/articles/cognitive-services/speech-service/speech-sdk.md)listáját.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A támogatott linuxos platformokhoz telepíteni kell bizonyos kódtárakat ( `libssl` a Secure Sockets Layer támogatásához és a hangalapú `libasound2` támogatáshoz). A könyvtárak megfelelő verzióinak telepítéséhez szükséges parancsokért tekintse meg az alábbi disztribúciót.
 
-  - Ubuntu rendszeren futtassa a következő parancsokat a szükséges csomagok telepítéséhez:
+  - Ubuntu/Debian rendszeren futtassa a következő parancsokat a szükséges csomagok telepítéséhez:
 
     ```sh
     sudo apt-get update
     sudo apt-get install build-essential libssl1.0.0 libasound2
     ```
 
-  - A Debian 9 rendszeren futtassa a következő parancsokat a szükséges csomagok telepítéséhez:
-
-    ```sh
-    sudo apt-get update
-    sudo apt-get install build-essential libssl1.0.2 libasound2
-    ```
+    Ha a libssl 1.0.0 nem érhető el, telepítse a libssl 1.0. x (ahol az x értéke nagyobb, mint 0) vagy a libssl 1.1.
 
   - A RHEL/CentOS számítógépen futtassa a következő parancsokat a szükséges csomagok telepítéséhez:
 
@@ -79,12 +74,12 @@ import azure.cognitiveservices.speech as speechsdk
 1. Töltse le és telepítse a [Python](https://www.python.org/downloads/) legújabb támogatott verzióját a platformhoz, 3,5 – 3,8.
    - A Windows-felhasználók a telepítési folyamat során a "Python hozzáadása az elérési úthoz" lehetőséget kell választani.
 1. Töltse le és telepítse a [Visual Studio Code-ot](https://code.visualstudio.com/Download).
-1. Nyissa meg a Visual Studio Code-ot, és telepítse a Python-bővítményt. Válassza **File**  >  **Preferences**  >  a menüből a file Preferences**bővítmények** lehetőséget. Keressen rá a **Python** kifejezésre, majd kattintson a **telepítés**gombra.
+1. Nyissa meg a Visual Studio Code-ot, és telepítse a Python-bővítményt. Válassza **File**  >  **Preferences**  >  a menüből a file Preferences **bővítmények** lehetőséget. Keressen rá a **Python** kifejezésre, majd kattintson a **telepítés** gombra.
 
    ![A Python-bővítmény telepítése](~/articles/cognitive-services/speech-service/media/sdk/qs-python-vscode-python-extension.png)
 
 1. A Visual Studio Code-ban is telepítse a Speech SDK Python-csomagot az integrált parancssorból:
-   1. Nyisson meg egy terminált (a legördülő menükből, **terminál**  >  **új terminálja**)
+   1. Nyisson meg egy terminált (a legördülő menükből, **terminál**  >  **új terminálja** )
    1. A megnyíló terminálon írja be a parancsot. `python -m pip install azure-cognitiveservices-speech`
 
 Ha még nem ismeri a Visual Studio Code-ot, tekintse meg a részletes [Visual Studio Code-dokumentációt](https://code.visualstudio.com/docs). További információ a Visual Studio Code-ról és a Pythonról: [Visual Studio Code Python oktatóanyag](https://code.visualstudio.com/docs/python/python-tutorial).
@@ -97,6 +92,6 @@ A változó ellenőrzésével ellenőrizze, hogy jelenleg melyik verziót telep�
 
 Ha problémája van, vagy hiányzik egy szolgáltatás, tekintse meg a [támogatási és súgó beállításait](~/articles/cognitive-services/speech-service/support.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [windows](../quickstart-list.md)]

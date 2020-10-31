@@ -7,12 +7,12 @@ ms.topic: article
 author: emuench
 ms.author: navits
 ms.date: 07/17/2020
-ms.openlocfilehash: 10137e59e0ea06fa785fccc215c867b6d8c0cb76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9685081c0beacd745a83067b9d9876384933377
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651156"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131241"
 ---
 # <a name="appsource-dynamics-365-finance-and-operations-functional-validation"></a>AppSource Dynamics 365 pénzügyi és üzemeltetési funkciók ellenőrzése
 
@@ -22,7 +22,7 @@ Ha első közzétételt szeretne végrehajtani a [partner Centerben](https://par
 - A megoldás [Lifecycle Services](https://lcs.dynamics.com/) -(LCS-) környezetét bemutató képernyőképek.
 
 > [!NOTE]
-> A későbbi újraminősítési közzétételekhez nem szükséges bemutató. További információért lásd a [AppSource szabályzat dokumentumát](https://docs.microsoft.com/legal/marketplace/certification-policies#1440-dynamics-365-finance-ops).
+> A későbbi újraminősítési közzétételekhez nem szükséges bemutató. További információért lásd a [AppSource szabályzat dokumentumát](/legal/marketplace/certification-policies#1440-dynamics-365-finance-ops).
 
 ## <a name="how-to-validate"></a>Az érvényesítés módja
 
@@ -50,11 +50,11 @@ A végső felülvizsgálati hívások bejelentéséhez vegye fel a kapcsolatot [
 
 2. Hajtsa végre a következő képernyőképeket az [LCS](https://lcs.dynamics.com/) -környezetből, amely megfelel a közzétenni kívánt ajánlatnak vagy megoldásnak. Elég Egyértelműnek kell lenniük ahhoz, hogy a minősítési csapat beolvassa a szöveget. Mentse a képernyőképeket JPG-fájlként. Engedélyt biztosíthat az [appSourceCRM@microsoft.com](mailto:appSourceCRM@microsoft.com) LCS-környezet számára, hogy a képernyőképek megadása helyett a telepítőt is ellenőrizzük.
 
-    1. Nyissa meg a következőt: **LCS**  >  **Business Process Modeling**  >  **Project Library**. Képernyőkép készítése a folyamat lépéseiről. Adja meg a **diagramokat** és az **áttekintett** oszlopokat az itt látható módon:
+    1. Nyissa meg a következőt: **LCS**  >  **Business Process Modeling**  >  **Project Library** . Képernyőkép készítése a folyamat lépéseiről. Adja meg a **diagramokat** és az **áttekintett** oszlopokat az itt látható módon:
 
        :::image type="content" source="media/dynamics-365-finance-operations/project-library.png" alt-text="Megjeleníti a Project Library ablakát.":::
 
-      2. Lépjen az **LCS**  >  **megoldás-felügyeleti**  >  **tesztelési megoldás csomagjába**. Készítsen képernyőképeket, amelyek tartalmazzák az alábbi példákban látható csomag áttekintését és tartalmát:
+      2. Lépjen az **LCS**  >  **megoldás-felügyeleti**  >  **tesztelési megoldás csomagjába** . Készítsen képernyőképeket, amelyek tartalmazzák az alábbi példákban látható csomag áttekintését és tartalmát:
 
     | Mező | Kép <img src="" width="400px">|
     | --- | --- |
@@ -65,7 +65,7 @@ A végső felülvizsgálati hívások bejelentéséhez vegye fel a kapcsolatot [
     | <ul><li>Power BI jelentési modell</li><li>BPM-összetevő</li></ul><br>Az összetevők nem szükségesek a **Power bi** szakaszban. | [![Csomag tartalmának három képernyője](media/dynamics-365-finance-operations/package-contents-3-45.png)](media/dynamics-365-finance-operations/package-contents-3.png#lightbox) |
     | <ul><li>Adatcsomag feldolgozása</li><li>Megoldási licencszerződés és adatvédelmi szabályzat</li></ul><br>A **csoportmentességi konfiguráció** és a **Power bi jelentési modell** részei nem kötelezőek a pénzügyi és üzemeltetési ajánlatokhoz. | [![Csomag tartalmának négy képernyője](media/dynamics-365-finance-operations/package-contents-4-45.png)](media/dynamics-365-finance-operations/package-contents-4.png#lightbox) |
 
-    Az LCS-portál egyes szakaszaival kapcsolatos további tudnivalókért tekintse meg az [LCS felhasználói útmutatót](https://docs.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/lcs-user-guide).
+    Az LCS-portál egyes szakaszaival kapcsolatos további tudnivalókért tekintse meg az [LCS felhasználói útmutatót](/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/lcs-user-guide).
 
 3. Feltöltés a partneri központba.
 
@@ -76,4 +76,4 @@ A végső felülvizsgálati hívások bejelentéséhez vegye fel a kapcsolatot [
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az ajánlatok létrehozásával kapcsolatos további tudnivalókért lásd: [Dynamics 365 for Operations ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer).
+Az ajánlatok létrehozásával kapcsolatos további tudnivalókért lásd: [Dynamics 365 for Operations ajánlat létrehozása](./partner-center-portal/create-new-operations-offer.md).

@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 8c0aef1817581e2b09297d8807676cf0049e1d3e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 5766eb821800568b567350e1360ca4cf5403be6d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92169076"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135559"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Linux Speech Devices SDK-t egy beszédfelismerésre alkalmas termék létrehozásához vagy [beszélgetéses átírási](../conversation-transcription-service.md) eszközként való használatához. Jelenleg csak az [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) támogatott.
 
@@ -74,13 +74,13 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
 1. Az Eclipse IDE főablaka hamarosan megjelenik. Ha megnyílt, zárja be az üdvözlőképernyőt.
 
-1. Az Eclipse menüsávban hozzon létre egy új projektet a **fájl**  >  **új**  >  **Java-projekt**lehetőség kiválasztásával. Ha nem érhető el, válassza a **projekt** , majd a **Java-projekt**lehetőséget.
+1. Az Eclipse menüsávban hozzon létre egy új projektet a **fájl**  >  **új**  >  **Java-projekt** lehetőség kiválasztásával. Ha nem érhető el, válassza a **projekt** , majd a **Java-projekt** lehetőséget.
 
 1. Elindul az **új Java-projekt** varázsló. **Tallózással keresse** meg a minta projekt helyét. Válassza a **Befejezés** lehetőséget.
 
    ![A New Java Project varázsló képernyőképe](../media/speech-devices-sdk/eclipse-new-java-project-linux.png)
 
-1. A **Package Explorerben**kattintson a jobb gombbal a projektre. Válassza **Configure**  >  a helyi menü**Konvertálás a Maven-re projektre** parancsát. Válassza a **Befejezés** lehetőséget.
+1. A **Package Explorerben** kattintson a jobb gombbal a projektre. Válassza **Configure**  >  a helyi menü **Konvertálás a Maven-re projektre** parancsát. Válassza a **Befejezés** lehetőséget.
 
    ![A Package Explorer képernyőképe](../media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
@@ -100,20 +100,20 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.13.0</version>
+             <version>1.14.0</version>
         </dependency>
     </dependencies>
    ```
 
-1. A **Package Explorerben**kattintson a jobb gombbal a projektre. Válassza a **Tulajdonságok**, majd az új **Beállítások futtatása/hibakeresés**  >  **..** . lehetőséget. > **Java-alkalmazás**. 
+1. A **Package Explorerben** kattintson a jobb gombbal a projektre. Válassza a **Tulajdonságok** , majd az új **Beállítások futtatása/hibakeresés**  >  **..** . lehetőséget. > **Java-alkalmazás** . 
 
-1. Megjelenik a **konfiguráció szerkesztése** ablak. A **név** mezőbe írja be a **Main**értéket, és a **fő osztály** **keresése** elemre kattintva keresse meg és válassza ki a következőt: **com. microsoft. cognitiveservices. Speech. Samples. FunctionsList**.
+1. Megjelenik a **konfiguráció szerkesztése** ablak. A **név** mezőbe írja be a **Main** értéket, és a **fő osztály** **keresése** elemre kattintva keresse meg és válassza ki a következőt: **com. microsoft. cognitiveservices. Speech. Samples. FunctionsList** .
 
    ![Képernyőkép – indítási konfiguráció szerkesztése](../media/speech-devices-sdk/eclipse-edit-launch-configuration-linux.png)
 
-1. A cél architektúrához tartozó hangbináris fájlok másolása **Linux-ARM** vagy **Linux-x64 rendszerről**a Java-projekt helyére, például **/Home/wcaltest/JRE-Sample-Release**
+1. A cél architektúrához tartozó hangbináris fájlok másolása **Linux-ARM** vagy **Linux-x64 rendszerről** a Java-projekt helyére, például **/Home/wcaltest/JRE-Sample-Release**
 
-1. Emellett a **konfiguráció szerkesztése** ablakban válassza ki a **környezet** lapot és az **új**elemet. Megjelenik az **új környezeti változó** ablak. A **név** mezőbe írja be a **LD_LIBRARY_PATH** értéket, és az **érték** mezőbe írja be a *. so fájlokat tartalmazó mappát (például **/Home/wcaltest/JRE-Sample-Release** ).
+1. Emellett a **konfiguráció szerkesztése** ablakban válassza ki a **környezet** lapot és az **új** elemet. Megjelenik az **új környezeti változó** ablak. A **név** mezőbe írja be a **LD_LIBRARY_PATH** értéket, és az **érték** mezőbe írja be a *. so fájlokat tartalmazó mappát (például **/Home/wcaltest/JRE-Sample-Release** ).
 
 1. Másolás `kws.table` és `participants.properties` a projekt mappájának **célja/osztályai**
 
@@ -147,7 +147,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
     Új kulcsszó használatához frissítse a következő sort a-ben `FunctionsList.java` , és másolja a kulcsszót az alkalmazásba. Ha például a "Machine" kulcsszót szeretné használni a Kulcsszóválasztó csomagból `machine.zip` :
 
-   * Másolja a `kws.table` fájlt a zip-csomagból a Project Folder **cél/osztályok**mappájába.
+   * Másolja a `kws.table` fájlt a zip-csomagból a Project Folder **cél/osztályok** mappájába.
 
    * Frissítse a `FunctionsList.java` kulcsszó nevét a következővel:
 
@@ -163,18 +163,18 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
    ![A Speech Devices SDK-példa alkalmazást és beállításokat bemutató képernyőkép.](../media/speech-devices-sdk/java-sample-app-linux.png)
 
-1. Próbálja ki az új **beszélgetés átiratának** bemutatóját. Kezdje el az átírást a **munkamenet**  >  **elindításával**. Alapértelmezés szerint mindenki a vendég. Ha azonban a résztvevő hangaláírásai vannak, akkor `participants.properties` a projekt mappájában lévő **cél/osztályokba**helyezhetők. A hangaláírás létrehozásához tekintse meg a beszélgetések átírása [(SDK) című témakört](../how-to-use-conversation-transcription-service.md).
+1. Próbálja ki az új **beszélgetés átiratának** bemutatóját. Kezdje el az átírást a **munkamenet**  >  **elindításával** . Alapértelmezés szerint mindenki a vendég. Ha azonban a résztvevő hangaláírásai vannak, akkor `participants.properties` a projekt mappájában lévő **cél/osztályokba** helyezhetők. A hangaláírás létrehozásához tekintse meg a beszélgetések átírása [(SDK) című témakört](../how-to-use-conversation-transcription-service.md).
 
    ![Képernyőkép, amely bemutatja a bemutató beszélgetési alkalmazás átiratát.](../media/speech-devices-sdk/cts-sample-app-linux.png)
 
 ## <a name="create-and-run-standalone-the-application"></a>Önálló alkalmazás létrehozása és futtatása
 
-1. A **Package Explorerben**kattintson a jobb gombbal a projektre. Válassza az **Exportálás**lehetőséget. 
-1. Megjelenik az **Exportálás** ablak. Bontsa ki a **javát** , és válassza a **futtatható jar-fájl** lehetőséget, majd kattintson a **tovább**gombra.
+1. A **Package Explorerben** kattintson a jobb gombbal a projektre. Válassza az **Exportálás** lehetőséget. 
+1. Megjelenik az **Exportálás** ablak. Bontsa ki a **javát** , és válassza a **futtatható jar-fájl** lehetőséget, majd kattintson a **tovább** gombra.
 
    ![Az exportálási ablakot megjelenítő képernyőkép.](../media/speech-devices-sdk/eclipse-export-linux.png) 
 
-1. Megjelenik a **FUTTATHATÓ jar-fájl exportálása** ablak. Válassza ki az alkalmazás **exportálási célját** , majd kattintson a **Befejezés gombra**.
+1. Megjelenik a **FUTTATHATÓ jar-fájl exportálása** ablak. Válassza ki az alkalmazás **exportálási célját** , majd kattintson a **Befejezés gombra** .
  
    ![A futtatható JAR-fájl exportálási ablakát megjelenítő képernyőkép.](../media/speech-devices-sdk/eclipse-export-jar-linux.png)
 

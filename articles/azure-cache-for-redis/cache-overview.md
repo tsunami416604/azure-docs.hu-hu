@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 47c4fbada4bb4e7019cb2fa619d97bbb38843dd8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3bea474ae61ba4a0213d880934d9536d6ad71796
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085105"
+ms.locfileid: "93131632"
 ---
 # <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 A Redis-hez készült Azure cache memóriában tárolt adattárakat biztosít a [Redis](https://redis.io/) szoftver alapján. A Redis javítja a háttérbeli adattárakat használó alkalmazások teljesítményét és méretezhetőségét. Nagy mennyiségű alkalmazás-kérést képes feldolgozni a gyakran használt adatoknak a kiszolgáló memóriájában való megtartásával, amely gyorsan beírható és olvasható. A Redis kritikus, kis késésű és nagy átviteli sebességű adattárolási megoldást nyújt a modern alkalmazásokhoz.
@@ -48,7 +48,7 @@ A Redis készült Azure cache a következő szinteknél érhető el:
 | Standard | Egy, a replikált konfigurációban két virtuális gépen futó OSS Redis cache. |
 | Prémium | Nagy teljesítményű OSS Redis cache-gyorsítótárak. Ez a platform magasabb átviteli sebességet, kisebb késést, jobb rendelkezésre állást és további funkciókat kínál. A prémium szintű gyorsítótárak üzembe helyezése nagyobb teljesítményű virtuális gépeken történik, mint az alapszintű vagy standard gyorsítótárak esetében. |
 | Enterprise | A Redis Labs Redis Enterprise szoftverrel működő nagy teljesítményű gyorsítótárak. Ez a platform támogatja a Redis-modulokat, például a RediSearch, a RedisBloom és a RedisTimeSeries. Emellett a prémium szintnél is magasabb rendelkezésre állást biztosít. |
-| Enterprise | Költséghatékony nagy gyorsítótárak a Redis Labs Redis Enterprise szoftverrel. Ez a csomag kiterjeszti a Redis az adattárolót a nem felejtő memóriára, ami olcsóbb a DRAM esetében, egy virtuális gépen. Ez csökkenti a GB-os memória teljes költségeit. |
+| Nagyvállalati Flash | Költséghatékony nagy gyorsítótárak a Redis Labs Redis Enterprise szoftverrel. Ez a csomag kiterjeszti a Redis az adattárolót a nem felejtő memóriára, ami olcsóbb a DRAM esetében, egy virtuális gépen. Ez csökkenti a GB-os memória teljes költségeit. |
 
 ### <a name="feature-comparison"></a>Szolgáltatások összehasonlítása
 Az [Azure cache for Redis díjszabása](https://azure.microsoft.com/pricing/details/cache/) az egyes szintek részletes összehasonlítását tartalmazza. Az alábbi táblázat a szintek által támogatott néhány funkciót írja le:

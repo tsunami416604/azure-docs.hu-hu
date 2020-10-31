@@ -1,19 +1,19 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: multiple
 author: sharad4u
 ms.service: multiple
 ms.topic: include
-ms.date: 05/09/2019
+ms.date: 10/30/2020
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: 68d0459153fbdb34216c1313f70e292119b93a7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60c26d8c33b1d419da5a51206d310e2112c69644
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269802"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93136019"
 ---
 A saját tanúsítvány létrehozásakor a következő hitelesítésszolgáltatók engedélyezettek:
 
@@ -32,6 +32,7 @@ A saját tanúsítvány létrehozásakor a következő hitelesítésszolgáltat�
 - D-TRUST root Class 3 CA 2 2009
 - DigiCert Cloud Services CA-1
 - DigiCert globális legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ
+- DigiCert globális CA G2
 - DigiCert, magas megbízhatóságú HITELESÍTÉSSZOLGÁLTATÓ – 3
 - DigiCert magas megbízhatóságú, EV legfelső szintű HITELESÍTÉSSZOLGÁLTATÓja
 - DigiCert SHA2 kiterjesztett ellenőrzési kiszolgáló HITELESÍTÉSSZOLGÁLTATÓja

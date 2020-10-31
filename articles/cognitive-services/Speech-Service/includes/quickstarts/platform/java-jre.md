@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.custom: devx-track-java
 ms.author: erhopf
-ms.openlocfilehash: 093e5482896e2af8008f20826e30443bdeb9aae9
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 142d4504ab12e7df5cc1e009038554a5b90dff0c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097031"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135935"
 ---
 Ez az útmutató bemutatja, hogyan telepítheti a 64 bites Java 8 JRE [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t. Ha csak azt szeretné, hogy a csomag neve megkezdhető legyen a saját számára, a Java SDK nem érhető el a Maven Central adattárában. Akár Gradle `pom.xml` , akár függőségi fájlt használ, hozzá kell adnia egy egyéni tárházat, amely a `https://csspeechstorage.blob.core.windows.net/maven/` következőre mutat: (lásd alább a csomag nevét).
 
@@ -30,7 +30,7 @@ Ez az útmutató bemutatja, hogyan telepítheti a 64 bites Java 8 JRE [SPEECH SD
 - A Java Speech SDK csomag elérhető a következő operációs rendszerekhez:
   - Windows: 64 – csak bit
   - Mac: macOS X 10,13 vagy újabb verzió
-  - Linux: 64-bit csak Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 7/8, CentOS 7/8
+  - Linux Tekintse meg a [támogatott Linux-disztribúciók és a megcélzott architektúrák](~/articles/cognitive-services/speech-service/speech-sdk.md)listáját.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -39,19 +39,14 @@ Ez az útmutató bemutatja, hogyan telepítheti a 64 bites Java 8 JRE [SPEECH SD
 - [Eclipse Java ide](https://www.eclipse.org/downloads/) (a Java már telepítve van)
 - A támogatott linuxos platformokhoz telepíteni kell bizonyos kódtárakat ( `libssl` a Secure Sockets Layer támogatásához és a hangalapú `libasound2` támogatáshoz). A könyvtárak megfelelő verzióinak telepítéséhez szükséges parancsokért tekintse meg az alábbi disztribúciót.
 
-  - Ubuntu rendszeren futtassa a következő parancsokat a szükséges csomagok telepítéséhez:
+  - Ubuntu/Debian rendszeren futtassa a következő parancsokat a szükséges csomagok telepítéséhez:
 
     ```sh
     sudo apt-get update
     sudo apt-get install build-essential libssl1.0.0 libasound2
     ```
 
-  - A Debian 9 rendszeren futtassa a következő parancsokat a szükséges csomagok telepítéséhez:
-
-    ```sh
-    sudo apt-get update
-    sudo apt-get install build-essential libssl1.0.2 libasound2
-    ```
+    Ha a libssl 1.0.0 nem érhető el, telepítse a libssl 1.0. x (ahol az x értéke nagyobb, mint 0) vagy a libssl 1.1.
 
   - A RHEL/CentOS számítógépen futtassa a következő parancsokat a szükséges csomagok telepítéséhez:
 
@@ -70,6 +65,6 @@ Ez az útmutató bemutatja, hogyan telepítheti a 64 bites Java 8 JRE [SPEECH SD
 
 [!INCLUDE [](~/includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [windows](../quickstart-list.md)]

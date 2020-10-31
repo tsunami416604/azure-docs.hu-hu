@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: e0dcd5db36e41093bf1cd75779770b04df2fc26a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99c60cf541b3997f2aeca2ccef5a5af6b9c88e08
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710651"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131496"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI-alkalmazásajánlat létrehozása
 
@@ -23,8 +23,8 @@ A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Cen
 ## <a name="create-a-new-offer"></a>Új ajánlat létrehozása
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
-2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
-3. Az Áttekintés lapon válassza az **+ új ajánlat**  >  **Power bi Service app**elemet.
+2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés** lehetőséget.
+3. Az Áttekintés lapon válassza az **+ új ajánlat**  >  **Power bi Service app** elemet.
 
    ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-power-bi-app.png)
 
@@ -36,16 +36,16 @@ A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Cen
 
 ## <a name="new-offer"></a>Új ajánlat
 
-Adja meg az **ajánlat azonosítóját**. Ez a fiókban található egyes ajánlatok egyedi azonosítója.
+Adja meg az **ajánlat azonosítóját** . Ez a fiókban található egyes ajánlatok egyedi azonosítója.
 
 - Ez az azonosító látható az ügyfelek számára a Piactéri ajánlathoz tartozó webcímek és Azure Resource Manager sablonok esetében, ha van ilyen.
 - Csak kisbetűket és számokat használjon. Tartalmazhat kötőjeleket és aláhúzásokat, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1** értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
-- Az ajánlat azonosítója a **Létrehozás**gombra kattintva nem módosítható.
+- Az ajánlat azonosítója a **Létrehozás** gombra kattintva nem módosítható.
 
-Adjon meg egy **ajánlat-aliast**. Ez a partner Centerben az ajánlathoz használt név.
+Adjon meg egy **ajánlat-aliast** . Ez a partner Centerben az ajánlathoz használt név.
 
 - Ez a név nem használatos a piactéren, és nem egyezik meg az ajánlat nevével és az ügyfelek számára megjelenített egyéb értékekkel.
-- Az ajánlat aliasa nem módosítható a **Létrehozás**gombra kattintva.
+- Az ajánlat aliasa nem módosítható a **Létrehozás** gombra kattintva.
 
 Válassza a **Létrehozás** lehetőséget az ajánlat létrehozásához és a folytatáshoz.
 
@@ -53,12 +53,12 @@ Válassza a **Létrehozás** lehetőséget az ajánlat létrehozásához és a f
 
 Ezen az oldalon látható az ajánlat közzétételéhez szükséges lépések vizuális ábrázolása (a befejezett és a közelgő is), valamint az egyes lépések befejezésének ideje.
 
-Hivatkozásokat tartalmaz az ajánlaton végzett műveletekre, az Ön által választott beállítás alapján. Példa:
+Hivatkozásokat tartalmaz az ajánlaton végzett műveletekre, az Ön által választott beállítás alapján. Például:
 
-- Ha az ajánlat Piszkozat- [törlési ajánlat](update-existing-offer.md#delete-a-draft-offer)
+- Ha az ajánlat Piszkozat-törlési ajánlat
 - Ha az ajánlat élő – [az ajánlat értékesítésének leállítása](update-existing-offer.md#stop-selling-an-offer-or-plan)
-- Ha az ajánlat előzetes verzióban érhető [el](publishing-status.md#publisher-approval)
-- Ha még nem fejezte be a közzétételt – a [Közzététel megszakítása](update-existing-offer.md#cancel-publishing)
+- Ha az ajánlat előzetes verzióban érhető [el](../review-publish-offer.md#previewing-and-approving-your-offer)
+- Ha még nem fejezte be a közzétevő kijelentkezését – a [Közzététel megszakítása](../review-publish-offer.md#cancel-publishing) folyamatban van.
 
 ## <a name="offer-setup"></a>Ajánlat beállítása
 
@@ -97,7 +97,7 @@ Ezen a lapon megadhatja az ajánlatnak a piactéren való csoportosításához h
 Válassza ki a kategóriákat és alkategóriákat, hogy az ajánlatot a piactér megfelelő keresési területein helyezze el. Ügyeljen arra, hogy az ajánlata milyen módon támogassa ezeket a kategóriákat az ajánlat leírásában. A következők szerint válasszon:
 
 - Legalább egy és legfeljebb két kategória, beleértve az elsődleges és a másodlagos kategóriát is (opcionális).
-- Legfeljebb két alkategória lehet minden elsődleges és/vagy másodlagos kategóriához. Ha nem alkalmazható alkategória az ajánlatra, válassza a **nem alkalmazható**lehetőséget.
+- Legfeljebb két alkategória lehet minden elsődleges és/vagy másodlagos kategóriához. Ha nem alkalmazható alkategória az ajánlatra, válassza a **nem alkalmazható** lehetőséget.
 
 Tekintse meg a kategóriák és alkategóriák teljes listáját az [ajánlatban az ajánlott eljárásokat felsorolva](../gtm-offer-listing-best-practices.md).
 
@@ -146,7 +146,7 @@ Adja meg a piactér adatait (például az ajánlat nevét, leírását és lemez
 10. Leírás
 11. Képernyőképek/videók
 
-### <a name="name"></a>Name (Név)
+### <a name="name"></a>Name
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 
@@ -186,7 +186,7 @@ Adja meg a szervezete adatvédelmi szabályzatának webcímet. Ön felelős anna
 
 ### <a name="contact-information"></a>Kapcsolattartási adatok
 
-Meg kell adnia egy **támogatási kapcsolattartó** nevét, e-mail-címét és telefonszámát, valamint egy **mérnöki kapcsolattartót**. Ezek az adatok nem jelennek meg az ügyfelek számára. A Microsoft számára elérhető, és a Cloud Solution Provider (CSP) partnerei számára is biztosítható.
+Meg kell adnia egy **támogatási kapcsolattartó** nevét, e-mail-címét és telefonszámát, valamint egy **mérnöki kapcsolattartót** . Ezek az adatok nem jelennek meg az ügyfelek számára. A Microsoft számára elérhető, és a Cloud Solution Provider (CSP) partnerei számára is biztosítható.
 
 - Támogatási kapcsolattartó (kötelező): általános támogatási kérdések.
 - Engineering Contact (kötelező): technikai kérdések és minősítési problémák esetén.
@@ -234,7 +234,7 @@ Az ajánlatok listájának létrehozásával kapcsolatos további tudnivalókér
 
 ## <a name="technical-configuration"></a>Technikai konfiguráció
 
-Népszerűsítse alkalmazását Power BI Service-ben, és adja meg a Power BI app Installer-hivatkozást, amely lehetővé teszi az ügyfelek számára az alkalmazás telepítését. További információ: [alkalmazások közzététele irányítópultokkal és jelentésekkel Power BIban](https://docs.microsoft.com/power-bi/service-create-distribute-apps).
+Népszerűsítse alkalmazását Power BI Service-ben, és adja meg a Power BI app Installer-hivatkozást, amely lehetővé teszi az ügyfelek számára az alkalmazás telepítését. További információ: [alkalmazások közzététele irányítópultokkal és jelentésekkel Power BIban](/power-bi/service-create-distribute-apps).
 
 ## <a name="supplemental-content"></a>Kiegészítő tartalom
 
@@ -248,7 +248,7 @@ Opcionálisan hozzáadhat utasításokat (legfeljebb 3 000 karakter) a Microsoft
 
 Miután elvégezte az ajánlat összes szükséges részét, elküldheti ajánlatát az áttekintéshez és a közzétételhez.
 
-A portál jobb felső sarkában válassza a **felülvizsgálat és közzététel**lehetőséget.
+A portál jobb felső sarkában válassza a **felülvizsgálat és közzététel** lehetőséget.
 
 A felülvizsgálati oldalon a következőket teheti:
 
@@ -258,6 +258,6 @@ A felülvizsgálati oldalon a következőket teheti:
   - **Befejezés** – a szakasz minden szükséges adattal rendelkezik, és nincsenek hibák. Az ajánlat elküldése előtt az ajánlat összes részének teljesnek kell lennie.
 - Adja meg a minősítési csapat tesztelési utasításait, hogy az alkalmazás megfelelően legyen tesztelve. Továbbá adjon meg az ajánlat megismeréséhez hasznos kiegészítő megjegyzéseket.
 
-Az ajánlat közzétételre való elküldéséhez válassza a **Közzététel**lehetőséget.
+Az ajánlat közzétételre való elküldéséhez válassza a **Közzététel** lehetőséget.
 
-Egy e-mailt küldünk, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz. Az ajánlat nyilvános közzétételéhez lépjen a partner Center webhelyre, és válassza a **Go-Live**lehetőséget.
+Egy e-mailt küldünk, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz. Az ajánlat nyilvános közzétételéhez lépjen a partner Center webhelyre, és válassza a **Go-Live** lehetőséget.

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 61ced7eda78d3ce56d78dfd6cc54e0e92d376e68
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0b79fa22d3203504e63161aba03b32830d74d016
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100677"
+ms.locfileid: "93131275"
 ---
 # <a name="remove-vms-from-change-tracking-and-inventory"></a>Virtuális gépek eltávolítása a Change Trackingből és az Inventoryból
 
@@ -22,7 +22,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 ## <a name="to-remove-your-vms"></a>Virtuális gépek eltávolítása
 
-1. A Azure Portal a Azure Portal felső navigációs sávján indítsa el az **Cloud Shell** . Ha nem ismeri a Azure Cloud Shellt, tekintse meg [a Azure Cloud Shell áttekintése](/azure/cloud-shell/overview)című témakört.
+1. A Azure Portal a Azure Portal felső navigációs sávján indítsa el az **Cloud Shell** . Ha nem ismeri a Azure Cloud Shellt, tekintse meg [a Azure Cloud Shell áttekintése](../../cloud-shell/overview.md)című témakört.
 
 2. A következő paranccsal azonosíthatja egy olyan gép UUID-azonosítóját, amelyet el szeretne távolítani a felügyelet alól.
 

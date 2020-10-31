@@ -5,12 +5,13 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: trbye
-ms.openlocfilehash: 6364507b630b5b16fc00e2c6e38037425435299b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7a20d1098fad72b57155fa81c2a48f9fa13d12d0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81421870"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135534"
 ---
 > [!div class="nextstepaction"]
-> [A C#-minták megismerése a GitHubon](https://aka.ms/speech/github-csharp)
+> [A C#-minták megismerése a githubon](https://aka.ms/speech/github-csharp) 
+>  [Tekintse meg a speciális Luis-mintát a githubon](https://github.com/Azure/pizza_luis_bot)

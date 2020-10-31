@@ -4,12 +4,12 @@ ms.topic: include
 ms.date: 11/09/2018
 author: linda33wj
 ms.author: jingwang
-ms.openlocfilehash: c0fcdf1cf69c55f63288138bc7377a78295cb2be
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 34848b638ff0c7f7b9d1a2f3e5894339f8310ccc
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86544430"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93136142"
 ---
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
@@ -17,15 +17,15 @@ A folyamat automatikusan létrehozza a kimeneti mappát az adftutorial blobtáro
 
 1. A Azure Portal a **adftutorial** -tároló lapon kattintson a **frissítés** elemre a kimeneti mappa megtekintéséhez. 
     
-    ![Frissítés](media/data-factory-quickstart-verify-output-cleanup/output-refresh.png)
+    ![Képernyőfelvétel: a tároló oldal, amelyen frissítheti a lapot.](media/data-factory-quickstart-verify-output-cleanup/output-refresh.png)
 
 2. Válassza a **kimenet** lehetőséget a mappalistában. 
 
 3. Ellenőrizze, hogy az **emp.txt** fájl bekerült-e a kimeneti mappába. 
 
-    ![Frissítés](media/data-factory-quickstart-verify-output-cleanup/output-file.png)
+    ![A képernyőképen a kimeneti mappa tartalma látható.](media/data-factory-quickstart-verify-output-cleanup/output-file.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Kétféleképpen távolíthatja el a rövid útmutatóban létrehozott erőforrásokat. Törölheti az [Azure-erőforráscsoportot](../articles/azure-resource-manager/management/overview.md), amely tartalmazza az erőforráscsoportban lévő összes erőforrást. Ha a többi erőforrást érintetlenül szeretné hagyni, csak az ebben az oktatóanyagban létrehozott adat-előállítót törölje.
 

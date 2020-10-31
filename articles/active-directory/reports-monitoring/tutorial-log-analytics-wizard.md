@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aaa9fa036f86fc822a4bb2175f404cdff1ca81d7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 9e6b03a2f9dd0089b1112000804e46f3d214cd3c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362569"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131292"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Oktatóanyag: a log Analytics varázsló konfigurálása
 
@@ -66,11 +66,11 @@ A log Analytics-munkaterület konfigurálása két fő lépésből áll:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) globális rendszergazdaként.
 
-2. Keresse meg a **log Analytics-munkaterületeket**.
+2. Keresse meg a **log Analytics-munkaterületeket** .
 
     ![Erőforrás-szolgáltatások és dokumentumok keresése](./media/tutorial-log-analytics-wizard/search-services.png)
 
-3. A log Analytics-munkaterületek lapon kattintson a **Hozzáadás**gombra.
+3. A log Analytics-munkaterületek lapon kattintson a **Hozzáadás** gombra.
 
     ![A képernyőfelvétel a log Analytics-munkaterületek lapon látható Hozzáadás gombra mutat.](./media/tutorial-log-analytics-wizard/add.png)
 
@@ -94,15 +94,15 @@ A log Analytics-munkaterület konfigurálása két fő lépésből áll:
 
     ![Létrehozás](./media/tutorial-log-analytics-wizard/create-workspace.png)
 
-7. Keresse meg az **Azure Active Directoryt**.
+7. Keresse meg az **Azure Active Directoryt** .
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![A képernyőképen az Azure Search Azure Active Directory látható.](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
-8. A **figyelés** szakaszban kattintson a **diagnosztikai beállítások**elemre.
+8. A **figyelés** szakaszban kattintson a **diagnosztikai beállítások** elemre.
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/diagnostic-settings.png)
+    ![A képernyőképen a figyelésből kiválasztott diagnosztikai beállítások láthatók.](./media/tutorial-log-analytics-wizard/diagnostic-settings.png)
 
-9. A **diagnosztikai beállítások** lapon kattintson a **diagnosztikai beállítás hozzáadása**elemre.
+9. A **diagnosztikai beállítások** lapon kattintson a **diagnosztikai beállítás hozzáadása** elemre.
 
     ![Diagnosztikai beállítás hozzáadása](./media/tutorial-log-analytics-wizard/add-diagnostic-setting.png)
 
@@ -110,9 +110,9 @@ A log Analytics-munkaterület konfigurálása két fő lépésből áll:
 
     ![Diagnosztikai beállítások kiválasztása](./media/tutorial-log-analytics-wizard/select-diagnostics-settings.png)
 
-    1. A **Kategória részletei**területen válassza a **AuditLogs** és a **SigninLogs**lehetőséget.
+    1. A **Kategória részletei** területen válassza a **AuditLogs** és a **SigninLogs** lehetőséget.
 
-    2. A **célhely részletei**területen válassza a **Küldés log Analyticsba**lehetőséget, majd válassza ki az új log Analytics-munkaterületet. 
+    2. A **célhely részletei** területen válassza a **Küldés log Analyticsba** lehetőséget, majd válassza ki az új log Analytics-munkaterületet. 
    
     3. Kattintson a **Mentés** gombra. 
 
@@ -126,15 +126,15 @@ Ez az eljárás bemutatja, hogyan futtathat lekérdezéseket a **Kusto lekérdez
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) globális rendszergazdaként.
 
-2. Keresse meg az **Azure Active Directoryt**.
+2. Keresse meg az **Azure Active Directoryt** .
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![A képernyőképen az Azure Search Azure Active Directory látható.](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
-3. A **figyelés** szakaszban kattintson a **naplók**elemre.
+3. A **figyelés** szakaszban kattintson a **naplók** elemre.
 
-4. A **naplók** lapon kattintson az első **lépések**elemre.
+4. A **naplók** lapon kattintson az első **lépések** elemre.
 
-5. A **Keresés* szövegmezőbe írja be a lekérdezést.
+5. A * *Keresés* szövegmezőbe írja be a lekérdezést.
 
 6. Kattintson a **Futtatás** elemre.  
 
@@ -208,25 +208,25 @@ Ez az eljárás bemutatja, hogyan küldhet riasztásokat a breakglass-fiók hasz
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) globális rendszergazdaként.
 
-2. Keresse meg az **Azure Active Directoryt**.
+2. Keresse meg az **Azure Active Directoryt** .
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![A képernyőképen az Azure Search Azure Active Directory látható.](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
-3. A **figyelés** szakaszban kattintson a **naplók**elemre.
+3. A **figyelés** szakaszban kattintson a **naplók** elemre.
 
-4. A **naplók** lapon kattintson az első **lépések**elemre.
+4. A **naplók** lapon kattintson az első **lépések** elemre.
 
 5. A **Keresés** szövegmezőbe írja be a következőt: `SigninLogs |where UserDisplayName contains "BreakGlass" | project UserDisplayName`
 
 6. Kattintson a **Futtatás** elemre.  
 
-7. Az eszköztáron kattintson az **új riasztási szabály**elemre.
+7. Az eszköztáron kattintson az **új riasztási szabály** elemre.
 
     ![Új riasztási szabály](./media/tutorial-log-analytics-wizard/new-alert-rule.png)
 
 8. A **riasztási szabály létrehozása** lapon ellenőrizze, hogy a hatókör helyes-e.
 
-9. A **feltétel**területen kattintson a következőre: **Ha az egyéni naplók átlagos keresési értéke nagyobb a <logic undefined> darabszámnál**
+9. A **feltétel** területen kattintson a következőre: **Ha az egyéni naplók átlagos keresési értéke nagyobb a <logic undefined> darabszámnál**
 
     ![Alapértelmezett feltétel](./media/tutorial-log-analytics-wizard/default-condition.png)
 
@@ -234,27 +234,27 @@ Ez az eljárás bemutatja, hogyan küldhet riasztásokat a breakglass-fiók hasz
 
     ![Riasztási logika](./media/tutorial-log-analytics-wizard/alert-logic.png)
 
-    1. **A alapján**válassza ki **az eredmények számát**.
+    1. **A alapján** válassza ki **az eredmények számát** .
 
-    2. As **operátorként**válassza a **nagyobb, mint**lehetőséget.
+    2. As **operátorként** válassza a **nagyobb, mint** lehetőséget.
 
-    3. **Küszöbértékként**válassza a **0**értéket. 
+    3. **Küszöbértékként** válassza a **0** értéket. 
 
 11. A **jel logikai beállítása** oldalon, a **kiértékelt alapján** szakaszban hajtsa végre a következő lépéseket:
 
     ![Értékelés alapja](./media/tutorial-log-analytics-wizard/evaluated-based-on.png)
 
-    1. Az **időtartam (perc)** mezőben válassza az **5**lehetőséget.
+    1. Az **időtartam (perc)** mezőben válassza az **5** lehetőséget.
 
-    2. **Gyakoriság (perc)**, válassza az **5**lehetőséget.
+    2. **Gyakoriság (perc)** , válassza az **5** lehetőséget.
 
     3. Kattintson a **Kész** gombra. 
 
-12. A **művelet csoportban**kattintson a **műveleti csoport kiválasztása**elemre. 
+12. A **művelet csoportban** kattintson a **műveleti csoport kiválasztása** elemre. 
 
     ![Műveletcsoport](./media/tutorial-log-analytics-wizard/action-group.png)
 
-13. A **riasztási szabályhoz csatolni kívánt műveleti csoport kiválasztása**lapon kattintson a **műveleti csoport létrehozása**elemre. 
+13. A **riasztási szabályhoz csatolni kívánt műveleti csoport kiválasztása** lapon kattintson a **műveleti csoport létrehozása** elemre. 
 
     ![Műveletcsoport létrehozása](./media/tutorial-log-analytics-wizard/create-action-group.png)
 
@@ -262,24 +262,24 @@ Ez az eljárás bemutatja, hogyan küldhet riasztásokat a breakglass-fiók hasz
 
     ![Példány adatai](./media/tutorial-log-analytics-wizard/instance-details.png)
 
-    1. A **műveleti csoport neve** szövegmezőbe írja be a **saját műveleti csoport**értéket.
+    1. A **műveleti csoport neve** szövegmezőbe írja be a **saját műveleti csoport** értéket.
 
-    2. A **megjelenítendő név** szövegmezőbe írja be a **saját művelet**értéket.
+    2. A **megjelenítendő név** szövegmezőbe írja be a **saját művelet** értéket.
 
     3. Kattintson a **Felülvizsgálat + létrehozás** elemre. 
 
     4. Kattintson a **Létrehozás** gombra.
 
 
-15. A **művelet testreszabása**területen hajtsa végre a következő lépéseket:
+15. A **művelet testreszabása** területen hajtsa végre a következő lépéseket:
 
     ![Műveletek testreszabása](./media/tutorial-log-analytics-wizard/customize-actions.png)
 
-    1. Válassza ki az **e-mail tárgyát**.
+    1. Válassza ki az **e-mail tárgyát** .
 
     2. A **Tárgy** mezőbe írja be a következőt: `Breakglass account has been used`
 
-16. A **riasztási szabály részletei**területen hajtsa végre a következő lépéseket:
+16. A **riasztási szabály részletei** területen hajtsa végre a következő lépéseket:
 
     ![Riasztási szabály részletei](./media/tutorial-log-analytics-wizard/alert-rule-details.png)
 
@@ -299,15 +299,15 @@ Ez az eljárás bemutatja, hogyan hozhat létre egy új munkafüzetet a gyors ü
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) globális rendszergazdaként.
 
-2. Keresse meg az **Azure Active Directoryt**.
+2. Keresse meg az **Azure Active Directoryt** .
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![A képernyőképen az Azure Search Azure Active Directory látható.](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
-3. A **figyelés** szakaszban kattintson a **munkafüzetek**elemre.
+3. A **figyelés** szakaszban kattintson a **munkafüzetek** elemre.
 
     ![Képernyőfelvétel: a Azure Portal menü figyelés elemét jeleníti meg a kiválasztott munkafüzetekkel.](./media/tutorial-log-analytics-wizard/workbooks.png)
 
-4. A rövid **útmutató szakaszban kattintson** az **üres**gombra.
+4. A rövid **útmutató szakaszban kattintson** az **üres** gombra.
 
     ![Első lépések](./media/tutorial-log-analytics-wizard/quick-start.png)
 
@@ -315,30 +315,30 @@ Ez az eljárás bemutatja, hogyan hozhat létre egy új munkafüzetet a gyors ü
 
     ![Munkafüzet hozzáadása](./media/tutorial-log-analytics-wizard/add-workbook.png)
 
-6. Kattintson a **szöveg hozzáadása**gombra.
+6. Kattintson a **szöveg hozzáadása** gombra.
 
     ![Szöveg hozzáadása](./media/tutorial-log-analytics-wizard/add-text.png)
 
 
-7. A szövegmezőbe írja be a következőt: `# Client apps used in the past week` , majd kattintson a **Szerkesztés kész**lehetőségre.
+7. A szövegmezőbe írja be a következőt: `# Client apps used in the past week` , majd kattintson a **Szerkesztés kész** lehetőségre.
 
     ![Munkafüzet szövege](./media/tutorial-log-analytics-wizard/workbook-text.png)
 
-8. Az új munkafüzetben kattintson a **Hozzáadás**, majd a **lekérdezés hozzáadása**lehetőségre.
+8. Az új munkafüzetben kattintson a **Hozzáadás** , majd a **lekérdezés hozzáadása** lehetőségre.
 
     ![Lekérdezés hozzáadása](./media/tutorial-log-analytics-wizard/add-query.png)
 
 9. A lekérdezés szövegmezőbe írja be a következőt: `SigninLogs | where TimeGenerated > ago(7d) | project TimeGenerated, UserDisplayName, ClientAppUsed | summarize count() by ClientAppUsed`
 
-10. Kattintson a **lekérdezés futtatása**gombra.
+10. Kattintson a **lekérdezés futtatása** gombra.
 
-    ![A lekérdezés futtatása](./media/tutorial-log-analytics-wizard/run-workbook-query.png)
+    ![A képernyőképen a lekérdezés futtatása gomb látható.](./media/tutorial-log-analytics-wizard/run-workbook-query.png)
 
-11. Az eszköztár **vizualizáció**területén kattintson a **tortadiagram**elemre.
+11. Az eszköztár **vizualizáció** területén kattintson a **tortadiagram** elemre.
 
     ![Tortadiagram](./media/tutorial-log-analytics-wizard/pie-chart.png)
 
-12. Kattintson a **Szerkesztés kész**gombra.
+12. Kattintson a **Szerkesztés kész** gombra.
 
     ![Szerkesztés kész](./media/tutorial-log-analytics-wizard/done-workbook-editing.png)
 
@@ -351,37 +351,37 @@ Ez az eljárás bemutatja, hogyan adhat hozzá egy lekérdezést egy meglévő m
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) globális rendszergazdaként.
 
-2. Keresse meg az **Azure Active Directoryt**.
+2. Keresse meg az **Azure Active Directoryt** .
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![A képernyőképen az Azure Search Azure Active Directory látható.](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
-3. A **figyelés** szakaszban kattintson a **munkafüzetek**elemre.
+3. A **figyelés** szakaszban kattintson a **munkafüzetek** elemre.
 
     ![A képernyőképen a kiválasztott munkafüzeteket tartalmazó menüben látható a figyelés.](./media/tutorial-log-analytics-wizard/workbooks.png)
 
-4. A **feltételes hozzáférés** szakaszban kattintson a **feltételes hozzáférésű információ és jelentéskészítés**elemre.
+4. A **feltételes hozzáférés** szakaszban kattintson a **feltételes hozzáférésű információ és jelentéskészítés** elemre.
 
-    ![Feltételes hozzáférési sablon](./media/tutorial-log-analytics-wizard/conditional-access-template.png)
+    ![A képernyőképen a feltételes hozzáférési ismeretek és a jelentéskészítés lehetőség látható.](./media/tutorial-log-analytics-wizard/conditional-access-template.png)
 
-5. Az eszköztáron kattintson a **Szerkesztés**elemre.
+5. Az eszköztáron kattintson a **Szerkesztés** elemre.
 
-    ![Feltételes hozzáférési sablon](./media/tutorial-log-analytics-wizard/edit-workbook-template.png)
+    ![A képernyőképen a Szerkesztés gomb látható.](./media/tutorial-log-analytics-wizard/edit-workbook-template.png)
 
-6. Az eszköztáron kattintson a három pontra, majd **adja hozzá**, majd **adja hozzá a lekérdezést**.
+6. Az eszköztáron kattintson a három pontra, majd **adja hozzá** , majd **adja hozzá a lekérdezést** .
 
     ![Munkafüzet-lekérdezés hozzáadása](./media/tutorial-log-analytics-wizard/add-custom-workbook-query.png)
 
 7. A lekérdezés szövegmezőbe írja be a következőt: `SigninLogs | where TimeGenerated > ago(20d) | where ConditionalAccessPolicies != "[]" | summarize dcount(UserDisplayName) by bin(TimeGenerated, 1d), ConditionalAccessStatus`
 
-8. Kattintson a **lekérdezés futtatása**gombra.
+8. Kattintson a **lekérdezés futtatása** gombra.
 
-    ![A lekérdezés futtatása](./media/tutorial-log-analytics-wizard/run-workbook-insights-query.png)
+    ![A lekérdezés futtatásához a képernyőképen megjelenik a lekérdezés futtatása gomb.](./media/tutorial-log-analytics-wizard/run-workbook-insights-query.png)
 
-9. Kattintson az **időtartomány**elemre, majd válassza **a beállítás a lekérdezésben**lehetőséget.
+9. Kattintson az **időtartomány** elemre, majd válassza **a beállítás a lekérdezésben** lehetőséget.
 
-10. Kattintson a **vizualizáció**elemre, majd válassza a **sávdiagram**lehetőséget. 
+10. Kattintson a **vizualizáció** elemre, majd válassza a **sávdiagram** lehetőséget. 
 
-11. Kattintson a **Speciális beállítások**elemre, és írja be a következőt: `Conditional Access status over the last 20 days` , majd kattintson a **Szerkesztés kész**lehetőségre. 
+11. Kattintson a **Speciális beállítások** elemre, és írja be a következőt: `Conditional Access status over the last 20 days` , majd kattintson a **Szerkesztés kész** lehetőségre. 
 
     ![Diagram címének beállítása](./media/tutorial-log-analytics-wizard/set-chart-title.png)
 

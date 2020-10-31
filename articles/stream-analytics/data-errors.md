@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 08/07/2020
-ms.openlocfilehash: 48f178a74dea0403ff8926cf34fd64cdd9c6839f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 416e6cb29ab2816d53cb837f72233a9fe098f659
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071999"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131377"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>AdatAzure Stream Analyticsi hibák
 
@@ -168,7 +168,7 @@ Az erőforrás-naplók sémájának megtekintéséhez tekintse meg az [Azure str
 * Ok: az alkalmazás ideje és az érkezési idő közötti különbség nagyobb, mint a késői beérkezés tolerancia ablaka.
 * A portálon megadott értesítés: nem
 * Erőforrás-naplózási szint: információ
-* Hatás: a késői bemeneti események kezelése a feladatok konfigurációjának események rendezése szakaszának "más események kezelése" beállításának megfelelően történik. További információ: [Időkezelési szabályzatok](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
+* Hatás: a késői bemeneti események kezelése a feladatok konfigurációjának események rendezése szakaszának "más események kezelése" beállításának megfelelően történik. További információ: [Időkezelési szabályzatok](/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Napló részletei
    * Az alkalmazás ideje és az érkezés időpontja. 
    * A tényleges adattartalom legfeljebb pár kilobájt.
@@ -184,7 +184,7 @@ Az erőforrás-naplók sémájának megtekintéséhez tekintse meg az [Azure str
 * Ok: az alkalmazás ideje és az érkezési idő közötti különbség 5 percnél nagyobb.
 * A portálon megadott értesítés: nem
 * Erőforrás-naplózási szint: információ
-* Hatás: a korai bemeneti események kezelése a feladatok konfigurációjának események rendezése szakaszának "más események kezelése" beállításának megfelelően történik. További információ: [Időkezelési szabályzatok](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
+* Hatás: a korai bemeneti események kezelése a feladatok konfigurációjának események rendezése szakaszának "más események kezelése" beállításának megfelelően történik. További információ: [Időkezelési szabályzatok](/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Napló részletei
    * Az alkalmazás ideje és az érkezés időpontja. 
    * A tényleges adattartalom legfeljebb pár kilobájt.
@@ -200,7 +200,7 @@ Az erőforrás-naplók sémájának megtekintéséhez tekintse meg az [Azure str
 * Ok: az eseményt a rendszer a megadott sorrendben beállított tolerancia ablak szerint tekinti sorrendbe.
 * A portálon megadott értesítés: nem
 * Erőforrás-naplózási szint: információ
-* Hatás: a megrendelési események kezelése a feladatok konfigurációjának események rendezése szakaszának "egyéb események kezelése" beállításának megfelelően történik. További információ: [Időkezelési szabályzatok](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
+* Hatás: a megrendelési események kezelése a feladatok konfigurációjának események rendezése szakaszának "egyéb események kezelése" beállításának megfelelően történik. További információ: [Időkezelési szabályzatok](/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Napló részletei
    * A tényleges adattartalom legfeljebb pár kilobájt.
 
@@ -221,7 +221,7 @@ Több olyan Adathiba is észlelhető, amelyet a rendszer csak a kimeneti fogadó
 * Ok: a kimenethez szükséges oszlop nem létezik. Például létezik egy, az Azure Table PartitionKey csinál ' definiált oszlop.
 * Portálon megadott értesítés: igen
 * Erőforrás-naplózási szint: figyelmeztetés
-* Hatás: az összes kimeneti Adatátalakítási hiba, beleértve a hiányzó kötelező oszlopot, a [kimeneti adatházirend](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) -beállításnak megfelelően kezeli.
+* Hatás: az összes kimeneti Adatátalakítási hiba, beleértve a hiányzó kötelező oszlopot, a [kimeneti adatházirend](./stream-analytics-output-error-policy.md) -beállításnak megfelelően kezeli.
 * Napló részletei
    * Az oszlop neve és a rekord azonosítója vagy a rekord egy része.
 
@@ -236,7 +236,7 @@ Több olyan Adathiba is észlelhető, amelyet a rendszer csak a kimeneti fogadó
 * Ok: az oszlop értéke nem felel meg a kimenetnek. Az oszlop neve például nem érvényes Azure Table oszlop.
 * Portálon megadott értesítés: igen
 * Erőforrás-naplózási szint: figyelmeztetés
-* Hatás: az összes kimeneti Adatátalakítási hiba, beleértve az érvénytelen oszlopnevet is, a [kimeneti adatházirend](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) -beállításnak megfelelően kezeli.
+* Hatás: az összes kimeneti Adatátalakítási hiba, beleértve az érvénytelen oszlopnevet is, a [kimeneti adatházirend](./stream-analytics-output-error-policy.md) -beállításnak megfelelően kezeli.
 * Napló részletei
    * Az oszlop neve és a rekord azonosítója vagy a rekord egy része.
 
@@ -251,7 +251,7 @@ Több olyan Adathiba is észlelhető, amelyet a rendszer csak a kimeneti fogadó
 * Ok: egy oszlop nem alakítható át érvényes típusra a kimenetben. Az oszlop értéke például nem kompatibilis az SQL-táblában definiált korlátozásokkal vagy típusokkal.
 * Portálon megadott értesítés: igen
 * Erőforrás-naplózási szint: figyelmeztetés
-* Hatás: az összes kimeneti Adatátalakítási hiba, beleértve a típus-átalakítási hibát, a [kimeneti adatházirend](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) -beállításnak megfelelően van kezelve.
+* Hatás: az összes kimeneti Adatátalakítási hiba, beleértve a típus-átalakítási hibát, a [kimeneti adatházirend](./stream-analytics-output-error-policy.md) -beállításnak megfelelően van kezelve.
 * Napló részletei
    * Az oszlop neve.
    * Vagy a rekord azonosítóját vagy egy részét.
@@ -267,7 +267,7 @@ Több olyan Adathiba is észlelhető, amelyet a rendszer csak a kimeneti fogadó
 * Ok: az üzenet értéke nagyobb, mint a támogatott kimeneti méret. Egy rekord például 1 MB-nál nagyobb az Event hub-kimenetnél.
 * Portálon megadott értesítés: igen
 * Erőforrás-naplózási szint: figyelmeztetés
-* Hatás: az összes kimeneti Adatátalakítási hiba, beleértve a rekord meghaladta a méretkorlátot, a [kimeneti adatházirend](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) -beállításnak megfelelően kezeli a rendszer.
+* Hatás: az összes kimeneti Adatátalakítási hiba, beleértve a rekord meghaladta a méretkorlátot, a [kimeneti adatházirend](./stream-analytics-output-error-policy.md) -beállításnak megfelelően kezeli a rendszer.
 * Napló részletei
    * Vagy a rekord azonosítóját vagy egy részét.
 
@@ -282,7 +282,7 @@ Több olyan Adathiba is észlelhető, amelyet a rendszer csak a kimeneti fogadó
 * Ok: egy rekord már tartalmaz egy olyan oszlopot, amelynek a neve megegyezik a System oszlop nevével. Például a kimenet CosmosDB egy azonosító nevű oszloppal, ha az azonosító oszlop egy másik oszlop.
 * Portálon megadott értesítés: igen
 * Erőforrás-naplózási szint: figyelmeztetés
-* Hatás: az összes kimeneti Adatátalakítási hiba, beleértve az ismétlődő kulcsot, a [kimeneti adatházirend](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) -beállításnak megfelelően van kezelve.
+* Hatás: az összes kimeneti Adatátalakítási hiba, beleértve az ismétlődő kulcsot, a [kimeneti adatházirend](./stream-analytics-output-error-policy.md) -beállításnak megfelelően van kezelve.
 * Napló részletei
    * Az oszlop neve.
    * Vagy a rekord azonosítóját vagy egy részét.

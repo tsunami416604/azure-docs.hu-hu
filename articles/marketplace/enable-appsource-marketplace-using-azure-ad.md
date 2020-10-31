@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/24/2020
-ms.openlocfilehash: a6e304e5ffeab8f0a44cbdfe1566465f2b9bf34a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c70d976a05cbeed058243829d0658693341636e9
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88607422"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131207"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>A kereskedelmi Marketplace-lista integrálása a Azure Active Directory
 
@@ -80,12 +80,12 @@ Ha most ismerkedik az Azure AD összevont egyszeri bejelentkezéssel, hajtsa vé
 
 Az Azure AD használata a következő műveletek egyikének támogatásához használható:
 
-- Adja hozzá a vendég felhasználókat a címtárhoz az [Azure ad B2B](../active-directory/b2b/what-is-b2b.md)használatával.
+- Adja hozzá a vendég felhasználókat a címtárhoz az [Azure ad B2B](../active-directory/external-identities/what-is-b2b.md)használatával.
 - Manuálisan állítson be próbaverziókat az ügyfelek számára a **kapcsolat** küldése közzétételi lehetőség használatával.
 - Felhasználónkénti tesztelési meghajtó fejlesztése.
 - Hozzon létre egy több-bérlős minta bemutató alkalmazást, amely egyszeri bejelentkezést használ.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg, 
 
