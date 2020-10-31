@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: dd7c5da84d6330e0214404f55aad9487c71b0a29
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 47b7eaacc8aba3655223eb1f0cde4a5516e370fd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792429"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091599"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Oktatóanyag: kódolás az Azure Digital Twins API-kkal
 
@@ -260,7 +260,7 @@ Ettől a ponttól kezdve az oktatóanyag a kipróbálási és a fogási kezelőb
 
 Most, hogy feltöltött egy modellt az Azure digitális Twins-ba, a modell definíciójában **digitális ikreket** hozhat létre. A [digitális ikrek](concepts-twins-graph.md) egy modell példányai, és az üzleti környezetben található entitásokat képviselik, például a farmon lévő érzékelők, a helyiségek egy épületben vagy egy autóban található fények. Ez a szakasz néhány digitális ikreket hoz létre a korábban feltöltött modell alapján.
 
-Adja hozzá ezeket `using` az új utasításokat felül, mivel ez a mintakód a beépített .net JSON-szerializáló használja a alkalmazásban `System.Text.Json` , valamint a `Serialization` névteret az [Azure Digital Twins SDK for .net (C#)](https://dev.azure.com/azure-sdk/public/_packaging?_a=package&feed=azure-sdk-for-net&view=overview&package=Azure.DigitalTwins.Core&version=1.0.0-alpha.20201020.1&protocolType=NuGet) alkalmazásban [hivatkozás módosítva az előzetes verzióhoz]:
+Adja hozzá ezeket `using` az új utasításokat felül, mivel ez a mintakód a beépített .net JSON-szerializáló használja a alkalmazásban `System.Text.Json` , valamint a `Serialization` névteret a [.net-hez készült Azure Digital Twins SDK-ból (C#)](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet-preview).
 
 ```csharp
 using System.Text.Json;

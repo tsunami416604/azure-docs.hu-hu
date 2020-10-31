@@ -1,25 +1,25 @@
 ---
-title: A szolgáltatás nyilvános előzetes verziójának korlátozásai
+title: Szolgáltatási korlátozások
 titleSuffix: Azure Digital Twins
-description: A nyilvános előzetes verzióban az Azure Digital Twins szolgáltatás korlátozásait bemutató diagram.
+description: Az Azure Digital Twins szolgáltatás korlátozásait bemutató diagram.
 author: baanders
 ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 123090cad78af46e88e6493a47d04b97e448f62a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87061d378be97bf669fd569c0408f247b9e8dc5d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86522329"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091787"
 ---
-# <a name="service-limits-in-public-preview"></a>Nyilvános előzetes verzióban elérhető a szolgáltatás korlátai
+# <a name="service-limits"></a>Szolgáltatási korlátozások
 
-Ezek a nyilvános előzetes verzióban elérhető Azure Digital Twins szolgáltatásokra vonatkozó korlátozások.
+Ezek a szolgáltatási korlátok az Azure Digital Twins szolgáltatásban.
 
 > [!NOTE]
-> A szolgáltatás egyes területein állítható korlátok vannak. Ezt az alábbi táblázatok tartalmazzák az *állítható?* oszlop szerint. Ha a korlát módosítható, az *állítható?* érték *Igen*.
+> A szolgáltatás egyes területein állítható korlátok vannak. Ezt az alábbi táblázatok tartalmazzák az *állítható?* oszlop szerint. Ha a korlát módosítható, az *állítható?* érték *Igen* .
 >
 > Ha vállalata megköveteli, hogy az alapértelmezett korlát fölé állítson be egy állítható korlátot vagy kvótát, további erőforrásokat kérhet le [egy támogatási jegy megnyitásával](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
@@ -27,7 +27,7 @@ Ezek a nyilvános előzetes verzióban elérhető Azure Digital Twins szolgálta
 
 [!INCLUDE [Azure Digital Twins limits](../../includes/digital-twins-limits.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ az Azure Digital Twins aktuális előzetes kiadásáról a szolgáltatás áttekintésében:
+További információ az Azure Digital Twins aktuális kiadásáról a szolgáltatás áttekintésében:
 * [*Áttekintés: Mi az Azure Digital Twins?*](overview.md)

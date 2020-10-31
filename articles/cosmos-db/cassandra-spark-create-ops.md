@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 56899b7d81f17e678026b1aad7f3e2d9f8b9b0b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ec44d20b763a98683d9b947c94ad6be75180113
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85260524"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092253"
 ---
 # <a name="createinsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Adatok létrehozása/beillesztése a Spark Azure Cosmos DB Cassandra APIba
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
  
 Ez a cikk azt ismerteti, hogyan szúrható be mintaadatok a Azure Cosmos DB Cassandra API a Sparkból egy táblába.
 
@@ -134,7 +135,7 @@ use books_ks;
 select * from books;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatoknak a Azure Cosmos DB Cassandra API táblázatba való beszúrása után folytassa a következő cikkekkel, hogy más műveleteket hajtson végre a Cosmos DB Cassandra API tárolt adatokon:
  

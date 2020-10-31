@@ -6,18 +6,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/03/2020
 ms.author: tisande
-ms.openlocfilehash: 546b664c74980b3522fefed82c00eec414641eaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f250c15dbb30736e3e89a301fc236a848bd05da2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326626"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092058"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Térinformatikai adatindexek indexelése Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB adatbázis-motorját úgy terveztük, hogy valóban séma-agnosztikus legyen, és első osztályú támogatást nyújtson a JSON-hoz. A Azure Cosmos DB írásra optimalizált adatbázismotor natív módon értelmezi a GeoJSON standardban ábrázolt térbeli adatokra vonatkozó információkat.
 
-Dióhéjban a geometria a geodéziai Koordinátákból egy 2D-síkra van kialakítva, majd fokozatosan, egy **quadtree**használatával osztva a cellákba. Ezek a cellák az 1D-re vannak leképezve a cella helye alapján a Hilbert belül, amely megőrzi a pontok helyi **kitöltését**. Emellett, ha a helyadatok indexelve lettek, egy **mozaikként**ismert folyamaton halad át, azaz az adott helyet keresztező összes cella azonosítható és kulcsként tárolódik a Azure Cosmos db indexben. A lekérdezés időpontjában az argumentumok, például a pontok és a sokszögek a megfelelő cella-azonosító tartományok kinyerésére szolgálnak, majd az adatok az indexből való lekéréséhez használatosak.
+Dióhéjban a geometria a geodéziai Koordinátákból egy 2D-síkra van kialakítva, majd fokozatosan, egy **quadtree** használatával osztva a cellákba. Ezek a cellák az 1D-re vannak leképezve a cella helye alapján a Hilbert belül, amely megőrzi a pontok helyi **kitöltését** . Emellett, ha a helyadatok indexelve lettek, egy **mozaikként** ismert folyamaton halad át, azaz az adott helyet keresztező összes cella azonosítható és kulcsként tárolódik a Azure Cosmos db indexben. A lekérdezés időpontjában az argumentumok, például a pontok és a sokszögek a megfelelő cella-azonosító tartományok kinyerésére szolgálnak, majd az adatok az indexből való lekéréséhez használatosak.
 
 Ha olyan indexelési házirendet ad meg, amely tartalmazza a/* (az összes elérési út) térbeli indexét, akkor a tárolóban található összes adathalmaz a hatékony térbeli lekérdezésekhez van indexelve.
 
@@ -36,11 +37,11 @@ A következő témakörben állíthatja be a **térinformatikai konfigurációt*
 
 :::image type="content" source="./media/sql-query-geospatial-index/geospatial-configuration.png" alt-text="Térinformatikai konfiguráció beállítása":::
 
-A (z) a `geospatialConfig` .net SDK-ban is módosítható a **térinformatikai konfiguráció**beállításához:
+A (z) a `geospatialConfig` .net SDK-ban is módosítható a **térinformatikai konfiguráció** beállításához:
 
 Ha nincs megadva, a `geospatialConfig` alapértelmezés szerint a földrajzi adattípust fogja megadni. Ha módosítja a `geospatialConfig` -t, a tárolóban lévő összes meglévő térinformatikai elem újraindexelve lesz.
 
-Íme egy példa a térinformatikai adattípus módosítására `geometry` a tulajdonság beállításával `geospatialConfig` és a **boundingBox**hozzáadásával:
+Íme egy példa a térinformatikai adattípus módosítására `geometry` a tulajdonság beállításával `geospatialConfig` és a **boundingBox** hozzáadásával:
 
 ```csharp
     //Retrieve the container's details
@@ -111,10 +112,10 @@ Ha a **geometria** adattípusa hasonló a földrajzi adattípushoz, a megfelelő
 
 A határoló mező a következő tulajdonságokat tartalmazza:
 
-- **xmin**: a minimálisan indexelt x koordináta
-- **ymin**: a minimális indexelt y koordináta
-- **Xmax**: a maximális indexelt x koordináta
-- **Ymax**: a maximális indexelt y koordináta
+- **xmin** : a minimálisan indexelt x koordináta
+- **ymin** : a minimális indexelt y koordináta
+- **Xmax** : a maximális indexelt x koordináta
+- **Ymax** : a maximális indexelt y koordináta
 
 A határolókeret megadása kötelező, mert a geometriai adat egy olyan gépet foglal, amely végtelen lehet. A térbeli indexek esetében azonban véges terület szükséges. A **földrajzi** adattípushoz a föld a határ, és nem kell megadnia egy határoló mezőt.
 

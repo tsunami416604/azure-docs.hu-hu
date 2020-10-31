@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: d4934d784e871988b5bc30f7b7cf8c09651576e2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: e07e12e82d96b591db324673f4c24b9074128065
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330366"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092993"
 ---
 # <a name="execute-python-script-module"></a>Python parancsfájl-modul végrehajtása
 
@@ -37,7 +37,7 @@ A Azure Machine Learning a Python anaconda-eloszlását használja, amely számo
 
 A teljes listát az [előre telepített Python-csomagok](#preinstalled-python-packages)című szakaszban találja.
 
-Ha olyan csomagokat szeretne telepíteni, amelyek nincsenek az előre telepített listában (például *scikit-misc*), adja hozzá a következő kódot a parancsfájlhoz: 
+Ha olyan csomagokat szeretne telepíteni, amelyek nincsenek az előre telepített listában (például *scikit-misc* ), adja hozzá a következő kódot a parancsfájlhoz: 
 
 ```python
 import os
@@ -110,17 +110,17 @@ A Python-szkript végrehajtása modul olyan minta Python-kódot tartalmaz, amely
 
 1. Adja hozzá a **Python-szkript végrehajtása** modult a folyamathoz.
 
-2. Adja hozzá a (z) elemet a **DataSet1 elemet** bármely olyan adatkészlethez, amelyet a bemenethez szeretne használni. Hivatkozzon erre az adatkészletre a Python-szkriptben **DataFrame1**néven.
+2. Adja hozzá a (z) elemet a **DataSet1 elemet** bármely olyan adatkészlethez, amelyet a bemenethez szeretne használni. Hivatkozzon erre az adatkészletre a Python-szkriptben **DataFrame1** néven.
 
     Az adatkészlet használata nem kötelező. Akkor használja, ha a Python használatával kívánja előállítani az adatgyűjtést, vagy a Python-kód használatával importálja az adategységeket közvetlenül a modulba.
 
-    Ez a modul támogatja egy második adatkészlet hozzáadását a **Dataset2**-on. Hivatkozzon a Python-szkript második adatkészletére **DataFrame2**.
+    Ez a modul támogatja egy második adatkészlet hozzáadását a **Dataset2** -on. Hivatkozzon a Python-szkript második adatkészletére **DataFrame2** .
 
     Az Azure Machine Learningban tárolt adatkészletek automatikusan a Panda adatkeretbe lesznek konvertálva, ha a modul betöltődik.
 
     ![Python bemeneti térképének végrehajtása](media/module/python-module.png)
 
-4. Ha új Python-csomagokat vagy-kódokat szeretne felvenni, akkor az ezeket az egyéni erőforrásokat tartalmazó tömörített fájlt a **parancsfájl-előfizetői** porthoz kell kötni. Ha a szkript mérete meghaladja a 16 KB-ot, a **parancsfájl** -létrehozási port használatával elkerülhető, hogy a *commandline érték meghaladja a 16597 karakteres korlátot*. 
+4. Ha új Python-csomagokat vagy-kódokat szeretne felvenni, akkor az ezeket az egyéni erőforrásokat tartalmazó tömörített fájlt a **parancsfájl-előfizetői** porthoz kell kötni. Ha a szkript mérete meghaladja a 16 KB-ot, a **parancsfájl** -létrehozási port használatával elkerülhető, hogy a *commandline érték meghaladja a 16597 karakteres korlátot* . 
 
     
     1. A szkriptet és más egyéni erőforrásokat csomagolja egy zip-fájlba.
@@ -129,7 +129,10 @@ A Python-szkript végrehajtása modul olyan minta Python-kódot tartalmaz, amely
     1. Az adatkészlet moduljának csatlakoztatása az **R-parancsfájl végrehajtása** modul **parancsfájl-köteg** portjához.
     
     A feltöltött tömörített archívumban található összes fájl használható a folyamat végrehajtása során. Ha az Archívum tartalmaz egy címtár-struktúrát, a rendszer megőrzi a struktúrát.
-    
+ 
+    > [!WARNING]
+    > **Ne** használja az **alkalmazást** mappa vagy parancsfájl neveként, mert az **alkalmazás** a beépített szolgáltatások számára fenntartott szó. Más névtereket is használhat, például a következőt: `app123` .
+   
     A következő egy parancsfájl-köteg példa, amely egy Python-parancsfájlt és egy txt-fájlt tartalmaz:
       
     > [!div class="mx-imgBorder"]
@@ -182,7 +185,7 @@ A Python-szkript végrehajtása modul olyan minta Python-kódot tartalmaz, amely
     Két adatkészletet lehet visszaadni a tervezőnek, amelynek típusú sorozatot kell megadni `pandas.DataFrame` . A Python-kódban más kimeneteket is létrehozhat, amelyeket közvetlenül az Azure Storage-ba írhat.
 
     > [!WARNING]
-    > **Nem** ajánlott egy adatbázishoz vagy más külső tárolóhoz csatlakozni a **Python parancsfájl-modul végrehajtása**során. Használhatja az [adatimportálási modult](./import-data.md) , és [exportálhatja az adatmodult](./export-data.md)     
+    > **Nem** ajánlott egy adatbázishoz vagy más külső tárolóhoz csatlakozni a **Python parancsfájl-modul végrehajtása** során. Használhatja az [adatimportálási modult](./import-data.md) , és [exportálhatja az adatmodult](./export-data.md)     
 
 6. A folyamat elküldése.
 
@@ -194,9 +197,9 @@ A beágyazott Python-kód alapján történő számítások eredményeit a köve
 
 A modul két adatkészletet ad vissza:  
   
-+ Az **eredmények adatkészlet 1**, a Python-szkriptek első visszaadott pandák adatkerete által definiált érték.
++ Az **eredmények adatkészlet 1** , a Python-szkriptek első visszaadott pandák adatkerete által definiált érték.
 
-+ A **2. eredmény adatkészlete**, amelyet a második visszaadott pandák adatkeret definiál egy Python-parancsfájlban.
++ A **2. eredmény adatkészlete** , amelyet a második visszaadott pandák adatkeret definiál egy Python-parancsfájlban.
 
 ## <a name="preinstalled-python-packages"></a>Előre telepített Python-csomagok
 Az előre telepített csomagok a következők:
@@ -310,6 +313,6 @@ Az előre telepített csomagok a következők:
 -    Werkzeug = = 0.16.1
 -    Wheel = = 0.34.2
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

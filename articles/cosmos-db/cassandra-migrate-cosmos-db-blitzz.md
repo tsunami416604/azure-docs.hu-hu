@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 66314155a8de5036009b8e42bf84a8ae8860d0ea
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 25c171cf20d86244958dbeb4565760115d6d7075
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278962"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092415"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Adatok migrálása a Cassandra-ből Azure Cosmos DB Cassandra API-fiókba a Blitzz használatával
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 A Azure Cosmos DB Cassandra API az Apache Cassandra-on futó nagyvállalati számítási feladatok széles választékát váltják ki, többek között: 
 
@@ -96,7 +97,7 @@ Ez a szakasz ismerteti a Blitzz beállításához szükséges lépéseket, valam
 
    Csökkentse az átviteli sebességet az áttelepítés befejeződése után. A tárolt adatok mennyisége és az egyes műveletekhez szükséges RUs alapján megbecsülhető az adatáttelepítés után szükséges átviteli sebesség. Ha többet szeretne megtudni arról, hogyan kell megbecsülni az RUs-t, tekintse meg a [tárolók és adatbázisok átviteli sebességének kiépítése](set-throughput.md) és [a Azure Cosmos db Capacity Planner cikkeinek becslése](estimate-ru-with-capacity-planner.md) című cikket.
 
-1. Szerezze be az Azure Cosmos-fiók **kapcsolattartási pontját, portját, felhasználónevét**és **elsődleges jelszavát** a **kapcsolati karakterlánc** ablaktáblán. Ezeket az értékeket a konfigurációs fájlban fogja használni.
+1. Szerezze be az Azure Cosmos-fiók **kapcsolattartási pontját, portját, felhasználónevét** és **elsődleges jelszavát** a **kapcsolati karakterlánc** ablaktáblán. Ezeket az értékeket a konfigurációs fájlban fogja használni.
 
 1. A CLI-terminálon állítsa be a céladatbázis konfigurációját. Nyissa meg a konfigurációs fájlt a **`vi conf/conn/cosmosdb.yml`** paranccsal, és adja hozzá a gazdagép URI-ja, portszáma, felhasználóneve, jelszava és egyéb szükséges paraméterek vesszővel tagolt listáját. A következő példa a konfigurációs fájl tartalmát jeleníti meg:
 

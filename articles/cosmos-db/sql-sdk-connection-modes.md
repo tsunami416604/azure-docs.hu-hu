@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: d88d52f67274d14836520494580e9208ce4eecbe
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 95396f28fd835091258bccbfdb0a0c0eafebea91
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283990"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93093554"
 ---
 # <a name="azure-cosmos-db-sql-sdk-connectivity-modes"></a>Azure Cosmos DB SQL SDK kapcsolódási módjai
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Az ügyfél Azure Cosmos DBhoz való kapcsolódásának módja fontos teljesítménybeli következményekkel jár, különösen a megfigyelt ügyféloldali késés miatt. Azure Cosmos DB egy egyszerű, nyitott, REST-alapú programozási modellt kínál a HTTPS protokollal, az átjáró mód használatával. Emellett egy hatékony TCP protokollt is biztosít, amely a kommunikációs modellben is REST-alapú, és a TLS-t használja a kezdeti hitelesítéshez és a titkosított adatforgalomhoz, melyet közvetlen üzemmódnak nevezünk.
 
@@ -34,7 +35,7 @@ A két elérhető csatlakozási mód a következők:
      
 :::image type="content" source="./media/performance-tips/connection-policy.png" alt-text="A Azure Cosmos DB kapcsolódási módjai" border="false":::
 
-Ezek a csatlakozási módok lényegében feltétele az adatsík által kért útvonalnak – a dokumentumok olvasását és írását – az ügyfélszámítógépről a Azure Cosmos DB háttérbe tartozó partíciók között. A közvetlen mód az előnyben részesített lehetőség a legjobb teljesítmény érdekében – lehetővé teszi az ügyfél számára a TCP-kapcsolatok közvetlen megnyitását a Azure Cosmos DB háttérbeli partíciók számára, és a *közvetlen*ly küldési kéréseket. Ezzel szemben az átjáró módban az ügyfél által kezdeményezett kérelmeket az előtér-Azure Cosmos DB egy úgynevezett "átjáró" kiszolgálóra irányítja, amely viszont a Azure Cosmos DB háttérbeli megfelelő partíció (k) re küldi a kéréseket.
+Ezek a csatlakozási módok lényegében feltétele az adatsík által kért útvonalnak – a dokumentumok olvasását és írását – az ügyfélszámítógépről a Azure Cosmos DB háttérbe tartozó partíciók között. A közvetlen mód az előnyben részesített lehetőség a legjobb teljesítmény érdekében – lehetővé teszi az ügyfél számára a TCP-kapcsolatok közvetlen megnyitását a Azure Cosmos DB háttérbeli partíciók számára, és a *közvetlen* ly küldési kéréseket. Ezzel szemben az átjáró módban az ügyfél által kezdeményezett kérelmeket az előtér-Azure Cosmos DB egy úgynevezett "átjáró" kiszolgálóra irányítja, amely viszont a Azure Cosmos DB háttérbeli megfelelő partíció (k) re küldi a kéréseket.
 
 ## <a name="service-port-ranges"></a>Szolgáltatási portok tartományai
 

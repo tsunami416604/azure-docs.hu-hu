@@ -8,14 +8,15 @@ ms.devlang: javascript
 ms.topic: how-to
 ms.date: 12/26/2018
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: ec7f233db34b00ad3904a0bb117b2a97c6512e34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 415fed38490000cecf1eeb916c557b8b17ea70da
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322716"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094795"
 ---
 # <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>Adatok lejárttá tétele a MongoDB-hez készült Azure Cosmos DB API-val
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Az élettartam- (TTL-) funkció lehetővé teszi, hogy az adatbázis adatai automatikusan elévüljenek. A Azure Cosmos DB API-MongoDB a Cosmos DB alapvető TTL-funkcióit használja. Két mód támogatott: alapértelmezett TTL-érték beállítása az egész gyűjteményhez és egyedi TTL-érték megadása az egyes dokumentumokhoz. A Cosmos DB API-MongoDB a TTL-indexeket és a dokumentumon belüli TTL-értékeket szabályozó logikai érték [megegyezik a Cosmos db](../cosmos-db/mongodb-indexing.md).
 

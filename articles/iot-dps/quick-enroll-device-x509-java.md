@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 924cf1e1b5bc155bfdbd2f5f766c5459d599fed5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7c5aa7e5189b4c89636fdb38e8fd365208148900
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91276186"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094642"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Rövid útmutató: X.509-eszközök regisztrációja a Device Provisioning Service-be a Java használatával
 
@@ -26,7 +26,7 @@ Ebben a rövid útmutatóban a Java használatával programozott módon regisztr
 
 - A [IoT hub Device Provisioning Service beállításának befejezése a Azure Portal](./quick-setup-auto-provision.md).
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Java SE Development Kit 8](https://aka.ms/azure-jdks). Ez a rövid útmutató telepíti a [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) -t alább. Windows és Linux rendszereken egyaránt működik. Ez a rövid útmutató a Windowst használja.
+- [Java SE Development Kit 8](https://aka.ms/azure-jdks). Ez a rövid útmutató telepíti a [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/master/service/) -t alább. Windows és Linux rendszereken egyaránt működik. Ez a rövid útmutató a Windowst használja.
 - [Maven 3](https://maven.apache.org/download.cgi).
 - [Git](https://git-scm.com/download/).
 
@@ -41,7 +41,7 @@ Ez a szakasz egy önaláírt X.509-tanúsítványt használ. Fontos szem előtt 
 
 A következő lépések bemutatják, hogyan adhatja hozzá az X.509-eszköz kiépítési adatait a mintakódhoz. 
 
-1. Nyisson meg egy parancssort. A GitHub-tárház klónozása az eszköz beléptetési kódjához a [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/)használatával:
+1. Nyisson meg egy parancssort. A GitHub-tárház klónozása az eszköz beléptetési kódjához a [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/master/service/)használatával:
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
@@ -51,12 +51,12 @@ A következő lépések bemutatják, hogyan adhatja hozzá az X.509-eszköz kié
 
     1. Adja hozzá a `[Provisioning Connection String]` karakterláncot a kiépítési szolgáltatáshoz a portálról:
         1. Navigáljon a kiépítési szolgáltatáshoz a [Azure Portal](https://portal.azure.com). 
-        2. Nyissa meg a **megosztott elérési szabályzatokat**, és válasszon ki egy szabályzatot, amely rendelkezik a *EnrollmentWrite* engedéllyel.
-        3. Másolja ki az **elsődleges kulcs kapcsolati sztringjét**. 
+        2. Nyissa meg a **megosztott elérési szabályzatokat** , és válasszon ki egy szabályzatot, amely rendelkezik a *EnrollmentWrite* engedéllyel.
+        3. Másolja ki az **elsődleges kulcs kapcsolati sztringjét** . 
 
             ![A kiépítési kapcsolati sztring lekérése a portálról](./media/quick-enroll-device-x509-java/provisioning-string.png)  
 
-        4. A **_ServiceEnrollmentGroupSample.java_** mintakódfájlban cserélje le a `[Provisioning Connection String]` sztringet az **elsődleges kulcs kapcsolati sztringjére**.
+        4. A **_ServiceEnrollmentGroupSample.java_** mintakódfájlban cserélje le a `[Provisioning Connection String]` sztringet az **elsődleges kulcs kapcsolati sztringjére** .
 
             ```Java
             private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
@@ -78,7 +78,7 @@ A következő lépések bemutatják, hogyan adhatja hozzá az X.509-eszköz kié
             ```
 
         5. Amikor a rendszer erre kéri, opcionálisan megadhat egy _köznapi nevet_ a tanúsítvány számára.
-        6. Az eszköz létrehoz egy helyi **ügyféltanúsítványt**, az **ügyféltanúsítvány titkos kulcsát**, valamint a **főtanúsítványt**.
+        6. Az eszköz létrehoz egy helyi **ügyféltanúsítványt** , az **ügyféltanúsítvány titkos kulcsát** , valamint a **főtanúsítványt** .
         7. Másolja a **főtanúsítványt** a vágólapra a **_-----BEGIN CERTIFICATE-----_** és **_-----END CERTIFICATE-----_** sort is beleértve. 
         8. Rendelje a **főtanúsítvány** értékét a **PUBLIC_KEY_CERTIFICATE_STRING** paraméterhez az alábbiak szerint:
 
@@ -146,7 +146,7 @@ Ez az eljárás beléptetési csoportot használ. A következő szakasz egyéni 
     mvn install -DskipTests
     ```
 
-   Ez a parancs letölti a Maven-csomagot a [`com.microsoft.azure.sdk.iot.provisioning.service`](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) gépre. A csomag tartalmazza a Java szolgáltatásoldali SDK bináris fájljait, amelyeket a mintakódnak létre kell hoznia. Ha az előző szakaszban futtatta az _X.509-tanúsítványkészítőt_, a csomag már le van töltve a gépre. 
+   Ez a parancs letölti a Maven-csomagot a [`com.microsoft.azure.sdk.iot.provisioning.service`](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) gépre. A csomag tartalmazza a Java szolgáltatásoldali SDK bináris fájljait, amelyeket a mintakódnak létre kell hoznia. Ha az előző szakaszban futtatta az _X.509-tanúsítványkészítőt_ , a csomag már le van töltve a gépre. 
 
 3. Futtassa a mintát a következő parancsokkal a parancsablakban:
 
@@ -157,7 +157,7 @@ Ez az eljárás beléptetési csoportot használ. A következő szakasz egyéni 
 
 4. A sikeres regisztráció érdekében kísérje figyelemmel a kimeneti ablakot.
 
-5. Az Azure Portalon lépjen a kiépítési szolgáltatásra. Kattintson a **Regisztrációk kezelése** elemre. Figyelje meg, hogy az X. 509 eszközök csoportja a **beléptetési csoportok** lapon, egy automatikusan létrehozott *csoport nevével*jelenik meg. 
+5. Az Azure Portalon lépjen a kiépítési szolgáltatásra. Kattintson a **Regisztrációk kezelése** elemre. Figyelje meg, hogy az X. 509 eszközök csoportja a **beléptetési csoportok** lapon, egy automatikusan létrehozott *csoport nevével* jelenik meg. 
 
     ![Sikeres X.509-regisztráció ellenőrzése a portálon](./media/quick-enroll-device-x509-java/verify-x509-enrollment.png)  
 
@@ -165,7 +165,7 @@ Ez az eljárás beléptetési csoportot használ. A következő szakasz egyéni 
 
 Egyetlen X.509-eszköz regisztrációja esetén módosítsa a [TPM-eszköz regisztrációja az IoT Hub Device Provisioning Service-be a Java szolgáltatásoldali SDK-val](quick-enroll-device-tpm-java.md#javasample) című részben található *egyéni regisztráció* mintakódját az alábbiak szerint:
 
-1. Másolja az X.509-ügyféltanúsítvány *köznapi nevét* a vágólapra. Ha az [előző mintakód szakaszában](#javasample) leírtak szerint alkalmazni szeretné az _X.509-tanúsítványkészítőt_, adjon meg egy _köznapi nevet_ a tanúsítvány számára, vagy használja az alapértelmezett **microsoftriotcore** nevet. Használja ezt a **köznapi nevet** a *REGISTRATION_ID* változó értékeként. 
+1. Másolja az X.509-ügyféltanúsítvány *köznapi nevét* a vágólapra. Ha az [előző mintakód szakaszában](#javasample) leírtak szerint alkalmazni szeretné az _X.509-tanúsítványkészítőt_ , adjon meg egy _köznapi nevet_ a tanúsítvány számára, vagy használja az alapértelmezett **microsoftriotcore** nevet. Használja ezt a **köznapi nevet** a *REGISTRATION_ID* változó értékeként. 
 
     ```Java
     // Use common name of your X.509 client certificate
@@ -198,14 +198,14 @@ Egyetlen X.509-eszköz regisztrációja esetén módosítsa a [TPM-eszköz regis
 4. Mentse, hozza létre és futtassa az *Egyéni beléptetési* mintát, a következő szakaszban ismertetett lépéseket követve: az [Egyéni regisztrációhoz használt mintakód létrehozása és futtatása](quick-enroll-device-tpm-java.md#runjavasample).
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 Ha azt tervezi, hogy feltárja a Java-szolgáltatás mintáját, ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a műveletet, a következő lépésekkel törölheti az ebben a rövid útmutatóban létrehozott összes erőforrást.
 
 1. Zárja be a Java-minta kimeneti ablakát a gépen.
 1. Zárja be az _X509-tanúsítványkészítő_ ablakát a gépen.
-1. Navigáljon a Azure Portal eszköz kiépítési szolgáltatásához, válassza a **regisztrációk kezelése**lehetőséget, majd válassza a **regisztrációs csoportok** lapot. Jelölje be az ebben a rövid útmutatóban regisztrált X. 509 eszközök *csoport neve* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.  
+1. Navigáljon a Azure Portal eszköz kiépítési szolgáltatásához, válassza a **regisztrációk kezelése** lehetőséget, majd válassza a **regisztrációs csoportok** lapot. Jelölje be az ebben a rövid útmutatóban regisztrált X. 509 eszközök *csoport neve* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban egy X. 509 eszköz szimulált csoportját regisztrálta az eszköz kiépítési szolgáltatásához. Ha mélyebben szeretné megismerni az eszközkiépítést, folytassa az Azure Portalon az eszközkiépítési szolgáltatás beállításának oktatóanyagával. 
 
 > [!div class="nextstepaction"]

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: b4bc291c21ca1ccabec3cfd9544deaa5d45fcf51
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7fde67ab9b9160bb89493748d09e83bd9cfcff34
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787193"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091701"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure Digital Twins hibaelhárítása: mérőszámok
 
@@ -64,7 +64,7 @@ Az API-kérelmekkel rendelkező metrikák:
 A számlázással elvégezhető mérőszámok:
 
 >[!NOTE]
-> Az előzetes verzióban **a számlázás nulla** . Habár ezek a metrikák továbbra is megjelennek a választható listán, a rendszer nem alkalmazza az előzetes verzióban, és mindaddig nulla marad, amíg a szolgáltatás az előzetes verziónál nem halad.
+>Habár ezek a metrikák továbbra is megjelennek a választható listában, addig maradnak a nullánál, amíg a szolgáltatás új díjszabása elérhetővé nem válik. További információ: [*Azure digitális ikrek díjszabása*](https://azure.microsoft.com/pricing/details/digital-twins/).
 
 | Metrika | Metrika megjelenítendő neve | Egység | Összesítés típusa| Leírás | Dimenziók |
 | --- | --- | --- | --- | --- | --- |

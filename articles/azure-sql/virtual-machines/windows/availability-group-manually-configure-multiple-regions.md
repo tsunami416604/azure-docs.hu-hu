@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f6d5a9da238c520e2e0ec70ac312dd112aad2fe8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 335cc707cb1192d3dbf08f51e78d4e82441dd05a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789981"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094455"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>SQL Server always on rendelkezésre állási csoport konfigurálása különböző Azure-régiók között
 
@@ -31,7 +31,7 @@ Ez a cikk az Azure Virtual Machines Resource Manager módban használható.
 
 Az alábbi képen egy rendelkezésre állási csoport általános telepítése látható az Azure Virtual Machines szolgáltatásban:
 
-   ![Rendelkezésreállási csoport](./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic.png)
+   ![Diagram, amely megjeleníti az Azure Load balancert és a rendelkezésre állási csoportot "Windows Server feladatátvevő fürt" és "always on rendelkezésre állási csoport" értékkel.](./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic.png)
 
 Ebben az üzembe helyezésben minden virtuális gép egy Azure-régióban található. A rendelkezésre állási csoport replikái szinkron véglegesítve lehetnek az SQL-1 és az SQL-2 automatikus feladatátvételével. Az architektúra létrehozásához tekintse meg a [rendelkezésre állási csoport sablonját vagy az oktatóanyagot](availability-group-overview.md).
 
@@ -53,7 +53,7 @@ Ha a rendelkezésre állási csoport replikái különböző Azure-régiókban t
 
 Az alábbi ábra bemutatja, hogyan kommunikálnak a hálózatok az adatközpontok között.
 
-   ![Rendelkezésreállási csoport](./media/availability-group-manually-configure-multiple-regions/01-vpngateway-example.png)
+   ![Diagram, amely a különböző Azure-régiókban található két virtuális hálózatot mutatja be, amelyek a V P N átjárók használatával kommunikálnak.](./media/availability-group-manually-configure-multiple-regions/01-vpngateway-example.png)
 
 >[!IMPORTANT]
 >Ez az architektúra a kimenő adatforgalmi díjat az Azure-régiók között replikált adatokra terheli. Lásd: a [sávszélesség díjszabása](https://azure.microsoft.com/pricing/details/bandwidth/).  
@@ -98,7 +98,7 @@ Ha egy távoli adatközpontban szeretne replikát létrehozni, hajtsa végre a k
 
    Az IP-cím erőforrást Feladatátvevőfürt-kezelőban is létrehozhatja. Válassza ki a fürt nevét, majd kattintson a jobb gombbal a fürt nevére a fürt **alapvető erőforrásai** területen, és válassza a **Tulajdonságok** elemet: 
 
-   ![Fürt tulajdonságai](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
+   ![Képernyőfelvétel: a "Feladatátvevőfürt-kezelő" a fürt nevével, a "kiszolgáló neve" és a "Properties" beállítással.](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
 
    A **Tulajdonságok** párbeszédpanelen válassza a **Hozzáadás** az **IP-cím** alatt lehetőséget, majd adja hozzá a fürt nevének IP-címét a távoli hálózati régióból. Válassza az **OK** lehetőséget az **IP-cím** párbeszédpanelen, majd kattintson ismét az **OK gombra** a **fürt tulajdonságai** párbeszédpanelen az új IP-cím mentéséhez. 
 
@@ -183,7 +183,7 @@ Ha tesztelni szeretné a figyelőt a távoli régióval, feladatátvételt hajth
 
 A kapcsolat tesztelése után helyezze vissza az elsődleges replikát az elsődleges adatközpontba, és állítsa vissza a rendelkezésre állási módot a normál működési beállításokra. A következő táblázat a jelen dokumentumban ismertetett architektúra normál működési beállításait mutatja be:
 
-| Hely | Kiszolgálópéldány | Role | Rendelkezésre állási mód | Feladatátvételi mód
+| Hely | Kiszolgálópéldány | Szerepkör | Rendelkezésre állási mód | Feladatátvételi mód
 | ----- | ----- | ----- | ----- | -----
 | Elsődleges adatközpont | SQL-1 | Elsődleges | Szinkron | Automatikus
 | Elsődleges adatközpont | SQL-2 | Másodlagos | Szinkron | Automatikus

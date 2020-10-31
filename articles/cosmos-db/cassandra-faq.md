@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: e38096a0c5de266be6be6a58e09a251ce28a55df
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b467e191a8f009b85abb4866821dd64fc87ce657
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482604"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092381"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Gyakran ismételt kérdések a Cassandra APIról Azure Cosmos DB
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Ez a cikk az Apache Cassandra és a Azure Cosmos DB Cassandra API közötti funkcionalitásbeli különbségeket ismerteti. Emellett választ ad a Azure Cosmos DB Cassandra APIával kapcsolatos gyakori kérdésekre is.
 
@@ -169,7 +170,7 @@ A fiókhoz tetszőleges számú régiót adhat hozzá, és szabályozhatja, hogy
 
 ### <a name="does-the-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Az Cassandra API indexeli az entitás összes attribútumát alapértelmezés szerint?
 
-Nem. A Cassandra API támogatja a [másodlagos indexeket](cassandra-secondary-index.md), amelyek hasonló módon viselkednek az Apache Cassandra-ben. Az API alapértelmezés szerint nem indexel minden attribútumot.  
+Nincs. A Cassandra API támogatja a [másodlagos indexeket](cassandra-secondary-index.md), amelyek hasonló módon viselkednek az Apache Cassandra-ben. Az API alapértelmezés szerint nem indexel minden attribútumot.  
 
 
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>Helyileg is használhatom az új Cassandra API SDK-t az emulátorral?

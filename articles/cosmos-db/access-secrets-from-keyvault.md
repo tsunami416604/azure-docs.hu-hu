@@ -9,14 +9,15 @@ ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9c4f9954977d6c5523bc70586d3b0cbb0328bcd8
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: bd67f9641a644d3302e1f8bc1e53ad14a3801e47
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278036"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092840"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Cosmos-kulcsok védelme az Azure Key Vaulttal 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 >[!IMPORTANT]
 > A Azure Cosmos DB kulcsok eléréséhez ajánlott megoldás egy [rendszer által hozzárendelt felügyelt identitás](managed-identity-based-authentication.md)használata. Ha a szolgáltatás nem tudja kihasználni a felügyelt identitások előnyeit, használja a [tanúsítvány-alapú megoldást](certificate-based-authentication.md). Ha a felügyelt Identity megoldás és a tanúsítvány-alapú megoldás sem felel meg az igényeinek, használja az alábbi Key Vault-megoldást.
@@ -34,7 +35,7 @@ A következő lépések szükségesek a Key Vault Azure Cosmos DB elérési kulc
 ## <a name="create-a-key-vault"></a>Kulcstartó létrehozása
 
 1. Jelentkezzen be [Azure Portalba](https://portal.azure.com/).  
-2. Válassza **az erőforrás létrehozása > biztonsági > Key Vault**lehetőséget.  
+2. Válassza **az erőforrás létrehozása > biztonsági > Key Vault** lehetőséget.  
 3. A **Kulcstartó létrehozása** szakaszban adja meg a következő információkat:  
    * **Név:** Adjon egyedi nevet a Key Vaultnak.  
    * **Előfizetés:** Válassza ki az előfizetést, amelyet használni fog.  
@@ -45,11 +46,11 @@ A következő lépések szükségesek a Key Vault Azure Cosmos DB elérési kulc
 
 ## <a name="add-azure-cosmos-db-access-keys-to-the-key-vault"></a>Adja hozzá Azure Cosmos DB hozzáférési kulcsokat a Key Vaulthoz.
 1. Navigáljon az előző lépésben létrehozott Key Vault, majd nyissa meg a **titkok** lapot.  
-2. Válassza a **+ előállítás/importálás**lehetőséget, 
+2. Válassza a **+ előállítás/importálás** lehetőséget, 
 
-   * Válassza **Manual** a manuális **lehetőséget a feltöltési beállításokhoz**.
+   * Válassza **Manual** a manuális **lehetőséget a feltöltési beállításokhoz** .
    * Adja meg a titkos kulcs **nevét**
-   * Adja meg a Cosmos DB-fiókjának a Value ( **érték** ) mezőbe való kapcsolási karakterláncát. Majd válassza a **Létrehozás**lehetőséget.
+   * Adja meg a Cosmos DB-fiókjának a Value ( **érték** ) mezőbe való kapcsolási karakterláncát. Majd válassza a **Létrehozás** lehetőséget.
 
    :::image type="content" source="./media/access-secrets-from-keyvault/create-a-secret.png" alt-text="Titkos kulcs létrehozása":::
 
@@ -66,7 +67,7 @@ A következő lépések szükségesek a Key Vault Azure Cosmos DB elérési kulc
    `var secret = await keyVaultClient.GetSecretAsync("<Your Key Vault’s secret identifier>")`
 
 3. **Mentse** a fájlt, és hozza **létre** a megoldást.  
-4. Ezután telepítse az alkalmazást az Azure-ba. Kattintson a jobb gombbal a projekt elemre, és válassza a **Közzététel**lehetőséget. Hozzon létre egy új App Service-profilt (nevezze el az alkalmazás WebAppKeyVault1), és válassza a **Közzététel**lehetőséget.   
+4. Ezután telepítse az alkalmazást az Azure-ba. Kattintson a jobb gombbal a projekt elemre, és válassza a **Közzététel** lehetőséget. Hozzon létre egy új App Service-profilt (nevezze el az alkalmazás WebAppKeyVault1), és válassza a **Közzététel** lehetőséget.   
 
 5. Az alkalmazás telepítése után. A Azure Portal navigáljon az üzembe helyezett webalkalmazáshoz, és kapcsolja be az alkalmazás **felügyelt szolgáltatás identitását** .  
 
@@ -82,7 +83,7 @@ Ebben a szakaszban regisztrálnia kell az alkalmazást Azure Active Directory, �
 
 1. Navigáljon a Azure Portalhoz, és nyissa meg az előző szakaszban létrehozott **Key Vault** .  
 
-2. Nyissa meg a **hozzáférési házirendeket**, válassza az **+ új** keresés a telepített webalkalmazásban lehetőséget, válassza az engedélyek lehetőséget, majd kattintson **az OK gombra**.  
+2. Nyissa meg a **hozzáférési házirendeket** , válassza az **+ új** keresés a telepített webalkalmazásban lehetőséget, válassza az engedélyek lehetőséget, majd kattintson **az OK gombra** .  
 
    :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="Titkos kulcs létrehozása":::
 

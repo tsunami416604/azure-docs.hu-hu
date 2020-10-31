@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: tisande
-ms.openlocfilehash: ceffb203ccc2cca1ff6e1c53644cde955c2e0acb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f1698390e759a4f347ed37157ca6b7073c44607
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86523502"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93093520"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>WHERE záradék Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A választható WHERE záradék ( `WHERE <filter_condition>` ) olyan feltételt határoz meg, amelynek a forrás JSON-elemeinek meg kell felelniük ahhoz, hogy a lekérdezés tartalmazza azokat az eredmények között. A JSON-elemek kiértékeléséhez a megadott feltételeket kell `true` figyelembe venni az eredmény szempontjából. Az index réteg a WHERE záradék használatával határozza meg az eredmény részét képező forrásoldali elemek legkisebb részhalmazát.
   
@@ -107,7 +108,7 @@ A következő példákban látható módon használhatja az unáris operátorok 
 
 A lekérdezésekben tulajdonságok hivatkozásait is használhatja. Például `SELECT * FROM Families f WHERE f.isRegistered` visszaadja a tulajdonságot tartalmazó olyan JSON-tételt, `isRegistered` amelynek értéke egyenlő `true` . Bármely más érték, például,,,,, `false` `null` vagy, `Undefined` `<number>` `<string>` `<object>` `<array>` kizárja az elemet az eredményből. Emellett a `IS_DEFINED` Type Check függvényt is használhatja a lekérdezéshez egy adott JSON-tulajdonság jelenléte vagy hiánya alapján. Például `SELECT * FROM Families f WHERE NOT IS_DEFINED(f.isRegistered)` olyan JSON-elemeket ad vissza, amely nem rendelkezik értékkel a következőhöz: `isRegistered` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Bevezetés](sql-query-getting-started.md)
 - [A kulcsszóban](sql-query-keywords.md#in)

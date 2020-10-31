@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 683c53c369f136ad4b917b93e9a92a71072d05e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41c5cc1a6032a0aee16f1922fc59349449c65b55
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71349638"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091939"
 ---
 # <a name="power-azure-cosmos-db"></a>TELJESÍTMÉNY (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  A megadott kifejezés értékét adja vissza a megadott hatványra.  
   
 ## <a name="syntax"></a>Szintaxis
@@ -29,7 +31,7 @@ POWER (<numeric_expr1>, <numeric_expr2>)
    Egy numerikus kifejezés.  
   
 *numeric_expr2*  
-   A *numeric_expr1*növelésének a célja.  
+   A *numeric_expr1* növelésének a célja.  
   
 ## <a name="return-types"></a>Visszatérési típusok
   
@@ -49,7 +51,7 @@ SELECT POWER(2, 3) AS pow1, POWER(2.5, 3) AS pow2
 [{pow1: 8, pow2: 15.625}]  
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

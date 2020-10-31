@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: sngun
-ms.openlocfilehash: 08cc3b08611947ac32973b2dfb01060140dc0798
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 683fc553e7712e2a760a0af1b601207cb20f2f55
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743896"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092806"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Azure Cosmos DB vezérlési sík műveleteinek naplózása
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 A Azure Cosmos DB vezérlő síkja egy REST-szolgáltatás, amely lehetővé teszi különféle műveletek végrehajtását az Azure Cosmos-fiókban. Egy nyilvános erőforrás-modellt (például adatbázis, fiók) és különböző műveleteket tesz közzé a végfelhasználók számára az erőforrás-modell műveleteinek elvégzéséhez. A vezérlési sík műveletei az Azure Cosmos-fiók vagy-tároló módosításait tartalmazzák. Például olyan műveletek, mint például az Azure Cosmos-fiók létrehozása, a régió hozzáadása, az átviteli sebesség frissítése, a régió feladatátvétele, VNet stb. a vezérlési sík egyes műveletei. Ez a cikk azt ismerteti, hogyan lehet naplózni a vezérlési sík műveleteit a Azure Cosmos DBban. Az Azure Cosmos-fiókokon futtathatja a vezérlési sík műveleteit az Azure CLI, a PowerShell vagy a Azure Portal, míg a tárolók esetében az Azure CLI vagy a PowerShell használatával.
 
@@ -170,29 +171,29 @@ A *ResourceDetails* tulajdonság a teljes erőforrás törzsét tartalmazza kér
 Az alábbiakban néhány példát talál a vezérlési sík műveleteihez szükséges diagnosztikai naplók beszerzésére:
 
 ```kusto
-AzureDiagnostics 
-| where Category startswith "ControlPlane"
+AzureDiagnostics 
+| where Category startswith "ControlPlane"
 | where OperationName contains "Update"
-| project httpstatusCode_s, statusCode_s, OperationName, resourceDetails_s, activityId_g
+| project httpstatusCode_s, statusCode_s, OperationName, resourceDetails_s, activityId_g
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
 | where TimeGenerated >= todatetime('2020-05-14T17:37:09.563Z')
-| project TimeGenerated, OperationName, apiKind_s, apiKindResourceType_s, operationType_s, resourceDetails_s
+| project TimeGenerated, OperationName, apiKind_s, apiKindResourceType_s, operationType_s, resourceDetails_s
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersUpdate"
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersUpdate"
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersThroughputUpdate"
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersThroughputUpdate"
 ```
 
 Lekérdezés a tároló-törlési műveletet kezdeményező tevékenységazonosító és hívó beszerzéséhez:

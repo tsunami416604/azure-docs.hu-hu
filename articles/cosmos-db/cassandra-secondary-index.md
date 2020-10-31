@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 04/04/2020
 ms.author: thvankra
 ms.reviewer: sngun
-ms.openlocfilehash: 7de38097acdbfa1f9c9b90f3051c68dec5465b32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc9c7c2f06b9d39243b8593b20ddeb7ffa2f886c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80758026"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092364"
 ---
 # <a name="secondary-indexing-in-azure-cosmos-db-cassandra-api"></a>Másodlagos indexelés Azure Cosmos DB Cassandra API
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 A Azure Cosmos DB Cassandra APIja az alapul szolgáló indexelési infrastruktúrát használja a platformon rejlő indexelési erősség kihasználása érdekében. Az alapszintű SQL API-val ellentétben azonban a Azure Cosmos DB Cassandra API nem indexeli az összes attribútumot alapértelmezés szerint. Ehelyett támogatja a másodlagos indexelést bizonyos attribútumok indexének létrehozásához, ami ugyanúgy viselkedik, mint az Apache Cassandra.  
 
@@ -71,6 +72,6 @@ Tudnia kell, hogy az index neve hogyan dobja el az indexet. Futtassa a `desc sch
 drop index sampleks.t1_lastname_idx;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan működik az [Automatikus indexelés](index-overview.md) az Azure Cosmos db
 * [Azure Cosmos DB Cassandra API által támogatott Apache Cassandra-funkciók](cassandra-support.md)

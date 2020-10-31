@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 358fccec56f81ee41acc2898751b8848beaeb168
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: fc60ca462a2891cc022847e056e32239f2675f70
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905444"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094574"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Rövid útmutató: Azure DDoS Protection standard létrehozása és konfigurálása
 
@@ -63,7 +63,7 @@ Ebben a rövid útmutatóban létrehoz egy DDoS Protection-tervet, és összekap
     | Előfizetés    | Válassza ki előfizetését.                                    |
     | Erőforráscsoport  | Válassza a **meglévő használata** lehetőséget, majd a **MyResourceGroup** lehetőséget. |
     | Hely        | Adja meg az _USA keleti_ régióját                                                    |
-    | DDoS Protection standard | Válassza az **Engedélyezés** lehetőséget. A kiválasztott csomag a virtuális hálózattal megegyező vagy eltérő előfizetésben is lehet, de mindkét előfizetéshez ugyanahhoz a Azure Active Directory bérlőhöz kell tartoznia.|
+    | DDoS Protection Standard | Válassza az **Engedélyezés** lehetőséget. A kiválasztott csomag a virtuális hálózattal megegyező vagy eltérő előfizetésben is lehet, de mindkét előfizetéshez ugyanahhoz a Azure Active Directory bérlőhöz kell tartoznia.|
 
 A virtuális hálózat nem helyezhető át másik erőforráscsoporthoz vagy előfizetésbe, ha a DDoS standard engedélyezve van a virtuális hálózathoz. Ha a virtuális hálózatot a DDoS standard használatával kell áthelyeznie, először tiltsa le a DDoS standardot, helyezze át a virtuális hálózatot, majd engedélyezze a DDoS standard használatát. Az áthelyezést követően a rendszer alaphelyzetbe állítja a virtuális hálózatban lévő összes védett nyilvános IP-cím automatikusan beállított szabályzatának küszöbértékeit.
 
@@ -84,8 +84,6 @@ Először olvassa el a DDoS Protection-terv részleteit:
 3. Válassza ki a DDoS Protection-tervet a listából.
 
 A _MyVnet_ virtuális hálózatnak szerepelnie kell a felsorolásban. 
-
-Tesztelés szimulációk használatával
 
 ## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
@@ -114,4 +112,4 @@ Ha törölni szeretné a DDoS Protection-csomagot, először el kell távolítan
 Ha szeretné megtudni, hogyan tekintheti meg és konfigurálhatja a DDoS elleni védelmi terv telemetria, folytassa az oktatóanyagokkal.
 
 > [!div class="nextstepaction"]
-> [A DDoS Protection telemetria megtekintése és konfigurálása](telemetry-monitoring-alerting.md)
+> [DDoS Protection-telemetria megtekintése és konfigurálása](telemetry-monitoring-alerting.md)
