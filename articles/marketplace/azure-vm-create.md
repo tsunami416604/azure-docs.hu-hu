@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/20/2020
-ms.openlocfilehash: 5964292d7037465456efe22283a5552a2bfc7ad8
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: bfd67688ce30b62002e26cea9f7be4df1cb6e622
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331260"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126447"
 ---
 # <a name="how-to-create-a-virtual-machine-offer-on-azure-marketplace"></a>Virtuálisgép-ajánlat létrehozása az Azure Marketplace-en
 
@@ -27,40 +27,40 @@ Ha még nem tette meg, tekintse át [a virtuális gép ajánlatának megtervezé
 ## <a name="create-a-new-offer"></a>Új ajánlat létrehozása
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
-2. A bal oldali panelen válassza a **kereskedelmi piactér**  >  **áttekintése**elemet.
-3. Az **Áttekintés** lapon válassza az **új ajánlat**Azure-beli  >  **virtuális gép**lehetőséget.
+2. A bal oldali panelen válassza a **kereskedelmi piactér**  >  **áttekintése** elemet.
+3. Az **Áttekintés** lapon válassza az **új ajánlat** Azure-beli  >  **virtuális gép** lehetőséget.
 
     ![Képernyőkép a bal oldali ablaktábla menüpontok és az "új ajánlat" gomb megjelenítéséhez.](./media/create-vm/new-offer-azure-virtual-machine.png)
 
 > [!NOTE]
 > Az ajánlat közzétételét követően a partner Centerben végrehajtott módosítások csak az ajánlat ismételt közzététele után jelennek meg az Azure piactéren. A módosítások végrehajtása után ügyeljen arra, hogy mindig újra tegye közzé az ajánlatokat.
 
-Adja meg az **ajánlat azonosítóját**. Ez a fiókban található egyes ajánlatok egyedi azonosítója.
+Adja meg az **ajánlat azonosítóját** . Ez a fiókban található egyes ajánlatok egyedi azonosítója.
 
 - Ez az azonosító az Azure Marketplace-ajánlathoz tartozó webcímek ügyfelei számára látható, Azure PowerShell és az Azure CLI-ben, ha van ilyen.
-- Csak kisbetűket és számokat használjon. Az azonosító kötőjeleket és aláhúzást tartalmazhat, de nem tartalmaz szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1**értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
-- Az ajánlat azonosítója a **Létrehozás**gombra kattintva nem módosítható.
+- Csak kisbetűket és számokat használjon. Az azonosító kötőjeleket és aláhúzást tartalmazhat, de nem tartalmaz szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1** értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
+- Az ajánlat azonosítója a **Létrehozás** gombra kattintva nem módosítható.
 
-Adjon meg egy **ajánlat-aliast**. Az ajánlat alias a partner Centerben az ajánlathoz használt név.
+Adjon meg egy **ajánlat-aliast** . Az ajánlat alias a partner Centerben az ajánlathoz használt név.
 
 - Ez a név nem használható az Azure Marketplace-en. Eltér az ajánlat nevétől és az ügyfelek számára megjelenített egyéb értéktől.
 
 ## <a name="enable-a-test-drive-optional"></a>Tesztelési meghajtó engedélyezése (nem kötelező)
 
-A test Drive nagyszerű lehetőséget nyújt arra, hogy az ajánlatot a lehetséges ügyfelek számára is bemutassa, ha egy előre konfigurált környezethez hozzáférést ad nekik egy rögzített számú órán keresztül. A tesztelési meghajtó felajánlása nagyobb konverziós arányt eredményez, és nagy mértékben minősített érdeklődőket generál. További információ a tesztelési meghajtókról: [Mi az a test Drive?](partner-center-portal/test-drive.md).
+A test Drive nagyszerű lehetőséget nyújt arra, hogy az ajánlatot a lehetséges ügyfelek számára is bemutassa, ha egy előre konfigurált környezethez hozzáférést ad nekik egy rögzített számú órán keresztül. A tesztelési meghajtó felajánlása nagyobb konverziós arányt eredményez, és nagy mértékben minősített érdeklődőket generál. További információ a tesztelési meghajtókról: [Mi az a test Drive?](./what-is-test-drive.md).
 
 > [!TIP]
 > A tesztelési meghajtó nem azonos az ingyenes próbaverzióval. Akár tesztelési meghajtót, ingyenes próbaverziót vagy mindkettőt is használhat. Mind a megoldás egy meghatározott időszakra biztosítanak ügyfeleinek. A test Drive azonban magában foglalja a termék legfontosabb funkcióit és előnyeit is, amelyek egy valós megvalósítási forgatókönyvben jelennek meg.
 
 **Tesztelési meghajtó engedélyezése**
-1.  A **tesztelési meghajtó**területen jelölje be a **tesztvezetés engedélyezése** jelölőnégyzetet.
+1.  A **tesztelési meghajtó** területen jelölje be a **tesztvezetés engedélyezése** jelölőnégyzetet.
 1.  Válassza ki a tesztoldal típusát a megjelenő listából.
 
 ## <a name="configure-lead-management"></a>Érdeklődők kezelésének konfigurálása
 
 Ha közzéteszi az ajánlatot a kereskedelmi piactéren a partner centerrel, kapcsolja össze azt az Ügyfélkapcsolat-kezelési (CRM) rendszerhez. Ez lehetővé teszi az ügyfelek kapcsolattartási adatainak megszerzését, amint valaki érdeklődik a termék iránt, vagy használja a terméket. Ha egy tesztelési meghajtót szeretne engedélyezni, a CRM-hez való csatlakozásra van szükség (lásd az előző szakaszt). Ellenkező esetben a CRM-hez való csatlakozás nem kötelező.
 
-1. az **ügyfél-érdeklődők**területen válassza a **Kapcsolódás** hivatkozást.
+1. az **ügyfél-érdeklődők** területen válassza a **Kapcsolódás** hivatkozást.
 1. A **kapcsolat részletei** párbeszédpanelen válasszon ki egy érdeklődő célhelyet a listából.
 1. Fejezze be a megjelenő mezőket. A részletes lépésekért tekintse meg a következő cikkeket:
 
@@ -71,7 +71,7 @@ Ha közzéteszi az ajánlatot a kereskedelmi piactéren a partner centerrel, kap
    - [Az ajánlat beállítása, hogy érdeklődőket küldjön a Salesforce](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md#configure-your-offer-to-send-leads-to-salesforce)
 
 1. A megadott konfiguráció ellenőrzéséhez válassza az **Érvényesítés** hivatkozást.
-1. A párbeszédpanel bezárásához kattintson **az OK gombra**.
+1. A párbeszédpanel bezárásához kattintson **az OK gombra** .
 
 ## <a name="resell-through-csps"></a>Viszonteladás a CSP-n keresztül
 
@@ -79,7 +79,7 @@ A [Cloud Solution Provider (CSP)](https://azure.microsoft.com/offers/ms-azr-0145
 
 Válassza a **Létrehozás** lehetőséget az ajánlat létrehozásához és a folytatáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Virtuálisgép-ajánlat tulajdonságainak konfigurálása](azure-vm-create-properties.md)
 - [Ajánlatlistákra vonatkozó ajánlott eljárások](gtm-offer-listing-best-practices.md)

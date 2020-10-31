@@ -8,22 +8,22 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 5776c741bb69d345f191e5673fe388328d0fe7bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93e10baa5281481b57e945f93b7375060b574de5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89015594"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126855"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Felügyelet .NET SDK: elemzési feladatok beállítása és futtatása a .NET-hez készült Azure Stream Analytics API-val
 Ismerje meg, hogyan állíthatja be és futtathatja az elemzési feladatokat a .NET Stream Analytics API-val a felügyeleti .NET SDK használatával. Projekt beállítása, bemeneti és kimeneti források, átalakítások, valamint indítási és leállítási feladatok létrehozása. Az elemzési feladatokhoz blob Storage-ból vagy Event hub-ból továbbíthatja az adatait.
 
-Tekintse [meg a .net-hez készült stream Analytics API kezelési útmutatójának dokumentációját](https://msdn.microsoft.com/library/azure/dn889315.aspx).
+Tekintse [meg a .net-hez készült stream Analytics API kezelési útmutatójának dokumentációját](/previous-versions/azure/dn889315(v=azure.100)).
 
 A Azure Stream Analytics egy teljes körűen felügyelt szolgáltatás, amely kis késleltetésű, magasan elérhető, méretezhető, összetett eseményt biztosít a felhőben tárolt adatfolyam-adatfeldolgozáshoz. Stream Analytics lehetővé teszi az ügyfeleknek, hogy az adatfolyamok elemzéséhez beállítsák a folyamatos átviteli feladatokat, és lehetővé teszik a közel valós idejű elemzések elvégzését.  
 
 > [!NOTE]
-> Ebben a cikkben a Azure Stream Analytics Management .NET SDK v2. x verziójával frissítettük a mintakód-kódot. A lagecy (1. x) SDK-verziót használó mintakód esetében lásd: [a felügyeleti .net SDK v1. x használata a stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).
+> Ebben a cikkben a Azure Stream Analytics Management .NET SDK v2. x verziójával frissítettük a mintakód-kódot. A lagecy (1. x) SDK-verziót használó mintakód esetében lásd: [a felügyeleti .net SDK v1. x használata a stream Analytics]().
 
 ## <a name="prerequisites"></a>Előfeltételek
 A cikk elkezdése előtt a következő követelményeknek kell megfelelnie:
@@ -167,7 +167,7 @@ A következő kód létrehoz egy Stream Analytics feladatot a definiált erőfor
    ```
 
 ## <a name="create-a-stream-analytics-input-source"></a>Stream Analytics bemeneti forrás létrehozása
-A következő kód egy Stream Analytics bemeneti forrást hoz létre a blob bemeneti forrás típusával és a CSV-szerializálással. Az Event hub bemeneti forrásának létrehozásához használja a **EventHubStreamInputDataSource** -t a **BlobStreamInputDataSource**helyett. Hasonlóképpen testreszabhatja a bemeneti forrás szerializálási típusát is.
+A következő kód egy Stream Analytics bemeneti forrást hoz létre a blob bemeneti forrás típusával és a CSV-szerializálással. Az Event hub bemeneti forrásának létrehozásához használja a **EventHubStreamInputDataSource** -t a **BlobStreamInputDataSource** helyett. Hasonlóképpen testreszabhatja a bemeneti forrás szerializálási típusát is.
 
    ```csharp
    // Create an input
@@ -285,7 +285,7 @@ A **delete** metódus törli a feladatot, valamint az alapul szolgáló alerőfo
    ```
 
 ## <a name="get-support"></a>Támogatás kérése
-További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Következő lépések
 Megtanulta, hogyan hozhat létre és futtathat analitikai feladatokat a .NET SDK használatával. További tudnivalókért olvassa el a következő cikket:
@@ -293,9 +293,9 @@ Megtanulta, hogyan hozhat létre és futtathat analitikai feladatokat a .NET SDK
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)
-* [Azure stream Analytics Management .net SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx)-t.
-* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure stream Analytics Management .net SDK](/previous-versions/azure/dn889315(v=azure.100))-t.
+* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Az Azure Stream Analytics felügyeleti REST API referenciája](/rest/api/streamanalytics/)
 
 <!--Image references-->
 [5]: ./media/markdown-template-for-new-articles/octocats.png
@@ -305,17 +305,17 @@ Megtanulta, hogyan hozhat létre és futtathat analitikai feladatokat a .NET SDK
 
 <!--Link references-->
 [azure.blob.storage]: https://azure.microsoft.com/documentation/services/storage/
-[azure.blob.storage.use]: https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/
+[azure.blob.storage.use]: ../storage/blobs/storage-quickstart-blobs-dotnet.md
 
 [azure.event.hubs]: https://azure.microsoft.com/services/event-hubs/
-[azure.event.hubs.developer.guide]: https://msdn.microsoft.com/library/azure/dn789972.aspx
+[azure.event.hubs.developer.guide]: /previous-versions/azure/dn789972(v=azure.100)
 
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
 [stream.analytics.forum]: https://go.microsoft.com/fwlink/?LinkId=512151
 
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
 [stream.analytics.developer.guide]: stream-analytics-developer-guide.md
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

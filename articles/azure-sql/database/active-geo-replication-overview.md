@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: 35aff26eac3dd456db55204b662cb9b8a6bb9f2b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 7c16e3b991bffd9c6bbcc4759a07b9e122ef5b72
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672980"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125342"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Active geo-Replication-Azure SQL Database létrehozása és használata
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -132,7 +132,7 @@ Alapértelmezés szerint a másodlagos biztonsági mentési tárterület-redunda
 > A tranzakciós naplók aránya az elsődlegesnél szabályozható olyan okok miatt, amelyek nem kapcsolódnak alacsonyabb számítási mérethez a másodlagosnál. Ez a fajta szabályozás akkor is előfordulhat, ha a másodlagosnál az elsődlegesnél megegyező vagy magasabb számítási méret van. A részletekért, beleértve a különböző naplózási sebességek szabályozására vonatkozó várakozási típusokat, lásd: a [tranzakciós napló arányának szabályozása](resource-limits-logical-server.md#transaction-log-rate-governance).
 
 > [!NOTE]
-> Azure SQL Database konfigurálható biztonsági mentési tár redundancia jelenleg csak a Délkelet-ázsiai Azure-régióban általánosan elérhető. Ha a forrásadatbázis helyileg redundáns vagy Zone-redundáns biztonságimásolat-tárolási redundanciával jön létre, a másodlagos adatbázis más Azure-régióban való létrehozása nem támogatott. 
+> Azure SQL Database konfigurálható biztonsági mentési tár redundancia jelenleg a Dél-Brazíliában elérhető nyilvános előzetes verzióban érhető el, és általánosan elérhető a Délkelet-ázsiai Azure-régióban. Ha a forrásadatbázis helyileg redundáns vagy Zone-redundáns biztonságimásolat-tárolási redundanciával jön létre, a másodlagos adatbázis más Azure-régióban való létrehozása nem támogatott. 
 
 A SQL Database számítási méretekkel kapcsolatos további információkért lásd: [Mi a SQL Database szolgáltatási szintek](purchasing-models.md).
 

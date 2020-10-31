@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 7/14/2020
-ms.openlocfilehash: 4c4455d62f32acb1cfebde8f5e4d97de5bda17c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 345b9447daa9fcb5f97ec5d8d00bcf5ea76d958c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89463545"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126736"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>A Microsoft Business Applications független szoftverszállítói (ISV) Connect programjának előkészítési útmutatója
 
@@ -25,7 +25,7 @@ A Business Applications ISV-csatlakozási program összes technikai, marketing �
 
 ## <a name="set-up-your-microsoft-partner-center-account"></a>A Microsoft partner Center-fiók beállítása
 
-Az ISV-kapcsolódási programhoz tartozó fiók beállításához és kezeléséhez végezze el a cikk lépéseit: [kereskedelmi Piactéri fiók létrehozása a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account). Ez a cikk az új fiókok létrehozásával és az új közzétevők kereskedelmi Piactéri programhoz való hozzáadásával kapcsolatos összes lépést ismerteti.
+Az ISV-kapcsolódási programhoz tartozó fiók beállításához és kezeléséhez végezze el a cikk lépéseit: [kereskedelmi Piactéri fiók létrehozása a partner Centerben](./partner-center-portal/create-account.md). Ez a cikk az új fiókok létrehozásával és az új közzétevők kereskedelmi Piactéri programhoz való hozzáadásával kapcsolatos összes lépést ismerteti.
 
 > [!NOTE]
 > Ehhez a lépéshez *tulajdonosi* vagy *felettesi* szerepkörre van szükség a partner Centerben.
@@ -38,10 +38,10 @@ A programban való részvételhez meg kell vizsgálnia és el kell fogadnia a [B
 > Ehhez a lépéshez a fiókhoz tartozó *tulajdonosi* vagy *felettesi* szerepkörre van szükség a jogi szerződések aláírásához.
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard).
-1. Válassza a **Beállítások** (fogaskerék ikon) lehetőséget, és válassza a **fejlesztői beállítások**elemet.
-1. Válassza a **szerződések**lehetőséget.
+1. Válassza a **Beállítások** (fogaskerék ikon) lehetőséget, és válassza a **fejlesztői beállítások** elemet.
+1. Válassza a **szerződések** lehetőséget.
 1. Válassza ki a verzió hivatkozást, és tekintse meg a szerződést.
-1. A szerződés elfogadásához és elfogadásához válassza a **Szerződés elfogadása**lehetőséget.
+1. A szerződés elfogadásához és elfogadásához válassza a **Szerződés elfogadása** lehetőséget.
 
 ## <a name="set-up-your-billing-information"></a>Számlázási adatok beállítása
 
@@ -51,8 +51,8 @@ Számlázási információk beállítása a Business Applications ISV csatlakoz�
 > Ehhez a lépéshez a fiókhoz tartozó *tulajdonosi* vagy *felettesi* szerepkör szükséges a számlázási információk frissítéséhez.
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard).
-1. Válassza a **Beállítások** (fogaskerék ikon) lehetőséget, és válassza a **fejlesztői beállítások**elemet.
-1. A **fiók**területen válassza a **Számlázási profil**lehetőséget.
+1. Válassza a **Beállítások** (fogaskerék ikon) lehetőséget, és válassza a **fejlesztői beállítások** elemet.
+1. A **fiók** területen válassza a **Számlázási profil** lehetőséget.
 1. Tekintse át a jogi személy által kitöltött elsődleges kapcsolattartási és számlázási adatokat, és végezze el a szükséges frissítéseket.
 1. Ha alkalmazható, adja meg az adóazonosító/ÁFA-azonosító beállításait.
 1. A módosítások mentéséhez kattintson a **Save** (Mentés) gombra.
@@ -66,11 +66,11 @@ A fenti lépések elvégzése után a meglévő Dynamics 365 CE és/vagy Dynamic
 
 A Business Applications ISV kapcsolódási programban való regisztráció utolsó lépése a meglévő alkalmazások közzététele és tanúsítása. Az alkalmazás AppSource való közzétételéhez és hitelesítéséhez kövesse a megfelelő hivatkozást:
 
-- [Dynamics 365 Customer engagement](https://docs.microsoft.com/powerapps/developer/common-data-service/publish-app-appsource) 
-- [A Dynamics 365 for Finance and Operations esetében](https://docs.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)
+- [Dynamics 365 Customer engagement](/powerapps/developer/common-data-service/publish-app-appsource) 
+- [A Dynamics 365 for Finance and Operations esetében](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)
 
 > [!IMPORTANT]
-> 6 havonta újra hitelesítenie kell az alkalmazásait, hogy azok élő AppSource maradjanak. Részletekért lásd: Marketplace Policy [kereskedelmi piactér – minősítési házirendek](https://docs.microsoft.com/legal/marketplace/certification-policies).
+> 6 havonta újra hitelesítenie kell az alkalmazásait, hogy azok élő AppSource maradjanak. Részletekért lásd: Marketplace Policy [kereskedelmi piactér – minősítési házirendek](/legal/marketplace/certification-policies).
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 510991c1afba9a5ffbfd77e855ee25d8b641bdd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76dc7693b1773038d610f9ed42eddad2c81e3eaf
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226981"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126634"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Monitor munkafüzetek használata Azure Active Directory jelentésekhez
 
@@ -83,15 +83,15 @@ A munkafüzetek eléréséhez:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Navigáljon **Azure Active Directory**  >  **figyelési**  >  **munkafüzetekbe**. 
+1. Navigáljon **Azure Active Directory**  >  **figyelési**  >  **munkafüzetekbe** . 
 
-1. Válasszon ki egy jelentést vagy sablont, vagy kattintson a **Megnyitás**gombra az eszköztáron. 
+1. Válasszon ki egy jelentést vagy sablont, vagy kattintson a **Megnyitás** gombra az eszköztáron. 
 
 ![A Azure Monitor-munkafüzetek keresése az Azure AD-ben](./media/howto-use-azure-monitor-workbooks/azure-monitor-workbooks-in-azure-ad.png)
 
 ## <a name="sign-in-analysis"></a>Bejelentkezési elemzés
 
-A bejelentkezési elemzési munkafüzet eléréséhez a **használat** szakaszban válassza a **bejelentkezések**lehetőséget. 
+A bejelentkezési elemzési munkafüzet eléréséhez a **használat** szakaszban válassza a **bejelentkezések** lehetőséget. 
 
 Ez a munkafüzet a következő bejelentkezési trendeket mutatja:
 
@@ -128,7 +128,7 @@ Minden egyes trend esetében a következő kategóriák szerinti részletezést 
 ## <a name="sign-ins-using-legacy-authentication"></a>Korábbi hitelesítéssel történő bejelentkezések 
 
 
-Ha a munkafüzetet [örökölt hitelesítést](../conditional-access/block-legacy-authentication.md)használó bejelentkezésekhez szeretné elérni, a **használat** szakaszban válassza a **Bejelentkezés örökölt hitelesítés használatával**lehetőséget. 
+Ha a munkafüzetet [örökölt hitelesítést](../conditional-access/block-legacy-authentication.md)használó bejelentkezésekhez szeretné elérni, a **használat** szakaszban válassza a **Bejelentkezés örökölt hitelesítés használatával** lehetőséget. 
 
 Ez a munkafüzet a következő bejelentkezési trendeket mutatja:
 
@@ -159,7 +159,7 @@ Az egyes trendek esetében az alkalmazás és a protokoll részletezést kap.
 ## <a name="sign-ins-by-conditional-access"></a>Bejelentkezések feltételes hozzáféréssel 
 
 
-Ha a munkafüzetet a [feltételes hozzáférési házirendek](../conditional-access/overview.md)alapján szeretné elérni a bejelentkezésekhez, a **feltételes hozzáférés** szakaszban válassza a **bejelentkezések feltételes hozzáférés alapján**lehetőséget. 
+Ha a munkafüzetet a [feltételes hozzáférési házirendek](../conditional-access/overview.md)alapján szeretné elérni a bejelentkezésekhez, a **feltételes hozzáférés** szakaszban válassza a **bejelentkezések feltételes hozzáférés alapján** lehetőséget. 
 
 Ez a munkafüzet a letiltott bejelentkezések trendjét jeleníti meg. Az egyes trendeket a következő kategóriák szerint szűrheti:
 
@@ -174,7 +174,7 @@ Ez a munkafüzet a letiltott bejelentkezések trendjét jeleníti meg. Az egyes 
 
 A letiltott bejelentkezések esetében a feltételes hozzáférési állapot szerinti részletezést kap.
 
-![Feltételes hozzáférés állapota](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
+![A képernyőképen a feltételes hozzáférés állapota és a legutóbbi bejelentkezések láthatók.](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
 
 
 ## <a name="conditional-access-insights"></a>Feltételes hozzáférés – Insights
@@ -194,12 +194,12 @@ Ha a munkafüzetet a feltételes hozzáférési információhoz szeretné elérn
 
 - **Adatnézet**
 
-![Feltételes hozzáférés állapota](./media/howto-use-azure-monitor-workbooks/access-insights.png)
+![Képernyőfelvétel: a feltételes hozzáférés panel, ahol kiválaszthat egy feltételes hozzáférési szabályzatot.](./media/howto-use-azure-monitor-workbooks/access-insights.png)
 
 
 A hatás összegzése azon felhasználók vagy bejelentkezések számát jeleníti meg, amelyekhez a kiválasztott szabályzatok adott eredménnyel rendelkeztek. Az összeg azon felhasználók vagy bejelentkezések száma, amelyekhez a kiválasztott szabályzatokat kiértékelték a kiválasztott időtartományban. Kattintson egy csempére a munkafüzetben lévő adatértékek szűréséhez. 
 
-![Feltételes hozzáférés állapota](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
+![A képernyőképen az eredmények, például a teljes, a sikeres és a sikertelen műveletek szűréséhez használható csempék láthatók.](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
 
 Ez a munkafüzet azt is mutatja, hogy a kiválasztott házirendek milyen hatással vannak az egyes hat feltételek szerinti bontásra: 
 - **Eszköz állapota**
@@ -209,19 +209,15 @@ Ez a munkafüzet azt is mutatja, hogy a kiválasztott házirendek milyen hatáss
 - **Hely**
 - **Alkalmazások**
 
-![Feltételes hozzáférés állapota](./media/howto-use-azure-monitor-workbooks/device-platform.png)
+![A képernyőkép a teljes bejelentkezési szűrő részleteit jeleníti meg.](./media/howto-use-azure-monitor-workbooks/device-platform.png)
 
 Egyéni bejelentkezéseket is megvizsgálhat, a munkafüzetben kiválasztott paraméterek szerint szűrve. Kereshet egyéni felhasználókat, a bejelentkezési gyakoriság szerint rendezve, és megtekintheti a hozzájuk tartozó bejelentkezési eseményeket. 
 
-![Feltételes hozzáférés állapota](./media/howto-use-azure-monitor-workbooks/filtered.png)
-
-
-
-
+![Képernyőfelvétel: az egyéni bejelentkezések áttekinthetők.](./media/howto-use-azure-monitor-workbooks/filtered.png)
 
 ## <a name="sign-ins-by-grant-controls"></a>Bejelentkezések engedélyezési vezérlőkkel
 
-Ha [vezérlőket ad](../conditional-access/controls.md)meg a bejelentkezéshez, a **feltételes hozzáférés** szakaszban válassza a **bejelentkezések engedélyezése vezérlők alapján**lehetőséget. 
+Ha [vezérlőket ad](../conditional-access/controls.md)meg a bejelentkezéshez, a **feltételes hozzáférés** szakaszban válassza a **bejelentkezések engedélyezése vezérlők alapján** lehetőséget. 
 
 Ez a munkafüzet a következő letiltott bejelentkezési trendeket mutatja:
 
@@ -261,7 +257,7 @@ A **bejelentkezések sikertelen elemzése** munkafüzettel a következő hibákk
 - Örökölt hitelesítés 
 
 
-A bejelentkezés feltételes hozzáférési adatai alapján való eléréséhez a **hibakeresés** szakaszban válassza az **örökölt hitelesítés használatával történő bejelentkezések**lehetőséget. 
+A bejelentkezés feltételes hozzáférési adatai alapján való eléréséhez a **hibakeresés** szakaszban válassza az **örökölt hitelesítés használatával történő bejelentkezések** lehetőséget. 
 
 Ez a munkafüzet a következő bejelentkezési trendeket mutatja:
 

@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: d04f95372eb050c3eea08d50d4c9bdbd3a0232b1
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c277525927f7f74f281220bf5e593e98509d8237
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282340"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126685"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Földrajzi Elérhetőség és pénznemek támogatása a kereskedelmi piactéren
 
@@ -20,7 +20,7 @@ ms.locfileid: "92282340"
 
 A kereskedelmi Piactéri ajánlatok az ügyfél számlázási címe által meghatározott 141 földrajzi helyen vásárolhatók meg, a tranzakciók pedig 17 pénznemben végezhetők el. A következő táblázat felsorolja az egyes támogatott földrajzi helyeket, az [ISO 3166 2 számjegyű alfa-kódot](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)és a hozzárendelt pénznemet.
 
-|   Ország/régió neve               |   ISO-2   |   Pénznem   |
+|   Ország/régió neve               |   ISO-2   |   Currency (Pénznem)   |
 |-------------------------------------|-----------|--------------|
 | Afganisztán                         | AF        | USD          |
 | Albánia                             | AL        | USD          |
@@ -204,4 +204,4 @@ Az egyes ajánlati típusok árának megadásával kapcsolatos részletekért te
 - [IoT Edge-modulajánlat létrehozása](partner-center-portal/azure-iot-edge-module-creation.md)
 - [Felügyelt szolgáltatásra vonatkozó ajánlat létrehozása](partner-center-portal/create-new-managed-service-offer.md)
 - [Power BI-alkalmazás létrehozása](partner-center-portal/create-power-bi-app-offer.md)
-- [SaaS-ajánlat létrehozása](partner-center-portal/create-new-saas-offer.md)
+- [SaaS-ajánlat létrehozása](./create-new-saas-offer.md)

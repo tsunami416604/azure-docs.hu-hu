@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 09/22/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: e791e4ca3481bc0aea931abe946751415f1e1614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4e184f827875ebebd40ab976ef63e77ee702d49
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311818"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126039"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>TLS/SSL-tanúsítvány használata a kódban Azure App Service
 
@@ -31,7 +31,7 @@ A következő útmutató követése:
 
 A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza a app Services lehetőséget **App Services**  >  **\<app-name>** .
 
-Az alkalmazás bal oldali navigációs sávján válassza a **TLS/SSL-beállítások**, majd a **titkos kulcsú tanúsítványok (. pfx)** vagy a **nyilvános kulcsú tanúsítványok (. cer)** lehetőséget.
+Az alkalmazás bal oldali navigációs sávján válassza a **TLS/SSL-beállítások** , majd a **titkos kulcsú tanúsítványok (. pfx)** vagy a **nyilvános kulcsú tanúsítványok (. cer)** lehetőséget.
 
 Keresse meg a használni kívánt tanúsítványt, és másolja az ujjlenyomatot.
 
@@ -49,10 +49,7 @@ Az összes tanúsítvány elérhetővé tételéhez állítsa a értéket a köv
 
 ## <a name="load-certificate-in-windows-apps"></a>Tanúsítvány betöltése Windows-alkalmazásokban
 
-Az Alkalmazásbeállítások `WEBSITE_LOAD_CERTIFICATES` lehetővé teszi, hogy a megadott tanúsítványok elérhetők legyenek a Windows-tanúsítványtárolóban, és a hely az [árképzési szinttől](overview-hosting-plans.md)függ:
-
-- **Elkülönített** réteg – [helyi Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores). 
-- Minden egyéb réteg – az [aktuális Settingsnew](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores).
+Az Alkalmazásbeállítások `WEBSITE_LOAD_CERTIFICATES` lehetővé teszi, hogy a megadott tanúsítványok elérhetők legyenek a Windows által üzemeltetett alkalmazás számára a Windows-tanúsítványtárolóban, az [aktuális Settingsnew](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores).
 
 A C#-kódban a Tanúsítvány ujjlenyomata alapján éri el a tanúsítványt. A következő kód betölti az ujjlenyomattal rendelkező tanúsítványt `E661583E8FABEF4C0BEF694CBC41C28FB81CD870` .
 
@@ -151,7 +148,7 @@ A tanúsítványfájl neve a tanúsítvány ujjlenyomatai megfelelnek.
 > App Service a tanúsítvány elérési útját a Windows-tárolókban adja meg a következő környezeti változók `WEBSITE_PRIVATE_CERTS_PATH` ,, `WEBSITE_INTERMEDIATE_CERTS_PATH` `WEBSITE_PUBLIC_CERTS_PATH` és `WEBSITE_ROOT_CERTS_PATH` . Érdemes a tanúsítvány elérési útját a rögzítjük helyett a környezeti változókkal hivatkozni, ha a tanúsítvány elérési útjai a jövőben változnak.
 >
 
-Emellett a [Windows Server Core tárolók](configure-custom-container.md#supported-parent-images) automatikusan betöltik a tanúsítványokat a tanúsítványtárolóba a **LocalMachine\My**-ben. A tanúsítványok betöltéséhez kövesse ugyanazt a mintát, mint a [Windows-alkalmazások betöltési tanúsítványa](#load-certificate-in-windows-apps). Windows Nano-alapú tárolók esetén a fent megadott fájlelérési utak használatával [töltse be a tanúsítványt közvetlenül a fájlból](#load-certificate-from-file).
+Emellett a [Windows Server Core tárolók](configure-custom-container.md#supported-parent-images) automatikusan betöltik a tanúsítványokat a tanúsítványtárolóba a **LocalMachine\My** -ben. A tanúsítványok betöltéséhez kövesse ugyanazt a mintát, mint a [Windows-alkalmazások betöltési tanúsítványa](#load-certificate-in-windows-apps). Windows Nano-alapú tárolók esetén a fent megadott fájlelérési utak használatával [töltse be a tanúsítványt közvetlenül a fájlból](#load-certificate-from-file).
 
 A következő C#-kód bemutatja, hogyan tölthető be egy nyilvános tanúsítvány egy Linux-alkalmazásban.
 

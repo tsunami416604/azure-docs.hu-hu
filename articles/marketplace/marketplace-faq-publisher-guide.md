@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: 879ea141a4621fac9e1774df64a63e9e56549012
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: a5c5d7ae4dbf1126d171c78bbd4e353f11402260
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026955"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126719"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Gyakori kérdések a Microsoft kereskedelmi piactérről
 
@@ -46,7 +46,7 @@ További információ: a [Microsoft kereskedelmi piactér központja](https://ak
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Díjköteles a Microsoft kereskedelmi piactér?
 
-Nem, a kereskedelmi piactéren elérhető ajánlatok közzétételére nincs díj. Az értékesítés egy kis hányadát, tranzakciós díjat számítunk fel, és befektetjük a Marketplace jutalmazási programba, a platform innovációba és a kereskedelmi piactéren végrehajtott műveletekbe. Ez a tranzakciós díj az [Azure-beli IP-](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell) incentivized ajánlatokra és az olyan fizetős SaaS-ajánlatokra vonatkozik, amelyek egy Microsoft Teams-alkalmazáshoz vagy legalább két Microsoft 365-bővítményhez (Excel, PowerPoint, Word, Outlook és SharePoint) vannak társítva.
+Nem, a kereskedelmi piactéren elérhető ajánlatok közzétételére nincs díj. Az értékesítés egy kis hányadát, tranzakciós díjat számítunk fel, és befektetjük a Marketplace jutalmazási programba, a platform innovációba és a kereskedelmi piactéren végrehajtott műveletekbe. Ez a tranzakciós díj az [Azure-beli IP-](./marketplace-co-sell.md) incentivized ajánlatokra és az olyan fizetős SaaS-ajánlatokra vonatkozik, amelyek egy Microsoft Teams-alkalmazáshoz vagy legalább két Microsoft 365-bővítményhez (Excel, PowerPoint, Word, Outlook és SharePoint) vannak társítva.
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>Hogyan regisztrálni, hogy kiadó legyen a Microsoft kereskedelmi piactéren?
 
@@ -106,7 +106,7 @@ A partneri központ hozzáférését négy releváns szerepkör szabályozza.
 
 Azure Active Directory (Azure AD) *globális rendszergazdai* engedélyek szükségesek az új felhasználói fiókok létrehozásához vagy a vendég fiókjainak meghívásához az alapul szolgáló könyvtárban. A partner Center az Azure AD-t az Identity modelre alkalmazza, és a szervezet Azure AD-példányát gyakran az IT-vagy biztonsági csapatok felügyelik és ellenőrzik.
 
-További információt a [felhasználói szerepkörök és engedélyek kiosztása](https://docs.microsoft.com/partner-center/permissions-overview)című témakörben talál.
+További információt a [felhasználói szerepkörök és engedélyek kiosztása](/partner-center/permissions-overview)című témakörben talál.
 
 ### <a name="do-customers-need-a-subscription-for-microsoft-azure-cloud-services"></a>Az ügyfeleknek Microsoft Azure Cloud Services előfizetésre van szükségük?
 

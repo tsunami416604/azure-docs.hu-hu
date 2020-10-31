@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: c421c730321213a9adbf0a0043874a21ba26bb05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2afebe61c4b2998692c823e66d8fc73584ec1dc2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906241"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125648"
 ---
 # <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>Azure Stream Analytics-feladatok exportálása Azure Resource Manager sablon
 
@@ -24,7 +24,7 @@ A Azure Resource Manager sablon exportálásával újra üzembe helyezhet egy Az
 
 Sablon exportálásához először meg kell nyitnia egy meglévő Stream Analytics feladatot a Visual Studio Code-ban. 
 
-Ha a feladatot egy helyi projektbe szeretné exportálni, keresse meg az exportálni kívánt feladatot a Azure Portal **stream Analytics Explorerben** . A **lekérdezés** lapon válassza a **Megnyitás a Visual Studióban**lehetőséget. Ezután válassza ki a **Visual Studio Code**-ot.
+Ha a feladatot egy helyi projektbe szeretné exportálni, keresse meg az exportálni kívánt feladatot a Azure Portal **stream Analytics Explorerben** . A **lekérdezés** lapon válassza a **Megnyitás a Visual Studióban** lehetőséget. Ezután válassza ki a **Visual Studio Code** -ot.
 
 ![Stream Analytics-feladatok megnyitása a Visual Studio Code-ban](./media/resource-manager-export/open-job-vs-code.png)
 
@@ -42,7 +42,7 @@ A következő lépés a feladatok parancsfájljának lefordítása egy Azure Res
 
 1. Figyelje meg, hogy az **üzembe helyezési** mappa megjelenik a stream Analytics feladatok munkaterületen.
 
-1. Ismerkedjen * meg a fájlJobTemplate.jsával* , amely az üzembe helyezéséhez használt Azure Resource Management-sablon.
+1. Ismerkedjen *meg a fájlJobTemplate.jsával* , amely az üzembe helyezéséhez használt Azure Resource Management-sablon.
 
 ## <a name="complete-the-parameters-file"></a>A parameters (paraméterek) fájl befejezése
 
@@ -58,9 +58,9 @@ Ezután fejezze be az Azure Resource Management-sablon paramétereit tartalmazó
 
 Készen áll a Azure Stream Analytics-feladatok üzembe helyezésére az előző szakaszban létrehozott Azure Resource Manager-sablonok használatával.
 
-Futtassa a következő parancsot egy PowerShell-ablakban. Ügyeljen arra, hogy reaplce a *ResourceGroupName*, a *TemplateFile*és a *TemplateParameterFile* a tényleges erőforráscsoport-névvel, és a teljes fájlelérési utat a *JobTemplate.jsbe* -és *JobTemplate.parameters.js* a feladatok munkaterület **központi telepítés mappájában** található fájlokra.
+Futtassa a következő parancsot egy PowerShell-ablakban. Ügyeljen arra, hogy reaplce a *ResourceGroupName* , a *TemplateFile* és a *TemplateParameterFile* a tényleges erőforráscsoport-névvel, és a teljes fájlelérési utat a *JobTemplate.jsbe* -és *JobTemplate.parameters.js* a feladatok munkaterület **központi telepítés mappájában** található fájlokra.
 
-Ha nincs Azure PowerShell konfigurálva, kövesse az [Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-Az-ps)című témakör lépéseit.
+Ha nincs Azure PowerShell konfigurálva, kövesse az [Azure PowerShell modul telepítése](/powershell/azure/install-Az-ps)című témakör lépéseit.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName "<your resource group>" -TemplateFile "<path to JobTemplate.json>" -TemplateParameterFile "<path to JobTemplate.parameters.json>"

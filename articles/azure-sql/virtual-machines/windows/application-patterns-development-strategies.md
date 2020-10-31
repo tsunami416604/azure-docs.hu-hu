@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mathoma
-ms.openlocfilehash: 46adbfee24ab463acdc4687c0465bbf50527a329
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: f681c6c453c9c0955092c4f1574a54ea2c9973f5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790644"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126651"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-on-azure-virtual-machines"></a>Alkalmazási minták és fejlesztési stratégiák az Azure-beli SQL Serverhoz Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -191,11 +191,11 @@ A következő ábra egy helyszíni forgatókönyvet és a felhőben engedélyeze
 
 Ahogy az ábrán is látható, Azure Load Balancer több virtuális gép között osztja el a forgalmat, és meghatározza, hogy melyik webkiszolgáló vagy alkalmazáskiszolgáló csatlakozhat a szolgáltatáshoz. A webes és az alkalmazás-kiszolgálók egy terheléselosztó mögötti több példánya biztosítja a megjelenítési szint és az üzleti szint magas rendelkezésre állását. További információ: [ajánlott eljárások az SQL-HADR igénylő alkalmazási mintákhoz](#best-practices-for-application-patterns-requiring-sql-hadr).
 
-![Alkalmazási minták Cloud Services](./media/application-patterns-development-strategies/IC728013.png)
+![A diagram az Azure virtuális hálózatban lévő webes szerepkör példányaihoz csatlakoztatott helyszíni fizikai vagy virtuális gépeket mutatja be egy Azure Load Balancer használatával.](./media/application-patterns-development-strategies/IC728013.png)
 
 Az alkalmazási minta megvalósításának egy másik megközelítése egy konszolidált webes szerepkör használata, amely a megjelenítési és az üzleti szintű összetevőket egyaránt tartalmazza az alábbi ábrán látható módon. Ez az alkalmazási minta olyan alkalmazások esetében hasznos, amelyek állapot-nyilvántartó kialakítást igényelnek. Mivel az Azure állapot nélküli számítási csomópontokat biztosít a webes és feldolgozói szerepkörökben, javasoljuk, hogy a munkamenet-állapot tárolásához a következő technológiák egyikével hozzon létre egy logikát: [Azure gyorsítótárazás](https://azure.microsoft.com/documentation/services/azure-cache-for-redis/), [azure Table Storage](../../../cosmos-db/tutorial-develop-table-dotnet.md) vagy [Azure SQL Database](../../database/sql-database-paas-overview.md).
 
-![Alkalmazási minták Cloud Services](./media/application-patterns-development-strategies/IC728014.png)
+![A diagram a konszolidált webes/feldolgozói szerepkörrel rendelkező helyszíni fizikai vagy virtuális gépeket mutatja be egy Azure-beli virtuális hálózatban.](./media/application-patterns-development-strategies/IC728014.png)
 
 ## <a name="pattern-with-azure-virtual-machines-azure-sql-database-and-azure-app-service-web-apps"></a>Minta az Azure Virtual Machines, Azure SQL Database és Azure App Service (Web Apps)
 Az alkalmazás mintájának elsődleges célja, hogy bemutassa, hogyan egyesítheti az Azure infrastruktúra-szolgáltatást (IaaS) a megoldásban az Azure platform-Service Components (Pásti) összetevővel. Ez a minta a Azure SQL Database a viszonyítási adattárolásra összpontosít. A szolgáltatás nem tartalmazza az Azure-beli virtuális gépek SQL Serverét, amely az Azure-infrastruktúra szolgáltatási ajánlatának részét képezi.

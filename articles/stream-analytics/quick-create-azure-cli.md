@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: 6ef4d63e30aeceec9cba3ae97f69afa1c299ec65
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 37cbd1b05249c694aaaa4ff5196a3b6328ccda7f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742730"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126243"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Gyors útmutató: Azure Stream Analytics-feladatok létrehozása az Azure CLI használatával
 
@@ -77,7 +77,7 @@ A következő Azure CLI-kódrészletek olyan parancsok, amelyek előkészítik a
     az iot hub create --name "MyASAIoTHub" --resource-group streamanalyticsrg --sku S1
     ```
 
-    Miután létrejött az IoT hub, szerezze be a IoT Hub kapcsolati karakterláncot az az [IoT hub show-kapcsolat-string](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest) parancs használatával. Másolja a teljes kapcsolódási karakterláncot, és mentse azt, amikor hozzáadja a IoT Hub a Stream Analytics feladathoz.
+    Miután létrejött az IoT hub, szerezze be a IoT Hub kapcsolati karakterláncot az az [IoT hub show-kapcsolat-string](/cli/azure/iot/hub?view=azure-cli-latest) parancs használatával. Másolja a teljes kapcsolódási karakterláncot, és mentse azt, amikor hozzáadja a IoT Hub a Stream Analytics feladathoz.
 
     ```azurecli
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
@@ -124,7 +124,7 @@ A következő Azure CLI-kód blokkolja a feladatok kimenetéhez használt BLOB S
    az storage account keys list -g streamanalyticsrg -n <storage-account>
    ```
 
-3. Hozzon létre blobok tárolására alkalmas tárolót az [az storage container create](/cli/azure/storage/container) parancs segítségével. A Storage-fiók kulcsa segítségével engedélyezheti a művelet számára a tároló létrehozását. Az adatműveletek Azure CLI-vel való engedélyezésével kapcsolatos további információkért lásd: [hozzáférés engedélyezése blob-vagy üzenetsor-adatokhoz az Azure CLI-vel](/azure/storage/common/authorize-data-operations-cli).
+3. Hozzon létre blobok tárolására alkalmas tárolót az [az storage container create](/cli/azure/storage/container) parancs segítségével. A Storage-fiók kulcsa segítségével engedélyezheti a művelet számára a tároló létrehozását. Az adatműveletek Azure CLI-vel való engedélyezésével kapcsolatos további információkért lásd: [hozzáférés engedélyezése blob-vagy üzenetsor-adatokhoz az Azure CLI-vel](../storage/common/authorize-data-operations-cli.md).
 
    ```azurecli
    az storage container create \

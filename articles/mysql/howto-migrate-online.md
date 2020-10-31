@@ -5,24 +5,27 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
-ms.date: 3/18/2020
-ms.openlocfilehash: 4c7fe3db3f85824dc2cfbe87fc22b63a59e931ab
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 10/30/2020
+ms.openlocfilehash: 9a3eefc9e820735efec302eed0f879a748cb1200
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546364"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125784"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>Minimális – állásidő áttelepítése Azure Database for MySQLre
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 
 A MySQL áttelepítését minimális állásidővel Azure Database for MySQLhatja a [Azure Database Migration Service](https://aka.ms/get-dms) (DMS) újonnan bevezetett **folyamatos szinkronizálási funkciójának** használatával. Ez a funkció korlátozza az alkalmazás által felmerült állásidő mennyiségét.
 
+Az [adatbázis-áttelepítési útmutatóban](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide) részletes információkat találhat az adatbázisok Azure Database for MySQLba való áttelepítésével kapcsolatos információkról és használatáról. Ez az útmutató útmutatást nyújt az Azure-ba való MySQL-áttelepítés sikeres megtervezéséhez és végrehajtásához.
+
 ## <a name="overview"></a>Áttekintés
 Az Azure DMS egy kezdeti terhelést hajt végre a helyszíni Azure Database for MySQLon, majd folyamatosan szinkronizál minden új tranzakciót az Azure-ba, amíg az alkalmazás fut. Miután az adatok bekerültek a cél Azure-ra, egy rövid pillanatra (a minimális állásidőig) megvárhatják az utolsó adatköteget (az alkalmazás leállításának időpontjától egészen addig, amíg az alkalmazás nem áll készen az új forgalom elvégzésére), majd frissítenie kell a kapcsolódási karakterláncot, hogy az Azure-ra mutasson. Ha elkészült, az alkalmazás az Azure-ban fog élni.
 
 :::image type="content" source="./media/howto-migrate-online/ContinuousSync.png" alt-text="Folyamatos szinkronizálás a Azure Database Migration Service":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
+- Az adatbázisok Azure Database for MySQLre való áttelepítésével kapcsolatos további információkért tekintse meg az [adatbázis-áttelepítési útmutatót](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide).
 - A videó megtekintésével [egyszerűen áttelepítheti a MySQL/PostgreSQL-alkalmazásokat az Azure felügyelt szolgáltatásba](https://medius.studios.ms/Embed/Video/THR2201?sid=THR2201), amely egy bemutatót tartalmaz, amely bemutatja, hogyan telepíthet át MySQL-alkalmazásokat a Azure Database for MySQL.
 - Tekintse meg a következő oktatóanyagot: a [MySQL migrálása Azure Database for MySQL online-ba a DMS használatával](../dms/tutorial-mysql-azure-mysql-online.md).

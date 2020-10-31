@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 18e04350260258b74d746a2796a56d7d3ba46346
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 43974258008e3813a368ab31891251db15060aff
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364116"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127059"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépés a személyazonossági infrastruktúra biztonságossá tételéhez
 
@@ -145,7 +145,7 @@ A Azure Active Directory számos képességgel rendelkezik, amelyek automatikusa
 
 A felhasználói kockázat azt jelzi, hogy a felhasználó identitása sérült, és a felhasználó identitásával kapcsolatos [felhasználói kockázati észlelések](../../active-directory/identity-protection/overview.md) alapján számítja ki a rendszer. A felhasználói kockázati házirend egy feltételes hozzáférési szabályzat, amely kiértékeli a kockázati szintet egy adott felhasználó vagy csoport számára. Az alacsony, közepes és magas kockázati szintű szabályok alapján a szabályzat beállítható úgy, hogy blokkolja a hozzáférést, vagy a többtényezős hitelesítés használatával biztonságos jelszó megváltoztatására van szükség. A Microsoft javaslata a nagy kockázatú felhasználók biztonságos jelszavas módosításának megkövetelése.
 
-![Kockázatosként megjelölt felhasználók](./media/steps-secure-identity/azure-ad-sec-steps1.png)
+![Képernyőfelvétel: a felhasználó által kiválasztva a kockázatra megjelölt felhasználók.](./media/steps-secure-identity/azure-ad-sec-steps1.png)
 
 ### <a name="implement-sign-in-risk-policy-using-azure-ad-identity-protection"></a>A bejelentkezési kockázati szabályzat megvalósítása Azure AD Identity Protection használatával
 
@@ -175,7 +175,7 @@ Azure AD Identity Protection két fontos jelentést biztosít a napi figyeléshe
 1. A kockázatos bejelentkezési jelentések felszínre kerülnek a felhasználói bejelentkezési tevékenységek, amelyeket meg kell vizsgálnia. Előfordulhat, hogy a legitim tulajdonos nem végezte el a bejelentkezést.
 2. A kockázatos felhasználói jelentések olyan felszíni felhasználói fiókokat érintenek, amelyek biztonsága esetleg sérült, például a észlelt hitelesítő adatok, vagy a felhasználó különböző helyekről való bejelentkezett, ami lehetetlenné teszi az utazási eseményt.
 
-![Kockázatosként megjelölt felhasználók](./media/steps-secure-identity/azure-ad-sec-steps3.png)
+![A képernyőképen az Azure A D Identity Protection ablaktáblája látható a felhasználókkal és azok kockázati szintjeivel.](./media/steps-secure-identity/azure-ad-sec-steps3.png)
 
 ### <a name="audit-apps-and-consented-permissions"></a>Az alkalmazások és a beleegyezett engedélyek naplózása
 
@@ -199,7 +199,7 @@ Az Azure AD lehetővé teszi a nem rendszergazdák számára az erőforrásokhoz
 
 Az [Azure ad hozzáférési felülvizsgálatok](../../active-directory/governance/access-reviews-overview.md)segítségével kezelheti a hozzáférési csomagokat és a csoporttagságok, a vállalati alkalmazásokhoz való hozzáférést és a Kiemelt szerepkör-hozzárendeléseket, így biztosítva a biztonsági szabványok fenntartását.  A felhasználók saját maguk, az erőforrás-tulajdonosok és az egyéb felülvizsgálók rendszeres felügyelete biztosítja, hogy a felhasználók ne tartsanak meg hosszabb ideig a hozzáférést, amikor már nincs rá szükségük.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A biztonságos identitás-infrastruktúrának számos aspektusa van, de ez az öt lépésből álló ellenőrzőlista segítséget nyújt a biztonságosabb és biztonságos identitás-infrastruktúra gyors megvalósításához:
 

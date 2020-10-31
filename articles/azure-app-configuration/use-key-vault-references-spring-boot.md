@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 849f25f6fdd3fef2e1ebca7dae397d96e6849f10
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 921c3b8afdb6b196e001cdb7c190529e6238c1f7
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748860"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127093"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Oktatóanyag: Key Vault-referenciák használata Java Spring-alkalmazásokban
 
@@ -51,7 +51,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 1. Válassza az **erőforrás létrehozása** lehetőséget a Azure Portal bal felső sarkában:
 
-    ![A Key Vault létrehozása után a kimenet befejeződött](./media/quickstarts/search-services.png)
+    ![A képernyőképen az erőforrás létrehozása lehetőség látható a Azure Portal.](./media/quickstarts/search-services.png)
 1. A keresőmezőbe írja be a **Key Vault** kifejezést.
 1. Az eredmények listából válassza a bal oldali **kulcstartók** lehetőséget.
 1. A **kulcstartók** területen válassza a **Hozzáadás** lehetőséget.
@@ -61,11 +61,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     * A **Key Vault neve mezőben** egyedi nevet kell megadni. Ebben az oktatóanyagban írja be a **contoso-vault2** .
     * A **régió** legördülő listából válassza ki a kívánt helyet.
 1. Hagyja meg a többi **create Key Vault** -beállítást az alapértelmezett értékekkel.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 Ezen a ponton az Azure-fiókja az egyetlen jogosult az új tároló elérésére.
 
-![A Key Vault létrehozása után a kimenet befejeződött](./media/quickstarts/vault-properties.png)
+![A képernyőfelvételen a kulcstartó látható.](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>Titkos kulcs hozzáadása a Key Vaulthoz
 
@@ -78,11 +78,11 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
     * **Név** : írja be az **üzenetet** .
     * **Érték** : adja meg **a Hello értéket Key Vault** .
 1. Hagyja a másik **titkos** tulajdonságot az alapértelmezett értékekkel.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Key Vault-hivatkozás hozzáadása az alkalmazás konfigurációjához
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **minden erőforrás** lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **minden erőforrás** lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
 
 1. Válassza a **Configuration Explorer** lehetőséget.
 

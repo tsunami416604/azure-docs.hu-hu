@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 11fde4480f4e2ed9feda00fa2af0e5937a77b9ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd8da9ae7e31fb60ba0ca553f5aa304ccd3621d2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986874"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127178"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>A Micro Focus Enterprise Server 5,0 és Enterprise Developer 5,0 telepítése az Azure-ban
 
@@ -47,7 +47,7 @@ Az első lépések előtt tekintse át az alábbi előfeltételeket:
 
 ## <a name="install-enterprise-server"></a>Az Enterprise Server telepítése
 
-1.  A jobb biztonság és kezelhetőség érdekében érdemes lehet új erőforráscsoportot létrehozni ehhez a projekthez – például **RGMicroFocusEntServer**. Használja az Azure-beli név első részét az erőforrás típusának kiválasztásához, hogy könnyebb legyen a listában.
+1.  A jobb biztonság és kezelhetőség érdekében érdemes lehet új erőforráscsoportot létrehozni ehhez a projekthez – például **RGMicroFocusEntServer** . Használja az Azure-beli név első részét az erőforrás típusának kiválasztásához, hogy könnyebb legyen a listában.
 
 2.  Virtuális gépet hoz létre. Az Azure Marketplace-en válassza ki a kívánt virtuális gépet és operációs rendszert. Egy ajánlott beállítás:
 
@@ -73,11 +73,11 @@ Az első lépések előtt tekintse át az alábbi előfeltételeket:
 
 9.  A telepítés elindításához kattintson duplán a fájlra. Az első ablakban válassza ki a telepítési helyet, és fogadja el a végfelhasználói licencszerződést.
 
-    ![Micro Focus Enterprise Server telepítő képernyő](media/install-image-1.png)
+    ![Képernyőfelvétel: a Micro Focus Enterprise Server párbeszédpanel, amelyen elindíthatja a telepítést.](media/install-image-1.png)
 
     A telepítés befejezésekor a következő üzenet jelenik meg:
 
-    ![Micro Focus Enterprise Server telepítő képernyő](media/install-image-2.png)
+    ![A képernyőfelvétel a Micro Focus Enterprise Server párbeszédpanelen megjelenik a sikert jelző üzenet.](media/install-image-2.png)
 
  ### <a name="check-for-updates"></a>Frissítések keresése
 
@@ -87,9 +87,9 @@ A telepítés után ellenőrizze, hogy az előfeltételként szükséges tovább
 
 1.  Indítsa el a Micro Focus-licencek felügyeletét.
 
-2.  Válassza **Start** \> a **Micro Focus License Manager** \> - **licencek felügyeletének**indítása lehetőséget, majd kattintson a **telepítés** lapra. Válassza ki a feltölteni kívánt licenc formátumát: egy licencfájl vagy egy 16 karakterből álló licenckód. Egy fájl esetében például a **licencfájl**lapon keresse meg a * `mflic` korábban feltöltött fájlt a virtuális gépre, és válassza a **Licencek telepítése**lehetőséget.
+2.  Válassza **Start** \> a **Micro Focus License Manager** \> - **licencek felügyeletének** indítása lehetőséget, majd kattintson a **telepítés** lapra. Válassza ki a feltölteni kívánt licenc formátumát: egy licencfájl vagy egy 16 karakterből álló licenckód. Egy fájl esetében például a **licencfájl** lapon keresse meg a * `mflic` korábban feltöltött fájlt a virtuális gépre, és válassza a **Licencek telepítése** lehetőséget.
 
-    ![Micro Focus – licencek felügyelete párbeszédpanel](media/install-image-3.png)
+    ![Képernyőfelvétel: a Micro Focus-licencek felügyelete párbeszédpanel, ahol kiválaszthatja a licencek telepítése lehetőséget.](media/install-image-3.png)
 
 3.  Ellenőrizze, hogy a vállalati kiszolgáló betöltődik-e. Próbálja meg elindítani a vállalati kiszolgáló felügyeleti helyét egy böngészőből az alábbi URL-címmel: `http://localhost:86/` . A vállalati kiszolgáló felügyeleti lapja az ábrán látható módon jelenik meg.
 
@@ -97,9 +97,9 @@ A telepítés után ellenőrizze, hogy az előfeltételként szükséges tovább
 
 ## <a name="install-enterprise-developer-on-the-developer-machine"></a>Enterprise Developer telepítése a fejlesztői gépen
 
-1.  Válassza ki a korábban létrehozott erőforráscsoportot (például **RGMicroFocusEntServer**), majd válassza ki a fejlesztői rendszerképet.
+1.  Válassza ki a korábban létrehozott erőforráscsoportot (például **RGMicroFocusEntServer** ), majd válassza ki a fejlesztői rendszerképet.
 
-2.  A virtuális gépre való bejelentkezéshez nyissa meg az **Áttekintés** szakaszt, és válassza a **Kapcsolódás**lehetőséget. Ez a bejelentkezés egy RDP-munkamenetet indít el. Jelentkezzen be a virtuális géphez létrehozott hitelesítő adatok használatával.
+2.  A virtuális gépre való bejelentkezéshez nyissa meg az **Áttekintés** szakaszt, és válassza a **Kapcsolódás** lehetőséget. Ez a bejelentkezés egy RDP-munkamenetet indít el. Jelentkezzen be a virtuális géphez létrehozott hitelesítő adatok használatával.
 
 3.  Az RDP-munkamenetből töltse be a következő két fájlt (drag and drop, ha szeretné):
 
@@ -115,9 +115,9 @@ A telepítés után ellenőrizze, hogy az előfeltételként szükséges tovább
 
     ![Sikeres telepítés üzenete](media/install-image-6.png)
 
-6.  Indítsa el a Micro Focus License Managert ugyanúgy, mint a vállalati kiszolgáló esetében. Válassza **Start** \> a **Micro Focus License Manager** \> - **licencek felügyelete**lehetőséget, majd kattintson a **telepítés** fülre.
+6.  Indítsa el a Micro Focus License Managert ugyanúgy, mint a vállalati kiszolgáló esetében. Válassza **Start** \> a **Micro Focus License Manager** \> - **licencek felügyelete** lehetőséget, majd kattintson a **telepítés** fülre.
 
-7.  Válassza ki a feltölteni kívánt licenc formátum típusát: egy licencfájl vagy egy 16 karakterből álló licenckód. Egy fájl esetében például a **licencfájl**területen keresse meg a `mflic` korábban feltöltött fájlt a virtuális gépre, és válassza a  **Licencek telepítése**lehetőséget.
+7.  Válassza ki a feltölteni kívánt licenc formátum típusát: egy licencfájl vagy egy 16 karakterből álló licenckód. Egy fájl esetében például a **licencfájl** területen keresse meg a `mflic` korábban feltöltött fájlt a virtuális gépre, és válassza a  **Licencek telepítése** lehetőséget.
 
     ![Micro Focus – licencek felügyelete párbeszédpanel](media/install-image-7.png)
 

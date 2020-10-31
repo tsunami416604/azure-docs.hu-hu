@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan integrálható Azure NetApp Files az Azure Kube
 services: container-service
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 78119d3d7ff83ca237c1e668785439d943dcfd14
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: bc65c3dfad4c27c1650054c6836fbbbf07a7dbf2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900406"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126253"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Azure NetApp Files integrálása az Azure Kubernetes szolgáltatással
 
@@ -29,7 +29,6 @@ A Azure NetApp Files használatakor a következő korlátozások érvényesek:
 
 * Azure NetApp Files csak [a kiválasztott Azure-régiókban][anf-regions]érhető el.
 * Azure NetApp Files használata előtt hozzáférést kell biztosítania a Azure NetApp Files szolgáltatáshoz. A hozzáférésre való jelentkezéshez használhatja a [Azure NetApp Files várólista-beküldési űrlapot][anf-waitlist]. A Azure NetApp Files szolgáltatás addig nem érhető el, amíg nem kapja meg a hivatalos visszaigazoló e-mailt a Azure NetApp Files csapattól.
-* A Azure NetApp Files szolgáltatást ugyanabban a virtuális hálózatban kell létrehozni, mint az AK-fürtöt.
 * Egy AK-fürt kezdeti üzembe helyezése után a Azure NetApp Files csak a statikus kiépítés támogatott.
 * Ha Azure NetApp Files használatával szeretne dinamikus kiépíteni, telepítse és konfigurálja a [NetApp Trident](https://netapp-trident.readthedocs.io/) 19,07-es vagy újabb verzióját.
 

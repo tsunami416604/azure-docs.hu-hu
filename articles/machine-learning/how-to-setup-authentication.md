@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 8eb042b214ba1e4aea1eda1c65996d55ddde216e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: a23f44e60bd68e51c26cc6a0bbf3e85e64914135
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741887"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125767"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning erőforrások és munkafolyamatok hitelesítésének beállítása
 
@@ -280,6 +280,62 @@ A változó `token_response` egy olyan szótár, amely tartalmazza a tokent és 
 ```
 
 `token_response["accessToken"]`Az hitelesítési jogkivonat beolvasására használatos. Tekintse meg a [REST API dokumentációját](https://github.com/microsoft/MLOps/tree/master/examples/AzureML-REST-API) , amely bemutatja, hogyan használhatja a tokent API-hívások létrehozásához.
+
+#### <a name="java"></a>Java
+
+A Java-ban kérje le a tulajdonosi jogkivonatot standard REST-hívás használatával:
+
+```java
+String tenantId = "your-tenant-id";
+String clientId = "your-client-id";
+String clientSecret = "your-client-secret";
+String resourceManagerUrl = "https://management.azure.com";
+
+HttpRequest tokenAuthenticationRequest = tokenAuthenticationRequest(tenantId, clientId, clientSecret, resourceManagerUrl);
+
+HttpClient client = HttpClient.newBuilder().build();
+Gson gson = new Gson();
+HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+if (response.statusCode == 200)
+{
+     body = gson.fromJson(body, AuthenticationBody.class);
+
+    // ... etc ... 
+}
+// ... etc ...
+
+static HttpRequest tokenAuthenticationRequest(String tenantId, String clientId, String clientSecret, String resourceManagerUrl){
+    String authUrl = String.format("https://login.microsoftonline.com/%s/oauth2/token", tenantId);
+    String clientIdParam = String.format("client_id=%s", clientId);
+    String resourceParam = String.format("resource=%s", resourceManagerUrl);
+    String clientSecretParam = String.format("client_secret=%s", clientSecret);
+
+    String bodyString = String.format("grant_type=client_credentials&%s&%s&%s", clientIdParam, resourceParam, clientSecretParam);
+
+    HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create(authUrl))
+            .POST(HttpRequest.BodyPublishers.ofString(bodyString))
+            .build();
+    return request;
+}
+
+class AuthenticationBody {
+    String access_token;
+    String token_type;
+    int expires_in;
+    String scope;
+    String refresh_token;
+    String id_token;
+    
+    AuthenticationBody() {}
+}
+```
+
+Az előző kódnak a-től eltérő kivételeket és állapotkódot kell kezelnie `200 OK` , de a következő mintát mutatja: 
+
+- Az ügyfél-azonosító és a titkos kulcs használatával ellenőrizze, hogy a programnak rendelkeznie kell-e hozzáféréssel
+- A bérlői azonosító használata a keresett hely megadásához `login.microsoftonline.com`
+- Azure Resource Manager használata az engedélyezési jogkivonat forrásaként
 
 ## <a name="web-service-authentication"></a>Webes szolgáltatás hitelesítése
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 1772a61f45d88e0b63346c41d557cfddf35ab4a7
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: bf253c4e3b273bc1500e5abbd4dfc045a7909ffd
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892621"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125682"
 ---
 # <a name="test-drive-technical-configuration"></a>Tesztverzió műszaki konfigurálása
 
@@ -50,7 +50,7 @@ Ezt a típusú tesztelési meghajtót nem a Microsoft üzemelteti. Használatáv
 
 - **Tesztelési meghajtó időtartama** (kötelező) – Itt adhatja meg, hogy a tesztvezetés hány óra alatt maradjon aktív állapotban. A tesztelési meghajtó automatikusan leáll az adott időszak lejárta után.
 
-- **Azure-erőforráscsoport neve** (kötelező) – Itt adhatja meg az [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md#resource-groups)nevét, ahol a logikai alkalmazás tesztelési meghajtója mentve lesz.
+- **Azure-erőforráscsoport neve** (kötelező) – Itt adhatja meg az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md#resource-groups)nevét, ahol a logikai alkalmazás tesztelési meghajtója mentve lesz.
 
 - **Azure Logic App-alkalmazás neve** (kötelező) – Itt adhatja meg annak a logikai alkalmazásnak a nevét, amely a tesztelési meghajtót hozzárendeli a felhasználóhoz. Ezt a logikai alkalmazást a fenti Azure-erőforrások csoportba kell menteni.
 
@@ -60,7 +60,7 @@ Ezt a típusú tesztelési meghajtót nem a Microsoft üzemelteti. Használatáv
 
 Azok a termékek, amelyek interaktív Power BI vizualizációt szeretnének bemutatni, használhatnak egy beágyazott hivatkozást, amellyel megoszthatják az egyéni kialakítású irányítópultokat a tesztelési meghajtóként, és nincs szükség további technikai konfigurációra. Itt fel kell töltenie a beágyazott Power BI URL-címét.
 
-Power BI alkalmazások beállításával kapcsolatos további információkért lásd: [Mi a Power bi alkalmazás?](https://docs.microsoft.com/power-bi/service-template-apps-overview)
+Power BI alkalmazások beállításával kapcsolatos további információkért lásd: [Mi a Power bi alkalmazás?](/power-bi/service-template-apps-overview)
 
 ## <a name="deployment-subscription-details"></a>Központi telepítési előfizetés részletei
 
