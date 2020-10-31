@@ -6,14 +6,15 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 04/09/2020
-ms.openlocfilehash: e3ec3bc0e0c6028eb5d7a90ee1920938d792941b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6f0f30d7437b6f8ecc1d915eb3d3195f2504fec
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85260746"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098246"
 ---
 # <a name="how-to-monitor-throughput-or-request-unit-usage-of-an-operation-in-azure-cosmos-db"></a>Az átviteli sebesség figyelése vagy a művelet kérése Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 A Azure Cosmos DB Azure Monitor metrikai nézetet biztosít a fiók figyeléséhez és az irányítópultok létrehozásához. A rendszer alapértelmezés szerint összegyűjti a Azure Cosmos DB metrikákat, így nem kell explicit módon engedélyeznie vagy konfigurálnia a szolgáltatást. A **kérelmek teljes** mérőszáma a különböző típusú műveletek esetében a kérési egységek használatának beolvasására szolgál. Később elemezheti, hogy mely műveletek használják a legtöbb átviteli sebességet. Alapértelmezés szerint az adatátviteli adatok összesítése egyperces időközönként történik. Az összesítési egységet azonban módosíthatja az idő részletességi beállításának módosításával.
 
@@ -36,11 +37,11 @@ Ha észreveszi, hogy bizonyos lekérdezések több kérési egységet vesznek ig
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. Válassza a **figyelő** lehetőséget a bal oldali navigációs sávon, és válassza a **metrikák**lehetőséget.
+1. Válassza a **figyelő** lehetőséget a bal oldali navigációs sávon, és válassza a **metrikák** lehetőséget.
 
    :::image type="content" source="./media/monitor-request-unit-usage/monitor-metrics-blade.png" alt-text="Metrikák ablaktábla Azure Monitor":::
 
-1. A **metrikák** ablaktáblán > **válasszon ki egy erőforrást** > válassza ki a szükséges **előfizetést**és **erőforráscsoportot**. Az **erőforrástípus**mezőben válassza a **Azure Cosmos db fiókok**lehetőséget, válasszon ki egy meglévő Azure Cosmos-fiókot, majd válassza az **alkalmaz**lehetőséget.
+1. A **metrikák** ablaktáblán > **válasszon ki egy erőforrást** > válassza ki a szükséges **előfizetést** és **erőforráscsoportot** . Az **erőforrástípus** mezőben válassza a **Azure Cosmos db fiókok** lehetőséget, válasszon ki egy meglévő Azure Cosmos-fiókot, majd válassza az **alkalmaz** lehetőséget.
 
    :::image type="content" source="./media/monitor-request-unit-usage/select-cosmos-db-account.png" alt-text="Metrikák ablaktábla Azure Monitor":::
 
@@ -50,7 +51,7 @@ Ha észreveszi, hogy bizonyos lekérdezések több kérési egységet vesznek ig
 
 ## <a name="filters-for-request-unit-usage"></a>A kérések egységének használatára vonatkozó szűrők
 
-A mérőszámokat szűrheti, és megtekintheti az adott **CollectionName**, **databasename**, **OperationType**, **régió**, **állapot**és **statuscode**által megjelenített diagramokat is. A **szűrő hozzáadása** és a **felosztási beállítások alkalmazása** lehetővé teszi a kérési egység használatának szűrését és a metrikák csoportosítását.
+A mérőszámokat szűrheti, és megtekintheti az adott **CollectionName** , **databasename** , **OperationType** , **régió** , **állapot** és **statuscode** által megjelenített diagramokat is. A **szűrő hozzáadása** és a **felosztási beállítások alkalmazása** lehetővé teszi a kérési egység használatának szűrését és a metrikák csoportosítását.
 
 Ha az egyes műveletek esetében az összes művelethez az összeg (Sum) vagy az átlag lehetőséget választja, válassza a **felosztás alkalmazása** elemet, és válassza a **művelet típusát** és a szűrő értékét a következő képen látható módon:
 
@@ -60,7 +61,7 @@ Ha meg szeretné tekinteni a kérési egység használatát gyűjtemény szerint
 
    :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-collection.png" alt-text="Metrikák ablaktábla Azure Monitor":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure-ban [diagnosztikai beállításokkal](cosmosdb-monitor-resource-logs.md) figyelheti Azure Cosmos db az adataikat.
 * [Azure Cosmos DB vezérlési sík műveleteinek naplózása](audit-control-plane-logs.md)

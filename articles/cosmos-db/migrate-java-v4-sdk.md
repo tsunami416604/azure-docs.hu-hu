@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 24e9087a175385f8e5c347a1d2df3b2785868506
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb2553346881bc2e8de631988bd11642b85aa847
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327854"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099640"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Az alkalmazás migrálása a Azure Cosmos DB Java SDK v4 használatára
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!IMPORTANT]  
 > Az SDK-val kapcsolatos további információkért tekintse meg a Azure Cosmos DB Java SDK v4 [kibocsátási megjegyzéseit](sql-api-sdk-java-v4.md), a [Maven-tárházat](https://mvnrepository.com/artifact/com.azure/azure-cosmos), a Azure Cosmos db Java SDK v4 [teljesítménnyel kapcsolatos TIPPEKET](performance-tips-java-sdk-v4-sql.md), valamint Azure Cosmos db Java SDK v4 [hibaelhárítási útmutatót](troubleshoot-java-sdk-v4-sql.md).
@@ -64,9 +65,9 @@ A következő API-szint módosul Azure Cosmos DB Java SDK 4. x. x verzióban az 
 
   * **Java SDK 4,0** : az összes osztály a szinkronizálási API-hoz tartozik, kivéve, ha az osztály nevét a következővel fűzi hozzá `Async` `Cosmos` .
 
-  * **Java SDK 3. x. x**: az összes osztály az aszinkron API-hoz tartozik, kivéve, ha az osztály nevét a következővel fűzi hozzá `Async` `Cosmos` .
+  * **Java SDK 3. x. x** : az összes osztály az aszinkron API-hoz tartozik, kivéve, ha az osztály nevét a következővel fűzi hozzá `Async` `Cosmos` .
 
-  * **Aszinkron Java SDK 2. x. x**: az osztályok neve hasonló a Java SDK 2. x. x verziójának szinkronizálásához, a név azonban *aszinkron*módon kezdődik.
+  * **Aszinkron Java SDK 2. x. x** : az osztályok neve hasonló a Java SDK 2. x. x verziójának szinkronizálásához, a név azonban *aszinkron* módon kezdődik.
 
 ### <a name="hierarchical-api-structure"></a>Hierarchikus API-struktúra
 

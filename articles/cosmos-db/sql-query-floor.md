@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 04dfa6a028cf7c44bf99c665b396d51d8a0f3cef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a1862355495986e9910c48cf3b8e1337e4c7fb0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78303188"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100235"
 ---
 # <a name="floor-azure-cosmos-db"></a>EMELET (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  A legnagyobb olyan egész számot adja vissza, amely kisebb vagy egyenlő, mint a megadott numerikus kifejezés.  
   
 ## <a name="syntax"></a>Szintaxis
@@ -50,7 +52,7 @@ SELECT FLOOR(123.45) AS fl1, FLOOR(-123.45) AS fl2, FLOOR(0.0) AS fl3
 
 Ez a rendszerfunkció kihasználja a [tartomány indexét](index-policy.md#includeexclude-strategy).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

@@ -3,12 +3,12 @@ title: Auth0 partneri témakörök Azure Event Grid
 description: Események küldése a Auth0-ből az Azure-szolgáltatásokba Azure Event Grid használatával.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 411d8f8eb53e4bc3fa8c8dda04bdcf12c74db768
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 340403111c094540ba7e66faf71ebf3cfe24fe7d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86103347"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101289"
 ---
 # <a name="auth0-partner-topics"></a>Auth0-partneri témakörök
 ![Auth0 embléma](./media/auth0-overview/auth0-logo.png)
@@ -41,9 +41,9 @@ A felhasználói műveletek megőrzése és naplózása létfontosságú a bizto
 ### <a name="secure-your-application"></a>Az alkalmazás biztonságossá tétele
 A biztonsági figyelés és az incidensek válaszának összevonása fontos az elosztott rendszerek védelme során. Ezért fontos, hogy az összes adathalmazt egy helyen tárolja, és figyelje a teljes veremet. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [A partneri témakörök áttekintése](partner-topics-overview.md)
+- [A partneri témakörök áttekintése](partner-events-overview.md)
 - [Az Auth0-partneri témakör használata](auth0-how-to.md)
 - [A Auth0 dokumentációja](https://auth0.com/docs/azure-tutorial)
 - [Legyen Event Grid partner](partner-onboarding-overview.md)

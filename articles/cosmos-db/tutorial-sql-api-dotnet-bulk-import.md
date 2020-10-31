@@ -8,14 +8,15 @@ ms.topic: tutorial
 ms.date: 09/21/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cfab8ba88c7da84efb3f6aed6f95bb100507f8da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e80a67890dcf76d115464ea62c0729aedd444667
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981932"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099226"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Az Azure Cosmos DB SQL API-fiókba való tömeges importálás a .NET SDK használatával
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre olyan .NET-konzolos alkalmazást, amely optimalizálja az adatok Azure Cosmos DBba való importálásához szükséges kiépített átviteli sebességet (RU/s). Ebben a cikkben az adatok egy mintául szolgáló adatforrásból kerülnek beolvasásra, majd egy Azure Cosmos-tárolóba importáljuk.
 Ez az oktatóanyag a Azure Cosmos DB .NET SDK 3.0-s [verzióját](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) használja, amely a .NET-keretrendszerre vagy a .net Core-ra is megcélozható.
@@ -32,7 +33,7 @@ Ez az oktatóanyag az alábbiakkal foglalkozik:
 
 A cikkben szereplő utasítások követése előtt győződjön meg arról, hogy rendelkezik a következő erőforrásokkal:
 
-* Aktív Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+* Aktív Azure-fiók. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -44,7 +45,7 @@ A cikkben szereplő utasítások követése előtt győződjön meg arról, hogy
 
 ## <a name="step-2-set-up-your-net-project"></a>2. lépés: a .NET-projekt beállítása
 
-Nyissa meg a Windows-parancssort vagy egy terminál-ablakot a helyi számítógépről. A következő szakaszban lévő összes parancsot a parancssorból vagy a terminálból fogja futtatni. Futtassa a következő DotNet új parancsot egy olyan új alkalmazás létrehozásához, amelynek a neve *tömeges importálás – bemutató*. A `--langVersion` paraméter beállítja a *LangVersion* tulajdonságot a létrehozott projektfájl számára.
+Nyissa meg a Windows-parancssort vagy egy terminál-ablakot a helyi számítógépről. A következő szakaszban lévő összes parancsot a parancssorból vagy a terminálból fogja futtatni. Futtassa a következő DotNet új parancsot egy olyan új alkalmazás létrehozásához, amelynek a neve *tömeges importálás – bemutató* . A `--langVersion` paraméter beállítja a *LangVersion* tulajdonságot a létrehozott projektfájl számára.
 
    ```bash
    dotnet new console –langVersion:8 -n bulk-import-demo
@@ -182,7 +183,7 @@ A minta futtatásához váltson az adattár könyvtárába, és használja a kö
    dotnet run
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következő lépéseket hajtotta végre:
 

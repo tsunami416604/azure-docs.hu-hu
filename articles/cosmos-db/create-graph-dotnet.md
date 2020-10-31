@@ -9,14 +9,15 @@ ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: jasonh
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 0b81bf951df6db0da7ed049c435a319f6ee33b8a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 816a16b34c16b2ccc95cbe57aec482b8d3e13fc6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479051"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099757"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Gyors útmutató: .NET-keretrendszer vagy Core-alkalmazás létrehozása a Azure Cosmos DB Gremlin API-fiók használatával
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Gremlin-konzol](create-graph-gremlin-console.md)
@@ -141,7 +142,7 @@ Az alkalmazás futtatásához nyomja le a CTRL + F5 billentyűkombinációt. Az 
 
 Ezután visszaléphet az Adatkezelőbe az Azure Portalon, ahol tallózhatja és lekérdezheti az új gráfadatokat.
 
-1. Az Adatkezelőben az új adatbázis a Gráfok ablaktáblán jelenik meg. Bontsa ki az adatbázis és a tároló csomópontjait, és kattintson a **Gráfra**.
+1. Az Adatkezelőben az új adatbázis a Gráfok ablaktáblán jelenik meg. Bontsa ki az adatbázis és a tároló csomópontjait, és kattintson a **Gráfra** .
 
 2. Kattintson a **Szűrő alkalmazása** gombra a gráf összes csúcspontjának az alapértelmezett lekérdezéssel történő megtekintéséhez. A mintaalkalmazás által létrehozott adatokat a Gráfok ablaktáblán találja.
 
@@ -166,7 +167,7 @@ Ezután visszaléphet az Adatkezelőbe az Azure Portalon, ahol tallózhatja és 
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 

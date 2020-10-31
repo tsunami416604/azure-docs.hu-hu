@@ -9,14 +9,15 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: a831921ec3b3fa755496c08c02665b1c0fe99557
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2dcd72f9231726d5a2f473dbbfa4d8fd81e64b97
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475957"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098978"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Gyors útmutató: konzolos alkalmazás létrehozása Javával és a MongoDB API-val Azure Cosmos DB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -41,7 +42,7 @@ Ebben a rövid útmutatóban egy Azure Cosmos DB hoz létre és kezel egy MongoD
 
 ## <a name="add-a-collection"></a>Gyűjtemény hozzáadása
 
-Nevezze el az új **adatbázis-** adatbázist, és az **új gyűjteményt**.
+Nevezze el az új **adatbázis-** adatbázist, és az **új gyűjteményt** .
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-mongodb-create-collection.md)] 
 
@@ -111,7 +112,7 @@ Ez a konzol alkalmazás a [MongoDB Java-illesztőprogramot](https://docs.mongodb
 
 Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba.
 
-1. A Azure Cosmos DB fiókjában válassza a **gyorskonfigurálás**lehetőséget, válassza a **Java**lehetőséget, majd másolja a kapcsolódási karakterláncot a vágólapra.
+1. A Azure Cosmos DB fiókjában válassza a **gyorskonfigurálás** lehetőséget, válassza a **Java** lehetőséget, majd másolja a kapcsolódási karakterláncot a vágólapra.
 
 2. Nyissa meg a *program. Java* fájlt, cserélje le az argumentumot a MongoClientURI konstruktorra a kapcsolódási karakterlánccal. Ezzel frissítette az alkalmazást az összes olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
     
@@ -127,7 +128,7 @@ Mostantól a [Robomongo](mongodb-robomongo.md)  /  [Studio 3T](mongodb-mongochef
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 

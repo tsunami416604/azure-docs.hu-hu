@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db61a3f9034908043695bc7db3a16551bf4659c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95c589289d77597be2550673944c8fa21902e0fb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86024077"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098467"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection – Biztonsági áttekintés
 
@@ -27,7 +27,7 @@ A "biztonsági áttekintés" széles körben két szakaszra oszlik:
 - A bal oldali trendek a szervezeten belüli kockázati idővonalat biztosítanak.
 - A csempék a jobb oldalon kiemelik a szervezeten belüli aktuális problémákat, és arra utalnak, hogyan lehet gyorsan végrehajtani a műveleteket.
 
-![Biztonsági áttekintés](./media/concept-identity-protection-security-overview/01.png)
+:::image type="content" source="./media/concept-identity-protection-security-overview/01.png" alt-text="Képernyőkép a Azure Portal biztonsági áttekintéséről. A sávdiagramok a kockázatok számát mutatják időbeli eloszlásban. A csempék összefoglalják a felhasználók és a bejelentkezések adatait." border="false":::
   
 ## <a name="trends"></a>Trendek
 
@@ -45,7 +45,7 @@ Ez a diagram a kiválasztott időszakban észlelt kockázatos bejelentkezések s
 
 A "magas kockázatú felhasználók" csempe azon felhasználók legújabb számát jeleníti meg, akik nagy valószínűséggel veszélyeztetik az identitást. Ennek a vizsgálat legfontosabb prioritásának kell lennie. A "magas kockázatú felhasználók" csempére kattintva a rendszer átirányítja a "kockázatos felhasználók" jelentés szűrt nézetére, amely csak a kockázati szinttel rendelkező felhasználókat jeleníti meg. A jelentés használatával további információkat tudhat meg, és elháríthatja ezeket a felhasználókat jelszó-visszaállítással.
 
-![Biztonsági áttekintés](./media/concept-identity-protection-security-overview/02.png)
+:::image type="content" source="./media/concept-identity-protection-security-overview/02.png" alt-text="Képernyőkép a Azure Portal biztonsági áttekintéséről. A sávdiagramok a kockázatok számát mutatják időbeli eloszlásban. A csempék összefoglalják a felhasználók és a bejelentkezések adatait." border="false":::
 
 ### <a name="medium-risk-users"></a>Közepes kockázatú felhasználók
 A "közepes kockázatú felhasználók" csempe azon felhasználók legújabb számát jeleníti meg, akik közepes valószínűséggel veszélyeztetik az identitást. A "közepes kockázatú felhasználók" csempére kattintva a rendszer átirányítja a "kockázatos felhasználók" jelentés szűrt nézetére, amely csak a közepes kockázati szintű felhasználókat jeleníti meg. A jelentés használatával tovább vizsgálhatja és javíthatja ezeket a felhasználókat.
@@ -62,7 +62,7 @@ Az "örökölt hitelesítés" csempe a szervezetében található kockázattal r
 
 Az identitások biztonságos pontszáma méri és összehasonlítja a biztonsági helyzeteket az iparági mintákkal. Ha a "személyazonosság biztonságos pontszám (előzetes verzió)" csempére kattint, a rendszer átirányítja a "személyazonosság biztonságos pontszáma" panelre, ahol részletesebben is tájékozódhat a biztonsági helyzet javításáról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi a kockázat](concept-identity-protection-risks.md)
 

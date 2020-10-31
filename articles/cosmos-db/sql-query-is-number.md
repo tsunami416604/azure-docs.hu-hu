@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c019424241bc07d5a5d2cc19a64685c476f94548
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11000eb9f8b875014b44f0bcad70031da5f9e6a1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78303817"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101374"
 ---
 # <a name="is_number-azure-cosmos-db"></a>IS_NUMBER (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa szám-e.  
   
 ## <a name="syntax"></a>Szintaxis
@@ -57,7 +59,7 @@ SELECT
 
 Ez a rendszerfunkció kihasználja a [tartomány indexét](index-policy.md#includeexclude-strategy).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Type Check functions Azure Cosmos DB](sql-query-type-checking-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

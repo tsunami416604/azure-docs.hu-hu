@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 8e9d11ed39d6e4dc7ad432659534e7dd14fcf1ec
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 92d15337f511f534c23ff97d274b344714812a5e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277990"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100252"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Adatok modellezése és particionálása az Azure Cosmos DB-ben való életből vett példa használatával
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ez a cikk számos olyan Azure Cosmos DB-fogalomra épül, mint például [az adatmodellezés](modeling-data.md), a [particionálás](partitioning-overview.md)és a [kiosztott átviteli sebesség](request-units.md) , hogy bemutassa, hogyan kezelhető a valós adattervezési gyakorlat.
 
@@ -22,10 +23,10 @@ Ha általában a kapcsolatok adatbázisaival dolgozik, valószínűleg az adatmo
 
 ## <a name="the-scenario"></a>Esetleírás
 
-Ebben a gyakorlatban egy olyan blogging platform tartományát fogjuk figyelembe venni, ahol a *felhasználók* létrehozhatnak *bejegyzéseket*. *A felhasználók emellett* hozzáadhatnak *megjegyzéseket* a bejegyzésekhez.
+Ebben a gyakorlatban egy olyan blogging platform tartományát fogjuk figyelembe venni, ahol a *felhasználók* létrehozhatnak *bejegyzéseket* . *A felhasználók emellett* hozzáadhatnak *megjegyzéseket* a bejegyzésekhez.
 
 > [!TIP]
-> Kiemeltek néhány szót *dőlt betűvel*; Ezek a szavak határozzák meg, hogy milyen típusú "dolgok" a modellnek.
+> Kiemeltek néhány szót *dőlt betűvel* ; Ezek a szavak határozzák meg, hogy milyen típusú "dolgok" a modellnek.
 
 További követelmények hozzáadása a specifikációhoz:
 
@@ -145,7 +146,7 @@ A felhasználók beolvasása a tároló megfelelő elemének beolvasásával tö
 
 ### <a name="c2-createedit-a-post"></a>C2 Bejegyzés létrehozása/szerkesztése
 
-A **[C1]**-hez hasonlóan csak írni kell a `posts` tárolóba.
+A **[C1]** -hez hasonlóan csak írni kell a `posts` tárolóba.
 
 :::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Egyetlen elem írása a felhasználók tárolójába" border="false":::
 
@@ -204,7 +205,7 @@ Bár a fő lekérdezés a tároló partíciós kulcsát szűri, a felhasználón
 
 ### <a name="c4-like-a-post"></a>C4 Mint egy post
 
-A **[C3]**-hoz hasonlóan a megfelelő elem is létrejön a `posts` tárolóban.
+A **[C3]** -hoz hasonlóan a megfelelő elem is létrejön a `posts` tárolóban.
 
 :::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Egyetlen elem írása a felhasználók tárolójába" border="false":::
 
@@ -291,7 +292,7 @@ A megjegyzéseket és a hasonló elemeket is módosítjuk, hogy hozzá lehessen 
 
 Azt szeretnénk elérni, hogy minden alkalommal, amikor hozzáadunk egy hozzászólást vagy hasonlót, a megfelelő bejegyzésben is megnöveli a `commentCount` vagy a `likeCount` -t. Mivel a `posts` tároló particionálva van `postId` , az új elem (Megjegyzés vagy hasonló) és a hozzá tartozó post Sit ugyanabban a logikai partícióban található. Ennek eredményeképpen a művelet végrehajtásához [tárolt eljárást](stored-procedures-triggers-udfs.md) használhatunk.
 
-Miután létrehoz egy megjegyzést (**[C3]**) ahelyett, hogy csak egy új elem hozzáadása a `posts` tárolóhoz, a következő tárolt eljárást hívjuk a tárolón:
+Miután létrehoz egy megjegyzést ( **[C3]** ) ahelyett, hogy csak egy új elem hozzáadása a `posts` tárolóhoz, a következő tárolt eljárást hívjuk a tárolón:
 
 ```javascript
 function createComment(postId, comment) {
@@ -405,7 +406,7 @@ Ugyanezt a helyzetet kell megegyeznie, amikor felsorolja az szereti.
 
 ## <a name="v3-making-sure-all-requests-are-scalable"></a>V3: az összes kérelem méretezhetőségének biztosítása
 
-Az általános teljesítménybeli tökéletesítéseken még két kérelem is található, amelyeket nem teljesen optimalizáltunk: **[Q3]** és **[K6]**. Ezek olyan lekérdezések, amelyek nem szűrik az általuk megcélzott tárolók partíciós kulcsára vonatkozó kérelmeket.
+Az általános teljesítménybeli tökéletesítéseken még két kérelem is található, amelyeket nem teljesen optimalizáltunk: **[Q3]** és **[K6]** . Ezek olyan lekérdezések, amelyek nem szűrik az általuk megcélzott tárolók partíciós kulcsára vonatkozó kérelmeket.
 
 ### <a name="q3-list-a-users-posts-in-short-form"></a>Q3 A felhasználó bejegyzéseinek rövid formában való listázása
 

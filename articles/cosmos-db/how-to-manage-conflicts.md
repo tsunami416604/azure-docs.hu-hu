@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 3edaf55c8acb4def4f074c0d8f96eb399d98b6ce
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7370642f5a325867c901d7ebd362e6dfa68e098f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491087"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101510"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Az ütközés-feloldási házirendek kezelése Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A többrégiós írások esetében, ha több ügyfél is ír ugyanarra az elemre, ütközések merülhetnek fel. Ütközés esetén az ütközést a különböző ütközés-feloldási házirendek használatával oldhatja fel. Ez a cikk az ütközés-feloldási szabályzatok kezelését ismerteti.
 
@@ -134,10 +135,10 @@ Ezek a minták bemutatják, hogy az ütközések feloldásához hogyan állítha
 
 Az egyéni ütközések feloldására szolgáló tárolt eljárásokat az alább látható függvény aláírása alapján kell megvalósítani. A függvény nevének nem kell megegyeznie a tárolt eljárás tárolóval való regisztrálása során használt névvel, de egyszerűsíti a névadást. Itt látható a tárolt eljáráshoz szükséges paraméterek leírása.
 
-- **incomingItem**: az ütközéseket generáló véglegesítő vagy frissített tétel. NULL értékű a törlési műveletekhez.
-- **existingItem**: a jelenleg véglegesített tétel. Ez az érték nem null értékű a frissítésben, és null értékű INSERT vagy DELETE esetén.
-- **isTombstone**: logikai érték, amely azt jelzi, hogy a incomingItem ütközik-e egy előzőleg törölt elemmel. Igaz értéke esetén a existingItem is null értékű.
-- **conflictingItems**: a tárolóban lévő összes elem véglegesített verziójának tömbje, amely ütközik a incomingItem azonosítóval vagy bármely más egyedi index-tulajdonsággal.
+- **incomingItem** : az ütközéseket generáló véglegesítő vagy frissített tétel. NULL értékű a törlési műveletekhez.
+- **existingItem** : a jelenleg véglegesített tétel. Ez az érték nem null értékű a frissítésben, és null értékű INSERT vagy DELETE esetén.
+- **isTombstone** : logikai érték, amely azt jelzi, hogy a incomingItem ütközik-e egy előzőleg törölt elemmel. Igaz értéke esetén a existingItem is null értékű.
+- **conflictingItems** : a tárolóban lévő összes elem véglegesített verziójának tömbje, amely ütközik a incomingItem azonosítóval vagy bármely más egyedi index-tulajdonsággal.
 
 > [!IMPORTANT]
 > Akárcsak a tárolt eljárásokhoz hasonlóan, egy egyéni ütközés-feloldási eljárás ugyanazzal a partíciós kulccsal fér hozzá az adatokhoz, és bármilyen beszúrási, frissítési vagy törlési műveletet végrehajthat az ütközések feloldásához.

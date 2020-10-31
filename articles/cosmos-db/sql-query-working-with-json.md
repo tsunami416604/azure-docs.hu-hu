@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/19/2020
 ms.author: tisande
-ms.openlocfilehash: 355f73d46215aa9e05f4ea6d91bb173c77509b63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cc79862bccee3253e41ce5f1c6bc8c149d9b3ae
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91270852"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100643"
 ---
 # <a name="working-with-json-in-azure-cosmos-db"></a>A JSON használata az Azure Cosmos DB-ben
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Az Azure Cosmos DB SQL (Core) API-ja JSON formátumban tárolja az elemeket. A típusrendszer és a kifejezések kizárólag JSON-típusokkal működnek. További információ: [JSON-specifikáció](https://www.json.org/).
 
@@ -291,7 +292,7 @@ Az eredmény a következő:
 
 Az aliasok nem használhatók olyan tulajdonság neveként, amely szóközt, speciális karaktert vagy fenntartott szót használ. Ha például egy érték kivetítését szeretné módosítani egy szóközzel, használhat egy [JSON-kifejezést](#json-expressions).
 
-Bemutatunk egy példát:
+Íme egy példa:
 
 ```sql
     SELECT

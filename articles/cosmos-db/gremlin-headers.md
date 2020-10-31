@@ -7,14 +7,16 @@ ms.topic: reference
 ms.date: 09/03/2019
 author: jasonwhowell
 ms.author: jasonh
-ms.openlocfilehash: 4b082c89684bc06346fa933aad6be97dc371bc3f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 00394e60ad1cf86bfd75a86a0b6630505c7d7356
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490577"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100388"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin-kiszolgáló válaszának fejlécei
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
+
 Ez a cikk azokat a fejléceket ismerteti, amelyeket a Cosmos DB Gremlin-kiszolgáló visszaküld a hívónak a kérelmek végrehajtásakor. Ezek a fejlécek segítenek a kérelmek teljesítményének hibaelhárításában, a Cosmos DB szolgáltatással natív módon integrálható alkalmazások létrehozásában és az ügyfélszolgálat egyszerűsítésében.
 
 Ne feledje, hogy ezen fejlécek függőségének figyelembevételével korlátozza az alkalmazás hordozhatóságát más Gremlin-megvalósításokra. Cserébe egyre szorosabb integráció Cosmos DB Gremlin. Ezek a fejlécek nem TinkerPop standardok.
@@ -36,7 +38,7 @@ Ne feledje, hogy ezen fejlécek függőségének figyelembevételével korlátoz
 
 A kiszolgáló által visszaadott leggyakoribb állapotkódok alább láthatók.
 
-| Állapot | Magyarázat |
+| status | Magyarázat |
 | --- | --- |
 | **401** | Hibaüzenet jelenik meg `"Unauthorized: Invalid credentials provided"` , ha a hitelesítési jelszó nem egyezik Cosmos db a fiók kulcsával. Navigáljon a Azure Portal Cosmos DB Gremlin-fiókjához, és győződjön meg arról, hogy a kulcs helyes.|
 | **404** | Egyidejű műveletek, amelyek egyazon Edge vagy csúcspont törlését és frissítését kísérli meg egyszerre. Az `"Owner resource does not exist"` (Tulajdonos-erőforrás nem létezik) hibaüzenet azt jelzi, hogy a kapcsolati paraméterekben `/dbs/<database name>/colls/<collection or graph name>` formátumban megadott adatbázis vagy gyűjtemény helytelen.|

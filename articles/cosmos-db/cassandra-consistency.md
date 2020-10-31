@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 155e1ed5b089c16887c845c94f36c9c6d9f0af6e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f640ad85fd34dd5a4803e7dd96f1c0283f0c859a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284103"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100428"
 ---
 # <a name="apache-cassandra-and-azure-cosmos-db-consistency-levels"></a>Apache Cassandra és Azure Cosmos DB konzisztencia-szintek
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 A Azure Cosmos DBtól eltérően az Apache Cassandra nem biztosít natív módon pontosan meghatározott konzisztencia-garanciákat. Az Apache Cassandra Ehelyett írási konzisztencia-szintet és olvasási konzisztencia-szintet biztosít a magas rendelkezésre állás, a konzisztencia és a késési kompromisszumok engedélyezéséhez. Azure Cosmos DB Cassandra API használatakor:
 
@@ -22,7 +23,7 @@ A Azure Cosmos DBtól eltérően az Apache Cassandra nem biztosít natív módon
 
 * Azure Cosmos DB dinamikusan leképezi a Cassandra-ügyfél illesztőprogramjában megadott olvasási konzisztencia-szintet az olvasási kérelemben dinamikusan konfigurált Azure Cosmos DB konzisztencia-szintek egyikére.
 
-## <a name="mapping-consistency-levels"></a>Konzisztencia-szintek megfeleltetése
+## <a name="mapping-consistency-levels"></a>Konzisztenciaszintek leképezése
 
 Az alábbi táblázat azt mutatja be, hogy a natív Cassandra konzisztencia-szintjei hogyan vannak leképezve a Azure Cosmos DB konzisztencia-szintjére Cassandra API használatakor:  
 

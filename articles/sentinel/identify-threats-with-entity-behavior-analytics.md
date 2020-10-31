@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 6597baa67bcd2e26f3b8aeaa98c1776b5fc47430
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad0486c9d2eb6c651b507f4b0a44f4a6fc2b018f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995509"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100660"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>A felhasználók és az entitások viselkedésének elemzésével (UEBA) kapcsolatos fejlett veszélyforrások azonosítása az Azure Sentinelben
 
@@ -62,11 +62,43 @@ Minden tevékenység a "vizsgálat prioritási pontszáma" kifejezéssel van ki�
 
 Tekintse meg, hogyan használja a viselkedés-elemzést [Microsoft Cloud app Security](https://techcommunity.microsoft.com/t5/microsoft-security-and/prioritize-user-investigations-in-cloud-app-security/ba-p/700136) a működésének példáját.
 
+## <a name="entities-in-azure-sentinel"></a>Entitások az Azure Sentinelben
 
+### <a name="entity-identifiers"></a>Entitás-azonosítók
 
-## <a name="entity-pages"></a>Entitás lapjai
+Ha riasztásokat küld az Azure Sentinelnek, azok olyan adatelemeket tartalmaznak, amelyeket az Azure Sentinel azonosít és osztályoz entitásként, például felhasználói fiókokat, gazdagépeket, IP-címeket és egyéb adatokat. Alkalmanként ez az azonosító kihívást jelenthet, ha a riasztás nem tartalmaz elegendő információt az entitásról.
 
-Ha a keresés, a riasztás vagy a vizsgálat során bármely entitást (jelenleg a felhasználókra és gazdagépekre korlátozódik) keres, kiválaszthatja az entitást, és az entitások **oldalára**is áthelyezheti az adott entitás hasznos információit tartalmazó adatlapot. Az ezen a lapon megjelenő információk típusai közé tartoznak az entitás alapvető tudnivalói, a jelen entitással kapcsolatos jelentős események ütemezése, valamint az entitás viselkedésére vonatkozó megállapítások.
+A felhasználói fiókok például több módon is azonosíthatók: az Azure AD-fiók numerikus azonosítójának (GUID) vagy az egyszerű felhasználóneve (UPN) értékének vagy a Felhasználónév és az NT-tartománynév kombinációjának használatával. A különböző adatforrások különböző módokon tudják azonosítani ugyanazt a felhasználót. Ezért, amikor csak lehetséges, az Azure Sentinel egyesíti ezeket az azonosítókat egyetlen entitásba, hogy megfelelően azonosítható legyen.
+
+Előfordulhat azonban, hogy az egyik erőforrás-szolgáltató olyan riasztást hoz létre, amelyben az entitások nem eléggé azonosíthatók – például a tartománynév nélküli Felhasználónév. Ebben az esetben a felhasználói entitás nem egyesíthető ugyanazzal a felhasználói fiókkal, amely külön entitásként azonosítható, és a két entitás külön marad az egységes helyett.
+
+Ennek kockázatának csökkentése érdekében győződjön meg arról, hogy az összes riasztási szolgáltató megfelelően azonosítja az entitásokat az általuk előállított riasztásokban. Emellett a felhasználói fiókok entitásait Azure Active Directory is szinkronizálhatja, így létrehozhat egy egyesítő könyvtárat, amely egyesítheti a felhasználói fiókok entitásait.
+
+Az Azure Sentinel jelenleg a következő típusú entitásokat azonosítja:
+
+- Felhasználói fiók (fiók)
+- Gazdagép
+- IP-cím (IP)
+- Kártevő szoftver
+- Fájl
+- Folyamat
+- Cloud Application (CloudApplication)
+- Tartománynév (DNS)
+- Azure-erőforrás
+- Fájl (FileHash)
+- Beállításkulcs
+- Beállításazonosító
+- Biztonsági csoport
+- URL-cím
+- IoT-eszköz
+- Mailbox
+- Levelezési fürt
+- Levélüzenet
+- E-mailek küldése
+
+### <a name="entity-pages"></a>Entitás lapjai
+
+Ha a keresés, a riasztás vagy a vizsgálat során bármely entitást (jelenleg a felhasználókra és gazdagépekre korlátozódik) keres, kiválaszthatja az entitást, és az entitások **oldalára** is áthelyezheti az adott entitás hasznos információit tartalmazó adatlapot. Az ezen a lapon megjelenő információk típusai közé tartoznak az entitás alapvető tudnivalói, a jelen entitással kapcsolatos jelentős események ütemezése, valamint az entitás viselkedésére vonatkozó megállapítások.
  
 Az entitások lapjai három részből állnak:
 - A bal oldali panel tartalmazza az entitás azonosítására szolgáló adatokat, amelyeket az adatforrásokból, például a Azure Active Directoryból, a Azure Monitorból, a Azure Security Centerból és a Microsoft Defenderből gyűjtöttek össze.
@@ -81,11 +113,11 @@ Az entitások lapjai három részből állnak:
 
 Az idősor az entitások oldalának az Azure Sentinelben való viselkedésének elemzéséhez való hozzájárulásának jelentős részét képezi. Egy olyan történetet mutat be az entitásokkal kapcsolatos eseményekről, amelyek segítenek megérteni az entitás tevékenységeit egy adott időszakon belül.
 
-Kiválaszthatja az **időtartományt** több előre definiált lehetőség közül (például az *elmúlt 24 órában*), vagy megadhatja bármely egyéni időkeretre. Emellett olyan szűrőket is beállíthat, amelyek korlátozzák az ütemtervben lévő információkat bizonyos típusú eseményekre vagy riasztásokra.
+Kiválaszthatja az **időtartományt** több előre definiált lehetőség közül (például az *elmúlt 24 órában* ), vagy megadhatja bármely egyéni időkeretre. Emellett olyan szűrőket is beállíthat, amelyek korlátozzák az ütemtervben lévő információkat bizonyos típusú eseményekre vagy riasztásokra.
 
 Az idősor a következő típusú elemeket tartalmazza:
 
-- Riasztások – minden olyan riasztás, amelyben az entitás **leképezett entitásként**van definiálva. Vegye figyelembe, hogy ha a szervezete [Egyéni riasztásokat](./tutorial-detect-threats-custom.md)hozott létre az Analytics-szabályok használatával, győződjön meg arról, hogy a szabályok entitás-megfeleltetése megfelelően lett végrehajtva.
+- Riasztások – minden olyan riasztás, amelyben az entitás **leképezett entitásként** van definiálva. Vegye figyelembe, hogy ha a szervezete [Egyéni riasztásokat](./tutorial-detect-threats-custom.md)hozott létre az Analytics-szabályok használatával, győződjön meg arról, hogy a szabályok entitás-megfeleltetése megfelelően lett végrehajtva.
 
 - Könyvjelzők – az oldalon megjelenő adott entitást tartalmazó könyvjelzők.
 
@@ -162,7 +194,7 @@ A felhasználói társak metaadatainak megjelenítéséhez használhatja az Azur
 
 Az engedélyek elemzése segít meghatározni, hogy egy támadó milyen hatással lehet egy szervezeti eszköz veszélyeztetése. Ez a hatás az objektum "Blast RADIUS" néven is ismert. A biztonsági elemzők ezeket az információkat a nyomozások és az incidensek kezelésének rangsorolására használhatják.
 
-Az Azure Sentinel meghatározza az adott felhasználó által az Azure-erőforrásokhoz biztosított közvetlen és tranzitív hozzáférési jogokat az Azure-előfizetések kiértékelésével, amelyet a felhasználó közvetlenül vagy csoportokon vagy egyszerű szolgáltatásokon keresztül érhet el. Ezt az információt, valamint a felhasználó Azure AD biztonsági csoportjának tagságának teljes listáját a **UserAccessAnalytics** táblában tárolja a rendszer. Az alábbi képernyőképen egy minta sor látható az Alex Johnson felhasználója számára a UserAccessAnalytics táblában. A **forrásoldali entitás** a felhasználói vagy egyszerű szolgáltatásnév, a **célként megadott entitás** pedig az az erőforrás, amelyhez a forrás entitás hozzáfér. A **hozzáférési szint** és a **hozzáférési típus** értékei a célként megadott entitás hozzáférés-vezérlési modelljétől függenek. Láthatja, hogy Alex közreműködői hozzáféréssel rendelkezik az Azure-előfizetés *contoso Hotels-bérlőhöz*. Az előfizetés hozzáférés-vezérlési modellje RBAC.   
+Az Azure Sentinel meghatározza az adott felhasználó által az Azure-erőforrásokhoz biztosított közvetlen és tranzitív hozzáférési jogokat az Azure-előfizetések kiértékelésével, amelyet a felhasználó közvetlenül vagy csoportokon vagy egyszerű szolgáltatásokon keresztül érhet el. Ezt az információt, valamint a felhasználó Azure AD biztonsági csoportjának tagságának teljes listáját a **UserAccessAnalytics** táblában tárolja a rendszer. Az alábbi képernyőképen egy minta sor látható az Alex Johnson felhasználója számára a UserAccessAnalytics táblában. A **forrásoldali entitás** a felhasználói vagy egyszerű szolgáltatásnév, a **célként megadott entitás** pedig az az erőforrás, amelyhez a forrás entitás hozzáfér. A **hozzáférési szint** és a **hozzáférési típus** értékei a célként megadott entitás hozzáférés-vezérlési modelljétől függenek. Láthatja, hogy Alex közreműködői hozzáféréssel rendelkezik az Azure-előfizetés *contoso Hotels-bérlőhöz* . Az előfizetés hozzáférés-vezérlési modellje RBAC.   
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="Entitás viselkedésének elemzési architektúrája":::
 

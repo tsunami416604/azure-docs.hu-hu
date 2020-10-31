@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 47ac6b4caf97b264df58732f8d031fc63091171e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fab63a0a0a34cd0417eb0a891133ac256ef3ac0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019266"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099164"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>Beépített notebook-parancsok és-szolgáltatások használata Azure Cosmos DB C# jegyzetfüzetekben (előzetes verzió)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A Azure Cosmos DB beépített Jupyter notebookok lehetővé teszik az adatok elemzését és megjelenítését a Azure Portal. Ez a cikk bemutatja, hogyan használhatók a beépített notebook-parancsok és-funkciók a gyakori műveletek végrehajtásához C#-jegyzetfüzetekben.
 

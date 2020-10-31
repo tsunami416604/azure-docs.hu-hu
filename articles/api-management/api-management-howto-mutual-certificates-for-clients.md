@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 19e0d741d959eba704f26e7e8f7b5d311aa77775
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e5522c162e08f0257bd6f20b058bf8bb858cff3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87904862"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099346"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API-k biztonságossá tétele ügyféltanúsítvány-alapú hitelesítéssel az API Managementben
 
@@ -93,9 +93,8 @@ Az alábbi példa bemutatja, hogyan ellenőrizhető az ügyféltanúsítvány uj
 
 > [!TIP]
 > A jelen [cikkben](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) ismertetett ügyféltanúsítvány-alapú holtpont-probléma többféleképpen is megnyilvánulhat, például a kérések lefagyása után az időtúllépés után a kérések állapotkódot eredményeznek `403 Forbidden` `context.Request.Certificate` `null` . Ez a probléma általában `POST` a `PUT` tartalom hossza körülbelül 60KB vagy nagyobb.
-> Ha meg szeretné akadályozni, hogy ez a probléma ne jelenjen meg, kapcsolja be az "ügyfél-tanúsítvány egyeztetése" beállítást az "egyéni tartományok" panelen az alábbi ábrán látható módon. Ez a funkció nem érhető el a felhasználási szinten.
+> Ha meg szeretné akadályozni, hogy ez a probléma ne jelenjen meg, kapcsolja be az "ügyfél-tanúsítvány egyeztetése" beállítást a kívánt állomásnevek számára az "egyéni tartományok" panelen, ahogy az a jelen dokumentum első képében is látható. Ez a funkció nem érhető el a felhasználási szinten.
 
-![Ügyféltanúsítvány egyeztetése](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

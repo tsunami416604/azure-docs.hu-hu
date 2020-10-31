@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 50e489fdf57398d486b07944782ecbb3fd1d6a43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f757f4517bb8c45708c9d25f39052f7f95aad2b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71350982"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101425"
 ---
 # <a name="index_of-azure-cosmos-db"></a>INDEX_OF (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  A második karakterlánc-kifejezés első előfordulásának kezdő pozícióját adja vissza az első megadott karakterlánc-kifejezésen belül, vagy-1 értéket, ha a sztring nem található.  
   
 ## <a name="syntax"></a>Szintaxis
@@ -51,7 +53,7 @@ SELECT INDEX_OF("abc", "ab") AS i1, INDEX_OF("abc", "b") AS i2, INDEX_OF("abc", 
 [{"i1": 0, "i2": 1, "i3": -1}]  
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

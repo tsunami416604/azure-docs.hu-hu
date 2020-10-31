@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 07/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 7df610889c45a629087ae18731b5df9f63a8981f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 638c57960b9607c65092e657666f7a0bae375ff9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281991"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099470"
 ---
 # <a name="create-a-database-and-graph-with-autoscale-for-azure-cosmos-db---gremlin-api"></a>Adatbázis és gráf létrehozása az Azure Cosmos DB-Gremlin API-val való autoskálázással
+[!INCLUDE[appliesto-gremlin-api](../../../includes/appliesto-gremlin-api.md)]
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -36,7 +37,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Jegyzetek |
+| Parancs | Megjegyzések |
 |---|---|
 |**Azure Cosmos DB**| |
 | [Új – AzCosmosDBAccount](/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Létrehoz egy Cosmos DB fiókot. |

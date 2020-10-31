@@ -7,16 +7,17 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: e12bae14ede90a3b93a69d963981f097818e65ab
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7dc81581846f8abdae81fa3552d9fa4645f32a05
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480224"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101306"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Az Azure Cosmos DB a JavaScript nyelvintegrált, tranzakciós végrehajtását nyújtja. Ha az SQL API-t Azure Cosmos DB használja, a JavaScript nyelven írhat **tárolt eljárásokat**, **eseményindítókat**és **felhasználó által definiált függvényeket (UDF)** . JavaScript nyelven írhatja meg az adatbázismotorban végrehajtott logikát. Eseményindítókat, tárolt eljárásokat és UDF hozhat létre és futtathat [Azure Portal](https://portal.azure.com/)használatával, a [JavaScript nyelv integrált lekérdezési API-ját Azure Cosmos DB](javascript-query-api.md) vagy az [Cosmos db SQL API ügyféloldali SDK](how-to-use-stored-procedures-triggers-udfs.md)-kat.
+Az Azure Cosmos DB a JavaScript nyelvintegrált, tranzakciós végrehajtását nyújtja. Ha az SQL API-t Azure Cosmos DB használja, a JavaScript nyelven írhat **tárolt eljárásokat** , **eseményindítókat** és **felhasználó által definiált függvényeket (UDF)** . JavaScript nyelven írhatja meg az adatbázismotorban végrehajtott logikát. Eseményindítókat, tárolt eljárásokat és UDF hozhat létre és futtathat [Azure Portal](https://portal.azure.com/)használatával, a [JavaScript nyelv integrált lekérdezési API-ját Azure Cosmos DB](javascript-query-api.md) vagy az [Cosmos db SQL API ügyféloldali SDK](how-to-use-stored-procedures-triggers-udfs.md)-kat.
 
 ## <a name="benefits-of-using-server-side-programming"></a>A kiszolgálóoldali programozás használatának előnyei
 
@@ -41,7 +42,7 @@ A tárolt eljárások, eseményindítók és felhasználó által definiált fü
 
 ## <a name="transactions"></a>Tranzakciók
 
-Egy tipikus adatbázisban lévő tranzakció meghatározható egy logikai egységként végrehajtott műveletek sorozatából. Minden tranzakció **savas Property garanciát**biztosít. A sav egy jól ismert betűszó, amely a következőt jelenti **: tomicity,** **C**onsistency, **I**solation és **D**urability. 
+Egy tipikus adatbázisban lévő tranzakció meghatározható egy logikai egységként végrehajtott műveletek sorozatából. Minden tranzakció **savas Property garanciát** biztosít. A sav egy jól ismert betűszó, amely a következőt jelenti **: tomicity,** **C** onsistency, **I** solation és **D** urability. 
 
 * Az atomenergia garantálja, hogy a tranzakción belül végrehajtott összes művelet egyetlen egységként lesz kezelve, és ezek mindegyike véglegesítve van, vagy egyik sem. 
 

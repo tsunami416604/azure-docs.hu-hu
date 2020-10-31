@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 8f56538470b8a52697e2d5c4154a6a6807a0cfde
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 549e1808a3b449f7d29b968cde76ef29391880b3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489013"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100616"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Az Azure Digital Twins ismert problémái
 
@@ -32,7 +32,7 @@ Ez a parancs újbóli futtatásával oldható fel `az login` Cloud shell és a t
 
 Azt is megteheti, hogy megnyithatja a Cloud Shell ablaktáblát a Azure Portalban, és elvégezheti a Cloud Shell munkáját:
 
-:::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="A &quot;Cloud Shell&quot; ikonnal jelölt Azure Portal megjelenítése, valamint a portál ablakának alján megjelenő Cloud Shell":::
+:::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="A &quot;Cloud Shell&quot; ikonnal jelölt Azure Portal megjelenítése, valamint a portál ablakának alján megjelenő Cloud Shell" lightbox="media/includes/portal-cloud-shell.png":::
 
 Végül egy másik megoldás, ha [telepíti az Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) -t a gépére, így helyileg is futtathatja az Azure CLI-parancsokat. A helyi CLI nem tapasztalja ezt a problémát.
 
@@ -66,9 +66,9 @@ A személyes [Microsoft-fiók (MSA)](https://account.microsoft.com/account)szolg
 
 ## <a name="issue-with-interactive-browser-authentication"></a>Probléma az interaktív böngésző-hitelesítéssel
 
-Az Azure-beli digitális Twins-alkalmazásokban az ** [Azure. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) Library** **1.2.0** használatával történő írás során problémák merülhetnek fel a [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) metódussal.
+Az Azure-beli digitális Twins-alkalmazásokban az **[Azure. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) Library** **1.2.0** használatával történő írás során problémák merülhetnek fel a [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) metódussal.
 
-Ez nem a könyvtár legújabb verziója. A legújabb verzió az **1.2.2**.
+Ez nem a könyvtár legújabb verziója. A legújabb verzió az **1.2.2** .
 
 Az érintett módszert a következő cikkek használják: 
 * [*Oktatóanyag: ügyfélalkalmazás kódolása*](tutorial-code.md)
@@ -79,7 +79,7 @@ A probléma az "Azure. Identity. AuthenticationFailedException" hibaüzenettel i
 
 ### <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
 
-A megoldáshoz frissítse alkalmazásait az `Azure.Identity` **1.2.2**-es verzió használatára. A könyvtár ezen verziójával a böngészőnek be kell töltenie és hitelesítenie kell a várt módon.
+A megoldáshoz frissítse alkalmazásait az `Azure.Identity` **1.2.2** -es verzió használatára. A könyvtár ezen verziójával a böngészőnek be kell töltenie és hitelesítenie kell a várt módon.
 
 ### <a name="possible-causes"></a>Lehetséges okok
 

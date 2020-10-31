@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/10/2020
 ms.author: jasonh
-ms.openlocfilehash: ca1ca258296f5ac8f1fb7120d2965ccacf74b5d5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: be93df10614e32fb14e5ca7497461f0f2d6fc93e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409391"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099708"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Rövid útmutató: Azure Cosmos DB gráfadatbázis létrehozása, lekérdezése és bejárása a Gremlin konzol használatával
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Gremlin-konzol](create-graph-gremlin-console.md)
@@ -52,11 +53,11 @@ Emellett a [Gremlin-konzolnak](https://tinkerpop.apache.org/downloads.html) tele
 ## <a name="connect-to-your-app-servicegraph"></a><a id="ConnectAppService"></a>Kapcsolódás az App Service-hez/gráfhoz
 
 1. A Gremlin konzol elindítása előtt hozza létre vagy módosítsa a remote-secure.yaml konfigurációs fájlt az `apache-tinkerpop-gremlin-console-3.2.5/conf` könyvtárban.
-2. Adja meg a *host* (gazdagép), *port*, *username* (felhasználónév), *password* (jelszó), *ConnectionPool* (kapcsolatkészlet), és *serializer* (szerializáló) konfigurációkat az alábbi táblázat szerint:
+2. Adja meg a *host* (gazdagép), *port* , *username* (felhasználónév), *password* (jelszó), *ConnectionPool* (kapcsolatkészlet), és *serializer* (szerializáló) konfigurációkat az alábbi táblázat szerint:
 
     Beállítás|Ajánlott érték|Leírás
     ---|---|---
-    gazdagépek|[*fiók neve*. **Gremlin**. Cosmos.Azure.com]|Tekintse meg a következő képernyőképet. Ez a **GREMLIN URI** -érték a Azure Portal áttekintés lapján, szögletes zárójelben, a következő záróval: 443/eltávolítva. Megjegyzés: Ügyeljen arra, hogy a Gremlin értéket használja, és **ne** a [*fióknév*. Documents.Azure.com] végződésű URI-t, amely valószínűleg a "gazdagép nem válaszolt időben" kivételt eredményezett, amikor később megpróbálta végrehajtani a Gremlin-lekérdezéseket. 
+    gazdagépek|[ *fiók neve* . **Gremlin** . Cosmos.Azure.com]|Tekintse meg a következő képernyőképet. Ez a **GREMLIN URI** -érték a Azure Portal áttekintés lapján, szögletes zárójelben, a következő záróval: 443/eltávolítva. Megjegyzés: Ügyeljen arra, hogy a Gremlin értéket használja, és **ne** a [ *fióknév* . Documents.Azure.com] végződésű URI-t, amely valószínűleg a "gazdagép nem válaszolt időben" kivételt eredményezett, amikor később megpróbálta végrehajtani a Gremlin-lekérdezéseket. 
     port|443|Állítsa 443 értékre.
     username|*Az Ön felhasználóneve*|A `/dbs/<db>/colls/<coll>` űrlap erőforrása, ahol a `<db>` az adatbázis neve és a `<coll>` a gyűjtemény neve.
     jelszó|*Az Ön elsődleges kulcsa*| Lásd az alábbiakban a második képernyőképet. Ez az Ön elsődleges kulcsa, amelyet az Azure Portal Kulcsok oldalának Elsődleges Kulcs mezőjéből kérdezhet le. Az érték másolásához használja a mező bal oldalán lévő Másolás gombot.
@@ -98,7 +99,7 @@ Emellett a [Gremlin-konzolnak](https://tinkerpop.apache.org/downloads.html) tele
    > [!NOTE]
    > Ha nem futtatja a `:remote console` parancsot, azonban minden konzolparancsot a távoli kiszolgálóra szeretne irányítani, a parancs elé helyezze a(z) `:>` előtagot, tehát például a következőhöz hasonlóképp futtassa a parancsot: `:> g.V().count()`. Ez az előtag a parancs része, és fontos a Gremlin-konzol Azure Cosmos DB-vel való használatánál. Az előtag kihagyása arra utasítja a konzolt, hogy helyileg, gyakran egy, a memóriában tárolt gráfon hajtsa végre a parancsot. A(z) `:>` előtag alkalmazása távoli parancs végrehajtására utasítja a konzolt ebben az esetben az Azure Cosmos DB-n (a localhost emulátoron vagy egy Azure-példányon).
 
-Remek! Most, hogy befejeztük a beállítást, futtassunk néhány konzolparancsot!
+Nagyszerű! Most, hogy befejeztük a beállítást, futtassunk néhány konzolparancsot!
 
 Próbáljon ki egy egyszerű count() parancsot. Írja be a következőket a konzolon, amikor a rendszer kéri:
 
@@ -108,7 +109,7 @@ g.V().count()
 
 ## <a name="create-vertices-and-edges"></a>Csúcsok és élek létrehozása
 
-Először hozzon létre öt darab, egy-egy személyt jelölő csúcsot *Thomas*, *Mary Kay*, *Robin*, *Ben*, és *Jack* néven.
+Először hozzon létre öt darab, egy-egy személyt jelölő csúcsot *Thomas* , *Mary Kay* , *Robin* , *Ben* , és *Jack* néven.
 
 Bemenet (Thomas):
 
@@ -214,7 +215,7 @@ Kimenet:
 
 ## <a name="update-a-vertex"></a>Csúcs frissítése
 
-Most frissítsük a *Thomas* csúcspontot új életkor (*45*) megadásával.
+Most frissítsük a *Thomas* csúcspontot új életkor ( *45* ) megadásával.
 
 Bemenet:
 ```java
@@ -315,11 +316,11 @@ Gratulálunk! Az Azure Cosmos DB: Gremlin API-oktatóanyag végére ért.
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A rövid útmutatóból megtudhatta, hogyan hozhat létre Azure Cosmos DB-fiókot, miként készíthet gráfokat az Adatkezelő használatával, és hogyan hozhat létre csúcsokat és éleket, valamint hogy hogyan járhat be gráfokat a Gremlin-konzollal. Az útmutató információira támaszkodva összetett lekérdezéseket hozhat létre és hatékony gráfbejárási logikákat helyezhet üzembe a Gremlin használatával. 
 

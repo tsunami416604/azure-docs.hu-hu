@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 07/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: c52a03209ca4f6b8c580df9e9576ebf350d7ab28
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f5ddca937d2928b957c8116f24c10ab8e242e737
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281964"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100337"
 ---
 # <a name="create-a-table-with-autoscale-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB-Table API-hoz készült autoscale-táblázat létrehozása
+[!INCLUDE[appliesto-table-api](../../../includes/appliesto-table-api.md)]
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -36,7 +37,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Jegyzetek |
+| Parancs | Megjegyzések |
 |---|---|
 |**Azure Cosmos DB**| |
 | [Új – AzCosmosDBAccount](/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Létrehoz egy Cosmos DB fiókot. |

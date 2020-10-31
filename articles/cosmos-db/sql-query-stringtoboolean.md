@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: ce11db91eff51e669f0917fbf34b1d560d0e9f07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb31aa3ba90c54873586cfba35e668cd31e32572
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78296541"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099263"
 ---
 # <a name="stringtoboolean-azure-cosmos-db"></a>StringToBoolean (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Egy logikai értékre fordított kifejezést ad vissza. Ha a kifejezés nem fordítható le, a nem definiált értéket adja vissza.  
   
 ## <a name="syntax"></a>Szintaxis
@@ -90,7 +92,7 @@ Itt látható az eredményhalmaz.
 
 Ez a rendszerfüggvény nem fogja használni az indexet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

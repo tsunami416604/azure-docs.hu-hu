@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 7caa29807f2779ee1f52cb22de2bf95fdb9cb37e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4d03e651006661a2fa82901d64f8fb6ac2236210
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367125"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098773"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Bevezetés a kiépített átviteli sebességbe Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB lehetővé teszi a kiépített átviteli sebesség beállítását az adatbázisokon és a tárolókban. A kiosztott átviteli sebességnek, a standard (manuális) vagy az automatikus méretezésnek két típusa van. Ez a cikk áttekintést nyújt a kiépített átviteli sebesség működéséről. 
 
@@ -79,11 +80,11 @@ Ha a számítási feladatok egy adatbázisban lévő összes gyűjtemény törl�
 A két modellt kombinálhatja. Az adatátviteli sebesség az adatbázison és a tárolón is engedélyezett. Az alábbi példa bemutatja, hogyan lehet a standard (manuális) kiosztott átviteli sebességet kiépíteni egy Azure Cosmos-adatbázison és egy tárolón:
 
 * Létrehozhat egy *Z* nevű Azure Cosmos-adatbázist a standard (manuális) kiépített átviteli sebességgel a *"K"* RUs használatával. 
-* Ezután hozzon létre öt tárolót a-adatbázison *belül a,* *B*, *C*, *D*és *E* névvel. A B tároló létrehozásakor ügyeljen arra, hogy engedélyezze a **tároló beállítás dedikált átviteli sebességét** , és explicit módon konfigurálja a *"P"* kiépített átviteli sebességét ezen a tárolón. A megosztott és a dedikált átviteli sebességet csak az adatbázis és a tároló létrehozásakor lehet konfigurálni. 
+* Ezután hozzon létre öt tárolót a-adatbázison *belül a,* *B* , *C* , *D* és *E* névvel. A B tároló létrehozásakor ügyeljen arra, hogy engedélyezze a **tároló beállítás dedikált átviteli sebességét** , és explicit módon konfigurálja a *"P"* kiépített átviteli sebességét ezen a tárolón. A megosztott és a dedikált átviteli sebességet csak az adatbázis és a tároló létrehozásakor lehet konfigurálni. 
 
    :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Egy vagy több tároló logikai partícióját tároló fizikai partíció":::
 
-* A *"K"* RUs-átviteli sebesség az *a*, *C*, *D*és *E*négy tárolóban van megosztva. Az *a*, a *C*, a *D*vagy az *E* által elérhető átviteli sebesség pontos mennyisége változó. Az egyes tárolók átviteli sebességéhez nem tartoznak SLA-k.
+* A *"K"* RUs-átviteli sebesség az *a* , *C* , *D* és *E* négy tárolóban van megosztva. Az *a* , a *C* , a *D* vagy az *E* által elérhető átviteli sebesség pontos mennyisége változó. Az egyes tárolók átviteli sebességéhez nem tartoznak SLA-k.
 * A *B* nevű tároló garantált, hogy minden alkalommal megkapja a *"P"* RUs átviteli sebességét. Ez a SLA-k által támogatott.
 
 > [!NOTE]
@@ -119,9 +120,9 @@ A tárolók vagy adatbázisok kiépített átviteli sebessége a Azure Portal va
 * A [Container. ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) a .net SDK-ban található.
 * [CosmosContainer. replaceThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput?view=azure-java-stable&preserve-view=true) a Java SDK-ban.
 
-Ha **csökkenti a kiépített átviteli sebességet**, a [minimálisra](#current-provisioned-throughput)teheti ezt meg.
+Ha **csökkenti a kiépített átviteli sebességet** , a [minimálisra](#current-provisioned-throughput)teheti ezt meg.
 
-Ha **növeli a kiépített átviteli sebességet**, az idő nagy részében a művelet azonnal megtörténik. Vannak azonban olyan esetek, amikor a művelet hosszabb időt vehet igénybe, mivel a rendszerfeladatok kiépítik a szükséges erőforrásokat. Ebben az esetben a kiépített átviteli sebesség módosítására tett kísérlet, miközben a művelet folyamatban van, egy HTTP 423-választ fog eredményezni, amely elmagyarázza, hogy egy másik skálázási művelet folyamatban van.
+Ha **növeli a kiépített átviteli sebességet** , az idő nagy részében a művelet azonnal megtörténik. Vannak azonban olyan esetek, amikor a művelet hosszabb időt vehet igénybe, mivel a rendszerfeladatok kiépítik a szükséges erőforrásokat. Ebben az esetben a kiépített átviteli sebesség módosítására tett kísérlet, miközben a művelet folyamatban van, egy HTTP 423-választ fog eredményezni, amely elmagyarázza, hogy egy másik skálázási művelet folyamatban van.
 
 > [!NOTE]
 > Ha olyan nagy mennyiségű betöltési munkaterhelést tervez, amely nagy növekedést igényel a kiépített átviteli sebességben, vegye figyelembe, hogy a skálázási művelet nem rendelkezik SLA-val, és az előző bekezdésben említettek szerint hosszú időt vehet igénybe, ha a növekedés nagy. Érdemes előre megtervezni a méretezést, és megkezdeni a skálázást a munkaterhelés elindítása előtt, és az alábbi módszerekkel végezheti el a folyamatot.

@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2b3433d969611fabe1b12a8dcabfe6e50066a8c1
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 4be2b8cdd987b6357df283f0791593c51417dfc7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491189"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101493"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Az Azure Cosmos DB konzisztenciaszintjeinek kezelése
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ez a cikk azt ismerteti, hogyan kezelhető a konzisztencia szintjei Azure Cosmos DBban. Megtudhatja, hogyan konfigurálhatja az alapértelmezett konzisztencia-szintet, felülbírálhatja az alapértelmezett konzisztenciát, manuálisan kezelheti a munkamenet-jogkivonatokat, és megismerheti a Probabilistically kötött elavulás (PBS) metrikáját.
 
@@ -26,7 +27,7 @@ Az [alapértelmezett konzisztencia-szint](consistency-levels.md) az ügyfelek á
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-Ha szeretné megtekinteni vagy módosítani az alapértelmezett konzisztencia-szintet, jelentkezzen be a Azure Portalba. Keresse meg az Azure Cosmos-fiókját, és nyissa meg az **alapértelmezett konzisztencia** -ablaktáblát. Válassza ki az új alapértelmezettként használni kívánt konzisztencia szintjét, majd kattintson a **Mentés**gombra. A Azure Portal a különböző konzisztencia-szintek vizualizációját is megjeleníti zenei megjegyzésekkel. 
+Ha szeretné megtekinteni vagy módosítani az alapértelmezett konzisztencia-szintet, jelentkezzen be a Azure Portalba. Keresse meg az Azure Cosmos-fiókját, és nyissa meg az **alapértelmezett konzisztencia** -ablaktáblát. Válassza ki az új alapértelmezettként használni kívánt konzisztencia szintjét, majd kattintson a **Mentés** gombra. A Azure Portal a különböző konzisztencia-szintek vizualizációját is megjeleníti zenei megjegyzésekkel. 
 
 :::image type="content" source="./media/how-to-manage-consistency/consistency-settings.png" alt-text="Konzisztencia menü a Azure Portal":::
 
@@ -279,7 +280,7 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>A valószínűség alapján korlátozott frissesség (PBS) metrika monitorozása
 
-Hogyan lehetséges a végleges konzisztencia? Az átlagos esetben a korábbi verziókra és időpontokra vonatkozó elévülési korlátokat is kínáljuk. A [**Probabilistically határos elavulás (PBS)**](https://pbs.cs.berkeley.edu/) mérőszáma megpróbálja számszerűsíteni az elavultság valószínűségét, és mérőszámként jeleníti meg azt. A PBS-metrika megtekintéséhez lépjen a Azure Portal Azure Cosmos-fiókjába. Nyissa meg a **metrikák** ablaktáblát, és válassza a **konzisztencia** lapot. Tekintse meg a számítási **feladatok alapján a nagy mértékben konzisztens olvasások valószínűségét (lásd: PBS)**.
+Hogyan lehetséges a végleges konzisztencia? Az átlagos esetben a korábbi verziókra és időpontokra vonatkozó elévülési korlátokat is kínáljuk. A [**Probabilistically határos elavulás (PBS)**](https://pbs.cs.berkeley.edu/) mérőszáma megpróbálja számszerűsíteni az elavultság valószínűségét, és mérőszámként jeleníti meg azt. A PBS-metrika megtekintéséhez lépjen a Azure Portal Azure Cosmos-fiókjába. Nyissa meg a **metrikák** ablaktáblát, és válassza a **konzisztencia** lapot. Tekintse meg a számítási **feladatok alapján a nagy mértékben konzisztens olvasások valószínűségét (lásd: PBS)** .
 
 :::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Konzisztencia menü a Azure Portal":::
 

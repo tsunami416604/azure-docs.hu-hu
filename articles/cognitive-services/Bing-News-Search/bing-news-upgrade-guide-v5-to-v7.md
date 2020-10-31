@@ -10,14 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 7999ed5296f2ff4e64b9edc0fb355f72b7d7a04e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 564af32b724c8b4883cd27d01813e246e5fa4901
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316647"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100201"
 ---
 # <a name="news-search-api-upgrade-guide"></a>News Search API-frissítési útmutató
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Ez a frissítési útmutató a Bing News Search API 5. és 7. verziójának változásait azonosítja. Ez az útmutató segítséget nyújt az alkalmazás azon részeinek azonosításához, amelyeket frissítenie kell a 7-es verzió használatához.
 
@@ -90,4 +95,4 @@ Blokkolva|InvalidRequest. Blocked
 
 - Hozzáadta a `sort` mezőt a [News](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) objektumhoz. A `sort` mező a cikkek rendezési sorrendjét jeleníti meg. A cikkek például a relevancia (alapértelmezett) vagy a dátum szerint vannak rendezve.
 
-- Hozzáadta a [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) objektumot, amely meghatározza a rendezési sorrendet. A `isSelected` mező jelzi, hogy a válasz a rendezési sorrendet használta-e. Ha az **értéke igaz**, a válasz a rendezési sorrendet használta. Ha a `isSelected` értéke **false (hamis**), a mezőben szereplő URL-cím használatával `url` más rendezési sorrendet is igényelhet.
+- Hozzáadta a [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) objektumot, amely meghatározza a rendezési sorrendet. A `isSelected` mező jelzi, hogy a válasz a rendezési sorrendet használta-e. Ha az **értéke igaz** , a válasz a rendezési sorrendet használta. Ha a `isSelected` értéke **false (hamis** ), a mezőben szereplő URL-cím használatával `url` más rendezési sorrendet is igényelhet.

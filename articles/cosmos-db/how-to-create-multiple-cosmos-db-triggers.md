@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5be1cfc097da4f1f10bb775c9b20043096b9fb8b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 14c18d0cae335f96cc2d95c79bcf39bf85ef6a2b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279635"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101544"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Több Azure Functions eseményindító létrehozása a Cosmos DBhoz
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ez a cikk azt ismerteti, hogyan konfigurálhat több Azure Functions-eseményindítót a Cosmos DB-hez úgy, hogy párhuzamosan működjenek és egymástól függetlenül reagáljanak a módosításokra.
 
@@ -28,11 +29,11 @@ Az eseményvezérelt kiszolgáló nélküli folyamatok a [Cosmos DB Azure functi
 
 ## <a name="optimizing-containers-for-multiple-triggers"></a>Tárolók optimalizálása több eseményindítóhoz
 
-Cosmos DB esetén a Azure Functions trigger *követelményeit* figyelembe véve egy második tárolóra van szükség az állapot tárolásához, más néven a *bérletek tárolója*. Ez azt jelenti, hogy minden egyes Azure-függvényhez külön címbérleti tárolóra van szükség?
+Cosmos DB esetén a Azure Functions trigger *követelményeit* figyelembe véve egy második tárolóra van szükség az állapot tárolásához, más néven a *bérletek tárolója* . Ez azt jelenti, hogy minden egyes Azure-függvényhez külön címbérleti tárolóra van szükség?
 
 Itt két lehetőség közül választhat:
 
-* Hozzon létre **egy-egy bérletet egy függvényben**: Ez a módszer további költségekre is fordítható, kivéve, ha [megosztott átviteli sebességű adatbázist](./set-throughput.md#set-throughput-on-a-database)használ. Ne feledje, hogy a tároló szintjének minimális átviteli [sebessége 400,](./request-units.md)a bérletek tároló esetében pedig csak a folyamat előrehaladásának és karbantartásának ellenőrzéséhez használatos.
+* Hozzon létre **egy-egy bérletet egy függvényben** : Ez a módszer további költségekre is fordítható, kivéve, ha [megosztott átviteli sebességű adatbázist](./set-throughput.md#set-throughput-on-a-database)használ. Ne feledje, hogy a tároló szintjének minimális átviteli [sebessége 400,](./request-units.md)a bérletek tároló esetében pedig csak a folyamat előrehaladásának és karbantartásának ellenőrzéséhez használatos.
 * **Egyetlen címbérleti tárolóval kell megosztania** az összes funkcióját: Ez a második lehetőség a tárolóban lévő kiépített kérések egységének jobb használatát teszi lehetővé, mivel több Azure functions megoszthatja és használhatja ugyanazt a kiosztott átviteli sebességet.
 
 Ennek a cikknek a célja a második lehetőség megvalósítása.

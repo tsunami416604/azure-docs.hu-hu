@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: be8a8f35ece946d1be907b2ca13a640bebbb4ee5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e53d0aa8d76d32127d5fde4eaf5dbe7a455dc3aa
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627023"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100779"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure-függvényalkalmazás importálása API-ként az Azure API Management használatával
 
@@ -48,31 +48,31 @@ Kövesse az alábbi lépéseket egy új API létrehozásához egy Azure-függvé
 
 1. Navigáljon a API Management szolgáltatáshoz a Azure Portal, és válassza az **API-kat** a menüből.
 
-2. Az **Új API hozzáadása** listából válassza ki a **Függvényalkalmazást**.
+2. Az **Új API hozzáadása** listából válassza ki a **Függvényalkalmazást** .
 
-    ![Hozzáadás függvényalkalmazásból](./media/import-function-app-as-api/add-01.png)
+    ![Képernyőkép, amely megjeleníti a függvényalkalmazás csempét.](./media/import-function-app-as-api/add-01.png)
 
 3. Kattintson a **Tallózás** gombra az importálni kívánt függvények kiválasztásához.
 
-    ![Hozzáadás függvényalkalmazásból](./media/import-function-app-as-api/add-02.png)
+    ![Képernyőkép, amely kiemeli a Tallózás gombot.](./media/import-function-app-as-api/add-02.png)
 
 4. Kattintson a **Függvényalkalmazás** szakaszra, hogy választhasson az elérhető függvényalkalmazások közül.
 
-    ![Hozzáadás függvényalkalmazásból](./media/import-function-app-as-api/add-03.png)
+    ![A függvényalkalmazás szakaszt kiemelő képernyőkép.](./media/import-function-app-as-api/add-03.png)
 
 5. Keresse meg azt a függvényalkalmazást, amelyből függvényeket szeretne importálni, kattintson rá, majd nyomja le a **Kiválasztás** gombot.
 
-    ![Hozzáadás függvényalkalmazásból](./media/import-function-app-as-api/add-04.png)
+    ![Képernyőfelvétel: az függvényalkalmazás, amelyből a függvényeket importálni kívánja, és a Select (kiválasztás) gombra kattinthat.](./media/import-function-app-as-api/add-04.png)
 
 6. Válassza ki a függvényeket, amelyeket importálni szeretne, majd kattintson a **Kiválasztás** gombra.
 
-    ![Hozzáadás függvényalkalmazásból](./media/import-function-app-as-api/add-05.png)
+    ![Képernyőfelvétel: az importálandó függvények és a kiválasztás gomb.](./media/import-function-app-as-api/add-05.png)
 
     > [!NOTE]
     > Kizárólag olyan függvényeket importálhat, amelyek rendelkeznek HTTP-triggerrel, és az engedélyszintjük *Névtelenre* vagy *Függvényre* van állítva.
 
 7. Váltson **teljes** nézetre, és rendelje hozzá a **terméket** az új API-hoz. Szükség esetén más mezőket is megadhat a létrehozás során, vagy később konfigurálhatja őket a **Beállítások** lapon. A beállításokat az [első API-oktatóanyag importálásával és közzétételével](import-and-publish.md#import-and-publish-a-backend-api) foglalkozó cikkben ismertetjük.
-8. Kattintson a **Létrehozás** elemre.
+8. Kattintson a **Létrehozás** gombra.
 
 ## <a name="append-azure-function-app-to-an-existing-api"></a><a name="append-azure-function-app-to-api"></a> Azure-függvényalkalmazás hozzáfűzése egy már létező API-hoz
 
@@ -82,29 +82,29 @@ Kövesse az alábbi lépéseket, hogy egy Azure-függvényalkalmazást hozzáfű
 
 2. Válassza ki az API-t, amelyet az Azure-függvényalkalmazásba szeretne importálni. Kattintson a **...** elemre, majd válassza ki az **Importálás** elemet a helyi menüből.
 
-    ![Hozzáfűzés függvényalkalmazásból](./media/import-function-app-as-api/append-01.png)
+    ![Képernyőkép, amely kiemeli az importálás menüpontot.](./media/import-function-app-as-api/append-01.png)
 
 3. Kattintson a **Függvényalkalmazás** csempére.
 
-    ![Hozzáfűzés függvényalkalmazásból](./media/import-function-app-as-api/append-02.png)
+    ![Képernyőkép a függvényalkalmazás csempe kiemeléséhez.](./media/import-function-app-as-api/append-02.png)
 
 4. Az előugró ablakban kattintson a **Tallózás** gombra.
 
-    ![Hozzáfűzés függvényalkalmazásból](./media/import-function-app-as-api/append-03.png)
+    ![A Tallózás gombot megjelenítő képernyőkép.](./media/import-function-app-as-api/append-03.png)
 
 5. Kattintson a **Függvényalkalmazás** szakaszra, hogy választhasson az elérhető függvényalkalmazások közül.
 
-    ![Hozzáadás függvényalkalmazásból](./media/import-function-app-as-api/add-03.png)
+    ![Képernyőkép, amely kiemeli a Function apps listáját.](./media/import-function-app-as-api/add-03.png)
 
 6. Keresse meg azt a függvényalkalmazást, amelyből függvényeket szeretne importálni, kattintson rá, majd nyomja le a **Kiválasztás** gombot.
 
-    ![Hozzáadás függvényalkalmazásból](./media/import-function-app-as-api/add-04.png)
+    ![Képernyőfelvétel: az a függvényalkalmazás, amelyből a függvényeket importálni kívánja.](./media/import-function-app-as-api/add-04.png)
 
 7. Válassza ki a függvényeket, amelyeket importálni szeretne, majd kattintson a **Kiválasztás** gombra.
 
-    ![Hozzáadás függvényalkalmazásból](./media/import-function-app-as-api/add-05.png)
+    ![Képernyőkép, amely kiemeli az importálni kívánt functnios.](./media/import-function-app-as-api/add-05.png)
 
-8. Kattintson az **Importálás**gombra.
+8. Kattintson az **Importálás** gombra.
 
     ![Hozzáfűzés függvényalkalmazásból](./media/import-function-app-as-api/append-04.png)
 
@@ -112,8 +112,8 @@ Kövesse az alábbi lépéseket, hogy egy Azure-függvényalkalmazást hozzáfű
 
 Az Azure-függvényalkalmazás importáláskor automatikusan létrehozza a következőket:
 
-* A függvényalkalmazáson belüli APIM-{az*Azure API Management szolgáltatási példányának neve*} nevű gazdagép kulcsa,
-* Megnevezett érték az Azure API Management példányban, amelynek neve {az*azure függvényalkalmazás példánynév*} – kulcs, amely a létrehozott gazdagép kulcsát tartalmazza.
+* A függvényalkalmazáson belüli APIM-{az *Azure API Management szolgáltatási példányának neve* } nevű gazdagép kulcsa,
+* Megnevezett érték az Azure API Management példányban, amelynek neve {az *azure függvényalkalmazás példánynév* } – kulcs, amely a létrehozott gazdagép kulcsát tartalmazza.
 
 A 2019. április 4. után létrehozott API-k esetében a gazdagép kulcsát a rendszer a API Management lévő HTTP-kérésekben továbbítja a fejlécben található függvényalkalmazás. A régebbi API-k [lekérdezési paraméterként](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)adják át a gazdagép kulcsát. Ez a viselkedés a `PATCH Backend` függvényalkalmazáshoz társított *háttér* -entitás [REST API hívásával](/rest/api/apimanagement/2019-12-01/backend/update#backendcredentialscontract) módosítható.
 
@@ -128,11 +128,11 @@ A 2019. április 4. után létrehozott API-k esetében a gazdagép kulcsát a re
 
 2. Válassza ki a **Függvényalkalmazás-beállítások** lehetőséget az áttekintésből.
 
-    ![Hozzáadás függvényalkalmazásból](./media/import-function-app-as-api/keys-02-a.png)
+    ![Képernyőkép, amely kiemeli a Function apps beállítások lehetőséget.](./media/import-function-app-as-api/keys-02-a.png)
 
 3. A kulcs a **Gazdagépkulcsok** szakaszban található.
 
-    ![Hozzáadás függvényalkalmazásból](./media/import-function-app-as-api/keys-02-b.png)
+    ![Képernyőkép, amely kiemeli a gazdagép kulcsai szakaszt.](./media/import-function-app-as-api/keys-02-b.png)
 
 ### <a name="access-the-named-value-in-azure-api-management"></a>Hozzáférés az Azure API Management névvel ellátott értékéhez
 
@@ -150,7 +150,7 @@ Az Azure Portalról közvetlenül meghívhat műveleteket. Az Azure Portalon ké
 
 3. Válasszon ki egy művelet.
 
-    Az oldalon megjelennek a lekérdezési paraméterek és a fejlécek mezői. Az egyik fejléc a **OCP-APIM-Subscription-Key**, amely az ehhez az API-hoz társított termék előfizetési kulcsához tartozik. Ha Ön hozta létre az API Management-példányt, akkor már eleve rendszergazdának számít, így a kulcsot automatikusan kitölti a rendszer. 
+    Az oldalon megjelennek a lekérdezési paraméterek és a fejlécek mezői. Az egyik fejléc a **OCP-APIM-Subscription-Key** , amely az ehhez az API-hoz társított termék előfizetési kulcsához tartozik. Ha Ön hozta létre az API Management-példányt, akkor már eleve rendszergazdának számít, így a kulcsot automatikusan kitölti a rendszer. 
 
 4. Válassza a **Küldés** lehetőséget.
 
@@ -158,7 +158,7 @@ Az Azure Portalról közvetlenül meghívhat műveleteket. Az Azure Portalon ké
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Közzétett API átalakítása és védelme](transform-api.md)

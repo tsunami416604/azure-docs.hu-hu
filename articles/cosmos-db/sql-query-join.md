@@ -6,16 +6,17 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: 38e80f1597a08b8db7cbfa852d1bcf38ac768b1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4c754455e2a686274eab8b1f77713b8983251a4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74871142"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100796"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Illesztések Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Egy rokon adatbázisban a táblázatok közötti illesztések a normalizált sémák megtervezéséhez használható logikaik. Ezzel szemben az SQL API a séma nélküli elemek denormalizált adatmodelljét használja, amely egy *Önillesztés*logikai megfelelője.
+Egy rokon adatbázisban a táblázatok közötti illesztések a normalizált sémák megtervezéséhez használható logikaik. Ezzel szemben az SQL API a séma nélküli elemek denormalizált adatmodelljét használja, amely egy *Önillesztés* logikai megfelelője.
 
 A belső illesztések az illesztésben részt vevő készletek teljes termékét eredményezik. Az N-Way illesztés eredménye egy N-Element rekordok, ahol a rekordban lévő minden érték társítva van az összekapcsolásban részt vevő alias-készlettel, és a többi záradékban található aliasra hivatkozva elérhető.
 
@@ -252,7 +253,7 @@ Az eredmény a következő:
     ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Bevezetés](sql-query-getting-started.md)
 - [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)

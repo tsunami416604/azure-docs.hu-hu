@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: dd1652781d7eae8beb400c52137a8f16891e2b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2f79e2ca751ce9c1016f32effeca532d6ffe7fb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87498837"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101238"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>A Azure Cosmos DB operátorai
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ez a cikk a Azure Cosmos DB által támogatott különböző operátorokat részletezi.
 
@@ -118,7 +119,7 @@ Használja a?? az operátor a részben strukturált vagy kevert típusú adattí
     FROM Families f
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Kulcsszavak](sql-query-keywords.md)

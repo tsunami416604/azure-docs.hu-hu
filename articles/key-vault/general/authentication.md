@@ -7,12 +7,12 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: d247e657e93afd0c43ecee1154c542398304d8dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ec831bada19aa8d3872440ba628ac06bc64f749
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89481375"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099419"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Hitelesítés az Azure Key Vaulttal
 
@@ -20,7 +20,7 @@ Azure Key Vault lehetővé teszi a titkok tárolását és a terjesztésük irá
 
 ## <a name="app-identity-and-security-principals"></a>Alkalmazás-identitás és rendszerbiztonsági tag
 
-A Key Vault-alapú hitelesítés az [Azure Active Directory (Azure ad)](/azure/active-directory/fundamentals/active-directory-whatis)szolgáltatással együtt működik, amely az adott **rendszerbiztonsági tag**identitásának hitelesítéséhez felelős.
+A Key Vault-alapú hitelesítés az [Azure Active Directory (Azure ad)](/azure/active-directory/fundamentals/active-directory-whatis)szolgáltatással együtt működik, amely az adott **rendszerbiztonsági tag** identitásának hitelesítéséhez felelős.
 
 A rendszerbiztonsági tag egy olyan objektum, amely az Azure-erőforrásokhoz hozzáférést kérő felhasználót, csoportot, szolgáltatást vagy alkalmazást jelöl. Az Azure egy egyedi **objektumazonosítót** rendel minden rendszerbiztonsági tag számára.
 
@@ -111,7 +111,7 @@ Az alábbi táblázat különböző cikkekre mutat, amelyek bemutatják, hogyan 
 |  --- | --- | --- |
 | [Python](/azure/key-vault/secrets/quick-create-python) | [Python](/azure/key-vault/keys/quick-create-python) | [Python](/azure/key-vault/certificates/quick-create-python) | 
 | [.NET (SDK v4)](/azure/key-vault/secrets/quick-create-net) | -- | -- |
-| [.NET (SDK v3)](/azure/key-vault/secrets/quick-create-net-v3) | -- | -- |
+| [.NET (SDK v3)](https://dotnet.microsoft.com/download/dotnet-core/3.0) | -- | -- |
 | [Java](/azure/key-vault/secrets/quick-create-java) | -- | -- |
 | [JavaScript](/azure/key-vault/secrets/quick-create-node) | -- | -- | 
 | | | |
@@ -120,7 +120,7 @@ Az alábbi táblázat különböző cikkekre mutat, amelyek bemutatják, hogyan 
 | [Azure PowerShell](/azure/key-vault/secrets/quick-create-powershell) | [Azure PowerShell](/azure/key-vault/keys/quick-create-powershell) | [Azure PowerShell](/azure/key-vault/certificates/quick-create-powershell) |
 | [ARM-sablon](/azure/key-vault/secrets/quick-create-net) | -- | -- |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Key Vault hozzáférési szabályzat hibaelhárítása](troubleshooting-access-issues.md)
 - [Key Vault REST API hibakódok](rest-error-codes.md)

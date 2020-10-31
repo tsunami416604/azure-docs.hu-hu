@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: 50884a45e60826f09fffcc9f86992563e473424d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: df7792c37b1db330264554cf6d9c179cf9f22611
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478048"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098705"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Gyorsítsa fel big data elemzést az Azure Cosmos DB Connector Apache Spark használatával
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A [Spark](https://spark.apache.org/) -feladatokat a Cosmos db Spark-összekötő használatával Azure Cosmos db tárolt adatokkal futtathatja. A Cosmos a Batch-és stream-feldolgozáshoz, valamint a kis késleltetésű hozzáféréshez szolgáló kiszolgáló rétegként használható.
 
@@ -31,7 +32,7 @@ Az összekötőt használhatja [Azure Databricks](https://azure.microsoft.com/se
 > Cosmos DB Cassandra API esetén használja a [Cassandra Spark-összekötőt](https://github.com/datastax/spark-cassandra-connector).
 >
 
-## <a name="quickstart"></a>Első lépések
+## <a name="quickstart"></a>Gyorsútmutató
 
 * Kövesse az Ismerkedés a [Java SDK-val](./create-sql-api-java.md) című témakör lépéseit Cosmos db fiók beállításához és adatok feltöltéséhez.
 * Azure Databricks munkaterület és fürt beállításához kövesse [Azure Databricks első](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal) lépések című szakasz lépéseit.
@@ -274,10 +275,10 @@ mvn clean package
 A [Cosmos db Spark GitHub-tárházban](https://github.com/Azure/azure-cosmosdb-spark) a következő minta-jegyzetfüzeteket és parancsfájlokat lehet kipróbálni.
 
 * **A Spark és a Cosmos db (Seattle)** [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb)HTML: a Spark és a Cosmos db összekapcsolása a  |  [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html)HDInsight Jupyter notebook szolgáltatással a Spark SQL, a GraphFrames és a repülési késések ml-folyamatok használatával történő bemutatásához.
-* **Twitter-forrás Apache Spark és Azure Cosmos db változási hírcsatorna**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.ipynb)  |  [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.html)
-* **Cosmos db gráfok lekérdezése Apache Spark használatával**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.ipynb)  |  [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.html)
+* **Twitter-forrás Apache Spark és Azure Cosmos db változási hírcsatorna** : [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.ipynb)  |  [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.html)
+* **Cosmos db gráfok lekérdezése Apache Spark használatával** : [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.ipynb)  |  [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.html)
 * **[Azure Databricks csatlakoztatása Azure Cosmos db](https://docs.databricks.com/spark/latest/data-sources/azure/cosmosdb-connector.html)** a használatával `azure-cosmosdb-spark` .  A csatolt itt az [időpontú repülési teljesítményű jegyzetfüzet](https://github.com/dennyglee/databricks/tree/master/notebooks/Users/denny%40databricks.com/azure-databricks)Azure Databricks verziója is.
-* **[Lambda architektúra Azure Cosmos db-és HDInsight (Apache Spark)](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/readme.md)**: a Cosmos db és a Spark használatával csökkentheti a Big Data folyamatok fenntartásának működési terhelését.
+* **[Lambda architektúra Azure Cosmos db-és HDInsight (Apache Spark)](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/readme.md)** : a Cosmos db és a Spark használatával csökkentheti a Big Data folyamatok fenntartásának működési terhelését.
 
 ## <a name="more-information"></a>További információ
 

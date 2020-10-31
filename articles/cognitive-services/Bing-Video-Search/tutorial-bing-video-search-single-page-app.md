@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 2bdd51218c098dcd778d9a72a98fe42b96357b4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b750554ec231cddd0403c89a33f2af4349ff188
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328717"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098995"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Oktatóanyag: Egyoldalas Video Search-alkalmazás
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 A Bing Video Search API kikeresi az interneten a keresési lekérdezésnek megfelelő videótalálatokat. Ebben az oktatóanyagban létrehozunk egy egyoldalas webalkalmazást, amely a Bing Search API-t használja a keresési eredmények megjelenítéséhez az oldalon. Az alkalmazás HTML-, CSS- és JavaScript-összetevőkből áll.
 
 <!-- Remove until it can be replaced with a sanitized version.
@@ -409,6 +414,6 @@ cors-proxy-server
 
 Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Bing Video Search API-referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference)

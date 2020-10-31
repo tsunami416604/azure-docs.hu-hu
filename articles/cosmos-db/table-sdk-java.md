@@ -9,14 +9,16 @@ ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-java
-ms.openlocfilehash: 40722053d28a0479e3f9ebaadd0fd04478a4f1aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a94064be54c1d957d6e7acb030ffae6a39634f55
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261889"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101187"
 ---
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Java-Azure Cosmos DB Table API: kibocsátási megjegyzések és erőforrások
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -41,7 +43,7 @@ ms.locfileid: "91261889"
 * Általánosan elérhető kiadás
 
 ## <a name="release-and-retirement-dates"></a>Kiadási és nyugdíjazási dátumok
-A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra.
+A Microsoft legalább **12 hónappal** előre biztosít értesítést az SDK-k kivonásáról az újabb vagy támogatott verzióra való zökkenőmentes váltás érdekében.
 
 Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra. 
 
@@ -53,5 +55,5 @@ Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adó
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Lásd még
-További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja. 
+A Cosmos DB-ről a [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás oldalán tekinthet meg további információt. 
 

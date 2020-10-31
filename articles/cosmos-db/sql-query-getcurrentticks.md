@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 08/14/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 2ca76d75edba6688dbe93f11a51a0ad67942677a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4841c374454dea9afdf0dbc4094311ded54cfbb6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88606948"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098518"
 ---
 # <a name="getcurrentticks-azure-cosmos-db"></a>GetCurrentTicks (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A 00:00:00 csütörtök és 1970 január 1. között eltelt 100-ns kullancsok számát adja vissza.
   
@@ -50,7 +51,7 @@ SELECT GetCurrentTicks() AS CurrentTimeInTicks
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Dátum és idő függvények Azure Cosmos DB](sql-query-date-time-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

@@ -1,158 +1,175 @@
 ---
-title: Automatizált integrációs munkafolyamat létrehozása
-description: Rövid útmutató – az első automatizált munkafolyamat létrehozása Azure Logic Apps használatával a rendszerintegrációs és a vállalati Application Integration (EAI) megoldásokhoz
+title: Rövid útmutató – az első Logic Apps munkafolyamat létrehozása – Azure Portal
+description: Hozza létre az első automatizált Logic Apps munkafolyamatát a Azure Portal a rövid útmutató segítségével. Ismerkedjen meg Logic Apps rendszerintegrációs és Enterprise Application Integration (EAI) megoldások alapjaival.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/23/2020
-ms.openlocfilehash: c40bec80d9f61cf46221cbfe7dde80f3a7b46f6f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/30/2020
+ms.openlocfilehash: 7ec4515d5f1d096cfb83f06c398da4c1254279f6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89658299"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099147"
 ---
-# <a name="quickstart-create-your-first-automated-integration-workflow-by-using-azure-logic-apps---azure-portal"></a>Rövid útmutató: az első automatikus integrációs munkafolyamat létrehozása Azure Logic Apps-Azure Portal használatával
+# <a name="quickstart-create-your-first-logic-apps-workflow---azure-portal"></a>Rövid útmutató: az első Logic Apps munkafolyamat létrehozása – Azure Portal
 
-Ez a rövid útmutató bemutatja az első munkafolyamat létrehozásával kapcsolatos alapvető általános fogalmakat [Azure Logic apps](logic-apps-overview.md)használatával, például egy üres logikai alkalmazás létrehozását, egy trigger és egy művelet hozzáadását, majd a logikai alkalmazás tesztelését. Ebben a rövid útmutatóban olyan logikai alkalmazást fog létrehozni, amely rendszeresen ellenőrzi a webhely RSS-hírcsatornáját az új elemekhez. Ha új elemeket talál, a logikai alkalmazás mindegyikről e-mailt küld. Az elkészült logikai alkalmazás nagyjából a következő munkafolyamathoz hasonlít:
+Ez a rövid útmutató ismerteti, hogyan hozhatja létre az első munkafolyamatát [Azure Logic apps](logic-apps-overview.md) a [Azure Portalon](https://portal.azure.com)keresztül. Ez a bevezető útmutató ismerteti a Logic Apps szolgáltatás alapfogalmait is, beleértve az új logikai alkalmazások létrehozását, az trigger és a művelet hozzáadását a logikai alkalmazáshoz, valamint a logikai alkalmazás tesztelését. Ebben a rövid útmutatóban egy példaként szolgáló logikai alkalmazást hozhat létre, amely rendszeresen ellenőrzi az RSS-hírcsatornát, és e-mailben értesítést küld az új elemekről. Az alábbi képernyőfelvételen a példa logikai alkalmazás magas szintű munkafolyamata látható:
 
-![Fogalmi művészet, amely a logikai alkalmazás munkafolyamatát mutatja be.](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
+![Képernyőkép a Logic Apps Designerről, amely bemutatja a minta logikai alkalmazást, ahol az trigger egy RSS-hírcsatorna, és a művelet elküld egy e-mailt.](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
 
-Ebben az esetben szüksége van egy Azure-előfizetésre, vagy [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), egy olyan szolgáltatásból származó e-mail-fiókra, amelyet a Azure Logic apps támogat, például Office 365 Outlook, Outlook.com vagy gmail. Más támogatott e-mail szolgáltatások esetén [itt tekintse át az összekötők listáját](/connectors/). Ebben a példában a logikai alkalmazás munkahelyi vagy iskolai fiókot használ. Ha más e-mail szolgáltatást használ, a teljes általános lépések ugyanazok, de a felhasználói felület némileg eltérő lehet.
+<a name="prerequisites"></a>
 
-> [!IMPORTANT]
-> Ha a Gmail-összekötőt szeretné használni, akkor csak a G-Suite üzleti fiókok használhatják ezt az összekötőt a Logic apps korlátozás nélkül. Ha rendelkezik Gmail-fiókkal, akkor ezt az összekötőt csak meghatározott Google által jóváhagyott szolgáltatásokkal használhatja, vagy [létrehozhat egy Google-ügyfélprogramot, amelyet a Gmail-összekötővel történő hitelesítéshez használhat](/connectors/gmail/#authentication-and-bring-your-own-application). További információkért lásd: [adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára a Azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
+Ha szeretné megismerni, hogyan hozhatja létre és kezelheti az első logikai alkalmazását más felületeken és alkalmazásokon keresztül, tekintse meg a következő Logic Apps rövid útmutatókat: 
+
+* [Logikai alkalmazások létrehozása és kezelése az Azure Command-Line Interface (Azure CLI) használatával](quickstart-logic-apps-azure-cli.md)
+* [Logikai alkalmazások létrehozása és kezelése a Visual Studio Code-ban](quickstart-create-logic-apps-visual-studio-code.md)
+* [Logikai alkalmazások létrehozása és kezelése a Visual Studióban](quickstart-create-logic-apps-with-visual-studio.md)
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* Azure-előfizetés. Ha még nem rendelkezik ilyennel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Egy Logic Apps által támogatott szolgáltatásból (például Office 365 Outlook vagy Outlook.com) származó e-mail-fiók. Más támogatott e-mail-szolgáltatók esetén [tekintse át az összekötők listáját](/connectors/).
+
+    > [!IMPORTANT]
+    > Ha a [Gmail-összekötőt](/connectors/gmail/)használja, vegye figyelembe, hogy csak a G Suite-fiókok használhatják ezt az összekötőt Logic apps korlátozás nélkül. Ha rendelkezik egy fogyasztói Gmail-fiókkal, akkor csak a Google által jóváhagyott szolgáltatásokkal használhatja ezt az összekötőt, kivéve, ha [létrehoz egy Google-ügyfélprogramot, amelyet a Gmail-összekötővel való hitelesítéshez használ](/connectors/gmail/#authentication-and-bring-your-own-application). További információkért lásd: [adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára a Azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
+
+<a name="create-logic-app"></a>
 
 ## <a name="create-your-logic-app"></a>A logikai alkalmazás létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja hitelesítő adataival.
 
-1. A Azure Portal keresőmezőbe írja be a kifejezést `logic apps` , majd válassza a **Logic apps**lehetőséget.
+1. A Azure Portal keresőmezőbe írja be a kifejezést `logic apps` , majd válassza a **Logic apps** lehetőséget.
 
-   ![Képernyőfelvétel: Azure Portal keresőmező "Logic apps" kifejezéssel, és "Logic Apps" a kiválasztott keresési eredményként.](./media/quickstart-create-first-logic-app-workflow/find-select-logic-apps.png)
+   ![Képernyőkép a Azure Portalről, amely a keresési kifejezés és a "Logic Apps" kifejezést jeleníti meg a kiválasztott keresési eredményként.](./media/quickstart-create-first-logic-app-workflow/find-select-logic-apps.png)
 
-1. A **Logic apps** lapon válassza a **Hozzáadás**lehetőséget.
+1. A **Logic apps** lapon válassza a **Hozzáadás** lehetőséget.
 
-   ![Képernyőfelvétel: a Logic apps-lista és a kijelölt gomb, "Hozzáadás".](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
+   ![Képernyőfelvétel: Logic Apps szolgáltatás lapja Azure Portal, a Logic apps-lista és a kiválasztott gomb, "Hozzáadás".](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
 
-1. A **logikai alkalmazás** ablaktáblán adja meg a logikai alkalmazás részleteit az alábbi ábrán látható módon.
-
-   ![Képernyőfelvétel: a logikai alkalmazás létrehozási panelje, amely az új logikai alkalmazás részleteit tartalmazza.](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
-
+1. A **logikai alkalmazás** ablaktáblán adja meg a logikai alkalmazás alapvető adatait és beállításait. Hozzon létre egy új [erőforráscsoportot](../azure-resource-manager/management/overview.md#terminology) a példában szereplő logikai alkalmazáshoz.
+    
    | Tulajdonság | Érték | Leírás |
    |----------|-------|-------------|
-   | **Név** | <*logikai alkalmazás neve*> | A logikai alkalmazás neve, amelynek egyedinek kell lennie a régiók között, és csak betűket, számokat, kötőjeleket ( `-` ), aláhúzást ( `_` ), zárójeleket ( `(` , `)` ) és pontokat ( `.` ) tartalmazhat. Ez a példa a "My-First-Logic-app" kifejezést használja. |
-   | **Előfizetés** | <*Azure-előfizetés – név*> | Az Azure-előfizetés neve |
-   | **Erőforráscsoport** | <*Azure-Erőforrás-csoport-név*> | Az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md)neve, amelynek egyedinek kell lennie a régiók között, és a kapcsolódó erőforrások rendszerezésére szolgál. Ez a példa a "My-First-LA-RG" kifejezést használja. |
-   | **Hely** | <*Azure-régió*> | A logikai alkalmazás adatainak tárolására szolgáló régió. Ez a példa a "West US"-t használja. |
-   | **Naplóelemzés** | Kikapcsolva | A diagnosztikai naplózáshoz maradjon a **Ki** beállításnál. |
+   | **Név** | <*logikai alkalmazás neve*> | A logikai alkalmazás neve, amelynek egyedinek kell lennie a régiók között. A név csak betűket, számokat, kötőjeleket ( `-` ), aláhúzásokat ( `_` ), zárójeleket ( `(` , `)` ) és pontokat ( `.` ) tartalmazhat. Ez a példa a "My-First-Logic-app" kifejezést használja. |
+   | **Előfizetés** | <*Azure-előfizetés – név*> | Az Azure-előfizetés neve. |
+   | **Erőforráscsoport** | <*Azure-Erőforrás-csoport-név*> | Azon [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md#terminology) neve, amelyben a logikai alkalmazást létrehozza. Az erőforráscsoport nevének egyedinek kell lennie a régiók között. Ez a példa a "My-First-LA-RG" kifejezést használja. |
+   | **Hely** | <*Azure-régió*> | Az Azure-régió, ahol a logikai alkalmazás adatait tárolni szeretné. Ez a példa a "West US"-t használja. |
+   | **Naplóelemzés** | Kikapcsolva | A diagnosztikai naplózás beállítása, amely alapértelmezés szerint **ki van kapcsolva** . Ebben a példában tartsa meg a **kikapcsolás** beállítást. |
    ||||
 
-1. Ha elkészült, válassza a **felülvizsgálat + létrehozás**lehetőséget. Erősítse meg a megadott adatokat, és válassza a **Létrehozás**lehetőséget.
+   ![Képernyőkép Logic Apps létrehozási oldalról, amely megjeleníti az új logikai alkalmazás részleteit tartalmazó ablaktáblát.](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
-1. Miután az Azure sikeresen üzembe helyezte az alkalmazást, válassza az **Ugrás az erőforráshoz**lehetőséget.
+1. Ha elkészült, válassza a **felülvizsgálat + létrehozás** lehetőséget. Erősítse meg a megadott adatokat, és válassza a **Létrehozás** lehetőséget.
 
-   ![Képernyőfelvétel: erőforrás-telepítési oldal és kijelölt gomb a "Ugrás az erőforráshoz" gombra.](./media/quickstart-create-first-logic-app-workflow/go-to-new-logic-app-resource.png)
+1. Miután az Azure sikeresen üzembe helyezte az alkalmazást, válassza az **Ugrás az erőforráshoz** lehetőséget. Vagy megkeresheti és kiválaszthatja a logikai alkalmazást úgy, hogy beírja a nevet a keresőmezőbe.
 
-   Vagy megkeresheti és kiválaszthatja a logikai alkalmazást úgy, hogy beírja a nevet a keresőmezőbe.
+   ![Képernyőkép az erőforrás-telepítésről lap kijelölt gombjának "Ugrás erőforrás" gombjára.](./media/quickstart-create-first-logic-app-workflow/go-to-new-logic-app-resource.png)
 
    Megnyílik a Logikaialkalmazás-tervező, és egy bemutató videót és a gyakran használt triggereket tartalmazó oldalt jelenít meg. A **Sablonok** szakaszban válassza az **Üres logikai alkalmazás** lehetőséget.
 
-   ![Képernyőfelvétel: Logic Apps Designer template Gallery és a kiválasztott sablon "üres logikai alkalmazás".](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
+   ![Képernyőkép a Logic Apps Designerről, amely megjeleníti a sablon-gyűjteményt és a kiválasztott sablont, "üres logikai alkalmazás".](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
 
-Ezután adjon hozzá egy [eseményindítót](../logic-apps/logic-apps-overview.md#logic-app-concepts), amely egy új RSS-hírcsatornaelem megjelenésekor aktiválódik. Mindegyik logikai alkalmazásnak egy eseményindítóval kell indulnia, amelyet egy adott esemény vagy adott feltételek teljesülése aktivál. A Azure Logic Apps motor minden alkalommal elindít egy logikai alkalmazás-példányt, amely elindítja és futtatja a munkafolyamatot.
+Ezután [adjon hozzá egy triggert a logikai alkalmazáshoz](#add-rss-trigger).
 
 <a name="add-rss-trigger"></a>
 
 ## <a name="add-the-rss-trigger"></a>Az RSS-trigger hozzáadása
 
-1. A **Logic app Designerben**a keresőmező alatt válassza az **összes**lehetőséget.
+Minden logikai alkalmazásnak egy [eseményindítóval](../logic-apps/logic-apps-overview.md#how-do-logic-apps-work)kell kezdődnie, amely egy adott esemény bekövetkezésekor következik be, vagy ha egy adott feltétel teljesül. Minden alkalommal, amikor az eseményindító új elemeket talál, a Logic Apps motor létrehoz egy logikai alkalmazás-példányt, amely elindítja és futtatja a munkafolyamatot. Ha az trigger nem talál új elemeket, az trigger nem tűz, és nem hoz létre példányt, vagy nem futtatja a munkafolyamatot.
 
-1. Az RSS-összekötő megtalálásához a keresőmezőbe írja be a következőt: `rss` . Az eseményindítók listából válassza ki az RSS-eseményindítót **egy hírcsatorna-elem közzétételekor**.
+Ebben a rövid útmutatóban a [logikai alkalmazás létrehozása](#create-your-logic-app)után olyan eseményindítót ad hozzá, amely egy RSS-hírcsatorna új elemeit ellenőrzi, és új elemek megnyitásakor következik be. A logikai alkalmazásokat különböző típusú eseményindítókkal is létrehozhatja, például az [automatikus jóváhagyási alapú munkafolyamatok létrehozásához](tutorial-process-mailing-list-subscriptions-workflow.md)használható oktatóanyagban.
 
-   ![Képernyőfelvétel: Logic Apps Designer "RSS" a keresőmezőbe és a kiválasztott trigger "a hírcsatorna-elem közzétételekor".](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
+1. A **Logic app Designerben** a keresőmező alatt válassza az **összes** lehetőséget.
 
-1. Adja meg az trigger adatait az ebben a lépésben leírtak szerint:
+1. Az RSS-összekötő megtalálásához a keresőmezőbe írja be a következőt: `rss` . Az **Eseményindítók** listából válassza ki az RSS-eseményindítót **egy hírcsatorna-elem közzétételekor** .
+
+   ![Képernyőfelvétel: Logic Apps Designer "RSS" a keresőmezőbe, valamint a kiválasztott RSS-trigger, "hírcsatorna-elem közzétételekor".](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
+
+1. Adja meg az aktiváláshoz tartozó RSS-hírcsatorna URL-címét. Ezután adja meg az trigger ütemtervét az intervallum és a gyakoriság beállításával.
+
+   | Tulajdonság | Érték | Leírás |
+   | -------- | ----- | ----------- |
+   | **Az RSS-hírcsatorna URL-címe** | <*RSS-hírcsatorna – URL*> | A figyelni kívánt RSS-hírcsatorna URL-címe. Ez a példa a Wall Street Journal RSS-hírcsatornáját használja a következő helyen: `https://feeds.a.dj.com/rss/RSSMarketsMain.xml` . Ebben a példában azonban bármilyen RSS-hírcsatornát használhat, amely nem igényel HTTP-hitelesítést. Válasszon egy gyakran közzétett RSS-hírcsatornát, hogy később is tesztelje a logikai alkalmazást. |
+   | **Intervallum** | 1 | Az RSS-hírcsatornák ellenőrzése közötti várakozási intervallumok száma. Ez a példa 1 percenkénti intervallumokat használ. |
+   | **Gyakoriság** | Minute | Az RSS-hírcsatornák közötti időszakban az egyes intervallumok időegysége. Ez a példa 1 percenkénti intervallumokat használ. |
+   ||||
 
    ![Képernyőfelvétel: Logic Apps Designer RSS-triggeri beállításokkal, beleértve az RSS URL-címet, a gyakoriságot és az intervallumot.](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-settings.png)
 
-   | Tulajdonság | Érték | Leírás |
-   |----------|-------|-------------|
-   | **Az RSS-hírcsatorna URL-címe** | <*RSS-hírcsatorna – URL*> | A figyelni kívánt RSS-hírcsatorna hivatkozása. Ez a példa a Wall Street Journal RSS-hírcsatornáját használja `https://feeds.a.dj.com/rss/RSSMarketsMain.xml` , de ha szeretné, használhatja a saját RSS-hírcsatorna URL-címét. |
-   | **Intervallum** | 1 | Az ellenőrzések között kivárt intervallumok száma |
-   | **Gyakoriság** | Minute | Az ellenőrzések közötti intervallumok időegysége |
-   ||||
-
-   Az intervallum és a gyakoriság együtt határozza meg a logikai alkalmazás eseményindítójának ütemezését. Ez a logikai alkalmazás percenként ellenőrzi a hírcsatornát.
-
-1. Ha most szeretné összecsukni a trigger részleteit, kattintson az trigger címsorára.
+1. Az trigger részleteinek összecsukása a címsoron belülre kattintva.
 
    ![Képernyőfelvétel: Logic Apps Designer összecsukott logikai alkalmazás alakzatával.](./media/quickstart-create-first-logic-app-workflow/collapse-trigger-shape.png)
 
-1. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
+1. Mentse a logikai alkalmazást a tervező eszköztár **Mentés** gombjára kattintva.
 
-A logikai alkalmazás most már működőképes, de mindössze annyit csinál, hogy új elemeket keres az RSS-hírcsatornában. Most adjunk hozzá egy műveletet, amely az eseményindítóra válaszol.
+A logikai alkalmazás most már él, azonban nem végez mást, mint az RSS-hírcsatornát. Ezután [adjon hozzá egy műveletet](#add-email-action) , amely meghatározza, hogy mi történik az eseményindító tüzeknél.
+
+<a name="add-email-action"></a>
 
 ## <a name="add-the-send-email-action"></a>Az "e-mail küldése" művelet hozzáadása
 
-Most adjon hozzá egy [műveletet](../logic-apps/logic-apps-overview.md#logic-app-concepts) , amely e-mailt küld, ha új elem jelenik meg az RSS-hírcsatornában.
+Miután [hozzáadott egy triggert a logikai alkalmazáshoz](#add-rss-trigger), hozzá kell adnia egy [műveletet](../logic-apps/logic-apps-overview.md#logic-app-concepts) a válasz meghatározásához, amikor a logikai alkalmazás ellenőrzi az RSS-hírcsatornát, és megjelenik egy új elem. A logikai alkalmazásokat sokkal összetettebb műveletekkel is létrehozhatja, mint például az [e-mailek feldolgozásához Logic apps, Azure functions és az Azure Storage](/tutorial-process-email-attachments-workflow.md)használatával.
 
-1. A **hírcsatorna-elem közzétételének időpontja** alatt válassza az **új lépés**lehetőséget.
+> [!NOTE]
+> Ez a példa az Office 365 Outlookot használja e-mail-szolgáltatásként. Ha más támogatott e-mail szolgáltatást használ a logikai alkalmazásban, a felhasználói felület eltérő lehet. A másik e-mail szolgáltatáshoz való kapcsolódás alapvető fogalmai azonban változatlanok maradnak.
 
-   ![Képernyőfelvétel: Logic Apps Designer "új lépés".](./media/quickstart-create-first-logic-app-workflow/add-new-step-under-trigger.png)
+1. A **hírcsatorna-elem közzétételének időpontja** alatt válassza az **új lépés** lehetőséget.
 
-1. A **művelet kiválasztása** és a keresőmező területen válassza az **összes**lehetőséget.
+   ![Képernyőkép a Logic Apps Designerről, amely egy, a kiválasztott gomb "új lépés" nevű munkafolyamatát mutatja be.](./media/quickstart-create-first-logic-app-workflow/add-new-step-under-trigger.png)
+
+1. A **művelet kiválasztása** és a keresőmező területen válassza az **összes** lehetőséget.
 
 1. A keresőmezőbe írja be a kifejezést, `send an email` hogy megtalálja a műveletet támogató összekötőket. Ha szűrni szeretné a műveletek listáját egy adott alkalmazásra vagy szolgáltatásra, először kiválaszthatja az alkalmazást vagy a szolgáltatást.
 
-   Ha például Microsoft munkahelyi vagy iskolai fiókot használ, és az Office 365 Outlookot szeretné használni, válassza az **office 365 Outlook**lehetőséget. Ha személyes Microsoft-fiók használ, a Outlook.com is kiválaszthatja. Ez a példa az Office 365 Outlookot folytatja:
+   Ha például Microsoft munkahelyi vagy iskolai fiókot használ, és az Office 365 Outlookot szeretné használni, válassza az **office 365 Outlook** lehetőséget. Ha személyes Microsoft-fiók használ, a Outlook.com is kiválaszthatja. Ez a példa az Office 365 Outlookot folytatja:
 
-   ![Képernyőfelvétel: Logic Apps Designer és a kiválasztott Office 365 Outlook Connector.](./media/quickstart-create-first-logic-app-workflow/select-connector.png)
+   ![Képernyőkép a Logic Apps Designerről, amely a kiválasztott e-mail-összekötő, az "Office 365 Outlook" művelet lépését jeleníti meg.](./media/quickstart-create-first-logic-app-workflow/select-connector.png)
 
    Így könnyebben megtalálhatja és kiválaszthatja a használni kívánt műveletet, például `send an email` :
 
-   ![Képernyőfelvétel: Logic Apps Designer és lista szűrt műveletekkel.](./media/quickstart-create-first-logic-app-workflow/filtered-actions-list.png)
+   ![Képernyőkép a Logic Apps Designerről, amely az e-mail összekötő "Office 365 Outlook" nevű szűrt műveleteinek listáját jeleníti meg.](./media/quickstart-create-first-logic-app-workflow/filtered-actions-list.png)
 
-1. Ha a kiválasztott e-mail-összekötő kéri az identitás hitelesítését, fejezze be ezt a lépést, és hozzon létre egy kapcsolatot a logikai alkalmazás és az e-mail-szolgáltatás között.
+1. Ha a kiválasztott e-mail-összekötő felszólítja az identitás hitelesítésére, végezze el ezt a lépést most. A példa működéséhez létre kell hoznia egy kapcsolatot a logikai alkalmazás és az e-mail-szolgáltatás között. 
 
-   > [!NOTE]
-   > Ebben a konkrét példában manuálisan hitelesíti a személyazonosságát. A hitelesítést igénylő összekötők azonban különböznek az általuk támogatott hitelesítési típustól. Emellett beállíthatja, hogy miként szeretné kezelni a hitelesítést. Ha például Azure Resource Manager-sablonokat használ a központi telepítéshez, parametrizálja és javíthatja a biztonságot olyan bemeneteken, amelyeket gyakran vagy egyszerűen módosítani szeretne, például a kapcsolódási adatokat. További információt az alábbi témakörökben talál:
-   >
+    > [!NOTE]
+    > Ez a példa az Office 365 Outlook Connector manuális hitelesítését mutatja be. Más összekötők azonban különböző hitelesítési típusokat is támogatnak.
+    > A logikai alkalmazások hitelesítését a használati esettől függően többféleképpen is kezelheti. Ha például az Azure Resource Manager-sablonok használata az üzembe helyezéshez lehetőséget használja, a parametrizálja a gyakran változó, például a kapcsolódási adatok biztonságát is növelheti. További információt az alábbi témakörökben talál:
    > * [Az üzembe helyezéshez használt sablon paraméterei](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)
    > * [OAuth-kapcsolatok engedélyezése](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)
    > * [Hozzáférés hitelesítése felügyelt identitásokkal](../logic-apps/create-managed-service-identity.md)
    > * [Kapcsolatok hitelesítése a Logic apps üzembe helyezéséhez](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections)
 
-1. Az **E-mail küldése** műveletben adja meg az e-mailben szerepeltetni kívánt adatokat.
+1. Az **E-mail küldése** műveletben adja meg az e-mail-értesítésbe felvenni kívánt adatokat.
 
-   1. A **Címzett** mezőben adja meg a címzett e-mail-címét. Tesztelési célból használhatja az e-mail-címét.
+   1. A **Címzett** mezőben adja meg a címzett e-mail-címét. Ebben a példában használja az e-mail-címét.
 
-      Egyelőre hagyja figyelmen kívül a **Dinamikus tartalom hozzáadása** megjelenő listáját. Ha rákattint néhány szerkesztési mezőre, ez a lista jelenik meg, és megjeleníti az előző lépésből származó összes elérhető kimenetet, amelyet bemenetként használhat az aktuális művelethez.
+        > [!NOTE]
+        > A **dinamikus tartalom hozzáadása** lista akkor jelenik meg, ha a **to** (a to box) elemre kattint, és a Logic apps Designer bizonyos egyéb beviteli mezői is szerepelnek benne. Ez a példa egy későbbi lépésben dinamikus tartalmat használ. A **dinamikus tartalom hozzáadása** lista megjeleníti az előző lépésben elérhető összes kimenetet, amelyet bemenetként használhat az aktuális művelethez.
 
-   1. A **Tárgy** mezőbe írja be ezt a szöveget egy záró üres szóközzel: `New RSS item: `
+   1. A **Tárgy** mezőbe írja be az e-mail-értesítés tárgyát. Ebben a példában adja meg a következő szöveget egy záró üres szóközzel: `New RSS item: `
 
-      ![Képernyőfelvétel: Logic Apps Designer és "e-mail küldése" művelet és kurzor a "tárgy" tulajdonságban.](./media/quickstart-create-first-logic-app-workflow/send-email-subject.png)
+      ![Képernyőkép a Logic Apps Designerről, amely az "e-mailek küldése" műveletet és kurzort jeleníti meg a "tárgy" tulajdonságon belül.](./media/quickstart-create-first-logic-app-workflow/send-email-subject.png)
 
-   1. A **dinamikus tartalom hozzáadása** listáról válassza ki a **hírcsatorna címe**elemet, amely az triggerből származó kimenet, "a hírcsatorna-elem közzétételekor", amely lehetővé teszi, hogy az RSS-elem címe elérhető legyen a használatra.
+   1. A **dinamikus tartalom hozzáadása** listáról válassza ki a **hírcsatorna címe** elemet, amely az triggerből kimenetként jelenik meg a **hírcsatorna közzétételekor** . Az e-mail-értesítés ezt a kimenetet használja az RSS-elemek címének lekéréséhez.
 
-      ![Képernyőfelvétel: Logic Apps Designer az "e-mail küldése" művelettel és a kurzort a "tárgy" tulajdonságban egy nyílt dinamikus tartalmú listával és a kiválasztott kimenettel, "hírcsatorna címével".](./media/quickstart-create-first-logic-app-workflow/send-email-subject-dynamic-content.png)
+      ![Képernyőkép a Logic Apps Designerről, amely az "e-mail küldése" műveletet és a kurzort a "tulajdonos" tulajdonságban, egy nyílt dinamikus tartalmú listával és a kiválasztott kimenettel, a "hírcsatorna címével" együtt mutatja be.](./media/quickstart-create-first-logic-app-workflow/send-email-subject-dynamic-content.png)
 
       > [!TIP]
-      > Ha a dinamikus tartalmak listájában nem jelenik meg kimenet a "hírcsatorna-elem közzétételekor" triggernél, a művelet fejléce mellett válassza a **továbbiak**lehetőséget.
+      > Ha a dinamikus tartalom listában nem jelenik meg kimenet a **hírcsatorna-elem közzétételének** időpontjában, akkor a művelet fejléce mellett válassza a **továbbiak** lehetőséget.
       > 
-      > ![Képernyőfelvétel: Logic Apps Designer megnyitása a dinamikus tartalmak listájáról, és a "továbbiak" lehetőség van kiválasztva az triggerhez.](./media/quickstart-create-first-logic-app-workflow/dynamic-content-list-see-more-actions.png)
+      > ![Képernyőkép a Logic Apps Designerről, amely a megnyitott dinamikus tartalmak listáját és a "továbbiak" elemet jeleníti meg az triggerhez.](./media/quickstart-create-first-logic-app-workflow/dynamic-content-list-see-more-actions.png)
 
       Amikor végzett, az e-mail tárgya ehhez a példához hasonlóan néz ki:
 
-      ![Képernyőfelvétel: Logic Apps Designer az "e-mail küldése" művelettel, valamint egy példaként szolgáló e-mail-cím, amely tartalmazza a "hírcsatorna címe" tulajdonságot.](./media/quickstart-create-first-logic-app-workflow/send-email-feed-title.png)
+      ![Képernyőkép a Logic Apps Designerről, amely az "e-mail küldése" műveletet és egy példaként szolgáló e-mailt tartalmaz a "hírcsatorna címe" tulajdonsággal.](./media/quickstart-create-first-logic-app-workflow/send-email-feed-title.png)
 
-      Ha egy „For each” hurok jelenik meg a tervezőn, akkor tömböz tartozó tokent választott ki, például a **categories-item** tokent. Az ilyen tokentípusoknál a tervező automatikusan hozzáadja ezt a hurkot a tokenre hivatkozó művelet köré. Így a logikai alkalmazás a tömb mindegyik elemén végrehajtja ugyanazt a műveletet. A hurok eltávolításához válassza a hurok **címsorán lévő három** pontot (**..**.), majd válassza a **Törlés**lehetőséget.
+      Ha egy "for each" ciklus megjelenik a tervezőben, akkor egy tömbhöz tartozó jogkivonatot választott ki. például a **Categories-Item** token. Az ilyen tokentípusoknál a tervező automatikusan hozzáadja ezt a hurkot a tokenre hivatkozó művelet köré. Így a logikai alkalmazás a tömb mindegyik elemén végrehajtja ugyanazt a műveletet. A hurok eltávolításához válassza a hurok **címsorán lévő három** pontot ( **..** .), majd válassza a **Törlés** lehetőséget.
 
-   1. A **Törzs** mezőbe írja be a képen látható szöveget, és válassza ki a lenti tokeneket az e-mail törzséhez. Ha üres sorokat kíván hozzáadni a szerkesztőmezőkhöz, nyomja le a Shift + Enter billentyűkombinációt.
-
-      ![Képernyőfelvétel: Logic Apps Designer az "e-mail küldése" művelettel és a kijelölt tulajdonságok a "törzs" mezőben.](./media/quickstart-create-first-logic-app-workflow/send-email-body.png)
+   1. A **törzs** mezőben adja meg az e-mail törzsének tartalmát. Ebben a példában a tartalom három, leíró szöveggel ellátott tulajdonságot tartalmaz: `Title:` , a **hírcsatorna címe** tulajdonságot `Date published:` , a tulajdonságban **közzétett hírcsatornát** , valamint `Link:` az **elsődleges hírcsatorna hivatkozás** tulajdonságát. Ha üres sorokat kíván hozzáadni a szerkesztőmezőkhöz, nyomja le a Shift + Enter billentyűkombinációt.
 
       | Tulajdonság | Leírás |
       |----------|-------------|
@@ -161,48 +178,55 @@ Most adjon hozzá egy [műveletet](../logic-apps/logic-apps-overview.md#logic-ap
       | **Elsődleges hírcsatorna-hivatkozás** | Az elem URL-címe |
       |||
 
-1. Mentse a logikai alkalmazást.
+      ![Képernyőkép a Logic Apps Designerről, amely az "e-mail küldése" műveletet és a kijelölt tulajdonságokat mutatja a "törzs" mezőben.](./media/quickstart-create-first-logic-app-workflow/send-email-body.png)
 
-A következő lépés a logikai alkalmazás tesztelése.
+1. Mentse a logikai alkalmazást. Válassza a tervező menü **Mentés** elemét.
+
+Ezt követően [tesztelje, hogy a logikai alkalmazás működik-e](#test-logic-app).
+
+<a name="test-logic-app"></a>
 
 ## <a name="run-your-logic-app"></a>A logikai alkalmazás futtatása
 
-A logikai alkalmazás manuális elindításához a tervező eszköztárán válassza a **Futtatás**lehetőséget. Azt is megvárhatja, hogy a logikai alkalmazás ellenőrizze az RSS-hírcsatornát a megadott ütemezés szerint (percenként egyszer).
+A példa logikai alkalmazás létrehozása után ellenőrizze, hogy a munkafolyamat megfelelően van-e konfigurálva. Megvárhatja, hogy a logikai alkalmazás a megadott ütemterv alapján vizsgálja meg az RSS-hírcsatornát. A logikai alkalmazást manuálisan is futtathatja a Logic Apps Designer eszköztáron a **Futtatás** lehetőség kiválasztásával, ahogy az alábbi képernyőképen is látható. 
 
-![Képernyőfelvétel: Logic Apps Designer a tervező eszköztáron kiválasztott "Futtatás" gombbal.](./media/quickstart-create-first-logic-app-workflow/run-logic-app-test.png)
+Ha az RSS-hírcsatornában új elemek vannak, a logikai alkalmazás e-mailt küld minden új elemről. Ellenkező esetben a logikai alkalmazás addig vár, amíg a következő intervallum újra be nem vizsgálja az RSS-hírcsatornát. 
 
-Ha az RSS-hírcsatornában új elemek vannak, a logikai alkalmazás e-mailt küld minden új elemről. Ha nincsenek, a logikai alkalmazás megvárja a következő esedékes időpontot, mielőtt újra elvégezné az ellenőrzést. Ha nem kap e-mailt, ellenőrizze a levélszemét mappát.
+![Képernyőkép a Logic Apps Designerről, amelyen a tervező eszköztáron a Futtatás gomb van kiválasztva.](./media/quickstart-create-first-logic-app-workflow/run-logic-app-test.png)
 
-Példa a logikai alkalmazás által küldött e-mailekre.
+A következő képernyőfelvétel egy példaként szolgáló e-mail-értesítést mutat be ebből a logikai alkalmazásból. Az e-mail tartalmazza a tervezőben kiválasztott egyes RSS-hírcsatornák részleteit, valamint az egyes elemeknél hozzáadott leíró szöveget.
 
-![Képernyőfelvétel: az új RSS-hírcsatorna megjelenésekor kapott minta e-mailek megjelenítése.](./media/quickstart-create-first-logic-app-workflow/monitor-rss-feed-email.png)
+![Képernyőkép az Outlookról, amely megjeleníti a minta e-mail-üzeneteit, amikor megjelenik az új RSS-hírcsatorna elem címe, a közzététel dátuma és a hivatkozás.](./media/quickstart-create-first-logic-app-workflow/monitor-rss-feed-email.png)
 
-Technikailag, amikor a trigger ellenőrzi az RSS-hírcsatornát, és megkeresi az új elemeket, az eseményindítót, és a Azure Logic Apps motor létrehoz egy példányt a logikai alkalmazás munkafolyamatában, amely futtatja a munkafolyamatban lévő műveleteket. Ha a trigger nem talál elemeket, akkor nem indul el, és „kihagyja” a munkafolyamat-példány létrehozását.
+Ha nem kap értesítő e-maileket a logikai alkalmazástól a várt módon:
 
-Gratulálunk, sikeresen felépítette és futtatta az első logikai alkalmazását a Azure Portal.
+* Győződjön meg róla, hogy az e-mail fiókja levélszemét vagy Levélszemét mappában van-e, ha az üzenet helytelenül lett szűrve.
+* Győződjön meg arról, hogy az Ön által használt RSS-hírcsatorna a legutóbbi ütemezett vagy kézi ellenőrzés óta közzétett elemeket tartalmaz.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
-Ha már nincs szükség erre a mintára, törölje a logikai alkalmazást és a kapcsolódó erőforrásokat tartalmazó erőforráscsoportot.
+Ha végzett a minta logikai alkalmazás tesztelésével, törölje a logikai alkalmazást és az összes kapcsolódó erőforrást az ehhez a példához létrehozott erőforráscsoport törlésével.
 
-1. Az Azure Search mezőbe írja be a kifejezést `resource groups` , majd válassza az **erőforráscsoportok**lehetőséget.
+> [!NOTE]
+> [Logikai alkalmazás törlésekor a](manage-logic-apps-with-azure-portal.md#delete-logic-apps)rendszer nem hoz létre új futtatásokat. A rendszer minden folyamatban lévő és függő futtatást megszakít. Ha több ezer futtatása van, a megszakítás jelentős ideig eltarthat.
+
+1. Az Azure Search mezőbe írja be a kifejezést `resource groups` , majd válassza az **erőforráscsoportok** lehetőséget.
 
    ![A "erőforráscsoportok" keresési kifejezéssel rendelkező Azure Portal keresőmezőt ábrázoló képernyőkép.](./media/quickstart-create-first-logic-app-workflow/find-resource-groups.png)
 
-1. Keresse meg és válassza ki a logikai alkalmazáshoz tartozó erőforráscsoportot. Az **Áttekintés** panelen válassza az **erőforráscsoport törlése**elemet.
+1. Keresse meg és válassza ki a logikai alkalmazáshoz tartozó erőforráscsoportot. Az **Áttekintés** panelen válassza az **erőforráscsoport törlése** elemet.
 
    ![Képernyőfelvétel: Azure Portal a kiválasztott erőforráscsoporthoz és a "erőforráscsoport törlése" gombra kattintva.](./media/quickstart-create-first-logic-app-workflow/delete-resource-group.png)
 
-1. Amikor megjelenik a megerősítő ablaktábla, adja meg az erőforráscsoport nevét, és válassza a **Törlés**lehetőséget.
+1. Amikor megjelenik a megerősítő ablaktábla, adja meg az erőforráscsoport nevét, és válassza a **Törlés** lehetőséget.
 
    ![Képernyőfelvétel: Azure Portal a megerősítő ablaktáblával, és a törlendő erőforráscsoport-név.](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
 
-> [!NOTE]
-> Amikor törli a logikai alkalmazást, a rendszer nem kezdeményez új futtatásokat. A rendszer minden folyamatban lévő és függő futtatást megszakít. Ha több ezer futtatása van, a megszakítás jelentős ideig eltarthat.
+## <a name="next-steps"></a>Következő lépések
 
-## <a name="next-steps"></a>További lépések
+Ebben a rövid útmutatóban létrehozta az első logikai alkalmazását a Azure Portalban, amely egy RSS-hírcsatornát keres egy ütemezett frissítésekhez, és e-mailben értesítést küld az egyes új hírcsatorna-elemekről. 
 
-Ebben a rövid útmutatóban létrehozta az első logikai alkalmazását, amely RSS-frissítéseket keres a megadott ütemezés alapján (percenként), és adott műveletet végez (e-mailt küld), amikor új tartalmakat talál. Ha további ismeretekre szeretne szert tenni, folytassa ezzel az oktatóanyaggal, amely összetettebb, ütemezésalapú munkafolyamatokat hoz létre:
+A következő oktatóanyagban megtudhatja, hogyan hozhat létre fejlettebb, ütemezett munkafolyamatokat a Logic Appsban:
 
 > [!div class="nextstepaction"]
 > [Forgalom ellenőrzése ütemezésalapú logikai alkalmazás használatával](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)

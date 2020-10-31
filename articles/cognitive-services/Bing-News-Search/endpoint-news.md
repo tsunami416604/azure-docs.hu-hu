@@ -10,14 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: dc7d16fe809e3e324f384b0d9e088dd7e6ab261c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c724925a12535c561b035296e374691f3fb2689
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74111483"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098348"
 ---
 # <a name="bing-news-search-api-endpoints"></a>Bing News Search API végpontok
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 A **News Search API** híreket, weblapokat, képeket, videókat és [entitásokat](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)ad vissza. Az entitások egy személy, hely vagy témakör összegző információit tartalmazzák.
 
@@ -39,7 +44,7 @@ Egy keresési lekérdezésen alapuló híreket ad vissza. Ha a keresési lekérd
 GET https://api.cognitive.microsoft.com/bing/v7.0/news  
 ```
 
-A legfontosabb híreket adja vissza kategóriánként. A, a, a vagy a használatával a legfontosabb üzleti, sport-vagy szórakoztató cikkeket kérheti le `category=business` `category=sports` `category=entertainment` . A `category` paraméter csak az `/news` URL-cím használatával használható. Néhány formális követelmény a kategóriák megadásához; `category` a [lekérdezési paraméter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters) dokumentációjában tájékozódhat. A keresési kifejezés URL-címének kódolásával küldje el a lekérdezést, és fűzze hozzá a `q=""` paraméterhez. A rendelkezésre állást lásd: [támogatott országok/régiók és piacok](language-support.md#supported-markets-for-news-endpoint).
+A legfontosabb híreket adja vissza kategóriánként. A, a, a vagy a használatával a legfontosabb üzleti, sport-vagy szórakoztató cikkeket kérheti le `category=business` `category=sports` `category=entertainment` .  A `category` paraméter csak az `/news` URL-cím használatával használható. Néhány formális követelmény a kategóriák megadásához; `category` a [lekérdezési paraméter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters) dokumentációjában tájékozódhat. A keresési kifejezés URL-címének kódolásával küldje el a lekérdezést, és fűzze hozzá a `q=""` paraméterhez. A rendelkezésre állást lásd: [támogatott országok/régiók és piacok](language-support.md#supported-markets-for-news-endpoint).
 
 ### <a name="trending-news-topics"></a>Trendek – Hírek 
 
@@ -49,7 +54,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/news/trendingtopics
 
 A közösségi hálózatokra jelenleg kapcsolódó híreket adja vissza. A beállítás megadása esetén a `/trendingtopics` Bing Search figyelmen kívül hagyja a többi paramétert, például a és a elemet `freshness` `?q=""` . A rendelkezésre állást lásd: [támogatott országok/régiók és piacok](language-support.md#supported-markets-for-news-trending-endpoint).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A fejlécekkel, paraméterekkel, piaci kódokkal, válasz-objektumokkal, hibákkal és egyéb adatokkal kapcsolatos részletekért tekintse meg a [Bing News Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) dokumentációját.
 

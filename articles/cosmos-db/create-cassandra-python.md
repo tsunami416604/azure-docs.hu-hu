@@ -9,14 +9,15 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 06e0d3618e96b44eca60f32a0977e7f03d6f5603
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 8a76a37de64733ba3e0126c7885d8690d2d83c1b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824623"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099720"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>Gyors útmutató: Cassandra-alkalmazás létrehozása a Python SDK-val és a Azure Cosmos DB
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -96,7 +97,7 @@ Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan hozza létre a kó
 
 Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba. A kapcsolati sztring lehetővé teszi az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal.
 
-1. A [Azure Portal](https://portal.azure.com/)Azure Cosmos db-fiókjában válassza a **kapcsolatok karakterlánc**lehetőséget. 
+1. A [Azure Portal](https://portal.azure.com/)Azure Cosmos db-fiókjában válassza a **kapcsolatok karakterlánc** lehetőséget. 
 
 1. A :::image type="icon" source="./media/create-cassandra-python/copy.png"::: képernyő jobb oldalán található gomb használatával másolja a legfelső értéket, a kapcsolódási pontot. 
 
@@ -126,13 +127,13 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
     
 ## <a name="use-the-x509-certificate"></a>Az X509-tanúsítvány használata
 
-1. Töltse le a Baltimore CyberTrust főtanúsítványát helyileg innen: [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt) . Nevezze át a fájlt a *. cer*kiterjesztésű fájl használatával.
+1. Töltse le a Baltimore CyberTrust főtanúsítványát helyileg innen: [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt) . Nevezze át a fájlt a *. cer* kiterjesztésű fájl használatával.
 
    A tanúsítvány sorozatszáma `02:00:00:b9`, az SHA1 ujjlenyomata pedig `d4:de:20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74`.
 
 2. Nyissa meg a *pyquickstart.py* , és módosítsa a `path\to\cert` pontot az új tanúsítványra.
 
-3. Mentse a *pyquickstart.py*.
+3. Mentse a *pyquickstart.py* .
 
 ## <a name="run-the-python-app"></a>A Python-alkalmazás futtatása
 
@@ -167,7 +168,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 

@@ -6,26 +6,28 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
-ms.date: 07/30/2020
-ms.openlocfilehash: e6e53755d9231008d0f48c755ff9da297d7305d7
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.date: 10/28/2020
+ms.openlocfilehash: 0d7f455e748a52595839cc509720bf7ad5b9b617
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747167"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099062"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Gyors útmutató: logikai alkalmazások létrehozása és kezelése az Azure CLI használatával
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre és kezelhet Logic apps-t az [Azure CLI Logic apps bővítmény](/cli/azure/ext/logic/logic?view=azure-cli-latest) ( `az logic` ) használatával. A parancssorból létrehozhat egy logikai alkalmazást a logikai alkalmazások munkafolyamat-definíciójának JSON-fájljának használatával. Ezután kezelheti a logikai alkalmazást olyan műveletek futtatásával, mint `list` `show` a, ( `get` ), `update` és `delete` a parancssorból.
+Ez a rövid útmutató bemutatja, hogyan hozhat létre és kezelhet Logic apps-t az [Azure CLI Logic apps bővítmény](/cli/azure/ext/logic/logic) ( `az logic` ) használatával. A parancssorból létrehozhat egy logikai alkalmazást a logikai alkalmazások munkafolyamat-definíciójának JSON-fájljának használatával. Ezután kezelheti a logikai alkalmazást olyan műveletek futtatásával, mint `list` `show` a, ( `get` ), `update` és `delete` a parancssorból.
 
 > [!WARNING]
 > Az Azure CLI Logic Apps bővítménye jelenleg *kísérleti jellegű* , és *nem vonatkozik az ügyfélszolgálatra* . Ezt a CLI-bővítményt körültekintően használhatja, különösen akkor, ha a bővítményt éles környezetben használja.
 
+Ha még nem ismeri a Logic Appst, megtudhatja, hogyan hozhatja létre az első logikai alkalmazásait [a Azure Portal](quickstart-create-first-logic-app-workflow.md), a [Visual Studióban](quickstart-create-logic-apps-with-visual-studio.md)és a [Visual Studio Code-ban](quickstart-create-logic-apps-visual-studio-code.md).
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Aktív előfizetéssel rendelkező Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) telepítve van a helyi számítógépen.
-* A számítógépre telepített [Logic apps Azure CLI-bővítmény](/cli/azure/azure-cli-extensions-list?view=azure-cli-latest) . A bővítmény telepítéséhez használja a következő parancsot: `az extension add --name logic`
+* Az [Azure CLI](/cli/azure/install-azure-cli) telepítve van a helyi számítógépen.
+* A számítógépre telepített [Logic apps Azure CLI-bővítmény](/cli/azure/azure-cli-extensions-list) . A bővítmény telepítéséhez használja a következő parancsot: `az extension add --name logic`
 * Egy [Azure-erőforráscsoport](#example---create-resource-group) , amelyben létre kívánja hozni a logikai alkalmazást.
 
 ### <a name="prerequisite-check"></a>Előfeltételek ellenőrzése
@@ -33,8 +35,8 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre és kezelhet Logic apps-t
 A Kezdés előtt ellenőrizze a környezetet:
 
 * Jelentkezzen be a Azure Portalba, és győződjön meg arról, hogy az előfizetése aktív a futtatásával `az login` .
-* A futtatásával tekintse meg az Azure CLI-verziót egy terminálon vagy parancsablakban `az --version` . A legújabb verzióra vonatkozó megjegyzések a [legújabb kiadási megjegyzésekben](/cli/azure/release-notes-azure-cli?tabs=azure-cli&view=azure-cli-latest)találhatók.
-  * Ha nem rendelkezik a legújabb verzióval, frissítse a telepítést az [operációs rendszer vagy a platform telepítési útmutatóját](/cli/azure/install-azure-cli?view=azure-cli-latest)követve.
+* A futtatásával tekintse meg az Azure CLI-verziót egy terminálon vagy parancsablakban `az --version` . A legújabb verzióra vonatkozó megjegyzések a [legújabb kiadási megjegyzésekben](/cli/azure/release-notes-azure-cli?tabs=azure-cli)találhatók.
+  * Ha nem rendelkezik a legújabb verzióval, frissítse a telepítést az [operációs rendszer vagy a platform telepítési útmutatóját](/cli/azure/install-azure-cli)követve.
 
 ### <a name="example---create-resource-group"></a>Példa – erőforráscsoport létrehozása
 
@@ -67,7 +69,7 @@ A logikai alkalmazás létrehozásához vagy frissítéséhez szükséges paranc
 
 ## <a name="create-logic-apps-from-cli"></a>Logikai alkalmazások létrehozása a parancssori felületről
 
-Az Azure CLI-ből létrehozhat egy Logic apps-munkafolyamatot a [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create) definícióhoz tartozó JSON-fájllal.
+Az Azure CLI-ből létrehozhat egy Logic apps-munkafolyamatot a [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) definícióhoz tartozó JSON-fájllal.
 
 ```azurecli
 
@@ -84,16 +86,16 @@ az logic workflow create --definition
 
 ```
 
-A parancsnak tartalmaznia kell a következő [szükséges paramétereket](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create-required-parameters):
+A parancsnak tartalmaznia kell a következő [szükséges paramétereket](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-required-parameters):
 
 | Paraméter | Érték | Leírás |
 | --------- | ----- | ----------- |
 | Munkafolyamat-definíció | `--definition` | Egy JSON-fájl a logikai alkalmazás [munkafolyamatának definíciójában](#workflow-definition). |
 | Hely | `--location -l` | Az az Azure-régió, amelyben a logikai alkalmazás található. |
-| Name (Név) | `--name -n` | A logikai alkalmazás neve. A név csak betűket, számokat, kötőjeleket () `-` , aláhúzásokat ( `_` ), zárójeleket ( `()` ) és pontokat ( `.` ) tartalmazhat. A névnek egyedinek kell lennie régiók között is. |
+| Name | `--name -n` | A logikai alkalmazás neve. A név csak betűket, számokat, kötőjeleket () `-` , aláhúzásokat ( `_` ), zárójeleket ( `()` ) és pontokat ( `.` ) tartalmazhat. A névnek egyedinek kell lennie régiók között is. |
 | Erőforráscsoport neve | `--resource-group -g` | Az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) , amelyben létre szeretné hozni a logikai alkalmazást. [Hozzon létre egy erőforráscsoportot](#example---create-resource-group) , mielőtt elkezdené, ha még nem rendelkezik ilyennel a logikai alkalmazáshoz. |
 
-További [választható paramétereket](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create-optional-parameters) is beállíthat a logikai alkalmazás hozzáférés-vezérlésének, végpontjának, integrációs fiókjának, integrációs szolgáltatási környezetének, állapotának és erőforrás-címkének konfigurálásához.
+További [választható paramétereket](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-optional-parameters) is beállíthat a logikai alkalmazás hozzáférés-vezérlésének, végpontjának, integrációs fiókjának, integrációs szolgáltatási környezetének, állapotának és erőforrás-címkének konfigurálásához.
 
 ### <a name="example---create-logic-app"></a>Példa – logikai alkalmazás létrehozása
 
@@ -109,9 +111,9 @@ A munkafolyamat sikeres létrehozása után a CLI az új munkafolyamat-definíci
 
 ## <a name="update-logic-apps-from-cli"></a>Logikai alkalmazások frissítése a parancssori felületről
 
-A Logic apps munkafolyamatát az Azure CLI-vel is frissítheti a paranccsal [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create) .
+A Logic apps munkafolyamatát az Azure CLI-vel is frissítheti a paranccsal [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) .
 
-A parancsnak ugyanazokat a [paramétereket](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create-required-parameters) kell tartalmaznia, mint a [logikai alkalmazások létrehozásakor](#create-logic-apps-from-cli). A logikai alkalmazások létrehozásakor ugyanazok a [választható paraméterek](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create-optional-parameters) is hozzáadhatók.
+A parancsnak ugyanazokat a [paramétereket](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-required-parameters) kell tartalmaznia, mint a [logikai alkalmazások létrehozásakor](#create-logic-apps-from-cli). A logikai alkalmazások létrehozásakor ugyanazok a [választható paraméterek](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-optional-parameters) is hozzáadhatók.
 
 ```azurecli
 
@@ -142,16 +144,16 @@ A munkafolyamat sikeres frissítésekor a CLI megjeleníti a logikai alkalmazás
 
 ## <a name="delete-logic-apps-from-cli"></a>Logikai alkalmazások törlése a parancssori felületről
 
-A Logic app-munkafolyamatot a paranccsal törölheti az Azure CLI-ből [`az logic workflow delete`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-delete) .
+A Logic app-munkafolyamatot a paranccsal törölheti az Azure CLI-ből [`az logic workflow delete`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-delete) .
 
-A parancsnak tartalmaznia kell a következő [szükséges paramétereket](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-delete-required-parameters):
+A parancsnak tartalmaznia kell a következő [szükséges paramétereket](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-delete-required-parameters):
 
 | Paraméter | Érték | Leírás |
 | --------- | ----- | ----------- |
-| Name (Név) | `--name -n` | A logikai alkalmazás neve. |
+| Név | `--name -n` | A logikai alkalmazás neve. |
 | Erőforráscsoport neve | `-resource-group -g` | Az az erőforráscsoport, amelyben a logikai alkalmazás található. |
 
-A megerősítési kérések kihagyásához [választható paramétert](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-delete-optional-parameters) is hozzáadhat `--yes -y` .
+A megerősítési kérések kihagyásához [választható paramétert](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-delete-optional-parameters) is hozzáadhat `--yes -y` .
 
 ```azurecli
 
@@ -185,7 +187,7 @@ Miután válaszolt a megerősítő kérésre `y` , a rendszer törli a logikai a
 
 ## <a name="show-logic-apps-in-cli"></a>Logikai alkalmazások megjelenítése a CLI-ben
 
-Az paranccsal egy adott Logic apps-munkafolyamatot szerezhet be [`az logic workflow show`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-show) .
+Az paranccsal egy adott Logic apps-munkafolyamatot szerezhet be [`az logic workflow show`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-show) .
 
 ```azurecli
 
@@ -194,11 +196,11 @@ az logic workflow show --name
 
 ```
 
-A parancsnak tartalmaznia kell a következő [szükséges paramétereket](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-show-required-parameters)
+A parancsnak tartalmaznia kell a következő [szükséges paramétereket](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-show-required-parameters)
 
 | Paraméter | Érték | Leírás |
 | --------- | ----- | ----------- |
-| Name (Név) | `--name -n` | A logikai alkalmazás neve. |
+| Név | `--name -n` | A logikai alkalmazás neve. |
 | Erőforráscsoport neve | `--resource-group -g` | Azon erőforráscsoport neve, amelyben a logikai alkalmazás található. |
 
 ### <a name="example---get-logic-app"></a>Példa – logikai alkalmazás beolvasása
@@ -213,15 +215,15 @@ az logic workflow show --resource-group "testResourceGroup" --name "testLogicApp
 
 ## <a name="list-logic-apps-in-cli"></a>Logikai alkalmazások listázása a CLI-ben
 
-A Logic apps-t előfizetéssel is listázhatja az parancs használatával [`az logic workflow list`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-list) . Ez a parancs a Logic apps-munkafolyamatok JSON-kódját adja vissza.
+A Logic apps-t előfizetéssel is listázhatja az parancs használatával [`az logic workflow list`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-list) . Ez a parancs a Logic apps-munkafolyamatok JSON-kódját adja vissza.
 
-Az eredményeket a következő [választható paraméterek](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-list-optional-parameters)alapján szűrheti:
+Az eredményeket a következő [választható paraméterek](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-list-optional-parameters)alapján szűrheti:
 
 | Paraméter | Érték | Leírás |
 | --------- | ----- | ----------- |
 | Erőforráscsoport neve | `--resource-group -g` | Azon erőforráscsoport neve, amelynek alapján szűrni kívánja az eredményeket. |
 | Elemek száma | `--top` | Az eredményekben szereplő elemek száma. |
-| Szűrés | `--filter` | A listában használt szűrő típusa. Szűrheti az állapot ( `State` ), a trigger ( `Trigger` ) és a hivatkozott erőforrás () azonosítóját `ReferencedResourceId` . |
+| Szűrő | `--filter` | A listában használt szűrő típusa. Szűrheti az állapot ( `State` ), a trigger ( `Trigger` ) és a hivatkozott erőforrás () azonosítóját `ReferencedResourceId` . |
 
 ```azurecli
 
@@ -265,7 +267,7 @@ A parancsokkal a következő opcionális globális Azure CLI-paramétereket hasz
 
 | Paraméter | Érték | Leírás |
 | --------- | ----- | ----------- |
-| Kimeneti formátum | `--output -o` | Módosítsa a [kimeneti formátumot](/cli/azure/format-output-azure-cli?view=azure-cli-latest) az alapértelmezett JSON-fájlból. |
+| Kimeneti formátum | `--output -o` | Módosítsa a [kimeneti formátumot](/cli/azure/format-output-azure-cli) az alapértelmezett JSON-fájlból. |
 | Csak hibák megjelenítése | `--only-show-errors` | Figyelmeztetések mellőzése és csak hibák megjelenítése. |
 | Részletes | `--verbose` | Részletes naplók megjelenítése. |
 | Hibakeresés | `--debug` | Megjeleníti az összes hibakeresési naplót. |
@@ -274,8 +276,11 @@ A parancsokkal a következő opcionális globális Azure CLI-paramétereket hasz
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Azure CLI-vel kapcsolatos további információkért tekintse meg az [Azure CLI dokumentációját](/cli/azure/?view=azure-cli-latest).
-
-Az alapszintű logikai alkalmazások parancssori felülettel történő létrehozásával kapcsolatos példát a [minta parancsfájl és a munkafolyamat definíciója](sample-logic-apps-cli-script.md)tartalmazza.
+Az Azure CLI-vel kapcsolatos további információkért tekintse meg az [Azure CLI dokumentációját](/cli/azure/).
 
 További Logic Apps CLI-szkripteket a [Microsoft Code Samples böngészőben](/samples/browse/?products=azure-logic-apps)talál.
+
+Ezután létrehozhat egy példaként szolgáló alkalmazás-logikát az Azure CLI-n keresztül egy minta parancsfájl és egy munkafolyamat-definíció használatával.
+
+> [!div class="nextstepaction"]
+> [Logikai alkalmazás létrehozása minta parancsfájl használatával](sample-logic-apps-cli-script.md).

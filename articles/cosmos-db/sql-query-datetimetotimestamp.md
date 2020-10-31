@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 673e6a8cb86986ff24e3ee55589d13e8a9e4fdc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6de48583cbc3a7e41d6da5e7ed29abf07bba3112
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88608762"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100303"
 ---
 # <a name="datetimetotimestamp-azure-cosmos-db"></a>DateTimeToTimestamp (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A megadott dátum és idő időbélyeget alakítja át.
   
@@ -81,7 +82,7 @@ SELECT DateTimeToTimestamp("2020-07-09") AS Timestamp
 ]
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Dátum és idő függvények Azure Cosmos DB](sql-query-date-time-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

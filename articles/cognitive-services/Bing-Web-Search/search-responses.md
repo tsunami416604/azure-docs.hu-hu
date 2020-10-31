@@ -11,14 +11,19 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: a5e69fe855f0c1e99dc3672425d9aeea13d4e827
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cea88c2e20c9e96c5ad5504815886b2cc771e44
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297790"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100558"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web Search API a válasz szerkezete és a válaszok típusai  
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Amikor keresési kérelmet küld Bing Web Search, a [`SearchResponse`](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) Válasz törzsében egy objektumot ad vissza. Az objektum tartalmaz egy mezőt minden olyan válaszhoz, amelyet a Bing meghatározott a lekérdezés szempontjából. Ez a példa egy Response objektumot mutat be, ha a Bing az összes választ adta vissza:
 
@@ -38,7 +43,7 @@ Amikor keresési kérelmet küld Bing Web Search, a [`SearchResponse`](https://d
 }, ...
 ```
 
-A Bing Web Search általában a válaszok egy részhalmazát adja vissza. Ha például a lekérdezési kifejezés a *vitorlázás mentőcsónakokra*, a válasz a, a és a is lehet `webPages` `images` `rankingResponse` . Hacsak nem használta a [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) a weblapok kiszűrésére, a válasz mindig tartalmazza a `webpages` és a `rankingResponse` válaszokat.
+A Bing Web Search általában a válaszok egy részhalmazát adja vissza. Ha például a lekérdezési kifejezés a *vitorlázás mentőcsónakokra* , a válasz a, a és a is lehet `webPages` `images` `rankingResponse` . Hacsak nem használta a [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) a weblapok kiszűrésére, a válasz mindig tartalmazza a `webpages` és a `rankingResponse` válaszokat.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -328,7 +333,7 @@ A változókat tartalmazó matematikai kifejezések (például 4x + 6 = 18, ahol
 
 ## <a name="timezone-answer"></a>Időzóna-válasz
 
-Ha a felhasználó időpontra vagy dátumra vonatkozó lekérdezést ad meg, a válasz [időzóna](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) -választ is tartalmazhat. Ez a válasz implicit vagy explicit lekérdezéseket támogat. Egy implicit lekérdezés, például *mennyi idő van?*, a felhasználó tartózkodási helye alapján adja vissza a helyi időt. Egy explicit lekérdezés, például hogy *milyen idő van Seattle-ben?*, a helyi időt adja vissza Seattle, WA esetében.
+Ha a felhasználó időpontra vagy dátumra vonatkozó lekérdezést ad meg, a válasz [időzóna](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) -választ is tartalmazhat. Ez a válasz implicit vagy explicit lekérdezéseket támogat. Egy implicit lekérdezés, például *mennyi idő van?* , a felhasználó tartózkodási helye alapján adja vissza a helyi időt. Egy explicit lekérdezés, például hogy *milyen idő van Seattle-ben?* , a helyi időt adja vissza Seattle, WA esetében.
 
 A `timeZone` Válasz megadja a hely nevét, a jelenlegi UTC dátumot és időt a megadott helyen, valamint az UTC eltolását. Ha a hely határa több időzónán belül van, a válasz a határon belüli összes időzóna aktuális UTC-dátumát és időpontját tartalmazza. Például, mivel a floridai állam két időzónán belül esik, a válasz a helyi dátumot és időpontot tartalmazza mindkét időzónában.  
 
@@ -419,7 +424,7 @@ Query: What time is it in the U.S.
 
 ## <a name="spellsuggestion-answer"></a>SpellSuggestion válasz
 
-Ha a Bing azt állapítja meg, hogy a felhasználó nem keres valami mást, a válasz tartalmaz egy [SpellSuggestions](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) objektumot. Ha például a felhasználó *Carlos-tollat*keres, a Bing azt is meghatározhatja, hogy a felhasználó valószínűleg a Carlos Pena keresését tervezi (a korábbi, *Carlos Pen*-beli keresések alapján). A következő példa egy helyesírási választ mutat be.
+Ha a Bing azt állapítja meg, hogy a felhasználó nem keres valami mást, a válasz tartalmaz egy [SpellSuggestions](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) objektumot. Ha például a felhasználó *Carlos-tollat* keres, a Bing azt is meghatározhatja, hogy a felhasználó valószínűleg a Carlos Pena keresését tervezi (a korábbi, *Carlos Pen* -beli keresések alapján). A következő példa egy helyesírási választ mutat be.
 
 ```json
 "spellSuggestions": {

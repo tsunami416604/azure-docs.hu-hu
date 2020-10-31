@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 4848bdceef084d587c839f2af93d1ff5a43c850b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cee5181bf3dda3f0fb609d5aa344697e989ae6c3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85260573"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098892"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>Hozzáférés Azure Cosmos DB Cassandra API a Sparkból a HDInsight-mel
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Ez a cikk azt ismerteti, hogyan érheti el Azure Cosmos DB Cassandra API a Sparkból a FONALból a Spark-Shell HDInsight-Spark használatával. A HDInsight a Microsoft Hortonworks Hadoop, amely az Azure-on található, és a HDFS számos különböző, többek között a [Spark](../hdinsight/spark/apache-spark-overview.md)használatát is lehetővé teszi.  Habár a jelen dokumentumban szereplő tartalom a HDInsight-Spark-ra hivatkozik, minden Hadoop-eloszlásra érvényes.  
 
@@ -130,7 +131,7 @@ Futtasson végig a jegyzetfüzeteken, és mindegyik jegyzetfüzet-cellát egymá
 
 Az éles környezetben futó automatizált folyamatok esetében a Spark-programokat a [Spark-Submit](https://spark.apache.org/docs/latest/submitting-applications.html)használatával küldi el a rendszer a fürtnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Spark Scala-program létrehozása egy IDE-ben, és elküldése a HDInsight Spark-fürtnek a Livy-en keresztül a végrehajtáshoz](../hdinsight/spark/apache-spark-create-standalone-application.md)
 

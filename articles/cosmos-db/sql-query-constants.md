@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebc1f66e68d4cf37546e7d33a9b723385330395c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74873420"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100864"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL-lekérdezés állandói  
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
  Egy konstans, más néven literál vagy skaláris érték, egy adott adatértéket jelölő szimbólum. A konstans formátuma az általa reprezentált érték adattípusától függ.  
   
@@ -23,11 +24,11 @@ ms.locfileid: "74873420"
 |-|-|  
 |**Nem definiált**|Egyetlen érték: nem **definiált**|  
 |**Null**|Egyetlen érték: **Null**|  
-|**Logikai érték**|Értékek: **false**, **true**.|  
+|**Logikai**|Értékek: **false** , **true** .|  
 |**Szám**|Egy kétszeres pontosságú lebegőpontos szám, IEEE 754 standard.|  
 |**Sztring**|Nulla vagy több Unicode-karakterből álló sorozatot. A karakterláncokat szimpla vagy idézőjelek közé kell foglalni.|  
-|**Tömb**|Nulla vagy több elemből álló sorozatot. Minden elem bármely skaláris adattípus értéke lehet, kivéve a nem **definiált**értéket.|  
-|**Objektum**|Nulla vagy több név/érték párok rendezetlen készlete. A név egy Unicode karakterlánc, az érték bármely skaláris adattípus lehet, kivéve a nem **definiált**értéket.|  
+|**Tömb**|Nulla vagy több elemből álló sorozatot. Minden elem bármely skaláris adattípus értéke lehet, kivéve a nem **definiált** értéket.|  
+|**Objektum**|Nulla vagy több név/érték párok rendezetlen készlete. A név egy Unicode karakterlánc, az érték bármely skaláris adattípus lehet, kivéve a nem **definiált** értéket.|  
   
 ## <a name="syntax"></a><a name="bk_syntax"></a>Syntax
   
@@ -112,11 +113,11 @@ ms.locfileid: "74873420"
 |\b|Backspace|U + 0008|  
 |\f|űrlap-hírcsatorna|U + 000C|  
 |\n|soremelés|U + 000A|  
-|\r|szállítás visszaküldése|U + 000D|  
-|\t|lapon|U + 0009|  
+|\r| kocsivissza|U + 000D|  
+|\t| tabulátor|U + 0009|  
 |\uXXXX|4 hexadecimális számjegy által definiált Unicode-karakter.|U + XXXX|  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Dokumentumadatok modellezése](modeling-data.md)

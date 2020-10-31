@@ -7,12 +7,12 @@ ms.date: 10/03/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: f3bc407791b25e4dc1dddd61b60b3cefe0195919
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 068fc9dcb9a4f4a62c2dd879bf8144097452f1e0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203194"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099028"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Egyéni tároló üzembe helyezése a GitHub-műveletek használatával App Service
 
@@ -25,7 +25,7 @@ Azure App Service tároló munkafolyamathoz a fájl három szakaszt tartalmaz:
 |Section  |Feladatok  |
 |---------|---------|
 |**Hitelesítés** | 1. az egyszerű szolgáltatásnév vagy a közzétételi profil beolvasása. <br /> 2. hozzon létre egy GitHub-titkot. |
-|**Buildelés** | 1. hozza létre a környezetet. <br /> 2. hozza létre a tároló rendszerképét. |
+|**Létrehozás** | 1. hozza létre a környezetet. <br /> 2. hozza létre a tároló rendszerképét. |
 |**Telepítés** | 1. Telepítse a tároló lemezképét. |
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -47,11 +47,14 @@ A közzétételi profil egy alkalmazás szintű hitelesítő adat. A közzétét
 
 1. Nyissa meg az App Service-t a Azure Portal. 
 
-1. Az **Áttekintés** lapon válassza a **közzétételi profil beolvasása**elemet.
+1. Az **Áttekintés** lapon válassza a **közzétételi profil beolvasása** elemet.
+
+    > [!NOTE]
+    > Október 2020 a linuxos webalkalmazások `WEBSITE_WEBDEPLOY_USE_SCM` számára a `true` **Fájl letöltése előtt** be kell állítani az Alkalmazásbeállítások beállítást. Ez a követelmény a jövőben el lesz távolítva.
 
 1. Mentse a letöltött fájlt. A fájl tartalmát a GitHub-titok létrehozásához fogja használni.
 
-# <a name="service-principal"></a>[Egyszerű szolgáltatásnév](#tab/service-principal)
+# <a name="service-principal"></a>[Szolgáltatásnév](#tab/service-principal)
 
 Az [Azure CLI](/cli/azure/)-ben létrehozhat egy [egyszerű szolgáltatást](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) az az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) parancs használatával. Futtassa ezt a parancsot [Azure Cloud Shell](https://shell.azure.com/) a Azure Portalban, vagy kattintson a **TRY IT (kipróbálás** ) gombra.
 
@@ -80,7 +83,7 @@ A példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra, az erő
 
 ## <a name="configure-the-github-secret"></a>A GitHub-titok konfigurálása
 
-A [githubon](https://github.com/)tallózzon a tárházban, válassza a **beállítások > titkok > új titok hozzáadása**lehetőséget.
+A [githubon](https://github.com/)tallózzon a tárházban, válassza a **beállítások > titkok > új titok hozzáadása** lehetőséget.
 
 Illessze be a JSON-kimenet tartalmát a titkos változó értékeként. Adja meg a titkot a nevet, például: `AZURE_CREDENTIALS` .
 
@@ -96,7 +99,7 @@ Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentk
 
 # <a name="publish-profile"></a>[Profil közzététele](#tab/publish-profile)
 
-A [githubon](https://github.com/)tallózzon a tárházban, válassza a **beállítások > titkok > új titok hozzáadása**lehetőséget.
+A [githubon](https://github.com/)tallózzon a tárházban, válassza a **beállítások > titkok > új titok hozzáadása** lehetőséget.
 
 Az [alkalmazás szintű hitelesítő adatok](#generate-deployment-credentials)használatához illessze be a letöltött közzétételi profil tartalmát a titkos kulcs érték mezőjébe. Nevezze el a titkot `AZURE_WEBAPP_PUBLISH_PROFILE` .
 
@@ -108,9 +111,9 @@ A GitHub-munkafolyamatok konfigurálásakor használja az `AZURE_WEBAPP_PUBLISH_
     publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
 ```
 
-# <a name="service-principal"></a>[Egyszerű szolgáltatásnév](#tab/service-principal)
+# <a name="service-principal"></a>[Szolgáltatásnév](#tab/service-principal)
 
-A [githubon](https://github.com/)tallózzon a tárházban, válassza a **beállítások > titkok > új titok hozzáadása**lehetőséget.
+A [githubon](https://github.com/)tallózzon a tárházban, válassza a **beállítások > titkok > új titok hozzáadása** lehetőséget.
 
 [Felhasználói szintű hitelesítő adatok](#generate-deployment-credentials)használatához illessze be a teljes JSON-kimenetet az Azure CLI-parancsból a titkos kulcs érték mezőjébe. Adja meg a titkot a nevet, például: `AZURE_CREDENTIALS` .
 
@@ -232,7 +235,7 @@ jobs:
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         images: 'mycontainer.azurecr.io/myapp:${{ github.sha }}'
 ```
-# <a name="service-principal"></a>[Egyszerű szolgáltatásnév](#tab/service-principal)
+# <a name="service-principal"></a>[Szolgáltatásnév](#tab/service-principal)
 
 ```yaml
 on: [push]

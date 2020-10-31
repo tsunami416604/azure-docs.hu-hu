@@ -9,14 +9,15 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: jasonh
 ms.custom: devx-track-python
-ms.openlocfilehash: 624aa946df5e637c98a11ada3b455c50dec896f5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cc73fcd076bde23bed19a71641cb50e36a40820b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409340"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099691"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Gyors útmutató: Graph-adatbázis létrehozása Azure Cosmos DB a Python és a Azure Portal használatával
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Gremlin-konzol](create-graph-gremlin-console.md)
@@ -72,9 +73,9 @@ Most pedig váltsunk át kódok használatára. A következő lépésekben elvé
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. A kódrészletek mind a *C:\git-samples\azure-Cosmos-db-Graph-Python-Getting-Started \\ * mappában található *Connect.py* -fájlból származnak. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-information) szakaszra. 
+Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. A kódrészletek mind a *C:\git-samples\azure-Cosmos-db-Graph-Python-Getting-Started \\* mappában található *Connect.py* -fájlból származnak. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-information) szakaszra. 
 
-* A Gremlin `client` inicializálva van a 104-es sorban a *Connect.py*:
+* A Gremlin `client` inicializálva van a 104-es sorban a *Connect.py* :
 
     ```python
     ...
@@ -94,7 +95,7 @@ Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az 
 
 Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azokat az alkalmazásba. Ezek a beállítások lehetővé teszik az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal.
 
-1. A [Azure Portal](https://portal.azure.com/)Azure Cosmos db-fiókjában válassza a **kulcsok**lehetőséget. 
+1. A [Azure Portal](https://portal.azure.com/)Azure Cosmos db-fiókjában válassza a **kulcsok** lehetőséget. 
 
     Másolja az URI érték első részét.
 
@@ -170,7 +171,7 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
 
 A csúcspontok és élek beszúrása után visszatérhet a Adatkezelőra, és megtekintheti a gráfhoz hozzáadott csúcspontokat, és további adatpontokat is hozzáadhat.
 
-1. A Azure Portal Azure Cosmos DB-fiókjában válassza a **adatkezelő**, majd a **minta-gráf**csomópontot, válassza a **gráf**lehetőséget, majd válassza a **szűrő alkalmazása**lehetőséget. 
+1. A Azure Portal Azure Cosmos DB-fiókjában válassza a **adatkezelő** , majd a **minta-gráf** csomópontot, válassza a **gráf** lehetőséget, majd válassza a **szűrő alkalmazása** lehetőséget. 
 
    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png" alt-text="Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok oldalán":::
 
@@ -186,7 +187,7 @@ A csúcspontok és élek beszúrása után visszatérhet a Adatkezelőra, és me
 
 5. Válassza a **tulajdonság hozzáadása** lehetőséget a következő tulajdonságok hozzáadásához. Egyedi tulajdonságokat hozhat létre a gráfban található minden egyes személy számára. Csak az id kulcsot kötelező megadni.
 
-    kulcs|érték|Jegyzetek
+    kulcs|value|Megjegyzések
     ----|----|----
     PK|/pk| 
     id|ashley|A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
@@ -204,7 +205,7 @@ A csúcspontok és élek beszúrása után visszatérhet a Adatkezelőra, és me
 
 9. Válassza a **tulajdonság hozzáadása** lehetőséget a következő tulajdonságok hozzáadásához:
 
-    kulcs|érték|Jegyzetek
+    kulcs|value|Megjegyzések
     ----|----|----
     PK|/pk| 
     id|rakesh|A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
@@ -221,7 +222,7 @@ A csúcspontok és élek beszúrása után visszatérhet a Adatkezelőra, és me
 
     :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png" alt-text="Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok oldalán":::
 
-13. A **cél** *mezőbe írja be*a következőt:, majd a **peremhálózat** mezőjébe írja be a *Knows*elemet, majd jelölje be a jelölőnégyzetet.
+13. A **cél** *mezőbe írja be* a következőt:, majd a **peremhálózat** mezőjébe írja be a *Knows* elemet, majd jelölje be a jelölőnégyzetet.
 
     :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png" alt-text="Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok oldalán":::
 
@@ -235,11 +236,11 @@ Ezzel befejezte az oktatóanyag erőforrások létrehozásra vonatkozó részét
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre egy Azure Cosmos DB fiókot, hogyan hozhat létre egy gráfot a Adatkezelő használatával, és hogyan futtathat egy Python-alkalmazást a gráfhoz való adatfelvételhez. Az útmutató információira támaszkodva összetett lekérdezéseket hozhat létre és hatékony gráfbejárási logikákat helyezhet üzembe a Gremlin használatával. 
 

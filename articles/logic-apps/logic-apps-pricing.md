@@ -7,13 +7,13 @@ author: jonfancey
 ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.openlocfilehash: a5511d7cd4b5bb0f3fe901a735535f8db9036ee7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/29/2020
+ms.openlocfilehash: 486930776b4b4b6d852102be723ac1047ebd5e0a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87078168"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098484"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>A Azure Logic Apps díjszabási modellje
 
@@ -85,13 +85,13 @@ A Azure Logic Apps-összekötők a logikai alkalmazások számára megkönnyíti
 
 Az eseményindító mindig a logikai alkalmazás munkafolyamatának első lépése, és egy speciális művelet, amely egy Logic App-példány létrehozására és futtatására szolgál, ha meghatározott feltételek teljesülnek, vagy egy adott esemény történik. Az eseményindítók különböző módokon működnek, amelyek befolyásolják a logikai alkalmazás mérési módját. Itt láthatók a Azure Logic Appsban található különféle triggerek:
 
-* **Ismétlődési eseményindító**: ezt az általános eseményindítót használhatja, amely nem kifejezetten semmilyen szolgáltatásra vagy rendszerre vonatkozik, a logikai alkalmazások munkafolyamatainak elindításához és az Eseményindítóban beállított ismétlődési időköz alapján létrehozott logikai alkalmazás-példány létrehozásához. Beállíthat például egy ismétlődési eseményindítót, amely háromhavonta vagy összetettebb ütemezésen fut.
+* **Ismétlődési eseményindító** : ezt az általános eseményindítót használhatja, amely nem kifejezetten semmilyen szolgáltatásra vagy rendszerre vonatkozik, a logikai alkalmazások munkafolyamatainak elindításához és az Eseményindítóban beállított ismétlődési időköz alapján létrehozott logikai alkalmazás-példány létrehozásához. Beállíthat például egy ismétlődési eseményindítót, amely háromhavonta vagy összetettebb ütemezésen fut.
 
-* **Lekérdezési eseményindító**: ezt a speciális ismétlődési eseményindítót használhatja, amely általában egy adott szolgáltatáshoz vagy rendszerhez tartozó felügyelt összekötőhöz van társítva, hogy olyan eseményeket vagy üzeneteket keressen, amelyek megfelelnek a Logic App-példány létrehozásának és futtatásának feltételeinek az Eseményindítóban beállított Ismétlődési intervallum alapján. Akkor is, ha a rendszer nem hoz létre logikai alkalmazás-példányt, például ha kihagyja az eseményindítókat, a Logic Apps szolgáltatás minden lekérdezési kérelem végrehajtásként szolgál. A lekérdezési időköz megadásához állítsa be a triggert a Logic app Designer használatával.
+* **Lekérdezési eseményindító** : ezt a speciális ismétlődési eseményindítót használhatja, amely általában egy adott szolgáltatáshoz vagy rendszerhez tartozó felügyelt összekötőhöz van társítva, hogy olyan eseményeket vagy üzeneteket keressen, amelyek megfelelnek a Logic App-példány létrehozásának és futtatásának feltételeinek az Eseményindítóban beállított Ismétlődési intervallum alapján. Akkor is, ha a rendszer nem hoz létre logikai alkalmazás-példányt, például ha kihagyja az eseményindítókat, a Logic Apps szolgáltatás minden lekérdezési kérelem végrehajtásként szolgál. A lekérdezési időköz megadásához állítsa be a triggert a Logic app Designer használatával.
 
   [!INCLUDE [logic-apps-polling-trigger-non-standard-metering](../../includes/logic-apps-polling-trigger-non-standard-metering.md)]
 
-* **Webhook-trigger**: a lekérdezési trigger használata helyett egy webhook-trigger használatával megvárhatja, hogy az ügyfél kérést küldjön a logikai alkalmazásnak egy adott VÉGPONTI URL-címen. A webhook-végpontnak elküldett minden kérelem művelet-végrehajtásnak számít. A kérelem és a HTTP webhook eseményindító például általános webhook-eseményindítókat is tartalmaz. A szolgáltatások vagy rendszerek egyes összekötői is rendelkeznek webhook-eseményindítókkal.
+* **Webhook-trigger** : a lekérdezési trigger használata helyett egy webhook-trigger használatával megvárhatja, hogy az ügyfél kérést küldjön a logikai alkalmazásnak egy adott VÉGPONTI URL-címen. A webhook-végpontnak elküldett minden kérelem művelet-végrehajtásnak számít. A kérelem és a HTTP webhook eseményindító például általános webhook-eseményindítókat is tartalmaz. A szolgáltatások vagy rendszerek egyes összekötői is rendelkeznek webhook-eseményindítókkal.
 
 <a name="actions"></a>
 
@@ -122,11 +122,11 @@ Ha a [Premium vagy a Developer](../logic-apps/connect-virtual-network-vnet-isola
 
 Az ingyenes, az alapszintű vagy a standard integrációs fiók közötti választáshoz tekintse át az alábbi használati esetek leírását:
 
-* **Ingyenes**: Ha szeretné kipróbálni a feltáró forgatókönyveket, nem pedig éles környezetben. Ez a lehetőség csak az Azure nyilvános régiói esetében érhető el, például az USA nyugati régiójában vagy Délkelet-Ázsiában, de nem az [Azure China 21Vianet](/azure/china/overview-operations) vagy a [Azure Government](../azure-government/documentation-government-welcome.md).
+* **Ingyenes** : Ha szeretné kipróbálni a feltáró forgatókönyveket, nem pedig éles környezetben. Ez a lehetőség csak az Azure nyilvános régiói esetében érhető el, például az USA nyugati régiójában vagy Délkelet-Ázsiában, de nem az [Azure China 21Vianet](/azure/china/overview-operations) vagy a [Azure Government](../azure-government/documentation-government-welcome.md).
 
-* **Alapszintű**: Ha csak az üzenetkezelést szeretné használni, vagy olyan kisméretű üzleti partnerként tevékenykedik, amely egy nagyobb üzleti egységgel rendelkező kereskedelmi partneri kapcsolattal rendelkezik
+* **Alapszintű** : Ha csak az üzenetkezelést szeretné használni, vagy olyan kisméretű üzleti partnerként tevékenykedik, amely egy nagyobb üzleti egységgel rendelkező kereskedelmi partneri kapcsolattal rendelkezik
 
-* **Standard**: ha összetettebb vállalatközi kapcsolatokkal és nagyobb számú entitással rendelkezik, amelyeket kezelni kell
+* **Standard** : ha összetettebb vállalatközi kapcsolatokkal és nagyobb számú entitással rendelkezik, amelyeket kezelni kell
 
 <a name="data-retention"></a>
 
@@ -137,6 +137,7 @@ Az integrációs szolgáltatási környezetben (ISE) futó logikai alkalmazások
 A logikai alkalmazás tárterület-felhasználásának figyeléséhez a következőket teheti:
 
 * Itt megtekintheti a logikai alkalmazás által havonta használt tárolási egységek számát GB-ban.
+
 * Megtekintheti egy adott művelet bemeneteit és kimeneteit a logikai alkalmazás futtatási előzményeiben.
 
 <a name="storage-consumption"></a>
@@ -145,11 +146,14 @@ A logikai alkalmazás tárterület-felhasználásának figyeléséhez a követke
 
 1. A Azure Portal keresse meg és nyissa meg a logikai alkalmazást.
 
-1. A logikai alkalmazás menüjében, a **figyelés**területen válassza a **metrikák**lehetőséget.
+1. A logikai alkalmazás menüjében, a **figyelés** területen válassza a **metrikák** lehetőséget.
 
-1. A jobb oldali ablaktábla **diagram címe**területén a **metrika** listából válassza a **Számlázási használat lehetőséget a tárolási felhasználás végrehajtásához**.
+1. A jobb oldali ablaktábla **diagram címe** területén a **metrika** listából válassza a **Számlázási használat lehetőséget a tárolási felhasználás végrehajtásához** .
 
    Ez a metrika adja meg a raktározási egységek számát GB/hó egységben.
+
+   > [!NOTE]
+   > Előfordulhat, hogy az 500 MB-nál kevesebb memóriát használó futtatások nem jelennek meg a figyelés nézetben, de továbbra is számlázás alatt állnak.
 
 <a name="input-output-sizes"></a>
 
@@ -157,17 +161,20 @@ A logikai alkalmazás tárterület-felhasználásának figyeléséhez a követke
 
 1. A Azure Portal keresse meg és nyissa meg a logikai alkalmazást.
 
-1. A logikai alkalmazás menüjében válassza az **Áttekintés**lehetőséget.
+1. A logikai alkalmazás menüjében válassza az **Áttekintés** lehetőséget.
 
-1. A jobb oldali ablaktáblán, a **futtatási előzmények**területen válassza ki azt a futtatást, amelybe be szeretné jelölni a bemeneteket és kimeneteket.
+1. A jobb oldali ablaktáblán, a **futtatási előzmények** területen válassza ki azt a futtatást, amelybe be szeretné jelölni a bemeneteket és kimeneteket.
 
-1. A **logikai alkalmazás futtatása**területen válassza a **Futtatás részletek**lehetőséget.
+1. A **logikai alkalmazás futtatása** területen válassza a **Futtatás részletek** lehetőséget.
 
 1. Válassza ki a megtekinteni kívánt műveletet a **logikai alkalmazás futtatása részletek** panelen, a műveletek táblában, amely felsorolja az egyes műveletek állapotát és időtartamát.
 
-1. A **logikai alkalmazás műveleti** ablaktábláján keresse meg a művelet bemeneteit és kimeneteit a **bemenetek** és **kimenetek hivatkozás**alatt.
+1. A **logikai alkalmazás műveleti** ablaktábláján keresse meg a művelet bemeneteit és kimeneteit. A **bemenetek** és **kimenetek hivatkozás** alatt keresse meg a bemenetekre és kimenetekre mutató hivatkozásokat.
 
-## <a name="next-steps"></a>További lépések
+   > [!NOTE]
+   > A hurkok esetében csak a legfelső szintű műveletek jelennek meg a bemenetek és kimenetek méretében. Beágyazott hurkok esetén a bemenetek és a kimenetek nulla méretet és hivatkozások nélkül jelennek meg.
+
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ a Azure Logic Apps](logic-apps-overview.md)
 * [Az első logikai alkalmazás létrehozása](quickstart-create-first-logic-app-workflow.md)

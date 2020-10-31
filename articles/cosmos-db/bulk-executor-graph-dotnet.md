@@ -9,14 +9,15 @@ ms.date: 05/28/2019
 ms.author: jasonh
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2d113189d1361122305f92bc86c46346e1e700f4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: eb611c77abe5bf9067bfdbabd1e2c5d2ee90ac23
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489370"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100490"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>A Graph tömeges végrehajtó .NET-kódtár használata tömeges műveletek végrehajtásához Azure Cosmos DB Gremlin API-ban
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Ez az oktatóanyag a Graph-objektumok Azure Cosmos DB Gremlin API-tárolóba történő importálásához és frissítéséhez nyújt útmutatást az Azure CosmosDB tömeges végrehajtó .NET-függvénytárának használatáról. Ez a folyamat a [tömeges végrehajtó függvénytárában](./bulk-executor-overview.md) lévő Graph osztályt használja a csúcspont-és Edge-objektumok programozott módon történő létrehozásához, majd a hálózatra irányuló kérelmek több példányának beszúrásához. Ez a viselkedés a tömeges végrehajtó könyvtárán keresztül állítható be, hogy az adatbázis és a helyi memória erőforrásai optimálisan használhatók legyenek.
 
@@ -78,7 +79,7 @@ A tömeges végrehajtó könyvtár paramétereivel kapcsolatos további informá
 
 A hasznos adatokat példányosítani kell `GremlinVertex`- és `GremlinEdge`-objektumokba. Ezeket az objektumokat így lehet létrehozni:
 
-**Csúcspontok**:
+**Csúcspontok** :
 ```csharp
 // Creating a vertex
 GremlinVertex v = new GremlinVertex(
@@ -92,7 +93,7 @@ v.AddProperty("customProperty", "value");
 v.AddProperty("partitioningKey", "value");
 ```
 
-**Élek**:
+**Élek** :
 ```csharp
 // Creating an edge
 GremlinEdge e = new GremlinEdge(
@@ -117,7 +118,7 @@ e.AddProperty("customProperty", "value");
 ### <a name="prerequisites"></a>Előfeltételek
 * Visual Studio 2019 az Azure-fejlesztési számítási feladattal. A [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/) ingyenes használatba veheti az első lépéseket.
 * Azure-előfizetés. Itt hozhat létre [ingyenes Azure-fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db). Azt is megteheti, hogy az Azure-előfizetés nélkül is létrehozhat egy Cosmos-adatbázis-fiókot, amely [ingyenes kipróbálási Azure Cosmos db biztosít](https://azure.microsoft.com/try/cosmosdb/) .
-* Azure Cosmos DB Gremlin API-adatbázis **korlátlan gyűjteménnyel**. Ez az útmutató bemutatja, hogy hogyan foghat neki [az Azure Cosmos DB Gremlin API használatának a .NET környezetben](./create-graph-dotnet.md).
+* Azure Cosmos DB Gremlin API-adatbázis **korlátlan gyűjteménnyel** . Ez az útmutató bemutatja, hogy hogyan foghat neki [az Azure Cosmos DB Gremlin API használatának a .NET környezetben](./create-graph-dotnet.md).
 * Git. További információért tekintse meg a [Git letöltési oldalát](https://git-scm.com/downloads).
 
 ### <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
@@ -139,9 +140,9 @@ Az `App.config` fájlban az alábbi konfigurációs értékek adhatók meg:
 
 Beállítás|Leírás
 ---|---
-`EndPointUrl`|Ez a **.NET SDK-végpont**, amely az Azure Cosmos DB Gremlin API-adatbázisfiók Áttekintés paneljén található. A formátuma a következő: `https://your-graph-database-account.documents.azure.com:443/`
+`EndPointUrl`|Ez a **.NET SDK-végpont** , amely az Azure Cosmos DB Gremlin API-adatbázisfiók Áttekintés paneljén található. A formátuma a következő: `https://your-graph-database-account.documents.azure.com:443/`
 `AuthorizationKey`|Ez az Azure Cosmos DB-fiók alatt listázott elsődleges vagy másodlagos kulcs. További információért tekintse meg [az Azure Cosmos DB-adatokhoz való hozzáférés biztonságossá tételével foglalkozó cikket](./secure-access-to-data.md#primary-keys).
-`DatabaseName`, `CollectionName`|Ezek a **céladatbázis és -gyűjtemény nevei**. Ha a `ShouldCleanupOnStart` értéke `true`, a rendszer elveti a korábbi neveket, és ezekkel az értékekkel, valamint a `CollectionThroughput` értékkel egy új adatbázist és gyűjteményt hoz létre. Hasonlóképp, ha a `ShouldCleanupOnFinish` értéke `true`, a rendszer az értékek használatával törli az adatbázist, amint az adatok feldolgozása befejeződött. Vegye figyelembe, hogy a célgyűjteménynek **korlátlan gyűjteménynek kell lennie**.
+`DatabaseName`, `CollectionName`|Ezek a **céladatbázis és -gyűjtemény nevei** . Ha a `ShouldCleanupOnStart` értéke `true`, a rendszer elveti a korábbi neveket, és ezekkel az értékekkel, valamint a `CollectionThroughput` értékkel egy új adatbázist és gyűjteményt hoz létre. Hasonlóképp, ha a `ShouldCleanupOnFinish` értéke `true`, a rendszer az értékek használatával törli az adatbázist, amint az adatok feldolgozása befejeződött. Vegye figyelembe, hogy a célgyűjteménynek **korlátlan gyűjteménynek kell lennie** .
 `CollectionThroughput`|A rendszer ezt egy új gyűjtemény létrehozásához használja, ha a `ShouldCleanupOnStart` értéke `true`.
 `ShouldCleanupOnStart`|Ez a program futtatása előtt törli az adatbázis-fiókot és -gyűjteményeket, és újakat hoz létre a `DatabaseName`, `CollectionName` és `CollectionThroughput` értékekkel.
 `ShouldCleanupOnFinish`|Ez eltávolítja a megadott `DatabaseName` és `CollectionName` értékkel rendelkező adatbázis-fiókot és -gyűjteményeket a program futtatása után.

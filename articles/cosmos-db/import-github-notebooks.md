@@ -6,14 +6,15 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: d85f020152fa3cadb1d437c125d327f5e895e14e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46170a0f723e912c370eb6e068542a02b9959948
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85262888"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101476"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>Jegyzetfüzetek importálása egy GitHub-tárházból a Azure Cosmos DBba
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Miután engedélyezte az Azure Cosmos-fiókok [notebook-támogatását](enable-notebooks.md) , új jegyzetfüzeteket hozhat létre, új jegyzetfüzeteket tölthet fel a helyi számítógépről, vagy importálhatja a meglévő jegyzetfüzeteket a GitHub-fiókjaiból. Ez a cikk bemutatja, hogyan csatlakoztatható a jegyzetfüzetek munkaterülete a GitHubhoz, és hogyan importálhatja a jegyzetfüzeteket egy GitHub-tárházból az Azure Cosmos-fiókjába. Az importálás után futtathatja őket, módosításokat végezhet, és mentheti a módosításokat a GitHubra.
 
@@ -27,7 +28,7 @@ A saját GitHub-adattárakhoz vagy más nyilvános GitHub-adattárakhoz is csatl
 
 1. Válassza a **Kapcsolódás a githubhoz** menüpontot.
 
-1. Megnyílik egy lap, ahol dönthet úgy, hogy csak a **nyilvános** vagy **nyilvános és a privát**adattárakhoz tud csatlakozni.  A kötelező beállítás kiválasztása után válassza a **hozzáférés engedélyezése**lehetőséget. A GitHub-fiókban lévő adattárak eléréséhez Azure Cosmos DB szükséges a hitelesítés.
+1. Megnyílik egy lap, ahol dönthet úgy, hogy csak a **nyilvános** vagy **nyilvános és a privát** adattárakhoz tud csatlakozni.  A kötelező beállítás kiválasztása után válassza a **hozzáférés engedélyezése** lehetőséget. A GitHub-fiókban lévő adattárak eléréséhez Azure Cosmos DB szükséges a hitelesítés.
 
    :::image type="content" source="./media/import-github-notebooks/authorize-access-github.png" alt-text="A GitHub-adattárakhoz való hozzáférés engedélyezése Azure Cosmos DB&quot;:::
 
@@ -51,7 +52,7 @@ A GitHub-fiók jegyzetfüzetek munkaterületről való leválasztásához nyissa
 
 Szerkeszthet egy meglévő jegyzetfüzetet, vagy hozzáadhat egy új jegyzetfüzetet a tárházhoz, és visszamentheti a módosításokat a GitHubra.
 
-A meglévő jegyzetfüzetek szerkesztését követően válassza a **Mentés**lehetőséget. Megnyílik egy párbeszédpanel, ahol megadhatja a végrehajtott módosítások véglegesítő üzenetét. Válassza a **commit (véglegesítés** ) lehetőséget, és a rendszer frissíti a a githubon A frissítések érvényesítéséhez jelentkezzen be a GitHub-fiókjába, és ellenőrizze a véglegesítő előzményeket.
+A meglévő jegyzetfüzetek szerkesztését követően válassza a **Mentés** lehetőséget. Megnyílik egy párbeszédpanel, ahol megadhatja a végrehajtott módosítások véglegesítő üzenetét. Válassza a **commit (véglegesítés** ) lehetőséget, és a rendszer frissíti a a githubon A frissítések érvényesítéséhez jelentkezzen be a GitHub-fiókjába, és ellenőrizze a véglegesítő előzményeket.
 
 A módosítások véglegesítése után a szokásos GitHub-folyamat során általában leküldi a módosításokat egy távoli rendszerbe. Ebben az esetben azonban a véglegesítési lehetőség a frissítések a GitHubra történő "előkészítését, véglegesítését és kitolását" szolgálja.
 
@@ -59,7 +60,7 @@ A módosítások véglegesítése után a szokásos GitHub-folyamat során álta
 
 1. A rendszer átirányítja a &quot;github.com":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg [Azure Cosmos db Jupyter notebookok](cosmosdb-jupyter-notebooks.md) előnyeit.
 

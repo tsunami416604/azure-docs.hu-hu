@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: tisande
-ms.openlocfilehash: c4ae66884602989284a427bdc33de7612bd9a8df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdbe0f9754cc82ef790409cf2b36a7203b90855b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84484324"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099283"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>ORDER BY záradék Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A választható `ORDER BY` záradék a lekérdezés által visszaadott eredmények rendezési sorrendjét határozza meg.
 
@@ -79,7 +80,7 @@ Az eredmény a következő:
     ]
 ```
 
-A következő lekérdezés lekéri a családot `id` az elemek létrehozási dátumának megfelelően. Az elem `creationDate` az a szám, amely az *időpontot*jelöli, vagy az eltelt idő a Jan. 1, 1970 másodpercben.
+A következő lekérdezés lekéri a családot `id` az elemek létrehozási dátumának megfelelően. Az elem `creationDate` az a szám, amely az *időpontot* jelöli, vagy az eltelt idő a Jan. 1, 1970 másodpercben.
 
 ```sql
     SELECT f.id, f.creationDate
@@ -221,7 +222,7 @@ Az eredmény a következő:
 
 Nem szabályozhatja, hogy a különböző típusok milyen sorrendben jelenjenek meg az eredmények között. A fenti példában megmutatjuk, hogyan rendezték a nem definiált értékeket a karakterlánc értékei előtt. Ha például inkább a nem definiált értékek rendezését szeretné vezérelni, akkor a nem definiált tulajdonságokat hozzárendelhet egy "aaaaaaaaa" vagy "zzzzzzzz" karakterlánc-értéket, hogy az első vagy az utolsó legyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Bevezetés](sql-query-getting-started.md)
 - [Az Azure Cosmos DB indexelési szabályzatai](index-policy.md)

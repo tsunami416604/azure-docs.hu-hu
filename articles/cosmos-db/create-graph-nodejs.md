@@ -9,14 +9,15 @@ ms.topic: quickstart
 ms.date: 06/05/2019
 ms.author: jasonh
 ms.custom: devx-track-js
-ms.openlocfilehash: c44f7218734af4bc3144137356b85e8845208f6f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 546187b49e1186d665fe32b3f8d632a0281bffa4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409374"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099674"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Gyors útmutató: Node.js-alkalmazás létrehozása Azure Cosmos DB Gremlin API-fiók használatával
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Gremlin-konzol](create-graph-gremlin-console.md)
@@ -95,7 +96,7 @@ Ez a konzol alkalmazás a nyílt forráskódú [Gremlin Node.js](https://www.npm
 
     ```
 
-  A konfigurációk mind a *config.jsban *szerepelnek, amelyeket a [következő szakaszban](#update-your-connection-string)szerkesztünk.
+  A konfigurációk mind a *config.jsban* szerepelnek, amelyeket a [következő szakaszban](#update-your-connection-string)szerkesztünk.
 
 * A rendszer függvények sorozatát definiálja a különböző Gremlin-műveletek végrehajtásához. Ez az egyik közülük:
 
@@ -151,13 +152,13 @@ Ez a konzol alkalmazás a nyílt forráskódú [Gremlin Node.js](https://www.npm
 
 1. Nyissa meg a *config.js* fájlt. 
 
-2. A *config.jsban *adja meg a `config.endpoint` **Gremlin Endpoint** értékkel rendelkező kulcsot a Azure Portal Cosmos db-fiókjának **Áttekintés** lapján. 
+2. A *config.jsban* adja meg a `config.endpoint` **Gremlin Endpoint** értékkel rendelkező kulcsot a Azure Portal Cosmos db-fiókjának **Áttekintés** lapján. 
 
     `config.endpoint = "https://<your_Gremlin_account_name>.gremlin.cosmosdb.azure.com:443/";`
 
     :::image type="content" source="./media/create-graph-nodejs/gremlin-uri.png" alt-text="Hozzáférési kulcs megtekintése és másolása a Azure Portal, áttekintés oldalon":::
 
-3. A *config.jsban *adja meg a config. PrimaryKey értéket az **elsődleges kulcs** értékével az Azure Portal Cosmos db fiókjának **kulcsok** oldaláról. 
+3. A *config.jsban* adja meg a config. PrimaryKey értéket az **elsődleges kulcs** értékével az Azure Portal Cosmos db fiókjának **kulcsok** oldaláról. 
 
     `config.primaryKey = "PRIMARYKEY";`
 
@@ -191,7 +192,7 @@ module.exports = config;
 
 Most visszaléphet az Adatkezelőbe az Azure Portalon, és megtekintheti, lekérdezheti, módosíthatja, és használatba veheti az új gráfadatokat.
 
-Az Adatkezelőben az új adatbázis a **Gráfok** ablaktáblán jelenik meg. Bontsa ki az adatbázist, majd a tárolót, és válassza a **Gráfot**.
+Az Adatkezelőben az új adatbázis a **Gráfok** ablaktáblán jelenik meg. Bontsa ki az adatbázist, majd a tárolót, és válassza a **Gráfot** .
 
 A mintaalkalmazás által létrehozott adatok a **Gráf** lap következő panelén jelennek meg a **Szűrő alkalmazása** gomb kiválasztásakor.
 
@@ -205,7 +206,7 @@ A szűrő teszteléséhez hajtsa végre a `g.V()` függvényt a következővel: 
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan hozhat létre egy Azure Cosmos DB fiókot, hogyan hozhat létre egy gráfot Adatkezelő használatával, és hogyan futtathat egy Node.js alkalmazást a gráfhoz való adatfelvételhez. Mostantól a Gremlin használatával összetettebb lekérdezéseket is létrehozhat, és hatékony gráfbejárási logikákat implementálhat. 
 

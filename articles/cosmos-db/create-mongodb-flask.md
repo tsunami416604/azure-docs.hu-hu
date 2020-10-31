@@ -9,14 +9,15 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: devx-track-python
-ms.openlocfilehash: a0545ea61879b30349403e019ead69ba14f75cb9
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 58f22a335f4c619a6348e9e127e60f5a79f658b2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486497"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099657"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Gyors útmutató: Python-alkalmazás létrehozása a MongoDB-hez készült Azure Cosmos DB API-val
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -99,7 +100,7 @@ A következő kódrészletek mind a *app.py* fájlból származnak, és a helyi 
 
 3. Ezután állítsa be a környezeti változót a `set FLASK_APP=app.py` , PowerShell- `$env:FLASK_APP = app.py` szerkesztőkhöz, vagy Mac-et használó lombik alkalmazáshoz `export FLASK_APP=app.py` . 
 
-4. Futtassa az alkalmazást a következővel, `flask run` és keresse meg a *http: \/ /127.0.0.1:5000/*.
+4. Futtassa az alkalmazást a következővel, `flask run` és keresse meg a *http: \/ /127.0.0.1:5000/* .
 
 5. Adjon hozzá és távolítson el feladatokat, és figyelje meg, ahogyan változnak a gyűjteményben.
 
@@ -113,7 +114,7 @@ Ha a kódot egy élő Azure Cosmos DB-fiókkal szeretné tesztelni, a fiók lét
 
 Ha tesztelni szeretné a kódot az élő Azure Cosmos DB fiókkal, szerezze be a kapcsolódási karakterlánc adatait. Ezután másolja azokat az alkalmazásba.
 
-1. A Azure Portal Azure Cosmos DB-fiókjában a bal oldali navigációs sávon válassza a **kapcsolatok karakterlánc**lehetőséget, majd válassza az **írási/olvasási kulcsok**elemet. A Felhasználónév, a kapcsolódási karakterlánc és a jelszó másolásához a képernyő jobb oldalán található másolási gombokat fogja használni. 
+1. A Azure Portal Azure Cosmos DB-fiókjában a bal oldali navigációs sávon válassza a **kapcsolatok karakterlánc** lehetőséget, majd válassza az **írási/olvasási kulcsok** elemet. A Felhasználónév, a kapcsolódási karakterlánc és a jelszó másolásához a képernyő jobb oldalán található másolási gombokat fogja használni. 
 
 2. Nyissa meg a gyökérkönyvtárban lévő *app.py* fájlt.
 
@@ -152,7 +153,7 @@ Ha nem szeretne elágazást létrehozni ebből a tárházból, válassza az alá
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 

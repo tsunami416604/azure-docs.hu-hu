@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
-ms.openlocfilehash: e4bbb27a2f49027ed5a456ad824f54b9c92a899c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 967e07e55599be0a614e0b6097ae4745f6c7081f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83005857"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100082"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>FROM záradék Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A FROM ( `FROM <from_specification>` ) záradék nem kötelező, kivéve, ha a forrást a lekérdezésben később szűrik vagy tervezték. Egy lekérdezés, például `SELECT * FROM Families` enumerálások a teljes `Families` tárolón. A tároló neve helyett a speciális azonosító GYÖKERÉt is használhatja a tárolóhoz.
 
@@ -163,7 +164,7 @@ Az eredmény a következő:
     ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Bevezetés](sql-query-getting-started.md)
 - [SELECT záradék](sql-query-select.md)

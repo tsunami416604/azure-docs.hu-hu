@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: d27eb4dc6c4e4bd8f0a744ad925d91aee0faa8d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8add203fabf867e22dbfe98b2bc9c632e62018b8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567145"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100524"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Mi a Azure Cosmos DB Analytical Store (előzetes verzió)?
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
 > [!IMPORTANT]
 > Azure Cosmos DB analitikus tároló jelenleg előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -169,7 +170,7 @@ Miután az analitikai tároló engedélyezve lett a tranzakciós munkaterhelése
 
 Ha globálisan elosztott Azure Cosmos DB-fiókkal rendelkezik, a tárolóhoz tartozó analitikai tároló engedélyezése után a fiók minden régiójában elérhető lesz.  Az operatív adatai minden változása globálisan replikálódik minden régióban. Az elemzési lekérdezéseket hatékonyan futtathatja az adatai legközelebbi regionális példányán Azure Cosmos DBban.
 
-### <a name="security"></a>Biztonság
+### <a name="security"></a>Biztonsági őr
 
 Az analitikai tárolóval megegyező hitelesítés megegyezik egy adott adatbázis tranzakciós tárolójával. A hitelesítéshez elsődleges vagy csak olvasható kulcsokat is használhat. A szinapszis Studióban használhatja a társított szolgáltatást, hogy megakadályozza a Azure Cosmos DB kulcsok beillesztését a Spark-jegyzetfüzetekben. A társított szolgáltatáshoz való hozzáférés mindenki számára elérhető, aki hozzáfér a munkaterülethez.
 

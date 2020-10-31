@@ -8,14 +8,16 @@ ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 211121e21502e9cd4929169053a8ad58a9d7b21b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 735c098fcf6fed76019850a1cb58d9eb6c485b7a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476926"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101017"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout-exceptions"></a>A .NET SDK-kérelmek időtúllépési kivételeinek diagnosztizálása és megoldása Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 A HTTP 408 hiba akkor fordul elő, ha az SDK nem tudta befejezni a kérelmet az időkorlát lejárta előtt.
 
 ## <a name="customize-the-timeout-on-the-azure-cosmos-db-net-sdk"></a>Az időtúllépés testreszabása a Azure Cosmos DB .NET SDK-ban

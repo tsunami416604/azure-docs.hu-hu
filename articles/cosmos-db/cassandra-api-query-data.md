@@ -8,14 +8,15 @@ ms.reviewer: sngun
 ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: e1e6f977d47d98e7c9f5300dc8165ee44a531499
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 693984ceaef1a71ebfbe4122c18a45a563c9c101
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91564867"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100433"
 ---
 # <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>Oktatóanyag: adatok lekérdezése Cassandra API-fiókból Azure Cosmos DB
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Fejlesztőként lehetnek olyan alkalmazások, amelyek kulcs/érték párokat használnak. A kulcs/érték típusú adattárolók tárolására és lekérdezésére Cassandra API fiókot használhat a Azure Cosmos DBban. Ez az oktatóanyag azt mutatja be, hogyan lehet lekérdezni a felhasználói adatait egy Cassandra API-fiókból a Azure Cosmos DB Java-alkalmazás használatával. A Java-alkalmazás a [Java-illesztőprogramot](https://github.com/datastax/java-driver) használja, és lekérdezi a felhasználói adatforrásokat, például a felhasználói azonosítót, a felhasználónevet és a felhasználói város nevét. 
 
@@ -102,13 +103,13 @@ Az alábbi lépéseket követve kérdezze le a Cassandra API-fiók adatait:
    java -cp target/cosmosdb-cassandra-examples.jar com.azure.cosmosdb.cassandra.examples.UserProfile
    ```
 
-2. Nyissa meg az Azure Portalon az **Adatkezelőt**, és ellenőrizze, hogy a felhasználói tábla törlődött-e.
+2. Nyissa meg az Azure Portalon az **Adatkezelőt** , és ellenőrizze, hogy a felhasználói tábla törlődött-e.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
-Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, az Azure Cosmos-fiókot és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális géphez tartozó erőforráscsoportot, válassza a **Törlés**lehetőséget, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
+Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, az Azure Cosmos-fiókot és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális géphez tartozó erőforráscsoportot, válassza a **Törlés** lehetőséget, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan lehet lekérdezni egy Cassandra API fiók adatait a Azure Cosmos DBban. Továbbléphet a következő cikkre:
 

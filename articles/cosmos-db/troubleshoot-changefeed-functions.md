@@ -7,14 +7,15 @@ ms.date: 03/13/2020
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 7bf7d418e3f2680b32f61e42cffc76c921068508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9da07dc76bdd9273b70f68ee1abcddfa04519fda
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79365508"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101034"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Problémák diagnosztizálása és hibaelhárítása Azure Functions trigger használatakor Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ez a cikk a gyakori problémákról, a megkerülő megoldásokról és a diagnosztikai lépésekről nyújt útmutatást, ha a [Cosmos DB Azure functions triggert](change-feed-functions.md)használja.
 
@@ -31,7 +32,7 @@ Ez a cikk mindig Azure Functions v2-re hivatkozik, ha a futtatókörnyezetet meg
 
 A kiterjesztési csomag legfontosabb funkciója, hogy támogatást nyújtson a Azure Functions-triggerhez és a Cosmos DB-kötésekhez. Emellett tartalmazza a [Azure Cosmos db .net SDK](sql-api-sdk-dotnet-core.md)-t is, amely akkor hasznos, ha az trigger és a kötések használata nélkül szeretné interaktívan használni a Azure Cosmos db.
 
-Ha az Azure Cosmos DB SDK-t szeretné használni, győződjön meg arról, hogy nem adja hozzá a projekthez egy másik NuGet-csomag hivatkozását. Ehelyett az **SDK-referenciát a Azure functions "kiterjesztési csomagján keresztül oldja**fel. Az Azure Cosmos DB SDK használata az triggertől és a kötéstől függetlenül
+Ha az Azure Cosmos DB SDK-t szeretné használni, győződjön meg arról, hogy nem adja hozzá a projekthez egy másik NuGet-csomag hivatkozását. Ehelyett az **SDK-referenciát a Azure functions "kiterjesztési csomagján keresztül oldja** fel. Az Azure Cosmos DB SDK használata az triggertől és a kötéstől függetlenül
 
 Emellett, ha manuálisan hozza létre az [Azure Cosmos db SDK-ügyfél](./sql-api-sdk-dotnet-core.md)saját példányát, kövesse az ügyfél csak egy példányának [használatát egy egyedi minta megközelítéssel](../azure-functions/manage-connections.md#documentclient-code-example-c). Ez a folyamat elkerüli a lehetséges szoftvercsatorna-problémákat a műveletekben.
 
@@ -94,7 +95,7 @@ Ebben az esetben a legjobb megoldás, ha blokkokat ad hozzá a `try/catch` kódb
 > [!NOTE]
 > Az Azure Functions Cosmos DB-eseményindítója alapértelmezés szerint nem próbálkozik újra a módosításköteggel, ha a kódvégrehajtás során nem kezelt kivétel lépett fel. Ez azt jelenti, hogy a módosítások nem érkeznek meg a célhelyre, mert nem kell feldolgoznia azokat.
 
-Ha úgy találja, hogy a trigger nem fogadta el a módosításokat, a leggyakoribb forgatókönyv az, hogy **egy másik Azure-függvény fut**. Lehet, hogy egy másik Azure-függvény üzembe helyezése az Azure-ban vagy egy olyan Azure-függvény, amely egy olyan fejlesztői gépen fut, amely **pontosan ugyanazokkal a konfigurációval** rendelkezik (ugyanazokkal a figyelt és bérlet tárolókkal), és ez az Azure-függvény ellopja az Azure-függvény feldolgozására várható változások egy részhalmazát.
+Ha úgy találja, hogy a trigger nem fogadta el a módosításokat, a leggyakoribb forgatókönyv az, hogy **egy másik Azure-függvény fut** . Lehet, hogy egy másik Azure-függvény üzembe helyezése az Azure-ban vagy egy olyan Azure-függvény, amely egy olyan fejlesztői gépen fut, amely **pontosan ugyanazokkal a konfigurációval** rendelkezik (ugyanazokkal a figyelt és bérlet tárolókkal), és ez az Azure-függvény ellopja az Azure-függvény feldolgozására várható változások egy részhalmazát.
 
 Emellett a forgatókönyv érvényesíthető is, ha tudja, hány Azure függvényalkalmazás példány fut. Ha megvizsgálja a bérletek tárolóját, és megszámolja a címbérleti elemek számát, a bennük lévő tulajdonság különböző értékeinek meg kell `Owner` egyezniük a függvényalkalmazás példányainak számával. Ha több tulajdonos van, mint az ismert Azure függvényalkalmazás-példányok, az azt jelenti, hogy ezek a további tulajdonosok a módosítások "ellopása".
 
@@ -119,7 +120,7 @@ A probléma megkerüléséhez távolítsa el a hozzáadott manuális NuGet-hivat
 
 Ahogy azt fentebb említettük, hogy a [módosítások túl sokáig tartanak](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received), az Azure Function (alapértelmezés szerint 5 másodperc) az új módosítások ellenőrzése előtt alvó állapotba lép (a magas ru-használat elkerüléséhez). Ezt a szüneteltetési időt az eseményindító [konfigurációjának](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)`FeedPollDelay/feedPollDelay` beállításában adhatja meg (ezredmásodpercben).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Azure Functions figyelésének engedélyezése](../azure-functions/functions-monitoring.md)
 * [A .NET SDK Azure Cosmos DB hibaelhárítása](./troubleshoot-dot-net-sdk.md)

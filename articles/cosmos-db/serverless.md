@@ -6,14 +6,15 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: ef681f861a14fbbf86e7e350441d05f84fc95f58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75d22a5021c7c8ae3a12f25644f2875e0ccf8cdd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88757897"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098756"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Kiszolgáló nélküli Azure Cosmos DB (előzetes verzió)
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 > [!IMPORTANT]
 > Azure Cosmos DB kiszolgáló nélküli szolgáltatás jelenleg előzetes verzióban érhető el. Ez az előzetes verzió szolgáltatói szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -32,9 +33,9 @@ Azure Cosmos DB használatakor minden adatbázis-művelethez a [kérelmek egysé
 
 Azure Cosmos DB a kiszolgáló nélküli legmegfelelőbb forgatókönyvek, ahol a várt:
 
-- **Kis forgalmú forgalom**: mivel az ilyen helyzetekben a kiépítési kapacitás nem szükséges, és lehet, hogy költséghatékony
-- **Mérsékelt**felskálázás: mivel a kiszolgáló nélküli tárolók másodpercenként legfeljebb 5 000 kérést tudnak biztosítani
-- **Mérsékelt teljesítmény**: mivel a kiszolgáló nélküli tárolók [meghatározott teljesítménnyel](#performance) rendelkeznek
+- **Kis forgalmú forgalom** : mivel az ilyen helyzetekben a kiépítési kapacitás nem szükséges, és lehet, hogy költséghatékony
+- **Mérsékelt** felskálázás: mivel a kiszolgáló nélküli tárolók másodpercenként legfeljebb 5 000 kérést tudnak biztosítani
+- **Mérsékelt teljesítmény** : mivel a kiszolgáló nélküli tárolók [meghatározott teljesítménnyel](#performance) rendelkeznek
 
 Ezen okok miatt a kiszolgáló nélküli Azure Cosmos DB a következő típusú számítási feladatoknak kell figyelembe vennie:
 
@@ -81,14 +82,14 @@ Az [itt](monitor-request-unit-usage.md)leírtak szerint ugyanazt a diagramot has
 
 A kiszolgáló nélküli erőforrások bizonyos teljesítménybeli jellemzőket adnak meg, amelyek különböznek a kiosztott átviteli sebességtől:
 
-- **Rendelkezésre állás**: miután a kiszolgáló nélküli ajánlatot általánosan elérhetővé válik, a kiszolgáló nélküli tárolók rendelkezésre állása a 99,9%-os szolgáltatói szerződés (SLA) lesz, ha Availability Zones (zóna redundancia) nem használatos. Az SLA értéke 99,99%, ha Availability Zones van használatban.
-- **Késés**: miután a kiszolgáló nélküli ajánlatot általánosan elérhetővé válik, a kiszolgáló nélküli tárolók késését az írásokhoz 10 ezredmásodperc vagy annál kisebb szolgáltatási szintű célkitűzés (SLO) fogja fedezni. A pont – olvasási művelet egy adott elem beolvasását jelenti az azonosító és a partíciós kulcs értéke alapján.
-- **Feltörtség**: miután a kiszolgáló nélküli ajánlat általánosan elérhetővé válik, a kiszolgáló nélküli tárolók feltörését a 95%-os szolgáltatási szint célkitűzése (SLO) fogja fedezni. Ez azt jelenti, hogy a maximális kiváltási idő legalább 95%-át elérheti.
+- **Rendelkezésre állás** : miután a kiszolgáló nélküli ajánlatot általánosan elérhetővé válik, a kiszolgáló nélküli tárolók rendelkezésre állása a 99,9%-os szolgáltatói szerződés (SLA) lesz, ha Availability Zones (zóna redundancia) nem használatos. Az SLA értéke 99,99%, ha Availability Zones van használatban.
+- **Késés** : miután a kiszolgáló nélküli ajánlatot általánosan elérhetővé válik, a kiszolgáló nélküli tárolók késését az írásokhoz 10 ezredmásodperc vagy annál kisebb szolgáltatási szintű célkitűzés (SLO) fogja fedezni. A pont – olvasási művelet egy adott elem beolvasását jelenti az azonosító és a partíciós kulcs értéke alapján.
+- **Feltörtség** : miután a kiszolgáló nélküli ajánlat általánosan elérhetővé válik, a kiszolgáló nélküli tárolók feltörését a 95%-os szolgáltatási szint célkitűzése (SLO) fogja fedezni. Ez azt jelenti, hogy a maximális kiváltási idő legalább 95%-át elérheti.
 
 > [!NOTE]
 > Az Azure előzetes verziójának részeként Azure Cosmos DB kiszolgáló nélküli kizárva a szolgáltatói szerződések (SLA). A fent említett teljesítmény-jellemzők előzetes verzióként jelennek meg, ha általánosan elérhető az ajánlat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg a kiszolgáló nélküli használattal a következő cikkekkel:
 

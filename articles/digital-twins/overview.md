@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 7ff1e2f00b20344fc19d797ed5bafdfbc2113b66
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f0c19130312db4e6ef500a0750f40359931d48d2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044666"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099113"
 ---
 # <a name="what-is-azure-digital-twins"></a>Mi az az Azure Digital Twins?
 
@@ -52,7 +52,7 @@ A minta vizualizáció a következőképpen néz ki:
 
 Az Azure Digital Twins gazdag **eseményt** biztosít a gráfnak az adatfeldolgozással és az üzleti logikával való folyamatos megőrzéséhez. A külső számítási erőforrások, például a [Azure functions](../azure-functions/functions-overview.md)összekapcsolhatók az adatfeldolgozás rugalmas, testre szabott módon történő elvégzéséhez.
 
-Az Azure Digital Twins hatékony **lekérdezési API**-ját használva az élő végrehajtási környezetből is kinyerheti az eredményeket. Az API lehetővé teszi a részletes keresési feltételekkel való lekérdezést, beleértve a tulajdonságértékek, a kapcsolatok, a kapcsolati tulajdonságok, a modell információit és egyebeket. A lekérdezéseket kombinálhatja a környezettel kapcsolatos információk széles körének összegyűjtésével, valamint az Ön számára fontos egyéni kérdések megválaszolásával is.
+Az Azure Digital Twins hatékony **lekérdezési API** -ját használva az élő végrehajtási környezetből is kinyerheti az eredményeket. Az API lehetővé teszi a részletes keresési feltételekkel való lekérdezést, beleértve a tulajdonságértékek, a kapcsolatok, a kapcsolati tulajdonságok, a modell információit és egyebeket. A lekérdezéseket kombinálhatja a környezettel kapcsolatos információk széles körének összegyűjtésével, valamint az Ön számára fontos egyéni kérdések megválaszolásával is.
 
 ### <a name="input-from-iot-and-business-systems"></a>A IoT és az üzleti rendszerek bemenetei
 
@@ -64,7 +64,7 @@ Az Azure digitális Twins más adatforrásokból is átadható, REST API-kkal va
 
 ### <a name="output-to-tsi-storage-and-analytics"></a>Az ÁME, a Storage és az Analytics kimenete
 
-Az Azure Digital Twins-modellben lévő információk további elemzésekhez vagy tároláshoz is átirányíthatók az alárendelt Azure-szolgáltatásokhoz. Ezt olyan esemény- **útvonalakon**keresztül biztosítjuk, amelyek az [Event Hub](../event-hubs/event-hubs-about.md), a [Event Grid](../event-grid/overview.md)vagy a [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) használatával irányítják a kívánt adatfolyamatokat.
+Az Azure Digital Twins-modellben lévő információk további elemzésekhez vagy tároláshoz is átirányíthatók az alárendelt Azure-szolgáltatásokhoz. Ezt olyan esemény- **útvonalakon** keresztül biztosítjuk, amelyek az [Event Hub](../event-hubs/event-hubs-about.md), a [Event Grid](../event-grid/overview.md)vagy a [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) használatával irányítják a kívánt adatfolyamatokat.
 
 Az esemény-útvonalakkal többek között az alábbiakat teheti:
 * Azure digitális Twins-beli adattárolók tárolása [Azure Data Lake](../storage/blobs/data-lake-storage-introduction.md)
@@ -90,18 +90,14 @@ Az alábbi ábra azt mutatja be, hogy az Azure Digital Twins egy nagyobb Azure I
 
 :::image type="content" source="media/overview/solution-context.png" alt-text="Képernyőkép az Azure Digital Twins Explorer alkalmazásról, amely a digitális ikreket jelképező csomópontok gráfját mutatja" border="false" lightbox="media/overview/solution-context.png":::
 
-## <a name="service-limits-in-public-preview"></a>Nyilvános előzetes verzióban elérhető a szolgáltatás korlátai
+## <a name="service-limits"></a>Szolgáltatási korlátozások
 
-> [!IMPORTANT]
-> Az Azure Digital Twins jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [*Microsoft Azure előzetes verziójának kiegészítő használati feltételei*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-A nyilvános előzetes verzióban elérhető Azure Digital Twins-korlátok listáját a következő témakörben tekintheti meg [*: referenciák a nyilvános előzetes verziókra vonatkozó korlátozások*](reference-service-limits.md).
+Az Azure Digital Twins-korlátok listáját a következő témakörben találhatja [*: referenciák: szolgáltatási korlátok*](reference-service-limits.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha az Azure Digital Twins korábbi előzetes kiadásával dolgozott együtt, Ismerje meg, hogy mi változott:
-* [*Áttekintés: eltérések az előző kiadástól*](overview-differences.md)
+Ha már használta az Azure Digital Twins első előzetes kiadását (október 2018), Ismerje meg, hogy mi változott:
+* [*Áttekintés: az első kiadástól való eltérések*](overview-differences.md)
 
 Vagy folytassa a munkát az Azure Digital Twins használatának első oktatóanyagával:
 

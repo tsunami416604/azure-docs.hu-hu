@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 40d277ff38691e2cb74bd4d5d78a666c304acfcd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5f60b9f321b7d1ef75a1927310c788ff3ee3270
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78304021"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100847"
 ---
 # <a name="cos-azure-cosmos-db"></a>COS (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Az adott kifejezésben megadott szög (radián) trigonometriai koszinuszát adja vissza.  
   
 ## <a name="syntax"></a>Szintaxis
@@ -50,7 +52,7 @@ SELECT COS(14.78) AS cos
 
 Ez a rendszerfüggvény nem fogja használni az indexet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: mjbrown
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 95337f88133c9493250e9197654288dc0af59ed1
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 35c0b5529cd9ada612caf4884683fbeaacb25b33
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486140"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100133"
 ---
 # <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>Többrégiós írások konfigurálása a Azure Cosmos DBt használó alkalmazásokban
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ha egy fiók több írási régióval lett létrehozva, akkor az alkalmazásban két módosítást kell végeznie a DocumentClient ConnectionPolicy, hogy lehetővé váljon a többrégiós írások és a több-vezérelt vezérlési képesség a Azure Cosmos DB. A ConnectionPolicy belül állítsa a UseMultipleWriteLocations értéket True értékre, és adja meg annak a régiónak a nevét, ahol az alkalmazás telepítve van a SetCurrentLocation. Ezzel feltölti a PreferredLocations tulajdonságot az átadott hely földrajzi közelsége alapján. Ha az új régiót később hozzáadják a fiókhoz, az alkalmazást nem kell frissíteni vagy újratelepíteni, a rendszer automatikusan felismeri a szorosabb régiót, és lehetővé teszi, hogy a helyi esemény történjen.
 

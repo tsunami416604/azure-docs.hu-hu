@@ -9,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: memccror
-ms.openlocfilehash: d65f4b55be317234c10a0e90cfe413d9e38a6a90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 507af87c3126be00a802bcbc5170f8ad364c06fc
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84696779"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099317"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>Távoli asztali kapcsolat engedélyezése az Azure-beli szerepkörökhöz Cloud Services
 
@@ -31,11 +31,11 @@ A fejlesztés során engedélyezheti a Távoli asztal kapcsolatát, ha a szolgá
 
 A Azure Portal a Távoli asztal bővítmény megközelítését használja, így Távoli asztal még az alkalmazás telepítése után is engedélyezheti. A felhőalapú szolgáltatás **Távoli asztal** beállításai lehetővé teszik a távoli asztal engedélyezését, a virtuális gépekhez való kapcsolódáshoz használt helyi rendszergazdai fiók, a hitelesítésben használt tanúsítvány és a lejárati dátum beállításának módosítását.
 
-1. Kattintson a **Cloud Services**elemre, válassza ki a Cloud Service nevét, majd válassza a **Távoli asztal**lehetőséget.
+1. Kattintson a **Cloud Services** elemre, válassza ki a Cloud Service nevét, majd válassza a **Távoli asztal** lehetőséget.
 
-    ![Cloud Services Távoli asztal](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop.png)
+    ![Képernyőfelvétel a Távoli asztal lehetőségre.](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop.png)
 
-2. Válassza ki, hogy szeretné-e engedélyezni a Távoli asztal egy adott szerepkörhöz vagy az összes szerepkörhöz, majd módosítsa az kapcsoló értékét az **engedélyezve**értékre.
+2. Válassza ki, hogy szeretné-e engedélyezni a Távoli asztal egy adott szerepkörhöz vagy az összes szerepkörhöz, majd módosítsa az kapcsoló értékét az **engedélyezve** értékre.
 
 3. Adja meg a Felhasználónév, a jelszó, a lejárat és a tanúsítvány kötelező mezőit.
 
@@ -44,9 +44,9 @@ A Azure Portal a Távoli asztal bővítmény megközelítését használja, így
    > [!WARNING]
    > Az összes szerepkör-példány újra lesz indítva, amikor először engedélyezi Távoli asztal, majd **az OK** (pipa) lehetőséget választja. Az újraindítás megakadályozása érdekében a jelszó titkosításához használt tanúsítványt telepíteni kell a szerepkörre. Az újraindítás elkerüléséhez [töltsön fel egy tanúsítványt a Cloud Service](cloud-services-configure-ssl-certificate-portal.md#step-3-upload-a-certificate) -be, majd térjen vissza erre a párbeszédpanelre.
 
-4. A **szerepkörök**területen válassza ki a frissíteni kívánt szerepkört, vagy válassza az **összes** lehetőséget az összes szerepkörhöz.
+4. A **szerepkörök** területen válassza ki a frissíteni kívánt szerepkört, vagy válassza az **összes** lehetőséget az összes szerepkörhöz.
 
-5. A konfigurációs frissítések befejezését követően válassza a **Mentés**lehetőséget. Néhány percet is igénybe vehet, mielőtt a szerepkör-példányok megkapják a kapcsolatokat.
+5. A konfigurációs frissítések befejezését követően válassza a **Mentés** lehetőséget. Néhány percet is igénybe vehet, mielőtt a szerepkör-példányok megkapják a kapcsolatokat.
 
 ## <a name="remote-into-role-instances"></a>Távoli szerepkör-példányok
 
@@ -56,12 +56,12 @@ Ha Távoli asztal engedélyezve van a szerepkörökön, közvetlenül a Azure Po
 2. Válasszon Távoli asztal konfigurált szerepkör-példányt.
 3. Kattintson a **Kapcsolódás** gombra a szerepkör-példányhoz tartozó RDP-fájl letöltéséhez.
 
-    ![Cloud Services Távoli asztal](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop_Connect.png)
+    ![Képernyőfelvétel: a csatlakozási gomb kiemelése.](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop_Connect.png)
 
 4. Kattintson a **Megnyitás** , majd a **Kapcsolódás** elemre a távoli asztal kapcsolat indításához.
 
 >[!NOTE]
-> Ha a felhőalapú szolgáltatás egy NSG mögött található, előfordulhat, hogy olyan szabályokat kell létrehoznia, amelyek engedélyezik a forgalmat a **3389** -es és a **20000**-es porton.  Távoli asztal a **3389**-es portot használja.  A Cloud Service-példányok terheléselosztás alatt állnak, így nem lehet közvetlenül szabályozni, hogy melyik példányt kívánja csatlakozni.  A *RemoteForwarder* és a *REMOTEACCESS* ügynök az RDP-forgalmat kezeli, és lehetővé teszi az ügyfél számára, hogy RDP-cookie-t küldjön, és megadhat egy egyedi példányt a kapcsolódáshoz.  A *RemoteForwarder* és a *remoteaccess* -ügynökök megkövetelik, hogy a **20000**-es port nyitva legyen, ami blokkolható, ha van NSG.
+> Ha a felhőalapú szolgáltatás egy NSG mögött található, előfordulhat, hogy olyan szabályokat kell létrehoznia, amelyek engedélyezik a forgalmat a **3389** -es és a **20000** -es porton.  Távoli asztal a **3389** -es portot használja.  A Cloud Service-példányok terheléselosztás alatt állnak, így nem lehet közvetlenül szabályozni, hogy melyik példányt kívánja csatlakozni.  A *RemoteForwarder* és a *REMOTEACCESS* ügynök az RDP-forgalmat kezeli, és lehetővé teszi az ügyfél számára, hogy RDP-cookie-t küldjön, és megadhat egy egyedi példányt a kapcsolódáshoz.  A *RemoteForwarder* és a *remoteaccess* -ügynökök megkövetelik, hogy a **20000** -es port nyitva legyen, ami blokkolható, ha van NSG.
 
 ## <a name="additional-resources"></a>További források
 

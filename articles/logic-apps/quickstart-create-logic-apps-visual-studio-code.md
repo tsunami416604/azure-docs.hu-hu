@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/25/2020
-ms.openlocfilehash: fa103c39b540c41536e4f231692b4602afe01a3e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/28/2020
+ms.openlocfilehash: 0b777fdef344ce1a60ed00ee46eeaa8cee23b8c0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91361211"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099188"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Rövid útmutató: Logic Apps-munkafolyamatdefiníciók létrehozása és kezelése a Visual Studio Code használatával
 
@@ -20,7 +20,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a Visual Studio C
 
 Habár ugyanezeket a feladatokat a [Azure Portal](https://portal.azure.com) és a Visual Studióban is elvégezheti, gyorsabban megkezdheti a Visual Studio Code-ban, ha már ismeri a Logic app-definíciókat, és közvetlenül a kódban szeretne dolgozni. Például letilthatja, engedélyezheti, törölheti és frissítheti a már létrehozott Logic apps-alkalmazásokat. Emellett a Logic apps és az integrációs fiókok bármilyen fejlesztői platformon használhatók, ahol a Visual Studio Code fut, például a Linux, a Windows és a Mac.
 
-Ebben a cikkben ugyanezt a logikai alkalmazást hozhatja [létre ebből a](../logic-apps/quickstart-create-first-logic-app-workflow.md)rövid útmutatóból, amely az alapfogalmakra összpontosít. A Visual Studio Code-ban a logikai alkalmazás a következő példához hasonlóan néz ki:
+Ebben a cikkben ugyanezt a logikai alkalmazást hozhatja [létre ebből a](../logic-apps/quickstart-create-first-logic-app-workflow.md)rövid útmutatóból, amely az alapfogalmakra összpontosít. Azt is [megtudhatja, hogyan hozhatja létre a példás alkalmazást a Visual Studióban](quickstart-create-logic-apps-with-visual-studio.md), és [hogyan hozhat létre és kezelhet alkalmazásokat az Azure Command-Line felületen (Azure CLI)](quickstart-logic-apps-azure-cli.md). A Visual Studio Code-ban a logikai alkalmazás a következő példához hasonlóan néz ki:
 
 ![Példa a logikai alkalmazás munkafolyamatának definíciója](./media/quickstart-create-logic-apps-visual-studio-code/visual-studio-code-overview.png)
 
@@ -58,23 +58,23 @@ Mielőtt nekikezdene, győződjön meg arról, hogy rendelkezik a következőkke
 
    ![Válassza ki az Azure ikont a Visual Studio Code eszköztáron](./media/quickstart-create-logic-apps-visual-studio-code/open-extensions-visual-studio-code.png)
 
-1. Az Azure ablak **Logic apps**területén válassza a bejelentkezés az **Azure**-ba lehetőséget. Ha a Microsoft bejelentkezési oldala kéri, jelentkezzen be az Azure-fiókjával.
+1. Az Azure ablak **Logic apps** területén válassza a bejelentkezés az **Azure** -ba lehetőséget. Ha a Microsoft bejelentkezési oldala kéri, jelentkezzen be az Azure-fiókjával.
 
    ![Válassza a "Bejelentkezés az Azure-ba" lehetőséget.](./media/quickstart-create-logic-apps-visual-studio-code/sign-in-azure-visual-studio-code.png)
 
-   1. Ha a bejelentkezés a szokásosnál hosszabb időt vesz igénybe, a Visual Studio Code egy eszköz kódjának megadásával kéri a bejelentkezést a Microsoft hitelesítési webhelyén keresztül. Ha ehelyett a kóddal szeretne bejelentkezni, válassza az **eszköz kódjának használata**lehetőséget.
+   1. Ha a bejelentkezés a szokásosnál hosszabb időt vesz igénybe, a Visual Studio Code egy eszköz kódjának megadásával kéri a bejelentkezést a Microsoft hitelesítési webhelyén keresztül. Ha ehelyett a kóddal szeretne bejelentkezni, válassza az **eszköz kódjának használata** lehetőséget.
 
       ![Folytatás az eszköz kódjával](./media/quickstart-create-logic-apps-visual-studio-code/use-device-code-prompt.png)
 
-   1. A kód másolásához válassza a **másolás & Megnyitás**elemet.
+   1. A kód másolásához válassza a **másolás & Megnyitás** elemet.
 
       ![Az Azure-bejelentkezés kódjának másolása](./media/quickstart-create-logic-apps-visual-studio-code/sign-in-prompt-authentication.png)
 
-   1. Új böngészőablak megnyitásához és a hitelesítési webhely folytatásához válassza a **hivatkozás megnyitása**lehetőséget.
+   1. Új böngészőablak megnyitásához és a hitelesítési webhely folytatásához válassza a **hivatkozás megnyitása** lehetőséget.
 
       ![Böngésző megnyitásának megerősítése és a hitelesítési webhely megnyitása](./media/quickstart-create-logic-apps-visual-studio-code/confirm-open-link.png)
 
-   1. A **Bejelentkezés a fiókba** lapon adja meg a hitelesítési kódot, és kattintson a **tovább**gombra.
+   1. A **Bejelentkezés a fiókba** lapon adja meg a hitelesítési kódot, és kattintson a **tovább** gombra.
 
       ![Adja meg az Azure-bejelentkezéshez használandó hitelesítési kódot](./media/quickstart-create-logic-apps-visual-studio-code/authentication-code-azure-sign-in.png)
 
@@ -88,12 +88,12 @@ Mielőtt nekikezdene, győződjön meg arról, hogy rendelkezik a következőkke
 
    1. A megjelenő listából válassza ki a megjeleníteni kívánt előfizetéseket.
 
-1. A **Logic apps**területen válassza ki a kívánt előfizetést. Az előfizetés csomópontja kibontja és megjeleníti az előfizetésben található összes logikai alkalmazást.
+1. A **Logic apps** területen válassza ki a kívánt előfizetést. Az előfizetés csomópontja kibontja és megjeleníti az előfizetésben található összes logikai alkalmazást.
 
    ![Válassza ki az Azure-előfizetését](./media/quickstart-create-logic-apps-visual-studio-code/select-azure-subscription.png)
 
    > [!TIP]
-   > Az **integrációs fiókok**területen az előfizetés kiválasztásával az adott előfizetésben található összes integrációs fiók megjelenik.
+   > Az **integrációs fiókok** területen az előfizetés kiválasztásával az adott előfizetésben található összes integrációs fiók megjelenik.
 
 <a name="create-logic-app"></a>
 
@@ -101,7 +101,7 @@ Mielőtt nekikezdene, győződjön meg arról, hogy rendelkezik a következőkke
 
 1. Ha még nem jelentkezett be Azure-fiókjába és-előfizetésbe a Visual Studio code-on belül, kövesse az [előző lépéseket a bejelentkezéshez](#access-azure).
 
-1. A Visual Studio Code-ban **Logic apps**alatt nyissa meg az előfizetés helyi menüjét, és válassza a **logikai alkalmazás létrehozása**lehetőséget.
+1. A Visual Studio Code-ban **Logic apps** alatt nyissa meg az előfizetés helyi menüjét, és válassza a **logikai alkalmazás létrehozása** lehetőséget.
 
    ![Az előfizetés menüben válassza a "logikai alkalmazás létrehozása" lehetőséget.](./media/quickstart-create-logic-apps-visual-studio-code/create-logic-app-visual-studio-code.png)
 
@@ -194,7 +194,7 @@ Mielőtt nekikezdene, győződjön meg arról, hogy rendelkezik a következőkke
 
 1. Ha elkészült, mentse a logikai alkalmazás munkafolyamat-definícióját. (Fájl menü > mentés vagy a CTRL + S billentyűkombináció lenyomása)
 
-1. Ha a rendszer arra kéri, hogy töltse fel a logikai alkalmazást az Azure-előfizetésbe, válassza a **feltöltés**lehetőséget.
+1. Ha a rendszer arra kéri, hogy töltse fel a logikai alkalmazást az Azure-előfizetésbe, válassza a **feltöltés** lehetőséget.
 
    Ez a lépés közzéteszi a logikai alkalmazást a [Azure Portalon](https://portal.azure.com), amely az Azure-ban él és futtatja a logikát.
 
@@ -204,7 +204,7 @@ Mielőtt nekikezdene, győződjön meg arról, hogy rendelkezik a következőkke
 
 A Visual Studio Code-ban a logikai alkalmazást csak olvasható tervezési nézetben nyithatja meg. Habár nem szerkesztheti a logikai alkalmazást a tervezőben, a logikai alkalmazás munkafolyamatát vizuálisan is megtekintheti a Tervező nézet használatával.
 
-Az Azure ablak **Logic apps**területén nyissa meg a logikai alkalmazás helyi menüjét, és válassza a **Megnyitás a tervezőben**lehetőséget.
+Az Azure ablak **Logic apps** területén nyissa meg a logikai alkalmazás helyi menüjét, és válassza a **Megnyitás a tervezőben** lehetőséget.
 
 A csak olvasható tervező egy külön ablakban nyílik meg, és megjeleníti a logikai alkalmazás munkafolyamatát, például:
 
@@ -228,13 +228,13 @@ Ha a Visual Studio Code-ban szerkeszt egy közzétett logikai alkalmazást, és 
 
 1. Ha még nem jelentkezett be Azure-fiókjába és-előfizetésbe a Visual Studio code-on belül, kövesse az [előző lépéseket a bejelentkezéshez](#access-azure).
 
-1. Az Azure ablakban **Logic apps**alatt bontsa ki az Azure-előfizetését, hogy megtekintse az adott előfizetéshez tartozó összes logikai alkalmazást.
+1. Az Azure ablakban **Logic apps** alatt bontsa ki az Azure-előfizetését, hogy megtekintse az adott előfizetéshez tartozó összes logikai alkalmazást.
 
-   1. A használni kívánt logikai alkalmazás letiltásához nyissa meg a logikai alkalmazás menüjét, és válassza a **Letiltás**lehetőséget.
+   1. A használni kívánt logikai alkalmazás letiltásához nyissa meg a logikai alkalmazás menüjét, és válassza a **Letiltás** lehetőséget.
 
       ![Logikai alkalmazás letiltása](./media/quickstart-create-logic-apps-visual-studio-code/disable-published-logic-app.png)
 
-   1. Ha készen áll a logikai alkalmazás újraaktiválására, nyissa meg a logikai alkalmazás menüjét, és válassza az **Engedélyezés**lehetőséget.
+   1. Ha készen áll a logikai alkalmazás újraaktiválására, nyissa meg a logikai alkalmazás menüjét, és válassza az **Engedélyezés** lehetőséget.
 
       ![Logikai alkalmazás engedélyezése](./media/quickstart-create-logic-apps-visual-studio-code/enable-published-logic-app.png)
 
@@ -249,9 +249,9 @@ A Visual Studio Code-ban megnyithatja és szerkesztheti az Azure-ban már üzemb
 
 1. Ha még nem jelentkezett be Azure-fiókjába és-előfizetésbe a Visual Studio code-on belül, kövesse az [előző lépéseket a bejelentkezéshez](#access-azure).
 
-1. Az Azure ablakban **Logic apps**alatt bontsa ki az Azure-előfizetését, és válassza ki a kívánt logikai alkalmazást.
+1. Az Azure ablakban **Logic apps** alatt bontsa ki az Azure-előfizetését, és válassza ki a kívánt logikai alkalmazást.
 
-1. Nyissa meg a logikai alkalmazás menüjét, és válassza **a Megnyitás a szerkesztőben**lehetőséget. Vagy a logikai alkalmazás neve mellett kattintson a Szerkesztés ikonra.
+1. Nyissa meg a logikai alkalmazás menüjét, és válassza **a Megnyitás a szerkesztőben** lehetőséget. Vagy a logikai alkalmazás neve mellett kattintson a Szerkesztés ikonra.
 
    ![A meglévő logikai alkalmazás szerkesztőjének megnyitása](./media/quickstart-create-logic-apps-visual-studio-code/open-editor-existing-logic-app.png)
 
@@ -263,7 +263,7 @@ A Visual Studio Code-ban megnyithatja és szerkesztheti az Azure-ban már üzemb
 
 1. Miután végzett, mentse a módosításokat. (Fájl menü > mentés vagy a CTRL + S billentyűkombináció lenyomása)
 
-1. Amikor a rendszer felszólítja a módosítások feltöltésére és a meglévő logikai alkalmazás *felülírására* a Azure Portal, válassza a **feltöltés**lehetőséget.
+1. Amikor a rendszer felszólítja a módosítások feltöltésére és a meglévő logikai alkalmazás *felülírására* a Azure Portal, válassza a **feltöltés** lehetőséget.
 
    Ez a lépés közzéteszi a frissítéseit a logikai alkalmazásban a [Azure Portalban](https://portal.azure.com).
 
@@ -276,9 +276,9 @@ A Visual Studio Code-ban megnyithatja és áttekintheti a logikai alkalmazás ko
 > [!IMPORTANT] 
 > Mielőtt egy aktívan futó logikai alkalmazást éles környezetben módosít, kerülje a logikai alkalmazás megszakításának kockázatát, és csökkentse a megszakadást a [logikai alkalmazás letiltásával](#disable-enable-logic-app).
 
-1. Az Azure ablakban **Logic apps**alatt bontsa ki az Azure-előfizetését, hogy megtekintse az adott előfizetéshez tartozó összes logikai alkalmazást.
+1. Az Azure ablakban **Logic apps** alatt bontsa ki az Azure-előfizetését, hogy megtekintse az adott előfizetéshez tartozó összes logikai alkalmazást.
 
-1. Az előfizetés alatt bontsa ki a logikai alkalmazást, és bontsa ki a **verziók**csomópontot.
+1. Az előfizetés alatt bontsa ki a logikai alkalmazást, és bontsa ki a **verziók** csomópontot.
 
    A **verziók** lista a logikai alkalmazás korábbi verzióit jeleníti meg, ha vannak ilyenek.
 
@@ -286,25 +286,25 @@ A Visual Studio Code-ban megnyithatja és áttekintheti a logikai alkalmazás ko
 
 1. Egy korábbi verzió megtekintéséhez válassza az egyik lépést:
 
-   * A JSON-definíció megtekintéséhez a **verziók**területen válassza ki az adott definíció verziószámát. Vagy nyissa meg a verzió helyi menüjét, és válassza **a Megnyitás a szerkesztőben**lehetőséget.
+   * A JSON-definíció megtekintéséhez a **verziók** területen válassza ki az adott definíció verziószámát. Vagy nyissa meg a verzió helyi menüjét, és válassza **a Megnyitás a szerkesztőben** lehetőséget.
 
      Megnyílik egy új fájl a helyi számítógépen, és megjeleníti a verzió JSON-definícióját.
 
-   * Ha a verziót a csak olvasható Tervező nézetben szeretné megtekinteni, nyissa meg a verzió helyi menüjét, és válassza a **Megnyitás a tervezőben**lehetőséget.
+   * Ha a verziót a csak olvasható Tervező nézetben szeretné megtekinteni, nyissa meg a verzió helyi menüjét, és válassza a **Megnyitás a tervezőben** lehetőséget.
 
 1. A korábbi verzióknak az aktuális verzióra való előléptetéséhez kövesse az alábbi lépéseket:
 
-   1. A **verziók**területen nyissa meg a korábbi verzió helyi menüjét, és válassza az **előléptetés**lehetőséget.
+   1. A **verziók** területen nyissa meg a korábbi verzió helyi menüjét, és válassza az **előléptetés** lehetőséget.
 
       ![Korábbi verzió előléptetése](./media/quickstart-create-logic-apps-visual-studio-code/promote-earlier-version.png)
 
-   1. Ha azt szeretné, hogy a Visual Studio Code megkérdezze a megerősítést, válassza az **Igen**lehetőséget.
+   1. Ha azt szeretné, hogy a Visual Studio Code megkérdezze a megerősítést, válassza az **Igen** lehetőséget.
 
       ![Korábbi verzió előléptetésének megerősítése](./media/quickstart-create-logic-apps-visual-studio-code/confirm-promote-version.png)
 
       A Visual Studio Code a kiválasztott verziót a jelenlegi verzióra mozdítja elő, és új számot rendel hozzá a előléptetett verzióhoz. A korábban aktuális verzió már a előléptetett verzió alatt jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Állapot-nyilvántartó vagy állapot nélküli logikai alkalmazások létrehozása a Visual Studio Code-ban (előzetes verzió)](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)

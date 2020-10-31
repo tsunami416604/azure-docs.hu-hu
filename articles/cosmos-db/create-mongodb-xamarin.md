@@ -9,14 +9,15 @@ ms.topic: quickstart
 ms.date: 10/09/2020
 ms.author: masoucou
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ffa8e473fb084b2d5f0e7f59a07b3de50e04752e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 94cf54e689f845f77c54d1d3c7710e079594f556
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475859"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098943"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Gyors útmutató: Xamarin. Forms-alkalmazás létrehozása .NET SDK-val és Azure Cosmos DB API-val a MongoDB-hoz
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -180,7 +181,7 @@ Ezzel frissítette az alkalmazást az összes olyan információval, amely az Az
 
 ### <a name="visual-studio-2019"></a>Visual Studio 2019
 
-1. A Visual Studióban kattintson a jobb gombbal az egyes projektekre a **Megoldáskezelőben**, majd kattintson a **NuGet-csomagok kezelése** elemre.
+1. A Visual Studióban kattintson a jobb gombbal az egyes projektekre a **Megoldáskezelőben** , majd kattintson a **NuGet-csomagok kezelése** elemre.
 2. Kattintson **az összes NuGet-csomagot visszaállító** lehetőségre.
 3. Kattintson a jobb gombbal a **TaskList.Android** elemre, és válassza a **Beállítás kezdőprojektként** lehetőséget.
 4. Az alkalmazás hibakereséséhez nyomja le az F5 billentyűt.
@@ -197,7 +198,7 @@ Ezzel frissítette az alkalmazást az összes olyan információval, amely az Az
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 

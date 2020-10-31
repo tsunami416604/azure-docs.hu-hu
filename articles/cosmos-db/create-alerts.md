@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 07/16/2020
-ms.openlocfilehash: 84c2ad3a24d944db6a55f3f21e8a2a0c4084d033
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1042638dc622e6675c997bc6db8df1d072824816
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87099634"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099912"
 ---
 # <a name="create-alerts-for-azure-cosmos-db-using-azure-monitor"></a>Riasztások létrehozása Azure Cosmos DBhoz a Azure Monitor használatával
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 A riasztások az ismétlődő tesztek beállítására szolgálnak a Azure Cosmos DB erőforrások rendelkezésre állásának és reagálásának figyeléséhez. A riasztások e-mailben küldhetnek értesítést, vagy futtathatnak egy Azure-függvényt, ha az egyik mérőszám eléri a küszöbértéket, vagy ha egy adott eseményt naplóznak a tevékenység naplójában.
 
@@ -33,7 +34,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre riasztást, ha a 429-as H
 
 1. Jelentkezzen be a [Azure Portalba.](https://portal.azure.com/)
 
-1. Válassza a **figyelő** lehetőséget a bal oldali navigációs sávon, és válassza a **riasztások**lehetőséget.
+1. Válassza a **figyelő** lehetőséget a bal oldali navigációs sávon, és válassza a **riasztások** lehetőséget.
 
 1. Az új riasztási szabály gomb megnyomásával nyissa meg a riasztási szabály létrehozása panelt.  
 
@@ -43,31 +44,31 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre riasztást, ha a 429-as H
 
    * Válassza ki az **előfizetés** nevét.
 
-   * Válassza ki **Azure Cosmos db fiókokat** az **erőforrás típusához**.
+   * Válassza ki **Azure Cosmos db fiókokat** az **erőforrás típusához** .
 
    * Az Azure Cosmos-fiók **helye** .
 
-   * A részletek kitöltése után megjelenik a kiválasztott hatókörben található Azure Cosmos-fiókok listája. Válassza ki azt, amelyhez riasztásokat szeretne konfigurálni, majd válassza a **kész**lehetőséget.
+   * A részletek kitöltése után megjelenik a kiválasztott hatókörben található Azure Cosmos-fiókok listája. Válassza ki azt, amelyhez riasztásokat szeretne konfigurálni, majd válassza a **kész** lehetőséget.
 
 1. Töltse ki a **feltétel** szakaszt:
 
    * A **feltétel kiválasztása** panel megnyitásával nyissa meg a **jel logikai beállítása** lapot, és konfigurálja a következőket:
 
-   * Válasszon ki egy jelet. A **jel típusa** lehet **metrika** vagy **tevékenység naplója**. Válassza ki a forgatókönyv **mérőszámait** . Mivel riasztást szeretne kapni, ha a kérelmek maximális száma metrikával van korlátozva.
+   * Válasszon ki egy jelet. A **jel típusa** lehet **metrika** vagy **tevékenység naplója** . Válassza ki a forgatókönyv **mérőszámait** . Mivel riasztást szeretne kapni, ha a kérelmek maximális száma metrikával van korlátozva.
 
    * Az **összes** kijelölése a **figyelő szolgáltatáshoz**
 
-   * Válassza ki a **jel nevét**. Ha riasztást szeretne kapni a HTTP-állapotkódok esetében, válassza ki a **kérelmek teljes számát jelző számot** .
+   * Válassza ki a **jel nevét** . Ha riasztást szeretne kapni a HTTP-állapotkódok esetében, válassza ki a **kérelmek teljes számát jelző számot** .
 
    * A következő lapon megadhatja a riasztás indítására szolgáló logikát, és a diagram használatával megtekintheti az Azure Cosmos-fiók trendjét. A **kérelmek teljes** mérőszáma támogatja a dimenziókat. Ezek a méretek lehetővé teszik a mérőszám szűrését. Ha nincs kiválasztva dimenzió, a rendszer figyelmen kívül hagyja ezt az értéket.
 
-   * A **dimenzió neveként**válassza a **statuscode** lehetőséget. Válassza az **Egyéni érték hozzáadása** lehetőséget, és állítsa az állapotkódot 429-re.
+   * A **dimenzió neveként** válassza a **statuscode** lehetőséget. Válassza az **Egyéni érték hozzáadása** lehetőséget, és állítsa az állapotkódot 429-re.
 
-   * A **riasztási logikában**állítsa a **küszöbértéket** **statikusra**. A statikus küszöbérték felhasználó által definiált küszöbértéket használ a szabály kiértékeléséhez, míg a dinamikus küszöbértékek a beépített gépi tanulási algoritmusok segítségével folyamatosan megismerhetik a mérőszám viselkedési mintáját, és automatikusan kiszámítják a küszöbértékeket.
+   * A **riasztási logikában** állítsa a **küszöbértéket** **statikusra** . A statikus küszöbérték felhasználó által definiált küszöbértéket használ a szabály kiértékeléséhez, míg a dinamikus küszöbértékek a beépített gépi tanulási algoritmusok segítségével folyamatosan megismerhetik a mérőszám viselkedési mintáját, és automatikusan kiszámítják a küszöbértékeket.
 
-   * Állítsa az **operátort** **nagyobb**értékre, az **összesítési típust** a **Total**értékre, a küszöbértéket pedig a **100** **értékre** . Ezzel a logikával, ha az ügyfél több mint 100, 429-as állapotkóddal rendelkező kérelmet lát, a riasztás aktiválódik. Az Összesítés típusát, az Összesítés részletességét és az értékelés gyakoriságát is konfigurálhatja a követelmények alapján.
+   * Állítsa az **operátort** **nagyobb** értékre, az **összesítési típust** a **Total** értékre, a küszöbértéket pedig a **100** **értékre** . Ezzel a logikával, ha az ügyfél több mint 100, 429-as állapotkóddal rendelkező kérelmet lát, a riasztás aktiválódik. Az Összesítés típusát, az Összesítés részletességét és az értékelés gyakoriságát is konfigurálhatja a követelmények alapján.
 
-   * Az űrlap kitöltése után válassza a **kész**lehetőséget. Az alábbi képernyőképen a riasztás logikájának részletei láthatók:
+   * Az űrlap kitöltése után válassza a **kész** lehetőséget. Az alábbi képernyőképen a riasztás logikájának részletei láthatók:
 
      :::image type="content" source="./media/create-alerts/configure-alert-logic.png" alt-text="Állítsa be a logikát, hogy riasztásokat kapjon a ráta Limited/429-kérelmek esetében":::
 
@@ -81,7 +82,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre riasztást, ha a 429-as H
 
    * Válassza ki az előfizetést és azt az erőforráscsoportot, amelyben ez a műveleti csoport létrejön.  
 
-   * Adja meg a művelet nevét, és válassza az **e-mail/SMS-üzenet/leküldés/hang** lehetőséget a **művelet típusaként**. A következő képernyőkép a Művelettípus részleteit mutatja be:
+   * Adja meg a művelet nevét, és válassza az **e-mail/SMS-üzenet/leküldés/hang** lehetőséget a **művelet típusaként** . A következő képernyőkép a Művelettípus részleteit mutatja be:
 
      :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="Állítsa be a logikát, hogy riasztásokat kapjon a ráta Limited/429-kérelmek esetében":::
 

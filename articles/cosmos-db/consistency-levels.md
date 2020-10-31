@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 77af5a66ba349e5985e3b27b07c82a1595ccc8a1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 742ff2e6cff4569b5b7eeb131cd4394277b6c3cd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547078"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100456"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Konzisztenciaszintek az Azure Cosmos DB-ben
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 A magas rendelkezésre állás, kis késés vagy mindkettő replikálására támaszkodó elosztott adatbázisok esetében alapvető kompromisszumot kell biztosítani az [PACLC-tétel](https://en.wikipedia.org/wiki/PACELC_theorem)által meghatározott olvasási konzisztencia, rendelkezésre állás, késés és átviteli sebesség között. Az erős konzisztencia-modell linearizability az adatprogramozási szabvány. Azonban a nagyobb távolságok replikálására és elvégzésére irányuló adatok miatt a magasabb írási késések esetében is meredek árat hoz létre. Az erős konzisztencia a korlátozott rendelkezésre állástól (a hibák során) is romolhat, mivel az adatok nem replikálhatók és nem hajthatók végre minden régióban. A végleges konzisztencia magasabb rendelkezésre állást és jobb teljesítményt nyújt, de az alkalmazások még nehezebbé válik, mert az egyes régiókban az adat nem feltétlenül teljesen konzisztens.
 
@@ -176,7 +177,7 @@ Ha többet szeretne megtudni a konzisztencia-fogalmakról, olvassa el a követke
 - [Valószínűségi határos elavulás (PBS) a gyakorlati részleges Kvórumokhoz](https://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
 - [Végül konzisztens – felülvizsgálat](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Azure Cosmos DB konzisztenciáji szintjeiről, olvassa el a következő cikkeket:
 

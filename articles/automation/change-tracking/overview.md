@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: f4fc464da08128b7f2ecd0a037213d5f40aa65e0
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 35b1b07bd4d9eef555be26e1c24356b7c352bf38
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670742"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100694"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>A Change Tracking és a leltár áttekintése
 
@@ -93,7 +93,7 @@ A Windows és a Linux rendszerű fájlok változásainak nyomon követéséhez a
 
 ## <a name="tracking-file-content-changes"></a>A fájl tartalmának változásai nyomon követése
 
-A Change Tracking és a leltár lehetővé teszi egy Windows-vagy Linux-fájl tartalmának megtekintését. Egy fájl minden módosítása esetén a Change Tracking és a leltár egy [Azure Storage-fiókban](/storage/common/storage-account-create)tárolja a fájl tartalmát. Egy fájl nyomon követése után megtekintheti annak tartalmát a módosítás előtt vagy után. A fájl tartalma beágyazott vagy egymás mellett is megtekinthető.
+A Change Tracking és a leltár lehetővé teszi egy Windows-vagy Linux-fájl tartalmának megtekintését. Egy fájl minden módosítása esetén a Change Tracking és a leltár egy [Azure Storage-fiókban](/azure/storage/common/storage-account-create)tárolja a fájl tartalmát. Egy fájl nyomon követése után megtekintheti annak tartalmát a módosítás előtt vagy után. A fájl tartalma beágyazott vagy egymás mellett is megtekinthető.
 
 ![Egy fájl változásainak megtekintése](./media/overview/view-file-changes.png)
 
@@ -102,7 +102,7 @@ A Change Tracking és a leltár lehetővé teszi egy Windows-vagy Linux-fájl ta
 A Change Tracking és a leltár lehetővé teszi a Windows-beállításkulcsok változásainak figyelését. A figyeléssel megadhatja azokat a bővíthetőségi pontokat, amelyekben a harmadik féltől származó kód és a kártevő is aktiválható. Az alábbi táblázat az előre konfigurált (de nem engedélyezett) beállításkulcsokat sorolja fel. A kulcsok nyomon követéséhez engedélyeznie kell mindegyiket.
 
 > [!div class="mx-tdBreakAll"]
-> |Beállításjegyzék kulcsa | Cél |
+> |Beállításjegyzék kulcsa | Rendeltetés |
 > | --- | --- |
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup` | Az indításkor futó parancsfájlokat figyeli.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | A leállításkor futó parancsfájlokat figyeli.

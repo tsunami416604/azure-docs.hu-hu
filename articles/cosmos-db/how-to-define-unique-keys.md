@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: thweiss
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 968ae8e582587564f1e268f16c18cf6d562d4333
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b814100097897aff6047b8b6d6cc0e8ebaa409ba
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279554"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101527"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Egyedi kulcsok definiálása egy Azure Cosmos-tárolóhoz
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ez a cikk bemutatja az [egyedi kulcsok](unique-keys.md) definiálásának különböző módjait az Azure Cosmos-tárolók létrehozásakor. Ezt a műveletet jelenleg a Azure Portal vagy az egyik SDK használatával lehet elvégezni.
 
@@ -26,7 +27,7 @@ Ez a cikk bemutatja az [egyedi kulcsok](unique-keys.md) definiálásának külö
 
 1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza ki a használni kívánt tárolót.
 
-1. Kattintson az **új tároló**elemre.
+1. Kattintson az **új tároló** elemre.
 
 1. A **tároló hozzáadása** párbeszédpanelen kattintson az **+ egyedi kulcs hozzáadása** lehetőségre egy egyedi kulcs hozzáadásához.
 

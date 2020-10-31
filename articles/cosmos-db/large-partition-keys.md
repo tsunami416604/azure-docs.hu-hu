@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 09/28/2019
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1de6aa5450a42bbc8fe35b220e810726f7dd2cda
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a93bf4fe92cc7b2240a7411b093a7bab5a1a275e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488435"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098824"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Nagyméretű partíciós kulccsal rendelkező tárolók létrehozása
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A Azure Cosmos DB kivonat-alapú particionálási sémát használ az adathorizontális skálázás eléréséhez. Az 3 2019. május előtt létrehozott összes Azure Cosmos-tároló kivonatoló függvényt használ, amely a partíciós kulcs első 100 bájtja alapján számítja ki a kivonatot. Ha az első 100 bájtnál több partíciós kulcs is van, akkor ezek a logikai partíciók a szolgáltatással azonos logikai partíciónak tekintendők. Ez olyan problémákhoz vezethet, mint például a partíciók méretére vonatkozó kvóta helytelen, és a partíciós kulcsok között egyedi indexeket kell alkalmazni. A probléma megoldásához nagy méretű partíciós kulcsok vannak bevezetve. A Azure Cosmos DB mostantól legfeljebb 2 KB-os értékkel támogatja a nagyméretű partíciós kulcsokat.
 

@@ -10,21 +10,26 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: aahi
-ms.openlocfilehash: f00ffee47e3eb6366d632d8b6ee9beb01f048442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38191c55afb87151b238069a75a6c86acd8904df
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76983112"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100541"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>A Bing Custom Search-példány meghívása a portálról
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Miután konfigurálta az egyéni keresési élményt, tesztelheti azt a Bing Custom Search- [portálon](https://customsearch.ai)belül. 
 
 ![a Bing Custom Search portál képernyőképe](media/portal-search-screen.png)
 ## <a name="create-a-search-query"></a>Keresési lekérdezés létrehozása 
 
-Miután bejelentkezett a Bing Custom Search- [portálra](https://customsearch.ai), válassza ki a keresési példányt, és kattintson a **Production (éles** ) fülre. A **végpontok**területen válasszon ki egy API-végpontot (például a webes API-t). Az előfizetés határozza meg, hogy mely végpontok jelenjenek meg.
+Miután bejelentkezett a Bing Custom Search- [portálra](https://customsearch.ai), válassza ki a keresési példányt, és kattintson a **Production (éles** ) fülre. A **végpontok** területen válasszon ki egy API-végpontot (például a webes API-t). Az előfizetés határozza meg, hogy mely végpontok jelenjenek meg.
 
 Keresési lekérdezés létrehozásához adja meg a végpont paramétereinek értékét. Vegye figyelembe, hogy a portálon megjelenő paraméterek a kiválasztott végponttól függően változhatnak. További információért tekintse meg a [Custom Search API-referenciát](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) . A keresési példány által használt előfizetés módosításához adja hozzá a megfelelő előfizetési kulcsot, és frissítse a megfelelő piaci és/vagy nyelvi paramétereket.
 
@@ -53,7 +58,7 @@ Miután megadta az összes szükséges beállítást, kattintson a **hívás** g
 
 A Bing Custom Search-példányhoz társított előfizetést új példány létrehozása nélkül módosíthatja. Ha az API-hívásokat egy új előfizetésre szeretné elküldeni és felszámolni, hozzon létre egy új Bing Custom Search-erőforrást a Azure Portal. Használja az új előfizetési kulcsot az API-kérelmekben, valamint a példány egyéni konfigurációs AZONOSÍTÓját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni nézet meghívása C-vel #](./call-endpoint-csharp.md)
 - [Egyéni nézet meghívása Javával](./call-endpoint-java.md)

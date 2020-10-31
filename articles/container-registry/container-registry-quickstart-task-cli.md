@@ -4,12 +4,12 @@ description: Az Azure-felhőben Azure Container Registry parancsokkal gyorsan k�
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 4ea3f1bb86bcf3f6583cc438b2a27429f5b69d14
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 1b4dcc05747ceae52c649c366c3faf437e77b560
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027686"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098909"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Gyors útmutató: tároló-rendszerkép létrehozása és futtatása Azure Container Registry feladatokkal
 
@@ -17,11 +17,11 @@ Ebben a rövid útmutatóban [Azure Container Registry feladatok][container-regi
 
 Ebből a rövid [útmutatóból](container-registry-tutorial-quick-task.md)MEGISMERHETI az ACR-feladatok fejlettebb funkcióit az oktatóanyagok használatával. Az ACR-feladatok a programkódok véglegesítve vagy az alapképek frissítései alapján automatizálják a képbuildeket, vagy több tárolót tesztelnek párhuzamosan más forgatókönyvek között. 
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot][azure-account].
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-A rövid útmutató teljesítéséhez használhatja az Azure Cloud Shellt vagy az Azure CLI helyileg telepített példányát. Ha helyileg szeretné használni, a 2.0.58 vagy újabb verzió használata javasolt. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+    
+- Ehhez a rövid útmutatóhoz az Azure CLI 2.0.58 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 

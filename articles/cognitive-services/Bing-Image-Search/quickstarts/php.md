@@ -12,14 +12,19 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: aad804179739a77010446a146d32cd51ac6e6757
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7f9a72084cc9dd138eed58e395e009e1161c9382
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85603366"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099895"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Gyors útmutató: rendszerképek keresése a Bing Image Search REST API és a PHP használatával
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Image Search API-hívását, majd hogyan fogadhatja a JSON-választ. Az ebben a cikkben található egyszerű alkalmazás keresési lekérdezést küld, majd megjeleníti a nyers adatokat.
 
@@ -39,7 +44,7 @@ További információ: [Cognitive Services díjszabása-BING Search API](https:/
 
 Az alkalmazás futtatásához kövesse az alábbi lépéseket:
 
-1. Gondoskodjon róla, hogy a biztonságos HTTP támogatása engedélyezve legyen a `php.ini` fájlban. Windows esetén ez a fájl a *C:\Windows mappában*található.
+1. Gondoskodjon róla, hogy a biztonságos HTTP támogatása engedélyezve legyen a `php.ini` fájlban. Windows esetén ez a fájl a *C:\Windows mappában* található.
 2. Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.
 3. Adja meg az API-végpontot, az előfizetési kulcsot és a keresési kifejezést. A végpont lehet a globális végpont a következő kódban, vagy az erőforráshoz tartozó Azure Portal megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) -végpont.
 
@@ -131,7 +136,7 @@ A Bing Image Search API válaszai JSON formátumban érkeznek vissza. A mintavá
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas alkalmazás-oktatóanyag a Bing Image Search használatához](../tutorial-bing-image-search-single-page-app.md)

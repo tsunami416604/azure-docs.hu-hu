@@ -9,14 +9,15 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 2229eea7b91168507ea9568a1e53930cf983b1df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d0c8433fff58854cb77a4e806058eae1937e71b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87171933"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101119"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Ruby nyelvvel
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
@@ -126,7 +127,7 @@ Ha az **update_entity()** és a **merge_entity()** használatakor a frissítend�
 
 ## <a name="work-with-groups-of-entities"></a>Entitáscsoportok használata
 
-Annak biztosításához, hogy a kiszolgáló elvégezze a kérés elemi feldolgozását, néha érdemes több műveletet egyszerre, egy kötegben elküldeni. Ehhez először hozzon létre egy **Batch**-objektumot, majd használja az **execute_batch()** metódust a **TableService**-en. Az alábbi példa két entitás egy kötegben való elküldését mutatja be (az entitások RowKey tulajdonságának értéke 2 és 3). Vegye figyelembe, hogy ez csak az azonos PartitionKey tulajdonsággal rendelkező entitások esetén működik.
+Annak biztosításához, hogy a kiszolgáló elvégezze a kérés elemi feldolgozását, néha érdemes több műveletet egyszerre, egy kötegben elküldeni. Ehhez először hozzon létre egy **Batch** -objektumot, majd használja az **execute_batch()** metódust a **TableService** -en. Az alábbi példa két entitás egy kötegben való elküldését mutatja be (az entitások RowKey tulajdonságának értéke 2 és 3). Vegye figyelembe, hogy ez csak az azonos PartitionKey tulajdonsággal rendelkező entitások esetén működik.
 
 ```ruby
 azure_table_service = Azure::TableService.new
@@ -186,7 +187,7 @@ Egy entitás törléséhez használja a **delete_table()** metódust, majd adja 
 azure_table_service.delete_table("testtable")
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 * [Ruby fejlesztői központ](https://azure.microsoft.com/develop/ruby/)

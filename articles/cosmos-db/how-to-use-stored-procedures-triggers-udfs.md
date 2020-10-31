@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 3744029b72a12cee1543a17bf1dee67a080904c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56c6327d2ecd3ae3721a7ee33565543405088d1c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253054"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098875"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Tárolt eljárások, eseményindítók és felhasználói függvények regisztrálása és használata az Azure Cosmos DB-ben
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Az Azure Cosmos DB-ben lévő SQL API támogatja a JavaScript nyelven írt tárolt eljárások, eseményindítók és felhasználói függvények regisztrálását és meghívását. Használhatja az SQL API [.net](sql-api-sdk-dotnet.md), [.net Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node.js](sql-api-sdk-node.md)vagy [Python](sql-api-sdk-python.md) SDK-kat a tárolt eljárások regisztrálásához és meghívásához. Miután meghatározta egy vagy több tárolt eljárást, eseményindítót és felhasználó által definiált függvényt, betöltheti és megtekintheti őket a [Azure Portal](https://portal.azure.com/) adatkezelő használatával.
 

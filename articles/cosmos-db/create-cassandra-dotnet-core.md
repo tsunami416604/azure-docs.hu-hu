@@ -9,14 +9,15 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/01/2020
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 46826319cdd2ba55d469704a09656b61c96ce798
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: f228386d8cf0e708080b7f6c5f6cef7258b2eafb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743147"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099980"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-core-and-azure-cosmos-db"></a>Gyors útmutató: Cassandra-alkalmazás létrehozása a .NET Core és a Azure Cosmos DB használatával
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -166,7 +167,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
     
 ## <a name="run-the-net-core-app"></a>A .NET Core-alkalmazás futtatása
 
-1. A Visual Studióban válassza az **eszközök**  >  **NuGet Package**Manager  >  **csomagkezelő konzolt**.
+1. A Visual Studióban válassza az **eszközök**  >  **NuGet Package** Manager  >  **csomagkezelő konzolt** .
 
 2. A parancssorban a következő paranccsal telepítse a .NET illesztő NuGet-csomagját. 
 
@@ -187,11 +188,11 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével tárolót készíteni, és hogyan lehet futtatni egy webalkalmazást. Most további adatokat importálhat a Cosmos DB-fiókba. 
 

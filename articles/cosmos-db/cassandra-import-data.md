@@ -9,21 +9,22 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: b450d8463c09647b8f87547afe9d714c4b8659c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd2d27addb6860e49ac12eb36d8b625b8bf92001
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82858562"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100405"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>Oktatóanyag: az adatáttelepítés Cassandra API fiókba Azure Cosmos DB
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Fejlesztőként lehetnek olyan meglévő Cassandra-munkaterhelések, amelyek a helyszínen vagy a felhőben futnak, és előfordulhat, hogy át kívánják telepíteni őket az Azure-ba. Az ilyen számítási feladatok áttelepíthetők a Azure Cosmos DB Cassandra API-fiókjába. Ez az oktatóanyag Cassandra API az Apache Cassandra-ba való áttelepítéshez használható különböző lehetőségekről nyújt útmutatást Azure Cosmos DB.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
-> * Migrálási terv
+> * Az áttelepítés megtervezése
 > * A migrálással kapcsolatos előfeltételek
 > * Adatok migrálása a cqlsh COPY paranccsal
 > * Adatok migrálása a Spark használatával
@@ -103,11 +104,11 @@ Az alábbi lépések végrehajtásával áttelepítheti az Cassandra API-fiókba
 
 Az adatok Spark-feladatok használatával történő áttelepítése ajánlott lehetőség, ha az Azure Virtual Machines szolgáltatásban vagy bármely más felhőben meglévő fürtben található adatokkal rendelkezik. Ez a beállítás megköveteli, hogy a Spark egy egyszeri vagy normál betöltéshez legyen beállítva. Ezt az áttelepítést felgyorsíthatja az Azure ExpressRoute-kapcsolat használatával a helyszíni és az Azure között. 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
-Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, az Azure Cosmos-fiókot és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális géphez tartozó erőforráscsoportot, válassza a **Törlés**lehetőséget, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
+Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, az Azure Cosmos-fiókot és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális géphez tartozó erőforráscsoportot, válassza a **Törlés** lehetőséget, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan migrálhatja adatait Azure Cosmos DB Cassandra API fiókba. A következő cikkből megismerheti a további Azure Cosmos DB fogalmakat is:
 

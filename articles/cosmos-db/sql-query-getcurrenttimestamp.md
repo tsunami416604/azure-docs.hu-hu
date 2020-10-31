@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c1e0a8d69edab0c01005268ee49c23625236f03a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acdc598107228d8dbebca3dccb3361348ca06432
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88606917"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098501"
 ---
 # <a name="getcurrenttimestamp-azure-cosmos-db"></a>GetCurrentTimestamp (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
  Azon ezredmásodpercek számát adja vissza, amelyek elteltek 00:00:00 csütörtök, 1970. január 1. között.
   
@@ -50,7 +51,7 @@ SELECT GetCurrentTimestamp() AS currentUtcTimestamp
 }]  
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Dátum és idő függvények Azure Cosmos DB](sql-query-date-time-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

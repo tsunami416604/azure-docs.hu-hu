@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: bbfc31e810e2c11cde4907c9d5120b66195191af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ee221acb9ff045716e3a8015b20b467ab6d0b10
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764978"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098552"
 ---
 # <a name="querying-geospatial-data-with-azure-cosmos-db"></a>Térinformatikai adatbázis lekérdezése Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ez a cikk bemutatja, hogyan lehet lekérdezni a térinformatikai adataikat Azure Cosmos DB az SQL és a LINQ használatával. Jelenleg csak Azure Cosmos DB SQL API-fiókok támogatják a térinformatikai adatok tárolását és elérését. A Azure Cosmos DB a következő Nyílt térinformatikai konzorcium (OGC) beépített függvényeket támogatja a térinformatikai lekérdezésekhez. Az SQL nyelv beépített funkcióinak teljes készletével kapcsolatos további információkért lásd: [rendszerfunkciók lekérdezése Azure Cosmos DBban](sql-query-system-functions.md).
 
@@ -176,7 +177,7 @@ Hasonlóképpen, az alábbi lekérdezéssel megkeresheti az összes olyan dokume
     }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megtanulta, hogyan kezdheti meg a térinformatikai támogatás használatát Azure Cosmos DBban, a következő lehetőségekkel:
 

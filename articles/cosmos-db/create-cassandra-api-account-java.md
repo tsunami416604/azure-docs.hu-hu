@@ -9,14 +9,15 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: 902980d7c145d5150214b7d4f4433e5da344e30b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb057637ff546356cde6e0ef107fe784fed2e610
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570057"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099878"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Oktatóanyag: Cassandra API-fiók létrehozása a Azure Cosmos DBban Java-alkalmazás használatával a kulcs/érték típusú adattároláshoz
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Fejlesztőként lehetnek olyan alkalmazások, amelyek kulcs/érték párokat használnak. A kulcs/érték típusú adattároláshoz a Azure Cosmos DB Cassandra API fiókját is használhatja. Ez az oktatóanyag azt ismerteti, hogyan használható egy Java-alkalmazás egy Cassandra API-fiók létrehozásához a Azure Cosmos DBban, egy adatbázis (más néven szóköz) hozzáadását és egy tábla hozzáadását. A Java-alkalmazás a [Java-illesztőprogrammal](https://github.com/datastax/java-driver) hoz létre egy olyan felhasználói adatbázist, amely olyan adatokat tartalmaz, mint például a felhasználói azonosító, a Felhasználónév és a felhasználói város.  
 
@@ -42,21 +43,21 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). 
 
-2. Válassza **az erőforrás létrehozása**  >  **adatbázisok**  >  **Azure Cosmos db**elemet. 
+2. Válassza **az erőforrás létrehozása**  >  **adatbázisok**  >  **Azure Cosmos db** elemet. 
 
 3. Az **új fiók** panelen adja meg az új Azure Cosmos-fiók beállításait. 
 
    |Beállítás   |Ajánlott érték  |Leírás  |
    |---------|---------|---------|
    |ID (Azonosító)   |   Adjon meg egy egyedi nevet    | Adjon meg egy egyedi nevet az Azure Cosmos-fiók azonosításához. <br/><br/>A rendszer a .azure.com utótaggal egészíti ki a megadott azonosítót a kapcsolódási pont létrehozásához, ezért válasszon egyedi, de felismerhető azonosítót.         |
-   |API    |  Cassandra   |  A létrehozni kívánt fiók típusát az API határozza meg. <br/> Válassza a **Cassandra**lehetőséget, mert ebben a cikkben egy olyan széles oszlopú adatbázist fog létrehozni, amely a Cassandra Query Language (CQL) szintaxis használatával kérdezhető le.  |
+   |API    |  Cassandra   |  A létrehozni kívánt fiók típusát az API határozza meg. <br/> Válassza a **Cassandra** lehetőséget, mert ebben a cikkben egy olyan széles oszlopú adatbázist fog létrehozni, amely a Cassandra Query Language (CQL) szintaxis használatával kérdezhető le.  |
    |Előfizetés    |  Az Ön előfizetése        |  Válassza ki az Azure Cosmos-fiókhoz használni kívánt Azure-előfizetést.        |
    |Erőforráscsoport   | Adjon meg egy nevet    |  Válassza az **Új létrehozása** elemet, majd adja meg a fiók új erőforráscsoport-nevét. Az egyszerűség kedvéért használhat az azonosítójával megegyező nevet.    |
    |Hely    |  Válassza ki a felhasználóihoz legközelebb eső régiót    |  Válassza ki azt a földrajzi helyet, ahol az Azure Cosmos-fiókját tárolni szeretné. Használja a felhasználókhoz legközelebb eső helyet, hogy a lehető leggyorsabb hozzáférést biztosítsa az adataihoz.    |
 
    :::image type="content" source="./media/create-cassandra-api-account-java/create-account.png" alt-text="Fiók létrehozása a portál használatával":::
 
-4. Kattintson a **Létrehozás** gombra. <br/>A fiók létrehozása eltarthat néhány percig. Az erőforrás létrehozása után az **üzembe helyezés sikeres** értesítése látható a portál jobb oldalán.
+4. Válassza a **Létrehozás** lehetőséget. <br/>A fiók létrehozása eltarthat néhány percig. Az erőforrás létrehozása után az **üzembe helyezés sikeres** értesítése látható a portál jobb oldalán.
 
 ## <a name="get-the-connection-details-of-your-account"></a>A fiók kapcsolati adatainak lekérése  
 
@@ -66,7 +67,7 @@ Szerezze be a Azure Portalről a kapcsolatok karakterláncának adatait, és má
 
 2. Nyissa meg a **kapcsolatok karakterlánca** panelt.  
 
-3. Másolja ki a **CONTACT POINT**, **PORT**, **USERNAME** és **PRIMARY PASSWORD** értékeket, amelyekre a következő lépések során lesz szüksége.
+3. Másolja ki a **CONTACT POINT** , **PORT** , **USERNAME** és **PRIMARY PASSWORD** értékeket, amelyekre a következő lépések során lesz szüksége.
 
 ## <a name="create-the-project-and-the-dependencies"></a>A projekt és a függőségek létrehozása 
 
@@ -219,9 +220,9 @@ Ez a szakasz azt ismerteti, hogyan adhat hozzá egy adatbázist (szóköz) és e
 
    A terminálablak értesítéseket jelenít meg a kulcstér és a tábla létrehozásáról. 
    
-2. Most nyissa meg az Azure Portalon az **Adatkezelőt**, és ellenőrizze, hogy a kulcstér és a tábla létrejött-e.
+2. Most nyissa meg az Azure Portalon az **Adatkezelőt** , és ellenőrizze, hogy a kulcstér és a tábla létrejött-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre Cassandra API fiókot a Azure Cosmos DBban, egy adatbázisban és egy táblában egy Java-alkalmazás használatával. Továbbléphet a következő cikkre:
 

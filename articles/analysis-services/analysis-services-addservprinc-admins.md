@@ -8,12 +8,12 @@ ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8e751d210ab472d82e4abd613d37069a8c591f52
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b1d5f8ec628245756c53e4dfeeecdeb3a4bebc2e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013933"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100728"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Egyszerű szolgáltatásnév hozzáadása a kiszolgáló-rendszergazdai szerepkörhöz 
 
@@ -33,14 +33,14 @@ A feladat elvégzése előtt rendelkeznie kell egy Azure Active Directoryban reg
 A kiszolgáló-rendszergazdákat SQL Server Management Studio (SSMS) használatával is konfigurálhatja. A feladat elvégzéséhez [kiszolgálói rendszergazdai](analysis-services-server-admins.md) engedélyekkel kell rendelkeznie az Azure-ban kiszolgálóként. 
 
 1. A SSMS-ben kapcsolódjon az Azure-hoz kiszolgálóként.
-2. A **kiszolgáló tulajdonságai**  >  **Biztonság**területen kattintson a **Hozzáadás**gombra.
-3. A **felhasználó vagy csoport kiválasztása**területen keresse meg a regisztrált alkalmazást név szerint, válassza ki, majd kattintson a **Hozzáadás**gombra.
+2. A **kiszolgáló tulajdonságai**  >  **Biztonság** területen kattintson a **Hozzáadás** gombra.
+3. A **felhasználó vagy csoport kiválasztása** területen keresse meg a regisztrált alkalmazást név szerint, válassza ki, majd kattintson a **Hozzáadás** gombra.
 
     ![Egyszerű szolgáltatásnév-fiók keresése](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)
 
-4. Ellenőrizze az egyszerű szolgáltatás fiókjának AZONOSÍTÓját, majd kattintson **az OK**gombra.
+4. Ellenőrizze az egyszerű szolgáltatás fiókjának AZONOSÍTÓját, majd kattintson **az OK** gombra.
     
-    ![Egyszerű szolgáltatásnév-fiók keresése](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
+    ![Képernyőkép, amely megjeleníti az egyszerű szolgáltatásnév AZONOSÍTÓját, és kiemeli az OK gombot.](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 
 ## <a name="using-a-resource-manager-template"></a>Resource Manager-sablon használata
 

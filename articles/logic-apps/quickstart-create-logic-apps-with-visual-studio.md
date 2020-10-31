@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 08/07/2020
-ms.openlocfilehash: cdc4dfe23cce7c2f58e4c9b44f2cea46e2337e00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/27/2020
+ms.openlocfilehash: 1301af3bd17ce44720d77aa1b812b78bbe57ffc9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91322444"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101391"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Rövid útmutató: Automatizált feladatok, folyamatok és munkafolyamatok létrehozása az Azure Logic Apps használatával – Visual Studio
 
@@ -20,7 +20,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a Visual Studióv
 
 Ha még nem ismeri a Azure Logic Appst, és csak az alapvető fogalmakat szeretné megtekinteni, próbálkozzon a [logikai alkalmazás létrehozásával a Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md). A Logic app Designer hasonlóan működik a Azure Portal és a Visual Studióban is.
 
-Ebben a rövid útmutatóban ugyanazt a logikai alkalmazást hozza létre a Visual Studióval Azure Portal rövid útmutatóként. Ez a logikai alkalmazás figyeli a webhely RSS-hírcsatornáját, és e-mailt küld az adott hírcsatorna minden új eleménél. A kész logikai alkalmazás a következő magas szintű munkafolyamathoz hasonlít:
+Ebben a rövid útmutatóban ugyanazt a logikai alkalmazást hozza létre a Visual Studióval Azure Portal rövid útmutatóként. Azt is megtudhatja, hogyan [hozhat létre egy példát a Visual Studio Code-ban](quickstart-create-logic-apps-visual-studio-code.md), és hogyan [hozhat létre és kezelhet logikai alkalmazásokat az Azure Command-Line felületen (Azure CLI)](quickstart-logic-apps-azure-cli.md). Ez a logikai alkalmazás figyeli a webhely RSS-hírcsatornáját, és e-mailt küld az adott hírcsatorna minden új eleménél. A kész logikai alkalmazás a következő magas szintű munkafolyamathoz hasonlít:
 
 ![A kész logikai alkalmazás magas szintű munkafolyamatát bemutató képernyőkép.](./media/quickstart-create-logic-apps-with-visual-studio/high-level-workflow-overview.png)
 
@@ -37,7 +37,7 @@ Ebben a rövid útmutatóban ugyanazt a logikai alkalmazást hozza létre a Visu
     > [!IMPORTANT]
     > A Visual Studio 2019-es vagy 2017-es vagy-es telepítésekor ügyeljen arra, hogy kiválassza az **Azure-fejlesztési** számítási feladatot.
 
-  * [Microsoft Azure SDK for .net (2.9.1 vagy újabb)](https://azure.microsoft.com/downloads/). További információ az [Azure SDK for .NET](/dotnet/azure/dotnet-tools?view=azure-dotnet) készlettel kapcsolatban.
+  * [Microsoft Azure SDK for .net (2.9.1 vagy újabb)](https://azure.microsoft.com/downloads/). További információ az [Azure SDK for .NET](/dotnet/azure/dotnet-tools?tabs=vs) készlettel kapcsolatban.
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
@@ -70,7 +70,7 @@ Használhatja az [Azure Environment választó Visual Studio bővítményt](http
 
 ### <a name="visual-studio-2019"></a>Visual Studio 2019
 
-A Azure Logic Apps Azure Government-előfizetésekkel való együttműködéshez [hozzá kell adnia egy felderítési végpontot a Azure Government Cloud a Visual studióhoz](../azure-government/documentation-government-connect-vs.md). Mielőtt azonban *bejelentkezne a Visual studióba a Azure Government-fiókjával*, át kell neveznie a felderítési végpont hozzáadása után generált JSON-fájlt a következő lépések végrehajtásával:
+A Azure Logic Apps Azure Government-előfizetésekkel való együttműködéshez [hozzá kell adnia egy felderítési végpontot a Azure Government Cloud a Visual studióhoz](../azure-government/documentation-government-connect-vs.md). Mielőtt azonban *bejelentkezne a Visual studióba a Azure Government-fiókjával* , át kell neveznie a felderítési végpont hozzáadása után generált JSON-fájlt a következő lépések végrehajtásával:
 
 1. Zárjuk be a Visual studiót.
 
@@ -100,7 +100,7 @@ Első lépésként hozzon létre egy [Azure erőforráscsoport-projektet](../azu
 
    ![Az Új > Projekt menüpont kiválasztása a Fájl menüben](./media/quickstart-create-logic-apps-with-visual-studio/create-new-visual-studio-project.png)
 
-1. A **Telepítve** területen válassza a **Visual C#** vagy a **Visual Basic** elemet. Válassza ki a **Cloud**  >  **Azure-erőforráscsoportot**. Adjon nevet a projektnek, például a következőt:
+1. A **Telepítve** területen válassza a **Visual C#** vagy a **Visual Basic** elemet. Válassza ki a **Cloud**  >  **Azure-erőforráscsoportot** . Adjon nevet a projektnek, például a következőt:
 
    ![Azure erőforráscsoport-projekt létrehozása](./media/quickstart-create-logic-apps-with-visual-studio/create-azure-cloud-service-project.png)
 
@@ -111,9 +111,9 @@ Első lépésként hozzon létre egy [Azure erőforráscsoport-projektet](../azu
 
    Ha a Visual Studio 2019-et használja, kövesse az alábbi lépéseket:
 
-   1. Az **új projekt létrehozása** mezőben válassza ki a Visual C# vagy a Visual Basic **Azure erőforráscsoport** -projektjét. Kattintson a **Tovább** gombra.
+   1. Az **új projekt létrehozása** mezőben válassza ki a Visual C# vagy a Visual Basic **Azure erőforráscsoport** -projektjét. Válassza a **Tovább** gombot.
 
-   1. Adja meg a használni kívánt Azure-erőforráscsoport nevét és a projekt egyéb információit. Kattintson a **Létrehozás** gombra.
+   1. Adja meg a használni kívánt Azure-erőforráscsoport nevét és a projekt egyéb információit. Válassza a **Létrehozás** lehetőséget.
 
 1. A sablon listából válassza ki a **logikai alkalmazás** sablonját. Válassza az **OK** lehetőséget.
 
@@ -127,7 +127,7 @@ Első lépésként hozzon létre egy [Azure erőforráscsoport-projektet](../azu
 
 Ha rendelkezik az Azure erőforráscsoport-projekttel, hozzon létre egy logikai alkalmazást az **üres logikai alkalmazás** sablonnal.
 
-1. A Megoldáskezelőban nyissa meg a **LogicApp.jsa** fájl helyi menüjében. Válassza a lehetőséget az elem **megnyitására a Logikaialkalmazás-tervezővel**. (Billentyűzet: CTRL + L)
+1. A Megoldáskezelőban nyissa meg a **LogicApp.jsa** fájl helyi menüjében. Válassza a lehetőséget az elem **megnyitására a Logikaialkalmazás-tervezővel** . (Billentyűzet: CTRL + L)
 
    ![A logikai alkalmazás .json-fájljának megnyitása a Logikaialkalmazás-tervezővel](./media/quickstart-create-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
@@ -136,7 +136,7 @@ Ha rendelkezik az Azure erőforráscsoport-projekttel, hozzon létre egy logikai
 
    A Visual Studio az Azure-előfizetését és egy Azure-erőforráscsoportot kér a logikai alkalmazás és a kapcsolatok erőforrásainak létrehozásához és üzembe helyezéséhez.
 
-1. Az **előfizetés**mezőben válassza ki az Azure-előfizetését. Az **erőforráscsoport**területen válassza az **új létrehozása** lehetőséget egy másik Azure-erőforráscsoport létrehozásához.
+1. Az **előfizetés** mezőben válassza ki az Azure-előfizetését. Az **erőforráscsoport** területen válassza az **új létrehozása** lehetőséget egy másik Azure-erőforráscsoport létrehozásához.
 
    ![Azure-előfizetés, erőforráscsoport és erőforrás helyének kiválasztása](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-location.png)
 
@@ -145,10 +145,10 @@ Ha rendelkezik az Azure erőforráscsoport-projekttel, hozzon létre egy logikai
    | Felhasználói fiók | Fabrikam <br> sophia-owen@fabrikam.com | A fiók, amelyet a Visual studióba való bejelentkezéskor használt |
    | **Előfizetés** | Utólagos, használatalapú fizetés <br> (sophia-owen@fabrikam.com) | Az Azure-előfizetés és a társított fiók neve |
    | **Erőforráscsoport** | MyLogicApp-RG <br> (USA nyugati régiója) | A logikai alkalmazás erőforrásainak tárolásához és üzembe helyezéséhez használt Azure-erőforráscsoport és-hely |
-   | **Hely** | **Ugyanaz, mint az erőforráscsoport** | A logikai alkalmazás üzembe helyezéséhez használt hely típusa és adott hely. A hely típusa egy Azure-régió vagy egy meglévő [integrációs szolgáltatási környezet (ISE)](connect-virtual-network-vnet-isolated-environment.md). <p>Ebben a rövid útmutatóban tartsa meg a hely típusát **régióra** , és a helyet állítsa az **erőforráscsoport**értékre. <p>**Megjegyzés**: az erőforráscsoport-projekt létrehozása után [módosíthatja a hely típusát és helyét](manage-logic-apps-with-visual-studio.md#change-location), de a különböző típusú helyek különböző módokon érintik a logikai alkalmazást. |
+   | **Hely** | **Ugyanaz, mint az erőforráscsoport** | A logikai alkalmazás üzembe helyezéséhez használt hely típusa és adott hely. A hely típusa egy Azure-régió vagy egy meglévő [integrációs szolgáltatási környezet (ISE)](connect-virtual-network-vnet-isolated-environment.md). <p>Ebben a rövid útmutatóban tartsa meg a hely típusát **régióra** , és a helyet állítsa az **erőforráscsoport** értékre. <p>**Megjegyzés** : az erőforráscsoport-projekt létrehozása után [módosíthatja a hely típusát és helyét](manage-logic-apps-with-visual-studio.md#change-location), de a különböző típusú helyek különböző módokon érintik a logikai alkalmazást. |
    ||||
 
-1. A Logic Apps Designer egy olyan oldalt nyit meg, amely bemutatja a bemutató videót és a gyakran használt eseményindítókat. Görgessen le a videó **és az eseményindítók között, és**válassza az **üres logikai alkalmazás**lehetőséget.
+1. A Logic Apps Designer egy olyan oldalt nyit meg, amely bemutatja a bemutató videót és a gyakran használt eseményindítókat. Görgessen le a videó **és az eseményindítók között, és** válassza az **üres logikai alkalmazás** lehetőséget.
 
    ![„Üres logikai alkalmazás” kiválasztása](./media/quickstart-create-logic-apps-with-visual-studio/choose-blank-logic-app-template.png)
 
@@ -156,7 +156,7 @@ Ha rendelkezik az Azure erőforráscsoport-projekttel, hozzon létre egy logikai
 
 Ezután adjon hozzá egy RSS- [eseményindítót](../logic-apps/logic-apps-overview.md#logic-app-concepts) , amely akkor aktiválódik, amikor megjelenik egy új hírcsatorna elem. Minden logikai alkalmazás egy eseményindítóval kezdődik, amely az adott feltételek teljesülése esetén következik be. A Logic Apps-motor a trigger minden aktiválásakor létrehoz egy logikaialkalmazás-példányt, amely futtatja a munkafolyamatot.
 
-1. A Logic app Designerben a keresőmező alatt válassza az **összes**lehetőséget. A keresőmezőbe írja be az "RSS" kifejezést. Az eseményindítók listából válassza ki ezt az eseményindítót: a **hírcsatorna-elemek közzétételekor**
+1. A Logic app Designerben a keresőmező alatt válassza az **összes** lehetőséget. A keresőmezőbe írja be az "RSS" kifejezést. Az eseményindítók listából válassza ki ezt az eseményindítót: a **hírcsatorna-elemek közzétételekor**
 
    ![Logikai alkalmazás felépítése trigger és műveletek hozzáadásával](./media/quickstart-create-logic-apps-with-visual-studio/add-trigger-logic-app.png)
 
@@ -172,7 +172,7 @@ Ezután adjon hozzá egy RSS- [eseményindítót](../logic-apps/logic-apps-overv
 
 A logikai alkalmazás futtatása és tesztelése előtt telepítse az alkalmazást az Azure-ba a Visual studióból.
 
-1. Megoldáskezelő a projekt helyi menüjében válassza az **Deploy**  >  **új**telepítése lehetőséget. Ha szükséges, jelentkezzen be Azure-fiókjával.
+1. Megoldáskezelő a projekt helyi menüjében válassza az **Deploy**  >  **új** telepítése lehetőséget. Ha szükséges, jelentkezzen be Azure-fiókjával.
 
    ![A logikai alkalmazás üzemelő példányának létrehozása](./media/quickstart-create-logic-apps-with-visual-studio/create-logic-app-deployment.png)
 
@@ -206,31 +206,31 @@ Ha rendelkezik egy meglévő Azure-erőforráscsoport-projekttel, a JSON-vázlat
 
 1. A Megoldáskezelőban nyissa meg a `<logic-app-name>.json` fájlt.
 
-1. A **nézet** menüben válassza a **más Windows**  >  **JSON-vázlat**lehetőséget.
+1. A **nézet** menüben válassza a **más Windows**  >  **JSON-vázlat** lehetőséget.
 
-1. Ha hozzá szeretne adni egy erőforrást a sablonfájl számára, válassza a JSON-vázlat ablak tetején található **erőforrás hozzáadása** lehetőséget. Vagy a JSON-vázlat ablakban nyissa meg az **erőforrások** helyi menüt, és válassza az **új erőforrás hozzáadása**lehetőséget.
+1. Ha hozzá szeretne adni egy erőforrást a sablonfájl számára, válassza a JSON-vázlat ablak tetején található **erőforrás hozzáadása** lehetőséget. Vagy a JSON-vázlat ablakban nyissa meg az **erőforrások** helyi menüt, és válassza az **új erőforrás hozzáadása** lehetőséget.
 
    ![JSON-vázlat ablak](./media/quickstart-create-logic-apps-with-visual-studio/json-outline-window-add-resource.png)
 
-1. Az **erőforrás hozzáadása** párbeszédpanelen a keresőmezőbe írja be a kifejezést `logic app` , majd válassza a **logikai alkalmazás**lehetőséget. Nevezze el a logikai alkalmazást, és válassza a **Hozzáadás**lehetőséget.
+1. Az **erőforrás hozzáadása** párbeszédpanelen a keresőmezőbe írja be a kifejezést `logic app` , majd válassza a **logikai alkalmazás** lehetőséget. Nevezze el a logikai alkalmazást, és válassza a **Hozzáadás** lehetőséget.
 
    ![Erőforrás hozzáadása](./media/quickstart-create-logic-apps-with-visual-studio/add-logic-app-resource.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha elkészült a logikai alkalmazással, törölje a logikai alkalmazást és a kapcsolódó erőforrásokat tartalmazó erőforráscsoportot.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) a logikai alkalmazás létrehozásához használt fiókkal.
 
-1. A Azure Portal menüben válassza az **erőforráscsoportok**lehetőséget, vagy keresse meg és válassza ki az **erőforráscsoportot** bármelyik oldalon. Válassza ki a logikai alkalmazáshoz tartozó erőforráscsoportot.
+1. A Azure Portal menüben válassza az **erőforráscsoportok** lehetőséget, vagy keresse meg és válassza ki az **erőforráscsoportot** bármelyik oldalon. Válassza ki a logikai alkalmazáshoz tartozó erőforráscsoportot.
 
-1. Az **Áttekintés** lapon válassza az **erőforráscsoport törlése**elemet. Adja meg az erőforráscsoport nevét megerősítésként, majd válassza a **Törlés**lehetőséget.
+1. Az **Áttekintés** lapon válassza az **erőforráscsoport törlése** elemet. Adja meg az erőforráscsoport nevét megerősítésként, majd válassza a **Törlés** lehetőséget.
 
    ![„Erőforráscsoportok” > „Áttekintés” > „Erőforráscsoport törlése”](./media/quickstart-create-logic-apps-with-visual-studio/clean-up-resources.png)
 
 1. Törölje a Visual Studio-megoldást a helyi számítógépről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy logikai alkalmazást állított össze, helyezett üzembe és futtatott a Visual Studióval. A Logic apps és a Visual Studio használatával végzett speciális üzembe helyezés kezelésével és végrehajtásával kapcsolatos információkért tekintse meg a következő cikkeket:
 

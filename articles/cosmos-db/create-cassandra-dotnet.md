@@ -9,14 +9,15 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/01/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7389136d5f08c7efd0c0443387744ce4c5816f00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 13706b900c64b1d0aa5ce03fc95442e8dfc41051
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91627363"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099827"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>Gyors útmutató: Cassandra-alkalmazás létrehozása .NET SDK-val és Azure Cosmos DB
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -97,7 +98,7 @@ Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan hozza létre a kó
 * Felhasználói entitások beszúrása az IMapper objektum használatával a uprofile kulcsterülethez csatlakozó új munkamenettel.
 
     ```csharp
-    mapper.Insert<User>(new User(1, "LyubovK", "Dubai"));
+    mapper.Insert<User>(new User(1, "LyubovK", "Dubai"));
     ```
     
 * Összes felhasználói adat lekérdezése.
@@ -149,7 +150,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
     
 ## <a name="run-the-net-app"></a>A .NET-alkalmazás futtatása
 
-1. A Visual Studióban válassza az **eszközök**  >  **NuGet Package**Manager  >  **csomagkezelő konzolt**.
+1. A Visual Studióban válassza az **eszközök**  >  **NuGet Package** Manager  >  **csomagkezelő konzolt** .
 
 2. A parancssorban a következő paranccsal telepítse a .NET illesztő NuGet-csomagját. 
 
@@ -170,11 +171,11 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével tárolót készíteni, és hogyan lehet futtatni egy webalkalmazást. Most további adatokat importálhat a Cosmos DB-fiókba. 
 

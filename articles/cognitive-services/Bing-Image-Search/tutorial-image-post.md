@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 5d455751dcabd67213566d605e83fda297e187d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76670c6a061ce3f257d9df8cfe61b1cc020194c6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316681"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100218"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Oktatóanyag: Képadatok kinyerése a Bing Image Search API és a C# használatával
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 A Bing Image Search API-n keresztül több [végpont](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-endpoint) is elérhető. A `/details` végpont egy képpel együtt érkező POST-kérelmet fogad el, és különböző adatokat képes visszaadni a képről. A C#-alkalmazás az API használatával elküld egy képet, és megjeleníti a Bing által visszaadott adatokat JSON-objektumok formájában, mint amilyen például a következő:
 
@@ -107,7 +112,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/images/details?InsightsToken="bcid
 
 Ha azonosítható személyek vagy helyek szerepelnek a képen, a kérelem rájuk vonatkozó információkat fog visszaadni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Képek és keresési beállítások megjelenítése egyoldalas webalkalmazásban](tutorial-bing-image-search-single-page-app.md)

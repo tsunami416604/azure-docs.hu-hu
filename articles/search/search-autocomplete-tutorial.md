@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 1796566c0a775e5810c387a01e0b54983727fa37
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 04123d06d22786c9dd2aa08c2dab1153f6d43375
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951400"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098450"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Automatikus kiegészítés és javaslatok hozzáadása az ügyfélalkalmazások számára
 
-A keresési típus egy gyakori módszer a felhasználó által kezdeményezett lekérdezések hatékonyságának javítására. Az Azure Cognitive Searchban ez a megoldás az *automatikus kiegészítésen*keresztül támogatott, amely egy kifejezést vagy kifejezést végez a részleges bevitel ("Micro" és "Microsoft") alapján. A *javaslatok*egy másik formája: a megfelelő dokumentumok rövid listája (a könyv címének visszaadása egy azonosítóval, amely egy részletes oldalhoz csatolható). Az automatikus kiegészítés és a javaslatok is az indexben egyeznek meg. A szolgáltatás nem kínál olyan lekérdezéseket, amelyek nulla eredményt adnak vissza.
+A keresési típus egy gyakori módszer a felhasználó által kezdeményezett lekérdezések hatékonyságának javítására. Az Azure Cognitive Searchban ez a megoldás az *automatikus kiegészítésen* keresztül támogatott, amely egy kifejezést vagy kifejezést végez a részleges bevitel ("Micro" és "Microsoft") alapján. A *javaslatok* egy másik formája: a megfelelő dokumentumok rövid listája (a könyv címének visszaadása egy azonosítóval, amely egy részletes oldalhoz csatolható). Az automatikus kiegészítés és a javaslatok is az indexben egyeznek meg. A szolgáltatás nem kínál olyan lekérdezéseket, amelyek nulla eredményt adnak vissza.
 
 A tapasztalatok Azure Cognitive Search-ban való megvalósításához a következőkre lesz szüksége:
 
@@ -131,7 +131,7 @@ source: "/home/suggest?highlights=false&fuzzy=true&",
 
 ### <a name="enable-highlighting"></a>Kiemelés engedélyezése
 
-A kiemelés a betűméretet az eredményben szereplő karakterekre alkalmazza, amelyek a bemenetnek felelnek meg. Ha például a részleges bemenet "Micro", az eredmény a **Micro**Soft, a **Micro**scope, és így tovább jelenik meg. A kiemelés a HighlightPreTag és a HighlightPostTag paramétereken alapul, amelyek a javaslat függvénnyel vannak meghatározva.
+A kiemelés a betűméretet az eredményben szereplő karakterekre alkalmazza, amelyek a bemenetnek felelnek meg. Ha például a részleges bemenet "Micro", az eredmény a **Micro** Soft, a **Micro** scope, és így tovább jelenik meg. A kiemelés a HighlightPreTag és a HighlightPostTag paramétereken alapul, amelyek a javaslat függvénnyel vannak meghatározva.
 
 ```javascript
 source: "/home/suggest?highlights=true&fuzzy=true&",
@@ -181,7 +181,7 @@ A Suggest függvény két paramétert vesz fel, amelyek meghatározzák, hogy a 
 
 ## <a name="autocomplete"></a>Automatikus kiegészítés
 
-Eddig a Search UX-kód a javaslatokra van központosítva. A következő kódrészlet az automatikus kiegészítést jeleníti meg, amely a XDSoft jQuery felhasználói felületének automatikus kiegészítési funkciója, amely az Azure Cognitive Search automatikus kiegészítésére vonatkozó kérést küld. Ahogy a javaslatok esetében is, egy C#-alkalmazásban a felhasználói interakciót támogató kód az **index. cshtml**.
+Eddig a Search UX-kód a javaslatokra van központosítva. A következő kódrészlet az automatikus kiegészítést jeleníti meg, amely a XDSoft jQuery felhasználói felületének automatikus kiegészítési funkciója, amely az Azure Cognitive Search automatikus kiegészítésére vonatkozó kérést küld. Ahogy a javaslatok esetében is, egy C#-alkalmazásban a felhasználói interakciót támogató kód az **index. cshtml** .
 
 ```javascript
 $(function () {
@@ -247,10 +247,10 @@ public ActionResult AutoComplete(string term)
 
 Az automatikus kiegészítési függvény a keresési kifejezés bemenetét veszi igénybe. A metódus létrehoz egy [AutoCompleteParameters objektumot](/rest/api/searchservice/autocomplete). A rendszer az eredményt ezután JSON-kifejezéssé alakítja, hogy meg lehessen jeleníteni az ügyfélnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezeket a hivatkozásokat követve megtekintheti a keresési lehetőségekkel kapcsolatos teljes körű útmutatást és kódot. Mindkét kód például a javaslatok és az automatikus kiegészítések hibrid implementációját tartalmazza.
 
 + [Oktatóanyag: az első alkalmazás létrehozása C# nyelven (3. lecke)](tutorial-csharp-type-ahead-and-suggestions.md)
 + [C#-kód minta: Azure-Search-DotNet-Samples/Create-First-app/3-Add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead)
-+ [C# és JavaScript REST-alapú kóddal minta](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)
++ [C# és JavaScript REST-alapú kóddal minta](https://github.com/wantedfast/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)

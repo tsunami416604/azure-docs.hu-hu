@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 4251a9ec0766f6e1956e4885b58dc874e01b0960
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ad2b9bcbfdd4353c16d890d1857727b685a5e59
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253071"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098858"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Tárolt eljárások és triggerek írása a Azure Cosmos DBban a JavaScript lekérdezési API használatával
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A Azure Cosmos DB lehetővé teszi, hogy az optimalizált lekérdezéseket egy Fluent JavaScript-felület használatával hajtsa végre, az SQL nyelv ismerete nélkül, amely a tárolt eljárások vagy triggerek írására használható. Ha többet szeretne megtudni a Azure Cosmos DB JavaScript-lekérdezési API-támogatásáról, tekintse meg a következő témakört: [a JavaScript nyelv integrált lekérdezési API használata Azure Cosmos db](javascript-query-api.md) cikkben.
 
