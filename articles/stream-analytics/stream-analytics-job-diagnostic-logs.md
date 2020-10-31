@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.custom: contperfq1
 ms.date: 06/18/2020
-ms.openlocfilehash: 18270a2f435428824714067749fc18ce2addc535
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 0e7777cba93706baea815521757b495209431ce6
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913041"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124017"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Azure Stream Analyticsek hibakeresése erőforrás-naplók használatával
 
@@ -48,7 +48,7 @@ A Tevékenységnaplók alapértelmezés szerint be vannak kapcsolva, és magas s
 
    ![Stream Analytics tevékenység naplózási műveletének összegzése](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
 
-4. Görgessen le a JSON **Tulajdonságok** szakaszába, amely részletesen ismerteti a sikertelen műveletet okozó hibát. Ebben a példában a hiba oka, hogy egy futásidejű hiba történt a kötött szélességi értékektől. Egy Stream Analytics feladatsor által feldolgozott adatok eltérése adathibát okoz. Megismerheti a [bemeneti és kimeneti adatok különböző hibáit és azok okait](https://docs.microsoft.com/azure/stream-analytics/data-errors).
+4. Görgessen le a JSON **Tulajdonságok** szakaszába, amely részletesen ismerteti a sikertelen műveletet okozó hibát. Ebben a példában a hiba oka, hogy egy futásidejű hiba történt a kötött szélességi értékektől. Egy Stream Analytics feladatsor által feldolgozott adatok eltérése adathibát okoz. Megismerheti a [bemeneti és kimeneti adatok különböző hibáit és azok okait](./data-errors.md).
 
    ![JSON-hiba részletei](./media/stream-analytics-job-diagnostic-logs/error-details.png)
 
@@ -111,7 +111,7 @@ A végrehajtási naplók információkkal rendelkeznek a Stream Analytics felada
 
 ### <a name="data-errors"></a>Adathibák
 
-Minden olyan hiba, amely akkor fordul elő, amikor a feladatsor az adatok feldolgozását végzi. Ezek a naplók leggyakrabban az adatok olvasási, szerializálási és írási műveletei során jönnek létre. Ezek a naplók nem tartalmaznak csatlakozási hibákat. A csatlakozási hibákat általános eseményekként kezeli a rendszer. További információt a különböző [bemeneti és kimeneti adatokkal kapcsolatos hibák](https://docs.microsoft.com/azure/stream-analytics/data-errors)okairól itt talál.
+Minden olyan hiba, amely akkor fordul elő, amikor a feladatsor az adatok feldolgozását végzi. Ezek a naplók leggyakrabban az adatok olvasási, szerializálási és írási műveletei során jönnek létre. Ezek a naplók nem tartalmaznak csatlakozási hibákat. A csatlakozási hibákat általános eseményekként kezeli a rendszer. További információt a különböző [bemeneti és kimeneti adatokkal kapcsolatos hibák](./data-errors.md)okairól itt talál.
 
 Név | Leírás
 ------- | -------
@@ -143,5 +143,5 @@ Korrelációs azonosító | GUID, amely egyedileg azonosítja a feladatok végre
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [AdatStream Analyticsi hibák](https://docs.microsoft.com/azure/stream-analytics/data-errors)
-* [Stream Analytics lekérdezés nyelvi referenciája](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [AdatStream Analyticsi hibák](./data-errors.md)
+* [Stream Analytics lekérdezés nyelvi referenciája](/stream-analytics-query/stream-analytics-query-language-reference)

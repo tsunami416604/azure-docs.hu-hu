@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: c4e9a66e6bd6b94d8397429769d7718b3e9c555d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b201ebb5ad8ab9d98a76a29831fa12d6174e47cc
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148112"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125206"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Alkalmazások figyelése Azure App Service
 A [Azure app Service](./overview.md) beépített figyelési funkciókat biztosít a webalkalmazások, a mobil és az API-alkalmazások számára a [Azure Portal](https://portal.azure.com).
@@ -27,11 +27,11 @@ A App Serviceban üzemeltetett alkalmazásokra bizonyos korlátozások vonatkozn
 
 Ha az alkalmazás *ingyenes* vagy *közös* csomagban található, az alkalmazás által használható erőforrások korlátai a kvóták alapján definiálhatók.
 
-Ha az alkalmazás *Alapszintű*, standard vagy *prémium* *szintű*csomagban található, akkor a felhasználható erőforrásokra vonatkozó korlátokat a app Service csomag *mérete* (kis, közepes, nagy) és a *Példányszám* (1, 2, 3 stb.) határozza meg.
+Ha az alkalmazás *Alapszintű* , standard vagy *prémium* *szintű* csomagban található, akkor a felhasználható erőforrásokra vonatkozó korlátokat a app Service csomag *mérete* (kis, közepes, nagy) és a *Példányszám* (1, 2, 3 stb.) határozza meg.
 
 Az ingyenes vagy a megosztott alkalmazások kvótái a következők:
 
-| Kvóta | Description |
+| Kvóta | Leírás |
 | --- | --- |
 | **CPU (rövid)** | Az alkalmazás számára engedélyezett CPU-mennyiség 5 perces intervallumban. Ez a kvóta öt percenként alaphelyzetbe áll. |
 | **CPU (nap)** | Az alkalmazáshoz egy nap alatt engedélyezett CPU teljes mennyisége. Ez a kvóta 24 óránként visszaállítja az UTC-t éjfélkor. |
@@ -39,13 +39,13 @@ Az ingyenes vagy a megosztott alkalmazások kvótái a következők:
 | **Sávszélesség** | Az alkalmazáshoz egy nap alatt engedélyezett kimenő sávszélesség teljes mennyisége. Ez a kvóta 24 óránként visszaállítja az UTC-t éjfélkor. |
 | **Fájlrendszer** | Az engedélyezett tárterület teljes mennyisége. |
 
-Az *Alapszintű*, standard és *prémium* *szintű*alkalmazások esetében az egyetlen kvóta a fájlrendszer.
+Az *Alapszintű* , standard és *prémium* *szintű* alkalmazások esetében az egyetlen kvóta a fájlrendszer.
 
 További információ a különböző App Service SKU-ban elérhető konkrét kvótákkal, korlátozásokkal és szolgáltatásokkal kapcsolatban: [Azure-előfizetési szolgáltatás korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).
 
 ### <a name="quota-enforcement"></a>Kvóta kényszerítése
 
-Ha egy alkalmazás meghaladja a *CPU-t (röviden)*, a CPU-t *(nap)* vagy a *sávszélesség* -kvótát, az alkalmazás a kvóta alaphelyzetbe állítása után leáll. Ebben az időszakban az összes bejövő kérelem HTTP 403-es hibát eredményez.
+Ha egy alkalmazás meghaladja a *CPU-t (röviden)* , a CPU-t *(nap)* vagy a *sávszélesség* -kvótát, az alkalmazás a kvóta alaphelyzetbe állítása után leáll. Ebben az időszakban az összes bejövő kérelem HTTP 403-es hibát eredményez.
 
 ![403-hibaüzenet][http403]
 
@@ -87,6 +87,7 @@ Egy alkalmazás esetében az elérhető metrikák a következők:
 | **1. generációs Garbage gyűjtemények** | Azon alkalmak száma, amikor az 1. generációs objektumok az alkalmazási folyamat kezdete óta beszedett szemetet gyűjtenek. A magasabb generációs GCs közé tartozik az összes alacsonyabb generációs GCs.|
 | **2. generációs Garbage gyűjtemények** | A 2. generációs objektumok száma az alkalmazási folyamat kezdete óta beszedett szemetet.|
 | **Leírók száma** | Az alkalmazási folyamat által jelenleg megnyitott kezelők teljes száma.|
+| **Állapot-ellenőrzési állapot** | Az App Service tervben szereplő alkalmazás példányainak átlagos állapota.|
 | **Http-2xx** | A kérelmek száma a következő HTTP-állapotkódot eredményezi: ≥ 200, de < 300. |
 | **Http-3xx** | A kérelmek száma a következő HTTP-állapotkódot eredményezi: ≥ 300, de < 400. |
 | **HTTP 401** | A HTTP 401 állapotkódot eredményező kérések száma. |
@@ -113,7 +114,7 @@ Egy alkalmazás esetében az elérhető metrikák a következők:
 App Service csomag esetében az elérhető metrikák a következők:
 
 > [!NOTE]
-> A App Service terv metrikái csak *Alapszintű*, *standard*és *prémium* szintű csomagokban érhetők el.
+> A App Service terv metrikái csak *Alapszintű* , *standard* és *prémium* szintű csomagokban érhetők el.
 > 
 
 | Metrika | Leírás |
@@ -130,9 +131,9 @@ App Service csomag esetében az elérhető metrikák a következők:
 
 A CPU-használatot két mérőszám mutatja:
 
-**CPU-idő**: az ingyenes vagy közös tervekben üzemeltetett alkalmazások esetében hasznos, mert az egyik kvóta az alkalmazás által használt CPU-percben van meghatározva.
+**CPU-idő** : az ingyenes vagy közös tervekben üzemeltetett alkalmazások esetében hasznos, mert az egyik kvóta az alkalmazás által használt CPU-percben van meghatározva.
 
-**CPU-százalék**: az alapszintű, a standard és a prémium csomagokban üzemeltetett alkalmazásokhoz hasznos, mivel azok felskálázásra képesek. A CPU-százalék jól jelzi az összes példány teljes használatát.
+**CPU-százalék** : az alapszintű, a standard és a prémium csomagokban üzemeltetett alkalmazásokhoz hasznos, mivel azok felskálázásra képesek. A CPU-százalék jól jelzi az összes példány teljes használatát.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Mérőszámok részletességi és adatmegőrzési szabályzata
 Az alkalmazások és az App Service-csomag metrikáit a szolgáltatás naplózza és összesíti, és [ezeket a szabályoknak megfelelően megőrzi](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics).
@@ -142,7 +143,7 @@ Az alkalmazást érintő különböző kvóták és mérőszámok állapotának 
 
 ![Kvóta diagram a Azure Portal][quotas]
 
-A kvóták megkereséséhez válassza a **Beállítások**  >  **kvóták**lehetőséget. A diagramon a következőket tekintheti át: 
+A kvóták megkereséséhez válassza a **Beállítások**  >  **kvóták** lehetőséget. A diagramon a következőket tekintheti át: 
 1. A kvóta neve.
 1. Az alaphelyzetbe állítási időköz.
 1. Jelenlegi korlátja.

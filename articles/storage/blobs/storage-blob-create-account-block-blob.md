@@ -5,16 +5,16 @@ author: tamram
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/28/2020
+ms.date: 10/30/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 19d70642a6c76239f62b2fd6f7e713430a7adfbb
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 53033226702ea1033fe4ae94f60c62cacbae6596
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043095"
+ms.locfileid: "93124968"
 ---
 # <a name="create-a-blockblobstorage-account"></a>BlockBlobStorage-fiók létrehozása
 
@@ -116,10 +116,7 @@ Ha BlockBlobStorage-fiókot szeretne létrehozni a Azure Portalban, kövesse az 
 
 8. Válassza a **speciális** lapot.
 
-9. Ha optimalizálni szeretné a Storage-fiókját az adatelemzéshez, akkor állítsa a **hierarchikus névteret** **engedélyezve** értékre. Ellenkező esetben hagyja meg ezt a beállítást, ha az alapértelmezett értékre van állítva. Ha engedélyezi ezt a beállítást a BlockBlobStorage-fiókjával, a [prémium szintű Data Lake Storage](premium-tier-for-data-lake-storage.md)biztosít.  Ha többet szeretne megtudni a Data Lake Storageről, tekintse meg a [Azure Data Lake Storage Gen2 bemutatása](data-lake-storage-introduction.md)című témakört.
-
-   > [!NOTE]
-   > A blokk blob Storage-fiók hierarchikus névtér funkciója nyilvános előzetes verzióban érhető el. További információ a regionális elérhetőségről: [regionális elérhetőség](premium-tier-for-data-lake-storage.md#regional-availability).
+9. Ha optimalizálni szeretné a Storage-fiókját az adatelemzéshez, akkor állítsa a **hierarchikus névteret** **engedélyezve** értékre. Ellenkező esetben hagyja meg ezt a beállítást az alapértelmezett értékre. Ha engedélyezi ezt a beállítást a BlockBlobStorage-fiókjával, a [prémium szintű Data Lake Storage](premium-tier-for-data-lake-storage.md)biztosít.  Ha többet szeretne megtudni a Data Lake Storageről, tekintse meg a [Azure Data Lake Storage Gen2 bemutatása](data-lake-storage-introduction.md)című témakört.
 
 8. A Storage-fiók beállításainak áttekintéséhez válassza a **felülvizsgálat + létrehozás** elemet.
 
@@ -162,9 +159,6 @@ Ha BlockBlobStorage-fiókot szeretne létrehozni a Azure Portalban, kövesse az 
    ```
    Ha optimalizálni szeretné a Storage-fiókját az adatelemzéshez, adja hozzá `-EnableHierarchicalNamespace $True` a parancsot a parancshoz. Ha engedélyezi ezt a beállítást a BlockBlobStorage-fiókjával, a [prémium szintű Data Lake Storage](premium-tier-for-data-lake-storage.md)biztosít.  Ha többet szeretne megtudni a Data Lake Storageről, tekintse meg a [Azure Data Lake Storage Gen2 bemutatása](data-lake-storage-introduction.md)című témakört.
 
-   > [!NOTE]
-   > A blokk blob Storage-fiók hierarchikus névtér funkciója nyilvános előzetes verzióban érhető el. További információ a regionális elérhetőségről: [regionális elérhetőség](premium-tier-for-data-lake-storage.md#regional-availability).
-
 ## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Ha az Azure CLI használatával szeretne blokk-blob-fiókot létrehozni, először telepítenie kell az Azure CLI v-t. 2.0.46 vagy újabb verzió. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
@@ -195,10 +189,7 @@ Ha az Azure CLI használatával szeretne blokk-blob-fiókot létrehozni, elősz�
    ```
 
    Ha optimalizálni szeretné a Storage-fiókját az adatelemzéshez, adja hozzá `--hierarchical-namespace true` a parancsot a parancshoz. Ha engedélyezi ezt a beállítást a BlockBlobStorage-fiókjával, a [prémium szintű Data Lake Storage](premium-tier-for-data-lake-storage.md)biztosít.  Ha többet szeretne megtudni a Data Lake Storageről, tekintse meg a [Azure Data Lake Storage Gen2 bemutatása](data-lake-storage-introduction.md)című témakört.
-   
-   > [!NOTE]
-   > A blokk blob Storage-fiók hierarchikus névtér funkciója nyilvános előzetes verzióban érhető el. További információ a regionális elérhetőségről: [regionális elérhetőség](premium-tier-for-data-lake-storage.md#regional-availability).
-   
+
 ---
 
 ## <a name="next-steps"></a>Következő lépések

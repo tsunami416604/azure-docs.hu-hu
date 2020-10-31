@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
-ms.openlocfilehash: 9a804bd40635cd039a2c099f98351b2487c554d3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 64ccc9c91d9ead567035b1f7f35e0a0088b6200b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075535"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124186"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása Spring boot-alkalmazáshoz
 
@@ -45,12 +45,12 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
 1. Adja meg a következő beállításokat:
 
-   * Hozzon létre egy **Maven** projektet **Javával**.
+   * Hozzon létre egy **Maven** projektet **Javával** .
    * Olyan **Spring boot** -verziót válasszon, amely egyenlő vagy nagyobb, mint 2,0.
    * Adja meg az alkalmazáshoz tartozó **Group** (Csoport) és **Artifact** (Összetevő) neveket.  Ez a cikk a és a használatát ismerteti `com.example` `demo` .
    * Adja hozzá a **rugó webes** függőségét.
 
-1. Az előző beállítások megadása után válassza a **projekt létrehozása**lehetőséget. Ha a rendszer kéri, töltse le a projektet a helyi számítógépre.
+1. Az előző beállítások megadása után válassza a **projekt létrehozása** lehetőséget. Ha a rendszer kéri, töltse le a projektet a helyi számítógépre.
 
 ## <a name="add-feature-management"></a>Szolgáltatások felügyeletének hozzáadása
 
@@ -242,7 +242,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
     ```
 
-1. Hozzon létre egy új, CSS nevű mappát `static` a és annak belsejében egy *Main. CSS*nevű CSS-fájl.
+1. Hozzon létre egy új, CSS nevű mappát `static` a és annak belsejében egy *Main. CSS* nevű CSS-fájl.
 
     ```css
     html {
@@ -286,9 +286,9 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
 1. Nyisson meg egy böngészőablakot, és lépjen a következő URL-címre: `http://localhost:8080/welcome` .
 
-    ![Gyorsindítás alkalmazás elindítása helyi](./media/quickstarts/spring-boot-feature-flag-local-before.png)
+    ![A képernyőképen egy üdvözlő üzenettel rendelkező böngészőablak látható.](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
-1. Az alkalmazás konfigurációs portálján válassza a **Feature Manager**elemet, és módosítsa a **bétaverzió** **állapotát a következőre:**
+1. Az alkalmazás konfigurációs portálján válassza a **Feature Manager** elemet, és módosítsa a **bétaverzió** **állapotát a következőre:**
 
     | Kulcs | Állam |
     |---|---|
@@ -296,9 +296,9 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
 1. A böngésző oldalának frissítésével tekintheti meg az új konfigurációs beállításokat.
 
-    ![Gyorsindítás alkalmazás elindítása helyi](./media/quickstarts/spring-boot-feature-flag-local-after.png)
+    ![Képernyőfelvétel: a böngészőablak egy üdvözlő üzenettel és egy kinevezett bétaverziós hivatkozással jelenik meg.](./media/quickstarts/spring-boot-feature-flag-local-after.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 

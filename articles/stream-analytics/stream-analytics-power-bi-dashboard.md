@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 8/6/2020
-ms.openlocfilehash: 4c6d1d3877629150493ee2a57a04573760d2772a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a130345a755644874b4547a5906101b593664a6
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88870017"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123472"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics és Power BI: valós idejű elemzési irányítópult az adatfolyam-továbbításhoz
 
@@ -37,12 +37,12 @@ A valós idejű csalások észlelését ismertető oktatóanyagban a kimenetet a
 
 1. A Azure Portal nyissa meg a korábban létrehozott streaming Analytics-feladatot. Ha a javasolt nevet használta, a rendszer elnevezi a feladatot `sa_frauddetection_job_demo` .
 
-2. A bal oldali menüben válassza a **kimenetek** lehetőséget a **feladatok topológiája**alatt. Ezután válassza a **+ Hozzáadás** lehetőséget, majd a legördülő menüből válassza a **Power bi** lehetőséget.
+2. A bal oldali menüben válassza a **kimenetek** lehetőséget a **feladatok topológiája** alatt. Ezután válassza a **+ Hozzáadás** lehetőséget, majd a legördülő menüből válassza a **Power bi** lehetőséget.
 
-3. Válassza a **+**  >  **Power bi**hozzáadása elemet. Ezután töltse ki az űrlapot a következő adatokkal, és válassza az **Engedélyezés** lehetőséget a saját felhasználói identitásának használatára a Power BIhoz való kapcsolódáshoz (a jogkivonat 90 napig érvényes). 
+3. Válassza a **+**  >  **Power bi** hozzáadása elemet. Ezután töltse ki az űrlapot a következő adatokkal, és válassza az **Engedélyezés** lehetőséget a saját felhasználói identitásának használatára a Power BIhoz való kapcsolódáshoz (a jogkivonat 90 napig érvényes). 
 
 >[!NOTE]
->Üzemi feladatokhoz javasoljuk, hogy a [felügyelt identitás használatára való kapcsolódással hitelesítse Azure stream Analytics-feladatát Power bi](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity).
+>Üzemi feladatokhoz javasoljuk, hogy a [felügyelt identitás használatára való kapcsolódással hitelesítse Azure stream Analytics-feladatát Power bi](./powerbi-output-managed-identity.md).
 
    |**Beállítás**  |**Ajánlott érték**  |
    |---------|---------|
@@ -59,7 +59,7 @@ A valós idejű csalások észlelését ismertető oktatóanyagban a kimenetet a
 
 4. Miután kiválasztotta az **Engedélyezés** lehetőséget, megjelenik egy előugró ablak, ahol meg kell adnia a hitelesítő adatait a Power BI-fiókja hitelesítéséhez. A sikeres hitelesítés után válassza a **Mentés** lehetőséget a beállítások mentéséhez.
 
-8. Kattintson a **Létrehozás** elemre.
+8. Kattintson a **Létrehozás** gombra.
 
 Az adatkészlet a következő beállításokkal jön létre:
 
@@ -68,7 +68,7 @@ Az adatkészlet a következő beállításokkal jön létre:
 
 Jelenleg nem hozhat létre más jelzőket tartalmazó adatkészleteket.
 
-Power BI adatkészletekkel kapcsolatos további információkért tekintse meg a [Power BI REST API](https://msdn.microsoft.com/library/mt203562.aspx) referenciát.
+Power BI adatkészletekkel kapcsolatos további információkért tekintse meg a [Power BI REST API](/rest/api/power-bi/) referenciát.
 
 
 ## <a name="write-the-query"></a>A lekérdezés írása
@@ -117,9 +117,9 @@ Ez a szakasz nem kötelező, de ajánlott.
 
        `telcodatagen.exe 1000 .2 2`
 
-2. A Stream Analytics-feladathoz tartozó **lekérdezés** lapon kattintson a bemenet melletti pontokra, `CallStream` majd válassza a **mintaadatok bemenetből**lehetőséget.
+2. A Stream Analytics-feladathoz tartozó **lekérdezés** lapon kattintson a bemenet melletti pontokra, `CallStream` majd válassza a **mintaadatok bemenetből** lehetőséget.
 
-3. Itt adhatja meg, hogy három perces értékű adatot kíván használni, majd kattintson **az OK**gombra. Várjon, amíg a rendszer értesíti arról, hogy az adatok mintavételezése befejeződött.
+3. Itt adhatja meg, hogy három perces értékű adatot kíván használni, majd kattintson **az OK** gombra. Várjon, amíg a rendszer értesíti arról, hogy az adatok mintavételezése befejeződött.
 
 4. Kattintson a **teszt** gombra, és tekintse át az eredményeket.
 
@@ -127,7 +127,7 @@ Ez a szakasz nem kötelező, de ajánlott.
 
 1. Győződjön meg arról, hogy a TelcoStreaming alkalmazás fut.
 
-2. Navigáljon a Stream Analytics-feladatokhoz tartozó **Áttekintés** lapra, és válassza az **Indítás**lehetőséget.
+2. Navigáljon a Stream Analytics-feladatokhoz tartozó **Áttekintés** lapra, és válassza az **Indítás** lehetőséget.
 
     ![A Stream Analytics-feladatok elindítása](./media/stream-analytics-power-bi-dashboard/stream-analytics-sa-job-start-output.png)
 
@@ -140,7 +140,7 @@ A streaming Analytics-feladatok a bejövő adatfolyamban megjelenő csalárd hí
 
     ![Folyamatos átviteli adatkészlet helye Power BI](./media/stream-analytics-power-bi-dashboard/stream-analytics-streaming-dataset.png)
 
-2. A munkaterületen kattintson a ** + &nbsp; Létrehozás**gombra.
+2. A munkaterületen kattintson a **+ &nbsp; Létrehozás** gombra.
 
     ![A létrehozás gomb Power BI munkaterületen](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard.png)
 
@@ -148,15 +148,15 @@ A streaming Analytics-feladatok a bejövő adatfolyamban megjelenő csalárd hí
 
     ![Irányítópult létrehozása és név megadása Power BI munkaterületen](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard-name.png)
 
-4. Az ablak tetején kattintson a **csempe hozzáadása**elemre, válassza az **Egyéni adatfolyam**-adatátvitelek lehetőséget, majd kattintson a **tovább**gombra.
+4. Az ablak tetején kattintson a **csempe hozzáadása** elemre, válassza az **Egyéni adatfolyam** -adatátvitelek lehetőséget, majd kattintson a **tovább** gombra.
 
     ![Egyéni folyamatos átviteli adatkészlet csempe Power BI](./media/stream-analytics-power-bi-dashboard/custom-streaming-data.png)
 
-5. **A DATSETS**területen válassza ki az adatkészletet, majd kattintson a **tovább**gombra.
+5. **A DATSETS** területen válassza ki az adatkészletet, majd kattintson a **tovább** gombra.
 
     ![A folyamatos átviteli adatkészlet Power BI](./media/stream-analytics-power-bi-dashboard/your-streaming-dataset.png)
 
-6. A **vizualizáció típusa**területen válassza a **kártya**lehetőséget, majd a **mezők** listában válassza a **fraudulentcalls**lehetőséget.
+6. A **vizualizáció típusa** területen válassza a **kártya** lehetőséget, majd a **mezők** listában válassza a **fraudulentcalls** lehetőséget.
 
     ![Új csempe vizualizációs adatai](./media/stream-analytics-power-bi-dashboard/add-fraudulent-calls-tile.png)
 
@@ -174,14 +174,14 @@ A streaming Analytics-feladatok a bejövő adatfolyamban megjelenő csalárd hí
 
 8. Kövesse újra a lépéseket a csempék hozzáadásához (a 4. lépéstől kezdve). Ezúttal tegye a következőket:
 
-    * Ha a **vizualizáció típusát**választja, válassza a **vonal diagram**lehetőséget. 
+    * Ha a **vizualizáció típusát** választja, válassza a **vonal diagram** lehetőséget. 
     * Adjon hozzá egy tengelyt, és válassza ki **windowend** lehetőséget. 
     * Adjon meg egy értéket, és válassza a **fraudulentcalls** lehetőséget.
     * A **Megjelenítendő időtartomány** beállításnál válassza ki az utolsó 10 percet.
 
       ![Csempe létrehozása diagramhoz Power BI](./media/stream-analytics-power-bi-dashboard/pbi-create-tile-line-chart.png)
 
-9. Kattintson a **tovább**gombra, adjon meg egy címet és egy feliratot, majd kattintson az **alkalmaz**gombra.
+9. Kattintson a **tovább** gombra, adjon meg egy címet és egy feliratot, majd kattintson az **alkalmaz** gombra.
 
      A Power BI irányítópultja mostantól két, az adatfolyamban észlelt, csalárd hívásokkal kapcsolatos információt nyújt.
 
@@ -223,14 +223,14 @@ Ebben a konfigurációban az eredeti lekérdezést a következőre módosíthatj
 ### <a name="renew-authorization"></a>Engedélyezés megújítása
 Ha a jelszó megváltozott a feladatok létrehozása vagy utolsó hitelesítése óta, újra kell hitelesítenie Power BI-fiókját. Ha az Azure Multi-Factor Authentication konfigurálva van a Azure Active Directory (Azure AD) bérlőn, akkor két hetente meg kell újítania Power BI engedélyezését. Ha nem újítja meg, olyan tüneteket láthat, mint például a feladatok kimenetének hiánya vagy `Authenticate user error` a műveleti naplók.
 
-Hasonlóképpen, ha egy feladatot a jogkivonat lejárta után is elindít, hiba történik, és a művelet meghiúsul. A probléma megoldásához állítsa le a futó feladatot, és nyissa meg a Power BI kimenetét. Az adatvesztés elkerülése érdekében válassza az **Engedélyezés megújítása** hivatkozást, majd indítsa újra a feladatot az **utolsó leállítási időpontból**.
+Hasonlóképpen, ha egy feladatot a jogkivonat lejárta után is elindít, hiba történik, és a művelet meghiúsul. A probléma megoldásához állítsa le a futó feladatot, és nyissa meg a Power BI kimenetét. Az adatvesztés elkerülése érdekében válassza az **Engedélyezés megújítása** hivatkozást, majd indítsa újra a feladatot az **utolsó leállítási időpontból** .
 
 Miután az engedélyezést Power BItel frissítette, egy zöld riasztás jelenik meg az engedélyezési területen, hogy tükrözze a probléma megoldását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Stream Analytics kimenetek](stream-analytics-define-outputs.md)
-* [Azure Stream Analytics lekérdezés nyelvi referenciája](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-* [Felügyelt identitás használata a Azure Stream Analytics-feladatok hitelesítéséhez Power BI](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)
+* [Azure Stream Analytics lekérdezés nyelvi referenciája](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics felügyeleti REST API referenciája](/rest/api/streamanalytics/)
+* [Felügyelt identitás használata a Azure Stream Analytics-feladatok hitelesítéséhez Power BI](./powerbi-output-managed-identity.md)

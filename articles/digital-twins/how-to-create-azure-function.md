@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0cc3a335e5fbe037742767a3b59243e366f094ee
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: c169f10ac0444f5bca67d76e8e8ebc0f0b145ee1
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495927"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124263"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Azure Functions alkalmazások összekötése az adatfeldolgozáshoz
 
@@ -30,17 +30,21 @@ Az itt látható lépések áttekintése:
 4. A Function alkalmazás közzététele az Azure-ban
 5. [Biztonsági](concepts-security.md) hozzáférés beállítása az Azure Function alkalmazáshoz
 
+## <a name="prerequisite-set-up-azure-digital-twins-instance"></a>Előfeltétel: az Azure Digital Twins-példány beállítása
+
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
+
 ## <a name="create-an-azure-functions-app-in-visual-studio"></a>Azure Functions-alkalmazás létrehozása a Visual Studióban
 
-A Visual Studio 2019-ben válassza a _fájl > új > projekt_ elemet, és keresse meg a _Azure functions_ sablont, majd kattintson a _Tovább gombra_.
+A Visual Studio 2019-ben válassza a _fájl > új > projekt_ elemet, és keresse meg a _Azure functions_ sablont, majd kattintson a _Tovább gombra_ .
 
 :::image type="content" source="media/how-to-create-azure-function/create-azure-function-project.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
-Adja meg a Function alkalmazás nevét, majd válassza a _Létrehozás_lehetőséget.
+Adja meg a Function alkalmazás nevét, majd válassza a _Létrehozás_ lehetőséget.
 
 :::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
-Válassza ki a Function app *Event Grid trigger* típusát, és válassza a _Létrehozás_lehetőséget.
+Válassza ki a Function app *Event Grid trigger* típusát, és válassza a _Létrehozás_ lehetőséget.
 
 :::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
@@ -155,14 +159,14 @@ namespace adtIngestFunctionSample
 
 ## <a name="publish-the-function-app-to-azure"></a>A Function alkalmazás közzététele az Azure-ban
 
-A Function alkalmazás Azure-beli közzétételéhez kattintson a jobb gombbal a Function projekt (nem a megoldás) elemre a Megoldáskezelő, majd válassza a **Közzététel**lehetőséget.
+A Function alkalmazás Azure-beli közzétételéhez kattintson a jobb gombbal a Function projekt (nem a megoldás) elemre a Megoldáskezelő, majd válassza a **Közzététel** lehetőséget.
 
 > [!IMPORTANT] 
 > Ha közzétesz egy Azure-függvényt, további díjakat számítunk fel az előfizetéshez, amely független az Azure Digital Twins-től.
 
 :::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
-Válassza ki az **Azure** -t közzétételi célként, és válassza a **tovább**lehetőséget.
+Válassza ki az **Azure** -t közzétételi célként, és válassza a **tovább** lehetőséget.
 
 :::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
@@ -219,7 +223,7 @@ A [Azure Portal](https://portal.azure.com/)keressen rá a _Function app_ kifejez
 :::image type="content" source="media/how-to-create-azure-function/portal-search-for-functionapp.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
 A felügyelt identitás engedélyezéséhez kattintson a bal oldali navigációs sávban az _Identity (identitás_ ) elemre a függvény alkalmazás ablakban.
-A _rendszer-hozzárendelés_ lapon állítsa be az _állapotot_ a be értékre, és _mentse_ azt. Egy előugró ablak jelenik meg, amely _lehetővé teszi a rendszerhez rendelt felügyelt identitás engedélyezését_.
+A _rendszer-hozzárendelés_ lapon állítsa be az _állapotot_ a be értékre, és _mentse_ azt. Egy előugró ablak jelenik meg, amely _lehetővé teszi a rendszerhez rendelt felügyelt identitás engedélyezését_ .
 Válassza az _Igen_ gomb lehetőséget. 
 
 :::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
@@ -240,10 +244,10 @@ Válassza ki az Azure szerepkör- _hozzárendelések_ gombot, amely megnyitja az
 
 A megnyíló _szerepkör-hozzárendelés hozzáadása (előzetes verzió)_ lapon válassza a következőket:
 
-* _Hatókör_: Erőforráscsoport
-* _Előfizetés_: válassza ki az Azure-előfizetését
-* _Erőforráscsoport_: válassza ki az erőforráscsoportot a legördülő listából
-* _Szerepkör_: válassza ki a legördülő listából az _Azure digitális Twins-adatok tulajdonosát_
+* _Hatókör_ : Erőforráscsoport
+* _Előfizetés_ : válassza ki az Azure-előfizetését
+* _Erőforráscsoport_ : válassza ki az erőforráscsoportot a legördülő listából
+* _Szerepkör_ : válassza ki a legördülő listából az _Azure digitális Twins-adatok tulajdonosát_
 
 Ezután mentse a részleteket a _Save (Mentés_ ) gomb megnyomásával.
 
@@ -255,7 +259,7 @@ Az Azure Digital Twins-példány URL-címét elérhetővé teheti a függvény s
 
 Alkalmazás-beállítás létrehozásához ADT_INSTANCE_URL szükséges.
 
-ADT_INSTANCE_URL a **_https://_** a példány állomásneve való hozzáfűzésével kérheti le. A Azure Portalban megtalálhatja a digitális ikrek példányának állomásnevét úgy, hogy megkeresi a példányt a keresősávban. Ezután a bal oldali navigációs sávon az _Áttekintés_ elemre kattintva megtekintheti a _gazdagép nevét_. Másolja ezt az értéket egy Alkalmazásbeállítás létrehozásához.
+ADT_INSTANCE_URL a **_https://_** a példány állomásneve való hozzáfűzésével kérheti le. A Azure Portalban megtalálhatja a digitális ikrek példányának állomásnevét úgy, hogy megkeresi a példányt a keresősávban. Ezután a bal oldali navigációs sávon az _Áttekintés_ elemre kattintva megtekintheti a _gazdagép nevét_ . Másolja ezt az értéket egy Alkalmazásbeállítás létrehozásához.
 
 :::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 

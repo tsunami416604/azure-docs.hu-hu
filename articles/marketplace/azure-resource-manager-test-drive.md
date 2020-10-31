@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: keferna
 author: keferna
-ms.openlocfilehash: 8ccc4cb6a6f95cfc51fb7e265e455131bc6393c2
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1af2793bc32c1f3cdbdcd016562b761e05427073
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735604"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125138"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager tesztelési meghajtó
 
 Akkor használja ezt a típust, ha az Azure Marketplace-en vagy a AppSource-ban ajánlata van, de csak Azure-erőforrásokkal rendelkező tesztelési meghajtót szeretne létrehozni. Az Azure Resource Manager (ARM-) sablon az Azure-erőforrások olyan kódolt tárolója, amelyet a legjobban a megoldásához terveztek. A test Drive a megadott ARM-sablont veszi fel, és üzembe helyezi az összes szükséges erőforrást egy erőforráscsoporthoz. Ez az egyetlen tesztvezetés lehetőség a virtuális gépekhez vagy az Azure-alkalmazások ajánlatához.
 
-Ha nem ismeri az ARM-sablonokat, olvassa el a [Mi az Azure Resource Manager?](../azure-resource-manager/resource-group-overview.md) című témakört, és [Ismerje meg az ARM-sablonok szerkezetét és szintaxisát](../azure-resource-manager/resource-group-authoring-templates.md) , hogy jobban megértse a saját sablonjainak összeállítását és tesztelését.
+Ha nem ismeri az ARM-sablonokat, olvassa el a [Mi az Azure Resource Manager?](../azure-resource-manager/management/overview.md) című témakört, és [Ismerje meg az ARM-sablonok szerkezetét és szintaxisát](../azure-resource-manager/templates/template-syntax.md) , hogy jobban megértse a saját sablonjainak összeállítását és tesztelését.
 
 Az **üzemeltetett** vagy **logikai alkalmazások** tesztelésére szolgáló meghajtóval kapcsolatos információkért lásd: [Mi az a test Drive?](what-is-test-drive.md)
 
@@ -34,7 +34,7 @@ A központi telepítési sablon tartalmazza a megoldását alkotó összes Azure
 
   - **Hideg** – az ilyen típusú példányok az egyes régiókban esetlegesen üzembe helyezhető példányok teljes számát jelölik. A hideg példányok esetében a teljes tesztvezetés Resource Manager-sablon szükséges ahhoz, hogy egy ügyfél a tesztelési meghajtót használja, így a *hideg* példányok sokkal lassabban töltődnek be, mint a *forró* példányok. A kompromisszum az, hogy csak a tesztvezetés időtartamára kell fizetnie, *nem* mindig fut az Azure-előfizetésében, mint a *forró* példányok esetében.
 
-- **Tesztvezetés Azure Resource Manager sablon** – töltse fel a Azure Resource Manager sablont tartalmazó. zip fájlt. További információ a Azure Resource Manager sablon létrehozásáról a rövid útmutató a [Azure Resource Manager-sablonok létrehozása és telepítése a Azure Portal használatával](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)című cikkben található.
+- **Tesztvezetés Azure Resource Manager sablon** – töltse fel a Azure Resource Manager sablont tartalmazó. zip fájlt. További információ a Azure Resource Manager sablon létrehozásáról a rövid útmutató a [Azure Resource Manager-sablonok létrehozása és telepítése a Azure Portal használatával](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)című cikkben található.
 
     > [!note]
     > A sikeres közzétételhez fontos, hogy érvényesítse az ARM-sablon formátumát. Ezt kétféleképpen teheti meg (1) egy [online API-eszköz](https://docs.microsoft.com/rest/api/resources/deployments/validate) vagy (2) használatával, [tesztelési célú telepítéssel](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal).
@@ -313,7 +313,7 @@ Az utolsó szakasz a tesztelési meghajtók automatikus üzembe helyezése az Az
    3. Adja meg az alkalmazás nevét.
    4. Válassza ki a **webalkalmazás/API** **típusát** .
    5. Adjon meg bármilyen értéket a bejelentkezési URL-címben, ez a mező nincs használatban.
-   6. Kattintson a **Létrehozás** gombra.
+   6. Válassza a **Létrehozás** lehetőséget.
    7. Az alkalmazás létrehozása után válassza a **Tulajdonságok**  >  **több-bérlős beállítást** , majd a **Mentés** lehetőséget.
 
 4. Válassza a **Mentés** lehetőséget.

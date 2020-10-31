@@ -12,12 +12,12 @@ ms.date: 03/21/2019
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: c5d1b08944417493d175de23c7738db58f1c7bd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c148e673b8ada549a6543f8f35634aaf29abff0
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798006"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123948"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>A My apps portál problémáinak elhárítása
 
@@ -81,13 +81,13 @@ Ha **hozzáférés-megtagadási** üzenetet kap az alkalmazásnak az **alkalmaz�
 
 Ha az ilyen dolgok kipróbálása után sem tud hozzáférni az alkalmazáshoz, segítségért forduljon a szervezet ügyfélszolgálatához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután bejelentkezett a **saját alkalmazások** portálra, frissítheti a profilját és a fiókadatok adatait, a csoport adatait és a hozzáférési felülvizsgálati információkat (ha van ilyen engedélye).
 
 - [Alkalmazások elérése és használata a saját alkalmazások portálon](my-apps-portal-end-user-access.md).
 
-- [Módosítsa a profil adatait](my-apps-portal-end-user-update-profile.md).
+- [Módosítsa a profil adatait](./my-account-portal-settings.md).
 
 - [A csoportok kapcsolódó információinak megtekintése és frissítése](my-apps-portal-end-user-groups.md).
 

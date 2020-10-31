@@ -12,12 +12,12 @@ ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: fbea4ef39b970f667c5dddec52f56a428d401f65
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 8da9e97aaa2c6d99990df4221d8b6e99ab18ac83
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277460"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124812"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>Hozzáférési felülvizsgálat végrehajtása a saját alkalmazások portálján
 
@@ -62,7 +62,7 @@ Ha a rendszergazda engedélyezte a saját hozzáférési felülvizsgálatok elv�
 
 6. Válassza az **Igen** lehetőséget a hozzáférésének megtartásához, vagy a **nem** gombra a hozzáférés eltávolításához.
 
-    Ha az **Igen**lehetőséget választja, lehet, hogy meg kell adnia egy indoklást az **OK** mezőben.
+    Ha az **Igen** lehetőséget választja, lehet, hogy meg kell adnia egy indoklást az **OK** mezőben.
 
     ![Hozzáférési felülvizsgálati oldal, amely az OK mezőt mutatja a minta szöveggel](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
 
@@ -76,5 +76,5 @@ Ha a rendszergazda engedélyezte a saját hozzáférési felülvizsgálatok elv�
 ## <a name="next-steps"></a>Következő lépések
 
 - [Alkalmazások elérése és használata a saját alkalmazások portálján](my-apps-portal-end-user-access.md)
-- [Profilinformációk módosítása](my-apps-portal-end-user-update-profile.md)
+- [Profilinformációk módosítása](./my-account-portal-settings.md)
 - [A csoportok kapcsolódó információinak megtekintése és frissítése](my-apps-portal-end-user-groups.md)

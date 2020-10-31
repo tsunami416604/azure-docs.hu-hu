@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: f0932104c55e705c76a8d2b086edf828caf60520
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdddbce3e9eb0a5c933ace186607186265197dc4
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044090"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123506"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>A Stream Analytics feladatok figyelésének és a lekérdezések figyelésének ismertetése
 
@@ -39,17 +39,17 @@ Ekkor megjelenik az ablak:
 | Bemeneti esemény bájtjai      | A Stream Analyticsi feladattól fogadott adatok mennyisége bájtban kifejezve. Ezzel ellenőrizheti, hogy a rendszer elküldje-e az eseményeket a bemeneti forrásnak. |
 | Bemeneti események           | A bemeneti eseményekből deszerializált rekordok száma. Ez a szám nem tartalmazza a deszerializálási hibákat eredményező bejövő eseményeket. Ugyanazokat az eseményeket a Stream Analytics többször is betöltheti olyan helyzetekben, mint például a belső helyreállítások és a saját illesztések. Ezért javasoljuk, hogy a bemeneti és a kimeneti események mérőszámait ne várja meg, ha a feladathoz egyszerű "pass through" lekérdezés tartozik. |
 | Fogadott bemeneti források       | A feladatokban fogadott üzenetek száma. Az Event hub esetében az üzenet egyetlen EventData. A blob esetében az üzenet egyetlen blob. Vegye figyelembe, hogy a bemeneti források a deszerializálás előtt számítanak. Deszerializálási hibák esetén a bemeneti források nagyobbak lehetnek a bemeneti eseményeknél. Ellenkező esetben előfordulhat, hogy a bemeneti események kisebbek vagy egyenlőek, mivel az egyes üzenetek több eseményt is tartalmazhatnak. |
-| Késői bemeneti események      | A beállított késői beérkezési tolerancia időszaka után megjelenő események. További információ az [Azure stream Analytics az események rendezésével kapcsolatos megfontolásokról](stream-analytics-out-of-order-and-late-events.md) . |
+| Késői bemeneti események      | A beállított késői beérkezési tolerancia időszaka után megjelenő események. További információ az [Azure stream Analytics az események rendezésével kapcsolatos megfontolásokról](./stream-analytics-time-handling.md) . |
 | Megrendelésen kívüli események    | Azon események száma, amelyek eldobása vagy kiigazított időbélyege miatt a rendszer eldobott egy megadott időbélyegzőt, és az esemény rendezési házirendje alapján történt. Ezt befolyásolhatja a nem sorrendben beállított tűréshatárok ablakának konfigurációja. |
 | Kimeneti események          | Az Stream Analyticsi feladatoknak a kimeneti célra, az események száma alapján továbbított mennyisége. |
 | Futásidejű hibák         | A lekérdezések feldolgozásával kapcsolatos hibák teljes száma (kivéve az események betöltése vagy az eredmények kihelyezése során talált hibákat) |
 | SU% kihasználtsága       | A feladathoz rendelt folyamatos átviteli egység (ek) kihasználtsága a feladathoz tartozó skála lapról. Ha ez a kijelző eléri a 80%-ot vagy újabbat, nagy valószínűséggel előfordulhat, hogy az események feldolgozása késleltethető vagy leáll. |
 | Vízjel késleltetése       | A feladatokban lévő összes kimenet összes partícióján a maximális vízjel-késleltetés. |
 
-Ezek a metrikák a [stream Analytics feladatok teljesítményének figyelésére](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor)használhatók. 
+Ezek a metrikák a [stream Analytics feladatok teljesítményének figyelésére](./stream-analytics-set-up-alerts.md#scenarios-to-monitor)használhatók. 
 
 ## <a name="customizing-monitoring-in-the-azure-portal"></a>A Azure Portal figyelésének testreszabása
-A diagram beállításainak szerkesztése lehetőséggel módosíthatja a diagram, a mérőszámok és az időtartomány típusát. Részletekért lásd: [a figyelés testreszabása](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
+A diagram beállításainak szerkesztése lehetőséggel módosíthatja a diagram, a mérőszámok és az időtartomány típusát. Részletekért lásd: [a figyelés testreszabása](../azure-monitor/platform/data-platform.md).
 
   ![Stream Analytics lekérdezési idő gráfja](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
 
@@ -59,11 +59,11 @@ A feladatok figyelésének egy másik érdekes adatpontja az utolsó kimenet id�
 Ez az idő az alkalmazás legutóbbi kimenetének ideje (azaz az esemény adataiból származó időbélyegzőt használva).
 
 ## <a name="get-help"></a>Segítség kérése
-További segítségért próbálja ki a [Microsoft Q&egy kérdés oldalt Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)
+További segítségért próbálja ki a [Microsoft Q&egy kérdés oldalt Azure stream Analytics](/answers/topics/azure-stream-analytics.html)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Az Azure Stream Analytics felügyeleti REST API referenciája](/rest/api/streamanalytics/)

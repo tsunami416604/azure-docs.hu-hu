@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 9db013d13098fc6aa4552459a2189e0ad8fc3ea6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4c23e6b213c102813758742b8d191735207d285
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378797"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124900"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>A kereskedelmi piactéren felépítheti a transacter SaaS-ajánlat kezdőlapját
 
@@ -46,23 +46,23 @@ A következő rész végigvezeti a Kezdőlap létrehozásának folyamatán:
 
 ## <a name="create-an-azure-ad-app-registration"></a>Azure AD-alkalmazás regisztrálásának létrehozása
 
-A kereskedelmi piactér teljes mértékben integrálva van az Azure AD-vel. A vásárlók [Azure ad-fiókkal vagy Microsoft-fiók (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)hitelesítve érkeznek a piactéren. A vásárlást követően a vásárló a kereskedelmi piactérről a Kezdőlap URL-címére kerül, amely aktiválja és kezeli az SaaS-alkalmazás előfizetését. Engedélyeznie kell, hogy a vásárló bejelentkezzen az alkalmazásba az Azure AD SSO használatával. (A Kezdőlap URL-címe az ajánlat [technikai konfiguráció](plan-saas-offer.md#technical-information) lapján van megadva.
+A kereskedelmi piactér teljes mértékben integrálva van az Azure AD-vel. A vásárlók [Azure ad-fiókkal vagy Microsoft-fiók (MSA)](../active-directory/fundamentals/active-directory-whatis.md#terminology)hitelesítve érkeznek a piactéren. A vásárlást követően a vásárló a kereskedelmi piactérről a Kezdőlap URL-címére kerül, amely aktiválja és kezeli az SaaS-alkalmazás előfizetését. Engedélyeznie kell, hogy a vásárló bejelentkezzen az alkalmazásba az Azure AD SSO használatával. (A Kezdőlap URL-címe az ajánlat [technikai konfiguráció](plan-saas-offer.md#technical-information) lapján van megadva.
 
 Az identitás használatának első lépése annak biztosítása, hogy a Kezdőlap regisztrálva legyen Azure AD-alkalmazásként. Az alkalmazás regisztrálása lehetővé teszi, hogy az Azure AD használatával hitelesítse a felhasználókat, és hozzáférést Kérjen a felhasználói erőforrásokhoz. Ez az alkalmazás definíciójának tekinthető, amely lehetővé teszi, hogy a szolgáltatás tudja, hogyan kell jogkivonatokat kibocsátani az alkalmazásnak az alkalmazás beállításai alapján.
 
 ### <a name="register-a-new-application-using-the-azure-portal"></a>Új alkalmazás regisztrálása az Azure Portal használatával
 
-Az első lépésekhez kövesse az [új alkalmazások regisztrálásának](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)utasításait. Ha más cégektől származó felhasználókat szeretne meglátogatni az alkalmazásba, ki kell választania a több-bérlős lehetőségek egyikét, amikor a rendszer megkérdezi, hogy ki használhatja az alkalmazást
+Az első lépésekhez kövesse az [új alkalmazások regisztrálásának](../active-directory/develop/quickstart-register-app.md)utasításait. Ha más cégektől származó felhasználókat szeretne meglátogatni az alkalmazásba, ki kell választania a több-bérlős lehetőségek egyikét, amikor a rendszer megkérdezi, hogy ki használhatja az alkalmazást
 
-Ha le szeretné kérdezni a Microsoft Graph API- [t, konfigurálja az új alkalmazást a webes API-k eléréséhez](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis). Ha kijelöli az alkalmazás API-engedélyeit, a felhasználó alapértelmezett értéke **. az olvasás** elég ahhoz, hogy alapvető információkat gyűjtsön a vevőről, hogy a bevezetési folyamat zökkenőmentes és automatikus legyen. Ne igényeljen **rendszergazdai**jogosultsággal jelölt API-engedélyeket, mivel ez letiltja a nem rendszergazda felhasználók számára a Kezdőlap meglátogatását.
+Ha le szeretné kérdezni a Microsoft Graph API- [t, konfigurálja az új alkalmazást a webes API-k eléréséhez](../active-directory/develop/quickstart-configure-app-access-web-apis.md). Ha kijelöli az alkalmazás API-engedélyeit, a felhasználó alapértelmezett értéke **. az olvasás** elég ahhoz, hogy alapvető információkat gyűjtsön a vevőről, hogy a bevezetési folyamat zökkenőmentes és automatikus legyen. Ne igényeljen **rendszergazdai** jogosultsággal jelölt API-engedélyeket, mivel ez letiltja a nem rendszergazda felhasználók számára a Kezdőlap meglátogatását.
 
-Ha emelt szintű engedélyekre van szüksége a bevezetési vagy kiépítési folyamat részeként, vegye fontolóra az Azure AD [növekményes hozzájárulási](https://aka.ms/incremental-consent) funkcióinak használatát, hogy a piactéren eljuttatott összes vevő képes legyen a kezdeti kommunikációra a kezdőlapon.
+Ha emelt szintű engedélyekre van szüksége a bevezetési vagy kiépítési folyamat részeként, vegye fontolóra az Azure AD [növekményes hozzájárulási](../active-directory/azuread-dev/azure-ad-endpoint-comparison.md) funkcióinak használatát, hogy a piactéren eljuttatott összes vevő képes legyen a kezdeti kommunikációra a kezdőlapon.
 
 ## <a name="use-a-code-sample-as-a-starting-point"></a>Mintakód használata kiindulási pontként
 
 Számos olyan minta alkalmazást adtunk meg, amelyek az Azure AD-bejelentkezést használó egyszerű webhelyeket implementálják. Miután az alkalmazás regisztrálva lett az Azure AD-ben, a gyors üzembe helyezési **panel az 1** . ábrán látható általános alkalmazások és fejlesztői csomagok listáját kínálja. Válassza ki a környezetének megfelelőt, és kövesse a letöltésre és telepítésre vonatkozó utasításokat.
 
-***1. ábra: rövid útmutató a Azure Portal***
+**_1. ábra: rövid útmutató a Azure Portal_* _
 
 :::image type="content" source="./media/azure-ad-saas/azure-ad-quickstart-blade.png" alt-text="A Azure Portal rövid útmutató paneljének bemutatása.":::
 
@@ -75,7 +75,7 @@ Ez a cikk az architektúra egyszerűsített verzióját mutatja be a kereskedelm
 - Először is, a több-bérlős Kezdőlap alkalmazás erre a pontra van leírva, kivéve a funkcionalitás nélkül, hogy kapcsolatba lépjen a SaaS-teljesítési API-kkal. Ez a funkció egy másik alkalmazásba kerül kiszervezésre az alább leírtak szerint.
 - Másodszor, egy alkalmazás a SaaS-teljesítési API-kkal folytatott kommunikációhoz. Az alkalmazásnak egyetlen Bérlőnek kell lennie, amelyet csak a szervezet használ, és egy hozzáférés-vezérlési lista is létrehozható az API-k elérésének korlátozására kizárólag az alkalmazásból.
 
-Ez lehetővé teszi, hogy a megoldás olyan helyzetekben működjön, amelyek figyelembe veszik a [megfontolási elv elkülönítését](https://docs.microsoft.com/dotnet/architecture/modern-web-apps-azure/architectural-principles#separation-of-concerns) . A Kezdőlap például az első regisztrált Azure AD-alkalmazást használja a felhasználónak való bejelentkezéshez. Miután a felhasználó bejelentkezett, a Kezdőlap a második Azure AD-vel kéri a hozzáférési tokent, hogy meghívja a SaaS-teljesítési API-kat, és hívja meg a feloldási műveletet.
+Ez lehetővé teszi, hogy a megoldás olyan helyzetekben működjön, amelyek figyelembe veszik a [megfontolási elv elkülönítését](/dotnet/architecture/modern-web-apps-azure/architectural-principles#separation-of-concerns) . A Kezdőlap például az első regisztrált Azure AD-alkalmazást használja a felhasználónak való bejelentkezéshez. Miután a felhasználó bejelentkezett, a Kezdőlap a második Azure AD-vel kéri a hozzáférési tokent, hogy meghívja a SaaS-teljesítési API-kat, és hívja meg a feloldási műveletet.
 
 ## <a name="resolve-the-marketplace-purchase-identification-token"></a>A Piactéri vásárlási azonosító jogkivonat feloldása
 
@@ -94,7 +94,7 @@ A SaaS-teljesítési API-k implementálják a [feloldási](./partner-center-port
 
 ## <a name="read-information-from-claims-encoded-in-the-id-token"></a>Az azonosító jogkivonatban kódolt jogcímek adatainak beolvasása
 
-Az [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc) folyamat részeként az Azure ad egy [azonosító jogkivonatot](https://docs.microsoft.com/azure/active-directory/develop/id-tokens) ad hozzá a kéréshez, amikor a vevőt a kezdőlapra küldi. Ez a jogkivonat több alapvető információt tartalmaz, amelyek hasznosak lehetnek az aktiválási folyamat során, beleértve az ebben a táblázatban látható információkat is.
+Az [OpenID Connect](../active-directory/develop/v2-protocols-oidc.md) folyamat részeként az Azure ad egy [azonosító jogkivonatot](../active-directory/develop/id-tokens.md) ad hozzá a kéréshez, amikor a vevőt a kezdőlapra küldi. Ez a jogkivonat több alapvető információt tartalmaz, amelyek hasznosak lehetnek az aktiválási folyamat során, beleértve az ebben a táblázatban látható információkat is.
 
 | Érték | Leírás |
 | ------------ | ------------- |
@@ -109,7 +109,7 @@ Az [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/v2
 
 ## <a name="use-the-microsoft-graph-api"></a>A Microsoft Graph API használata
 
-Az azonosító jogkivonat alapszintű információt tartalmaz a vásárló azonosításához, de az aktiválási folyamat további részleteket igényelhet – például a vevő vállalatát – a bevezetési folyamat befejezéséhez. A [Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) -val kérheti ezeket az adatokat, hogy ne kényszerítse a felhasználót, hogy adja meg újra ezeket a részleteket. Az általános jogú **felhasználó. az olvasási** engedélyek alapértelmezés szerint a következő információkat tartalmazzák.
+Az azonosító jogkivonat alapszintű információt tartalmaz a vásárló azonosításához, de az aktiválási folyamat további részleteket igényelhet – például a vevő vállalatát – a bevezetési folyamat befejezéséhez. A [Microsoft Graph API](/graph/use-the-api) -val kérheti ezeket az adatokat, hogy ne kényszerítse a felhasználót, hogy adja meg újra ezeket a részleteket. A standard _ *User. Read* * engedélyek alapértelmezés szerint a következő információkat tartalmazzák.
 
 | Érték | Leírás |
 | ------------ | ------------- |
@@ -122,9 +122,9 @@ Az azonosító jogkivonat alapszintű információt tartalmaz a vásárló azono
 | surname | A felhasználó vezetékneve. |
 |||
 
-További tulajdonságok – például a felhasználó vállalatának neve vagy a felhasználó helye (ország) – kiválasztható a kérelembe való felvételhez. További részletekért tekintse meg [a felhasználói erőforrástípus tulajdonságait](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0#properties) .
+További tulajdonságok – például a felhasználó vállalatának neve vagy a felhasználó helye (ország) – kiválasztható a kérelembe való felvételhez. További részletekért tekintse meg [a felhasználói erőforrástípus tulajdonságait](/graph/api/resources/user?view=graph-rest-1.0#properties) .
 
-Az Azure AD-ben regisztrált alkalmazások többsége delegált engedélyekkel rendelkezik, hogy beolvassa a felhasználó adatait a vállalat Azure AD-bérlője számára. Az adott információhoz Microsoft Graph kérelmekhez hozzáférési jogkivonatot kell csatolni a hitelesítéshez. A hozzáférési jogkivonat létrehozásával kapcsolatos konkrét lépések a használt technológiai veremtől függenek, de a mintakód egy példát is tartalmaz majd. További információ: [hozzáférés beszerzése egy felhasználó nevében](https://docs.microsoft.com/graph/auth-v2-user).
+Az Azure AD-ben regisztrált alkalmazások többsége delegált engedélyekkel rendelkezik, hogy beolvassa a felhasználó adatait a vállalat Azure AD-bérlője számára. Az adott információhoz Microsoft Graph kérelmekhez hozzáférési jogkivonatot kell csatolni a hitelesítéshez. A hozzáférési jogkivonat létrehozásával kapcsolatos konkrét lépések a használt technológiai veremtől függenek, de a mintakód egy példát is tartalmaz majd. További információ: [hozzáférés beszerzése egy felhasználó nevében](/graph/auth-v2-user).
 
 > [!NOTE]
 > Az MSA-bérlőről (a bérlői AZONOSÍTÓval) származó fiókok ``9188040d-6c67-4c5b-b112-36a304b66dad`` nem adnak vissza több információt, mint amelyet már gyűjtöttek az azonosító jogkivonattal. Így kihagyhatja ezt a hívást a fiókok Graph API.

@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 09/01/2020
+ms.date: 10/30/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 167c2f091d4d8a7d7d5c32009b484125d7275796
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 91de9aff154dec1a61360477edebc90b7a13cf24
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282347"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125172"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Kereskedelmi Piactéri partner és ügyfél-használati jóváírás
 
@@ -33,15 +33,18 @@ A Customer használati jóváírás három üzembe helyezési lehetőséget tám
 >- Az ügyfél-használati jóváírás új központi telepítéseket tartalmaz, és nem támogatja a már telepített meglévő erőforrások címkézését.
 >
 >- Az Azure piactéren közzétett Azure- [alkalmazásokhoz](./partner-center-portal/create-new-azure-apps-offer.md) az ügyfél-használati jóváírás szükséges.
+>
+>- Nem minden Azure-szolgáltatás kompatibilis az ügyfél-használati jóváírással. Az Azure Kubernetes Services (ak) és a VM Scale Sets olyan ismert problémákkal rendelkeznek, amelyek jelenleg a használatot okozzák.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-guids"></a>GUID-azonosítók létrehozása
 
-A GUID azonosító egy egyedi hivatkozási azonosító, amelynek 32 hexadecimális számjegye van. A nyomkövetési GUID azonosítók létrehozásához GUID-generátort kell használnia. Az Azure Storage csapata létrehozta a [GUID generátort](https://aka.ms/StoragePartners) , amely a megfelelő formátumú GUID-t e-mailben küldi el, és újra felhasználható a különböző nyomkövető rendszerek között.
+A GUID azonosító egy egyedi hivatkozási azonosító, amelynek 32 hexadecimális számjegye van. A nyomkövetési GUID azonosítók létrehozásához GUID-generátort kell használnia, például a PowerShellen keresztül.
 
-> [!NOTE]
-> Erősen ajánlott az [Azure Storage GUID Generator űrlapját](https://aka.ms/StoragePartners) használni a GUID létrehozásához. További információ: [Gyakori kérdések](#faq).
+```powershell
+[guid]::NewGuid()]
+```
 
 Javasoljuk, hogy hozzon létre egyedi GUID azonosítót minden ajánlathoz és terjesztési csatornához az egyes termékekhez. Dönthet úgy, hogy egyetlen GUID azonosítót használ a termék több terjesztési csatornához, ha nem szeretné, hogy a jelentés szét legyen osztva.
 
@@ -67,13 +70,13 @@ Miután hozzáadta a GUID azonosítót a sablonhoz vagy a felhasználói ügynö
 
 1. Regisztráljon [kereskedelmi Piactéri közzétevőként](https://aka.ms/JoinMarketplace).
 
-   * A partnereknek [profilra van](become-publisher.md)szükségük a partner Centerben. Javasoljuk, hogy az ajánlatot az Azure Marketplace-en vagy a AppSource sorolja fel.
+   * A partnereknek [profilra van](./partner-center-portal/create-account.md)szükségük a partner Centerben. Javasoljuk, hogy az ajánlatot az Azure Marketplace-en vagy a AppSource sorolja fel.
    * A partnerek több GUID-azonosítót is regisztrálhatnak.
    * A partnerek a nem Piactéri megoldások sablonjaihoz és ajánlatokhoz regisztrálhatnak GUID azonosítókat.
 
-1. A jobb felső sarokban válassza a beállítások fogaskerék ikont, majd válassza a **fejlesztői beállítások**lehetőséget.
+1. A jobb felső sarokban válassza a beállítások fogaskerék ikont, majd válassza a **fejlesztői beállítások** lehetőséget.
 
-1. A **Fiókbeállítások lapon**válassza a **nyomkövetési GUID hozzáadása elemet.**
+1. A **Fiókbeállítások lapon** válassza a **nyomkövetési GUID hozzáadása elemet.**
 
 1. A **GUID** mezőben adja meg a nyomkövetési GUID azonosítóját. Az előtag nélkül adja meg a GUID azonosítót `pid-` . A **Leírás** mezőben adja meg az ajánlat nevét vagy leírását.
 
@@ -97,9 +100,9 @@ Globálisan egyedi azonosító (GUID) hozzáadásához egyetlen módosítást ke
 
 1. Nyissa meg a Resource Manager-sablont.
 
-1. Vegyen fel egy [Microsoft. Resources/Deployments](https://docs.microsoft.com/azure/templates/microsoft.resources/deployments) nevű új erőforrást a fő sablonfájlba. Az erőforrásnak csak a fájl **mainTemplate.js** vagy **azuredeploy.js** kell lennie, és nem minden beágyazott vagy csatolt sablonban.
+1. Vegyen fel egy [Microsoft. Resources/Deployments](/azure/templates/microsoft.resources/deployments) nevű új erőforrást a fő sablonfájlba. Az erőforrásnak csak a fájl **mainTemplate.js** vagy **azuredeploy.js** kell lennie, és nem minden beágyazott vagy csatolt sablonban.
 
-1. Adja meg a GUID értéket az `pid-` előtag neve után az erőforrás neveként. Ha például a GUID a következő: eb7927c8-dd66-43e1-b0cf-c346a422063, az erőforrás neve _PID-eb7927c8-dd66-43e1-b0cf-c346a422063_lesz.
+1. Adja meg a GUID értéket az `pid-` előtag neve után az erőforrás neveként. Ha például a GUID a következő: eb7927c8-dd66-43e1-b0cf-c346a422063, az erőforrás neve _PID-eb7927c8-dd66-43e1-b0cf-c346a422063_ lesz.
 
 1. Keresse meg az esetleges hibákat a sablonban.
 
@@ -132,7 +135,7 @@ Az erőforrást fel kell venni a **mainTemplate.js** vagy **azuredeploy.js** csa
 
 ## <a name="use-the-resource-manager-apis"></a>A Resource Manager API-k használata
 
-Bizonyos esetekben előfordulhat, hogy közvetlenül a Resource Manager REST API-kon keresztül szeretne hívásokat kezdeményezni az Azure-szolgáltatások üzembe helyezéséhez. Az Azure a hívások engedélyezéséhez [több SDK](https://docs.microsoft.com/azure/?pivot=sdkstools) -t is támogat. Az SDK-k egyikét használhatja, vagy a REST API-kat közvetlenül is meghívhatja az erőforrások üzembe helyezéséhez.
+Bizonyos esetekben előfordulhat, hogy közvetlenül a Resource Manager REST API-kon keresztül szeretne hívásokat kezdeményezni az Azure-szolgáltatások üzembe helyezéséhez. Az Azure a hívások engedélyezéséhez [több SDK](../index.yml?pivot=sdkstools) -t is támogat. Az SDK-k egyikét használhatja, vagy a REST API-kat közvetlenül is meghívhatja az erőforrások üzembe helyezéséhez.
 
 Ha Resource Manager-sablont használ, a megoldást a korábban ismertetett utasítások követésével címkézheti. Ha nem használ Resource Manager-sablont, és közvetlen API-hívásokat végez, továbbra is címkézheti az üzembe helyezést az Azure-erőforrások használatának hozzárendeléséhez.
 
@@ -156,7 +159,7 @@ A Python esetében használja a **config** attribútumot. Az attribútumot csak 
 
 #### <a name="example-the-net-sdk"></a>Példa: a .NET SDK
 
-A .NET esetében ügyeljen arra, hogy a felhasználói ügynököt állítsa be. A [Microsoft. Azure. Management. Fluent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.fluent?view=azure-dotnet) függvénytár használatával beállíthatja a felhasználói ügynököt a következő kóddal (például C# nyelven):
+A .NET esetében ügyeljen arra, hogy a felhasználói ügynököt állítsa be. A [Microsoft. Azure. Management. Fluent](/dotnet/api/microsoft.azure.management.fluent?view=azure-dotnet) függvénytár használatával beállíthatja a felhasználói ügynököt a következő kóddal (például C# nyelven):
 
 ```csharp
 
@@ -183,7 +186,7 @@ Ha az Azure CLI-t használja a GUID-azonosító hozzáfűzéséhez, állítsa be
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
-További információ: [Go nyelvhez készült Azure SDK](https://docs.microsoft.com/azure/developer/go/).
+További információ: [Go nyelvhez készült Azure SDK](/azure/developer/go/).
 
 ## <a name="use-terraform"></a>Terraform használata
 

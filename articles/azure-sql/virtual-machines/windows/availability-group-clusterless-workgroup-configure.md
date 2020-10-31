@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 6bfea42c6fca3369485ccf7a47158f7420df9c9c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 5714a2fd79d01f4cbc445c1ec1a726209ab6d427
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790032"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124934"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Munkacsoport rendelkezésre állási csoportjának konfigurálása 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -62,11 +62,11 @@ A DNS-utótag konfigurálásához kövesse az alábbi lépéseket:
 1. Válassza a **továbbiak...** lehetőséget a **DNS-utótag és a NetBIOS-számítógépnév** párbeszédpanel megnyitásához. 
 1. Írja be a DNS-utótag nevét a **számítógép elsődleges DNS-utótagja** mezőbe, például `ag.wgcluster.example.com` :, majd kattintson **az OK gombra** : 
 
-   ![DNS-utótag hozzáadása](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
+   ![Képernyőfelvétel: a D N S utótag és a NetBIOS-számítógépnév párbeszédpanel, ahol megadhatja az értéket.](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
 
 1. Győződjön meg arról, hogy a **teljes számítógépnév** mostantól a DNS-utótagot jeleníti meg, majd kattintson **az OK** gombra a módosítások mentéséhez: 
 
-   ![DNS-utótag hozzáadása](./media/availability-group-clusterless-workgroup-configure/3-confirm-full-computer-name.png)
+   ![A képernyőképen a teljes számítógépnév látható.](./media/availability-group-clusterless-workgroup-configure/3-confirm-full-computer-name.png)
 
 1. Ha a rendszer kéri, indítsa újra a kiszolgálót. 
 1. Ismételje meg ezeket a lépéseket a rendelkezésre állási csoporthoz használni kívánt többi csomóponton. 

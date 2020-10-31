@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/20/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 196d722e57abe743fc51692dde231e8f93682c46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c746e409964b4625a4c9921d9f02ca0c9730a35
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89002266"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123446"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Stream Analytics-feladatokhoz tartozó figyelő programozott létrehozása
 
@@ -170,12 +170,12 @@ A következő kód lehetővé teszi egy **meglévő** stream Analytics feladatok
 
 ## <a name="get-support"></a>Támogatás kérése
 
-További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Következő lépések
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Az Azure Stream Analytics felügyeleti REST API referenciája](/rest/api/streamanalytics/)

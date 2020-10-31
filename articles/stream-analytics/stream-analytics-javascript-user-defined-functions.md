@@ -8,23 +8,23 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
 ms.date: 06/16/2020
-ms.openlocfilehash: 7df244ee024b0d67ba678e296b882fbb08c3e16b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aac85fdab157d581285af91c4c818258a5f1790b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317718"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124781"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Felhasználó által definiált JavaScript-függvények Azure Stream Analytics
  
-Az Azure Stream Analytics támogatja a JavaScript nyelven írt felhasználói függvényeket. A JavaScript által biztosított **karakterlánc**-, **regexp**-, **matematikai**, **Array**és **Date** metódusok gazdag készletével könnyebben hozhatók létre összetett adatátalakítások stream Analytics feladatokkal.
+Az Azure Stream Analytics támogatja a JavaScript nyelven írt felhasználói függvényeket. A JavaScript által biztosított **karakterlánc** -, **regexp** -, **matematikai** , **Array** és **Date** metódusok gazdag készletével könnyebben hozhatók létre összetett adatátalakítások stream Analytics feladatokkal.
 
 ## <a name="overview"></a>Áttekintés
 
 A felhasználó által definiált JavaScript-függvények olyan állapot nélküli, csak számítási skaláris függvényeket támogatnak, amelyek nem igényelnek külső kapcsolatot. Egy függvény visszaadott értéke csak skaláris (egyetlen) érték lehet. Miután hozzáadott egy felhasználói JavaScript-függvényt egy feladathoz, bárhol használhatja a függvényt a lekérdezésben, egy beépített skaláris függvényhez hasonlóan.
 
 Az alábbiakban bemutatunk néhány forgatókönyvet, amelyekben hasznosnak találhatja a felhasználói JavaScript-függvényeket:
-* Reguláriskifejezés-függvényeket (például: **Regexp_Replace()** és **Regexp_Extract()**) tartalmazó sztringek elemzése és módosítása.
+* Reguláriskifejezés-függvényeket (például: **Regexp_Replace()** és **Regexp_Extract()** ) tartalmazó sztringek elemzése és módosítása.
 * Adatok dekódolása és kódolása, például bináris adatok átalakítása hexadecimális adatokká.
 * Matematikai-számítások végrehajtása JavaScript **matematikai** függvényekkel
 * Tömbbeli műveletek, például a rendezés, a csatlakozás, a keresés és a kitöltés
@@ -41,11 +41,11 @@ Bár a függvények, például a **Date. GetDate ()** vagy a **Math. Random ()**
 > [!NOTE]
 > Ezek a lépések a felhőben való futtatásra konfigurált Stream Analytics-feladatokon működnek. Ha a Stream Analytics-feladat úgy van konfigurálva, hogy Azure IoT Edgeon fusson, Ehelyett használja a Visual studiót, és [írja be a felhasználó által definiált függvényt a C# használatával](stream-analytics-edge-csharp-udf.md).
 
-JavaScript felhasználó által definiált függvény létrehozásához a Stream Analytics feladatban válassza a **feladatok** a **feladat topológiája**alatt lehetőséget. Ezután válassza a **JavaScript UDF** elemet a **+** legördülő menüből. 
+JavaScript felhasználó által definiált függvény létrehozásához a Stream Analytics feladatban válassza a **feladatok** a **feladat topológiája** alatt lehetőséget. Ezután válassza a **JavaScript UDF** elemet a **+** legördülő menüből. 
 
 ![JavaScript UDF hozzáadása](./media/javascript/stream-analytics-jsudf-add.png)
 
-Ezután meg kell adnia a következő tulajdonságokat, majd a **Mentés**lehetőséget kell választania.
+Ezután meg kell adnia a következő tulajdonságokat, majd a **Mentés** lehetőséget kell választania.
 
 |Tulajdonság|Leírás|
 |--------|-----------|
@@ -55,13 +55,13 @@ Ezután meg kell adnia a következő tulajdonságokat, majd a **Mentés**lehető
 
 ## <a name="test-and-troubleshoot-javascript-udfs"></a>JavaScript UDF tesztelése és hibakeresése 
 
-A JavaScript UDF-logikát bármely böngészőben tesztelheti és hibakeresést végezhet. A felhasználó által definiált függvények logikájának hibakeresése és tesztelése jelenleg nem támogatott a Stream Analytics portálon. Ha a függvény a várt módon működik, a fentiekben leírtak szerint adhatja hozzá a Stream Analytics feladathoz, majd közvetlenül a lekérdezésből hívhatja meg. A lekérdezési logikát a JavaScript UDF használatával tesztelheti a [Visual studióhoz készült stream Analytics eszközökkel](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install).
+A JavaScript UDF-logikát bármely böngészőben tesztelheti és hibakeresést végezhet. A felhasználó által definiált függvények logikájának hibakeresése és tesztelése jelenleg nem támogatott a Stream Analytics portálon. Ha a függvény a várt módon működik, a fentiekben leírtak szerint adhatja hozzá a Stream Analytics feladathoz, majd közvetlenül a lekérdezésből hívhatja meg. A lekérdezési logikát a JavaScript UDF használatával tesztelheti a [Visual studióhoz készült stream Analytics eszközökkel](./stream-analytics-tools-for-visual-studio-install.md).
 
 A JavaScript futásidejű hibái végzetesnek minősülnek, és a tevékenységnaplóban tekinthetők meg. A napló lekéréséhez lépjen a feladatra az Azure Portalon, és válassza a **Tevékenységnapló** elemet.
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>Felhasználói JavaScript-függvény meghívása lekérdezésben
 
-A JavaScript-függvényt a lekérdezésben egyszerűen meghívhatja az **UDF**előtaggal megadott függvény alias használatával. Íme egy példa egy JavaScript UDF-re, amely a hexadecimális értékeket egy Stream Analytics lekérdezésben meghívott egész számra konvertálja.
+A JavaScript-függvényt a lekérdezésben egyszerűen meghívhatja az **UDF** előtaggal megadott függvény alias használatával. Íme egy példa egy JavaScript UDF-re, amely a hexadecimális értékeket egy Stream Analytics lekérdezésben meghívott egész számra konvertálja.
 
 ```SQL
     SELECT
@@ -186,7 +186,7 @@ FROM
     input A
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [UDF Machine Learning](https://docs.microsoft.com/azure/stream-analytics/machine-learning-udf)
-* [C# UDF](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf-methods)
+* [UDF Machine Learning](./machine-learning-udf.md)
+* [C# UDF](./stream-analytics-edge-csharp-udf-methods.md)

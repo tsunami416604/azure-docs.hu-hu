@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: fe1caca11ec0a3d89ddae140d00cd3556b9d3d89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0788d8b4f659364fcedc690185c9159a24434125
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044464"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123914"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Élő adatellenőrzés helyi tesztelése a Visual Studio Azure Stream Analytics eszközeivel (előzetes verzió)
 
@@ -31,7 +31,7 @@ A következő helyi tesztelési lehetőségek támogatottak:
 
 ## <a name="local-testing-with-live-data"></a>Helyi tesztelés élő adatértékekkel
 
-1. Miután létrehozott egy [Azure stream Analytics felhőalapú projektet a Visual Studióban](stream-analytics-quick-create-vs.md), nyissa meg a **script. asaql**. A helyi tesztelés alapértelmezés szerint helyi bemenetet és helyi kimenetet használ.
+1. Miután létrehozott egy [Azure stream Analytics felhőalapú projektet a Visual Studióban](stream-analytics-quick-create-vs.md), nyissa meg a **script. asaql** . A helyi tesztelés alapértelmezés szerint helyi bemenetet és helyi kimenetet használ.
 
    ![A Visual Studio helyi bemenetének és helyi kimenetének Azure Stream Analytics](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-local-input-output.png)
 
@@ -43,7 +43,7 @@ A következő helyi tesztelési lehetőségek támogatottak:
 
    ![A Visual Studio élő adatkezdési idejének Azure Stream Analytics](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-start-time.png)
 
-4. Kattintson a **helyi Futtatás**gombra. Ekkor megjelenik egy konzolablak a futó folyamattal és a feladatok mérőszámával. Ha le szeretné állítani a folyamatot, manuálisan is megteheti. 
+4. Kattintson a **helyi Futtatás** gombra. Ekkor megjelenik egy konzolablak a futó folyamattal és a feladatok mérőszámával. Ha le szeretné állítani a folyamatot, manuálisan is megteheti. 
 
    ![Azure Stream Analytics Visual Studio élő adatfolyamati ablak](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-process-window.png)
 
@@ -59,9 +59,9 @@ A következő helyi tesztelési lehetőségek támogatottak:
 
 * A hitelesítési modell korlátozásai miatt a Power BI és a Azure Data Lake Storage nem támogatott kimeneti mosogatók.
 
-* Csak a Felhőbeli beviteli lehetőségek támogatják az [időszabályzatokat](stream-analytics-out-of-order-and-late-events.md) , míg a helyi beviteli beállítások nem.
+* Csak a Felhőbeli beviteli lehetőségek támogatják az [időszabályzatokat](./stream-analytics-time-handling.md) , míg a helyi beviteli beállítások nem.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Stream Analytics-feladatok létrehozása a Visual studióhoz készült Azure Stream Analytics Tools használatával](stream-analytics-quick-create-vs.md)
 * [A Visual Studióval helyileg tesztelheti Stream Analytics lekérdezéseit](stream-analytics-vs-tools-local-run.md)

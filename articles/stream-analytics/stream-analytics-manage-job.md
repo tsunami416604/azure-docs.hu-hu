@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: cc9b91ce7e40d8f1efab060376a9641642a10472
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a07fccc79c34509d9d5b7073b1c28b3f60fe8f61
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101323"
+ms.locfileid: "93123693"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Oktatóanyag: telefonhívások elemzése a Stream Analytics és az eredmények megjelenítése Power BI irányítópulton
 
@@ -39,7 +39,7 @@ Mielőtt elkezdené, hajtsa végre a következő műveleteket:
 
 ## <a name="create-an-azure-event-hub"></a>Azure Event Hub létrehozása
 
-Mielőtt a Stream Analytics elemezni tudná a csaló hívások adatstreamjét, el kell küldenie az adatokat az Azure-ba. Ebben az oktatóanyagban az [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs) használatával során fog adatokat küldeni az Azure-ba.
+Mielőtt a Stream Analytics elemezni tudná a csaló hívások adatstreamjét, el kell küldenie az adatokat az Azure-ba. Ebben az oktatóanyagban az [Azure Event Hubs](../event-hubs/event-hubs-about.md) használatával során fog adatokat küldeni az Azure-ba.
 
 Eseményközpont létrehozásához, majd az adatok az eseményközpontba küldéséhez hajtsa végre az alábbi lépéseket:
 
@@ -189,7 +189,7 @@ Az utolsó lépés egy kimeneti fogadó megadása a feladatnak, ahová az átala
 
 ## <a name="define-a-query-to-analyze-input-data"></a>Lekérdezés meghatározása a bemeneti adatok elemzéséhez
 
-A következő lépés egy átalakítás létrehozása, amely valós időben elemzi az adatokat. Az átalakítási lekérdezés definiálásához használja a [Stream Analytics lekérdezési nyelvet](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). Az ebben az oktatóanyagban használt lekérdezés észleli a csaló hívásokat a telefon adataiból.
+A következő lépés egy átalakítás létrehozása, amely valós időben elemzi az adatokat. Az átalakítási lekérdezés definiálásához használja a [Stream Analytics lekérdezési nyelvet](/stream-analytics-query/stream-analytics-query-language-reference). Az ebben az oktatóanyagban használt lekérdezés észleli a csaló hívásokat a telefon adataiból.
 
 Ebben a példában a csaló hívásokat ugyanaz a felhasználó indítja eltérő helyekről, öt másodperces időközönként. Például ugyanaz a felhasználó nem indíthat szabályosan hívásokat egyszerre az USA-ból és Ausztráliából. A Stream Analytics-feladat átalakítási lekérdezésének megadásához tegye a következőket:
 
@@ -210,7 +210,7 @@ Ebben a példában a csaló hívásokat ugyanaz a felhasználó indítja eltér�
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-   A csaló hívások kereséséhez a `CallRecTime` érték alapján érdemes önillesztést végrehajtania a streamadatokon. Ezután megkeresheti azokat a hívási rekordokat, amelyekben az `CallingIMSI` érték (az eredeti szám) megegyezik, de az `SwitchNum` érték (a forrás országa/régiója) eltér. Ha JOIN műveletet használ streamadatokon, az illesztésnek korlátoznia kell az egyező sorok közötti maximális időtartamot. Mivel a streamadatok végtelenek, a kapcsolat időkorlátait az **ON** záradékban kell megadni, a [DATEDIFF](https://docs.microsoft.com/stream-analytics-query/datediff-azure-stream-analytics) függvénnyel.
+   A csaló hívások kereséséhez a `CallRecTime` érték alapján érdemes önillesztést végrehajtania a streamadatokon. Ezután megkeresheti azokat a hívási rekordokat, amelyekben az `CallingIMSI` érték (az eredeti szám) megegyezik, de az `SwitchNum` érték (a forrás országa/régiója) eltér. Ha JOIN műveletet használ streamadatokon, az illesztésnek korlátoznia kell az egyező sorok közötti maximális időtartamot. Mivel a streamadatok végtelenek, a kapcsolat időkorlátait az **ON** záradékban kell megadni, a [DATEDIFF](/stream-analytics-query/datediff-azure-stream-analytics) függvénnyel.
 
    Ez a lekérdezés ugyanúgy működik, mint a normál SQL-illesztés, kivéve a **DATEDIFF** függvényt. A lekérdezésben használt **DATEDIFF** függvény csak a Streaming Analyticsben használható, és az `ON...BETWEEN` záradékon belül kell megjelennie.
 
@@ -262,7 +262,7 @@ A lekérdezésszerkesztőben létrehozott lekérdezéseket mintaadatokkal teszte
 
 ## <a name="embedding-your-power-bi-dashboard-in-a-web-application"></a>A Power BI-irányítópult beágyazása egy webalkalmazásba
 
-Az oktatóanyag ezen részében egy minta [ASP.net](https://asp.net/) webalkalmazást fog használni, amelyet a Power bi csapata hozott létre az irányítópult beágyazásához. További információ az irányítópult beágyazásáról: [Beágyazás a Power BI-ba](https://docs.microsoft.com/power-bi/developer/embedding).
+Az oktatóanyag ezen részében egy minta [ASP.net](https://asp.net/) webalkalmazást fog használni, amelyet a Power bi csapata hozott létre az irányítópult beágyazásához. További információ az irányítópult beágyazásáról: [Beágyazás a Power BI-ba](/power-bi/developer/embedding).
 
 Az alkalmazás beállításához nyissa meg a [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) GitHub-adattárat, és kövesse a **felhasználó tulajdonában lévő adat** szakasz utasításait (használja a Integration **-Web-App** alszakaszban található átirányítás és Kezdőlap URL-címeket). Mivel az irányítópult példáját használjuk, használja a [GitHub-tárházban](https://github.com/microsoft/PowerBI-Developer-Samples/tree/master/.NET%20Framework/Embed%20for%20your%20organization/)található integrat **-Web-App mintakód-** kódot.
 Miután az alkalmazás fut a böngészőjében, az alábbi lépések végrehajtásával ágyazza be a weblapra a korábban létrehozott irányítópultot:

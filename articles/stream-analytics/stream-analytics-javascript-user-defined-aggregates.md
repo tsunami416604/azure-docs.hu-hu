@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
 ms.custom: devx-track-js
-ms.openlocfilehash: 6e43a43d929d256bc2a12b6b243d9620c5bd1aba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8891bb5cd3b8bd8ae9e02c871d6d0ffe42078c0b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317701"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124764"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>JavaScript felhasználó által definiált összesítések Azure Stream Analytics
  
@@ -83,7 +83,7 @@ A függvény aliasa a UDA azonosítója. Stream Analytics lekérdezésben való 
 
 ### <a name="function-type"></a>Függvény típusa
 
-A UDA a Function típusának JavaScript- **uda**kell lennie.
+A UDA a Function típusának JavaScript- **uda** kell lennie.
 
 ### <a name="output-type"></a>Kimenet típusa
 
@@ -123,7 +123,7 @@ Az alábbiakban bemutatjuk, hogyan hozhat létre UDA a portálról. Az itt haszn
 Most hozzon létre egy JavaScript-UDA egy meglévő ASA-feladatban a következő lépések végrehajtásával.
 
 1. Jelentkezzen be Azure Portal, és keresse meg a meglévő Stream Analytics feladatot.
-1. Ezután kattintson a functions hivatkozásra a **feladatok topológiája**alatt.
+1. Ezután kattintson a functions hivatkozásra a **feladatok topológiája** alatt.
 1. Új függvény hozzáadásához kattintson a **Hozzáadás** ikonra.
 1. Az új függvény nézetben válassza a **JavaScript uda** lehetőséget a függvény típusaként, majd megjelenik egy alapértelmezett uda-sablon a szerkesztőben.
 1. Töltse ki a "TWA" nevet a UDA-aliasként, és módosítsa a függvény implementációját a következőképpen:
@@ -174,7 +174,7 @@ Most hozzon létre egy JavaScript-UDA egy meglévő ASA-feladatban a következő
 
 ## <a name="calling-javascript-uda-in-asa-query"></a>JavaScript UDA meghívása az ASA-lekérdezésben
 
-Azure Portal és nyissa meg a feladatot, szerkessze a lekérdezést, és hívja meg a TWA () függvényt egy "uda." mandátum-előtaggal. Példa:
+Azure Portal és nyissa meg a feladatot, szerkessze a lekérdezést, és hívja meg a TWA () függvényt egy "uda." mandátum-előtaggal. Például:
 
 ```SQL
 WITH value AS
@@ -226,12 +226,12 @@ Hozzon létre egy helyi JSON-fájlt az alábbi tartalommal, töltse fel a fájlt
 
 ## <a name="get-help"></a>Segítség kérése
 
-További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Következő lépések
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics lekérdezés nyelvi referenciája](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics lekérdezés nyelvi referenciája](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics felügyeleti REST API referenciája](/rest/api/streamanalytics/)

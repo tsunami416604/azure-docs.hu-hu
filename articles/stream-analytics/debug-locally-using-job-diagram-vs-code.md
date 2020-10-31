@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: f8885229c8ab6784c6c0bf45487812fcc43f9b22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 766d3f8d4d4c03fb4fe173dbb12eb85bb09cd71a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903831"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124169"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code"></a>Azure Stream Analytics lekérdezések hibakeresése helyileg a Visual Studio Code-ban a feladatütemezés használatával
 
@@ -31,7 +31,7 @@ Ebből a rövid útmutatóból megtudhatja [, hogyan](quick-create-visual-studio
 
 Ha a lekérdezést helyi bemeneti adatokkal szeretné tesztelni, kövesse az alábbi [utasításokat](visual-studio-code-local-run.md). Ha élő bemenettel szeretne tesztelni, [konfigurálja a bemenetet](stream-analytics-add-inputs.md) a következő lépésre. 
 
-Nyissa meg a * \. asaql* parancsfájlt, és válassza a **helyi Futtatás**lehetőséget. Ezután válassza a **helyi bemenet használata** lehetőséget, vagy **használjon élő bemenetet**. A feladatütemezés az ablak jobb oldalán jelenik meg.
+Nyissa meg a *\. asaql* parancsfájlt, és válassza a **helyi Futtatás** lehetőséget. Ezután válassza a **helyi bemenet használata** lehetőséget, vagy **használjon élő bemenetet** . A feladatütemezés az ablak jobb oldalán jelenik meg.
 
 ### <a name="view-the-output-and-intermediate-result-set"></a>A kimenet és a köztes eredményhalmaz megtekintése  
 
@@ -56,7 +56,7 @@ Ebben a szakaszban megismerheti a diagram egyes részeihez elérhető metrikáka
    > [!div class="mx-imgBorder"]
    > ![Feladatok diagram metrikái](./media/debug-locally-using-job-diagram-vs-code/job-metrics.png)
 
-3. A bemeneti metrikák megjelenítéséhez válassza ki a bemeneti adatforrás nevét a legördülő listából. Az alábbi képernyőképen található bemeneti forrás neve *idézőjel*. A bemeneti metrikákkal kapcsolatos további információkért lásd: [stream Analytics feladatok figyelésének ismertetése és a lekérdezések figyelése](stream-analytics-monitoring.md).
+3. A bemeneti metrikák megjelenítéséhez válassza ki a bemeneti adatforrás nevét a legördülő listából. Az alábbi képernyőképen található bemeneti forrás neve *idézőjel* . A bemeneti metrikákkal kapcsolatos további információkért lásd: [stream Analytics feladatok figyelésének ismertetése és a lekérdezések figyelése](stream-analytics-monitoring.md).
 
    > [!div class="mx-imgBorder"]
    > ![A feladatütemezés bemeneti metrikái](./media/debug-locally-using-job-diagram-vs-code/input-metrics.png)
@@ -104,7 +104,7 @@ A feladatütemezés jobb felső sarkában válassza a **feladatok összegzése**
 
 * A C# egyéni kód és Azure Machine Learning függvények nem támogatottak. 
 
-* Csak a Felhőbeli beviteli lehetőségek támogatják az [időszabályzatokat](stream-analytics-out-of-order-and-late-events.md) , míg a helyi bemeneti beállítások nem.
+* Csak a Felhőbeli beviteli lehetőségek támogatják az [időszabályzatokat](./stream-analytics-time-handling.md) , míg a helyi bemeneti beállítások nem.
 
 ## <a name="next-steps"></a>Következő lépések
 

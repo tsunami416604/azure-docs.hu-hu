@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3bfc03dd7a04bea7e69aa1b62cef267a81b650f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba216e41672e1d19e552b3f82a2ea65da7d3a435
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86037613"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124577"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Ismerkedés a Azure Stream Analytics használatával: a csalások valós idejű észlelése
 
@@ -41,13 +41,13 @@ Mielőtt hozzálátna, győződjön meg róla, hogy rendelkezik az alábbiakkal:
 * A Call-Event Generator alkalmazás, [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip), amely a Microsoft letöltőközpontból tölthető le. Csomagolja ki a csomagot a számítógép egyik mappájába. Ha szeretné megtekinteni a forráskódot, és egy hibakeresőben futtatja az alkalmazást, akkor a [githubról](https://aka.ms/azure-stream-analytics-telcogenerator)szerezheti be az alkalmazás forráskódját. 
 
     >[!NOTE]
-    >Előfordulhat, hogy a Windows letiltja a letöltött. zip fájlt. Ha nem tudja kibontani, kattintson a jobb gombbal a fájlra, és válassza a **Tulajdonságok**lehetőséget. Ha a "Ez a fájl egy másik számítógépről érkezett, és előfordulhat, hogy a számítógép védelmének megakadályozása" üzenet jelenik meg, válassza a **Tiltás feloldása** lehetőséget, majd kattintson az **alkalmaz**gombra.
+    >Előfordulhat, hogy a Windows letiltja a letöltött. zip fájlt. Ha nem tudja kibontani, kattintson a jobb gombbal a fájlra, és válassza a **Tulajdonságok** lehetőséget. Ha a "Ez a fájl egy másik számítógépről érkezett, és előfordulhat, hogy a számítógép védelmének megakadályozása" üzenet jelenik meg, válassza a **Tiltás feloldása** lehetőséget, majd kattintson az **alkalmaz** gombra.
 
-Ha meg szeretné vizsgálni a streaming Analytics-feladatok eredményeit, az Azure Blob Storage-tároló tartalmának megtekintéséhez eszközre is szüksége lesz. Ha a Visual studiót használja, használhatja [a Visual Studio vagy a](https://docs.microsoft.com/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) [Visual Studio Cloud Explorer](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer)Azure Tools eszközt is. Alternatív megoldásként olyan önálló eszközöket is telepíthet, mint például a [Azure Storage Explorer](https://storageexplorer.com/) vagy a [Cerulean](https://www.cerebrata.com/products/cerulean/features/azure-storage). 
+Ha meg szeretné vizsgálni a streaming Analytics-feladatok eredményeit, az Azure Blob Storage-tároló tartalmának megtekintéséhez eszközre is szüksége lesz. Ha a Visual studiót használja, használhatja [a Visual Studio vagy a](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) [Visual Studio Cloud Explorer](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer)Azure Tools eszközt is. Alternatív megoldásként olyan önálló eszközöket is telepíthet, mint például a [Azure Storage Explorer](https://storageexplorer.com/) vagy a [Cerulean](https://www.cerebrata.com/products/cerulean/features/azure-storage). 
 
 ## <a name="create-an-azure-event-hubs-to-ingest-events"></a>Azure-Event Hubs létrehozása események betöltéséhez
 
-Az adatfolyamok elemzéséhez *Az Azure* -ba kerül. Az adatok betöltésének tipikus módja az [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md)használata, amely másodpercenként akár több millió eseményt is felhasználhat, majd feldolgozhatja és tárolhatja az események adatait. Ebben az oktatóanyagban létre fog hozni egy Event hub-t, majd a Call-Event Generator alkalmazásnak meg kell küldenie a hívási adatközpontot.
+Az adatfolyamok elemzéséhez *Az Azure* -ba kerül. Az adatok betöltésének tipikus módja az [Azure Event Hubs](../event-hubs/event-hubs-about.md)használata, amely másodpercenként akár több millió eseményt is felhasználhat, majd feldolgozhatja és tárolhatja az események adatait. Ebben az oktatóanyagban létre fog hozni egy Event hub-t, majd a Call-Event Generator alkalmazásnak meg kell küldenie a hívási adatközpontot.
 
 >[!NOTE]
 >Az eljárás részletesebb változata: [Event Hubs névtér és az Event hub létrehozása a Azure Portal használatával](../event-hubs/event-hubs-create.md). 
@@ -67,13 +67,13 @@ Ebben az eljárásban először létre kell hoznia egy Event hub-névteret, majd
 
 4. A **névtér létrehozása** panelen adja meg a névtér nevét, például: `<yourname>-eh-ns-demo` . Bármilyen nevet használhat a névtérhez, de a névnek érvényesnek kell lennie az URL-címhez, és egyedinek kell lennie az Azure-ban. 
     
-5. Válasszon ki egy előfizetést, hozzon létre vagy válasszon ki egy erőforráscsoportot, majd kattintson a **Létrehozás**gombra.
+5. Válasszon ki egy előfizetést, hozzon létre vagy válasszon ki egy erőforráscsoportot, majd kattintson a **Létrehozás** gombra.
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-namespace-new-portal.png" alt="Create event hub namespace in Azure portal" width="300px"/>
 
 6. Ha a névtér befejezte a telepítést, keresse meg az Event hub-névteret az Azure-erőforrások listájában. 
 
-7. Kattintson az új névtérre, majd a névtér ablaktáblán kattintson az **Event hub**elemre.
+7. Kattintson az új névtérre, majd a névtér ablaktáblán kattintson az **Event hub** elemre.
 
    ![Az Event hub hozzáadása gomb új Event hub létrehozásához](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
@@ -81,7 +81,7 @@ Ebben az eljárásban először létre kell hoznia egy Event hub-névteret, majd
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
-9. Kattintson a **Létrehozás** elemre.
+9. Kattintson a **Létrehozás** gombra.
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Az eseményközponthoz való hozzáférés engedélyezése és kapcsolati sztring beszerzése
 
@@ -89,16 +89,16 @@ Ahhoz, hogy egy folyamat hozzáférhessen az adatközponthoz, az Event hub-nak r
 
 1. Az esemény-névtér ablaktáblán kattintson a **Event Hubs** elemre, majd kattintson az új Event hub nevére.
 
-2. Az Event hub ablaktáblán kattintson a **megosztott elérési házirendek** elemre, majd a ** + &nbsp; Hozzáadás**gombra.
+2. Az Event hub ablaktáblán kattintson a **megosztott elérési házirendek** elemre, majd a **+ &nbsp; Hozzáadás** gombra.
 
     > [!NOTE]
     > Győződjön meg arról, hogy az Event hub-t használja, nem az Event hub-névteret.
 
-3. Adja hozzá a `asa-policy-manage-demo` és a **jogcím**nevű szabályzatot, majd válassza a **kezelés**lehetőséget.
+3. Adja hozzá a `asa-policy-manage-demo` és a **jogcím** nevű szabályzatot, majd válassza a **kezelés** lehetőséget.
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4. Kattintson a **Létrehozás** elemre.
+4. Kattintson a **Létrehozás** gombra.
 
 5. Miután telepítette a házirendet, kattintson rá a megosztott hozzáférési házirendek listájában.
 
@@ -152,7 +152,7 @@ Mielőtt elkezdené a TelcoGenerator alkalmazást, úgy kell konfigurálnia, hog
     telcodatagen.exe 1000 0.2 2
     ```
 
-   A paraméterek a következők: 
+   Ez a két paraméter a következő: 
 
    * CdR száma óránként. 
    * SIM-kártya csalásának valószínűsége: milyen gyakran, az összes hívás százalékaként, hogy az alkalmazás szimuláljon egy csalárd hívást. A 0,2-es érték azt jelenti, hogy nagyjából a hívások 20%-a fog csalónak tűnni.
@@ -178,7 +178,7 @@ Most, hogy elvégezte a hívási események streamjét, beállíthat egy Stream 
 
 ### <a name="create-the-job"></a>A feladat létrehozása 
 
-1. A Azure Portal kattintson az **erőforrás létrehozása**  >  **eszközök internetes hálózata**  >  **stream Analytics feladatokra**.
+1. A Azure Portal kattintson az **erőforrás létrehozása**  >  **eszközök internetes hálózata**  >  **stream Analytics feladatokra** .
 
 2. Nevezze el a feladatot `asa_frauddetection_job_demo` , adjon meg egy előfizetést, egy erőforráscsoportot és egy helyet.
 
@@ -186,7 +186,7 @@ Most, hogy elvégezte a hívási események streamjét, beállíthat egy Stream 
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
 
-3. Kattintson a **Létrehozás** elemre.
+3. Kattintson a **Létrehozás** gombra.
 
     A rendszer létrehozza a feladatot, és a portál megjeleníti a feladatok részleteit. A művelet még nem fut, de a művelet elkezdése előtt konfigurálnia kell a feladatot.
 
@@ -197,7 +197,7 @@ Most, hogy elvégezte a hívási események streamjét, beállíthat egy Stream 
 
    ![Beviteli mező a topológia területen a streaming Analytics-feladatok ablaktáblán](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-input-box-new-portal.png)
  
-3. Kattintson a **stream-bemenet hozzáadása** elemre, és válassza az **Event hub**elemet. Ezután töltse ki az új bemeneti oldalt az alábbi adatokkal:
+3. Kattintson a **stream-bemenet hozzáadása** elemre, és válassza az **Event hub** elemet. Ezután töltse ki az új bemeneti oldalt az alábbi adatokkal:
 
    |**Beállítás**  |**Ajánlott érték**  |**Leírás**  |
    |---------|---------|---------|
@@ -211,7 +211,7 @@ Most, hogy elvégezte a hívási események streamjét, beállíthat egy Stream 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
 
-4. Kattintson a **Létrehozás** elemre.
+4. Kattintson a **Létrehozás** gombra.
 
 ## <a name="create-queries-to-transform-real-time-data"></a>Lekérdezések létrehozása a valós idejű adatértékek átalakításához
 
@@ -221,7 +221,7 @@ Előfordulhat, hogy egy egyszerű lekérdezés csak az összes bejövő adatbevi
 
 Az itt létrehozott lekérdezések csak az átalakított adatképernyőt fogják megjeleníteni. Egy későbbi szakaszban egy kimeneti fogadót és egy olyan lekérdezést fog konfigurálni, amely az átalakított adatokat az adott fogadóba írja.
 
-Ha többet szeretne megtudni a nyelvről, tekintse meg a [Azure stream Analytics lekérdezés nyelvi referenciáját](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).
+Ha többet szeretne megtudni a nyelvről, tekintse meg a [Azure stream Analytics lekérdezés nyelvi referenciáját](/stream-analytics-query/stream-analytics-query-language-reference).
 
 ### <a name="get-sample-data-for-testing-queries"></a>Mintaadatok beolvasása lekérdezések teszteléséhez
 
@@ -230,12 +230,12 @@ A TelcoGenerator alkalmazás hívási rekordokat küld az Event hub-nak, és a S
 1. Győződjön meg arról, hogy a TelcoGenerator alkalmazás fut, és hozzon létre hívási rekordokat.
 2. A portálon térjen vissza a streaming Analytics-feladatok ablaktáblára. (Ha bezárta a panelt, keresse meg `asa_frauddetection_job_demo` a **minden erőforrás** ablaktáblán.)
 3. Kattintson a **lekérdezés** mezőre. Az Azure felsorolja a feladathoz konfigurált bemeneteket és kimeneteket, és lehetővé teszi egy olyan lekérdezés létrehozását, amely lehetővé teszi a bemeneti adatfolyam átalakítását, ahogy az a kimenetre lesz küldve.
-4. A **lekérdezés** ablaktáblán kattintson a bemenet melletti pontokra, `CallStream` majd válassza a **mintaadatok a bemenetből**lehetőséget.
+4. A **lekérdezés** ablaktáblán kattintson a bemenet melletti pontokra, `CallStream` majd válassza a **mintaadatok a bemenetből** lehetőséget.
 
    ![A streaming Analytics-feladathoz tartozó mintaadatok használatára szolgáló menüpontok, a "mintaadatok a bemenetből" lehetőséggel](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sample-data-from-input.png)
 
 
-5. Állítsa be a **percet** 3 értékre, majd kattintson **az OK**gombra. 
+5. Állítsa be a **percet** 3 értékre, majd kattintson **az OK** gombra. 
     
    ![A mintavétel bemeneti adatfolyamának beállításai 3 perc kiválasztásával](./media/stream-analytics-real-time-fraud-detection/stream-analytics-input-create-sample-data.png)
 
@@ -263,7 +263,7 @@ Ha minden eseményt archiválni szeretne, használhat egy áteresztő lekérdez�
 
     Ebben a lekérdezésben az az `CallStream` alias, amelyet a bemenet létrehozásakor adott meg. Ha más aliast használt, használja helyette a nevet.
 
-2. Kattintson a **teszt**gombra.
+2. Kattintson a **teszt** gombra.
 
     A Stream Analyticsi feladatsor futtatja a lekérdezést a mintaadatok között, és megjeleníti a kimenetet az ablak alján. Az eredmények azt jelzik, hogy az Event hub és a streaming Analytics-feladatok megfelelően vannak konfigurálva. (Ahogy azt is említettük, később létrehoz egy kimeneti fogadót, amelyet a lekérdezés adatokat tud írni.)
 
@@ -291,7 +291,7 @@ Sok esetben az elemzéshez nem szükséges a bemeneti adatfolyam összes oszlopa
 
 Tegyük fel, hogy régiónként szeretné megszámolni a bejövő hívások számát. A folyamatos átviteli adatok esetében, ha olyan összesítő függvényeket kíván végrehajtani, mint például a számlálás, az adatfolyamot időbeli egységbe kell osztania (mivel maga az adatfolyam gyakorlatilag végtelen). Ezt egy streaming Analytics- [ablak függvény](stream-analytics-window-functions.md)használatával végezheti el. Ezután használhatja az adott ablakban található, egységként szolgáló adatmennyiséget.
 
-Ehhez az átalakításhoz olyan időbeli Windows-sorozatot szeretne használni, amely nem fedi át az átfedést – minden ablaknak külön adatkészlete lesz, amelyet csoportosíthatjuk és összesíteni lehet. Az ilyen típusú ablakokat a rendszer *kieséses ablaknak*nevezzük. A kiesési ablakban a bejövő hívások száma látható `SwitchNum` , amely az országot vagy régiót jelöli, ahol a hívás származik. 
+Ehhez az átalakításhoz olyan időbeli Windows-sorozatot szeretne használni, amely nem fedi át az átfedést – minden ablaknak külön adatkészlete lesz, amelyet csoportosíthatjuk és összesíteni lehet. Az ilyen típusú ablakokat a rendszer *kieséses ablaknak* nevezzük. A kiesési ablakban a bejövő hívások száma látható `SwitchNum` , amely az országot vagy régiót jelöli, ahol a hívás származik. 
 
 1. Módosítsa a lekérdezést a Kódszerkesztő alkalmazásban a következőre:
 
@@ -303,11 +303,11 @@ Ehhez az átalakításhoz olyan időbeli Windows-sorozatot szeretne használni, 
     GROUP BY TUMBLINGWINDOW(s, 5), SwitchNum
     ```
 
-    Ez a lekérdezés a `Timestamp By` záradékban található kulcsszót használja `FROM` annak megadásához, hogy a bemeneti adatfolyam melyik timestamp mezőjében használja a kiesési időszakot. Ebben az esetben az ablak az egyes rekordok mezői szerint osztja szét az adatok szegmenseit `CallRecTime` . (Ha nincs megadva mező, az ablakos művelet azt az időpontot használja, amikor az egyes események megérkeznek az Event hub-ba. Tekintse meg a "megérkezési idő vs Application Time" kifejezést [stream Analytics lekérdezési nyelvi referenciában](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). 
+    Ez a lekérdezés a `Timestamp By` záradékban található kulcsszót használja `FROM` annak megadásához, hogy a bemeneti adatfolyam melyik timestamp mezőjében használja a kiesési időszakot. Ebben az esetben az ablak az egyes rekordok mezői szerint osztja szét az adatok szegmenseit `CallRecTime` . (Ha nincs megadva mező, az ablakos művelet azt az időpontot használja, amikor az egyes események megérkeznek az Event hub-ba. Tekintse meg a "megérkezési idő vs Application Time" kifejezést [stream Analytics lekérdezési nyelvi referenciában](/stream-analytics-query/stream-analytics-query-language-reference). 
 
     A vetítés magában foglalja `System.Timestamp` , amely az egyes ablak végének időbélyegét adja vissza. 
 
-    Annak megadásához, hogy egy feltételt tartalmazó ablakot kíván használni, használja a [TUMBLINGWINDOW](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) függvényt a `GROUP BY` záradékban. A függvényben meg kell adnia egy időegységet (bárhol a másodperctől egy napra) és egy ablak méretével (hány egység). Ebben a példában a kihelyező ablak 5 másodperces intervallumokból áll, így minden 5 másodpercenkénti hívás esetén az ország/régió alapján kell számolni.
+    Annak megadásához, hogy egy feltételt tartalmazó ablakot kíván használni, használja a [TUMBLINGWINDOW](/stream-analytics-query/tumbling-window-azure-stream-analytics) függvényt a `GROUP BY` záradékban. A függvényben meg kell adnia egy időegységet (bárhol a másodperctől egy napra) és egy ablak méretével (hány egység). Ebben a példában a kihelyező ablak 5 másodperces intervallumokból áll, így minden 5 másodpercenkénti hívás esetén az ország/régió alapján kell számolni.
 
 2. Kattintson ismét a **teszt** elemre. Az eredmények között figyelje meg, hogy a **WindowEnd** alatti időbélyegek 5 másodperces növekményekben vannak.
 
@@ -359,7 +359,7 @@ Ha rendelkezik meglévő blob Storage-fiókkal, ezt használhatja. Ebből az okt
 
 ### <a name="create-an-azure-blob-storage-account"></a>Azure Blob Storage-fiók létrehozása
 
-1. A Azure Portal bal felső sarkában válassza az **erőforrás létrehozása**  >  **Storage**-  >  **fiók**lehetőséget. Töltse ki a Storage-fiók feladata lapot "asaehstorage **" értékre** , az "USA keleti **régiója** " értékre állítva, az **erőforráscsoport** pedig az "ASA-eh-NS-RG" értékre van állítva (a nagyobb teljesítmény érdekében tárolja a Storage-fiókot a folyamatos átviteli feladattal azonos erőforráscsoporthoz). A fennmaradó beállításokat alapértelmezett értéken hagyhatja.  
+1. A Azure Portal bal felső sarkában válassza az **erőforrás létrehozása**  >  **Storage** -  >  **fiók** lehetőséget. Töltse ki a Storage-fiók feladata lapot "asaehstorage **" értékre** , az "USA keleti **régiója** " értékre állítva, az **erőforráscsoport** pedig az "ASA-eh-NS-RG" értékre van állítva (a nagyobb teljesítmény érdekében tárolja a Storage-fiókot a folyamatos átviteli feladattal azonos erőforráscsoporthoz). A fennmaradó beállításokat alapértelmezett értéken hagyhatja.  
 
    ![Storage-fiók létrehozása Azure Portal](./media/stream-analytics-real-time-fraud-detection/stream-analytics-storage-account-create.png)
 
@@ -367,7 +367,7 @@ Ha rendelkezik meglévő blob Storage-fiókkal, ezt használhatja. Ebből az okt
 
 3. A **feladatok topológiája** szakaszban kattintson a **kimenet** mezőre.
 
-4. A **kimenetek** ablaktáblán kattintson a **Hozzáadás** elemre, és válassza a **blob Storage**elemet. Ezután töltse ki az új kimeneti oldalt az alábbi adatokkal:
+4. A **kimenetek** ablaktáblán kattintson a **Hozzáadás** elemre, és válassza a **blob Storage** elemet. Ezután töltse ki az új kimeneti oldalt az alábbi adatokkal:
 
    |**Beállítás**  |**Ajánlott érték**  |**Leírás**  |
    |---------|---------|---------|
@@ -388,7 +388,7 @@ A feladatot már konfigurálták. Megadott egy bemenetet (az Event hub-t), egy �
 
 1. Győződjön meg arról, hogy a TelcoGenerator alkalmazás fut.
 
-2. A feladatok ablaktáblán kattintson a **Start**gombra. A **kezdési feladatok** ablaktáblán, a feladatok kimenetének kezdési ideje beállításnál válassza a **most**lehetőséget. 
+2. A feladatok ablaktáblán kattintson a **Start** gombra. A **kezdési feladatok** ablaktáblán, a feladatok kimenetének kezdési ideje beállításnál válassza a **most** lehetőséget. 
 
    ![A Stream Analytics-feladatok elindítása](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-start.png)
 
@@ -405,9 +405,9 @@ Amikor megvizsgál egy fájl tartalmát a blob Storage-ban, a következőhöz ha
    ![Azure Blob Storage streaming Analytics-kimenettel](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-blob-storage-view.png)
  
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
-Vannak további cikkek, amelyek továbbra is a csalások észlelésére szolgálnak, és az ebben az oktatóanyagban létrehozott erőforrásokat használják. Ha folytatni szeretné a lépéseket, tekintse meg a **következő lépések**című témakörben található javaslatokat.
+Vannak további cikkek, amelyek továbbra is a csalások észlelésére szolgálnak, és az ebben az oktatóanyagban létrehozott erőforrásokat használják. Ha folytatni szeretné a lépéseket, tekintse meg a **következő lépések** című témakörben található javaslatokat.
 
 Ha azonban elkészült, és nincs szüksége a létrehozott erőforrásokra, törölheti őket, hogy ne kelljen szükségtelen Azure-díjakat fizetnie. Ebben az esetben javasoljuk, hogy tegye a következőket:
 
@@ -420,9 +420,9 @@ Ha azonban elkészült, és nincs szüksége a létrehozott erőforrásokra, tö
 
 ## <a name="get-support"></a>Támogatás kérése
 
-További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics vonatkozó kérdés oldalát](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics vonatkozó kérdés oldalát](/answers/topics/azure-stream-analytics.html).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezt az oktatóanyagot a következő cikk használatával folytathatja:
 
@@ -432,5 +432,5 @@ Az általános Stream Analyticsról a következő cikkekben talál további info
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Az Azure Stream Analytics felügyeleti REST API referenciája](/rest/api/streamanalytics/)

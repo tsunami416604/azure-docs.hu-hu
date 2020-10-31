@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/01/2017
-ms.openlocfilehash: fdb3c5c12af8e9022f5babc84126badda890dce5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4ee868125ee30d40ef0d9ca5a42881ad003e9a8
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044481"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123982"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>Adatvezérelt hibakeresés a feladatábra használatával
 
@@ -20,7 +20,7 @@ A Azure Portal **figyelés** paneljén a feladatok diagramja segíthet a feladat
 
 ## <a name="using-the-job-diagram"></a>A feladatütemezés használata
 
-A Azure Portal Stream Analytics feladatban a **támogatás + hibaelhárítás**területen válassza a **feladatütemezés**elemet:
+A Azure Portal Stream Analytics feladatban a **támogatás + hibaelhárítás** területen válassza a **feladatütemezés** elemet:
 
 ![Feladathoz tartozó diagram metrikákkal – hely](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-1.png)
 
@@ -75,15 +75,15 @@ Ha a fenti lekérdezési lépés egy bemeneti processzor, a bemeneti metrikák s
  
 ### <a name="are-we-falling-behind-in-reading-data"></a>Az adatolvasás mögött vannak?
 
-*   A **bemeneti események várakozó (összesen)** jelzi, hogy hány üzenetet kell olvasni a Event Hubs és az Azure IoT hub bemenetek esetében. Ha ez a szám nagyobb, mint 0, az azt jelenti, hogy a feladatainak nem sikerült gyorsan feldolgoznia az adatfeldolgozást. Ebben az esetben szükség lehet a folyamatos átviteli egységek számának növelésére és/vagy annak biztosítására, hogy a feladatok párhuzamosak legyenek. Erről a  [lekérdezési párhuzamos oldalon](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)talál további információt. 
+*   A **bemeneti események várakozó (összesen)** jelzi, hogy hány üzenetet kell olvasni a Event Hubs és az Azure IoT hub bemenetek esetében. Ha ez a szám nagyobb, mint 0, az azt jelenti, hogy a feladatainak nem sikerült gyorsan feldolgoznia az adatfeldolgozást. Ebben az esetben szükség lehet a folyamatos átviteli egységek számának növelésére és/vagy annak biztosítására, hogy a feladatok párhuzamosak legyenek. Erről a  [lekérdezési párhuzamos oldalon](./stream-analytics-parallelization.md)talál további információt. 
 
 
 ## <a name="get-help"></a>Segítség kérése
-További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics vonatkozó kérdés oldalát](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html). 
+További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics vonatkozó kérdés oldalát](/answers/topics/azure-stream-analytics.html). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Bevezetés a Stream Analyticsba](stream-analytics-introduction.md)
 * [Ismerkedés a Stream Analytics szolgáltatással](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics-feladatok skálázása](stream-analytics-scale-jobs.md)
-* [Stream Analytics lekérdezés nyelvi referenciája](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Stream Analytics lekérdezés nyelvi referenciája](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Stream Analytics felügyeleti REST API referenciája](/rest/api/streamanalytics/)

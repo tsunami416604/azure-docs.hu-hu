@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: 7b96bc456d2dc0e3f1a1110f36b61be4accfbd8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c12c4b9f4a3757a3974e4aff7699d0265bfd7840
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488507"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124373"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Azure Stream Analytics feladatok méretezése az átviteli sebesség növelése érdekében
 Ez a cikk bemutatja, hogyan lehet Stream Analytics-lekérdezést hangolni a streaming Analytics-feladatok átviteli sebességének növeléséhez. A következő útmutató segítségével méretezheti a feladatokat nagyobb terhelés kezelésére, és kihasználhatja a több rendszererőforrást (például több sávszélességet, több processzor-erőforrást, több memóriát).
@@ -24,7 +24,7 @@ Előfeltételként előfordulhat, hogy a következő cikkeket kell elolvasnia:
 Ha a lekérdezés eredendően teljesen párhuzamosítható a bemeneti partíciók között, kövesse az alábbi lépéseket:
 1.  Készítse el a lekérdezést zavaróan párhuzamosan a **Partition by** kulcsszó használatával. További részletekért tekintse meg a zavaró párhuzamos feladatok című szakaszt [ezen az oldalon](stream-analytics-parallelization.md).
 2.  A lekérdezésben használt kimeneti típusoktól függően előfordulhat, hogy egyes kimenetek nem párhuzamosítható, vagy további konfigurációra van szükségük, hogy zavaróan párhuzamos legyen. A PowerBI kimenete például nem párhuzamosítható. A kimenetek mindig össze lesznek fésülve a kimeneti fogadóba való küldés előtt. A Blobok, táblák, ADLS, Service Bus és Azure függvények automatikusan párhuzamosak. Az SQL és az Azure szinapszis Analytics kimenetei párhuzamos is rendelkeznek. Az Event hub-nak meg kell egyeznie a PartitionKey-konfigurációval, hogy egyezzen a **Partition by** mezővel (általában PartitionID). Az Event hub esetében külön figyelmet kell fordítani a partíciók számának megadására az összes bemenetnél és az összes kimenetnél, hogy elkerülje a partíciók közti átkelést. 
-3.  Futtassa a lekérdezést a **6 Su** -vel (amely egy számítástechnikai csomópont teljes kapacitása) a maximálisan elérhető átviteli sebesség méréséhez, és ha **Group By**-t használ, mérje fel, hogy hány csoport (kardinális) kezelésére van lehetőség. A rendszererőforrás-korlátokat ütő feladat általános tünetei a következők.
+3.  Futtassa a lekérdezést a **6 Su** -vel (amely egy számítástechnikai csomópont teljes kapacitása) a maximálisan elérhető átviteli sebesség méréséhez, és ha **Group By** -t használ, mérje fel, hogy hány csoport (kardinális) kezelésére van lehetőség. A rendszererőforrás-korlátokat ütő feladat általános tünetei a következők.
     - A SU% kihasználtsági metrika meghaladja a 80%-ot. Ez azt jelzi, hogy a memóriahasználat magas. A mérőszám növeléséhez hozzájáruló tényezők leírása [itt](stream-analytics-streaming-unit-consumption.md)található. 
     -   A kimeneti időbélyeg a falióra időpontjával kapcsolatos. A lekérdezési logikától függően előfordulhat, hogy a kimeneti időbélyeg a fal órajelének időpontjához képest logikai eltolással rendelkezik. Azonban nagyjából azonos sebességgel kell haladni. Ha a kimeneti időbélyeg további és további mögött van, akkor azt jelzi, hogy a rendszer túlműködik-e. Ez lehet az alsóbb rétegbeli kimeneti sávszélesség-szabályozás vagy a nagy CPU-kihasználtság eredménye. Jelenleg nem biztosítunk CPU-kihasználtsági mérőszámot, ezért nehéz lehet különbséget tenni a kettőnél.
         - Ha a probléma a fogadó általi szabályozás miatt lehetséges, akkor szükség lehet a kimeneti partíciók számának növelésére (és a bemeneti partíciók megtartására is, hogy a feladatok teljes mértékben párhuzamosítható), vagy növelje a fogadó erőforrásainak mennyiségét (például a CosmosDB vonatkozó kérelmek száma).
@@ -42,7 +42,7 @@ Ha a lekérdezés nem zavaróan párhuzamos, kövesse az alábbi lépéseket.
 2.  Ha elérheti a várható terhelést az átviteli sebesség időtartama alatt, készen áll. Azt is megteheti, hogy ugyanazt a feladatot használja, amely a 3 SU és 1 SU értéknél fut, hogy megtudja, milyen minimális számú SU működik a forgatókönyvben.
 3.  Ha nem tudja elérni a kívánt átviteli sebességet, próbálja meg megszakítani a lekérdezést több lépésre, ha lehetséges, ha nem rendelkezik több lépéssel, és legfeljebb 6 SU-t foglal le a lekérdezés egyes lépéseihez. Ha például 3 lépésből áll, foglalja le 18 SU-t a "Scale" beállításban.
 4.  Ha egy ilyen feladatot futtat, Stream Analytics a saját csomópontján helyezi el az egyes lépéseket, dedikált 6 SU-erőforrásokkal. 
-5.  Ha még nem érte el a terhelési célt, megpróbálhatja a **partíció** használatát a bemenethez közelebbi lépésekkel. Ha **az operátor nem** lehet természetesen particionálható, a helyi/globális összesítési minta használatával particionált **csoportokat** hajthat végre, amelyet a nem particionált **csoportok**követnek. Ha például azt szeretné megszámolni, hogy hány autó halad végig 3 percenként az egyes autópályadíj-standokon, és az adatmennyiség meghaladja a 6 SU által kezelhető mennyiséget.
+5.  Ha még nem érte el a terhelési célt, megpróbálhatja a **partíció** használatát a bemenethez közelebbi lépésekkel. Ha **az operátor nem** lehet természetesen particionálható, a helyi/globális összesítési minta használatával particionált **csoportokat** hajthat végre, amelyet a nem particionált **csoportok** követnek. Ha például azt szeretné megszámolni, hogy hány autó halad végig 3 percenként az egyes autópályadíj-standokon, és az adatmennyiség meghaladja a 6 SU által kezelhető mennyiséget.
 
 Lekérdezés:
 
@@ -78,13 +78,13 @@ Bizonyos ISV-használati esetek esetében, ahol a több bérlőről származó a
 
 
 ## <a name="get-help"></a>Segítség kérése
-További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Következő lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
-* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Az Azure Stream Analytics felügyeleti REST API referenciája](/rest/api/streamanalytics/)
 
 <!--Image references-->
 
@@ -97,10 +97,9 @@ További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics k�
 <!--Link references-->
 
 [microsoft.support]: https://support.microsoft.com
-[azure.event.hubs.developer.guide]: https://msdn.microsoft.com/library/azure/dn789972.aspx
+[azure.event.hubs.developer.guide]: /previous-versions/azure/dn789972(v=azure.100)
 
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
-
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

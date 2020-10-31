@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/08/2020
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 3e6403f41d8e4b52ca64e9fa452524fa25efe870
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff11546225a3b07cbe9f8773dab2139636af787e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213255"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124798"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Oktatóanyag: Key Vault referenciák használata ASP.NET Core alkalmazásban
 
@@ -51,46 +51,46 @@ Az oktatóanyag elindítása előtt telepítse a [.net Core SDK](https://dotnet.
 
 1. Válassza az **erőforrás létrehozása** lehetőséget a Azure Portal bal felső sarkában:
 
-    ![A Key Vault létrehozása után a kimenet befejeződött](./media/quickstarts/search-services.png)
-1. A keresőmezőbe írja be a **Key Vault**kifejezést.
+    ![A képernyőképen az erőforrás létrehozása lehetőség látható a Azure Portal.](./media/quickstarts/search-services.png)
+1. A keresőmezőbe írja be a **Key Vault** kifejezést.
 1. Az eredmények listából válassza a bal oldali **kulcstartók** lehetőséget.
-1. A **kulcstartók**területen válassza a **Hozzáadás**lehetőséget.
-1. A **Key Vault létrehozása**jobb oldalán adja meg a következő információkat:
+1. A **kulcstartók** területen válassza a **Hozzáadás** lehetőséget.
+1. A **Key Vault létrehozása** jobb oldalán adja meg a következő információkat:
     - Válassza ki az **előfizetést az előfizetés** kiválasztásához.
-    - Az **erőforráscsoport**területen válassza az **új létrehozása** elemet, és adjon meg egy erőforráscsoport-nevet.
-    - A **Key Vault neve mezőben**egyedi nevet kell megadni. Ebben az oktatóanyagban írja be a **contoso-vault2**.
+    - Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, és adjon meg egy erőforráscsoport-nevet.
+    - A **Key Vault neve mezőben** egyedi nevet kell megadni. Ebben az oktatóanyagban írja be a **contoso-vault2** .
     - A **régió** legördülő listából válassza ki a kívánt helyet.
 1. Hagyja meg a többi **create Key Vault** -beállítást az alapértelmezett értékekkel.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 Ezen a ponton az Azure-fiókja az egyetlen jogosult az új tároló elérésére.
 
-![A Key Vault létrehozása után a kimenet befejeződött](./media/quickstarts/vault-properties.png)
+![A képernyőfelvételen a kulcstartó látható.](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>Titkos kulcs hozzáadása a Key Vaulthoz
 
-Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést kell elvégeznie. Ebben az esetben adjon hozzá egy üzenetet, amely segítségével tesztelheti Key Vault lekérését. Az üzenet neve **üzenet**, és a "Hello from Key Vault" értéket tárolja.
+Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést kell elvégeznie. Ebben az esetben adjon hozzá egy üzenetet, amely segítségével tesztelheti Key Vault lekérését. Az üzenet neve **üzenet** , és a "Hello from Key Vault" értéket tárolja.
 
-1. A Key Vault tulajdonságok oldalain válassza a **titkok**elemet.
-1. Válassza a **készítés/importálás**lehetőséget.
+1. A Key Vault tulajdonságok oldalain válassza a **titkok** elemet.
+1. Válassza a **készítés/importálás** lehetőséget.
 1. A **titkos kulcs létrehozása** panelen adja meg a következő értékeket:
-    - **Feltöltési beállítások**: adja meg a **manuális**értéket.
-    - **Név**: írja be az **üzenetet**.
-    - **Érték**: adja meg **a Hello értéket Key Vault**.
+    - **Feltöltési beállítások** : adja meg a **manuális** értéket.
+    - **Név** : írja be az **üzenetet** .
+    - **Érték** : adja meg **a Hello értéket Key Vault** .
 1. Hagyja a másik **titkos** tulajdonságot az alapértelmezett értékekkel.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Key Vault-hivatkozás hozzáadása az alkalmazás konfigurációjához
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **minden erőforrás**lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **minden erőforrás** lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
 
-1. Válassza a **Configuration Explorer**lehetőséget.
+1. Válassza a **Configuration Explorer** lehetőséget.
 
-1. Válassza a **+**  >  **Key Vault-hivatkozás**létrehozása lehetőséget, majd adja meg a következő értékeket:
-    - **Kulcs**: válassza a **TestApp: Settings: KeyVaultMessage**elemet.
-    - **Címke**: hagyja üresen ezt az értéket.
-    - **Előfizetés**, **erőforráscsoport**és **Key Vault**: adja meg az előző szakaszban létrehozott kulcstartóban szereplőknek megfelelő értékeket.
-    - **Titkos**kód: válassza ki az előző szakaszban létrehozott **üzenet** titkos nevét.
+1. Válassza a **+**  >  **Key Vault-hivatkozás** létrehozása lehetőséget, majd adja meg a következő értékeket:
+    - **Kulcs** : válassza a **TestApp: Settings: KeyVaultMessage** elemet.
+    - **Címke** : hagyja üresen ezt az értéket.
+    - **Előfizetés** , **erőforráscsoport** és **Key Vault** : adja meg az előző szakaszban létrehozott kulcstartóban szereplőknek megfelelő értékeket.
+    - **Titkos** kód: válassza ki az előző szakaszban létrehozott **üzenet** titkos nevét.
 
 ## <a name="connect-to-key-vault"></a>Kapcsolódás Key Vaulthoz
 
@@ -122,7 +122,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
     az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
     ```
 
-1. Környezeti változók hozzáadásával tárolhatja a *clientId*, a *ClientSecret*és a *tenantId*értékeit.
+1. Környezeti változók hozzáadásával tárolhatja a *clientId* , a *ClientSecret* és a *tenantId* értékeit.
 
     #### <a name="windows-command-prompt"></a>[Windows-parancssor](#tab/cmd)
 
@@ -163,7 +163,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
     dotnet add package Azure.Identity
     ```
 
-1. Nyissa meg a *program.cs*, és adja hozzá a következő szükséges csomagokra mutató hivatkozásokat:
+1. Nyissa meg a *program.cs* , és adja hozzá a következő szükséges csomagokra mutató hivatkozásokat:
 
     ```csharp
     using Azure.Identity;
@@ -236,7 +236,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
         and @Configuration["TestApp:Settings:KeyVaultMessage"]</h1>
     ```
 
-    A Key Vault Reference **TestApp: Settings: KeyVaultMessage** értéket ugyanúgy érheti el, mint a **TestApp: Settings: üzenet**konfigurációs értékeként.
+    A Key Vault Reference **TestApp: Settings: KeyVaultMessage** értéket ugyanúgy érheti el, mint a **TestApp: Settings: üzenet** konfigurációs értékeként.
 
 ## <a name="build-and-run-the-app-locally"></a>Az alkalmazás helyi létrehozása és futtatása
 
@@ -256,11 +256,11 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
 
     ![Gyorsindítás – helyi alkalmazás elindítása](./media/key-vault-reference-launch-local.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy alkalmazás-konfigurációs kulcsot, amely a Key Vaultban tárolt értékre hivatkozik. A következő oktatóanyagban megismerheti, hogyan adhat hozzá olyan Azure által felügyelt szolgáltatás-identitást, amely megkönnyíti az alkalmazás-konfiguráció és a Key Vault elérését.
 

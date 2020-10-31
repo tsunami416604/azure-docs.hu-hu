@@ -12,12 +12,12 @@ ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: f2774750b61ce92b3b34f6a5cbd961e4faa7d3e7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: cff1298f12d26b1260213d75701c282e0a82511d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277498"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124152"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>A csoportok adatainak frissítése a saját alkalmazások portálon
 
@@ -88,7 +88,7 @@ Ha a rendszergazda engedélyt kapott a **csoportok** csempék megtekintésére, 
 
     - **Csoportházirend.** Válassza ki a lehetőséget, hogy mindenki csatlakozzon a csoporthoz, vagy csak a csoport tulajdonosa számára engedélyezze a tagok hozzáadását.
 
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
 
     Az új csoport tulajdonosként jön létre, és megjelenik a **saját csoportok** listájában. Mivel Ön a tulajdonosa, ez a csoport is megjelenik a listán szereplő **csoportokban** .
 
@@ -96,27 +96,27 @@ Ha a rendszergazda engedélyt kapott a **csoportok** csempék megtekintésére, 
 
 A csoport létrehozása után szerkesztheti annak részleteit, beleértve a meglévő információk frissítését is.
 
-1. Jelölje ki a **csoportok** lapon a szerkeszteni kívánt csoportot, majd válassza a **részletek szerkesztése** lehetőséget a * &lt; &gt; group_name* oldalon.
+1. Jelölje ki a **csoportok** lapon a szerkeszteni kívánt csoportot, majd válassza a **részletek szerkesztése** lehetőséget a *&lt; &gt; group_name* oldalon.
 
     Megjelenik a **részletek szerkesztése** mező, és frissítheti a csoport első létrehozásakor hozzáadott adatokat.
 
-2. Végezze el az összes módosítást, majd válassza a **frissítés**lehetőséget.
+2. Végezze el az összes módosítást, majd válassza a **frissítés** lehetőséget.
 
 ## <a name="add-or-remove-a-member"></a>Tag hozzáadása vagy eltávolítása
 
 Hozzáadhat vagy eltávolíthat tagokat bármelyik saját csoport számára.
 
-1. Válassza ki azt a csoportot, amelyhez hozzá kívánja adni a tagokat, majd válassza ki a **+** * &lt; group_name &gt; * oldalon.
+1. Válassza ki azt a csoportot, amelyhez hozzá kívánja adni a tagokat, majd válassza ki a **+** *&lt; group_name &gt;* oldalon.
 
     ![Csoporttag hozzáadása, a + jel kiemelve](media/my-apps-portal/my-apps-portal-add-member-link.png)
 
-2. Keresse meg a hozzáadni kívánt tagot a **Tagok hozzáadása** mezőben, majd válassza a **Hozzáadás**lehetőséget.
+2. Keresse meg a hozzáadni kívánt tagot a **Tagok hozzáadása** mezőben, majd válassza a **Hozzáadás** lehetőséget.
 
     ![Tagok hozzáadása mező új tag hozzáadásával](media/my-apps-portal/my-apps-portal-add-member-page.png)
 
     A rendszer meghívót küld az új tagnak a szervezet alkalmazásai elérésének megkezdéséhez.
 
-3. Ha tévedésből adta hozzá a tagot, vagy ha egy tag elhagyta a szervezetet, akkor a tag **eltávolításához** válassza a tag neve melletti tag eltávolítása lehetőséget a * &lt; group_name &gt; * oldalon.
+3. Ha tévedésből adta hozzá a tagot, vagy ha egy tag elhagyta a szervezetet, akkor a tag **eltávolításához** válassza a tag neve melletti tag eltávolítása lehetőséget a *&lt; group_name &gt;* oldalon.
 
     ![Tag eltávolítása az eltávolítási hivatkozás kiemelésével](media/my-apps-portal/my-apps-portal-remove-member-link.png)
 
@@ -124,7 +124,7 @@ Hozzáadhat vagy eltávolíthat tagokat bármelyik saját csoport számára.
 
 Ha a szervezete engedélyezi, megújíthat egy Office 365-csoportot, kiterjesztheti a lejárati dátumot.
 
-1. Válassza ki a megújítani kívánt Office 365-csoportot, majd kattintson a **csoport megújítása**elemre.
+1. Válassza ki a megújítani kívánt Office 365-csoportot, majd kattintson a **csoport megújítása** elemre.
 
     ![Office 365-csoport megújítása, a lejárati dátum meghosszabbítása](media/my-apps-portal/my-apps-portal-renew-group-link.png)
 
@@ -136,7 +136,7 @@ Ha a szervezete engedélyezi, megújíthat egy Office 365-csoportot, kiterjeszth
 
 Bármikor törölheti a saját csoportjait. Ha azonban véletlenül töröl egy csoportot, létre kell hoznia, majd újra hozzá kell adnia a tagokat.
 
-1. Válassza ki a véglegesen törölni kívánt csoportot, majd válassza a **csoport törlése** elemet a * &lt; group_name &gt; * oldalon.
+1. Válassza ki a véglegesen törölni kívánt csoportot, majd válassza a **csoport törlése** elemet a *&lt; group_name &gt;* oldalon.
 
     ![<Group_name> oldalon a csoport törlése hivatkozás kiemelve](media/my-apps-portal/my-apps-portal-delete-group-link.png)
 
@@ -154,11 +154,11 @@ Egy már meglévő csoportot is csatlakozhat a **csoportok** lapról, vagy megha
 
     ![Csatlakozás a csoportok laphoz, a csatlakozás csoport gombbal kiemelve](media/my-apps-portal/my-apps-portal-join-group-link.png)
 
-2. Az **illesztési csoportok** lapon válassza ki annak a csoportnak a nevét, amelyhez csatlakozni szeretne, tekintse meg a társított csoport részleteit, majd ha a csoport elérhető, válassza a **Csatlakozás csoportot**.
+2. Az **illesztési csoportok** lapon válassza ki annak a csoportnak a nevét, amelyhez csatlakozni szeretne, tekintse meg a társított csoport részleteit, majd ha a csoport elérhető, válassza a **Csatlakozás csoportot** .
 
-    Ha a csoporthoz a csoport tulajdonosának jóvá kell hagynia a tagságot, a rendszer megkéri, hogy adjon meg egy üzleti indoklást, hogy miért van szükség a csoporthoz való csatlakozásra, majd válassza a **kérelem**lehetőséget. Ha a csoport nem igényel jóváhagyást, azonnal tagként lesz hozzáadva, és a csoport megjelenik a listán szereplő **csoportokban** .
+    Ha a csoporthoz a csoport tulajdonosának jóvá kell hagynia a tagságot, a rendszer megkéri, hogy adjon meg egy üzleti indoklást, hogy miért van szükség a csoporthoz való csatlakozásra, majd válassza a **kérelem** lehetőséget. Ha a csoport nem igényel jóváhagyást, azonnal tagként lesz hozzáadva, és a csoport megjelenik a listán szereplő **csoportokban** .
 
-3. Ha tévedésből csatlakozott egy csoporthoz, vagy ha már nincs szüksége rá, akkor kiválaszthatja a csoport nevét az **illesztési csoportok** lapon, majd válassza a **csoport elhagyása**lehetőséget.
+3. Ha tévedésből csatlakozott egy csoporthoz, vagy ha már nincs szüksége rá, akkor kiválaszthatja a csoport nevét az **illesztési csoportok** lapon, majd válassza a **csoport elhagyása** lehetőséget.
 
     ![Csatlakozás a csoportok oldalhoz, a kilépés gomb kiemelésével](media/my-apps-portal/my-apps-portal-leave-group-link.png)
 
@@ -166,6 +166,6 @@ Egy már meglévő csoportot is csatlakozhat a **csoportok** lapról, vagy megha
 
 - [Alkalmazások elérése és használata a saját alkalmazások portálon](my-apps-portal-end-user-access.md).
 
-- [Módosítsa a profil adatait](my-apps-portal-end-user-update-profile.md).
+- [Módosítsa a profil adatait](./my-account-portal-settings.md).
 
 - [Saját hozzáférési felülvizsgálatok végrehajtása](my-apps-portal-end-user-access-reviews.md).

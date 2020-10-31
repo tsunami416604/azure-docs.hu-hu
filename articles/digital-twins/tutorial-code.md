@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 47b7eaacc8aba3655223eb1f0cde4a5516e370fd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9ccde8ea5453e3e553a020707ecde6e60f29b3dd
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091599"
+ms.locfileid: "93124713"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Oktatóanyag: kódolás az Azure Digital Twins API-kkal
 
@@ -33,7 +33,9 @@ A kezdéshez szükséges lépések:
 * Bármely Kódszerkesztő
 * **.Net Core 3,1** a fejlesztői gépen. A .NET Core SDK ezen verzióját több platformra is letöltheti a [.net Core 3,1 letöltésével](https://dotnet.microsoft.com/download/dotnet-core/3.1).
 
-[!INCLUDE [Azure Digital Twins tutorials: instance prereq](../../includes/digital-twins-tutorial-prereq-instance.md)]
+### <a name="prepare-an-azure-digital-twins-instance"></a>Azure digitális Twins-példány előkészítése
+
+[!INCLUDE [Azure Digital Twins: instance prereq](../../includes/digital-twins-prereq-instance.md)]
 
 [!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
 
@@ -260,7 +262,7 @@ Ettől a ponttól kezdve az oktatóanyag a kipróbálási és a fogási kezelőb
 
 Most, hogy feltöltött egy modellt az Azure digitális Twins-ba, a modell definíciójában **digitális ikreket** hozhat létre. A [digitális ikrek](concepts-twins-graph.md) egy modell példányai, és az üzleti környezetben található entitásokat képviselik, például a farmon lévő érzékelők, a helyiségek egy épületben vagy egy autóban található fények. Ez a szakasz néhány digitális ikreket hoz létre a korábban feltöltött modell alapján.
 
-Adja hozzá ezeket `using` az új utasításokat felül, mivel ez a mintakód a beépített .net JSON-szerializáló használja a alkalmazásban `System.Text.Json` , valamint a `Serialization` névteret a [.net-hez készült Azure Digital Twins SDK-ból (C#)](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet-preview).
+Adja hozzá ezeket `using` az új utasításokat felül, mivel ez a mintakód a beépített .net JSON-szerializáló használja a alkalmazásban `System.Text.Json` , valamint a `Serialization` névteret a [.net-hez készült Azure Digital Twins SDK-ból (C#)](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet-preview&preserve-view=true).
 
 ```csharp
 using System.Text.Json;

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 529b1ce8026d9880bbc8caf87ab59148baf92df3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 9b08b59090d9dd23405f8a0ba86ce608e3a64902
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019460"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123761"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Azure Stream Analytics és Azure Machine Learning Studio (klasszikus) a hangulat elemzése
 
@@ -43,7 +43,7 @@ Mielőtt hozzálátna, győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
 Ebben a lépésben egy CSV-fájlt tölt fel a Storage-tárolóba.
 
-1. A Azure Portal válassza az **erőforrás létrehozása**  >  **Storage**-  >  **fiók**lehetőséget.
+1. A Azure Portal válassza az **erőforrás létrehozása**  >  **Storage** -  >  **fiók** lehetőséget.
 
 2. Töltse ki az *alapok* lapot a következő részletekkel, és hagyja meg a fennmaradó mezők alapértelmezett értékeit:
 
@@ -57,17 +57,17 @@ Ebben a lépésben egy CSV-fájlt tölt fel a Storage-tárolóba.
 
    ![adja meg a Storage-fiók adatait](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)
 
-3. Válassza a **felülvizsgálat + létrehozás**lehetőséget. Ezután válassza a **Létrehozás** lehetőséget a Storage-fiók telepítéséhez.
+3. Válassza a **felülvizsgálat + létrehozás** lehetőséget. Ezután válassza a **Létrehozás** lehetőséget a Storage-fiók telepítéséhez.
 
 4. Az üzembe helyezés befejezésekor navigáljon a Storage-fiókhoz. A **Blob Service** szakaszban válassza a **Tárolók** lehetőséget. Ezután a **+ tároló** lehetőségre kattintva hozzon létre egy új tárolót.
 
    ![BLOB Storage-tároló létrehozása a bevitelhez](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account2.png)
 
-5. Adja meg a tároló nevét, és győződjön meg arról, hogy a **nyilvános hozzáférési szint** **privát**értékre van állítva. Ha elkészült, válassza a **Létrehozás** lehetőséget.
+5. Adja meg a tároló nevét, és győződjön meg arról, hogy a **nyilvános hozzáférési szint** **privát** értékre van állítva. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
    ![BLOB-tároló részleteinek megadása](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account3.png)
 
-6. Navigáljon az újonnan létrehozott tárolóhoz, és válassza a **feltöltés**lehetőséget. Töltse fel a korábban letöltött **sampleinput.csv** fájlt.
+6. Navigáljon az újonnan létrehozott tárolóhoz, és válassza a **feltöltés** lehetőséget. Töltse fel a korábban letöltött **sampleinput.csv** fájlt.
 
    ![Tároló "feltöltés" gombja](./media/stream-analytics-machine-learning-integration-tutorial/create-sa-upload-button.png)
 
@@ -115,7 +115,7 @@ Lépjen a [Azure Portalra](https://portal.azure.com) , és hozzon létre egy str
 
 A feladatot a rendszer a blob Storage-ba korábban feltöltött CSV-fájlból olvassa be.
 
-1. Keresse meg a Stream Analytics-feladatot. A **feladatok topológiája**területen válassza a **bemenetek** lehetőséget. Válassza a **stream bemeneti**  > **blob Storage**hozzáadása lehetőséget.
+1. Keresse meg a Stream Analytics-feladatot. A **feladatok topológiája** területen válassza a **bemenetek** lehetőséget. Válassza a **stream bemeneti**  > **blob Storage** hozzáadása lehetőséget.
 
 2. Töltse ki a **blob Storage** részleteket a következő értékekkel:
 
@@ -127,13 +127,13 @@ A feladatot a rendszer a blob Storage-ba korábban feltöltött CSV-fájlból ol
    |Tároló|Válassza ki az előző lépésben létrehozott tárolót.|
    |Eseményszerializációs formátum|CSV|
 
-3. Kattintson a **Mentés** gombra.
+3. Válassza a **Mentés** lehetőséget.
 
 ### <a name="configure-the-job-output"></a>A feladatok kimenetének konfigurálása
 
 A művelet az eredményeket ugyanarra a blob-tárolóra küldi, ahol a bemenet bekerül.
 
-1. Keresse meg a Stream Analytics-feladatot. A **feladatok topológiája**területen válassza a **kimenetek** lehetőséget. Válassza **Add**a  >  **blob Storage**hozzáadása elemet.
+1. Keresse meg a Stream Analytics-feladatot. A **feladatok topológiája** területen válassza a **kimenetek** lehetőséget. Válassza **Add** a  >  **blob Storage** hozzáadása elemet.
 
 2. Töltse ki a **blob Storage** űrlapot a következő értékekkel:
 
@@ -145,7 +145,7 @@ A művelet az eredményeket ugyanarra a blob-tárolóra küldi, ahol a bemenet b
    |Tároló|Válassza ki az előző lépésben létrehozott tárolót.|
    |Eseményszerializációs formátum|CSV|
 
-3. Kattintson a **Mentés** gombra.
+3. Válassza a **Mentés** lehetőséget.
 
 ### <a name="add-the-studio-classic-function"></a>A Studio (klasszikus) függvény hozzáadása
 
@@ -161,11 +161,11 @@ Ebben a szakaszban egy függvényt határoz meg a stream Analysis feladatban. A 
 
    |Mező  |Érték  |
    |---------|---------|
-   | Függvény aliasa | Használja a nevet, `sentiment` majd válassza a **Azure Machine learning-függvény beállításainak megadása manuálisan**lehetőséget, amely lehetővé teszi az URL-cím és a kulcs megadását.      |
+   | Függvény aliasa | Használja a nevet, `sentiment` majd válassza a **Azure Machine learning-függvény beállításainak megadása manuálisan** lehetőséget, amely lehetővé teszi az URL-cím és a kulcs megadását.      |
    | URL-cím| Illessze be a webszolgáltatás URL-címét.|
    |Kulcs | Illessze be az API-kulcsot. |
 
-4. Válassza a **Mentés**lehetőséget.
+4. Válassza a **Mentés** lehetőséget.
 
 ### <a name="create-a-query-to-transform-the-data"></a>Lekérdezés létrehozása az adatátalakításhoz
 
@@ -173,7 +173,7 @@ Stream Analytics egy deklaratív, SQL-alapú lekérdezést használ a bevitel vi
 
 1. Térjen vissza a Stream Analytics feladatok áttekintéséhez.
 
-2. A **feladatok topológiája**területen válassza a **lekérdezés**lehetőséget.
+2. A **feladatok topológiája** területen válassza a **lekérdezés** lehetőséget.
 
 3. Adja meg a következő lekérdezést:
 
@@ -202,7 +202,7 @@ Most már elindíthatja a Stream Analytics feladatot.
 
 2. Válassza a **Start** lehetőséget az oldal tetején.
 
-3. A **kezdési feladatban**válassza az **Egyéni**lehetőséget, majd válasszon egy napot, mielőtt feltölti a CSV-fájlt a blob Storage-ba. Amikor elkészült, válassza ki az **Indítás** lehetőséget.  
+3. A **kezdési feladatban** válassza az **Egyéni** lehetőséget, majd válasszon egy napot, mielőtt feltölti a CSV-fájlt a blob Storage-ba. Amikor elkészült, válassza ki az **Indítás** lehetőséget.  
 
 ### <a name="check-the-output"></a>A kimenet keresése
 
@@ -211,7 +211,7 @@ Most már elindíthatja a Stream Analytics feladatot.
 2. Ha olyan eszközzel rendelkezik, amelyet általában a blob Storage tartalmának vizsgálatára használ, az eszköz használatával vizsgálja meg a tárolót. Másik lehetőségként hajtsa végre a következő lépéseket a Azure Portalban:
 
       1. A Azure Portal keresse meg a Storage-fiókját, és a fiókon belül keresse meg a tárolót. A tárolóban két fájl látható: Ez a fájl tartalmazza a minta tweeteket és a Stream Analytics feladatokból létrehozott CSV-fájlt.
-      2. Kattintson a jobb gombbal a létrehozott fájlra, majd válassza a **Letöltés**lehetőséget.
+      2. Kattintson a jobb gombbal a létrehozott fájlra, majd válassza a **Letöltés** lehetőséget.
 
 3. Nyissa meg a létrehozott CSV-fájlt. A következő példához hasonlóan jelenik meg:  
 
@@ -227,6 +227,6 @@ Emellett megtekintheti a Studio (klasszikus) függvényekkel kapcsolatos metrik�
 ## <a name="next-steps"></a>Következő lépések
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
-* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](/stream-analytics-query/stream-analytics-query-language-reference)
 * [REST API és Machine Learning Studio integrálása (klasszikus)](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
-* [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Az Azure Stream Analytics felügyeleti REST API referenciája](/rest/api/streamanalytics/)
