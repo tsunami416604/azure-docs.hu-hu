@@ -10,20 +10,25 @@ ms.subservice: bing-custom-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 010f2960693a06a50cd15ac3bac2fe35b6c0985f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 83a398b114a8bf0ac25d875e037208d775debc4b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84434575"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077340"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Mi az a Bing Custom Search API?
 
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+
 A Bing Custom Search API lehetővé teszi, hogy testreszabott ad-ingyenes keresési funkciókat hozzon létre az Ön számára fontos témakörökhöz. Megadhatja, hogy a Bing milyen tartományokat és weblapokat keressen, valamint PIN-kódot, lendületet vagy lefokozni bizonyos tartalmakat, hogy egyéni nézetet hozzon létre a weben, és segítsen a felhasználóknak a releváns keresési eredmények gyors megtalálásában. 
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
-|Szolgáltatás  |Leírás  |
+|Funkció  |Leírás  |
 |---------|---------|
 |[Egyéni valós idejű keresési javaslatok](define-custom-suggestions.md)     | Olyan keresési javaslatokat adhat meg, amelyek legördülő listaként jeleníthetők meg a felhasználók típusaként.       | 
 |[Egyéni képkeresési élmények](get-images-from-instance.md)     | Lehetővé teheti a felhasználók számára, hogy az egyéni keresési példányban megadott tartományokból és webhelyekről keressenek rendszerképeket.        |        
@@ -39,7 +44,7 @@ A keresési példány létrehozása után integrálhatja azt (és opcionálisan 
 ![Kép, amely azt mutatja, hogy az API-n keresztül kapcsolódhat a Bing Custom Search szolgáltatáshoz](media/BCS-Overview.png "Hogyan működik a Bing Custom Search.")
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Annak érdekében, hogy gyorsan nekiláthasson, olvassa el [az első Bing Custom Search-példányok létrehozásáról](quick-start.md) szóló cikket.
 

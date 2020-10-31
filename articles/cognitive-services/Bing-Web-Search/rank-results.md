@@ -11,14 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: 677f6089f649aae720a6303a7e1512e3c7ebeca7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c328c681874ba171eab1341a16cf059e359feea
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "66390122"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93076278"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>A rangsor használata Bing Web Search API eredmények megjelenítéséhez  
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Minden keresési válasz tartalmaz egy [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) választ, amely megadja, hogy a keresési eredményeket hogyan kell megjeleníteni. A rangsorolási válaszok egy hagyományos keresési eredmények oldalának fővonali tartalma és oldalsáv-tartalma eredményei. Ha nem jeleníti meg az eredményeket hagyományos fővonal-és oldalsáv-formátumban, meg kell adnia a fővonali tartalmat, mint az oldalsáv tartalma.  
 
@@ -218,7 +223,7 @@ Az oldalsáv pedig a következő keresési eredményeket jeleníti meg:
 -   Az összes kapcsolódó keresés  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a nem rangsorolt eredmények előléptetéséről: [a nem rangsorolt válaszok előléptetése](./filter-answers.md#promoting-answers-that-are-not-ranked).
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 419de27ad87b113de62dacb0dc384702420afbd6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 980d3ca52016c65301ea72e4e669c4bafea4c053
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071115"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077196"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Háttérszolgáltatások biztonságossá tétele ügyféltanúsítvány-alapú hitelesítéssel az Azure API Managementben
 
@@ -44,7 +44,7 @@ Ez az útmutató bemutatja, hogyan konfigurálhatja az API Management-szolgálta
 1. Navigáljon az Azure API Management Service-példányhoz a Azure Portal.
 2. Válassza a **tanúsítványok** lehetőséget a menüből.
 3. Kattintson a **+ Hozzáadás** gombra.
-    ![Ügyféltanúsítványok hozzáadása](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
+    ![Képernyőfelvétel: a + Hozzáadás gomb kiemelése.](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
 4. Keresse meg a tanúsítványt, adja meg annak AZONOSÍTÓját és jelszavát.
 5. Kattintson a **Létrehozás** gombra.
 
@@ -73,7 +73,7 @@ Ha a tanúsítványt egy API használja, megjelenik egy figyelmeztető képerny�
 
 2. A **tervezés** lapon kattintson a **háttér** szakasz ceruza ikonjára.
 3. Módosítsa az **átjáró hitelesítő adatait** az **ügyfél-tanúsítványra** , és válassza ki a tanúsítványt a legördülő listából.
-    ![Ügyféltanúsítványok engedélyezése](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
+    ![Képernyőfelvétel: az átjáró hitelesítő adatainak módosítása és a tanúsítvány kiválasztása.](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
 
 4. Kattintson a **Mentés** gombra.
 

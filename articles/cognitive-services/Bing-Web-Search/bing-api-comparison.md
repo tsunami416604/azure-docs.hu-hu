@@ -10,14 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 82b1f13562a49284059c25bcbd39a33daf949dcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a982c150349ca31fdf93a38b38910c3572b14d2f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74775540"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078764"
 ---
 # <a name="what-are-the-bing-search-apis"></a>Mi a Bing Search API-k?
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 A Bing Search API-kkal olyan webes alkalmazásokat és szolgáltatásokat hozhat létre, amelyek hirdetések megjelenítése nélkül képesek webhelyek, képek, hírek, helyszínek stb. kikeresésére. Ha keresési kérelmeket küld a Bing Search REST API-k vagy SDK-k használatával, megtekintheti a webes keresésekhez kapcsolódó információkat és tartalmakat. Ebből a cikkből megismerheti a különböző Bing Search API-kat, valamint azt, hogy miként integrálhatja a kognitív kereséseket alkalmazásaiba és szolgáltatásaiba. Az árak és a díjszabási korlátok az API-k között eltérőek lehetnek.
 
@@ -50,10 +55,10 @@ A következő Bing Search API-k segítségével javíthatja a keresési élmény
 
 | API | Leírás |
 | -- | -- |
-| [Bing Autosuggest](../Bing-Autosuggest/get-suggested-search-terms.md) | A javasolt keresések valós idejű visszaadásával javíthatja az alkalmazás keresési élményét a Bing Autosuggest API.  |
+| [Bing – Automatikus kiegészítés](../Bing-Autosuggest/get-suggested-search-terms.md) | A javasolt keresések valós idejű visszaadásával javíthatja az alkalmazás keresési élményét a Bing Autosuggest API.  |
 | [Bing-statisztika](bing-web-stats.md) | A Bing Statistics az alkalmazás által használt Bing Search API-k elemzését biztosítja. A rendelkezésre álló elemzések közé tartozik például a hívási kötet, a leggyakoribb lekérdezési karakterláncok és a földrajzi eloszlás. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Bing Search API [díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
 * A [Bing használati és megjelenítési követelményei](./use-display-requirements.md) a Bing Search API-k használatával kapott tartalmak és információk elfogadható használatát határozzák meg.

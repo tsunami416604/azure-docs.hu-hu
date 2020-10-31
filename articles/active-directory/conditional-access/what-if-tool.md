@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bebd32d2773ca86638de221d305079bb262e3e5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3ac799203cade3a907acbe28dee3a8023891db2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631426"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077642"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Hibaelhárítás a feltételes hozzáférés Lehetőségelemzési eszközével
 
-A [feltételes hozzáférés](./overview.md) Azure Active Directory (Azure ad) egyik funkciója, amely lehetővé teszi, hogy a jogosult felhasználók hozzáférjenek a felhőalapú alkalmazásokhoz. Honnan tudhatja, mire számíthat a környezet feltételes hozzáférési házirendjeiből? A kérdés megválaszolásához használhatja a **feltételes hozzáférési What if eszközt**.
+A [feltételes hozzáférés](./overview.md) Azure Active Directory (Azure ad) egyik funkciója, amely lehetővé teszi, hogy a jogosult felhasználók hozzáférjenek a felhőalapú alkalmazásokhoz. Honnan tudhatja, mire számíthat a környezet feltételes hozzáférési házirendjeiből? A kérdés megválaszolásához használhatja a **feltételes hozzáférési What if eszközt** .
 
 Ez a cikk bemutatja, hogyan használható az eszköz a feltételes hozzáférési szabályzatok teszteléséhez.
 
@@ -30,9 +30,9 @@ A **feltételes hozzáférés What if házirend eszköz** lehetővé teszi a fel
 
 Az **What if** eszköz segítségével gyorsan meghatározhatja az adott felhasználóra vonatkozó házirendeket. Az információkat például akkor használhatja, ha problémát kell elhárítani.    
 
-## <a name="how-it-works"></a>Működés
+## <a name="how-it-works"></a>A működési elv
 
-A **feltételes hozzáférés What if eszközben**először konfigurálnia kell a szimulálni kívánt bejelentkezési forgatókönyv beállításait. Ezek a beállítások többek között:
+A **feltételes hozzáférés What if eszközben** először konfigurálnia kell a szimulálni kívánt bejelentkezési forgatókönyv beállításait. Ezek a beállítások többek között:
 
 - A tesztelni kívánt felhasználó 
 - Azok a felhőalapú alkalmazások, amelyeket a felhasználó megkísérel elérni
@@ -46,9 +46,9 @@ Ha a kiértékelés befejeződött, az eszköz létrehoz egy jelentést az érin
 
 Az **What if** eszközt a Azure Portal **[feltételes hozzáférési szabályzatok](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)** oldalán találja.
 
-Az eszköz elindításához a házirendek listájának tetején található eszköztáron kattintson a **What if**elemre.
+Az eszköz elindításához a házirendek listájának tetején található eszköztáron kattintson a **What if** elemre.
 
-![What If](./media/what-if-tool/01.png)
+:::image type="content" source="./media/what-if-tool/01.png" alt-text="Képernyőkép a Azure Portal feltételes hozzáférési szabályzatok oldaláról. Az eszköztáron a mi történik, ha az elem ki van emelve." border="false":::
 
 A próbaverzió futtatása előtt konfigurálnia kell a beállításokat.
 
@@ -56,7 +56,7 @@ A próbaverzió futtatása előtt konfigurálnia kell a beállításokat.
 
 Ez a szakasz a szimulációs futtatási beállításokkal kapcsolatos információkat tartalmaz.
 
-![What If](./media/what-if-tool/02.png)
+:::image type="content" source="./media/what-if-tool/02.png" alt-text="Képernyőkép a Azure Portal feltételes hozzáférési szabályzatok oldaláról. Az eszköztáron a mi történik, ha az elem ki van emelve." border="false":::
 
 ### <a name="user"></a>Felhasználó
 
@@ -64,7 +64,7 @@ Csak egy felhasználót választhat ki. Ez az egyetlen kötelező mező.
 
 ### <a name="cloud-apps"></a>Felhőalkalmazások
 
-A beállítás alapértelmezett értéke **minden felhőalapú alkalmazás**. Az alapértelmezett beállítás az összes elérhető házirend kiértékelését végzi a környezetben. A hatókört leszűkítheti bizonyos felhőalapú alkalmazásokat érintő szabályzatokra.
+A beállítás alapértelmezett értéke **minden felhőalapú alkalmazás** . Az alapértelmezett beállítás az összes elérhető házirend kiértékelését végzi a környezetben. A hatókört leszűkítheti bizonyos felhőalapú alkalmazásokat érintő szabályzatokra.
 
 ### <a name="ip-address"></a>IP-cím
 
@@ -88,9 +88,9 @@ Ez a beállítás a [bejelentkezési kockázat feltételét](concept-conditional
 
 ## <a name="evaluation"></a>Értékelés 
 
-A kiértékelés elindításához kattintson a **What if**gombra. A kiértékelés eredménye a következőkből álló jelentést tartalmazza: 
+A kiértékelés elindításához kattintson a **What if** gombra. A kiértékelés eredménye a következőkből álló jelentést tartalmazza: 
 
-![What If](./media/what-if-tool/03.png)
+:::image type="content" source="./media/what-if-tool/03.png" alt-text="Képernyőkép a Azure Portal feltételes hozzáférési szabályzatok oldaláról. Az eszköztáron a mi történik, ha az elem ki van emelve." border="false":::
 
 - Annak jelzése, hogy a klasszikus szabályzatok léteznek-e a környezetben
 - A felhasználóra érvényes házirendek

@@ -10,14 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93be72f2afcda90dde1b74c5ee317a7ad3350be1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60499885"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075687"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Bing Search API – követelmények használata és megjelenítése
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Ezek a használati és megjelenítési követelmények érvényesek a tartalom és a kapcsolódó információk a következő Bing Search API-kból történő megvalósítására, beleértve a kapcsolatokat, a metaadatokat és az egyéb jeleket.
 
@@ -27,7 +32,7 @@ Ezek a használati és megjelenítési követelmények érvényesek a tartalom �
 - Bing – Hírkeresés
 - Bing – Videokeresés
 - Bing vizuális keresés
-- Bing Web Search
+- Bing – Internetes keresés
 - Bing – Helyesírás-ellenőrzés
 - Bing – Automatikus kiegészítés
 
@@ -99,7 +104,7 @@ nem:
 ### <a name="notices-and-branding"></a>Megjegyzések és védjegyezés 
 Nem
 
-- Kiemelten szerepel a [Microsoft adatvédelmi nyilatkozatához](https://go.microsoft.com/fwlink/?LinkId=521839)tartozó funkcionális hivatkozás is, amely a felhasználói élmény (UX) minden olyan pontján elérhető, amely lehetővé teszi a felhasználó számára a keresési lekérdezés bevitelét. Címkézze fel a **Microsoft adatvédelmi nyilatkozatát**.
+- Kiemelten szerepel a [Microsoft adatvédelmi nyilatkozatához](https://go.microsoft.com/fwlink/?LinkId=521839)tartozó funkcionális hivatkozás is, amely a felhasználói élmény (UX) minden olyan pontján elérhető, amely lehetővé teszi a felhasználó számára a keresési lekérdezés bevitelét. Címkézze fel a **Microsoft adatvédelmi nyilatkozatát** .
 
 - Kiemelten jeleníti meg a Bing branding- [használati irányelvekkel](https://go.microsoft.com/fwlink/?linkid=833278)összhangban lévő Bing branding útmutatót, amely a felhasználó számára lehetővé teszi a keresési lekérdezés bevitelét. Az ilyen védjegyezésnek egyértelműen meg kell felelnie a felhasználónak, hogy a Microsoft az internetes keresési élményt kikapcsolja.
 

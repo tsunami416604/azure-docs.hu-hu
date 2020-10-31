@@ -6,35 +6,28 @@ ms.author: yegu
 ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 05/12/2020
-ms.openlocfilehash: 3df6cb1afe8a6249eadbbd3f61619e66be2d2478
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/28/2020
+ms.openlocfilehash: ca5bdf606b51b4019bd9e655d172733074febd39
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83402487"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077993"
 ---
 # <a name="quickstart-create-an-enterprise-tier-cache-preview"></a>Gyors útmutató: vállalati szintű gyorsítótár létrehozása (előzetes verzió)
 
 Az Azure cache for Redis vállalati szintjei teljes mértékben integrált és felügyelt [Redis Enterprise](https://redislabs.com/redis-enterprise/) -t biztosítanak az Azure-ban. Jelenleg előzetes verzióként érhetők el. Ebben az előzetes verzióban két új szint érhető el:
 * Vállalat, amely felejtő memóriát használ a virtuális gépeken az adattároláshoz
-* A vállalati SSD, amely illékony és nem felejtő memóriát (NVMe) használ az adattároláshoz.
-
-Nincs az előzetes verzióhoz való csatlakozás díja. Ha érdekli az [Azure Marketplace](https://aka.ms/redispreviewsignup/) -en, **vegye fel velünk a kapcsolatot** . Nagyon korlátozott számú résztvevővel rendelkezünk, és nem garantáljuk, hogy elfogadja az előzetes verziót.
+* A nagyvállalati Flash, amely illékony és nem felejtő memóriát (NVMe vagy SSD) használ az adattároláshoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt elkezdené, szüksége lesz egy Azure-előfizetésre. Ha még nem rendelkezik ilyennel, először hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 ## <a name="create-a-cache"></a>Gyorsítótár létrehozása
-1. Gyorsítótár létrehozásához jelentkezzen be a Azure Portal az előnézeti meghívásban található hivatkozással, és válassza az **erőforrás létrehozása**lehetőséget.
+1. Gyorsítótár létrehozásához jelentkezzen be a Azure Portal az előnézeti meghívásban található hivatkozással, és válassza az **erőforrás létrehozása** lehetőséget.
 
-   > [!IMPORTANT] 
-   > Ne fizessen elő az Azure cache-re az *Redis,* a piactéren közvetlenül a vállalati szinten.
-   > Ezt a lépést a Redis-portál felhasználói felületéhez tartozó Azure cache automatikusan hajtja végre.
-   >
-   
-1. Az **új** lapon válassza az **adatbázisok** lehetőséget, majd válassza az Azure cache lehetőséget a **Redis számára**.
+1. Az **új** lapon válassza az **adatbázisok** lehetőséget, majd válassza az Azure cache lehetőséget a **Redis számára** .
    
    ![Az Azure cache kiválasztása a Redis](media/cache-create/new-cache-menu.png)
    
@@ -44,43 +37,43 @@ Mielőtt elkezdené, szüksége lesz egy Azure-előfizetésre. Ha még nem rende
    | ------------ |  ------- | -------------------------------------------------- |
    | **Előfizetés** | Legördülő menüből válassza ki az előfizetését. | Az előfizetés, amely alatt létre kell hoznia ezt az új Azure cache-t a Redis-példányhoz. | 
    | **Erőforráscsoport** | Legördülő listából válassza ki az erőforráscsoportot, vagy válassza az **új létrehozása** elemet, és adjon meg egy új erőforráscsoport-nevet. | Azon erőforráscsoport neve, amelyben létre szeretné hozni a gyorsítótárat és az egyéb erőforrásokat. Az összes alkalmazás-erőforrás egy erőforráscsoporthoz való elhelyezésével könnyedén kezelheti és törölheti azokat. | 
-   | **DNS-név** | Adjon meg egy globálisan egyedi nevet. | A gyorsítótár nevének 1 és 63 karakter közötti sztringnek kell lennie, amely csak számokat, betűket vagy kötőjeleket tartalmaz. A névnek számmal vagy betűvel kell kezdődnie és végződnie, és nem tartalmazhat egymást követő kötőjeleket. A gyorsítótár-példány *állomásneve* a lesz * \<DNS name> . <Azure region> redisenterprise.cache.azure.net*. | 
-   | **Hely** | Legördülő menüből válassza ki a helyet. | A vállalati szintek az USA nyugati régiójában, az USA 2. keleti régiójában és Nyugat-Európában is elérhetők. |
-   | **Gyorsítótár szintje** | Legördülő menüből válassza ki a *nagyvállalati DRAM* vagy a *vállalati SSD* -szintet, valamint a méretet. |  A szinten a gyorsítótár számára elérhető méretet, teljesítményt és funkciókat határozza meg. |
+   | **DNS-név** | Adjon meg egy globálisan egyedi nevet. | A gyorsítótár nevének 1 és 63 karakter közötti sztringnek kell lennie, amely csak számokat, betűket vagy kötőjeleket tartalmaz. A névnek számmal vagy betűvel kell kezdődnie és végződnie, és nem tartalmazhat egymást követő kötőjeleket. A gyorsítótár-példány *állomásneve* a lesz *\<DNS name> . <Azure region> redisenterprise.cache.azure.net* . | 
+   | **Hely** | Legördülő menüből válassza ki a helyet. | A nagyvállalati rétegek az előzetes verzióban korlátozott Azure-régiókban érhetők el. |
+   | **Gyorsítótár típusa** | Legördülő menüből válassza ki a *vállalati* vagy *vállalati Flash* -szintet és a méretet. |  A szinten a gyorsítótár számára elérhető méretet, teljesítményt és funkciókat határozza meg. |
    
    ![Nagyvállalati szint alapjai](media/cache-create/enterprise-tier-basics.png) 
+
+   > [!NOTE] 
+   > A folytatás előtt győződjön meg róla, hogy a "feltételek" alatt bejelöli a mezőt.
+   >
 
 1. Válassza a **Tovább: hálózatkezelés** és Kihagyás lehetőséget.
 
    > [!NOTE] 
-   > A privát hivatkozás támogatása később fog megjelenni.
+   > A magánhálózati hivatkozás lehetőség bekerül, és előfordulhat, hogy nem érhető el azonnal a régiójában.
    >
 
 1. Válassza a **Tovább: Speciális** lehetőséget.
    
-   Megtarthatja az alapértelmezett beállításokat, és szükség szerint módosíthatja azokat. Ha bekapcsolja a **hozzáférés engedélyezése csak a TLS protokollon keresztül lehetőséget**, a TLS használatával férhet hozzá az alkalmazás új gyorsítótárához.
+   Megtarthatja az alapértelmezett beállításokat, és szükség szerint módosíthatja azokat. Ha bekapcsolja a **hozzáférés engedélyezése csak a TLS protokollon keresztül lehetőséget** , a TLS használatával férhet hozzá az alkalmazás új gyorsítótárához.
 
    ![Nagyvállalati szintű fejlett](media/cache-create/enterprise-tier-advanced.png) 
 
    > [!NOTE] 
-   > A Redis modulok még nem támogatottak a vállalati SSD-platformon. Ha Redis-modult szeretne használni, akkor mindenképpen válasszon egy vállalati szintű gyorsítótárat.
+   > A Redis modulok még nem támogatottak a vállalati Flash-szinten. Ha Redis-modult szeretne használni, akkor mindenképpen válasszon egy vállalati szintű gyorsítótárat.
    >
    
 1. Válassza a **Next (tovább): címkék** és Kihagyás lehetőséget.
 
-1. Válassza a **Tovább: összefoglalás**lehetőséget.
+1. Válassza a **Tovább: Ellenőrzés és létrehozás** lehetőségre.
 
    ![Nagyvállalati szintű összefoglalás](media/cache-create/enterprise-tier-summary.png) 
 
-1. Kattintson a **feltételek**területen a jelölőnégyzetre, tekintse át a beállításokat, majd válassza a **felülvizsgálat + létrehozás**elemet.
+1. Tekintse át a beállításokat, és kattintson a **Létrehozás** gombra.
    
-   Eltarthat egy ideig a gyorsítótár létrehozásához. Nyomon követheti a folyamat előrehaladását az Azure cache Redis **– Áttekintés** oldalon. Ha az **állapot** **futásra**mutat, a gyorsítótár készen áll a használatra.
+   Eltarthat egy ideig a gyorsítótár létrehozásához. Nyomon követheti a folyamat előrehaladását az Azure cache Redis **– Áttekintés** oldalon. Ha az **állapot** **futásra** mutat, a gyorsítótár készen áll a használatra.
 
-   > [!NOTE] 
-   > A nagyvállalati szintű gyorsítótár létrejötte után egy kis idő elteltével az Azure Marketplace-ről a *Redis-hez, a nagyvállalati rétegekhöz való Azure cache*konfigurálásához egy **szükséges műveletet** fog kapni. Ehhez a művelethez nincs szükség. Ezt az e-mailt nyugodtan figyelmen kívül hagyhatja.
-   >
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre az Azure cache nagyvállalati szintű példányát a Redis.
 

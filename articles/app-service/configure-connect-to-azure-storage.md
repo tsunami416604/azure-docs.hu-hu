@@ -6,24 +6,30 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: d435a33ba45daf2c8a6a42e51c3e0d58f3abc23b
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7f177a7801e18bcdb2c2d6ef737f0c790cf6b1d1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057756"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075789"
 ---
-# <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>Az Azure Storage elérése hálózati megosztásként az App Service-ben található tárolóból
+# <a name="access-azure-storage-preview-as-a-network-share-from-a-container-in-app-service"></a>Hozzáférés az Azure Storage-hoz (előzetes verzió) hálózati megosztásként App Service-tárolóból
 
 ::: zone pivot="container-windows"
 
 Ez az útmutató bemutatja, hogyan csatlakoztathatja az Azure Storage-fájlokat hálózati megosztásként egy App Service lévő Windows-tárolóhoz. Csak [Azure Files megosztások](../storage/files/storage-how-to-use-files-cli.md) és [prémium fájlok megosztása](../storage/files/storage-how-to-create-premium-fileshare.md) támogatott. Az előnyök közé tartoznak a biztonságos tartalom, a tartalom hordozhatósága, a több alkalmazáshoz való hozzáférés és a több átadási módszer is.
+
+> [!NOTE]
+>Az Azure Storage App Service **előzetes** verzióban érhető el, és **éles környezetben** **nem támogatott** .
 
 ::: zone-end
 
 ::: zone pivot="container-linux"
 
 Ez az útmutató bemutatja, hogyan csatlakoztathatja az Azure Storage-t egy Linux-tárolóhoz App Service. Az előnyök közé tartozik a biztonságos tartalom, a tartalom hordozhatósága, az állandó tárolás, a több alkalmazáshoz való hozzáférés és a több átadási módszer.
+
+> [!NOTE]
+>Az Azure Storage-ban App Service **előzetes** verzióban érhető el a Linux és a Web App for containers app Service. **Éles környezetben** **nem támogatott** .
 
 ::: zone-end
 
@@ -53,7 +59,6 @@ Ez az útmutató bemutatja, hogyan csatlakoztathatja az Azure Storage-t egy Linu
 
 ::: zone pivot="container-windows"
 
-- Az Azure Storage App Service **előzetes** verzióban érhető el, és **éles környezetben** **nem támogatott** .
 - Az Azure Storage App Service jelenleg **nem támogatott** a saját programkód-forgatókönyvek (nem tároló Windows-alkalmazások) használata esetén.
 - Az App Service Azure Storage szolgáltatás **nem támogatja** a **tárolási tűzfal** konfigurálását az infrastruktúra korlátai miatt.
 - Az Azure Storage App Service lehetővé teszi, **hogy egy alkalmazás legfeljebb öt** csatlakoztatási pontot határozzon meg.
@@ -63,7 +68,6 @@ Ez az útmutató bemutatja, hogyan csatlakoztathatja az Azure Storage-t egy Linu
 
 ::: zone pivot="container-linux"
 
-- Az Azure Storage-ban App Service **előzetes** verzióban érhető el a Linux és a Web App for containers app Service. **Éles környezetben** **nem támogatott** .
 - Az Azure Storage App Service támogatja a **Azure Files tárolók** (írási/olvasási) és az **Azure Blob-tárolók** csatlakoztatását (csak olvasható)
 - App Service Azure Storage-ban **legfeljebb öt** csatlakozási pontot adhat meg.
 - Az alkalmazáshoz csatlakoztatott Azure Storage App Service FTP-/FTPs-végpontokon keresztül nem érhető el. [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)használata.

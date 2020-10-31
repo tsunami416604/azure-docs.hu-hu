@@ -12,14 +12,19 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8bfd7b6e5c9a2a7e3d9ed750e544036f3874271f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9131dbff9b732ecfc7f6edb62b42959abcc17da8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88933222"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078679"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>A konzol alkalmazás keresési ügyfelének létrehozása C-ben #
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre egy egyszerű .NET Core Console-alkalmazást, amely lehetővé teszi a felhasználóknak a Bing Web Search API lekérdezését és a rangsorolt eredmények megjelenítését.
 
@@ -33,7 +38,7 @@ Ez az oktatóanyag a következőket mutatja be:
 Ahhoz, hogy követni tudja az oktatóanyagot, a következőkre lesz szüksége:
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" hozzon létre egy Bing Search erőforrást, "  target="_blank"> és hozzon létre egy Bing Search-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" hozzon létre egy Bing Search erőforrást, "  target="_blank"> és hozzon létre egy Bing Search-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
 * A [Visual Studio ide](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-a-new-console-app-project"></a>Új konzolos alkalmazás projekt létrehozása
@@ -42,28 +47,28 @@ Hozzon létre egy projektet a Visual Studióban a `Ctrl`+`Shift`+`N` billentyűp
 
 Az **új projekt** párbeszédpanelen kattintson a **Visual C# > Windows klasszikus asztali > Console app (.NET-keretrendszer)** elemre.
 
-Nevezze el az alkalmazás **MyConsoleSearchApp**, majd kattintson **az OK**gombra.
+Nevezze el az alkalmazás **MyConsoleSearchApp** , majd kattintson **az OK** gombra.
 
 ## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>A JSON.net NuGet-csomag hozzáadása a projekthez
 
 A JSON.net lehetővé teszi az API által visszaadott JSON-válaszok használatát. Adja hozzá a NuGet-csomagot a projekthez:
 
 - **Megoldáskezelő** kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése...** lehetőséget.
-- A  **Tallózás** lapon keressen rá a kifejezésre `Newtonsoft.Json` . Válassza ki a legújabb verziót, majd kattintson a **telepítés**gombra.
+- A  **Tallózás** lapon keressen rá a kifejezésre `Newtonsoft.Json` . Válassza ki a legújabb verziót, majd kattintson a **telepítés** gombra.
 - Kattintson a **módosítások áttekintése** ablak **OK** gombjára.
-- Zárjuk be a Visual Studio fület a **NuGet: MyConsoleSearchApp**címen.
+- Zárjuk be a Visual Studio fület a **NuGet: MyConsoleSearchApp** címen.
 
 ## <a name="add-a-reference-to-systemweb"></a>A System. Web referenciájának hozzáadása
 
 Ez az oktatóanyag a `System.Web` szerelvényre támaszkodik. Adjon hozzá egy hivatkozást ehhez a szerelvényhez a projekthez:
 
-- A **megoldáskezelő**kattintson a jobb gombbal a **hivatkozások** elemre, és válassza a **hivatkozás hozzáadása..** . lehetőséget.
-- Válassza a **szerelvények > Framework**elemet, majd görgessen le, és jelölje be a **System. Web**
+- A **megoldáskezelő** kattintson a jobb gombbal a **hivatkozások** elemre, és válassza a **hivatkozás hozzáadása..** . lehetőséget.
+- Válassza a **szerelvények > Framework** elemet, majd görgessen le, és jelölje be a **System. Web**
 - Kattintson **az OK gombra**
 
 ## <a name="add-some-necessary-using-statements"></a>Néhány szükséges utasítás hozzáadása
 
-Az oktatóanyagban szereplő kódnak három további utasítást kell használnia. Adja hozzá a következő utasításokat a `using` **program.cs**tetején található meglévő utasításokhoz:
+Az oktatóanyagban szereplő kódnak három további utasítást kell használnia. Adja hozzá a következő utasításokat a `using` **program.cs** tetején található meglévő utasításokhoz:
 
 ```csharp
 using System.Web;
@@ -72,7 +77,7 @@ using System.Net.Http;
 
 ## <a name="ask-the-user-for-a-query"></a>Kérje meg a felhasználót a lekérdezésre
 
-**Megoldáskezelő**nyissa meg a **program.cs**. A `Main()` metódus frissítése:
+**Megoldáskezelő** nyissa meg a **program.cs** . A `Main()` metódus frissítése:
 
 ```csharp
 static void Main()
@@ -231,7 +236,7 @@ A `rankingResponse` JSON-objektum ([dokumentáció](https://docs.microsoft.com/r
 
 A besorolási válasz JSON-je tartalmazhat egy vagy több csoportot is.
 
-A **program.cs**-ben adja hozzá a következő metódust az eredmények megfelelően rangsorolt sorrendben való megjelenítéséhez:
+A **program.cs** -ben adja hozzá a következő metódust az eredmények megfelelően rangsorolt sorrendben való megjelenítéséhez:
 
 ```csharp
 static void DisplayAllRankedResults(Newtonsoft.Json.Linq.JObject responseObjects)
@@ -278,7 +283,7 @@ Ez a metódus:
 - Hurkok a `rankingResponse` Válasz által tartalmazott csoportok felett
 - Megjeleníti az egyes csoportok elemeit a hívással `DisplaySpecificResults(...)`
 
-A **program.cs**-ben adja hozzá a következő két módszert:
+A **program.cs** -ben adja hozzá a következő két módszert:
 
 ```csharp
 static void DisplaySpecificResults(Newtonsoft.Json.Linq.JToken resultIndex, Newtonsoft.Json.Linq.JToken items, string title, params string[] fields)
@@ -309,7 +314,7 @@ static void DisplayItem(Newtonsoft.Json.Linq.JToken item, string title, string[]
 
 Ezek a módszerek együttműködve a keresési eredményeket a konzolra exportálják.
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Futtassa az alkalmazást. A kimenetnek a következőképpen kell kinéznie:
 
@@ -331,6 +336,6 @@ WebPage:
 ...
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [rangsor használatáról az eredmények megjelenítéséhez](rank-results.md).

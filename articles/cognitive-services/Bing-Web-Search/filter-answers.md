@@ -11,14 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
-ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad021b4d219353a6037988c164bb34cac6761682
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84696711"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078628"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>A keresési választ tartalmazó válaszok szűrése  
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Amikor lekérdezi a webet, a Bing visszaadja a kereséshez talált összes releváns tartalmat. Ha például a keresési lekérdezés "Sailing + mentőcsónakokra", akkor a válasz a következő válaszokat tartalmazhatja:
 
@@ -131,7 +136,7 @@ Az eredmények tartalmazhatnak a megadott időszakon kívül eső weblapokat is,
 
 ## <a name="limiting-the-number-of-answers-in-the-response"></a>A válaszban szereplő válaszok számának korlátozása
 
-A Bing több választ adhat vissza a JSON-válaszban. Ha például a *Sailing + mentőcsónakokra*lekérdezést kérdezi le, a Bing visszatérhet a következőre:, `webpages` `images` `videos` és `relatedSearches` .
+A Bing több választ adhat vissza a JSON-válaszban. Ha például a *Sailing + mentőcsónakokra* lekérdezést kérdezi le, a Bing visszatérhet a következőre:, `webpages` `images` `videos` és `relatedSearches` .
 
 ```json
 {

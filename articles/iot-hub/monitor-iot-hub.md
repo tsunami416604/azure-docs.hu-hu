@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: a8f9c46487422deb4513768dff04f559af952f7b
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 577ec9e01310787dacb45a03e1efae128cbab872
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926257"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078220"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Az Azure IoT Hub figyelése
 
@@ -85,7 +85,7 @@ Az Azure IoT Hub gyűjtött platform-metrikák listáját az [Azure Monitoring I
 
 A darabszámú egységekben összegyűjtött IoT Hub platform metrikák esetében előfordulhat, hogy egyes összesítések nem lesznek elérhetők vagy használhatók. További információ: [támogatott összesítések a monitoring Azure IoT hub adatreferenciában](monitor-iot-hub-reference.md#supported-aggregations).
 
-Egyes IoT Hub mérőszámok, például [útválasztási metrikák](monitor-iot-hub-reference.md#routing-metrics), többdimenziós. Ezekben a mérőszámokban [szűrőket](/azure-monitor/platform/metrics-charts#apply-filters-to-charts) alkalmazhat, és egy dimenzió alapján [feloszthatja](/azure/azure-monitor/platform/metrics-charts#apply-splitting-to-a-chart) a diagramokat.
+Egyes IoT Hub mérőszámok, például [útválasztási metrikák](monitor-iot-hub-reference.md#routing-metrics), többdimenziós. Ezekben a mérőszámokban [szűrőket](/azure/azure-monitor/platform/metrics-charts#apply-filters-to-charts) alkalmazhat, és egy dimenzió alapján [feloszthatja](/azure/azure-monitor/platform/metrics-charts#apply-splitting-to-a-chart) a diagramokat.
 
 ## <a name="analyzing-logs"></a>Naplók elemzése
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4945e89232ee9a15b2700dac49ccd829b7a52dac
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 425ee90306de3961c64766f42bd28f668fc9396e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494774"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077948"
 ---
 # <a name="manage-digital-twins"></a>Digitális ikereszközök kezelése
 
@@ -35,14 +35,19 @@ Digitális dupla létrehozásához a következőket kell megadnia:
 * A digitális iker kívánt azonosítója
 * A használni kívánt [modell](concepts-models.md)
 
-Opcionálisan megadhatja a digitális iker összes tulajdonságának kezdeti értékeit. 
+Opcionálisan megadhatja a digitális iker összes tulajdonságának kezdeti értékeit. A tulajdonságokat a rendszer nem kötelezőként kezeli, és később is beállítható, de **nem jelennek meg a két példányban, amíg be nem állították őket.**
 
-A modell és a kezdeti tulajdonságértékek a paraméteren keresztül érhetők el `initData` , amely egy JSON-karakterlánc, amely tartalmazza a megfelelő adatokat. Az objektum strukturálásával kapcsolatos további információkért folytassa a következő szakasszal.
+>[!NOTE]
+>Míg a Twin tulajdonságokat nem kell inicializálni, **a Twin-** ben lévő összes [összetevőt](concepts-models.md#elements-of-a-model) be kell állítani a Twin létrehozásakor. Lehetnek üres objektumok, de maguknak az összetevőknek is léteznie kell.
+
+A modell és a kezdeti tulajdonságértékek a paraméteren keresztül érhetők el `initData` , amely a releváns adatokat tartalmazó JSON-karakterlánc. Az objektum strukturálásával kapcsolatos további információkért folytassa a következő szakasszal.
 
 > [!TIP]
 > A Twin létrehozása vagy frissítése után akár 10 másodperces késés is lehet, mielőtt a módosítások megjelennek a [lekérdezésekben](how-to-query-graph.md). Az `GetDigitalTwin` API (a [cikk későbbi részében](#get-data-for-a-digital-twin)leírtak szerint) nem tapasztalja ezt a késleltetést, ezért ha azonnali válaszra van szüksége, használja a lekérdezés helyett az API-hívást az újonnan létrehozott ikrek megtekintéséhez. 
 
 ### <a name="initialize-model-and-properties"></a>Modell és tulajdonságok inicializálása
+
+A Twin-példányok tulajdonságainak inicializálása a Twin létrehozásakor történik. 
 
 A Twin-létrehozási API egy olyan objektumot fogad el, amely a Twin tulajdonságok érvényes JSON-leírására van szerializálva. Lásd a következő [*fogalmakat: digitális ikrek és a Twin gráf*](concepts-twins-graph.md) a Twin-fájl JSON-formátumának leírásához. 
 
@@ -78,7 +83,7 @@ Console.WriteLine("The twin is created successfully");
 ```
 
 >[!NOTE]
-> `BasicDigitalTwin` az objektumok egy `Id` mezővel rendelkeznek. Ezt a mezőt üresen hagyhatja, de ha egy azonosító értéket ad hozzá, akkor meg kell egyeznie a hívásnak átadott ID paraméterrel `CreateDigitalTwin()` . Példa:
+> `BasicDigitalTwin` az objektumok egy `Id` mezővel rendelkeznek. Ezt a mezőt üresen hagyhatja, de ha egy azonosító értéket ad hozzá, akkor meg kell egyeznie a hívásnak átadott ID paraméterrel `CreateDigitalTwin()` . Például:
 >
 >```csharp
 >twin.Id = "myRoomId";
@@ -110,7 +115,7 @@ Csak a legalább egyszer beállított tulajdonságokat adja vissza a rendszer, a
 
 Ha több Twins egyetlen API-hívással szeretne beolvasni, tekintse meg a következő témakörben található lekérdezési API-példákat [*: a Twin Graph lekérdezése*](how-to-query-graph.md).
 
-Vegye figyelembe a következő modellt (a [digitális Twins Definition Language (DTDL) nyelven](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)írt), amely a *holdat*határozza meg:
+Vegye figyelembe a következő modellt (a [digitális Twins Definition Language (DTDL) nyelven](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)írt), amely a *holdat* határozza meg:
 
 ```json
 {
@@ -133,7 +138,7 @@ Vegye figyelembe a következő modellt (a [digitális Twins Definition Language 
     ]
 }
 ```
-A `object result = await client.GetDigitalTwinAsync("my-moon");` *Hold*típusú dupla hívás eredménye a következőképpen néz ki:
+A `object result = await client.GetDigitalTwinAsync("my-moon");` *Hold* típusú dupla hívás eredménye a következőképpen néz ki:
 
 ```json
 {
@@ -276,8 +281,8 @@ Vegyük például a következő JSON-javítási dokumentumot, amely a digitális
 Ez a művelet csak akkor lesz sikeres, ha a javítás által módosított digitális kettős modell megfelel az új modellel. 
 
 Tekintse meg a következő példát:
-1. Képzelje el, hogy egy digitális Twin *foo_old*modellel rendelkezik. *foo_old* meghatározza a szükséges tulajdonság *tömegét*.
-2. Az új modell *foo_new* meghatározza a tulajdonság tömegét, és hozzáadja az új szükséges tulajdonság *hőmérsékletét*.
+1. Képzelje el, hogy egy digitális Twin *foo_old* modellel rendelkezik. *foo_old* meghatározza a szükséges tulajdonság *tömegét* .
+2. Az új modell *foo_new* meghatározza a tulajdonság tömegét, és hozzáadja az új szükséges tulajdonság *hőmérsékletét* .
 3. A javítás után a digitális ikernek mind a Mass, mind a hőmérséklet tulajdonsággal rendelkeznie kell. 
 
 Ennek a helyzetnek a javításához frissítenie kell a modellt és a Twin 's hőmérséklet tulajdonságot is, például:

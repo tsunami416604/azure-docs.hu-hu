@@ -11,14 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
-ms.openlocfilehash: a6d394fec6e7cf0a230f61ad05c236a1f84dad9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea9cd9cf064b9c07016bc5e166cc4ec4c041b146
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68854012"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078543"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>A dekorációs jelölők használata a szöveg kiemeléséhez
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 A Bing támogatja a találatok kiemelését, amelyek bizonyos válaszok megjelenítési karakterláncában a lekérdezési kifejezéseket (vagy a Bing által megtalált egyéb kifejezéseket) jelölik. Előfordulhat például, hogy egy weblap eredményének `name` , `displayUrl` és `snippet` mezőinek megjelölése megjelölt lekérdezési feltételeket tartalmaz. 
 
@@ -76,7 +81,7 @@ Ha `textDecorations` a a `true` , a Bing az alábbi jelölőket is tartalmazhatj
 |U + E018|\<sup>|A felső indexű tartalom elejét jelöli
 |U + E019|\</sup>|A felső szintű tartalom végét jelöli
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi a Bing Web Search API?](overview.md) 
 * [Miniatűrök átméretezése és körülvágása](resize-and-crop-thumbnails.md)

@@ -13,14 +13,15 @@ ms.custom:
 - seo-javascript-september2019
 - seo-python-october2019
 - devx-track-python
-ms.openlocfilehash: aa23f6d5d7b81e93145fd7db3fb5b45e46918d21
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c74da5e612609ce6a0525b24e5868059f06da179
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487585"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078781"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure Cosmos DB SQL API-fiók használatával
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
@@ -57,7 +58,7 @@ Ebben a rövid útmutatóban egy Azure Cosmos DB SQL API-fiókot hoz létre és 
 
 Most már használhatja a Azure Portal Adatkezelő eszközét egy adatbázis és egy tároló létrehozásához. 
 
-1. Válassza ki **adatkezelő**  >  **új tárolót**. 
+1. Válassza ki **adatkezelő**  >  **új tárolót** . 
     
     A jobb szélen megjelenik a **tároló hozzáadása** felület, ezért a jobb oldali görgetéshez jobbra kell görgetni a megjelenítéshez.
 
@@ -119,7 +120,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
     :::image type="content" source="./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png" alt-text="Az Azure Portal Adatkezelője a Tároló hozzáadása panellel":::
 
-2. A Visual Studio Code-ban nyissa meg a *cosmos_get_started.* *\git-samples\azure-Cosmos-db-Python-Getting-Started*fájlt.
+2. A Visual Studio Code-ban nyissa meg a *cosmos_get_started.* *\git-samples\azure-Cosmos-db-Python-Getting-Started* fájlt.
 
 3. Másolja az **URI** -értéket a portálról (a másolás gombbal), és adja meg a **végpont** változó értékét a *cosmos_get_started.* másolásban. 
 
@@ -163,13 +164,13 @@ Az alábbi kódrészletek mind a *cosmos_get_started.* file fájlból származna
    
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
-1. A Visual Studio Code-ban **View**válassza a  >  **parancs paletta**megtekintése lehetőséget. 
+1. A Visual Studio Code-ban **View** válassza a  >  **parancs paletta** megtekintése lehetőséget. 
 
 2. A megjelenő panelen írja be a **Python: Select Interpreter** szöveget, majd válassza ki a használandó Python-verziót.
 
     A választott értelmező ekkor megjelenik a Visual Studio Code ablakának állapotsorában. 
 
-3. Válassza **View**  >  az**integrált terminál** megtekintése lehetőséget a Visual Studio Code integrált termináljának megnyitásához.
+3. Válassza **View**  >  az **integrált terminál** megtekintése lehetőséget a Visual Studio Code integrált termináljának megnyitásához.
 
 4. Az integrált terminál ablakban ellenőrizze, hogy az *Azure-Cosmos-db-Python-Getting-Started* mappában van-e. Ha más mappában van, akkor váltson erre a mintamappára az alábbi parancs futtatásával. 
 
@@ -191,7 +192,7 @@ Az alábbi kódrészletek mind a *cosmos_get_started.* file fájlból származna
     python cosmos_get_started.py
     ```
 
-7. Az új elemek létrehozásának és mentésének megerősítéséhez a Azure Portal válassza **adatkezelő**  >  **AzureSampleFamilyDatabase**  >  **elemet**. Megtekintheti a létrehozott elemeket. Íme például egy példa az Andersen családhoz tartozó JSON-dokumentumra:
+7. Az új elemek létrehozásának és mentésének megerősítéséhez a Azure Portal válassza **adatkezelő**  >  **AzureSampleFamilyDatabase**  >  **elemet** . Megtekintheti a létrehozott elemeket. Íme például egy példa az Andersen családhoz tartozó JSON-dokumentumra:
    
    ```json
    {
@@ -227,7 +228,7 @@ Az alábbi kódrészletek mind a *cosmos_get_started.* file fájlból származna
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 

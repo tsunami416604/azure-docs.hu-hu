@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 03/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 52344b665b00329c80fb651657fbbd19d5ffd7a4
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: bb6229f602e4171cc88af6a452da69a02d2f7ad6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743097"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078186"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS használata webszolgáltatás védelméhez az Azure Machine Learning szolgáltatás segítségével
 
@@ -28,7 +28,7 @@ A [https](https://en.wikipedia.org/wiki/HTTPS) használatával korlátozhatja a 
 > [!TIP]
 > Az Azure Machine Learning SDK az "SSL" kifejezést használja a biztonságos kommunikációhoz kapcsolódó tulajdonságokhoz. Ez nem jelenti azt, hogy a webszolgáltatás nem használ *TLS* -t. Az SSL csak egy gyakrabban felismert kifejezés.
 >
-> A Azure Machine Learningon keresztül üzembe helyezett webszolgáltatások esetében a 1,1-es verzió támogatja az ACI és a TLS 1,2-es verzióját az AK-hoz.
+> Pontosabban, az Azure Machine Learning-en keresztül üzembe helyezett webszolgáltatások a 1,2-es TLS-es és ACI-s verzióra. ACI-környezetek esetén, ha régebbi TLS-verziót használ, javasoljuk, hogy a legújabb TLS-verzió beszerzéséhez telepítse újra a telepítést.
 
 A TLS és az SSL egyaránt *digitális tanúsítványokra* támaszkodik, amelyek segítenek a titkosítás és az identitások ellenőrzésében. A digitális tanúsítványok működésével kapcsolatos további információkért tekintse meg a wikipedia témakör [nyilvános kulcsokra épülő infrastruktúráját](https://en.wikipedia.org/wiki/Public_key_infrastructure).
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 10/29/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f78dadc0eb1570018320aa77a390f94adf708a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7aebe6fafea7cbbb0b37469a13262529b568e342
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371902"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077965"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory-szolgáltatások telepítési útmutatója
 
@@ -35,13 +35,13 @@ A licenceléssel kapcsolatos további információkért tekintse meg a következ
 * [Az Azure AD licencelése](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Microsoft 365 Vállalati](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
 * [Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
-* [Az Azure AD B2B licencelési útmutatója](../external-identities/licensing-guidance.md)
+* [Az Azure AD külső identitások díjszabása](../external-identities/external-identities-pricing.md)
 
 ## <a name="phase-1-build-a-foundation-of-security"></a>1. fázis: biztonsági alap létrehozása
 
 Ebben a fázisban a rendszergazdák lehetővé teszik az alapkonfiguráció biztonsági funkcióinak, hogy biztonságosabb és könnyen használható alapokat hozzanak létre az Azure AD-ben a normál felhasználói fiókok importálása vagy létrehozása előtt. Ez az alapszintű fázis gondoskodik arról, hogy a kezdeti időszakban biztonságosabb állapotban legyen, és hogy a végfelhasználók csak egyszer legyenek bevezetve az új fogalmakra.
 
-| Feladat | Részletek | Szükséges licenc |
+| Feladat | Részlet | Szükséges licenc |
 | ---- | ------ | ---------------- |
 | [Egynél több globális rendszergazda kijelölése](../roles/security-emergency-access.md) | Ha vészhelyzet van, rendeljen legalább két kizárólag felhőalapú, állandó globális rendszergazdai fiókot. Ezeket a fiókokat nem kell naponta használni, és hosszú és összetett jelszavakkal kell rendelkezniük. | Azure AD Free |
 | [A nem globális rendszergazdai szerepkörök használata, ahol lehetséges](../roles/permissions-reference.md) | Csak azokhoz a területekhez adjon hozzáférést a rendszergazdáknak, akiknek hozzáférésre van szükségük. Nem minden rendszergazdának kell globális rendszergazdának lennie. | Azure AD Free |
@@ -63,14 +63,14 @@ Ebben a fázisban a rendszergazdák lehetővé teszik az alapkonfiguráció bizt
 
 Ezután hozzáadjuk az 1. fázisban meghatározott alapítványhoz a felhasználókat és a szinkronizálást, a vendég-hozzáférés megtervezését, valamint a további funkciók támogatásának előkészítését.
 
-| Feladat | Részletek | Szükséges licenc |
+| Feladat | Részlet | Szükséges licenc |
 | ---- | ------ | ---------------- |
 | [Az Azure AD Connect telepítése](../hybrid/how-to-connect-install-select-installation.md) | Készítse elő a felhasználók szinkronizálását a meglévő helyszíni címtárból a felhőbe. | Azure AD Free |
 | [Jelszó-kivonatolási szinkronizálás implementálása](../hybrid/how-to-connect-password-hash-synchronization.md) | Jelszó-kivonatok szinkronizálása a jelszó-változtatások replikálásához, a jelszavak hibás észleléséhez és szervizeléséhez, valamint a kiszivárgott hitelesítő adatok jelentéséhez. | Azure AD Free |
 | [Jelszó-visszaírási implementálása](../authentication/tutorial-enable-sspr-writeback.md) | A Felhőbeli jelszavak módosításának engedélyezése a helyi Windows Server Active Directory környezetbe való visszaíráshoz. | Prémium szintű Azure AD P1 |
 | [Azure AD Connect Health implementálása](../hybrid/whatis-azure-ad-connect.md#what-is-azure-ad-connect-health) | Engedélyezze a Azure AD Connect-kiszolgálók, a AD FS-kiszolgálók és a tartományvezérlők kulcsfontosságú állapot-statisztikáinak figyelését. | Prémium szintű Azure AD P1 |
 | [Licencek kiosztása a felhasználóknak csoporttagság szerint Azure Active Directory](../enterprise-users/licensing-groups-assign.md) | Időt és fáradságot takaríthat meg olyan licencelési csoportok létrehozásával, amelyek felhasználónként engedélyezik vagy letiltják a szolgáltatások használatát a csoportok beállítása helyett. | |
-| [Csomag létrehozása a vendég felhasználói hozzáféréshez](../external-identities/what-is-b2b.md) | Együttműködés a vendég felhasználókkal az alkalmazások és szolgáltatások saját munkahelyi, iskolai vagy közösségi identitással való bejelentkezni. | [Az Azure AD B2B licencelési útmutatója](../external-identities/licensing-guidance.md) |
+| [Csomag létrehozása a vendég felhasználói hozzáféréshez](../external-identities/what-is-b2b.md) | Együttműködés a vendég felhasználókkal az alkalmazások és szolgáltatások saját munkahelyi, iskolai vagy közösségi identitással való bejelentkezni. | [Az Azure AD külső identitások díjszabása](../external-identities/external-identities-pricing.md) |
 | [Az eszközkezelés stratégiájának kiválasztása](../devices/overview.md) | Döntse el, hogy a szervezet hogyan teszi lehetővé az eszközök használatát. A vs-csatlakozás regisztrálása, a saját eszköz és a vállalat által biztosított eszközök használata. | |
 | [A vállalati Windows Hello üzembe helyezése a munkahelyen](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | A jelszóval nem rendelkező hitelesítés előkészítése a Windows Hello használatával | |
 | [Jelszóval nem rendelkező hitelesítési módszerek üzembe helyezése a felhasználók számára](../authentication/concept-authentication-passwordless.md) | A felhasználók számára kényelmes, jelszóval nem rendelkező hitelesítési módszereket biztosíthat | Prémium szintű Azure AD P1 |
@@ -79,7 +79,7 @@ Ezután hozzáadjuk az 1. fázisban meghatározott alapítványhoz a felhasznál
 
 Ahogy továbbra is az előző fázisokon dolgozunk, azonosítjuk a tagjelölt alkalmazásokat az Azure AD-vel való áttelepítéshez és integrációhoz, valamint az alkalmazások telepítésének befejezéséhez.
 
-| Feladat | Részletek | Szükséges licenc |
+| Feladat | Részlet | Szükséges licenc |
 | ---- | ------ | ---------------- |
 | Alkalmazások azonosítása | A szervezetben használt alkalmazások azonosítása: helyszíni, SaaS-alkalmazások a felhőben és más üzletági alkalmazások. Állapítsa meg, hogy ezeket az alkalmazásokat az Azure AD-vel kell-e felügyelni. | Nincs szükség licencre |
 | [Támogatott SaaS-alkalmazások integrálása a katalógusban](../manage-apps/add-application-portal.md) | Az Azure AD olyan katalógussal rendelkezik, amely több ezer előre integrált alkalmazást tartalmaz. A szervezet által használt alkalmazások némelyike valószínűleg a katalógusban érhető el, közvetlenül a Azure Portal. | Azure AD Free |
@@ -89,7 +89,7 @@ Ahogy továbbra is az előző fázisokon dolgozunk, azonosítjuk a tagjelölt al
 
 A 4. fázis azt látja, hogy a rendszergazdák a legkevesebb jogosultsági alapelveket érvényesítik az adminisztrációhoz, az első hozzáférési felülvizsgálatok befejezését, és lehetővé teszik a közös felhasználói életciklus
 
-| Feladat | Részletek | Szükséges licenc |
+| Feladat | Részlet | Szükséges licenc |
 | ---- | ------ | ---------------- |
 | [Privileged Identity Management használatának kikényszerítása](../privileged-identity-management/pim-security-wizard.md) | Távolítsa el a felügyeleti szerepköröket a normál napi és a napi felhasználói fiókok között. A rendszergazda felhasználók jogosultak arra, hogy a szerepkört a multi-Factor Authentication-ellenőrzések sikeres végrehajtása, az üzleti indoklás megadásával vagy a kijelölt jóváhagyók jóváhagyásának kérelmezésével használják. | Prémium szintű Azure AD P2 |
 | [Azure AD-címtárbeli szerepkörök hozzáférési felülvizsgálatának befejezése a PIM-ben](../privileged-identity-management/pim-how-to-start-security-review.md) | A biztonsági és vezetői csapatokkal együttműködve hozhat létre hozzáférési felülvizsgálati szabályzatot a szervezeti szabályzatok alapján történő rendszergazdai hozzáférés áttekintéséhez. | Prémium szintű Azure AD P2 |
