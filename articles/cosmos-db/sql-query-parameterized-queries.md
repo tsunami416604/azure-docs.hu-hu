@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: f66bc89ef56dd0c2291903d531a4637210abd8df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0f354a0420521ede45740a4eb9c492089e36bda
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87496984"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089219"
 ---
 # <a name="parameterized-queries-in-azure-cosmos-db"></a>Paraméteres lekérdezések a Azure Cosmos DBban
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB támogatja a ismerős @ jelöléssel kifejezett paramétereket tartalmazó lekérdezéseket. A paraméteres SQL lehetővé teszi a felhasználói adatbevitel robusztus kezelését és megmenekülését, és megakadályozza az adatok véletlen kisugárzását az SQL-injektáláson keresztül.
 
@@ -59,7 +60,7 @@ Az alábbiakban példákat talál a paraméteres lekérdezésekre az egyes Azure
 - [Node.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts#L58-L79)
 - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L66-L78)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Dokumentumadatok modellezése](modeling-data.md)

@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: dech
-ms.openlocfilehash: f7fd40c48f94b4337c5ec342499203f83763299b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: d8a6471d53ad4b2428504f9c53cbec6bc1967c49
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909930"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089638"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>A standard (manuális) és az automatikus méretezés kiépített átviteli sebességének kiválasztása 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB a kiépített átviteli sebesség két típusát vagy ajánlatát támogatja: Standard (manuális) és automatikus skálázás. Mindkét átviteli típus alkalmas olyan kritikus fontosságú számítási feladatokhoz, amelyek nagy teljesítményt és méretezést igényelnek, és ugyanazokat a Azure Cosmos DB SLA-kat támogatják, mint az átviteli sebesség, a rendelkezésre állás, a késés és a konzisztencia.
 
@@ -26,10 +27,10 @@ Ha kiosztott átviteli sebességet használ, a számítási feladathoz a számí
 
 Az alábbi táblázat a standard (manuális) és az automatikus skálázás közötti magas szintű összehasonlítást mutatja be.
 
-|Description|Standard (manuális)|Automatikus méretezés|
+|Leírás|Standard (manuális)|Automatikus méretezés|
 |-------------|------|-------|
 |Legmegfelelőbb a következőhöz:|Állandó vagy kiszámítható forgalommal rendelkező számítási feladatok|Változó vagy kiszámíthatatlan forgalommal rendelkező számítási feladatok. Lásd: [az autoscale használatának esetei](provision-throughput-autoscale.md#use-cases-of-autoscale).|
-|Működés|Kiépítheti a statikus RU/s mennyiségét az `T` idő függvényében, hacsak nem módosítja őket manuálisan. Másodpercenként akár `T` ru/s átviteli sebességet is használhat. <br/><br/>Ha például a standard (manuális) 400 RU/s érték van megadva, akkor az átviteli sebesség a 400 RU/s-ben marad.|Állítsa be a legmagasabb vagy a maximális RU/mp értéket, `Tmax` Ha nem szeretné, hogy a rendszeren túllépjek. A rendszer automatikusan méretezi az átviteli sebességet `T` `0.1* Tmax <= T <= Tmax` . <br/><br/>Ha például az 4000 RU/s értékre állítja be a maximálisan engedélyezett RU/s értéket, a rendszer a 400-4000 RU/s-t fogja méretezni.|
+|A működési elv|Kiépítheti a statikus RU/s mennyiségét az `T` idő függvényében, hacsak nem módosítja őket manuálisan. Másodpercenként akár `T` ru/s átviteli sebességet is használhat. <br/><br/>Ha például a standard (manuális) 400 RU/s érték van megadva, akkor az átviteli sebesség a 400 RU/s-ben marad.|Állítsa be a legmagasabb vagy a maximális RU/mp értéket, `Tmax` Ha nem szeretné, hogy a rendszeren túllépjek. A rendszer automatikusan méretezi az átviteli sebességet `T` `0.1* Tmax <= T <= Tmax` . <br/><br/>Ha például az 4000 RU/s értékre állítja be a maximálisan engedélyezett RU/s értéket, a rendszer a 400-4000 RU/s-t fogja méretezni.|
 |Mikor lehet használni|Manuálisan szeretné felügyelni az átviteli kapacitást (RU/s), és a skálázást.<br/><br/>A kiépített RU/s-k magas, konzisztens kihasználtsággal rendelkeznek. Ha a hónap összes óráját kiépített RU/s értékre állítja, `T` és a teljes összeget az órák 66%-ában használja, a becslést a standard (manuális) kiépített ru/s használatával fogja menteni.<br/><br/>Ez a `T` Standard (manuális) beállítás és az automatikus skálázási egység közötti összehasonlításon alapul `Tmax` . |Az adatátviteli kapacitás (RU/s) és a méretezés a használat alapján felügyelhető Azure Cosmos DB.<br/><br/>Az RU/s használata változó vagy nehezen kiszámítható. Egy hónap összes órájában, ha az autoscale Max RU/s értéket állítja be, `Tmax` és a teljes összeget az `Tmax` órák 66%-ában használja, a becsült érték az autoscale.<br/><br/>Ez az automatikus skálázás `Tmax` és a `T` Standard (manuális) átviteli sebesség beállítása közötti összehasonlításon alapul.|
 |Számlázási modell|A számlázás óránként, a felhasznált RU/s alapján történik, függetlenül attól, hogy hány RUs lett felhasználva.<br/><br/>Példa: <li>400 RU/s kiépítése</li><li>1. óra: nincsenek kérelmek</li><li>Óra 2:400 RU/s értékű kérelmek</li><br/><br/>Az 1. és a 2. órában egyaránt 400 RU/s díjat számítunk fel mindkét órára a [Standard (manuális) díjszabás](https://azure.microsoft.com/pricing/details/cosmos-db/)alapján.|A számlázás óránként történik, a legmagasabb RU/s esetében pedig a rendszer az órán belül méretezhető. <br/><br/>Példa: <li>A 4000 RU/s értékre való autoskálázás maximális száma (400 – 4000 RU/s)</li><li>1. óra: a rendszerek a legmagasabb 3500 RU/s értékre lettek méretezve</li><li>2. óra: a rendszerek a használat hiánya miatt legalább 400 RU/s (mindig 10%-a) méretűek. `Tmax`</li><br/><br/>A 3500 RU/s óradíjat az 1. órában, a 400 RU/s pedig a 2. órában, az automatikusan [kiosztott átviteli sebességnél](https://azure.microsoft.com/pricing/details/cosmos-db/). Az automatikus skálázási sebesség (RU/s) 1,5 * a standard (manuális) sebesség.
 |Mi történik, ha túllépi a kiosztott RU/mp-t|Az RU/s statikus marad a kiépítés során. A másodpercben a kiépített RUs-on kívül felhasználható kérések száma korlátozott lesz, és egy olyan válasz, amely az újrapróbálkozások előtt időt ajánl. Ha szükséges, manuálisan növelheti vagy csökkentheti az RU/mp-t.| A rendszer az RU/s-t az autoscale Max RU/s értékre fogja méretezni. A másodpercek alatt az autoscale Max RU/mp-re felhasználható kérések száma korlátozott lesz, és egy olyan válasz, amely az újrapróbálkozást követően időt ajánl fel.|

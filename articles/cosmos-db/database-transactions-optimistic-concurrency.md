@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 17c01188f783664747b7c20b9703ee5d33a8ab3f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c1ecd3a3d29d6876a59a2fa039802966f348a09d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278730"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089831"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>Tranzakciók és optimista egyidejűség vezérlése
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Az adatbázis-tranzakciók biztonságos és kiszámítható programozási modellt biztosítanak, amely az adatokat egyidejűleg módosítja. A hagyományos, a SQL Serverhoz hasonló, az üzleti logikát a tárolt eljárásokkal és/vagy triggerekkel írhatja át, így közvetlenül az adatbázis-motoron keresztül küldheti el a kiszolgálót. A hagyományos, összehasonlítható adatbázisok esetében két különböző programozási nyelvet kell megadnia a (nem tranzakciós) alkalmazás programozási nyelvén (például JavaScript, Python, C#, Java stb.), valamint a tranzakciós programozási nyelvet (például a T-SQL-T), amelyet az adatbázis natív módon hajt végre.
 

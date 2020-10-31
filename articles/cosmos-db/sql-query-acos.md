@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 733d6b009f03d61c37170cc506a3b2ec842d7c47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99730b4c67adc841a33ea9d60440b00a19f90e48
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78300961"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090953"
 ---
 # <a name="acos-azure-cosmos-db"></a>ACO-i (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Azt a szöget adja vissza radiánban, amelynek koszinusza a megadott numerikus kifejezés; más néven szám arkusz koszinuszát.  
   
 ## <a name="syntax"></a>Szintaxis
@@ -50,7 +52,7 @@ SELECT ACOS(-1) AS acos
 
 Ez a rendszerfüggvény nem fogja használni az indexet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

@@ -10,14 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: aahi
-ms.openlocfilehash: 004bd973651d5903db4254a8883be2c8a83d9b38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3519c9d6a62eaff036cf8f7006a0b443383f5131
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84310580"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090494"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>A Bing Custom Search API nyelvi és területi támogatása
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Az Bing Custom Search API több mint három tucat országot/régiót támogat, több mint egy nyelvet.
 
@@ -82,8 +87,8 @@ A `Accept-Language` fejléc és a `setLang` lekérdezési paraméter kölcsönö
 |Kanada|Angol|en-CA|
 |Kanada|Francia|fr – CA|
 |Chile|Spanyol|es – CL|
-|Dánia|Dán|da-DK|
-|Finnország|Finn|fi-FI|
+|Dánia|dán|da-DK|
+|Finnország|finn|fi-FI|
 |Franciaország|Francia|fr-FR|
 |Németország|Német|de-DE|
 |Hongkong (KKT)|Kínai (hagyományos)|ZH-HK|
@@ -105,7 +110,7 @@ A `Accept-Language` fejléc és a `setLang` lekérdezési paraméter kölcsönö
 |Szaúd-Arábia|Arab|ar-SA|
 |Dél-afrikai Köztársaság|Angol|EN-ZA|
 |Spanyolország|Spanyol|es-ES|
-|Svédország|Svéd|sv-SE|
+|Svédország|svéd|sv-SE|
 |Svájc|Francia|fr – CH|
 |Svájc|Német|de-CH|
 |Tajvan|Kínai (hagyományos)|zh-TW|

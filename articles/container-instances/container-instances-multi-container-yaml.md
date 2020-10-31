@@ -3,12 +3,12 @@ title: Oktatóanyag – több tárolós csoport üzembe helyezése – YAML
 description: Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe egy Azure Container Instances több tárolót tartalmazó YAML-fájllal az Azure CLI használatával.
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: f6ba9152003c68192ddc0fdffa5652bc0b6daa86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f1f13d4fa7e32b76988cdf356d5d1bb0528f824
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88750900"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091293"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Oktatóanyag: több tárolós csoport üzembe helyezése YAML-fájl használatával
 
@@ -29,15 +29,15 @@ Ebben az oktatóanyagban egy egyszerű, kéttárolós oldalkocsis konfiguráció
 > [!NOTE]
 > A többtárolós csoportok jelenleg csak Linux-tárolók számára korlátozódnak.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="configure-a-yaml-file"></a>YAML-fájl konfigurálása
 
 Többtárolós csoport az az [Container Create][az-container-create] paranccsal történő üzembe helyezéséhez az Azure CLI-ben meg kell adnia a tároló csoport konfigurációját egy YAML fájlban. Ezután adja át a YAML-fájlt paraméterként a parancsnak.
 
-Először másolja a következő YAML egy **Deploy-ACI. YAML**nevű új fájlba. A Azure Cloud Shell a Visual Studio Code használatával hozhatja létre a fájlt a munkakönyvtárában:
+Először másolja a következő YAML egy **Deploy-ACI. YAML** nevű új fájlba. A Azure Cloud Shell a Visual Studio Code használatával hozhatja létre a fájlt a munkakönyvtárában:
 
 ```
 code deploy-aci.yaml
@@ -115,7 +115,7 @@ az container show --resource-group myResourceGroup --name myContainerGroup --out
 
 Ha meg szeretné tekinteni a futó alkalmazást, navigáljon az IP-címére a böngészőben. Például az IP-cím ebben a `52.168.26.124` példában kimenet:
 
-```bash
+```console
 Name              ResourceGroup    Status    Image                                                                                               IP:ports              Network    CPU/Memory       OsType    Location
 ----------------  ---------------  --------  --------------------------------------------------------------------------------------------------  --------------------  ---------  ---------------  --------  ----------
 myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tutorial-sidecar,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus
@@ -166,7 +166,7 @@ Connection: keep-alive
 
 Amint láthatja, az oldalkocsi rendszeres időközönként HTTP-kérést küld a fő webalkalmazásnak a csoport helyi hálózatán keresztül annak biztosítása érdekében, hogy az fut. Ez az oldalkocsis példa kiterjeszthető úgy, hogy riasztást indítson, ha nem a HTTP-válasz kódját kapta `200 OK` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy YAML-fájlt használt egy többtárolós csoport üzembe helyezéséhez Azure Container Instancesban. Megtanulta végrehajtani az alábbi műveleteket:
 

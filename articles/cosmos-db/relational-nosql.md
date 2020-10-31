@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 613e0dbfc90586475fe0ba9820ede1359a99d3a6
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d986106337eb1ede2f6d61303d8a4c487bbed276
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482213"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088471"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>A NoSQL és a kapcsolati adatbázisok közötti különbségek megértése
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Ez a cikk a NoSQL-adatbázisok a kapcsolati adatbázisokkal kapcsolatos főbb előnyeit sorolja fel. A NoSQL használatának néhány kihívását is tárgyaljuk. Ha részletesen meg kívánja nézni a különböző adattárakat, tekintse meg a [megfelelő adattár kiválasztásával](/azure/architecture/guide/technology-choices/data-store-overview)foglalkozó cikket.
 

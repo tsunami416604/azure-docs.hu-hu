@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8f2b37181e5d743809bb1f60be4056cb4442a8d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 137662ac27ea297a5f57ad784d7bb24cf3acebda
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78295878"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090919"
 ---
 # <a name="array_concat-azure-cosmos-db"></a>ARRAY_CONCAT (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Egy olyan tömböt ad vissza, amely két vagy több tömb értékének összefűzését eredményezi.  
   
 ## <a name="syntax"></a>Szintaxis
@@ -50,7 +52,7 @@ SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"]) AS arrayConcat
 
 Ez a rendszerfüggvény nem fogja használni az indexet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Array függvények Azure Cosmos DB](sql-query-array-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

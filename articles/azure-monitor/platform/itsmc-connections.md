@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: c40f1762ea7c87ea73ec20e47b0398e0d3e364b4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 69c8f9f01241100a81ddd1707dbd226e6bf56c2f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677148"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089015"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-termékek/-szolgáltatások összekapcsolása IT Service Management-összekötővel
 Ez a cikk azt ismerteti, hogyan konfigurálható a ITSM terméke/szolgáltatása és a IT-szolgáltatásmenedzsmenti csatoló (ITSMC) közötti kapcsolat a munkaelemek központilag felügyelhető Log Analyticsban. További információ a ITSMC: [Áttekintés](./itsmc-overview.md).
@@ -36,7 +36,7 @@ A következő szakaszokban részletesen ismertetjük, hogyan csatlakoztathatók 
 
 Győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
 
-- A ITSMC telepítve van. További információ: [a it-szolgáltatásmenedzsmenti csatoló megoldás hozzáadása](./itsmc-overview.md#adding-the-it-service-management-connector-solution).
+- A ITSMC telepítve van. További információ: [a it-szolgáltatásmenedzsmenti csatoló megoldás hozzáadása](./itsmc-overview.md#add-it-service-management-connector).
 - A Service Manager webalkalmazás (Web App) telepítése és konfigurálása történik. A webalkalmazással kapcsolatos információk [itt](#create-and-deploy-service-manager-web-app-service)találhatóak.
 - A hibrid kapcsolatok létrehozása és konfigurálása megtörtént. További információ: [a hibrid kapcsolatok konfigurálása](#configure-the-hybrid-connection).
 - A Service Manager támogatott verziói: 2012 R2 vagy 2016.
@@ -184,7 +184,7 @@ A következő szakaszokban részletesen ismertetjük, hogyan csatlakoztathatók 
 
 ### <a name="prerequisites"></a>Előfeltételek
 Győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
-- A ITSMC telepítve van. További információ: [a it-szolgáltatásmenedzsmenti csatoló megoldás hozzáadása](./itsmc-overview.md#adding-the-it-service-management-connector-solution).
+- A ITSMC telepítve van. További információ: [a it-szolgáltatásmenedzsmenti csatoló megoldás hozzáadása](./itsmc-overview.md#add-it-service-management-connector).
 - ServiceNow támogatott verziók: Orlando, New York, Madrid, London, Kingston, Jakarta, Isztambul, Helsinki, Genf.
 > [!NOTE]
 > A ITSMC csak a szolgáltatás hivatalos SaaS-ajánlatát támogatja. A szolgáltatás privát telepítései jelenleg nem támogatottak. 
@@ -316,7 +316,7 @@ A következő szakaszokban részletesen ismertetjük, hogyan csatlakoztatható a
 Győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
 
 
-- A ITSMC telepítve van. További információ: [a it-szolgáltatásmenedzsmenti csatoló megoldás hozzáadása](./itsmc-overview.md#adding-the-it-service-management-connector-solution).
+- A ITSMC telepítve van. További információ: [a it-szolgáltatásmenedzsmenti csatoló megoldás hozzáadása](./itsmc-overview.md#add-it-service-management-connector).
 - Az Azure AD-ben regisztrálni kell az alkalmazást, és az ügyfél-azonosítót is elérhetővé kell tenni. Részletes információk: [az Active Directory-hitelesítés konfigurálása](../../app-service/configure-authentication-provider-aad.md).
 
 - Felhasználói szerepkör: rendszergazda.
@@ -373,7 +373,7 @@ A következő szakaszokban részletesen ismertetjük, hogyan csatlakoztathatók 
 
 Győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
 
-- A ITSMC telepítve van. További információ: [a it-szolgáltatásmenedzsmenti csatoló megoldás hozzáadása](./itsmc-overview.md#adding-the-it-service-management-connector-solution).
+- A ITSMC telepítve van. További információ: [a it-szolgáltatásmenedzsmenti csatoló megoldás hozzáadása](./itsmc-overview.md#add-it-service-management-connector).
 - Ügyfél-azonosító létrehozva. További információ: [a Cherwell ügyfél-azonosítójának előállítása](#generate-client-id-for-cherwell).
 - Felhasználói szerepkör: rendszergazda.
 

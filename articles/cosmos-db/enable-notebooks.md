@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2019
 ms.author: dech
-ms.openlocfilehash: 4c485bf6b9eb34e68e399c24e51286428f47586f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf8da4379a7770e44e86663c02cc7a57da9d3452
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85261902"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089780"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Jegyzetfüzetek engedélyezése Azure Cosmos DB-fiókokhoz (előzetes verzió)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!IMPORTANT]
 > A Azure Cosmos DB beépített jegyzetfüzetei jelenleg a következő Azure-régiókban érhetők el: Kelet-Ausztrália, USA keleti régiója, USA 2. keleti régiója, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa és az USA 2. nyugati régiója. Jegyzetfüzetek használatához [hozzon létre egy új fiókot jegyzetfüzetekkel](#enable-notebooks-in-a-new-cosmos-account) , vagy [engedélyezze a jegyzetfüzeteket egy meglévő fiókban](#enable-notebooks-in-an-existing-cosmos-account) az egyik régióban.
@@ -22,14 +23,14 @@ A Azure Cosmos DB beépített Jupyter notebookok lehetővé teszik az adatok ele
 
 ## <a name="enable-notebooks-in-a-new-cosmos-account"></a>Jegyzetfüzetek engedélyezése új Cosmos-fiókban
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-1. Válassza **az erőforrás létrehozása**  >  **adatbázisok**  >  **Azure Cosmos db**elemet.
-1. A **Azure Cosmos db fiók létrehozása** lapon válassza a **jegyzetfüzetek**lehetőséget. 
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
+1. Válassza **az erőforrás létrehozása**  >  **adatbázisok**  >  **Azure Cosmos db** elemet.
+1. A **Azure Cosmos db fiók létrehozása** lapon válassza a **jegyzetfüzetek** lehetőséget. 
  
     :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks.png" alt-text="Válassza a jegyzetfüzetek lehetőséget a Azure Cosmos DB létrehozás panelen":::
 
 1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. Kihagyhatja a **hálózat** és a **címkék** lehetőséget. 
-1. Tekintse át a Fiókbeállítások beállítást, majd kattintson a **Létrehozás**gombra. A fiók létrehozása néhány percet vesz igénybe. Várjon, amíg befejeződik a portál oldalának megjelenítése a **központi telepítés befejezéséhez**. 
+1. Tekintse át a Fiókbeállítások beállítást, majd kattintson a **Létrehozás** gombra. A fiók létrehozása néhány percet vesz igénybe. Várjon, amíg befejeződik a portál oldalának megjelenítése a **központi telepítés befejezéséhez** . 
 
    :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks-complete.png" alt-text="Válassza a jegyzetfüzetek lehetőséget a Azure Cosmos DB létrehozás panelen":::
 
@@ -46,7 +47,7 @@ A Azure Cosmos DB beépített Jupyter notebookok lehetővé teszik az adatok ele
 A meglévő fiókokon is engedélyezheti a jegyzetfüzeteket. Ezt a lépést fiókkal csak egyszer kell elvégezni.
 
 1. Navigáljon a Cosmos-fiók **adatkezelő** ablaktáblájához.
-1. Válassza a **jegyzetfüzetek engedélyezése**lehetőséget.
+1. Válassza a **jegyzetfüzetek engedélyezése** lehetőséget.
 
     :::image type="content" source="media/enable-notebooks/enable-notebooks-workspace.png" alt-text="Válassza a jegyzetfüzetek lehetőséget a Azure Cosmos DB létrehozás panelen":::
 
@@ -57,7 +58,7 @@ A meglévő fiókokon is engedélyezheti a jegyzetfüzeteket. Ezt a lépést fi�
 
 Annak ellenőrzéséhez, hogy használhatók-e jegyzetfüzetek, válassza ki az egyik jegyzetfüzetet a minta jegyzetfüzetek területen. Ezzel a művelettel a jegyzetfüzet egy másolatát menti a munkaterületre, és megnyithatja.
 
-Ebben a példában a **bemutatása GettingStarted. ipynb**-t fogjuk használni. 
+Ebben a példában a **bemutatása GettingStarted. ipynb** -t fogjuk használni. 
 
 :::image type="content" source="media/enable-notebooks/select-getting-started-notebook.png" alt-text="Válassza a jegyzetfüzetek lehetőséget a Azure Cosmos DB létrehozás panelen":::
 
@@ -72,6 +73,6 @@ Az **új jegyzetfüzet** lehetőség kiválasztásával új jegyzetfüzetet hozh
 
 :::image type="content" source="media/enable-notebooks/create-or-upload-new-notebook.png" alt-text="Válassza a jegyzetfüzetek lehetőséget a Azure Cosmos DB létrehozás panelen":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg [Azure Cosmos db Jupyter notebookok](cosmosdb-jupyter-notebooks.md) előnyeit

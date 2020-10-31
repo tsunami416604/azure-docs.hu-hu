@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: apimpm
-ms.openlocfilehash: c37224a3a455abcf3de62998cb65e1d66a1bb0f2
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 92d108304f788279a636b1dc5e1c4e6c103ede3d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910712"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088879"
 ---
 # <a name="cicd-for-api-management-using-azure-resource-manager-templates"></a>CI/CD API Management Azure Resource Manager sablonok használatával
 
@@ -43,7 +43,7 @@ Ebben a példában két központi telepítési környezet létezik: a *fejleszt�
 
 Ennek a javasolt megközelítésnek a kulcsa az összes API Management konfiguráció megtartása [Azure Resource Manager-sablonokban](../azure-resource-manager/resource-group-authoring-templates.md). A szervezetnek meg kell őriznie ezeket a sablonokat egy verziókövetés-rendszeren, például a git-ben. Ahogy az ábrán látható, a közzétevő adattár az éles API Management példány összes konfigurációját tartalmazza sablonok gyűjteményében:
 
-|Sablon  |Description  |
+|Sablon  |Leírás  |
 |---------|---------|
 |Szolgáltatássablon     | A API Management példány szolgáltatási szintjének konfigurációi, például az árképzési szint és az egyéni tartományok.         |
 |Megosztott sablonok     |  A API Management-példányok, például a csoportok, a termékek és a naplózók közös erőforrásai.    |
@@ -67,7 +67,8 @@ Az API-fejlesztők szembesülnek a Resource Manager-sablonokkal való együttmű
 
 * Az API-közzétevők ellenőrizhetik a lekéréses kérelmeket, és ellenőrizhetik, hogy a módosítások biztonságosak és megfelelőek-e. Megvizsgálhatja például, hogy csak HTTPS-kommunikáció engedélyezett-e az API-val. A legtöbb érvényesítés automatizálható a CI/CD-folyamat lépéseit követve.
 
-* A módosítások jóváhagyása és egyesítése után az API-közzétevők dönthetnek úgy, hogy az éles példányon vagy igény szerint telepítik őket. A sablonok a [GitHub-műveletek](https://github.com/Azure/apimanagement-devops-samples), az [Azure-folyamatok](/devops/pipelines/), a [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md), az [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)vagy más eszközök használatával automatizálható.
+* Ha a módosítások jóváhagyása és egyesítése sikeresen megtörtént, az API-közzétevők dönthetnek úgy, hogy az éles példányra vagy igény szerint telepítik őket. A sablonok üzembe helyezése a [GitHub-műveletek](https://github.com/Azure/apimanagement-devops-samples), az [Azure-folyamatok](/azure/devops/pipelines), a [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md), az [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)vagy más eszközök használatával automatizálható.
+
 
 Ezzel a módszerrel a szervezet automatizálhatja az API-változások API Management példányokra való telepítését, és megkönnyíti az egyik környezetből a másikba való átalakítását. Mivel a különböző API-fejlesztési csapatok az API-sablonok és-fájlok különböző csoportjain dolgoznak, megakadályozza a különböző csapatok közötti interferenciát.
 

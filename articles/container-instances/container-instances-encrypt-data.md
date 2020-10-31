@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: macolso
 ms.author: macolso
-ms.openlocfilehash: 1c45999dbb354e8c2d550be82cdf37a6694d2dbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2cad98267ef1654c4f2d9ad2db75f769dbc0780
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825676"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091355"
 ---
 # <a name="encrypt-deployment-data"></a>Üzembehelyezési adatok titkosítása
 
@@ -33,7 +33,7 @@ A Microsoft által felügyelt kulcsokat a tároló adatai titkosítására haszn
 
 A dokumentum többi része ismerteti azokat a lépéseket, amelyek szükségesek az ACI üzembe helyezési adatoknak a kulccsal való titkosításához (az ügyfél által felügyelt kulcs). 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="encrypt-data-with-a-customer-managed-key"></a>Az adattitkosítás ügyfél által felügyelt kulccsal
 
@@ -73,7 +73,7 @@ A Key Vault tulajdonságaihoz használja a következő irányelveket:
 
 ### <a name="generate-a-new-key"></a>Új kulcs létrehozása 
 
-Miután létrehozta a kulcstartót, navigáljon a Azure Portal található erőforráshoz. Az erőforrás panel bal oldali navigációs menüjének beállítások területén kattintson a **kulcsok**elemre. A "kulcsok" nézetben kattintson a "Létrehozás/Importálás" lehetőségre új kulcs létrehozásához. A kulcs egyedi nevét és egyéb beállításait a követelmények alapján használhatja. 
+Miután létrehozta a kulcstartót, navigáljon a Azure Portal található erőforráshoz. Az erőforrás panel bal oldali navigációs menüjének beállítások területén kattintson a **kulcsok** elemre. A "kulcsok" nézetben kattintson a "Létrehozás/Importálás" lehetőségre új kulcs létrehozásához. A kulcs egyedi nevét és egyéb beállításait a követelmények alapján használhatja. 
 
 ![Új kulcs létrehozása](./media/container-instances-encrypt-data/generate-key.png)
 
@@ -81,10 +81,10 @@ Miután létrehozta a kulcstartót, navigáljon a Azure Portal található erőf
 
 Hozzon létre egy új hozzáférési szabályzatot, amely lehetővé teszi, hogy az ACI szolgáltatás hozzáférjen a kulcshoz.
 
-* Miután létrehozta a kulcsot, a Key Vault erőforrás-paneljén a beállítások területen kattintson a **hozzáférési házirendek**elemre.
-* A Key vaulthoz tartozó hozzáférési szabályzatok lapon kattintson a **hozzáférési házirend hozzáadása**lehetőségre.
+* Miután létrehozta a kulcsot, a Key Vault erőforrás-paneljén a beállítások területen kattintson a **hozzáférési házirendek** elemre.
+* A Key vaulthoz tartozó hozzáférési szabályzatok lapon kattintson a **hozzáférési házirend hozzáadása** lehetőségre.
 * Adja meg a kulcs *engedélyeit* a **beolvasás** és **kicsomagolás kulcs** ![ beállítása kulcs engedélyeinek befoglalásához](./media/container-instances-encrypt-data/set-key-permissions.png)
-* Válassza ki a *rendszerbiztonsági tag*lehetőséget, majd válassza az **Azure Container instance Service** elemet.
+* Válassza ki a *rendszerbiztonsági tag* lehetőséget, majd válassza az **Azure Container instance Service** elemet.
 * Kattintson a **Hozzáadás** gombra a lap alján 
 
 A hozzáférési szabályzatnak ekkor meg kell jelennie a Key Vault hozzáférési házirendjeiben.

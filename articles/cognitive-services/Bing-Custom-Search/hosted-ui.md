@@ -11,14 +11,19 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 4a63a54f5ad4d1bcccecb1d1a4892ef55c238b92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0033f4919e4e4e5e56e4057e00c393ae7be1ca44
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319180"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090562"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Üzemeltetett felhasználói felület konfigurálása
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 A Bing Custom Search egy üzemeltetett felhasználói felületet biztosít, amellyel JavaScript-kódrészletként könnyedén integrálhatja weblapjait és webalkalmazásait. A Bing Custom Search portál használatával konfigurálhatja a felhasználói felület elrendezését, színét és keresési beállításait.
 
@@ -40,14 +45,14 @@ A webalkalmazásokhoz tartozó üzemeltetett felhasználói felület konfigurál
     - Csak eredmények: csak a keresési eredményeket jeleníti meg, keresési mező nélkül. Az elrendezés használatakor meg kell adnia a keresési lekérdezést ( `&q=<query string>` ). Adja hozzá a lekérdezési paramétert a kérelem URL-címéhez a JavaScript-kódrészletben, vagy a HTML-végpont hivatkozását.
     - Felugró ablak: egy keresőmezőt tartalmaz, és megjeleníti a keresési eredményeket egy csúszó átfedésben.
 
-5. Válasszon ki egy színtémát. Testreszabhatja a színeket úgy, hogy illeszkedjen az alkalmazáshoz a **téma testreszabása**lehetőségre kattintva. A szín módosításához adja meg a szín RGB HEXADECIMÁLIS értékét (például `#366eb8` ), vagy kattintson a szín előnézetére.
+5. Válasszon ki egy színtémát. Testreszabhatja a színeket úgy, hogy illeszkedjen az alkalmazáshoz a **téma testreszabása** lehetőségre kattintva. A szín módosításához adja meg a szín RGB HEXADECIMÁLIS értékét (például `#366eb8` ), vagy kattintson a szín előnézetére.
 
    A módosításokat a portál jobb oldalán tekintheti meg. Ha az **Alaphelyzetbe állítás** gombra kattint, a rendszer visszaállítja a módosításokat a kiválasztott téma alapértelmezett színeire.
 
    > [!NOTE]
    > A színek kiválasztásánál érdemes megfontolni a kisegítő lehetőségeket.
 
-6. A **további konfigurációk**területen adja meg a megfelelő értékeket az alkalmazáshoz. Ezek a beállítások nem kötelezőek. Ha szeretné megtekinteni, hogy milyen hatással van a alkalmazásra vagy eltávolításra, tekintse meg a jobb oldali előnézet ablaktáblát. Az elérhető konfigurációs lehetőségek a következők:  
+6. A **további konfigurációk** területen adja meg a megfelelő értékeket az alkalmazáshoz. Ezek a beállítások nem kötelezőek. Ha szeretné megtekinteni, hogy milyen hatással van a alkalmazásra vagy eltávolításra, tekintse meg a jobb oldali előnézet ablaktáblát. Az elérhető konfigurációs lehetőségek a következők:  
 
 7. Adja meg a keresési előfizetés kulcsát, vagy válasszon egyet a legördülő listából. A legördülő lista az Azure-fiók előfizetéséhez tartozó kulcsokkal van feltöltve. Lásd: [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).  
 
@@ -91,7 +96,7 @@ Ha további információkat szeretne, például az egyéni konfiguráció AZONOS
 
 ## <a name="configuration-options"></a>Beállítási lehetőségek
 
-Az üzemeltetett felhasználói felület működésének konfigurálásához kattintson a **további konfigurációk**lehetőségre, és adjon meg értékeket. Ezek a beállítások nem kötelezőek. Ha szeretné megtekinteni, hogy milyen hatással van a alkalmazásra vagy eltávolításra, tekintse meg a jobb oldali előnézet ablaktáblát. 
+Az üzemeltetett felhasználói felület működésének konfigurálásához kattintson a **további konfigurációk** lehetőségre, és adjon meg értékeket. Ezek a beállítások nem kötelezőek. Ha szeretné megtekinteni, hogy milyen hatással van a alkalmazásra vagy eltávolításra, tekintse meg a jobb oldali előnézet ablaktáblát. 
 
 ### <a name="web-search-configurations"></a>Webes keresési konfigurációk
 
@@ -100,7 +105,7 @@ Az üzemeltetett felhasználói felület működésének konfigurálásához kat
 - Webes eredmények/oldal: a webes keresési eredmények száma, amely egyszerre jeleníthető meg (a maximális érték oldalanként 50).
 - Kép felirata: meghatározza, hogy a képek megjelenjenek-e a keresési eredmények között.
 
-A következő konfigurációk láthatók, ha a **speciális konfigurációk megjelenítése**lehetőségre kattint:
+A következő konfigurációk láthatók, ha a **speciális konfigurációk megjelenítése** lehetőségre kattint:
 
 - Kiemelés szavai: meghatározza, hogy az eredmények félkövérrel jelennek-e meg keresési kifejezésekkel.
 - Hivatkozás célja: meghatározza, hogy a weblap megjelenik-e egy új böngészőablakban (üres) vagy ugyanazon böngésző lapon (saját), amikor a felhasználó egy keresési eredményre kattint.
@@ -110,7 +115,7 @@ A következő konfigurációk láthatók, ha a **speciális konfigurációk megj
 - Képtalálatok engedélyezve: meghatározza, hogy engedélyezve van-e a képkeresés (a lap tetején megjelenik egy images lap).
 - Képeredmények oldalanként: a képkeresés eredményeinek száma, amely egyszerre jeleníthető meg (a maximális érték oldalanként 150).
 
-A következő konfiguráció jelenik meg, ha a **speciális konfigurációk megjelenítése**lehetőségre kattint.  
+A következő konfiguráció jelenik meg, ha a **speciális konfigurációk megjelenítése** lehetőségre kattint.  
   
 - Szűrők engedélyezése: hozzáadja azokat a szűrőket, amelyeket a felhasználó a Bing által visszaadott rendszerképek szűrésére használhat. A felhasználó például csak animált GIF-fájlok esetében szűrheti az eredményeket.
 
@@ -119,7 +124,7 @@ A következő konfiguráció jelenik meg, ha a **speciális konfigurációk megj
 - Videós eredmények engedélyezve: meghatározza, hogy engedélyezve van-e a videó keresése (a lap tetején megjelenik egy videó lap).
 - Videós eredmények oldalanként: a videó keresési eredményeinek száma, amely egyszerre jeleníthető meg (a maximum 150 találat/oldal).
 
-A következő konfiguráció jelenik meg, ha a **speciális konfigurációk megjelenítése**lehetőségre kattint.  
+A következő konfiguráció jelenik meg, ha a **speciális konfigurációk megjelenítése** lehetőségre kattint.  
   
 - Szűrők engedélyezése: hozzáadja azokat a szűrőket, amelyeket a felhasználó a Bing által visszaadott videók szűrésére használhat. A felhasználó például szűrheti a videók eredményeit az elmúlt 24 órában felderített adott felbontással vagy videókkal.
 
@@ -128,9 +133,9 @@ A következő konfiguráció jelenik meg, ha a **speciális konfigurációk megj
 - Oldal címe: a keresési eredmények lap cím területén megjelenő szöveg (nem az előugró elrendezéshez).
 - Eszköztár témája: meghatározza a keresési eredmények oldal cím területének háttérszínét.
 
-A következő konfigurációk láthatók, ha a **speciális konfigurációk megjelenítése**lehetőségre kattint.  
+A következő konfigurációk láthatók, ha a **speciális konfigurációk megjelenítése** lehetőségre kattint.  
 
-|1. oszlop  |2. oszlop  |
+|1\. oszlop  |2\. oszlop  |
 |---------|---------|
 |Keresőmező szövegének helyőrzője   | A beviteli mezőben a bevitel előtt megjelenő szöveg.        |
 |Cím hivatkozásának URL-címe    |A cím hivatkozásának célja         |

@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: b14910bc37fc8f3d7f105f382de64ae52fd19a47
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 49827b7387edc1e914bbd58c63df2db74f4ed17b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475226"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091276"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Teljesítménnyel kapcsolatos tippek az Azure Cosmos DB Java SDK v4-hez
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
@@ -38,7 +39,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 * **Csatlakoztatási mód: közvetlen mód használata**
 <a id="direct-connection"></a>
     
-    A Java SDK alapértelmezett csatlakoztatási módja a közvetlen. A *directMode ()* vagy a *gatewayMode ()* metódussal konfigurálhatja a csatlakoztatási módot az ügyfél-építőben az alább látható módon. Mindkét mód alapértelmezett beállításokkal való konfigurálásához a metódus argumentum nélkül hívható meg. Ellenkező esetben adja át a konfigurációs beállítások osztály példányát argumentumként (*DirectConnectionConfig* a *directMode ()*,  *GatewayConnectionConfig* for *gatewayMode (*).). Ha többet szeretne megtudni a különböző csatlakozási lehetőségekről, tekintse meg a [kapcsolódási módokat](sql-sdk-connection-modes.md) ismertető cikket.
+    A Java SDK alapértelmezett csatlakoztatási módja a közvetlen. A *directMode ()* vagy a *gatewayMode ()* metódussal konfigurálhatja a csatlakoztatási módot az ügyfél-építőben az alább látható módon. Mindkét mód alapértelmezett beállításokkal való konfigurálásához a metódus argumentum nélkül hívható meg. Ellenkező esetben adja át a konfigurációs beállítások osztály példányát argumentumként ( *DirectConnectionConfig* a *directMode ()* ,  *GatewayConnectionConfig* for *gatewayMode (* ).). Ha többet szeretne megtudni a különböző csatlakozási lehetőségekről, tekintse meg a [kapcsolódási módokat](sql-sdk-connection-modes.md) ismertető cikket.
     
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK
 
@@ -106,7 +107,7 @@ További részletekért tekintse meg a Windows és a [Linux](../virtual-network/
 
 * **Az alkalmazáshoz szükséges legalacsonyabb konzisztencia-szint használata**
 
-    *CosmosClient*létrehozásakor a rendszer az alapértelmezett konzisztenciát használja, ha nincs explicit módon beállítva a *munkamenet*. Ha az alkalmazás logikája nem igényli a *munkamenet* konzisztenciáját, állítsa a *konzisztenciát* a *végső*értékre. Megjegyzés: javasoljuk, hogy legalább a *munkamenetek* konzisztenciáját használja a Azure Cosmos db változási csatornát használó alkalmazásokban.
+    *CosmosClient* létrehozásakor a rendszer az alapértelmezett konzisztenciát használja, ha nincs explicit módon beállítva a *munkamenet* . Ha az alkalmazás logikája nem igényli a *munkamenet* konzisztenciáját, állítsa a *konzisztenciát* a *végső* értékre. Megjegyzés: javasoljuk, hogy legalább a *munkamenetek* konzisztenciáját használja a Azure Cosmos db változási csatornát használó alkalmazásokban.
 
 * **Az aszinkron API használata a kiépített átviteli sebesség max.**
 
@@ -152,9 +153,9 @@ További részletekért tekintse meg a Windows és a [Linux](../virtual-network/
 
         :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="A Azure Cosmos DB-kapcsolatok házirendjének ábrája" border="false":::
 
-        A közvetlen módban alkalmazott ügyféloldali architektúra előre jelezhető hálózati kihasználtságot és többszörös hozzáférést biztosít Azure Cosmos DB replikához. A fenti ábrán látható, hogy a Direct Mode hogyan irányítja az ügyfelek kérelmeit a Cosmos DB háttérbeli replikára. A közvetlen üzemmód architektúrája legfeljebb 10 _*csatornát*foglal le az ügyfél oldalán az adatbázis-replikák esetében. A csatornák egy TCP-kapcsolatok, amely előtt egy kérelem-puffer található, amely 30 kérelem mélyét képezi. A replikához tartozó csatornák dinamikusan vannak lefoglalva a replika **szolgáltatási végpontja**által igényelt módon. Amikor a felhasználó közvetlen módban bocsát ki egy kérést, a **TransportClient** a megfelelő szolgáltatási végpontra irányítja a kérést a partíciós kulcs alapján. A kérelmek **várólistájának** pufferei a szolgáltatási végpont előtt érkeznek.
+        A közvetlen módban alkalmazott ügyféloldali architektúra előre jelezhető hálózati kihasználtságot és többszörös hozzáférést biztosít Azure Cosmos DB replikához. A fenti ábrán látható, hogy a Direct Mode hogyan irányítja az ügyfelek kérelmeit a Cosmos DB háttérbeli replikára. A közvetlen üzemmód architektúrája legfeljebb 10 _ *csatornát* foglal le az ügyfél oldalán az adatbázis-replikák esetében. A csatornák egy TCP-kapcsolatok, amely előtt egy kérelem-puffer található, amely 30 kérelem mélyét képezi. A replikához tartozó csatornák dinamikusan vannak lefoglalva a replika **szolgáltatási végpontja** által igényelt módon. Amikor a felhasználó közvetlen módban bocsát ki egy kérést, a **TransportClient** a megfelelő szolgáltatási végpontra irányítja a kérést a partíciós kulcs alapján. A kérelmek **várólistájának** pufferei a szolgáltatási végpont előtt érkeznek.
 
-    * ***A közvetlen mód konfigurációs beállításai**_
+    * ***A közvetlen mód konfigurációs beállításai** _
 
         Ha nem alapértelmezett közvetlen üzemmódú viselkedésre van szükség, hozzon létre egy _DirectConnectionConfig * példányt, és szabja testre a tulajdonságait, majd adja át a testreszabott *directMode ()* metódusnak a Azure Cosmos db ügyfél-szerkesztőben.
 
@@ -180,7 +181,7 @@ További részletekért tekintse meg a Windows és a [Linux](../virtual-network/
 
         Fontos megjegyezni, hogy a párhuzamos lekérdezések a legjobb előnyöket nyújtják, ha az adatforgalom egyenletesen oszlik el az összes partíció között a lekérdezés tekintetében. Ha a particionált gyűjtemény úgy van particionálva, hogy a lekérdezés által visszaadott összes adat többsége néhány partíción (egy partíció a legrosszabb esetben) van, akkor a lekérdezés teljesítményét a partíciók szűk keresztmetszete okozhatja.
 
-    _ ***Hangolás setMaxBufferedItemCount \: **_
+    _ * **Hangolás setMaxBufferedItemCount \:** _
     
         Parallel query is designed to pre-fetch results while the current batch of results is being processed by the client. The pre-fetching helps in overall latency improvement of a query. setMaxBufferedItemCount limits the number of pre-fetched results. Setting setMaxBufferedItemCount to the expected number of results returned (or a higher number) enables the query to receive maximum benefit from pre-fetching.
 
@@ -196,7 +197,7 @@ További részletekért tekintse meg a Windows és a [Linux](../virtual-network/
 
 * **A jobb teljesítmény érdekében a lekérdezések/olvasási hírcsatornák méretének finomhangolása**
 
-    A dokumentumok tömeges beolvasása a hírcsatornák olvasási funkciójának használatával (például *readItems*) vagy SQL-lekérdezés (*queryItems*) kiadása esetén az eredmények szegmentált módon lesznek visszaadva, ha az eredményhalmaz túl nagy. Alapértelmezés szerint a rendszer az eredményeket 100 elemből vagy 1 MB-ra adja vissza, amely a határértékek közül az első.
+    A dokumentumok tömeges beolvasása a hírcsatornák olvasási funkciójának használatával (például *readItems* ) vagy SQL-lekérdezés ( *queryItems* ) kiadása esetén az eredmények szegmentált módon lesznek visszaadva, ha az eredményhalmaz túl nagy. Alapértelmezés szerint a rendszer az eredményeket 100 elemből vagy 1 MB-ra adja vissza, amely a határértékek közül az első.
 
     Tegyük fel, hogy az alkalmazás lekérdezi a Azure Cosmos DB, és azt feltételezi, hogy az alkalmazás a lekérdezés összes eredményét igényli a feladat elvégzéséhez. Ha csökkenteni szeretné az összes vonatkozó eredmény beolvasásához szükséges hálózati kör-átutazások számát, az [x-MS-Max-Item-Count](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) kérelem fejlécének beállításával növelheti az oldalméret értékét. 
 
@@ -231,11 +232,11 @@ További részletekért tekintse meg a Windows és a [Linux](../virtual-network/
 
     Számos ok miatt előfordulhat, hogy a naplózást egy olyan szálban kell felvennie, amely nagy kérések átviteli sebességét eredményezi. Ha a cél az, hogy teljes mértékben telített legyen egy tároló kiépített átviteli sebessége a szál által generált kérelmekkel, a naplózási optimalizálás nagy mértékben növelheti a teljesítményt.
 
-    * ***Aszinkron naplózó beállítása**_
+    * ***Aszinkron naplózó beállítása** _
 
         A szinkron naplózó késése szükségszerűen a kérés-előállító szál teljes késésének számítása. A nagy teljesítményű alkalmazási szálakból való kilépéshez olyan aszinkron naplózó használata javasolt, mint például a [log4j2](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flogging.apache.org%2Flog4j%2Flog4j-2.3%2Fmanual%2Fasync.html&data=02%7C01%7CCosmosDBPerformanceInternal%40service.microsoft.com%7C36fd15dea8384bfe9b6b08d7c0cf2113%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637189868158267433&sdata=%2B9xfJ%2BWE%2F0CyKRPu9AmXkUrT3d3uNA9GdmwvalV3EOg%3D&reserved=0) .
 
-    _ ***A nettó naplózás letiltása**_
+    _ * **A nettó naplózás letiltása** _
 
         Netty library logging is chatty and needs to be turned off (suppressing sign in the configuration may not be enough) to avoid additional CPU costs. If you are not in debugging mode, disable netty's logging altogether. So if you are using log4j to remove the additional CPU costs incurred by ``org.apache.log4j.Category.callAppenders()`` from netty add the following line to your codebase:
 

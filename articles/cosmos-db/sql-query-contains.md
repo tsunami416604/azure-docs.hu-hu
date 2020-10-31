@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 4877272fc2db521977a4111317118380399d27c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80b651951fe0f18b482fa06e4df9a363749bd3b0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84322703"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090834"
 ---
 # <a name="contains-azure-cosmos-db"></a>TARTALMAZZA (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Egy logikai értéket ad vissza, amely azt jelzi, hogy az első karakterlánc-kifejezés tartalmazza-e a másodpercet.  
   
@@ -78,7 +79,7 @@ Az első lekérdezés valószínűleg több RUs-t fog használni a második lek�
 
 Ha a tartalmazott tulajdonság mérete nagyobb, mint 1 KB egyes dokumentumokhoz, a lekérdezési motornak be kell töltenie ezeket a dokumentumokat. Ebben az esetben a lekérdezési motor nem tudja teljes mértékben kiértékelni a tartalmaz indexet. Ha nagy számú, 1 KB-nál nagyobb méretű dokumentumot tartalmaz, akkor a rendszer nem számít fel díjat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

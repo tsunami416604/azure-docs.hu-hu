@@ -4,62 +4,31 @@ description: Megtudhatja, hogyan használhatja a közelségi csoportokat az AK-f
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 10/19/2020
 author: jluk
-ms.openlocfilehash: 5b3dc3803cfb89f4a74d082b5913e69df1d03a00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a96489495abe3bfbed3030b3e08ff121c5c7cddf
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87986712"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090797"
 ---
-# <a name="reduce-latency-with-proximity-placement-groups-preview"></a>A késés és a közelségi csoportok (előzetes verzió) csökkentése
+# <a name="reduce-latency-with-proximity-placement-groups"></a>Csökkentse a késést a Proximity elhelyezési csoportokkal
 
 > [!Note]
 > Ha a közelségi elhelyezési csoportokat AK-on használja, az együttes elhelyezés csak az ügynök csomópontjaira vonatkozik. A csomópont csomópontra és a megfelelő üzemeltetett Pod-ról a pod-késésre való kijavítása megtörténik. Az egyhelyes elhelyezés nem befolyásolja a fürt vezérlő síkja elhelyezését.
 
 Amikor üzembe helyezi az alkalmazást az Azure-ban, a virtuálisgép-(VM-) példányok elosztása a régiók vagy a rendelkezésre állási zónák között hálózati késést okoz, ami hatással lehet az alkalmazás általános teljesítményére. A közelségi elhelyezési csoport olyan logikai csoport, amely biztosítja, hogy az Azure számítási erőforrásai fizikailag közel legyenek egymáshoz. Egyes alkalmazások, például a játékok, a mérnöki szimulációk és a nagy gyakoriságú kereskedelem (HFT) kis késést és gyorsan elvégezhető feladatokat igényelnek. A nagy teljesítményű számítástechnikai (HPC) forgatókönyvek esetében, például a következő esetekben érdemes lehet a [közeli elhelyezési csoportokat](../virtual-machines/linux/co-location.md#proximity-placement-groups) (PPG) használni a fürt csomópontjaihoz.
 
-## <a name="limitations"></a>Korlátozások
+## <a name="before-you-begin"></a>Előkészületek
+
+Ehhez a cikkhez az Azure CLI 2,14-es vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+
+### <a name="limitations"></a>Korlátozások
 
 * A közelségi elhelyezési csoport legfeljebb egy rendelkezésre állási zónához rendelhető.
 * A csomópont-készletnek Virtual Machine Scale Sets kell használnia egy közelségi elhelyezési csoport hozzárendeléséhez.
 * A csomópont-készletek csak létrehozási időpontot hozhatnak létre egy közelségi elhelyezési csoporthoz.
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-## <a name="before-you-begin"></a>Előkészületek
-
-A következő erőforrásokat kell telepítenie:
-
-- Az AK – előzetes verziójú 0.4.53 bővítmény
-
-### <a name="set-up-the-preview-feature-for-proximity-placement-groups"></a>Az előzetes verzió funkciójának beállítása a Proximity elhelyezési csoportok számára
-
-> [!IMPORTANT]
-> Ha a közelségi elhelyezési csoportokat AK-beli csomópont-készletekkel használja, az együttes elhelyezés csak az ügynök csomópontjaira vonatkozik. A csomópont csomópontra és a megfelelő üzemeltetett Pod-ról a pod-késésre való kijavítása megtörténik. Az egyhelyes elhelyezés nem befolyásolja a fürt vezérlő síkja elhelyezését.
-
-```azurecli-interactive
-# register the preview feature
-az feature register --namespace "Microsoft.ContainerService" --name "ProximityPlacementGroupPreview"
-```
-
-A regisztráció több percet is igénybe vehet. A szolgáltatás regisztrálásának ellenőrzéséhez használja az alábbi parancsot:
-
-```azurecli-interactive
-# Verify the feature is registered:
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/ProximityPlacementGroupPreview')].{Name:name,State:properties.state}"
-```
-
-Az előzetes verzió ideje alatt az *AK-előnézet CLI-* bővítményre van szükség a közelségi elhelyezési csoportok használatához. Használja az az [Extension Add][az-extension-add] parancsot, majd az az [Extension Update][az-extension-update] paranccsal keresse meg a rendelkezésre álló frissítéseket:
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
 
 ## <a name="node-pools-and-proximity-placement-groups"></a>Csomópont-készletek és Proximity-elhelyezési csoportok
 
@@ -143,7 +112,7 @@ az aks nodepool add \
     --ppg myPPGResourceID
 ```
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 
 A fürt törléséhez használja a [`az group delete`][az-group-delete] parancsot az AK-erőforráscsoport törléséhez:
 

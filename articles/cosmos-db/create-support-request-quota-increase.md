@@ -6,14 +6,15 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/17/2020
-ms.openlocfilehash: cd2bc3ec7e70049ee7e2c700731515a272e541dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7ec71220b75647e789508c760e50957b3b497fa
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87096833"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090035"
 ---
 # <a name="how-to-request-quota-increase-for-azure-cosmos-db-resources"></a>Kvóta növelésének kérése Azure Cosmos DB erőforrásokhoz
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 A Azure Cosmos DB erőforrásai rendelkeznek [alapértelmezett kvótákkal/korlátokkal](concepts-limits.md). Előfordulhat azonban, hogy a munkaterhelésnek több kvótára van szüksége, mint az alapértelmezett érték. Ilyen esetben fel kell vennie a Azure Cosmos DB csapatot, hogy kvótát növeljen. Ez a cikk azt ismerteti, hogyan kérhető le kvóta a Azure Cosmos DB erőforrásokra vonatkozóan. Azt is megtudhatja, hogyan engedélyezheti az előfizetéseket egy adott régió eléréséhez.
 
@@ -23,13 +24,13 @@ A kvóta növeléséhez létre kell hoznia egy új támogatási kérést a munka
 
 1. Jelentkezzen be az Azure Portalra.
 
-1. A bal oldali menüben válassza a **Súgó + támogatás** lehetőséget, majd kattintson az **új támogatási kérelem**elemre.
+1. A bal oldali menüben válassza a **Súgó + támogatás** lehetőséget, majd kattintson az **új támogatási kérelem** elemre.
 
 1. Az **alapvető beállítások** lapon adja meg a következő adatokat:
 
    * A **Probléma típusa** esetében válassza a **Szolgáltatási és előfizetési korlátok (kvóták)** értéket
-   * Az **előfizetés**mezőben válassza ki azt az előfizetést, amelynek meg szeretné emelni a kvótáját.
-   * A **kvóta típusa**beállításnál válassza a **Cosmos db**
+   * Az **előfizetés** mezőben válassza ki azt az előfizetést, amelynek meg szeretné emelni a kvótáját.
+   * A **kvóta típusa** beállításnál válassza a **Cosmos db**
 
    :::image type="content" source="./media/create-support-request-quota-increase/create-quota-increase-request.png" alt-text="Új Cosmos DB támogatási kérelem létrehozása a kvóta növeléséhez":::
 
@@ -37,7 +38,7 @@ A kvóta növeléséhez létre kell hoznia egy új támogatási kérést a munka
 
 1. Adja meg a következő adatokat az űrlapon:
 
-   * **Leírás**: adja meg a kérés rövid leírását, például a munkaterhelést, hogy az alapértelmezett értékek miért nem elégségesek. Annak az erőforrásnak a típusa alapján, amelynek a kvótáját emelni szeretné, kötelező megadni a **Leírás** mezőben a következő részleteket:
+   * **Leírás** : adja meg a kérés rövid leírását, például a munkaterhelést, hogy az alapértelmezett értékek miért nem elégségesek. Annak az erőforrásnak a típusa alapján, amelynek a kvótáját emelni szeretné, kötelező megadni a **Leírás** mezőben a következő részleteket:
 
      **Régiók kérelmek** Ha a kérés megfelel a régiónak az engedélyezési listához való hozzáadásának, ügyeljen arra, hogy a következő értékeket adja meg:
 
@@ -55,18 +56,18 @@ A kvóta növeléséhez létre kell hoznia egy új támogatási kérést a munka
        * Előfizetés azonosítója
        * Új adatbázis-fiók korlátja
 
-   * **Fájlfeltöltés: töltse**fel a támogatási kérelemhez kapcsolódó diagnosztikai fájlokat vagy más fájlokat. Ha többet szeretne megtudni a fájlfeltöltés-útmutatóról, tekintse meg az [Azure-támogatási]( ../azure-portal/supportability/how-to-manage-azure-support-request.md#upload-files) cikket.
+   * **Fájlfeltöltés: töltse** fel a támogatási kérelemhez kapcsolódó diagnosztikai fájlokat vagy más fájlokat. Ha többet szeretne megtudni a fájlfeltöltés-útmutatóról, tekintse meg az [Azure-támogatási]( ../azure-portal/supportability/how-to-manage-azure-support-request.md#upload-files) cikket.
 
-   * **Súlyosság**: válassza ki az elérhető súlyossági szintek egyikét az üzleti hatás alapján.
+   * **Súlyosság** : válassza ki az elérhető súlyossági szintek egyikét az üzleti hatás alapján.
 
-   * **Előnyben részesített kapcsolattartási módszer**: választhat, hogy **e-mailben** vagy **telefonon**keresztül is felveszi-e a kapcsolatot.
+   * **Előnyben részesített kapcsolattartási módszer** : választhat, hogy **e-mailben** vagy **telefonon** keresztül is felveszi-e a kapcsolatot.
 
 1. Adja meg a hátralévő részleteket, például a rendelkezésre állást, a támogatási nyelvet, a kapcsolattartási adatokat, az e-maileket és a telefonszámot az űrlapon.
 
-1. Válassza a **Next (tovább): felülvizsgálat + létrehozás**elemet. Érvényesítse a megadott információkat, és válassza a **Létrehozás** lehetőséget egy támogatási kérelem létrehozásához.
+1. Válassza a **Next (tovább): felülvizsgálat + létrehozás** elemet. Érvényesítse a megadott információkat, és válassza a **Létrehozás** lehetőséget egy támogatási kérelem létrehozásához.
 
 A Azure Cosmos DB támogatási csapat 24 órán belül kiértékeli a kérést, és vissza fog térni Önnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse meg az [alapértelmezett szolgáltatási kvótákat Azure Cosmos db](concepts-limits.md)

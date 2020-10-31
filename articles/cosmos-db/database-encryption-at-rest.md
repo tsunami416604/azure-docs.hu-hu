@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: ceb2b8812b52b1ca2030a0fd0006c9388630c05e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: abe4bb3a53e3177857cb8041fd255ec916985054
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487483"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089865"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Adatok titkosítása az Azure Cosmos DB-ben 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 A inaktív adatok titkosítása olyan kifejezés, amely általában a nem felejtő tárolóeszközökön, például SSD-meghajtókon és merevlemez-meghajtókon (HDD-k) lévő adatok titkosítására utal. A Cosmos DB az elsődleges adatbázisait az SSD-meghajtókon tárolja. Az adathordozó mellékleteit és biztonsági másolatait az Azure Blob Storage tárolja, amelyet általában a HDD-k készítenek. A inaktív adatok titkosítása Cosmos DB esetén az összes adatbázisa, adathordozó-melléklete és biztonsági mentése titkosítva van. Az adatok most már titkosítva vannak az átvitelben (a hálózaton keresztül) és a nyugalmi állapotban (nem felejtő tárolóban), így teljes körű titkosítást biztosítanak.
 

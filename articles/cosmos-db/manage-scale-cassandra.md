@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: cbd5dbd81cf8cda117447a15d4a73ae8a546f181
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0d5aded62c9c3990a3fa102863f4850bbfda6702
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482519"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088679"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API fiók rugalmas skálázása
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Számos lehetőség áll rendelkezésre a Cassandra Azure Cosmos DB API rugalmas jellegének megismerésére. A Azure Cosmos DB hatékony méretezésének megismeréséhez fontos tisztában lennie azzal, hogyan kell kiépíteni a megfelelő mennyiségű (RU/s) kérést a rendszer teljesítményére vonatkozó igényeknek megfelelően. Ha többet szeretne megtudni a kérelmekkel kapcsolatos egységekről, tekintse meg a [kérelmek egységeit](request-units.md) ismertető cikket. 
 
@@ -62,7 +63,7 @@ Ennek a megközelítésnek az az előnye, hogy lehetővé teszi, hogy dinamikusa
 
 A standard (manuális) vagy az átviteli sebesség programozott módján kívül az Azure Cosmos-tárolókat is konfigurálhatja az Automatikus méretezéssel kiosztott átviteli sebességben. Az automatikus méretezés automatikusan és azonnal méretezhető a megadott RU-tartományokon belül, a SLA-kat nem veszélyeztetve. További információ: [Azure Cosmos-tárolók és-adatbázisok létrehozása az autoscale](provision-throughput-autoscale.md) cikkben.
 
-Ennek a megközelítésnek az az előnye, hogy ez a legegyszerűbb módszer a méretezési igények kezelésére a rendszeren. **A beállított ru-tartományokon belül**nem fogja alkalmazni a díjszabási korlátozásokat. A hátránya az, hogy ha a rendszer skálázási igénye előre jelezhető, az automatikus skálázás kevésbé költséghatékony módja a skálázási igények kezelésének, mint a fent említett, a testre szabott vezérlési sík vagy az SDK-szintű megoldások használata.
+Ennek a megközelítésnek az az előnye, hogy ez a legegyszerűbb módszer a méretezési igények kezelésére a rendszeren. **A beállított ru-tartományokon belül** nem fogja alkalmazni a díjszabási korlátozásokat. A hátránya az, hogy ha a rendszer skálázási igénye előre jelezhető, az automatikus skálázás kevésbé költséghatékony módja a skálázási igények kezelésének, mint a fent említett, a testre szabott vezérlési sík vagy az SDK-szintű megoldások használata.
 
 Ha a maximális átviteli sebességet (RUs) az CQL használatával szeretné beállítani vagy módosítani, használja a következőt (a térköz/táblanév helyett):
 

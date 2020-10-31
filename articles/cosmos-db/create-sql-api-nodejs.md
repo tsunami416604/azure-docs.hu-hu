@@ -9,20 +9,21 @@ ms.topic: quickstart
 ms.date: 09/22/2020
 ms.author: anfeldma
 ms.custom: devx-track-js
-ms.openlocfilehash: 25e5d583b2ae94277b155e8e03d61a308a88ec8d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b4ed27e1515e898a71fb503bb0f260c608ef9f6f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91322750"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090205"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Rövid útmutató: a Node.js használata az adatok Azure Cosmos DB SQL API-fiókból való összekapcsolásához és lekérdezéséhez
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > - [.NET V3](create-sql-api-dotnet.md)
 > - [.NET V4](create-sql-api-dotnet-V4.md)
 > - [Java SDK v4](create-sql-api-java.md)
-> * [Spring-adatforrások v3](create-sql-api-spring-data.md)
+> * [Spring Data v3](create-sql-api-spring-data.md)
 > - [Node.js](create-sql-api-nodejs.md)
 > - [Python](create-sql-api-python.md)
 > - [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -47,7 +48,7 @@ Ehhez a rövid útmutatóhoz az [ingyenes kipróbálás Azure Cosmos db](https:/
 
 1. Navigáljon az [ingyenes kipróbálás Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) oldalra.
 
-1. Válassza ki az **SQL** API-fiókot, és válassza a **Létrehozás**lehetőséget. Jelentkezzen be Microsoft-fiók használatával.
+1. Válassza ki az **SQL** API-fiókot, és válassza a **Létrehozás** lehetőséget. Jelentkezzen be Microsoft-fiók használatával.
 
 1. A bejelentkezés sikeres befejezését követően az Azure Cosmos-fióknak készen kell állnia. Válassza a **Megnyitás lehetőséget a Azure Portal** az újonnan létrehozott fiók megnyitásához.
 
@@ -57,7 +58,7 @@ Az "ingyenes Azure Cosmos DB ingyen" lehetőséghez nincs szükség Azure-előfi
 
 Most már használhatja a Azure Portal Adatkezelő eszközét egy adatbázis és egy tároló létrehozásához.
 
-1. Válassza ki **adatkezelő**  >  **új tárolót**.
+1. Válassza ki **adatkezelő**  >  **új tárolót** .
 
    A jobb szélen megjelenik a **tároló hozzáadása** felület, ezért a jobb oldali görgetéshez jobbra kell görgetni a megjelenítéshez.
 
@@ -98,7 +99,7 @@ Most hozzon létre egy Node.js alkalmazást a GitHubról, állítsa be a kapcsol
 
 Ez a lépés nem kötelező. Ha szeretné megtanulni, hogyan jönnek létre az Azure Cosmos Database-erőforrások a kódban, tekintse át az alábbi kódrészleteket. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-string) szakaszra.
 
-Ha már ismeri az SQL JavaScript SDK korábbi verzióját, akkor a feltételek _gyűjteményét_ és _dokumentumát_is használhatja. Mivel Azure Cosmos DB [több API-modellt](introduction.md)is támogat, [a JavaScript SDK 2.0](https://www.npmjs.com/package/@azure/cosmos) -s vagy újabb verziója az általános feltételek _tárolóját_használja, amely lehet gyűjtemény, gráf vagy tábla, valamint a tároló tartalmának leírására szolgáló _elem_ .
+Ha már ismeri az SQL JavaScript SDK korábbi verzióját, akkor a feltételek _gyűjteményét_ és _dokumentumát_ is használhatja. Mivel Azure Cosmos DB [több API-modellt](introduction.md)is támogat, [a JavaScript SDK 2.0](https://www.npmjs.com/package/@azure/cosmos) -s vagy újabb verziója az általános feltételek _tárolóját_ használja, amely lehet gyűjtemény, gráf vagy tábla, valamint a tároló tartalmának leírására szolgáló _elem_ .
 
 A Cosmos DB JavaScript SDK neve " @azure/cosmos ", és telepíthető a NPM...
 
@@ -175,17 +176,17 @@ Az alábbi kódrészletek mind a _app.js_ fájlból származnak.
 
 Most lépjen vissza a Azure Portalra az Azure Cosmos-fiók kapcsolati sztring adatainak beszerzéséhez. Másolja a kapcsolati karakterláncot az alkalmazásba, hogy az képes legyen csatlakozni az adatbázishoz.
 
-1. A [Azure Portal](https://portal.azure.com/)Azure Cosmos db-fiókjában válassza a bal oldali navigációs menüben a **kulcsok** elemet, majd válassza az **írási/olvasási kulcsok**elemet. A következő lépésben a képernyő jobb oldalán található másolási gombok használatával másolja az URI-t és az elsődleges kulcsot a _app.js_ fájlba.
+1. A [Azure Portal](https://portal.azure.com/)Azure Cosmos db-fiókjában válassza a bal oldali navigációs menüben a **kulcsok** elemet, majd válassza az **írási/olvasási kulcsok** elemet. A következő lépésben a képernyő jobb oldalán található másolási gombok használatával másolja az URI-t és az elsődleges kulcsot a _app.js_ fájlba.
 
    :::image type="content" source="./media/create-sql-api-dotnet/keys.png" alt-text="Az Azure Portal Adatkezelője a Tároló hozzáadása panellel":::
 
 2. Nyissa meg a _config.js_ fájlt.
 
-3. Másolja az URI-értéket a portálról (a másolás gomb használatával), és adja meg a végpont kulcs értékét a _config.jsban _.
+3. Másolja az URI-értéket a portálról (a másolás gomb használatával), és adja meg a végpont kulcs értékét a _config.jsban_ .
 
    `endpoint: "<Your Azure Cosmos account URI>"`
 
-4. Ezután másolja ki az elsődleges kulcs értékét a portálról, és adja meg aconfig.jsértékének értékét `config.key` . _ _ Ezzel frissítette az alkalmazást az összes olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges.
+4. Ezután másolja ki az elsődleges kulcs értékét a portálról, és adja meg aconfig.jsértékének értékét `config.key` .  Ezzel frissítette az alkalmazást az összes olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges.
 
    `key: "<Your Azure Cosmos account key>"`
 
@@ -203,7 +204,7 @@ Ezzel a minta-alkalmazással folytathatja a kísérletet, vagy visszatérhet az 
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB fiókot, hogyan hozhat létre egy tárolót a Adatkezelő használatával, és hogyan futtathat Node.js alkalmazást. Így már további adatokat importálhat az Azure Cosmos DB-fiókba.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a917ade5da6938487076b983bd42ce9b27672c49
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 09c35ff8c045fa7d912324886fb31b02e606d2f8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637003"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089083"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory Azure biztonsági alapterve
 
@@ -688,9 +688,9 @@ Ha a Integration Runtimet egy Azure-beli virtuális gépen (VM) futtatja, köves
 
 A Microsoft által felügyelt mögöttes platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli, és az ügyfelek adatvesztésével és a kitettséggel szembeni védelem érdekében nagy hosszúságú. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
 
-* [Update Management megoldás az Azure-ban](https://docs.microsoft.com/azure/automation/automation-update-management)
+* [Update Management megoldás az Azure-ban](https://docs.microsoft.com/azure/automation/update-management/overview)
 
-* [Azure-beli virtuális gépek frissítéseinek és javításának kezelése](https://docs.microsoft.com/azure/automation/automation-tutorial-update-management)
+* [Azure-beli virtuális gépek frissítéseinek és javításának kezelése](https://docs.microsoft.com/azure/automation/update-management/manage-updates-for-vm)
 
 * [Az ügyfelek adatvédelmének megismerése az Azure-ban](../security/fundamentals/protection-customer-data.md)
 
@@ -702,9 +702,9 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató** : ha a Integration Runtime egy Azure-beli virtuális GÉPEN (VM) futtatja, akkor külső gyártótól származó javítási felügyeleti megoldást is használhat. Az Azure Update Management megoldással kezelheti a virtuális gépek frissítéseit és javításait. A Update Management a helyileg konfigurált frissítési tárházra támaszkodik a támogatott Windows-rendszerek javításához. Az olyan eszközök, mint a System Center Updates Publisher (a frissítések közzétevője) lehetővé teszik egyéni frissítések közzétételét Windows Server Update Services (WSUS) szolgáltatásban. Ez a forgatókönyv lehetővé teszi, hogy Update Management a harmadik féltől származó szoftverrel rendelkező frissítési adattárként Configuration Manager használó gépeket.
 
-* [Update Management megoldás az Azure-ban](https://docs.microsoft.com/azure/automation/automation-update-management)
+* [Update Management megoldás az Azure-ban](https://docs.microsoft.com/azure/automation/update-management/overview)
 
-* [Azure-beli virtuális gépek frissítéseinek és javításának kezelése](https://docs.microsoft.com/azure/automation/automation-tutorial-update-management)
+* [Azure-beli virtuális gépek frissítéseinek és javításának kezelése](https://docs.microsoft.com/azure/automation/update-management/manage-updates-for-vm)
 
 **Azure Security Center figyelés** : jelenleg nem érhető el
 

@@ -10,14 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: fa518900b05ba552cb066fbf55e4dbeaa6c681e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57edc16f4396e0fe71380d4f51fa9e0dcca1ef03
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86183205"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090817"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>A Bing Custom Search-élmény konfigurálása
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Az egyéni keresési példány lehetővé teszi a keresési élmény testreszabását, hogy csak olyan webhelyekről tartalmazzon tartalmat, amelyekkel a felhasználók törődnek. Webes keresés helyett a Bing csak az Önt érdeklő webes szeleteket keresi. Az egyéni kívánalmaknak megfelelő webes keresés létrehozásához használja a Bing Custom Search [portált](https://customsearch.ai).
 
@@ -82,9 +87,9 @@ Ezek az API-k a nem egyéni [Bing Image Search](../Bing-Image-Search/overview.md
 
 A keresési példány teszteléséhez használja a portál jobb oldalán található előnézet ablaktáblát a keresési lekérdezések elküldéséhez, és tekintse meg az eredményeket. 
 
-1. A keresőmező alatt válassza a **saját példány**lehetőséget. A keresési élmény eredményeit összehasonlíthatja a Bing-be a **Bing**lehetőség kiválasztásával. 
+1. A keresőmező alatt válassza a **saját példány** lehetőséget. A keresési élmény eredményeit összehasonlíthatja a Bing-be a **Bing** lehetőség kiválasztásával. 
 2. Válassza ki a biztonságos keresési szűrőt és a keresendő piacot (lásd a [lekérdezési paramétereket](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)).
-3. Írjon be egy lekérdezést, és nyomja le az ENTER billentyűt, vagy kattintson a keresés ikonra az aktuális konfiguráció eredményeinek megtekintéséhez. A kívánt keresési típus módosításához kattintson a **web**, a **képek**vagy a **videó** lehetőségre a megfelelő eredmények eléréséhez. 
+3. Írjon be egy lekérdezést, és nyomja le az ENTER billentyűt, vagy kattintson a keresés ikonra az aktuális konfiguráció eredményeinek megtekintéséhez. A kívánt keresési típus módosításához kattintson a **web** , a **képek** vagy a **videó** lehetőségre a megfelelő eredmények eléréséhez. 
 
 <a name="adjustrank"></a>
 
@@ -120,7 +125,7 @@ Két módon rögzíthet egy weblapot a tetejére:
 
 * A **rögzített** lapon adja meg annak a weblapnak az URL-címét, amely a tetejére és a hozzá tartozó lekérdezésre van rögzítve.
 
-* Az **előnézet** ablaktáblán írjon be egy keresési lekérdezést, és kattintson a Keresés gombra. Keresse meg a lekérdezéshez rögzíteni kívánt weblapot, majd kattintson a **rögzítés a tetejére**elemre. a rendszer hozzáadja a weboldalt és a lekérdezést a **rögzített** listához.
+* Az **előnézet** ablaktáblán írjon be egy keresési lekérdezést, és kattintson a Keresés gombra. Keresse meg a lekérdezéshez rögzíteni kívánt weblapot, majd kattintson a **rögzítés a tetejére** elemre. a rendszer hozzáadja a weboldalt és a lekérdezést a **rögzített** listához.
 
 ### <a name="specify-the-pins-match-condition"></a>A PIN-kód egyeztetési feltételének megadása
 
@@ -155,7 +160,7 @@ Ha a megfelelő szinten előfizetett az egyéni keresésre (lásd a [díjszabás
 - A szám növelése és lefokozása két rangsorolási beállításként.
 - Az egyes egyéni keresési példányok esetében az elvégezhető PIN-kódok maximális száma a 200-ra korlátozódik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni keresés meghívása](./search-your-custom-view.md)
 - [Üzemeltetett felhasználói felület konfigurálása](./hosted-ui.md)

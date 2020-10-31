@@ -6,14 +6,15 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 2e899e76a1e68e120e0419926f8169785146bbfc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 08f8095670b48fcefccb0a9adf477b83ce2537d3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485035"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089236"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Tördelés Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB a lekérdezések több oldalnyi eredményt is tartalmazhatnak. Ez a dokumentum ismerteti a Azure Cosmos DB lekérdezési motorjának feltételeit, hogy eldöntse, hogy több oldalra kell-e bontani a lekérdezési eredményeket. A folytatási tokeneket igény szerint a több oldalra kiterjedő lekérdezési eredmények kezelésére is használhatja.
 
@@ -45,12 +46,13 @@ A lekérdezés pontos eredményeinek biztosítása érdekében az összes oldalt
 
 ## <a name="continuation-tokens"></a>Folytatási tokenek
 
-A .NET SDK-ban és a Java SDK-ban igény szerint a folytatási tokeneket is használhatja könyvjelzőként a lekérdezés előrehaladásához. Azure Cosmos DB lekérdezés-végrehajtás állapot nélküli a kiszolgáló oldalán, és bármikor folytatható a folytatási token használatával. A folytatási tokenek nem támogatottak a Node.js SDK-ban vagy a Python SDK-ban.
+A .NET SDK-ban és a Java SDK-ban igény szerint a folytatási tokeneket is használhatja könyvjelzőként a lekérdezés előrehaladásához. Azure Cosmos DB lekérdezés-végrehajtás állapot nélküli a kiszolgáló oldalán, és bármikor folytatható a folytatási token használatával. A folytatási tokenek nem támogatottak a Node.js SDK-ban. A Python SDK esetében az egyetlen partíciós lekérdezések esetében támogatott, és a PK-t meg kell adni a beállítások objektumban, mert nem elegendő a lekérdezéshez.
 
 Íme néhány példa a folytatási tokenek használatára:
 
 - [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/samples/code-samples/Queries/Program.cs#L699-L734)
 - [Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L216)
+- [Python SDK](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/test/test_query.py#L533)
 
 Ha a lekérdezés folytatási tokent ad vissza, akkor további lekérdezési eredmények is megtalálhatók.
 

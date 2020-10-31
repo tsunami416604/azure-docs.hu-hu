@@ -9,12 +9,12 @@ ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f59f626d9edbf30f61935c026ac965dbbe946f8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 12f9a91995eb35fa61a7df5f3ead5255aea0f071
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516919"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089032"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Hitelesítés és engedélyezés az Azure térbeli horgonyokhoz
 
@@ -97,12 +97,12 @@ A Azure Active Directory felhasználókat célzó alkalmazások esetében javaso
 **A Azure Portal**
 1.    Az alkalmazás regisztrálása az Azure AD-ben natív alkalmazásként. A regisztrálás részeként meg kell határoznia, hogy az alkalmazás több-bérlős-e. Emellett meg kell adnia az alkalmazáshoz engedélyezett átirányítási URL-címeket is.
 1.  Nyissa meg az **API-engedélyek** lapot.
-2.  Válassza **az engedély hozzáadása**lehetőséget.
+2.  Válassza **az engedély hozzáadása** lehetőséget.
     1.  Válassza a **vegyes valóság erőforrás-szolgáltató** elemet a **saját szervezet által használt API** -k lapon.
-    2.  Válassza a **delegált engedélyek**lehetőséget.
-    3.  A **mixedreality**területen válassza a **mixedreality. bejelentkezési** elemet.
-    4.  Válassza az **engedélyek hozzáadása**lehetőséget.
-3.  Válassza a **rendszergazdai jóváhagyás megadása**lehetőséget.
+    2.  Válassza a **delegált engedélyek** lehetőséget.
+    3.  A **mixedreality** területen válassza a **mixedreality. bejelentkezési** elemet.
+    4.  Válassza az **engedélyek hozzáadása** lehetőséget.
+3.  Válassza a **rendszergazdai jóváhagyás megadása** lehetőséget.
     
 2. Adja meg az alkalmazás vagy a felhasználók számára az erőforráshoz való hozzáférést:
    1.    Lépjen a térbeli horgonyok erőforrásra a Azure Portal.
@@ -115,10 +115,10 @@ A Azure Active Directory felhasználókat célzó alkalmazások esetében javaso
 **A kódban**
 1.    Ügyeljen arra, hogy a saját Azure AD-alkalmazásának alkalmazás-AZONOSÍTÓját és átirányítási URI azonosítóját használja az **ügyfél-azonosító** és az **RedirectUri** paraméterekhez a MSAL-ben.
 2.    Adja meg a bérlő adatait:
-        1.    Ha az alkalmazás **csak a saját szervezetet**támogatja, cserélje le ezt az értéket a **bérlői azonosítójával** vagy a **bérlő nevével**. Például: contoso.microsoft.com.
-        2.    Ha az alkalmazás **minden szervezeti címtárban támogatja a fiókokat**, cserélje le ezt az értéket **szervezetekkel**.
-        3.    Ha az alkalmazás támogatja az **összes Microsoft-fiók felhasználót**, cserélje le ezt az értéket **közösre**.
-3.    A jogkivonat-kérelemben állítsa be a **hatókört** a következőre: **https://sts.mixedreality.azure.com//.default** . Ez a hatókör jelzi az Azure AD számára, hogy az alkalmazás jogkivonatot kér a vegyes valóság biztonsági jogkivonat-szolgáltatás (STS) számára.
+        1.    Ha az alkalmazás **csak a saját szervezetet** támogatja, cserélje le ezt az értéket a **bérlői azonosítójával** vagy a **bérlő nevével** . Például: contoso.microsoft.com.
+        2.    Ha az alkalmazás **minden szervezeti címtárban támogatja a fiókokat** , cserélje le ezt az értéket **szervezetekkel** .
+        3.    Ha az alkalmazás támogatja az **összes Microsoft-fiók felhasználót** , cserélje le ezt az értéket **közösre** .
+3.    A jogkivonat-kérelemben állítsa a **hatókört** a **következőre: " https://sts.mixedreality.azure.com//.default "** . Ez a hatókör jelzi az Azure AD számára, hogy az alkalmazás jogkivonatot kér a vegyes valóság biztonsági jogkivonat-szolgáltatás (STS) számára.
 
 A lépések elvégzése után az alkalmazásnak képesnek kell lennie az Azure AD-token MSAL való beszerzésére. Beállíthatja, hogy az Azure AD-jogkivonat a `authenticationToken` felhőalapú munkamenet-konfigurációs objektumon legyen:
 
@@ -174,10 +174,10 @@ Az Azure AD hozzáférési jogkivonatot a [MSAL](../../active-directory/develop/
 
 **A Azure Portal**
 1.    Az alkalmazás regisztrálása az Azure AD-ben:
-        1.    A Azure Portal válassza a **Azure Active Directory**lehetőséget, majd válassza a **Alkalmazásregisztrációk**lehetőséget.
-        2.    Válassza az **új regisztráció**lehetőséget.
-        3.    Adja meg az alkalmazás nevét, válassza a **webalkalmazás/API** lehetőséget az alkalmazás típusaként, és adja meg a szolgáltatáshoz tartozó hitelesítési URL-címet. Kattintson a **Létrehozás** gombra.
-4.    Az alkalmazásban válassza a **Beállítások**lehetőséget, majd válassza a **tanúsítványok és titkok** lapot. Hozzon létre egy új ügyfél titkot, válasszon ki egy időtartamot, majd kattintson a **Hozzáadás**gombra. Ügyeljen arra, hogy a titkos értéket mentse. A webszolgáltatás kódjában szerepelnie kell a szolgáltatásnak.
+        1.    A Azure Portal válassza a **Azure Active Directory** lehetőséget, majd válassza a **Alkalmazásregisztrációk** lehetőséget.
+        2.    Válassza az **új regisztráció** lehetőséget.
+        3.    Adja meg az alkalmazás nevét, válassza a **webalkalmazás/API** lehetőséget az alkalmazás típusaként, és adja meg a szolgáltatáshoz tartozó hitelesítési URL-címet. Válassza a **Létrehozás** lehetőséget.
+4.    Az alkalmazásban válassza a **Beállítások** lehetőséget, majd válassza a **tanúsítványok és titkok** lapot. Hozzon létre egy új ügyfél titkot, válasszon ki egy időtartamot, majd kattintson a **Hozzáadás** gombra. Ügyeljen arra, hogy a titkos értéket mentse. A webszolgáltatás kódjában szerepelnie kell a szolgáltatásnak.
 2.    Adja meg az alkalmazás és/vagy a felhasználók hozzáférését az erőforráshoz:
         1.    Lépjen a térbeli horgonyok erőforrásra a Azure Portal.
         2.    Lépjen a **hozzáférés-vezérlés (iam)** lapra.
@@ -186,7 +186,7 @@ Az Azure AD hozzáférési jogkivonatot a [MSAL](../../active-directory/develop/
         2.    A **Select (kiválasztás** ) mezőben adja meg azon alkalmazások nevét vagy nevét, amelyekhez hozzáférést szeretne hozzárendelni. Ha azt szeretné, hogy az alkalmazás felhasználói különböző szerepkörökkel rendelkezzenek a térbeli horgonyok fiókjában, regisztráljon több alkalmazást az Azure AD-ben, és rendeljen hozzá külön szerepkört. Ezután implementálja az engedélyezési logikát, hogy a megfelelő szerepkört használja a felhasználók számára.
         
               > [!NOTE] 
-              > A **szerepkör-hozzárendelés hozzáadása** panelen, a **hozzáférés hozzárendelése**, válassza az **Azure ad-felhasználó, csoport vagy egyszerű szolgáltatásnév**lehetőséget.
+              > A **szerepkör-hozzárendelés hozzáadása** panelen, a **hozzáférés hozzárendelése** , válassza az **Azure ad-felhasználó, csoport vagy egyszerű szolgáltatásnév** lehetőséget.
     
       3.    Válassza a **Mentés** lehetőséget.
     
@@ -195,9 +195,9 @@ Az Azure AD hozzáférési jogkivonatot a [MSAL](../../active-directory/develop/
 >[!NOTE] 
 > Használhatja a GitHubon elérhető szolgáltatási mintát.
 
-1.    Ügyeljen arra, hogy a saját Azure AD-alkalmazásának alkalmazás-AZONOSÍTÓját, az alkalmazás titkos kulcsát és átirányítási URI-JÁT a MSAL **ügyfél-azonosító**, **titkos**és **RedirectUri** paramétereként használja.
+1.    Ügyeljen arra, hogy a saját Azure AD-alkalmazásának alkalmazás-AZONOSÍTÓját, az alkalmazás titkos kulcsát és átirányítási URI-JÁT a MSAL **ügyfél-azonosító** , **titkos** és **RedirectUri** paramétereként használja.
 2.    Állítsa be a bérlő AZONOSÍTÓját saját Azure AD-bérlői AZONOSÍTÓra a MSAL-ben a **Authority** paraméterben.
-3.    A jogkivonat-kérelemben állítsa be a **hatókört** a következőre: **https://sts.mixedreality.azure.com//.default** .
+3.    A jogkivonat-kérelemben állítsa a **hatókört** a **következőre: " https://sts.mixedreality.azure.com//.default "** .
 
 A lépések elvégzése után a háttér-szolgáltatás lekérhet egy Azure AD-tokent. Ezután egy MR-tokenre cserélheti azt, amelyet vissza fog térni az ügyfélnek. A MR-tokenek lekéréséhez egy Azure AD-tokent kell használni REST-hívással. Íme egy példa a hívásra:
 
@@ -266,9 +266,9 @@ configuration.AccessToken(LR"(MyAccessToken)");
 
 A szolgáltatás alkalmazásaihoz, szolgáltatásaihoz vagy az Azure AD-felhasználókhoz nyújtott hozzáférés szintjének szabályozása érdekében a meglévő szerepköröket igény szerint hozzárendelheti az Azure térbeli horgonyok fiókjaihoz:
 
-- **Térbeli horgonyok fiókjának tulajdonosa**. Az ezzel a szerepkörrel rendelkező alkalmazások vagy felhasználók térbeli horgonyokat hozhatnak létre, lekérdezéseket végezhetnek, és törölhetik azokat. Ha a fiók kulcsainak használatával végzi a hitelesítést a fiókjával, a rendszer hozzárendeli a térbeli horgonyok fiók tulajdonosi szerepkörét a hitelesített rendszerbiztonsági tag számára.
-- **Térbeli horgonyok fiók közreműködője**. A szerepkörrel rendelkező alkalmazások vagy felhasználók térbeli horgonyokat és lekérdezéseket hozhatnak létre, de nem törölhetik őket.
-- **Térbeli horgonyok fiókjának olvasója**. Az ezzel a szerepkörrel rendelkező alkalmazások vagy felhasználók csak térbeli horgonyokat tudnak lekérdezni. Nem hozhatnak létre újakat, törölhetik a meglévőket, vagy frissíthetik a metaadatokat. Ez a szerepkör jellemzően olyan alkalmazásokhoz használatos, ahol egyes felhasználók a környezetet használják, de mások csak a környezetbe helyezett horgonyokat tudják visszahívni.
+- **Térbeli horgonyok fiókjának tulajdonosa** . Az ezzel a szerepkörrel rendelkező alkalmazások vagy felhasználók térbeli horgonyokat hozhatnak létre, lekérdezéseket végezhetnek, és törölhetik azokat. Ha a fiók kulcsainak használatával végzi a hitelesítést a fiókjával, a rendszer hozzárendeli a térbeli horgonyok fiók tulajdonosi szerepkörét a hitelesített rendszerbiztonsági tag számára.
+- **Térbeli horgonyok fiók közreműködője** . A szerepkörrel rendelkező alkalmazások vagy felhasználók térbeli horgonyokat és lekérdezéseket hozhatnak létre, de nem törölhetik őket.
+- **Térbeli horgonyok fiókjának olvasója** . Az ezzel a szerepkörrel rendelkező alkalmazások vagy felhasználók csak térbeli horgonyokat tudnak lekérdezni. Nem hozhatnak létre újakat, törölhetik a meglévőket, vagy frissíthetik a metaadatokat. Ez a szerepkör jellemzően olyan alkalmazásokhoz használatos, ahol egyes felhasználók a környezetet használják, de mások csak a környezetbe helyezett horgonyokat tudják visszahívni.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: 8e6a6d1c557a765e55152685f08e80ad54bbd903
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c206c89bf8e9abae219ce863a8b08f4b0e7041c3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362010"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089916"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>Azure Cosmos DB és Azure App Service üzembe helyezése a GitHub webalkalmazásával egy Azure Resource Manager sablon használatával
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ebből az oktatóanyagból megtudhatja, hogyan végezheti el az első futtatáshoz kapcsolódó, Azure Cosmos DBhoz csatlakozó webalkalmazások "nincs érintéses" telepítését, anélkül, hogy a `appsettings.json` Azure Portal az Azure app Services az alkalmazásra vonatkozó kapcsolati adatokat kellene kivágnia és beillesztenie a Azure Cosmos db. Ezek a műveletek egyetlen művelettel Azure Resource Manager sablonnal hajthatók végre. Ebben a példában egy [webalkalmazás-oktatóanyagból](sql-api-dotnet-application.md)fogjuk üzembe helyezni a [Azure Cosmos db Todo-mintát](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app) .
 

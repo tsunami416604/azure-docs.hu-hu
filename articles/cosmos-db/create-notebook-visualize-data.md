@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 9b2ef5ddb56e3d0422a2a876993ddda0bd97e4ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24ef78d44a1a632b86bf62e309960dd74b609c81
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85961098"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088811"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Oktatóanyag: jegyzetfüzet létrehozása Azure Cosmos DBban az adat elemzéséhez és megjelenítéséhez
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ez a cikk azt ismerteti, hogyan használhatók a beépített Jupyter jegyzetfüzetek a mintaként szolgáló kiskereskedelmi adatAzure Cosmos DBek importálásához. Láthatja, hogyan használható az SQL és a Azure Cosmos DB Magic parancsok a lekérdezések futtatásához, az adatelemzéshez és az eredmények megjelenítéséhez.
 
@@ -28,7 +29,7 @@ Ebben a szakaszban létrehozza az Azure Cosmos-adatbázist, a tárolót, és imp
 
 1. Navigáljon az Azure Cosmos-fiókjához, és nyissa meg a **adatkezelő.**
 
-1. Lépjen a **jegyzetfüzetek** lapra, válassza a `…` **saját jegyzetfüzetek** lehetőséget, majd hozzon létre egy **új jegyzetfüzetet**. Az alapértelmezett Kernelként válassza a **Python 3** elemet.
+1. Lépjen a **jegyzetfüzetek** lapra, válassza a `…` **saját jegyzetfüzetek** lehetőséget, majd hozzon létre egy **új jegyzetfüzetet** . Az alapértelmezett Kernelként válassza a **Python 3** elemet.
 
    :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="Új jegyzetfüzet létrehozása&quot;:::
 
@@ -300,6 +301,6 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
 
 1. Ezután létre fog hozni egy &quot;RetailDemo&quot; nevű adatbázist és egy &quot;WebsiteData":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a Python notebook-parancsokról, olvassa el a következő témakört: [a beépített notebook-parancsok és-szolgáltatások használata Azure Cosmos db](use-python-notebook-features-and-commands.md) cikkben.

@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 3b5cc1dd61b4f01e40c1cc812e93a448855ad92d
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 53a44ed15517cad157e43d8de465438537e15121
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926512"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088607"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>Azure Cosmos DB Core (SQL) API-erőforrások kezelése a PowerShell használatával
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Az alábbi útmutató ismerteti, hogyan használható a PowerShell a Azure Cosmos DB Core (SQL) API-erőforrások (például a Cosmos-fiók, az adatbázis, a tároló és az átviteli sebesség) felügyeletére és automatizálására. Más API-khoz készült PowerShell-parancsmagok esetében lásd: [PowerShell-minták a Cassandra](powershell-samples-cassandra.md), PowerShell-minták a [MongoDB API](powershell-samples-mongodb.md)-hoz, PowerShell-minták a [Gremlin](powershell-samples-gremlin.md), PowerShell-minták [táblázathoz](powershell-samples-table.md)
 

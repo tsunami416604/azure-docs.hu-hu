@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: mansha
-ms.openlocfilehash: 167d1f21a2eb7ea4c685b5bbbb5d8d64fcc1367e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c621f11e00d418ca46be1bc04676403e6b0e2357
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278700"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089763"
 ---
 # <a name="migrate-your-application-from-amazon-dynamodb-to-azure-cosmos-db"></a>Telepítse át az alkalmazást az Amazon DynamoDB-ból Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A Azure Cosmos DB egy méretezhető, globálisan elosztott, teljes körűen felügyelt adatbázis. Garantáltan alacsony késésű hozzáférést biztosít az adataihoz. Ha többet szeretne megtudni a Azure Cosmos DBről, tekintse meg az [áttekintő](introduction.md) cikket. Ez a cikk azt ismerteti, hogyan telepítheti át .NET-alkalmazását a DynamoDB-ről Azure Cosmos DBre minimális kód-módosításokkal.
 
@@ -25,7 +26,7 @@ A Azure Cosmos DB és a DynamoDB között a következők a legfontosabb fogalmi 
 |---|---|
 |Nem értelmezhető|  Adatbázis |
 |Tábla      |  Gyűjtemény |
-|  Elem |  Dokumentum |
+|  Item |  Dokumentum |
 |Attribútum|Mező|
 |Másodlagos index|Másodlagos index|
 |Elsődleges kulcs – partíciós kulcs|Partíciókulcs|
@@ -39,7 +40,7 @@ A Azure Cosmos DB és a DynamoDB között a következők a legfontosabb fogalmi 
 
 A Azure Cosmos DB egyszerűbb JSON-szerkezettel rendelkezik a DynamoDB képest. A következő példa a különbségeket mutatja be
 
-**DynamoDB**:
+**DynamoDB** :
 
 A következő JSON-objektum a DynamoDB adatformátumát jelöli.
 
@@ -73,7 +74,7 @@ ProvisionedThroughput: {
 }
  ```
 
-**Azure Cosmos db**:
+**Azure Cosmos db** :
 
 A következő JSON-objektum a Azure Cosmos DB adatformátumát jelöli
 
@@ -122,7 +123,7 @@ Install-Package Microsoft.Azure.Cosmos
 
 ### <a name="establish-connection"></a>Kapcsolat létesítése
 
-**DynamoDB**:
+**DynamoDB** :
 
 Az Amazon DynamoDB a következő kódot használja a kapcsolódáshoz:
 
@@ -132,7 +133,7 @@ Az Amazon DynamoDB a következő kódot használja a kapcsolódáshoz:
         try { aws_dynamodbclient = new AmazonDynamoDBClient( addbConfig ); }
 ```
 
-**Azure Cosmos db**:
+**Azure Cosmos db** :
 
 Azure Cosmos DB összekapcsolásához frissítse a kódját a következőre:
 
@@ -164,7 +165,7 @@ A Azure Cosmos DB a következő lehetőségek közül választhat a kapcsolódá
 
 ### <a name="provision-the-container"></a>A tároló kiépítése
 
-**DynamoDB**:
+**DynamoDB** :
 
 Az adatgyűjtés Amazon DynamoDB való tárolásához először létre kell hoznia a táblát. Ebben a folyamatban a séma, a kulcs típusa és az attribútumok meghatározása a következő kódban látható módon:
 
@@ -220,7 +221,7 @@ request = new CreateTableRequest
 };
 ```
 
-**Azure Cosmos db**:
+**Azure Cosmos db** :
 
 Az Amazon DynamoDB-ban az olvasási számítási egységeket kell kiépíteni & írási számítási egységeket. Míg Azure Cosmos DB az átviteli sebességet a [kérelmek egysége (ru/s)](request-units.md)alapján határozza meg, amely bármilyen művelethez dinamikusan használható. Az adatgyűjtés adatbázis-> tároló--> tételként történik. Megadhatja az átviteli sebességet az adatbázis szintjén vagy a gyűjtemény szintjén, vagy mindkettőt.
 
@@ -238,7 +239,7 @@ await cosmosDatabase.CreateContainerIfNotExistsAsync(new ContainerProperties() {
 
 ### <a name="load-the-data"></a>Az adatok betöltése
 
-**DynamoDB**:
+**DynamoDB** :
 
 Az alábbi kód bemutatja, hogyan tölthetők be az Amazon DynamoDB. A moviesArray JSON-dokumentumból áll, majd meg kell ismételni a JSON-dokumentum betöltését az Amazon DynamoDB:
 
@@ -262,7 +263,7 @@ for( int i = 0, j = 99; i < n; i++ )
     await putItem;
 ```
 
-**Azure Cosmos db**:
+**Azure Cosmos db** :
 
 Azure Cosmos DB a stream és az írás a következővel végezhető el: `moviesContainer.CreateItemStreamAsync()` . Ebben a példában azonban a JSON a *MovieModel* típusra lesz deszerializálva a Type-Casting funkció bemutatásához. A kód többszálas, amely a Azure Cosmos DB elosztott architektúráját fogja használni, és felgyorsítja a betöltést:
 
@@ -297,7 +298,7 @@ await Task.WhenAll(concurrentTasks);
 
 ### <a name="create-a-document"></a>Dokumentum létrehozása
 
-**DynamoDB**:
+**DynamoDB** :
 
 Az Amazon DynamoDB új dokumentumának írása nem biztonságos, a következő példa newItem használ:
 
@@ -306,7 +307,7 @@ Task<Document> writeNew = moviesTable.PutItemAsync(newItem, token);
 await writeNew;
 ```
 
-**Azure Cosmos db**:
+**Azure Cosmos db** :
 
 A Azure Cosmos DB adatmodell használatával adja meg a biztonságot. A "MovieModel" nevű adatmodellt használjuk:
 
@@ -357,7 +358,7 @@ Azure Cosmos DB newItem a MovieModel lesz:
 
 ### <a name="read-a-document"></a>Dokumentum olvasása
 
-**DynamoDB**:
+**DynamoDB** :
 
 Az Amazon DynamoDB való olvasáshoz primitíveket kell meghatároznia:
 
@@ -370,7 +371,7 @@ Primitive range = new Primitive(title, false);
   movie_record = await readMovie;
 ```
 
-**Azure Cosmos db**:
+**Azure Cosmos db** :
 
 Azonban a Azure Cosmos DB a lekérdezés természetes (LINQ):
 
@@ -391,13 +392,13 @@ A fenti példában szereplő dokumentumok gyűjteménye a következőket eredmé
 
 ### <a name="update-an-item"></a>Elem módosítása
 
-**DynamoDB**: a cikk frissítése az Amazon DynamoDB:
+**DynamoDB** : a cikk frissítése az Amazon DynamoDB:
 
 ```csharp
 updateResponse = await client.UpdateItemAsync( updateRequest );
 ````
 
-**Azure Cosmos db**:
+**Azure Cosmos db** :
 
 A Azure Cosmos DBban a frissítés Upsert műveletként fog megjelenni, amely azt jelenti, hogy a dokumentum nem létezik:
 
@@ -407,7 +408,7 @@ await moviesContainer.UpsertItemAsync<MovieModel>(updatedMovieModel);
 
 ### <a name="delete-a-document"></a>Dokumentum törlése
 
-**DynamoDB**:
+**DynamoDB** :
 
 Ha törölni szeretne egy tételt az Amazon DynamoDB-ban, újra kell esnie a primitívekre:
 
@@ -422,7 +423,7 @@ Primitive hash = new Primitive(year.ToString(), true);
         deletedItem = await delItem;
 ```
 
-**Azure Cosmos db**:
+**Azure Cosmos db** :
 
 Azure Cosmos DB a dokumentumot lekérheti és aszinkron módon törölheti:
 
@@ -440,7 +441,7 @@ while (result.HasMoreResults)
 
 ### <a name="query-documents"></a>Dokumentumok lekérdezése
 
-**DynamoDB**:
+**DynamoDB** :
 
 Az Amazon DynamoDB az adatok lekérdezéséhez API-függvények szükségesek:
 
@@ -454,7 +455,7 @@ QueryOperationConfig config = new QueryOperationConfig( );
   search = moviesTable.Query( config ); 
 ```
 
-**Azure Cosmos db**:
+**Azure Cosmos db** :
 
 Azure Cosmos DB a vetítést és a szűrést egy egyszerű SQL-lekérdezésen belül végezheti el:
 
@@ -494,7 +495,7 @@ var result = moviesContainer.GetItemQueryIterator<MovieModel>(
 
 ### <a name="delete-a-container"></a>Tároló törlése
 
-**DynamoDB**:
+**DynamoDB** :
 
 Az Amazon DynamoDB lévő tábla törléséhez a következőket adhatja meg:
 
@@ -502,7 +503,7 @@ Az Amazon DynamoDB lévő tábla törléséhez a következőket adhatja meg:
 client.DeleteTableAsync( tableName );
 ```
 
-**Azure Cosmos db**:
+**Azure Cosmos db** :
 
 A gyűjtemény Azure Cosmos DBban való törléséhez a következőket adhatja meg:
 

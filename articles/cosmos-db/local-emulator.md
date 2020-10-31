@@ -7,14 +7,15 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: 9455ac3520192274e80f2d9e0fdfd1c8f8a238a3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b1a0382b6bb650b6761897f4a16f988e5ce00c1e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482621"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088743"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulator telepítése és használata helyi fejlesztéshez és teszteléshez
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Az Azure Cosmos Emulator egy helyi környezetet biztosít, amely a Azure Cosmos DB szolgáltatás fejlesztésére szolgál. Az Azure Cosmos Emulator használatával helyileg fejlesztheti és tesztelheti alkalmazását anélkül, hogy Azure-előfizetést hozna létre, vagy bármilyen költséget kellene fizetnie. Ha meggyőződött arról, hogy az alkalmazás hogyan működik az Azure Cosmos emulatorban, átválthat egy Azure Cosmos-fiók használatára a felhőben. Ez a cikk bemutatja, hogyan telepítheti és használhatja az emulátort Windows-, Linux-, macOS-és Windows Docker-környezetekben.
 
@@ -80,7 +81,7 @@ Ha az alapértelmezett beállításokat használta, a telepítés után a rendsz
 
 ## <a name="use-the-emulator-on-windows"></a><a id="run-on-windows"></a>Az emulátor használata Windows rendszeren
 
-Alapértelmezés szerint az Azure Cosmos Emulator telepítve van a `C:\Program Files\Azure Cosmos DB Emulator` helyen. Az Azure Cosmos Emulator Windows rendszeren való elindításához kattintson a **Start** gombra, vagy nyomja le a Windows billentyűt. Kezdje el beírni az **Azure Cosmos emulatort**, és válassza ki az emulátort az alkalmazások listájából.
+Alapértelmezés szerint az Azure Cosmos Emulator telepítve van a `C:\Program Files\Azure Cosmos DB Emulator` helyen. Az Azure Cosmos Emulator Windows rendszeren való elindításához kattintson a **Start** gombra, vagy nyomja le a Windows billentyűt. Kezdje el beírni az **Azure Cosmos emulatort** , és válassza ki az emulátort az alkalmazások listájából.
 
 :::image type="content" source="./media/local-emulator/database-local-emulator-start.png" alt-text="Kattintson a Start gombra, vagy nyomja le a Windows billentyűt, kezdje el beírni az Azure Cosmos emulatort, és válassza ki az emulátort az alkalmazások listájából.":::
 
@@ -98,7 +99,7 @@ Az Azure Cosmos Emulator alapértelmezés szerint a helyi gépen ("localhost") f
 
 Az Azure Cosmos emulatort a Windows Docker-tárolón futtathatja. További információért tekintse meg a Docker-lekérési parancs és a [GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker) a [Docker hub](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/) -t `Dockerfile` . Az emulátor jelenleg nem működik a Oracle Linux Docker-ben. Az alábbi utasítások segítségével futtathatja az emulátort a Windows Docker szolgáltatásban:
 
-1. Miután telepítette a [Windows Docker](https://www.docker.com/docker-windows) szolgáltatást, váltson a Windows-tárolók elemre, és kattintson a jobb gombbal a Docker ikonjára az eszköztáron, és válassza a **váltás Windows-tárolóra**lehetőséget.
+1. Miután telepítette a [Windows Docker](https://www.docker.com/docker-windows) szolgáltatást, váltson a Windows-tárolók elemre, és kattintson a jobb gombbal a Docker ikonjára az eszköztáron, és válassza a **váltás Windows-tárolóra** lehetőséget.
 
 1. Ezután kérje le az emulátor rendszerképét a Docker Hubról. Ehhez futtassa a következő parancsot azon a felületen, amelyet használni szokott.
 
@@ -293,7 +294,7 @@ Ha Mac gépen dolgozik, kövesse az alábbi lépéseket:
 
 1. Nyissa meg a tanúsítványok listáját, és azonosítsa a nevet `localhost` .
 
-1. Nyissa meg az adott elemhez tartozó helyi menüt, válassza az *elem beolvasása* és a *megbízhatóság*a  >  *tanúsítvány használatakor* lehetőséget, majd válassza a *mindig megbízható*lehetőséget. 
+1. Nyissa meg az adott elemhez tartozó helyi menüt, válassza az *elem beolvasása* és a *megbízhatóság* a  >  *tanúsítvány használatakor* lehetőséget, majd válassza a *mindig megbízható* lehetőséget. 
 
    :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="Kattintson a Start gombra, vagy nyomja le a Windows billentyűt, kezdje el beírni az Azure Cosmos emulatort, és válassza ki az emulátort az alkalmazások listájából.":::
   
@@ -328,7 +329,7 @@ Ha több géppel is rendelkezik egyetlen hálózattal, és ha az emulátort egy 
 
 Egy helyi hálózaton futtathatja az emulátort. A hálózati hozzáférés engedélyezéséhez írja be a `/AllowNetworkAccess` parancsot a [parancssorba](emulator-command-line-parameters.md), amelyhez a vagy a paramétert is meg kell adni `/Key=key_string` `/KeyFile=file_name` . A használatával létrehozhat `/GenKeyFile=file_name` egy véletlenszerű kulccsal rendelkező fájlt. Ezt követően átadhatja a következőt: `/KeyFile=file_name` vagy `/Key=contents_of_file` .
 
-A hálózati hozzáférés első alkalommal történő engedélyezéséhez a felhasználónak le kell állítania az emulátort, és törölnie kell az emulátor adatkönyvtárának *%LOCALAPPDATA%\CosmosDBEmulator*.
+A hálózati hozzáférés első alkalommal történő engedélyezéséhez a felhasználónak le kell állítania az emulátort, és törölnie kell az emulátor adatkönyvtárának *%LOCALAPPDATA%\CosmosDBEmulator* .
 
 ## <a name="authenticate-connections-when-using-emulator"></a><a id="authenticate-requests"></a>Kapcsolatok hitelesítése emulátor használatakor
 
@@ -458,11 +459,11 @@ Indítsa el az emulátort egy rendszergazdai [parancssorból](emulator-command-l
 
 Az emulátor eltávolításához kövesse az alábbi lépéseket:
 
-1. Lépjen ki a helyi emulátor összes nyitott példányáról úgy, hogy a tálcán a jobb gombbal az **Azure Cosmos Emulator** ikonjára kattint, majd kiválasztja a **Kilépés**lehetőséget. Az összes példány bezárása egy percig is eltarthat.
+1. Lépjen ki a helyi emulátor összes nyitott példányáról úgy, hogy a tálcán a jobb gombbal az **Azure Cosmos Emulator** ikonjára kattint, majd kiválasztja a **Kilépés** lehetőséget. Az összes példány bezárása egy percig is eltarthat.
 
 1. Írja be a Windows keresőmezőbe az **alkalmazások & szolgáltatások** elemet, majd válassza az **alkalmazások & szolgáltatások (Rendszerbeállítások)** eredményt.
 
-1. Az alkalmazások listájában görgessen a **Azure Cosmos db emulátorhoz**, válassza ki azt, kattintson az **Eltávolítás**gombra, és erősítse meg, majd válassza újra az **Eltávolítás** lehetőséget.
+1. Az alkalmazások listájában görgessen a **Azure Cosmos db emulátorhoz** , válassza ki azt, kattintson az **Eltávolítás** gombra, és erősítse meg, majd válassza újra az **Eltávolítás** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

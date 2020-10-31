@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: d3e7eca546adbcac8af882ff4cd5b09d3d643d4c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: e62128edf6558e461bf2c61f16d513c4085241e7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489268"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090392"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure szinapszis-hivatkozás konfigurálása és használata Azure Cosmos DB (előzetes verzió)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
 Az [Azure szinapszis hivatkozása Azure Cosmos db](synapse-link.md) egy felhőalapú hibrid tranzakciós és analitikai feldolgozási (HTAP) képesség, amely lehetővé teszi a közel valós idejű elemzések futtatását Azure Cosmos db-ban lévő operatív adaton. A szinapszis-kapcsolat szoros zökkenőmentes integrációt hoz létre Azure Cosmos DB és az Azure szinapszis Analytics között.
 
@@ -70,11 +71,11 @@ A tároló létrehozásakor bekapcsolhatja az analitikus tárolót egy Azure Cos
 
    :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="A szinapszis-hivatkozás előzetes funkciójának keresése":::
 
-1. Ha korábban nem engedélyezte a szinapszis hivatkozását ezen a fiókon, a rendszer felszólítja erre, mert ez egy, az analitikai tároló engedélyezett tárolójának létrehozásához szükséges előfeltétel. Ha a rendszer kéri, válassza a **szinapszis-hivatkozás engedélyezése**lehetőséget. A folyamat elvégzése 1 – 5 percet is igénybe vehet.
+1. Ha korábban nem engedélyezte a szinapszis hivatkozását ezen a fiókon, a rendszer felszólítja erre, mert ez egy, az analitikai tároló engedélyezett tárolójának létrehozásához szükséges előfeltétel. Ha a rendszer kéri, válassza a **szinapszis-hivatkozás engedélyezése** lehetőséget. A folyamat elvégzése 1 – 5 percet is igénybe vehet.
 
-1. Az **OK gombra**kattintva hozzon létre egy analitikai tár által engedélyezett Azure Cosmos-tárolót.
+1. Az **OK gombra** kattintva hozzon létre egy analitikai tár által engedélyezett Azure Cosmos-tárolót.
 
-1. A tároló létrehozása után ellenőrizze, hogy az analitikai tároló engedélyezve van-e. ehhez kattintson a **Beállítások**lehetőségre, közvetlenül a adatkezelő lévő dokumentumok elemre, és ellenőrizze, hogy be van-e kapcsolva az **analitikai tár élettartama** beállítás.
+1. A tároló létrehozása után ellenőrizze, hogy az analitikai tároló engedélyezve van-e. ehhez kattintson a **Beállítások** lehetőségre, közvetlenül a adatkezelő lévő dokumentumok elemre, és ellenőrizze, hogy be van-e kapcsolva az **analitikai tár élettartama** beállítás.
 
 ### <a name="net-sdk"></a>.NET SDK
 
@@ -217,7 +218,7 @@ Kövesse a [lekérdezés Azure Cosmos db analitikus tároló](../synapse-analyti
 
 ## <a name="query-the-analytical-store-using-synapse-sql-serverless"></a><a id="query-analytical-store-sql-on-demand"></a> Az analitikai tároló lekérdezése a szinapszis SQL Server nélküli használatával
 
-A szinapszis SQL Server nélküli (előzetes verzió, amely korábban **SQL on-demand**néven ismert) használatával kérdezheti le és elemezheti a Azure Cosmos db tárolók adatait, amelyek engedélyezve vannak az Azure szinapszis hivatkozással. Közel valós időben elemezheti az adatait anélkül, hogy ez hatással lenne a tranzakciós munkaterhelések teljesítményére. Jól ismert T-SQL-szintaxist kínál, amely az analitikus áruházból származó adatok lekérdezését, valamint a BI-és ad-hoc lekérdezési eszközök széles köréhez való integrált csatlakozást biztosít a T-SQL felületen keresztül. További információért tekintse meg a [lekérdezési analitikus áruházat a SZINAPSZIS SQL Server nélküli](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) cikkben.
+A szinapszis SQL Server nélküli (előzetes verzió, amely korábban **SQL on-demand** néven ismert) használatával kérdezheti le és elemezheti a Azure Cosmos db tárolók adatait, amelyek engedélyezve vannak az Azure szinapszis hivatkozással. Közel valós időben elemezheti az adatait anélkül, hogy ez hatással lenne a tranzakciós munkaterhelések teljesítményére. Jól ismert T-SQL-szintaxist kínál, amely az analitikus áruházból származó adatok lekérdezését, valamint a BI-és ad-hoc lekérdezési eszközök széles köréhez való integrált csatlakozást biztosít a T-SQL felületen keresztül. További információért tekintse meg a [lekérdezési analitikus áruházat a SZINAPSZIS SQL Server nélküli](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) cikkben.
 
 ## <a name="use-synapse-sql-serverless-to-analyze-and-visualize-data-in-power-bi"></a><a id="analyze-with-powerbi"></a>A szinapszis SQL Server nélküli használata az adatelemzéshez és megjelenítéséhez Power BI
 
@@ -237,7 +238,7 @@ További információért lásd a következő dokumentumokat:
 
 * [Az Azure szinapszis hivatkozása Azure Cosmos DB.](synapse-link.md)
 
-* [Azure Cosmos DB analitikus áruház áttekintése.](analytical-store-introduction.md)
+* [Az Azure Cosmos DB elemzési tár áttekintése.](analytical-store-introduction.md)
 
 * [Gyakran ismételt kérdések a Azure Cosmos DB-ra vonatkozó szinapszis-hivatkozásról.](synapse-link-frequently-asked-questions.md)
 

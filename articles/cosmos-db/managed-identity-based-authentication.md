@@ -8,14 +8,15 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 07bfaabf051a016ca9617245ba8628ef6c7e80c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 918033f736a28534cd36a4637b41d0a6b3b4cdc7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566618"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088573"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>A rendszer által hozzárendelt felügyelt identitások használata Azure Cosmos DB-adat eléréséhez
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ebben a cikkben egy *robusztus, kulcsfontosságú rotációs agnosztikus* megoldást állít be, amely a [felügyelt identitások](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)használatával fér hozzá Azure Cosmos db kulcsokhoz. A cikkben szereplő példa Azure Functionst használ, de használhat bármely olyan szolgáltatást, amely támogatja a felügyelt identitásokat. 
 
@@ -33,7 +34,7 @@ Ebben a lépésben hozzárendel egy rendszerhez rendelt felügyelt identitást a
 
    :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-selection.png" alt-text="A Function alkalmazás platform-funkcióit és identitási beállításait bemutató képernyőkép.":::
 
-1. Az **identitás** **lapon kapcsolja be** a rendszeridentitás **állapotát** , majd válassza a **Mentés**lehetőséget. Az **identitás** ablaktáblájának a következőképpen kell kinéznie:  
+1. Az **identitás** **lapon kapcsolja be** a rendszeridentitás **állapotát** , majd válassza a **Mentés** lehetőséget. Az **identitás** ablaktáblájának a következőképpen kell kinéznie:  
 
    :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="A Function alkalmazás platform-funkcióit és identitási beállításait bemutató képernyőkép.":::
 
@@ -66,13 +67,13 @@ Ebben az esetben a Function alkalmazás beolvassa az akvárium hőmérsékletét
 
    :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="A Function alkalmazás platform-funkcióit és identitási beállításait bemutató képernyőkép.":::
 
-   * **Szerepkör**: válassza ki a **DocumentDB fiók közreműködőjét**
-   * **Hozzáférés hozzárendelése**: a **rendszerhez rendelt felügyelt identitás kiválasztása** szakaszban válassza a **függvényalkalmazás**lehetőséget.
-   * **Select (kiválasztás**): a panel az előfizetésben található összes Function-alkalmazással lesz feltöltve, és **felügyelt rendszeridentitással**rendelkezik. Ebben az esetben válassza ki a **FishTankTemperatureService** Function alkalmazást: 
+   * **Szerepkör** : válassza ki a **DocumentDB fiók közreműködőjét**
+   * **Hozzáférés hozzárendelése** : a **rendszerhez rendelt felügyelt identitás kiválasztása** szakaszban válassza a **függvényalkalmazás** lehetőséget.
+   * **Select (kiválasztás** ): a panel az előfizetésben található összes Function-alkalmazással lesz feltöltve, és **felügyelt rendszeridentitással** rendelkezik. Ebben az esetben válassza ki a **FishTankTemperatureService** Function alkalmazást: 
 
       :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="A Function alkalmazás platform-funkcióit és identitási beállításait bemutató képernyőkép.":::
 
-1. Miután kiválasztotta a Function alkalmazást, válassza a **Mentés**lehetőséget.
+1. Miután kiválasztotta a Function alkalmazást, válassza a **Mentés** lehetőséget.
 
 ### <a name="assign-the-role-using-azure-cli"></a>Szerepkör kiosztása az Azure CLI használatával
 
