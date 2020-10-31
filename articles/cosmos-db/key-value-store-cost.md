@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 08/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 8d04c670010e3595d8f30c7ffcd34d99e27374cb
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: cd80e98d0838cb06228c92c7ea7efeb3fc30a0ed
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488452"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082878"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos DB Key Value Store-ban – Cost Overview
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A Azure Cosmos DB egy globálisan elosztott, többmodelles adatbázis-szolgáltatás, amellyel könnyen készíthetők magas rendelkezésre állású, nagy méretű alkalmazások. Alapértelmezés szerint a Azure Cosmos DB automatikusan és hatékonyan indexeli az összes betöltött adatot. Ez gyors és konzisztens [SQL](./sql-query-getting-started.md) -(és [JavaScript](stored-procedures-triggers-udfs.md)-) lekérdezéseket tesz lehetővé az adatkezeléshez. 
 
@@ -22,7 +23,7 @@ Ez a cikk az egyszerű írási és olvasási műveletek Azure Cosmos DB költsé
 
 ## <a name="why-we-use-request-units-rus"></a>Miért használjuk a kérelmek egységeit (RUs)
 
-Azure Cosmos DB teljesítmény a [kérelmek egységében](request-units.md) (ru/s) kifejezett kiépített átviteli sebességen alapul. A kiépítés második részletességgel történik, és RU/s-ben vásárolható meg ([nem tévesztendő össze az óránkénti számlázással](https://azure.microsoft.com/pricing/details/cosmos-db/)). Az RUs logikai absztrakciónak (pénznemnek) tekintendő, amely leegyszerűsíti az alkalmazás szükséges átviteli sebességének kiépítési folyamatát. A felhasználóknak nem kell meggondolnia az olvasási és írási sebesség közötti különbségtételt. Az RUs egyvalutás modellje hatékonyságot hoz létre az olvasási és írási műveletek közötti kiosztott kapacitás megosztásához. Ez a kiépített kapacitási modell lehetővé teszi, hogy a szolgáltatás **kiszámítható és konzisztens teljesítményt, garantált kis késést és magas rendelkezésre állást**biztosítson. Végül, míg az RU-modell az átviteli sebességet ábrázolja, minden egyes kiépített RU-nek meghatározott mennyiségű erőforrása van (például memória, magok/CPU és IOPS).
+Azure Cosmos DB teljesítmény a [kérelmek egységében](request-units.md) (ru/s) kifejezett kiépített átviteli sebességen alapul. A kiépítés második részletességgel történik, és RU/s-ben vásárolható meg ([nem tévesztendő össze az óránkénti számlázással](https://azure.microsoft.com/pricing/details/cosmos-db/)). Az RUs logikai absztrakciónak (pénznemnek) tekintendő, amely leegyszerűsíti az alkalmazás szükséges átviteli sebességének kiépítési folyamatát. A felhasználóknak nem kell meggondolnia az olvasási és írási sebesség közötti különbségtételt. Az RUs egyvalutás modellje hatékonyságot hoz létre az olvasási és írási műveletek közötti kiosztott kapacitás megosztásához. Ez a kiépített kapacitási modell lehetővé teszi, hogy a szolgáltatás **kiszámítható és konzisztens teljesítményt, garantált kis késést és magas rendelkezésre állást** biztosítson. Végül, míg az RU-modell az átviteli sebességet ábrázolja, minden egyes kiépített RU-nek meghatározott mennyiségű erőforrása van (például memória, magok/CPU és IOPS).
 
 Globálisan elosztott adatbázisrendszer a Cosmos db az egyetlen Azure-szolgáltatás, amely átfogó SLA-kat biztosít a késés, az átviteli sebesség, a konzisztencia és a magas rendelkezésre állás érdekében. A rendszer az Ön által kiépített átviteli sebességet alkalmazza a Cosmos-fiókhoz társított összes régióra. Az olvasások Cosmos DB több, jól definiált [konzisztencia-szintet](consistency-levels.md) kínál, amelyek közül választhat. 
 

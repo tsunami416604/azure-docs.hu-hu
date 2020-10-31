@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84d0731a67ac47b8b0fc73cb485857458b3febbb
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 6837bbdb63caf0fb1ecb3f6e520d5f3623483b44
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093310"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083235"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>A biztonságos, Azure által felügyelt munkaállomások ismertetése
 
@@ -94,12 +94,15 @@ A biztonságos munkaállomás esetében elengedhetetlen egy olyan ellátási Lá
 
 Ebben a megoldásban a megbízhatóság gyökerét a [Microsoft Autopilot](/windows/deployment/windows-autopilot/windows-autopilot) technológiájának használatával helyezi üzembe, amely megfelel a modern műszaki követelményeknek. Egy munkaállomás biztonságossá tételéhez az Autopilot lehetővé teszi a Microsoft OEM-re optimalizált Windows 10-es eszközök kihasználása. Ezek az eszközök a gyártótól származó ismert jó állapotba kerülnek. A potenciálisan nem biztonságos eszközök rendszerképének átállítása helyett az Autopilot képes a Windows-eszközök "üzleti használatra kész" állapotba alakítására. Alkalmazza a beállításokat és a házirendeket, telepíti az alkalmazásokat, és még módosítja a Windows 10 kiadását. Előfordulhat például, hogy az Autopilot a Windows 10 Pro verzióról a Windows 10 Enterprise rendszerre módosítja az eszköz Windows rendszerre való telepítését, hogy az képes legyen speciális funkciók használatára.
 
-![Biztonságos munkaállomás-szintek](./media/concept-azure-managed-workstation/supplychain.png)
+:::image type="complex" source="./media/concept-azure-managed-workstation/supplychain.png" alt-text="A biztonságos munkaállomás életciklusát ábrázoló diagram." border="false":::
+A diagram tetején látható egy eszköz gyártója. Az adott gyártótól származó nyilak egy olyan ügyfélre mutatnak, aki megvásárolta a munkaállomást, valamint egy teljesített és kézbesített teherautót. A kamionból egy nyíl mutat egy olyan képre, amely egy olyan alkalmazást helyez üzembe, amely egy munkaállomást használó személyt képvisel. Az önkiszolgáló felülettel jelölt nyíl az adott személytől a vállalati használatra kész képernyőre terjed ki. A képernyő alatt a felügyelt védelemmel ellátott ikonok láthatók. Az állandó állapotú használatot jelző nyíl, a képernyő aktuális pontjainak kezelése és megtartása az élet végéig ikon és a hibajavítások visszaállítása ikon. Az utolsó nyíl a break-fix ikonról a vállalati használatra kész képernyőre vált vissza.
+:::image-end:::
 
 ## <a name="device-roles-and-profiles"></a>Eszközök szerepkörei és profiljai
 
 Ez az útmutató számos olyan biztonsági profilt és szerepkört hivatkozik, amelyek segítségével biztonságosabb megoldásokat hozhat létre a felhasználók, a fejlesztők és az informatikai szakemberek számára. Ezek a profilok kiegyensúlyozzák a használhatóságot és a kockázatokat olyan gyakori felhasználók számára, akik kihasználhatják a bővített vagy biztonságos munkaállomásokat. Az itt megadott beállítások az iparág által elfogadott szabványokon alapulnak. Ez az útmutató bemutatja, hogyan erősítheti meg a Windows 10 rendszert, és csökkentheti az eszköz vagy a felhasználó biztonságával kapcsolatos kockázatokat. A modern hardveres technológia és a megbízhatósági eszköz gyökerének kihasználásához [Eszközállapot-igazolást](https://techcommunity.microsoft.com/t5/Intune-Customer-Success/Support-Tip-Using-Device-Health-Attestation-Settings-as-Part-of/ba-p/282643)fogunk használni, amely a **magas biztonsági** profiltól kezdve engedélyezve van. Ez a funkció biztosítja, hogy a támadók ne legyenek állandóak az eszköz korai rendszerindításakor. Ezt a házirend és a technológia segítségével végezheti el a biztonsági funkciók és kockázatok kezeléséhez.
-![Biztonságos munkaállomás-szintek](./media/concept-azure-managed-workstation/seccon-levels.png)
+
+:::image type="content" source="./media/concept-azure-managed-workstation/seccon-levels.png" alt-text="A biztonságos munkaállomás életciklusát ábrázoló diagram." border="false":::
 
 * **Alapszintű biztonság** – a felügyelt, szabványos munkaállomás jó kiindulási pontot biztosít a legtöbb otthoni és kisméretű üzleti használathoz. Ezek az eszközök regisztrálva vannak az Azure AD-ben, és az Intune-nal kezelhetők. Ez a profil lehetővé teszi, hogy a felhasználók bármilyen alkalmazást futtassanak, és böngésszenek bármely webhelyen. Egy kártevő szoftver, például a [Microsoft Defender](https://www.microsoft.com/windows/comprehensive-security) engedélyezése szükséges.
 

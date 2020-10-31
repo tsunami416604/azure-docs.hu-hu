@@ -10,20 +10,25 @@ ms.subservice: bing-spell-check
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 205d7991551ca48c3ea2e61baef53f5d06bdcbd2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 905ae56ab8d64f7342c4ee6b9f25d188c907710d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86200488"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084187"
 ---
 # <a name="what-is-the-bing-spell-check-api"></a>Mi a Bing Spell Check API?
 
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+
 A Bing Spell Check API lehetővé teszi a szöveg kontextusbeli nyelvtanának és helyesírás-ellenőrzésének elvégzését. Habár a legtöbb helyesírás-ellenőrző szótár alapú szabálykészlet alapján használható, a Bing helyesírás-ellenőrzője a gépi tanulást és a statisztikai gépi fordítást használja a pontos és a kontextusbeli javítások biztosításához. 
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
-| Szolgáltatás | Leírás |
+| Funkció | Leírás |
 |---------|---------|
 |Több helyesírás-ellenőrzési mód     | Több helyesírás-ellenőrzési mód lehetővé teszi a nyelvtani és/vagy helyesírási hibák javítását. |
 |A szleng és az informális nyelvi felismerés     | A szövegben használt általános kifejezések és informális kifejezések felismerése.         |
@@ -38,7 +43,7 @@ A Bing Spell Check API könnyen hívható bármely programozási nyelvről, amel
 2. Küldjön egy kérést a Bing Web Search API-ra.
 3. A JSON-válasz elemzése
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Először is próbálja ki a Bing Spell Check Search API [interaktív bemutatóját](https://azure.microsoft.com/services/cognitive-services/spell-check/) , és tekintse meg, hogyan ellenőrizhetők a különböző szövegek.
 

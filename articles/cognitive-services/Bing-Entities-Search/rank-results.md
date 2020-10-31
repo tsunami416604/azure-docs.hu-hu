@@ -10,14 +10,19 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 110cef117683b20170649a231226c8193496edf3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5fbecd9c2fd6e3a9f1be29598bad50da4b77bbb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68423920"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084612"
 ---
 # <a name="using-ranking-to-display-entity-search-results"></a>Rangsorolás használata az entitások keresési eredményeinek megjelenítéséhez  
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Minden entitás keresési válasza tartalmaz egy [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) választ, amely meghatározza, hogyan kell megjeleníteni a Bing Entity Search API által visszaadott keresési eredményeket. A rangsorolási válaszok a pole, a fővonal és a Sidebar tartalmát eredményezik. A pole eredmény a legfontosabb vagy legjelentősebb eredmény, és elsőként kell megjelennie. Ha nem jeleníti meg a fennmaradó eredményeket egy hagyományos fővonal-és oldalsáv-formátumban, meg kell adnia a fővonali tartalmat, mint az oldalsáv tartalma. 
   
@@ -69,7 +74,7 @@ A következő példa egy [RankingResponse](https://docs.microsoft.com/rest/api/c
 
 Ezen rangsorolási válasz alapján az oldalsáv megjeleníti a Jimi Hendrix-hez kapcsolódó két entitás eredményét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](tutorial-bing-entities-search-single-page-app.md)

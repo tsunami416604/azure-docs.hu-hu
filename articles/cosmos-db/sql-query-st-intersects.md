@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: f3c3878956b90ffb45556ed819046af9eb7618f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f39dbfc33bfc34e8f5e339a489d0c74bebb415e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78303137"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082283"
 ---
 # <a name="st_intersects-azure-cosmos-db"></a>ST_INTERSECTS (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Egy logikai kifejezést ad vissza, amely azt jelzi, hogy az első argumentumban megadott GeoJSON objektum (pont, sokszög vagy LineString) metszi-e a GeoJSON (pont, sokszög vagy LineString) a második argumentumban.  
   
 ## <a name="syntax"></a>Szintaxis
@@ -55,7 +57,7 @@ WHERE ST_INTERSECTS(a.location, {
 
 Ez a rendszerfunkció kihasználja a [térinformatikai index](index-policy.md#spatial-indexes)előnyeit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Térbeli függvények Azure Cosmos DB](sql-query-spatial-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

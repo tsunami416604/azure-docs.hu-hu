@@ -11,14 +11,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 309bbca762149f8804742d9ef02d4c3e8dfcdc6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b414711f5589a141d59fbe2f14d0a8ae992f5acf
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67542766"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084442"
 ---
 # <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>Képek letöltése a webről a Bing Image Search API
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Ha a Bing Image Search REST API használja, a következő GET kérelem elküldésével beolvashatja a keresési kifejezéshez kapcsolódó képeket a webről:
 
@@ -31,7 +36,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Használja az URL-kódolású keresési kifejezés [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) Query paraméterét. Ha például a *vitorlás mentőcsónakokra*adja meg, akkor a következőre: `q` `sailing+dinghies` vagy `sailing%20dinghies` .
+Használja az URL-kódolású keresési kifejezés [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) Query paraméterét. Ha például a *vitorlás mentőcsónakokra* adja meg, akkor a következőre: `q` `sailing+dinghies` vagy `sailing%20dinghies` .
 
 > [!IMPORTANT]
 > * Az összes kérelmet egy-kiszolgálóról kell elvégezni, nem pedig az ügyféltől.
@@ -111,6 +116,6 @@ A Bing válaszüzenete olyan [rendszerképeket](https://docs.microsoft.com/rest/
 
 Amikor meghívja a Bing Image Search API-t, a Bing visszaad egy eredménylistát. A lista a lekérdezéshez kapcsolódó összes találat egy részét tartalmazza. A válasz `totalEstimatedMatches` mezője az összes megtekinthető kép becsült számát adja meg. További információ a képek többi részéről: [lapozási képek](../paging-images.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem próbálta meg a Bing Image Search APIt, próbálkozzon [egy rövid](../quickstarts/csharp.md)útmutatóval. Ha valami összetettebbt keres, próbálja meg az oktatóanyagot egy [egyoldalas webalkalmazás](../tutorial-bing-image-search-single-page-app.md)létrehozásához.

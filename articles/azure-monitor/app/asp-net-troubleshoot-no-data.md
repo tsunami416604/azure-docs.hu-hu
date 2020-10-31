@@ -4,12 +4,12 @@ description: Nem látja az Azure Application Insightsban tárolt adatmegjelenít
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 2bf9b50c9b378d8624c311af5935b8cd0a28a31a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c053796dd887722d1d767229621c0a1ae004b5c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757979"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083167"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>A .NET/.NET Core rendszerhez nem szükséges adatApplication Insightsek hibaelhárítása
 
@@ -44,7 +44,7 @@ ms.locfileid: "91757979"
 
 * Az eszközök nem támogatják az összes típusú .NET-projektet. A web-és WCF-projektek támogatottak. Más projekttípus, például asztali vagy szolgáltatási alkalmazások esetén [manuálisan is hozzáadhat egy Application INSIGHTS SDK-t a projekthez](./windows-desktop.md).
 * Győződjön meg arról, hogy a [Visual Studio 2013 Update 3 vagy újabb verzió](/visualstudio/releasenotes/vs2013-update3-rtm-vs)van. A fejlesztői elemzési eszközökkel előre telepítve van, amelyek biztosítják a Application Insights SDK-t.
-* Válassza az **eszközök**, **bővítmények és frissítések** lehetőséget, és győződjön meg arról, hogy a **fejlesztői elemzési eszközök** telepítve és engedélyezve vannak. Ha igen, kattintson a **frissítések** lehetőségre, és ellenőrizze, hogy van-e elérhető frissítés.
+* Válassza az **eszközök** , **bővítmények és frissítések** lehetőséget, és győződjön meg arról, hogy a **fejlesztői elemzési eszközök** telepítve és engedélyezve vannak. Ha igen, kattintson a **frissítések** lehetőségre, és ellenőrizze, hogy van-e elérhető frissítés.
 * Nyissa meg az új projekt párbeszédpanelt, és válassza a ASP.NET webalkalmazás lehetőséget. Ha megjelenik a Application Insights lehetőség, akkor a rendszer telepíti az eszközöket. Ha nem, próbálja meg eltávolítani, majd telepítse újra a fejlesztői elemzési eszközöket.
 
 ## <a name="adding-application-insights-failed"></a><a name="q02"></a>Nem sikerült hozzáadni a Application Insights
@@ -65,7 +65,7 @@ Javítsa ki
 ## <a name="i-get-an-error-instrumentation-key-cannot-be-empty"></a><a name="emptykey"></a>Hibaüzenet jelenik meg: "a rendszerállapot-kulcs nem lehet üres"
 Úgy tűnik, hiba történt a Application Insights telepítése közben, vagy talán egy naplózási adaptert.
 
-Megoldáskezelő kattintson a jobb gombbal a projektre, és válassza a **Application Insights > a Application Insights konfigurálása**lehetőséget. Megjelenik egy párbeszédpanel, amely meghívja Önt, hogy bejelentkezzen az Azure-ba, vagy hozzon létre egy Application Insights-erőforrást, vagy használja újra a meglévőt.
+Megoldáskezelő kattintson a jobb gombbal a projektre, és válassza a **Application Insights > a Application Insights konfigurálása** lehetőséget. Megjelenik egy párbeszédpanel, amely meghívja Önt, hogy bejelentkezzen az Azure-ba, vagy hozzon létre egy Application Insights-erőforrást, vagy használja újra a meglévőt.
 
 ## <a name="nuget-packages-are-missing-on-my-build-server"></a><a name="NuGetBuild"></a> "Hiányzó NuGet-csomag (ok)" a saját Build-kiszolgálón
 *Minden rendben van, ha hibakeresést végezek a fejlesztői gépen, de NuGet hibaüzenetet kapok a Build-kiszolgálón.*
@@ -84,8 +84,8 @@ Valószínű okok:
 Javítsa ki
 
 * Győződjön meg arról, hogy a Visual Studio verziója 2013 3. vagy újabb verziójú.
-* Válassza az **eszközök**, **bővítmények és frissítések** lehetőséget, és győződjön meg arról, hogy a **fejlesztői elemzési eszközök** telepítve és engedélyezve vannak. Ha igen, kattintson a **frissítések** lehetőségre, és ellenőrizze, hogy van-e elérhető frissítés.
-* Kattintson a jobb gombbal a projektre Megoldáskezelő. Ha a parancsot **Application Insights > konfigurálja Application Insights**, akkor a projektnek a Application Insights szolgáltatásban lévő erőforráshoz való összekapcsolásához használja.
+* Válassza az **eszközök** , **bővítmények és frissítések** lehetőséget, és győződjön meg arról, hogy a **fejlesztői elemzési eszközök** telepítve és engedélyezve vannak. Ha igen, kattintson a **frissítések** lehetőségre, és ellenőrizze, hogy van-e elérhető frissítés.
+* Kattintson a jobb gombbal a projektre Megoldáskezelő. Ha a parancsot **Application Insights > konfigurálja Application Insights** , akkor a projektnek a Application Insights szolgáltatásban lévő erőforráshoz való összekapcsolásához használja.
 
 Ellenkező esetben a projekt típusát nem támogatja közvetlenül a fejlesztői elemzési eszközök. A telemetria megtekintéséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com), válassza ki a Application Insights a bal oldali navigációs sávon, és válassza ki az alkalmazást.
 
@@ -128,7 +128,7 @@ Javítsa ki
   ![Képernyőkép, amely az alkalmazás hibakeresési módban történő futtatását mutatja be a Visual Studióban.](./media/asp-net-troubleshoot-no-data/output-window.png)
 * A Application Insights portálon nyissa meg a [diagnosztikai keresést](./diagnostic-search.md). Az adatgyűjtés általában itt jelenik meg.
 * Kattintson a frissítés gombra. A panel rendszeresen frissíti magát, de manuálisan is elvégezheti. A frissítési időköz hosszabb a nagyobb időtartományok esetében.
-* Győződjön meg arról, hogy a rendszerállapot-kulcsok egyeznek. Az alkalmazás fő paneljén, a Application Insights-portálon, az **alapvető** erőforrások legördülő menüben tekintse meg a rendszerállapot- **kulcsot**. Ezután a Visual Studióban a projektben nyissa meg ApplicationInsights.config és keresse meg a t `<instrumentationkey>` . Győződjön meg arról, hogy a két kulcs egyenlő. Ha nem:  
+* Győződjön meg arról, hogy a rendszerállapot-kulcsok egyeznek. Az alkalmazás fő paneljén, a Application Insights-portálon, az **alapvető** erőforrások legördülő menüben tekintse meg a rendszerállapot- **kulcsot** . Ezután a Visual Studióban a projektben nyissa meg ApplicationInsights.config és keresse meg a t `<instrumentationkey>` . Győződjön meg arról, hogy a két kulcs egyenlő. Ha nem:  
   * A portálon kattintson a Application Insights elemre, és keresse meg az alkalmazás-erőforrást a megfelelő kulccsal; vagy
   * A Visual Studio Megoldáskezelő kattintson a jobb gombbal a projektre, és válassza a Application Insights, majd a Konfigurálás lehetőséget. Állítsa vissza az alkalmazást, hogy telemetria küldjön a megfelelő erőforrásnak.
   * Ha nem találja a megfelelő kulcsokat, ellenőrizze, hogy a Visual Studióban ugyanazokat a bejelentkezési hitelesítő adatokat használja-e, mint a portálon.
@@ -239,14 +239,14 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 ```
 
 Ezeket a paramétereket igény szerint módosíthatja:
-- **MaxCollectSec**. A paraméter beállításával megakadályozhatja, hogy a Perfview eszköz határozatlan ideig fusson, és hatással legyen a kiszolgáló teljesítményére.
-- **OnlyProviders**. Ezt a paramétert úgy állítsa be, hogy csak a naplókat gyűjtsön az SDK-ból. A listát az adott vizsgálatok alapján testreszabhatja. 
-- **NoGui**. Állítsa be ezt a paramétert a naplók a grafikus felhasználói felület nélküli összegyűjtéséhez.
+- **MaxCollectSec** . A paraméter beállításával megakadályozhatja, hogy a Perfview eszköz határozatlan ideig fusson, és hatással legyen a kiszolgáló teljesítményére.
+- **OnlyProviders** . Ezt a paramétert úgy állítsa be, hogy csak a naplókat gyűjtsön az SDK-ból. A listát az adott vizsgálatok alapján testreszabhatja. 
+- **NoGui** . Állítsa be ezt a paramétert a naplók a grafikus felhasználói felület nélküli összegyűjtéséhez.
 
 
 További információk:
 - [Teljesítmény-nyomkövetés rögzítése a perfview eszköz](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView).
-- [Application Insights eseményforrás](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/ETW)
+- [Application Insights eseményforrás](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/ETW)
 
 ## <a name="collect-logs-with-dotnet-trace"></a>Naplók összegyűjtése a DotNet-tracevel
 

@@ -6,18 +6,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: tisande
-ms.openlocfilehash: 2859f603dd168e4f93eb8f3cbc9c841de884e1ee
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d0ee7dc8890c228617eaeee8b1cdc72d2230458e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489234"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082963"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelési szabályzatai
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Az Azure Cosmos DB-ben minden tároló rendelkezik indexelési szabályzattal, amely meghatározza a tároló elemeinek indexelési módját. Az újonnan létrehozott tárolók alapértelmezett indexelési szabályzata az összes elem minden tulajdonságát indexeli, és minden sztringhez vagy számhoz tartományindexeket kényszerít ki. Ez lehetővé teszi a nagy lekérdezési teljesítményt anélkül, hogy az indexelést és az indexkezelést előre át kellene gondolni.
 
-Egyes esetekben előfordulhat, hogy felül szeretné bírálni ezt az automatikus viselkedést, hogy jobban megfeleljen az igényeinek. Az indexelési *mód*beállításával testre szabhatja a tároló indexelési házirendjét, és belefoglalhatja vagy kizárhatja a *Tulajdonságok elérési útját*.
+Egyes esetekben előfordulhat, hogy felül szeretné bírálni ezt az automatikus viselkedést, hogy jobban megfeleljen az igényeinek. Az indexelési *mód* beállításával testre szabhatja a tároló indexelési házirendjét, és belefoglalhatja vagy kizárhatja a *Tulajdonságok elérési útját* .
 
 > [!NOTE]
 > A cikkben ismertetett indexelési szabályzatok frissítésének módszere csak a Azure Cosmos DB SQL (Core) API-ra vonatkozik. Tudnivalók a [Azure Cosmos db API-MongoDB való](mongodb-indexing.md) indexeléséről
@@ -26,8 +27,8 @@ Egyes esetekben előfordulhat, hogy felül szeretné bírálni ezt az automatiku
 
 A Azure Cosmos DB két indexelési módot támogat:
 
-- **Konzisztens**: az indexet a rendszer szinkron módon frissíti az elemek létrehozásakor, frissítésekor vagy törlésekor. Ez azt jelenti, hogy az olvasási lekérdezések konzisztenciája lesz a [fiókhoz konfigurált konzisztencia](consistency-levels.md).
-- **Nincs**: az indexelés le van tiltva a tárolón. Ez általában akkor használatos, ha egy tárolót tiszta kulcs-érték tárolóként használ a másodlagos indexek szükségessége nélkül. Emellett a tömeges műveletek teljesítményének javítására is használható. A tömeges műveletek befejezését követően az index mód beállítható Konzisztensre, majd a [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) a befejezésig figyelhető.
+- **Konzisztens** : az indexet a rendszer szinkron módon frissíti az elemek létrehozásakor, frissítésekor vagy törlésekor. Ez azt jelenti, hogy az olvasási lekérdezések konzisztenciája lesz a [fiókhoz konfigurált konzisztencia](consistency-levels.md).
+- **Nincs** : az indexelés le van tiltva a tárolón. Ez általában akkor használatos, ha egy tárolót tiszta kulcs-érték tárolóként használ a másodlagos indexek szükségessége nélkül. Emellett a tömeges műveletek teljesítményének javítására is használható. A tömeges műveletek befejezését követően az index mód beállítható Konzisztensre, majd a [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) a befejezésig figyelhető.
 
 > [!NOTE]
 > A Azure Cosmos DB a lusta indexelési módot is támogatja. A szakaszolt indexelés sokkal alacsonyabb prioritási szinttel végzi el az index frissítését, tehát akkor, amikor a motor nem végez semmilyen más munkát. Ez **inkonzisztens vagy hiányos** lekérdezési eredményekhez vezethet. Ha egy Cosmos-tároló lekérdezését tervezi, ne válassza a szakaszolt indexelést. 2020 júniusában bevezetett egy olyan változást, amely már nem teszi lehetővé az új tárolók lusta indexelési módba való beállítását. Ha a Azure Cosmos DB fiók már tartalmaz legalább egy olyan tárolót, amely lusta indexeléssel rendelkezik, akkor ez a fiók automatikusan mentesül a változás alól. Kivételt is igényelhet az [Azure-támogatással](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) való kapcsolatfelvételsel (kivéve, ha olyan [kiszolgáló](serverless.md) nélküli módban használ Azure Cosmos-fiókot, amely nem támogatja a lusta indexelést).
@@ -77,7 +78,7 @@ Minden indexelési házirendnek tartalmaznia kell a gyökér elérési útját `
 
 - A System (rendszer `_etag` ) tulajdonság alapértelmezés szerint ki van zárva az indexelésből, kivéve, ha a ETAG hozzá lett adva a befoglalt útvonalhoz az indexeléshez.
 
-- Ha az indexelési mód **konzisztens**értékre van állítva, a rendszer tulajdonságai `id` és `_ts` automatikusan indexelve lesznek.
+- Ha az indexelési mód **konzisztens** értékre van állítva, a rendszer tulajdonságai `id` és `_ts` automatikusan indexelve lesznek.
 
 Az útvonalak belefoglalása és kizárása esetén a következő attribútumok jelenhetnek meg:
 
@@ -103,9 +104,9 @@ Ha a belefoglalt elérési utak és a kizárt elérési utak ütköznek, a ponto
 
 Íme egy példa:
 
-**Belefoglalt elérési út**: `/food/ingredients/nutrition/*`
+**Belefoglalt elérési út** : `/food/ingredients/nutrition/*`
 
-**Kizárt elérési út**: `/food/ingredients/*`
+**Kizárt elérési út** : `/food/ingredients/*`
 
 Ebben az esetben a belefoglalt elérési út elsőbbséget élvez a kizárt elérési úttal szemben, mert pontosabb. Ezen elérési utak alapján a rendszer az `food/ingredients` elérési útban lévő vagy egymásba ágyazott összes adattal kizárja az indexet. A kivétel a belefoglalt útvonalon belüli adatelérési út: `/food/ingredients/nutrition/*` , amely indexelve lenne.
 

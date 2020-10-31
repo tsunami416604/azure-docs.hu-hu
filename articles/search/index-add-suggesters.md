@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e439f7d2b0232a2e1c36517f24723e4e16f7e6bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1ee42b5b5884b0ce3491282d256d4bea87f44e1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537599"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083541"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Javaslat létrehozása az automatikus kiegészítés és a javasolt eredmények lekérdezésben való engedélyezéséhez
 
-Az Azure Cognitive Searchban a "keresés a típusban" beállítás egy [keresési indexhez](search-what-is-an-index.md)hozzáadott, **javaslattal** rendelkező konstruktoron keresztül érhető el. A javaslatok két szolgáltatást támogatnak: az *automatikus kiegészítést*, amely egy teljes kifejezésből álló lekérdezés részleges bemenetét fejezi be, és *javaslatokat* tesz arra, hogy egy adott egyezésre mutasson. Az automatikus kiegészítés létrehoz egy lekérdezést. A javaslatok megfelelő dokumentumot hoznak létre.
+Az Azure Cognitive Searchban a "keresés a típusban" beállítás egy [keresési indexhez](search-what-is-an-index.md)hozzáadott, **javaslattal** rendelkező konstruktoron keresztül érhető el. A javaslatok két szolgáltatást támogatnak: az *automatikus kiegészítést* , amely egy teljes kifejezésből álló lekérdezés részleges bemenetét fejezi be, és *javaslatokat* tesz arra, hogy egy adott egyezésre mutasson. Az automatikus kiegészítés létrehoz egy lekérdezést. A javaslatok megfelelő dokumentumot hoznak létre.
 
 A következő képernyőkép az [első alkalmazás létrehozása a C#-ban](tutorial-csharp-type-ahead-and-suggestions.md) című ábrán látható. Az automatikus kiegészítés egy lehetséges kifejezést is felhasznál, amely a "tw"-t "a" értékkel fejezi ki. A javaslatok a mini keresési eredmények, ahol a Hotel neve a megfelelő szállodai keresési dokumentumot jelöli az indexből. A javaslatok esetében bármilyen olyan mezőt felvehet, amely leíró információkat biztosít.
 
@@ -52,7 +52,7 @@ Az automatikus kiegészítés kihasználja a mezők nagyobb készletének előny
 
 A javaslatok azonban jobb eredményeket eredményeznek, ha a kiválasztott mező szelektív. Ne feledje, hogy a javaslat egy keresési dokumentum proxyja, ezért olyan mezőket szeretne használni, amelyek a legjobban egyetlen eredményt képviselnek. Azok a nevek, címek vagy más egyedi mezők, amelyek megkülönböztetik a többszörös egyezések közül a legmegfelelőbbet. Ha a mezők ismétlődő értékekből állnak, a javaslatok azonos eredményekből állnak, és a felhasználók nem tudják, melyikre kattintanak.
 
-Ahhoz, hogy mindkét keresési típust kielégítse, adja hozzá az automatikus kiegészítéshez szükséges összes mezőt, majd **$Select**, **$Top**, **$Filter**és **searchFields** használatával irányítsa a javaslatok eredményeit.
+Ahhoz, hogy mindkét keresési típust kielégítse, adja hozzá az automatikus kiegészítéshez szükséges összes mezőt, majd **$Select** , **$Top** , **$Filter** és **searchFields** használatával irányítsa a javaslatok eredményeit.
 
 ### <a name="choose-analyzers"></a>Elemzők kiválasztása
 
@@ -167,7 +167,7 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 
 + [Az első alkalmazás létrehozása a C#-ban (3. lecke – keresési típus hozzáadása)](tutorial-csharp-type-ahead-and-suggestions.md) minta a javaslatok kialakítását, a javasolt lekérdezéseket, az automatikus kiegészítést és a sokoldalú navigációt mutatja be. Ez a mintakód egy sandbox Azure Cognitive Search szolgáltatásban fut, és egy előre betöltött Hotel-indexet használ, így mindössze annyit kell tennie, hogy az alkalmazás futtatásához nyomja le az F5 billentyűt. Nincs szükség előfizetésre vagy bejelentkezésre.
 
-+ A [DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) egy régebbi minta, amely a C# és a Java kódot is tartalmazza. Emellett bemutatja a javaslatok kialakítását, a javasolt lekérdezéseket, az automatikus kiegészítést és a sokoldalú navigációt. Ez a mintakód az üzemeltetett [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) -mintaadatok használatával működik. 
++ A [DotNetHowToAutocomplete](https://github.com/wantedfast/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) egy régebbi minta, amely a C# és a Java kódot is tartalmazza. Emellett bemutatja a javaslatok kialakítását, a javasolt lekérdezéseket, az automatikus kiegészítést és a sokoldalú navigációt. Ez a mintakód az üzemeltetett [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) -mintaadatok használatával működik. 
 
 ## <a name="next-steps"></a>Következő lépések
 

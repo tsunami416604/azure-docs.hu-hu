@@ -11,14 +11,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: d833b017004365e9dad7241e360f42ff41a55883
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f697449fffe6c93d8e5082b210678d3f51c0c736
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67542744"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084410"
 ---
 # <a name="customize-and-suggest-image-search-queries"></a>Képkeresési lekérdezések testreszabása és javaslata
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Ebből a cikkből megtudhatja, hogyan szabhatja testre a lekérdezéseket, és hogyan küldhet a Bing Image Search APIba küldendő keresési kifejezéseket.
 
@@ -28,9 +33,9 @@ Ha az alkalmazásban keresési feltételek vannak megadva, akkor a [Bing AutoSug
 
 ## <a name="pivot-the-query"></a>A lekérdezés kimutatása
 
-Ha a Bing képes az eredeti keresési lekérdezés szegmentálására, a visszaadott [képek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) objektum szerepel `pivotSuggestions` . A pivot javaslatai opcionális keresési kifejezésként is megjeleníthetők a felhasználó számára. Ha például az eredeti lekérdezés a *Microsoft Surface*volt, a Bing a lekérdezést a *Microsoft* és a *Surface* szolgáltatásban is megoszthatja, és mindegyikhez javasolt kimutatásokat adhat. Ezek a javaslatok opcionális lekérdezési feltételként is megjeleníthetők a felhasználó számára.
+Ha a Bing képes az eredeti keresési lekérdezés szegmentálására, a visszaadott [képek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) objektum szerepel `pivotSuggestions` . A pivot javaslatai opcionális keresési kifejezésként is megjeleníthetők a felhasználó számára. Ha például az eredeti lekérdezés a *Microsoft Surface* volt, a Bing a lekérdezést a *Microsoft* és a *Surface* szolgáltatásban is megoszthatja, és mindegyikhez javasolt kimutatásokat adhat. Ezek a javaslatok opcionális lekérdezési feltételként is megjeleníthetők a felhasználó számára.
 
-A következő példa a *Microsoft Surface*szolgáltatásra vonatkozó kimutatási javaslatokat mutatja be:  
+A következő példa a *Microsoft Surface* szolgáltatásra vonatkozó kimutatási javaslatokat mutatja be:  
 
 ```json
 {
@@ -101,11 +106,11 @@ The following shows an example of the pivot queries.
 
 ## <a name="expand-the-query"></a>A lekérdezés kibontása
 
-Ha a Bing ki tudja bővíteni a lekérdezést az eredeti keresés szűkítéséhez, az [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) objektumban szerepelni fog a `queryExpansions` mező. Ha például a lekérdezés a *Microsoft Surface*volt, a kibontott lekérdezések a következőket tehetik:
-- Microsoft Surface **Pro 3**.
-- Microsoft Surface **RT**.
-- Microsoft Surface **telefon**.
-- Microsoft Surface **hub**.
+Ha a Bing ki tudja bővíteni a lekérdezést az eredeti keresés szűkítéséhez, az [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) objektumban szerepelni fog a `queryExpansions` mező. Ha például a lekérdezés a *Microsoft Surface* volt, a kibontott lekérdezések a következőket tehetik:
+- Microsoft Surface **Pro 3** .
+- Microsoft Surface **RT** .
+- Microsoft Surface **telefon** .
+- Microsoft Surface **hub** .
 
 Az alábbi példában a *Microsoft Surface* bővített lekérdezései láthatók.
 
@@ -160,6 +165,6 @@ The following shows an example Bing implementation that uses expanded queries. I
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem próbálta meg a Bing Image Search APIt, próbálkozzon [egy rövid](../quickstarts/csharp.md)útmutatóval. Ha valami összetettebbt keres, próbálja meg az oktatóanyagot egy [egyoldalas webalkalmazás](../tutorial-bing-image-search-single-page-app.md)létrehozásához.

@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: aea29cfff6b3827cfb9169722e48120e3a5a3709
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8b1fc1cb28b62a388df53238df58420bd3317a8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88794321"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082861"
 ---
 # <a name="replicate-azure-cosmos-db"></a>REPLIKÁLÁS (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Megadott számú alkalommal ismétli meg a karakterláncot.
   
 ## <a name="syntax"></a>Szintaxis
@@ -37,7 +39,7 @@ REPLICATE(<str_expr>, <num_expr>)
   
 ## <a name="remarks"></a>Megjegyzések
 
-  Az eredmény maximális hossza 10 000 karakter, azaz (hossz (*str_expr*) *  *num_expr*) <= 10 000. Ez a rendszerfüggvény nem fogja használni az indexet.
+  Az eredmény maximális hossza 10 000 karakter, azaz (hossz ( *str_expr* ) *  *num_expr* ) <= 10 000. Ez a rendszerfüggvény nem fogja használni az indexet.
 
 ## <a name="examples"></a>Példák
   
@@ -53,7 +55,7 @@ SELECT REPLICATE("a", 3) AS replicate
 [{"replicate": "aaa"}]
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

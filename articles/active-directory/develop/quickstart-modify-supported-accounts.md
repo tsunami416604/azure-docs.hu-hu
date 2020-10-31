@@ -1,5 +1,6 @@
 ---
-title: 'Rövid útmutató: a Microsoft IDENTIFY platform-alkalmazás fiókjainak módosítása | Azure'
+title: 'Gyors útmutató: alkalmazás által támogatott fióktípus módosítása | Azure'
+titleSuffix: Microsoft identity platform
 description: Ebben a rövid útmutatóban a Microsoft Identity platformmal regisztrált alkalmazást konfigurálhatja, hogy megváltoztassa, kik vagy milyen fiókok férhessenek hozzá az alkalmazáshoz.
 services: active-directory
 author: rwike77
@@ -8,71 +9,54 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 05/08/2019
+ms.date: 10/27/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: d143bde9c22bc726f00b5c209d1b7fbc131905b0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.reviewer: marsma, aragra, lenalepa, sureshja
+ms.openlocfilehash: 2382eedcc14f683d354b88bf2eb8d53b2af40dbd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91258013"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083269"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Gyors útmutató: alkalmazás által támogatott fiókok módosítása
 
-Az alkalmazások Microsoft Identity Platformon való regisztrálásakor esetenként az a cél, hogy az alkalmazást csak a szervezethez tartozó felhasználók érhessék el. Előfordulhat az is, hogy az alkalmazást olyan felhasználók számára is szeretné elérhetővé tenni, akik külső szervezetekhez tartoznak, vagy nem feltétlenül tartoznak valamely szervezethez (a személyes fiókok).
+Ha az alkalmazást a Microsoft Identity platformmal regisztrálta, akkor meg kell határoznia, hogy ki és milyen fióktípus esetén férhet hozzá. Előfordulhat például, hogy csak a szervezetében adta meg a fiókokat, amely *egyetlen bérlős* alkalmazás. Vagy bármilyen szervezetnél (beleértve a tiéd) is megadhatja a fiókokat, amely egy *több-bérlős* alkalmazás.
 
-Ebből a rövid útmutatóból megtudhatja, hogyan változtassa meg alkalmazása beállításait annak módosításához, hogy kik, illetve mely érhetik el az alkalmazást.
+Ebből a rövid útmutatóból megtudhatja, hogyan módosíthatja az alkalmazás konfigurációját, hogy megváltoztassa, kik vagy milyen típusú fiókok férhessenek hozzá az alkalmazáshoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A rövid útmutató befejezése [: alkalmazás regisztrálása a Microsoft Identity platformon](quickstart-register-app.md)
 
-## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Bejelentkezés az Azure Portalra és az alkalmazás kiválasztása
-
-Mielőtt konfigurálhatná az alkalmazást, végre kell hajtania az alábbi lépéseket:
-
-1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
-1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást, majd válassza a **Alkalmazásregisztrációk**lehetőséget.
-1. Keresse meg és jelölje ki a konfigurálni kívánt alkalmazást. Miután kijelölte az alkalmazást, az alkalmazás **Áttekintés** lapja vagy regisztrációs főoldala jelenik meg.
-1. A lépéseket követve [módosítsa az alkalmazásregisztrációt különböző fiókok támogatásának engedélyezéséhez](#change-the-application-registration-to-support-different-accounts).
-1. Ha egyoldalas alkalmazása van, [engedélyezze az OAuth 2.0 implicit engedély használatát](#enable-oauth-20-implicit-grant-for-single-page-applications).
-
 ## <a name="change-the-application-registration-to-support-different-accounts"></a>Alkalmazásregisztráció módosítása különböző fiókok támogatásának engedélyezéséhez
 
-Ha olyan alkalmazást ír, amelyet a szervezeten kívüli ügyfelei és partnerei számára is elérhetővé szeretne tenni, frissítenie kell az alkalmazás definícióját az Azure Portalon.
+Egy meglévő alkalmazás-regisztráció által támogatott fióktípus eltérő beállításának megadásához:
 
-> [!IMPORTANT]
-> Az Azure AD megköveteli, hogy a több-bérlős alkalmazások alkalmazásazonosító URI-ja (App ID URI) globálisan egyedi legyen. Az alkalmazásazonosító URI egy módszer, amellyel az alkalmazás a protokollüzenetekben azonosítható. Egybérlős alkalmazás esetében az alkalmazásazonosító URI-nak csak a bérlőn belül kell egyedinek lennie. Több-bérlős alkalmazás esetében azonban globálisan egyedinek kell lennie, hogy az Azure AD megtalálja az alkalmazást a különböző bérlők közt. A globális egyediség azzal kényszeríthető ki, hogy a rendszer megköveteli, hogy az alkalmazásazonosító URI egy olyan egy gazdanévvel rendelkezzen, amely egyezik az Azure AD-bérlő egy ellenőrzött tartományával. Ha például a bérlő neve contoso.onmicrosoft.com, érvényes alkalmazásazonosító URI lehet a `https://contoso.onmicrosoft.com/myapp`. Ha a bérlő a contoso.com ellenőrzött tartománnyal rendelkezik, az érvényes alkalmazásazonosító URI ugyanígy a `https://contoso.com/myapp` lehet. Ha az alkalmazásazonosító URI nem ezt a mintát követi, az alkalmazások több-bérlősként való konfigurálása meghiúsul.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
+1. Keresse meg és válassza ki az **Azure Active Directoryt** .
+1. A **kezelés** területen válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza ki az alkalmazást.
+1. Most határozza meg, hogy ki használhatja az alkalmazást, más néven a *bejelentkezési célközönségnek* .
 
-### <a name="to-change-who-can-access-your-application"></a>Az alkalmazást elérők körének módosítása
-
-1. Az alkalmazás **Áttekintés** lapján válassza a **Hitelesítés** szakaszt, és módosítsa a **Támogatott fióktípusok** alatt megadott értéket.
-    * Válassza a **Csak az ebben a címtárban található fiókok** lehetőséget, ha üzletági alkalmazást készít. Ez a lehetőség nem érhető el, ha nem regisztrálta az alkalmazást valamely címtárban.
-    * Válassza a **Tetszőleges szervezeti címtárban található fiókok** lehetőséget, ha szeretne minden üzleti és az oktatási ügyfelet megcélozni.
-    * Válassza a **Tetszőleges szervezeti címtárban található fiókok és személyes Microsoft-fiókok** lehetőséget, ha a lehető legszélesebb ügyfélkört szeretné megcélozni.
+    | Támogatott fióktípusok | Leírás |
+    |-------------------------|-------------|
+    | **Csak az ebben a szervezeti címtárban található fiókok** | Akkor válassza ezt a lehetőséget, ha olyan alkalmazást hoz létre, amelyet csak felhasználók (vagy vendégek) használhatnak *a* bérlőben.<br><br>Gyakran *üzletági (LOB* ) alkalmazásnak nevezik, ez egy **egybérlős** alkalmazás a Microsoft Identity platformon. |
+    | **Tetszőleges szervezeti címtárban található fiókok** | Akkor válassza ezt a lehetőséget, ha *bármely* Azure ad-bérlő felhasználói számára szeretné használni az alkalmazást. Ez a beállítás akkor lehet hasznos, ha például olyan szoftveres (SaaS) alkalmazást készít, amelyet több szervezet számára szeretne biztosítani.<br><br>Ezt nevezzük **több-bérlős** alkalmazásnak a Microsoft Identity platformon. |
 1. Válassza a **Mentés** lehetőséget.
 
-## <a name="enable-oauth-20-implicit-grant-for-single-page-applications"></a>OAuth 2.0 implicit engedély használatának engedélyezése egyoldalas alkalmazásoknál
+### <a name="why-changing-to-multi-tenant-can-fail"></a>Miért sikertelen a több-bérlős váltás
 
-Az egyoldalas alkalmazások (SPA-k) általában egy böngészőben futó JavaScript-intenzív előtérrel rendelkeznek, amely az alkalmazás webes API-s hátterét hívja meg az üzleti logika végrehajtatására. Az Azure AD-ben üzemeltetett egyoldalas alkalmazások esetében az OAuth 2.0 implicit engedélyezés használatával hitelesítheti a felhasználókat az Azure AD-ben, és szerezheti be a jogkivonatot, amelynek használatával biztosíthatja a hívásokat az alkalmazás JavaScript-ügyfeléről a háttér webes API-jára.
+Az alkalmazások regisztrációjának egyetlen – több bérlőre való váltása esetenként meghiúsulhat az alkalmazás-azonosító URI-ja (az alkalmazás-azonosító URI-ja) ütközése miatt. Példa az alkalmazás-azonosító URI-ra `https://contoso.onmicrosoft.com/myapp` .
 
-Miután a felhasználó megadta a hozzájárulást, ugyanez a hitelesítési protokoll használható a jogkivonatok beszerzéséhez az ügyfél és az alkalmazáshoz konfigurált egyéb webes API erőforrások közötti hívások biztosításához. Ha többet szeretne megtudni az implicit engedélyezésről és annak alkalmazhatóságáról az egyes alkalmazás-forgatókönyvekben, ismerkedjen meg az Azure AD [1.0](../azuread-dev/v1-oauth2-implicit-grant-flow.md)-s és [v2.0](v2-oauth2-implicit-grant-flow.md)-s verziójára vonatkozó OAuth 2.0 implicit engedélyezési folyamattal.
+Az alkalmazásazonosító URI egy módszer, amellyel az alkalmazás a protokollüzenetekben azonosítható. Egybérlős alkalmazások esetében az alkalmazás AZONOSÍTÓjának URI-ja csak a bérlőn belüli egyedi lehet. Több-bérlős alkalmazás esetében globálisan egyedinek kell lennie, hogy az Azure AD az összes bérlőn megtalálja az alkalmazást. A globális egyediség kikényszeríthető azáltal, hogy az alkalmazás-azonosító URI állomásneve az egyik Azure AD-bérlő [ellenőrzött közzétevői tartományának](howto-configure-publisher-domain.md)felel meg.
 
-Az OAuth 2.0 implicit engedély alapértelmezés szerint le van tiltva az alkalmazásokon. Ha engedélyezni szeretné az OAuth 2.0 implicit engedély használatát az alkalmazásánál, kövesse az alábbi lépéseket.
+Ha például a bérlő neve *contoso.onmicrosoft.com* , akkor `https://contoso.onmicrosoft.com/myapp` egy érvényes alkalmazás-azonosító URI. Ha a bérlője *contoso.com* ellenőrzött tartománya van, akkor érvényes alkalmazásspecifikus URI azonosító is lesz `https://contoso.com/myapp` . Ha az alkalmazás AZONOSÍTÓjának URI-ja nem követi a második mintát, `https://contoso.com/myapp` az alkalmazás regisztrációjának átalakítása több-bérlőre sikertelen.
 
-### <a name="to-enable-oauth-20-implicit-grant"></a>Az OAuth 2.0 implicit engedélyezési folyamat engedélyezése
+Az ellenőrzött közzétevők tartományának konfigurálásával kapcsolatos további információkért lásd: [ellenőrzött tartomány konfigurálása](quickstart-modify-supported-accounts.md).
 
-1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást, majd válassza a **Alkalmazásregisztrációk**lehetőséget.
-1. Keresse meg és jelölje ki a konfigurálni kívánt alkalmazást. Miután kijelölte az alkalmazást, az alkalmazás **Áttekintés** lapja vagy regisztrációs főoldala jelenik meg.
-1. Az alkalmazás **Áttekintés** lapján válassza a **Hitelesítés** szakaszt.
-1. A **Speciális beállítások** alatt keresse meg au **Implicit engedély** szakaszt.
-1. Jelölje ki az **Azonosító-jogkivonatok** vagy a **Hozzáférési jogkivonatok** lehetőséget, vagy mindkettőt.
-1. Válassza a **Mentés** lehetőséget.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Védjegyzési útmutató az alkalmazásokhoz](howto-add-branding-in-azure-ad-apps.md)
+> [Útmutató: az alkalmazás átalakítása több-bérlős környezetbe](howto-convert-app-to-be-multi-tenant.md)

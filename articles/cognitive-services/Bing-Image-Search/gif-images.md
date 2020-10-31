@@ -11,16 +11,21 @@ ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 862a7f6c31df7395fe225cf89ad83425e917394e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcfd711f0a38d5993447823c31cbf7f27226ad6b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84169984"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084340"
 ---
 # <a name="search-for-gif-images"></a>GIF-képek keresése 
 
-A Bing Image Search API lehetővé teszi, hogy a teljes weben is keressen a legrelevánsabb. gif-képekre.A fejlesztők különféle beszélgetési forgatókönyvekben integrálhatók a bevonási GIF-fájlokba. 
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+
+A Bing Image Search API lehetővé teszi, hogy a teljes weben is keressen a legrelevánsabb. gif-képekre.  A fejlesztők különféle beszélgetési forgatókönyvekben integrálhatók a bevonási GIF-fájlokba. 
 
 A következő URL-cím az animált. gif rendszerképek lekérdezése.
 ```
@@ -207,6 +212,6 @@ A kód a következő eredményeket kéri JSON-objektumokként:
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [C# – rövid útmutató](quickstarts/csharp.md)
 - [Oktatóanyag Image Search egyoldalas alkalmazás](tutorial-bing-image-search-single-page-app.md)

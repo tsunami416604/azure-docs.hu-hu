@@ -11,14 +11,19 @@ ms.topic: quickstart
 ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 99f2197732a332e860af421f46d1049c2388043c
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 52efd103bf510e7cca8a1e4a1d682948b498d64c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221230"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084850"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Gyors útmutató: keresési kérelem küldése a Bing Entity Search REST API C használatával #
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Entity Search API, és megtekintheti a JSON-választ. Ez az egyszerű C#-alkalmazás egy Hírek keresési lekérdezést küld az API-nak, és megjeleníti a választ. Az alkalmazás forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingEntitySearchv7.cs).
 
@@ -38,9 +43,9 @@ Bár ez az alkalmazás C# nyelven íródott, az API egy REST-alapú webszolgált
 
 1. Hozzon létre egy új C# konzolos megoldást a Visual Studióban. 
 1. Adja hozzá a [Newtonsoft.Jst a](https://www.nuget.org/packages/Newtonsoft.Json/) NuGet-csomaghoz.
-    1. Kattintson a jobb gombbal a projektre **megoldáskezelő**.
-    2. Válassza a **NuGet-csomagok kezelése**lehetőséget.
-    3. Keresse meg és válassza ki a *Newtonsoft.Js*, majd telepítse a csomagot.
+    1. Kattintson a jobb gombbal a projektre **megoldáskezelő** .
+    2. Válassza a **NuGet-csomagok kezelése** lehetőséget.
+    3. Keresse meg és válassza ki a *Newtonsoft.Js* , majd telepítse a csomagot.
 1. Ezután adja hozzá a következő névtereket a fő kódhoz:
     
     ```csharp

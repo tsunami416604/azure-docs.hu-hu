@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: ef53fc3de87eeaa41d3859fd8b10dd3cc942afc7
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: bbeb1248fef846afbd1641a668c6db3be4870ca6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547214"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082096"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Biztonsági mentés és visszaállítás Azure Database for MySQL
 
@@ -38,11 +38,11 @@ A tranzakciós naplók biztonsági mentése öt percenként történik.
 Az általános célú tárolás a háttérbeli tároló, amely a [általános célú](concepts-pricing-tiers.md) és a [memóriára optimalizált platform](concepts-pricing-tiers.md) -kiszolgálót támogatja. A 4 TB-os általános célú tárolóval rendelkező kiszolgálók esetében a teljes biztonsági mentés hetente egyszer történik. A különbözeti biztonsági mentések naponta kétszer történnek. A tranzakciós naplók biztonsági mentése öt percenként történik. Az általános célú, 4 TB-os tárterületre vonatkozó biztonsági másolatok nem pillanatkép-alapúak, és az i/o-sávszélességet használják a biztonsági mentés időpontjában. A 4 TB-os tárolón található nagyméretű adatbázisok (> 1 TB) esetében javasoljuk, hogy vegye figyelembe a következőt:
 
 - További IOPs kiépítés a Backup IOs vagy a
-- Azt is megteheti, hogy olyan általános célú tárhelyre telepít át, amely akár 16 TB-nyi tárhelyet is támogat, ha a mögöttes tároló-infrastruktúra elérhető az Ön által preferált [Azure](./concepts-pricing-tiers.md#storage)- A legfeljebb 16 TB-nyi tárterületet támogató általános célú tárterületre nem vonatkozik további díj. A 16 TB-os tárhelyre való áttelepítéssel kapcsolatos segítségért nyisson meg egy támogatási jegyet Azure Portalról.
+- Azt is megteheti, hogy olyan általános célú tárhelyre telepít át, amely akár 16 TB-nyi tárhelyet is támogat, ha a mögöttes tároló-infrastruktúra elérhető az Ön által preferált [Azure](/azure/mysql/concepts-pricing-tiers#storage)- A legfeljebb 16 TB-nyi tárterületet támogató általános célú tárterületre nem vonatkozik további díj. A 16 TB-os tárhelyre való áttelepítéssel kapcsolatos segítségért nyisson meg egy támogatási jegyet Azure Portalról.
 
 #### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>Általános célú Storage-kiszolgálók legfeljebb 16 TB tárhellyel
 
-Az [Azure-régiók](./concepts-pricing-tiers.md#storage)egy részhalmazában az újonnan kiosztott kiszolgálók az általános célú tárolást akár 16 TB tárhellyel is támogathatják. Ez azt jelenti, hogy a tárterület akár 16 TB tárhellyel is az alapértelmezett általános célú tárterület az összes olyan [régió](./concepts-pricing-tiers.md#storage) esetében, ahol ez támogatott. A 16 TB-os tárolási kiszolgálókon a biztonsági másolatok pillanatkép-alapúak. Az első teljes pillanatkép biztonsági mentése a kiszolgáló létrehozása után azonnal ütemezve van. Az első teljes pillanatkép biztonsági mentése a kiszolgáló alapbiztonsági mentéseként marad. A pillanatképek későbbi biztonsági mentései csak különbségi biztonsági mentések lesznek.
+Az [Azure-régiók](/azure/mysql/concepts-pricing-tiers#storage)egy részhalmazában az újonnan kiosztott kiszolgálók az általános célú tárolást akár 16 TB tárhellyel is támogathatják. Ez azt jelenti, hogy a tárterület akár 16 TB tárhellyel is az alapértelmezett általános célú tárterület az összes olyan [régió](/azure/mysql/concepts-pricing-tiers#storage) esetében, ahol ez támogatott. A 16 TB-os tárolási kiszolgálókon a biztonsági másolatok pillanatkép-alapúak. Az első teljes pillanatkép biztonsági mentése a kiszolgáló létrehozása után azonnal ütemezve van. Az első teljes pillanatkép biztonsági mentése a kiszolgáló alapbiztonsági mentéseként marad. A pillanatképek későbbi biztonsági mentései csak különbségi biztonsági mentések lesznek.
 
 Az [Azure-régiók](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)egy részhalmazában az újonnan kiosztott kiszolgálók az általános célú tárolást akár 16 TB tárhellyel is támogathatják. Ez azt jelenti, hogy a tárterület akár 16 TB tárhellyel is az alapértelmezett általános célú tárterület az összes olyan [régió](/concepts-pricing-tiers.md#storage) esetében, ahol ez támogatott. A 16 TB-os tárolási kiszolgálókon a biztonsági másolatok pillanatkép-alapúak. Az első teljes pillanatkép biztonsági mentése a kiszolgáló létrehozása után azonnal ütemezve van. Az első teljes pillanatkép biztonsági mentése a kiszolgáló alapbiztonsági mentéseként marad. A pillanatképek későbbi biztonsági mentései csak különbségi biztonsági mentések lesznek.
 

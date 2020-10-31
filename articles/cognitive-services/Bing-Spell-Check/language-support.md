@@ -10,14 +10,19 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 5ffd9f05bb429ba611a08d7985dbc9d509a9df0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b4e4eb84cecf2f68c50f0a40630cc2e6f34554f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "66390168"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084206"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>A Bing Spell Check API nyelvi és területi támogatása
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Ezeket a nyelveket a Bing Spell Check API támogatja (csak a `spell` módban).
 
@@ -29,7 +34,7 @@ Kérjük, vegye figyelembe, hogy ha más nyelvet szeretne dolgozni `en-US` , a `
 | Kínai (Kínai Népköztársaság)     | `zh-CN`          |
 | Kínai (Hongkong KKT)    | `zh-HK`          |
 | Kínai (Tajvan)     | `zh-TW`          |
-| Dán      | `da`          |
+| dán      | `da`          |
 | Holland (Belgium)       | `nl-BE`          |
 | Holland (Hollandia)      | `nl-NL`          |
 | Angol (Ausztrália)    | `en-AU`          |
@@ -42,7 +47,7 @@ Kérjük, vegye figyelembe, hogy ha más nyelvet szeretne dolgozni `en-US` , a `
 | Angol (Dél-Afrika)    | `en-ZA`          |
 | angol (Egyesült Királyság)    | `en-GB`          |
 | angol (Egyesült Államok)    | `en-US`          |
-| Finn     | `fi`          |
+| finn     | `fi`          |
 | Francia (Belgium)     | `fr-BE`          |
 | Francia (Kanada)     | `fr-CA`          |
 | Francia (Franciaország)     | `fr-FR`          |
@@ -63,7 +68,7 @@ Kérjük, vegye figyelembe, hogy ha más nyelvet szeretne dolgozni `en-US` , a `
 | Spanyol (Mexikó)    | `es-MX`          |
 | Spanyol (Spanyolország)    | `es-ES`          |
 | Spanyol (Egyesült Államok)    | `es-US`          |
-| Svéd     | `sv`          |
+| svéd     | `sv`          |
 | Török     | `tr`          |
 
 ## <a name="see-also"></a>Lásd még

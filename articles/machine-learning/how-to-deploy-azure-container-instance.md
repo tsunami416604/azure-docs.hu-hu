@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: e64914118409332f6a1c08b6d5e1669685529d76
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: ff071373706759576f80426d61a27851bfc4e1b6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999167"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082164"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Modell üzembe helyezése az Azure Container Instances szolgáltatásban
 
@@ -60,7 +60,7 @@ További információ: [a virtuális hálózatokkal való következtetések bizt
 
 ## <a name="deploy-to-aci"></a>Üzembe helyezés az ACI-ban
 
-Azure Container Instances modell üzembe helyezéséhez hozzon létre egy __központi telepítési konfigurációt__ , amely leírja a szükséges számítási erőforrásokat. Például a magok és a memória száma. Szüksége lesz egy __következtetésre__is, amely leírja a modell és a webszolgáltatás üzemeltetéséhez szükséges környezetet. A következtetések konfigurációjának létrehozásáról további információt a [modellek üzembe helyezésének módja és helye](how-to-deploy-and-where.md)című témakörben talál.
+Azure Container Instances modell üzembe helyezéséhez hozzon létre egy __központi telepítési konfigurációt__ , amely leírja a szükséges számítási erőforrásokat. Például a magok és a memória száma. Szüksége lesz egy __következtetésre__ is, amely leírja a modell és a webszolgáltatás üzemeltetéséhez szükséges környezetet. A következtetések konfigurációjának létrehozásáról további információt a [modellek üzembe helyezésének módja és helye](how-to-deploy-and-where.md)című témakörben talál.
 
 > [!NOTE]
 > * Az ACI csak olyan kisméretű modellekhez alkalmas, amelyek mérete 1 GB. 
@@ -104,6 +104,8 @@ Lásd: [modellek üzembe helyezése a vs Code](tutorial-train-deploy-image-class
 > [!IMPORTANT]
 > A teszteléshez nem kell ACI-tárolót létrehoznia. Az ACI-tárolók szükség szerint jönnek létre.
 
+> [!IMPORTANT]
+> A rendszer az összes létrehozott ACI-erőforráshoz hozzáfűzi a kivonatoló munkaterület azonosítóját, amely az azonos munkaterületről származó összes ACI-nevet ugyanazzal az utótaggal fogja ellátni. A Azure Machine Learning szolgáltatás neve továbbra is az ügyfél által megadott "service_name" lesz, és az Azure Machine Learning SDK API-khoz kapcsolódó összes felhasználónak nincs szüksége módosításra. Nem biztosítunk garanciát a létrehozott mögöttes erőforrások neveire.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de383bfa9f943cd5644d35ed83db8a80ec8017bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a559b29502adb1c507b1543463d84eb3bd15d5a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653213"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083286"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: az Azure AD JOIN megvalósításának megtervezése
 
@@ -91,7 +91,7 @@ Az eszközök Azure AD-hez való csatlakoztatásához nem használhat intelligen
 Ha a következőket hozza létre a felhasználók számára:
 
 - Helyszíni **Active Directory a** [Azure ad Connect](../hybrid/how-to-connect-sync-whatis.md)használatával szinkronizálnia kell őket az Azure ad-vel. 
-- Az **Azure ad**-ben nincs szükség további beállításra.
+- Az **Azure ad** -ben nincs szükség további beállításra.
 
 Az Azure AD UPN-től eltérő helyszíni UPN-ket az Azure AD-hez csatlakoztatott eszközök nem támogatják. Ha a felhasználók helyszíni UPN-t használnak, érdemes megtervezni, hogy az elsődleges UPN-t használják az Azure AD-ben.
 
@@ -187,7 +187,7 @@ Az Azure AD-hez csatlakoztatott eszközökhöz való távoli asztali kapcsolatho
 A Windows 10 2004 frissítésének indítása után a felhasználók a Távoli asztalt is használhatják egy Azure AD-beli regisztrált Windows 10-es eszközről egy Azure AD-hez csatlakoztatott eszközre. 
 
 ## <a name="understand-your-provisioning-options"></a>A kiépítési lehetőségek megismerése
-**Megjegyzés**: az Azure ad-hez csatlakoztatott eszközök nem telepíthetők rendszer-előkészítő eszközzel (Sysprep) vagy hasonló képalkotási eszközökkel
+**Megjegyzés** : az Azure ad-hez csatlakoztatott eszközök nem telepíthetők rendszer-előkészítő eszközzel (Sysprep) vagy hasonló képalkotási eszközökkel
 
 Az Azure AD JOIN a következő módszerekkel építhető ki:
 
@@ -219,7 +219,7 @@ Válassza ki az üzembe helyezési módszert vagy megközelítéseket a fenti t�
 
 ## <a name="configure-your-device-settings"></a>Az eszközbeállítások konfigurálása
 
-A Azure Portal segítségével szabályozható az Azure AD-hez csatlakoztatott eszközök üzembe helyezése a szervezetben. A kapcsolódó beállítások konfigurálásához a **Azure Active Directory lapon**válassza a elemet `Devices > Device settings` .
+A Azure Portal segítségével szabályozható az Azure AD-hez csatlakoztatott eszközök üzembe helyezése a szervezetben. A kapcsolódó beállítások konfigurálásához a **Azure Active Directory lapon** válassza a elemet `Devices > Device settings` .
 
 ### <a name="users-may-join-devices-to-azure-ad"></a>A felhasználók eszközöket léptethetnek be az Azure AD-be
 
@@ -243,13 +243,13 @@ Válassza az **Igen** lehetőséget, ha azt szeretné, hogy a felhasználók a M
 
 A mobilitási beállítások konfigurálása előtt előfordulhat, hogy előbb hozzá kell adnia egy MDM-szolgáltatót.
 
-**Mdm-szolgáltató hozzáadása**:
+**Mdm-szolgáltató hozzáadása** :
 
 1. A **Azure Active Directory lap** **kezelés** szakaszában kattintson a elemre `Mobility (MDM and MAM)` . 
-1. Kattintson az **alkalmazás hozzáadása**lehetőségre.
+1. Kattintson az **alkalmazás hozzáadása** lehetőségre.
 1. Válassza ki a MDM-szolgáltatót a listából.
 
-   ![Alkalmazás hozzáadása](./media/azureadjoin-plan/04.png)
+   :::image type="content" source="./media/azureadjoin-plan/04.png" alt-text="Képernyőkép a Azure Active Directory alkalmazás hozzáadása oldalról. A rendszer több M D M szolgáltatót is listáz." border="false":::
 
 Válassza ki a MDM szolgáltatóját a kapcsolódó beállítások konfigurálásához. 
 
@@ -261,8 +261,8 @@ A telepítés hatóköre alapján válasszon ki **egy** vagy **mindet** .
 
 A hatókör alapján a következők egyike történik: 
 
-- **A felhasználó Mdm hatókörben**van: Ha prémium szintű Azure ad-előfizetéssel rendelkezik, a Mdm-regisztráció az Azure ad JOIN szolgáltatással együtt automatizálható. Az összes hatókörrel rendelkező felhasználónak rendelkeznie kell egy megfelelő licenccel a MDM. Ha ebben a forgatókönyvben a MDM-regisztráció meghiúsul, az Azure AD JOIN is vissza lesz állítva.
-- **A felhasználó nincs Mdm hatókörben**: Ha a felhasználók nincsenek a Mdm hatókörében, az Azure ad JOIN Mdm-regisztráció nélkül fejeződik be. Ez egy nem felügyelt eszköz eredményét eredményezi.
+- **A felhasználó Mdm hatókörben** van: Ha prémium szintű Azure ad-előfizetéssel rendelkezik, a Mdm-regisztráció az Azure ad JOIN szolgáltatással együtt automatizálható. Az összes hatókörrel rendelkező felhasználónak rendelkeznie kell egy megfelelő licenccel a MDM. Ha ebben a forgatókönyvben a MDM-regisztráció meghiúsul, az Azure AD JOIN is vissza lesz állítva.
+- **A felhasználó nincs Mdm hatókörben** : Ha a felhasználók nincsenek a Mdm hatókörében, az Azure ad JOIN Mdm-regisztráció nélkül fejeződik be. Ez egy nem felügyelt eszköz eredményét eredményezi.
 
 ### <a name="mdm-urls"></a>MDM-URL-címek
 
@@ -272,7 +272,7 @@ A MDM-konfigurációhoz három URL-cím kapcsolódik:
 - MDM-felderítési URL-cím 
 - MDM megfelelőségi URL-címe
 
-![Alkalmazás hozzáadása](./media/azureadjoin-plan/06.png)
+:::image type="content" source="./media/azureadjoin-plan/06.png" alt-text="Képernyőkép a Azure Active Directory alkalmazás hozzáadása oldalról. A rendszer több M D M szolgáltatót is listáz." border="false":::
 
 Mindegyik URL-címnek előre definiált alapértelmezett értéke van. Ha ezek a mezők üresek, további információért forduljon a MDM-szolgáltatóhoz.
 
@@ -284,7 +284,7 @@ A MAM nem vonatkozik az Azure AD JOIN szolgáltatásra.
 
 Ha engedélyezni szeretné az állapot-barangolást az Azure AD-ben, hogy a felhasználók szinkronizálják a beállításait az eszközök között, tekintse [meg a Enterprise State roaming engedélyezése a Azure Active Directoryban](enterprise-state-roaming-enable.md)című témakört. 
 
-**Javaslat**: engedélyezze ezt a beállítást még a hibrid Azure ad-hez csatlakoztatott eszközök esetében is.
+**Javaslat** : engedélyezze ezt a beállítást még a hibrid Azure ad-hez csatlakoztatott eszközök esetében is.
 
 ## <a name="configure-conditional-access"></a>Feltételes hozzáférés konfigurálása
 
