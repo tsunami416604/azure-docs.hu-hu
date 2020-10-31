@@ -1,7 +1,7 @@
 ---
 title: Ismétlődő fejlesztés és hibakeresés a Azure Data Factoryban
 description: Ismerje meg, hogyan fejlesztheti és hibakeresési Data Factory folyamatok iteratív az ADF UX-ben
-ms.date: 09/11/2020
+ms.date: 10/29/2020
 ms.topic: conceptual
 ms.service: data-factory
 services: data-factory
@@ -9,12 +9,12 @@ documentationcenter: ''
 ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
-ms.openlocfilehash: e4c66055184b2ef0113aa0e25c02ad8635feddb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1f81af715bc4b2248a24076f3b12a74d0ee73e3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90031007"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93102070"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iteratív fejlesztés és hibakeresés az Azure Data Factoryval
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -25,9 +25,9 @@ A szolgáltatás nyolc perces bevezetéséhez és bemutatásához tekintse meg a
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Iterative-development-and-debugging-with-Azure-Data-Factory/player]
 
-## <a name="debugging-a-pipeline"></a>Folyamat hibakeresése
+## <a name="debugging-a-pipeline"></a>Folyamatok hibakeresése
 
-A folyamat vásznon való létrehozásakor a **hibakeresési** képesség használatával tesztelheti a tevékenységeket. A tesztek futtatásakor nem kell közzétennie a módosításokat az adatgyárban a **hibakeresés**kiválasztása előtt. Ez a funkció olyan esetekben hasznos, amikor azt szeretné, hogy a módosítások a várt módon működjenek, mielőtt frissíti a adatfeldolgozó munkafolyamatot.
+A folyamat vásznon való létrehozásakor a **hibakeresési** képesség használatával tesztelheti a tevékenységeket. A tesztek futtatásakor nem kell közzétennie a módosításokat az adatgyárban a **hibakeresés** kiválasztása előtt. Ez a funkció olyan esetekben hasznos, amikor azt szeretné, hogy a módosítások a várt módon működjenek, mielőtt frissíti a adatfeldolgozó munkafolyamatot.
 
 ![Hibakeresési képesség a folyamat vásznon](media/iterative-development-debugging/iterative-development-1.png)
 
@@ -44,7 +44,7 @@ A tesztek sikeres futtatása után további tevékenységeket adhat hozzá a fol
 
 ### <a name="setting-breakpoints"></a>Töréspontok beállítása
 
-Azure Data Factory lehetővé teszi egy folyamat hibakeresését, amíg nem ér el egy adott tevékenységet a folyamat vásznon. Helyezzen egy töréspontot a tevékenységre, amíg meg nem kívánja vizsgálni, majd válassza a **hibakeresés**lehetőséget. Data Factory biztosítja, hogy a teszt csak a folyamat vásznon lévő töréspont tevékenységig fusson. Ez a *hibakeresés addig* nem hasznos, ha nem szeretné tesztelni a teljes folyamatot, de csak a folyamaton belüli tevékenységek egy részhalmazát.
+Azure Data Factory lehetővé teszi egy folyamat hibakeresését, amíg nem ér el egy adott tevékenységet a folyamat vásznon. Helyezzen egy töréspontot a tevékenységre, amíg meg nem kívánja vizsgálni, majd válassza a **hibakeresés** lehetőséget. Data Factory biztosítja, hogy a teszt csak a folyamat vásznon lévő töréspont tevékenységig fusson. Ez a *hibakeresés addig* nem hasznos, ha nem szeretné tesztelni a teljes folyamatot, de csak a folyamaton belüli tevékenységek egy részhalmazát.
 
 ![Töréspontok a folyamat vásznon](media/iterative-development-debugging/iterative-development-3.png)
 
@@ -79,11 +79,14 @@ A **figyelő** felületén figyelheti az aktív adatfolyam-hibakeresési munkame
  
 ### <a name="debugging-a-pipeline-with-a-data-flow-activity"></a>Folyamat hibakeresése adatfolyam-tevékenységgel
 
-Ha hibakeresési kísérletet futtat egy adatfolyammal, két lehetőség közül választhat, amelyeken számítást kell használni. Használhat meglévő hibakeresési fürtöt, vagy felvehet egy új, igény szerinti fürtöt az adatforgalmához.
+Egy adatfolyamattal futtatott hibakeresési folyamat végrehajtásakor két lehetőség közül választhat. Használhat meglévő hibakeresési fürtöt, vagy felvehet egy új, igény szerinti fürtöt az adatforgalmához.
 
-A meglévő hibakeresési munkamenetek nagy mértékben csökkentik az adatfolyamatok indítási idejét, mivel a fürt már fut, de nem ajánlott összetett vagy párhuzamos számítási feladatokhoz, mivel ez a művelet sikertelen lehet, ha egyszerre több feladat fut. 
+A meglévő hibakeresési munkamenetek nagy mértékben csökkentik az adatfolyamatok indítási idejét, mivel a fürt már fut, de nem ajánlott összetett vagy párhuzamos számítási feladatokhoz, mivel ez a művelet sikertelen lehet, ha egyszerre több feladatot futtatnak.
 
-A tevékenység-futtatókörnyezet használatával új fürtöt hoz létre az egyes adatfolyam-tevékenységek integrációs moduljában megadott beállításokkal. Ez lehetővé teszi az egyes feladatok elkülönítését, és az összetett számítási feladatokhoz vagy a teljesítmény teszteléséhez használhatók.
+A tevékenység-futtatókörnyezet használatával új fürtöt hoz létre az egyes adatfolyam-tevékenységek integrációs moduljában megadott beállításokkal. Ez lehetővé teszi az egyes feladatok elkülönítését, és az összetett számítási feladatokhoz vagy a teljesítmény teszteléséhez használhatók. Az ÉLETTARTAMot a Azure IR is szabályozhatja, így a hibakereséshez használt fürterőforrás továbbra is elérhető lesz az adott időszakra, hogy további feladatokat lehessen kiszolgálni.
+
+> [!NOTE]
+> Ha párhuzamosan végrehajtó adatfolyamatokkal rendelkező folyamattal rendelkezik, válassza a "tevékenység-futtatókörnyezet használata" lehetőséget, hogy Data Factory használhassa az adatfolyam-tevékenységben kiválasztott Integration Runtime. Ez lehetővé teszi, hogy az adatforgalom több fürtön fusson, és képes legyen a párhuzamos adatfolyam-végrehajtásra.
 
 ![Folyamat futtatása adatfolyam](media/iterative-development-debugging/iterative-development-dataflow.png)
 

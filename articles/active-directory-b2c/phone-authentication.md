@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4a429314d4a992ea93f4c068203371cda769a4ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3d044be923e5d7a621b72a926db0b4ce9a09b72
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90029155"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122724"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>A telefonos regisztráció és a bejelentkezés beállítása egyéni szabályzatokkal Azure AD B2C
 
@@ -35,7 +35,7 @@ A telefonos regisztrációt és bejelentkezést követően a felhasználó az el
 > [!NOTE]
 > Nyomatékosan javasoljuk, hogy a regisztrációs és a bejelentkezéshez hasonló módon adja meg a belefoglalási adatokat, mint az alábbi minta szövege. Ez a mintaszöveg csak tájékoztató jellegű. A megfelelőségi igények kielégítéséhez tekintse meg a [CTIA webhelyén](https://www.ctia.org/programs) található rövid kód-figyelési kézikönyvet, és kérjen segítséget a saját jogi vagy megfelelőségi szakértőitől a végső szöveg és a szolgáltatás konfigurálásához:
 >
-> *A telefonszámának megadásával beleegyezik abba, hogy SMS-ben küldött egyszeri jelszót kapjon, amely segítséget nyújt a * &lt; beszúráshoz: az alkalmazás neve &gt; *. A standard üzenet és az adatforgalmi díj is érvényes.*
+> *A telefonszámának megadásával beleegyezik abba, hogy SMS-ben küldött egyszeri jelszót kapjon, amely segítséget nyújt a *&lt; beszúráshoz: az alkalmazás neve &gt;* . A standard üzenet és az adatforgalmi díj is érvényes.*
 >
 > *&lt;INSERT: az adatvédelmi nyilatkozatra mutató hivatkozás&gt;*<br/>*&lt;INSERT: a szolgáltatási feltételekre mutató hivatkozás&gt;*
 
@@ -56,27 +56,27 @@ A saját belefoglalási információinak hozzáadásához szabja testre a követ
 
 ### <a name="phone-sign-up-experience"></a>Telefonos regisztrációs élmény
 
-Ha a felhasználó még nem rendelkezik fiókkal az alkalmazáshoz, létrehozhat egyet a **regisztráció most** hivatkozásra kattintva. Megjelenik egy regisztrációs oldal, ahol a felhasználó kiválasztja az **országot**, beírja a telefonszámát, és kiválasztja a **kód küldése**lehetőséget.
+Ha a felhasználó még nem rendelkezik fiókkal az alkalmazáshoz, létrehozhat egyet a **regisztráció most** hivatkozásra kattintva. Megjelenik egy regisztrációs oldal, ahol a felhasználó kiválasztja az **országot** , beírja a telefonszámát, és kiválasztja a **kód küldése** lehetőséget.
 
 ![A felhasználó elindítja a telefonos regisztrációt](media/phone-authentication/phone-signup-start.png)
 
-A rendszer egy egyszeri ellenőrző kódot továbbít a felhasználó telefonszámára. A felhasználó beírja az **ellenőrző kódot** a regisztrációs oldalra, majd kiválasztja a **kód ellenőrzése**lehetőséget. (Ha a felhasználó nem tudta beolvasni a kódot, akkor válassza az **új kód küldése**lehetőséget.)
+A rendszer egy egyszeri ellenőrző kódot továbbít a felhasználó telefonszámára. A felhasználó beírja az **ellenőrző kódot** a regisztrációs oldalra, majd kiválasztja a **kód ellenőrzése** lehetőséget. (Ha a felhasználó nem tudta beolvasni a kódot, akkor válassza az **új kód küldése** lehetőséget.)
 
 ![A felhasználó a telefonos regisztráció során ellenőrzi a kódot.](media/phone-authentication/phone-signup-verify-code.png)
 
- A felhasználó bármilyen más, a regisztrációs oldalon kért információt megad, például a **megjelenítendő nevet**, a **nevet**és a **vezetéknevet** (ország és telefonszám továbbra is feltöltve marad). Ha a felhasználó egy másik telefonszámot szeretne használni, akkor a regisztráció újraindításához válassza a **szám módosítása** lehetőséget. Ha elkészült, a felhasználó a **Folytatás**gombra kattint.
+ A felhasználó bármilyen más, a regisztrációs oldalon kért információt megad, például a **megjelenítendő nevet** , a **nevet** és a **vezetéknevet** (ország és telefonszám továbbra is feltöltve marad). Ha a felhasználó egy másik telefonszámot szeretne használni, akkor a regisztráció újraindításához válassza a **szám módosítása** lehetőséget. Ha elkészült, a felhasználó a **Folytatás** gombra kattint.
 
 ![A felhasználó további információkat is tartalmaz](media/phone-authentication/phone-signup-additional-info.png)
 
-Ezután a rendszer megkéri a felhasználót, hogy adjon meg egy helyreállítási e-mailt. A felhasználó megadja az e-mail-címét, majd kiválasztja az **ellenőrző kód küldése**lehetőséget. A rendszer elküld egy kódot a felhasználó e-mail-fiókjába, amelyet az **ellenőrző kód** mezőbe beolvashat és megadhat. Ezután a felhasználó kiválasztja a **kód ellenőrzése**lehetőséget. 
+Ezután a rendszer megkéri a felhasználót, hogy adjon meg egy helyreállítási e-mailt. A felhasználó megadja az e-mail-címét, majd kiválasztja az **ellenőrző kód küldése** lehetőséget. A rendszer elküld egy kódot a felhasználó e-mail-fiókjába, amelyet az **ellenőrző kód** mezőbe beolvashat és megadhat. Ezután a felhasználó kiválasztja a **kód ellenőrzése** lehetőséget. 
 
-A kód ellenőrzése után a felhasználó a **Létrehozás** gombra kattint a fiók létrehozásához. Ha a felhasználó más e-mail-címet szeretne használni, válassza az **E-mail módosítása**lehetőséget.
+A kód ellenőrzése után a felhasználó a **Létrehozás** gombra kattint a fiók létrehozásához. Ha a felhasználó más e-mail-címet szeretne használni, válassza az **E-mail módosítása** lehetőséget.
 
 ![A felhasználó létrehoz egy fiókot](media/phone-authentication/email-verification.png)
 
 ### <a name="phone-sign-in-experience"></a>Telefonos bejelentkezési élmény
 
-Ha a felhasználó rendelkezik egy olyan fiókkal, amely azonosítóként rendelkezik telefonszámmal, a felhasználó beírja a telefonszámát, és kiválasztja a **Continue (folytatás**) értéket. A **Folytatás**gombra kattintva megerősítik az országot és a telefonszámot, és egy egyszeri ellenőrző kódot kapnak a telefonjára. A felhasználó beírja az ellenőrző kódot, és kiválasztja a **tovább** lehetőséget a bejelentkezéshez.
+Ha a felhasználó rendelkezik egy olyan fiókkal, amely azonosítóként rendelkezik telefonszámmal, a felhasználó beírja a telefonszámát, és kiválasztja a **Continue (folytatás** ) értéket. A **Folytatás** gombra kattintva megerősítik az országot és a telefonszámot, és egy egyszeri ellenőrző kódot kapnak a telefonjára. A felhasználó beírja az ellenőrző kódot, és kiválasztja a **tovább** lehetőséget a bejelentkezéshez.
 
 ![Telefonos bejelentkezési felhasználói élmény](media/phone-authentication/phone-signin-screens.png)
 
@@ -106,15 +106,15 @@ A következő lépések azt feltételezik, hogy végrehajtotta az [előfeltétel
 
     `active-directory-b2c-custom-policy-starterpack/scenarios/`**`phone-number-passwordless`**
 
-1. Minden fájlban cserélje le a karakterláncot a `yourtenant` Azure ad B2C bérlő nevére. Ha például a B2C-bérlő neve *contosob2c*, az összes példánya `yourtenant.onmicrosoft.com` lesz `contosob2c.onmicrosoft.com` .
+1. Minden fájlban cserélje le a karakterláncot a `yourtenant` Azure ad B2C bérlő nevére. Ha például a B2C-bérlő neve *contosob2c* , az összes példánya `yourtenant.onmicrosoft.com` lesz `contosob2c.onmicrosoft.com` .
 
-1. Hajtsa végre az [alkalmazás-azonosítók hozzáadása az egyéni házirendhez](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) című szakasz lépéseit az [Egyéni szabályzatok beszerzése Azure Active Directory B2Cban](custom-policy-get-started.md)című témakörben. Ebben az esetben az `/phone-number-passwordless/` **`Phone_Email_Base.xml`** Előfeltételek, a *IdentityExperienceFramework* és a *ProxyIdentityExperienceFramework*végrehajtásakor regisztrált két alkalmazás **alkalmazás-(ügyfél-) azonosítóit** kell frissíteni.
+1. Hajtsa végre az [alkalmazás-azonosítók hozzáadása az egyéni házirendhez](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) című szakasz lépéseit az [Egyéni szabályzatok beszerzése Azure Active Directory B2Cban](custom-policy-get-started.md)című témakörben. Ebben az esetben az `/phone-number-passwordless/` **`Phone_Email_Base.xml`** Előfeltételek, a *IdentityExperienceFramework* és a *ProxyIdentityExperienceFramework* végrehajtásakor regisztrált két alkalmazás **alkalmazás-(ügyfél-) azonosítóit** kell frissíteni.
 
 ## <a name="upload-the-policy-files"></a>A szabályzat fájljainak feltöltése
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon a Azure ad B2C bérlőhöz.
-1. A **szabályzatok**területen válassza az **identitási élmény keretrendszere**elemet.
-1. Válassza az **egyéni házirend feltöltése**lehetőséget.
+1. A **szabályzatok** területen válassza az **identitási élmény keretrendszere** elemet.
+1. Válassza az **egyéni házirend feltöltése** lehetőséget.
 1. Töltse fel a házirend-fájlokat a következő sorrendben:
     1. *Phone_Email_Base.xml*
     1. *SignUpOrSignInWithPhone.xml*
@@ -128,9 +128,9 @@ Az egyes fájlok feltöltésekor az Azure hozzáadja az előtagot `B2C_1A_` .
 
 ## <a name="test-the-custom-policy"></a>Egyéni szabályzat tesztelése
 
-1. Az **Egyéni házirendek**területen válassza a **B2C_1A_SignUpOrSignInWithPhone**lehetőséget.
-1. Az **alkalmazás kiválasztása**területen válassza ki azt a *webapp1* -alkalmazást, amelyet az előfeltételek végrehajtásakor regisztrált.
-1. Válassza a **Válasz URL-cím kiválasztása**lehetőséget `https://jwt.ms` .
+1. Az **Egyéni házirendek** területen válassza a **B2C_1A_SignUpOrSignInWithPhone** lehetőséget.
+1. Az **alkalmazás kiválasztása** területen válassza ki azt a *webapp1* -alkalmazást, amelyet az előfeltételek végrehajtásakor regisztrált.
+1. Válassza a **Válasz URL-cím kiválasztása** lehetőséget `https://jwt.ms` .
 1. Válassza a **Futtatás most** lehetőséget, és regisztráljon e-mail-cím vagy telefonszám használatával.
 1. Kattintson ismét a **Futtatás** gombra, és jelentkezzen be ugyanazzal a fiókkal, és ellenőrizze, hogy megfelelő-e a konfigurációja.
 
@@ -144,7 +144,7 @@ A felhasználó telefonszáma alapján (bejelentkezési név) a [Microsoft Graph
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')
 ```
 
-Példa:
+Például:
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+450334567890' and c/issuer eq 'contosob2c.onmicrosoft.com')

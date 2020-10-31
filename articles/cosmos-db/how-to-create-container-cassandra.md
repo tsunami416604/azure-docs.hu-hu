@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 54b58a07e3d6d4b330b6f97ef0f4a7bdd10293da
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 01030a563c15eee7786058c2eae30d23803dfe42
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490458"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101646"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-cassandra-api"></a>Tároló létrehozása Azure Cosmos DB Cassandra API
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Ez a cikk ismerteti a tárolók létrehozásának különböző módszereit Azure Cosmos DB Cassandra API. Bemutatja, hogyan hozhat létre egy tárolót a Azure Portal, az Azure CLI, a PowerShell vagy a támogatott SDK-k használatával. Ez a cikk bemutatja, hogyan hozhat létre tárolót, hogyan adhatja meg a partíciós kulcsot, és hogyan lehet kiépíteni az átviteli sebességet.
 
@@ -30,7 +31,7 @@ Ez a cikk ismerteti a tárolók létrehozásának különböző módszereit Azur
 
 1. [Hozzon létre egy új Azure Cosmos-fiókot](create-cassandra-dotnet.md#create-a-database-account), vagy válasszon ki egy meglévő fiókot.
 
-1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza az **új tábla**lehetőséget. Ezután adja meg a következő adatokat:
+1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza az **új tábla** lehetőséget. Ezután adja meg a következő adatokat:
 
    * Jelezze, hogy új lemezterületet hoz létre, vagy egy meglévőt használ.
    * Adja meg egy tábla nevét.

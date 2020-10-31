@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: apimpm
-ms.openlocfilehash: e42e976e57dd69ffcbd9065cfb3aaf3af9c4b972
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 124bc053aa2c6e59e205bb6f33a9a96190799499
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852072"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93102037"
 ---
 # <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>Egyéni HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány hozzáadása az Azure API Management
 
@@ -41,15 +41,15 @@ Az új HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány feltöltéséhez kövesse az a
 
 3. Kattintson a **+ Hozzáadás** gombra.  
 
-    ![HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok hozzáadása](media/api-management-howto-ca-certificates/01.png)  
+    ![A HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány hozzáadására szolgáló + Hozzáadás gombot megjelenítő képernyőkép.](media/api-management-howto-ca-certificates/01.png)  
 
 4. Keresse meg a tanúsítványt, és döntse el a tanúsítványtárolót. Csak a nyilvános kulcsra van szükség, ezért a jelszó megadása nem kötelező.
 
-    ![HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok hozzáadása](media/api-management-howto-ca-certificates/02.png)  
+    ![Képernyőkép, amely bemutatja, hogyan böngészhet a tanúsítványban.](media/api-management-howto-ca-certificates/02.png)  
 
 5. Kattintson a **Mentés** gombra. A művelet eltarthat néhány percig.
 
-    ![HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok hozzáadása](media/api-management-howto-ca-certificates/03.png)  
+    ![A tanúsítvány mentését bemutató képernyőkép.](media/api-management-howto-ca-certificates/03.png)  
 
 > [!NOTE]
 > A HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt a PowerShell-paranccsal töltheti fel `New-AzApiManagementSystemCertificate` .

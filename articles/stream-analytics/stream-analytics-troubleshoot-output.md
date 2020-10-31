@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: c063fec3eac962d22ead12e0ca11f4b9fc155b5d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: bc630fc5ea9407c284e2e2e879c349a83302cd9f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910151"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122623"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics kimenetek hibáinak megoldása
 
@@ -71,7 +71,7 @@ A kimenet részleteinek megtekintéséhez válassza ki a folyamatos átviteli fe
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Kulcs megsértése figyelmeztetés Azure SQL Database kimenettel
 
-Ha egy Azure SQL Database-adatbázist kimenetként konfigurál egy Stream Analytics feladatokhoz, a rekordok tömeges beszúrása a céltáblaba. Általánosságban Azure Stream Analytics garantálja a [legalább egyszeri kézbesítést](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) a kimeneti fogadónak. Továbbra is [pontosan egyszeri kézbesítést érhet]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) el egy SQL-kimenetben, ha egy SQL-táblához egyedi korlátozás van meghatározva.
+Ha egy Azure SQL Database-adatbázist kimenetként konfigurál egy Stream Analytics feladatokhoz, a rekordok tömeges beszúrása a céltáblaba. Általánosságban Azure Stream Analytics garantálja a [legalább egyszeri kézbesítést](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) a kimeneti fogadónak. Továbbra is [pontosan egyszeri kézbesítést érhet]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) el egy SQL-kimenetben, ha egy SQL-táblához egyedi korlátozás van meghatározva.
 
 Amikor egyedi kulcsokra vonatkozó korlátozásokat állít be az SQL-táblán, Azure Stream Analytics eltávolítja az ismétlődő rekordokat. Feldarabolja az adatok kötegekre való felosztását, és rekurzív módon beszúrja a kötegeket, amíg egyetlen duplikált rekord nem található. A felosztási és beillesztési folyamat egyszerre csak egy másodpéldányt hagy el. A sok ismétlődő sorból álló folyamatos átviteli feladatok esetében a folyamat nem hatékony és időigényes. Ha az előző órában több kulcs megsértését jelző figyelmeztető üzenet jelenik meg a tevékenység naplójában, akkor valószínű, hogy az SQL-kimenet lelassítja a teljes feladatot.
 
@@ -95,9 +95,9 @@ Amikor az SQL kimenettel rendelkező Stream Analytics-feladatok megkapják az el
 
 A fenti lépések során az SQL-kimenet a következő típusú hibákat képes megtapasztalni:
 
-* Az exponenciális leállítási újrapróbálkozási stratégiájának használatával újrapróbált átmeneti [hibák](/azure/azure-sql/database/troubleshoot-common-errors-issues#transient-fault-error-messages-40197-40613-and-others) . A minimális újrapróbálkozási időköz az egyes hibakódtól függ, de az intervallumok jellemzően kisebbek, mint 60 másodperc. A felső korlát legfeljebb öt perc lehet. 
+* Az exponenciális leállítási újrapróbálkozási stratégiájának használatával újrapróbált átmeneti [hibák](../azure-sql/database/troubleshoot-common-errors-issues.md#transient-fault-error-messages-40197-40613-and-others) . A minimális újrapróbálkozási időköz az egyes hibakódtól függ, de az intervallumok jellemzően kisebbek, mint 60 másodperc. A felső korlát legfeljebb öt perc lehet. 
 
-   A [bejelentkezési hibák](/azure/azure-sql/database/troubleshoot-common-errors-issues#unable-to-log-in-to-the-server-errors-18456-40531) és a [tűzfal problémái](/azure/azure-sql/database/troubleshoot-common-errors-issues#cannot-connect-to-server-due-to-firewall-issues) legalább 5 perccel az előző próbálkozás után újrapróbálkoznak, és a rendszer újrapróbálkozik, amíg azok nem sikerül.
+   A [bejelentkezési hibák](../azure-sql/database/troubleshoot-common-errors-issues.md#unable-to-log-in-to-the-server-errors-18456-40531) és a [tűzfal problémái](../azure-sql/database/troubleshoot-common-errors-issues.md#cannot-connect-to-server-due-to-firewall-issues) legalább 5 perccel az előző próbálkozás után újrapróbálkoznak, és a rendszer újrapróbálkozik, amíg azok nem sikerül.
 
 * Az adathibák, például a hibák és a séma megkötésének megsértése a kimeneti hibák házirendjével kezelhetők. Ezeket a hibákat a bináris felosztott kötegek újrapróbálkozásával kezeli a rendszer, amíg a hibát okozó egyedi rekordot kihagyja vagy újra nem kezeli. Az elsődleges egyedi kulcs korlátozásának megsértését [mindig kezeli](./stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output)a rendszer.
 
@@ -107,16 +107,16 @@ Ha az időkorlát 15 percet vesz igénybe, a rendszer a Batch maximális méretr
 
 ## <a name="column-names-are-lowercase-in-azure-stream-analytics-10"></a>Az oszlopnevek kisbetűsek Azure Stream Analytics (1,0)
 
-Az eredeti kompatibilitási szint (1,0) használatakor Azure Stream Analytics az oszlopnevek kisbetűsre változnak. Ez a viselkedés a későbbi kompatibilitási szinteken lett kijavítva. Az eset megőrzése érdekében váltson a 1,1-es vagy újabb kompatibilitási szintre. További információ: [stream Analytics feladatok kompatibilitási szintje](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level).
+Az eredeti kompatibilitási szint (1,0) használatakor Azure Stream Analytics az oszlopnevek kisbetűsre változnak. Ez a viselkedés a későbbi kompatibilitási szinteken lett kijavítva. Az eset megőrzése érdekében váltson a 1,1-es vagy újabb kompatibilitási szintre. További információ: [stream Analytics feladatok kompatibilitási szintje](./stream-analytics-compatibility-level.md).
 
 ## <a name="get-help"></a>Segítség kérése
 
-További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Következő lépések
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics lekérdezés nyelvi referenciája](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics lekérdezés nyelvi referenciája](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics felügyeleti REST API referenciája](/rest/api/streamanalytics/)

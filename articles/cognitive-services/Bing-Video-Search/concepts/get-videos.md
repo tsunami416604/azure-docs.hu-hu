@@ -10,14 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8074b2411a053c8b55457f9ace716481f6b107a5
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79220302"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93102224"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Videók keresése a Bing Video Search API
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 A Bing Video Search API megkönnyíti a Bing kognitív Hírek keresési funkcióinak integrálását az alkalmazásokba. Habár az API elsősorban a Web-ről keres és ad vissza releváns videókat, számos funkciót kínál az intelligens és a célzott videó-lekéréshez a weben.
 
@@ -144,7 +149,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>A lekérdezés bővítése
 
-Ha a Bing ki tudja bővíteni a lekérdezést az eredeti keresés szűkítéséhez, a [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) objektumban szerepelni fog a `queryExpansions` mező. Ha például az eredeti lekérdezés a *Cleaning Gutters* volt, a bővített lekérdezések a következők lehetnek: Gutter Cleaning **Tools**, Cleaning Gutters **From the Ground**, Gutter Cleaning **Machine** és **Easy** Gutter Cleaning.
+Ha a Bing ki tudja bővíteni a lekérdezést az eredeti keresés szűkítéséhez, a [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) objektumban szerepelni fog a `queryExpansions` mező. Ha például az eredeti lekérdezés a *Cleaning Gutters* volt, a bővített lekérdezések a következők lehetnek: Gutter Cleaning **Tools** , Cleaning Gutters **From the Ground** , Gutter Cleaning **Machine** és **Easy** Gutter Cleaning.
 
 Az alábbi példában a *Cleaning Gutters* bővített lekérdezései láthatók.
 

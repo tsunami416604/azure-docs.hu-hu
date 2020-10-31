@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c03800696897dc6cbb4cd793879e734366829b7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acb32e2fe3dae45cc4a95cea1b9fa4ea01d576c0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88925113"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93102179"
 ---
 # <a name="tutorial-find-similar-images-from-previous-searches-using-an-image-insights-token"></a>Oktatóanyag: hasonló rendszerképek keresése az előző keresésekben képelemzési jogkivonat használatával
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Az Visual Search ügyféloldali kódtár lehetővé teszi, hogy az előző keresések alapján online megkeresse a képeket `ImageInsightsToken` . Ez az alkalmazás lekérdezi `ImageInsightsToken` és felhasználja a tokent egy későbbi keresés során. Ezután elküldi a a `ImageInsightsToken` bingnek, és olyan eredményeket ad vissza, amelyek tartalmazzák az online-ban található hasonló lemezképek Bing Search URL-címét és URL-címét.
 
@@ -142,7 +147,7 @@ A teljes alkalmazás a következő URL-címeket adja vissza:
 
 Ahogy az a fentiekben is látható, a `TopicResults` és a `ImageResults` típusok a kapcsolódó képek lekérdezéseit tartalmazzák. A Bing keresési eredményeire mutató URL-címek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Visual Search egyoldalas Webalkalmazás létrehozása](tutorial-bing-visual-search-single-page-app.md)

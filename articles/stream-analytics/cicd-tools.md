@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: e772701396f172eaab906f99463bd9019728b531
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa75a553ffc131f4827aa045849f1317d894ddc5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935423"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123150"
 ---
 # <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>Egy Azure Stream Analytics-feladatokhoz tartozó buildek, tesztek és központi telepítések automatizálása CI/CD-eszközök használatával
 
@@ -21,11 +21,11 @@ A Azure Stream Analytics CI/CD NPM csomag használatával automatikusan felépí
 
 ## <a name="installation"></a>Telepítés
 
-Közvetlenül is [letöltheti a csomagot](https://www.npmjs.com/package/azure-streamanalytics-cicd) , vagy telepítheti [globálisan](https://docs.npmjs.com/downloading-and-installing-packages-globally) a `npm install -g azure-streamanalytics-cicd` paranccsal. Javasoljuk, hogy használja az parancsot, amely az **Azure-folyamatok**Build folyamatának PowerShell vagy Azure CLI parancsfájl-feladatában is használható.
+Közvetlenül is [letöltheti a csomagot](https://www.npmjs.com/package/azure-streamanalytics-cicd) , vagy telepítheti [globálisan](https://docs.npmjs.com/downloading-and-installing-packages-globally) a `npm install -g azure-streamanalytics-cicd` paranccsal. Javasoljuk, hogy használja az parancsot, amely az **Azure-folyamatok** Build folyamatának PowerShell vagy Azure CLI parancsfájl-feladatában is használható.
 
 ## <a name="build-the-project"></a>A projekt felépítése
 
-Az **ASA-streamanalytics-vel NPM-** csomag biztosítja az eszközöket stream Analytics [Visual Studio Code-projektek](quick-create-vs-code.md) vagy [Visual Studio-projektek](stream-analytics-quick-create-vs.md)Azure Resource Manager sablonjainak létrehozásához. A NPM-csomagot Windows, macOS és Linux rendszeren is használhatja a Visual Studio Code vagy a Visual Studio telepítése nélkül.
+Az **ASA-streamanalytics-vel NPM-** csomag biztosítja az eszközöket stream Analytics [Visual Studio Code-projektek](./quick-create-visual-studio-code.md) vagy [Visual Studio-projektek](stream-analytics-quick-create-vs.md)Azure Resource Manager sablonjainak létrehozásához. A NPM-csomagot Windows, macOS és Linux rendszeren is használhatja a Visual Studio Code vagy a Visual Studio telepítése nélkül.
 
 A csomag telepítése után a következő paranccsal hozhatja létre a Stream Analytics projekteket.
 
@@ -66,7 +66,7 @@ Stream Analytics-projekt sikeres létrehozásakor a a következő két fájlt ho
 
 A fájl parameters.jsjában lévő alapértelmezett paraméterek a Visual Studio Code vagy a Visual Studio-projekt beállításaiból származnak. Ha egy másik környezetbe szeretne telepíteni, cserélje le a paramétereket ennek megfelelően.
 
-Az összes hitelesítő adat alapértelmezett értékei **Null értékűek**. Az Azure-ba való üzembe helyezés előtt be kell állítania az értékeket.
+Az összes hitelesítő adat alapértelmezett értékei **Null értékűek** . Az Azure-ba való üzembe helyezés előtt be kell állítania az értékeket.
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {
@@ -122,7 +122,7 @@ azure-streamanalytics-cicd addtestcase -project <projectFullPath> [-testConfigPa
 | Paraméter | Leírás |
 |---|---|
 | `-project` | A Visual Studio Code-projekt vagy **[a projekt neve]. asaproj** for Visual Studio projekthez tartozó fájl **asaproj.jsának** elérési útja. |
-| `-testConfigPath` | A teszt konfigurációs fájljának elérési útja. Ha nincs megadva, a rendszer a **\test** a fájl **asaproj.js** aktuális könyvtára alatt keresi a fájlt, és az alapértelmezett fájlnév **testConfig.jsbe**. Ha nem létezik, új fájl jön létre. |
+| `-testConfigPath` | A teszt konfigurációs fájljának elérési útja. Ha nincs megadva, a rendszer a **\test** a fájl **asaproj.js** aktuális könyvtára alatt keresi a fájlt, és az alapértelmezett fájlnév **testConfig.jsbe** . Ha nem létezik, új fájl jön létre. |
 
 #### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -137,9 +137,9 @@ azure-streamanalytics-cicd addtestcase -project "/Users/roger/projects/samplejob
 ```
 ---
 
-Ha a teszt konfigurációs fájl üres, a rendszer a következő tartalmat írja be a fájlba. Ellenkező esetben a rendszer egy tesztelési esetet ad hozzá a **TestCases**tömbhöz. A szükséges bemeneti konfigurációk automatikusan ki vannak töltve a bemeneti konfigurációs fájlok szerint, ha vannak ilyenek. Ellenkező esetben az alapértelmezett értékek konfigurálva vannak. A teszt futtatása előtt meg kell adni az egyes bemenetek és a várt kimenet **filepath** . Manuálisan is módosíthatja a konfigurációt.
+Ha a teszt konfigurációs fájl üres, a rendszer a következő tartalmat írja be a fájlba. Ellenkező esetben a rendszer egy tesztelési esetet ad hozzá a **TestCases** tömbhöz. A szükséges bemeneti konfigurációk automatikusan ki vannak töltve a bemeneti konfigurációs fájlok szerint, ha vannak ilyenek. Ellenkező esetben az alapértelmezett értékek konfigurálva vannak. A teszt futtatása előtt meg kell adni az egyes bemenetek és a várt kimenet **filepath** . Manuálisan is módosíthatja a konfigurációt.
 
-Ha azt szeretné, hogy a teszt érvényesítése figyelmen kívül hagyja az adott kimenetet, állítsa a várt kimenet **kötelező** értékét **false**értékre.
+Ha azt szeretné, hogy a teszt érvényesítése figyelmen kívül hagyja az adott kimenetet, állítsa a várt kimenet **kötelező** értékét **false** értékre.
 
 ```json
 {
@@ -179,11 +179,11 @@ azure-streamanalytics-cicd test -project <projectFullPath> [-testConfigPath <tes
 | Paraméter | Leírás |
 |---|---|
 | `-project` | A Visual Studio Code-projekt vagy **[a projekt neve]. asaproj** for Visual Studio projekthez tartozó fájl **asaproj.jsának** elérési útja. |
-| `-testConfigPath` | A teszt konfigurációs fájljának elérési útja. Ha nincs megadva, a rendszer a **\test** a fájl **asaproj.js** aktuális könyvtára alatt keresi a fájlt, és az alapértelmezett fájlnév **testConfig.jsbe**.
+| `-testConfigPath` | A teszt konfigurációs fájljának elérési útja. Ha nincs megadva, a rendszer a **\test** a fájl **asaproj.js** aktuális könyvtára alatt keresi a fájlt, és az alapértelmezett fájlnév **testConfig.jsbe** .
 | `-outputPath` | A teszt eredményének kimeneti mappájának elérési útja Ha nincs megadva, a rendszer a kimeneti eredmények fájljait az aktuális könyvtárba helyezi. |
 | `-customCodeZipFilePath` | Az egyéni kódhoz tartozó zip-fájl, például az UDF vagy a deszerializáló elérési útja, ha azok használatban vannak. |
 
-Ha az összes teszt elkészült, a rendszer a kimeneti mappában hozza létre a teszteredmények JSON formátumban való összefoglalását. Az összegző fájl neve **testResultSummary.json**.
+Ha az összes teszt elkészült, a rendszer a kimeneti mappában hozza létre a teszteredmények JSON formátumban való összefoglalását. Az összegző fájl neve **testResultSummary.json** .
 
 ```json
 {

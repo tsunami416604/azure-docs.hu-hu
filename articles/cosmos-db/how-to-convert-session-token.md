@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: vitrinh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ff66c2cb355e2070cdf30444c52d1accacac8964
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ece181d06c7d3dbd00ba2f1262a3887ad966d088
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490441"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101663"
 ---
 # <a name="convert-session-token-formats-in-net-sdk"></a>A munkamenet-jogkivonat formátumának konvertálása a .NET SDK-ban
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ez a cikk azt ismerteti, hogyan lehet konvertálni a különböző munkamenet-tokenek formátumait az SDK-verziók közötti kompatibilitás érdekében.
 
@@ -26,7 +27,7 @@ Ez a cikk azt ismerteti, hogyan lehet konvertálni a különböző munkamenet-to
 
 ## <a name="session-token-formats"></a>Munkamenet-jogkivonat formátuma
 
-Kétféle munkamenet-jogkivonat-formátum létezik: **egyszerű** és **vektoros**.  Ez a két formátum nem felcserélhető, ezért a formátumot át kell alakítani, ha az ügyfélalkalmazás más verziókkal való továbbításra kerül.
+Kétféle munkamenet-jogkivonat-formátum létezik: **egyszerű** és **vektoros** .  Ez a két formátum nem felcserélhető, ezért a formátumot át kell alakítani, ha az ügyfélalkalmazás más verziókkal való továbbításra kerül.
 - Az **egyszerű** munkamenet-token formátumát a .net SDK V1 (Microsoft.Azure.DocumentDB-Version 1. x) használja
 - A **vektoros** munkamenet jogkivonatának formátumát a .net SDK V2 (Microsoft.Azure.DocumentDB-Version 2. x) használja
 

@@ -16,12 +16,12 @@ ms.subservice: report-monitor
 ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b3db86137207ae726c7befc393f62590fd1456d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c7cc68c84cc9f137ba5b51206526ff96111fe9a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74008268"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122741"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Használati és bepillantást a Azure Active Directory portálon
 
@@ -42,10 +42,10 @@ A használati és elemzési jelentésből származó adatok eléréséhez a köv
 ## <a name="access-the-usage-and-insights-report"></a>Hozzáférés a használati és a bepillantást a jelentéshez
 
 1. Navigáljon a [Azure Portal](https://portal.azure.com).
-2. Válassza ki a megfelelő könyvtárat, majd válassza a **Azure Active Directory** lehetőséget, és válassza a **vállalati alkalmazások**lehetőséget.
+2. Válassza ki a megfelelő könyvtárat, majd válassza a **Azure Active Directory** lehetőséget, és válassza a **vállalati alkalmazások** lehetőséget.
 3. A **tevékenység** szakaszban válassza a **használati & a bepillantást** a jelentés megnyitásához. 
 
-![Használati és elemzési jelentés](./media/concept-usage-insights-report/main-menu.png)
+![Képernyőfelvétel: a tevékenység szakaszból kiválasztott használati &i bepillantást jeleníti meg.](./media/concept-usage-insights-report/main-menu.png)
                                      
 
 ## <a name="use-the-report"></a>A jelentés használata
@@ -58,8 +58,8 @@ Beállíthatja a fókuszt egy adott alkalmazásra is. Válassza a **bejelentkez�
 
 Amikor kiválaszt egy napot az alkalmazás használati gráfjában, részletes listát kap az alkalmazás bejelentkezési tevékenységeiről.  
 
-![Használati és elemzési jelentés](./media/concept-usage-insights-report/usage-and-insights-report.png)
+![Képernyőfelvétel: a használati & az alkalmazási tevékenységekre vonatkozó információkat jelenít meg, ahol kiválaszthat egy tartományt, és megtekintheti a különböző alkalmazások bejelentkezési tevékenységeit.](./media/concept-usage-insights-report/usage-and-insights-report.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bejelentkezések jelentés](concept-sign-ins.md)

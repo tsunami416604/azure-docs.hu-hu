@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: dech
-ms.openlocfilehash: 8613d3b02d396f16008ee771cdff25fe8b2e2f10
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7084458d8d3fbae45819fc29daa502423c919bbf
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490645"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101612"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Oktatóanyag: Adatok Azure Cosmos DB-be migrálása az adatmigrálási eszköz használatával
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ez az oktatóanyag útmutatást nyújt az Azure Cosmos DB adatmigrálási eszközének használatával kapcsolatban, amellyel különböző forrásokból importálhat adatokat Azure Cosmos-tárolókba és -táblákba. Importálhat JSON- és CSV-fájlokat, SQL-, MongoDB-, Azure Table Storage- és Amazon DynamoDB-adatbázisokat, illetve akár Azure Cosmos DB SQL API-gyűjteményeket is. Az adatokat gyűjteményekbe és táblákba migrálja az Azure Cosmos DB-vel való használathoz. Az adatáttelepítési eszközzel emellett SQL API-beli egypartíciós gyűjteményt is telepíthet át többpartíciós gyűjteménybe.
 
@@ -68,8 +69,8 @@ Az importálási eszköz tartalmaz egy grafikus felhasználói felületet (dtui.
 
 Az áttelepítési eszköz forráskódját elérheti [ebben a GitHub-adattárban](https://github.com/azure/azure-documentdb-datamigrationtool). Letöltheti a forráskódot, és lefordíthatja helyben a megoldást, vagy [letöltheti az előre lefordított bináris fájlokat is](https://aka.ms/csdmtool). Ezután futtathatja az alábbiak egyikét:
 
-* **Dtui.exe**: Az eszköz grafikus felhasználói felületet használó verziója.
-* **Dtui.exe**: Az eszköz grafikus parancssori verziója.
+* **Dtui.exe** : Az eszköz grafikus felhasználói felületet használó verziója.
+* **Dtui.exe** : Az eszköz grafikus parancssori verziója.
 
 ## <a name="select-data-source"></a>Adatforrás kiválasztása
 
@@ -99,7 +100,7 @@ A következő formátumú a kapcsolatok karakterlánca:
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>`
 
 * A a `<CosmosDB Endpoint>` végpont URI-ja. Ez az érték a Azure Portalból szerezhető be. Navigáljon az Azure Cosmos-fiókjához. Nyissa meg az **Áttekintés** ablaktáblát, és másolja az **URI** értékét.
-* A a `<AccountKey>` "password" vagy az **elsődleges kulcs**. Ez az érték a Azure Portalból szerezhető be. Navigáljon az Azure Cosmos-fiókjához. Nyissa meg a **kapcsolatok karakterláncait** vagy a **kulcsok** ablaktáblát, és másolja a "jelszó" vagy az **elsődleges kulcs** értékét.
+* A a `<AccountKey>` "password" vagy az **elsődleges kulcs** . Ez az érték a Azure Portalból szerezhető be. Navigáljon az Azure Cosmos-fiókjához. Nyissa meg a **kapcsolatok karakterláncait** vagy a **kulcsok** ablaktáblát, és másolja a "jelszó" vagy az **elsődleges kulcs** értékét.
 * A a `<CosmosDB Database>` CosmosDB-adatbázis neve.
 
 Például: `AccountEndpoint=https://myCosmosDBName.documents.azure.com:443/;AccountKey=wJmFRYna6ttQ79ATmrTMKql8vPri84QBiHTt6oinFkZRvoe7Vv81x9sn6zlVlBY10bEPMgGM982wfYXpWXWB9w==;Database=myDatabaseName`
@@ -375,7 +376,7 @@ Az Azure Cosmos DB-fiók kapcsolati sztringjét beszerezheti az Azure Portal Kul
 > [!NOTE]
 > Ellenőrizze a Verify paranccsal, hogy elérhető-e a kapcsolati sztringben megadott Azure Cosmos DB-példány.
 
-Egyetlen gyűjtemény importálásához írja be annak a gyűjteménynek a nevét, amelyből importálni kívánja az adatokat, majd kattintson az Add (Hozzáadás) gombra. Ha egynél több gyűjteménybe szeretne importálni, egyenként adja meg az egyes gyűjtemények nevét, vagy használja a következő szintaxist egynél több gyűjtemény megadásához: *collection_prefix*[index-End index]. Ha egynél több gyűjteményt ad meg a fenti szintaxissal, tartsa szem előtt a következő irányelveket:
+Egyetlen gyűjtemény importálásához írja be annak a gyűjteménynek a nevét, amelyből importálni kívánja az adatokat, majd kattintson az Add (Hozzáadás) gombra. Ha egynél több gyűjteménybe szeretne importálni, egyenként adja meg az egyes gyűjtemények nevét, vagy használja a következő szintaxist egynél több gyűjtemény megadásához: *collection_prefix* [index-End index]. Ha egynél több gyűjteményt ad meg a fenti szintaxissal, tartsa szem előtt a következő irányelveket:
 
 1. Csak az integer adattípuson alapuló minták támogatottak. A „gyűjtemény[0-3]” minta például a következő gyűjteményeket hozza létre: gyűjtemény0, gyűjtemény1, gyűjtemény2, gyűjtemény3.
 2. Használhat rövidített szintaxist: A „gyűjtemény[3]” minta ugyanúgy az 1. lépésben említett gyűjteménykészletet hozza létre.
@@ -434,7 +435,7 @@ A Azure Cosmos DB fiókhoz tartozó kapcsolódási karakterláncot a Azure Porta
 > [!NOTE]
 > Ellenőrizze a Verify paranccsal, hogy elérhető-e a kapcsolati sztringben megadott Azure Cosmos DB-példány.
 
-Egyetlen gyűjteménybe való importáláshoz adja meg annak a gyűjteménynek a nevét, amelybe az adatimportálást be szeretné írni, majd kattintson a Hozzáadás gombra. Ha több gyűjteménybe szeretne importálni, egyenként adja meg az egyes gyűjtemények nevét. A következő szintaxist is használhatja több gyűjtemény megadásához: *collection_prefix*[index-End index]. Ha egynél több gyűjteményt ad meg a fenti szintaxison keresztül, tartsa szem előtt a következő irányelveket:
+Egyetlen gyűjteménybe való importáláshoz adja meg annak a gyűjteménynek a nevét, amelybe az adatimportálást be szeretné írni, majd kattintson a Hozzáadás gombra. Ha több gyűjteménybe szeretne importálni, egyenként adja meg az egyes gyűjtemények nevét. A következő szintaxist is használhatja több gyűjtemény megadásához: *collection_prefix* [index-End index]. Ha egynél több gyűjteményt ad meg a fenti szintaxison keresztül, tartsa szem előtt a következő irányelveket:
 
 1. Csak az integer adattípuson alapuló minták támogatottak. A „gyűjtemény[0-3]” minta például a következő gyűjteményeket hozza létre: gyűjtemény0, gyűjtemény1, gyűjtemény2, gyűjtemény3.
 2. Használhat rövidített szintaxist: A „gyűjtemény[3]” minta ugyanúgy az 1. lépésben említett gyűjteménykészletet hozza létre.

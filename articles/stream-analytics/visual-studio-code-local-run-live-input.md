@@ -6,16 +6,16 @@ author: su-jie
 ms.author: sujie
 ms.date: 11/14/2019
 ms.topic: how-to
-ms.openlocfilehash: 944c1a8cc4606c5e614f17cd0590331826527a7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd4966ee75e9dc0ff401823e4291f8d299c8893c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892070"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122894"
 ---
 # <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>A Visual Studio Code használatával helyileg tesztelheti Stream Analytics lekérdezéseket élő stream-bevitelsel
 
-A Visual Studio Code-hoz készült Azure Stream Analytics Tools használatával a Stream Analytics-feladatokat helyileg tesztelheti az élő stream bemenetével. A bemenet olyan forrásból származhat, mint az Azure Event Hubs vagy az Azure IoT Hub. A kimeneti eredmények JSON-fájlként lesznek elküldve a projekt egy **LocalRunOutputs**nevű mappájába.
+A Visual Studio Code-hoz készült Azure Stream Analytics Tools használatával a Stream Analytics-feladatokat helyileg tesztelheti az élő stream bemenetével. A bemenet olyan forrásból származhat, mint az Azure Event Hubs vagy az Azure IoT Hub. A kimeneti eredmények JSON-fájlként lesznek elküldve a projekt egy **LocalRunOutputs** nevű mappájába.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,7 +29,7 @@ A Visual Studio Code-hoz készült Azure Stream Analytics Tools használatával 
 
    ![Bemenet hozzáadása a bemenetek mappából](./media/quick-create-visual-studio-code/add-input-from-inputs-folder.png)
 
-   A **CTRL + SHIFT + P** billentyűkombinációval is megnyithatja a parancssort, és megadhatja az **ASA: bemenet hozzáadása**elemet.
+   A **CTRL + SHIFT + P** billentyűkombinációval is megnyithatja a parancssort, és megadhatja az **ASA: bemenet hozzáadása** elemet.
 
    ![Stream Analytics bevitel hozzáadása a Visual Studio Code-ban](./media/quick-create-visual-studio-code/add-input.png)
 
@@ -37,7 +37,7 @@ A Visual Studio Code-hoz készült Azure Stream Analytics Tools használatával 
 
    ![Válassza az IoT hub lehetőséget a bemeneti beállításként](./media/quick-create-visual-studio-code/iot-hub.png)
 
-3. Ha hozzáadta a bemenetet a parancssorból, válassza ki a Stream Analytics lekérdezési parancsfájlt, amely a bemenetet fogja használni. A rendszer automatikusan kitölti a **myASAproj. asaql**fájl elérési útját.
+3. Ha hozzáadta a bemenetet a parancssorból, válassza ki a Stream Analytics lekérdezési parancsfájlt, amely a bemenetet fogja használni. A rendszer automatikusan kitölti a **myASAproj. asaql** fájl elérési útját.
 
    ![Stream Analytics szkript kiválasztása a Visual Studio Code-ban](./media/quick-create-visual-studio-code/asa-script.png)
 
@@ -57,7 +57,7 @@ Győződjön meg arról, hogy a bemeneti adatok beérkeznek, válassza az **adat
 
 ## <a name="run-queries-locally"></a>Lekérdezések helyi futtatása
 
-Térjen vissza a lekérdezés-szerkesztőhöz, és válassza a **helyi Futtatás**lehetőséget. Ezután válassza az **élő bemenet használata** lehetőséget a legördülő listából.
+Térjen vissza a lekérdezés-szerkesztőhöz, és válassza a **helyi Futtatás** lehetőséget. Ezután válassza az **élő bemenet használata** lehetőséget a legördülő listából.
 
 ![A lekérdezés-szerkesztőben válassza a helyi Futtatás lehetőséget.](./media/vscode-local-run/run-locally.png)
 
@@ -65,7 +65,7 @@ Térjen vissza a lekérdezés-szerkesztőhöz, és válassza a **helyi Futtatás
 
 Az eredmény a jobb oldali ablakban jelenik meg, és 3 másodpercenként frissül. A **Futtatás** lehetőség kiválasztásával tesztelheti újra. A **Megnyitás a mappában** lehetőség kiválasztásával megtekintheti az eredmények fájljait a Fájlkezelőben, és megnyithatja őket a Visual Studio Code vagy egy hasonló eszköz használatával. Vegye figyelembe, hogy az eredmény fájljai csak JSON formátumban érhetők el.
 
-A kimenet létrehozásának megkezdéséhez használt alapértelmezett idő **most**értékre van állítva. Az időablakban a **kimenet kezdési időpontja** gomb kiválasztásával testreszabhatja az időt.
+A kimenet létrehozásának megkezdéséhez használt alapértelmezett idő **most** értékre van állítva. Az időablakban a **kimenet kezdési időpontja** gomb kiválasztásával testreszabhatja az időt.
 
 ![Helyi Futtatás eredményének megtekintése](./media/vscode-local-run-live-input/vscode-livetesting.gif)
 
@@ -73,4 +73,4 @@ A kimenet létrehozásának megkezdéséhez használt alapértelmezett idő **mo
 
 * [Azure Stream Analytics feladatok megismerése a Visual Studio Code-ban (előzetes verzió)](visual-studio-code-explore-jobs.md)
 
-* [CI/CD-folyamatok beállítása a NPM-csomag használatával](setup-cicd-vs-code.md)
+* [CI/CD-folyamatok beállítása a NPM-csomag használatával](./cicd-overview.md)

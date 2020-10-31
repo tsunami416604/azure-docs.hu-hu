@@ -10,14 +10,19 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 6fe2e78501024983544b399762fb936d86e5c9d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6971dafc7e3157b3de62284b400ebdc6ddc19c0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60547336"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101901"
 ---
 # <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>A Bing Autosuggest API nyelvi és területi támogatása
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Az alábbiakban a Bing Autosuggest API által támogatott nyelveket sorolja fel.
 
@@ -27,7 +32,7 @@ Az alábbiakban a Bing Autosuggest API által támogatott nyelveket sorolja fel.
 | Kínai (Kínai Népköztársaság)     | `zh-CN`          |
 | Kínai (Hongkong KKT)    | `zh-HK`          |
 | Kínai (Tajvan)     | `zh-TW`          |
-| Dán      | `da`          |
+| dán      | `da`          |
 | Holland (Belgium)       | `nl-BE`          |
 | Holland (Hollandia)      | `nl-NL`          |
 | Angol (Ausztrália)    | `en-AU`          |
@@ -40,7 +45,7 @@ Az alábbiakban a Bing Autosuggest API által támogatott nyelveket sorolja fel.
 | Angol (Dél-Afrika)    | `en-ZA`          |
 | angol (Egyesült Királyság)    | `en-GB`          |
 | angol (Egyesült Államok)    | `en-US`          |
-| Finn     | `fi`          |
+| finn     | `fi`          |
 | Francia (Belgium)     | `fr-BE`          |
 | Francia (Kanada)     | `fr-CA`          |
 | Francia (Franciaország)     | `fr-FR`          |
@@ -61,7 +66,7 @@ Az alábbiakban a Bing Autosuggest API által támogatott nyelveket sorolja fel.
 | Spanyol (Mexikó)    | `es-MX`          |
 | Spanyol (Spanyolország)    | `es-ES`          |
 | Spanyol (Egyesült Államok)    | `es-US`          |
-| Svéd     | `sv`          |
+| svéd     | `sv`          |
 | Török     | `tr`          |
 
 ## <a name="see-also"></a>Lásd még

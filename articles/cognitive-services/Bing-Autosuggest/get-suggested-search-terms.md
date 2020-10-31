@@ -10,20 +10,25 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: b68bc2eca25c35395d9a31f3a80e45d1595815bf
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d55ff4ed8717a449628e94a940c0896d31818da2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85601972"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101935"
 ---
 # <a name="what-is-bing-autosuggest"></a>Mi a Bing Autosuggest?
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Ha az alkalmazás a Bing Search API-k bármelyikére küld lekérdezéseket, a Bing Autosuggest API segítségével javíthatja a felhasználók keresési élményét. A Bing Autosuggest API visszaadja a javasolt lekérdezések listáját a keresőmező részleges lekérdezési karakterlánca alapján. Ahogy a karakterek bekerülnek a keresőmezőbe, a javaslatok a legördülő listában jelennek meg.
 
 ## <a name="bing-autosuggest-api-features"></a>Bing Autosuggest API funkciók
 
-| Szolgáltatás                                                                                                                                                                                 | Leírás                                                                                                                                                            |
+| Funkció                                                                                                                                                                                 | Leírás                                                                                                                                                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Keresési kifejezések valós idejű felkínálása](concepts/get-suggestions.md) | Az automatikus kiegészítési API használatával javíthatja az alkalmazásait, és megjelenítheti a javasolt keresési kifejezéseket. |
 
@@ -43,7 +48,7 @@ A következő példa egy legördülő keresőmezőt mutat be a Bing Autosuggest 
 
 Ha a felhasználó egy javaslatot választ ki a legördülő listából, a segítségével megkezdheti a keresést a Bing Search API-k valamelyikével, vagy közvetlenül a Bing Search Results oldalára léphet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Annak érdekében, hogy gyorsan nekiláthasson az első kérés létrehozásának, olvassa el az [első lekérdezés létrehozását bemutató](quickstarts/csharp.md) cikket.
 

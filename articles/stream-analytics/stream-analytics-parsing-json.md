@@ -7,19 +7,19 @@ ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 67bcd6fbf04cb92deaae034d289990dfec309fe6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c2eb4225cb014b3251d12470e4e9827150a5cf2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91280011"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123353"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>JSON-és Avro-adatelemzés Azure Stream Analytics
 
 Azure Stream Analytics támogatja a CSV-, JSON-és Avro-adatformátumok feldolgozási eseményeit. A JSON-és a Avro-adatok is strukturálva lehetnek, és tartalmazhatnak olyan összetett típusokat, mint például a beágyazott objektumok (rekordok) és a tömbök. 
 
 >[!NOTE]
->Az Event hub Capture által létrehozott AVRO-fájlok egy adott formátumot használnak, amelyhez az *Egyéni deszerializáló* funkció használata szükséges. További információ: a [bevitel bármilyen formátumban való olvasása a .NET-alapú egyéni deszerializálók használatával](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples).
+>Az Event hub Capture által létrehozott AVRO-fájlok egy adott formátumot használnak, amelyhez az *Egyéni deszerializáló* funkció használata szükséges. További információ: a [bevitel bármilyen formátumban való olvasása a .NET-alapú egyéni deszerializálók használatával](./custom-deserializer-examples.md).
 >
 >Stream Analytics AVRO deszerializálása nem támogatja a leképezés típusát. Stream Analytics nem tudja beolvasni a EventHub-rögzítési blobokat, mert a EventHub rögzítés leképezést használ.
 
@@ -89,7 +89,7 @@ Az eredmény a következőket eredményezi:
 
 ### <a name="access-nested-fields-when-property-name-is-a-variable"></a>Beágyazott mezők elérése, ha a tulajdonság neve változó
 
-Használja a [GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics) függvényt, ha a tulajdonság neve változó. Ez lehetővé teszi a dinamikus lekérdezések létrehozását rögzítjük nélkül.
+Használja a [GetRecordPropertyValue](/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics) függvényt, ha a tulajdonság neve változó. Ez lehetővé teszi a dinamikus lekérdezések létrehozását rögzítjük nélkül.
 
 Tegyük fel például, hogy a minta adatfolyamot össze kell kapcsolni az egyes eszköz-érzékelők küszöbértékeit tartalmazó **hivatkozási adattal** . Alább láthatók a hivatkozási adatrészletek.
 
@@ -121,7 +121,7 @@ WHERE
     GetRecordPropertyValue(input.SensorReadings, thresholds.SensorName) > thresholds.Value
 ```
 
-A **GetRecordPropertyValue** kiválasztja a tulajdonságot a *SensorReadings*-ben, amelynek a neve megegyezik a hivatkozási adatokból származó tulajdonság nevével. Ezután a rendszer kinyeri a *SensorReadings* társított értéket.
+A **GetRecordPropertyValue** kiválasztja a tulajdonságot a *SensorReadings* -ben, amelynek a neve megegyezik a hivatkozási adatokból származó tulajdonság nevével. Ezután a rendszer kinyeri a *SensorReadings* társított értéket.
 
 Az eredmény a következőket eredményezi:
 
@@ -131,7 +131,7 @@ Az eredmény a következőket eredményezi:
 
 ### <a name="convert-record-fields-into-separate-events"></a>Rekord mezők konvertálása különálló eseményekre
 
-A rekordok mezőinek különálló eseményekre való átalakításához használja az [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) operátort a [GetRecordProperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) függvénnyel együtt.
+A rekordok mezőinek különálló eseményekre való átalakításához használja az [Apply](/stream-analytics-query/apply-azure-stream-analytics) operátort a [GetRecordProperties](/stream-analytics-query/getrecordproperties-azure-stream-analytics) függvénnyel együtt.
 
 Az eredeti mintaadatok alapján a következő lekérdezés használható a tulajdonságok különböző eseményekre való kinyeréséhez.
 
@@ -154,7 +154,7 @@ Az eredmény a következőket eredményezi:
 |12345|CustomSensor02|99|
 |12345|SensorMetadata|[Object objektum]|
 
-[A és a](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics)használatával ezeket az eseményeket különböző célhelyekre lehet irányítani:
+[A és a](/stream-analytics-query/with-azure-stream-analytics)használatával ezeket az eseményeket különböző célhelyekre lehet irányítani:
 
 ```SQL
 WITH Stage0 AS
@@ -205,9 +205,9 @@ Ezután létrehozhat egy lépést a Stream Analytics lekérdezésben az alább l
 
 ## <a name="array-data-types"></a>Tömb adattípusai
 
-A tömb típusú adattípusok értékek rendezett gyűjteményei. A tömb értékeivel kapcsolatos néhány jellemző művelet alább látható. Ezek a példák a functions [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), a [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), a [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics)és az [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) operátort használják.
+A tömb típusú adattípusok értékek rendezett gyűjteményei. A tömb értékeivel kapcsolatos néhány jellemző művelet alább látható. Ezek a példák a functions [GetArrayElement](/stream-analytics-query/getarrayelement-azure-stream-analytics), a [GetArrayElements](/stream-analytics-query/getarrayelements-azure-stream-analytics), a [GetArrayLength](/stream-analytics-query/getarraylength-azure-stream-analytics)és az [Apply](/stream-analytics-query/apply-azure-stream-analytics) operátort használják.
 
-Íme egy példa egyetlen eseményre. Mindkettő `CustomSensor03` `SensorMetadata` **tömb**típusú:
+Íme egy példa egyetlen eseményre. Mindkettő `CustomSensor03` `SensorMetadata` **tömb** típusú:
 
 ```json
 {
@@ -265,7 +265,7 @@ Az eredmény a következőket eredményezi:
 
 ### <a name="convert-array-elements-into-separate-events"></a>Tömb elemek konvertálása különálló eseményekre
 
-Válassza az összes tömb elemet egyedi eseményként. Az operátor [alkalmazása](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) a [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) beépített függvénnyel együtt kinyeri az összes tömb elemet az egyes eseményekként:
+Válassza az összes tömb elemet egyedi eseményként. Az operátor [alkalmazása](/stream-analytics-query/apply-azure-stream-analytics) a [GetArrayElements](/stream-analytics-query/getarrayelements-azure-stream-analytics) beépített függvénnyel együtt kinyeri az összes tömb elemet az egyes eseményekként:
 
 ```SQL
 SELECT
@@ -301,7 +301,7 @@ Az eredmény a következőket eredményezi:
 |12345|Gyártó|ABC|
 |12345|Verzió|1.2.45|
 
-Ha a kibontott mezőket oszlopokban kell megjeleníteni, az [illesztési](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) művelet mellett a [with](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) szintaxissal is eldöntheti az adatkészletet. Ehhez az illesztéshez meg kell követelni egy [idő határt](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff) , amely megakadályozza a duplikált állapotot:
+Ha a kibontott mezőket oszlopokban kell megjeleníteni, az [illesztési](/stream-analytics-query/join-azure-stream-analytics) művelet mellett a [with](/stream-analytics-query/with-azure-stream-analytics) szintaxissal is eldöntheti az adatkészletet. Ehhez az illesztéshez meg kell követelni egy [idő határt](/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff) , amely megakadályozza a duplikált állapotot:
 
 ```SQL
 WITH DynamicCTE AS (
@@ -330,4 +330,4 @@ Az eredmény a következőket eredményezi:
 |12345|47|122|1.2.45|ABC|
 
 ## <a name="see-also"></a>Lásd még:
-[Adattípusok a Azure Stream Analyticsban](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)
+[Adattípusok a Azure Stream Analyticsban](/stream-analytics-query/data-types-azure-stream-analytics)

@@ -18,12 +18,12 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4353ed5413f76b13425a59d31bb6108542e3bd23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25f3402864e2ba873ce63acb6cedcd3f2ea018f7
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231129"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123132"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Az Azure AD PowerShell-parancsmagjai jelentéskészítéshez
 
@@ -49,7 +49,7 @@ A [naplók nyomon követést biztosítanak](concept-audit-logs.md) az Azure ad k
 A naplókhoz a Get-AzureADAuditDirectoryLogs parancsmag használatával férhet hozzá.
 
 
-| Forgatókönyv                      | PowerShell-parancs |
+| Használati eset                      | PowerShell-parancs |
 | :--                           | :--                |
 | Alkalmazás megjelenítendő neve      | Get-AzureADAuditDirectoryLogs szűrő: "initiatedBy/app/displayName EQ" Azure AD Cloud Sync "" |
 | Kategória                      | Get-AzureADAuditDirectoryLogs szűrő "Category EQ" ApplicationManagement "" |
@@ -59,7 +59,7 @@ A naplókhoz a Get-AzureADAuditDirectoryLogs parancsmag használatával férhet 
 
 Az alábbi képen egy példa látható erre a parancsra. 
 
-![Az "adatösszegzés" gomb](./media/reference-powershell-reporting/get-azureadauditdirectorylogs.png)
+![A képernyőképen a D naplózási könyvtár naplójának Get-Azure eredménye látható.](./media/reference-powershell-reporting/get-azureadauditdirectorylogs.png)
 
 
 
@@ -70,7 +70,7 @@ A [bejelentkezési](concept-sign-ins.md) naplók a felügyelt alkalmazások és 
 A bejelentkezési naplókhoz a Get-AzureADAuditSignInLogs parancsmag használatával férhet hozzá.
 
 
-| Forgatókönyv                      | PowerShell-parancs |
+| Használati eset                      | PowerShell-parancs |
 | :--                           | :--                |
 | Felhasználó megjelenítendő neve             | Get-AzureADAuditSignInLogs szűrő "userDisplayName EQ" Timothy Perkins "" |
 | Létrehozás dátuma és időpontja              | Get-AzureADAuditSignInLogs szűrő "createdDateTime gt 2019-04-18T17:30:00.0 Z" (minden, 5:30 PM, 4/18) |
@@ -81,7 +81,7 @@ A bejelentkezési naplókhoz a Get-AzureADAuditSignInLogs parancsmag használat�
 
 Az alábbi képen egy példa látható erre a parancsra. 
 
-![Az "adatösszegzés" gomb](./media/reference-powershell-reporting/get-azureadauditsigninlogs.png)
+![A képernyőképen a D naplózási naplók parancs Get-Azure eredménye látható.](./media/reference-powershell-reporting/get-azureadauditsigninlogs.png)
 
 
 

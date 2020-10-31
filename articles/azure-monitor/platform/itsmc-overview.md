@@ -1,25 +1,26 @@
 ---
-title: IT-szolgáltatásmenedzsmenti csatoló az Azure Log Analyticsban | Microsoft Docs
-description: Ez a cikk áttekintést nyújt a IT-szolgáltatásmenedzsmenti csatolóról (ITSMC), valamint arról, hogyan használhatja ezt a megoldást az Azure-Log Analytics ITSM-munkaelemeinek központi figyelésére és felügyeletére, valamint a problémák gyors megoldására.
+title: IT-szolgáltatásmenedzsmenti csatoló a Log Analytics
+description: Ez a cikk áttekintést nyújt a IT-szolgáltatásmenedzsmenti csatolóokról (ITSMC), valamint arról, hogyan használható az alkalmazás a ITSM-munkaelemek figyelésére és felügyeletére Log Analytics és a problémák gyors megoldásához.
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 1da7221b511cb07e5000f09e4015fc8bd4a0a928
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.custom: references_regions
+ms.openlocfilehash: ecafc0c81a6614a914d8cad3d2c35fd04544b8f2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043311"
+ms.locfileid: "93102020"
 ---
-# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Az Azure csatlakoztatása ITSM-eszközökhöz az IT Service Management-összekötő használatával
+# <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Az Azure és a ITSM-eszközök összekötése IT-szolgáltatásmenedzsmenti csatoló használatával
 
-![IT-szolgáltatásmenedzsmenti csatoló szimbólum](media/itsmc-overview/itsmc-symbol.png)
+:::image type="icon" source="media/itsmc-overview/itsmc-symbol.png":::
 
-Az IT Service Management-összekötő (ITSMC) lehetővé teszi, hogy az Azure-t egy támogatott IT Service Management- (ITSM-) termékhez/szolgáltatáshoz kapcsolja.
+IT-szolgáltatásmenedzsmenti csatoló (ITSMC) lehetővé teszi, hogy az Azure-t egy támogatott informatikai szolgáltatás-felügyeleti (ITSM) termékhez vagy szolgáltatáshoz kapcsolódjon.
 
-Az Azure-szolgáltatások, például a Log Analytics és a Azure Monitor eszközöket biztosítanak az Azure-beli és nem Azure-beli erőforrásokkal kapcsolatos problémák észleléséhez, elemzéséhez és hibaelhárításához. A problémához kapcsolódó munkaelemek azonban általában egy ITSM termékben vagy szolgáltatásban találhatók. Az ITSM-összekötő kétirányú kapcsolatot biztosít az Azure és a ITSM eszközök között, így könnyebben megoldhatja a problémákat.
+Az Azure-szolgáltatások, például az Azure Log Analytics és Azure Monitor eszközöket biztosítanak az Azure-beli és nem Azure-beli erőforrásokkal kapcsolatos problémák észleléséhez, elemzéséhez és hibaelhárításához. A problémához kapcsolódó munkaelemek azonban általában egy ITSM-termékben vagy-szolgáltatásban találhatók. A ITSMC kétirányú kapcsolatot biztosít az Azure és a ITSM eszközök között, így gyorsabban megoldhatja a problémákat.
 
 A ITSMC a következő ITSM-eszközökkel támogatja a kapcsolatokat:
 
@@ -30,164 +31,164 @@ A ITSMC a következő ITSM-eszközökkel támogatja a kapcsolatokat:
 
 A ITSMC a következőket teheti:
 
--  Munkaelemek létrehozása a ITSM eszközben az Azure-riasztások (metrikus riasztások, műveletnapló-riasztások és Log Analytics riasztások) alapján.
+-  Munkaelemeket hozhat létre a ITSM eszközben az Azure-riasztások (metrikus riasztások, műveletnapló-riasztások és Log Analytics riasztások) alapján.
 -  Lehetőség van arra is, hogy szinkronizálja az incidenst, és módosítsa a ITSM eszközről az Azure Log Analytics-munkaterületre.
 
-További információ a [jogi feltételekről és az adatvédelmi szabályzatról](https://go.microsoft.com/fwLink/?LinkID=522330&clcid=0x9).
+A jogi feltételekkel és az adatvédelmi szabályzattal kapcsolatos információkért lásd: a [Microsoft adatvédelmi nyilatkozata](https://go.microsoft.com/fwLink/?LinkID=522330&clcid=0x9).
 
-Az alábbi lépések végrehajtásával kezdheti a ITSM-csatoló használatát:
+Az alábbi lépések végrehajtásával kezdheti meg a ITSMC használatát:
 
-1.  [A ITSM-csatoló megoldás hozzáadása](#adding-the-it-service-management-connector-solution)
-2.  ITSM-kapcsolatok létrehozása
-3.  [A kapcsolatok használata](#using-the-solution)
+1.  [ITSMC hozzáadása.](#add-it-service-management-connector)
+2.  [Hozzon létre egy ITSM-kapcsolatokat.](#create-an-itsm-connection)
+3.  [Használja a kapcsolatokat.](#use-itsmc)
 
 
-##  <a name="adding-the-it-service-management-connector-solution"></a>A IT-szolgáltatásmenedzsmenti csatoló megoldás hozzáadása
+##  <a name="add-it-service-management-connector"></a>IT-szolgáltatásmenedzsmenti csatoló hozzáadása
 
-A kapcsolatok létrehozása előtt hozzá kell adnia a ITSM-csatoló megoldást.
+A kapcsolatok létrehozása előtt hozzá kell adnia a ITSMC.
 
-1. Azure Portal kattintson az **+ új** ikonra.
+1. A Azure Portal válassza az **erőforrás létrehozása** lehetőséget:
 
-   ![Azure új erőforrás](media/itsmc-overview/azure-add-new-resource.png)
+   ![Az erőforrás létrehozása menüelemet megjelenítő képernyőkép.](media/itsmc-overview/azure-add-new-resource.png)
 
-2. Keresse meg **it-szolgáltatásmenedzsmenti csatoló** a piactéren, és kattintson a **Létrehozás** gombra.
+2. **It-szolgáltatásmenedzsmenti csatoló** keresése az Azure Marketplace-en. Válassza a **Létrehozás** lehetőséget:
 
-   ![ITSMC-megoldás hozzáadása](media/itsmc-overview/add-itsmc-solution.png)
+   ![Képernyőkép, amely megjeleníti a létrehozás gombot az Azure piactéren.](media/itsmc-overview/add-itsmc-solution.png)
 
-3. A **OMS munkaterület** szakaszban válassza ki azt az Azure log Analytics-munkaterületet, amelyre telepíteni kívánja a megoldást.
+3. A **OMS munkaterület** szakaszban válassza ki azt az Azure log Analytics-munkaterületet, ahol telepíteni szeretné a ITSMC-t.
    >[!NOTE]
-   > * A Microsoft Operations Management Suite (OMS) és a Azure Monitor közötti folyamatos áttérés részeként a OMS-munkaterületek már Log Analytics munkaterületek.
-   > * A ITSM-csatoló csak Log Analytics munkaterületekre telepíthető a következő régiókban: USA keleti régiója, Nyugat-RÉGIÓJA, az USA déli középső régiója, az USA nyugati középső régiója, US Gov Arizona, US Gov Virginia, Közép-Kanada, Nyugat-Európa, Dél-Egyesült Királyság, Délkelet-Ázsia, Kelet-Japán, Közép-India, Délkelet-Ausztrália.
+   > * A Microsoft Operations Management Suite (OMS) és a Azure Monitor közötti folyamatos áttérés részeként a OMS-munkaterületek már *log Analytics munkaterületek* .
+   > * A ITSMC csak Log Analytics munkaterületeken telepíthetők a következő régiókban: USA keleti régiója, USA 2. nyugati régiója, az USA déli középső régiója, az USA nyugati középső régiója, US Gov Arizona, US Gov Virginia, Közép-Kanada, Nyugat-Európa, Dél-Egyesült Királyság, Délkelet-Ázsia, Kelet-Japán, Közép-India és Délkelet-Ausztrália.
 
-4. A **OMS-munkaterület beállításai** szakaszban válassza ki azt a ResourceGroup, amelyben létre szeretné hozni a megoldás erőforrását.
 
-   ![ITSMC-munkaterület](media/itsmc-overview/itsmc-solution-workspace.png)
+4. A **log Analytics munkaterület** szakaszban válassza ki azt az erőforráscsoportot, amelyben létre kívánja hozni a ITSMC-erőforrást:
+
+   ![A Log Analytics munkaterület szakaszt bemutató képernyőkép.](media/itsmc-overview/itsmc-solution-workspace.png)
    >[!NOTE]
-   >A Microsoft Operations Management Suite (OMS) és a Azure Monitor közötti folyamatos áttérés részeként a OMS-munkaterületek már Log Analytics munkaterületek.
+   >A Microsoft Operations Management Suite (OMS) és a Azure Monitor közötti folyamatos áttérés részeként a OMS-munkaterületek már *log Analytics munkaterületek* .
 
-5. Kattintson az **OK** gombra.
+5. Válassza az **OK** lehetőséget.
 
-A megoldás erőforrásának telepítésekor megjelenik egy értesítés az ablak jobb felső sarkában.
+A ITSMC-erőforrás telepítésekor az ablak jobb felső sarkában megjelenik egy értesítés.
 
 
-## <a name="creating-an-itsm--connection"></a>ITSM-kapcsolatok létrehozása
+## <a name="create-an-itsm-connection"></a>ITSM-kapcsolatok létrehozása
 
-A megoldás telepítése után létrehozhat egy-egy kapcsolatokat.
+A ITSMC telepítése után létrehozhat egy-egy kapcsolatokat.
 
-A kapcsolatok létrehozásához elő kell készítenie a ITSM eszközt, hogy engedélyezze a kapcsolódást a ITSM-csatoló-megoldástól.  
+A kapcsolatok létrehozásához elő kell készítenie a ITSM eszközt, hogy engedélyezze a ITSMC való kapcsolódást.  
 
-Attól függően, hogy melyik ITSM-termékhez csatlakozik, kövesse az alábbi lépéseket:
+Azon ITSM-termék alapján, amelyhez csatlakozik, válassza a következő hivatkozások egyikét az utasításokhoz:
 
-- [System Center Service Manager (SCSM)](./itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
+- [System Center Service Manager](./itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
 - [ServiceNow](./itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
 - [Megjelenő](./itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
 - [Cherwell](./itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
 
-Miután elő a ITSM-eszközöket, kövesse az alábbi lépéseket a kapcsolatok létrehozásához:
+Miután elő a ITSM-eszközöket, hajtsa végre a következő lépéseket a kapcsolatok létrehozásához:
 
-1. Nyissa meg az **összes erőforrást** , keresse meg a **ügyfélszolgálati (YourWorkspaceName)** .
-2. A bal oldali ablaktábla **munkaterület-ADATforrások** területén kattintson a **ITSM-kapcsolatok** elemre.
-   ![ITSM-kapcsolatok](media/itsmc-overview/itsm-connections.png)
+1. Az **összes erőforrás** területen keresse meg a **ügyfélszolgálati ( *a munkaterület neve* )** :
 
+   ![A Azure Portal legutóbbi erőforrásait bemutató képernyőkép.](media/itsmc-overview/itsm-connections.png)
+
+1. A bal oldali ablaktábla **munkaterület-adatforrások** területén válassza a **ITSM-kapcsolatok** elemet:
+
+   ![Képernyőkép, amely megjeleníti a ITSM-kapcsolatok menüpontot.](media/itsmc-overview/add-new-itsm-connection.png)
    Ez az oldal a kapcsolatok listáját jeleníti meg.
-3. Kattintson a **kapcsolatok hozzáadása** lehetőségre.
+1. Válassza a **kapcsolatok hozzáadása** lehetőséget.
 
-   ![ITSM-kapcsolatok hozzáadása](media/itsmc-overview/add-new-itsm-connection.png)
-
-4. Adja meg a [ITSM termékek/szolgáltatások ITSMC-kapcsolatok konfigurálása című cikkben](./itsmc-connections.md)leírtak szerint megjelenő kapcsolatbeállításokat.
+4. Adja meg a [ITSM-termékekkel/szolgáltatásokkal kapcsolatos ITSMC-kapcsolatok konfigurálása](./itsmc-connections.md)című témakörben leírtak szerinti kapcsolatbeállításokat.
 
    > [!NOTE]
    >
-   > Alapértelmezés szerint a ITSMC 24 óránként egyszer frissíti a kapcsolatok konfigurációs szolgáltatásait. Ha azonnal frissíteni szeretné a kapcsolatok adatait az Ön által végzett módosítások vagy sablonok frissítéseire, kattintson a **szinkronizálás** gombra a kapcsolatok paneljén.
+   > Alapértelmezés szerint a ITSMC 24 óránként egyszer frissíti a kapcsolatok konfigurációs szolgáltatásait. Ha azonnal frissíteni szeretné a kapcsolatok adatait, hogy azok megfeleljenek a módosítások vagy a sablonok frissítéseinek, válassza a **szinkronizálás** gombot a kapcsolatok paneljén:
+   >
+   > ![Képernyőkép, amely megjeleníti a szinkronizálás gombot a kapcsolatok panelen.](media/itsmc-overview/itsmc-connections-refresh.png)
 
-   ![A kapcsolatok frissítése](media/itsmc-overview/itsmc-connections-refresh.png)
 
-
-## <a name="using-the-solution"></a>A megoldás használata
-   Az ITSM-csatoló megoldás használatával munkaelemeket hozhat létre az Azure-riasztásokból, Log Analytics a riasztásokat és a Log Analyticsi rekordokat.
+## <a name="use-itsmc"></a>ITSMC használata
+   A ITSMC használatával munkaelemeket hozhat létre az Azure-riasztásokból, Log Analytics a riasztásokból, és Log Analytics naplóbejegyzéseket.
 
 ## <a name="template-definitions"></a>Sablon-definíciók
-   Vannak olyan típusú munkaelemek, amelyek a ITSM eszköz által definiált sablonokat használhatják.
-A sablonok segítségével az ügyfél meghatározhatja azokat a mezőket, amelyeket a rendszer a műveleti csoport részeként definiált rögzített értékek alapján automatikusan feltölt. A sablonok meghatározása a ITSM eszközben történik.
+   Vannak olyan munkaelem-típusok, amelyek használhatják a ITSM eszköz által definiált sablonokat.
+A sablonok használatával meghatározhatja azokat a mezőket, amelyeket a rendszer a műveleti csoport részeként definiált rögzített értékek alapján automatikusan kitölt. A sablonokat a ITSM eszközben definiálhatja.
       
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>ITSM-munkaelemek létrehozása az Azure-riasztásokból
 
-Miután létrejött a ITSM-kapcsolat, létrehozhat munkaelemeket a ITSM-eszközön az Azure-riasztások alapján, a **műveleti csoportok** **ITSM műveletének** használatával.
+A ITSM-kapcsolatok létrehozása után létrehozhat munkaelemeket a ITSM-eszközön az Azure-riasztások alapján. A munkaelemek létrehozásához használja a ITSM műveletet a műveleti csoportokban.
 
-A műveleti csoportok moduláris és újrahasznosítható módszert biztosítanak az Azure-riasztások műveleteinek elindításához. A műveleti csoportokat metrikus riasztásokkal, műveletnapló-riasztásokkal és Azure Log Analytics riasztásokkal is használhatja Azure Portalokban.
+A műveleti csoportok moduláris és újrafelhasználható módot biztosítanak az Azure-riasztások műveleteinek elindításához. A műveleti csoportokat metrikus riasztásokkal, műveletnapló riasztásokkal és Azure Log Analytics riasztásokkal is használhatja a Azure Portal.
 
 > [!NOTE]
-> Miután létrehozta a ITSM-csatlakozást, a szinkronizálási folyamat befejezése után 30 percre kell várnia.
+> A ITSM-kapcsolatok létrehozása után a szinkronizálási folyamat befejezéséhez 30 percet kell várnia.
 > 
 
-Kövesse az alábbi eljárást:
+Munkaelemek létrehozásához kövesse az alábbi eljárást:
 
-1. A Azure Portal kattintson a  **riasztások** elemre.
-2. A felső ablaktáblán kattintson a  **műveletek kezelése** lehetőségre. Megjelenik a **műveleti csoport hozzáadása** ablak.
+1. A Azure Portal válassza a  **riasztások** elemet.
+2. A képernyő felső részén található menüben válassza a **kezelés műveletek** elemet:
 
-    [![Műveleti csoportok](media/itsmc-overview/action-groups-selection.png)](media/itsmc-overview/action-groups-selection-big.png)
+    ![Képernyőkép, amely a műveletek kezelése menüelemet jeleníti meg.](media/itsmc-overview/action-groups-selection-big.png)
 
-3. Válassza ki azt az **előfizetést** és **erőforráscsoportot** , amelyben létre szeretné hozni a műveleti csoportot. Adja meg a műveleti csoport **nevét** és **megjelenítendő nevét** . Kattintson a **Next (tovább) gombra: értesítések** .
+   Megjelenik a **műveleti csoport létrehozása** ablak.
 
-    ![Műveleti csoportok részletei](media/itsmc-overview/action-groups-details.png)
+3. Válassza ki azt az **előfizetést** és **erőforráscsoportot** , amelyben létre szeretné hozni a műveleti csoportot. Adja meg a műveleti csoport **nevét** és **megjelenítendő nevét** . Válassza a Next (tovább) lehetőséget **: értesítések** .
 
-4. Az értesítési listában kattintson a **Nest: műveletek** elemre.
-5. A műveletek listában válassza a **ITSM** elemet a **művelet típusa** legördülő menüből. Adja meg a művelet **nevét** , majd kattintson a **Szerkesztés részleteit** jelképező tollra.
-6. Válassza ki azt az **előfizetést** , ahol a log Analytics munkaterület található. Válassza ki a **kapcsolatok** nevét (a ITSM-csatoló nevét), majd a munkaterület nevét. Például: "MyITSMMConnector (Sajátmunkaterület)".
+    ![A műveleti csoport létrehozása ablakot megjelenítő képernyőkép.](media/itsmc-overview/action-groups-details.png)
 
-    ![ITSM művelet részletei](media/itsmc-overview/itsm-action-configuration.png)
+4. Az értesítési listán válassza a **Tovább: műveletek** elemet.
+5. A műveletek listában válassza a **ITSM** elemet a **Művelettípus** listában. Adja meg a művelet **nevét** . Válassza a **Szerkesztés részleteit** jelölő toll gombot.
+6. Az **előfizetés** listában válassza ki azt az előfizetést, amelyben a log Analytics munkaterület található. A **kapcsolatok** listájában válassza ki a ITSM-összekötő nevét. Ezt a munkaterület neve követi majd. Például: MyITSMConnector (Sajátmunkaterület).
 
-7. Válassza ki a **munkaelem** típusát a legördülő menüből.
+7. Válasszon **munkaelem** -típust.
 
-8. Ha a mező kitöltését rögzített értékekkel szeretné kitölteni, jelölje be az "egyéni sablon használata" jelölőnégyzetet, máskülönben válasszon egy meglévő [sablont](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) a legördülő listából, és töltse ki a sablon mezőket rögzített értékekkel.
+8. Ha rögzített értékekkel rendelkező, beépített mezőket szeretne kitölteni, válassza az **egyéni sablon használata** lehetőséget. Ellenkező esetben válasszon egy meglévő [sablont](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) a **sablon** listáról, és adja meg a rögzített értékeket a sablon mezőiben.
 
-9. Ha bejelöli az egyes **konfigurációs elemek egyéni** munkaelemek létrehozása jelölőnégyzetet, minden konfigurációs elem saját munkaelemgel fog rendelkezni. Ez azt jelenti, hogy a konfigurációs elemek egy munkaeleme lesz, és a rendszer a létrehozandó riasztások alapján frissíti.
-Ha kijelöli az egyes **konfigurációs elemek egyéni** munkaelemek létrehozása jelölőnégyzetet, minden riasztás új munkaelemet hoz létre, ami azt jelenti, hogy egy konfigurációs elemnél több riasztás is lehet.
+9. Ha **az egyes konfigurációs elemekhez az egyes** munkaelemek létrehozása lehetőséget választja, minden konfigurációs elemnek saját munkaeleme lesz. A konfigurációs elemek egy munkaelemet kapnak. A rendszer a létrehozandó riasztások alapján frissíti.
 
-10. Kattintson az **OK** gombra.
+   Ha törli az egyes **konfigurációs elemek egyéni munkaelemeinek létrehozása** jelölőnégyzet jelölését, minden riasztás új munkaelemet fog létrehozni. Egy konfigurációs elemmel több riasztás is lehet.
 
-Azure-riasztási szabály létrehozásakor/szerkesztésekor használjon egy ITSM műveletet tartalmazó műveleti csoportot. A riasztás indításakor a rendszer létrehozza/frissíti a munkaelemet a ITSM eszközben.
+   ![A ITSM-jegy ablakát megjelenítő képernyőkép.](media/itsmc-overview/itsm-action-configuration.png)
+
+10. Válassza az **OK** lehetőséget.
+
+Azure-riasztási szabály létrehozásakor vagy szerkesztésekor használjon egy ITSM műveletet tartalmazó műveleti csoportot. A riasztás indításakor a rendszer létrehozza vagy frissíti a munkaelemet a ITSM eszközben.
 
 > [!NOTE]
 >
-> A ITSM művelet díjszabásával kapcsolatos információkért tekintse meg a műveleti csoportok [díjszabási lapját](https://azure.microsoft.com/pricing/details/monitor/) .
-
-> [!NOTE]
+>- A ITSM művelet díjszabásával kapcsolatos információkért tekintse meg a műveleti csoportok [díjszabási lapját](https://azure.microsoft.com/pricing/details/monitor/) .
 >
-> A riasztási szabály definíciójának rövid leírása mezője legfeljebb 40 karakter hosszú lehet, ha a ITSM művelettel küldi el a rendszer.
+>
+>- A riasztási szabály definíciójának rövid leírása mezője 40 karakterre van korlátozva, ha a ITSM művelettel küldi el.
 
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Az incidens megjelenítése és elemzése és a kérelmekre vonatkozó adatváltozás
 
-A kapcsolatok beállításakor a ITSM-összekötő akár 120 napos incidenst is képes szinkronizálni, és módosíthatja a kérések adatait. Az adatok naplózási rekordjainak sémája a [következő szakaszban](#additional-information)található.
+A kapcsolatok beállításakor a ITSMC legfeljebb 120 napos incidenst tud szinkronizálni, és módosíthatja a kérelmek adatait. Az adatok naplózási rekordjainak sémája a jelen cikk [következő szakaszában](#additional-information) található.
 
-Az incidens és a változási kérelmek adatai megjeleníthetők a megoldás ITSM-csatoló irányítópultjának használatával.
+A ITSMC irányítópult használatával megjelenítheti az incidenst és módosíthatja a kérelmeket:
 
-![A ITSM-csatoló irányítópultot megjelenítő képernyőkép.](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
+![A ITSMC irányítópultot megjelenítő képernyőkép.](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
-Az irányítópult információt nyújt az összekötő állapotáról is, amely kiindulási pontként használható a kapcsolatokkal kapcsolatos problémák elemzéséhez.
+Az irányítópult az összekötő állapotáról is tartalmaz információkat, amelyeket kiindulási pontként használhat a kapcsolatokkal kapcsolatos problémák elemzéséhez.
 
-Az érintett számítógépeken szinkronizált incidenseket is megjelenítheti a Service Map megoldáson belül.
+A Service Map érintett számítógépeken szinkronizált incidenseket is megjelenítheti.
 
-Service Map automatikusan feltérképezi az alkalmazás összetevőit Windows-és Linux-rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Használatával a kiszolgálók úgy jelennek meg, ahogyan Ön gondol rájuk: egymással összekapcsolt rendszerekként, amelyek kritikus fontosságú szolgáltatásokat tesznek elérhetővé. A Service Map megmutatja a kapcsolatokat mindazon kiszolgálók, folyamatok és portok között, amelyek TCP-kapcsolattal összekötött architektúrában találhatóak, és ehhez nem szükséges semmilyen konfiguráció, csupán az ügynököt kell telepíteni. [További információ](../insights/service-map.md).
+Service Map automatikusan feltérképezi az alkalmazás összetevőit Windows-és Linux-rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Lehetővé teszi, hogy a kiszolgálókat a következőképpen tekintheti meg: olyan összekapcsolt rendszerek, amelyek kritikus szolgáltatásokat biztosítanak. Service Map megjeleníti a kiszolgálók, a folyamatok és a portok közötti kapcsolatokat bármely TCP-kapcsolattal rendelkező architektúrán keresztül. Az ügynök telepítésén kívül nincs szükség konfigurációra. További információ: [a Service Map használata](../insights/service-map.md).
 
-Ha a Service Map megoldást használja, megtekintheti a ITSM-megoldásokban létrehozott ügyfélszolgálati elemeket az alábbi példában látható módon:
+Ha Service Map használ, megtekintheti a ITSM-megoldásokban létrehozott ügyfélszolgálati elemeket az itt látható módon:
 
-![Log Analytics képernyő](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
-
-További információ: [Service Map](../insights/service-map.md)
+![Képernyőkép, amely a Log Analytics képernyőt jeleníti meg.](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
 
 ## <a name="additional-information"></a>További információ
 
-### <a name="data-synced-from-itsm-product"></a>ITSM-termékről szinkronizált adatok
-Az incidensek és a módosítási kérelmek szinkronizálása a ITSM-termékről a Log Analytics munkaterületre a kapcsolódási konfiguráció alapján történik.
+### <a name="data-synced-from-your-itsm-product"></a>A ITSM-termékről szinkronizált adatok
+Az incidensek és a módosítási kérelmek szinkronizálása a ITSM-termékről a Log Analytics munkaterületre a kapcsolatok konfigurációja alapján történik.
 
-A következő információk példákat mutatnak a ITSMC által összegyűjtött adatokra:
+Ez a szakasz néhány példát mutat be a ITSMC által összegyűjtött adatokra.
 
-> [!NOTE]
->
-> Az Log Analyticsba importált munkaelem típusától függően **ServiceDesk_CL** a következő mezőket tartalmazza:
+A **ServiceDesk_CL** mezői a log Analyticsba importált munkaelem típusától függően változnak. A következő lista felsorolja a két munkaelem típusának mezőit:
 
 **Munkaelem:** **incidensek**  
 ServiceDeskWorkItemType_s = "incidens"
@@ -196,7 +197,7 @@ ServiceDeskWorkItemType_s = "incidens"
 
 - ServiceDeskConnectionName
 - Ügyfélszolgálat azonosítója
-- Állapot
+- Állam
 - Sürgősség
 - Hatás
 - Prioritás
@@ -230,7 +231,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 - Cím
 - Típus
 - Kategória
-- Állapot
+- Állam
 - Eszkalálás
 - Ütközési állapot
 - Sürgősség
@@ -254,7 +255,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | Log Analytics mező | ServiceNow mező |
 |:--- |:--- |
 | ServiceDeskId_s| Szám |
-| IncidentState_s | Állapot |
+| IncidentState_s | Állam |
 | Urgency_s |Sürgősség |
 | Impact_s |Hatás|
 | Priority_s | Prioritás |
@@ -265,7 +266,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | AssignedTo_s | Felelős  |
 | Category_s | Kategória |
 | Title_s|  Rövid leírás |
-| Description_s|  Jegyzetek |
+| Description_s|  Megjegyzések |
 | CreatedDate_t|  Megnyitott |
 | ClosedDate_t| lezárva|
 | ResolvedDate_t|Feloldva|
@@ -282,7 +283,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | Title_s|  Rövid leírás |
 | Type_s|  Típus |
 | Category_s|  Kategória |
-| CRState_s|  Állapot|
+| CRState_s|  Állam|
 | Urgency_s|  Sürgősség |
 | Priority_s| Prioritás|
 | Risk_s| Kockázat|
@@ -298,28 +299,28 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 
 
 ## <a name="troubleshoot-itsm-connections"></a>ITSM-kapcsolatok hibáinak megoldása
-1. Ha a kapcsolat nem sikerül a csatlakoztatott forrás felhasználói felületéről, mert **hiba történt a kapcsolati üzenet mentésekor** , hajtsa végre a következő lépéseket:
-   - ServiceNow, Cherwell és elővance kapcsolatok esetén  
-   - Győződjön meg arról, hogy minden kapcsolathoz helyesen adta meg a felhasználónevet, a jelszót, az ügyfél-azonosítót és az ügyfél-titkot.  
-   - Ellenőrizze, hogy rendelkezik-e megfelelő jogosultságokkal a megfelelő ITSM-termékben a kapcsolódáshoz.  
-   - Service Manager kapcsolatok esetén  
-   - Győződjön meg arról, hogy a webalkalmazás sikeresen telepítve van, és a hibrid kapcsolat létrejött. Annak ellenőrzéséhez, hogy a kapcsolat sikeresen létrejött-e a helyszíni Service Manager géppel, látogasson el a webalkalmazás URL-címére, amely a [hibrid kapcsolat](./itsmc-connections.md#configure-the-hybrid-connection)készítéséhez szükséges dokumentációban található.  
+- Ha egy kapcsolat nem sikerül a csatlakoztatott forrás felhasználói felületéről, és hibaüzenet jelenik meg a **kapcsolati üzenet mentésekor** , hajtsa végre a következő lépéseket:
+   - ServiceNow, Cherwell és elővance kapcsolatok esetén:  
+     - Győződjön meg arról, hogy minden kapcsolathoz helyesen adta meg a felhasználónevet, a jelszót, az ügyfél-azonosítót és az ügyfél-titkot.  
+     - Győződjön meg arról, hogy megfelelő jogosultságokkal rendelkezik a megfelelő ITSM-termékben a kapcsolódáshoz.  
+   - Service Manager kapcsolatok esetén:  
+     - Győződjön meg arról, hogy a webalkalmazás üzembe helyezése sikeres volt, és hogy a hibrid kapcsolat létrejött. Annak ellenőrzéséhez, hogy a kapcsolat sikeresen létrejött-e a helyszíni Service Manager számítógéppel, lépjen a webalkalmazás URL-címére a [hibrid kapcsolat](./itsmc-connections.md#configure-the-hybrid-connection)létrehozásához szükséges dokumentációban leírtak szerint.  
 
-2. Ha a ServiceNow származó adatok nem lettek szinkronizálva a Log Analyticsba, győződjön meg arról, hogy a ServiceNow-példány nem alvó állapotú. A ServiceNow dev-példányok időnként hosszabb ideig tétlenek maradnak. Máskülönben jelentse a problémát.
-3. Ha Log Analytics a riasztások tüzet, de a munkaelemek nem jönnek létre a ITSM termékben, vagy a konfigurációs elemek nem jönnek létre/nem kapcsolódnak munkaelemekhez vagy más általános információkhoz, tekintse meg a következő helyeket:
-   -  ITSMC: a megoldás a kapcsolatok/munkaelemek/számítógépek összegzését jeleníti meg. Kattintson az **összekötő állapotát** megjelenítő csempére, amely a megfelelő lekérdezéssel végzett **Keresés naplózására**  kerül. További információkért tekintse meg a napló rekordjait LogType_S as HIBÁval.
-   - **Naplók keresése** oldalon: közvetlenül a lekérdezési ServiceDeskLog_CL használatával tekintheti meg a hibákat/kapcsolódó információkat `*` `*` .
+- Ha a ServiceNow származó adatok nem lettek szinkronizálva Log Analyticsre, győződjön meg arról, hogy a ServiceNow-példány nem alvó állapotú. A ServiceNow dev-példányok néha alvó állapotba kerülnek, ha hosszú ideje tétlenek. Ha ez nem történik meg, jelentse a problémát.
+- Ha Log Analytics riasztások tüzet, de a munkaelemek nem jönnek létre a ITSM termékben, ha a konfigurációs elemek nem jönnek létre/nem kapcsolódnak munkaelemekhez vagy egyéb információkhoz, tekintse meg ezeket az erőforrásokat:
+   -  ITSMC: a megoldás a kapcsolatok, a munkaelemek, a számítógépek és egyebek összegzését jeleníti meg. Válassza ki az **összekötő állapota** címkével ellátott csempét. Ekkor a **Keresés** a megfelelő lekérdezéssel történik. További információért tekintse meg a rekordokat `LogType_S` `ERROR` .
+   - **Naplók keresése** oldalon: a hibákat és a kapcsolódó információkat közvetlenül a lekérdezés használatával tekintheti meg `*ServiceDeskLog_CL*` .
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager webalkalmazás központi telepítésének hibáinak megoldása
-1.  A webalkalmazások telepítésével kapcsolatos problémák esetén győződjön meg arról, hogy rendelkezik az erőforrások létrehozásához és üzembe helyezéséhez szükséges engedélyekkel az előfizetésben.
-2.  Ha **"az objektum hivatkozása nem az objektum példányára"** hibaüzenet jelenik meg, akkor a [parancsfájl](itsmc-service-manager-script.md)futtatásakor ellenőrizze, hogy érvényes értékeket adott-e meg a **Felhasználó konfigurációja** szakaszban.
-3.  Ha nem sikerül létrehozni a Service Bus Relay-névteret, győződjön meg arról, hogy a szükséges erőforrás-szolgáltató regisztrálva van az előfizetésben. Ha nincs regisztrálva, manuálisan hozza létre a Service Bus Relay-névteret a Azure Portalból. Azt is létrehozhatja, miközben létrehozza [a hibrid kapcsolatokat](./itsmc-connections.md#configure-the-hybrid-connection) a Azure Portal.
+-   Ha problémák merülnek fel a webalkalmazások üzembe helyezésével kapcsolatban, győződjön meg arról, hogy rendelkezik az előfizetés erőforrásainak létrehozásához/üzembe helyezéséhez szükséges engedélyekkel.
+-   Ha a [parancsfájl](itsmc-service-manager-script.md)futtatásakor nem az objektumra **vonatkozó hiba példányára van beállítva** , akkor ellenőrizze, hogy érvényes értékeket adott-e meg a **Felhasználó konfigurációja** szakaszban.
+-   Ha nem sikerül létrehoznia a Service Bus Relay-névteret, győződjön meg arról, hogy a szükséges erőforrás-szolgáltató regisztrálva van az előfizetésben. Ha nincs regisztrálva, manuálisan hozza létre a Service Bus Relay-névteret a Azure Portalból. Azt is létrehozhatja, amikor [létrehozza a hibrid kapcsolatokat](./itsmc-connections.md#configure-the-hybrid-connection) a Azure Portalban.
 
 
 ## <a name="contact-us"></a>Kapcsolat
 
-A IT-szolgáltatásmenedzsmenti csatoló kapcsolatos bármilyen lekérdezésért és Visszajelzésért lépjen kapcsolatba velünk a következő címen: [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com) .
+Ha a IT-szolgáltatásmenedzsmenti csatolóról kérdez vagy visszajelzést szeretne küldeni, lépjen kapcsolatba velünk a következő címen: [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com) .
 
 ## <a name="next-steps"></a>Következő lépések
-[ITSM-termékek/-szolgáltatások hozzáadása a it-szolgáltatásmenedzsmenti csatolóhoz](./itsmc-connections.md).
+[ITSM-termékek/szolgáltatások hozzáadása a IT-szolgáltatásmenedzsmenti csatolóhoz](./itsmc-connections.md)
 

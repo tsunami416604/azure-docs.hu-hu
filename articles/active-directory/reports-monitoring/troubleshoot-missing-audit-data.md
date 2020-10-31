@@ -17,12 +17,12 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e1ac0033b7ed2de90ece481cd02d64970ff5f9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f48c26a65314e2f23513fba155f07db3805a516
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85608109"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123064"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Hibaelhárítás: Hiányzó adatok az Azure Active Directory-tevékenységnaplókban 
 
@@ -32,7 +32,7 @@ ms.locfileid: "85608109"
 
 Végrehajtottam bizonyos műveleteket az Azure Portalon, és arra számítottam, hogy látom a műveletek naplóit a `Activity logs > Audit Logs` panelen, de nem találtam meg őket.
 
- ![Jelentéskészítés](./media/troubleshoot-missing-audit-data/01.png)
+ ![A képernyőképen a naplók bejegyzései láthatók.](./media/troubleshoot-missing-audit-data/01.png)
  
 ### <a name="cause"></a>Ok
 
@@ -53,7 +53,7 @@ Várjon, hogy a műveletek úgy 15 perc és két óra közötti időtartam eltel
 
 Nemrég bejelentkeztem az Azure Portalra, és arra számítottam, hogy látom ezeknek a bejelentkezéseknek a naplóit a `Activity logs > Sign-ins` panelen, de nem találom őket.
 
- ![Jelentéskészítés](./media/troubleshoot-missing-audit-data/02.png)
+ ![A képernyőfelvételen a tevékenység naplójában láthatók a bejelentkezések.](./media/troubleshoot-missing-audit-data/02.png)
  
 ### <a name="cause"></a>Ok
 
@@ -74,7 +74,7 @@ Várjon, hogy a műveletek úgy 15 perc és két óra közötti időtartam eltel
 
 Nem jelenik meg 30 napnál több bejelentkezési és auditadat az Azure Portalról. Miért? 
 
- ![Jelentéskészítés](./media/troubleshoot-missing-audit-data/03.png)
+ ![Képernyőfelvétel: a dátum menü.](./media/troubleshoot-missing-audit-data/03.png)
 
 ### <a name="cause"></a>Ok
 
@@ -91,7 +91,7 @@ További információk: [Az Azure Active Directory jelentésmegőrzési háziren
 
 Az adatokat kétféleképpen őrizheti meg 30 napnál hosszabban. Az [Azure AD Reporting API-kkal](concept-reporting-api.md) az adatokat programozott módon kérheti le és tárolhatja egy adatbázisban. Másik megoldásként az auditnaplókat egy külső SIEM-rendszerbe, például a Splunk vagy a SumoLogic rendszerbe integrálhatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure AD-jelentésmegőrzés](reference-reports-data-retention.md).
 * [Azure Active Directory jelentési késések](reference-reports-latencies.md).

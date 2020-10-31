@@ -10,14 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc28cdbca7d2566318a3158399c1d44fd8d2ccd9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84710558"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101721"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>A Bing News Search API nyelvi és területi támogatása
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 A Bing News Search API számos országot/régiót támogat, több mint egy nyelvet. A lekérdezéssel rendelkező ország/régió megadásával elsődlegesen az adott országban vagy régióban lévő érdekeltségek alapján pontosíthatja a keresési eredményeket. Emellett az eredmények a Bingre mutató hivatkozásokat is tartalmazhatnak, és ezek a hivatkozások a megadott ország/régió vagy nyelv alapján lokalizálják a Bing felhasználói élményt.
 
@@ -33,7 +38,7 @@ A lekérdezési paraméterben megadható ország/régió kódok listáját itt `
 
 |Ország/régió|Nyelv|Piaci kód|  
 |---------------------|--------------|-----------------|
-|Dánia|Dán|da-DK|
+|Dánia|dán|da-DK|
 |Ausztria|Német|de-AT|
 |Svájc|Német|de-CH|
 |Németország|Német|de-DE|
@@ -57,7 +62,7 @@ A lekérdezési paraméterben megadható ország/régió kódok listáját itt `
 |Mexikó|Spanyol|es-MX|
 |Egyesült Államok|Spanyol|es – USA|
 |Spanyol|általános|es-XL|
-|Finnország|Finn|fi-FI|  
+|Finnország|finn|fi-FI|  
 |Franciaország|Francia|fr-BE|
 |Kanada|Francia|fr – CA|
 |Belgium|Holland|nl-BE|
@@ -72,7 +77,7 @@ A lekérdezési paraméterben megadható ország/régió kódok listáját itt `
 |Kínai Népköztársaság|Kínai|zh-CN|  
 |Brazília|Portugál|pt-BR|
 |Oroszország|Orosz|ru-RU|  
-|Svédország|Svéd|sv-SE|  
+|Svédország|svéd|sv-SE|  
 |Törökország|Török|tr-TR|  
 
 ## <a name="supported-markets-for-news-endpoint"></a>A hírek végpontjának támogatott piacai
@@ -82,7 +87,7 @@ A lekérdezési paraméterben megadható ország/régió kódok listáját itt `
 
 |Ország/régió|Nyelv|Piaci kód|  
 |---------------------|--------------|-----------------|
-|Dánia|Dán|da-DK|
+|Dánia|dán|da-DK|
 |Németország|Német|de-DE|
 |Ausztrália|Angol|EN-AU|
 |Egyesült Királyság|Angol|en-GB|
@@ -91,7 +96,7 @@ A lekérdezési paraméterben megadható ország/régió kódok listáját itt `
 |Chile|Spanyol|es – CL|
 |Mexikó|Spanyol|es-MX|
 |Egyesült Államok|Spanyol|es – USA|
-|Finnország|Finn|fi-FI|  
+|Finnország|finn|fi-FI|  
 |Kanada|Francia|fr – CA|
 |Franciaország|Francia|fr-FR|  
 |Olaszország|Olasz|it-IT|
@@ -161,5 +166,5 @@ A lekérdezési paraméterben megadható ország/régió kódok a következők: 
 |Egyesült Királyság|GB|  
 |Egyesült Államok|USA|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az Bing News Search-végpontokról: [News Search API v7-dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).

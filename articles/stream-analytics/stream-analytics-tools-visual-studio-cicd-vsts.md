@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 18ab9a4108d6d9effaa25fe69ce42a18ca4ba0dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e87432ad4437f41e70d988e7e2b3cd82aa3bd82
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903834"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123387"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Oktatóanyag: Azure Stream Analytics-feladat üzembe helyezése CI/CD-vel az Azure Pipelines használatával
 Ez az oktatóanyag azt ismerteti, hogyan lehet folyamatos integrációt és üzembe helyezést beállítani egy Azure Stream Analytics-feladathoz az Azure Pipelines használatával. 
@@ -35,7 +35,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy végrehajtotta a következő 
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Telepítse a [Visual Studiót](stream-analytics-tools-for-visual-studio-install.md) és az **Azure-fejlesztési** vagy az **Adattárolási és -feldolgozási** számítási feladatokat.
-* Hozzon létre egy [Stream Analytics-projektet a Visual Studióban](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-vs).
+* Hozzon létre egy [Stream Analytics-projektet a Visual Studióban](./stream-analytics-quick-create-vs.md).
 * Hozzon létre egy [Azure DevOps](https://visualstudio.microsoft.com/team-services/) -szervezetet.
 
 ## <a name="configure-nuget-package-dependency"></a>NuGet csomagfüggőség konfigurálása
@@ -64,12 +64,12 @@ Az alkalmazás forrásfájljait megoszthatja az Azure DevOps egyik projektjében
 
    ![A git-tárház közzétételének leküldése gomb](./media/stream-analytics-tools-visual-studio-cicd-vsts/publish-repository-devops.png)
 
-    Az adattár közzétételével egy új projekt jön létre a szervezetben a helyi adattáréval azonos néven. Ha egy meglévő projektben szeretné létrehozni a tárházat, kattintson a **repository neve**melletti **speciális** elemre, és válasszon ki egy projektet. A kód böngészőben való megtekintéséhez válassza a **See it on the web** (Megtekintés a weben) lehetőséget.
+    Az adattár közzétételével egy új projekt jön létre a szervezetben a helyi adattáréval azonos néven. Ha egy meglévő projektben szeretné létrehozni a tárházat, kattintson a **repository neve** melletti **speciális** elemre, és válasszon ki egy projektet. A kód böngészőben való megtekintéséhez válassza a **See it on the web** (Megtekintés a weben) lehetőséget.
  
 ## <a name="configure-continuous-delivery-with-azure-devops"></a>Folyamatos továbbítás konfigurálása az Azure DevOps használatával
-A Team Pipelines buildelési folyamat egy olyan munkafolyamatot ír le, amely egymás után végrehajtott buildelési lépések sorozatából áll. További tudnivalók az [Azure Pipelines buildelési folyamatokról](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav&preserve-view=true).
+A Team Pipelines buildelési folyamat egy olyan munkafolyamatot ír le, amely egymás után végrehajtott buildelési lépések sorozatából áll. További tudnivalók az [Azure Pipelines buildelési folyamatokról](/azure/devops/pipelines/get-started-designer?preserve-view=true&tabs=new-nav&view=vsts).
 
-Az Azure Pipelines kiadási folyamata olyan munkafolyamatot ír le, amely egy alkalmazáscsomagot telepít egy fürtre. Együttes használatuk esetén a buildelési és a kiadási folyamat a teljes munkafolyamatot végrehajtja, amely a forrásfájlokkal kezdődik, és a fürtön futó alkalmazással ér véget. További információ az Azure Pipelines [kiadási folyamatairól](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts&preserve-view=true).
+Az Azure Pipelines kiadási folyamata olyan munkafolyamatot ír le, amely egy alkalmazáscsomagot telepít egy fürtre. Együttes használatuk esetén a buildelési és a kiadási folyamat a teljes munkafolyamatot végrehajtja, amely a forrásfájlokkal kezdődik, és a fürtön futó alkalmazással ér véget. További információ az Azure Pipelines [kiadási folyamatairól](/azure/devops/pipelines/release/define-multistage-release-process?preserve-view=true&view=vsts).
 
 ### <a name="create-a-build-pipeline"></a>Buildelési folyamat létrehozása
 Nyisson meg egy webböngészőt, majd keresse meg az [Azure DevOpsban](https://app.vsaex.visualstudio.com/) létrehozott projektet. 
@@ -92,15 +92,15 @@ Nyisson meg egy webböngészőt, majd keresse meg az [Azure DevOpsban](https://a
     
     ![Ügynök üzenetsor kiválasztása a feladatok menüben](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-agent-queue-task.png) 
 
-6. Kattintson a **Phase 1** (1. fázis) szakasz **+** elemére, majd adjon hozzá egy **NuGet**-feladatot.
+6. Kattintson a **Phase 1** (1. fázis) szakasz **+** elemére, majd adjon hozzá egy **NuGet** -feladatot.
     
     ![NuGet feladat hozzáadása az ügynök várólistájában](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-nuget-task.png)
 
-7. Bontsa ki az **Advanced** (Speciális) pontot, és adja hozzá a `$(Build.SourcesDirectory)\packages` elemet a **célkönyvtárhoz**. Tartsa meg a fennmaradó alapértelmezett NuGet konfigurációs értékeket.
+7. Bontsa ki az **Advanced** (Speciális) pontot, és adja hozzá a `$(Build.SourcesDirectory)\packages` elemet a **célkönyvtárhoz** . Tartsa meg a fennmaradó alapértelmezett NuGet konfigurációs értékeket.
 
    ![NuGet-visszaállítási feladat konfigurálása](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-nuget-restore-config.png)
 
-8. Kattintson a **Phase 1** (1. fázis) szakasz **+** elemére, majd adjon hozzá egy **MSBuild**-feladatot.
+8. Kattintson a **Phase 1** (1. fázis) szakasz **+** elemére, majd adjon hozzá egy **MSBuild** -feladatot.
 
    ![MSBuild-feladat hozzáadása az ügynök várólistájában](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-msbuild-task.png)
 
@@ -153,14 +153,14 @@ A kód írása közben eszközölt módosításokat a Visual Studio automatikusa
 
 Az Azure DevOps szolgáltatásba leküldött módosítások automatikusan aktiválnak egy buildet.  Ha a buildelési folyamat sikeresen befejeződött, a kiadás automatikusan létrejön, és elindítja a fürtön a feladat frissítését.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos átviteli feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megakadályozhatja, hogy a feladat által felhasznált streamelési egységek kiszámlázásra kerüljenek. Ha a feladatot a jövőben is szeretné használni, leállíthatja, és később újraindíthatja amikor ismét szükség van rá. Ha már nem használja a feladatot, akkor a következő lépésekkel az oktatóanyagban létrehozott összes erőforrást törölheti:
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére.  
 2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni arról, hogyan használhatók a Visual Studio Azure Stream Analytics eszközei a folyamatos integrációs és üzembe helyezési folyamat beállításához, folytassa a következőt: CI/CD-folyamatok beállítása.
 

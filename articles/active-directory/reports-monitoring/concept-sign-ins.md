@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23074dcd7ee888d6d9d8bf288cf0fda66dc0ceec
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d61962667953b20f4b542874e902411bb579b9c3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319758"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122843"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -58,13 +58,13 @@ A felhasználói bejelentkezések jelentése a következő kérdésekre ad vála
 * Hány felhasználó jelentkezett be egy adott héten?
 * Milyen állapotúak ezek a bejelentkezések?
 
-A [Azure Portal](https://portal.azure.com) menüben válassza a **Azure Active Directory**lehetőséget, vagy keresse meg és válassza ki az **Azure Active Directory** elemet bármelyik oldalon.
+A [Azure Portal](https://portal.azure.com) menüben válassza a **Azure Active Directory** lehetőséget, vagy keresse meg és válassza ki az **Azure Active Directory** elemet bármelyik oldalon.
 
 ![Azure Active Directory kiválasztása](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
 
-A **figyelés**területen válassza a **bejelentkezések** lehetőséget a [bejelentkezések jelentés](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)megnyitásához.
+A **figyelés** területen válassza a **bejelentkezések** lehetőséget a [bejelentkezések jelentés](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)megnyitásához.
 
-![Bejelentkezési tevékenység](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "Bejelentkezési tevékenység")
+![A képernyőképen a figyelés menüből kiválasztott bejelentkezések láthatók.](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "Bejelentkezési tevékenység")
 
 Néhány bejelentkezési rekord esetében akár két órát is igénybe vehet, hogy megjelenjenek a portálon.
 
@@ -80,19 +80,19 @@ A bejelentkezési napló alapértelmezett listanézete az alábbi adatokat jelen
 - A kockázatészlelés állapota
 - A többtényezős hitelesítési (MFA-) követelmény állapota
 
-![Bejelentkezési tevékenység](./media/concept-sign-ins/sign-in-activity.png "Bejelentkezési tevékenység")
+![A képernyőképen az Office 365 SharePoint Online-bejelentkezések láthatók.](./media/concept-sign-ins/sign-in-activity.png "Bejelentkezési tevékenység")
 
 A listanézetet az eszköztár **Oszlopok** elemére kattintva lehet testre szabni.
 
-![Bejelentkezési tevékenység](./media/concept-sign-ins/19.png "Bejelentkezési tevékenység")
+![A képernyőképen az oszlopok lehetőség jelenik meg a bejelentkezések oldalon.](./media/concept-sign-ins/19.png "Bejelentkezési tevékenység")
 
 Az **oszlopok** párbeszédpanel lehetővé teszi a választható attribútumok elérését. Egy bejelentkezési jelentésben nem rendelkezhet olyan mezőkkel, amelyek egynél több értékkel rendelkeznek egy adott bejelentkezési kérelemhez oszlopként. Ez például igaz a hitelesítés részleteire, a feltételes hozzáférési adatokra és a hálózati helyre.   
 
-![Bejelentkezési tevékenység](./media/concept-sign-ins/columns.png "Bejelentkezési tevékenység")
+![A képernyőképen az oszlopok párbeszédpanel látható, ahol kiválaszthatja az attribútumokat.](./media/concept-sign-ins/columns.png "Bejelentkezési tevékenység")
 
 Részletesebb információkhoz jelöljön ki egy elemet a listanézet nézetben.
 
-![Bejelentkezési tevékenység](./media/concept-sign-ins/basic-sign-in.png "Bejelentkezési tevékenység")
+![A képernyőképen részletes információk láthatók.](./media/concept-sign-ins/basic-sign-in.png "Bejelentkezési tevékenység")
 
 > [!NOTE]
 > Az ügyfelek mostantól a bejelentkezési jelentéseken keresztül is elhárítják a feltételes hozzáférési házirendeket. Ha a bejelentkezési rekord **feltételes hozzáférés** lapjára kattint, az ügyfelek áttekinthetik a feltételes hozzáférési állapotot, és bemutatják a bejelentkezésre alkalmazott szabályzatok részleteit, valamint az egyes házirendek eredményét.
@@ -104,7 +104,7 @@ Részletesebb információkhoz jelöljön ki egy elemet a listanézet nézetben.
 
 Először Szűkítse le a jelentett adathalmazt egy olyan szintre, amely az Ön számára működik. Másodszor, a Date mezőt használó bejelentkezési adatok szűrése alapértelmezett szűrőként. Az Azure AD számos további szűrőt is beállíthat:
 
-![Bejelentkezési tevékenység](./media/concept-sign-ins/04.png "Bejelentkezési tevékenység")
+![Képernyőfelvétel: a szűrők hozzáadása lehetőség.](./media/concept-sign-ins/04.png "Bejelentkezési tevékenység")
 
 **Kérelem azonosítója** – a kért kérés azonosítója.
 
@@ -143,7 +143,7 @@ A **hely** – a hálózatról kezdeményezett hely:
 ![Ügyfélalkalmazás-szűrő](./media/concept-sign-ins/client-app-filter.png)
 
 
-|Name|Modern hitelesítés|Description|
+|Name|Modern hitelesítés|Leírás|
 |---|:-:|---|
 |Hitelesített SMTP| |Az e-mail-üzenetek küldéséhez használja a POP és az IMAP-ügyfél.|
 |Automatikus észlelési| |Az Outlook és az EAS-ügyfelek használják a postaládák keresésére és az Exchange Online-ban való kapcsolódására.|
@@ -177,11 +177,11 @@ A **hely** – a hálózatról kezdeményezett hely:
 
 **Feltételes hozzáférés** – az alkalmazott feltételes hozzáférési szabályok állapota
 
-- **Nincs alkalmazva**: a rendszer nem alkalmaz szabályzatot a felhasználóra és az alkalmazásra a bejelentkezés során.
+- **Nincs alkalmazva** : a rendszer nem alkalmaz szabályzatot a felhasználóra és az alkalmazásra a bejelentkezés során.
 
-- **Sikeres**: egy vagy több, a felhasználóra és alkalmazásra alkalmazott feltételes hozzáférési szabályzat (de nem feltétlenül a többi feltétel) a bejelentkezés során. 
+- **Sikeres** : egy vagy több, a felhasználóra és alkalmazásra alkalmazott feltételes hozzáférési szabályzat (de nem feltétlenül a többi feltétel) a bejelentkezés során. 
 
-- **Hiba**: a bejelentkezés megfelelt legalább egy feltételes hozzáférési házirend felhasználói és alkalmazási feltételének, és a vezérlők nem teljesülnek, vagy a hozzáférés letiltására van beállítva.
+- **Hiba** : a bejelentkezés megfelelt legalább egy feltételes hozzáférési házirend felhasználói és alkalmazási feltételének, és a vezérlők nem teljesülnek, vagy a hozzáférés letiltására van beállítva.
 
 
 
@@ -214,7 +214,7 @@ Az Azure AD és a Azure Portal egyaránt biztosít további belépési pontokat 
 
 A felhasználói bejelentkezési gráf a **személyazonosság biztonsági védelme** áttekintése oldalon a bejelentkezések heti összesítéseit jeleníti meg. Az időtartam alapértelmezett értéke 30 nap.
 
-![Bejelentkezési tevékenység](./media/concept-sign-ins/06.png "Bejelentkezési tevékenység")
+![A képernyőképen egy hónap alatt a bejelentkezések gráfja látható.](./media/concept-sign-ins/06.png "Bejelentkezési tevékenység")
 
 A bejelentkezési grafikon egyik napjára kattintva áttekintést kap az adott nap bejelentkezési tevékenységeiről.
 
@@ -244,7 +244,7 @@ Az elemekre kattintva részletes információk érhetők el a bejelentkezési m�
 
 A **Felhasználók** oldalon teljes körű áttekintést kaphat az összes felhasználói bejelentkezésről a **Tevékenységek** szakaszban található **Bejelentkezések** elemre kattintva.
 
-![Bejelentkezési tevékenység](./media/concept-sign-ins/08.png "Bejelentkezési tevékenység")
+![Képernyőfelvétel: a tevékenység szakasz, ahol kiválaszthatja a bejelentkezéseket.](./media/concept-sign-ins/08.png "Bejelentkezési tevékenység")
 
 ## <a name="usage-of-managed-applications"></a>Felügyelt alkalmazások használati adatai
 
@@ -256,11 +256,11 @@ A bejelentkezési információk alkalmazás-központú nézetével az alábbi k�
 
 Ezen adat beléptetési pontja a szervezet első három alkalmazása. Az adat a **vállalati alkalmazások** **Áttekintés** szakaszában, az elmúlt 30 nap jelentésében található.
 
-![Bejelentkezési tevékenység](./media/concept-sign-ins/10.png "Bejelentkezési tevékenység")
+![Képernyőfelvétel: Itt választhatja ki az Áttekintés lehetőséget.](./media/concept-sign-ins/10.png "Bejelentkezési tevékenység")
 
 Az alkalmazás-használati gráfok hetente összesítik az első három alkalmazás bejelentkezéseit egy adott időszakban. Az alapértelmezett időszak 30 nap.
 
-![Bejelentkezési tevékenység](./media/concept-sign-ins/graph-chart.png "Bejelentkezési tevékenység")
+![Képernyőfelvétel: az alkalmazás használatának egy hónapos időszakra vonatkozó megjelenítése.](./media/concept-sign-ins/graph-chart.png "Bejelentkezési tevékenység")
 
 Igény esetén egy adott alkalmazást is kiemelhet.
 

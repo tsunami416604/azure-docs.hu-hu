@@ -10,14 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: f59c924caca86505e9f1e91bf58095b271475794
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb6a03cff3191f55b6869f6907aad6d29095d8b8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75383719"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93102258"
 ---
 # <a name="sending-queries-to-the-bing-news-search-api"></a>Lekérdezések küldése a Bing News Search API
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 A Bing News Search API lehetővé teszi a releváns Hírek keresését a weben. Ebből a cikkből megtudhatja, hogyan küldhet keresési lekérdezéseket az API-nak.
 
@@ -282,7 +287,7 @@ BingAPIs-Market: en-US
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi az Bing News Search?](../search-the-web.md) 
 * [A mai legfontosabb hírek beszerzése](search-for-news.md#get-todays-top-news)

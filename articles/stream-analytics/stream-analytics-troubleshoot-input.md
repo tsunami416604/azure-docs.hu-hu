@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: f4f79a28dbe8a49e608ca6fae1781a1e19646619
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 760c98ce9464e4d40f01256a973e07d9084c6dfe
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87448874"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123285"
 ---
 # <a name="troubleshoot-input-connections"></a>Bemeneti kapcsolatok hibaelhárítása
 
@@ -25,13 +25,13 @@ Ez a cikk a Azure Stream Analytics bemeneti kapcsolataival, a bemeneti problém�
 
 2.  Vizsgálja meg a bemeneti adatokat.
 
-    1. Használja az egyes bemenetek [**mintaadatok**](stream-analytics-sample-data-input.md) gombját. Töltse le a bemeneti mintaadatok.
+    1. Használja az egyes bemenetek [**mintaadatok**](./stream-analytics-test-query.md) gombját. Töltse le a bemeneti mintaadatok.
         
-    1. Vizsgálja meg a mintaadatok a séma és az [adattípusok](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)megismeréséhez.
+    1. Vizsgálja meg a mintaadatok a séma és az [adattípusok](/stream-analytics-query/data-types-azure-stream-analytics)megismeréséhez.
     
     1. Ellenőrizze az [Event hub mérőszámait](../event-hubs/event-hubs-metrics-azure-monitor.md) az események küldésének biztosításához. Az üzenetek metrikáinak nullánál nagyobbnak kell lenniük, ha Event Hubs üzeneteket fogadnak.
 
-3.  Győződjön meg arról, hogy a bemeneti előnézetben időtartományt jelölt ki. Válassza az **időtartomány kiválasztása**lehetőséget, majd adja meg a minta időtartamát a lekérdezés tesztelése előtt.
+3.  Győződjön meg arról, hogy a bemeneti előnézetben időtartományt jelölt ki. Válassza az **időtartomány kiválasztása** lehetőséget, majd adja meg a minta időtartamát a lekérdezés tesztelése előtt.
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>A helytelen formátumú bemeneti események deszerializálási hibákat okoznak 
 
@@ -71,7 +71,7 @@ AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1.
 
 Ha új fogyasztói csoportot szeretne hozzáadni a Event Hubs-példányban, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 
 2. Keresse meg az Event hub-t.
 
@@ -79,7 +79,7 @@ Ha új fogyasztói csoportot szeretne hozzáadni a Event Hubs-példányban, köv
 
 4. Válassza ki az Event hub nevet név szerint.
 
-5. A **Event Hubs példány** lapon az **entitások** fejléc alatt válassza a **fogyasztói csoportok**lehetőséget. Megjelenik egy **$default** nevű fogyasztói csoport a listáján.
+5. A **Event Hubs példány** lapon az **entitások** fejléc alatt válassza a **fogyasztói csoportok** lehetőséget. Megjelenik egy **$default** nevű fogyasztói csoport a listáján.
 
 6. Válassza a **+ fogyasztói csoport** lehetőséget egy új fogyasztói csoport hozzáadásához. 
 
@@ -163,16 +163,16 @@ SELECT foo FROM DataTwo
 
 ## <a name="readers-per-partition-exceeds-iot-hub-limit"></a>Az olvasók/partíciók száma meghaladja IoT Hub korlátot
 
-Stream Analytics feladatok a IoT Hub beépített [Event hub-kompatibilis végpontját](../iot-hub/iot-hub-devguide-messages-read-builtin.md) használják a IoT hub-ból való kapcsolódáshoz és olvasáshoz. Ha az olvasás/partíció meghaladja a IoT Hub korlátait, az [Event hub megoldásait](#readers-per-partition-exceeds-event-hubs-limit) használhatja a megoldásához. Létrehozhat egy fogyasztói csoportot a beépített végponthoz IoT Hub portál végpont-munkamenetben vagy a [IOT hub SDK](https://docs.microsoft.com/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup)-n keresztül.
+Stream Analytics feladatok a IoT Hub beépített [Event hub-kompatibilis végpontját](../iot-hub/iot-hub-devguide-messages-read-builtin.md) használják a IoT hub-ból való kapcsolódáshoz és olvasáshoz. Ha az olvasás/partíció meghaladja a IoT Hub korlátait, az [Event hub megoldásait](#readers-per-partition-exceeds-event-hubs-limit) használhatja a megoldásához. Létrehozhat egy fogyasztói csoportot a beépített végponthoz IoT Hub portál végpont-munkamenetben vagy a [IOT hub SDK](/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup)-n keresztül.
 
 ## <a name="get-help"></a>Segítség kérése
 
-További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](/answers/topics/azure-stream-analytics.html).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Az Azure Stream Analytics felügyeleti REST API referenciája](/rest/api/streamanalytics/)

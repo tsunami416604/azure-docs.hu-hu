@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d18cf248aa94e23abfa6e2b9467bb1167a32a6f1
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2bbdbc7a0ed71634522bd68dbf0807264a409525
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490526"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101731"
 ---
 # <a name="configure-access-to-azure-cosmos-db-from-virtual-networks-vnet"></a>Azure Cosmos DB hozzáférésének konfigurálása virtuális hálózatokból (VNet)
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Az Azure Cosmos-fiókot úgy is beállíthatja, hogy csak a virtuális hálózat (VNet) egy adott alhálózatáról engedélyezze a hozzáférést. A [szolgáltatás végpontjának](../virtual-network/virtual-network-service-endpoints-overview.md) a virtuális hálózaton belüli alhálózathoz Azure Cosmos db való hozzáférésének engedélyezésével az adott alhálózatról érkező forgalmat a rendszer a Azure Cosmos db az alhálózat és a Virtual Network identitásával küldi el. Ha a Azure Cosmos DB szolgáltatás végpontja engedélyezve van, az alhálózathoz való hozzáférést az Azure Cosmos-fiókjához hozzáadva korlátozhatja.
 
@@ -39,11 +40,11 @@ A következő szakaszok azt ismertetik, hogyan konfigurálható egy virtuális h
 
 1. A **minden erőforrás** panelen keresse meg a védeni kívánt Azure Cosmos db fiókot.
 
-1. Válassza a **tűzfalak és virtuális hálózatok** lehetőséget a beállítások menüben, és válassza a hozzáférés engedélyezése a **kiválasztott hálózatokból**lehetőséget.
+1. Válassza a **tűzfalak és virtuális hálózatok** lehetőséget a beállítások menüben, és válassza a hozzáférés engedélyezése a **kiválasztott hálózatokból** lehetőséget.
 
-1. Ha hozzáférést szeretne biztosítani egy meglévő virtuális hálózat alhálózatához, a **virtuális hálózatok**területen válassza a **meglévő Azure-beli virtuális hálózat hozzáadása**elemet.
+1. Ha hozzáférést szeretne biztosítani egy meglévő virtuális hálózat alhálózatához, a **virtuális hálózatok** területen válassza a **meglévő Azure-beli virtuális hálózat hozzáadása** elemet.
 
-1. Válassza ki azt az **előfizetést** , amelyből hozzá szeretné adni az Azure-beli virtuális hálózatot. Válassza ki azokat az Azure-beli **virtuális hálózatokat** és **alhálózatokat** , amelyeknek hozzáférést kíván biztosítani a Azure Cosmos db-fiókjához. Ezután válassza az **Engedélyezés** lehetőséget a kiválasztott hálózatok engedélyezéséhez a "Microsoft. AzureCosmosDB" szolgáltatási végpontokkal. Ha elkészült, válassza a **Hozzáadás**lehetőséget.
+1. Válassza ki azt az **előfizetést** , amelyből hozzá szeretné adni az Azure-beli virtuális hálózatot. Válassza ki azokat az Azure-beli **virtuális hálózatokat** és **alhálózatokat** , amelyeknek hozzáférést kíván biztosítani a Azure Cosmos db-fiókjához. Ezután válassza az **Engedélyezés** lehetőséget a kiválasztott hálózatok engedélyezéséhez a "Microsoft. AzureCosmosDB" szolgáltatási végpontokkal. Ha elkészült, válassza a **Hozzáadás** lehetőséget.
 
    :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png" alt-text="Válassza ki a virtuális hálózatot és az alhálózatot":::
 
@@ -63,15 +64,15 @@ Az előfizetés erőforrás-szolgáltatóval való regisztrálásának útmutat�
 
 1. A **minden erőforrás** panelen keresse meg a védeni kívánt Azure Cosmos db fiókot.  
 
-1. Válassza a **tűzfalak és az Azure-beli virtuális hálózatok** lehetőséget a beállítások menüben, és válassza a hozzáférés engedélyezése a **kiválasztott hálózatokból**lehetőséget.  
+1. Válassza a **tűzfalak és az Azure-beli virtuális hálózatok** lehetőséget a beállítások menüben, és válassza a hozzáférés engedélyezése a **kiválasztott hálózatokból** lehetőséget.  
 
-1. Ha hozzáférést szeretne biztosítani egy új Azure-beli virtuális hálózathoz, a **virtuális hálózatok**területen válassza az **új virtuális hálózat hozzáadása**lehetőséget.  
+1. Ha hozzáférést szeretne biztosítani egy új Azure-beli virtuális hálózathoz, a **virtuális hálózatok** területen válassza az **új virtuális hálózat hozzáadása** lehetőséget.  
 
-1. Adja meg az új virtuális hálózat létrehozásához szükséges adatokat, majd válassza a **Létrehozás**lehetőséget. Az alhálózat a "Microsoft. AzureCosmosDB" számára engedélyezett szolgáltatási végponttal lesz létrehozva.
+1. Adja meg az új virtuális hálózat létrehozásához szükséges adatokat, majd válassza a **Létrehozás** lehetőséget. Az alhálózat a "Microsoft. AzureCosmosDB" számára engedélyezett szolgáltatási végponttal lesz létrehozva.
 
    :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png" alt-text="Válassza ki a virtuális hálózatot és az alhálózatot":::
 
-Ha a Azure Cosmos DB-fiókot más Azure-szolgáltatások, például az Azure Cognitive Search vagy a stream Analytics vagy a Power BI használatával érik el, akkor a hozzáférést a **globális Azure-adatközpontokban lévő kapcsolatok fogadása**lehetőség választásával engedélyezheti.
+Ha a Azure Cosmos DB-fiókot más Azure-szolgáltatások, például az Azure Cognitive Search vagy a stream Analytics vagy a Power BI használatával érik el, akkor a hozzáférést a **globális Azure-adatközpontokban lévő kapcsolatok fogadása** lehetőség választásával engedélyezheti.
 
 Annak biztosítása érdekében, hogy a portálon Azure Cosmos DB metrikák hozzáférhessenek, engedélyeznie kell a **hozzáférést a Azure Portal** lehetőségek közül. Ha többet szeretne megtudni ezekről a lehetőségekről, tekintse meg az [IP-tűzfal konfigurálása](how-to-configure-firewall.md) című cikket. A hozzáférés engedélyezése után válassza a **Mentés** lehetőséget a beállítások mentéséhez.
 
@@ -81,7 +82,7 @@ Annak biztosítása érdekében, hogy a portálon Azure Cosmos DB metrikák hozz
 
 1. A beállítások menüben válassza a **tűzfalak és virtuális hálózatok** lehetőséget.  
 
-1. Virtuális hálózat vagy alhálózat szabályának eltávolításához válassza a **...** lehetőséget a virtuális hálózat vagy alhálózat mellett, és válassza az **Eltávolítás**lehetőséget.
+1. Virtuális hálózat vagy alhálózat szabályának eltávolításához válassza a **...** lehetőséget a virtuális hálózat vagy alhálózat mellett, és válassza az **Eltávolítás** lehetőséget.
 
    :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png" alt-text="Válassza ki a virtuális hálózatot és az alhálózatot":::
 
