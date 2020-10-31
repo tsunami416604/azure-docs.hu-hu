@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: f47f34b60c858bb9a0feafd25176e4a811046630
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44e445f6d1dce8193109d6b5ad1742210458e74c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75426220"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130408"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Stream Analytics térinformatikai függvények bemutatása
 
@@ -26,7 +26,7 @@ Példa a térinformatikai függvények előnyeit kihasználó forgatókönyvekre
 * Földrajzi kerítés
 * Telefonos nyomon követés a cella helyei között
 
-Stream Analytics lekérdezési nyelv hét beépített térinformatikai funkcióval rendelkezik: **CreateLineString**, **CreatePoint**, **CreatePolygon**, **ST_DISTANCE**, **ST_OVERLAPS**, **ST_INTERSECTS**és **ST_WITHIN**.
+Stream Analytics lekérdezési nyelv hét beépített térinformatikai funkcióval rendelkezik: **CreateLineString** , **CreatePoint** , **CreatePolygon** , **ST_DISTANCE** , **ST_OVERLAPS** , **ST_INTERSECTS** és **ST_WITHIN** .
 
 ## <a name="createlinestring"></a>CreateLineString
 
@@ -42,7 +42,7 @@ FROM input
 
 ### <a name="input-example"></a>Példa bemenetre  
   
-|szélesség|hosszúság|  
+|latitude|hosszúság|  
 |--------------|---------------|  
 |3,0|– 10,2|  
 |– 87,33|20,2321|  
@@ -53,7 +53,7 @@ FROM input
 
  {"type": "LineString", "koordináták": [[20,2321,-87,33], [10,0, 10,0], [10,5, 10,5]]}
 
-További tudnivalókért tekintse meg a [CreateLineString](https://docs.microsoft.com/stream-analytics-query/createlinestring) -referenciát.
+További tudnivalókért tekintse meg a [CreateLineString](/stream-analytics-query/createlinestring) -referenciát.
 
 ## <a name="createpoint"></a>CreatePoint
 
@@ -69,7 +69,7 @@ FROM input
 
 ### <a name="input-example"></a>Példa bemenetre  
   
-|szélesség|hosszúság|  
+|latitude|hosszúság|  
 |--------------|---------------|  
 |3,0|– 10,2|  
 |– 87,33|20,2321|  
@@ -80,7 +80,7 @@ FROM input
   
  {"type": "pont", "koordináták": [20,2321,-87,33]}  
 
-További tudnivalókért tekintse meg a [CreatePoint](https://docs.microsoft.com/stream-analytics-query/createpoint) -referenciát.
+További tudnivalókért tekintse meg a [CreatePoint](/stream-analytics-query/createpoint) -referenciát.
 
 ## <a name="createpolygon"></a>CreatePolygon
 
@@ -96,7 +96,7 @@ FROM input
 
 ### <a name="input-example"></a>Példa bemenetre  
   
-|szélesség|hosszúság|  
+|latitude|hosszúság|  
 |--------------|---------------|  
 |3,0|– 10,2|  
 |– 87,33|20,2321|  
@@ -107,7 +107,7 @@ FROM input
  
  {"type": "sokszög", "koordináták": [[[20,2321,-87,33], [10,0, 10,0], [10,5, 10,5], [20,2321,-87,33]]]}
 
-További tudnivalókért tekintse meg a [CreatePolygon](https://docs.microsoft.com/stream-analytics-query/createpolygon) -referenciát.
+További tudnivalókért tekintse meg a [CreatePolygon](/stream-analytics-query/createpolygon) -referenciát.
 
 
 ## <a name="st_distance"></a>ST_DISTANCE
@@ -121,7 +121,7 @@ FROM Cars c
 JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 ```
 
-További tudnivalókért tekintse meg a [ST_DISTANCE](https://docs.microsoft.com/stream-analytics-query/st-distance) -referenciát.
+További tudnivalókért tekintse meg a [ST_DISTANCE](/stream-analytics-query/st-distance) -referenciát.
 
 ## <a name="st_overlaps"></a>ST_OVERLAPS
 A `ST_OVERLAPS` függvény két sokszöget hasonlít össze. Ha a sokszögek átfedésben vannak, a függvény egy 1 értéket ad vissza. A függvény a 0 értéket adja vissza, ha a sokszögek nem fedik át egymást. 
@@ -142,7 +142,7 @@ FROM Cars c, Storm s
 JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 ```
 
-További tudnivalókért tekintse meg a [ST_OVERLAPS](https://docs.microsoft.com/stream-analytics-query/st-overlaps) -referenciát.
+További tudnivalókért tekintse meg a [ST_OVERLAPS](/stream-analytics-query/st-overlaps) -referenciát.
 
 ## <a name="st_intersects"></a>ST_INTERSECTS
 A `ST_INTERSECTS` függvény összehasonlítja a két LineString. Ha a LineString metszi egymást, akkor a függvény az 1 értéket adja vissza. A függvény a 0 értéket adja vissza, ha a LineString nem metszi egymást.
@@ -168,7 +168,7 @@ FROM input
   
  0  
 
-További tudnivalókért tekintse meg a [ST_INTERSECTS](https://docs.microsoft.com/stream-analytics-query/st-intersects) -referenciát.
+További tudnivalókért tekintse meg a [ST_INTERSECTS](/stream-analytics-query/st-intersects) -referenciát.
 
 ## <a name="st_within"></a>ST_WITHIN
 A `ST_WITHIN` függvény meghatározza, hogy egy pont vagy sokszög egy sokszögen belül van-e. Ha a sokszög a pontot vagy a sokszöget tartalmazza, a függvény 1 értéket ad vissza. A függvény 0 értéket ad vissza, ha a pont vagy a sokszög nem a deklarált sokszögen belül található.
@@ -194,12 +194,12 @@ FROM input
   
  1  
 
-További tudnivalókért tekintse meg a [ST_WITHIN](https://docs.microsoft.com/stream-analytics-query/st-within) -referenciát.
+További tudnivalókért tekintse meg a [ST_WITHIN](/stream-analytics-query/st-within) -referenciát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Az Azure Stream Analytics felügyeleti REST API referenciája](/rest/api/streamanalytics/)

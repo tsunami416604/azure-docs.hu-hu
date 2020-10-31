@@ -1,47 +1,39 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: cognitive-services
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 05/05/2020
+ms.date: 10/30/2020
 ms.topic: include
-ms.openlocfilehash: fda9df6c7e9651bbd3b0b70ad9d47f23c0c19d01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e592c11062e81d48014a90895a0e42b460d4b77c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541431"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128171"
 ---
 ## <a name="sign-in-to-luis-portal"></a>Bejelentkezés a LUIS portálra
 
 A LUIS új felhasználójának a következő eljárást kell követnie:
 
-1. Jelentkezzen be a [Luis portálra](https://www.luis.ai), válassza ki az országot vagy régiót, és fogadja el a használati feltételeket. Ha ehelyett a **saját alkalmazások** jelennek meg, a Luis-erőforrás már létezik, és az alkalmazás létrehozásához ugorjon előre. A támogatott régiók esetében keresse fel [a létrehozási és közzétételi régiókat és a társított kulcsokat](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions).
+1. Jelentkezzen be a [Luis portálra](https://www.luis.ai), válassza ki az országot vagy régiót, és fogadja el a használati feltételeket. Ha ehelyett a **saját alkalmazások** jelennek meg, a Luis-erőforrás már létezik, és az alkalmazás létrehozásához ugorjon előre. Két lehetőség regisztrálása:
 
-1. Válassza az **Azure-erőforrás létrehozása** lehetőséget, majd válassza az **authoring-erőforrás létrehozása lehetőséget az alkalmazások migrálása érdekében.**
+    * Azure-erőforrás használata (ajánlott) – lehetővé teszi a LUIS-fiók összekapcsolását egy új vagy meglévő Azure authoring-erőforrással. Ez egyenértékű a már áttelepített regisztrációval. Később nem kell átlépnie az [áttelepítési folyamaton](../luis-migration-authoring.md#what-is-migration) .
 
-    ![Language Understanding szerzői erőforrás típusának kiválasztása](../media/luis-how-to-azure-subscription/sign-in-create-resource.png)
+    * Próbaverziós kulcs használata. Ez lehetővé teszi, hogy bejelentkezzen a LUIS-ba olyan próbaverziós erőforrással, amelyet nem kell beállítania. Ha ezt a lehetőséget választja, a [fiók áttelepítésére](../luis-migration-authoring.md#migration-steps) és az alkalmazások egy szerzői erőforráshoz való csatolására lesz szükség.
 
-1. Adja meg az erőforrás részleteit.
+1. A megjelenő **authoring (szerzői műveletek** ) ablakban keresse meg az Azure-előfizetését és a Luis authoring Resource elemet. Ha nem rendelkezik erőforrással, létrehozhat egy újat.
 
-    ![A képernyőképen az új erőforrás létrehozása a szerzői Műveletek ablaktáblán látható.](../media/migrate-authoring-key/choose-authoring-resource-form.png)
-
-    **Új authoring-erőforrás létrehozásakor**adja meg a következő információkat:
-
-    * **Erőforrás neve** – a kiválasztott egyéni név, amelyet a szerzői műveletek és előrejelzési végpontok lekérdezéséhez használt URL-cím részeként használhat.
-    * **Bérlő** – az a bérlő, amelyhez az Azure-előfizetés társítva van.
-    * **Előfizetés neve** – az erőforráshoz számlázandó előfizetés.
-    * **Erőforráscsoport** – a kiválasztott vagy létrehozott egyéni erőforráscsoport-név. Az erőforráscsoportok lehetővé teszik az Azure-erőforrások csoportosítását a hozzáféréshez és a felügyelethez.
-    * **Hely** – a hely kiválasztása az **erőforráscsoport** kiválasztása alapján történik.
+    :::image type="content" source="../media/luis-how-to-azure-subscription/choose-authoring-resource.png" alt-text="Válasszon egy Language Understanding authoring Resource típust.":::
+    
+    Új authoring-erőforrás létrehozásakor adja meg a következő információkat:
+    * **Bérlő neve** – az a bérlő, amelyhez az Azure-előfizetés társítva van.
+    * **Azure-előfizetés neve** – az erőforrásért fizetendő előfizetés.
+    * **Azure-erőforráscsoport neve** – válasszon ki vagy hozzon létre egy egyéni erőforráscsoport-nevet. Az erőforráscsoportok lehetővé teszik az Azure-erőforrások csoportosítását a hozzáféréshez és a felügyelethez.
+    * **Azure-Erőforrás neve** – az Ön által választott egyéni név, amelyet a szerzői műveletek és előrejelzési végpontok lekérdezéséhez használt URL-cím részeként használhat.
     * **Árképzési szint** – az árképzési szint meghatározza a másodpercenkénti és havi maximális tranzakciót.
 
-1. Megjelenik a létrehozandó erőforrás összegzése. Kattintson a **Tovább** gombra.
 
-    ![A képernyőképen a kezdőlapon az Azure-fiókra mutató hivatkozást tartalmazó oldal látható.](../media/sign-in/sign-in-confirm-key-selection.png)
-
-1. Erősítse meg a **Folytatás**lehetőséget.
-
-    ![A képernyőképen az Azure-fiókkal való összekapcsolást követően megjelenik a Kezdőlap.](../media/sign-in/sign-in-confirm-continue.png)

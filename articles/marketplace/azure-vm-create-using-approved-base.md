@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: 34d64d70c657712bb44aa6331b53f014349a0dda
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c28595458fea61f66b6930ce72fa0702e00aecd9
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284321"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129296"
 ---
 # <a name="how-to-create-a-virtual-machine-using-an-approved-base"></a>Virtuális gép létrehozása jóváhagyott alap használatával
 
@@ -32,7 +32,7 @@ Válassza ki az alábbi Windows-vagy Linux-rendszerképek egyikét a bázisként
 
 ### <a name="linux"></a>Linux
 
-Az Azure számos jóváhagyott Linux-disztribúciót kínál. Az aktuális listán tekintse [meg az Azure által támogatott disztribúciókkal](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)foglalkozó Linux című témakört.
+Az Azure számos jóváhagyott Linux-disztribúciót kínál. Az aktuális listán tekintse [meg az Azure által támogatott disztribúciókkal](../virtual-machines/linux/endorsed-distros.md)foglalkozó Linux című témakört.
 
 ## <a name="create-vm-on-the-azure-portal"></a>Virtuális gép létrehozása a Azure Portal
 
@@ -49,9 +49,9 @@ Az Azure számos jóváhagyott Linux-disztribúciót kínál. Az aktuális list�
     :::image type="content" source="media/create-vm/create-virtual-machine-sizes.png" alt-text="Válassza az 1. gen vagy a 2. lehetőséget.":::
 
 7. Adja meg a virtuális gép létrehozásához szükséges egyéb adatokat.
-8. Válassza a **felülvizsgálat + létrehozás** lehetőséget a választási lehetőségek áttekintéséhez. Amikor megjelenik az **érvényesítési** üzenet, válassza a  **Létrehozás**lehetőséget.
+8. Válassza a **felülvizsgálat + létrehozás** lehetőséget a választási lehetőségek áttekintéséhez. Amikor megjelenik az **érvényesítési** üzenet, válassza a  **Létrehozás** lehetőséget.
 
-Az Azure megkezdi a megadott virtuális gép üzembe helyezését. Az előrehaladás nyomon követéséhez válassza a bal oldali menü **Virtual Machines** lapját. A létrehozást követően a virtuális gép állapota **fut**értékre változik.
+Az Azure megkezdi a megadott virtuális gép üzembe helyezését. Az előrehaladás nyomon követéséhez válassza a bal oldali menü **Virtual Machines** lapját. A létrehozást követően a virtuális gép állapota **fut** értékre változik.
 
 
 ## <a name="configure-the-vm"></a>A virtuális gép konfigurálása

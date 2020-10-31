@@ -5,17 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 9/22/2020
-ms.openlocfilehash: 6d0a29d8ef8123eafd6a1616a24003c1e36e6e59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/30/2020
+ms.openlocfilehash: 1b4959cbf082a589c90034f48d597907c9b7e6cc
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905940"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128929"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>A MySQL-adatbázis migrálása Importálás és exportálás használatával
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 Ez a cikk két gyakori megközelítést ismertet az adatAzure Database for MySQL-kiszolgálóra való importálásához és exportálásához a MySQL Workbench használatával.
+
+Az [adatbázis-áttelepítési útmutatóban](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide) részletes információkat találhat az adatbázisok Azure Database for MySQLba való áttelepítésével kapcsolatos információkról és használatáról. Ez az útmutató útmutatást nyújt az Azure-ba való MySQL-áttelepítés sikeres megtervezéséhez és végrehajtásához.
 
 ## <a name="before-you-begin"></a>Előkészületek
 A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
@@ -45,7 +47,7 @@ A MySQL Tools használatával adatbázisok importálhatók és exportálhatók a
 - Ha egy MySQL-adatbázistól eltérő külső adatforrásokból végez áttelepítést, hozzon létre lapos fájlokat, és importálja őket a [mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html)használatával.
 
 > [!Important]
-> Az egyetlen kiszolgáló és a rugalmas kiszolgáló is **csak a InnoDB-tárolót**támogatja. Győződjön meg arról, hogy az adatbázisban lévő összes tábla a InnoDB Storage motort használja, ha az adatAzure Database for MySQLba tölti be az adatgyűjtést.
+> Az egyetlen kiszolgáló és a rugalmas kiszolgáló is **csak a InnoDB-tárolót** támogatja. Győződjön meg arról, hogy az adatbázisban lévő összes tábla a InnoDB Storage motort használja, ha az adatAzure Database for MySQLba tölti be az adatgyűjtést.
 > Ha a forrásadatbázis egy másik tárolási motort használ, a-adatbázis áttelepítése előtt váltson át a InnoDB motorra. Ha például van egy WordPress vagy egy webalkalmazás, amely a MyISAM motort használja, először alakítsa át a táblákat az InnoDB-táblákba való áttelepítéssel. A záradék használatával `ENGINE=INNODB` állítsa be a motort egy tábla létrehozásához, majd az adatok átvitelét a kompatibilis táblába az áttelepítés előtt.
 
    ```sql
@@ -72,26 +74,26 @@ A MySQL Workbenchben kétféleképpen exportálhat és importálhat adatfájloka
 
 A táblázatos adatokhoz tartozó varázslók a CSV-és JSON-fájlok használatával támogatják az importálási és exportálási műveleteket. Több konfigurációs lehetőséget is tartalmaznak, például elválasztókat, oszlopok kijelölését és a kódolás kijelölését. Az egyes varázslókat helyi vagy távolról csatlakoztatott MySQL-kiszolgálókon is elvégezheti. Az importálási művelet táblázat-, oszlop-és típus-hozzárendelést tartalmaz.
 
-Ezek a varázslók az objektum böngésző helyi menüjéből érhetők el, ha a jobb gombbal a táblára kattint. Ezután válassza a **tábla adatexportálás varázsló** vagy a **tábla adatimportálása varázslót**.
+Ezek a varázslók az objektum böngésző helyi menüjéből érhetők el, ha a jobb gombbal a táblára kattint. Ezután válassza a **tábla adatexportálás varázsló** vagy a **tábla adatimportálása varázslót** .
 
 #### <a name="table-data-export-wizard"></a>Tábla adatexportálási varázslója
 Az alábbi példa egy CSV-fájlba exportálja a táblázatot:
 1. Kattintson a jobb gombbal az exportálni kívánt adatbázis táblára.
-2. Válassza a **tábla adatexportálás varázslót**. Válassza ki az exportálandó oszlopokat, a sorok eltolását (ha van), és a darabszámot (ha van ilyen).
-3. Az **exportálni kívánt adatexportálás** lapon kattintson a **tovább**gombra. Válassza ki a fájl elérési útját, CSV-fájlját vagy JSON-fájltípusát. Válassza ki a vonal elválasztóját, a karakterláncok befoglalásának metódusát és a mező elválasztóját is.
-4. A **kimeneti fájl helyének kiválasztása** lapon kattintson a **tovább**gombra.
-5. Az **adatexportálás** lapon kattintson a **tovább**gombra.
+2. Válassza a **tábla adatexportálás varázslót** . Válassza ki az exportálandó oszlopokat, a sorok eltolását (ha van), és a darabszámot (ha van ilyen).
+3. Az **exportálni kívánt adatexportálás** lapon kattintson a **tovább** gombra. Válassza ki a fájl elérési útját, CSV-fájlját vagy JSON-fájltípusát. Válassza ki a vonal elválasztóját, a karakterláncok befoglalásának metódusát és a mező elválasztóját is.
+4. A **kimeneti fájl helyének kiválasztása** lapon kattintson a **tovább** gombra.
+5. Az **adatexportálás** lapon kattintson a **tovább** gombra.
 
 #### <a name="table-data-import-wizard"></a>Tábla adatimportálása varázsló
 Az alábbi példa egy CSV-fájlból importálja a táblázatot:
 1. Kattintson a jobb gombbal az importálandó adatbázis táblára.
-2. Keresse meg és válassza ki az importálni kívánt CSV-fájlt, majd kattintson a **tovább**gombra.
+2. Keresse meg és válassza ki az importálni kívánt CSV-fájlt, majd kattintson a **tovább** gombra.
 3. Válassza ki a céltábla (új vagy meglévő) elemet, és jelölje be a **tábla csonkítása az importálás előtt** jelölőnégyzetet, vagy törölje a jelölést. Kattintson a **Tovább** gombra.
-4. Válassza ki a kódolás és az importálandó oszlopok elemet, majd kattintson a **tovább**gombra.
-5. Az **adatimportálás** lapon kattintson a **tovább**gombra. A varázsló ennek megfelelően importálja az adatmennyiséget.
+4. Válassza ki a kódolás és az importálandó oszlopok elemet, majd kattintson a **tovább** gombra.
+5. Az **adatimportálás** lapon kattintson a **tovább** gombra. A varázsló ennek megfelelően importálja az adatmennyiséget.
 
 ### <a name="sql-data-export-and-import-wizards-from-the-navigator-pane"></a>SQL-adatok exportálási és importálási varázslók a navigátor ablaktáblán
-A MySQL Workbenchből generált vagy a mysqldump parancsból generált SQL-alapú exportálás vagy Importálás varázsló használatával. Nyissa meg ezeket a varázslókat a **navigátor** ablaktáblán, vagy válassza a főmenü **kiszolgáló** elemét. Ezután válassza **Az adatexportálás** vagy **az adatimportálás**lehetőséget.
+A MySQL Workbenchből generált vagy a mysqldump parancsból generált SQL-alapú exportálás vagy Importálás varázsló használatával. Nyissa meg ezeket a varázslókat a **navigátor** ablaktáblán, vagy válassza a főmenü **kiszolgáló** elemét. Ezután válassza **Az adatexportálás** vagy **az adatimportálás** lehetőséget.
 
 #### <a name="data-export"></a>Adatexportálás
 :::image type="content" source="./media/concepts-migrate-import-export/p2.png" alt-text="A Azure Portal található kapcsolatok adatainak megkeresése":::
@@ -115,4 +117,4 @@ Az **adatimportálás** lapon importálhatja vagy visszaállíthatja az exportá
 
 ## <a name="next-steps"></a>Következő lépések
 - Egy másik áttelepítési módszerként olvassa el [a MySQL-adatbázis áttelepítése a dump használatával és a visszaállítás a Azure Database for MySQLban című részt](concepts-migrate-dump-restore.md).
-- Az adatbázisok Azure Database for MySQLre való áttelepítésével kapcsolatos további információkért tekintse meg az [adatbázis-áttelepítési útmutatót](https://aka.ms/datamigration).
+- Az adatbázisok Azure Database for MySQLre való áttelepítésével kapcsolatos további információkért tekintse meg az [adatbázis-áttelepítési útmutatót](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide).

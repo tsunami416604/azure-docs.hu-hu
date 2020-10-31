@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 15bd917a16c250807d6848f7bc0ffbdba06b4019
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f0df92eadc4db132d567e708abe6e28e82642d6
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329091"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129558"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Azure RBAC használata Kubernetes-engedélyezéshez (előzetes verzió)
 
@@ -75,6 +75,7 @@ az extension update --name aks-preview
 - Az előzetes verzióban csak az Azure CLI-n keresztül adhatja hozzá a *névtér szintű* engedélyeket.
 - Ha rendelkezik CRDs, és egyéni szerepkör-definíciókat használ, az egyetlen módszer a CRDs lefedésére `Microsoft.ContainerService/managedClusters/*/read` . Az AK dolgozik a CRDs vonatkozó részletesebb engedélyek biztosításán. A többi objektum esetében használhatja az adott API-csoportokat, például: `Microsoft.ContainerService/apps/deployments/read` .
 - Az új szerepkör-hozzárendelések akár 5perc is eltarthat, és az engedélyezési kiszolgáló frissítheti azokat.
+- Az Azure AD-bérlőt úgy kell konfigurálni, hogy az AK-fürtöt tartalmazó előfizetés bérlője azonos legyen a hitelesítéshez. 
 
 ## <a name="create-a-new-cluster-using-azure-rbac-and-managed-azure-ad-integration"></a>Új fürt létrehozása az Azure RBAC és a felügyelt Azure AD-integráció használatával
 
@@ -245,7 +246,7 @@ aks-nodepool1-93451573-vmss000002   Ready    agent   3h6m   v1.15.11
 ```
 
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 
 ### <a name="clean-role-assignment"></a>Szerepkör-hozzárendelés törlése
 

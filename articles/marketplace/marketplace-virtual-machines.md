@@ -8,18 +8,18 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 8653279c353ad679503f2501afeb14725c7fc215
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: a14ccb74e6f0ac2454255d609662706cb53ede31
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329032"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129592"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>Virtuális gépek ajánlatának megtervezése
 
 Ez a cikk a virtuális gépek (VM) kereskedelmi piactéren való közzétételének különböző lehetőségeit és követelményeit ismerteti. A VM-ajánlatok az Azure Marketplace-en üzembe helyezett és számlázható ajánlatok.
 
-Mielőtt elkezdené, [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , és ellenőrizze, hogy a fiókja regisztrálva van-e a kereskedelmi piactér programban.
+Mielőtt elkezdené, [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](./partner-center-portal/create-account.md) , és ellenőrizze, hogy a fiókja regisztrálva van-e a kereskedelmi piactér programban.
 
 ### <a name="technical-fundamentals"></a>Technikai alapismeretek
 
@@ -70,7 +70,7 @@ Meghívhat a Microsoft-fiók (MSA) vagy a Azure Active Directory (Azure AD) e-ma
 
 A VM-ajánlatokhoz legalább egy csomag szükséges. A terv meghatározza a megoldás hatókörét és korlátait, valamint a kapcsolódó díjszabást. Az ajánlathoz több csomagot is létrehozhat, így az ügyfelek különböző technikai és licencelési lehetőségeket biztosíthatnak, valamint ingyenes próbaverziókat is használhatnak. Tekintse meg a [kereskedelmi piactérre vonatkozó terveket és díjszabást](plans-pricing.md) a csomagokkal kapcsolatos általános útmutatásért, beleértve a díjszabási modelleket, az ingyenes próbaverziókat és a saját terveket. 
 
-A virtuális gépek teljes mértékben elérhetők az utólagos elszámolású vagy a saját licencű (BYOL) licencelési modellek használatával. A Microsoft üzemelteti a kereskedelmi tranzakciót, és az Ön nevében számlázza az ügyfelet. Az ügyfél és a Microsoft közötti előnyben részesített fizetési kapcsolat előnyeit használhatja, beleértve a nagyvállalati szerződéseket is. További információ: [kereskedelmi Piactéri Transact-képességek](https://docs.microsoft.com/azure/marketplace/marketplace-commercial-transaction-capabilities-and-considerations).
+A virtuális gépek teljes mértékben elérhetők az utólagos elszámolású vagy a saját licencű (BYOL) licencelési modellek használatával. A Microsoft üzemelteti a kereskedelmi tranzakciót, és az Ön nevében számlázza az ügyfelet. Az ügyfél és a Microsoft közötti előnyben részesített fizetési kapcsolat előnyeit használhatja, beleértve a nagyvállalati szerződéseket is. További információ: [kereskedelmi Piactéri Transact-képességek](./marketplace-commercial-transaction-capabilities-and-considerations.md).
 
 > [!NOTE]
 > Az Nagyvállalati Szerződéshoz kapcsolódó pénzügyi kötelezettségek a virtuális gép Azure-beli használatára használhatók, de a szoftver licencelési díjaival nem.
@@ -84,7 +84,7 @@ A virtuális gépekhez elérhető licencelési lehetőségek a következők:
 | Licencelési lehetőség | Tranzakciós folyamat |
 | --- | --- |
 | Ingyenes próbaidőszak | Egy-, három vagy hat hónapos ingyenes próbaverziót kínál ügyfeleinek. |
-| Tesztelési meghajtó | Ez a beállítás lehetővé teszi, hogy az ügyfelek további díjak nélkül értékeljék a virtuális gépeket. Nincs szükségük meglévő Azure-ügyfélre a próbaidőszakos felhasználói élményhez. Részletekért lásd: [Mi az a test Drive?](https://docs.microsoft.com/azure/marketplace/what-is-test-drive) |
+| Tesztelési meghajtó | Ez a beállítás lehetővé teszi, hogy az ügyfelek további díjak nélkül értékeljék a virtuális gépeket. Nincs szükségük meglévő Azure-ügyfélre a próbaidőszakos felhasználói élményhez. Részletekért lásd: [Mi az a test Drive?](./what-is-test-drive.md) |
 | BYOL | A saját licencelési lehetőség használata lehetővé teszi, hogy az ügyfelek meglévő szoftver-licenceket hozzanak az Azure-ba.\* |
 | Használat-alapú | Ez a beállítás lehetővé teszi, hogy az ügyfelek óradíjat fizessenek. |
 | Interaktív bemutató  | Interaktív bemutató használatával biztosíthatja ügyfelei számára a megoldás irányítását. Az előny az, hogy a próbaverziót a komplex megoldás bonyolult beállítása nélkül is kínálhatja. |
@@ -129,9 +129,9 @@ Ha úgy dönt, hogy a normál szerződést használja, lehetősége van arra, ho
 Ha az ajánlatot a partner Centerben hozza létre, megjelenik az **viszonteladás a CSP** -n keresztül lapon. Ez a beállítás lehetővé teszi, hogy a Microsoft Cloud Solution Providers (CSP) program részét képező partnerek a virtuális gépet egy csomagban lévő ajánlat részeként értékesítsenek. Az összes saját Licences (BYOL) csomag automatikusan bekerül a programba. Dönthet úgy is, hogy nem BYOL terveket is választ. További információért lásd a [Cloud Solution Provider programot](cloud-solution-providers.md) . 
 
 > [!NOTE]
-> Már elérhető a felhőalapú megoldás-szolgáltató (CSP) Partner Channel-beli aktiválása. Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [**Cloud Solution Providers**](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)című témakört.
+> Már elérhető a felhőalapú megoldás-szolgáltató (CSP) Partner Channel-beli aktiválása. Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [**Cloud Solution Providers**](./cloud-solution-providers.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Virtuálisgép-ajánlat létrehozása az Azure Marketplace-en](azure-vm-create.md)
 - [Hozzon létre egy virtuális gépet jóváhagyott alap használatával](azure-vm-create-using-approved-base.md) , vagy [hozzon létre egy virtuális gépet saját rendszerkép használatával](azure-vm-create-using-own-image.md).

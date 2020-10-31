@@ -7,12 +7,12 @@ ms.topic: how-to
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 08/07/2020
-ms.openlocfilehash: 34af52b32d9e31ad003c5e95e288f88b157a944a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d253bda69839c76aed0170f9a79a03b7d4bf1a79
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710617"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130106"
 ---
 # <a name="create-a-managed-service-offer"></a>Felügyelt szolgáltatásra vonatkozó ajánlat létrehozása
 
@@ -23,8 +23,8 @@ A felügyelt szolgáltatások ajánlatának közzétételéhez [ezüst vagy aran
 ## <a name="create-a-new-offer"></a>Új ajánlat létrehozása
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
-2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
-3. Az Áttekintés lapon válassza az **+ új ajánlat**  >  **felügyelt szolgáltatás**elemet.
+2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés** lehetőséget.
+3. Az Áttekintés lapon válassza az **+ új ajánlat**  >  **felügyelt szolgáltatás** elemet.
 
     ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-managed-service.png)
 
@@ -33,16 +33,16 @@ A felügyelt szolgáltatások ajánlatának közzétételéhez [ezüst vagy aran
 
 ## <a name="new-offer"></a>Új ajánlat
 
-Adja meg az **ajánlat azonosítóját**. Ez a fiókban található egyes ajánlatok egyedi azonosítója.
+Adja meg az **ajánlat azonosítóját** . Ez a fiókban található egyes ajánlatok egyedi azonosítója.
 
 * Ez az azonosító látható az ügyfelek számára a Piactéri ajánlathoz tartozó webcímek és Azure Resource Manager sablonok esetében, ha van ilyen.
-* Csak kisbetűket és számokat használjon. Tartalmazhat kötőjeleket és aláhúzásokat, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1**értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
-* Az ajánlat azonosítója a **Létrehozás**gombra kattintva nem módosítható.
+* Csak kisbetűket és számokat használjon. Tartalmazhat kötőjeleket és aláhúzásokat, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1** értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
+* Az ajánlat azonosítója a **Létrehozás** gombra kattintva nem módosítható.
 
-Adjon meg egy **ajánlat-aliast**. Ez a partner Centerben az ajánlathoz használt név.
+Adjon meg egy **ajánlat-aliast** . Ez a partner Centerben az ajánlathoz használt név.
 
 * Ez a név nem használatos a piactéren, és nem egyezik meg az ajánlat nevével és az ügyfelek számára megjelenített egyéb értékekkel.
-* Az ajánlat aliasa nem módosítható a **Létrehozás**gombra kattintva.
+* Az ajánlat aliasa nem módosítható a **Létrehozás** gombra kattintva.
 
 Válassza a **Létrehozás** lehetőséget az ajánlat létrehozásához és a folytatáshoz.
 
@@ -52,7 +52,7 @@ Válassza a **Létrehozás** lehetőséget az ajánlat létrehozásához és a f
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
-A [felügyelt szolgáltatásokra vonatkozó minősítési szabályzatok](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)alapján szükség van egy **érdeklődő célhelyre** . Ez egy rekordot hoz létre a CRM-rendszerben minden alkalommal, amikor egy ügyfél üzembe helyezi az ajánlatot.
+A [felügyelt szolgáltatásokra vonatkozó minősítési szabályzatok](/legal/marketplace/certification-policies#700-managed-services)alapján szükség van egy **érdeklődő célhelyre** . Ez egy rekordot hoz létre a CRM-rendszerben minden alkalommal, amikor egy ügyfél üzembe helyezi az ajánlatot.
 
 További információ: az [ólom kezelése – áttekintés](./commercial-marketplace-get-customer-leads.md).
 
@@ -90,7 +90,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Az
 3. Hasznos hivatkozások
 4. Képernyőképek
 
-### <a name="name"></a>Name (Név)
+### <a name="name"></a>Name
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
 
@@ -116,15 +116,15 @@ Adja meg a szervezete adatvédelmi szabályzatának URL-címét (a webhelyén ta
 
 ### <a name="useful-links"></a>Hasznos hivatkozások
 
-Adjon meg opcionális kiegészítő online dokumentumokat a megoldásáról. További hasznos hivatkozások hozzáadásához kattintson **a + hivatkozás hozzáadása**lehetőségre.
+Adjon meg opcionális kiegészítő online dokumentumokat a megoldásáról. További hasznos hivatkozások hozzáadásához kattintson **a + hivatkozás hozzáadása** lehetőségre.
 
 ### <a name="contact-information"></a>Kapcsolattartási adatok
 
-Ebben a szakaszban meg kell adnia egy **támogatási kapcsolattartó** nevét, e-mail-címét és telefonszámát, valamint egy **mérnöki kapcsolattartót**. Ez az információ nem jelenik meg az ügyfelek számára, de a Microsoft számára elérhetővé válik, és a CSP-partnerek számára is biztosítható.
+Ebben a szakaszban meg kell adnia egy **támogatási kapcsolattartó** nevét, e-mail-címét és telefonszámát, valamint egy **mérnöki kapcsolattartót** . Ez az információ nem jelenik meg az ügyfelek számára, de a Microsoft számára elérhetővé válik, és a CSP-partnerek számára is biztosítható.
 
 ### <a name="support-urls"></a>Támogatási URL-címek
 
-Ha az **Azure globális ügyfeleinek** és/vagy **Azure Government ügyfeleinek**is támogatnia kell a webhelyeket, itt adja meg ezeket az URL-címeket.
+Ha az **Azure globális ügyfeleinek** és/vagy **Azure Government ügyfeleinek** is támogatnia kell a webhelyeket, itt adja meg ezeket az URL-címeket.
 
 ### <a name="marketplace-images"></a>Marketplace-rendszerképek
 
@@ -179,9 +179,9 @@ Minden ajánlatnak egy vagy több csomaggal (korábbi nevén SKU) kell rendelkez
 
 Az egyes ajánlatokhoz legfeljebb 100 csomagot hozhat létre: ezek közül legfeljebb 45 lehet privát. További információ a [Microsoft kereskedelmi piactéren](../private-offers.md)elérhető privát csomagokról.
 
-A **terv áttekintése** lapon válassza az **+ új terv létrehozása**lehetőséget. Ezután adja meg a **csomag azonosítóját** és a **csomag nevét**. Mindkét érték csak kisbetűs alfanumerikus karaktereket, kötőjeleket és aláhúzást tartalmazhat, legfeljebb 50 karakter hosszú lehet. Előfordulhat, hogy ezek az értékek láthatók az ügyfelek számára, és az ajánlat közzététele után nem módosíthatók.
+A **terv áttekintése** lapon válassza az **+ új terv létrehozása** lehetőséget. Ezután adja meg a **csomag azonosítóját** és a **csomag nevét** . Mindkét érték csak kisbetűs alfanumerikus karaktereket, kötőjeleket és aláhúzást tartalmazhat, legfeljebb 50 karakter hosszú lehet. Előfordulhat, hogy ezek az értékek láthatók az ügyfelek számára, és az ajánlat közzététele után nem módosíthatók.
 
-Válassza a **Létrehozás** lehetőséget, ha megadta ezeket az értékeket a tervben való munka folytatásához. Három szakaszt kell végrehajtani: a lista, a **díjszabás és a rendelkezésre állás**, valamint a **technikai konfiguráció** **megtervezése**.
+Válassza a **Létrehozás** lehetőséget, ha megadta ezeket az értékeket a tervben való munka folytatásához. Három szakaszt kell végrehajtani: a lista, a **díjszabás és a rendelkezésre állás** , valamint a **technikai konfiguráció** **megtervezése** .
 
 ### <a name="plan-listing"></a>Csomag listázása
 
@@ -191,14 +191,14 @@ Ezután adjon meg egy **leírást** , amely részletesebb magyarázatot nyújt a
 
 ### <a name="pricing-and-availability"></a>Díjszabás és rendelkezésre állás
 
-Jelenleg csak egy díjszabási modell használható a felügyelt szolgáltatási ajánlathoz: **saját licenc használata (BYOL)**. Ez azt jelenti, hogy az ügyfeleket közvetlenül az ajánlattal kapcsolatos költségekkel számoljuk fel, és a Microsoft semmilyen díjat nem számít fel Önnek.
+Jelenleg csak egy díjszabási modell használható a felügyelt szolgáltatási ajánlathoz: **saját licenc használata (BYOL)** . Ez azt jelenti, hogy az ügyfeleket közvetlenül az ajánlattal kapcsolatos költségekkel számoljuk fel, és a Microsoft semmilyen díjat nem számít fel Önnek.
 
 A **terv láthatósága** szakaszban megadhatja, hogy a tervnek [privátnak](../../marketplace/private-offers.md)kell lennie. Ha nem jelöli **be a jelölőnégyzetet, a csomag** nem lesz korlátozva meghatározott ügyfelekre (vagy adott számú ügyfélre).
 
 > [!NOTE]
 > A Private-csomagok nem támogatottak a Cloud Solution Provider (CSP) program viszonteladóján keresztül létesített előfizetésekkel.
 
-Ha ezt a csomagot csak bizonyos ügyfelek számára szeretné elérhetővé tenni, válassza az **Igen**lehetőséget. Ha így tesz, azonosítania kell az ügyfeleket az előfizetési azonosítók megadásával. Ezek megadhatók egyenként (legfeljebb 10 előfizetés esetén) vagy egy. csv-fájl feltöltésével (legfeljebb 10 000 előfizetésre az összes csomag esetében). Ügyeljen arra, hogy a saját előfizetéseit is tartalmazza, hogy tesztelje és érvényesítse az ajánlatot.
+Ha ezt a csomagot csak bizonyos ügyfelek számára szeretné elérhetővé tenni, válassza az **Igen** lehetőséget. Ha így tesz, azonosítania kell az ügyfeleket az előfizetési azonosítók megadásával. Ezek megadhatók egyenként (legfeljebb 10 előfizetés esetén) vagy egy. csv-fájl feltöltésével (legfeljebb 10 000 előfizetésre az összes csomag esetében). Ügyeljen arra, hogy a saját előfizetéseit is tartalmazza, hogy tesztelje és érvényesítse az ajánlatot.
 
 > [!IMPORTANT]
 > Miután közzétett egy csomagot nyilvánosként, nem módosíthatja magánjellegűre. Egy privát csomag használatával szabályozhatja, hogy mely ügyfelek fogadhatják el az ajánlatot, és hogyan delegálhat erőforrásokat. Egy nyilvános csomaggal nem korlátozhatja a rendelkezésre állást bizonyos ügyfelek számára, vagy akár bizonyos számú ügyfél számára is (bár ha úgy dönt, hogy teljesen megszüntetheti a csomag értékesítését). A [delegáláshoz való hozzáférést csak akkor távolíthatja el,](../../lighthouse/how-to/remove-delegation.md) ha az ügyfél csak akkor fogadja el az **ajánlatot, ha** az ajánlat közzétételekor a [felügyelt szolgáltatások regisztrációs hozzárendelésének törlési szerepkörét](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) beállította a **szerepkör-definícióban** . Az ügyfelet is elérheti, és megkérheti, hogy [távolítsa el a hozzáférését](../../lighthouse/how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers).
@@ -216,9 +216,9 @@ A terv ezen szakasza egy jegyzékfájlt hoz létre az ügyfél-erőforrások kez
 
 Először adja meg a jegyzékfájl **verzióját** . Használja az *n. n. n* formátumot (például 1.2.5).
 
-Ezután adja meg a **bérlői azonosítóját**. Ez a szervezet Azure Active Directory (Azure AD) bérlői azonosítójával társított GUID; Ez azt a bérlőt kezeli, amelyről el fogja érni az ügyfelek erőforrásait. Ha nem rendelkezik ezzel a hasznos megoldással, a fiók neve fölé helyezve a Azure Portal jobb felső sarkában vagy a **címtár váltása**lehetőségre kattintva.
+Ezután adja meg a **bérlői azonosítóját** . Ez a szervezet Azure Active Directory (Azure AD) bérlői azonosítójával társított GUID; Ez azt a bérlőt kezeli, amelyről el fogja érni az ügyfelek erőforrásait. Ha nem rendelkezik ezzel a hasznos megoldással, a fiók neve fölé helyezve a Azure Portal jobb felső sarkában vagy a **címtár váltása** lehetőségre kattintva.
 
-Ha közzéteszi az ajánlat új verzióját, és egy frissített jegyzékfájlt kell létrehoznia, válassza az **+ új jegyzékfájl**lehetőséget. Ügyeljen arra, hogy az előző jegyzékfájl verziószámát növelje.
+Ha közzéteszi az ajánlat új verzióját, és egy frissített jegyzékfájlt kell létrehoznia, válassza az **+ új jegyzékfájl** lehetőséget. Ügyeljen arra, hogy az előző jegyzékfájl verziószámát növelje.
 
 #### <a name="authorization"></a>Engedélyezés
 
@@ -229,14 +229,14 @@ Az egyes csomagokhoz legfeljebb húsz engedély hozható létre.
 > [!TIP]
 > A legtöbb esetben a szerepköröket egy Azure AD-felhasználói csoporthoz vagy egy egyszerű szolgáltatáshoz szeretné rendelni, nem pedig az egyes felhasználói fiókokhoz. Ez lehetővé teszi az egyes felhasználók hozzáférésének hozzáadását vagy eltávolítását anélkül, hogy a hozzáférési követelmények változásakor frissítenie és újból közzé kellene tennie a tervet. Amikor szerepköröket rendel az Azure AD-csoportokhoz, [Győződjön meg arról, hogy a **csoport típusa** **biztonsági** , nem pedig az **Office 365**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). További javaslatokért lásd: [bérlők, szerepkörök és felhasználók az Azure Lighthouse-forgatókönyvekben](../../lighthouse/concepts/tenants-users-roles.md).
 
-Minden egyes **engedélyezéshez**meg kell adnia a következőket. Ezután több felhasználó és szerepkör-definíció hozzáadásához több alkalommal is kiválaszthatja az **Engedélyezés** lehetőséget.
+Minden egyes **engedélyezéshez** meg kell adnia a következőket. Ezután több felhasználó és szerepkör-definíció hozzáadásához több alkalommal is kiválaszthatja az **Engedélyezés** lehetőséget.
 
-- **Azure ad-objektum azonosítója**: egy felhasználó, felhasználói csoport vagy alkalmazás Azure ad-azonosítója, amely bizonyos engedélyeket (a szerepkör-definícióban meghatározott módon) biztosít az ügyfelek erőforrásai számára.
-- Az **Azure ad-objektum megjelenített neve**: egy rövid név, amely segítségével az ügyfél megismerheti az engedélyezés célját. Az ügyfél ezt a nevet fogja látni az erőforrások delegálásakor.
-- **Szerepkör-definíció**: válassza ki az elérhető Azure ad beépített szerepkörök egyikét a listából. Ez a szerepkör határozza meg, hogy az **Azure ad-objektum azonosító** mezőjében szereplő felhasználó milyen engedélyekkel fog rendelkezni az ügyfelek erőforrásaiban. A szerepkörök leírását lásd: [beépített szerepkörök](../../role-based-access-control/built-in-roles.md) és [szerepkör-támogatás az Azure Lighthouse szolgáltatáshoz](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-lighthouse).
+- **Azure ad-objektum azonosítója** : egy felhasználó, felhasználói csoport vagy alkalmazás Azure ad-azonosítója, amely bizonyos engedélyeket (a szerepkör-definícióban meghatározott módon) biztosít az ügyfelek erőforrásai számára.
+- Az **Azure ad-objektum megjelenített neve** : egy rövid név, amely segítségével az ügyfél megismerheti az engedélyezés célját. Az ügyfél ezt a nevet fogja látni az erőforrások delegálásakor.
+- **Szerepkör-definíció** : válassza ki az elérhető Azure ad beépített szerepkörök egyikét a listából. Ez a szerepkör határozza meg, hogy az **Azure ad-objektum azonosító** mezőjében szereplő felhasználó milyen engedélyekkel fog rendelkezni az ügyfelek erőforrásaiban. A szerepkörök leírását lásd: [beépített szerepkörök](../../role-based-access-control/built-in-roles.md) és [szerepkör-támogatás az Azure Lighthouse szolgáltatáshoz](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-lighthouse).
   > [!NOTE]
   > Ahogy a megfelelő új beépített szerepköröket hozzáadjuk az Azure-hoz, itt lesznek elérhetők, de a megjelenésük előtt némi késés is előfordulhat.
-- **Hozzárendelhető szerepkörök**: Ez a beállítás csak akkor jelenik meg, ha a **szerepkör-definícióban** a felhasználói hozzáférés rendszergazdája lehetőséget választotta az engedélyezéshez. Ha igen, hozzá kell adnia egy vagy több hozzárendelhető szerepkört. Az **Azure ad-objektum azonosító** mezőjében szereplő felhasználó hozzá tudja rendelni ezeket a szerepköröket a [felügyelt identitásokhoz](../../active-directory/managed-identities-azure-resources/overview.md), ami a [szervizelhető házirendek telepítéséhez](../../lighthouse/how-to/deploy-policy-remediation.md)szükséges. Vegye figyelembe, hogy a felhasználói hozzáférés-rendszergazdai szerepkörhöz tartozó egyéb engedélyek nem lesznek érvényesek erre a felhasználóra.
+- **Hozzárendelhető szerepkörök** : Ez a beállítás csak akkor jelenik meg, ha a **szerepkör-definícióban** a felhasználói hozzáférés rendszergazdája lehetőséget választotta az engedélyezéshez. Ha igen, hozzá kell adnia egy vagy több hozzárendelhető szerepkört. Az **Azure ad-objektum azonosító** mezőjében szereplő felhasználó hozzá tudja rendelni ezeket a szerepköröket a [felügyelt identitásokhoz](../../active-directory/managed-identities-azure-resources/overview.md), ami a [szervizelhető házirendek telepítéséhez](../../lighthouse/how-to/deploy-policy-remediation.md)szükséges. Vegye figyelembe, hogy a felhasználói hozzáférés-rendszergazdai szerepkörhöz tartozó egyéb engedélyek nem lesznek érvényesek erre a felhasználóra.
 
 > [!TIP]
 > Ha meg szeretné győződni arról, hogy szükség esetén [el tudja távolítani a hozzáférést a delegáláshoz](../../lighthouse/how-to/remove-delegation.md) , adjon **meg egy, a** [felügyelt szolgáltatások regisztrációs hozzárendelésének törlési szerepköréhez](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)beállított **szerepkör-definíciót** . Ha ez a szerepkör nincs hozzárendelve, a delegált erőforrásokat csak egy felhasználó távolíthatja el az ügyfél bérlője számára.
@@ -258,7 +258,7 @@ Ha első alkalommal teszi közzé ezt az ajánlatot, a következőket teheti:
   - **Hiányos** – a szakasznak olyan hibákkal kell rendelkeznie, amelyeket meg kell oldani, vagy további információkat kell megadnia. Térjen vissza a szakasz (ok) hoz, és frissítse azt.
   - **Complete (Befejezés** ) – a szakasz elkészült, az összes szükséges információ meg van határozva, és nincsenek hibák. Az ajánlat minden részének teljes állapotban kell lennie ahhoz, hogy el tudja küldeni az ajánlatot.
 - A **minősítési megjegyzések** szakaszban adja meg a minősítési csoport tesztelési utasításait, hogy az alkalmazás megfelelően legyen tesztelve, valamint az alkalmazás megértéséhez szükséges kiegészítő megjegyzések mellett.
-- Küldje el az ajánlatot közzétételre a **Submit (Küldés**) gombra kattintva. A rendszer e-mailt küld Önnek, ha az ajánlat előzetes verziója elérhető az Ön számára az áttekintéshez és a jóváhagyáshoz. Térjen vissza a partneri központba, és válassza a **Go-Live** lehetőséget az ajánlat nyilvános közzétételére (vagy ha egy privát ajánlatra a privát közönség számára).
+- Küldje el az ajánlatot közzétételre a **Submit (Küldés** ) gombra kattintva. A rendszer e-mailt küld Önnek, ha az ajánlat előzetes verziója elérhető az Ön számára az áttekintéshez és a jóváhagyáshoz. Térjen vissza a partneri központba, és válassza a **Go-Live** lehetőséget az ajánlat nyilvános közzétételére (vagy ha egy privát ajánlatra a privát közönség számára).
 
 ### <a name="customer-experience-and-offer-management"></a>Felhasználói élmény és ajánlat-kezelés
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 0ed8533b093c5af0d8aefdcd5175bed63f37a76c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57cd9b55f529bde3f6bcb0a25a95c70333f6d8dd
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85507670"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130952"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>A StorSimple Eszközkezelő szolgáltatás használata a StorSimple virtuális tömb Support request naplózására
 
@@ -33,27 +33,27 @@ A [támogatási csomagtól](https://azure.microsoft.com/support/plans/)függően
 
 #### <a name="to-log-a-new-request"></a>Új kérelem naplózása
 
-1. Nyissa meg a StorSimple-eszközkezelő szolgáltatást. A szolgáltatás összegzése panel beállításainál válassza a **támogatás + hibaelhárítás** szakaszt, majd kattintson az **új támogatási kérelem**elemre.
+1. Nyissa meg a StorSimple-eszközkezelő szolgáltatást. A szolgáltatás összegzése panel beállításainál válassza a **támogatás + hibaelhárítás** szakaszt, majd kattintson az **új támogatási kérelem** elemre.
    
-    ![Új támogatási kérelem](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
+    ![A képernyőképen az új támogatási kérelem alapjai panelje látható.](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
 
 2. Az **alapvető beállítások** panelen tegye a következőket:
 
-    1. A **probléma típusa** legördülő listából válassza a **technikai**lehetőséget. 
+    1. A **probléma típusa** legördülő listából válassza a **technikai** lehetőséget. 
     
-    2. Az aktuális **előfizetés**, a **szolgáltatás** típusa és az **erőforrás** (StorSimple Eszközkezelő szolgáltatás) automatikusan ki van választva. 
+    2. Az aktuális **előfizetés** , a **szolgáltatás** típusa és az **erőforrás** (StorSimple Eszközkezelő szolgáltatás) automatikusan ki van választva. 
 
     3. Adja meg egy vagy több, a szolgáltatáshoz regisztrált eszközt, amely problémákba ütközik.
 
     4. Válassza ki a megfelelő **támogatási csomagot** , ha az előfizetéshez több csomag is tartozik. A technikai támogatás engedélyezéséhez fizetős támogatási csomag szükséges.
 
-3. A **2. lépésben**válassza ki a **súlyosságot** , és adja meg, hogy a probléma a tömbhöz vagy a StorSimple Eszközkezelő szolgáltatáshoz kapcsolódik-e. Válassza ki a probléma **kategóriáját** is, és adja meg a probléma további **részleteit** .
+3. A **2. lépésben** válassza ki a **súlyosságot** , és adja meg, hogy a probléma a tömbhöz vagy a StorSimple Eszközkezelő szolgáltatáshoz kapcsolódik-e. Válassza ki a probléma **kategóriáját** is, és adja meg a probléma további **részleteit** .
    
-    ![Új támogatási kérelem](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
+    ![Képernyőfelvétel: a probléma panel, amelyen megadhatja a támogatási kérelemhez tartozó probléma típusát, kategóriáját és részleteit.](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
 
-4. A **3. lépésben**adja meg a kapcsolattartási adatait. A Microsoft ügyfélszolgálata ezeket az információkat a további információk, a diagnosztika és a megoldás elérésére fogja használni.
+4. A **3. lépésben** adja meg a kapcsolattartási adatait. A Microsoft ügyfélszolgálata ezeket az információkat a további információk, a diagnosztika és a megoldás elérésére fogja használni.
    
-    ![Új támogatási kérelem](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket3.png)
+    ![Képernyőfelvétel: a kapcsolattartási adatok ablaktábla.](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket3.png)
 
 ## <a name="manage-a-support-request"></a>Támogatási kérelem kezelése
 
@@ -61,11 +61,11 @@ A támogatási jegy létrehozása után a jegyet a teljes életciklusán kereszt
 
 #### <a name="to-manage-your-support-requests"></a>A támogatási kérések kezelése
 
-A Súgó és támogatás lapon keresse meg a **tallózás > Súgó + támogatás**menüpontot.
+A Súgó és támogatás lapon keresse meg a **tallózás > Súgó + támogatás** menüpontot.
 
 ![Támogatási kérelmek kezelése](./media/storsimple-virtual-array-log-support-ticket/manage-support-tickets.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [diagnosztizálhatja és megoldhatja a StorSimple virtuális tömbhöz kapcsolódó problémákat](storsimple-virtual-array-diagnose-problems.md)
 

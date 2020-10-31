@@ -17,12 +17,12 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22a8a0efe16b4ab2ea7b8a647284a3449741ac02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cabf5f40bc17828bc37b5c094de7b90de3ec8b26
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226964"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130221"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>A Azure Active Directory jelentési API elérésének előfeltételei
 
@@ -53,9 +53,9 @@ Ha a jelentéskészítési adathoz az API-n keresztül szeretne hozzáférni, a 
 A bérlőhöz tartozó bejelentkezési jelentések eléréséhez az Azure AD-bérlőnek hozzá kell rendelnie prémium szintű Azure AD-licencet. Prémium szintű Azure AD P1 (vagy újabb) licencre van szükség az Azure AD-bérlők bejelentkezési jelentéseinek eléréséhez. Ha a könyvtár típusa Azure AD B2C, a bejelentkezési jelentések az API-n keresztül érhetők el, további licencfeltételek nélkül. 
 
 
-## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
+## <a name="register-an-application"></a>Alkalmazás regisztrálása
 
-A regisztrációra akkor is szükség van, ha parancsfájl használatával éri el a jelentéskészítési API-t. A regisztráció egy alkalmazás- **azonosítót**ad meg, amely az engedélyezési hívásokhoz szükséges, és lehetővé teszi a kód számára a jogkivonatok fogadását.
+A regisztrációra akkor is szükség van, ha parancsfájl használatával éri el a jelentéskészítési API-t. A regisztráció egy alkalmazás- **azonosítót** ad meg, amely az engedélyezési hívásokhoz szükséges, és lehetővé teszi a kód számára a jogkivonatok fogadását.
 
 Ha úgy szeretné konfigurálni a címtárat, hogy hozzáférhessen az Azure AD Reporting API-hoz, be kell jelentkeznie a [Azure Portalba](https://portal.azure.com) egy olyan Azure-beli rendszergazdai fiókkal, amely az Azure ad-bérlő **globális rendszergazdai** címtár szerepkörének tagja is.
 
@@ -67,23 +67,23 @@ Ha úgy szeretné konfigurálni a címtárat, hogy hozzáférhessen az Azure AD 
 
 1. A [Azure Portal](https://portal.azure.com)a bal oldali navigációs ablaktáblán válassza a **Azure Active Directory** lehetőséget.
    
-    ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![A képernyőképen a Azure Portal menüből kiválasztott Azure Active Directory látható.](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2. A **Azure Active Directory** lapon válassza a **Alkalmazásregisztrációk**lehetőséget.
+2. A **Azure Active Directory** lapon válassza a **Alkalmazásregisztrációk** lehetőséget.
 
-    ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/02.png) 
+    ![A képernyőképen látható Alkalmazásregisztrációk a kezelés menüből kiválasztva.](./media/howto-configure-prerequisites-for-reporting-api/02.png) 
 
-3. A **Alkalmazásregisztrációk** lapon válassza az **új regisztráció**lehetőséget.
+3. A **Alkalmazásregisztrációk** lapon válassza az **új regisztráció** lehetőséget.
 
-    ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/03.png)
+    ![A képernyőképen a kiválasztott új regisztráció látható.](./media/howto-configure-prerequisites-for-reporting-api/03.png)
 
 4. Az **alkalmazás regisztrációjának** lapja:
 
-    ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/04.png)
+    ![Képernyőfelvétel: az alkalmazás regisztrálása oldal, ahol megadhatja az ebben a lépésben szereplő értékeket.](./media/howto-configure-prerequisites-for-reporting-api/04.png)
 
     a. A **név** szövegmezőbe írja be a következőt: `Reporting API application` .
 
-    b. A **támogatott fiókok típusa**beállításnál válassza a **fiókok csak ebben a szervezetiben**lehetőséget.
+    b. A **támogatott fiókok típusa** beállításnál válassza a **fiókok csak ebben a szervezetiben** lehetőséget.
 
     c. Az **átirányítási URL-cím**  kijelölése **webes** szövegmezőbe írja be a következőt: `https://localhost` .
 
@@ -99,33 +99,32 @@ Az elérni kívánt API-tól függően a következő engedélyeket kell megadnia
 | Microsoft Azure Active Directory | Címtáradatok olvasása |
 | Microsoft Graph | Az összes naplózási napló adatolvasása |
 
-
-![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/36.png)
+![Képernyőfelvétel: Itt választhatja ki az engedély hozzáadása elemet az A P I engedélyek ablaktáblán.](./media/howto-configure-prerequisites-for-reporting-api/36.png)
 
 A következő szakasz az API-k lépéseit sorolja fel. Ha nem szeretne hozzáférni valamelyik API-hoz, ugorja át a kapcsolódó lépéseket.
 
 **Az API-k használatának engedélyezése az alkalmazás számára:**
 
 
-1. Válassza az **API-engedélyek** lehetőséget, majd **adjon hozzá egy engedélyt**. 
+1. Válassza az **API-engedélyek** lehetőséget, majd **adjon hozzá egy engedélyt** . 
 
-    ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/05.png)
+    ![Képernyőfelvétel: a P I engedélyek lap, amelyen kiválaszthatja az engedély hozzáadása lehetőséget.](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
-2. Az **API-engedélyek kérése lapon**keresse meg a **támogatási örökölt API** - **Azure Active Directory gráfot**. 
+2. Az **API-engedélyek kérése lapon** keresse meg a **támogatási örökölt API** - **Azure Active Directory gráfot** . 
 
-    ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/06.png)
+    ![A képernyőképen a P I engedély kérése oldal jelenik meg, ahol kiválaszthatja Azure Active Directory gráfot.](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
-3. A **szükséges engedélyek** lapon válassza az **alkalmazás engedélyei**lehetőséget **, majd a könyvtár** **. ReadAll**elemet.  Válassza az **engedélyek hozzáadása**lehetőséget.
+3. A **szükséges engedélyek** lapon válassza az **alkalmazás engedélyei** lehetőséget **, majd a könyvtár** **. ReadAll** elemet.  Válassza az **engedélyek hozzáadása** lehetőséget.
 
-    ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/07.png)
+    ![A képernyőképen a P I engedély kérése lap jelenik meg, amelyen kiválaszthatja az alkalmazás engedélyeit.](./media/howto-configure-prerequisites-for-reporting-api/07.png)
 
-4. A **Reporting API Application-API-engedélyek** lapon válassza a **rendszergazdai jóváhagyás megadása**lehetőséget. 
+4. A **Reporting API Application-API-engedélyek** lapon válassza a **rendszergazdai jóváhagyás megadása** lehetőséget. 
 
-    ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/08.png)
+    ![Képernyőfelvétel: a P I alkalmazást futtató alkalmazás A P I engedélyek lapon válassza a rendszergazdai jóváhagyás megadása lehetőséget.](./media/howto-configure-prerequisites-for-reporting-api/08.png)
 
 5. Megjegyzés: az API-regisztráció során az **Microsoft Graph** alapértelmezés szerint hozzá lesz adva.
 
-    ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/15.png)
+    ![Képernyőfelvétel: a P I engedélyek lap, amelyen kiválaszthatja az engedély hozzáadása lehetőséget.](./media/howto-configure-prerequisites-for-reporting-api/15.png)
 
 ## <a name="gather-configuration-settings"></a>Konfigurációs beállítások összegyűjtése 
 
@@ -141,13 +140,13 @@ Ezekre az értékekre szüksége lesz a jelentéskészítési API-hoz való hív
 
 **A tartománynév beszerzése:**
 
-1. A [Azure Portal](https://portal.azure.com)bal oldali navigációs paneljén válassza a **Azure Active Directory**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)bal oldali navigációs paneljén válassza a **Azure Active Directory** lehetőséget.
    
-    ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![A képernyőképen a Azure Portal menüből kiválasztott Azure Active Directory látható.](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2. A **Azure Active Directory** lapon válassza az **Egyéni tartománynevek**lehetőséget.
+2. A **Azure Active Directory** lapon válassza az **Egyéni tartománynevek** lehetőséget.
 
-    ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/09.png) 
+    ![A képernyőképen a Azure Active Directory kiválasztott egyéni tartománynevek láthatók.](./media/howto-configure-prerequisites-for-reporting-api/09.png) 
 
 3. Másolja a tartománynevet a tartományok listájából.
 
@@ -156,15 +155,15 @@ Ezekre az értékekre szüksége lesz a jelentéskészítési API-hoz való hív
 
 **Az alkalmazás ügyfél-AZONOSÍTÓjának beszerzése:**
 
-1. A [Azure Portal](https://portal.azure.com)bal oldali navigációs ablaktábláján kattintson az **Azure Active Directory**elemre.
+1. A [Azure Portal](https://portal.azure.com)bal oldali navigációs ablaktábláján kattintson az **Azure Active Directory** elemre.
    
-    ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![A képernyőképen a Azure Portal menüből kiválasztott Azure Active Directory látható.](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2. Válassza ki az alkalmazást az alkalmazás **regisztrációi** lapján.
 
-3. Az alkalmazás oldalon navigáljon az **alkalmazás-azonosítóhoz** , és válassza a **Másolás gombra**.
+3. Az alkalmazás oldalon navigáljon az **alkalmazás-azonosítóhoz** , és válassza a **Másolás gombra** .
 
-    ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/11.png) 
+    ![A képernyőképen a P I alkalmazásról szóló jelentés látható, amelyen átmásolhatja az I D alkalmazást.](./media/howto-configure-prerequisites-for-reporting-api/11.png) 
 
 
 ### <a name="get-your-applications-client-secret"></a>Az alkalmazás ügyfél-titkának beszerzése
@@ -172,21 +171,21 @@ Ezekre az értékekre szüksége lesz a jelentéskészítési API-hoz való hív
 
 **Az alkalmazás ügyfél-titkos kódjának beszerzése:**
 
-1. A [Azure Portal](https://portal.azure.com)bal oldali navigációs ablaktábláján kattintson az **Azure Active Directory**elemre.
+1. A [Azure Portal](https://portal.azure.com)bal oldali navigációs ablaktábláján kattintson az **Azure Active Directory** elemre.
    
-    ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![A képernyőképen a Azure Portal menüből kiválasztott Azure Active Directory látható.](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2.  Válassza ki az alkalmazást az alkalmazás **regisztrációi** lapján.
 
-3.  Válassza ki a **tanúsítványok és titkos kulcsok** elemet az **API-alkalmazás** oldalon, az **ügyfél titkai** szakaszban kattintson az **+ új ügyfél titka**elemre. 
+3.  Válassza ki a **tanúsítványok és titkos kulcsok** elemet az **API-alkalmazás** oldalon, az **ügyfél titkai** szakaszban kattintson az **+ új ügyfél titka** elemre. 
 
-    ![Alkalmazás regisztrálása](./media/howto-configure-prerequisites-for-reporting-api/12.png)
+    ![Képernyőfelvétel: a tanúsítványok & titkok oldal, ahol hozzáadhat egy ügyfél titkot.](./media/howto-configure-prerequisites-for-reporting-api/12.png)
 
 5. Az **ügyfél titkos kulcsának hozzáadása** lapon adja hozzá a következőt:
 
     a. A **Leírás** szövegmezőbe írja be a következőt: `Reporting API` .
 
-    b. Ahogy **lejár**, válassza **a 2 év**lehetőséget.
+    b. Ahogy **lejár** , válassza **a 2 év** lehetőséget.
 
     c. Kattintson a **Mentés** gombra.
 
@@ -204,7 +203,7 @@ Ez a szakasz azokat a gyakori hibaüzeneteket sorolja fel, amelyekkel a Microsof
 
 ### <a name="error-failed-to-do-premium-license-check-from-microsoft-graph"></a>Hiba: nem sikerült a prémium szintű licencek ellenőrzését Microsoft Graph 
 
-Ha ezt a hibaüzenetet akkor futtatja, amikor a Graph Explorer használatával próbál hozzáférni a bejelentkezésekhez, válassza a bal oldali navigációs menüben a fiók **módosítása** lehetőséget, majd válassza a **feladatok. READWRITE** és a **könyvtár. olvasás. összes**lehetőséget. 
+Ha ezt a hibaüzenetet akkor futtatja, amikor a Graph Explorer használatával próbál hozzáférni a bejelentkezésekhez, válassza a bal oldali navigációs menüben a fiók **módosítása** lehetőséget, majd válassza a **feladatok. READWRITE** és a **könyvtár. olvasás. összes** lehetőséget. 
 
 ![Engedélyek módosítása felhasználói felület](./media/troubleshoot-graph-api/modify-permissions.png)
 

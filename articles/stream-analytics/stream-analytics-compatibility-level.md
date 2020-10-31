@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 1b49cdb423e8fd2e70175d4ac71f6dcd07b459f9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 87ee8a9c57fc456ba02f97bf56db25e4c91e9398
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097736"
+ms.locfileid: "93129813"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics feladatok kompatibilitási szintje
 
@@ -33,7 +33,7 @@ Amikor új Stream Analytics feladatot hoz létre, ajánlott azt a legújabb komp
 
 ## <a name="set-the-compatibility-level"></a>Kompatibilitási szint beállítása
 
-A Stream Analyticsi feladatokhoz tartozó kompatibilitási szint beállítható a Azure Portal vagy a [feladatok létrehozása REST API hívás](/azure/stream-analytics/stream-analytics-quick-create-portal)használatával.
+A Stream Analyticsi feladatokhoz tartozó kompatibilitási szint beállítható a Azure Portal vagy a [feladatok létrehozása REST API hívás](./stream-analytics-quick-create-portal.md)használatával.
 
 A Azure Portal a feladatokhoz tartozó kompatibilitási szint frissítése:
 
@@ -77,13 +77,13 @@ További információ: a [térinformatikai funkciók frissítései Azure stream 
 
 **Előző szintek:** A upsert viselkedése *Beszúrás vagy egyesítés* volt.
 
-**1,2 szint:** A CosmosDB-kimenettel való natív, tömeges API-integráció maximalizálja az átviteli sebességet, és hatékonyan kezeli a szabályozási kérelmeket. További információkért tekintse meg [a Azure Cosmos DB Azure stream Analytics kimenete lapot](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12).
+**1,2 szint:** A CosmosDB-kimenettel való natív, tömeges API-integráció maximalizálja az átviteli sebességet, és hatékonyan kezeli a szabályozási kérelmeket. További információkért tekintse meg [a Azure Cosmos DB Azure stream Analytics kimenete lapot](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12).
 
 A upsert viselkedése *INSERT vagy replace* .
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>DateTimeOffset SQL-kimenetre írásakor
 
-**Előző szintek:** a [DATETIMEOFFSET](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) -típusok UTC értékre lettek igazítva.
+**Előző szintek:** a [DATETIMEOFFSET](/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) -típusok UTC értékre lettek igazítva.
 
 **1,2 szint:** A DateTimeOffset már nincs módosítva.
 
@@ -151,4 +151,4 @@ A kompatibilitási szint 1,1-as verziójában a következő jelentős változás
 ## <a name="next-steps"></a>Következő lépések
 
 * [Azure Stream Analytics bemenetek hibáinak megoldása](stream-analytics-troubleshoot-input.md)
-* [Erőforrás-állapot Stream Analytics](stream-analytics-resource-health.md)
+* [Erőforrás-állapot Stream Analytics](./stream-analytics-troubleshoot-query.md)

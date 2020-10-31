@@ -8,12 +8,12 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/15/2020
 ms.custom: contperfq2
-ms.openlocfilehash: f7c08172f3a60487ae6e15260a0cd5fc5e4a712c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: c4fdf8e986b9c98588689a57bde8ca9464667abe
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740753"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129541"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Az Azure-beli használati kötelezettségvállalás előnyei
 
@@ -57,4 +57,4 @@ Ha nem biztos abban, hogy a szervezete rendelkezik-e megfelelő szerződéssel, 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ha többet szeretne megtudni arról, hogy a szervezet hogyan használhatja ki az Azure Marketplace-t, végezze el a Microsoft Learn modult: a [Felhőbeli közbeszerzés és az Azure Marketplace irányításának egyszerűsítése](https://aka.ms/cm.marketplaceprocurement).
+- Ha többet szeretne megtudni arról, hogy a szervezet hogyan használhatja ki az Azure Marketplace-t, végezze el a Microsoft Learn modult: a [Felhőbeli közbeszerzés és az Azure Marketplace irányításának egyszerűsítése](/learn/modules/simplify-cloud-procurement-governance-azure-marketplace/).

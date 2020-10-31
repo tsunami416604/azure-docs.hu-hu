@@ -12,12 +12,12 @@ ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: e54f153738d232eaddff8b0fc499a763581ca726
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 61dd185d00cef2382763e7435c081e1d412cdb92
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277450"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127876"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján
 
@@ -60,7 +60,7 @@ Ha rendelkezik engedéllyel a szervezet felhőalapú alkalmazásainak elérésé
 
 ### <a name="download-and-install-the-my-apps-secure-sign-in-extension"></a>A saját alkalmazások biztonságos bejelentkezési bővítményének letöltése és telepítése
 
-Ha a rendszer kéri, töltse le és telepítse a **saját alkalmazások biztonságos bejelentkezési bővítményét**. Ezzel a bővítménnyel az asztali böngészővel egyszeri bejelentkezést használhat a szervezet felhőalapú alkalmazásaival. Vigye az egérmutatót egy alkalmazásra a **saját alkalmazások** portálon, majd válassza a **...**, majd az **alkalmazás kezelése**lehetőséget.
+Ha a rendszer kéri, töltse le és telepítse a **saját alkalmazások biztonságos bejelentkezési bővítményét** . Ezzel a bővítménnyel az asztali böngészővel egyszeri bejelentkezést használhat a szervezet felhőalapú alkalmazásaival. Vigye az egérmutatót egy alkalmazásra a **saját alkalmazások** portálon, majd válassza a **...** , majd az **alkalmazás kezelése** lehetőséget.
 
 Ha a szervezet már beállította az egyszeri bejelentkezést, a bővítmény automatikusan települ, és kihagyhatja ezt a szakaszt.
 
@@ -77,9 +77,9 @@ Töltse le és telepítse a bővítményt az Ön által használt böngésző al
 
 - **Microsoft Edge** – a Microsoft Store nyissa meg a [saját alkalmazások biztonságos bejelentkezési bővítmény](https://microsoftedge.microsoft.com/addons/detail/my-apps-secure-signin-ex/gaaceiggkkiffbfdpmfapegoiohkiipl) funkciót, majd válassza a **Get (Letöltés** ) lehetőséget a Microsoft Edge örökölt böngésző bővítményének beszerzéséhez.
 
-- **Google Chrome** – a Chrome webáruházból nyissa meg a [saját alkalmazások biztonságos bejelentkezési bővítmény](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl) funkciót, és válassza a Hozzáadás a **Chrome-hoz**lehetőséget.
+- **Google Chrome** – a Chrome webáruházból nyissa meg a [saját alkalmazások biztonságos bejelentkezési bővítmény](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl) funkciót, és válassza a Hozzáadás a **Chrome-hoz** lehetőséget.
 
-- **Mozilla Firefox** – a **Firefox-bővítmények** lapról nyissa meg a [saját alkalmazások biztonságos bejelentkezési bővítmény](https://addons.mozilla.org/firefox/addon/access-panel-extension/) funkciót, majd válassza a Hozzáadás a **Firefoxhoz**lehetőséget.
+- **Mozilla Firefox** – a **Firefox-bővítmények** lapról nyissa meg a [saját alkalmazások biztonságos bejelentkezési bővítmény](https://addons.mozilla.org/firefox/addon/access-panel-extension/) funkciót, majd válassza a Hozzáadás a **Firefoxhoz** lehetőséget.
 
 A **címsor** jobb oldalán megjelenik egy ikon, amely lehetővé teszi a bejelentkezést és a bővítmény testreszabását.
 
@@ -87,9 +87,9 @@ A **címsor** jobb oldalán megjelenik egy ikon, amely lehetővé teszi a bejele
 
 Kiválaszthatja, hogy hány alkalmazást szeretne megtekinteni a **legutóbb használt** szakaszban, és döntse el, hogy engedélyezi-e a szervezet belső URL-címeinek átirányítását.
 
-1. Válassza ki az új **saját alkalmazások biztonságos bejelentkezési bővítmény** ikonját a ![ ](media/my-apps-portal/my-apps-portal-extension-icon.png) **címsor** jobb oldalán, majd válassza a bejelentkezés lehetőséget a **kezdéshez**.
+1. Válassza ki az új **saját alkalmazások biztonságos bejelentkezési bővítmény** ikonját a ![ ](media/my-apps-portal/my-apps-portal-extension-icon.png) **címsor** jobb oldalán, majd válassza a bejelentkezés lehetőséget a **kezdéshez** .
 
-1. Kattintson a jobb gombbal a **Beállítások** ikonra ![ Beállítások ikonra ](media/my-apps-portal/my-apps-portal-extension-settings-icon.png) , majd válassza a **Beállítások**lehetőséget.
+1. Kattintson a jobb gombbal a **Beállítások** ikonra ![ Beállítások ikonra ](media/my-apps-portal/my-apps-portal-extension-settings-icon.png) , majd válassza a **Beállítások** lehetőséget.
 
 1. A **Beállítások** mezőben adja meg a portálon megjeleníteni kívánt legutóbbi alkalmazások számát, valamint azt, hogy engedélyezi-e a szervezet belső URL-címeinek átirányítását, hogy távolról is használhassa őket.
 
@@ -113,11 +113,11 @@ Megtekintheti és használhatja a szervezete alkalmazásait az eszközökön tal
 
 Ha a rendszergazda engedélyt adott Önnek, új alkalmazást adhat hozzá az **alkalmazások** laphoz.
 
-1. Az **alkalmazások** lapon válassza az **önkiszolgáló alkalmazások hozzáadása**lehetőséget.
+1. Az **alkalmazások** lapon válassza az **önkiszolgáló alkalmazások hozzáadása** lehetőséget.
 
    ![Alkalmazások hozzáadása lap a saját alkalmazások portálján a myapplications.microsoft.com címen](media/my-apps-portal/my-apps-portal-add-app-link.png)
 
-1. Válassza ki a hozzáadni kívánt alkalmazást a megadott listából, majd válassza a **Hozzáadás**lehetőséget.
+1. Válassza ki a hozzáadni kívánt alkalmazást a megadott listából, majd válassza a **Hozzáadás** lehetőséget.
 
 1. Az alkalmazás hozzá lesz adva a listához az **alkalmazások** oldalon.
 
@@ -151,7 +151,7 @@ Miután elvégezte a **saját alkalmazások** portált, a következőket teheti:
 
 Az **alkalmazások** oldal elolvasása után a következőket teheti:
 
-- [Profilinformációk módosítása](my-apps-portal-end-user-update-profile.md)
+- [Profilinformációk módosítása](./my-account-portal-settings.md)
 
 - [A csoportok kapcsolódó információinak megtekintése és frissítése](my-apps-portal-end-user-groups.md)
 

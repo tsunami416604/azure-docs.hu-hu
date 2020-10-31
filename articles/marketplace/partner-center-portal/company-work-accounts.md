@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 05/30/2019
-ms.openlocfilehash: 246fbcd9bc72683e41489daf105f174f9380c029
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b4aadc506b2f4a251ccef5e9488066b609ba5a5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400264"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130527"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>Vállalati munkahelyi fiókok és partner központ
 
@@ -24,7 +24,7 @@ Ha vállalata előfizetett egy Microsoft Cloud Service-re, például az Azure-ra
 
 A következő lépésekkel ellenőrizheti:
 1. Jelentkezzen be az Azure felügyeleti portálján a következő címen: https://portal.azure.com .
-2. Válassza a bal oldali navigációs menü **Azure Active Directory** elemét, majd válassza az **Egyéni tartománynevek**lehetőséget.
+2. Válassza a bal oldali navigációs menü **Azure Active Directory** elemét, majd válassza az **Egyéni tartománynevek** lehetőséget.
 3. Ha már rendelkezik munkahelyi fiókkal, a rendszer a tartománynevet fogja listázni.
 
 Ha a vállalat még nem rendelkezik munkahelyi fiókkal, a rendszer létrehoz egy fiókot a partner Center regisztrációs folyamat során.
@@ -38,13 +38,13 @@ Mielőtt megkezdené a munkahelyi fiók használatát, gondolja át, hogy a munk
 Ha új munkahelyi fiókot szeretne létrehozni a vállalat számára, kövesse az alábbi lépéseket. Előfordulhat, hogy segítségre van szüksége a vállalat Microsoft Azure fiókjához tartozó rendszergazdai engedélyekkel.
 
 1. Jelentkezzen be a [Microsoft Azure Portalra](https://portal.azure.com).
-2. A bal oldali navigációs menüben válassza ki a **Azure Active Directory**  ->  **felhasználókat**.
+2. A bal oldali navigációs menüben válassza ki a **Azure Active Directory**  ->  **felhasználókat** .
 3. Válassza az **új felhasználó** lehetőséget, és hozzon létre egy új Azure Work-fiókot a név és az e-mail cím megadásával. Győződjön meg arról, hogy a **címtárbeli szerepkör** a **felhasználó** értékre van állítva, és a lenti **jelszó megjelenítése** jelölőnégyzet bejelölésével megtekintheti és megjelenítheti az automatikusan generált jelszót.
 4. Válassza a **Létrehozás** lehetőséget az új felhasználó mentéséhez.
 
-A felhasználói fiók e-mail-címének ellenőrzött tartománynévnek kell lennie a címtárban. A címtárban lévő összes ellenőrzött tartományt kilistázhatja **Azure Active Directory**  ->  a bal oldali navigációs menüben Azure Active Directory**Egyéni tartománynevek** lehetőség kiválasztásával.
+A felhasználói fiók e-mail-címének ellenőrzött tartománynévnek kell lennie a címtárban. A címtárban lévő összes ellenőrzött tartományt kilistázhatja **Azure Active Directory**  ->  a bal oldali navigációs menüben Azure Active Directory **Egyéni tartománynevek** lehetőség kiválasztásával.
 
-Az egyéni tartományok Azure Active Directoryban való hozzáadásával kapcsolatos további tudnivalókért lásd: [tartomány hozzáadása vagy hozzárendelése az Azure ad-ben](../../active-directory/active-directory-add-domain.md).
+Az egyéni tartományok Azure Active Directoryban való hozzáadásával kapcsolatos további tudnivalókért lásd: [tartomány hozzáadása vagy hozzárendelése az Azure ad-ben](../../active-directory/fundamentals/add-custom-domain.md).
 
 ## <a name="troubleshoot-work-email-sign-in"></a>Munkahelyi e-mailek bejelentkezésének hibakeresése
 
@@ -54,4 +54,4 @@ Ha nem sikerül bejelentkeznie a munkahelyi fiókjába (más néven az Azure AD-
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [A kereskedelmi piactér-fiók kezelése a partner Centerben](./manage-account.md) 
+- [A kereskedelmi piactér-fiók kezelése a partner Centerben](./manage-account.md)

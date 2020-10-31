@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: 01262ee0271849793c4393b1ea8e18c4179ad4e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f85ba0c64db23e156f384fadcc5ca7bf84a58d4
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334726"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130745"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>Oktatóanyag: strukturált adatok kinyerése a felhasználóktól a gépi tanulási entitásokkal Language Understanding (LUIS)
 
@@ -72,18 +72,18 @@ A pizza-sorrend részleteinek kinyeréséhez hozzon létre egy legfelső szintű
     |--|
     |`pickup a cheddar cheese pizza large with extra anchovies`|
 
-    Először válassza a (#1) bal szélső szövegét `pickup` , majd a jobb szélső szövegnél ugorjon `anchovies` (#2 – ezzel véget ér a címkézési folyamat). Megjelenik egy előugró menü. Az előugró ablakban adja meg az entitás nevét `Order` (#3). Ezután válassza ki `Order Create new entity` a listából (#4).
+    Kattintson és húzza az egérmutatót az első példa szövegére. a megjelenő menüben adja meg az entitás nevét `Order` . Ezután válassza ki `Order Create new entity` a listából.
 
     ![A szöveg elején és végén lévő felirat a teljes sorrendhez](media/tutorial-machine-learned-entity/mark-complete-order.png)
 
     > [!NOTE]
     > Az entitások nem mindig a teljes Kimondás. Ebben a konkrét esetben `pickup` a rendelés fogadásának módját jelzi. Fogalmi szempontból a `pickup` megrendeléshez a címkével ellátott entitásnak kell tartoznia.
 
-1. Az **entitás típusának kiválasztása** mezőben válassza a **struktúra hozzáadása** lehetőséget, majd válassza a **tovább**lehetőséget. Az alentitások, például a méret és a mennyiség hozzáadásához struktúra szükséges.
+1. Az **entitás típusának kiválasztása** mezőben válassza a **struktúra hozzáadása** lehetőséget, majd válassza a **tovább** lehetőséget. Az alentitások, például a méret és a mennyiség hozzáadásához struktúra szükséges.
 
     ![Képernyőfelvétel: az entitás típusának kiválasztása ablak és a struktúra hozzáadása beállítás be van jelölve.](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
 
-1. Az **alentitások hozzáadása (nem kötelező)** mezőben válassza ki **+** a `Order` sort, majd adja hozzá a `Size` és `Quantity` az alentitások elemet, majd válassza a **Létrehozás**lehetőséget.
+1. Az **alentitások hozzáadása (nem kötelező)** mezőben válassza ki **+** a `Order` sort, majd adja hozzá a `Size` és `Quantity` az alentitások elemet, majd válassza a **Létrehozás** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![A képernyőképen az alentitások hozzáadása (nem kötelező) ablak jelenik meg.](media/tutorial-machine-learned-entity/add-subentities-when-creating-machine-learned-entity.png)
@@ -96,7 +96,7 @@ Az előző lépések az entitást és alentitást hozza létre. A kivonás javí
 
 1. Válassza az **entitások** lehetőséget a bal oldali menüben, majd válassza a **megrendelés** entitás elemet.
 
-1. A **séma és szolgáltatások** lapon válassza ki a **méret** alentitást, majd válassza a **+ szolgáltatás hozzáadása**elemet.
+1. A **séma és szolgáltatások** lapon válassza ki a **méret** alentitást, majd válassza a **+ szolgáltatás hozzáadása** elemet.
 
 1. Válassza az **új kifejezés létrehozása** lehetőséget a legördülő menüből.
 
@@ -108,7 +108,7 @@ Az előző lépések az entitást és alentitást hozza létre. A kivonás javí
 
 Ismert méretek listájának hozzáadása esetén az ügyfélalkalmazás felismeri a kinyerést is.
 
-1. Válassza az **entitások** lehetőséget a bal oldali menüben, majd válassza a **+ Létrehozás**elemet.
+1. Válassza az **entitások** lehetőséget a bal oldali menüben, majd válassza a **+ Létrehozás** elemet.
 
 1. Állítsa be az entitás nevét a (z) értékre, `SizeListentity` és állítsa be a típust a **listára** , hogy könnyen azonosítható legyen az `SizePhraselist` előző szakaszban létrehozotthoz képest.
 
@@ -131,7 +131,7 @@ Ismert méretek listájának hozzáadása esetén az ügyfélalkalmazás felisme
 
 1. Válassza ki a **sorrendet** az entitások listájáról.
 
-1. A **séma és szolgáltatások** lapon válassza ki a **méret** entitást, majd válassza a **+ szolgáltatás hozzáadása**elemet.
+1. A **séma és szolgáltatások** lapon válassza ki a **méret** entitást, majd válassza a **+ szolgáltatás hozzáadása** elemet.
 
 1. Válassza a **@ SizeListentity** elemet a legördülő listából.
 
@@ -141,9 +141,9 @@ Ismert méretek listájának hozzáadása esetén az ügyfélalkalmazás felisme
 
 Egy előre összeépített számú entitás hozzáadása a kinyeréshez is segítséget nyújt.
 
-1. Válassza az **entitások** lehetőséget a bal oldali menüben, majd válassza az **előre felépített entitás hozzáadása**elemet.
+1. Válassza az **entitások** lehetőséget a bal oldali menüben, majd válassza az **előre felépített entitás hozzáadása** elemet.
 
-1. Válassza a **szám** lehetőséget a listából, majd válassza a **kész**lehetőséget.
+1. Válassza a **szám** lehetőséget a listából, majd válassza a **kész** lehetőséget.
 
 1. Az entitások listájához való visszatéréshez válassza a bal oldali menü **entitások** elemét.
 
@@ -151,7 +151,7 @@ Egy előre összeépített számú entitás hozzáadása a kinyeréshez is segí
 
 1. Válassza ki a **sorrendet** az entitások listájáról.
 
-1. A **séma és szolgáltatások** lapon válassza ki a **mennyiség** entitást, majd válassza a **+ szolgáltatás hozzáadása**elemet.
+1. A **séma és szolgáltatások** lapon válassza ki a **mennyiség** entitást, majd válassza a **+ szolgáltatás hozzáadása** elemet.
 
 1. Válassza ki a **@ Number** elemet a legördülő listából.
 
@@ -173,7 +173,7 @@ A rendszer létrehozta a Machine megtanult entitást, és az alentitások rendel
 
 1. A bal oldali navigációs sávon válassza a **leképezések** lehetőséget, majd válassza ki a **OrderPizza** szándékot.
 
-1. Az **entitások palettájának**megnyitásához válassza ki a **@** szimbólumot a környezetfüggő eszköztáron.
+1. Az **entitások palettájának** megnyitásához válassza ki a **@** szimbólumot a környezetfüggő eszköztáron.
 
 1. Válassza ki az egyes entitások sorát a palettán, majd a paletta kurzor használatával válassza ki az entitást az egyes példák kiválasztásában. Ha elkészült, az entitások listájának a következő képhez hasonlóan kell kinéznie.
 
@@ -182,7 +182,7 @@ A rendszer létrehozta a Machine megtanult entitást, és az alentitások rendel
 
 ## <a name="train-the-app"></a>Az alkalmazás betanítása
 
-Az alkalmazás betanításához válassza a **betanítás**lehetőséget. A képzés alkalmazza a módosításokat, például az új entitásokat és a címkével ellátott hosszúságú kimondott szöveg az aktív modellre.
+Az alkalmazás betanításához válassza a **betanítás** lehetőséget. A képzés alkalmazza a módosításokat, például az új entitásokat és a címkével ellátott hosszúságú kimondott szöveg az aktív modellre.
 
 ## <a name="add-a-new-example-utterance"></a>Új példás Kimondás hozzáadása
 
@@ -236,12 +236,12 @@ Ahhoz, hogy LUIS-előrejelzéseket kaphasson egy csevegőrobotban vagy más ügy
 
     ![Képernyőkép a LUIS-közzététel a végpontra gomb a jobb felső menüben](./media/howto-publish/publish-button.png)
 
-1. Válassza ki az **üzemi** tárolóhelyet, majd válassza a **beállítások módosítása**lehetőséget, válassza a **Hangulatelemzés**lehetőséget, majd kattintson a **kész**gombra.
+1. Válassza ki az **üzemi** tárolóhelyet, majd válassza a **beállítások módosítása** lehetőséget, válassza a **Hangulatelemzés** lehetőséget, majd kattintson a **kész** gombra.
 
     > [!div class="mx-imgBorder"]
     > ![Képernyőkép a LUIS-közzétételi végpontról](./media/tutorial-machine-learned-entity/publish-with-sentiment-analysis.png)
 
-1. Válassza ki az értesítésben a **végpont URL-címeire** mutató hivatkozást az **Azure-erőforrások** lapra való ugráshoz. A végpont URL-címei a **példa lekérdezésként**jelennek meg.
+1. Válassza ki az értesítésben a **végpont URL-címeire** mutató hivatkozást az **Azure-erőforrások** lapra való ugráshoz. A végpont URL-címei a **példa lekérdezésként** jelennek meg.
 
 ## <a name="get-intent-and-entity-prediction-from-http-endpoint"></a>Cél és entitások előrejelzése HTTP-végpontból
 
@@ -251,7 +251,7 @@ Ahhoz, hogy LUIS-előrejelzéseket kaphasson egy csevegőrobotban vagy más ügy
 
     `2 small cheese pizzas for pickup`
 
-    Az utolsó querystring paraméter a `query` teljes **lekérdezés**.
+    Az utolsó querystring paraméter a `query` teljes **lekérdezés** .
 
     ```json
     {
@@ -304,7 +304,7 @@ Ahhoz, hogy LUIS-előrejelzéseket kaphasson egy csevegőrobotban vagy más ügy
 * [Közzétételi útmutató](luis-how-to-publish-app.md)
 * [Tesztelés a LUIS portálon](luis-interactive-test.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az alkalmazás egy gépi tanulási entitás használatával keresi meg a felhasználó teljes részletességét, és Kinyeri a részleteket ebből a részletekből. A gépi tanulási entitás segítségével elvégezheti az entitás részleteit.
 

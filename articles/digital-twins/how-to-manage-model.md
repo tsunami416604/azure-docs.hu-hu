@@ -7,18 +7,22 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 399ae682028479f801b82b6273f7d1429cfa1b97
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: e50c2bb73f56017a047e6c657c866b61e5eaa465
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494851"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130400"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure digitális Twins-modellek kezelése
 
 A [**DigitalTwinModels API**](/rest/api/digital-twins/dataplane/models)-k, a [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)vagy az [Azure Digital Twins CLI](how-to-use-cli.md)használatával felügyelheti a [modelleket](concepts-models.md) , amelyeket az Azure digitális Twins-példánya tud. 
 
 A kezelési műveletek közé tartozik a modellek feltöltése, ellenőrzése, beolvasása és törlése. 
+
+## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
 ## <a name="create-models"></a>Modellek létrehozása
 
@@ -61,7 +65,7 @@ A megoldás első lépéseként létre kell hoznia a kórházi aspektusait képv
 > [!NOTE]
 > Ez egy minta törzs egy. JSON-fájlhoz, amelyben a modell definiálva és mentve lett, az ügyfél-projekt részeként való feltöltéshez. A REST API hívást a másik oldalon a modell definícióinak egy tömbjét veszi igénybe (amely a `IEnumerable<string>` .net SDK-ban van leképezve). Ha ezt a modellt közvetlenül a REST API szeretné használni, szögletes zárójelekkel.
 
-Ez a modell definiálja a beteg helyiség nevét és egyedi AZONOSÍTÓját, valamint a látogatók és a kézmosás állapotát jelölő tulajdonságokat (ezek a számlálók frissülnek a mozgásérzékelők és az intelligens SOAP-adagolók között, és együtt használhatók a *kézmosás százalékos* tulajdonságainak kiszámításához). A modell egy kapcsolati *hasDevices*is definiál, amely az adott *szobatípus* [alapján a](concepts-twins-graph.md) tényleges eszközökre való kapcsolódáshoz használható.
+Ez a modell definiálja a beteg helyiség nevét és egyedi AZONOSÍTÓját, valamint a látogatók és a kézmosás állapotát jelölő tulajdonságokat (ezek a számlálók frissülnek a mozgásérzékelők és az intelligens SOAP-adagolók között, és együtt használhatók a *kézmosás százalékos* tulajdonságainak kiszámításához). A modell egy kapcsolati *hasDevices* is definiál, amely az adott *szobatípus* [alapján a](concepts-twins-graph.md) tényleges eszközökre való kapcsolódáshoz használható.
 
 Ezt a módszert követve megadhatja a kórházi részleg, a zónák vagy a kórház modelljeit.
 
@@ -113,7 +117,7 @@ foreach (string fileName in dtdlFiles)
 client.CreateModels(dtdlStrings);
 ```
 
-A modell fájljai több modellt is tartalmazhatnak. Ebben az esetben a modelleket JSON-tömbbe kell helyezni. Példa:
+A modell fájljai több modellt is tartalmazhatnak. Ebben az esetben a modelleket JSON-tömbbe kell helyezni. Például:
 
 ```json
 [
@@ -200,7 +204,7 @@ A modell ezen verziója ezután elérhető lesz a példányban a digitális ikre
 
 Ez azt is jelenti, hogy egy modell új verziójának feltöltése nem befolyásolja automatikusan a meglévő ikreket. A meglévő ikrek egyszerűen megmaradnak a modell korábbi verziójának példányain.
 
-Ezeket a meglévő ikreket frissítheti az új modell verziójára úgy, hogy kijavítja azokat a következő témakörben ismertetett módon: a [*Digital Twin modell frissítése*](how-to-manage-twin.md#update-a-digital-twins-model) című rész, *útmutató: digitális ikrek kezelése*. Ugyanezen a javításon belül frissítenie kell a **modell azonosítóját** (az új verzióra) és **minden olyan mezőt, amelyet meg kell változtatni a twinon, hogy az megfeleljen az új modellnek**.
+Ezeket a meglévő ikreket frissítheti az új modell verziójára úgy, hogy kijavítja azokat a következő témakörben ismertetett módon: a [*Digital Twin modell frissítése*](how-to-manage-twin.md#update-a-digital-twins-model) című rész, *útmutató: digitális ikrek kezelése* . Ugyanezen a javításon belül frissítenie kell a **modell azonosítóját** (az új verzióra) és **minden olyan mezőt, amelyet meg kell változtatni a twinon, hogy az megfeleljen az új modellnek** .
 
 ### <a name="remove-models"></a>Modellek eltávolítása
 

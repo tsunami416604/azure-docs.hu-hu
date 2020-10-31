@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/04/2020
-ms.openlocfilehash: 4acdd8bfd567a317b954d58629468fa8cd929669
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b4941d326359a51ff6a75385a74a8bcdabfa075
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90032384"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128997"
 ---
 # <a name="determine-your-publishing-option"></a>A közzétételi beállítások meghatározása
 
@@ -49,14 +49,14 @@ A &#42;&#42; Microsoft 365 ajánlatok díjmentesen telepíthetők, és az SaaS-a
 
 ## <a name="choose-a-listing-option"></a>Listaelem választása
 
-A rendelkezésre álló tőzsdei lehetőségek differenciált ügyfél-összevonást biztosítanak, miközben hozzáférést biztosít a vezető megosztási és [kereskedelmi Piactéri előnyökhöz](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits). Jegyezze fel a közzétételi lehetőségnek megfelelő listaelem-beállításokat:
+A rendelkezésre álló tőzsdei lehetőségek differenciált ügyfél-összevonást biztosítanak, miközben hozzáférést biztosít a vezető megosztási és [kereskedelmi Piactéri előnyökhöz](./gtm-your-marketplace-benefits.md). Jegyezze fel a közzétételi lehetőségnek megfelelő listaelem-beállításokat:
 
 | **Közzétételi lehetőség**    | **Leírás**  |
 | :------------------- | :-------------------|
 | **Lista** | Az alkalmazás vagy szolgáltatás egyszerű felsorolása, amely lehetővé teszi, hogy a kereskedelmi piactér felhasználója kapcsolatba lépjen Önnel az ügyféllel a **kapcsolattartási** adatok listázása lehetőség használatával. |
-| **Próba** | A kereskedelmi piactéren javíthatja a felderíthetővé tételét, és automatizálhatja a megoldás próbaverziójának használatát, így a potenciális felhasználók a vásárlásuk előtt korlátozott ideig ingyenesen használhatják SaaS-, IaaS-vagy Microsoft-alkalmazásbeli élményét. A próbaverziós közzétételi lehetőséghez használt listázási beállítások az **ingyenes próbaverziós** vagy a **Test Drive**. |
-| **BYOL** | A kereskedelmi piactéren javíthatja a felderíthetővé tételét, automatizálhatja a megoldás üzembe helyezését, és elvégezheti a pénzügyi tranzakciók külön történő elvégzését. A BYOL-ajánlatok típusai ideálisak a helyszíni és a felhőalapú Migrálás számára. A listázási lehetőség **most már elérhető**.
-| **Tranzakciós** | A Transact-ajánlatokat a kereskedelmi Piactéren keresztül értékesítjük. A Microsoft felelős a számlázásért és a gyűjteményért. A listázási lehetőség **most már elérhető**.|
+| **Próba** | A kereskedelmi piactéren javíthatja a felderíthetővé tételét, és automatizálhatja a megoldás próbaverziójának használatát, így a potenciális felhasználók a vásárlásuk előtt korlátozott ideig ingyenesen használhatják SaaS-, IaaS-vagy Microsoft-alkalmazásbeli élményét. A próbaverziós közzétételi lehetőséghez használt listázási beállítások az **ingyenes próbaverziós** vagy a **Test Drive** . |
+| **BYOL** | A kereskedelmi piactéren javíthatja a felderíthetővé tételét, automatizálhatja a megoldás üzembe helyezését, és elvégezheti a pénzügyi tranzakciók külön történő elvégzését. A BYOL-ajánlatok típusai ideálisak a helyszíni és a felhőalapú Migrálás számára. A listázási lehetőség **most már elérhető** .
+| **Tranzakciós** | A Transact-ajánlatokat a kereskedelmi Piactéren keresztül értékesítjük. A Microsoft felelős a számlázásért és a gyűjteményért. A listázási lehetőség **most már elérhető** .|
 
 > [!Note]
 > A Transact Publishing lehetőség használatakor fontos megérteni a díjszabást, a számlázást, a számlázást és a kifizetési szempontokat az ajánlat típusának kiválasztása és az ajánlat létrehozása előtt. További információért tekintse át a [kereskedelmi Piactéri Transact-képességeket](./marketplace-commercial-transaction-capabilities-and-considerations.md)ismertető cikket.

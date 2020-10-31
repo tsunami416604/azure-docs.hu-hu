@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/22/2020
 tags: connectors
-ms.openlocfilehash: f8dccca1d1264492a4e7c8dab568e13eec9d2557
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ce7679fff86d2c96588cf2b704d44238535963b3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100711"
+ms.locfileid: "93130935"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Az SQL Database munkafolyamatainak automatizálása Azure Logic Apps használatával
 
@@ -96,9 +96,14 @@ Amikor először ad hozzá egy [SQL-triggert](#add-sql-trigger) vagy egy [SQL-m�
    ||||
 
    > [!TIP]
-   > Ezeket az adatokat az adatbázisának a kapcsolatok karakterláncában találja. A Azure Portal például keresse meg és nyissa meg az adatbázist. Az adatbázis menüben válassza ki a **kapcsolatok karakterláncait** vagy a **tulajdonságokat** , ahol a sztringet megtalálja:
+   > Az adatbázis és a tábla adatainak megadásához a következő lehetőségek közül választhat:
+   > 
+   > * Megkeresheti ezeket az adatokat az adatbázisa összekapcsolási karakterláncában. A Azure Portal például keresse meg és nyissa meg az adatbázist. Az adatbázis menüben válassza a **kapcsolatok karakterláncok** vagy **Tulajdonságok** lehetőséget, ahol a következő sztringet találja:
    >
-   > `Server=tcp:{your-server-address}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
+   >   `Server=tcp:{your-server-address}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
+   >
+   > * Alapértelmezés szerint a rendszeradatbázisokban lévő táblák ki vannak szűrve, így előfordulhat, hogy a rendszer nem jeleníti meg automatikusan a rendszeradatbázist. Másik lehetőségként manuálisan is megadhatja a táblázat nevét, miután az adatbázis listából kiválasztja az **Egyéni érték megadása** lehetőséget.
+   >
 
    Ez a példa az alábbi értékek megjelenését szemlélteti:
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/26/2019
-ms.openlocfilehash: a40f92e88d2d8e5ca253446b9c67ad30df538a5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 311aca139220622a0436d490e73a536c3fc898c9
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86043427"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129014"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>Valós idejű IoT-adatfolyamok feldolgozása Azure Stream Analytics
 
@@ -23,7 +23,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre adatfolyam-feldolgozási log
 * Hozzon létre egy ingyenes [Azure-előfizetést](https://azure.microsoft.com/pricing/free-trial/).
 * Mintául szolgáló lekérdezési és adatfájlok letöltése a [githubról](https://aka.ms/azure-stream-analytics-get-started-iot).
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Használati eset
 
 A Contoso egy vállalat az ipari automatizálás területén, amely teljesen automatizálta a gyártási folyamatait. A gyár gépeinek érzékelői valós idejű adatstreamek létrehozására képesek. Ebben a forgatókönyvben a termelési szint egyik igazgatója valós idejű elemzéseket szeretne kapni az érzékelők adataiból, hogy mintákat keressen bennük, és ezek alapján tegyen további lépéseket. Az érzékelő adatainak használatával Stream Analytics lekérdezési nyelvet (SAQL) is használhat, így érdekes mintákat találhat a bejövő adatfolyamból.
 
@@ -44,13 +44,13 @@ A használat megkönnyítése érdekében ez a Kezdeti lépések útmutató val�
 
 ## <a name="create-a-stream-analytics-job"></a>Stream Analytics-feladat létrehozása
 
-1. A [Azure Portal](https://portal.azure.com)válassza az **+ erőforrás létrehozása** lehetőséget a bal oldali navigációs menüből. Ezután válassza ki **stream Analytics feladatot** az **elemzésből**.
+1. A [Azure Portal](https://portal.azure.com)válassza az **+ erőforrás létrehozása** lehetőséget a bal oldali navigációs menüből. Ezután válassza ki **stream Analytics feladatot** az **elemzésből** .
    
     ![Új Stream Analytics-feladat létrehozása](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
 
 1. Adjon meg egy egyedi feladat nevet, és ellenőrizze, hogy az előfizetés megfelelő a feladatához. Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt az előfizetésből.
 
-1. Válassza ki a feladatokhoz tartozó helyet. Használja ugyanazt a helyet az erőforráscsoport és az összes erőforrás számára a feldolgozási sebesség növelése és a költségek csökkentése érdekében. A konfigurációk **elkészítése**után válassza a létrehozás lehetőséget.
+1. Válassza ki a feladatokhoz tartozó helyet. Használja ugyanazt a helyet az erőforráscsoport és az összes erőforrás számára a feldolgozási sebesség növelése és a költségek csökkentése érdekében. A konfigurációk **elkészítése** után válassza a létrehozás lehetőséget.
    
     ![Új Stream Analytics-feladat létrehozásának részletei](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.png)
 
@@ -60,7 +60,7 @@ A következő lépés a feladatok létrehozása után egy lekérdezés írása. 
 Töltse le a [HelloWorldASA-InputStream.jst](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json
 ) a githubról. Ezután navigáljon a Azure Stream Analytics feladatokhoz a Azure Portal.
 
-A bal oldali menüben válassza a **lekérdezés** lehetőséget a **feladatok topológiája** alatt. Ezután válassza a **minta bemenet feltöltése**lehetőséget. Töltse fel a `HelloWorldASA-InputStream.json` fájlt, majd kattintson **az OK gombra**.
+A bal oldali menüben válassza a **lekérdezés** lehetőséget a **feladatok topológiája** alatt. Ezután válassza a **minta bemenet feltöltése** lehetőséget. Töltse fel a `HelloWorldASA-InputStream.json` fájlt, majd kattintson **az OK gombra** .
 
 ![Stream Analytics irányítópult-lekérdezés csempe](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
@@ -125,7 +125,7 @@ HAVING Avg(temp)>100
 
 ![30 másodperces szűrőlekérdezés](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
 
-Azokat az eredményeket kell megjelennie, amelyek csak 245 sort tartalmaznak, valamint az érzékelők nevét, ahol az átlagos mérsékelt érték nagyobb, mint 100. Ez a lekérdezés az események streamjét a **dspl** szerint csoportosítja, ami az érzékelő neve, az **Átfedésmentes ablak** pedig 30 másodperc. Az időbeli lekérdezéseknek meg kell jelölniük, hogyan szeretné elsajátítani az időt. A **timestamp by** záradék használatával megadta a **OUTPUTTIME** oszlopot, hogy az összes időbeli számításhoz társítsa az időpontokat. Részletes információkat az [Időkezelési](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) és az ablak-kezelési [függvények](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)című témakörben olvashat.
+Azokat az eredményeket kell megjelennie, amelyek csak 245 sort tartalmaznak, valamint az érzékelők nevét, ahol az átlagos mérsékelt érték nagyobb, mint 100. Ez a lekérdezés az események streamjét a **dspl** szerint csoportosítja, ami az érzékelő neve, az **Átfedésmentes ablak** pedig 30 másodperc. Az időbeli lekérdezéseknek meg kell jelölniük, hogyan szeretné elsajátítani az időt. A **timestamp by** záradék használatával megadta a **OUTPUTTIME** oszlopot, hogy az összes időbeli számításhoz társítsa az időpontokat. Részletes információkat az [Időkezelési](/stream-analytics-query/time-management-azure-stream-analytics) és az ablak-kezelési [függvények](/stream-analytics-query/windowing-azure-stream-analytics)című témakörben olvashat.
 
 ### <a name="query-detect-absence-of-events"></a>Lekérdezés: Események hiányának észlelése
 
@@ -148,9 +148,8 @@ WHERE t2.dspl IS NULL
 
 ![Események hiányának észlelése](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
 
-Itt egy **BAL OLDALI KÜLSŐ** illesztést alkalmazunk ugyanarra az adatstreamre (önillesztés). **BELSŐ** illesztés esetén csak akkor kapunk eredményt, ha van egyezés.  **BAL OLDALI KÜLSŐ** illesztés esetében azonban, ha az illesztés bal oldalán lévő eseményhez nincs egyezés, akkor a rendszer olyan oszlopot ad vissza, amely a jobb oldal összes oszlopában NULL értéket tartalmaz. Ez a módszer nagyon hasznos, ha események hiányára kíván rákeresni. További információ: [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics).
+Itt egy **BAL OLDALI KÜLSŐ** illesztést alkalmazunk ugyanarra az adatstreamre (önillesztés). **BELSŐ** illesztés esetén csak akkor kapunk eredményt, ha van egyezés.  **BAL OLDALI KÜLSŐ** illesztés esetében azonban, ha az illesztés bal oldalán lévő eseményhez nincs egyezés, akkor a rendszer olyan oszlopot ad vissza, amely a jobb oldal összes oszlopában NULL értéket tartalmaz. Ez a módszer nagyon hasznos, ha események hiányára kíván rákeresni. További információ: [JOIN](/stream-analytics-query/join-azure-stream-analytics).
 
 ## <a name="conclusion"></a>Összegzés
 
 Ennek a cikknek a célja, hogy bemutassa, hogyan írhat különböző Stream Analytics lekérdezési nyelvi lekérdezéseket, és hogyan tekintheti meg az eredményeket a böngészőben. Ez azonban csak a kezdéshez szükséges. A Stream Analytics számos bemenetet és kimenetet támogat, és még az Azure Machine Learning függvényeinek előnyeit is ki tudja használni, ami az adatstreamek elemzésének hatékony eszközévé teszi. Ha szeretne többet megtudni arról, hogyan kell lekérdezéseket írni, olvassa el a [Gyakori lekérdezési minták](stream-analytics-stream-analytics-query-patterns.md) című cikket.
-

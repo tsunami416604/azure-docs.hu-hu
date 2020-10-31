@@ -7,21 +7,25 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3b8dafd6d2347cf7cca4100f577476b8dfdf6c81
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 28551cb201ab964a21461d6b3f97ce439e446011
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495769"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130289"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Digitális ikrek gráfjának kezelése kapcsolatok használatával
 
-Az Azure digitális ikrek szíve a teljes környezetet jelképező [kettős gráf](concepts-twins-graph.md) . A Twin gráf a **kapcsolatokon**keresztül összekapcsolt digitális ikrekből tevődik össze. 
+Az Azure digitális ikrek szíve a teljes környezetet jelképező [kettős gráf](concepts-twins-graph.md) . A Twin gráf a **kapcsolatokon** keresztül összekapcsolt digitális ikrekből tevődik össze. 
 
 Miután egy működő [Azure digitális Twins-példánnyal](how-to-set-up-instance-portal.md) rendelkezik, és beállította a [hitelesítési](how-to-authenticate-client.md) kódot az ügyfélalkalmazás számára, a [**DigitalTwins API**](/rest/api/digital-twins/dataplane/twins) -kkal digitális ikreket és azok kapcsolatait is létrehozhatja, módosíthatja és törölheti egy Azure digitális Twins-példányban. Használhatja a [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)-t vagy az [Azure Digital Twins CLI](how-to-use-cli.md)-t is.
 
 Ez a cikk a kapcsolatok és a gráf egészének kezelésére koncentrál. az egyes digitális ikrekkel való munkavégzéshez tekintse meg az [*útmutató: digitális ikrek kezelése*](how-to-manage-twin.md)című témakört.
 
+## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
+    
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
 ## <a name="create-relationships"></a>Kapcsolatok létrehozása
@@ -33,11 +37,11 @@ A kapcsolatok a hívás használatával jönnek létre `CreateRelationship()` .
 Kapcsolat létrehozásához meg kell adnia a következőket:
 * A forrásként szolgáló Twin azonosító (az `srcId` alábbi kódrészletben): annak a Twin-azonosítónak a azonosítója, amelyből a kapcsolat származik.
 * A cél dupla azonosító (az `targetId` alábbi kódrészletben): annak a Twin-azonosítónak a azonosítója, amelyben a kapcsolat megérkezik.
-* Kapcsolat neve (az `relName` alábbi kódrészletben): a kapcsolat általános típusa, például a _tartalmaz_.
-* Egy kapcsolat azonosítója (az `relId` alábbi mintakód esetében): a kapcsolat adott neve, például _Relationship1_.
+* Kapcsolat neve (az `relName` alábbi kódrészletben): a kapcsolat általános típusa, például a _tartalmaz_ .
+* Egy kapcsolat azonosítója (az `relId` alábbi mintakód esetében): a kapcsolat adott neve, például _Relationship1_ .
 
 A kapcsolat AZONOSÍTÓjának egyedinek kell lennie az adott forrás ikerén belül. Nem kell globálisan egyedinek lennie.
-A Twin *foo*esetében például minden egyes kapcsolat azonosítójának egyedinek kell lennie. Egy másik dupla *sáv* azonban rendelkezhet olyan kimenő kapcsolattal, amely megegyezik egy *foo* -kapcsolat ugyanazzal az azonosítóval.
+A Twin *foo* esetében például minden egyes kapcsolat azonosítójának egyedinek kell lennie. Egy másik dupla *sáv* azonban rendelkezhet olyan kimenő kapcsolattal, amely megegyezik egy *foo* -kapcsolat ugyanazzal az azonosítóval.
 
 Az alábbi mintakód azt szemlélteti, hogyan hozható létre kapcsolat az Azure Digital Twins-példányban.
 
@@ -81,7 +85,7 @@ A kapcsolatok besorolása a következők egyike lehet:
 
 A két ikrek közötti kapcsolatok száma nincs korlátozva – az ikrek tetszőleges számú kapcsolata lehet. 
 
-Ez azt jelenti, hogy egyszerre több különböző típusú kapcsolatot tud kifejezni két ikrek között. Például a *Twin A egy* *tárolt* *kapcsolattal és egy* *dupla B*-vel létesített kapcsolattal is rendelkezhet.
+Ez azt jelenti, hogy egyszerre több különböző típusú kapcsolatot tud kifejezni két ikrek között. Például a *Twin A egy* *tárolt* *kapcsolattal és egy* *dupla B* -vel létesített kapcsolattal is rendelkezhet.
 
 Akár ugyanazon típusú kapcsolat több példányát is létrehozhatja ugyanazon két ikrek között, ha szükséges. Ebben a példában a *Twin A* két különböző *tárolt* kapcsolattal *rendelkezik, a 2.* számú kapcsolattal, feltéve, hogy a kapcsolatok eltérő kapcsolati azonosítókkal rendelkeznek.
 
@@ -132,7 +136,7 @@ A beolvasott kapcsolatok használatával más ikrek is megnyitható a gráfban. 
 
 ### <a name="find-incoming-relationships-to-a-digital-twin"></a>Bejövő kapcsolatok keresése digitális Twin-re
 
-Az Azure Digital Twins is rendelkezik egy API-val, amely az adott Twin-hez tartozó összes*bejövő** kapcsolatot megkeresi. Ez gyakran hasznos a fordított navigáláshoz, illetve a Twin törléséhez.
+Az Azure Digital Twins is rendelkezik egy API-val, amely az adott Twin-hez tartozó összes *bejövő* * kapcsolatot megkeresi. Ez gyakran hasznos a fordított navigáláshoz, illetve a Twin törléséhez.
 
 A korábbi kód minta a kimenő kapcsolatok egy Twin-ből való megtalálására koncentrál. A következő példa hasonló strukturált, de a *bejövő* kapcsolatokat is megkeresi a Twin helyett.
 

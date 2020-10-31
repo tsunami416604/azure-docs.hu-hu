@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: 24adbfe38a3d43a83307fb8726849f7c73def3f3
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ecbafe0d3f39b1bd6f7c494695ea17e067f0c79e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284298"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129278"
 ---
 ## <a name="generalize-the-image"></a>A rendszerkép általánosítása
 
@@ -20,7 +20,7 @@ Az Azure Marketplace-en lévő összes lemezképet általános módon újrafelha
 
 ### <a name="for-windows"></a>Windows esetén
 
-A Windows operációsrendszer-lemezek általánosítva vannak a [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview) eszközzel. Ha később frissíti vagy újrakonfigurálja az operációs rendszert, újra kell futtatnia a Sysprep programot.
+A Windows operációsrendszer-lemezek általánosítva vannak a [Sysprep](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview) eszközzel. Ha később frissíti vagy újrakonfigurálja az operációs rendszert, újra kell futtatnia a Sysprep programot.
 
 > [!WARNING]
 > A Sysprep futtatása után kapcsolja ki a virtuális gépet az üzembe helyezésig, mert a frissítések automatikusan futtathatók. Ez a Leállítás megakadályozza, hogy a későbbi frissítések az operációs rendszer vagy a telepített szolgáltatások példány-specifikus módosításait is elvégezzék. A Sysprep futtatásával kapcsolatos további információkért tekintse [meg a virtuális merevlemez általánosítása című témakör lépéseit](../../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep).
@@ -41,13 +41,13 @@ A következő folyamat általánosít egy Linux rendszerű virtuális gépet, é
 ### <a name="take-a-snapshot-of-the-vm-disk"></a>Pillanatkép készítése a virtuális gép lemezéről
 
 1. Jelentkezzen be az [Azure Portalra](https://ms.portal.azure.com/).
-2. A bal felső sarokban válassza az **erőforrás létrehozása**elemet, majd keresse meg és válassza a **Pillanatkép**lehetőséget.
-3. A pillanatkép panelen válassza a  **Létrehozás**lehetőséget.
+2. A bal felső sarokban válassza az **erőforrás létrehozása** elemet, majd keresse meg és válassza a **Pillanatkép** lehetőséget.
+3. A pillanatkép panelen válassza a  **Létrehozás** lehetőséget.
 4. Adja meg a pillanatkép **nevét** .
 5. Válasszon ki egy meglévő erőforráscsoportot, vagy adja meg egy új csoport nevét.
-6. A **forrásoldali lemez**lapon válassza ki a felügyelt lemezt a pillanatképhez.
+6. A **forrásoldali lemez** lapon válassza ki a felügyelt lemezt a pillanatképhez.
 7. Válassza ki a pillanatkép tárolására használni kívánt **fiókot** . A **standard HDD** csak akkor használja, ha nagy teljesítményű SSD-meghajtón tárolja.
-8. Kattintson a **Létrehozás** gombra.
+8. Válassza a **Létrehozás** lehetőséget.
 
 #### <a name="extract-the-vhd"></a>A VHD kibontása
 
@@ -90,7 +90,7 @@ az storage blob copy start --destination-blob $destinationVHDFileName --destinat
 
 Ez a szkript a következő parancsokat használja egy pillanatkép SAS URI-kódjának létrehozásához, és a mögöttes VHD-t egy Storage-fiókba másolja a SAS URI használatával. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Jegyzetek |
+| Parancs | Megjegyzések |
 | --- | --- |
 | az disk grant-access | Létrehoz egy írásvédett SAS-t, amelynek használatával a mögöttes VHD-fájl átmásolható egy tárfiókba, vagy letölthető a helyszíni rendszerre
 | az storage blob copy start | Aszinkron módon másol egy blobot az egyik Storage-fiókból a másikba. Az `az storage blob show` új blob állapotának vizsgálatára használható. |

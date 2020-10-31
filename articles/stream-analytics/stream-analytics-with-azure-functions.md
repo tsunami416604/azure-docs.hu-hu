@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
-ms.openlocfilehash: 70ea5ec9ee91fdba8023b9c6af1ce65b691a17fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 127fcdf68990b15098c24488e6ed879fbaa79116
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006890"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129677"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Oktatóanyag: Azure Functions futtatása Azure Stream Analytics feladatokból 
 
@@ -130,17 +130,17 @@ Ez a szakasz azt mutatja be, hogyan konfigurálható egy Stream Analytics felada
  
 4. Lépjen vissza az Azure Portalra. A **Platformfunkciók** lapon keresse meg a függvényt. A **Fejlesztési eszközök** részen válassza az **App Service Editor** elemet. 
  
-   ![Az App Service Editor képernyőképe](./media/stream-analytics-with-azure-functions/image3.png)
+   ![Képernyőfelvétel: a platform szolgáltatásai lapot jeleníti meg App Service Editor kiválasztva.](./media/stream-analytics-with-azure-functions/image3.png)
 
 5. Az App Service Editorban kattintson a jobb gombbal a gyökérkönyvtárba, és töltse fel a **project.json** fájlt. Ha a feltöltés sikeres, frissítse az oldalt. Meg kell jelennie egy automatikusan létrehozott fájlnak **project.lock.json** néven. Az automatikusan létrehozott fájl a project.json fájlban megadott .dll fájlokra mutató hivatkozásokat tartalmaz.  
 
-   ![Az App Service Editor képernyőképe](./media/stream-analytics-with-azure-functions/image4.png)
+   ![A képernyőképen a menüből kiválasztott fájlok feltöltése látható.](./media/stream-analytics-with-azure-functions/image4.png)
 
 ## <a name="update-the-stream-analytics-job-with-the-function-as-output"></a>A Stream Analytics-feladat frissítése a kimenetként megadott függvénnyel
 
 1. Nyissa meg a Stream Analytics-feladatot az Azure Portalon.  
 
-2. Keresse meg a függvényt, és válassza az **Áttekintés**  >  **kimenetek**  >  **Hozzáadás**lehetőséget. Új kimenet hozzáadásához válassza az **Azure-függvény** lehetőséget a fogadó beállításánál. A functions kimeneti adapter a következő tulajdonságokkal rendelkezik:  
+2. Keresse meg a függvényt, és válassza az **Áttekintés**  >  **kimenetek**  >  **Hozzáadás** lehetőséget. Új kimenet hozzáadásához válassza az **Azure-függvény** lehetőséget a fogadó beállításánál. A functions kimeneti adapter a következő tulajdonságokkal rendelkezik:  
 
    |**Tulajdonság neve**|**Leírás**|
    |---|---|
@@ -152,9 +152,9 @@ Ez a szakasz azt mutatja be, hogyan konfigurálható egy Stream Analytics felada
    |Maximális kötegszám|A függvénybe küldött egyes kötegekben lévő események maximális számának megadására szolgál. Az alapértelmezett érték 100. Ez a tulajdonság nem kötelező.|
    |Kulcs|Más előfizetésből származó függvény használatát teszi lehetővé. A függvény eléréséhez adja meg a kulcs értékét. Ez a tulajdonság nem kötelező.|
 
-3. Adja meg a kimeneti alias nevét. Ebben az oktatóanyagban a neve **saop1**, de bármilyen nevet használhat. Adja meg az egyéb adatokat.
+3. Adja meg a kimeneti alias nevét. Ebben az oktatóanyagban a neve **saop1** , de bármilyen nevet használhat. Adja meg az egyéb adatokat.
 
-4. Nyissa meg a Stream Analytics-feladatot, és frissítse a lekérdezést az alábbiakra. Ha nem a kimeneti fogadó **saop1**nevet adta, ne felejtse el módosítani a lekérdezésben.  
+4. Nyissa meg a Stream Analytics-feladatot, és frissítse a lekérdezést az alábbiakra. Ha nem a kimeneti fogadó **saop1** nevet adta, ne felejtse el módosítani a lekérdezésben.  
 
    ```sql
     SELECT
@@ -198,18 +198,18 @@ Ha hiba történik az események Azure Functionsba való küldésekor, Stream An
 
 Amikor az Azure Portalon megpróbálja üres (alapértelmezett) értékre visszaállítani a Maximális kötegméret/Maximális kötegszám értékét, mentéskor az érték visszavált a korábban megadott értékre. Ebben az esetben manuálisan adja meg az alapértelmezett értékeket ezekben a mezőkben.
 
-Az Stream Analytics jelenleg nem támogatja a [http-útválasztás](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp) használatát a Azure Functionson.
+Az Stream Analytics jelenleg nem támogatja a [http-útválasztás](/sandbox/functions-recipes/routes?tabs=csharp) használatát a Azure Functionson.
 
 A virtuális hálózatban üzemeltetett Azure Functionshoz való kapcsolódás támogatása nincs engedélyezve.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos átviteli feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megakadályozhatja, hogy a feladat által felhasznált streamelési egységek kiszámlázásra kerüljenek. Ha a feladatot a jövőben is szeretné használni, leállíthatja, és később újraindíthatja amikor ismét szükség van rá. Ha már nem használja a feladatot, akkor a következő lépésekkel az útmutatóban létrehozott összes erőforrást törölheti:
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére.  
 2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy egyszerű Stream Analytics feladatot, amely egy Azure-függvényt futtat. A Stream Analytics-feladatokról a következő oktatóanyagban talál további információt:
 

@@ -12,12 +12,12 @@ ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b00d4be72aaed980e2604291d8c67c9fec0fb25b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5cff53ee9e742e93a6183eb5d506bf8f1a08deb
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88115101"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130187"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD-hitelesítési és -engedélyezési hibakódok
 
@@ -156,7 +156,7 @@ Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16
 | AADSTS50136 | RedirectMsaSessionToApp – egy MSA-munkamenetet észlelt a rendszer. |
 | AADSTS50139 | SessionMissingMsaOAuth2RefreshToken – a munkamenet a hiányzó külső frissítési jogkivonat miatt érvénytelen. |
 | AADSTS50140 | KmsiInterrupt – ez a hiba a felhasználó bejelentkezésekor a "Bejelentkezés megtartása" megszakítás miatt történt. [Küldjön támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a korrelációs azonosítóval, a kérelemazonosítóval és a hibakóddal a részletek megismeréséhez. |
-| AADSTS50143 | A munkamenet nem egyezik – a munkamenet érvénytelen, mert a felhasználói bérlő nem felel meg a tartománynak a különböző erőforrások miatti célzásnak. További részletekért  [Nyisson meg egy támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) KORRELÁCIÓs azonosítóval, kérelem-azonosítóval és hibakódtal. |
+| AADSTS50143 | Munkamenet-eltérés – A munkamenet érvénytelen, mert a felhasználó bérlője nem egyezik meg a tartománymutatóval eltérő erőforrások miatt. [Küldjön támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a korrelációs azonosítóval, a kérelemazonosítóval és a hibakóddal a részletek megismeréséhez. |
 | AADSTS50144 | InvalidPasswordExpiredOnPremPassword – a felhasználó Active Directory jelszavának érvényessége lejárt. Hozzon létre egy új jelszót a felhasználó számára, vagy használja a felhasználó az önkiszolgáló visszaállítási eszközt a jelszavának alaphelyzetbe állításához. |
 | AADSTS50146 | MissingCustomSigningKey – az alkalmazásnak alkalmazásspecifikus aláíró kulccsal kell konfigurálnia. Az alkalmazás nem ilyennel van konfigurálva, vagy a kulcs lejárt vagy még nem érvényes. |
 | AADSTS50147 | MissingCodeChallenge – a Code Challenge paraméter mérete érvénytelen. |
@@ -200,7 +200,7 @@ Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16
 | AADSTS70007 | UnsupportedResponseMode – az alkalmazás a jogkivonat kérésekor nem támogatott értéket adott vissza `response_mode` .  |
 | AADSTS70008 | ExpiredOrRevokedGrant – a frissítési token inaktivitás miatt lejárt. A tokent XXX-ben adták ki, és bizonyos ideig inaktív volt. |
 | AADSTS70011 | InvalidScope – az alkalmazás által igényelt hatókör érvénytelen. |
-| AADSTS70012 | MsaServerError – kiszolgálóhiba történt egy MSA (fogyasztói) felhasználó hitelesítése közben. Próbálkozzon újra. Ha továbbra is sikertelen, [Nyisson meg egy támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) |
+| AADSTS70012 | MsaServerError – kiszolgálóhiba történt egy MSA (fogyasztói) felhasználó hitelesítése közben. Próbálkozzon újra. Ha a hiba továbbra is fennáll, [küldjön támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) |
 | AADSTS70016 | AuthorizationPending – OAuth 2,0 – eszköz folyamatának hibája. Az engedélyezés függőben van. Az eszköz újra megpróbálja lekérdezni a kérést. |
 | AADSTS70018 | BadVerificationCode – érvénytelen ellenőrző kód, mert a felhasználó helytelen felhasználói kódot adott meg az eszköz kódjának adatforgalmához. Az engedélyezés nincs jóváhagyva. |
 | AADSTS70019 | CodeExpired – az ellenőrző kód lejárt. A felhasználó próbálja meg újra a bejelentkezést. |
@@ -320,6 +320,7 @@ Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16
 | AADSTS1000000 | UserNotBoundError – a kötési API megköveteli, hogy az Azure AD-felhasználó egy külső IDENTITÁSSZOLGÁLTATÓ is hitelesítse magát, ami még nem történt meg. |
 | AADSTS1000002 | BindCompleteInterruptError – a kötés sikeresen befejeződött, de a felhasználót tájékoztatni kell. |
 | AADSTS7000112 | UnauthorizedClientApplicationDisabled – az alkalmazás le van tiltva. |
+| AADSTS7000114| A (z) "appIdentifier" alkalmazás nem jogosult az alkalmazáshoz tartozó hívásokra.|
 | AADSTS7500529 | A "SAMLId-GUID" érték nem érvényes SAML-azonosító – az Azure AD ezt az attribútumot használja a visszaadott válasz InResponseTo attribútumának feltöltéséhez. Az azonosító nem kezdődhet számmal, ezért a közös stratégia egy olyan karakterláncot, mint az "id", egy GUID karakterlánc-ábrázolására. Például a id6c1c178c166d486687be4aaf5e482730 érvényes azonosító. |
 
 ## <a name="next-steps"></a>Következő lépések

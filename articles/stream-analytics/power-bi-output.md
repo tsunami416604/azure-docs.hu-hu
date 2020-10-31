@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: aee5cb077604e5fc95647eca0e6570ea3582a785
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29bd4dc5cabe8b29efe7b89395c5e7d36bd0347a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822996"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129779"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Azure Stream Analytics Power BI kimenete
 
@@ -51,7 +51,7 @@ A Power BI az első, az első kimenő (FIFO) adatmegőrzési szabályt használj
 
 Azure Stream Analytics az adatmodellt dinamikusan frissíti futásidőben, ha a kimeneti séma megváltozik. Az oszlop neve megváltozik, az oszlop típusa megváltozik, az oszlopok hozzáadása vagy eltávolítása pedig nyomon követhető.
 
-Ez a táblázat a [stream Analytics](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics) adattípusok adattípusra való átalakítását ismerteti Power bi [Entity EDM-típusokra](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model), ha Power bi adatkészlet és tábla nem létezik.
+Ez a táblázat a [stream Analytics](/stream-analytics-query/data-types-azure-stream-analytics) adattípusok adattípusra való átalakítását ismerteti Power bi [Entity EDM-típusokra](/dotnet/framework/data/adonet/entity-data-model), ha Power bi adatkészlet és tábla nem létezik.
 
 Stream Analytics | Power BI
 -----|-----
@@ -76,7 +76,7 @@ Datetime | Sztring | Sztring |  Datetime | Sztring
 
 ## <a name="output-batch-size"></a>Kimeneti köteg mérete
 
-A kimeneti köteg mérete: [Power bi REST API-korlátok](https://msdn.microsoft.com/library/dn950053.aspx).
+A kimeneti köteg mérete: [Power bi REST API-korlátok](/power-bi/developer/automation/api-rest-api-limitations).
 
 ## <a name="next-steps"></a>Következő lépések
 

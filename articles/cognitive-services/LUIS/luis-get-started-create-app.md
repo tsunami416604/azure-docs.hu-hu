@@ -4,13 +4,13 @@ description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy olyan LU
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/05/2020
-ms.openlocfilehash: 28bf79b61c0278a3f45820a23cd2c69f0b609700
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/13/2020
+ms.openlocfilehash: 60151e97c64a3d61044e4b82299573ee59951d46
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91316485"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128151"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rövid útmutató: Előre összeállított otthonautomatizálási alkalmazás használata
 
@@ -23,25 +23,28 @@ Ebben a rövid útmutatóban egy LUIS-alkalmazást hoz létre, amely az előre �
 ## <a name="create-a-new-app"></a>Új alkalmazás létrehozása
 A **My Apps** (Saját alkalmazások) lapon hozhatja létre és kezelheti az alkalmazásokat.
 
-1. A saját alkalmazások listában válassza az **+ új alkalmazás a beszélgetéshez**lehetőséget, majd a beállítások listájában válassza az **+ új alkalmazás lehetőséget a beszélgetéshez** .
+### <a name="create-an-application"></a>Alkalmazás létrehozása
 
-1. A párbeszédpanelen nevezze el az alkalmazást `Home Automation` .
-1. Válassza az **angol nyelvet** kulturális környezetként.
-1. Adja meg a leírást (nem kötelező).
-1. Ne válasszon előrejelzési erőforrást, ha még nem hozta létre az erőforrást. Az alkalmazás előrejelzési végpontjának (átmeneti vagy éles üzem) használatához hozzá kell rendelnie egy előrejelzési erőforrást.
-1. Válassza a **Kész** lehetőséget.
+Alkalmazás létrehozásához kattintson az  **+ új alkalmazás** lehetőségre. 
 
-    LUIS létrehozza az alkalmazást.
+A megjelenő ablakban adja meg a következő adatokat:
 
-    ![A párbeszédpanelen nevezze el az alkalmazás "Home Automation"](./media/create-new-app-details.png)
+|Név  |Leírás  |
+|---------|---------|
+|AName     | Az alkalmazás neve. Például: "Home Automation".        |
+|Kultúra     | A nyelv, amelyet az alkalmazás megértett és beszél.   |
+|Leírás | Az alkalmazás leírása.
+|Előrejelzési erőforrás | Az előrejelzési erőforrás, amely a lekérdezéseket fogja kapni. |
 
-    >[!NOTE]
-    >A kulturális környezet az alkalmazás létrehozása után nem módosítható.
+Válassza a **Done** (Kész) lehetőséget.
+
+>[!NOTE]
+>A kulturális környezet az alkalmazás létrehozása után nem módosítható.
 
 ## <a name="add-prebuilt-domain"></a>Előre összeállított tartomány hozzáadása
 
-1. A bal oldali navigációs sávon válassza az **előre elkészített tartományok**elemet.
-1. **HomeAutomation**keresése.
+1. A bal oldali navigációs sávon válassza az **előre elkészített tartományok** elemet.
+1. **HomeAutomation** keresése.
 1. Válassza a **tartomány hozzáadása** elemet a HomeAutomation kártyán.
 
     > [!div class="mx-imgBorder"]
@@ -51,10 +54,7 @@ A **My Apps** (Saját alkalmazások) lapon hozhatja létre és kezelheti az alka
 
 ## <a name="intents-and-entities"></a>Szándékok és entitások
 
-1. Válassza a **leképezések** lehetőséget a HomeAutomation-tartomány szándékának áttekintéséhez. Az előre elkészített tartomány-leképezések például hosszúságú kimondott szöveg rendelkeznek.
-
-    > [!div class="mx-imgBorder"]
-    > ![Képernyőkép a HomeAutomation-leképezések listájáról](media/luis-quickstart-new-app/home-automation-intents.png "Képernyőkép a HomeAutomation-leképezések listájáról")
+1. A bal oldali navigációs menüben válassza a **leképezések** lehetőséget a HomeAutomation-tartomány leképezésének megtekintéséhez. Például hosszúságú kimondott szöveg, például `HomeAutomation.QueryState` és     `HomeAutomation.SetDevice` .
 
     > [!NOTE]
     > A **None** (Nincs) az összes LUIS-alkalmazásban szereplő szándék. Olyan kimondott szövegek kezelésére szolgál, amelyek nem felelnek meg az alkalmazás által nyújtott funkcióknak.
@@ -63,6 +63,10 @@ A **My Apps** (Saját alkalmazások) lapon hozhatja létre és kezelheti az alka
 
     > [!div class="mx-imgBorder"]
     > [![A HomeAutomation.TurnOff szándék képernyőképe](media/luis-quickstart-new-app/home-automation-turnoff.png "A HomeAutomation.TurnOff szándék képernyőképe")](media/luis-quickstart-new-app/home-automation-turnoff.png)
+
+1. Ha meg szeretné tekinteni az alkalmazás entitásait, válassza az **entitások** lehetőséget. Ha az egyik entitásra kattint, például a **HomeAutomation. DeviceName** , megjelenik a hozzá társított értékek listája. 
+ 
+    :::image type="content" source="media/luis-quickstart-new-app/entities-page.png" alt-text="Képet helyettesítő szöveg" lightbox="media/luis-quickstart-new-app/entities-page.png":::
 
 ## <a name="train-the-luis-app"></a>A LUIS-alkalmazás betanítása
 
@@ -73,13 +77,9 @@ Miután betanította az alkalmazását, tesztelheti is.
 
 1. Válassza a **teszt** lehetőséget a jobb felső navigációs sávon.
 
-1. Írjon be egy tesztet `Turn off the lights` , például az interaktív teszt ablaktáblába, és nyomja le az ENTER billentyűt.
+1. Írjon be egy tesztet `Turn off the lights` , például az interaktív teszt ablaktáblába, és nyomja le az ENTER billentyűt. *Kikapcsolhatja például a fények kikapcsolását* .
 
-    ```
-    Turn off the lights
-    ```
-
-    Ebben a példában `Turn off the lights` helyesen van azonosítva, mint a **HomeAutomation. kanyart**legfelső pontozási szándéka.
+    Ebben a példában `Turn off the lights` helyesen van azonosítva, mint a **HomeAutomation. kanyart** legfelső pontozási szándéka.
 
     ![A tesztelési ablaktábla képernyőképe a kiemelt kimondott szöveggel](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
 
@@ -94,7 +94,18 @@ Miután betanította az alkalmazását, tesztelheti is.
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Az alkalmazás közzététele a végpont URL-címének lekéréshez
 
-[!INCLUDE [LUIS How to Publish steps](./includes/howto-publish.md)]
+Ahhoz, hogy a LUIS-előrejelzést egy csevegési robot vagy más ügyfélalkalmazás fogadja, közzé kell tennie az alkalmazást az előrejelzési végponton.
+
+1. Válassza a **Közzététel** lehetőséget az ablak jobb felső sarkában.
+
+1. Válassza ki az **üzemi** tárolóhelyet, majd válassza a **kész** lehetőséget.
+
+    > [!div class="mx-imgBorder"]
+    > ![Képernyőkép a LUIS-közzétételi végpontról](media/howto-publish/publish-app-popup.png)
+
+1. Válassza ki az értesítésben a **végpont URL-címeire** mutató hivatkozást az **Azure-erőforrások** lapra való ugráshoz. A végpont URL-címei a **példa lekérdezésként** jelennek meg.
+
+<!-- [!INCLUDE [LUIS How to Publish steps](./includes/howto-publish.md)] -->
 
 <a name="query-the-v2-api-prediction-endpoint"></a>
 
@@ -203,11 +214,11 @@ Miután betanította az alkalmazását, tesztelheti is.
     További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Behívhatja a végpontot kódból:
 

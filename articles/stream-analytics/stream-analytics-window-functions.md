@@ -7,20 +7,20 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/16/2020
-ms.openlocfilehash: 4c8d2143d2b6e18de2669a6b45961e601cc394bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4ddffa5f9e9ff4b313f05c9cedb3cb207695225
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707557"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129703"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Bevezetés az Stream Analytics Windowing functions használatába
 
 A folyamatos átvitelt lehetővé tévő forgatókönyvek esetében az időbeli Windowsban tárolt adatokon végrehajtott műveletek egy gyakori minta. Stream Analytics natív módon támogatja az ablakkezelő függvényeket, így a fejlesztők a lehető legkevesebb erőfeszítéssel hozhatnak létre összetett adatfolyam-feldolgozási feladatokat.
 
-Öt különböző időbeli időszak közül választhat: a [**kiesés**](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics), a [**hopping**](https://docs.microsoft.com/stream-analytics-query/hopping-window-azure-stream-analytics), a [**csúszó**](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics), a [**munkamenet**](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics)és a [**Pillanatkép**](https://docs.microsoft.com/stream-analytics-query/snapshot-window-azure-stream-analytics) -ablakok.  A Stream Analytics-feladatok lekérdezési szintaxisának [**Group By**](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) záradékában található Window functions kifejezés használható. Az eseményeket a [ **Windows ()** függvénnyel](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics)több Windows rendszeren is összesítheti.
+Öt különböző időbeli időszak közül választhat: a [**kiesés**](/stream-analytics-query/tumbling-window-azure-stream-analytics), a [**hopping**](/stream-analytics-query/hopping-window-azure-stream-analytics), a [**csúszó**](/stream-analytics-query/sliding-window-azure-stream-analytics), a [**munkamenet**](/stream-analytics-query/session-window-azure-stream-analytics)és a [**Pillanatkép**](/stream-analytics-query/snapshot-window-azure-stream-analytics) -ablakok.  A Stream Analytics-feladatok lekérdezési szintaxisának [**Group By**](/stream-analytics-query/group-by-azure-stream-analytics) záradékában található Window functions kifejezés használható. Az eseményeket a [ **Windows ()** függvénnyel](/stream-analytics-query/windows-azure-stream-analytics)több Windows rendszeren is összesítheti.
 
-Az összes [ablakos](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) művelet kimenete az ablak **végén** jelenik meg. Vegye figyelembe, hogy amikor elindít egy stream Analytics-feladatot, megadhatja a *feladat kimenetének kezdési idejét* , és a rendszer automatikusan beolvassa a bejövő adatfolyamok előző eseményeit, hogy az első ablakot a megadott időpontban kiírja. Ha például a *most* lehetőségre kattint, a rendszer azonnal kibocsátja az adatkibocsátást. Az ablak kimenete egyetlen esemény lesz a használt összesítő függvény alapján. A kimeneti esemény az ablak végének időbélyegzője lesz, és az összes ablak függvény rögzített hosszúságú. 
+Az összes [ablakos](/stream-analytics-query/windowing-azure-stream-analytics) művelet kimenete az ablak **végén** jelenik meg. Vegye figyelembe, hogy amikor elindít egy stream Analytics-feladatot, megadhatja a *feladat kimenetének kezdési idejét* , és a rendszer automatikusan beolvassa a bejövő adatfolyamok előző eseményeit, hogy az első ablakot a megadott időpontban kiírja. Ha például a *most* lehetőségre kattint, a rendszer azonnal kibocsátja az adatkibocsátást. Az ablak kimenete egyetlen esemény lesz a használt összesítő függvény alapján. A kimeneti esemény az ablak végének időbélyegzője lesz, és az összes ablak függvény rögzített hosszúságú. 
 
 ![Stream Analytics Window functions – fogalmak](media/stream-analytics-window-functions/stream-analytics-window-functions-conceptual.png)
 
@@ -53,7 +53,7 @@ A partíciós kulcs megadásakor az eseményeket a kulcs és a munkamenet ablak 
 
 ## <a name="snapshot-window"></a>Pillanatkép-ablak
 
-Pillanatkép Windows-csoportok eseményei, amelyek ugyanazzal az időbélyegzővel rendelkeznek. A más ablakos típusoktól eltérően, amelyek egy adott ablak függvényt igényelnek (például [SessionWindow ()](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics), a pillanatkép-ablakokat a System. timestamp () a Group By záradékhoz való hozzáadásával is alkalmazhatja.
+Pillanatkép Windows-csoportok eseményei, amelyek ugyanazzal az időbélyegzővel rendelkeznek. A más ablakos típusoktól eltérően, amelyek egy adott ablak függvényt igényelnek (például [SessionWindow ()](/stream-analytics-query/session-window-azure-stream-analytics), a pillanatkép-ablakokat a System. timestamp () a Group By záradékhoz való hozzáadásával is alkalmazhatja.
 
 ![Pillanatkép-ablak Stream Analytics](media/stream-analytics-window-functions/snapshot.png)
 
@@ -61,6 +61,5 @@ Pillanatkép Windows-csoportok eseményei, amelyek ugyanazzal az időbélyegzőv
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
+* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Az Azure Stream Analytics felügyeleti REST API referenciája](/rest/api/streamanalytics/)

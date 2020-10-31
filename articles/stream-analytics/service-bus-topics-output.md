@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: cc09912bb0c9ab553d180ff5cc06fc52c4c5cc0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2a9063a202ba542279efd8017d282fe0aa78d42
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261050"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129864"
 ---
 # <a name="service-bus-topics-output-from-azure-stream-analytics"></a>Service Bus témakörök kimenete Azure Stream Analytics
 
-Service Bus Queues egy-az-egyhez kommunikációs módszert biztosít a küldő és a fogadó között. A [Service Bus témakörök](https://msdn.microsoft.com/library/azure/hh367516.aspx) egy a többhöz kommunikációs formát biztosítanak.
+Service Bus Queues egy-az-egyhez kommunikációs módszert biztosít a küldő és a fogadó között. A [Service Bus témakörök](/previous-versions/azure/hh367516(v=azure.100)) egy a többhöz kommunikációs formát biztosítanak.
 
 A következő táblázat a tulajdonságok nevét és leírásait sorolja fel Service Bus témakör kimenetének létrehozásához.
 
@@ -65,7 +65,7 @@ Az alábbi ábrán a EventHub által a [Service Bus Explorer](https://github.com
 
 ## <a name="system-properties"></a>Rendszertulajdonságok
 
-A lekérdezési oszlopokat [rendszertulajdonságként](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) csatolhatja a kimenő Service Bus-üzenetsor vagy-témakör üzeneteihez. Ezek az oszlopok nem lépnek be a hasznos adatokba, hanem a megfelelő BrokeredMessage [rendszertulajdonságot](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) a lekérdezési oszlop értékeivel töltik fel.
+A lekérdezési oszlopokat [rendszertulajdonságként](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) csatolhatja a kimenő Service Bus-üzenetsor vagy-témakör üzeneteihez. Ezek az oszlopok nem lépnek be a hasznos adatokba, hanem a megfelelő BrokeredMessage [rendszertulajdonságot](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) a lekérdezési oszlop értékeivel töltik fel.
 Ezek a Rendszertulajdonságok támogatottak – `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc` .
 
 Ezeknek az oszlopoknak a karakterlánc-értékeit a rendszer a megfelelő rendszertulajdonság-érték típusként értelmezi, és az elemzési hibák adathibákként lesznek kezelve.

@@ -1,18 +1,18 @@
 ---
 title: Az Azure arc-kompatibilis kiszolgálók ügynökének kezelése
 description: Ez a cikk azokat a különböző felügyeleti feladatokat ismerteti, amelyeket általában az Azure arc-kompatibilis kiszolgálók csatlakoztatott számítógép-ügynök életciklusa során fog elvégezni.
-ms.date: 10/21/2020
+ms.date: 10/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 184b0425b956232b4485047cafb00a7ced21c7dd
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 63db1177b193cad66208964ec377fab0779f23ba
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371426"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130969"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>A csatlakoztatott gép ügynökének kezelése és karbantartása
 
-Az Azure arc-kompatibilis kiszolgálók Windows vagy Linux rendszerhez csatlakoztatott gépi ügynökének kezdeti üzembe helyezését követően újra kell konfigurálnia az ügynököt, frissítenie vagy eltávolítania a számítógépről, ha elérte a nyugdíjazási szakaszt az életciklusában. Ezeket a rutin karbantartási feladatokat manuálisan vagy Automation használatával egyszerűen kezelheti, ami csökkenti a működési hibákat és a költségeket is.
+Előfordulhat, hogy az Azure arc-kompatibilis kiszolgálók Windows vagy Linux rendszerhez csatlakoztatott számítógép-ügynökének kezdeti telepítése után újra kell konfigurálnia az ügynököt, frissítenie kell, vagy el kell távolítania a számítógépről. Ezeket a rutin karbantartási feladatokat manuálisan vagy Automation használatával egyszerűen kezelheti, ami csökkenti a működési hibákat és a költségeket is.
 
 ## <a name="before-uninstalling-agent"></a>Az ügynök eltávolítása előtt
 
@@ -38,7 +38,11 @@ Azon kiszolgálók vagy gépek esetében, amelyekhez már nem szeretne felügyel
 
 ## <a name="upgrading-agent"></a>Ügynök frissítése
 
-A Windows és a Linux rendszerhez készült Azure-beli csatlakoztatott gépi ügynök a követelményektől függően manuálisan vagy automatikusan is frissíthető a legújabb kiadásra. Az alábbi táblázat az ügynök frissítésének végrehajtásához támogatott metódusokat ismerteti.
+Az Azure-beli csatlakoztatott gépi ügynök rendszeresen frissül a hibajavítások, a stabilitási fejlesztések és az új funkciók kezeléséhez. [Azure Advisor](../../advisor/advisor-overview.md) azonosítja azokat az erőforrásokat, amelyek nem a Machine Agent legújabb verzióját használják, és azt javasolja, hogy frissítsen a legújabb verzióra. Akkor értesíti Önt, ha kijelöli az ív-kompatibilis kiszolgálót az **Áttekintés** oldalon egy szalagcím beírásával, vagy ha az Advisort a Azure Portal keresztül éri el.
+
+A Windows és a Linux rendszerhez készült Azure-beli csatlakoztatott gépi ügynök a követelményektől függően manuálisan vagy automatikusan is frissíthető a legújabb kiadásra.
+
+Az alábbi táblázat az ügynök frissítésének végrehajtásához támogatott metódusokat ismerteti.
 
 | Operációs rendszer | Frissítési módszer |
 |------------------|----------------|
@@ -163,7 +167,7 @@ A Azcmagent eszköz (Azcmagent.exe) használatával konfigurálható az Azure ar
 A **kapcsolódást** és a **leválasztást** manuálisan is elvégezheti, ha interaktív módon jelentkezett be, vagy automatizálja ugyanazt a szolgáltatásnevet, amelyet több ügynök bevezetéséhez vagy egy Microsoft Identity platform [hozzáférési jogkivonatához](../../active-directory/develop/access-tokens.md)használ. Ha nem használ egyszerű szolgáltatásnevet a gép Azure arc-kompatibilis kiszolgálókhoz való regisztrálásához, tekintse meg az alábbi [cikket](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) egy egyszerű szolgáltatásnév létrehozásához.
 
 >[!NOTE]
->A **azcmagent**futtatásához *rendszergazdai* jogosultságokkal kell rendelkeznie a Linux rendszerű gépeken.
+>A **azcmagent** futtatásához *rendszergazdai* jogosultságokkal kell rendelkeznie a Linux rendszerű gépeken.
 
 ### <a name="connect"></a>Kapcsolódás
 
@@ -215,8 +219,8 @@ A következő módszerek mindegyike eltávolítja az ügynököt, de nem távol�
 1. A Windows-ügynök számítógépről való eltávolításához tegye a következőket:
 
     a. Jelentkezzen be a számítógépre egy rendszergazdai jogosultságokkal rendelkező fiókkal.  
-    b. A **Vezérlőpulton**válassza a **programok és szolgáltatások**lehetőséget.  
-    c. A **programok és szolgáltatások**területen válassza **Az Azure Connected Machine Agent ügynököt**, válassza az **Eltávolítás**lehetőséget, majd válassza az **Igen**lehetőséget.  
+    b. A **Vezérlőpulton** válassza a **programok és szolgáltatások** lehetőséget.  
+    c. A **programok és szolgáltatások** területen válassza **Az Azure Connected Machine Agent ügynököt** , válassza az **Eltávolítás** lehetőséget, majd válassza az **Igen** lehetőséget.  
 
     >[!NOTE]
     > Az ügynök telepítővarázslója úgy is futtatható, ha duplán kattint a **AzureConnectedMachineAgent.msi** telepítőcsomag csomagra.
@@ -277,7 +281,7 @@ Ha azt tervezi, hogy leállítja a gép felügyeletét az Azure-ban támogató s
 
 1. Nyissa meg az Azure arc-kompatibilis kiszolgálókat a [Azure Portal](https://aka.ms/hybridmachineportal).
 
-2. Válassza ki a gépet a listából, válassza a három pontot (**..**.), majd válassza a **Törlés**lehetőséget.
+2. Válassza ki a gépet a listából, válassza a három pontot ( **..** .), majd válassza a **Törlés** lehetőséget.
 
 ## <a name="update-or-remove-proxy-settings"></a>Proxybeállítások frissítése vagy eltávolítása
 

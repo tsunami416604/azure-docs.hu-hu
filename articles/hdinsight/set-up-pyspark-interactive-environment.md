@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/23/2020
-ms.openlocfilehash: 14f0c7177953e43b0c58b4f5432d0c08c5f03f45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7cf86824bef5b6f521df0f0446d5337e2b7c418a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87876614"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130136"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>A PySpark interaktív környezet beállítása a Visual Studio Code-hoz
 
@@ -26,9 +26,7 @@ A **Python/pip** parancs használatával virtuális környezetet építhet ki a 
 
    * Telepítse a Pythont a alkalmazásból [https://www.python.org/downloads/](https://www.python.org/downloads/) . 
    * A pip telepítése [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) (ha nem a Python-telepítésből van telepítve).
-   * Ellenőrizze, hogy a Python és a pip telepítése sikeresen megtörtént-e az alábbi parancsokkal. (Nem kötelező)
-
-        ![A Python pip Version parancsának keresése](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
+   * Azt is ellenőrizheti, hogy a Python és a pip telepítése sikeresen megtörtént-e a parancsokkal `python --version` , illetve `pip --version` . 
 
      > [!NOTE]
      > Javasoljuk, hogy a macOS alapértelmezett verziójának használata helyett manuálisan telepítse a Pythont.

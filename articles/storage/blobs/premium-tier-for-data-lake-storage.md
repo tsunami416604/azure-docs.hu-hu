@@ -6,21 +6,18 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 10/28/2020
+ms.date: 10/30/2020
 ms.author: normesta
-ms.openlocfilehash: 9704ff7dec02a0de044863ec2da6280d65b30ef0
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: dc0b620629b5dce651e02e5fe95b0619c1d42a78
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043524"
+ms.locfileid: "93131156"
 ---
 # <a name="premium-tier-for-azure-data-lake-storage"></a>Prémium szintű Azure Data Lake Storage
 
-A Azure Data Lake Storage Gen2 mostantól támogatja a [prémium szintű teljesítményt](storage-blob-performance-tiers.md#premium-performance). A prémium szintű teljesítményszint olyan big data elemzési alkalmazások és munkaterhelések esetén ideális, amelyek alacsony konzisztens késést és nagy számú tranzakciót igényelnek. 
-
-> [!NOTE]
-> A Azure Data Lake Storage prémium szintje nyilvános előzetes verzióban érhető el. Lásd: [regionális elérhetőség](#regional-availability).
+A Azure Data Lake Storage Gen2 mostantól támogatja a [prémium szintű teljesítményt](storage-blob-performance-tiers.md#premium-performance). A prémium szintű teljesítményszint olyan big data elemzési alkalmazások és munkaterhelések esetén ideális, amelyek alacsony konzisztens késést és nagy számú tranzakciót igényelnek.
 
 ## <a name="workloads-that-can-benefit-from-the-premium-performance-tier"></a>A prémium szintű teljesítményszint előnyeit kihasználó munkaterhelések
 
@@ -78,11 +75,11 @@ A következő képen a **Storage-fiók létrehozása** lapon látható ez a beá
 
 A Azure Data Lake Storage prémium szintje a következő régiókban érhető el.
 
-|Régió|Redundancia|
+|Region|Redundancia|
 |--|--|
 |USA keleti régiója|LRS, ZRS|
 |USA 2. keleti régiója|LRS, ZRS|
-|USA középső régiója|LRS|
+|Az USA középső régiója|LRS|
 |USA nyugati régiója|LRS|
 |USA 2. nyugati régiója|LRS, ZRS|
 |USA nyugati középső régiója|LRS|
@@ -106,8 +103,3 @@ A Azure Data Lake Storage prémium szintje a következő régiókban érhető el
 |Kelet-Ausztrália|LRS, ZRS|
 |Délkelet-Ausztrália|LRS|
 |Dél-Brazília|LRS|
-
-
-## <a name="next-steps"></a>Következő lépések
-
-Tekintse meg a prémium szintű Azure Data Lake Storage [blog bejelentését](https://www.microsoft.com).

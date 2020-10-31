@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: 467b8506eb0cafc61731a69804c70b8080ab21c2
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 649abf6d07a95c7f20f6416f7d3155f8d115782b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042447"
+ms.locfileid: "93127569"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Adatok továbbítása bemenetként Stream Analytics
 
@@ -38,7 +38,7 @@ A [Azure Portal](stream-analytics-quick-create-portal.md), a [Visual Studio](str
 
 Az Azure Event Hubs kiválóan méretezhető közzétételi és előfizetési esemény-befektetőket biztosít. Az Event hub másodpercenként akár több millió eseményt is gyűjthet, így a csatlakoztatott eszközök és alkalmazások által előállított nagy mennyiségű adatot feldolgozhatja és elemezheti. Együtt Event Hubs és Stream Analytics teljes körű megoldást biztosít a valós idejű elemzésekhez. Event Hubs lehetővé teszi az események valós idejű betöltését az Azure-ba, és Stream Analytics a feladatok valós időben tudják feldolgozni ezeket az eseményeket. Küldhet például webes kattintásokat, szenzor-olvasási vagy online naplózási eseményeket Event Hubsba. Ezután létrehozhat Stream Analytics feladatokat, hogy a rendszer a valós idejű szűréshez, az összesítéshez és a korrelációhoz tartozó bemeneti adatfolyamként használja a Event Hubs.
 
-`EventEnqueuedUtcTime` egy esemény központba való érkezésének időbélyegzője, és a Event Hubsról Stream Analyticsra érkező események alapértelmezett időbélyegzője. Ha az adatokat adatfolyamként szeretné feldolgozni az esemény hasznos adatait tartalmazó időbélyeget használva, az [időbélyeget kulcsszó szerint](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) kell használnia.
+`EventEnqueuedUtcTime` egy esemény központba való érkezésének időbélyegzője, és a Event Hubsról Stream Analyticsra érkező események alapértelmezett időbélyegzője. Ha az adatokat adatfolyamként szeretné feldolgozni az esemény hasznos adatait tartalmazó időbélyeget használva, az [időbélyeget kulcsszó szerint](/stream-analytics-query/timestamp-by-azure-stream-analytics) kell használnia.
 
 ### <a name="event-hubs-consumer-groups"></a>Event Hubs fogyasztói csoportok
 
@@ -56,7 +56,7 @@ Az alábbi táblázat a Azure Portal **új bemeneti** lapján lévő összes tul
 | **Eseményközpont neve** | Az Event hub bemenetként használandó neve. |
 | **Eseményközpont szabályzatának neve** | Az Event hub elérését biztosító közös hozzáférési szabályzat. Minden megosztott hozzáférési házirend rendelkezik egy névvel, a beállított engedélyekkel és a hozzáférési kulcsokkal. Ez a beállítás automatikusan ki van töltve, kivéve, ha az Event hub beállításainak manuális megadását választja.|
 | **Event hub fogyasztói csoport** (ajánlott) | Kifejezetten ajánlott külön fogyasztói csoportot használni minden Stream Analytics feladathoz. Ez a karakterlánc azonosítja az Event hub adatainak betöltéséhez használandó fogyasztói csoportot. Ha nincs megadva fogyasztói csoport, a Stream Analytics-feladatokhoz a $Default fogyasztói csoportot használja.  |
-| **Partíciókulcs** | Ez egy opcionális mező, amely csak akkor érhető el, ha a feladatokhoz a 1,2-es vagy magasabb [kompatibilitási szint](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) használatára van konfigurálva. Ha a bemenetet egy tulajdonság particionálja, itt adhatja hozzá ennek a tulajdonságnak a nevét. Ez a lekérdezés teljesítményének javítására szolgál, ha ez a tulajdonság a (z) PARTÍCIÓt vagy GROUP BY záradékot tartalmaz. Ha ez a művelet a 1,2-es vagy magasabb kompatibilitási szintet használja, a mező alapértelmezett értéke "PartitionId". |
+| **Partíciókulcs** | Ez egy opcionális mező, amely csak akkor érhető el, ha a feladatokhoz a 1,2-es vagy magasabb [kompatibilitási szint](./stream-analytics-compatibility-level.md) használatára van konfigurálva. Ha a bemenetet egy tulajdonság particionálja, itt adhatja hozzá ennek a tulajdonságnak a nevét. Ez a lekérdezés teljesítményének javítására szolgál, ha ez a tulajdonság a (z) PARTÍCIÓt vagy GROUP BY záradékot tartalmaz. Ha ez a művelet a 1,2-es vagy magasabb kompatibilitási szintet használja, a mező alapértelmezett értéke "PartitionId". |
 | **Eseményszerializációs formátum** | A bejövő adatfolyam szerializálási formátuma (JSON, CSV, Avro vagy [other (protopuf, XML, tulajdonos...)](custom-deserializer.md)).  Győződjön meg arról, hogy a JSON formátum a specifikációhoz igazodik, és nem tartalmazza a kezdő 0 számjegyek számjegyeit. |
 | **Kódolás** | Az UTF-8 jelenleg az egyetlen támogatott kódolási formátum. |
 | **Esemény tömörítési típusa** | A bejövő adatfolyam olvasásához használt tömörítési típus, például none (alapértelmezett), GZip vagy deflating. |
@@ -80,14 +80,14 @@ FROM Input
 ```
 
 > [!NOTE]
-> Ha IoT Hub útvonalakhoz végpontként használja az Event hub-t, a [GetMetadataPropertyValue függvénnyel](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue)elérheti a IoT hub metaadatait.
+> Ha IoT Hub útvonalakhoz végpontként használja az Event hub-t, a [GetMetadataPropertyValue függvénnyel](/stream-analytics-query/getmetadatapropertyvalue)elérheti a IoT hub metaadatait.
 > 
 
 ## <a name="stream-data-from-iot-hub"></a>Stream-adatok IoT Hub
 
 Az Azure IoT Hub egy nagymértékben méretezhető közzétételi és előfizetési esemény, amely IoT forgatókönyvekre optimalizált.
 
-A Stream Analytics IoT Hubból érkező események alapértelmezett időbélyege az az időbélyeg, amely az eseménynek a IoT Hub érkezett `EventEnqueuedUtcTime` . Ha az adatokat adatfolyamként szeretné feldolgozni az esemény hasznos adatait tartalmazó időbélyeget használva, az [időbélyeget kulcsszó szerint](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) kell használnia.
+A Stream Analytics IoT Hubból érkező események alapértelmezett időbélyege az az időbélyeg, amely az eseménynek a IoT Hub érkezett `EventEnqueuedUtcTime` . Ha az adatokat adatfolyamként szeretné feldolgozni az esemény hasznos adatait tartalmazó időbélyeget használva, az [időbélyeget kulcsszó szerint](/stream-analytics-query/timestamp-by-azure-stream-analytics) kell használnia.
 
 ### <a name="iot-hub-consumer-groups"></a>IOT hub fogyasztói csoportok
 
@@ -106,7 +106,7 @@ Az alábbi táblázat a Azure Portal **új bemeneti** oldalának minden tulajdon
 | **Megosztott hozzáférési szabályzat neve** | A IoT Hub elérését biztosító közös hozzáférési szabályzat. Minden megosztott hozzáférési házirend rendelkezik egy névvel, a beállított engedélyekkel és a hozzáférési kulcsokkal. |
 | **Megosztott elérési házirend kulcsa** | A IoT Hub elérésének engedélyezéséhez használt megosztott elérési kulcs.  Ezt a beállítást automatikusan kitölti a rendszer, hacsak nem kiválasztja a IOT hub beállításainak manuális megadására szolgáló lehetőséget. |
 | **Fogyasztói csoport** | Javasoljuk, hogy minden Stream Analytics feladatokhoz használjon egy másik fogyasztói csoportot. A fogyasztói csoport a IoT Hub adatainak betöltésére szolgál. Stream Analytics a $Default fogyasztói csoportot használja, hacsak nem ad meg mást.  |
-| **Partíciókulcs** | Ez egy opcionális mező, amely csak akkor érhető el, ha a feladatokhoz a 1,2-es vagy magasabb [kompatibilitási szint](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) használatára van konfigurálva. Ha a bemenetet egy tulajdonság particionálja, itt adhatja hozzá ennek a tulajdonságnak a nevét. Ez a lekérdezés teljesítményének javítására szolgál, ha ez a tulajdonság a (z) PARTÍCIÓt vagy GROUP BY záradékot tartalmaz. Ha ez a művelet a 1,2-es vagy magasabb kompatibilitási szintet használja, a mező alapértelmezett értéke "PartitionId". |
+| **Partíciókulcs** | Ez egy opcionális mező, amely csak akkor érhető el, ha a feladatokhoz a 1,2-es vagy magasabb [kompatibilitási szint](./stream-analytics-compatibility-level.md) használatára van konfigurálva. Ha a bemenetet egy tulajdonság particionálja, itt adhatja hozzá ennek a tulajdonságnak a nevét. Ez a lekérdezés teljesítményének javítására szolgál, ha ez a tulajdonság a (z) PARTÍCIÓt vagy GROUP BY záradékot tartalmaz. Ha ez a művelet a 1,2-es vagy magasabb kompatibilitási szintet használja, a mező alapértelmezett értéke "PartitionId". |
 | **Eseményszerializációs formátum** | A bejövő adatfolyam szerializálási formátuma (JSON, CSV, Avro vagy [other (protopuf, XML, tulajdonos...)](custom-deserializer.md)).  Győződjön meg arról, hogy a JSON formátum a specifikációhoz igazodik, és nem tartalmazza a kezdő 0 számjegyek számjegyeit. |
 | **Kódolás** | Az UTF-8 jelenleg az egyetlen támogatott kódolási formátum. |
 | **Esemény tömörítési típusa** | A bejövő adatfolyam olvasásához használt tömörítési típus, például none (alapértelmezett), GZip vagy deflating. |
@@ -137,7 +137,7 @@ Ha egy blobot a 13:00-es tárolóeszköz-tárolóba töltenek fel, és a Azure S
 
 Ha a Azure Stream Analytics-feladatot *most már* a 13:00-es időpontban indítja el, és a rendszer feltölt egy blobot a 13:01-es számú Storage-fiók tárolójába, Azure stream Analytics fogja felvenni a blobot. Az egyes blobokhoz rendelt időbélyeg csak a rendszeren alapul `BlobLastModifiedTime` . Az a mappa, amelyben a blob található, nem kapcsolódik a hozzárendelt időbélyeghez. Ha például egy 2019-11-11-es blob *2019/10-01/00/b1.txt* van `BlobLastModifiedTime` , akkor az ehhez a blobhoz rendelt időbélyeg az 2019-11-11.
 
-Ha az adatokat adatfolyamként szeretné feldolgozni az esemény hasznos adatait tartalmazó időbélyeget használva, az [időbélyeget kulcsszó szerint](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) kell használnia. Egy Stream Analytics feladat lekéri az adatokat az Azure Blob Storage-ból, vagy ha a blob-fájl elérhető, minden másodpercben ADLS Gen2 a bemenetet. Ha a blob-fájl nem érhető el, a 90 másodperces maximális késleltetésű exponenciális leállítási van.
+Ha az adatokat adatfolyamként szeretné feldolgozni az esemény hasznos adatait tartalmazó időbélyeget használva, az [időbélyeget kulcsszó szerint](/stream-analytics-query/stream-analytics-query-language-reference) kell használnia. Egy Stream Analytics feladat lekéri az adatokat az Azure Blob Storage-ból, vagy ha a blob-fájl elérhető, minden másodpercben ADLS Gen2 a bemenetet. Ha a blob-fájl nem érhető el, a 90 másodperces maximális késleltetésű exponenciális leállítási van.
 
 A CSV formátumú bemenetekhez szükség van egy fejlécre az adathalmaz mezőinek definiálásához, és az összes fejlécsor mezőnek egyedinek kell lennie.
 
@@ -157,10 +157,10 @@ A következő táblázat a Azure Portal **új bemeneti** oldalának egyes tulajd
 | **Storage-fiók** | Annak a Storage-fióknak a neve, ahol a blob-fájlok találhatók. |
 | **Storage-fiók kulcsa** | A Storage-fiókhoz társított titkos kulcs. Ezt a beállítást automatikusan kitölti a rendszer, hacsak nem kiválasztja a beállítások manuális megadásának lehetőségét. |
 | **Tároló** | A tárolók logikai csoportosítást biztosítanak a blobokhoz. Kiválaszthatja a **meglévő tároló használata** lehetőséget, vagy létrehozhat újat, hogy új tárolót  **hozzon** létre.|
-| **Elérésiút-minta** (nem kötelező) | A megadott tárolóban található Blobok megkereséséhez használt fájl elérési útja. Ha a tároló gyökeréből kívánja beolvasni a blobokat, ne állítson be elérésiút-mintát. Az elérési úton megadhatja a következő három változó egy vagy több példányát: `{date}` , `{time}` vagy `{partition}`<br/><br/>1. példa: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>2. példa: `cluster1/logs/{date}`<br/><br/>A `*` karakter nem engedélyezett érték az elérési út előtagja számára. Csak érvényes <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure Blob-karakterek</a> engedélyezettek. Ne foglalja bele a tároló nevét vagy fájlnevét. |
+| **Elérésiút-minta** (nem kötelező) | A megadott tárolóban található Blobok megkereséséhez használt fájl elérési útja. Ha a tároló gyökeréből kívánja beolvasni a blobokat, ne állítson be elérésiút-mintát. Az elérési úton megadhatja a következő három változó egy vagy több példányát: `{date}` , `{time}` vagy `{partition}`<br/><br/>1. példa: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>2. példa: `cluster1/logs/{date}`<br/><br/>A `*` karakter nem engedélyezett érték az elérési út előtagja számára. Csak érvényes <a HREF="/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata">Azure Blob-karakterek</a> engedélyezettek. Ne foglalja bele a tároló nevét vagy fájlnevét. |
 | **Dátumformátum** (nem kötelező) | Ha az elérési úton a Date változót használja, akkor a fájlok rendszerezésének dátumformátum. Például: `YYYY/MM/DD` <br/><br/> Ha a blob bemenete `{date}` vagy annak `{time}` elérési útja, a mappák növekvő sorrendben lesznek megvizsgálva.|
 | **Idő formátuma** (nem kötelező) |  Ha az elérési úton a Time változót használja, akkor a fájlok rendszerezésének időformátuma. Jelenleg az egyetlen támogatott érték `HH` óra. |
-| **Partíciókulcs** | Ez egy opcionális mező, amely csak akkor érhető el, ha a feladatokhoz a 1,2-es vagy magasabb [kompatibilitási szint](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) használatára van konfigurálva. Ha a bemenetet egy tulajdonság particionálja, itt adhatja hozzá ennek a tulajdonságnak a nevét. Ez a lekérdezés teljesítményének javítására szolgál, ha ez a tulajdonság a (z) PARTÍCIÓt vagy GROUP BY záradékot tartalmaz. Ha ez a művelet a 1,2-es vagy magasabb kompatibilitási szintet használja, a mező alapértelmezett értéke "PartitionId". |
+| **Partíciókulcs** | Ez egy opcionális mező, amely csak akkor érhető el, ha a feladatokhoz a 1,2-es vagy magasabb [kompatibilitási szint](./stream-analytics-compatibility-level.md) használatára van konfigurálva. Ha a bemenetet egy tulajdonság particionálja, itt adhatja hozzá ennek a tulajdonságnak a nevét. Ez a lekérdezés teljesítményének javítására szolgál, ha ez a tulajdonság a (z) PARTÍCIÓt vagy GROUP BY záradékot tartalmaz. Ha ez a művelet a 1,2-es vagy magasabb kompatibilitási szintet használja, a mező alapértelmezett értéke "PartitionId". |
 | **Bemeneti partíciók száma** | Ez a mező csak akkor jelenik meg, ha a (() {Partition} szerepel az elérésiút-mintában. Ennek a tulajdonságnak az értéke >= 1 egész szám. Ha a pathPattern-ben a {Partition} érték jelenik meg, akkor a rendszer 0 és az 1. mező közötti számot használ. |
 | **Eseményszerializációs formátum** | A bejövő adatfolyam szerializálási formátuma (JSON, CSV, Avro vagy [other (protopuf, XML, tulajdonos...)](custom-deserializer.md)).  Győződjön meg arról, hogy a JSON formátum a specifikációhoz igazodik, és nem tartalmazza a kezdő 0 számjegyek számjegyeit. |
 | **Kódolás** | A CSV és a JSON esetében az UTF-8 jelenleg az egyetlen támogatott kódolási formátum. |
@@ -194,5 +194,5 @@ FROM Input
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

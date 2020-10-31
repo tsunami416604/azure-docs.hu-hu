@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 35b1b07bd4d9eef555be26e1c24356b7c352bf38
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 39caa60196eca1afb7df1b0acbecddb557796fc3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100694"
+ms.locfileid: "93130340"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>A Change Tracking és a leltár áttekintése
 
@@ -93,7 +93,7 @@ A Windows és a Linux rendszerű fájlok változásainak nyomon követéséhez a
 
 ## <a name="tracking-file-content-changes"></a>A fájl tartalmának változásai nyomon követése
 
-A Change Tracking és a leltár lehetővé teszi egy Windows-vagy Linux-fájl tartalmának megtekintését. Egy fájl minden módosítása esetén a Change Tracking és a leltár egy [Azure Storage-fiókban](/azure/storage/common/storage-account-create)tárolja a fájl tartalmát. Egy fájl nyomon követése után megtekintheti annak tartalmát a módosítás előtt vagy után. A fájl tartalma beágyazott vagy egymás mellett is megtekinthető.
+A Change Tracking és a leltár lehetővé teszi egy Windows-vagy Linux-fájl tartalmának megtekintését. Egy fájl minden módosítása esetén a Change Tracking és a leltár egy [Azure Storage-fiókban](../../storage/common/storage-account-create.md)tárolja a fájl tartalmát. Egy fájl nyomon követése után megtekintheti annak tartalmát a módosítás előtt vagy után. A fájl tartalma beágyazott vagy egymás mellett is megtekinthető.
 
 ![Egy fájl változásainak megtekintése](./media/overview/view-file-changes.png)
 
@@ -158,7 +158,7 @@ A következő táblázat a nyomon követett elemek korlátozásait mutatja gépe
 |Szolgáltatások|250|
 |Démonok|250|
 
-A Change Tracking és a leltárt használó gépek átlagos Log Analytics adatfelhasználása körülbelül 40 MB/hó, a környezettől függően. A Log Analytics munkaterület használati és becsült költségek funkciójával megtekintheti a Change Tracking és a leltár által betöltött adatokat egy használati diagramon. Ezzel az adatnézettel kiértékelheti az adathasználatot, és meghatározhatja, hogyan befolyásolja a számláját. Lásd: [a használat és a becsült költségek megismerése](/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs).
+A Change Tracking és a leltárt használó gépek átlagos Log Analytics adatfelhasználása körülbelül 40 MB/hó, a környezettől függően. A Log Analytics munkaterület használati és becsült költségek funkciójával megtekintheti a Change Tracking és a leltár által betöltött adatokat egy használati diagramon. Ezzel az adatnézettel kiértékelheti az adathasználatot, és meghatározhatja, hogyan befolyásolja a számláját. Lásd: [a használat és a becsült költségek megismerése](../../azure-monitor/platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs).
 
 ### <a name="microsoft-service-data"></a>Microsoft-szolgáltatásokra vonatkozó adatkezelés
 

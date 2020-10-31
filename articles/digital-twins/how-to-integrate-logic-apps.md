@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 9ea85449d3980f46e88eddc7e06e4a5384b8cea3
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 3fbd9016bcbfa83574d894af7ca728b863f54344
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027550"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129320"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integrálás a Logic Apps használatával egyéni összekötővel
 
@@ -33,34 +33,11 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com) ezzel a fiókkal.
 
 A következő elemeket is el kell végeznie az előfeltétel-telepítés részeként. Ennek a szakasznak a további lépései a következő lépésekben találhatók:
 - Azure digitális Twins-példány beállítása
-- Az alkalmazás regisztrációs ügyfelének titkának beolvasása
 - Digitális Twin hozzáadása
 
 ### <a name="set-up-azure-digital-twins-instance"></a>Azure digitális Twins-példány beállítása
 
-Ha egy Azure digitális Twins-példányt szeretne összekapcsolással Logic Apps ebben a cikkben, akkor már be kell állítania az **Azure digitális Twins-példányát** . 
-
-Először **állítson be egy Azure digitális Twins-példányt** és a szükséges hitelesítést ahhoz, hogy működjön vele. Ehhez kövesse az útmutató [*: példány és hitelesítés beállítása*](how-to-set-up-instance-portal.md)című témakör útmutatását.
-* Az Azure Digital Twins-példány beállítása után szüksége lesz a példány **_állomásneve_** (keresse meg a [Azure Portal](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).
-
-Az összekötő hitelesítéséhez be kell állítania egy **alkalmazás regisztrációját** is. Ennek beállításához kövesse az útmutató [*: alkalmazás regisztrációjának létrehozása*](how-to-create-app-registration.md) című témakör utasításait. 
-* Ha már rendelkezik az alkalmazás regisztrálásával, szüksége lesz a regisztrációs **_alkalmazás (ügyfél) azonosítójának_** és **_könyvtárának (BÉRLŐi) azonosítójának_** ( [Keresse meg a Azure Portal](how-to-create-app-registration.md#collect-client-id-and-tenant-id)).
-
-### <a name="get-app-registration-client-secret"></a>Az alkalmazás regisztrációs ügyfelének titkának beolvasása
-
-Emellett létre kell hoznia egy **_ügyfél-titkot_** az Azure ad-alkalmazás regisztrálásához. Ehhez keresse meg a Azure Portal [Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) lapját (ezt a hivatkozást használhatja, vagy keresse meg azt a portálon található keresősáv használatával). A részletek megnyitásához válassza ki az előző szakaszban létrehozott regisztrációt a listából. 
-
-A *tanúsítványokat és a titkos kulcsokat* a regisztráció menüjéből, majd az *+ új ügyfél titka* elemre kattintva érheti el.
-
-:::image type="content" source="media/how-to-integrate-logic-apps/client-secret.png" alt-text="Azure AD-alkalmazás regisztrációjának portál nézete. Az erőforrás menüben a &quot;tanúsítványok és titkok&quot; elemre mutató kiemelés, valamint az &quot;új ügyfél titka&quot; nevű oldalon egy kiemelés látható.":::
-
-Adja meg a leíráshoz és a lejárathoz szükséges értékeket, majd kattintson a *Hozzáadás gombra* .
-
-:::image type="content" source="media/how-to-integrate-logic-apps/add-client-secret.png" alt-text="Azure AD-alkalmazás regisztrációjának portál nézete. Az erőforrás menüben a &quot;tanúsítványok és titkok&quot; elemre mutató kiemelés, valamint az &quot;új ügyfél titka&quot; nevű oldalon egy kiemelés látható.":::
-
-Most ellenőrizze, hogy az ügyfél titka látható-e a _tanúsítványok & titkok_ oldalon a _lejárat_ és az _érték_ mezőkkel. Jegyezze fel a későbbi használat _értékét_ (a vágólapra másolhatja a másolás ikont is)
-
-:::image type="content" source="media/how-to-integrate-logic-apps/client-secret-value.png" alt-text="Azure AD-alkalmazás regisztrációjának portál nézete. Az erőforrás menüben a &quot;tanúsítványok és titkok&quot; elemre mutató kiemelés, valamint az &quot;új ügyfél titka&quot; nevű oldalon egy kiemelés látható.":::
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
 ### <a name="add-a-digital-twin"></a>Digitális Twin hozzáadása
 
@@ -70,9 +47,29 @@ Az ikreket a [DigitalTwins API](/rest/api/digital-twins/dataplane/twins)-k, a [.
 
 Az Ön által létrehozott példányban szüksége lesz egy Twin **_dupla azonosítóra_** .
 
+## <a name="set-up-app-registration"></a>Alkalmazás regisztrációjának beállítása
+
+[!INCLUDE [digital-twins-prereq-registration.md](../../includes/digital-twins-prereq-registration.md)]
+
+### <a name="get-app-registration-client-secret"></a>Az alkalmazás regisztrációs ügyfelének titkának beolvasása
+
+Emellett létre kell hoznia egy **_ügyfél-titkot_** az Azure ad-alkalmazás regisztrálásához. Ehhez keresse meg a Azure Portal [Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) lapját (ezt a hivatkozást használhatja, vagy keresse meg azt a portálon található keresősáv használatával). A részletek megnyitásához válassza ki az előző szakaszban létrehozott regisztrációt a listából. 
+
+A *tanúsítványokat és a titkos kulcsokat* a regisztráció menüjéből, majd az *+ új ügyfél titka* elemre kattintva érheti el.
+
+:::image type="content" source="media/how-to-integrate-logic-apps/client-secret.png" alt-text="Azure AD-alkalmazás regisztrációjának portál nézete. Az erőforrás menüben a &quot;tanúsítványok és titkok&quot; elemre mutató kiemelés, valamint az &quot;új ügyfél titka&quot; nevű oldalon egy kiemelés látható.":::
+
+Adja meg a *leíráshoz* és a *lejárathoz* szükséges értékeket, majd kattintson a *Hozzáadás gombra* .
+
+:::image type="content" source="media/how-to-integrate-logic-apps/add-client-secret.png" alt-text="Azure AD-alkalmazás regisztrációjának portál nézete. Az erőforrás menüben a &quot;tanúsítványok és titkok&quot; elemre mutató kiemelés, valamint az &quot;új ügyfél titka&quot; nevű oldalon egy kiemelés látható.":::
+
+Most ellenőrizze, hogy az ügyfél titka látható-e a _tanúsítványok & titkok_ oldalon a _lejárat_ és az _érték_ mezőkkel. Jegyezze fel a későbbi használat _értékét_ (a vágólapra másolhatja a másolás ikont is)
+
+:::image type="content" source="media/how-to-integrate-logic-apps/client-secret-value.png" alt-text="Azure AD-alkalmazás regisztrációjának portál nézete. Az erőforrás menüben a &quot;tanúsítványok és titkok&quot; elemre mutató kiemelés, valamint az &quot;új ügyfél titka&quot; nevű oldalon egy kiemelés látható.":::
+
 ## <a name="create-custom-logic-apps-connector"></a>Egyéni Logic Apps-összekötő létrehozása
 
-Ebben a lépésben egy [egyéni Logic apps-összekötőt](../logic-apps/custom-connector-overview.md) fog létrehozni az Azure Digital Twins API-khoz. Ezt követően az Azure Digital Twins összekapcsolható a logikai alkalmazások következő szakaszban való létrehozásakor.
+Most már készen áll egy [egyéni Logic apps-összekötő](../logic-apps/custom-connector-overview.md) létrehozására az Azure Digital Twins API-khoz. Ezt követően az Azure Digital Twins összekapcsolható a logikai alkalmazások következő szakaszban való létrehozásakor.
 
 Navigáljon a Azure Portal [Logic apps egyéni összekötő](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Web%2FcustomApis) oldalára (ezt a hivatkozást használhatja, vagy megkeresheti a portál keresési sávján). Hit *+ Hozzáadás* .
 

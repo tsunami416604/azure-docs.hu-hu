@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: ead175cbcaa9467cb5263ad95100facdda096991
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2c199b2366f2708af19c1868cce09e0ba38fc96
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337806"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130255"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics lekérdezések hibáinak megoldása
 
@@ -25,26 +25,26 @@ Ez a cikk a Azure Stream Analytics lekérdezések fejlesztésével, a lekérdez�
 
 1.  Hibák vizsgálata helyi teszteléssel:
 
-    - Azure Portal a **lekérdezés** lapon válassza a **teszt**elemet. A letöltött mintaadatok használatával [tesztelheti a lekérdezést](stream-analytics-test-query.md). Vizsgálja meg a hibákat, és próbálja meg kijavítani azokat.   
+    - Azure Portal a **lekérdezés** lapon válassza a **teszt** elemet. A letöltött mintaadatok használatával [tesztelheti a lekérdezést](stream-analytics-test-query.md). Vizsgálja meg a hibákat, és próbálja meg kijavítani azokat.   
     - [A lekérdezést helyileg is tesztelheti](stream-analytics-live-data-local-testing.md) a Visual studióhoz vagy a [Visual Studio Code](visual-studio-code-local-run-live-input.md)-hoz készült Azure stream Analytics eszközökkel. 
 
 2.  A [lekérdezések hibakeresése lépésről lépésre helyileg](debug-locally-using-job-diagram-vs-code.md) , a Azure stream Analytics Tools for Visual Studio Code-ban található Job diagram használatával. A feladatütemezés azt mutatja be, hogy az adatok hogyan áramlanak be a bemeneti forrásokból (Event hub, IoT Hub stb.) több lekérdezési lépéssel, végül pedig a kimeneti mosogatók használatával. Minden lekérdezési lépés a parancsfájlban definiált ideiglenes eredményhalmaz számára van leképezve a WITH utasítás használatával. Megtekintheti az adatokat, valamint a metrikákat az egyes köztes eredményhalmaz-készletekben a probléma forrásának megállapításához.
 
     ![A feladatütemezés előzetes verziójának eredménye](./media/debug-locally-using-job-diagram-vs-code/preview-result.png)
 
-3.  Ha [**időbélyegzőt**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)használ, ellenőrizze, hogy az események időbélyegei nagyobbak-e a [feladatok kezdési idejénél](stream-analytics-out-of-order-and-late-events.md).
+3.  Ha [**időbélyegzőt**](/stream-analytics-query/timestamp-by-azure-stream-analytics)használ, ellenőrizze, hogy az események időbélyegei nagyobbak-e a [feladatok kezdési idejénél](./stream-analytics-time-handling.md).
 
 4.  Távolítsa el a gyakori buktatókat, például a következőket:
-    - A lekérdezés [**Where**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) záradéka szűrte az összes eseményt, ami megakadályozza a kimenet generálását.
-    - A [**Cast**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) függvény meghiúsul, így a feladat sikertelen lesz. Ha el szeretné kerülni a leadott hibák beírását, használja a [**TRY_CAST**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) helyet.
+    - A lekérdezés [**Where**](/stream-analytics-query/where-azure-stream-analytics) záradéka szűrte az összes eseményt, ami megakadályozza a kimenet generálását.
+    - A [**Cast**](/stream-analytics-query/cast-azure-stream-analytics) függvény meghiúsul, így a feladat sikertelen lesz. Ha el szeretné kerülni a leadott hibák beírását, használja a [**TRY_CAST**](/stream-analytics-query/try-cast-azure-stream-analytics) helyet.
     - Ha a Window functions funkciót használja, várja meg a teljes ablak időtartamát, hogy megjelenjen a lekérdezés kimenete.
     - Az események időbélyege megelőzi a feladatok kezdési idejét, és az események el lesznek dobva.
-    - Az [**illesztési**](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) feltételek nem egyeznek. Ha nincsenek egyezések, nulla kimenet jelenik meg.
+    - Az [**illesztési**](/stream-analytics-query/join-azure-stream-analytics) feltételek nem egyeznek. Ha nincsenek egyezések, nulla kimenet jelenik meg.
 
-5.  Győződjön meg arról, hogy az esemény-rendezési házirendek a várt módon vannak konfigurálva. Lépjen a **Beállítások** menüpontra, és válassza az [**események rendezése**](stream-analytics-out-of-order-and-late-events.md)lehetőséget. A rendszer *nem* alkalmazza a házirendet, ha a **teszt** gombot használja a lekérdezés teszteléséhez. Ez az eredmény az egyik különbség a böngészőn belüli tesztelés és az éles környezetben futó feladatok között. 
+5.  Győződjön meg arról, hogy az esemény-rendezési házirendek a várt módon vannak konfigurálva. Lépjen a **Beállítások** menüpontra, és válassza az [**események rendezése**](./stream-analytics-time-handling.md)lehetőséget. A rendszer *nem* alkalmazza a házirendet, ha a **teszt** gombot használja a lekérdezés teszteléséhez. Ez az eredmény az egyik különbség a böngészőn belüli tesztelés és az éles környezetben futó feladatok között. 
 
 6. Hibakeresés tevékenység-és erőforrás-naplók használatával:
-    - Használjon [Tevékenységnaplók](../azure-resource-manager/resource-group-audit.md)használatát, és szűrje a hibákat a hibák azonosításához és hibakereséséhez.
+    - Használjon [Tevékenységnaplók](../azure-resource-manager/management/view-activity-logs.md)használatát, és szűrje a hibákat a hibák azonosításához és hibakereséséhez.
     - A hibák azonosításához és hibakereséséhez használja a [feladatok erőforrás-naplóit](stream-analytics-job-diagnostic-logs.md) .
 
 ## <a name="resource-utilization-is-high"></a>Az erőforrás-használat magas
@@ -103,12 +103,12 @@ Ezúttal a kimenetben lévő adatok formázása és feltöltése a várt módon 
 
 ## <a name="get-help"></a>Segítség kérése
 
-További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](/answers/topics/azure-stream-analytics.html).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Az Azure Stream Analytics felügyeleti REST API referenciája](/rest/api/streamanalytics/)

@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 10/1/2020
 ms.author: rahugup
-ms.openlocfilehash: eed10f13b9495ab2cccfd9c57ae14ccc5d8e4a63
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 40f8a63481adc2e5641337c41dee1cf55d1f39ae
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043544"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130306"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>VMware virtuális gépek migrálása az Azure-ba (ügynök nélkül) – PowerShell
 
@@ -114,10 +114,10 @@ $DiscoveredServers = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.
 
 [Azure Migrate: a kiszolgáló áttelepítése](migrate-services-overview.md#azure-migrate-server-migration-tool) több Azure-erőforrást használ a virtuális gépek áttelepítéséhez. A kiszolgáló áttelepítése a következő erőforrásokat a projekttel megegyező erőforráscsoporthoz helyezi el.
 
-- **Service Bus**: a kiszolgáló áttelepítése a Service Bus használatával küldi el a replikációs előkészítési üzeneteket a berendezésnek.
-- **Átjáró Storage-fiók**: a kiszolgáló áttelepítése az átjáró Storage-fiók használatával tárolja a replikált virtuális gépekre vonatkozó állapotinformációkat.
-- **Log Storage-fiók**: a Azure Migrate készülék feltölti a virtuális gépek replikációs naplóit egy log Storage-fiókba. Azure Migrate a replikációs adatokat a replika által felügyelt lemezekre alkalmazza.
-- **Key Vault**: a Azure Migrate készülék a kulcstartó használatával kezeli a Service Bus kapcsolati karakterláncait, valamint a replikáció során használt Storage-fiókok hozzáférési kulcsait.
+- **Service Bus** : a kiszolgáló áttelepítése a Service Bus használatával küldi el a replikációs előkészítési üzeneteket a berendezésnek.
+- **Átjáró Storage-fiók** : a kiszolgáló áttelepítése az átjáró Storage-fiók használatával tárolja a replikált virtuális gépekre vonatkozó állapotinformációkat.
+- **Log Storage-fiók** : a Azure Migrate készülék feltölti a virtuális gépek replikációs naplóit egy log Storage-fiókba. Azure Migrate a replikációs adatokat a replika által felügyelt lemezekre alkalmazza.
+- **Key Vault** : a Azure Migrate készülék a kulcstartó használatával kezeli a Service Bus kapcsolati karakterláncait, valamint a replikáció során használt Storage-fiókok hozzáférési kulcsait.
 
 Mielőtt replikálja az első virtuális gépet a Azure Migrate projektben, futtassa a következő szkriptet a replikációs infrastruktúra kiépítéséhez. Ez a szkript kiépíti és konfigurálja a fent említett erőforrásokat, így elkezdheti a VMware virtuális gépek áttelepítését.
 
@@ -146,7 +146,7 @@ A replikálási tulajdonságokat a következőképpen adhatja meg.
 - **Cél virtuális hálózat és alhálózat** – adja meg az Azure-Virtual Network azonosítóját, valamint annak az alhálózatnak a nevét, amelyről a virtuális gépet át kell telepíteni a `TargetNetworkId` és a paraméterek használatával `TargetSubnetName` . 
 - **Cél virtuális gép neve** – adja meg a létrehozandó Azure-beli virtuális gép nevét a `TargetVMName` paraméter használatával.
 - **Cél virtuális gép mérete** – Itt adhatja meg a replikáláshoz használandó Azure-beli virtuális gép méretét `TargetVMSize` paraméter használatával. Ha például egy virtuális gépet át szeretne telepíteni D2_v2 virtuális gépre az Azure-ban, a "Standard_D2_v2" értéket kell megadnia `TargetVMSize` .  
-- **Licenc** – Azure Hybrid Benefit használata az aktív frissítési garanciával vagy Windows Server-előfizetésekkel rendelkező Windows Server-gépekhez, a paraméter értékeként adja meg a `LicenseType` következőt: "AHUB". Ellenkező esetben a paraméter értékét állítsa `LicenseType` "NoLicenseType" értékre.
+- **Licenc** – Azure Hybrid Benefit használata az aktív frissítési garanciával vagy Windows Server-előfizetésekkel rendelkező Windows Server-gépekhez, a paraméter értékeként adja meg a `LicenseType` következőt: "windowsserver". Ellenkező esetben a paraméter értékét állítsa `LicenseType` "NoLicenseType" értékre.
 - **Operációsrendszer-lemez** – Itt adhatja meg annak a lemeznek az egyedi azonosítóját, amely az operációs rendszer rendszerbetöltőjét és a telepítőjét tartalmazta. A használni kívánt lemez a parancsmag használatával beolvasott lemez egyedi azonosító (UUID) tulajdonsága `Get-AzMigrateServer` .
 - **Lemez típusa** – adja meg a paraméter értékét az `DiskType` alábbiak szerint.
     - A prémium szintű felügyelt lemezek használatához a paraméter értékeként a "Premium_LRS" értéket kell megadnia `DiskType` . 
@@ -156,6 +156,7 @@ A replikálási tulajdonságokat a következőképpen adhatja meg.
     - Rendelkezésre állási zóna az áttelepített gép egy adott rendelkezésre állási zónába való rögzítéséhez a régióban. Ezzel a beállítással olyan kiszolgálókat oszthat szét, amelyek több csomópontos alkalmazási szintet alkotnak Availability Zoneson belül. Ez a beállítás csak akkor érhető el, ha az áttelepítéshez kiválasztott cél régió támogatja a Availability Zones. A rendelkezésre állási zónák használatához meg kell adnia a rendelkezésre állási zóna értékét a `TargetAvailabilityZone` paraméterhez.
     - Rendelkezésre állási csoport, amely az áttelepített gépet egy rendelkezésre állási csoportba helyezi. A választott erőforráscsoport-csoportnak legalább egy rendelkezésre állási készlettel kell rendelkeznie a beállítás használatához. A rendelkezésre állási csoport használatához adja meg a rendelkezésre állási csoport AZONOSÍTÓját a `TargetAvailabilitySet` paraméterhez. 
 
+### <a name="replicate-vms-with-all-disks"></a>Virtuális gépek replikálása az összes lemezzel
 Ebben az oktatóanyagban a felderített virtuális gép összes lemezét replikáljuk, és új nevet kell megadni a virtuális géphez az Azure-ban. A felderített kiszolgáló első lemezét operációsrendszer-lemezként adjuk meg, és az összes lemezt standard HDD-ként migráljuk. Az operációsrendszer-lemez az a lemez, amelyen az operációs rendszer rendszerbetöltője és telepítője található.
 
 ```azurepowershell
@@ -178,6 +179,7 @@ while (($MigrateJob.State -eq "InProgress") -or ($MigrateJob.State -eq "NotStart
 Write-Output $MigrateJob.State
 ```
 
+### <a name="replicate-vms-with-select-disks"></a>Virtuális gépek replikálása a kiválasztott lemezekkel
 A felderített virtuális gép lemezeit szelektíven is replikálhatja a `New-AzMigrateDiskMapping` parancsmag használatával, és biztosíthatja, hogy bemenetként adja meg a `DiskToInclude` paramétert a `New-AzMigrateServerReplication` parancsmagban. A parancsmag használatával is `New-AzMigrateDiskMapping` megadhat különböző céllemez-típusokat a replikálni kívánt egyes lemezekhez. 
 
 Határozza meg a parancsmag következő paramétereinek értékeit `New-AzMigrateDiskMapping` .
@@ -416,8 +418,8 @@ $StopReplicationJob = Remove-AzMigrateServerReplication -InputObject $Replicatin
 ## <a name="post-migration-best-practices"></a>Az áttelepítés utáni ajánlott eljárások
 
 - A nagyobb rugalmasság érdekében:
-    - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információk](../backup/quick-backup-vm-portal.md).
-    - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információk](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
+    - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információ](../backup/quick-backup-vm-portal.md).
+    - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információ](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - A biztonság fokozása érdekében:
     - Zárolja és korlátozza a bejövő adatforgalom elérését [Azure Security Center – igény szerinti felügyelettel](../security-center/security-center-just-in-time.md).
     - Korlátozza a forgalmat felügyeleti végpontokra [hálózati biztonsági csoportok](../virtual-network/security-overview.md) használatával.

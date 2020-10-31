@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/28/2020
-ms.openlocfilehash: ca5bdf606b51b4019bd9e655d172733074febd39
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: bd5e05f38d34199d9012c52ca3fdad33af231aad
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077993"
+ms.locfileid: "93127985"
 ---
 # <a name="quickstart-create-an-enterprise-tier-cache-preview"></a>Gyors útmutató: vállalati szintű gyorsítótár létrehozása (előzetes verzió)
 
@@ -29,7 +29,7 @@ Mielőtt elkezdené, szüksége lesz egy Azure-előfizetésre. Ha még nem rende
 
 1. Az **új** lapon válassza az **adatbázisok** lehetőséget, majd válassza az Azure cache lehetőséget a **Redis számára** .
    
-   ![Az Azure cache kiválasztása a Redis](media/cache-create/new-cache-menu.png)
+   :::image type="content" source="media/cache-create/new-cache-menu.png" alt-text="Az Azure cache kiválasztása a Redis":::
    
 1. Az **új Redis cache** lapon adja meg az új gyorsítótár beállításait.
    
@@ -41,10 +41,7 @@ Mielőtt elkezdené, szüksége lesz egy Azure-előfizetésre. Ha még nem rende
    | **Hely** | Legördülő menüből válassza ki a helyet. | A nagyvállalati rétegek az előzetes verzióban korlátozott Azure-régiókban érhetők el. |
    | **Gyorsítótár típusa** | Legördülő menüből válassza ki a *vállalati* vagy *vállalati Flash* -szintet és a méretet. |  A szinten a gyorsítótár számára elérhető méretet, teljesítményt és funkciókat határozza meg. |
    
-   ![Nagyvállalati szint alapjai](media/cache-create/enterprise-tier-basics.png) 
-
-   > [!NOTE] 
-   > A folytatás előtt győződjön meg róla, hogy a "feltételek" alatt bejelöli a mezőt.
+   :::image type="content" source="media/cache-create/enterprise-tier-basics.png" alt-text="Az Azure cache kiválasztása a Redis" alatt bejelöli a mezőt.
    >
 
 1. Válassza a **Tovább: hálózatkezelés** és Kihagyás lehetőséget.
@@ -53,11 +50,11 @@ Mielőtt elkezdené, szüksége lesz egy Azure-előfizetésre. Ha még nem rende
    > A magánhálózati hivatkozás lehetőség bekerül, és előfordulhat, hogy nem érhető el azonnal a régiójában.
    >
 
-1. Válassza a **Tovább: Speciális** lehetőséget.
+1. Válassza a **Next (tovább): speciális** lehetőséget, és állítsa be a **fürtözési házirendet** a **vállalat** számára.
    
    Megtarthatja az alapértelmezett beállításokat, és szükség szerint módosíthatja azokat. Ha bekapcsolja a **hozzáférés engedélyezése csak a TLS protokollon keresztül lehetőséget** , a TLS használatával férhet hozzá az alkalmazás új gyorsítótárához.
 
-   ![Nagyvállalati szintű fejlett](media/cache-create/enterprise-tier-advanced.png) 
+   :::image type="content" source="media/cache-create/enterprise-tier-advanced.png" alt-text="Az Azure cache kiválasztása a Redis":::
 
    > [!NOTE] 
    > A Redis modulok még nem támogatottak a vállalati Flash-szinten. Ha Redis-modult szeretne használni, akkor mindenképpen válasszon egy vállalati szintű gyorsítótárat.
@@ -67,7 +64,7 @@ Mielőtt elkezdené, szüksége lesz egy Azure-előfizetésre. Ha még nem rende
 
 1. Válassza a **Tovább: Ellenőrzés és létrehozás** lehetőségre.
 
-   ![Nagyvállalati szintű összefoglalás](media/cache-create/enterprise-tier-summary.png) 
+   :::image type="content" source="media/cache-create/enterprise-tier-summary.png" alt-text="Az Azure cache kiválasztása a Redis":::
 
 1. Tekintse át a beállításokat, és kattintson a **Létrehozás** gombra.
    

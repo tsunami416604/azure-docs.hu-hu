@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/01/2020
-ms.openlocfilehash: cd0b708ac3a1b16804430584dfcb01b3d2a4fae2
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: dea9c0eec275c6a0596636c8625e52b8978bb9a6
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042382"
+ms.locfileid: "93130544"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Az Azure Blob Storage használata a kereskedelmi Piactéri érdeklődők felügyeletéhez
 
@@ -33,7 +33,7 @@ ms.locfileid: "93042382"
 3. A Azure Portal a következő eljárással hozzon létre egy Storage-fiókot.  
     1. Válassza az **+ erőforrás létrehozása** lehetőséget a bal oldali menüsorban.  Ekkor megjelenik az **új** ablaktábla (panel) a jobb oldalon.
     2. Válassza a **tároló** lehetőséget az **új** ablaktáblán.  Egy **Kiemelt** lista jelenik meg a jobb oldalon.
-    3. A fiók létrehozásának megkezdéséhez válassza ki a **Storage-fiókot** .  Kövesse a [Storage-fiók létrehozása](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)című cikk utasításait.
+    3. A fiók létrehozásának megkezdéséhez válassza ki a **Storage-fiókot** .  Kövesse a [Storage-fiók létrehozása](../../storage/common/storage-account-create.md?tabs=azure-portal)című cikk utasításait.
 
     ![Azure Storage-fiók létrehozásának lépései](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-create.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "93042382"
 
 5. A Storage-fiók ablaktáblán válassza a **hozzáférési kulcsok** lehetőséget, és másolja a kulcshoz tartozó *kapcsolati sztring* értéket. Mentse ezt az értéket, mivel ez a *Storage-fiók kapcsolódási karakterláncának* értéke, amelyet a közzétételi portálon kell megadnia a Piactéri ajánlathoz tartozó érdeklődők fogadásához.
 
-     A kapcsolatok csípése például a következőket szemlélteti:
+     Egy példa a kapcsolatok karakterláncára:
 
      ```sql
      DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net
@@ -55,11 +55,11 @@ ms.locfileid: "93042382"
 
 6. A Storage-fiók lapon válassza a **Blobok** lehetőséget.
 
-   ![Azure Storage-kulcs](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
+   ![Képernyőfelvétel az Azure Storage-fiókról lap kiválasztva Blobokkal](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
 
 7. A Blobok lapon kattintson a **+ tároló** gombra.
 
-8. Adja meg az új tároló **nevét** . A tároló neve csak kisbetűket tartalmazhat, betűvel vagy számmal kell kezdődnie, és csak betűket, számokat és kötőjelet (-) tartalmazhat. A tárolók és a Blobok neveivel kapcsolatos további információkért lásd: [tárolók, blobok és metaadatok elnevezése és hivatkozása](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+8. Adja meg az új tároló **nevét** . A tároló neve csak kisbetűket tartalmazhat, betűvel vagy számmal kell kezdődnie, és csak betűket, számokat és kötőjelet (-) tartalmazhat. A tárolók és a Blobok neveivel kapcsolatos további információkért lásd: [tárolók, blobok és metaadatok elnevezése és hivatkozása](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
     Mentse ezt az értéket, mivel ez a *tároló neve* érték, amelyet a közzétételi portálon kell megadnia, hogy fogadja az érdeklődőket a Piactéri ajánlathoz.
 
@@ -91,5 +91,3 @@ Ha készen áll az ajánlathoz tartozó érdeklődői felügyeleti információk
 
     > [!NOTE]
     > Be kell fejeznie az ajánlat többi részének konfigurálását, és közzé kell tennie az ajánlathoz tartozó érdeklődők fogadása előtt.
-
-

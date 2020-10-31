@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a771ac1a831bc7994f28ba15139b66be346af02
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 124d2cf4380153bd3ea68de9233f6a1b5eb6ba78
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097753"
+ms.locfileid: "93130697"
 ---
 # <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Azure Stream Analytics-feladatok leállítása vagy törlése
 
@@ -53,12 +53,12 @@ Ha leállítja a feladatot, az erőforrások kiépítése megszűnik, és leáll
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ha a PowerShell használatával szeretné leállítani a feladatot, használja a [stop-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob) parancsmagot. Ha egy feladatot a PowerShell használatával szeretne törölni, használja a [Remove-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/Remove-azStreamAnalyticsJob) parancsmagot.
+Ha a PowerShell használatával szeretné leállítani a feladatot, használja a [stop-AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob) parancsmagot. Ha egy feladatot a PowerShell használatával szeretne törölni, használja a [Remove-AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/Remove-azStreamAnalyticsJob) parancsmagot.
 
 ## <a name="stop-or-delete-a-job-using-azure-sdk-for-net"></a>Feladatok leállítása vagy törlése a .NET-hez készült Azure SDK-val
 
-Ha a .NET-hez készült Azure SDK-val szeretné leállítani a feladatot, használja a [StreamingJobsOperationsExtensions. BeginStop](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.beginstop?view=azure-dotnet) metódust. Feladatok törlése a .NET-hez készült Azure SDK-val, a [StreamingJobsOperationsExtensions. BeginDelete](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.begindelete?view=azure-dotnet) metódussal.
+Ha a .NET-hez készült Azure SDK-val szeretné leállítani a feladatot, használja a [StreamingJobsOperationsExtensions. BeginStop](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.beginstop?view=azure-dotnet) metódust. Feladatok törlése a .NET-hez készült Azure SDK-val, a [StreamingJobsOperationsExtensions. BeginDelete](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.begindelete?view=azure-dotnet) metódussal.
 
 ## <a name="stop-or-delete-a-job-using-rest-api"></a>Feladatok leállítása vagy törlése REST API használatával
 
-Ha REST APIt használó feladatot szeretne leállítani, tekintse meg a [Leállítás](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#stop) metódust. Ha REST API használatával szeretne feladatot törölni, tekintse meg a [delete](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#delete) metódust.
+Ha REST APIt használó feladatot szeretne leállítani, tekintse meg a [Leállítás](/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#stop) metódust. Ha REST API használatával szeretne feladatot törölni, tekintse meg a [delete](/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#delete) metódust.

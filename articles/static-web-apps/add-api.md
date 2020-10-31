@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: c84367a5e3ab57090f59196e8474c14cba87f32b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e90c023fa74711246c2e6e69eb576695e86a457
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250147"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128504"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>API hozzáadása az Azure statikus Web Apps előzetes verziójához Azure Functions
 
@@ -33,15 +33,15 @@ Kiszolgáló nélküli API-kat adhat hozzá az Azure statikus Web Appshoz a Azur
 A következő lépések bemutatják, hogyan hozhat létre új tárházat, és hogyan klónozott fájlokat a számítógépére.
 
 1. Győződjön meg arról, hogy bejelentkezett a GitHubba, és navigáljon https://github.com/staticwebdev/vanilla-basic/generate egy új tárház létrehozásához.
-1. Az _adattár neve_ mezőbe írja be **a My-Vanilla-API**értéket.
-1. Kattintson **a tárház létrehozása sablonból**elemre.
+1. Az _adattár neve_ mezőbe írja be **a My-Vanilla-API** értéket.
+1. Kattintson **a tárház létrehozása sablonból** elemre.
 
    :::image type="content" source="media/add-api/create-repository.png" alt-text="Új Tárház létrehozása a vaníliatől – alapszintű":::
 
 A projekt létrehozása után másolja az URL-címet a böngészőben az új tárházba. Ezt az URL-címet a Visual Studio Code-ban használhatja a git-tárház klónozásához.
 
 1. Az **F1** billentyű lenyomásával nyissa meg a parancsot a parancs palettáján.
-1. Illessze be az URL-címet a _git: Clone_ parancssorba, majd nyomja le az **ENTER**billentyűt.
+1. Illessze be az URL-címet a _git: Clone_ parancssorba, majd nyomja le az **ENTER** billentyűt.
 
    :::image type="content" source="media/add-api/vscode-git-0.png" alt-text="Új Tárház létrehozása a vaníliatől – alapszintű":::
 
@@ -51,7 +51,7 @@ A projekt létrehozása után másolja az URL-címet a böngészőben az új tá
 
 Ezután létre kell hoznia egy Azure Functions projektet az alkalmazás API-ját. 
 
-1. Hozzon létre egy **API**nevű almappát a _My-Vanilla-API_ projekten belül.
+1. Hozzon létre egy **API** nevű almappát a _My-Vanilla-API_ projekten belül.
 1. Nyomja meg az **F1** billentyűt a parancs paletta megnyitásához
 1. Írja be a **Azure functions: új projekt létrehozása...**
 1. Nyomja le az **Enter** billentyűt
@@ -63,10 +63,10 @@ Ezután létre kell hoznia egy Azure Functions projektet az alkalmazás API-ját
 
 1. Adja meg a következő információkat a kérdésekben:
 
-    - _Válasszon nyelvet_: **JavaScript** kiválasztása
-    - _Válasszon sablont a projekt első függvényéhez_: válassza a **http-trigger** lehetőséget.
-    - _Adja meg a függvény nevét_: írja be a **GetMessage**
-    - _Engedélyezési szint_: válassza a **Névtelen**lehetőséget, amely lehetővé teszi, hogy bárki meghívja a függvény végpontját.
+    - _Válasszon nyelvet_ : **JavaScript** kiválasztása
+    - _Válasszon sablont a projekt első függvényéhez_ : válassza a **http-trigger** lehetőséget.
+    - _Adja meg a függvény nevét_ : írja be a **GetMessage**
+    - _Engedélyezési szint_ : válassza a **Névtelen** lehetőséget, amely lehetővé teszi, hogy bárki meghívja a függvény végpontját.
         - Az engedélyezési szintekről az [engedélyezési kulcsok](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)című témakörben olvashat bővebben.
 
 A Visual Studio Code egy Azure Functions projektet hoz létre egy HTTP által aktivált függvénysel.
@@ -195,7 +195,7 @@ Az Azure-ba való üzembe helyezéskor az API-ra irányuló kérelmek automatiku
 
 1. Az API-projekt elindításához nyomja le az **F5** billentyűt.
 
-1. Nyomja le az **F1** billentyűt, és válassza **az élő kiszolgáló: Megnyitás az élő kiszolgálóval**lehetőséget.
+1. Nyomja le az **F1** billentyűt, és válassza **az élő kiszolgáló: Megnyitás az élő kiszolgálóval** lehetőséget.
 
     Ekkor megjelenik az API-üzenet a weblapon.
 
@@ -228,7 +228,7 @@ Ezután adja hozzá az alkalmazásra vonatkozó beállításokat.
 
 1. Azure- _előfizetés_ kiválasztása
 1. Válasszon ki vagy hozzon létre egy új _erőforráscsoportot_
-1. Nevezze el az alkalmazást a **My-Vanilla-API**néven.
+1. Nevezze el az alkalmazást a **My-Vanilla-API** néven.
 1. Válassza ki az Önhöz legközelebb eső _régiót_
 1. Válassza ki az **ingyenes** _SKU_ -t
 1. Kattintson a **Bejelentkezés GitHub-fiókkal** gombra, majd végezzen hitelesítést a GitHub-fiókkal
@@ -239,9 +239,9 @@ Ezután adja hozzá az alkalmazásra vonatkozó beállításokat.
 
 Ezután adja hozzá a következőt a Build adataihoz.
 
-1. Adja meg **/** az _alkalmazás helyét_.
+1. Adja meg **/** az _alkalmazás helyét_ .
 1. Adja meg az **API** -t az _API helye_ mezőben.
-1. Törölje az alapértelmezett értéket az alkalmazás-összetevő _helyéről_, hagyja üresen a mezőt.
+1. Törölje az alapértelmezett értéket az alkalmazás-összetevő _helyéről_ , hagyja üresen a mezőt.
 1. Kattintson a **Felülvizsgálat + létrehozás** elemre.
 1. Kattintson a **Létrehozás** gombra
 
@@ -257,7 +257,7 @@ Ezután adja hozzá a következőt a Build adataihoz.
 
     :::image type="content" source="media/add-api/static-app-url-from-portal.png" alt-text="Új Tárház létrehozása a vaníliatől – alapszintű":::
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha nem szeretné tovább használni ezt az alkalmazást, a következő lépésekkel törölheti az Azure statikus webalkalmazást és a kapcsolódó erőforrásokat.
 

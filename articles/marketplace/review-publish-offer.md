@@ -7,13 +7,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 08/12/2020
-ms.openlocfilehash: 47d82982bbb7546b53dd4754c49bd22fe958d5ef
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 10/27/2020
+ms.openlocfilehash: b038834df3889a8b4b7f4a749568635e99f8408e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976451"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129575"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Ajánlat áttekintése és közzététele a kereskedelmi piactéren
 
@@ -42,7 +42,7 @@ Ha készen áll egy ajánlat közzétételre való elküldésére, válassza a *
    - **Hiányos** – a lap nem tartalmaz szükséges információkat, vagy hibákat kell rögzítenie. Vissza kell lépnie az oldalra, és frissítenie kell.
    - **Befejezés** – a lap elkészült. Minden szükséges információ meg lett adta, és nincsenek hibák.
 
-Ha bármelyik oldalon a **befejezéstől**eltérő állapot van, javítsa ki a problémát az oldalon, majd térjen vissza a **felülvizsgálat és közzététel** lapra, és ellenőrizze, hogy az állapot most **készként**jelenik-e meg. Egyes ajánlati típusok tesztelést igényelnek. Ha igen, megjelenik a **minősítési mezőhöz tartozó megjegyzések** , ahol tesztelési utasításokat kell megadnia a minősítési csapatnak, valamint az alkalmazás megértéséhez hasznos kiegészítő megjegyzéseket.
+Ha bármelyik oldalon a **befejezéstől** eltérő állapot van, javítsa ki a problémát az oldalon, majd térjen vissza a **felülvizsgálat és közzététel** lapra, és ellenőrizze, hogy az állapot most **készként** jelenik-e meg. Egyes ajánlati típusok tesztelést igényelnek. Ha igen, megjelenik a **minősítési mezőhöz tartozó megjegyzések** , ahol tesztelési utasításokat kell megadnia a minősítési csapatnak, valamint az alkalmazás megértéséhez hasznos kiegészítő megjegyzéseket.
 
 Miután az összes lap elkészült, és megadta a megfelelő tesztelési megjegyzéseket, válassza a **Közzététel** lehetőséget az érvényesítési és közzétételi folyamatok elindításához. A fázisok és a teljes szakasz a közzétett ajánlat típusától függően változhat. Az alábbi táblázat egy lehetséges közzétételi folyamatot mutat be. A következő szakaszok részletesebben ismertetik az egyes fázisokat.
 
@@ -77,7 +77,7 @@ A közzétételi folyamat első lépése az automatikus érvényesítések halma
 
 ## <a name="certification-phase"></a>Minősítési fázis
 
-A kereskedelmi piactérnek küldött ajánlatokat a közzététel előtt hitelesíteni kell. Az ajánlatok szigorú tesztelésen mennek keresztül, és néhány automatizált és egyéb manuális. További információ: [kereskedelmi piactér – minősítési szabályzatok](https://aka.ms/commercial-marketplace-certification-policies).
+A kereskedelmi piactérnek küldött ajánlatokat a közzététel előtt hitelesíteni kell. Az ajánlatok szigorú tesztelésen mennek keresztül, és néhány automatizált és egyéb manuális. További információ: [kereskedelmi piactér – minősítési szabályzatok](/legal/marketplace/certification-policies).
 
 ### <a name="types-of-validation-that-take-place-during-certification"></a>A minősítés során megkerülő érvényesítési típusok
 
@@ -100,7 +100,7 @@ Az ajánlat létrehozásakor megadott adatokat a minőség és a relevancia alap
 - Minőségi képernyőképek és videók
 - Annak magyarázata, hogy az ajánlat hogyan használja a Microsoft platformokat és eszközöket.
 
-A tartalom-ellenőrzési feltételekkel kapcsolatos további információkért olvassa el az [általános listázási szabályzatot](https://aka.ms/commercial-marketplace-certification-policies#100-general).
+A tartalom-ellenőrzési feltételekkel kapcsolatos további információkért olvassa el az [általános listázási szabályzatot](/legal/marketplace/certification-policies#100-general).
 
 #### <a name="technical-validation"></a>Technikai ellenőrzés
 
@@ -126,6 +126,19 @@ Az előzetes verziójú létrehozási fázisban az ajánlat egy olyan verziójá
 > [!NOTE]
 > Ne használja az előzetes verzió célközönségét, hogy a szervezeten kívüli személyek is láthassanak egy ajánlatot. Használja helyette a privát ajánlat lehetőséget. Ezen a ponton az ajánlat nem lett teljes körűen tesztelve és érvényesítve, és nem áll készen a külső terjesztésre.
 
+## <a name="cancel-publishing"></a>Közzététel megszakítása
+
+Ajánlat megszakítása a **Közzététel folyamatban** állapotában:
+
+1. Válassza ki az ajánlat nevét az **ajánlat áttekintő** oldalának megnyitásához.
+1. Kattintson a **Közzététel megszakítása gombra** a lap jobb felső sarkában.
+1. Erősítse meg, hogy le kívánja állítani az ajánlat közzétételét.
+
+Ha egy későbbi időpontban szeretné közzétenni az ajánlatot, el kell indítania a közzétételi folyamatot.
+
+> [!NOTE]
+> Az ajánlat csak akkor állítható le, ha az ajánlat még nem haladt előre a közzétevő kijelentkezési lépésén. Miután kiválasztotta a **Go Live** funkciót, nem fogja tudni megszakítani a közzétételt.
+
 ## <a name="publisher-sign-off-phase"></a>Közzétevő kijelentkezési fázisa
 
 Ha az ajánlat készen áll arra, hogy áttekintse és kijelentkezzen, küldjön Önnek egy e-mailt, amely kéri, hogy tekintse át és hagyja jóvá az ajánlat előzetes verzióját. Az **ajánlat áttekintés** lapját is frissítheti a böngészőben, és megtudhatja, hogy az ajánlat elérte-e a közzétevő kijelentkezési fázisát. Ha igen, a **Go Live** gomb és az előzetes verziójú hivatkozások is elérhetők lesznek.
@@ -143,7 +156,7 @@ Az **ajánlat áttekintése** lapon a **Go Live** gomb alatt láthatók az előz
 
 Az előzetes verzió jóváhagyása után válassza az élő adás lehetőséget, hogy az ajánlat élőben **elérhető** legyen a kereskedelmi piactéren. 
 
-Ha módosítani kívánja az ajánlat előzetes megtekintését követően, szerkesztheti és újra elküldheti a közzétételi kérelmet. Ha az ajánlata már él és elérhető a piactéren, az Ön által végzett frissítések csak akkor lépnek életbe, ha a **Go Live*lehetőséget választja. További információ: [meglévő ajánlat frissítése a kereskedelmi piactéren](./partner-center-portal/update-existing-offer.md)
+Ha módosítani kívánja az ajánlat előzetes megtekintését követően, szerkesztheti és újra elküldheti a közzétételi kérelmet. Ha az ajánlata már él és elérhető a piactéren, az Ön által végzett frissítések csak akkor lépnek életbe, ha a * *Go Live* lehetőséget választja. További információ: [meglévő ajánlat frissítése a kereskedelmi piactéren](partner-center-portal/update-existing-offer.md)
 
 ## <a name="publish-phase"></a>Közzétételi fázis
 
@@ -178,24 +191,24 @@ A partner Center **Előzmények** lapja a kereskedelmi Piactéri ajánlatok köz
 Az ajánlat előzményeinek megtekintése:
 
 1.    Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
-2.    A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
+2.    A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés** lehetőséget.
 3.    Válassza ki az ajánlatot.
 4.    Kattintson a bal oldali navigációs menü **Előzmények** fülére. Az oldal a következő eseményekre vonatkozó adatokat tartalmazza, az ajánlatának megfelelően:
 
-|Esemény    |Description    |
+|Esemény    |Leírás    |
 |---------|---------------|
-|Ajánlat létrehozva    |Az ajánlat a partner Centerben lett létrehozva. A felhasználó az ajánlat típusát, az ajánlat azonosítóját és az ajánlati aliast választotta a **kereskedelmi piactér**  >  **áttekintésében**.    |
-|Terv létrehozva: *terv neve*    |A felhasználó létrehozta az új csomagot a csomag **áttekintése** lapon a terv azonosítója és a terv nevének megadásával.</br>*Ez az esemény csak a csomagokat támogató csomagokra vonatkozik*.    |
-|Csomag törölve    |A felhasználó törölte a terv **áttekintő** oldalának **Törlés** parancsát, és nem tették közzé a piszkozatot.</br>*Ez az esemény csak a csomagokat támogató csomagokra vonatkozik*.    |
-|Kezdeményezett terv leállítása: *csomag neve*    |A felhasználó a terv **áttekintése** lapon lévő **értékesítés leállítása** lehetőség kiválasztásával kezdeményezte a csomag leállítását.</br>*Ez az esemény csak a csomagokat támogató csomagokra vonatkozik*.    |
-|Terv visszavonása – eladás: *terv neve*    |A felhasználó megszakította a csomag leállítását. Ehhez válassza az **értékesítés leállítása** a **terv áttekintése** lapról lehetőséget.</br>*Ez az esemény csak a csomagokat támogató csomagokra vonatkozik*.    |
+|Ajánlat létrehozva    |Az ajánlat a partner Centerben lett létrehozva. A felhasználó az ajánlat típusát, az ajánlat azonosítóját és az ajánlati aliast választotta a **kereskedelmi piactér**  >  **áttekintésében** .    |
+|Terv létrehozva: *terv neve*    |A felhasználó létrehozta az új csomagot a csomag **áttekintése** lapon a terv azonosítója és a terv nevének megadásával.</br>*Ez az esemény csak a csomagokat támogató csomagokra vonatkozik* .    |
+|Csomag törölve    |A felhasználó törölte a terv **áttekintő** oldalának **Törlés** parancsát, és nem tették közzé a piszkozatot.</br>*Ez az esemény csak a csomagokat támogató csomagokra vonatkozik* .    |
+|Kezdeményezett terv leállítása: *csomag neve*    |A felhasználó a terv **áttekintése** lapon lévő **értékesítés leállítása** lehetőség kiválasztásával kezdeményezte a csomag leállítását.</br>*Ez az esemény csak a csomagokat támogató csomagokra vonatkozik* .    |
+|Terv visszavonása – eladás: *terv neve*    |A felhasználó megszakította a csomag leállítását. Ehhez válassza az **értékesítés leállítása** a **terv áttekintése** lapról lehetőséget.</br>*Ez az esemény csak a csomagokat támogató csomagokra vonatkozik* .    |
 |Előnézeti ajánlat elküldve    |A felhasználók a **felülvizsgálat és közzététel** lap Közzététel elemére kattintva elküldték az ajánlatot az előzetes **verzióra** .    |
-|Elindított elküldés az előnézet lemondásához    |Egy felhasználó az ajánlat közzétételének megszakítása az előzetes verzióra való beküldést követően az **ajánlat áttekintése** lapon, a **Közzététel megszakítása** lehetőség választásával.</br>*Ez az esemény a törlési kérelem feldolgozásakor jelenik meg*.    |
-|Megszakított küldés az előzetes verzióra    |A felhasználó megszakította az ajánlat közzétételét az előzetes **verzióra, ha a közzététel megszakítva** lehetőséget választja az **ajánlat áttekintése** lapon az előnézet megadását követően.</br>*Ez az esemény a törlési kérelem sikeres feldolgozását követően jelenik meg*.    |
+|Elindított elküldés az előnézet lemondásához    |Egy felhasználó az ajánlat közzétételének megszakítása az előzetes verzióra való beküldést követően az **ajánlat áttekintése** lapon, a **Közzététel megszakítása** lehetőség választásával.</br>*Ez az esemény a törlési kérelem feldolgozásakor jelenik meg* .    |
+|Megszakított küldés az előzetes verzióra    |A felhasználó megszakította az ajánlat közzétételét az előzetes **verzióra, ha a közzététel megszakítva** lehetőséget választja az **ajánlat áttekintése** lapon az előnézet megadását követően.</br>*Ez az esemény a törlési kérelem sikeres feldolgozását követően jelenik meg* .    |
 |Bejelentkezés a Go Live szolgáltatásba    |A felhasználók a kereskedelmi piactéren közzétették az ajánlatot, ha az **ajánlat áttekintése** oldalon a **Go Live** lehetőségre kattintanak.    |
-|Közzététel kezdeményezése a piactéren – visszavonás    |A felhasználó az ajánlat közzétételének megszakítására kérte a **Közzététel megszakítása** az **ajánlat áttekintése** lapon, miután a bejelentkezés megszakítva állapotba lép.</br>*Ez az esemény a törlési kérelem feldolgozásakor jelenik meg*.    |
-|A kereskedelmi piactéren való közzététel megszakítva    |A felhasználó megszakította az ajánlat közzétételét. ehhez kattintson a **Közzététel megszakítása** lehetőségre az **ajánlat áttekintése** oldalon a bejelentkezés előtt.</br>*Ez az esemény a törlési kérelem sikeres feldolgozását követően jelenik meg*.    |
-|Privát célközönség szinkronizálása    |A felhasználó frissítette és szinkronizálta a privát célközönséget a **saját célközönség szinkronizálása** lehetőség kiválasztásával a **terv áttekintése** lapon vagy a **csomag díjszabása & rendelkezésre állási** lapon.</br>*Ez az esemény csak a privát terveket támogató ajánlati típusokra vonatkozik*.    |
+|Közzététel kezdeményezése a piactéren – visszavonás    |A felhasználó az ajánlat közzétételének megszakítására kérte a **Közzététel megszakítása** az **ajánlat áttekintése** lapon, miután a bejelentkezés megszakítva állapotba lép.</br>*Ez az esemény a törlési kérelem feldolgozásakor jelenik meg* .    |
+|A kereskedelmi piactéren való közzététel megszakítva    |A felhasználó megszakította az ajánlat közzétételét. ehhez kattintson a **Közzététel megszakítása** lehetőségre az **ajánlat áttekintése** oldalon a bejelentkezés előtt.</br>*Ez az esemény a törlési kérelem sikeres feldolgozását követően jelenik meg* .    |
+|Privát célközönség szinkronizálása    |A felhasználó frissítette és szinkronizálta a privát célközönséget a **saját célközönség szinkronizálása** lehetőség kiválasztásával a **terv áttekintése** lapon vagy a **csomag díjszabása & rendelkezésre állási** lapon.</br>*Ez az esemény csak a privát terveket támogató ajánlati típusokra vonatkozik* .    |
 |Eladási ajánlat leállítása    |A felhasználó leállította az ajánlat értékesítését az **ajánlat áttekintése** oldalon található **értékesítés leállítása** lehetőség kiválasztásával.    |
 
 > [!NOTE]

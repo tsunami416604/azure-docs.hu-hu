@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: dddcdd52709c634f0dcf67cb982804f5556e88b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39a0830806d2d9c7358d175cae703e9c81c45b02
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548335"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130017"
 ---
 # <a name="register-a-saas-application"></a>SaaS-alkalmazás regisztrálása
 
@@ -20,7 +20,7 @@ Ez a cikk azt ismerteti, hogyan regisztrálhat egy SaaS-alkalmazást a Microsoft
 
 Az Azure Marketplace nem kényszeríti az SaaS-szolgáltatás által a végfelhasználók számára használt hitelesítési módszer korlátozásait. Az alábbi folyamat csak az SaaS szolgáltatás Azure piactéren történő hitelesítéséhez szükséges.
 
-További információ az Azure AD-ről (Active Directory): [Mi az a hitelesítés](../../active-directory/develop/authentication-scenarios.md)?
+További információ az Azure AD-ről (Active Directory): [Mi az a hitelesítés](../../active-directory/develop/authentication-vs-authorization.md)?
 
 ## <a name="register-an-azure-ad-secured-app"></a>Azure AD-védelemmel ellátott alkalmazás regisztrálása
 
@@ -28,22 +28,22 @@ Az Azure AD képességeit felhasználó alkalmazásokat először regisztrálni 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Ha a fiókja többhöz biztosít hozzáférést, kattintson a fiókra a jobb felső sarokban, és állítsa be a portál-munkamenetet a kívánt Azure AD-bérlőre.
-3. A bal oldali navigációs ablaktáblán kattintson a **Azure Active Directory** szolgáltatásra, majd a **Alkalmazásregisztrációk**elemre, majd az **új alkalmazás regisztrálása**elemre.
+3. A bal oldali navigációs ablaktáblán kattintson a **Azure Active Directory** szolgáltatásra, majd a **Alkalmazásregisztrációk** elemre, majd az **új alkalmazás regisztrálása** elemre.
 
     ![SaaS AD-alkalmazások regisztrációi](./media/saas-offer-app-registration-v1.png)
 
 4. A létrehozás lapon adja meg az alkalmazás \' regisztrációs adatait:
-    -   **Név**: adjon meg egy értelmes alkalmazásnév-nevet
-    -   **Alkalmazás típusa**:  
+    -   **Név** : adjon meg egy értelmes alkalmazásnév-nevet
+    -   **Alkalmazás típusa** :  
         
-        Válassza ki a **webalkalmazást/API** -t az [ügyfélalkalmazások](../../active-directory/develop/active-directory-dev-glossary.md#client-application)számára), valamint az [erőforrás-/API-alkalmazásokat](../../active-directory/develop/active-directory-dev-glossary.md#resource-server), amelyek a biztonságos kiszolgálóra vannak telepítve. Ez a beállítás a bizalmas [webes ügyfelek](../../active-directory/develop/active-directory-dev-glossary.md#web-client)OAuth, valamint a nyilvános, [felhasználói ügynökön alapuló ügyfelek](../../active-directory/develop/active-directory-dev-glossary.md#user-agent-based-client)esetében használatos.
+        Válassza ki a **webalkalmazást/API** -t az [ügyfélalkalmazások](../../active-directory/develop/developer-glossary.md#client-application)számára), valamint az [erőforrás-/API-alkalmazásokat](../../active-directory/develop/developer-glossary.md#resource-server), amelyek a biztonságos kiszolgálóra vannak telepítve. Ez a beállítás a bizalmas [webes ügyfelek](../../active-directory/develop/developer-glossary.md#web-client)OAuth, valamint a nyilvános, [felhasználói ügynökön alapuló ügyfelek](../../active-directory/develop/developer-glossary.md#user-agent-based-client)esetében használatos.
         Egyazon alkalmazás az ügyfelet és az erőforrást/API-t is elérhetővé teheti.
 
         A webalkalmazások konkrét példái között tekintse meg az [Azure ad fejlesztői útmutató](../../active-directory/develop/index.yml)első [lépések](../../active-directory/develop/quickstart-create-new-tenant.md) szakaszában elérhető gyors útmutatókat.
 
-5. Ha elkészült, kattintson a **regisztráció**gombra.  Az Azure AD egy egyedi *alkalmazás-azonosítót* rendel az új alkalmazáshoz. Javasoljuk, hogy regisztráljon egy olyan alkalmazást, amely csak az API-t és egyetlen bérlőt is elér.
+5. Ha elkészült, kattintson a **regisztráció** gombra.  Az Azure AD egy egyedi *alkalmazás-azonosítót* rendel az új alkalmazáshoz. Javasoljuk, hogy regisztráljon egy olyan alkalmazást, amely csak az API-t és egyetlen bérlőt is elér.
 
-6. Az ügyfél titkos kulcsának létrehozásához navigáljon a **tanúsítványok & titkok lapra** , és kattintson az **+ új ügyfél titka**elemre.  Ügyeljen arra, hogy a titkos értéket a kódban használt értékre másolja.
+6. Az ügyfél titkos kulcsának létrehozásához navigáljon a **tanúsítványok & titkok lapra** , és kattintson az **+ új ügyfél titka** elemre.  Ügyeljen arra, hogy a titkos értéket a kódban használt értékre másolja.
 
 Az **Azure ad-alkalmazás azonosítója** a KÖZZÉTEVŐ-azonosítóhoz van társítva, ezért győződjön meg arról, hogy ugyanazt az *alkalmazás-azonosítót* használja az összes ajánlatban.
 
@@ -62,7 +62,7 @@ További információ ezekről a jogkivonatokról: [Azure Active Directory hozz�
 
 Közzététel<br>
 
-##### <a name="request-url"></a>*Kérelem URL-címe* 
+##### <a name="request-url"></a>*URL-cím kérése* 
 
 `https://login.microsoftonline.com/*{tenantId}*/oauth2/token`
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
 ms.date: 10/19/2020
-ms.openlocfilehash: b927e90c60110d6922649b75b6549528a2a9a40f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ead367568762d4b76de7164feb56b7a31cd53e0d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284274"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129116"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>SAS URI létrehozása virtuálisgép-rendszerképhez
 
@@ -34,12 +34,12 @@ A SAS-cím (URL) létrehozásához két gyakori eszköz használható:
 
 ### <a name="using-tool-1-azure-storage-explorer"></a>Az 1. eszköz használata: Azure Storage Explorer
 
-1. Nyissa meg a **Storage-fiókját**.
-1. Nyissa meg **Storage Explorer**.
+1. Nyissa meg a **Storage-fiókját** .
+1. Nyissa meg **Storage Explorer** .
 
     :::image type="content" source="media/create-vm/storge-account-explorer.png" alt-text="Storage-fiók ablaka.":::
 
-3. A **tárolóban**kattintson a jobb gombbal a VHD-fájlra, és válassza a **megosztás hozzáférési aláírásának beolvasása**elemet.
+3. A **tárolóban** kattintson a jobb gombbal a VHD-fájlra, és válassza a **megosztás hozzáférési aláírásának beolvasása** elemet.
 4. A **megosztott hozzáférés aláírása** párbeszédpanelen hajtsa végre a következő mezőket:
 
     1. Kezdési idő – a VHD-hozzáférés engedélyének kezdő dátuma. Adja meg azt a dátumot, amely egy nappal az aktuális dátum előtt van.
@@ -49,7 +49,7 @@ A SAS-cím (URL) létrehozásához két gyakori eszköz használható:
 
     ![Megosztott hozzáférés aláírása párbeszédpanel.](media/vm/create-sas-uri-storage-explorer.png)
 
-5. Ha a társított SAS URI-t szeretné létrehozni ehhez a VHD-hez, válassza a **Létrehozás**lehetőséget.
+5. Ha a társított SAS URI-t szeretné létrehozni ehhez a VHD-hez, válassza a **Létrehozás** lehetőséget.
 6. Másolja ki az URI-t, és mentse a fájlt egy biztonságos helyen lévő szövegfájlba. Ez a generált SAS URI a tároló szintű hozzáféréshez szükséges. A virtuális merevlemez nevének hozzáadásához szerkessze a szövegfájlt.
 7. Szúrja be a VHD-nevet a SAS URI-ban lévő VHD-karakterlánc után (adja meg a perjelet). A végső SAS URI-nak így kell kinéznie:
 
@@ -59,7 +59,7 @@ A SAS-cím (URL) létrehozásához két gyakori eszköz használható:
 
 ### <a name="using-tool-2-azure-cli"></a>A 2. eszköz használata: Azure CLI
 
-1. Töltse le és telepítse a [Microsoft Azure CL](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)I-t. A verziók a Windows, a macOS és a Linux különböző disztribúciói számára érhetők el.
+1. Töltse le és telepítse a [Microsoft Azure CL](/cli/azure/install-azure-cli)I-t. A verziók a Windows, a macOS és a Linux különböző disztribúciói számára érhetők el.
 2. Hozzon létre egy PowerShell-fájlt (. ps1 kiterjesztésű fájlt), másolja a következő kódot, majd mentse helyileg.
 
     ```JSON
@@ -81,8 +81,8 @@ A SAS-cím (URL) létrehozásához két gyakori eszköz használható:
 1. Mentse a módosításokat.
 2. A következő módszerek egyikének használatával futtassa ezt a parancsfájlt rendszergazdai jogosultságokkal SAS-kapcsolati karakterlánc létrehozásához a tároló szintű hozzáféréshez:
 
-    - Futtassa a szkriptet a-konzolról. A Windowsban kattintson a jobb gombbal a parancsfájlra, és válassza a **Futtatás rendszergazdaként**lehetőséget.
-    - Futtassa a szkriptet egy PowerShell-parancsfájl szerkesztőjéből, például [Windows PowerShell integrált parancsprogram-kezelési környezet](https://docs.microsoft.com/powershell/scripting/components/ise/introducing-the-windows-powershell-ise). Ezen a képernyőn látható az SAS-kapcsolatok karakterláncának létrehozása a szerkesztőben:
+    - Futtassa a szkriptet a-konzolról. A Windowsban kattintson a jobb gombbal a parancsfájlra, és válassza a **Futtatás rendszergazdaként** lehetőséget.
+    - Futtassa a szkriptet egy PowerShell-parancsfájl szerkesztőjéből, például [Windows PowerShell integrált parancsprogram-kezelési környezet](/powershell/scripting/components/ise/introducing-the-windows-powershell-ise). Ezen a képernyőn látható az SAS-kapcsolatok karakterláncának létrehozása a szerkesztőben:
 
     [![SAS-kapcsolatok karakterláncának létrehozása a PowerShell-szerkesztőben](media/vm/create-sas-uri-power-shell-ise.png)](media/vm/create-sas-uri-power-shell-ise.png#lightbox)
 

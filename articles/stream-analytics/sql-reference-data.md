@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 1ae5908fe3ab95dcd62da976988bd7ce107217e5
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 1826b66b0548b7567af59de64549c7eb700025c3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027377"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130901"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Azure Stream Analytics feladatokhoz tartozó SQL Database hivatkozási adatainak használata
 
@@ -173,11 +173,11 @@ A különbözeti lekérdezés használatakor a rendszer [Azure SQL Database idei
    Vegye figyelembe, hogy Stream Analytics futtatókörnyezet időszakosan futtathatja a pillanatkép-lekérdezést az ellenőrzőpontok tárolására szolgáló különbözeti lekérdezésen kívül is.
 
 ## <a name="test-your-query"></a>A lekérdezés tesztelése
-   Fontos ellenőrizni, hogy a lekérdezés visszaadja-e a várt adatkészletet, amelyet a Stream Analytics-feladatok hivatkozási adatként fognak használni. A lekérdezés teszteléséhez nyissa meg a bekapcsolást a portálon, a feladatok szakaszban. Ezután kiválaszthatja a mintaadatok a SQL Database hivatkozás bemenetén. A minta elérhetővé válása után letöltheti a fájlt, és megtekintheti, hogy a visszaadott információk a várt módon működnek-e. Ha optimalizálni szeretné a fejlesztési és tesztelési iterációkat, javasoljuk, hogy használja a [Visual Studio stream Analytics eszközeit](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install). Azt is megteheti, hogy az előnyben részesített bármely más eszközt, hogy a lekérdezés a megfelelő eredményeket adja vissza Azure SQL Database, majd használja azt a Stream Analytics feladatokban. 
+   Fontos ellenőrizni, hogy a lekérdezés visszaadja-e a várt adatkészletet, amelyet a Stream Analytics-feladatok hivatkozási adatként fognak használni. A lekérdezés teszteléséhez nyissa meg a bekapcsolást a portálon, a feladatok szakaszban. Ezután kiválaszthatja a mintaadatok a SQL Database hivatkozás bemenetén. A minta elérhetővé válása után letöltheti a fájlt, és megtekintheti, hogy a visszaadott információk a várt módon működnek-e. Ha optimalizálni szeretné a fejlesztési és tesztelési iterációkat, javasoljuk, hogy használja a [Visual Studio stream Analytics eszközeit](./stream-analytics-tools-for-visual-studio-install.md). Azt is megteheti, hogy az előnyben részesített bármely más eszközt, hogy a lekérdezés a megfelelő eredményeket adja vissza Azure SQL Database, majd használja azt a Stream Analytics feladatokban. 
 
 ### <a name="test-your-query-with-visual-studio-code"></a>A lekérdezés tesztelése a Visual Studio Code-ban
 
-   Telepítse [Azure stream Analytics eszközöket](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) és [SQL Server (MSSQL)](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) a Visual Studio Code-ra, és állítsa be az ASA-projektet. További információ: gyors útmutató [: Azure stream Analytics-feladatok létrehozása a Visual Studio Code-ban](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code) és a [SQL Server (MSSQL) bővítmény oktatóanyagában](https://aka.ms/mssql-getting-started).
+   Telepítse [Azure stream Analytics eszközöket](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) és [SQL Server (MSSQL)](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) a Visual Studio Code-ra, és állítsa be az ASA-projektet. További információ: gyors útmutató [: Azure stream Analytics-feladatok létrehozása a Visual Studio Code-ban](./quick-create-visual-studio-code.md) és a [SQL Server (MSSQL) bővítmény oktatóanyagában](/sql/tools/visual-studio-code/sql-server-develop-use-vscode).
 
 1. Adja meg az SQL-hivatkozási adatok bemenetét.
    

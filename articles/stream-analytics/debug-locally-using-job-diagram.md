@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: e9d6bbdf325c0da96b81c1f2146da284ea744def
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: c32ba468979e4566d8e349d481eddca7d407b659
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218255"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130986"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Azure Stream Analytics lekérdezések hibakeresése helyileg a Visual Studióban a feladatok diagramjának használatával
 
@@ -32,7 +32,7 @@ Ebből a rövid útmutatóból megtudhatja [, hogyan](stream-analytics-quick-cre
 > [!NOTE]
 > Ha a feladatot helyi projektbe exportálja, és egy élő bemeneti adatfolyamon szeretne tesztelni, akkor újra meg kell adnia az összes bemenet hitelesítő adatait.  
 
-Válassza ki a bemeneti és kimeneti forrást a parancsfájl-szerkesztőből, és válassza a **helyi Futtatás**lehetőséget. A feladatütemezés a jobb oldalon jelenik meg.
+Válassza ki a bemeneti és kimeneti forrást a parancsfájl-szerkesztőből, és válassza a **helyi Futtatás** lehetőséget. A feladatütemezés a jobb oldalon jelenik meg.
 
 ### <a name="view-the-intermediate-result-set"></a>A köztes eredményhalmaz megtekintése  
 
@@ -119,7 +119,7 @@ A felugró konzolon megjelennek a feladatok szintjének egyéb mérőszámai. Ha
 
 * A hitelesítési modellre vonatkozó korlátozások miatt nem támogatottak a Power BI és Azure Data Lake Storage Gen1 kimeneti mosogatók.
 
-* Csak a Felhőbeli beviteli lehetőségek támogatják az [időszabályzatokat](stream-analytics-out-of-order-and-late-events.md) , míg a helyi beviteli beállítások nem.
+* Csak a Felhőbeli beviteli lehetőségek támogatják az [időszabályzatokat](./stream-analytics-time-handling.md) , míg a helyi beviteli beállítások nem.
 
 ## <a name="next-steps"></a>Következő lépések
 

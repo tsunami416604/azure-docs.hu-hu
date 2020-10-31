@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/20/2020
+ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: a5e7e46041e339646e4813a4cce61046f2a57e5e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2102ea1ef4afb6d7f3ce96e4cd7ead0e7af08bf0
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319071"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129439"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a 8x8
 
@@ -25,8 +25,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a 8x8 a Azure Acti
 * A 8x8-hez hozzáférő Azure AD-beli vezérlés.
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a 8x8 az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,8 +42,6 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * a 8x8 támogatja **az SP és a identitásszolgáltató** által KEZDEMÉNYEZett SSO
 
-* A 8x8 konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
-
 > [!NOTE]
 > Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
 
@@ -53,18 +49,18 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 A 8x8 Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a 8x8 a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **8x8** kifejezést a keresőmezőbe.
 1. Válassza ki a **8x8** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-sso-for-8x8"></a>Azure AD SSO konfigurálása és tesztelése a 8x8-hez
 
-Konfigurálja és tesztelje az Azure AD SSO-t a 8x8 a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a 8x8-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t a 8x8 a **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a 8x8-ben.
 
-Az Azure AD SSO és a 8x8 konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO és a 8x8 konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
@@ -77,8 +73,8 @@ Az Azure AD SSO és a 8x8 konfigurálásához és teszteléséhez hajtsa végre 
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/) **8x8** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A Azure Portal **8x8** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -101,25 +97,25 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a 8x8.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **8x8**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **8x8** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -130,12 +126,12 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 Az oktatóanyag következő része attól függ, hogy milyen típusú előfizetéssel rendelkezik a 8x8.
 
-* A 8x8-kiadások és az X sorozatú, az Configuration Manager for adminisztrációt használó ügyfelek esetében tekintse meg a következőt: [configure 8x8 Configuration Manager](#configure-8x8-configuration-manager).
+* A 8x8-kiadások és az X sorozatú, az Configuration Manager for adminisztrációt használó ügyfelek esetében tekintse meg a [8X8 felügyeleti konzol konfigurálása](#configure-8x8-admin-console)című témakört.
 * A fiókkezelés felügyeletét használó Virtual Office-ügyfelek esetében tekintse meg a [8X8 Account Manager konfigurálását](#configure-8x8-account-manager)ismertető témakört.
 
-### <a name="configure-8x8-configuration-manager"></a>8x8 Configuration Manager konfigurálása
+### <a name="configure-8x8-admin-console"></a>A 8x8 felügyeleti konzol konfigurálása
 
-1. A 8x8 belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
+1. A 8x8 belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva.
 
     ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
@@ -143,27 +139,27 @@ Az oktatóanyag következő része attól függ, hogy milyen típusú előfizet�
 
     ![Telepítési konfiguráció](common/setup-sso.png)
 
-1. Ha manuálisan szeretné beállítani a 8x8, jelentkezzen be a 8x8 [Configuration Manager](https://vo-cm.8x8.com/) rendszergazdaként.
+1. Ha manuálisan szeretné beállítani a 8x8, jelentkezzen be a 8x8 [felügyeleti konzolra](https://admin.8x8.com/) rendszergazdaként.
 
-1. A kezdőlapon kattintson az **Identitáskezelés**elemre.
+1. A kezdőlapon kattintson az **Identitáskezelés** elemre.
 
     ![Képernyőkép, amely kiemeli az Identitáskezelés csempéjét.](./media/8x8virtualoffice-tutorial/configure1.png)
 
-1. Jelölje be **az egyszeri bejelentkezés (SSO)** jelölőnégyzetet, majd válassza a **Microsoft Azure ad**lehetőséget.
+1. Jelölje be **az egyszeri bejelentkezés (SSO)** jelölőnégyzetet, majd válassza a **Microsoft Azure ad** lehetőséget.
 
     ![Képernyőfelvétel: az egyszeri bejelentkezés (SSO) és a Microsoft Azure AD lehetőségek.](./media/8x8virtualoffice-tutorial/configure2.png)
 
-1. Másolja ki a három URL-címet és az aláíró tanúsítványt az Azure AD-ben az **egyszeri Sign-On beállítása az SAML** -lapra az 8x8 CONFIGURATION Manager **Microsoft Azure ad SAML-beállítások** szakaszában.
+1. Másolja ki a három URL-címet és az aláíró tanúsítványt az Azure AD-ben az **egyszeri Sign-On beállítása az SAML** -oldalról a 8X8 felügyeleti konzoljának **Microsoft Azure ad SAML-beállítások** szakaszában.
 
-    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure3.png)
+    ![8x8 felügyeleti konzol](./media/8x8virtualoffice-tutorial/configure3.png)
 
-    a. Másolja a **bejelentkezési URL-címet** a **identitásszolgáltató bejelentkezési URL-címére**.
+    a. Másolja a **bejelentkezési URL-címet** a **identitásszolgáltató bejelentkezési URL-címére** .
 
-    b. Másolja az **Azure ad-azonosítót** a **identitásszolgáltató kiállító URL-CÍMÉRE/urn-re**.
+    b. Másolja az **Azure ad-azonosítót** a **identitásszolgáltató kiállító URL-CÍMÉRE/urn-re** .
 
     c. A **kijelentkezési URL-cím** másolása **identitásszolgáltató KIJELENTKEZÉSI URL-címre**
 
-    d. Töltse le a **tanúsítványt (Base64)** , és töltse fel a **tanúsítványba**.
+    d. Töltse le a **tanúsítványt (Base64)** , és töltse fel a **tanúsítványba** .
 
     e. Kattintson a **Mentés** gombra.
 
@@ -187,7 +183,7 @@ Az oktatóanyag következő része attól függ, hogy milyen típusú előfizet�
 
     ![Képernyőkép, amely kiemeli az egyszeri bejelentkezés lehetőségét.](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
 
-1. Válassza az **egyszeri bejelentkezés** lehetőséget a hitelesítési módszerek területen, majd kattintson az **SAML**elemre.
+1. Válassza az **egyszeri bejelentkezés** lehetőséget a hitelesítési módszerek területen, majd kattintson az **SAML** elemre.
 
     ![Képernyőkép, amely kiemeli az SAML-t az egyszeri bejelentkezés alatt.](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
 
@@ -211,20 +207,21 @@ Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a 8x8-ben. E
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-Ha a hozzáférési panelen a 8x8 csempére kattint, automatikusan be kell jelentkeznie arra a 8x8, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>Az SP inicializálva:
 
-## <a name="additional-resources"></a>További források
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a 8x8 bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot.  
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
+* Lépjen közvetlenül a 8x8 bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a 8x8, amelyhez be szeretné állítani az egyszeri bejelentkezést 
 
-- [A 8x8 kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+A Microsoft Access panel használatával bármilyen módban tesztelheti az alkalmazást. Ha a hozzáférési panelen a 8x8 csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie arra a 8x8, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
 
-- [A 8x8 és a speciális láthatóság és vezérlők elleni védelem](/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>Következő lépések
+
+A 8x8 konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

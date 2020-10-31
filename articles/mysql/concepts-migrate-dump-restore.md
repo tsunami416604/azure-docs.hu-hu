@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 2/27/2020
-ms.openlocfilehash: 7cc18980d1dddc33ddf98f06de70449dee22e2ac
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.date: 10/30/2020
+ms.openlocfilehash: 336021792b7e5340e35a0c59e0f113d4dad9307d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92484593"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128963"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>MySQL-adatbázis migrálása a MySQL-hez készült Azure Database-be memóriakép és visszaállítás használatával
 
@@ -20,6 +20,8 @@ ms.locfileid: "92484593"
 Ez a cikk két gyakori módszert ismertet a Azure Database for MySQL adatbázisainak biztonsági mentésére és visszaállítására
 - Memóriakép és visszaállítás a parancssorból (mysqldump használatával)
 - Memóriakép és visszaállítás a PHPMyAdmin használatával
+
+Az [adatbázis-áttelepítési útmutatóban](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide) részletes információkat találhat az adatbázisok Azure Database for MySQLba való áttelepítésével kapcsolatos információkról és használatáról. Ez az útmutató útmutatást nyújt az Azure-ba való MySQL-áttelepítés sikeres megtervezéséhez és végrehajtásához.
 
 ## <a name="before-you-begin"></a>Előkészületek
 A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
@@ -168,5 +170,5 @@ Az ismert problémákkal, tippekkel és trükkökkel kapcsolatban javasoljuk, ho
 
 ## <a name="next-steps"></a>Következő lépések
 - [Alkalmazások Összekötése Azure Database for MySQLhoz](./howto-connection-string.md).
-- Az adatbázisok Azure Database for MySQLre való áttelepítésével kapcsolatos további információkért tekintse meg az [adatbázis-áttelepítési útmutatót](https://aka.ms/datamigration).
+- Az adatbázisok Azure Database for MySQLre való áttelepítésével kapcsolatos további információkért tekintse meg az [adatbázis-áttelepítési útmutatót](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide).
 - Ha 1 TBs-nál több adatbázis-mérettel rendelkező nagyméretű adatbázisokat szeretne áttelepíteni, érdemes lehet olyan közösségi eszközöket használni, mint például a **mydumper/myloader** , amely támogatja a párhuzamos exportálást és importálást. Megtudhatja [, hogyan telepíthet át nagyméretű MySQL-adatbázisokat](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699).

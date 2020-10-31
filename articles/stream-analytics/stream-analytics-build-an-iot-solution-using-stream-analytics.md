@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: e0e2244d8c70ca2e6d379e741d543d9cd260b7f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87ec59d19fb442293fb7f14d110cf513015ec9f7
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044583"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130799"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>IoT-megoldás létrehozása Stream Analytics használatával
 
@@ -134,7 +134,7 @@ Több olyan erőforrás is van, amely egyszerűen üzembe helyezhető egy erőfo
 
 9. Válassza a **vásárlás** lehetőséget a sablon telepítéséhez.
 
-10. Néhány pillanat múlva megjelenik egy értesítés, amely megerősíti, hogy az üzemelő **példány sikeresen**megtörtént.
+10. Néhány pillanat múlva megjelenik egy értesítés, amely megerősíti, hogy az üzemelő **példány sikeresen** megtörtént.
 
 ### <a name="review-the-azure-stream-analytics-tollapp-resources"></a>Tekintse át a Azure Stream Analytics TollApp-erőforrásait
 
@@ -163,7 +163,7 @@ Több olyan erőforrás is van, amely egyszerűen üzembe helyezhető egy erőfo
 
    A lekérdezés szándékának parafrázisa érdekében tegyük fel, hogy meg kell számolni a díjköteles standot megadható járművek számát. Mivel az autópálya-autópályadíjat futtató fülke folyamatos streamtel rendelkezik, a beléptetési események olyan adatfolyamok, amelyek soha nem állnak le. A stream számszerűsítése érdekében meg kell határoznia egy "időszakot" a méréshez. Pontosítjuk a kérdést, hogy a "hány jármű adja meg a díjköteles standot három percenként?" Ezt általában a kiesések száma is említi.
 
-   Amint láthatja, a Azure Stream Analytics egy olyan lekérdezési nyelvet használ, amely hasonló az SQL-hez, és néhány bővítmény hozzáadásával megadja a lekérdezés időszerű szempontjait.  További részletekért olvassa el a lekérdezésben használt [Időkezelési](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) és [ablak](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) -létrehozási konstrukciókat.
+   Amint láthatja, a Azure Stream Analytics egy olyan lekérdezési nyelvet használ, amely hasonló az SQL-hez, és néhány bővítmény hozzáadásával megadja a lekérdezés időszerű szempontjait.  További részletekért olvassa el a lekérdezésben használt [Időkezelési](/stream-analytics-query/time-management-azure-stream-analytics) és [ablak](/stream-analytics-query/windowing-azure-stream-analytics) -létrehozási konstrukciókat.
 
 3. Vizsgálja meg a TollApp-minta feladatának bemeneteit. A jelenlegi lekérdezésben csak a EntryStream-bevitelt használja a rendszer.
    - A **EntryStream** -bemenet egy olyan Event hub-kapcsolat, amely minden alkalommal, amikor egy autó egy Tollbooth belép az autópályán. A minta részét képező webalkalmazás létrehozza az eseményeket, és ezek az események várólistára kerülnek ebben az Event hub-ban. Vegye figyelembe, hogy ezt a bemenetet a streaming lekérdezés FROM záradékában kérdezi le a rendszer.
@@ -176,20 +176,20 @@ Több olyan erőforrás is van, amely egyszerűen üzembe helyezhető egy erőfo
 ## <a name="start-the-tollapp-streaming-job"></a>Az TollApp streaming-feladatok elindítása
 A folyamatos átviteli feladat elindításához kövesse az alábbi lépéseket:
 
-1. A feladatokhoz tartozó **Áttekintés** lapon válassza az **Indítás**lehetőséget.
+1. A feladatokhoz tartozó **Áttekintés** lapon válassza az **Indítás** lehetőséget.
 
-2. A **kezdési feladatok** ablaktáblán válassza a **most**lehetőséget.
+2. A **kezdési feladatok** ablaktáblán válassza a **most** lehetőséget.
 
 3. Néhány pillanat elteltével a feladatok futtatása után a folyamatos átviteli feladatok **Áttekintés** lapján tekintse meg a **figyelési** grafikont. A gráfnak több ezer bemeneti eseményt és több tízezer kimeneti eseményt kell megjelenítenie.
 
 ## <a name="review-the-cosmosdb-output-data"></a>A CosmosDB kimeneti adatai áttekintése
 1. Keresse meg a TollApp erőforrásokat tartalmazó erőforráscsoportot.
 
-2. Válassza ki a **tollapp \<random\> -Cosmos**nevű Azure Cosmos db fiókot.
+2. Válassza ki a **tollapp \<random\> -Cosmos** nevű Azure Cosmos db fiókot.
 
 3. Válassza ki a **adatkezelő** fejlécet a adatkezelő lap megnyitásához.
 
-4. Bontsa ki a **tollAppDatabase**  >  **tollAppCollection**  >  **dokumentumait**.
+4. Bontsa ki a **tollAppDatabase**  >  **tollAppCollection**  >  **dokumentumait** .
 
 5. Az azonosítók listájában számos dokumentum jelenik meg, amint a kimenet elérhetővé válik.
 
@@ -214,7 +214,7 @@ AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 
 ### <a name="to-update-the-tollapp-streaming-job-query-syntax"></a>Az TollApp streaming Job lekérdezési szintaxisának frissítése:
 
-1. A feladatokhoz tartozó **Áttekintés** lapon válassza a **Leállítás**lehetőséget.
+1. A feladatokhoz tartozó **Áttekintés** lapon válassza a **Leállítás** lehetőséget.
 
 2. Várjon néhány percet, amíg megtörténik az értesítés, hogy a feladatot leállították.
 
@@ -224,9 +224,9 @@ AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 
 5. A lekérdezés mentéséhez válassza a **Mentés** lehetőséget. Erősítse meg az **Igen** gombot a módosítások mentéséhez.
 
-6. A feladatokhoz tartozó **Áttekintés** lapon válassza az **Indítás**lehetőséget.
+6. A feladatokhoz tartozó **Áttekintés** lapon válassza az **Indítás** lehetőséget.
 
-7. A **kezdési feladatok** ablaktáblán válassza a **most**lehetőséget.
+7. A **kezdési feladatok** ablaktáblán válassza a **most** lehetőséget.
 
 ### <a name="review-the-total-time-in-the-output"></a>A kimenetben lévő teljes idő áttekintése
 Az előző szakaszban leírt lépések megismétlésével tekintse át a CosmosDB kimeneti adatait a folyamatos átviteli feladatokból. Tekintse át a legújabb JSON-dokumentumokat.
@@ -301,9 +301,9 @@ A folyamatos átviteli feladatok vertikális felskálázása több folyamatos á
 
 2. Frissítse a lekérdezési szintaxist a **< > lekérdezés** lapon, és mentse a módosításokat.
 
-3. A folyamatos átviteli feladatban a CONFIGURE (Konfigurálás) fejléc alatt válassza a **skála**lehetőséget.
+3. A folyamatos átviteli feladatban a CONFIGURE (Konfigurálás) fejléc alatt válassza a **skála** lehetőséget.
 
-4. Csúsztassa a **folyamatos átviteli egységek** csúszkát 1-től 6-ra. A folyamatos átviteli egységek határozzák meg a feladatokhoz tartozó számítási teljesítmény mennyiségét. Kattintson a **Mentés** gombra.
+4. Csúsztassa a **folyamatos átviteli egységek** csúszkát 1-től 6-ra. A folyamatos átviteli egységek határozzák meg a feladatokhoz tartozó számítási teljesítmény mennyiségét. Válassza a **Mentés** lehetőséget.
 
 5. **Indítsa el** a folyamatos átviteli feladatot a további skála bemutatásához. A Azure Stream Analytics több számítási erőforráson keresztül osztja el a munkát, és jobb teljesítményt érhet el, és az erőforrások közötti munkát a PARTITION BY záradékban kijelölt oszlop használatával particionálja.
 

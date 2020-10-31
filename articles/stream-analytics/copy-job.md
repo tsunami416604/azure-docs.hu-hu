@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/11/2019
-ms.openlocfilehash: e0214cb9515a5974f1de9a27760dc037f7593f30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba63358347cf9722d2cafa35598b9b3b37f49dc3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892292"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129456"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>Azure Stream Analytics feladatok másolása vagy biztonsági mentése
 
-A Visual Studio Code vagy a Visual Studio használatával másolhatja vagy biztonsági másolatot készíthet az üzembe helyezett Azure Stream Analytics-feladatokról. A feladatok másik régióba való másolása nem másolja az utolsó kimeneti időpontot. Ezért a másolt feladatok indításakor nem használható a [**legutóbbi leállítási**](https://docs.microsoft.com/azure/stream-analytics/start-job#start-options) beállítás.
+A Visual Studio Code vagy a Visual Studio használatával másolhatja vagy biztonsági másolatot készíthet az üzembe helyezett Azure Stream Analytics-feladatokról. A feladatok másik régióba való másolása nem másolja az utolsó kimeneti időpontot. Ezért a másolt feladatok indításakor nem használható a [**legutóbbi leállítási**](./start-job.md#start-options) beállítás.
 
 ## <a name="before-you-begin"></a>Előkészületek
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
@@ -45,7 +45,7 @@ A Visual Studio Code vagy a Visual Studio használatával másolhatja vagy bizto
 
 ## <a name="visual-studio"></a>Visual Studio
 
-1. Kövesse az [üzembe helyezett Azure stream Analyticsi feladat exportálása projekt utasításait](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-vs-tools#export-jobs-to-a-project).
+1. Kövesse az [üzembe helyezett Azure stream Analyticsi feladat exportálása projekt utasításait](./stream-analytics-vs-tools.md#export-jobs-to-a-project).
 
 2. Nyissa meg a \* . asaql fájlt a Lekérdezéstervezőben, válassza az **elküldés az Azure** -ba lehetőséget a parancsfájl-szerkesztőben, és kövesse az utasításokat a feladat egy másik régióba vagy biztonsági másolatba való közzétételéhez egy új néven.
 

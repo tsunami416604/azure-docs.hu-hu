@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: Azure app Service, webalkalmazás, Linux, Windows, Docker, tároló
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: f3c687d5c8b4e4c6d0b7f4ff912137066fe10bbb
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b5682275a9e5f3993de715ab5f23a708d5df47ae
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743726"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130119"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Egyéni szoftver migrálása Azure App Service egyéni tároló használatával
 
@@ -318,6 +318,10 @@ ENTRYPOINT ["init.sh"]
 * Az utolsó sor, `ENTRYPOINT ["init.sh"]` amely elindítja `init.sh` az SSH-szolgáltatást és a Python-kiszolgálót.
 
 ## <a name="build-and-test-the-image-locally"></a>A rendszerkép helyi létrehozása és tesztelése
+
+> [!NOTE]
+> A Docker hub [kvótákat használ az IP-címekhez tartozó névtelen lekérések számával és az ingyenes felhasználók által hitelesített lekérések számával (lásd az **adatátvitelt** )](https://www.docker.com/pricing). Ha azt tapasztalja, hogy a Docker hub-ból való lekérések korlátozottak, próbálja meg, `docker login` Ha még nincs bejelentkezve.
+> 
 
 1. A rendszerkép létrehozásához futtassa a következő parancsot:
 

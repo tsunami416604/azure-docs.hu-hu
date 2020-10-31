@@ -5,12 +5,12 @@ author: dlepow
 ms.topic: article
 ms.author: danlep
 ms.date: 10/29/2020
-ms.openlocfilehash: c7beddda0d344f6b7606f3e2d3624bee39009c66
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: e5fd70cdde6be431f7bb1950a42ca43e81b34e36
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043513"
+ms.locfileid: "93130850"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>Nyilvános tartalom kezelése Azure Container Registry
 
@@ -21,7 +21,7 @@ Ez a cikk áttekintést nyújt azokról a gyakorlatokról és munkafolyamatokró
 
 A környezet a nyilvános tartalmak, például a nyilvános tárolók képei, a [Helm-diagramok](https://helm.sh/), a [nyílt házirendügynök](https://www.openpolicyagent.org/) -szabályzatok vagy más összetevők függőségeivel rendelkezhet. Futtathatja például az [Nginx](https://hub.docker.com/_/nginx) szolgáltatást a szolgáltatás-útválasztáshoz, vagy `docker build FROM alpine` közvetlenül a Docker hub-ból vagy más nyilvános beállításjegyzékből lehet képeket kihúzza. 
 
-A megfelelő vezérlők nélkül a nyilvános beállításjegyzékbeli tartalommal kapcsolatos függőségek veszélyeztethetik a rendszerkép-fejlesztési és üzembe helyezési munkafolyamatokat. A kockázatok enyhítése érdekében a nyilvános tartalmak helyi másolatait a lehető leghamarabb meg kell őrizni. Részletekért tekintse [meg az Open Container Initiative blogját](https://opencontainers.org/posts/blog). 
+A megfelelő vezérlők nélkül a nyilvános beállításjegyzékbeli tartalommal kapcsolatos függőségek veszélyeztethetik a rendszerkép-fejlesztési és üzembe helyezési munkafolyamatokat. A kockázatok enyhítése érdekében a nyilvános tartalmak helyi másolatait a lehető leghamarabb meg kell őrizni. Részletekért tekintse [meg az Open Container Initiative blogját](https://opencontainers.org/posts/blog/2020-10-30-consuming-public-content/). 
 
 ## <a name="authenticate-with-docker-hub"></a>Hitelesítés a Docker hub használatával
 
@@ -33,8 +33,6 @@ Első lépésként, ha jelenleg a Docker hub nyilvános lemezképeit egy Build v
 > A lekéréses kérelmek számának becslése során vegye figyelembe, hogy ha a felhőalapú szolgáltatói szolgáltatásokat használja, vagy a vállalati NAT mögött dolgozik, több felhasználó fog megjelenni a Docker hub-ban az IP-címek részhalmazában.  Ha hozzáadta a Docker fizetős fiókjának hitelesítését a Docker hub felé irányuló kérelmekhez, azzal elkerülhető, hogy a szolgáltatás megszakadjon a sávszélesség-korlátozás miatt.
 >
 > Részletekért lásd a [Docker díjszabását és előfizetéseit](https://www.docker.com/pricing) , valamint a [Docker szolgáltatási feltételeit](https://www.docker.com/legal/docker-terms-service).
-
-
 
 A hitelesítési példák és forgatókönyvek esetében lásd: [letöltési sebesség korlátozása](https://docs.docker.com/docker-hub/download-rate-limit/).
 
@@ -72,7 +70,7 @@ A nyilvános lemezképek másolásának megkezdéséhez létrehozhat egy Azure C
 
 Ajánlott egyszeri lépésként az alapképek és az egyéb nyilvános tartalmak [importálása](container-registry-import-images.md) az Azure Container registrybe. Az az [ACR import](/cli/azure/acr#az_acr_import) parancs az Azure CLI-ben támogatja az olyan nyilvános beállításjegyzékből származó képimportálást, mint például a Docker hub és a Microsoft Container Registry, valamint más privát tároló-beállításjegyzékből. 
 
-`az acr import` nincs szükség helyi Docker-telepítésre. Az Azure CLI helyi telepítésével vagy közvetlenül Azure Cloud Shell a rendszerképek, a többarchitektúrás lemezképek vagy a OCI összetevők, például a Helm-diagramok támogatásával is futtatható.
+`az acr import` nincs szükség helyi Docker-telepítésre. Az Azure CLI helyi telepítésével vagy közvetlenül a Azure Cloud Shell futtathatja. Minden operációsrendszer-típusból, többarchitektúrás lemezképből vagy OCI, például Helm-diagramokból származó képeket támogat.
 
 Példa:
 
@@ -82,7 +80,7 @@ az acr import \
   --source docker.io/library/hello-world:latest \
   --image hello-world:latest \
   --username <Docker Hub username> \
-  --password <Docker Hub password>
+  --password <Docker Hub token>
 ```
 
 A szervezet igényeitől függően egy dedikált beállításjegyzékbe vagy egy megosztott beállításjegyzékbeli adattárba is importálhat.
@@ -93,7 +91,7 @@ Az alkalmazási lemezképek fejlesztőinek biztosítaniuk kell, hogy a kód a ve
 
 A lemezképek importálására való kiterjesztéssel egy [Azure Container Registry feladat](container-registry-tasks-overview.md) állítható be, amely automatizálja az alkalmazás lemezképeit az alaplemezképek frissítésekor. Egy automatizált felépítési feladat nyomon követheti az [alapszintű](container-registry-tasks-base-images.md) és a [forráskód-frissítéseket](container-registry-tasks-overview.md#trigger-task-on-source-code-update)is.
 
-Részletes példaként tekintse meg a [nyilvános tartalmak felhasználása és karbantartása Azure Container Registry feladatokkal](https://github.com/SteveLasker/azure-docs/blob/consuming-public-content/articles/container-registry/container-registry-consuming-public-content.md)című témakört. 
+Részletes példaként tekintse meg a [nyilvános tartalmak felhasználása és karbantartása Azure Container Registry feladatokkal](tasks-consume-public-content.md)című témakört. 
 
 > [!NOTE]
 > Egyetlen előre konfigurált feladat automatikusan újraépítheti az összes olyan alkalmazás-rendszerképet, amely egy függő alaprendszerképre hivatkozik. 
@@ -101,4 +99,5 @@ Részletes példaként tekintse meg a [nyilvános tartalmak felhasználása és 
 ## <a name="next-steps"></a>Következő lépések
  
 * További információ az [ACR-feladatokról](container-registry-tasks-overview.md) az Azure-beli tároló-lemezképek létrehozásához, futtatásához, leküldéséhez és javításához.
+* Tekintse meg a [nyilvános tartalmak felhasználását és karbantartását Azure Container Registry feladatokkal](tasks-consume-public-content.md) egy automatizált kapuzás-munkafolyamathoz az alaplemezképek környezetbe való frissítéséhez. 
 * A rendszerkép-buildek és-frissítések automatizálásával kapcsolatos további példákért tekintse meg az [ACR-feladatok oktatóanyagokat](container-registry-tutorial-quick-task.md) .

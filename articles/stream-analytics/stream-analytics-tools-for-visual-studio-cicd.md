@@ -7,26 +7,26 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
-ms.openlocfilehash: 175abe54ce5476bece309bbfaf7858cd2e214f52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c05db2d9ba184da89665a236994c851355cc2644
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187659"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127433"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>A Azure Stream Analytics CI/CD NuGet csomag használata az integrációhoz és a fejlesztéshez 
 Ez a cikk azt ismerteti, hogyan használható a Azure Stream Analytics CI/CD NuGet csomag a folyamatos integrációs és üzembe helyezési folyamat beállításához.
 
-Használja a [Visual studióhoz készült stream Analytics-eszközök](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio) 2.3.0000.0 vagy újabb verzióját az MSBuild támogatásának megismeréséhez.
+Használja a [Visual studióhoz készült stream Analytics-eszközök](./stream-analytics-quick-create-vs.md) 2.3.0000.0 vagy újabb verzióját az MSBuild támogatásának megismeréséhez.
 
 NuGet-csomag érhető el: [Microsoft. Azure. stream Analytics. vel](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Olyan MSBuild, helyi futtatási és üzembe helyezési eszközöket biztosít, amelyek támogatják [stream Analytics Visual Studio-projektek](stream-analytics-vs-tools.md)folyamatos integrációját és üzembe helyezési folyamatát. 
 > [!NOTE]
 > A NuGet csomag csak a Visual studióhoz készült Stream Analytics Tools for 2.3.0000.0 vagy újabb verziójával használható. Ha a Visual Studio Tools korábbi verzióiban hoztak létre projekteket, egyszerűen nyissa meg őket a 2.3.0000.0 vagy a fenti verzióval, és mentse. Ezután az új funkciók engedélyezve vannak. 
 
-További információ: [stream Analytics Tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
+További információ: [stream Analytics Tools for Visual Studio](./stream-analytics-quick-create-vs.md).
 
 ## <a name="msbuild"></a>MSBuild
-A standard Visual Studio MSBuild-élményhez hasonlóan a projekt létrehozásához két lehetőség közül választhat. Kattintson a jobb gombbal a projektre, majd válassza a **Létrehozás**lehetőséget. A NuGet csomagban található **MSBuild** -t is használhatja a parancssorból.
+A standard Visual Studio MSBuild-élményhez hasonlóan a projekt létrehozásához két lehetőség közül választhat. Kattintson a jobb gombbal a projektre, majd válassza a **Létrehozás** lehetőséget. A NuGet csomagban található **MSBuild** -t is használhatja a parancssorból.
 ```
 ./build/msbuild /t:build [Your Project Full Path] /p:CompilerTaskAssemblyFile=Microsoft.WindowsAzure.StreamAnalytics.Common.CompileService.dll  /p:ASATargetsFilePath="[NuGet Package Local Path]\build\StreamAnalytics.targets"
 
@@ -52,7 +52,7 @@ A fájl parameters.jsjában lévő alapértelmezett paraméterek a Visual Studio
       "value": null
     },
 ```
-További információ a [telepítéséről Resource Manager-sablonfájl és Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy). További információ arról, hogyan [használható egy objektum paraméterként egy Resource Manager-sablonban](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+További információ a [telepítéséről Resource Manager-sablonfájl és Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md). További információ arról, hogyan [használható egy objektum paraméterként egy Resource Manager-sablonban](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
 
 Ha Azure Data Lake Store Gen1 felügyelt identitást szeretne használni kimeneti fogadóként, az Azure-ba való üzembe helyezés előtt meg kell adnia a szolgáltatásnevet a PowerShell használatával. További információ a [ADLS Gen1 felügyelt identitással való üzembe helyezéséhez Resource Manager-sablonnal](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment).
 
@@ -60,7 +60,7 @@ Ha Azure Data Lake Store Gen1 felügyelt identitást szeretne használni kimenet
 ## <a name="command-line-tool"></a>Parancssori eszköz
 
 ### <a name="build-the-project"></a>A projekt felépítése
-Az NuGet-csomag **SA.exe**nevű parancssori eszközzel rendelkezik. Támogatja a projektek kialakítását és a helyi tesztelést egy tetszőleges gépen, amelyet a folyamatos integráció és a folyamatos kézbesítés folyamata használhat. 
+Az NuGet-csomag **SA.exe** nevű parancssori eszközzel rendelkezik. Támogatja a projektek kialakítását és a helyi tesztelést egy tetszőleges gépen, amelyet a folyamatos integráció és a folyamatos kézbesítés folyamata használhat. 
 
 A központi telepítési fájlok alapértelmezés szerint az aktuális könyvtár alá kerülnek. A kimeneti elérési utat a következő-OutputPath paraméter használatával adhatja meg:
 
@@ -90,7 +90,7 @@ Példa:
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Gyors útmutató: Azure Stream Analytics Cloud-feladatok létrehozása a Visual Studióban](stream-analytics-quick-create-vs.md)
 * [A Visual Studióval helyileg tesztelheti Stream Analytics lekérdezéseit](stream-analytics-vs-tools-local-run.md)

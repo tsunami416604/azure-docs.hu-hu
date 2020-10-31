@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: bc34d2044c3a91fe18e900b21d589dde855754d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71cbc09f21e21c325665809953f209615d835124
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91774578"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130153"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Microsoft Dynamics 365 Business Central-ajánlat létrehozása
 
@@ -23,8 +23,8 @@ A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Cen
 ## <a name="create-a-new-offer"></a>Új ajánlat létrehozása
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
-2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
-3. Az Áttekintés lapon válassza az **+ új ajánlat**  >  **Dynamics 365 Business Central**lehetőséget.
+2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés** lehetőséget.
+3. Az Áttekintés lapon válassza az **+ új ajánlat**  >  **Dynamics 365 Business Central** lehetőséget.
 
     ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-dynamics-365-business-central.png)
 
@@ -33,17 +33,17 @@ A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Cen
 
 ## <a name="new-offer"></a>Új ajánlat
 
-Adja meg az **ajánlat azonosítóját**. Ez a fiókban található egyes ajánlatok egyedi azonosítója.
+Adja meg az **ajánlat azonosítóját** . Ez a fiókban található egyes ajánlatok egyedi azonosítója.
 
 - Ez az azonosító látható az ügyfelek számára a Piactéri ajánlathoz tartozó webcímek és Azure Resource Manager sablonok esetében, ha van ilyen.
 - A közzétevő AZONOSÍTÓval összevont ajánlat AZONOSÍTÓjának 40 karakternél rövidebbnek kell lennie.
 - Csak kisbetűket és számokat használjon. Kötőjeleket és aláhúzást tartalmazhat, de nem tartalmaz szóközt. Ha például a közzétevő azonosítója testpublisherid, és itt a **test-Offer-1** értéket adja meg, az ajánlat webcíme lesz `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` .
-- Az ajánlat azonosítója a **Létrehozás**gombra kattintva nem módosítható.
+- Az ajánlat azonosítója a **Létrehozás** gombra kattintva nem módosítható.
 
-Adjon meg egy **ajánlat-aliast**. Ez a partner Centerben az ajánlathoz használt név.
+Adjon meg egy **ajánlat-aliast** . Ez a partner Centerben az ajánlathoz használt név.
 
 - Ez a név nem használatos a piactéren, és nem egyezik meg az ajánlat nevével és az ügyfelek számára megjelenített egyéb értékekkel.
-- Az ajánlat aliasa nem módosítható a **Létrehozás**gombra kattintva.
+- Az ajánlat aliasa nem módosítható a **Létrehozás** gombra kattintva.
 
 Válassza a **Létrehozás** lehetőséget az ajánlat létrehozásához és a folytatáshoz.
 
@@ -91,7 +91,7 @@ Ezen a lapon megadhatja az ajánlatnak a piactéren, az alkalmazás verziójába
 Válassza ki a kategóriákat és alkategóriákat, hogy az ajánlatot a piactér megfelelő keresési területein helyezze el. Ügyeljen arra, hogy az ajánlata milyen módon támogassa ezeket a kategóriákat az ajánlat leírásában. A következők szerint válasszon:
 
 - Legalább egy és legfeljebb két kategória, beleértve az elsődleges és a másodlagos kategóriát is (opcionális).
-- Legfeljebb két alkategória lehet minden elsődleges és/vagy másodlagos kategóriához. Ha nem alkalmazható alkategória az ajánlatra, válassza a **nem alkalmazható**lehetőséget.
+- Legfeljebb két alkategória lehet minden elsődleges és/vagy másodlagos kategóriához. Ha nem alkalmazható alkategória az ajánlatra, válassza a **nem alkalmazható** lehetőséget.
 
 Tekintse meg a kategóriák és alkategóriák teljes listáját az [ajánlatban az ajánlott eljárásokat felsorolva](../gtm-offer-listing-best-practices.md).
 
@@ -129,11 +129,11 @@ Itt adhatja meg az ajánlat részleteit, például a nevet, a leírást és a k�
 5. Használati feltételek
 6. Adatvédelmi irányelvek
 7. Ajánlat neve
-8. Összefoglalás
+8. Összegzés
 9. Leírás
 10. Képernyőképek/videók
 
-### <a name="name"></a>Name (Név)
+### <a name="name"></a>Name
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
 
@@ -171,9 +171,9 @@ Adja meg a szervezete adatvédelmi szabályzatának URL-címét. Ön felelős az
 
 ### <a name="contact-information"></a>Kapcsolattartási adatok
 
-Ebben a szakaszban meg kell adnia egy **támogatási kapcsolattartó** nevét, e-mail-címét és telefonszámát, valamint egy **mérnöki kapcsolattartót**. Ez az információ nem jelenik meg az ügyfelek számára, de a Microsoft számára elérhetővé válik, és a CSP-partnerek számára is biztosítható.
+Ebben a szakaszban meg kell adnia egy **támogatási kapcsolattartó** nevét, e-mail-címét és telefonszámát, valamint egy **mérnöki kapcsolattartót** . Ez az információ nem jelenik meg az ügyfelek számára, de a Microsoft számára elérhetővé válik, és a CSP-partnerek számára is biztosítható.
 
-A **támogatási kapcsolattartó** szakaszban meg kell adnia azt a **támogatási URL-címet** is, ahol a CSP-partnerek megtalálják az ajánlat támogatását. A támogatási URL-cím nem egyezhet meg a **Súgó hivatkozásával**.
+A **támogatási kapcsolattartó** szakaszban meg kell adnia azt a **támogatási URL-címet** is, ahol a CSP-partnerek megtalálják az ajánlat támogatását. A támogatási URL-cím nem egyezhet meg a **Súgó hivatkozásával** .
 
 ### <a name="supporting-documents"></a>Támogató dokumentumok
 
@@ -215,7 +215,7 @@ Ezen a lapon megadhatja, hol és hogyan teheti elérhetővé az ajánlatát.
 
 ### <a name="markets"></a>Piacok
 
-Ebben a szakaszban megadhatja azokat a piacokat, amelyekben ajánlatának elérhetőnek kell lennie. Ehhez válassza a **piacok szerkesztése**lehetőséget, amely megjeleníti a **piac kiválasztási** felugró ablakát.
+Ebben a szakaszban megadhatja azokat a piacokat, amelyekben ajánlatának elérhetőnek kell lennie. Ehhez válassza a **piacok szerkesztése** lehetőséget, amely megjeleníti a **piac kiválasztási** felugró ablakát.
 
 Válasszon ki legalább egy piacot az ajánlat közzétételéhez. Az **összes kijelölése** lehetőség kiválasztásával elérhetővé teheti az ajánlatot minden lehetséges piacon, vagy kiválaszthatja a felvenni kívánt adott piacokat.
 
@@ -228,7 +228,7 @@ Ne feledje, hogy még akkor is, ha az összes piac, a helyi törvények, a korl�
 
 ### <a name="preview-audience"></a>Előnézet célközönsége
 
-Mielőtt közzéteszi ajánlatát a szélesebb körű Piactéri ajánlatban, először elérhetővé kell tennie egy korlátozott **előzetes verzió célközönségét**. Itt adhatja meg az **elrejtési kulcsot** (a csak kisbetűket és/vagy számokat használó karakterláncokat). Az előzetes verzió célközönségének tagjai ezt az elrejtési kulcsot jogkivonatként használhatják a piactéren elérhető ajánlat előnézetének megtekintéséhez.
+Mielőtt közzéteszi ajánlatát a szélesebb körű Piactéri ajánlatban, először elérhetővé kell tennie egy korlátozott **előzetes verzió célközönségét** . Itt adhatja meg az **elrejtési kulcsot** (a csak kisbetűket és/vagy számokat használó karakterláncokat). Az előzetes verzió célközönségének tagjai ezt az elrejtési kulcsot jogkivonatként használhatják a piactéren elérhető ajánlat előnézetének megtekintéséhez.
 
 Ezután, amikor készen áll az ajánlat elérhetővé tételére és az előzetes verzió korlátozásának eltávolítására, el kell távolítania az **elrejteni kívánt kulcsot** , és újra közzé kell tennie.
 
@@ -242,8 +242,8 @@ Ez az oldal az ajánlathoz való kapcsolódáshoz használt technikai részletek
 
 Válassza ki az ajánlathoz tartozó beállítást:
 
-* **Bekapcsolás** – a kiegészítő alkalmazás a Dynamics 365 Business Central által nyújtott élményt és a meglévő funkciókat bővíti. Részletekért lásd: [kiegészítő alkalmazások](https://docs.microsoft.com/dynamics365/business-central/dev-itpro/developer/readiness/readiness-add-on-apps).
-* **Kapcsolódás** – a kapcsolódási alkalmazás abban a forgatókönyvben használható, ahol a Dynamics 365 Business Central és egy harmadik féltől származó megoldás vagy szolgáltatás között pont-pont típusú kapcsolatot kell létrehozni. Részletekért lásd az [alkalmazások összekapcsolását](https://docs.microsoft.com/dynamics365/business-central/dev-itpro/developer/readiness/readiness-connect-apps)ismertető témakört.
+* **Bekapcsolás** – a kiegészítő alkalmazás a Dynamics 365 Business Central által nyújtott élményt és a meglévő funkciókat bővíti. Részletekért lásd: [kiegészítő alkalmazások](/dynamics365/business-central/dev-itpro/developer/readiness/readiness-add-on-apps).
+* **Kapcsolódás** – a kapcsolódási alkalmazás abban a forgatókönyvben használható, ahol a Dynamics 365 Business Central és egy harmadik féltől származó megoldás vagy szolgáltatás között pont-pont típusú kapcsolatot kell létrehozni. Részletekért lásd az [alkalmazások összekapcsolását](/dynamics365/business-central/dev-itpro/developer/readiness/readiness-connect-apps)ismertető témakört.
 
 ### <a name="file-upload"></a>Fájlfeltöltés
 
@@ -280,11 +280,11 @@ Ezen az oldalon további információkat adhat meg az ajánlatáról, hogy segí
 
 ### <a name="target-release"></a>Célkiadás
 
-Jelezze, hogy a Microsoft Dynamics üzleti központjának melyik kiadását célozza meg a megoldás céljai: **current**, **Next Major**vagy **Next Minor**. Ez az információ lehetővé teszi a megoldás megfelelő tesztelését.
+Jelezze, hogy a Microsoft Dynamics üzleti központjának melyik kiadását célozza meg a megoldás céljai: **current** , **Next Major** vagy **Next Minor** . Ez az információ lehetővé teszi a megoldás megfelelő tesztelését.
 
 ### <a name="supported-editions"></a>Támogatott kiadások
 
-Ha az ajánlata a Microsoft Dynamics 365 Business Central Premium kiadását igényli, válassza a **prémium** szintű lehetőséget. Ellenkező esetben válassza a mind az **Essentials** , mind a **prémium**lehetőséget.
+Ha az ajánlata a Microsoft Dynamics 365 Business Central Premium kiadását igényli, válassza a **prémium** szintű lehetőséget. Ellenkező esetben válassza a mind az **Essentials** , mind a **prémium** lehetőséget.
 
 ### <a name="key-usage-scenario"></a>Kulcshasználat forgatókönyv
 
@@ -311,7 +311,7 @@ Ha első alkalommal teszi közzé ezt az ajánlatot, a következőket teheti:
     - *Hiányos* – azt jelenti, hogy a szakasznak meg kell oldania a hibákat, vagy további információkat kell megadni. Térjen vissza a szakasz (ok) hoz, és frissítse azt.
     - *Complete (Befejezés* ) – azt jelenti, hogy a szakasz elkészült, minden szükséges adattal rendelkezik, és nincsenek hibák. Az ajánlat minden részének teljes állapotban kell lennie ahhoz, hogy el tudja küldeni az ajánlatot.
 - A **minősítési megjegyzések** szakaszban adja meg a minősítési csoport tesztelési utasításait, hogy az alkalmazás megfelelően legyen tesztelve, valamint az alkalmazás megértéséhez szükséges kiegészítő megjegyzések mellett.
-- Küldje el az ajánlatot közzétételre a **Submit (Küldés**) gombra kattintva. A rendszer e-mailt küld Önnek, ha az ajánlat előzetes verziója elérhető az Ön számára az áttekintéshez és a jóváhagyáshoz. Térjen vissza a partneri központba, és válassza a **Go-Live** lehetőséget az ajánlat nyilvánosságra való közzétételéhez.
+- Küldje el az ajánlatot közzétételre a **Submit (Küldés** ) gombra kattintva. A rendszer e-mailt küld Önnek, ha az ajánlat előzetes verziója elérhető az Ön számára az áttekintéshez és a jóváhagyáshoz. Térjen vissza a partneri központba, és válassza a **Go-Live** lehetőséget az ajánlat nyilvánosságra való közzétételéhez.
 
 ## <a name="next-steps"></a>Következő lépések
 

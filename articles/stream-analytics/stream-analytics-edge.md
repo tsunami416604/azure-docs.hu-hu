@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.topic: how-to
 ms.date: 10/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7a084b2d0582f53d4372ba3332194629ad29a4ec
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: cba81b8415f0f9cf7253e674e90ae09718b94d54
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041860"
+ms.locfileid: "93130476"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>IoT Edge-eszközökön futó Azure Stream Analytics
  
@@ -32,11 +32,11 @@ A IoT Edge-eszközökön futó Azure Stream Analytics a [Azure IoT Edge](https:/
 ## <a name="edge-jobs-in-azure-stream-analytics"></a>Edge-feladatok a Azure Stream Analyticsban
 ### <a name="what-is-an-edge-job"></a>Mi az "Edge"-feladatok?
 
-Az ASA Edge-feladatok a [Azure IoT Edge eszközökön](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)üzembe helyezett tárolókban futnak. Ezek két részből állnak:
+Az ASA Edge-feladatok a [Azure IoT Edge eszközökön](../iot-edge/about-iot-edge.md)üzembe helyezett tárolókban futnak. Ezek két részből állnak:
 1.  A feladattípusért felelős Felhőbeli rész: a felhasználók bemeneteket, kimeneteket, lekérdezéseket és egyéb beállításokat határoznak meg a felhőben.
 2.  Egy modul, amely a IoT-eszközökön fut. Ez tartalmazza az ASA-motort, és a feladattípust fogadja a felhőből. 
 
-Az ASA a IoT Hub használatával helyezi üzembe az Edge-feladatokat az eszköz (ek) re. [IoT Edge üzembe helyezéssel](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring)kapcsolatos további információkért tekintse meg itt.
+Az ASA a IoT Hub használatával helyezi üzembe az Edge-feladatokat az eszköz (ek) re. [IoT Edge üzembe helyezéssel](../iot-edge/module-deployment-monitoring.md)kapcsolatos további információkért tekintse meg itt.
 
 ![Azure Stream Analytics Edge-feladatok](media/stream-analytics-edge/stream-analytics-edge-job.png)
 
@@ -44,28 +44,28 @@ Az ASA a IoT Hub használatával helyezi üzembe az Edge-feladatokat az eszköz 
 ### <a name="installation-instructions"></a>Telepítési utasítások
 A magas szintű lépéseket az alábbi táblázat ismerteti. További részleteket a következő szakaszokban talál.
 
-| Lépés | Jegyzetek |
+| Lépés | Megjegyzések |
 | --- | --- |
 | **Tároló létrehozása** | A tárolók a IoT-eszközök által elérhető feladatdefiníció mentésére szolgálnak. <br>  A meglévő tárolókat újra felhasználhatja. |
 | **ASA Edge-feladatok létrehozása** | Hozzon létre egy új feladatot, és válassza az **Edge** lehetőséget **üzemeltetési környezetként** . <br> Ezek a feladatok a felhőből jönnek létre/kezelhetők, és a saját IoT Edge eszközein futnak. |
-| **Az eszköz (ek) IoT Edge környezetének beállítása** | Windows vagy [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) [rendszerre](https://docs.microsoft.com/azure/iot-edge/quickstart) vonatkozó utasítások.|
+| **Az eszköz (ek) IoT Edge környezetének beállítása** | Windows vagy [Linux](../iot-edge/quickstart-linux.md) [rendszerre](../iot-edge/quickstart.md) vonatkozó utasítások.|
 | **Az ASA üzembe helyezése IoT Edge eszközön (k)** | Az ASA-feladatdefiníció a korábban létrehozott Storage-tárolóba lett exportálva. |
 
-[Ezt a részletes oktatóanyagot](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics) követve üzembe helyezheti az első ASA-feladatot IoT Edgeon. A következő videó segít megérteni a Stream Analytics feladatok futtatásának folyamatát egy IoT Edge-eszközön:  
+[Ezt a részletes oktatóanyagot](../iot-edge/tutorial-deploy-stream-analytics.md) követve üzembe helyezheti az első ASA-feladatot IoT Edgeon. A következő videó segít megérteni a Stream Analytics feladatok futtatásának folyamatát egy IoT Edge-eszközön:  
 
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T157/player]
 
 #### <a name="create-a-storage-container"></a>Tároló létrehozása
 Az ASA lefordított lekérdezés és a feladatok konfigurációjának exportálásához tárolóra van szükség. Az ASA Docker-rendszerkép az adott lekérdezéssel való konfigurálására szolgál. 
-1. Az [alábbi utasításokat](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) követve hozzon létre egy Storage-fiókot a Azure Portal. Az összes alapértelmezett beállítást megtarthatja a fiók ASA-vel való használatához.
+1. Az [alábbi utasításokat](../storage/common/storage-account-create.md) követve hozzon létre egy Storage-fiókot a Azure Portal. Az összes alapértelmezett beállítást megtarthatja a fiók ASA-vel való használatához.
 2. Az újonnan létrehozott Storage-fiókban hozzon létre egy blob Storage-tárolót:
     1. Kattintson a **Blobok** , majd a **+ tároló** elemre. 
     2. Adjon meg egy nevet, és tartsa **magánjellegűként** a tárolót.
 
 #### <a name="create-an-asa-edge-job"></a>ASA Edge-feladatok létrehozása
 > [!Note]
-> Ez az oktatóanyag az ASA-feladatok Azure Portal használatával történő létrehozására koncentrál. Az [ASA Edge-feladatok létrehozásához használhatja a Visual Studio beépülő modult](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs) is
+> Ez az oktatóanyag az ASA-feladatok Azure Portal használatával történő létrehozására koncentrál. Az [ASA Edge-feladatok létrehozásához használhatja a Visual Studio beépülő modult](./stream-analytics-tools-for-visual-studio-edge-jobs.md) is
 
 1. A Azure Portal hozzon létre egy új "Stream Analytics feladatot". [Közvetlen hivatkozás új ASA-feladatok létrehozásához itt](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob).
 
@@ -81,7 +81,7 @@ Az ASA lefordított lekérdezés és a feladatok konfigurációjának exportál�
 4. Adja meg a Storage-tároló adatait a **IoT Edge beállítások** menüjében.
 
 5. Választható beállítások megadása
-    1. **Események rendezése** . A nem megrendelési szabályzatokat a portálon konfigurálhatja. A dokumentáció [itt](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)érhető el.
+    1. **Események rendezése** . A nem megrendelési szabályzatokat a portálon konfigurálhatja. A dokumentáció [itt](/stream-analytics-query/time-skew-policies-azure-stream-analytics)érhető el.
     2. **Területi beállítás** . Állítsa be a internalizálása formátumát.
 
 
@@ -97,7 +97,7 @@ Ehhez a következő lépéseket kell követnie:
 - Telepítse a Docker és a IoT Edge Runtime eszközt a peremhálózati eszközökön.
 - Állítsa be az eszközöket **IoT Edge eszközként** a IoT hub.
 
-Ezek a lépések a [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) vagy [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)IoT Edge dokumentációjában olvashatók.  
+Ezek a lépések a [Windows](../iot-edge/quickstart.md) vagy [Linux](../iot-edge/quickstart-linux.md)IoT Edge dokumentációjában olvashatók.  
 
 
 ####  <a name="deployment-asa-on-your-iot-edge-devices"></a>Üzembe helyezési ASA a IoT Edge eszközön (k)
@@ -113,11 +113,11 @@ Ezek a lépések a [Windows](https://docs.microsoft.com/azure/iot-edge/quickstar
 > Ha IoT Edge-eszközökre helyezi üzembe a feladatot, az ASA létrehoz egy közös hozzáférési aláírást (SAS) a feladatdefiníció fájlhoz. Az SAS-kulcs biztonságosan továbbítva van a IoT Edge eszközöknek a Twin eszköz használatával. A kulcs lejárta a létrehozás napjától számított három év. Amikor frissít egy IoT Edge feladatot, az SAS megváltoztatja, de a rendszerkép verziószáma nem változik. A **frissítés** után kövesse az üzembe helyezési munkafolyamatot, és a rendszer egy frissítési értesítést naplóz az eszközön.
 
 
-IoT Edge központi telepítésekkel kapcsolatos további információkért tekintse meg [ezt a lapot](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
+IoT Edge központi telepítésekkel kapcsolatos további információkért tekintse meg [ezt a lapot](../iot-edge/module-deployment-monitoring.md).
 
 
 ##### <a name="configure-routes"></a>Útvonalak konfigurálása
-A IoT Edge lehetővé teszi, hogy az üzeneteket a modulok között, illetve a modulok és a IoT Hub között lehessen átirányítani. A teljes szintaxis [itt](https://docs.microsoft.com/azure/iot-edge/module-composition)van leírva.
+A IoT Edge lehetővé teszi, hogy az üzeneteket a modulok között, illetve a modulok és a IoT Hub között lehessen átirányítani. A teljes szintaxis [itt](../iot-edge/module-composition.md)van leírva.
 Az ASA-feladatban létrehozott bemenetek és kimenetek nevei végpontként használhatók az útválasztáshoz.  
 
 ###### <a name="example"></a>Példa
@@ -145,7 +145,7 @@ Ez a példa a következő útvonalakat határozza meg:
 ### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>A Felhőbeli feladatokhoz képest IoT Edge feladatok jelenlegi korlátai
 A cél a IoT Edge feladatok és a Felhőbeli feladatok közötti paritás. A legtöbb SQL-lekérdezés nyelvi funkciója támogatott, ami lehetővé teszi, hogy ugyanazt a logikát futtassa a felhőben és a IoT Edge is.
 Az Edge-feladatok esetében azonban a következő funkciók még nem támogatottak:
-* Felhasználó által definiált függvények (UDF) a JavaScriptben. Az UDF a C# nyelven érhető el [IoT Edge feladatokhoz](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf) (előzetes verzió).
+* Felhasználó által definiált függvények (UDF) a JavaScriptben. Az UDF a C# nyelven érhető el [IoT Edge feladatokhoz](./stream-analytics-edge-csharp-udf.md) (előzetes verzió).
 * Felhasználó által definiált összesítések (UDA).
 * Azure ML függvények.
 * Több mint 14 összesítés használata egyetlen lépésben.
@@ -165,7 +165,7 @@ Az ASA on IoT Edge Windows-és Linux-rendszerképekként is elérhető, amely x8
 
 ### <a name="input-and-output"></a>Bemenet és kimenet
 #### <a name="input-and-output-streams"></a>Bemeneti és kimeneti adatfolyamok
-Az ASA Edge-feladatok a IoT Edge eszközökön futó más modulok bemeneteit és kimeneteit is lekérhetik. A és az adott modulokhoz való kapcsolódáshoz beállíthatja az útválasztási konfigurációt a központi telepítés ideje alatt. További információ a [IoT Edge modul-összeállítás dokumentációjában](https://docs.microsoft.com/azure/iot-edge/module-composition)olvasható.
+Az ASA Edge-feladatok a IoT Edge eszközökön futó más modulok bemeneteit és kimeneteit is lekérhetik. A és az adott modulokhoz való kapcsolódáshoz beállíthatja az útválasztási konfigurációt a központi telepítés ideje alatt. További információ a [IoT Edge modul-összeállítás dokumentációjában](../iot-edge/module-composition.md)olvasható.
 
 A bemenetek és kimenetek esetében a CSV és a JSON formátum is támogatott.
 
@@ -176,7 +176,7 @@ Jelenleg az egyetlen támogatott stream-bemeneti és stream-kimeneti típus a pe
 
 
 ##### <a name="reference-data"></a>Hivatkozási érték
-A hivatkozási adathalmaz (más néven keresési táblázat) egy olyan véges adatkészlet, amely statikus vagy lassú a természetben. A lekérdezés végrehajtásához vagy az adatfolyamhoz való korrelációhoz használható. Ha a Azure Stream Analytics-feladatokban szeretné használni a hivatkozásokat, a lekérdezésben általában egy [hivatkozási adatokhoz való csatlakozást](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) fog használni. További információ: a [stream Analyticsban található keresések hivatkozási adatainak használata](stream-analytics-use-reference-data.md).
+A hivatkozási adathalmaz (más néven keresési táblázat) egy olyan véges adatkészlet, amely statikus vagy lassú a természetben. A lekérdezés végrehajtásához vagy az adatfolyamhoz való korrelációhoz használható. Ha a Azure Stream Analytics-feladatokban szeretné használni a hivatkozásokat, a lekérdezésben általában egy [hivatkozási adatokhoz való csatlakozást](/stream-analytics-query/reference-data-join-azure-stream-analytics) fog használni. További információ: a [stream Analyticsban található keresések hivatkozási adatainak használata](stream-analytics-use-reference-data.md).
 
 Csak a helyi hivatkozási adatértékek támogatottak. Ha egy feladatot központilag telepítenek IoT Edge eszközre, a felhasználó által megadott fájl elérési útjából betölti a hivatkozási adatait.
 
@@ -226,13 +226,13 @@ A verzióra vonatkozó információk utolsó frissítése 2019-06-27:
       
       
 ## <a name="get-help"></a>Segítség kérése
-További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics vonatkozó kérdés oldalát](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics vonatkozó kérdés oldalát](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [További információ az Azure IOT Edge-ről](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
-* [ASA IoT Edge oktatóanyag](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
-* [Stream Analytics Edge-feladatok fejlesztése a Visual Studio Tools használatával](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
+* [További információ az Azure IOT Edge-ről](../iot-edge/about-iot-edge.md)
+* [ASA IoT Edge oktatóanyag](../iot-edge/tutorial-deploy-stream-analytics.md)
+* [Stream Analytics Edge-feladatok fejlesztése a Visual Studio Tools használatával](./stream-analytics-tools-for-visual-studio-edge-jobs.md)
 * [CI/CD implementálása a Stream Analytics API-k használatával](stream-analytics-cicd-api.md)
 
 <!--Link references-->
@@ -240,5 +240,5 @@ További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics vo
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ac08b5af0afbf43c7b13808fac06c40066e48b7a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 87f3e2014281580cc35f941ad62046dcb24539df
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074233"
+ms.locfileid: "93129405"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>A bemeneti adatok bármilyen formátumban olvashatók a .NET-alapú egyéni deszerializálók használatával
 
@@ -201,7 +201,7 @@ namespace ExampleCustomCode.Serialization
 
 ## <a name="serialization-format-for-rest-apis"></a>A REST API-k szerializálási formátuma
 
-Minden Stream Analytics-bemenet **szerializálási formátummal** rendelkezik. A bemeneti beállításokkal kapcsolatos további információkért tekintse meg a [input REST API](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs) dokumentációját.
+Minden Stream Analytics-bemenet **szerializálási formátummal** rendelkezik. A bemeneti beállításokkal kapcsolatos további információkért tekintse meg a [input REST API](./stream-analytics-define-inputs.md) dokumentációját.
 
 A következő JavaScript-kód példa a .NET deszerializáló szerializálási formátumára a REST API használatakor:
 
@@ -239,7 +239,7 @@ További régiók [támogatását is kérheti](https://aka.ms/ccodereqregion) .
 
 ### <a name="when-will-this-feature-be-available-in-all-azure-regions"></a>Mikor lesz elérhető ez a szolgáltatás az összes Azure-régióban?
 
-Ez a funkció [6 régióban](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples#region-support)érhető el. Ha egy másik régióban szeretné használni ezt a funkciót, [elküldhet egy kérelmet](https://aka.ms/ccodereqregion). Az összes Azure-régió támogatása az ütemterv szerint történik.
+Ez a funkció [6 régióban](#region-support)érhető el. Ha egy másik régióban szeretné használni ezt a funkciót, [elküldhet egy kérelmet](https://aka.ms/ccodereqregion). Az összes Azure-régió támogatása az ütemterv szerint történik.
 
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>Hozzáférhetek a MetadataPropertyValue a saját bemenetekhez a GetMetadataPropertyValue függvényhez hasonló módon?
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 734dc55cbcd9c7b5eaf6455d63bcb773b7d85367
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79e3ce8c1605e5d68ff44901f53854d2f5f10abc
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513988"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129949"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>Kötetek kezelése a StorSimple-eszközkezelő szolgáltatással a StorSimple Virtual Arrayben
 
@@ -33,8 +33,8 @@ A StorSimple Eszközkezelő szolgáltatás a Azure Portal egyik bővítménye, a
 
 A StorSimple kötetek a következőket tehetik:
 
-* **Helyileg rögzített**: az ezekben a kötetekben tárolt adatmennyiség mindig a tömbön marad, és nem kerül a felhőbe.
-* **Lépcsőzetes**: ezekben a kötetekben lévő adatforgalom a felhőbe kerül. A rétegű kötetek létrehozásakor a terület körülbelül 10%-a a helyi szinten van kiépítve, a terület 90%-a pedig a felhőben van kiépítve. Ha például egy 1 TB-os kötetet telepített, a 100 GB a helyi térben, a 900 GB-ot pedig a felhőben fogja használni az adatrétegeknél. Ez pedig azt jelenti, hogy ha elfogyott az eszközön lévő összes helyi terület, nem lehet kiépíteni egy rétegű kötetet (mivel a helyi szinten szükséges 10% nem lesz elérhető).
+* **Helyileg rögzített** : az ezekben a kötetekben tárolt adatmennyiség mindig a tömbön marad, és nem kerül a felhőbe.
+* **Lépcsőzetes** : ezekben a kötetekben lévő adatforgalom a felhőbe kerül. A rétegű kötetek létrehozásakor a terület körülbelül 10%-a a helyi szinten van kiépítve, a terület 90%-a pedig a felhőben van kiépítve. Ha például egy 1 TB-os kötetet telepített, a 100 GB a helyi térben, a 900 GB-ot pedig a felhőben fogja használni az adatrétegeknél. Ez pedig azt jelenti, hogy ha elfogyott az eszközön lévő összes helyi terület, nem lehet kiépíteni egy rétegű kötetet (mivel a helyi szinten szükséges 10% nem lesz elérhető).
 
 ### <a name="provisioned-capacity"></a>Kiosztott kapacitás
 Tekintse meg az alábbi táblázatot az egyes kötetek kiosztott kapacitásának maximális kiosztásáról.
@@ -55,7 +55,7 @@ A kötetek számos attribútumból állnak:
 
 * **Kötet neve** – egy leíró név, amelynek egyedinek kell lennie, és segít azonosítani a kötetet.
 * Status – online vagy offline **állapotú** lehet. Ha egy kötet offline állapotban van, nem látható azoknak a kezdeményezőknek (kiszolgálóknak), amelyek számára engedélyezett a kötet használata.
-* **Type (típus** ) – azt jelzi, hogy a kötet **Lépcsőzetes** (alapértelmezett) vagy **helyileg rögzített**-e.
+* **Type (típus** ) – azt jelzi, hogy a kötet **Lépcsőzetes** (alapértelmezett) vagy **helyileg rögzített** -e.
 * **Kapacitás** – a kezdeményező (kiszolgáló) által tárolható összes adatmennyiséghez képest felhasznált adatmennyiséget határozza meg.
 * **Backup (biztonsági mentés** ) – a StorSimple virtuális tömb esetében az összes kötet automatikusan engedélyezve lesz a biztonsági mentéshez.
 * **Csatlakoztatott gazdagépek** – megadja azokat a kezdeményezőket (kiszolgálókat), amelyek számára engedélyezett a kötethez való hozzáférés.
@@ -73,17 +73,17 @@ Az oktatóanyag utasításait az alábbi feladatok végrehajtásához használha
 
 1. A StorSimple szolgáltatás összegzése panelen kattintson a **+ kötet hozzáadása** parancsra a parancssorban. Ekkor megnyílik a **kötet hozzáadása** panel.
    
-    ![Kötet hozzáadása](./media/storsimple-virtual-array-manage-volumes/add-volume.png)
+    ![Képernyőfelvétel: a kötet hozzáadása gomb és a kötet hozzáadása panel.](./media/storsimple-virtual-array-manage-volumes/add-volume.png)
 2. A **kötet hozzáadása** panelen tegye a következőket:
    
    * A **kötet neve** mezőben adjon meg egy egyedi nevet a kötetnek. A névnek olyan sztringnek kell lennie, amely 3 – 127 karaktert tartalmaz.
-   * A **típus** legördülő listában adja meg, hogy létre kell-e hozni egy **rétegű** vagy **helyileg rögzített** kötetet. Helyi garanciákat, kis késést és nagyobb teljesítményt igénylő munkaterhelések esetén válassza a **helyileg rögzített kötet**lehetőséget. Az összes többi adattal válassza a **Lépcsőzetes** kötet lehetőséget.
+   * A **típus** legördülő listában adja meg, hogy létre kell-e hozni egy **rétegű** vagy **helyileg rögzített** kötetet. Helyi garanciákat, kis késést és nagyobb teljesítményt igénylő munkaterhelések esetén válassza a **helyileg rögzített kötet** lehetőséget. Az összes többi adattal válassza a **Lépcsőzetes** kötet lehetőséget.
    * A **kapacitás** mezőben határozza meg a kötet méretét. A rétegű kötetnek 500 GB és 5 TB közé kell esnie, és egy helyileg rögzített kötetnek 50 GB és 500 GB között kell lennie.
-   * * Kattintson a **csatlakoztatott gazdagépek**elemre, jelölje ki a kötethez csatlakozni kívánt iSCSI-kezdeményezőhöz tartozó hozzáférés-vezérlési REKORDOT (ACR), majd kattintson a **kiválasztás**gombra.
-3. Új csatlakoztatott gazdagép hozzáadásához kattintson az **új hozzáadása**lehetőségre, adja meg a gazdagép nevét és az iSCSI minősített nevét (IQN), majd kattintson a **Hozzáadás**gombra.
+   * * Kattintson a **csatlakoztatott gazdagépek** elemre, jelölje ki a kötethez csatlakozni kívánt iSCSI-kezdeményezőhöz tartozó hozzáférés-vezérlési REKORDOT (ACR), majd kattintson a **kiválasztás** gombra.
+3. Új csatlakoztatott gazdagép hozzáadásához kattintson az **új hozzáadása** lehetőségre, adja meg a gazdagép nevét és az iSCSI minősített nevét (IQN), majd kattintson a **Hozzáadás** gombra.
    
-    ![Kötet hozzáadása](./media/storsimple-virtual-array-manage-volumes/volume-add-acr.png)
-4. Ha befejezte a kötet konfigurálását, kattintson a **Létrehozás**gombra. A rendszer létrehoz egy kötetet a megadott beállításokkal, és egy értesítést fog látni a sikeres létrehozásáról. Alapértelmezés szerint a biztonsági mentés engedélyezve lesz a köteten.
+    ![A képernyőfelvétel megjeleníti a csatlakoztatott gazdagépek panelt, ahol új hozzáadást adhat hozzá.](./media/storsimple-virtual-array-manage-volumes/volume-add-acr.png)
+4. Ha befejezte a kötet konfigurálását, kattintson a **Létrehozás** gombra. A rendszer létrehoz egy kötetet a megadott beállításokkal, és egy értesítést fog látni a sikeres létrehozásáról. Alapértelmezés szerint a biztonsági mentés engedélyezve lesz a köteten.
 5. A kötet sikeres létrehozásának ellenőrzéséhez nyissa meg a **kötetek** panelt. Ekkor meg kell jelennie a felsorolt kötetnek.
    
     ![A kötet létrehozása sikeres](./media/storsimple-virtual-array-manage-volumes/volume-success.png)
@@ -111,7 +111,7 @@ Előfordulhat, hogy egy kötetet offline állapotba kell állítania, ha azt ter
 3. Miután a gazdagépen lévő kötet offline állapotban van, a következő lépések végrehajtásával állítsa offline állapotba a tömböt a tömbön:
    
    * A StorSimple szolgáltatás összegzése panel **kötetek** beállításainál válassza ki azt a virtuális tömböt, amelyen az offline állapotú kötetet szeretné tárolni.
-   * **Válassza ki** a kötetet, majd kattintson a **...** elemre (a jobb gombbal kattintson erre a sorra), majd a helyi menüben válassza az **Offline**állapotba állítás lehetőséget.
+   * **Válassza ki** a kötetet, majd kattintson a **...** elemre (a jobb gombbal kattintson erre a sorra), majd a helyi menüben válassza az **Offline** állapotba állítás lehetőséget.
      
         ![Offline kötet](./media/storsimple-virtual-array-manage-volumes/volume-offline.png)
    * Tekintse át az adatokat az **Offline** panelen, és erősítse meg a művelet elfogadását. A kötet offline állapotba helyezéséhez kattintson az **Offline** állapotba állítás lehetőségre. Ekkor megjelenik egy értesítés a folyamatban lévő műveletről.
@@ -131,13 +131,13 @@ A kötetek törléséhez hajtsa végre az alábbi lépéseket.
 #### <a name="to-delete-a-volume"></a>Kötet törlése
 
 1. A StorSimple szolgáltatás összegzése panel **kötetek** beállításainál válassza ki azt a virtuális tömböt, amelyen a törölni kívánt kötet található.
-2. **Válassza ki** a kötetet, majd kattintson a **...** elemre (a jobb gombbal kattintson erre a sorra), majd a helyi menüben válassza a **Törlés**lehetőséget.
+2. **Válassza ki** a kötetet, majd kattintson a **...** elemre (a jobb gombbal kattintson erre a sorra), majd a helyi menüben válassza a **Törlés** lehetőséget.
    
     ![Kötet törlése](./media/storsimple-virtual-array-manage-volumes/volume-delete.png)
 3. Tekintse meg a törölni kívánt kötet állapotát. Ha a törölni kívánt kötet nem offline állapotban van, először kapcsolja offline állapotba, majd kövesse a [kötet offline](#take-a-volume-offline)állapotba helyezése című témakör lépéseit.
-4. Amikor a rendszer megerősítést kér a **Törlés** panelen, fogadja el a megerősítést, és kattintson a **Törlés**gombra. A kötet most már törölve lesz, és a **kötetek** panel megjeleníti a kötetek frissített listáját a virtuális tömbön belül.
+4. Amikor a rendszer megerősítést kér a **Törlés** panelen, fogadja el a megerősítést, és kattintson a **Törlés** gombra. A kötet most már törölve lesz, és a **kötetek** panel megjeleníti a kötetek frissített listáját a virtuális tömbön belül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tudnivalók a [StorSimple-kötetek klónozásáról](storsimple-virtual-array-clone.md).
 

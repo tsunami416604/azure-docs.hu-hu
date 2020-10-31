@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: a24d1716448363a199151a50a260bbdbd1e8e634
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14f7462aec65d2a13eb36b291331c347b995d281
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91249484"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130680"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics integrálása Azure Machine Learning (előzetes verzió)
 
@@ -23,13 +23,13 @@ A gépi tanulási modelleket felhasználó által definiált függvényként (UD
 
 A Machine learning-modellnek a Stream Analytics feladathoz való hozzáadása előtt végezze el a következő lépéseket:
 
-1. A Azure Machine Learning használatával [üzembe helyezheti a modellt webszolgáltatásként](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where).
+1. A Azure Machine Learning használatával [üzembe helyezheti a modellt webszolgáltatásként](../machine-learning/how-to-deploy-and-where.md).
 
 2. A pontozási szkriptnek tartalmaznia kell egy [minta bemeneteket és kimeneteket](../machine-learning/how-to-deploy-and-where.md) , amelyeket a Azure Machine learning használ a séma specifikációjának létrehozásához. Stream Analytics a séma segítségével értelmezi a webszolgáltatás funkciójának aláírását. Ezt a minta-Felskálázási [definíciót](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json) hivatkozásként használva ellenőrizheti, hogy helyesen állította-e be.
 
 3. Győződjön meg arról, hogy a webszolgáltatás elfogadja és visszaadja a JSON szerializált adatait.
 
-4. A modell üzembe helyezése az [Azure Kubernetes szolgáltatásban](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) nagy léptékű üzemi környezetekben. Ha a webszolgáltatás nem tudja kezelni a feladatból érkező kérések számát, akkor a Stream Analytics feladatának teljesítménye csökken, ami hatással van a késésre. A Azure Container Instanceson üzembe helyezett modellek csak a Azure Portal használata esetén támogatottak. A [Azure Machine learning Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer) használatával létrehozott modellek még nem támogatottak a stream Analyticsban.
+4. A modell üzembe helyezése az [Azure Kubernetes szolgáltatásban](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) nagy léptékű üzemi környezetekben. Ha a webszolgáltatás nem tudja kezelni a feladatból érkező kérések számát, akkor a Stream Analytics feladatának teljesítménye csökken, ami hatással van a késésre. A Azure Container Instanceson üzembe helyezett modellek csak a Azure Portal használata esetén támogatottak. A [Azure Machine learning Designer](../machine-learning/concept-designer.md) használatával létrehozott modellek még nem támogatottak a stream Analyticsban.
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>Gépi tanulási modell hozzáadása a feladatokhoz
 
@@ -37,7 +37,7 @@ A Stream Analytics feladathoz közvetlenül a Azure Portal vagy a Visual Studio 
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Navigáljon a Stream Analytics-feladathoz a Azure Portal, és válassza a **feladatok** lehetőséget a feladatok **topológiája**alatt. Ezután válassza ki **Azure Machine learning szolgáltatást** a **+** legördülő menüből.
+1. Navigáljon a Stream Analytics-feladathoz a Azure Portal, és válassza a **feladatok** lehetőséget a feladatok **topológiája** alatt. Ezután válassza ki **Azure Machine learning szolgáltatást** a **+** legördülő menüből.
 
    ![Azure Machine Learning UDF hozzáadása](./media/machine-learning-udf/add-azure-machine-learning-udf.png)
 
@@ -47,7 +47,7 @@ A Stream Analytics feladathoz közvetlenül a Azure Portal vagy a Visual Studio 
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-1. Nyissa meg a Stream Analytics projektet a Visual Studio Code-ban, és kattintson a jobb gombbal a **functions** mappára. Ezután válassza a **művelet hozzáadása**lehetőséget. Válassza ki **Machine learning UDF** elemet a legördülő listából.
+1. Nyissa meg a Stream Analytics projektet a Visual Studio Code-ban, és kattintson a jobb gombbal a **functions** mappára. Ezután válassza a **művelet hozzáadása** lehetőséget. Válassza ki **Machine learning UDF** elemet a legördülő listából.
 
    :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="UDF hozzáadása a VS Code-ban":::
 

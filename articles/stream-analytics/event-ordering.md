@@ -7,22 +7,22 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/06/2020
-ms.openlocfilehash: b4e34befbf28de2b985ff49ce17a87a25842015e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80567a211f08d6322c80b6645f8b70ec7df64b59
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87901691"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130663"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Az események rendezésére vonatkozó szabályzatok konfigurálása Azure Stream Analyticshoz
 
-Ez a cikk bemutatja, hogyan kell beállítani és használni a késői érkezési és a nem megrendelési eseményekre vonatkozó szabályzatokat a Azure Stream Analyticsban. Ezeket a házirendeket csak akkor alkalmazza a rendszer, ha a lekérdezésben a [timestamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) záradékot használja, és csak Felhőbeli bemeneti forrásokra érvényesek.
+Ez a cikk bemutatja, hogyan kell beállítani és használni a késői érkezési és a nem megrendelési eseményekre vonatkozó szabályzatokat a Azure Stream Analyticsban. Ezeket a házirendeket csak akkor alkalmazza a rendszer, ha a lekérdezésben a [timestamp by](/stream-analytics-query/timestamp-by-azure-stream-analytics) záradékot használja, és csak Felhőbeli bemeneti forrásokra érvényesek.
 
 ## <a name="event-time-and-arrival-time"></a>Esemény időpontja és érkezési idő
 
-Az Stream Analytics-feladatok az eseményeket akár az *esemény* vagy az *érkezési idő*alapján is feldolgozhatják. Az esemény **/alkalmazás ideje** az esemény-adattartalomban (az esemény létrehozásakor) lévő időbélyeg. A **beérkezési idő** az az időpont, amikor az esemény a bemeneti forrásnál (Event Hubs/IoT hub/blob Storage) érkezett. 
+Az Stream Analytics-feladatok az eseményeket akár az *esemény* vagy az *érkezési idő* alapján is feldolgozhatják. Az esemény **/alkalmazás ideje** az esemény-adattartalomban (az esemény létrehozásakor) lévő időbélyeg. A **beérkezési idő** az az időpont, amikor az esemény a bemeneti forrásnál (Event Hubs/IoT hub/blob Storage) érkezett. 
 
-Alapértelmezés szerint a Stream Analytics az eseményeket *beérkezési idő*szerint dolgozza fel, de az események *időpontra* történő feldolgozását a lekérdezés [timestamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) záradék használatával végezheti el. A késői érkezés és a megrendelési szabályzatok csak akkor érvényesek, ha az eseményeket esemény szerint dolgozzák fel. Mindig vegye figyelembe a forgatókönyv késésre és helyes sorrendre vonatkozó követelményeit ezen beállítások konfigurálásakor. 
+Alapértelmezés szerint a Stream Analytics az eseményeket *beérkezési idő* szerint dolgozza fel, de az események *időpontra* történő feldolgozását a lekérdezés [timestamp by](/stream-analytics-query/timestamp-by-azure-stream-analytics) záradék használatával végezheti el. A késői érkezés és a megrendelési szabályzatok csak akkor érvényesek, ha az eseményeket esemény szerint dolgozzák fel. Mindig vegye figyelembe a forgatókönyv késésre és helyes sorrendre vonatkozó követelményeit ezen beállítások konfigurálásakor. 
 
 ## <a name="what-is-late-arrival-policy"></a>Mi a kései érkezésre vonatkozó szabályzat?
 
@@ -79,8 +79,8 @@ Ez az üzenet tájékoztat arról, hogy a bemenetben legalább egy partíció ü
 ## <a name="why-do-i-see-a-delay-of-5-seconds-even-when-my-late-arrival-policy-is-set-to-0"></a>Miért látok 5 másodperces késleltetést akkor is, ha a késői érkezési szabályzat értéke 0?
 Ez akkor történik meg, ha van olyan bemeneti partíció, amely soha nem kapott semmilyen bemenetet. A bemeneti metrikákat a partíció alapján ellenőrizheti a viselkedés ellenőrzéséhez. 
 
-Ha egy partícióhoz nem tartozik több, mint a beállított késői érkezési küszöbérték, a stream Analytics az alkalmazás időbélyegét az esemény rendezési szempontjai című szakaszban ismertetett módon részletezi. Ehhez a becsült érkezési időt kell megbecsülni. Ha a partíció soha nem tartalmazott semmilyen adatforrást, a stream Analytics *helyi idő szerint (5 másodperc*) megbecsüli az érkezési időt. Az olyan partíciók miatt, amelyek soha nem voltak adatai, 5 másodperces vízjel-késleltetést mutatnak.  
+Ha egy partícióhoz nem tartozik több, mint a beállított késői érkezési küszöbérték, a stream Analytics az alkalmazás időbélyegét az esemény rendezési szempontjai című szakaszban ismertetett módon részletezi. Ehhez a becsült érkezési időt kell megbecsülni. Ha a partíció soha nem tartalmazott semmilyen adatforrást, a stream Analytics *helyi idő szerint (5 másodperc* ) megbecsüli az érkezési időt. Az olyan partíciók miatt, amelyek soha nem voltak adatai, 5 másodperces vízjel-késleltetést mutatnak.  
 
 ## <a name="next-steps"></a>Következő lépések
 * [Időkezelési megfontolások](stream-analytics-time-handling.md)
-* [Stream Analytics elérhető metrikák](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-monitoring#metrics-available-for-stream-analytics)
+* [Stream Analytics elérhető metrikák](./stream-analytics-monitoring.md#metrics-available-for-stream-analytics)

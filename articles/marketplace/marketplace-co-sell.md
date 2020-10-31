@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 10/19/2020
-ms.openlocfilehash: 343a6c92c9d77b5ef589477802015c6346a95ea9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 819b0401b8516538c6fdd12b47e57f79ec45ae09
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520989"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131088"
 ---
 # <a name="co-sell-partner-engagement"></a>Együttes értékesítési partnerek bevonása
 
 A közös értékesítést használó program használatával a Microsoft-értékesítők közös értékesítési lehetőségekkel dolgozhatnak közvetlenül, és feloldhatók a kereskedelmi Piactéren keresztül értékesített jelentős további kereskedelmi és értékesítési előnyök.
 
-A közös értékesítésre szolgáló program a **szellemi tulajdon (IP) révén megismételhető, csomagolt ajánlatok** és a **Microsoft Technology Embedded szolgáltatásokhoz készült szolgáltatások**esetében érhető el. A közös értékesítési programban a legtöbb ajánlat típusa a kereskedelmi piactéren is elérhető. A további követelményeknek megfelelő ajánlatok **közös értékesítésre kész** vagy **közös értékesítésű incentivized**válnak.
+A közös értékesítésre szolgáló program a **szellemi tulajdon (IP) révén megismételhető, csomagolt ajánlatok** és a **Microsoft Technology Embedded szolgáltatásokhoz készült szolgáltatások** esetében érhető el. A közös értékesítési programban a legtöbb ajánlat típusa a kereskedelmi piactéren is elérhető. A további követelményeknek megfelelő ajánlatok **közös értékesítésre kész** vagy **közös értékesítésű incentivized** válnak.
 
 - A **közös értékesítésre kész** ajánlatok a Microsoft Field Sellers számára érhetők el. A Microsoft-értékesítők használatakor a közös értékesítési program segítséget nyújt a Microsoft által felügyelt ügyfelek nagy közösségének, hogy együttműködjön az üzleti növekedés felgyorsítására szolgáló értékesítési lehetőségekkel.
 
@@ -40,15 +40,15 @@ Az **Azure-beli IP-incentivized** állapotot elérő ajánlatok ezen további Pi
 
 ## <a name="co-sell-publishing-steps-and-requirements"></a>Közzétételi lépések és követelmények együttes értékesítése
 
-Az alábbi táblázat azokat a lépéseket és követelményeket sorolja fel, amelyekkel a Piactéri ajánlat közös értékesítésre kész vagy közös értékesítésű incentivized. Nem minden kereskedelmi Piactéri ajánlat típusa konfigurálható a partner Centerben még a közös értékesítéshez. A legfrissebb információkért tekintse meg a következő témakört [: közös értékesítés lehetőség a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell) . 
+Az alábbi táblázat azokat a lépéseket és követelményeket sorolja fel, amelyekkel a Piactéri ajánlat közös értékesítésre kész vagy közös értékesítésű incentivized. Nem minden kereskedelmi Piactéri ajánlat típusa konfigurálható a partner Centerben még a közös értékesítéshez. A legfrissebb információkért tekintse meg a következő témakört [: közös értékesítés lehetőség a partner Centerben](./partner-center-portal/commercial-marketplace-co-sell.md) . 
 
 |Lépés    |Csomag típusa    |Követelmények    |Közös értékesítés állapota    |
 |----    |-------------    |------------    |---------------   |
-|<ol start=1><li> Hozzon létre egy fiókot a partner Centerben, és tegye közzé ajánlatát a kereskedelmi piactéren.</li>|Az összes|<li>Az ajánlat megfelel a kereskedelmi piactér közzétételi követelményeinek.</li><li>Rendelkezik egy teljes körű üzleti profillal a partner Centerben.</li>|Nem áll készen|
-|<ol start=2><li>Kötelező közös értékesítésű anyagok beküldése.</li>|IP- *ajánlatok* [közös értékesítési lehetőséggel a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)|[Szükséges anyagok feltöltése a partner Centerben](#how-to-submit-co-sell-materials-in-partner-center)|Közös értékesítés kész|
-||IP- *without* ajánlatok [közös értékesítés nélkül lehetőség a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)|<li>A kötelező közös értékesítéshez szükséges dokumentáció biztosítására irányuló kérelem a [Felhőbeli szakértőkkel](https://partner.microsoft.com/campaigns/ced-nomination-form/) való együttműködéshez.|Közös értékesítés kész|
+|<ol start=1><li> Hozzon létre egy fiókot a partner Centerben, és tegye közzé ajánlatát a kereskedelmi piactéren.</li>|Összes|<li>Az ajánlat megfelel a kereskedelmi piactér közzétételi követelményeinek.</li><li>Rendelkezik egy teljes körű üzleti profillal a partner Centerben.</li>|Nem áll készen|
+|<ol start=2><li>Kötelező közös értékesítésű anyagok beküldése.</li>|IP- *ajánlatok* [közös értékesítési lehetőséggel a partner Centerben](./partner-center-portal/commercial-marketplace-co-sell.md)|[Szükséges anyagok feltöltése a partner Centerben](#how-to-submit-co-sell-materials-in-partner-center)|Közös értékesítés kész|
+||IP- *without* ajánlatok [közös értékesítés nélkül lehetőség a partner Centerben](./partner-center-portal/commercial-marketplace-co-sell.md)|<li>A kötelező közös értékesítéshez szükséges dokumentáció biztosítására irányuló kérelem a [Felhőbeli szakértőkkel](https://partner.microsoft.com/campaigns/ced-nomination-form/) való együttműködéshez.|Közös értékesítés kész|
 ||Tanácsadási szolgáltatások|<li>A kötelező közös értékesítéshez szükséges dokumentáció biztosítására irányuló kérelem a [Felhőbeli szakértőkkel](https://partner.microsoft.com/campaigns/ced-nomination-form/) való együttműködéshez.</li><li>Aktív arany kompetencia.</li>|Közös értékesítés kész|
-|<ol start=3><li>Minősítés az IP-címek közös értékesítésének ösztönzésére</li>|Azure-alkalmazások, Azure-tárolók, IoT Edge modulok, SaaS, virtuális gépek|A közös értékesítés megteremtése után két további követelmény van: <ul> 1. követelmény: a következők elérése:<ul><li>*A szervezet szintjén:* teljesíti az Azure által felhasznált bevételt, vagy meghaladja az $100 000 USD-t a záró 12 hónap során.</li><li>*Az ajánlat szintjén:* összesített piactér – $100 000 USD értékű, számlázott bevétel.</li></ul><br>2. követelmény: az ajánlat infrastruktúrájának több mint 50%-át az Azure-on kell futtatni:<ul><li>Az IP *-ajánlatok* [közös értékesítési lehetőséggel a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell): feltölthet egy architektúra-diagramot a partner Centerben lévő közös értékesítési dokumentumokkal.</li><li>IP- *without* ajánlatok [közös értékesítés nélkül lehetőség a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell): feltölthet egy architektúra-diagramot a OCP GTM.|Azure IP közös értékesítésű incentivized|
+|<ol start=3><li>Minősítés az IP-címek közös értékesítésének ösztönzésére</li>|Azure-alkalmazások, Azure-tárolók, IoT Edge modulok, SaaS, virtuális gépek|A közös értékesítés megteremtése után két további követelmény van: <ul> 1. követelmény: a következők elérése:<ul><li>*A szervezet szintjén:* teljesíti az Azure által felhasznált bevételt, vagy meghaladja az $100 000 USD-t a záró 12 hónap során.</li><li>*Az ajánlat szintjén:* összesített piactér – $100 000 USD értékű, számlázott bevétel.</li></ul><br>2. követelmény: az ajánlat infrastruktúrájának több mint 50%-át az Azure-on kell futtatni:<ul><li>Az IP *-ajánlatok* [közös értékesítési lehetőséggel a partner Centerben](./partner-center-portal/commercial-marketplace-co-sell.md): feltölthet egy architektúra-diagramot a partner Centerben lévő közös értékesítési dokumentumokkal.</li><li>IP- *without* ajánlatok [közös értékesítés nélkül lehetőség a partner Centerben](./partner-center-portal/commercial-marketplace-co-sell.md): feltölthet egy architektúra-diagramot a OCP GTM.|Azure IP közös értékesítésű incentivized|
 ||Dynamics|<li>Aktív regisztrációja van a prémium szintű ISV-vel.</li>|Business Applications közös értékesítésű incentivized|
 
 ## <a name="how-to-submit-co-sell-materials-in-partner-center"></a>Közös értékesítésű anyagok beküldése a partner Centerben
@@ -56,24 +56,24 @@ Az alábbi táblázat azokat a lépéseket és követelményeket sorolja fel, am
 Az alábbi lépéseket követve közvetlenül a partner Centerben kezdheti meg a közös értékesítést. További részletekért lásd: [közös értékesítés lehetőség a partner Centerben](./partner-center-portal/commercial-marketplace-co-sell.md).
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
-1. A bal oldali panelen válassza a **kereskedelmi piactér**  >  **áttekintése**lehetőséget, majd válassza ki azt az ajánlatot, amelyet közösen szeretne értékesíteni.
+1. A bal oldali panelen válassza a **kereskedelmi piactér**  >  **áttekintése** lehetőséget, majd válassza ki azt az ajánlatot, amelyet közösen szeretne értékesíteni.
 
     > [!NOTE]
     > A közös értékesítési programhoz egy új, még közzé nem tett ajánlatot vagy egy már közzétett ajánlatot is csatlakoztathat.
 
-1. A bal oldali menüben válassza a **közös értékesítés a Microsofttal**lehetőséget.
+1. A bal oldali menüben válassza a **közös értékesítés a Microsofttal** lehetőséget.
 
     :::image type="content" source="media/co-sell/co-sell-with-microsoft-tab.png" alt-text="Ez a rendszerkép a közös értékesítés helyét mutatja a Microsoft lapon.":::
 
-1. Adja meg az alapszintű tőzsdei adatokat, amelyek segítségével a Microsoft-értékesítők gyorsan rendezhetik és felfedezhetik az ajánlatot a **Listázás** szakaszban. (*Kötelező: minden mező.*)
+1. Adja meg az alapszintű tőzsdei adatokat, amelyek segítségével a Microsoft-értékesítők gyorsan rendezhetik és felfedezhetik az ajánlatot a **Listázás** szakaszban. ( *Kötelező: minden mező.* )
 
     :::image type="content" source="media/co-sell/co-sell-listing-section.png" alt-text="Ez a rendszerkép a közös értékesítés helyét mutatja a Microsoft lapon.":::  
 
-1. Adja meg az ajánlat részleteit, és töltse fel a biztosítékokat a **dokumentumok** szakaszban. A Microsoft Sellers ezeket az információkat az ajánlat ajánlása és értékesítése céljából fogja használni. (*Kötelező: ügyfél One-pager és Customer prezentációs Deck.*)
+1. Adja meg az ajánlat részleteit, és töltse fel a biztosítékokat a **dokumentumok** szakaszban. A Microsoft Sellers ezeket az információkat az ajánlat ajánlása és értékesítése céljából fogja használni. ( *Kötelező: ügyfél One-pager és Customer prezentációs Deck.* )
 
     :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="Ez a rendszerkép a közös értékesítés helyét mutatja a Microsoft lapon.":::
  
-1. Töltse fel az értékesítési kapcsolattartási adatokat a **névjegyek** szakaszban. Előfordulhat, hogy a Microsoft-értékesítők felhasználhatják ezeket a partnereket az ajánlatával kapcsolatos további információk igényléséhez. (*Kötelező: kapcsolat minden olyan földrajzi helyhez, ahol az ajánlat elérhetővé válik.*)
+1. Töltse fel az értékesítési kapcsolattartási adatokat a **névjegyek** szakaszban. Előfordulhat, hogy a Microsoft-értékesítők felhasználhatják ezeket a partnereket az ajánlatával kapcsolatos további információk igényléséhez. ( *Kötelező: kapcsolat minden olyan földrajzi helyhez, ahol az ajánlat elérhetővé válik.* )
 
     :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="Ez a rendszerkép a közös értékesítés helyét mutatja a Microsoft lapon." legördülő menüben:
 <ul><ul>

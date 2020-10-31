@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: ca8f2e1721c99c79188917e5b44950b8db6895ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6ce256db907589ace7e77157397257732564fb6
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90006397"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130323"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Kereskedelmi Piactéri Transact-képességek
 
@@ -24,7 +24,7 @@ A kiadó vagy a Microsoft felelős a kereskedelmi piactéren található ajánla
 
 ### <a name="contact-me-free-trial-and-byol-options"></a>Kapcsolatfelvétel, ingyenes próbaverzió és BYOL lehetőségek
 
-A kiadók választhatják a _kapcsolatfelvételi_ és az _ingyenes próbaverziót_, a promóciós és a felhasználói beszerzési lehetőségeket. Egyes ajánlatok esetében a kiadók választhatják a saját licenc használata (BYOL) lehetőséget, amely lehetővé teszi, hogy az ügyfelek az Ön által közvetlenül vásárolt licenccel vásárolják meg az ajánlat előfizetését. Ezekkel a beállításokkal a Microsoft nem vesz részt közvetlenül a kiadó szoftverlicenc-tranzakciójában, és nincs társított tranzakciós díj. 
+A kiadók választhatják a _kapcsolatfelvételi_ és az _ingyenes próbaverziót_ , a promóciós és a felhasználói beszerzési lehetőségeket. Egyes ajánlatok esetében a kiadók választhatják a saját licenc használata (BYOL) lehetőséget, amely lehetővé teszi, hogy az ügyfelek az Ön által közvetlenül vásárolt licenccel vásárolják meg az ajánlat előfizetését. Ezekkel a beállításokkal a Microsoft nem vesz részt közvetlenül a kiadó szoftverlicenc-tranzakciójában, és nincs társított tranzakciós díj. 
 
 A közzétevők felelősek a szoftverlicenc-tranzakció valamennyi aspektusának támogatásához. Ez magában foglalja a következőket: de nem korlátozódik a rendelésre, a teljesítésre, a mérésre, a számlázásra, a számlázásra, a fizetésre és a gyűjtésre. A kapcsolattartási adatok listázása lehetőséggel a közzétevők az ügyféltől gyűjtött kiadói szoftverlicenc-díjak 100%-át őrzik meg.
 
@@ -46,9 +46,9 @@ A Transact Publishing lehetőség jelenleg a következő típusú ajánlatok ese
 
 ### <a name="billing-infrastructure-costs"></a>Számlázási infrastruktúra költségei
 
-A **Virtual Machines** és az **Azure-alkalmazások**esetében az Azure-infrastruktúra használati díjait az ügyfél Azure-előfizetése alapján számoljuk el. Az infrastruktúra-használati díjak díjszabása és a szoftveres szolgáltató licencelési díjaitól függetlenül, az ügyfél számláján kell megjelenni.
+A **Virtual Machines** és az **Azure-alkalmazások** esetében az Azure-infrastruktúra használati díjait az ügyfél Azure-előfizetése alapján számoljuk el. Az infrastruktúra-használati díjak díjszabása és a szoftveres szolgáltató licencelési díjaitól függetlenül, az ügyfél számláján kell megjelenni.
 
-**SaaS-alkalmazások**esetén a közzétevőnek az Azure-infrastruktúra használati díjait és a szoftverlicenc-díjat egyetlen Cost-elemként kell megadnia.  Az ügyfél számára átalány-díj formájában történik. Az Azure-infrastruktúra használatát a rendszer felügyeli, és közvetlenül a közzétevőnek számlázza. Az ügyfél nem látja a tényleges infrastruktúra-használati díjakat. A kiadók általában az Azure-infrastruktúra használati díjait az szoftverlicenc díjszabása szerint csomagolják. A szoftver licencelési díjait nem számítjuk fel, vagy nem a felhasználói felhasználás alapján.
+**SaaS-alkalmazások** esetén a közzétevőnek az Azure-infrastruktúra használati díjait és a szoftverlicenc-díjat egyetlen Cost-elemként kell megadnia.  Az ügyfél számára átalány-díj formájában történik. Az Azure-infrastruktúra használatát a rendszer felügyeli, és közvetlenül a közzétevőnek számlázza. Az ügyfél nem látja a tényleges infrastruktúra-használati díjakat. A kiadók általában az Azure-infrastruktúra használati díjait az szoftverlicenc díjszabása szerint csomagolják. A szoftver licencelési díjait nem számítjuk fel, vagy nem a felhasználói felhasználás alapján.
 
 ## <a name="pricing-models"></a>Díjszabási modellek
 
@@ -197,7 +197,7 @@ A Transact Publishing beállítás csak a következő Piactéri ajánlatok eset�
 
 - **Azure-alkalmazás: megoldás-sablon vagy felügyelt** alkalmazás – egy vagy több virtuális gépet kell kiépítenie, és a virtuális gép díjszabásának összegével kell lekérnie. Egyetlen csomagban felügyelt alkalmazások esetén a virtuális gépek díjszabása helyett egy átalánydíjas havi előfizetés is kiválasztható a díjszabási modellként. Bizonyos esetekben az Azure-infrastruktúra használati díjait a rendszer külön adja át az ügyfélnek a szoftverlicenc-díjaktól, de ugyanarra a számlázási utasításra. Ha azonban a felügyelt alkalmazáshoz az ISV-infrastruktúra díjait konfigurálja, az Azure-erőforrások számlázása a kiadóra történik, és az ügyfél egy átalánydíjas díjat kap, amely magában foglalja az infrastruktúra, a szoftverlicenc és a felügyeleti szolgáltatások költségeit.
 
-- **SaaS-alkalmazás** – több-bérlős megoldásnak kell lennie, a hitelesítéshez [Azure Active Directoryt](https://azure.microsoft.com/services/active-directory/) kell használnia, és integrálni kell a [SaaS-megvalósítási API](partner-center-portal/pc-saas-fulfillment-api-v2.md)-kkal. Az Azure-infrastruktúra használatának felügyelete és számlázása közvetlenül Önnek (a partnernek) történik, ezért az Azure-infrastruktúra használati díjait és a szoftveres licencelési díjakat egyetlen költségként kell elszámolni. Részletes útmutatásért lásd: [új SaaS-ajánlat létrehozása a kereskedelmi piactéren](partner-center-portal/create-new-saas-offer.md).
+- **SaaS-alkalmazás** – több-bérlős megoldásnak kell lennie, a hitelesítéshez [Azure Active Directoryt](https://azure.microsoft.com/services/active-directory/) kell használnia, és integrálni kell a [SaaS-megvalósítási API](partner-center-portal/pc-saas-fulfillment-api-v2.md)-kkal. Az Azure-infrastruktúra használatának felügyelete és számlázása közvetlenül Önnek (a partnernek) történik, ezért az Azure-infrastruktúra használati díjait és a szoftveres licencelési díjakat egyetlen költségként kell elszámolni. Részletes útmutatásért lásd: [új SaaS-ajánlat létrehozása a kereskedelmi piactéren](./create-new-saas-offer.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

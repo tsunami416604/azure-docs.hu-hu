@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 3b74f3ecdc048b6468906fb46a848d27cd1f23b9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 7008c305525c7564e57fd225e961b462bf6939f2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275421"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130833"
 ---
 # <a name="support-for-the-microsoft-commercial-marketplace"></a>A Microsoft kereskedelmi piactér támogatása
 
@@ -24,20 +24,20 @@ Nyisson meg egy jegyet a Microsoft [Marketplace kiadó támogatásával](https:/
 
 ## <a name="partner-center"></a>Partnerközpont
 
-| Támogatási csatorna | Description | Rendelkezésre állás |  
+| Támogatási csatorna | Leírás | Rendelkezésre állás |  
 |:--- |:--- |:--- |  
 | Segítségért látogasson el az incidens létrehozása lapra, amely a [piactér-támogatásban](https://aka.ms/marketplacepublishersupport) található.</li> </ul> | A partner Center támogatása. | A támogatás 24x5 van megadva. |  
 
 ## <a name="technical"></a>Műszaki  
 
-| Támogatási csatorna | Description |  
+| Támogatási csatorna | Leírás |  
 |:--- |:--- |  
-| MSDN-fórumok: A piactéren található [Microsoft Q&egy kérdés oldal](https://docs.microsoft.com/answers/products/azure) | Microsoft Developer Network fórum. |  
+| MSDN-fórumok: A piactéren található [Microsoft Q&egy kérdés oldal](/answers/products/azure) | Microsoft Developer Network fórum. |  
 | Stack Overflow: a [StackOverflow.com/questions/Tagged/Azure](https://stackoverflow.com/questions/tagged/azure) címen található Azure | Az Azure Marketplace-hez kapcsolódó összes megoldáshoz Stack Overflow-környezet, amely megoldásokat tesz elérhetővé.<ul> <li>Stack Overflow: a [StackOverflow.com/questions/Tagged/Azure-Marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace) címen található Azure Marketplace</li> <li>Stack Overflow: a Azure Resource Manager a következő helyen található: [StackOverflow.com/questions/Tagged/Azure-Resource-Manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Stack Overflow: Virtual Machines a [StackOverflow.com/questions/Tagged/Azure-Virtual-Machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine) címen található Azure-on</li> <li>Stack Overflow: tárolók az Azure-ban a [StackOverflow.com/search?q=Azure+Container](https://stackoverflow.com/search?q=azure+container) címen</li> </ul> |
 
 ## <a name="marketing-resources"></a>Marketing-erőforrások  
 
-| Támogatási csatorna | Description | Rendelkezésre állás |  
+| Támogatási csatorna | Leírás | Rendelkezésre állás |  
 |:--- |:--- |:--- |
 | E-mail [gtm@microsoft.com](mailto:gtm@microsoft.com) | Támogatás a GTM előnyeinek és programjának kérdéseire. | A munkaidő a csendes-óceáni időzónában található. |  
 | E-mail [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Válaszok az Azure-emblémákkal és-arculattal kapcsolatos használati kérdésekre. |  |  

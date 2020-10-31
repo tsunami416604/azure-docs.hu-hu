@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/2/2020
-ms.openlocfilehash: 95607b78ff80566b76b8e6aa20462957249015b4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fdd610be1dd7c5fe9c7aa574fde33df866116dd2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097651"
+ms.locfileid: "93128834"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Kimenetek Azure Stream Analytics
 
-Az Azure Stream Analytics feladatok egy bemenetből, lekérdezésből és kimenetből állnak. Az átalakított adatokat több kimeneti típus is elküldheti. Ez a cikk az Stream Analytics támogatott kimeneteit sorolja fel. Amikor megtervezi a Stream Analytics lekérdezést, a [INTO záradék](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics)használatával tekintse meg a kimenet nevét. A lekérdezéshez több INTO záradékot is használhat feladatokhoz, illetve több kimeneti adatfolyam-feladatokhoz (ha szüksége van rájuk).
+Az Azure Stream Analytics feladatok egy bemenetből, lekérdezésből és kimenetből állnak. Az átalakított adatokat több kimeneti típus is elküldheti. Ez a cikk az Stream Analytics támogatott kimeneteit sorolja fel. Amikor megtervezi a Stream Analytics lekérdezést, a [INTO záradék](/stream-analytics-query/into-azure-stream-analytics)használatával tekintse meg a kimenet nevét. A lekérdezéshez több INTO záradékot is használhat feladatokhoz, illetve több kimeneti adatfolyam-feladatokhoz (ha szüksége van rájuk).
 
-Stream Analytics feladatok kimenetének létrehozásához, szerkesztéséhez és teszteléséhez használhatja a [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-output), a [Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), a [.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), a [REST API](https://docs.microsoft.com/rest/api/streamanalytics/)és a [Visual Studio alkalmazást](stream-analytics-quick-create-vs.md).
+Stream Analytics feladatok kimenetének létrehozásához, szerkesztéséhez és teszteléséhez használhatja a [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-output), a [Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), a [.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), a [REST API](/rest/api/streamanalytics/)és a [Visual Studio alkalmazást](stream-analytics-quick-create-vs.md).
 
 Egyes kimeneti típusok támogatják a [particionálást](#partitioning), és a [kimeneti köteg mérete](#output-batch-size) eltérő az átviteli sebesség optimalizálása érdekében. A következő táblázat az egyes kimeneti típusok által támogatott szolgáltatásokat tartalmazza:
 
@@ -41,7 +41,7 @@ Egyes kimeneti típusok támogatják a [particionálást](#partitioning), és a 
 
 A Stream Analytics a Power BI kivételével minden kimenethez támogatja a partíciókat. A partíciós kulcsokkal és a kimeneti írók számával kapcsolatos további információkért tekintse meg az Önt érdeklő kimeneti típust ismertető cikket. Az összes kimeneti cikk az előző szakaszban van csatolva.  
 
-Emellett a partíciók fejlettebb hangolásához a kimeneti írók száma a `INTO <partition count>` lekérdezésben (lásd: [into](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) záradék használatával vezérelhető, ami hasznos lehet a kívánt feladatok topológiájának megvalósításában. Ha a kimeneti adapter nincs particionálva, az egyik bemeneti partícióban lévő adatok hiánya késlelteti a késői érkezési időtartamot. Ilyen esetekben a kimenet egyetlen író számára lesz egyesítve, ami szűk keresztmetszetet eredményezhet a folyamat során. Ha többet szeretne megtudni a késői beérkezési szabályzatról, tekintse meg az [Azure stream Analytics az események sorrendjét](stream-analytics-out-of-order-and-late-events.md)ismertető szakaszt
+Emellett a partíciók fejlettebb hangolásához a kimeneti írók száma a `INTO <partition count>` lekérdezésben (lásd: [into](/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) záradék használatával vezérelhető, ami hasznos lehet a kívánt feladatok topológiájának megvalósításában. Ha a kimeneti adapter nincs particionálva, az egyik bemeneti partícióban lévő adatok hiánya késlelteti a késői érkezési időtartamot. Ilyen esetekben a kimenet egyetlen író számára lesz egyesítve, ami szűk keresztmetszetet eredményezhet a folyamat során. Ha többet szeretne megtudni a késői beérkezési szabályzatról, tekintse meg az [Azure stream Analytics az események sorrendjét](./stream-analytics-time-handling.md)ismertető szakaszt
 
 ## <a name="output-batch-size"></a>Kimeneti köteg mérete
 
@@ -91,5 +91,5 @@ Ezeket a Batch-ablak tulajdonságokat csak az API 2017-04-01-es verziója támog
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

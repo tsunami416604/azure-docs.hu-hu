@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/11/2020
-ms.openlocfilehash: 8aae9a0ff3ffdbd4f6bc93db5c6f15dcb938080e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a08b73a74d30a99ba3c360f012d5917f1d0c8bf
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84196425"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129728"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>A Stream Analytics-keresések hivatkozási adatainak használata
 
-A hivatkozási adatok (más néven keresési táblázat) egy olyan véges adathalmaz, amely statikus vagy lassan változik a természetben, a keresés végrehajtásához vagy az adatfolyamok bővítéséhez. Például egy IoT-forgatókönyvben tárolhatók metaadatok az érzékelőkről (amelyek nem változnak gyakran) a hivatkozási adatokban, és a valós idejű IoT-adatfolyamokhoz csatlakoznak. Azure Stream Analytics betölti a memóriában lévő hivatkozási adatmennyiséget, hogy alacsony késésű adatfolyam-feldolgozást érjen el. Ha a Azure Stream Analytics-feladatokban szeretné használni a hivatkozásokat, a lekérdezésben általában egy [hivatkozási adatokhoz való csatlakozást](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) fog használni. 
+A hivatkozási adatok (más néven keresési táblázat) egy olyan véges adathalmaz, amely statikus vagy lassan változik a természetben, a keresés végrehajtásához vagy az adatfolyamok bővítéséhez. Például egy IoT-forgatókönyvben tárolhatók metaadatok az érzékelőkről (amelyek nem változnak gyakran) a hivatkozási adatokban, és a valós idejű IoT-adatfolyamokhoz csatlakoznak. Azure Stream Analytics betölti a memóriában lévő hivatkozási adatmennyiséget, hogy alacsony késésű adatfolyam-feldolgozást érjen el. Ha a Azure Stream Analytics-feladatokban szeretné használni a hivatkozásokat, a lekérdezésben általában egy [hivatkozási adatokhoz való csatlakozást](/stream-analytics-query/reference-data-join-azure-stream-analytics) fog használni. 
 
 ## <a name="example"></a>Példa  
 Valós idejű adatfolyamot hozhat létre, amikor az autók egy díjköteles standot adnak át. Az autópályadíj-kezelő valós időben rögzítheti a licencet, és olyan statikus adatkészlettel csatlakozhat, amely a lejárt licencek azonosítására szolgáló regisztrációs adatokat tartalmaz.  
@@ -37,7 +37,7 @@ A hivatkozási adatok a Blobok nevében megadott dátum/idő növekvő sorrendj�
 
 ### <a name="configure-blob-reference-data"></a>BLOB-hivatkozási adatértékek konfigurálása
 
-A hivatkozási adatok konfigurálásához először létre kell hoznia egy olyan bemenetet, amely **hivatkozási adatokat tartalmaz**. Az alábbi táblázat bemutatja, hogy milyen tulajdonságokat kell megadnia a hivatkozási adatok bemenetének a leírásával való létrehozásakor:
+A hivatkozási adatok konfigurálásához először létre kell hoznia egy olyan bemenetet, amely **hivatkozási adatokat tartalmaz** . Az alábbi táblázat bemutatja, hogy milyen tulajdonságokat kell megadnia a hivatkozási adatok bemenetének a leírásával való létrehozásakor:
 
 |**Tulajdonság neve**  |**Leírás**  |
 |---------|---------|
@@ -96,7 +96,7 @@ A különbözeti lekérdezés beállításnál Stream Analytics először a pill
 
 A SQL Database hivatkozási adatok konfigurálásához először létre kell hoznia a **hivatkozási adatok** bevitelét. Az alábbi táblázat minden olyan tulajdonságot ismertet, amelyet meg kell adnia a hivatkozási adatok bemenetének a leírásával való létrehozásakor. További információ: [Azure stream Analytics feladathoz tartozó SQL Database hivatkozási adatainak használata](sql-reference-data.md).
 
-Az [Azure SQL felügyelt példánya](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) használható a hivatkozásként használt adatok beviteléhez. [Konfigurálnia kell a nyilvános végpontot az SQL felügyelt példányában](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) , majd manuálisan kell konfigurálnia a következő beállításokat a Azure stream Analyticsban. A SQL Servert futtató Azure-beli virtuális gépeket az alábbi beállítások manuális konfigurálásával is támogatja.
+Az [Azure SQL felügyelt példánya](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) használható a hivatkozásként használt adatok beviteléhez. [Konfigurálnia kell a nyilvános végpontot az SQL felügyelt példányában](../azure-sql/managed-instance/public-endpoint-configure.md) , majd manuálisan kell konfigurálnia a következő beállításokat a Azure stream Analyticsban. A SQL Servert futtató Azure-beli virtuális gépeket az alábbi beállítások manuális konfigurálásával is támogatja.
 
 |**Tulajdonság neve**|**Leírás**  |
 |---------|---------|
@@ -138,7 +138,7 @@ FROM    Step1
 JOIN    refData2 ON refData2.Desc = Step1.Desc 
 ``` 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](stream-analytics-quick-create-portal.md)
 
@@ -146,6 +146,6 @@ JOIN    refData2 ON refData2.Desc = Step1.Desc
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.get.started]: stream-analytics-get-started.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.get.started]: ./stream-analytics-real-time-fraud-detection.md
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

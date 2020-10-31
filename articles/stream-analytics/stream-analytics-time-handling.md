@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 0830a8b552283b5b39fa78c505ed177d1959989f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8f40808834c64ad74673f1c5f0c19892607fdcc
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83640038"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127473"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>A Azure Stream Analytics időközbeni kezelési értelmezése
 
@@ -22,11 +22,11 @@ Ebből a cikkből megtudhatja, hogyan alakíthat ki tervezési döntéseket a Az
 
 A vitafórum jobb megjelenítéséhez hozzon létre néhány háttér-fogalmat:
 
-- **Esemény időpontja**: az az időpont, amikor az eredeti esemény történt. Például amikor egy mozgó autó az autópályán egy díjköteles standot közelít.
+- **Esemény időpontja** : az az időpont, amikor az eredeti esemény történt. Például amikor egy mozgó autó az autópályán egy díjköteles standot közelít.
 
-- **Feldolgozási idő**: az az idő, amikor az esemény eléri a feldolgozó rendszerét, és megfigyelhető. Ha például egy díjköteles stand-érzékelő látja az autót, és a számítógéprendszer eltarthat néhány másodpercig, hogy feldolgozza az adatfeldolgozást.
+- **Feldolgozási idő** : az az idő, amikor az esemény eléri a feldolgozó rendszerét, és megfigyelhető. Ha például egy díjköteles stand-érzékelő látja az autót, és a számítógéprendszer eltarthat néhány másodpercig, hogy feldolgozza az adatfeldolgozást.
 
-- **Vízjel**: egy esemény időjelölője, amely azt jelzi, hogy a rendszer milyen eseményeket ingressed a streaming processzornak. A vízjelek lehetővé teszik, hogy a rendszer egyértelmű előrehaladást jelezzen az események betöltéséhez. A streamek jellegéből adódóan a bejövő esemény adatai soha nem állnak le, így a vízjelek jelzik, hogy az adatfolyam egy bizonyos pontjára mutat.
+- **Vízjel** : egy esemény időjelölője, amely azt jelzi, hogy a rendszer milyen eseményeket ingressed a streaming processzornak. A vízjelek lehetővé teszik, hogy a rendszer egyértelmű előrehaladást jelezzen az események betöltéséhez. A streamek jellegéből adódóan a bejövő esemény adatai soha nem állnak le, így a vízjelek jelzik, hogy az adatfolyam egy bizonyos pontjára mutat.
 
    A vízjel fogalma fontos. A vízjelek lehetővé teszik a Stream Analytics annak meghatározását, hogy a rendszer mikor hozhat létre teljes, helyes és ismételhető eredményeket, amelyeket nem kell visszavonni. A feldolgozás kiszámítható és ismételhető módon végezhető el. Ha például egy bizonyos hibakezelés feltételéhez újra kell számolni, a vízjelek biztonságos kezdési és befejezési pontok.
 
@@ -46,7 +46,7 @@ A rendszer alapértelmezés szerint használja az érkezési időt, és a legjob
 
 A rendszer az esemény létrehozásakor rendeli hozzá az alkalmazási időt, és az esemény hasznos adatának részét képezi. Az események alkalmazási idő szerinti feldolgozásához használja a SELECT lekérdezés **timestamp by** záradékát. Ha a **timestamp by** hiányzik, az események az érkezési idő szerint lesznek feldolgozva.
 
-Fontos, hogy a tartalom időbélyegét használja, amikor időbeli logikát vesznek fel a forrásrendszer vagy a hálózat késései miatt. Az eseményekhez rendelt idő a rendszeren érhető el [. IDŐBÉLYEG](https://docs.microsoft.com/stream-analytics-query/system-timestamp-stream-analytics).
+Fontos, hogy a tartalom időbélyegét használja, amikor időbeli logikát vesznek fel a forrásrendszer vagy a hálózat késései miatt. Az eseményekhez rendelt idő a rendszeren érhető el [. IDŐBÉLYEG](/stream-analytics-query/system-timestamp-stream-analytics).
 
 ## <a name="how-time-progresses-in-azure-stream-analytics"></a>A Azure Stream Analytics folyamatának időpontja
 
@@ -76,7 +76,7 @@ Ha úgy dönt, hogy az esemény időpontjának megfelelően használja az **érk
 
 ## <a name="late-arriving-events"></a>Későn érkező események
 
-A késői érkezési tolerancia ablakának definíciója szerint minden bejövő eseménynél Azure Stream Analytics összehasonlítja az **esemény időpontját** az **érkezési idővel**. Ha az esemény időpontja kívül esik a tolerancia ablakon, beállíthatja, hogy a rendszer eldobja az eseményt, vagy állítsa be az esemény időpontját a tűréshatáron belülre.
+A késői érkezési tolerancia ablakának definíciója szerint minden bejövő eseménynél Azure Stream Analytics összehasonlítja az **esemény időpontját** az **érkezési idővel** . Ha az esemény időpontja kívül esik a tolerancia ablakon, beállíthatja, hogy a rendszer eldobja az eseményt, vagy állítsa be az esemény időpontját a tűréshatáron belülre.
 
 A küszöbértékek generálása után a szolgáltatás olyan eseményeket fogadhat, amelyekben a vízjelnél kisebb esemény van. Beállíthatja, hogy a szolgáltatás **eldobja** ezeket az eseményeket, vagy **állítsa be** az esemény időpontját a vízjel értékre.
 
@@ -86,7 +86,7 @@ A beállítás részeként az esemény **System. timestamp** beállítása az ú
 
 A leírtak szerint a heurisztikus vízjel létrehozási mechanizmusa jól működik a legtöbb esetben, amikor az idő többnyire szinkronizálva van a különböző esemény-küldők között. A valós életben azonban különösen sok IoT forgatókönyv esetén a rendszer kis mértékben szabályozza az esemény-küldők óráját. Az esemény-küldők a mezőben lévő összes típusú eszköz lehetnek, például a hardver és a szoftver különböző verzióiban.
 
-Ahelyett, hogy egy bemeneti partíció összes eseményének globális vízjelét kellene használnia, Stream Analytics rendelkezik egy **ALStream**nevű másik mechanizmussal. A feladatban alstreameket is használhat, ha olyan feladatot tartalmazó lekérdezést ír, amely a [**timestamp by**](/stream-analytics-query/timestamp-by-azure-stream-analytics) záradékot és **a kulcsszót**használja. Az ALStream kijelöléséhez adjon meg egy kulcs oszlopnevet az **over** kulcsszó után, például a, hogy a `deviceid` rendszer az adott oszlop alapján alkalmazza az időszabályzatokat. Mindegyik ALStream saját független vízjelet kap. Ez a mechanizmus hasznos lehet az időigényes kimenet létrehozásához, amikor nagy órajel-eltéréseket vagy hálózati késéseket tapasztal az események küldői között.
+Ahelyett, hogy egy bemeneti partíció összes eseményének globális vízjelét kellene használnia, Stream Analytics rendelkezik egy **ALStream** nevű másik mechanizmussal. A feladatban alstreameket is használhat, ha olyan feladatot tartalmazó lekérdezést ír, amely a [**timestamp by**](/stream-analytics-query/timestamp-by-azure-stream-analytics) záradékot és **a kulcsszót** használja. Az ALStream kijelöléséhez adjon meg egy kulcs oszlopnevet az **over** kulcsszó után, például a, hogy a `deviceid` rendszer az adott oszlop alapján alkalmazza az időszabályzatokat. Mindegyik ALStream saját független vízjelet kap. Ez a mechanizmus hasznos lehet az időigényes kimenet létrehozásához, amikor nagy órajel-eltéréseket vagy hálózati késéseket tapasztal az események küldői között.
 
 Az alstreamek Azure Stream Analytics által biztosított egyedi megoldás, amelyet más adatfolyam-feldolgozási rendszerek nem kínálnak.
 
@@ -220,7 +220,7 @@ Ebben az ábrán a következő tűréshatárok használatosak:
 
    ![Azure Stream Analytics alstreamek vízjelének illusztrációja](media/stream-analytics-time-handling/watermark-graph-3.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Azure Stream Analytics az események sorrendjét érintő megfontolások](stream-analytics-out-of-order-and-late-events.md)
+- [Azure Stream Analytics az események sorrendjét érintő megfontolások]()
 - [Stream Analytics feladatok metrikái](stream-analytics-monitoring.md)

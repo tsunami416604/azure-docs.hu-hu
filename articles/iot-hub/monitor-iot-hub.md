@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: 577ec9e01310787dacb45a03e1efae128cbab872
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 71a7041ec02da9a85de411f1113814311c21cd4f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078220"
+ms.locfileid: "93128879"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Az Azure IoT Hub figyelése
 
@@ -23,7 +23,9 @@ Az egyes IoT-hubok Azure Portal **áttekintő** lapja olyan diagramokat tartalma
 
 :::image type="content" source="media/monitor-iot-hub/overview-portal.png" alt-text="Alapértelmezett metrikai diagramok az IoT hub – áttekintés oldalon.":::
 
-Ez az információ hasznos, de csak kis mennyiségű figyelési adatot képvisel az IoT hub számára. Bizonyos megfigyelési adatok gyűjtése automatikusan történik, és az IoT hub létrehozása után azonnal elérhető az elemzéshez. További típusú adatgyűjtést is engedélyezhet néhány konfigurációval.
+Vegye figyelembe, hogy az üzenetek száma 1 percenként késleltethető, és a IoT Hub szolgáltatás-infrastruktúrával kapcsolatos okok miatt előfordulhat, hogy az érték időnként a magasabb és az alacsonyabb értékek között is ugrál a frissítéskor. Ez a számláló csak az elmúlt percben felhalmozott értékek esetében lehet helytelen.
+
+Az Áttekintés panelen megjelenő információk hasznosak, de csak kis mennyiségű figyelési adatot jelentenek az IoT hub számára. Bizonyos megfigyelési adatok gyűjtése automatikusan történik, és az IoT hub létrehozása után azonnal elérhető az elemzéshez. További típusú adatgyűjtést is engedélyezhet néhány konfigurációval.
 
 ## <a name="what-is-azure-monitor"></a>Mi az Azure Monitor?
 
