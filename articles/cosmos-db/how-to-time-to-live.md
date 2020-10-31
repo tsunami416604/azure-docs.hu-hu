@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 340ec7c16c5ed3e477cc2c4505c8b018d2d39a06
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7cf0f91a655901373b02a51004cf77eb25c8cf8e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486004"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085887"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Állítsa be az élettartamot Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A Azure Cosmos DBban beállíthatja, hogy az élettartam (TTL) a tároló szintjén legyen beállítva, vagy egy elem szintjén felülbírálhatja a tároló beállítása után. A tárolók ÉLETTARTAMát Azure Portal vagy a nyelvfüggő SDK-k használatával konfigurálhatja. Az elemszintű TTL-felülbírálások az SDK-k használatával konfigurálhatók.
 
@@ -221,7 +222,7 @@ A következő lépésekkel engedélyezheti az élettartamot egy elemen:
    * Válassza **a be lehetőséget (nincs alapértelmezett)** , vagy válassza **a** be lehetőséget, és állítsa be a TTL értéket. 
    * Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
-5. Ezután Navigáljon arra az elemre, amelyre az élettartamot szeretné beállítani, adja hozzá a `ttl` tulajdonságot, és válassza a **frissítés**lehetőséget. 
+5. Ezután Navigáljon arra az elemre, amelyre az élettartamot szeretné beállítani, adja hozzá a `ttl` tulajdonságot, és válassza a **frissítés** lehetőséget. 
 
    ```json
    {

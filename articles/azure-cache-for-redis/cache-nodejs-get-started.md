@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: ce570475617236bb99f1bca7a07dc95e1f3285aa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aa22cffc1fc38e055c6c2bb504c311c012f31ac2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91330995"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087145"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Gyors útmutató: az Azure cache használata a Redis Node.js
+# <a name="quickstart-use-azure-cache-for-redis-in-nodejs"></a>Gyors útmutató: az Azure cache használata a Redis Node.js
 
 Ebben a rövid útmutatóban beépíti az Azure cache-t a Redis-ba egy Node.js alkalmazásba, hogy hozzáférjen egy olyan biztonságos, dedikált gyorsítótárhoz, amely az Azure-on belül bármely alkalmazásból elérhető.
 
@@ -51,7 +51,7 @@ var client = redis.createClient(6380, process.env.REDISCACHEHOSTNAME,
     {auth_pass: process.env.REDISCACHEKEY, tls: {servername: process.env.REDISCACHEHOSTNAME}});
 ```
 
-Ne hozzon létre új kapcsolatokat a kód minden műveletéhez. Ehelyett a lehető legtöbbször hasznosítsa újra a kapcsolatokat. 
+Ne hozzon létre új kapcsolatokat a kódban szereplő összes művelethez. Ehelyett a lehető legtöbbször hasznosítsa újra a kapcsolatokat. 
 
 ## <a name="create-a-new-nodejs-app"></a>Új Node.js-alkalmazás létrehozása
 
@@ -109,7 +109,7 @@ Az alábbi példában a `Message` kulcsot láthatja. A kulcsnak korábban gyors�
 
 ![Redis Cache alkalmazás befejeződött](./media/cache-nodejs-get-started/redis-cache-app-complete.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és újból felhasználhatja az ebben a rövid útmutatóban létrehozott erőforrásokat.
 
@@ -121,15 +121,15 @@ Ha azonban befejezte az oktatóanyag mintaalkalmazásának használatát, a díj
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az **Erőforráscsoportok** elemet.
 
-A **szűrés név alapján** szövegmezőbe írja be az erőforráscsoport nevét. A jelen cikk utasításai egy *TestResources* nevű erőforráscsoportot használtak. Az erőforráscsoport az eredmény listán válassza a **...** , majd az **erőforráscsoport törlése**elemet.
+A **szűrés név alapján** szövegmezőbe írja be az erőforráscsoport nevét. A jelen cikk utasításai egy *TestResources* nevű erőforráscsoportot használtak. Az erőforráscsoport az eredmény listán válassza a **...** , majd az **erőforráscsoport törlése** elemet.
 
 ![Azure-erőforráscsoport törlése](./media/cache-nodejs-get-started/redis-cache-delete-resource-group.png)
 
-A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. Adja meg a megerősíteni kívánt erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
+A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. Adja meg a megerősíteni kívánt erőforráscsoport nevét, majd válassza a **Törlés** lehetőséget.
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja az Azure cache-t a Redis egy Node.js alkalmazásból. Folytassa a következő rövid útmutatóval, hogy az Azure cache-t használja a Redis egy ASP.NET-webalkalmazással.
 

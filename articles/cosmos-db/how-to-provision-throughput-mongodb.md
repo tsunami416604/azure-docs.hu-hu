@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 44a69581f0763972dd30a016bf0826b31657a3d4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 25eaa4a66fb4a73f976edbd30e6f82015ce84f6f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283998"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086125"
 ---
 # <a name="provision-database-container-or-autoscale-throughput-on-azure-cosmos-db-api-for-mongodb-resources"></a>Adatbázis, tároló vagy méretezési sebesség kiépítése a MongoDB-erőforrások Azure Cosmos DB API-ra
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Ez a cikk azt ismerteti, hogyan kell kiépíteni az átviteli sebességet a MongoDB Azure Cosmos DB API-ban. Egy tárolón vagy egy adatbázison is kiépítheti a standard (manuális) vagy az automatikus méretezési sebességet, és megoszthatja azt az adatbázisban lévő tárolók között. Az átviteli sebességet Azure Portal, Azure CLI vagy Azure Cosmos DB SDK-k használatával is kiépítheti.
 
@@ -27,7 +28,7 @@ Ha más API-t használ, az átviteli sebesség kiépítéséhez lásd: [SQL API]
 
 1. [Hozzon létre egy új Azure Cosmos-fiókot](create-mongodb-dotnet.md#create-a-database-account), vagy válasszon ki egy meglévő Azure Cosmos-fiókot.
 
-1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza az **új gyűjtemény**lehetőséget. Ezután adja meg a következő adatokat:
+1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza az **új gyűjtemény** lehetőséget. Ezután adja meg a következő adatokat:
 
    * Jelezze, hogy új adatbázist hoz létre, vagy egy meglévőt használ. Válassza az **adatbázis átviteli sebességének kiépítése** lehetőséget, ha az átviteli sebességet az adatbázis szintjén szeretné kiépíteni.
    * Adja meg a gyűjtemény AZONOSÍTÓját.

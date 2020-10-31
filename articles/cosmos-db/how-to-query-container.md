@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: e948031d3d1d03890bfcfccd65424a15e6e314cd
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 3c363552d1a196bed49e1ef3448a8216b7bcae2f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276124"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086057"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Azure Cosmos-tároló lekérdezése
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ez a cikk azt ismerteti, hogyan lehet lekérdezni egy tárolót (gyűjtemény, gráf vagy tábla) a Azure Cosmos DBban. Ez különösen azt ismerteti, hogyan működik a partíciós és a több partíciós lekérdezések Azure Cosmos DBban.
 
@@ -57,9 +58,9 @@ Az Azure Cosmos DB SDK-k 1.9.0, és később támogatják a párhuzamos lekérde
 
 A lekérdezések párhuzamos végrehajtását az alábbi paraméterek beállításával kezelheti:
 
-- **MaxConcurrency**: a tároló partícióinak egyidejű hálózati kapcsolatainak maximális számát állítja be. Ha ezt a tulajdonságot a értékre állítja `-1` , az SDK kezeli a párhuzamosság mértékét. Ha a értékre van  `MaxConcurrency` állítva `0` , a tároló partícióinak egyetlen hálózati kapcsolatai vannak.
+- **MaxConcurrency** : a tároló partícióinak egyidejű hálózati kapcsolatainak maximális számát állítja be. Ha ezt a tulajdonságot a értékre állítja `-1` , az SDK kezeli a párhuzamosság mértékét. Ha a értékre van  `MaxConcurrency` állítva `0` , a tároló partícióinak egyetlen hálózati kapcsolatai vannak.
 
-- **MaxBufferedItemCount**: kompromisszumot alakít ki a lekérdezések késése és az ügyféloldali memóriahasználat között. Ha ez a beállítás nincs megadva, vagy az-1 értékre van állítva, az SDK kezeli a párhuzamos lekérdezés végrehajtása során pufferelt elemek számát.
+- **MaxBufferedItemCount** : kompromisszumot alakít ki a lekérdezések késése és az ügyféloldali memóriahasználat között. Ha ez a beállítás nincs megadva, vagy az-1 értékre van állítva, az SDK kezeli a párhuzamos lekérdezés végrehajtása során pufferelt elemek számát.
 
 Mivel a Azure Cosmos DB a több partíciós lekérdezéseket is integrálással, a lekérdezési késés általában jól méretezhető, és a rendszer [fizikai partíciókat](partitioning-overview.md#physical-partitions)ad hozzá. Az RU-díj azonban jelentősen megnő, mivel a fizikai partíciók száma növekszik.
 

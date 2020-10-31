@@ -10,20 +10,25 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 1805f6f7a61f7e0b0a6e4d5bd6931c0a7d1f1b6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 532bf806789476c1ec901c1e4ac8522451819625
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91872068"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085122"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>Entitások keresése a Bing Entity API-val
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 ## <a name="suggest-search-terms-with-the-bing-autosuggest-api"></a>Keresési kifejezések ajánlása a Bing Autosuggest API
 
 Ha biztosít egy olyan keresőmezőt, ahol a felhasználók megadhatják a keresőkifejezést, a [Bing Autosuggest API](../../bing-autosuggest/get-suggested-search-terms.md) használatával kényelmesebbé teheti a felhasználói élményt. Az API javasolt lekérdezési sztringeket ad vissza a részleges keresőkifejezések alapján, miközben a felhasználó gépel.
 
-Miután a felhasználó megadja a keresőkifejezést, kódolja URL-címként a karakterláncot a [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) lekérdezési paraméter beállítása előtt. Ha például a felhasználó a *Marcus Appel* kifejezésre keres, a `q` értéke legyen *Marcus+Appel* vagy *Marcus%20Appel*.
+Miután a felhasználó megadja a keresőkifejezést, kódolja URL-címként a karakterláncot a [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) lekérdezési paraméter beállítása előtt. Ha például a felhasználó a *Marcus Appel* kifejezésre keres, a `q` értéke legyen *Marcus+Appel* vagy *Marcus%20Appel* .
 
 Ha a keresőkifejezésben elírás van, a keresésre adott válasz tartalmaz egy [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) objektumot. Az objektum az eredeti és a javított helyesírást is mutatja, amelyet a Bing a keresés során használt.
 
@@ -296,7 +301,7 @@ Az alábbi példa tartalmaz egy `LicenseAttribution` szabályt.
 
 ![Licencek forrásmegjelölése](../media/cognitive-services-bing-entities-api/licenseattribution.png)
 
-A megjelenített licencadatok között kell lennie egy hivatkozásnak, amely a licenc információit tartalmazó webhelyre mutat. Általában a licenc nevét szokás hivatkozásként szerepeltetni. Például ha a tájékoztatás így szól: **A szövegre a CC-BY-SA licenc vonatkozik**, és a CC-BY-SA a licenc neve, a CC-BY-SA nevet érdemes hivatkozássá tenni.
+A megjelenített licencadatok között kell lennie egy hivatkozásnak, amely a licenc információit tartalmazó webhelyre mutat. Általában a licenc nevét szokás hivatkozásként szerepeltetni. Például ha a tájékoztatás így szól: **A szövegre a CC-BY-SA licenc vonatkozik** , és a CC-BY-SA a licenc neve, a CC-BY-SA nevet érdemes hivatkozássá tenni.
 
 ### <a name="link-and-text-attribution"></a>Hivatkozások és szövegek forrásmegjelölése
 
@@ -331,6 +336,6 @@ Amennyiben nem biztos benne, hogy egy művelet vagy szándék felfogható-e kere
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Próbáljon ki egy rövid](../quickstarts/csharp.md) útmutatót, amellyel megkezdheti az entitások keresését a Bing Entity Search API.

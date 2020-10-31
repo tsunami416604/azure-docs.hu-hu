@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: c9a29a34b25b6834c2c343bd568f3dd3548ceff3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 9f0d42e2e3dfb7e11d3c74ad1280bb867a85e2f8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474937"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085462"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Szerepköralapú hozzáférés-vezérlés az Azure Cosmos DB-ben
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 A Azure Cosmos DB beépített szerepköralapú hozzáférés-vezérlést (RBAC) biztosít a Azure Cosmos DB gyakori felügyeleti eseteihez. A Azure Active Directory profillal rendelkező személy a felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz vagy felügyelt identitásokhoz rendelheti hozzá ezeket az Azure-szerepköröket az erőforrásokhoz és műveletekhez való hozzáférés engedélyezéséhez vagy megtagadásához Azure Cosmos DB erőforrásokon. A szerepkör-hozzárendelések hatóköre csak a csak vezérlőre vonatkozik, amely hozzáférést biztosít az Azure Cosmos-fiókok,-adatbázisok,-tárolók és-ajánlatok (átviteli sebesség) számára.
 

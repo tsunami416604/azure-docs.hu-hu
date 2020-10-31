@@ -1,5 +1,5 @@
 ---
-title: Erőforrás-modell Azure Cosmos DB
+title: Azure Cosmos DB-erőforrásmodell
 description: Ez a cikk Azure Cosmos DB erőforrás-modellt ismerteti, amely magában foglalja az Azure Cosmos-fiókot,-adatbázist,-tárolót és az elemeket. Ezen elemek hierarchiáját is lefedi egy Azure Cosmos-fiókban.
 author: markjbrown
 ms.author: mjbrown
@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 1178a5e2850279820925c9bd02554ec7d5adf9e6
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 23adbd289ae2be484f1aef86b2224097c6ba489c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284093"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087927"
 ---
-# <a name="azure-cosmos-db-resource-model"></a>Erőforrás-modell Azure Cosmos DB
+# <a name="azure-cosmos-db-resource-model"></a>Azure Cosmos DB-erőforrásmodell
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 A Azure Cosmos DB egy teljes körűen felügyelt platform-szolgáltatás (Péter). A Azure Cosmos DB használatának megkezdéséhez először létre kell hoznia egy Azure Cosmos-fiókot az Azure-előfizetésben és-adatbázisokban, tárolókban és elemekben. Ez a cikk az erőforrás-modell hierarchiájának Azure Cosmos DB erőforrás-modelljét és különböző entitásait ismerteti.
 
@@ -63,16 +64,16 @@ Az Azure Cosmos-tároló a skálázhatósági egység, amely a kiépített átvi
 
 Tároló létrehozásakor az átviteli sebességet az alábbi módokon konfigurálhatja:
 
-* **Dedikált kiépített átviteli sebesség**: a tárolón kiépített átviteli sebesség kizárólag az adott tároló számára van fenntartva, és a SLA-kat támogatja. További információért lásd: [átviteli sebesség tárolón való kiépítése](how-to-provision-container-throughput.md).
+* **Dedikált kiépített átviteli sebesség** : a tárolón kiépített átviteli sebesség kizárólag az adott tároló számára van fenntartva, és a SLA-kat támogatja. További információért lásd: [átviteli sebesség tárolón való kiépítése](how-to-provision-container-throughput.md).
 
-* **Megosztott kiépített átviteli sebesség**: ezek a tárolók megosztják a kiosztott átviteli sebességet ugyanabban az adatbázisban lévő többi tárolóval (kivéve a dedikált kiosztott átviteli sebességgel konfigurált tárolókat). Ez azt jelenti, hogy az adatbázison kiosztott átviteli sebesség a "megosztott átviteli sebesség" tárolók között van megosztva. További információért lásd: [az átviteli sebesség kiépítése egy adatbázisban](how-to-provision-database-throughput.md).
+* **Megosztott kiépített átviteli sebesség** : ezek a tárolók megosztják a kiosztott átviteli sebességet ugyanabban az adatbázisban lévő többi tárolóval (kivéve a dedikált kiosztott átviteli sebességgel konfigurált tárolókat). Ez azt jelenti, hogy az adatbázison kiosztott átviteli sebesség a "megosztott átviteli sebesség" tárolók között van megosztva. További információért lásd: [az átviteli sebesség kiépítése egy adatbázisban](how-to-provision-database-throughput.md).
 
 > [!NOTE]
 > A megosztott és a dedikált átviteli sebességet csak az adatbázis és a tároló létrehozásakor lehet konfigurálni. A dedikált teljesítményű módról a megosztott teljesítményű módra (és fordítva) való váltáshoz a tároló létrehozása után egy új tárolót kell létrehoznia, és migrálnia kell az adatokat az új tárolóba. Az adatáttelepítés a Azure Cosmos DB módosítási funkció használatával végezhető el.
 
 Az Azure Cosmos-tároló rugalmasan méretezhető, függetlenül attól, hogy dedikált vagy megosztott kiosztású átviteli módok használatával hoz létre tárolókat.
 
-A tárolók az elemek séma nélküli tárolói. A tároló elemei tetszőleges sémákkal rendelkezhetnek. Például egy olyan elem, amely egy személyt jelöl, és egy személygépkocsit jelképező elem is elhelyezhető *ugyanabban a tárolóban*. Alapértelmezés szerint a rendszer a tárolóhoz hozzáadott összes elemet automatikusan indexeli a explicit index vagy a séma kezelése nélkül. Az indexelési viselkedést úgy szabhatja testre, hogy az [indexelési házirendet](index-overview.md) egy tárolón konfigurálja. 
+A tárolók az elemek séma nélküli tárolói. A tároló elemei tetszőleges sémákkal rendelkezhetnek. Például egy olyan elem, amely egy személyt jelöl, és egy személygépkocsit jelképező elem is elhelyezhető *ugyanabban a tárolóban* . Alapértelmezés szerint a rendszer a tárolóhoz hozzáadott összes elemet automatikusan indexeli a explicit index vagy a séma kezelése nélkül. Az indexelési viselkedést úgy szabhatja testre, hogy az [indexelési házirendet](index-overview.md) egy tárolón konfigurálja. 
 
 Beállíthatja, [hogy az élettartam (TTL)](time-to-live.md) a tároló kijelölt elemein legyen, vagy a teljes tároló számára, hogy szabályosan kiürítse ezeket az elemeket a rendszerből. Azure Cosmos DB automatikusan törli az elemeket, amikor lejárnak. Emellett garantálja, hogy a tárolón végrehajtott lekérdezés nem ad vissza egy rögzített kötésen belüli lejárt elemeket. További információ: a [TTL konfigurálása a tárolón](how-to-time-to-live.md).
 
@@ -95,7 +96,7 @@ A tárolók API-specifikus entitásokra vannak kialakítva, az alábbi tábláza
 
 Az Azure Cosmos-tárolók rendszer által definiált tulajdonságokkal rendelkeznek. Attól függően, hogy melyik API-t használja, előfordulhat, hogy bizonyos tulajdonságok nem lesznek közvetlenül kitéve. A következő táblázat ismerteti a rendszerszintű tulajdonságok listáját:
 
-| Rendszerszintű tulajdonság | Rendszer által generált vagy felhasználó által konfigurálható | Cél | SQL API | Cassandra API | MongoDB-hez készült Azure Cosmos DB API | Gremlin API | Table API |
+| Rendszerszintű tulajdonság | Rendszer által generált vagy felhasználó által konfigurálható | Rendeltetés | SQL API | Cassandra API | MongoDB-hez készült Azure Cosmos DB API | Gremlin API | Table API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |\_rid | Rendszer által generált | Tároló egyedi azonosítója | Igen | Nem | Nem | Nem | Nem |
 |\_ETAG | Rendszer által generált | Optimista Egyidejűség-vezérléshez használt entitás címkéje | Igen | Nem | Nem | Nem | Nem |
@@ -125,13 +126,13 @@ Attól függően, hogy melyik API-t használja, egy Azure Cosmos-elem a gyűjtem
 
 | Cosmos-entitás | SQL API | Cassandra API | MongoDB-hez készült Azure Cosmos DB API | Gremlin API | Table API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos-tétel | Elem | Sor | Dokumentum | Csomópont vagy peremhálózati | Elem |
+|Azure Cosmos-tétel | Item | Sor | Dokumentum | Csomópont vagy peremhálózati | Item |
 
 ### <a name="properties-of-an-item"></a>Egy tétel tulajdonságai
 
 Minden Azure Cosmos-eleme a következő, rendszerszintű tulajdonságokkal rendelkezik. Attól függően, hogy melyik API-t használja, előfordulhat, hogy néhányat nem lehet közvetlenül feltenni.
 
-| Rendszerszintű tulajdonság | Rendszer által generált vagy felhasználó által konfigurálható| Cél | SQL API | Cassandra API | MongoDB-hez készült Azure Cosmos DB API | Gremlin API | Table API |
+| Rendszerszintű tulajdonság | Rendszer által generált vagy felhasználó által konfigurálható| Rendeltetés | SQL API | Cassandra API | MongoDB-hez készült Azure Cosmos DB API | Gremlin API | Table API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |\_rid | Rendszer által generált | Az objektum egyedi azonosítója | Igen | Nem | Nem | Nem | Nem |
 |\_ETAG | Rendszer által generált | Optimista Egyidejűség-vezérléshez használt entitás címkéje | Igen | Nem | Nem | Nem | Nem |

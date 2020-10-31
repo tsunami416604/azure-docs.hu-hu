@@ -5,12 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 5c1a7de386baeb4b89fd12bd89236ea2e0348a57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5627aa614a7e2819b6f3cc1401c8458552e57219
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357216"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085173"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>A fürt megjelenítése a Service Fabric Explorerrel
 
@@ -69,7 +69,7 @@ A fürt két alfáját tartalmaz: egyet az alkalmazásokhoz és egy másikat a c
 
 Az alkalmazás nézet használatával navigálhat Service Fabric logikai hierarchiáján: alkalmazások, szolgáltatások, partíciók és replikák.
 
-Az alábbi példában az alkalmazás **SajátPr** két szolgáltatásból, a **MyStatefulService** és a **webszolgáltatásból**áll. Mivel a **MyStatefulService** állapot-nyilvántartó, egy olyan partíciót tartalmaz, amely egy elsődleges és két másodlagos replikával rendelkezik. Ezzel szemben a WebSvcService állapot nélküli, és egyetlen példányt tartalmaz.
+Az alábbi példában az alkalmazás **SajátPr** két szolgáltatásból, a **MyStatefulService** és a **webszolgáltatásból** áll. Mivel a **MyStatefulService** állapot-nyilvántartó, egy olyan partíciót tartalmaz, amely egy elsődleges és két másodlagos replikával rendelkezik. Ezzel szemben a WebSvcService állapot nélküli, és egyetlen példányt tartalmaz.
 
 ![Service Fabric Explorer alkalmazás nézet][sfx-application-tree]
 
@@ -83,7 +83,7 @@ A csomópontnézet a fürt fizikai elrendezését mutatja. Az egyes csomópontok
 ## <a name="actions"></a>Műveletek
 A Service Fabric Explorer gyors módszert kínál a csomópontokon, alkalmazásokon és szolgáltatásokon belüli műveletek meghívására a fürtön belül.
 
-Például egy alkalmazás-példány törléséhez válassza ki az alkalmazást a bal oldali fában, majd válassza az **Actions**  >  **alkalmazás törlése**műveletet.
+Például egy alkalmazás-példány törléséhez válassza ki az alkalmazást a bal oldali fában, majd válassza az **Actions**  >  **alkalmazás törlése** műveletet.
 
 ![Alkalmazás törlése Service Fabric Explorer][sfx-delete-application]
 
@@ -117,7 +117,7 @@ A EventStore a platform által kínált olyan szolgáltatás, amely Service Fabr
 ## <a name="image-store-viewer"></a>lemezképtároló megjelenítője
 A képtárak megjelenítője olyan natív lemezképtároló használata, amely lehetővé teszi a képáruház aktuális tartalmának megtekintését és a fájl-és mappa információinak beolvasását, valamint a fájlok és mappák eltávolítását.
 
-![Service Fabric Explorer fürt térképe][sfx-imagestore]
+![A lemezképtároló-megjelenítőt megjelenítő képernyőkép.][sfx-imagestore]
 
 ## <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
 A Service Fabric Explorer lehetővé teszi a kapcsolódást a [biztonsági mentéssel és visszaállítással](./service-fabric-reliable-services-backup-restore.md). Az SFX biztonsági mentési és visszaállítási funkcióinak megjelenítéséhez engedélyezni kell a speciális módot.

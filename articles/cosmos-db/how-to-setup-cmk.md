@@ -6,16 +6,17 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 08/05/2020
 ms.author: thweiss
-ms.openlocfilehash: f3a5106fcc7f1b55db22ee13ced34328cc38096d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 21bb594f4e374d41cfc4184f3a72aea1717c85d8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486208"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086142"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurálja a felhasználó által kezelt kulcsokat az Azure Cosmos-fiókjához az Azure Key Vaulttal
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Az Azure Cosmos-fiókban tárolt adatai automatikusan és zökkenőmentesen titkosítva vannak a Microsoft által kezelt kulcsokkal (**szolgáltatás által felügyelt kulcsok**). Lehetőség van arra is, hogy egy második titkosítási réteget adjon hozzá a kezelt kulcsokkal (az**ügyfél által felügyelt kulcsokkal**).
+Az Azure Cosmos-fiókban tárolt adatai automatikusan és zökkenőmentesen titkosítva vannak a Microsoft által kezelt kulcsokkal ( **szolgáltatás által felügyelt kulcsok** ). Lehetőség van arra is, hogy egy második titkosítási réteget adjon hozzá a kezelt kulcsokkal (az **ügyfél által felügyelt kulcsokkal** ).
 
 :::image type="content" source="./media/how-to-setup-cmk/cmk-intro.png" alt-text="Az ügyféladatok körébe tartozó titkosítási rétegek":::
 
@@ -30,13 +31,13 @@ Az ügyfél által felügyelt kulcsokat a [Azure Key Vaultban](../key-vault/gene
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-rp.png" alt-text="Az ügyféladatok körébe tartozó titkosítási rétegek":::
 
-1. Keresse meg a **Microsoft.DocumentDB** erőforrás-szolgáltatót. Ellenőrizze, hogy az erőforrás-szolgáltató már regisztráltként van-e megjelölve. Ha nem, válassza ki az erőforrás-szolgáltatót, és válassza a **regisztráció**lehetőséget:
+1. Keresse meg a **Microsoft.DocumentDB** erőforrás-szolgáltatót. Ellenőrizze, hogy az erőforrás-szolgáltató már regisztráltként van-e megjelölve. Ha nem, válassza ki az erőforrás-szolgáltatót, és válassza a **regisztráció** lehetőséget:
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-rp-register.png" alt-text="Az ügyféladatok körébe tartozó titkosítási rétegek":::
 
 ## <a name="configure-your-azure-key-vault-instance"></a>Az Azure Key Vault-példány konfigurálása
 
-Az ügyfél által felügyelt kulcsok Azure Cosmos DB használata esetén a titkosítási kulcsok tárolásához használni kívánt Azure Key Vault-példányon két tulajdonságot kell beállítania: a helyreállítható **törlési** és **törlési védelem**.
+Az ügyfél által felügyelt kulcsok Azure Cosmos DB használata esetén a titkosítási kulcsok tárolásához használni kívánt Azure Key Vault-példányon két tulajdonságot kell beállítania: a helyreállítható **törlési** és **törlési védelem** .
 
 Ha új Azure Key Vault példányt hoz létre, engedélyezze ezeket a tulajdonságokat a létrehozás során:
 
@@ -51,13 +52,13 @@ Ha új Azure Key Vault példányt hoz létre, engedélyezze ezeket a tulajdonsá
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-ap.png" alt-text="Az ügyféladatok körébe tartozó titkosítási rétegek":::
 
-1. Válassza a **+ hozzáférési házirend hozzáadása**lehetőséget.
+1. Válassza a **+ hozzáférési házirend hozzáadása** lehetőséget.
 
-1. A **kulcs engedélyei** legördülő menüben válassza a **lekérés**, a **kicsomagolás**és a **kulcsok becsomagolása** lehetőséget:
+1. A **kulcs engedélyei** legördülő menüben válassza a **lekérés** , a **kicsomagolás** és a **kulcsok becsomagolása** lehetőséget:
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png" alt-text="Az ügyféladatok körébe tartozó titkosítási rétegek":::
 
-1. A **rendszerbiztonsági tag kiválasztása**területen válassza a **nincs kiválasztva**lehetőséget. Ezután keressen rá **Azure Cosmos db** rendszerbiztonsági tag elemre, és válassza ki azt (hogy könnyebb legyen megkeresni, a résztvevő azonosítója: `a232010e-820c-4083-83bb-3ace5fc29d0b` bármely Azure-régió esetében, Azure Government kivéve a rendszerbiztonsági tag azonosítóját `57506a73-e302-42a9-b869-6f12d9ec29e9` ). Végül válassza a **kijelölés alul lehetőséget** . Ha a **Azure Cosmos db** rendszerbiztonsági tag nem szerepel a listában, akkor előfordulhat, hogy újra kell regisztrálnia a **Microsoft.DocumentDB** erőforrás-szolgáltatót a jelen cikk [erőforrás-szolgáltató regisztrálása](#register-resource-provider) című szakaszában leírtak szerint.
+1. A **rendszerbiztonsági tag kiválasztása** területen válassza a **nincs kiválasztva** lehetőséget. Ezután keressen rá **Azure Cosmos db** rendszerbiztonsági tag elemre, és válassza ki azt (hogy könnyebb legyen megkeresni, a résztvevő azonosítója: `a232010e-820c-4083-83bb-3ace5fc29d0b` bármely Azure-régió esetében, Azure Government kivéve a rendszerbiztonsági tag azonosítóját `57506a73-e302-42a9-b869-6f12d9ec29e9` ). Végül válassza a **kijelölés alul lehetőséget** . Ha a **Azure Cosmos db** rendszerbiztonsági tag nem szerepel a listában, akkor előfordulhat, hogy újra kell regisztrálnia a **Microsoft.DocumentDB** erőforrás-szolgáltatót a jelen cikk [erőforrás-szolgáltató regisztrálása](#register-resource-provider) című szakaszában leírtak szerint.
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap.png" alt-text="Az ügyféladatok körébe tartozó titkosítási rétegek":::
 
@@ -71,13 +72,13 @@ Ha új Azure Key Vault példányt hoz létre, engedélyezze ezeket a tulajdonsá
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keys.png" alt-text="Az ügyféladatok körébe tartozó titkosítási rétegek":::
 
-1. Válassza a **Létrehozás/importálás**lehetőséget, adja meg az új kulcs nevét, és válasszon ki egy RSA-kulcs méretét. Legalább 3072 ajánlott a legjobb biztonság érdekében. Ezután válassza a **Létrehozás**elemet:
+1. Válassza a **Létrehozás/importálás** lehetőséget, adja meg az új kulcs nevét, és válasszon ki egy RSA-kulcs méretét. Legalább 3072 ajánlott a legjobb biztonság érdekében. Ezután válassza a **Létrehozás** elemet:
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-gen.png" alt-text="Az ügyféladatok körébe tartozó titkosítási rétegek":::
 
 1. A kulcs létrehozása után válassza ki az újonnan létrehozott kulcsot, majd a jelenlegi verzióját.
 
-1. Másolja a kulcs **azonosítóját**a legutolsó perjel utáni rész kivételével:
+1. Másolja a kulcs **azonosítóját** a legutolsó perjel utáni rész kivételével:
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keyid.png" alt-text="Az ügyféladatok körébe tartozó titkosítási rétegek":::
 
@@ -232,7 +233,7 @@ Az Azure Cosmos-fiók által használt ügyfél által felügyelt kulcs elforgat
 
     :::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="Az ügyféladatok körébe tartozó titkosítási rétegek":::
 
-    Ezután cserélje le a **kulcs URI-ját** a használni kívánt új kulcsra, majd válassza a **Mentés**lehetőséget:
+    Ezután cserélje le a **kulcs URI-ját** a használni kívánt új kulcsra, majd válassza a **Mentés** lehetőséget:
 
     :::image type="content" source="./media/how-to-setup-cmk/portal-key-swap.png" alt-text="Az ügyféladatok körébe tartozó titkosítási rétegek":::
 

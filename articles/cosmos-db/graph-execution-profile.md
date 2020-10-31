@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: chrande
-ms.openlocfilehash: ff49889977bc4e5d9097d81ea7b05387900bedd4
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 18cefb1dd80368a8ccdad9f6f3ffc30881a8a889
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926376"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087485"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>Gremlin-lekérdezések kiértékelése a végrehajtási profil lépés segítségével
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Ez a cikk áttekinti, hogyan használható a végrehajtási profil lépés az Azure Cosmos DB Gremlin API gráfadatbázisokkal. Ez a lépés a hibaelhárításhoz és a lekérdezés optimalizálásához nyújt releváns információkat, és kompatibilis minden olyan Gremlin-lekérdezéssel, amelyet egy Cosmos DB Gremlin API-fiókon lehet végrehajtani.
 

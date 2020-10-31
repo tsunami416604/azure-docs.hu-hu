@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 6b8b145c919a1f4e2ea9129a032da69bd30e6b71
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 63b633ed67c03a006a154bc69a1aafb4cb4aa6d0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284123"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086278"
 ---
 # <a name="provision-database-container-or-autoscale-throughput-on-azure-cosmos-db-cassandra-api-resources"></a>Az adatbázis, a tároló vagy az autoskálázás átviteli sebességének kiépítése Azure Cosmos DB Cassandra API erőforrásokon
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Ez a cikk azt ismerteti, hogyan kell kiépíteni az átviteli sebességet Azure Cosmos DB Cassandra API. Egy tárolón vagy egy adatbázison is kiépítheti a standard (manuális) vagy az automatikus méretezési sebességet, és megoszthatja azt az adatbázisban lévő tárolók között. Az átviteli sebességet Azure Portal, Azure CLI vagy Azure Cosmos DB SDK-k használatával is kiépítheti.
 
@@ -27,7 +28,7 @@ Ha más API-t használ, tekintse meg az [SQL API](how-to-provision-container-thr
 
 1. [Hozzon létre egy új Azure Cosmos-fiókot](create-mongodb-dotnet.md#create-a-database-account), vagy válasszon ki egy meglévő Azure Cosmos-fiókot.
 
-1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza az **új tábla**lehetőséget. Ezután adja meg a következő adatokat:
+1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza az **új tábla** lehetőséget. Ezután adja meg a következő adatokat:
 
    * Jelezze, hogy új lemezterületet hoz létre, vagy egy meglévőt használ. Válassza az **adatbázis átviteli sebességének** kiosztása lehetőséget, ha a lemezterület szintjén szeretné kiépíteni az átviteli sebességet.
    * Adja meg a tábla AZONOSÍTÓját a CQL-parancson belül.

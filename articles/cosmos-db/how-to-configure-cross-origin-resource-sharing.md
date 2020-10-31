@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: eb1cbed7b974b6f0015591df01674e40aac2d8c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 863c31ecac13337ea3f91d7a7ced49b0f7141e58
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85390873"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086414"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>Az idegen eredetű erőforrások megosztásának konfigurálása (CORS)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Az eltérő eredetű erőforrás-megosztás (CORS) egy olyan HTTP-szolgáltatás, amely lehetővé teszi, hogy az egyik tartományon futó webalkalmazások hozzáférjenek egy másik tartomány erőforrásaihoz. A böngészők olyan biztonsági korlátozást valósítanak meg, amelyik azonos eredetű házirend, amely megakadályozza, hogy egy weblap egy másik tartományban lévő API-kat hívjon fel. A CORS azonban biztonságos módot biztosít ahhoz, hogy a forrás tartomány egy másik tartományban lévő API-kat hívjon fel. A Azure Cosmos DB a Core (SQL) API mostantól támogatja az CORS-alapú erőforrás-megosztást a "allowedOrigins" fejléc használatával. Miután engedélyezte az Azure Cosmos-fiók CORS-támogatását, a rendszer csak a hitelesített kérelmeket értékeli ki, hogy azok a megadott szabályoknak megfelelően engedélyezettek-e.
 
@@ -28,7 +29,7 @@ A következő lépések végrehajtásával engedélyezheti a több eredetű erő
 
 1. Navigáljon az Azure Cosmos DB-fiókhoz. Nyissa meg a **CORS** panelt.
 
-2. Adja meg az eredetek vesszővel tagolt listáját, amelyek az eltérő eredetű hívásokat végezhetnek a Azure Cosmos DB-fiókban. Például:, `https://www.mydomain.com` `https://mydomain.com` , `https://api.mydomain.com` . A "" helyettesítő karaktert is használhatja \* az összes eredet engedélyezéséhez, majd válassza a **Küldés**lehetőséget. 
+2. Adja meg az eredetek vesszővel tagolt listáját, amelyek az eltérő eredetű hívásokat végezhetnek a Azure Cosmos DB-fiókban. Például:, `https://www.mydomain.com` `https://mydomain.com` , `https://api.mydomain.com` . A "" helyettesítő karaktert is használhatja \* az összes eredet engedélyezéséhez, majd válassza a **Küldés** lehetőséget. 
 
    > [!NOTE]
    > Jelenleg nem használhat helyettesítő karaktereket a tartománynév részeként. Például a `https://*.mydomain.net` Formátum még nem támogatott. 
@@ -83,7 +84,7 @@ module.exports = {
 Az alábbiakban egy olyan [mintakód-minta](https://github.com/christopheranderson/cosmos-browser-sample) látható, amely a Azure Cosmos db JavaScript SDK-könyvtárral rendelkező írógéppel és webpack-t használja egy olyan Todo-alkalmazás létrehozásához, amely valós idejű frissítéseket küld, amikor új elemek jönnek létre.
 Ajánlott eljárásként ne használja az elsődleges kulcsot a Azure Cosmos DB a böngészőből való kommunikációhoz. Ehelyett használjon erőforrás-jogkivonatokat a kommunikációhoz. Az erőforrás-jogkivonatokkal kapcsolatos további információkért lásd: [hozzáférés biztonságossá tétele Azure Cosmos db](secure-access-to-data.md#resource-tokens) cikkhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Cosmos-fiók biztonságossá tételének egyéb módjaival kapcsolatos további információkért tekintse meg a következő cikkeket:
 

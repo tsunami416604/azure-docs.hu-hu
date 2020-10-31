@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 8fa2fdf23a0d71b854e043b66c0aed7e944c5f39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9eb55030c7ec52f9b2ac79fbab19944f0a3e190
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87450334"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087825"
 ---
 # <a name="automated-recommendations-for-azure-cosmos-db"></a>Automatizált javaslatok a Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Az összes felhőalapú szolgáltatás, többek között a Azure Cosmos DB a gyakori frissítések új funkciókkal, képességekkel és fejlesztési lehetőségekkel. Fontos, hogy az alkalmazás naprakészen tartsa a legújabb teljesítmény-és biztonsági frissítéseket. A Azure Portal testreszabott javaslatokat kínál, amelyek lehetővé teszik az alkalmazás teljesítményének maximalizálását. A Azure Cosmos DB tanácsadó motorja folyamatosan elemzi a Azure Cosmos DB erőforrásainak használati előzményeit, és javaslatokat tesz a számítási feladatok mintái alapján. Ezek a javaslatok olyan területekhez tartoznak, mint a particionálás, az indexelés, a hálózat, a biztonság stb. Ezek a testreszabott javaslatok segítenek az alkalmazás teljesítményének javításában.
 
@@ -26,7 +27,7 @@ A Azure Cosmos DB javaslatai a következő módokon tekinthetők meg:
 
    :::image type="content" source="./media/automated-recommendations/cosmos-db-pane-recommendations.png" alt-text="Javaslatok megtekintése Azure Cosmos DB panelen":::
 
-- Az ajánlásokat a különböző gyűjtők által kategorizált [Azure Advisor](../advisor/advisor-overview.md) is megtalálhatja, például a költségeket, a biztonságot, a megbízhatóságot, a teljesítményt és az operatív kiválóságot. Kiválaszthat bizonyos előfizetéseket és szűrheti az erőforrástípus alapján, amely **Azure Cosmos db fiók**.  Amikor kiválaszt egy konkrét javaslatot, megjeleníti azokat a műveleteket, amelyeket el tud végezni a számítási feladatok kihasználása érdekében.
+- Az ajánlásokat a különböző gyűjtők által kategorizált [Azure Advisor](../advisor/advisor-overview.md) is megtalálhatja, például a költségeket, a biztonságot, a megbízhatóságot, a teljesítményt és az operatív kiválóságot. Kiválaszthat bizonyos előfizetéseket és szűrheti az erőforrástípus alapján, amely **Azure Cosmos db fiók** .  Amikor kiválaszt egy konkrét javaslatot, megjeleníti azokat a műveleteket, amelyeket el tud végezni a számítási feladatok kihasználása érdekében.
 
    :::image type="content" source="./media/automated-recommendations/advisor-pane-recommendations.png" alt-text="Javaslatok megtekintése Azure Cosmos DB panelen":::
 
@@ -82,7 +83,7 @@ Ebben a kategóriában az Advisor észleli a lekérdezés végrehajtását, és 
 |---------|---------|
 | Rögzített méretű lekérdezések | Észleli a rögzített oldalméret miatt kiadott lekérdezéseket, és az-1 értéket (az oldalméret korlátozását) használja a megadott érték meghatározása helyett. Ezzel a beállítással csökkenthető az összes eredmény beolvasásához szükséges hálózati kör alakú utak száma. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A lekérdezés teljesítményének finomhangolása Azure Cosmos DB](sql-api-query-metrics.md)
 * [Lekérdezési problémák elhárítása](troubleshoot-query-performance.md) Azure Cosmos db használatakor

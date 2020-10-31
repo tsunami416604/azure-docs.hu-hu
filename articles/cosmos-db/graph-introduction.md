@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: jasonh
-ms.openlocfilehash: 30e1a9e4b82971180f375a006f4825832e6179e9
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 98ad02c134df919c593c87dd96a9a71d73371a1c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490611"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087417"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>A Gremlin API bemutatása Azure Cosmos DB
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 [Azure Cosmos db](introduction.md)   a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása a kritikus fontosságú alkalmazások számára. Ez egy többmodelles adatbázis, amely támogatja a dokumentumok, a kulcs-érték, a gráf és az oszlop-család adatmodelleket. "Azure Cosmos DB a Gremlin API-val egy teljes körűen felügyelt, bármilyen méretezésre tervezett adatbázis-szolgáltatáson keresztül biztosít gráf adatbázis-szolgáltatást.  
 
@@ -110,19 +111,19 @@ Használjunk egy mintagráfot annak megismeréséhez, hogyan adhatók meg lekér
 
 Ez a gráf a következő *csúcs* -típusokkal rendelkezik (ezeket a "label" is nevezik a Gremlin-ben):
 
-* **Emberek**: a gráf három személy, Robin, Thomas és ben
-* **Érdeklődési**körök: ebben a példában a labdarúgás játéka
-* **Eszközök**: a felhasználók által használt eszközök
-* **Operációs rendszerek**: az eszközöket futtató operációs rendszerek
-* **Hely**: azok a helyek, amelyekről az eszközök hozzáférnek
+* **Emberek** : a gráf három személy, Robin, Thomas és ben
+* **Érdeklődési** körök: ebben a példában a labdarúgás játéka
+* **Eszközök** : a felhasználók által használt eszközök
+* **Operációs rendszerek** : az eszközöket futtató operációs rendszerek
+* **Hely** : azok a helyek, amelyekről az eszközök hozzáférnek
 
 Az entitások közötti kapcsolatokat a következő *Edge* -típusok szerint jelöljük:
 
-* **Ismerheti**meg például a következőt: "Thomas know Robin"
-* **Fontos**: a gráfban lévő személyek érdekeinek kifejezése, például "ben a labdarúgás érdekli"
-* **RunsOS**: a laptop a Windows operációs rendszert futtatja
-* A következőt **használja**: egy személy által használt eszköz jelölésére. Robin például egy Motorola-telefont használ, amelynek sorozatszáma 77.
-* **Helye: annak**a helynek a jelölése, amelyről az eszközök hozzáférnek
+* **Ismerheti** meg például a következőt: "Thomas know Robin"
+* **Fontos** : a gráfban lévő személyek érdekeinek kifejezése, például "ben a labdarúgás érdekli"
+* **RunsOS** : a laptop a Windows operációs rendszert futtatja
+* A következőt **használja** : egy személy által használt eszköz jelölésére. Robin például egy Motorola-telefont használ, amelynek sorozatszáma 77.
+* **Helye: annak** a helynek a jelölése, amelyről az eszközök hozzáférnek
 
 A Gremlin-konzol egy interaktív terminál, amelyet az Apache TinkerPop kínál, és ez a terminál a Graph-adatkezeléshez használatos. További információért tekintse meg a rövid útmutató dokumentációját a [Gremlin-konzol használatáról](create-graph-gremlin-console.md). Ezek a műveletek tetszőleges platformon is (Java, Node.js, Python vagy .NET) végrehajthatók a Gremlin-illesztők használatával. Az alábbi példák bemutatják, hogyan futtathat lekérdezéseket a gráf adatain a Gremlin-konzol használatával.
 

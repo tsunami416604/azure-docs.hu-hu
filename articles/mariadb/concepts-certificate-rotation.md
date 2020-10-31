@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 4744b974cd20c15d8abf22f52b64b8d3dc5a7f55
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: db717394ba102fb646a4194d0be2722e17251f48
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743008"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087162"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ változásának megismerése Azure Database for MariaDB
 
@@ -103,7 +103,7 @@ Ha nem frissíti a főtanúsítványt a 2021 (02/15/2021) február 15. előtt, a
 ### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-mariadb"></a>4. milyen hatással van a App Service és a Azure Database for MariaDB használata?
 Az Azure app Services esetében a Azure Database for MariaDBhoz való csatlakozás két lehetséges forgatókönyvet tartalmazhat, amelyek attól függnek, hogy miként használja az SSL-t az alkalmazással.
 *   Ez az új tanúsítvány App Service platform szinten lett hozzáadva. Ha az alkalmazásban App Service platformon található SSL-tanúsítványokat használja, nincs szükség beavatkozásra.
-*   Ha explicit módon az SSL-tanúsítvány elérési útját is tartalmazza a kódban, akkor le kell töltenie az új tanúsítványt, és frissítenie kell a kódot az új tanúsítvány használatára. Jó példa erre a forgatókönyvre, ha egyéni tárolókat használ a App Service a [app Service dokumentációjában](/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress.md) megosztva.
+*   Ha explicit módon az SSL-tanúsítvány elérési útját is tartalmazza a kódban, akkor le kell töltenie az új tanúsítványt, és frissítenie kell a kódot az új tanúsítvány használatára. Jó példa erre a forgatókönyvre, ha egyéni tárolókat használ a App Service a [app Service dokumentációjában](/azure/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress) megosztva.
 
 ### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-mariadb"></a>5. milyen hatással van az Azure Kubernetes Services (ak) használata a Azure Database for MariaDB?
 Ha az Azure Kubernetes Services (ak) használatával próbál csatlakozni a Azure Database for MariaDBhoz, hasonló a dedikált ügyfelek gazdagép-környezetéhez való hozzáféréshez. Tekintse át a lépéseket [itt](../aks/ingress-own-tls.md).
@@ -114,7 +114,7 @@ A Azure Integration Runtimet használó összekötők esetében az összekötő 
 A saját üzemeltetésű Integration Runtime használó összekötő esetében, ha explicit módon felveszi az SSL-tanúsítvány elérési útját a kapcsolati karakterláncba, le kell töltenie az [új tanúsítványt](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) , és frissítenie kell a kapcsolati karakterláncot a használatára.
 
 ### <a name="7-do-i-need-to-plan-a-database-server-maintenance-downtime-for-this-change"></a>7. meg kell tervezni egy adatbázis-kiszolgáló karbantartási állásidőt ehhez a változáshoz?
-Nem. Mivel a változás csak az ügyféloldali oldalon csatlakozik az adatbázis-kiszolgálóhoz, nincs szükség karbantartási állásidőre az adatbázis-kiszolgáló számára ehhez a változáshoz.
+Nincs. Mivel a változás csak az ügyféloldali oldalon csatlakozik az adatbázis-kiszolgálóhoz, nincs szükség karbantartási állásidőre az adatbázis-kiszolgáló számára ehhez a változáshoz.
 
 ### <a name="8--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-february-15-2021-02152021"></a>8. mi történik, ha nem tudok ütemezett állásidőt beolvasni ehhez a változáshoz a 2021. február 15. előtt (02/15/2021)?
 Mivel a kiszolgálóhoz való csatlakozáshoz használt ügyfeleknek frissíteniük kell a tanúsítvány adatait a [javítás szakaszban leírtak szerint,](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity)ebben az esetben nem kell leállást biztosítani a kiszolgálónak.
@@ -149,7 +149,7 @@ Ha [adatreplikálást](concepts-data-in-replication.md) használ a Azure Databas
 Annak ellenőrzéséhez, hogy SSL-kapcsolatot használ-e a kiszolgálóhoz való kapcsolódáshoz, tekintse meg az [SSL-ellenőrzést](howto-configure-ssl.md#verify-the-ssl-connection).
 
 ### <a name="14-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>14. van szükség beavatkozásra, ha már van a DigiCertGlobalRootG2 a saját tanúsítványfájl?
-Nem. Nincs szükség beavatkozásra, ha a tanúsítványfájl már rendelkezik a **DigiCertGlobalRootG2** .
+Nincs. Nincs szükség beavatkozásra, ha a tanúsítványfájl már rendelkezik a **DigiCertGlobalRootG2** .
 
 ### <a name="15-what-if-i-have-further-questions"></a>15. Mi a teendő, ha további kérdéseim vannak?
 Ha kérdése van, választ kaphat a [Microsoft Q&a](mailto:AzureDatabaseformariadb@service.microsoft.com)közösségi szakértőitől. Ha támogatási csomaggal rendelkezik, és technikai segítségre van szüksége, [vegye fel velünk a kapcsolatot](mailto:AzureDatabaseformariadb@service.microsoft.com).

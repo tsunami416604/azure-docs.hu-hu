@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/10/2020
-ms.openlocfilehash: 4b91a9a73035b3add309e72ce544375520cf279e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d28138b251cf159b7cbc5cc6942bb287e57a95d7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278617"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088097"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>A Key Vault szolgáltatás figyelése a Azure Monitor for Key Vault
 A Key Vault Azure Monitor a Key Vault kérelmek, a teljesítmény, a hibák és a késés egységes áttekintésével biztosítja a kulcstartók átfogó figyelését.
@@ -34,7 +34,7 @@ Ha meg szeretné tekinteni a kulcstartók kihasználtságát és műveleteit az 
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
 
-2. Válassza a **figyelő** elemet a Azure Portal bal oldali paneljén, majd az áttekintések szakaszban válassza a **kulcstartók**lehetőséget.
+2. Válassza a **figyelő** elemet a Azure Portal bal oldali paneljén, majd az áttekintések szakaszban válassza a **kulcstartók** lehetőséget.
 
 ![Képernyőkép az áttekintő élményről több gráfmal](./media/key-vaults-insights-overview/overview.png)
 
@@ -90,7 +90,7 @@ A hibák munkafüzete lebontja az összes Key Vault-kérelem eredményeit a kiv�
 
 Az operatív munkafüzet lehetővé teszi a felhasználók számára az összes tranzakció részletes ismertetését, amelyet az eredmény állapota alapján a legfelső szintű csempével lehet szűrni.
 
-![A műveletek nézet képernyőképe](./media/key-vaults-insights-overview/info.png)
+![Képernyőkép, amely az összes tranzakció teljes részleteit tartalmazó műveleti munkafüzetet jeleníti meg.](./media/key-vaults-insights-overview/info.png)
 
 A felhasználók a felső táblában megadott tranzakciótípusok alapján is kihasználhatják a nézeteket, amelyek dinamikusan frissítik az alsó táblázatot, ahol a felhasználók megtekinthetik a teljes művelet részleteit egy előugró környezet ablaktáblán.
 
@@ -126,7 +126,7 @@ A testreszabásokat egy egyéni munkafüzetbe menti a rendszer, hogy megakadály
 A következő lépések végrehajtásával konfigurálhatja a többszörös előfizetést és a Key Vault áttekintését vagy a hibákra vonatkozó munkafüzetek hatókörét egy adott előfizetéshez vagy kulcstartóhoz (k).
 
 1. Válassza a **figyelő** lehetőséget a portálon, majd a bal oldali ablaktáblán válassza a **kulcstartók** lehetőséget.
-2. Az **Áttekintés** munkafüzet parancssáv területén válassza a **Szerkesztés**lehetőséget.
+2. Az **Áttekintés** munkafüzet parancssáv területén válassza a **Szerkesztés** lehetőséget.
 3. Válasszon az **előfizetések** legördülő listából egy vagy több olyan előfizetést, amelyet az alapértelmezettként szeretne használni. Ne feledje, hogy a munkafüzet összesen 10 előfizetés kiválasztását támogatja.
 4. Válassza ki a **kulcstárolók** legördülő lista egy vagy több olyan fiókját, amelyet alapértelmezettként szeretne használni. Ne feledje, hogy a munkafüzet összesen 200 Storage-fiók kiválasztását támogatja.
 5. A parancssorból válassza a **Mentés másként** lehetőséget, hogy mentse a munkafüzet másolatát a testreszabott beállításokkal, majd kattintson a **Szerkesztés kész** lehetőségre az olvasási módba való visszatéréshez.

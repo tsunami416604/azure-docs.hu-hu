@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: a319e5f3b6aa861feb2d9dfc88d471ff695c2a3c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 37f5acdb2921b6f2bf4a5ed5a8c435db78e01513
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482319"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087366"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-an-arm-template"></a>Rövid útmutató: Azure Cosmos DB és tároló létrehozása ARM-sablonnal
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB a Microsoft gyors NoSQL-adatbázisa, amely bármilyen méretű nyitott API-val rendelkezik. A Azure Cosmos DB a kulcs/érték adatbázisok, dokumentum-adatbázisok és Graph-adatbázisok gyors létrehozásához és lekérdezéséhez használható. Ez a rövid útmutató egy Azure Resource Manager sablon (ARM-sablon) üzembe helyezésének folyamatát tárgyalja egy Azure Cosmos-adatbázis létrehozásához és az adatbázison belüli tároló létrehozásához. A tárolóban később tárolhatók az adattárolók.
 
@@ -61,20 +62,20 @@ További Azure Cosmos DB-sablonok a gyorsindítási [sablonok](https://azure.mic
 
     Ha meg van adva, használja az alapértelmezett értékeket az Azure Cosmos-erőforrások létrehozásához.
 
-    * **Előfizetés**: válasszon ki egy Azure-előfizetést.
-    * **Erőforráscsoport**: válassza az **új létrehozása**lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK**gombra.
-    * **Hely**: válasszon ki egy helyet.  Például: **USA középső régiója**.
-    * **Fiók neve**: adja meg az Azure Cosmos-fiók nevét. Globálisan egyedinek kell lennie.
-    * **Hely**: adjon meg egy helyet, ahol létre szeretné hozni az Azure Cosmos-fiókot. Az Azure Cosmos-fiók ugyanazon a helyen lehet, mint az erőforráscsoport.
-    * **Elsődleges régió**: az Azure Cosmos-fiók elsődleges replika régiója.
-    * **Másodlagos régió**: az Azure Cosmos-fiók másodlagos replika régiója.
-    * **Alapértelmezett konzisztencia-szint**: az Azure Cosmos-fiók alapértelmezett konzisztencia-szintje.
-    * **Maximális elavultság előtagja**: az elavult kérelmek maximális száma. A BoundedStaleness szükséges.
-    * **Maximális időköz (másodperc**): maximális késési idő. A BoundedStaleness szükséges.
-    * **Adatbázis neve**: az Azure Cosmos-adatbázis neve.
-    * **Tároló neve**: az Azure Cosmos-tároló neve.
-    * **Átviteli sebesség**: a tároló átviteli sebessége, a minimális átviteli sebesség 400 ru/s.
-    * **Elfogadom a fenti használati feltételeket**: Válassza ezt.
+    * **Előfizetés** : válasszon ki egy Azure-előfizetést.
+    * **Erőforráscsoport** : válassza az **új létrehozása** lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK** gombra.
+    * **Hely** : válasszon ki egy helyet.  Például: **USA középső régiója** .
+    * **Fiók neve** : adja meg az Azure Cosmos-fiók nevét. Globálisan egyedinek kell lennie.
+    * **Hely** : adjon meg egy helyet, ahol létre szeretné hozni az Azure Cosmos-fiókot. Az Azure Cosmos-fiók ugyanazon a helyen lehet, mint az erőforráscsoport.
+    * **Elsődleges régió** : az Azure Cosmos-fiók elsődleges replika régiója.
+    * **Másodlagos régió** : az Azure Cosmos-fiók másodlagos replika régiója.
+    * **Alapértelmezett konzisztencia-szint** : az Azure Cosmos-fiók alapértelmezett konzisztencia-szintje.
+    * **Maximális elavultság előtagja** : az elavult kérelmek maximális száma. A BoundedStaleness szükséges.
+    * **Maximális időköz (másodperc** ): maximális késési idő. A BoundedStaleness szükséges.
+    * **Adatbázis neve** : az Azure Cosmos-adatbázis neve.
+    * **Tároló neve** : az Azure Cosmos-tároló neve.
+    * **Átviteli sebesség** : a tároló átviteli sebessége, a minimális átviteli sebesség 400 ru/s.
+    * **Elfogadom a fenti használati feltételeket** : Válassza ezt.
 
 3. Válassza a **Beszerzés** lehetőséget. Miután sikeresen telepítette az Azure Cosmos-fiókot, értesítést kap:
 

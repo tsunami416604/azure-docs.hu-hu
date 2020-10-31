@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 70eecc7843867a5832d962b7efaecda1b6ab4ae4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 3c2af7f33135a8c6621db233451231ffa89c2d64
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284005"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086159"
 ---
 # <a name="provision-database-container-or-autoscale-throughput-on-azure-cosmos-db-gremlin-api-resources"></a>Adatbázis, tároló vagy méretezési teljesítmény kiépítése Azure Cosmos DB Gremlin API-erőforrásokon
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Ez a cikk azt ismerteti, hogyan kell kiépíteni az átviteli sebességet Azure Cosmos DB Gremlin API-ban. Egy tárolón vagy egy adatbázison is kiépítheti a standard (manuális) vagy az automatikus méretezési sebességet, és megoszthatja azt az adatbázisban lévő tárolók között. Az átviteli sebességet Azure Portal, Azure CLI vagy Azure Cosmos DB SDK-k használatával is kiépítheti.
 
@@ -27,7 +28,7 @@ Ha más API-t használ, az átviteli sebesség kiépítéséhez lásd: [SQL API]
 
 1. [Hozzon létre egy új Azure Cosmos-fiókot](create-mongodb-dotnet.md#create-a-database-account), vagy válasszon ki egy meglévő Azure Cosmos-fiókot.
 
-1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza az **új gráf**lehetőséget. Ezután adja meg a következő adatokat:
+1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza az **új gráf** lehetőséget. Ezután adja meg a következő adatokat:
 
    * Jelezze, hogy új adatbázist hoz létre, vagy egy meglévőt használ. Válassza az **adatbázis átviteli sebességének kiépítése** lehetőséget, ha az átviteli sebességet az adatbázis szintjén szeretné kiépíteni.
    * Adja meg a gráf AZONOSÍTÓját.

@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/07/2020
-ms.openlocfilehash: 5ad1e40f12609e708a2bb818175146967b7dccf2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e48a167327a83483b44d88fc73a0254df6f85c55
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839469"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087349"
 ---
 # <a name="throughput-rus-operations-with-azure-cli-for-a-database-or-container-for-azure-cosmos-db-core-sql-api"></a>Átviteli sebesség (RU/s) műveletek az Azure CLI-vel az Azure Cosmos DB Core (SQL) API-hoz készült adatbázishoz vagy tárolóhoz
+[!INCLUDE[appliesto-sql-api](../../../includes/appliesto-sql-api.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
@@ -38,7 +39,7 @@ az group delete --name $resourceGroupName
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Jegyzetek |
+| Parancs | Megjegyzések |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Létrehoz egy Azure Cosmos DB-fiókot. |
@@ -50,7 +51,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az cosmosdb SQL Container átviteli sebesség migrálása](/cli/azure/cosmosdb/sql/container/throughput#az-cosmosdb-sql-container-throughput-migrate) | Áttelepítési sebesség egy Azure Cosmos Core (SQL) tárolóhoz. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Cosmos DB CLI-vel kapcsolatos további információkért lásd: [Azure Cosmos db parancssori felület dokumentációja](/cli/azure/cosmosdb).
 

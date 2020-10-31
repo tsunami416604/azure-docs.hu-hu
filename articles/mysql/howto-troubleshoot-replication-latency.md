@@ -7,12 +7,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 10/25/2020
-ms.openlocfilehash: af82b9e2feee3e03d2a0703d771c68b67ddd08c9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a6ada3557350cd3f2f67dad54152eafded6639ec
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791579"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087026"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>A replikáció késésének elhárítása az Azure Database for MySQL-ben
 
@@ -236,6 +236,9 @@ A Azure Database for MySQL alapértelmezés szerint a replikálás a replikák p
 A binlog_group_commit_sync_delay paraméter azt határozza meg, hogy hány másodpercenként a bináris napló véglegesítve várakozik a bináris naplófájl szinkronizálása előtt. Ennek a paraméternek az előnye, hogy az összes véglegesített tranzakció azonnali alkalmazása helyett a forráskiszolgáló tömegesen küldi el a bináris napló frissítéseit. Ez a késleltetés csökkenti a replika IO-értékét, és segít a teljesítmény javításában. 
 
 Hasznos lehet a binlog_group_commit_sync_delay paraméter beállítása 1000-re vagy így. Ezután figyelje a replikálás késését. Ezt a paramétert óvatosan állítsa be, és csak a nagy párhuzamosságú munkaterhelésekhez használja. 
+
+> [!IMPORTANT] 
+> A replika-kiszolgálón a binlog_group_commit_sync_delay paraméter értéke 0. Ez azért ajánlott, mert a forráskiszolgálótól eltérően a replika kiszolgáló nem rendelkezik magas párhuzamossággal, és a replika-kiszolgálón lévő binlog_group_commit_sync_delay értékének növelése véletlenül a replikálás késésének növelését okozhatja.
 
 A sok önálló tranzakciót tartalmazó, alacsony párhuzamosságú számítási feladatokhoz a binlog_group_commit_sync_delay-beállítás növelheti a késést. A késés megnövelhető, mert az IO-szál a tömeges bináris naplók frissítésére vár, még akkor is, ha csak néhány tranzakció véglegesítve van. 
 

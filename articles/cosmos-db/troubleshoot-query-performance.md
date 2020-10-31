@@ -8,14 +8,15 @@ ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: b7e57656a6749f600d07b679aad6b8c77ac96551
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3979e5e904eb54db9566eb014f7e455ebaceaff0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476705"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087179"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Az Azure Cosmos DB használatakor felmerülő lekérdezési hibák elhárítása
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ez a cikk részletesen ismerteti a Azure Cosmos DB-lekérdezések hibaelhárításának általános javasolt megközelítését. Habár nem veszi figyelembe a jelen cikkben ismertetett lépéseket a lehetséges lekérdezési problémákkal kapcsolatos teljes körű védekezéssel, a leggyakoribb teljesítménybeli tippeket is itt találja. Ezt a cikket az Azure Cosmos DB Core (SQL) API lassú vagy költséges lekérdezéseinek kezdeti hibaelhárításához érdemes használni. A [diagnosztikai naplókat](cosmosdb-monitor-resource-logs.md) is használhatja a lassú vagy jelentős mennyiségű átviteli sebességet használó lekérdezések azonosítására. Ha a MongoDB Azure Cosmos DB API-ját használja, használja a [Azure Cosmos db API-ját a MongoDB-lekérdezés hibaelhárítási útmutatója](mongodb-troubleshoot-query.md)
 
@@ -50,7 +51,7 @@ Ha Azure Cosmos DB-lekérdezését optimalizálja, az első lépés mindig a lek
 
 A lekérdezési metrikák lekérése után hasonlítsa össze a **lekért dokumentumok darabszámát** a lekérdezés **kimeneti dokumentumainak számával** . Ezt az összehasonlítást használva azonosíthatja a cikkben áttekinthető releváns részeket.
 
-A **beolvasott dokumentumok** száma érték a lekérdezési motor betöltéséhez szükséges dokumentumok számát adja meg. A **kimeneti dokumentumok** száma érték a lekérdezés eredményeihez szükséges dokumentumok számát adja meg. Ha a **beolvasott dokumentumok száma** jelentősen meghaladja a **kimeneti dokumentumok számát**, akkor a lekérdezésnek legalább egy része nem tudta használni az indexet, és nem volt szükség a vizsgálatra.
+A **beolvasott dokumentumok** száma érték a lekérdezési motor betöltéséhez szükséges dokumentumok számát adja meg. A **kimeneti dokumentumok** száma érték a lekérdezés eredményeihez szükséges dokumentumok számát adja meg. Ha a **beolvasott dokumentumok száma** jelentősen meghaladja a **kimeneti dokumentumok számát** , akkor a lekérdezésnek legalább egy része nem tudta használni az indexet, és nem volt szükség a vizsgálatra.
 
 A forgatókönyvhöz kapcsolódó lekérdezési optimalizálások megismeréséhez tekintse meg a következő szakaszt.
 
@@ -92,7 +93,7 @@ A forgatókönyvhöz kapcsolódó lekérdezési optimalizálások megismeréséh
 
 ## <a name="queries-where-retrieved-document-count-exceeds-output-document-count"></a>Lekérdezések, amelyekben a lekérdezett dokumentumok száma meghaladja a kimeneti dokumentumok darabszámát
 
- A **beolvasott dokumentumok** száma érték a lekérdezési motor betöltéséhez szükséges dokumentumok számát adja meg. A **kimeneti dokumentum** száma a lekérdezés által visszaadott dokumentumok száma. Ha a **beolvasott dokumentumok száma** jelentősen meghaladja a **kimeneti dokumentumok számát**, akkor a lekérdezésnek legalább egy része nem tudta használni az indexet, és nem volt szükség a vizsgálatra.
+ A **beolvasott dokumentumok** száma érték a lekérdezési motor betöltéséhez szükséges dokumentumok számát adja meg. A **kimeneti dokumentum** száma a lekérdezés által visszaadott dokumentumok száma. Ha a **beolvasott dokumentumok száma** jelentősen meghaladja a **kimeneti dokumentumok számát** , akkor a lekérdezésnek legalább egy része nem tudta használni az indexet, és nem volt szükség a vizsgálatra.
 
 Az alábbi példa olyan vizsgálati lekérdezést mutat be, amelyet az index nem teljes egészében kiszolgált:
 
@@ -384,7 +385,7 @@ Tegyük fel, hogy a címkék tömbben csak egy elem egyezik a szűrővel, és ho
 
 ## <a name="queries-where-retrieved-document-count-is-equal-to-output-document-count"></a>Lekérdezések, amelyekben a lekérdezett dokumentumok száma megegyezik a kimeneti dokumentumok számával
 
-Ha a **beolvasott dokumentumok száma** nagyjából megegyezik a **kimeneti dokumentumok számával**, a lekérdezési motornak nem kell sok felesleges dokumentumot beolvasnia. Számos lekérdezéshez, például a kulcsszót használó alkalmazásokhoz `TOP` , a **lekéréses dokumentumok száma** meghaladhatja a **kimeneti dokumentumok számát** 1 értékkel. Erről nem kell foglalkoznia.
+Ha a **beolvasott dokumentumok száma** nagyjából megegyezik a **kimeneti dokumentumok számával** , a lekérdezési motornak nem kell sok felesleges dokumentumot beolvasnia. Számos lekérdezéshez, például a kulcsszót használó alkalmazásokhoz `TOP` , a **lekéréses dokumentumok száma** meghaladhatja a **kimeneti dokumentumok számát** 1 értékkel. Erről nem kell foglalkoznia.
 
 ### <a name="minimize-cross-partition-queries"></a>Több partíciós lekérdezés csökkentése
 

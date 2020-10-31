@@ -4,12 +4,12 @@ description: Hozza létre első saját, Windows-alapú tárolóalkalmazását az
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: e8c3a0d60e10b1cf1f8a827cec8fcc25f3d33b05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96a9eda23268bc06029292c3c5f10502216e3658
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564321"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087060"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
 
@@ -38,8 +38,8 @@ A meglévő alkalmazások Service Fabric-fürtökön lévő Windows-tárolókban
   
 A Windows Server-verziónak a fürthöz szükséges tárolókkal való meghatározásához futtassa a `ver` parancsot egy Windows-parancssorból a fejlesztői gépen:
 
-* Ha a verzió *x. x. 14323. x*verziót tartalmaz, válassza a *windowsserver 2016-Datacenter-with-containers* elemet az operációs rendszer számára a [fürt létrehozásakor](service-fabric-cluster-creation-via-portal.md).
-  * Ha a verzió *x. x. 16299. x*verziót tartalmaz, válassza a *WindowsServerSemiAnnual Datacenter-Core-1709-with-containers* elemet az operációs rendszerhez a [fürt létrehozásakor](service-fabric-cluster-creation-via-portal.md).
+* Ha a verzió *x. x. 14323. x* verziót tartalmaz, válassza a *windowsserver 2016-Datacenter-with-containers* elemet az operációs rendszer számára a [fürt létrehozásakor](service-fabric-cluster-creation-via-portal.md).
+  * Ha a verzió *x. x. 16299. x* verziót tartalmaz, válassza a *WindowsServerSemiAnnual Datacenter-Core-1709-with-containers* elemet az operációs rendszerhez a [fürt létrehozásakor](service-fabric-cluster-creation-via-portal.md).
 
 * Egy Azure Container Registry-beállításjegyzék – ehhez [hozzon létre egy tároló-beállításjegyzéket](../container-registry/container-registry-get-started-portal.md) Azure-előfizetésében.
 
@@ -57,7 +57,7 @@ A Windows Server-verziónak a fürthöz szükséges tárolókkal való meghatár
 
 Adja meg a Docker-tárolót egy Docker-fájlban. A Docker-fájl a környezet tárolón belüli beállítására, a futtatni kívánt alkalmazás betöltésére és a portok hozzárendelésére vonatkozó utasításokat tartalmazza. A Docker-fájl a `docker build` parancs bemenete, amely a rendszerképet létrehozza.
 
-Hozzon létre egy üres könyvtárat és a *Docker-fájlt* (fájlkiterjesztés nélkül). Adja hozzá a következőket a *Docker-fájlhoz*, és mentse a módosításokat:
+Hozzon létre egy üres könyvtárat és a *Docker-fájlt* (fájlkiterjesztés nélkül). Adja hozzá a következőket a *Docker-fájlhoz* , és mentse a módosításokat:
 
 ```
 # Use an official Python runtime as a base image
@@ -143,7 +143,7 @@ Miután a tároló elindult, keresse meg az IP-címét, hogy böngészőből is 
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
 ```
 
-Ha a parancs nem ad vissza semmit, futtassa a következő parancsot, és vizsgálja **NetworkSettings** -> meg az IP-címhez tartozó NetworkSettings**Networks** elemet:
+Ha a parancs nem ad vissza semmit, futtassa a következő parancsot, és vizsgálja **NetworkSettings** -> meg az IP-címhez tartozó NetworkSettings **Networks** elemet:
 ```
 docker inspect my-web-site
 ```
@@ -190,7 +190,7 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 ## <a name="create-the-containerized-service-in-visual-studio"></a>A tárolóalapú szolgáltatás létrehozása a Visual Studióban
 A Service Fabric SDK és -eszközök egy szolgáltatássablont biztosítanak, amellyel tárolóalapú alkalmazást hozhat létre.
 
-1. Indítsa el a Visual Studiót. Válassza a **fájl**  >  **új**  >  **projekt**lehetőséget.
+1. Indítsa el a Visual Studiót. Válassza a **fájl**  >  **új**  >  **projekt** lehetőséget.
 2. Válassza a **Service Fabric application** (Service Fabric-alkalmazás) lehetőséget, nevezze el „MyFirstContainer” néven, és kattintson az **OK** gombra.
 3. Az **szolgáltatássablonok** listájában válassza a **Tároló** elemet.
 4. Az **Image Name** (Rendszerkép neve) mezőben adja meg a „myregistry.azurecr.io/samples/helloworldapp” rendszerképet, amelyet leküldött a tároló-beállításjegyzékbe.
@@ -284,9 +284,9 @@ Az [erőforrás-szabályozás](service-fabric-resource-governance.md) korlátozz
 ```
 ## <a name="configure-docker-healthcheck"></a>Docker HEALTHCHECK konfigurálása 
 
-A 6.1-es verzióval kezdődően a Service Fabric automatikusan integrálja a [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) eseményeket a rendszerállapot-jelentésbe. Ez azt jelenti, hogy ha a tárolón engedélyezett a **HEALTHCHECK**, a Service Fabric jelenti az állapotát, valahányszor a tároló állapota módosul a Docker jelentése szerint. Egy **OK** állapotjelentés jelenik meg a [Service Fabric Explorerben](service-fabric-visualizing-your-cluster.md), amikor a *health_status* értéke *healthy* (megfelelő), és egy **WARNING** jelenik meg, ha a *health_status* értéke *unhealthy* (nem megfelelő). 
+A 6.1-es verzióval kezdődően a Service Fabric automatikusan integrálja a [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) eseményeket a rendszerállapot-jelentésbe. Ez azt jelenti, hogy ha a tárolón engedélyezett a **HEALTHCHECK** , a Service Fabric jelenti az állapotát, valahányszor a tároló állapota módosul a Docker jelentése szerint. Egy **OK** állapotjelentés jelenik meg a [Service Fabric Explorerben](service-fabric-visualizing-your-cluster.md), amikor a *health_status* értéke *healthy* (megfelelő), és egy **WARNING** jelenik meg, ha a *health_status* értéke *unhealthy* (nem megfelelő). 
 
-A v 6.4 legújabb frissítésének megkezdése után lehetősége van megadnia, hogy a Docker HEALTHCHECK-értékelések hibát jelentsenek. Ha ez a beállítás engedélyezve van, akkor megjelenik egy **OK** állapot jelentés, ha *health_status* *kifogástalan* , és a **hiba** akkor jelenik meg, ha *health_status* *sérült*.
+A v 6.4 legújabb frissítésének megkezdése után lehetősége van megadnia, hogy a Docker HEALTHCHECK-értékelések hibát jelentsenek. Ha ez a beállítás engedélyezve van, akkor megjelenik egy **OK** állapot jelentés, ha *health_status* *kifogástalan* , és a **hiba** akkor jelenik meg, ha *health_status* *sérült* .
 
 A **HEALTHCHECK** ellenőrzéséhez használt tényleges ellenőrzésre mutató utasításnak jelen kell lennie a tároló rendszerképének létrehozásakor használt Docker.
 
@@ -310,11 +310,11 @@ A **HEALTHCHECK** viselkedését konfigurálhatja az egyes tárolókhoz, ha mega
     </Policies>
 </ServiceManifestImport>
 ```
-Alapértelmezés szerint a *IncludeDockerHealthStatusInSystemHealthReport* értéke **true (igaz**), a *RestartContainerOnUnhealthyDockerHealthStatus* értéke false ( **hamis**), a *TreatContainerUnhealthyStatusAsError* pedig **false (hamis**) értékre van állítva. 
+Alapértelmezés szerint a *IncludeDockerHealthStatusInSystemHealthReport* értéke **true (igaz** ), a *RestartContainerOnUnhealthyDockerHealthStatus* értéke false ( **hamis** ), a *TreatContainerUnhealthyStatusAsError* pedig **false (hamis** ) értékre van állítva. 
 
-Ha a *RestartContainerOnUnhealthyDockerHealthStatus* beállítása **true**, egy újra és újra nem megfelelő állapotúnak jelentett tároló újraindul (lehetőleg más csomópontokon).
+Ha a *RestartContainerOnUnhealthyDockerHealthStatus* beállítása **true** , egy újra és újra nem megfelelő állapotúnak jelentett tároló újraindul (lehetőleg más csomópontokon).
 
-Ha a *TreatContainerUnhealthyStatusAsError* értéke **true (igaz**), akkor a **hiba** állapotáról szóló jelentések akkor jelennek meg, ha a tároló *health_status* *állapota*nem kifogástalan.
+Ha a *TreatContainerUnhealthyStatusAsError* értéke **true (igaz** ), akkor a **hiba** állapotáról szóló jelentések akkor jelennek meg, ha a tároló *health_status* *állapota* nem kifogástalan.
 
 Ha az egész Service Fabric-fürthöz le szeretné tiltani a **HEALTHCHECK** integrációját, az [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) elemet **false** értékre kell állítania.
 
@@ -331,7 +331,7 @@ Az alkalmazás akkor kész, amikor ```Ready``` állapotba kerül: ![Kész][2]
 
 Nyisson meg egy böngészőt, majd lépjen a következő helyre: `http://containercluster.westus2.cloudapp.azure.com:8081`. A „Hello World!” címsornak kell megjelennie a böngészőben.
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 
 A fürt futtatása költségekkel jár, ezért érdemes lehet [törölni a fürtöt](./service-fabric-tutorial-delete-cluster.md).
 
@@ -344,7 +344,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 
 ## <a name="windows-server-container-os-and-host-os-compatibility"></a>A Windows Server Container operációs rendszer és a gazdagép operációs rendszerének kompatibilitása
 
-A Windows Server-tárolók nem kompatibilisek a gazdagép operációs rendszerének összes verziójával. Példa:
+A Windows Server-tárolók nem kompatibilisek a gazdagép operációs rendszerének összes verziójával. Például:
  
 - A Windows Server 1709-es verziójának használatával létrehozott Windows Server-tárolók nem működnek a Windows Server 2016-es verzióját futtató gazdagépeken. 
 - A Windows Server 2016 használatával létrehozott Windows Server-tárolók Hyper-V elkülönítési módban működnek, csak a Windows Server 1709-es verzióját futtató gazdagépeken. 
@@ -352,7 +352,7 @@ A Windows Server-tárolók nem kompatibilisek a gazdagép operációs rendszeré
  
 További információ: a [Windows-tároló verziójának kompatibilitása](/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-Vegye figyelembe a gazdagép operációs rendszerének és a tároló operációs rendszerének kompatibilitását a tárolók Service Fabric-fürtön való létrehozásakor és telepítésekor. Példa:
+Vegye figyelembe a gazdagép operációs rendszerének és a tároló operációs rendszerének kompatibilitását a tárolók Service Fabric-fürtön való létrehozásakor és telepítésekor. Például:
 
 - Győződjön meg arról, hogy a fürt csomópontjain lévő operációs rendszernek megfelelő operációs rendszerrel rendelkező tárolókat telepít.
 - Győződjön meg arról, hogy a tároló alkalmazáshoz megadott elkülönítési mód konzisztens a tároló operációs rendszer azon csomópontjának támogatásával, amelyen üzembe van helyezve.
@@ -534,7 +534,7 @@ A Service Fabric-fürtöt úgy is konfigurálhatja, hogy eltávolítsa a nem has
           },
           {
                 "name": "ContainerImagesToSkip",
-                "value": "microsoft/windowsservercore|microsoft/nanoserver|microsoft/dotnet-frameworku|..."
+                "value": "mcr.microsoft.com/windows/servercore|mcr.microsoft.com/windows/nanoserver|mcr.microsoft.com/dotnet/framework/aspnet|..."
           }
           ...
           }

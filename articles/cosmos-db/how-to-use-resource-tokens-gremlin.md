@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/06/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df25ab4b0f5593ab21336d002ad2f9f10795bdcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74d851a28712beb80bf2a7aa196e471ef4f15074
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570563"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085734"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Azure Cosmos DB erőforrás-tokenek használata a Gremlin SDK-val
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Ez a cikk azt ismerteti, hogyan használhatók [Azure Cosmos db erőforrás-tokenek](secure-access-to-data.md) a Graph-adatbázis eléréséhez a Gremlin SDK-val.
 
@@ -100,7 +101,7 @@ Egyetlen Gremlin-fiókkal korlátlan számú tokent adhat ki. Ugyanakkor legfelj
 
 ## <a name="permission"></a>Engedély
 
-Gyakori hiba, hogy az alkalmazások az erőforrás-jogkivonatok használata közben jelentkeznek, "nincs elegendő jogosultsága az engedélyezési fejlécben a megfelelő kéréshez. Próbálkozzon újra egy másik engedélyezési fejléccel. " Ezt a hibát akkor adja vissza a rendszer, amikor egy Gremlin bejárási kísérletet tesz egy Edge vagy egy csúcspont írására, de az erőforrás-jogkivonat csak *olvasási* jogosultságot biztosít. Vizsgálja meg a bejárást, és ellenőrizze, hogy a következő lépések bármelyikét tartalmazza-e: *. addV ()*, *. addE ()*, *. drop ()*, vagy *. Property ()*.
+Gyakori hiba, hogy az alkalmazások az erőforrás-jogkivonatok használata közben jelentkeznek, "nincs elegendő jogosultsága az engedélyezési fejlécben a megfelelő kéréshez. Próbálkozzon újra egy másik engedélyezési fejléccel. " Ezt a hibát akkor adja vissza a rendszer, amikor egy Gremlin bejárási kísérletet tesz egy Edge vagy egy csúcspont írására, de az erőforrás-jogkivonat csak *olvasási* jogosultságot biztosít. Vizsgálja meg a bejárást, és ellenőrizze, hogy a következő lépések bármelyikét tartalmazza-e: *. addV ()* , *. addE ()* , *. drop ()* , vagy *. Property ()* .
 
 ## <a name="next-steps"></a>Következő lépések
 * [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](role-based-access-control.md) Azure Cosmos db

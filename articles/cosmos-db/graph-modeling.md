@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: jasonh
-ms.openlocfilehash: 2176708d3b5371a9bb66a59a7c6c0af56c337e28
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0d77c93e4103082a759df64fcafaefc1a1069de8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490628"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087383"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Graph adatmodellezés Azure Cosmos DB Gremlin API-hoz
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 A következő dokumentum a Graph adatmodellezési javaslatok biztosítására szolgál. Ez a lépés elengedhetetlen ahhoz, hogy biztosítható legyen egy gráf-adatbázis rendszerének méretezhetősége és teljesítménye, ahogy az adat fejlődik. A hatékony adatmodell különösen fontos a nagyméretű diagramok esetében.
 
@@ -30,22 +31,22 @@ Az útmutatóban ismertetett folyamat az alábbi feltételezéseken alapul:
 A Graph adatbázis-megoldások optimálisan alkalmazhatók, ha az adattartományban lévő entitások és kapcsolatok a következő jellemzők valamelyikével rendelkeznek: 
 
 * Az entitások **nagyon összekapcsolhatók** a leíró kapcsolatokon keresztül. Ebben a forgatókönyvben az a tény, hogy a kapcsolatok tárolása megmarad.
-* **Ciklikus kapcsolatok** vagy **saját maga által hivatkozott entitások**vannak. Ez a minta gyakran kihívást jelent a viszonyítási vagy dokumentum-adatbázisok használatakor.
+* **Ciklikus kapcsolatok** vagy **saját maga által hivatkozott entitások** vannak. Ez a minta gyakran kihívást jelent a viszonyítási vagy dokumentum-adatbázisok használatakor.
 * **Dinamikusan változó kapcsolatok** vannak az entitások között. Ez a minta különösen az olyan hierarchikus vagy faszerkezetű adatmennyiségek esetében alkalmazható, amelyeknek számos szintje van.
 * Az entitások között **több-a-többhöz kapcsolat** van.
-* Az **entitások és a kapcsolatok esetében írási és olvasási követelmények**is vannak. 
+* Az **entitások és a kapcsolatok esetében írási és olvasási követelmények** is vannak. 
 
-Ha a fenti feltételek teljesülnek, akkor valószínű, hogy a Graph-adatbázis megközelítése előnyeit biztosítja a **lekérdezések összetettsége**, az **adatmodell méretezhetősége**és a **lekérdezési teljesítmény**szempontjából.
+Ha a fenti feltételek teljesülnek, akkor valószínű, hogy a Graph-adatbázis megközelítése előnyeit biztosítja a **lekérdezések összetettsége** , az **adatmodell méretezhetősége** és a **lekérdezési teljesítmény** szempontjából.
 
 A következő lépés annak megállapítása, hogy a gráfot analitikai vagy tranzakciós célokra kívánja-e használni. Ha a gráf nagy számítási és adatfeldolgozási feladatokhoz készült, érdemes megvizsgálni a [Cosmos db Spark-összekötőt](./spark-connector.md) és a [GraphX-könyvtár](https://spark.apache.org/graphx/)használatát. 
 
 ## <a name="how-to-use-graph-objects"></a>Graph-objektumok használata
 
-Az [Apache Tinkerpop Property Graph standard](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) két típusú objektumot határoz meg a **csúcspontok** és **élek**közül. 
+Az [Apache Tinkerpop Property Graph standard](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) két típusú objektumot határoz meg a **csúcspontok** és **élek** közül. 
 
 A Graph-objektumok tulajdonságaira vonatkozó ajánlott eljárások a következők:
 
-| Objektum | Tulajdonság | Típus | Jegyzetek |
+| Objektum | Tulajdonság | Típus | Megjegyzések |
 | --- | --- | --- |  --- |
 | Vertex | ID (Azonosító) | Sztring | A partíciók egyedi kikényszerítve. Ha nincs megadva érték a beszúráskor, az automatikusan generált GUID-t fogja tárolni. |
 | Vertex | címke | Sztring | Ez a tulajdonság határozza meg a csúcspont által reprezentált entitás típusát. Ha nincs megadva érték, a rendszer az alapértelmezett "Vertex" értéket fogja használni. |
@@ -67,15 +68,15 @@ Az alábbi irányelvek egy Azure Cosmos DB Gremlin API Graph-adatbázis adatmode
 
 ### <a name="modeling-vertices-and-properties"></a>Modellezési csúcspontok és tulajdonságok 
 
-A Graph adatmodell első lépése az összes azonosított entitás leképezése egy csúcspont- **objektumra**. Az összes entitásnak a csúcspontokra való hozzárendelésének egy kezdeti lépésnek kell lennie, és a változás változhat.
+A Graph adatmodell első lépése az összes azonosított entitás leképezése egy csúcspont- **objektumra** . Az összes entitásnak a csúcspontokra való hozzárendelésének egy kezdeti lépésnek kell lennie, és a változás változhat.
 
 Az egyik gyakori buktató az egyetlen entitás tulajdonságainak leképezése különálló csúcspontként. Vegye figyelembe az alábbi példát, ahol ugyanaz az entitás két különböző módon van ábrázolva:
 
-* **Vertex-alapú tulajdonságok**: ebben a megközelítésben az entitás három különálló csúcspontot és két szegélyt használ a tulajdonságainak leírására. Ez a megközelítés csökkentheti a redundanciát, és növeli a modell bonyolultságát. A modell bonyolultságának növekedése a késés, a lekérdezés bonyolultsága és a számítási költségeket eredményezheti. Ez a modell a particionálással kapcsolatos kihívásokat is jelenthet.
+* **Vertex-alapú tulajdonságok** : ebben a megközelítésben az entitás három különálló csúcspontot és két szegélyt használ a tulajdonságainak leírására. Ez a megközelítés csökkentheti a redundanciát, és növeli a modell bonyolultságát. A modell bonyolultságának növekedése a késés, a lekérdezés bonyolultsága és a számítási költségeket eredményezheti. Ez a modell a particionálással kapcsolatos kihívásokat is jelenthet.
 
 :::image type="content" source="./media/graph-modeling/graph-modeling-1.png" alt-text="Entitás-modell a tulajdonságok csúcspontokkal." border="false":::
 
-* **Tulajdonsággal beágyazott csúcspontok**: Ez a megközelítés kihasználja a kulcs-érték párok listáját, hogy az entitás összes tulajdonságát reprezentálja a csúcsponton belül. Ez a megközelítés csökkenti a modell bonyolultságát, ami egyszerűbb lekérdezéseket és költséghatékonyabb bejárásokat eredményez.
+* **Tulajdonsággal beágyazott csúcspontok** : Ez a megközelítés kihasználja a kulcs-érték párok listáját, hogy az entitás összes tulajdonságát reprezentálja a csúcsponton belül. Ez a megközelítés csökkenti a modell bonyolultságát, ami egyszerűbb lekérdezéseket és költséghatékonyabb bejárásokat eredményez.
 
 :::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="Entitás-modell a tulajdonságok csúcspontokkal." border="false":::
 
@@ -88,7 +89,7 @@ Vannak azonban olyan helyzetek, amikor egy tulajdonságra hivatkozva előnyt jel
 
 ### <a name="relationship-modeling-with-edge-directions"></a>Kapcsolat modellezése Edge-utasításokkal
 
-A csúcspontok modellezése után a szegélyek hozzáadhatók a közöttük lévő kapcsolatok jelöléséhez. Az első szempont, amelyet ki kell értékelni a **kapcsolat irányát**. 
+A csúcspontok modellezése után a szegélyek hozzáadhatók a közöttük lévő kapcsolatok jelöléséhez. Az első szempont, amelyet ki kell értékelni a **kapcsolat irányát** . 
 
 Az Edge-objektumok alapértelmezett iránya a vagy a függvény használatakor bejárási `out()` `outE()` művelet. Ennek a természetes irányú iránynak a használata hatékony műveletet eredményez, mivel minden csúcspontot a kimenő élek tárolnak. 
 

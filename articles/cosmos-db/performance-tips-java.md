@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 633cfe64e5978b1802a7c4b6c1f7842872ab665a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 4b5c8e1a1e810deb9e5315816c122c0ac09ce778
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475209"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085547"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>Teljesítménnyel kapcsolatos tippek Azure Cosmos DB Sync Java SDK v2-hez
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
@@ -91,7 +92,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
     Azure Cosmos DB Sync Java SDK-verzió 1.9.0 és újabb verziói támogatják a párhuzamos lekérdezéseket, amelyek lehetővé teszik a particionált gyűjtemények párhuzamos lekérdezését. További információ: az SDK-k használatához kapcsolódó [kód-minták](https://github.com/Azure/azure-documentdb-java/tree/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples) . A párhuzamos lekérdezések úgy vannak kialakítva, hogy a lekérdezési késést és az adatátvitelt a soros munkatársaik
 
-    (a) * a*_setMaxDegreeOfParallelism \: _* és a párhuzamos lekérdezések finomhangolása több partíció párhuzamos lekérdezésével működik. Az egyedi particionált gyűjteményekből származó adatok azonban a lekérdezéssel kapcsolatos sorosan kerülnek beolvasásra. Ezért a [setMaxDegreeOfParallelism](/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxdegreeofparallelism) használatával állítsa be a legtöbb teljesítményű lekérdezés elérésének maximális esélyét biztosító partíciók számát, ha az összes többi rendszerfeltétel változatlan marad. Ha nem ismeri a partíciók számát, a setMaxDegreeOfParallelism használatával magas számot állíthat be, a rendszer pedig a minimális párhuzamosságot (a partíciók számát, a felhasználó által megadott bemenetet) adja meg. 
+    (a) * a *_setMaxDegreeOfParallelism \:_* és a párhuzamos lekérdezések finomhangolása több partíció párhuzamos lekérdezésével működik. Az egyedi particionált gyűjteményekből származó adatok azonban a lekérdezéssel kapcsolatos sorosan kerülnek beolvasásra. Ezért a [setMaxDegreeOfParallelism](/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxdegreeofparallelism) használatával állítsa be a legtöbb teljesítményű lekérdezés elérésének maximális esélyét biztosító partíciók számát, ha az összes többi rendszerfeltétel változatlan marad. Ha nem ismeri a partíciók számát, a setMaxDegreeOfParallelism használatával magas számot állíthat be, a rendszer pedig a minimális párhuzamosságot (a partíciók számát, a felhasználó által megadott bemenetet) adja meg. 
 
     Fontos megjegyezni, hogy a párhuzamos lekérdezések a legjobb előnyöket nyújtják, ha az adatforgalom egyenletesen oszlik el az összes partíció között a lekérdezés tekintetében. Ha a particionált gyűjtemény úgy van particionálva, hogy a lekérdezés által visszaadott összes adat többsége néhány partíción (egy partíció a legrosszabb esetben) van, akkor a lekérdezés teljesítményét a partíciók szűk keresztmetszete okozhatja.
 
@@ -99,7 +100,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
     Az előzetes lekérés ugyanúgy működik, mint a Maxanalyticsunits, és egyetlen puffer van az összes partícióból származó adatokhoz.  
 
-5. _*A leállítási megvalósítása getRetryAfterInMilliseconds időközönként**
+5. _ *A leállítási megvalósítása getRetryAfterInMilliseconds időközönként**
 
     A teljesítmény tesztelése során növelje a terhelést, amíg a kérelmek kis száma le nem kerül a szabályozásba. Ha a szabályozás meg van adva, az ügyfélalkalmazás leállítási kell lennie a kiszolgáló által megadott újrapróbálkozási időköz szabályozása érdekében. A leállítási tiszteletben tartásával biztosítható, hogy az újrapróbálkozások között minimálisan mennyi időt kell várnia. Az újrapróbálkozási szabályzat támogatása a [Azure Cosmos db Sync Java SDK](./sql-api-sdk-java.md)-hoz tartozó 1.8.0 és újabb verziókban érhető el. További információ: [getRetryAfterInMilliseconds](/java/api/com.microsoft.azure.documentdb.documentclientexception.getretryafterinmilliseconds).
 

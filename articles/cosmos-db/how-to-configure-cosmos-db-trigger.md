@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: maquaran
-ms.openlocfilehash: 152454b3da0ff1efd33ac463aecec78155a8e6f7
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c47d18726d9581b1b03aa2e676a71d6ca1bc1b7d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490475"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086465"
 ---
 # <a name="how-to-configure-logging-and-connectivity-with-the-azure-functions-trigger-for-cosmos-db"></a>A naplózás és a kapcsolat konfigurálása a Cosmos DB Azure Functions triggerrel
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ez a cikk a Cosmos DB Azure Functions-triggerének használatakor beállítható speciális konfigurációs beállításokat ismerteti.
 
@@ -56,7 +57,7 @@ Két kapcsolattípus van – közvetlen mód és átjáró mód. Ha többet szer
 
 ### <a name="changing-the-connection-mode-and-protocol"></a>A kapcsolati mód és a protokoll módosítása
 
-Az ügyfélkapcsolati házirend konfigurálásához két kulcsfontosságú konfigurációs beállítás érhető el – a **kapcsolati mód** és a **kapcsolati protokoll**. A Azure Functions trigger által használt alapértelmezett kapcsolati mód és protokoll a Cosmos DB és az összes [Azure Cosmos db kötés](../azure-functions/functions-bindings-cosmosdb-v2-output.md)esetében módosítható. Az alapértelmezett beállítások módosításához meg kell keresnie a fájlt a `host.json` Azure functions projektben vagy Azure functions alkalmazásban, és hozzá kell adnia a következő [extra beállítást](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings):
+Az ügyfélkapcsolati házirend konfigurálásához két kulcsfontosságú konfigurációs beállítás érhető el – a **kapcsolati mód** és a **kapcsolati protokoll** . A Azure Functions trigger által használt alapértelmezett kapcsolati mód és protokoll a Cosmos DB és az összes [Azure Cosmos db kötés](../azure-functions/functions-bindings-cosmosdb-v2-output.md)esetében módosítható. Az alapértelmezett beállítások módosításához meg kell keresnie a fájlt a `host.json` Azure functions projektben vagy Azure functions alkalmazásban, és hozzá kell adnia a következő [extra beállítást](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings):
 
 ```js
 {

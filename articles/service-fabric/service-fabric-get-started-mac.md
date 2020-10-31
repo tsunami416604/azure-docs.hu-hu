@@ -4,12 +4,12 @@ description: Telepítse a futtatókörnyezetet, az SDK-t és az eszközöket, ma
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: adec05a4d8e34374fe260343c73b1ecd14ba04f1
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: d08046c8f29901dd9650a1edc886efa2ff226e00
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168171"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086777"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>A fejlesztési környezet beállítása Mac OS X-en
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
         "fixed-cidr-v6": "fd00::/64"
     }
     ```
-    Ezeket a beállításokat közvetlenül a Docker telepítési útvonalán található daemon.json fájlban frissítheti. Közvetlenül módosíthatja a démon konfigurációs beállításait a Docker-ben. Válassza a **Docker ikonját**, majd válassza a **Preferences (Beállítások)** > **Daemon (Démon)** > **Advanced (Speciális)** lehetőséget.
+    Ezeket a beállításokat közvetlenül a Docker telepítési útvonalán található daemon.json fájlban frissítheti. Közvetlenül módosíthatja a démon konfigurációs beállításait a Docker-ben. Válassza a **Docker ikonját** , majd válassza a **Preferences (Beállítások)** > **Daemon (Démon)** > **Advanced (Speciális)** lehetőséget.
     
     >[!NOTE]
     >
@@ -49,7 +49,7 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
     >
 
     >[!TIP]
-    >Javasoljuk, hogy növelje a Docker számára lefoglalt erőforrásokat nagy méretű alkalmazások tesztelése esetén. Ehhez válassza a **Docker ikont**, majd a **Speciális** lehetőséget a magok és a memória számának módosításához.
+    >Javasoljuk, hogy növelje a Docker számára lefoglalt erőforrásokat nagy méretű alkalmazások tesztelése esetén. Ehhez válassza a **Docker ikont** , majd a **Speciális** lehetőséget a magok és a memória számának módosításához.
 
 2. Indítsa el a fürtöt.<br/>
     <b>Ubuntu 18,04 LTS:</b>
@@ -63,7 +63,7 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
     ```
 
     >[!TIP]
-    > Alapértelmezés szerint ez a Service Fabric legújabb verziójával rendelkező rendszerképet kéri le. Adott változatokért látogasson el a [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) oldalára.
+    > Alapértelmezés szerint ez a Service Fabric legújabb verziójával rendelkező rendszerképet kéri le. A részletekért látogasson el a Docker hub [Service Fabric beépített](https://hub.docker.com/_/microsoft-service-fabric-onebox) lapjára.
 
 
 
@@ -201,7 +201,7 @@ Telepítse a [.net Core 3,1 SDK for Mac](https://www.microsoft.com/net/core#maco
 
 Az Azure Service Fabric biztosítja az Eclipse Neonhoz (vagy újabb kiadáshoz) készült beépülő modult a Java IDE környezethez. A beépülő modul leegyszerűsíti a Java-szolgáltatások létrehozásának, felépítésének és üzembe helyezésének folyamatát. Ha telepíteni szeretné az Eclipse-hez készült Service Fabric beépülő modul legújabb verzióját, vagy frissíteni szeretne a legújabb verzióra, kövesse [ezeket a lépéseket](service-fabric-get-started-eclipse.md#install-or-update-the-service-fabric-plug-in-in-eclipse). Az [Eclipse-hez készült Service Fabric dokumentációjában](service-fabric-get-started-eclipse.md) ismertetett további lépések szintén érvényesek: alkalmazás létrehozása, szolgáltatás hozzáadása egy alkalmazáshoz, alkalmazás eltávolítása stb.
 
-Az utolsó lépés a tároló példányosítása egy a gazdagéppel megosztott elérési út használatával. Ahhoz, hogy a beépülő modul működjön a Mac gép Docker-tárolójával, ilyen típusú példányosításra van szükség. Példa:
+Az utolsó lépés a tároló példányosítása egy a gazdagéppel megosztott elérési út használatával. Ahhoz, hogy a beépülő modul működjön a Mac gép Docker-tárolójával, ilyen típusú példányosításra van szükség. Például:
 
 ```bash
 docker run -itd -p 19080:19080 -v /Users/sayantan/work/workspaces/mySFWorkspace:/tmp/mySFWorkspace --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest
@@ -218,7 +218,7 @@ Az attribútumok a következők:
 >Ha a tárolót más, az `sfonebox` névtől eltérő néven indítja, frissítse a név értéket a Service Fabric-aktor Java alkalmazásában lévő testclient.sh fájlban.
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 <!-- Links -->
 * [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren Yeoman használatával](service-fabric-create-your-first-linux-application-with-java.md)
 * [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren az Eclipse-hez készült Service Fabric beépülő modul használatával](service-fabric-get-started-eclipse.md)

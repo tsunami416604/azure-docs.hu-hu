@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 5a8351b8c74f9219cf14575cc326fa8049264ed7
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 4977a9ef8af75797f1e1989975688d7904f0c7b1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491121"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086448"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos-fiók kezelése
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ez a cikk az Azure Cosmos-fiók különböző feladatainak az Azure Portal, az Azure PowerShell, az Azure CLI és az Azure Resource Manager-sablonok használatával történő kezelését ismerteti.
 
@@ -47,7 +48,7 @@ Tekintse meg [Azure Cosmos db fiók létrehozása Azure Resource Manager-sablono
 
 1. A régiók eltávolításához törölje a térképen egy vagy több régiót úgy, hogy a kék hatszögeket jelöli a pipa jelekkel. Vagy válassza a 🗑 jobb oldalon található régió melletti "szemétkosár" () ikont.
 
-1. A módosítások mentéséhez kattintson **az OK gombra**.
+1. A módosítások mentéséhez kattintson **az OK gombra** .
 
    :::image type="content" source="./media/how-to-manage-database-account/add-region.png" alt-text="Régiók hozzáadása vagy eltávolítása menü":::
 
@@ -147,11 +148,11 @@ Az automatikus feladatátvételi beállítás lehetővé teszi, hogy az Azure Co
 
 1. Az Azure Cosmos-fiókjából nyissa meg az **adatok replikálása globális** ablaktáblát.
 
-2. A panel tetején válassza az **automatikus feladatátvétel**lehetőséget.
+2. A panel tetején válassza az **automatikus feladatátvétel** lehetőséget.
 
    :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Régiók hozzáadása vagy eltávolítása menü":::
 
-3. Az **automatikus feladatátvétel** ablaktáblán **Győződjön meg arról**, hogy az **automatikus feladatátvétel engedélyezése** beállítás be értékre van állítva. 
+3. Az **automatikus feladatátvétel** ablaktáblán **Győződjön meg arról** , hogy az **automatikus feladatátvétel engedélyezése** beállítás be értékre van állítva. 
 
 4. Válassza a **Mentés** lehetőséget.
 
@@ -176,11 +177,11 @@ Ha egy Cosmos-fiók automatikus feladatátvételre van konfigurálva, a régiók
 
 1. Az Azure Cosmos-fiókjából nyissa meg az **adatok replikálása globális** ablaktáblát.
 
-2. A panel tetején válassza az **automatikus feladatátvétel**lehetőséget.
+2. A panel tetején válassza az **automatikus feladatátvétel** lehetőséget.
 
    :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Régiók hozzáadása vagy eltávolítása menü":::
 
-3. Az **automatikus feladatátvétel** ablaktáblán **Győződjön meg arról**, hogy az **automatikus feladatátvétel engedélyezése** beállítás be értékre van állítva.
+3. Az **automatikus feladatátvétel** ablaktáblán **Győződjön meg arról** , hogy az **automatikus feladatátvétel engedélyezése** beállítás be értékre van állítva.
 
 4. A feladatátvételi prioritás módosításához húzza az olvasási régiókat a sor bal oldalán lévő három pontra, amikor az egérmutatót a fölé viszi.
 
@@ -210,13 +211,13 @@ A manuális feladatátvétel végrehajtásának folyamata magában foglalja a fi
 
 1. Nyissa meg az Azure Cosmos-fiókját, és nyissa meg az **adatreplikálás globális** menüjét.
 
-2. A menü tetején válassza a **manuális feladatátvétel**lehetőséget.
+2. A menü tetején válassza a **manuális feladatátvétel** lehetőséget.
 
    :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Régiók hozzáadása vagy eltávolítása menü":::
 
 3. A **manuális feladatátvétel** menüben válassza ki az új írási régiót. Jelölje be a jelölőnégyzetet, és jelezze, hogy ezt a lehetőséget az írási régió módosításakor adja meg.
 
-4. A feladatátvétel elindításához kattintson **az OK gombra**.
+4. A feladatátvétel elindításához kattintson **az OK gombra** .
 
    :::image type="content" source="./media/how-to-manage-database-account/manual-failover.png" alt-text="Régiók hozzáadása vagy eltávolítása menü":::
 

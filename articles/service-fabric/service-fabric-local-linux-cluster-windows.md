@@ -3,12 +3,12 @@ title: Az Azure Service Fabric Linux-fürt beállítása Windows rendszeren
 description: Ez a cikk bemutatja, hogyan állíthat be Service Fabric Linux rendszerű fürtöket Windows-fejlesztői gépeken. Ez a megközelítés a platformok közötti fejlesztéshez hasznos.
 ms.topic: conceptual
 ms.date: 10/16/2020
-ms.openlocfilehash: e25c6adf5e5f5101025aa883ef2ff9750c113a76
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 7b25a84e76773baea9f17430df1b7ba13aa661aa
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164108"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087077"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Linux Service Fabric-fürt beállítása a Windows fejlesztői gépen
 
@@ -57,7 +57,7 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt futtat�
     ```
 
     >[!TIP]
-    > Alapértelmezés szerint ez a Service Fabric legújabb verziójával rendelkező rendszerképet kéri le. Adott változatokért látogasson el a [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) oldalára.
+    > Alapértelmezés szerint ez a Service Fabric legújabb verziójával rendelkező rendszerképet kéri le. Adott változatok esetében tekintse meg a Docker hub [Service Fabric beépített](https://hub.docker.com/_/microsoft-service-fabric-onebox) lapját.
 
 
 
@@ -127,7 +127,7 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt futtat�
  * A DNS-szolgáltatás nem fut, és jelenleg nem támogatott a tárolón belül. [Probléma #132](https://github.com/Microsoft/service-fabric/issues/132)
  * A Container-alapú alkalmazások futtatásához az SF futtatására van szükség egy Linux-gazdagépen. A beágyazott tároló alkalmazások jelenleg nem támogatottak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren Yeoman használatával](service-fabric-create-your-first-linux-application-with-java.md)
 * Ismerkedés az [Eclipse](./service-fabric-get-started-eclipse.md) -szel
 * Tekintse meg a [Java-mintákat](https://github.com/Azure-Samples/service-fabric-java-getting-started)

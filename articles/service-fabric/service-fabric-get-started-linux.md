@@ -4,12 +4,12 @@ description: Telepítse a futtatókörnyezetet és az SDK-t, majd hozzon létre 
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 39ed4a394a54112c03145c0d481e5459ecbf6d8b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 14b8a278605a908b4182c724831b2e42de54a753
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675282"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086890"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>A fejlesztőkörnyezet előkészítése Linuxon
 > [!div class="op_single_selector"]
@@ -175,7 +175,7 @@ Az SDK-telepítéssel együtt érkező Service Fabric-futtatókörnyezet az alá
 
 # <a name="container-based-local-cluster"></a>[Tároló-alapú helyi fürt](#tab/localclusteroneboxcontainer)
 
-Tároló-alapú Service Fabric- [fürt](https://hub.docker.com/r/microsoft/service-fabric-onebox/)elindítása.
+Tároló-alapú [Service Fabric beépített](https://hub.docker.com/_/microsoft-service-fabric-onebox) -fürt elindítása.
 
 1. Telepítse a Mobyt a Docker-tárolók üzembe helyezéséhez.
     ```bash

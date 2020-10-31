@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 347da75d8e3f58d3875b02000d74533b36a9b18c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 63de1c970a118ddf24c52e7e14a0632a4eee7fba
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486106"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086295"
 ---
 # <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db---sql-api"></a>Standard (manuális) átviteli sebesség kiépítése egy adatbázison Azure Cosmos DB-SQL API-ban
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ez a cikk azt ismerteti, hogyan lehet a standard (manuális) átviteli sebességet Azure Cosmos DB SQL API-ban található adatbázison kiépíteni. Az átviteli sebességet egyetlen [tárolóhoz](how-to-provision-container-throughput.md)vagy egy adatbázishoz is kiépítheti, és megoszthatja az átviteli sebességet a tárolóban lévő tárolók között. A tárolók szintjének és az adatbázis szintű átviteli sebesség használatának megismeréséhez tekintse [meg a tárolók és adatbázisok átviteli sebességének használati esetei](set-throughput.md) című cikket. Az adatbázis-szint átviteli sebességét az Azure Portal vagy a Azure Cosmos DB SDK-k használatával is kiépítheti.
 
@@ -26,7 +27,7 @@ Ha más API-t használ, tekintse meg a [MongoDB API](how-to-provision-throughput
 
 1. [Hozzon létre egy új Azure Cosmos-fiókot](create-sql-api-dotnet.md#create-account), vagy válasszon ki egy meglévő Azure Cosmos-fiókot.
 
-1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza az **új adatbázis**lehetőséget. Adja meg a következő adatokat:
+1. Nyissa meg a **adatkezelő** ablaktáblát, és válassza az **új adatbázis** lehetőséget. Adja meg a következő adatokat:
 
    * Adja meg az adatbázis AZONOSÍTÓját.
    * Válassza az **adatbázis-átviteli sebesség** beállítása lehetőséget.
