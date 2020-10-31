@@ -10,14 +10,19 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: rosh
-ms.openlocfilehash: 25bcdb89002fec4f9b67b091996d7bf80bcf21c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e26d128fea7208206be8a7329522f8202051215
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74326722"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095407"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Bing helyi üzleti keresési API-lekérdezések és válaszok küldése és használata
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Helyi eredményeket kaphat a Bing helyi üzleti keresési API-ból, ha keresési lekérdezést küld a végpontjának, és tartalmazza a `Ocp-Apim-Subscription-Key` fejlécet, amelyhez szükség van. A rendelkezésre álló [fejlécekkel](local-search-reference.md#headers) és [paraméterekkel](local-search-reference.md#query-parameters)együtt a keresések testreszabhatók a keresendő terület [földrajzi határainak](specify-geographic-search.md) , valamint a visszaadott helyek [kategóriáinak](local-search-query-response.md) megadásával.
 
@@ -146,7 +151,7 @@ Expires: Tue, 16 Oct 2018 16:25:15 GMT
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../includes/cognitive-services-bing-throttling-requests.md)]
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Helyi üzleti keresés – rövid útmutató](quickstarts/local-quickstart.md)
 - [Helyi üzleti keresés – Java rövid útmutató](quickstarts/local-search-java-quickstart.md)
 - [Helyi üzleti keresési csomópont rövid útmutatója](quickstarts/local-search-node-quickstart.md)

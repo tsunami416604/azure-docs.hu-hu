@@ -1,6 +1,6 @@
 ---
 title: Egyéni Azure-szerepkör létrehozása Azure Resource Manager sablon használatával – Azure RBAC
-description: Ismerje meg, hogyan hozhat létre Azure-beli egyéni szerepkört Azure Resource Manager-sablonokkal és az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC).
+description: Ismerje meg, hogyan hozhat létre Azure-beli egyéni szerepkört egy Azure Resource Manager sablon (ARM-sablon) és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 services: role-based-access-control,azure-resource-manager
 author: rolyon
 manager: mtillman
@@ -10,47 +10,49 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 06/25/2020
 ms.author: rolyon
-ms.openlocfilehash: bcf1966ffc326291448cb611d99390fe0d652151
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96dfdc0a1c32237c55d4e65bb25989656e2a4ad2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85392929"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097022"
 ---
-# <a name="create-an-azure-custom-role-using-an-azure-resource-manager-template"></a>Egyéni Azure-szerepkör létrehozása Azure Resource Manager sablon használatával
+# <a name="create-an-azure-custom-role-using-an-arm-template"></a>Egyéni Azure-szerepkör létrehozása ARM-sablonnal
 
-Ha az [Azure beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját [Egyéni szerepköröket](custom-roles.md)is. Ez a cikk azt ismerteti, hogyan hozhat létre egyéni szerepkört egy Azure Resource Manager sablon használatával.
+Ha az [Azure beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját [Egyéni szerepköröket](custom-roles.md)is. Ez a cikk azt ismerteti, hogyan hozhat létre egyéni szerepkört egy Azure Resource Manager sablon (ARM-sablon) használatával.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Egyéni szerepkör létrehozásához meg kell adnia a szerepkör nevét, az engedélyeket, valamint a szerepkör használatát. Ebben a cikkben egy _Egyéni szerepkör-RG olvasó_ nevű szerepkört hoz létre olyan erőforrás-engedélyekkel, amelyek az előfizetések hatókörében vagy alacsonyabb szinten rendelhetők el.
+
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsubscription-deployments%2Fcreate-role-def%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Egyéni szerepkör létrehozásához a következőket kell tennie:
 
-- Egyéni szerepkörök létrehozására vonatkozó engedélyre, amely lehet például [Tulajdonos](built-in-roles.md#owner) vagy [Felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator)
+- Egyéni szerepkörök, például [tulajdonos](built-in-roles.md#owner) vagy [felhasználói hozzáférés-rendszergazda](built-in-roles.md#user-access-administrator)létrehozásához szükséges engedélyek.
 
-## <a name="create-a-custom-role"></a>Egyéni szerepkör létrehozása
+## <a name="review-the-template"></a>A sablon áttekintése
 
-Egyéni szerepkör létrehozásához meg kell adnia a szerepkör nevét, az engedélyeket, valamint a szerepkör használatát. Ebben a cikkben egy "egyéni szerepkör-RG olvasó" nevű szerepkört hoz létre olyan erőforrás-engedélyekkel, amelyek előfizetési hatókörben vagy alacsonyabb szinten rendelhetők hozzá.
+A cikkben használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/create-role-def)származik. A sablonban négy paraméter és egy erőforrás szakasz található. A négy paraméter a következők:
 
-### <a name="review-the-template"></a>A sablon áttekintése
-
-A cikkben használt sablon az [Azure Gyorsindítás sablonjaiból](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-role-def)származik. A sablonban négy paraméter és egy erőforrás szakasz található. A négy paraméter a következők:
-
-- A (z) ["Microsoft. Resources/Subscriptions/resourceGroups/Read"] alapértelmezett értékkel rendelkező műveletek tömbje
-- Egy üres alapértelmezett értékkel rendelkező nem Tapintatok tömbje
-- A szerepkör neve az "egyéni szerepkör – RG olvasó" alapértelmezett értékkel
-- Szerepkör leírása "a szerepkör-definíció előfizetési szintjének központi telepítése" alapértelmezett értékkel
-
-A sablonban definiált erőforrás:
-
-- [Microsoft. Authorization/roleDefinitions](/azure/templates/Microsoft.Authorization/roleDefinitions)
+- Az alapértelmezett értékkel rendelkező műveletek tömbje `["Microsoft.Resources/subscriptions/resourceGroups/read"]` .
+- `notActions`Üres alapértelmezett értékkel rendelkező tömb.
+- A szerepkör neve alapértelmezett értékkel `Custom Role - RG Reader` .
+- A szerepkör leírása alapértelmezett értékkel `Subscription Level Deployment of a Role Definition` .
 
 Az ehhez az egyéni szerepkörhöz hozzárendelni kívánt hatókör az aktuális előfizetésre van beállítva.
 
 :::code language="json" source="~/quickstart-templates/subscription-deployments/create-role-def/azuredeploy.json":::
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+A sablonban definiált erőforrás:
+
+- [Microsoft. Authorization/roleDefinitions](/azure/templates/Microsoft.Authorization/roleDefinitions)
+
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 Az előző sablon üzembe helyezéséhez kövesse az alábbi lépéseket.
 
@@ -60,7 +62,7 @@ Az előző sablon üzembe helyezéséhez kövesse az alábbi lépéseket.
 
 1. Másolja és illessze be a következő szkriptet a Cloud Shellba.
 
-    ```azurepowershell
+    ```azurepowershell-interactive
     $location = Read-Host -Prompt "Enter a location (i.e. centralus)"
     [string[]]$actions = Read-Host -Prompt "Enter actions as a comma-separated list (i.e. action1,action2)"
     $actions = $actions.Split(',')
@@ -70,19 +72,19 @@ Az előző sablon üzembe helyezéséhez kövesse az alábbi lépéseket.
     New-AzDeployment -Location $location -TemplateUri $templateUri -actions $actions
     ```
 
-1. Adja meg a központi telepítés helyét (például *CentralUS*).
+1. Adja meg a központi telepítés helyét (például *CentralUS* ).
 
-1. Adja meg az egyéni szerepkörhöz tartozó műveletek listáját vesszővel tagolt listaként, mint például a *Microsoft. Resources/Resources/READ, Microsoft. Resources/Subscriptions/resourceGroups/Read*.
+1. Adja meg az egyéni szerepkörhöz tartozó műveletek listáját vesszővel tagolt listaként, mint például a *Microsoft. Resources/Resources/READ, Microsoft. Resources/Subscriptions/resourceGroups/Read* .
 
-1. Ha szükséges, nyomja le az ENTER billentyűt az New-AzDeployment parancs futtatásához.
+1. Ha szükséges, nyomja le az ENTER billentyűt a parancs futtatásához `New-AzDeployment` .
 
     A [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) parancs telepíti a sablont az egyéni szerepkör létrehozásához.
 
     A következőhöz hasonló kimenetnek kell megjelennie:
 
-    ```azurepowershell
+    ```azurepowershell-interactive
     PS> New-AzDeployment -Location $location -TemplateUri $templateUri -actions $actions
-    
+
     Id                      : /subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/azuredeploy
     DeploymentName          : azuredeploy
     Location                : centralus
@@ -92,7 +94,7 @@ Az előző sablon üzembe helyezéséhez kövesse az alábbi lépéseket.
     TemplateLink            :
                               Uri            : https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/create-role-def/azuredeploy.json
                               ContentVersion : 1.0.0.0
-    
+
     Parameters              :
                               Name               Type                       Value
                               =================  =========================  ==========
@@ -103,7 +105,7 @@ Az előző sablon üzembe helyezéséhez kövesse az alábbi lépéseket.
                               notActions         Array                      []
                               roleName           String                     Custom Role - RG Reader
                               roleDescription    String                     Subscription Level Deployment of a Role Definition
-    
+
     Outputs                 :
     DeploymentDebugLogLevel :
     ```
@@ -114,13 +116,13 @@ Az alábbi lépéseket követve ellenőrizheti, hogy létrejött-e az egyéni sz
 
 1. Futtassa a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) parancsot az egyéni szerepkör listázásához.
 
-    ```azurepowershell
+    ```azurepowershell-interactive
     Get-AzRoleDefinition "Custom Role - RG Reader" | ConvertTo-Json
     ```
 
     A következőhöz hasonló kimenetnek kell megjelennie:
 
-    ```azurepowershell
+    ```azurepowershell-interactive
     {
       "Name": "Custom Role - RG Reader",
       "Id": "11111111-1111-1111-1111-111111111111",
@@ -141,29 +143,29 @@ Az alábbi lépéseket követve ellenőrizheti, hogy létrejött-e az egyéni sz
 
 1. A Azure Portal nyissa meg az előfizetését.
 
-1. A bal oldali menüben kattintson a **hozzáférés-vezérlés (iam)** elemre.
+1. A bal oldali menüben válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
 
-1. Kattintson a **szerepkörök** fülre.
+1. Válassza a **szerepkörök** fület.
 
-1. Adja meg a **típus** listát a **CustomRole**értékre.
+1. Adja meg a **típus** listát a **CustomRole** értékre.
 
 1. Győződjön meg arról, hogy az **Egyéni szerepkör-RG olvasó** szerepkör szerepel a listáján.
 
    ![Új egyéni szerepkör a Azure Portal](./media/custom-roles-template/custom-role-template-portal.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Az egyéni szerepkör eltávolításához kövesse az alábbi lépéseket.
 
 1. A következő parancs futtatásával távolítsa el az egyéni szerepkört.
 
-    ```azurepowershell
+    ```azurepowershell-interactive
     Get-AzRoleDefinition -Name "Custom Role - RG Reader" | Remove-AzRoleDefinition
     ```
 
 1. Az **Y** érték megadásával erősítse meg, hogy el kívánja távolítani az egyéni szerepkört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure szerepkör-definíciók ismertetése](role-definitions.md)
 - [Gyors útmutató: Azure-beli szerepkör-hozzárendelés hozzáadása Azure Resource Manager sablon használatával](quickstart-role-assignments-template.md)

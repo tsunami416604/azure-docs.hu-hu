@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 58b57bd592ec0b302724f9339c0e0d48fed42d15
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 3f4c33a88d9a8fbf2c3d64135d93da54cf75fab3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281182"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097503"
 ---
 # <a name="optimize-request-cost-in-azure-cosmos-db"></a>A kérések díjszabásának optimalizálása Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Ez a cikk azt ismerteti, hogy az olvasási és írási kérések hogyan fordíthatók le a kérelmek [egységei](request-units.md) között, és hogyan optimalizálható a kérelmek díja. Olvasási műveletek: pont olvasások és lekérdezések. Az írási műveletek közé tartozik az elemek beszúrása, cseréje, törlése és upsert.
 

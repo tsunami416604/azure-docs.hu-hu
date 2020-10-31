@@ -9,14 +9,15 @@ ms.date: 10/21/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 6e084a890dd5c772fbf576ddc50fd26b2d1774f0
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a1144560b8bd8638477828f1aeafcacbc8b77f1d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487381"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096478"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Az indexelés kezelése Azure Cosmos DB API-MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 A MongoDB Azure Cosmos DB API-ját kihasználhatja Azure Cosmos DB alapvető index-felügyeleti képességeinek kihasználásához. Ez a cikk azt ismerteti, hogyan adhat hozzá indexeket a Azure Cosmos DB API-MongoDB való használatával. Áttekintheti a [Azure Cosmos db indexelésének áttekintését](index-overview.md) is, amely az összes API-ra vonatkozik.
 
@@ -121,7 +122,7 @@ A következő parancs egy helyettesítő karaktert hoz létre bármely tulajdons
 
 `db.coll.createIndex({"children.$**" : 1})`
 
-**A MongoDB eltérően a helyettesítő karakterek több mezőt is támogatnak a lekérdezési predikátumokban**. Ha egyetlen helyettesítő karaktert használ, nem lehet különbséget adni a lekérdezési teljesítményben, és nem kell külön indexet létrehoznia az egyes tulajdonságokhoz.
+**A MongoDB eltérően a helyettesítő karakterek több mezőt is támogatnak a lekérdezési predikátumokban** . Ha egyetlen helyettesítő karaktert használ, nem lehet különbséget adni a lekérdezési teljesítményben, és nem kell külön indexet létrehoznia az egyes tulajdonságokhoz.
 
 A következő típusú indexeket hozhatja létre helyettesítő szintaxis használatával:
 
@@ -147,7 +148,7 @@ A helyettesítő karakteres indexek nem támogatják a következő típusú inde
 - TTL
 - Egyedi
 
-A **MongoDB-től eltérően**Azure Cosmos db API-ját a MongoDB esetében **nem** használhat helyettesítő indexeket a következőhöz:
+A **MongoDB-től eltérően** Azure Cosmos db API-ját a MongoDB esetében **nem** használhat helyettesítő indexeket a következőhöz:
 
 - Több megadott mezőt tartalmazó helyettesítő karakteres index létrehozása
 

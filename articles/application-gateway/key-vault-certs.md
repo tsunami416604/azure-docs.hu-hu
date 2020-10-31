@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: victorh
-ms.openlocfilehash: e7c4842494c144f5cd64d46f53f7a99266064680
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 3569ae130813eb0aaf14ec3d8d4e5cfac3e98c6f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993639"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095647"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>TLS-lezárás Key Vault tanúsítványokkal
 
@@ -49,6 +49,9 @@ Application Gateway integrációja Key Vault megköveteli a három lépésből �
 
    Ezután importáljon egy meglévő tanúsítványt, vagy hozzon létre egy újat a kulcstartóban. A tanúsítványt az Application gatewayen keresztül futó alkalmazások fogják használni. Ebben a lépésben egy Key Vault-titkos kulcsot is használhat, amely jelszó nélküli, Base-64 kódolású PFX-fájlként van tárolva. Azt javasoljuk, hogy a Key vaultban a tanúsítvány típusú objektumokhoz elérhető automatikus megújítási képesség miatt a tanúsítvány típusát is használja. Miután létrehozott egy tanúsítványt vagy titkos kulcsot, a kulcstartóban definiált hozzáférési szabályzatok segítségével engedélyezheti, hogy az *identitás hozzáférjen a* titkos kulcshoz.
    
+   > [!IMPORTANT]
+   > Application Gateway jelenleg Key Vault szükséges, hogy az integráció kihasználása érdekében az összes hálózatról engedélyezze a hozzáférést. Nem támogatja Key Vault integrációt, ha Key Vault úgy van beállítva, hogy csak privát végpontokat engedélyezzen, és válassza a hálózatok elérését. A magán-és Select hálózatok támogatása a Key Vault és a Application Gateway teljes integrációja. 
+
    > [!NOTE]
    > Ha az Application Gateway-t az Azure CLI vagy a PowerShell használatával, vagy a Azure Portal központilag telepített Azure-alkalmazáson keresztül telepíti, akkor az SSL-tanúsítványt Base64 kódolású PFX-fájlként tárolja a Key vaultban. Az üzembe helyezés során végre kell hajtania a [Azure Key Vault használata a biztonságos paraméterek értékének](../azure-resource-manager/templates/key-vault-parameter.md)megadásához című témakör lépéseit. 
    >

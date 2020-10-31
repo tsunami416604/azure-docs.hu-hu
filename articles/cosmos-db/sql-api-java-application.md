@@ -9,14 +9,15 @@ ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 74a4178cc6b9645f3cb22bf3d1c7c0ee942c3f5f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 774c829b3f9c36cef33f8f334825440b92582f4e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485290"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097311"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Oktatóanyag: Java-Webalkalmazás létrehozása Azure Cosmos DB és az SQL API használatával
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -43,7 +44,7 @@ Ez a Java-alkalmazásokra vonatkozó oktatóanyag bemutatja, hogyan hozhat létr
 
 Az alkalmazásfejlesztési oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
-* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd. 
+* Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -65,7 +66,7 @@ Először hozzon létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik fiókka
 
 JSP-alkalmazás létrehozása:
 
-1. Először egy Java-projekt létrehozásával kezdjük. Indítsa el az Eclipse-t, kattintson a **File** (Fájl), **New** (Új), majd a **Dynamic Web Projekt** (Dinamikus webes projekt) lehetőségre. Ha nem jelenik meg a **dinamikus webes projekt** elérhető projektként való felsorolása, tegye a következőket: kattintson a **fájl**menü **új**elemére, majd a **projekt**..., a **web**elemre, végül a **dinamikus webes projekt**elemre, és kattintson a **tovább**gombra.
+1. Először egy Java-projekt létrehozásával kezdjük. Indítsa el az Eclipse-t, kattintson a **File** (Fájl), **New** (Új), majd a **Dynamic Web Projekt** (Dinamikus webes projekt) lehetőségre. Ha nem jelenik meg a **dinamikus webes projekt** elérhető projektként való felsorolása, tegye a következőket: kattintson a **fájl** menü **új** elemére, majd a **projekt** ..., a **web** elemre, végül a **dinamikus webes projekt** elemre, és kattintson a **tovább** gombra.
    
     :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="Saját teendőlista Java-alkalmazása":::
 
@@ -73,7 +74,7 @@ JSP-alkalmazás létrehozása:
 
 1. Az Eclipse Project Explorer (Projektböngésző) nézetében bontsa ki a projektet. Kattintson a jobb gombbal a **WebContent** (Webes tartalom), majd a **New** (Új) elemre, és végül a **JSP File** (JSP-fájl) elemre.
 
-1. A **New JSP File** (Új JSP-fájl) párbeszédablakban nevezze el a fájlt az alábbi módon: **index.jsp**. A szülőmappa neve maradjon **WebContent**, ahogy azt az alábbi ábra is mutatja, majd kattintson a **Next** (Tovább) lehetőségre.
+1. A **New JSP File** (Új JSP-fájl) párbeszédablakban nevezze el a fájlt az alábbi módon: **index.jsp** . A szülőmappa neve maradjon **WebContent** , ahogy azt az alábbi ábra is mutatja, majd kattintson a **Next** (Tovább) lehetőségre.
    
     :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="Saját teendőlista Java-alkalmazása":::
 
@@ -99,7 +100,7 @@ Az SQL Java SDK, valamint annak függőségei a legegyszerűbben az [Apache Mave
 
 1. Kattintson a jobb gombbal a projektre a Project Explorer (Projektböngésző) nézetben, kattintson a **Configure** (Konfigurálás), majd a **Convert to Maven Project** (Konvertálás Maven-projekté) lehetőségre.
 
-1. Az **új Pom létrehozása** ablakban fogadja el az alapértelmezett értékeket, majd kattintson a **Befejezés**gombra.
+1. Az **új Pom létrehozása** ablakban fogadja el az alapértelmezett értékeket, majd kattintson a **Befejezés** gombra.
 
 1. A **Project Explorer** (Projektböngésző) nézetben nyissa meg a pom.xml fájlt.
 
@@ -129,7 +130,7 @@ Most adjuk hozzá a modelleket, a nézeteket és a vezérlőket a webalkalmazás
 
 ### <a name="add-a-model"></a>Modell hozzáadása
 
-Először is Definiáljon egy modellt egy új, *TodoItem. Java*fájlon belül. Az `TodoItem` osztály meghatározza egy adott tétel sémáját a beolvasó és a beállító metódusokkal együtt:
+Először is Definiáljon egy modellt egy új, *TodoItem. Java* fájlon belül. Az `TodoItem` osztály meghatározza egy adott tétel sémáját a beolvasó és a beállító metódusokkal együtt:
 
 :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/model/TodoItem.java":::
 
@@ -183,7 +184,7 @@ Most, hogy elvégezte a mókás biteket, csak egy gyors felhasználói felülete
 
    :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/WebContent/assets/todo.js":::
 
-1. Most már csak le kell tesztelni az alkalmazást. Futtassa az alkalmazást helyileg, és adjon hozzá néhány teendőt. Ehhez adja meg az elemek nevét és kategóriáját, majd kattintson az **Add Task** (Feladat hozzáadása) elemre. Az elem megjelenése után a jelölőnégyzet bejelölésével vagy a **feladatok frissítése**lehetőségre kattintva frissítheti, hogy befejeződött-e.
+1. Most már csak le kell tesztelni az alkalmazást. Futtassa az alkalmazást helyileg, és adjon hozzá néhány teendőt. Ehhez adja meg az elemek nevét és kategóriáját, majd kattintson az **Add Task** (Feladat hozzáadása) elemre. Az elem megjelenése után a jelölőnégyzet bejelölésével vagy a **feladatok frissítése** lehetőségre kattintva frissítheti, hogy befejeződött-e.
 
 ## <a name="deploy-your-java-application-to-azure-web-sites"></a><a id="Deploy"></a>Java-alkalmazás üzembe helyezése az Azure webhelyek szolgáltatásban
 
@@ -211,7 +212,7 @@ A jelen oktatóanyag minden példáját megtalálhatja a GitHubról elérhető [
 
 1. Az Eclipse **File** (Fájl) menüjében kattintson az **Import** (Importálás) elemre.
 
-1. Az **Import** (Importálás) ablakban kattintson a **Git**, majd a **Projects from Git** (Git-projektek), és végül a **Next** (Tovább) lehetőségre.
+1. Az **Import** (Importálás) ablakban kattintson a **Git** , majd a **Projects from Git** (Git-projektek), és végül a **Next** (Tovább) lehetőségre.
 
 1. A **Select Repository Source** (Tárház forrásának kiválasztása) képernyőn kattintson a **Clone URI** (URI klónozása) lehetőségre.
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d50c273e50a7faf2d8c24982fbd39cecdff0bf7f
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 5ba765f03e7ac700fb4338e14358fc55e6423c47
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044377"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097039"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Lekérdezési egységek az Azure Digital Twinsban 
 
@@ -70,4 +70,4 @@ Ha többet szeretne megtudni az Azure digitális Twins lekérdezéséről, láto
 * [*Útmutató: a Twin gráf lekérdezése*](how-to-query-graph.md)
 * [A lekérdezési API-referenciák dokumentációja](/rest/api/digital-twins/dataplane/query/querytwins)
 
-Az Azure digitális Twins lekérdezésekkel kapcsolatos korlátait a [*dokumentációban találja: a szolgáltatás korlátai nyilvános előzetes*](reference-service-limits.md)verzióban érhetők el.
+Az Azure digitális Twins lekérdezésekkel kapcsolatos korlátait a [*szolgáltatás korlátai című témakörben*](reference-service-limits.md)találja.

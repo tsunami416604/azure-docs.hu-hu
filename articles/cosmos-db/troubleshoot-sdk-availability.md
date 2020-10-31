@@ -8,14 +8,15 @@ ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: d43305040e7896a9d3a58929537f19c2bd1f526c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: b1c2377ba26b4ca64f5028fb1a51ca4e64f6a67c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319366"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097889"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>A többrégiós környezetekben elérhető Azure Cosmos SDK-k rendelkezésre állásának diagnosztizálása és megoldása
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ez a cikk ismerteti az Azure Cosmos SDK-k legújabb verziójának viselkedését, ha egy adott régióhoz vagy egy régió feladatátvételéhez kapcsolódási probléma jelenik meg.
 
@@ -34,7 +35,7 @@ A területi beállítások megadásakor az ügyfél a következő táblázatban 
 | Egyszeri írási régió | Előnyben részesített régió | Elsődleges régió  |
 | Több írási régió | Előnyben részesített régió | Előnyben részesített régió  |
 
-Ha **nem állít be előnyben részesített régiót**, az SDK-ügyfél alapértelmezett értéke az elsődleges régió:
+Ha **nem állít be előnyben részesített régiót** , az SDK-ügyfél alapértelmezett értéke az elsődleges régió:
 
 |Fiók típusa |Olvasások |Írások |
 |------------------------|--|--|
@@ -46,7 +47,7 @@ Ha **nem állít be előnyben részesített régiót**, az SDK-ügyfél alapért
 
 Normális körülmények között az SDK-ügyfél csatlakozni fog az előnyben részesített régióhoz (ha be van állítva egy területi beállítás) vagy az elsődleges régióra (ha nincs beállítva preferencia), és a műveletek az adott régióra korlátozódnak, kivéve, ha az alábbi esetek bármelyike bekövetkezik.
 
-Ezekben az esetekben az Azure Cosmos SDK-t használó ügyfél elérhetővé teszi a naplókat, és az újrapróbálkozási információkat a **művelet diagnosztikai információinak**részeként tartalmazza:
+Ezekben az esetekben az Azure Cosmos SDK-t használó ügyfél elérhetővé teszi a naplókat, és az újrapróbálkozási információkat a **művelet diagnosztikai információinak** részeként tartalmazza:
 
 * A válaszok *RequestDiagnosticsString* tulajdonsága a .NET v2 SDK-ban.
 * A .NET v3 SDK-beli válaszok és kivételek *diagnosztikai* tulajdonsága.

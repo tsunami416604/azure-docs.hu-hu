@@ -11,16 +11,16 @@ author: jhirono
 ms.date: 10/05/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 1d215c9564d89e5bd410e68839807f5c2c752356
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b16c8873a1778b907b288486c204d74ee31683cb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828516"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097957"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>A munkaterület használata egyéni DNS-kiszolgálóval
 
-Ha virtuális hálózattal Azure Machine Learning használ, a [DNS-névfeloldás több módon is kezelhető](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances). Alapértelmezés szerint az Azure automatikusan kezeli a munkaterület és a magánhálózati végpont névfeloldását. A __saját egyéni DNS-kiszolgáló használatakor__azonban manuálisan kell létrehoznia a munkaterület DNS-bejegyzéseit.
+Ha virtuális hálózattal Azure Machine Learning használ, a [DNS-névfeloldás több módon is kezelhető](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances). Alapértelmezés szerint az Azure automatikusan kezeli a munkaterület és a magánhálózati végpont névfeloldását. A __saját egyéni DNS-kiszolgáló használatakor__ azonban manuálisan kell létrehoznia a munkaterület DNS-bejegyzéseit.
 
 > [!IMPORTANT]
 > Ez a cikk csak a teljes tartománynév (FQDN) és az IP-címek megkeresését ismerteti ezen bejegyzések esetében, ezért nem nyújt információt ezen elemek DNS-rekordjainak konfigurálásáról. A rekordok hozzáadásával kapcsolatos információkért olvassa el a DNS-szoftver dokumentációját.
@@ -46,7 +46,7 @@ A következő lista tartalmazza a munkaterület és a privát végpont által ha
 * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 * `<workspace-GUID>.workspace.<region>.aether.ms`
 * `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.ml`
-* Számítási példány létrehozásakor hozzá kell adnia egy bejegyzést is a következőhöz: `<instance-name>.<region>.instances.azureml.ms` .
+* Ha létrehoz egy számítási példányt, hozzá kell adnia egy bejegyzést is a munkaterület privát `<instance-name>.<region>.instances.azureml.ms` IP-címéhez. Vegye figyelembe, hogy a számítási példány csak a virtuális hálózaton belülről érhető el.
 
 A VNet lévő teljes tartománynevek belső IP-címeinek megkereséséhez használja az alábbi módszerek egyikét:
 
@@ -68,8 +68,8 @@ $workspaceDns.CustomDnsConfigs | format-table
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. A [Azure Portal](https://portal.azure.com)válassza ki Azure Machine learning __munkaterületét__.
-1. A __Beállítások__ szakaszban válassza a __privát végponti kapcsolatok__elemet.
+1. A [Azure Portal](https://portal.azure.com)válassza ki Azure Machine learning __munkaterületét__ .
+1. A __Beállítások__ szakaszban válassza a __privát végponti kapcsolatok__ elemet.
 1. Válassza ki a hivatkozást a __privát végpont__ oszlopban, amely megjelenik.
 1. A munkaterület privát végpontjának teljes tartományneve (FQDN) és IP-címeinek listája az oldal alján található.
 
@@ -92,7 +92,7 @@ Az összes metódus által visszaadott információ ugyanaz; az erőforrások te
 > * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.aether.ms`
-> * Ha számítási példánya van, használja a (z `<instance-name>.<region>.instances.azureml.ms` ) értéket, ahol a a `<instance-name>` számítási példány neve.
+> * Ha számítási példánya van, használja a (z `<instance-name>.<region>.instances.azureml.ms` ) értéket, ahol a a `<instance-name>` számítási példány neve. Használja a munkaterület magánhálózati végpontjának magánhálózati IP-címét. Vegye figyelembe, hogy a számítási példány csak a virtuális hálózaton belülről érhető el.
 >
 > Az összes IP-cím esetében ugyanazt a címet használja, mint az `*.api.azureml.ms` előző lépésekből visszaadott bejegyzéseket.
 

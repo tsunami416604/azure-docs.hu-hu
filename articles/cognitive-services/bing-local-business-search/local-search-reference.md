@@ -10,14 +10,19 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: d5de1cc606f97655427c0c86aea0c5c722e1bab8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbd4f32e77dc8d386067987a0ab0436a7875c15e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84171463"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095390"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>A Bing helyi üzleti keresési API v7-dokumentációja
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 A helyi üzleti keresési API keresési lekérdezést küld a Bingnek, így olyan eredményeket érhet el, amelyek éttermeket, szállodákat vagy más helyi vállalkozásokat foglalnak magukban. Helyek esetén a lekérdezés megadhatja a helyi vállalat nevét vagy kategóriáját (például éttermek közelében). Az entitástalálatok személyek, helyek vagy dolgok lehetnek. Ebben a kontextusban az üzleti entitások, Államok, országok/régiók stb. is helyette.  
 
@@ -71,7 +76,7 @@ A következő fejlécek lehetnek a kérések és válaszok.
 A kérelem tartalmazhat a következő lekérdezési paramétereket. Tekintse meg a szükséges paraméterek oszlopát. A lekérdezési paraméterek kódolásához URL-címet kell megadni.  
   
   
-|Name (Név)|Érték|Típus|Kötelező|  
+|Name|Érték|Típus|Kötelező|  
 |----------|-----------|----------|--------------|
 |<a name="count"></a>száma|A visszaadni kívánt eredmények száma, a paraméterben megadott indextől kezdődően `offset` .|Sztring|Nem|   
 |<a name="localCategories"></a>localCategories|A keresés üzleti kategóriában definiált beállítások listája.  Lásd: [helyi üzleti kategóriák keresése](local-categories.md)|Sztring|Nem|  
@@ -108,7 +113,7 @@ Meghatározza a hiba előfordulását.
 ### <a name="errorresponse"></a>ErrorResponse  
 Az a legfelső szintű objektum, amelyre a válasz vonatkozik, ha a kérelem meghiúsul.  
   
-|Name (Név)|Érték|Típus|  
+|Name|Érték|Típus|  
 |----------|-----------|----------|  
 |_type|Írja be a következőt: hint.|Sztring|  
 |<a name="errors"></a>hibák|Azon hibák listája, amelyek leírják, miért nem sikerült a kérelem végrehajtása.|[Hiba](#error)[]|  
@@ -118,7 +123,7 @@ Az a legfelső szintű objektum, amelyre a válasz vonatkozik, ha a kérelem meg
 ### <a name="license"></a>Licenc  
 Meghatározza azt a licencet, amely alatt a szöveget vagy a fényképet lehet használni.  
   
-|Name (Név)|Érték|Típus|  
+|Name|Érték|Típus|  
 |----------|-----------|----------|  
 |name|A licenc neve.|Sztring|  
 |url|Annak a webhelynek az URL-címe, ahol a felhasználó további információkat kaphat a licenccel kapcsolatban.<br /><br /> Hiperhivatkozás létrehozásához használja a nevet és az URL-címet.|Sztring|  
@@ -127,7 +132,7 @@ Meghatározza azt a licencet, amely alatt a szöveget vagy a fényképet lehet h
 ### <a name="link"></a>Hivatkozás  
 Meghatározza a hiperhivatkozás összetevőit.  
   
-|Name (Név)|Érték|Típus|  
+|Name|Érték|Típus|  
 |----------|-----------|----------|  
 |_type|Írja be a következőt: hint.|Sztring|  
 |szöveg|A megjelenített szöveg|Sztring|  
@@ -141,7 +146,7 @@ Meghatározza a közzétevőt.
   
 Vegye figyelembe, hogy a közzétevő megadhatja a nevét vagy a webhelyét, vagy mindkettőt.  
   
-|Name (Név)|Érték|Típus|  
+|Name|Érték|Típus|  
 |----------|-----------|----------|  
 |name|A közzétevő neve.|Sztring|  
 |url|A közzétevő webhelyének URL-címe.<br /><br /> Vegye figyelembe, hogy a közzétevő nem rendelkezhet webhellyel.|Sztring|  
@@ -151,7 +156,7 @@ Vegye figyelembe, hogy a közzétevő megadhatja a nevét vagy a webhelyét, vag
 ### <a name="place"></a>Hely  
 Meghatározza a helyi vállalkozások adatait, például egy éttermet vagy egy szállodát.  
   
-|Name (Név)|Érték|Típus|  
+|Name|Érték|Típus|  
 |----------|-----------|----------|  
 |_type|Írja be a következőt: hint, amely a következők egyikére állítható be:<br /><br /><ul><li>Szálloda</li><li>LocalBusiness<br /></li><li>Éttermi</ul><li>|Sztring|  
 |address|Az a levelezési cím, ahol az entitás található.|PostalAddress|  
@@ -167,39 +172,39 @@ Meghatározza azt a lekérdezési környezetet, amelyet a Bing a kérelemhez has
   
 |Elem|Leírás|Típus|  
 |-------------|-----------------|----------|  
-|adultIntent|Logikai érték, amely jelzi, hogy a megadott lekérdezésnek van-e felnőtt szándéka. Az érték **igaz** , ha a lekérdezés felnőtt szándékkal rendelkezik; Ellenkező esetben **hamis**.|Logikai|  
-|alterationOverrideQuery|A lekérdezési karakterlánc, amely az eredeti sztring használatára kényszeríti a Bing használatát. Ha például a lekérdezési karakterlánc *saling hátszél*, a felülbírálás lekérdezési karakterlánca a *+ saling hátszél*lesz. Ne felejtse el kódolni a lekérdezési karakterláncot, amely a következőt eredményezi: *% 2Bsaling + hátszél*.<br /><br /> Ez a mező csak akkor szerepel, ha az eredeti lekérdezési karakterlánc helyesírási hibát tartalmaz.|Sztring|  
+|adultIntent|Logikai érték, amely jelzi, hogy a megadott lekérdezésnek van-e felnőtt szándéka. Az érték **igaz** , ha a lekérdezés felnőtt szándékkal rendelkezik; Ellenkező esetben **hamis** .|Logikai|  
+|alterationOverrideQuery|A lekérdezési karakterlánc, amely az eredeti sztring használatára kényszeríti a Bing használatát. Ha például a lekérdezési karakterlánc *saling hátszél* , a felülbírálás lekérdezési karakterlánca a *+ saling hátszél* lesz. Ne felejtse el kódolni a lekérdezési karakterláncot, amely a következőt eredményezi: *% 2Bsaling + hátszél* .<br /><br /> Ez a mező csak akkor szerepel, ha az eredeti lekérdezési karakterlánc helyesírási hibát tartalmaz.|Sztring|  
 |alteredQuery|A Bing által a lekérdezés végrehajtásához használt lekérdezési karakterlánc. A Bing a megváltoztatott lekérdezési karakterláncot használja, ha az eredeti lekérdezési karakterlánc helyesírási hibákat foglalt le. Ha például a lekérdezési karakterlánc `saling downwind` , a megváltoztatott lekérdezési karakterlánc lesz `sailing downwind` .<br /><br /> Ez a mező csak akkor szerepel, ha az eredeti lekérdezési karakterlánc helyesírási hibát tartalmaz.|Sztring|  
-|askUserForLocation|Logikai érték, amely azt jelzi, hogy a Bing megköveteli-e a felhasználó tartózkodási helyének pontos eredményének megadását. Ha a felhasználó helyét az [x-MSEdge-ügyfélip](#clientip) és az [x-Search-Location](#location) fejlécek segítségével adta meg, akkor figyelmen kívül hagyhatja ezt a mezőt.<br /><br /> A helyhez kapcsolódó lekérdezések, például a "mai időjárási viszonyok" vagy a "közeli éttermek", amelyeknek szükségük van a felhasználó tartózkodási helyének pontos eredményeinek megadására, ez a mező **igaz**értékre van állítva.<br /><br /> A helyet (például "Seattle Weather") tartalmazó helyhez kapcsolódó lekérdezések esetén ez a mező **hamis**értékre van állítva. Ez a mező **hamis** értékre van állítva olyan lekérdezések esetén is, amelyek nem ismerik fel a helyeket, például a "legjobb értékesítők".|Logikai|  
+|askUserForLocation|Logikai érték, amely azt jelzi, hogy a Bing megköveteli-e a felhasználó tartózkodási helyének pontos eredményének megadását. Ha a felhasználó helyét az [x-MSEdge-ügyfélip](#clientip) és az [x-Search-Location](#location) fejlécek segítségével adta meg, akkor figyelmen kívül hagyhatja ezt a mezőt.<br /><br /> A helyhez kapcsolódó lekérdezések, például a "mai időjárási viszonyok" vagy a "közeli éttermek", amelyeknek szükségük van a felhasználó tartózkodási helyének pontos eredményeinek megadására, ez a mező **igaz** értékre van állítva.<br /><br /> A helyet (például "Seattle Weather") tartalmazó helyhez kapcsolódó lekérdezések esetén ez a mező **hamis** értékre van állítva. Ez a mező **hamis** értékre van állítva olyan lekérdezések esetén is, amelyek nem ismerik fel a helyeket, például a "legjobb értékesítők".|Logikai|  
 |originalQuery|A kérelemben megadott lekérdezési karakterlánc.|Sztring|  
 
 ### <a name="identifiable"></a>Azonosítható
 
-|Name (Név)|Érték|Típus|  
+|Name|Érték|Típus|  
 |-------------|-----------------|----------|
 |id|Erőforrás-azonosító|Sztring|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Meghatározza a keresési eredmények csoportot, például a fővonalat.
 
-|Name (Név)|Érték|Típus|  
+|Name|Érték|Típus|  
 |-------------|-----------------|----------|
 |elemek|A csoportban megjelenítendő keresési eredmények listája.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Meghatározza a megjelenítendő keresési eredmény-elemeket.
 
-|Name (Név)|Érték|Típus|  
+|Name|Érték|Típus|  
 |-------------|-----------------|----------|
 |resultIndex|A válaszban megjelenítendő elem nulla alapú indexe. Ha az elem nem tartalmazza ezt a mezőt, a válasz összes elemét megjeleníti. Például megjelenítheti a hírek válaszában szereplő összes újságcikket.|Egész szám|
 |answerType|A megjelenítendő tételt tartalmazó válasz. Például: Hírek.<br /><br />A típus használatával keresse meg a választ a SearchResponse objektumban. A típus a SearchResponse mező neve.<br /><br /> A válasz típusát azonban csak akkor használja, ha az objektum tartalmazza az érték mezőt; Ellenkező esetben hagyja figyelmen kívül.|Sztring|
 |textualIndex|A textualAnswers megjelenő válasz indexe.| Előjel nélküli egész szám|
-|érték|Az az azonosító, amely a megjelenítendő választ vagy egy válasz elemét azonosítja. Ha az azonosító egy választ azonosít, a válasz összes elemét megjeleníti.|Azonosítható|
+|value|Az az azonosító, amely a megjelenítendő választ vagy egy válasz elemét azonosítja. Ha az azonosító egy választ azonosít, a válasz összes elemét megjeleníti.|Azonosítható|
 
 ### <a name="rankingresponse"></a>RankingResponse  
 Meghatározza, hogy a keresési eredmények oldalának hol kell lennie, és milyen sorrendben kell elhelyezni a tartalmat.  
   
-|Name (Név)|Érték|  
+|Name|Érték|  
 |----------|-----------|  
 |<a name="ranking-mainline"></a>Mainline|A keresési eredmények megjelennek a fővonalon.|  
 |<a name="ranking-pole"></a>sark|A keresési eredményeknek meg kell adni a legjobban látható kezelést (például a fővonalon és az oldalsávon).|  
@@ -210,7 +215,7 @@ Meghatározza azt a legfelső szintű objektumot, amelyet a válasz tartalmaz, a
   
 Vegye figyelembe, hogy ha a szolgáltatás egy szolgáltatásmegtagadási támadást feltételez, a kérelem sikeres lesz (a HTTP-állapotkód 200 OK); a válasz törzse azonban üres lesz.  
   
-|Name (Név)|Érték|Típus|  
+|Name|Érték|Típus|  
 |----------|-----------|----------|  
 |_type|Írja be a következőt: SearchResponse.|Sztring|  
 |lead|A keresési lekérdezéshez kapcsolódó entitások listája.|JSON-objektum|  
@@ -269,7 +274,7 @@ A lehetséges hibakód és az alhibakódok értéke a következő:
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|A Bing visszaadja a InvalidAuthorization, ha a Bing nem tudja hitelesíteni a hívót. Például `Ocp-Apim-Subscription-Key` hiányzik a fejléc, vagy az előfizetési kulcs érvénytelen.<br/><br/>A redundancia akkor fordul elő, ha egynél több hitelesítési módszert ad meg.<br/><br/>Ha a hiba InvalidAuthorization, a HTTP-állapotkód 401.
 |InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|A Bing visszaadja a InsufficientAuthorization, ha a hívónak nincs engedélye az erőforrás elérésére. Ez akkor fordulhat elő, ha az előfizetési kulcs le van tiltva vagy lejárt. <br/><br/>Ha a hiba InsufficientAuthorization, a HTTP-állapotkód 403.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Helyi üzleti keresés – rövid útmutató](quickstarts/local-quickstart.md)
 - [Helyi üzleti keresés – Java rövid útmutató](quickstarts/local-search-java-quickstart.md)
 - [Helyi üzleti keresési csomópont rövid útmutatója](quickstarts/local-search-node-quickstart.md)

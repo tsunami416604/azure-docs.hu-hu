@@ -8,14 +8,15 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2aa4e7d063141f74dc94e5f23cd227fcc16ba84f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 13a80541310b40ed2f038b6c71cd9d6eaeb54649
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487415"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096682"
 ---
 # <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Oktatóanyag: Mobile-alkalmazások létrehozása a Xamarin és a Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -45,7 +46,7 @@ Az Azure Cosmos DB az alábbi fő lehetőségeket nyújtja a mobilalkalmazás-fe
 ## <a name="azure-cosmos-db-and-xamarin-tutorial"></a>Azure Cosmos DB és Xamarin oktatóanyag
 A következő oktatóanyag ismerteti, hogyan lehet létrehozni egy mobilalkalmazást a Xamarin és az Azure Cosmos DB használatával. Az oktatóanyag teljes forráskódját megtalálja a [Xamarin és Azure Cosmos DB a GitHubon](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin) oldalon.
 
-### <a name="get-started"></a>Első lépések
+### <a name="get-started"></a>Bevezetés
 Az Azure Cosmos DB használatát könnyű elsajátítani. Lépjen az Azure Portalra, és hozzon létre egy új Azure Cosmos DB-fiókot. Kattintson a **gyors üzembe helyezés** fülre. Töltse le a Xamarin űrlap-Feladatlista mintát, amely már csatlakoztatva van a Azure Cosmos DB fiókjához. 
 
 :::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-quickstart.png" alt-text="Az Azure Cosmos DB képességei mobilalkalmazásokhoz":::
@@ -78,7 +79,7 @@ Az alábbi lépésekkel módosítható a teendőlista alkalmazás egy többfelha
 
   1. Az alkalmazáshoz hozzáadhat a Facebookon, Active Directoryn vagy bármely egyéb szolgáltatón keresztül történő bejelentkezési lehetőséget is.
 
-  2. Hozzon létre egy Azure Cosmos DB UserItems gyűjteményt, amelynek partíciókulcsa **/felhasználóazonosító**. A gyűjtemény partíciókulcsának megadásával az Azure Cosmos DB-t végtelenül lehet skálázni az alkalmazás felhasználószámának növekedésével párhuzamosan, miközben továbbra is gyorsak maradnak a lekérdezések.
+  2. Hozzon létre egy Azure Cosmos DB UserItems gyűjteményt, amelynek partíciókulcsa **/felhasználóazonosító** . A gyűjtemény partíciókulcsának megadásával az Azure Cosmos DB-t végtelenül lehet skálázni az alkalmazás felhasználószámának növekedésével párhuzamosan, miközben továbbra is gyorsak maradnak a lekérdezések.
 
   3. Adja hozzá az Azure Cosmos DB erőforrásjogkivonat-közvetítőjét. Ez az egyszerű webes API hitelesíti a felhasználókat, és rövid élettartamú jogkivonatokat bocsát ki a bejelentkezett felhasználóknak, akik csak a saját partíciójukon belül tárolt dokumentumokhoz férhetnek hozzá. Ebben a példában az erőforrásjogkivonat-közvetítőt az App Services üzemelteti.
 

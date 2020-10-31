@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: a82f3c347c75d658e3e7ec52d51107f5a240ee5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b49cdb423e8fd2e70175d4ac71f6dcd07b459f9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88056516"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097736"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics feladatok kompatibilitási szintje
 
@@ -33,13 +33,13 @@ Amikor új Stream Analytics feladatot hoz létre, ajánlott azt a legújabb komp
 
 ## <a name="set-the-compatibility-level"></a>Kompatibilitási szint beállítása
 
-A Stream Analyticsi feladatokhoz tartozó kompatibilitási szint beállítható a Azure Portal vagy a [feladatok létrehozása REST API hívás](/rest/api/streamanalytics/stream-analytics-job)használatával.
+A Stream Analyticsi feladatokhoz tartozó kompatibilitási szint beállítható a Azure Portal vagy a [feladatok létrehozása REST API hívás](/azure/stream-analytics/stream-analytics-quick-create-portal)használatával.
 
 A Azure Portal a feladatokhoz tartozó kompatibilitási szint frissítése:
 
 1. A Stream Analytics feladatainak megkereséséhez használja a [Azure Portal](https://portal.azure.com) .
 2. A kompatibilitási szint frissítése előtt **állítsa le** a feladatot. A kompatibilitási szint nem frissíthető, ha a feladata futó állapotban van.
-3. A **configure (Konfigurálás** ) fejléc alatt válassza a **kompatibilitási szint**lehetőséget.
+3. A **configure (Konfigurálás** ) fejléc alatt válassza a **kompatibilitási szint** lehetőséget.
 4. Válassza ki a kívánt kompatibilitási szint értékét.
 5. Kattintson a lap alján található **Mentés** gombra.
 
@@ -53,7 +53,7 @@ A kompatibilitási szint 1,2-as verziójában a következő jelentős változás
 
 ###  <a name="amqp-messaging-protocol"></a>AMQP üzenetküldési protokoll
 
-**1,2 szint**: Azure stream Analytics a [speciális üzenetsor-kezelési protokoll (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) üzenetkezelő protokollt használja a Service Bus várólistákba és témakörökbe való íráshoz. A AMQP lehetővé teszi többplatformos hibrid alkalmazások készítését egy nyílt szabványú protokoll használatával.
+**1,2 szint** : Azure stream Analytics a [speciális üzenetsor-kezelési protokoll (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) üzenetkezelő protokollt használja a Service Bus várólistákba és témakörökbe való íráshoz. A AMQP lehetővé teszi többplatformos hibrid alkalmazások készítését egy nyílt szabványú protokoll használatával.
 
 ### <a name="geospatial-functions"></a>Térinformatikai funkciók
 
@@ -75,11 +75,11 @@ További információ: a [térinformatikai funkciók frissítései Azure stream 
 
 ### <a name="native-bulk-api-integration-with-cosmosdb-output"></a>Natív, tömeges API-integráció a CosmosDB kimenetével
 
-**Előző szintek:** A upsert viselkedése *Beszúrás vagy egyesítés*volt.
+**Előző szintek:** A upsert viselkedése *Beszúrás vagy egyesítés* volt.
 
 **1,2 szint:** A CosmosDB-kimenettel való natív, tömeges API-integráció maximalizálja az átviteli sebességet, és hatékonyan kezeli a szabályozási kérelmeket. További információkért tekintse meg [a Azure Cosmos DB Azure stream Analytics kimenete lapot](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12).
 
-A upsert viselkedése *INSERT vagy replace*.
+A upsert viselkedése *INSERT vagy replace* .
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>DateTimeOffset SQL-kimenetre írásakor
 
@@ -121,7 +121,7 @@ A kompatibilitási szint 1,1-as verziójában a következő jelentős változás
 
 ### <a name="service-bus-xml-format"></a>Service Bus XML-formátum
 
-**1,0 szint:** Azure Stream Analytics használt DataContractSerializer, így az üzenet tartalma XML-címkéket tartalmaz. Példa:
+**1,0 szint:** Azure Stream Analytics használt DataContractSerializer, így az üzenet tartalma XML-címkéket tartalmaz. Például:
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 

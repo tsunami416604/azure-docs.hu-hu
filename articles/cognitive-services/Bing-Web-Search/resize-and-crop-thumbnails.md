@@ -11,14 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: aahi
-ms.openlocfilehash: 630b86f55a537d109c851cb585cfccc34d229f83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac1b636f644784092b5f68f59d787c328478df69
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74110638"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096920"
 ---
 # <a name="resize-and-crop-thumbnail-images"></a>Miniatűr képek átméretezése és körülvágása
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Néhány válasz a Bing Search API-k tartalmaz a Bing által szolgáltatott miniatűr rendszerképekre mutató URL-címeket, amelyek átméretezhetők és elhelyezhetők, és lekérdezési paramétereket is tartalmazhatnak. Például:
 
@@ -124,7 +129,7 @@ Az alábbi ábrán látható, hogy a 100x200 a vak arányok levágásával csök
   
 ![A napraforgó-kép bevágása a 100x200](./media/resize-crop/bing-resize-crop-sunflower100x200c4.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi a Bing Search API-k?](bing-api-comparison.md)
 * [Bing Search API – követelmények használata és megjelenítése](use-display-requirements.md)

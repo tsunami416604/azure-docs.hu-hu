@@ -7,14 +7,15 @@ ms.topic: overview
 ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: cd2d9ddf17cf100e1a211785b9cc62c9f08352f9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 399c078481fb205221a683e44f74b4d70c383cbe
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282421"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096563"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>MongoDB-hez készült Azure Cosmos DB API (3.6-os verzió): támogatott funkciók és szintaxis
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. A MongoDB Azure Cosmos DB API-jával a nyílt forráskódú MongoDB [-ügyfelek](https://docs.mongodb.org/ecosystem/drivers)bármelyikének használatával kommunikálhat. A MongoDB-hez készült Azure Cosmos DB API a MongoDB [vonalprotokolljának](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol) követésével lehetővé teszi a meglévő ügyfélillesztők használatát.
 
@@ -22,7 +23,7 @@ A Azure Cosmos DB API-MongoDB való használatával élvezheti a használt Mongo
 
 ## <a name="protocol-support"></a>Protokollok támogatása
 
-A MongoDB-hez készült Azure Cosmos DB API új fiókok esetén alapértelmezés szerint kompatibilis a MongoDB-kiszolgáló **3.6**-os verziójával. A támogatott operátorok, valamint a korlátozások és kivételek listája alább található. Minden olyan ügyfélillesztőnek, amely ismeri ezeket a protokollokat, tudnia kell kapcsolódnia a MongoDB-hez készült Azure Cosmos DB API-hoz. Vegye figyelembe, hogy ha a MongoDB fiókokhoz készült Azure Cosmos DB API-t használja, a 3.6-os verziójú fiókok végpontja `*.mongo.cosmos.azure.com` formátumban van, míg a 3.2-es verziójú fiókok végpontja `*.documents.azure.com` formátumban van.
+A MongoDB-hez készült Azure Cosmos DB API új fiókok esetén alapértelmezés szerint kompatibilis a MongoDB-kiszolgáló **3.6** -os verziójával. A támogatott operátorok, valamint a korlátozások és kivételek listája alább található. Minden olyan ügyfélillesztőnek, amely ismeri ezeket a protokollokat, tudnia kell kapcsolódnia a MongoDB-hez készült Azure Cosmos DB API-hoz. Vegye figyelembe, hogy ha a MongoDB fiókokhoz készült Azure Cosmos DB API-t használja, a 3.6-os verziójú fiókok végpontja `*.mongo.cosmos.azure.com` formátumban van, míg a 3.2-es verziójú fiókok végpontja `*.documents.azure.com` formátumban van.
 
 ## <a name="query-language-support"></a>Nyelvi támogatás lekérdezése
 

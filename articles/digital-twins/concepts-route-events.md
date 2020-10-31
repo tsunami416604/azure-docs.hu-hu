@@ -7,20 +7,20 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: f124eb24dcdc9e6437c803d1066d6ca86d5c32ab
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 9c7b08b92fad07cddbdb2783f2d68cdb9be034a4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440807"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097073"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Események irányítása az Azure digitális Twins-n belül és kívül
 
 Az Azure Digital Twins **esemény-útvonalakat** használ az adatküldés céljából a szolgáltatáson kívüli felhasználók számára. 
 
-Az előzetes verzióban két fő eset áll rendelkezésre az Azure Digital Twins-adatok küldéséhez:
+Az Azure Digital Twins-adatok küldésének két fő esete van:
 * Adatok küldése az Azure digitális Twins gráfból egy másikba. Ha például egy adott digitális kettős változásra vonatkozó tulajdonságot módosít, érdemes lehet értesíteni és frissíteni egy másik digitális dupla, ennek megfelelően.
-* Adatok küldése a downstream adatszolgáltatásoknak további tárhely vagy feldolgozás céljából (más néven *adatforgalom*). Például:
+* Adatok küldése a downstream adatszolgáltatásoknak további tárhely vagy feldolgozás céljából (más néven *adatforgalom* ). Például:
   - A kórház az Azure Digital Twins-események [Time Series Insights (ÁME)](../time-series-insights/overview-what-is-tsi.md)szolgáltatásba való küldéséhez érdemes lehet a tömeges elemzéshez kapcsolódó, kézmosással kapcsolatos események idősoros adatainak rögzítése.
   - Egy olyan vállalat, amely már használ [Azure Maps](../azure-maps/about-azure-maps.md) , érdemes lehet az Azure digitális Twins használatával javítani a megoldást. Az Azure digitális Twins beállítása után gyorsan engedélyezhetik az Azure Map-t, hogy az Azure Map-entitásokat [digitális ikrekként](concepts-twins-graph.md) használják a Twin Graphban, vagy futtasson hatékony lekérdezéseket a Azure Maps és az Azure digitális Twins-adatszolgáltatások használatával.
 
@@ -38,7 +38,7 @@ Az esemény-útvonalakra jellemző alsóbb rétegbeli célok olyan erőforrások
 
 ### <a name="event-routes-for-internal-digital-twin-events"></a>Esemény-útvonalak belső digitális kettős eseményekhez
 
-Az aktuális előzetes kiadásban az esemény-útvonalak a Twin gráfon belüli események kezelésére is használhatók, és az adatok digitális Twin-ről digitális Twin-re való küldésére is sor kerül. Ezt úgy teheti meg, hogy összekapcsolja az esemény-útvonalakat Event Grid a számítási erőforrások, például a [Azure functions](../azure-functions/functions-overview.md)használatával. Ezek a függvények határozzák meg, hogy az ikrek hogyan fogadhatnak és reagálnak az eseményekre. 
+Az Event Routes szolgáltatás a Twin gráf eseményeinek kezelésére is használható, és az adatok digitális Twin-ről digitális Twin-re való küldését is elküldheti. Ezt úgy teheti meg, hogy összekapcsolja az esemény-útvonalakat Event Grid a számítási erőforrások, például a [Azure functions](../azure-functions/functions-overview.md)használatával. Ezek a függvények határozzák meg, hogy az ikrek hogyan fogadhatnak és reagálnak az eseményekre. 
 
 Ha egy számítási erőforrás módosítani szeretné a Twin gráfot egy esemény-útvonalon keresztül kapott esemény alapján, akkor hasznos, ha tudni szeretné, hogy az idő előtt milyen kettős módosításokat kíván módosítani. 
 
@@ -50,7 +50,7 @@ Az Azure-függvények digitális kettős események feldolgozására való beál
 
 ## <a name="create-an-endpoint"></a>Végpont létrehozása
 
-Az események útvonalának definiálásához a fejlesztőknek először meg kell határozniuk a végpontokat. A **végpont** az Azure Digital ikreken kívüli cél, amely támogatja az útvonal-kapcsolatokat. Az aktuális előzetes verzióban támogatott célhelyek a következők:
+Az események útvonalának definiálásához a fejlesztőknek először meg kell határozniuk a végpontokat. A **végpont** az Azure Digital ikreken kívüli cél, amely támogatja az útvonal-kapcsolatokat. A támogatott célhelyek a következők:
 * Egyéni témakörök Event Grid
 * Eseményközpont
 * Service Bus
@@ -73,7 +73,7 @@ A vezérlési síkon elérhető Endpoint API-k a következők:
  
 Eseményvezérelt útvonal létrehozásához használhatja az Azure Digital Twins [**adatsík API-kat**](how-to-manage-routes-apis-cli.md#create-an-event-route), a [**CLI-parancsokat**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)vagy a [**Azure Portal**](how-to-manage-routes-portal.md#create-an-event-route). 
 
-Íme egy példa arra, hogyan hozhat létre egy esemény-útvonalat az ügyfélalkalmazások között a `CreateEventRoute` [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview) -hívás használatával: 
+Íme egy példa arra, hogyan hozhat létre egy esemény-útvonalat az ügyfélalkalmazások között a `CreateEventRoute` [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) -hívás használatával: 
 
 ```csharp
 EventRoute er = new EventRoute("endpointName");
@@ -94,7 +94,7 @@ Az útvonalakat az [Azure Digital Twins CLI](how-to-use-cli.md)használatával i
 
 ## <a name="dead-letter-events"></a>Kézbesítetlen levelek eseményei
 
-Ha egy végpont nem tud eseményt kézbesíteni egy adott időszakon belül, vagy ha az eseményt bizonyos számú alkalommal próbálta kézbesíteni, akkor a kézbesítetlen eseményt elküldheti egy Storage-fiókba. Ezt a folyamatot **Kézbesítetlen levélnek**nevezzük. Az Azure Digital Twins egy eseményt fog kézbesíteni, ha teljesülnek **az alábbi feltételek valamelyike** . 
+Ha egy végpont nem tud eseményt kézbesíteni egy adott időszakon belül, vagy ha az eseményt bizonyos számú alkalommal próbálta kézbesíteni, akkor a kézbesítetlen eseményt elküldheti egy Storage-fiókba. Ezt a folyamatot **Kézbesítetlen levélnek** nevezzük. Az Azure Digital Twins egy eseményt fog kézbesíteni, ha teljesülnek **az alábbi feltételek valamelyike** . 
 
 * Az esemény nem az adott időszakon belül érkezik
 * Az esemény kézbesítésére tett kísérletek száma túllépte a korlátot
@@ -113,7 +113,7 @@ A IoT Hub és az Azure Digital Twins különböző típusú eseményei különb�
 
 [!INCLUDE [digital-twins-notifications.md](../../includes/digital-twins-notifications.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd: események útvonalának beállítása és kezelése:
 * [*Útmutató: végpontok és útvonalak kezelése*](how-to-manage-routes-apis-cli.md)

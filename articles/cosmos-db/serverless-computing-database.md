@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 0167dc0b1cbf8cf3b95995645ef24548a05c4343
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5264fb44f8088ae8f942abf95bc8c0ef6d917413
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538646"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096138"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Kiszolgáló nélküli adatbázis-számítástechnika Azure Cosmos DB és Azure Functions használatával
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A kiszolgáló nélküli számítástechnika lényege, hogy az egyes, ismételhető és állapot nélküli logikára koncentráljon. Ezeknek a daraboknak nincs szükségük infrastruktúra-felügyeletre, és csak a másodpercben, vagy ezredmásodpercben használják az erőforrásokat. A kiszolgáló nélküli számítástechnikai mozgalom magja a függvények, amelyek az Azure-ökoszisztémában elérhetővé [Azure functions](https://azure.microsoft.com/services/functions). További információ az Azure-beli kiszolgáló nélküli végrehajtási környezetekről: [kiszolgáló nélküli az Azure-](https://azure.microsoft.com/solutions/serverless/) oldalon. 
 

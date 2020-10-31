@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 2ae06a8ed59f7987f58aba8b8017833315e6529f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 98cca99ab0e088bbae047fa64ec52429e531dfed
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428907"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096078"
 ---
 # <a name="tutorial-configure-alertmedia-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés AlertMedia konfigurálása
 
@@ -51,8 +51,8 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 ## <a name="step-2-configure-alertmedia-to-support-provisioning-with-azure-ad"></a>2. lépés AlertMedia konfigurálása az Azure AD-vel való kiépítés támogatásához
 
-1. Jelentkezzen be a AlertMedia-fiókjába. Navigáljon a **vállalati > API**-hoz.
-2. Kattintson az **új hozzáadása**gombra.
+1. Jelentkezzen be a AlertMedia-fiókjába. Navigáljon a **vállalati > API** -hoz.
+2. Kattintson az **új hozzáadása** gombra.
 3. Válassza ki, hogy az **API-integráció** egy nevet adjon, hogy könnyebben felismerhető legyen a kulcsok használatának helye.
 4. Válassza ki azt a rendszergazdát, amelyhez hozzá szeretné rendelni az integrációt.
 5. Kattintson a **kulcsok generálása** és **Mentés** gombra.
@@ -67,7 +67,7 @@ Vegyen fel AlertMedia az Azure AD-alkalmazás-katalógusból a AlertMedia való 
 
 Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek hatókörének meghatározását az alkalmazáshoz való hozzárendelés és/vagy a felhasználó/csoport attribútumai alapján. Ha a hozzárendelés alapján történő hatókör-meghatározást választja, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet felhasználókat és csoportokat az alkalmazáshoz. Ha csak a felhasználó vagy csoport attribútumai alapján történő hatókörmeghatározást választja, az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) leírt hatókörszűrőt használhatja. 
 
-* Felhasználók és csoportok AlertMedia való hozzárendeléséhez ki kell választania az **alapértelmezett hozzáféréstől**eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps). 
+* Felhasználók és csoportok AlertMedia való hozzárendeléséhez ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps). 
 
 * Kezdje kicsiben. Tesztelje a felhasználók és csoportok kis halmazát, mielőtt mindenkire kiterjesztené. Amikor az átadás hatóköre a hozzárendelt felhasználókra és csoportokra van beállítva, ennek szabályozásához egy vagy két felhasználót vagy csoportot rendelhet az alkalmazáshoz. Amikor a hatókör az összes felhasználóra és csoportra van beállítva, meghatározhat egy [attribútumalapú hatókörszűrőt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
@@ -82,7 +82,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **AlertMedia**lehetőséget.
+2. Az alkalmazások listában válassza a **AlertMedia** lehetőséget.
 
     ![Az AlertMedia hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -95,9 +95,9 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
     ![Kiépítés lap automatikus](common/provisioning-automatic.png)
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a AlertMedia **bérlői URL-címét** az alábbiak egyikének megfelelően.
-      * (nincs egyéni tartomány) https://dashboard.alertmedia.com/api/scim/v3
+      * (nincs egyéni tartomány) https://docs.gitlab.com/ee/api/scim.html
 
-      * (egyéni tartomány) https://subdomain.alertmedia.com/api/scim/v3
+      * (egyéni tartomány) https://developer.github.com/v3/scim/
 
       Adja meg a **titkos tokent** a 2. lépésben korábban lekért módon. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a AlertMedia. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a AlertMedia-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
@@ -109,7 +109,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a AlertMedia**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a AlertMedia** lehetőséget.
 
 9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban lévő AlertMedia. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a AlertMedia felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Ha úgy dönt, hogy módosítja a [megfelelő cél attribútumot](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), akkor biztosítania kell, hogy a AlertMedia API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
@@ -143,7 +143,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
    |urn: IETF: params: scim: sémák: bővítmény: alertmedia: 2.0: CustomAttribute: User: customer_user_id|Sztring|
    |urn: IETF: params: scim: sémák: bővítmény: alertmedia: 2.0: CustomAttribute: User: user_type|Sztring|
 
-10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a AlertMedia**lehetőséget.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a AlertMedia** lehetőséget.
 
 11. Tekintse át az Azure AD-ből szinkronizált AlertMedia az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a AlertMedia tartozó csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 

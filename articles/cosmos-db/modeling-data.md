@@ -7,14 +7,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: ae0bf6836fd08e20d97f1cfd85627b25e31bf380
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0868b0d3e917b857d09c89e3a35d03872c42a23e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278411"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096648"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Adatmodellezés Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A séma nélküli adatbázisok (például a Azure Cosmos DB) rendkívül egyszerűvé teszik a strukturálatlan és részben strukturált adatmennyiségek tárolását és lekérdezését, némi időt kell fordítania az adatmodellre, hogy a teljesítmény és a méretezhetőség, valamint a legalacsonyabb költségek alapján a szolgáltatás a lehető legtöbbet kapja.
 
@@ -35,7 +36,7 @@ Az összehasonlításhoz először lássuk, hogyan lehet egy relációs adatbáz
 
 :::image type="content" source="./media/sql-api-modeling-data/relational-data-model.png" alt-text="Rokon adatbázis-modell" border="false":::
 
-A kapcsolati adatbázisok használatakor a stratégia az összes adathalmaz normalizálása. Az adatnormalizálás általában magában foglalja egy entitás, például egy személy bevonását és a különálló összetevőkbe való lebontását. A fenti példában egy személy több kapcsolattartási adattal és több rekorddal is rendelkezhet. A kapcsolattartási adatok tovább bonthatók a gyakori mezők (például egy típus) további kibontásával. Ugyanez vonatkozik a címekre, az egyes rekordok lehetnek *otthoni* vagy *üzleti*típusúak.
+A kapcsolati adatbázisok használatakor a stratégia az összes adathalmaz normalizálása. Az adatnormalizálás általában magában foglalja egy entitás, például egy személy bevonását és a különálló összetevőkbe való lebontását. A fenti példában egy személy több kapcsolattartási adattal és több rekorddal is rendelkezhet. A kapcsolattartási adatok tovább bonthatók a gyakori mezők (például egy típus) további kibontásával. Ugyanez vonatkozik a címekre, az egyes rekordok lehetnek *otthoni* vagy *üzleti* típusúak.
 
 Az adatok normalizálása során a Guiding előfeltétel, hogy **elkerülje a redundáns adatok tárolását** az egyes rekordokon, és inkább az adatokra hivatkozzon. Ebben a példában egy személy olvasásához, az összes kapcsolattartási adataival és címével együtt kell használnia az adatokat az adatoknak a futási időben való visszaírásához (vagy denormalizálása).
 
@@ -85,9 +86,9 @@ Az adatok denormalizálása esetén előfordulhat, hogy az alkalmazásnak kevese
 
 * **Az entitások között találhatók kapcsolatok** .
 * Az entitások között **egy-az-egyhez** kapcsolat áll fenn.
-* A beágyazott adatértékek **ritkán változnak**.
-* Olyan beágyazott adat is van, amely nem növekszik **kötés nélkül**.
-* Vannak olyan beágyazott adathalmazok, amelyek **gyakran vannak lekérdezve**.
+* A beágyazott adatértékek **ritkán változnak** .
+* Olyan beágyazott adat is van, amely nem növekszik **kötés nélkül** .
+* Vannak olyan beágyazott adathalmazok, amelyek **gyakran vannak lekérdezve** .
 
 > [!NOTE]
 > Általában a denormalizált adatmodellek jobb **olvasási** teljesítményt nyújtanak.
@@ -116,7 +117,7 @@ Használja ezt a JSON-kódrészletet.
 }
 ```
 
-Előfordulhat, hogy a beágyazott megjegyzésekkel rendelkező post entitások úgy néznek ki, mintha egy tipikus blogot vagy egy CMS-t modelleztek. Ezzel a példával a megjegyzések tömbje **nincs korlátozva, ami**azt jelenti, hogy a Hozzászólások száma nem megengedett. Ez problémát jelenthet, mivel az elemek mérete végtelenül nagy növekedést eredményezhet.
+Előfordulhat, hogy a beágyazott megjegyzésekkel rendelkező post entitások úgy néznek ki, mintha egy tipikus blogot vagy egy CMS-t modelleztek. Ezzel a példával a megjegyzések tömbje **nincs korlátozva, ami** azt jelenti, hogy a Hozzászólások száma nem megengedett. Ez problémát jelenthet, mivel az elemek mérete végtelenül nagy növekedést eredményezhet.
 
 Ahogy az elem mérete növekszik, az adatokat a vezetékes hálózaton keresztül továbbíthatja, valamint az elem olvasását és frissítését is befolyásolja.
 
@@ -241,8 +242,8 @@ Mivel jelenleg nem áll rendelkezésre a korlátozás, a külső kulcs vagy más
 
 * **Egy-a-többhöz** kapcsolatot jelképez.
 * **Több-a-többhöz** kapcsolatot jelképez.
-* A kapcsolódó **adatváltozások gyakran változnak**.
-* A hivatkozott adat nem **köthető**.
+* A kapcsolódó **adatváltozások gyakran változnak** .
+* A hivatkozott adat nem **köthető** .
 
 > [!NOTE]
 > A normalizálás általában jobb **írási** teljesítményt nyújt.
@@ -402,7 +403,7 @@ Győződjön meg arról, hogy ha a szerző neve megváltozott, vagy frissíteni 
 
 A példában vannak **előre kiszámított összesítési** értékek, amelyek a költséges feldolgozást mentik egy olvasási műveletre. A példában a szerzői dokumentumba beágyazott egyes adatmennyiségek a futásidőben kiszámított adatértékek. Minden alkalommal, amikor új könyvet tesznek közzé, létrejön egy könyv **-** dokumentum, és a countOfBooks mező az adott szerző számára létező könyv-dokumentumok száma alapján számított értékre van állítva. Ez az optimalizálás hasznos lehet az olvasási nehéz rendszerekben, ahol a beolvasások optimalizálása érdekében az írásokra vonatkozó számításokat tehetünk.
 
-Az előre kiszámított mezőket tartalmazó modell lehetővé teszi, hogy Azure Cosmos DB támogassa a **többdokumentumos tranzakciókat**. Számos NoSQL-tároló nem tud tranzakciókat felvenni a dokumentumok között, ezért a tervezési döntések, például a "minden esetben beágyazása" lehetőséget a korlátozás miatt. A Azure Cosmos DB használatával kiszolgálóoldali eseményindítókat vagy tárolt eljárásokat is használhat, amelyek a könyvek beszúrását és a szerzők frissítését mind egy savas tranzakción belül. Most nem **kell** semmit beágyaznia egyetlen dokumentumba, hogy az adatai konzisztensek maradnak.
+Az előre kiszámított mezőket tartalmazó modell lehetővé teszi, hogy Azure Cosmos DB támogassa a **többdokumentumos tranzakciókat** . Számos NoSQL-tároló nem tud tranzakciókat felvenni a dokumentumok között, ezért a tervezési döntések, például a "minden esetben beágyazása" lehetőséget a korlátozás miatt. A Azure Cosmos DB használatával kiszolgálóoldali eseményindítókat vagy tárolt eljárásokat is használhat, amelyek a könyvek beszúrását és a szerzők frissítését mind egy savas tranzakción belül. Most nem **kell** semmit beágyaznia egyetlen dokumentumba, hogy az adatai konzisztensek maradnak.
 
 ## <a name="distinguishing-between-different-document-types"></a>Különböző dokumentumtípusok megkülönböztetése
 

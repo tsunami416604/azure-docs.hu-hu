@@ -9,14 +9,15 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 65a3e9a1e60ad28fbc0357c5b04007ce4da37895
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 513af71384fd1fa5d38ee3ec367a42892a662444
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487602"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096937"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>Gyors útmutató: Table API-alkalmazás létrehozása .NET SDK-val és Azure Cosmos DB 
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-table-dotnet.md)
@@ -72,7 +73,7 @@ Most pedig klónozunk egy Table-alkalmazást a GitHubról, beállítjuk a kapcso
 
 ## <a name="open-the-sample-application-in-visual-studio"></a>A mintaalkalmazás megnyitása a Visual Studióban
 
-1. A Visual Studio **Fájl** menüjében válassza a **Megnyitás**, majd a **Projekt/Megoldás** elemet. 
+1. A Visual Studio **Fájl** menüjében válassza a **Megnyitás** , majd a **Projekt/Megoldás** elemet. 
 
    :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-open-solution.png" alt-text="A megoldás megnyitása"::: 
 
@@ -114,7 +115,7 @@ Ezzel frissítette az alkalmazást az összes olyan információval, amely az Az
 
 ## <a name="build-and-deploy-the-app"></a>Az alkalmazás létrehozása és üzembe helyezése
 
-1. A Visual Studióban kattintson a jobb gombbal a **CosmosTableSamples** projektre **megoldáskezelő** , majd kattintson a **NuGet-csomagok kezelése**elemre. 
+1. A Visual Studióban kattintson a jobb gombbal a **CosmosTableSamples** projektre **megoldáskezelő** , majd kattintson a **NuGet-csomagok kezelése** elemre. 
 
    :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-manage-nuget.png" alt-text="A megoldás megnyitása":::
 
@@ -124,7 +125,7 @@ Ezzel frissítette az alkalmazást az összes olyan információval, amely az Az
 
 3. A **Microsoft. Azure. Cosmos. table** függvénytár telepítéséhez kattintson a **telepítés** gombra. Ez telepíti az Azure Cosmos DB Table API csomagot és annak összes függőségét.
 
-4. Ha a teljes alkalmazást futtatja, a rendszer beszúrja a táblázat entitásba, és a végén törli a mintákat, így a teljes minta futtatásakor nem jelenik meg az összes beszúrt oszlop. Azonban beszúrhat néhány töréspontot is az adatmegjelenítéshez. Nyissa meg a BasicSamples.cs fájlt, és kattintson a jobb gombbal a 52-es sorra, válassza a **töréspont**, majd a **töréspont beszúrása**lehetőséget. Szúrjon be egy másik töréspontot az 55. sorban.
+4. Ha a teljes alkalmazást futtatja, a rendszer beszúrja a táblázat entitásba, és a végén törli a mintákat, így a teljes minta futtatásakor nem jelenik meg az összes beszúrt oszlop. Azonban beszúrhat néhány töréspontot is az adatmegjelenítéshez. Nyissa meg a BasicSamples.cs fájlt, és kattintson a jobb gombbal a 52-es sorra, válassza a **töréspont** , majd a **töréspont beszúrása** lehetőséget. Szúrjon be egy másik töréspontot az 55. sorban.
 
    :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-breakpoint.png" alt-text="A megoldás megnyitása"::: 
 
@@ -163,7 +164,7 @@ Ezzel frissítette az alkalmazást az összes olyan információval, amely az Az
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 

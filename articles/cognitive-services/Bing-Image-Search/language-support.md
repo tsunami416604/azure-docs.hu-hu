@@ -10,14 +10,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: ca3821b6088e45730334d1b0971e270b1d86dfce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7037804f1a0984cee2d1756adf80bfe2eec3918
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68881927"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095527"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>A Bing Image Search API nyelvi és területi támogatása
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Az Bing Image Search API több mint három tucat országot/régiót támogat, több mint egy nyelvet. A lekérdezéssel rendelkező ország/régió megadásával elsődlegesen az adott országban vagy régióban lévő érdekeltségek alapján pontosíthatja a keresési eredményeket. Emellett az eredmények a Bingre mutató hivatkozásokat is tartalmazhatnak, és ezek a hivatkozások a megadott ország/régiók vagy nyelv alapján lokalizálják a Bing felhasználói élményt.
 
@@ -87,8 +92,8 @@ Azt is megteheti, hogy a lekérdezési paraméterrel megadhatja az országot/ré
 |Kanada|Angol|en-CA|
 |Kanada|Francia|fr – CA|
 |Chile|Spanyol|es – CL|
-|Dánia|Dán|da-DK|
-|Finnország|Finn|fi-FI|
+|Dánia|dán|da-DK|
+|Finnország|finn|fi-FI|
 |Franciaország|Francia|fr-FR|
 |Németország|Német|de-DE|
 |Hongkong (KKT)|Kínai (hagyományos)|ZH-HK|
@@ -109,7 +114,7 @@ Azt is megteheti, hogy a lekérdezési paraméterrel megadhatja az országot/ré
 |Szaúd-Arábia|Arab|ar-SA|
 |Dél-afrikai Köztársaság|Angol|EN-ZA|
 |Spanyolország|Spanyol|es-ES|
-|Svédország|Svéd|sv-SE|
+|Svédország|svéd|sv-SE|
 |Svájc|Francia|fr – CH|
 |Svájc|Német|de-CH|
 |Tajvan|Kínai (hagyományos)|zh-TW|
@@ -118,5 +123,5 @@ Azt is megteheti, hogy a lekérdezési paraméterrel megadhatja az országot/ré
 |Egyesült Államok|Angol|en-US|
 |Egyesült Államok|Spanyol|es – USA|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az Bing News Search-végpontokról: [hírek Image Search API v7-dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).

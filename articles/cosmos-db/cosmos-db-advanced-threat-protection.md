@@ -8,14 +8,15 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 57d319d54d15b72747da029d365137f5b5bb384c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d8398dbded8753bac193f973026fb63d5f1fc6b3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489251"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097719"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>A Azure Cosmos DB komplex veszélyforrások elleni védelme (előzetes verzió)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A Azure Cosmos DB komplex veszélyforrások elleni védelme további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel Azure Cosmos DB fiókok eléréséhez vagy kihasználásához. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelésére, akár biztonsági szakértő nélkül, akár a központi biztonsági figyelő rendszerekkel való integrációhoz.
 
@@ -32,9 +33,9 @@ A biztonsági riasztások teljes körű vizsgálatához javasolt a [diagnosztika
 
 A Azure Cosmos DB komplex veszélyforrások elleni védelme olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához. Jelenleg a következő riasztásokat indítja el:
 
-- **Hozzáférés szokatlan helyekről**: Ez a riasztás akkor aktiválódik, ha módosul a hozzáférési minta egy Azure Cosmos-fiókhoz, ahol valaki egy szokatlan földrajzi helyről kapcsolódott a Azure Cosmos db végponthoz. Bizonyos esetekben a riasztás jogszerű műveletet észlel, ami egy új alkalmazás vagy fejlesztői karbantartási művelet. Más esetekben a riasztás rosszindulatú műveletet észlel egy korábbi alkalmazotttól, külső támadótól stb.
+- **Hozzáférés szokatlan helyekről** : Ez a riasztás akkor aktiválódik, ha módosul a hozzáférési minta egy Azure Cosmos-fiókhoz, ahol valaki egy szokatlan földrajzi helyről kapcsolódott a Azure Cosmos db végponthoz. Bizonyos esetekben a riasztás jogszerű műveletet észlel, ami egy új alkalmazás vagy fejlesztői karbantartási művelet. Más esetekben a riasztás rosszindulatú műveletet észlel egy korábbi alkalmazotttól, külső támadótól stb.
 
-- **Szokatlan adatok kinyerése**: Ez a riasztás akkor aktiválódik, ha az ügyfél szokatlan adatmennyiséget nyer ki egy Azure Cosmos db fiókból. Ez lehet annak a tünete, hogy egyes adatok kiszűrése a fiókban tárolt adatok külső adattárba történő átviteléhez.
+- **Szokatlan adatok kinyerése** : Ez a riasztás akkor aktiválódik, ha az ügyfél szokatlan adatmennyiséget nyer ki egy Azure Cosmos db fiókból. Ez lehet annak a tünete, hogy egyes adatok kiszűrése a fiókban tárolt adatok külső adattárba történő átviteléhez.
 
 
 
@@ -46,7 +47,7 @@ A komplex veszélyforrások elleni védelem a következő szakaszokban ismertete
 
 1. Indítsa el a Azure Portal a következő helyen:  [https://portal.azure.com](https://portal.azure.com/) .
 
-2. A Azure Cosmos DB fiók **Beállítások** menüjében válassza a **fokozott biztonság**lehetőséget.
+2. A Azure Cosmos DB fiók **Beállítások** menüjében válassza a **fokozott biztonság** lehetőséget.
 
     :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp.png" alt-text="ATP beállítása":::
 
@@ -83,17 +84,17 @@ A Cosmos DB a komplex veszélyforrások elleni védelem engedélyezéséhez hasz
 
     :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="ATP beállítása"::: 
 
-1. Kattintson a komplex **veszélyforrások elleni védelem telepítése CosmosDB** házirendre, majd kattintson a **hozzárendelés**elemre.
+1. Kattintson a komplex **veszélyforrások elleni védelem telepítése CosmosDB** házirendre, majd kattintson a **hozzárendelés** elemre.
 
     :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png" alt-text="ATP beállítása":::
 
 
-1. A **hatókör** mezőben kattintson a három pontra, válasszon ki egy Azure-előfizetést vagy erőforráscsoportot, majd kattintson a **kiválasztás**elemre.
+1. A **hatókör** mezőben kattintson a három pontra, válasszon ki egy Azure-előfizetést vagy erőforráscsoportot, majd kattintson a **kiválasztás** elemre.
 
     :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png" alt-text="ATP beállítása":::
 
 
-1. Adja meg a többi paramétert, majd kattintson a **hozzárendelés**elemre.
+1. Adja meg a többi paramétert, majd kattintson a **hozzárendelés** elemre.
 
 
 

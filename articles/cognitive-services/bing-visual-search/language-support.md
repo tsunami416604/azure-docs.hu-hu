@@ -10,14 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: scottwhi
-ms.openlocfilehash: b17341bc234ff3dfecc2c6dcd84ef77116a95d61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f32c7a97036319dcae610fd0baa2dad48763d8ae
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68883547"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094931"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>A Bing Visual Search API nyelvi és területi támogatása
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Bing Visual Search API több mint három tucat országot/régiót támogat, több mint egy nyelvet. Minden kérelemnek tartalmaznia kell a felhasználó országát/régióját és a választott nyelvet. A felhasználó piacának ismerete segít a Bingnek a megfelelő eredmények visszaküldésében. Ha nem ad meg országot/régiót és nyelvet, a Bing a legmegfelelőbb módon határozza meg a felhasználó országát/régióját és nyelvét. Mivel az eredmények a Bingre mutató hivatkozásokat is tartalmazhatnak, az ország/régió és a nyelv ismerete előnyben részesített honosított Bing felhasználói élményt biztosíthat, ha a felhasználó a Bing hivatkozásokra kattint.
 
@@ -89,8 +94,8 @@ Azt is megteheti, hogy a lekérdezési paraméterrel megadhatja az országot/ré
 |Kanada|Angol|en-CA|
 |Kanada|Francia|fr – CA|
 |Chile|Spanyol|es – CL|
-|Dánia|Dán|da-DK|
-|Finnország|Finn|fi-FI|
+|Dánia|dán|da-DK|
+|Finnország|finn|fi-FI|
 |Franciaország|Francia|fr-FR|
 |Németország|Német|de-DE|
 |Hongkong (KKT)|Kínai (hagyományos)|ZH-HK|
@@ -111,7 +116,7 @@ Azt is megteheti, hogy a lekérdezési paraméterrel megadhatja az országot/ré
 |Szaúd-Arábia|Arab|ar-SA|
 |Dél-afrikai Köztársaság|Angol|EN-ZA|
 |Spanyolország|Spanyol|es-ES|
-|Svédország|Svéd|sv-SE|
+|Svédország|svéd|sv-SE|
 |Svájc|Francia|fr – CH|
 |Svájc|Német|de-CH|
 |Tajvan|Kínai (hagyományos)|zh-TW|

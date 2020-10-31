@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: ae99f5fc1cd6f27c46f7a4444bc75b8c773b4f74
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d25cd7418ec34b8c4a4a53dba4892e85ed1a66d5
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480003"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098076"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Mi az az Azure szinapszis-hivatkozás a Azure Cosmos DB (előzetes verzió)?
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
 > [!IMPORTANT]
 > Az Azure szinapszis hivatkozása Azure Cosmos DB jelenleg előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -104,7 +105,7 @@ További információ az Azure szinapszis Analytics futtatókörnyezet Azure Cos
 
 A szinapszis hivatkozását a következő esetekben javasoljuk:
 
-* Ha Ön Azure Cosmos DB ügyfél, és az operatív adatain át szeretné futtatni az elemzést, a BI-t és a gépi tanulást. Ilyen esetekben a szinapszis-hivatkozás egy integráltabb elemzési élményt biztosít anélkül, hogy ez befolyásolná a tranzakciós tár kiosztott átviteli sebességét. Példa:
+* Ha Ön Azure Cosmos DB ügyfél, és az operatív adatain át szeretné futtatni az elemzést, a BI-t és a gépi tanulást. Ilyen esetekben a szinapszis-hivatkozás egy integráltabb elemzési élményt biztosít anélkül, hogy ez befolyásolná a tranzakciós tár kiosztott átviteli sebességét. Például:
 
   * Ha elemzést vagy BI-t futtat Azure Cosmos DB operatív adatait közvetlenül a különálló összekötők használatával, vagy
 
@@ -116,7 +117,7 @@ A szinapszis-hivatkozás nem ajánlott, ha olyan hagyományos adattárház-köve
 
 ## <a name="limitations"></a>Korlátozások
 
-* Az Azure-beli szinapszis-hivatkozás Azure Cosmos DB az SQL API és a MongoDB-hez készült Azure Cosmos DB API esetében támogatott. A Gremlin API és a Table API esetében nem támogatott. A Cassandra API támogatása privát előzetes verzióban érhető el, további információért forduljon az [Azure szinapszis link csapatához](mailto:cosmosdbsynapselink@microsoft.com).  
+* Ma az Azure Cosmos DB-hez készült Azure Synapse Link támogatott az SQL API-k és a MongoDB-hez készült Azure Cosmos DB API esetében. A Gremlin API és a Table API esetében nem támogatott. A Cassandra API támogatása privát előzetes verzióban érhető el, további információért forduljon az [Azure szinapszis link csapatához](mailto:cosmosdbsynapselink@microsoft.com).  
 
 * Az analitikai tároló jelenleg csak új tárolók esetében engedélyezhető. Ha a meglévő tárolók esetében az analitikai tárolót szeretné használni, [Azure Cosmos db áttelepítési eszközökkel](cosmosdb-migrationchoices.md)áttelepítheti a meglévő tárolók adatait az új tárolókra. A szinapszis hivatkozását engedélyezheti az új és a meglévő Azure Cosmos DB fiókokon.
 
@@ -132,7 +133,7 @@ Az Azure szinapszis hivatkozás számlázási modellje tartalmazza a Azure Cosmo
 
 További információért lásd a következő dokumentumokat:
 
-* [Az Azure Cosmos DB elemzési tár áttekintése](analytical-store-introduction.md)
+* [Azure Cosmos DB analitikus áruház – áttekintés](analytical-store-introduction.md)
 
 * [Az Azure Cosmos DB-hez készült Azure Synapse Link használatának első lépései](configure-synapse-link.md)
  

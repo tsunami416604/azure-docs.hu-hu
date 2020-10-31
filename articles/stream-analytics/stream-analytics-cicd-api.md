@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: ed11488f397704be782a092d6cdc6463449cc71e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18817a426bacc1ddf144c1d64b611c55245cc21e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86039075"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097787"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>CI/CD implementálása IoT Edge Stream Analyticshoz API-k használatával
 
@@ -59,7 +59,7 @@ Stream Analytics-feladatok létrehozásához hívja meg a PUT metódust a Stream
 |------|-----------|
 |PUT|`https://management.azure.com/subscriptions/{\**subscription-id**}/resourcegroups/{**resource-group-name**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**job-name**}?api-version=2017-04-01-preview`|
  
-Példa a **curl**használatával történő parancsra:
+Példa a **curl** használatával történő parancsra:
 
 ```curl
 curl -u { <username:password> } -H "Content-Type: application/json" -X { <method> } -d "{ <request body> }" https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}?api-version=2017-04-01-preview  
@@ -136,7 +136,7 @@ Példa a JSON-beli kérelem törzsére:
 } 
 ```
  
-További információ: [API-dokumentáció](/rest/api/streamanalytics/stream-analytics-job).  
+További információ: [API-dokumentáció](/rest/api/streamanalytics/).  
  
 ## <a name="publish-edge-package"></a>Edge-csomag közzététele 
  
@@ -148,7 +148,7 @@ Ha Stream Analytics feladatot szeretne közzétenni IoT Edge, hívja meg a POST 
 
 Ez az aszinkron művelet a 202-es állapotot adja vissza, amíg a feladatot nem sikerült közzétenni. A hely válaszának fejléce tartalmazza a folyamat állapotának lekéréséhez használt URI-t. A folyamat futása közben a Location fejlécben lévő URI-hívás a 202-es állapotot adja vissza. A folyamat befejeződése után a Location fejlécben lévő URI a 200-es állapotot adja vissza. 
 
-Példa az Edge-csomag közzétételi hívására a **curl**használatával: 
+Példa az Edge-csomag közzétételi hívására a **curl** használatával: 
 
 ```bash
 curl -d -X POST https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}/publishedgepackage?api-version=2017-04-01-preview
@@ -163,7 +163,7 @@ https://management.azure.com/subscriptions/{**subscriptionid**}/resourcegroups/{
 ```
 Várjon egy-két percet, mielőtt futtatja a következő parancsot egy API-hívás létrehozásához a válasz élén található URL-címmel. Ha nem kap 200 választ, próbálja megismételni a parancsot.
  
-Példa arra, hogy API-hívást adjon vissza a visszaadott URL-címmel a **curl**használatával:
+Példa arra, hogy API-hívást adjon vissza a visszaadott URL-címmel a **curl** használatával:
 
 ```bash
 curl -d –X GET https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{resourcename}/publishedgepackage?api-version=2017-04-01-preview 
@@ -255,7 +255,7 @@ Telepítési jegyzékfájl mintája:
 Az üzembe helyezési jegyzék konfigurálását követően tekintse át a [Azure IoT Edge-modulok üzembe helyezése az Azure CLI-vel üzembe helyezését ismertető témakört](../iot-edge/how-to-deploy-modules-cli.md) .
 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
  
 * [IoT Edge-eszközökön futó Azure Stream Analytics](stream-analytics-edge.md)
 * [ASA IoT Edge oktatóanyag](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)

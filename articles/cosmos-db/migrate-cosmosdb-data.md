@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: c2228c99dba2dd99c0afa44457642235e08ac011
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 02fd0a4c7d931f439ab85af8d90de323105e21f2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480921"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096699"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Több száz terabájtnyi adat migrálása az Azure Cosmos DB-be 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Az Azure Cosmos DB több terabájtnyi adatot tud tárolni. Nagy léptékű adatmigrálás elvégzésével áthelyezheti éles számítási feladatait az Azure Cosmos DB-be. Ez a cikk azokat a kihívásokat ismerteti, amelyek a nagy léptékű adatok az Azure Cosmos DB-be való áthelyezésével kapcsolatosak, továbbá bemutatja az eszközt, amely segít a kihívások leküzdésében, és az adatok az Azure Cosmos DB-be történő migrálásában. Ebben az esettanulmányban az ügyfél a Cosmos DB SQL API-t használta.  
 
@@ -28,11 +29,11 @@ Azure Cosmos DB áttelepítési stratégiák jelenleg eltérőek az API-k válas
 
 Az Azure Cosmos DB az adatáttelepítés meglévő eszközei bizonyos korlátozásokkal rendelkeznek, amelyek különösen nagy léptékekben lesznek láthatók:
 
- * **Korlátozott kibővíthető képességek**: Ha a lehető leggyorsabban szeretné áttelepíteni a terabájtos adatmennyiséget a Azure Cosmos DBba, és hatékonyan felhasználja a teljes kiosztott átviteli sebességet, az áttelepítési ügyfeleknek képesnek kell lenniük a határozatlan idejű méretezésre.  
+ * **Korlátozott kibővíthető képességek** : Ha a lehető leggyorsabban szeretné áttelepíteni a terabájtos adatmennyiséget a Azure Cosmos DBba, és hatékonyan felhasználja a teljes kiosztott átviteli sebességet, az áttelepítési ügyfeleknek képesnek kell lenniük a határozatlan idejű méretezésre.  
 
-* A **folyamat nyomon követésének és ellenőrzésének hiánya**: fontos, hogy nyomon követhesse az áttelepítési folyamatot, és a nagyméretű adathalmazok áttelepítése során a rendszer a bejelentkezést is bemutasson. Ellenkező esetben az áttelepítés során felmerülő hibák miatt a rendszer leállítja az áttelepítést, és teljesen el kell indítania a folyamatot. Nem lenne hatékony a teljes áttelepítési folyamat újraindítása, amikor a 99%-a már befejeződött.  
+* A **folyamat nyomon követésének és ellenőrzésének hiánya** : fontos, hogy nyomon követhesse az áttelepítési folyamatot, és a nagyméretű adathalmazok áttelepítése során a rendszer a bejelentkezést is bemutasson. Ellenkező esetben az áttelepítés során felmerülő hibák miatt a rendszer leállítja az áttelepítést, és teljesen el kell indítania a folyamatot. Nem lenne hatékony a teljes áttelepítési folyamat újraindítása, amikor a 99%-a már befejeződött.  
 
-* A **kézbesítetlen levelek várólistájának hiánya**: a nagyméretű adatkészleteken belül bizonyos esetekben problémák merülhetnek fel a forrásadatok részeivel. Emellett átmeneti problémák merülhetnek fel az ügyféllel vagy a hálózattal kapcsolatban. Ezen esetek egyike sem okozhatja a teljes áttelepítést. Annak ellenére, hogy a legtöbb áttelepítési eszköz robusztus újrapróbálkozási képességekkel rendelkezik, amelyek védelmet biztosítanak az időszakos problémák ellen, nem mindig elég. Ha például a forrásoldali adatdokumentumok kevesebb mint 0,01%-a mérete meghaladja a 2 MB-ot, akkor a dokumentum írása sikertelen lesz Azure Cosmos DB. Ideális esetben az áttelepítési eszköz számára hasznos, hogy a "sikertelen" dokumentumokat egy másik kézbesítetlen levelek várólistáján is megőrzi, amely az áttelepítés után dolgozható fel. 
+* A **kézbesítetlen levelek várólistájának hiánya** : a nagyméretű adatkészleteken belül bizonyos esetekben problémák merülhetnek fel a forrásadatok részeivel. Emellett átmeneti problémák merülhetnek fel az ügyféllel vagy a hálózattal kapcsolatban. Ezen esetek egyike sem okozhatja a teljes áttelepítést. Annak ellenére, hogy a legtöbb áttelepítési eszköz robusztus újrapróbálkozási képességekkel rendelkezik, amelyek védelmet biztosítanak az időszakos problémák ellen, nem mindig elég. Ha például a forrásoldali adatdokumentumok kevesebb mint 0,01%-a mérete meghaladja a 2 MB-ot, akkor a dokumentum írása sikertelen lesz Azure Cosmos DB. Ideális esetben az áttelepítési eszköz számára hasznos, hogy a "sikertelen" dokumentumokat egy másik kézbesítetlen levelek várólistáján is megőrzi, amely az áttelepítés után dolgozható fel. 
 
 A korlátozások nagy része az Azure-beli adatáttelepítési szolgáltatásokhoz hasonló eszközökhöz készült. 
 

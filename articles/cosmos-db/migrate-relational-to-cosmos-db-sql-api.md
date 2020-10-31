@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 3aec6cf2fa515d71b93d84cf8c4fc901fc847162
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 53a3317f38cc22ffa3745f5f0e58cc01a54b825c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487432"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096750"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>Egy-a-többhöz kapcsolódó adat migrálása Azure Cosmos DB SQL API-fiókba
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ha Azure Cosmos DB SQL API-ra szeretne áttérni egy kapcsolódó adatbázisból, az optimalizáláshoz szükség lehet az adatmodell módosítására.
 
@@ -54,7 +55,7 @@ Ideális esetben egyetlen Azure Data Factory (ADF) másolási tevékenységgel s
 
 A jelenlegi korlátozást a következő módokon lehet megkerülni:
 
-* **Azure Data Factory használata két másolási tevékenységgel**: 
+* **Azure Data Factory használata két másolási tevékenységgel** : 
   1. JSON formátumú adatok beolvasása az SQL-ből egy szövegfájlba egy közbenső blob Storage-helyen, valamint 
   2. Adatok betöltése a JSON-szövegfájlból egy Azure Cosmos DB tárolóba.
 

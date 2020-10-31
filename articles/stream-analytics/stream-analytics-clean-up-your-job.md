@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: f078ab217a5c4911fbd132338883504897db899f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a771ac1a831bc7994f28ba15139b66be346af02
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044600"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097753"
 ---
 # <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Azure Stream Analytics-feladatok leállítása vagy törlése
 
@@ -40,7 +40,7 @@ Ha leállítja a feladatot, az erőforrások kiépítése megszűnik, és leáll
 >[!WARNING] 
 >Egy Stream Analytics feladatot nem lehet helyreállítani, ha törölték.
 
-1. Jelentkezzen be az Azure portálra. 
+1. Jelentkezzen be az Azure Portalra. 
 
 2. Keresse meg a meglévő Stream Analytics feladatot, és válassza ki.
 
@@ -61,4 +61,4 @@ Ha a .NET-hez készült Azure SDK-val szeretné leállítani a feladatot, haszn�
 
 ## <a name="stop-or-delete-a-job-using-rest-api"></a>Feladatok leállítása vagy törlése REST API használatával
 
-Ha REST APIt használó feladatot szeretne leállítani, tekintse meg a [Leállítás](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job#stop) metódust. Ha REST API használatával szeretne feladatot törölni, tekintse meg a [delete](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job#delete) metódust.
+Ha REST APIt használó feladatot szeretne leállítani, tekintse meg a [Leállítás](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#stop) metódust. Ha REST API használatával szeretne feladatot törölni, tekintse meg a [delete](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#delete) metódust.

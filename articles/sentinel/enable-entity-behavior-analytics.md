@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/15/2020
+ms.date: 10/28/2020
 ms.author: yelevin
-ms.openlocfilehash: c55ea0e7753faa6dc21b955d63a57d96e3849f70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4587ab5e2cf36dce65cd02b167656c88cfde10a1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995492"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096954"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>A felhasználó és az entitás viselkedés-elemzésének (UEBA) engedélyezése az Azure Sentinelben 
 
@@ -27,17 +27,27 @@ ms.locfileid: "90995492"
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A felhasználónak hozzá kell rendelnie a **globális rendszergazdai** vagy **biztonsági rendszergazdai** szerepköröket az Azure ad-ben ahhoz, hogy engedélyezze vagy tiltsa le a UEBA, de ne futtassa.
+A funkció engedélyezéséhez vagy letiltásához (ezek az előfeltételek nem szükségesek a funkció használatához):
+
+- A felhasználónak a szervezet Azure Active Directory tagjának kell lennie, és nem vendég felhasználó.
+
+- A felhasználónak hozzá kell rendelnie a **globális rendszergazdai** vagy **biztonsági rendszergazdai** szerepköröket az Azure ad-ben.
+
+- A felhasználónak a következő **Azure-szerepkörök** közül legalább egyet hozzá kell rendelnie (További információ az [Azure RBAC-ről](roles.md)):
+    - Az **Azure Sentinel közreműködő** a munkaterület vagy az erőforráscsoport szintjén.
+    - **Log Analytics közreműködő** az erőforráscsoport vagy az előfizetés szintjén.
+
+- A munkaterület nem rendelkezhet az Azure-beli erőforrás-zárolások alkalmazásával. [További információ az Azure-erőforrások zárolásáról](../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="how-to-enable-user-and-entity-behavior-analytics"></a>A felhasználó és az entitás viselkedés-elemzésének engedélyezése
 
 1. Az Azure Sentinel navigációs menüjében válassza az **entitás viselkedése (előzetes verzió)** lehetőséget.
 
-1. A címsor alatt **kapcsolja**be a kapcsolót a **be**értékre.
+1. A címsor alatt **kapcsolja** be a kapcsolót a **be** értékre.
 
 1. Kattintson az **adatforrások kiválasztása** gombra.
 
-1. Az **adatforrás kiválasztása** ablaktáblán jelölje be azon adatforrások melletti jelölőnégyzeteket, amelyeken engedélyezni szeretné a UEBA, majd válassza az **alkalmaz**lehetőséget.
+1. Az **adatforrás kiválasztása** ablaktáblán jelölje be azon adatforrások melletti jelölőnégyzeteket, amelyeken engedélyezni szeretné a UEBA, majd válassza az **alkalmaz** lehetőséget.
 
     > [!NOTE]
     >
@@ -45,7 +55,7 @@ ms.locfileid: "90995492"
     >
     > Ha engedélyezte a UEBA, az új adatforrások csatlakoztatásakor lehetősége lesz arra, hogy a UEBA közvetlenül az adatösszekötő ablaktábláról engedélyezze őket, ha a UEBA-kompatibilisek.
 
-1. Válassza **az Ugrás az entitás keresése**lehetőséget. Ekkor megjelenik az entitás keresési panelje, amelyről mostantól az látható, ha az **entitás viselkedését** választja a fő Azure Sentinel menüben.
+1. Válassza **az Ugrás az entitás keresése** lehetőséget. Ekkor megjelenik az entitás keresési panelje, amelyről mostantól az látható, ha az **entitás viselkedését** választja a fő Azure Sentinel menüben.
 
 ## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan engedélyezheti és konfigurálhatja a felhasználói és entitások viselkedésének elemzését (UEBA) az Azure Sentinelben. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:

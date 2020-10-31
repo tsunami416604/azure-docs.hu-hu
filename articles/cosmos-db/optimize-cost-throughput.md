@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d7d77bdb223e8c3b71ef03febd4081d1f63bd1a3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 76f4f9ddaa1e4aec9409e96a0088ec51b8c2645e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475464"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097464"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>A kiosztott átviteli sebesség költségeinek optimalizálása az Azure Cosmos DB-ben
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 A kiépített átviteli sebességi modell használatával Azure Cosmos DB kiszámítható teljesítményt biztosít bármilyen méretben. Az átviteli sebesség megőrzése vagy kiépítés előtt az idő kiküszöböli a "zajos szomszéd" hatást a teljesítményre. Megadhatja a szükséges átviteli sebesség pontos mértékét, és Azure Cosmos DB garantálja a beállított átviteli sebességet, amely az SLA-ra vonatkozik.
 
@@ -30,7 +31,7 @@ Az átviteli sebességet adatbázisok vagy tárolók között is kioszthatja, é
 
 Az alábbiakban néhány, a kiosztott átviteli sebességre vonatkozó stratégiát kell eldöntenie:
 
-**Vegye fontolóra az átviteli sebesség kiszámítását egy Azure Cosmos-adatbázison (tárolók készletét tartalmazó), ha**:
+**Vegye fontolóra az átviteli sebesség kiszámítását egy Azure Cosmos-adatbázison (tárolók készletét tartalmazó), ha** :
 
 1. Néhány tucat Azure Cosmos-tárolóval rendelkezik, és az átviteli sebességet szeretné megosztani egy vagy több között. 
 

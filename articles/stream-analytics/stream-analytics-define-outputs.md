@@ -8,22 +8,22 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/2/2020
-ms.openlocfilehash: 5f109ad719ada9728938f6e37d4ec854d3950a24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95607b78ff80566b76b8e6aa20462957249015b4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708435"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097651"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Kimenetek Azure Stream Analytics
 
 Az Azure Stream Analytics feladatok egy bemenetből, lekérdezésből és kimenetből állnak. Az átalakított adatokat több kimeneti típus is elküldheti. Ez a cikk az Stream Analytics támogatott kimeneteit sorolja fel. Amikor megtervezi a Stream Analytics lekérdezést, a [INTO záradék](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics)használatával tekintse meg a kimenet nevét. A lekérdezéshez több INTO záradékot is használhat feladatokhoz, illetve több kimeneti adatfolyam-feladatokhoz (ha szüksége van rájuk).
 
-Stream Analytics feladatok kimenetének létrehozásához, szerkesztéséhez és teszteléséhez használhatja a [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-output), a [Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), a [.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), a [REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output)és a [Visual Studio alkalmazást](stream-analytics-quick-create-vs.md).
+Stream Analytics feladatok kimenetének létrehozásához, szerkesztéséhez és teszteléséhez használhatja a [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-output), a [Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), a [.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), a [REST API](https://docs.microsoft.com/rest/api/streamanalytics/)és a [Visual Studio alkalmazást](stream-analytics-quick-create-vs.md).
 
 Egyes kimeneti típusok támogatják a [particionálást](#partitioning), és a [kimeneti köteg mérete](#output-batch-size) eltérő az átviteli sebesség optimalizálása érdekében. A következő táblázat az egyes kimeneti típusok által támogatott szolgáltatásokat tartalmazza:
 
-| Kimenet típusa | Particionálás | Biztonság | 
+| Kimenet típusa | Particionálás | Biztonsági őr | 
 |-------------|--------------|----------|
 |[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Igen|Azure Active Directory felhasználó </br> MSI|
 |[Azure SQL Database](sql-database-output.md)|Igen, nem kötelező.|SQL-felhasználó hitelesítése </br> MSI (előzetes verzió)|
@@ -59,7 +59,7 @@ Azure Resource Manager sablon központi telepítésének vagy a REST APIének ha
 
    A kötegek minimális sorainak száma. A parketta esetében minden batch létrehoz egy új fájlt. Az aktuális alapértelmezett érték 2 000 sor, és az engedélyezett maximális érték 10 000 sor.
 
-Ezeket a Batch-ablak tulajdonságokat csak az API 2017-04-01-es verziója támogatja **– előzetes**verzió. Az alábbi példa egy REST API hívás JSON-adattartalmát mutatja be:
+Ezeket a Batch-ablak tulajdonságokat csak az API 2017-04-01-es verziója támogatja **– előzetes** verzió. Az alábbi példa egy REST API hívás JSON-adattartalmát mutatja be:
 
 ```json
 "type": "stream",

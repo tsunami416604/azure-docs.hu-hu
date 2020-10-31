@@ -8,14 +8,15 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 6c9ea401a4a62f617b5acf6f96c60532d929ff1c
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: a02aaadf8c774557eb182acf041b6f19337a0de8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167967"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096512"
 ---
 # <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>Kapcsolódás Azure Cosmos-fiókhoz a Studio 3T használatával
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Ha a Studio 3T használatával szeretne csatlakozni egy Azure Cosmos DB API-hoz a MongoDB-hez, a következőket kell tennie:
 
@@ -42,29 +43,29 @@ Az alábbi lépéseket követve adhatja hozzá az Azure Cosmos-fiókot a Studio 
 5. Az **új kapcsolat** ablak **SSL** LAPJÁN jelölje be az **SSL protokoll használata a kapcsolódáshoz** jelölőnégyzetet, valamint a **kiszolgáló önaláírt SSL-tanúsítványok fogadása** választógombot.
 
     :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerSSLTab.png" alt-text="Képernyőfelvétel a kapcsolatok karakterláncának oldaláról":::
-6. Kattintson a **Kapcsolódás tesztelése** gombra a kapcsolódási adatok érvényesítéséhez, kattintson az **OK** gombra az új kapcsolódási ablakhoz való visszatéréshez, majd kattintson a **Mentés**gombra.
+6. Kattintson a **Kapcsolódás tesztelése** gombra a kapcsolódási adatok érvényesítéséhez, kattintson az **OK** gombra az új kapcsolódási ablakhoz való visszatéréshez, majd kattintson a **Mentés** gombra.
 
     :::image type="content" source="./media/mongodb-mongochef/TestConnectionResults.png" alt-text="Képernyőfelvétel a kapcsolatok karakterláncának oldaláról":::
 
 ## <a name="use-studio-3t-to-create-a-database-collection-and-documents"></a>Adatbázis, gyűjtemény és dokumentumok létrehozása a Studio 3T használatával
 Adatbázis, gyűjtemény és dokumentumok létrehozásához a Studio 3T használatával hajtsa végre a következő lépéseket:
 
-1. A **Csatlakozáskezelő**területen jelölje ki a kapcsolatot, majd kattintson a **Csatlakoztatás**gombra.
+1. A **Csatlakozáskezelő** területen jelölje ki a kapcsolatot, majd kattintson a **Csatlakoztatás** gombra.
 
     :::image type="content" source="./media/mongodb-mongochef/ConnectToAccount.png" alt-text="Képernyőfelvétel a kapcsolatok karakterláncának oldaláról":::
-2. Kattintson a jobb gombbal a gazdagépre, majd válassza az **adatbázis hozzáadása**elemet.  Adja meg az adatbázis nevét, majd kattintson **az OK gombra**.
+2. Kattintson a jobb gombbal a gazdagépre, majd válassza az **adatbázis hozzáadása** elemet.  Adja meg az adatbázis nevét, majd kattintson **az OK gombra** .
 
     :::image type="content" source="./media/mongodb-mongochef/AddDatabase1.png" alt-text="Képernyőfelvétel a kapcsolatok karakterláncának oldaláról":::
-3. Kattintson a jobb gombbal az adatbázisra, és válassza a **gyűjtemény hozzáadása**elemet.  Adja meg a gyűjtemény nevét, és kattintson a **Létrehozás**gombra.
+3. Kattintson a jobb gombbal az adatbázisra, és válassza a **gyűjtemény hozzáadása** elemet.  Adja meg a gyűjtemény nevét, és kattintson a **Létrehozás** gombra.
 
     :::image type="content" source="./media/mongodb-mongochef/AddCollection.png" alt-text="Képernyőfelvétel a kapcsolatok karakterláncának oldaláról":::
-4. Kattintson a **gyűjtemény** menüpontra, majd a **dokumentum hozzáadása**elemre.
+4. Kattintson a **gyűjtemény** menüpontra, majd a **dokumentum hozzáadása** elemre.
 
     :::image type="content" source="./media/mongodb-mongochef/AddDocument1.png" alt-text="Képernyőfelvétel a kapcsolatok karakterláncának oldaláról" vezetéknevű családot, és adja vissza a szülők és az állam mezőket.
 
     :::image type="content" source="./media/mongodb-mongochef/QueryDocument1.png" alt-text="Képernyőfelvétel a kapcsolatok karakterláncának oldaláról":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [használhatja a Robo 3T](mongodb-robomongo.md) -t a Azure Cosmos db API-MongoDB.
 - Ismerkedjen meg a MongoDB- [mintákkal](mongodb-samples.md) Azure Cosmos db API-val a MongoDB.

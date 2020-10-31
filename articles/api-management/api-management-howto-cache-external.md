@@ -11,12 +11,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: cfb7dd7a3831d90235b25af9598cfbc137ffcb3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6288a10e111e42629abf5e09b84a6a7791dcfe95
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87904955"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095934"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>Külső Redis-kompatibilis gyorsítótár használata az Azure-ban API Management
 
@@ -60,12 +60,12 @@ A gyorsítótárazáshoz a saját üzemeltetésű átjárók kizárólag külső
 
 Kövesse az alábbi lépéseket egy külső Azure-gyorsítótár hozzáadásához az Azure API Management Redis.
 
-![Saját gyorsítótár használata a APIM](media/api-management-howto-cache-external/add-external-cache.png)
+![Képernyőfelvétel: külső Azure cache hozzáadása az Azure API Management Redis.](media/api-management-howto-cache-external/add-external-cache.png)
 
 > [!NOTE]
 > A **használat forrása** beállítással megadhat egy Azure-régiót vagy egy saját üzemeltetésű átjáró helyét, amely a beállított gyorsítótárat fogja használni. Az **alapértelmezettként** konfigurált gyorsítótárak felülbírálása egy adott egyező régióval vagy hellyel rendelkező gyorsítótárak esetében történik.
 >
-> Ha például API Management az USA keleti régiójában, a Délkelet-Ázsiában és a Nyugat-európai régióban található, és két gyorsítótár van konfigurálva, az egyik az **alapértelmezett** , a másik pedig a **Délkelet-ázsiai**, a **Délkelet-ázsiai** API Management a saját gyorsítótárát fogja használni, míg a másik két régió az **alapértelmezett** gyorsítótár-bejegyzést fogja használni.
+> Ha például API Management az USA keleti régiójában, a Délkelet-Ázsiában és a Nyugat-európai régióban található, és két gyorsítótár van konfigurálva, az egyik az **alapértelmezett** , a másik pedig a **Délkelet-ázsiai** , a **Délkelet-ázsiai** API Management a saját gyorsítótárát fogja használni, míg a másik két régió az **alapértelmezett** gyorsítótár-bejegyzést fogja használni.
 
 ### <a name="add-an-azure-cache-for-redis-from-the-same-subscription"></a>Azure cache hozzáadása ugyanahhoz az előfizetéshez tartozó Redis
 

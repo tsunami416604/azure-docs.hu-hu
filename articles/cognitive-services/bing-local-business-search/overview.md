@@ -10,18 +10,23 @@ ms.subservice: bing-local-business
 ms.topic: overview
 ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 685ee0c616234563981e55f14213e424daae32f5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6b715d4b801159b451957c30ee9ef7b406f3a2f4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85611271"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095373"
 ---
 # <a name="what-is-bing-local-business-search"></a>Mi a Bing helyi üzleti keresés?
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 A Bing local Business Search API egy REST-alapú szolgáltatás, amely lehetővé teszi az alkalmazások számára, hogy keresési lekérdezések alapján megtalálják a helyi vállalkozások adatait. Például:, `q=<business-name> in Redmond, Washington` vagy `q=Italian restaurants near me` . 
 
-## <a name="features"></a>Szolgáltatások
-| Szolgáltatás | Leírás |  
+## <a name="features"></a>Funkciók
+| Funkció | Leírás |  
 | -- | -- | 
 | [Helyi vállalkozások és helyek keresése](quickstarts/local-quickstart.md) | A Bing local Business keresési API honosított eredményeket kap egy lekérdezésből. Az eredmények közé tartozik a vállalat webhelyének URL-címe, valamint a szöveg, a telefonszám és a földrajzi hely megjelenítése, beleértve a következőket: GPS koordináták, város, utca címe |  
 | [Helyi eredmények szűrése földrajzi határokkal](specify-geographic-search.md) | Adja hozzá a koordinátákat keresési paraméterekként, hogy az eredményeket egy adott földrajzi területre korlátozza, amely egy kör alakú terület vagy a négyzetes határoló mező alapján van meghatározva. | 
@@ -40,7 +45,7 @@ Hívja meg a Bing local Business Search API-t bármilyen programozási nyelvről
 > * Csak a `en-US` piacot támogatja. 
 > * A nem támogatja a Bing Autosuggest. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Lekérdezés és válasz](local-search-query-response.md)
 - [Helyi üzleti keresés – rövid útmutató](quickstarts/local-quickstart.md)
 - [Local Business Search API-referencia](local-search-reference.md)

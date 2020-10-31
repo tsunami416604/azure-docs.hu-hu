@@ -9,14 +9,15 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: fb8d1cd2e3b481969059883919b9dc888955307e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: f7b7b8c7b1106bd3c0a6732867946c42df8438c1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478116"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097277"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Oktatóanyag: Node.js Webalkalmazás létrehozása a JavaScript SDK használatával egy SQL API-fiók kezeléséhez a Azure Cosmos DB 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -42,7 +43,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 A jelen cikkben lévő utasítások követése előtt győződjön meg arról, hogy rendelkezik az alábbi erőforrásokkal:
 
-* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd. 
+* Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -93,7 +94,7 @@ Most megtanulhatja, hogyan hozhat létre egy alapszintű Hello World Node.js-pro
 
 A **package.json** fájl egyike azon fájloknak, amelyek a projekt gyökérmappájában létrejönnek. Ez a fájl tartalmazza a Node.js-alkalmazáshoz szükséges további modulok listáját. Amikor az Azure-ba telepíti az alkalmazást, a rendszer ennek a fájlnak a segítségével határozza meg, hogy melyik modulokat kell az Azure-ban telepíteni ahhoz, hogy működjön az alkalmazás. A jelen oktatóanyagban telepítsen még két csomagot.
 
-1. Telepítse az ** \@ Azure/Cosmos** modult a NPM-on keresztül. 
+1. Telepítse az **\@ Azure/Cosmos** modult a NPM-on keresztül. 
 
    ```bash
    npm install @azure/cosmos
@@ -103,7 +104,7 @@ A **package.json** fájl egyike azon fájloknak, amelyek a projekt gyökérmapp�
 Miután most végrehajtottuk a kezdeti telepítést és konfigurálást, megírjuk a kódot, amelyre a Teendők alkalmazásnak szüksége van az Azure Cosmos DB-vel való kommunikációhoz.
 
 ### <a name="create-the-model"></a>A modell létrehozása
-1. A projekt könyvtára gyökérkönyvtárában hozzon létre egy új, **modellek**nevű könyvtárat.  
+1. A projekt könyvtára gyökérkönyvtárában hozzon létre egy új, **modellek** nevű könyvtárat.  
 
 2. A **models** könyvtárban hozzon létre egy új fájlt **taskDao.js** néven. Ez a fájl tartalmazza az adatbázis és a tároló létrehozásához szükséges kódot. Emellett a Azure Cosmos DB lévő feladatok olvasására, frissítésére, létrehozására és keresésére szolgáló metódusokat is meghatározza. 
 
@@ -444,13 +445,13 @@ Most, hogy létrehozta az alkalmazást, helyileg futtathatja a következő lép�
     > [!TIP]
     > Ha a layout. Jade fájl vagy az index. Jade fájl behúzásával kapcsolatos hibaüzenetet kap, győződjön meg arról, hogy mindkét fájl első két sora balra van igazítva, szóközök nélkül. Ha az első két sor előtt szóközök vannak, távolítsa el őket, mentse mindkét fájlt, majd frissítse a böngészőablakot. 
 
-2. Az elem, az elem neve és a kategória mezők használatával adjon meg egy új feladatot, majd válassza az **elem hozzáadása**lehetőséget. Ez egy dokumentumot hoz létre az Azure Cosmos DB-ben a megadott tulajdonságokkal. 
+2. Az elem, az elem neve és a kategória mezők használatával adjon meg egy új feladatot, majd válassza az **elem hozzáadása** lehetőséget. Ez egy dokumentumot hoz létre az Azure Cosmos DB-ben a megadott tulajdonságokkal. 
 
 3. Az oldal ekkor frissül, és megjeleníti az újonnan létrehozott elemet a teendőlistában.
    
     :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="A Node.js megismerése – Képernyőfelvétel a Hello World alkalmazásról egy böngészőablakban":::
 
-4. Egy feladat végrehajtásához jelölje be a teljes oszlopban található jelölőnégyzetet, majd válassza a **feladatok frissítése**lehetőséget. Ez frissíti a már létrehozott dokumentumot, és eltávolítja a nézetből.
+4. Egy feladat végrehajtásához jelölje be a teljes oszlopban található jelölőnégyzetet, majd válassza a **feladatok frissítése** lehetőséget. Ez frissíti a már létrehozott dokumentumot, és eltávolítja a nézetből.
 
 5. Az alkalmazás leállításához nyomja le a CTRL+C billentyűkombinációt a terminálablakban, majd a kötegelt feladat leállításához válassza az **Y** elemet.
 
@@ -474,9 +475,9 @@ Az alkalmazás helyi sikeres végrehajtása után az alábbi lépéseket követv
 
 4. Néhány másodpercen belül az alkalmazás közzé lesz téve és el lesz indítva egy böngészőben.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
-Ha ezekre az erőforrásokra már nincs szükség, törölheti az erőforráscsoportot, Azure Cosmos DB fiókot és az összes kapcsolódó erőforrást. Ehhez válassza ki a Azure Cosmos DB fiókhoz használt erőforráscsoportot, válassza a **Törlés**lehetőséget, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
+Ha ezekre az erőforrásokra már nincs szükség, törölheti az erőforráscsoportot, Azure Cosmos DB fiókot és az összes kapcsolódó erőforrást. Ehhez válassza ki a Azure Cosmos DB fiókhoz használt erőforráscsoportot, válassza a **Törlés** lehetőséget, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
 
 ## <a name="next-steps"></a><a name="_Toc395637775"></a>Következő lépések
 

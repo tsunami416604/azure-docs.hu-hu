@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 05fe22ed0dc7d03148f66fd02aa648e1b63ab319
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 21821bbb41126a53c2b137bf1f5e5684ff1ae267
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475328"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096286"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Az Azure Cosmos DB és a .NET teljesítményével kapcsolatos tippek
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
@@ -39,16 +40,16 @@ Linux és egyéb nem támogatott platformok esetén, ahol a ServiceInterop.dll n
 
 Az itt felsorolt négy alkalmazás típusa alapértelmezés szerint a 32 bites gazdagép-feldolgozást használja. Ha módosítani szeretné a gazdagép feldolgozását az alkalmazás típusának 64 bites feldolgozására, tegye a következőket:
 
-- **Végrehajtható alkalmazások esetén**: a **Projekt tulajdonságai** ablak **Build** ablaktábláján állítsa a [platform célt](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) az **x64**értékre.
+- **Végrehajtható alkalmazások esetén** : a **Projekt tulajdonságai** ablak **Build** ablaktábláján állítsa a [platform célt](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) az **x64** értékre.
 
-- **VSTest-alapú tesztelési projektek esetén**: a Visual Studio **test** menüben válassza a **Test**teszt  >  **beállításainak**tesztelése lehetőséget, majd állítsa az **alapértelmezett processzor-architektúra** értéket az **x64**értékre.
+- **VSTest-alapú tesztelési projektek esetén** : a Visual Studio **test** menüben válassza a **Test** teszt  >  **beállításainak** tesztelése lehetőséget, majd állítsa az **alapértelmezett processzor-architektúra** értéket az **x64** értékre.
 
-- **Helyileg telepített ASP.NET-webalkalmazások**esetén: válassza az **eszközök**  >  **Beállítások**  >  **projektek és megoldások**  >  **webes projektek**lehetőséget, majd válassza **a webhelyekhez és projektekhez tartozó IIS Express 64 bites verziójának használata**lehetőséget.
+- **Helyileg telepített ASP.NET-webalkalmazások** esetén: válassza az **eszközök**  >  **Beállítások**  >  **projektek és megoldások**  >  **webes projektek** lehetőséget, majd válassza **a webhelyekhez és projektekhez tartozó IIS Express 64 bites verziójának használata** lehetőséget.
 
-- Az Azure-ban **üzembe helyezett ASP.NET-webalkalmazások esetében**: a Azure Portal **alkalmazás beállításai**területen válassza ki a **64 bites** platformot.
+- Az Azure-ban **üzembe helyezett ASP.NET-webalkalmazások esetében** : a Azure Portal **alkalmazás beállításai** területen válassza ki a **64 bites** platformot.
 
 > [!NOTE] 
-> Alapértelmezés szerint az új Visual Studio-projektek **bármely CPU**-ra vannak beállítva. Javasoljuk, hogy állítsa a projektet **x64** -re, hogy ne váltson **x86**-ra. Egy **CPU** -ra beállított projekt könnyen válthat **x86** -ra, ha csak x86-os függőség van hozzáadva.<br/>
+> Alapértelmezés szerint az új Visual Studio-projektek **bármely CPU** -ra vannak beállítva. Javasoljuk, hogy állítsa a projektet **x64** -re, hogy ne váltson **x86** -ra. Egy **CPU** -ra beállított projekt könnyen válthat **x86** -ra, ha csak x86-os függőség van hozzáadva.<br/>
 > A ServiceInterop.dll fájlnak abban a mappában kell lennie, amelyre az SDK DLL-t végrehajtja. Ez csak akkor fontos, ha manuálisan másol DLL-eket, vagy egyéni Build-vagy üzembe helyezési rendszert használ.
     
 **Kiszolgálóoldali Garbage-gyűjtemény bekapcsolása**
@@ -154,13 +155,13 @@ Az SQL .NET SDK támogatja a párhuzamos lekérdezéseket, amelyek lehetővé te
 
 A párhuzamos lekérdezések két paramétert biztosítanak, amelyeket az igényeinek megfelelően hangolhat: 
 
-- **MaxConcurrency**: a párhuzamosan lekérdezhető partíciók maximális számát határozza meg.
+- **MaxConcurrency** : a párhuzamosan lekérdezhető partíciók maximális számát határozza meg.
 
    A párhuzamos lekérdezés több partíció párhuzamos lekérdezésével működik. Az egyes partíciók adatait azonban a lekérdezésre vonatkozó sorosan kell beolvasni. `MaxConcurrency`Ha az [SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3) -as verziójában a partíciók száma a legjobb, ha az összes többi rendszerfeltétel változatlan marad. Ha nem ismeri a partíciók számát, megadhatja a párhuzamosság mértékét magas számra. A rendszer kijelöli a minimális (partíciók számát, a felhasználó által megadott bemenetet) a párhuzamosság foka alapján.
 
     A párhuzamos lekérdezések a legnagyobb haszonnal járnak, ha az adatforgalom egyenletesen oszlik el az összes partíció között a lekérdezés tekintetében. Ha a particionált gyűjtemény particionálva van, és a lekérdezés által visszaadott összes adat egy része néhány partícióra koncentrál (az egyik partíció a legrosszabb ESET), akkor ezek a partíciók a lekérdezés teljesítményét szűk keresztmetszetbe helyezik.
    
-- **MaxBufferedItemCount**: az előre lehívott eredmények számát szabályozza.
+- **MaxBufferedItemCount** : az előre lehívott eredmények számát szabályozza.
 
    A párhuzamos lekérdezés úgy lett kialakítva, hogy előzetesen beolvassa az eredményeket, miközben az ügyfél az aktuális eredményt dolgozza fel. Ez az előzetes lehívás a lekérdezés teljes késésének javítására nyújt segítséget. A `MaxBufferedItemCount` paraméter korlátozza az előre lehívott eredmények számát. Állítsa be a `MaxBufferedItemCount` visszaadott eredmények várt számát (vagy egy magasabb számot), hogy a lekérdezés a lehető legtöbbet fogadja az előzetes lekéréstől.
 

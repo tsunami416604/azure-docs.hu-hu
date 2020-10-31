@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
-ms.openlocfilehash: 6e77746d21d63cf1460b9e460e470a3bd12ce656
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8599ebf1932d7c30622855cbf38af867d30b52b8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480037"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098059"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>A Power BI és a kiszolgáló nélküli szinapszis SQL-készlet használata a Azure Cosmos DB-alapú adatelemzéshez a szinapszis-hivatkozással (előzetes verzió) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy kiszolgáló nélküli szinapszis SQL-készletet (amely korábban **SQL on-demand-** adatbázis néven ismert), és a Azure Cosmos db-ra vonatkozó szinapszis-hivatkozáson keresztül. Ezután lekérdezi az Azure Cosmos-tárolókat, majd létrehoz egy modellt, amely Power BI a nézeteket, hogy azok tükrözzék a lekérdezést.
 
@@ -37,15 +38,15 @@ A Kezdés előtt győződjön meg arról, hogy a következő erőforrásokat hoz
 
 ## <a name="create-a-database-and-views"></a>Adatbázis és nézetek létrehozása
 
-A szinapszis munkaterületen lépjen a **fejlesztés** lapra, válassza ki az **+** ikont, majd válassza az **SQL-szkript**elemet.
+A szinapszis munkaterületen lépjen a **fejlesztés** lapra, válassza ki az **+** ikont, majd válassza az **SQL-szkript** elemet.
 
 :::image type="content" source="./media/synapse-link-power-bi/add-sql-script.png" alt-text="SQL-szkript hozzáadása a szinapszis Analytics-munkaterülethez":::
 
-Minden munkaterület kiszolgáló nélküli SQL-végpontot tartalmaz. Az SQL-szkript létrehozása után a felső eszköztáron, az **SQL-hez igény szerint**.
+Minden munkaterület kiszolgáló nélküli SQL-végpontot tartalmaz. Az SQL-szkript létrehozása után a felső eszköztáron, az **SQL-hez igény szerint** .
 
 :::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="SQL-szkript hozzáadása a szinapszis Analytics-munkaterülethez":::
 
-Hozzon létre egy új, **RetailCosmosDB**nevű adatbázist, és egy SQL-nézetet a szinapszis kapcsolattal rendelkező tárolók között. A következő parancs bemutatja, hogyan hozhat létre adatbázist:
+Hozzon létre egy új, **RetailCosmosDB** nevű adatbázist, és egy SQL-nézetet a szinapszis kapcsolattal rendelkező tárolók között. A következő parancs bemutatja, hogyan hozhat létre adatbázist:
 
 ```sql
 -- Create database
@@ -109,15 +110,15 @@ Válassza a **Futtatás** lehetőséget, amely a következő táblázatot adja e
 
 Ezután nyissa meg a Power BI asztalt, és kapcsolódjon a kiszolgáló nélküli SQL-végponthoz az alábbi lépések segítségével:
 
-1. Nyissa meg a Power BI Desktop alkalmazást. Válassza **az adatlekérdezés** lehetőséget, és válassza a **továbbiak**lehetőséget.
+1. Nyissa meg a Power BI Desktop alkalmazást. Válassza **az adatlekérdezés** lehetőséget, és válassza a **továbbiak** lehetőséget.
 
 1. Válassza az **Azure szinapszis Analytics (SQL DW)** lehetőséget a Kapcsolatbeállítások listájából.
 
-1. Adja meg annak az SQL-végpontnak a nevét, ahol az adatbázis található. Adja meg `SynapseLinkBI-ondemand.sql.azuresynapse.net` a **kiszolgáló** mezőt. Ebben a példában a  **SynapseLinkBI** a munkaterület neve. Cserélje le, ha más nevet adott a munkaterületnek. Válassza az adatkapcsolati mód **közvetlen lekérdezés** lehetőséget, majd kattintson **az OK gombra**.
+1. Adja meg annak az SQL-végpontnak a nevét, ahol az adatbázis található. Adja meg `SynapseLinkBI-ondemand.sql.azuresynapse.net` a **kiszolgáló** mezőt. Ebben a példában a  **SynapseLinkBI** a munkaterület neve. Cserélje le, ha más nevet adott a munkaterületnek. Válassza az adatkapcsolati mód **közvetlen lekérdezés** lehetőséget, majd kattintson **az OK gombra** .
 
 1. Válassza ki az előnyben részesített hitelesítési módszert, például az Azure AD-t.
 
-1. Válassza ki a **RetailCosmosDB** -adatbázist és a **RetailSales**, **StoreDemographics** nézeteket.
+1. Válassza ki a **RetailCosmosDB** -adatbázist és a **RetailSales** , **StoreDemographics** nézeteket.
 
 1. Válassza a **Load (Betöltés** ) lehetőséget a két nézet közvetlen lekérdezési módba való betöltéséhez.
 
@@ -129,7 +130,7 @@ Ezután nyissa meg a Power BI asztalt, és kapcsolódjon a kiszolgáló nélkül
 
 Most lépjen a **jelentés** ablakra, és hozzon létre egy jelentést, amely összehasonlítja a háztartások méretének relatív fontosságát a tárolók átlagos bevétele alapján a bevétel és a LargeHH index szétszórt ábrázolása alapján:
 
-1. Válassza a **pontdiagram**lehetőséget.
+1. Válassza a **pontdiagram** lehetőséget.
 
 1. Húzza a **LargeHH** a **StoreDemographics** nézetből az X tengelyre.
 

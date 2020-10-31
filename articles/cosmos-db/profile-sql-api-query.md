@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: girobins
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0d47bd90f7704cd3c55f9e5d64fe6b58946d4568
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 66aefea441d78303ccd611d9df10eea985d61e7c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475090"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097396"
 ---
 # <a name="get-sql-query-execution-metrics-and-analyze-query-performance-using-net-sdk"></a>SQL-lekérdezés végrehajtási metrikáinak lekérése és a lekérdezési teljesítmény elemzése a .NET SDK használatával
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ez a cikk bemutatja, hogyan lehet profilt felvenni az SQL-lekérdezés teljesítményére Azure Cosmos DBon. Ez `QueryMetrics` a profilkészítés a .net SDK-ból beolvasott használatával végezhető el, és részletesen itt olvasható. A [QueryMetrics](/dotnet/api/microsoft.azure.documents.querymetrics) egy erősen begépelt objektum, amely információkat nyújt a háttérbeli lekérdezés végrehajtásáról. Ezeket a metrikákat a [lekérdezési teljesítmény finomhangolása](./sql-api-query-metrics.md) című cikkben részletesebben dokumentáljuk.
 
@@ -234,7 +235,7 @@ Ez a lekérdezés mostantól elérhető az indexből.
 
 A lekérdezési teljesítmény finomhangolásával kapcsolatos további tudnivalókért tekintse meg a [lekérdezési teljesítmény finomhangolása](./sql-api-query-metrics.md) című cikket.
 
-## <a name="references"></a><a id="References"></a>Referencia
+## <a name="references"></a><a id="References"></a>Hivatkozások
 
 - [Azure Cosmos DB SQL-specifikáció](./sql-query-getting-started.md)
 - [ANSI SQL 2011](https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)

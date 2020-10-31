@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 254ab7a10eb9779706ee31e5a16d51fe03b7122b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1aa5671a73c8a4de945a2013d8678d7f0f74625e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376059"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097991"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Egyéni szerepkör létrehozása és társítása Azure Active Directory
 
@@ -31,11 +31,11 @@ Az egyéni szerepkörök az Azure AD Áttekintés lapjának [szerepkörök és r
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>Új egyéni szerepkör létrehozása az alkalmazások regisztrálásához való hozzáférés biztosításához
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) a Kiemelt szerepkörű rendszergazda vagy a globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
-1. Válassza ki **Azure Active Directory**  >  **szerepkörök és rendszergazdák**  >  **új egyéni szerepkört**.
+1. Válassza ki **Azure Active Directory**  >  **szerepkörök és rendszergazdák**  >  **új egyéni szerepkört** .
 
    ![Szerepkörök létrehozása vagy szerkesztése a szerepkörök és rendszergazdák lapról](./media/custom-create/new-custom-role.png)
 
-1. Az **alapok** lapon adja meg a szerepkör nevét és leírását, majd kattintson a **tovább**gombra.
+1. Az **alapok** lapon adja meg a szerepkör nevét és leírását, majd kattintson a **tovább** gombra.
 
    ![adja meg az egyéni szerepkör nevét és leírását az alapok lapon](./media/custom-create/basics-tab.png)
 
@@ -44,8 +44,8 @@ Az egyéni szerepkörök az Azure AD Áttekintés lapjának [szerepkörök és r
 
       ![Egyéni szerepkör engedélyeinek kiválasztása az engedélyek lapon](./media/custom-create/permissions-tab.png)
 
-   1. Ezután írja be az "alapszintű" kifejezést a keresősávba, válassza ki az `microsoft.directory/applications/basic/update` engedélyt, majd kattintson a **tovább**gombra.
-1. A **felülvizsgálat + létrehozás** lapon tekintse át az engedélyeket, és válassza a **Létrehozás**lehetőséget.
+   1. Ezután írja be az "alapszintű" kifejezést a keresősávba, válassza ki az `microsoft.directory/applications/basic/update` engedélyt, majd kattintson a **tovább** gombra.
+1. A **felülvizsgálat + létrehozás** lapon tekintse át az engedélyeket, és válassza a **Létrehozás** lehetőséget.
 
 Az egyéni szerepkör megjelenik a Hozzárendelendő elérhető szerepkörök listájában.
 
@@ -174,7 +174,7 @@ A beépített szerepkörökhöz hasonlóan az egyéni szerepkörök alapértelme
 
     ![Válassza ki az alkalmazás regisztrációját erőforrás-hatókörként a szerepkör-hozzárendeléshez](./media/custom-create/appreg-all-apps.png)
 
-1. Az alkalmazás regisztrálása területen válassza a **szerepkörök és rendszergazdák**lehetőséget. Ha még nem hozott létre ilyet, az utasítások az [előző eljárásban](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations)találhatók.
+1. Az alkalmazás regisztrálása területen válassza a **szerepkörök és rendszergazdák** lehetőséget. Ha még nem hozott létre ilyet, az utasítások az [előző eljárásban](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations)találhatók.
 
 1. Válassza ki a szerepkört a **hozzárendelések** lap megnyitásához.
 1. Felhasználó hozzáadásához válassza a **hozzárendelés hozzáadása** lehetőséget. A felhasználó csak a kiválasztott alkalmazás regisztrációja után kap engedélyeket.
@@ -183,4 +183,4 @@ A beépített szerepkörökhöz hasonlóan az egyéni szerepkörök alapértelme
 
 - Nyugodtan ossza meg velünk az [Azure ad rendszergazdai szerepkörökkel foglalkozó fórumát](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 - A szerepkörökkel és a rendszergazdai szerepkör-hozzárendeléssel kapcsolatos további információkért lásd: [rendszergazdai szerepkörök hozzárendelése](permissions-reference.md).
-- Az alapértelmezett felhasználói engedélyek összehasonlítását lásd: a [vendég és a tag alapértelmezett felhasználói engedélyeinek összehasonlítása](/azure/active-directory/fundamentals/users-default-permissions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context).
+- Az alapértelmezett felhasználói engedélyek összehasonlítását lásd: a [vendég és a tag alapértelmezett felhasználói engedélyeinek összehasonlítása](/azure/active-directory/fundamentals/users-default-permissions).

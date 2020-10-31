@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 882ba7f0b8f896c51e340fe921e53b27dd07ff8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 263c38e330bad00833bd31bc8a43208c3784bcf4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85262463"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097481"
 ---
 # <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Adatok migrálása az Oracle-ből Azure Cosmos DB Cassandra API-fiókba a Blitzz használatával
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 A Azure Cosmos DB Cassandra API az Oracle-ben futó nagyvállalati számítási feladatok széles választékát váltják ki, többek között:
 
@@ -100,7 +101,7 @@ Ez a szakasz ismerteti azokat a lépéseket, amelyek a Blitzz beállításához 
 
    Az áttelepítés befejeződése után csökkentenie kell az átviteli sebességet. A tárolt adatok mennyisége és az egyes műveletekhez szükséges RUs alapján megbecsülhető az adatáttelepítés után szükséges átviteli sebesség. Ha többet szeretne megtudni arról, hogyan kell megbecsülni az RUs-t, tekintse meg a [tárolók és adatbázisok átviteli sebességének kiépítése](set-throughput.md) és [a Azure Cosmos db Capacity Planner cikkeinek becslése](estimate-ru-with-capacity-planner.md) című cikket.
 
-1. Szerezze be az Azure Cosmos-fiók **kapcsolattartási pontját, portját, felhasználónevét**és **elsődleges jelszavát** a **kapcsolati karakterlánc** ablaktáblán. Ezeket az értékeket a konfigurációs fájlban fogja használni.
+1. Szerezze be az Azure Cosmos-fiók **kapcsolattartási pontját, portját, felhasználónevét** és **elsődleges jelszavát** a **kapcsolati karakterlánc** ablaktáblán. Ezeket az értékeket a konfigurációs fájlban fogja használni.
 
 1. A CLI-terminálon állítsa be a céladatbázis konfigurációját. Nyissa meg a konfigurációs fájlt a **`vi conf/conn/cosmosdb.yml`** paranccsal, és adja hozzá a gazdagép URI-ja, portszáma, felhasználóneve, jelszava és egyéb szükséges paraméterek vesszővel tagolt listáját. A következő példa a konfigurációs fájlban található tartalmakat szemlélteti:
 
@@ -146,7 +147,7 @@ Ez a szakasz ismerteti azokat a lépéseket, amelyek a Blitzz beállításához 
 
 Ha többet szeretne megtudni az adatáttelepítés célhelyre való áttelepítéséről, tekintse meg a [Blitzz replikált bemutatóját](https://www.youtube.com/watch?v=y5ZeRK5A-MI).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Átviteli sebesség kiosztása tárolókra és adatbázisokra](set-throughput.md) 
 * [A partíciós kulcs ajánlott eljárásai](partitioning-overview.md#choose-partitionkey)

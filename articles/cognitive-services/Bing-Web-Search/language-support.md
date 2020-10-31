@@ -10,14 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: e378bc88d28173eaed0308db3034a54236d63098
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 998e18f8901dda3430d5289e0590ef8099b6fb8c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91262824"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095458"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>A Bing Web Search API nyelvi és területi támogatása
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Az Bing Web Search API több mint három tucat országot vagy régiót támogat, több mint egy nyelvet. Ha egy olyan országot vagy régiót ad meg, amely egy lekérdezéssel segíti a keresési eredmények pontosítását az adott ország vagy régió érdekei alapján. Az eredmények tartalmazhatnak a Bingre mutató hivatkozásokat, és ezek a hivatkozások a megadott ország/régió vagy nyelv alapján honosítják meg a Bing felhasználói élményt.
 
@@ -79,8 +84,8 @@ Másik lehetőségként megadhatja a piacot a `mkt` lekérdezési paraméterrel,
 |Kanada|Angol|en-CA|
 |Kanada|Francia|fr – CA|
 |Chile|Spanyol|es – CL|
-|Dánia|Dán|da-DK|
-|Finnország|Finn|fi-FI|
+|Dánia|dán|da-DK|
+|Finnország|finn|fi-FI|
 |Franciaország|Francia|fr-FR|
 |Németország|Német|de-DE|
 |Hongkong (KKT)|Kínai (hagyományos)|ZH-HK|
@@ -102,7 +107,7 @@ Másik lehetőségként megadhatja a piacot a `mkt` lekérdezési paraméterrel,
 |Szaúd-Arábia|Arab|ar-SA|
 |Dél-afrikai Köztársaság|Angol|EN-ZA|
 |Spanyolország|Spanyol|es-ES|
-|Svédország|Svéd|sv-SE|
+|Svédország|svéd|sv-SE|
 |Svájc|Francia|fr – CH|
 |Svájc|Német|de-CH|
 |Tajvan|Kínai (hagyományos)|zh-TW|

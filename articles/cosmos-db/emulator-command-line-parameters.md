@@ -7,14 +7,15 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
 ms.custom: contperfq1
-ms.openlocfilehash: f8bcadf25ac8e001657f2be012f99ddb507e672d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb6d1cb684f4c2e3f563d5690c804d64c97ff70c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445182"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096733"
 ---
 # <a name="command-line-and-powershell-reference-for-azure-cosmos-db-emulator"></a>A Azure Cosmos DB Emulator parancssori és PowerShell-referenciája
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Az Azure Cosmos Emulator egy helyi környezetet biztosít, amely helyi fejlesztési célokra emulálja a Azure Cosmos DB szolgáltatást. [Az emulátor telepítése](local-emulator.md)után a parancssori és a PowerShell-parancsokkal vezérelheti az emulátort. Ez a cikk a parancssori és a PowerShell-parancsok használatát ismerteti az emulátor elindításához és leállításához, a beállítások konfigurálásához és egyéb műveletek végrehajtásához. A parancsokat a telepítési helyről kell futtatnia.
 
@@ -135,7 +136,7 @@ Ha az aktuális partíciók számának túllépése után megpróbál létrehozn
 
 Az Azure Cosmos Emulatorban elérhető tárolók számának módosításához futtassa a következő lépéseket:
 
-1. Törölje az összes helyi Azure Cosmos Emulator-adatfájlt úgy, hogy a tálcán a jobb gombbal a **Azure Cosmos db Emulator** ikonra kattint, majd az **adatbeállítások visszaállítása..**. lehetőségre kattint.
+1. Törölje az összes helyi Azure Cosmos Emulator-adatfájlt úgy, hogy a tálcán a jobb gombbal a **Azure Cosmos db Emulator** ikonra kattint, majd az **adatbeállítások visszaállítása..** . lehetőségre kattint.
 
 1. A mappában lévő összes Emulator-érték törlése `%LOCALAPPDATA%\CosmosDBEmulator` .
 

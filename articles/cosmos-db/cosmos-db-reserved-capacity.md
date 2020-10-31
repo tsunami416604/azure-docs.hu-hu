@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 90717f329cc366dbb951b24da0ffc1b65881a865
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 27725b1a3dd6059010ce67977c39891a012c037e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487517"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097634"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Költségek optimalizálása lefoglalt kapacitással az Azure Cosmos DB-ben
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 A fenntartott Azure Cosmos DB-kapacitással pénzt takaríthat meg, ha Azure Cosmos DB-erőforrásokat foglal le egy vagy három évre. Ha rendelkezik fenntartott Azure Cosmos DB-kapacitással, kedvezményt kaphat az Azure Cosmos DB-erőforrások teljes kiépítésére. Példák erőforrásokra, amelyek adatbázisok és tárolók (táblák, gyűjtemények és gráfok).
 
@@ -36,9 +37,9 @@ Az óránkénti használati minta alapján számítjuk ki a vásárlási javasla
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).  
 
-2. Válassza **a minden szolgáltatás**  >  **foglalások**  >  **Hozzáadás**lehetőséget.
+2. Válassza **a minden szolgáltatás**  >  **foglalások**  >  **Hozzáadás** lehetőséget.
 
-3. A **vásárlási foglalások** ablaktáblán válassza a **Azure Cosmos db**lehetőséget.
+3. A **vásárlási foglalások** ablaktáblán válassza a **Azure Cosmos db** lehetőséget.
 
 4. Az ajánlott foglalások megtekintéséhez válassza az **ajánlott** lapot:
 
@@ -60,7 +61,7 @@ Az 30 000 RU/s foglalás megvásárlására vonatkozó javaslat azt jelzi, hogy 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).  
 
-2. Válassza **a minden szolgáltatás**  >  **foglalások**  >  **Hozzáadás**lehetőséget.  
+2. Válassza **a minden szolgáltatás**  >  **foglalások**  >  **Hozzáadás** lehetőséget.  
 
 3. Az új foglalás megvásárlásához a **foglalások** ablaktáblán válassza a **Azure Cosmos db** lehetőséget.  
 
@@ -70,7 +71,7 @@ Az 30 000 RU/s foglalás megvásárlására vonatkozó javaslat azt jelzi, hogy 
 
    |Mező  |Leírás  |
    |---------|---------|
-   |Hatókör   |   Ez a beállítás azt szabályozza, hogy hány előfizetés használhatja a foglaláshoz kapcsolódó számlázási kedvezményt. Azt is meghatározza, hogy a foglalás hogyan legyen alkalmazva az adott előfizetésekre. <br/><br/>  Ha a **megosztott**lehetőséget választja, a foglalási kedvezményt a rendszer a számlázási környezetben található bármely előfizetésben futtató Azure Cosmos db példányokra alkalmazza. A számlázási környezet az Azure-ra való feliratkozáson alapul. A vállalati ügyfelek esetében a közös hatókör a regisztráció, és a regisztráción belüli összes előfizetés szerepel. Az utólagos elszámolású ügyfelek esetében a közös hatókör az összes olyan előfizetés, amely a fiók rendszergazdája által létrehozott utólagos elszámolású díjszabással rendelkezik.  <br/><br/>  Ha az **egyszeri előfizetést**választja, a foglalási kedvezmény a kijelölt előfizetésben Azure Cosmos db példányokra lesz alkalmazva. <br/><br/> Ha **egyetlen erőforráscsoportot**választ, a foglalási kedvezményt a rendszer a kijelölt előfizetésben lévő Azure Cosmos db példányokra alkalmazza, és az adott előfizetésen belül a kiválasztott erőforráscsoportot. <br/><br/> A foglalás hatókörét a fenntartott kapacitás megvásárlása után módosíthatja.  |
+   |Hatókör   |   Ez a beállítás azt szabályozza, hogy hány előfizetés használhatja a foglaláshoz kapcsolódó számlázási kedvezményt. Azt is meghatározza, hogy a foglalás hogyan legyen alkalmazva az adott előfizetésekre. <br/><br/>  Ha a **megosztott** lehetőséget választja, a foglalási kedvezményt a rendszer a számlázási környezetben található bármely előfizetésben futtató Azure Cosmos db példányokra alkalmazza. A számlázási környezet az Azure-ra való feliratkozáson alapul. A vállalati ügyfelek esetében a közös hatókör a regisztráció, és a regisztráción belüli összes előfizetés szerepel. Az utólagos elszámolású ügyfelek esetében a közös hatókör az összes olyan előfizetés, amely a fiók rendszergazdája által létrehozott utólagos elszámolású díjszabással rendelkezik.  <br/><br/>  Ha az **egyszeri előfizetést** választja, a foglalási kedvezmény a kijelölt előfizetésben Azure Cosmos db példányokra lesz alkalmazva. <br/><br/> Ha **egyetlen erőforráscsoportot** választ, a foglalási kedvezményt a rendszer a kijelölt előfizetésben lévő Azure Cosmos db példányokra alkalmazza, és az adott előfizetésen belül a kiválasztott erőforráscsoportot. <br/><br/> A foglalás hatókörét a fenntartott kapacitás megvásárlása után módosíthatja.  |
    |Előfizetés  |   Az Azure Cosmos DB fenntartott kapacitás kifizetéséhez használt előfizetés. A kiválasztott előfizetéshez tartozó fizetési mód a költségek kitöltésére szolgál. Az előfizetésnek a következő típusok egyikének kell lennie: <br/><br/>  Nagyvállalati Szerződés (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P): nagyvállalati előfizetések esetén a díjakat a beléptetés pénzügyi kötelezettségvállalásának egyenlegére, vagy felszámított összegként kell levonni. <br/><br/> Egyéni előfizetés utólagos elszámolású díjszabással (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P): egyéni előfizetés utólagos elszámolású díjszabással, a díjak számlázása a hitelkártyára vagy a számla fizetési módjára történik az előfizetésben.    |
    | Erőforráscsoport | Az erőforráscsoport, amelyhez a fenntartott kapacitási kedvezmény érvényes. |
    |Időszak  |   Egy vagy három év.   |
@@ -84,7 +85,7 @@ Az 30 000 RU/s foglalás megvásárlására vonatkozó javaslat azt jelzi, hogy 
 
    :::image type="content" source="./media/cosmos-db-reserved-capacity/reserved-capacity-summary.png" alt-text="Fenntartott kapacitásra vonatkozó javaslatok":::
 
-7. Válassza a **felülvizsgálat + vásárlás** lehetőséget, majd **Vásároljon most**. A vásárlás sikerességét a következő oldal látja:
+7. Válassza a **felülvizsgálat + vásárlás** lehetőséget, majd **Vásároljon most** . A vásárlás sikerességét a következő oldal látja:
 
 A foglalás megvásárlása után azonnal alkalmazni kell a foglalás feltételeinek megfelelő meglévő Azure Cosmos DB-erőforrásokra. Ha nem rendelkezik meglévő Azure Cosmos DB erőforrásokkal, a foglalás akkor érvényes, ha új Cosmos DB-példányt telepít, amely megfelel a foglalás feltételeinek. A foglalás időtartama mindkét esetben a sikeres vásárlás után azonnal elindul.
 

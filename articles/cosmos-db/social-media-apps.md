@@ -6,16 +6,17 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: 7118a12a5a92912c51bb35d8b516d5b8e2f45388
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 329c4b40f11b36de80581d4a1396813bc8de5c73
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478150"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097328"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Közösségi Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-A nagymértékben összekapcsolt társadalomban való élet azt jelenti, hogy egy adott időpontban egy **közösségi hálózat**részévé válik. A közösségi hálózatokkal a barátokkal, munkatársakkal, családtal vagy időnként megoszthatja a közös érdeklődéssel rendelkező személyekkel való szenvedélyét.
+A nagymértékben összekapcsolt társadalomban való élet azt jelenti, hogy egy adott időpontban egy **közösségi hálózat** részévé válik. A közösségi hálózatokkal a barátokkal, munkatársakkal, családtal vagy időnként megoszthatja a közös érdeklődéssel rendelkező személyekkel való szenvedélyét.
 
 A mérnökök és a fejlesztők megértették, hogyan tárolják ezeket a hálózatokat, és összekapcsolják az adataikat. Vagy lehet, hogy az új közösségi hálózat létrehozásához vagy összeépítéséhez is feladatozott egy adott piaci szegmenshez. Ha a jelentős kérdés merül fel: Hogyan történik az összes tárolt adatmennyiség?
 
@@ -238,9 +239,9 @@ Egy másik lehetőség az [Azure Cognitive Services](https://www.microsoft.com/c
 
 ## <a name="a-planet-scale-social-experience"></a>Egy bolygó-méretezési közösségi felület
 
-Egy utolsó, de nem utolsósorban fontos cikknek kell foglalkoznia: **méretezhetőséggel**. Architektúra tervezésekor minden összetevőnek saját méretezéssel kell rendelkeznie. Végül további adatfeldolgozásra van szükség, vagy nagyobb földrajzi lefedettséget szeretne biztosítani. Szerencsére mindkét feladat megvalósítása **kulcsrakész élményt** nyújt a Cosmos db.
+Egy utolsó, de nem utolsósorban fontos cikknek kell foglalkoznia: **méretezhetőséggel** . Architektúra tervezésekor minden összetevőnek saját méretezéssel kell rendelkeznie. Végül további adatfeldolgozásra van szükség, vagy nagyobb földrajzi lefedettséget szeretne biztosítani. Szerencsére mindkét feladat megvalósítása **kulcsrakész élményt** nyújt a Cosmos db.
 
-Cosmos DB támogatja a dinamikus particionálást. Egy adott **partíciós kulcs**alapján automatikusan létrehozza a partíciókat, amelyek a dokumentumok attribútumként vannak meghatározva. A megfelelő partíciós kulcs definiálását a tervezéskor kell elvégezni. További információ: [particionálás Azure Cosmos DBban](partitioning-overview.md).
+Cosmos DB támogatja a dinamikus particionálást. Egy adott **partíciós kulcs** alapján automatikusan létrehozza a partíciókat, amelyek a dokumentumok attribútumként vannak meghatározva. A megfelelő partíciós kulcs definiálását a tervezéskor kell elvégezni. További információ: [particionálás Azure Cosmos DBban](partitioning-overview.md).
 
 A közösségi élmény érdekében a particionálási stratégiát úgy kell összehangolni, ahogy lekérdezést és írást végez. (Például az azonos partíción belüli olvasások kívánatosak, és a "gyors elérésű pontok" elkerülése érdekében az írásokat több partícióra terjeszti.) Néhány lehetőség: a partíciók egy időbeli kulcs (nap/hónap/hét) alapján, a tartalom kategóriája, földrajzi régió vagy felhasználó szerint. Valójában attól függ, hogyan kérdezi le az adatait, és hogyan jeleníti meg az adatait a közösségi felhasználói felületén.
 
@@ -252,7 +253,7 @@ Az idő múlásával végül növekedni fog a forgalom, és az erőforrás-fogya
 
 Mi történik, ha a dolgok egyre jobbak maradnak? Tegyük fel, hogy egy másik régióból, országból vagy kontinensből származó felhasználók észlelik a platformot, és elkezdik használni azt. Mi a nagyszerű meglepetés!
 
-De várjon! Hamarosan tisztában lesz azzal, hogy a platform nem optimális. Így távol vannak az operatív régiótól, hogy a késés borzasztó. Nyilvánvalóan nem szeretné, hogy kilépjenek. Ha csak egyszerűen **kiterjesztheti a globális elérhetőségét**? Van!
+De várjon! Hamarosan tisztában lesz azzal, hogy a platform nem optimális. Így távol vannak az operatív régiótól, hogy a késés borzasztó. Nyilvánvalóan nem szeretné, hogy kilépjenek. Ha csak egyszerűen **kiterjesztheti a globális elérhetőségét** ? Van!
 
 Cosmos DB lehetővé teszi [az adatok globális és átlátható replikálását](../cosmos-db/tutorial-global-distribution-sql-api.md) néhány kattintással, és automatikusan kiválaszthatja az [ügyfél kódjából](../cosmos-db/tutorial-global-distribution-sql-api.md)elérhető régiók közül. Ez a folyamat azt is jelenti, hogy [több feladatátvételi régióval](high-availability.md)is rendelkezhet.
 

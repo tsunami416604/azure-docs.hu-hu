@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 3c404f0028705754a68be113a331132eec02f7cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 010b65a170d05fb0d2cc55e7519fd27df8b751e1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91304032"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095441"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Oktatóanyag: Egyoldalas alkalmazás létrehozása a Bing Web Search API használatával
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Ez az egyoldalas alkalmazás bemutatja, hogyan kérhetők le, dolgozhatók fel és jeleníthetők meg a Bing Web Search API-ból származó keresési eredmények. Az oktatóanyag HTML- és CSS-sablonokra épül, fő témája pedig a JavaScript-kód. A [Githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) az indulásban segítő útmutatókkal együtt érhetők el HTML-, CSS- és JS-fájlok.
 
@@ -38,7 +43,7 @@ Az alkalmazás használatához szükség van egy [Azure Cognitive Services-fiók
 Néhány dolog, amire az alkalmazás futtatásához szüksége lesz:
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" hozzon létre egy Bing Search erőforrást, "  target="_blank"> és hozzon létre egy Bing Search-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" hozzon létre egy Bing Search erőforrást, "  target="_blank"> és hozzon létre egy Bing Search-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
 
 * A Node.js 8-as vagy újabb verziója
 
@@ -133,7 +138,7 @@ A `SafeSearch` beállítása `strict`, `moderate` vagy `off` lehet. A Bing Web S
 
 Ha az **Előléptetés** jelölőnégyzetek bármelyike be van jelölve, akkor a lekérdezéshez az `answerCount` paraméter is hozzá lesz fűzve. A `promote` paraméter használata mellett az `answerCount` is kötelező. Ebben a kódrészletben `9` értékre van beállítva, hogy minden elérhető eredménytípus vissza legyen adva.
 > [!NOTE]
-> Egy eredménytípus előléptetése nem *garantálja*, hogy az szerepelni fog a keresési eredmények között. Az előléptetés csak az ilyen típusú eredmények rangját növeli a szokásos rangjukhoz képest. A keresések egy adott eredménytípusra korlátozásához a `responseFilter` lekérdezési paraméter használható, vagy meghívható egy olyan meghatározott végpont, mint a Bing Image Search vagy a Bing News Search.
+> Egy eredménytípus előléptetése nem *garantálja* , hogy az szerepelni fog a keresési eredmények között. Az előléptetés csak az ilyen típusú eredmények rangját növeli a szokásos rangjukhoz képest. A keresések egy adott eredménytípusra korlátozásához a `responseFilter` lekérdezési paraméter használható, vagy meghívható egy olyan meghatározott végpont, mint a Bing Image Search vagy a Bing News Search.
 
 A `textDecoration` és a `textFormat` paraméter a szkript kötött része. Ezek emelik ki félkövéren a keresőkifejezést a keresési eredményekben. Ezek nem kötelező paraméterek.
 
@@ -465,7 +470,7 @@ cors-proxy-server
 
 Ne zárja be a parancsablakot, amíg használja az mintaalkalmazást; az ablak bezárása leállítja a proxyt. A keresési eredmények alatti, kibontható HTTP-fejlécek szakaszban meg kell jelennie az `X-MSEdge-ClientID` fejlécnek. Fontos, hogy ez minden kéréshez ugyanaz legyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Bing Web Search API 7-es verzió – referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)

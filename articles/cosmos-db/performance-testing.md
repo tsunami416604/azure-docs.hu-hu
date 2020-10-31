@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 6ddc428a1b2228c7e6e15093c12deb25ddd65c27
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b89c48b5040c198cb1b4a6ce383baed51dfac19e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281035"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097413"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Teljesítmény-és méretezési tesztelés a Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A teljesítmény-és méretezési teszt az alkalmazások fejlesztésének egyik kulcsfontosságú lépése. Számos alkalmazás esetében az adatbázis szintje jelentős hatással van a teljes teljesítményre és méretezhetőségre. Ezért a teljesítmény-tesztelés kritikus összetevője. [Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) a rugalmas skálázás és kiszámítható teljesítmény érdekében készült. Ezek a képességek nagyszerű illeszkedést biztosítanak az olyan alkalmazások számára, amelyeknek nagy teljesítményű adatbázis-rétegre van szükségük. 
 
@@ -93,7 +94,7 @@ Miután futtatta az alkalmazást, különböző [indexelési házirendeket](inde
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben azt vizsgáltuk, hogyan végezheti el a teljesítmény és a méretezés tesztelését Azure Cosmos DB használatával egy .NET-konzol alkalmazás használatával. További információért tekintse át a következő cikkeket:
+Ebben a cikkben azt vizsgáltuk, hogyan végezheti el a teljesítmény és a méretezés tesztelését Azure Cosmos DB használatával egy .NET-konzol alkalmazás használatával. További információkat az következő cikkekben talál:
 
 * [Azure Cosmos DB teljesítmény-tesztelési minta](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
 * [Ügyfél-konfigurációs beállítások a Azure Cosmos DB teljesítményének növeléséhez](performance-tips.md)

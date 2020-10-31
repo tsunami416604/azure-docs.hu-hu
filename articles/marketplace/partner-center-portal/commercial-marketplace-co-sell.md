@@ -1,22 +1,22 @@
 ---
 title: Közös értékesítés lehetősége a partner Centerben | Azure piactér
-description: Az ajánlat közös értékesítés lapján megjelenő információkat a Microsoft értékesítési csapatai fogják használni, hogy az ügyfelek igényeinek megfelelő kiértékelése során többet tudjanak megtudni a megoldásról.
+description: Az ajánlat közös értékesítés lapján megjelenő információkat a Microsoft értékesítési csapatai fogják használni, hogy az ügyfelek igényeinek megfelelő kiértékelése során többet tudjanak megtudni az ajánlatról.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
-ms.date: 10/19/2020
-ms.openlocfilehash: ec076567d06a8237db2a708a5276a358f64a8388
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.date: 10/28/2020
+ms.openlocfilehash: 2a648b4f4c614fc64fa7817102215720e51abe7f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204911"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095601"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Együttes értékesítési lehetőség a Partnerközpontban
 
-A közös értékesítés lapon található információk megadása teljes mértékben nem kötelező. A közös értékesítésre kész és az IP közös értékesítésre kész állapotot kell elérni. Az Ön által megadott információkat a Microsoft értékesítési csapatai fogják használni, hogy a megoldásra vonatkozó további információkat kapjanak az ügyfelek igényeinek megfelelő kiértékelése során. Nem érhető el közvetlenül az ügyfeleknek. További információ: értékesítés a [Microsofton keresztül](https://partner.microsoft.com/membership/sell-with-microsoft).
+A közös értékesítés lapon található információk megadása teljes mértékben nem kötelező. A közös értékesítésre kész és az IP-incentivized állapot eléréséhez szükséges. Az Ön által megadott információkat a Microsoft értékesítési csapatai fogják használni, hogy az Ön ajánlatával kapcsolatos további információkat kapjanak az ügyfelek igényeinek megfelelő kiértékelése során. Nem érhető el közvetlenül az ügyfeleknek. További információ: értékesítés a [Microsofton keresztül](https://partner.microsoft.com/membership/sell-with-microsoft).
 
 A partneri központban a közös értékesítés lehetőség jelenleg néhány ajánlati típushoz érhető el. A további ajánlat-típusok támogatása az idő múlásával elérhetővé válik.
 
@@ -36,7 +36,7 @@ A partneri központban a közös értékesítés lehetőség jelenleg néhány a
 
 ## <a name="listing"></a>Listázás
 
-A közös értékesítéssel rendelkező listák segítenek a Microsoft értékesítési csapatoknak felvenni a megoldást a szélesebb közönség számára. *(Az összes mezőt kötelező megadni.)*
+A közös értékesítéssel rendelkező listák segítenek a Microsoft értékesítési csapatoknak, hogy az ajánlatát szélesebb közönség számára értékesítse. *(Az összes mezőt kötelező megadni.)*
 
 - Válassza ki azokat a Microsoft-platformokat, amelyekkel az ajánlatát létrehozta, kiterjeszti vagy integrálja a szolgáltatással.
 - Válassza ki az ajánlat által célzott piaci szegmenseket.
@@ -67,13 +67,13 @@ Lehetősége van olyan biztosítéki dokumentumok biztosítására, amelyeket a 
 | **Dokumentumok**    | **Leírás**  |
 | :------------------- | :-------------------|
 | *Ügyfél – pager (kötelező)* | Az ajánlat ügyfél általi használatra kész leírása. A Microsoft értékesítési csapatai megoszthatják ezeket az információkat az ügyfelekkel annak megállapítása érdekében, hogy az ajánlat megfelelő-e, és hogy az ügyfél készen áll-e. <br> <br> Használja a partner Centerben elérhető megfelelő sablonok egyikét: <br> <ul> <li> Microsoft Azure egy pager-sablon </li> <li> Microsoft Dynamics 365 1 – pager sablon </li> <li> Microsoft 365 1 – pager sablon </li> <li> Windows 10 1 – pager sablon </li> </ul> |
-| *Ügyfél bemutatása (kötelező)* | Csúsztassa a paklit a megoldás és a hozzá tartozó érték kiosztására. Miután meggyőződött arról, hogy ajánlata az ügyfél számára elkészült, a Microsoft értékesítési csapatai megoszthatják a bemutatót az ügyfelekkel, hogy megfogalmazzák azt az értéket, amelyet mindkét vállalat a közös megoldás telepítésekor végez. A bemutatónak ki kell terjednie a megoldásra, hogy miként segítheti az ügyfeleknek, hogy milyen iparágakban lehet a megoldás, és hogyan hasonlítható össze a versengő megoldásokkal. <br> <br> Használja a partner Centerben elérhető sablont.|
-| *Ügyfél-esettanulmány* | Ez az információ egy potenciális ügyfelet mutat be, hogy a Microsoft milyen módon sikeresen telepítette ezt a megoldást az előző esetekben. <br> <br> Használja a partner Centerben elérhető sablont. |
-| *Ellenőrizhető ügyfél-WINS* | Az ügyfelek sikereire adott példák a megoldás telepítése után. |
-| *Channel pitch Deck* | Egy olyan információkkal, amelyek segítségével a csatornák viszonteladói többet tudhatnak meg a megoldásról, és elérhetik az értékesítési csapatait, hogy eladják az ajánlatot. A szolgáltatás általában egy liftre, a megcélzott ügyfelekre, az ügyfelek megkérdezésére, a beszélgetési pontokra, valamint a videókra, a dokumentációra és a támogatási információkra mutató hivatkozásokat tartalmaz. |
-| *Hivatkozási architektúra diagramjai* | Egy dokumentum, amely a partner által létrehozott IP-címet jelképező modellt, valamint a Microsoft Cloud Services szolgáltatással való kapcsolatát, valamint az IP-cím közös értékesítésének technikai követelményeit mutatja be. |
-| *Egyéb dokumentumok* | Akár öt további dokumentumot vagy videót is feltölthet, hogy segítse a Microsoft értékesítési csapatait és a csatornák viszonteladóit, hogy többet tudjon meg a megoldásról, a szervezetről és/vagy a differenciálekről. |
-| *Külső hivatkozás URL-címe* | A termék webhelyére mutató hivatkozás, ahol a Microsoft értékesítési csoportjai és a csatorna-viszonteladók többet tudnak megtudni a megoldásról. |
+| *Ügyfél bemutatása (kötelező)* | Csúsztassa a pakliba az ajánlat és a hozzá tartozó érték kiosztását. Miután meggyőződött arról, hogy ajánlata az ügyfél számára elkészült, a Microsoft értékesítési csapatai megoszthatják a bemutatót az ügyfelekkel, hogy megfogalmazzák a vállalat és a Microsoft által a közös megoldás telepítésekor használt értéket. A bemutatónak ki kell terjednie az ajánlatra, hogy miként segíthet az ügyfeleknek, hogy milyen iparágakra van szükség az ajánlathoz, és hogyan hasonlítja össze a versengő megoldásokkal. <br> <br> Használja a partner Centerben elérhető sablont.|
+| *Ügyfél-esettanulmány* | Ez az információ egy potenciális ügyfelet mutat be, hogy az Ön és a Microsoft hogyan helyezte üzembe az ajánlatot az előzetes esetekben. <br> <br> Használja a partner Centerben elérhető sablont. |
+| *Ellenőrizhető ügyfél-WINS* | Az ügyfelek sikereire adott példák az ajánlat telepítése után. |
+| *Channel pitch Deck* | Egy olyan információkkal, amelyek segítségével a csatornák viszonteladói többet tudhatnak meg az ajánlatról, és elérhetik az értékesítési csapatait. A pakli általában tartalmaz egy lift-pályát, a megcélzott ügyfelekkel kapcsolatos információkat, az ügyfelek megkérdezésére, a beszélgetési pontokra mutató hivatkozásokat, valamint a videókra, a dokumentációra és a támogatási információk |
+| *Hivatkozási architektúra diagramja* | Az ajánlatot és a Microsoft Cloud servicesrel való kapcsolatát képviselő modellt bemutató diagram, amely bemutatja, hogyan teljesíti az IP-címek közös értékesítési programjának technikai követelményeit. [További információ a hivatkozási architektúra diagramról.](#reference-architecture-diagram) |
+| *Egyéb dokumentumok* | Akár öt további dokumentumot vagy videót is feltölthet, hogy segítse a Microsoft értékesítési csapatait és a csatornák viszonteladóit, hogy többet tudjon meg az ajánlatról, a szervezetről és/vagy a differenciálekről. |
+| *Külső hivatkozás URL-címe* | A termék webhelyére mutató hivatkozás, ahol a Microsoft értékesítési csoportjai és a csatorna-viszonteladók többet tudnak nyújtani az ajánlatról. |
 
 ## <a name="contacts"></a>Kapcsolattartók
 
@@ -83,23 +83,45 @@ Megadhatja a névjegyeket úgy, hogy letölti a CSV-sablont a partneri központb
 
 Exportálhatja egy ajánlat névjegyeinek meglévő listáját is, majd módosíthatja a fájlt.
 
-* *Név (kötelező)*: a partner neve.
-* *E-mail-cím (kötelező)*: a partner e-mail-címe.
-* *Beosztás (kötelező)*: beosztás.
-* *Szerepkör (kötelező)*: használja a következő szerepkörök bármelyikét.
+* *Név (kötelező)* : a partner neve.
+* *E-mail-cím (kötelező)* : a partner e-mail-címe.
+* *Beosztás (kötelező)* : beosztás.
+* *Szerepkör (kötelező)* : használja a következő szerepkörök bármelyikét.
 
     | **Szerepkör**    | **Leírás**  |
     | :------------------- | :-------------------|
-    | *:::no-loc text="Partner marketing":::* | Ez a szerepkör a megoldás marketingjét és a Microsoft értékesítési csapatával és a csatorna-viszonteladókkal folytatott marketing-erőfeszítésekkel foglalkozik. A marketing-bevezetések és az ajánlat tartalmának, például a termékleírások, a képek és a videók listázásának fő pontja. |
-    | *:::no-loc text="Partner sales":::* | Ez a szerepkör a megoldás értékesítésére és a Microsoft értékesítési csapatával és a csatorna-viszonteladókkal való együttműködésre koncentrál. A közös értékesítésre szolgáló megoldások esetében adjon meg legalább egy partneri értékesítési kapcsolattartót régiónként, amelyben szeretné, hogy a közös értékesítés készüljön. Ugyanaz a partner értékesítési kapcsolat több régióra is kiterjed. |
+    | *:::no-loc text="Partner marketing":::* | Ez a szerepkör az ajánlat marketingjét, valamint a Microsoft értékesítési csapatokkal és a csatorna-viszonteladókkal folytatott marketing-erőfeszítésekkel foglalkozik. A marketing-bevezetések és az ajánlat tartalmának, például a termékleírások, a képek és a videók listázásának fő pontja. |
+    | *:::no-loc text="Partner sales":::* | Ez a szerepkör az ajánlat értékesítésére és a Microsoft értékesítési csapatával és a csatorna-viszonteladókkal való együttműködésre koncentrál. Adjon meg legalább egy partneri értékesítési kapcsolattartót régiónként, amelyben ajánlatát értékesítésre készként szeretné értékesíteni. Ugyanaz a partner értékesítési kapcsolat több régióra is kiterjed. |
     | *:::no-loc text="Partner technical sales":::* | A technikai architektúrát és üzembe helyezési szempontokat az értékesítési ciklus, az értékesítés utáni integráció és a telepítési időszakok során támogatja. |
-    | *:::no-loc text="Partner customer success manager":::* | A általában támogatja az ügyfeleket a telepítés után, hogy a lehető legtöbbet hozza ki a megoldásból, és növelje a lábnyomát az ügyfél szervezetén belül. |
+    | *:::no-loc text="Partner customer success manager":::* | A általában támogatja az ügyfeleket a telepítés után, hogy a lehető legtöbbet hozza ki az ajánlatból, és növelje a lábnyomát az ügyfél szervezetén belül. |
 
 * *Országok/régiók (kötelező):*  A sablon kitöltésekor használja a [két betű ország/régió kódokat a felsoroltak szerint](./commercial-marketplace-co-sell-countries.md). Ha a kapcsolattartó az összes országot/régiót tartalmazza, használja az "OOO" három betűt. Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két betűs kódot vesszővel elválasztva (például: "US, CA, FR", idézőjelek nélkül a sablonba).
 
     Az országoknak/régióknak minden partner területét tükröznie kell. A Microsoft értékesítési csapatai és a csatorna-viszonteladók ezeket az információkat az adott országon/régión belüli értékesítések kérelmezésére és a velük folytatott együttműködésre használják fel.
 
 * *Államok/tartományok (nem kötelező):*  A sablon kitöltésekor használja az XX-XX formátumot az [Államok/tartományok táblában](./commercial-marketplace-co-sell-states.md)felsoroltak szerint.
+
+## <a name="reference-architecture-diagram"></a>Hivatkozási architektúra diagramja
+
+### <a name="what-is-a-reference-architecture--diagram"></a>Mi az a hivatkozási architektúra diagramja
+A hivatkozási architektúra diagram egy olyan modell, amely az ajánlat alapjául szolgáló infrastruktúrát jelöli, és azt, hogy az ajánlat hogyan használja fel a felhőalapú szolgáltatásokat az IP-címek közös értékesítésének technikai követelményei alapján. Nem az architektúra minőségének felmérésére, hanem a különböző szolgáltatások kihasználására lett tervezve.
+
+A dokumentum több eszköz használatával is létrehozható. Javasoljuk, hogy a Microsoft Visio alkalmazáshoz több, az Azure Architecture-modelleket ábrázoló rajzsablon is tartozik.
+
+A hivatkozási architektúra diagramjainak kiépítéséhez hasznos kiindulópont az Azure- [architektúra modelljeinek](https://docs.microsoft.com/azure/architecture/browse/)kihasználása.
+
+### <a name="typical-components-of-a-reference-architecture-diagram"></a>A hivatkozási architektúra diagramjának jellemző összetevői
+- Felhőalapú szolgáltatások, amelyek az Ön ajánlatát üzemeltetik és kezelik, beleértve az Azure-fogyasztást generáló szolgáltatásokat is
+- Adatkapcsolatok, adatrétegek, az ajánlat által felhasznált adatszolgáltatások
+- A biztonság, a hitelesítés és az ajánlat felhasználóinak szabályozására használt felhőalapú szolgáltatások
+- Felhasználói felületek és egyéb szolgáltatások, amelyek a végfelhasználók számára teszik elérhetővé az ajánlatot
+- Hibrid és/vagy helyszíni kapcsolatok és integrációk 
+
+### <a name="example-reference-architecture-diagram"></a>Példa hivatkozási architektúra diagramra
+
+:::image type="content" source="media/co-sell-arch-diagram.png" alt-text="Ez a kép egy példa közös értékesítésű architektúra-diagram.":::
+
+(A fenti példában szereplő hivatkozási architektúra diagramja egy vertikális iparági Csevegőrobot, amely integrálható az intranetes webhelyekkel, így a különböző ERP-rendszerek ellátási láncával és gyártási ütemezési adataival Machine Learning algoritmussal lehet elősegíteni az előrejelzési igény forgatókönyveit. A robot úgy van kialakítva, hogy kérdéseket tegyen fel, ha egy értékesítési személy véglegesítheti a megrendelés lehetséges kézbesítési dátumát.)
 
 ## <a name="next-steps"></a>Következő lépések
 

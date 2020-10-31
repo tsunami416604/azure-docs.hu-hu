@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: sngun
-ms.openlocfilehash: 77e74a36d7b353d0713a7bf17f7a6341558f0739
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b2aab6579f9cc78e44454407f1f4ddeed605086b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485001"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096104"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Gyakran ismételt kérdések a Table APIról Azure Cosmos DB
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 A Azure Cosmos DB Table API a [Azure Portalban](https://portal.azure.com) érhető el, először regisztrálnia kell egy Azure-előfizetésre. A regisztráció után hozzáadhat egy Azure Cosmos DB Table API fiókot az Azure-előfizetéséhez, majd hozzáadhat táblákat a fiókjához. A támogatott nyelveket és a kapcsolódó gyors kezdéseket a [Azure Cosmos DB Table API bevezetésében](table-introduction.md)találhatja meg.
 
@@ -195,7 +196,7 @@ Igen, Azure Cosmos DB Table API az összes attribútum automatikus indexelését
 
 Igen, az indexelési házirendet megadhatja az index definíciójának megadásával. A beállításokat megfelelően kell kódolni és elmenekülnie.
 
-A non-.NET SDK-k esetében az indexelési házirend csak a portálon állítható be **Adatkezelőon**, navigáljon a módosítani kívánt táblához, majd nyissa meg a **méretezési & beállításait**– >indexelési házirend, végezze el a kívánt módosításokat, majd **mentse**.
+A non-.NET SDK-k esetében az indexelési házirend csak a portálon állítható be **Adatkezelőon** , navigáljon a módosítani kívánt táblához, majd nyissa meg a **méretezési & beállításait** – >indexelési házirend, végezze el a kívánt módosításokat, majd **mentse** .
 
 A .NET SDK-ból a app.config fájlban is elküldhető:
 

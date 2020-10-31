@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 19dcc0f7605ae771e2ff826299413eaa073f212b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 37c128a42ca68134b770b32c940d59834261ce44
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284104"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096580"
 ---
 # <a name="consistency-levels-for-azure-cosmos-db-and-the-api-for-mongodb"></a>A Azure Cosmos DB és a MongoDB API-k konzisztenciáji szintjei
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 A Azure Cosmos DBtól eltérően a natív MongoDB nem biztosít pontosan meghatározott konzisztencia-garanciát. Ehelyett a natív MongoDB lehetővé teszi a felhasználók számára a következő konzisztencia-garanciák konfigurálását: egy írási aggály, egy olvasási probléma és a isMaster direktíva, hogy az olvasási műveleteket elsődleges vagy másodlagos replikára irányítsa a kívánt konzisztencia-szint elérése érdekében.
 
@@ -31,7 +32,7 @@ A MongoDB Azure Cosmos DB API-ját használja:
 
 * Az Azure Cosmos-fiókjához tartozó adott régiót "elsődlegesként" is láthatja, ha az első írható régióként teszi a régiót. 
 
-## <a name="mapping-consistency-levels"></a>Konzisztencia-szintek megfeleltetése
+## <a name="mapping-consistency-levels"></a>Konzisztenciaszintek leképezése
 
 Az alábbi táblázat bemutatja, hogyan vannak leképezve a natív MongoDB írási/olvasási problémái az Azure Cosmos konzisztencia-szintjére, ha Azure Cosmos DB API-ját használja a MongoDB számára:
 

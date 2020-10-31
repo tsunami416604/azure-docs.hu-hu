@@ -6,14 +6,15 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: f6a348ceb30806259035cb71bb4165b736949272
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 30f139c92fe426369c609dabd826a7bff1617e72
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480071"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098042"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB-hez készült Azure Synapse Linkkel kapcsolatban
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
 A Azure Cosmos DB Azure szinapszis-hivatkozása szoros integrációt hoz létre a Azure Cosmos DB és az Azure szinapszis Analytics között. Lehetővé teszi az ügyfelek számára a közel valós idejű elemzések futtatását a működési adataik teljes teljesítményének elkülönítésével a tranzakciós munkaterhelések és az ETL-folyamat nélkül. Ez a cikk az Azure Cosmos DB-hez készült Azure Synapse Linkkel kapcsolatos gyakori kérdésekre ad választ.
 
@@ -98,9 +99,9 @@ Az elemzési tárban lévő adatok particionálása a tranzakciós tárolóban l
 
 Az adatelemek jelenleg nem alakíthatók át, ha automatikusan propagálják őket a tranzakciós tárolóból az analitikai tárolóba. Ha ezt a korlátozást a forgatókönyvek blokkolják, küldje el a [Azure Cosmos db csapatnak](mailto:cosmosdbsynapselink@microsoft.com).
 
-### <a name="is-analytical-store-supported-by-terraform"></a>A Terraform támogatja az analitikus tárolót?
+### <a name="is-analytical-store-supported-by-terraform"></a>Támogatja a Terraform az elemzési tárat?
 
-Az Terraform jelenleg nem támogatja az analitikai tárolók tárolóit. További információért tekintse meg a [Terraform GitHub-problémáit](https://github.com/hashicorp/terraform/issues) .
+A Terraform jelenleg nem támogatja az elemzési tár tárolóit. További információért tekintse meg a [Terraform GitHub-problémáit](https://github.com/hashicorp/terraform/issues) ismertető témakört.
 
 ## <a name="analytical-time-to-live-ttl"></a>Analitikai élettartam (TTL)
 
@@ -122,7 +123,7 @@ Az összes tranzakciós frissítést és törlést a rendszer átmásolja az ana
 
 A [Azure Cosmos db Analytical Store](analytical-store-introduction.md) nyilvános előzetes kiadásban érhető el, az analitikai tár díja nélkül, 2020. augusztus 30-ig. A szinapszis Spark és a szinapszis SQL számlázása a [szinapszis szolgáltatás felhasználásán](https://azure.microsoft.com/pricing/details/synapse-analytics/)keresztül történik.
 
-## <a name="security"></a>Biztonság
+## <a name="security"></a>Biztonsági őr
 
 ### <a name="what-are-the-ways-to-authenticate-with-the-analytical-store"></a>Milyen módon lehet hitelesíteni az analitikai tárolót?
 

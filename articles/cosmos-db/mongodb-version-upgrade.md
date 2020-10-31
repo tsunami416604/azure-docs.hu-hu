@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-mongo
 ms.topic: guide
 ms.date: 09/22/2020
 ms.author: jasonh
-ms.openlocfilehash: c6369be39d0a964f07c64083e3269bb1c0c49c7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb12fc909b5165cbc759bbb7c531864cde16bb88
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409663"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096308"
 ---
 # <a name="upgrade-the-mongodb-wire-protocol-version-of-your-azure-cosmos-dbs-api-for-mongodb-account"></a>A Azure Cosmos DB API-MongoDB-fiók MongoDB-verziójának frissítése
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Ez a cikk azt ismerteti, hogyan lehet frissíteni a Azure Cosmos DB API-ját a MongoDB-fiókhoz. A vezetékes protokoll verziójának frissítése után a MongoDB-hez készült Azure Cosmos DB API legújabb funkcióit is használhatja. A frissítési folyamat nem szakítja meg a fiók rendelkezésre állását, és nem használja fel RU/s-t, vagy nem csökkenti az adatbázis kapacitását. Ez a folyamat nem érinti a meglévő és az indexeket.
 
@@ -37,7 +38,7 @@ A 3,6-es verzióban található új funkciók a következők:
 
 ### <a name="changes-from-version-32"></a>Az 3,2-es verzió változásai
 
-- **A RequestRateIsLarge hibák el lettek távolítva**. Az ügyfélalkalmazás kérelmeinek száma többé nem ad vissza 16500 hibát. Ehelyett a kérelmek mindaddig folytatódnak, amíg befejeződik, vagy nem teljesítik az időkorlátot.
+- **A RequestRateIsLarge hibák el lettek távolítva** . Az ügyfélalkalmazás kérelmeinek száma többé nem ad vissza 16500 hibát. Ehelyett a kérelmek mindaddig folytatódnak, amíg befejeződik, vagy nem teljesítik az időkorlátot.
 - A kérelmek időtúllépése 60 másodpercre van állítva.
 - Az új huzal protokoll verziójában létrehozott MongoDB-gyűjtemények esetében alapértelmezés szerint csak a `_id` tulajdonság lesz indexelve.
 
@@ -49,7 +50,7 @@ A 3,6-es verzióra való frissítéshez az adatbázis-fiók végpontjának utót
 <your_database_account_name>.mongo.cosmos.azure.com
 ```
 
-A meglévő végpontot le kell cserélnie az alkalmazásokban és az ezzel az adatbázis-fiókkal csatlakozó illesztőprogramokat. **Csak az új végpontot használó kapcsolatok férhetnek hozzá a MongoDB 3,6-es verziójában lévő funkciókhoz**. Az előző végpontnak utótaggal kell rendelkeznie `.documents.azure.com` .
+A meglévő végpontot le kell cserélnie az alkalmazásokban és az ezzel az adatbázis-fiókkal csatlakozó illesztőprogramokat. **Csak az új végpontot használó kapcsolatok férhetnek hozzá a MongoDB 3,6-es verziójában lévő funkciókhoz** . Az előző végpontnak utótaggal kell rendelkeznie `.documents.azure.com` .
 
 >[!Note]
 > Ez a végpont némileg eltérő lehet, ha a fiókja egy szuverén, kormányzati vagy korlátozott Azure-felhőben lett létrehozva.
@@ -80,7 +81,7 @@ A meglévő végpontot le kell cserélnie az alkalmazásokban és az ezzel az ad
 
     :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="Azure Portal MongoDB-fiókkal – áttekintés" border="false":::
 
-7. Az **adatbázis-fiók frissített verziójának használatának megkezdéséhez**lépjen vissza a panelre `Overview` , és másolja az alkalmazásban használandó új kapcsolódási karakterláncot. Az alkalmazások az új végponthoz való kapcsolódáskor azonnal elkezdik használni a frissített verziót. A meglévő kapcsolatok nem lesznek megszakítva, és a szolgáltatás kényelmesen frissíthető. Az egységes élmény biztosítása érdekében minden alkalmazásnak az új végpontot kell használnia.
+7. Az **adatbázis-fiók frissített verziójának használatának megkezdéséhez** lépjen vissza a panelre `Overview` , és másolja az alkalmazásban használandó új kapcsolódási karakterláncot. Az alkalmazások az új végponthoz való kapcsolódáskor azonnal elkezdik használni a frissített verziót. A meglévő kapcsolatok nem lesznek megszakítva, és a szolgáltatás kényelmesen frissíthető. Az egységes élmény biztosítása érdekében minden alkalmazásnak az új végpontot kell használnia.
 
     :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="Azure Portal MongoDB-fiókkal – áttekintés" border="false":::
 

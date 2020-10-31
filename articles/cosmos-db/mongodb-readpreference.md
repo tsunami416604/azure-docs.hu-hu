@@ -9,14 +9,15 @@ ms.devlang: nodejs
 ms.topic: how-to
 ms.date: 02/26/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: e86c48695c732b27f5032c1e3780cc24c8d3dc39
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3d21aadd8174bf933e55320c8596c57274140582
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482264"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096393"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Olvasási műveletek globális elosztása a Azure Cosmos DB API-MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Ez a cikk bemutatja, hogyan terjeszthetők globálisan az olvasási műveletek a [MongoDB olvasási](https://docs.mongodb.com/manual/core/read-preference/) beállításokkal a Azure Cosmos db API-MongoDB használatával.
 
@@ -43,7 +44,7 @@ Az alábbi parancsok futtatásával klónozza a mintatárházat. A saját platfo
 git clone <sample repo url>
 ```
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 A használt platformtól függően telepítse a szükséges csomagokat, és indítsa el az alkalmazást. A függőségek telepítéséhez kövesse a minta alkalmazás-tárházban található README fájlt. A NodeJS minta alkalmazásban például a következő parancsokkal telepítheti a szükséges csomagokat, és elindíthatja az alkalmazást.
 
@@ -145,7 +146,7 @@ Az olvasási preferencia mód mellett a MongoDB protokoll lehetővé teszi a cí
       }
 ```
 
-Ezért a MongoClient használhatja a `region` címkét és a régió nevét, hogy az adott régióba irányítsa az olvasási műveleteket. Cosmos-fiókok esetén a régió neve a **Beállítások – >replika-adat globális**részén, a bal oldali Azure Portal található. Ez a beállítás akkor hasznos, ha **olvasási elkülönítést** szeretne elérni – olyan esetekben, amelyekben az ügyfélalkalmazás csak egy adott régióra szeretné irányítani az olvasási műveleteket. Ez a beállítás ideális olyan nem üzemi/analitikai típusú forgatókönyvekhez, amelyek a háttérben futnak, és nem a kritikus fontosságú szolgáltatások.
+Ezért a MongoClient használhatja a `region` címkét és a régió nevét, hogy az adott régióba irányítsa az olvasási műveleteket. Cosmos-fiókok esetén a régió neve a **Beállítások – >replika-adat globális** részén, a bal oldali Azure Portal található. Ez a beállítás akkor hasznos, ha **olvasási elkülönítést** szeretne elérni – olyan esetekben, amelyekben az ügyfélalkalmazás csak egy adott régióra szeretné irányítani az olvasási műveleteket. Ez a beállítás ideális olyan nem üzemi/analitikai típusú forgatókönyvekhez, amelyek a háttérben futnak, és nem a kritikus fontosságú szolgáltatások.
 
 A minta alkalmazás következő kódrészlete azt mutatja be, hogyan konfigurálható az olvasási beállítások a címkékkel a NodeJS-ben:
 
@@ -162,7 +163,7 @@ Tekintse át a megfelelő példákat a más platformokra, például a [.net](htt
 
 Ebből a cikkből megtudhatta, hogyan oszthat meg globálisan olvasási műveleteket az olvasási beállításokkal az Azure Cosmos DB API-MongoDB való használatával.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
 Ha nem folytatja az alkalmazás használatát, törölje a jelen cikk által létrehozott összes erőforrást a Azure Portal a következő lépésekkel:
 

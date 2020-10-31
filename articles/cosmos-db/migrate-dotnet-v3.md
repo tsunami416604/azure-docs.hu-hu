@@ -6,14 +6,15 @@ ms.author: esarroyo
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: c86121bfd78452f613109c59cbc7a8b763755124
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cddf76ae0157c6729e6f58e40ee3f1725a9d395
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842988"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096665"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-net-sdk-v3"></a>Az alkalmazás migrálása a Azure Cosmos DB .NET SDK v3 használatára
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!IMPORTANT]
 > Ha szeretne többet megtudni a Azure Cosmos DB .NET SDK v3-ról, tekintse meg a [kibocsátási megjegyzéseket](sql-api-sdk-dotnet-standard.md), a [.net GitHub-tárházat](https://github.com/Azure/azure-cosmos-dotnet-v3), a .net SDK v3 [teljesítménnyel kapcsolatos tippeket](performance-tips-dotnet-sdk-v3-sql.md), valamint a [hibaelhárítási útmutatót](troubleshoot-dot-net-sdk.md).

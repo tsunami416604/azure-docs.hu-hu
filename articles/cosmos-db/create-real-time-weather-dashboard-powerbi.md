@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: f44a8d82ea2588abad6855fd8eaf7aed34256d87
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: fc285599176057c57621dc6bfefbe9188d3badd7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370763"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096886"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Valós idejű irányítópult létrehozása Azure Cosmos DB és Power BI használatával
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ez a cikk a Power BI élő időjárási irányítópult létrehozásához szükséges lépéseket ismerteti Azure Cosmos DB és Azure Analysis Services használatával. A Power BI irányítópulton diagramokat jeleníthet meg, amelyek valós idejű információkat jelenítenek meg a hőmérsékletről és a csapadékról egy adott régióban.
 
@@ -23,7 +24,7 @@ Ez a cikk a Power BI élő időjárási irányítópult létrehozásához szüks
 A jelentéskészítési irányítópultok több módon is beállíthatók a Azure Cosmos DBban tárolt adatszolgáltatásokhoz. Az elavult követelményektől és az adatmérettől függően a következő táblázat ismerteti az egyes forgatókönyvek jelentéskészítési beállításait:
 
 
-|Használati eset |Előkészületek |
+|Használati eset |Telepítés |
 |---------|---------|
 |1. ad-hoc jelentések létrehozása (frissítés nélkül)    |  [Power BI Azure Cosmos DB-összekötő importálási móddal](powerbi-visualize.md)       |
 |2. ad hoc jelentések létrehozása rendszeres frissítéssel   |  [Power BI Azure Cosmos DB-összekötő importálási móddal (ütemezett rendszeres frissítés)](powerbi-visualize.md)       |
@@ -74,7 +75,7 @@ Betöltési folyamat beállítása az [időjárási adatmennyiség](https://cata
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/define-refresh-policy.png" alt-text="Azure Cosmos DB Power BI-összekötő":::
 
-   Hagyja figyelmen kívül azt a figyelmeztetést, amely szerint *az M-lekérdezést nem lehet megerősíteni*. Az Azure Cosmos DB-összekötő kibontja a szűrési lekérdezéseket.
+   Hagyja figyelmen kívül azt a figyelmeztetést, amely szerint *az M-lekérdezést nem lehet megerősíteni* . Az Azure Cosmos DB-összekötő kibontja a szűrési lekérdezéseket.
 
 1. **Töltse be az adatgyűjtést, és hozza létre a jelentéseket** – a korábban betöltött adatai alapján hozza létre a diagramokat a hőmérséklet és a csapadék jelentéséhez.
 
@@ -101,11 +102,11 @@ Betöltési folyamat beállítása az [időjárási adatmennyiség](https://cata
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/tabular-model-designer.png" alt-text="Azure Cosmos DB Power BI-összekötő":::
 
-1. **Adja hozzá a Azure Cosmos DB adatforrást** – **navigáljon az**adatforrások új adatforrásához, >  **Data Sources**  >  **New Data Source** és adja hozzá a Azure Cosmos DB adatforrást az alábbi képernyőképen látható módon:
+1. **Adja hozzá a Azure Cosmos DB adatforrást** – **navigáljon az** adatforrások új adatforrásához, >  **Data Sources**  >  **New Data Source** és adja hozzá a Azure Cosmos DB adatforrást az alábbi képernyőképen látható módon:
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/add-data-source.png" alt-text="Azure Cosmos DB Power BI-összekötő":::
 
-   A Azure Cosmos DBhoz való kapcsolódáshoz adja meg a **fiók URI-ját**, az **adatbázis nevét**és a **tároló nevét**. Most már láthatja az Azure Cosmos-tárolóból származó adatok importálását a Power BIba.
+   A Azure Cosmos DBhoz való kapcsolódáshoz adja meg a **fiók URI-ját** , az **adatbázis nevét** és a **tároló nevét** . Most már láthatja az Azure Cosmos-tárolóból származó adatok importálását a Power BIba.
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/preview-cosmosdb-data.png" alt-text="Azure Cosmos DB Power BI-összekötő":::
 
@@ -140,7 +141,7 @@ Betöltési folyamat beállítása az [időjárási adatmennyiség](https://cata
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-partitions.png" alt-text="Azure Cosmos DB Power BI-összekötő" = Table.SelectRows(#"Sorted Rows", each [Document.month] = "2019-07")`
    * **Korábbi** -  `#"Filtered Rows" = Table.SelectRows(#"Sorted Rows", each [Document.month] <> "2019-07")`
 
-1. **Telepítse a modellt az Azure Analysis Serverba** – kattintson a jobb gombbal a Azure Analysis Services projektre, és válassza a **telepítés**lehetőséget. Adja hozzá a kiszolgáló nevét a **központi telepítési kiszolgáló tulajdonságai** ablaktáblán.
+1. **Telepítse a modellt az Azure Analysis Serverba** – kattintson a jobb gombbal a Azure Analysis Services projektre, és válassza a **telepítés** lehetőséget. Adja hozzá a kiszolgáló nevét a **központi telepítési kiszolgáló tulajdonságai** ablaktáblán.
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-deploy-model.png" alt-text="Azure Cosmos DB Power BI-összekötő":::
 
