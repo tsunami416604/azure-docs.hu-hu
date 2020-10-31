@@ -731,6 +731,10 @@
               items:
                 - name: Java SDK v4-hibák elhárítása
                   href: troubleshoot-java-sdk-v4-sql.md
+                - name: Hibaelhárítás – Kérelem időtúllépése
+                  href: troubleshoot-request-timeout-java-sdk-v4-sql.md
+                - name: Hibaelhárítás – A szolgáltatás nem érhető el
+                  href: troubleshoot-service-unavailable-java-sdk-v4-sql.md
                 - name: Hibaelhárítás – Async Java SDK v2
                   href: troubleshoot-java-async-sdk.md
         - name: Csatorna módosítása
@@ -877,8 +881,6 @@
         - name: Resource Manager-sablon
           href: /azure/templates/microsoft.documentdb/allversions
           displayName: ARM
-        - name: Az emulátor kibocsátási megjegyzései
-          href: local-emulator-release-notes.md
         - name: Az Azure Policy beépített elemei
           displayName: 'samples, policies, definitions'
           href: ./policy-reference.md
@@ -1279,6 +1281,8 @@
               href: emulator-command-line-parameters.md
             - name: Emulátor hibaelhárítása
               href: troubleshoot-local-emulator.md
+            - name: Az emulátor kibocsátási megjegyzései
+              href: local-emulator-release-notes.md
             - name: Visual Studio Code-bővítmény
               href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
         - name: Az Azure DevOps CI-/CD-folyamat beállítása

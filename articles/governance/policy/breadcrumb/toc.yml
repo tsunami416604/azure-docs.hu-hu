@@ -18,3 +18,9 @@
         - name: Szabályzat
           tocHref: /azure/aks
           topicHref: /azure/governance/policy
+        - name: Szabályzat
+          tocHref: /azure/storage
+          topicHref: /azure/governance/policy
+        - name: Szabályzat
+          tocHref: /azure/web-application-firewall
+          topicHref: /azure/governance/policy

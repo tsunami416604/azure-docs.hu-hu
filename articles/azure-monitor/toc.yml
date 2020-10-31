@@ -123,8 +123,6 @@
           href: platform/data-platform-metrics.md
         - name: Adatok streamelése az Event Hubsra
           href: platform/stream-monitoring-data-event-hubs.md
-    - name: Insights
-      href: insights/insights-overview.md
     - name: Adatbiztonság
       items:
         - name: Naplóadatok
@@ -1062,7 +1060,7 @@
               href: insights/container-insights-optout-hybrid.md
         - name: Hibaelhárítás
           href: insights/container-insights-troubleshoot.md
-    - name: Egyéb megállapítások
+    - name: Insights
       items:
         - name: Azure Cache for Redis (előzetes verzió)
           href: insights/redis-cache-insights-overview.md
@@ -1079,61 +1077,61 @@
           href: insights/resource-group-insights.md
         - name: Megállapítások hibaelhárítása
           href: insights/troubleshoot-workbooks.md
-    - name: Megoldások
-      items:
-        - name: Áttekintés
-          href: insights/solutions.md
-          displayName: 'Azure CLI, az monitor log-analytics'
-        - name: Célmegoldások
-          href: insights/solution-targeting.md
-        - name: Elérhető megoldások
+        - name: Megoldások
           items:
-            - name: AD-állapotfelmérés
-              href: insights/ad-assessment.md
-            - name: AD Replication Status
-              href: insights/ad-replication-status.md
-            - name: Kapacitással és teljesítménnyel kapcsolatos megoldás
-              href: insights/capacity-performance.md
-            - name: Docker- és Windows-tárolók monitorozása
-              href: insights/containers.md
-            - name: Hálózatok
+            - name: Áttekintés
+              href: insights/solutions.md
+              displayName: 'Azure CLI, az monitor log-analytics'
+            - name: Célmegoldások
+              href: insights/solution-targeting.md
+            - name: Elérhető megoldások
               items:
-                - name: Hálózatelemzés
-                  href: insights/azure-networking-analytics.md
-                - name: DNS
-                  href: insights/dns-analytics.md
-                - name: Hálózati teljesítményfigyelő
+                - name: AD-állapotfelmérés
+                  href: insights/ad-assessment.md
+                - name: AD Replication Status
+                  href: insights/ad-replication-status.md
+                - name: Kapacitással és teljesítménnyel kapcsolatos megoldás
+                  href: insights/capacity-performance.md
+                - name: Docker- és Windows-tárolók monitorozása
+                  href: insights/containers.md
+                - name: Hálózatok
                   items:
-                    - name: Megoldás áttekintése
-                      href: insights/network-performance-monitor.md
-                    - name: Teljesítménymonitorozás
-                      href: insights/network-performance-monitor-performance-monitor.md
-                    - name: Szolgáltatáskapcsolati monitor
-                      href: insights/network-performance-monitor-service-connectivity.md
-                    - name: ExpressRoute
-                      href: insights/network-performance-monitor-expressroute.md
-                    - name: Díjszabás
-                      href: insights/network-performance-monitor-pricing-faq.md
-                    - name: GYIK
-                      href: insights/network-performance-monitor-faq.md
-            - name: Office 365
-              href: insights/solution-office-365.md
-            - name: Szolgáltatástérkép-megoldás
-              href: insights/service-map.md
-            - name: Szolgáltatástérkép és Operations Manager
-              href: insights/service-map-scom.md
-            - name: Azure SQL
-              href: insights/azure-sql.md
-            - name: SQL Server
-              href: insights/sql-assessment.md
-            - name: Surface Hub
-              href: insights/surface-hubs.md
-            - name: VMWare-elemzési megoldás
-              href: insights/vmware.md
-            - name: Wire Data-megoldás
-              href: insights/wire-data.md
-            - name: Riasztáskezelési megoldás
-              href: platform/alert-management-solution.md
+                    - name: Hálózatelemzés
+                      href: insights/azure-networking-analytics.md
+                    - name: DNS
+                      href: insights/dns-analytics.md
+                    - name: Hálózati teljesítményfigyelő
+                      items:
+                        - name: Megoldás áttekintése
+                          href: insights/network-performance-monitor.md
+                        - name: Teljesítménymonitorozás
+                          href: insights/network-performance-monitor-performance-monitor.md
+                        - name: Szolgáltatáskapcsolati monitor
+                          href: insights/network-performance-monitor-service-connectivity.md
+                        - name: ExpressRoute
+                          href: insights/network-performance-monitor-expressroute.md
+                        - name: Díjszabás
+                          href: insights/network-performance-monitor-pricing-faq.md
+                        - name: GYIK
+                          href: insights/network-performance-monitor-faq.md
+                - name: Office 365
+                  href: insights/solution-office-365.md
+                - name: Szolgáltatástérkép-megoldás
+                  href: insights/service-map.md
+                - name: Szolgáltatástérkép és Operations Manager
+                  href: insights/service-map-scom.md
+                - name: Azure SQL
+                  href: insights/azure-sql.md
+                - name: SQL Server
+                  href: insights/sql-assessment.md
+                - name: Surface Hub
+                  href: insights/surface-hubs.md
+                - name: VMWare-elemzési megoldás
+                  href: insights/vmware.md
+                - name: Wire Data-megoldás
+                  href: insights/wire-data.md
+                - name: Riasztáskezelési megoldás
+                  href: platform/alert-management-solution.md
     - name: Munkafüzetek
       items:
         - name: Áttekintés

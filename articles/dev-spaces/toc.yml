@@ -5,10 +5,6 @@
       items:
         - name: Mi az Azure Dev Spaces?
           href: about.md
-    - name: Oktatóanyagok
-      items:
-        - name: Ismerkedés a Visual Studióval
-          href: get-started-netcore-visualstudio.md
     - name: Alapelvek
       items:
         - name: Migrálás a Bridge to Kubernetesre
