@@ -2,13 +2,13 @@
 title: Azure Event Grid fogalmak
 description: Az Azure Event Gridet és a vele kapcsolatos fogalmakat ismerteti. A Event Grid számos kulcsfontosságú összetevőjét határozza meg.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 003139374a056da6ddc22dd1453d28761ff58871
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/29/2020
+ms.openlocfilehash: 6cfb8b3aaf16a0080b9864ce5198b8a7232e8bc8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86116488"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075109"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Fogalmak a Azure Event Grid
 
@@ -37,11 +37,11 @@ A támogatott Event Grid források megvalósításával kapcsolatos további inf
 
 Az Event Grid-témakör olyan végpontot biztosít, amelyben a forrás eseményeket küld. A közzétevő létrehozza az Event Grid-témakört, és eldönti, hogy egy adott eseményforrás egy vagy több témakörre van-e szüksége. A témakörök a kapcsolódó események gyűjteményéhez használatosak. Bizonyos típusú események megválaszolásához az előfizetők eldönthetik, hogy mely témakörökre kell előfizetni.
 
-A rendszertémakörök az Azure-szolgáltatások, például az Azure Storage, az Azure Event Hubs és a Azure Service Bus által nyújtott beépített témakörök. Létrehozhat rendszertémaköröket az Azure-előfizetésében, és feliratkozhat rájuk. További információ: [a rendszertémakörök áttekintése](system-topics.md). 
+A **rendszertémakörök** az Azure-szolgáltatások, például az Azure Storage, az Azure Event Hubs és a Azure Service Bus által nyújtott beépített témakörök. Létrehozhat rendszertémaköröket az Azure-előfizetésében, és feliratkozhat rájuk. További információ: [a rendszertémakörök áttekintése](system-topics.md). 
 
-Az egyéni témakörök az alkalmazások és a külső felek témakörei. Amikor létrehoz vagy hozzáférést kap egy egyéni témakörhöz, akkor az megjelenik a saját előfizetésében. További információ: [Egyéni témakörök](custom-topics.md).
+Az **Egyéni témakörök** az alkalmazások és a harmadik féltől származó témakörök. Amikor létrehoz vagy hozzáférést kap egy egyéni témakörhöz, akkor az megjelenik a saját előfizetésében. További információ: [Egyéni témakörök](custom-topics.md). Az alkalmazás tervezésekor rugalmasságot biztosít, amikor eldönti, hány témakört kell létrehoznia. Nagyméretű megoldások esetében hozzon létre egy egyéni témakört a kapcsolódó események egyes kategóriáira. Tekintsünk például egy olyan alkalmazást, amelyik a felhasználói fiókok módosításához és a megrendelések feldolgozásához kapcsolódóan küld eseményeket. Nem valószínű, hogy valamely eseménykezelőnek mind a két esemény kategória kellene. Hozzon létre két külön témakört, és az eseménykezelők hadd iratkozzanak fel arra, amelyik érdekli őket. Kis megoldások esetében érdemes lehet az összes eseményt egyetlen témakörbe elküldeni. Az esemény-előfizetők szűrhetik a kívánt típusú eseményeket.
 
-Az alkalmazás tervezésekor rugalmasságot biztosít, amikor eldönti, hány témakört kell létrehoznia. Nagyméretű megoldások esetében hozzon létre egy egyéni témakört a kapcsolódó események egyes kategóriáira. Tekintsünk például egy olyan alkalmazást, amelyik a felhasználói fiókok módosításához és a megrendelések feldolgozásához kapcsolódóan küld eseményeket. Nem valószínű, hogy valamely eseménykezelőnek mind a két esemény kategória kellene. Hozzon létre két külön témakört, és az eseménykezelők hadd iratkozzanak fel arra, amelyik érdekli őket. Kis megoldások esetében érdemes lehet az összes eseményt egyetlen témakörbe elküldeni. Az esemény-előfizetők szűrhetik a kívánt típusú eseményeket.
+Van egy másik típusú témakör: **partner témakör** . A [partner Events](partner-events-overview.md) szolgáltatás lehetővé teszi, hogy egy harmadik féltől származó SaaS-szolgáltató eseményeket tegyen közzé a szolgáltatásaiból, hogy azok elérhetők legyenek az adott eseményekre előfizethető felhasználók számára. Az SaaS-szolgáltató egy témakör típusát, egy **partneri témakört** tesz elérhetővé, amelyet az előfizetők az események felhasználására használnak. Emellett egy tiszta pub-sub modellt is kínál, amely elválasztja az esemény-közzétevők és az előfizetők által használt erőforrások tulajdonjogát.
 
 ## <a name="event-subscriptions"></a>Esemény-előfizetések
 
@@ -66,7 +66,7 @@ Egy Event Grid perspektívából az eseménykezelő az a hely, ahol az eseményt
 
 A támogatott Event Grid kezelők megvalósításával kapcsolatos további információkért lásd: [eseménykezelők a Azure Event Gridban](event-handlers.md).
 
-## <a name="security"></a>Biztonság
+## <a name="security"></a>Biztonsági őr
 
 Event Grid biztosít biztonságot a témakörökre való feliratkozáshoz és a témakörök közzétételéhez. Feliratkozáskor megfelelő engedélyekkel kell rendelkeznie az erőforrás vagy az Event Grid témakörben. Közzétételkor SAS-jogkivonattal vagy kulcs-hitelesítéssel kell rendelkeznie a témakörhöz. További információ: [Event Grid biztonság és hitelesítés](security-authentication.md).
 
@@ -81,7 +81,7 @@ Egyéni témakör használatakor az eseményeket mindig közzé kell tenni egy t
 > [!NOTE]
 > A 64 KB-ig terjedő méretű események általánosan elérhetők (GA) szolgáltatói szerződés (SLA). A legfeljebb 1 MB méretű esemény támogatása jelenleg előzetes verzióban érhető el. Az 64 KB-nál nagyobb események díját 64 KB-os növekményekben számoljuk el. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Event Grid ismertetése: [Az Event Grid bemutatása](overview.md).
 * Az Event Grid használatának gyors megkezdéséhez tekintse meg [az egyéni események létrehozása és irányítása Azure Event Grid](custom-event-quickstart.md)használatával című témakört.

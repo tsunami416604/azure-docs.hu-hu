@@ -4,20 +4,20 @@ description: Ez a szkript az Azure CLI-ben elérhető egyes parancsokat mutatja 
 ms.topic: sample
 ms.date: 01/29/2018
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7aba6e64fdf39a069eb010ef032fcc5391fd47ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2e0fbf44be5718cf5577f6bc9aea436968e2fc3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87494383"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073554"
 ---
 # <a name="cli-example-create-and-manage-a-linux-pool-in-azure-batch"></a>CLI-példa: Linux-készlet létrehozása és kezelése az Azure Batch szolgáltatásban
 
 Ez a szkript az Azure CLI-ben elérhető egyes parancsokat mutatja be, hogy a Linux számítási csomópontok készletét hozza létre és felügyelje Azure Batchban.
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.20-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). 
+- Az oktatóanyaghoz az Azure CLI 2.0.20 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van. 
 
 ## <a name="example-script"></a>Példaszkript
 
@@ -35,7 +35,7 @@ az group delete --name myResourceGroup
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Jegyzetek |
+| Parancs | Megjegyzések |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az batch account create](/cli/azure/batch/account#az-batch-account-create) | Létrehoz egy Batch-fiókot. |
@@ -49,6 +49,6 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az batch node delete](/cli/azure/batch/node#az-batch-node-delete) | Törli a felsorolt csomópontokat a megadott készletből.  |
 | [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).

@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 74d07076fb322214348d52fe65dbc98bdff3cd44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30e1f43e283707434adfa48b8754a7b0509b9eed
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798261"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075347"
 ---
 # <a name="log-azure-cosmos-db"></a>NAPLÓ (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  A megadott numerikus kifejezés természetes alapú logaritmusát adja vissza.  
   
 ## <a name="syntax"></a>Szintaxis
@@ -39,7 +41,7 @@ LOG (<numeric_expr> [, <base>])
   
   Alapértelmezés szerint a LOG () függvény a természetes alapú logaritmust adja vissza. A logaritmus alapjait másik értékre módosíthatja a választható alap paraméter használatával.  
   
-  A természetes logaritmus az **e**-Base logaritmusa, ahol az **e** egy, körülbelül 2,718281828-as irracionális konstans.  
+  A természetes logaritmus az **e** -Base logaritmusa, ahol az **e** egy, körülbelül 2,718281828-as irracionális konstans.  
   
   Egy szám exponenciális értékének természetes alapú logaritmusa maga a szám: LOG (EXP (n)) = n. Egy szám természetes alapú logaritmusának exponenciális értéke maga a szám: EXP (LOG (n)) = n.
 
@@ -71,7 +73,7 @@ SELECT EXP(LOG(10)) AS expLog
 [{expLog: 10.000000000000002}]  
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

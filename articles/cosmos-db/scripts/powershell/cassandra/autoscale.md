@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 07/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 7ac3279b7447a1cd1559588d5d4131e65b914d59
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 631f689348f4fa99bc15209f81436a718df163b4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282039"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074644"
 ---
 # <a name="create-a-keyspace-and-table-with-autoscale-for-azure-cosmos-db---cassandra-api"></a>Hozzon létre egy alapterületet és egy táblázatot az Azure Cosmos DB-Cassandra API
+[!INCLUDE[appliesto-cassandra-api](../../../includes/appliesto-cassandra-api.md)]
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -36,7 +37,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Jegyzetek |
+| Parancs | Megjegyzések |
 |---|---|
 |**Azure Cosmos DB**| |
 | [Új – AzCosmosDBAccount](/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Létrehoz egy Cosmos DB fiókot. |

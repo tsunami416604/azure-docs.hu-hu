@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 5545acbfd6bb239b9518fbe352b819f300dafaf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb193637525722bf227241a614cd977fbf70c9ac
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962349"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074182"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurációs és felügyeleti GYIK az Azure-beli Web Apps
 
@@ -60,23 +60,25 @@ A [app Service korlátozások](../azure-resource-manager/management/move-limitat
 A webalkalmazás kiszolgálói időzónájának beállítása:
 
 1. Az Azure Portal App Service előfizetésében lépjen az **Alkalmazásbeállítások** menüre.
-2. Az **Alkalmazásbeállítások**területen adja hozzá a következő beállítást:
+2. Az **Alkalmazásbeállítások** területen adja hozzá a következő beállítást:
     * Kulcs = WEBSITE_TIME_ZONE
     * Value = *a kívánt időzóna*
-3. Kattintson a **Mentés** gombra.
+3. Válassza a **Mentés** lehetőséget.
 
-A Windows rendszeren futó app Services esetében tekintse meg az elfogadott értékekhez tartozó [alapértelmezett időzóna](/windows-hardware/manufacture/desktop/default-time-zones) -cikk **timezone** oszlopát. A Linuxon futó app Services esetében állítsa be a [TZ-adatbázis nevét](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) az időzóna értékeként. Íme egy példa a TZ-adatbázis nevére: America/Adak.
+A Windows rendszeren futó app Services esetében tekintse meg a Windows parancs kimenetét `tzutil /L` . Használja az egyes bejegyzések második sorában található értéket. Például: "Tonga téli idő". Ezen értékek némelyike az [alapértelmezett időzónák](/windows-hardware/manufacture/desktop/default-time-zones) **timezone** oszlopában is szerepel.
+
+A Linuxon futó app Services esetében állítson be egy értéket az [IANA TZ-adatbázisból](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). Például: "America/Adak".
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Miért nem sikerül a folyamatos webjobs-feladatok néha?
 
-Alapértelmezés szerint a webalkalmazások el lesznek távolítva, ha egy meghatározott időtartam alatt tétlenek. Ez lehetővé teszi, hogy a rendszerek megőrizze erőforrásaikat. Az alapszintű és a standard csomagokban az **Always On** beállítás bekapcsolásával megtarthatja a webalkalmazás betöltésének időpontját. Ha a webalkalmazás folyamatos webjobs-feladatokat futtat, akkor a **mindig**be kell kapcsolnia, vagy előfordulhat, hogy a webjobs nem megbízhatóan fut. További információt a [folyamatosan futó Webjobs létrehozása](webjobs-create.md#CreateContinuous)című témakörben talál.
+Alapértelmezés szerint a webalkalmazások el lesznek távolítva, ha egy meghatározott időtartam alatt tétlenek. Ez lehetővé teszi, hogy a rendszerek megőrizze erőforrásaikat. Az alapszintű és a standard csomagokban az **Always On** beállítás bekapcsolásával megtarthatja a webalkalmazás betöltésének időpontját. Ha a webalkalmazás folyamatos webjobs-feladatokat futtat, akkor a **mindig** be kell kapcsolnia, vagy előfordulhat, hogy a webjobs nem megbízhatóan fut. További információt a [folyamatosan futó Webjobs létrehozása](webjobs-create.md#CreateContinuous)című témakörben talál.
 
 ## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>Hogyan lekérni a webes alkalmazás kimenő IP-címét?
 
 A webalkalmazáshoz tartozó kimenő IP-címek listájának lekérése:
 
 1. A Azure Portal a webalkalmazás paneljén lépjen a **Tulajdonságok** menüre.
-2. Keresse meg a **kimenő IP-címeket**.
+2. Keresse meg a **kimenő IP-címeket** .
 
 Megjelenik a kimenő IP-címek listája.
 
@@ -129,7 +131,7 @@ Webjobs-naplók áttekintése:
 2. Válassza ki a Webjobs.
 3. Válassza a **kimenet váltása** gombot.
 4. A kimeneti fájl letöltéséhez válassza a **letöltési** hivatkozást.
-5. Az egyes futtatások esetében válassza az **Egyéni meghívás**lehetőséget.
+5. Az egyes futtatások esetében válassza az **Egyéni meghívás** lehetőséget.
 6. Válassza a **kimenet váltása** gombot.
 7. Válassza ki a letöltési hivatkozást.
 
@@ -183,8 +185,8 @@ Az F12-nyomkövetés rögzítésére két lehetőség áll rendelkezésre:
 ### <a name="f12-console-output"></a>F12-konzol kimenete
 
 1. Válassza a **konzol** fület.
-2. Minden olyan lap esetében, amely nullánál több elemet tartalmaz, válassza ki a fület (**hiba**, **Figyelmeztetés**vagy **információ**). Ha a lap nincs bejelölve, a TAB ikon szürke vagy fekete, ha a kurzort onnan helyezi át.
-3. Kattintson a jobb gombbal a panel üzenet területére, majd válassza az **összes másolása**lehetőséget.
+2. Minden olyan lap esetében, amely nullánál több elemet tartalmaz, válassza ki a fület ( **hiba** , **Figyelmeztetés** vagy **információ** ). Ha a lap nincs bejelölve, a TAB ikon szürke vagy fekete, ha a kurzort onnan helyezi át.
+3. Kattintson a jobb gombbal a panel üzenet területére, majd válassza az **összes másolása** lehetőséget.
 4. Illessze be a másolt szöveget egy fájlba, majd mentse a fájlt.
 
 Egy HAR-fájl megtekintéséhez használhatja a [har Viewert](http://www.softwareishard.com/har/viewer/).
@@ -282,7 +284,7 @@ A App Service hitelesítésével és engedélyezésével kapcsolatos részletes 
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>Hogyan átirányítja az alapértelmezett *. azurewebsites.net tartományt az Azure-webalkalmazás egyéni tartományára?
 
-Új webhely Azure-beli Web Apps használatával történő létrehozásakor a rendszer egy alapértelmezett *sitename*. azurewebsites.net tartományt rendel hozzá a webhelyhez. Ha egyéni állomásnevet ad hozzá a webhelyhez, és nem szeretné, hogy a felhasználók hozzáférhessenek az alapértelmezett *. azurewebsites.net tartományhoz, akkor átirányíthatja az alapértelmezett URL-címet. Ha meg szeretné tudni, hogyan irányíthatja át a webhely alapértelmezett tartományában lévő összes forgalmat az egyéni tartományba, tekintse meg [az alapértelmezett tartomány átirányítása az egyéni tartományba az Azure Web Apps szolgáltatásban](https://zainrizvi.io/blog/block-default-azure-websites-domain/)című témakört.
+Új webhely Azure-beli Web Apps használatával történő létrehozásakor a rendszer egy alapértelmezett *sitename* . azurewebsites.net tartományt rendel hozzá a webhelyhez. Ha egyéni állomásnevet ad hozzá a webhelyhez, és nem szeretné, hogy a felhasználók hozzáférhessenek az alapértelmezett *. azurewebsites.net tartományhoz, akkor átirányíthatja az alapértelmezett URL-címet. Ha meg szeretné tudni, hogyan irányíthatja át a webhely alapértelmezett tartományában lévő összes forgalmat az egyéni tartományba, tekintse meg [az alapértelmezett tartomány átirányítása az egyéni tartományba az Azure Web Apps szolgáltatásban](https://zainrizvi.io/blog/block-default-azure-websites-domain/)című témakört.
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Hogyan határozza meg, hogy a .NET-verzió melyik verziója van telepítve a App Service-ben?
 

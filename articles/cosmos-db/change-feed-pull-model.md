@@ -8,14 +8,15 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.reviewer: sngun
-ms.openlocfilehash: aa0586ab2a0ff21e3187bba070dd4be7ef325288
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6d2f39eae94b217ad1f95a6a559aa3e1044d10da
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784677"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93072689"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>A hírcsatorna lekérési modelljének módosítása Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ha a Change feed pull modellt használja, a saját tempójában használhatja a Azure Cosmos DB változási csatornát. Ahogy az [adatváltozási folyamattal](change-feed-processor.md)már megteheti a változást, a hírcsatorna-lekérési modell módosításával integrálással a változások feldolgozását több módosítási csatornán keresztül is.
 
@@ -39,7 +40,7 @@ Az alábbi helyzetekben érdemes megfontolni a lekéréses modell használatát:
 
 Íme néhány lényeges különbség a változási hírcsatorna-feldolgozó és a lekérési modell között:
 
-|Szolgáltatás  | Változáscsatorna feldolgozója| Lekéréses modell |
+|Funkció  | Változáscsatorna feldolgozója| Lekéréses modell |
 | --- | --- | --- |
 | A változási hírcsatorna aktuális pontjának nyomon követése | Bérlet (Azure Cosmos DB tárolóban tárolva) | Folytatási token (memóriában tárolt vagy manuálisan megőrzött) |
 | A korábbi módosítások visszajátszásának lehetősége | Igen, leküldéses modellel | Igen, lekéréses modellel|

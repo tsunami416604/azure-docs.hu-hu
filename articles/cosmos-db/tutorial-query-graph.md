@@ -9,14 +9,15 @@ ms.topic: tutorial
 ms.date: 12/03/2018
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f5d3542527f73d4a172e26a0d9222eaa077523c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13b2664ea65c880915c95afa095ff86379474cf5
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409459"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073859"
 ---
 # <a name="tutorial-query-azure-cosmos-db-gremlin-api-by-using-gremlin"></a>Oktatóanyag: Azure Cosmos DB Gremlin API lekérdezése a Gremlin használatával
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Az Azure Cosmos DB [Gremlin API](graph-introduction.md) támogatja a [Gremlin](https://github.com/tinkerpop/gremlin/wiki)-lekérdezéseket. Ez a cikk mintadokumentumokat és -lekérdezéseket tartalmaz a kezdéshez. A [Gremlin-támogatási](gremlin-support.md) cikkben talál részletes Gremlin-referenciát.
 
@@ -69,7 +70,7 @@ g.V('thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabe
 
 A Gremlin használatával összetettebb lekérdezéseket hozhat létre és hatékony gráfbejárási logikákat implementálhat, beleértve a szűrőkifejezések keverését, a hurkolás elvégzését a `loop` lépéssel, valamint a feltételes navigáció implementálását a `choose` lépéssel. A [Gremlin-támogatás](gremlin-support.md) segítségével további lehetőségeket ismerhet meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 

@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 3f787840422e61d6f43081d991ffc3ef28da6976
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a25cd2c0a9205dc184640e95f122c770b29cf24a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486531"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073247"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Tanúsítványalapú hitelesítés Azure AD-identitáshoz Azure Cosmos DB-fiók kulcsainak eléréséhez
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A tanúsítványalapú hitelesítéssel az ügyfélalkalmazás ügyféltanúsítvánnyal hitelesíthető az Azure Active Directory (Azure AD) használatával. A tanúsítványalapú hitelesítést olyan gépen végezheti el, amelyen identitásra van szükség, például egy helyszíni gépen vagy egy Azure-beli virtuális gépen. Az alkalmazás elolvashatja Azure Cosmos DB kulcsait anélkül, hogy a kulcsokat közvetlenül az alkalmazásban kelljen volna beolvasnia. Ez a cikk bemutatja, hogyan hozhat létre egy minta Azure AD-alkalmazást, hogyan konfigurálhatja tanúsítványalapú hitelesítésre, bejelentkezhet az Azure-ba az új alkalmazás-identitás használatával, majd lekéri a kulcsokat az Azure Cosmos-fiókból. Ez a cikk a Azure PowerShell használatával állítja be az identitásokat, és egy C#-minta alkalmazást biztosít, amely hitelesíti és hozzáfér a kulcsokhoz az Azure Cosmos-fiókból.  
 
@@ -30,7 +31,7 @@ Ebben a lépésben egy minta webalkalmazást fog regisztrálni az Azure AD-fiók
 
 1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
 
-1. Nyissa meg az Azure **Active Directory** panelt, lépjen a **Alkalmazásregisztrációk** panelre, és válassza az **új regisztráció**lehetőséget. 
+1. Nyissa meg az Azure **Active Directory** panelt, lépjen a **Alkalmazásregisztrációk** panelre, és válassza az **új regisztráció** lehetőséget. 
 
    :::image type="content" source="./media/certificate-based-authentication/new-app-registration.png" alt-text="Új alkalmazás regisztrálása Active Directory":::
 
@@ -44,7 +45,7 @@ Ebben a lépésben egy minta webalkalmazást fog regisztrálni az Azure AD-fiók
 
 1. Az űrlap kitöltése után válassza a **regisztráció** lehetőséget.
 
-1. Ha az alkalmazás regisztrálva van, jegyezze fel az **alkalmazás (ügyfél) azonosítóját** és az **objektumazonosítót**, majd a következő lépésekben fogja használni ezeket az adatokat. 
+1. Ha az alkalmazás regisztrálva van, jegyezze fel az **alkalmazás (ügyfél) azonosítóját** és az **objektumazonosítót** , majd a következő lépésekben fogja használni ezeket az adatokat. 
 
    :::image type="content" source="./media/certificate-based-authentication/get-app-object-ids.png" alt-text="Új alkalmazás regisztrálása Active Directory":::
 
@@ -107,7 +108,7 @@ A fenti parancs az alábbi képernyőképhez hasonló kimenetet eredményez:
 
 1. Navigáljon az Azure Cosmos-fiókjához, és nyissa meg a **hozzáférés-vezérlés (iam) panelt** .
 
-1. Válassza a **Hozzáadás** és a **szerepkör-hozzárendelés hozzáadása**lehetőséget. Adja hozzá az előző lépésben a **közreműködő** szerepkörrel létrehozott PéldaAlkalmazás az alábbi képernyőképen látható módon:
+1. Válassza a **Hozzáadás** és a **szerepkör-hozzárendelés hozzáadása** lehetőséget. Adja hozzá az előző lépésben a **közreműködő** szerepkörrel létrehozott PéldaAlkalmazás az alábbi képernyőképen látható módon:
 
    :::image type="content" source="./media/certificate-based-authentication/configure-cosmos-account-with-identify.png" alt-text="Új alkalmazás regisztrálása Active Directory":::
 
@@ -123,7 +124,7 @@ Az ügyfélalkalmazás Azure-alkalmazásának regisztrációja:
 
 1. Nyissa meg az Azure **Active Directory** panelt, nyissa meg a **Alkalmazásregisztrációk** ablaktáblát, és nyissa meg az előző lépésben létrehozott minta alkalmazást. 
 
-1. Válassza a **tanúsítványok & a titkok** lehetőséget, majd **töltse fel a tanúsítványt**. Keresse meg az előző lépésben létrehozott tanúsítványfájl-fájlt a feltöltéshez.
+1. Válassza a **tanúsítványok & a titkok** lehetőséget, majd **töltse fel a tanúsítványt** . Keresse meg az előző lépésben létrehozott tanúsítványfájl-fájlt a feltöltéshez.
 
 1. Válassza a **Hozzáadás** elemet. A tanúsítvány feltöltése után a rendszer megjeleníti az ujjlenyomatot, a kezdési dátumot és a lejárati értékeket.
 

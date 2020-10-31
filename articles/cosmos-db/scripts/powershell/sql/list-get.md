@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: b7a316a13ecc5683474411e3ac185f2136914186
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 030cca261066025c8f2ae6b2254f40dce9c9b39d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92481975"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074522"
 ---
 # <a name="list-and-get-databases-and-containers-for-azure-cosmos-db---sql-core-api"></a>Adatbázisok és tárolók listázása és lekérése a Azure Cosmos DB-SQL (Core) API-hoz
+[!INCLUDE[appliesto-sql-api](../../../includes/appliesto-sql-api.md)]
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -36,7 +37,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Jegyzetek |
+| Parancs | Megjegyzések |
 |---|---|
 |**Azure Cosmos DB**| |
 | [Get-AzCosmosDBAccount](/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Felsorolja Cosmos DB fiókokat, vagy lekéri a megadott Cosmos DB fiókot. |

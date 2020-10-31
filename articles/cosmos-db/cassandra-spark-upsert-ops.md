@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 5ad2cf5dee43f0345017930377a3ed9d2e4624bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e65d526db2861bc0d30a40651bbf9cf46111eaf5
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85257482"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073196"
 ---
 # <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Adatok Upsert a Spark Azure Cosmos DB Cassandra APIba
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Ez a cikk azt ismerteti, hogyan upsert az adatok a Spark Azure Cosmos DB Cassandra APIba.
 
@@ -87,7 +88,7 @@ cdbConnector.withSessionDo(session => session.execute("update books_ks.books set
 > [!NOTE]
 > A RDD API Upsert megegyeznek a létrehozási művelettel 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a következő cikkekkel a Azure Cosmos DB Cassandra API táblákban tárolt adatokra vonatkozó egyéb műveletek végrehajtásához:
  

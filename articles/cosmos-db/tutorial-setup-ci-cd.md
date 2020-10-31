@@ -8,14 +8,15 @@ ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7aace0b1ee6963aa220a60a11d02c370bf4d822a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2b74198f83ef972540038269d83048bfd1adda62
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476552"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073893"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>CI-/CD-folyamat beállítása az Azure Cosmos DB Emulator buildelési feladatával az Azure DevOpsban
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Az Azure Cosmos DB Emulator helyi környezetet biztosít, amely az Azure Cosmos DB szolgáltatást emulálja a fejlesztéshez. Az emulátor használatával helyben fejlesztheti és tesztelheti alkalmazását, anélkül, hogy ehhez regisztrálnia kellene egy Azure-előfizetést, vagy fizetnie kellene a szolgáltatásért. 
 
@@ -62,7 +63,7 @@ Start-CosmosDbEmulator
 
 ## <a name="add-the-task-to-a-build-pipeline"></a><a name="addEmulatorBuildTaskToBuildDefinition"></a>Feladat hozzáadása buildfolyamathoz
 
-1. Mielőtt hozzáadhatna egy feladatot a buildfolyamathoz, hozzá kell adnia egy ügynökfeladatot. Keresse meg a buildfolyamatot, kattintson a három pont (**...**) elemre, és válassza az **Add an agent job** (Ügynökfeladat hozzáadása) lehetőséget.
+1. Mielőtt hozzáadhatna egy feladatot a buildfolyamathoz, hozzá kell adnia egy ügynökfeladatot. Keresse meg a buildfolyamatot, kattintson a három pont ( **...** ) elemre, és válassza az **Add an agent job** (Ügynökfeladat hozzáadása) lehetőséget.
 
 1. Ezután válassza ki az **+** ügynök feladata melletti szimbólumot az emulátor felépítési feladatának hozzáadásához. Keressen a **cosmos** kifejezésre a keresőmezőben, válassza ki az **Azure Cosmos DB Emulator** lehetőséget, és adja hozzá az ügynökfeladathoz. A buildelési feladat elindít egy tárolót, amelyben már fut a Cosmos DB Emulator egy példánya. Az Azure Cosmos DB Emulator-feladatot minden olyan feladat elé kell ütemezni, amelyhez az emulátor futása szükséges.
 

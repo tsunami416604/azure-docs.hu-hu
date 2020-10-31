@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 32266695770f627f7044bce92e4505f45776fd28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7a013e07ada0ba88b20598c23f706eb5ee71d49
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83747361"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073063"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Megfelelőség az Azure Cosmos DB-ben 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB az összes Azure-régióban elérhető. A Microsoft öt különböző Azure Cloud Environment-környezetet tesz elérhetővé az ügyfelek számára:
 
@@ -47,12 +48,12 @@ Az Azure Cosmos DB által lefedett tanúsítványok köre folyamatosan bővül. 
 | ISO 27701:2019| | | |
 | SOC 1, 2, 3 | | | |
 
-Ha többet szeretne megtudni ezekről a megfelelőségi ajánlatokról és azok előnyeiről, tekintse meg [a Microsoft Azure megfelelőségi oldal áttekintését](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) .
+Ha többet szeretne megtudni ezekről a megfelelőségi ajánlatokról és azok előnyeiről, tekintse meg A [Microsoft Azure megfelelőségi ajánlatokat](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/), A függelék A & B. című szakaszt.
 
 A következő táblázat felsorolja a Azure Government Azure Cosmos DB által támogatott tanúsítványokat:
 
 | **Globálisan alkalmazható** | **USA kormánya** | **Iparág-specifikus** | 
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | CSA-csillag minősítése | CJIS| HIPAA BAA | 
 | CSA-csillag igazolása| DoD SRG 2. szint| HITRUST  | 
 | ISO 20000-1:2011 | DoD SRG 4. szint | PCI DSS | 
@@ -64,12 +65,18 @@ A következő táblázat felsorolja a Azure Government Azure Cosmos DB által t�
 | SOC 1, 2, 3 | | |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure megfelelőségi tanúsítványokkal kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
-* A Azure Cosmos DB legújabb megfelelőségi tanúsítványait az [Azure megfelelőségének áttekintésében](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)találhatja meg.  
+* A Azure Cosmos DB legújabb megfelelőségi tanúsítványait lásd: [Microsoft Azure megfelelőségi ajánlatok](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/), függelék a & B.  
 
-* A Azure Cosmos DB biztonság és a legújabb Újdonságok áttekintését az [Azure Cosmos Database Security](database-security.md) című cikkben találja.
+* A Azure Cosmos DB biztonság és a legújabb Újdonságok áttekintését lásd: az [Azure Cosmos Database biztonsága](database-security.md).
+
+* A Azure Cosmos DB üzembe helyezésének biztonsági helyzetének javítására vonatkozó ajánlásokat az [Azure Cosmos db biztonsági alaptervben](security-baseline.md)talál. 
 
 * További információ a Microsoft-tanúsítványokról: [Azure biztonsági és adatkezelési központ](https://azure.microsoft.com/support/trust-center/).
+
+* A FedRAMP vonatkozó megfelelőségi információkért lásd: [Azure-szolgáltatások a FedRAMP és a DoD CC SRG naplózási hatóköre](../azure-government/compliance/azure-services-in-fedramp-auditscope.md).
+
+* A DoD megfelelőségi információit lásd: a [DoD megfelelőségi ajánlatai](/microsoft-365/compliance/offering-dod-disa-l2-l4-l5?view=o365-worldwide).

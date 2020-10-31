@@ -4,12 +4,12 @@ description: Ebben a rövid útmutatóban engedélyezheti Event Grid eseményeit
 ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3e9e9a7d6016f53225c1b2f31fb8eef91e202c7a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 6058fceb873e2b26da2d30dadba456e2a625f3f2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736872"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074216"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Gyors útmutató: események küldése a privát tároló beállításjegyzékből a Event Gridba
 
@@ -19,11 +19,11 @@ A cikk lépéseinek elvégzése után a tároló-beállításjegyzékből eljutt
 
 ![Webböngésző – a minta-webalkalmazás három fogadott eseménysel való megjelenítése][sample-app-01]
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot][azure-account].
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-A cikkben szereplő Azure CLI-parancsok a **bash** -rendszerhéjhoz vannak formázva. Ha más, például PowerShell-vagy parancssor-rendszerhéjt használ, lehetséges, hogy a sor folytatási karaktereit vagy a változók hozzárendelési sorait ennek megfelelően kell módosítania. Ez a cikk változók használatával minimálisra csökkentheti a parancsok szerkesztésének szükséges mennyiségét.
+- A cikkben szereplő Azure CLI-parancsok a **bash** -rendszerhéjhoz vannak formázva. Ha más, például PowerShell-vagy parancssor-rendszerhéjt használ, lehetséges, hogy a sor folytatási karaktereit vagy a változók hozzárendelési sorait ennek megfelelően kell módosítania. Ez a cikk változók használatával minimálisra csökkentheti a parancsok szerkesztésének szükséges mennyiségét.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 

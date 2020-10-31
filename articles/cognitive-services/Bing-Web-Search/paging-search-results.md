@@ -11,14 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: aahi
-ms.openlocfilehash: ea883bb294a8769b3c9be1e0eafc2e3e7c811b48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7613f4b6bb301c603ae5ded98f271f3cb98b340
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73481730"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074097"
 ---
 # <a name="how-to-page-through-results-from-the-bing-search-apis"></a>Az Bing Search API-k eredményeinek megjelenítése
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 A Bing web, Custom, képek, hírek vagy Video Search API-k hívásának elküldésekor a Bing a lekérdezéshez kapcsolódó összes eredmény részhalmazát adja vissza. A rendelkezésre álló eredmények becsült teljes számának beszerzéséhez nyissa meg a válasz objektum `totalEstimatedMatches` mezőjét. 
 
@@ -72,7 +77,7 @@ A Bing-rendszerkép és a videó API-k használatakor az `nextOffset` érték ha
 >
 > Ha a `responseFilter` lekérdezési paramétert a szűrési értékek megadása nélkül használja, ne használja a `count` és a `offset` paramétert. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mik a Bing Web Search API-k?](bing-api-comparison.md)
 * [Bing Web Search API 7-es verzió – referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

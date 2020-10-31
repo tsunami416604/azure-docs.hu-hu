@@ -6,14 +6,15 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 04/07/2020
-ms.openlocfilehash: 9c266e42804a12403e446bf024e93fe879497570
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec6a9db63504958640137fcd0fcfc904eb01afa5
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803262"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074729"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>Azure Cosmos DB tárolóban vagy fiókban lévő műveletek kiszolgálóoldali késésének figyelése
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 A Azure Cosmos DB Azure Monitor metrikai nézetet biztosít a fiók figyeléséhez és az irányítópultok létrehozásához. A rendszer alapértelmezés szerint összegyűjti a Azure Cosmos DB metrikákat, így nem kell explicit módon engedélyeznie vagy konfigurálnia a szolgáltatást. A kiszolgálóoldali késés mérőszáma egy művelet kiszolgálóoldali késésének megtekintésére szolgál. Azure Cosmos DB a közvetlen kapcsolattal rendelkező pont írási/olvasási műveleteinél 10 MS-nál kevesebb SLA-t biztosít. Az olvasási és írási műveletek esetében a SLA-kat az [SLA-dokumentumban](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)részletezett módon számítjuk ki.
 
@@ -29,11 +30,11 @@ Megkeresheti a diagnosztikai naplót, hogy megtekintse a visszaadott adatmennyis
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. Válassza a **figyelő** lehetőséget a bal oldali navigációs sávon, és válassza a **metrikák**lehetőséget.
+1. Válassza a **figyelő** lehetőséget a bal oldali navigációs sávon, és válassza a **metrikák** lehetőséget.
 
    :::image type="content" source="./media/monitor-server-side-latency/monitor-metrics-blade.png" alt-text="Metrikák ablaktábla Azure Monitor":::
 
-1. A **metrikák** ablaktáblán > **válasszon ki egy erőforrást** > válassza ki a szükséges **előfizetést**és **erőforráscsoportot**. Az **erőforrástípus**mezőben válassza a **Azure Cosmos db fiókok**lehetőséget, válasszon ki egy meglévő Azure Cosmos-fiókot, majd válassza az **alkalmaz**lehetőséget.
+1. A **metrikák** ablaktáblán > **válasszon ki egy erőforrást** > válassza ki a szükséges **előfizetést** és **erőforráscsoportot** . Az **erőforrástípus** mezőben válassza a **Azure Cosmos db fiókok** lehetőséget, válasszon ki egy meglévő Azure Cosmos-fiókot, majd válassza az **alkalmaz** lehetőséget.
    
    :::image type="content" source="./media/monitor-server-side-latency/select-cosmos-db-account.png" alt-text="Metrikák ablaktábla Azure Monitor":::
 
@@ -43,9 +44,9 @@ Megkeresheti a diagnosztikai naplót, hogy megtekintse a visszaadott adatmennyis
 
 ## <a name="filters-for-server-side-latency"></a>Kiszolgálóoldali késéssel kapcsolatos szűrők
 
-Emellett szűrheti a metrikákat, és lekérheti az adott **CollectionName**, a **ConnectionMode**, a **databasename**, a **OperationType**, a **régió**és a **PublicAPIType**által megjelenített diagramokat. 
+Emellett szűrheti a metrikákat, és lekérheti az adott **CollectionName** , a **ConnectionMode** , a **databasename** , a **OperationType** , a **régió** és a **PublicAPIType** által megjelenített diagramokat. 
 
-A metrikák szűréséhez válassza a **szűrő hozzáadása** lehetőséget, és válassza ki a szükséges tulajdonságot (például **PublicAPIType** ), és válassza ki az **SQL**értéket. Adjon hozzá egy másik szűrőt a **OperationType**. A gráf ezután megjeleníti a kiszolgálóoldali késést a különböző műveletekhez a kiválasztott időszakban. A tárolt eljáráson keresztül végrehajtott műveletek nincsenek naplózva, így azok nem érhetők el az OperationType metrika alatt.
+A metrikák szűréséhez válassza a **szűrő hozzáadása** lehetőséget, és válassza ki a szükséges tulajdonságot (például **PublicAPIType** ), és válassza ki az **SQL** értéket. Adjon hozzá egy másik szűrőt a **OperationType** . A gráf ezután megjeleníti a kiszolgálóoldali késést a különböző műveletekhez a kiválasztott időszakban. A tárolt eljáráson keresztül végrehajtott műveletek nincsenek naplózva, így azok nem érhetők el az OperationType metrika alatt.
 
 Az egyes műveletek **kiszolgálóoldali késési** mérőszámai az alábbi képen látható módon jelennek meg:
 

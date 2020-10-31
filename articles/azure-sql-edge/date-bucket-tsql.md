@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 896caae2dfd79c4678ffb34c531fb56835e9bd66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d81419721e94a2e181f094c0e0e64b1b23544a8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886843"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073519"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
 
@@ -41,16 +41,19 @@ A "Number" paraméterrel használt *dátum* része. Például: Év, hónap, perc
   
 |*datePart*|Rövidítéseket|  
 |---|---|
-|**nap**|**dd**, **d**|  
-|**héten**|**hét**, **ww**|  
+|**nap**|**dd** , **d**|  
+|**héten**|**hét** , **ww**| 
+|**hónap**|**mm** , **m**|
+|**negyedév**|**QQ** , **q**|  
+|**év**|**éé** , **éééé**|  
 |**óra**|**óó**|  
-|**perc**|**mi**, **n**|  
-|**másodperc**|**SS**, **s**|  
+|**perc**|**mi** , **n**|  
+|**másodperc**|**SS** , **s**|  
 |**ezredmásodperces**|**MS**|  
 
 *szám*
 
-Az egész szám, amely a gyűjtő szélességét határozza meg a *datePart* argumentummal együtt. Ez a dataPart-gyűjtők szélességét jelöli a forrás időpontból. **`This argument cannot be a negative integer value`**. 
+Az egész szám, amely a gyűjtő szélességét határozza meg a *datePart* argumentummal együtt. Ez a dataPart-gyűjtők szélességét jelöli a forrás időpontból. **`This argument cannot be a negative integer value`** . 
 
 *dátum*
 
@@ -61,7 +64,7 @@ Egy kifejezés, amely a következő értékek egyikére képes feloldani:
 + **DateTimeOffset**
 + **datetime2**
 + **idő adattípusúra**
-+ **idő**
++ **time**
 
 A *Date (dátum* `DATE_BUCKET` ) oszlop kifejezéseket, kifejezéseket vagy felhasználó által definiált változókat fogad el, ha azok a fent említett adattípusok bármelyikére feloldhatók.
 
@@ -74,7 +77,7 @@ Egy opcionális kifejezés, amely a következő értékek egyikére oldható fel
 + **DateTimeOffset**
 + **datetime2**
 + **idő adattípusúra**
-+ **idő**
++ **time**
 
 A (z) adattípus adattípusának `Origin` meg kell egyeznie a paraméter adattípusával `Date` . 
 
@@ -122,7 +125,7 @@ Select DATE_BUCKET(wk, 5, @date, @origin)
 
 ## <a name="datepart-argument"></a>DatePart argumentum
 
-a **DAYOFYEAR**, a **nap**és a **hétköznap** ugyanazt az értéket adják vissza. Minden *DatePart* és a hozzá tartozó rövidítések ugyanazt az értéket adják vissza.
+a **DAYOFYEAR** , a **nap** és a **hétköznap** ugyanazt az értéket adják vissza. Minden *DatePart* és a hozzá tartozó rövidítések ugyanazt az értéket adják vissza.
   
 ## <a name="number-argument"></a>szám argumentum
 
@@ -197,7 +200,7 @@ Ezek a példák különböző típusú kifejezéseket használnak argumentumkén
   
 #### <a name="specifying-user-defined-variables-as-number-and-date"></a>Felhasználó által definiált változók megadása számként és dátumként  
 
-Ez a példa a felhasználó által definiált változókat adja meg a *szám* és a *dátum*argumentumként:
+Ez a példa a felhasználó által definiált változókat adja meg a *szám* és a *dátum* argumentumként:
   
 ```sql
 DECLARE @days int = 365,
@@ -247,7 +250,7 @@ ShippedDateBucket           SumOrderQuantity SumUnitPrice
 
 #### <a name="specifying-scalar-system-function-as-date"></a>Skaláris rendszerfüggvény meghatározása dátumként
 
-Ez a példa `SYSDATETIME` a *dátumot*adja meg. A visszaadott pontos érték az utasítás végrehajtásának napjától és időpontjától függ:
+Ez a példa `SYSDATETIME` a *dátumot* adja meg. A visszaadott pontos érték az utasítás végrehajtásának napjától és időpontjától függ:
   
 ```sql
 SELECT Date_Bucket(wk, 10, SYSDATETIME());  
@@ -264,7 +267,7 @@ Itt látható az eredményhalmaz.
 
 #### <a name="specifying-scalar-subqueries-and-scalar-functions-as-number-and-date"></a>Skaláris allekérdezések és skaláris függvények meghatározása számként és dátumként
 
-Ez a példa skaláris allekérdezéseket használ, a `MAX(OrderDate)` *szám* és a *dátum*argumentumként. `(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100)` mesterséges argumentumként szolgál a Number paraméterhez, hogy megmutassa, hogyan válasszon ki egy *Number* argumentumot egy érték listából.
+Ez a példa skaláris allekérdezéseket használ, a `MAX(OrderDate)` *szám* és a *dátum* argumentumként. `(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100)` mesterséges argumentumként szolgál a Number paraméterhez, hogy megmutassa, hogyan válasszon ki egy *Number* argumentumot egy érték listából.
   
 ```sql
 SELECT DATE_BUCKET(week,(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100),  
@@ -281,7 +284,7 @@ SELECT Date_Bucket(week,(10/2), SYSDATETIME());
 
 #### <a name="specifying-an-aggregate-window-function-as-number"></a>Összesítő ablak függvényének meghatározása számként
 
-Ez a példa összesítő ablak függvényt használ a *szám*argumentumként.
+Ez a példa összesítő ablak függvényt használ a *szám* argumentumként.
   
 ```sql
 Select 

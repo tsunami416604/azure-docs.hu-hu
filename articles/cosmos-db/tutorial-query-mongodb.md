@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 5283916194d407cebd30ef072907c56ded1c6cb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f93ec39e7a2e3b5829c0d6205404c6c5c4af6189
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85848943"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074318"
 ---
 # <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Adatlekérdezés Azure Cosmos DB API-MongoDB használatával
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 A [Azure Cosmos db API-MongoDB](mongodb-introduction.md) támogatja a [MongoDB-lekérdezéseket](https://docs.mongodb.com/manual/tutorial/query-documents/). 
 
@@ -323,7 +324,7 @@ db.Family.find( {children: { $size:3} } )
 
 Nem ad vissza értéket, mivel nincs olyan család, amelyben kettőnél több gyermek van. Ez a lekérdezés csak akkor lesz sikeres, és adja vissza a teljes dokumentumot, ha a paraméter értéke 2.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 

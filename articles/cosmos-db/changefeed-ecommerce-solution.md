@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: 84a39ade902bd22d67e9b3a7d40b392bfd83dfd3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1206d67b6a9d3823220b1ce1b7bd5b4b45e672fe
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475915"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93072705"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>A valós idejű adatelemzések megjelenítéséhez használja a Azure Cosmos DB módosítási csatornát
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A Azure Cosmos DB változási hírcsatorna egy olyan mechanizmus, amely egy Azure Cosmos-tárolóból származó rekordok folyamatos és növekményes adatcsatornájának beolvasását végzi el a rekordok létrehozásakor vagy módosításakor. A hírcsatornák támogatásának módosításával megfigyelheti a tárolót a változásokhoz. Ezután a módosításuk sorrendjében felsorolja a módosított dokumentumokat. Ha többet szeretne megtudni a hírcsatornák változásáról, tekintse meg a következő témakört: [a Change Feeding cikk használata](change-feed.md) 
 
@@ -72,7 +73,7 @@ A következő ábra a megoldásban részt vevő adatfolyamot és összetevőket 
 
 Hozza létre az Azure-erőforrásokat – Azure Cosmos DB, a Storage-fiókot, az Event hub-t, Stream Analytics a megoldáshoz szükséges. Ezeket az erőforrásokat egy Azure Resource Manager sablonon keresztül fogja telepíteni. Az alábbi lépéseket követve telepítheti ezeket az erőforrásokat: 
 
-1. Állítsa be a Windows PowerShell végrehajtási házirendjét a **korlátozás**nélküli értékre. Ehhez nyissa meg a **Windows PowerShellt rendszergazdaként** , és futtassa a következő parancsokat:
+1. Állítsa be a Windows PowerShell végrehajtási házirendjét a **korlátozás** nélküli értékre. Ehhez nyissa meg a **Windows PowerShellt rendszergazdaként** , és futtassa a következő parancsokat:
 
    ```powershell
    Get-ExecutionPolicy
@@ -83,12 +84,12 @@ Hozza létre az Azure-erőforrásokat – Azure Cosmos DB, a Storage-fiókot, az
 
 3. Adja meg a cosmosdbaccount_name, eventhubnamespace_name, storageaccount_name és paraméterek értékét a fájl **parameters.js** . Az egyes erőforrásokhoz később megadott neveket kell használnia.  
 
-4. A **Windows PowerShellben**navigáljon a **Azure Resource Manager** mappára, és futtassa a következő parancsot:
+4. A **Windows PowerShellben** navigáljon a **Azure Resource Manager** mappára, és futtassa a következő parancsot:
 
    ```powershell
    .\deploy.ps1
    ```
-5. Ha a rendszer kéri, adja meg az Azure- **előfizetése azonosítóját**, a **changefeedlab** az erőforráscsoport nevét, és **run1** a telepítési név mezőben. Ha az erőforrások üzembe helyezése megkezdődött, akár 10 percet is igénybe vehet.
+5. Ha a rendszer kéri, adja meg az Azure- **előfizetése azonosítóját** , a **changefeedlab** az erőforráscsoport nevét, és **run1** a telepítési név mezőben. Ha az erőforrások üzembe helyezése megkezdődött, akár 10 percet is igénybe vehet.
 
 ## <a name="create-a-database-and-the-collection"></a>Adatbázis és gyűjtemény létrehozása
 
@@ -98,19 +99,19 @@ Most hozzon létre egy gyűjteményt az e-kereskedelmi hely eseményeinek tárol
 
 2. A **adatkezelő** ablaktáblán válassza az **új gyűjtemény** lehetőséget, és töltse ki az űrlapot a következő részletekkel:  
 
-   * Az **adatbázis-azonosító** mezőben válassza az **új létrehozása**lehetőséget, majd adja meg a **changefeedlabdatabase**. Ne jelölje be a **kiépítési adatbázis átviteli sebessége** jelölőnégyzetet.  
-   * A **gyűjtemény** azonosító mezőjébe írja be a következőt: **changefeedlabcollection**.  
-   * A **Partition Key (partíció kulcsa** ) mezőbe írja be a következőt: **/cikkengedm**. Ez megkülönbözteti a kis-és nagybetűket, ezért ügyeljen arra, hogy megfelelően adja meg.  
-   * Az **átviteli sebesség** mezőben adja meg a **10000**értéket.  
+   * Az **adatbázis-azonosító** mezőben válassza az **új létrehozása** lehetőséget, majd adja meg a **changefeedlabdatabase** . Ne jelölje be a **kiépítési adatbázis átviteli sebessége** jelölőnégyzetet.  
+   * A **gyűjtemény** azonosító mezőjébe írja be a következőt: **changefeedlabcollection** .  
+   * A **Partition Key (partíció kulcsa** ) mezőbe írja be a következőt: **/cikkengedm** . Ez megkülönbözteti a kis-és nagybetűket, ezért ügyeljen arra, hogy megfelelően adja meg.  
+   * Az **átviteli sebesség** mezőben adja meg a **10000** értéket.  
    * Kattintson az **OK** gombra.  
 
 3. Ezután hozzon létre egy másik, **bérletek** nevű gyűjteményt a módosítási hírcsatorna feldolgozásához. A bérletek gyűjteménye összehangolja a változási csatornát több feldolgozón keresztül. A bérletek egy különálló bérlettel való tárolásához külön gyűjteményt kell használni.  
 
 4. Térjen vissza a **adatkezelő** panelre, és válassza az **új gyűjtemény** lehetőséget, és töltse ki az űrlapot a következő részletekkel:
 
-   * Az **adatbázis-azonosító** mezőben válassza a **meglévő használata**lehetőséget, majd adja meg a **changefeedlabdatabase**.  
-   * A **Gyűjtemény azonosítója** mezőben adja meg a **bérletek**értéket.  
-   * A **tárolási kapacitás**beállításnál válassza a **rögzített**lehetőséget.  
+   * Az **adatbázis-azonosító** mezőben válassza a **meglévő használata** lehetőséget, majd adja meg a **changefeedlabdatabase** .  
+   * A **Gyűjtemény azonosítója** mezőben adja meg a **bérletek** értéket.  
+   * A **tárolási kapacitás** beállításnál válassza a **rögzített** lehetőséget.  
    * Hagyja meg az **átviteli sebesség** mezőt az alapértelmezett értékre.  
    * Kattintson az **OK** gombra.
 
@@ -120,7 +121,7 @@ Most hozzon létre egy gyűjteményt az e-kereskedelmi hely eseményeinek tárol
 
 1. Nyissa meg a [Azure Portalt](https://portal.azure.com/) , és keresse meg a sablon központi telepítése által létrehozott **Azure Cosmos db fiókot** .  
 
-2. Navigáljon a **kulcsok** panelre, másolja az elsődleges KAPCSOLATi karakterláncot, és másolja azt egy Jegyzettömbbe vagy egy másik dokumentumba, amely a laborban elérhető lesz. Címkézheti Cosmos DB a **kapcsolatok karakterláncát**. Később át kell másolnia a karakterláncot a kódra, ezért jegyezze fel, hogy hol tárolja.
+2. Navigáljon a **kulcsok** panelre, másolja az elsődleges KAPCSOLATi karakterláncot, és másolja azt egy Jegyzettömbbe vagy egy másik dokumentumba, amely a laborban elérhető lesz. Címkézheti Cosmos DB a **kapcsolatok karakterláncát** . Később át kell másolnia a karakterláncot a kódra, ezért jegyezze fel, hogy hol tárolja.
 
 ### <a name="get-the-storage-account-key-and-connection-string"></a>A Storage-fiók kulcsának és a kapcsolatok karakterláncának beolvasása
 
@@ -130,7 +131,7 @@ Az Azure Storage-fiókok lehetővé teszik a felhasználók számára az adattá
 
 2. Válassza a **hozzáférési kulcsok** lehetőséget a bal oldali menüben.  
 
-3. Másolja az 1. **kulcs** alatti értékeket egy Jegyzettömbre vagy egy olyan dokumentumra, amely a laborban lesz elérhető. A **kulcsot** **tárolási kulcsként** és a **kapcsolatok karakterláncának** kell megcímkézni **tárolási kapcsolatok karakterláncként**. Ezeket a sztringeket később át kell másolnia a kódra, ezért jegyezze fel, és jegyezze meg, hogy hol tárolja őket.  
+3. Másolja az 1. **kulcs** alatti értékeket egy Jegyzettömbre vagy egy olyan dokumentumra, amely a laborban lesz elérhető. A **kulcsot** **tárolási kulcsként** és a **kapcsolatok karakterláncának** kell megcímkézni **tárolási kapcsolatok karakterláncként** . Ezeket a sztringeket később át kell másolnia a kódra, ezért jegyezze fel, és jegyezze meg, hogy hol tárolja őket.  
 
 ### <a name="get-the-event-hub-namespace-connection-string"></a>Az Event hub névtér-kapcsolati karakterláncának beolvasása
 
@@ -140,7 +141,7 @@ Az Azure Event hub megkapja az adatesemények, a tárolók, a folyamatok és az 
 
 2. A bal oldali menüben válassza a **megosztott hozzáférési szabályzatok** lehetőséget.  
 
-3. Válassza a **RootManageSharedAccessKey**lehetőséget. Másolja a **kapcsolati sztring elsődleges kulcsát** egy Jegyzettömbre vagy egy másik dokumentumra, amelyhez a laborban hozzá fog férni. Meg kell címkéznie az **Event hub névtér** kapcsolati karakterláncát. Később át kell másolnia a karakterláncot a kódra, ezért jegyezze fel, hogy hol tárolja.
+3. Válassza a **RootManageSharedAccessKey** lehetőséget. Másolja a **kapcsolati sztring elsődleges kulcsát** egy Jegyzettömbre vagy egy másik dokumentumra, amelyhez a laborban hozzá fog férni. Meg kell címkéznie az **Event hub névtér** kapcsolati karakterláncát. Később át kell másolnia a karakterláncot a kódra, ezért jegyezze fel, hogy hol tárolja.
 
 ## <a name="set-up-azure-function-to-read-the-change-feed"></a>Az Azure-függvény beállítása a változási csatorna olvasásához
 
@@ -148,15 +149,15 @@ Amikor új dokumentumot hoznak létre, vagy egy aktuális dokumentumot módosít
 
 1. Térjen vissza az eszközön klónozott adattárhoz.  
 
-2. Kattintson a jobb gombbal a **ChangeFeedLabSolution. SLN** nevű fájlra, majd válassza a **Megnyitás a Visual Studióval**lehetőséget.  
+2. Kattintson a jobb gombbal a **ChangeFeedLabSolution. SLN** nevű fájlra, majd válassza a **Megnyitás a Visual Studióval** lehetőséget.  
 
 3. Navigáljon **local.settings.jsa** Visual Studióban. Ezután használja a korábban feljegyzett értékeket az üres értékek kitöltéséhez.  
 
-4. Navigáljon a **ChangeFeedProcessor.cs**. A **Run** függvény paraméterei a következő műveleteket hajtják végre:  
+4. Navigáljon a **ChangeFeedProcessor.cs** . A **Run** függvény paraméterei a következő műveleteket hajtják végre:  
 
    * Cserélje le a **gyűjtemény neve** szöveget a gyűjtemény nevével. Ha követte a korábbi utasításokat, a gyűjtemény neve changefeedlabcollection.  
-   * Cserélje le a **bérletek gyűjteménye nevét** a bérletek gyűjteményének nevére. Ha követte a korábbi utasításokat, a bérletek gyűjteményének neve **bérletek**.  
-   * Győződjön meg arról, hogy a Visual Studio tetején a zöld nyíl bal oldalán található indítási projekt mező a következőt mondja: **ChangeFeedFunction**.  
+   * Cserélje le a **bérletek gyűjteménye nevét** a bérletek gyűjteményének nevére. Ha követte a korábbi utasításokat, a bérletek gyűjteményének neve **bérletek** .  
+   * Győződjön meg arról, hogy a Visual Studio tetején a zöld nyíl bal oldalán található indítási projekt mező a következőt mondja: **ChangeFeedFunction** .  
    * A program futtatásához kattintson a **Start**  gombra az oldal tetején.  
    * Ellenőrizheti, hogy a függvény fut-e, amikor a konzol alkalmazás a "feladat-gazdagép elindult".
 
@@ -174,11 +175,11 @@ Ha szeretné megtudni, hogyan dolgozza fel a változás a hírcsatornában az ú
  
 4. Mentse a módosításokat az összes szerkesztett fájlon.  
 
-5. Győződjön meg arról, hogy a Visual Studio tetején a zöld nyíl bal oldalán található **indítási projekt** mező a következőt mondja: **DataGenerator**. Ezután válassza a **Start** lehetőséget az oldal tetején a program futtatásához.  
+5. Győződjön meg arról, hogy a Visual Studio tetején a zöld nyíl bal oldalán található **indítási projekt** mező a következőt mondja: **DataGenerator** . Ezután válassza a **Start** lehetőséget az oldal tetején a program futtatásához.  
  
 6. Várjon, amíg a program futni próbál. A csillagok azt jelentik, hogy az adatforgalom bekerül! A program futásának fenntartása – fontos, hogy a rendszer sok adatgyűjtést gyűjtsön.  
 
-7. Ha [Azure Portal](https://portal.azure.com/) , majd az erőforráscsoport Cosmos db fiókjához navigál, majd **adatkezelő**, akkor a rendszer a **changefeedlabcollection** importált véletlenszerű adatmennyiséget fogja látni.
+7. Ha [Azure Portal](https://portal.azure.com/) , majd az erőforráscsoport Cosmos db fiókjához navigál, majd **adatkezelő** , akkor a rendszer a **changefeedlabcollection** importált véletlenszerű adatmennyiséget fogja látni.
  
    :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="Projekt vizualizációja":::
 
@@ -192,35 +193,35 @@ A Azure Stream Analytics egy teljes körűen felügyelt felhőalapú szolgáltat
 
    :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="Projekt vizualizációja":::
 
-3. Válassza a **+ stream-bemenet hozzáadása**elemet. Ezután válassza ki az **Event hub** elemet a legördülő menüből.  
+3. Válassza a **+ stream-bemenet hozzáadása** elemet. Ezután válassza ki az **Event hub** elemet a legördülő menüből.  
 
 4. Töltse ki az új beviteli űrlapot a következő részletekkel:
 
-   * A **bemeneti** Alias mezőben adja meg a **bevitel**értéket.  
-   * Válassza az **Event hub kiválasztása az előfizetések közül**lehetőséget.  
+   * A **bemeneti** Alias mezőben adja meg a **bevitel** értéket.  
+   * Válassza az **Event hub kiválasztása az előfizetések közül** lehetőséget.  
    * Állítsa az **előfizetés** mezőt az előfizetésre.  
    * Az **Event hub-névtér** mezőben adja meg az prelab során létrehozott Event hub-névtér nevét.  
    * Az **Event hub neve** mezőben válassza a **meglévő használata** lehetőséget, majd a legördülő menüben válassza az **Event-hub1** elemet.  
    * Az **Event hub-házirend** neve mező értékét állítsa az alapértelmezett értékre.  
-   * Az **esemény szerializálási formátumának** meghagyása **JSON**-ként.  
-   * Hagyja meg a **kódolás mezőt** **UTF-8**értékre.  
-   * Az **esemény tömörítési típus** mezőjét állítsa **nincs**értékre.  
+   * Az **esemény szerializálási formátumának** meghagyása **JSON** -ként.  
+   * Hagyja meg a **kódolás mezőt** **UTF-8** értékre.  
+   * Az **esemény tömörítési típus** mezőjét állítsa **nincs** értékre.  
    * Válassza ki a **Mentés** gombot.
 
-5. Váltson vissza a stream Analytics-feladatokhoz lapra, és válassza a **kimenetek**lehetőséget.  
+5. Váltson vissza a stream Analytics-feladatokhoz lapra, és válassza a **kimenetek** lehetőséget.  
 
 6. Válassza a **+ Hozzáadás** lehetőséget. Ezután válassza a **Power bi** lehetőséget a legördülő menüből.  
 
 7. Ha új Power BI kimenetet szeretne létrehozni az átlagos ár megjelenítéséhez, hajtsa végre a következő műveleteket:
 
-   * A **kimeneti alias** mezőben adja meg a **averagePriceOutput**.  
-   * Hagyja meg a **csoport munkaterület** mezőt úgy, hogy **engedélyezze a kapcsolódást a munkaterületek betöltéséhez**.  
-   * Az **adatkészlet neve** mezőbe írja be a **averagePrice**nevet.  
-   * A **tábla neve** mezőbe írja be a **averagePrice**nevet.  
+   * A **kimeneti alias** mezőben adja meg a **averagePriceOutput** .  
+   * Hagyja meg a **csoport munkaterület** mezőt úgy, hogy **engedélyezze a kapcsolódást a munkaterületek betöltéséhez** .  
+   * Az **adatkészlet neve** mezőbe írja be a **averagePrice** nevet.  
+   * A **tábla neve** mezőbe írja be a **averagePrice** nevet.  
    * Válassza az **Engedélyezés** gombot, majd kövesse az utasításokat a Power BIhoz való kapcsolódás engedélyezéséhez.  
    * Válassza ki a **Mentés** gombot.  
 
-8. Ezután lépjen vissza a **streamjob1** , és válassza a **lekérdezés szerkesztése**lehetőséget.
+8. Ezután lépjen vissza a **streamjob1** , és válassza a **lekérdezés szerkesztése** lehetőséget.
 
    :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="Projekt vizualizációja" (indítás) lehetőségre változik.
 
@@ -234,11 +235,11 @@ A Power BI egy üzleti elemzési eszközcsomag, mellyel adatokat elemezhet és m
 
 3. Kattintson a jobb felső sarokban található **+ csempe hozzáadása** lehetőségre.  
 
-4. Válassza az **Egyéni adatfolyam-továbbítás**lehetőséget, majd kattintson a **tovább** gombra.  
+4. Válassza az **Egyéni adatfolyam-továbbítás** lehetőséget, majd kattintson a **tovább** gombra.  
  
-5. Válassza ki a **averagePrice** az **adatkészletek**közül, majd kattintson a **tovább**gombra.  
+5. Válassza ki a **averagePrice** az **adatkészletek** közül, majd kattintson a **tovább** gombra.  
 
-6. A **vizualizáció típusa** mezőben válassza a **fürtözött sávdiagram** lehetőséget a legördülő menüből. A **tengely**területen adja hozzá a műveletet. A **Jelmagyarázat** kihagyása anélkül, hogy bármit adna hozzá. Ezután a következő, érték nevű szakaszban adja hozzá az **AVG** **értéket**. Válassza a **Next (tovább**), majd a diagram címet, és kattintson az **alkalmaz**gombra. Új diagramot kell látnia az irányítópulton.  
+6. A **vizualizáció típusa** mezőben válassza a **fürtözött sávdiagram** lehetőséget a legördülő menüből. A **tengely** területen adja hozzá a műveletet. A **Jelmagyarázat** kihagyása anélkül, hogy bármit adna hozzá. Ezután a következő, érték nevű szakaszban adja hozzá az **AVG** **értéket** . Válassza a **Next (tovább** ), majd a diagram címet, és kattintson az **alkalmaz** gombra. Új diagramot kell látnia az irányítópulton.  
 
 7. Most, ha további mérőszámokat szeretne megjeleníteni, térjen vissza a **streamjob1** , és hozzon létre három további kimenetet a következő mezőkkel.
 
@@ -308,9 +309,9 @@ A Power BI egy üzleti elemzési eszközcsomag, mellyel adatokat elemezhet és m
 
 Most bemutatjuk, hogyan használható az új adatelemzési eszköz egy valós e-kereskedelmi hellyel való kapcsolódáshoz. Az e-kereskedelmi webhely létrehozásához használjon egy Azure Cosmos-adatbázist a termékkategóriák (nők, férfiak, Unisex), a termékkatalógus és a legnépszerűbb elemek listájának tárolásához.
 
-1. Térjen vissza a [Azure Portalra](https://portal.azure.com/), majd a **Cosmos db-fiókjába**, majd **adatkezelő**.  
+1. Térjen vissza a [Azure Portalra](https://portal.azure.com/), majd a **Cosmos db-fiókjába** , majd **adatkezelő** .  
 
-   Adjon hozzá két gyűjteményt a **changefeedlabdatabase**  -  -**termékek** és- **Kategóriák** területen rögzített tárolókapacitással.
+   Adjon hozzá két gyűjteményt a **changefeedlabdatabase**  -  - **termékek** és- **Kategóriák** területen rögzített tárolókapacitással.
 
    Adjon hozzá egy másik gyűjteményt a **topItems** és a **/cikkengedm** nevű **changefeedlabdatabase** a partíció kulcsaként.
 
@@ -318,7 +319,7 @@ Most bemutatjuk, hogyan használható az új adatelemzési eszköz egy valós e-
 
    :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="Projekt vizualizációja":::
 
-3. Ahhoz, hogy a **topItems** -gyűjteményt a leggyakrabban megvásárolt elemekkel töltse fel, térjen vissza a **streamjob1** , és adjon hozzá egy új **kimenetet**. Válassza a **Cosmos db**lehetőséget.
+3. Ahhoz, hogy a **topItems** -gyűjteményt a leggyakrabban megvásárolt elemekkel töltse fel, térjen vissza a **streamjob1** , és adjon hozzá egy új **kimenetet** . Válassza a **Cosmos db** lehetőséget.
 
 4. Töltse ki a kötelező mezőket az alábbi képen látható módon.
 
@@ -326,14 +327,14 @@ Most bemutatjuk, hogyan használható az új adatelemzési eszköz egy valós e-
  
 5. Ha a labor előző részében a nem kötelező első 5 lekérdezést adta hozzá, folytassa a következő résszel: 5a. Ha nem, folytassa az 5b. résszel.
 
-   5a. A **streamjob1**területen válassza a **lekérdezés szerkesztése** lehetőséget, és illessze be a következő lekérdezést a Azure stream Analytics lekérdezés-szerkesztőbe az első 5 lekérdezés alatt, de a többi lekérdezés fölé.
+   5a. A **streamjob1** területen válassza a **lekérdezés szerkesztése** lehetőséget, és illessze be a következő lekérdezést a Azure stream Analytics lekérdezés-szerkesztőbe az első 5 lekérdezés alatt, de a többi lekérdezés fölé.
 
    ```sql
    SELECT arrayvalue.value.item AS Item, arrayvalue.value.price, arrayvalue.value.countEvents
    INTO topItems
    FROM arrayselect
    ```
-   5b. A **streamjob1**területen válassza a **lekérdezés szerkesztése** lehetőséget, és illessze be a következő lekérdezést a Azure stream Analytics lekérdezési szerkesztőjébe az összes többi lekérdezés fölé.
+   5b. A **streamjob1** területen válassza a **lekérdezés szerkesztése** lehetőséget, és illessze be a következő lekérdezést a Azure stream Analytics lekérdezési szerkesztőjébe az összes többi lekérdezés fölé.
 
    ```sql
    /*TOP 5*/
@@ -364,9 +365,9 @@ Most bemutatjuk, hogyan használható az új adatelemzési eszköz egy valós e-
 
 6. Nyissa meg a **EcommerceWebApp. SLN** fájlt, és navigáljon a **megoldáskezelő** **Web.config** fájljához.  
 
-7. A `<appSettings>` blokkon belül adja hozzá az **URI** -t és az **elsődleges kulcsot** , amelyet korábban mentett, ahol az **URI itt** és **az elsődleges kulcs itt**látható. Ezután adja hozzá az **adatbázis nevét** és a **gyűjtemény nevét** a jelzett módon. (Ezek a nevek csak akkor **changefeedlabdatabase** és **changefeedlabcollection** , ha úgy dönt, hogy másképpen nevezi el.)
+7. A `<appSettings>` blokkon belül adja hozzá az **URI** -t és az **elsődleges kulcsot** , amelyet korábban mentett, ahol az **URI itt** és **az elsődleges kulcs itt** látható. Ezután adja hozzá az **adatbázis nevét** és a **gyűjtemény nevét** a jelzett módon. (Ezek a nevek csak akkor **changefeedlabdatabase** és **changefeedlabcollection** , ha úgy dönt, hogy másképpen nevezi el.)
 
-   Adja meg a **termékek gyűjteményének nevét**, a **Kategóriák gyűjteményének nevét**és a **legfontosabb elemek gyűjteményének nevét** a jelzett módon. (Ezeknek a névnek **termékeknek, kategóriáknak és topItems** kell lennie, kivéve, ha úgy döntött, hogy másképpen nevezi el.)  
+   Adja meg a **termékek gyűjteményének nevét** , a **Kategóriák gyűjteményének nevét** és a **legfontosabb elemek gyűjteményének nevét** a jelzett módon. (Ezeknek a névnek **termékeknek, kategóriáknak és topItems** kell lennie, kivéve, ha úgy döntött, hogy másképpen nevezi el.)  
 
 8. Navigáljon a **EcommerceWebApp. SLN** **mappában található pénztár mappához** , és nyissa meg a következőt:. Ezután nyissa meg a **Web.config** fájlt a mappán belül.  
 

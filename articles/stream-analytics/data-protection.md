@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: b54076413d3a6cabf2e3ef0b06e8e17875efbf97
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e823322803958f092cee3b6d77e6a0ca7bc6e3f2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746404"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074250"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Adatvédelem a Azure Stream Analyticsban 
 
@@ -59,7 +59,7 @@ A megfelelőségi kötelezettségeinek bármely szabályozott iparágban vagy k�
 
 A következő lépésekkel konfigurálhatja a Storage-fiókot a privát adategységekhez. Ez a konfiguráció a Stream Analyticsi feladatokból, és nem a Storage-fiókból történik.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra. 
 
@@ -73,6 +73,27 @@ A következő lépésekkel konfigurálhatja a Storage-fiókot a privát adategys
 
    ![Magánjellegű adattárolási fiók beállításai](./media/data-protection/storage-account-create.png)
 
+## <a name="private-data-assets-that-are-stored"></a>Tárolt privát adategységek
+
+Az Stream Analytics által megőrzött személyes adatait a Storage-fiókban kell tárolni. A privát adategységek például a következők: 
+
+* A létrehozott lekérdezések és a hozzájuk kapcsolódó konfigurációk  
+
+* Felhasználó által meghatározott függvények 
+
+* Az Stream Analytics futtatókörnyezet által igényelt ellenőrzőpontok
+
+* A hivatkozási adatpillanatképek 
+
+A Stream Analytics-feladatban használt erőforrások kapcsolati adatait is tárolja a rendszer. Titkosítsa a Storage-fiókját az összes adatai védelméhez. 
+
+A megfelelőségi kötelezettségeinek bármely szabályozott iparágban vagy környezetben való kielégítése érdekében további információkat olvashat a [Microsoft megfelelőségi ajánlatáról](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942). 
+
+## <a name="enables-data-residency"></a>Az adattárolás engedélyezése 
+Ezt a szolgáltatást használhatja arra, hogy kikényszerítse az esetlegesen szükséges adattárolási követelményeket, ha ennek megfelelően biztosít egy Storage-fiókot.
+
+## <a name="known-issues"></a>Ismert problémák
+Ismert hiba történt, amikor az ügyfél által felügyelt kulcsot használó feladatok hibákba ütközik, amikor felügyelt identitást használ a bemenetek és kimenetek hitelesítéséhez. 
 
 ## <a name="next-steps"></a>Következő lépések
 

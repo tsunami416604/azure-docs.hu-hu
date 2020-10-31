@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 7ec511400d1e00d37993f2f4ee581bce1bccb897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17b2ab53c0154a29f9084f9dd999a53bcf477b72
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715987"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075126"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>A Windows (SMB) Azure Files problémáinak elhárítása
 
-Ez a cikk a Windows-ügyfelekről való csatlakozáskor Microsoft Azure fájlokkal kapcsolatos gyakori problémákat sorolja fel. Emellett a problémák lehetséges okait és megoldásait is tartalmazza. A cikkben található hibaelhárítási lépések mellett a [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)is használható   annak biztosítására, hogy a Windows-ügyfél környezete megfelelő előfeltételekkel rendelkezik. A AzFileDiagnostics automatizálja a jelen cikkben említett legtöbb tünet észlelését, és segít az optimális teljesítmény érdekében a környezet beállításában.
+Ez a cikk a Windows-ügyfelekről való csatlakozáskor Microsoft Azure fájlokkal kapcsolatos gyakori problémákat sorolja fel. Emellett a problémák lehetséges okait és megoldásait is tartalmazza. A cikkben található hibaelhárítási lépések mellett a [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) is használható annak biztosítására, hogy a Windows-ügyfél környezete megfelelő előfeltételekkel rendelkezik. A AzFileDiagnostics automatizálja a jelen cikkben említett legtöbb tünet észlelését, és segít az optimális teljesítmény érdekében a környezet beállításában.
 
 > [!IMPORTANT]
 > A cikk tartalma csak az SMB-megosztásokra vonatkozik. Az NFS-megosztásokkal kapcsolatos részletekért lásd: az [Azure NFS-fájlmegosztás hibáinak megoldása](storage-troubleshooting-files-nfs.md).
@@ -45,7 +45,7 @@ Ha virtuális hálózati (VNET) és tűzfalszabályok vannak konfigurálva a tá
 
 ### <a name="solution-for-cause-2"></a>Megoldás a 2. ok esetén
 
-Ellenőrizze, hogy a virtuális hálózati és tűzfalszabályok megfelelően vannak-e konfigurálva a tárfiókhoz. Ha meg szeretne bizonyosodni arról, hogy a virtuális hálózati vagy a tűzfalszabályok okozzák a problémát, ideiglenesen módosítsa a tárfiók beállítását a következőre: **Hozzáférés engedélyezése minden hálózatról**. További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Ellenőrizze, hogy a virtuális hálózati és tűzfalszabályok megfelelően vannak-e konfigurálva a tárfiókhoz. Ha meg szeretne bizonyosodni arról, hogy a virtuális hálózati vagy a tűzfalszabályok okozzák a problémát, ideiglenesen módosítsa a tárfiók beállítását a következőre: **Hozzáférés engedélyezése minden hálózatról** . További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
 ### <a name="cause-3-share-level-permissions-are-incorrect-when-using-identity-based-authentication"></a>3. ok: a megosztási szintű engedélyek helytelenek az identitás-alapú hitelesítés használatakor
 
@@ -167,7 +167,7 @@ Hibakód: 403
 
 ### <a name="solution-for-cause-1"></a>Megoldás az 1. ok esetén
 
-Ellenőrizze, hogy a virtuális hálózati és tűzfalszabályok megfelelően vannak-e konfigurálva a tárfiókhoz. Ha meg szeretne bizonyosodni arról, hogy a virtuális hálózati vagy a tűzfalszabályok okozzák a problémát, ideiglenesen módosítsa a tárfiók beállítását a következőre: **Hozzáférés engedélyezése minden hálózatról**. További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Ellenőrizze, hogy a virtuális hálózati és tűzfalszabályok megfelelően vannak-e konfigurálva a tárfiókhoz. Ha meg szeretne bizonyosodni arról, hogy a virtuális hálózati vagy a tűzfalszabályok okozzák a problémát, ideiglenesen módosítsa a tárfiók beállítását a következőre: **Hozzáférés engedélyezése minden hálózatról** . További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
 ### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>2. ok: a felhasználói fióknak nincs hozzáférése a Storage-fiókhoz
 
@@ -177,23 +177,82 @@ Keresse meg azt a Storage-fiókot, ahol az Azure-fájlmegosztás található, ka
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Nem sikerült törölni egy fájlt vagy könyvtárt valamelyik Azure-fájlmegosztásban
-Amikor megpróbál törölni egy fájlt, a következő hibaüzenet jelenhet meg:
+A fájlmegosztás egyik fő célja, hogy több felhasználó és alkalmazás is dolgozhat egyidejűleg a megosztásban található fájlokkal és címtárakkal. Az interakció támogatásához a fájlmegosztás számos módszert biztosít a fájlok és könyvtárak hozzáférésének közvetítésére.
 
-Egy SMB-ügyfél törlésre jelölte meg a megadott erőforrást.
+Amikor egy csatlakoztatott Azure-fájlmegosztás SMB-kapcsolaton keresztül nyit meg egy fájlt, az alkalmazás/operációs rendszer egy fájlleíró-fájlt kér le, amely a fájlra mutató hivatkozás. Többek között az alkalmazás egy fájlmegosztási módot is megad, amikor egy fájlkezelőt kér, amely meghatározza, hogy a Azure Files által érvényesített fájlhoz való hozzáférése milyen mértékben van kikényszerítve: 
 
-### <a name="cause"></a>Ok
-Ez a probléma általában akkor fordul elő, ha a fájl vagy könyvtár nyitott leíróval rendelkezik. 
+- `None`: kizárólagos hozzáférése van. 
+- `Read`: mások is elolvashatják a fájlt, amíg nyitva van.
+- `Write`: mások a fájl megnyitásakor írhatnak a fájlba. 
+- `ReadWrite`: a `Read` és a `Write` megosztási mód kombinációja.
+- `Delete`: mások is törölhetik a fájlt, amíg nyitva van. 
 
-### <a name="solution"></a>Megoldás
+Bár az állapot nélküli protokoll, a kiosztott protokoll nem rendelkezik a fájlleíró fogalmával, hasonló mechanizmust biztosít a parancsfájlok, alkalmazások vagy szolgáltatások által használt fájlokhoz és mappákhoz való hozzáférés biztosításához: a fájlok bérletét. Egy fájl bérletének megadásakor a rendszer egyenértékűként kezeli azt egy fájlmegosztási móddal `None` . 
 
-Ha az SMB-ügyfelek lezárták az összes nyitott leírót, és a probléma továbbra is fennáll, hajtsa végre a következőket:
+Bár a fájlkezelők és a bérletek fontos célt szolgálnak, időnként előfordulhat, hogy a fájlok és a bérletek árvaok. Ha ez történik, ez problémákat okozhat a fájlok módosításában vagy törlésében. A következőhöz hasonló hibaüzenetek jelenhetnek meg:
 
-- A [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell-parancsmag használatával tekintheti meg a nyitott leírókat.
+- A folyamat nem éri el a fájlt, mert egy másik folyamat használja.
+- A művelet nem hajtható végre, mert a fájl egy másik programban van megnyitva.
+- A dokumentum zárolva van egy másik felhasználó általi szerkesztésre.
+- Egy SMB-ügyfél törlésre jelölte meg a megadott erőforrást.
 
-- A [AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell-parancsmag használatával zárhatja be a megnyitott leírókat. 
+A probléma megoldása attól függ, hogy ezt egy árva fájlkezelő vagy bérlet okozza-e. 
+
+### <a name="cause-1"></a>1\. ok
+A fájlleíró megakadályozza, hogy egy fájl vagy könyvtár módosítható vagy törölve legyen. A [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell-parancsmag használatával megtekintheti a nyitott leírókat. 
+
+Ha az összes SMB-ügyfél lezárta a megnyitott kezelőket egy fájlra vagy könyvtárra, és a probléma továbbra is fennáll, akkor kényszerítheti a fájlleíró bezárását.
+
+### <a name="solution-1"></a>1\. megoldás
+A fájlkezelő bezárásának kényszerítéséhez használja a [Close-AzStorageFileHandle PowerShell-](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) parancsmagot. 
 
 > [!Note]  
 > A Get-AzStorageFileHandle és Close-AzStorageFileHandle parancsmagok az az PowerShell-modul 2,4-es vagy újabb verziójában szerepelnek. A legújabb az PowerShell modul telepítéséhez lásd: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps).
+
+### <a name="cause-2"></a>2\. ok
+A fájlok bérlete megakadályozza a fájlok módosítását vagy törlését. Azt is megteheti, hogy egy fájl rendelkezik-e a következő PowerShell-lel, amely a `<resource-group>` `<storage-account>` `<file-share>` `<path-to-file>` környezet megfelelő értékeit helyettesíti:
+
+```PowerShell
+# Set variables 
+$resourceGroupName = "<resource-group>"
+$storageAccountName = "<storage-account>"
+$fileShareName = "<file-share>"
+$fileForLease = "<path-to-file>"
+
+# Get reference to storage account
+$storageAccount = Get-AzStorageAccount `
+        -ResourceGroupName $resourceGroupName `
+        -Name $storageAccountName
+
+# Get reference to file
+$file = Get-AzStorageFile `
+        -Context $storageAccount.Context `
+        -ShareName $fileShareName `
+        -Path $fileForLease
+
+$fileClient = $file.ShareFileClient
+
+# Check if the file has a file lease
+$fileClient.GetProperties().Value
+```
+
+Ha egy fájl bérlettel rendelkezik, a visszaadott objektumnak a következő tulajdonságokat kell tartalmaznia:
+
+```Output
+LeaseDuration         : Infinite
+LeaseState            : Leased
+LeaseStatus           : Locked
+```
+
+### <a name="solution-2"></a>2\. megoldás
+Ha el szeretne távolítani egy bérletet egy fájlból, felszabadíthatja a bérletet, vagy megszakíthatja a bérletet. A bérlet felszabadításához szüksége lesz a bérlet létrehozásakor beállított LeaseId. Nincs szüksége a LeaseId a bérlet megszakításához.
+
+Az alábbi példa bemutatja, hogyan szakíthatja meg a 2. ok által jelzett fájl bérletét (ez a példa a 2. ok PowerShell-változóit folytatja):
+
+```PowerShell
+$leaseClient = [Azure.Storage.Files.Shares.Specialized.ShareLeaseClient]::new($fileClient)
+$leaseClient.Break() | Out-Null
+```
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-windows"></a>A fájlok az Azure Files szolgáltatásba vagy onnan máshová történő lassú másolása Windows rendszeren

@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: e680182a4d1ba64a954d8d03aef5e9331bec0341
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0471ef799689f67a2079c4fa4a6a53851c626392
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85257465"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073315"
 ---
 # <a name="table-copy-operations-on-azure-cosmos-db-cassandra-api-from-spark"></a>Táblázatos másolási műveletek Azure Cosmos DB Cassandra API Sparkból
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Ez a cikk azt ismerteti, hogyan másolhatók adatok a Azure Cosmos DB Cassandra API a Sparkból. A cikkben ismertetett parancsok az Apache Cassandra-táblázatokból származó adatok másolására is használhatók Azure Cosmos DB Cassandra API táblákba.
 
@@ -144,7 +145,7 @@ readBooksDF: org.apache.spark.sql.DataFrame = [book_id: string, book_author: str
 newBooksDF: org.apache.spark.sql.DataFrame = [book_id: string, book_author: string ... 3 more fields]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
  * Ismerkedjen meg [Cassandra API fiók, adatbázis és egy Java-alkalmazás használatával létrehozott táblázat létrehozásával](create-cassandra-api-account-java.md) .
  * [Mintaadatokat betöltése a Cassandra API táblába](cassandra-api-load-data.md) Java-alkalmazás használatával.

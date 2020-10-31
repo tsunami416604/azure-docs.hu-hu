@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: 596d34ef0544f4160c18210f05f68b488ec114d3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 32c433455e1075045323dc466b41ad19ac68f454
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476280"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074352"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Beépített notebook-parancsok és-szolgáltatások használata Azure Cosmos DB Python-jegyzetfüzetekben (előzetes verzió)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A Azure Cosmos DB beépített Jupyter notebookok lehetővé teszik az adatok elemzését és megjelenítését a Azure Portal. Ez a cikk azt ismerteti, hogyan használhatók a beépített notebook-parancsok és-funkciók a gyakori műveletek végrehajtásához a Python-jegyzetfüzetekben.
 
@@ -42,7 +43,7 @@ A ``%%sql`` Magic paranccsal [SQL-lekérdezést](sql-query-getting-started.md) f
 - Cserélje le a ``{database_id}`` és a ``{container_id}`` nevet az adatbázis és a tároló nevére a Cosmos-fiókban. Ha a ``--database`` és az ``--container`` argumentumok nincsenek megadva, a rendszer végrehajtja a lekérdezést az [alapértelmezett adatbázison és tárolón](#set-default-database-for-queries).
 - A Azure Cosmos DBban érvényes SQL-lekérdezéseket futtathat. A lekérdezés szövegének új sorban kell lennie.
 
-Példa: 
+Például: 
 ```python
 %%sql --database RetailDemo --container WebsiteData
 SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
@@ -61,7 +62,7 @@ A ``%%sql`` lekérdezés eredményeit egy [Panda DataFrame](https://pandas.pydat
 - A helyére írja be annak a ``{outputDataFrameVar}`` DataFrame-változónak a nevét, amely az eredményeket fogja tartalmazni.
 - A Azure Cosmos DBban érvényes SQL-lekérdezéseket futtathat. A lekérdezés szövegének új sorban kell lennie. 
 
-Példa:
+Például:
 
 ```python
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos
@@ -108,7 +109,7 @@ A ``%%upload`` Magic paranccsal adatok tölthetők fel egy JSON-fájlból egy me
 - Cserélje le az ``{database_id}`` és az ``{container_id}`` nevet az Azure Cosmos-fiók adatbázisának és tárolójának nevére. Ha a ``--database`` és az ``--container`` argumentumok nincsenek megadva, a rendszer végrehajtja a lekérdezést az [alapértelmezett adatbázison és tárolón](#set-default-database-for-queries).
 - Cserélje le a helyére a ``{url_location_of_file}`` JSON-fájl helyét. A fájlnak érvényes JSON-objektumokból álló tömbnek kell lennie, és a nyilvános interneten keresztül elérhetőnek kell lennie.
 
-Példa:
+Például:
 
 ```python
 %%upload --database databaseName --container containerName --url 
@@ -147,7 +148,7 @@ A [Azure Cosmos db PYTHON SDK for SQL API](https://github.com/Azure/azure-sdk-fo
 
 A beépített ``cosmos_client`` példány használatával futtasson bármely SDK-műveletet. 
 
-Példa:
+Például:
 
 ```python
 ## Import modules as needed

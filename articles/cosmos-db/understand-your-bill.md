@@ -7,23 +7,24 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: d1b03417b81299ca959670287e252402e994f15a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7b26c88bcbd303f00dc6163dd0323b07cbb83dcf
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476399"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073825"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Az Azure Cosmos DB számláinak ismertetése
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Teljes körűen felügyelt natív adatbázis-szolgáltatásként Azure Cosmos DB leegyszerűsíti a számlázást, mivel csak az adatbázis-műveletekhez és a felhasznált tárolóhoz töltődik. A helyszíni vagy a IaaS által üzemeltetett alternatívákhoz képest nincsenek további licencek, hardverek, használati költségek vagy létesítmények költségei. Ha figyelembe veszi a Azure Cosmos DB több régióra kiterjedő képességeit, az adatbázis-szolgáltatás jelentős mértékben csökkenti a költségeket a meglévő helyszíni vagy IaaS-megoldásokkal szemben.
 
-- **Adatbázis-műveletek**: az adatbázis-műveletekért felszámított módszer a használt Azure Cosmos-fiók típusától függ.
+- **Adatbázis-műveletek** : az adatbázis-műveletekért felszámított módszer a használt Azure Cosmos-fiók típusától függ.
 
-  - **Kiépített átviteli sebesség**: óradíjat számolunk fel a maximális kiosztott átviteli sebességért egy adott órában, 100 ru/s-onként.
-  - **Kiszolgáló**nélküli: az adatbázis-műveletek által felhasznált kérelmek teljes mennyiségét óránként számlázjuk.
+  - **Kiépített átviteli sebesség** : óradíjat számolunk fel a maximális kiosztott átviteli sebességért egy adott órában, 100 ru/s-onként.
+  - **Kiszolgáló** nélküli: az adatbázis-műveletek által felhasznált kérelmek teljes mennyiségét óránként számlázjuk.
 
-- **Tárolás**: az adat-és indexek által az adott órában felhasznált teljes tárterület (GB-ban) átalány-díjait számítjuk fel.
+- **Tárolás** : az adat-és indexek által az adott órában felhasznált teljes tárterület (GB-ban) átalány-díjait számítjuk fel.
 
 A legfrissebb díjszabási információkért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/) .
 
@@ -112,7 +113,7 @@ Bármikor hozzáadhat vagy eltávolíthat Azure-régiókat a világ bármely pon
 
 Tegyük fel, hogy rendelkezik egy Azure Cosmos-tárolóval az USA nyugati régiójában. A tároló a következővel jön létre: 10 000 RU/s, és ebben a hónapban 1 TB adat tárolására kerül. Tegyük fel, hogy három régiót (az USA keleti régiója, Észak-Európa és Kelet-Ázsia) vesz fel az Azure Cosmos-fiókjába, amelyek mindegyike azonos tárterülettel és átviteli sebességgel rendelkezik. A teljes havi számla a következő lesz (feltéve, hogy havonta 30 nap van megadva). A számla a következőképpen alakul: 
 
-|**Elem** |**Használat (hónap)** |**Sebesség** |**Havi költség** |
+|**Item** |**Használat (hónap)** |**Sebesség** |**Havi költség** |
 |---------|---------|---------|-------|
 |Adatátviteli számla az USA nyugati régiójában lévő tárolóhoz      | 10K RU/s * 24 * 30    |$0,008/100 RU/s/óra   |$576|
 |Adatátviteli számla 3 további régióhoz – az USA keleti régiója, Észak-Európa és Kelet-Ázsia       | 3 * 10K RU/mp * 24 * 30    |$0,008/100 RU/s/óra  |$1 728|
@@ -126,7 +127,7 @@ Tegyük fel, hogy rendelkezik egy Azure Cosmos-tárolóval az USA nyugati régi�
 
 Tegyük fel, hogy létrehoz egy Azure Cosmos-tárolót az USA nyugati régiójában. A tároló a következővel jön létre: 10 000 RU/s, és ebben a hónapban 1 TB adat tárolására kerül. Tegyük fel, hogy három régiót vesz fel (az USA keleti régiója, Észak-Európa és Kelet-Ázsia), amelyek mindegyike azonos tárterülettel és átviteli sebességgel rendelkezik, és szeretné írni a tárolókat az Azure Cosmos-fiókhoz társított összes régióban. A havi számla összegét a következő módon számítjuk fel:
 
-|**Elem** |**Használat (hónap)**|**Sebesség** |**Havi költség** |
+|**Item** |**Használat (hónap)**|**Sebesség** |**Havi költség** |
 |---------|---------|---------|-------|
 |Adatátviteli számla az USA nyugati régiójában lévő tárolóhoz (az összes régió írható)       | 10K RU/s * 24 * 30    |$0,016/100 RU/s/óra    |$1 152 |
 |Adatátviteli számla 3 további régióhoz – az USA keleti régiója, Észak-Európa és Kelet-Ázsia (minden régió írható)        | (3 + 1) * 10K RU/mp * 24 * 30    |$0,016/100 RU/s/óra   |$4 608 |
@@ -196,7 +197,7 @@ Az alábbi ábrán látható, hogy a teljes kiépített átviteli sebesség vál
 
 A teljes havi számla (feltéve, hogy a havi 30 nap/720 óra) a következőképpen lesz kiszámítva:
 
-|**Órák**  |**RU/s** |**Elem** |**Használat (óránként)** |**Költségek** |
+|**Órák**  |**RU/s** |**Item** |**Használat (óránként)** |**Költségek** |
 |---------|---------|---------|-------|-------|
 |[0-100] |D1:10K <br/>D2:30K <br/>C1:20000 |Adatátviteli számla az USA nyugati régiójában lévő tárolóhoz (az összes régió írható)  | `D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 30 K RU/sec/100 * $0.016 * 100 hours = $480` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |$960  |
 | | |Átviteli sebesség 2 további régióban: USA keleti régiója, Észak-Európa (az összes régió írható)  |`(2 + 1) * (60 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |$2 880  |

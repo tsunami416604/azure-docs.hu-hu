@@ -8,14 +8,15 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 4cd0ad1553f04a781349a4664fbb408108015632
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d0ae81177ca8488c410e40ca56642199694c08c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510283"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93072655"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Változáscsatorna az Azure Cosmos DB-ben
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 A változáscsatorna támogatása az Azure Cosmos DB-ben egy Azure Cosmos-tároló változásainak figyelésével működik. Ezután a módosításuk sorrendjében felsorolja a módosított dokumentumokat. A módosítások meg lesznek őrizve, feldolgozhatók aszinkron és fokozatos módon is, a kimenet pedig több fogyasztó között is elosztható a párhuzamos feldolgozás érdekében.
 

@@ -9,14 +9,15 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 377165c94303a4a44d481009700cdef9169b3d78
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: dfd96e7c62d700ccec2ecd4b223668d7aca4f18f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475804"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93072806"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>A változáscsatorna feldolgozója az Azure Cosmos DB-ben
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A Change feed processzor a [Azure Cosmos db SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3)részét képezi. Leegyszerűsíti a változási csatorna olvasásának folyamatát, és az események feldolgozását a több fogyasztó számára is hatékonyan terjeszti.
 
@@ -61,8 +62,8 @@ A gazdagéppéldány normál életciklusa:
 
 1. Olvassa el a változási csatornát.
 1. Ha nincsenek változások, Aludjon előre meghatározott ideig (testreszabható a `WithPollInterval` -ben a Builder-ben), és lépjen a #1.
-1. Ha vannak változások, küldje el azokat a **delegált**számára.
-1. Ha a delegálás **sikeresen**dolgozza fel a módosításokat, frissítse a címbérleti tárolót a legutóbbi feldolgozott időponttal, és lépjen #1.
+1. Ha vannak változások, küldje el azokat a **delegált** számára.
+1. Ha a delegálás **sikeresen** dolgozza fel a módosításokat, frissítse a címbérleti tárolót a legutóbbi feldolgozott időponttal, és lépjen #1.
 
 ## <a name="error-handling"></a>Hibakezelés
 
@@ -104,7 +105,7 @@ Alapértelmezés szerint, amikor a változási hírcsatorna processzora előszö
 
 ### <a name="reading-from-a-previous-date-and-time"></a>Olvasás egy korábbi dátumból és időpontból
 
-A módosítási hírcsatorna processzora inicializálható úgy, hogy egy **adott dátummal és**időponttal kezdődő módosításokat olvasson be, az a példányának átadásával `DateTime` a `WithStartTime` Builder bővítménnyel:
+A módosítási hírcsatorna processzora inicializálható úgy, hogy egy **adott dátummal és** időponttal kezdődő módosításokat olvasson be, az a példányának átadásával `DateTime` a `WithStartTime` Builder bővítménnyel:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=TimeInitialization)]
 
@@ -112,7 +113,7 @@ A módosítási hírcsatorna processzora az adott dátumra és időpontra lesz i
 
 ### <a name="reading-from-the-beginning"></a>Olvasás az elejétől
 
-Más forgatókönyvekben, például az adatáttelepítés során vagy egy tároló teljes előzményeinek elemzéséhez a **tároló élettartamának elejéről**kell olvasni a változási csatornát. Ehhez használhatja a `WithStartTime` Builder bővítményt, de a továbbítást `DateTime.MinValue.ToUniversalTime()` , amely a minimális érték UTC szerinti megjelenítését eredményezi, például `DateTime` :
+Más forgatókönyvekben, például az adatáttelepítés során vagy egy tároló teljes előzményeinek elemzéséhez a **tároló élettartamának elejéről** kell olvasni a változási csatornát. Ehhez használhatja a `WithStartTime` Builder bővítményt, de a továbbítást `DateTime.MinValue.ToUniversalTime()` , amely a minimális érték UTC szerinti megjelenítését eredményezi, például `DateTime` :
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartFromBeginningInitialization)]
 

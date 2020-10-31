@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 7/29/2020
 ms.author: tisande
-ms.openlocfilehash: 4f5e88e7201c4097e2f8d654b8780ea12816b15d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c7d47b0bb167b3211b3859a47b0c8e11876b1614
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485103"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075401"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL fordítás
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A Azure Cosmos DB lekérdezési szolgáltató a LINQ-lekérdezésből származó legjobb műveletet hajtja végre egy Cosmos DB SQL-lekérdezésben. Ha a LINQ-ből lefordított SQL-lekérdezést szeretné beszerezni, használja a `ToString()` metódust a generált `IQueryable` objektumon. A következő leírás feltételezi, hogy a [LINQ](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)alapvető ismerete.
 
@@ -23,7 +24,7 @@ A lekérdezési szolgáltató a következő skaláris kifejezéseket támogatja:
 
 - Állandó értékek, beleértve a primitív adattípusok állandó értékeit a lekérdezés kiértékelési idején.
   
-- Tulajdonság/tömb index kifejezés, amely egy objektum vagy egy tömb elem tulajdonságára hivatkozik. Példa:
+- Tulajdonság/tömb index kifejezés, amely egy objektum vagy egy tömb elem tulajdonságára hivatkozik. Például:
   
   ```
     family.Id;
@@ -79,19 +80,19 @@ using (FeedIterator<Book> setIterator = container.GetItemLinqQueryable<Book>()
 
 Az SQL .NET SDK-ban található LINQ Provider a következő operátorokat támogatja:
 
-- **Válassza ki**a kivetítéseket a [kiválasztáshoz](sql-query-select.md), beleértve az objektumok kialakítását.
-- **Hol**: a szűrők a [WHERE](sql-query-where.md)és a, `&&` `||` valamint `!` az SQL-operátorok közötti fordítást támogatják.
-- **SelectMany**: lehetővé teszi a tömbök felcsévélését az [JOIN](sql-query-join.md) záradékba. A paranccsal a tömb elemeinek szűréséhez használhatja a kifejezéseket.
-- **OrderBy** és **OrderByDescending**: lefordítható az ASC vagy a desc [szerinti sorrendbe](sql-query-order-by.md) .
-- Az [összesítéshez](sql-query-aggregates.md)a **Count**, a **Sum**, a **min**, a **Max**és az **átlag** operátor, valamint a **CountAsync**, a **SumAsync**, a **MinAsync**, a **MaxAsync**és a **AverageAsync**.
-- **Compareto metódus végrehajtása**: a tartomány-összehasonlításokra fordít. Általában a sztringek esetében használatos, mivel azok nem összehasonlíthatóak a .NET-ben.
+- **Válassza ki** a kivetítéseket a [kiválasztáshoz](sql-query-select.md), beleértve az objektumok kialakítását.
+- **Hol** : a szűrők a [WHERE](sql-query-where.md)és a, `&&` `||` valamint `!` az SQL-operátorok közötti fordítást támogatják.
+- **SelectMany** : lehetővé teszi a tömbök felcsévélését az [JOIN](sql-query-join.md) záradékba. A paranccsal a tömb elemeinek szűréséhez használhatja a kifejezéseket.
+- **OrderBy** és **OrderByDescending** : lefordítható az ASC vagy a desc [szerinti sorrendbe](sql-query-order-by.md) .
+- Az [összesítéshez](sql-query-aggregates.md)a **Count** , a **Sum** , a **min** , a **Max** és az **átlag** operátor, valamint a **CountAsync** , a **SumAsync** , a **MinAsync** , a **MaxAsync** és a **AverageAsync** .
+- **Compareto metódus végrehajtása** : a tartomány-összehasonlításokra fordít. Általában a sztringek esetében használatos, mivel azok nem összehasonlíthatóak a .NET-ben.
 - **Kihagyás** és **végrehajtás:** lefordítja az [eltolást, és korlátozza](sql-query-offset-limit.md) a lekérdezés eredményeinek korlátozását és tördelését.
-- **Matematikai függvények**: a .net,,,,,,,,,,,,,,,, `Abs` `Acos` `Asin` `Atan` `Ceiling` `Cos` `Exp` `Floor` `Log` `Log10` `Pow` `Round` `Sign` `Sin` `Sqrt` `Tan` és `Truncate` az egyenértékű [beépített matematikai funkciókhoz](sql-query-mathematical-functions.md)való fordítást támogatja.
-- **Karakterlánc-függvények**: támogatja a .net,,,,,,,,,, `Concat` `Contains` `Count` és, `EndsWith` `IndexOf` `Replace` `Reverse` `StartsWith` `SubString` `ToLower` `ToUpper` `TrimEnd` és `TrimStart` az egyenértékű [beépített karakterlánc-függvények](sql-query-string-functions.md)fordítását.
-- **Array functions**: támogatja a .net-ről való fordítást, `Concat` `Contains` valamint `Count` a [beépített Array függvények](sql-query-array-functions.md)használatát.
-- **Térinformatikai bővítmény függvények**: a helyettes metódusokból `Distance` , `IsValid` , `IsValidDetailed` és `Within` a [beépített térinformatikai függvényekbe](sql-query-geospatial-query.md)való fordítást támogatja.
-- **Felhasználó által definiált függvény kiterjesztési funkciója**: a helyettes metódusból `UserDefinedFunctionProvider.Invoke` a megfelelő [felhasználó által definiált függvénybe](sql-query-udfs.md)való fordítást támogatja.
-- **Egyéb**: támogatja a `Coalesce` és a feltételes [operátorok](sql-query-operators.md)fordítását. A (z `Contains` ) karakterláncot a (z), ARRAY_CONTAINS, vagy a (z) sztringre fordíthatja a kontextustól függően
+- **Matematikai függvények** : a .net,,,,,,,,,,,,,,,, `Abs` `Acos` `Asin` `Atan` `Ceiling` `Cos` `Exp` `Floor` `Log` `Log10` `Pow` `Round` `Sign` `Sin` `Sqrt` `Tan` és `Truncate` az egyenértékű [beépített matematikai funkciókhoz](sql-query-mathematical-functions.md)való fordítást támogatja.
+- **Karakterlánc-függvények** : támogatja a .net,,,,,,,,,, `Concat` `Contains` `Count` és, `EndsWith` `IndexOf` `Replace` `Reverse` `StartsWith` `SubString` `ToLower` `ToUpper` `TrimEnd` és `TrimStart` az egyenértékű [beépített karakterlánc-függvények](sql-query-string-functions.md)fordítását.
+- **Array functions** : támogatja a .net-ről való fordítást, `Concat` `Contains` valamint `Count` a [beépített Array függvények](sql-query-array-functions.md)használatát.
+- **Térinformatikai bővítmény függvények** : a helyettes metódusokból `Distance` , `IsValid` , `IsValidDetailed` és `Within` a [beépített térinformatikai függvényekbe](sql-query-geospatial-query.md)való fordítást támogatja.
+- **Felhasználó által definiált függvény kiterjesztési funkciója** : a helyettes metódusból `UserDefinedFunctionProvider.Invoke` a megfelelő [felhasználó által definiált függvénybe](sql-query-udfs.md)való fordítást támogatja.
+- **Egyéb** : támogatja a `Coalesce` és a feltételes [operátorok](sql-query-operators.md)fordítását. A (z `Contains` ) karakterláncot a (z), ARRAY_CONTAINS, vagy a (z) sztringre fordíthatja a kontextustól függően
 
 ## <a name="examples"></a>Példák
 

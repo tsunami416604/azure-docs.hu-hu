@@ -10,14 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: ba5d07017c0244c370a8dc6945a7958beb0f224f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eefba88ca2d889a429b82d81a33464f8bd69a343
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91324569"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074947"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Gyors útmutató: képelemzések beolvasása a Bing Visual Search REST API és a Ruby használatával
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Visual Search API a Ruby programozási nyelv használatával. A POST-kérelem feltölt egy rendszerképet az API-végpontba. Az eredmények közé tartoznak a feltöltött képhez hasonló képek URL-címei és leíró információi.
 
@@ -283,7 +288,7 @@ JSON Response:
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Mi a Bing Visual Search API?](../overview.md) 

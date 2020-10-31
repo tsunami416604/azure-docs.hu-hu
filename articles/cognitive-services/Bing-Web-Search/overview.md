@@ -11,14 +11,19 @@ ms.topic: overview
 ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 4cbf79abaf915e7f6e055f5bcb0d8f09de026ad5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b2c0d84854f593511196a236f4c449d5b609ae6f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85604862"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073417"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Mi a Bing Web Search API?
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 A Bing Web Search API egy RESTful szolgáltatás, amely azonnali választ ad a felhasználói lekérdezésekre. A keresés könnyen konfigurálható, hogy weboldalakra, képekre, videókra, hírekre, fordításokra és egyéb találatokra is kiterjedjen. A Bing Web Search a keresési relevancia és a Bing Web Search-előfizetések alapján biztosítja az eredményeket JSON-ként.
 
@@ -26,11 +31,11 @@ Ez az API optimális az olyan alkalmazásokhoz, amelyek hozzáférést biztosít
 
 Szeretné látni működés közben? Próbálja ki a [Bing Web Search API bemutatóanyagát](https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/).
 
-## <a name="features"></a>Szolgáltatások  
+## <a name="features"></a>Funkciók  
 
 Bing Web Search nem csak az azonnali válaszokhoz biztosít hozzáférést. Emellett további funkciókat és funkciókat is biztosít, amelyek segítségével testre szabhatja a felhasználók keresési eredményeit.
 
-| Szolgáltatás | Leírás |
+| Funkció | Leírás |
 |---------|-------------|
 | [Keresési kifejezések valós idejű felkínálása](../bing-autosuggest/get-suggested-search-terms.md) | A Bing Autosuggest API a begépelés során javaslatokat tesz a keresési kifejezésekre, így könnyebbé teszi az alkalmazások használatát. |
 | [Találatok szűrése és korlátozása a tartalom típusa alapján](filter-answers.md) | Keresési eredmények szűrőkkel és lekérdezési paraméterekkel történő testre szabása és finomítása a weboldalakra, képekre, videókra, a biztonságos keresésre és egyebekre vonatkozóan. |
@@ -46,7 +51,7 @@ A Bing Web Search API bármely olyan programnyelvből meghívható, amely képes
 2. Küldjön egy [kérést a Bing Web Search API-ra](quickstarts/python.md).
 3. Elemezze a JSON-választ.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [Python rövid útmutatója](./quickstarts/client-libraries.md?pivots=programming-language-python) alapján végezze el az első hívást a Bing Web Search API-ra.  
 * [Hozzon létre egy egyoldalas webalkalmazást](tutorial-bing-web-search-single-page-app.md).

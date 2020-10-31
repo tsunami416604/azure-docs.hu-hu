@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 62a31750fe0c058624c4f69848abb56e7b5095b4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: f7f51f6944de48e58ff53e7685164df3a04afe56
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491019"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075585"
 ---
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>Migrálás a tömeges végrehajtó könyvtárából a Azure Cosmos DB .NET v3 SDK tömeges támogatásához
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ez a cikk azokat a szükséges lépéseket ismerteti, amelyekkel áttelepíthet egy meglévő alkalmazás kódját, amely a .net [bulk végrehajtó függvénytárat](bulk-executor-dot-net.md) használja a .net SDK legújabb verziójának [tömeges támogatás](tutorial-sql-api-dotnet-bulk-import.md) szolgáltatásához.
 
@@ -34,15 +35,15 @@ Ha például a kezdeti bemenet azon elemek listája, amelyekben az egyes elemek 
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="Model":::
 
-Ha tömeges importálást szeretne végezni (hasonlóan a BulkExecutor. BulkImportAsync-hoz), akkor egyidejű hívásokkal kell rendelkeznie `CreateItemAsync` . Példa:
+Ha tömeges importálást szeretne végezni (hasonlóan a BulkExecutor. BulkImportAsync-hoz), akkor egyidejű hívásokkal kell rendelkeznie `CreateItemAsync` . Például:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkImport":::
 
-Ha a tömeges *frissítést* szeretné elvégezni (a [BulkExecutor. BulkUpdateAsync](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)-hez hasonlóan), `ReplaceItemAsync` az elem értékének frissítése után egyidejű hívásokkal kell rendelkeznie a metódushoz. Példa:
+Ha a tömeges *frissítést* szeretné elvégezni (a [BulkExecutor. BulkUpdateAsync](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)-hez hasonlóan), `ReplaceItemAsync` az elem értékének frissítése után egyidejű hívásokkal kell rendelkeznie a metódushoz. Például:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkUpdate":::
 
-Ha pedig tömeges *törlést* szeretne végezni (hasonlóan a [BulkExecutor. BulkDeleteAsync](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)-hoz), `DeleteItemAsync` az `id` egyes elemek és partíciós kulcsával párhuzamos hívásokat kell megadnia a szolgáltatáshoz. Példa:
+Ha pedig tömeges *törlést* szeretne végezni (hasonlóan a [BulkExecutor. BulkDeleteAsync](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)-hoz), `DeleteItemAsync` az `id` egyes elemek és partíciós kulcsával párhuzamos hívásokat kell megadnia a szolgáltatáshoz. Például:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkDelete":::
 

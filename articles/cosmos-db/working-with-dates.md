@@ -7,14 +7,15 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a876c5ba9c289f0edbbfdf8727e9957e7937b781
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c9df71763c610f9773949ef618de7840ae752d82
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476246"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073570"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Dátumok használata Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A Azure Cosmos DB a séma rugalmasságát és a gazdag indexelést egy natív [JSON](https://www.json.org) -adatmodellen keresztül biztosítja. Az összes Azure Cosmos DB erőforrás, beleértve az adatbázisokat, a tárolókat, a dokumentumokat és a tárolt eljárásokat JSON-dokumentumként modellezik és tárolja. A hordozható, JSON-(és Azure Cosmos DB-) követelmények csak az alaptípusok kis készletét támogatják: karakterlánc, szám, logikai, tömb, objektum és null. A JSON azonban rugalmas, és lehetővé teszi a fejlesztők és keretrendszerek számára, hogy összetettebb típusokat képviselnek ezen primitívek használatával, és objektumokként vagy tömbökként is megkomponálják őket.
 

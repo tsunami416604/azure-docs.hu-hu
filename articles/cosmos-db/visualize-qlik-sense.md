@@ -7,14 +7,15 @@ ms.author: sngun
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 986db85ddbf741dc459625dbd763b9cbbba1c429
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ccd9f10bcf8be5539528be1f513f7e7dd74549e7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85263347"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073689"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Az Qlik-értelem összekapcsolásával Azure Cosmos DBhatja és megjelenítheti az adatait
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
 A Qlik Sense egy adatvizualizációs eszköz, amely különböző forrásokból származó adatok egyetlen nézetbe való egyesítésére szolgál. A Qlik Sense indexeli az összes lehetséges kapcsolatot az adataiban, így azonnali elemzéseket nyerhet az adatairól. A Qlik értelem használatával megjelenítheti Azure Cosmos DBi adataikat. Ez a cikk azokat a lépéseket ismerteti, amelyek szükségesek ahhoz, hogy a Azure Cosmos DB összekapcsolásával Qlik az értelemben, és láthatóvá tegye az adatait. 
 
@@ -52,15 +53,15 @@ A cikkben szereplő utasítások követése előtt győződjön meg arról, hogy
 
 ## <a name="connect-qlik-sense-to-cosmos-db"></a>A Qlik Cosmos DB összekapcsolásának érzékelése
 
-1. Nyissa meg a Qlik értelmet, és válassza az **új alkalmazás létrehozása**lehetőséget. Adja meg az alkalmazás nevét, majd válassza a **Létrehozás**lehetőséget.
+1. Nyissa meg a Qlik értelmet, és válassza az **új alkalmazás létrehozása** lehetőséget. Adja meg az alkalmazás nevét, majd válassza a **Létrehozás** lehetőséget.
 
    :::image type="content" source="./media/visualize-qlik-sense/create-new-qlik-sense-app.png" alt-text="Új Qlik Sense-alkalmazás létrehozása":::
 
-2. Az új alkalmazás létrehozása után kattintson az **alkalmazás megnyitása** lehetőségre, és válassza az **adatok hozzáadása fájlokból és más forrásokból**lehetőséget. 
+2. Az új alkalmazás létrehozása után kattintson az **alkalmazás megnyitása** lehetőségre, és válassza az **adatok hozzáadása fájlokból és más forrásokból** lehetőséget. 
 
 3. Az adatforrások területen válassza az **ODBC** lehetőséget az új kapcsolódási beállítás ablak megnyitásához. 
 
-4. Váltson a **felhasználói DSN** -re, és válassza ki a korábban létrehozott ODBC-kapcsolatokat. Adja meg a kapcsolatok nevét, majd válassza a **Létrehozás**lehetőséget. 
+4. Váltson a **felhasználói DSN** -re, és válassza ki a korábban létrehozott ODBC-kapcsolatokat. Adja meg a kapcsolatok nevét, majd válassza a **Létrehozás** lehetőséget. 
 
    :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="Új Qlik Sense-alkalmazás létrehozása":::
 
@@ -76,7 +77,7 @@ A cikkben szereplő utasítások követése előtt győződjön meg arról, hogy
 
 Cosmos DB egy séma nélküli elosztott adatbázis, amely a fejlesztői igények alapján modellezhető illesztőprogramokkal rendelkezik. Az ODBC-illesztőhöz a sémával rendelkező adatbázis szükséges az oszlopok, az adattípusok és más tulajdonságok kikötéséhez. A hagyományos SQL-lekérdezés vagy a nem megfelelő DML-szintaxis Cosmos DB SQL API esetében nem alkalmazható, mert az SQL API nem ANSI SQL. Emiatt az ODBC-illesztőn keresztül kiadott SQL-utasítások fordítása Cosmos DB-specifikus SQL-szintaxisba történik, amely nem felel meg az összes szerkezetnek. A fordítási problémák megelőzése érdekében sémát kell alkalmaznia az ODBC-kapcsolatok beállításakor. A [Kapcsolódás ODBC-illesztővel](odbc-driver.md) című cikk javaslatokat és metódusokat biztosít a séma konfigurálásához. Hozza létre ezt a leképezést minden adatbázishoz/gyűjteményhez a Cosmos DB fiókon belül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha más vizualizációs eszközt (például Power BI) használ, az alábbi dokumentum utasításait követve csatlakozhat hozzá.
 

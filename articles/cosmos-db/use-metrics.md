@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2a7645950fd7a239376f07d6c6f4689c1a3f3da5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8694a884b26194c61cc77d00848692a24e3009be
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476314"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073706"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>A Azure Cosmos DB metrikáinak monitorozása és hibakeresése
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Az Azure Cosmos DB az átviteli sebességhez, a tároláshoz, a konzisztenciához, a rendelkezésre álláshoz és a késéshez nyújt metrikákat. Az Azure Portal ezen metrikák összesített nézetét nyújtja. Az Azure Cosmos DB-metrikákat az Azure Monitor API-ból is megtekintheti. A metrikák, például a tároló neve nem megkülönbözteti a kis-és nagybetűket. Ezért a kis-és nagybetűket megkülönböztető összehasonlítást kell használnia, amikor karakterlánc-összehasonlítást végez ezen dimenzió értékeken. Az Azure monitor metrikáinak megtekintéséről a [metrikák Beolvasása Azure monitor](./monitor-cosmos-db.md) cikkből tájékozódhat.
 

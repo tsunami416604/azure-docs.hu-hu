@@ -4,12 +4,12 @@ description: Webes teszteket állíthat be az Application Insightsban. Riasztás
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: a5bee2da5059213e85e03d5a0e4df0ef88c26b03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56644a4eb2f91dcce3bc2ee557542da75408ca83
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986027"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075143"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Bármely webhely rendelkezésre állásának monitorozása
 
@@ -37,7 +37,7 @@ A Azure Portal válassza az **erőforrás létrehozása**  >  **fejlesztői eszk
 
 Az "URL ping test" név egy kis helytelen felhasználóneve. Ez a teszt nem teszi elérhetővé az ICMP (Internet Control Message Protocol) használatát a hely rendelkezésre állásának ellenőrzéséhez. Ehelyett több speciális HTTP-kérés funkciót használ annak ellenőrzéséhez, hogy a végpont válaszol-e. Emellett méri az adott válaszhoz kapcsolódó teljesítményt, és lehetővé teszi az egyéni sikerességi feltételek megadását, amely fejlettebb funkciókkal, például a függő kérelmek elemzésével és az újrapróbálkozások engedélyezésével párosul.
 
-Az első rendelkezésre állási kérelem létrehozásához nyissa meg a rendelkezésre állás panelt, és válassza a **teszt létrehozása**lehetőséget.
+Az első rendelkezésre állási kérelem létrehozásához nyissa meg a rendelkezésre állás panelt, és válassza a **teszt létrehozása** lehetőséget.
 
 ![Töltse ki legalább a webhelye URL-címét](./media/monitor-web-app-availability/availability-create-test-001.png)
 
@@ -47,14 +47,14 @@ Az első rendelkezésre állási kérelem létrehozásához nyissa meg a rendelk
 |----|----|----|
 |**URL-cím** |  Az URL-cím bármilyen tesztelni kívánt weblap lehet, de láthatónak kell lennie a nyilvános internetről. Az URL-cím tartalmazhat lekérdezési sztringet. Tehát például kísérletezhet egy kicsit az adatbázissal. Ha az URL feloldása egy átirányítást eredményez, legfeljebb 10 átirányításig követjük.|
 |**Függő kérelmek elemzése**| Tesztelje a weboldalhoz tartozó képeket, parancsfájlokat, stílusú fájlokat és egyéb fájlokat, amelyek a tesztelés alatt állnak. A rögzített válaszidőbe a fájlok lekérése is beleszámít. A teszt sikertelen lesz, ha a teljes teszt időkorlátján belül nem tölthetők le ezek az erőforrások. Ha a beállítás nincs bejelölve, a teszt csak a fájlt és a megadott URL-címet kéri le. Ha engedélyezi ezt a beállítást, a rendszer szigorúbb ellenőrzését eredményez. Előfordulhat, hogy a teszt sikertelen lehet, ami nem észlelhető a hely manuális böngészése során.
-|**Újrapróbálkozások engedélyezése**|Ha a teszt sikertelen, a rendszer rövid idő után újrapróbálkozik. Csak akkor jelent hibát, ha három egymást követő kísérlet meghiúsul. Ezután a rendszer a teszteket a szokásos tesztelési gyakorisággal végzi el. Az újrapróbálkozás ideiglenesen fel van függesztve a következő sikeres műveletig. Ez a szabály függetlenül van alkalmazva minden egyes teszthelyen. **Ezt a beállítást javasoljuk**. Átlagosan körülbelül a hibák 80%-a megszűnik az újrapróbálkozáskor.|
+|**Újrapróbálkozások engedélyezése**|Ha a teszt sikertelen, a rendszer rövid idő után újrapróbálkozik. Csak akkor jelent hibát, ha három egymást követő kísérlet meghiúsul. Ezután a rendszer a teszteket a szokásos tesztelési gyakorisággal végzi el. Az újrapróbálkozás ideiglenesen fel van függesztve a következő sikeres műveletig. Ez a szabály függetlenül van alkalmazva minden egyes teszthelyen. **Ezt a beállítást javasoljuk** . Átlagosan körülbelül a hibák 80%-a megszűnik az újrapróbálkozáskor.|
 |**Tesztelési gyakoriság**| Beállítja, hogy a teszt milyen gyakran fusson az egyes tesztelési helyekről. Öt perces alapértelmezett gyakorisággal és öt teszthellyel a helyén átlagosan percenként egy teszt történik.|
 |**Tesztelési helyszínek**| Azok a helyek, ahonnan a kiszolgálók webes kéréseket küldenek az URL-címre. Az **ajánlott tesztelési helyszínek minimális száma öt** annak biztosítására, hogy a hálózati problémák alapján megkülönböztetni tudja a webhelyén felmerülő problémákat. Legfeljebb 16 hely választható ki.
 
-**Ha az URL-cím nem látható a nyilvános internetről, dönthet úgy, hogy szelektíven megnyitja a tűzfalat, hogy csak a tesztelési tranzakciókat engedélyezze**. Ha többet szeretne megtudni a rendelkezésre állási tesztelési ügynökökkel kapcsolatos tűzfal-kivételekről, tekintse meg az [IP-cím útmutatóját](./ip-addresses.md#availability-tests).
+**Ha az URL-cím nem látható a nyilvános internetről, dönthet úgy, hogy szelektíven megnyitja a tűzfalat, hogy csak a tesztelési tranzakciókat engedélyezze** . Ha többet szeretne megtudni a rendelkezésre állási tesztelési ügynökökkel kapcsolatos tűzfal-kivételekről, tekintse meg az [IP-cím útmutatóját](./ip-addresses.md#availability-tests).
 
 > [!NOTE]
-> Javasoljuk, hogy több helyről, **legalább öt hellyel**tesztelje a tesztelést. Ennek célja, hogy megakadályozza a hamis riasztásokat, amelyek egy adott hellyel kapcsolatos átmeneti problémákhoz vezethetnek. Emellett azt is találtuk, hogy az optimális konfiguráció a **teszt helyeinek száma a riasztási hely küszöbértéke + 2**.
+> Javasoljuk, hogy több helyről, **legalább öt hellyel** tesztelje a tesztelést. Ennek célja, hogy megakadályozza a hamis riasztásokat, amelyek egy adott hellyel kapcsolatos átmeneti problémákhoz vezethetnek. Emellett azt is találtuk, hogy az optimális konfiguráció a **teszt helyeinek száma a riasztási hely küszöbértéke + 2** .
 
 ### <a name="success-criteria"></a>Sikerességi feltételek
 
@@ -71,6 +71,55 @@ Az első rendelkezésre állási kérelem létrehozásához nyissa meg a rendelk
 |**Közel valós idejű (előzetes verzió)** | Javasoljuk, hogy a közel valós idejű riasztásokat használja. Az ilyen típusú riasztások konfigurálása a rendelkezésre állási teszt létrehozása után történik.  |
 |**Klasszikus** | Már nem ajánlott klasszikus riasztásokat használni az új rendelkezésre állási tesztekhez.|
 |**Riasztási hely küszöbértéke**|Legalább 3/5 helyet ajánlunk. A riasztási hely küszöbértéke és a tesztelési helyek száma közötti optimális kapcsolat a **riasztási hely küszöbértéke**  =  **– 2, legalább öt tesztelési hely.**|
+
+### <a name="location-population-tags"></a>Hely populációjának címkéi
+
+A következő populációs címkék használhatók a Geo-Location attribútumhoz a rendelkezésre állási URL pingelési tesztek Azure Resource Manager használatával történő telepítésekor.
+
+#### <a name="azure-gov"></a>Azure gov
+
+| Megjelenítendő név   | Populáció neve     |
+|----------------|---------------------|
+| USGov Virginia | USA Korm.-va-azr        |
+| USGov Arizona  | USA Korm.-PHX-azr       |
+| USGov Texas    | USA Korm.-TX-azr        |
+| USA keleti régiója     | USA Korm.-ddeast-azr    |
+| USA középső régiója  | USA Korm.-ddcentral-azr |
+
+#### <a name="us-sec"></a>US mp
+
+| Megjelenítendő név | Populáció neve |
+|--------------|-----------------|
+| USSec nyugati régiója   | ussec – Nyugat – azr  |
+| USSec keleti régiója   | ussec – Kelet – azr  |
+
+#### <a name="us-nat"></a>US NAT
+
+| Megjelenítendő név | Populáció neve |
+|--------------|-----------------|
+| USNat keleti régiója   | usnat – Kelet – azr  |
+| USNat nyugati régiója   | usnat – Nyugat – azr  |
+
+#### <a name="azure"></a>Azure
+
+| Megjelenítendő név                           | Populáció neve   |
+|----------------------------------------|-------------------|
+| Kelet-Ausztrália                         | EMEA-au-Syd-Edge  |
+| Dél-Brazília                           | LATAM-br-GRU-Edge |
+| Az USA középső régiója                             | US-FL-Mia-Edge    |
+| Kelet-Ázsia                              | APAC-HK-hkn-azr   |
+| USA keleti régiója                                | USA-VA-Ash-azr     |
+| Dél-Franciaország (korábban Franciaország középső régiója) | EMEA – CH-ZRH – Edge  |
+| Közép-Franciaország                         | EMEA-fr-PRA-Edge  |
+| Kelet-Japán                             | APAC-JP-KAW-Edge  |
+| Észak-Európa                           | EMEA-GB-db3-azr   |
+| USA északi középső régiója                       | US-Il-CH1-azr     |
+| USA déli középső régiója                       | USA-TX-SN1-azr     |
+| Délkelet-Ázsia                         | APAC-SG-Sin-azr   |
+| Az Egyesült Királyság nyugati régiója                                | EMEA-se-Sto-Edge  |
+| Nyugat-Európa                            | EMEA-nl-AMS-azr   |
+| USA nyugati régiója                                | USA – CA-SJC – azr     |
+| Az Egyesült Királyság déli régiója                               | EMEA-ru-MSA-Edge  |
 
 ## <a name="see-your-availability-test-results"></a>A rendelkezésre állási teszt eredményeinek megtekintése
 

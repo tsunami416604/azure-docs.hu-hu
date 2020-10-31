@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/23/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: be37ab43db9b5b696a619cb1539981c064b4cb0e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 9260f2892bdcc6a694e1e54e29cb06bae90298eb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537796"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074471"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>Azure Cosmos DB erőforrások kezelése Azure Storage Explorer használatával
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Az Azure Storage Explorer használatával csatlakozhat Azure Cosmos DBhoz. Lehetővé teszi az Azure-beli és a szuverén felhőkben üzemeltetett Azure Cosmos DB-fiókokhoz való kapcsolódást Windows, macOS vagy Linux rendszerről.
 

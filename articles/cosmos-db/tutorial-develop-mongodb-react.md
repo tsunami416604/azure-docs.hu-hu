@@ -10,14 +10,15 @@ ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: 06c309de5054887a64e61d61345190c776835709
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: cdb8612bb04d52df3603aa4520cad4cbacb661da
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476586"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074080"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>MongoDB-alkalmazás létrehozása a React és az Azure Cosmos DB használatával  
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Ez a többrészes videóalapú oktatóanyag bemutatja, hogyan hozhat létre főképkövető alkalmazást React-előtérrendszerrel. Az alkalmazás a-kiszolgálóhoz a Node és a Expresst használta, a [Azure Cosmos db API-MongoDB](mongodb-introduction.md)konfigurált Cosmos-adatbázishoz csatlakozik, majd a reakciót az alkalmazás kiszolgálói részére csatlakoztatja. Az oktatóanyag azt is bemutatja, hogyan végezheti el a Cosmos DB méretezését a Azure Portalban, és hogyan helyezheti üzembe az alkalmazást az interneten, így mindenki nyomon követheti kedvenc hőseit. 
 

@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: e452f03721551adada69a36b1ce69e57f1111f55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83a422bbdc4e33ecd955451bb3c1e305cee2b2f4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85834063"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93072841"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Kiszolgáló nélküli eseményvezérelt architektúrák Azure Cosmos DB és Azure Functions
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A Azure Functions biztosítja a legegyszerűbb módot a [változási csatornához](change-feed.md)való kapcsolódásra. Létrehozhat olyan kis reaktív Azure Functions, amelyek automatikusan aktiválódik az Azure Cosmos-tároló változási csatornájának minden új eseményén.
 
@@ -29,8 +30,8 @@ A [Cosmos DB Azure functions eseményindítójának](../azure-functions/function
 
 Kiszolgáló nélküli eseményvezérelt folyamat megvalósításához a következők szükségesek:
 
-* **A figyelt tároló**: a figyelt tároló a figyelt Azure Cosmos-tároló, amely a változási csatornát generáló adatok tárolására szolgál. A figyelt tárolóban lévő összes Beszúrás a tároló változási csatornáján jelenik meg.
-* **A bérlet**tárolója: a címbérleti tároló több és dinamikus kiszolgáló nélküli Azure functions-példányon tárolja az állapotot, és lehetővé teszi a dinamikus skálázást. Ez a címbérleti tároló manuálisan vagy automatikusan hozható létre a Cosmos DB Azure Functions triggerrel. A bérlet tárolójának automatikus létrehozásához állítsa be a *CreateLeaseCollectionIfNotExists* jelzőt a [konfigurációban](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration). Particionált bérletű tárolók szükségesek a `/id` partíciós kulcs definíciójának létrehozásához.
+* **A figyelt tároló** : a figyelt tároló a figyelt Azure Cosmos-tároló, amely a változási csatornát generáló adatok tárolására szolgál. A figyelt tárolóban lévő összes Beszúrás a tároló változási csatornáján jelenik meg.
+* **A bérlet** tárolója: a címbérleti tároló több és dinamikus kiszolgáló nélküli Azure functions-példányon tárolja az állapotot, és lehetővé teszi a dinamikus skálázást. Ez a címbérleti tároló manuálisan vagy automatikusan hozható létre a Cosmos DB Azure Functions triggerrel. A bérlet tárolójának automatikus létrehozásához állítsa be a *CreateLeaseCollectionIfNotExists* jelzőt a [konfigurációban](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration). Particionált bérletű tárolók szükségesek a `/id` partíciós kulcs definíciójának létrehozásához.
 
 ## <a name="create-your-azure-functions-trigger-for-cosmos-db"></a>Hozza létre a Azure Functions triggert a Cosmos DB
 
@@ -46,7 +47,7 @@ Az [Azure-függvényt helyileg](../azure-functions/functions-develop-local.md) i
 
 Ha élő forgatókönyveket szeretne tesztelni a felhőben, akkor [ingyenesen kipróbálhatja a Cosmos DBT](https://azure.microsoft.com/try/cosmosdb/) bankkártyás vagy Azure-előfizetés nélkül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkekben továbbra is megismerheti a hírcsatornák változását:
 
