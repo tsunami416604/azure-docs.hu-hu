@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 493064bc22b1144df6878d71c99e50fd7c15ba1d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1390f5db6e0f0370788bef60d5a2cafee1e8a96d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482230"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080651"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>A Azure Policy használata Azure Cosmos DB erőforrások irányításának és szabályozásának megvalósításához
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 [Azure Policy](../governance/policy/overview.md) segítséget nyújt a szervezeti irányítási szabványok betartatásához, az erőforrás-megfelelőség értékeléséhez és az automatikus szervizelés megvalósításához. Gyakori használati esetek közé tartozik a biztonság, a Cost-kezelés és a konfiguráció konzisztenciája.
 
@@ -24,7 +25,7 @@ A Azure Policy beépített szabályzat-definíciókat biztosít. Létrehozhat eg
 
 ## <a name="assign-a-built-in-policy-definition"></a>Beépített szabályzatdefiníció hozzárendelése
 
-A szabályzat-definíciók írják le az erőforrás-megfelelőségi feltételeket, valamint azt, hogy egy adott feltétel teljesül-e. A szabályzat- _hozzárendelések_ a szabályzat- _definíciók_alapján jönnek létre. A Azure Cosmos DB erőforrásaihoz beépített vagy egyéni szabályzat-definíciókat használhat. A szabályzat-hozzárendelések egy Azure felügyeleti csoportra, egy Azure-előfizetésre vagy egy erőforráscsoport hatókörére vonatkoznak, és a rendszer a kijelölt hatókörben lévő erőforrásokra alkalmazza őket. Igény szerint kizárhat bizonyos erőforrásokat a hatókörből.
+A szabályzat-definíciók írják le az erőforrás-megfelelőségi feltételeket, valamint azt, hogy egy adott feltétel teljesül-e. A szabályzat- _hozzárendelések_ a szabályzat- _definíciók_ alapján jönnek létre. A Azure Cosmos DB erőforrásaihoz beépített vagy egyéni szabályzat-definíciókat használhat. A szabályzat-hozzárendelések egy Azure felügyeleti csoportra, egy Azure-előfizetésre vagy egy erőforráscsoport hatókörére vonatkoznak, és a rendszer a kijelölt hatókörben lévő erőforrásokra alkalmazza őket. Igény szerint kizárhat bizonyos erőforrásokat a hatókörből.
 
 Házirend-hozzárendeléseket a [Azure Portal](../governance/policy/assign-policy-portal.md), az [Azure PowerShell](../governance/policy/assign-policy-powershell.md), az [Azure CLI](../governance/policy/assign-policy-azurecli.md)vagy az [ARM sablon](../governance/policy/assign-policy-template.md)segítségével hozhat létre.
 
@@ -39,7 +40,7 @@ A házirend-definíció kiválasztásához írja be a `Cosmos DB` kifejezést a 
 
 ## <a name="create-a-custom-policy-definition"></a>Egyéni szabályzatdefiníció létrehozása
 
-A beépített szabályzatok által nem tárgyalt konkrét forgatókönyvek esetén létrehozhat [egy egyéni szabályzat-definíciót](../governance/policy/tutorials/create-custom-policy-definition.md)is. Később létrehoz egy szabályzat- _hozzárendelést_ az egyéni szabályzat- _definícióból_.
+A beépített szabályzatok által nem tárgyalt konkrét forgatókönyvek esetén létrehozhat [egy egyéni szabályzat-definíciót](../governance/policy/tutorials/create-custom-policy-definition.md)is. Később létrehoz egy szabályzat- _hozzárendelést_ az egyéni szabályzat- _definícióból_ .
 
 ### <a name="property-types-and-property-aliases-in-policy-rules"></a>Tulajdonságok típusai és tulajdonság-aliasok a házirend-szabályokban
 

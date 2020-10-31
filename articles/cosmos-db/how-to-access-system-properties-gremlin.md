@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 09/10/2019
 author: SnehaGunda
 ms.author: sngun
-ms.openlocfilehash: c03e4db30d590df21a8ceb3c483ece4b59e548d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61814082ebe9828a08da1e8786890b500c239082
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397317"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081841"
 ---
 # <a name="system-document-properties"></a>Rendszerdokumentum tulajdonságai
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Azure Cosmos db olyan [rendszertulajdonságokkal](/rest/api/cosmos-db/databases) rendelkezik, mint a,,, ```_ts``` ```_self``` ```_attachments``` ```_rid``` és ```_etag``` minden dokumentumon. Ezenkívül a Gremlin-motor az élekhez az ```inVPartition``` és az ```outVPartition``` tulajdonságokat is hozzárendeli. Alapértelmezés szerint ezek a tulajdonságok a bejáráshoz érhetők el. Azonban a Gremlin bejárásakor lehetséges, hogy a megadott tulajdonságokat vagy azok mindegyikét is tartalmazza.
 

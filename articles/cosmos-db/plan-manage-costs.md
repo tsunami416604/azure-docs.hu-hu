@@ -7,14 +7,15 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 278603887fe7d47b4be52b04f9f0864be1a1b75b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3a1bb36910b09d24c3328c8fc8ae94e1e3321642
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482247"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080702"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>A Azure Cosmos DB költségeinek megtervezése és kezelése
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Ez a cikk bemutatja, hogyan tervezheti meg és kezelheti a Azure Cosmos DB költségeit:
 
@@ -45,7 +46,7 @@ Az alábbi képernyőfelvételen az átviteli sebesség és a költségbecslés 
 
 Ha kiszolgáló nélküli módban tervezi használni a Azure Cosmos DBt, meg kell becsülnie, hogy hány [kérelem-egység](request-units.md) és GB tárterületet használ fel havi rendszerességgel. A kért egységek mennyiségét a havonta kiállított adatbázis-műveletek számának kiértékelésével becsülheti meg, és a megfelelő RU-költségeket megszorozva. A következő táblázat az általános adatbázis-műveletek becsült költségét sorolja fel:
 
-| Művelet | Becsült költségek | Jegyzetek |
+| Művelet | Becsült költségek | Megjegyzések |
 | --- | --- | --- |
 | Elemek létrehozása | 5 RUs | 5 KB-nál kevesebb tulajdonsággal rendelkező 1 KB-os elemek átlagos díja |
 | Elem módosítása | 10 RU | 5 KB-nál kevesebb tulajdonsággal rendelkező 1 KB-os elemek átlagos díja |
@@ -56,7 +57,7 @@ Ha kiszolgáló nélküli módban tervezi használni a Azure Cosmos DBt, meg kel
 > [!IMPORTANT] 
 > Figyeljen a fenti táblázat megjegyzéseit. A műveletek tényleges költségeinek pontosabb becslése érdekében használhatja az [Azure Cosmos emulatort](local-emulator.md) , és megbecsülheti a [műveleteinek pontos költségét](find-request-unit-charge.md). Bár az Azure Cosmos Emulator nem támogatja a kiszolgáló nélküli működést, az adatbázis-műveletekhez standard RU-díjat jelent, és ezt a becslést is felhasználhatja.
 
-Miután kiszámította a kérelmek teljes számát és a GB-nyi tárterületet, amelyet valószínűleg egy hónap alatt felhasznál, a következő képlet visszaadja a költségbecslést: **([a kérelmek száma]/1 000 000 * $0,25) + ([GB tárterület] * $0,25)**.
+Miután kiszámította a kérelmek teljes számát és a GB-nyi tárterületet, amelyet valószínűleg egy hónap alatt felhasznál, a következő képlet visszaadja a költségbecslést: **([a kérelmek száma]/1 000 000 * $0,25) + ([GB tárterület] * $0,25)** .
 
 > [!NOTE]
 > Az előző példában bemutatott költségek csak demonstrációs célokat szolgálnak. A legfrissebb díjszabási információkért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/) .
@@ -87,11 +88,11 @@ A Cost Analysis használatakor különböző időintervallumok esetén megtekint
 
 1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
 
-1. Nyissa meg a **Cost Management + számlázás** ablakot, válassza ki a menüből a **Cost Management** elemet, majd válassza a **Cost Analysis**lehetőséget. Ezután módosíthatja egy adott előfizetés hatókörét a **hatókör** legördülő menüből.
+1. Nyissa meg a **Cost Management + számlázás** ablakot, válassza ki a menüből a **Cost Management** elemet, majd válassza a **Cost Analysis** lehetőséget. Ezután módosíthatja egy adott előfizetés hatókörét a **hatókör** legördülő menüből.
 
 1. Alapértelmezés szerint az összes szolgáltatás díja megjelenik az első fánk-diagramon. Válassza ki a diagramot a "Azure Cosmos DB" címkével.
 
-1. Egy szolgáltatás, például a Azure Cosmos DB költségeinek szűkítéséhez válassza a **szűrő hozzáadása** , majd a **szolgáltatásnév**lehetőséget. Ezután válassza ki a **Azure Cosmos db** elemet a listából. Íme egy példa, amely csak a Azure Cosmos DBra vonatkozó költségeket mutatja:
+1. Egy szolgáltatás, például a Azure Cosmos DB költségeinek szűkítéséhez válassza a **szűrő hozzáadása** , majd a **szolgáltatásnév** lehetőséget. Ezután válassza ki a **Azure Cosmos db** elemet a listából. Íme egy példa, amely csak a Azure Cosmos DBra vonatkozó költségeket mutatja:
  
    :::image type="content" source="./media/plan-manage-costs/cost-analysis-pane.png" alt-text="Költségbecslés a Azure Cosmos DB Capacity kalkulátorban":::
 

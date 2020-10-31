@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 0fb783a6ad65ce17bff14b72e8d94d284769779f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 824c48646ab32e02c627fb623dbab60c3050ad96
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475158"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080719"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Teljesítménnyel kapcsolatos tippek az Azure Cosmos DB Java SDK v2-höz
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
@@ -44,14 +45,14 @@ A jobb teljesítmény érdekében javasoljuk a Windows 64 bites gazdagépek feld
 
 - A végrehajtható alkalmazások esetében úgy módosíthatja a gazdagépek feldolgozását, hogy a [platform célját](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) **x64**  értékre állítja a **Projekt tulajdonságai** ablakban a **Build** lapon.
 
-- A VSTest-alapú tesztelési projektek esetében **Test**  >  **Test Settings**  >  a Visual Studio **test** menüben válassza a tesztelési beállítások**alapértelmezett processzor-architektúra x64-ként** lehetőséget.
+- A VSTest-alapú tesztelési projektek esetében **Test**  >  **Test Settings**  >  a Visual Studio **test** menüben válassza a tesztelési beállítások **alapértelmezett processzor-architektúra x64-ként** lehetőséget.
 
-- Helyileg telepített ASP.NET-webalkalmazások esetében a gazdagépek feldolgozását úgy módosíthatja, hogy kiválasztja **a IIS Express 64 bites verzióját a webhelyekhez és projektekhez** a **Tools**  >  **Options**  >  **Projects és a Solutions**  >  **webes projektjei**alatt.
+- Helyileg telepített ASP.NET-webalkalmazások esetében a gazdagépek feldolgozását úgy módosíthatja, hogy kiválasztja **a IIS Express 64 bites verzióját a webhelyekhez és projektekhez** a **Tools**  >  **Options**  >  **Projects és a Solutions**  >  **webes projektjei** alatt.
 
 - Az Azure-on üzembe helyezett webalkalmazások esetében a **ASP.net a** **64 bites** platform kiválasztásával módosíthatja a Azure Portal.
 
 > [!NOTE] 
-> Alapértelmezés szerint az új Visual Studio-projektek **bármely CPU**-ra vannak beállítva. Javasoljuk, hogy állítsa a projektet **x64** -re, hogy ne váltson **x86**-ra. **Bármely CPU** -ra beállított projekt könnyen válthat **x86** -ra, ha csak x86-os függőség van hozzáadva.<br/>
+> Alapértelmezés szerint az új Visual Studio-projektek **bármely CPU** -ra vannak beállítva. Javasoljuk, hogy állítsa a projektet **x64** -re, hogy ne váltson **x86** -ra. **Bármely CPU** -ra beállított projekt könnyen válthat **x86** -ra, ha csak x86-os függőség van hozzáadva.<br/>
 > ServiceInterop.dllnak abban a mappában kell lennie, amelyre az SDK DLL-t végrehajtja. Ez csak akkor fontos, ha manuálisan másol DLL-eket, vagy egyéni Build-vagy üzembe helyezési rendszert használ.
     
 **Kiszolgálóoldali Garbage-gyűjtemény bekapcsolása (GC)**
@@ -135,7 +136,7 @@ Az SQL .NET SDK 1.9.0 és újabb verziói támogatják a párhuzamos lekérdezé
 - `MaxDegreeOfParallelism` a párhuzamosan lekérdezhető partíciók maximális számát szabályozza. 
 - `MaxBufferedItemCount` az előre lehívott eredmények számát szabályozza.
 
-**_A párhuzamosság foka_*_
+**_A párhuzamosság foka_* _
 
 A párhuzamos lekérdezés több partíció párhuzamos lekérdezésével működik. Az egyes partíciók adatait azonban a lekérdezésre vonatkozó sorosan kell beolvasni. Az `MaxDegreeOfParallelism` [SDK v2](sql-api-sdk-dotnet.md) és a partíciók számának beállítása a legjobb lehetőség a legtöbb teljesítményű lekérdezés megvalósítására, ha az összes többi rendszerfeltétel változatlan marad. Ha nem ismeri a partíciók számát, megadhatja a párhuzamosság mértékét magas számra. A rendszer kijelöli a minimális (partíciók számát, a felhasználó által megadott bemenetet) a párhuzamosság foka alapján.
 
@@ -147,7 +148,7 @@ A párhuzamos lekérdezés úgy lett kialakítva, hogy előzetesen beolvassa az 
 
 Az előzetes lekérés ugyanúgy működik, függetlenül a párhuzamosság mértékétől, és egyetlen puffer van az összes partícióból származó adatokhoz.  
 
-_*A leállítási megvalósítása RetryAfter időközönként**
+_ *A leállítási megvalósítása RetryAfter időközönként**
 
 A teljesítmény tesztelése során növelje a terhelést, amíg a rendszer kis mennyiségű kérést nem szabályoz. Ha a kérelmek szabályozása megtörténik, az ügyfélalkalmazás a kiszolgáló által megadott újrapróbálkozási időközre vonatkozó biztonsági mentést hajt végre a szabályozásban. A leállítási tiszteletben tartásával biztosíthatja, hogy az újrapróbálkozások között minimálisan mennyi időt kell várnia. 
 
@@ -178,7 +179,7 @@ Ha csökkenteni szeretné az összes vonatkozó eredmény beolvasásához szüks
 > [!NOTE] 
 > A `maxItemCount` tulajdonságot nem szabad csak a tördeléshez használni. Fő felhasználási célja a lekérdezések teljesítményének javítása azáltal, hogy csökkenti az egyetlen oldalon visszaadott elemek maximális számát.  
 
-Az oldalméret az elérhető Azure Cosmos DB SDK-k használatával is beállítható. A [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet&preserve-view=true) tulajdonsága `FeedOptions` lehetővé teszi, hogy beállítsa a számbavételi műveletben visszaadott elemek maximális számát. Ha a `maxItemCount` értéke-1, az SDK automatikusan megkeresi az optimális értéket a dokumentum méretétől függően. Példa:
+Az oldalméret az elérhető Azure Cosmos DB SDK-k használatával is beállítható. A [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet&preserve-view=true) tulajdonsága `FeedOptions` lehetővé teszi, hogy beállítsa a számbavételi műveletben visszaadott elemek maximális számát. Ha a `maxItemCount` értéke-1, az SDK automatikusan megkeresi az optimális értéket a dokumentum méretétől függően. Például:
     
 ```csharp
 IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });

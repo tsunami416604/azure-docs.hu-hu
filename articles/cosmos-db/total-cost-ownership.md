@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: a058e7a23c36dcaca16c3cce1be1ca826d472bc0
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: eb06d101170685bea5ff231612e9ffbf8df467da
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476994"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079291"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Teljes tulajdonlási költség (TCO) Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Az Azure Cosmos DB részletes, több-bérlős működésre és erőforrás-szabályozásra lett tervezve. Ez lehetővé teszi, hogy az Azure Cosmos DB jelentősen alacsonyabb költségekkel működjön, és így a felhasználók pénzt takaríthassanak meg. Jelenleg az Azure Cosmos DB több mint 280 ügyfél általi számítási feladatot támogat gépenként, miközben ennek sűrűsége folyamatosan nő, valamint több ezret egy fürtön belül. Elosztja az ügyfél általi számítási feladatok replikáit egy adott fürt különböző gépei, valamint egy adatközpont több fürtje között a terheléskiegyenlítés érdekében. További információt [a Azure Cosmos db: globálisan elosztott adatbázisok határának](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/)leküldésével foglalkozó témakörben talál. Az erőforrás-szabályozás, a több-bérlős és az Azure-infrastruktúrával való natív integráció miatt a Azure Cosmos DB átlagosan 4 – 6-szor olcsóbb, mint a MongoDB, Cassandra vagy más, IaaS-on futó OSS-NoSQL, és akár 10-szer olcsóbb, mint a helyszínen futó adatbázismotor. Tekintse meg a [NoSQL-adatbázis felhőalapú szolgáltatásának teljes költsége (nem) tulajdonjogát](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf).
 

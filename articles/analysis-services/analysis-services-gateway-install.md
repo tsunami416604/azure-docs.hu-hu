@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ed13111584e7e9621ec2ccde16efb3cdf2eef50c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 64bd9e4a4cf78d2628e946af30c2d290ff002cf7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016178"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081144"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Helyszíni adatátjáró telepítése és konfigurálása
 
-Egy helyszíni adatátjáróra akkor van szükség, ha egy vagy több Azure Analysis Services-kiszolgáló ugyanabban a régióban csatlakozik a helyszíni adatforrásokhoz.  Míg a telepített átjáró ugyanaz, mint az egyéb szolgáltatások, például a Power BI, a Power apps és a Logic Apps, a Azure Analysis Services telepítésekor néhány további lépést is végre kell hajtania. Ez a telepítési cikk a **Azure Analysis Servicesra**vonatkozik. 
+Egy helyszíni adatátjáróra akkor van szükség, ha egy vagy több Azure Analysis Services-kiszolgáló ugyanabban a régióban csatlakozik a helyszíni adatforrásokhoz.  Míg a telepített átjáró ugyanaz, mint az egyéb szolgáltatások, például a Power BI, a Power apps és a Logic Apps, a Azure Analysis Services telepítésekor néhány további lépést is végre kell hajtania. Ez a telepítési cikk a **Azure Analysis Servicesra** vonatkozik. 
 
 Ha többet szeretne megtudni arról, hogy a Azure Analysis Services hogyan működik az átjáróval, tekintse [meg a csatlakozás helyszíni adatforrásokhoz](analysis-services-gateway.md)című témakört. Ha többet szeretne megtudni a speciális telepítési forgatókönyvekről és az átjáróról, tekintse [meg a helyszíni adatátjárók dokumentációját](/data-integration/gateway/service-gateway-onprem).
 
@@ -52,11 +52,11 @@ Ha többet szeretne megtudni arról, hogy a Azure Analysis Services hogyan műk�
 
 1. Futtassa a telepítőt.
 
-2. Válassza **a helyszíni adatátjáró**lehetőséget.
+2. Válassza **a helyszíni adatátjáró** lehetőséget.
 
-   ![Kiválasztás](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
+   ![Válassza ezt:](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
 
-2. Válasszon ki egy helyet, fogadja el a feltételeket, majd kattintson a **telepítés**gombra.
+2. Válasszon ki egy helyet, fogadja el a feltételeket, majd kattintson a **telepítés** gombra.
 
    ![Telepítési hely és licencfeltételek](media/analysis-services-gateway-install/aas-gateway-installer-accept.png)
 
@@ -71,11 +71,11 @@ Ha többet szeretne megtudni arról, hogy a Azure Analysis Services hogyan műk�
 
 Az Azure-beli átjáró-erőforrások létrehozásához regisztrálnia kell az átjáró Cloud Service-ben telepített helyi példányt. 
 
-1.  Válassza **az új átjáró regisztrálása ezen a számítógépen**lehetőséget.
+1.  Válassza **az új átjáró regisztrálása ezen a számítógépen** lehetőséget.
 
-    ![Regisztráció](media/analysis-services-gateway-install/aas-gateway-register-new.png)
+    ![Képernyőfelvétel: az új átjáró regisztrálása ezen a számítógépen beállítás.](media/analysis-services-gateway-install/aas-gateway-register-new.png)
 
-2. Adja meg az átjáró nevét és helyreállítási kulcsát. Alapértelmezés szerint az átjáró az előfizetés alapértelmezett régióját használja. Ha másik régiót kell kiválasztania, válassza a **régió módosítása**lehetőséget.
+2. Adja meg az átjáró nevét és helyreállítási kulcsát. Alapértelmezés szerint az átjáró az előfizetés alapértelmezett régióját használja. Ha másik régiót kell kiválasztania, válassza a **régió módosítása** lehetőséget.
 
     > [!IMPORTANT]
     > Mentse a helyreállítási kulcsot biztonságos helyen. A helyreállítási kulcs szükséges az átjáró átvételéhez, átmigrálához vagy visszaállításához. 
@@ -87,25 +87,25 @@ Az Azure-beli átjáró-erőforrások létrehozásához regisztrálnia kell az �
 
 Az átjáró telepítése és regisztrálása után létre kell hoznia egy átjáró-erőforrást az Azure-ban. Jelentkezzen be az Azure-ba ugyanazzal a fiókkal, amelyet az átjáró regisztrálásakor használt.
 
-1. Azure Portal kattintson az **erőforrás létrehozása**elemre, majd keresse **meg a helyszíni adatátjárót**, majd kattintson a **Létrehozás**gombra.
+1. Azure Portal kattintson az **erőforrás létrehozása** elemre, majd keresse **meg a helyszíni adatátjárót** , majd kattintson a **Létrehozás** gombra.
 
    ![Átjáró erőforrásának létrehozása](media/analysis-services-gateway-install/aas-gateway-new-azure-resource.png)
 
-2. Adja meg a következő beállításokat a **kapcsolatok átjárójának létrehozása**területen:
+2. Adja meg a következő beállításokat a **kapcsolatok átjárójának létrehozása** területen:
 
-   * **Név**: adja meg az átjáró erőforrásának nevét. 
+   * **Név** : adja meg az átjáró erőforrásának nevét. 
 
-   * **Előfizetés**: válassza ki az átjáró erőforrásához társítandó Azure-előfizetést. 
+   * **Előfizetés** : válassza ki az átjáró erőforrásához társítandó Azure-előfizetést. 
    
      Az alapértelmezett előfizetés a bejelentkezéshez használt Azure-fiókon alapul.
 
-   * **Erőforráscsoport**: Hozzon létre egy erőforráscsoportot, vagy válasszon ki egy már meglévőt.
+   * **Erőforráscsoport** : Hozzon létre egy erőforráscsoportot, vagy válasszon ki egy már meglévőt.
 
-   * **Hely**: válassza ki azt a régiót, amelyen az átjárót regisztrálta.
+   * **Hely** : válassza ki azt a régiót, amelyen az átjárót regisztrálta.
 
-   * **Telepítési név**: Ha az átjáró telepítése még nincs kiválasztva, válassza ki a számítógépen telepített átjárót, és regisztrálja azt. 
+   * **Telepítési név** : Ha az átjáró telepítése még nincs kiválasztva, válassza ki a számítógépen telepített átjárót, és regisztrálja azt. 
 
-     Ha elkészült, kattintson a **Létrehozás**gombra.
+     Ha elkészült, kattintson a **Létrehozás** gombra.
 
 ## <a name="connect-gateway-resource-to-server"></a>Átjáró erőforrásának összekötése a kiszolgálóval
 
@@ -114,18 +114,18 @@ Az átjáró telepítése és regisztrálása után létre kell hoznia egy átj�
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. A Azure Analysis Services-kiszolgáló áttekintésében kattintson **a helyszíni adatátjáró**elemre.
+1. A Azure Analysis Services-kiszolgáló áttekintésében kattintson **a helyszíni adatátjáró** elemre.
 
    ![Kiszolgáló összekötése az átjáróval](media/analysis-services-gateway-install/aas-gateway-connect-server.png)
 
-2. A **kapcsolódáshoz válasszon egy helyszíni Adatátjárót**, válassza ki az átjáró-erőforrást, majd kattintson a **kijelölt átjáró összekapcsolása**elemre.
+2. A **kapcsolódáshoz válasszon egy helyszíni Adatátjárót** , válassza ki az átjáró-erőforrást, majd kattintson a **kijelölt átjáró összekapcsolása** elemre.
 
    ![Kiszolgáló és átjáró erőforrásának összekötése](media/analysis-services-gateway-install/aas-gateway-connect-resource.png)
 
     > [!NOTE]
     > Ha az átjáró nem jelenik meg a listában, akkor a kiszolgáló valószínűleg nem ugyanabban a régióban található, mint az átjáró regisztrálásakor megadott régió.
 
-    Ha a kiszolgáló és az átjáró-erőforrás közötti kapcsolat sikeresen befejeződött, az **Connected**állapot fog megjelenni.
+    Ha a kiszolgáló és az átjáró-erőforrás közötti kapcsolat sikeresen befejeződött, az **Connected** állapot fog megjelenni.
 
 
     ![A kiszolgáló és az átjáró erőforrásának összekötése sikeres](media/analysis-services-gateway-install/aas-gateway-connect-success.png)

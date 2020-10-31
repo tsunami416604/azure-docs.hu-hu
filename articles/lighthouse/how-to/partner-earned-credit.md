@@ -1,14 +1,14 @@
 ---
 title: A partner AZONOSÍTÓjának összekapcsolása a delegált erőforrásokra gyakorolt hatás nyomon követéséhez
 description: Megtudhatja, hogyan rendelheti hozzá partner-AZONOSÍTÓját az Azure Lighthouse használatával kezelt felhasználói erőforrásokhoz kapcsolódó partneri kreditek (PEC) fogadásához.
-ms.date: 10/13/2020
+ms.date: 10/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 95483cfabb7632182a7c23ae4963f2d38a2bd2c3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: fcbcc70e380116b8e9f9b1c1e365dee1adb87a99
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019909"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080277"
 ---
 # <a name="link-your-partner-id-to-track-your-impact-on-delegated-resources"></a>A partner AZONOSÍTÓjának összekapcsolása a delegált erőforrásokra gyakorolt hatás nyomon követéséhez 
 
@@ -22,7 +22,7 @@ Ha az [ügyfeleket Azure Resource Management-sablonok használatával](onboard-c
 
 Ha Azure Resource Manager-sablonok (ARM-sablonok) segítségével készíti elő az ügyfeleket, az alábbi eljárással összekapcsolhatja a Partner azonosítóját (és ha van ilyen), akkor a partner-azonosítót (ha van). A lépések elvégzéséhez ismernie kell az [MPN-Partner azonosítóját](/partner-center/partner-center-account-setup#locate-your-mpn-id) . Ügyeljen arra, hogy a partnerprofilon szereplő **társított MPN-azonosítót** használja.
 
-Az egyszerűség kedvéért javasoljuk, hogy hozzon létre egy egyszerű szolgáltatásnevet a bérlőben, csatolja a **társított MPN-azonosítóhoz**, majd minden ügyfél számára hozzáférést biztosítson a [PEC-re jogosult Azure beépített szerepkörhöz](/partner-center/azure-roles-perms-pec).
+Az egyszerűség kedvéért javasoljuk, hogy hozzon létre egy egyszerű szolgáltatásnevet a bérlőben, csatolja a **társított MPN-azonosítóhoz** , majd minden ügyfél számára hozzáférést biztosítson a [PEC-re jogosult Azure beépített szerepkörhöz](/partner-center/azure-roles-perms-pec).
 
 1. [Hozzon létre egy egyszerű szolgáltatásnevet](../../active-directory/develop/howto-authenticate-service-principal-powershell.md) a kezelő bérlőben. Ebben a példában az egyszerű szolgáltatásnév számára a name *Provider Automation-fiókot* fogjuk használni.
 1. Az egyszerű szolgáltatás fiókjának használatával [csatolja a társított MPN-azonosítót](../../cost-management-billing/manage/link-partner-id.md#link-to-a-partner-id) a felügyeleti bérlőben. Ezt csak egyszer kell elvégeznie.
@@ -42,7 +42,9 @@ Ha a fiók a [társított MPN-azonosítóhoz van társítva](../../cost-manageme
 
 [A PEC részleteit a Azure Portalban tekintheti](/partner-center/partner-earned-credit-explanation#azure-cost-management) meg, és megerősítheti, hogy a PEC Milyen költségekkel részesült. Ne feledje, hogy a PEC csak azokra a CSP-ügyfelekre vonatkozik, akik aláírták az MCA-t, és az Azure-csomagban vannak.
 
-Ha követte a fenti lépéseket, és nem látja a társítást, nyisson meg egy támogatási kérést a Azure Portal.
+Ha követte a fenti lépéseket, és nem látja a várt társítást, nyisson meg egy támogatási kérést a Azure Portal.
+
+Használhatja a [partner Center SDK](/partner-center/develop/get-invoice-unbilled-consumption-lineitems) -t is, és SZŰRHETI a `rateOfPartnerEarnedCredit` PEC-ellenőrzés automatizálását az előfizetéshez.
 
 ## <a name="next-steps"></a>Következő lépések
 

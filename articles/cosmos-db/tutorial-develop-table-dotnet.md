@@ -9,14 +9,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9001d9982a26875f814b635533bebd7579339fa5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 5a3eefdb742d847950819fccfd87b9b5501cbefd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476722"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079240"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Bevezetés az Azure Cosmos DB Table API és az Azure Table Storage a .NET SDK-val való használatába
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 
@@ -44,13 +45,13 @@ A minta sikeres teljesítéséhez a következőkre lesz szüksége:
 
 Hozzon létre egy új .NET-konzol alkalmazást a Visual Studióban. A következő lépések bemutatják, hogyan hozhat létre egy Console-alkalmazást a Visual Studio 2019-ben. A Azure Cosmos DB Table Library bármilyen típusú .NET-alkalmazásban használható, beleértve az Azure Cloud Service-t vagy a webalkalmazást, valamint az asztali és mobil alkalmazásokat is. Ebben az útmutatóban az egyszerűség kedvéért egy konzolalkalmazást használunk.
 
-1. Válassza a **fájl**  >  **új**  >  **projekt**lehetőséget.
+1. Válassza a **fájl**  >  **új**  >  **projekt** lehetőséget.
 
-1. Válassza a **Console app (.net Core)** lehetőséget, majd kattintson a **tovább**gombra.
+1. Válassza a **Console app (.net Core)** lehetőséget, majd kattintson a **tovább** gombra.
 
-1. A **projekt neve** mezőben adja meg az alkalmazás nevét, például **CosmosTableSamples**. (Szükség szerint más nevet is megadhat.)
+1. A **projekt neve** mezőben adja meg az alkalmazás nevét, például **CosmosTableSamples** . (Szükség szerint más nevet is megadhat.)
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 Az ebben a mintában szereplő összes példa felvehető a konzol alkalmazás **program.cs** fájljának Main () metódusára.
 
@@ -58,7 +59,7 @@ Az ebben a mintában szereplő összes példa felvehető a konzol alkalmazás **
 
 A NuGet csomag beszerzéséhez kövesse az alábbi lépéseket:
 
-1. Kattintson a jobb gombbal a projektjére a **Megoldáskezelőben**, és válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget.
+1. Kattintson a jobb gombbal a projektjére a **Megoldáskezelőben** , és válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget.
 
 1. Keresse meg a, a, a [`Microsoft.Azure.Cosmos.Table`](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) [`Microsoft.Extensions.Configuration`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration) [`Microsoft.Extensions.Configuration.Json`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Json) [`Microsoft.Extensions.Configuration.Binder`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder) és a **telepítés** lehetőséget a Microsoft Azure Cosmos db Table Library telepítéséhez.
 
@@ -70,9 +71,9 @@ A NuGet csomag beszerzéséhez kövesse az alábbi lépéseket:
 
    :::image type="content" source="./media/create-table-dotnet/connection-string.png" alt-text="Tekintse meg és másolja a vágólapra a PRIMARY CONNECTION STRING (Elsődleges kapcsolati sztring) értékét a Kapcsolati sztring ablaktáblán.":::
    
-1. A kapcsolódási karakterlánc konfigurálásához a Visual studióból kattintson a jobb gombbal a projekt **CosmosTableSamples**.
+1. A kapcsolódási karakterlánc konfigurálásához a Visual studióból kattintson a jobb gombbal a projekt **CosmosTableSamples** .
 
-1. Válassza a **Hozzáadás** , majd az **új elem**lehetőséget. Hozzon létre egy új fájlt, **Settings.jsa** fájltípust **írógéppel JSON konfigurációs** fájlként. 
+1. Válassza a **Hozzáadás** , majd az **új elem** lehetőséget. Hozzon létre egy új fájlt, **Settings.jsa** fájltípust **írógéppel JSON konfigurációs** fájlként. 
 
 1. Cserélje le a Settings.jsfájl kódját a következő kódra, és rendelje hozzá az elsődleges kapcsolatok karakterláncát:
 
@@ -82,7 +83,7 @@ A NuGet csomag beszerzéséhez kövesse az alábbi lépéseket:
    }
    ```
 
-1. Kattintson a jobb gombbal a projekt **CosmosTableSamples**. Válassza a **Hozzáadás**, **új elem elemet** , és adjon hozzá egy **appSettings.cs**nevű osztályt.
+1. Kattintson a jobb gombbal a projekt **CosmosTableSamples** . Válassza a **Hozzáadás** , **új elem elemet** , és adjon hozzá egy **appSettings.cs** nevű osztályt.
 
 1. Adja hozzá a következő kódot a AppSettings.cs fájlhoz. Ez a fájl beolvassa a Settings.jsfájlból a kapcsolódási karakterláncot, és hozzárendeli azt a konfigurációs paraméterhez:
 
@@ -90,7 +91,7 @@ A NuGet csomag beszerzéséhez kövesse az alábbi lépéseket:
 
 ## <a name="parse-and-validate-the-connection-details"></a>A kapcsolat részleteinek elemzése és ellenőrzése
 
-1. Kattintson a jobb gombbal a projekt **CosmosTableSamples**. Válassza a **Hozzáadás**, **új elem elemet** , és adjon hozzá egy **Common.cs**nevű osztályt. A kapcsolat részleteinek érvényesítéséhez és az ebben az osztályban található tábla létrehozásához kódot kell írnia.
+1. Kattintson a jobb gombbal a projekt **CosmosTableSamples** . Válassza a **Hozzáadás** , **új elem elemet** , és adjon hozzá egy **Common.cs** nevű osztályt. A kapcsolat részleteinek érvényesítéséhez és az ebben az osztályban található tábla létrehozásához kódot kell írnia.
 
 1. Definiáljon egy metódust `CreateStorageAccountFromConnectionString` az alább látható módon. Ez a metódus elemzi a kapcsolati sztring részleteit, és ellenőrzi, hogy érvényes-e a fiók neve és a fiók kulcsa a "Settings.json" fájlban.
 
@@ -112,7 +113,7 @@ tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 
 Az entitások C#-objektumokhoz rendelnek egy egyéni, a [TableEntity](/dotnet/api/microsoft.azure.cosmos.table.tableentity)származtatott osztály használatával. Ha hozzá szeretne adni egy entitást egy táblához, hozzon létre egy osztályt, amely meghatározza az entitás tulajdonságait.
 
-Kattintson a jobb gombbal a projekt **CosmosTableSamples**. Válassza a **Hozzáadás**, **új mappa** lehetőséget, és nevezze el **modellként**. A Model mappában adjon hozzá egy **CustomerEntity.cs** nevű osztályt, és adja hozzá a következő kódot.
+Kattintson a jobb gombbal a projekt **CosmosTableSamples** . Válassza a **Hozzáadás** , **új mappa** lehetőséget, és nevezze el **modellként** . A Model mappában adjon hozzá egy **CustomerEntity.cs** nevű osztályt, és adja hozzá a következő kódot.
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Model/CustomerEntity.cs":::
 
@@ -122,7 +123,7 @@ Ez a kód olyan Entity osztályt határoz meg, amely az ügyfél utónevét hasz
 
 A következő mintakód létrehoz egy entitás objektumot, és hozzáadja azt a táblához. Az entitások beszúrásához vagy egyesítéséhez a [TableOperation](/dotnet/api/microsoft.azure.cosmos.table.tableoperation) osztályon belüli InsertOrMerge metódus használható. A művelet végrehajtásához a [CloudTable.ExecuteAsync](/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?preserve-view=true&view=azure-dotnet) metódust kell meghívni. 
 
-Kattintson a jobb gombbal a projekt **CosmosTableSamples**. Válassza a **Hozzáadás**, **új elem elemet** , és adjon hozzá egy **SamplesUtils.cs**nevű osztályt. Ez az osztály tárolja az entitásokon a SZIFILISZi műveletek végrehajtásához szükséges összes kódot. 
+Kattintson a jobb gombbal a projekt **CosmosTableSamples** . Válassza a **Hozzáadás** , **új elem elemet** , és adjon hozzá egy **SamplesUtils.cs** nevű osztályt. Ez az osztály tárolja az entitásokon a SZIFILISZi műveletek végrehajtásához szükséges összes kódot. 
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="InsertItem":::
 
@@ -140,7 +141,7 @@ A lekérdezés után egyszerűen törölheti az entitásokat az entitások friss
 
 ## <a name="execute-the-crud-operations-on-sample-data"></a>A szifilisz-műveletek végrehajtása a mintaadatok alapján
 
-Miután meghatározta a tábla létrehozásához, az entitások beszúrásához vagy egyesítéséhez szükséges metódusokat, futtassa ezeket a metódusokat a mintaadatok alapján. Ehhez kattintson a jobb gombbal a projekt **CosmosTableSamples**. Válassza a **Hozzáadás**, **új elem** lehetőséget, és vegyen fel egy **BasicSamples.cs** nevű osztályt, és adja hozzá a következő kódot. Ez a kód létrehoz egy táblát, entitásokat hoz létre hozzá.
+Miután meghatározta a tábla létrehozásához, az entitások beszúrásához vagy egyesítéséhez szükséges metódusokat, futtassa ezeket a metódusokat a mintaadatok alapján. Ehhez kattintson a jobb gombbal a projekt **CosmosTableSamples** . Válassza a **Hozzáadás** , **új elem** lehetőséget, és vegyen fel egy **BasicSamples.cs** nevű osztályt, és adja hozzá a következő kódot. Ez a kód létrehoz egy táblát, entitásokat hoz létre hozzá.
 
 Ha nem szeretné törölni az entitást és a táblát a projekt végén, jegyezze fel a `await table.DeleteIfExistsAsync()` és `SamplesUtils.DeleteEntityAsync(table, customer)` metódusokat a következő kódból. Érdemes kipróbálni ezeket a metódusokat, és érvényesíteni az adatellenőrzést a tábla törlése előtt.
 
@@ -152,7 +153,7 @@ Ebben az oktatóanyagban a Table API fiókban tárolt adatok alapszintű szifili
 
 ## <a name="run-the-project"></a>A projekt futtatása
 
-A projekt **CosmosTableSamples**. Nyissa meg a **program.cs** nevű osztályt, és adja hozzá a következő kódot a BasicSamples a projekt futtatásakor történő meghívásához.
+A projekt **CosmosTableSamples** . Nyissa meg a **program.cs** nevű osztályt, és adja hozzá a következő kódot a BasicSamples a projekt futtatásakor történő meghívásához.
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Program.cs":::
 

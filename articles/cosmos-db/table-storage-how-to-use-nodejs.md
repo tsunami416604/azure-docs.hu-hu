@@ -9,14 +9,15 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-js
-ms.openlocfilehash: 43ac175e2c1caa39bfe88a7c1a5f42318db343fb
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2d40b70d49b1934c9dd2d911369245b1b2e4f2ff
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477283"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079700"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Node.js segítségével
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
@@ -81,7 +82,7 @@ var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 
 ### <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB-kapcsolat hozzáadása
 
-Azure Cosmos DB-kapcsolatok hozzáadásához hozzon létre egy `TableService` objektumot, és adja meg a fiók nevét, az elsődleges kulcsot és a végpontot. Ezeket az értékeket a **Settings**  >  Cosmos db-fiókjához tartozó Azure Portalban lévő beállítások**közötti kapcsolatok sztringből** másolhatja. Példa:
+Azure Cosmos DB-kapcsolatok hozzáadásához hozzon létre egy `TableService` objektumot, és adja meg a fiók nevét, az elsődleges kulcsot és a végpontot. Ezeket az értékeket a **Settings**  >  Cosmos db-fiókjához tartozó Azure Portalban lévő beállítások **közötti kapcsolatok sztringből** másolhatja. Például:
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
@@ -211,7 +212,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 > Alapértelmezés szerint az entitások frissítésének folyamata nem ellenőrzi, hogy a frissített adatok módosultak-e egy korábbi folyamat során. Egyidejű frissítések támogatásához:
 >
 > 1. Kérje le a frissíteni kívánt objektum ETagjét. A rendszer ezt az entitásokhoz kapcsolódó műveletekre adott `response` részeként adja vissza, és a következőn keresztül kérhető le: `response['.metadata'].etag`.
-> 2. Amikor frissíti az entitásokat, adja hozzá a korábban lekért ETag-információt az új entitáshoz. Példa:
+> 2. Amikor frissíti az entitásokat, adja hozzá a korábban lekért ETag-információt az új entitáshoz. Például:
 >
 >       entity2['.metadata'].etag = currentEtag;
 > 3. Hajtsa végre a frissítést. Ha az entitás módosult az ETag értékének lekérése óta (például az alkalmazás egy másik példányáról van szó), egy `error` elem jelenik meg, amely szerint a kérésben meghatározott frissítési feltétel nem teljesült.
@@ -220,7 +221,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 
 `replaceEntity` `mergeEntity` Ha a és a esetében a frissítendő entitás nem létezik, akkor a frissítési művelet meghiúsul; ezért ha egy entitást attól függetlenül kíván tárolni, hogy az már létezik, használja `insertOrReplaceEntity` vagy `insertOrMergeEntity` .
 
-Sikeres frissítés esetén a frissített entitás `result`ETagje** a ** részét képezi.
+Sikeres frissítés esetén a frissített entitás `result`ETagje **a** részét képezi.
 
 ## <a name="work-with-groups-of-entities"></a>Entitáscsoportok használata
 

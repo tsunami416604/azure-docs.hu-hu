@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 09/25/2019
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 01e61abacac63d698456c3ab25826f9799d2837e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ffd1ff6d18769998dd3a168992566a376ea1cd27
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482281"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080073"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Nem particionált tárolók áttelepíthetők particionált tárolók számára
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB támogatja a tárolók partíciós kulcs nélküli létrehozását. Jelenleg nem particionált tárolókat hozhat létre az Azure CLI és a Azure Cosmos DB SDK-k (.net, Java, NodeJs) használatával, amelyek verziója kisebb vagy egyenlő, mint 2. x. Nem particionált tárolók nem hozhatók létre a Azure Portal használatával. Azonban az ilyen nem particionált tárolók nem rugalmasak, és a rögzített tárolókapacitás 20 GB és a maximális átviteli sebesség (10K RU/s).
 

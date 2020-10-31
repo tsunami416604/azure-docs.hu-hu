@@ -8,14 +8,16 @@ ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: d5d66ca05390af5f6fef91ca959f1db3d547d3fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fff9bc55b324875601a2c4e68835a17c61c3769b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89014047"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079257"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-header-too-large-message"></a>Azure Cosmos DB "a kérelem fejléce túl nagy" üzenet diagnosztizálása és megoldása
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 A "kérelem fejléce túl nagy" üzenetet egy 400-es HTTP-hibakód alapján dobjuk el. Ez a hiba akkor fordul elő, ha a kérelem fejlécének mérete olyan nagy, hogy meghaladja a maximálisan megengedett méretet. Javasoljuk, hogy az SDK legújabb verzióját használja. Legalább a 3. x vagy 2. x verziót használja, mert ezek a verziók a fejléc méretének nyomon követését adja hozzá a kivételt jelző üzenethez.
 
 ## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések

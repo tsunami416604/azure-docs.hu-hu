@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16be1b91d007ca2dbc88405cfc55ff519f51ee41
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74870564"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081536"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Példák az SQL allekérdezésre Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A segédlekérdezés egy másik lekérdezésbe ágyazott lekérdezés. A segédlekérdezés belső lekérdezésnek vagy belső kijelölésnek is nevezik. Az allekérdezést tartalmazó utasítást általában külső lekérdezésnek nevezzük.
 
@@ -23,16 +24,16 @@ Ez a cikk az SQL allekérdezéseket és azok gyakori használati eseteit ismerte
 
 Az allekérdezéseknek két fő típusa van:
 
-* **Korrelált**: olyan segédlekérdezés, amely a külső lekérdezés értékeit hivatkozik. A segédlekérdezés egyszer lesz kiértékelve minden olyan sorban, amelyet a külső lekérdezés feldolgoz.
-* **Nem korrelált**: olyan segédlekérdezés, amely független a külső lekérdezéstől. A külső lekérdezésre való támaszkodás nélkül is futtatható.
+* **Korrelált** : olyan segédlekérdezés, amely a külső lekérdezés értékeit hivatkozik. A segédlekérdezés egyszer lesz kiértékelve minden olyan sorban, amelyet a külső lekérdezés feldolgoz.
+* **Nem korrelált** : olyan segédlekérdezés, amely független a külső lekérdezéstől. A külső lekérdezésre való támaszkodás nélkül is futtatható.
 
 > [!NOTE]
 > A Azure Cosmos DB csak a korrelált allekérdezéseket támogatja.
 
 Az allekérdezések tovább csoportosíthatók a visszaadott sorok és oszlopok száma alapján. Háromféle típus létezik:
-* **Tábla**: több sort és több oszlopot ad vissza.
-* **Többértékű**: több sort és egyetlen oszlopot ad vissza.
-* **Skaláris**: egyetlen sort és egyetlen oszlopot ad vissza.
+* **Tábla** : több sort és több oszlopot ad vissza.
+* **Többértékű** : több sort és egyetlen oszlopot ad vissza.
+* **Skaláris** : egyetlen sort és egyetlen oszlopot ad vissza.
 
 Azure Cosmos DB SQL-lekérdezések mindig egyetlen oszlopot adnak vissza (egyszerű vagy összetett dokumentum). Ezért a Azure Cosmos DBban csak a többértékű és a skaláris allekérdezések alkalmazhatók. A FROM záradékban csak a többértékű allekérdezés használható viszonyítási kifejezésként. Skaláris allekérdezést használhat skaláris kifejezésként a SELECT vagy WHERE záradékban, vagy egy viszonyítási kifejezésként a FROM záradékban.
 
@@ -517,7 +518,7 @@ Lekérdezés kimenete:
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Dokumentumadatok modellezése](modeling-data.md)

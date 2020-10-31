@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a RStudio-csatlakozással | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a RStudio közötti kapcsolat között.
+title: 'Oktatóanyag: Azure Active Directory integráció az SAML-hitelesítéssel a RStudio használatával | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és RStudio közötti összekapcsolási SAML-hitelesítéshez.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,99 +9,77 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/04/2019
+ms.date: 09/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 638b6899331aa1414a730045e6ce9d1e5d332569
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 23ad4347dc898f713066ea1ff061490d3eefb55b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514979"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080481"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>Oktatóanyag: Azure Active Directory integráció a RStudio csatlakozással
+# <a name="tutorial-azure-active-directory-integration-with-rstudio-connect-saml-authentication"></a>Oktatóanyag: Azure Active Directory integráció az SAML-alapú RStudio-hitelesítéssel
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a RStudio-t a Azure Active Directory (Azure AD) szolgáltatással.
-Az RStudio-kapcsolat Azure AD-vel való integrálásával az alábbi előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a RStudio-hez kapcsolódó SAML-hitelesítést Azure Active Directory (Azure AD) használatával.
+Az RStudio-hez készült SAML-hitelesítés és az Azure AD integrálásával a következő előnyöket nyújtja:
 
-* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a RStudio kapcsolódáshoz.
-* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek a RStudio (egyszeri bejelentkezés) Azure AD-fiókjával.
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá az SAML-hitelesítés RStudio.
+* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek az SAML-hitelesítés (egyszeri bejelentkezés) RStudio az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció RStudio-kapcsolaton keresztüli konfigurálásához a következő elemek szükségesek:
+Az Azure AD-integráció RStudio-kapcsolat SAML-hitelesítéssel való konfigurálásához a következő elemek szükségesek:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) szerezhet be
-* RStudio-kapcsolat. [45 napos ingyenes próbaverzió](https://www.rstudio.com/products/connect/) áll rendelkezésre.
+* RStudio-kapcsolat SAML-hitelesítéssel. [45 napos ingyenes próbaverzió](https://www.rstudio.com/products/connect/) áll rendelkezésre.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Az RStudio-összekötő támogatja **az SP és a identitásszolgáltató** által KEZDEMÉNYEZett SSO
+* RStudio az SAML-hitelesítés támogatja **az SP és a identitásszolgáltató** által kezdeményezett SSO-t
 
-* A RStudio csatlakoztatása a felhasználók üzembe helyezésének **időpontját is** támogatja
+* A RStudio csatlakoztatása SAML **-hitelesítés a** felhasználók üzembe helyezését is támogatja
 
-## <a name="adding-rstudio-connect-from-the-gallery"></a>RStudio-kapcsolat hozzáadása a gyűjteményből
+## <a name="adding-rstudio-connect-saml-authentication-from-the-gallery"></a>RStudio-kapcsolat SAML-hitelesítésének hozzáadása a katalógusból
 
-A RStudio az Azure AD-be való csatlakozásának konfigurálásához hozzá kell adnia a RStudio csatlakozást a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A RStudio-csatlakozás SAML-hitelesítés Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a RStudio-kapcsolat SAML-hitelesítését a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**A RStudio-kapcsolat a katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **RSTUDIO-kapcsolat SAML-hitelesítése** kifejezést a keresőmezőbe.
+1. Válassza az **SAML-hitelesítés RStudio** az eredmények panelen lehetőséget, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-sso-for-rstudio-connect-saml-authentication"></a>Azure AD SSO konfigurálása és tesztelése a RStudio-hez kapcsolódó SAML-hitelesítéshez
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+Konfigurálja és tesztelje az Azure AD SSO-t a RStudio-hez kapcsolódó SAML-hitelesítéssel egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a RStudio-csatlakozás SAML-hitelesítéshez.
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+Az Azure AD SSO konfigurálásához és teszteléséhez a RStudio-alapú kapcsolat SAML-hitelesítéssel végezze el a következő lépéseket:
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+    * **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+2. A **[RStudio-kapcsolat SAML-hitelesítésének konfigurálása](#configure-rstudio-connect-saml-authentication-sso)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
+    * **[RStudio-kapcsolat SAML-hitelesítési teszt felhasználójának létrehozása](#create-rstudio-connect-saml-authentication-test-user)** – ha a RStudio-hez csatlakozik, a felhasználó Azure ad-BRITTA kapcsolt SAML-hitelesítéssel.
+3. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-4. A keresőmezőbe írja be a **RStudio kapcsolódás**kifejezést, válassza a **RStudio kapcsolódás** az eredményekből panelt, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-    ![RStudio-kapcsolat az eredmények listájában](common/search-new-app.png)
+1. A Azure Portal a **RStudio-összekötő SAML-hitelesítés** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a RStudio-kapcsolaton keresztül a **Britta Simon**nevű teszt felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolatra van szükség a RStudio-csatlakozásban.
+1. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket, és cserélje le a kifejezést `<example.com>` a RStudio-kapcsolat SAML-hitelesítési kiszolgálójának címe és portja helyére:
 
-Az Azure AD egyszeri bejelentkezés RStudio-kapcsolaton keresztüli konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
-
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. Az **[RStudio-kapcsolat egyszeri bejelentkezésének konfigurálása](#configure-rstudio-connect-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[RStudio-alapú kapcsolódási teszt felhasználó létrehozása](#create-rstudio-connect-test-user)** – a RStudio-kapcsolaton belül a felhasználó Azure ad-képviseletéhez kapcsolódó Britta Simon partnere.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
-
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
-
-Az Azure AD egyszeri bejelentkezés RStudio-kapcsolaton keresztüli konfigurálásához hajtsa végre a következő lépéseket:
-
-1. Az [Azure Portal](https://portal.azure.com/) **RStudio csatlakozás** az alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
-
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
-
-3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket, és cserélje le a kifejezést `<example.com>` a RStudio csatlakozási kiszolgálójának címe és portra:
-
-    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/idp-intiated.png)
+    ![RStudio az SAML hitelesítési tartomány és az URL-címek egyszeri bejelentkezési adatainak összekapcsolása](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<example.com>/__login__/saml`
 
@@ -109,14 +87,14 @@ Az Azure AD egyszeri bejelentkezés RStudio-kapcsolaton keresztüli konfigurál�
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
+    ![RStudio-kapcsolat SAML-hitelesítés metaadatainak feltöltése](common/metadata-upload-additional-signon.png)
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<example.com>/`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Ezek a RStudio csatlakozási kiszolgáló címe alapján vannak meghatározva ( `https://example.com` a fenti példákban). Ha problémája van, lépjen kapcsolatba a [RStudio kapcsolódási támogatási csapatával](mailto:support@rstudio.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Ezeket a rendszer a RStudio-kapcsolat SAML-hitelesítési kiszolgálójának címe alapján határozza meg ( `https://example.com` a fenti példákban). Ha problémája van, forduljon a [RStudio-kapcsolat SAML-hitelesítés támogatási csapatához](mailto:support@rstudio.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az RStudio-összekötő alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. Az RStudio-összekötő alkalmazás a **NameIdentifier** -t a **User. mail**használatával rendeli hozzá, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy a **Szerkesztés** ikonra kattint, és megváltoztatja az attribútumok leképezését.
+6. A RStudio-összekötő SAML-hitelesítési alkalmazás meghatározott formátumban várja az SAML-jogcímeket, így egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName** leképezéssel van leképezve. Az SAML-RStudio csatlakoztatása azt várja, hogy a **NameIdentifier** a **User. mail** használatával legyen leképezve, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy a **Szerkesztés** ikonra kattint, és módosítja az attribútum-hozzárendelést.
 
     ![image](common/edit-attribute.png)
 
@@ -124,9 +102,33 @@ Az Azure AD egyszeri bejelentkezés RStudio-kapcsolaton keresztüli konfigurál�
 
     ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
 
-### <a name="configure-rstudio-connect-single-sign-on"></a>RStudio-kapcsolat konfigurálása egyetlen Sign-On
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ha be szeretné állítani az egyszeri bejelentkezést a **RStudio kapcsolódáshoz**, az alkalmazás- **összevonási metaadatok URL-címét** és a fent használt **kiszolgáló-címet** kell használnia. Ez a RStudio-kapcsolat konfigurációs fájljában történik a következő helyen: `/etc/rstudio-connect/rstudio-connect.gcfg` .
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
+
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás** gombra.
+
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+
+Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezést az SAML-hitelesítés RStudio való hozzáférés biztosításával.
+
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza az **RStudio-kapcsolat SAML-hitelesítés** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+
+## <a name="configure-rstudio-connect-saml-authentication-sso"></a>RStudio-kapcsolat SAML-hitelesítésének konfigurálása SSO
+
+Ha be szeretné állítani az egyszeri bejelentkezést a RStudio-hez készült **SAML-hitelesítéshez** , az **alkalmazás-összevonási metaadatok URL-címét** és a fent használt **kiszolgálónevet** kell használnia. Ez a RStudio-kapcsolat SAML-hitelesítés konfigurációs fájljában történik a következő helyen: `/etc/rstudio-connect.rstudio-connect.gcfg` .
 
 Ez egy példa konfigurációs fájl:
 
@@ -134,7 +136,7 @@ Ez egy példa konfigurációs fájl:
 [Server]
 SenderEmail =
 
-; Important! The user-facing URL of your RStudio Connect server.
+; Important! The user-facing URL of your RStudio Connect SAML Authentication server.
 Address = 
 
 [Http]
@@ -146,81 +148,38 @@ Provider = saml
 [SAML]
 Logging = true
 
-; Important! The URL where your IdP hosts the SAML metadata or the path to a local copy of it placed in the RStudio Connect server.
+; Important! The URL where your IdP hosts the SAML metadata or the path to a local copy of it placed in the RStudio Connect SAML Authentication server.
 IdPMetaData = 
 
 IdPAttributeProfile = azure
 SSOInitiated = IdPAndSP
 ```
 
-Tárolja a **kiszolgáló címét** az `Server.Address` értékben, és az **alkalmazás összevonási metaadatainak URL-címét** az `SAML.IdPMetaData` értékben. Vegye figyelembe, hogy ez a minta konfiguráció titkosítatlan HTTP-kapcsolaton keresztül működik, míg az Azure AD titkosított HTTPS-kapcsolat használatát igényli. Használhat [fordított proxyt](https://docs.rstudio.com/connect/admin/proxy/) a RStudio-csatlakozás előtt, vagy konfigurálhatja a RStudio csatlakozást [közvetlenül a https használatára](https://docs.rstudio.com/connect/admin/appendix/configuration/#HTTPS). 
+Tárolja a **kiszolgáló címét** az `Server.Address` értékben, és az **alkalmazás összevonási metaadatainak URL-címét** az `SAML.IdPMetaData` értékben. Vegye figyelembe, hogy ez a minta konfiguráció titkosítatlan HTTP-kapcsolaton keresztül működik, míg az Azure AD titkosított HTTPS-kapcsolat használatát igényli. Használhat [fordított proxyt](https://docs.rstudio.com/connect/admin/proxy/) a RStudio-kapcsolat SAML-hitelesítése előtt, vagy konfigurálhatja a RStudio-csatlakozás SAML-hitelesítését a [https használatára közvetlenül](https://docs.rstudio.com/connect/admin/appendix/configuration/#HTTPS). 
 
-Ha problémája van a konfigurációval, olvassa el a [RStudio kapcsolódási felügyeleti útmutatót](https://docs.rstudio.com/connect/admin/authentication/saml/) , vagy küldjön segítséget a [RStudio támogatási csapatának](mailto:support@rstudio.com) .
+Ha problémája van a konfigurációval, olvassa el a [RStudio-kapcsolat SAML-hitelesítési felügyeleti útmutatóját](https://docs.rstudio.com/connect/admin/authentication/saml/) , vagy küldjön e-mailt a [RStudio támogatási csapatának](mailto:support@rstudio.com) segítségére.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
+### <a name="create-rstudio-connect-saml-authentication-test-user"></a>RStudio-kapcsolat SAML-hitelesítési teszt felhasználó létrehozása
 
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a RStudio-összekötő SAML-hitelesítésben. Az RStudio csatlakoztatása az SAML-hitelesítés támogatja az igény szerinti üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a RStudio-kapcsolat SAML-hitelesítésében, akkor létrejön egy új, amikor megpróbál hozzáférni a RStudio-csatlakozás SAML-hitelesítéshez.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+#### <a name="sp-initiated"></a>Az SP inicializálva:
 
-    ![Új felhasználó gomb](common/new-user.png)
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ekkor a rendszer átirányítja a RStudio-kapcsolat SAML-hitelesítésének bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot.  
 
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
+* Nyissa meg közvetlenül az SAML-alapú RStudio-bejelentkezési URL-címet, és indítsa el onnan a bejelentkezési folyamatot.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+#### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
 
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
-    b. A Felhasználónév mezőbe írja be a **nevet** `brittasimon@yourcompanydomain.extension` . Például: BrittaSimon@contoso.com
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie a RStudio-hez készült SAML-hitelesítésbe, amelyhez be kell állítania az egyszeri bejelentkezést 
 
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
+A Microsoft Access panel használatával bármilyen módban tesztelheti az alkalmazást. Ha a hozzáférési panelen a RStudio-csatlakozás SAML-hitelesítés csempére kattint, akkor a bejelentkezési folyamat elindításához, illetve ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie a RStudio-összekötő SAML-Hitelesítésbe, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+## <a name="next-steps"></a>Következő lépések
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+Miután konfigurálta a RStudio-kapcsolat SAML-hitelesítését, kikényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a RStudio kapcsolódáshoz.
-
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **RStudio-kapcsolat**lehetőséget.
-
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
-
-2. Az alkalmazások listában válassza a **RStudio-kapcsolat**lehetőséget.
-
-    ![Az RStudio kapcsolódási hivatkozása az alkalmazások listájában](common/all-applications.png)
-
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
-
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
-
-### <a name="create-rstudio-connect-test-user"></a>RStudio csatlakozási teszt felhasználó létrehozása
-
-Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a RStudio-kapcsolatban. Az RStudio-összekötő támogatja az igény szerinti üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a RStudio-csatlakozásban, a rendszer létrehoz egy újat, amikor megpróbál hozzáférni a RStudio csatlakozáshoz.
-
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
-
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
-
-Ha a hozzáférési panelen a RStudio csatlakozás csempére kattint, automatikusan be kell jelentkeznie arra a RStudio-csatlakozásra, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
-
-## <a name="additional-resources"></a>További források
-
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
-
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-
-- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)

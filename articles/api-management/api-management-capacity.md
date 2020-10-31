@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e907a3ec2e2521524cdf23e1403ae38a19275aa6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c7c002b57f2220ac0a9fba43a8081b2a4ed800e7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071319"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081059"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Az Azure API Management-példányok kapacitása
 
@@ -42,7 +42,7 @@ A cikk lépéseinek követéséhez a következőket kell tennie:
 
 ## <a name="what-is-capacity"></a>Mi az a kapacitás?
 
-![Kapacitási mérőszám](./media/api-management-capacity/capacity-ingredients.png)
+![A kapacitás metrikáját bemutató diagram.](./media/api-management-capacity/capacity-ingredients.png)
 
 A **kapacitás** egy API Management-példány terhelésének kijelzője. Az erőforrások felhasználását (CPU, memória) és a hálózati üzenetsor hosszát tükrözi. A processzor-és memóriahasználat az erőforrások felhasználását mutatja:
 
@@ -52,7 +52,7 @@ A **kapacitás** egy API Management-példány terhelésének kijelzője. Az erő
 
 A teljes **kapacitás** a saját értékeit egy API Management példány minden egységének átlaga.
 
-Bár a **Kapacitási metrika** úgy lett kialakítva, hogy problémákba ütközik a API Management-példánnyal, vannak olyan esetek, amikor problémák nem tükröződnek a **kapacitás metrikájának**változásaiban.
+Bár a **Kapacitási metrika** úgy lett kialakítva, hogy problémákba ütközik a API Management-példánnyal, vannak olyan esetek, amikor problémák nem tükröződnek a **kapacitás metrikájának** változásaiban.
 
 ## <a name="capacity-metric-behavior"></a>Kapacitás metrikájának viselkedése
 
@@ -99,7 +99,7 @@ A **kapacitás** azt a mérőszámot határozza meg, amely szerint a API Managem
 
 + Hosszú távú trendet és átlagot vizsgálunk.
 + Figyelmen kívül hagyva a hirtelen tüskéket, amelyek valószínűleg nem kapcsolódnak a terhelés növekedéséhez (lásd a "kapacitás metrikájának viselkedése" szakaszt a magyarázathoz).
-+ A példány frissítése vagy méretezése, ha a **kapacitás**értéke hosszabb ideig meghaladja a 60%-ot vagy a 70%-ot (például 30 perc). A különböző értékek jobban működhetnek a szolgáltatásban vagy a forgatókönyvben.
++ A példány frissítése vagy méretezése, ha a **kapacitás** értéke hosszabb ideig meghaladja a 60%-ot vagy a 70%-ot (például 30 perc). A különböző értékek jobban működhetnek a szolgáltatásban vagy a forgatókönyvben.
 
 >[!TIP]  
 > Ha előre tudja megbecsülni a forgalmat, tesztelje a APIM-példányt a várt számítási feladatokon. A kérések terhelését fokozatosan növelheti a bérlőn, és megfigyelheti, hogy a kapacitás metrikájának mekkora értéke felel meg a maximális terhelésnek. Az előző szakasz lépéseit követve Azure Portal használatával megtudhatja, mennyi kapacitást használ a rendszer egy adott időpontban.

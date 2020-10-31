@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 0bbb0da0ce39aab9fba843dda99b45ea59881ce2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2fb8b24d5d44ced8f9e363008354acf5bc2fde40
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490543"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081875"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Hogyan biztosítja a Azure Cosmos DB magas rendelkezésre állást
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB két elsődleges módon biztosít magas rendelkezésre állást. Először Azure Cosmos DB a Cosmos-fiókon belül konfigurált régiók között replikálja az adathalmazt. Másodszor Azure Cosmos DB a régión belül 4 replikát tart fenn.
 
@@ -73,7 +74,7 @@ A regionális leállás ritka eseteiben Azure Cosmos DB biztosítja, hogy az ada
 * A korábban érintett írási régió helyreállítása után a rendszer automatikusan elérhetővé válik olvasási régióként. Az írási régióként visszaválthat a visszaállított régióra. A régiókat a [PowerShell, az Azure CLI vagy a Azure Portal](how-to-manage-database-account.md#manual-failover)használatával állíthatja át. Az írási régió és az alkalmazás továbbra is rendelkezésre áll, amíg az **adatvesztés és a rendelkezésre állás még nem** érhető el.
 
 > [!IMPORTANT]
-> Határozottan javasoljuk, hogy az **automatikus feladatátvétel engedélyezéséhez**konfigurálja az éles számítási feladatokhoz használt Azure Cosmos-fiókokat. A manuális feladatátvételhez kapcsolat szükséges a másodlagos és az elsődleges írási régió között a konzisztencia-ellenőrzés elvégzéséhez, hogy a feladatátvétel során ne legyen adatvesztés. Ha az elsődleges régió nem érhető el, ez a konzisztencia-ellenőrzés nem hajtható végre, és a manuális feladatátvétel nem fog sikerülni, ami a regionális leállás időtartamára való írási rendelkezésre állás elvesztését eredményezi.
+> Határozottan javasoljuk, hogy az **automatikus feladatátvétel engedélyezéséhez** konfigurálja az éles számítási feladatokhoz használt Azure Cosmos-fiókokat. A manuális feladatátvételhez kapcsolat szükséges a másodlagos és az elsődleges írási régió között a konzisztencia-ellenőrzés elvégzéséhez, hogy a feladatátvétel során ne legyen adatvesztés. Ha az elsődleges régió nem érhető el, ez a konzisztencia-ellenőrzés nem hajtható végre, és a manuális feladatátvétel nem fog sikerülni, ami a regionális leállás időtartamára való írási rendelkezésre állás elvesztését eredményezi.
 
 ### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>Többrégiós fiókok egyetlen írási régióval (olvasási régió kimaradása)
 
@@ -89,7 +90,7 @@ A regionális leállás ritka eseteiben Azure Cosmos DB biztosítja, hogy az ada
 
 * A további olvasásokat a szolgáltatás a helyreállt régiókhoz irányítja át anélkül, hogy módosítania kellene az alkalmazáskódot. Egy korábban sikertelen régió feladatátvétele és újracsatlakozása során a konzisztencia-garanciák továbbra is tiszteletben maradnak Azure Cosmos DB.
 
-* Még egy ritka és szerencsétlen eseményen is, amikor az Azure-régió véglegesen behajthatatlan, nincs adatvesztés, ha a többrégiós Azure Cosmos-fiók *erős* konzisztencia-konfigurációval van konfigurálva. Ha tartósan letiltott írási régiót használ, egy többrégiós Azure Cosmos-fiók, amely a határértékek konzisztenciájával van konfigurálva, a lehetséges adatvesztési időszak az elavult (*k* vagy *T*) értékre van korlátozva, ahol k = 100000 frissítés és T = 5 perc. A munkamenet, a konzisztens előtag és a végleges konzisztencia-szintek esetében a lehetséges adatvesztési időszak legfeljebb 15 percet vesz igénybe. További információ a Azure Cosmos DB RTO és RPO céljairól: a [konzisztencia szintjei és az adatok tartóssága](./consistency-levels.md#rto)
+* Még egy ritka és szerencsétlen eseményen is, amikor az Azure-régió véglegesen behajthatatlan, nincs adatvesztés, ha a többrégiós Azure Cosmos-fiók *erős* konzisztencia-konfigurációval van konfigurálva. Ha tartósan letiltott írási régiót használ, egy többrégiós Azure Cosmos-fiók, amely a határértékek konzisztenciájával van konfigurálva, a lehetséges adatvesztési időszak az elavult ( *k* vagy *T* ) értékre van korlátozva, ahol k = 100000 frissítés és T = 5 perc. A munkamenet, a konzisztens előtag és a végleges konzisztencia-szintek esetében a lehetséges adatvesztési időszak legfeljebb 15 percet vesz igénybe. További információ a Azure Cosmos DB RTO és RPO céljairól: a [konzisztencia szintjei és az adatok tartóssága](./consistency-levels.md#rto)
 
 ## <a name="availability-zone-support"></a>Rendelkezésre állási zóna támogatása
 
@@ -131,7 +132,7 @@ Availability Zones a használatával engedélyezhető:
 
 * [Azure CLI](manage-with-cli.md#add-or-remove-regions)
 
-* [Azure Resource Manager-sablonok](./manage-with-templates.md)
+* [Azure Resource Manager sablonok](./manage-with-templates.md)
 
 ## <a name="building-highly-available-applications"></a>Magasan elérhető alkalmazások fejlesztése
 

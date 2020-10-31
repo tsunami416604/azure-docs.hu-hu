@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 12/06/2019
-ms.openlocfilehash: 69e7551fbf5b2f38dbc080a468baf81849e4372e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c748c7c1887f46df6f2a49c0d92cfc91a94a90c0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490951"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080413"
 ---
 # <a name="azure-hdinsight-net-samples"></a>Azure HDInsight: .NET-minták
 
@@ -46,4 +46,4 @@ Ezeket a mintákat a .NET-hez a [hdinsight-DotNet-SDK-Samples](https://github.co
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
-Ehhez a további SDK-funkciókhoz tartozó kódrészletek a [HDINSIGHT SDK for .net dokumentációjában](/dotnet/api/overview/azure/hdinsight&preserve-view=true)találhatók.
+Ehhez a további SDK-funkciókhoz tartozó kódrészletek a [HDINSIGHT SDK for .net dokumentációjában](/dotnet/api/overview/azure/hdinsight)találhatók.

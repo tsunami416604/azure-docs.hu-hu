@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 361b27ce84417b30fe58ac7651f70f8c72f8a16a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a4e8ec75d6610e19f241d2047518c3a43132a6e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627372"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079019"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>A hibrid Azure Active Directory csatlakoztatása a régebbi verziójú eszközökhöz 
 
@@ -55,7 +55,7 @@ Ez a cikk a lehetséges problémák megoldásával kapcsolatos hibaelhárítási
 
 Ez a parancs egy párbeszédpanelt jelenít meg, amely a csatlakozás állapotával kapcsolatos részleteket tartalmaz.
 
-![Windows Workplace Join](./media/troubleshoot-hybrid-join-windows-legacy/01.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/01.png" alt-text="A Windows Workplace Join párbeszédpanel képernyőképe. Az e-mail-címet tartalmazó szöveg azt jelzi, hogy egy adott eszköz egy munkahelyhez csatlakozik." border="false":::
 
 ## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>2. lépés: a hibrid Azure AD-csatlakozás állapotának kiértékelése 
 
@@ -65,7 +65,7 @@ Ha az eszköz nem csatlakozott a hibrid Azure AD-hez, az "összekapcsolás" gomb
 
 - Helytelenül konfigurált AD FS vagy Azure AD-vagy hálózati probléma
 
-    ![Windows Workplace Join](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/02.png" alt-text="A Windows Workplace Join párbeszédpanel képernyőképe. Az e-mail-címet tartalmazó szöveg azt jelzi, hogy egy adott eszköz egy munkahelyhez csatlakozik." border="false":::
     
    - A Autoworkplace.exe nem tud csendes hitelesítést végezni az Azure AD-vel vagy AD FSval. Ezt okozhatja a hiányzó vagy helytelenül konfigurált AD FS (összevont tartományok esetében), illetve hiányzik vagy helytelenül konfigurált Azure AD zökkenőmentes önálló Sign-On (felügyelt tartományokhoz) vagy hálózati problémák. 
    - Előfordulhat, hogy a többtényezős hitelesítés (MFA) engedélyezve van/konfigurálva van a felhasználóhoz, és a WIAORMULTIAUTHN nincs konfigurálva a AD FS-kiszolgálón. 
@@ -76,7 +76,7 @@ Ha az eszköz nem csatlakozott a hibrid Azure AD-hez, az "összekapcsolás" gomb
    - A szervezet az Azure AD zökkenőmentes egyszeri bejelentkezést használja, `https://autologon.microsoftazuread-sso.com` vagy `https://aadg.windows.net.nsatc.net` nem szerepel az eszköz IE intranetes beállításain, és az **állapotsoron keresztüli frissítés engedélyezése parancsfájl használatával** nincs engedélyezve az intranetes zónában.
 - Nincs bejelentkezve tartományi felhasználóként
 
-   ![Windows Workplace Join](./media/troubleshoot-hybrid-join-windows-legacy/03.png)
+   :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/03.png" alt-text="A Windows Workplace Join párbeszédpanel képernyőképe. Az e-mail-címet tartalmazó szöveg azt jelzi, hogy egy adott eszköz egy munkahelyhez csatlakozik." border="false":::
 
    Ez a következő okok miatt fordulhat elő:
 
@@ -84,11 +84,11 @@ Ha az eszköz nem csatlakozott a hibrid Azure AD-hez, az "összekapcsolás" gomb
    - Az ügyfél nem tud csatlakozni a tartományvezérlőhöz.    
 - Elérte A kvótát
 
-    ![Windows Workplace Join](./media/troubleshoot-hybrid-join-windows-legacy/04.png)
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/04.png" alt-text="A Windows Workplace Join párbeszédpanel képernyőképe. Az e-mail-címet tartalmazó szöveg azt jelzi, hogy egy adott eszköz egy munkahelyhez csatlakozik." border="false":::
 
 - A szolgáltatás nem válaszol 
 
-    ![Windows Workplace Join](./media/troubleshoot-hybrid-join-windows-legacy/05.png)
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/05.png" alt-text="A Windows Workplace Join párbeszédpanel képernyőképe. Az e-mail-címet tartalmazó szöveg azt jelzi, hogy egy adott eszköz egy munkahelyhez csatlakozik." border="false":::
 
 Az állapotadatok az eseménynaplóban találhatók: **alkalmazások és szolgáltatások Log\Microsoft-Workplace JOIN**
   
@@ -97,7 +97,7 @@ Az állapotadatok az eseménynaplóban találhatók: **alkalmazások és szolgá
 - A számítógép nincs csatlakoztatva a szervezet belső hálózatához vagy egy VPN-hez a helyszíni AD-tartományvezérlővel létesített kapcsolattal.
 - Helyi számítógépfiók használatával jelentkezett be a számítógépre. 
 - Szolgáltatás konfigurációs problémái: 
-   - A AD FS-kiszolgáló nincs konfigurálva a **WIAORMULTIAUTHN**támogatására. 
+   - A AD FS-kiszolgáló nincs konfigurálva a **WIAORMULTIAUTHN** támogatására. 
    - A számítógép erdője nem rendelkezik olyan szolgáltatási kapcsolódási pont objektummal, amely az ellenőrzött tartománynévre mutat az Azure AD-ben 
    - Vagy ha a tartomány felügyelt, akkor a zökkenőmentes egyszeri bejelentkezés nem lett konfigurálva vagy nem működik.
    - A felhasználó elérte az eszközök korlátját. 

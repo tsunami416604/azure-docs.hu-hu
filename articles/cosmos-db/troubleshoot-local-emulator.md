@@ -7,14 +7,15 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
 ms.custom: contperfq1
-ms.openlocfilehash: af9122aaa0233fe5248f31ffe805e01a98831eae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf174d45f33c50ce93b45b19c6030cf42cb20983
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447432"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081450"
 ---
 # <a name="troubleshoot-issues-when-using-the-azure-cosmos-emulator"></a>Az Azure Cosmos Emulator használatakor felmerülő problémák elhárítása
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Az Azure Cosmos Emulator egy helyi környezetet biztosít, amely a Azure Cosmos DB szolgáltatás fejlesztésére szolgál. Az ebben a cikkben található tippek segítséget nyújtanak az Azure Cosmos Emulator telepítésekor vagy használatakor felmerülő problémák elhárításában. 
 
@@ -36,9 +37,9 @@ Ha az emulátor új verzióját telepítette, és hibákat tapasztal, állítsa 
 
 * Ha **A szolgáltatás nem érhető el** üzenetet kap, előfordulhat, hogy az emulátor nem tudja elindítani a hálózati vermet. Ellenőrizze, hogy telepítve van-e a Pulse Secure ügyfél vagy a Juniper Networks ügyfél, mert ezek hálózatszűrő illesztőprogramjai okozhatják a problémát. A külső gyártótól származó hálózatszűrő illesztőprogramok eltávolítása általában kijavítja a problémát. Azt is megteheti, hogy elindítja az emulátort a/DisableRIO, amely átváltja az emulátor hálózati kommunikációját a normál Winsock-ra. 
 
-* Ha **"tiltott", "üzenet": "kérés történt, az átviteli protokoll vagy a titkosítás tiltott titkosítással. A fiók SSL/TLS minimálisan engedélyezett protokoll-beállításának ellenőrzése... "** kapcsolódási problémák, ezt az operációs rendszer globális változásai okozhatja (például a bennfentes előzetes verzió Build 20170) vagy a böngésző azon beállításai, amelyek alapértelmezés szerint engedélyezik a TLS 1,3-et. Hasonló hiba fordulhat elő, ha az SDK-val kérelmet hajt végre a Cosmos emulátoron, például **Microsoft.Azure.Documents.DocumentClientException: a kérést az átviteli protokoll vagy a titkosítás tiltott titkosítása okozta. A fiók SSL/TLS minimálisan engedélyezett protokoll-beállításának bejelölése**. Jelenleg ez a várható működés, mert a Cosmos Emulator csak a TLS 1.2 protokollt fogadja el, és ezzel működik együtt. A javasolt megoldás a beállítások és az alapértelmezett érték módosítása a TLS 1,2; az IIS-kezelőben például navigáljon a "helyek"-> "alapértelmezett webhelyek" elemre, és keresse meg a "hely kötéseit" a 8081-es porthoz, és szerkessze őket a TLS 1,3 letiltásához. Hasonló művelet hajtható végre a webböngészőre vonatkozóan a „Beállítások” lehetőség használatával.
+* Ha **"tiltott", "üzenet": "kérés történt, az átviteli protokoll vagy a titkosítás tiltott titkosítással. A fiók SSL/TLS minimálisan engedélyezett protokoll-beállításának ellenőrzése... "** kapcsolódási problémák, ezt az operációs rendszer globális változásai okozhatja (például a bennfentes előzetes verzió Build 20170) vagy a böngésző azon beállításai, amelyek alapértelmezés szerint engedélyezik a TLS 1,3-et. Hasonló hiba fordulhat elő, ha az SDK-val kérelmet hajt végre a Cosmos emulátoron, például **Microsoft.Azure.Documents.DocumentClientException: a kérést az átviteli protokoll vagy a titkosítás tiltott titkosítása okozta. A fiók SSL/TLS minimálisan engedélyezett protokoll-beállításának bejelölése** . Jelenleg ez a várható működés, mert a Cosmos Emulator csak a TLS 1.2 protokollt fogadja el, és ezzel működik együtt. A javasolt megoldás a beállítások és az alapértelmezett érték módosítása a TLS 1,2; az IIS-kezelőben például navigáljon a "helyek"-> "alapértelmezett webhelyek" elemre, és keresse meg a "hely kötéseit" a 8081-es porthoz, és szerkessze őket a TLS 1,3 letiltásához. Hasonló művelet hajtható végre a webböngészőre vonatkozóan a „Beállítások” lehetőség használatával.
 
-* Amennyiben az emulátor futtatása közben a számítógép alvó állapotba lép vagy frissül az operációs rendszere, a **Szolgáltatás jelenleg nem érhető el** üzenet jelenik meg. Állítsa alaphelyzetbe az emulátort, és kattintson a jobb gombbal a Windows értesítési tálcán megjelenő ikonra, és válassza az **adatvisszaállítás**lehetőséget.
+* Amennyiben az emulátor futtatása közben a számítógép alvó állapotba lép vagy frissül az operációs rendszere, a **Szolgáltatás jelenleg nem érhető el** üzenet jelenik meg. Állítsa alaphelyzetbe az emulátort, és kattintson a jobb gombbal a Windows értesítési tálcán megjelenő ikonra, és válassza az **adatvisszaállítás** lehetőséget.
 
 ## <a name="collect-trace-files"></a><a id="trace-files"></a>Profilelemzési fájlok gyűjtése
 

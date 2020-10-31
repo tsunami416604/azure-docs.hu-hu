@@ -10,14 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: a07365dd313f75a844e41b71427d8ddcf78ded85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25d716513c7ceb9311588b75b0fad1c68bf71bfd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742502"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081110"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Oktatóanyag: Custom Search-weboldal létrehozása
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 A Bing Custom Search szolgáltatással személyre szabott keresési funkciókat hozhat létre olyan témakörökhöz kapcsolódóan, amelyek jelentőséggel bírnak az Ön számára. Ha például egy olyan harcművészeti webhelyhez tartozik, amely keresési élményt nyújt, megadhatja a Bing által megkeresett tartományokat, alhelyeket és weblapokat. A felhasználók az érdeklődési körükhöz igazított keresési eredményeket látnak ahelyett, hogy több oldalnyi általános találatot kellene átnézniük, amelyben irreleváns tartalom is lehet. 
 
@@ -45,7 +50,7 @@ Bing Custom Search-példány létrehozása:
   
 2. Navigáljon a Custom Search [portálra](https://customsearch.ai).  
   
-3. Egy Microsoft-fiók (MSA) használatával jelentkezzen be a portálra. Ha nem rendelkezik MSA, kattintson **a Microsoft-fiók létrehozása**elemre. Ha első alkalommal használja a portált, a rendszer engedélyt kér az adatai eléréséhez. Kattintson a **Yes** (Igen) gombra.  
+3. Egy Microsoft-fiók (MSA) használatával jelentkezzen be a portálra. Ha nem rendelkezik MSA, kattintson **a Microsoft-fiók létrehozása** elemre. Ha első alkalommal használja a portált, a rendszer engedélyt kér az adatai eléréséhez. Kattintson a **Yes** (Igen) gombra.  
   
 4. A bejelentkezés után kattintson a **New custom search** (Új egyéni keresés) elemre. Az **új egyéni keresési példány létrehozása** ablakban adjon meg egy értelmes nevet, és írja le a keresés által visszaadott tartalom típusát. A nevet bármikor módosíthatja.  
   
@@ -130,13 +135,13 @@ Az üzemeltetett felhasználói felület kétféleképpen használható fel.
 - 1. lehetőség: A megadott JavaScript-kódrészlet integrálása az alkalmazásba.
 - 2. lehetőség: A megadott HTML-végpont használata.
 
-Az oktatóanyag hátralévő része az 1. **lehetőség: JavaScript-kódrészletet**mutatja be.  
+Az oktatóanyag hátralévő része az 1. **lehetőség: JavaScript-kódrészletet** mutatja be.  
 
 ## <a name="set-up-your-visual-studio-solution"></a>A Visual Studio-megoldás beállítása
 
 1. Nyissa meg a **Visual Studiót** a számítógépén.  
   
-2. A **Fájl** menüben válassza az **Új**, majd a **Projekt** elemet.  
+2. A **Fájl** menüben válassza az **Új** , majd a **Projekt** elemet.  
   
 3. A **New Project** (Új projekt) párbeszédpanelen válassza a **Visual C# / Web / ASP.NET Core Web Application** (Visual C#- / Web / ASP.NET Core-webalkalmazás) elemet, nevezze el a projektet, majd kattintson az **OK** gombra.  
   
@@ -209,7 +214,7 @@ A keresés végrehajtásakor a következőkhöz hasonló eredmények jelennek me
 
 ![Képernyőkép az egyéni keresés eredményeiről](./media/custom-search-webapp-results.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Bing Custom Search-végpont hívása (C#)](../call-endpoint-csharp.md)

@@ -8,14 +8,15 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 94aa699d8daab7e5e7ff4ae82e5d09ab1475c07e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 709b83ad3e71a932202cebb9c9cb6187feae4ed7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477589"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080005"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Az Azure Table Storage táblatervezési útmutatója: Skálázható és hatékony táblák
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
@@ -123,7 +124,7 @@ Az alábbi példa egy egyszerű tábla-kialakítást mutat be az alkalmazottak �
 </table>
 
 
-Eddig ez a kialakítás a kapcsolódó adatbázisban lévő táblákhoz hasonlóan néz ki. A legfontosabb különbségek a kötelező oszlopok, és több entitás típusának lehetősége ugyanabban a táblában. Emellett a felhasználó által definiált tulajdonságok (például a **FirstName** vagy a **Age**) adattípusa (például Integer vagy string) egy, a rokon adatbázisban lévő oszlophoz hasonlóan. A relációs adatbázistól eltérően azonban a Table Storage séma nélküli jellege azt jelenti, hogy egy tulajdonságnak nem kell ugyanazzal az adattípussal rendelkeznie az egyes entitásokon. Az összetett adattípusok egyetlen tulajdonságba való tárolásához szerializált formátumot kell használni, például JSON vagy XML. További információ: a [Table Storage adatmodell ismertetése](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
+Eddig ez a kialakítás a kapcsolódó adatbázisban lévő táblákhoz hasonlóan néz ki. A legfontosabb különbségek a kötelező oszlopok, és több entitás típusának lehetősége ugyanabban a táblában. Emellett a felhasználó által definiált tulajdonságok (például a **FirstName** vagy a **Age** ) adattípusa (például Integer vagy string) egy, a rokon adatbázisban lévő oszlophoz hasonlóan. A relációs adatbázistól eltérően azonban a Table Storage séma nélküli jellege azt jelenti, hogy egy tulajdonságnak nem kell ugyanazzal az adattípussal rendelkeznie az egyes entitásokon. Az összetett adattípusok egyetlen tulajdonságba való tárolásához szerializált formátumot kell használni, például JSON vagy XML. További információ: a [Table Storage adatmodell ismertetése](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
 
 Ön dönti el, `PartitionKey` és `RowKey` alapvető fontosságú a jó tábla kialakításához. A táblában tárolt összes entitásnak a és a egyedi kombinációjával kell `PartitionKey` rendelkeznie `RowKey` . A kapcsolati adatbázistábla kulcsaihoz hasonlóan a (z) `PartitionKey` és az `RowKey` értékek indexelve lettek egy fürtözött index létrehozásához, amely lehetővé teszi a gyors kereséseket. A Table Storage azonban nem hoz létre másodlagos indexeket, így ezek az egyetlen két indexelt tulajdonság (a később bemutatott minták némelyike azt mutatja be, hogyan lehet megkerülni a látszólagos korlátozást).  
 
@@ -137,7 +138,7 @@ A Table Storage szolgáltatásban az egyes csomópontok egy vagy több teljes pa
 További információ a Table Storage belső részleteiről és különösen a partíciók kezeléséről: [Microsoft Azure Storage: magas rendelkezésre állású felhőalapú tárolási szolgáltatás erős konzisztencia](/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency)mellett.  
 
 ### <a name="entity-group-transactions"></a>Entitás-csoport tranzakciói
-A Table Storage szolgáltatásban az Entity Transactions (EGTs) az egyetlen beépített mechanizmus, amellyel több entitáson végezheti el az Atomic-frissítéseket. A EGTs más néven batch- *tranzakciónak*is nevezzük. A EGTs csak ugyanabban a partícióban tárolt entitásokban működhet (egy adott tábla azonos partíciójának megosztásával), így bármikor szükség van az atomi tranzakciós viselkedésre több entitás között, hogy az entitások ugyanabban a partícióban legyenek. Ez gyakran indokolja, hogy több entitást is tartson ugyanabban a táblában (és partícióban), és ne használjon több táblát a különböző típusú entitásokhoz. Egyetlen EGT legfeljebb 100 entitáson működhet.  Ha több párhuzamos EGTs küld a feldolgozáshoz, fontos, hogy ezek a EGTs ne működjenek olyan entitásokon, amelyek a EGTs-ben közösek. Ellenkező esetben a feldolgozás késleltetését kockáztatja.
+A Table Storage szolgáltatásban az Entity Transactions (EGTs) az egyetlen beépített mechanizmus, amellyel több entitáson végezheti el az Atomic-frissítéseket. A EGTs más néven batch- *tranzakciónak* is nevezzük. A EGTs csak ugyanabban a partícióban tárolt entitásokban működhet (egy adott tábla azonos partíciójának megosztásával), így bármikor szükség van az atomi tranzakciós viselkedésre több entitás között, hogy az entitások ugyanabban a partícióban legyenek. Ez gyakran indokolja, hogy több entitást is tartson ugyanabban a táblában (és partícióban), és ne használjon több táblát a különböző típusú entitásokhoz. Egyetlen EGT legfeljebb 100 entitáson működhet.  Ha több párhuzamos EGTs küld a feldolgozáshoz, fontos, hogy ezek a EGTs ne működjenek olyan entitásokon, amelyek a EGTs-ben közösek. Ellenkező esetben a feldolgozás késleltetését kockáztatja.
 
 A EGTs emellett potenciális kompromisszumot is bevezet, hogy kiértékelje a kialakítását. A több partíció használata növeli az alkalmazás méretezhetőségét, mivel az Azure több lehetőséget kínál a terheléselosztási kérelmek közötti terheléselosztásra. Ez azonban korlátozhatja, hogy az alkalmazás képes legyen atomi tranzakciókat végrehajtani, és erős konzisztenciát fenntartani az adatokhoz. Emellett vannak olyan méretezhetőségi célok is a partíció szintjén, amelyek korlátozhatják az egyetlen csomópontra várható tranzakciók átviteli sebességét.
 
@@ -204,13 +205,13 @@ Az alábbi példák azt feltételezik, hogy a Table Storage az alábbi struktúr
 
 Íme néhány általános útmutató a Table Storage-lekérdezések tervezéséhez. A következő példákban használt szűrési szintaxis a Table Storage REST API. További információ: [lekérdezési entitások](/rest/api/storageservices/Query-Entities).  
 
-* Az adott *pont lekérdezése* a leghatékonyabb keresés, amelyet a legalacsonyabb késleltetést igénylő nagy mennyiségű keresésekhez vagy keresésekhez ajánlott használni. Egy ilyen lekérdezés az indexeket használva hatékonyan megkeresheti az egyes entitásokat a és az értékek megadásával `PartitionKey` `RowKey` . Például így: `$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')`.  
-* A második legjobb a *tartomány lekérdezése*. A és a (z `PartitionKey` ) és a szűrők használatával `RowKey` több entitást ad vissza. Az `PartitionKey` érték azonosítja az adott partíciót, és az `RowKey` értékek a partícióban található entitások egy részhalmazát azonosítják. Például így: `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`.  
-* A harmadik legjobb a *partíciós vizsgálat*. A és a `PartitionKey` szűrőket használja egy másik nem kulcsfontosságú tulajdonsághoz, és több entitást is visszaadhat. Az `PartitionKey` érték azonosítja az adott partíciót, és a tulajdonságértékek a partícióban lévő entitások egy részhalmaza számára kiválasztva. Például így: `$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`.  
-* A *tábla vizsgálata* nem tartalmazza a (z) `PartitionKey` , és nem hatékony, mert megkeresi az összes olyan partíciót, amelyik felkészíti a táblázatot a megfelelő entitásokra. Egy táblázatos vizsgálatot végez, függetlenül attól, hogy a szűrő a-t használja-e `RowKey` . Például így: `$filter=LastName eq 'Jones'`.  
+* Az adott *pont lekérdezése* a leghatékonyabb keresés, amelyet a legalacsonyabb késleltetést igénylő nagy mennyiségű keresésekhez vagy keresésekhez ajánlott használni. Egy ilyen lekérdezés az indexeket használva hatékonyan megkeresheti az egyes entitásokat a és az értékek megadásával `PartitionKey` `RowKey` . Például: `$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')`.  
+* A második legjobb a *tartomány lekérdezése* . A és a (z `PartitionKey` ) és a szűrők használatával `RowKey` több entitást ad vissza. Az `PartitionKey` érték azonosítja az adott partíciót, és az `RowKey` értékek a partícióban található entitások egy részhalmazát azonosítják. Például: `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`.  
+* A harmadik legjobb a *partíciós vizsgálat* . A és a `PartitionKey` szűrőket használja egy másik nem kulcsfontosságú tulajdonsághoz, és több entitást is visszaadhat. Az `PartitionKey` érték azonosítja az adott partíciót, és a tulajdonságértékek a partícióban lévő entitások egy részhalmaza számára kiválasztva. Például: `$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`.  
+* A *tábla vizsgálata* nem tartalmazza a (z) `PartitionKey` , és nem hatékony, mert megkeresi az összes olyan partíciót, amelyik felkészíti a táblázatot a megfelelő entitásokra. Egy táblázatos vizsgálatot végez, függetlenül attól, hogy a szűrő a-t használja-e `RowKey` . Például: `$filter=LastName eq 'Jones'`.  
 * Az Azure Table Storage-lekérdezések, amelyek több entitást adnak vissza, `PartitionKey` és sorrendbe rendezik azokat `RowKey` . Ha nem szeretné, hogy az entitások ne legyenek az ügyfélben, válassza a leggyakoribb `RowKey` rendezési sorrendet definiáló elemet. A Azure Cosmos DB Azure Table API által visszaadott lekérdezési eredmények nem a partíciós kulcs vagy a sor kulcsa szerint vannak rendezve. A szolgáltatások közötti különbségek részletes listáját a [Azure Cosmos db és az Azure Table storage Table API közötti különbségek](table-api-faq.md#table-api-vs-table-storage)című részben tekintheti meg.
 
-A "**vagy**" használatával egy szűrő megadásával határozhatja meg az értékek alapján egy `RowKey` partíció vizsgálatát, és nem kezelhető tartomány-lekérdezésként. Ezért Kerülje a szűrőket használó lekérdezéseket, például a következőt: `$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')` .  
+A " **vagy** " használatával egy szűrő megadásával határozhatja meg az értékek alapján egy `RowKey` partíció vizsgálatát, és nem kezelhető tartomány-lekérdezésként. Ezért Kerülje a szűrőket használó lekérdezéseket, például a következőt: `$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')` .  
 
 A Storage ügyféloldali kódtárat használó ügyféloldali kódokra vonatkozó példákat a hatékony lekérdezések futtatásához lásd:  
 
@@ -252,7 +253,7 @@ A Table Storage a lekérdezés eredményeit növekvő sorrendbe rendezi, a és a
 > [!NOTE]
 > A Azure Cosmos DB Azure Table API által visszaadott lekérdezési eredmények nem a partíciós kulcs vagy a sor kulcsa szerint vannak rendezve. A szolgáltatások közötti különbségek részletes listáját a [Azure Cosmos db és az Azure Table storage Table API közötti különbségek](table-api-faq.md#table-api-vs-table-storage)című részben tekintheti meg.
 
-A Table Storage-ban található kulcsok karakterlánc-értékek. Annak érdekében, hogy a numerikus értékek megfelelően rendezve legyenek, konvertálja őket rögzített hosszba, és a nulla értékkel kell ellátni őket. Ha például az alkalmazott azonosító érték `RowKey` egész érték, akkor a **123** -as alkalmazott azonosító értékét a **00000123**-re kell konvertálnia. 
+A Table Storage-ban található kulcsok karakterlánc-értékek. Annak érdekében, hogy a numerikus értékek megfelelően rendezve legyenek, konvertálja őket rögzített hosszba, és a nulla értékkel kell ellátni őket. Ha például az alkalmazott azonosító érték `RowKey` egész érték, akkor a **123** -as alkalmazott azonosító értékét a **00000123** -re kell konvertálnia. 
 
 Számos alkalmazás rendelkezik a különböző megrendelésekben tárolt adatok használatára vonatkozó követelményekkel: például az alkalmazottak név szerinti rendezése vagy a csatlakozás dátuma. A (z) szakasz [táblázatának kialakítási mintái](#table-design-patterns) a következő mintákat ismertetik az entitások más rendezési rendeléseivel kapcsolatban:  
 
@@ -494,7 +495,7 @@ A következő két szűrési feltétel (az alkalmazotti azonosító alapján fel
 
 Ha az alkalmazotti entitások egy tartományát kérdezi le, megadhatja az alkalmazotti azonosító sorrendjét, illetve az e-mail-címek sorrendje szerint rendezett tartományt. A megfelelő előtaggal rendelkező entitások lekérdezése a alkalmazásban `RowKey` .  
 
-* Az értékesítési részleg összes alkalmazottjának a **000100** – **000199**tartományba tartozó alkalmazotti azonosítójának megkereséséhez, az alkalmazotti azonosító sorrendbe rendezéséhez használja a következőt: $Filter = (PartitionKey EQ "empid_Sales") és (RowKey GE "000100") és (RowKey le "000199")  
+* Az értékesítési részleg összes alkalmazottjának a **000100** – **000199** tartományba tartozó alkalmazotti azonosítójának megkereséséhez, az alkalmazotti azonosító sorrendbe rendezéséhez használja a következőt: $Filter = (PartitionKey EQ "empid_Sales") és (RowKey GE "000100") és (RowKey le "000199")  
 * Az értékesítési részleg összes alkalmazottja számára egy e-mail-címmel ellátott e-mail-cím megkeresése, amely az e-mail-címek sorrendjét használja: $filter = (PartitionKey EQ "email_Sales") és (RowKey GE "a") és (RowKey lt "b")  
 
 Vegye figyelembe, hogy az előző példákban használt szűrési szintaxis a Table Storage REST API. További információ: [lekérdezési entitások](/rest/api/storageservices/Query-Entities).  
@@ -648,7 +649,7 @@ A viszonyítási adatbázisban általában az adatok normalizálása történik,
 :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE16.png" alt-text="Részleg entitást és alkalmazotti entitást bemutató ábra":::
 
 #### <a name="solution"></a>Megoldás
-Ahelyett, hogy két különálló entitásban tárolja az adatokat, denormalizálja az adatokat, és megtartja a felettes adatainak másolatát a részleg entitásban. Példa:  
+Ahelyett, hogy két különálló entitásban tárolja az adatokat, denormalizálja az adatokat, és megtartja a felettes adatainak másolatát a részleg entitásban. Például:  
 
 :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE17.png" alt-text="Részleg entitást és alkalmazotti entitást bemutató ábra":::
 
@@ -700,7 +701,7 @@ $filter = (PartitionKey EQ "Sales") és (RowKey GE "empid_000123") és (RowKey l
 #### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
 A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
 
-* Használjon egy megfelelő elválasztó karaktert, amely megkönnyíti az érték elemzését `RowKey` : például **000123_2012**.  
+* Használjon egy megfelelő elválasztó karaktert, amely megkönnyíti az érték elemzését `RowKey` : például **000123_2012** .  
 * Ezt az entitást ugyanabban a partícióban tárolja, mint a többi olyan entitást, amely ugyanahhoz az alkalmazotthoz kapcsolódó adatforrásokat tartalmaz. Ez azt jelenti, hogy a EGTs-t használhatja az erős konzisztencia fenntartásához.
 * Érdemes megfontolni, hogy milyen gyakran kérdezi le az adatlekérdezést, hogy a minta megfelelő-e. Ha például ritkábban éri el az áttekintő adatvizsgálatot, és a fő alkalmazotti adatai gyakran, külön entitásként kell megtartani őket.  
 

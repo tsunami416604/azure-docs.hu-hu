@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/21/2020
 ms.author: memildin
-ms.openlocfilehash: 0bc8b4f7bd2bf02d4d034ebacc0fc45b17cd3e15
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 55a4e50e3a85eccb9517cf682b67268e633abecc
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928093"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081229"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Biztonsági pontszám az Azure Security Centerben
 
@@ -190,7 +190,7 @@ Bár az Security Center alapértelmezett biztonsági kezdeményezése az iparág
     <td class="tg-lboi"; width=55%>- A virtuális gépek felügyeleti portjait az igény szerinti hálózati hozzáférés-vezérléssel kell védeni<br>- A virtuális gépeket hálózati biztonsági csoporttal kell társítani<br>- A felügyeleti portokat be kell zárni a virtuális gépeken</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">Rendszerfrissítések alkalmazása (max. pontszám 6)</p></strong>A rendszerfrissítések biztosítják a szervezetek számára a működési hatékonyság fenntartását, csökkentik a biztonsági réseket, és stabilabb környezetet biztosítanak a végfelhasználók számára. A frissítések nem vonatkoznak a nem javított biztonsági rések és a támadásokra fogékony környezetek eredményeire. Ezek a sebezhetőségek felhasználhatók, és az adatvesztés, az adatkiszűrése, a ransomware és az erőforrás-visszaélések eléréséhez vezethetnek. A rendszerfrissítések központi telepítéséhez a <a href="/azure/automation/automation-update-management">Update Management megoldás segítségével kezelheti a virtuális gépek javításait és frissítéseit</a> . Az Update Management a szoftverek kiadásainak központi telepítésének és karbantartásának szabályozása.</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">Rendszerfrissítések alkalmazása (max. pontszám 6)</p></strong>A rendszerfrissítések biztosítják a szervezetek számára a működési hatékonyság fenntartását, csökkentik a biztonsági réseket, és stabilabb környezetet biztosítanak a végfelhasználók számára. A frissítések nem vonatkoznak a nem javított biztonsági rések és a támadásokra fogékony környezetek eredményeire. Ezek a sebezhetőségek felhasználhatók, és az adatvesztés, az adatkiszűrése, a ransomware és az erőforrás-visszaélések eléréséhez vezethetnek. A rendszerfrissítések központi telepítéséhez a <a href="/azure/automation/update-management/overview">Update Management megoldás segítségével kezelheti a virtuális gépek javításait és frissítéseit</a> . Az Update Management a szoftverek kiadásainak központi telepítésének és karbantartásának szabályozása.</td>
     <td class="tg-lboi"; width=55%>- A figyelési ügynök állapotával kapcsolatos problémákat fel kell oldani a gépeken<br>- A figyelési ügynököt a virtuálisgép-méretezési csoportokra kell telepíteni<br>- A figyelési ügynököt telepíteni kell a gépekre<br>- Az operációsrendszer-verziót frissíteni kell a Cloud Service-szerepkörökhöz<br>- A virtuálisgép-méretezési csoportokra vonatkozó rendszerfrissítéseket telepíteni kell<br>- A számítógépekre telepíteni kell a rendszerfrissítéseket<br>- A számítógépeket újra kell indítani a rendszerfrissítések alkalmazásához<br>- A Kubernetes-szolgáltatásokat nem sebezhető Kubernetes-verzióra kell frissíteni<br>- A figyelési ügynököt telepíteni kell a virtuális gépekre<br>- Log Analytics ügynöknek telepítve kell lennie a Windows-alapú Azure arc-gépeken (előzetes verzió)<br>- Log Analytics ügynöknek telepítve kell lennie a Linux-alapú Azure arc-gépeken (előzetes verzió)</td>
   </tr>
   <tr>
@@ -257,7 +257,7 @@ Bár az Security Center alapértelmezett biztonsági kezdeményezése az iparág
 ## <a name="secure-score-faq"></a>Biztonságos pontszám – gyakori kérdések
 
 ### <a name="if-i-address-only-three-out-of-four-recommendations-in-a-security-control-will-my-secure-score-change"></a>Ha egy biztonsági ellenőrzésben csak három négy javaslat közül hármat találok, akkor a biztonságos pontszámom módosul?
-Nem. Ez addig nem változik meg, amíg az egyetlen erőforráshoz tartozó összes ajánlást nem szervizeli. Egy vezérlőelem maximális pontszámának lekéréséhez az összes erőforrásra vonatkozóan az összes javaslatot szervizelni kell.
+Nincs. Ez addig nem változik meg, amíg az egyetlen erőforráshoz tartozó összes ajánlást nem szervizeli. Egy vezérlőelem maximális pontszámának lekéréséhez az összes erőforrásra vonatkozóan az összes javaslatot szervizelni kell.
 
 ### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>Ha egy javaslat nem alkalmazható a számomra, és letiltom a szabályzatban, akkor a biztonsági ellenőrzésem teljesül, és a biztonságos pontszám frissítve lett?
 Igen. Javasoljuk, hogy tiltsa le a javaslatokat, ha azok nem alkalmazhatók a környezetben. A konkrét javaslatok letiltásával kapcsolatos utasításokért lásd: [biztonsági szabályzatok letiltása](./tutorial-security-policy.md#disable-security-policies-and-disable-recommendations).

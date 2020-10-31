@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: d5683fb64c9b5df027ff8b0f50cec49e9bce5808
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0e9010ba79e4253d7569a0bba79fa05423e1a1ec
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475124"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081756"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB lekérdezési Cheat Sheets
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A **Azure Cosmos db Query Cheat Sheets** segítségével gyorsan írhat lekérdezéseket az adatokhoz, ha általános adatbázis-lekérdezéseket, műveleteket, függvényeket és operátorokat jelenít meg a könnyen nyomtatható PDF-hivatkozásokban. A Cheat Sheets az SQL, a MongoDB, a Table és a Gremlin API-k hivatkozási információit tartalmazza. 
 

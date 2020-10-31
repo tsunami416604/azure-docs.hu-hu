@@ -6,20 +6,21 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 353abe5ac55e49e01f6a99f72307b8525a72fc00
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 7c05ca6462d49d1d41791e5b93b7723ac681d448
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281095"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080832"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Particionálás és horizontális skálázás az Azure Cosmos DB-ben
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-A Azure Cosmos DB particionálás használatával méretezi az egyes tárolókat egy adatbázisban az alkalmazás teljesítménybeli igényeinek kielégítése érdekében. A particionálás során a tároló elemei a *logikai partíciók*nevű különálló részhalmazokra vannak osztva. A logikai partíciók a tároló egyes elemeihez társított *partíciós kulcs* értéke alapján jönnek létre. Egy logikai partíció összes elemének ugyanaz a partíciós kulcs értéke.
+A Azure Cosmos DB particionálás használatával méretezi az egyes tárolókat egy adatbázisban az alkalmazás teljesítménybeli igényeinek kielégítése érdekében. A particionálás során a tároló elemei a *logikai partíciók* nevű különálló részhalmazokra vannak osztva. A logikai partíciók a tároló egyes elemeihez társított *partíciós kulcs* értéke alapján jönnek létre. Egy logikai partíció összes elemének ugyanaz a partíciós kulcs értéke.
 
 Egy tároló például elemeket tárol. Minden egyes tétel egyedi értékkel rendelkezik a `UserID` tulajdonsághoz. Ha a `UserID` tárolóban lévő elemek partíciós kulcsaként szolgál, és 1 000 egyedi érték van `UserID` , akkor a rendszer 1 000 logikai partíciókat hoz létre a tárolóhoz.
 
-Egy olyan partíciós kulcs mellett, amely meghatározza az elem logikai partícióját, a tároló minden eleméhez tartozik egy *elem azonosítója* (egyedi logikai partíción belül). A partíciós kulcs és az *elem azonosítójának* kombinálásával létrejön az elem *indexe*, amely egyedileg azonosítja az adott tételt. [A partíciós kulcs kiválasztása](#choose-partitionkey) fontos döntés, amely hatással lesz az alkalmazás teljesítményére.
+Egy olyan partíciós kulcs mellett, amely meghatározza az elem logikai partícióját, a tároló minden eleméhez tartozik egy *elem azonosítója* (egyedi logikai partíción belül). A partíciós kulcs és az *elem azonosítójának* kombinálásával létrejön az elem *indexe* , amely egyedileg azonosítja az adott tételt. [A partíciós kulcs kiválasztása](#choose-partitionkey) fontos döntés, amely hatással lesz az alkalmazás teljesítményére.
 
 Ez a cikk a logikai és fizikai partíciók közötti kapcsolatot ismerteti. Emellett a particionálással kapcsolatos ajánlott eljárásokat is ismerteti, és részletesen ismerteti, hogyan működik a horizontális skálázás a Azure Cosmos DBban. Ezen belső adatok megértéséhez nem szükséges, hogy kiválassza a partíciós kulcsot, de a kezeltük, hogy egyértelmű legyen a Azure Cosmos DB működése.
 
@@ -77,7 +78,7 @@ Az alábbi képen látható, hogyan vannak leképezve a logikai partíciók a gl
 
 ## <a name="choosing-a-partition-key"></a><a id="choose-partitionkey"></a>Partíciókulcs kiválasztása
 
-A partíciós kulcsnak két összetevője van: a **partíciós kulcs elérési útja** és a **partíciós kulcs értéke**. Vegyünk például egy {"userId": "Andrew", "worksFor": "Microsoft"} elemet, ha a "felhasználóazonosító" a partíciós kulcsként van kiválasztva, a következő két partíciós kulcs összetevő:
+A partíciós kulcsnak két összetevője van: a **partíciós kulcs elérési útja** és a **partíciós kulcs értéke** . Vegyünk például egy {"userId": "Andrew", "worksFor": "Microsoft"} elemet, ha a "felhasználóazonosító" a partíciós kulcsként van kiválasztva, a következő két partíciós kulcs összetevő:
 
 * A partíciós kulcs elérési útja (például: "/userId"). A partíciós kulcs elérési útja alfanumerikus és aláhúzás (_) karaktereket fogad el. A beágyazott objektumokat a szabványos elérési út (/) használatával is használhatja.
 
@@ -113,20 +114,20 @@ Ha a tároló több fizikai partícióra is nőhet, akkor győződjön meg arró
 
 ## <a name="using-item-id-as-the-partition-key"></a>Az Item ID használata partíciós kulcsként
 
-Ha a tároló olyan tulajdonsággal rendelkezik, amely a lehetséges értékek széles választékával rendelkezik, valószínűleg nagyszerű partíciós kulcsra van kiválasztva. Ilyen tulajdonság egy lehetséges példa az *Item azonosító*. A kis olvasási nehéz tárolók vagy a nagy méretű írható tárolók esetében az *elem azonosítója* természetesen remek választás a partíciós kulcshoz.
+Ha a tároló olyan tulajdonsággal rendelkezik, amely a lehetséges értékek széles választékával rendelkezik, valószínűleg nagyszerű partíciós kulcsra van kiválasztva. Ilyen tulajdonság egy lehetséges példa az *Item azonosító* . A kis olvasási nehéz tárolók vagy a nagy méretű írható tárolók esetében az *elem azonosítója* természetesen remek választás a partíciós kulcshoz.
 
-A rendszertulajdonság- *azonosító* a tároló minden eleme esetében létezik. Lehet, hogy más tulajdonságokkal rendelkezik, amelyek az adott eleme logikai AZONOSÍTÓját jelölik. Sok esetben a partíciós kulcsra vonatkozó döntések is megegyeznek az *elem azonosítójának*indokairól.
+A rendszertulajdonság- *azonosító* a tároló minden eleme esetében létezik. Lehet, hogy más tulajdonságokkal rendelkezik, amelyek az adott eleme logikai AZONOSÍTÓját jelölik. Sok esetben a partíciós kulcsra vonatkozó döntések is megegyeznek az *elem azonosítójának* indokairól.
 
 Az *azonosító* egy nagyszerű partíciós kulcs, amely a következő okok miatt választható:
 
 * A lehetséges értékek széles választéka (egy egyedi *azonosító* /tétel).
 * Mivel egy elemhez egyedi *elem-azonosító* van, az *elem azonosítója* nagyszerű feladatot jelent az ru-használat és az adattárolás egyenletes elosztásával.
-* Egyszerűen elvégezheti a hatékony pontok olvasását, mivel a rendszer mindig ismeri az elemek partíciós kulcsát, ha ismeri annak *azonosítóját*.
+* Egyszerűen elvégezheti a hatékony pontok olvasását, mivel a rendszer mindig ismeri az elemek partíciós kulcsát, ha ismeri annak *azonosítóját* .
 
 Az *elemek azonosítójának* kiválasztásakor figyelembe kell venni az alábbiakat:
 
-* Ha az *elem azonosítója* a partíciós kulcs, akkor a teljes tárolóban egyedi azonosító lesz. Nem lesz lehetősége ismétlődő *elem-azonosítóval*rendelkező elemekre.
-* Ha olyan nagy mennyiségű [fizikai partícióval](partitioning-overview.md#physical-partitions)rendelkező olvasási nehéz tárolóval rendelkezik, a lekérdezések hatékonyabbak lesznek, ha az *elem azonosítójának*megfelelő egyenlőségi szűrővel rendelkeznek.
+* Ha az *elem azonosítója* a partíciós kulcs, akkor a teljes tárolóban egyedi azonosító lesz. Nem lesz lehetősége ismétlődő *elem-azonosítóval* rendelkező elemekre.
+* Ha olyan nagy mennyiségű [fizikai partícióval](partitioning-overview.md#physical-partitions)rendelkező olvasási nehéz tárolóval rendelkezik, a lekérdezések hatékonyabbak lesznek, ha az *elem azonosítójának* megfelelő egyenlőségi szűrővel rendelkeznek.
 * Nem futtathat tárolt eljárásokat vagy eseményindítókat több logikai partíción keresztül.
 
 ## <a name="next-steps"></a>Következő lépések

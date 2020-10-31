@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: bc27b1fea97471e9ca1991467902e666c1451605
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 12a282b1f53dde570f5f6647a45df82808b20350
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675543"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080821"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce-sandbox"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Salesforce-Sandboxtal
 
@@ -149,35 +149,35 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 2. Kattintson **az oldal** jobb felső sarkában található **Beállítások ikonra** .
 
-    ![Egyetlen Sign-On konfigurálása](./media/salesforce-sandbox-tutorial/configure1.png)
+    ![Képernyőkép, amely a "beállítások" ikont jeleníti meg a jobb felső sarokban, a "telepítés" lehetőséget pedig a legördülő menüből.](./media/salesforce-sandbox-tutorial/configure1.png)
 
 3. Görgessen le a **beállításokhoz** a bal oldali navigációs ablaktáblán, és kattintson az **Identity (identitás** ) elemre a kapcsolódó szakasz kibontásához. Ezután kattintson az **egyszeres Sign-On beállítások** lehetőségre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
+    ![A bal oldali ablaktáblán látható "beállítások" menüt megjelenítő képernyőkép az "Identity" (identitás) menüből kiválasztott "egyszeres Sign-On beállítások" lehetőséggel.](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
 
 4. Az **egyszeres Sign-On beállítások** lapon kattintson a **Szerkesztés** gombra.
 
-    ![Egyetlen Sign-On konfigurálása](./media/salesforce-sandbox-tutorial/configure3.png)
+    ![Képernyőfelvétel: az "egyszeres Sign-On beállítások" oldal, amelyen a "szerkesztés" gomb van kiválasztva.](./media/salesforce-sandbox-tutorial/configure3.png)
 
 5. Válassza az **SAML engedélyezve** lehetőséget, majd kattintson a **Mentés** gombra.
 
-    ![Egyetlen Sign-On konfigurálása](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
+    ![Képernyőkép: az "egyszeres Sign-On beállítások" oldal, amelyen az "S A M L enabled engedélyezve" jelölőnégyzet be van jelölve, és a "Mentés" gomb van kiválasztva.](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
 6. Az SAML egyszeri bejelentkezés beállításainak konfigurálásához kattintson **az új elemre a metaadat-fájlból** .
 
-    ![Egyetlen Sign-On konfigurálása](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
+    ![Képernyőfelvétel: az "új a metaadat-fájlból" gomb kiválasztásával megjelenített "egyszeres Sign-On beállítások" oldal.](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
 7. Kattintson a **fájl kiválasztása** lehetőségre a Azure Portal letöltött metaadat XML-fájl feltöltéséhez, majd kattintson a **Létrehozás** gombra.
 
-    ![Egyetlen Sign-On konfigurálása](./media/salesforce-sandbox-tutorial/xmlchoose.png)
+    ![Képernyőfelvétel: az "egyszeres Sign-On beállítások" oldal, amelyben a "fájl kiválasztása" és a "létrehozás" gomb van kiválasztva.](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
 8. Az **SAML egyszeri Sign-On beállításai** lapon a mezők automatikusan kitölthetők, majd a Mentés gombra.
 
-    ![Egyetlen Sign-On konfigurálása](./media/salesforce-sandbox-tutorial/salesforcexml.png)
+    ![Képernyőfelvétel: az "egyszeres Sign-On beállítások" oldal, ahol a mezők fel vannak töltve, és a "Mentés" gomb van kiválasztva.](./media/salesforce-sandbox-tutorial/salesforcexml.png)
 
 9. Az **egyszeres Sign-On beállítások** lapon kattintson a **metaadatok letöltése** gombra a szolgáltatói metaadat fájl letöltéséhez. Ezt a fájlt a Azure Portal **alapszintű SAML-konfiguráció** szakaszában tekintheti meg a szükséges URL-címek konfigurálásához a fentiekben leírtak szerint.
 
-    ![Egyetlen Sign-On konfigurálása](./media/salesforce-sandbox-tutorial/configure4.png)
+    ![Képernyőkép, amely az "egyszeres Sign-On beállítások" lapot jeleníti meg a "metaadatok letöltése" gomb kiválasztásával.](./media/salesforce-sandbox-tutorial/configure4.png)
 
 10. Ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni, az alábbi előfeltételek vonatkoznak rá:
 
@@ -202,31 +202,31 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 13. Kattintson **az oldal** jobb felső sarkában található **Beállítások ikonra** .
 
-    ![Egyetlen Sign-On konfigurálása](./media/salesforce-sandbox-tutorial/configure1.png)
+    ![Képernyőkép, amely a "beállítások" ikont jeleníti meg a jobb felső sarokban, és a "telepítés" lehetőséget a legördülő menüből.](./media/salesforce-sandbox-tutorial/configure1.png)
 
 14. Görgessen le a **beállításokhoz** a bal oldali navigációs ablaktáblán, és kattintson az **Identity (identitás** ) elemre a kapcsolódó szakasz kibontásához. Ezután kattintson az **egyszeres Sign-On beállítások** lehetőségre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
+    ![A bal oldali navigációs ablaktáblán a "beállítások" menüt megjelenítő képernyőkép, amely az "Identity" (identitás) menüből kiválasztott "egyszeres Sign-On beállítások".](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
 
 15. Az **egyszeres Sign-On beállítások** lapon kattintson a **Szerkesztés** gombra.
 
-    ![Egyetlen Sign-On konfigurálása](./media/salesforce-sandbox-tutorial/configure3.png)
+    ![A "szerkesztés" gomb kiválasztásával megjelenő "egyszeres Sign-On beállítások" oldalt megjelenítő képernyőkép.](./media/salesforce-sandbox-tutorial/configure3.png)
 
 16. Válassza az **SAML engedélyezve** lehetőséget, majd kattintson a **Mentés** gombra.
 
-    ![Egyetlen Sign-On konfigurálása](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
+    ![Képernyőkép: az "egyszeres Sign-On beállítások" oldal, amelyen be van jelölve az "S A M L enabled" jelölőnégyzet, és a "Mentés" gomb van kiválasztva.](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
 17. Az SAML egyszeri bejelentkezés beállításainak konfigurálásához kattintson **az új elemre a metaadat-fájlból** .
 
-    ![Egyetlen Sign-On konfigurálása](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
+    ![Képernyőfelvétel: az "egyszeres Sign-On beállítások" oldal és az "új a metaadat-fájlból" gomb kiválasztva.](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
 18. A metaadatok XML-fájljának feltöltéséhez kattintson a **fájl kiválasztása** elemre, majd kattintson a **Létrehozás** gombra.
 
-    ![Egyetlen Sign-On konfigurálása](./media/salesforce-sandbox-tutorial/xmlchoose.png)
+    ![Képernyőfelvétel: az "egyszeres Sign-On beállítások" oldal a "fájl választása" és a "létrehozás" gomb kiválasztásával.](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
 19. Az **SAML egyszeri Sign-On beállításai** lapon a mezők automatikusan töltődnek be, írja be a konfiguráció nevét (például: *SPSSOWAAD_Test* ), a **név** szövegmezőbe, majd kattintson a Mentés gombra.
 
-    ![Egyetlen Sign-On konfigurálása](./media/salesforce-sandbox-tutorial/sf-saml-config.png)
+    ![Képernyőkép, amely az "egyszeres Sign-On beállítások" oldalt jeleníti meg mezők kitöltésével, egy példa nevét a "név" szövegmezőben, és a "Mentés" gomb van kiválasztva.](./media/salesforce-sandbox-tutorial/sf-saml-config.png)
 
 20. A tartomány Salesforce-beli homokozóban való engedélyezéséhez hajtsa végre a következő lépéseket:
 
@@ -235,11 +235,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 21. A Salesforce homokozó bal oldali navigációs paneljén kattintson a **Vállalati beállítások** elemre a kapcsolódó szakasz kibontásához, majd kattintson **a saját tartomány** elemre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/salesforce-sandbox-tutorial/sf-my-domain.png)
+    ![Képernyőkép, amely a bal oldali navigációs panelen kiválasztott "vállalati beállítások" és "saját tartomány" elemet mutatja.](./media/salesforce-sandbox-tutorial/sf-my-domain.png)
 
 22. A **hitelesítés konfigurációja** szakaszban kattintson a **Szerkesztés** elemre.
 
-    ![Egyetlen Sign-On konfigurálása](./media/salesforce-sandbox-tutorial/sf-edit-auth-config.png)
+    ![A "hitelesítési konfiguráció" szakaszt megjelenítő képernyőkép, amely a "szerkesztés" gombot választja.](./media/salesforce-sandbox-tutorial/sf-edit-auth-config.png)
 
 23. A **hitelesítési konfiguráció** szakasz **hitelesítési szolgáltatás** részében válassza ki a Salesforce-homokozóban az SSO-konfiguráció során beállított SAML-Sign-On beállítás nevét, majd kattintson a **Save (Mentés** ) gombra.
 

@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: f0dfa137e42d60246ce8f5281f002d5ca567c2ae
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: ac134e6a371ea85a20094e688adc57da8550a03d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427538"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078985"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning számítási példány létrehozása és kezelése
 
@@ -42,7 +42,7 @@ A számítási példányok biztonságosan futtathatnak feladatokat egy [virtuál
 
 ## <a name="create"></a>Létrehozás
 
-**Becsült idő**: körülbelül 5 perc.
+**Becsült idő** : körülbelül 5 perc.
 
 A számítási példány létrehozása a munkaterület egyszeri folyamata. Ezt a számítást felhasználhatja fejlesztési munkaállomásként vagy betanításra szolgáló számítási célként. Több számítási példány is csatolható a munkaterülethez.
 
@@ -206,7 +206,7 @@ Az alábbi példákban a számítási példány neve **példány**
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
-Azure Machine Learning Studio munkaterületén válassza a **számítás**, majd a felül található **számítási példány** elemet.
+Azure Machine Learning Studio munkaterületén válassza a **számítás** , majd a felül található **számítási példány** elemet.
 
 ![Számítási példány kezelése](./media/concept-compute-instance/manage-compute-instance.png)
 
@@ -256,7 +256,9 @@ A csomagokat közvetlenül Jupyter Notebook vagy RStudio is telepítheti:
 * Python: telepítési kód hozzáadása és végrehajtása Jupyter Notebook cellában.
 
 Vagy telepítheti egy terminál-ablakból is. Telepítse a Python-csomagokat a **python 3,6-AzureML-** környezetbe.  Telepítse az R-csomagokat az **r** -környezetbe.
-% pip és% Conda Magic functions automatikusan telepíti a csomagokat a jelenleg futó kernelbe a Jupyter notebook-munkamenetben.
+
+> [!NOTE]
+> Jegyzetfüzeten belüli csomagkezelő esetén a **% pip** vagy **% Conda** Magic functions használatával automatikusan telepíthet csomagokat a **jelenleg futó kernelre** , nem pedig **! pip** vagy **! Conda** , amely az összes csomagra vonatkozik (beleértve a jelenleg futó kernelen kívüli csomagokat is)
 
 ## <a name="add-new-kernels"></a>Új kernelek hozzáadása
 
@@ -290,6 +292,6 @@ A [rendelkezésre álló Jupyter-kernelek](https://github.com/jupyter/jupyter/wi
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Betanítási Futtatás beküldése](how-to-set-up-training-targets.md) 

@@ -10,14 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: 5b2b8871d868e827532f23c7ef4f14fb00afb5bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02baea817f2647f056131aa654afb129549a1e4e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74072808"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080974"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>Egyéni automatikus kiegészítési élmény konfigurálása
+
+> [!WARNING]
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
+> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
 
 Az egyéni automatikus kiegészítés a keresési élményhez kapcsolódó javasolt keresési lekérdezési karakterláncok listáját adja vissza. A javasolt lekérdezési karakterláncok egy részleges lekérdezési karakterláncon alapulnak, amelyet a felhasználó a keresőmezőbe ír be. A lista legfeljebb 10 javaslatot fog tartalmazni. 
 
@@ -36,7 +41,7 @@ A Bing-javaslatok engedélyezéséhez kapcsolja be az **automatikus Bing Suggest
 
 ## <a name="add-your-own-suggestions"></a>Saját javaslatok hozzáadása
 
-Saját lekérdezési karakterlánc-javaslatok hozzáadásához vegye fel őket a listára a **felhasználó által definiált javaslatok**alatt. Ha hozzáad egy javaslatot a listához, nyomja le az ENTER billentyűt, vagy kattintson az **+** ikonra. Megadhatja a javaslatot bármilyen nyelven. Legfeljebb 5 000 lekérdezési karakterláncra vonatkozó javaslatot adhat hozzá.
+Saját lekérdezési karakterlánc-javaslatok hozzáadásához vegye fel őket a listára a **felhasználó által definiált javaslatok** alatt. Ha hozzáad egy javaslatot a listához, nyomja le az ENTER billentyűt, vagy kattintson az **+** ikonra. Megadhatja a javaslatot bármilyen nyelven. Legfeljebb 5 000 lekérdezési karakterláncra vonatkozó javaslatot adhat hozzá.
 
 ## <a name="upload-suggestions"></a>Javaslatok feltöltése
 
@@ -48,7 +53,7 @@ A lekérdezési karakterláncokra vonatkozó javaslat eltávolításához kattin
 
 ## <a name="block-suggestions"></a>Javaslatok letiltása
 
-Ha Bing-javaslatokat is tartalmaz, hozzáadhat egy listát a keresési lekérdezési karakterláncokról, amelyeket nem kíván visszaadni a Bingnek. A letiltott lekérdezési karakterláncok hozzáadásához kattintson a **letiltott javaslatok megjelenítése**lehetőségre. Adja hozzá a lekérdezési karakterláncot a listához, majd nyomja le az ENTER billentyűt, vagy kattintson az **+** ikonra. Legfeljebb 50 letiltott lekérdezési karakterláncot adhat hozzá.
+Ha Bing-javaslatokat is tartalmaz, hozzáadhat egy listát a keresési lekérdezési karakterláncokról, amelyeket nem kíván visszaadni a Bingnek. A letiltott lekérdezési karakterláncok hozzáadásához kattintson a **letiltott javaslatok megjelenítése** lehetőségre. Adja hozzá a lekérdezési karakterláncot a listához, majd nyomja le az ENTER billentyűt, vagy kattintson az **+** ikonra. Legfeljebb 50 letiltott lekérdezési karakterláncot adhat hozzá.
 
 
 
@@ -60,7 +65,7 @@ Ha Bing-javaslatokat is tartalmaz, hozzáadhat egy listát a keresési lekérdez
 
 ## <a name="enabling-autosuggest-in-hosted-ui"></a>Automatikus kiegészítés engedélyezése a futtatott felhasználói felületen
 
-Az üzemeltetett felhasználói felület lekérdezési karakterláncára vonatkozó javaslatok engedélyezéséhez kattintson a **futtatott felhasználói felület**lehetőségre. Görgessen le a **további konfigurációs** szakaszhoz. A **webes keresés**területen válassza **a be** lehetőséget az automatikus kiegészítés **engedélyezéséhez**. Az automatikus kiegészítés engedélyezéséhez ki kell választania egy olyan elrendezést, amely tartalmaz egy keresőmezőt.
+Az üzemeltetett felhasználói felület lekérdezési karakterláncára vonatkozó javaslatok engedélyezéséhez kattintson a **futtatott felhasználói felület** lehetőségre. Görgessen le a **további konfigurációs** szakaszhoz. A **webes keresés** területen válassza **a be** lehetőséget az automatikus kiegészítés **engedélyezéséhez** . Az automatikus kiegészítés engedélyezéséhez ki kell választania egy olyan elrendezést, amely tartalmaz egy keresőmezőt.
 
 
 ## <a name="calling-the-autosuggest-api"></a>Az automatikus javaslat API meghívása
@@ -86,7 +91,7 @@ Minden javaslat tartalmaz egy `displayText` és egy `query` mezőt. A `displayTe
 Ha a felhasználó egy javasolt lekérdezési karakterláncot választ a legördülő listából, használja a lekérdezési karakterláncot a `query` mezőben a [Bing Custom Search API](overview.md)hívásakor.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni javaslatok lekérése](./get-custom-suggestions.md)
 - [Egyéni példány keresése](./search-your-custom-view.md)
