@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e50c2bb73f56017a047e6c657c866b61e5eaa465
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 5bcb6df1b03b0c1c835e198818813ad8d914c630
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130400"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147113"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure digitális Twins-modellek kezelése
 
@@ -141,10 +141,9 @@ A feltöltéskor a modell fájljait a szolgáltatás ellenőrzi.
 Az Azure Digital Twins-példányon tárolt modelleket listázhatja és lekérheti. 
 
 A következő lehetőségek közül választhat:
-* Az összes modell lekérése
 * Egyetlen modell lekérése
-* Egyetlen, függőségekkel rendelkező modell beolvasása
-* Modellek metaadatainak beolvasása
+* Az összes modell lekérése
+* A modellek metaadatainak és függőségeinek beolvasása
 
 Íme néhány példa a hívásokra:
 
@@ -152,19 +151,16 @@ A következő lehetőségek közül választhat:
 // 'client' is a valid DigitalTwinsClient object
 
 // Get a single model, metadata and data
-ModelData md1 = client.GetModel(id);
+DigitalTwinsModelData md1 = client.GetModel(id);
 
 // Get a list of the metadata of all available models
-Pageable<ModelData> pmd2 = client.GetModels();
-
-// Get a list of metadata and full model definitions
-Pageable<ModelData> pmd3 = client.GetModels(null, true);
+Pageable<DigitalTwinsModelData> pmd2 = client.GetModels();
 
 // Get models and metadata for a model ID, including all dependencies (models that it inherits from, components it references)
-Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
+Pageable<DigitalTwinsModelData> pmd3 = client.GetModels(new GetModelsOptions { IncludeModelDefinition = true });
 ```
 
-Az API-hívások lekérik a modelleket az összes visszaadott `ModelData` objektumra vonatkozóan. `ModelData` Az Azure Digital Twins-példányban tárolt modellel kapcsolatos metaadatokat tartalmaz, például a név, a DTMI és a modell létrehozási dátuma. Az `ModelData` objektum opcionálisan magába foglalja a modellt is. A paraméterektől függően a hívások lekérése paranccsal lekérheti a csak metaadatokat (ez olyan esetekben hasznos, amikor az elérhető eszközök felhasználói felületi listáját szeretné megjeleníteni, például) vagy a teljes modellt.
+Az API-hívások lekérik a modelleket az összes visszaadott `DigitalTwinsModelData` objektumra vonatkozóan. `DigitalTwinsModelData` Az Azure Digital Twins-példányban tárolt modellel kapcsolatos metaadatokat tartalmaz, például a név, a DTMI és a modell létrehozási dátuma. Az `DigitalTwinsModelData` objektum opcionálisan magába foglalja a modellt is. A paraméterektől függően a hívások lekérése paranccsal lekérheti a csak metaadatokat (ez olyan esetekben hasznos, amikor az elérhető eszközök felhasználói felületi listáját szeretné megjeleníteni, például) vagy a teljes modellt.
 
 A `RetrieveModelWithDependencies` hívás nem csak a kért modellt adja vissza, hanem az összes olyan modellt is, amelytől a kért modell függ.
 

@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/27/2020
-ms.openlocfilehash: 6354b0a1df9d8c331de0731b230d628ac4e435df
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.date: 10/30/2020
+ms.openlocfilehash: 8a9c022400f739276060c3d8a275d06bc5ea8579
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891406"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147229"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Fogadó átalakítás a leképezési adatfolyamban
 
@@ -72,6 +72,23 @@ A következő videó számos különböző fogadó lehetőséget ismertet a szö
 **Tempdb használata:** Alapértelmezés szerint a Data Factory globális ideiglenes táblázatot fog használni az adattároláshoz a betöltési folyamat részeként. Azt is megteheti, hogy kijelöli a "TempDB használata" lehetőséget, és ehelyett megkérdezi Data Factory, hogy az ideiglenes tároló táblát egy olyan felhasználói adatbázisban tárolja, amely a fogadóhoz használt adatbázisban található.
 
 ![TempDB](media/data-flow/tempdb.png "TempDB")
+
+## <a name="cache-sink"></a>Gyorsítótár fogadója
+ 
+A *gyorsítótár* -fogadó akkor történik meg, amikor egy adatfolyam az adattár helyett a Spark-gyorsítótárba ír egy adatot. Az adatfolyamatok leképezése során a *gyorsítótár-kereséssel* többször is hivatkozhat ezekre az adatfolyamatokra. Ez akkor hasznos, ha egy kifejezés részeként szeretne információkat hivatkozni, de nem szeretné explicit módon csatlakoztatni az oszlopokat. Gyakori példák arra, hogy egy gyorsítótár-fogadó képes legyen a maximális érték megkeresésére egy adattárban, és a hibakódok megfeleltetése egy hibaüzenet-adatbázishoz. 
+
+Egy gyorsítótár-fogadóba való íráshoz vegyen fel egy fogadó-átalakítást, és válassza a **gyorsítótár** lehetőséget a fogadó típusaként. A többi fogadó típustól eltérően nem kell kiválasztania egy adatkészletet vagy társított szolgáltatást, mert nem ír külső tárolóba. 
+
+![Gyorsítótár-fogadó kiválasztása](media/data-flow/select-cache-sink.png "Gyorsítótár-fogadó kiválasztása")
+
+A fogadó beállításaiban megadhatja a gyorsítótár-fogadó fő oszlopait is. Ezeket a rendszer az egyező feltételekként használja, amikor a `lookup()` függvényt használja a gyorsítótár-keresésben. Ha kulcs oszlopokat ad meg, nem használhatja a `outputs()` függvényt a gyorsítótár-keresésben. A gyorsítótár-keresési szintaxissal kapcsolatos további tudnivalókért lásd a [gyorsítótárazott keresések](concepts-data-flow-expression-builder.md#cached-lookup)című témakört.
+
+![Gyorsítótár fogadó kulcsának oszlopai](media/data-flow/cache-sink-key-columns.png "Gyorsítótár fogadó kulcsának oszlopai")
+
+Ha például egyetlen kulcs oszlopot ad meg `column1` egy nevű gyorsítótár-fogadóban `cacheExample` , a híváshoz egy `cacheExample#lookup()` paraméterrel megadható, hogy a gyorsítótár-fogadó melyik sorát kell megegyeznie. A függvény egyetlen összetett oszlopot ad eredményül minden leképezett oszlop aloszlopával.
+
+> [!NOTE]
+> A gyorsítótár-fogadónak egy teljes mértékben független adatfolyamban kell lennie, amely minden, a gyorsítótár-kereséssel hivatkozó átalakításból elérhető. A gyorsítótár-fogadónak az első befogadót is meg kell írnia. 
 
 ## <a name="field-mapping"></a>Mezőleképezés
 

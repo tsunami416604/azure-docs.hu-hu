@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 3157eda4e2a21b0d153e7300db54f445fdb6878d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2d9b0d97fa1823314f5109a1c7fc79054806c148
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547758"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146926"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Az IoT hub Identity Registry ismertetése
 
@@ -188,7 +188,7 @@ Törzs: Ez a szakasz JSON formátumú, és a létrehozott modul-identitás iker�
 
 Az eszközök identitásai JSON-dokumentumokként jelennek meg a következő tulajdonságokkal:
 
-| Tulajdonság | Beállítások | Description (Leírás) |
+| Tulajdonság | Beállítások | Description |
 | --- | --- | --- |
 | deviceId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | generationId |kötelező, csak olvasható |Egy IoT hub által generált, kis-és nagybetűket megkülönböztető karakterlánc legfeljebb 128 karakter hosszú lehet. Ez az érték az azonos **deviceId** -vel rendelkező eszközök megkülönböztetésére szolgál, ha azokat törölték és újra létrehozták. |
@@ -200,7 +200,7 @@ Az eszközök identitásai JSON-dokumentumokként jelennek meg a következő tul
 | statusUpdateTime |csak olvasható |Egy időbeli jelző, amely a legutóbbi állapot frissítésének dátumát és időpontját mutatja. |
 | connectionState |csak olvasható |A kapcsolat állapotát jelző mező: **csatlakoztatva** vagy **leválasztva** . Ez a mező az eszköz-kapcsolatok állapotának IoT Hub nézetét jelöli. **Fontos** : Ez a mező csak fejlesztési/hibakeresési célokra használható. A MQTT vagy AMQP használó eszközök esetén a rendszer csak a kapcsolatok állapotát frissíti. Emellett a protokoll szintű pingeléseken (MQTT pingelések vagy AMQP pingek) alapul, és legfeljebb 5 percet vehet igénybe. Ezen okok miatt hamis pozitívak lehetnek, például a csatlakoztatottként jelentett, de leválasztott eszközök. |
 | connectionStateUpdatedTime |csak olvasható |Egy időbeli jelző, amely a dátumot és a kapcsolatok állapotának legutóbbi frissítését mutatja. |
-| lastActivityTime |csak olvasható |Egy időbeli jelző, amely azt mutatja, hogy az eszköz Mikor kapcsolódott, illetve mikor érkezett, illetve mikor küldött üzenetet. |
+| lastActivityTime |csak olvasható |Egy időbeli jelző, amely azt mutatja, hogy az eszköz Mikor kapcsolódott, illetve mikor érkezett, illetve mikor küldött üzenetet. Ez a tulajdonság végül konzisztens, de akár 5 – 10 percet is késleltethető. Ezért nem használható éles környezetben. |
 
 > [!NOTE]
 > A kapcsolási állapot csak a kapcsolatok állapotának IoT Hub nézetét jelenítheti meg. Az állapot frissítései a hálózati feltételektől és konfigurációktól függően késleltetve lehetnek.
@@ -212,7 +212,7 @@ Az eszközök identitásai JSON-dokumentumokként jelennek meg a következő tul
 
 A modul identitásai JSON-dokumentumokként jelennek meg a következő tulajdonságokkal:
 
-| Tulajdonság | Beállítások | Description (Leírás) |
+| Tulajdonság | Beállítások | Description |
 | --- | --- | --- |
 | deviceId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | moduleId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből: `- . + % _ # * ? ! ( ) , : = @ $ '` . |

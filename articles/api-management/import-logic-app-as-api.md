@@ -1,6 +1,6 @@
 ---
 title: Logikai alkalmazás importálása API-ként az Azure Portal használatával  | Microsoft Docs
-description: Ez az oktatóanyag bemutatja, hogyan lehet az API Management (APIM) használatával logikai alkalmazásokat API-ként importálni.
+description: Ez a cikk bemutatja, hogyan használható a API Management (APIM) a logikai alkalmazások API-ként történő importálásához.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,15 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: b107b4a54b7d013da160119b16bd646a79cce696
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0dd460bce01b86c72d0b8fd70351fdcc85c69bd4
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626836"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146960"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>Logikai alkalmazás importálása API-ként
 
@@ -48,7 +48,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 3. A **Tallózás** gombra kattintva megtekintheti a http-triggerrel rendelkező Logic apps listáját az előfizetésében. (Vegye figyelembe, hogy a HTTP-trigger nélküli Logic Apps nem jelennek meg a listában.)
 4. Válassza ki az alkalmazást. API Management megkeresi a kiválasztott alkalmazáshoz társított hencegés, beolvassa és importálja.
 5. Adja hozzá az API URL-cím utótagját. Az utótag lesz a név, amely azonosítja az API-t ebben az API Management-példányban. Ebben az API Management-példányban egyedinek kell lennie.
-6. Az API egy termékkel való társítással tehető közzé. Ebben az esetben az „_Unlimited_” terméket használjuk. Ha közzé szeretné tenni az API-t, hogy elérhető legyen a fejlesztők számára, adja hozzá egy termékhez. Ezt megteheti az API létrehozása során, vagy később is.
+6. Az API egy termékkel való társítással tehető közzé. Ebben az esetben az „ _Unlimited_ ” terméket használjuk. Ha közzé szeretné tenni az API-t, hogy elérhető legyen a fejlesztők számára, adja hozzá egy termékhez. Ezt megteheti az API létrehozása során, vagy később is.
 
     A termékek egy vagy több API társításai. Megadhatja az API-k számát, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. A fejlesztőknek elő kell fizetniük a termékre az API-k eléréséhez. Amikor előfizetnek, kapnak egy előfizetési kulcsot, amely a termék minden API-jához használható. Ha létrehozta a API Management példányt, akkor Ön már rendszergazda, így alapértelmezés szerint minden termékre előfizetett.
 
@@ -58,7 +58,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
     - **Korlátlan**
 
 7. Adja meg az egyéb API-beállításokat. Megadhatja az értékeket a létrehozás során, vagy később konfigurálhatja őket a **Beállítások** lapon. A beállításokat az [első API-oktatóanyag importálásával és közzétételével](import-and-publish.md#import-and-publish-a-backend-api) foglalkozó cikkben ismertetjük.
-8. Kattintson a **Létrehozás** gombra.
+8. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="test-the-api-in-the-azure-portal"></a>Az API tesztelése az Azure Portalon
 
@@ -81,7 +81,7 @@ A műveleteket meg lehet hívni közvetlenül az Azure Portalról, ami kényelme
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 >

@@ -7,13 +7,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/28/2020
-ms.openlocfilehash: 70787f1d918064b48d37ce051bfdd2aba49472ea
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 10/30/2020
+ms.openlocfilehash: 7ed1d9db09357b0702188c01a802600ff6350aff
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040181"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147266"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Keresési átalakítás a leképezési adatfolyamban
 
@@ -68,6 +68,10 @@ Ha hibakeresési módban végzi a keresési átalakítást az adatelőnézet has
 Az illesztések, a keresések és a meglévő átalakítások esetében, ha az egyik vagy mindkét adatfolyam a feldolgozó csomóponti memóriába illeszkedik, a **szórás** engedélyezésével optimalizálhatja a teljesítményt. Alapértelmezés szerint a Spark-motor automatikusan eldönti, hogy az egyik oldalt kívánja-e közvetíteni. A közvetíteni kívánt oldal manuális kiválasztásához válassza a **rögzített** lehetőséget.
 
 Nem ajánlott letiltani a szórást a **kikapcsolási** lehetőséggel, kivéve, ha az illesztések időtúllépési hibákkal futnak.
+
+## <a name="cached-lookup"></a>Gyorsítótárazott keresés
+
+Ha ugyanazon a forráson több kisebb keresési műveletet végez, a gyorsítótárazott fogadó és a keresés a keresési transzformációnál talán jobb használati eset. Gyakori példák, ha egy gyorsítótár-fogadó jobb lehet, ha egy adattárban egy maximális értéket keres, és a hibakódokat egy hibaüzenet-adatbázishoz rendeli. További információt a [gyorsítótár](data-flow-sink.md#cache-sink) -tárolók és a [gyorsítótárazott keresések](concepts-data-flow-expression-builder.md#cached-lookup)című témakörben olvashat.
 
 ## <a name="data-flow-script"></a>Adatfolyamszkript
 

@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/08/2020
-ms.openlocfilehash: ade2fd6011bbcdaed4ce31ce70bfb4235429bb0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/30/2020
+ms.openlocfilehash: d1f8993b1adc297b1bfadba114df76a66e59afa2
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81606298"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147178"
 ---
 # <a name="surrogate-key-transformation-in-mapping-data-flow"></a>Helyettes kulcs átalakítása a leképezési adatfolyamban 
 
@@ -31,9 +31,9 @@ A helyettesítő kulcs átalakításával adja hozzá a növekményes kulcs ért
 
 ## <a name="increment-keys-from-existing-sources"></a>Kulcsok növelése meglévő forrásokból
 
-Ha a sorozatot egy olyan értékről szeretné elindítani, amely egy adott forrásban létezik, a helyettesítő kulcs átalakítását követően hozzon létre egy származtatott oszlop-átalakítást a két érték együttes hozzáadásához:
+Ha olyan értékről szeretné elindítani a sorozatot, amely egy forrásban létezik, javasoljuk, hogy egy gyorsítótár-fogadó használatával mentse ezt az értéket, és használjon egy származtatott oszlop-átalakítást a két érték együttes hozzáadásához. Gyorsítótárazott kereséssel szerezze be a kimenetet, és fűzze hozzá a generált kulcshoz. További információt a [gyorsítótár](data-flow-sink.md#cache-sink) -tárolók és a [gyorsítótárazott keresések](concepts-data-flow-expression-builder.md#cached-lookup)című témakörben olvashat.
 
-![SK maximális hozzáadása](media/data-flow/sk006.png "Helyettes kulcs átalakításának hozzáadása max.")
+![Helyettes kulcs keresése](media/data-flow/cached-lookup-example.png "Helyettes kulcs keresése")
 
 ### <a name="increment-from-existing-maximum-value"></a>Növekmény a meglévő maximális értéktől
 
@@ -41,19 +41,18 @@ Ha a kulcs értékét az előző max. módszerrel szeretné kiosztani, két olya
 
 #### <a name="database-sources"></a>Adatbázis-források
 
-SQL-lekérdezési lehetőséggel válassza ki a MAX () elemet a forrásból. Például: `Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
+SQL-lekérdezési lehetőséggel válassza ki a MAX () elemet a forrásból. Például: `Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`.
 
-![Helyettes kulcs lekérdezése](media/data-flow/sk002.png "Helyettes kulcs transzformációs lekérdezése")
+![Helyettes kulcs lekérdezése](media/data-flow/surrogate-key-max-database.png "Helyettes kulcs transzformációs lekérdezése")
 
 #### <a name="file-sources"></a>Fájlok forrásai
 
 Ha az előző maximális érték egy fájlban található, az `max()` összesített transzformációban az előző maximális érték beszerzéséhez használja a függvényt:
 
-![Helyettesítő kulcs fájlja](media/data-flow/sk008.png "Helyettesítő kulcs fájlja")
+![Helyettesítő kulcs fájlja](media/data-flow/surrogate-key-max-file.png "Helyettesítő kulcs fájlja")
 
-Mindkét esetben csatlakoztatnia kell a bejövő új adatait az előző maximális értéket tartalmazó forrással együtt.
+Mindkét esetben írnia kell egy gyorsítótár-fogadóba, és meg kell keresnie az értéket. 
 
-![Helyettes kulcs illesztése](media/data-flow/sk004.png "Helyettes kulcs illesztése")
 
 ## <a name="data-flow-script"></a>Adatfolyamszkript
 
@@ -81,6 +80,6 @@ AggregateDayStats
     ) ~> SurrogateKey1
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezek a példák a [JOIN](data-flow-join.md) és a [származtatott oszlop](data-flow-derived-column.md) átalakításokat használják.

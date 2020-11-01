@@ -1,67 +1,67 @@
 ---
 title: Időjárási partner integrációja
-description: Ez a cikk azt ismerteti, hogyan integrálható az időjárási adatszolgáltató a FarmBeats
+description: Ismerje meg, hogyan integrálható az időjárási adatszolgáltató a FarmBeats-szel.
 author: sunasing
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
-ms.openlocfilehash: dd5d05ff6ed2368308f90f61ea0a6f107e43acd7
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f0fbd93e2a5f4e92089e10e75dc17e304ff80bf6
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740785"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147079"
 ---
-# <a name="weather-partner-integration"></a>Időjárási partner integrációja
+# <a name="weather-partner-integration-with-farmbeats"></a>Időjárási partner-integráció a FarmBeats
 
-Ez a cikk az Azure FarmBeats- **összekötő** Docker-összetevőjével kapcsolatos információkat tartalmaz, amelyeket az időjárási adatszolgáltatók az API-kkal való FarmBeats és az időjárási adatok FarmBeats történő elküldésére használhatnak. Ha az adatok elérhetők a FarmBeats-ben, az adatfúzióhoz és a gépi tanulás/mesterséges intelligencia modellek létrehozásához is használható.
+Ez a cikk az Azure FarmBeats-összekötő Docker-összetevőjével kapcsolatos információkat tartalmaz. Időjárási adatszolgáltatóként használhatja az összekötő Docker-t a FarmBeats-nal való integráláshoz. Az API-k használatával időjárási FarmBeats küldhet. A FarmBeats-ben az adatok adatfúzióhoz, valamint gépi tanulási modellek vagy mesterséges intelligencia modellek létrehozásához használhatók.
 
  > [!NOTE]
- > Ebben a dokumentációban egy, a NOAA által az Azure Open-adatkészletek használatával létrehozott referenciát fogjuk használni, amely a következő címen érhető el: [https://github.com/azurefarmbeats/noaa_docker](https://github.com/azurefarmbeats/noaa_docker) .
- > A megfelelő Docker-rendszerkép a következő címen érhető el: [https://hub.docker.com/r/azurefarmbeats/farmbeats-noaa](https://hub.docker.com/r/azurefarmbeats/farmbeats-noaa)
+ > Ebben a cikkben egy olyan [hivatkozási implementációt](https://github.com/azurefarmbeats/noaa_docker) használunk, amely az Azure Open-adatkészletek és az országos óceáni és légköri adminisztráció (NOAA) időjárási adatai segítségével készült. A megfelelő [Docker-rendszerképet](https://hub.docker.com/r/azurefarmbeats/farmbeats-noaa)is használjuk.
 
-Az időjárási partnereknek meg kell adniuk egy Docker-rendszerképet/programot (az alább említett specifikációkkal), és a Docker-rendszerképet egy, az ügyfelek által elérhető tároló-beállításjegyzékben kell üzemeltetni. Az időjárási partnernek a következő információkat kell megadnia ügyfeleinek:
+Meg kell adnia egy [megfelelő Docker-rendszerképet vagy programot](#docker-specifications) , és a Docker-rendszerképet egy olyan tároló-beállításjegyzékben kell megadnia, amelyet az ügyfelek elérnek. Adja meg a következő információkat az ügyfeleknek:
 
 - Docker-rendszerkép URL-címe
 - Docker-rendszerkép címkéje
-- Kulcsok/hitelesítő adatok a Docker-rendszerkép eléréséhez
-- Ügyfél-specifikus API-kulcsok/hitelesítő adatok az időjárási partner rendszerből származó adatok eléréséhez
-- VM SKU-részletek (a partnerek biztosíthatják ezt az esetet, ha a Docker speciális virtuálisgép-követelményekkel rendelkezik, ellenkező esetben az ügyfelek választhatnak az Azure-ban támogatott virtuálisgép-SKU-ból)
+- A Docker-rendszerkép eléréséhez szükséges kulcsok vagy hitelesítő adatok
+- Az ügyfél-specifikus API-kulcsok vagy a rendszerből származó adatok eléréséhez szükséges hitelesítő adatok
+- Virtuális gép SKU-adatai (adja meg ezeket az adatokat, ha a Docker-rendszerkép meghatározott virtuálisgép-követelményekkel rendelkezik. Ellenkező esetben az ügyfelek választhatnak az Azure-ban támogatott virtuálisgép-SKU-ket is.)
 
-A fenti Docker-információk használatával az ügyfél egy időjárási partnert fog regisztrálni a FarmBeats-példányban. Ha többet szeretne megtudni arról, hogy az ügyfelek hogyan használhatják a Docker-t az időjárási információk FarmBeats való betöltéséhez, tekintse meg az [időjárási információk beszerzését](./get-weather-data-from-weather-partner.md) ismertető útmutatót.
+Az ügyfelek ezt a Docker-információt használják egy időjárási partner FarmBeats-példányban való regisztrálásához. További információ arról, hogy az ügyfelek hogyan használhatják a Docker-t az időjárási adatok FarmBeats történő betöltéséhez: [adatok beolvasása az időjárási partnerektől](./get-weather-data-from-weather-partner.md).
 
 ## <a name="connector-docker-development"></a>Összekötő Docker-fejlesztés
 
 **REST API-alapú integráció**
 
-A FarmBeats API-k hencegő technikai dokumentációt tartalmaznak. További információ az API-król és a hozzájuk kapcsolódó kérésekről és válaszokról: [FarmBeats hencegés](https://aka.ms/farmbeatsswagger). 
+A FarmBeats API-k hencegő technikai dokumentációt tartalmaznak. További információ az API-król és a hozzájuk tartozó kérésekről vagy válaszokról: [FarmBeats hencegés](https://aka.ms/farmbeatsswagger). 
 
-Ha telepítette a FarmBeats-t, akkor a FarmBeats a következő helyen érheti el: `https://yourfarmbeatswebsitename-api.azurewebsites.net/swagger`
+Ha már telepítette a FarmBeats-t, a FarmBeats a következő helyen érheti el: `https://yourfarmbeatswebsitename-api.azurewebsites.net/swagger`
 
-Vegye figyelembe, hogy a "-API" a FarmBeats-webhely nevéhez van hozzáfűzve.
-Az API-végpont a következőket teszi: `https://yourfarmbeatswebsitename-api.azurewebsites.net`
+Figyelje meg, hogy az *-API* a FarmBeats-webhely nevéhez van hozzáfűzve. Az API-végpont `https://yourfarmbeatswebsitename-api.azurewebsites.net`
 
 ### <a name="datahub-lib"></a>Datahub lib
 
-A FarmBeats olyan lib-t biztosít, amelyet az időjárási partner is használhat. A lib jelenleg a hivatkozási implementáció részeként érhető el [itt](https://github.com/azurefarmbeats/noaa_docker/tree/master/datahub_lib). A jövőben ugyanez lesz a több nyelvhez készült SDK-val is.
+A FarmBeats olyan lib-t biztosít, amelyet használhat. A lib jelenleg a [hivatkozás implementációjának részeként](https://github.com/azurefarmbeats/noaa_docker/tree/master/datahub_lib)érhető el. Később több nyelvhez is elérhető SDK lesz.
 
 ### <a name="authentication"></a>Hitelesítés
 
 **Hitelesítés FarmBeats API-kkal**
 
-A FarmBeats tulajdonosi hitelesítést használ, és az API-k a kérelem fejléc szakaszában található hozzáférési jogkivonat használatával érhetők el:
+A FarmBeats tulajdonosi hitelesítést használ. Az API-kat a kérelem fejléc szakaszában található hozzáférési jogkivonat megadásával érheti el. Például:
 
 ```
 headers = *{"Authorization": "Bearer " + access_token, …}*
 ```
 
-A hozzáférési jogkivonatot az ügyfél FarmBeats-példányán futó Azure-függvénytől kérheti le. Az Azure Function URL-címet a Docker program argumentumként kapja meg, a hozzáférési jogkivonatot pedig az URL-címre vonatkozó GET kéréssel lehet beszerezni. Az URL-cím válasza a hozzáférési jogkivonatot fogja tartalmazni. A Datahub lib segítő függvények lehetővé teszik a partnerek számára a hozzáférési token beszerzését. További részletek [.](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_auth_helper.py)
+A hozzáférési tokent az ügyfél FarmBeats-példányán futó Azure Functions alkalmazásból kérheti le. A Azure Functions URL-címet argumentumként a Docker program kapja meg. A hozzáférési tokent az `GET` URL-címre vonatkozó kérelem elküldésével érheti el. Az URL-cím válasza tartalmazza a hozzáférési jogkivonatot. 
 
-A hozzáférési jogkivonat csak néhány órán át érvényes, és a lejáratkor újra kell kérni.
+A hozzáférési token beszerzéséhez használja a Datahub lib segítő függvényeit. További információ: a [NOAA Docker-rendszerkép GitHub-lapja](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_auth_helper.py).
 
-**Hitelesítés partneri oldalsó API-kkal**
+A hozzáférési jogkivonat csak néhány órára érvényes. Ha lejár, újra meg kell kérnie.
 
-Annak engedélyezéséhez, hogy az ügyfelek a Docker-végrehajtás során hitelesítsék magukat a partneri API-kkal, az ügyfeleknek a következőképpen kell megadniuk a hitelesítő adatokat a partner regisztrációja során:
+**Hitelesítés a partner oldali API-kkal**
+
+Ha a Docker-feladatot futtató partneri API-kkal szeretne hitelesítést végezni, az ügyfeleknek meg kell adniuk a hitelesítő adatokat a partner regisztrálása során. Például:
 
 ```json
 {
@@ -71,9 +71,13 @@ Annak engedélyezéséhez, hogy az ügyfelek a Docker-végrehajtás során hitel
    }
 }
 ```
-Az API szolgáltatás szerializálja ezt a dict, és egy kulcstartóban tárolja [azt.](../../key-vault/general/basic-concepts.md)
+Az API szolgáltatás szerializálja ezt a dict, és egy [kulcstartóban](../../key-vault/general/basic-concepts.md)tárolja.
 
-[Azure Data Factory](../../data-factory/introduction.md) az időjárási feladatok összekapcsolására szolgál, és az erőforrásokat a Docker-kód végrehajtásához használja fel. Emellett egy mechanizmust is biztosít az adatok biztonságos továbbítására a virtuális gépre, amelyen a Docker-feladatot végrehajtja. A kulcstartóban biztonságosan tárolt API-hitelesítő adatokat a kulcstartó biztonságos karakterláncként tárolja, és a Docker-activity.jstároló munkakönyvtárában elérhetővé tett kiterjesztett tulajdonságokként (Path a fájl "/mnt/working_dir/activity.json") a Docker-kód a Futtatás ideje alatt elolvashatja a fájl hitelesítő adatait, hogy hozzáférhessen a partneri API-khoz az ügyfél nevében. A hitelesítő adatok a következő módon lesznek elérhetők a fájlban:
+A [Azure Data Factory](../../data-factory/introduction.md) az időjárási feladatok előkészítésére szolgál. Felgyorsítja az erőforrásokat a Docker-kód futtatásához. A Data Factory az adatok biztonságos leküldését is lehetővé teszi a virtuális gépre, amelyen a Docker-feladatok futnak. Az API hitelesítő adatait a Key Vault biztonságosan tárolja. 
+
+A hitelesítő adatok biztonságos sztringként lesznek beolvasva a Key vaultból. A Docker-tároló munkakönyvtárában kiterjesztett tulajdonságokként vannak megadva. A fájl elérési útja */mnt/working_dir/activity.js* . 
+
+A Docker-kód a Futtatás ideje alatt beolvashatja a *activity.jsról a* hitelesítő adatokat az ügyfélhez tartozó partneri API-k eléréséhez. A JSON-fájlban a hitelesítő adatok a következőhöz hasonlóan jelennek meg:
 
 ```json
 { 
@@ -83,135 +87,143 @@ Az API szolgáltatás szerializálja ezt a dict, és egy kulcstartóban tárolja
    } 
 }
 ```
-Vegye figyelembe, hogy a "partnerCredentials" a partner regisztrációja során az ügyfél által megadott pontos módon lesz elérhető.
+A `partnerCredentials` hitelesítő adat abban az értelemben érhető el, ahogyan az ügyfél a partner regisztrálása során biztosította.
 
-A FarmBeats lib segítő függvények lehetővé teszik a partnerek számára a hitelesítő adatok olvasását a tevékenység tulajdonságaiból. További részletek [.](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_adf_helper.py)
+A FarmBeats lib segítő függvényeket biztosít. Ezekkel a függvényekkel a tevékenység tulajdonságaiból olvashatja a hitelesítő adatokat. További információ: a [NOAA Docker-rendszerkép GitHub-lapja](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_adf_helper.py).
 
-A fájl élettartama csak a Docker-kód végrehajtása során lesz törölve, és a Docker futtatásának befejeződése után törlődik.
+A fájl csak akkor használható, ha a Docker-kód fut. A kód befejeződése után a rendszer törli a fájlt.
 
-További információ az ADF-folyamatok és-tevékenységek működéséről: [https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping](../../data-factory/copy-activity-schema-and-type-mapping.md) .
+További információ a Data Factory folyamatok és tevékenységek működéséről: [séma-és adattípus-leképezés](../../data-factory/copy-activity-schema-and-type-mapping.md).
 
 **HTTP-kérelmek fejlécei**
 
-Itt láthatók a leggyakoribb kérelmek fejlécei, amelyeket meg kell adni, amikor API-hívást végez a FarmBeats.
+A következő táblázat a leggyakoribb kérelmek fejléceit mutatja be, amelyeket akkor kell megadnia, amikor API-hívást hajt végre a FarmBeats.
 
-**Fejléc** | **Leírás és példa**
+Fejléc | Leírás és példa
 --- | ---
-Content-Type | A kérelem formátuma (Content-Type: Application/ <format> ). A FarmBeats Datahub API-k formátuma a JSON. Content-Type: Application/JSON
-Engedélyezés | Meghatározza az API-hívások létrehozásához szükséges hozzáférési jogkivonatot. Engedélyezés: tulajdonos <Access-Token>
-Elfogadás | A válasz formátuma. A FarmBeats Datahub API-k formátuma a JSON. Elfogadás: alkalmazás/JSON
+Content-Type | A kérelem formátuma. Például: `Content-Type: application/<format>` <br/>A FarmBeats Datahub API-k formátuma a JSON. Például: ` Content-Type: application/json`
+Engedélyezés | Az API-hívások létrehozásához szükséges hozzáférési jogkivonat. Például: `Authorization: Bearer <Access-Token>`
+Elfogadás | A válasz formátuma. A FarmBeats Datahub API-k formátuma a JSON. Például: `Accept: application/json`
 
 ## <a name="data-format"></a>Adatformátum
 
-A JSON egy közös nyelvtől független adatformátum, amely tetszőleges adatstruktúrák egyszerű szöveges ábrázolását teszi lehetővé. További információ: [JSON.org](http://json.org).
+A JSON egy közös nyelvtől független adatformátum, amely tetszőleges adatstruktúrák egyszerű szöveges ábrázolását teszi lehetővé. További információ: [JSON.org](https://json.org).
 
 ## <a name="docker-specifications"></a>Docker-specifikációk
 
-A Docker programnak két összetevővel kell rendelkeznie **: a** rendszerindításhoz és a **feladatokhoz** . Több feladattípus is lehet.
+A Docker programnak két összetevőt kell tartalmaznia: a rendszerindítást és a feladatot. A programnak több feladata is lehet.
 
 ### <a name="bootstrap"></a>Bootstrap
 
-Ezt az összetevőt akkor kell végrehajtani, amikor az ügyfél elindítja a Docker-regisztrációt a FarmBeats. A programnak átadandó argumentumok (arg1, Arg2):
+A rendszerindítási összetevőnek akkor kell futnia, amikor az ügyfél elindítja a Docker-regisztrációt a FarmBeats. A program a következő argumentumokat ( `arg1` és `arg2` ) fogadja el:
 
-- FarmBeats API-végpont: FarmBeats API-végpont API-kérelmekhez: ez az a végpont, amely API-hívásokat tesz a FarmBeats-telepítésre.
-- Azure-függvény URL-címe: Ez a saját személyes végpontja, amely megadja a FarmBeats API-k hozzáférési jogkivonatát. Ha csak erre az URL-címre hív le, a válaszában beolvassa a hozzáférési jogkivonatot.
+- **FARMBEATS API-végpont** : az API-kérelmek FarmBeats API-végpontja. Ez a végpont API-hívásokat kezdeményez a FarmBeats üzemelő példányához.
+- **Azure functions URL-cím** : saját végpont. Ez az URL-cím biztosítja a FarmBeats API-k hozzáférési jogkivonatát. Az URL-cím meghívásával lekérheti `GET` a hozzáférési tokent.
 
-A rendszerindítási feladat feladata, hogy létrehozza a szükséges metaadatokat, hogy a felhasználók futtassák a feladatokat az időjárási adatok beszerzéséhez. Tekintse meg a hivatkozás implementációját [itt](https://github.com/azurefarmbeats/noaa_docker). Igény szerint frissítheti a fájl bootstrap_manifest.jsét, és a hivatkozás rendszerindítási program létrehozza a szükséges metaadatokat.
+A bootstrap létrehozza azokat a metaadatokat, amelyeket a felhasználóknak az időjárási adatok beolvasásához el kell végezniük a feladatok futtatásához. További információ: a [hivatkozás implementációja](https://github.com/azurefarmbeats/noaa_docker). 
 
-A folyamat részeként a következő metaadatok jönnek létre. 
+Ha testreszabja a *bootstrap_manifest.jsa* fájlban, akkor a hivatkozás rendszerindítási program létrehozza a szükséges metaadatokat. A bootstrap program a következő metaadatokat hozza létre: 
 
  > [!NOTE]
- > **Vegye figyelembe** , hogy ha a [hivatkozás megvalósításában](https://github.com/azurefarmbeats/noaa_docker)említettek szerint frissíti a bootstrap_manifest.jsa fájlon, nem kell létrehoznia az alábbi metaadatokat, mivel a rendszerindítási fájl a jegyzékfájl alapján hozza létre a fájlt.
+ > Ha a *bootstrap_manifest.jsa* fájlon frissíti a [hivatkozás implementációja](https://github.com/azurefarmbeats/noaa_docker) című témakörben leírtak szerint, nem kell létrehoznia a következő metaadatokat. A rendszerindítási program a jegyzékfájlt fogja használni a szükséges metaadatok létrehozásához.
 
-- /**WeatherDataModel** : a WeatherDataModel olyan modell, amely az időjárási adatmennyiséget jelöli, és a forrás által biztosított különböző adatkészleteknek felel meg. Előfordulhat például, hogy egy DailyForecastSimpleModel átlagos hőmérséklet-, páratartalom-és csapadék-információt biztosít a napi egyszer, míg egy DailyForecastAdvancedModel sokkal több információt biztosíthat az óránkénti részletességgel. Tetszőleges számú WeatherDataModels is létrehozhat.
-- /**JobType** : a FarmBeats bővíthető felügyeleti rendszerrel rendelkezik. Időjárási adatszolgáltatóként különböző adatkészleteket/API-kat (például GetDailyForecasts) használhat, a FarmBeats-ben JobType-ként engedélyezheti azokat. A JobType létrehozása után az ügyfél elindíthatja az adott típusú feladatokat, hogy az időjárási adatok beolvassák a helyüket/farmot (lásd: JobType és Job API-k a [FarmBeats](https://aka.ms/farmbeatsswagger)-ben).
+- /**WeatherDataModel** : a WeatherDataModel-metaadatok időjárási adatokat jelölnek. Megfelel a forrás által biztosított adatkészleteknek. Előfordulhat például, hogy egy DailyForecastSimpleModel naponta egyszer átlagos hőmérséklet-, páratartalom-és csapadék-információkat biztosít. Ezzel szemben a DailyForecastAdvancedModel sokkal több információt biztosítanak óránkénti részletességgel. Tetszőleges számú időjárási adatmodellt hozhat létre.
+- /**JobType** : a FarmBeats bővíthető felügyeleti rendszerrel rendelkezik. Időjárási adatszolgáltatóként különböző adatkészleteket és API-kat fog tartalmazni (például GetDailyForecasts). A JobType használatával engedélyezheti ezeket az adatkészleteket és API-kat a FarmBeats-ben. A feladattípus létrehozása után az ügyfél elindíthatja az adott típusú feladatokat, hogy a helyükhöz vagy a hozzájuk tartozó farmhoz tartozó időjárási adatokhoz lehessen jutni. További információ: JobType és Job API-k a [FarmBeats hencegő](https://aka.ms/farmbeatsswagger)szolgáltatásban.
 
 ### <a name="jobs"></a>Feladatok
 
-Ez az összetevő minden alkalommal meghívásra kerül, amikor egy FarmBeats-felhasználó futtatja a/JobType, amelyet a rendszerindítási folyamat részeként hozott létre. A feladatokhoz tartozó Docker-futtatási parancs a létrehozott **/JobType** részeként van definiálva.
-- A feladat feladata az adatok lekérése a forrásból, és leküldése a FarmBeats. Az adatok lekéréséhez szükséges paramétereket a rendszerindítási folyamat/JobType részeként kell meghatározni.
-- A művelet részeként a programnak létre kell hoznia egy **/WeatherDataLocation** a rendszerindítási folyamat részeként létrehozott/WeatherDataModel alapján. A **/WeatherDataLocation** egy olyan helyhez (Lat/Long) felel meg, amelyet a felhasználó a feladatokhoz tartozó paraméterként biztosít.
+A rendszer minden alkalommal meghívja a feladatok összetevőt, amikor egy FarmBeats-felhasználó futtatja a rendszerindítási folyamat részeként létrehozott/JobType feladatát. A feladatokhoz tartozó Docker-futtatási parancs a létrehozott/JobType részeként van definiálva.
 
-### <a name="details-of-the-objects"></a>Az objektumok részletei
+A művelet beolvassa az adatait a forrásból, és leküldi a FarmBeats. A rendszerindítási folyamat során az adatok beolvasásához szükséges paramétereket a/JobType. részeként kell meghatározni.
 
-  WeatherDataModel | Leírás |
-  --- | ---
-  Name (Név)  | Az időjárási adatmodell neve |
-  Leírás  | Adjon meg egy értelmes leírást a modellről. |
-  Tulajdonságok  | Az adatszolgáltató által definiált további tulajdonságok. |
-  weatherMeasures > neve  | Az időjárási mérték neve. Például humidity_max |
-  weatherMeasures > adattípus  | Dupla vagy enumerálás. Ha Enum, a measureEnumDefinition megadása kötelező |
-  weatherMeasures > measureEnumDefinition  | Csak akkor szükséges, ha az adattípus enumerálás. Például {"No Rain": 0, "Snow": 1, "szitálás": 2, "Rain": 3} |
-  weatherMeasures > típusa  | az időjárási telemetria-adattípusok típusa. Például: "RelativeHumidity". A rendszer által definiált típusok a következők: AmbientTemperature, ununit, CO2, mélység, ElectricalConductivity, LeafWetness, Length, LiquidLevel, nitrát, O2, PH, foszfát, PointInTime, kálium, Pressure, RainGauge, RelativeHumidity, sótartalom, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, szélsebesség, párolgás, PAR. További részletekért tekintse meg a/ExtendedType API-t vagy az alábbi [típusok és egységek hozzáadása szakaszt](weather-partner-integration-in-azure-farmbeats.md#add-extendedtype) .
-  weatherMeasures > egység | Az időjárási telemetria vonatkozó adategység. A rendszer által definiált egységek a következők: nincs egység, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, milliméter, centiméter, méter, hüvelyk, láb, Mile, kilométer, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, százalék, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, liter, MilliLiter, másodperc, UnixTimestamp, MicroMolPerMeterSquaredPerSecond és InchesPerHour. További részletekért tekintse meg a/ExtendedType API-t, vagy az alábbi [típusok és egységek hozzáadása szakaszt](weather-partner-integration-in-azure-farmbeats.md#add-extendedtype) .
-  weatherMeasures > AggregationType  | Nincs, átlag, maximum, minimum, StandardDeviation, Sum, Total
-  weatherMeasures > mélység  | Az érzékelő mélysége centiméterben. Például a nedvesség 10 cm-es méretének mérése a terepen.
-  weatherMeasures > leírása  | Adjon meg egy értelmes leírást a mérésről. |
-  **JobType** | **Leírás** |
-  Name (Név)  | a feladattípus neve – például Get_Daily_Forecast; az ügyfél által az időjárási adatok beolvasása érdekében futtatandó feladatok|
-  pipelineDetails > paraméterek > neve  | a paraméter neve |
-  pipelineDetails > paraméterek > típusa | Karakterlánc, int, float, bool vagy Array |
-  pipelineDetails > paraméterek > isRequired | logikai igaz, ha kötelező paraméter, hamis, ha nem; az alapértelmezett érték TRUE (igaz) |
-  pipelineDetails > paraméterek > defaultValue | A paraméter alapértelmezett értéke |
-  pipelineDetails > paraméterek > leírása | A paraméter leírása |
-  Tulajdonságok  | További tulajdonságok a gyártótól.
-  Tulajdonságok > **programRunCommand** | Docker parancs futtatása – ez a parancs akkor lesz végrehajtva, amikor az ügyfél futtatja az időjárási feladatot. |
-  **WeatherDataLocation** | **Leírás** |
-  weatherDataModelId  | A rendszerindításkor létrehozott megfelelő WeatherDataModel azonosítója|
-  location  | a szélesség, a hosszúság és a jogosultságszint-emelést jelöli |
-  Name (Név) | Az objektum neve |
-  Leírás | Leírás |
-  farmId | nem **kötelező** Az ügyfél által a feladatok paraméterének részeként megadott Farm azonosítója |
-  Tulajdonságok  | További tulajdonságok a gyártótól.
+A művelet részeként a programnak létre kell hoznia egy/WeatherDataLocation a rendszerindítási folyamat során létrehozott/WeatherDataModel alapján. A/WeatherDataLocation felel meg egy olyan helynek (szélességi és hosszúsági koordinátáknak), amelyet a felhasználó a feladatokhoz tartozó paraméterként adott meg.
 
- Az egyes objektumokra és azok tulajdonságaira vonatkozó információkért lásd: [hencegés](https://aka.ms/FarmBeatsSwagger).
+### <a name="object-details"></a>Objektum részletei
 
- > [!NOTE]
- > Az API-k egyedi azonosítókat adnak vissza minden létrehozott példányhoz. Ezt az azonosítót a fordítónak meg kell őriznie az eszközkezelés és a metaadatok szinkronizálása érdekében.
+WeatherDataModel | Leírás |
+--- | ---
+Név  | Az időjárási adatmodell neve. |
+Description  | A modell értelmes leírása. |
+Tulajdonságok  | Az adatszolgáltató által definiált további tulajdonságok. |
+weatherMeasures > neve  | Az időjárási mérték neve. Például humidity_max. |
+weatherMeasures > adattípus  | Dupla vagy enumerálás. Ha Enum, a measureEnumDefinition megadása kötelező. |
+weatherMeasures > measureEnumDefinition  | Csak akkor szükséges, ha az adattípus enumerálás. Például: `{ "NoRain": 0, "Snow": 1, "Drizzle": 2, "Rain": 3 }` |
+weatherMeasures > típusa  | Az időjárási telemetria-adattípusok típusa. Például: RelativeHumidity. A rendszer által meghatározott típusok: AmbientTemperature, nem egység, CO2, mélység, ElectricalConductivity, LeafWetness, Length, LiquidLevel, nitrát, O2, PH, foszfát, PointInTime, kálium, nyomás, RainGauge, RelativeHumidity, sótartalom, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, szélsebesség, párolgás és PAR. További típusok hozzáadásához tekintse meg a jelen cikk [ExtendedType hozzáadása](#add-extendedtype) című szakaszát.
+weatherMeasures > egység | Az időjárási telemetria vonatkozó adategység. A rendszer által meghatározott egységek: nincs egység, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, milliméter, centiméter, Meter, hüvelyk, láb, Mile, km, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, százalék, PartsPerMillion, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, MilliLiter, liter, UnixTimestamp, másodperc, MicroMolePerMeterSquaredPerSecond, InchesPerHour és. További egységek hozzáadásához tekintse meg a jelen cikk [ExtendedType hozzáadása](#add-extendedtype) című szakaszát.
+weatherMeasures > AggregationType  | Az összesítés típusa. A lehetséges értékek: none, átlag, maximum, minimum, StandardDeviation, Sum és Total.
+weatherMeasures > mélység  | Az érzékelő mélysége centiméterben. Például a nedvesség 10 cm-es méretének mérése a terepen.
+weatherMeasures > leírása  | A mérték értelmes leírása. 
+
+JobType | Leírás |
+--- | ---
+Név  | A feladattípus neve. Például Get_Daily_Forecast. Az ügyfél futtatja ezt a feladatot az időjárási adatok beszerzéséhez.|
+pipelineDetails > paraméterek > neve  | A paraméter neve. |
+pipelineDetails > paraméterek > típusa | A paraméter típusa. A lehetséges értékek a következők: string, int, float, bool és Array. |
+pipelineDetails > paraméterek > isRequired | A paraméter logikai értéke. Az érték igaz, ha a paraméter megadása kötelező. Ellenkező esetben az érték hamis. Az alapértelmezett érték a True (igaz). |
+pipelineDetails > paraméterek > defaultValue | A paraméter alapértelmezett értéke. |
+pipelineDetails > paraméterek > leírása | A paraméter leírása. |
+Tulajdonságok  | További tulajdonságok a gyártótól.
+Tulajdonságok > programRunCommand | Docker-futtatási parancs. Ez a parancs akkor fut le, amikor az ügyfél futtatja az időjárási feladatot. |
+
+WeatherDataLocation | Description |
+--- | ---
+weatherDataModelId  | A rendszerindítási folyamat során létrehozott megfelelő WeatherDataModel azonosítója.|
+location  | Szélesség, hosszúság és Jogosultságszint-emelés. |
+Name | Az objektum neve. |
+Description | Az időjárási adattárolási hely leírása. |
+farmId | Választható A farm azonosítója. Az ügyfél ezt az azonosítót a Job paraméter részeként adja meg. |
+Tulajdonságok  | További tulajdonságok a gyártótól.
+
+További információ az objektumokról és azok tulajdonságairól: [FarmBeats hencegés](https://aka.ms/FarmBeatsSwagger).
+
+> [!NOTE]
+> Az API-k egyedi azonosítókat adnak vissza minden létrehozott példányhoz. Az eszközök kezeléséhez és a metaadatok szinkronizálásához szükséges fordítónak meg kell őriznie ezt az azonosítót.
 
 **Metaadatok szinkronizálása**
 
-Az összekötő Docker-nek képesnek kell lennie frissítések küldésére a metaadatokon. Példák a frissítési forgatókönyvekre: új időjárási paraméterek hozzáadása az időjárás-szolgáltató adatkészletében, funkció hozzáadása (pl.: 30 napos előrejelzés hozzáadása)
+Az összekötő Docker-összetevőjének képesnek kell lennie frissítések küldésére a metaadatokon. Például ha az időjárási szolgáltató új paramétereket ad hozzá egy adatkészlethez, vagy amikor új funkciót, például új 30 napos előrejelzést ad hozzá, akkor a rendszer frissítéseket küld.
 
 > [!NOTE]
-> A törlés nem támogatott a metaadatok esetében, például. időjárási adatmodell.
+> A törlés nem támogatott a metaadatokhoz az időjárási adatmodellben.
 >
-> A metaadatok frissítéséhez meg kell hívnia a/Get/{ID} az időjárási adatok modelljére, frissítenie kell a módosított tulajdonságokat, majd el kell végeznie egy/Put/{ID}, hogy a felhasználó által megadott tulajdonságok ne vesszenek el.
+> A metaadatok frissítéséhez meg kell hívnia `/Get/{ID}` az időjárási adatok modelljét. Frissítse a módosított tulajdonságokat, majd hajtson végre `/Put/{ID}` minden olyan tulajdonságot, amelyet a felhasználó állít be.
 
 ## <a name="weather-data-telemetry-specifications"></a>Időjárási adatok (telemetria) – specifikációk
 
-Az időjárási adatszolgáltatások egy olyan kanonikus üzenetre vannak leképezve, amelyet egy Azure Event hub-ba küldenek feldolgozásra. Az Azure Event Hubs egy olyan szolgáltatás, amely lehetővé teszi a valós idejű adatok (telemetria) betöltését a csatlakoztatott eszközökről és alkalmazásokból. Az időjárási adatokat FarmBeats küldéséhez létre kell hoznia egy ügyfelet, amely üzeneteket küld egy FarmBeats lévő Event hub-nak. Ha többet szeretne megtudni a telemetria küldéséről, tekintse meg a [telemetria küldése az Event hubhoz](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) című témakört.
+Az időjárási adatkezelési szolgáltatás egy Azure Event hub-ba feldolgozásra leküldett kanonikus üzenetre van leképezve. Az Azure Event Hubs egy olyan szolgáltatás, amely lehetővé teszi a valós idejű adatok (telemetria) betöltését a csatlakoztatott eszközökről és alkalmazásokból. 
 
-Itt található egy Python-kód, amely a telemetria ügyfélként küldi el a megadott Event hub-nak.
+Az időjárási adatokat FarmBeats küldéséhez hozzon létre egy ügyfelet, amely üzeneteket küld egy FarmBeats lévő Event hub-nak. További információ: [telemetria küldése az Event hub](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)-ba.
+
+A következő Python-kód a telemetria ügyfélként küldi el a megadott Event hub-nak.
 
 ```python
 import azure
 from azure.eventhub import EventHubClient, Sender, EventData, Receiver, Offset
-EVENTHUBCONNECTIONSTRING = "<EventHub Connection String provided by customer>"
-EVENTHUBNAME = "<EventHub Name provided by customer>"
+EVENTHUBCONNECTIONSTRING = "<EventHub connection string provided by customer>"
+EVENTHUBNAME = "<EventHub name provided by customer>"
 
 write_client = EventHubClient.from_connection_string(EVENTHUBCONNECTIONSTRING, eventhub=EVENTHUBNAME, debug=False)
 sender = write_client.add_sender(partition="0")
 write_client.run()
 for i in range(5):
-    telemetry = "<Canonical Telemetry message>"
+    telemetry = "<Canonical telemetry message>"
     print("Sending telemetry: " + telemetry)
     sender.send(EventData(telemetry))
 write_client.stop()
 
 ```
 
-A Canonical üzenet formátuma a következő:
+Itt látható a kanonikus üzenet formátuma:
 
 ```json
 {
    "weatherstations": [
    {
-   "id": "id of the WeatherDataLocation",
+   "id": "ID of the WeatherDataLocation.",
    "weatherdata": [
    {
-     "timestamp": "timestamp of the data. For historical, this is the time for which the observations are sent. For forecast this is the time for which data is forecasted. Format is ISO 8601. Default time-zone is UTC",
-     "predictiontimestamp": "timestamp on which the forecast data is predicted i.e time of prediction. Required only for forecast data. Format is ISO 8601. Default timezone is UTC ",
+     "timestamp": "Timestamp of the data. For historical purposes, this is the time for which the observations are sent. For forecast, this is the time for which data is forecasted. Format is ISO 8601. Default time zone is UTC.",
+     "predictiontimestamp": "Timestamp on which the forecast data is predicted. I.e., the time of prediction. Required only for forecast data. Format is ISO 8601. Default time zone is UTC. ",
      "weathermeasurename1": <value>,
      "weathermeasurename2": <value>
      }
@@ -221,7 +233,7 @@ A Canonical üzenet formátuma a következő:
 }
 ```
 
-Például itt van egy telemetria-üzenet:
+Példa egy telemetria-üzenetre:
 
 ```json
 {
@@ -245,28 +257,28 @@ Például itt van egy telemetria-üzenet:
 
 ## <a name="troubleshooting-and-error-management"></a>Hibaelhárítás és hibák kezelése
 
-**Hiba naplózása**
+### <a name="error-logging"></a>Hiba naplózása
 
-Mivel a partneri feladat a meglévő feladat-keretrendszerben fog futni, a hibák ugyanúgy jelentkeznek be, mint a FarmBeats-ban lévő többi meglévő feladat hibái (például GetFarmData, SensorPlacement stb.). Az ADF-folyamaton belül futó ADF-tevékenység a STDERR és az STDOUT-ot is naplózza. Mindkét fájl a "datahublogs-xxx" Storage-fiókban érhető el a FarmBeats erőforráscsoport alatt.
+A partneri feladatot a meglévő feladatokhoz tartozó keretrendszerben futtathatja. Így a hibák ugyanúgy vannak naplózva, mint a többi meglévő FarmBeats-feladathoz (például GetFarmData és SensorPlacement) tartozó hibák. A Data Factory folyamaton belül futó Data Factory tevékenység mind a, mind a `STDERR` `STDOUT` . Mindkét fájl elérhető a `datahublogs-xxx` FarmBeats erőforráscsoporthoz tartozó Storage-fiókban.
 
-A Datahub lib segítő függvények lehetővé teszik a naplózást a teljes Datahub-naplók részeként. További részletek [.](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/framework/logger.py)
+A Datahub lib segítő függvények lehetővé teszik a naplózást a teljes Datahub-naplók részeként. További információ: a [NOAA Docker-rendszerkép GitHub-lapja](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/framework/logger.py).
 
-**A beállítások vagy a támogatás hibáinak megoldása**
+### <a name="troubleshooting-and-support"></a>Hibaelhárítás és támogatás
 
-Abban az esetben, ha az ügyfél nem tud időjárási értéket fogadni a megadott FarmBeats-példányban, az időjárási partnernek támogatást és egy mechanizmust kell megadnia a hibakereséshez.
+Ha az ügyfél nem tud időjárási időt kapni a FarmBeats-példányban, a probléma elhárításához nyújtson támogatást és mechanizmust.
 
 ## <a name="add-extendedtype"></a>ExtendedType hozzáadása
 
-A FarmBeats támogatja az új szenzor mértékének típusát és egységeit. Vegye figyelembe, hogy egy időjárási partner új egységeket/típusokat adhat hozzá, ha frissíti a fájl bootstrap_manifest.jsét a [hivatkozás megvalósításában](https://github.com/azurefarmbeats/noaa_docker) .
+A FarmBeats támogatja az új szenzor mértékének típusát és egységeit. Új egységeket vagy típusokat adhat hozzá, ha frissíti a *bootstrap_manifest.js* fájlt a [hivatkozás implementációjában](https://github.com/azurefarmbeats/noaa_docker).
 
-Új WeatherMeasure-típus (például "PrecipitationDepth") hozzáadásához kövesse az alábbi lépéseket.
+Az alábbi lépéseket követve hozzáadhat egy új WeatherMeasure-típust (például PrecipitationDepth).
 
-1. GET kérés a/ExtendedType a lekérdezési szűrővel – kulcs = WeatherMeasureType
+1. Kérelem készítése a `GET` /ExtendedType a lekérdezés használatával `filter - key = WeatherMeasureType` .
 2. Jegyezze fel a visszaadott objektum AZONOSÍTÓját.
-3. Adja hozzá az új típust a visszaadott objektum listájához, és hozzon létre egy PUT-kérelmet a/ExtendedType{ID} az alábbi új listával. A bemeneti adattartalomnak meg kell egyeznie a fent kapott választal és az értékek listájának végén lévő új egységgel.
+3. Adja hozzá az új típust a listához a visszaadott objektumban. Hozzon végre egy `PUT` kérelmet a/ExtendedType{ID} az alábbi új listával. A bemeneti adattartalomnak meg kell egyeznie a korábban kapott választal. Az új egységet az értékek listájának végén kell hozzáfűzni.
 
-További információ a/ExtendedType API-ról: [hencegés](https://aka.ms/FarmBeatsSwagger).
+A/ExtendedType API-val kapcsolatos további információkért tekintse meg a [FarmBeats hencegő](https://aka.ms/FarmBeatsSwagger)témakört.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most már rendelkezik egy összekötő Docker-vel, amely integrálható a FarmBeats. A következőben láthatja, hogyan szerezhet be időjárási adatait a Docker használatával a FarmBeats. Lásd: [időjárási információk beolvasása](get-weather-data-from-weather-partner.md).
+Most már rendelkezik egy összekötő Docker-összetevővel, amely integrálható a FarmBeats. Következő lépésként ismerje meg, hogyan [szerezhet be időjárási adatait](get-weather-data-from-weather-partner.md) a Docker-rendszerkép használatával a FarmBeats-ben. 

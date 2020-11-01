@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: quickstart
-ms.date: 10/19/2020
+ms.date: 10/30/2020
 ms.author: juliako
-ms.openlocfilehash: 6b154db25f1f13b60e4110d1b1866308ee952487
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 9ad004f65335d79205cbaddaa190b92a19c327d5
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219790"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147283"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Gyors útmutató: regisztráció és az első videó feltöltése
 
@@ -27,8 +27,10 @@ A Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (a
 
 A Video Indexerrel való fejlesztés megkezdéséhez nyissa meg a [Video Indexer](https://www.videoindexer.ai/) webhelyet, és regisztráljon.
 
+A Video Indexer használatának megkezdése után az összes tárolt és feltöltött tartalom titkosítása a Microsoft által felügyelt kulccsal történik.
+
 > [!NOTE]
-> A Video Indexer használatának megkezdése után az összes tárolt és feltöltött tartalom titkosítása a Microsoft által felügyelt kulccsal történik.
+> Tekintse át a [tervezett video Indexer webhely authenticatication módosításait](release-notes.md#planned-video-indexer-website-authenticatication-changes).
 
 ## <a name="upload-a-video-using-the-video-indexer-website"></a>Videó feltöltése a Video Indexer webhellyel
 

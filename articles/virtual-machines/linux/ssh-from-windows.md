@@ -4,28 +4,28 @@ description: Útmutató SSH-kulcsok létrehozásához és használatához Window
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.date: 07/09/2020
+ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: 7e99c9191e93562211f6294cf671f431a5db455d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 183b601a4521c3ff3e4578784f7adadd01045b0e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87825565"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147147"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>SSH-kulcsok használata az Azure-ban a Windowsban
 
 Ez a cikk olyan Windows-felhasználók számára készült, akik *Secure Shell* -(SSH-) kulcsokat szeretnének [létrehozni](#create-an-ssh-key-pair) és használni az Azure-beli linuxos virtuális gépekhez való [kapcsolódáshoz](#connect-to-your-vm) . Az SSH-kulcsokat a portálon a virtuális gépek létrehozásakor használt [Azure Portal is létrehozhatja és tárolhatja](../ssh-keys-portal.md) .
 
 
-Ha Linux vagy macOS rendszerű ügyfélről szeretne SSH-kulcsokat használni, tekintse meg a [gyors](mac-create-ssh-keys.md)információt. Az SSH részletesebb áttekintését a [részletes lépések: ssh-kulcsok létrehozása és kezelése az Azure-beli Linux](create-ssh-keys-detailed.md)RENDSZERű virtuális gépeken történő hitelesítéshez című témakörben tekintheti meg.
+Ha Linux vagy macOS rendszerű ügyfélről szeretne SSH-kulcsokat használni, tekintse meg a [gyors lépéseket](mac-create-ssh-keys.md). Az SSH részletesebb áttekintését a [részletes lépések: ssh-kulcsok létrehozása és kezelése az Azure-beli Linux](create-ssh-keys-detailed.md)RENDSZERű virtuális gépeken történő hitelesítéshez című témakörben tekintheti meg.
 
 ## <a name="overview-of-ssh-and-keys"></a>Az SSH és a kulcsok áttekintése
 
-Az [SSH](https://www.ssh.com/ssh/) egy titkosított kapcsolati protokoll, amely biztonságos bejelentkezéseket tesz lehetővé a nem biztonságos kapcsolatokon keresztül. Az SSH az Azure-ban üzemeltetett Linux rendszerű virtuális gépek alapértelmezett kapcsolati protokollja. Habár az SSH titkosított kapcsolatokat biztosít, a jelszavak SSH-val való használata továbbra is sebezhetővé teszi a virtuális gépet a találgatásos támadásokkal szemben. Azt javasoljuk, hogy SSH-kapcsolaton keresztül csatlakozzon egy virtuális géphez egy nyilvános titkos kulcspár, más néven *SSH*-kulcs használatával. 
+Az [SSH](https://www.ssh.com/ssh/) egy titkosított kapcsolati protokoll, amely biztonságos bejelentkezéseket tesz lehetővé a nem biztonságos kapcsolatokon keresztül. Az SSH az Azure-ban üzemeltetett Linux rendszerű virtuális gépek alapértelmezett kapcsolati protokollja. Habár az SSH titkosított kapcsolatokat biztosít, a jelszavak SSH-val való használata továbbra is sebezhetővé teszi a virtuális gépet a találgatásos támadásokkal szemben. Azt javasoljuk, hogy SSH-kapcsolaton keresztül csatlakozzon egy virtuális géphez egy nyilvános titkos kulcspár, más néven *SSH* -kulcs használatával. 
 
-A nyilvános titkos kulcspár olyan, mint a bejárati ajtó zárolása. A zárolás elérhetővé vált a **nyilvánosság**számára, a megfelelő kulccsal bárki megnyithatja az ajtót. A kulcs **magán**, és csak a megbízhatónak ítélt személyeket adja meg, mert feloldható az ajtó feloldása. 
+A nyilvános titkos kulcspár olyan, mint a bejárati ajtó zárolása. A zárolás elérhetővé vált a **nyilvánosság** számára, a megfelelő kulccsal bárki megnyithatja az ajtót. A kulcs **magán** , és csak a megbízhatónak ítélt személyeket adja meg, mert feloldható az ajtó feloldása. 
 
 - A *nyilvános kulcsot* a rendszer a linuxos virtuális gépre helyezi a virtuális gép létrehozásakor. 
 
