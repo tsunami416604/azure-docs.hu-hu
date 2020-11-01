@@ -9,15 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 05/01/2020
 ms.author: apimpm
-ms.openlocfilehash: 5814ff3909aa36ccfd9e14033f200fb4d3b8d32d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c4d32dd63120a52fd7351977943574455e5cfad
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86252854"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146654"
 ---
 # <a name="export-apis-from-azure-api-management-to-the-power-platform"></a>API-k exportálása az Azure API Managementról a Power platformra 
 
@@ -36,7 +36,7 @@ Ez a cikk végigvezeti az API-k API Managementról a Power platformra való expo
 1. Navigáljon a API Management szolgáltatáshoz a Azure Portal, és válassza az **API-kat** a menüből.
 2. Kattintson az exportálni kívánt API melletti három pontra. 
 3. Válassza az **Export** (Exportálás) lehetőséget.
-4. Válassza **a Power apps és a Power automatizál**lehetőséget.
+4. Válassza **a Power apps és a Power automatizál** lehetőséget.
 5. Válassza ki azt a környezetet, amelybe exportálni kívánja az API-t. 
 6. Adja meg a megjelenítendő nevet, amelyet az egyéni összekötő neveként fog használni.  
 7. Nem kötelező, ha az API-t egy OAuth 2,0-kiszolgáló védi, további részleteket is meg kell adnia, például:,,, `Client ID` `Client secret` `Authorization URL` `Token URL` és `Refresh URL` .  
@@ -44,7 +44,7 @@ Ez a cikk végigvezeti az API-k API Managementról a Power platformra való expo
 
 Az Exportálás befejezése után navigáljon a Power app vagy a Power automatizáló környezetbe. Az API-t egyéni összekötőként fogja látni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ a Power platformról](https://powerplatform.microsoft.com/)
 * [Az oktatóanyagok követésével megismerheti API Management gyakori feladatait](./import-and-publish.md)

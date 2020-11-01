@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 6164617c66401811715007548de59ebbf5ff253b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ec82ec6613b6d2e68d01815d5669bfb169037e72
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787482"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146569"
 ---
 # <a name="azure-queue-storage-monitoring-data-reference"></a>Az Azure üzenetsor Storage figyelési adatreferenciája
 
@@ -26,7 +26,7 @@ Az alábbi táblázatok felsorolják az Azure Storage-hoz összegyűjtött platf
 
 ### <a name="capacity-metrics"></a>Kapacitásmetrikák
 
-A kapacitás metrikáinak értékeit minden órában Azure Monitor elküldjük. Az értékek naponta frissülnek. Az időkeret határozza meg azt az időintervallumot, ameddig a metrikák értékei bemutatva lesznek. Az összes kapacitás metrikájának támogatott időszelete egy óra (PT1H).
+A kapacitás metrikáinak értékei naponta frissülnek (akár 24 óráig). Az időkeret határozza meg azt az időintervallumot, ameddig a metrikák értékei bemutatva lesznek. Az összes kapacitás metrikájának támogatott időszelete egy óra (PT1H).
 
 Az Azure Storage a következő kapacitási mérőszámokat biztosítja Azure Monitorban.
 

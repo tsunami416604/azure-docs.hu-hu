@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 02/07/2019
-ms.openlocfilehash: f8b5e344fc963d466571e75ff16f17367dc32971
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37086a925d65a80f219c8e0a3358c834a2691701
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87844847"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145650"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Az Azure API elérése a Poster FHIR
 
@@ -121,13 +121,13 @@ Most, hogy érvényes hozzáférési jogkivonattal rendelkezik. Új beteget is b
 
 Kattintson a "Küldés" gombra, és látnia kell, hogy a beteg sikeresen létrejött:
 
-![Beteg létrehozva](media/tutorial-postman/postman-patient-created.png)
+![Képernyőkép, amely azt mutatja, hogy a beteg sikeresen létrejött.](media/tutorial-postman/postman-patient-created.png)
 
 Ha megismétli a beteges keresést, a következőt kell látnia:
 
 ![Beteg létrehozva](media/tutorial-postman/postman-patient-found.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy FHIR API-t adott hozzá a Poster használatával. Olvassa el a támogatott funkciók szakasz támogatott API-funkcióit ismertető szakaszt.
  

@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 7be326e0f01ed6a00244c0f5b9ed6a960b2b6e0b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "86171856"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Együttműködés az Azure háttérbeli kapcsolati szolgáltatásaiban: konfiguráció részleteinek tesztelése
@@ -23,17 +23,17 @@ Ez a cikk a [teszt beállításának][Setup]konfigurációs részleteit ismertet
 
 ## <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Küllős VNet-kapcsolat a VNet-társítás használatával
 
-Az alábbi ábrán egy küllős virtuális hálózat (VNet) Azure Virtual Network-összevonási részletei láthatók. Ha meg szeretné tudni, hogyan állíthatja be a két virtuális hálózatok közötti társítást, tekintse meg a [VNet-kezelés kezelése][VNet-Config]című témakört. Ha azt szeretné, hogy a küllős VNet a hub VNet csatlakozó átjárókat használják, válassza a **távoli átjárók használata**lehetőséget.
+Az alábbi ábrán egy küllős virtuális hálózat (VNet) Azure Virtual Network-összevonási részletei láthatók. Ha meg szeretné tudni, hogyan állíthatja be a két virtuális hálózatok közötti társítást, tekintse meg a [VNet-kezelés kezelése][VNet-Config]című témakört. Ha azt szeretné, hogy a küllős VNet a hub VNet csatlakozó átjárókat használják, válassza a **távoli átjárók használata** lehetőséget.
 
 [![1]][1]
 
-Az alábbi ábra a hub-VNet VNet-társítási részleteit mutatja be. Ha azt szeretné, hogy a hub VNet engedélyezze a küllős VNet számára a hub átjáróinak használatát, válassza az **átjáró továbbításának engedélyezése**lehetőséget.
+Az alábbi ábra a hub-VNet VNet-társítási részleteit mutatja be. Ha azt szeretné, hogy a hub VNet engedélyezze a küllős VNet számára a hub átjáróinak használatát, válassza az **átjáró továbbításának engedélyezése** lehetőséget.
 
 [![2]][2]
 
 ## <a name="branch-vnet-connectivity-by-using-a-site-to-site-vpn"></a>Ág-VNet kapcsolódás helyek közötti VPN használatával
 
-A helyek közötti VPN-kapcsolat beállítása a hub és az ág közötti virtuális hálózatok az Azure VPN Gateway VPN-átjárók használatával. Alapértelmezés szerint a VPN-átjárók és az Azure ExpressRoute-átjárók a **65515**-as privát autonóm rendszer számát (ASN) használják. VPN Gatewayban módosíthatja az ASN-értéket. A teszt beállításakor a fiókiroda VNet VPN-átjáró ASN-értéke **65516** -ra változik, hogy támogassa a eBGP útválasztást a hub és az ág virtuális hálózatok között.
+A helyek közötti VPN-kapcsolat beállítása a hub és az ág közötti virtuális hálózatok az Azure VPN Gateway VPN-átjárók használatával. Alapértelmezés szerint a VPN-átjárók és az Azure ExpressRoute-átjárók a **65515** -as privát autonóm rendszer számát (ASN) használják. VPN Gatewayban módosíthatja az ASN-értéket. A teszt beállításakor a fiókiroda VNet VPN-átjáró ASN-értéke **65516** -ra változik, hogy támogassa a eBGP útválasztást a hub és az ág virtuális hálózatok között.
 
 
 [![3]][3]

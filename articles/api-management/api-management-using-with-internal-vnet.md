@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: 06d114c500722259d02a940633a76d043b83064a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 0832c975ecb410b97a24c975f9fc0f4799120abd
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077490"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145514"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Az Azure API Management használata belső virtuális hálózattal
 Az Azure Virtual Networks használatával az Azure API Management képes az interneten keresztül nem elérhető API-k kezelésére. Számos VPN-technológia érhető el a kapcsolat létrehozásához. API Management a virtuális hálózaton belül két fő módban is üzembe helyezhető:
@@ -43,11 +43,11 @@ A API Management belső módban való használata a következő helyzetekben val
 
 A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
 
-+ **Aktív Azure-előfizetés**.
++ **Aktív Azure-előfizetés** .
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ **Egy Azure API Management-példány**. További információ: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
++ **Egy Azure API Management-példány** . További információ: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
 + Ha egy API Management szolgáltatás egy virtuális hálózaton van telepítve, a rendszer a [portok listáját](./api-management-using-with-vnet.md#required-ports) használja, és meg kell nyitni. 
 
 ## <a name="creating-an-api-management-in-an-internal-virtual-network"></a><a name="enable-vpn"> </a>API Management létrehozása belső virtuális hálózaton
@@ -56,21 +56,23 @@ A belső virtuális hálózat API Management szolgáltatása a [belső terhelés
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Virtuális hálózati kapcsolatok engedélyezése a Azure Portal használatával
 
 1. Tallózással keresse meg az Azure API Management-példányát a [Azure Portalban](https://portal.azure.com/).
-2. Válassza a **virtuális hálózat**lehetőséget.
+2. Válassza a **virtuális hálózat** lehetőséget.
 3. Konfigurálja a virtuális hálózaton belül telepítendő API Management példányt.
 
     ![Azure-API Management belső virtuális hálózatban való beállítására szolgáló menü][api-management-using-internal-vnet-menu]
 
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
 Az üzembe helyezés sikeres végrehajtása után az Áttekintés panelen látnia kell a API Management szolgáltatás **magánhálózati** virtuális IP-címét és **nyilvános** virtuális IP-címét. A **magánhálózati** virtuális IP-cím egy elosztott terhelésű IP-cím a API Management delegált alhálózaton belül, amelyen keresztül a `gateway` `portal` `management` `scm` végpontok elérhetők. A **nyilvános** virtuális IP-cím **csak** a `management` 3443-es porton keresztüli végpontra irányuló vezérlési sík forgalmára szolgál, és a [ApiManagement][ServiceTags] servicetag is zárolható.
 
 ![Irányítópult API Management konfigurált belső virtuális hálózattal][api-management-internal-vnet-dashboard]
 
 > [!NOTE]
-> Az Azure Portalon elérhető tesztelési konzol nem fog működni a **belső** VNET üzembe helyezett szolgáltatás esetében, mivel az átjáró URL-címe nincs regisztrálva a nyilvános DNS-ben. Ehelyett a **fejlesztői portálon**elérhető tesztelési konzolt kell használnia.
+> Az Azure Portalon elérhető tesztelési konzol nem fog működni a **belső** VNET üzembe helyezett szolgáltatás esetében, mivel az átjáró URL-címe nincs regisztrálva a nyilvános DNS-ben. Ehelyett a **fejlesztői portálon** elérhető tesztelési konzolt kell használnia.
 
-### <a name="enable-a-virtual-network-connection-by-using-powershell-cmdlets"></a>Virtuális hálózati kapcsolatok engedélyezése PowerShell-parancsmagok használatával
+### <a name="deploy-api-management-into-virtual-network"></a><a name="deploy-apim-internal-vnet"> </a>API Management üzembe helyezése Virtual Network
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-internal-vnet%2Fazuredeploy.json)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

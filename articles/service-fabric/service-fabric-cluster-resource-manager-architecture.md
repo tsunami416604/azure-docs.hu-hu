@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 94ed906533d108081d620e9b183ecfee249d85ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e7d5d4b730ef1669bd9bb7d74e35924061f5580
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75551692"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146211"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>A fürterőforrás-kezelő architektúrájának áttekintése
 A Service Fabric fürterőforrás-kezelő egy központi szolgáltatás, amely a fürtben fut. Felügyeli a fürtben lévő szolgáltatások kívánt állapotát, különösen az erőforrás-felhasználás és az elhelyezési szabályok tekintetében. 
@@ -43,7 +43,7 @@ Nézzük meg a következő ábrát:
 
 <center>
 
-![Erőforrás-Balancer architektúrája][Image1]
+![A fürterőforrás-kezelő szolgáltatás thow bemutató diagram a helyi ügynököktől származó összes információt összesíti, és az aktuális konfiguráció alapján működik.][Image1]
 </center>
 
 A futtatókörnyezet során számos változás következik be. Tegyük fel például, hogy az egyes szolgáltatások által használt erőforrások mennyisége megváltozik, néhány szolgáltatás meghibásodik, és néhány csomópont csatlakozik a fürthöz, és elhagyja a fürtöt. A rendszer összesíti és rendszeres időközönként elküldi a csomópontok összes módosítását a fürterőforrás-kezelő szolgáltatásnak (1, 2), ahol az összesítésük újra, elemezve és tárolva van. A szolgáltatás néhány másodpercenként megtekinti a módosításokat, és meghatározza, hogy van-e szükség műveletekre (3). Láthatja például, hogy egyes üres csomópontok hozzá lettek adva a fürthöz. Ennek eredményeképpen úgy dönt, hogy egyes szolgáltatásokat áthelyez a csomópontokra. A fürterőforrás-kezelő azt is megfigyelheti, hogy egy adott csomópont túl van terhelve, vagy bizonyos szolgáltatások sikertelenek vagy törölve lettek, az erőforrások máshol való felszabadítása.
@@ -55,7 +55,7 @@ Nézzük meg az alábbi ábrát, és nézzük meg, mi történik tovább. Tegyü
 ![Erőforrás-Balancer architektúrája][Image2]
 </center>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A fürterőforrás-kezelő számos lehetőséget kínál a fürt leírására. Ha többet szeretne megtudni róluk, tekintse meg ezt a cikket a [Service Fabric-fürt leírását ismertető](./service-fabric-cluster-resource-manager-cluster-description.md) cikkben.
 - A fürterőforrás-kezelő elsődleges feladatai a fürt kiegyensúlyozására és az elhelyezési szabályok betartatására szolgálnak. A viselkedés konfigurálásával kapcsolatos további információkért lásd: [Service Fabric-fürt terheléselosztása](./service-fabric-cluster-resource-manager-balancing.md)
 

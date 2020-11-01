@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 0b6233552501fbe1578f3abe4e203d725ecddb4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2493a3a1e4fbb49c0b7f6dad29771b6e9faae8e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707795"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146807"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Magas rendelkezésre állás a Media Services és a videó igény szerint (VOD)
 
@@ -26,7 +26,7 @@ ms.locfileid: "91707795"
 
 ## <a name="high-availability-for-vod"></a>Magas rendelkezésre állás a VOD-hoz
 
-A magas rendelkezésre állású, [Geodes](/azure/architecture/patterns/geodes) nevű tervezési minta az Azure Architecture dokumentációjában található. Ismerteti, hogyan történik az ismétlődő erőforrások üzembe helyezése különböző földrajzi régiókban a méretezhetőség és a rugalmasság biztosítása érdekében.  Az Azure-szolgáltatások használatával olyan architektúrát hozhat létre, amely számos magas rendelkezésre állású tervezési szempontot, például redundanciát, állapot-figyelést, terheléselosztást és adatbiztonsági mentést és helyreállítást biztosít.  Az alábbi architektúrát a megoldásban használt egyes szolgáltatásokra vonatkozó részletek ismertetik, valamint azt, hogy az egyes szolgáltatások hogyan használhatók magas rendelkezésre állású architektúra létrehozásához a VOD-alkalmazásokhoz.
+A magas rendelkezésre állású, [Geodes](https://docs.microsoft.com/azure/architecture/patterns/geodes) nevű tervezési minta az Azure Architecture dokumentációjában található. Ismerteti, hogyan történik az ismétlődő erőforrások üzembe helyezése különböző földrajzi régiókban a méretezhetőség és a rugalmasság biztosítása érdekében.  Az Azure-szolgáltatások használatával olyan architektúrát hozhat létre, amely számos magas rendelkezésre állású tervezési szempontot, például redundanciát, állapot-figyelést, terheléselosztást és adatbiztonsági mentést és helyreállítást biztosít.  Az alábbi architektúrát a megoldásban használt egyes szolgáltatásokra vonatkozó részletek ismertetik, valamint azt, hogy az egyes szolgáltatások hogyan használhatók magas rendelkezésre állású architektúra létrehozásához a VOD-alkalmazásokhoz.
 
 ### <a name="sample"></a>Sample
 
@@ -87,4 +87,4 @@ Ez a magas szintű diagram a rendelkezésre álló minta architektúráját muta
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Példák a [kód](/samples/browse/?products=azure-media-services) megadására
+* Példák a [kód](https://docs.microsoft.com/samples/browse/?products=azure-media-services) megadására

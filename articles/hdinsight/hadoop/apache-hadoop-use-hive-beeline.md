@@ -6,18 +6,20 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 08/21/2020
-ms.custom: contperfq1
-ms.openlocfilehash: f6d8f804fa26383435d191af27289ffd2ecb3e0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/28/2020
+ms.custom: contperfq1, contperfq2
+ms.openlocfilehash: 756c87299db85e426b4793d51bea833aa694a830
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88755092"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145956"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Az Apache Beeline-ügyfél használata Apache Hive-val
 
-Ismerje meg, hogyan használható az [Apache beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) Apache Hive lekérdezések futtatásához a HDInsight.
+Ez a cikk azt ismerteti, hogyan használható a parancssori [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) -ügyfél Apache Hive lekérdezések létrehozásához és végrehajtásához SSH-kapcsolaton keresztül.
+
+## <a name="background"></a>Háttér
 
 A Beeline egy kaptár-ügyfél, amely a HDInsight-fürt fő csomópontjain található. Ha a HDInsight-fürtön telepített Beeline-ügyfélhez szeretne csatlakozni, vagy helyileg szeretné telepíteni a telepítést, tekintse meg az [Apache Beeline vagy az üzembe](connect-install-beeline.md)helyezés telepítése című témakört. A Beeline JDBC használatával csatlakozik a HDInsight-fürtön üzemeltetett HiveServer2-hez. A Beeline használatával távolról is elérheti a HDInsight a struktúrát az interneten keresztül. A következő példák a HDInsight való kapcsolódáshoz használt leggyakoribb kapcsolati karakterláncokat biztosítják a Beeline szolgáltatásból.
 
@@ -27,9 +29,7 @@ A Beeline egy kaptár-ügyfél, amely a HDInsight-fürt fő csomópontjain talá
 
 * Figyelje meg a fürt elsődleges tárolójának URI-sémáját. Például  `wasb://` Az Azure Storage-hoz, `abfs://` Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1hoz. Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az URI a következő: `wasbs://` . További információ: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
 
-* 1. lehetőség: egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md). A jelen dokumentumban ismertetett lépések többsége azt feltételezi, hogy egy SSH-munkamenetből a fürtre használja a Beeline-t.
-
-* 2. lehetőség: helyi Beeline-ügyfél.
+* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md). A jelen dokumentumban ismertetett lépések többsége azt feltételezi, hogy egy SSH-munkamenetből a fürtre használja a Beeline-t. Használhat helyi Beeline-ügyfelet is, de ezek a lépések nem szerepelnek ebben a cikkben.
 
 ## <a name="run-a-hive-query"></a>Hive-lekérdezések futtatása
 
@@ -56,7 +56,7 @@ Ez a példa a Beeline-ügyfél SSH-kapcsolatban való használatára épül.
     show tables;
     ```
 
-    Egy új fürtön csak egy tábla jelenik meg: **hivesampletable**.
+    Egy új fürtön csak egy tábla jelenik meg: **hivesampletable** .
 
 4. A hivesampletable sémájának megjelenítéséhez használja a következő parancsot:
 
@@ -109,7 +109,7 @@ Ez a példa a Beeline-ügyfél SSH-kapcsolatban való használatára épül.
 
     |Utasítás |Leírás |
     |---|---|
-    |TÁBLÁZAT ELDOBÁSA|Ha a tábla létezik, törölve lett.|
+    |DROP TABLE|Ha a tábla létezik, törölve lett.|
     |KÜLSŐ TÁBLA LÉTREHOZÁSA|Létrehoz egy **külső** táblát a struktúrában. A külső táblák csak a struktúra tábla definícióját tárolják. Az adatmező az eredeti helyen marad.|
     |SOR FORMÁTUMA|Az adat formázása. Ebben az esetben az egyes naplók mezői szóközzel vannak elválasztva.|
     |TEXTFILE HELYEN TÁROLVA|Az adattárolás helye és a fájl formátuma.|
@@ -157,13 +157,13 @@ Ez a példa a Beeline-ügyfél SSH-kapcsolatban való használatára épül.
 
 Ez a példa az előző példa folytatását szemlélteti. A következő lépésekkel hozzon létre egy fájlt, majd futtassa a Beeline paranccsal.
 
-1. A következő parancs használatával hozzon létre egy **query. HQL**nevű fájlt:
+1. A következő parancs használatával hozzon létre egy **query. HQL** nevű fájlt:
 
     ```bash
     nano query.hql
     ```
 
-1. Használja a következő szöveget a fájl tartalmának megfelelően. Ez a lekérdezés egy új, **alkalmazásnaplókat**nevű belső táblát hoz létre:
+1. Használja a következő szöveget a fájl tartalmának megfelelően. Ez a lekérdezés egy új, **alkalmazásnaplókat** nevű belső táblát hoz létre:
 
     ```hiveql
     CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
@@ -181,7 +181,7 @@ Ez a példa az előző példa folytatását szemlélteti. A következő lépése
     > [!NOTE]  
     > A külső tábláktól eltérően a belső tábla eldobása a mögöttes adatokat is törli.
 
-1. A fájl mentéséhez használja a **CTRL X billentyűkombinációt**, + **X**majd írja be az **Y**értéket, és végül **írja be**a következőt:.
+1. A fájl mentéséhez használja a **CTRL X billentyűkombinációt** , + **X** majd írja be az **Y** értéket, és végül **írja be** a következőt:.
 
 1. A következő paranccsal futtathatja a fájlt a Beeline használatával:
 
@@ -192,7 +192,7 @@ Ez a példa az előző példa folytatását szemlélteti. A következő lépése
     > [!NOTE]  
     > A `-i` paraméter elindítja és futtatja a fájlban szereplő utasításokat `query.hql` . A lekérdezés befejeződése után a rendszer `jdbc:hive2://headnodehost:10001/>` megkéri a kérdést. A (z) paraméterrel is futtathat egy fájlt `-f` , amely a lekérdezés befejeződése után kilép a szolgáltatásból.
 
-1. A **alkalmazásnaplókat** tábla létrehozásának ellenőrzéséhez használja a következő utasítást a **alkalmazásnaplókat**összes sorának visszaküldéséhez:
+1. A **alkalmazásnaplókat** tábla létrehozásának ellenőrzéséhez használja a következő utasítást a **alkalmazásnaplókat** összes sorának visszaküldéséhez:
 
     ```hiveql
     SELECT * from errorLogs;
@@ -211,7 +211,7 @@ Ez a példa az előző példa folytatását szemlélteti. A következő lépése
     3 rows selected (0.813 seconds)
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További általános információk a HDInsight-beli Kaptárról: [Apache Hive használata a Apache Hadoop használatával a HDInsight](hdinsight-use-hive.md)
 

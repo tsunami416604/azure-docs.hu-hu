@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 2dff68f98e2922d5fc7a4fca1e6de8740bc2ae68
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "92459679"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Oktatóanyag: Azure Active Directory integráció a ITRP
@@ -48,11 +48,11 @@ Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Az
 
 A ITRP Azure AD-be való integrálásának beállításához hozzá kell adnia a ITRP a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. A [Azure Portal](https://portal.azure.com)a bal oldali ablaktáblán válassza a **Azure Active Directory**:
+1. A [Azure Portal](https://portal.azure.com)a bal oldali ablaktáblán válassza a **Azure Active Directory** :
 
     ![Válassza az Azure Active Directory elemet.](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**  >  **minden alkalmazás**:
+2. Lépjen a **vállalati alkalmazások**  >  **minden alkalmazás** :
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -60,7 +60,7 @@ A ITRP Azure AD-be való integrálásának beállításához hozzá kell adnia a
 
     ![Új alkalmazás kiválasztása](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **ITRP**kifejezést. A keresési eredmények között válassza a **ITRP** lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+4. A keresőmezőbe írja be a **ITRP** kifejezést. A keresési eredmények között válassza a **ITRP** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
 
      ![Keresési eredmények](common/search-new-app.png)
 
@@ -84,7 +84,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést fogja engedélyezni a Az
 
 Az Azure AD egyszeri bejelentkezés ITRP való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)ITRP alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget:
+1. A [Azure Portal](https://portal.azure.com/)ITRP alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget:
 
     ![Egyszeri bejelentkezés kiválasztása](common/select-sso.png)
 
@@ -123,11 +123,11 @@ Az Azure AD egyszeri bejelentkezés ITRP való konfigurálásához hajtsa végre
 
     ![A konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    1. **Bejelentkezési URL-cím**.
+    1. **Bejelentkezési URL-cím** .
 
-    1. **Azure ad-azonosító**.
+    1. **Azure ad-azonosító** .
 
-    1. **Kijelentkezési URL-cím**.
+    1. **Kijelentkezési URL-cím** .
 
 ### <a name="configure-itrp-single-sign-on"></a>ITRP egyszeri bejelentkezés konfigurálása
 
@@ -137,7 +137,7 @@ Az Azure AD egyszeri bejelentkezés ITRP való konfigurálásához hajtsa végre
 
     ![Beállítások ikon](./media/itrp-tutorial/ic775570.png "Beállítások ikon")
 
-1. A bal oldali panelen válassza az **egyszeri bejelentkezés**lehetőséget:
+1. A bal oldali panelen válassza az **egyszeri bejelentkezés** lehetőséget:
 
     ![Egyszeri bejelentkezés kiválasztása](./media/itrp-tutorial/ic775571.png "Egyetlen Sign-On kiválasztása")
 
@@ -161,7 +161,7 @@ Az Azure AD egyszeri bejelentkezés ITRP való konfigurálásához hajtsa végre
 
 Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azure Portal.
 
-1. A Azure Portal a bal oldali ablaktáblán válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**lehetőséget, majd válassza a **minden felhasználó**lehetőséget:
+1. A Azure Portal a bal oldali ablaktáblán válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** lehetőséget, majd válassza a **minden felhasználó** lehetőséget:
 
     ![Válassza a Minden felhasználó lehetőséget](common/users.png)
 
@@ -175,29 +175,29 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
     1. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    1. A **Felhasználónév** mezőbe írja be a **BrittaSimon@ \<yourcompanydomain> . \<extension> **. (Például: BrittaSimon@contoso.com .)
+    1. A **Felhasználónév** mezőbe írja be a **BrittaSimon@ \<yourcompanydomain> . \<extension>** . (Például: BrittaSimon@contoso.com .)
 
-    1. Válassza a **jelszó megjelenítése**lehetőséget, majd írja le a **jelszó** mezőben található értéket.
+    1. Válassza a **jelszó megjelenítése** lehetőséget, majd írja le a **jelszó** mezőben található értéket.
 
-    1. Kattintson a **Létrehozás** gombra.
+    1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a ITRP.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **ITRP**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **ITRP** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában válassza a **ITRP**lehetőséget.
+2. Az alkalmazások listájában válassza a **ITRP** lehetőséget.
 
     ![Alkalmazások listája](common/all-applications.png)
 
-3. A bal oldali ablaktáblán válassza a **felhasználók és csoportok**lehetőséget:
+3. A bal oldali ablaktáblán válassza a **felhasználók és csoportok** lehetőséget:
 
     ![Felhasználók és csoportok kiválasztása](common/users-groups-blade.png)
 
-4. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+4. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![Felhasználó hozzáadása kiválasztása](common/add-assign-user.png)
 
@@ -205,7 +205,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 6. Ha az SAML-állításban a szerepkör értéke várható, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából. Kattintson az ablak alján található **kiválasztás** gombra.
 
-7. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés** lehetőséget.
 
 ### <a name="create-an-itrp-test-user"></a>ITRP-teszt felhasználó létrehozása
 
@@ -219,7 +219,7 @@ Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:
 
     ![Rekordok ikon](./media/itrp-tutorial/ic775575.png "Rekordok ikon")
 
-1. A menüben válassza a **személyek**lehetőséget:
+1. A menüben válassza a **személyek** lehetőséget:
 
     ![Személyek kiválasztása](./media/itrp-tutorial/ic775587.png "Személyek kiválasztása")
 

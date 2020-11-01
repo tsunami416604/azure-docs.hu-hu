@@ -9,10 +9,10 @@ ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 843d0b8cfd75e8cbdf45ac535cc9486aa42442d6
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "91761797"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Oktatóanyag: virtuális hálózati átjáró konfigurálása a ExpressRoute-hez a Azure Portal használatával
@@ -42,7 +42,7 @@ A feladat lépései a következő konfigurációs hivatkozási listán szereplő
     * Alhálózat címtartomány = "192.168.1.0/24"
 * Erőforráscsoport = "TestRG"
 * Location = "USA keleti régiója"
-* Átjáró alhálózatának neve: "GatewaySubnet" az átjáró alhálózatának *GatewaySubnet*kell lennie.
+* Átjáró alhálózatának neve: "GatewaySubnet" az átjáró alhálózatának *GatewaySubnet* kell lennie.
     * Átjáró-alhálózati címtartomány = "192.168.200.0/26"
 * Átjáró neve = "ERGW"
 * Átjáró nyilvános IP-neve = "MyERGWVIP"
@@ -64,28 +64,28 @@ A konfigurálás megkezdése előtt tekintse meg az alábbi lépések [videóit]
 
 ## <a name="create-the-virtual-network-gateway"></a>Virtuális hálózati átjáró létrehozása
 
-1. A portálon, a bal oldalon válassza az **erőforrás létrehozása**lehetőséget, és írja be a "Virtual Network átjáró" kifejezést a keresőmezőbe. Keresse meg a **virtuális hálózati átjárót** a keresési visszáruban, és válassza ki a bejegyzést. A **virtuális hálózati átjáró** lapon válassza a **Létrehozás**lehetőséget.
+1. A portálon, a bal oldalon válassza az **erőforrás létrehozása** lehetőséget, és írja be a "Virtual Network átjáró" kifejezést a keresőmezőbe. Keresse meg a **virtuális hálózati átjárót** a keresési visszáruban, és válassza ki a bejegyzést. A **virtuális hálózati átjáró** lapon válassza a **Létrehozás** lehetőséget.
 1. A **virtuális hálózati átjáró létrehozása** lapon adja meg a következő beállításokat, vagy válassza ki ezeket:
 
     | Beállítás | Érték |
     | --------| ----- |
     | Előfizetés | Ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva. |
     | Erőforráscsoport | Ha kiválasztja a virtuális hálózatot, az erőforráscsoport automatikusan lesz kiválasztva. | 
-    | Név | Nevezze el az átjárót. Ez nem ugyanaz, mint az átjáró alhálózatának elnevezése. Ez a létrehozandó átjáró-objektum neve.|
+    | Name | Nevezze el az átjárót. Ez nem ugyanaz, mint az átjáró alhálózatának elnevezése. Ez a létrehozandó átjáró-objektum neve.|
     | Régió | Módosítsa a **régió** mezőt úgy, hogy arra a helyre mutasson, ahol a virtuális hálózat található. Ha a hely nem arra a régióra mutat, ahol a virtuális hálózata, a virtuális hálózat nem jelenik meg a virtuális hálózat választása legördülő menüben. |
     | Átjáró típusa | **ExpressRoute** kiválasztása|
     | Termékváltozat | Válassza ki az átjáró SKU-t a legördülő listából. |
-    | Virtuális hálózat | Válassza a *TestVNet*lehetőséget. |
+    | Virtuális hálózat | Válassza a *TestVNet* lehetőséget. |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget.|
     | Nyilvános IP-cím | Adja meg a nyilvános IP-cím nevét. |
 
-1. Válassza a **felülvizsgálat + létrehozás**lehetőséget, majd **hozza létre** az átjáró létrehozásának megkezdéséhez. A rendszer érvényesíti a beállításokat, és az átjáró üzembe helyezése megtörténik. A virtuális hálózati átjáró létrehozása akár 45 percet is igénybe vehet.
+1. Válassza a **felülvizsgálat + létrehozás** lehetőséget, majd **hozza létre** az átjáró létrehozásának megkezdéséhez. A rendszer érvényesíti a beállításokat, és az átjáró üzembe helyezése megtörténik. A virtuális hálózati átjáró létrehozása akár 45 percet is igénybe vehet.
 
     :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/gateway.png" alt-text="Az átjáró alhálózatának hozzáadása":::
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 
-Ha már nincs szüksége a ExpressRoute-átjáróra, keresse meg az átjárót a virtuális hálózat erőforráscsoporthoz, és válassza a **Törlés**lehetőséget. Győződjön meg arról, hogy az átjáró nem rendelkezik kapcsolattal egy áramkörhöz.
+Ha már nincs szüksége a ExpressRoute-átjáróra, keresse meg az átjárót a virtuális hálózat erőforráscsoporthoz, és válassza a **Törlés** lehetőséget. Győződjön meg arról, hogy az átjáró nem rendelkezik kapcsolattal egy áramkörhöz.
 
 :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/delete-gateway.png" alt-text="Az átjáró alhálózatának hozzáadása":::
 

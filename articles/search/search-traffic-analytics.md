@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 03/18/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: d93ced4b45befec207494909de61d30a98d2a67e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "91333732"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>Telemetria-adatok gyűjtése a keresési forgalom elemzéséhez
@@ -49,7 +49,7 @@ Ha Application Insights erőforrással rendelkezik, az alkalmazás regisztrálá
 
 A Visual Studio-projektek egyes típusaihoz tartozó parancsikonok az alábbi lépésekben láthatók. Létrehoz egy erőforrást, és mindössze néhány kattintással regisztrálja az alkalmazást.
 
-1. A Visual Studio és a ASP.net fejlesztéséhez nyissa meg a megoldást, és válassza a **projekt**  >  **Hozzáadás Application Insights telemetria**lehetőséget.
+1. A Visual Studio és a ASP.net fejlesztéséhez nyissa meg a megoldást, és válassza a **projekt**  >  **Hozzáadás Application Insights telemetria** lehetőséget.
 
 1. Kattintson az **Első lépések** lehetőségre.
 
@@ -129,12 +129,12 @@ var searchId = request.getResponseHeader('x-ms-azs-searchid');
 
 Minden alkalommal, amikor egy felhasználó egy keresési kérelmet ad ki, a következő sémával rendelkező keresési eseményként kell bejelentkeznie egy Application Insights egyéni eseményre. Ne feledje, hogy csak a felhasználó által létrehozott keresési lekérdezéseket naplózza.
 
-+ **SearchServiceName**: (karakterlánc) keresési szolgáltatás neve
-+ **SearchId**: (GUID) – a keresési lekérdezés egyedi azonosítója (a keresési válaszban érkezik)
-+ **IndexName**: (karakterlánc) keresési szolgáltatási index lekérdezése
-+ **QueryTerms**: (karakterlánc) a felhasználó által megadott keresési kifejezések
-+ **ResultCount**: (int) a visszaadott dokumentumok száma (a keresési válaszban érkezik)
-+ **ScoringProfile**: (karakterlánc) a használt pontozási profil neve, ha van ilyen
++ **SearchServiceName** : (karakterlánc) keresési szolgáltatás neve
++ **SearchId** : (GUID) – a keresési lekérdezés egyedi azonosítója (a keresési válaszban érkezik)
++ **IndexName** : (karakterlánc) keresési szolgáltatási index lekérdezése
++ **QueryTerms** : (karakterlánc) a felhasználó által megadott keresési kifejezések
++ **ResultCount** : (int) a visszaadott dokumentumok száma (a keresési válaszban érkezik)
++ **ScoringProfile** : (karakterlánc) a használt pontozási profil neve, ha van ilyen
 
 > [!NOTE]
 > Adja meg a felhasználó által generált lekérdezések számát $count = True hozzáadásával a keresési lekérdezéshez. További információ: [dokumentumok keresése (REST)](/rest/api/searchservice/search-documents#counttrue--false).
@@ -172,10 +172,10 @@ appInsights.trackEvent("Search", {
 
 Minden alkalommal, amikor egy felhasználó egy dokumentumra kattint, ez egy olyan jel, amelyet a keresési elemzési célokra kell naplózni. Ezeket az eseményeket a következő sémával naplózhatja Application Insights egyéni események használatával:
 
-+ **Szolgáltatásnév**: (karakterlánc) keresési szolgáltatás neve
-+ **SearchId**: (GUID) a kapcsolódó keresési lekérdezés egyedi azonosítója
-+ **Dokumentumazonosító**: (karakterlánc) dokumentum azonosítója
-+ **Pozíció**: (int) Range a dokumentumnak a keresési eredmények oldalon
++ **Szolgáltatásnév** : (karakterlánc) keresési szolgáltatás neve
++ **SearchId** : (GUID) a kapcsolódó keresési lekérdezés egyedi azonosítója
++ **Dokumentumazonosító** : (karakterlánc) dokumentum azonosítója
++ **Pozíció** : (int) Range a dokumentumnak a keresési eredmények oldalon
 
 > [!NOTE]
 > A pozíció a kardinális sorrendre hivatkozik az alkalmazásban. Az összehasonlításhoz szabadon állíthatja be ezt a számot, amennyiben az mindig ugyanaz.
@@ -209,19 +209,19 @@ appInsights.trackEvent("Click", {
 
 Miután felkészítette az alkalmazást, és ellenőrizte, hogy az alkalmazás megfelelően van csatlakoztatva a Application Insightshoz, letölt egy előre definiált jelentési sablont, hogy elemezze az adatait a Power BI Desktopban. A jelentés előre definiált diagramokat és táblázatokat tartalmaz, amelyek hasznosak a Search Traffic Analytics szolgáltatásban rögzített további adatok elemzéséhez.
 
-1. Az Azure Cognitive Search-irányítópult bal oldali navigációs ablaktábláján, a **Beállítások**területen kattintson a **Traffic Analytics keresése**elemre.
+1. Az Azure Cognitive Search-irányítópult bal oldali navigációs ablaktábláján, a **Beállítások** területen kattintson a **Traffic Analytics keresése** elemre.
 
 1. A **Keresés a forgalom elemzéséhez** lapon, a 3. lépésben kattintson az **Power bi Desktop beolvasása** elemre a Power bi telepítéséhez.
 
    ![Power BI jelentések beolvasása](./media/search-traffic-analytics/get-use-power-bi.png "Power BI jelentések beolvasása")
 
-1. Ugyanazon a lapon kattintson a **Power bi-jelentés letöltése**elemre.
+1. Ugyanazon a lapon kattintson a **Power bi-jelentés letöltése** elemre.
 
 1. A jelentés Power BI Desktopban nyílik meg, és a rendszer felszólítja, hogy kapcsolódjon Application Insightshoz, és adja meg a hitelesítő adatokat. A Application Insights-erőforrás Azure Portal lapjain a kapcsolatok adatai találhatók. A hitelesítő adatok esetében adja meg ugyanazt a felhasználónevet és jelszót, amelyet a portálon való bejelentkezéshez használ.
 
    ![Csatlakozás az Application Insightshoz](./media/search-traffic-analytics/connect-to-app-insights.png "Csatlakozás az Application Insightshoz")
 
-1. Kattintson a **Betöltés**elemre.
+1. Kattintson a **Betöltés** elemre.
 
 A jelentés olyan diagramokat és táblázatokat tartalmaz, amelyek segítségével jobban tájékozott döntéseket hozhat a keresési teljesítmény és a relevancia javítása érdekében.
 

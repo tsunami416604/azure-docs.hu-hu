@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: de2b12bca10382d7e885626222fe463af27f9953
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ae20b339ae3eec694140621b14db26606c9d5ab3
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128775"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145565"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Gépi tanulási folyamatok közzététele és nyomon követése
 
@@ -73,6 +73,9 @@ Ha már rendelkezik egy folyamattal, akkor közzétehet egy folyamatot, hogy az 
 
 Minden közzétett folyamat REST-végponttal rendelkezik. A folyamat végpontja segítségével bármely külső rendszerből elindíthatja a folyamat futtatását, beleértve a nem Python-ügyfeleket is. Ez a végpont lehetővé teszi a "felügyelt ismételhetőség" használatát a Batch-pontozási és-átképzési forgatókönyvekben.
 
+> [!IMPORTANT]
+> Ha szerepköralapú hozzáférés-vezérlést (RBAC) használ a folyamathoz való hozzáférés kezelésére, [állítsa be a folyamathoz tartozó forgatókönyv (képzés vagy pontozás) engedélyeit](how-to-assign-roles.md#q-what-are-the-permissions-needed-to-perform-some-common-scenarios-in-the-azure-machine-learning-service).
+
 Az előző folyamat futtatásának meghívásához egy Azure Active Directory hitelesítési fejléc tokenre van szükség. Az ilyen jogkivonatok lekérése a [AzureCliAuthentication osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py&preserve-view=true) referenciájában és a Azure Machine learning jegyzetfüzetben történő [hitelesítésben](https://aka.ms/pl-restep-auth) olvasható.
 
 ```python
@@ -87,7 +90,7 @@ response = requests.post(published_pipeline1.endpoint,
 
 A `json` post kérelem argumentumának tartalmaznia kell a `ParameterAssignments` kulcshoz a folyamat paramétereit és azok értékeit tartalmazó szótárt. Emellett az `json` argumentum a következő kulcsokat is tartalmazhatja:
 
-| Kulcs | Leírás |
+| Kulcs | Description |
 | --- | --- | 
 | `ExperimentName` | A végponthoz társított kísérlet neve |
 | `Description` | A végpontot leíró szabadkézi szöveg | 

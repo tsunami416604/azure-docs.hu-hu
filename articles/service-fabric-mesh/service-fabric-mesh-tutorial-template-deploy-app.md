@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 3727e9a83827261bf9e8a526ffedb6d3fc644afa
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b02c16c63d83fc33be5512d26eafb0ca0d6c9b98
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745975"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145888"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Oktatóanyag: Alkalmazás üzembe helyezése a Service Fabric Meshben sablon használatával
 
@@ -103,6 +103,11 @@ A regisztrációs adatbázis létrehozásakor a kimenet a következő példához
 Ez az oktatóanyag egy teendőlistás mintaalkalmazást használ példaként.  A [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) és a [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) szolgáltatások tárolólemezképei a Docker Hubban találhatók. A Visual Studióban történő alkalmazás létrehozásával kapcsolatos információkért lásd: [Service Fabric Mesh-Webalkalmazás létrehozása](service-fabric-mesh-tutorial-create-dotnetcore.md) . A Service Fabric Mesh Windows és Linux rendszerű tárolókon futhat.  Ha Linux-tárolókkal dolgozik, válassza a Docker **Váltás Linux-tárolókra** lehetőségét.  Ha Windows-tárolókkal dolgozik, válassza a Docker **Váltás Windows-tárolókra** lehetőségét.
 
 Ahhoz, hogy képet tudjon küldeni egy ACR-példányba, először szüksége van egy tárolólemezképre. Ha még nincs egy helyi tárolólemezképe sem, a [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) paranccsal kérje le a [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) és a [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) képeit a Docker Hubból.
+
+>[!NOTE]
+> 2020. november 2., a [letöltési sebességre vonatkozó korlátozások](https://docs.docker.com/docker-hub/download-rate-limit/) a Docker ingyenes csomag fiókjaiból származó névtelen és hitelesített kérelmekre vonatkoznak, és az IP-cím kényszeríti. 
+> 
+> Ezek a parancsok a Docker hub nyilvános lemezképeit használják. Vegye figyelembe, hogy a díjszabás korlátozott lehet. További részletek: [hitelesítés a Docker hub](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub)használatával.
 
 Windows-rendszerképek lekérése:
 

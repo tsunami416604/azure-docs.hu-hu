@@ -4,10 +4,10 @@ description: Útmutató a meglévő Azure Service Bus standard névterek prémiu
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1ed09a077f086390c658e6650171c552b361008d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "85340746"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Meglévő Azure Service Bus standard névterek migrálása a prémium szintre
@@ -21,11 +21,11 @@ Ez a cikk bemutatja, hogyan telepítheti át a meglévő standard szintű névte
 
 Néhány Megjegyzés:
 
-- Az áttelepítés célja, hogy megtörténjen, ami azt jelenti, hogy a meglévő küldő és fogadó alkalmazások **nem igénylik a kód vagy a konfiguráció módosítását**. A meglévő kapcsolódási sztring automatikusan az új prémium névtérre mutat.
+- Az áttelepítés célja, hogy megtörténjen, ami azt jelenti, hogy a meglévő küldő és fogadó alkalmazások **nem igénylik a kód vagy a konfiguráció módosítását** . A meglévő kapcsolódási sztring automatikusan az új prémium névtérre mutat.
 - A **prémium** névtérnek **nem lehetnek entitásai** az áttelepítés sikerességéhez.
 - A standard névtérben lévő összes **entitást** az áttelepítési folyamat során a prémium névtérre **másolja** a rendszer.
 - A Migrálás a prémium **szinten 1 000 entitást támogat az üzenetkezelési egységenként** . Annak megállapításához, hogy hány üzenetkezelési egységre van szüksége, kezdje az aktuális standard névtérben található entitások számával.
-- Az **alapszintű csomagról** a prémium szintre való áttelepítést közvetlenül nem végezheti el, de az alapszintű és a standard közötti áttelepítéssel, majd a következő lépésben a standard és a prémium **szintről**is elvégezhető.
+- Az **alapszintű csomagról** a prémium szintre való áttelepítést közvetlenül nem végezheti el, de az alapszintű és a standard közötti áttelepítéssel, majd a következő lépésben a standard és a prémium **szintről** is elvégezhető.
 
 ## <a name="migration-steps"></a>A migrálás lépései
 
@@ -89,14 +89,14 @@ Ha az Azure CLI vagy a PowerShell eszköz használatával szeretné áttelepíte
 
 A Azure Portal használatával végzett Migrálás ugyanazzal a logikai folyamattal rendelkezik, mint a parancsok használatával történő áttelepítés. Az alábbi lépéseket követve áttelepítheti a Azure Portal használatával.
 
-1. A bal oldali ablaktábla **navigációs** menüjében válassza az **áttelepítés prémiumra**lehetőséget. Kattintson az **első lépések** gombra a következő lapra való továbblépéshez.
+1. A bal oldali ablaktábla **navigációs** menüjében válassza az **áttelepítés prémiumra** lehetőséget. Kattintson az **első lépések** gombra a következő lapra való továbblépéshez.
     ![Áttelepítési Kezdőlap][]
 
-1. Fejezze be a **telepítést**.
+1. Fejezze be a **telepítést** .
    ![Telepítési névtér][]
    1. Hozza létre és rendelje hozzá a prémium névteret a meglévő standard névtér áttelepítéséhez.
         ![Névtér beállítása – prémium szintű névtér létrehozása][]
-   1. Válassza ki az **áttelepítés utáni nevet**. Ezt a nevet fogja használni a standard névtér eléréséhez az áttelepítés befejeződése után.
+   1. Válassza ki az **áttelepítés utáni nevet** . Ezt a nevet fogja használni a standard névtér eléréséhez az áttelepítés befejeződése után.
         ![Névtér beállítása – a kivételezés utáni áttelepítés neve][]
    1. A folytatáshoz válassza a **Next (tovább** ) lehetőséget.
 1. Entitások szinkronizálása a standard és a prémium szintű névterek között.

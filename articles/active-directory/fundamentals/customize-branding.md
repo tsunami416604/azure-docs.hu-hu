@@ -14,10 +14,10 @@ ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 04e1d35ab17a49dd1c4e9bd2bd19289de2b8658a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "89565854"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Arculat hozzáadása a szervezet Azure Active Directory bejelentkezési lapjához
@@ -37,7 +37,7 @@ Az egyéni arculat nem jelenik meg azonnal, amikor a felhasználók olyan webhel
 ### <a name="to-customize-your-branding"></a>A branding testreszabása
 1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
-2. Válassza a **Azure Active Directory**lehetőséget, majd válassza a **vállalati védjegyezés**lehetőséget, majd válassza a **Konfigurálás**lehetőséget.
+2. Válassza a **Azure Active Directory** lehetőséget, majd válassza a **vállalati védjegyezés** lehetőséget, majd válassza a **Konfigurálás** lehetőséget.
 
     ![Contoso – vállalati védjegyezés lap, kijelölt beállítás](media/customize-branding/company-branding-configure-button.png)
 
@@ -86,7 +86,7 @@ Az egyéni arculat nem jelenik meg azonnal, amikor a felhasználók olyan webhel
     
         - **Szögletes embléma képe, sötét téma.** Ugyanaz, mint a fenti négyzetes embléma képe. Az embléma képe a négyzetes embléma képére helyezi a sötét háttérrel való használatkor, például a Windows 10 Azure AD-hoz csatlakoztatott képernyőkkel a beépített felület (OOBE) alatt.  Ha az embléma fehér, sötét kék és fekete hátterű, akkor nem kell hozzáadnia ezt a képet. 
         
-        - **A bejelentkezve maradó beállítás megjelenítése.** Dönthet úgy, hogy a felhasználók továbbra is bejelentkeznek az Azure AD-be, amíg explicit módon ki nem jelentkezik. Ha a **nem**lehetőséget választja, akkor ez a beállítás rejtett, és a felhasználóknak minden alkalommal be kell jelentkezniük, amikor a böngésző be van zárva és újra meg lett nyitva.
+        - **A bejelentkezve maradó beállítás megjelenítése.** Dönthet úgy, hogy a felhasználók továbbra is bejelentkeznek az Azure AD-be, amíg explicit módon ki nem jelentkezik. Ha a **nem** lehetőséget választja, akkor ez a beállítás rejtett, és a felhasználóknak minden alkalommal be kell jelentkezniük, amikor a böngésző be van zárva és újra meg lett nyitva.
 
             Ez a funkció csak az alapértelmezett branding objektumon érhető el, és nem az adott nyelvspecifikus objektumon. Ha többet szeretne megtudni arról, hogyan konfigurálhatja és elháríthatja a bejelentkezést, tekintse meg [Az Azure ad-fiókokra vonatkozó "Stay bejelentkezve?"](keep-me-signed-in.md) című témakört.
         
@@ -94,7 +94,7 @@ Az egyéni arculat nem jelenik meg azonnal, amikor a felhasználók olyan webhel
             >A SharePoint Online és az Office 2010 egyes funkciói attól függenek, hogy a felhasználók bejelentkezve tudnak-e maradni. Ha ennél a lehetőségnél a **Nem** értéket adja meg, a felhasználóinak további váratlan bejelentkezési felszólítások jelenhetnek meg.
    
 
-3. Miután végzett a branding hozzáadásával, válassza a **Mentés**lehetőséget.
+3. Miután végzett a branding hozzáadásával, válassza a **Mentés** lehetőséget.
 
     Ha ez a folyamat létrehozza az első egyéni védjegyezési konfigurációt, az alapértelmezett lesz a bérlő számára. Ha további beállításokkal rendelkezik, kiválaszthatja az alapértelmezett konfigurációt.
     
@@ -107,7 +107,7 @@ Az egyéni védjegyezés létrehozása után visszaléphet, és módosíthatja a
 ### <a name="to-edit-your-custom-branding"></a>Egyéni védjegyezés szerkesztése
 1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
-2. Válassza a **Azure Active Directory**lehetőséget, majd válassza a **vállalati védjegyezés**lehetőséget, majd válassza a **Konfigurálás**lehetőséget.
+2. Válassza a **Azure Active Directory** lehetőséget, majd válassza a **vállalati védjegyezés** lehetőséget, majd válassza a **Konfigurálás** lehetőséget.
 
     ![Contoso – vállalati védjegyezési oldal, alapértelmezett konfigurációval megjelenítve](media/customize-branding/company-branding-default-config.png)
 
@@ -124,7 +124,7 @@ Az eredeti konfiguráció nyelvét nem módosíthatja az alapértelmezett nyelvr
 
 1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
-2. Válassza a **Azure Active Directory**lehetőséget, majd válassza a **vállalati védjegyezés**lehetőséget, majd válassza az **új nyelv**lehetőséget.
+2. Válassza a **Azure Active Directory** lehetőséget, majd válassza a **vállalati védjegyezés** lehetőséget, majd válassza az **új nyelv** lehetőséget.
 
     ![Contoso – vállalati védjegyezési oldal, új nyelvi beállítás kiemelve](media/customize-branding/company-branding-new-language.png)
 

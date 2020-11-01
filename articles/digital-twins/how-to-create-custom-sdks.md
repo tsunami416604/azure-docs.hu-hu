@@ -8,19 +8,19 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 53887b7487c3f0bb70c9f8cc7cd61246fabc0b37
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 158d22ffb3bc5486e0523c07cc2c022c49f2ee9c
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970129"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145599"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Egyéni SDK-k létrehozása az Azure Digital Twins-hoz az autorest használatával
 
 Jelenleg az Azure Digital Twins API-kkal való interakcióhoz az egyetlen közzétett adatsíkok-SDK a .NET (C#), a JavaScript és a Java. Ezekről az SDK-król és az API-król az [*útmutató: az Azure digitális Twins API-k és SDK-k használata*](how-to-use-apis-sdks.md)című témakörben olvashat bővebben. Ha más nyelven dolgozik, ebből a cikkből megtudhatja, hogyan hozhatja ki saját adatközpont SDK-t az Ön által választott nyelven az autorest használatával.
 
 >[!NOTE]
-> Az autorest használatával is létrehozhatja a Control Plane SDK-t, ha szeretné. Ehhez hajtsa végre a jelen cikkben ismertetett lépéseket a legutóbbi **Control Plane hencegő** (OpenAPI) fájl használatával a [vezérlő síkja hencegő mappából]] ( https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) az adatsík helyett).
+> Az autorest használatával is létrehozhatja a Control Plane SDK-t, ha szeretné. Ehhez hajtsa végre a jelen cikkben ismertetett lépéseket a [vezérlési sík hencegő mappájában](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) található, a vezérlő síkja **(OpenAPI** ) fájl használatával, az adatsík helyett.
 
 ## <a name="set-up-your-machine"></a>A gép beállítása
 
@@ -47,7 +47,7 @@ Az Azure digitális Twins hencegő fájlján az autorest futtatásához kövesse
 autorest --input-file=digitaltwins.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
-Ennek eredményeképpen egy új, *ADTApi* nevű mappa jelenik meg a munkakönyvtárban. A generált SDK-fájlok a névtér *ADTApi*lesznek. Ezt a névteret továbbra is használhatja a jelen cikkben található használati példákban.
+Ennek eredményeképpen egy új, *ADTApi* nevű mappa jelenik meg a munkakönyvtárban. A generált SDK-fájlok a névtér *ADTApi* lesznek. Ezt a névteret továbbra is használhatja a jelen cikkben található használati példákban.
 
 Az autorest számos nyelvi kód generátort támogat.
 
@@ -64,7 +64,7 @@ A lépések a következők:
 3. A Solutions Explorerben kattintson a jobb gombbal a generált megoldás *ADTApi* projektre, és válassza a *> meglévő elem hozzáadása..* . lehetőséget.
 4. Keresse meg azt a mappát, ahová létrehozta az SDK-t, és válassza ki a legfelső szintű fájlokat.
 5. Nyomja meg az "OK" gombot
-6. Adjon hozzá egy mappát a projekthez (kattintson a jobb gombbal a projektre Megoldáskezelő, majd válassza a *> új mappa hozzáadása*) lehetőséget.
+6. Adjon hozzá egy mappát a projekthez (kattintson a jobb gombbal a projektre Megoldáskezelő, majd válassza a *> új mappa hozzáadása* ) lehetőséget.
 7. A mappa *modelljeinek* neve
 8. Kattintson a jobb gombbal a *modellek* mappára a Solutions Explorerben, és válassza a *> meglévő elem hozzáadása..* . lehetőséget.
 9. Válassza ki a generált SDK *models (modellek* ) mappájában található fájlokat, és nyomja meg az "OK" gombot.
@@ -73,7 +73,7 @@ Az SDK sikeres létrehozásához a projektnek ezekre a hivatkozásokra lesz szü
 * `Microsoft.Rest.ClientRuntime`
 * `Microsoft.Rest.ClientRuntime.Azure`
 
-Ezek hozzáadásához nyissa meg az *eszközök > NuGet Package Manager > NuGet-csomagok kezelése a megoldáshoz..*. lehetőséget.
+Ezek hozzáadásához nyissa meg az *eszközök > NuGet Package Manager > NuGet-csomagok kezelése a megoldáshoz..* . lehetőséget.
 
 1. A panelen ellenőrizze, hogy a *Tallózás* lap van-e kiválasztva.
 2. Keressen rá a *Microsoft. Rest* kifejezésre
@@ -117,40 +117,25 @@ Az autorest két típusú lapozási mintát hoz létre az SDK számára:
 * Egyet az összes API-hoz a lekérdezési API kivételével
 * Egy a lekérdezési API-hoz
 
-A nem lekérdezési lapozási mintában az egyes hívások két verziója létezik:
-* Egy verzió, amely a kezdeti hívást végzi (például `DigitalTwins.ListEdges()` )
-* A következő lapok beolvasására szolgáló verzió. Ezek a hívások a "Next" utótaggal rendelkeznek (például `DigitalTwins.ListEdgesNext()` )
+A nem lekérdezett lapozási mintában az alábbi kódrészlet azt mutatja be, hogyan kérhető le az Azure Digital Twins kimenő kapcsolatainak lapozható listája:
 
-Az alábbi kódrészlet bemutatja, hogyan kérhető le az Azure Digital Twins kimenő kapcsolatainak lapozható listája:
 ```csharp
-try
-{
-    // List to hold the results in
-    List<object> relList = new List<object>();
-    // Enumerate the IPage object returned to get the results
-    // ListAsync will throw if an error occurs
-    IPage<object> relPage = await client.DigitalTwins.ListEdgesAsync(id);
-    relList.AddRange(relPage);
-    // If there are more pages, the NextPageLink in the page is set
-    while (relPage.NextPageLink != null)
+ try 
+ {
+     // List the relationships.
+    AsyncPageable<BasicRelationship> results = client.GetRelationshipsAsync<BasicRelationship>(srcId);
+    Console.WriteLine($"Twin {srcId} is connected to:");
+    // Iterate through the relationships found.
+    int numberOfRelationships = 0;
+    await foreach (string rel in results)
     {
-        // Get more pages...
-        relPage = await client.DigitalTwins.ListEdgesNextAsync(relPage.NextPageLink);
-        relList.AddRange(relPage);
+         ++numberOfRelationships;
+         // Do something with each relationship found
+         Console.WriteLine($"Found relationship-{rel.Name}->{rel.TargetId}");
     }
-    Console.WriteLine($"Found {relList.Count} relationships on {id}");
-    // Do something with each object found
-    // As relationships are custom types, they are JSON.Net types
-    foreach (JObject r in relList)
-    {
-        string relId = r.Value<string>("$edgeId");
-        string relName = r.Value<string>("$relationship");
-        Console.WriteLine($"Found relationship {relId} from {id}");
-    }
-}
-catch (ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error retrieving relationships on {id}: {e.Response.StatusCode}");
+    Console.WriteLine($"Found {numberOfRelationships} relationships on {srcId}");
+} catch (RequestFailedException rex) {
+    Console.WriteLine($"Relationship retrieval error: {rex.Status}:{rex.Message}");   
 }
 ```
 

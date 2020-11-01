@@ -9,12 +9,12 @@ ms.date: 08/05/2020
 ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 34750bcc2e9913b23daa3682d4fdea736f9c7a9a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0f94f694163ba836091e522a29f73cabd64e22b5
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367431"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145939"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Az Azure Portal beállításainak kezelése
 
@@ -44,13 +44,13 @@ A Azure Portalba való bejelentkezéskor alapértelmezés szerint a megnyíló l
 
 - A **Kezdőlap** nem szabható testre.  Megjeleníti a népszerű Azure-szolgáltatásokra mutató parancsikonokat, és felsorolja a legutóbb használt erőforrásokat. Hasznos hivatkozásokat is biztosítunk az olyan erőforrásokhoz, mint a Microsoft Learn és az Azure-útiterv.
 
-- Az irányítópultok testreszabhatók úgy, hogy csak Ön számára kialakított munkaterületet hozzanak létre. Létrehozhat például egy projekt, feladat vagy szerepkör fókuszban lévő irányítópultot. Ha kijelöli az **irányítópultot**, az alapértelmezett nézet a legutóbb használt irányítópultra lép. További információ: [irányítópultok létrehozása és megosztása a Azure Portalban](azure-portal-dashboards.md).
+- Az irányítópultok testreszabhatók úgy, hogy csak Ön számára kialakított munkaterületet hozzanak létre. Létrehozhat például egy projekt, feladat vagy szerepkör fókuszban lévő irányítópultot. Ha kijelöli az **irányítópultot** , az alapértelmezett nézet a legutóbb használt irányítópultra lép. További információ: [irányítópultok létrehozása és megosztása a Azure Portalban](azure-portal-dashboards.md).
 
 ## <a name="choose-a-portal-menu-mode"></a>Portál menü mód kiválasztása
 
 A portál menü alapértelmezett módja határozza meg, hogy a portál menüjében mennyi lemezterületet vesz fel az oldal.
 
-![A Kiemelt témákkal rendelkező Azure Portal beállításokat bemutató képernyőkép](./media/set-preferences/menu-mode.png)
+![Képernyőkép, amely bemutatja, hogyan állíthatja be a portál menü alapértelmezett módját.](./media/set-preferences/menu-mode.png)
 
 - Ha a portál menüje a **kilépési módban van** , akkor a rendszer rejtve marad, amíg nincs rá szüksége. Válassza a menü ikont a menü megnyitásához vagy bezárásához.
 
@@ -68,7 +68,7 @@ Azt is megteheti, hogy kiválaszthatja a nagy kontrasztú témák egyikét. A ko
 
 Az értesítések az aktuális munkamenethez kapcsolódó rendszerüzenetek. Olyan információkat biztosítanak, mint a jelenlegi kredit egyenleg, ha az imént létrehozott erőforrások elérhetővé válnak, vagy megerősítik az utolsó műveletet, például:. Amikor bekapcsolják az előugró értesítéseket, a képernyő felső sarkában lévő üzenetek röviden megjelennek. 
 
-Az előugró értesítések engedélyezéséhez vagy letiltásához válassza vagy törölje az **előugró értesítések engedélyezése**lehetőséget.
+Az előugró értesítések engedélyezéséhez vagy letiltásához válassza vagy törölje az **előugró értesítések engedélyezése** lehetőséget.
 
 ![Az előugró értesítések kiemelve Azure Portal beállításait bemutató képernyőkép](./media/set-preferences/popup-notifications.png)
 
@@ -84,13 +84,13 @@ Az inaktivitás időtúllépési beállítása segít megvédeni az erőforráso
 
 ### <a name="change-your-individual-timeout-setting-user"></a>Egyéni időtúllépési beállítás módosítása (felhasználó)
 
-Válassza ki a legördülő menüből a kijelentkezés az **inaktív állapotból**lehetőséget. Válassza ki azt az időtartamot, amely után a Azure Portal-munkamenet ki van jelentkezve, ha tétlen.
+Válassza ki a legördülő menüből a kijelentkezés az **inaktív állapotból** lehetőséget. Válassza ki azt az időtartamot, amely után a Azure Portal-munkamenet ki van jelentkezve, ha tétlen.
 
 ![Képernyőkép a portál beállításairól az inaktív időtúllépési beállítások kiemelésével](./media/set-preferences/inactive-signout-user.png)
 
 A rendszer automatikusan menti a változást. Ha tétlen, akkor a Azure Portal-munkamenet a beállított időtartam után kijelentkezik.
 
-Ha a rendszergazda engedélyezte a tétlenségi időtúllépési szabályzatot, akkor továbbra is beállíthatja a sajátját, ha az kisebb, mint a címtár-szintű beállítás. Válassza **a könyvtár inaktivitás időtúllépési házirendjének felülbírálása**lehetőséget, majd állítsa be az időintervallumot.
+Ha a rendszergazda engedélyezte a tétlenségi időtúllépési szabályzatot, akkor továbbra is beállíthatja a sajátját, ha az kisebb, mint a címtár-szintű beállítás. Válassza **a könyvtár inaktivitás időtúllépési házirendjének felülbírálása** lehetőséget, majd állítsa be az időintervallumot.
 
 ![A portál beállításait megjelenítő képernyőkép, amely felülbírálja a címtár inaktivitási időtúllépési házirend-beállítását.](./media/set-preferences/inactive-signout-override.png)
 
@@ -100,7 +100,7 @@ A [globális rendszergazdai szerepkör rendszergazdái](../active-directory/role
 
 Ha Ön globális rendszergazda, és a Azure Portal összes felhasználójának üresjárati időtúllépési beállítását szeretné kényszeríteni, kövesse az alábbi lépéseket:
 
-1. Válassza ki a hivatkozás szövegét a **könyvtár szintjének időtúllépése beállításnál**.
+1. Válassza ki a hivatkozás szövegét a **könyvtár szintjének időtúllépése beállításnál** .
 
     ![A portál beállításainak megjelenítése a hivatkozás szövegének kiemelésével](./media/set-preferences/settings-admin.png)
 
@@ -108,7 +108,7 @@ Ha Ön globális rendszergazda, és a Azure Portal összes felhasználójának �
 
 1. Ezután adja meg az **órákat** és a **perceket** azon maximális időtartamig, ameddig a felhasználó tétlen lehet, mielőtt a munkamenet automatikusan kijelentkezett.
 
-1. Kattintson az **Alkalmaz** gombra.
+1. Válassza az **Alkalmaz** lehetőséget.
 
     ![A címtár-szintű inaktivitás időtúllépésének beállítására szolgáló lap képernyőképe](./media/set-preferences/configure.png)
 
@@ -118,7 +118,7 @@ Annak ellenőrzéséhez, hogy az inaktivitás időtúllépési szabályzata hely
 
 ## <a name="restore-default-settings"></a>Alapértelmezett beállítások visszaállítása
 
-Ha módosította a Azure Portal beállításokat, és el szeretné vetni őket, válassza az **alapértelmezett beállítások visszaállítása**lehetőséget. A portál beállításaiban végrehajtott módosítások elvesznek. Ez a beállítás nem befolyásolja az irányítópultok testreszabását.
+Ha módosította a Azure Portal beállításokat, és el szeretné vetni őket, válassza az **alapértelmezett beállítások visszaállítása** lehetőséget. A portál beállításaiban végrehajtott módosítások elvesznek. Ez a beállítás nem befolyásolja az irányítópultok testreszabását.
 
 ![Az alapértelmezett beállítások visszaállítását bemutató képernyőkép](./media/set-preferences/useful-links-restore-defaults.png)
 
@@ -132,7 +132,7 @@ Az egyéni beállításokkal kapcsolatos információkat az Azure tárolja. A k�
 
 Érdemes exportálni és áttekinteni a beállításokat, ha azt tervezi, hogy törli őket. Az irányítópultok újraépítése vagy a beállítások elvégzése időigényes lehet.
 
-A portál beállításainak exportálásához válassza az **összes beállítás exportálása**lehetőséget.
+A portál beállításainak exportálásához válassza az **összes beállítás exportálása** lehetőséget.
 
 ![A beállítások exportálását bemutató képernyőkép](./media/set-preferences/useful-links-export-settings.png)
 
@@ -150,7 +150,7 @@ A törlés előtt érdemes exportálni és áttekinteni a beállításait. Az ir
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-A portál beállításainak törléséhez válassza az **összes beállítás és privát irányítópultok törlése**lehetőséget.
+A portál beállításainak törléséhez válassza az **összes beállítás és privát irányítópultok törlése** lehetőséget.
 
 ![A beállítások törlését bemutató képernyőkép](./media/set-preferences/useful-links-delete-settings.png)
 

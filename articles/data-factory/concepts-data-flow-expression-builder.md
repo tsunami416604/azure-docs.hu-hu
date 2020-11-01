@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: ee82d3f35b6b2b50b001e065eb81447738526b1c
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 10/30/2020
+ms.openlocfilehash: 8257be28344ac7a03738c80a003c1229282ae305
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635371"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145708"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Kifejezések létrehozása a leképezési adatfolyamban
 
@@ -30,15 +30,15 @@ A Kifejezésszerkesztő megnyitásához több belépési pont is van. Ezek mind 
 
 Bizonyos átalakítások, mint például a [szűrő](data-flow-filter.md), a kék kifejezés szövegmezőre kattintva megnyílik a Kifejezésszerkesztő. 
 
-![Kék kifejezés mező](media/data-flow/expressionbox.png "Kifejezésszerkesztő")
+![Kék kifejezés mező](media/data-flow/expressionbox.png "Kék kifejezés mező")
 
 Ha egyező vagy csoportosított oszlopokra hivatkozik, akkor egy kifejezés kinyerheti az oszlopokból származó értékeket. Kifejezés létrehozásához válassza a **számított oszlop** lehetőséget.
 
-![Számított oszlop beállítás](media/data-flow/computedcolumn.png "Kifejezésszerkesztő")
+![Számított oszlop beállítás](media/data-flow/computedcolumn.png "Számított oszlop beállítás")
 
 Azokban az esetekben, amikor egy kifejezés vagy literális érték érvényes bemenet, válassza a **dinamikus tartalom hozzáadása** lehetőséget, ha olyan kifejezést szeretne létrehozni, amely kiértékeli a konstans értéket.
 
-![Dinamikus tartalom hozzáadása lehetőség](media/data-flow/add-dynamic-content.png "Kifejezésszerkesztő")
+![Dinamikus tartalom hozzáadása lehetőség](media/data-flow/add-dynamic-content.png "Dinamikus tartalom hozzáadása lehetőség")
 
 ## <a name="expression-elements"></a>Kifejezés elemei
 
@@ -46,7 +46,7 @@ Az adatfolyamatok leképezése során a kifejezések oszlop-, paraméterek, füg
 
 ![Kifejezés elemei](media/data-flow/expression-elements.png "Kifejezés elemei")
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Függvények
 
 Az adatfolyamatok leképezése beépített függvényekkel és operátorokkal rendelkezik, amelyek kifejezésekben használhatók. Az elérhető függvények listáját a [leképezési adatfolyam nyelvi referenciája](data-flow-expression-functions.md)című témakörben tekintheti meg.
 
@@ -72,6 +72,16 @@ Ha speciális karaktereket vagy szóközöket tartalmazó oszlopnevek vannak, a 
 ### <a name="parameters"></a>Paraméterek
 
 A paraméterek olyan értékek, amelyeket a rendszer a folyamat futási idején átadott adatfolyamként továbbít. Egy paraméterre való hivatkozáshoz kattintson a paraméterre a **kifejezés elemek** nézetében, vagy hivatkozzon a neve előtt egy Dollar-jelre. Egy Parameter1 nevű paramétert például a következőre hivatkozhat: `$parameter1` . További információ: parameterizing- [leképezési adatforgalom](parameters-data-flow.md).
+
+### <a name="cached-lookup"></a>Gyorsítótárazott keresés
+
+A gyorsítótárazott keresések lehetővé teszik a gyorsítótárazott fogadó kimenetének beágyazott keresését. Az egyes gyűjtők esetében két függvény használható, `lookup()` és `outputs()` . A függvények hivatkozásának szintaxisa a következő: `cacheSinkName#functionName()` . További információ: [gyorsítótár](data-flow-sink.md#cache-sink)-tárolók.
+
+`lookup()` a jelenlegi átalakításban lévő egyező oszlopok paraméterként való beolvasása, és egy összetett oszlop visszaadása, amely megegyezik a gyorsítótár-fogadó fő oszlopával egyező sorral. A visszaadott összetett oszlop a gyorsítótár-fogadóban leképezett egyes oszlopok aloszlopát tartalmazza. Ha például egy hibakódot tartalmazó gyorsítótár-tárolót kapott `errorCodeCache` , amely a kóddal és egy nevű oszloppal rendelkezik `Message` . A hívás `errorCodeCache#lookup(errorCode).Message` visszaadja az átadott kódnak megfelelő üzenetet. 
+
+`outputs()` nem fogad paramétereket, és a teljes gyorsítótár-fogadót összetett oszlopok tömbje adja vissza. Ez nem hívható meg, ha kulcs oszlopai vannak megadva a fogadóban, és csak akkor használhatók, ha kis számú sor van a gyorsítótár-fogadóban. Gyakori használati eset a növekményes kulcs maximális értékének hozzáfűzése. Ha egy gyorsítótárazott, egyetlen aggregált sor `CacheMaxKey` tartalmaz egy oszlopot `MaxKey` , a meghívásával hivatkozhat az első értékre `CacheMaxKey#outputs()[1].MaxKey` .
+
+![Gyorsítótárazott keresés](media/data-flow/cached-lookup-example.png "Gyorsítótárazott keresés")
 
 ### <a name="locals"></a>Figyelőpontjaival
 

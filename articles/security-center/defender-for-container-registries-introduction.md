@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 05d7316ceccd67a8eeb1d081843307162ff210c1
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 989115224489ff8fff360a34b27c338ea3e33058
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558635"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145820"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Bevezetés az Azure Defender for Container-jegyzékbe
 
@@ -32,6 +32,12 @@ Security Center szűrők és a vizsgálati eredmények osztályozása. Ha egy re
 
 Ha csak akkor értesíti, ha problémák merülnek fel, Security Center csökkenti a nemkívánatos tájékoztatási riasztások lehetséges lehetőségét.
 
+
+> [!TIP]
+> Ha többet szeretne megtudni a Security Center tárolójának biztonsági funkcióiról, tekintse meg a következő témakört:
+>
+> - [Azure Security Center és tárolók biztonsága](container-security.md)
+> - [Bevezetés az Azure Defender for Kubernetes használatába](defender-for-kubernetes-introduction.md)
 
 ## <a name="when-are-images-scanned"></a>Mikor vannak beolvasva a képek?
 
@@ -79,12 +85,7 @@ Igen. Ha a szervezetnek figyelmen kívül kell hagynia egy megállapítást, és
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha többet szeretne megtudni a Security Center tárolójának biztonsági funkcióiról, tekintse meg a következő témakört:
-
-- [Azure Security Center és tárolók biztonsága](container-security.md)
-
-- [Bevezetés az Azure Defender for Kubernetes használatába](defender-for-kubernetes-introduction.md)
-
-
+> [!div class="nextstepaction"]
+> [Biztonsági rések ellenőrzése a lemezképekben](defender-for-container-registries-usage.md)

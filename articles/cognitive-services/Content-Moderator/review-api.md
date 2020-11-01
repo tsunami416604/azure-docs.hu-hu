@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 69a66c49d64ab9ba589050e1f20399f7f193b76e
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: d98f2390be3b3f4b3770125185cb33daa5ff6371
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912956"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93143639"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>Tartalom-moderálási felülvizsgálatok, munkafolyamatok és feladatok
 
@@ -23,9 +23,24 @@ Content Moderator kombinálja a gépi támogatással rendelkező moderálást em
 
 ## <a name="reviews"></a>Felülvizsgálatok
 
-A felülvizsgálat során a rendszer feltölti a tartalmat a felülvizsgálati eszközre, és a **felülvizsgálat** lapon jelenik meg. Innen a felhasználók módosíthatják az alkalmazott címkéket, és szükség szerint alkalmazhatják a saját egyéni címkéit. Amikor egy felhasználó elküld egy felülvizsgálatot, az eredményeket egy megadott visszahívási végpontra küldi a rendszer, és eltávolítja a tartalmat a helyről.
+A felülvizsgálat során a rendszer feltölti a tartalmat a felülvizsgálati eszközre. Megtekintheti a tartalom típusára kattintva az irányítópult **Áttekintés** lapján. A felülvizsgálati képernyőn módosíthatja az alkalmazott címkéket, és szükség szerint alkalmazhatja a saját egyéni címkéit. A felülvizsgálat elküldésekor a rendszer elküldi az eredményeket egy megadott visszahívási végpontnak, és eltávolítja a tartalmat a helyről.
 
-![Tekintse meg az eszköz webhelyét böngészőben, a felülvizsgálat lapon](./Review-Tool-user-Guide/images/image-workflow-review.png)
+> [!div class="mx-imgBorder"]
+> ![Áttekintő eszköz helyének áttekintése lap kijelölve](./Review-Tool-user-Guide/images/review-tab.png)
+
+### <a name="manage-reviews"></a>Értékelések kezelése
+
+Az irányítópulton navigáljon a **rendszergazda**  ->  **kezelése felülvizsgálatok** elemre a felügyeleti képernyő megtekintéséhez. Itt láthatja az összes felülvizsgálat listáját (függőben és befejezve).
+
+Az egyes felülvizsgálatokban a három ponttal elvégezhető **műveletek** gomb segítségével megtekintheti a felülvizsgálati képernyőt, vagy megvizsgálhatja a felülvizsgálat előzményeit.
+
+> [!div class="mx-imgBorder"]
+> ![Az eszköz webhelyének áttekintése a felülvizsgálati képernyőn](./Review-Tool-user-Guide/images/manage-reviews.png)
+
+A **keresési** eszköztár segítségével számos különböző kategóriába rendezheti az értékeléseket, például a felülvizsgálati állapotot, a címkéket, a tartalomtípust, az alcsapatot, a hozzárendelt felhasználókat és a létrehozott/módosított dátumot.
+
+> [!div class="mx-imgBorder"]
+> ![Áttekintő eszköz helyének áttekintése lap kijelölve](./Review-Tool-user-Guide/images/review-search.png)
 
 Az áttekintések létrehozásával kapcsolatos lépésekért tekintse meg a [felülvizsgálati eszköz útmutatót](./review-tool-user-guide/review-moderated-images.md) , vagy tekintse meg a [REST API útmutatót](./try-review-api-review.md) , amelyből megtudhatja, hogyan teheti meg a programozott módon.
 
@@ -35,11 +50,12 @@ A munkafolyamat egy felhőalapú, testreszabott szűrő a tartalomhoz. A munkafo
 
 ### <a name="view-workflows"></a>Munkafolyamatok megtekintése
 
-A meglévő munkafolyamatok megtekintéséhez nyissa meg a [felülvizsgálati eszközt](https://contentmoderator.cognitive.microsoft.com/) , és válassza a **Beállítások**  >  **munkafolyamatok** lehetőséget.
+A meglévő munkafolyamatok megtekintéséhez nyissa meg a [felülvizsgálati eszközt](https://contentmoderator.cognitive.microsoft.com/) , és válassza a **felügyeleti**  >  **munkafolyamatok** lehetőséget.
 
-![Alapértelmezett munkafolyamat](images/default-workflow-listed.PNG)
+> [!div class="mx-imgBorder"]
+> ![Alapértelmezett munkafolyamat](images/default-workflow-list.png)
 
-A munkafolyamatokat JSON-karakterláncként lehet teljes mértékben leképezni, ami programozott módon elérhetővé teszi őket. Ha a munkafolyamat **szerkesztési** lehetőségét választja, majd kiválasztja a **JSON** fület, akkor egy JSON-kifejezés jelenik meg, például az alábbiak szerint:
+A munkafolyamatok JSON-karakterláncként vannak definiálva, ami programozott módon elérhetővé teszi őket. Ha a munkafolyamat **szerkesztési** lehetőségét választja, majd kiválasztja a **JSON** fület, akkor egy JSON-kifejezés jelenik meg, például az alábbiak szerint:
 
 ```json
 {
@@ -68,7 +84,7 @@ A munkafolyamatok létrehozásának és használatának megkezdéséhez tekintse
 
 ## <a name="jobs"></a>Feladatok
 
-A moderálási feladatok egyfajta burkolóként szolgálnak a tartalom moderálása, a munkafolyamatok és a felülvizsgálatok működéséhez. A feladat átvizsgálja a tartalmat a Content Moderator képmoderálás API-val vagy szöveges moderálási API-val, majd ellenőrzi a kijelölt munkafolyamattal. A munkafolyamat eredményei alapján előfordulhat, hogy nem hozza létre a felülvizsgálati [eszköz](./review-tool-user-guide/human-in-the-loop.md)tartalmának felülvizsgálatát. Noha mind a felülvizsgálatok, mind a munkafolyamatok létrehozhatók és konfigurálhatók a megfelelő API-kkal, a feladatok API lehetővé teszi a teljes folyamat részletes jelentésének beszerzését (amely a megadott visszahívási végpontnak küldhető el).
+A moderálási feladatok egyfajta burkolóként szolgálnak a tartalom moderálása, a munkafolyamatok és az értékelések működéséhez. A feladat átvizsgálja a tartalmat a Content Moderator képmoderálás API-val vagy szöveges moderálási API-val, majd ellenőrzi a kijelölt munkafolyamattal. A munkafolyamat eredményei alapján előfordulhat, hogy nem hozza létre a felülvizsgálati [eszköz](./review-tool-user-guide/human-in-the-loop.md)tartalmának felülvizsgálatát. Noha mind a felülvizsgálatok, mind a munkafolyamatok létrehozhatók és konfigurálhatók a megfelelő API-kkal, a feladatok API lehetővé teszi a teljes folyamat részletes jelentésének beszerzését (amely a megadott visszahívási végpontnak küldhető el).
 
 A feladatok használatának megkezdéséhez tekintse meg a [REST API útmutatót](./try-review-api-job.md) .
 

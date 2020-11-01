@@ -9,12 +9,12 @@ ms.date: 05/11/2020
 ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: dba321d055e64d62ca91f95461c3299bee5f90d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aac7357939ab2d14949c967630840ed6d267d251
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83714219"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145735"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Böngésző-nyomkövetés rögzítése hibaelhárításhoz
 
@@ -30,39 +30,39 @@ A Google Chrome és a Microsoft Edge (Chromium) egyaránt a [Chromium nyílt for
 
 1. A portálon Navigáljon arra a lépésre, ahol a probléma bekövetkezik.
 
-1. Nyomja meg az F12 billentyűt, vagy válassza ![ a böngésző beállításai ikon képernyőképét ](media/capture-browser-trace/chromium-icon-settings.png)  >  .**további eszközök**  >  **fejlesztői eszközök**.
+1. Nyomja meg az F12 billentyűt, vagy válassza ki ![ a böngésző beállításai ikont megjelenítő képernyőképet.](media/capture-browser-trace/chromium-icon-settings.png) > **További eszközök**  >  **Fejlesztői eszközök** .
 
 1. Alapértelmezés szerint a böngésző csak az aktuálisan betöltött oldal nyomkövetési adatait őrzi meg. Állítsa be a következő beállításokat, hogy a böngésző megtartsa az összes nyomkövetési információt, még akkor is, ha a Reprodukálási több oldalra is szüksége lesz:
 
-    1. Válassza a **hálózat** fület, majd válassza a **napló megőrzése**lehetőséget.
+    1. Válassza a **hálózat** fület, majd válassza a **napló megőrzése** lehetőséget.
 
-          ![A "napló megőrzése" képernyőkép](media/capture-browser-trace/chromium-network-preserve-log.png)
+          ![Képernyőfelvétel: a hálózat lapon megjelenő napló megőrzése beállítás.](media/capture-browser-trace/chromium-network-preserve-log.png)
 
-    1. Válassza a **konzol** fület, válassza a **konzol beállításai**lehetőséget, majd válassza a **napló megőrzése**lehetőséget. A beállítások ablaktábla bezárásához válassza újra a **konzol beállításait** .
+    1. Válassza a **konzol** fület, válassza a **konzol beállításai** lehetőséget, majd válassza a **napló megőrzése** lehetőséget. A beállítások ablaktábla bezárásához válassza újra a **konzol beállításait** .
 
-          ![A "napló megőrzése" képernyőkép](media/capture-browser-trace/chromium-console-preserve-log.png)
+          ![Képernyőkép, amely kiemeli a napló megőrzése beállítást a konzol lapon.](media/capture-browser-trace/chromium-console-preserve-log.png)
 
-1. Válassza a **hálózat** fület, majd válassza a **hálózati napló rögzítésének leállítása** és a **Törlés**lehetőséget.
+1. Válassza a **hálózat** fület, majd válassza a **hálózati napló rögzítésének leállítása** és a **Törlés** lehetőséget.
 
     ![Képernyőkép a "hálózati napló rögzítésének leállítása" és a "Clear"](media/capture-browser-trace/chromium-stop-clear-session.png)
 
-1. Válassza a **hálózati napló rögzítése**lehetőséget, majd hozza létre újra a problémát a portálon.
+1. Válassza a **hálózati napló rögzítése** lehetőséget, majd hozza létre újra a problémát a portálon.
 
-    ![Képernyőkép a "profilkészítés indítása munkamenetről"](media/capture-browser-trace/chromium-start-session.png)
+    ![A hálózati napló rögzítését bemutató képernyőkép.](media/capture-browser-trace/chromium-start-session.png)
 
     A munkamenet kimenete az alábbi képhez hasonlóan jelenik meg.
 
-    ![A böngésző nyomkövetési eredményeinek képernyőképe](media/capture-browser-trace/chromium-browser-trace-results.png)
+    ![A munkamenet kimenetét bemutató képernyőkép.](media/capture-browser-trace/chromium-browser-trace-results.png)
 
-1. A váratlan portál viselkedésének újralétrehozása után válassza a **hálózati napló rögzítése**lehetőséget, majd válassza a **har exportálása** lehetőséget, és mentse a fájlt.
+1. A váratlan portál viselkedésének újralétrehozása után válassza a **hálózati napló rögzítése** lehetőséget, majd válassza a **har exportálása** lehetőséget, és mentse a fájlt.
 
-    ![Képernyőkép a "HAR exportálása"](media/capture-browser-trace/chromium-network-export-har.png)
+    ![Képernyőkép, amely bemutatja, hogyan exportálhatja a HAR-t a hálózat lapon.](media/capture-browser-trace/chromium-network-export-har.png)
 
 1. Állítsa le a lépések rögzítőjét, és mentse a rögzítést.
 
 1. A böngésző fejlesztői eszközök ablaktábláján kattintson a **konzol** fülre. Kattintson a jobb gombbal az egyik üzenetre, majd válassza a **Mentés másként...** lehetőséget, majd mentse a konzol kimenetét egy szövegfájlba.
 
-    ![A konzol kimenetének képernyőképe](media/capture-browser-trace/chromium-console-select.png)
+    ![Képernyőkép, amely kiemeli a konzol fület és a Mentés másként... menüben](media/capture-browser-trace/chromium-console-select.png)
 
 1. Csomagolja ki a HAR-fájlt, a konzol kimenetét és a képernyő rögzítését tömörített formátumban (például. zip), és ossza meg a Microsoft ügyfélszolgálatával.
 
@@ -76,39 +76,39 @@ A következő lépések bemutatják, hogyan használhatja a fejlesztői eszköz�
 
 1. A portálon Navigáljon arra a lépésre, ahol a probléma bekövetkezik.
 
-1. Nyomja meg az F12 billentyűt, vagy válassza ![ a böngésző beállításai ikon képernyőképét ](media/capture-browser-trace/edge-icon-settings.png)  >  .**további eszközök**  >  **fejlesztői eszközök**.
+1. Nyomja meg az F12 billentyűt, vagy válassza ![ a böngésző beállításai ikon képernyőképét.](media/capture-browser-trace/edge-icon-settings.png) > **További eszközök**  >  **Fejlesztői eszközök** .
 
 1. Alapértelmezés szerint a böngésző csak az aktuálisan betöltött oldal nyomkövetési adatait őrzi meg. Állítsa be a következő beállításokat, hogy a böngésző megtartsa az összes nyomkövetési információt, még akkor is, ha a Reprodukálási több oldalra is szüksége lesz:
 
-    1. Válassza a **hálózat** fület, majd törölje a **jelet a bejegyzések törlése a navigációs**menüben.
+    1. Válassza a **hálózat** fület, majd törölje a **jelet a bejegyzések törlése a navigációs** menüben.
 
           ![Képernyőkép: "a navigált bejegyzések törlése"](media/capture-browser-trace/edge-network-clear-entries.png)
 
-    1. Válassza a **konzol** fület, majd a **napló megőrzése**lehetőséget.
+    1. Válassza a **konzol** fület, majd a **napló megőrzése** lehetőséget.
 
           ![A "napló megőrzése" képernyőkép](media/capture-browser-trace/edge-console-preserve-log.png)
 
-1. Válassza a **hálózat** fület, majd kattintson a **profilkészítési munkamenet leállítása** és a **munkamenet törlése**elemre.
+1. Válassza a **hálózat** fület, majd kattintson a **profilkészítési munkamenet leállítása** és a **munkamenet törlése** elemre.
 
     ![Képernyőfelvétel: "profilkészítés leállítása" és "munkamenet törlése"](media/capture-browser-trace/edge-stop-clear-session.png)
 
-1. Válassza a **profilkészítés elindítása munkamenet**lehetőséget, majd reprodukálja a problémát a portálon.
+1. Válassza a **profilkészítés elindítása munkamenet** lehetőséget, majd reprodukálja a problémát a portálon.
 
     ![Képernyőkép a "profilkészítés indítása munkamenetről"](media/capture-browser-trace/edge-start-session.png)
 
     A munkamenet kimenete az alábbi képhez hasonlóan jelenik meg.
 
-    ![A böngésző nyomkövetési eredményeinek képernyőképe](media/capture-browser-trace/edge-browser-trace-results.png)
+    ![A profilkészítési munkamenet kimenetét bemutató képernyőkép.](media/capture-browser-trace/edge-browser-trace-results.png)
 
-1. A váratlan portál viselkedésének újrakészítése után válassza a **profilkészítés leállítása**lehetőséget, majd válassza az **Exportálás har-ként** lehetőséget, és mentse a fájlt.
+1. A váratlan portál viselkedésének újrakészítése után válassza a **profilkészítés leállítása** lehetőséget, majd válassza az **Exportálás har-ként** lehetőséget, és mentse a fájlt.
 
     ![Képernyőkép az "Exportálás HAR-ként"](media/capture-browser-trace/edge-network-export-har.png)
 
 1. Állítsa le a lépések rögzítőjét, és mentse a rögzítést.
 
-1. A böngésző fejlesztői eszközök ablaktábláján kattintson a **konzol** lapfülre, és bontsa ki az ablakot. Vigye a kurzort a konzol kimenetének elejére, majd húzza a kimenet teljes tartalmát. Kattintson a jobb gombbal, majd válassza a **Másolás**lehetőséget, és mentse a konzol kimenetét egy szövegfájlba.
+1. A böngésző fejlesztői eszközök ablaktábláján kattintson a **konzol** lapfülre, és bontsa ki az ablakot. Vigye a kurzort a konzol kimenetének elejére, majd húzza a kimenet teljes tartalmát. Kattintson a jobb gombbal, majd válassza a **Másolás** lehetőséget, és mentse a konzol kimenetét egy szövegfájlba.
 
-    ![A konzol kimenetének képernyőképe](media/capture-browser-trace/edge-console-select.png)
+    ![Képernyőfelvétel: a másolási menü kiemelése.](media/capture-browser-trace/edge-console-select.png)
 
 1. Csomagolja ki a HAR-fájlt, a konzol kimenetét és a képernyő rögzítését tömörített formátumban (például. zip), és ossza meg a Microsoft ügyfélszolgálatával.
 
@@ -118,11 +118,11 @@ A következő lépések bemutatják, hogyan használhatja a fejlesztői eszköz�
 
 1. A fejlesztői eszközök engedélyezése az Apple Safariban:
 
-    1. Válassza a **Safari**, majd a **Beállítások**lehetőséget.
+    1. Válassza a **Safari** , majd a **Beállítások** lehetőséget.
 
         ![A Safari beállításainak képernyőképe](media/capture-browser-trace/safari-preferences.png)
 
-    1. Válassza a **speciális** fület, majd a **menüsávon válassza a fejlesztés menü megjelenítése**lehetőséget.
+    1. Válassza a **speciális** fület, majd a **menüsávon válassza a fejlesztés menü megjelenítése** lehetőséget.
 
         ![Képernyőkép a Safari speciális beállításairól](media/capture-browser-trace/safari-show-develop-menu.png)
 
@@ -132,27 +132,27 @@ A következő lépések bemutatják, hogyan használhatja a fejlesztői eszköz�
 
 1. A portálon Navigáljon arra a lépésre, ahol a probléma bekövetkezik.
 
-1. Válassza a **fejlesztés**, majd a **webes ellenőr megjelenítése**lehetőséget.
+1. Válassza a **fejlesztés** , majd a **webes ellenőr megjelenítése** lehetőséget.
 
     ![Képernyőkép a "webes ellenőr megjelenítése"](media/capture-browser-trace/safari-show-web-inspector.png)
 
 1. Alapértelmezés szerint a böngésző csak az aktuálisan betöltött oldal nyomkövetési adatait őrzi meg. Állítsa be a következő beállításokat, hogy a böngésző megtartsa az összes nyomkövetési információt, még akkor is, ha a Reprodukálási több oldalra is szüksége lesz:
 
-    1. Válassza a **hálózat** fület, majd válassza a **napló megőrzése**lehetőséget.
+    1. Válassza a **hálózat** fület, majd válassza a **napló megőrzése** lehetőséget.
 
-          ![A "napló megőrzése" képernyőkép](media/capture-browser-trace/safari-network-preserve-log.png)
+          ![A napló megőrzése lehetőséget megjelenítő képernyőkép.](media/capture-browser-trace/safari-network-preserve-log.png)
 
-    1. Válassza a **konzol** fület, majd a **napló megőrzése**lehetőséget.
+    1. Válassza a **konzol** fület, majd a **napló megőrzése** lehetőséget.
 
-          ![A "napló megőrzése" képernyőkép](media/capture-browser-trace/safari-console-preserve-log.png)
+          ![A konzol lapon látható megőrzési naplót megjelenítő képernyőkép.](media/capture-browser-trace/safari-console-preserve-log.png)
 
-1. Válassza a **hálózat** fület, majd a **hálózati elemek törlése**elemet.
+1. Válassza a **hálózat** fület, majd a **hálózati elemek törlése** elemet.
 
     ![Képernyőkép a "hálózati elemek törlése"](media/capture-browser-trace/safari-clear-session.png)
 
 1. A probléma újbóli előállítása a portálon. A munkamenet kimenete az alábbi képhez hasonlóan jelenik meg.
 
-    ![A böngésző nyomkövetési eredményeinek képernyőképe](media/capture-browser-trace/safari-browser-trace-results.png)
+    ![A probléma reprodukálása utáni kimenetet bemutató képernyőkép.](media/capture-browser-trace/safari-browser-trace-results.png)
 
 1. Miután újrakészítette a váratlan portál viselkedését, válassza az **Exportálás** lehetőséget, és mentse a fájlt.
 
@@ -162,7 +162,7 @@ A következő lépések bemutatják, hogyan használhatja a fejlesztői eszköz�
 
 1. A böngésző fejlesztői eszközök ablaktábláján kattintson a **konzol** lapfülre, és bontsa ki az ablakot. Vigye a kurzort a konzol kimenetének elejére, majd húzza a kimenet teljes tartalmát. A kimenet másolásához és szövegfájlba mentéséhez használja a-C parancsot.
 
-    ![A konzol kimenetének képernyőképe](media/capture-browser-trace/safari-console-select.png)
+    ![Képernyőkép, amely kiemeli a kimenet megtekintését és másolását.](media/capture-browser-trace/safari-console-select.png)
 
 1. Csomagolja ki a HAR-fájlt, a konzol kimenetét és a képernyő rögzítését tömörített formátumban (például. zip), és ossza meg a Microsoft ügyfélszolgálatával.
 
@@ -176,19 +176,19 @@ A következő lépések bemutatják, hogyan használhatja a fejlesztői eszköz�
 
 1. A portálon Navigáljon arra a lépésre, ahol a probléma bekövetkezik.
 
-1. Nyomja meg az F12 billentyűt, vagy válassza ![ a böngésző beállításai ikon ](media/capture-browser-trace/firefox-icon-settings.png)  >  **webfejlesztő**  >  **váltógomb bekapcsolása eszközét**.
+1. Nyomja meg az F12 billentyűt, vagy válassza ![ a böngésző beállításai ikon ](media/capture-browser-trace/firefox-icon-settings.png)  >  **webfejlesztő**  >  **váltógomb bekapcsolása eszközét** .
 
 1. Alapértelmezés szerint a böngésző csak az aktuálisan betöltött oldal nyomkövetési adatait őrzi meg. Állítsa be a következő beállításokat, hogy a böngésző megtartsa az összes nyomkövetési információt, még akkor is, ha a Reprodukálási több oldalra is szüksége lesz:
 
-    1. Válassza a **hálózat** fület, majd válassza a **naplófájlok**megőrzése lehetőséget.
+    1. Válassza a **hálózat** fület, majd válassza a **naplófájlok** megőrzése lehetőséget.
 
-          ![Képernyőkép a "naplók megőrzése"](media/capture-browser-trace/firefox-network-persist-logs.png)
+          ![Képernyőkép, amely kiemeli a naplófájlok megőrzése lehetőséget.](media/capture-browser-trace/firefox-network-persist-logs.png)
 
-    1. Válassza a **konzol** fület, válassza a **konzol beállításai**lehetőséget, majd válassza a **naplók**megőrzése lehetőséget.
+    1. Válassza a **konzol** fület, válassza a **konzol beállításai** lehetőséget, majd válassza a **naplók** megőrzése lehetőséget.
 
           ![Képernyőkép a "naplók megőrzése"](media/capture-browser-trace/firefox-console-persist-logs.png)
 
-1. Válassza a **hálózat** fület, majd válassza a **Törlés**lehetőséget.
+1. Válassza a **hálózat** fület, majd válassza a **Törlés** lehetőséget.
 
     ![Képernyőkép a "Clear"](media/capture-browser-trace/firefox-clear-session.png)
 
@@ -196,18 +196,18 @@ A következő lépések bemutatják, hogyan használhatja a fejlesztői eszköz�
 
     ![A böngésző nyomkövetési eredményeinek képernyőképe](media/capture-browser-trace/firefox-browser-trace-results.png)
 
-1. A váratlan portál viselkedésének reprodukálása után válassza a **har Exportálás/Importálás** lehetőséget, majd **mentse az összes**elemet.
+1. A váratlan portál viselkedésének reprodukálása után válassza a **har Exportálás/Importálás** lehetőséget, majd **mentse az összes** elemet.
 
     ![Képernyőkép a "HAR exportálása"](media/capture-browser-trace/firefox-network-export-har.png)
 
 1. Állítsa le a Windows vagy a képernyő rögzítését a Mac számítógépen, és mentse a rögzítést.
 
-1. A böngésző fejlesztői eszközök ablaktábláján kattintson a **konzol** fülre. Kattintson a jobb gombbal az egyik üzenetre, majd válassza a **látható üzenet exportálása a**következőre lehetőséget, majd mentse a konzol kimenetét egy szövegfájlba.
+1. A böngésző fejlesztői eszközök ablaktábláján kattintson a **konzol** fülre. Kattintson a jobb gombbal az egyik üzenetre, majd válassza a **látható üzenet exportálása a** következőre lehetőséget, majd mentse a konzol kimenetét egy szövegfájlba.
 
     ![A konzol kimenetének képernyőképe](media/capture-browser-trace/firefox-console-select.png)
 
 1. Csomagolja ki a HAR-fájlt, a konzol kimenetét és a képernyő rögzítését tömörített formátumban (például. zip), és ossza meg a Microsoft ügyfélszolgálatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure Portal áttekintése](azure-portal-overview.md)

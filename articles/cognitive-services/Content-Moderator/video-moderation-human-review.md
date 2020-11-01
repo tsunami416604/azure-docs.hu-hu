@@ -1,5 +1,5 @@
 ---
-title: Videó moderálása humán felülvizsgálattal – Content Moderator
+title: Videó moderálása a felülvizsgálati eszközzel – Content Moderator
 titleSuffix: Azure Cognitive Services
 description: A nem megfelelő tartalom kihasználása a számítógép által támogatott videók moderálásával és a felülvizsgálati eszközzel
 services: cognitive-services
@@ -8,99 +8,97 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/20/2020
 ms.author: pafarley
-ms.openlocfilehash: 0c031a890efc7fad7e5d9caefce3b0e66c515d90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 392cc06c6e0bce7ec2304da61033fc508d940bbb
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81404240"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93143771"
 ---
-# <a name="video-moderation-with-human-review"></a>Videó moderálása humán felülvizsgálattal
+# <a name="video-moderation-with-the-review-tool"></a>Videó moderálása a felülvizsgálati eszközzel
 
 A legjobb eredmények elérése érdekében használja a Content Moderator gépi támogatású [videó-moderálási](video-moderation-api.md) és [felülvizsgálati eszközét](Review-Tool-User-Guide/human-in-the-loop.md) a felnőtt (explicit) és a zamatos (szuggesztív) tartalomhoz.
 
-## <a name="video-trained-classifier-preview"></a>Videós képzésen alapuló osztályozó (előzetes verzió)
+## <a name="view-videos-under-review"></a>Videók megtekintése a felülvizsgálat alatt
 
-A géppel támogatott videók besorolása vagy a képesített modellek vagy a videós képzésen alapuló modellek alapján érhető el. A képesített videó-besorolásokkal ellentétben a Microsoft felnőtt és zamatos videós besorolása videókkal van betanítva. Ez a módszer jobb egyezési minőséget eredményez.
+Az irányítópulton válassza ki bármelyik felülvizsgálati várólistát a videotartalom típusától függően. Ez elindít egy felülvizsgálatot, és megnyitja a videotartalom moderálása lapot.
 
-## <a name="shot-detection"></a>Lövés észlelése
+> [!div class="mx-imgBorder"]
+> ![Videó moderálásának részletes nézete a felülvizsgálati eszközben](./Review-Tool-User-Guide/images/video-moderation-detailed.png)
 
-A besorolási adatok kihelyezése során a további videó-intelligenciával rugalmasabban elemezheti a videókat. A képkockák kihelyezése helyett a Microsoft videó-moderálási szolgáltatása is tartalmaz shot szintű információkat. Most lehetősége van arra, hogy a videókat a lövés szintjén és a keret szintjén elemezze.
+### <a name="review-count"></a>Vélemények száma
 
-## <a name="key-frame-detection"></a>Kulcstároló-észlelés
+A jobb felső sarokban lévő csúszkával állíthatja be az oldalon megjeleníteni kívánt értékelések számát.
 
-A keretek rendszeres időközönként történő kihelyezése helyett a video moderációs szolgáltatás csak a lehetséges teljes (jó) kereteket azonosítja és jeleníti meg. A funkció lehetővé teszi a hatékony keret létrehozását a frame-szintű felnőtt és a zamatos elemzésekhez.
+### <a name="view-type"></a>Nézet típusa
 
-A következő kivonat részleges választ mutat a lehetséges felvételek, a kulcstárolók és a felnőtt és a zamatos pontszámok tekintetében:
+A különböző tartalmi bejegyzéseket mozaikként vagy részletes nézetben tekintheti meg. A **részletes** nézet lehetővé teszi a kulcstárolók és a kiválasztott videóval kapcsolatos egyéb információk megtekintését. 
 
-```json
-"fragments":[  
-  {  
-    "start":0,
-    "duration":18000
-  },
-  {  
-    "start":18000,
-    "duration":3600,
-    "interval":3600,
-    "events":[  
-      [  
-        {  
-          "reviewRecommended":false,
-          "adultScore":0.00001,
-          "racyScore":0.03077,
-          "index":5,
-          "timestamp":18000,
-          "shotIndex":0
-        }
-      ]
-    ]
-  },
-  {  
-    "start":18386372,
-    "duration":119149,
-    "interval":119149,
-    "events":[  
-      [  
-        {  
-          "reviewRecommended":true,
-          "adultScore":0.00000,
-          "racyScore":0.91902,
-          "index":5085,
-          "timestamp":18386372,
-          "shotIndex":62
-        }
-      ]
-    ]
-```
+> [!NOTE]
+> A keretek rendszeres időközönként történő kihelyezése helyett a video moderációs szolgáltatás csak a lehetséges teljes (jó) kereteket azonosítja és jeleníti meg. Ez a funkció lehetővé teszi a hatékony keret-generálást a frame-szintű felnőtt és a zamatos elemzésekhez.
 
-## <a name="visualization-for-human-reviews"></a>Vizualizációk emberi felülvizsgálatokhoz
+A **Mozaik** nézet minden videót egyetlen csempével fog megjeleníteni. A videó keretén belül a Kibontás gombra kattintva nagyíthatja a videót, és elrejtheti a többi elemet.
 
-Árnyaltabb esetekben a vállalatoknak egy emberi felülvizsgálati megoldásra van szükségük a videó, a keretei és a gép által hozzárendelt címkék megjelenítéséhez. A videók és keretek áttekintésére szolgáló emberi moderátorok teljes képet kapnak az elemzésekről, megváltoztathatják a címkéket, és elküldhetik döntéseiket.
+### <a name="content-obscuring-effects"></a>Tartalomra kitakarható hatások
 
-![videó-felülvizsgálati eszköz alapértelmezett nézete](images/video-review-default-view.png)
+Az **összes életlenítés** és **fekete és fehér** kapcsoló használatával állítsa be ezeket a tartalmat kitakaró hatásokat. Alapértelmezés szerint be vannak kapcsolva. A **csempés** nézetben az egyes videókban egyenként válthat ki hatásokat.
 
-## <a name="player-view-for-video-level-review"></a>Videó szintű felülvizsgálatra szolgáló lejátszó nézet
+## <a name="check-video-details"></a>Videó részleteinek megtekintése
 
-A videós szintű bináris döntéseket egy videolejátszó nézet teszi elérhetővé, amely megjeleníti a potenciális felnőtt és a zamatos kereteket. Az emberi felülvizsgálók különböző sebességi lehetőségekkel navigálnak a videóban a jelenetek vizsgálatához. A címkék megerősítik a döntéseiket.
+A **részletek** nézetben a jobb oldali ablaktábla több olyan lapot is megjelenít, amely a videó részleteit tartalmazza.
 
-![videó-felülvizsgálati eszköz – lejátszó nézet](images/video-review-player-view.PNG)
+* Válassza a **Megjegyzések** fület, hogy egyéni megjegyzéseket adjon a videókhoz.
+* Válassza a **átirat** fület, hogy a videó átirata a szolgáltatás automatikusan Kinyeri a &mdash; videóban található beszédek átiratát. Ha kijelöl egy szövegrészt, a videolejátszó a videó erre a részére fog ugrani.
+* A metaadatok megtekintéséhez válassza a **meta-adatok** fület.
+* Az **Előzmények** lapon megtekintheti a felülvizsgálat előzményeit, például a létrehozásuk és módosításuk módját.
 
-## <a name="frames-view-for-detailed-reviews"></a>Részletes felülvizsgálatok – keretek nézet
+> [!div class="mx-imgBorder"]
+> ![Videó moderálása – tömeges címkék gomb](./Review-Tool-User-Guide/images/video-moderation-video-details.png)
 
-A kereten belüli elemzés részletes videó-áttekintést nyújt a frame-alapú nézettel. Az emberi felülvizsgálók áttekintik, majd kijelölnek egy vagy több képkockát, és felváltják a címkéket a döntéseik megerősítéséhez. Egy választható következő lépés a sértő keretek vagy tartalmak kivonása.
+## <a name="apply-moderation-tags"></a>Moderálási címkék alkalmazása
 
-![videó-felülvizsgálati eszköz keretének nézete](images/video-review-frames-view-apply-tags.PNG)
+A videós felülvizsgálat fő feladata, hogy a moderálási címkéket a videókon vagy a videók egyes részein alkalmazza vagy távolítsa el.
 
-## <a name="transcript-moderation"></a>Átiratmoderálás
+### <a name="bulk-tagging"></a>Csoportos címkézés
 
-A videók jellemzően olyan hangvételt igényelnek, amelynek a moderálása a támadó beszédhez is szükséges. A Azure Media Indexer szolgáltatással szöveggé alakíthatja a beszédfelismerést, és a Content Moderator felülvizsgálati API használatával elküldheti a szöveges moderálás átiratát a felülvizsgálati eszközön belül.
+A **tömeges címkék** eszköztár lehetővé teszi címkék hozzáadását egyszerre több kiválasztott videóhoz. Válasszon ki egy vagy több videót, majd válassza ki az alkalmazni kívánt címkéket, és kattintson a **Submit (Küldés** ) gombra. 
 
-![videó-felülvizsgálati eszköz átirat nézete](images/video-review-transcript-view.png)
+> [!div class="mx-imgBorder"]
+> ![Videó moderálása – tömeges címkék gomb](./Review-Tool-User-Guide/images/video-moderation-bulk-tags.png)
 
-## <a name="next-steps"></a>További lépések
+
+### <a name="key-frame-tagging"></a>Kulcs keretének címkézése
+
+A moderálási címkéket adott kulcstárolóhoz is hozzáadhatja. Válassza ki a kereteket a kulcstároló csempe paneljén, majd válassza a **kulcsképek címkék +** elemet a kívánt címkék alkalmazásához.
+
+> [!NOTE]
+> Ha a szolgáltatás nem tudta kinyerni a kulcstárolókat, a kulcstároló csempéje panel nem jeleníti meg a **rendelkezésre álló kereteket** , és a kulcstárolók kiválasztásának lehetősége szürkén jelenik meg. Ebben az esetben csak a teljes videóra vonatkozó címkéket lehet alkalmazni (a **videó címkék +** gomb használatával).
+
+> [!div class="mx-imgBorder"]
+> ![Videó moderálásának részletes nézete a felülvizsgálati eszközben](./Review-Tool-User-Guide/images/video-moderation-tagging-options.png)
+
+## <a name="put-a-review-on-hold"></a>Ellenőrzés betartása
+
+A videó ablaktábla alján található **tartás** gomb lehetővé teszi, hogy a rendszer visszatekintse a visszatartást, így később lekérdezheti és elvégezheti azt. Ezt olyan áttekintéshez is elvégezheti, amelyhez egy másik csapattag vagy felettes, aki jelenleg nem érhető el. 
+
+A megtartott videókat megtekintheti a képernyő felső részén látható **tartás** gombra kattintva. A Hold panel a jobb oldalon jelenik meg. Itt kiválaszthatja a megtartott több felülvizsgálatot, vagy visszaállíthatja őket a várólistába, vagy megadhatja a lejárat idejét. Az előre konfigurált időtartam után a rendszer visszaküldi a visszatartási felülvizsgálatokat a várólistára. Válassza a **Mentés** lehetőséget, hogy az aktuálisan kijelölt lejárati idő alapján kezdődjön a számbavétel.
+
+> [!div class="mx-imgBorder"]
+> ![Videó moderálásának részletes nézete a felülvizsgálati eszközben](./Review-Tool-User-Guide/images/video-moderation-hold.png)
+
+## <a name="submit-a-review"></a>Felülvizsgálat elküldése
+
+A címkék alkalmazása után a videó ablaktábla alján kattintson a **Submit (Küldés** ) gombra. Ha több videót is címkézett, elküldheti azokat egyetlen felülvizsgálati vagy különálló felülvizsgálatok alapján.
+
+## <a name="limbo-state"></a>Börtön állapota
+
+Miután elküldte a felülvizsgálatot, a rendszer áthelyezi a videót a **börtönbe** , amelyet a képernyő felső részén található **börtön** gombra kattintva tekinthet meg. A videók egy előre konfigurált időtartamon belül maradnak a börtönben (amelyet az alján lévő menüben lehet módosítani), vagy amíg újra nem vizsgálják őket, vagy manuálisan elküldik őket.
+
+Miután a videók lejárnak a börtönből, a felülvizsgálatok készként vannak megjelölve.
+
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg a [videó moderálási](video-moderation-api.md)útmutatójának használatába.
 - Ebből a témakörből megtudhatja, hogyan hozhatja ki az emberi [felülvizsgálók videós felülvizsgálatait](video-reviews-quickstart-dotnet.md) a moderált kimenetből.

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 02/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4
-ms.openlocfilehash: 2e3544bee5158a855467f8cb142f176df2187ef5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64f1c83a570e936759d674f40db201fb2f2cd0e5
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318296"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146262"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Machine Learning folyamat futtatásának elindítása logikai alkalmazásból
 
@@ -49,7 +49,7 @@ A logikai alkalmazás üzembe helyezése után a következő lépésekkel konfig
     > [!div class="mx-imgBorder"]
     > ![Üres sablon](media/how-to-trigger-published-pipeline/blank-template.png)
 
-1. A tervezőben keresse meg a **blob**kifejezést. Válassza ki a **blob hozzáadása vagy módosítása (csak tulajdonságok)** triggert, és adja hozzá ezt az triggert a logikai alkalmazáshoz.
+1. A tervezőben keresse meg a **blob** kifejezést. Válassza ki a **blob hozzáadása vagy módosítása (csak tulajdonságok)** triggert, és adja hozzá ezt az triggert a logikai alkalmazáshoz.
     > [!div class="mx-imgBorder"]
     > ![Trigger hozzáadása](media/how-to-trigger-published-pipeline/add-trigger.png)
 
@@ -60,7 +60,7 @@ A logikai alkalmazás üzembe helyezése után a következő lépésekkel konfig
     > [!NOTE]
     > Ez az trigger figyeli a kiválasztott tárolót, de nem figyeli az almappákat.
 
-1. Olyan HTTP-művelet hozzáadása, amely akkor fut le, amikor új vagy módosított blobot észlel. Válassza az **+ új lépés**elemet, majd keresse meg és válassza ki a http-műveletet.
+1. Olyan HTTP-művelet hozzáadása, amely akkor fut le, amikor új vagy módosított blobot észlel. Válassza az **+ új lépés** elemet, majd keresse meg és válassza ki a http-műveletet.
 
   > [!div class="mx-imgBorder"]
   > ![HTTP-művelet keresése](media/how-to-trigger-published-pipeline/search-http.png)
@@ -94,6 +94,9 @@ A logikai alkalmazás üzembe helyezése után a következő lépésekkel konfig
     > ![HTTP-beállítások](media/how-to-trigger-published-pipeline/http-settings.png)
 
 1. Válassza a **Mentés** lehetőséget, és most már készen áll az ütemtervre.
+
+> [!IMPORTANT]
+> Ha szerepköralapú hozzáférés-vezérlést (RBAC) használ a folyamathoz való hozzáférés kezelésére, [állítsa be a folyamatra vonatkozó engedélyeket (képzés vagy pontozás).](how-to-assign-roles.md#q-what-are-the-permissions-needed-to-perform-some-common-scenarios-in-the-azure-machine-learning-service)
 
 ## <a name="next-steps"></a>Következő lépések
 

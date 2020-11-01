@@ -1,20 +1,20 @@
 ---
-title: A szinapszis Studio (előzetes verzió) kapcsolódásának hibája a PowerShell használatával
+title: A szinapszis Studio-kapcsolat hibáinak megoldása
 description: Az Azure szinapszis Studio-kapcsolat hibáinak megoldása a PowerShell használatával
-author: julieMSFT
+author: saveenr
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.author: jrasnick
+ms.date: 10/30/2020
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7cf9f18701317482284a3f1fa4b69a2c2927f64a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5e433fd857f638c1c13e4545c19e0b6314ee62e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287712"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146506"
 ---
-# <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>Az Azure szinapszis Studio (előzetes verzió) kapcsolódási problémáinak diagnosztizálása a PowerShell-parancsfájllal
+# <a name="troubleshoot-synapse-studio-connectivity-with-powershell"></a>A szinapszis Studio-kapcsolat hibáinak megoldása a PowerShell-lel
 
 Az Azure szinapszis Studio (előzetes verzió) a webes API-végpontok megfelelő működéséhez függ. Ez az útmutató segítséget nyújt a kapcsolódási problémák okának azonosításához a következő esetekben:
 - a helyi hálózat (például a vállalati tűzfal mögötti hálózat) konfigurálása az Azure szinapszis Studio eléréséhez.

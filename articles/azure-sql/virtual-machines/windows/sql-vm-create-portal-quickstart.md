@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d7d82db7fc8a39a0865e80ee7873ee849627c583
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 454dc593dca216d3805036ce78ec9986cf317d4e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791069"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145854"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>Rövid útmutató: SQL Server 2017 létrehozása Windows rendszerű virtuális gépen a Azure Portal
 
@@ -37,7 +37,7 @@ Ez a rövid útmutató végigvezeti SQL Server virtuális gép (VM) létrehozás
 
 ## <a name="get-an-azure-subscription"></a><a id="subscription"></a> Azure-előfizetés beszerzése
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="select-a-sql-server-vm-image"></a><a id="select"></a> SQL Server virtuálisgép-rendszerkép kiválasztása
 
@@ -47,9 +47,9 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 1. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. További információkat az **SQL Virtual Machines** csempén a **Részletek megjelenítése** lehetőség kiválasztásával tekinthet meg.
 1. Válassza ki az **ingyenes SQL Server licencet: SQL Server 2017 fejlesztő a Windows Server 2016** rendszerképet a legördülő menüből.
 
-   ![Új keresési ablak](./media/sql-vm-create-portal-quickstart/select-sql-2017-vm-image.png)
+   ![Képernyőfelvétel: az ingyenes SQL Server licenc kiválasztása: SQL Server 2017 Developer a Windows Server 2016-rendszerképben.](./media/sql-vm-create-portal-quickstart/select-sql-2017-vm-image.png)
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
    ![Új keresési ablak](./media/sql-vm-create-portal-quickstart/create-sql-2017-vm-image.png)
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 07/06/2020
-ms.openlocfilehash: b681e3fa4963a8fe899ccbad8dbf1bbdfbe452ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a02ea022bedd92e9deaa0730cc1be051a9d20c88
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326902"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145684"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Tároló-figyelési megoldás a Azure Monitor
 
@@ -116,7 +116,7 @@ A Windows rendszerű számítógépeken a Docker-motorok telepítésével és ko
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Linux-tároló gazdagépek telepítése és konfigurálása
 
-A Docker telepítését követően az alábbi beállításokkal konfigurálhatja az ügynököt a Docker használatára. Először a Log Analytics-munkaterület AZONOSÍTÓját és kulcsát kell használnia, amelyet a Azure Portal találhat. A munkaterületen kattintson **gyorskonfigurálás**  >  **számítógépekre** a **munkaterület-azonosító** és az **elsődleges kulcs**megtekintéséhez.  Másolja ki és illessze be mindkettőt a kedvenc szerkesztőjébe.
+A Docker telepítését követően az alábbi beállításokkal konfigurálhatja az ügynököt a Docker használatára. Először a Log Analytics-munkaterület AZONOSÍTÓját és kulcsát kell használnia, amelyet a Azure Portal találhat. A munkaterületen kattintson **gyorskonfigurálás**  >  **számítógépekre** a **munkaterület-azonosító** és az **elsődleges kulcs** megtekintéséhez.  Másolja ki és illessze be mindkettőt a kedvenc szerkesztőjébe.
 
 **Az összes Linux-tároló gazdagépen, a CoreOS kivételével:**
 
@@ -476,12 +476,12 @@ A következő lépésekkel végezheti el a Log Analytics ügynök üzembe helyez
  
     RESOURCES:
     ==> v1/Secret
-    NAME            TYPE    DATA  AGE
-    omsagent-msoms  Opaque  3     17m
+    NAME            TYPE    DATA  AGE
+    omsagent-msoms  Opaque  3     17m
  
     ==> v1beta1/DaemonSet
-    NAME            DESIRED  CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE-SELECTOR  AGE
-    omsagent-msoms  3        3        3      3           3          <none>         17m
+    NAME            DESIRED  CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE-SELECTOR  AGE
+    omsagent-msoms  3        3        3      3           3          <none>         17m
     ```
    
     További információkért tekintse meg a [Container Solution Helm diagramot](https://aka.ms/omscontainerhelm).
@@ -513,11 +513,11 @@ A Windows és a Hyper-V tárolók figyelésének engedélyezéséhez telepítse 
 
 A Service Fabricon futó Windows-tárolók figyelésére van lehetőség. A Service Fabric azonban jelenleg csak [Az Azure-ban futó virtuális gépek](../learn/quick-collect-azurevm.md) és a helyszíni [környezetben Windows rendszert futtató számítógépek](../platform/agent-windows.md) támogatottak.
 
-Ellenőrizheti, hogy a tároló-figyelési megoldás megfelelően van-e beállítva a Windows rendszerhez. Keresse meg a *ContainerManagement.xxx*, és ellenőrizze, hogy a felügyeleti csomag megfelelően lett-e letöltve. A fájloknak a C:\Program Files\Microsoft monitoring Agent\Agent\Health Service State\Management Packs mappában kell lenniük.
+Ellenőrizheti, hogy a tároló-figyelési megoldás megfelelően van-e beállítva a Windows rendszerhez. Keresse meg a *ContainerManagement.xxx* , és ellenőrizze, hogy a felügyeleti csomag megfelelően lett-e letöltve. A fájloknak a C:\Program Files\Microsoft monitoring Agent\Agent\Health Service State\Management Packs mappában kell lenniük.
 
 ## <a name="solution-components"></a>Megoldás-összetevők
 
-A Azure Portal navigáljon a *Solutions Galleryhoz* , és adja hozzá a **tároló-figyelési megoldást**. Ha Windows-ügynököket használ, a következő felügyeleti csomagot kell telepítenie minden olyan számítógépre, amelyre ügynök van telepítve a megoldás hozzáadásakor. A felügyeleti csomaghoz nincs szükség konfigurációra vagy karbantartásra.
+A Azure Portal navigáljon a *Solutions Galleryhoz* , és adja hozzá a **tároló-figyelési megoldást** . Ha Windows-ügynököket használ, a következő felügyeleti csomagot kell telepítenie minden olyan számítógépre, amelyre ügynök van telepítve a megoldás hozzáadásakor. A felügyeleti csomaghoz nincs szükség konfigurációra vagy karbantartásra.
 
 - *ContainerManagement.xxx* telepítve a C:\Program Files\Microsoft monitoring Agent\Agent\Health Service State\Management Packs
 
@@ -574,7 +574,7 @@ Kattintson a **tárolók** csempére. Innentől kezdve a következő nézetek l�
 
 Az irányítópult minden területe az összegyűjtött adatokon futtatott keresés vizuális ábrázolása.
 
-![Tárolók irányítópult](./media/containers/containers-dash01.png)
+![Képernyőkép, amely megjeleníti az összegyűjtött adatok megtekintésére szolgáló irányítópultot. ](./media/containers/containers-dash01.png)
 
 ![Tárolók irányítópult](./media/containers/containers-dash02.png)
 
@@ -599,9 +599,9 @@ Log Analytics egy tárolót **sikertelenként** jelöl meg, ha nem nulla kilép�
 2. A Log Analytics megnyílik, és megjeleníti a tárolók állapotát, a következőhöz hasonlóan.  
    ![tárolók állapota](./media/containers/containers-log-search.png)
 3. Bontsa ki a meghibásodott sort, és kattintson a + gombra a feltételek a lekérdezéshez való hozzáadásához. Ezután adja meg a lekérdezés összefoglaló sorát.
-   ![sikertelen tárolók](./media/containers/containers-state-failed-select.png)  
+   ![A megjegyzést tartalmazó sort megjelenítő képernyőkép.](./media/containers/containers-state-failed-select.png)  
 1. Futtassa a lekérdezést, majd az eredmények egyik sorát kibontva tekintse meg a rendszerkép AZONOSÍTÓját.  
-   ![sikertelen tárolók](./media/containers/containers-state-failed.png)  
+   ![Képernyőkép, amely bemutatja, hogyan lehet megtekinteni a rendszerkép AZONOSÍTÓját.](./media/containers/containers-state-failed.png)  
 1. Írja be a következőt a napló lekérdezésbe. `ContainerImageInventory | where ImageID == <ImageID>` a rendszerkép részleteit, például a képméretet és a leállított és sikertelen lemezképek számát tekintheti meg.  
    ![sikertelen tárolók](./media/containers/containers-failed04.png)
 
@@ -637,7 +637,7 @@ A lekérdezések mentése a Azure Monitor egy standard funkciója. A mentésük 
 
 Ha olyan lekérdezést hoz létre, amelyet hasznosnak talál, mentse azt a Keresés lap tetején található **Kedvencek** elemre kattintva. Ezután egyszerűen elérheti később a **saját irányítópult** lapon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Lekérdezési naplók](../log-query/log-query-overview.md) a részletes tároló-adatrekordok megtekintéséhez.
 

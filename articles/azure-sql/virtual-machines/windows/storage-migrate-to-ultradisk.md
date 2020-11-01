@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4ddafd9fbeda1752a782085244597aea3ccbdd2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12ba0900f2499965f7843672183310dfecfbab2b
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271902"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146671"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>A naplófájl átmigrálása Ultra lemezre
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,15 +44,15 @@ A kompatibilitás engedélyezéséhez kövesse az alábbi lépéseket:
 
 1. A [Azure Portalban](https://portal.azure.com/)nyissa meg a virtuális gépet. 
 1. A virtuális gép leállítása/felszabadítása. 
-1. Válassza ki a **lemezek** elemet a **Beállítások** területen, majd válassza a **További beállítások**lehetőséget. 
+1. Válassza ki a **lemezek** elemet a **Beállítások** területen, majd válassza a **További beállítások** lehetőséget. 
 
    :::image type="content" source="media/storage-migrate-to-ultradisk/additional-disks-settings-azure-portal.png" alt-text="Válassza ki a lemezek további beállításait a Azure Portal beállítások területén.":::
 
-1. Az **Igen** lehetőség kiválasztásával **engedélyezheti az ultravékony lemezek kompatibilitását**. 
+1. Az **Igen** lehetőség kiválasztásával **engedélyezheti az ultravékony lemezek kompatibilitását** . 
 
    :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="Válassza ki a lemezek további beállításait a Azure Portal beállítások területén.":::
 
-1. Kattintson a **Mentés** gombra. 
+1. Válassza a **Mentés** lehetőséget. 
 
 
 
@@ -83,7 +83,7 @@ Konfigurálja SQL Server az új naplófájl használatára. Ezt a Transact-SQL (
 1. Ellenőrizze az SQL Server által használt szolgáltatásfiókot. Ezt a SQL Server Konfigurációkezelő vagy a Services. msc használatával teheti meg.
 1. Navigáljon az új lemezre. 
 1. Hozzon létre egy mappát (vagy több mappát) a naplófájlhoz való használatra. 
-1. Kattintson a jobb gombbal a mappára, és válassza a **Tulajdonságok**lehetőséget.
+1. Kattintson a jobb gombbal a mappára, és válassza a **Tulajdonságok** lehetőséget.
 1. A **Biztonság** lapon adjon meg teljes hozzáférést a SQL Server szolgáltatásfiók számára. 
 1. A beállítások mentéséhez kattintson **az OK gombra**  . 
 1. Ismételje meg ezt a műveletet minden olyan gyökérszintű mappánál, amelyben SQL-adatértéket szeretne készíteni. 
@@ -143,14 +143,14 @@ Ezen a ponton az adatbázis online állapotba kerül az új helyen található b
 A SSMS használatával helyezze át a meglévő fájlokat egy új helyre:
 
 1. Kapcsolódjon SQL Server Management Studio (SSMS) adatbázisához. 
-1. Kattintson a jobb gombbal az adatbázisra, válassza a **Tulajdonságok** lehetőséget, majd válassza a **fájlok**lehetőséget. 
+1. Kattintson a jobb gombbal az adatbázisra, válassza a **Tulajdonságok** lehetőséget, majd válassza a **fájlok** lehetőséget. 
 1. Jegyezze fel a meglévő fájlok elérési útját. 
 1. A párbeszédpanel bezárásához kattintson **az OK gombra** . 
-1. Kattintson a jobb gombbal az adatbázisra, válassza a **feladatok**  >  **Leválasztás**lehetőséget. 
+1. Kattintson a jobb gombbal az adatbázisra, válassza a **feladatok**  >  **Leválasztás** lehetőséget. 
 1. Az adatbázis leválasztásához kövesse a varázslót. 
 1. A fájlkezelő használatával manuálisan helyezheti át a naplófájlt az új helyre.
 1. Az adatbázis csatolása SQL Server Management Studio
-   1. Kattintson a jobb gombbal a **Object Explorer** található **adatbázisok** elemre, majd válassza az **adatbázis csatolása**lehetőséget. 
+   1. Kattintson a jobb gombbal a **Object Explorer** található **adatbázisok** elemre, majd válassza az **adatbázis csatolása** lehetőséget. 
    1. A párbeszédpanel használatával adja hozzá az egyes fájlokat, beleértve a naplófájlt az új helyen. 
    1. Az adatbázis csatolásához kattintson **az OK gombra** . 
 

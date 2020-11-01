@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: mayg
-ms.openlocfilehash: 1790ac666d77f14ccadfde56f7b86e05b2c563dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e1008f7acbfe0685b7a171176c7dc54592d1491
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604682"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146472"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Linux fő célkiszolgáló telepítése feladat-visszavételhez
 A virtuális gépek Azure-ba történő feladatátvétele után a virtuális gépeket a helyszíni helyre is visszaállíthatja. A feladat-visszavétel érdekében újra kell telepítenie a virtuális gépet az Azure-ból a helyszíni helyre. Ehhez a folyamathoz egy helyszíni fő célkiszolgáló szükséges a forgalom fogadásához. 
@@ -44,11 +44,11 @@ A jelen cikk végén vagy a [Microsoft Q&az Azure Recovery Services-ra vonatkoz�
 ## <a name="sizing-guidelines-for-creating-master-target-server"></a>A fő célkiszolgáló létrehozásához szükséges Méretezési irányelvek
 
 Hozza létre a fő célt a következő méretezési irányelveknek megfelelően:
-- **RAM**: 6 GB vagy több
-- **Operációsrendszer-lemez mérete**: 100 GB vagy több (operációs rendszer telepítéséhez)
-- **További lemez mérete az adatmegőrzési meghajtó számára**: 1 TB
-- **CPU-magok**: 4 mag vagy több
-- **Kernel**: 4,16. *
+- **RAM** : 6 GB vagy több
+- **Operációsrendszer-lemez mérete** : 100 GB vagy több (operációs rendszer telepítéséhez)
+- **További lemez mérete az adatmegőrzési meghajtó számára** : 1 TB
+- **CPU-magok** : 4 mag vagy több
+- **Kernel** : 4,16. *
 
 ## <a name="deploy-the-master-target-server"></a>A fő célkiszolgáló üzembe helyezése
 
@@ -59,81 +59,81 @@ Hajtsa végre az alábbi lépéseket az Ubuntu 16.04.2 64 bites operációs rend
 1.   Nyissa meg a [letöltési hivatkozást](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso), válassza ki a legközelebbi tükrözést, és töltse le az Ubuntu 16.04.2 minimális 64 bites ISO-t.
 Tartsa meg az Ubuntu 16.04.2 minimális 64 bites ISO-t a DVD-meghajtón, és indítsa el a rendszerét.
 
-1.  Válassza az **angol** nyelvet előnyben részesített nyelvként, majd válassza az **ENTER billentyűt**.
+1.  Válassza az **angol** nyelvet előnyben részesített nyelvként, majd válassza az **ENTER billentyűt** .
     
     ![Válasszon nyelvet](./media/vmware-azure-install-linux-master-target/image1.png)
-1. Válassza az **Ubuntu Server telepítése**lehetőséget, majd válassza az **ENTER billentyűt**.
+1. Válassza az **Ubuntu Server telepítése** lehetőséget, majd válassza az **ENTER billentyűt** .
 
     ![Válassza az Ubuntu Server telepítése lehetőséget.](./media/vmware-azure-install-linux-master-target/image2.png)
 
-1.  Válassza az **angol** nyelvet előnyben részesített nyelvként, majd válassza az **ENTER billentyűt**.
+1.  Válassza az **angol** nyelvet előnyben részesített nyelvként, majd válassza az **ENTER billentyűt** .
 
     ![Válassza ki az angolt az előnyben részesített nyelvként](./media/vmware-azure-install-linux-master-target/image3.png)
 
-1. Válassza ki a megfelelő lehetőséget az **időzóna** beállításai listából, majd válassza az **ENTER billentyűt**.
+1. Válassza ki a megfelelő lehetőséget az **időzóna** beállításai listából, majd válassza az **ENTER billentyűt** .
 
     ![Válassza ki a megfelelő időzónát](./media/vmware-azure-install-linux-master-target/image4.png)
 
-1. Válassza a **nem** (az alapértelmezett beállítás) lehetőséget, majd válassza az **ENTER billentyűt**.
+1. Válassza a **nem** (az alapértelmezett beállítás) lehetőséget, majd válassza az **ENTER billentyűt** .
 
      ![A billentyűzet konfigurálása](./media/vmware-azure-install-linux-master-target/image5.png)
-1. Válassza az **angol (amerikai)** lehetőséget a billentyűzet származási országa/régiója számára, majd válassza az **ENTER**gombot.
+1. Válassza az **angol (amerikai)** lehetőséget a billentyűzet származási országa/régiója számára, majd válassza az **ENTER** gombot.
 
-1. Válassza az **angol (US)** billentyűzetkiosztást, majd az **ENTER billentyűt**.
+1. Válassza az **angol (US)** billentyűzetkiosztást, majd az **ENTER billentyűt** .
 
-1. Adja meg a kiszolgáló állomásnevét a hostname ( **állomásnév** ) mezőben, majd kattintson a **Continue (folytatás**) gombra.
+1. Adja meg a kiszolgáló állomásnevét a hostname ( **állomásnév** ) mezőben, majd kattintson a **Continue (folytatás** ) gombra.
 
-1. Felhasználói fiók létrehozásához adja meg a felhasználónevet, majd kattintson a **Continue (folytatás**) gombra.
+1. Felhasználói fiók létrehozásához adja meg a felhasználónevet, majd kattintson a **Continue (folytatás** ) gombra.
 
       ![Felhasználói fiók létrehozása](./media/vmware-azure-install-linux-master-target/image9.png)
 
-1. Adja meg az új felhasználói fiók jelszavát, majd kattintson a **Continue (folytatás**) gombra.
+1. Adja meg az új felhasználói fiók jelszavát, majd kattintson a **Continue (folytatás** ) gombra.
 
-1.  Erősítse meg az új felhasználó jelszavát, majd kattintson a **Continue (folytatás**) gombra.
+1.  Erősítse meg az új felhasználó jelszavát, majd kattintson a **Continue (folytatás** ) gombra.
 
     ![A jelszavak megerősítése](./media/vmware-azure-install-linux-master-target/image11.png)
 
-1.  A kezdőkönyvtár titkosításának következő kiválasztásakor válassza a **nem** (az alapértelmezett beállítás) lehetőséget, majd válassza az **ENTER billentyűt**.
+1.  A kezdőkönyvtár titkosításának következő kiválasztásakor válassza a **nem** (az alapértelmezett beállítás) lehetőséget, majd válassza az **ENTER billentyűt** .
 
-1. Ha a megjelenő időzóna helyes, válassza az **Igen** (az alapértelmezett beállítás) lehetőséget, majd válassza az **ENTER billentyűt**. Az időzóna újrakonfigurálásához válassza a **nem**lehetőséget.
+1. Ha a megjelenő időzóna helyes, válassza az **Igen** (az alapértelmezett beállítás) lehetőséget, majd válassza az **ENTER billentyűt** . Az időzóna újrakonfigurálásához válassza a **nem** lehetőséget.
 
-1. A particionálási módszer beállításainál válassza az **irányított – teljes lemez használata**lehetőséget, majd válassza az **ENTER billentyűt**.
+1. A particionálási módszer beállításainál válassza az **irányított – teljes lemez használata** lehetőséget, majd válassza az **ENTER billentyűt** .
 
      ![Válassza ki a particionálási módszer beállítást.](./media/vmware-azure-install-linux-master-target/image14.png)
 
-1.  Válassza ki a megfelelő lemezt a **lemez kiválasztása a particionáláshoz** lehetőségre, majd válassza az **ENTER billentyűt**.
+1.  Válassza ki a megfelelő lemezt a **lemez kiválasztása a particionáláshoz** lehetőségre, majd válassza az **ENTER billentyűt** .
 
     ![Válassza ki a lemezt](./media/vmware-azure-install-linux-master-target/image15.png)
 
-1.  Válassza az **Igen** lehetőséget a lemez módosításainak írásához, majd válassza az **ENTER billentyűt**.
+1.  Válassza az **Igen** lehetőséget a lemez módosításainak írásához, majd válassza az **ENTER billentyűt** .
 
     ![Válassza az alapértelmezett lehetőséget](./media/vmware-azure-install-linux-master-target/image16-ubuntu.png)
 
-1.  A proxy kiválasztása beállításnál válassza az alapértelmezett beállítást, válassza a **Folytatás**lehetőséget, majd kattintson az **ENTER**gombra.
+1.  A proxy kiválasztása beállításnál válassza az alapértelmezett beállítást, válassza a **Folytatás** lehetőséget, majd kattintson az **ENTER** gombra.
      
-     ![Válassza ki a frissítések kezelésének módját](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
+     ![Képernyőkép, amely megjeleníti a Folytatás lehetőséget, majd válassza az ENTER billentyűt.](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
 
-1.  Válassza a **nincs automatikus frissítés** lehetőséget a rendszeren a frissítések kezeléséhez, majd válassza az **ENTER billentyűt**.
+1.  Válassza a **nincs automatikus frissítés** lehetőséget a rendszeren a frissítések kezeléséhez, majd válassza az **ENTER billentyűt** .
 
      ![Válassza ki a frissítések kezelésének módját](./media/vmware-azure-install-linux-master-target/image18-ubuntu.png)
 
     > [!WARNING]
     > Mivel a Azure Site Recovery fő célkiszolgáló az Ubuntu nagyon konkrét verzióját igényli, gondoskodnia kell arról, hogy a kernel frissítései le legyenek tiltva a virtuális gépen. Ha engedélyezve vannak, akkor minden rendszeres frissítés a fő célkiszolgáló meghibásodását okozza. Győződjön meg arról, hogy a **nincs automatikus frissítés** lehetőséget választotta.
 
-1.  Válassza az alapértelmezett beállítások lehetőséget. Ha az openSSH-t SSH-kapcsolathoz szeretné használni, válassza az **OpenSSH-kiszolgáló** lehetőséget, majd kattintson a **Continue (folytatás**) gombra.
+1.  Válassza az alapértelmezett beállítások lehetőséget. Ha az openSSH-t SSH-kapcsolathoz szeretné használni, válassza az **OpenSSH-kiszolgáló** lehetőséget, majd kattintson a **Continue (folytatás** ) gombra.
 
     ![Szoftver kiválasztása](./media/vmware-azure-install-linux-master-target/image19-ubuntu.png)
 
-1. A GRUB boot loader telepítéséhez válassza az **Igen**, majd az **ENTER**gombot.
+1. A GRUB boot loader telepítéséhez válassza az **Igen** , majd az **ENTER** gombot.
      
     ![GRUB rendszerindítási telepítő](./media/vmware-azure-install-linux-master-target/image20.png)
 
 
-1. Válassza ki a megfelelő eszközt a rendszerindító betöltő telepítéséhez (lehetőleg **/dev/sda**), majd válassza az **ENTER billentyűt**.
+1. Válassza ki a megfelelő eszközt a rendszerindító betöltő telepítéséhez (lehetőleg **/dev/sda** ), majd válassza az **ENTER billentyűt** .
      
     ![Válassza ki a megfelelő eszközt](./media/vmware-azure-install-linux-master-target/image21.png)
 
-1. Válassza a **Folytatás**lehetőséget, majd kattintson az **ENTER** gombra a telepítés befejezéséhez.
+1. Válassza a **Folytatás** lehetőséget, majd kattintson az **ENTER** gombra a telepítés befejezéséhez.
 
     ![A telepítés befejezése](./media/vmware-azure-install-linux-master-target/image22.png)
 
@@ -150,11 +150,11 @@ Az egyes SCSI-merevlemezek AZONOSÍTÓjának lekéréséhez egy Linux rendszerű
 
 1. Állítsa le a virtuális gépet.
 
-2. Kattintson a jobb gombbal a virtuális gép bejegyzésére a bal oldali ablaktáblán, majd válassza a **beállítások szerkesztése**menüpontot.
+2. Kattintson a jobb gombbal a virtuális gép bejegyzésére a bal oldali ablaktáblán, majd válassza a **beállítások szerkesztése** menüpontot.
 
 3. Válassza a **Beállítások** lapot.
 
-4. A bal oldali ablaktáblán válassza a **speciális**  >  **általános**lehetőséget, majd a képernyő jobb alsó részén kattintson a **konfigurációs paraméterek** gombra.
+4. A bal oldali ablaktáblán válassza a **speciális**  >  **általános** lehetőséget, majd a képernyő jobb alsó részén kattintson a **konfigurációs paraméterek** gombra.
 
     ![Konfigurációs paraméter megnyitása](./media/vmware-azure-install-linux-master-target/image24-ubuntu.png) 
 
@@ -162,13 +162,13 @@ Az egyes SCSI-merevlemezek AZONOSÍTÓjának lekéréséhez egy Linux rendszerű
 
 5. Ellenőrizze, hogy van-e egy sor **lemezrel. A EnableUUID** már létezik.
 
-   - Ha az érték létezik, és false ( **hamis**) értékre van állítva, módosítsa az értéket **igaz**értékre. (Az értékek nem megkülönböztetik a kis-és nagybetűket.)
+   - Ha az érték létezik, és false ( **hamis** ) értékre van állítva, módosítsa az értéket **igaz** értékre. (Az értékek nem megkülönböztetik a kis-és nagybetűket.)
 
-   - Ha az érték létezik, és a értéke **true (igaz**), válassza a **Mégse**gombot.
+   - Ha az érték létezik, és a értéke **true (igaz** ), válassza a **Mégse** gombot.
 
-   - Ha az érték nem létezik, válassza a **sor hozzáadása**lehetőséget.
+   - Ha az érték nem létezik, válassza a **sor hozzáadása** lehetőséget.
 
-   - A név oszlopban adja hozzá a **lemezt. EnableUUID**, majd állítsa **igaz**értékre az értéket.
+   - A név oszlopban adja hozzá a **lemezt. EnableUUID** , majd állítsa **igaz** értékre az értéket.
 
      ![Annak ellenőrzése, hogy a lemez. A EnableUUID már létezik](./media/vmware-azure-install-linux-master-target/image25.png)
 
@@ -196,12 +196,12 @@ A Linux használatával történő letöltéséhez írja be a következőt:
 `wget https://aka.ms/latestlinuxmobsvc -O latestlinuxmobsvc.tar.gz`
 
 > [!WARNING]
-> Győződjön meg arról, hogy letöltötte és kicsomagolja a telepítőt a saját könyvtárában. Ha kibontja a **/usr/local**-t, akkor a telepítés sikertelen lesz.
+> Győződjön meg arról, hogy letöltötte és kicsomagolja a telepítőt a saját könyvtárában. Ha kibontja a **/usr/local** -t, akkor a telepítés sikertelen lesz.
 
 
 #### <a name="access-the-installer-from-the-process-server"></a>A telepítő elérése a Process Serverről
 
-1. A Process Serveren lépjen a **C:\Program Files (x86) \Microsoft Azure site Recovery\home\svsystems\pushinstallsvc\repository**.
+1. A Process Serveren lépjen a **C:\Program Files (x86) \Microsoft Azure site Recovery\home\svsystems\pushinstallsvc\repository** .
 
 2. Másolja a szükséges telepítőfájlt a Process Server rendszerből, és mentse a **latestlinuxmobsvc. tar. gz** néven a saját könyvtárába.
 
@@ -238,7 +238,7 @@ Adatmegőrzési lemez létrehozásához kövesse az alábbi lépéseket:
 
     ![Többutas azonosító](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. Formázza a meghajtót, majd hozzon létre egy fájlrendszert az új meghajtón: **mkfs. ext4 \<Retention disk's multipath id> /dev/Mapper/**.
+3. Formázza a meghajtót, majd hozzon létre egy fájlrendszert az új meghajtón: **mkfs. ext4 \<Retention disk's multipath id> /dev/Mapper/** .
     
     ![Fájlrendszer](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -257,7 +257,7 @@ Adatmegőrzési lemez létrehozásához kövesse az alábbi lépéseket:
 
     **/dev/Mapper/ \<Retention disks multipath id> /mnt/Retention ext4 rw 0 0**
 
-    Válassza az **ESC**lehetőséget, majd írja be a következőt **: wq** (írás és Kilépés) a szerkesztő ablak bezárásához.
+    Válassza az **ESC** lehetőséget, majd írja be a következőt **: wq** (írás és Kilépés) a szerkesztő ablak bezárásához.
 
 ### <a name="install-the-master-target"></a>A fő cél telepítése
 
@@ -274,7 +274,7 @@ Adatmegőrzési lemez létrehozásához kövesse az alábbi lépéseket:
     ./install -q -d /usr/local/ASR -r MT -v VmWare
     ```
 
-2. Másolja a jelszót a **C:\ProgramData\Microsoft Azure site Recovery\private\connection.passphrase** a konfigurációs kiszolgálón. Ezután mentse **passphrase.txtként ** ugyanabban a helyi könyvtárban a következő parancs futtatásával:
+2. Másolja a jelszót a **C:\ProgramData\Microsoft Azure site Recovery\private\connection.passphrase** a konfigurációs kiszolgálón. Ezután mentse **passphrase.txtként** ugyanabban a helyi könyvtárban a következő parancs futtatásával:
 
     `echo <passphrase> >passphrase.txt`
 
@@ -300,7 +300,7 @@ Várjon, amíg a szkript be nem fejeződik. Ha a fő cél regisztrálása sikere
 
 #### <a name="install-the-master-target-by-using-interactive-installation"></a>A fő cél telepítése interaktív telepítés használatával
 
-1. Futtassa a következő parancsot a fő cél telepítéséhez. Az ügynök szerepkörhöz válassza a **fő cél**lehetőséget.
+1. Futtassa a következő parancsot a fő cél telepítéséhez. Az ügynök szerepkörhöz válassza a **fő cél** lehetőséget.
 
     ```
     ./install
@@ -329,7 +329,7 @@ Telepítenie kell a VMware-eszközöket vagy a nyílt virtuálisgép-eszközöke
 
 ### <a name="upgrade-the-master-target-server"></a>A fő célkiszolgáló frissítése
 
-Indítsa el a telepítőt. A automatikusan észleli, hogy az ügynök telepítve van a fő célhelyen. A frissítéshez válassza az **Y**lehetőséget.  A telepítés befejezése után a következő parancs használatával keresse meg a telepített fő cél verzióját:
+Indítsa el a telepítőt. A automatikusan észleli, hogy az ügynök telepítve van a fő célhelyen. A frissítéshez válassza az **Y** lehetőséget.  A telepítés befejezése után a következő parancs használatával keresse meg a telepített fő cél verzióját:
 
 `cat /usr/local/.vx_version`
 

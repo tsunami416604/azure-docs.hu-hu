@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
 ms.openlocfilehash: bdc03e8c136606ab7768705b0c8dbcc97782966f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "87088393"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>ASP.NET-webalkalmazás közzététele Azure-beli virtuális gépen a Visual studióból
@@ -33,11 +33,11 @@ A következő szakasz azt ismerteti, hogyan tehet közzé egy meglévő ASP.NET-
 
 1. Nyissa meg a webalkalmazási megoldást a Visual Studio 2019-ben.
 2. Kattintson a jobb gombbal a projektre Megoldáskezelő, majd válassza a **Közzététel...** lehetőséget.
-3. A lap jobb oldalán található nyílra kattintva görgessen végig a közzétételi beállításokon, amíg meg nem találja a **Microsoft Azure Virtual Machines**.  
+3. A lap jobb oldalán található nyílra kattintva görgessen végig a közzétételi beállításokon, amíg meg nem találja a **Microsoft Azure Virtual Machines** .  
 
    ![Közzétételi oldal jobbra nyíl]
 
-4. Válassza a **Microsoft Azure Virtual Machines** ikont, és válassza a **Közzététel**lehetőséget.
+4. Válassza a **Microsoft Azure Virtual Machines** ikont, és válassza a **Közzététel** lehetőséget.
 
    ![Oldal közzététele – Microsoft Azure virtuális gép ikonja]
 

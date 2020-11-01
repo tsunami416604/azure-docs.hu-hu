@@ -14,12 +14,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6658dcd54c7290bbbad0c24c1cc0debd5ead8b18
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 347948734da439691bced01cf3693d0990567748
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789862"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146228"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>Windows rendszerű virtuális gép kiépítése a Azure Portal használatával SQL Server
 
@@ -32,7 +32,7 @@ Az útmutató segítségével saját SQL Server VM hozhat létre. Vagy használj
 > [!TIP]
 > Ha kérdése van az SQL Servert futtató virtuális gépek használatával kapcsolatban, tekintse meg a [gyakori kérdéseket](frequently-asked-questions-faq.md).
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="sql-server-virtual-machine-gallery-images"></a><a id="select"></a> SQL Server virtuálisgép-katalógus rendszerképei
 
@@ -56,7 +56,7 @@ SQL Server virtuális gép létrehozásakor kiválaszthatja a virtuális gépek 
    > A lehetőségekkel kapcsolatos további információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](pricing-guidance.md).
 
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 
 ## <a name="1-configure-basic-settings"></a>1. az alapszintű beállítások konfigurálása
@@ -109,7 +109,7 @@ A **lemezek** lapon adja meg a lemez beállításait.
 ![Az SQL virtuális gép lemezének beállításai](./media/create-sql-vm-portal/azure-sqlvm-disks.png)
   
   
-### <a name="networking"></a>Hálózat
+### <a name="networking"></a>Hálózatkezelés
 
 A **hálózatkezelés** lapon konfigurálja a hálózati beállításokat. 
 
@@ -196,7 +196,7 @@ További információkért lásd: [Configure Azure Key Vault Integration for SQL
 
 A **SQL Server beállítások** lap **tárolási konfiguráció** területén válassza a **konfiguráció módosítása** lehetőséget a teljesítményre optimalizált tárolási konfiguráció lap megnyitásához, és adja meg a tárolási követelményeket.
 
-![SQL virtuális gép tárolójának konfigurációja](./media/create-sql-vm-portal/sql-vm-storage-configuration-provisioning.png)
+![Képernyőkép, amely kiemeli, hogy a tárolási konfiguráció hogyan módosítható.](./media/create-sql-vm-portal/sql-vm-storage-configuration-provisioning.png)
 
 A **Storage optimized for** (Tároló optimalizálási módja) területen válasszon az alábbi lehetőségek közül:
 

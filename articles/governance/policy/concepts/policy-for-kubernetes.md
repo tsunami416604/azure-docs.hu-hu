@@ -3,12 +3,12 @@ title: A Kubernetes Azure Policy megismerése
 description: Ismerje meg, hogyan használja a Azure Policy a Rego-t és a nyílt házirend-ügynököt az Azure-ban vagy a helyszínen futó Kubernetes futtató fürtök kezelésére.
 ms.date: 09/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: bd0dc08583b126b6260999ace14d8fc13c52c1f7
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1e85d7af26e52ea38c09ec0c052b5c6a2787bb80
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676700"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146296"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>A Kubernetes-fürtökhöz tartozó Azure Policy ismertetése
 
@@ -37,7 +37,7 @@ A Kubernetes-fürttel való Azure Policy engedélyezéséhez és használatához
    - [AK-motor](#install-azure-policy-add-on-for-aks-engine)
 
    > [!NOTE]
-   > A telepítéssel kapcsolatos gyakori problémákért lásd: [Hibaelhárítás – Azure Policy bővítmény](../troubleshoot/general.md#add-on-installation-errors).
+   > A telepítéssel kapcsolatos gyakori problémákért lásd: [Hibaelhárítás – Azure Policy bővítmény](../troubleshoot/general.md#add-on-for-kubernetes-installation-errors).
 
 1. [A Kubernetes Azure Policy nyelvének megismerése](#policy-language)
 
@@ -405,13 +405,13 @@ A következő lépésekkel megkeresheti a fürt kezelésére szolgáló beépít
 
    - **Letiltva** – nem kényszeríti ki a szabályzatot a fürtön. A Kubernetes vonatkozó beléptetési kérelmeket nem tagadja meg a rendszer. A megfelelőség értékelésének eredményei továbbra is elérhetők. Amikor új szabályzat-definíciókat hoz létre a fürtök futtatásához, a _letiltott_ beállítás hasznos lehet a szabályzat-definíció teszteléséhez, mivel a rendszer nem tagadja meg a beléptetési kérelmek megsértését.
 
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** gombot.
 
 1. **Paraméterek értékének** beállítása
 
    - Ha ki szeretné zárni a Kubernetes-névtereket a szabályzat kiértékelése alól, a névtér **kizárása** paraméterben határozza meg a névterek listáját. Azt javasoljuk, hogy zárja ki a következőket: _Kube-System_ , _forgalomirányító-System_ és _Azure-arc_ .
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
 Másik megoldásként használja a [szabályzat társítása – portál](../assign-policy-portal.md) rövid útmutatót a Kubernetes szabályzat megkereséséhez és hozzárendeléséhez. Keressen egy Kubernetes házirend-definíciót a "naplózási virtuális gépek" minta helyett.
 

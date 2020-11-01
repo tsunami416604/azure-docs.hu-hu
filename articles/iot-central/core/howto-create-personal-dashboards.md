@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f7dca7352a49e668231f64632371a445985e4de3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68bb4e2ac525270004a698471cd44955cd25fefc
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83634639"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146109"
 ---
 # <a name="create-and-manage-multiple-dashboards"></a>Több irányítópult létrehozása és kezelése
 
@@ -42,7 +42,7 @@ Hozzáadhat például egy **telemetria** csempét az eszköz aktuális hőmérs�
 
 1. Válassza ki az **eszköz sablonját**
 1. Válasszon ki egy eszközt az **eszközök** közül az irányítópult csempén megjeleníteni kívánt eszközhöz. Ezután megjelenik az eszköz azon tulajdonságainak listája, amelyeket a csempén lehet használni.
-1. Ha a csempét az irányítópulton szeretné létrehozni, kattintson a **hőmérséklet** elemre, és húzza azt az irányítópult-területen. Kattintson a **hőmérséklet** elem melletti jelölőnégyzetre, majd kattintson a **csempe hozzáadása**lehetőségre. Az alábbi képernyőfelvételen egy eszköz sablonjának és eszközének kiválasztását láthatja, majd létrehoz egy hőmérséklet-telemetria csempét az irányítópulton.
+1. Ha a csempét az irányítópulton szeretné létrehozni, kattintson a **hőmérséklet** elemre, és húzza azt az irányítópult-területen. Kattintson a **hőmérséklet** elem melletti jelölőnégyzetre, majd kattintson a **csempe hozzáadása** lehetőségre. Az alábbi képernyőfelvételen egy eszköz sablonjának és eszközének kiválasztását láthatja, majd létrehoz egy hőmérséklet-telemetria csempét az irányítópulton.
 1. A bal felső sarokban található **Mentés** elemre kattintva mentheti a módosításokat az irányítópulton.
 
 > [!div class="mx-imgBorder"]
@@ -51,7 +51,7 @@ Hozzáadhat például egy **telemetria** csempét az eszköz aktuális hőmérs�
 Most, hogy megtekinti a személyes irányítópultot, megjelenik az új csempe az eszköz **hőmérséklet** -beállításával:
 
 > [!div class="mx-imgBorder"]
-> ![Irányítópult lap a hőmérséklet csempe részleteivel](media/howto-create-personal-dashboards/temperature-tile-complete.png)
+> ![Képernyőkép, amely megjeleníti az új csempét az eszköz hőmérséklet-beállításával.](media/howto-create-personal-dashboards/temperature-tile-complete.png)
 
 A könyvtárban található egyéb csempe-típusok megismerésével megtudhatja, hogyan szabhatja testre a személyes irányítópultok testreszabását.
 
@@ -64,11 +64,11 @@ Több személyes irányítópultot is használhat, és válthat egymás között
 > [!div class="mx-imgBorder"]
 > ![Váltás az irányítópultok között](media/howto-create-personal-dashboards/switch-dashboards.png)
 
-Szerkesztheti a személyes irányítópultokat, és törölheti azokat az irányítópultokat, amelyekre már nincs szüksége. Ha Ön **rendszergazda**, lehetősége van az alkalmazás szintű irányítópultok szerkesztésére és törlésére is.
+Szerkesztheti a személyes irányítópultokat, és törölheti azokat az irányítópultokat, amelyekre már nincs szüksége. Ha Ön **rendszergazda** , lehetősége van az alkalmazás szintű irányítópultok szerkesztésére és törlésére is.
 
 > [!div class="mx-imgBorder"]
 > ![Irányítópultok törlése](media/howto-create-personal-dashboards/delete-dashboards.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan hozhat létre és kezelhet személyes irányítópultokat, [megtudhatja, hogyan kezelheti az alkalmazás beállításait](howto-manage-preferences.md).

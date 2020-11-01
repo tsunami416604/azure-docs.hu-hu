@@ -1,18 +1,18 @@
 ---
 title: Gyakori hibák elhárítása
 description: Ismerje meg, hogy miként lehet elhárítani a szabályzat-definíciókat, a különböző SDK-t és a Kubernetes bővítményét.
-ms.date: 10/05/2020
+ms.date: 10/30/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 98b5f1658a7d3fc7c4a7db7145b92bb6065befc5
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 74b622dd41fb28e845a35780e5d06588189ec029
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999889"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146279"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Hibák elhárítása a Azure Policy használatával
 
-A házirend-definíciók létrehozásakor, az SDK-val való együttműködésben vagy a Kubernetes-bővítmény [Azure Policy](../concepts/policy-for-kubernetes.md) beállításában hibák léphetnek fel. Ez a cikk az esetlegesen előforduló különböző hibákat és azok megoldását ismerteti.
+A házirend-definíciók létrehozásakor, az SDK-val való együttműködésben vagy a Kubernetes-bővítmény [Azure Policy](../concepts/policy-for-kubernetes.md) beállításában hibák léphetnek fel. Ez a cikk az esetlegesen felmerülő általános hibákat és azok megoldását ismerteti.
 
 ## <a name="finding-error-details"></a>Hiba részleteinek megállapítása
 
@@ -56,7 +56,7 @@ Először is várjon, amíg az értékelés befejeződik, és a megfelelőségi 
 
 #### <a name="issue"></a>Probléma
 
-Egy erőforrás nem a _megfelelő_ vagy _nem megfelelő_, az adott erőforrás számára várt értékelési állapotban van.
+Egy erőforrás nem a _megfelelő_ vagy _nem megfelelő_ , az adott erőforrás számára várt értékelési állapotban van.
 
 #### <a name="cause"></a>Ok
 
@@ -88,14 +88,14 @@ Az Azure Policy által várhatóan végrehajtott erőforrás nem, és nincs beje
 
 #### <a name="cause"></a>Ok
 
-A házirend-hozzárendelés _le_lett állítva a [enforcementMode](../concepts/assignment-structure.md#enforcement-mode) . Míg a kényszerítési mód le van tiltva, a házirend hatálya nem kényszerített, és nincs bejegyzés a tevékenység naplójában.
+A házirend-hozzárendelés _le_ lett állítva a [enforcementMode](../concepts/assignment-structure.md#enforcement-mode) . Míg a kényszerítési mód le van tiltva, a házirend hatálya nem kényszerített, és nincs bejegyzés a tevékenység naplójában.
 
 #### <a name="resolution"></a>Feloldás
 
 A szabályzat-hozzárendelés kényszerítésének hibaelhárításához kövesse az alábbi lépéseket:
 
 1. Először is várjon, amíg az értékelés befejeződik, és a megfelelőségi eredmények elérhetővé válnak Azure Portal vagy SDK-ban. Ha Azure PowerShell vagy REST API használatával szeretne új értékelési vizsgálatot kezdeni, tekintse [meg az igény szerinti értékelés vizsgálatát](../how-to/get-compliance-data.md#on-demand-evaluation-scan)ismertető témakört.
-1. Győződjön meg arról, hogy a hozzárendelési paraméterek és a hozzárendelési hatókör helyesen van beállítva, és hogy a **EnforcementMode** _engedélyezve_van. 
+1. Győződjön meg arról, hogy a hozzárendelési paraméterek és a hozzárendelési hatókör helyesen van beállítva, és hogy a **EnforcementMode** _engedélyezve_ van. 
 1. Ellenőrizze a [szabályzatdefiníciós módot](../concepts/definition-structure.md#mode):
    - Az összes erőforrástípus "all" üzemmódja.
    - Az "indexelt" mód, ha a házirend-definíció címkéket vagy helyet keres.
@@ -135,7 +135,7 @@ A támogatott függvények, például a vagy a használata esetén a `parameter(
 
 Ha egy függvényt át szeretne adni egy házirend-definíció részévé, a teljes karakterláncot a `[` tulajdonsághoz hasonló módon kell kinéznie `[[resourceGroup().tags.myTag]` . A escape-karakter hatására a Resource Manager az értéket karakterláncként kezeli a sablon feldolgozásakor. Azure Policy ezután a függvényt a házirend-definícióba helyezi, ami lehetővé teszi, hogy az a várt módon dinamikus legyen. További információ: [szintaxis és kifejezések Azure Resource Manager sablonokban](../../../azure-resource-manager/templates/template-expressions.md).
 
-## <a name="add-on-installation-errors"></a>Telepítési hibák a bővítményben
+## <a name="add-on-for-kubernetes-installation-errors"></a>Bővítmény a Kubernetes telepítési hibáihoz
 
 ### <a name="scenario-install-using-helm-chart-fails-on-password"></a>Forgatókönyv: a Helm diagram használatával történő telepítés sikertelen a jelszóval
 
@@ -188,10 +188,131 @@ Részletes tájékoztatást a következő blogbejegyzésben talál:
 
 [A vendég konfigurációjának naplózási házirendjeihez kiadott fontos változás](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
+## <a name="add-on-for-kubernetes-general-errors"></a>Bővítmény a Kubernetes általános hibáihoz
+
+### <a name="scenario-add-on-doesnt-work-with-aks-clusters-on-version-119-preview"></a>Forgatókönyv: a bővítmény a 1,19-es verzióban nem működik az AK-fürtökkel (előzetes verzió)
+
+#### <a name="issue"></a>Probléma
+
+A 1,19-es verzió-fürtök a következő hibát adják vissza a forgalomirányító vezérlő és a szabályzat webhook hüvelye használatával:
+
+```
+2020/09/22 20:06:55 http: TLS handshake error from 10.244.1.14:44282: remote error: tls: bad certificate
+```
+
+#### <a name="cause"></a>Ok
+
+A 1,19-es (előzetes) verzióban található AK-clusers még nem kompatibilis a Azure Policy bővítménnyel.
+
+#### <a name="resolution"></a>Feloldás
+
+Kerülje a Kubernetes 1,19 (előzetes verzió) használatát a Azure Policy bővítménnyel. A bővítmény bármely támogatott általánosan elérhető verzióval használható, például 1,16, 1,17 vagy 1,18.
+
+### <a name="scenario-add-on-is-unable-to-reach-the-azure-policy-service-endpoint-due-to-egress-restrictions"></a>Forgatókönyv: a bővítmény nem tudja elérni a Azure Policy szolgáltatási végpontot a kimenő forgalomra vonatkozó korlátozások miatt
+
+#### <a name="issue"></a>Probléma
+
+A bővítmény nem tudja elérni a Azure Policy szolgáltatás végpontját, és a következő hibák valamelyikét adja vissza:
+
+- `failed to fetch token, service not reachable`
+- `Error getting file "Get https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/template.yaml: dial tcp 151.101.228.133.443: connect: connection refused`
+
+#### <a name="cause"></a>Ok
+
+Ez a probléma akkor fordul elő, ha a kimenő forgalom zárolva van.
+
+#### <a name="resolution"></a>Feloldás
+
+Győződjön meg arról, hogy a következő cikkek tartományai és portjai nyitva vannak:
+
+- [Szükséges kimenő hálózati szabályok és teljes tartománynevek az AK-fürtökhöz](../../../aks/limit-egress-traffic.md#required-outbound-network-rules-and-fqdns-for-aks-clusters)
+- [Azure Policy bővítmény telepítése az Azure arc használatára képes Kubernetes (előzetes verzió)](../concepts/policy-for-kubernetes.md#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
+
+### <a name="scenario-add-on-is-unable-to-reach-the-azure-policy-service-endpoint-due-to-aad-pod-identity-configuration"></a>Forgatókönyv: a bővítmény nem tudja elérni a Azure Policy szolgáltatási végpontot a HRE-Pod-Identity konfiguráció miatt
+
+#### <a name="issue"></a>Probléma
+
+A bővítmény nem tudja elérni a Azure Policy szolgáltatás végpontját, és a következő hibák valamelyikét adja vissza:
+
+- `azure.BearerAuthorizer#WithAuthorization: Failed to refresh the Token for request to https://gov-prod-policy-data.trafficmanager.net/checkDataPolicyCompliance?api-version=2019-01-01-preview: StatusCode=404`
+- `adal: Refresh request failed. Status Code = '404'. Response body: getting assigned identities for pod kube-system/azure-policy-8c785548f-r882p in CREATED state failed after 16 attempts, retry duration [5]s, error: <nil>`
+
+#### <a name="cause"></a>Ok
+
+Ez a hiba akkor fordul elő, ha a _Add-Pod-Identity_ telepítve van a fürtön, és a _Kube rendszer_ nem zárja ki a _HRE-Pod identitást_ .
+
+A _HRE-Pod-Identity_ összetevő csomópont felügyelt identitás (NMI) hüvelye módosítja a csomópontok iptables-t az Azure-példány metaadatainak végpontjának hívására. Ez a beállítás azt jelenti, hogy a metaadat-végpontra vonatkozó összes kérést a NMI akkor is elfogja, ha a pod nem használja a _HRE-Pod-Identity_ kapcsolót.
+**AzurePodIdentityException** A CRD úgy konfigurálható, hogy tájékoztassa a _HRE-Pod-Identity_ attribútumot arról, hogy a CRD-ben definiált címkével rendelkező Pod-ból származó metaadatokra irányuló kérések a NMI-ben végzett feldolgozás nélkül legyenek proxy.
+
+#### <a name="resolution"></a>Feloldás
+
+Zárja ki a System hüvelyt a `kubernetes.azure.com/managedby: aks` _Kube-System_ névtérben a _HRE-Pod-Identity_ címkével a **AzurePodIdentityException** CRD konfigurálásával.
+
+További információ: [a HRE Pod Identity letiltása egy adott Pod/alkalmazáshoz](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
+
+A kivételek konfigurálásához tekintse meg a következő példát:
+
+```yaml
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzurePodIdentityException
+metadata:
+  name: mic-exception
+  namespace: default
+spec:
+  podLabels:
+    app: mic
+    component: mic
+---
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzurePodIdentityException
+metadata:
+  name: aks-addon-exception
+  namespace: kube-system
+spec:
+  podLabels:
+    kubernetes.azure.com/managedby: aks
+```
+
+### <a name="scenario-the-resource-provider-isnt-registered"></a>Forgatókönyv: az erőforrás-szolgáltató nincs regisztrálva
+
+#### <a name="issue"></a>Probléma
+
+A bővítmény elérheti a Azure Policy szolgáltatás végpontját, de a következő hibaüzenetet látja:
+
+```
+The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See https://aka.ms/policy-register-subscription for how to register subscriptions.
+```
+
+#### <a name="cause"></a>Ok
+
+Az `Microsoft.PolicyInsights` erőforrás-szolgáltató nincs regisztrálva, és a bővítménynek regisztrálnia kell a szabályzat-definíciók beolvasásához és a megfelelőségi részletek visszaadásához.
+
+#### <a name="resolution"></a>Feloldás
+
+Regisztrálja az `Microsoft.PolicyInsights` erőforrás-szolgáltatót. Útmutatásért lásd: [erőforrás-szolgáltató regisztrálása](../../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
+
+### <a name="scenario-the-subscript-is-disabled"></a>Forgatókönyv: az alszkript le van tiltva
+
+#### <a name="issue"></a>Probléma
+
+A bővítmény elérheti a Azure Policy szolgáltatás végpontját, de a következő hibaüzenetet látja:
+
+```
+The subscription '{subId}' has been disabled for azure data-plane policy. Please contact support.
+```
+
+#### <a name="cause"></a>Ok
+
+Ez a hiba azt jelzi, hogy az előfizetés problémás, és a szolgáltatás jelzője `Microsoft.PolicyInsights/DataPlaneBlocked` hozzá lett adva az előfizetés letiltásához.
+
+#### <a name="resolution"></a>Feloldás
+
+A `azuredg@microsoft.com` probléma kivizsgálásához és megoldásához lépjen kapcsolatba a szolgáltatás csapatával. 
+
 ## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
 - Választ kaphat a szakértőktől a [Microsoft Q&A](/answers/topics/azure-policy.html)használatával.
 - Az [@AzureSupport](https://twitter.com/azuresupport) Azure-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával, a hivatalos Microsoft Azure fiókkal csatlakozhat a felhasználói élmény fokozásához: válaszok, támogatás és szakértők.
-- Ha további segítségre van szüksége, egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
+- Ha további segítségre van szüksége, egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése** lehetőséget.

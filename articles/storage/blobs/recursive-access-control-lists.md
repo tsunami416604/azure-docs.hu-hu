@@ -9,12 +9,12 @@ ms.date: 10/29/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d4c30029a71935cd3b8817be9010ff0fd11fa61a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 56a797864b70cb1be4a1bc5d4b79c44348d43dae
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077693"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93144426"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlési listák (ACL-ek) rekurzív beállítása Azure Data Lake Storage Gen2
 
@@ -970,8 +970,6 @@ Ha azt szeretné, hogy a folyamat az engedélyekkel kapcsolatos hibák mellett b
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Annak érdekében, hogy a folyamat befejeződjön, adjon meg egy **AccessControlChangedOptions** objektumot, és állítsa be az objektum **ContinueOnFailure** tulajdonságát a következőre: ``true`` .
-
 Ez a példa az ACL-bejegyzéseket rekurzív módon állítja be. Ha ez a kód egy engedélyezési hibát észlel, akkor a hibát rögzíti, és folytatja a végrehajtást. Ez a példa az eredményeket (a hibák számát is beleértve) kinyomtatja a konzolra. 
 
 ```powershell
@@ -1088,7 +1086,7 @@ def continue_on_failure():
 
 ---
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Források
 
 Ez a szakasz a kódtárak és a kód mintáinak hivatkozásait tartalmazza.
 

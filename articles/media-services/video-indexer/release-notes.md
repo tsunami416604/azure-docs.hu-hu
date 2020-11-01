@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 09/03/2020
+ms.date: 10/30/2020
 ms.author: juliako
-ms.openlocfilehash: e2b45ebf9acea7334678110015d8cfd3022675f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f7bf41bd864f6780eee00938f35bb34d2336eb5
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505338"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145752"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer kibocsátási megjegyzései
 
@@ -29,6 +29,21 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 * Ismert problémák
 * Hibajavítások
 * Elavult funkciók
+
+## <a name="october-2020"></a>2020. október
+
+### <a name="animated-character-identification-improvements"></a>Az animált karakterek azonosításának fejlesztése  
+
+Video Indexer támogatja az animált tartalomban lévő karakterek észlelését, csoportosítását és felismerését Cognitive Services egyéni jövőképtel való integráció révén. Az észlelés és a karakterek felismerése során jelentős előrelépést tettünk a mesterséges intelligencia-algoritmusban, mivel az elemzés pontossága és az azonosított karakterek jelentős mértékben javulnak.
+
+### <a name="planned-video-indexer-website-authenticatication-changes"></a>Tervezett Video Indexer webhely authenticatication változásai
+
+2021. január 1-től már nem fog tudni regisztrálni és bejelentkezni a [video Indexer](https://www.videoindexer.ai/) webhelyre (próbaverziós ajánlat) a Facebook vagy a LinkedIn használatával.
+
+A következő szolgáltatók egyikének használatával regisztrálhat és bejelentkezhet: Azure AD, Microsoft és Google.
+
+> [!NOTE]
+> Azt javasoljuk, hogy 2021. január 1. előtt exportálja a tartalmat, mert a LinkedIn-hez és a Facebookhoz csatlakozó fiókok törlődnek, és a tartalom többé nem lesz elérhető.
 
 ## <a name="august-2020"></a>2020. augusztus
 
@@ -123,7 +138,7 @@ Az elkövetkező hetekben módosítani fogjuk, és a [video Indexer webhely](htt
     * Az URL-cím cseréje a Video Indexer widget API-ra mutató URL-címmel (például az adatellenőrzési [widgettel](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget))
     * A Video Indexer webhely használata új beágyazott URL-cím létrehozásához:
          
-         Nyomja meg a **Lejátszás** gombot a videó oldalának megtekintéséhez – > kattintson a ** &lt; / &gt; beágyazás** gombra – > másolja az URL-címet az alkalmazásba:
+         Nyomja meg a **Lejátszás** gombot a videó oldalának megtekintéséhez – > kattintson a **&lt; / &gt; beágyazás** gombra – > másolja az URL-címet az alkalmazásba:
    
     A regionális URL-címek nem támogatottak, és az elkövetkező hetekben le lesznek tiltva.
 

@@ -1,32 +1,32 @@
 ---
-title: Apache Hive a naplófájlok kitöltésére szolgáló naplók – Azure HDInsight
-description: A Apache Hive naplók kitöltik a lemezterületet az Azure HDInsight lévő fő csomópontokon.
+title: 'Hibakeresés: Apache Hive naplófájlok kitöltése lemezterület – Azure HDInsight'
+description: Ez a cikk azokat a hibaelhárítási lépéseket ismerteti, amikor Apache Hive naplók kitöltik a lemezterületet az Azure HDInsight lévő fő csomópontokon.
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: nisgoel
 ms.author: nisgoel
 ms.reviewer: jasonh
 ms.date: 10/05/2020
-ms.openlocfilehash: 5554a66927fc70f22ec552b938ae62038a04acb9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 64bf5714f5eb99df9929a47fef414a827ec680af
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533019"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145633"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>Forgatókönyv: Apache Hive naplók kitöltik a lemezterületet az Azure HDInsight lévő fő csomópontokon
 
-Ez a cikk az Azure HDInsight-fürtökön található főcsomópontokon nem elegendő lemezterülettel kapcsolatos problémák megoldását és lehetséges megoldásait ismerteti.
+Ez a cikk az Azure HDInsight-fürtök főcsomópontjain a nem elegendő lemezterülettel kapcsolatos problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
 
 ## <a name="issue"></a>Probléma
 
-Egy Apache Hive-vagy LLAP-fürtön a nem kívánt naplók a teljes lemezterületet veszik fel a fő csomópontokon. Ennek következtében a következő problémák észlelhetők.
+Egy Apache Hive-vagy LLAP-fürtön a nem kívánt naplók a teljes lemezterületet veszik fel a fő csomópontokon. Ez az állapot a következő problémákhoz vezethet:
 
-1. Az SSH-hozzáférés meghiúsul, mert nincs szóköz a főcsomóponton.
-2. A Ambari *http-hibát ad: a 503 szolgáltatás nem érhető el* .
-3. A HiveServer2 Interactive nem tud újraindulni.
+- Az SSH-hozzáférés meghiúsul, mert nincs szóköz a fő csomóponton.
+- Ambari-dob *http-hiba: a 503 szolgáltatás nem érhető el* .
+- A HiveServer2 Interactive nem tud újraindulni.
 
-A naplók a probléma előfordulásakor az `ambari-agent` alábbiakat mutatják be.
+A `ambari-agent` naplók a következő bejegyzéseket fogják tartalmazni a probléma bekövetkezésekor:
 ```
 ambari_agent - Controller.py - [54697] - Controller - ERROR - Error:[Errno 28] No space left on device
 ```
@@ -36,17 +36,17 @@ ambari_agent - HostCheckReportFileHandler.py - [54697] - ambari_agent.HostCheckR
 
 ## <a name="cause"></a>Ok
 
-A speciális kaptár-log4j konfigurációk esetében az aktuális alapértelmezett törlési ütemterv az utolsó módosítás dátuma alapján 30 napnál régebbi fájlokra van beállítva.
+A speciális kaptár log4j-konfigurációk esetében a jelenlegi alapértelmezett törlési ütemterv a 30 napnál régebbi fájlok törlése az utolsó módosítás dátuma alapján.
 
 ## <a name="resolution"></a>Feloldás
 
-1. A Ambari-portálon navigáljon a kaptár összetevő összefoglalásához, és kattintson a `Configs` Tab gombra.
+1. Nyissa meg a kaptár-összetevő összegzését a Ambari-portálon, és válassza a **konfigurációk** lapot.
 
-2. Ugrás a `Advanced hive-log4j` Speciális beállítások területen található szakaszra.
+2. Nyissa meg a `Advanced hive-log4j` **Speciális beállítások** szakaszát.
 
-3. Állítsa a `appender.RFA.strategy.action.condition.age` paramétert egy tetszőleges korra. Példa 14 napra: `appender.RFA.strategy.action.condition.age = 14D`
+3. Állítsa a `appender.RFA.strategy.action.condition.age` paramétert egy tetszőleges korra. Ez a példa az életkort 14 napra állítja be: `appender.RFA.strategy.action.condition.age = 14D`
 
-4. Ha nem látja a kapcsolódó beállításokat, adja hozzá a következő beállításokat.
+4. Ha nem látja a kapcsolódó beállításokat, fűzze hozzá ezeket a beállításokat:
     ```
     # automatically delete hive log
     appender.RFA.strategy.action.type = Delete
@@ -57,7 +57,7 @@ A speciális kaptár-log4j konfigurációk esetében az aktuális alapértelmeze
     appender.RFA.strategy.action.PathConditions.regex = hive*.*log.*
     ```
 
-5. Állítsa `hive.root.logger` a `INFO,RFA` következőre: Az alapértelmezett beállítás a hibakeresés, ami nagyon nagy méretűvé teszi a naplókat.
+5. A értékre állítva `hive.root.logger` `INFO,RFA` az alábbi példában látható módon. Az alapértelmezett beállítás a `DEBUG` , amely a naplókat nagy méretűvé teszi.
 
     ```
     # Define some default values that can be overridden by system properties

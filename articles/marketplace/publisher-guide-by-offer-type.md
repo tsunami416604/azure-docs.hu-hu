@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 10/06/2020
-ms.openlocfilehash: 54775d7e9923505c6e68a47feed6726b9cb84c47
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0d22e10a71c3eee2026f55a73074ba02c68c2b78
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129932"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146177"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Közzétételi útmutató ajánlattípusok szerint
 
@@ -39,10 +39,8 @@ A következő táblázat a partner Center kereskedelmi Piactéri ajánlatának t
 | [**IoT Edge modul**](iot-edge-module.md) | Azure IoT Edge modulok a IoT Edge által kezelt legkisebb számítási egységek, és tartalmazhatnak Microsoft-szolgáltatásokat (például Azure Stream Analytics), harmadik féltől származó szolgáltatásokat vagy a saját megoldásokra vonatkozó kódokat. |
 | [**Felügyelt szolgáltatás**](partner-center-portal/create-new-managed-service-offer.md) | Az [Azure Lighthouse](../lighthouse/overview.md)használatával felügyelt szolgáltatásokat hozhat létre, és kezelheti az ügyfelek által delegált előfizetéseket vagy erőforráscsoportokat.|
 | [**Power bi alkalmazás** <br/> **Microsoft 365**](appsource-offer-publishing-guide.md) | Közzéteheti azokat a AppSource-ajánlatokat, amelyek Power BI és Microsoft 365 kiépítésére vagy kiterjesztésére épülnek.|
-| [**Szolgáltatásként szolgáló szoftver**](plan-saas-offer.md) | A szolgáltatott szoftver (SaaS) ajánlat típusa lehetővé teszi az ügyfél számára, hogy előfizetésként vásárolja meg SaaS-alapú, technikai megoldásait. |
+| [**Szolgáltatásként szolgáló szoftver**](plan-saas-offer.md) | A szolgáltatott szoftver (SaaS) ajánlat típusa lehetővé teszi az ügyfél számára, hogy előfizetésként vásárolja meg SaaS-alapú, technikai megoldásait. Az SaaS-ajánlatok egyszeri bejelentkezési követelményeivel kapcsolatos információkért lásd: [Az Azure ad és a transactd SaaS-ajánlatok a kereskedelmi piactéren](azure-ad-saas.md). |
 
-
-Az egyszeri bejelentkezésre vonatkozó követelményekről és az ajánlatok típusairól az [**Azure ad-követelmények**](enable-appsource-marketplace-using-azure-ad.md)című témakörben olvashat bővebben.
 
 ## <a name="next-steps"></a>Következő lépések
 
