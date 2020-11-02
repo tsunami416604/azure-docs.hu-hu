@@ -39,6 +39,8 @@
           href: how-to-automatic-language-detection.md
         - name: Kötegelt átírási API használata
           href: batch-transcription.md
+        - name: Kiejtés kiértékelése
+          href: how-to-pronunciation-assessment.md
     - name: Oktatóanyagok
       items:
         - name: Blobtárolóban tárolt beszéd felismerése

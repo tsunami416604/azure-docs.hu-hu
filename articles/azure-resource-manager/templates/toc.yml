@@ -146,7 +146,9 @@
               href: ../../azure-portal/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Erőforrás-diagram
               href: ../../governance/resource-graph/shared-query-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)
+            - name: Szerepköralapú hozzáférés-vezérlés – egyéni szerepkörök
+              href: ../../role-based-access-control/custom-roles-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Szerepköralapú hozzáférés-vezérlés – szerepkör-hozzárendelés
               href: ../../role-based-access-control/quickstart-role-assignments-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Service Health
               href: ../../service-health/alerts-activity-log-service-notifications-arm.md?toc=/azure/azure-resource-manager/templates/toc.json

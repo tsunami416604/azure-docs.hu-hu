@@ -2,14 +2,15 @@
 author: bandersmsft
 ms.author: banders
 ms.service: cost-management-billing
+ms.subservice: cloudyn
 ms.topic: include
-ms.date: 03/20/2020
-ms.openlocfilehash: fbcb962d45fbe0f701a3d42fcbe144b0d02ae29e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 10/23/2020
+ms.openlocfilehash: 7824f25e9c78b2c3fd3ea892616ba96977d58754
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065857"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537344"
 ---
 > [!NOTE]
-> A Cloudynt 2020 végével kivezetjük a használatból. A meglévő Cloudyn-funkciók, ahol ez megoldható, közvetlenül az Azure Portallal lesznek integrálva. A CSP-ügyfelek kivételével új ügyfeleket most már nem regisztrálunk. A meglévő termék támogatása egészen addig elérhető lesz, amíg a kivezetés teljesen le nem zárul. Ha információkra van szüksége annak meghatározásához, hogy az Azure Cost Management vagy a Cloudyn felel-e meg jobban az Ön költségkezelési igényeinek, tekintse meg [az Azure Cost Management és a Cloudyn használata közötti döntésben](../articles/cost-management-billing/costs/choose-between-azure-cost-management-cloudyn.md) segítő cikket.
+> A Cloudynt 2020 végével kivezetjük a használatból. A meglévő Cloudyn-funkciók, ahol ez megoldható, közvetlenül az Azure Portallal lesznek integrálva. Új ügyfeleket már nem regisztrálunk. A meglévő termék támogatása egészen addig elérhető lesz, amíg a kivezetés teljesen le nem zárul.

@@ -94,6 +94,8 @@
       href: enable-diagnostic-logging.md
     - name: Az FHIR-hez készült Azure IoT-összekötő (előzetes verzió) metrikáinak exportálása a diagnosztikai beállításokon keresztül
       href: iot-metrics-diagnostics-export.md
+    - name: Az FHIR-hez készült Azure IoT-összekötő (előzetes verzió) metrikáinak megtekintése és konfigurálása
+      href: iot-metrics-display.md
     - name: Jogkivonat beszerzése az Azure API for FHIR-hoz – parancssori felület
       href: get-healthcare-apis-access-token-cli.md
     - name: Az FHIR-hez készült Azure IoT-összekötő hibaelhárítása (előzetes verzió)

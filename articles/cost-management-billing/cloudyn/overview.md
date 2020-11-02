@@ -3,33 +3,29 @@ title: Az Azure-beli Cloudyn áttekintése
 description: A Cloudyn egy többfelhős költségkezelő megoldás, amely segítséget nyújt az Azure és egyéb felhőerőforrások használatához.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/12/2020
+ms.date: 10/23/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.reviewer: benshy
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3acc13ca535808f14cb01d50e38f6bd4d12902fc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 74d171a4c694f6d720ec3882f97d18e43aecc63f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684439"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543287"
 ---
 # <a name="what-is-the-cloudyn-service"></a>Mi az a Cloudyn szolgáltatás?
 
-A Microsoft leányvállalata, a Cloudyn lehetővé teszi az Azure-erőforrások és egyéb felhőszolgáltatók felhőhasználatának és költségeinek követését, az AWS-t és a Google-t is beleértve. A könnyen értelmezhető irányítópult-jelentések segítenek a költséglefoglalásban és a költséghelyi visszacsatolásban/elszámolásban. A Cloudyn segít optimalizálni a felhő költségeit, mivel azonosítja azokat az alacsony kihasználtságú erőforrásokat, amelyeket kezelhet és módosíthat.
+A Microsoft leányvállalata, a Cloudyn lehetővé teszi az Azure-erőforrások felhőhasználatának és költségeinek követését. A könnyen értelmezhető irányítópult-jelentések segítenek a költséglefoglalásban és a költséghelyi visszacsatolásban/elszámolásban. A Cloudyn segít optimalizálni a felhő költségeit, mivel azonosítja azokat az alacsony kihasználtságú erőforrásokat, amelyeket kezelhet és módosíthat.
 
 Bevezető videó: [Az Azure Cloudyn bemutatása](https://azure.microsoft.com/resources/videos/azure-cost-management-overview-and-demo/).
  
 Az Azure Cost Management hasonló funkciókat kínál, mint a Cloudyn. Az Azure Cost Management egy natív Azure költségkezelő megoldás. Segít kezelni a költségvetéseket, exportálni az adatokat, valamint áttekinteni és végrehajtani az optimalizálási javaslatokat pénzmegtakarítás céljából. További információ: [Azure Cost Management](../cost-management-billing-overview.md).
  
 [!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
-
-[Az Azure Cost Management és a Cloudyn videója](https://www.youtube.com/watch?v=15DzKPMBRxM) ajánlásokat mutat be arra vonatkozóan, hogy az üzleti igényeknek megfelelően mikor érdemes az Azure Cost Management vagy a Cloudyn mellett dönteni.
- 
->[!VIDEO https://www.youtube.com/embed/15DzKPMBRxM]
 
 ## <a name="monitor-usage-and-spending"></a>Használat és költségek monitorozása
 
@@ -56,6 +52,4 @@ Ha AWS lefoglalt példányokat helyezett üzembe, az optimalizálási jelentése
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte a Cloudynt, a következő lépés a felhőalapú környezet regisztrálása és az adatok megismerése.
-
-- [Regisztrálás a CSP partnerprogrammal és a költségadatok megtekintése](quick-register-csp.md)
+- [A használat és a költségek áttekintése](tutorial-review-usage.md)

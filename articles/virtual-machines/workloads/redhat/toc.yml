@@ -1,15 +1,17 @@
 - name: Áttekintés
   href: overview.md
-- name: Red Hat gyorsútmutatók
-  items: null
-- name: Gyorsútmutató – WildFly a CentOS-en
-  href: wildfly-on-centos.md
 - name: Red Hat Enterprise Linux-rendszerképek
   items:
-    - name: Red Hat Enterprise Linux-rendszerkép áttekintése
+    - name: RHEL-rendszerképek áttekintése
       href: redhat-images.md
-    - name: Red Hat Enterprise Linux-rendszerképek listája
+    - name: RHEL-rendszerképek listája
       href: redhat-imagelist.md
+- name: Red Hat Java-gyorsútmutatók
+  items:
+    - name: JBoss EAP + RHEL virtuális gépen/VMSS-en
+      href: jboss-eap-on-rhel.md
+    - name: WildFly + CentOS virtuális gépen
+      href: wildfly-on-centos.md
 - name: A Red Hat frissítési infrastruktúrája az Azure-ban
   href: redhat-rhui.md
 - name: Red Hat Enterprise Linux BYOS-rendszerképajánlat

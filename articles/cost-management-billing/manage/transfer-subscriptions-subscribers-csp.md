@@ -6,18 +6,22 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 10/22/2020
 ms.author: banders
-ms.openlocfilehash: ae504072e2a2cc481217933478ccbfb7bc3372b3
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 69d6544485e356741634749dd91ba6485cfbb31c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132363"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460682"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Azure-előfizetések átvitele az előfizetők és a CSP-k között
 
 Ez a cikk magas szintű lépéseket mutat be az Azure-előfizetések felhőszolgáltatói (CSP-) partnerek és ügyfeleik közötti átviteléhez. Az itt található információk segítséget nyújtanak az Azure-előfizetőknek a partnereikkel való koordinációhoz. A Microsoft-partnerek által az átviteli folyamathoz használt információk dokumentációját lásd: [Megtudhatja, hogyan adhatja át egy ügyfél Azure-előfizetéseit egy másik partnernek](/partner-center/switch-azure-subscriptions-to-a-different-partner).
+
+Az átviteli kérés elindítása előtt töltse le vagy exportálja a megőrizni kívánt költség- és számlázási adatokat. A számlázási és használati adatok átvitele nem történik meg az előfizetéssel együtt. További információ a költségkezelési adatok exportálásáról: [Exportált adatok létrehozása és kezelése](../costs/tutorial-export-acm-data.md). További információ a számla- és használati adatok letöltéséről: [Az Azure számlázási és napi használati adatainak letöltése vagy megtekintése](download-azure-invoice-daily-usage-date.md).
+
+Ha rendelkezik meglévő foglalásokkal, azok az előfizetés átvitelét követően már nem lesznek érvényesek. Az előfizetés átvitele előtt mindenképpen [törölje a foglalásokat, és kérjen értük visszatérítést](../reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>Nagyvállalati szerződés átvitele CSP-partner részére
 

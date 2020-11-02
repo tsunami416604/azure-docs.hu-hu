@@ -9,12 +9,12 @@ metadata:
   author: yegu-ms
   ms.author: yegu
   ms.date: 12/16/2019
-  ms.openlocfilehash: cbf495563a6d3a9000778d8980a506b6726fb658
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 2655c1a5b3a99422a71a2acc18671d9fdd31baa5
+  ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "88006009"
+  ms.lasthandoff: 10/30/2020
+  ms.locfileid: "93099997"
 landingContent:
 - title: Az Azure Cache for Redis névjegye
   linkLists:
@@ -24,22 +24,22 @@ landingContent:
       url: cache-overview.md
   - linkListType: video
     links:
-    - text: Felügyeleti beállítások
-      url: https://azure.microsoft.com/resources/videos/azure-redis-cache-administration-options/
-    - text: Biztonsági gyorsítótárazás
-      url: https://azure.microsoft.com/resources/videos/azure-redis-security-cacheing/
     - text: Ajánlott eljárások
       url: https://azure.microsoft.com/resources/videos/azure-redis-cache-best-practices/
     - text: A teljesítmény javítása
       url: https://azure.microsoft.com/resources/videos/increase-performance-through-redis-cluster-in-azure-redis-cache/
+    - text: Biztonsági gyorsítótárazás
+      url: https://azure.microsoft.com/resources/videos/azure-redis-security-cacheing/
+    - text: Felügyeleti beállítások
+      url: https://azure.microsoft.com/resources/videos/azure-redis-cache-administration-options/
   - linkListType: whats-new
     links:
-    - text: Gyakori kérdések
-      url: cache-faq.md
+    - text: Nagyvállalati szintű gyorsítótár létrehozása
+      url: quickstart-create-redis-enterprise.md
     - text: Ajánlott eljárások az Azure Cache for Redis használatához
       url: cache-best-practices.md
-    - text: Az Azure Cache for Redis ASP.NET munkamenetállapot-szolgáltatója
-      url: cache-aspnet-session-state-provider.md
+    - text: Gyakori kérdések
+      url: cache-faq.md
 - title: 'Gyorsútmutatók: Azure Cache for Redis'
   linkLists:
   - linkListType: quickstart
@@ -58,8 +58,12 @@ landingContent:
       url: cache-python-get-started.md
   - linkListType: tutorial
     links:
-    - text: Gyorsítótár-feltöltési ranglista létrehozása az ASP.NET-en
-      url: cache-web-app-cache-aside-leaderboard.md
+    - text: Munkamenetállapot-szolgáltató használata
+      url: cache-aspnet-session-state-provider.md
+    - text: Kimeneti gyorsítótár-szolgáltató használata
+      url: cache-aspnet-output-cache-provider.md
+    - text: A Spring Boot Initializer használata
+      url: /azure/developer/java/spring-framework/configure-spring-boot-initializer-java-app-with-redis-cache
   - linkListType: get-started
     links:
     - text: Példák

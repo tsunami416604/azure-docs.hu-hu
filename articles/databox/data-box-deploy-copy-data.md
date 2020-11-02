@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/29/2019
+ms.date: 10/20/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9427ec4530ac249d5b8059d04fc85f1183c0081c
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: ced33bb17e9c24faa127b27adacce9cab011e1d8
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123891"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426262"
 ---
 ::: zone target="docs"
 
@@ -74,11 +74,11 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
 
     ![Megosztások hitelesítő adatainak beszerzése SMB-megosztásokhoz](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
-2. Az Access share and copy data (Megosztási és másolási adatok másolása) párbeszédpanelen másolja ki a megosztásnak megfelelő **Username** (Felhasználónév) és **Password** (Jelszó) értékeket. Kattintson az **OK** gombra.
+2. Az Access share and copy data (Megosztási és másolási adatok másolása) párbeszédpanelen másolja ki a megosztásnak megfelelő **Username** (Felhasználónév) és **Password** (Jelszó) értékeket. Ha a jelszó különleges karaktereket tartalmaz, tegye idézőjelek közé. Ez után válassza az **OK** gombot.
     
     ![Felhasználónév és jelszó beszerzése egy megosztáshoz](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
-3. A tárfiókjához (a következő példában *utsac1*) társított megosztások gazdagépről történő eléréséhez nyisson meg egy parancsablakot. A parancssorba írja be a következőt:
+3. A tárfiókjához (a következő példában *utsac1* ) társított megosztások gazdagépről történő eléréséhez nyisson meg egy parancsablakot. A parancssorba írja be a következőt:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -103,7 +103,7 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
     
     ![A Fájlkezelőben látható megosztások](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
 
-    **Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába**. A blokkblob- és lapblobmegosztások alatt létrehozott mappa azt a tárolót jelöli, amelybe a rendszer feltölti az adatokat blobokként. Nem másolhat fájlokat közvetlenül a tárfiók *gyökér*mappájába.
+    **Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába** . A blokkblob- és lapblobmegosztások alatt létrehozott mappa azt a tárolót jelöli, amelybe a rendszer feltölti az adatokat blobokként. Nem másolhat fájlokat közvetlenül a tárfiók *gyökér* mappájába.
     
 Linux-ügyfél használata esetén csatlakoztassa az SMB-megosztást az alábbi parancs használatával. Az alábbi vers paraméter az SMB Linux-gazdagép által támogatott verziója. Az alábbi parancsban adja meg a megfelelő verziót. A Data Box által támogatott SMB-verziókkal kapcsolatban tekintse meg a [Linux-ügyfelek esetében támogatott fájlrendszereket](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients) ismertető cikket. 
 
@@ -116,7 +116,7 @@ sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home
 A Data Box-megosztásokhoz történő csatlakozás után a következő lépés az adatok másolása. Az adatok másolásának megkezdése előtt tekintse át a következőket:
 
 * Ügyeljen rá, hogy az adatokat a helyes adatformátumnak megfelelő megosztásokba másolja. A blokkblobadatokat például másolja a blokkbloboknak fenntartott megosztásba. Másolja a VHD-kat a lapblobba. Ha az adatok formátuma nem egyezik a megfelelő megosztástípussal, akkor egy későbbi lépés során az Azure-ba történő adatfeltöltés sikertelen lesz.
-* Mindig hozzon létre egy mappát a megosztás alatt azokhoz a fájlokhoz, amelyeket másolni szeretne, majd másolja a fájlokat a létrehozott mappába. A blokkblob- és lapblobmegosztások alatt létrehozott mappa azt a tárolót jelöli, amelybe a rendszer feltölti az adatokat blobokként. Nem másolhat fájlokat közvetlenül a tárfiók *gyökér*mappájába.
+* Mindig hozzon létre egy mappát a megosztás alatt azokhoz a fájlokhoz, amelyeket másolni szeretne, majd másolja a fájlokat a létrehozott mappába. A blokkblob- és lapblobmegosztások alatt létrehozott mappa azt a tárolót jelöli, amelybe a rendszer feltölti az adatokat blobokként. Nem másolhat fájlokat közvetlenül a tárfiók *gyökér* mappájába.
 * Az adatok másolása közben győződjön meg arról, hogy az adatok mérete megfelel az [Azure-tárfiók korlátaival](data-box-limits.md#azure-storage-account-size-limits) foglalkozó cikkben ismertetett méretkorlátoknak.
 * Ha meg szeretné őrizni a metaadatokat (ACL-ek, időbélyegek, fájlattribútumok) az adatok az Azure Filesba történő átvitelekor, kövesse a [fájlok ACL-jeinek, attribútumainak és időbélyegeinek az Azure Data Box használata esetén történő megőrzését](data-box-file-acls-preservation.md) ismertető szakasz utasításait  
 * Ha a Data Box által éppen feltöltés alatt álló adatokat egyidejűleg más, a Data Boxtól eltérő alkalmazás is feltölti, az a feltöltési feladat meghiúsulásához és az adatok sérüléséhez vezethet.

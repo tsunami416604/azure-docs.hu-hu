@@ -59,7 +59,7 @@
           href: ./security-controls-policy.md
     - name: Hálózat
       href: concepts-network.md
-    - name: Tárolás
+    - name: Storage
       href: concepts-storage.md
     - name: Méretezés
       href: concepts-scale.md
@@ -142,7 +142,7 @@
           href: upgrade-cluster.md
         - name: Használati üzemidőre vonatkozó SLA
           href: uptime-sla.md
-        - name: Közelségi elhelyezési csoportok használata (előzetes verzió)
+        - name: Közelségi elhelyezési csoportok használata
           href: reduce-latency-ppg.md
         - name: Csomópont rendszerképének frissítése
           href: node-image-upgrade.md
@@ -166,7 +166,7 @@
           items:
             - name: Több csomópontkészlet használata
               href: use-multiple-node-pools.md
-            - name: Spot-csomópontkészletek használata (előzetes verzió)
+            - name: Kihasználatlan csomópontkészletek használata
               href: spot-node-pool.md
             - name: Rendszer-csomópontkészletek használata
               href: use-system-pools.md

@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 10/26/2020
 ms.author: banders
-ms.custom: contperfq1
-ms.openlocfilehash: be3de838e340400da09ad261d82328f6793aed2e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: contperfq2
+ms.openlocfilehash: 05b93fd02ec229306d4e3e150b1e8baab072b597
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297725"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671994"
 ---
 # <a name="change-contact-information-for-an-azure-billing-account"></a>Azure-beli számlázási fiók kapcsolattartási adatainak módosítása
 
@@ -31,7 +31,7 @@ Ha a frissíteni kell egy Active Directory-felhasználó profilját, annak adata
 
 ## <a name="update-an-mosp-billing-account-address"></a>MOSP számlázási fiók címének frissítése
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) azzal az e-mail-címmel, amely fiókadminisztrátori jogosultsággal rendelkezik a fiókra vonatkozóan.
+1. Jelentkezzen be az Azure Portalra azzal az e-mail-címmel, amely fiókadminisztrátori jogosultsággal rendelkezik a fiókra vonatkozóan.
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.  
     ![Képernyőkép az Azure Portal keresőmezőjének helyéről, a Költségkezelés + számlázás keresőkifejezés használatával](./media/change-azure-account-profile/search-cmb.png)
 1. Válassza a **Tulajdonságok** elemet a bal oldalon.  
@@ -41,7 +41,7 @@ Ha a frissíteni kell egy Active Directory-felhasználó profilját, annak adata
 
 ## <a name="update-an-mca-billing-account-sold-to-address"></a>MCA számlázási fiók vevői címének frissítése
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) azzal az e-mail-címmel, amely tulajdonosi vagy közreműködői szerepkörrel rendelkezik a Microsoft-ügyfélszerződés számlázási fiókjára vonatkozóan.
+1. Jelentkezzen be az Azure Portalra azzal az e-mail-címmel, amely tulajdonosi vagy közreműködői szerepkörrel rendelkezik a Microsoft-ügyfélszerződés számlázási fiókjára vonatkozóan.
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.  
     ![Képernyőkép az Azure Portal keresőmezőjének helyéről](./media/change-azure-account-profile/search-cmb.png)
 1. Válassza a **Tulajdonságok** elemet a bal oldalon, majd válassza a **Vevő címének frissítése** lehetőséget.  
@@ -54,7 +54,7 @@ Ha a frissíteni kell egy Active Directory-felhasználó profilját, annak adata
 
 ## <a name="update-an-mca-billing-account-address"></a>MCA számlázási fiók címének frissítése
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) azzal az e-mail-címmel, amely tulajdonosi vagy közreműködői szerepkörrel rendelkezik az MCA számlázási fiókjára vagy számlázási profiljára vonatkozóan.
+1. Jelentkezzen be az Azure Portalra azzal az e-mail-címmel, amely tulajdonosi vagy közreműködői szerepkörrel rendelkezik az MCA számlázási fiókjára vagy számlázási profiljára vonatkozóan.
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.  
 1. Válassza a **Számlázási profilok** lehetőséget a bal oldalon.
 1. Válasszon ki egy számlázási profilt a számlázási cím frissítéséhez.  
@@ -67,7 +67,7 @@ Ha a frissíteni kell egy Active Directory-felhasználó profilját, annak adata
 
 ## <a name="service-and-marketing-emails"></a>Szolgáltatás és marketing e-mailek
 
-Az [Azure Portal](https://portal.azure.com) 90 naponként kéri, hogy igazolja, vagy frissítse e-mail-címét. A Microsoft e-maileket küld erre az e-mail-címre az Azure-fiókkal kapcsolatos információkkal a következőkről:
+Az Azure Portal 90 naponként kéri, hogy igazolja, vagy frissítse e-mail-címét. A Microsoft e-maileket küld erre az e-mail-címre az Azure-fiókkal kapcsolatos információkkal a következőkről:
 
 - Szolgáltatási értesítések
 - Biztonsági riasztások
@@ -86,7 +86,7 @@ Az alábbi módszerek egyikével módosíthatja a kapcsolattartási e-mail-címe
 
 1. Ha Ön egy MOSP-fiók fiókadminisztrátora, kövesse a [MOSP számlázási fiók címének frissítése](#update-an-mosp-billing-account-address) című szakaszban ismertetett utasításokat, és válassza a **Kapcsolattartási adatok frissítése** elemet az utolsó lépésben. Ezután adja meg az új e-mail-címet.
 1. Az Azure Portalon lépjen a [Kapcsolattartási adatok](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) területre, és adja meg az új e-mail-címet. 
-1. Az [Azure Portalon](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) válassza ki a monogramját vagy képét tartalmazó ikont. Majd válassza ki a helyi menüt ( **...** ). Ezután válassza a **Kapcsolattartási adataim** lehetőséget a menüből, és adja meg az új e-mail-címet.
+1. Az Azure Portalon válassza ki a monogramját vagy képét tartalmazó ikont. Majd válassza ki a helyi menüt ( **...** ). Ezután válassza a **Kapcsolattartási adataim** lehetőséget a menüből, és adja meg az új e-mail-címet.
 
 ![Példa az Azure-beli e-mail cím frissítésére](./media/change-azure-account-profile/azure-contact-information.png)
 
@@ -102,7 +102,7 @@ Ha kikapcsolja a marketingkommunikációt, a fiókja alapján továbbra is megka
 
 ## <a name="update-the-email-address-that-you-sign-in-with"></a>A bejelentkezéshez használt e-mail-cím frissítése
 
-A fiók eléréséhez használt e-mail-címet nem frissítheti. Ha azonban rendelkezik MOSP számlázási fiókkal, regisztrálhat egy másik fiókot az új e-mail-cím használatával, és átviheti az előfizetések tulajdonjogát a másik fiókba. MCA számlázási fiók esetén [megadhat a fiókra vonatkozó engedélyeket az új e-mail-címhez](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
+A fiók eléréséhez használt e-mail-címet nem frissítheti. Ha azonban rendelkezik MOSP számlázási fiókkal, regisztrálhat egy másik fiókot az új e-mail-cím használatával, és átviheti az előfizetések tulajdonjogát a másik fiókba. MCA számlázási fiók esetén megadhat a fiókra vonatkozó engedélyeket az új e-mail-címhez.
 
 ## <a name="update-your-credit-card"></a>A hitelkártya frissítése
 
@@ -114,7 +114,7 @@ Egy meglévő fiók országának vagy régiójának a módosítása nem támogat
 
 ## <a name="change-the-subscription-name"></a>Előfizetés nevének megváltoztatása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az **Előfizetés** lehetőséget a bal oldali panelen, majd válassza ki azt az előfizetést, amelyet át kíván nevezni.
+1. Jelentkezzen be az Azure Portalra, és válassza az **Előfizetés** lehetőséget a bal oldali panelen, majd válassza ki azt az előfizetést, amelyet át kíván nevezni.
 1. Válassza az **Áttekintés** lehetőséget, majd a parancssávon válassza az **Átnevezés** elemet.  
     ![Példa az Azure-előfizetés átnevezésére](./media/change-azure-account-profile/rename-sub.png)
 1. A név módosítását követően kattintson a **Mentés** lehetőségre.

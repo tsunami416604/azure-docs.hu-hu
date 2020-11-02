@@ -28,6 +28,8 @@
       href: deployment-overview.md
     - name: Biztonságipartner-szolgáltatók
       href: trusted-security-partners.md
+    - name: Elosztók védelme a Check Point Cloudguard Connecttel
+      href: check-point-overview.md
     - name: IP-csoportok
       href: ip-groups.md
     - name: Szabályfeldolgozási logika

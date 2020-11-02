@@ -32,6 +32,9 @@
     - name: Szabályzat hozzárendelése – ARM-sablon
       displayName: 'assign, compliance, resource manager'
       href: ./assign-policy-template.md
+    - name: Szabályzat hozzárendelése – Terraform
+      displayName: 'assign, compliance, hcl, provider'
+      href: ./assign-policy-terraform.md
 - name: Oktatóanyagok
   items:
     - name: Azure-szabályzat létrehozása és kezelése
@@ -191,7 +194,15 @@
           href: ../../azure-monitor/deploy-scale.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
         - name: Az Azure Monitor engedélyezése virtuális gépek számára (előzetes verzió)
           displayName: 'monitor, insights, log analytics, builtin'
-          href: ../../azure-monitor/insights/vminsights-enable-policy.md?bc=%2fazure%2fgovernance%2fpolicy%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fgovernance%2fpolicy%2ftoc.json
+          href: ../../azure-monitor/insights/vminsights-enable-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+    - name: Azure Storage-integráció
+      items:
+        - name: TLS naplózása az Azure Policyval
+          href: ../../storage/common/transport-layer-security-configure-minimum-version.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json#use-azure-policy-to-enforce-the-minimum-tls-version
+    - name: Az Azure webalkalmazási tűzfal integrációja
+      items:
+        - name: WAF integrálása az Azure Policyval
+          href: ../../web-application-firewall/shared/waf-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
 - name: Hibaelhárítás
   items:
     - name: Gyakori problémák
@@ -264,6 +275,16 @@
           href: /azure/templates/microsoft.authorization/policydefinitions
         - name: Kezdeményezésdefiníciók
           href: /azure/templates/microsoft.authorization/policysetdefinitions
+    - name: Terraform-erőforrások
+      items:
+        - name: Hozzárendelés
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_assignment.html'
+        - name: Definíció
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_definition.html'
+        - name: Kezdeményezés (készletdefiníció)
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_set_definition.html'
+        - name: Szervizelés
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_remediation.html'
 - name: További források
   items:
     - name: GitHub – Azure Policy-minták
@@ -280,6 +301,8 @@
           href: 'https://www.azadvertizer.net/'
         - name: Azure Governance Visualizer
           href: 'https://github.com/julianhayward/azure-mg-sub-governance-reporting'
+        - name: Azure Policy-szkriptek az Azure Monitorhoz
+          href: 'https://github.com/JimGBritt/AzurePolicy/tree/master/AzureMonitor/Scripts'
     - name: Visszajelzés és támogatás
       items:
         - name: Microsoft Q&A – Azure Policy

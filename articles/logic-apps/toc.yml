@@ -101,7 +101,7 @@
           href: logic-apps-batch-process-send-receive-messages.md
         - name: Üzenetek küldése sorrendben – Sequential Convoy
           href: send-related-messages-sequential-convoy.md
-        - name: JSON-definíciók készítése
+        - name: Munkafolyamat-definíciók létrehozása JSON-ben
           href: logic-apps-author-definitions.md
         - name: Tartalomtípusok kezelése
           href: logic-apps-content-type.md
@@ -109,6 +109,8 @@
           href: logic-apps-exception-handling.md
         - name: Nagyméretű üzenetek kezelése
           href: logic-apps-handle-large-messages.md
+        - name: Az SQL-összekötő hosszan futó tárolt eljárásainak kezelése
+          href: handle-long-running-stored-procedures-sql-connector.md
         - name: Szabályozási problémák vagy 429-es hibák kezelése
           href: handle-throttling-problems-429-errors.md
         - name: Egyéni összekötők fejlesztése

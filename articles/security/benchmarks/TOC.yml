@@ -113,6 +113,8 @@
       href: ../../virtual-network/public-ip-security-baseline.md
     - name: Az Azure Resource Graph biztonsági alapkonfigurációja
       href: ../../governance/resource-graph/concepts/azure-security-benchmark-baseline.md
+    - name: Az Azure Resource Manager biztonsági alapkonfigurációja
+      href: ../../azure-resource-manager/management/security-baseline.md
     - name: Az Azure Sentinel biztonsági alapkonfigurációja
       href: ../../sentinel/security-baseline.md
     - name: Az Azure SQL Database biztonsági alapkonfigurációja

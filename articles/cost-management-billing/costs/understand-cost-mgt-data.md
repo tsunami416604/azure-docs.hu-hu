@@ -3,17 +3,18 @@ title: Az Azure Cost Management adatainak ismertetése
 description: Ez a cikk segít az Azure Cost Managementben található adatok, valamint azok feldolgozási, gyűjtési, megjelenítési és lezárási gyakoriságának jobb megértésében.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 10/26/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.openlocfilehash: a9ec5fd7d6e93d4413e86b5c9433cb6c0c9b59a1
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.custom: contentperfq2
+ms.openlocfilehash: 923b03f0c7bbf8d6948a80742530db6cb9b06c25
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132312"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675905"
 ---
 # <a name="understand-cost-management-data"></a>A Cost Management adatainak értelmezése
 
@@ -31,22 +32,22 @@ Az alábbi információk azokat a [Microsoft Azure-ajánlatokat](https://azure.m
 | --- | --- | --- | --- | --- |
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | 2014. május<sup>1</sup> |
 | **Nagyvállalati Szerződés (EA)** | Enterprise Dev/Test                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | 2014. május<sup>1</sup> |
-| **Nagyvállalati Szerződés (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | 2014. május<sup>1</sup> |
-| **Microsoft-ügyfélszerződés** | [Microsoft Azure-csomag](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | N/A | 2019. március<sup>3</sup> |
-| **Microsoft-ügyfélszerződés** | [Microsoft Azure-csomag fejlesztéshez/teszteléshez](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | N/A | 2019. március<sup>3</sup> |
+| **Nagyvállalati Szerződés (EA)** | Microsoft Azure Enterprise | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | 2014. május<sup>1</sup> |
+| **Microsoft-ügyfélszerződés** | Microsoft Azure-csomag | EnterpriseAgreement_2014-09-01 | N/A | 2019. március<sup>3</sup> |
+| **Microsoft-ügyfélszerződés** | Microsoft Azure-csomag fejlesztéshez/teszteléshez | MSDNDevTest_2014-09-01 | N/A | 2019. március<sup>3</sup> |
 | **Partnerek által támogatott Microsoft Ügyfélszerződés** | Microsoft Azure-csomag | CSP_2015-05-01, CSP_MG_2017-12-01 és CSPDEVTEST_2018-05-01<br><br>A rendszer a Microsoft Ügyfélszerződéses és az örökölt CSP-előfizetések esetében újrahasználja a kvótaazonosítót. Jelenleg csak a Microsoft Ügyfélszerződéses előfizetések támogatottak. | N/A | 2019. október |
-| **Microsoft Developer Network (MSDN)** | [MSDN-platformok](https://azure.microsoft.com/offers/ms-azr-0062p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0062P | 2018. október 2.<sup>2</sup> |
-| **Használatalapú fizetés** | [Használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0003p)                  | PayAsYouGo_2014-09-01 | MS-AZR-0003P | 2018. október 2.<sup>2</sup> |
-| **Használatalapú fizetés** | [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p)         | MSDNDevTest_2014-09-01 | MS-AZR-0023P | 2018. október 2.<sup>2</sup> |
-| **Használatalapú fizetés** | [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p)      | MPN_2014-09-01 | MS-AZR-0025P | 2018. október 2.<sup>2</sup> |
-| **Használatalapú fizetés** | [Ingyenes próba](https://azure.microsoft.com/offers/ms-azr-0044p)<sup>4</sup>         | FreeTrial_2014-09-01 | MS-AZR-0044P | 2018. október 2.<sup>2</sup> |
-| **Használatalapú fizetés** | [Azure in Open licencprogram](https://azure.microsoft.com/offers/ms-azr-0111p)<sup>4</sup>      | AzureInOpen_2014-09-01 | MS-AZR-0111P | 2018. október 2.<sup>2</sup> |
+| **Microsoft Developer Network (MSDN)** | MSDN-platformok<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0062P | 2018. október 2.<sup>2</sup> |
+| **Használatalapú fizetés** | Utólagos, használatalapú fizetés                  | PayAsYouGo_2014-09-01 | MS-AZR-0003P | 2018. október 2.<sup>2</sup> |
+| **Használatalapú fizetés** | Pay-As-You-Go Dev/Test         | MSDNDevTest_2014-09-01 | MS-AZR-0023P | 2018. október 2.<sup>2</sup> |
+| **Használatalapú fizetés** | Microsoft Partner Network      | MPN_2014-09-01 | MS-AZR-0025P | 2018. október 2.<sup>2</sup> |
+| **Használatalapú fizetés** | Ingyenes próba<sup>4</sup>         | FreeTrial_2014-09-01 | MS-AZR-0044P | 2018. október 2.<sup>2</sup> |
+| **Használatalapú fizetés** | Azure in Open licencprogram<sup>4</sup>      | AzureInOpen_2014-09-01 | MS-AZR-0111P | 2018. október 2.<sup>2</sup> |
 | **Használatalapú fizetés** | Azure Pass<sup>4</sup>                                                            | AzurePass_2014-09-01 | MS-AZR-0120P, MS-AZR-0122P – MS-AZR-0125P, MS-AZR-0128P – MS-AZR-0130P | 2018. október 2.<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Enterprise – MPN](https://azure.microsoft.com/offers/ms-azr-0029p)<sup>4</sup>     | MPN_2014-09-01 | MS-AZR-0029P | 2018. október 2.<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p)<sup>4</sup>         | MSDN_2014-09-01 | MS-AZR-0059P | 2018. október 2.<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p)<sup>4</sup>    | MSDNDevTest_2014-09-01 | MS-AZR-0060P | 2018. október 2.<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p)<sup>4</sup>           | MSDN_2014-09-01 | MS-AZR-0063P | 2018. október 2.<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0064P | 2018. október 2.<sup>2</sup> |
+| **Visual Studio** | Visual Studio Enterprise – MPN<sup>4</sup>     | MPN_2014-09-01 | MS-AZR-0029P | 2018. október 2.<sup>2</sup> |
+| **Visual Studio** | Visual Studio Professional<sup>4</sup>         | MSDN_2014-09-01 | MS-AZR-0059P | 2018. október 2.<sup>2</sup> |
+| **Visual Studio** | Visual Studio Test Professional<sup>4</sup>    | MSDNDevTest_2014-09-01 | MS-AZR-0060P | 2018. október 2.<sup>2</sup> |
+| **Visual Studio** | Visual Studio Enterprise<sup>4</sup>           | MSDN_2014-09-01 | MS-AZR-0063P | 2018. október 2.<sup>2</sup> |
+| **Visual Studio** | Visual Studio Enterprise: BizSpark<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0064P | 2018. október 2.<sup>2</sup> |
 
 _<sup>**1**</sup> A 2014 májusa előtti adatokért látogasson el az [Azure Enterprise Portalra](https://ea.azure.com)._
 
@@ -60,14 +61,14 @@ Az alábbi ajánlatok még nem támogatottak:
 
 | Kategória  | **Ajánlat neve** | **Kvótaazonosító** | **Ajánlatszám** |
 | --- | --- | --- | --- |
-| **Azure Germany** | [Azure Germany – használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-de-0003p) | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
+| **Azure Germany** | Azure Germany – használatalapú fizetés | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
 | **Azure Government** | Azure Government – használatalapú fizetés | PayAsYouGo_2014-09-01 | MS-AZR-USGOV-0003P |
 | **Felhőszolgáltató (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
 | **Felhőszolgáltató (CSP)** | Azure Government CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
 | **Felhőszolgáltató (CSP)** | Azure Germany – CSP for Microsoft Cloud Germany   | CSP_2015-05-01 | MS-AZR-DE-0145P |
 | **Használatalapú fizetés**                 | Azure for Students Starter | DreamSpark_2015-02-01 | MS-AZR-0144P |
-| **Használatalapú fizetés** | [Azure for Students](https://azure.microsoft.com/offers/ms-azr-0170p)<sup>4</sup> | AzureForStudents_2018-01-01 | MS-AZR-0170P |
-| **Használatalapú fizetés**                 | [Microsoft Azure szponzorálás](https://azure.microsoft.com/offers/ms-azr-0036p/) | Sponsored_2016-01-01 | MS-AZR-0036P |
+| **Használatalapú fizetés** | Azure for Students<sup>4</sup> | AzureForStudents_2018-01-01 | MS-AZR-0170P |
+| **Használatalapú fizetés**                 | Microsoft Azure szponzorálás | Sponsored_2016-01-01 | MS-AZR-0036P |
 | **Támogatási csomagok** | Standard szintű támogatás                    | Default_2014-09-01 | MS-AZR-0041P |
 | **Támogatási csomagok** | Közvetlen professzionális támogatás         | Default_2014-09-01 | MS-AZR-0042P |
 | **Támogatási csomagok** | Fejlesztői támogatás                   | Default_2014-09-01 | MS-AZR-0043P |
@@ -82,7 +83,7 @@ Ha többet szeretne tudni az ingyenes szintű szolgáltatások rendelkezésre á
 
 ### <a name="determine-your-offer-type"></a>Az ajánlattípus meghatározása
 
-Ha nem látja az előfizetéshez tartozó adatokat, és meg szeretné állapítani, hogy az előfizetése a támogatott ajánlatok közé tartozik-e, ellenőrizheti az előfizetés támogatottságát. Annak ellenőrzéséhez, hogy egy adott Azure-előfizetés támogatott-e, jelentkezzen be az [Azure Portalra](https://portal.azure.com). A bal oldali menüpanelen válassza a **Minden szolgáltatás** lehetőséget. A szolgáltatások listájában válassza az **Előfizetések** elemet. Az előfizetések listájának menüjében válassza ki az ellenőrizni kívánt előfizetést. Az előfizetés megjelenik az Áttekintés lapon, ahol az **Ajánlatot** és az **Ajánlat azonosítóját** is láthatja. Az alábbi képen egy példa látható.
+Ha nem látja az előfizetéshez tartozó adatokat, és meg szeretné állapítani, hogy az előfizetése a támogatott ajánlatok közé tartozik-e, ellenőrizheti az előfizetés támogatottságát. Annak ellenőrzéséhez, hogy egy adott Azure-előfizetés támogatott-e, jelentkezzen be az Azure Portalra. A bal oldali menüpanelen válassza a **Minden szolgáltatás** lehetőséget. A szolgáltatások listájában válassza az **Előfizetések** elemet. Az előfizetések listájának menüjében válassza ki az ellenőrizni kívánt előfizetést. Az előfizetés megjelenik az Áttekintés lapon, ahol az **Ajánlatot** és az **Ajánlat azonosítóját** is láthatja. Az alábbi képen egy példa látható.
 
 ![Az előfizetés Áttekintés lapját az Ajánlattal és az Ajánlat azonosítójával együtt mutató példa](./media/understand-cost-mgt-data/offer-and-offer-id.png)
 
@@ -110,9 +111,9 @@ Az Azure Cost Management a címkéket az egyes szolgáltatások által küldött
 
 - A címkéket közvetlenül az erőforrásokra kell alkalmazni, és nem öröklődnek implicit módon a szülő erőforráscsoportból.
 - Az erőforráscímkék csak az erőforráscsoportokban üzembe helyezett erőforrások esetén támogatottak.
-- Előfordulhat, hogy néhány üzembe helyezett erőforrás nem támogatja a címkéket vagy nem tartalmaz címkéket a használati adatokban – lásd: [Címkék támogatása az Azure-erőforrásokban](../../azure-resource-manager/management/tag-support.md).
+- Előfordulhat, hogy néhány üzembe helyezett erőforrás nem támogatja a címkéket vagy nem tartalmaz címkéket a használati adatokban.
 - Az erőforráscímkék csak a címke alkalmazásának idején szerepelnek a használati adatokban, így az előzményadatokra nem lesznek alkalmazva.
-- Az erőforráscímkék csak az adatok frissítése után érhetők el a Cost Managementben – lásd: [Költség- és használati adatok frissítései és megőrzése](#cost-and-usage-data-updates-and-retention).
+- Az erőforráscímkék csak az adatok frissítése után érhetők el a Cost Managementben.
 - Az erőforráscímkék csak akkor érhetők el a Cost Managementben, ha az erőforrás aktív/fut, és használati adatokat hoz létre (például akkor nem, ha a virtuális gép felszabadított állapotban van).
 - A címkék kezeléséhez minden erőforrás esetében közreműködői hozzáférés szükséges.
 - A címkeszabályzatok kezeléséhez tulajdonosi vagy szabályzat-közreműködői hozzáférés szükséges egy felügyeleti csoporthoz, egy előfizetéshez vagy egy erőforráscsoporthoz.
@@ -120,7 +121,7 @@ Az Azure Cost Management a címkéket az egyes szolgáltatások által küldött
 Ha nem talál egy adott címkét a Cost Managementben, vegye figyelembe a következőket:
 
 - A címke közvetlenül az erőforrásra lett alkalmazva?
-- A címke több mint 24 órával ezelőtt lett alkalmazva? Lásd: [Költség- és használati adatok frissítése és megőrzése](#cost-and-usage-data-updates-and-retention)
+- A címke több mint 24 órával ezelőtt lett alkalmazva?
 - Támogatja az erőforrás típusa a címkéket? Az alábbi erőforrástípusok 2019. december 1-től nem támogatják a címkéket a használati adatokban. A támogatott címkék teljes listája: [Címkék támogatása az Azure-erőforrásokban](../../azure-resource-manager/management/tag-support.md).
     - Azure Active Directory B2C-címtárak
     - Azure Bastion
@@ -143,7 +144,7 @@ Ha nem talál egy adott címkét a Cost Managementben, vegye figyelembe a követ
 
 ## <a name="cost-and-usage-data-updates-and-retention"></a>Költség- és használati adatok frissítése és megőrzése
 
-A költség- és használati adatok általában 8-24 órán belül válnak elérhetővé az Azure Portal Költségkezelés + Számlázás területén és a [támogató API-kban](../index.yml). A költségek áttekintésekor tartsa szem előtt a következő szempontokat:
+A költség- és használati adatok általában 8-24 órán belül válnak elérhetővé az Azure Portal Költségkezelés + Számlázás területén és a támogató API-kban. A költségek áttekintésekor tartsa szem előtt a következő szempontokat:
 
 - Minden Azure-szolgáltatás (például a Storage, a Compute és az SQL) különböző időközönként bocsát ki használati adatokat – előfordulhat, hogy egyes szolgáltatások adatait hamarabb látja, mint másokét.
 - Az aktuális számlázási időszak becsült költségei naponta hatszor frissülnek.
@@ -160,7 +161,7 @@ Miután a költség- és használati adatok elérhetővé váltak a Költségkez
 
 ### <a name="rerated-data"></a>Újraszámolt adatok
 
-Függetlenül attól, hogy a [Cost Management API-k](../index.yml), a Power BI vagy az Azure Portal használatával kéri le az adatokat, számítson arra, hogy a jelenlegi számlázási időszakhoz tartozó díjakat a rendszer újraszámolja, ezért azok módosulnak, amíg a rendszer le nem zárja a számlát.
+Függetlenül attól, hogy a Cost Management API-k, a Power BI vagy az Azure Portal használatával kéri le az adatokat, számítson arra, hogy a jelenlegi számlázási időszakhoz tartozó díjakat a rendszer újraszámolja, ezért azok módosulnak, amíg a rendszer le nem zárja a számlát.
 
 ## <a name="cost-rounding"></a>Költségek kerekítése
 

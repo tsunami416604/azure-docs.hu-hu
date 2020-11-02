@@ -179,7 +179,7 @@
               href: storage-blob-rehydration.md
             - name: Teljesítményszintek
               href: storage-blob-performance-tiers.md
-            - name: Az Azure Blob Storage-életciklus felügyelete
+            - name: Hozzáférési szintek életciklusának automatizálása
               href: storage-lifecycle-management-concepts.md
         - name: Vészhelyreállítás és feladatátvétel
           href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -367,7 +367,7 @@
                       href: storage-blob-user-delegation-sas-create-cli.md
                     - name: .NET
                       href: storage-blob-user-delegation-sas-create-dotnet.md
-                - name: Szolgáltatási SAS létrehozása (.NET)
+                - name: Szolgáltatási SAS létrehozása
                   href: storage-blob-service-sas-create-dotnet.md
                 - name: Fiók-SAS létrehozása (.NET)
                   href: ../common/storage-account-sas-create-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json

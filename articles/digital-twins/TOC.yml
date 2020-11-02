@@ -127,6 +127,8 @@
   items:
     - name: Digital Twins szolgáltatási korlátok
       href: reference-service-limits.md
+    - name: A Digital Twins díjszabása
+      href: 'https://azure.microsoft.com/pricing/details/digital-twins/'
     - name: API-k és SDK-k
       items:
         - name: REST API-referencia
@@ -188,7 +190,7 @@
     - name: Digital Twins CLI
       items:
         - name: Digital Twins CLI-referencia
-          href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest
+          href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true
         - name: CLI-csomag
           href: 'https://github.com/Azure/azure-iot-cli-extension/releases'
     - name: DTDL
