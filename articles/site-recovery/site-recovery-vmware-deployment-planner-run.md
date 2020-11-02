@@ -1,18 +1,18 @@
 ---
 title: Futtassa a VMware vész-helyreállítás Deployment Planner a Azure Site Recovery
 description: Ez a cikk azt ismerteti, hogyan futtatható Azure Site Recovery Deployment Planner a VMware vész-helyreállítás az Azure-ba.
-author: mayurigupta13
+author: rajeswari-mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/15/2019
-ms.author: mayg
-ms.openlocfilehash: 308958f00a3658196f124ac911d4d0195ebeb228
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: ramamill
+ms.openlocfilehash: 05d260de726c62c130a58938c2a2c9fa2440a96d
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119837"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186722"
 ---
 # <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>A VMware vész-helyreállítás Deployment Planner futtatása
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
@@ -86,7 +86,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Port|(Nem kötelező) A vCenter/ESXi-gazdagéphez csatlakozó port száma. Az alapértelmezett port a 443-as számú.|
 |-Protocol| (Nem kötelező) „http” vagy „https” protokollt ad meg a vCenterhez való csatlakozáshoz. Az alapértelmezett protokoll a https.|
 | -StorageAccountName | (Nem kötelező) A helyszínről az Azure-ba történő adatreplikáció során elérhető átviteli sebesség azonosításához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat az átviteli sebesség kiszámításához. A tárfióknak Általános célú v1 (GPv1) típusúnak kell lennie. |
-| -StorageAccountKey | (Nem kötelező) A tárfiók eléréséhez használt tárfiókkulcs. Nyissa meg az Azure Portalt, és kattintson a Tárfiókok > <*Tárfiók neve*> > Beállítások > Hozzáférési kulcsok > 1. kulcs elemre. |
+| -StorageAccountKey | (Nem kötelező) A tárfiók eléréséhez használt tárfiókkulcs. Nyissa meg az Azure Portalt, és kattintson a Tárfiókok > < *Tárfiók neve* > > Beállítások > Hozzáférési kulcsok > 1. kulcs elemre. |
 | -Környezet | (nem kötelező) Ez az Ön Azure Storage-fiókjának célkörnyezete. Ez a következő három érték egyike lehet: AzureCloud, AzureUSGovernment, AzureChinaCloud. Az alapértelmezett érték az AzureCloud. A paramétert akkor használja, ha a cél Azure-régiója az Azure US government vagy az Azure China 21Vianet. |
 
 
@@ -169,7 +169,7 @@ A profilkészítés befejezése után futtathatja az eszközt jelentéskészít�
 | -EndDate | (Nem kötelező) Záró dátum és idő HH-NN-ÉÉÉÉ:ÓÓ:PP (24 órás) formátumban megadva. Az *EndDate* és a *StartDate* paraméter megadása kötelező. Ha az EndDate meg van adva, a rendszer a StartDate és az EndDate paraméter közötti időszakban összegyűjtött, profilkészítéshez használt adatokról állít elő jelentést. |
 | -GrowthFactor | (Nem kötelező) A növekedési tényező százalékértékként megadva. Az alapértelmezett érték 30%. |
 | -UseManagedDisks | (Nem kötelező) UseManagedDisks – Igen/Nem. Az alapértelmezett érték az Igen. Az egy tárfiókban elhelyezhető virtuális gépek számának meghatározáskor a rendszer figyelembe veszi, hogy a virtuális gépek feladatátvétele, illetve feladatátvételi tesztje nem felügyelt lemez helyett felügyelt lemezen történik. |
-|-SubscriptionId |(Nem kötelező) Az előfizetés GUID azonosítója. Vegye figyelembe, hogy ezt a paramétert akkor kell megadni, ha az előfizetése és az előfizetése és a **megadott pénznemben**meghatározott Azure-régiója esetében a díjszabási jelentést a legújabb árral kell létrehoznia.|
+|-SubscriptionId |(Nem kötelező) Az előfizetés GUID azonosítója. Vegye figyelembe, hogy ezt a paramétert akkor kell megadni, ha az előfizetése és az előfizetése és a **megadott pénznemben** meghatározott Azure-régiója esetében a díjszabási jelentést a legújabb árral kell létrehoznia.|
 |-TargetRegion|(Nem kötelező) A replikáció által megcélzott Azure-régió. Mivel az Azure költségei régiónként eltérőek, adott cél Azure-régióra vonatkozó jelentés létrehozásához használja ezt a paramétert.<br>Az alapértelmezett régió az USA 2. nyugati régiója vagy a legutoljára használt célrégió.<br>Tekintse át a [támogatott célrégiók](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions) listáját.|
 |-OfferId|(Nem kötelező) Az adott előfizetéshez társított ajánlat. Az alapértelmezett az MS-AZR-0003P (használatalapú fizetés).|
 |-Currency|(Nem kötelező) A pénznem, amelyben a költségek megjelennek a létrehozott jelentésben. Az alapértelmezett az amerikai dollár ($), vagy a legutoljára használt pénznem.<br>Tekintse át a [támogatott pénznemek](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies) listáját.|
@@ -269,7 +269,7 @@ Nyisson meg egy parancssori konzolt, és keresse meg a Site Recovery üzembehely
 |-Virtualization|Itt adhatja meg a virtualizálás típusát (VMware vagy Hyper-V).|
 | -Directory | (Nem kötelező) A profilkészítés során létrehozott adatokat tároló mappa UNC vagy helyi elérési útja. Ezekre az adatokra szükség van a jelentés létrehozásához. Ha a könyvtár neve nincs megadva, a rendszer a „ProfiledData” könyvtárat használja. |
 | -StorageAccountName | A helyszínről az Azure-ba történő adatreplikáció során felhasznált sávszélesség meghatározásához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat a felhasznált sávszélesség megállapításához. A tárfióknak Általános célú v1 (GPv1) típusúnak kell lennie.|
-| -StorageAccountKey | A tárfiók eléréséhez használt tárfiókkulcs. Nyissa meg az Azure Portalt, és kattintson a Tárfiókok > <*Tárfiók neve*> > Beállítások > Hozzáférési kulcsok > 1. kulcs (vagy klasszikus tárfiók esetén az Elsődleges elérési kulcs) elemre. |
+| -StorageAccountKey | A tárfiók eléréséhez használt tárfiókkulcs. Nyissa meg az Azure Portalt, és kattintson a Tárfiókok > < *Tárfiók neve* > > Beállítások > Hozzáférési kulcsok > 1. kulcs (vagy klasszikus tárfiók esetén az Elsődleges elérési kulcs) elemre. |
 | -VMListFile | Azon virtuális gépek listáját tartalmazó fájl, amelyekről profilt szeretne készíteni a felhasznált sávszélesség kiszámításához. A fájl elérési útja lehet abszolút vagy relatív. A fájl minden sorában egy virtuális gép nevének vagy IP-címének kell állnia. A fájlban megadott virtuálisgép-neveknek meg kell egyezniük a vCenter-kiszolgálón vagy a vSphere ESXi-gazdagépen szereplő névvel.<br>A „VMList.txt” fájl például az alábbi virtuális gépeket tartalmazza:<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
 | -Környezet | (nem kötelező) Ez az Ön Azure Storage-fiókjának célkörnyezete. Ez a következő három érték egyike lehet: AzureCloud, AzureUSGovernment, AzureChinaCloud. Az alapértelmezett érték az AzureCloud. A paramétert akkor használja, ha a cél Azure-régiója az Azure US government vagy az Azure China 21Vianet. |
 

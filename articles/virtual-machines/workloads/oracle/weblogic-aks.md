@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/28/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: c797148bdc07481cb312739ef020e88963599374
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: ff7b9b0bfcdc0c06eae14ecfdccabf9e337d3649
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928750"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186678"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-the-azure-kubernetes-service"></a>Milyen megoldások futnak az Oracle WebLogic Server Azure Kubernetes Service-ben való futtatásához?
 
@@ -30,6 +30,8 @@ A WebLogic-kiszolgáló fürtök teljes mértékben engedélyezve vannak, hogy a
 ## <a name="guidance-scripts-and-samples-for-wls-on-aks"></a>Útmutatás, parancsfájlok és minták az WLS-on AK-on
 A WebLogic-kiszolgáló az AK-on, az Oracle és a Microsoft közösen is biztosít részletes útmutatást, parancsfájlokat és mintákat a WebLogic-kiszolgáló AK-on való futtatásához. Az útmutató az [operátor dokumentációjának](https://oracle.github.io/weblogic-kubernetes-operator/samples/simple/azure-kubernetes-service/)Azure Kubernetes Service Sample szakaszába került. Az útmutató célja, hogy a lehető legegyszerűbbé váljon a termelési WebLogic-kiszolgáló használata az AK-beli központi telepítésekben. Az útmutató az Oracle által biztosított hivatalos WebLogic Server Docker-rendszerképeket használja. A feladatátvétel a Kubernetes állandó mennyiségi jogcímek által elért Azure Files keresztül érhető el. Az Azure Load Balancer a "terheléselosztó" típusú Kubernetes szolgáltatással való kiépítés esetén támogatott. Az útmutató nagy fokú konfigurációt és testreszabást tesz lehetővé.
 
+:::image type="content" source="media/oracle-weblogic/wls-on-aks.gif" alt-text="A WebLogic-kiszolgáló az AK-on való üzembe helyezéséhez használhatja a minta-parancsfájlokat.":::
+
 Az útmutató jelenleg azt feltételezi, hogy a tartományt a Docker-rendszerképen kívül helyezi üzembe, és az Oracle standard Docker-rendszerképeit használja. Útmutatást adunk ahhoz, hogy az egyéni rendszerképeket a Docker-rendszerképen belül engedélyezzük a tartományon. A jövőben további egyszerű használat és Azure-szolgáltatások integrációja is lehetséges a piactéren, az Oracle WebLogic Server Azure Virtual Machines-megoldásokkal való tükrözése révén.
 
 _Ezek a megoldások saját licenccel rendelkeznek_ . Feltételezik, hogy már megkapta a megfelelő licenceket az Oracle-vel, és megfelelő licenccel rendelkezik az ajánlatok Azure-beli futtatásához.
@@ -40,11 +42,11 @@ _Ha szeretné, hogy az áttelepítési forgatókönyvek szorosan összhangban le
 
 Az Oracle WebLogic Server Azure Kubernetes szolgáltatásban való futtatására szolgáló megoldások széles körben lehetővé teszik az éles környezetben felépíthető üzembe helyezési architektúrák viszonylag könnyen elérhetővé tételét.
 
-:::image type="content" source="media/oracle-weblogic/weblogic-architecture-aks.png" alt-text="Az összetett WebLogic-kiszolgálók üzembe helyezése engedélyezve van az AK-ban":::
+:::image type="content" source="media/oracle-weblogic/weblogic-architecture-aks.png" alt-text="A WebLogic-kiszolgáló az AK-on való üzembe helyezéséhez használhatja a minta-parancsfájlokat.":::
 
 A megoldások az ügyfelek számára teljes rugalmasságot biztosítanak az üzemelő példányok testreszabásához. Valószínű, hogy az alkalmazások üzembe helyezése során az ügyfelek a további Azure-erőforrásokat is integrálják az üzemelő példányokkal. Javasoljuk, hogy visszajelzéseket nyújtson a felmérésben a megoldások továbbfejlesztése érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg az Oracle WebLogic Server futtatását az Azure Kubernetes szolgáltatásban.
 

@@ -10,19 +10,16 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: dfc554a57e99fa4ccd66b1bbeec0be46e463988f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b89112ab2384386d20b62f2510ec576d4a2075f1
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738646"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186756"
 ---
 # <a name="monitoring-azure-files"></a>Figyelés Azure Files
 
 Ha olyan kritikus fontosságú alkalmazásokkal és üzleti folyamatokkal rendelkezik, amelyek az Azure-erőforrásokra támaszkodnak, ezeket az erőforrásokat szeretné figyelni a rendelkezésre állás, a teljesítmény és a művelet szempontjából. Ez a cikk ismerteti a Azure Files által generált figyelési információkat, valamint azt, hogy miként használhatók a Azure Monitor funkciói a riasztások elemzésére ezen az adattárban.
-
-> [!NOTE]
-> Az Azure Monitor Azure Storage-naplók nyilvános előzetes verzióban érhetők el, és elérhetők az előzetes teszteléshez az összes nyilvános felhőben. Az előzetes verzióra való regisztráláshoz tekintse meg [ezt a lapot](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u). Ez az előzetes verzió lehetővé teszi a Blobok (köztük a Azure Data Lake Storage Gen2), a fájlok, a várólisták és a táblák naplófájljainak naplózását. Ez a funkció a Azure Resource Manager üzemi modellel létrehozott összes Storage-fiókhoz elérhető. Lásd: a [Storage-fiók áttekintése](../common/storage-account-overview.md).
 
 ## <a name="monitor-overview"></a>Figyelő áttekintése
 
@@ -65,7 +62,10 @@ A naplózott SMB-és REST-műveletek listájának lekéréséhez tekintse meg a 
 
 ## <a name="creating-a-diagnostic-setting"></a>Diagnosztikai beállítás létrehozása
 
-Diagnosztikai beállításokat a Azure Portal, a PowerShell, az Azure CLI vagy egy Azure Resource Manager sablon használatával hozhat létre. 
+Diagnosztikai beállításokat a Azure Portal, a PowerShell, az Azure CLI vagy egy Azure Resource Manager sablon használatával hozhat létre.
+
+> [!NOTE]
+> Az Azure Monitor Azure Storage-naplók nyilvános előzetes verzióban érhetők el, és elérhetők az előzetes teszteléshez az összes nyilvános felhőben. Az előzetes verzióra való regisztráláshoz tekintse meg [ezt a lapot](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u). Ez az előzetes verzió lehetővé teszi a Blobok (köztük a Azure Data Lake Storage Gen2), a fájlok, a várólisták és a táblák naplófájljainak naplózását. Ez a funkció a Azure Resource Manager üzemi modellel létrehozott összes Storage-fiókhoz elérhető. Lásd: a [Storage-fiók áttekintése](../common/storage-account-overview.md).
 
 Általános útmutatásért lásd: [diagnosztikai beállítás létrehozása platform-naplók és-metrikák gyűjtéséhez az Azure-ban](../../azure-monitor/platform/diagnostic-settings.md).
 
@@ -150,7 +150,7 @@ Cserélje le az `<storage-service-resource--id>` ebben a kódrészletben találh
 
 `StorageRead` `StorageWrite` A (z), és a (z) `StorageDelete` paraméter **Category** értékeként a (z), és értéket használhatja.
 
-Íme egy példa:
+Például:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -StorageAccountId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount -Enabled $true -Category StorageWrite,StorageDelete`
 
@@ -164,7 +164,7 @@ Engedélyezze a naplókat a [set-AzDiagnosticSetting PowerShell-](https://docs.m
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
-Íme egy példa:
+Például:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -EventHubAuthorizationRuleId /subscriptions/20884142-a14v3-4234-5450-08b10c09f4/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey -Enabled $true -Category StorageDelete`
 
@@ -178,7 +178,7 @@ Engedélyezze a naplókat a [set-AzDiagnosticSetting PowerShell-](https://docs.m
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
-Íme egy példa:
+Például:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -WorkspaceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace -Enabled $true -Category StorageDelete`
 
@@ -208,7 +208,7 @@ Cserélje le az `<storage-service-resource--id>` ebben a kódrészletben találh
 
 `StorageRead` `StorageWrite` A (z), és a (z) `StorageDelete` paraméter **category** értékeként a (z), és értéket használhatja.
 
-Íme egy példa:
+Például:
 
 `az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
 
@@ -222,7 +222,7 @@ Engedélyezze a naplókat az az [monitor diagnosztikai-Settings Create](https://
 az monitor diagnostic-settings create --name <setting-name> --event-hub <event-hub-name> --event-hub-rule <event-hub-namespace-and-key-name> --resource <storage-account-resource-id> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
 ```
 
-Íme egy példa:
+Például:
 
 `az monitor diagnostic-settings create --name setting1 --event-hub myeventhub --event-hub-rule /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --logs '[{"category": StorageDelete, "enabled": true }]'`
 
@@ -236,7 +236,7 @@ Engedélyezze a naplókat az az [monitor diagnosztikai-Settings Create](https://
 az monitor diagnostic-settings create --name <setting-name> --workspace <log-analytics-workspace-resource-id> --resource <storage-account-resource-id> --logs '[{"category": <category name>, "enabled": true "retentionPolicy": {"days": <days>, "enabled": <retention-bool}}]'
 ```
 
-Íme egy példa:
+Például:
 
 `az monitor diagnostic-settings create --name setting1 --workspace /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --logs '[{"category": StorageDelete, "enabled": true ]'`
 
@@ -491,7 +491,7 @@ A naplók úgy jelennek meg, mint a cél Storage-fiókban lévő tárolóban tá
 
 `https://<destination-storage-account>.blob.core.windows.net/insights-logs-<storage-operation>/resourceId=/subscriptions/<subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<source-storage-account>/fileServices/default/y=<year>/m=<month>/d=<day>/h=<hour>/m=<minute>/PT1H.json`
 
-Íme egy példa:
+Például:
 
 `https://mylogstorageaccount.blob.core.windows.net/insights-logs-storagewrite/resourceId=/subscriptions/`<br>`208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default/y=2019/m=07/d=30/h=23/m=12/PT1H.json`
 
@@ -659,7 +659,7 @@ A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz 
 12. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét** , * * leírását és **súlyosságát** .
 13. A riasztás létrehozásához kattintson a **riasztási szabály létrehozása** elemre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Files monitorozási adathivatkozás](storage-files-monitoring.md)
 - [Azure-erőforrások figyelése Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md)

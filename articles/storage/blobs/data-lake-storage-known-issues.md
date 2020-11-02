@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: bffe69dd5b7d3cdfcba1df3420d494dcffc33f9a
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: f995750c1e009febcb9872c230e22921ff9c50c4
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042665"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186586"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Ismert problémák a Azure Data Lake Storage Gen2
 
@@ -41,7 +41,7 @@ A blob API-k és a Data Lake Storage Gen2 API-k ugyanazon az adatközponton műk
 
 Ez a szakasz a blob API-k és a Data Lake Storage Gen2 API-k használatával kapcsolatos problémákat és korlátozásokat ismerteti ugyanazon az adatközponton.
 
-* Az API-k és Data Lake Storage API-k nem használhatók a fájlok ugyanazon példányára való íráshoz. Ha Data Lake Storage Gen2 API-k használatával ír fájlba egy fájlt, a rendszer nem fogja látni a fájl blokkokat a [letiltási lista](https://docs.microsoft.com/rest/api/storageservices/get-block-list) blob API-jának meghívásához. Az egyetlen kivétel az, amikor a használata felülírja. A fájlokat vagy blobokat az API-k használatával írhatja felül.
+* A blob API és a Data Lake Storage API-k nem használhatók egy fájl ugyanazon példányára való íráshoz. Ha Data Lake Storage Gen2 API-k használatával ír fájlba egy fájlt, a rendszer nem fogja látni a fájl blokkokat a [letiltási lista](https://docs.microsoft.com/rest/api/storageservices/get-block-list) blob API-jának meghívásához. Az egyetlen kivétel az, amikor a használata felülírja. A fájlokat vagy blobokat az API-k használatával írhatja felül.
 
 * Ha a [lista Blobok](https://docs.microsoft.com/rest/api/storageservices/list-blobs) műveletet határolójel megadása nélkül használja, az eredmények a címtárakat és a blobokat is tartalmazzák. Ha elválasztót választ, csak egy perjelet ( `/` ) használjon. Ez az egyetlen támogatott elválasztó karakter.
 

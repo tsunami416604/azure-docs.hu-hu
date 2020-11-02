@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d2f5b87fe313f7d152a80a35671bc7e0da3bb7c7
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: f142c8abfc9056e0f8ca1d921f2c6bfc72292730
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341549"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186620"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>A szinapszis munkaterület biztonságossá tétele (előzetes verzió) 
 
@@ -36,7 +36,7 @@ A szinapszis-munkaterület (előzetes verzió) biztonságossá tételéhez köve
 
 Ez a dokumentum szabványos neveket használ az utasítások egyszerűsítéséhez. Cserélje le azokat bármely tetszőleges névvel.
 
-|Beállítás | Példaérték | Description |
+|Beállítás | Példaérték | Leírás |
 | :------ | :-------------- | :---------- |
 | **Szinapszis-munkaterület** | WS1 |  A szinapszis munkaterület neve. |
 | **ADLSGEN2-fiók** | STG1 | A munkaterülethez használni kívánt ADLS-fiók. |
@@ -51,8 +51,6 @@ Hozza létre és töltse fel a munkaterület három biztonsági csoportját:
 - **WS1 \_ WSAdmins** – azoknak a felhasználóknak, akiknek teljes körű felügyeletet kell végezniük a munkaterület felett
 - **WS1 \_ SparkAdmins** – azoknak a felhasználóknak, akik a munkaterület Spark-szempontjainak teljes körű felügyeletét szeretnék
 - **WS1 \_ SQLAdmins** – a munkaterület SQL-szempontjait teljes körű vezérlést igénylő felhasználók számára
-- **WS1- \_ WSAdmins** hozzáadása a **WS1 \_ SQLAdmins**
-- **WS1- \_ WSAdmins** hozzáadása a **WS1 \_ SparkAdmins**
 
 ## <a name="step-2-prepare-your-data-lake-storage-gen2-account"></a>2. lépés: a Data Lake Storage Gen2-fiók előkészítése
 
@@ -98,7 +96,7 @@ A szinapszis munkaterületnek hozzá kell férnie a STG1 és a CNT1, hogy képes
 
 - Nyissa meg az Azure Portalt
 - Navigáljon a WS1
-- A **Beállítások**területen válassza az **SQL Active Directory-rendszergazda** elemet.
+- A **Beállítások** területen válassza az **SQL Active Directory-rendszergazda** elemet.
 - Válassza a **rendszergazda beállítása** elemet, és válassza a WS1 \_ SQLAdmins
 
 ## <a name="step-6-maintain-access-control"></a>6. lépés: hozzáférés-vezérlés fenntartása
@@ -184,6 +182,6 @@ A szinapszis Studio a felhasználói szerepkörök alapján eltérően fog műk�
 > [1] a tárolókban lévő adatokhoz való hozzáférés a ADLS Gen2 hozzáférés-vezérléstől függ. </br>
 > [2] az SQL OD-táblák és a Spark-táblázatok tárolja az ADLS Gen2 és a hozzáféréshez szükséges megfelelő engedélyeket a ADLS Gen2.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Szinapszis- [munkaterület](../quickstart-create-workspace.md) létrehozása

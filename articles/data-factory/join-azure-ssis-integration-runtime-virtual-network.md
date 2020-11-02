@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/13/2020
+ms.date: 11/02/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 0e9c669f2994e896205762c5f3f4df1b5fe214ae
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e73126cfc54294a7b9d54ff62c406d5e686ac470
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637224"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186773"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS Integration Runtime csatlakoztatása virtuális hálózathoz
 
@@ -99,7 +99,7 @@ A következő szakaszokban további részleteket talál.
 
 - Győződjön meg arról, hogy a virtuális hálózat erőforráscsoport (vagy a nyilvános IP-címek erőforráscsoport, ha saját nyilvános IP-címeket hoz létre) létrehozhat és törölhet bizonyos Azure-hálózati erőforrásokat. További információ: [az erőforráscsoport beállítása](#resource-group). 
 
-- Ha testreszabja a Azure-SSIS IR a [Azure-SSIS IR egyéni beállítása](./how-to-configure-azure-ssis-ir-custom-setup.md)című témakörben leírtak szerint, akkor a Azure-SSIS IR-csomópontok MAGÁNHÁLÓZATI IP-címeket kapnak az előre meghatározott 172.16.0.0 és 172.31.255.255 között. Ügyeljen arra, hogy a virtuális vagy a helyszíni hálózatok magánhálózati IP-címei ne ütköznek ezzel a tartománnyal.
+- Ha testreszabja a Azure-SSIS IR a [Azure-SSIS IR egyéni beállítása](./how-to-configure-azure-ssis-ir-custom-setup.md)című témakörben leírtak szerint, a csomópontok kezelésének belső folyamata privát IP-címeket fog használni a 172.16.0.0 előre meghatározott tartománya és a 172.31.255.255 között. Ezért győződjön meg arról, hogy a virtuális vagy a helyszíni hálózatok magánhálózati IP-címeinek tartománya nem ütközik ezzel a tartománnyal.
 
 Ez az ábrán a Azure-SSIS IR szükséges kapcsolatok láthatók:
 
@@ -338,7 +338,7 @@ A portálon konfigurálhat egy Azure Resource Manager virtuális hálózatot, mi
 
 1. Indítsa el a Microsoft Edge vagy a Google Chrome böngészőt. Jelenleg csak ezek a böngészők támogatják a Data Factory felhasználói felületet. 
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
 1. Válassza a **További szolgáltatások** lehetőséget. A **virtuális hálózatok** szűrése és kiválasztása. 
 
@@ -368,7 +368,7 @@ A portálon konfigurálhatja a klasszikus virtuális hálózatot, mielőtt csatl
 
 1. Indítsa el a Microsoft Edge vagy a Google Chrome böngészőt. Jelenleg csak ezek a böngészők támogatják a Data Factory felhasználói felületet. 
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
 1. Válassza a **További szolgáltatások** lehetőséget. Szűrje és válassza a **virtuális hálózatok (klasszikus)** lehetőséget. 
 
@@ -597,7 +597,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 A parancs futása 20 – 30 percet vesz igénybe.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Azure-SSIS IRról a következő cikkekben talál további információt: 
 - [Azure-SSIS IR](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk az IRs-vel kapcsolatos általános információkat tartalmaz, beleértve a Azure-SSIS IRt is. 
