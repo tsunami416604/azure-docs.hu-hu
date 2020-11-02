@@ -37,6 +37,8 @@
       items:
         - name: Csatlakozás SQL-kiszolgálóhoz – Portal
           href: tutorial-private-endpoint-sql-portal.md
+        - name: Csatlakozás SQL-kiszolgálóhoz – PowerShell
+          href: tutorial-private-endpoint-sql-powershell.md
 - name: Alapelvek
   items:
     - name: Privát végpont
