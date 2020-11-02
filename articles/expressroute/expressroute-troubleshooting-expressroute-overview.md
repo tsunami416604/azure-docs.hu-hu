@@ -9,10 +9,10 @@ ms.date: 10/31/2019
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: af4ef156cccded6afe2db09628446a6ffe1ad53a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "92204639"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Az ExpressRoute-kapcsolat ellenőrzése
@@ -85,7 +85,7 @@ A Azure Portal nyissa meg a ExpressRoute áramkör panelt. A panel ![3][3] szaka
 
 A ExpressRoute Essentialsben az áramkör *állapota* az áramkör állapotát jelzi a Microsoft oldalon. A *szolgáltató állapota* azt jelzi, hogy az áramkör üzembe helyezése */kiépítés nem* történt-e meg a szolgáltatói oldalon. 
 
-Ahhoz, hogy egy ExpressRoute-áramkör működőképes legyen, *engedélyezni* kell az *áramköri állapotot* , és a *szolgáltatói állapotot* kell *kiépíteni*.
+Ahhoz, hogy egy ExpressRoute-áramkör működőképes legyen, *engedélyezni* kell az *áramköri állapotot* , és a *szolgáltatói állapotot* kell *kiépíteni* .
 
 > [!NOTE]
 > Ha a ExpressRoute áramkör konfigurálása után az *áramkör állapota* nem engedélyezett állapotú, forduljon a [Microsoft ügyfélszolgálatahoz][Support]. Ha viszont a *szolgáltató állapota* nem kiépített állapotban van, forduljon a szolgáltatóhoz.
@@ -165,7 +165,7 @@ A Azure Portal egy ExpressRoute-áramköri társítás állapotát a ExpressRout
 Az előző példában látható módon, ahogy az Azure Private-peering kiépítve van, míg az Azure nyilvános és a Microsoft-partnerek nincsenek kiépítve. A sikeresen kiépített társítási környezet az elsődleges és a másodlagos pont-pont típusú alhálózatokat is tartalmazza. A/30 alhálózatot a Msee és a CEs/PE-Msee kapcsolati IP-címéhez használja a rendszer. A kiépített társítások esetében a lista azt is jelzi, hogy ki utoljára módosította a konfigurációt. 
 
 > [!NOTE]
-> Ha a társítás engedélyezése sikertelen, ellenőrizze, hogy a hozzárendelt elsődleges és másodlagos alhálózatok megfelelnek-e a társított CE/PE-MSEE konfigurációjának. Ellenőrizze azt is, hogy a megfelelő *VlanId*, *AzureASN*és *PeerASN* használják-e a msee, és hogy ezek az értékek a társított CE/PE-MSEE használt értékekre vannak-e leképezve. Ha az MD5-kivonatolás van kiválasztva, a megosztott kulcsnak meg kell egyeznie a MSEE és a PE-MSEE/CE párokkal. A korábban konfigurált megosztott kulcs biztonsági okokból nem jelenik meg. Ha módosítania kell ezen konfiguráció bármelyikét egy MSEE-útválasztón, tekintse meg az [Útválasztás létrehozása és módosítása egy ExpressRoute áramkörhöz][CreatePeering]című témakört.  
+> Ha a társítás engedélyezése sikertelen, ellenőrizze, hogy a hozzárendelt elsődleges és másodlagos alhálózatok megfelelnek-e a társított CE/PE-MSEE konfigurációjának. Ellenőrizze azt is, hogy a megfelelő *VlanId* , *AzureASN* és *PeerASN* használják-e a msee, és hogy ezek az értékek a társított CE/PE-MSEE használt értékekre vannak-e leképezve. Ha az MD5-kivonatolás van kiválasztva, a megosztott kulcsnak meg kell egyeznie a MSEE és a PE-MSEE/CE párokkal. A korábban konfigurált megosztott kulcs biztonsági okokból nem jelenik meg. Ha módosítania kell ezen konfiguráció bármelyikét egy MSEE-útválasztón, tekintse meg az [Útválasztás létrehozása és módosítása egy ExpressRoute áramkörhöz][CreatePeering]című témakört.  
 >
 
 > [!NOTE]
@@ -228,7 +228,7 @@ At line:1 char:1
 ```
 
 > [!NOTE]
-> Ha a társítás engedélyezése sikertelen, ellenőrizze, hogy a hozzárendelt elsődleges és másodlagos alhálózatok megfelelnek-e a társított CE/PE-MSEE konfigurációjának. Ellenőrizze azt is, hogy a megfelelő *VlanId*, *AzureASN*és *PeerASN* használják-e a msee, és hogy ezek az értékek a társított CE/PE-MSEE használt értékekre vannak-e leképezve. Ha az MD5-kivonatolás van kiválasztva, a megosztott kulcsnak meg kell egyeznie a MSEE és a PE-MSEE/CE párokkal. A korábban konfigurált megosztott kulcs biztonsági okokból nem jelenik meg. Ha módosítania kell ezen konfiguráció bármelyikét egy MSEE-útválasztón, tekintse meg az [Útválasztás létrehozása és módosítása egy ExpressRoute áramkörhöz][CreatePeering]című témakört.  
+> Ha a társítás engedélyezése sikertelen, ellenőrizze, hogy a hozzárendelt elsődleges és másodlagos alhálózatok megfelelnek-e a társított CE/PE-MSEE konfigurációjának. Ellenőrizze azt is, hogy a megfelelő *VlanId* , *AzureASN* és *PeerASN* használják-e a msee, és hogy ezek az értékek a társított CE/PE-MSEE használt értékekre vannak-e leképezve. Ha az MD5-kivonatolás van kiválasztva, a megosztott kulcsnak meg kell egyeznie a MSEE és a PE-MSEE/CE párokkal. A korábban konfigurált megosztott kulcs biztonsági okokból nem jelenik meg. Ha módosítania kell ezen konfiguráció bármelyikét egy MSEE-útválasztón, tekintse meg az [Útválasztás létrehozása és módosítása egy ExpressRoute áramkörhöz][CreatePeering]című témakört.  
 >
 >
 
@@ -278,7 +278,7 @@ Path    : 123##
 ```
 
 > [!NOTE]
-> Ha egy MSEE és egy CE/PE-MSEE közötti eBGP-társítás állapota aktív vagy üresjáratban van, ellenőrizze, hogy az elsődleges és a másodlagos társ-alhálózatok megfelelnek-e a társított CE/PE-MSEE konfigurációjának. Ellenőrizze azt is, hogy a megfelelő *VlanId*, *AzureAsn*és *PeerAsn* használják-e a msee, és ha ezek az értékek a csatolt PE-MSEE/CE-ben használt értékekre vannak leképezve. Ha az MD5-kivonatolás van kiválasztva, a megosztott kulcsnak azonosnak kell lennie a MSEE és a CE/PE-MSEE párban. Ha módosítania kell ezen konfiguráció bármelyikét egy MSEE-útválasztón, tekintse meg az [Útválasztás létrehozása és módosítása egy ExpressRoute áramkörhöz][CreatePeering]című témakört.
+> Ha egy MSEE és egy CE/PE-MSEE közötti eBGP-társítás állapota aktív vagy üresjáratban van, ellenőrizze, hogy az elsődleges és a másodlagos társ-alhálózatok megfelelnek-e a társított CE/PE-MSEE konfigurációjának. Ellenőrizze azt is, hogy a megfelelő *VlanId* , *AzureAsn* és *PeerAsn* használják-e a msee, és ha ezek az értékek a csatolt PE-MSEE/CE-ben használt értékekre vannak leképezve. Ha az MD5-kivonatolás van kiválasztva, a megosztott kulcsnak azonosnak kell lennie a MSEE és a CE/PE-MSEE párban. Ha módosítania kell ezen konfiguráció bármelyikét egy MSEE-útválasztón, tekintse meg az [Útválasztás létrehozása és módosítása egy ExpressRoute áramkörhöz][CreatePeering]című témakört.
 >
 
 
