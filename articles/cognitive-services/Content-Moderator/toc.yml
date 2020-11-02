@@ -6,6 +6,8 @@
     - name: Mi a Content Moderator?
       href: overview.md
       expanded: true
+    - name: Újdonságok
+      href: whats-new.md
 - name: Rövid útmutatók
   items:
     - name: A Content Moderator kipróbálása az interneten

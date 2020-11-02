@@ -97,12 +97,10 @@
           items:
             - name: Kiépítés és kezelés
               href: how-to-provision-manage.md
-            - name: Diagnosztizálás és hibaelhárítás
-              href: how-to-diagnose-troubleshoot.md
-        - name: Integrálás és tárolás
-          items:
             - name: Egy TSID kiválasztása
               href: how-to-select-tsid.md
+            - name: Diagnosztizálás és hibaelhárítás
+              href: how-to-diagnose-troubleshoot.md
         - name: Modell
           items:
             - name: Saját modell szerkesztése

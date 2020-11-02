@@ -79,8 +79,6 @@
   items:
     - name: Közzétételi útmutató ajánlattípusok szerint
       href: publisher-guide-by-offer-type.md
-    - name: Ajánlat hitelesítésének engedélyezése az Azure AD-vel
-      href: enable-appsource-marketplace-using-azure-ad.md
     - name: Azure-alkalmazásajánlatok
       items:
         - name: Megoldássablon-ajánlat megtervezése

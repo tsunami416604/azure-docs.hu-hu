@@ -14,16 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 4587ab5e2cf36dce65cd02b167656c88cfde10a1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b769703f7e7054571a3b65a021c0123d8ae07078
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096954"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148235"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>A felhasználó és az entitás viselkedés-elemzésének (UEBA) engedélyezése az Azure Sentinelben 
 
-
+> [!IMPORTANT]
+>
+> - A UEBA szolgáltatás mostantól **általánosan elérhető** a következő Azure Sentinel földrajzi területeken és régiókban:
+>    - Földrajz Egyesült Államok
+>    - Nyugat-Európa régiója
+>    - Ausztráliai földrajzi hely
+>
+> - Ez a szolgáltatás minden más földrajzi helyen és régióban továbbra is a **nyilvános előzetes** verzióban érhető el, és szolgáltatói szerződés nélkül van megadva. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +48,7 @@ A funkció engedélyezéséhez vagy letiltásához (ezek az előfeltételek nem 
 
 ## <a name="how-to-enable-user-and-entity-behavior-analytics"></a>A felhasználó és az entitás viselkedés-elemzésének engedélyezése
 
-1. Az Azure Sentinel navigációs menüjében válassza az **entitás viselkedése (előzetes verzió)** lehetőséget.
+1. Az Azure Sentinel navigációs menüjében válassza az **entitás viselkedése** elemet.
 
 1. A címsor alatt **kapcsolja** be a kapcsolót a **be** értékre.
 

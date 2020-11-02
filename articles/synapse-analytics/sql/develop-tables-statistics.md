@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: cefc6cc72ed8d74663464f4ac2d672369cd9d31c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 368d43283d713b8d4e101c2ee26724242f29756c
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288664"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148252"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statisztika a szinapszis SQL-ben
 
@@ -74,7 +74,7 @@ A mérhető teljesítmény elkerülése érdekében először létre kell hoznia
 > [!NOTE]
 > A statisztikák létrehozása a [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) egy másik felhasználói környezetben történik.
 
-Az automatikus statisztikák létrehozásakor a rendszer az alábbiakat használja: _WA_Sys_<8 jegyű oszlop azonosítóját hexadecimális>_<8 számjegyű tábla azonosítóját hexadecimális>. A már létrehozott statisztikákat a [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) parancs futtatásával tekintheti meg:
+Az automatikus statisztikák létrehozásakor a rendszer az alábbiakat használja: _WA_Sys_ <8 jegyű oszlop azonosítóját hexadecimális>_<8 számjegyű tábla azonosítóját hexadecimális>. A már létrehozott statisztikákat a [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) parancs futtatásával tekintheti meg:
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -173,7 +173,7 @@ CREATE STATISTICS [statistics_name]
     ON [schema_name].[table_name]([column_name]);
 ```
 
-Példa:
+Például:
 
 ```sql
 CREATE STATISTICS col1_stats
@@ -190,7 +190,7 @@ CREATE STATISTICS [statistics_name]
     WITH FULLSCAN;
 ```
 
-Példa:
+Például:
 
 ```sql
 CREATE STATISTICS col1_stats
@@ -245,7 +245,7 @@ Több oszlopból álló statisztikai objektum létrehozásához használja az el
 > [!NOTE]
 > A lekérdezési eredményben szereplő sorok számának becsléséhez használt hisztogram csak a statisztikai objektum definíciójában felsorolt első oszlop esetében érhető el.
 
-Ebben a példában a hisztogram a *termék \_ kategóriájában*van. Az oszlopokra vonatkozó statisztikákat a *termék \_ kategóriája* és a *termék \_ sub_category*alapján számítjuk ki:
+Ebben a példában a hisztogram a *termék \_ kategóriájában* van. Az oszlopokra vonatkozó statisztikákat a *termék \_ kategóriája* és a *termék \_ sub_category* alapján számítjuk ki:
 
 ```sql
 CREATE STATISTICS stats_2cols
@@ -254,7 +254,7 @@ CREATE STATISTICS stats_2cols
     WITH SAMPLE = 50 PERCENT;
 ```
 
-Mivel a *termék \_ kategóriája* és a *termék \_ \_ alkategóriája*közötti korreláció létezik, a többoszlopos statisztikai objektum akkor lehet hasznos, ha ezek az oszlopok egy időben érhetők el.
+Mivel a *termék \_ kategóriája* és a *termék \_ \_ alkategóriája* közötti korreláció létezik, a többoszlopos statisztikai objektum akkor lehet hasznos, ha ezek az oszlopok egy időben érhetők el.
 
 #### <a name="create-statistics-on-all-columns-in-a-table"></a>Statisztikák létrehozása egy tábla összes oszlopához
 
@@ -403,7 +403,7 @@ A következő szintaxissal frissíthet egy adott statisztikai objektumot:
 UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
 ```
 
-Példa:
+Például:
 
 ```sql
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
@@ -419,7 +419,7 @@ Egy egyszerű módszer a tábla összes statisztikai objektumának frissítésé
 UPDATE STATISTICS [schema_name].[table_name];
 ```
 
-Példa:
+Például:
 
 ```sql
 UPDATE STATISTICS dbo.table1;
@@ -443,7 +443,7 @@ A statisztikával kapcsolatos információk megkereséséhez számos rendszerné
 
 Ezek a rendszernézetek a statisztikával kapcsolatos információkat tartalmaznak:
 
-| Katalógus nézet | Leírás |
+| Katalógus nézet | Description |
 |:--- |:--- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Egy sor az egyes oszlopokhoz. |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Egy sor az adatbázis minden objektumához. |
@@ -457,7 +457,7 @@ Ezek a rendszernézetek a statisztikával kapcsolatos információkat tartalmazn
 
 Ezek a rendszerfunkciók a statisztikákkal való munkavégzéshez hasznosak:
 
-| System függvény | Leírás |
+| System függvény | Description |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |A statisztikai objektum utolsó frissítésének dátuma. |
 | [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Összegző szint és részletes információk az értékek eloszlásáról a statisztikai objektum által értelmezett módon. |
@@ -522,7 +522,7 @@ Ez az egyszerű példa egy statisztikai objektum mindhárom részét megjelenít
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
 ```
 
-Példa:
+Például:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
@@ -537,7 +537,7 @@ DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
     WITH stat_header, histogram, density_vector
 ```
 
-Példa:
+Például:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
@@ -616,7 +616,7 @@ Ha a sorok száma jelentősen megváltozott, vagy jelentős változás van egy o
 A statisztikák frissítéséhez a következő irányadó elveket kell megadnia:
 
 - Győződjön meg arról, hogy az adatkészlet legalább egy statisztikai objektummal frissült. A frissítések mérete (sorok száma és oldalszáma) a statisztikák frissítésének részeként.
-- A JOIN, a GROUP BY, a ORDER BY és a DISTINCT záradékban részt vevő oszlopokra koncentrálhat.
+- Olyan oszlopokra koncentrálhat, amelyek részt vesznek a WHERE, a JOIN, a GROUP BY, a ORDER BY és a DISTINCT záradékban.
 - Frissítse a "növekvő kulcs" oszlopokat, például a tranzakciók dátumát gyakrabban, mert ezek az értékek nem szerepelnek a statisztikai hisztogramon.
 - Ritkábban frissítse a statikus terjesztési oszlopokat.
 
@@ -629,12 +629,12 @@ Az alábbi példák bemutatják, hogyan használhatók a különböző beállít
 > [!NOTE]
 > Egyoszlopos statisztikákat csak jelenleg hozhat létre.
 >
-> Az eljárás sp_create_file_statistics át lesz nevezve sp_create_openrowset_statisticsre. A nyilvános kiszolgálói szerepkör rendelkezik a TÖMEGES műveletek engedélyezésével, míg a nyilvános adatbázis-szerepkör végrehajtási engedélyekkel rendelkezik sp_create_file_statistics és sp_drop_file_statistics. Lehetséges, hogy ez a későbbiekben változhat.
+> Sp_create_openrowset_statistics és sp_drop_openrowset_statistics végrehajtásához a következő engedélyek szükségesek: TÖMEGES műveletek felügyelete vagy az adatbázis TÖMEGES MŰVELETEInek felügyelete.
 
 A következő tárolt eljárással lehet statisztikát létrehozni:
 
 ```sql
-sys.sp_create_file_statistics [ @stmt = ] N'statement_text'
+sys.sp_create_openrowset_statistics [ @stmt = ] N'statement_text'
 ```
 
 Argumentumok: [ @stmt =] N "statement_text" – egy Transact-SQL-utasítás, amely a statisztikához használandó oszlop-értékeket adja vissza. A TABLESAMPLE segítségével megadhatja a használni kívánt adatmintákat. Ha a TABLESAMPLE nincs megadva, a rendszer a FULLSCAN fogja használni.
@@ -666,7 +666,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT year
+EXEC sys.sp_create_openrowset_statistics N'SELECT year
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/csv/population/population.csv'',
         FORMAT = ''CSV'',
@@ -698,7 +698,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT payment_type
+EXEC sys.sp_create_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''
@@ -712,18 +712,18 @@ FROM OPENROWSET(
 A statisztikák frissítéséhez el kell dobnia és létre kell hoznia a statisztikát. A következő tárolt eljárással lehet eldobni a statisztikát:
 
 ```sql
-sys.sp_drop_file_statistics [ @stmt = ] N'statement_text'
+sys.sp_drop_openrowset_statistics [ @stmt = ] N'statement_text'
 ```
 
 > [!NOTE]
-> Az eljárás sp_drop_file_statistics át lesz nevezve sp_drop_openrowset_statisticsre. A nyilvános kiszolgálói szerepkör rendelkezik a TÖMEGES műveletek engedélyezésével, míg a nyilvános adatbázis-szerepkör végrehajtási engedélyekkel rendelkezik sp_create_file_statistics és sp_drop_file_statistics. Lehetséges, hogy ez a későbbiekben változhat.
+> Sp_create_openrowset_statistics és sp_drop_openrowset_statistics végrehajtásához a következő engedélyek szükségesek: TÖMEGES műveletek felügyelete vagy az adatbázis TÖMEGES MŰVELETEInek felügyelete.
 
 Argumentumok: [ @stmt =] N "statement_text" – a statisztikák létrehozásakor használt Transact-SQL-utasítást adja meg.
 
 Az adatkészletben található év oszlop statisztikáinak frissítéséhez, amely a population.csv fájlon alapul, el kell dobnia és létre kell hoznia a statisztikát:
 
 ```sql
-EXEC sys.sp_drop_file_statistics N'SELECT payment_type
+EXEC sys.sp_drop_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''
@@ -743,7 +743,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT payment_type
+EXEC sys.sp_create_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''

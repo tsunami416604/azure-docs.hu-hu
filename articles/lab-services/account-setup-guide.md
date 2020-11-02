@@ -3,12 +3,12 @@ title: Gyorsított labor-fiók telepítési útmutatója Azure Lab Services
 description: Ez az útmutató segítséget nyújt a rendszergazdáknak az iskolán belüli használatra szolgáló labor-fiókok gyors létrehozásában.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c186560b27ebcb543a23785dc5fbc556614f64b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0855e59aced37e50c088cfe89ffeb3d0af9fcdca
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85445423"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148285"
 ---
 # <a name="lab-account-setup-guide"></a>Lab-fiók telepítési útmutatója
 
@@ -29,6 +29,10 @@ A gyors kezdéshez hozzon létre egy Lab-fiókot, majd később szükség szerin
 ### <a name="who-should-be-owners-and-contributors-of-the-lab-account"></a>Kinek kell a labor-fiók tulajdonosai és közreműködői?
 
 A rendszergazdák általában a labor-fiókok tulajdonosai és közreműködői. Ők felelősek a labor-fiókban található összes laborhoz tartozó szabályzatok kezeléséért. A labor-fiókot létrehozó személy automatikusan tulajdonosa. További tulajdonosokat és közreműködőket adhat hozzá, általában az előfizetéséhez társított Azure Active Directory (Azure AD) bérlőtől. Ez akkor lehet hasznos, ha a labor fiók szintjén a tulajdonos vagy közreműködő szerepkör hozzárendelésével segíti a tesztkörnyezet felügyeletét.
+
+[!INCLUDE [Select a tenant](./includes/multi-tenant-support.md)]
+
+A labor felhasználóinak csak egyetlen listát kell látniuk a virtuális gépekről, amelyekhez a Azure Lab Serviceson belüli bérlők között férhet hozzá.
 
 ### <a name="who-will-be-allowed-to-create-and-manage-labs"></a>Kik számára engedélyezett a laborok létrehozása és kezelése?
 
@@ -70,7 +74,7 @@ Miután megértette a labor-fiókjára vonatkozó követelményeket, készen ál
 
 1. **Hozza létre a labor-fiókját.** Az utasításokért tekintse meg a [labor-fiók létrehozásáról](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#create-a-lab-account) szóló oktatóanyagot.
 
-   Labor-fiók létrehozásakor hasznos lehet megtekinteni az érintett Azure-erőforrásokat. További információkért tekintse át a következő cikkeket:
+   Labor-fiók létrehozásakor hasznos lehet megtekinteni az érintett Azure-erőforrásokat. További információkat az következő cikkekben talál:
 
    - [Előfizetés](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#subscription)
    - [Erőforráscsoport](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#resource-group)
@@ -97,7 +101,7 @@ Miután megértette a labor-fiókjára vonatkozó követelményeket, készen ál
 
    ![Képernyőkép – Egyéni rendszerképek engedélyezése egy megosztott rendszerkép-gyűjteményben](./media/setup-guide/enable-sig-custom-images.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tesztkörnyezetfiókok kezelése](how-to-manage-lab-accounts.md)
 

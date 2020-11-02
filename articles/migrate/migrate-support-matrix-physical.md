@@ -3,12 +3,12 @@ title: A fizikai kiszolgáló értékelésének támogatása Azure Migrate
 description: Tudnivalók a fizikai kiszolgálók értékelésének támogatásáról Azure Migrate Server Assessment szolgáltatással
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: d9f7dea69c78bb038c06e5cb276628eba0381bb2
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 58ecba6bcedc036e31046aef292e482085ad7cc6
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319302"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148405"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>A fizikai kiszolgáló értékelésének támogatási mátrixa 
 
@@ -31,11 +31,21 @@ A fizikai kiszolgálók értékeléséhez létre kell hoznia egy Azure Migrate p
 
 ## <a name="physical-server-requirements"></a>Fizikai kiszolgáló követelmények
 
-| **Támogatás**                | **Részletek**               
-| :-------------------       | :------------------- |
-| **Fizikai kiszolgáló üzembe helyezése**       | A fizikai kiszolgáló önálló vagy fürtben is üzembe helyezhető. |
-| **Engedélyek**           | **Windows:** Tartományhoz csatlakozó gépeknél használjon tartományi fiókot, tartományhoz nem csatlakozó gépeknél pedig helyit. A felhasználói fiókot ezekhez a csoportokhoz kell hozzáadni: távfelügyeleti felhasználók, teljesítményfigyelő felhasználók és teljesítménynapló-felhasználók. <br/><br/> **Linux:** Rendszergazdai fiókra van szüksége a felderíteni kívánt Linux-kiszolgálókon. <br/> Másik lehetőségként ellenőrizze, hogy a szükséges funkciók a következő parancsokkal vannak-e beállítva. <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/fdisk <br/> setcap CAP_DAC_READ_SEARCH + EIP/sbin/fdisk (ha a/usr/sbin/fdisk nincs jelen) <br/> setcap "cap_dac_override, cap_dac_read_search, cap_fowner, cap_fsetid, cap_setuid, cap_setpcap, cap_net_bind_service, cap_net_admin, cap_sys_chroot, cap_sys_admin, cap_sys_resource, cap_audit_control, cap_setfcap = + EIP"/sbin/LVM <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/dmidecode <br/> chmod a + r/sys/Class/DMI/ID/product_uuid
-| **Operációs rendszer** | Az összes Windows-és Linux-operációs rendszer kiértékelése áttelepítésre lehetséges. |
+**Fizikai kiszolgáló üzembe helyezése:** A fizikai kiszolgáló önálló vagy fürtben is üzembe helyezhető.
+
+**Operációs rendszer:** Az összes Windows-és Linux-operációs rendszer kiértékelése áttelepítésre lehetséges.
+
+**Engedélyek**
+- Windows-kiszolgálók esetében tartományi fiókot használjon a tartományhoz csatlakoztatott gépekhez, valamint egy helyi fiókot a tartományhoz nem csatlakoztatott gépekhez. A felhasználói fiókot ezekhez a csoportokhoz kell hozzáadni: távfelügyeleti felhasználók, teljesítményfigyelő felhasználók és teljesítménynapló-felhasználók.
+- Linux-kiszolgálók esetén rendszergazdai fiókra van szüksége a felderíteni kívánt Linux-kiszolgálókon. Másik lehetőségként az alábbi parancsokkal állíthatja be a nem gyökérszintű fiókot a szükséges képességekkel:
+
+**Parancs** | **Rendeltetés**
+--- | --- |
+setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/fdisk <br></br> setcap CAP_DAC_READ_SEARCH + EIP/sbin/fdisk _(ha a/usr/sbin/fdisk nincs jelen)_ | A lemez konfigurációs adatainak összegyűjtése
+setcap "cap_dac_override, cap_dac_read_search, cap_fowner, cap_fsetid, cap_setuid,<br>cap_setpcap, cap_net_bind_service, cap_net_admin, cap_sys_chroot, cap_sys_admin,<br>cap_sys_resource, cap_audit_control, cap_setfcap = + EIP "/sbin/LVM | A lemez teljesítményadatait tartalmazó adatok gyűjtése
+setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/dmidecode | A BIOS sorozatszámának összegyűjtése
+chmod a + r/sys/Class/DMI/ID/product_uuid | A BIOS GUID-azonosító gyűjtése
+
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate-berendezés követelményei
