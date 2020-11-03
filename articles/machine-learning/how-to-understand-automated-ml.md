@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2
-ms.openlocfilehash: d27c65938d10f9061961ebb585327bc77d8b2859
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: d66c5001d94d0c2d28ae3c55b468fbaf45871c98
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092460"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280359"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Az automatizált Machine learning-kísérletek eredményeinek kiértékelése
 
@@ -24,7 +24,7 @@ Ebből a cikkből megtudhatja, hogyan tekintheti meg és értékelheti ki az aut
 
 Például a AutoML különböző diagramokat biztosít a besorolási és regressziós modellekhez. 
 
-|Osztályozás|Regresszió
+|Besorolás|Regresszió
 |---|---|
 |<li> [Keveredési mátrix](#confusion-matrix) <li>[Precíziós visszahívási diagram](#precision-recall-chart) <li> [Fogadó működési jellemzői (vagy ROC)](#roc) <li> [Emelő görbe](#lift-curve)<li> [Nyereségi görbe](#gains-curve)<li> [Kalibrálási ábra](#calibration-plot) | <li> [Előre jelzett vagy igaz](#pvt) <li> [Maradványok hisztogramja](#histo)|
 
@@ -50,9 +50,9 @@ A következő lépések és animációk bemutatják, hogyan lehet megtekinteni e
 A futtatási előzmények és a modell teljesítmény-metrikáinak és diagramjainak megtekintése a Studióban: 
 
 1. [Jelentkezzen be a studióba](https://ml.azure.com/) , és navigáljon a munkaterületére.
-1. A munkaterület bal oldali paneljén válassza a **Futtatás**lehetőséget.
+1. A munkaterület bal oldali paneljén válassza a **Futtatás** lehetőséget.
 1. A kísérletek listájában válassza ki a felderíteni kívánt elemet.
-1. Az alsó táblázatban válassza a **Futtatás**lehetőséget.
+1. Az alsó táblázatban válassza a **Futtatás** lehetőséget.
 1. A **modellek** lapon válassza ki a felderíteni kívánt modellhez tartozó **algoritmus nevét** .
 1. A **metrikák** lapon válassza ki, hogy milyen mérőszámokat és diagramokat szeretne kiértékelni a modellhez. 
 
@@ -159,7 +159,7 @@ A lift-diagramok kiértékelik a besorolási modellek teljesítményét. A felvo
 
 ### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
 
-Egy magasabb szintű lift-görbe, amely a modell magasabb az alaptervnél, jobb teljesítményt biztosító modellt jelez. 
+A jobb teljesítményű modell egy olyan felvonó-görbével fog rendelkezni, amely magasabb a gráfon, és az alaptervtől távolabb van. 
 
 #### <a name="example-1-a-classification-model-that-performs-poorly-compared-to-a-random-selection-model"></a>1. példa: egy véletlenszerű kiválasztási modellhez képest rosszul elvégezhető besorolási modell
 ![Egy véletlenszerű kiválasztási modellnél rosszabb besorolási modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve1.png)
@@ -234,12 +234,12 @@ Az előre jelzett és az igaz érték azt mutatja, hogy egy regressziós problé
 Az egyes futtatások után megtekintheti az egyes regressziós modellekhez tartozó, előre jelzett és igaz gráfot is. Az adatok védelme érdekében az értékek együtt dobozolni, és az egyes raktárhelyek mérete a diagramterület alsó részén oszlopdiagramként jelenik meg. A prediktív modellt összehasonlíthatja a világosabb árnyalattal, amely a hibák margóit mutatja, így a modellnek ideális értékkel kell rendelkeznie.
 
 ### <a name="what-does-a-good-model-look-like"></a>Mi a jó modell?
-Ez a gráf felhasználható egy modell teljesítményének mérésére, ahogy az y = x vonal közelebb van az előre jelzett értékekhez, annál jobb a prediktív modell pontossága.
+Ez a gráf felhasználható egy modell teljesítményének mérésére, ha az y = x vonal közelebb van az előre jelzett értékekhez, annál jobb a prediktív modell teljesítménye.
 
-#### <a name="example-1-a-classification-model-with-low-accuracy"></a>1. példa: kis pontosságú besorolási modell
+#### <a name="example-1-a-regression-model-with-low-performance"></a>1. példa: alacsony teljesítményű regressziós modell
 ![Regressziós modell alacsony pontossággal a jóslatokban](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression1.png)
 
-#### <a name="example-2-a-regression-model-with-high-accuracy"></a>2. példa: nagy pontosságú regressziós modell 
+#### <a name="example-2-a-regression-model-with-high-performance"></a>2. példa: nagy teljesítményű regressziós modell
 ![Regressziós modell nagy pontossággal az előrejelzések szerint](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)
 
 <a name="histo"></a> 
@@ -254,7 +254,7 @@ Ha alacsony torzítású hibát szeretne megjeleníteni, a maradékok hisztogram
 #### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>1. példa: egy regressziós modell, amely torzulást okoz a hibáknál
 ![SA regressziós modell a hibák torzításával](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression3.png)
 
-#### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>2. példa: egy regressziós modell a hibák egyenletes eloszlásával
+#### <a name="example-2-a-regression-model-with-a-more-even-distribution-of-errors"></a>2. példa: egy regressziós modell a hibák egyenletes eloszlásával
 ![Egy regressziós modell, amely a hibák egyenletes eloszlásával rendelkezik](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
 
 <a name="explain-model"></a>

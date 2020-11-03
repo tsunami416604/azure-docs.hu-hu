@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b929632318de41470412811885b9f1bd3054783a
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: bf7b829d70af27850affe619d47ed4a4f5ec1bea
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145973"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279909"
 ---
 # <a name="write-client-app-authentication-code"></a>Ügyfél-alkalmazás hitelesítési kódjának írása
 
@@ -20,7 +20,7 @@ Miután [beállított egy Azure digitális Twins-példányt és-hitelesítést](
 
 Az Azure Digital Twins az [Azure ad biztonsági jogkivonatok használatával végzi a hitelesítést az OAUTH 2,0 alapján](../active-directory/develop/security-tokens.md#json-web-tokens-jwts-and-claims). Az SDK hitelesítéséhez be kell szereznie egy tulajdonosi jogkivonatot a megfelelő engedélyekkel az Azure digitális Twins-hoz, és át kell adnia az API-hívásokkal együtt. 
 
-Ez a cikk bemutatja, hogyan szerezhet be hitelesítő adatokat az `Azure.Identity` ügyféloldali kódtár használatával. Ez a cikk a C#-ban található példákat mutatja be, például a [.net (c#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)-hoz írt változatot, `Azure.Identity` függetlenül attól, hogy milyen SDK-t használ (az Azure Digital Twins-hoz elérhető SDK-kkal kapcsolatos további információkért lásd [*: útmutató: az Azure digitális Twins API-k és SDK-k használata*](how-to-use-apis-sdks.md)).
+Ez a cikk bemutatja, hogyan szerezhet be hitelesítő adatokat az `Azure.Identity` ügyféloldali kódtár használatával. Ez a cikk a C#-ban található példákat mutatja be, például a [.net (c#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)-hoz írt változatot, `Azure.Identity` függetlenül attól, hogy milyen SDK-t használ (az Azure Digital Twins-hoz elérhető SDK-kkal kapcsolatos további információkért lásd [*: útmutató: az Azure digitális Twins API-k és SDK-k használata*](how-to-use-apis-sdks.md)).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -39,7 +39,7 @@ A folytatáshoz szüksége lesz egy ügyfélalkalmazás-projektre, amelyben a k�
 
 Három gyakori hitelesítő adat – a metódusok beszerzése `Azure.Identity` :
 
-* A [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) az `TokenCredential` Azure-ban üzembe helyezett alkalmazások alapértelmezett hitelesítési folyamatát biztosítja, és **a helyi fejlesztéshez ajánlott választás** . Emellett engedélyezhető az ebben a cikkben javasolt két módszer kipróbálására is. a rendszer becsomagolja `ManagedIdentityCredential` és hozzáfér `InteractiveBrowserCredential` egy konfigurációs változóhoz.
+* A [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) az `TokenCredential` Azure-ban üzembe helyezett alkalmazások alapértelmezett hitelesítési folyamatát biztosítja, és **a helyi fejlesztéshez ajánlott választás**. Emellett engedélyezhető az ebben a cikkben javasolt két módszer kipróbálására is. a rendszer becsomagolja `ManagedIdentityCredential` és hozzáfér `InteractiveBrowserCredential` egy konfigurációs változóhoz.
 * A [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?preserve-view=true&view=azure-dotnet) remekül működik olyan esetekben, amikor [felügyelt identitásokat (MSI)](../active-directory/managed-identities-azure-resources/overview.md)kell használnia, és jó választás a Azure functions és az Azure-szolgáltatások üzembe helyezésére.
 * A [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) interaktív alkalmazásokhoz készült, és használható egy hitelesített SDK-ügyfél létrehozásához.
 
@@ -62,7 +62,7 @@ Ezután adjon hozzá programkódot a hitelesítő adatok beszerzéséhez a egyik
 
 ### <a name="defaultazurecredential-method"></a>DefaultAzureCredential metódus
 
-A [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) az `TokenCredential` Azure-ban üzembe helyezett alkalmazások alapértelmezett hitelesítési folyamatát biztosítja, és **a helyi fejlesztéshez ajánlott választás** .
+A [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) az `TokenCredential` Azure-ban üzembe helyezett alkalmazások alapértelmezett hitelesítési folyamatát biztosítja, és **a helyi fejlesztéshez ajánlott választás**.
 
 Az alapértelmezett Azure-beli hitelesítő adatok használatához szüksége lesz az Azure Digital Twins-példány URL-címére (a[keresendő utasítások](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).
 

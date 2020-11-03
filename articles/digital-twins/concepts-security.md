@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6784ca9dbc32811a02f4454be94d220c634318f5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 349f57299387b616373bb5fb4d295da8df8ee493
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503317"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279892"
 ---
 # <a name="secure-azure-digital-twins"></a>Biztonságos Azure digitális Twins
 
@@ -24,13 +24,13 @@ Az Azure Digital Twins az inaktív adatok titkosítását is támogatja.
 
 Az Azure RBAC az Azure Digital Twins számára biztosítható [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure ad) integrációja révén.
 
-Az Azure RBAC segítségével engedélyeket adhat egy *rendszerbiztonsági tag*számára, amely lehet egy felhasználó, egy csoport vagy egy egyszerű alkalmazás. A rendszerbiztonsági tag hitelesítve van az Azure AD-ben, és egy OAuth 2,0 tokent kap vissza. Ez a jogkivonat egy Azure Digital Twins-példány hozzáférési kérelmének engedélyezésére használható.
+Az Azure RBAC segítségével engedélyeket adhat egy *rendszerbiztonsági tag* számára, amely lehet egy felhasználó, egy csoport vagy egy egyszerű alkalmazás. A rendszerbiztonsági tag hitelesítve van az Azure AD-ben, és egy OAuth 2,0 tokent kap vissza. Ez a jogkivonat egy Azure Digital Twins-példány hozzáférési kérelmének engedélyezésére használható.
 
 ### <a name="authentication-and-authorization"></a>Hitelesítés és engedélyezés
 
-Az Azure AD-vel a hozzáférés egy kétlépéses folyamat. Ha egy rendszerbiztonsági tag (felhasználó, csoport vagy alkalmazás) megpróbál hozzáférni az Azure digitális Twinshoz, a kérést *hitelesíteni* és *engedélyezni*kell. 
+Az Azure AD-vel a hozzáférés egy kétlépéses folyamat. Ha egy rendszerbiztonsági tag (felhasználó, csoport vagy alkalmazás) megpróbál hozzáférni az Azure digitális Twinshoz, a kérést *hitelesíteni* és *engedélyezni* kell. 
 
-1. Először a rendszerbiztonsági tag identitása *hitelesítve*van, és a rendszer egy OAuth 2,0 tokent ad vissza.
+1. Először a rendszerbiztonsági tag identitása *hitelesítve* van, és a rendszer egy OAuth 2,0 tokent ad vissza.
 2. Ezután a tokent egy, az Azure Digital Twins szolgáltatásnak küldött kérelem részeként továbbítja a rendszer a megadott erőforráshoz való hozzáférés *engedélyezéséhez* .
 
 A hitelesítési lépés megköveteli, hogy az alkalmazás kérése OAuth 2,0 hozzáférési jogkivonatot tartalmazzon futásidőben. Ha egy alkalmazás egy Azure-entitáson (például egy [Azure functions](../azure-functions/functions-overview.md) alkalmazáson) fut, akkor a **felügyelt identitás** használatával férhet hozzá az erőforrásokhoz. További információk a felügyelt identitásokról a következő szakaszban olvashatók.
@@ -72,7 +72,7 @@ A beépített szerepkörök meghatározásával kapcsolatos további informáci�
 Ha automatikus forgatókönyvekben lévő szerepkörökre hivatkozik, azt javasoljuk, hogy a nevük helyett az **azonosítókat** használják. A nevek a kiadások között változhatnak, de az azonosítók nem lesznek elérhetők, így az automatizálás még stabilabb referenciát eredményez.
 
 > [!TIP]
-> Ha parancsmaggal `New-AzRoleAssignment` (például[referenciával](/powershell/module/az.resources/new-azroleassignment?view=azps-4.8.0)) assiging a szerepköröket, a (z) paramétert használhatja a (z) `-RoleDefinitionId` helyett, `-RoleDefinitionName` hogy a szerepkör neve helyett egy azonosítót adjon át.
+> Ha parancsmaggal `New-AzRoleAssignment` (például[referenciával](/powershell/module/az.resources/new-azroleassignment)) assiging a szerepköröket, a (z) paramétert használhatja a (z) `-RoleDefinitionId` helyett, `-RoleDefinitionName` hogy a szerepkör neve helyett egy azonosítót adjon át.
 
 ### <a name="permission-scopes"></a>Engedélyek hatókörei
 
@@ -88,6 +88,32 @@ Az alábbi lista azokat a szinteket ismerteti, amelyeken az Azure Digital Twins-
 ### <a name="troubleshooting-permissions"></a>Hibaelhárítási engedélyek
 
 Ha egy felhasználó olyan műveletet próbál végrehajtani, amelyet nem engedélyeznek a szerepkörük, előfordulhat, hogy a szolgáltatáskérelem olvasása hibaüzenetet kap `403 (Forbidden)` . További információt és hibaelhárítási lépéseket a [*Hibaelhárítás: az Azure digitális Twins-kérelem sikertelen állapot: 403 (tiltott)*](troubleshoot-error-403.md)című témakörben talál.
+
+## <a name="service-tags"></a>Szolgáltatáscímkék
+
+A **szolgáltatás címkéje** egy adott Azure-szolgáltatás IP-címeinek egy csoportját jelöli. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával, minimalizálva a hálózati biztonsági szabályok gyakori frissítéseinek összetettségét. A szolgáltatás címkével kapcsolatos további információkért lásd:  [*virtuális hálózati címkék*](../virtual-network/service-tags-overview.md). 
+
+A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](../virtual-network/network-security-groups-overview.md#security-rules)vagy Azure Firewallon határozhat meg hálózati hozzáférés-vezérlést   , ha a biztonsági szabályok létrehozásakor a szolgáltatási címkéket használja adott IP-címek helyett. [Azure Firewall](../firewall/service-tags.md) Ha megadja a szolgáltatási címke nevét (ebben az esetben a **AzureDigitalTwins** ) a szabály megfelelő *forrás*   vagy *cél*   mezőjében, engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. 
+
+Alább láthatók a **AzureDigitalTwins** szolgáltatás címkéjének részletei.
+
+| Címke | Rendeltetés | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
+| --- | --- | --- | --- | --- |
+| AzureDigitalTwins | Azure Digital Twins<br>Megjegyzés: Ez a címke vagy a címke által lefedett IP-címek használhatók az [esemény-útvonalakhoz](concepts-route-events.md)konfigurált végpontokhoz való hozzáférés korlátozására. | Bejövő | Nem | Igen |
+
+### <a name="using-service-tags-for-accessing-event-route-endpoints"></a>Szolgáltatás-címkék használata az Event Route-végpontokhoz való hozzáféréshez 
+
+A következő lépésekkel érheti el az [Event Route](concepts-route-events.md) -végpontokat a szolgáltatás-címkék és az Azure Digital ikrek használatával.
+
+1. Először töltse le ezt a JSON-fájl hivatkozást, amely az Azure IP-címtartományok és a szolgáltatás címkéit tartalmazza: [*Azure IP-címtartományok és szolgáltatás-címkék*](https://www.microsoft.com/download/details.aspx?id=56519). 
+
+2. Keresse meg a "AzureDigitalTwins" IP-tartományokat a JSON-fájlban.  
+
+3. Tekintse át a végponthoz csatlakozó külső erőforrás dokumentációját (például a [Event Grid](../event-grid/overview.md), az [Event Hub](../event-hubs/event-hubs-about.md), az [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)vagy az [Azure Storage](../storage/blobs/storage-blobs-overview.md) a [kézbesítetlen levelek eseményeihez](concepts-route-events.md#dead-letter-events)) című témakört, amelyből megtudhatja, hogyan állíthatja be az adott erőforrás IP-szűrőit.
+
+4. Állítsa be az IP-szűrőket a külső erőforrás (ok) ra a *2. lépésből* származó IP-címtartományok használatával.  
+
+5. Rendszeresen frissítse az IP-tartományokat szükség szerint. A tartományok idővel változhatnak, ezért érdemes rendszeresen megnézni ezeket, és szükség esetén frissíteni őket. A frissítések gyakorisága eltérő lehet, de érdemes hetente egyszer megnézni.
 
 ## <a name="encryption-of-data-at-rest"></a>Inaktív adatok titkosítása
 

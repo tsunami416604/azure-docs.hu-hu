@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/29/2020
 ms.author: kenwith
 ms.reviewer: baselden
-ms.openlocfilehash: 327e59d3fee6f23d2635b846e9fb5ab422e0139e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a49dff0e4ac41670800073c02c5a507eb433c326
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87429024"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280433"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Az alkalmazások Azure Active Directoryba való áttelepítéséhez szükséges erőforrások
 
@@ -26,6 +26,7 @@ Az alkalmazások hozzáférésének és hitelesítésének Azure Active Director
 |:-----------|:-------------|
 |[Alkalmazások áttelepítése az Azure AD-be](https://aka.ms/migrateapps/whitepaper) | Ez a tanulmány az áttelepítés előnyeit mutatja be, és leírja, hogyan tervezze meg az áttelepítést négy jól tagolt fázisban: felderítés, besorolás, áttelepítés és folyamatos felügyelet. Útmutatást kaphat arról, hogyan gondolhatja át a folyamatot, és hogyan bontják le a projektet könnyen felhasználható darabokra. A dokumentum teljes egészében olyan fontos erőforrásokra mutató hivatkozásokat talál, amelyek segítenek az Ön számára. |
 |[Megoldási útmutató: alkalmazások áttelepítése Active Directory összevonási szolgáltatások (AD FS)ról (AD FS) az Azure AD-be](https://aka.ms/migrateapps/adfssolutionguide) | Ez a megoldási útmutató végigvezeti az áttelepítési tanulmány magasabb szintjén ismertetett alkalmazás-áttelepítési projekt tervezésének és végrehajtásának négy fázisán. Ebből az útmutatóból megtudhatja, hogyan alkalmazhatja ezeket a fázisokat arra a célra, amely az alkalmazások Azure Directory összevont szolgáltatásokból (AD FS) az Azure AD-ba való áthelyezésének konkrét céljára vonatkozik.|
+|[Fejlesztői oktatóanyag: az Azure AD Application Migration forgatókönyvének AD FS a fejlesztők számára](https://aka.ms/adfsplaybook) | Ez a ASP.NET-kódrészletek és a hozzájuk tartozó oktatóanyagok segítenek megismerni, hogyan lehet biztonságosan és biztonságosan migrálni az alkalmazásokat a Active Directory összevonási szolgáltatások (AD FS) (AD FS) rendszerbe integrált Azure Active Directory (Azure AD) szolgáltatásba. Ez az oktatóanyag olyan fejlesztőknek szól, akik nem csupán az alkalmazások AD FS és az Azure AD-ben való konfigurálásának megismeréséhez szükségesek, de tisztában van azzal is, hogy a programkód alapjául szolgáló változások a folyamat során szükségesek.|
 | [Eszköz: Active Directory összevonási szolgáltatások (AD FS) Migration Readiness script](https://aka.ms/migrateapps/adfstools) | Ez egy parancsfájl, amely a helyszíni Active Directory összevonási szolgáltatások (AD FS) (AD FS) kiszolgálón futtatható az Azure AD-ba való áttelepítéshez használható alkalmazások készültségének meghatározásához.|
 | [Központi telepítési terv: áttelepítés AD FSról jelszó-kivonatolási szinkronizálásra](https://aka.ms/ADFSTOPHSDPDownload) | A jelszó-kivonatolási szinkronizálással a felhasználói jelszavak kivonatait a helyszíni Active Directoryról az Azure AD-be szinkronizálja a rendszer. Ez lehetővé teszi, hogy az Azure AD hitelesítse a felhasználókat a helyszíni Active Directory való interakció nélkül.| 
 | [Központi telepítési terv: áttelepítés AD FSról átmenő hitelesítésre](https://aka.ms/ADFSTOPTADPDownload)|Az Azure AD átmenő hitelesítés használatával a felhasználók ugyanazzal a jelszóval jelentkezhetnek be a helyszíni és a felhőalapú alkalmazásokba. Ez a funkció jobb felhasználói élményt nyújt a felhasználóknak, hiszen kevesebb jelszót kell megjegyeznünk. Emellett csökkenti az informatikai támogatási szolgálat költségeit, mivel a felhasználók kevésbé valószínű, hogy hogyan jelentkezhetnek be, amikor csak egy jelszót kell megjegyezni. Az Azure AD-vel való bejelentkezéskor a szolgáltatás közvetlenül a helyszíni Active Directoryban tárolt adatok alapján érvényesíti a felhasználói jelszavakat.|

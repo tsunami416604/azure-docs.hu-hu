@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7bb336c6c1f483160b760b266e01249b7e1ee04e
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: ed4bc60fbffbfbc553d41d7f7d44709551b620dc
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145548"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280331"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Az Azure Digital Twins API-k és SDK-k használata
 
@@ -26,12 +26,12 @@ Ez a cikk áttekintést nyújt az elérhető API-król, valamint a velük való 
 
 A vezérlési sík API-k az Azure Digital Twins-példányok egészének kezelésére szolgáló [ARM](../azure-resource-manager/management/overview.md) API-k, így olyan műveletekre is kiterjednek, mint például a teljes példány létrehozása vagy törlése. Ezeket a végpontok létrehozásához és törléséhez is használni fogja.
 
-A jelenlegi Control Plant API-verzió a _**2020-10-31**_ .
+A jelenlegi Control Plant API-verzió a _**2020-10-31**_.
 
 A vezérlő sík API-k használata:
 * Az API-kat közvetlenül hívhatja a [vezérlési sík hencegő mappájában](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)található legújabb hencegés hivatkozásával. Ez a tárház a használatot bemutató példákat is tartalmaz.
 * Jelenleg a vezérlési API-k számára érhető el az SDK-ban...
-  - [.Net (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([hivatkozás [automatikusan generált]](/dotnet/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-dotnet-preview)) ([forrás](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
+  - [.Net (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([hivatkozás [automatikusan generált]](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true)) ([forrás](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
   - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([hivatkozás [automatikusan generált]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview)) ([forrás](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))
   - [JavaScript](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([forrás](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
   - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([forrás](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins))
@@ -47,7 +47,7 @@ Az adatsík API-k az Azure Digital Twins-példányban található elemek kezelé
 * **Lekérdezés** – a lekérdezési kategória lehetővé teszi a fejlesztők számára [, hogy a kettős gráfban a kapcsolatok között megtalálják a digitális ikrek készleteit](how-to-query-graph.md) .
 * **Esemény-útvonalak** – az Event Routes kategória API-kat tartalmaz az [adattovábbításhoz](concepts-route-events.md)a rendszeren és az alárendelt szolgáltatásokon keresztül.
 
-A legfrissebb adatsíkok API-verziója _**2020-10-31**_ .
+A legfrissebb adatsíkok API-verziója _**2020-10-31**_.
 
 Az adatsík API-k használata:
 * Az API-kat közvetlenül, a... alapján hívhatja le.
@@ -55,7 +55,7 @@ Az adatsík API-k használata:
    - az [API-referenciák dokumentációjának](/rest/api/azure-digitaltwins/)megtekintése.
 * Használhatja a **.net (C#) SDK-** t. A .NET SDK használata...
    - a csomagot a NuGet: [Azure. DigitalTwins. Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core)fájlból tekintheti meg és adhatja hozzá. 
-   - megtekintheti az [SDK-referenciák dokumentációját](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true).
+   - megtekintheti az [SDK-referenciák dokumentációját](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true).
    - megtalálhatja az SDK-forrást, beleértve a példákat tartalmazó mappát is a GitHubban: az [Azure IoT Digital Twins ügyféloldali kódtára a .net-hez](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
    - a részletes információkat és használati példákat a jelen cikk [.net (C#) SDK (adatsíkja)](#net-c-sdk-data-plane) című szakaszában tekintheti meg.
 * Használhatja a **Java** SDK-t. A Java SDK használata...
@@ -274,7 +274,7 @@ client.UpdateDigitalTwin("myTwin", updateTwinData);
 ## <a name="general-apisdk-usage-notes"></a>Általános API-/SDK-használati megjegyzések
 
 > [!NOTE]
-> Vegye figyelembe, hogy az Azure Digital Twins jelenleg nem támogatja a **több eredetű erőforrás-megosztást (CORS)** . A hatás-és megoldási stratégiákkal kapcsolatos további információkért tekintse meg a *fogalmak: biztonság Azure digitális Twins-megoldásokhoz* című szakaszát. [*Cross-Origin Resource Sharing (CORS)*](concepts-security.md#cross-origin-resource-sharing-cors)
+> Vegye figyelembe, hogy az Azure Digital Twins jelenleg nem támogatja a **több eredetű erőforrás-megosztást (CORS)**. A hatás-és megoldási stratégiákkal kapcsolatos további információkért tekintse meg a *fogalmak: biztonság Azure digitális Twins-megoldásokhoz* című szakaszát. [*Cross-Origin Resource Sharing (CORS)*](concepts-security.md#cross-origin-resource-sharing-cors)
 
 Az alábbi lista további részleteket és általános irányelveket tartalmaz az API-k és SDK-k használatához.
 

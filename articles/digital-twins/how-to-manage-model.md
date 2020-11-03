@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5bcb6df1b03b0c1c835e198818813ad8d914c630
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: b31e3d44cc66e97506b29b81cef5b8d981d05e39
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147113"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279411"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure digitális Twins-modellek kezelése
 
-A [**DigitalTwinModels API**](/rest/api/digital-twins/dataplane/models)-k, a [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)vagy az [Azure Digital Twins CLI](how-to-use-cli.md)használatával felügyelheti a [modelleket](concepts-models.md) , amelyeket az Azure digitális Twins-példánya tud. 
+A [**DigitalTwinModels API**](/rest/api/digital-twins/dataplane/models)-k, a [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)vagy az [Azure Digital Twins CLI](how-to-use-cli.md)használatával felügyelheti a [modelleket](concepts-models.md) , amelyeket az Azure digitális Twins-példánya tud. 
 
 A kezelési műveletek közé tartozik a modellek feltöltése, ellenőrzése, beolvasása és törlése. 
 
@@ -200,7 +200,7 @@ A modell ezen verziója ezután elérhető lesz a példányban a digitális ikre
 
 Ez azt is jelenti, hogy egy modell új verziójának feltöltése nem befolyásolja automatikusan a meglévő ikreket. A meglévő ikrek egyszerűen megmaradnak a modell korábbi verziójának példányain.
 
-Ezeket a meglévő ikreket frissítheti az új modell verziójára úgy, hogy kijavítja azokat a következő témakörben ismertetett módon: a [*Digital Twin modell frissítése*](how-to-manage-twin.md#update-a-digital-twins-model) című rész, *útmutató: digitális ikrek kezelése* . Ugyanezen a javításon belül frissítenie kell a **modell azonosítóját** (az új verzióra) és **minden olyan mezőt, amelyet meg kell változtatni a twinon, hogy az megfeleljen az új modellnek** .
+Ezeket a meglévő ikreket frissítheti az új modell verziójára úgy, hogy kijavítja azokat a következő témakörben ismertetett módon: a [*Digital Twin modell frissítése*](how-to-manage-twin.md#update-a-digital-twins-model) című rész, *útmutató: digitális ikrek kezelése*. Ugyanezen a javításon belül frissítenie kell a **modell azonosítóját** (az új verzióra) és **minden olyan mezőt, amelyet meg kell változtatni a twinon, hogy az megfeleljen az új modellnek**.
 
 ### <a name="remove-models"></a>Modellek eltávolítása
 

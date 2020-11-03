@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/02/2020
+ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 4a4df1ff0561e180ca0a3fd36363ceff7da042df
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: e645f4075aa1c4c027e8ea884108fdeb708467af
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522427"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279954"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nitro-productivity-suite"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a nitro hatékonyságnövelő csomaggal
 
@@ -25,8 +25,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a nitro Productivi
 * Szabályozza az Azure AD-t, aki hozzáfér a nitro hatékonyságnövelő csomaghoz.
 * Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a nitro hatékonyságnövelő csomagba az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
-
-Ha többet szeretne megtudni a szolgáltatott szoftver (SaaS) alkalmazás Azure AD-integrációval kapcsolatban, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory](../manage-apps/what-is-single-sign-on.md)használatával című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,48 +39,49 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * A nitro hatékonyságnövelő csomag támogatja az **SP** és a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést.
 * A nitro Productivity Suite **csak időben támogatja a** felhasználók üzembe helyezését.
-* A nitro hatékonyságnövelő csomag konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. További információ: a [munkamenet-vezérlés kényszerített érvényesítése Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-nitro-productivity-suite-from-the-gallery"></a>A nitro hatékonyságnövelő csomag hozzáadása a katalógusból
 
 A nitro hatékonyságnövelő csomag Azure AD-integrációjának konfigurálásához a katalógusból a felügyelt SaaS-alkalmazások listájához hozzá kell adnia a nitro hatékonyságnövelő csomagot.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
-1. A bal oldali ablaktáblán válassza a **Azure Active Directory**lehetőséget.
-1. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali ablaktáblán válassza a **Azure Active Directory** lehetőséget.
+1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **nitro hatékonyságnövelő csomag** kifejezést a keresőmezőbe.
 1. Válassza a **nitro hatékonyságnövelő csomag** lehetőséget az eredmények közül, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-nitro-productivity-suite"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a nitro hatékonyságnövelő csomaghoz
 
-Konfigurálja és tesztelje az Azure AD SSO-t a nitro hatékonyságnövelő csomaggal, egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy összekapcsolt kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a nitro Productivity Suite-ban.
+Konfigurálja és tesztelje az Azure AD SSO-t a nitro hatékonyságnövelő csomaggal, egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy összekapcsolt kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a nitro Productivity Suite-ban.
 
 Az Azure AD SSO és a nitro hatékonyságnövelő csomag konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
 1. [Konfigurálja az Azure ad SSO](#configure-azure-ad-sso) -t, hogy a felhasználók használhatják ezt a funkciót.
-    1. [Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user) az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-    1. [Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user) , hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. [Konfigurálja a nitro termelékenységi csomag egyszeri](#configure-nitro-productivity-suite-sso) bejelentkezési beállításait az alkalmazás oldalának egyszeri bejelentkezési beállításainak konfigurálásához.
-    1. [Hozzon létre egy nitro termelékenységi csomag tesztelésére szolgáló felhasználót](#create-a-nitro-productivity-suite-test-user) , hogy az a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-ügyféllel rendelkezzen.
+
+    a. [Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user) az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    
+    b. [Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user) , hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+    
+2. [Hozzon létre egy nitro termelékenységi csomag tesztelésére szolgáló felhasználót](#create-a-nitro-productivity-suite-test-user) , hogy az a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-ügyféllel rendelkezzen.
 1. Ellenőrizze az [SSO](#test-sso) -t annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **nitro hatékonyságnövelő csomag** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt. Válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A Azure Portal a **nitro hatékonyságnövelő csomag** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt. Válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** szakaszt. A **Letöltés** gombra kattintva letöltheti a tanúsítványt, és mentheti a számítógépre.
 
     ![Képernyőfelvétel az SAML-aláíró tanúsítványról szakasz, a letöltési hivatkozás kiemelve](common/certificatebase64.png)
     
-1. A **nitro hatékonyságnövelő csomag beállítása** szakaszban válassza a másolás ikont a **bejelentkezési URL-cím**mellett.
+1. A **nitro hatékonyságnövelő csomag beállítása** szakaszban válassza a másolás ikont a **bejelentkezési URL-cím** mellett.
     
     ![Képernyőfelvétel a nitro hatékonyságnövelő csomag beállításáról, URL-címekkel és a másolási ikonok kiemelésével](common/copy-configuration-urls.png)
     
-1. A [nitro felügyeleti portál](https://admin.gonitro.com/) **Vállalati beállítások** lapján keresse meg az **egyszeri bejelentkezés** szakaszt. Válassza az **SAML SSO beállítása**lehetőséget.
+1. A [nitro felügyeleti portál](https://admin.gonitro.com/) **Vállalati beállítások** lapján keresse meg az **egyszeri bejelentkezés** szakaszt. Válassza az **SAML SSO beállítása** lehetőséget.
 
     a. Illessze be a **bejelentkezési URL-címet** az előző lépésben a **bejelentkezési URL-cím** mezőbe.
     
@@ -90,7 +89,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     
     c. Válassza a **Küldés** lehetőséget.
     
-    d. Válassza az **egyszeri bejelentkezés engedélyezése**lehetőséget.
+    d. Válassza az **egyszeri bejelentkezés engedélyezése** lehetőséget.
 
 
 1. Lépjen vissza az [Azure Portalra](https://portal.azure.com/). Az **egyszeri Sign-On beállítása az SAML-vel** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikont a beállítások szerkesztéséhez.
@@ -103,7 +102,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     b. A **Válasz URL-címe** szövegmezőbe másolja és illessze be az **ACS URL-címét** a [nitro felügyeleti portálról](https://admin.gonitro.com/). A következő mintát kell tartalmaznia: `https://gonitro-prod.eu.auth0.com/login/callback?connection=<ENVIRONMENT>`
 
-1. Válassza a **további URL-címek beállítása**lehetőséget, majd hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
+1. Válassza a **további URL-címek beállítása** lehetőséget, majd hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:  `https://sso.gonitro.com/login`
 
@@ -124,7 +123,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -136,23 +135,13 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban engedélyezi a B. Simon számára az Azure egyszeri bejelentkezés használatát a nitro hatékonyságnövelő csomag elérésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
-1. Válassza az alkalmazások lista **nitro hatékonyságnövelő csomag**elemét.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
-
-   ![Képernyőfelvétel a kezelés szakaszról, Kiemelt felhasználók és csoportok](common/users-groups-blade.png)
-
-1. Válassza a **Felhasználó hozzáadása** elemet. Ezután a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok**lehetőséget.
-
-    ![Képernyőkép a felhasználók és csoportok oldalról, a felhasználó hozzáadása elem kiemelésével](common/add-assign-user.png)
-
+1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
+1. Válassza az alkalmazások lista **nitro hatékonyságnövelő csomag** elemét.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **Felhasználó hozzáadása** elemet. Ezután a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 1. A **felhasználók és csoportok** párbeszédpanelen válassza ki a felhasználók listájából a **B. Simon** elemet. Ezután válassza a **kijelölés** lehetőséget a képernyő alján.
-1. Ha az SAML-kijelentésben bármelyik szerepkör értékét várta, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a listáról a felhasználó számára. Ezután válassza a **kijelölés** lehetőséget a képernyő alján.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
-
-## <a name="configure-nitro-productivity-suite-sso"></a>A nitro hatékonyságnövelő csomag egyszeri bejelentkezésének konfigurálása
-
-Ha be szeretné állítani az egyszeri bejelentkezést a nitro hatékonyságnövelő csomag oldalán, küldje el a letöltött **tanúsítványt (Base64)** és a megfelelő másolt URL-címeket a Azure Portal a [nitro hatékonyságnövelő csomag támogatási csapatának](https://www.gonitro.com/support). A támogatási csapat biztosítja, hogy az SAML SSO-kapcsolatok mindkét oldalon megfelelően legyenek beállítva.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés** lehetőséget.
 
 ### <a name="create-a-nitro-productivity-suite-test-user"></a>Egy nitro termelékenységi csomag tesztelési felhasználójának létrehozása
 
@@ -160,20 +149,21 @@ A nitro hatékonyságnövelő csomag támogatja az igény szerinti felhasználó
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panel használatával tesztelheti.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-Amikor kiválasztja a nitro hatékonyságnövelő csomag csempét a hozzáférési panelen, automatikusan bejelentkezik a nitro hatékonyságnövelő csomagba, amelyhez be van állítva az egyszeri bejelentkezés. További információ: [Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>Az SP inicializálva:
 
-## <a name="additional-resources"></a>További források
+1. Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ez átirányítja a nitro Productivity Suite bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot.  
 
-- [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](./tutorial-list.md)
+2. Lépjen a nitro Productivity Suite bejelentkezési URL-címére, és indítsa el innen a bejelentkezési folyamatot.
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a nitro hatékonyságnövelő csomagba, amelyhez be szeretné állítani az egyszeri bejelentkezést 
 
-- [A nitro hatékonyságnövelő csomag kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+A Microsoft Access panel használatával bármilyen módban tesztelheti az alkalmazást. Ha a hozzáférési panelen a nitro hatékonyságnövelő csomag csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie a nitro hatékonyságnövelő csomagba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
 
-- [A nitro hatékonyságnövelő csomag a fejlett láthatósággal és ellenőrzésekkel biztosítható](/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>Következő lépések
+
+A nitro hatékonyságnövelő csomag konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáféréstől. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

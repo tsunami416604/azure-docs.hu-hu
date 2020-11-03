@@ -4,25 +4,25 @@ titleSuffix: Azure Digital Twins
 description: Oktatóanyag egy ügyfélalkalmazás minimális kódjának megírásához a .NET (C#) SDK használatával.
 author: baanders
 ms.author: baanders
-ms.date: 05/05/2020
+ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 11b2d4d9ec914839b2b4730419ca5ef67b66a2f5
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 3225fff1c82822dee990804f934ada86068841e8
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93144494"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280260"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Oktatóanyag: kódolás az Azure Digital Twins API-kkal
 
-Gyakori, hogy az Azure Digital Twins-szel dolgozó fejlesztők az Azure Digital Twins szolgáltatás példányaival együttműködve írhatnak be egy ügyfélalkalmazás-alkalmazást. Ez a fejlesztői témájú oktatóanyag bevezetést nyújt az Azure Digital Twins szolgáltatással való programozáshoz a [.net-hez készült Azure Digital Twins SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)használatával. Részletesen ismerteti a C#-konzol ügyfélalkalmazás lépésről lépésre történő írását.
+Gyakori, hogy az Azure Digital Twins-szel dolgozó fejlesztők az Azure Digital Twins szolgáltatás példányaival együttműködve írhatnak be egy ügyfélalkalmazás-alkalmazást. Ez a fejlesztői témájú oktatóanyag bevezetést nyújt az Azure Digital Twins szolgáltatással való programozáshoz a [.net-hez készült Azure Digital Twins SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)használatával. Részletesen ismerteti a C#-konzol ügyfélalkalmazás lépésről lépésre történő írását.
 
 > [!div class="checklist"]
 > * Projekt beállítása
 > * Első lépések a Project Code-ban   
 > * Kód teljes mintája
-> * Az erőforrások felszabadítása
+> * Az erőforrások eltávolítása
 > * Következő lépések
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -47,7 +47,7 @@ Nyisson meg egy parancssort vagy egy másik konzolablak-ablakot a gépen, és ho
 
 Navigáljon az új könyvtárba.
 
-Egyszer a projekt könyvtárában **hozzon létre egy üres .net-konzol alkalmazás-projektet** . A parancssori ablakban a következő parancs futtatásával hozhat létre egy minimális C#-projektet a-konzolhoz:
+Egyszer a projekt könyvtárában **hozzon létre egy üres .net-konzol alkalmazás-projektet**. A parancssori ablakban a következő parancs futtatásával hozhat létre egy minimális C#-projektet a-konzolhoz:
 
 ```cmd/sh
 dotnet new console
@@ -58,7 +58,7 @@ Ez több fájlt hoz létre a címtárban, például egy *program.cs* , ahol a k�
 Tartsa megnyitva a parancssorablakot, ahogy az oktatóanyag során is használni fogja.
 
 Ezután **vegyen fel két függőséget a projekthez** , amely szükséges lesz az Azure digitális ikrekkel való együttműködéshez. Az alábbi hivatkozásokat követve megkeresheti a NuGet lévő csomagokat, ahol megtalálhatja a konzol parancsait (beleértve a .NET CLI-t is), hogy hozzáadja az egyes projektekhez tartozó legújabb verziót.
-* [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Ez a csomag a .NET-hez készült [Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)-hoz. 
+* [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Ez a csomag a .NET-hez készült [Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)-hoz. 
 * [**Azure. Identity**](https://www.nuget.org/packages/Azure.Identity). Ez a kódtár eszközöket biztosít az Azure-beli hitelesítéshez.
 
 ## <a name="get-started-with-project-code"></a>Első lépések a Project Code-ban
@@ -123,8 +123,8 @@ dotnet run
 ```
 
 Ezzel visszaállítja a függőségeket az első futtatás után, majd végrehajtja a programot. 
-* Ha nem fordul elő hiba, a program kinyomtatja a *szolgáltatáshoz létrehozott ügyfelet, amely készen áll* .
-* Mivel ebben a projektben még nincsenek hibák, ha bármilyen hiba történik, a kód kivételt fog látni.
+* Ha nem fordul elő hiba, a program kinyomtatja a *szolgáltatáshoz létrehozott ügyfelet, amely készen áll*.
+* Mivel ebben a projektben még nincsenek hibák, ha problémák merülnek fel, a kód egy kivételt fog látni.
 
 ### <a name="upload-a-model"></a>Modell feltöltése
 
@@ -136,7 +136,7 @@ Hozzon létre egy *SampleModel.js* nevű új *. JSON* fájlt a címtárban, ahol
 
 ```json
 {
-  "@id": "dtmi:com:contoso:SampleModel;1",
+  "@id": "dtmi:example:SampleModel;1",
   "@type": "Interface",
   "displayName": "SampleModel",
   "contents": [
@@ -155,7 +155,7 @@ Hozzon létre egy *SampleModel.js* nevű új *. JSON* fájlt a címtárban, ahol
 ```
 
 > [!TIP]
-> Ha a Visual studiót használja ehhez az oktatóanyaghoz, érdemes kijelölni az újonnan létrehozott JSON-fájlt, és a tulajdonság-ellenőrben a *Másolás a kimeneti könyvtárba* tulajdonságot úgy kell beállítani, hogy az *újabb* vagy a *Másolás Always* . Ez lehetővé teszi a Visual Studio számára, hogy megkeresse a JSON-fájlt az alapértelmezett elérési úttal, amikor az oktatóanyag többi részében futtatja a programot az **F5 billentyűvel** .
+> Ha a Visual studiót használja ehhez az oktatóanyaghoz, érdemes kijelölni az újonnan létrehozott JSON-fájlt, és a tulajdonság-ellenőrben a *Másolás a kimeneti könyvtárba* tulajdonságot úgy kell beállítani, hogy az *újabb* vagy a *Másolás Always*. Ez lehetővé teszi a Visual Studio számára, hogy megkeresse a JSON-fájlt az alapértelmezett elérési úttal, amikor az oktatóanyag többi részében futtatja a programot az **F5 billentyűvel** .
 
 > [!TIP] 
 > A DTDL érvényességének ellenőrzéséhez használhatja a Language-agnosztikus [DTDL-érvényesítő mintát](/samples/azure-samples/dtdl-validator/dtdl-validator) , amellyel ellenőrizhetők a modell dokumentumai. A szolgáltatás a DTDL-elemző könyvtárra épül, amelyről további információt a modellek elemzése [*és ellenőrzése*](how-to-parse-models.md)című témakörben olvashat.
@@ -199,21 +199,23 @@ A parancsablakban futtassa a programot a következő paranccsal:
 ```cmd/sh
 dotnet run
 ```
-A "modell feltöltése" a kimenetben lesz kinyomtatva, de még nincs kimenet, amely azt jelzi, hogy a modellek feltöltése sikeres volt-e.
+A "modell feltöltése" a kimenetben jelenik meg, amely jelzi, hogy a rendszer elérte ezt a kódot, de még nincs kimenet, amely jelzi, hogy a feltöltés sikeres volt-e.
 
-Ha olyan Print utasítást szeretne felvenni, amely azt jelzi, hogy a modellek feltöltése ténylegesen megtörtént-e, adja hozzá a következő kódot közvetlenül az előző szakasz után:
+Ha olyan Print utasítást szeretne hozzáadni, amely az összes olyan modellt tartalmazza, amely sikeresen fel lett töltve a példányba, adja hozzá a következő kódot közvetlenül az előző szakasz után:
 
 ```csharp
 // Read a list of models back from the service
+Console.WriteLine("Models uploaded to the instance:");
 AsyncPageable<DigitalTwinsModelData> modelDataList = client.GetModelsAsync();
 await foreach (DigitalTwinsModelData md in modelDataList)
 {
-    Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
+    Console.WriteLine($"{md.Id}");
 }
 ```
-Mielőtt újra futtatja a programot az új kód teszteléséhez, emlékezteti arra, hogy a program legutóbbi futtatásakor már feltöltötte a modellt. Az Azure Digital Twins nem teszi lehetővé kétszer ugyanazt a modellt, így ha újra megpróbálja feltölteni ugyanazt a modellt, a program kivételt jelez.
 
-Most futtassa újra a programot ezzel a paranccsal a parancsablakban:
+**Mielőtt újra futtatja a programot az új kód teszteléséhez** , emlékezteti arra, hogy a program legutóbbi futtatásakor már feltöltötte a modellt. Az Azure Digital Twins nem teszi lehetővé kétszer ugyanazt a modellt, így ha újra megpróbálja feltölteni ugyanazt a modellt, a program kivételt jelez.
+
+Ezt szem előtt tartva futtassa újra a programot ezzel a paranccsal a parancssori ablakban:
 
 ```cmd/sh
 dotnet run
@@ -225,7 +227,7 @@ A következő szakasz a kivételeket tárgyalja, és azt, hogyan kezelheti őket
 
 ### <a name="catch-errors"></a>Fogási hibák
 
-Ahhoz, hogy a program összeomlik, a modell feltöltési kódjában adhat hozzá kivételi kódot. A meglévő ügyfél hívásának becsomagolása `client.CreateModelsAsync` egy try/catch kezelőben, például:
+Ahhoz, hogy a program összeomlik, a modell feltöltési kódjában adhat hozzá kivételi kódot. A meglévő ügyfél hívásának becsomagolása `await client.CreateModelsAsync(typeList)` egy try/catch kezelőben, például:
 
 ```csharp
 try {
@@ -234,27 +236,10 @@ try {
     Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
 }
 ```
-Ha most futtatja a programot a `dotnet run` parancssori ablakban, látni fogja, hogy hibakódot kap vissza. A kimenet valahogy így néz ki:
 
-```cmd/sh
-Hello World!
-Service client created - ready to go
+Ha most futtatja a programot a `dotnet run` parancssori ablakban, látni fogja, hogy hibakódot kap vissza. A modell létrehozási kódjának kimenete a következő hibaüzenetet jeleníti meg:
 
-Upload a model
-Load model: 409:Service request failed.
-Status: 409 (Conflict)
-
-Content:
-{"error":{"code":"ModelAlreadyExists","message":"Model with same ID already exists dtmi:com:contoso:SampleModel;1. Use Model_List API to view models that already exist. See the Swagger example. (http://aka.ms/ModelListSwSmpl):}}
-
-Headers:
-api-supported-versions: REDACTED
-Date: Thu, 10 Sep 2020 01:57:51 GMT
-Content-Length: 115
-Content-Type: application/json; charset=utf-8
-
-Type name: : dtmi:com:contoso:SampleModel;1
-```
+:::image type="content" source= "media/tutorial-code/model-error.png" alt-text="A program kimenete, amely a &quot;409: Service kérelem sikertelen&quot; üzenetet mutatja. Állapot: 409 (ütközés). ', majd egy hibaüzenet jelenik meg, amely azt jelzi, hogy a dtmi: példa: SampleModel; 1 már létezik":::
 
 Ettől a ponttól kezdve az oktatóanyag a kipróbálási és a fogási kezelőben a szolgáltatási metódusok összes hívását lezárja.
 
@@ -262,25 +247,19 @@ Ettől a ponttól kezdve az oktatóanyag a kipróbálási és a fogási kezelőb
 
 Most, hogy feltöltött egy modellt az Azure digitális Twins-ba, a modell definíciójában **digitális ikreket** hozhat létre. A [digitális ikrek](concepts-twins-graph.md) egy modell példányai, és az üzleti környezetben található entitásokat képviselik, például a farmon lévő érzékelők, a helyiségek egy épületben vagy egy autóban található fények. Ez a szakasz néhány digitális ikreket hoz létre a korábban feltöltött modell alapján.
 
-Adja hozzá `using` az új utasítást felül, mivel ez a mintakód a beépített .net JSON-szerializáló használja a következőben `System.Text.Json` :
-
-```csharp
-using System.Text.Json;
-```
-
-Ezután adja hozzá a következő kódot a metódus végéhez a `Main` modell alapján három digitális ikrek létrehozásához és inicializálásához.
+Adja hozzá a következő kódot a metódus végéhez a `Main` modell alapján három digitális ikrek létrehozásához és inicializálásához.
 
 ```csharp
 // Initialize twin data
-BasicDigitalTwin updateTwinData = new BasicDigitalTwin();
-updateTwinData.Metadata.ModelId = "dtmi:com:contoso:SampleModel;1";
-updateTwinData.Contents.Add("data", $"Hello World!");
+BasicDigitalTwin twinData = new BasicDigitalTwin();
+twinData.Metadata.ModelId = "dtmi:example:SampleModel;1";
+twinData.Contents.Add("data", $"Hello World!");
 
 string prefix="sampleTwin-";
 for(int i=0; i<3; i++) {
     try {
         twinData.Id = $"{prefix}{i}";
-        await client.client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(twinData.Id, updateTwinData);
+        await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(twinData.Id, twinData);
         Console.WriteLine($"Created twin: {prefix}{i}");
     } catch(RequestFailedException rex) {
         Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  
@@ -288,15 +267,17 @@ for(int i=0; i<3; i++) {
 }
 ```
 
-A parancsablakban futtassa a programot a paranccsal `dotnet run` . Ezután ismételje meg a program ismételt futtatását. 
+A parancsablakban futtassa a programot a paranccsal `dotnet run` . A kimenetben keresse meg azokat a nyomtatási üzeneteket, amelyeket a *sampleTwin-0* , a *sampleTwin-1* és a *sampleTwin-2* hoztak létre. 
 
-Figyelje meg, hogy az ikrek létrehozásakor a második alkalommal nem fordul elő hiba, még akkor is, ha az ikrek már léteznek az első futtatása után. A modell-létrehozástól eltérően a kettős létrehozás, a REST szinten, egy *put* hívás *upsert* szemantikai feladatokkal. Ez azt jelenti, hogy ha egy iker már létezik, az újbóli létrehozását követően a rendszer csak lecseréli azt. Nem szükséges hiba.
+Ezután futtassa újra a programot. 
+
+Figyelje meg, hogy az ikrek létrehozásakor a második alkalommal nem fordul elő hiba, még akkor is, ha az ikrek már léteznek az első futtatása után. A modell-létrehozástól eltérően a kettős létrehozás, a REST szinten, egy *put* hívás *upsert* szemantikai feladatokkal. Ez azt jelenti, hogy ha egy iker már létezik, akkor a létrehozási kísérlet során a rendszer csak az eredeti IKeret váltja fel. Nem történt hiba.
 
 ### <a name="create-relationships"></a>Kapcsolatok létrehozása
 
-Ezután létrehozhat **kapcsolatokat** a létrehozott ikrek között, és összekapcsolhatja őket egy **különálló gráfban** . A [két gráf](concepts-twins-graph.md) a teljes környezet ábrázolására szolgál.
+Ezután létrehozhat **kapcsolatokat** a létrehozott ikrek között, és összekapcsolhatja őket egy **különálló gráfban**. A [két gráf](concepts-twins-graph.md) a teljes környezet ábrázolására szolgál.
 
-Adjon hozzá egy új statikus metódust a `Program` osztályhoz a `Main` metódus alá:
+Adjon hozzá egy **új statikus metódust** a `Program` osztályhoz a `Main` metódus alatt (a kód mostantól két módszerrel rendelkezik):
 
 ```csharp
 public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId)
@@ -327,15 +308,15 @@ await CreateRelationship(client, "sampleTwin-0", "sampleTwin-1");
 await CreateRelationship(client, "sampleTwin-0", "sampleTwin-2");
 ```
 
-A parancsablakban futtassa a programot a paranccsal `dotnet run` .
+A parancsablakban futtassa a programot a paranccsal `dotnet run` . A kimenetben keresse meg a nyomtatási utasításokat, mondván, hogy a két kapcsolat sikeresen létrejött.
 
-Vegye figyelembe, hogy az Azure Digital Twins nem teszi lehetővé, hogy kapcsolatot hozzon létre, ha már létezik ugyanezzel az AZONOSÍTÓval, tehát ha többször futtatja a programot, akkor a kapcsolatok létrehozásával kapcsolatos kivételek jelennek meg. Ez a kód elveszi a kivételeket, és figyelmen kívül hagyja őket. 
+Vegye figyelembe, hogy az Azure Digital Twins nem teszi lehetővé, hogy kapcsolatot hozzon létre, ha már létezik egy másik kapcsolat ugyanazzal az AZONOSÍTÓval, tehát ha többször futtatja a programot, akkor a kapcsolatok létrehozásával kapcsolatos kivételek jelennek meg. Ez a kód elveszi a kivételeket, és figyelmen kívül hagyja őket. 
 
 ### <a name="list-relationships"></a>Kapcsolatok listázása
 
 A hozzáadni kívánt következő kód lehetővé teszi, hogy megtekintse a létrehozott kapcsolatok listáját.
 
-Adja hozzá a következő új metódust a `Program` osztályhoz:
+Adja hozzá a következő **új metódust** a `Program` osztályhoz:
 
 ```csharp
 public async static Task ListRelationships(DigitalTwinsClient client, string srcId)
@@ -360,26 +341,9 @@ Ezután adja hozzá a következő kódot a metódus végéhez a `Main` kód megh
 await ListRelationships(client, "sampleTwin-0");
 ```
 
-A parancsablakban futtassa a programot a paranccsal `dotnet run` . Ekkor meg kell jelennie a létrehozott kapcsolatok listájának.
+A parancsablakban futtassa a programot a paranccsal `dotnet run` . A következőhöz hasonló kimeneti utasításban létrehozott összes kapcsolat listáját meg kell tekinteni:
 
-Íme egy példa a kimenetre:
-
-```cmd/sh
-Hello World!
-Service client created - ready to go
-
-Upload a model
-Type name: System.Collections.Generic.Dictionary'2[System.String,System.String]: dtmi:contosocom:DigitalTwins:SampleModel;1
-Create twin: sampleTwin-0
-Create twin: sampleTwin-1
-Create twin: sampleTwin-2
-Created relationship successfully
-Created relationship successfully
-Twin sampleTwin-0 is connected to:
--contains->sampleTwin-1
--contains->sampleTwin-2
-
-```
+:::image type="content" source= "media/tutorial-code/list-relationships.png" alt-text="A program kimenete egy üzenet, amely azt jelzi, hogy a &quot;Twin sampleTwin-0 csatlakozik a következőhöz: tartalmaz->sampleTwin-1,-tartalmazza->sampleTwin-2&quot;":::
 
 ### <a name="query-digital-twins"></a>Digitális ikrek lekérdezése
 
@@ -387,16 +351,22 @@ Az Azure Digital Twins egyik fő funkciója, hogy könnyen és hatékonyan [lek�
 
 Az oktatóanyagban felvenni kívánt kód utolsó szakasza egy lekérdezést futtat az Azure Digital Twins-példányon. Az ebben a példában használt lekérdezés az összes digitális ikreket adja vissza a példányban.
 
-Adja hozzá a következő kódot a metódus végéhez `Main` :
+Adja hozzá ezt az `using` utasítást az osztály használatának engedélyezéséhez a `JsonSerializer` digitális Twin-információk megjelenítéséhez:
 
 ```csharp
-// Run a query    
-AsyncPageable<string> result = client.QueryAsync("Select * From DigitalTwins");
-await foreach (string twin in result)
+using System.Text.Json;
+```
+
+Ezután adja hozzá a következő kódot a metódus végéhez `Main` :
+
+```csharp
+// Run a query for all twins   
+string query = "SELECT * FROM digitaltwins";
+AsyncPageable<BasicDigitalTwin> result = client.QueryAsync<BasicDigitalTwin>(query);
+
+await foreach (BasicDigitalTwin twin in result)
 {
-    object jsonObj = JsonSerializer.Deserialize<object>(twin);
-    string prettyTwin = JsonSerializer.Serialize(jsonObj, new JsonSerializerOptions { WriteIndented = true });
-    Console.WriteLine(prettyTwin);
+    Console.WriteLine(JsonSerializer.Serialize(twin));
     Console.WriteLine("---------------");
 }
 ```
@@ -415,7 +385,6 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
 using Azure;
-using Azure.DigitalTwins.Core.Serialization;
 using System.Text.Json;
 
 namespace minimal
@@ -445,22 +414,23 @@ namespace minimal
                 Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
             }
             // Read a list of models back from the service
+            Console.WriteLine("Models uploaded to the instance:");
             AsyncPageable<DigitalTwinsModelData> modelDataList = client.GetModelsAsync();
             await foreach (DigitalTwinsModelData md in modelDataList)
             {
-                Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
+                Console.WriteLine($"{md.Id}");
             }
 
             // Initialize twin data
-            BasicDigitalTwin updateTwinData = new BasicDigitalTwin();
-            updateTwinData.Metadata.ModelId = "dtmi:com:contoso:SampleModel;1";
-            updateTwinData.Contents.Add("data", $"Hello World!");
-    
+            BasicDigitalTwin twinData = new BasicDigitalTwin();
+            twinData.Metadata.ModelId = "dtmi:example:SampleModel;1";
+            twinData.Contents.Add("data", $"Hello World!");
+            
             string prefix="sampleTwin-";
             for(int i=0; i<3; i++) {
                 try {
-                    updateTwinData.Id = $"{prefix}{i}";
-                    await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(updateTwinData.Id, updateTwinData);
+                    twinData.Id = $"{prefix}{i}";
+                    await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(twinData.Id, twinData);
                     Console.WriteLine($"Created twin: {prefix}{i}");
                 } catch(RequestFailedException rex) {
                     Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  
@@ -474,13 +444,13 @@ namespace minimal
             //List the relationships
             await ListRelationships(client, "sampleTwin-0");
 
-            // Run a query    
-            AsyncPageable<string> result = client.QueryAsync("Select * From DigitalTwins");
-            await foreach (string twin in result)
+            // Run a query for all twins   
+            string query = "SELECT * FROM digitaltwins";
+            AsyncPageable<BasicDigitalTwin> result = client.QueryAsync<BasicDigitalTwin>(query);
+            
+            await foreach (BasicDigitalTwin twin in result)
             {
-                object jsonObj = JsonSerializer.Deserialize<object>(twin);
-                string prettyTwin = JsonSerializer.Serialize(jsonObj, new JsonSerializerOptions { WriteIndented = true });
-                Console.WriteLine(prettyTwin);
+                Console.WriteLine(JsonSerializer.Serialize(twin));
                 Console.WriteLine("---------------");
             }
         }
@@ -509,7 +479,7 @@ namespace minimal
             try {
                 AsyncPageable<BasicRelationship> results = client.GetRelationshipsAsync<BasicRelationship>(srcId);
                 Console.WriteLine($"Twin {srcId} is connected to:");
-                await foreach (string rel in results)
+                await foreach (BasicRelationship rel in results)
                 {
                     Console.WriteLine($" -{rel.Name}->{rel.TargetId}");
                 }
@@ -521,7 +491,7 @@ namespace minimal
     }
 }
 ```
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
  
 Az oktatóanyagban használt példány újra felhasználható a következő oktatóanyagban, [*oktatóanyag: az alapokat egy minta ügyfélalkalmazás segítségével tárja fel*](tutorial-command-line-app.md). Ha továbbra is a következő oktatóanyagot tervezi, megtarthatja az itt beállított Azure digitális Twins-példányt.
  

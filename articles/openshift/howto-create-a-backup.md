@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: ARO, openshift, az ARO, Red Hat, CLI
 ms.custom: mvc
-ms.openlocfilehash: febee51a20f57d71d633243145a1aa0c8fb9b437
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 264778d2d6d1ee0119ad8622043b7cd3a1088ec1
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233678"
+ms.locfileid: "93280128"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>Azure Red Hat OpenShift-alkalmazás biztonsági másolatának létrehozása
 
@@ -63,7 +63,7 @@ az storage container create -n $BLOB_CONTAINER --public-access off --account-nam
 A Velero engedélyekkel kell rendelkeznie a biztonsági mentéshez és a visszaállításhoz. Egyszerű szolgáltatásnév létrehozásakor a Velero engedélyt ad az előző lépésben megadott erőforráscsoport elérésére. Ebben a lépésben a fürt erőforráscsoport jelenik meg:
 
 ```bash
-export AZURE_RESOURCE_GROUP=aro-$(az aro show --name <name of cluster> --resource-group <name of resource group> | jq -r '.clusterProfile.domain')
+export AZURE_RESOURCE_GROUP=$(az aro show --name <name of cluster> --resource-group <name of resource group> | jq -r .clusterProfile.resourceGroupId | cut -d '/' -f 5,5)
 ```
 
 

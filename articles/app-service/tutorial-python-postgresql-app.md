@@ -3,7 +3,7 @@ title: 'Oktatóanyag: Python Django-alkalmazás üzembe helyezése a postgres-me
 description: Hozzon létre egy PostgreSQL-adatbázist tartalmazó Python-webalkalmazást, és telepítse azt az Azure-ba. Az oktatóanyag a Django keretrendszert használja, és az alkalmazás Azure App Service Linux rendszeren található.
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 10/09/2020
+ms.date: 11/02/2020
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 63fdee6036580df42f7f965244b5f888c1ec082d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f6b845ec92a4d0d5365ec0615064bfbc238fd1ba
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540754"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279712"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Oktatóanyag: Django-webalkalmazás üzembe helyezése a PostgreSQL-sel Azure App Service
 
@@ -111,10 +111,10 @@ A djangoapp minta tartalmazza az adatvezérelt Django-lekérdezési alkalmazást
 
 A minta úgy is módosul, hogy éles környezetben fusson, például App Service:
 
-- Az üzemi beállítások a *azuresite/Production. file.* fájlba kerülnek. A fejlesztés részletei a *azuresite/Settings.* a. a.
-- Az alkalmazás éles beállításokat használ, ha a `DJANGO_ENV` környezeti változó "éles" értékre van állítva. Ezt a környezeti változót később az oktatóanyagban fogja létrehozni, a PostgreSQL-adatbázis konfigurációjában használt többivel együtt.
+- Az üzemi beállítások a *azuresite/Production. file.* fájlba kerülnek. A fejlesztési beállítások a *azuresite/Settings.* a. a.
+- Az alkalmazás éles beállításokat használ a `WEBSITE_HOSTNAME` környezeti változó beállításakor. A Azure App Service automatikusan beállítja ezt a változót a webalkalmazás URL-címére, például: `msdocs-django.azurewebsites.net` .
 
-Ezek a módosítások a Django konfigurálására szolgálnak az éles környezetben való futtatáshoz, és nem kifejezetten App Service. További információ: [Django Deployment ellenőrzőlista](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/). Tekintse meg az Azure-beli [Django üzemi beállításait](configure-language-python.md#production-settings-for-django-apps) is, ha néhány módosítással kapcsolatos információkat talál.
+A termelési beállítások a Django konfigurálására szolgálnak az éles környezetben való futtatásra, és nem kifejezetten App Service. További információ: [Django Deployment ellenőrzőlista](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/). Tekintse meg az Azure-beli [Django üzemi beállításait](configure-language-python.md#production-settings-for-django-apps) is, ha néhány módosítással kapcsolatos információkat talál.
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -188,7 +188,7 @@ Ez a parancs a következő műveleteket hajtja végre, ami eltarthat néhány pe
 - Ha nem létezik, hozza létre a App Service alkalmazást.
 - Az alkalmazás alapértelmezett naplózásának engedélyezése, ha még nincs engedélyezve.
 - Töltse fel az adattárat a ZIP-telepítéssel a Build Automation használatával.
-- Gyorsítótárazza az általános paramétereket, például az erőforráscsoport nevét és a App Service tervet a fájlba *. Azure/config* . Ennek eredményeképpen nem kell megadnia ugyanazt a paramétert a későbbi parancsokkal. Ha például a módosítások elvégzése után szeretné újból üzembe helyezni az alkalmazást, egyszerűen futtathatja `az webapp up` azokat paraméterek nélkül. A CLI-bővítményből származó parancsok, például a `az postgres up` (z) azonban nem a gyorsítótárban jelennek meg, ezért az erőforráscsoport és a hely megadására van szükség a kezdeti használatával `az webapp up` .
+- Gyorsítótárazza az általános paramétereket, például az erőforráscsoport nevét és a App Service tervet a fájlba *. Azure/config*. Ennek eredményeképpen nem kell megadnia ugyanazt a paramétert a későbbi parancsokkal. Ha például a módosítások elvégzése után szeretné újból üzembe helyezni az alkalmazást, egyszerűen futtathatja `az webapp up` azokat paraméterek nélkül. A CLI-bővítményből származó parancsok, például a `az postgres up` (z) azonban nem a gyorsítótárban jelennek meg, ezért az erőforráscsoport és a hely megadására van szükség a kezdeti használatával `az webapp up` .
 
 Sikeres telepítés esetén a parancs a következő példához hasonló JSON-kimenetet hoz létre:
 
@@ -196,26 +196,23 @@ Sikeres telepítés esetén a parancs a következő példához hasonló JSON-kim
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
 
-> [!NOTE]
-> Ha ezen a ponton megpróbálja felkeresni az alkalmazás URL-címét, akkor a "DisallowedHost at/" hibaüzenet jelenik meg. Ez a hiba azért fordul elő, mert még nem konfigurálta az alkalmazást a korábban tárgyalt éles beállítások használatára, amelyet a következő szakaszban végez.
-
 ### <a name="configure-environment-variables-to-connect-the-database"></a>Környezeti változók konfigurálása az adatbázishoz való kapcsolódáshoz
 
 Ha a kód már telepítve van a App Servicere, a következő lépés az alkalmazás összekötése a postgres-adatbázissal az Azure-ban.
 
-Az alkalmazás kódja a következő négy környezeti változóban található adatbázis-információk megkeresésére vár:,, `DBHOST` `DBNAME` `DBUSER` és `DBPASS` . A termelési beállítások használatához a `DJANGO_ENV` környezeti változóra is szükség van `production` .
+Az alkalmazás kódja a következő négy környezeti változóban található adatbázis-információk megkeresésére vár:,, `DBHOST` `DBNAME` `DBUSER` és `DBPASS` .
 
 A környezeti változók App Serviceban történő beállításához hozza létre az "Alkalmazásbeállítások" kifejezést a következő az [WebApp config appSettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) paranccsal.
 
 ```azurecli
-az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<postgres-server-name>" DBNAME="pollsdb" DBUSER="<username>" DBPASS="<password>"
+az webapp config appsettings set --settings DBHOST="<postgres-server-name>" DBNAME="pollsdb" DBUSER="<username>" DBPASS="<password>"
 ```
 
 - Cserélje le a *\<postgres-server-name>* nevet a paranccsal korábban használt névre `az postgres up` . A *azuresite/Production. a.* másolt kód automatikusan hozzáfűzi a `.postgres.database.azure.com` teljes postgres-kiszolgáló URL-címének létrehozásához.
 - Cserélje *\<username>* le *\<password>* a és a kapcsolót a korábbi parancshoz használt rendszergazdai hitelesítő adatokkal `az postgres up` , illetve az `az postgres up` Ön által generált jogosultságokkal. A *azuresite/Production. a. a................* a kód automatikusan létrehozza a teljes postgres-felhasználónevet `DBUSER` a `DBHOST` `@server` (A korábban leírtaknak megfelelően nem használhatja a `$` karaktert sem, mivel a Linux környezeti változóinak speciális jelentése van.)
 - Az erőforráscsoport és az alkalmazások nevei a *. Azure/config* fájl gyorsítótárazott értékeiből vannak kirajzolva.
 
-A Python-kódban ezeket a beállításokat környezeti változókként, például a következő utasításokkal érheti el `os.environ.get('DJANGO_ENV')` . További információ: [hozzáférés környezeti változókhoz](configure-language-python.md#access-environment-variables).
+A Python-kódban ezeket a beállításokat környezeti változókként, például a következő utasításokkal érheti el `os.environ.get('DBHOST')` . További információ: [hozzáférés környezeti változókhoz](configure-language-python.md#access-environment-variables).
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -352,7 +349,7 @@ Tesztelje az alkalmazást helyileg a következő lépésekkel:
 
 1. Lépjen a *http: \/ /localhost: 8000* elemre, és válaszolja meg az alkalmazás tesztelésének kérdését. 
 
-1. A **CTRL** C billentyűkombináció lenyomásával állítsa le a Django-kiszolgálót + **C** .
+1. A **CTRL** C billentyűkombináció lenyomásával állítsa le a Django-kiszolgálót + **C**.
 
 Helyileg futtatva az alkalmazás egy helyi Sqlite3-adatbázist használ, és nem zavarja az éles adatbázisát. Igény szerint helyi PostgreSQL-adatbázist is használhat az éles környezet jobb szimulálása érdekében.
 
@@ -376,7 +373,7 @@ python manage.py migrate
 
 Futtassa újra a fejlesztői kiszolgálót, `python manage.py runserver` és tesztelje az alkalmazást a *http: \/ /localhost: 8000/admin* címen:
 
-Állítsa le újra a Django webkiszolgálót a **CTRL C billentyűkombinációval** + **C** .
+Állítsa le újra a Django webkiszolgálót a **CTRL C billentyűkombinációval** + **C**.
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -427,7 +424,7 @@ az webapp log tail
 
 Ha nem jelennek meg azonnal a konzolnaplófájlok, ellenőrizze ismét 30 másodperc múlva.
 
-Ha bármikor le szeretné állítani a naplózási adatfolyamot, írja be a **CTRL C billentyűt** + **C** .
+Ha bármikor le szeretné állítani a naplózási adatfolyamot, írja be a **CTRL C billentyűt** + **C**.
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -452,7 +449,7 @@ Alapértelmezés szerint a portál az alkalmazás **Áttekintés** oldalát jele
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha meg szeretné tartani az alkalmazást, vagy folytassa a további oktatóanyagokkal, ugorjon a [következő lépésekre](#next-steps). Ellenkező esetben a folyamatos költségek elkerülése érdekében törölheti az ehhez az oktatóanyaghoz tartozó erőforráscsoport-létrehozási csoportot:
 
@@ -466,7 +463,7 @@ Az összes erőforrás törlése hosszabb időt is igénybe vehet. Az `--no-wait
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan képezhető le egyéni DNS-név az alkalmazáshoz:
 

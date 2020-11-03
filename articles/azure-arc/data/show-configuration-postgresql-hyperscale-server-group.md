@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 716759fd6542cd473c236992ac88b69bfe5d0a66
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a268cd6b2fa3da6846554e3d1b170298abec7f18
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148017"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279401"
 ---
 # <a name="show-the-configuration-of-an-arc-enabled-postgresql-hyperscale-server-group"></a>Arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport konfigurációjának megjelenítése
 
@@ -36,7 +36,7 @@ A postgres típusú Kubernetes-erőforrások listázása. Futtassa a következő
 kubectl get postgresqls [-n <namespace name>]
 ```
 
-A parancs kimenete a létrehozott kiszolgálócsoportok listáját jeleníti meg. Mindegyik esetében a hüvelyek számát jelzi. Példa:
+A parancs kimenete a létrehozott kiszolgálócsoportok listáját jeleníti meg. Mindegyik esetében a hüvelyek számát jelzi. Például:
 
 ```output
 NAME                                             STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
@@ -54,7 +54,7 @@ Futtassa a következőt:
 kubectl get pods [-n <namespace name>]
 ```
 
-Ez visszaadja a hüvelyek listáját. A kiszolgálócsoportok által használt hüvelyek az adott kiszolgálócsoportok számára megadott nevek alapján jelennek meg. Példa:
+Ez visszaadja a hüvelyek listáját. A kiszolgálócsoportok által használt hüvelyek az adott kiszolgálócsoportok számára megadott nevek alapján jelennek meg. Például:
 
 ```console 
 NAME                 READY   STATUS    RESTARTS   AGE
@@ -108,7 +108,7 @@ Alapértelmezés szerint a PVC nevének előtagja a használatot jelzi:
 - `data-`...: az adatfájlok számára használt PVC
 - `logs-`...: a tranzakciós naplókhoz és a WAL-fájlokhoz használt PVC
 
-Példa:
+Például:
 
 ```output
 NAME                                            STATUS   VOLUME              CAPACITY   ACCESS MODES   STORAGECLASS    AGE
@@ -183,7 +183,7 @@ A parancs általános formátuma a következő:
 kubectl describe <CRD name>/<server group name> [-n <namespace name>]
 ```
 
-Példa:
+Például:
 
 ```console
 kubectl describe postgresql-12/postgres02
@@ -210,7 +210,7 @@ Spec:
       Name:  citus
       Name:  pg_stat_statements
   Scale:
-    Shards:  2
+    Workers:  2
   Scheduling:
     Default:
       Resources:
@@ -236,20 +236,50 @@ Status:
 Events:               <none>
 ```
 
+>[!NOTE]
+>Október 2020-os kiadás előtt `Workers` `Shards` az előző példában volt. További információért lásd a [kibocsátási megjegyzéseket – Azure arc-kompatibilis adatszolgáltatások (előzetes verzió)](release-notes.md) .
+
 Nézzük meg, hogy vannak-e konkrét érdekes pontok a `servergroup` fent látható leírásban. Mit mond nekünk erről a kiszolgálócsoportról?
 
 - A postgres 12-es verziója: 
-   > Típusú         `postgresql-12`
+   > ```json
+   > Kind:         `postgresql-12`
+   > ```
 - A folyamat a 2020-es augusztus hónap során jött létre:
-   > Létrehozás időbélyege:  `2020-08-31T21:01:07Z`
+   > ```json
+   > Creation Timestamp:  `2020-08-31T21:01:07Z`
+   > ```
 - Két postgres-bővítmény jött létre ebben a kiszolgálócsoportban: `citus` és `pg_stat_statements`
-   > Motor: bővítmények: név:  `citus` név:  `pg_stat_statements`
+   > ```json
+   > Engine:
+   >    Extensions:
+   >      Name:  `citus`
+   >      Name:  `pg_stat_statements`
+   > ```
 - Két munkavégző csomópontot használ
-   > Skála: szegmensek:  `2`
+   > ```json
+   > Scale:
+   >    Workers:  `2`
+   > ```
 - Minden csomóponton 1 CPU/virtuális mag és 512 MB RAM-ot használhat. Több mint 4 processzor-/virtuális mag és 1024MB fog használni:
-   > Ütemezés: alapértelmezett: erőforrások: korlátok: CPU: 4 memória: 1024Mi kérelmek: CPU: 1 memória: 512Mi
+   > ```json
+   > Scheduling:
+   >    Default: 
+   >      Resources:
+   >        Limits:
+   >          Cpu:     4
+   >          Memory:  1024Mi
+   >        Requests:
+   >          Cpu:     1
+   >          Memory:  512Mi
+   > ```
  - Lekérdezésekhez elérhető, és nem jelent problémát. Minden csomópont működik és fut:
-   > Állapot:... Kész hüvelyek: 3/3 állapot: kész
+   > ```json
+   > Status:
+   >  ...
+   >  Ready Pods:         3/3
+   >  State:              Ready
+   > ```
 
 **A azdata:**
 
@@ -259,7 +289,7 @@ A parancs általános formátuma:
 azdata arc postgres server show -n <server group name>
 ```
 
-Példa:
+Például:
 
 ```console
 azdata arc postgres server show -n postgres02
@@ -292,7 +322,7 @@ Az alábbi kimenetet adja vissza a kubectl által visszaadott formátum és tart
       ]
     },
     "scale": {
-      "shards": 2
+      "workers": 2
     },
     "scheduling": {
       "default": {

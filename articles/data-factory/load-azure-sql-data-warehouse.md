@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/08/2020
-ms.openlocfilehash: ffda2b1d096b3c84e3f1df10e37c44922bab16ef
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 10/30/2020
+ms.openlocfilehash: dcf3db33818448116da53d8a01d0c62aca7bc1af
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632413"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280167"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Az Azure szinapszis Analyticsbe való betöltés Azure Data Factory használatával
 
@@ -68,7 +68,7 @@ Ebből a cikkből megtudhatja, hogyan _tölthetők be a Azure SQL Databaseból s
 
 1. Az Adatok másolása eszköz elindításához az **Első lépések** oldalon kattintson az **Adatok másolása** csempére.
 
-2. A **Tulajdonságok** lapon adja meg a **CopyFromSQLToSQLDW** mezőt a **feladat neve** mezőben, majd kattintson a **Tovább gombra** .
+2. A **Tulajdonságok** lapon adja meg a **CopyFromSQLToSQLDW** mezőt a **feladat neve** mezőben, majd kattintson a **Tovább gombra**.
 
     ![Tulajdonságok lap](./media/load-azure-sql-data-warehouse/copy-data-tool-properties-page.png)
 
@@ -112,14 +112,11 @@ Ebből a cikkből megtudhatja, hogyan _tölthetők be a Azure SQL Databaseból s
 
     d. Válassza ki fogadóként az újonnan létrehozott társított szolgáltatást, majd kattintson a **Tovább** gombra.
 
-7. A **tábla-hozzárendelés** lapon tekintse át a tartalmat, és kattintson a **Tovább gombra** . Megjelenik egy intelligens táblázat-hozzárendelés. A forrástábla a táblák nevei alapján van leképezve a céltábla számára. Ha a forrás tábla nem létezik a célhelyen, Azure Data Factory alapértelmezés szerint ugyanazzal a névvel hozza létre a célhelyet. A forrástábla egy meglévő céltábla számára is képezhető le.
-
-   > [!NOTE]
-   > Az Azure szinapszis Analytics-fogadó automatikus tábla-létrehozási SQL Server vagy Azure SQL Database a forrást alkalmazza. Ha más forrás-adattárból másol adatokból, előbb létre kell hoznia a sémát a fogadó Azure szinapszis Analyticsben az adatok másolásának végrehajtása előtt.
+7. A **tábla-hozzárendelés** lapon tekintse át a tartalmat, és kattintson a **Tovább gombra**. Megjelenik egy intelligens táblázat-hozzárendelés. A forrástábla a táblák nevei alapján van leképezve a céltábla számára. Ha a forrás tábla nem létezik a célhelyen, Azure Data Factory alapértelmezés szerint ugyanazzal a névvel hozza létre a célhelyet. A forrástábla egy meglévő céltábla számára is képezhető le.
 
    ![Tábla hozzárendelése oldal](./media/load-azure-sql-data-warehouse/table-mapping.png)
 
-8. Az **oszlop-hozzárendelés** lapon tekintse át a tartalmat, és kattintson a **Tovább gombra** . Az intelligens tábla leképezése az oszlop nevén alapul. Ha lehetővé teszi, hogy Data Factory automatikusan létrehozza a táblákat, az adattípus-konverzió akkor fordulhat elő, ha a forrás-és a célhelyek között inkompatibilitás van. Ha a forrás és a cél oszlop között nem támogatott adattípusú átalakítás van, a megfelelő tábla mellett hibaüzenet jelenik meg.
+8. Az **oszlop-hozzárendelés** lapon tekintse át a tartalmat, és kattintson a **Tovább gombra**. Az intelligens tábla leképezése az oszlop nevén alapul. Ha lehetővé teszi, hogy Data Factory automatikusan létrehozza a táblákat, az adattípus-konverzió akkor fordulhat elő, ha a forrás-és a célhelyek között inkompatibilitás van. Ha a forrás és a cél oszlop között nem támogatott adattípusú átalakítás van, a megfelelő tábla mellett hibaüzenet jelenik meg.
 
     ![Oszlop-hozzárendelési lap](./media/load-azure-sql-data-warehouse/schema-mapping.png)
 
@@ -133,7 +130,7 @@ Ebből a cikkből megtudhatja, hogyan _tölthetők be a Azure SQL Databaseból s
 
     ![A bázisterület konfigurálása](./media/load-azure-sql-data-warehouse/configure-polybase.png)
 
-10. Az **Összefoglalás** lapon tekintse át a beállításokat, majd kattintson a **Tovább gombra** .
+10. Az **Összefoglalás** lapon tekintse át a beállításokat, majd kattintson a **Tovább gombra**.
 
     ![Összefoglaló lap](./media/load-azure-sql-data-warehouse/summary-page.png)
 

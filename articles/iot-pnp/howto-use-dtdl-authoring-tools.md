@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 59ea0258d6262f652e9ac563bbda5ec89c4c5819
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40d1ae4da07e159c24970c065d1c39e22b89a29a
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91580424"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280207"
 ---
 # <a name="install-and-use-the-dtdl-authoring-tools"></a>A DTDL authoring Tools telepítése és használata
 
@@ -36,9 +36,9 @@ Ha telepítette a bővítményt, használja a DTDL-modell fájljainak a VS Code-
 
 - Az IntelliSense és az automatikus kiegészítés használata a DTDL-modellek szerkesztésekor:
 
-    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense.png" alt-text="Modell érvényesítése a VS Code-ban":::
+    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense.png" alt-text="DTDL-modellek IntelliSense használata a VS Code-ban":::
 
-- Hozzon létre egy új DTDL felületet. A következő parancs egy új felülettel rendelkező JSON-fájlt hoz létre. Az illesztőfelület például telemetria, tulajdonságot és parancssori definíciókat tartalmaz.
+- Hozzon létre egy új DTDL felületet. A **DTDL: Create Interface** parancs egy új felülettel rendelkező JSON-fájlt hoz létre. Az illesztőfelület például telemetria, tulajdonságot és parancssori definíciókat tartalmaz.
 
 ## <a name="install-and-use-the-visual-studio-extension"></a>A Visual Studio bővítmény telepítése és használata
 
@@ -53,11 +53,11 @@ Ha telepítette a bővítményt, használja a DTDL-modell fájljainak létrehoz�
 
 - A bővítmény szintaxis-ellenőrzést biztosít a DTDL-modell fájljaiban, és kiemeli a hibákat a következő képernyőképen látható módon:
 
-    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-validation-2.png" alt-text="Modell érvényesítése a VS Code-ban":::
+    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-validation-2.png" alt-text="Modell érvényesítése a Visual Studióban":::
 
 - Az IntelliSense és az automatikus kiegészítés használata a DTDL-modellek szerkesztésekor:
 
-    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense-2.png" alt-text="Modell érvényesítése a VS Code-ban":::
+    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense-2.png" alt-text="IntelliSense használata DTDL-modellekhez a Visual Studióban":::
 
 ## <a name="next-steps"></a>Következő lépések
 

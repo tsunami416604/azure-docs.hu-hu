@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 909ea33ed96225c75a2d093f5bf2f4878ea51d2e
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: a21cee6806c4200a73b35afba73cf04d7ca60308
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939184"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279992"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure szinapszis Analytics üzleti intelligencia-partnerek
 
@@ -35,6 +35,7 @@ Az adattárház-megoldás létrehozásához különböző piacvezető eszközök
 | ![LogiAnalytics](./media/sql-data-warehouse-partner-business-intelligence/logianalytics_logo.png) |**Logi-elemzés**<br>A Logi Analytics együttesen lehetővé teszi a szervezet számára a világ legnagyobb és legszélesebb adatkészletének gyűjtését, elemzését és azonnali elvégzését. |[Termék lap](https://www.logianalytics.com/)<br>|
 | ![Looker](./media/sql-data-warehouse-partner-business-intelligence/looker_logo.png) |**Nagyon jóképű BI**<br>A cég mindenki számára lehetővé teszi, hogy megismerje és megértse a vállalatának adatait. Emellett az adatelemző egy rugalmas és újrahasznosítható modellezési réteget is biztosít, amellyel szabályozhatja és elvégezheti az adatelemzést.  A vállalatok alapjaiban alakították át a kultúrát a katalizáló eszköz használatával.|[Termék lap](https://looker.com/partners/microsoft-azure/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/looker.looker-analytics-platform-6_20)<br> |
 | ![Stratégia](./media/sql-data-warehouse-partner-business-intelligence/microstrategy_logo.png) |**Stratégia**<br>A vállalati intelligencia-platform teljes körű üzleti intelligenciát és elemzési képességeket kínál, amelyek lehetővé teszik a szervezetek számára az üzleti adatokból származó értékek beszerzését. A nagy teljesítményű analitikai motor, az átfogó eszközkészletek, a különböző adatösszekötők és a nyitott architektúrák biztosítják mindazt, amire szüksége lehet az elemzéshez való hozzáférés kiterjesztéséhez minden egyes csapaton belül.|[Termék lap](https://www.microstrategy.com/us/product/analytics)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microstrategy.microstrategy_enterprise_platform_vm)<br> |
+| ![Üzemmód-elemzés](./media/sql-data-warehouse-partner-business-intelligence/mode-logo.png) |**Mód**<br>A Mode egy modern analitikai és BI-megoldás, amely segít a csapatoknak a döntések ésszerűen gyors és váratlanul elragadó adatelemzésében. Az adatcsapatok gyorsabban haladnak át egy olyan előnyben részesített munkafolyamaton, amely az SQL, a Python, az R és a vizualizáció elemzését ötvözi, míg az érintettek együttesen használják fel az adataikat a saját maga A mindenki számára könnyebben elérhető adatok révén lerövidítjük a válaszokat és a vállalkozásokat abban, hogy gyorsabb döntéseket hozhassanak.|[Termék lap](https://mode.com/)<br> |
 | ![Qlik](./media/sql-data-warehouse-partner-business-intelligence/qlik_logo.png) |**Qlik Sense Enterprise**<br>Megtekintheti a betekintési felderítést az adatvizualizációs alkalmazással, amelyet bárki használhat. A Qlik értelemben a szervezet minden tagja könnyedén hozhat létre rugalmas, interaktív vizualizációkat, és értelmes döntéseket hozhat. |[Termék lap](https://www.qlik.com/us/products/qlik-sense/enterprise)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/qlik.qlik-sense) |
 | ![SiSense](./media/sql-data-warehouse-partner-business-intelligence/sisense_logo.png) |**SiSense**<br>A SiSense egy teljes körű üzleti intelligenciát biztosító szoftver, amely az üzleti igényeknek megfelelő eszközöket kínál az adatok elemzéséhez és megjelenítéséhez: nagy teljesítményű analitikai adatbázis, több forráshoz való csatlakozás, egyszerű kinyerés (etl) és webalapú adatvizualizáció. Megkezdheti a nagyméretű adathalmazok elemzését és megjelenítését a SiSense BI és az Analytics szolgáltatással. |[Termék lap](https://www.sisense.com/product/)<br> |
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>A tabló önkiszolgáló elemzési szolgáltatásának segítségével bárki megtekintheti és értelmezheti az adatait, és számos különböző típusú, a fájloktól az adatbázisokig terjedő adatmennyiséget. A tabló egy natív, optimalizált összekötővel rendelkezik a szinapszis SQL-készlethez, amely egyaránt támogatja az élő és a memóriabeli elemzéseket. |[Termék lap](https://www.tableau.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/tableau.tableau-server)<br>|

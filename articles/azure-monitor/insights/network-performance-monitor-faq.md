@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: b8c8e7539b888141a22e92378d78282edd1ce6ff
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: dd6c6248fcdf30350daecaa4857a81447bbdb7a8
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92208022"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280321"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
@@ -34,7 +34,7 @@ Az alábbiakban az NPM különböző képességeire vonatkozó platformokra vona
 - A NPM ExpressRoute-figyelő funkciója csak a Windows Server (2008 SP1 vagy újabb) operációs rendszert támogatja.
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Használhatok Linux rendszerű gépeket figyelési csomópontként a NPM-ben?
-A Linux-alapú csomópontokat használó hálózatok figyelésének lehetősége jelenleg előzetes verzióban érhető el. Forduljon a fiók kezelőjéhez, és tudjon meg többet. A Linux-ügynökök csak a NPM számára biztosítanak figyelési képességet, és nem érhetők el a szolgáltatás-kapcsolódási figyelőhöz és a ExpressRoute figyelési képességeihez
+A Linux-alapú csomópontokat használó hálózatok figyelésének lehetősége jelenleg előzetes verzióban érhető el. [Itt](../../virtual-machines/extensions/oms-linux.md)nyilára az ügynököt. Forduljon a fiók kezelőjéhez, és tudjon meg többet. A Linux-ügynökök csak a NPM számára biztosítanak figyelési képességet, és nem érhetők el a szolgáltatás-kapcsolódási figyelőhöz és a ExpressRoute figyelési képességeihez
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>Mik a NPM által a figyeléshez használt csomópontok méretére vonatkozó követelmények?
 Ahhoz, hogy a NPM megoldás a csomópontokon futó virtuális gépeken a hálózatok figyelésére fusson, a csomópontoknak legalább 500 MB memóriával és egy mag kell rendelkezniük. Nem kell külön csomópontokat használnia a NPM futtatásához. A megoldás olyan csomópontokon is futhat, amelyeken más munkaterhelések futnak. A megoldás képes a figyelési folyamat leállítására, ha az több mint 5%-os CPU-t használ.
@@ -129,7 +129,7 @@ NetworkMonitoring
  | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == "<<your circuit name>>" and VirtualNetwork == "<<vnet name>>"
 ```
 
-Microsoftos társviszony
+Microsoftos társhálózat-létesítés
 
 ```kusto
 NetworkMonitoring
