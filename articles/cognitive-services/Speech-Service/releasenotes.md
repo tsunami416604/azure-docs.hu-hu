@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: eb285f7ef536ac19d0ea7328a4428f33a47cd368
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e22400016eae0642c4e25fcfd4fcaaaab22a27a8
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129626"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280568"
 ---
 # <a name="speech-service-release-notes"></a>Beszédfelismerési szolgáltatás kibocsátási megjegyzései
 
@@ -41,7 +41,7 @@ Az SPX a parancssori felület, amellyel a kód írása nélkül használhatja az
 https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream.fromfile).
 -  **C++/c #/Java/Python/Objective-C/Swift** : a `stopSpeakingAsync()` szöveg-beszéd szintézis leállítására szolgáló metódust adott hozzá. Olvassa el itt a dokumentációt ( [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace)), itt ( [C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet), itt [(Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech?view=azure-java-stable), [itt (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)és [itt (Objective-C/Swift)](https://docs.microsoft.com/objectivec/cognitive-services/speech/).
 - **C#, C++, Java** : felvett egy `FromDialogServiceConnector()` függvényt a `Connection` osztályhoz, amely a kapcsolatok és a leválasztási események figyelésére használható `DialogServiceConnector` . Olvassa el itt a dokumentációt ( [C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet), [itt (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)és [itt (Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection?view=azure-java-stable).
-- **C++/c #/Java/Python/Objective-C/Swift** : hozzáadva a kiejtés értékelésének támogatása, amely kiértékeli a beszédfelismerési kiejtést, és visszajelzést ad a beszélők pontosságáról és a beszélt hangról. Olvassa el [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment)a dokumentációt.
+<!-- - **C++/C#/Java/Python/Objective-C/Swift**: Added support for Pronunciation Assessment, which evaluates speech pronunciation and gives speakers feedback on the accuracy and fluency of spoken audio. Read the documentation [here](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment). -->
 
 **Hibajavítások**
 - **Összes** : rögzített 1,13 regresszió, `SetServiceProperty` ahol bizonyos speciális karaktereket tartalmazó értékek figyelmen kívül lettek hagyva.
@@ -64,7 +64,7 @@ https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audioda
 **Példák**
 - **ObjectiveC** : a kulcsszó-felismeréshez hozzáadott minta [itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/speech-samples).
 - **C#/JavaScript** : [itt (c#)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/conversation-transcription) és [itt (JavaScript)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/conversation-transcription)is megjelent a beszélgetés átírásához.
-- **C++/c #/Java/Python/Swift/ObjectiveC** : a kiejtési [felméréshez](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples) hozzáadott minta
+<!-- - **C++/C#/Java/Python/Swift/ObjectiveC**: Added sample for pronunciation assessment [here](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples) -->
 - **Xamarin** : frissített gyors útmutató a legújabb Visual Studio [-sablonhoz](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/xamarin).
 
 **Ismert probléma**
@@ -78,11 +78,11 @@ Egészségesek maradjanak!
 
 ### <a name="new-features"></a>Új funkciók
 
-* **NEURÁLIS TTS: új beszéd stílusa `en-US` Aria hang** . A AriaNeural a hírek elolvasása közben is megszólalhat. A "bemondás – formális" stílus komolyabban hangzik, míg a "bemondás – alkalmi" stílus nyugodtabb és informális. Tekintse meg [, hogyan használhatja a SSML a beszélő stílusokat](speech-synthesis-markup.md).
+* **NEURÁLIS TTS: új beszéd stílusa `en-US` Aria hang**. A AriaNeural a hírek elolvasása közben is megszólalhat. A "bemondás – formális" stílus komolyabban hangzik, míg a "bemondás – alkalmi" stílus nyugodtabb és informális. Tekintse meg [, hogyan használhatja a SSML a beszélő stílusokat](speech-synthesis-markup.md).
 
-* **Egyéni hang: új funkció jelenik meg, amely automatikusan bejelöli az adatképzési minőséget** . Az adatok feltöltésekor a rendszer megvizsgálja a hang-és átirat-adatok különböző aspektusait, és automatikusan kijavítja vagy szűri a problémákat a hangmodell minőségének javítása érdekében. Ez magában foglalja a hang mennyiségét, a zajszintet, a beszéd kiejtési pontosságát, a beszéd igazítását a normalizált szöveggel, valamint a hang és a parancsfájl formátumát. 
+* **Egyéni hang: új funkció jelenik meg, amely automatikusan bejelöli az adatképzési minőséget**. Az adatok feltöltésekor a rendszer megvizsgálja a hang-és átirat-adatok különböző aspektusait, és automatikusan kijavítja vagy szűri a problémákat a hangmodell minőségének javítása érdekében. Ez magában foglalja a hang mennyiségét, a zajszintet, a beszéd kiejtési pontosságát, a beszéd igazítását a normalizált szöveggel, valamint a hang és a parancsfájl formátumát. 
 
-* **Hangtartalom létrehozása: új funkciók, amelyek lehetővé teszik az erősebb hanghangolást és hangkezelési képességeket** .
+* **Hangtartalom létrehozása: új funkciók, amelyek lehetővé teszik az erősebb hanghangolást és hangkezelési képességeket**.
 
     * Kiejtés: a kiejtés finomhangolása funkció a legújabb fonéma-készletre frissül. Kiválaszthatja a megfelelő fonéma elemet a könyvtárból, és pontosíthatja a kiválasztott szavak kiejtését. 
 
@@ -92,7 +92,7 @@ Egészségesek maradjanak!
 
     * SSML-dokumentáció: a SSML-dokumentumhoz csatolva megtekintheti az összes hangolási funkció használatának szabályait.
 
-* **A hanglista API frissült, így szerepel egy felhasználóbarát megjelenítendő név és a neurális hangok által támogatott beszélő stílusok is** .
+* **A hanglista API frissült, így szerepel egy felhasználóbarát megjelenítendő név és a neurális hangok által támogatott beszélő stílusok is**.
 
 ### <a name="general-tts-voice-quality-improvements"></a>Általános TTS hang minőségének fejlesztése
 
@@ -231,7 +231,7 @@ Egészségesek maradjanak!
 * Pénznem olvasása
     * Kijavítottuk a és a pénznem beolvasásával kapcsolatos problémát `es-ES``es-MX`
      
-    | Nyelv | Input (Bemenet) | Fejlesztés utáni kiolvasás |
+    | Nyelv | Bevitel | Fejlesztés utáni kiolvasás |
     |---|---|---|
     | `es-MX` | $1,58 | un peso cincuenta y Ocho centavos |
     | `es-ES` | $1,58 | un dólar cincuenta y Ocho centavos |
