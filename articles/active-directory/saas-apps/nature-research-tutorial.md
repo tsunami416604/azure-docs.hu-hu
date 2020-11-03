@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/29/2020
 ms.author: jeedes
-ms.openlocfilehash: 58ba0819866f3eddfad8a9147c10da7b5e59362d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d68305087264d6ba2306ba4c345064693b595c94
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135221"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234018"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nature-research"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Nature Research szolgáltatással
 
@@ -61,7 +61,6 @@ Az Azure AD SSO és a Nature Research szolgáltatás konfigurálásához és tes
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
     1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
 1. A **[Nature Research SSO konfigurálása](#configure-nature-research-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    1. **[Hozzon létre egy Nature Research-tesztet](#create-nature-research-test-user)** , amely a felhasználó Azure ad-képviseletéhez kapcsolódó "B. Simon" a Nature Research szolgáltatáshoz tartozik.
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
@@ -76,15 +75,15 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, az azonosító és a válasz URL-értékei már előre fel vannak töltve az Azure-ban, de meg kell adnia a továbbítási állapot értékét.
 
-    A **továbbítási állapot** szövegmezőbe írja be az URL-címet: `https://idp.nature.com/debug`  
+    A **továbbítási állapot** szövegmezőbe írja be az URL-címet: `https://www.nature.com`  
     kattintson a **Mentés** gombra.
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépéseket, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `http://sp.nature.com/saml/login?targetUrl=https%3A%2F%2Fidp.nature.com%2Fdebug&idp=<IDP_ENTITY_ID>`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://sp.nature.com/saml/login?idp=<IDP_ENTITY_ID>`
 
     > [!NOTE]
-    > A Sign-On URL-cím értéke nem valódi. Frissítse az értéket a tényleges Sign-On URL-címmel. Az értékek megszerzéséhez forduljon a [Nature Research](mailto:identity@springernature.com) ügyfélszolgálatához. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > A Sign-On URL-cím értéke nem valódi. `<IDP_ENTITY_ID>` Az Azure AD-azonosító a **Nature Research beállítása** szakaszból lett másolva. Az Azure Portal alapszintű SAML-konfiguráció szakaszában látható mintázatokat is megtekintheti.
 
 1. Kattintson a **Mentés** gombra.
 
@@ -118,11 +117,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 ## <a name="configure-nature-research-sso"></a>Nature Research – SSO konfigurálása
 
-Az egyszeri bejelentkezés a **Nature Research** oldalon való konfigurálásához el kell küldenie az **alkalmazás-összevonási metaadatok URL-címét** a [Nature Research támogatási csapatának](mailto:identity@springernature.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
-
-### <a name="create-nature-research-test-user"></a>Nature Research-tesztkörnyezet létrehozása
-
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Nature Research szolgáltatásban. A [Nature Research támogatási csapatával](mailto:identity@springernature.com) felveheti a felhasználókat a Nature Research platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Az egyszeri bejelentkezés a **Nature Research** oldalon való konfigurálásához el kell küldenie az **alkalmazás-összevonási metaadatok URL-címét** a [Nature Research támogatási csapatának](mailto:onlineservice@springernature.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 

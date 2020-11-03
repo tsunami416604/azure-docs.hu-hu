@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 1e6e59ad237cdc1f23181375894512e69eba86ff
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: f73643baa92956280d67d0d931459af3a80925ee
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042170"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233748"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>A Azure Machine Learning költségeinek megtervezése és kezelése
 
@@ -96,7 +96,7 @@ az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 
 
 A AmlCompute [kvóta (vagy korlát) konfigurációt](how-to-manage-quotas.md#azure-machine-learning-compute)tartalmaz. Ez a kvóta virtuálisgép-család (például Dv2 sorozat, NCv3 sorozat), és az egyes előfizetések régiónként eltérőek. Az előfizetések kis alapértékekkel kezdődnek, és ezzel a beállítással szabályozható, hogy az előfizetésében milyen Amlcompute-erőforrások legyenek elérhetők. 
 
-Konfigurálja a [munkaterület-szintű kvótát](how-to-manage-quotas.md#workspace-level-quota)is a virtuálisgép-család szerint az előfizetésben található minden egyes munkaterülethez. Így részletesebben szabályozhatja az egyes munkaterületek által felmerülhető költségeket, és korlátozhatja bizonyos virtuálisgép-családokat. 
+Konfigurálja a [munkaterület-szintű kvótát](how-to-manage-quotas.md#workspace-level-quotas)is a virtuálisgép-család szerint az előfizetésben található minden egyes munkaterülethez. Így részletesebben szabályozhatja az egyes munkaterületek által felmerülhető költségeket, és korlátozhatja bizonyos virtuálisgép-családokat. 
 
 Ha a kvótákat a munkaterület szintjén szeretné beállítani, kezdje a [Azure Portal](https://portal.azure.com).  Válasszon ki egy munkaterületet az előfizetésben, majd a bal oldali ablaktáblán válassza a **kihasználtságok és kvóták** lehetőséget. Ezután válassza a **kvóták konfigurálása** lapot a kvóták megtekintéséhez. A kvóta beállításához jogosultságok szükségesek az előfizetési hatókörben, mivel ez egy olyan beállítás, amely több munkaterületet érint.
 

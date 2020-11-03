@@ -1,17 +1,17 @@
 ---
 title: Előre fizetés a számításhoz fenntartott kapacitással – Azure Database for MySQL
 description: Előre fizetés Azure Database for MySQL számítási erőforrások számára fenntartott kapacitással
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 27cd1c9085771bd9ac2b18c37b73235d7f18ad5a
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 33c2617a22945ecb11586bc282e7f9f61b6e49ca
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538085"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240902"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>Előre fizetés Azure Database for MySQL számítási erőforrások számára fenntartott kapacitással
 
@@ -55,7 +55,7 @@ A következő táblázat a kötelező mezőket ismerteti.
 | Régió | Az Azure Database for MySQL fenntartott kapacitás foglalása által érintett Azure-régió.
 | Központi telepítés típusa | Az a Azure Database for MySQL erőforrástípus, amelyre a foglalást megvásárolni szeretné.
 | Teljesítményszint | A Azure Database for MySQL-kiszolgálók szolgáltatási szintje.
-| Időszak | Egy év
+| Kifejezés | Egy év
 | Mennyiség | A Azure Database for MySQL fenntartott kapacitás foglalása keretében megvásárolt számítási erőforrások mennyisége. A mennyiség a kiválasztott Azure-régióban és a lefoglalt teljesítményszint virtuális mag, és a számlázási kedvezményt kapja. Ha például olyan Azure Database for MySQL-kiszolgálókat futtat, amelyeken az USA keleti régiójában az Gen5 16 virtuális mag teljes számítási kapacitása fut, akkor az összes kiszolgáló előnyének maximalizálása érdekében a 16-as mennyiséget kell megadnia.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Foglalások lemondása, cseréje vagy visszatérítése

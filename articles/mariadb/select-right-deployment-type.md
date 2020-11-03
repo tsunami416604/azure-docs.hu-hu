@@ -1,17 +1,17 @@
 ---
 title: A megfelelő központi telepítési típus kiválasztása – Azure Database for MariaDB
 description: Ez a cikk azokat a tényezőket ismerteti, amelyeket figyelembe kell vennie, mielőtt üzembe helyezi a Azure Database for MariaDB infrastruktúra-szolgáltatásként (IaaS) vagy a szolgáltatásként szolgáló platformként (Pásti).
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 5be6b97ed1647ad09a2abc3360b4f3a42c25ad62
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d8885e374142b3d916803fc472ae18351ca6d470
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424920"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240273"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Válassza ki a megfelelő MariaDB-kiszolgáló lehetőséget az Azure-ban
 
@@ -49,7 +49,7 @@ A fenti lehetőségek közötti fő különbségek a következő táblázatban l
 
 A MariaDB-adatbázisok üzemeltetéséhez számos tényező befolyásolhatja a saját döntését, hogy kiválassza a Péter vagy a IaaS lehetőséget.
 
-### <a name="cost"></a>Költségek
+### <a name="cost"></a>Költség
 
 A korlátozott finanszírozás gyakran az elsődleges szempont, amely meghatározza az adatbázisok üzemeltetésének legjobb megoldását. Ez akkor is igaz, ha kevés pénzzel vagy csapattal rendelkezik egy olyan vállalatnál, amely szűk költségvetési megkötések keretében működik. Ez a szakasz a számlázási és licencelési alapismereteket ismerteti az Azure-ban, mivel azok az Azure-beli virtuális gépek Azure Database for MariaDB és MariaDB vonatkoznak.
 
@@ -99,7 +99,7 @@ A következő lista az egyes lehetőségek felügyeleti szempontjait ismerteti:
 
   Mivel nincs szükség a bemutató, az alkalmazás és az adatrétegek módosítására, időt és költségvetést takaríthat meg a meglévő megoldás újratervezése során. Ehelyett a megoldások Azure-ba való áttelepítésére és az Azure-platform által igényelt teljesítmény-optimalizálásokra koncentrálhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Lásd: [Azure Database for MariaDB díjszabása](https://azure.microsoft.com/pricing/details/MariaDB/).
 * Első lépésként [hozza létre első kiszolgálóját](quickstart-create-mariadb-server-database-using-azure-portal.md).

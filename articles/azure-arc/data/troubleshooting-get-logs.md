@@ -1,6 +1,6 @@
 ---
-title: Naplók beszerzése az Azure arc-kompatibilis adatkezelő hibáinak megoldásához
-description: Szolgáltatási naplók beszerzése az Azure arc-kompatibilis adatkezelő hibáinak megoldásához.
+title: Naplók beszerzése az Azure arc-kompatibilis adatszolgáltatások hibakereséséhez
+description: Ismerje meg, hogyan kérhet le naplófájlokat egy adatkezelőből az Azure arc-kompatibilis adatszolgáltatások hibakereséséhez.
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,27 +9,27 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 625092e0557d40051e1ffd538a496c20edc0222f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0c4cff7583f08fe27649cee464fcef802cddd88f
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320202"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234043"
 ---
-# <a name="get-azure-arc-enabled-data-services-logs"></a>Az Azure arc-kompatibilis adatszolgáltatások naplóinak beolvasása
+# <a name="get-logs-to-troubleshoot-azure-arc-enabled-data-services"></a>Naplók beszerzése az Azure arc-kompatibilis adatszolgáltatások hibakereséséhez
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A továbblépés előtt a következőkre lesz szüksége:
+A folytatás előtt a következőkre lesz szüksége:
 
-* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]. [Telepítési utasítások](./install-client-tools.md).
-* Rendszergazdai fiók az Azure arc-kompatibilis adatszolgáltatások vezérlőjébe való bejelentkezéshez.
+* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]. További információ: az [ügyféleszközök telepítése az Azure arc-adatszolgáltatások üzembe helyezéséhez és kezeléséhez](./install-client-tools.md).
+* Rendszergazdai fiók az Azure arc-kompatibilis adatvezérlőbe való bejelentkezéshez.
 
-## <a name="get-azure-arc-enabled-data-services-logs"></a>Az Azure arc-kompatibilis adatszolgáltatások naplóinak beolvasása
+## <a name="get-log-files"></a>Naplófájlok beolvasása
 
-Az Azure arc-kompatibilis adatszolgáltatások naplóit az összes hüvelyben vagy adott hüvelyben hibaelhárítási célból érheti el. Ezt elvégezheti a szabványos Kubernetes-eszközökkel, például a `kubectl logs` paranccsal, vagy ebben a cikkben az eszközt fogja használni, amely megkönnyíti az [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] összes napló egyszerre történő beolvasását.
+A szolgáltatási naplókat az összes hüvelybe vagy adott hüvelybe lekérheti hibaelhárítási célból. Az egyik módszer a szabványos Kubernetes-eszközök, például a `kubectl logs` parancs használata. Ebben a cikkben az eszközt fogja használni, amely megkönnyíti az [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] összes napló egyszeri beolvasását.
 
 1. Jelentkezzen be az adatkezelőbe egy rendszergazdai fiókkal.
 
@@ -53,27 +53,27 @@ Az adatkezelő létrehozza a naplófájlokat az aktuális munkakönyvtárban egy
 
 ## <a name="options"></a>Beállítások
 
-`azdata arc dc debug copy-logs` a a következő beállításokat biztosítja a kimenet kezeléséhez.
+A `azdata arc dc debug copy-logs` parancs a következő beállításokat biztosítja a kimenet kezeléséhez:
 
-* A naplófájlokat egy másik könyvtárba írja a paraméter használatával `--target-folder` .
+* A naplófájlokat egy másik könyvtárba írja a `--target-folder` paraméter használatával.
 * Tömörítse a fájlokat úgy, hogy kihagyja a `--skip-compress` paramétert.
-* A memóriaképek kihagyása és a memóriaképek belefoglalása `--exclude-dumps` . Ez a módszer nem ajánlott, hacsak Microsoft ügyfélszolgálata nem kérte a memóriaképek megadását. A memóriakép készítése megköveteli, hogy az adatvezérlő beállítása `allowDumps` `true` az adatvezérlő létrehozási idejére legyen beállítva.
+* A memóriaképek kihagyása és a memóriaképek belefoglalása `--exclude-dumps` . Ezt a módszert csak akkor javasoljuk, ha Microsoft ügyfélszolgálata nem kérte a memóriaképek használatát. A memóriakép beszerzése megköveteli, hogy az adatvezérlő beállítása az adatkezelő létrehozásakor legyen `allowDumps` beállítva `true` .
 * Szűrés a naplók összegyűjtéséhez csak egy adott Pod ( `--pod` ) vagy tároló ( `--container` ) néven.
-* A (z `--resource-kind` ) és paraméter átadásával szűrheti egy adott egyéni erőforrás naplóinak gyűjtését `--resource-name` . A `resource-kind` paraméter értékének az egyéni erőforrás-definíciós nevek egyikének kell lennie, amelyet a parancs kérhet le `kubectl get customresourcedefinition` .
+* Egy adott egyéni erőforráshoz tartozó naplók gyűjtésének szűrése a és a paraméterek átadásával `--resource-kind` `--resource-name` . A `resource-kind` paraméter értékének az egyéni erőforrás-definíciós nevek egyikének kell lennie. Ezeket a neveket a parancs használatával kérheti le `kubectl get customresourcedefinition` .
 
-Ezeket a paramétereket a következő példában lecserélheti `<parameters>` . 
+Ezekkel a paraméterekkel a következő példában lecserélheti a t `<parameters>` : 
 
 ```console
 azdata arc dc debug copy-logs --target-folder <desired folder> --exclude-dumps --skip-compress -resource-kind <custom resource definition name> --resource-name <resource name> --namespace <namespace name>
 ```
 
-Példa:
+Például:
 
 ```console
 #azdata arc dc debug copy-logs --target-folder C:\temp\logs --exclude-dumps --skip-compress --resource-kind postgresql-12 --resource-name pg1 --namespace arc
 ```
 
-Példa a mappa-hierarchiára. A mappa-hierarchiát a pod name, majd a Container, majd a tárolón belüli címtár-hierarchia alapján rendezi a rendszer.
+A következő mappa-hierarchia egy példa. Ez a pod name, a Container, majd a tárolón belüli címtár-hierarchia szerint van rendszerezve.
 
 ```output
 <export directory>

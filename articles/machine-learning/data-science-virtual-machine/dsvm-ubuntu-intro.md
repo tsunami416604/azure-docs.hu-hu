@@ -8,12 +8,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: 375149047d51574e14df15b6385b8c296d49a8ec
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a14f7ac212d9957e5258f75a386b8730ad5de700
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85254701"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233838"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Gyors útmutató: a Linux Data Science Virtual Machine beállítása (Ubuntu)
 
@@ -33,33 +33,33 @@ Az alábbi lépéseket követve hozhatja létre a Data Science Virtual Machine U
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com). Előfordulhat, hogy a rendszer arra kéri, hogy jelentkezzen be az Azure-fiókjába, ha még nincs bejelentkezve.
 1. Keresse meg a virtuális gép listáját az "adatelemzési virtuális gép" beírásával, és válassza a "Data Science Virtual Machine-Ubuntu 18,04" lehetőséget.
 
-1. A következő ablakban válassza a **Létrehozás**lehetőséget.
+1. A következő ablakban válassza a **Létrehozás** lehetőséget.
 
 1. A rendszer átirányítja a virtuális gép létrehozása panelre.
    
 1. Adja meg a következő adatokat a varázsló egyes lépéseinek konfigurálásához:
 
-    1. **Alapismeretek**:
+    1. **Alapismeretek** :
     
-       * **Előfizetés**: Ha egynél több előfizetéssel rendelkezik, válassza ki azt a számítógépet, amelyet a gép létre fog hozni és számláz. Ehhez az előfizetéshez erőforrás-létrehozási jogosultságokkal kell rendelkeznie.
-       * **Erőforráscsoport**: hozzon létre egy új csoportot, vagy használjon egy meglévőt.
-       * **Virtuális gép neve**: adja meg a virtuális gép nevét. Ezt a nevet fogja használni a Azure Portal.
-       * **Régió**: válassza ki a legmegfelelőbb adatközpontot. A leggyorsabb hálózati hozzáféréshez ez az adatközpont, amely a legtöbb adattal rendelkezik, vagy a legközelebb áll a fizikai helyhez. További információ az [Azure-régiókról](https://azure.microsoft.com/global-infrastructure/regions/).
-       * **Rendszerkép**: hagyja meg az alapértelmezett értéket.
-       * **Méret**: Ez a beállítás az általános számítási feladatokhoz megfelelő mérettel automatikusan feltölthető. További információ a [LINUXOS virtuális gépek méretéről az Azure-ban](../../virtual-machines/linux/sizes.md).
-       * **Hitelesítés típusa**: a gyorsabb telepítéshez válassza a "jelszó" lehetőséget. 
+       * **Előfizetés** : Ha egynél több előfizetéssel rendelkezik, válassza ki azt a számítógépet, amelyet a gép létre fog hozni és számláz. Ehhez az előfizetéshez erőforrás-létrehozási jogosultságokkal kell rendelkeznie.
+       * **Erőforráscsoport** : hozzon létre egy új csoportot, vagy használjon egy meglévőt.
+       * **Virtuális gép neve** : adja meg a virtuális gép nevét. Ezt a nevet fogja használni a Azure Portal.
+       * **Régió** : válassza ki a legmegfelelőbb adatközpontot. A leggyorsabb hálózati hozzáféréshez ez az adatközpont, amely a legtöbb adattal rendelkezik, vagy a legközelebb áll a fizikai helyhez. További információ az [Azure-régiókról](https://azure.microsoft.com/global-infrastructure/regions/).
+       * **Rendszerkép** : hagyja meg az alapértelmezett értéket.
+       * **Méret** : Ez a beállítás az általános számítási feladatokhoz megfelelő mérettel automatikusan feltölthető. További információ a [LINUXOS virtuális gépek méretéről az Azure-ban](../../virtual-machines/linux/sizes.md).
+       * **Hitelesítés típusa** : a gyorsabb telepítéshez válassza a "jelszó" lehetőséget. 
          
          > [!NOTE]
          > Ha a JupyterHub-t szeretné használni, ügyeljen arra, hogy válassza a "jelszó" lehetőséget, mivel a JupyterHub *nem* az SSH nyilvános kulcsok használatára van konfigurálva.
 
-       * **Felhasználónév**: adja meg a rendszergazda felhasználónevét. Ezt a felhasználónevet fogja használni a virtuális gépre való bejelentkezéshez. A felhasználónévnek nem kell megegyeznie az Azure-felhasználónévvel. Ne *használjon* nagybetűs betűket.
+       * **Felhasználónév** : adja meg a rendszergazda felhasználónevét. Ezt a felhasználónevet fogja használni a virtuális gépre való bejelentkezéshez. A felhasználónévnek nem kell megegyeznie az Azure-felhasználónévvel. Ne *használjon* nagybetűs betűket.
          
          > [!IMPORTANT]
          > Ha nagybetűs betűket használ a felhasználónévben, a JupyterHub nem fog működni, és 500 belső kiszolgálóhiba lép fel.
 
-       * **Password (jelszó**): adja meg a virtuális gépre való bejelentkezéshez használni kívánt jelszót.    
+       * **Password (jelszó** ): adja meg a virtuális gépre való bejelentkezéshez használni kívánt jelszót.    
     
-   1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+   1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
    1. **Felülvizsgálat + létrehozás**
       * Győződjön meg arról, hogy a megadott összes adat helyes. 
       * Kattintson a **Létrehozás** gombra.
@@ -95,13 +95,13 @@ A Linux rendszerű virtuális gép már ki van építve a X2Go-kiszolgálóval, 
 1. Futtassa az X2Go-ügyfelet. Ha az "új munkamenet" ablak nem jelenik meg automatikusan, ugorjon a munkamenet-> új munkamenet elemre.
 
 1. A megjelenő konfigurációs ablakban adja meg a következő konfiguráció-paramétereket:
-   * **Munkamenet lap**:
-     * **Állomásnév**: Adja meg a virtuális gép IP-címét, amelyet korábban feljegyzett.
-     * **Bejelentkezési név**: Adja meg a linuxos virtuális gépen érvényes felhasználónevét.
-     * **SSH-port**: Hagyja meg az alapértelmezett 22 értéket.
-     * **Munkamenet típusa**: Állítsa át az **XFCE** értékre. A linuxos virtuális gép jelenleg csak az XFCE-asztalt támogatja.
-   * **Multimédia lap**: Kikapcsolhatja a hangtámogatást és az ügyfélről indított nyomtatást, ha nincs rájuk szüksége.
-   * **Megosztott mappák**: ezen a lapon adhatja hozzá a virtuális gépen csatlakoztatni kívánt ügyfélszámítógép-könyvtárat. 
+   * **Munkamenet lap** :
+     * **Állomásnév** : Adja meg a virtuális gép IP-címét, amelyet korábban feljegyzett.
+     * **Bejelentkezési név** : Adja meg a linuxos virtuális gépen érvényes felhasználónevét.
+     * **SSH-port** : Hagyja meg az alapértelmezett 22 értéket.
+     * **Munkamenet típusa** : Állítsa át az **XFCE** értékre. A linuxos virtuális gép jelenleg csak az XFCE-asztalt támogatja.
+   * **Multimédia lap** : Kikapcsolhatja a hangtámogatást és az ügyfélről indított nyomtatást, ha nincs rájuk szüksége.
+   * **Megosztott mappák** : ezen a lapon adhatja hozzá a virtuális gépen csatlakoztatni kívánt ügyfélszámítógép-könyvtárat. 
 
    ![X2Go-konfiguráció](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
 1. Kattintson az **OK** gombra.
@@ -126,7 +126,7 @@ Az Ubuntu DSVM egy többfelhasználós Jupyter-kiszolgálót futtat [JupyterHub]
       ![Adja meg a Jupyter-bejelentkezést](./media/dsvm-ubuntu-intro/jupyter-login.png)
 
 >[!NOTE]
-> Ha ebben a fázisban 500 hibát kap, akkor valószínű, hogy a felhasználónévben tőkésített leveleket használt. Ez az Jupyter hub és az általa használt PAMAuthenticator közötti ismert interakció. 
+> Ha ebben a fázisban 500 hibát kap, akkor valószínű, hogy a felhasználónévben tőkésített leveleket használt. Ez az Jupyter hub és az általa használt PAMAuthenticator közötti ismert interakció. Ha "nem lehet elérni ezt a lapot" hibaüzenet jelenik meg, akkor valószínű, hogy módosítani kell a hálózati biztonsági csoport engedélyeit. A Azure Portal keresse meg a hálózati biztonsági csoport erőforrását az erőforráscsoport területen. A JupyterHub nyilvános internetről való eléréséhez meg kell nyitni a 8000-es portot. (A rendszerkép azt mutatja, hogy ez a virtuális gép az igény szerinti hozzáféréshez van konfigurálva, de kifejezetten ajánlott. Lásd: [a felügyeleti portok biztonságossá tétele az](../../security-center/security-center-just-in-time.md)igény szerinti hozzáféréssel.) ![A hálózati biztonsági csoport konfigurációja](./media/dsvm-ubuntu-intro/nsg-permissions.png)
 
    1. Böngésszen a rendelkezésre álló számos jegyzetfüzetben.
 
@@ -138,7 +138,7 @@ A JupyterLab az alapértelmezett jegyzetfüzet-kiszolgálóként is beállíthat
 c.Spawner.default_url = '/lab'
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Így folytathatja a tanulást és a kutatást:
 

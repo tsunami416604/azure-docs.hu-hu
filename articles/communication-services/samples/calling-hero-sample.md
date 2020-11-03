@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e6cbf840fa27755fa43eb2a81e752415562ce41f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 799c46ad2715e1edd3d2fba24a8350fd2608d3d8
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461141"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233933"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Ismerkedés a csoport meghívása Hero-mintával
 
@@ -73,7 +73,7 @@ A mintát helyileg tesztelheti úgy, hogy több böngészős munkamenetet nyit m
 ## <a name="before-running-the-sample-for-the-first-time"></a>A minta első futtatása előtt
 
 1. Nyisson meg egy PowerShell-példányt, a Windows Terminalt, a parancssort vagy a megfelelőt, és navigáljon ahhoz a könyvtárhoz, amelyet a minta klónozására szeretne használni.
-2. `git clone https://github.com/Azure/Communication.git`
+2. `git clone https://github.com/Azure-Samples/communication-services-web-calling-hero.git`
 3. Szerezze be a `Connection String` Azure Portal. A kapcsolati karakterláncokkal kapcsolatos további információkért lásd: [Azure kommunikációs erőforrások létrehozása](../quickstarts/create-communication-resource.md)
 4. A `Connection String` hozzáadása után adja hozzá a kapcsolódási karakterláncot a Service .net mappában található **hívási/appsetting.js** fájlhoz. Adja meg a kapcsolatok sztringjét a (z) változóban: `ResourceConnectionString` .
 
@@ -98,12 +98,12 @@ A mintát helyileg tesztelheti úgy, hogy több böngészős munkamenetet nyit m
 
 Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek. További információ az [erőforrások tisztításáról](../quickstarts/create-communication-resource.md#clean-up-resources).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 >[!div class="nextstepaction"] 
 >[A minta letöltése a GitHubról](https://github.com/Azure-Samples/communication-services-web-calling-hero)
 
-További információért tekintse át a következő cikkeket:
+További információkat az következő cikkekben talál:
 
 - Ismerkedjen meg [a hívó ügyféloldali kódtár használatával](../quickstarts/voice-video-calling/calling-client-samples.md)
 - További információ a [hívás működéséről](../concepts/voice-video-calling/about-call-types.md)

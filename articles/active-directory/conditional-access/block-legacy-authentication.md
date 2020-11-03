@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c3107be1c36f1c15a1bcb27c5e0dcf851cfb946
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1485c2abd24022dbfa6476e3c5a530413b9cb4f2
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145534"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233797"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Útmutató: az Azure AD-val való örökölt hitelesítés letiltása feltételes hozzáféréssel   
 
@@ -60,7 +60,7 @@ Ez a szakasz azt ismerteti, hogyan lehet feltételes hozzáférési szabályzato
 
 A következő beállítások tekinthetők örökölt hitelesítési protokolloknak
 
-- Hitelesített SMTP – a POP és az IMAP-ügyfél által használt e-mail üzenetek küldésére használható.
+- Hitelesített SMTP – a POP-és IMAP-ügyfelek által használt e-mail-üzenetek küldésére használható.
 - Automatikus észlelés – az Outlook és az EAS-ügyfelek által használt postaládák keresése és kapcsolódás az Exchange Online-ban.
 - Exchange ActiveSync (EAS) – a postaládákhoz való kapcsolódásra szolgál az Exchange Online-ban.
 - Exchange Online PowerShell – az Exchange Online-hoz való kapcsolódáshoz használt távoli PowerShell-lel. Ha letiltja az Exchange Online PowerShell alapszintű hitelesítését, a kapcsolódáshoz az Exchange Online PowerShell-modult kell használnia. Útmutatásért lásd: [Kapcsolódás az Exchange Online powershellhez a multi-Factor Authentication használatával](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
@@ -80,8 +80,8 @@ További információ ezekről a hitelesítési protokollokról és szolgáltat�
 
 Mielőtt blokkolni tudja az örökölt hitelesítést a címtárban, először meg kell értenie, hogy a felhasználók rendelkeznek-e örökölt hitelesítést használó alkalmazásokkal, és hogy ez milyen hatással van a teljes címtárra. Az Azure AD bejelentkezési naplói segítségével megtudhatja, hogy örökölt hitelesítést használ-e.
 
-1. Navigáljon a **Azure Portal**  >  **Azure Active Directory**a  >  **bejelentkezések**elemre.
-1. Ha nem látható, akkor adja hozzá az ügyfélalkalmazás oszlopot, ha az **oszlopok**  >  **ügyfélalkalmazás**elemre kattint.
+1. Navigáljon a **Azure Portal**  >  **Azure Active Directory** a  >  **bejelentkezések** elemre.
+1. Ha nem látható, akkor adja hozzá az ügyfélalkalmazás oszlopot, ha az **oszlopok**  >  **ügyfélalkalmazás** elemre kattint.
 1. **Szűrők hozzáadása**  >  **Ügyfélalkalmazás** > válassza ki az összes örökölt hitelesítési protokollt. Válassza a Szűrés párbeszédpanelen kívül a kívánt beállításokat, majd a párbeszédpanel bezárásához.
 
 A szűrés csak az örökölt hitelesítési protokollok által végrehajtott bejelentkezési kísérleteket fogja megjeleníteni. Az egyes bejelentkezési kísérletekre kattintva további részleteket is megtudhat. Az **alapinformációk** lapon található **ügyfélalkalmazás** mező jelzi, hogy melyik örökölt hitelesítési protokollt használta a rendszer.
@@ -97,7 +97,7 @@ A feltételes hozzáférési szabályzatok használatának két módja van a ré
  
 ### <a name="directly-blocking-legacy-authentication"></a>Az örökölt hitelesítés közvetlen blokkolása
 
-A teljes szervezeten belüli örökölt hitelesítés blokkolásának legegyszerűbb módja egy olyan feltételes hozzáférési szabályzat konfigurálása, amely kifejezetten az örökölt hitelesítési ügyfelekre vonatkozik, és blokkolja a hozzáférést. Amikor felhasználókat és alkalmazásokat rendel a Szabályzathoz, ügyeljen arra, hogy kizárjon olyan felhasználókat és szolgáltatásfiókot, amelyeknek továbbra is be kell jelentkezniük a régi hitelesítés használatával. Konfigurálja az ügyfélalkalmazások feltételeit az **Exchange ActiveSync-ügyfelek** és **más ügyfelek**lehetőség kiválasztásával. Ezen ügyfélalkalmazások hozzáférésének letiltásához konfigurálja a hozzáférés-vezérlést a hozzáférés blokkolásához.
+A teljes szervezeten belüli örökölt hitelesítés blokkolásának legegyszerűbb módja egy olyan feltételes hozzáférési szabályzat konfigurálása, amely kifejezetten az örökölt hitelesítési ügyfelekre vonatkozik, és blokkolja a hozzáférést. Amikor felhasználókat és alkalmazásokat rendel a Szabályzathoz, ügyeljen arra, hogy kizárjon olyan felhasználókat és szolgáltatásfiókot, amelyeknek továbbra is be kell jelentkezniük a régi hitelesítés használatával. Konfigurálja az ügyfélalkalmazások feltételeit az **Exchange ActiveSync-ügyfelek** és **más ügyfelek** lehetőség kiválasztásával. Ezen ügyfélalkalmazások hozzáférésének letiltásához konfigurálja a hozzáférés-vezérlést a hozzáférés blokkolásához.
 
 ![Az örökölt hitelesítés blokkolására konfigurált ügyfélalkalmazás-feltétel](./media/block-legacy-authentication/client-apps-condition-configured-yes.png)
 

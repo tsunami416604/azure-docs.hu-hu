@@ -3,12 +3,12 @@ title: CI/CD Azure-folyamatokkal és-sablonokkal
 description: Ismerteti, hogyan konfigurálhatja a folyamatos integrációt az Azure-folyamatokban Azure Resource Manager sablonok használatával. Bemutatja, hogyan használhat PowerShell-parancsfájlokat, illetve hogyan másolhat fájlokat egy átmeneti helyre, és onnan telepítheti azokat.
 ms.topic: conceptual
 ms.date: 10/01/2020
-ms.openlocfilehash: 6784df30340e4c54b8b1d6e82b45046666824315
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86ad2839375b73bf9595cf3369960e614ec03e67
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653400"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233814"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>ARM-sablonok integrálása az Azure Pipelines használatával
 
@@ -16,11 +16,11 @@ A folyamatos integráció és a folyamatos üzembe helyezés (CI/CD) érdekében
 
 Ebből a cikkből megtudhatja, hogyan telepíthet üzembe sablonokat Azure-folyamatokkal. Ez a cikk a következőket mutatja be:
 
-* **Azure PowerShell parancsfájlt futtató feladat hozzáadása**. Ennek a beállításnak az az előnye, hogy a fejlesztési életciklus teljes életciklusa alatt biztosítja a konzisztenciát, mivel a helyi tesztek futtatásakor használt parancsfájlt használhatja. A szkript telepíti a sablont, de más műveleteket is végrehajthat, például paramétereket lehet használni.
+* **Azure PowerShell parancsfájlt futtató feladat hozzáadása** . Ennek a beállításnak az az előnye, hogy a fejlesztési életciklus teljes életciklusa alatt biztosítja a konzisztenciát, mivel a helyi tesztek futtatásakor használt parancsfájlt használhatja. A szkript telepíti a sablont, de más műveleteket is végrehajthat, például paramétereket lehet használni.
 
    A Visual Studio egy PowerShell-parancsfájlt tartalmazó [Azure erőforráscsoport-projektet](create-visual-studio-deployment-project.md) biztosít. A parancsfájl a projektből egy olyan Storage-fiókra mutat, amelyet a Resource Manager elérhet. Az összetevők olyan elemek a projektben, mint például a csatolt sablonok, a parancsfájlok és az alkalmazás bináris fájljai. Ha továbbra is szeretné használni a szkriptet a projektből, használja a cikkben látható PowerShell-parancsfájlt.
 
-* Feladatok **hozzáadása a feladatok másolásához és üzembe helyezéséhez**. Ez a beállítás kényelmes alternatívát kínál a projekt parancsfájlhoz. A folyamat két feladatot konfigurál. Egy feladattal az összetevők egy elérhető helyre kerülnek. A másik feladat az adott helyről telepíti a sablont.
+* Feladatok **hozzáadása a feladatok másolásához és üzembe helyezéséhez** . Ez a beállítás kényelmes alternatívát kínál a projekt parancsfájlhoz. A folyamat két feladatot konfigurál. Egy feladattal az összetevők egy elérhető helyre kerülnek. A másik feladat az adott helyről telepíti a sablont.
 
 ## <a name="prepare-your-project"></a>A projekt előkészítése
 
@@ -34,11 +34,11 @@ Ez a cikk feltételezi, hogy az ARM-sablon és az Azure DevOps-szervezet készen
 
 ## <a name="create-pipeline"></a>Folyamat létrehozása
 
-1. Ha korábban még nem adott hozzá egy folyamatot, létre kell hoznia egy új folyamatot. Az Azure DevOps-szervezetből válassza a **folyamatok** és az **új folyamat**elemet.
+1. Ha korábban még nem adott hozzá egy folyamatot, létre kell hoznia egy új folyamatot. Az Azure DevOps-szervezetből válassza a **folyamatok** és az **új folyamat** elemet.
 
    ![Új folyamat hozzáadása](./media/add-template-to-azure-pipelines/new-pipeline.png)
 
-1. Adja meg a kód tárolási helyét. Az alábbi képen az **Azure Repos git**kiválasztása látható.
+1. Adja meg a kód tárolási helyét. Az alábbi képen az **Azure Repos git** kiválasztása látható.
 
    ![Kód forrásának kiválasztása](./media/add-template-to-azure-pipelines/select-source.png)
 
@@ -46,13 +46,13 @@ Ez a cikk feltételezi, hogy az ARM-sablon és az Azure DevOps-szervezet készen
 
    ![Adattár kiválasztása](./media/add-template-to-azure-pipelines/select-repo.png)
 
-1. Válassza ki a létrehozandó folyamat típusát. Kiválaszthatja az **induló folyamat**elemet.
+1. Válassza ki a létrehozandó folyamat típusát. Kiválaszthatja az **induló folyamat** elemet.
 
    ![Folyamat kiválasztása](./media/add-template-to-azure-pipelines/select-pipeline.png)
 
 Készen áll Azure PowerShell feladat hozzáadására vagy a fájl másolására és a feladatok üzembe helyezésére.
 
-## <a name="azure-powershell-task"></a>Azure PowerShell feladat
+## <a name="azure-powershell-task"></a>Azure PowerShell-feladat
 
 Ez a szakasz bemutatja, hogyan konfigurálhatja a folyamatos üzembe helyezést egyetlen olyan feladattal, amely futtatja a PowerShell-parancsfájlt a projektben. Ha egy sablont telepítő PowerShell-parancsfájlra van szüksége, tekintse meg [Deploy-AzTemplate.ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzTemplate.ps1) vagy [Deploy-AzureResourceGroup.ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzureResourceGroup.ps1).
 
@@ -70,7 +70,7 @@ steps:
   inputs:
     azureSubscription: 'script-connection'
     ScriptType: 'FilePath'
-    ScriptPath: './Deploy-Template.ps1'
+    ScriptPath: './Deploy-AzTemplate.ps1'
     ScriptArguments: -Location 'centralus' -ResourceGroupName 'demogroup' -TemplateFile templates\mainTemplate.json
     azurePowerShellVersion: 'LatestVersion'
 ```
@@ -101,7 +101,7 @@ A-ben `ScriptArguments` adja meg a parancsfájlhoz szükséges paramétereket. A
 ScriptArguments: -Location 'centralus' -ResourceGroupName 'demogroup' -TemplateFile templates\mainTemplate.json
 ```
 
-Ha a **Mentés**lehetőséget választja, a folyamat automatikusan elindul. Térjen vissza a build-folyamat összegzéséhez, és tekintse meg az állapotot.
+Ha a **Mentés** lehetőséget választja, a folyamat automatikusan elindul. Térjen vissza a build-folyamat összegzéséhez, és tekintse meg az állapotot.
 
 ![Eredmények megtekintése](./media/add-template-to-azure-pipelines/view-results.png)
 
@@ -226,7 +226,7 @@ steps:
     deploymentName: 'deploy1'
 ```
 
-Ha a **Mentés**lehetőséget választja, a folyamat automatikusan elindul. Térjen vissza a build-folyamat összegzéséhez, és tekintse meg az állapotot.
+Ha a **Mentés** lehetőséget választja, a folyamat automatikusan elindul. Térjen vissza a build-folyamat összegzéséhez, és tekintse meg az állapotot.
 
 ## <a name="next-steps"></a>Következő lépések
 

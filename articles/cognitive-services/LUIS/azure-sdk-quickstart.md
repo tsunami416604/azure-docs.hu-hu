@@ -8,12 +8,12 @@ ms.subservice: language-understanding
 keywords: Azure, mesterséges intelligencia, AI, természetes nyelvi feldolgozás, NLP, LUIS, Azure Luis, természetes nyelvi megértés, AI Csevegőrobot, Csevegőrobot Maker, természetes nyelv megismerése
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: c2bc607fb5a5b5b38249453a1d0fce833547191f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e389152292239076f3077e2edfb8d5be52ab815b
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91327278"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241378"
 ---
 # <a name="quickstart-language-understanding-luis-sdk-client-libraries-to-create-and-query-your-luis-app"></a>Gyors útmutató: Language Understanding (LUIS) SDK-ügyfél kódtárai a LUIS-alkalmazás létrehozásához és lekérdezéséhez
 
@@ -21,7 +21,8 @@ Azure LUIS mesterséges intelligencia-(AI-) alkalmazás létrehozása és lekér
 
 Language Understanding (LUIS) lehetővé teszi természetes nyelvi feldolgozás (NLP) alkalmazását a felhasználó társalgási, természetes nyelvű szövegére az általános jelentés megbecslése érdekében, valamint a releváns, részletes információk kiolvasását.
 
-* Az **authoring SDK** ügyféloldali kódtára lehetővé teszi a Luis-alkalmazás létrehozását, szerkesztését, betanítását és közzétételét. * Az **előrejelzési FUTTATÓKÖRNYEZET SDK** -ügyfelének könyvtára lehetővé teszi a közzétett alkalmazás lekérdezését.
+* Az **authoring SDK** ügyféloldali kódtára lehetővé teszi a Luis-alkalmazás létrehozását, szerkesztését, betanítását és közzétételét.
+* Az **előrejelzési FUTTATÓKÖRNYEZET SDK** -ügyfelének könyvtára lehetővé teszi a közzétett alkalmazás lekérdezését.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [LUIS development with C# SDK](./includes/sdk-csharp.md)]
@@ -49,7 +50,7 @@ Törölheti az alkalmazást a Luis- [portálról](https://www.luis.ai) , és tö
 
 Egyéb hibák – ha az előző listában nem szereplő hibaüzenetet kap, tudassa velünk az oldal alján található visszajelzések megadásával. Adja meg a telepített ügyféloldali kódtárak programozási nyelvét és verzióját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi a Language Understanding (LUIS) API?](what-is-luis.md)
 * [Mi újság?](whats-new.md)

@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 3ee7761d43710e0833eb8002851e286ce5449983
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: c56c52193f433571f16e4acf7bd6e7b89641b26f
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636119"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233950"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Transzformációs függvények a huzavona-adatfolyamban
 
@@ -25,7 +25,7 @@ A Azure Data Factory huzavona-adatfolyama lehetővé teszi a kód nélküli agil
 
 Jelenleg nem minden Power Query M függvény támogatott az adatok huzavona, annak ellenére, hogy a létrehozás során elérhetővé válik. A huzavona-adatfolyamatok létrehozásakor a rendszer a következő hibaüzenetet fogja kérni, ha egy függvény nem támogatott:
 
-`The wrangling data flow is invalid. Expression.Error: The transformation logic isn't supported. Please try a simpler expression`
+`The Wrangling Data Flow is invalid. Expression.Error: The transformation logic is not supported. Please try a simpler expression.`
 
 Az alábbi lista a támogatott Power Query M függvények listáját tartalmazza.
 
@@ -76,7 +76,7 @@ A következő M függvény oszlopok hozzáadása vagy átalakítása: [table. Ad
 
 A [table. Group](/powerquery-m/table-group) használatával összesítheti az értékeket.
 * Összesítési függvénnyel kell használni
-* Támogatott aggregációs függvények:   [table. sorszám](/powerquery-m/table-rowcount),   [List. SZUM](/powerquery-m/list-sum),   [lista. Count](/powerquery-m/list-count),   [Listázás. Average](/powerquery-m/list-average),   [lista. min](/powerquery-m/list-min),   [lista. max](/powerquery-m/list-max),   [List. StandardDeviation](/powerquery-m/list-standarddeviation),   [Listázás. First](/powerquery-m/list-first),   [Listázás. Last](/powerquery-m/list-last)
+* Támogatott aggregációs függvények:   [lista. összeg](/powerquery-m/list-sum),   [lista. darabszám](/powerquery-m/list-count),   [lista. átlag](/powerquery-m/list-average),   [lista. min](/powerquery-m/list-min), lista   [. max](/powerquery-m/list-max),   [List. StandardDeviation](/powerquery-m/list-standarddeviation),   [lista. First](/powerquery-m/list-first),   [Listázás. Last](/powerquery-m/list-last)
 
 ## <a name="sorting"></a>Rendezés
 
@@ -96,7 +96,7 @@ Tartsa meg és távolítsa el a Top, Keep Range (megfelelő M függvények, csak
 | Table.NestedJoin | Az illesztés végrehajtása egy érvényesítési hibát eredményez. Az oszlopokat ki kell bontani ahhoz, hogy működjön. |
 | Table.Distinct | Az ismétlődő sorok eltávolítása nem támogatott. |
 | Table.RemoveLastN | Az alsó sorok eltávolítása nem támogatott. |
-| Table.RowCount | Nem támogatott, de a hozzá tartozó oszlop hozzáadásával az összes cella üres (feltétel oszlop használható), majd a Group By utasítás használatával. A table. Group támogatott. | 
+| Table.RowCount | Nem támogatott, de úgy érhető el, hogy hozzáad egy egyéni oszlopot, amely az 1 értéket tartalmazza, majd összesíti az oszlopot a List. Sum értékkel. A table. Group támogatott. | 
 | Sorok szintjének hibakezelés | A sorok szintjének hibakezelés jelenleg nem támogatott. Ha például egy oszlopból nem numerikus értékeket szeretne kiszűrni, az egyik módszer az, hogy a Text (szöveg) oszlopot egy számra alakítsa át. Minden olyan cella, amely nem alakítható át, hibás állapotba kerül, és szűrni kell. Ez a forgatókönyv nem lehetséges a huzavona-adatfolyamban. |
 | Table.Transpose | Nem támogatott |
 | Table.Pivot | Nem támogatott |

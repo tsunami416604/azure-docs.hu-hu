@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: kenwith
-ms.openlocfilehash: aaafd3833c63458f8403dfeb3620d76f631315b5
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: cac7b169232bb43ba1b1893b59dac81ce4c39c49
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899181"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233883"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>A felhasználó kiépítési attribútumának testreszabása – SaaS-alkalmazások leképezése Azure Active Directory
 
@@ -111,7 +111,7 @@ Az attribútumok listájának testreszabását támogató alkalmazások és rend
 - SuccessFactors Active Directory/SuccessFactors-re Azure Active Directory
 - Azure Active Directory (az[Azure AD Graph API alapértelmezett attribútumai](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) és az egyéni címtárszolgáltatás-bővítmények támogatottak)
 - Az [SCIM 2,0](https://tools.ietf.org/html/rfc7643)-et támogató alkalmazások, ahol az [alapsémában](https://tools.ietf.org/html/rfc7643) definiált attribútumokat fel kell venni
-- Ha Azure Active Directory visszaírási a munkanap vagy a SuccessFactors számára, a rendszer támogatja a támogatott attribútumok (XPATH és JSONPath) megfelelő metaadatainak frissítését, de nem támogatott új munkanapokat vagy SuccessFactors-attribútumokat hozzáadni az alapértelmezett sémán kívül.
+- Ha Azure Active Directory visszaírási a munkanap vagy a SuccessFactors számára, a rendszer támogatja a támogatott attribútumok (XPATH és JSONPath) releváns metaadatainak frissítését, de nem támogatott az alapértelmezett sémán kívüli új munkanapokat vagy SuccessFactors-attribútumokat hozzáadni.
 
 
 > [!NOTE]

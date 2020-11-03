@@ -1,230 +1,293 @@
 ---
-title: Azure Private-végpont létrehozása a Azure PowerShell használatával | Microsoft Docs
-description: További információ az Azure Private linkről
+title: Rövid útmutató – Azure Private-végpont létrehozása Azure PowerShell használatával
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy privát végpontot a Azure PowerShell használatával.
 services: private-link
-author: malopMSFT
+author: asudbring
 ms.service: private-link
 ms.topic: how-to
-ms.date: 09/16/2019
+ms.date: 11/02/2020
 ms.author: allensu
-ms.openlocfilehash: 0c6fc36be101679cea3a770f311005f63c3f0d66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 147e646738df9d70355f379a9e64a52116e9f16f
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84737376"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233593"
 ---
-# <a name="create-a-private-endpoint-using-azure-powershell"></a>Privát végpont létrehozása Azure PowerShell használatával
-A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a Virtual Machines (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal. 
+# <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>Rövid útmutató: privát végpont létrehozása Azure PowerShell használatával
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális gépet Azure-Virtual Network, egy Azure Private-végponttal rendelkező logikai SQL Servert Azure PowerShell használatával. Ezután biztonságosan hozzáférhet SQL Database a virtuális gépről.
+Ismerkedjen meg az Azure Private-hivatkozással egy privát végpont használatával, amellyel biztonságosan csatlakozhat egy Azure-webalkalmazáshoz.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Ebben a rövid útmutatóban létrehoz egy privát végpontot egy Azure-webalkalmazáshoz, és üzembe helyez egy virtuális gépet a magánhálózati kapcsolat teszteléséhez.  
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+A magánhálózati végpontok különböző típusú Azure-szolgáltatásokhoz, például az Azure SQL-hez és az Azure Storage-hoz is létrehozhatók.
 
-Az erőforrások létrehozása előtt létre kell hoznia egy erőforráscsoportot, amely a Virtual Network és a privát végpontot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)tárolja. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *WestUS* helyen:
+## <a name="prerequisites"></a>Előfeltételek
 
-```azurepowershell
+* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Azure-webalkalmazás az Azure **-** előfizetésében üzembe helyezett PremiumV2 vagy magasabb szintű app Service-csomaggal.  
+    * További információkat és példákat a rövid útmutató [: ASP.net Core Webalkalmazás létrehozása az Azure-ban](../app-service/quickstart-dotnetcore.md)című témakörben talál. 
+    * A webalkalmazások és végpontok létrehozásával kapcsolatos részletes oktatóanyagért lásd [: oktatóanyag: Kapcsolódás egy webalkalmazáshoz egy Azure Private-végpont használatával](tutorial-private-endpoint-webapp-portal.md).
 
-New-AzResourceGroup `
-  -ResourceGroupName myResourceGroup `
-  -Location westcentralus
-```
+Ha a PowerShell helyi telepítése és használata mellett dönt, ehhez a cikkhez az Azure PowerShell-modul 5.4.1-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor azt is futtatnia kell, `Connect-AzAccount` hogy létrehozza az Azure-hoz való kapcsolódást.
 
-## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
-Ebben a szakaszban egy virtuális hálózatot és egy alhálózatot hoz létre. Ezután rendelje hozzá az alhálózatot a Virtual Networkhoz.
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
+Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Hozzon létre egy virtuális hálózatot a privát végponthoz a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Az alábbi példa egy *MyVirtualNetwork*nevű Virtual Network hoz létre:
- 
-```azurepowershell
-
-$virtualNetwork = New-AzVirtualNetwork `
-  -ResourceGroupName myResourceGroup `
-  -Location westcentralus `
-  -Name myVirtualNetwork `
-  -AddressPrefix 10.0.0.0/16
-```
-
-### <a name="add-a-subnet"></a>Alhálózat hozzáadása
-
-Az Azure egy Virtual Networkon belüli alhálózatra helyezi az erőforrásokat, ezért létre kell hoznia egy alhálózatot. Hozzon létre egy *mySubnet* nevű alhálózati konfigurációt az [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig)paranccsal. A következő példa létrehoz egy *mySubnet* nevű alhálózatot a privát végpont hálózati házirendjének jelzővel, amely **le van tiltva**.
-
-```azurepowershell
-$subnetConfig = Add-AzVirtualNetworkSubnetConfig `
-  -Name mySubnet `
-  -AddressPrefix 10.0.0.0/24 `
-  -PrivateEndpointNetworkPoliciesFlag "Disabled" `
-  -VirtualNetwork $virtualNetwork
-```
-
-> [!CAUTION]
-> A paramétert egyszerűen összekeverheti `PrivateEndpointNetworkPoliciesFlag` egy másik elérhető jelzővel, `PrivateLinkServiceNetworkPoliciesFlag` mivel ezek hosszú szavak, és hasonló megjelenéssel rendelkeznek.  Győződjön meg arról, hogy a megfelelőt használja `PrivateEndpointNetworkPoliciesFlag` .
-
-### <a name="associate-the-subnet-to-the-virtual-network"></a>Az alhálózat hozzárendelése a Virtual Networkhoz
-
-Az alhálózat konfigurációját a [set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork)használatával írhatja be a Virtual Network. Ez a parancs az alhálózatot hozza létre:
-
-```azurepowershell
-$virtualNetwork | Set-AzVirtualNetwork
-```
-
-## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
-
-Hozzon létre egy virtuális gépet a Virtual Network a [New-AzVM](/powershell/module/az.compute/new-azvm). A következő parancs futtatásakor a rendszer kéri a hitelesítő adatokat. Adja meg a virtuális gép felhasználónevét és jelszavát:
+Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup):
 
 ```azurepowershell-interactive
-New-AzVm `
-    -ResourceGroupName "myResourceGroup" `
-    -Name "myVm" `
-    -Location "westcentralus" `
-    -VirtualNetworkName "MyVirtualNetwork" `
-    -SubnetName "mySubnet" `
-    -SecurityGroupName "myNetworkSecurityGroup" `
-    -PublicIpAddressName "myPublicIpAddress" `
-    -OpenPorts 80,3389 `
-    -AsJob  
+New-AzResourceGroup -Name 'CreatePrivateEndpointQS-rg' -Location 'eastus'
 ```
 
-A `-AsJob` beállítás a háttérben hozza létre a virtuális gépet. Folytassa a következő lépéssel.
+## <a name="create-a-virtual-network-and-bastion-host"></a>Virtuális hálózat és megerősített gazdagép létrehozása
 
-Amikor az Azure a háttérben elkezdi létrehozni a virtuális gépet, a következőhöz hasonló lesz:
+Ebben a szakaszban létrehoz egy virtuális hálózatot, alhálózatot és egy megerősített gazdagépet. 
 
-```powershell
-Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
---     ----            -------------   -----         -----------     --------             -------
-1      Long Running... AzureLongRun... Running       True            localhost            New-AzVM
-```
+A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuális géphez való biztonságos kapcsolódást fogja használni.
 
-## <a name="create-a-logical-sql-server"></a>Logikai SQL-kiszolgáló létrehozása 
+Hozzon létre egy virtuális hálózatot és egy megerősített gazdagépet az alábbiakkal:
 
-Hozzon létre egy logikai SQL Server-kiszolgálót a New-AzSqlServer parancs használatával. Ne feledje, hogy a kiszolgáló nevének egyedinek kell lennie az Azure-ban, ezért a helyőrző értékét zárójelek között a saját egyedi értékkel kell helyettesítenie:
+* [Új – AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)
+* [Új – AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)
+* [Új – AzBastion](/powershell/module/az.network/new-azbastion)
 
 ```azurepowershell-interactive
-$adminSqlLogin = "SqlAdmin"
-$password = "ChangeYourAdminPassword1"
+## Create backend subnet config. ##
+$subnetConfig = New-AzVirtualNetworkSubnetConfig -Name myBackendSubnet -AddressPrefix 10.0.0.0/24
 
-$server = New-AzSqlServer -ResourceGroupName "myResourceGroup" `
-    -ServerName "myserver" `
-    -Location "WestCentralUS" `
-    -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $adminSqlLogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
+## Create Azure Bastion subnet. ##
+$bastsubnetConfig = New-AzVirtualNetworkSubnetConfig -Name AzureBastionSubnet -AddressPrefix 10.0.1.0/24
 
-New-AzSqlDatabase  -ResourceGroupName "myResourceGroup" `
-    -ServerName "myserver"`
-    -DatabaseName "myda"`
-    -RequestedServiceObjectiveName "S0" `
-    -SampleName "AdventureWorksLT"
+## Create the virtual network. ##
+$parameters1 = @{
+    Name = 'MyVNet'
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Location = 'eastus'
+    AddressPrefix = '10.0.0.0/16'
+    Subnet = $subnetConfig, $bastsubnetConfig
+}
+$vnet = New-AzVirtualNetwork @parameters1
+
+## Create public IP address for bastion host. ##
+$parameters2 = @{
+    Name = 'myBastionIP'
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Location = 'eastus'
+    Sku = 'Standard'
+    AllocationMethod = 'Static'
+}
+$publicip = New-AzPublicIpAddress @parameters2
+
+## Create bastion host ##
+$parameters3 = @{
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Name = 'myBastion'
+    PublicIpAddress = $publicip
+    VirtualNetwork = $vnet
+}
+New-AzBastion @parameters3
 ```
 
-## <a name="create-a-private-endpoint"></a>Privát végpont létrehozása
+Az Azure Bastion-gazdagép üzembe helyezése néhány percet is igénybe vehet.
 
-A Virtual Network-kiszolgáló magánhálózati végpontja a [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection): 
+## <a name="create-test-virtual-machine"></a>Teszt virtuális gép létrehozása
 
-```azurepowershell
+Ebben a szakaszban létre fog hozni egy virtuális gépet, amely a privát végpont tesztelésére szolgál.
 
-$privateEndpointConnection = New-AzPrivateLinkServiceConnection -Name "myConnection" `
-  -PrivateLinkServiceId $server.ResourceId `
-  -GroupId "sqlServer" 
- 
-$virtualNetwork = Get-AzVirtualNetwork -ResourceGroupName  "myResourceGroup" -Name "MyVirtualNetwork"  
- 
-$subnet = $virtualNetwork `
-  | Select -ExpandProperty subnets `
-  | Where-Object  {$_.Name -eq 'mysubnet'}  
- 
-$privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
-  -Name "myPrivateEndpoint" `
-  -Location "westcentralus" `
-  -Subnet  $subnet `
-  -PrivateLinkServiceConnection $privateEndpointConnection
-``` 
+A virtuális gép létrehozása a rel:
 
-## <a name="configure-the-private-dns-zone"></a>A saját DNS zóna konfigurálása 
-Hozzon létre egy saját DNS zónát SQL Database tartományhoz, hozzon létre egy társítási hivatkozást a Virtual Network, és hozzon létre egy DNS-zónát, hogy társítsa a privát végpontot a saját DNS zónához.
-
-```azurepowershell
-
-$zone = New-AzPrivateDnsZone -ResourceGroupName "myResourceGroup" `
-  -Name "privatelink.database.windows.net" 
- 
-$link  = New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName "myResourceGroup" `
-  -ZoneName "privatelink.database.windows.net"`
-  -Name "mylink" `
-  -VirtualNetworkId $virtualNetwork.Id  
-
-$config = New-AzPrivateDnsZoneConfig -Name "privatelink.database.windows.net" -PrivateDnsZoneId $zone.ResourceId
-
-$privateDnsZoneGroup = New-AzPrivateDnsZoneGroup -ResourceGroupName "myResourceGroup" `
- -PrivateEndpointName "myPrivateEndpoint" -name "MyZoneGroup" -PrivateDnsZoneConfig $config
-``` 
-  
-## <a name="connect-to-a-vm-from-the-internet"></a>Kapcsolódás virtuális géphez az internetről
-
-A [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) használatával visszaállíthatja egy virtuális gép nyilvános IP-címét. Ez a példa a *myVM* virtuális gép nyilvános IP-címét adja vissza:
-
-```azurepowershell
-Get-AzPublicIpAddress `
-  -Name myPublicIpAddress `
-  -ResourceGroupName myResourceGroup `
-  | Select IpAddress 
-```  
-Nyisson meg egy parancssort a helyi számítógépen. Futtassa az mstsc parancsot. Cserélje le az <publicIpAddress> elemet az utolsó lépésből visszaadott nyilvános IP-címhez: 
+  * [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential)
+  * [Új – AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) 
+  * [New-AzVM](/powershell/module/az.compute/new-azvm)
+  * [Új – AzVMConfig](/powershell/module/az.compute/new-azvmconfig)
+  * [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem)
+  * [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage)
+  * [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface)
 
 
-> [!NOTE]
-> Ha ezeket a parancsokat egy PowerShell-parancssorból futtatta a helyi számítógépen, és az az PowerShell-modul 1,0-es vagy újabb verzióját használja, akkor folytathatja a felületet.
-```
-mstsc /v:<publicIpAddress>
+```azurepowershell-interactive
+## Set credentials for server admin and password. ##
+$cred = Get-Credential
+
+## Command to get virtual network configuration. ##
+$vnet = Get-AzVirtualNetwork -Name myVNet -ResourceGroupName CreatePrivateEndpointQS-rg
+
+## Command to create network interface for VM ##
+$parameters1 = @{
+    Name = 'myNicVM'
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Location = 'eastus'
+    Subnet = $vnet.Subnets[0]
+}
+$nicVM = New-AzNetworkInterface @parameters1
+
+## Create a virtual machine configuration.##
+$parameters2 = @{
+    VMName = 'myVM'
+    VMSize = 'Standard_DS1_v2'
+}
+$parameters3 = @{
+    ComputerName = 'myVM'
+    Credential = $cred
+}
+$parameters4 = @{
+    PublisherName = 'MicrosoftWindowsServer'
+    Offer = 'WindowsServer'
+    Skus = '2019-Datacenter'
+    Version = 'latest'
+}
+$vmConfig = 
+New-AzVMConfig @parameters2 | Set-AzVMOperatingSystem -Windows @parameters3 | Set-AzVMSourceImage @parameters4 | Add-AzVMNetworkInterface -Id $nicVM.Id
+
+## Create the virtual machine ##
+New-AzVM -ResourceGroupName 'CreatePrivateEndpointQS-rg' -Location 'eastus' -VM $vmConfig
 ```
 
-1. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget. 
-2. Írja be a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
-  > [!NOTE]
-  > Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell kiválasztania > eltérő fiókot használjon. 
-  
-3. Kattintson az **OK** gombra. 
-4. A tanúsítványra vonatkozó figyelmeztetés jelenhet meg. Ha így tesz, válassza az **Igen** vagy a **Folytatás**lehetőséget. 
+## <a name="create-private-endpoint"></a>Privát végpont létrehozása
 
-## <a name="access-sql-database-privately-from-the-vm"></a>Hozzáférési SQL Database a virtuális gépről
+Ebben a szakaszban a következő módon hozza létre a privát végpontot és a kapcsolatokat a használatával:
 
-1. A myVM Távoli asztalán nyissa meg a PowerShellt.
-2. Írja be a következő szöveget: `nslookup myserver.database.windows.net`. Ne felejtse el lecserélni az `myserver` SQL-kiszolgáló nevét.
+* [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection)
+* [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint)
 
-    Egy ehhez hasonló üzenet jelenik meg:
-    
-    ```azurepowershell
+```azurepowershell-interactive
+## Place web app into variable. Replace <your-webapp-name> with your server name ##
+$webapp = Get-AzWebApp -ResourceGroupName CreatePrivateEndpointQS-rg -Name <your-webapp-name>
+
+## Create private endpoint connection. ##
+$parameters1 = @{
+    Name = 'myConnection'
+    PrivateLinkServiceId = $webapp.ID
+    GroupID = 'sites'
+}
+$privateEndpointConnection = New-AzPrivateLinkServiceConnection @parameters1
+
+## Place virtual network into variable. ##
+$vnet = Get-AzVirtualNetwork -ResourceGroupName 'CreatePrivateEndpointQS-rg' -Name 'myVNet'
+
+## Disable private endpoint network policy ##
+$vnet.Subnets[0].PrivateEndpointNetworkPolicies = "Disabled"
+$vnet | Set-AzVirtualNetwork
+
+## Create private endpoint
+$parameters2 = @{
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Name = 'myPrivateEndpoint'
+    Location = 'eastus'
+    Subnet = $vnet.Subnets[0]
+    PrivateLinkServiceConnection = $privateEndpointConnection
+}
+New-AzPrivateEndpoint @parameters2
+```
+## <a name="configure-the-private-dns-zone"></a>A magánhálózati DNS-zóna konfigurálása
+
+Ebben a szakaszban a következő módon hozza létre és konfigurálja a magánhálózati DNS-zónát:
+
+* [Új – AzPrivateDnsZone](/powershell/module/az.privatedns/new-azprivatednszone)
+* [Új – AzPrivateDnsVirtualNetworkLink](/powershell/module/az.privatedns/new-azprivatednsvirtualnetworklink)
+* [Új – AzPrivateDnsZoneConfig](/powershell/module/az.network/new-azprivatednszoneconfig)
+* [Új – AzPrivateDnsZoneGroup](/powershell/module/az.network/new-azprivatednszonegroup)
+
+```azurepowershell-interactive
+## Place virtual network into variable. ##
+$vnet = Get-AzVirtualNetwork -ResourceGroupName 'CreatePrivateEndpointQS-rg' -Name 'myVNet'
+
+## Create private dns zone. ##
+$parameters1 = @{
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Name = 'privatelink.azurewebsites.net'
+}
+$zone = New-AzPrivateDnsZone @parameters1
+
+## Create dns network link. ##
+$parameters2 = @{
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    ZoneName = 'privatelink.azurewebsites.net'
+    Name = 'myLink'
+    VirtualNetworkId = $vnet.Id
+}
+$link = New-AzPrivateDnsVirtualNetworkLink @parameters2
+
+## Create DNS configuration ##
+$parameters3 = @{
+    Name = 'privatelink.azurewebsites.net'
+    PrivateDnsZoneId = $zone.ResourceId
+}
+$config = New-AzPrivateDnsZoneConfig @parameters3
+
+## Create DNS zone group. ##
+$parameters4 = @{
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    PrivateEndpointName = 'myPrivateEndpoint'
+    Name = 'myZoneGroup'
+    PrivateDnsZoneConfig = $config
+}
+New-AzPrivateDnsZoneGroup @parameters4
+```
+
+## <a name="test-connectivity-to-private-endpoint"></a>A magánhálózati végponthoz való kapcsolódás tesztelése
+
+Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja használni az SQL Serverhez való kapcsolódáshoz a privát végponton keresztül.
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) 
+ 
+2. Válassza az **erőforráscsoportok** lehetőséget a bal oldali navigációs ablaktáblán.
+
+3. Válassza a **CreatePrivateEndpointQS-RG** elemet.
+
+4. Válassza a **myVM** lehetőséget.
+
+5. A **myVM** áttekintés lapján válassza a **kapcsolat** , majd a **megerősített** lehetőséget.
+
+6. Válassza a kék **használat Bastion** gombot.
+
+7. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
+
+8. A kapcsolat után nyissa meg a Windows PowerShellt a kiszolgálón.
+
+9. Írja be a következő szöveget: `nslookup <your-webapp-name>.azurewebsites.net`. A helyére írja **\<your-webapp-name>** be az előző lépésekben létrehozott webalkalmazás nevét.  A következőhöz hasonló üzenet jelenik meg:
+
+    ```powershell
     Server:  UnKnown
     Address:  168.63.129.16
-    Non-authoritative answer:
-    Name:    myserver.privatelink.database.windows.net
-    Address:  10.0.0.5
-    Aliases:   myserver.database.windows.net
-    ```
-    
-3. Telepítse a [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15).
-4. A **Kapcsolódás a kiszolgálóhoz**lapon adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Érték |
-    | --- | --- |
-    | Server type (Kiszolgáló típusa) | Adatbázismotor |
-    | Kiszolgálónév | myserver.database.windows.net |
-    | Felhasználónév | Adja meg a létrehozás során megadott felhasználónevet |
-    | Jelszó | Adja meg a létrehozás során megadott jelszót |
-    | Jelszó megjegyzése | Igen |
-    
-5. Kattintson a **Csatlakozás** gombra.
-6. Az **adatbázisok** tallózása a bal oldali menüben. 
-7. Opcionálisan Információk létrehozása vagy lekérdezése a mydatabase.
-8. A távoli asztali kapcsolat bezárásával *myVM*. 
+    Non-authoritative answer:
+    Name:    mywebapp8675.privatelink.azurewebsites.net
+    Address:  10.0.0.5
+    Aliases:  mywebapp8675.azurewebsites.net
+    ```
+
+    A rendszer a webalkalmazás neveként a **10.0.0.5** magánhálózati IP-címét adja vissza.  Ez a címe a korábban létrehozott virtuális hálózat alhálózatában található.
+
+10. Nyissa meg az Internet Explorert a **myVM** -ben lévő megerősített kapcsolódásban.
+
+11. Adja meg a webalkalmazás ( **https:// \<your-webapp-name> . azurewebsites.net** ) URL-címét.
+
+12. Ha még nem telepítette az alkalmazást, az alapértelmezett webalkalmazás-oldal jelenik meg:
+
+    :::image type="content" source="./media/create-private-endpoint-portal/web-app-default-page.png" alt-text="Alapértelmezett webalkalmazás lap." border="true":::
+
+13. A **myVM** létesített kapcsolatok lezárása.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
-Ha végzett a privát végponttal, SQL Database és a virtuális géppel, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával távolítsa el az erőforráscsoportot és az összes erőforrást:
+Ha végzett a privát végpont és a virtuális gép használatával, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával távolítsa el az erőforráscsoportot és az összes erőforrást:
 
 ```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name CreatePrivateEndpointQS-rg -Force
 ```
 
-## <a name="next-steps"></a>További lépések
-- További információ az [Azure Private linkről](private-link-overview.md)
+## <a name="next-steps"></a>Következő lépések
+
+Ebben a rövid útmutatóban létrehozta a következőket:
+
+* Virtuális hálózat és a megerősített gazdagép.
+* Virtuális gép.
+* Privát végpont egy Azure-webalkalmazáshoz.
+
+A virtuális gépet arra használta, hogy biztonságosan tesztelje a kapcsolatot a webalkalmazáshoz a privát végponton keresztül.
+
+A privát végpontot támogató szolgáltatásokkal kapcsolatos további információkért lásd:
+> [!div class="nextstepaction"]
+> [Privát kapcsolat elérhetősége](private-link-overview.md#availability)

@@ -12,12 +12,12 @@ ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a5cff53ee9e742e93a6183eb5d506bf8f1a08deb
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 4bd738197c84d7dce36f087d170f61a55d8e9f32
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130187"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241327"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD-hitelesítési és -engedélyezési hibakódok
 
@@ -251,7 +251,7 @@ Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16
 | AADSTS90051 | InvalidNationalCloudId – a nemzeti felhő azonosítója érvénytelen Felhőbeli azonosítót tartalmaz. |
 | AADSTS90055 | TenantThrottlingError – túl sok bejövő kérelem van. Ez a kivétel a letiltott bérlők esetében fordul elő. |
 | AADSTS90056 | BadResourceRequest – egy hozzáférési jogkivonat kódjának beváltásához az alkalmazásnak POST-kérést kell küldenie a `/token` végpontnak. Ezt megelőzően meg kell adnia egy engedélyezési kódot, és elküldeni a POST kérelemben a `/token` végpontnak. Tekintse át ezt a cikket az OAuth 2,0 engedélyezési kód folyamatának áttekintéséhez: [.. /azuread-dev/v1-Protocols-OAuth-code.MD](../azuread-dev/v1-protocols-oauth-code.md). Irányítsa a felhasználót a `/authorize` végpontra, amely egy authorization_code ad vissza. A kérelemnek a végponthoz való elküldésével `/token` a felhasználó megkapja a hozzáférési jogkivonatot. Jelentkezzen be a Azure Portalba, és ellenőrizze **Alkalmazásregisztrációk > végpontokat** , és győződjön meg arról, hogy a két végpont megfelelően lett konfigurálva. |
-| AADSTS90072 | PassThroughUserMfaError – az a külső fiók, amelyre a felhasználó bejelentkezik, nem létezik azon a bérlőn, amelyre bejelentkezett. így a felhasználó nem tudja kielégíteni a bérlő MFA-követelményeit. Először hozzá kell adni a fiókot külső felhasználóként a bérlőhöz. Jelentkezzen ki, és jelentkezzen be egy másik Azure AD-felhasználói fiókkal. |
+| AADSTS90072 | PassThroughUserMfaError – az a külső fiók, amelyre a felhasználó bejelentkezik, nem létezik azon a bérlőn, amelyre bejelentkezett. így a felhasználó nem tudja kielégíteni a bérlő MFA-követelményeit. Ez a hiba akkor is előfordulhat, ha a felhasználók szinkronizálása megtörtént, de a Active Directory és az Azure AD között eltérés van a ImmutableID (sourceAnchor) attribútumban. Először hozzá kell adni a fiókot külső felhasználóként a bérlőhöz. Jelentkezzen ki, és jelentkezzen be egy másik Azure AD-felhasználói fiókkal. |
 | AADSTS90081 | OrgIdWsFederationMessageInvalid – hiba történt, amikor a szolgáltatás megpróbált feldolgozni egy WS-Federation üzenetet. Az üzenet érvénytelen. |
 | AADSTS90082 | OrgIdWsFederationNotSupported – a kérelemhez megadott hitelesítési házirend jelenleg nem támogatott. |
 | AADSTS90084 | OrgIdWsFederationGuestNotAllowed – a vendég fiókjai nem engedélyezettek ehhez a helyhez. |

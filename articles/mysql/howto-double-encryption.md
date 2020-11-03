@@ -1,17 +1,17 @@
 ---
 title: Infrastruktúra – kettős titkosítás – Azure Portal – Azure Database for MySQL
 description: Ismerje meg, hogyan állíthatja be és kezelheti az infrastruktúra kettős titkosítását a Azure Database for MySQL számára.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: eafad5edf9dcac5745986d09060baf7e4278762d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f9c22a690859b459b6bb748c3b1001c4aa7660d
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903981"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241752"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-mysql"></a>Infrastruktúra kettős titkosítása Azure Database for MySQL
 
@@ -27,7 +27,7 @@ Az alábbi lépéseket követve hozzon létre egy Azure Database for MySQL-kiszo
 
 1. A portál bal felső sarkában válassza az **erőforrás létrehozása** (+) lehetőséget.
 
-2. Válassza az **adatbázisok**  >  **Azure Database for MySQL**elemet. Megadhatja a **MySQL** kifejezést is a keresőmezőbe a szolgáltatás megtalálásához.
+2. Válassza az **adatbázisok**  >  **Azure Database for MySQL** elemet. Megadhatja a **MySQL** kifejezést is a keresőmezőbe a szolgáltatás megtalálásához.
 
    :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png" alt-text="Az Azure Database for MySQL menüpont":::
 
@@ -52,7 +52,7 @@ Ez a példa létrehoz egy nevű erőforráscsoportot `myresourcegroup` a `westus
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
-A következő példában az USA nyugati régiójában létrehozunk egy `mydemoserver` nevű MySQL 5.7-kiszolgálót a `myresourcegroup` erőforráscsoportban `myadmin` kiszolgálói rendszergazdai bejelentkezéssel. Ez egy **Gen 4** **általános célú** -kiszolgáló **2 virtuális mag**. Ezzel a megoldással a kiszolgáló által létrehozott kettős titkosítás is engedélyezve lesz. A `<server_admin_password>` helyére írja be saját értékét.
+A következő példában az USA nyugati régiójában létrehozunk egy `mydemoserver` nevű MySQL 5.7-kiszolgálót a `myresourcegroup` erőforráscsoportban `myadmin` kiszolgálói rendszergazdai bejelentkezéssel. Ez egy **Gen 4** **általános célú** -kiszolgáló **2 virtuális mag** . Ezzel a megoldással a kiszolgáló által létrehozott kettős titkosítás is engedélyezve lesz. A `<server_admin_password>` helyére írja be saját értékét.
 
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7 --infrastructure-encryption <Enabled/Disabled>

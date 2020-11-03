@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 422f8106ac52c85f0680d54e420d0f1b4d326910
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 185bb47677e978a3098f39024995da6399f90658
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017692"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241769"
 ---
 # <a name="outbound-proxy-azure-load-balancer"></a>Kimenő proxy Azure Load Balancer
 
@@ -42,9 +42,9 @@ Ha a bejövő kapcsolatokhoz portot használ, akkor a bejövő kapcsolatokra von
 
 A kimenő kapcsolatok létrehozásához egy **ideiglenes portot** kell használni, amely lehetővé teszi, hogy a cél egy olyan porton keresztül legyen elérhető, amelyen keresztül kommunikálni és karbantartani kell a különböző forgalmi folyamatokat. 
 
-Minden IP-címnek 65 535 porttal rendelkezik. Az első 1024-portok **rendszerportként**vannak lefoglalva. Az egyes portok a TCP és az UDP bejövő vagy kimenő kapcsolataihoz is használhatók. 
+Minden IP-címnek 65 535 porttal rendelkezik. Az első 1024-portok **rendszerportként** vannak lefoglalva. Az egyes portok a TCP és az UDP bejövő vagy kimenő kapcsolataihoz is használhatók. 
 
-A fennmaradó portok közül az Azure a 64 000-as időszakos **portok**használatát teszi lehetővé. Amikor IP-címet ad hozzá az előtérbeli IP-konfigurációként, ezek az ideiglenes portok a SNAT használhatók.
+A fennmaradó portok közül az Azure a 64 000-as időszakos **portok** használatát teszi lehetővé. Amikor IP-címet ad hozzá az előtérbeli IP-konfigurációként, ezek az ideiglenes portok a SNAT használhatók.
 
 A kimenő szabályok révén ezek a SNAT-portok kiterjeszthetők a háttérbeli példányokra, így a kimenő kapcsolatok esetében a terheléselosztó nyilvános IP-címe (i) is megoszthatók.
 
@@ -52,7 +52,7 @@ A gazdagépen az egyes backend-példányokhoz tartozó hálózatkezelés a kimen
 
 ## <a name="exhausting-ports"></a><a name="scenarios"></a> Kimerített portok
 
-A célként megadott IP-címhez és célporthoz való minden kapcsolódás SNAT-portot fog használni. Ez a kapcsolódás külön **forgalmat** tart fenn a háttér-példány vagy az **ügyfél** között egy **kiszolgálóra**. Ez a folyamat egy különálló portot ad a kiszolgálónak, amely a forgalom kezelésére szolgál. A folyamat nélkül az ügyfélszámítógép nem ismeri a csomag részét képező adatfolyamot.
+A célként megadott IP-címhez és célporthoz való minden kapcsolódás SNAT-portot fog használni. Ez a kapcsolódás külön **forgalmat** tart fenn a háttér-példány vagy az **ügyfél** között egy **kiszolgálóra** . Ez a folyamat egy különálló portot ad a kiszolgálónak, amely a forgalom kezelésére szolgál. A folyamat nélkül az ügyfélszámítógép nem ismeri a csomag részét képező adatfolyamot.
 
 Képzelje el, hogy több böngésző https://www.microsoft.com is van, ami a következő:
 
@@ -92,7 +92,7 @@ A következő <a name="snatporttable"></a> táblázat a SNAT portok előfoglalá
 | 801-1000 | 32 | 
 
 >[!NOTE]
-> Ha a háttér-készlet max. 6-os mérettel rendelkezik, az egyes példányok esetében a 64000/10 = 6 400 portok is rendelkezhetnek, ha explicit kimenő szabályt ad meg. A fenti táblázatnak megfelelően a rendszer csak akkor 1 024, ha az automatikus kiosztást választja.
+> Ha a háttér-készlet legfeljebb 10 mérettel rendelkezik, az egyes példányok esetében a 64000/10 = 6 400 portok is rendelkezhetnek, ha explicit kimenő szabályt ad meg. A fenti táblázatnak megfelelően a rendszer csak akkor 1 024, ha az automatikus kiosztást választja.
 
 ## <a name="outbound-rules-and-virtual-network-nat"></a><a name="outboundrules"></a> Kimenő szabályok és Virtual Network NAT
 

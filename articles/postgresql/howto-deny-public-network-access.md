@@ -1,17 +1,17 @@
 ---
 title: Nyilvános hálózati hozzáférés megtagadása – Azure Portal-Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Megtudhatja, hogyan konfigurálhatja a nyilvános hálózati hozzáférés megtagadását a Azure Database for PostgreSQL egyetlen kiszolgálójának Azure Portal használatával
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 1dfc8d473d0cfe663569d2508404bf190f2da841
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd777fe42dc8fa3ec4643fa9607f5ca8b7aac795
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90901584"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240324"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-postgresql-single-server-using-azure-portal"></a>Nyilvános hálózati hozzáférés megtagadása Azure Database for PostgreSQL egy kiszolgálón Azure Portal használatával
 
@@ -29,9 +29,9 @@ Az alábbi lépéseket követve beállíthatja a PostgreSQL egyetlen kiszolgál�
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a meglévő Azure Database for PostgreSQL önálló kiszolgálót.
 
-1. A PostgreSQL egykiszolgálós oldal **Beállítások**területén kattintson a **kapcsolatbiztonsági** elemre a kapcsolatbiztonsági konfiguráció lap megnyitásához.
+1. A PostgreSQL egykiszolgálós oldal **Beállítások** területén kattintson a **kapcsolatbiztonsági** elemre a kapcsolatbiztonsági konfiguráció lap megnyitásához.
 
-1. A **nyilvános hálózati hozzáférés megtagadása**területen válassza az **Igen** lehetőséget a PostgreSQL-kiszolgáló hozzáférésének megtagadásának engedélyezéséhez.
+1. A **nyilvános hálózati hozzáférés megtagadása** területen válassza az **Igen** lehetőséget a PostgreSQL-kiszolgáló hozzáférésének megtagadásának engedélyezéséhez.
 
     :::image type="content" source="./media/howto-deny-public-network-access/deny-public-network-access.PNG" alt-text="Azure Database for PostgreSQL egyetlen kiszolgáló megtagadja a hálózati hozzáférést":::
 

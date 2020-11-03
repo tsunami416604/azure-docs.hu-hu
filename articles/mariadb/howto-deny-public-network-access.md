@@ -1,17 +1,17 @@
 ---
 title: Nyilvános hálózati hozzáférés megtagadása – Azure Portal-Azure Database for MariaDB
 description: Megtudhatja, hogyan konfigurálhatja a nyilvános hálózati hozzáférés megtagadását a Azure Database for MariaDB Azure Portal használatával
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: f33dbfa0b96d7f6d85443005ff7e8b1a780c75a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3117ebfd258c72bb97432871c2ea74d30c52f669
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86104384"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242190"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-mariadb-using-azure-portal"></a>Nyilvános hálózati hozzáférés megtagadása Azure Database for MariaDB a Azure Portal használatával
 
@@ -29,7 +29,7 @@ Az alábbi lépéseket követve állíthatja be, hogy a MariaDB-kiszolgáló meg
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a meglévő Azure Database for MariaDB-kiszolgálót.
 
-1. A MariaDB-kiszolgáló lap **Beállítások**területén kattintson a **kapcsolatbiztonsági** elemre a kapcsolatbiztonsági konfiguráció lap megnyitásához.
+1. A MariaDB-kiszolgáló lap **Beállítások** területén kattintson a **kapcsolatbiztonsági** elemre a kapcsolatbiztonsági konfiguráció lap megnyitásához.
 
 1. A nyilvános hálózati hozzáférés megtagadása területen válassza az **Igen** lehetőséget a MariaDB-kiszolgálóhoz való nyilvános hozzáférés megtagadásának engedélyezéséhez.
 
@@ -41,6 +41,6 @@ Az alábbi lépéseket követve állíthatja be, hogy a MariaDB-kiszolgáló meg
 
     ![Azure Database for MariaDB a hálózati hozzáférés megtagadása sikeres](./media/howto-deny-public-network-access/deny-public-network-access-success.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Útmutató [riasztások létrehozásához mérőszámokon](howto-alert-metric.md).

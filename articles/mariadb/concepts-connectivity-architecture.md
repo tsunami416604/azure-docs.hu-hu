@@ -1,17 +1,17 @@
 ---
 title: Kapcsolati architektúra – Azure Database for MariaDB
 description: A Azure Database for MariaDB-kiszolgáló kapcsolati architektúráját ismerteti.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: c3f557c757a46252b9fa0416cc62a827b233f1b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9c1331b7d868c29fddf7b709912e87d55d73c45
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88065352"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241446"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Kapcsolati architektúra a Azure Database for MariaDBban
 Ez a cikk ismerteti a Azure Database for MariaDB kapcsolati architektúrát, valamint azt, hogy a forgalom hogyan legyen átirányítva a Azure Database for MariaDB-példányra az Azure-on belüli és kívüli ügyfelektől.
@@ -74,7 +74,7 @@ A következő táblázat felsorolja az Azure Database for MariaDB átjáró els�
 
 ## <a name="connection-redirection"></a>Kapcsolatok átirányítása
 
-Azure Database for MariaDB támogatja a további kapcsolati házirendet, az **átirányítást**, amely segít csökkenteni a hálózati késést az ügyfélalkalmazások és a MariaDB-kiszolgálók között. Ezzel a szolgáltatással, miután a kezdeti TCP-munkamenet létrejött a Azure Database for MariaDB-kiszolgálón, a kiszolgáló visszaadja a MariaDB-kiszolgálót üzemeltető csomópont háttérbeli címeit az ügyfélnek. Ezt követően az összes további csomag közvetlenül a kiszolgálóra áramlik, és megkerüli az átjárót. Mivel a csomagok közvetlenül a kiszolgálóra áramlanak, a késés és az átviteli sebesség jobb teljesítményt biztosít.
+Azure Database for MariaDB támogatja a további kapcsolati házirendet, az **átirányítást** , amely segít csökkenteni a hálózati késést az ügyfélalkalmazások és a MariaDB-kiszolgálók között. Ezzel a szolgáltatással, miután a kezdeti TCP-munkamenet létrejött a Azure Database for MariaDB-kiszolgálón, a kiszolgáló visszaadja a MariaDB-kiszolgálót üzemeltető csomópont háttérbeli címeit az ügyfélnek. Ezt követően az összes további csomag közvetlenül a kiszolgálóra áramlik, és megkerüli az átjárót. Mivel a csomagok közvetlenül a kiszolgálóra áramlanak, a késés és az átviteli sebesség jobb teljesítményt biztosít.
 
 Ez a funkció a 10,2-es és a 10,3-es motorral rendelkező Azure Database for MariaDB-kiszolgálókon támogatott.
 

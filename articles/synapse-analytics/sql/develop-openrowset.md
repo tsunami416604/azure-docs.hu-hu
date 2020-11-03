@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 355e300ec9f3671cf29ccc763e211a9bb3806f64
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2ef09fd81aaeca92e87be2a0fddbc9be16ebac1d
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474784"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242041"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>Igény szerinti SQL-OPENROWSET használata (előzetes verzió)
 
@@ -95,6 +95,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 [ , FIELDQUOTE = 'quote_characters' ]
 [ , DATA_COMPRESSION = 'data_compression_method' ]
 [ , PARSER_VERSION = 'parser_version' ]
+[ , HEADER_ROW = { TRUE | FALSE } ]
 ```
 
 ## <a name="arguments"></a>Argumentumok
@@ -127,7 +128,7 @@ Az adatelérési utat kiépítő unstructured_data_path abszolút vagy relatív 
  Megadja a tárhelyen belüli útvonalat, amely az olvasni kívánt mappára vagy fájlra mutat. Ha az elérési út egy tárolóra vagy mappára mutat, a rendszer az adott tárolóból vagy mappából olvassa be az összes fájlt. Az almappákban található fájlok nem lesznek belefoglalva. 
 
  A helyettesítő karakterek használatával több fájlt vagy mappát is megcélozhat. Több nem egymást követő helyettesítő karakter használata engedélyezett.
-Az alábbi példa az összes olyan *CSV* -fájlt beolvassa, amely a */CSV/Population*kezdődő összes mappából származó *populációval* kezdődik:  
+Az alábbi példa az összes olyan *CSV* -fájlt beolvassa, amely a */CSV/Population* kezdődő összes mappából származó *populációval* kezdődik:  
 `https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
 Ha a unstructured_data_path mappát adja meg, az SQL igény szerinti lekérdezése a mappában lévő fájlokat fogja lekérni. 
@@ -144,12 +145,13 @@ Ha az alábbi példában a unstructured_data_path =, az `https://mystorageaccoun
 A WITH záradék segítségével megadhatja a fájlokból beolvasni kívánt oszlopokat.
 
 - CSV-adatfájlok esetén az összes oszlop olvasásához adja meg az oszlopnevek és az adattípusok nevét. Ha az oszlopok egy részhalmazát szeretné használni, a sorszámok használatával válassza ki az oszlopokat a származó adatfájlokból a sorszám alapján. Az oszlopokat a sorszám megjelölése fogja kötni. 
-
-    > [!IMPORTANT]
-    > A WITH záradék kötelező a CSV-fájlokhoz.
-    >
+    > [!TIP]
+    > Kihagyhatja a záradékot a CSV-fájlokhoz is. Az adattípusok automatikusan kikövetkeztetve lesznek a fájl tartalmából. A HEADER_ROW argumentum használatával megadhatja a fejlécsor létezését, amelyben az oszlop neve beolvasható a fejlécsorból. A részletekért lásd: [automatikus séma-felderítés](#automatic-schema-discovery).
     
-- A parketta-adatfájlok esetében adja meg az oszlopok neveit, amelyek megfelelnek a kezdeményező adatfájlokban lévő oszlopnevek. Az oszlopok név szerint lesznek kötve. Ha a WITH záradék ki van hagyva, a rendszer a Parquet-fájlokból származó összes oszlopot visszaadja.
+- A parketta-adatfájlok esetében adja meg az oszlopok neveit, amelyek megfelelnek a kezdeményező adatfájlokban lévő oszlopnevek. Az oszlopok név szerint lesznek kötve, és megkülönböztetik a kis-és nagybetűket. Ha a WITH záradék ki van hagyva, a rendszer a Parquet-fájlokból származó összes oszlopot visszaadja.
+    > [!IMPORTANT]
+    > A parketta-fájlokban lévő oszlopnevek megkülönböztetik a kis-és nagybetűket. Ha a (z) nevű oszlopnevet a parketta-fájlban szereplő oszlopnév alapján adja meg, a rendszer NULL értékeket ad vissza ehhez az oszlophoz.
+
 
 column_name = a kimeneti oszlop neve. Ha meg van adni, ez a név felülbírálja a forrásfájl oszlopának nevét.
 
@@ -170,7 +172,7 @@ WITH (
 
 FIELDTERMINATOR = ' field_terminator '
 
-Meghatározza a használni kívánt lezáró mezőt. Az alapértelmezett lezáró mező egy vessző ("**,**").
+Meghatározza a használni kívánt lezáró mezőt. Az alapértelmezett lezáró mező egy vessző (" **,** ").
 
 ROWTERMINATOR = ' row_terminator ' '
 
@@ -205,6 +207,10 @@ A fájlok olvasásakor használandó elemző verzió megadása. Jelenleg támoga
 
 A CSV-elemző 1,0-es verziója alapértelmezett, és gazdag funkció. Az 2,0-es verzió a teljesítményre van felépítve, és nem támogatja az összes beállítást és kódolást. 
 
+CSV-elemző 1,0-es verziójának sajátosságai:
+
+- A következő beállítások nem támogatottak: HEADER_ROW.
+
 CSV-elemző 2,0-es verziójának sajátosságai:
 
 - Az adattípusok nem támogatottak.
@@ -212,22 +218,93 @@ CSV-elemző 2,0-es verziójának sajátosságai:
 - A következő beállítások nem támogatottak: DATA_COMPRESSION.
 - Az idézőjelek közé tartozó üres karakterlánc ("") üres sztringként van értelmezve.
 
+HEADER_ROW = {TRUE | HAMIS
+
+Meghatározza, hogy a CSV-fájl fejlécet tartalmaz-e. Az alapértelmezett érték a FALSE. PARSER_VERSION = "2.0" támogatja. Ha az értéke igaz, az oszlopok nevei az első sorból lesznek beolvasva a FIRSTROW argumentum alapján.
+
+## <a name="fast-delimited-text-parsing"></a>Gyors tagolt szöveg elemzése
+
+Két tagolt szöveges elemző verziója használható. A CSV-elemző 1,0-es verziója alapértelmezett, és a szolgáltatás gazdag, míg az elemző verziója a 2,0-es verzióra van építve. A 2,0-es elemző teljesítményének fejlesztése a fejlett elemzési technikáktól és a többszálas elemzéstől származik. A sebességbeli különbség nagyobb lesz, ahogy a fájlméret növekszik.
+
+## <a name="automatic-schema-discovery"></a>Séma automatikus felderítése
+
+Egyszerűen lekérdezheti a CSV-és a Parquet-fájlokat anélkül, hogy a záradékot kihagyva tudná vagy megadhatja a sémát. Az oszlopnevek és az adattípusok kikövetkeztetve lesznek a fájlokból.
+
+A Parquet-fájlok olyan oszlop-metaadatokat tartalmaznak, amelyek beolvasva lesznek, a típusú leképezések a [parketta típus-hozzárendelésekben](#type-mapping-for-parquet)találhatók. Tekintse [meg a parketta-fájlok olvasását a minták sémájának megadása nélkül](#read-parquet-files-without-specifying-schema) .
+
+A CSV-fájlok oszlopainak nevei a fejlécsorból is olvashatók. Megadhatja, hogy a fejlécsor létezik-e HEADER_ROW argumentum használatával. Ha HEADER_ROW = FALSE, az általános oszlopnevek lesznek használatban: C1, C2,... CN, ahol n a fájlban lévő oszlopok száma. Az adattípusok az első 100 adatsorokból lesznek kikövetkeztetve. Tekintse [meg a CSV-fájlok olvasását a minták sémájának megadása nélkül](#read-csv-files-without-specifying-schema) .
+
+> [!IMPORTANT]
+> Vannak olyan esetek, amikor a megfelelő adattípus nem következtethető ki, mert az adatok hiánya és a nagyobb adattípusok használata nem lehetséges. Ez a teljesítmény terhelését eredményezi, és különösen fontos a karakteres oszlopok esetében, amelyek varchar (8000) értékre lesznek utalva. Ha a fájlokban karakter oszlopok szerepelnek, és a séma következtetését használja, az optimális teljesítmény érdekében [tekintse meg a késleltetett adattípusokat](best-practices-sql-on-demand.md#check-inferred-data-types) , és [használja a megfelelő adattípusokat](best-practices-sql-on-demand.md#use-appropriate-data-types).
+
+### <a name="type-mapping-for-parquet"></a>Típus leképezése a parketta számára
+
+A Parquet-fájlok minden oszlop típusának leírását tartalmazzák. A következő táblázat leírja, hogyan vannak leképezve a parketta típusai az SQL natív típusaira.
+
+| Parketta típusa | Parketta logikai típusa (jegyzet) | SQL-adattípus |
+| --- | --- | --- |
+| LOGIKAI | | bit |
+| BINÁRIS/BYTE_ARRAY | | varbinary |
+| DUPLÁN | | float |
+| FLOAT | | valós szám |
+| INT32 | | int |
+| INT64 | | bigint |
+| INT96 | |datetime2 |
+| FIXED_LEN_BYTE_ARRAY | |binary |
+| BINÁRIS |UTF8 |varchar \* (UTF8-rendezés) |
+| BINÁRIS |KARAKTERLÁNC |varchar \* (UTF8-rendezés) |
+| BINÁRIS |ENUM|varchar \* (UTF8-rendezés) |
+| BINÁRIS |UUID |uniqueidentifier |
+| BINÁRIS |DECIMÁLIS |decimal |
+| BINÁRIS |JSON |varchar (max) \* (UTF8-rendezés) |
+| BINÁRIS |BSON |varbinary (max.) |
+| FIXED_LEN_BYTE_ARRAY |DECIMÁLIS |decimal |
+| BYTE_ARRAY |IDŐKÖZ |varchar (max), szabványosított formátumba szerializálva |
+| INT32 |INT (8, igaz) |smallint |
+| INT32 |INT (16, igaz) |smallint |
+| INT32 |INT (32, true) |int |
+| INT32 |INT (8, hamis) |tinyint |
+| INT32 |INT (16, hamis) |int |
+| INT32 |INT (32, hamis) |bigint |
+| INT32 |DATE |dátum |
+| INT32 |DECIMÁLIS |decimal |
+| INT32 |IDŐ (MILLIS)|time |
+| INT64 |INT (64, true) |bigint |
+| INT64 |INT (64, hamis) |decimális (20, 0) |
+| INT64 |DECIMÁLIS |decimal |
+| INT64 |IDŐ (MICROS/NANOS) |time |
+|INT64 |IDŐBÉLYEG (MILLIS/MICROES/NANOS) |datetime2 |
+|[Összetett típus](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |LISTÁJÁT |varchar (max), JSON-ba szerializálva |
+|[Összetett típus](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|Térkép|varchar (max), JSON-ba szerializálva |
+
 ## <a name="examples"></a>Példák
 
-A következő példa csak két olyan oszlopot ad vissza, amelyekben az 1. és 4. sorszám szerepel a Population*. csv fájlokban. Mivel a fájlokban nem szerepel fejlécsor, a rendszer az első sor olvasását indítja el:
+### <a name="read-csv-files-without-specifying-schema"></a>CSV-fájlok olvasása séma meghatározása nélkül
+
+Az alábbi példa olyan CSV-fájlt olvas be, amely az oszlopnevek és az adattípusok meghatározása nélkül tartalmazza a fejlécsort: 
 
 ```sql
-SELECT * 
+SELECT 
+    *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population*.csv',
-        FORMAT = 'CSV',
-        FIRSTROW = 1
-    )
-WITH (
-    [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2 1,
-    [population] bigint 4
-) AS [r]
+    BULK 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    FORMAT = 'CSV',
+    PARSER_VERSION = '2.0',
+    HEADER_ROW = TRUE) as [r]
 ```
+
+Az alábbi példa olyan CSV-fájlt olvas be, amely nem tartalmaz fejlécet az oszlopnevek és az adattípusok meghatározása nélkül: 
+
+```sql
+SELECT 
+    *
+FROM OPENROWSET(
+    BULK 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    FORMAT = 'CSV',
+    PARSER_VERSION = '2.0') as [r]
+```
+
+### <a name="read-parquet-files-without-specifying-schema"></a>A Parquet-fájlok beolvasása a séma meghatározása nélkül
 
 A következő példa visszaadja az első sor összes oszlopát a számbavételi adatkészletből, a parketta formátuma, valamint az oszlopnevek és az adattípusok megadása nélkül: 
 
@@ -241,6 +318,42 @@ FROM
     ) AS [r]
 ```
 
+### <a name="read-specific-columns-from-csv-file"></a>Adott oszlopok olvasása CSV-fájlból
+
+A következő példa csak két olyan oszlopot ad vissza, amelyekben az 1. és 4. sorszám szerepel a Population*. csv fájlokban. Mivel a fájlokban nem szerepel fejlécsor, a rendszer az első sor olvasását indítja el:
+
+```sql
+SELECT 
+    * 
+FROM OPENROWSET(
+        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population*.csv',
+        FORMAT = 'CSV',
+        FIRSTROW = 1
+    )
+WITH (
+    [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2 1,
+    [population] bigint 4
+) AS [r]
+```
+
+### <a name="read-specific-columns-from-parquet-file"></a>Adott oszlopok olvasása a Parquet-fájlból
+
+A következő példa a Népszámlálás adatkészletének első sorából csak két oszlopot ad vissza, a parketta formátuma: 
+
+```sql
+SELECT 
+    TOP 1 *
+FROM  
+    OPENROWSET(
+        BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        FORMAT='PARQUET'
+    )
+WITH (
+    [stateName] VARCHAR (50),
+    [population] bigint
+) AS [r]
+```
+
 ## <a name="next-steps"></a>Következő lépések
 
-További példákat a [lekérdezési adattárolási](query-data-storage.md) útmutatóban talál, amelyből megtudhatja, hogyan használható a `OPENROWSET` [CSV](query-single-csv-file.md)-, a [parketta](query-parquet-files.md)-és a [JSON](query-json-files.md) -fájlformátumok olvasásához. Azt is megtudhatja, hogyan mentheti a lekérdezés eredményeit az Azure Storage-ba a [CETAS](develop-tables-cetas.md)használatával.
+További példákat a [lekérdezési adattárolási](query-data-storage.md) útmutatóban talál, amelyből megtudhatja, hogyan használható a `OPENROWSET` [CSV](query-single-csv-file.md)-, a [parketta](query-parquet-files.md)-és a [JSON](query-json-files.md) -fájlformátumok olvasásához. [Ajánlott eljárások](best-practices-sql-on-demand.md) az optimális teljesítmény eléréséhez. Azt is megtudhatja, hogyan mentheti a lekérdezés eredményeit az Azure Storage-ba a [CETAS](develop-tables-cetas.md)használatával.

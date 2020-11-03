@@ -1,17 +1,17 @@
 ---
 title: Privát hivatkozás – Azure Database for MariaDB
 description: Megtudhatja, hogyan működik a privát hivatkozás a Azure Database for MariaDBhoz.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 80bc77de30073b2872412f907251b1aad7e334d3
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: ec43fa995fc9772964db399baa0b6f8c2a7db1db
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425632"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241497"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>Privát hivatkozás a Azure Database for MariaDB
 
@@ -114,9 +114,9 @@ A következő helyzetek és eredmények akkor lehetségesek, ha a privát hivatk
 
 ## <a name="deny-public-access-for-azure-database-for-mariadb"></a>Azure Database for MariaDB nyilvános hozzáférésének megtagadása
 
-Ha csak privát végpontokon szeretné használni a Azure Database for MariaDB elérését, letilthatja az összes nyilvános végpont ([Tűzfalszabályok](concepts-firewall-rules.md) és [VNet-végpontok](concepts-data-access-security-vnet.md)) beállítását az adatbázis-kiszolgálón a **nyilvános hálózati hozzáférési konfiguráció megtagadása** beállítás megadásával. 
+Ha csak privát végpontokon szeretné használni a Azure Database for MariaDB elérését, letilthatja az összes nyilvános végpont ( [Tűzfalszabályok](concepts-firewall-rules.md) és [VNet-végpontok](concepts-data-access-security-vnet.md)) beállítását az adatbázis-kiszolgálón a **nyilvános hálózati hozzáférési konfiguráció megtagadása** beállítás megadásával. 
 
-Ha ezt a beállítást az *Igen*értékre állítja, csak a magánhálózati végpontokon keresztül létesített kapcsolatok engedélyezettek a Azure Database for MariaDB. Ha ez a beállítás *nem*értékre van állítva, akkor az ügyfelek a tűzfal vagy a VNet szolgáltatás végpontjának beállításai alapján kapcsolódhatnak a Azure Database for MariaDBhoz. Emellett, ha a magánhálózati hozzáférés értéke be van állítva, az ügyfelek nem tudják felvenni és/vagy frissíteni a meglévő "tűzfalszabályok" és "VNet szolgáltatás végpontjának szabályait".
+Ha ezt a beállítást az *Igen* értékre állítja, csak a magánhálózati végpontokon keresztül létesített kapcsolatok engedélyezettek a Azure Database for MariaDB. Ha ez a beállítás *nem* értékre van állítva, akkor az ügyfelek a tűzfal vagy a VNet szolgáltatás végpontjának beállításai alapján kapcsolódhatnak a Azure Database for MariaDBhoz. Emellett, ha a magánhálózati hozzáférés értéke be van állítva, az ügyfelek nem tudják felvenni és/vagy frissíteni a meglévő "tűzfalszabályok" és "VNet szolgáltatás végpontjának szabályait".
 
 > [!Note]
 > Ez a funkció minden olyan Azure-régióban elérhető, ahol a Azure Database for PostgreSQL-Single Server támogatja a általános célú és a memóriára optimalizált díjszabási szintet.
@@ -125,7 +125,7 @@ Ha ezt a beállítást az *Igen*értékre állítja, csak a magánhálózati vé
 
 Ha meg szeretné tudni, hogyan állíthatja be a Azure Database for MariaDB számára a **nyilvános hálózati hozzáférés Megtagadását** Azure Portal, tekintse meg a [nyilvános hálózati hozzáférés megtagadásának konfigurálása](howto-deny-public-network-access.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Database for MariaDB biztonsági funkcióival kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

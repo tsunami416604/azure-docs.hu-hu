@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: bceffe5c53b9cbc863fd9c923ffa4718ebd50436
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 1255333e9bde54fcdf76dd40a9aaa4bc68fd103e
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893815"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242126"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>A Speech CLI alapjai
 
@@ -72,8 +72,9 @@ Ebben a parancsban meg kell adnia a forrást (a fordítás nyelvét) és a célk
 
 ### <a name="configuration-files-in-the-datastore"></a>Konfigurációs fájlok az adattárban
 
-A Speech CLI képes több olyan beállítást olvasni és írni a konfigurációs fájlokban, amelyek a helyi Speech CLI-adattárban vannak tárolva, és a Speech CLI-hívásokban a @ szimbólum használatával vannak elnevezve. A Speech CLI megkísérli egy új beállítás mentését egy új `./spx/data` alkönyvtárban, amelyet a rendszer az aktuális munkakönyvtárban hoz létre.
-Konfigurációs érték keresésekor a Speech CLI az aktuális munkakönyvtárban, majd az `./spx/data` elérési úton jelenik meg.
+A Speech CLI működése hivatkozhat a konfigurációs fájlok beállításaira, amelyek a Speech CLI-hívásokon belül a @ szimbólum használatával is hivatkozhatnak.
+A Speech CLI új beállítást ment egy új `./spx/data` alkönyvtárban, amelyet a rendszer az aktuális munkakönyvtárban hoz létre.
+A konfigurációs érték keresésekor a Speech CLI a jelenlegi munkakönyvtárban, majd az adattárolóban, majd más adattárolókban `./spx/data` is megjelenik, beleértve a bináris írásvédett adattárat is `spx` .
 Korábban az adattárat használta a és az `@key` `@region` értékek mentéséhez, így nem kell megadnia azokat az egyes parancssori hívásokkal.
 A konfigurációs fájlokat is használhatja a saját konfigurációs beállításainak tárolásához, vagy akár az URL-címek vagy más, futásidőben generált dinamikus tartalom továbbítására is.
 
@@ -162,7 +163,7 @@ Ez a parancs megegyezik a `spx synthesize --text Sample text to synthesize --aud
 
 * Az oszlopfejlécek és a `audio.output` a `text` parancssori argumentumok, illetve a `--audio output` `--text` . Több részből álló parancssori argumentumok `--audio output` , mint például a szóközök nélküli fájlban, a kezdő kötőjelek és a sztringeket elválasztó időszakok, például: `audio.output` . A többi meglévő parancssori argumentum további oszlopként is hozzáadható a fájlhoz a minta használatával.
 * Ha a fájl így formázva van, nem szükséges további argumentumokat átadni a következőhöz: `--foreach` .
-* Ügyeljen arra, hogy az egyes értékeket a `.tsv` with a **lapon**válassza el.
+* Ügyeljen arra, hogy az egyes értékeket a `.tsv` with a **lapon** válassza el.
 
 Ha azonban a `.tsv` következő példához hasonló fájllal rendelkezik, olyan oszlopfejléceket, amelyek **nem egyeznek** a parancssori argumentumokkal:
 

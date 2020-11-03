@@ -1,17 +1,17 @@
 ---
 title: A zóna redundáns, magas rendelkezésre állásának áttekintése Azure Database for MySQL rugalmas kiszolgálóval
 description: Ismerje meg a zóna redundáns magas rendelkezésre állásának fogalmait Azure Database for MySQL rugalmas kiszolgálóval
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 9db5776a4d2395baf03a5ed7cf05db49de8d0321
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd7be998c49a710ee7652cf18c35bed743606ffd
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934970"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241184"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Magas rendelkezésre állási fogalmak Azure Database for MySQL rugalmas kiszolgálóban (előzetes verzió)
 
@@ -100,5 +100,5 @@ Az alábbiakban néhány megfontolandó szempontot figyelembe kell venni a zóna
 ## <a name="next-steps"></a>Következő lépések
 
 -   Az [üzletmenet folytonosságának](./concepts-business-continuity.md) megismerése
--   További információ a [zónák redundáns magas rendelkezésre állásáról](./concepts-high-availability.md)
+-   További információ a [zónák redundáns magas rendelkezésre állásáról](./concepts-high-availability.md)
 -   Tudnivalók a [biztonsági mentésről és a helyreállításról](./concepts-backup-restore.md)

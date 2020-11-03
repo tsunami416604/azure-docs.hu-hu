@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 9d3c9d03c4297af0b9155c2d528e27221b42bc9e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 466129e8435ef694821b078592a100a111a43f3a
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124839"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242279"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Gyors útmutató – a minta Azure digitális Twins-forgatókönyvek megismerése a ADT Explorer használatával
 
@@ -41,48 +41,36 @@ Végül le kell töltenie azt a mintát, amelyet a rövid útmutatóban is haszn
 
 ## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Az Azure digitális Twins és a ADT Explorer beállítása
 
-Az Azure Digital Twins használatának első lépése egy **Azure digitális Twins-példány** beállítása. Miután létrehozta a szolgáltatás egy példányát, a rövid útmutatóban később feltöltheti a példában szereplő adatokkal.
+Az Azure Digital Twins használatának első lépése **egy Azure digitális Twins-példány beállítása** . Miután létrehozta a szolgáltatás egy példányát, és **beállította a hitelesítő adatait** a ADT Explorerrel való hitelesítéshez, a **ADT Explorerben csatlakozhat a példányhoz** , és feltöltheti azt a rövid útmutatóban szereplő adatokkal.
 
-Emellett be kell állítania a ADT Explorer futtatásához szükséges engedélyeket a számítógépen, és elérhetővé kell tennie az Azure digitális Twins-példányát, beleértve egy Azure Active Directory (Azure AD) **alkalmazás regisztrációjának** beállítását. Ezt követően a minta alkalmazással megismerheti a példányt és az adatait.
+A szakasz további részében végigvezeti a lépéseket.
 
-### <a name="set-up-azure-digital-twins-instance-and-app-registration"></a>Az Azure digitális ikrek példányának és az alkalmazás regisztrálásának beállítása
+### <a name="set-up-azure-digital-twins-instance"></a>Azure digitális Twins-példány beállítása
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
-[!INCLUDE [digital-twins-prereq-registration.md](../../includes/digital-twins-prereq-registration.md)]
+### <a name="set-up-local-azure-credentials"></a>Helyi Azure-beli hitelesítő adatok beállítása
 
-### <a name="set-adt-explorer-permissions"></a>ADT Explorer engedélyeinek beállítása
+A ADT Explorer alkalmazás a [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) (a könyvtár részét képező `Azure.Identity` ) használatával hitelesíti a felhasználókat az Azure Digital Twins-példánnyal, amikor futtatja azt a helyi gépen. További információk az ügyfélalkalmazások az Azure Digital Twins szolgáltatással való hitelesítésének különböző módjairól [*: How-to: Write app Authentication Code*](how-to-authenticate-client.md).
 
-Ezt követően készítse elő a létrehozott Azure digitális Twins-példányt, hogy együttműködjön a ADT Explorerrel, amely egy helyileg üzemeltetett webalkalmazás. Látogasson el a [Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) lapra a Azure Portal, és válassza ki az **alkalmazás regisztrációjának** nevét, amelyet az előző szakaszban hozott létre a listából.
+Az ilyen típusú hitelesítés esetében a ADT Explorer a helyi környezetben, például egy helyi [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) -ben vagy a Visual Studio/Visual Studio Code-ban található hitelesítő adatokat keres. Ez azt jelenti, hogy **helyileg kell bejelentkeznie az Azure-ba** ezen mechanizmusok egyikével a ADT Explorer alkalmazás hitelesítő adatainak beállításához.
 
-Válassza a *hitelesítés* lehetőséget a regisztráció menüjében, és nyomja meg *a + platform hozzáadása* elemet.
+Ha már bejelentkezett az Azure-ba az egyik ilyen módon, ugorjon a [következő szakaszra](#run-and-configure-adt-explorer).
 
-:::image type="content" source="media/quickstart-adt-explorer/authentication-pre.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva." lightbox="media/quickstart-adt-explorer/authentication-pre.png":::
+Ellenkező esetben a helyi **Azure CLI** -t a következő lépésekkel telepítheti:
+1. Kövesse a telepítési [**hivatkozás**](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) folyamatát az operációs rendszerének megfelelő telepítés befejezéséhez.
+2. Nyisson meg egy konzolablak ablakot a gépen.
+3. Futtassa `az login` a parancsot, és kövesse a hitelesítési kéréseket, és jelentkezzen be az Azure-fiókjába.
 
-A következő *platformok konfigurálása* oldalon válassza a *web* lehetőséget.
-Adja meg a konfigurációs adatokat a következőképpen:
-* **Átirányítási** URI-k: adjon hozzá egy ÁTirányítási URI-t *http://localhost:3000* .
-* **Implicit támogatás** : jelölje be a *hozzáférési jogkivonatok* jelölőnégyzetét.
+Ennek elvégzése után a ADT Explorer automatikusan felveszi az Azure-beli hitelesítő adatait, amikor a következő szakaszban futtatja.
 
-A *Konfigurálás* befejezéséhez.
-
-:::row:::
-    :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/authentication-configure-web.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva.":::
-    :::column-end:::
-    :::column:::
-    :::column-end:::
-:::row-end:::
-
-Most már rendelkezik egy olyan webes konfigurációval, amelyet a ADT Explorer használni fog. Ennek a Azure Portal hitelesítés lapjának kell szerepelnie. Az alábbi fejezetek ellenőrzése után kattintson a *Mentés gombra* .
-
-:::image type="content" source="media/quickstart-adt-explorer/authentication-post.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva.":::
+Ha szeretné, zárja be a hitelesítési konzol ablakát, vagy tartsa megnyitva a következő lépésben való használatra.
 
 ### <a name="run-and-configure-adt-explorer"></a>A ADT Explorer futtatása és konfigurálása
 
 Ezután futtassa a ADT Explorer alkalmazást, és konfigurálja az Azure Digital Twins-példányhoz.
 
-Navigáljon a letöltött és kibontott _**Azure_Digital_Twins__ADT__explorer**_ mappához. Nyisson meg egy parancssort a mappa helye *Azure_Digital_Twins__ADT__explorer/Client/src* .
+Navigáljon a letöltött és kibontott _**Azure_Digital_Twins__ADT__explorer**_ mappához. Nyisson meg egy konzol ablakot a mappa helyére *Azure_Digital_Twins__ADT__explorer/Client/src* .
 
 A futtatásával `npm install` töltse le az összes szükséges függőséget.
 
@@ -96,10 +84,7 @@ Az ablak tetején található *Bejelentkezés* gombra kattintva (az alábbi kép
 
 :::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva." lightbox="media/quickstart-adt-explorer/sign-in.png":::
 
-Adja meg az [Előfeltételek](#prerequisites) szakaszban korábban összegyűjtött fontos adatokat:
-* Alkalmazás (ügyfél) azonosítója
-* Címtár (bérlő) azonosítója
-* Azure digitális Twins-példány URL-címe a *https://{instance Host Name}* formátumban
+Adja meg az [Előfeltételek](#prerequisites) szakaszban korábban összegyűjtött *Azure digitális Twins-példány URL-címét* a *https://{instance Host Name}* formátumban.
 
 >[!NOTE]
 > Bármikor újra felkeresheti vagy szerkesztheti ezeket az adatokat. Ehhez jelölje ki ugyanazt az ikont, ha újra fel szeretné húzni a bejelentkezési mezőt. A rendszer megtartja a beadott értékeket.
@@ -306,19 +291,13 @@ Ennek a gyakorlatnak a célja, hogy bemutassa, hogyan használhatja az Azure dig
 
 Bár ebben a rövid útmutatóban manuálisan hajtotta végre a hőmérséklet-frissítést, gyakori az Azure digitális Twins-ben, hogy a digitális ikreket a valódi IoT-eszközökhöz csatlakoztassuk, hogy a telemetria-információk alapján automatikusan megkapják a frissítéseket. Így olyan élő gráfokat építhet ki, amelyek mindig tükrözik a környezet valós állapotát, és a lekérdezésekkel információt kaphatnak arról, hogy mi történik a környezetében valós időben.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A rövid útmutatóhoz tartozó munka becsomagolásához először fejezze be a futó konzol alkalmazást. Ezzel kikapcsolja a ADT Explorer alkalmazáshoz való kapcsolódást a böngészőben, és többé nem fogja tudni megtekinteni az élő adatmegjelenítést a böngészőben. A böngésző fület lezárhatja.
 
 Ha azt tervezi, hogy folytatja az Azure digitális Twins-oktatóanyagokat, az ebben a rövid útmutatóban használt példány újra felhasználható a cikkekhez, és nem kell eltávolítania.
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
-
-Ezután törölje az ügyfélalkalmazás számára a következő paranccsal létrehozott Azure Active Directory-alkalmazás regisztrációját:
-
-```azurecli-interactive
-az ad app delete --id <your-application-ID>
-```
 
 Végezetül törölje a helyi gépre ( _**Azure_Digital_Twins__ADT__explorer**_ ) letöltött Project Sample mappát. Előfordulhat, hogy törölnie kell a tömörített és a kibontott verziókat is.
 

@@ -4,17 +4,17 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
-ms.openlocfilehash: b62e5057d8f144fc56d0e35927d17de27a1c8863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cec44bbabdb7d528c30a8d3396b819f2eb3c5386
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255245"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93235883"
 ---
-A szolgáltatás egyszerűen beállítható, de ez nem jelenti azt, hogy a probléma ingyenes lesz. Ha problémák merülnek fel a kívánt végpont elérésekor, néhány segédprogram segítségével tesztelheti a kapcsolatot az alkalmazás-konzolról. Két konzolt használhat. Az egyik a kudu-konzol, a másik pedig a Azure Portal konzolja. A kudu-konzol alkalmazásból való eléréséhez nyissa meg az **eszközök**  >  **kudu**. A Kudo-konzolt a következő helyen is elérheti: [sitename]. SCM. azurewebsites. net. A webhely betöltése után lépjen a **Debug konzol** lapra. Ha az alkalmazásból szeretné beolvasni a Azure Portal által üzemeltetett konzolt, lépjen az **eszközök**  >  **konzolra**.
+A szolgáltatás egyszerűen beállítható, de ez nem jelenti azt, hogy a probléma ingyenes lesz. Ha problémák merülnek fel a kívánt végpont elérésekor, néhány segédprogram segítségével tesztelheti a kapcsolatot az alkalmazás-konzolról. Két konzolt használhat. Az egyik a kudu-konzol, a másik pedig a Azure Portal konzolja. A kudu-konzol alkalmazásból való eléréséhez nyissa meg az **eszközök**  >  **kudu** . A Kudo-konzolt a következő helyen is elérheti: [sitename]. SCM. azurewebsites. net. A webhely betöltése után lépjen a **Debug konzol** lapra. Ha az alkalmazásból szeretné beolvasni a Azure Portal által üzemeltetett konzolt, lépjen az **eszközök**  >  **konzolra** .
 
 #### <a name="tools"></a>Eszközök
-Natív Windows-alkalmazásokban a **ping**, az **nslookup**és a **tracert** eszköz nem fog működni a konzolon a biztonsági korlátozások miatt ( [Egyéni Windows-tárolókban](../articles/app-service/quickstart-custom-container.md)működnek). Az üresség kitöltéséhez két különálló eszközt adnak hozzá. A DNS-funkciók teszteléséhez hozzáadott egy **nameresolver.exe**nevű eszközt. A szintaxis a következő:
+Natív Windows-alkalmazásokban a **ping** , az **nslookup** és a **tracert** eszköz nem fog működni a konzolon a biztonsági korlátozások miatt ( [Egyéni Windows-tárolókban](../articles/app-service/quickstart-custom-container.md)működnek). Az üresség kitöltéséhez két különálló eszközt adnak hozzá. A DNS-funkciók teszteléséhez hozzáadott egy **nameresolver.exe** nevű eszközt. A szintaxis a következő:
 
 ```console
 nameresolver.exe hostname [optional: DNS Server]
@@ -46,12 +46,12 @@ Ha ezek az elemek nem válaszolnak a problémákra, először tekintse meg a kö
 * A cél nem RFC1918-címet tartalmaz, és nincs WEBSITE_VNET_ROUTE_ALL beállítva 1-re?
 * Van NSG blokkolása az integrációs alhálózatról?
 * Ha az Azure ExpressRoute vagy egy VPN-en keresztül történik, a helyszíni átjáró úgy van konfigurálva, hogy az Azure-ba irányítsa a forgalmat? Ha a virtuális hálózatban található végpontok nem a helyszínen érhetők el, ellenőrizze az útvonalakat.
-* Van elegendő engedélye a delegálás beállítására az integrációs alhálózaton? A regionális VNet integrációs konfigurációjában az integrációs alhálózat delegálása a Microsoft. Web. A VNet-integráció felhasználói felülete automatikusan delegálja az alhálózatot a Microsoft. Web számára. Ha a fiókja nem rendelkezik megfelelő hálózati engedélyekkel a delegálás beállításához, szüksége lesz egy olyan személyre, aki az integrációs alhálózaton attribútumokat állíthat be az alhálózat delegálására. Az integrációs alhálózat manuális delegálásához nyissa meg az Azure Virtual Network alhálózat felhasználói felületét, és állítsa be a Microsoft. Web delegálását.
+* Van elegendő engedélye a delegálás beállítására az integrációs alhálózaton? A regionális VNet integrációs konfigurációjában az integrációs alhálózat delegálása a Microsoft. Web/kiszolgálófarmok. A VNet integrációs KEZELŐFELÜLETe automatikusan delegálja az alhálózatot a Microsoft. Web/kiszolgálófarmok számára. Ha a fiókja nem rendelkezik megfelelő hálózati engedélyekkel a delegálás beállításához, szüksége lesz egy olyan személyre, aki az integrációs alhálózaton attribútumokat állíthat be az alhálózat delegálására. Az integrációs alhálózat manuális delegálásához nyissa meg az Azure Virtual Network alhálózat felhasználói felületét, és állítsa be a Microsoft. Web/kiszolgálófarmok delegálását.
 
 **Átjáró – szükséges VNet-integráció**
 * A pont – hely címtartomány az RFC 1918-tartományokban (10.0.0.0-10.255.255.255/172.16.0.0-172.31.255.255/192.168.0.0-192.168.255.255)?
 * Megjelenik az átjáró a portálon? Ha az átjáró nem működik, hozza létre a biztonsági mentést.
-* A tanúsítványok szinkronként jelennek meg, vagy azt gyanítja, hogy a hálózati konfiguráció megváltozott?  Ha a tanúsítványok nincsenek szinkronban, vagy ha azt gyanítja, hogy a ASP nem szinkronizált virtuális hálózati konfiguráció módosítása történt, válassza a **szinkronizálás hálózat**lehetőséget.
+* A tanúsítványok szinkronként jelennek meg, vagy azt gyanítja, hogy a hálózati konfiguráció megváltozott?  Ha a tanúsítványok nincsenek szinkronban, vagy ha azt gyanítja, hogy a ASP nem szinkronizált virtuális hálózati konfiguráció módosítása történt, válassza a **szinkronizálás hálózat** lehetőséget.
 * Ha a VPN-en keresztül történik, a helyszíni átjáró úgy van konfigurálva, hogy a forgalmat az Azure-ba irányítsa? Ha a virtuális hálózatban található végpontok nem a helyszínen érhetők el, ellenőrizze az útvonalakat.
 * Olyan párhuzamos átjárót próbál használni, amely támogatja mind a pont-hely, mind a ExpressRoute? Az együttélési átjárók nem támogatottak a VNet-integrációval.
 
@@ -68,13 +68,13 @@ Nem tudja, milyen címet használ ténylegesen az alkalmazás. Az integrációs 
 
 További hibakeresési lépések a következők:
 
-* Kapcsolódjon a virtuális hálózatban található virtuális GÉPHEZ, és próbálja meg elérni az erőforrás-gazdagépet: innen a port. A TCP-hozzáférés teszteléséhez használja a következő PowerShell **-parancsot: test-NETCONNECTION**. A szintaxis a következő:
+* Kapcsolódjon a virtuális hálózatban található virtuális GÉPHEZ, és próbálja meg elérni az erőforrás-gazdagépet: innen a port. A TCP-hozzáférés teszteléséhez használja a következő PowerShell **-parancsot: test-NETCONNECTION** . A szintaxis a következő:
 
 ```powershell
 test-netconnection hostname [optional: -Port]
 ```
 
-* Egy alkalmazás üzembe helyezése egy virtuális gépen, valamint a gazdagép és a port elérésének tesztelése a konzolról az **tcpping**használatával.
+* Egy alkalmazás üzembe helyezése egy virtuális gépen, valamint a gazdagép és a port elérésének tesztelése a konzolról az **tcpping** használatával.
 
 #### <a name="on-premises-resources"></a>Helyszíni erőforrások ####
 

@@ -1,17 +1,17 @@
 ---
 title: A Azure Database for PostgreSQL-adattitkosítás érvényesítésének biztosítása
 description: Ismerje meg, hogyan ellenőrizheti a Azure Database for PostgreSQL-adattitkosítás titkosítását az ügyfelek által felügyelt kulcs használatával.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 04/28/2020
-ms.openlocfilehash: 0a1b8eaee0a483fb4ce09a33d3c7ca9fe6f980e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ec27cc4f28151214ca97ffb5113607d6b60ee36
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90884335"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240579"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-postgresql"></a>Az Azure Database for PostgreSQL adattitkosításának ellenőrzése
 
@@ -25,14 +25,14 @@ Ebből a cikkből megtudhatja, hogy az adattitkosítás az ügyfél által felü
 
     * A Azure Portal navigáljon a **Azure Key Vault**  ->  **kulcsaihoz**
     * Válassza ki a kiszolgáló titkosításához használt kulcsot.
-    * Állítsa **a kulcs állapotát** a **nem**értékre.
+    * Állítsa **a kulcs állapotát** a **nem** értékre.
   
-       Némi idő után (**~ 15 perc**) a Azure Database for PostgreSQL kiszolgáló **állapota** nem **érhető**el. A kiszolgálón végrehajtott összes I/O-művelet sikertelen lesz, amely ellenőrzi, hogy a kiszolgáló valóban titkosítva van-e az ügyfelek kulcsával, és a kulcs jelenleg nem érvényes.
+       Némi idő után ( **~ 15 perc** ) a Azure Database for PostgreSQL kiszolgáló **állapota** nem **érhető** el. A kiszolgálón végrehajtott összes I/O-művelet sikertelen lesz, amely ellenőrzi, hogy a kiszolgáló valóban titkosítva van-e az ügyfelek kulcsával, és a kulcs jelenleg nem érvényes.
     
         Annak érdekében, hogy a kiszolgáló **elérhető** legyen, újraérvényesítheti a kulcsot. 
     
-    * Állítsa a kulcs állapotát a Key Vault **Igen**értékre.
-    * A kiszolgáló **adattitkosítása**lapon válassza a **kulcs újraérvényesítése**lehetőséget.
+    * Állítsa a kulcs állapotát a Key Vault **Igen** értékre.
+    * A kiszolgáló **adattitkosítása** lapon válassza a **kulcs újraérvényesítése** lehetőséget.
     * A kulcs újraérvényesítésének sikeressége után a kiszolgáló **állapota** **elérhetőre** változik
 
 2. Ha meg szeretné győződni arról, hogy a titkosítási kulcs be van állítva, akkor a Azure Portal a Azure Portal használt ügyfelek kulcsával titkosítja az adatvédelmet.

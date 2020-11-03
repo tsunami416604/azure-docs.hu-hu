@@ -1,17 +1,17 @@
 ---
 title: Infrastruktúra – kettős titkosítás – Azure Portal – Azure Database for PostgreSQL
 description: Ismerje meg, hogyan állíthatja be és kezelheti az infrastruktúra kettős titkosítását a Azure Database for PostgreSQL számára.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 362c051cf1dd7e97430bd6afaf4821a9c960b71d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea486b534ac3e703849ddb3922d7c3a428dd076b
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90901540"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242228"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-postgresql"></a>Infrastruktúra kettős titkosítása Azure Database for PostgreSQL
 
@@ -27,7 +27,7 @@ Az alábbi lépéseket követve hozzon létre egy Azure Database for MySQL-kiszo
 
 1. A portál bal felső sarkában válassza az **erőforrás létrehozása** (+) lehetőséget.
 
-2. Válassza az **adatbázisok**  >  **Azure Database for PostgreSQL**elemet. A PostgreSQL-t a keresőmezőbe is megadhatja a szolgáltatás megtalálásához. Az **egykiszolgálós** üzembe helyezési lehetőség engedélyezése.
+2. Válassza az **adatbázisok**  >  **Azure Database for PostgreSQL** elemet. A PostgreSQL-t a keresőmezőbe is megadhatja a szolgáltatás megtalálásához. Az **egykiszolgálós** üzembe helyezési lehetőség engedélyezése.
 
    :::image type="content" source="./media/quickstart-create-database-portal/1-create-database.png" alt-text="A Azure Database for PostgreSQL a menüben":::
 
@@ -52,7 +52,7 @@ Ez a példa létrehoz egy nevű erőforráscsoportot `myresourcegroup` a `westus
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
-A következő példa létrehoz egy PostgreSQL 11 kiszolgálót az USA nyugati régiójában, amely a `mydemoserver` `myresourcegroup` kiszolgálói rendszergazdai bejelentkezéssel van ellátva az erőforráscsoporthoz `myadmin` . Ez egy **Gen 4** **általános célú** -kiszolgáló **2 virtuális mag**. Ezzel a megoldással a kiszolgáló által létrehozott kettős titkosítás is engedélyezve lesz. A `<server_admin_password>` helyére írja be saját értékét.
+A következő példa létrehoz egy PostgreSQL 11 kiszolgálót az USA nyugati régiójában, amely a `mydemoserver` `myresourcegroup` kiszolgálói rendszergazdai bejelentkezéssel van ellátva az erőforráscsoporthoz `myadmin` . Ez egy **Gen 4** **általános célú** -kiszolgáló **2 virtuális mag** . Ezzel a megoldással a kiszolgáló által létrehozott kettős titkosítás is engedélyezve lesz. A `<server_admin_password>` helyére írja be saját értékét.
 
 ```azurecli-interactive
 az postgres server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 11 --infrastructure-encryption >Enabled/Disabled>

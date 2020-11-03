@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: daveba
+author: daveba
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13bb7782f6396466200fbb3e2df77158bb75d8a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 093d9fdd75b8a4a581faa0708cf97ea67774d734
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705401"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241718"
 ---
 # <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>A szervezethez tartozó Azure-Multi-Factor Authentication áttekintése
 
@@ -53,7 +53,7 @@ Biztosítja a legerősebb biztonsági helyzetet és a jobb felhasználói élmé
 
 ## <a name="authentication-methods"></a>Hitelesítési módszerek
 
-| Módszer | Alapértelmezett biztonsági szabályok | Minden egyéb módszer |
+| Metódus | Alapértelmezett biztonsági szabályok | Minden egyéb módszer |
 | --- | --- | --- |
 | Értesítés a Mobile App használatával | X | X |
 | Ellenőrző kód a Mobile App vagy a Hardware tokenből |   | X |

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: c768f6564884ade5d27199a64843437f5ce725f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a594d06fa84bb6e5ef502b02e1bec8244062ccb
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90019155"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233967"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Tanúsítványok exportálása Azure Key Vaultból
 
@@ -33,8 +33,8 @@ Key Vault-tanúsítvány létrehozásakor egy megcímezhető kulcs és *titkos* 
 
 Key Vault-tanúsítvány létrehozása után lekérheti a titkos kulccsal rendelkező címezhető titokból. A tanúsítvány lekérése PFX-vagy PEM-formátumban.
 
-- **Exportálható**: a tanúsítvány létrehozásához használt szabályzat azt jelzi, hogy a kulcs exportálható.
-- **Nem exportálható**: a tanúsítvány létrehozásához használt szabályzat azt jelzi, hogy a kulcs nem exportálható. Ebben az esetben a titkos kulcs nem része az értéknek, amikor a rendszer titokként kéri le.
+- **Exportálható** : a tanúsítvány létrehozásához használt szabályzat azt jelzi, hogy a kulcs exportálható.
+- **Nem exportálható** : a tanúsítvány létrehozásához használt szabályzat azt jelzi, hogy a kulcs nem exportálható. Ebben az esetben a titkos kulcs nem része az értéknek, amikor a rendszer titokként kéri le.
 
 Támogatott főtípusok: az RSA, az RSA-HSM, az EC, az EC-HSM, a TOT ( [itt](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)felsorolva) csak az RSA, az EC esetében engedélyezett. A HSM-kulcsok nem exportálhatók.
 
@@ -79,18 +79,26 @@ További információ: [Paraméterek definíciói](https://docs.microsoft.com/cl
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Használja ezt a parancsot a Azure PowerShell a **TestCert01** nevű tanúsítvány lekéréséhez a **ContosoKV01**nevű kulcstartóból. A tanúsítvány PFX-fájlként való letöltéséhez futtassa a következő parancsot. Ezek a parancsok hozzáférnek a **SecretId**, majd a tartalmat pfx-fájlként mentik.
+Használja ezt a parancsot a Azure PowerShell a **TestCert01** nevű tanúsítvány lekéréséhez a **ContosoKV01** nevű kulcstartóból. A tanúsítvány PFX-fájlként való letöltéséhez futtassa a következő parancsot. Ezek a parancsok hozzáférnek a **SecretId** , majd a tartalmat pfx-fájlként mentik.
 
 ```azurepowershell
 $cert = Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
-$kvSecret = Get-AzKeyVaultSecret -VaultName "ContosoKV01" -Name $Cert.Name
-$kvSecretBytes = [System.Convert]::FromBase64String($kvSecret.SecretValueText)
-$certCollection = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2Collection
-$certCollection.Import($kvSecretBytes,$null,[System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable)
-$password = '******'
-$protectedCertificateBytes = $certCollection.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Pkcs12, $password)
-$pfxPath = [Environment]::GetFolderPath("Desktop") + "\MyCert.pfx"
-[System.IO.File]::WriteAllBytes($pfxPath, $protectedCertificateBytes)
+$secret = Get-AzKeyVaultSecret -VaultName $vaultName -Name $cert.Name
+$secretValueText = '';
+$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
+try {
+    $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
+} finally {
+    [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
+}
+$secretByte = [Convert]::FromBase64String($secretValueText)
+$x509Cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2
+$x509Cert.Import($secretByte, "", "Exportable,PersistKeySet")
+$type = [System.Security.Cryptography.X509Certificates.X509ContentType]::Pfx
+$pfxFileByte = $x509Cert.Export($type, $password)
+
+# Write to a file
+[System.IO.File]::WriteAllBytes("KeyVault.pfx", $pfxFileByte)
 ```
 
 Ez a parancs a tanúsítványok teljes láncát exportálja a titkos kulccsal. A tanúsítvány jelszavas védelemmel van ellátva.
@@ -100,13 +108,13 @@ További információ a **Get-AzKeyVaultCertificate** parancsról és paraméter
 
 Ha **a tanúsítvány** paneljén létrehoz/importál egy tanúsítványt a Azure Portalon, értesítést kap arról, hogy a tanúsítvány sikeresen létrejött. Válassza ki a tanúsítványt és az aktuális verziót, hogy megjelenjen a letöltési lehetőség.
 
-A tanúsítvány letöltéséhez válassza a **Letöltés CER formátumban** vagy **a letöltés pfx/PEM formátumban**lehetőséget.
+A tanúsítvány letöltéséhez válassza a **Letöltés CER formátumban** vagy **a letöltés pfx/PEM formátumban** lehetőséget.
 
 ![Tanúsítvány letöltése](../media/certificates/quick-create-portal/current-version-shown.png)
 
 **Azure App Service tanúsítványok exportálása**
 
-Azure App Service a tanúsítványok kényelmes megoldást jelentenek az SSL-tanúsítványok megvásárlására. Az Azure-alkalmazásokhoz hozzárendelheti őket a portálon belülről. Ezeket a tanúsítványokat a portálról is exportálhatja, ha PFX-fájlként kívánja használni őket. Az importálás után a App Service tanúsítványok a **titkok**területen találhatók.
+Azure App Service a tanúsítványok kényelmes megoldást jelentenek az SSL-tanúsítványok megvásárlására. Az Azure-alkalmazásokhoz hozzárendelheti őket a portálon belülről. Ezeket a tanúsítványokat a portálról is exportálhatja, ha PFX-fájlként kívánja használni őket. Az importálás után a App Service tanúsítványok a **titkok** területen találhatók.
 
 További információ: [Azure app Service tanúsítványok exportálásának](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx)lépései.
 

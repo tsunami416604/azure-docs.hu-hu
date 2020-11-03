@@ -1,18 +1,18 @@
 ---
 title: A zóna redundáns magas rendelkezésre állásának kezelése – Azure Portal – Azure Database for MySQL rugalmas kiszolgáló
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető vagy tiltható le a zóna redundáns magas rendelkezésre állása Azure Database for MySQL rugalmas kiszolgálón a Azure Portal használatával.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: 09cd7428519cbf84c785efa16b61b9507a3c0b94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d65b074385311e74444929ef74901e402e29ec03
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90940509"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241735"
 ---
 # <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-preview"></a>A zóna redundáns magas rendelkezésre állásának kezelése Azure Database for MySQL rugalmas kiszolgálóban (előzetes verzió)
 
@@ -32,18 +32,18 @@ Ez az oldal útmutatást nyújt a magas rendelkezésre állás engedélyezéséh
 
 Ez a szakasz részletesen ismerteti a HA kapcsolódó mezőket. Az alábbi lépések végrehajtásával magas rendelkezésre állást helyezhet üzembe a rugalmas kiszolgáló létrehozása során.
 
-1.  A [Azure Portal](https://portal.azure.com/)válassza a rugalmas kiszolgáló elemet, majd kattintson a **Létrehozás**gombra.  A részleteket, például az **előfizetést**, az **erőforráscsoportot**, a **kiszolgálónevet**, a **régiót**és az egyéb mezőket a kiszolgáló létrehozásának dokumentációjában találja.
+1.  A [Azure Portal](https://portal.azure.com/)válassza a rugalmas kiszolgáló elemet, majd kattintson a **Létrehozás** gombra.  A részleteket, például az **előfizetést** , az **erőforráscsoportot** , a **kiszolgálónevet** , a **régiót** és az egyéb mezőket a kiszolgáló létrehozásának dokumentációjában találja.
 
 2.  A rendelkezésre állási lehetőségnél kattintson a **zóna redundáns magas rendelkezésre állása** jelölőnégyzetére.
 
-3.  Ha módosítani szeretné az alapértelmezett számítási és tárolási tárterületet, kattintson a  **kiszolgáló konfigurálása**elemre.
+3.  Ha módosítani szeretné az alapértelmezett számítási és tárolási tárterületet, kattintson a  **kiszolgáló konfigurálása** elemre.
 
 4.  Ha a magas rendelkezésre állás beállítás be van jelölve, a feltört szint nem lesz elérhető a választáshoz. Kiválaszthatja az **általános célú** vagy a **memóriára optimalizált** számítási szinteket is.
 
     > [!IMPORTANT]
-    > Az ***általános célú*** és a ***memóriát optimalizáló*** díjszabási szinten csak a zóna redundáns magas rendelkezésre állását támogatjuk.
+    > Az * *_általános célú_* _ és a _*_memória optimalizált_*_ díjszabási szintjéhez csak a zóna redundáns magas rendelkezésre állását támogatjuk.
 
-5.  Válassza ki a legördülő menüből választott **számítási méretet** .
+5.  Válassza ki a legördülő menüből választott _ *számítási méretet* *.
 
 6.  A kicsúsztatható sáv használatával válassza ki a **Storage-méretet** , és válassza ki a **biztonsági mentés megőrzési időtartamát** 7 nap és 35 nap között.   
 
@@ -51,11 +51,11 @@ Ez a szakasz részletesen ismerteti a HA kapcsolódó mezőket. Az alábbi lép�
 
 A következő lépésekkel letilthatja a rugalmas kiszolgáló magas rendelkezésre állását, amely már konfigurálva van a zóna-redundanciával.
 
-1.  A [Azure Portal](https://portal.azure.com/)válassza ki a meglévő Azure Database for MySQL rugalmas kiszolgálót.
+1.  A [Azure Portal](https://portal.azure.com/)válassza ki a meglévő Azure Database for MySQL rugalmas kiszolgálót.
 
-2.  A rugalmas kiszolgáló lapon kattintson a **magas rendelkezésre állás** lehetőségre az előlapon a magas rendelkezésre állású lap megnyitásához.
+2.  A rugalmas kiszolgáló lapon kattintson a **magas rendelkezésre állás** lehetőségre az előlapon a magas rendelkezésre állású lap megnyitásához.
 
-3.  Kattintson a **zóna redundáns magas rendelkezésre állása** jelölőnégyzetre a beállítás letiltásához, majd kattintson a **Save (Mentés**) gombra a   módosítás mentéséhez.
+3.  Kattintson a **zóna redundáns magas rendelkezésre állása** jelölőnégyzetre a beállítás letiltásához, majd kattintson a **Save (Mentés** ) gombra a módosítás mentéséhez.
 
 4.  Ekkor megjelenik egy megerősítő párbeszédpanel, ahol ellenőrizheti, hogy le kell-e tiltani A letiltást.
 
@@ -66,4 +66,4 @@ A következő lépésekkel letilthatja a rugalmas kiszolgáló magas rendelkezé
 ## <a name="next-steps"></a>Következő lépések
 
 -   Az [üzletmenet folytonosságának](./concepts-business-continuity.md) megismerése
--   További információ a [zónák redundáns magas rendelkezésre állásáról](./concepts-high-availability.md)
+-   További információ a [zónák redundáns magas rendelkezésre állásáról](./concepts-high-availability.md)

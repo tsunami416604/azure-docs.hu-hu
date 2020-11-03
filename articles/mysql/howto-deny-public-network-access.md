@@ -1,17 +1,17 @@
 ---
 title: Nyilvános hálózati hozzáférés megtagadása – Azure Portal-Azure Database for MySQL
 description: Megtudhatja, hogyan konfigurálhatja a nyilvános hálózati hozzáférés megtagadását a Azure Database for MySQL Azure Portal használatával
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: eb5c4e4c4dfb73b2f7c9dc9f2629296790790885
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a98ab9ea347ba4d9ec53c80626f97b429e083cb1
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90896133"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242381"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-mysql-using-azure-portal"></a>Nyilvános hálózati hozzáférés megtagadása Azure Database for MySQL a Azure Portal használatával
 
@@ -29,9 +29,9 @@ Kövesse az alábbi lépéseket a MySQL-kiszolgáló nyilvános hálózati hozz�
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a meglévő Azure Database for MySQL-kiszolgálót.
 
-1. A MySQL-kiszolgáló lap **Beállítások**területén kattintson a **kapcsolatbiztonsági** elemre a kapcsolatbiztonsági konfiguráció lap megnyitásához.
+1. A MySQL-kiszolgáló lap **Beállítások** területén kattintson a **kapcsolatbiztonsági** elemre a kapcsolatbiztonsági konfiguráció lap megnyitásához.
 
-1. A **nyilvános hálózati hozzáférés megtagadása**területen válassza az **Igen** lehetőséget a MySQL-kiszolgáló hozzáférésének megtagadásának engedélyezéséhez.
+1. A **nyilvános hálózati hozzáférés megtagadása** területen válassza az **Igen** lehetőséget a MySQL-kiszolgáló hozzáférésének megtagadásának engedélyezéséhez.
 
     :::image type="content" source="./media/howto-deny-public-network-access/setting-deny-public-network-access.PNG" alt-text="Azure Database for MySQL hálózati hozzáférés megtagadása":::
 

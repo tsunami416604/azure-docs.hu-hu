@@ -1,17 +1,17 @@
 ---
 title: Adattitkosítás – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Megtudhatja, hogyan lehet elhárítani az adattitkosítást a Azure Database for PostgreSQL egyetlen kiszolgálón
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 02/13/2020
-ms.openlocfilehash: ee0a1ebe483dd4719fd1a84fec37906329116eba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c315e1df473f3d23bab7e2a78ce166f22272ee70
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86117899"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242245"
 ---
 # <a name="troubleshoot-data-encryption-in-azure-database-for-postgresql---single-server"></a>Az adattitkosítás hibakeresése Azure Database for PostgreSQL – egyetlen kiszolgálón
 
@@ -19,7 +19,7 @@ Ez a cikk segítséget nyújt a Azure Database for PostgreSQL egykiszolgálós t
 
 ## <a name="introduction"></a>Bevezetés
 
-Ha az adattitkosítást úgy konfigurálja, hogy az Azure Key Vault ügyfél által felügyelt kulcsot használjon, a kiszolgálónak folyamatos hozzáférést kell adni a kulcshoz. Ha a kiszolgáló nem fér hozzá az ügyfél által felügyelt kulcshoz Azure Key Vault-ben, az megtagadja az összes kapcsolatot, visszaadja a megfelelő hibaüzenetet, és úgy módosítja az állapotát, hogy az nem ***érhető*** el a Azure Portal.
+Ha az adattitkosítást úgy konfigurálja, hogy az Azure Key Vault ügyfél által felügyelt kulcsot használjon, a kiszolgálónak folyamatos hozzáférést kell adni a kulcshoz. Ha a kiszolgáló nem fér hozzá az ügyfél által felügyelt kulcshoz Azure Key Vault-ben, az megtagadja az összes kapcsolatot, visszaadja a megfelelő hibaüzenetet, és megváltoztatja az állapotát * nem **elérhető** _ értékre a Azure Portal.
 
 Ha már nincs szüksége egy nem elérhető Azure Database for PostgreSQL-kiszolgálóra, törölheti a költségeket. A kiszolgálón semmilyen más művelet nem engedélyezett, amíg a kulcstartóhoz való hozzáférés vissza nem áll, és a kiszolgáló elérhető. Nem lehet módosítani az adattitkosítási lehetőséget a `Yes` (felhasználó által felügyelt) értékről `No` (szolgáltatás által felügyelt) a nem elérhető kiszolgálókon, ha az ügyfél által felügyelt kulccsal van titkosítva. A kulcs ismételt érvényesítéséhez manuálisan kell újraérvényesíteni a kiszolgálót, mielőtt újra elérhetővé válik. Ez a művelet szükséges az adatok jogosulatlan hozzáférés elleni védelme érdekében, az ügyfél által felügyelt kulcs engedélyeinek visszavonása mellett.
 
@@ -44,12 +44,12 @@ A következő helytelen konfiguráció a Azure Key Vault kulcsokat használó ad
 #### <a name="disabled-key-vault"></a>A Key Vault letiltva
 
 - `AzureKeyVaultKeyDisabledMessage`
-- **Magyarázat**: a művelet nem fejeződött be a kiszolgálón, mert a Azure Key Vault kulcs le van tiltva.
+- _ * Magyarázat * *: a művelet nem fejeződött be a kiszolgálón, mert a Azure Key Vault kulcs le van tiltva.
 
 #### <a name="missing-key-vault-permissions"></a>Hiányzó Key Vault-engedélyek
 
 - `AzureKeyVaultMissingPermissionsMessage`
-- **Magyarázat**: a kiszolgáló nem rendelkezik a szükséges Get, wrap és unwrap engedélyekkel a Azure Key Vaulthoz. Adja meg a hiányzó engedélyeket az egyszerű szolgáltatásnév számára az AZONOSÍTÓval.
+- **Magyarázat** : a kiszolgáló nem rendelkezik a szükséges Get, wrap és unwrap engedélyekkel a Azure Key Vaulthoz. Adja meg a hiányzó engedélyeket az egyszerű szolgáltatásnév számára az AZONOSÍTÓval.
 
 ### <a name="mitigation"></a>Kockázatcsökkentés
 
@@ -57,6 +57,6 @@ A következő helytelen konfiguráció a Azure Key Vault kulcsokat használó ad
 - Azonosítsa a kulcstartót, majd nyissa meg a Azure Portal található kulcstartót.
 - Győződjön meg arról, hogy a kulcs URI-ja egy jelen lévő kulcsot azonosít.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure Portal használatával állíthatja be az adattitkosítást az ügyfél által felügyelt kulccsal Azure Database for PostgreSQL](howto-data-encryption-portal.md)

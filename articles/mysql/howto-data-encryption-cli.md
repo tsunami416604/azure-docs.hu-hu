@@ -1,18 +1,18 @@
 ---
 title: Adattitkosítás – Azure CLI – Azure Database for MySQL
 description: Ismerje meg, hogyan állíthatja be és kezelheti a Azure Database for MySQL adattitkosítását az Azure CLI használatával.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eb83cd4fe7e98b1cde6dcee5d3f25fa5e35f1d2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07d2e9fa98c24695a119c651539d4003ecd8524a
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87799819"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242092"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Azure Database for MySQL adattitkosítás az Azure CLI használatával
 
@@ -50,7 +50,7 @@ Ismerje meg, hogyan állíthatja be és kezelheti a Azure Database for MySQL ada
 * A kulcsnak a következő attribútumokkal kell rendelkeznie, amelyeket ügyfél által felügyelt kulcsként kell használni:
   * Nincs lejárati dátum
   * Nincs letiltva
-  * **Get**, **wrap**, **dewrap** műveletek végrehajtása
+  * **Get** , **wrap** , **dewrap** műveletek végrehajtása
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>A megfelelő engedélyek beállítása a kulcsfontosságú műveletekhez
 
@@ -68,7 +68,7 @@ Ismerje meg, hogyan állíthatja be és kezelheti a Azure Database for MySQL ada
    az mysql server update --name  <server name>  -g <resource_group> --assign-identity
    ```
 
-2. Állítsa be a **rendszerbiztonsági tag**(**Get**, **wrap**, **dewrap**) **kulcsának engedélyeit** , amely a MySQL-kiszolgáló neve.
+2. Állítsa be a **rendszerbiztonsági tag** ( **Get** , **wrap** , **dewrap** ) **kulcsának engedélyeit** , amely a MySQL-kiszolgáló neve.
 
     ```azurecli-interactive
     az keyvault set-policy --name -g <resource_group> --key-permissions get unwrapKey wrapKey --object-id <principal id of the server>

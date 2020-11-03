@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: b272426f865636640e0a2fafde46cbebbe6eb363
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a0f4456f38939632026645500dd48acbf7dbc88
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327493"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242208"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>A Standard szabálymotor referenciája az Azure CDN-hez
 
@@ -20,7 +20,7 @@ Az Azure Content Delivery Network (Azure CDN) [szabványos szabályok motorjába
 
 A szabályok motor úgy lett kialakítva, hogy az adott típusú kérések standard Azure CDN általi feldolgozásának végső hatósága legyen.
 
-**A szabályok gyakori felhasználási módjai**:
+**A szabályok gyakori felhasználási módjai** :
 
 - Egyéni gyorsítótár-szabályzat felülbírálása vagy definiálása.
 - Átirányítási kérelmek.
@@ -34,7 +34,10 @@ Ha szabályt szeretne definiálni a szabályok motorban, állítsa be a [megfele
 
 Mindegyik szabály legfeljebb tíz egyeztetési feltételt és öt műveletet tartalmazhat. Minden Azure CDN végpont legfeljebb 25 szabályt tartalmazhat. 
 
-Ebben a korlátban egy alapértelmezett *globális szabály*szerepel. A globális szabály nem rendelkezik egyező feltételekkel; a globális szabályokban definiált műveletek mindig aktiválva lesznek.
+Ebben a korlátban egy alapértelmezett *globális szabály* szerepel. A globális szabály nem rendelkezik egyező feltételekkel; a globális szabályokban definiált műveletek mindig aktiválva lesznek.
+
+   > [!IMPORTANT]
+   > A különböző szabályok listájának sorrendje befolyásolja a szabályok kezelését. Előfordulhat, hogy egy szabályban megadott műveleteket egy későbbi szabály felülírja.
 
 ## <a name="limits-and-pricing"></a>Korlátozások és díjszabás 
 

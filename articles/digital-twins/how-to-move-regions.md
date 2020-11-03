@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: e586e9acc9510dc1aaae511fa51e5a0c3255bd8f
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 4c2900ed5ebe0df3ed827acc1a16caff3beaf4d4
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026496"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241089"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Azure digitális Twins-példány áthelyezése egy másik Azure-régióba
 
@@ -80,9 +80,8 @@ Navigáljon ide a mintához: [Azure Digital Twins (ADT) Explorer](/samples/azure
 
 Ezután állítsa be és konfigurálja a ADT Explorer engedélyeit. Ehhez kövesse az Azure digitális Twins [*gyors üzembe helyezési útmutatójának Azure Digital Twins és ADT Explorer beállítása*](quickstart-adt-explorer.md#set-up-azure-digital-twins-and-adt-explorer) szakaszának utasításait. Ez a szakasz végigvezeti a következő lépéseken:
 1. Azure Digital Twins-példány beállítása (ezt a részt kihagyhatja, mert már van ilyen példánya)
-2. **Azure ad-alkalmazás regisztrálásának** beállítása a példányhoz való hozzáférés biztosításához
-3. A ADT Explorer futtatásához szükséges engedélyek beállítása a gépen
-4. Futtassa a ADT Explorert, és konfigurálja úgy, hogy a példányhoz kapcsolódjon. Az Ön által áthelyezett eredeti Azure digitális Twins-példány **állomásneve** , valamint az **ügyfél-azonosító** és a **bérlő azonosítóját** fogja használni az alkalmazás regisztrálásakor.
+2. Helyi Azure-beli hitelesítő adatok beállítása a példányhoz való hozzáférés biztosításához
+3. Futtassa a ADT Explorert, és konfigurálja úgy, hogy a példányhoz kapcsolódjon. Az Ön által áthelyezett eredeti Azure Digital Twins-példány **állomásnevét** fogja használni.
 
 Most meg kell jelennie a ADT Explorer-alkalmazásnak, amely egy böngészőben fut a gépen. A mintát az eredeti Azure Digital Twins-példányhoz kell csatlakoztatni.
 
@@ -137,7 +136,7 @@ A ADT Explorer jelenleg az eredeti Azure Digital Twins-példányhoz csatlakozik.
 
 :::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="A böngészőablakban futó alkalmazást bemutató böngészőablak: 3000. Az alkalmazás neve ADT Explorer, és tartalmazza a lekérdezési Explorer, a modell nézet, a Graph View és a Property Explorer mezőit. Még nincsenek megjeleníthető adathalmazok." lightbox="media/how-to-move-regions/sign-in.png":::
 
-Ugyanezt az alkalmazást újra felhasználhatja, így csak a *ADT URL-címet* kell lecserélnie, hogy tükrözze az új példányt. Módosítsa ezt az értéket úgy, hogy az beolvassa a *https://{New instance hostname}* szöveget.
+Cserélje le a *ADT URL-címét* az új példánynak megfelelően. Módosítsa ezt az értéket úgy, hogy az beolvassa a *https://{New instance hostname}* szöveget.
 
 Kattintson a *kapcsolatra* . Előfordulhat, hogy az Azure-beli hitelesítő adataival újra be kell jelentkeznie, és/vagy meg kell adnia az alkalmazásnak a példányhoz való jóváhagyását.
 
@@ -210,6 +209,7 @@ A szerkesztéshez szükséges pontos erőforrások a forgatókönyvtől függene
 * Azure Maps
 * Device kiépítési szolgáltatás (DPS)
 * Az Azure-on kívüli személyes vagy vállalati alkalmazások, például az [*oktatóanyagban*](tutorial-code.md)létrehozott **ügyfélalkalmazás** : az a-ügyfélalkalmazás, amely csatlakozik a példányhoz, és meghívja az Azure Digital Twins API-kat
+* Az Azure AD-alkalmazások regisztrációit **nem kell** újból létrehozni. Ha az Azure Digital Twins API-khoz való kapcsolódáshoz [alkalmazás-regisztrációt](how-to-create-app-registration.md) használ, újra felhasználhatja ugyanazt az alkalmazást az új példánnyal.
 
 A lépés elvégzése után a célként megadott régióban lévő új példánynak az eredeti példány másolatának kell lennie.
 

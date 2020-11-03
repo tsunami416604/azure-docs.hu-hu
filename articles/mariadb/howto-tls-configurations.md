@@ -1,17 +1,17 @@
 ---
 title: TLS-konfiguráció – Azure Portal-Azure Database for MariaDB
 description: Ismerje meg, hogyan állíthatja be a TLS-konfigurációt a Azure Database for MariaDB Azure Portal használatával
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 06/02/2020
-ms.openlocfilehash: fac719daf05e8b319db7c86d0dbc61c2814b0a0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55a664ceb3524a0c545e037dcba7a2af90034ad4
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86120347"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241984"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-mariadb-using-azure-portal"></a>A TLS-beállítások konfigurálása a Azure Database for MariaDB a Azure Portal használatával
 
@@ -31,9 +31,9 @@ Az alábbi lépéseket követve állíthatja be a MariaDB-kiszolgáló minimáli
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a meglévő Azure Database for MariaDB-kiszolgálót.
 
-1. A MariaDB-kiszolgáló lap **Beállítások**területén kattintson a **kapcsolatbiztonsági** elemre a kapcsolatbiztonsági konfiguráció lap megnyitásához.
+1. A MariaDB-kiszolgáló lap **Beállítások** területén kattintson a **kapcsolatbiztonsági** elemre a kapcsolatbiztonsági konfiguráció lap megnyitásához.
 
-1. A **TLS minimális verziója**beállításnál válassza a **1,2** lehetőséget, hogy megtagadja a TLS 1,2-nál kisebb TLS-verzióval létesített kapcsolatokat a MariaDB-kiszolgálóhoz.
+1. A **TLS minimális verziója** beállításnál válassza a **1,2** lehetőséget, hogy megtagadja a TLS 1,2-nál kisebb TLS-verzióval létesített kapcsolatokat a MariaDB-kiszolgálóhoz.
 
     ![TLS-konfiguráció Azure Database for MariaDB](./media/howto-tls-configurations/tls-configurations.png)
 
@@ -43,6 +43,6 @@ Az alábbi lépéseket követve állíthatja be a MariaDB-kiszolgáló minimáli
 
     ![Azure Database for MariaDB TLS-konfiguráció sikeres](./media/howto-tls-configurations/tls-configurations-success.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Útmutató [riasztások létrehozásához mérőszámokon](howto-alert-metric.md)

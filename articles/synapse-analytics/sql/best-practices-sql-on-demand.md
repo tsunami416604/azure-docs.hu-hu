@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7bebfeba6da1493557d51777ba8438747e160750
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9de3e3503d63cf6dcaa98adc318d86df7700458d
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85476274"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241871"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Ajánlott eljárások az SQL igény szerinti használatára (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
@@ -60,17 +60,17 @@ A lekérdezésben használt adattípusok hatással vannak a teljesítményre. Ha
 
 - Használja a legkisebb adatméretet, amely a lehető legnagyobb értéket fogja kielégíteni.
   - Ha a karakteres érték legfeljebb 30 karakter hosszúságú, akkor a karakter adattípusa 30.
-  - Ha az összes karakteres oszlop értéke rögzített méretű, használja a **char** vagy a **NCHAR**. Ellenkező esetben használja a **varchar** vagy a **nvarchar**.
-  - Ha a maximális egész oszlop értéke 500, használja a **smallint** , mert ez a legkisebb adattípus, amely képes erre az értékre. [Ebben a cikkben](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=sql-server-ver15)az egész adattípus-tartományokat is megtalálhatja.
-- Ha lehetséges, használja a **varchar** és a **char** helyett a **nvarchar** és a **NCHAR**értéket.
+  - Ha az összes karakteres oszlop értéke rögzített méretű, használja a **char** vagy a **NCHAR** . Ellenkező esetben használja a **varchar** vagy a **nvarchar** .
+  - Ha a maximális egész oszlop értéke 500, használja a **smallint** , mert ez a legkisebb adattípus, amely képes erre az értékre. [Ebben a cikkben](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=sql-server-ver15&preserve-view=true)az egész adattípus-tartományokat is megtalálhatja.
+- Ha lehetséges, használja a **varchar** és a **char** helyett a **nvarchar** és a **NCHAR** értéket.
 - Ha lehetséges, használja az egész szám alapú adattípust. A RENDEZÉSi, ILLESZTÉSi és csoportosítási műveletek a karakteres adatoknál gyorsabban, egész számokon vannak végrehajtva.
 - Ha séma-következtetést használ, ellenőrizze a [késleltetett adattípusokat](#check-inferred-data-types).
 
 ## <a name="check-inferred-data-types"></a>Késleltetett adattípusok keresése
 
-A [séma-következtetések](query-parquet-files.md#automatic-schema-inference) segítségével gyorsan írhat lekérdezéseket, és megvizsgálhatja az adatfájl-sémák ismerete nélkül. Ennek a kényelemnek a díja, hogy a kikövetkeztetett adattípusok nagyobbak, mint a tényleges adattípusok. Ez akkor fordulhat elő, ha nincs elegendő információ a forrásfájlok számára a megfelelő adattípus használata érdekében. A Parquet-fájlok például nem tartalmaznak metaadatokat a karakteres oszlopok maximális hosszával kapcsolatban. Így az SQL igény szerint varchar (8000) értékűre következtet.
+A [séma-következtetések](query-parquet-files.md#automatic-schema-inference) segítségével gyorsan írhat lekérdezéseket, és megvizsgálhatja az adatfájl-sémák ismerete nélkül. Ennek a kényelemnek a díja, hogy a következtetett adattípusok nagyobbak lehetnek, mint a tényleges adattípusok. Ez akkor fordulhat elő, ha nincs elegendő információ a forrásfájlok számára a megfelelő adattípus használata érdekében. A Parquet-fájlok például nem tartalmaznak metaadatokat a karakteres oszlopok maximális hosszával kapcsolatban. Így az SQL igény szerint varchar (8000) értékűre következtet.
 
-A lekérdezés eredményül kapott adattípusait a [sp_describe_first_results_set](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql?view=sql-server-ver15) használatával is megtekintheti.
+A lekérdezés eredményül kapott adattípusait a [sp_describe_first_results_set](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql?view=sql-server-ver15&preserve-view=true) használatával is megtekintheti.
 
 Az alábbi példa bemutatja, hogyan optimalizálhatja a késleltetett adattípusokat. Ez az eljárás a késleltetett adattípusok megjelenítésére szolgál: 
 ```sql  
@@ -141,6 +141,6 @@ Az SQL on-demand lehetővé teszi a tárolóban lévő fájlok elérését Azure
 
 Ha jobb teljesítményre van szüksége, próbálja meg SAS hitelesítő adatok használatával hozzáférni a tárolóhoz, amíg az Azure AD átmenő teljesítmény nem javul.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a gyakori problémák megoldására vonatkozó [hibaelhárítási](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) cikket. Ha SQL-készletek helyett SQL-készleteket használ, tekintse meg az [ajánlott eljárásokat az SQL-készletekhez](best-practices-sql-pool.md) az adott útmutatáshoz.

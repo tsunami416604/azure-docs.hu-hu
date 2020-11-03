@@ -1,17 +1,17 @@
 ---
 title: TLS-konfiguráció – Azure Portal-Azure Database for MySQL
 description: Ismerje meg, hogyan állíthatja be a TLS-konfigurációt a Azure Database for MySQL Azure Portal használatával
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/02/2020
-ms.openlocfilehash: d94e589a19b29e68883c0217b62b883f9d026789
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 290752c0e577e6c2cd58d83f77fea8a5406388e4
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90902740"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240630"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-mysql-using-azure-portal"></a>A TLS-beállítások konfigurálása a Azure Database for MySQL a Azure Portal használatával
 
@@ -31,9 +31,9 @@ A MySQL-kiszolgáló minimális TLS-verziójának beállításához kövesse az 
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a meglévő Azure Database for MySQL-kiszolgálót.
 
-1. A MySQL-kiszolgáló lap **Beállítások**területén kattintson a **kapcsolatbiztonsági** elemre a kapcsolatbiztonsági konfiguráció lap megnyitásához.
+1. A MySQL-kiszolgáló lap **Beállítások** területén kattintson a **kapcsolatbiztonsági** elemre a kapcsolatbiztonsági konfiguráció lap megnyitásához.
 
-1. A **TLS minimális verziója**beállításnál válassza a **1,2** lehetőséget, hogy megtagadja a TLS 1,2-nál kisebb TLS-verzióval létesített kapcsolatokat a MySQL-kiszolgálóhoz.
+1. A **TLS minimális verziója** beállításnál válassza a **1,2** lehetőséget, hogy megtagadja a TLS 1,2-nál kisebb TLS-verzióval létesített kapcsolatokat a MySQL-kiszolgálóhoz.
 
     :::image type="content" source="./media/howto-tls-configurations/setting-tls-value.png" alt-text="TLS-konfiguráció Azure Database for MySQL":::
 

@@ -1,17 +1,17 @@
 ---
 title: TLS-konfiguráció – Azure Portal-Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Ismerje meg, hogyan állíthatja be a TLS-konfigurációt a Azure Database for PostgreSQL egyetlen kiszolgálójának Azure Portal használatával
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/02/2020
-ms.openlocfilehash: 26470709b37c2623c581499ec55572da402e96cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25be6b3c4e3172fc8ee14b97fd890b5948c284ba
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906454"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242364"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-postgresql-single---server-using-azure-portal"></a>A TLS-beállítások konfigurálása Azure Database for PostgreSQL egykiszolgálós Azure Portal használatával
 
@@ -31,9 +31,9 @@ A PostgreSQL minimális TLS-verziójának beállításához kövesse az alábbi 
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a meglévő Azure Database for PostgreSQL.
 
-1.  A Azure Database for PostgreSQL – egyetlen kiszolgáló lap **Beállítások**területén kattintson a **kapcsolatbiztonsági** elemre a kapcsolatbiztonsági konfiguráció lap megnyitásához.
+1.  A Azure Database for PostgreSQL – egyetlen kiszolgáló lap **Beállítások** területén kattintson a **kapcsolatbiztonsági** elemre a kapcsolatbiztonsági konfiguráció lap megnyitásához.
 
-1. A **TLS minimális verziója**beállításnál válassza az **1,2** lehetőséget, hogy megtagadja a TLS 1,2-nál kisebb TLS-verzióval létesített kapcsolatokat a PostgreSQL-kiszolgálónál.
+1. A **TLS minimális verziója** beállításnál válassza az **1,2** lehetőséget, hogy megtagadja a TLS 1,2-nál kisebb TLS-verzióval létesített kapcsolatokat a PostgreSQL-kiszolgálónál.
 
     :::image type="content" source="./media/howto-tls-configurations/setting-tls-value.png" alt-text="Egykiszolgálós TLS-konfiguráció Azure Database for PostgreSQL":::
 

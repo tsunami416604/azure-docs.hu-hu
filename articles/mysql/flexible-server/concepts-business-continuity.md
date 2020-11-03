@@ -1,17 +1,17 @@
 ---
 title: Az üzletmenet folytonosságának áttekintése – Azure Database for MySQL rugalmas kiszolgáló
 description: Ismerje meg az üzletmenet folytonosságával kapcsolatos fogalmakat Azure Database for MySQL rugalmas kiszolgálóval
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 833031a787f8571a8f8aea8e536410d4abcca298
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c29e952e22aaccf31c10de8f6e16d240b4660a23
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546415"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240715"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql---flexible-server-preview"></a>Az üzletmenet folytonosságának áttekintése Azure Database for MySQL rugalmas kiszolgálóval (előzetes verzió)
 
@@ -22,7 +22,7 @@ Azure Database for MySQL rugalmas kiszolgáló lehetővé teszi az olyan üzletm
 
 Az alábbi táblázat a rugalmas kiszolgáló által kínált funkciókat mutatja be.
 
-| **Szolgáltatás** | **Leírás** | **Korlátozások** |
+| **Funkció** | **Leírás** | **Korlátozások** |
 | ---------- | ----------- | ------------ |
 | **Biztonsági mentés & helyreállítás** | A rugalmas kiszolgáló automatikusan elvégzi az adatbázisfájlok napi biztonsági mentését, és folyamatosan készíti el a tranzakciónaplókat. A biztonsági mentések megtekinthetők az 1 – 35 nap közötti időszakban. Az adatbázis-kiszolgálót bármikor visszaállíthatja a biztonsági másolatok megőrzési időszakán belüli bármely időpontra. A helyreállítás ideje a visszaállítani kívánt adatok méretétől és a napló-helyreállítás elvégzéséhez szükséges időtől függ. További részletekért tekintse meg a [fogalmak – biztonsági mentés és visszaállítás](./concepts-backup-restore.md) című témakört. |A biztonsági mentési adatterületek a régión belül maradnak |
 | **Helyi redundáns biztonsági mentés** | A rugalmas kiszolgálói biztonsági mentések automatikusan és biztonságosan tárolódnak egy helyi redundáns tárolóban egy adott régióban és ugyanazon rendelkezésre állási zónában. A helyileg redundáns biztonsági másolatok háromszor replikálják a kiszolgáló biztonsági mentési adatfájljait az elsődleges régió egyetlen fizikai helyén belül. A helyileg redundáns biztonsági mentési tár legalább 99,999999999%-os (11 kilenc) tartósságot biztosít az objektumok számára egy adott évben. További részletekért tekintse meg a [fogalmak – biztonsági mentés és visszaállítás](./concepts-backup-restore.md) című témakört.| Minden régióban alkalmazható |
@@ -63,7 +63,7 @@ A nem tervezett leállások az előre nem látható hibák miatt előfordulhatna
 > [!IMPORTANT]
 > A törölt kiszolgálók **nem** állíthatók vissza. Ha törli a kiszolgálót, a kiszolgálóhoz tartozó összes adatbázis is törlődik, és nem állítható helyre. Az [Azure erőforrás-zárolás](../../azure-resource-manager/management/lock-resources.md) segítségével megakadályozhatja a kiszolgáló véletlen törlését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [zónák redundáns magas rendelkezésre állásáról](./concepts-high-availability.md)
 - Tudnivalók a [biztonsági mentésről és a helyreállításról](./concepts-backup-restore.md)
