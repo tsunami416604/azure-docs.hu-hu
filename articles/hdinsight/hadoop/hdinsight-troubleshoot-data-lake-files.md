@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/13/2019
-ms.openlocfilehash: 92cce0751a400e17f9975d7ae3d10e6612017823
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8bac53cd08629e8b0a9cb91e596856c0ae6b5a2f
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533631"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289109"
 ---
 # <a name="unable-to-access-data-lake-storage-files-in-azure-hdinsight"></a>Nem lehet hozzáférni Data Lake Storage-fájlokhoz az Azure HDInsight
 
@@ -32,7 +32,7 @@ Előfordulhat, hogy a felhasználó visszavonta az egyszerű szolgáltatásnév 
 
 ### <a name="resolution"></a>Feloldás
 
-1. Győződjön meg arról, hogy az SP "x" engedélyekkel rendelkezik az elérési út mentén való bejáráshoz. További információ: [engedélyek](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html). Példa a DFS-parancsra a Data Lake Storage-fiókban található fájlokhoz vagy mappákhoz való hozzáférés vizsgálatához:
+1. Győződjön meg arról, hogy az SP "x" engedélyekkel rendelkezik az elérési út mentén való bejáráshoz. További információ: [engedélyek](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html). Minta `dfs` parancs a Data Lake Storage-fiókban található fájlokhoz vagy mappákhoz való hozzáférés vizsgálatához:
 
     ```
     hdfs dfs -ls /<path to check access>
@@ -54,13 +54,13 @@ Token Refresh failed - Received invalid http response: 500
 
 Előfordulhat, hogy a szolgáltatásnév eléréséhez megadott tanúsítvány érvényessége lejárt.
 
-1. SSH-t a átjárócsomóponthoz. A Storage-fiókhoz való hozzáférés ellenőrzését a következő DFS-parancs használatával:
+1. SSH-t a átjárócsomóponthoz. A következő paranccsal keresse meg a Storage-fiókhoz való hozzáférést `dfs` :
 
     ```
     hdfs dfs -ls /
     ```
 
-1. Győződjön meg arról, hogy a hibaüzenet a következőhöz hasonló:
+1. Győződjön meg arról, hogy a hibaüzenet a következő kimenethez hasonló:
 
     ```
     {"stderr": "-ls: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://gw0-abccluster.24ajrd4341lebfgq5unsrzq0ue.fx.internal.cloudapp.net:909/api/oauthtoken}}...
@@ -161,16 +161,10 @@ Invoke-AzureRmResourceAction `
 
 ```
 
-Meglévő tanúsítvány hozzárendeléséhez hozzon létre egy tanúsítványt, és készítse elő a. pfx-fájlt és a jelszót. Társítsa a tanúsítványt az egyszerű szolgáltatáshoz, amelyhez a fürt létrejött, és hogy a AppId készen áll.
+Meglévő tanúsítvány hozzárendeléséhez hozzon létre egy tanúsítványt, és készítse elő a. pfx-fájlt és a jelszót. Társítsa a tanúsítványt az egyszerű szolgáltatással, amelyhez a fürt létrejött, a AppId Ready használatával.
 
 Futtassa a PowerShell-parancsot a paramétereknek a tényleges értékekkel való helyettesítése után.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
-
-* Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
-
-* Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
-
-* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](../../azure-portal/supportability/how-to-create-azure-support-request.md)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

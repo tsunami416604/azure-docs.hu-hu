@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 6091ccbb64ec880224e861e1b8ee2bd39363385c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 9a01dabbd0a3e9d76caaead544be655b9505030d
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342382"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289204"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Felügyeleti portok védelme igény szerinti hozzáféréssel
 
@@ -37,7 +37,7 @@ Ezen az oldalon megtudhatja, hogyan veheti fel a JIT-t a biztonsági programba. 
 |Árképzési|[Az Azure Defender for Servers](defender-for-servers-introduction.md) használatát igényli|
 |Támogatott virtuális gépek:|![Igen, ](./media/icons/yes-icon.png) Azure Resource Manager használatával üzembe helyezett virtuális gépek.<br>![](./media/icons/no-icon.png)A klasszikus üzembe helyezési modellel rendelkező virtuális gépeket nem. [További információ ezekről a telepítési modellekről](../azure-resource-manager/management/deployment-models.md).<br>![Nem ](./media/icons/no-icon.png) [Azure Firewall Manager](../firewall-manager/overview.md) által vezérelt Azure-tűzfalak által védett virtuális gépek|
 |Szükséges szerepkörök és engedélyek:|Az **olvasó** -és **SecurityReader** szerepkörök egyaránt megtekinthetik a JIT-állapotot és a paramétereket.<br>Az JIT-sel használható egyéni szerepkörök létrehozásához tekintse meg a [Mi szükséges engedélyeket a JIT konfigurálásához és használatához?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)című témakörben.<br>Ha olyan felhasználók számára szeretne legkevesebb jogosultsági szintű szerepkört létrehozni, akiknek JIT-hozzáférést kell kérniük egy virtuális géphez, és nem kell más JIT-műveletet végezniük, használja a Security Center GitHub közösségi oldalain található [set-JitLeastPrivilegedRole szkriptet](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) .|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 
@@ -72,7 +72,7 @@ A Security Centerból engedélyezheti és konfigurálhatja a JIT VM-hozzáféré
       - A klasszikus VM-JIT támogatja a Azure Resource Manageron központilag telepített virtuális gépeket, nem a "klasszikus üzembe helyezést". [További információ a klasszikus vs Azure Resource Manager üzembe helyezési modellekről](../azure-resource-manager/management/deployment-models.md).
       - Egyéb – előfordulhat, hogy a virtuális gép ezen a lapon található, ha a JIT-megoldás le van tiltva az előfizetés vagy az erőforráscsoport biztonsági házirendjében.
 
-1. A **nincs konfigurálva** lapon jelölje ki a virtuális gépeket a JIT-mel, és válassza a **JIT engedélyezése a virtuális gépeken**lehetőséget. 
+1. A **nincs konfigurálva** lapon jelölje ki a virtuális gépeket a JIT-mel, és válassza a **JIT engedélyezése a virtuális gépeken** lehetőséget. 
 
     Megnyílik a JIT VM-hozzáférés lap, amely a Security Center által javasolt portok listáját tartalmazza:
     - 22 – SSH
@@ -80,7 +80,7 @@ A Security Centerból engedélyezheti és konfigurálhatja a JIT VM-hozzáféré
     - 5985 – WinRM 
     - 5986 – WinRM
 
-    Az alapértelmezett beállítások elfogadásához válassza a **Mentés**lehetőséget.
+    Az alapértelmezett beállítások elfogadásához válassza a **Mentés** lehetőséget.
 
 1. A JIT-beállítások testreszabása:
 
@@ -89,9 +89,9 @@ A Security Centerból engedélyezheti és konfigurálhatja a JIT VM-hozzáféré
 
     Minden porthoz (egyéni és alapértelmezett) a **port hozzáadása konfiguráció** ablaktábla a következő lehetőségeket kínálja:
 
-    - **Protokoll**– a kérelem jóváhagyásakor a porton engedélyezett protokoll
-    - **Engedélyezett forrás IP**-címek – a kérés jóváhagyásakor a porton engedélyezett IP-címtartományok
-    - **Kérelmek maximális ideje**– az a maximális időtartam, ameddig egy adott portot meg lehet nyitni
+    - **Protokoll** – a kérelem jóváhagyásakor a porton engedélyezett protokoll
+    - **Engedélyezett forrás IP** -címek – a kérés jóváhagyásakor a porton engedélyezett IP-címtartományok
+    - **Kérelmek maximális ideje** – az a maximális időtartam, ameddig egy adott portot meg lehet nyitni
 
      1. Állítsa be a port biztonságát az igényeinek megfelelően.
 
@@ -107,15 +107,15 @@ A virtuális gép igény szerinti konfigurálását úgy módosíthatja, hogy eg
 
 Egy virtuális gép meglévő JIT-szabályainak szerkesztése:
 
-1. Nyissa meg az Azure Defender irányítópultját, és a speciális védelem területen válassza az **adaptív alkalmazás-vezérlőelemek**lehetőséget.
+1. Nyissa meg az Azure Defender irányítópultját, és a speciális védelem területen válassza az **adaptív alkalmazás-vezérlőelemek** lehetőséget.
 
 1. A **konfigurált** lapon kattintson a jobb gombbal arra a virtuális gépre, amelyhez portot kíván hozzáadni, majd válassza a szerkesztés lehetőséget. 
 
     ![JIT VM-hozzáférési konfiguráció szerkesztése a Azure Security Centerban](./media/security-center-just-in-time/jit-policy-edit-security-center.png)
 
-1. A **JIT VM-hozzáférés konfigurálása**területen szerkesztheti a már védett portok meglévő beállításait, vagy hozzáadhat egy új egyéni portot is.
+1. A **JIT VM-hozzáférés konfigurálása** területen szerkesztheti a már védett portok meglévő beállításait, vagy hozzáadhat egy új egyéni portot is.
 
-1. Ha befejezte a portok szerkesztését, válassza a **Mentés**lehetőséget.
+1. Ha befejezte a portok szerkesztését, válassza a **Mentés** lehetőséget.
  
 
 
@@ -130,13 +130,13 @@ A JIT-t a Azure Portal Azure Virtual Machines oldalain engedélyezheti egy virtu
 > [!TIP]
 > Ha egy virtuális géphez már van engedélyezve az igény szerinti hozzáférés, a konfiguráció oldalán láthatja, hogy az igény szerint engedélyezve van, és a hivatkozásra kattintva megnyithatja az igény szerinti virtuálisgép-hozzáférési lapot Security Centerban, és megtekintheti és módosíthatja a beállításokat.
 
-1. A [Azure Portal](https://ms.portal.azure.com)keresse meg és válassza ki a **virtuális gépek**elemet. 
+1. A [Azure Portal](https://ms.portal.azure.com)keresse meg és válassza ki a **virtuális gépek** elemet. 
 
 1. Válassza ki azt a virtuális gépet, amelyet a JIT használatával szeretne védelemmel ellátni.
 
-1. A menüben válassza a **Konfigurálás**lehetőséget.
+1. A menüben válassza a **Konfigurálás** lehetőséget.
 
-1. Az igény szerinti **hozzáférés**területen válassza az igény szerinti **Engedélyezés**lehetőséget. 
+1. Az igény szerinti **hozzáférés** területen válassza az igény szerinti **Engedélyezés** lehetőséget. 
 
     Ez a virtuális gép igény szerinti elérését teszi lehetővé a következő alapértelmezett beállításokkal:
 
@@ -157,9 +157,9 @@ A JIT-t a Azure Portal Azure Virtual Machines oldalain engedélyezheti egy virtu
 
         ![JIT VM-hozzáférési konfiguráció szerkesztése a Azure Security Centerban](./media/security-center-just-in-time/jit-policy-edit-security-center.png)
 
-    1. A **JIT VM-hozzáférés konfigurálása**területen szerkesztheti a már védett portok meglévő beállításait, vagy hozzáadhat egy új egyéni portot is.
+    1. A **JIT VM-hozzáférés konfigurálása** területen szerkesztheti a már védett portok meglévő beállításait, vagy hozzáadhat egy új egyéni portot is.
 
-    1. Ha befejezte a portok szerkesztését, válassza a **Mentés**lehetőséget.
+    1. Ha befejezte a portok szerkesztését, válassza a **Mentés** lehetőséget.
 
 
 ### <a name="powershell"></a>[**PowerShell**](#tab/jit-config-powershell)
@@ -184,13 +184,13 @@ A következő PowerShell-parancsok hozza létre ezt a JIT-konfigurációt:
         id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";
         ports=(@{
              number=22;
-             protocol="\*";
-             allowedSourceAddressPrefix=@("\*");
+             protocol="*";
+             allowedSourceAddressPrefix=@("*");
              maxRequestAccessDuration="PT3H"},
              @{
              number=3389;
-             protocol="\*";
-             allowedSourceAddressPrefix=@("\*");
+             protocol="*";
+             allowedSourceAddressPrefix=@("*");
              maxRequestAccessDuration="PT3H"})})
     ```
 
@@ -241,7 +241,7 @@ Ezeket a beállításokat az alábbi külön lapon ismertetjük.
 
 Ha egy virtuális gépnek engedélyezve van a JIT, hozzáférést kell kérnie a csatlakozáshoz. Bármilyen támogatott módon kérhet hozzáférést, függetlenül attól, hogy hogyan engedélyezte a JIT-t.
 
-:::image type="content" source="./media/security-center-just-in-time/jit-request-security-center.gif" alt-text="JIT virtuális gép hozzáférésének konfigurálása Azure Security Center":::
+:::image type="content" source="./media/security-center-just-in-time/jit-request-security-center.gif" alt-text="JIT-hozzáférés kérése Security Center":::
 
 1. A **virtuális gépek igény szerinti elérése** lapon válassza a **konfigurált** lapot.
 
@@ -251,11 +251,11 @@ Ha egy virtuális gépnek engedélyezve van a JIT, hozzáférést kell kérnie a
 
     - A **kapcsolat részletei** oszlop a virtuális gép csatlakoztatásához és a nyitott portok eléréséhez szükséges információkat tartalmazza.
 
-1. Válassza a **hozzáférés kérése**lehetőséget. Megnyílik a **kérelem hozzáférése** ablak.
+1. Válassza a **hozzáférés kérése** lehetőséget. Megnyílik a **kérelem hozzáférése** ablak.
 
-1. A **kérelmek hozzáférése**területen minden egyes virtuális gép esetében konfigurálja a megnyitni kívánt portokat, valamint a port megnyitásának forrás IP-címeit, valamint azt az időablakot, amelyre a port megnyílik. Csak a konfigurált portokhoz lehet hozzáférést kérni. Minden porton engedélyezett a létrehozott JIT-konfigurációból származó maximális idő.
+1. A **kérelmek hozzáférése** területen minden egyes virtuális gép esetében konfigurálja a megnyitni kívánt portokat, valamint a port megnyitásának forrás IP-címeit, valamint azt az időablakot, amelyre a port megnyílik. Csak a konfigurált portokhoz lehet hozzáférést kérni. Minden porton engedélyezett a létrehozott JIT-konfigurációból származó maximális idő.
 
-1. Válassza a **portok megnyitása**lehetőséget.
+1. Válassza a **portok megnyitása** lehetőséget.
 
 > [!NOTE]
 > Ha egy hozzáférést kérő felhasználó proxy mögött van, akkor az **IP-cím** nem működik. Előfordulhat, hogy meg kell határoznia a szervezet teljes IP-címtartományt.
@@ -344,7 +344,7 @@ További információ: [JIT hálózati hozzáférési házirendek](/rest/api/sec
 
 A naplóbeli kereséssel betekintést nyerhet a virtuális gépek tevékenységeibe. A naplók megtekintése:
 
-1. A **virtuális gépek igény szerinti elérése lehetőségnél**válassza a **konfigurált** lapot.
+1. A **virtuális gépek igény szerinti elérése lehetőségnél** válassza a **konfigurált** lapot.
 
 1. A naplózni kívánt virtuális gép esetében nyissa meg a sor végén található három pont menüt.
  
@@ -354,7 +354,7 @@ A naplóbeli kereséssel betekintést nyerhet a virtuális gépek tevékenysége
 
    A műveletnapló az adott virtuális géphez tartozó korábbi műveletek szűrt nézetét, valamint időt, dátumot és előfizetést biztosít.
 
-1. A napló adatainak letöltéséhez válassza a **Letöltés CSV-ként**lehetőséget.
+1. A napló adatainak letöltéséhez válassza a **Letöltés CSV-ként** lehetőséget.
 
 
 

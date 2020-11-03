@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: c92671028f851a456b3222100e33958c9e26466a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e0cd4cad74257dbf83ec8d30405eacca341a8d31
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785323"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289528"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault áthelyezése másik előfizetésre
 
@@ -100,9 +100,9 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 
 Most, hogy a tároló hozzá van rendelve a megfelelő bérlői AZONOSÍTÓhoz és a régi hozzáférési szabályzatok bejegyzéseihez, az új hozzáférési szabályzat bejegyzéseit a Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) parancsmaggal vagy az Azure CLI az Key [Vault set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) paranccsal teheti meg.
 
-Ha felügyelt identitást használ az Azure-erőforrásokhoz, frissítenie kell az új Azure Active Directory bérlőre is. A felügyelt identitásokkal kapcsolatos további információkért [tekintse át a felügyelt identitások áttekintése](/azure/active-directory/managed-identities-azure-resources/overview)című témakört.
+Ha felügyelt identitást használ az Azure-erőforrásokhoz, frissítenie kell az új Azure Active Directory bérlőre is. A felügyelt identitásokkal kapcsolatos további információkért [tekintse át a felügyelt identitások áttekintése](../../active-directory/managed-identities-azure-resources/overview.md)című témakört.
 
 Ha felügyelt identitást használ, az identitást is frissítenie kell, mert a régi identitás többé nem lesz a megfelelő Azure Active Directory bérlőn. A probléma megoldásához tekintse meg a következő dokumentumokat. 
 
-* [MSI frissítése](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories)
-* [Előfizetés átszállítása új könyvtárba](https://docs.microsoft.com/azure/role-based-access-control/transfer-subscription)
+* [MSI frissítése](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)
+* [Előfizetés átszállítása új könyvtárba](../../role-based-access-control/transfer-subscription.md)

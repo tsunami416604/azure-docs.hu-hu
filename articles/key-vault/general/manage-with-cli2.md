@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: dc60d2b6cef8ad19526c5ec243ae1c43529954a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb7e047d998342125a52af5ea3ae1e88fe88d313
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87504534"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289901"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Key Vault kezelése az Azure CLI használatával 
 
@@ -120,7 +120,7 @@ az provider register -n Microsoft.KeyVault
 
 `az keyvault create`Kulcstartó létrehozásához használja az parancsot. Ez a parancsfájl három kötelező paraméterrel rendelkezik: egy erőforráscsoport-név, egy kulcstartó neve és a földrajzi hely.
 
-Ha a **ContosoKeyVault**nevű új tárolót szeretne létrehozni, akkor a **Kelet-Ázsia** helyen található erőforráscsoport- **ContosoResourceGroup**írja be a következőt: 
+Ha a **ContosoKeyVault** nevű új tárolót szeretne létrehozni, akkor a **Kelet-Ázsia** helyen található erőforráscsoport- **ContosoResourceGroup** írja be a következőt: 
 
 ```azurecli
 az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "East Asia"
@@ -128,8 +128,8 @@ az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGro
 
 A parancs kimenete a létrehozott kulcstartó tulajdonságait jeleníti meg. A két legfontosabb tulajdonság:
 
-* **név**: a példában a név ContosoKeyVault. Ezt a nevet fogja használni a többi Key Vault parancshoz.
-* **vaultUri**: a PÉLDÁBAN az URI a (z https://contosokeyvault.vault.azure.net ). A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
+* **név** : a példában a név ContosoKeyVault. Ezt a nevet fogja használni a többi Key Vault parancshoz.
+* **vaultUri** : a PÉLDÁBAN az URI a (z https://contosokeyvault.vault.azure.net ). A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
 
 Azure-fiókja most már engedéllyel rendelkezik arra, hogy bármilyen műveletet végezzen ezen a kulcstartón. Még senki más nem rendelkezik jogosultsággal.
 
@@ -147,7 +147,7 @@ Ha van meglévő kulcsa egy. PEM-fájlban, feltöltheti Azure Key Vaultba. Dönt
 az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "hVFkk965BuUv" --protection software
 ```
 
-Most már hivatkozhat arra a kulcsra, amelyet az Ön által létrehozott vagy a Azure Key Vaultba töltött fel az URI használatával. **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey**A használatával mindig megkapja az aktuális verziót. A megadott verzió beszerzéséhez használja a https://[kulcstartó-név]. Vault. Azure. net/Keys/[kulcsnév]/[Key-Unique-id] értéket. Például: **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**. 
+Most már hivatkozhat arra a kulcsra, amelyet az Ön által létrehozott vagy a Azure Key Vaultba töltött fel az URI használatával. **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** A használatával mindig megkapja az aktuális verziót. A megadott verzió beszerzéséhez használja a https://[kulcstartó-név]. Vault. Azure. net/Keys/[kulcsnév]/[Key-Unique-id] értéket. Például: **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**. 
 
 Adjon hozzá egy titkos kulcsot a tárolóhoz, amely egy SQLPassword nevű jelszó, amely a "hVFkk965BuUv" értékkel rendelkezik az Azure Key Vaults szolgáltatásban. 
 
@@ -194,7 +194,7 @@ A kulcstartót használó alkalmazásoknak az Azure Active Directoryból szárma
 
 Az alkalmazásnak mindkét értékkel rendelkeznie kell ahhoz, hogy Azure Active Directory-jogkivonatot kapjon. A jogkivonatok lekérésére konfigurált alkalmazások az alkalmazástól függenek. A [Key Vault-mintaalkalmazás](https://www.microsoft.com/download/details.aspx?id=45343) esetében az alkalmazás tulajdonosa adja meg ezeket az értékeket az app.config fájlban.
 
-Az alkalmazások Azure Active Directorysal való regisztrálásának részletes lépéseiért tekintse át az [alkalmazások integrálása a Azure Active Directory](../../active-directory/develop/active-directory-integrating-applications.md)használatával című cikket, és a [portálon hozzon létre egy Azure Active Directory alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz](../../active-directory/develop/howto-create-service-principal-portal.md), és [hozzon létre egy Azure-szolgáltatást az Azure CLI-vel](/cli/azure/create-an-azure-service-principal-azure-cli).
+Az alkalmazások Azure Active Directorysal való regisztrálásának részletes lépéseiért tekintse át az [alkalmazások integrálása a Azure Active Directory](../../active-directory/develop/quickstart-register-app.md)használatával című cikket, és a [portálon hozzon létre egy Azure Active Directory alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz](../../active-directory/develop/howto-create-service-principal-portal.md), és [hozzon létre egy Azure-szolgáltatást az Azure CLI-vel](/cli/azure/create-an-azure-service-principal-azure-cli).
 
 Alkalmazás regisztrálása Azure Active Directoryban:
 
@@ -321,7 +321,7 @@ az keyvault key delete --vault-name "ContosoKeyVault" --name "ContosoFirstKey"
 az keyvault secret delete --vault-name "ContosoKeyVault" --name "SQLPassword"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Key Vault-parancsokkal kapcsolatos teljes Azure CLI-referenciáért lásd: [Key Vault CLI-hivatkozás](/cli/azure/keyvault).
 

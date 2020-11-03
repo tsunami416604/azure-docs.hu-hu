@@ -4,12 +4,12 @@ description: Választ ad az Azure VMware megoldással kapcsolatos gyakori kérd�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 64b2955b1417d6931172b41f83f05d5f1b560708
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 68eee2d55e3c22b502d17a91f4ba4509c292c31c
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911885"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288670"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Gyakran ismételt kérdések az Azure VMware-megoldásról
 
@@ -79,6 +79,9 @@ Nem, a sávszélesség és a késési követelmények miatt.
 #### <a name="can-azure-bastion-be-used-for-connecting-to-azure-vmware-solution-vms"></a>Használható az Azure Bastion az Azure VMware Megoldásbeli virtuális gépekhez való csatlakozáshoz?
 Az Azure Bastion az a szolgáltatás, amely a Jump Box-hoz való kapcsolódáshoz ajánlott, hogy megakadályozza az Azure VMware-megoldás az interneten való kihelyezését. Az Azure Bastion nem használható az Azure VMware-megoldás virtuális gépekhez való kapcsolódáshoz, mivel azok nem Azure IaaS-objektumok.
 
+#### <a name="can-azure-load-balancer-internal-be-used-for-azure-vmware-solution-vms"></a>Használható-e az Azure VMware-megoldás virtuális gépei számára a belső Azure Load Balancer?
+Nem. A belső Azure Load Balancer csak az Azure IaaS virtuális gépeket támogatja. A Azure Load Balancer nem támogatja az IP-alapú háttér-készletek használatát; csak azok az Azure-beli virtuális gépek vagy virtuálisgép-méretezési csoport (VMSS) objektumok, amelyekben az Azure VMware-megoldás virtuális gépei nem Azure-objektumok.
+
 #### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>Használható meglévő ExpressRoute-átjáró az Azure VMware-megoldáshoz való kapcsolódáshoz?
 Igen, használhat egy meglévő ExpressRoute-átjárót az Azure VMware-megoldáshoz való kapcsolódáshoz, ha az nem lépi túl a virtuális hálózatban lévő négy ExpressRoute áramköri korlátot.  Ahhoz azonban, hogy a helyszíni Azure VMware-megoldás elérhető legyen a ExpressRoute-on keresztül, rendelkeznie kell ExpressRoute Global Reach, mivel a ExpressRoute-átjáró nem biztosít tranzitív útválasztást a csatlakoztatott áramkörök között.
 
@@ -118,7 +121,7 @@ Mivel ezeket a biztonsági mentési megoldásokat az ügyfelek telepítik és ke
 
 #### <a name="what-is-the-correct-storage-policy-for-the-dedupe-setup"></a>Mi a helyes tárolási szabályzat a dedupe telepítőhöz?
 
-Használja a virtuálisgép-sablon *thin_provision* tárolási házirendjét.  Az alapértelmezett érték *thick_provision* .
+Használja a virtuálisgép-sablon *thin_provision* tárolási házirendjét.  Az alapértelmezett érték *thick_provision*.
 
 #### <a name="are-the-snmp-infrastructure-logs-shared"></a>Megosztották-e az SNMP-infrastruktúra naplóit?
 

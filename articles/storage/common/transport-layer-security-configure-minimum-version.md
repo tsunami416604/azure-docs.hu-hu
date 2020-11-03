@@ -10,12 +10,12 @@ ms.date: 10/27/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 07f506ac46b8aa503138cec33918534ea309defc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 5098d87d63d4002c4f219c5d2703ec1375599e00
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785799"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289461"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Transport Layer Security (TLS) minimálisan szükséges verziójának kikényszerítés a Storage-fiókra irányuló kérelmekhez
 
@@ -69,7 +69,7 @@ StorageBlobLogs
 
 Az eredmények a TLS egyes verzióira vonatkozó kérelmek számának számát mutatják:
 
-:::image type="content" source="media/transport-layer-security-configure-minimum-version/log-analytics-query-version.png" alt-text="A naplózási kérelmek diagnosztikai beállításainak létrehozását bemutató képernyőkép":::
+:::image type="content" source="media/transport-layer-security-configure-minimum-version/log-analytics-query-version.png" alt-text="Képernyőfelvétel a log Analytics-lekérdezés eredményeiről a TLS-verzió visszaküldéséhez":::
 
 ### <a name="query-logged-requests-by-caller-ip-address-and-user-agent-header"></a>Naplózott kérelmek lekérdezése a hívó IP-címe és a felhasználói ügynök fejléce alapján
 
@@ -89,7 +89,9 @@ Ha biztos abban, hogy a TLS régebbi verzióit használó ügyfelektől érkező
 
 ### <a name="configure-the-minimum-tls-version-for-a-storage-account"></a>A Storage-fiók minimális TLS-verziójának konfigurálása
 
-A Storage-fiók minimális TLS-verziójának konfigurálásához állítsa be a **MinimumTlsVersion** verzióját a fiókhoz. Ez a tulajdonság minden olyan Storage-fiókhoz elérhető, amely a Azure Resource Manager telepítési modellel lett létrehozva. További információ a Azure Resource Manager telepítési modellről: a [Storage-fiók áttekintése](storage-account-overview.md).
+A Storage-fiók minimális TLS-verziójának konfigurálásához állítsa be a **MinimumTlsVersion** verzióját a fiókhoz. Ez a tulajdonság minden olyan Storage-fiókhoz elérhető, amely az Azure nyilvános felhőben vagy Azure Government-felhőben Azure Resource Manager üzembe helyezési modellel lett létrehozva. További információ a Azure Resource Manager telepítési modellről: a [Storage-fiók áttekintése](storage-account-overview.md).
+
+A **MinimumTlsVersion** tulajdonság alapértelmezés szerint nincs beállítva, és nem ad vissza értéket, amíg explicit módon be nem állítja azt.  Ha a tulajdonság értéke **Null** , a Storage-fiók engedélyezi a TLS 1,0-es vagy újabb verziójával küldött kérelmeket.
 
 # <a name="portal"></a>[Portál](#tab/portal)
 
@@ -101,13 +103,11 @@ Ha egy meglévő Storage-fiók minimális TLS-verzióját szeretné konfiguráln
 1. Válassza ki a **konfigurációs** beállítást.
 1. A **TLS minimális verziója** területen a legördülő listából válassza ki az ebben a Storage-fiókban található adatok eléréséhez szükséges TLS minimális verzióját az alábbi ábrán látható módon.
 
-    :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="A naplózási kérelmek diagnosztikai beállításainak létrehozását bemutató képernyőkép":::
+    :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="A TLS minimális verziójának konfigurálását bemutató képernyőkép a Azure Portal":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Ha egy Storage-fiók minimális TLS-verzióját szeretné konfigurálni a PowerShell-lel, telepítse [Azure PowerShell 4.4.0](https://www.powershellgallery.com/packages/Az/4.4.0) vagy újabb verziót. Ezután konfigurálja a **MinimumTLSVersion** tulajdonságot egy új vagy meglévő Storage-fiókhoz. A **MinimumTlsVersion** érvényes értékei: `TLS1_0` , `TLS1_1` és `TLS1_2` .
-
-A **MinimumTlsVersion** tulajdonság alapértelmezés szerint nincs beállítva a PowerShell-lel rendelkező Storage-fiók létrehozásakor. Ez a tulajdonság csak akkor ad vissza értéket, ha explicit módon beállította. A Storage-fiók engedélyezi a TLS 1,0-es vagy újabb verziójával küldött kérelmeket, ha a tulajdonság értéke **Null** .
 
 A következő példa létrehoz egy Storage-fiókot, és beállítja a **MinimumTLSVersion** a TLS 1,1-re, majd frissíti a fiókot, és beállítja a **MinimumTLSVersion** a TLS 1,2-re. A példa az egyes esetekben a tulajdonság értékét is lekéri. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
 
@@ -138,8 +138,6 @@ Set-AzStorageAccount -ResourceGroupName $rgName `
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Az Azure CLI-vel rendelkező Storage-fiókok minimális TLS-verziójának konfigurálásához telepítse az Azure CLI 2.9.0 vagy újabb verzióját. További információ: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ezután konfigurálja a **minimumTlsVersion** tulajdonságot egy új vagy meglévő Storage-fiókhoz. A **minimumTlsVersion** érvényes értékei: `TLS1_0` , `TLS1_1` és `TLS1_2` .
-
-A **minimumTlsVersion** tulajdonság alapértelmezés szerint nincs beállítva, amikor létrehoz egy Storage-fiókot az Azure CLI-vel. Ez a tulajdonság csak akkor ad vissza értéket, ha explicit módon beállította. A Storage-fiók engedélyezi a TLS 1,0-es vagy újabb verziójával küldött kérelmeket, ha a tulajdonság értéke **Null** .
 
 A következő példa létrehoz egy Storage-fiókot, és beállítja a **minimumTLSVersion** a TLS 1,1-re. Ezután frissíti a fiókot, és beállítja a **minimumTLSVersion** tulajdonságot a TLS 1,2 értékre. A példa az egyes esetekben a tulajdonság értékét is lekéri. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
 
@@ -304,7 +302,7 @@ Ha meg szeretné tekinteni a megfelelőségi jelentést a Azure Portalban, köve
 1. Szűrje az eredményeket az előző lépésben létrehozott szabályzat-hozzárendelés nevére. A jelentés azt jeleníti meg, hogy hány erőforrás felel meg a szabályzatnak.
 1. További részletekért tekintse meg a jelentés részletezését, beleértve a nem megfelelő tárolási fiókok listáját.
 
-    :::image type="content" source="media/transport-layer-security-configure-minimum-version/compliance-report-policy-portal.png" alt-text="A naplózási kérelmek diagnosztikai beállításainak létrehozását bemutató képernyőkép":::
+    :::image type="content" source="media/transport-layer-security-configure-minimum-version/compliance-report-policy-portal.png" alt-text="A minimális TLS-verzióra vonatkozó naplózási szabályzat megfelelőségi jelentését bemutató képernyőkép":::
 
 ## <a name="use-azure-policy-to-enforce-the-minimum-tls-version"></a>Azure Policy használata a TLS minimális verziójának betartatásához
 
@@ -340,7 +338,7 @@ Miután létrehozta a szabályzatot a megtagadási hatállyal, és hozzárendeli
 
 Az alábbi képen látható az a hiba, amely akkor fordul elő, ha olyan Storage-fiókot próbál létrehozni, amely a TLS 1,0-as minimális TLS-verzióra van beállítva (ez az alapértelmezett érték egy új fiók esetében), ha egy megtagadási hatással rendelkező szabályzat megköveteli, hogy a TLS 1,2-es minimális TLS-verzió legyen beállítva.
 
-:::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="A naplózási kérelmek diagnosztikai beállításainak létrehozását bemutató képernyőkép":::
+:::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="A házirend megsértése esetén a Storage-fiók létrehozásakor előforduló hibát ábrázoló képernyőkép":::
 
 ## <a name="network-considerations"></a>Hálózati szempontok
 

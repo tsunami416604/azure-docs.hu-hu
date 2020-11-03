@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: cd4f2198721e0d92abe22b1b6d95dceda2dc874d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 59cfe7b990523e5cb165d1037291b3c1b1301624
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789182"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289229"
 ---
 # <a name="continuously-export-security-center-data"></a>Security Center-adatfeldolgozás folyamatos exportálása
 
@@ -41,7 +41,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a folyamatos exportálást Log Anal
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|Ingyenes|
 |Szükséges szerepkörök és engedélyek:|<ul><li>**Biztonsági rendszergazda** vagy az erőforráscsoport **tulajdonosa**</li><li>Írási engedélyek a célként megadott erőforráshoz</li><li>Ha az alábbiakban ismertetett Azure Policy "DeployIfNotExist" szabályzatot használja, a szabályzatok hozzárendelésére vonatkozó engedélyekre is szüksége lesz</li></ul>|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Igen](./media/icons/yes-icon.png) Kínai gov (az Event hub-hoz), egyéb gov|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov, egyéb gov<br>![Igen](./media/icons/yes-icon.png) Kínai gov (az Event hub-hoz)|
 |||
 
 
@@ -71,9 +71,9 @@ Az alábbi lépések szükségesek, függetlenül attól, hogy folyamatos export
 
     Ahhoz, hogy a megállapítások szerepeljenek a javaslatokban, engedélyezze a **biztonsági megállapítások belefoglalása** lehetőséget.
 
-    :::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Biztonsági megállapítások bekapcsolása a folyamatos exportálási konfigurációban&quot; :::
+    :::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Biztonsági megállapítások bekapcsolása a folyamatos exportálási konfigurációban" :::
 
-1. Az &quot;exportálási cél" területen válassza ki, hogy hová szeretné menteni az adatok mentését. Az adattárolók egy másik előfizetésben lévő célhelyre menthetők (például egy központi Event hub-példányon vagy egy központi Log Analytics munkaterületen).
+1. Az "exportálási cél" területen válassza ki, hogy hová szeretné menteni az adatok mentését. Az adattárolók egy másik előfizetésben lévő célhelyre menthetők (például egy központi Event hub-példányon vagy egy központi Log Analytics munkaterületen).
 1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="use-the-rest-api"></a>[**A REST API használata**](#tab/rest-api)
@@ -124,15 +124,11 @@ A folyamatos exportálási konfigurációk a szervezeten belüli üzembe helyez�
     > [!TIP]
     > Ezeket a Azure Policy keresésével is megtalálhatja:
     > 1. Nyissa meg Azure Policy.
-    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="Biztonsági megállapítások bekapcsolása a folyamatos exportálási konfigurációban&quot; :::
-
-1. Az &quot;exportálási cél":::
+    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="Hozzáférés Azure Policy":::
     > 2. A Azure Policy menüben válassza a **definíciók** lehetőséget, és keressen rájuk név alapján. 
 
 1. A megfelelő Azure Policy lapon válassza a **hozzárendelés** lehetőséget.
-    :::image type="content" source="./media/continuous-export/export-policy-assign.png" alt-text="Biztonsági megállapítások bekapcsolása a folyamatos exportálási konfigurációban&quot; :::
-
-1. Az &quot;exportálási cél":::
+    :::image type="content" source="./media/continuous-export/export-policy-assign.png" alt-text="A Azure Policy kiosztása":::
 
 1. Nyissa meg az egyes lapokat, és adja meg a kívánt paramétereket:
     1. Az **alapvető beállítások** lapon állítsa be a házirend hatókörét. A központosított felügyelet használatához rendelje hozzá a szabályzatot a folyamatos exportálási konfigurációt használó előfizetéseket tartalmazó felügyeleti csoporthoz. 
@@ -141,9 +137,7 @@ A folyamatos exportálási konfigurációk a szervezeten belüli üzembe helyez�
         > Minden paraméterhez tartozik egy elemleírás, amely ismerteti az Ön számára elérhető lehetőségeket.
         >
         > Azure Policy paraméterek lapja (1) hozzáférést biztosít a hasonló konfigurációs beállításokhoz, mint a Security Center folyamatos exportálási lapja (2).
-        > :::image type="content" source="./media/continuous-export/azure-policy-next-to-continuous-export.png" alt-text="Biztonsági megállapítások bekapcsolása a folyamatos exportálási konfigurációban&quot; :::
-
-1. Az &quot;exportálási cél" lightbox="./media/continuous-export/azure-policy-next-to-continuous-export.png":::
+        > :::image type="content" source="./media/continuous-export/azure-policy-next-to-continuous-export.png" alt-text="A folyamatos exportálás paramétereinek összehasonlítása Azure Policy" lightbox="./media/continuous-export/azure-policy-next-to-continuous-export.png":::
     1. Ha a hozzárendelést meglévő előfizetésekre szeretné alkalmazni, nyissa meg a **szervizelés** lapot, és válassza a Szervizelési feladat létrehozása lehetőséget.
 1. Tekintse át az összefoglalás lapot, és válassza a **Létrehozás** lehetőséget.
 
@@ -160,7 +154,7 @@ A biztonsági riasztások és javaslatok tárolása a *SecurityAlert* és a *Sec
 Az alábbi táblákat tartalmazó Log Analytics-megoldás neve attól függ, hogy engedélyezve van-e az Azure Defender: Security ("Security and Audit") vagy a SecurityCenterFree. 
 
 > [!TIP]
-> A cél munkaterületen lévő információk megtekintéséhez engedélyeznie kell a következő megoldások valamelyikét **Security and Audit** vagy **SecurityCenterFree** .
+> A cél munkaterületen lévő információk megtekintéséhez engedélyeznie kell a következő megoldások valamelyikét **Security and Audit** vagy **SecurityCenterFree**.
 
 ![A * SecurityAlert * tábla Log Analytics](./media/continuous-export/log-analytics-securityalert-solution.png)
 

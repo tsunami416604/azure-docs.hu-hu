@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: f8e794a51a6789ba58d9475bb1ca78a442d7e315
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9557ada8001022d460c35a091fdac7699ac5e5ec
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741377"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289391"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>Oktatóanyag: Azure Key Vault használata virtuális géppel a .NET-ben
 
@@ -197,11 +197,11 @@ Adja hozzá ezeket a sorokat, és frissítse az URI-t, hogy az tükrözze a `vau
     }
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rájuk szükség, törölje a virtuális gépet és a kulcstartót.
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)
+> [Azure Key Vault REST API](/rest/api/keyvault/)

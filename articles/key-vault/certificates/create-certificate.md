@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 71d8961af372f927fab909073daa715766542f87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9545c040809331a5556b11f6cc7536931e2d421
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88606672"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289572"
 ---
 # <a name="certificate-creation-methods"></a>Tanúsítvány-létrehozási módszerek
 
@@ -82,7 +82,7 @@ A tanúsítvány létrehozása manuálisan vagy "saját" kibocsátó használat�
 
 |Szolgáltató|Tanúsítvány típusa|Konfiguráció beállítása  
 |--------------|----------------------|------------------|  
-|DigiCert|A Key Vault OV vagy EV SSL-tanúsítványokat kínál a DigiCert| [Integrációs útmutató](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)
+|DigiCert|A Key Vault OV vagy EV SSL-tanúsítványokat kínál a DigiCert| [Integrációs útmutató](./how-to-integrate-certificate-authority.md)
 |GlobalSign|A Key Vault OV vagy EV SSL-tanúsítványokat kínál a GlobalSign| [Integrációs útmutató](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
 
  A tanúsítvány kiállítója Azure Key Vault (KV) CertificateIssuer erőforrásként jelölt entitás. A rendszer a KV-tanúsítvány forrására vonatkozó információk megadására szolgál. kiállító neve, szolgáltatója, hitelesítő adatai és egyéb rendszergazdai részletek.

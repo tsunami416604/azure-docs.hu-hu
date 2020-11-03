@@ -4,30 +4,28 @@ description: Térbeli adatainak indexelése Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/03/2020
+ms.date: 11/03/2020
 ms.author: tisande
-ms.openlocfilehash: f250c15dbb30736e3e89a301fc236a848bd05da2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 347617fb13041a8fb31c28f259aaf761baae2e53
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092058"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286310"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Térinformatikai adatindexek indexelése Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB adatbázis-motorját úgy terveztük, hogy valóban séma-agnosztikus legyen, és első osztályú támogatást nyújtson a JSON-hoz. A Azure Cosmos DB írásra optimalizált adatbázismotor natív módon értelmezi a GeoJSON standardban ábrázolt térbeli adatokra vonatkozó információkat.
 
-Dióhéjban a geometria a geodéziai Koordinátákból egy 2D-síkra van kialakítva, majd fokozatosan, egy **quadtree** használatával osztva a cellákba. Ezek a cellák az 1D-re vannak leképezve a cella helye alapján a Hilbert belül, amely megőrzi a pontok helyi **kitöltését** . Emellett, ha a helyadatok indexelve lettek, egy **mozaikként** ismert folyamaton halad át, azaz az adott helyet keresztező összes cella azonosítható és kulcsként tárolódik a Azure Cosmos db indexben. A lekérdezés időpontjában az argumentumok, például a pontok és a sokszögek a megfelelő cella-azonosító tartományok kinyerésére szolgálnak, majd az adatok az indexből való lekéréséhez használatosak.
+Dióhéjban a geometria a geodéziai Koordinátákból egy 2D-síkra van kialakítva, majd fokozatosan, egy **quadtree** használatával osztva a cellákba. Ezek a cellák az 1D-re vannak leképezve a cella helye alapján a Hilbert belül, amely megőrzi a pontok helyi **kitöltését**. Emellett, ha a helyadatok indexelve lettek, egy **mozaikként** ismert folyamaton halad át, azaz az adott helyet keresztező összes cella azonosítható és kulcsként tárolódik a Azure Cosmos db indexben. A lekérdezés időpontjában az argumentumok, például a pontok és a sokszögek a megfelelő cella-azonosító tartományok kinyerésére szolgálnak, majd az adatok az indexből való lekéréséhez használatosak.
 
-Ha olyan indexelési házirendet ad meg, amely tartalmazza a/* (az összes elérési út) térbeli indexét, akkor a tárolóban található összes adathalmaz a hatékony térbeli lekérdezésekhez van indexelve.
+Ha olyan indexelési házirendet ad meg, amely tartalmazza a `/*` (minden elérési út) térbeli indexét, akkor a tárolóban található összes adathalmaz a hatékony térbeli lekérdezésekhez van indexelve.
 
 > [!NOTE]
-> Azure Cosmos DB támogatja a pontok, Linestring, sokszögek és többsokszögek indexelését
->
->
+> Azure Cosmos DB támogatja a pontok, Linestring, sokszögek és többsokszögek indexelését. Ha indexeli az egyik ilyen típusú típust, a rendszer automatikusan indexeli az összes többi típust. Más szóval, ha a sokszögeket indexeli, akkor a pontok, a Linestring és a többsokszögek is indexelve lesznek. Az új térbeli típus indexelése nem befolyásolja az RU-díj vagy az index méretét, kivéve, ha érvényes GeoJSON-adattal rendelkezik.
 
-## <a name="modifying-geospatial-data-type"></a>Térinformatikai adattípus módosítása
+## <a name="modifying-geospatial-configuration"></a>Térinformatikai konfiguráció módosítása
 
 A tárolóban a **térinformatikai konfiguráció** meghatározza, hogy a térbeli adatai hogyan lesznek indexelve. Válasszon egy **térinformatikai konfigurációt** egy tárolóban: földrajz vagy geometria.
 

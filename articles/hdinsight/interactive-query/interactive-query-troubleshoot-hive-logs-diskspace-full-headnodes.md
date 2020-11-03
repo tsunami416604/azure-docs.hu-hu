@@ -7,12 +7,12 @@ author: nisgoel
 ms.author: nisgoel
 ms.reviewer: jasonh
 ms.date: 10/05/2020
-ms.openlocfilehash: 64bf5714f5eb99df9929a47fef414a827ec680af
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 107ec012bf2ff76ee1cbe4c5f8252566a5a16127
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145633"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288924"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>Forgatókönyv: Apache Hive naplók kitöltik a lemezterületet az Azure HDInsight lévő fő csomópontokon
 
@@ -23,7 +23,7 @@ Ez a cikk az Azure HDInsight-fürtök főcsomópontjain a nem elegendő lemezter
 Egy Apache Hive-vagy LLAP-fürtön a nem kívánt naplók a teljes lemezterületet veszik fel a fő csomópontokon. Ez az állapot a következő problémákhoz vezethet:
 
 - Az SSH-hozzáférés meghiúsul, mert nincs szóköz a fő csomóponton.
-- Ambari-dob *http-hiba: a 503 szolgáltatás nem érhető el* .
+- Ambari-dob *http-hiba: a 503 szolgáltatás nem érhető el*.
 - A HiveServer2 Interactive nem tud újraindulni.
 
 A `ambari-agent` naplók a következő bejegyzéseket fogják tartalmazni a probléma bekövetkezésekor:
@@ -71,10 +71,4 @@ A speciális kaptár log4j-konfigurációk esetében a jelenlegi alapértelmezet
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
-
-* Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
-
-* Csatlakozás az [@AzureSupport](https://twitter.com/azuresupport) Azure-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával – a hivatalos Microsoft Azure fiókkal – a felhasználói élmény javítása érdekében: válaszok, támogatás és szakértők.
-
-* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](../../azure-portal/supportability/how-to-create-azure-support-request.md)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

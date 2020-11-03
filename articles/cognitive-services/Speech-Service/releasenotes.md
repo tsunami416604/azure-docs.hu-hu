@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: e22400016eae0642c4e25fcfd4fcaaaab22a27a8
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 8faf9c913ea9bab2feaf698efeb6fd5b3ca63179
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280568"
+ms.locfileid: "93289619"
 ---
 # <a name="speech-service-release-notes"></a>Beszédfelismerési szolgáltatás kibocsátási megjegyzései
 
@@ -24,21 +24,13 @@ ms.locfileid: "93280568"
 
 **Megjegyzés** : a Windowson futó Speech SDK a visual Studio 2015, 2017 és 2019 rendszerhez készült Microsoft Visual C++ terjeszthető változattól függ. Töltse le [itt](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads).
 
-**Speech CLI (más néven SPX)**<br>
-Az SPX a parancssori felület, amellyel a kód írása nélkül használhatja az Azure Speech szolgáltatást. Töltse le a legújabb [verziót.](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-basics)
-- `spx csr dataset upload --kind audio|language|acoustic` – adatkészleteket hozhat létre a helyi adatokból, nem csak az URL-címekről.
-- `spx csr evaluation create|status|list|update|delete` – Hasonlítsa össze az új modelleket az alapértékek és egyéb modellek összehasonlításával.
-- `spx * list` – támogatja a nem lapozható élményt (nincs szükség a--Top X--skip X-re).
-- `spx * --http header A=B` – támogatja az egyéni fejléceket (az Office egyéni hitelesítéshez hozzáadva). 
-- `spx help` – a szöveg és a háttér színének továbbfejlesztett szövege (kék).
-
 **Új funkciók**
 - **Linux** : támogatás hozzáadva a Debian 10 és az Ubuntu 20,04 LTS rendszerhez.
 - **Python/Objective-C** : támogatás hozzáadva az `KeywordRecognizer` API-hoz. A dokumentációt [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-keyword-basics)találja.
 - **C++/Java/C #** : további támogatás a `HttpHeader` kulcs/érték beállításához a használatával `ServicePropertyChannel::HttpHeader` .
 - **JavaScript** : támogatás hozzáadva az `ConversationTranscriber` API-hoz. [Itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-conversation-transcription?pivots=programming-language-javascript)olvashatja el a dokumentációt. 
-- **C++/c #** : új metódus hozzáadva `AudioDataStream FromFile` (olvasáshoz). WAV-fájlok) [itt (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audiodatastream) és [itt (C#)](
-https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream.fromfile).
+- **C++/c #** : új metódus hozzáadva `AudioDataStream FromWavFileInput` (olvasáshoz). WAV-fájlok) [itt (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/audiodatastream) és [itt (C#)](
+https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet).
 -  **C++/c #/Java/Python/Objective-C/Swift** : a `stopSpeakingAsync()` szöveg-beszéd szintézis leállítására szolgáló metódust adott hozzá. Olvassa el itt a dokumentációt ( [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace)), itt ( [C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet), itt [(Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech?view=azure-java-stable), [itt (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)és [itt (Objective-C/Swift)](https://docs.microsoft.com/objectivec/cognitive-services/speech/).
 - **C#, C++, Java** : felvett egy `FromDialogServiceConnector()` függvényt a `Connection` osztályhoz, amely a kapcsolatok és a leválasztási események figyelésére használható `DialogServiceConnector` . Olvassa el itt a dokumentációt ( [C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet), [itt (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)és [itt (Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection?view=azure-java-stable).
 <!-- - **C++/C#/Java/Python/Objective-C/Swift**: Added support for Pronunciation Assessment, which evaluates speech pronunciation and gives speakers feedback on the accuracy and fluency of spoken audio. Read the documentation [here](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment). -->
@@ -72,6 +64,16 @@ https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audioda
 
 **COVID – 19 rövidített tesztelés:** Az elmúlt néhány hét során távolról végzett munka miatt nem sikerült a lehető legkevesebb kézi ellenőrzési tesztet végrehajtani, mint általában. Nem történt semmilyen olyan változás, amelyet úgy gondolunk, hogy bármi megszakadt, és az automatizált tesztek mindegyike sikeres volt. Ha nem valószínű, hogy kihagytak valamit, kérjük, tudassa velünk a [githubon](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen).<br>
 Egészségesek maradjanak!
+
+## <a name="speech-cli-also-known-as-spx-2020-october-release"></a>Speech CLI (más néven SPX): 2020 – októberi kiadás
+Az SPX a parancssori felület, amellyel a kód írása nélkül használhatja az Azure Speech szolgáltatást. Töltse le a legújabb [verziót.](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-basics) <br>
+
+**Új funkciók**
+- `spx csr dataset upload --kind audio|language|acoustic` – adatkészleteket hozhat létre a helyi adatokból, nem csak az URL-címekről.
+- `spx csr evaluation create|status|list|update|delete` – Hasonlítsa össze az új modelleket az alapértékek és egyéb modellek összehasonlításával.
+- `spx * list` – támogatja a nem lapozható élményt (nincs szükség a--Top X--skip X-re).
+- `spx * --http header A=B` – támogatja az egyéni fejléceket (az Office egyéni hitelesítéshez hozzáadva). 
+- `spx help` – a szöveg és a háttér színének továbbfejlesztett szövege (kék).
 
 
 ## <a name="text-to-speech-2020-august-release"></a>Szöveg-beszéd 2020 – augusztusi kiadás

@@ -8,16 +8,16 @@ ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 66c331a79a4da7b8fb397e7d0209b24e00645783
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 20b2f74b33ae57016188ee66af29570f7ec1b529
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741720"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289273"
 ---
 # <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLI – a felügyelt lemezek importálási/exportálási hozzáférésének korlátozása privát hivatkozásokkal
 
-A felügyelt lemezekkel rendelkező privát hivatkozások támogatása jelenleg előzetes verzióban érhető el. A [privát végpontok](../../private-link/private-endpoint-overview.md) használatával korlátozhatja a felügyelt lemezek exportálását és importálását, valamint az adatok biztonságos elérését az Azure-beli virtuális hálózatban lévő ügyfelektől származó [privát kapcsolaton](../../private-link/private-link-overview.md) keresztül. A magánhálózati végpont IP-címet használ a Managed Disks szolgáltatáshoz tartozó virtuális hálózati címtartomány alapján. A virtuális hálózaton és a felügyelt lemezeken lévő ügyfelek közötti hálózati forgalom csak a virtuális hálózaton keresztül halad át, a Microsoft gerinc hálózatán pedig egy privát kapcsolaton keresztül, ami kiküszöböli a nyilvános internetről való kitettséget.
+A [privát végpontok](../../private-link/private-endpoint-overview.md) használatával korlátozhatja a felügyelt lemezek exportálását és importálását, valamint az adatok biztonságos elérését az Azure-beli virtuális hálózatban lévő ügyfelektől származó [privát kapcsolaton](../../private-link/private-link-overview.md) keresztül. A magánhálózati végpont IP-címet használ a Managed Disks szolgáltatáshoz tartozó virtuális hálózati címtartomány alapján. A virtuális hálózaton és a felügyelt lemezeken lévő ügyfelek közötti hálózati forgalom csak a virtuális hálózaton keresztül halad át, a Microsoft gerinc hálózatán pedig egy privát kapcsolaton keresztül, ami kiküszöböli a nyilvános internetről való kitettséget.
 
 Ha privát hivatkozásokat szeretne használni a felügyelt lemezek exportálásához/importálásához, először hozzon létre egy lemez-hozzáférési erőforrást, és csatolja azt egy adott előfizetésben található virtuális hálózathoz egy privát végpont létrehozásával. Ezután rendeljen hozzá egy lemezt vagy egy pillanatképet a lemezes hozzáférés egy példányához. Végül állítsa be a lemez NetworkAccessPolicy tulajdonságát vagy a pillanatképet a következőre: `AllowPrivate` . Ez korlátozni fogja a virtuális hálózat elérését. 
 

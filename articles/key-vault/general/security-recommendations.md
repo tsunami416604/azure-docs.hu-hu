@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 0c541c848290988bb1f358f045abb2d0cd221de7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f96df14fb754578b58fb67ac116ac79cff3ffdcb
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87386758"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289839"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Biztonsági javaslatok az Azure Key Vaulthoz
 
@@ -24,7 +24,7 @@ Ez a cikk a Azure Key Vault biztonsági javaslatait tartalmazza. A javaslatok me
 A cikkben szereplő ajánlások némelyikét a Azure Security Center automatikusan nyomon követheti. A Azure Security Center az Azure-beli erőforrások védelmének első védelmi vonala. Rendszeresen elemzi az Azure-erőforrások biztonsági állapotát az esetleges biztonsági rések azonosítása érdekében. Ezután javaslatokat tesz a megoldására.
 
 - Azure Security Center javaslatokkal kapcsolatos további információkért lásd: [biztonsági javaslatok a Azure Security Centerban](../../security-center/security-center-recommendations.md).
-- További információ az Azure Security Centerről: [What is Azure Security Center?](../../security-center/security-center-intro.md)
+- További információ az Azure Security Centerről: [What is Azure Security Center?](../../security-center/security-center-introduction.md)
 
 ## <a name="data-protection"></a>Adatvédelem
 
@@ -52,6 +52,6 @@ A cikkben szereplő ajánlások némelyikét a Azure Security Center automatikus
 |-|----|--|
 |Hálózati expozíció korlátozása | A hálózati hozzáférést a tár elérését igénylő megoldások által használt virtuális hálózatokra kell korlátozni. Tekintse át a [Azure Key Vault virtuális hálózati szolgáltatási végpontjának](overview-vnet-service-endpoints.md)információit | - |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Érdeklődjön az alkalmazás szolgáltatójánál, hogy vannak-e további biztonsági követelmények. A biztonságos alkalmazások fejlesztésével kapcsolatos további információkért lásd a [biztonságos fejlesztési dokumentációt](../../security/fundamentals/abstract-develop-secure-apps.md).
+Érdeklődjön az alkalmazás szolgáltatójánál, hogy vannak-e további biztonsági követelmények. A biztonságos alkalmazások fejlesztésével kapcsolatos további információkért lásd a [biztonságos fejlesztési dokumentációt](https://azure.microsoft.com/resources/develop-secure-applications-on-azure/).

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1052ad06400eb70fe41617421b54978bddd9e50
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: cd0a2b44fd54eb716b5e1b8f9eabc923ccd7977f
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441368"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285859"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Egy Azure Active Directory B2B csoportmunka-felhasználó tulajdonságai
 
@@ -28,7 +28,7 @@ A meghívó szervezet igényeitől függően az Azure AD B2B csoportmunka-felhas
 - 1. állapot: az Azure AD külső példányán, a meghívóban pedig vendég felhasználóként jelennek meg. Ebben az esetben a B2B-felhasználó a meghívott bérlőhöz tartozó Azure AD-fiókkal jelentkezik be. Ha a partnerszervezet nem használja az Azure AD-t, a vendég felhasználó az Azure AD-ben továbbra is létrejön. A követelmények az, hogy beváltják a meghívót, és az Azure AD ellenőrzi az e-mail-címüket. Ezt a megállapodást az igény szerinti (JIT) bérletnek vagy a "vírus" bérletnek is nevezik.
 
    > [!IMPORTANT]
-   > **2021. március 31-ig**a Microsoft többé nem fogja támogatni a meghívások beváltását azáltal, hogy nem felügyelt Azure ad-fiókokat és bérlőket hoz létre vállalatközi együttműködési forgatókönyvek létrehozásához. A felkészülés során javasoljuk, hogy az ügyfelek [e-mail-egyszeri jelszavas hitelesítést](one-time-passcode.md)kérjenek. Szívesen fogadjuk visszajelzését ezen a nyilvános előzetes verzióban, és örömmel vesszük, hogy még több módszert is létre lehetne hozni az együttműködésre.
+   > **2021. március 31-ig** a Microsoft többé nem fogja támogatni a meghívások beváltását azáltal, hogy nem felügyelt Azure ad-fiókokat és bérlőket hoz létre vállalatközi együttműködési forgatókönyvek létrehozásához. A felkészülés során javasoljuk, hogy az ügyfelek [e-mail-egyszeri jelszavas hitelesítést](one-time-passcode.md)kérjenek. Szívesen fogadjuk visszajelzését ezen a nyilvános előzetes verzióban, és örömmel vesszük, hogy még több módszert is létre lehetne hozni az együttműködésre.
 
 - 2. állapot: a Microsoft vagy más fiókban található, és vendég felhasználóként képviselteti magát a gazdagépen. Ebben az esetben a vendég felhasználó egy Microsoft-fiók vagy egy közösségi fiókkal jelentkezik be (google.com vagy hasonló). A meghívott felhasználó identitása Microsoft-fiókként jön létre a meghívó szervezet címtárában az ajánlat beváltásakor.
 
@@ -43,7 +43,7 @@ Most lássuk, mi az Azure AD B2B együttműködés felhasználója az Azure AD-b
 
 ### <a name="before-invitation-redemption"></a>Meghívás beváltása előtt
 
-Az 1. és a 2. állapotú fiókok a vendég felhasználók saját hitelesítő adataival való együttműködésre való felhívásának eredményei. Amikor a rendszer először elküldi a meghívót a vendég felhasználónak, a rendszer létrehoz egy fiókot a címtárban. Ez a fiók nem rendelkezik a hozzá társított hitelesítő adatokkal, mert a hitelesítést a vendég felhasználójának személyazonosság-szolgáltatója végzi. A címtár vendég felhasználói fiókjának **forrás** tulajdonsága a **meghívott felhasználóra**van beállítva. 
+Az 1. és a 2. állapotú fiókok a vendég felhasználók saját hitelesítő adataival való együttműködésre való felhívásának eredményei. Amikor a rendszer először elküldi a meghívót a vendég felhasználónak, a rendszer létrehoz egy fiókot a címtárban. Ez a fiók nem rendelkezik a hozzá társított hitelesítő adatokkal, mert a hitelesítést a vendég felhasználójának személyazonosság-szolgáltatója végzi. A címtár vendég felhasználói fiókjának **forrás** tulajdonsága a **meghívott felhasználóra** van beállítva. 
 
 ![A felhasználói tulajdonságokat bemutató képernyőfelvétel az ajánlat megváltása előtt](media/user-properties/before-redemption.png)
 
@@ -59,7 +59,7 @@ A 2. állapotú vendég felhasználók esetében a **forrás** a **Microsoft-fi�
 
 ![Állapot 2 vendég felhasználó az ajánlat megváltása után](media/user-properties/after-redemption-state2.png)
 
-A 3. állapotú és a 4. állapotú vendég felhasználók esetében a **forrás** tulajdonság értéke **Azure Active Directory** vagy a **Windows Server Active Directory**, a következő szakaszban leírtak szerint.
+A 3. állapotú és a 4. állapotú vendég felhasználók esetében a **forrás** tulajdonság értéke **Azure Active Directory** vagy a **Windows Server Active Directory** , a következő szakaszban leírtak szerint.
 
 ## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Az Azure AD B2B csoportmunka-felhasználó legfontosabb tulajdonságai
 ### <a name="usertype"></a>UserType (Felhasználótípus)
@@ -70,6 +70,8 @@ Ez a tulajdonság jelzi a felhasználó kapcsolatát a gazdagép bérletével. E
 
   > [!NOTE]
   > A UserType nem kapcsolódik a felhasználó bejelentkezése, a felhasználó címtárbeli szerepköre és így tovább. Ez a tulajdonság csak azt jelzi, hogy a felhasználó kapcsolódik a gazdagéphez, és lehetővé teszi, hogy a szervezet olyan házirendeket kényszerítse ki, amelyek ettől a tulajdonságtól függenek.
+
+A díjszabással kapcsolatos részletekért lásd a [Azure Active Directory díjszabását](https://azure.microsoft.com/pricing/details/active-directory).
 
 ### <a name="source"></a>Forrás
 Ez a tulajdonság azt jelzi, hogy a felhasználó hogyan jelentkezik be.
@@ -110,7 +112,7 @@ Igen. Alapértelmezés szerint a vendég objektumok nem láthatók a szervezet g
 
 Ha a vendég felhasználói elfogadják a meghívót, és később módosítják az e-mail-címüket, az új e-mail nem szinkronizálódik automatikusan a címtár vendég felhasználói objektumával. A mail tulajdonságot [Microsoft Graph API](/graph/api/resources/user?view=graph-rest-1.0)-n keresztül hozza létre a rendszer. A mail tulajdonságot a Microsoft Graph API, az Exchange felügyeleti központ vagy az [Exchange Online PowerShell](/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps)segítségével frissítheti. A módosítás az Azure AD vendég felhasználói objektumában jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
 * [B2B együttműködési felhasználói jogkivonatok](user-token.md)

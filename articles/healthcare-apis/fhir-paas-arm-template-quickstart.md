@@ -1,19 +1,19 @@
 ---
 title: 'Gyors útmutató: az Azure API üzembe helyezése ARM-sablon használatával FHIR'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan helyezheti üzembe az Azure API-t a gyors egészségügyi együttműködési erőforrások (FHIR®) számára egy Azure Resource Manager sablon (ARM-sablon) használatával.
-author: mgblythe
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
+ms.author: cavoeg
 ms.date: 10/06/2020
-ms.openlocfilehash: 0d045aac63daf99bf67ec79438f55eedd5f200d9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: c04bb82810bf55d6ac55b2697f5010896e0eb9b4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521441"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289285"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-api-for-fhir"></a>Gyors útmutató: ARM-sablon használata az Azure API FHIR való üzembe helyezéséhez
 
@@ -69,23 +69,23 @@ Replace the line above with the following line once https://docs.microsoft.com/a
 
 A következő hivatkozásra kattintva telepítheti a FHIR készült Azure API-t a Azure Portal ARM sablonnal:
 
-[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Üzembe helyezés az Azure-ban Azure API a FHIR szolgáltatáshoz a Azure Portal ARM-sablon használatával.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-azure-api-for-fhir%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Telepítse az Azure-ba egy Azure API-t a FHIR szolgáltatáshoz a Azure Portal ARM sablonjának használatával.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-azure-api-for-fhir%2fazuredeploy.json)
 
 Az **Azure API üzembe helyezése FHIR** oldalon:
 
 1. Ha szeretné, módosítsa az **előfizetést** az alapértelmezettről egy másik előfizetésre.
 
-2. Az **erőforráscsoport**területen válassza az **új létrehozása**lehetőséget, adja meg az új erőforráscsoport nevét, majd kattintson **az OK gombra**.
+2. Az **erőforráscsoport** területen válassza az **új létrehozása** lehetőséget, adja meg az új erőforráscsoport nevét, majd kattintson **az OK gombra**.
 
 3. Ha létrehozott egy új erőforráscsoportot, válasszon ki egy **régiót** az erőforráscsoport számára.
 
 4. Adja meg az új **szolgáltatásnév nevét** , és válassza ki a FHIR készült Azure API **helyét** . A hely az erőforráscsoport régiójától eltérő lehet.
 
-    :::image type="content" source="./media/fhir-paas-arm-template-quickstart/deploy-azure-api-fhir.png" alt-text="Üzembe helyezés az Azure-ban Azure API a FHIR szolgáltatáshoz a Azure Portal ARM-sablon használatával.":::
+    :::image type="content" source="./media/fhir-paas-arm-template-quickstart/deploy-azure-api-fhir.png" alt-text="Telepítse a FHIR készült Azure API-t a Azure Portal ARM sablonnal.":::
 
 5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
-6. Olvassa el a használati feltételeket, majd válassza a **Létrehozás**lehetőséget.
+6. Olvassa el a használati feltételeket, majd válassza a **Létrehozás** lehetőséget.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
@@ -150,7 +150,7 @@ read -p "Press [ENTER] to continue: "
 
 Az alábbi lépéseket követve áttekintheti az új Azure API-t a FHIR szolgáltatáshoz:
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki az **Azure API**-t a FHIR.
+1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki az **Azure API** -t a FHIR.
 
 2. A FHIR listából válassza ki az új szolgáltatást. Megjelenik az új Azure API for FHIR szolgáltatás **áttekintő** lapja.
 
@@ -196,13 +196,13 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli az 
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki az **erőforráscsoportok**elemet.
+1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki az **erőforráscsoportok** elemet.
 
 2. Az erőforráscsoport listán válassza ki az erőforráscsoport nevét.
 
-3. Az erőforráscsoport **Áttekintés** lapján válassza az **erőforráscsoport törlése**elemet.
+3. Az erőforráscsoport **Áttekintés** lapján válassza az **erőforráscsoport törlése** elemet.
 
-4. A megerősítő párbeszédpanelen írja be az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
+4. A megerősítő párbeszédpanelen írja be az erőforráscsoport nevét, majd válassza a **Törlés** lehetőséget.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 

@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan kezelheti az indexelési szabályzatokat, hogya
 author: timsander1
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 08/04/2020
+ms.date: 11/02/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 96ae4162c78f66b75d8c1ef2a8cec16995a5f016
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 335eac64bd5dff5b466fd97f5b2e093f2f56ee79
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075704"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289938"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Indexelési szabályzatok kezelése az Azure Cosmos DB-ben
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,7 +47,7 @@ Az alábbiakban néhány példát láthat a [JSON-formátumában](index-policy.m
     }
 ```
 
-Ez az indexelési házirend egyenértékű a manuálisan beállított ```kind``` , ```dataType``` és az ```precision``` alapértelmezett értékekkel. Ezek a tulajdonságok már nem szükségesek explicit módon beállítani, és kihagyhatja őket az indexelési szabályzatból (a fenti példában látható módon).
+Ez az indexelési házirend egyenértékű a manuálisan beállított ```kind``` , ```dataType``` és az ```precision``` alapértelmezett értékekkel. Ezek a tulajdonságok már nem szükségesek explicit módon beállítani, és az indexelési szabályzatból teljesen ki kell hagyni őket (a fenti példában látható módon).
 
 ```json
     {
@@ -101,7 +101,7 @@ Ez az indexelési házirend egyenértékű a manuálisan beállított ```kind```
     }
 ```
 
-Ez az indexelési házirend egyenértékű a manuálisan beállított ```kind``` , ```dataType``` és az ```precision``` alapértelmezett értékekkel. Ezek a tulajdonságok már nem szükségesek explicit módon beállítani, és kihagyhatja őket az indexelési szabályzatból (a fenti példában látható módon).
+Ez az indexelési házirend egyenértékű a manuálisan beállított ```kind``` , ```dataType``` és az ```precision``` alapértelmezett értékekkel. Ezek a tulajdonságok már nem szükségesek explicit módon beállítani, és az indexelési szabályzatból teljesen ki kell hagyni őket (a fenti példában látható módon).
 
 ```json
     {
@@ -143,7 +143,7 @@ Ez az indexelési házirend egyenértékű a manuálisan beállított ```kind```
 ```
 
 > [!NOTE]
-> Általában ajánlott egy **kijelentkezési** indexelési házirend használata, amely lehetővé teszi, hogy Azure Cosmos db proaktív módon indexelje a modellhez esetleg hozzáadott új tulajdonságokat.
+> Általában ajánlott egy **kijelentkezési** indexelési házirend használata, amellyel Azure Cosmos db proaktív módon indexelheti az adatmodellbe felvehető új tulajdonságokat.
 
 ### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>Térbeli index használata csak adott tulajdonság elérési útján
 
@@ -177,7 +177,7 @@ Ez az indexelési házirend egyenértékű a manuálisan beállított ```kind```
 
 ## <a name="composite-indexing-policy-examples"></a>Összetett indexelési házirend – példák
 
-Az egyéni tulajdonságok elérési útjának belefoglalása vagy kizárása mellett összetett index is megadható. Ha olyan lekérdezést szeretne végrehajtani `ORDER BY` , amely több tulajdonságra vonatkozó záradékot tartalmaz, az ezen tulajdonságok [összetett indexét](index-policy.md#composite-indexes) kell megadni. Emellett az összetett indexek teljesítménybeli előnyben részesülnek a szűrővel rendelkező lekérdezéseknél, és ORDER BY záradékkal rendelkeznek különböző tulajdonságokon.
+Az egyéni tulajdonságok elérési útjának belefoglalása vagy kizárása mellett összetett index is megadható. Ha olyan lekérdezést szeretne végrehajtani `ORDER BY` , amely több tulajdonságra vonatkozó záradékot tartalmaz, az ezen tulajdonságok [összetett indexét](index-policy.md#composite-indexes) kell megadni. Az összetett indexek emellett a több szűrővel, vagy egy szűrővel és ORDER BY záradékkal rendelkező lekérdezések esetében is teljesítménybeli előnyökkel járnak.
 
 > [!NOTE]
 > Az összetett elérési utak implicitek, `/?` mert csak az adott elérési úton található skaláris érték van indexelve. Az `/*` összetett elérési utak nem támogatják a helyettesítő karaktert. Nem adhat meg `/?` vagy `/*` összetett elérési utat.
@@ -314,7 +314,7 @@ A sorrend megadása nem kötelező. Ha nincs megadva, a sorrend növekvő.
 
 ### <a name="excluding-all-property-paths-but-keeping-indexing-active"></a>Az összes tulajdonság elérési útjának kizárása, de az indexelés aktív marad
 
-Ez a szabályzat olyan helyzetekben használható, ahol az élettartam [(TTL) funkció](time-to-live.md) aktív, de nincs szükség másodlagos indexre (Azure Cosmos db tiszta kulcs-érték tárolóként való használatára).
+Ez a szabályzat olyan helyzetekben használható, ahol az élettartam [(TTL) funkció](time-to-live.md) aktív, de nincs szükség további indexekre (a Azure Cosmos db tiszta kulcs-érték tárolóként való használatára).
 
 ```json
     {

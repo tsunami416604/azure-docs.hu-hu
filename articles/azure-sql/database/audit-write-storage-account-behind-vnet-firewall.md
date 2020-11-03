@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: f916fdcf632cc369d1fb7e2faefad6dddafd1e15
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: dde6cf40e7609e902540e08fcaff65d9fe32c85c
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677239"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289645"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Naplózás írása a VNet és a tűzfal mögötti Storage-fiókba
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -40,8 +40,8 @@ Ahhoz, hogy a naplózás egy VNet vagy tűzfal mögötti Storage-fiókba írjon,
 > [!div class="checklist"]
 >
 > * Általános célú v2-es Storage-fiók. Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, [frissítsen egy általános célú v2 Storage-fiókra](../../storage/common/storage-account-upgrade.md). További információ: Storage- [fiókok típusai](../../storage/common/storage-account-overview.md#types-of-storage-accounts).
-> * A Storage-fióknak ugyanazon az előfizetésen kell lennie, és ugyanazon a helyen kell lennie, mint a [logikai SQL Servernek](logical-servers.md).
-> * Az Azure Storage-fiókhoz szükséges `Allow trusted Microsoft services to access this storage account` . Állítsa be ezt a Storage **-fiók tűzfalakon és virtuális hálózatokon** .
+> * A Storage-fióknak ugyanazon az előfizetésen belül kell lennie, és ugyanazon a helyen kell lennie, mint a [logikai SQL Server](logical-servers.md).
+> * Az Azure Storage-fiókhoz szükséges `Allow trusted Microsoft services to access this storage account` . Állítsa be ezt a Storage **-fiók tűzfalakon és virtuális hálózatokon**.
 > * Rendelkeznie kell `Microsoft.Authorization/roleAssignments/write` engedéllyel a kiválasztott Storage-fiókhoz. További információ: [Beépített Azure-szerepkörök](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="configure-in-azure-portal"></a>Konfigurálás az Azure Portalon
@@ -77,7 +77,7 @@ Az ebben a szakaszban szereplő parancsfájloknak a futtatása előtt frissíten
 |:-----|:-----|
 |`<subscriptionId>`| Azure-előfizetés azonosítója|
 |`<resource group>`| Erőforráscsoport|
-|`<logical SQL server>`| Kiszolgálónév|
+|`<logical SQL Server>`| Kiszolgálónév|
 |`<administrator login>`| Rendszergazdai fiók |
 |`<complex password>`| A rendszergazdai fiókhoz tartozó összetett jelszó|
 
@@ -153,7 +153,7 @@ A naplózás konfigurálásával adatbázis-eseményeket írhat a virtuális há
 > [!IMPORTANT]
 > A virtuális hálózat és a tűzfal mögötti Storage-fiók használatához a **isStorageBehindVnet** paramétert True értékre kell állítani.
 
-- [Egy Azure SQL Server üzembe helyezése, amely lehetővé teszi a naplózást egy blob Storage-ba a naplók írásához](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
+- [Azure-SQL Server üzembe helyezése, amely lehetővé teszi, hogy naplózza a naplófájlokat a blob Storage-ba](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
 
 > [!NOTE]
 > A csatolt minta egy külső nyilvános tárházban található, és az "adott állapotban" van megadva, garancia nélkül, és semmilyen Microsoft támogatási program/szolgáltatás nem támogatott.

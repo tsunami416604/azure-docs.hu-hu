@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a060528d3140203541f6a13064659651c7a4f67d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a4400adeff8907e2d4ff690a83c63d32da8031bd
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488953"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289321"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rövid útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése
 
@@ -112,7 +112,7 @@ A Visual Studióban hozzon létre egy "Hello-World" nevű ASP.NET Core webalkalm
    }
    ```
 
-1. *appsettings.json*is megváltoztathatja a kategória naplózási szintjét `Microsoft` `Warning` `Information` . Ez a változás biztosítja, hogy a naplók akkor legyenek előkészítve, amikor egy későbbi lépésben megtekinti a folyamatos átviteli naplókat.
+1. *appsettings.json* is megváltoztathatja a kategória naplózási szintjét `Microsoft` `Warning` `Information` . Ez a változás biztosítja, hogy a naplók akkor legyenek előkészítve, amikor egy későbbi lépésben megtekinti a folyamatos átviteli naplókat.
 
    A fájl *appsettings.js* most az alábbi példához hasonlóan néz ki:
 
@@ -206,26 +206,26 @@ Az alábbi eljárás az Azure Spring Cloud egy példányát hozza létre a Azure
 
 1. Nyissa meg az [Azure Portalt](https://ms.portal.azure.com/). 
 
-1. A felső keresőmezőbe keressen az *Azure Spring Cloud*kifejezésre.
+1. A felső keresőmezőbe keressen az *Azure Spring Cloud* kifejezésre.
 
 1. Válassza az *Azure Spring Cloud* lehetőséget az eredmények közül.
 
    ![ASC ikon kezdete](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
-1. Az Azure Spring Cloud oldalon válassza a **+ Hozzáadás**lehetőséget.
+1. Az Azure Spring Cloud oldalon válassza a **+ Hozzáadás** lehetőséget.
 
    ![ASC ikon hozzáadása](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
 1. Töltse ki az űrlapot az Azure Spring Cloud **create** oldalon.  Vegye figyelembe a következő irányelveket:
 
-   * **Előfizetés**: válassza ki azt az előfizetést, amelyet számlázni szeretne az erőforráshoz.
-   * **Erőforráscsoport**: hozzon létre egy új erőforráscsoportot. Az itt megadott nevet a későbbi lépésekben fogjuk használni **\<resource group name\>** .
-   * **Szolgáltatás adatai/neve**: adja meg a **\<service instance name\>** .  A névnek 4 – 32 karakter hosszúnak kell lennie, és csak kisbetűket, számokat és kötőjeleket tartalmazhat.  A szolgáltatás nevének első karakterének betűnek kell lennie, és az utolsó karakternek betűnek vagy számnak kell lennie.
-   * **Régió**: válassza ki a szolgáltatási példány régióját.
+   * **Előfizetés** : válassza ki azt az előfizetést, amelyet számlázni szeretne az erőforráshoz.
+   * **Erőforráscsoport** : hozzon létre egy új erőforráscsoportot. Az itt megadott nevet a későbbi lépésekben fogjuk használni **\<resource group name\>** .
+   * **Szolgáltatás adatai/neve** : adja meg a **\<service instance name\>** .  A névnek 4 – 32 karakter hosszúnak kell lennie, és csak kisbetűket, számokat és kötőjeleket tartalmazhat.  A szolgáltatás nevének első karakterének betűnek kell lennie, és az utolsó karakternek betűnek vagy számnak kell lennie.
+   * **Régió** : válassza ki a szolgáltatási példány régióját.
 
    ![ASC-portál indítása](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
-6. Válassza **a felülvizsgálat és létrehozás**lehetőséget.
+6. Válassza **a felülvizsgálat és létrehozás** lehetőséget.
 
 ## <a name="build-and-deploy-the-app"></a>Az alkalmazás létrehozása és üzembe helyezése
 
@@ -242,7 +242,7 @@ Az alábbi eljárás a korábban létrehozott projektet hozza létre és telepí
 1. Hozzon létre egy alkalmazást az Azure Spring Cloud-példányban egy hozzárendelt nyilvános végponttal. Használja ugyanazt a "Hello-World" nevű nevet, amelyet a *appsettings.jsban adott meg*.
 
    ```console
-   az spring-cloud app create -n hello-world -s <service instance name> -g <resource group name> --is-public
+   az spring-cloud app create -n hello-world -s <service instance name> -g <resource group name> --is-public --runtime-version NetCore_31
    ```
 
 1. Telepítse a *. zip* fájlt az alkalmazásba.
@@ -376,21 +376,21 @@ Az alábbi eljárás az Azure Spring Cloud egy példányát hozza létre a Azure
 
 1. Az új lapon nyissa meg a [Azure Portal](https://ms.portal.azure.com/). 
 
-2. A felső keresőmezőbe keressen az *Azure Spring Cloud*kifejezésre.
+2. A felső keresőmezőbe keressen az *Azure Spring Cloud* kifejezésre.
 
 3. Válassza az *Azure Spring Cloud* lehetőséget az eredmények közül.
 
     ![ASC ikon kezdete](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
-4. Az Azure Spring Cloud oldalon kattintson a **+ Hozzáadás**gombra.
+4. Az Azure Spring Cloud oldalon kattintson a **+ Hozzáadás** gombra.
 
     ![ASC ikon hozzáadása](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
 5. Töltse ki az űrlapot az Azure Spring Cloud **create** oldalon.  Vegye figyelembe a következő irányelveket:
-    - **Előfizetés**: válassza ki azt az előfizetést, amelyet számlázni szeretne az erőforráshoz.
-    - **Erőforráscsoport**: új erőforráscsoportok létrehozása új erőforrásokhoz az ajánlott eljárás. Ezt a későbbi lépések során fogjuk használni **\<resource group name\>** .
-    - **Szolgáltatás adatai/neve**: adja meg a **\<service instance name\>** .  A névnek 4 – 32 karakter hosszúnak kell lennie, és csak kisbetűket, számokat és kötőjeleket tartalmazhat.  A szolgáltatás nevének első karakterének betűnek kell lennie, és az utolsó karakternek betűnek vagy számnak kell lennie.
-    - **Hely**: válassza ki a szolgáltatási példány régióját.
+    - **Előfizetés** : válassza ki azt az előfizetést, amelyet számlázni szeretne az erőforráshoz.
+    - **Erőforráscsoport** : új erőforráscsoportok létrehozása új erőforrásokhoz az ajánlott eljárás. Ezt a későbbi lépések során fogjuk használni **\<resource group name\>** .
+    - **Szolgáltatás adatai/neve** : adja meg a **\<service instance name\>** .  A névnek 4 – 32 karakter hosszúnak kell lennie, és csak kisbetűket, számokat és kötőjeleket tartalmazhat.  A szolgáltatás nevének első karakterének betűnek kell lennie, és az utolsó karakternek betűnek vagy számnak kell lennie.
+    - **Hely** : válassza ki a szolgáltatási példány régióját.
 
     ![ASC-portál indítása](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
@@ -441,17 +441,17 @@ Az alábbi eljárás az Azure Spring Cloud IntelliJ beépülő moduljának haszn
 ### <a name="deploy-the-app"></a>Az alkalmazás üzembe helyezése
 Az Azure-ba való üzembe helyezéshez be kell jelentkeznie az Azure-fiókjával, és ki kell választania az előfizetését.  A bejelentkezés részleteiért lásd: [telepítés és bejelentkezés](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
 
-1. Kattintson a jobb gombbal a projektre a IntelliJ Project Explorerben, és válassza az **Azure**-  ->  **üzembe helyezés az Azure Spring Cloud**-ban lehetőséget.
+1. Kattintson a jobb gombbal a projektre a IntelliJ Project Explorerben, és válassza az **Azure** -  ->  **üzembe helyezés az Azure Spring Cloud** -ban lehetőséget.
 
     [![Üzembe helyezés az Azure ](media/spring-cloud-quickstart-java/intellij-deploy-azure-1.png) 1-ben](media/spring-cloud-quickstart-java/intellij-deploy-azure-1.png#lightbox)
 
 1. Fogadja el az alkalmazás nevét a **név** mezőben. A **név** a konfigurációra hivatkozik, nem az alkalmazás nevére. A felhasználóknak általában nem kell módosítaniuk.
-1. Az összetevő **szövegmezőben** válassza a *hellospring-0.0.1-Snapshot. jar*elemet.
+1. Az összetevő **szövegmezőben** válassza a *hellospring-0.0.1-Snapshot. jar* elemet.
 1. Az **előfizetés** szövegmezőben ellenőrizze az előfizetését.
 1. A **Spring Cloud** szövegmezőben válassza ki azt az Azure Spring Cloud-példányt, amelyet az [Azure Spring Cloud-példány kiépítése](./spring-cloud-quickstart-provision-service-instance.md)című részben hozott létre.
-1. Az *engedélyezéshez*állítsa be a **nyilvános végpontot** .
+1. Az *engedélyezéshez* állítsa be a **nyilvános végpontot** .
 1. Az **alkalmazás:** szövegmezőben válassza az **alkalmazás létrehozása...** lehetőséget.
-1. Adja meg a *hellospring*, majd kattintson **az OK**gombra.
+1. Adja meg a *hellospring* , majd kattintson **az OK** gombra.
 
     [![Üzembe helyezés az Azure-ban ok ](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png)](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png#lightbox)
 
@@ -481,7 +481,7 @@ A naplók az eredmények között jelennek meg:
 
 #### <a name="intellij"></a>[IntelliJ](#tab/IntelliJ)
 
-1. Válassza az **Azure Explorer**, majd a **Spring Cloud**elemet.
+1. Válassza az **Azure Explorer** , majd a **Spring Cloud** elemet.
 1. Kattintson a jobb gombbal a futó alkalmazásra.
 1. Válassza a **folyamatos átviteli naplók** lehetőséget a legördülő listából.
 1. Válassza a példány lehetőséget.

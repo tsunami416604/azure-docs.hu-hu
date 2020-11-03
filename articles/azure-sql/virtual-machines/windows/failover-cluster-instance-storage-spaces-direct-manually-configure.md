@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 848f3cd2d5719d62e39f46c166d51e09ec89bd4c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9b90d13d6f4fa5a33bff38aaa66728a5d0f3d70f
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792514"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289956"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Közvetlen tárolóhelyek (SQL Server Azure-beli virtuális gépeken) létrehozása
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ Az alábbi ábrán a teljes megoldás látható, amely az Azure-beli virtuális 
 
 Az előző ábrán a következő erőforrások láthatók ugyanabban az erőforráscsoportban:
 
-- Két virtuális gép egy Windows Server rendszerű feladatátvevő fürtben. Ha egy virtuális gép feladatátvevő fürtben található, akkor azt is nevezik *fürtcsomópont* vagy *csomópontnak* .
+- Két virtuális gép egy Windows Server rendszerű feladatátvevő fürtben. Ha egy virtuális gép feladatátvevő fürtben található, akkor azt is nevezik *fürtcsomópont* vagy *csomópontnak*.
 - Mindegyik virtuális gép két vagy több adatlemezzel rendelkezik.
 - Közvetlen tárolóhelyek szinkronizálja az adatokat az adatlemezeken, és a szinkronizált tárolót tárolóként jeleníti meg.
 - A tárolási készlet egy Fürt megosztott kötete (CSV) a feladatátvevő fürthöz.
@@ -69,7 +69,7 @@ A cikkben szereplő utasítások elvégzése előtt a következőket kell tennie
    Ha a felhasználói felületen szeretné telepíteni a feladatátvételi fürtszolgáltatást, tegye a következőket mindkét virtuális gépen:
 
    1. A **Kiszolgálókezelőben** válassza a **kezelés** , majd a **szerepkörök és szolgáltatások hozzáadása** lehetőséget.
-   1. A **szerepkörök és szolgáltatások hozzáadása** varázslóban kattintson a **tovább** gombra, amíg ki nem **választja a funkciókat** .
+   1. A **szerepkörök és szolgáltatások hozzáadása** varázslóban kattintson a **tovább** gombra, amíg ki nem **választja a funkciókat**.
    1. A **szolgáltatások kiválasztása** területen válassza a **feladatátvételi fürtszolgáltatás** lehetőséget. Adja meg az összes szükséges funkciót és a felügyeleti eszközöket. 
    1. Válassza a **szolgáltatások hozzáadása** lehetőséget.
    1. Válassza a **tovább** , majd a **Befejezés** lehetőséget a funkciók telepítéséhez.
@@ -206,7 +206,7 @@ Miután konfigurálta a feladatátvevő fürtöt és a fürt összes összetevő
 
 1. Miután a telepítő telepíti a (z)-t az első csomóponton, csatlakozzon a második csomóponthoz RDP használatával.
 
-1. Nyissa meg a **SQL Server telepítési központot** . Válassza a **telepítés** lehetőséget.
+1. Nyissa meg a **SQL Server telepítési központot**. Válassza a **telepítés** lehetőséget.
 
 1. Válassza **a csomópont hozzáadása SQL Server feladatátvevő fürthöz** lehetőséget. A varázsló utasításait követve telepítse a SQL Servert, és adja hozzá a kiszolgálót a modulhoz.
 
@@ -239,7 +239,7 @@ Ha a forgalmat az aktuális elsődleges csomópontnak megfelelően szeretné ir�
 
 - Az Azure Virtual Machines támogatja a Microsoft Elosztott tranzakciók koordinátora (MSDTC) szolgáltatást a Windows Server 2019-on a CSV és a [standard Load Balancer](../../../load-balancer/load-balancer-overview.md)szolgáltatással.
 - Az NTFS fájlrendszerrel formázott lemezként csatolt lemezek Közvetlen tárolóhelyek csak akkor használhatók, ha nincs bejelölve a lemezre vonatkozó jogosultsági lehetőség, vagy nincs törölve, amikor a tárolót hozzáadja a fürthöz. 
-- Csak az SQL VM erőforrás-szolgáltatóval való regisztráció [egyszerűsített felügyeleti módban](sql-vm-resource-provider-register.md#management-modes) támogatott.
+- Csak az SQL VM erőforrás-szolgáltatóval való regisztráció [egyszerűsített felügyeleti módban](sql-server-iaas-agent-extension-automate-management.md#management-modes) támogatott.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -13,17 +13,17 @@ ms.workload: iaas-sql-server
 ms.date: 09/21/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b83a44db98907f505c7bf0d8302470cf3031a967
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d6900d0fdf656fa8309b18971691bb35587f7f4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761260"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286066"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Több SQL virtuális gép regisztrálása az Azure-ban az SQL VM erőforrás-szolgáltatóval
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Ez a cikk azt ismerteti, hogyan regisztrálhatók a SQL Server virtuális gépek (VM-EK) az Azure-ban az SQL VM erőforrás-szolgáltatóval a `Register-SqlVMs` PowerShell-parancsmag használatával.
+Ez a cikk azt ismerteti, hogyan regisztrálhatók a SQL Server virtuális gépek (VM-EK) az Azure-ban az SQL VM erőforrás-szolgáltatóval a `Register-SqlVMs` PowerShell-parancsmag használatával. Az SQL virtuális gép erőforrás-szolgáltatójának regisztrálása telepíti az [SQL IaaS-ügynök bővítményt](sql-server-iaas-agent-extension-automate-management.md).
 
 Ez a cikk azt ismerteti, hogy SQL Server virtuális gépek tömeges regisztrálását. Azt is megteheti, hogy [az összes SQL Server virtuális gépet automatikusan](sql-vm-resource-provider-automatic-registration.md) vagy [egyedi SQL Server virtuális gépekre](sql-vm-resource-provider-register.md)regisztrálja. 
 
@@ -33,14 +33,14 @@ A `Register-SqlVMs` parancsmag használatával az összes virtuális gép regisz
 
 A regisztrációs folyamat nem jár kockázattal, nem rendelkezik állásidővel, és nem indítja újra SQL Server vagy a virtuális gépet. 
 
-További információ az erőforrás-szolgáltatóról: [SQL VM erőforrás-szolgáltató](sql-vm-resource-provider-register.md). 
+További információ: [SQL VM erőforrás-szolgáltató](sql-vm-resource-provider-register.md). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A SQL Server VM erőforrás-szolgáltatóval való regisztrálásához a következőkre lesz szüksége: 
 
 - Olyan [Azure-előfizetés](https://azure.microsoft.com/free/) , amely [regisztrálva van az erőforrás-szolgáltatónál](sql-vm-resource-provider-register.md#register-subscription-with-rp) , és nem regisztrált SQL Server virtuális gépeket tartalmaz. 
-- A virtuális gépek regisztrálásához használt ügyfél-hitelesítő adatok a következő Azure-szerepkörök valamelyikében találhatók: **virtuális gép közreműködője**, **közreműködője**vagy **tulajdonosa**. 
+- A virtuális gépek regisztrálásához használt ügyfél-hitelesítő adatok a következő Azure-szerepkörök valamelyikében találhatók: **virtuális gép közreműködője** , **közreműködője** vagy **tulajdonosa**. 
 - Az az [PowerShell](/powershell/azure/new-azureps-module-az)legújabb verziója. 
 - Az az [. SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0)legújabb verziója.
 
@@ -227,7 +227,7 @@ A rendszer naplózza a hibákat a nevű naplófájlban `VMsNotRegisteredDueToErr
 
 Ha SQL Server virtuális gépeket regisztrál az erőforrás-szolgáltatóval a megadott parancsfájl használatával, vegye figyelembe a következőket:
 
-- Az erőforrás-szolgáltatóval való regisztrációhoz a SQL Server VM futó vendég ügynöknek kell futnia. A Windows Server 2008-lemezképek nem rendelkeznek vendég ügynökkel, így ezek a virtuális gépek sikertelenek lesznek, és manuálisan kell regisztrálni a nem [ügynök-felügyeleti mód](sql-vm-resource-provider-register.md#management-modes)használatával.
+- Az erőforrás-szolgáltatóval való regisztrációhoz a SQL Server VM futó vendég ügynöknek kell futnia. A Windows Server 2008-lemezképek nem rendelkeznek vendég ügynökkel, így ezek a virtuális gépek sikertelenek lesznek, és manuálisan kell regisztrálni a nem [ügynök-felügyeleti mód](sql-server-iaas-agent-extension-automate-management.md#management-modes)használatával.
 - A beépített újrapróbálkozási logika az átlátható hibák elhárítására szolgál. Ha a virtuális gép regisztrálása sikeresen megtörtént, akkor gyors művelet. Ha azonban a regisztráció meghiúsul, minden egyes virtuális gép újra próbálkozik.  Ezért jelentős időt kell biztosítani a regisztrációs folyamat befejezéséhez – bár a tényleges idő követelménye a hibák típusától és számától függ. 
 
 ## <a name="full-script"></a>Teljes szkript
@@ -240,7 +240,7 @@ Másolja a teljes parancsfájlt, és mentse azt `RegisterSqLVMs.psm1` .
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információért tekintse át a következő cikkeket: 
+További információkat az következő cikkekben talál: 
 
 * [Windows rendszerű virtuális gépek SQL Server áttekintése](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows rendszerű virtuális gépen SQL Server gyakori kérdések](frequently-asked-questions-faq.md)

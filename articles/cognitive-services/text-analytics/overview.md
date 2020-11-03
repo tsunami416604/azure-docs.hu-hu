@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 09/09/2020
+ms.date: 11/02/2020
 ms.author: aahi
 keywords: szöveg-adatbányászat, érzelmek elemzése, szöveges elemzés
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 544de4adb1891c3d558a524466a076daefb42aa4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d58c501af3d90fec1eea43d13fa2383c8e847f18
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89647460"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289700"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Mi a Text Analytics API?
 
@@ -29,7 +29,9 @@ Az API az [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-
 
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
 
-Használja ki a [hangulat elemzését](how-tos/text-analytics-how-to-sentiment-analysis.md) , és Ismerje meg, hogy az emberek mit gondolnak a márka vagy a téma alapján, hogy kibányászják a pozitív vagy negatív gondolkodással kapcsolatos nyomokat. Ez az API-szolgáltatás az egyes dokumentumokhoz tartozó, 0 és 1 közötti hangulati pontszámot ad vissza, ahol az 1 a legpozitív.
+Használja ki a [hangulat elemzését](how-tos/text-analytics-how-to-sentiment-analysis.md) , és Ismerje meg, hogy az emberek mit gondolnak a márka vagy a téma alapján, hogy kibányászják a pozitív vagy negatív gondolkodással kapcsolatos nyomokat. 
+
+A szolgáltatás a szolgáltatás által a legmagasabb szintű megbízhatósági pontszám alapján, a mondatok és a dokumentumok szintjén is megadja a hangulati címkéket (például "negatív", "semleges" és "pozitív"). Ez a funkció az egyes dokumentumokhoz tartozó 0 és 1 közötti megbízhatósági pontszámokat is visszaadja, & mondatokat a pozitív, semleges és negatív hangulatra. A szolgáltatást [tároló használatával](how-tos/text-analytics-how-to-install-containers.md)is futtathatja a helyszínen.
 
 A 3.1-es verziótól kezdődően a vélemény bányászati funkciója Hangulatelemzés. Ez a funkció a természetes nyelvi feldolgozásban (például a termékek vagy szolgáltatások attribútumaiban) lévő véleményekkel kapcsolatos részletesebb információkat tartalmaz a szövegben található, aspektusokon alapuló Hangulatelemzésként is.
 
@@ -94,7 +96,7 @@ A Text Analytics API minden végpontja nyers szöveges adatokat fogad el. Továb
 
 A Text Analytics API Unicode-kódolást használ a szövegek megjelenítéséhez és a karakterszámok számításához. A kérések elküldhetők UTF-8- és UTF-16-kódolással is, amelyek között nincs számottevő különbség a karakterek számában. A rendszer a Unicode-kódpontokat használja a karakterszám heurisztikus számításához. A két mennyiség a Text Analytics adatkorlátai szempontjából egyenértékű. Ha [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) a karakterek számának beolvasására használja, ugyanazt a módszert használja az adatméret mérésére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + [Hozzon létre egy Azure-erőforrást](../cognitive-services-apis-create-account.md) az Text Analytics számára az alkalmazások kulcsának és végpontjának beszerzéséhez.
 

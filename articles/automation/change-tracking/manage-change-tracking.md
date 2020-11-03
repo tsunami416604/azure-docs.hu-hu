@@ -3,14 +3,14 @@ title: A Change Tracking és a leltár kezelése Azure Automation
 description: Ez a cikk azt ismerteti, hogyan használható a Change Tracking és a leltár a szoftverek és a Microsoft-szolgáltatások változásainak nyomon követésére a környezetben.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 10/14/2020
+ms.date: 11/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: a599bb6f07683540f5b12c6a69d6565161f89a4f
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 99cdc4191320efb37b37e4ec38e808f3961a1207
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209849"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288739"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>A Change Tracking és az Inventory kezelése
 
@@ -37,17 +37,17 @@ A következő lépésekkel konfigurálhatja a Windows rendszerű számítógépe
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A Azure Portal válassza a **minden szolgáltatás**lehetőséget. Az erőforrások listájába írja be az **Automation** kifejezést. Ahogy elkezd gépelni, a lista a bemenet alapján szűri a javaslatokat. Válassza az **Automation-fiókok** elemet.
+2. A Azure Portal válassza a **minden szolgáltatás** lehetőséget. Az erőforrások listájába írja be az **Automation** kifejezést. Ahogy elkezd gépelni, a lista a bemenet alapján szűri a javaslatokat. Válassza az **Automation-fiókok** elemet.
 
 3. Az Automation-fiókok listájában válassza ki azt a fiókot, amelyet a Change Tracking és a leltár engedélyezésekor választott ki.
 
-4. Az Automation-fiókban válassza a **change Tracking** elemet a **konfiguráció kezelése**területen.
+4. Az Automation-fiókban válassza a **change Tracking** elemet a **konfiguráció kezelése** területen.
 
 5. Válassza a **beállítások szerkesztése** (a fogaskerék szimbóluma) lehetőséget.
 
-6. A munkaterület konfigurációja lapon válassza a **Windows-fájlok**lehetőséget, majd kattintson a **+ Hozzáadás** gombra a nyomon követett új fájl hozzáadásához.
+6. A munkaterület konfigurációja lapon válassza a **Windows-fájlok** lehetőséget, majd kattintson a **+ Hozzáadás** gombra a nyomon követett új fájl hozzáadásához.
 
-7. A Windows-fájl hozzáadása Change Tracking ablaktáblán adja meg a nyomon követni kívánt fájl vagy mappa adatait, majd kattintson a **Save (Mentés**) gombra. A következő táblázat az információhoz használható tulajdonságokat határozza meg.
+7. A Windows-fájl hozzáadása Change Tracking ablaktáblán adja meg a nyomon követni kívánt fájl vagy mappa adatait, majd kattintson a **Save (Mentés** ) gombra. A következő táblázat az információhoz használható tulajdonságokat határozza meg.
 
     |Tulajdonság  |Leírás  |
     |---------|---------|
@@ -59,7 +59,14 @@ A következő lépésekkel konfigurálhatja a Windows rendszerű számítógépe
     |Rekurzió     | True (igaz), ha a rendszer rekurziót használ a nyomon követett elem keresésekor, máskülönben hamis értéket ad.        |    
     |Fájl tartalmának feltöltése | True (igaz) – a fájl tartalmának feltöltése a nyomon követett változásokon, ellenkező esetben hamis.|
 
-8. Győződjön meg arról, hogy a **fájl tartalmának feltöltéséhez**igaz értéket ad meg. Ezzel a beállítással engedélyezhető a fájl tartalmának követése a megadott elérési úthoz.
+    Ha úgy tervezi, hogy a fájlok és mappák figyelését helyettesítő karakterekkel konfigurálja, vegye figyelembe a következőket:
+
+    - Több fájl nyomon követéséhez helyettesítő karakterek szükségesek.
+    - Helyettesítő karakterek csak az elérési út utolsó szegmensében használhatók, például *C:\folder\file* vagy */etc/*. conf *
+    - Ha egy környezeti változó érvénytelen elérési utat tartalmaz, az érvényesítés sikeres lesz, de az elérési út sikertelen lesz a leltár futtatásakor.
+    - Az elérési út beállításakor kerülje el az általános elérési utakat, például a *c:*. * * értéket, ami túl sok mappát fog áthaladni.
+
+8. Győződjön meg arról, hogy a **fájl tartalmának feltöltéséhez** igaz értéket ad meg. Ezzel a beállítással engedélyezhető a fájl tartalmának követése a megadott elérési úthoz.
 
 ### <a name="configure-file-tracking-on-linux"></a>A fájlok nyomon követésének konfigurálása Linuxon
 
@@ -67,9 +74,9 @@ A következő lépésekkel konfigurálhatja a fájlok követését a Linux rends
 
 1. Válassza a **beállítások szerkesztése** (a fogaskerék szimbóluma) lehetőséget.
 
-2. A munkaterület konfigurációja lapon válassza a **Linux-fájlok**, majd a **+ Hozzáadás** lehetőséget a nyomon követett új fájl hozzáadásához.
+2. A munkaterület konfigurációja lapon válassza a **Linux-fájlok** , majd a **+ Hozzáadás** lehetőséget a nyomon követett új fájl hozzáadásához.
 
-3. A **change Tracking Linux-fájl hozzáadása** lapon adja meg a nyomon követni kívánt fájl vagy könyvtár adatait, majd kattintson a **Mentés**gombra. A következő táblázat az információhoz használható tulajdonságokat határozza meg.
+3. A **change Tracking Linux-fájl hozzáadása** lapon adja meg a nyomon követni kívánt fájl vagy könyvtár adatait, majd kattintson a **Mentés** gombra. A következő táblázat az információhoz használható tulajdonságokat határozza meg.
 
     |Tulajdonság  |Leírás  |
     |---------|---------|
@@ -102,7 +109,7 @@ A következő lépésekkel engedélyezheti a fájlok tartalmának módosításá
 
 1. Válassza a **beállítások szerkesztése** (a fogaskerék szimbóluma) lehetőséget.
 
-2. Válassza a **fájl tartalma** lehetőséget, majd válassza a **hivatkozás**lehetőséget. Ez a beállítás megnyitja a **tartalom helyének hozzáadása Change Tracking** oldalon.
+2. Válassza a **fájl tartalma** lehetőséget, majd válassza a **hivatkozás** lehetőséget. Ez a beállítás megnyitja a **tartalom helyének hozzáadása Change Tracking** oldalon.
 
    ![Tartalom helyének hozzáadása](./media/manage-change-tracking/enable.png)
 
@@ -112,7 +119,7 @@ A következő lépésekkel engedélyezheti a fájlok tartalmának módosításá
 
    ![Storage-fiók beállítása](./media/manage-change-tracking/storage-account.png)
 
-6. A Change Tracking és a leltár megjeleníti a Storage-fiók és a közös hozzáférésű aláírás (SAS) URI-azonosítóját, amikor engedélyezi a fájl tartalmának módosítását. Az aláírások 365 nap után lejárnak, és újból létrehozhatja őket **az újbóli**létrehozás lehetőség kiválasztásával.
+6. A Change Tracking és a leltár megjeleníti a Storage-fiók és a közös hozzáférésű aláírás (SAS) URI-azonosítóját, amikor engedélyezi a fájl tartalmának módosítását. Az aláírások 365 nap után lejárnak, és újból létrehozhatja őket **az újbóli** létrehozás lehetőség kiválasztásával.
 
    ![Fiók kulcsainak listázása](./media/manage-change-tracking/account-keys.png)
 
@@ -134,11 +141,11 @@ A következő lépésekkel konfigurálhatja a beállításjegyzék-kulcsok nyomo
 
 1. Az Automation-fiók **change Tracking (változások nyomon követése** ) lapján válassza a **beállítások szerkesztése** (a fogaskerék szimbóluma) lehetőséget.
 
-2. A munkaterület konfigurációja lapon válassza a **Windows beállításjegyzék**lehetőséget.
+2. A munkaterület konfigurációja lapon válassza a **Windows beállításjegyzék** lehetőséget.
 
 3. Válassza a **+ Hozzáadás** lehetőséget a nyomon követett új beállításkulcs hozzáadásához.
 
-4. A **change Tracking Windows beállításjegyzék hozzáadása** lapon adja meg a nyomon követett kulcs adatait, majd válassza a **Mentés**lehetőséget. A következő táblázat az információhoz használható tulajdonságokat határozza meg.
+4. A **change Tracking Windows beállításjegyzék hozzáadása** lapon adja meg a nyomon követett kulcs adatait, majd válassza a **Mentés** lehetőséget. A következő táblázat az információhoz használható tulajdonságokat határozza meg. A beállításjegyzék elérési útjának megadásakor a kulcsnak és nem értéknek kell lennie.
 
     |Tulajdonság  |Leírás  |
     |---------|---------|

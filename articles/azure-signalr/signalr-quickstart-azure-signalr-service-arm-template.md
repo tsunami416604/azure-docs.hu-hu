@@ -1,18 +1,18 @@
 ---
 title: 'Rövid útmutató: Azure Signaler szolgáltatás-ARM-sablon létrehozása'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Signal Service-szolgáltatást egy Azure Resource Manager sablonnal (ARM-sablon).
-author: mgblythe
+author: sffamily
 ms.service: signalr
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
+ms.author: zhshang
 ms.date: 10/02/2020
-ms.openlocfilehash: f38bd6ed91788343c028ec5834ba28f4bad3ba43
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a7e8183f21ab49fe4662470d30e52977dd89153a
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487823"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289910"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-signalr-service"></a>Gyors útmutató: ARM-sablon használata az Azure Signaler szolgáltatás üzembe helyezéséhez
 
@@ -60,28 +60,28 @@ A sablon egy Azure-erőforrást definiál:
 
 A következő hivatkozásra kattintva telepítheti az Azure Signaler szolgáltatást a Azure Portal ARM sablonjának használatával:
 
-[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Gomb az Azure Signaler szolgáltatás az Azure-ba való üzembe helyezéséhez az Azure Portal ARM-sablon használatával.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-signalr%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Gomb az Azure Signaler szolgáltatás az Azure-ban való üzembe helyezéséhez a Azure Portal ARM-sablonjának használatával.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-signalr%2fazuredeploy.json)
 
 Az **Azure signaler szolgáltatás üzembe helyezése** oldalon:
 
 1. Ha szeretné, módosítsa az **előfizetést** az alapértelmezett értékre.
 
-2. Az **erőforráscsoport**területen válassza az **új létrehozása**lehetőséget, adja meg az új erőforráscsoport nevét, majd kattintson **az OK gombra**.
+2. Az **erőforráscsoport** területen válassza az **új létrehozása** lehetőséget, adja meg az új erőforráscsoport nevét, majd kattintson **az OK gombra**.
 
 3. Ha létrehozott egy új erőforráscsoportot, válasszon ki egy **régiót** az erőforráscsoport számára.
 
-4. Ha szeretné, adja meg az Azure Signaler szolgáltatás új **nevét** és **helyét** (például **eastus2**). Ha nem ad meg nevet, az automatikusan létrejön. Az Azure Signaler szolgáltatás helye megegyezik az erőforráscsoport régiójával, vagy eltérő lehet. Ha nem ad meg helyet, az az erőforráscsoport számára azonos régióra van beállítva.
+4. Ha szeretné, adja meg az Azure Signaler szolgáltatás új **nevét** és **helyét** (például **eastus2** ). Ha nem ad meg nevet, az automatikusan létrejön. Az Azure Signaler szolgáltatás helye megegyezik az erőforráscsoport régiójával, vagy eltérő lehet. Ha nem ad meg helyet, az az erőforráscsoport számára azonos régióra van beállítva.
 
-5. Válassza ki **az árképzési szintet** (**Free_F1** vagy **Standard_S1**), adja meg a **kapacitást** (a jelző egységek számát), és válassza ki az **alapértelmezett** **szolgáltatási módot** (a szükséges központi kiszolgáló), a **kiszolgáló** nélküli (nem engedélyezi a kiszolgálók kapcsolatát) vagy a **klasszikus** (csak akkor, ha a hub kiszolgálói kapcsolattal rendelkezik). Ezután adja meg, hogy engedélyezi-e a **kapcsolati naplókat** , vagy **engedélyezze az üzenetkezelési naplókat**.
+5. Válassza ki **az árképzési szintet** ( **Free_F1** vagy **Standard_S1** ), adja meg a **kapacitást** (a jelző egységek számát), és válassza ki az **alapértelmezett** **szolgáltatási módot** (a szükséges központi kiszolgáló), a **kiszolgáló** nélküli (nem engedélyezi a kiszolgálók kapcsolatát) vagy a **klasszikus** (csak akkor, ha a hub kiszolgálói kapcsolattal rendelkezik). Ezután adja meg, hogy engedélyezi-e a **kapcsolati naplókat** , vagy **engedélyezze az üzenetkezelési naplókat**.
 
     > [!NOTE]
     > A **Free_F1** díjszabási szintje esetében a kapacitás 1 egységre van korlátozva.
 
-    :::image type="content" source="./media/signalr-quickstart-azure-signalr-service-arm-template/deploy-azure-signalr-service-arm-template-portal.png" alt-text="Gomb az Azure Signaler szolgáltatás az Azure-ba való üzembe helyezéséhez az Azure Portal ARM-sablon használatával.":::
+    :::image type="content" source="./media/signalr-quickstart-azure-signalr-service-arm-template/deploy-azure-signalr-service-arm-template-portal.png" alt-text="Képernyőkép a Azure Portal Azure Signaler szolgáltatás létrehozásához használt ARM-sablonról.":::
 
 6. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
-7. Olvassa el a használati feltételeket, majd válassza a **Létrehozás**lehetőséget.
+7. Olvassa el a használati feltételeket, majd válassza a **Létrehozás** lehetőséget.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
@@ -92,12 +92,12 @@ Az alábbi kód használatával helyezheti üzembe az Azure Signaler szolgáltat
 
 * Az új Azure Signaler szolgáltatás neve és régiója
 * Egy új erőforráscsoport neve és régiója
-* Az Azure díjszabási szintje (**Free_F1** vagy **Standard_S1**)
+* Az Azure díjszabási szintje ( **Free_F1** vagy **Standard_S1** )
 * A jelző egység kapacitása (1, 2, 5, 10, 20, 50 vagy 100)
   > [!NOTE]
   > A **Free_F1** díjszabási szintje esetében a kapacitás 1 egységre van korlátozva.
 * A szolgáltatási mód: **alapértelmezés** szerint a központi kiszolgáló megkövetelése, **kiszolgáló** nélküli, hogy ne engedélyezze a kiszolgálói kapcsolatokat vagy a **klasszikus** útvonalat a központi kiszolgálókhoz való továbbításhoz, ha a hub kiszolgálói kapcsolatban van
-* A kapcsolatok vagy üzenetküldési naplók engedélyezése (**igaz** vagy **hamis**)
+* A kapcsolatok vagy üzenetküldési naplók engedélyezése ( **igaz** vagy **hamis** )
 
 ```azurepowershell-interactive
 $serviceName = Read-Host -Prompt "Enter a name for the new Azure SignalR Service"
@@ -137,12 +137,12 @@ Az alábbi kód használatával helyezheti üzembe az Azure Signaler szolgáltat
 
 * Az új Azure Signaler szolgáltatás neve és régiója
 * Egy új erőforráscsoport neve és régiója
-* Az Azure díjszabási szintje (**Free_F1** vagy **Standard_S1**)
+* Az Azure díjszabási szintje ( **Free_F1** vagy **Standard_S1** )
 * A jelző egység kapacitása (1, 2, 5, 10, 20, 50 vagy 100)
     > [!NOTE]
     > A **Free_F1** díjszabási szintje esetében a kapacitás 1 egységre van korlátozva.
 * A szolgáltatási mód: **alapértelmezés** szerint a központi kiszolgáló megkövetelése, **kiszolgáló** nélküli, hogy ne engedélyezze a kiszolgálói kapcsolatokat vagy a **klasszikus** útvonalat a központi kiszolgálókhoz való továbbításhoz, ha a hub kiszolgálói kapcsolatban van
-* A kapcsolatok vagy üzenetküldési naplók engedélyezése (**igaz** vagy **hamis**)
+* A kapcsolatok vagy üzenetküldési naplók engedélyezése ( **igaz** vagy **hamis** )
 
 ```azurecli-interactive
 read -p "Enter a name for the new Azure SignalR Service: " serviceName &&
@@ -209,13 +209,13 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli az 
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki az **erőforráscsoportok**elemet.
+1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki az **erőforráscsoportok** elemet.
 
 2. Az erőforráscsoport listán válassza ki az erőforráscsoport nevét.
 
-3. Az erőforráscsoport **Áttekintés** lapján válassza az **erőforráscsoport törlése**elemet.
+3. Az erőforráscsoport **Áttekintés** lapján válassza az **erőforráscsoport törlése** elemet.
 
-4. A megerősítő párbeszédpanelen írja be az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
+4. A megerősítő párbeszédpanelen írja be az erőforráscsoport nevét, majd válassza a **Törlés** lehetőséget.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 

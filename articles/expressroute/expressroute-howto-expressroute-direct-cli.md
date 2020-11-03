@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0bdf2c4dda3e272ae04681f886f6e4da31dcebd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7931ad9e55d62d5fa2b1828d276e56f7c8cd02e1
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569839"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286488"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>ExpressRoute közvetlen konfigurálása az Azure CLI használatával
 
@@ -209,19 +209,11 @@ A közvetlen ExpressRoute lehetővé teszi a Microsoft globális hálózatának 
    }  
    ```
 
-## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>Engedélyezési engedély (LOA) előállítása
-
-Adja meg a legutóbb létrehozott ExpressRoute közvetlen erőforrás nevét, az erőforráscsoport nevét és az ügyfél nevét, hogy az LOA-t és (opcionálisan) adja meg a dokumentum tárolására szolgáló fájl helyét. Ha a fájl elérési útja nem hivatkozik rá, a rendszer letölti a dokumentumot az aktuális könyvtárba.
-
-```azurecli
-az network express-route port generate-loa -n Contoso-Direct -g Contoso-Direct-rg --customer-name Contoso --destination C:\Users\SampleUser\Downloads\LOA.pdf
-```
-
 ## <a name="change-adminstate-for-links"></a><a name="state"></a>Hivatkozások AdminState módosítása
 
 Ezt a folyamatot az 1. rétegbeli tesztek elvégzéséhez használhatja. Győződjön meg arról, hogy minden egyes kapcsolatok megfelelően vannak kialakítva az elsődleges és a másodlagos portok mindegyik útválasztóján.
 
-1. Állítsa be a hivatkozásokat az **engedélyezve**értékre. Ismételje meg ezt a lépést az egyes hivatkozások **engedélyezésre**való beállításához.
+1. Állítsa be a hivatkozásokat az **engedélyezve** értékre. Ismételje meg ezt a lépést az egyes hivatkozások **engedélyezésre** való beállításához.
 
    A hivatkozások [0] az elsődleges port és a hivatkozások [1] a másodlagos port.
 

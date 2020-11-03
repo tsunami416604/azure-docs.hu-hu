@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 07be83527fa781f87ed1de06fa41bd6d08ee9dc4
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 74669036a40048ca21aae56856981197defe1c35
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426574"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286531"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>A Key Vault és az Azure Private Link integrálása
 
@@ -172,7 +172,7 @@ Négy kiépítési állapot létezik:
 1. Kattintson a jóváhagyás gombra.
 1. Ha van olyan privát végponti kapcsolat, amelyet el szeretne utasítani, legyen az egy függőben lévő kérelem vagy létező kapcsolat, válassza ki a kapcsolatot, és kattintson az "elutasítás" gombra.
 
-    ![Rendszerkép](../media/private-link-service-7.png)
+    ![Kép](../media/private-link-service-7.png)
 
 ##  <a name="how-to-manage-a-private-endpoint-connection-to-key-vault-using-azure-cli"></a>Privát végponti kapcsolatok kezelése Key Vault az Azure CLI használatával
 
@@ -243,14 +243,14 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 
 * Ellenőrizze, hogy van-e saját DNS zóna erőforrása. 
     1. Rendelkeznie kell egy saját DNS zóna-erőforrással a pontos névvel: privatelink.vaultcore.azure.net. 
-    2. Ha szeretné megtudni, hogyan állíthatja be ezt a műveletet, tekintse meg a következő hivatkozást. [saját DNS zónák](https://docs.microsoft.com/azure/dns/private-dns-privatednszone)
+    2. Ha szeretné megtudni, hogyan állíthatja be ezt a műveletet, tekintse meg a következő hivatkozást. [saját DNS zónák](../../dns/private-dns-privatednszone.md)
     
 * Győződjön meg arról, hogy a Privát DNS-zóna nincs virtuális hálózathoz csatolva. Ez lehet a probléma, ha továbbra is a visszaadott nyilvános IP-címet kapja. 
     1. Ha a privát zóna DNS-je nincs a virtuális hálózathoz kapcsolva, a virtuális hálózatból származó DNS-lekérdezés a kulcstartó nyilvános IP-címét fogja visszaadni. 
     2. Navigáljon a Azure Portal saját DNS zóna erőforrásához, és kattintson a virtuális hálózati kapcsolatok lehetőségre. 
     4. A Key Vault hívásait végrehajtó virtuális hálózatnak szerepelnie kell a listáján. 
     5. Ha nincs ott, vegye fel. 
-    6. A részletes lépésekért tekintse meg a következő dokumentum [hivatkozását Virtual Network saját DNS zónához](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network)
+    6. A részletes lépésekért tekintse meg a következő dokumentum [hivatkozását Virtual Network saját DNS zónához](../../dns/private-dns-getstarted-portal.md#link-the-virtual-network)
 
 * Győződjön meg arról, hogy a saját DNS zónában nem hiányzik egy rekord a kulcstartóhoz. 
     1. Navigáljon a saját DNS zóna lapra. 
@@ -270,13 +270,13 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 > [!NOTE]
 > Az előfizetések által engedélyezett privát végpontokkal rendelkező kulcstartók száma állítható korlát. Az alább látható korlát az alapértelmezett korlát. Ha korlátozni szeretné a szolgáltatás korlátozását, küldjön e-mailt a címre akv-privatelink@microsoft.com . Ezeket a kéréseket eseti alapon kell jóváhagyni.
 
-**Díjszabás**: díjszabási információkért tekintse meg az [Azure Private link díjszabását](https://azure.microsoft.com/pricing/details/private-link/).
+**Díjszabás** : díjszabási információkért tekintse meg az [Azure Private link díjszabását](https://azure.microsoft.com/pricing/details/private-link/).
 
-**Korlátozások**: a Azure Key Vault magánhálózati végpontja csak az Azure nyilvános régióiban érhető el.
+**Korlátozások** : a Azure Key Vault magánhálózati végpontja csak az Azure nyilvános régióiban érhető el.
 
-**Privát végpontok maximális száma Key Vault**: 64.
+**Privát végpontok maximális száma Key Vault** : 64.
 
-**A privát végpontok által előfizetett kulcstartók alapértelmezett száma**: 400.
+**A privát végpontok által előfizetett kulcstartók alapértelmezett száma** : 400.
 
 További információ [: Azure Private link Service: korlátozások](../../private-link/private-link-service-overview.md#limitations)
 

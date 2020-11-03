@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: d5370343ac83d75df94e7291d26c87ce0c419d0e
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: d36c6e8ebbb86f9027a4822daa4481b5481523c2
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327416"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289536"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>A Key Vault integrálása a DigiCert hitelesítésszolgáltatóval
 
@@ -23,9 +23,9 @@ A Azure Key Vault lehetővé teszi a hálózat digitális tanúsítványainak ü
 
 Az Azure Key Vault-felhasználók közvetlenül a Key Vault hozhatnak DigiCert-tanúsítványokat. Key Vault a DigiCert által kiállított tanúsítványok teljes körű felügyeletét a DigiCert-hitelesítésszolgáltatóval Key Vault megbízható partneri kapcsolattal biztosítja.
 
-A tanúsítványokkal kapcsolatos további általános információkért lásd: [Azure Key Vault tanúsítványok](/azure/key-vault/certificates/about-certificates).
+A tanúsítványokkal kapcsolatos további általános információkért lásd: [Azure Key Vault tanúsítványok](./about-certificates.md).
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -51,17 +51,17 @@ A fenti információknak a DigiCert CertCentral-fiókból való összegyűjtése
 ### <a name="azure-portal"></a>Azure Portal
 
 1.  DigiCert-hitelesítésszolgáltató hozzáadásához navigáljon a DigiCert hozzáadni kívánt kulcstartóhoz. 
-2.  A Key Vault tulajdonságok lapon válassza a **tanúsítványok**lehetőséget.
+2.  A Key Vault tulajdonságok lapon válassza a **tanúsítványok** lehetőséget.
 3.  Válassza **a hitelesítésszolgáltatók** fület. ![ hitelesítésszolgáltatók kiválasztása](../media/certificates/how-to-integrate-certificate-authority/select-certificate-authorities.png)
 4.  Válassza a **Hozzáadás** lehetőséget.
  ![hitelesítésszolgáltatók hozzáadása](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
 5.  A hitelesítésszolgáltató **létrehozása** képernyőn válassza a következő értékeket:
-    -   **Név**: azonosítható kiállítói név hozzáadása. Példa DigicertCA
-    -   **Szolgáltató**: válassza a DigiCert lehetőséget a menüből.
-    -   **Fiókazonosító**: adja meg a DigiCert CertCentral-FIÓKjának azonosítóját
-    -   **Fiók jelszava**: adja meg a DigiCert CertCentral-fiókjában létrehozott API-kulcsot
-    -   **Szervezet azonosítója**: adja meg a DigiCert CertCentral-fiókból összegyűjtött OrgID 
-    -   Kattintson a **Létrehozás** lehetőségre.
+    -   **Név** : azonosítható kiállítói név hozzáadása. Példa DigicertCA
+    -   **Szolgáltató** : válassza a DigiCert lehetőséget a menüből.
+    -   **Fiókazonosító** : adja meg a DigiCert CertCentral-FIÓKjának azonosítóját
+    -   **Fiók jelszava** : adja meg a DigiCert CertCentral-fiókjában létrehozott API-kulcsot
+    -   **Szervezet azonosítója** : adja meg a DigiCert CertCentral-fiókból összegyűjtött OrgID 
+    -   Kattintson a **Létrehozás** gombra.
    
 6.  Látni fogja, hogy a DigicertCA már hozzá lett adva a hitelesítésszolgáltatók listájában.
 
@@ -89,7 +89,7 @@ New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
 A kulcstartó egyedi nevét kell használnia. Itt a "contoso-Vaultname" a Key Vault neve az útmutató során.
 
 - Tár **neve** Contoso – Vaultname.
-- **Erőforráscsoport neve**: ContosoResourceGroup.
+- **Erőforráscsoport neve** : ContosoResourceGroup.
 - **Tartózkodási hely** EastUS.
 
 ```azurepowershell-interactive
@@ -147,7 +147,7 @@ Példa
    Nem. A tanúsítvány létrehozásakor a rendszer ellenőrzi, hogy az ellenőrzés folyamata hosszabb időt is igénybe vehet, és az ellenőrzés a folyamat DigiCert függ.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hitelesítés, kérések és válaszok](../general/authentication-requests-and-responses.md)
 - [Key Vault fejlesztői útmutató](../general/developers-guide.md)

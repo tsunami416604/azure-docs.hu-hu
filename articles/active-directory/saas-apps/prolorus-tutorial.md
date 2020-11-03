@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: c1d339582ead7d851f9be79904d2d4de6e02b4a8
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 4582970a048a98c728a96ab707790be61d236e0e
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135213"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289417"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-prolorus"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Prolorus
 
@@ -31,7 +31,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Prolorus a Azure
 Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* Prolorus egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
+* Prolorus egyszeri bejelentkezést (SSO) engedélyező előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -118,7 +118,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-prolorus-sso"></a>Prolorus SSO konfigurálása
 
-Ha az egyszeri bejelentkezést szeretné konfigurálni a **Prolorus** oldalon, el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portalról a [Prolorus támogatási csapatához](mailto:infrastructure@prolorus.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Az egyszeri bejelentkezés az **Prolorus** oldalon való konfigurálásához el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt URL-címeket Azure Portalról a [Prolorus támogatási csapatához](mailto:infrastructure@prolorus.com). A tanúsítvány kitömörítése először a küldés előtt gondoskodik arról, hogy a rendszer ne tiltsa le semmilyen e-mail rendszeren. Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-prolorus-test-user"></a>Prolorus-tesztelési felhasználó létrehozása
 

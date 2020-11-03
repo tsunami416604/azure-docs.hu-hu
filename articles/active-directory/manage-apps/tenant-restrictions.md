@@ -12,12 +12,12 @@ ms.date: 10/26/2020
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce96eb5e91ccc4cb9f69711f9e6fd8fd59ce65bc
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: d69755c36bf37dd591e81bea7983e25905798d4d
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669930"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286208"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>A bérlői korlátozások használata a SaaS-Felhőbeli alkalmazásokhoz való hozzáférés kezelésére
 
@@ -33,7 +33,7 @@ Ez a cikk a Microsoft 365 bérlői korlátozásait ismerteti, de a szolgáltatá
 
 A teljes megoldás a következő összetevőket tartalmazza:
 
-1. **Azure ad** : Ha a `Restrict-Access-To-Tenants: <permitted tenant list>` jelen van, az Azure ad csak az engedélyezett bérlők biztonsági jogkivonatait bocsátja ki.
+1. **Azure ad** : Ha a `Restrict-Access-To-Tenants: <permitted tenant list>` fejléc jelen van, az Azure ad csak az engedélyezett bérlők biztonsági jogkivonatait bocsátja ki.
 
 2. Helyszíni **proxykiszolgáló-infrastruktúra** : ez az infrastruktúra TRANSPORT Layer Security (TLS) ellenőrzésre alkalmas proxy eszköz. A proxyt úgy kell konfigurálni, hogy beszúrja az engedélyezett bérlők listáját tartalmazó fejlécet az Azure AD-ba irányuló forgalomba.
 
@@ -63,7 +63,7 @@ A következő konfiguráció szükséges a bérlői korlátozások a proxy-infra
 
 - Az ügyfeleknek meg kell bízniuk a proxy által a TLS-kommunikációhoz benyújtott tanúsítványlánc számára. Ha például egy belső [nyilvános kulcsokra épülő infrastruktúra (PKI)](/windows/desktop/seccertenroll/public-key-infrastructure) tanúsítványait használja, a belső kiállító főtanúsítvány-hitelesítésszolgáltató tanúsítványának megbízhatónak kell lennie.
 
-- Ez a funkció Microsoft 365 előfizetések részét képezi, de ha bérlői korlátozásokkal szeretné szabályozni a más SaaS-alkalmazásokhoz való hozzáférést, akkor prémium szintű Azure AD 1 licenc szükséges.
+- A bérlői korlátozások használatához prémium szintű Azure AD 1 licenc szükséges. 
 
 #### <a name="configuration"></a>Konfiguráció
 

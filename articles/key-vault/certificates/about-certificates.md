@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3e5476b01ac78af992f548efbeb87de5104dead0
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 45c0108ed87dd5264b9192f5dd69e0198bd59fc1
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126773"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289783"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Információk az Azure Key Vault-tanúsítványokról
 
@@ -44,7 +44,7 @@ Key Vault-tanúsítvány létrehozásakor a megcímezhető titkos kulcsból a PF
 
 A címezhető kulcs nagyobb jelentőséggel bír a nem exportálható KV-tanúsítványok esetén. A megcímezhető KV-kulcs műveletei a KV tanúsítvány létrehozásához használt KV-os tanúsítvány-házirend *kulcshasználat* mezőjéből vannak leképezve.  
 
- - Támogatott főtípusok: az RSA, az RSA-HSM, az EC, az EC-HSM, a TOT ( [itt](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)felsorolva) csak az RSA, az EC esetében engedélyezett. A HSM-kulcsok nem exportálhatók.
+ - Támogatott főtípusok: az RSA, az RSA-HSM, az EC, az EC-HSM, a TOT ( [itt](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)felsorolva) csak az RSA, az EC esetében engedélyezett. A HSM-kulcsok nem exportálhatók.
 
 
 ## <a name="certificate-attributes-and-tags"></a>Tanúsítvány attribútumai és címkéi
@@ -57,14 +57,14 @@ A tanúsítvány attribútumai a megcímezhető kulcs és titkos kód attribútu
 
 A Key Vault tanúsítványa a következő tulajdonságokkal rendelkezik:  
 
--   *engedélyezve*: logikai, nem kötelező, az alapértelmezett érték **true (igaz**). Megadható annak jelzése, hogy a tanúsítvány adatai titkos fájlként, vagy kulcsként működnek-e. A *NBF* és az *exp* együttes használata esetén is használatos, ha a *NBF* és az *exp*közötti művelet történik, és csak akkor lesz engedélyezve, ha a beállítás értéke TRUE (igaz). A *NBF* és az *exp* ablakon kívüli műveletek automatikusan le lesznek tiltva.  
+-   *engedélyezve* : logikai, nem kötelező, az alapértelmezett érték **true (igaz** ). Megadható annak jelzése, hogy a tanúsítvány adatai titkos fájlként, vagy kulcsként működnek-e. A *NBF* és az *exp* együttes használata esetén is használatos, ha a *NBF* és az *exp* közötti művelet történik, és csak akkor lesz engedélyezve, ha a beállítás értéke TRUE (igaz). A *NBF* és az *exp* ablakon kívüli műveletek automatikusan le lesznek tiltva.  
 
 A válaszban további írásvédett attribútumok is szerepelnek:
 
--   *Létrehozva*: IntDate: azt jelzi, hogy mikor jött létre a tanúsítvány ezen verziója.  
--   *frissítve*: IntDate: azt jelzi, hogy a tanúsítvány ezen verziója frissítve lett-e.  
--   *exp*: IntDate: az x509-tanúsítvány lejárati dátumának értékét tartalmazza.  
--   *NBF*: IntDate: a x509-tanúsítvány dátumának értékét tartalmazza.  
+-   *Létrehozva* : IntDate: azt jelzi, hogy mikor jött létre a tanúsítvány ezen verziója.  
+-   *frissítve* : IntDate: azt jelzi, hogy a tanúsítvány ezen verziója frissítve lett-e.  
+-   *exp* : IntDate: az x509-tanúsítvány lejárati dátumának értékét tartalmazza.  
+-   *NBF* : IntDate: a x509-tanúsítvány dátumának értékét tartalmazza.  
 
 > [!Note] 
 > Ha egy Key Vault-tanúsítvány lejár, az ahhoz tartozó címezhető kulcs és titkos kulcs nem fog működni.  
@@ -82,11 +82,11 @@ A tanúsítvány-szabályzat a Key Vault-tanúsítványok életciklusának létr
 
 Ha egy Key Vault-tanúsítvány teljesen létre lett hozva, a szabályzatot meg kell adni. A házirend meghatározza, hogyan kell létrehozni ezt a Key Vault-tanúsítvány verzióját vagy a következő Key Vault-tanúsítvány verzióját. A szabályzat létrehozása után a későbbi verziókhoz nem szükséges egymást követő létrehozási művelet. Egy Key Vault-tanúsítvány összes verziójához csak egy példány van.  
 
-A tanúsítvány-házirend magas szinten a következő adatokat tartalmazza (a definíciók [itt](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)találhatók):  
+A tanúsítvány-házirend magas szinten a következő adatokat tartalmazza (a definíciók [itt](/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)találhatók):  
 
 -   X509 tanúsítvány tulajdonságai: a tulajdonos nevét, a tulajdonos alternatív neveit, valamint az X509-tanúsítványkérelem létrehozásához használt egyéb tulajdonságokat tartalmazza.  
 -   Kulcs tulajdonságai: kulcs típusát, kulcs hosszát, exportálható és ReuseKeyOnRenewal mezőket tartalmaz. Ezek a mezők a Key vaultot tájékoztatják a kulcsok létrehozásáról. 
-     - Támogatott főtípusok: RSA, RSA-HSM, EC, EC-HSM, TOT ( [itt](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)látható) 
+     - Támogatott főtípusok: RSA, RSA-HSM, EC, EC-HSM, TOT ( [itt](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)látható) 
 -   Titkos kód tulajdonságai: olyan titkos tulajdonságokat tartalmaz, mint például a címezhető titok tartalomtípusa a titkos érték létrehozásához, a tanúsítvány titkosként való lekéréséhez.  
 -   Élettartam-műveletek: a KV-os tanúsítvány élettartamának műveleteit tartalmazza. Minden élettartam-művelet tartalmazza a következőket:  
 
@@ -103,14 +103,14 @@ A következő táblázat a x509-használati szabályzat hozzárendelését mutat
 
 |**X509-használat jelzői**|**Key Vault Key Ops**|**Alapértelmezett viselkedés**|
 |----------|--------|--------|
-|DataEncipherment|titkosítás, visszafejtés| N.A. |
-|DecipherOnly|visszafejteni| N.A.  |
+|DataEncipherment|titkosítás, visszafejtés| N/A |
+|DecipherOnly|visszafejteni| N/A  |
 |DigitalSignature|aláírás, ellenőrzés| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
-|EncipherOnly|encrypt| N.A. |
-|KeyCertSign|aláírás, ellenőrzés|N.A.|
+|EncipherOnly|encrypt| N/A |
+|KeyCertSign|aláírás, ellenőrzés|N/A|
 |KeyEncipherment|wrapKey, unwrapKey| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
-|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| N.A. |
-|crlsign|aláírás, ellenőrzés| N.A. |
+|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| N/A |
+|crlsign|aláírás, ellenőrzés| N/A |
 
 ## <a name="certificate-issuer"></a>Tanúsítvány kiállítója
 
@@ -133,7 +133,7 @@ Ahhoz, hogy a tanúsítvány kiállítója egy Key Vaulton legyen létrehozva, a
 
     -   A Key vaultban a szolgáltató kiállító objektumának létrehozásához használandó konfigurációt adja meg.  
 
-A kiállítói objektumok tanúsítvány-portálról történő létrehozásával kapcsolatos további információkért tekintse meg a [Key Vault tanúsítványok blogját](https://aka.ms/kvcertsblog) .  
+A kiállítói objektumok tanúsítvány-portálról történő létrehozásával kapcsolatos további információkért tekintse meg a [Key Vault tanúsítványok blogját](/archive/blogs/kv/manage-certificates-via-azure-key-vault) .  
 
 Key Vault lehetővé teszi több kiállító objektum létrehozását különböző kiállítói szolgáltatói konfigurációval. A kiállítói objektum létrehozása után a neve hivatkozhat egy vagy több tanúsítvány-házirendre. A kiállító objektumra való hivatkozás arra utasítja a Key Vault, hogy a kiállító objektumban megadott konfigurációt használja, amikor a tanúsítvány létrehozásakor és megújításakor a x509-tanúsítványt kéri a CA-szolgáltatótól.  
 

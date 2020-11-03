@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 6f216a7f0851661efc61a771fc35feb71e77fd1f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1b8dae471729b42b1c302c6c45033ddc808c7b43
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792480"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289299"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Feladatátvevő fürt példányai SQL Server az Azure-ban Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -149,7 +149,7 @@ A fürt csatlakozási lehetőségeivel kapcsolatos további információkért l�
 Vegye figyelembe az alábbi korlátozásokat a feladatátvevő fürt példányaihoz az Azure Virtual Machines SQL Server. 
 
 ### <a name="lightweight-resource-provider"></a>Egyszerűsített erőforrás-szolgáltató   
-Jelenleg SQL Server az Azure-beli virtuális gépeken futó feladatátvevő fürtök példányai csak az [SQL Server IaaS-ügynök bővítmény](sql-server-iaas-agent-extension-automate-management.md) [egyszerűsített felügyeleti módjával](sql-vm-resource-provider-register.md#management-modes) támogatottak. Ha a teljes bővítmény módból egyszerűre szeretne váltani, törölje a megfelelő virtuális gépekhez tartozó **SQL** -virtuálisgép-erőforrást, majd az egyszerűsített módban regisztrálja őket az SQL VM erőforrás-szolgáltatóval. Ha a Azure Portal használatával törli az SQL-alapú **virtuális gép** erőforrását, törölje a megfelelő virtuális gép melletti jelölőnégyzet jelölését. 
+Jelenleg SQL Server az Azure-beli virtuális gépeken futó feladatátvevő fürtök példányai csak az [SQL Server IaaS-ügynök bővítmény](sql-server-iaas-agent-extension-automate-management.md) [egyszerűsített felügyeleti módjával](sql-server-iaas-agent-extension-automate-management.md#management-modes) támogatottak. Ha a teljes bővítmény módból egyszerűre szeretne váltani, törölje a megfelelő virtuális gépekhez tartozó **SQL** -virtuálisgép-erőforrást, majd az egyszerűsített módban regisztrálja őket az SQL VM erőforrás-szolgáltatóval. Ha a Azure Portal használatával törli az SQL-alapú **virtuális gép** erőforrását, törölje a megfelelő virtuális gép melletti jelölőnégyzet jelölését. 
 
 A teljes bővítmény olyan funkciókat támogat, mint például az automatikus biztonsági mentés, a javítások és a speciális portálok kezelése. Ezek a funkciók nem fognak működni SQL Server virtuális gépeken, miután az ügynök újratelepítése egyszerűsített felügyeleti módban történik.
 

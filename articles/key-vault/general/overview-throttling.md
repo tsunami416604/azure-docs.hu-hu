@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7aa33bb062abf748031b27df46d42e8f13aabfc3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b60f290f6d3ca184e25edd2984ad5b2d1ff2bdf
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819969"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289672"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Az Azure Key Vaultra vonatkozó szabályozási irányelvek
 
@@ -47,8 +47,8 @@ Ha úgy látja, hogy a fentiek továbbra sem felelnek meg az igényeinek, tölts
 
 Ha további kapacitást hagy jóvá, vegye figyelembe a következőket a kapacitás növekedésének eredményeképpen:
 1. Az adatkonzisztencia-modell módosul. Miután a tár engedélyezve van a további adatátviteli kapacitással, a Key Vault szolgáltatás adatkonzisztencia-garanciája módosul (a nagyobb mennyiségű RPS-vel való megfeleléshez szükséges, mivel a mögöttes Azure Storage szolgáltatás nem tud lépést tartani).  Dióhéjban:
-  1. Az **engedélyezési lista nélkül**: a Key Vault szolgáltatás egy írási művelet eredményét fogja tükrözni (például SecretSet, CreateKey) azonnal a következő hívásokban (például: SecretGet, előjel).
-  1. Az **engedélyezési listával**: a Key Vault szolgáltatás egy írási művelet eredményét fogja tükrözni (például SecretSet, CreateKey) a következő hívásokban (például:) 60 másodpercen belül. SecretGet, előjel).
+  1. Az **engedélyezési lista nélkül** : a Key Vault szolgáltatás egy írási művelet eredményét fogja tükrözni (például SecretSet, CreateKey) azonnal a következő hívásokban (például: SecretGet, előjel).
+  1. Az **engedélyezési listával** : a Key Vault szolgáltatás egy írási művelet eredményét fogja tükrözni (például SecretSet, CreateKey) a következő hívásokban (például:) 60 másodpercen belül. SecretGet, előjel).
 1. Az ügyfél kódjának vissza kell térnie a 429-re vonatkozó újrapróbálkozási szabályzatra. A Key Vault szolgáltatást hívó ügyfélalkalmazás nem tudja azonnal újrapróbálkozni Key Vault kérések esetén, amikor 429-as kódú választ kap.  Az itt közzétett Azure Key Vault-szabályozási útmutató az exponenciális leállítási alkalmazását javasolja a 429 http-válasz kódjának fogadásakor.
 
 Ha érvényes üzleti esettel rendelkezik a magasabb szintű szabályozási korlátokhoz, vegye fel velünk a kapcsolatot.
@@ -98,5 +98,4 @@ Ezen a ponton nem kell lekérdezni a HTTP 429-Response kódokat.
 
 ## <a name="see-also"></a>Lásd még
 
-A Microsoft Cloud szabályozásának mélyebb tájolását lásd: [szabályozási minta](https://docs.microsoft.com/azure/architecture/patterns/throttling).
-
+A Microsoft Cloud szabályozásának mélyebb tájolását lásd: [szabályozási minta](/azure/architecture/patterns/throttling).

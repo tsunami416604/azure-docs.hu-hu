@@ -2,13 +2,13 @@
 title: Fogalmak – tárolás
 description: Ismerje meg az Azure VMware-megoldás privát felhők legfontosabb tárolási funkcióit.
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 02378040061080d3c9abbfafb26180c9d22e9073
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/03/2020
+ms.openlocfilehash: 394b755f5dc8fdbcaa6092419e9451ae1691aa67
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316817"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289247"
 ---
 #  <a name="azure-vmware-solution-storage-concepts"></a>Azure VMware megoldás tárolási fogalmak
 
@@ -28,7 +28,7 @@ A fürtállomások helyi tárterülete a fürtre kiterjedő vSAN-adattárban has
 
 ## <a name="data-at-rest-encryption"></a>Inaktív adatok titkosítása
 
-a vSAN adattárolók alapértelmezés szerint a REST titkosítást használják. A titkosítási megoldás KMS-alapú, és támogatja a vCenter műveleteket. A kulcsok tárolása titkosított, HSM-alapú Azure Key Vault főkulcs által burkoltan történik. Ha egy gazdagépet bármilyen okból eltávolítanak a fürtből, az SSD-lemezeken lévő adatok azonnal érvénytelenítve lettek.
+a vSAN adattárolók alapértelmezés szerint a REST titkosítást használják. A titkosítási megoldás KMS-alapú, és támogatja a vCenter műveleteket. A kulcsok tárolása titkosított, Azure Key Vault főkulcs becsomagolásával történik. Ha egy gazdagépet bármilyen okból eltávolítanak a fürtből, az SSD-lemezeken lévő adatok azonnal érvénytelenítve lettek.
 
 ## <a name="scaling"></a>Méretezés
 

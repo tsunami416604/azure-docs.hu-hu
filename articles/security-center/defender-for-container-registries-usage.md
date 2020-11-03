@@ -7,18 +7,18 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b46c72730922a977dd754d8422d07db479a62b6c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a1357f263c450605025b6f1e9b7bdea47d0d4f58
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370542"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289226"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>A biztonsági rések vizsgálatához használja az Azure Defender for Container nyilvántartót
 
 Ez az oldal azt ismerteti, hogyan használható a beépített sebezhetőségi ellenőrzőeszköz a Azure Resource Manager-alapú Azure Container Registry tárolt tároló-lemezképek vizsgálatához.
 
-Ha engedélyezve van az **Azure Defender a tároló** -beállításjegyzékek számára, a rendszer azonnal megvizsgálja a beállításjegyzékbe beküldött képeket. Emellett a rendszer az utolsó 30 napban lekért képeket is ellenőrzi. 
+Ha az **Azure Defender tárolóregisztrációs adatbázisokhoz** engedélyezve van, a rendszer azonnal megvizsgálja a regisztrációs adatbázisba küldött rendszerképeket. Emellett a rendszer az utolsó 30 napban lekért képeket is ellenőrzi. 
 
 Ha a képolvasó Security Center biztonsági réseket, Security Center a megállapításokat és a kapcsolódó információkat a javaslatok alapján mutatja be. Emellett a megállapítások olyan kapcsolódó információkat is tartalmaznak, mint például a Szervizelési lépések, a kapcsolódó CVEs, CVSS pontszámok és egyebek. Megtekintheti egy vagy több előfizetéshez tartozó azonosított biztonsági réseket vagy egy adott beállításjegyzéket.
 
@@ -31,7 +31,7 @@ Ha a képolvasó Security Center biztonsági réseket, Security Center a megáll
 |Támogatott nyilvántartások és lemezképek:|A nyilvános internetről a rendszerhéj-hozzáféréssel elérhető Linux-rendszerképek az ACR-jegyzékekben|
 |Nem támogatott kibocsátásiegység-forgalmi jegyzékek és lemezképek:|Windows-rendszerképek<br>"Privát" nyilvántartások<br>Tűzfal, szolgáltatási végpont vagy privát végpontok, például Azure Private-kapcsolattal korlátozott hozzáférésű kibocsátásiegység-forgalmi jegyzékek<br>A Super-minimalista képek, például a [Docker](https://hub.docker.com/_/scratch/) -rendszerképek, vagy a "eltérítetlen" lemezképek, amelyek csak egy alkalmazást és annak futásidejű függőségeit tartalmazzák csomagkezelő, rendszerhéj vagy operációs rendszer nélkül|
 |Szükséges szerepkörök és engedélyek:|**Biztonsági olvasó** és [Azure Container Registry olvasó szerepkör](../container-registry/container-registry-roles.md)|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Igen ](./media/icons/yes-icon.png) kereskedelmi felhők<br>![Igen ](./media/icons/yes-icon.png) US gov – jelenleg csak a leküldéses vizsgálat funkció támogatott. További információ a [beolvasott képekről](defender-for-container-registries-introduction.md#when-are-images-scanned)<br>![Nem ](./media/icons/no-icon.png) China gov, más gov|
 |||
 
 
@@ -139,17 +139,17 @@ A következő feltételek bármelyike használható:
 
 Szabály létrehozása:
 
-1. A **Azure Container Registry lemezképekben található biztonsági rések**részletes ajánlásai oldalon válassza a **szabály letiltása**lehetőséget.
+1. A **Azure Container Registry lemezképekben található biztonsági rések** részletes ajánlásai oldalon válassza a **szabály letiltása** lehetőséget.
 1. Válassza ki a megfelelő hatókört.
 1. Adja meg a feltételeket.
-1. Válassza a **szabály alkalmazása**lehetőséget.
+1. Válassza a **szabály alkalmazása** lehetőséget.
 
     :::image type="content" source="./media/defender-for-container-registries-usage/new-disable-rule-for-registry-finding.png" alt-text="Letiltási szabály létrehozása a VA-eredményekhez a beállításjegyzékben":::
 
 1. Szabály megtekintése, felülbírálása vagy törlése: 
-    1. Válassza a **szabály letiltása**lehetőséget.
-    1. A hatókör listából az aktív szabályokkal rendelkező előfizetések **szabályként**jelennek meg.
-        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="Letiltási szabály létrehozása a VA-eredményekhez a beállításjegyzékben":::
+    1. Válassza a **szabály letiltása** lehetőséget.
+    1. A hatókör listából az aktív szabályokkal rendelkező előfizetések **szabályként** jelennek meg.
+        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="Meglévő szabály módosítása vagy törlése":::
     1. A szabály megtekintéséhez vagy törléséhez válassza a három pontot ("...").
 
 

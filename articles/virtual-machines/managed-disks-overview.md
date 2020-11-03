@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperfq1
-ms.openlocfilehash: cb310861edc2ba1ee183bc6f996cb1593457e3c7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 839ba1f8a5215c9059cfeff6e2158165b154f1f7
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972033"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289351"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Bevezetés az Azure-beli felügyelt lemezek használatába
 
@@ -27,7 +27,7 @@ Nézzük át a felügyelt lemezek használatával járó előnyöket.
 
 ### <a name="highly-durable-and-available"></a>Nagyon tartós és elérhető
 
-A Managed Disks szolgáltatás a 99,999%-os rendelkezésre álláshoz lett tervezve. A Managed Disks ezt az adatait három replikával biztosítja, ami lehetővé teszi a magas tartósságot. Ha egy vagy két replikával kapcsolatos probléma merül fel, a fennmaradó replikák segítenek biztosítani az adatmegőrzést és a nagy hibatűrést a hibák ellen. Ez az architektúra segített abban, hogy az Azure következetesen nagyvállalati szintű tartósságot biztosítson a szolgáltatásként nyújtott infrastruktúra (IaaS) számára, amely az iparágban vezető nulla%-os sikertelen meghibásodási arányt eredményez.
+A Managed Disks szolgáltatás a 99,999%-os rendelkezésre álláshoz lett tervezve. A felügyelt lemezek ezt úgy érik el, hogy az adatokhoz három replikát tesznek elérhetővé, ami magas szintű tartós állapotot tesz lehetővé. Ha egy vagy akár két replikán is probléma merül fel, a megmaradó replikákkal biztosítható az adatok megőrzése és a magas szintű hibatűrés. Ez az architektúra segített abban, hogy az Azure következetesen nagyvállalati szintű tartósságot biztosítson a szolgáltatásként nyújtott infrastruktúra (IaaS) számára, amely az iparágban vezető nulla%-os sikertelen meghibásodási arányt eredményez.
 
 ### <a name="simple-and-scalable-vm-deployment"></a>Egyszerű és méretezhető virtuális gépek üzembe helyezése
 
@@ -59,7 +59,7 @@ A VHD-k Azure-ba történő átviteléről a [parancssori](linux/disks-upload-vh
 
 ### <a name="private-links"></a>Privát hivatkozások
 
-A felügyelt lemezek privát hivatkozásának támogatása jelenleg előzetes verzióban érhető el, és a felügyelt lemez belső hálózatra történő importálására és exportálására használható. A magánhálózati hivatkozások lehetővé teszik, hogy egy idő kötött közös hozzáférésű aláírás (SAS) URI-t állítson elő a nem csatlakoztatott felügyelt lemezekhez és pillanatképekhez, amelyek segítségével exportálhatja az egyéb régiókba a regionális terjeszkedés, a vész-helyreállítás és a kriminalisztikai elemzés céljából. A SAS URI használatával közvetlenül is feltölthet egy virtuális merevlemezt egy üres lemezre a helyszínen. Most már felhasználhatja a [privát hivatkozásokat](../private-link/private-link-overview.md) a felügyelt lemezek exportálásának és importálásának korlátozására, hogy az csak az Azure-beli virtuális hálózaton belül is megtörténjen. A privát hivatkozások segítségével biztosíthatja, hogy az adatai csak a biztonságos Microsoft gerinc-hálózatban legyenek elérhetők.
+A felügyelt lemezek magánhálózati kapcsolatának támogatása a felügyelt lemez belső hálózatra történő importálására és exportálására használható. A magánhálózati hivatkozások lehetővé teszik, hogy egy idő kötött közös hozzáférésű aláírás (SAS) URI-t állítson elő a nem csatlakoztatott felügyelt lemezekhez és pillanatképekhez, amelyek segítségével exportálhatja az egyéb régiókba a regionális terjeszkedés, a vész-helyreállítás és a kriminalisztikai elemzés céljából. A SAS URI használatával közvetlenül is feltölthet egy virtuális merevlemezt egy üres lemezre a helyszínen. Most már felhasználhatja a [privát hivatkozásokat](../private-link/private-link-overview.md) a felügyelt lemezek exportálásának és importálásának korlátozására, hogy az csak az Azure-beli virtuális hálózaton belül is megtörténjen. A privát hivatkozások segítségével biztosíthatja, hogy az adatai csak a biztonságos Microsoft gerinc-hálózatban legyenek elérhetők.
 
 A felügyelt lemezek importálására és exportálására szolgáló privát hivatkozások engedélyezéséről a [CLI](linux/disks-export-import-private-links-cli.md) -vagy [portál](disks-enable-private-links-for-import-export-portal.md) cikkeiben talál további információt.
 

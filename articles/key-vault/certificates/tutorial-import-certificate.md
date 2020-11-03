@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: b58f402766e369894fcf014836ab9f24c231c489
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 8689b6851ae219ee6f41ebf58736692e557b2344
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927498"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289734"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Oktatóanyag: tanúsítvány importálása Azure Key Vault
 
@@ -55,7 +55,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 Jegyezze fel az alábbi két tulajdonságot:
 
-* Tár **neve** : a példában ez **például a-Vault** . Ezt a nevet fogja majd más lépésekben is használni.
+* Tár **neve** : a példában ez **például a-Vault**. Ezt a nevet fogja majd más lépésekben is használni.
 * **Tár URI-ja** : A példában ez a https://example-vault.vault.azure.net/. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
 
 Jelenleg csak az Azure-fiókja jogosult arra, hogy műveleteket végezzen ezen az új kulcstartón.
@@ -104,9 +104,9 @@ az keyvault certificate import --file
                                [--tags]
 ```
 
-További információ a [paraméterekről](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import).
+További információ a [paraméterekről](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import).
 
-A tanúsítvány importálása után megtekintheti a tanúsítványt a [tanúsítvány megjelenítése](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) lehetőség használatával.
+A tanúsítvány importálása után megtekintheti a tanúsítványt a [tanúsítvány megjelenítése](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) lehetőség használatával.
 
 
 ```azurecli
@@ -135,10 +135,10 @@ Import-AzureKeyVaultCertificate
       [<CommonParameters>]
 ```
 
-További információ a [paraméterekről](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0).
+További információ a [paraméterekről](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0).
 
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Erre a rövid útmutatóra egyéb Key Vault-útmutatók és oktatóanyagok is épülnek. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, ne törölje ezeket az erőforrásokat.
 Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a kulcstartót és a kapcsolódó erőforrásokat is. Az erőforráscsoport törlése a Portalon keresztül:
@@ -152,6 +152,6 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a k
 
 Ebben az oktatóanyagban létrehozott egy Key Vault, és importált egy tanúsítványt. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 
-- További információ a [tanúsítvány-létrehozás kezeléséről Azure Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios)
+- További információ a [tanúsítvány-létrehozás kezeléséről Azure Key Vault](./create-certificate-scenarios.md)
 - Példák a [tanúsítványok importálására REST API](/rest/api/keyvault/importcertificate/importcertificate) -k használatával
 - [Azure Key Vault ajánlott eljárások](../general/best-practices.md) áttekintése

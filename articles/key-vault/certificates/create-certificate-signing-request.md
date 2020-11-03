@@ -10,18 +10,18 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: cea061c1fd36bed9fa1e43c874fbca347707f78d
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: a85656909df5538f9f57e05d79ae768623d7eba6
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925867"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289612"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>CSR létrehozása és egyesítése Key Vault
 
 Azure Key Vault támogatja a kulcstartóban tetszőleges hitelesítésszolgáltató által kiadott digitális tanúsítvány tárolását. Támogatja a tanúsítvány-aláírási kérelem nyilvános kulcspár használatával történő létrehozását, amelyet bármelyik kiválasztott hitelesítésszolgáltató aláírhat. Ez lehet belső vállalati HITELESÍTÉSSZOLGÁLTATÓ vagy külső nyilvános HITELESÍTÉSSZOLGÁLTATÓ. A tanúsítvány-aláírási kérelem (a CSR vagy a minősítési kérelem) egy olyan üzenet, amelyet a felhasználó a hitelesítésszolgáltató (CA) számára küld a digitális tanúsítvány kiállításának kérelmezése érdekében.
 
-A tanúsítványokkal kapcsolatos további általános információkért lásd: [Azure Key Vault tanúsítványok](/azure/key-vault/certificates/about-certificates).
+A tanúsítványokkal kapcsolatos további általános információkért lásd: [Azure Key Vault tanúsítványok](./about-certificates.md).
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -34,7 +34,7 @@ A következő lépések segítséget nyújtanak olyan hitelesítésszolgáltató
 
 
 
-1.  Először **hozza létre a tanúsítvány-házirendet** . Key Vault nem fogja regisztrálni vagy megújítani a tanúsítványt a kiállítótól a felhasználó nevében, mivel az ebben a forgatókönyvben kiválasztott HITELESÍTÉSSZOLGÁLTATÓ nem támogatott, és így a IssuerName ismeretlenre van állítva.
+1.  Először **hozza létre a tanúsítvány-házirendet**. Key Vault nem fogja regisztrálni vagy megújítani a tanúsítványt a kiállítótól a felhasználó nevében, mivel az ebben a forgatókönyvben kiválasztott HITELESÍTÉSSZOLGÁLTATÓ nem támogatott, és így a IssuerName ismeretlenre van állítva.
 
     ```azurepowershell
     $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=www.contosoHRApp.com" -ValidityInMonths 1  -IssuerName Unknown

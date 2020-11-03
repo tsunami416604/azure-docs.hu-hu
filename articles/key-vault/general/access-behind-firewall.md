@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 1ab5ae7bf9f1d13458e3bbeeec564fe642eb3303
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca5842fb268c20f8ae58eb5f683229c4ae3919f4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588728"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289164"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Az Azure Key Vault elérése tűzfal mögött
 
@@ -43,7 +43,7 @@ A Key Vault-ügyfélalkalmazásoknak a hitelesítés érdekében hozzá kell fé
 | Az Azure AD-vel munkahelyi vagy iskolai fiókot használó felhasználó vagy szolgáltatás (például user@contoso.com) |**Globális**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US government:**<br> login.microsoftonline.us:443<br><br>**Azure Germany:**<br> login.microsoftonline.de:443 |
 | Munkahelyi vagy iskolai fiókot és az Active Directory Federation Servicest (AD FS) vagy más összevont végpontot (például: user@contoso.com) használó felhasználó vagy szolgáltatás. |A munkahelyi vagy iskolai fiókhoz tartozó valamennyi végpont plusz az AD FS vagy más összevont végpontok |
 
-Más összetett forgatókönyvek is előfordulhatnak. További információkért tekintse meg az [Azure Active Directory hitelesítési folyamatát](../../active-directory/develop/authentication-scenarios.md), az [alkalmazások Azure Active Directoryval való integrálását](../../active-directory/develop/active-directory-how-to-integrate.md) és [az Active Directory hitelesítési protokolljait ismertető cikket](https://msdn.microsoft.com/library/azure/dn151124.aspx).  
+Más összetett forgatókönyvek is előfordulhatnak. További információkért tekintse meg az [Azure Active Directory hitelesítési folyamatát](../../active-directory/develop/authentication-vs-authorization.md), az [alkalmazások Azure Active Directoryval való integrálását](../../active-directory/develop/active-directory-how-to-integrate.md) és [az Active Directory hitelesítési protokolljait ismertető cikket](/previous-versions/azure/dn151124(v=azure.100)).  
 
 ## <a name="key-vault-management"></a>A Key Vault felügyelete
 
@@ -56,7 +56,7 @@ A Key Vault felügyeletéhez (CRUD és hozzáférési házirend beállítása) a
 
 ## <a name="key-vault-operations"></a>Key Vault-műveletek
 
-Az összes Key Vault-objektummal (kulcsok és titkos kulcsok) végzett felügyeleti és titkosítási művelethez a Key Vault-ügyfélnek el kell érnie a Key Vault-végpontot. A végpont DNS-utótagja a Key Vault helyétől függően eltérő. A Key Vault-végpont formátuma az alábbi táblázatban látható módon: *<tároló-neve>*.*<területspecifikus-dns-utótag>*.  
+Az összes Key Vault-objektummal (kulcsok és titkos kulcsok) végzett felügyeleti és titkosítási művelethez a Key Vault-ügyfélnek el kell érnie a Key Vault-végpontot. A végpont DNS-utótagja a Key Vault helyétől függően eltérő. A Key Vault-végpont formátuma az alábbi táblázatban látható módon: *<tároló-neve>*. *<területspecifikus-dns-utótag>*.  
 
 | Művelet típusa | Végpont:port |
 | --- | --- |
@@ -72,6 +72,6 @@ A Key Vault szolgáltatás egyéb Azure-erőforrásokat is használ, amilyen pé
 
 A Hitelesítés és identitás (Azure Active Directory) egy globális szolgáltatás, és előfordulhat, hogy értesítés nélkül ad át feladatot más régióknak vagy helyez át forgalmat. Ebben a forgatókönyvben minden, a [Hitelesítés és identitás – IP-címek](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip) szakaszban felsorolt IP-tartományt hozzá kell adni a tűzfalhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha kérdése van a Key Vaultval kapcsolatban, látogasson el a [Microsoft Q&a Azure Key Vault kérdéseit tartalmazó oldalra](https://docs.microsoft.com/answers/topics/azure-key-vault.html).
+Ha kérdése van a Key Vaultval kapcsolatban, látogasson el a [Microsoft Q&a Azure Key Vault kérdéseit tartalmazó oldalra](/answers/topics/azure-key-vault.html).

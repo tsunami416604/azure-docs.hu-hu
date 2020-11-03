@@ -1,5 +1,5 @@
 ---
-title: A magánhálózati kapcsolatok konfigurációs problémáinak diagnosztizálása Azure Key Vault
+title: A privát kapcsolatok konfigurációs problémáinak diagnosztizálása az Azure Key Vaultban
 description: A Key Vault és a konfigurációval kapcsolatos gyakori privát hivatkozások megoldása
 author: msfcolombo
 ms.author: fcolombo
@@ -7,14 +7,14 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 156edbeda225b5457d6f5e7d29482e393b510736
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: c4873bded750186f072dd39ddcb8d78941848586
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998400"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289377"
 ---
-# <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>A magánhálózati kapcsolatok konfigurációs problémáinak diagnosztizálása Azure Key Vault
+# <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>A privát kapcsolatok konfigurációs problémáinak diagnosztizálása az Azure Key Vaultban
 
 ## <a name="introduction"></a>Bevezetés
 
@@ -56,16 +56,16 @@ Ha az alkalmazás, a parancsfájl vagy a portál egy tetszőleges internetkapcso
 
 Ez az útmutató nem alkalmazható a Microsoft által felügyelt megoldásokra, ahol a Key vaultot egy olyan Azure-termék éri el, amely az ügyfél Virtual Networktól függetlenül létezik. Ilyen forgatókönyvek például az Azure Storage vagy az Azure SQL az inaktív titkosításhoz konfigurálva, az Azure Event hub az adatokat az ügyfél által biztosított kulcsokkal titkosítja, Azure Data Factory a Key vaultban tárolt hitelesítő adatok elérését, az Azure-folyamatokat, amelyekkel a Key vaultból lekérdezi a titkos kulcsokat, valamint más hasonló forgatókönyveket Ezekben az esetekben *ellenőriznie kell, hogy a termék támogatja-e a kulcstárolókat a tűzfalon engedélyezve*. Ez a támogatás általában a Key Vault tűzfal [megbízható szolgáltatások](overview-vnet-service-endpoints.md#trusted-services) szolgáltatásával történik. Számos termék azonban nem szerepel a megbízható szolgáltatások listáján, számos okból. Ebben az esetben elérheti a termékspecifikus támogatást.
 
-Néhány Azure-termék támogatja a *vnet injekció*fogalmát. Egyszerűen fogalmazva a termék egy hálózati eszközt helyez el az ügyfél Virtual Networkba, amely lehetővé teszi a kérelmek küldését úgy, mintha a Virtual Network üzembe helyezte. Jelentős példa [Azure Databricks](https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject). Az ehhez hasonló termékek a privát hivatkozások használatával kérhetnek a Key vaultba, és ez a hibaelhárítási útmutató segítséget nyújthat.
+Néhány Azure-termék támogatja a *vnet injekció* fogalmát. Egyszerűen fogalmazva a termék egy hálózati eszközt helyez el az ügyfél Virtual Networkba, amely lehetővé teszi a kérelmek küldését úgy, mintha a Virtual Network üzembe helyezte. Jelentős példa [Azure Databricks](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject). Az ehhez hasonló termékek a privát hivatkozások használatával kérhetnek a Key vaultba, és ez a hibaelhárítási útmutató segítséget nyújthat.
 
 ## <a name="2-confirm-that-the-connection-is-approved-and-succeeded"></a>2. Ellenőrizze, hogy a kapcsolatok jóváhagyva és sikeresek-e
 
 A következő lépésekkel ellenőrizheti, hogy a magánhálózati végponti kapcsolatok jóváhagyva és sikeresek-e:
 
 1. Nyissa meg a Azure Portal, és nyissa meg a Key Vault-erőforrást.
-2. A bal oldali menüben válassza a **hálózatkezelés**lehetőséget.
+2. A bal oldali menüben válassza a **hálózatkezelés** lehetőséget.
 3. Kattintson a **privát végpont kapcsolatai** lapra. Ekkor megjelenik az összes privát végponti kapcsolat és a hozzájuk tartozó állapotok. Ha nincsenek kapcsolatok, vagy ha a Virtual Network kapcsolata hiányzik, létre kell hoznia egy új privát végpontot. Ezt később is tárgyaljuk.
-4. Továbbra is a **privát végponti kapcsolatok**esetében keresse meg azt, amelyet Ön diagnosztizál, és ellenőrizze, hogy a "kapcsolat állapota" **jóváhagyásra** került-e, és hogy a "kiépítési állapot" **sikeres**volt-e.
+4. Továbbra is a **privát végponti kapcsolatok** esetében keresse meg azt, amelyet Ön diagnosztizál, és ellenőrizze, hogy a "kapcsolat állapota" **jóváhagyásra** került-e, és hogy a "kiépítési állapot" **sikeres** volt-e.
     - Ha a kapcsolódás "függőben" állapotú, akkor lehet, hogy csak jóváhagyja.
     - Ha a "visszautasítva", a "sikertelen", a "hiba", a "leválasztott" vagy más állapotú kapcsolat nem érvényes, akkor minden esetben létre kell hoznia egy új privát végpont-erőforrást.
 
@@ -79,7 +79,7 @@ A következő lépésekkel ellenőrizheti, hogy a magánhálózati végponti kap
 Fontos szempont, hogy a privát hivatkozások *funkció csak olyan Virtual Network biztosít hozzáférést* a kulcstartóhoz, amely az adatkiszűrése megakadályozása érdekében be van zárva. Nem *távolítja el* a meglévő hozzáférést. Ahhoz, hogy hatékonyan le lehessen tiltani a hozzáférést a nyilvános internetről, explicit módon engedélyeznie kell a Key Vault-tűzfalat:
 
 1. Nyissa meg a Azure Portal, és nyissa meg a Key Vault-erőforrást.
-2. A bal oldali menüben válassza a **hálózatkezelés**lehetőséget.
+2. A bal oldali menüben válassza a **hálózatkezelés** lehetőséget.
 3. Győződjön meg arról, hogy a **tűzfalak és a virtuális hálózatok** lap felül van jelölve.
 4. Győződjön meg arról, hogy a **privát végpont és a kiválasztott hálózatok** lehetőség van kiválasztva. Ha az **összes hálózat** lehetőséget választja, azzal megmagyarázza, hogy a külső ügyfelek miért is képesek hozzáférni a kulcstartóhoz.
 
@@ -120,11 +120,11 @@ Amikor megkeresi a portált, vagy futtat egy olyan parancsot, amely megjeleníti
 Szüksége lesz az állomásnév feloldásának diagnosztizálására, és ahhoz, hogy tudnia kell a kulcstartó pontos magánhálózati IP-címét, amelyeken engedélyezve vannak a privát hivatkozások. Ennek a címnek a megkereséséhez kövesse az alábbi eljárást:
 
 1. Nyissa meg a Azure Portal, és nyissa meg a Key Vault-erőforrást.
-2. A bal oldali menüben válassza a **hálózatkezelés**lehetőséget.
+2. A bal oldali menüben válassza a **hálózatkezelés** lehetőséget.
 3. Kattintson a **privát végpont kapcsolatai** lapra. Ekkor megjelenik az összes privát végponti kapcsolat és a hozzájuk tartozó állapotok.
 4. Keresse meg az Ön által diagnosztizált, és győződjön meg arról, hogy a "kapcsolatok állapota" **jóváhagyásra** került, és a kiépítési állapot **sikeres**. Ha ezt nem látja, térjen vissza a dokumentum előző részeire.
 5. Ha megtalálta a megfelelő elemeket, kattintson a **privát végpont** oszlopban található hivatkozásra. Ekkor megnyílik a magánhálózati végpont erőforrása.
-6. Az Áttekintés oldalon egy **Egyéni DNS-beállítások**nevű szakasz jelenhet meg. Győződjön meg arról, hogy csak egy olyan bejegyzés van, amely megfelel a Key Vault állomásnévnek. Ez a bejegyzés a Key Vault magánhálózati IP-címét jeleníti meg.
+6. Az Áttekintés oldalon egy **Egyéni DNS-beállítások** nevű szakasz jelenhet meg. Győződjön meg arról, hogy csak egy olyan bejegyzés van, amely megfelel a Key Vault állomásnévnek. Ez a bejegyzés a Key Vault magánhálózati IP-címét jeleníti meg.
 7. A **hálózati adapteren** található hivatkozásra kattintva ellenőrizheti, hogy a magánhálózati IP-cím megegyezik-e az előző lépésben láthatóval. A hálózati adapter a Key vaultot képviselő virtuális eszköz.
 
 Az IP-cím az a számítógép, amelyet a virtuális gépek és más *, ugyanazon Virtual Network futtató* eszközök fognak használni a kulcstartóhoz való kapcsolódáshoz. Jegyezze fel az IP-címet, vagy hagyja nyitva a böngésző fület, és ne érintse meg a további vizsgálatok során.
@@ -229,7 +229,7 @@ Az Azure-előfizetéshez a következő pontos névvel rendelkező [saját DNS z�
 
     privatelink.vaultcore.azure.net
 
-Az erőforrás jelenlétének ellenőrzéséhez nyissa meg a portál előfizetés lapját, és a bal oldali menüben válassza az "erőforrások" lehetőséget. Az erőforrás nevének kötelezőnek kell lennie `privatelink.vaultcore.azure.net` , és az erőforrástípus **saját DNS zónának**kell lennie.
+Az erőforrás jelenlétének ellenőrzéséhez nyissa meg a portál előfizetés lapját, és a bal oldali menüben válassza az "erőforrások" lehetőséget. Az erőforrás nevének kötelezőnek kell lennie `privatelink.vaultcore.azure.net` , és az erőforrástípus **saját DNS zónának** kell lennie.
 
 Általában ez az erőforrás automatikusan jön létre, amikor közös eljárással hoz létre egy privát végpontot. Vannak azonban olyan esetek, amikor az erőforrás nem jön létre automatikusan, és manuálisan kell elvégeznie. Lehet, hogy az erőforrás véletlenül törölve lett.
 
@@ -267,7 +267,7 @@ A fejlettebb forgatókönyvek esetében előfordulhat, hogy a virtuális hálóz
 
 Ahogy az [előző szakaszban](#key-vault-with-private-link-resolving-from-arbitrary-internet-machine)is látható, a privát hivatkozásokkal rendelkező kulcstartóban szerepel az alias a `{vaultname}.privatelink.vaultcore.azure.net` *nyilvános* regisztrációban. A Virtual Network által használt DNS-kiszolgáló a nyilvános regisztrációt használja, de ellenőrzi, hogy van-e minden alias a *privát* regisztrációhoz, és ha talál ilyet, a nyilvános regisztráció során megadott aliasokat fogja leállítani.
 
-Ez a logika azt jelenti, hogy ha a Virtual Network egy nevű saját DNS zónához van csatolva `privatelink.vaultcore.azure.net` , és a Key Vault nyilvános DNS-regisztrációja az aliassal rendelkezik `fabrikam.privatelink.vaultcore.azure.net` (vegye figyelembe, hogy a Key Vault hostname utótagja pontosan megegyezik a saját DNS zóna nevével), majd a DNS-lekérdezés egy olyan rekordot keres, `A` amelynek neve a `fabrikam` *saját DNS zónában*van. Ha a `A` rekord megtalálható, a rendszer az IP-címet adja vissza a DNS-lekérdezésben, és a nyilvános DNS-regisztráció során nem végez további keresést.
+Ez a logika azt jelenti, hogy ha a Virtual Network egy nevű saját DNS zónához van csatolva `privatelink.vaultcore.azure.net` , és a Key Vault nyilvános DNS-regisztrációja az aliassal rendelkezik `fabrikam.privatelink.vaultcore.azure.net` (vegye figyelembe, hogy a Key Vault hostname utótagja pontosan megegyezik a saját DNS zóna nevével), majd a DNS-lekérdezés egy olyan rekordot keres, `A` amelynek neve a `fabrikam` *saját DNS zónában* van. Ha a `A` rekord megtalálható, a rendszer az IP-címet adja vissza a DNS-lekérdezésben, és a nyilvános DNS-regisztráció során nem végez további keresést.
 
 Amint láthatja, a névfeloldás a vezérlő alatt található. Ennek a kialakításnak a logikája a következő:
 
@@ -278,7 +278,7 @@ Amint láthatja, a névfeloldás a vezérlő alatt található. Ennek a kialakí
 
 ### <a name="query-the-healthstatus-endpoint-of-the-key-vault"></a>`/healthstatus`A Key Vault végpontjának lekérdezése
 
-A Key Vault biztosítja a `/healthstatus` végpontot, amely a diagnosztika használatával használható. A válasz fejlécei tartalmazzák a forrás IP-címét, ahogy azt a Key Vault szolgáltatás is látja. A végpontot a következő paranccsal hívhatja meg (**ne felejtse el használni a Key Vault hostname-t**):
+A Key Vault biztosítja a `/healthstatus` végpontot, amely a diagnosztika használatával használható. A válasz fejlécei tartalmazzák a forrás IP-címét, ahogy azt a Key Vault szolgáltatás is látja. A végpontot a következő paranccsal hívhatja meg ( **ne felejtse el használni a Key Vault hostname-t** ):
 
 Windows (PowerShell):
 
