@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 35eef6951f844ab60caec70033e41e23a7920d3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e00ecd6048239683951a2d1e60d3bcb0eb5aa68
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288307"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242432"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>A Parquet-fájlok lekérdezése az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analyticsben
 
@@ -155,43 +155,7 @@ ORDER BY
 
 ## <a name="type-mapping"></a>Típus leképezése
 
-A Parquet-fájlok minden oszlop típusának leírását tartalmazzák. A következő táblázat leírja, hogyan vannak leképezve a parketta típusai az SQL natív típusaira.
-
-| Parketta típusa | Parketta logikai típusa (jegyzet) | SQL-adattípus |
-| --- | --- | --- |
-| LOGIKAI | | bit |
-| BINÁRIS/BYTE_ARRAY | | varbinary |
-| DUPLÁN | | float |
-| FLOAT | | valós szám |
-| INT32 | | int |
-| INT64 | | bigint |
-| INT96 | |datetime2 |
-| FIXED_LEN_BYTE_ARRAY | |binary |
-| BINÁRIS |UTF8 |varchar \* (UTF8-rendezés) |
-| BINÁRIS |KARAKTERLÁNC |varchar \* (UTF8-rendezés) |
-| BINÁRIS |ENUM|varchar \* (UTF8-rendezés) |
-| BINÁRIS |UUID |uniqueidentifier |
-| BINÁRIS |DECIMÁLIS |tizedes tört |
-| BINÁRIS |JSON |varchar (max) \* (UTF8-rendezés) |
-| BINÁRIS |BSON |varbinary (max.) |
-| FIXED_LEN_BYTE_ARRAY |DECIMÁLIS |tizedes tört |
-| BYTE_ARRAY |IDŐKÖZ |varchar (max), szabványosított formátumba szerializálva |
-| INT32 |INT (8, igaz) |smallint |
-| INT32 |INT (16, igaz) |smallint |
-| INT32 |INT (32, true) |int |
-| INT32 |INT (8, hamis) |tinyint |
-| INT32 |INT (16, hamis) |int |
-| INT32 |INT (32, hamis) |bigint |
-| INT32 |DATE |dátum |
-| INT32 |DECIMÁLIS |tizedes tört |
-| INT32 |IDŐ (MILLIS)|time |
-| INT64 |INT (64, true) |bigint |
-| INT64 |INT (64, hamis) |decimális (20, 0) |
-| INT64 |DECIMÁLIS |tizedes tört |
-| INT64 |IDŐ (MICROS/NANOS) |time |
-|INT64 |IDŐBÉLYEG (MILLIS/MICROES/NANOS) |datetime2 |
-|[Összetett típus](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |LISTÁJÁT |varchar (max), JSON-ba szerializálva |
-|[Összetett típus](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|Térkép|varchar (max), JSON-ba szerializálva |
+A Parquet típusú SQL natív típushoz való leképezéshez a [Parquet típusú leképezéshez](develop-openrowset.md#type-mapping-for-parquet).
 
 ## <a name="next-steps"></a>Következő lépések
 

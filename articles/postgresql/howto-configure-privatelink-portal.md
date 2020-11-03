@@ -1,23 +1,23 @@
 ---
 title: Privát hivatkozás – Azure Portal-Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Megtudhatja, hogyan konfigurálhat Azure Database for PostgreSQL – egyetlen kiszolgáló magánhálózati hivatkozását Azure Portal
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 4da1c1e142c5d70bea342fd9513061710228e61d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 98d3beef72d314f93f6a2bc580b1dd5de5735f23
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489931"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242466"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>Privát hivatkozás létrehozása és kezelése Azure Database for PostgreSQL – egyetlen kiszolgáló számára a portál használatával
 
 A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a Virtual Machines (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal.  Ebből a cikkből megtudhatja, hogyan hozhat létre egy virtuális gépet egy Azure-beli Virtual Networkban és egy Azure Private-végponttal rendelkező Azure Database for PostgreSQL egyetlen kiszolgáló Azure Portal használatával.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
 > A privát hivatkozás funkció csak a általános célú vagy a memória optimalizált árképzési szintjein Azure Database for PostgreSQL-kiszolgálókon érhető el. Győződjön meg arról, hogy az adatbázis-kiszolgáló ezen díjszabási szintek egyikében található.
@@ -32,26 +32,26 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és az alhálóza
 ### <a name="create-the-virtual-network"></a>A virtuális hálózat létrehozása
 Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, amely a privát kapcsolati erőforrás eléréséhez használt virtuális gépet üzemelteti.
 
-1. A képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **virtuális hálózat**lehetőséget.
-2. A **virtuális hálózat létrehozása**lapon adja meg vagy válassza ki az alábbi adatokat:
+1. A képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **virtuális hálózat** lehetőséget.
+2. A **virtuális hálózat létrehozása** lapon adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
     | Név | Adja meg a *MyVirtualNetwork*. |
-    | Címtér | Adja meg a *10.1.0.0/16*értéket. |
+    | Címtér | Adja meg a *10.1.0.0/16* értéket. |
     | Előfizetés | Válassza ki előfizetését.|
-    | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
+    | Erőforráscsoport | Válassza az **új létrehozása** elemet, írja be a *myResourceGroup* , majd kattintson **az OK gombra**. |
     | Hely | Válassza a **Nyugat-Európa** régiót.|
     | Alhálózat – név | Adja meg a *mySubnet*. |
-    | Alhálózat – címtartomány | Adja meg a *10.1.0.0/24*értéket. |
+    | Alhálózat – címtartomány | Adja meg a *10.1.0.0/24* értéket. |
     |||
-3. Hagyja a többi értéket alapértelmezettként, és válassza a **Létrehozás**lehetőséget.
+3. Hagyja a többi értéket alapértelmezettként, és válassza a **Létrehozás** lehetőséget.
 
 ### <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **számítási**  >  **virtuális gép**lehetőséget.
+1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **számítási**  >  **virtuális gép** lehetőséget.
 
-2. A **virtuális gép létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
+2. A **virtuális gép létrehozása – alapismeretek** területen adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
@@ -62,32 +62,32 @@ Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, a
     | Virtuális gép neve | Adja meg a *myVm*. |
     | Régió | Válassza a **Nyugat-Európa** régiót. |
     | Rendelkezésre állási beállítások | Az alapértelmezett **infrastruktúra-redundancia megadása nem kötelező**. |
-    | Rendszerkép | Válassza a **Windows Server 2019 Datacenter**lehetőséget. |
-    | Méret | Hagyja meg az alapértelmezett **standard DS1 v2**értéket. |
+    | Kép | Válassza a **Windows Server 2019 Datacenter** lehetőséget. |
+    | Méret | Hagyja meg az alapértelmezett **standard DS1 v2** értéket. |
     | **RENDSZERGAZDAFIÓK** |  |
     | Felhasználónév | Adja meg a választott felhasználónevet. |
     | Jelszó | Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a [meghatározott összetettségi követelményeknek](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     | Jelszó megerősítése | Adja meg újra a jelszót. |
     | **BEJÖVŐPORT-SZABÁLYOK** |  |
-    | Nyilvános bejövő portok | Hagyja meg az alapértelmezett **nincs**értéket. |
+    | Nyilvános bejövő portok | Hagyja meg az alapértelmezett **nincs** értéket. |
     | **MEGTAKARÍTÁSI LEHETŐSÉG** |  |
-    | Már van Windows-licence? | Hagyja meg az alapértelmezett **nem**értéket. |
+    | Már van Windows-licence? | Hagyja meg az alapértelmezett **nem** értéket. |
     |||
 
-1. Válassza a **Tovább: lemezek**lehetőséget.
+1. Válassza a **Tovább: lemezek** lehetőséget.
 
 1. A **Virtuális gép létrehozása – Lemezek** lehetőségnél hagyja meg az alapértelmezett értékeket, és válassza a **Tovább: Hálózatkezelés** lehetőséget.
 
-1. A **virtuálisgép-hálózat létrehozása**területen válassza ki ezt az információt:
+1. A **virtuálisgép-hálózat létrehozása** területen válassza ki ezt az információt:
 
     | Beállítás | Érték |
     | ------- | ----- |
     | Virtuális hálózat | Hagyja meg az alapértelmezett **MyVirtualNetwork**.  |
-    | Címtér | Hagyja meg az alapértelmezett **10.1.0.0/24**értéket.|
+    | Címtér | Hagyja meg az alapértelmezett **10.1.0.0/24** értéket.|
     | Alhálózat | Hagyja meg az alapértelmezett **mySubnet (10.1.0.0/24)**.|
     | Nyilvános IP-cím | Hagyja meg az alapértelmezett **(új) myVm-IP-címet**. |
-    | Nyilvános bejövő portok | Válassza a **kiválasztott portok engedélyezése**lehetőséget. |
-    | Válassza ki a bejövő portokat | Válassza a **http** és az **RDP**lehetőséget.|
+    | Nyilvános bejövő portok | Válassza a **kiválasztott portok engedélyezése** lehetőséget. |
+    | Válassza ki a bejövő portokat | Válassza a **http** és az **RDP** lehetőséget.|
     |||
 
 
@@ -103,9 +103,9 @@ Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, a
 
 Ebben a szakaszban egy Azure Database for PostgreSQL-kiszolgálót fog létrehozni az Azure-ban. 
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **adatbázisok**  >  **Azure Database for PostgreSQL**lehetőséget.
+1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **adatbázisok**  >  **Azure Database for PostgreSQL** lehetőséget.
 
-1. **Azure Database for PostgreSQL központi telepítés lehetőségnél**válassza az **egyetlen kiszolgáló** lehetőséget, és adja meg a következő információkat:
+1. **Azure Database for PostgreSQL központi telepítés lehetőségnél** válassza az **egyetlen kiszolgáló** lehetőséget, és adja meg a következő információkat:
 
     | Beállítás | Érték |
     | ------- | ----- |
@@ -123,19 +123,19 @@ Ebben a szakaszban egy Azure Database for PostgreSQL-kiszolgálót fog létrehoz
  
 7. Válassza az **OK** lehetőséget. 
 8. Válassza az **Áttekintés + létrehozás** lehetőséget. Az **Áttekintés és létrehozása** lapra kerül, ahol az Azure érvényesíti az Ön konfigurációját. 
-9. Amikor megjelenik az átadott üzenet ellenőrzése lehetőség, válassza a **Létrehozás**lehetőséget. 
+9. Amikor megjelenik az átadott üzenet ellenőrzése lehetőség, válassza a **Létrehozás** lehetőséget. 
 10. Amikor megjelenik az átadott üzenet ellenőrzése lehetőség, válassza a létrehozás lehetőséget. 
 
 ## <a name="create-a-private-endpoint"></a>Privát végpont létrehozása
 
 Ebben a szakaszban létre fog hozni egy PostgreSQL-kiszolgálót, és hozzá kell adnia egy privát végpontot. 
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **hálózati**  >  **privát hivatkozás**lehetőséget.
-2. A **Private link Centerben – áttekintés**, a **szolgáltatáshoz való magánhálózati kapcsolat**létrehozásához válassza az **Indítás**lehetőséget.
+1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **hálózati**  >  **privát hivatkozás** lehetőséget.
+2. A **Private link Centerben – áttekintés** , a **szolgáltatáshoz való magánhálózati kapcsolat** létrehozásához válassza az **Indítás** lehetőséget.
 
     :::image type="content" source="media/concepts-data-access-and-security-private-link/privatelink-overview.png" alt-text="Privát hivatkozás áttekintése":::
 
-1. A **privát végpont létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
+1. A **privát végpont létrehozása – alapismeretek** területen adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
@@ -146,25 +146,25 @@ Ebben a szakaszban létre fog hozni egy PostgreSQL-kiszolgálót, és hozzá kel
     | Name | Adja meg a *myPrivateEndpoint* nevet. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
     |Régió|Válassza a **Nyugat-Európa** régiót.|
     |||
-5. Válassza a **Tovább: erőforrás**elemet.
-6. A **privát végpont létrehozása – erőforrás**területen adja meg vagy válassza ki az alábbi adatokat:
+5. Válassza a **Tovább: erőforrás** elemet.
+6. A **privát végpont létrehozása – erőforrás** területen adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
     |Kapcsolati módszer  | Válassza a kapcsolódás egy Azure-erőforráshoz a címtárban lehetőséget.|
     | Előfizetés| Válassza ki előfizetését. |
-    | Erőforrás típusa | Válassza a **Microsoft. DBforPostgreSQL/kiszolgálók**lehetőséget. |
+    | Erőforrás típusa | Válassza a **Microsoft. DBforPostgreSQL/kiszolgálók** lehetőséget. |
     | Erőforrás |*MyServer* kiválasztása|
     |Célzott alerőforrás |*PostgresqlServer* kiválasztása|
     |||
-7. Válassza a **Tovább: konfigurálás**lehetőséget.
-8. A **privát végpont létrehozása – konfiguráció**területen adja meg vagy válassza ki az alábbi adatokat:
+7. Válassza a **Tovább: konfigurálás** lehetőséget.
+8. A **privát végpont létrehozása – konfiguráció** területen adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
     |**HÁLÓZATKEZELÉS**| |
-    | Virtuális hálózat| Válassza a *MyVirtualNetwork*lehetőséget. |
-    | Alhálózat | Válassza a *mySubnet*lehetőséget. |
+    | Virtuális hálózat| Válassza a *MyVirtualNetwork* lehetőséget. |
+    | Alhálózat | Válassza a *mySubnet* lehetőséget. |
     |**PRIVÁT DNS-INTEGRÁCIÓ**||
     |Integrálás saját DNS-zónával |Válassza az **Igen** lehetőséget. |
     |Privát DNS-zóna |Válassza az *(új) privatelink. postgres. database. Azure. com* elemet |
@@ -176,7 +176,7 @@ Ebben a szakaszban létre fog hozni egy PostgreSQL-kiszolgálót, és hozzá kel
 1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az **Áttekintés és létrehozása** lapra kerül, ahol az Azure érvényesíti az Ön konfigurációját. 
 2. Amikor megjelenik a **Megfelelt az ellenőrzésen** üzenet, válassza a **Létrehozás** lehetőséget. 
 
-    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-postgres-private-link.png" alt-text="Privát hivatkozás áttekintése":::
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-postgres-private-link.png" alt-text="Saját hivatkozás létrehozva":::
 
     > [!NOTE] 
     > Az ügyfél DNS-beállításában lévő teljes tartománynév nem oldható fel a magánhálózati IP-címekre konfigurálva. Az [itt](../dns/dns-operations-recordsets-portal.md)látható módon konfigurálnia kell egy DNS-zónát a beállított FQDN-hez.
@@ -184,13 +184,13 @@ Ebben a szakaszban létre fog hozni egy PostgreSQL-kiszolgálót, és hozzá kel
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Kapcsolódás a virtuális géphez Távoli asztal (RDP) használatával
 
 
-A **myVm**létrehozása után az alábbi módon csatlakozhat az internetről: 
+A **myVm** létrehozása után az alábbi módon csatlakozhat az internetről: 
 
 1. A portál keresési sávjába írja be a *myVm* szöveget.
 
 1. Kattintson a **Csatlakozás** gombra. A **Kapcsolódás** gombra kattintva megnyílik a **virtuális géphez való kapcsolódás** .
 
-1. Válassza az **RDP-fájl letöltése** lehetőséget. Az Azure létrehoz egy RDP protokoll (*. rdp*) fájlt, és letölti a számítógépre.
+1. Válassza az **RDP-fájl letöltése** lehetőséget. Az Azure létrehoz egy RDP protokoll ( *. rdp* ) fájlt, és letölti a számítógépre.
 
 1. Nyissa meg a *letöltött. rdp* fájlt.
 
@@ -199,7 +199,7 @@ A **myVm**létrehozása után az alábbi módon csatlakozhat az internetről:
     1. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
         > [!NOTE]
-        > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania**egy másik fiók használatával**.
+        > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania **egy másik fiók használatával**.
 
 1. Válassza az **OK** lehetőséget.
 
@@ -209,7 +209,7 @@ A **myVm**létrehozása után az alábbi módon csatlakozhat az internetről:
 
 ## <a name="access-the-postgresql-server-privately-from-the-vm"></a>A PostgreSQL-kiszolgáló elérése a virtuális gépről
 
-1. A *myVM*távoli asztal nyissa meg a PowerShellt.
+1. A *myVM* távoli asztal nyissa meg a PowerShellt.
 
 2. Adja meg a értéket  `nslookup mydemopostgresserver.privatelink.postgres.database.azure.com` . 
 
@@ -224,15 +224,15 @@ A **myVm**létrehozása után az alábbi módon csatlakozhat az internetről:
 
 3. A PostgreSQL-kiszolgáló magánhálózati kapcsolati kapcsolatának tesztelése bármely elérhető ügyfél használatával. Az alábbi példában az [Azure](/sql/azure-data-studio/download?view=sql-server-ver15) -beli adattárat használtuk a művelet végrehajtásához.
 
-4. Az **új kapcsolatok**területen adja meg vagy válassza ki az alábbi adatokat:
+4. Az **új kapcsolatok** területen adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Server type (Kiszolgáló típusa)| Válassza a **PostgreSQL**lehetőséget.|
+    | Server type (Kiszolgáló típusa)| Válassza a **PostgreSQL** lehetőséget.|
     | Kiszolgálónév| *Mydemopostgresserver.privatelink.postgres.database.Azure.com* kiválasztása |
     | Felhasználónév | Adja meg username@servername a PostgreSQL-kiszolgáló létrehozásakor megadott felhasználónevet. |
     |Jelszó |Adja meg a PostgreSQL-kiszolgáló létrehozásakor megadott jelszót. |
-    |SSL|Válassza a **kötelező**lehetőséget.|
+    |SSL|Válassza a **kötelező** lehetőséget.|
     ||
 
 5. Válassza a Csatlakozás lehetőséget.
@@ -246,9 +246,9 @@ A **myVm**létrehozása után az alábbi módon csatlakozhat az internetről:
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha végzett a privát végpont, a PostgreSQL-kiszolgáló és a virtuális gép használatával, törölje az erőforráscsoportot és a benne lévő összes erőforrást:
 
-1. Adja meg a *myResourceGroup* a portál tetején található **keresőmezőbe** , és válassza a *myResourceGroup*lehetőséget   a keresési eredmények közül.
+1. Adja meg a *myResourceGroup* a portál tetején található **keresőmezőbe** , és válassza a  *myResourceGroup* lehetőséget   a keresési eredmények közül.
 2. Válassza az **Erőforráscsoport törlése** elemet.
-3. Írja be **a myResourceGroup nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
+3. Írja be **a myResourceGroup nevet az erőforráscsoport neveként** , majd válassza a **Törlés** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,17 +1,17 @@
 ---
 title: Kapcsolati architektúra – Azure Database for MySQL
 description: A Azure Database for MySQL-kiszolgáló kapcsolati architektúráját ismerteti.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 73178a9707d35fe7337210b11e76504794bc93ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d3842675cf4b36dfaa95ed6041bf8c6f0978a53
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90896403"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242874"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Kapcsolati architektúra a Azure Database for MySQLban
 Ez a cikk ismerteti a Azure Database for MySQL kapcsolati architektúrát, valamint azt, hogy a forgalom hogyan legyen átirányítva a Azure Database for MySQL-példányra az Azure-on belüli és kívüli ügyfelektől.
@@ -72,7 +72,7 @@ A következő táblázat felsorolja az Azure Database for MySQL átjáró elsőd
 
 ## <a name="connection-redirection"></a>Kapcsolatok átirányítása
 
-Azure Database for MySQL támogatja a további kapcsolati házirendet, az **átirányítást**, amely segít csökkenteni a hálózati késést az ügyfélalkalmazások és a MySQL-kiszolgálók között. Ezzel a szolgáltatással, miután a kezdeti TCP-munkamenet létrejött a Azure Database for MySQL-kiszolgálón, a kiszolgáló visszaadja a MySQL-kiszolgálót futtató csomópont háttérbeli címeit az ügyfélnek. Ezt követően az összes további csomag közvetlenül a kiszolgálóra áramlik, és megkerüli az átjárót. Mivel a csomagok közvetlenül a kiszolgálóra áramlanak, a késés és az átviteli sebesség jobb teljesítményt biztosít.
+Azure Database for MySQL támogatja a további kapcsolati házirendet, az **átirányítást** , amely segít csökkenteni a hálózati késést az ügyfélalkalmazások és a MySQL-kiszolgálók között. Ezzel a szolgáltatással, miután a kezdeti TCP-munkamenet létrejött a Azure Database for MySQL-kiszolgálón, a kiszolgáló visszaadja a MySQL-kiszolgálót futtató csomópont háttérbeli címeit az ügyfélnek. Ezt követően az összes további csomag közvetlenül a kiszolgálóra áramlik, és megkerüli az átjárót. Mivel a csomagok közvetlenül a kiszolgálóra áramlanak, a késés és az átviteli sebesség jobb teljesítményt biztosít.
 
 Ez a funkció a 5,6-es, 5,7-as és 8,0-os motorral rendelkező Azure Database for MySQL-kiszolgálókon támogatott.
 
