@@ -6,12 +6,12 @@ ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: c101cb4eca246ee68a30ba3499981c589c564f92
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 832cb27f3056c52d22feabff0d8953b6725c1a7f
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368655"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286618"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Oktatóanyag: az Azure Key Vault-szolgáltató konfigurálása és futtatása a Secrets Store CSI-illesztőprogramhoz a Kubernetes-ben
 
@@ -35,7 +35,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-* Az oktatóanyag elindítása előtt telepítse az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)-t.
+* Az oktatóanyag elindítása előtt telepítse az [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)-t.
 
 ## <a name="create-a-service-principal-or-use-managed-identities"></a>Egyszerű szolgáltatásnév létrehozása vagy felügyelt identitások használata
 
@@ -56,7 +56,7 @@ Másolja a **AppID** és a **jelszó** hitelesítő adatait a későbbi használ
 
 Nincs szükség a Azure Cloud Shell használatára. Az Azure CLI-vel telepített parancssor (Terminal) elegendő lesz. 
 
-Fejezze be az [Azure Kubernetes Service-fürt üzembe helyezése az Azure CLI használatával](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough)című szakaszt az "erőforráscsoport létrehozása", "" AK-fürt létrehozása "és" kapcsolódás a fürthöz "című részekben. 
+Fejezze be az [Azure Kubernetes Service-fürt üzembe helyezése az Azure CLI használatával](../../aks/kubernetes-walkthrough.md)című szakaszt az "erőforráscsoport létrehozása", "" AK-fürt létrehozása "és" kapcsolódás a fürthöz "című részekben. 
 
 > [!NOTE] 
 > Ha egy egyszerű szolgáltatásnév helyett Pod-azonosítót kíván használni, a Kubernetes-fürt létrehozásakor ügyeljen arra, hogy a következő parancsban látható módon engedélyezze azt:
@@ -70,11 +70,11 @@ Fejezze be az [Azure Kubernetes Service-fürt üzembe helyezése az Azure CLI ha
     ```azurecli
     kubectl version
     ```
-1. Győződjön meg arról, hogy a Kubernetes verziója 1.16.0 vagy újabb. Windows-fürtök esetén győződjön meg arról, hogy a Kubernetes verziója 1.18.0 vagy újabb. A következő parancs frissíti a Kubernetes-fürtöt és a csomópont-készletet is. A parancs végrehajtása néhány percet is igénybe vehet. Ebben a példában az erőforráscsoport *contosoResourceGroup*, a Kubernetes-fürt pedig *contosoAKSCluster*.
+1. Győződjön meg arról, hogy a Kubernetes verziója 1.16.0 vagy újabb. Windows-fürtök esetén győződjön meg arról, hogy a Kubernetes verziója 1.18.0 vagy újabb. A következő parancs frissíti a Kubernetes-fürtöt és a csomópont-készletet is. A parancs végrehajtása néhány percet is igénybe vehet. Ebben a példában az erőforráscsoport *contosoResourceGroup* , a Kubernetes-fürt pedig *contosoAKSCluster*.
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
-1. A létrehozott AK-fürt metaadatainak megjelenítéséhez használja a következő parancsot. Másolja a **principalId**, a **clientId**, a **subscriptionId**és a **nodeResourceGroup** a későbbi használatra. Ha a KÉRDÉSes fürt nem lett engedélyezve a felügyelt identitásokkal, a **principalId** és a **clientId** null értékű lesz. 
+1. A létrehozott AK-fürt metaadatainak megjelenítéséhez használja a következő parancsot. Másolja a **principalId** , a **clientId** , a **subscriptionId** és a **nodeResourceGroup** a későbbi használatra. Ha a KÉRDÉSes fürt nem lett engedélyezve a felügyelt identitásokkal, a **principalId** és a **clientId** null értékű lesz. 
 
     ```azurecli
     az aks show --name contosoAKSCluster --resource-group contosoResourceGroup
@@ -103,7 +103,7 @@ A [Secrets Store CSI](https://github.com/Azure/secrets-store-csi-driver-provider
 
 ## <a name="create-an-azure-key-vault-and-set-your-secrets"></a>Azure Key Vault létrehozása és a titkok beállítása
 
-A saját kulcstartó létrehozásához és a titkos kulcsok beállításához kövesse az Azure CLI-vel való [Azure Key Vault titkának beállítása és beolvasása](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-cli)című témakör utasításait.
+A saját kulcstartó létrehozásához és a titkos kulcsok beállításához kövesse az Azure CLI-vel való [Azure Key Vault titkának beállítása és beolvasása](../secrets/quick-create-cli.md)című témakör utasításait.
 
 > [!NOTE] 
 > Nem kell használnia Azure Cloud Shell, vagy létre kell hoznia egy új erőforráscsoportot. Használhatja a korábban a Kubernetes-fürthöz létrehozott erőforráscsoportot.
@@ -114,21 +114,21 @@ Ha a Secrets Store CSI-illesztőprogramhoz tartozó, szolgáltatói specifikus p
 
 A minta SecretProviderClass YAML fájljában adja meg a hiányzó paramétereket. A következő paraméterek szükségesek:
 
-* **userAssignedIdentityID**: # [kötelező] Ha egyszerű szolgáltatásnevet használ, az ügyfél-azonosító segítségével megadhatja, hogy melyik felhasználóhoz rendelt felügyelt identitást kívánja használni. Ha felhasználó által hozzárendelt identitást használ a virtuális gép felügyelt identitása, akkor az identitás ügyfél-azonosítóját kell megadnia. Ha az érték üres, alapértelmezés szerint a rendszer által hozzárendelt identitást használja a virtuális gépen. 
-* **keyvaultName**: a kulcstartó neve
-* **objektumok**: a csatlakoztatni kívánt titkos tartalom tárolója
-    * **objectName**: a titkos tartalom neve
-    * **objektumtípus**: az objektum típusa (titok, kulcs, tanúsítvány)
-* **resourceGroup**: a kulcstartó erőforráscsoporthoz tartozó [verzió < 0.0.4] nevű erőforráscsoport neve
-* **subscriptionId**: a kulcstartó előfizetés-azonosítója # [a (z) < 0.0.4-verzióhoz szükséges] a kulcstartó előfizetés-azonosítója
-* **tenantID**: a Key Vault bérlői azonosítója vagy CÍMTÁR-azonosítója
+* **userAssignedIdentityID** : # [kötelező] Ha egyszerű szolgáltatásnevet használ, az ügyfél-azonosító segítségével megadhatja, hogy melyik felhasználóhoz rendelt felügyelt identitást kívánja használni. Ha felhasználó által hozzárendelt identitást használ a virtuális gép felügyelt identitása, akkor az identitás ügyfél-azonosítóját kell megadnia. Ha az érték üres, alapértelmezés szerint a rendszer által hozzárendelt identitást használja a virtuális gépen. 
+* **keyvaultName** : a kulcstartó neve
+* **objektumok** : a csatlakoztatni kívánt titkos tartalom tárolója
+    * **objectName** : a titkos tartalom neve
+    * **objektumtípus** : az objektum típusa (titok, kulcs, tanúsítvány)
+* **resourceGroup** : a kulcstartó erőforráscsoporthoz tartozó [verzió < 0.0.4] nevű erőforráscsoport neve
+* **subscriptionId** : a kulcstartó előfizetés-azonosítója # [a (z) < 0.0.4-verzióhoz szükséges] a kulcstartó előfizetés-azonosítója
+* **tenantID** : a Key Vault bérlői azonosítója vagy CÍMTÁR-azonosítója
 
 Az összes kötelező mező dokumentációja itt érhető el: [hivatkozás](https://github.com/Azure/secrets-store-csi-driver-provider-azure#create-a-new-azure-key-vault-resource-or-use-an-existing-one)
 
-A frissített sablon a következő kódban látható. Töltse le YAML-fájlként, és töltse ki a kötelező mezőket. Ebben a példában a Key Vault **contosoKeyVault5**van. Két titkot, **secret1** és **secret2**tartalmaz.
+A frissített sablon a következő kódban látható. Töltse le YAML-fájlként, és töltse ki a kötelező mezőket. Ebben a példában a Key Vault **contosoKeyVault5** van. Két titkot, **secret1** és **secret2** tartalmaz.
 
 > [!NOTE] 
-> Ha felügyelt identitásokat használ, állítsa a **usePodIdentity** értéket *igaz*értékre, és állítsa be a **userAssignedIdentityID** értéket idézőjelek közé (**""**). 
+> Ha felügyelt identitásokat használ, állítsa a **usePodIdentity** értéket *igaz* értékre, és állítsa be a **userAssignedIdentityID** értéket idézőjelek közé ( **""** ). 
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
@@ -194,7 +194,7 @@ Ha egyszerű szolgáltatást használ, adjon meg engedélyeket a kulcstartó el�
     ```
 
 > [!NOTE] 
-> Ha telepíti a Kubernetes Pod-ot, és hibaüzenetet kap egy érvénytelen ügyfél-titkos AZONOSÍTÓról, akkor előfordulhat, hogy egy korábbi, lejárt vagy alaphelyzetbe állított ügyfél-titkos AZONOSÍTÓval rendelkezik. A probléma megoldásához törölje a *Secrets-Store-creds Secret-* et, és hozzon létre egy újat az aktuális ügyfél-titkos azonosítóval. A *Secrets-Store-creds*törléséhez futtassa a következő parancsot:
+> Ha telepíti a Kubernetes Pod-ot, és hibaüzenetet kap egy érvénytelen ügyfél-titkos AZONOSÍTÓról, akkor előfordulhat, hogy egy korábbi, lejárt vagy alaphelyzetbe állított ügyfél-titkos AZONOSÍTÓval rendelkezik. A probléma megoldásához törölje a *Secrets-Store-creds Secret-* et, és hozzon létre egy újat az aktuális ügyfél-titkos azonosítóval. A *Secrets-Store-creds* törléséhez futtassa a következő parancsot:
 >
 > ```azurecli
 > kubectl delete secrets secrets-store-creds
@@ -210,7 +210,7 @@ az ad sp credential reset --name contosoServicePrincipal --credential-descriptio
 
 Ha felügyelt identitásokat használ, rendeljen meghatározott szerepköröket a létrehozott AK-fürthöz. 
 
-1. Felhasználó által hozzárendelt felügyelt identitás létrehozásához, listázásához vagy olvasásához az AK-fürtnek hozzá kell rendelnie a [felügyelt identitás-kezelő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkört. Győződjön meg arról, hogy a **$clientId** a Kubernetes-fürt clientId. A hatókör esetében az Azure-előfizetési szolgáltatás alatt lesz, különösen az AK-fürt létrehozásakor létrejött csomópont-erőforráscsoport. Ez a hatókör gondoskodik arról, hogy csak az adott csoportba tartozó erőforrásokat érinti az alábbi szerepkörök. 
+1. Felhasználó által hozzárendelt felügyelt identitás létrehozásához, listázásához vagy olvasásához az AK-fürtnek hozzá kell rendelnie a [felügyelt identitás-kezelő](../../role-based-access-control/built-in-roles.md#managed-identity-operator) szerepkört. Győződjön meg arról, hogy a **$clientId** a Kubernetes-fürt clientId. A hatókör esetében az Azure-előfizetési szolgáltatás alatt lesz, különösen az AK-fürt létrehozásakor létrejött csomópont-erőforráscsoport. Ez a hatókör gondoskodik arról, hogy csak az adott csoportba tartozó erőforrásokat érinti az alábbi szerepkörök. 
 
     ```azurecli
     RESOURCE_GROUP=contosoResourceGroup
@@ -260,7 +260,7 @@ kubectl apply -f updateDeployment.yaml
 
 ### <a name="use-managed-identities"></a>Felügyelt identitások használata
 
-Ha felügyelt identitásokat használ, hozzon létre egy *AzureIdentity* a fürtben, amely a korábban létrehozott identitásra hivatkozik. Ezután hozzon létre egy *AzureIdentityBinding* , amely a létrehozott AzureIdentity hivatkozik. Adja meg a paramétereket a következő sablonban, majd mentse a *podIdentityAndBinding. YAML*néven.  
+Ha felügyelt identitásokat használ, hozzon létre egy *AzureIdentity* a fürtben, amely a korábban létrehozott identitásra hivatkozik. Ezután hozzon létre egy *AzureIdentityBinding* , amely a létrehozott AzureIdentity hivatkozik. Adja meg a paramétereket a következő sablonban, majd mentse a *podIdentityAndBinding. YAML* néven.  
 
 ```yml
 apiVersion: aadpodidentity.k8s.io/v1
@@ -287,7 +287,7 @@ Futtassa a következő parancsot a kötés végrehajtásához:
 kubectl apply -f podIdentityAndBinding.yaml
 ```
 
-Ezután üzembe helyezi a pod-t. A következő kód a telepítési YAML-fájl, amely az előző lépésben a pod Identity kötést használja. Mentse ezt a fájlt *podBindingDeployment. YAML*néven.
+Ezután üzembe helyezi a pod-t. A következő kód a telepítési YAML-fájl, amely az előző lépésben a pod Identity kötést használja. Mentse ezt a fájlt *podBindingDeployment. YAML* néven.
 
 ```yml
 apiVersion: v1
@@ -335,7 +335,7 @@ kubectl describe pod/nginx-secrets-store-inline
 
 ![Képernyőfelvétel: a Pod "Running" állapotát megjelenítő Azure CLI-kimenet, amely az összes eseményt "normál" értékre mutat. ](../media/kubernetes-key-vault-6.png)
 
-A kimeneti ablakban az üzembe helyezett Pod-nek *futó* állapotban kell lennie. A lenti **események** szakaszban az összes eseménytípus *normál*formában jelenik meg.
+A kimeneti ablakban az üzembe helyezett Pod-nek *futó* állapotban kell lennie. A lenti **események** szakaszban az összes eseménytípus *normál* formában jelenik meg.
 
 Miután ellenőrizte, hogy a pod fut-e, ellenőrizheti, hogy a pod tartalmazza-e a Key Vault titkait.
 
@@ -355,4 +355,4 @@ Ellenőrizze, hogy a titkos kód tartalma megjelenik-e.
 
 A Key Vault helyreállításának biztosításához lásd:
 > [!div class="nextstepaction"]
-> [A Soft delete bekapcsolása](https://docs.microsoft.com/azure/key-vault/general/soft-delete-cli)
+> [A Soft delete bekapcsolása](./soft-delete-cli.md)

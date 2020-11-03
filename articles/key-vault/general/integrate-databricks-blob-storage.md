@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.openlocfilehash: bb574bb3dd000682090c6c3f861e885761753e19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba80d78cbc7d34b1496daffbd489a1d0dbfed8b4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588517"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285659"
 ---
 # <a name="tutorial-access-azure-blob-storage-using-azure-databricks-and-azure-key-vault"></a>Oktatóanyag: az Azure Blob Storage elérése Azure Databricks és Azure Key Vault használatával
 
@@ -29,11 +29,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-Az oktatóanyag elindítása előtt telepítse az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)-t.
+Az oktatóanyag elindítása előtt telepítse az [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)-t.
 
 ## <a name="create-a-storage-account-and-blob-container-with-azure-cli"></a>Storage-fiók és blob-tároló létrehozása az Azure CLI-vel
 
-Először létre kell hoznia egy általános célú Storage-fiókot a Blobok használatához. Ha nem rendelkezik [erőforráscsoporthoz](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create), hozzon létre egyet a parancs futtatása előtt. A következő parancs létrehozza és megjeleníti a Storage-tároló metaadatait. Másolja le az **azonosítót**.
+Először létre kell hoznia egy általános célú Storage-fiókot a Blobok használatához. Ha nem rendelkezik [erőforráscsoporthoz](/cli/azure/group?view=azure-cli-latest#az-group-create), hozzon létre egyet a parancs futtatása előtt. A következő parancs létrehozza és megjeleníti a Storage-tároló metaadatait. Másolja le az **azonosítót**.
 
 ```azurecli
 az storage account create --name contosoblobstorage5 --resource-group contosoResourceGroup --location eastus --sku Standard_ZRS --encryption-services blob
@@ -41,7 +41,7 @@ az storage account create --name contosoblobstorage5 --resource-group contosoRes
 
 ![A fenti parancs konzoljának kimenete. Az azonosító zöld színnel jelenik meg a végfelhasználók számára.](../media/databricks-command-output-1.png)
 
-Ahhoz, hogy létre lehessen hozni egy tárolót, amelybe fel szeretné tölteni a blobot, hozzá kell rendelnie a [Storage blob-adatközreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) szerepkört. Ebben a példában a szerepkör a korábban létrehozott Storage-fiókhoz lesz hozzárendelve.
+Ahhoz, hogy létre lehessen hozni egy tárolót, amelybe fel szeretné tölteni a blobot, hozzá kell rendelnie a [Storage blob-adatközreműködői](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) szerepkört. Ebben a példában a szerepkör a korábban létrehozott Storage-fiókhoz lesz hozzárendelve.
 
 ```azurecli
 az role assignment create --role "Storage Blob Data Contributor" --assignee t-trtr@microsoft.com --scope "/subscriptions/885e24c8-7a36-4217-b8c9-eed31e110504/resourceGroups/contosoResourceGroup5/providers/Microsoft.Storage/storageAccounts/contosoblobstorage5
@@ -94,7 +94,7 @@ az keyvault secret set --vault-name contosoKeyVault10 --name storageKey --value 
 
 ## <a name="create-an-azure-databricks-workspace-and-add-key-vault-secret-scope"></a>Azure Databricks munkaterület létrehozása és Key Vault titkos hatókör hozzáadása
 
-Ez a szakasz nem hajtható végre a parancssoron keresztül. Kövesse ezt az [útmutatót](https://docs.microsoft.com/azure/azure-databricks/store-secrets-azure-key-vault#create-an-azure-databricks-workspace-and-add-a-secret-scope). A következőhöz kell hozzáférnie a [Azure Portal](https://ms.portal.azure.com/#home) :
+Ez a szakasz nem hajtható végre a parancssoron keresztül. Kövesse ezt az [útmutatót](/azure/databricks/scenarios/store-secrets-azure-key-vault#create-an-azure-databricks-workspace-and-add-a-secret-scope). A következőhöz kell hozzáférnie a [Azure Portal](https://ms.portal.azure.com/#home) :
 
 1. A Azure Databricks-erőforrás létrehozása
 1. A munkaterület elindítása
@@ -102,7 +102,7 @@ Ez a szakasz nem hajtható végre a parancssoron keresztül. Kövesse ezt az [ú
 
 ## <a name="access-your-blob-container-from-azure-databricks-workspace"></a>A blob-tároló elérése Azure Databricks munkaterületről
 
-Ez a szakasz nem hajtható végre a parancssoron keresztül. Kövesse ezt az [útmutatót](https://docs.microsoft.com/azure/azure-databricks/store-secrets-azure-key-vault#access-your-blob-container-from-azure-databricks). A következőre kell használnia a Azure Databricks munkaterületet:
+Ez a szakasz nem hajtható végre a parancssoron keresztül. Kövesse ezt az [útmutatót](/azure/databricks/scenarios/store-secrets-azure-key-vault#access-your-blob-container-from-azure-databricks). A következőre kell használnia a Azure Databricks munkaterületet:
 
 1. **Új fürt** létrehozása
 1. **Új jegyzetfüzet** létrehozása
@@ -120,8 +120,8 @@ df = spark.read.text("/mnt/<mount-name>/<file-name>")
 df.show()
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Győződjön meg arról, hogy a Key Vault helyreállítható:
 > [!div class="nextstepaction"]
-> [Az erőforrások törlése](https://docs.microsoft.com/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-powershell)
+> [Az erőforrások törlése](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell)

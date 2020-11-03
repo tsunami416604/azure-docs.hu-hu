@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 817b9bfc0af054b344ca9f770085ac022a8e6eac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb28b4b678b37f69331b2ecff6272fd7aa64d191
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89381078"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287625"
 ---
 # <a name="assign-a-key-vault-access-policy-using-azure-powershell"></a>Key Vault hozzáférési szabályzat kiosztása a Azure PowerShell használatával
 
@@ -29,7 +29,7 @@ A csoportok Azure Active Directory Azure PowerShell használatával történő l
 
 1. A parancsok helyi futtatásához telepítse a [Azure PowerShell](/powershell/azure/) , ha még nem tette meg.
 
-    Ha közvetlenül a felhőben szeretné futtatni a parancsokat, használja a [Azure Cloud Shell](/azure/cloud-shell/overview).
+    Ha közvetlenül a felhőben szeretné futtatni a parancsokat, használja a [Azure Cloud Shell](../../cloud-shell/overview.md).
 
 1. Csak helyi PowerShell:
 

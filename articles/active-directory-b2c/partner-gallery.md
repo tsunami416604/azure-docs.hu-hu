@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8c67ff71ccc7690fbf3362b423ba4b6a56091684
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 3bf65fd2cc6feb338c1cd7d0742fb3d2a4289eff
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891244"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287172"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>ISV-partnerek Azure Active Directory B2C
 
@@ -36,8 +36,10 @@ Az ISV-partneri hálózat kibővíti a megoldási képességeiket a zökkenőmen
 | ![Képernyőkép egy itsme-emblémáról.](./media/partner-gallery/itsme-logo.png) | a [itsme](./partner-itsme.md) egy elektronikus azonosítási, hitelesítési és megbízhatósági szolgáltatás (eiDAS) által kompatibilis digitális azonosító megoldás, amely lehetővé teszi a felhasználók számára, hogy a kártyák olvasói, jelszavas, kétfaktoros hitelesítés és több PIN-kód nélkül is biztonságosan bejelentkezzenek. |
 | ![Képernyőkép egy Jumio-emblémáról.](./media/partner-gallery/jumio-logo.png) | A [Jumio](./partner-jumio.md) egy azonosító-ellenőrzési szolgáltatás, amely lehetővé teszi a valós idejű automatizált azonosítók ellenőrzését, így biztosítva az ügyféladatok védelmét. |
 | ![Képernyőkép egy LexisNexis-emblémáról.](./media/partner-gallery/lexisnexis-logo.png) | A [LexisNexis](./partner-lexisnexis.md) egy profilkészítési és identitás-ellenőrzési szolgáltató, amely ellenőrzi a felhasználó azonosítását, és átfogó kockázatértékelést biztosít a felhasználó eszköze alapján. |
+| ![Képernyőfelvétel az N8 Identity logóról.](./media/partner-gallery/n8identity-logo.png) | A [N8 Identity](./partner-n8identity.md) egy szolgáltatás-felügyeleti platform, amely megoldást nyújt a Microsoft Azureon futó ügyfelek fiókjainak áttelepítésére és az ügyfél-szolgáltatási kérelmekre (CSR) irányuló felügyeletre. |
 | ![Képernyőkép egy Onfido-emblémáról.](./media/partner-gallery/onfido-logo.png) | A [Onfido](./partner-onfido.md) egy dokumentum-azonosító és egy arc biometria-ellenőrzési megoldás, amely lehetővé teszi a vállalatok számára, hogy valós időben tudják kielégíteni *az ügyfél* és az identitás követelményeit.  |
 | ![Képernyőkép egy Saviynt-emblémáról.](./media/partner-gallery/saviynt-logo.png) | A [Saviynt](./partner-saviynt.md) Felhőbeli natív platform intelligens elemzési funkciókat használ, és lehetővé teszi az alkalmazások integrálását az informatikai modernizáció egyszerűsítése és a jobb biztonság, irányítás és megfelelőség elősegítése érdekében. Az üzleti modernizáció megváltoztatja a vállalatoknak a hozzáférési kérelmek felülvizsgálati módszereit, a hozzáférési felülvizsgálatokat, a jelentés-elemzéseket és a minősítési kampányok egyszerűsítését.  |
+| ![Képernyőfelvétel a rétegek emblémáról.](./media/partner-gallery/strata-logo.png) | A [rétegek](./partner-strata.md) védelmet biztosítanak a helyszíni alkalmazások számára a konzisztens hozzáférési szabályzatok betartatásával, a szinkronizálási identitások megőrzésével, valamint a Azure ad B2C által biztosított, a szabványokon alapuló hitelesítésre és hozzáférés-vezérlésre való áttérés egyszerűvé tétele érdekében. |
 | ![Képernyőkép egy Trusona-emblémáról.](./media/partner-gallery/trusona-logo.png) | A [Trusona](./partner-trusona.md) -integráció segítségével biztonságosan bejelentkezhet, és engedélyezheti a jelszó nélküli hitelesítést, a többtényezős hitelesítést és a digitális licencek vizsgálatát.|
 | ![Képernyőkép egy Twilio az alkalmazás emblémájának ellenőrzéséhez.](./media/partner-gallery/twilio-logo.png) | A [Twilio ellenőrzi](./partner-twilio.md) , hogy az alkalmazás több megoldást biztosít a többtényezős hitelesítés (MFA) SMS egyszeri jelszó (OTP), az időalapú egyszeri jelszó (TOTP) és a leküldéses értesítések, valamint a Payment Services-irányelv 2 (PSD2) direktíva követelményeinek teljesítéséhez.|
 | ![Képernyőkép, amely a TypingDNA emblémát jeleníti meg.](./media/partner-gallery/typingdna-logo.png) | A [TypingDNA](./partner-typingdna.md) egy, a felhasználó gépelési mintáján alapuló személyazonosság-ellenőrzési megoldás, amely a többtényezős hitelesítést kényszeríti, és segít megfelelni a 2. szintű Payment Services-irányelv (PSD2) SCA-követelményeinek. |

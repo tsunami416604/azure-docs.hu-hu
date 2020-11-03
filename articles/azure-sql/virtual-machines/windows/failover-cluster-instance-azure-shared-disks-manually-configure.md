@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: dd9b84c379f368e4cb4bcf1b5122e394456cd9e8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c78899bff39f37c63c7db0eeb12690ab2a90cac4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789760"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285371"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Az Azure Shared Disks (SQL Server Azure-beli virtuális gépeken) létrehozása
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -217,7 +217,7 @@ Ha a forgalmat az aktuális elsődleges csomópontnak megfelelően szeretné ir�
 
 ## <a name="limitations"></a>Korlátozások
 
-- Csak az SQL VM erőforrás-szolgáltatóval való regisztráció [egyszerűsített felügyeleti módban](sql-vm-resource-provider-register.md#management-modes) támogatott.
+- Csak az SQL VM erőforrás-szolgáltatóval való regisztráció [egyszerűsített felügyeleti módban](sql-server-iaas-agent-extension-automate-management.md#management-modes) támogatott.
 
 ## <a name="next-steps"></a>Következő lépések
 

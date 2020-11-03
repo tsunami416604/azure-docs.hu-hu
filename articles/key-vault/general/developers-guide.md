@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 6bdf008c13a1466ec47134c303902a1f9d19545b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 707b6d0f8a5fa3cff89339b9b0465d96b5369a34
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072764"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287600"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Az Azure Key Vault fejlesztői útmutatója
 
@@ -33,9 +33,9 @@ Időnként új Key Vault szolgáltatás nyilvános előzetes verzióját bocsát
 
 ## <a name="creating-and-managing-key-vaults"></a>Kulcstartók létrehozása és kezelése
 
-Az egyéb Azure-szolgáltatásokhoz hasonlóan Key Vault felügyelet Azure Resource Manager szolgáltatáson keresztül történik. Az Azure Resource Manager az Azure üzembehelyezési és felügyeleti szolgáltatása. Egy olyan felügyeleti réteget biztosít, amely lehetővé teszi az Azure-fiókban lévő erőforrások létrehozását, frissítését és törlését. További információ: [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)
+Az egyéb Azure-szolgáltatásokhoz hasonlóan Key Vault felügyelet Azure Resource Manager szolgáltatáson keresztül történik. Az Azure Resource Manager az Azure üzembehelyezési és felügyeleti szolgáltatása. Egy olyan felügyeleti réteget biztosít, amely lehetővé teszi az Azure-fiókban lévő erőforrások létrehozását, frissítését és törlését. További információ: [Azure Resource Manager](../../azure-resource-manager/management/overview.md)
 
-A felügyeleti réteghez való hozzáférést az [Azure szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/role-based-access-control/overview)szabályozza. Key Vault a felügyeleti réteg, más néven felügyeleti vagy vezérlési folyamat lehetővé teszi a kulcstartók és attribútumaik létrehozását és kezelését, beleértve a hozzáférési házirendeket, az adatsíkon felügyelt kulcsokat, titkokat és tanúsítványokat is. Az előre definiált `Key Vault Contributor` szerepkörökkel felügyeleti hozzáférést adhat a Key Vaulthoz.     
+A felügyeleti réteghez való hozzáférést az [Azure szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md)szabályozza. Key Vault a felügyeleti réteg, más néven felügyeleti vagy vezérlési folyamat lehetővé teszi a kulcstartók és attribútumaik létrehozását és kezelését, beleértve a hozzáférési házirendeket, az adatsíkon felügyelt kulcsokat, titkokat és tanúsítványokat is. Az előre definiált `Key Vault Contributor` szerepkörökkel felügyeleti hozzáférést adhat a Key Vaulthoz.     
 
 **A Key Vault felügyeletéhez szükséges API-k és SDK-k:**
 
@@ -45,7 +45,7 @@ A felügyeleti réteghez való hozzáférést az [Azure szerepköralapú hozzáf
 
 Lásd: [ügyféloldali kódtárak](client-libraries.md) telepítési csomagok és forráskódok számára.
 
-További információ a Key Vault felügyeleti síkon: [Key Vault felügyeleti sík](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#management-plane-and-azure-rbac)
+További információ a Key Vault felügyeleti síkon: [Key Vault felügyeleti sík](./secure-your-key-vault.md#management-plane-and-azure-rbac)
 
 ## <a name="authenticate-to-key-vault-in-code"></a>Hitelesítés Key Vault kódban
 
@@ -53,14 +53,14 @@ Key Vault olyan Azure AD-hitelesítést használ, amelyhez hozzáférést kell b
 
 ### <a name="authentication-best-practices"></a>Ajánlott eljárások a hitelesítéshez
 
-Ajánlott felügyelt identitást használni az Azure-ban üzembe helyezett alkalmazásokhoz. Ha olyan Azure-szolgáltatásokat használ, amelyek nem támogatják a felügyelt identitást, vagy ha az alkalmazások üzembe helyezése a helyszínen történik, az [egyszerű szolgáltatásnév egy](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) lehetséges alternatíva. Ebben az esetben a tanúsítványt Key Vault kell tárolni, és gyakran el kell forgatni. A titkos kulccsal rendelkező szolgáltatásnév fejlesztési és tesztelési környezetekhez használható, valamint helyileg vagy Cloud Shell felhasználói rendszerbiztonsági tag használata ajánlott.
+Ajánlott felügyelt identitást használni az Azure-ban üzembe helyezett alkalmazásokhoz. Ha olyan Azure-szolgáltatásokat használ, amelyek nem támogatják a felügyelt identitást, vagy ha az alkalmazások üzembe helyezése a helyszínen történik, az [egyszerű szolgáltatásnév egy](../../active-directory/develop/howto-create-service-principal-portal.md) lehetséges alternatíva. Ebben az esetben a tanúsítványt Key Vault kell tárolni, és gyakran el kell forgatni. A titkos kulccsal rendelkező szolgáltatásnév fejlesztési és tesztelési környezetekhez használható, valamint helyileg vagy Cloud Shell felhasználói rendszerbiztonsági tag használata ajánlott.
 
 Ajánlott rendszerbiztonsági tag/környezet:
-- **Éles környezet**:
+- **Éles környezet** :
   - Felügyelt identitás vagy egyszerű szolgáltatásnév tanúsítvánnyal
-- **Tesztelési és fejlesztési környezetek**:
+- **Tesztelési és fejlesztési környezetek** :
   - Felügyelt identitás, egyszerű tanúsítvány vagy egyszerű szolgáltatás, titkos kulccsal
-- **Helyi fejlesztés**:
+- **Helyi fejlesztés** :
   - Felhasználó vagy egyszerű szolgáltatás titkos kulccsal
 
 A fenti hitelesítési forgatókönyveket az **Azure Identity Client Library** támogatja, és integrálva van Key Vault SDK-val. Az Azure Identity Library különböző környezetekben és platformokon is használható a kód módosítása nélkül. Az Azure Identity azt is automatikusan lekéri a hitelesítési tokent, hogy bejelentkezett az Azure-felhasználónak az Azure CLI-vel, a Visual Studióval, a Visual Studio Code-val és másokkal. 
@@ -70,12 +70,12 @@ Az Azure Identity Client libarary kapcsolatos további információkért lásd:
 ### <a name="azure-identity-client-libraries"></a>Azure Identity ügyféloldali kódtárak
 | .NET | Python | Java | JavaScript |
 |--|--|--|--|
-|[Azure Identity SDK .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)|[Azure Identity SDK Python](https://docs.microsoft.com/python/api/overview/azure/identity-readme)|[Azure Identity SDK Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme)|[Azure Identity SDK JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)|     
+|[Azure Identity SDK .NET](/dotnet/api/overview/azure/identity-readme)|[Azure Identity SDK Python](/python/api/overview/azure/identity-readme)|[Azure Identity SDK Java](/java/api/overview/azure/identity-readme)|[Azure Identity SDK JavaScript](/javascript/api/overview/azure/identity-readme)|     
 
 Az alkalmazásokban való Key Vault hitelesítésével kapcsolatos oktatóanyagok:
-- [Hitelesítés Key Vault a virtuális gépen üzemeltetett alkalmazásban a .NET-ben](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-virtual-machine)
-- [Hitelesítés Key Vault a virtuális gépen futó alkalmazásban a Pythonban](https://docs.microsoft.com/azure/key-vault/general/tutorial-python-virtual-machine)
-- [Hitelesítés Key Vault a App Service](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app)
+- [Hitelesítés Key Vault a virtuális gépen üzemeltetett alkalmazásban a .NET-ben](./tutorial-net-virtual-machine.md)
+- [Hitelesítés Key Vault a virtuális gépen futó alkalmazásban a Pythonban](./tutorial-python-virtual-machine.md)
+- [Hitelesítés Key Vault a App Service](./tutorial-net-create-vault-azure-web-app.md)
 
 ## <a name="manage-keys-certificates-and-secrets"></a>Kulcsok, tanúsítványok és titkos kódok kezelése
 
@@ -86,14 +86,14 @@ A kulcsok, titkok és tanúsítványok elérését az adatsík vezérli. Az adat
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Referencia](/cli/azure/keyvault/key)<br>[Gyors útmutató](../keys/quick-create-cli.md)|[Referencia](/powershell/module/az.keyvault/)<br>[Gyors útmutató](../keys/quick-create-powershell.md)|[Referencia](/rest/api/keyvault/#key-operations)|N.A.|[Referencia](/dotnet/api/azure.security.keyvault.keys)|[Referencia](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Gyors útmutató](../keys/quick-create-python.md)|[Referencia](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)|[Referencia](/javascript/api/@azure/keyvault-keys/)|
+|[Referencia](/cli/azure/keyvault/key)<br>[Gyors útmutató](../keys/quick-create-cli.md)|[Referencia](/powershell/module/az.keyvault/)<br>[Gyors útmutató](../keys/quick-create-powershell.md)|[Referencia](/rest/api/keyvault/#key-operations)|N/A|[Referencia](/dotnet/api/azure.security.keyvault.keys)|[Referencia](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Gyors útmutató](../keys/quick-create-python.md)|[Referencia](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)|[Referencia](/javascript/api/@azure/keyvault-keys/)|
 
 **Tanúsítványok API-k és SDK-k**
 
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Referencia](/cli/azure/keyvault/certificate)<br>[Gyors útmutató](../certificates/quick-create-cli.md)|[Referencia](/powershell/module/az.keyvault)<br>[Gyors útmutató](../certificates/quick-create-powershell.md)|[Referencia](/rest/api/keyvault/#certificate-operations)|N.A.|[Referencia](/dotnet/api/azure.security.keyvault.certificates)|[Referencia](/python/api/overview/azure/keyvault-certificates-readme)<br>[Gyors útmutató](../certificates/quick-create-python.md)|[Referencia](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)|[Referencia](/javascript/api/@azure/keyvault-certificates/)|
+|[Referencia](/cli/azure/keyvault/certificate)<br>[Gyors útmutató](../certificates/quick-create-cli.md)|[Referencia](/powershell/module/az.keyvault)<br>[Gyors útmutató](../certificates/quick-create-powershell.md)|[Referencia](/rest/api/keyvault/#certificate-operations)|N/A|[Referencia](/dotnet/api/azure.security.keyvault.certificates)|[Referencia](/python/api/overview/azure/keyvault-certificates-readme)<br>[Gyors útmutató](../certificates/quick-create-python.md)|[Referencia](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)|[Referencia](/javascript/api/@azure/keyvault-certificates/)|
 
 **Secrets API-k és SDK-k**
 
@@ -104,7 +104,7 @@ A kulcsok, titkok és tanúsítványok elérését az adatsík vezérli. Az adat
 
 Lásd: [ügyféloldali kódtárak](client-libraries.md) telepítési csomagok és forráskódok számára.
 
-További információ a Key Vault adatsík biztonságáról: [Key Vault adatsíkon és hozzáférési szabályzatok](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#data-plane-and-access-policies) és [Key Vault adatsík és RBAC (előzetes verzió)](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#data-plane-and-azure-rbac-preview)
+További információ a Key Vault adatsík biztonságáról: [Key Vault adatsíkon és hozzáférési szabályzatok](./secure-your-key-vault.md#data-plane-and-access-policies) és [Key Vault adatsík és RBAC (előzetes verzió)](./secure-your-key-vault.md#data-plane-and-azure-rbac-preview)
 
 ### <a name="code-examples"></a>Kódpéldák
 
@@ -117,8 +117,8 @@ A Key Vault alkalmazással való használatának teljes példáit a következő 
 A következő cikkek és forgatókönyvek feladat-specifikus útmutatást nyújtanak a Azure Key Vault használatához:
 
 - A [tűzfal mögötti Key Vault elérése](access-behind-firewall.md) – egy kulcstartó eléréséhez a Key Vault-ügyfélalkalmazás számára a különböző funkciókhoz több végpontot is el kell érnie.
-- Tanúsítványok telepítése virtuális gépekre Key Vault – [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows), [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) – az Azure-beli virtuális gépen futó felhőalapú alkalmazásnak tanúsítványra van szüksége. Hogyan szerezheti be ezt a tanúsítványt még ma a virtuális gépre?
-- [Azure webalkalmazás-tanúsítvány üzembe helyezése Key Vault](https://docs.microsoft.com/azure/app-service/configure-ssl-certificate#import-a-certificate-from-key-vault)
+- Tanúsítványok telepítése virtuális gépekre Key Vault – [Windows](../../virtual-machines/extensions/key-vault-windows.md), [Linux](../../virtual-machines/extensions/key-vault-linux.md) – az Azure-beli virtuális gépen futó felhőalapú alkalmazásnak tanúsítványra van szüksége. Hogyan szerezheti be ezt a tanúsítványt még ma a virtuális gépre?
+- [Azure webalkalmazás-tanúsítvány üzembe helyezése Key Vault](../../app-service/configure-ssl-certificate.md#import-a-certificate-from-key-vault)
 - Hozzáférési szabályzat ([CLI](assign-access-policy-cli.md)  |  [PowerShell](assign-access-policy-powershell.md)  |  -[portál](assign-access-policy-portal.md)) társítása. 
 - A [Key Vault Soft-delete használata a parancssori](soft-delete-cli.md) felülettel végigvezeti a kulcstartó használatának és életciklusának, valamint a helyreállítható törlést lehetővé tett különböző kulcstartó-objektumoknak a használatával.
 - [Biztonságos értékek (például jelszavak)](../../azure-resource-manager/templates/key-vault-parameter.md) átadása az üzembe helyezés során – ha egy biztonságos értéket (például jelszót) kell megadni paraméterként az üzembe helyezés során, az értéket tárolhatja titkosként egy Azure Key Vault, és hivatkozhat az értékre más Resource Manager-sablonokban.
@@ -127,13 +127,13 @@ A következő cikkek és forgatókönyvek feladat-specifikus útmutatást nyújt
 
 Ezek a cikkek olyan egyéb forgatókönyvekkel és szolgáltatásokkal kapcsolatosak, amelyek a Key Vault-t használják vagy integrálják.
 
-- A [nyugalmi](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) állapotban lévő titkosítás lehetővé teszi az adatok kódolását (titkosítását), amikor a rendszer megőrzi a tartalmat. Az adattitkosítási kulcsokat gyakran titkosítja Azure Key Vault a hozzáférés további korlátozása érdekében a kulcs titkosítási kulcsával.
+- A [nyugalmi](../../security/fundamentals/encryption-atrest.md) állapotban lévő titkosítás lehetővé teszi az adatok kódolását (titkosítását), amikor a rendszer megőrzi a tartalmat. Az adattitkosítási kulcsokat gyakran titkosítja Azure Key Vault a hozzáférés további korlátozása érdekében a kulcs titkosítási kulcsával.
 - [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) lehetővé teszi a saját bérlői kulcsának felettesét. Például ahelyett, hogy a Microsoft a bérlői kulcsát (az alapértelmezettet) kezelhesse, a saját bérlői kulcsát úgy kezelheti, hogy megfeleljen a szervezetére vonatkozó egyes előírásoknak. A saját bérlőkulcs felügyelete más néven a saját kulcs használata (BYOK).
 - Az [Azure Private link Service](private-link-service.md) lehetővé teszi az Azure-szolgáltatások (például az Azure Key Vault, az Azure Storage és a Azure Cosmos db) és az Azure által üzemeltetett ügyfél-és partneri szolgáltatások elérését a virtuális hálózat privát végpontján keresztül.
-- Key Vault integrációja [Event Grid](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault)  lehetővé teszi a felhasználók számára, hogy a Key vaultban tárolt titkos kód állapotának változásakor értesítést kapjanak. A kiesések elkerülése érdekében a titkok új verzióit terjesztheti az alkalmazásokra, vagy elforgathatja közel lejáró titkokat.
-- Az [Azure Devops](https://docs.microsoft.com/azure/devops/pipelines/release/azure-key-vault) -titkokat a Key Vaultban található nemkívánatos hozzáférésekkel biztosíthatja.
-- [A DataBricks Key Vault tárolt titkos kulcs használata az Azure Storage-hoz való kapcsolódáshoz](https://docs.microsoft.com/azure/key-vault/general/integrate-databricks-blob-storage)
-- A [Secrets Store CSI-illesztőprogram](https://docs.microsoft.com/azure/key-vault/general/key-vault-integrate-kubernetes) Azure Key Vault-szolgáltatójának konfigurálása és futtatása a Kubernetes-on
+- Key Vault integrációja [Event Grid](../../event-grid/event-schema-key-vault.md)  lehetővé teszi a felhasználók számára, hogy a Key vaultban tárolt titkos kód állapotának változásakor értesítést kapjanak. A kiesések elkerülése érdekében a titkok új verzióit terjesztheti az alkalmazásokra, vagy elforgathatja közel lejáró titkokat.
+- Az [Azure Devops](/azure/devops/pipelines/release/azure-key-vault) -titkokat a Key Vaultban található nemkívánatos hozzáférésekkel biztosíthatja.
+- [A DataBricks Key Vault tárolt titkos kulcs használata az Azure Storage-hoz való kapcsolódáshoz](./integrate-databricks-blob-storage.md)
+- A [Secrets Store CSI-illesztőprogram](./key-vault-integrate-kubernetes.md) Azure Key Vault-szolgáltatójának konfigurálása és futtatása a Kubernetes-on
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault áttekintések és fogalmak
 
@@ -143,5 +143,5 @@ Ezek a cikkek olyan egyéb forgatókönyvekkel és szolgáltatásokkal kapcsolat
 
 ## <a name="social"></a>Közösségi
 
-- [Key Vault blog](https://aka.ms/kvblog)
+- [Key Vault blog](/archive/blogs/kv/)
 - [Key Vault fórum](https://aka.ms/kvforum)

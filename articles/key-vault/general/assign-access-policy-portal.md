@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d16d14ff51cb9a7e71193d93c6755a8e4cb93ed0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9277d100eb6744adfc20fbba9f96b822654e64a3
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89481409"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287711"
 ---
 # <a name="assign-a-key-vault-access-policy-using-the-azure-portal"></a>Key Vault hozzáférési szabályzat társítása a Azure Portal használatával
 
@@ -23,21 +23,21 @@ A Key Vault hozzáférési szabályzat meghatározza, hogy egy adott szolgáltat
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 
-További információ a Azure Active Directory csoportok létrehozásáról a Azure Portal használatával: [alapszintű csoport létrehozása és Tagok hozzáadása](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)
+További információ a Azure Active Directory csoportok létrehozásáról a Azure Portal használatával: [alapszintű csoport létrehozása és Tagok hozzáadása](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
 
 ## <a name="assign-an-access-policy"></a>Hozzáférési szabályzat hozzárendelése
 
 1.  A [Azure Portal](https://portal.azure.com)navigáljon a Key Vault erőforráshoz. 
 
-1.  A **Beállítások**területen válassza a **hozzáférési szabályzatok**, majd a **hozzáférési házirend hozzáadása**elemet:
+1.  A **Beállítások** területen válassza a **hozzáférési szabályzatok** , majd a **hozzáférési házirend hozzáadása** elemet:
 
     ![Válassza a hozzáférési szabályzatok lehetőséget, majd a szerepkör-hozzárendelés hozzáadása elemet.](../media/authentication/assign-policy-portal-01.png)
 
-1.  Válassza ki a kívánt engedélyeket a **tanúsítvány engedélyei**, a **kulcs engedélyei**és a **titkos engedélyek**területen. Kiválaszthat egy olyan sablont is, amely közös engedélyezési kombinációkat tartalmaz:
+1.  Válassza ki a kívánt engedélyeket a **tanúsítvány engedélyei** , a **kulcs engedélyei** és a **titkos engedélyek** területen. Kiválaszthat egy olyan sablont is, amely közös engedélyezési kombinációkat tartalmaz:
 
     ![Hozzáférési házirend engedélyeinek megadása](../media/authentication/assign-policy-portal-02.png)
 
-1. A **rendszerbiztonsági tag kiválasztása**területen válassza a **nincs kiválasztott** hivatkozást a **résztvevő** kijelölése ablaktábla megnyitásához. Adja meg az alkalmazás vagy az egyszerű szolgáltatásnév nevét a keresés mezőben, válassza ki a megfelelő eredményt, majd válassza a **kiválasztás**lehetőséget.
+1. A **rendszerbiztonsági tag kiválasztása** területen válassza a **nincs kiválasztott** hivatkozást a **résztvevő** kijelölése ablaktábla megnyitásához. Adja meg az alkalmazás vagy az egyszerű szolgáltatásnév nevét a keresés mezőben, válassza ki a megfelelő eredményt, majd válassza a **kiválasztás** lehetőséget.
 
     ![Az egyszerű szolgáltatásnév kiválasztása a hozzáférési házirendhez](../media/authentication/assign-policy-portal-03.png)
 
@@ -47,7 +47,7 @@ További információ a Azure Active Directory csoportok létrehozásáról a Az
 
     ![Hozzáférési szabályzat hozzáadása a hozzárendelt egyszerű szolgáltatáshoz](../media/authentication/assign-policy-portal-04.png)
 
-1. A **hozzáférési házirendek** lapon ellenőrizze, hogy a hozzáférési házirend szerepel-e a **jelenlegi hozzáférési házirendek**területen, majd válassza a **Mentés**lehetőséget. A hozzáférési házirendeket a rendszer nem alkalmazza, amíg meg nem menti őket.
+1. A **hozzáférési házirendek** lapon ellenőrizze, hogy a hozzáférési házirend szerepel-e a **jelenlegi hozzáférési házirendek** területen, majd válassza a **Mentés** lehetőséget. A hozzáférési házirendeket a rendszer nem alkalmazza, amíg meg nem menti őket.
 
     ![A hozzáférési szabályzat módosításainak mentése](../media/authentication/assign-policy-portal-05.png)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: b6e33f32c6adcea12952474e3f09b45834b85c1e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 1994cda9dbf22a81216408ee07d51f635e89cff4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164397"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285275"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Egy prémium szintű fájlmegosztás (SQL Server Azure-beli virtuális gépeken) létrehozása
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,7 +42,7 @@ A cikkben szereplő utasítások elvégzése előtt a következőket kell tennie
 ## <a name="mount-premium-file-share"></a>Prémium fájlmegosztás csatlakoztatása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). és nyissa meg a Storage-fiókját.
-1. Nyissa meg a **file** shares elemet a **Fájlszolgáltatások**területen, majd válassza ki az SQL-tárolóhoz használni kívánt prémium fájlmegosztást.
+1. Nyissa meg a **file** shares elemet a **Fájlszolgáltatások** területen, majd válassza ki az SQL-tárolóhoz használni kívánt prémium fájlmegosztást.
 1. Válassza a **Kapcsolódás** lehetőséget a fájlmegosztás kapcsolati karakterláncának megadásához.
 1. A legördülő listából válassza ki a használni kívánt meghajtóbetűjelet, majd másolja mindkét kódrészletet a Jegyzettömbbe.
 
@@ -69,11 +69,11 @@ A cikkben szereplő utasítások elvégzése előtt a következőket kell tennie
 1. [Adja hozzá a feladatátvételi fürtszolgáltatást az egyes virtuális gépekhez](availability-group-manually-configure-prerequisites-tutorial.md#add-failover-clustering-features-to-both-sql-server-vms).
 
    Ha a felhasználói felületen szeretné telepíteni a feladatátvételi fürtszolgáltatást, tegye a következőket mindkét virtuális gépen:
-   1. A **Kiszolgálókezelőben**válassza a **kezelés**, majd a **szerepkörök és szolgáltatások hozzáadása**lehetőséget.
+   1. A **Kiszolgálókezelőben** válassza a **kezelés** , majd a **szerepkörök és szolgáltatások hozzáadása** lehetőséget.
    1. A **szerepkörök és szolgáltatások hozzáadása** varázslóban kattintson a **tovább** gombra, amíg ki nem **választja a funkciókat**.
-   1. A **szolgáltatások kiválasztása**területen válassza a **feladatátvételi fürtszolgáltatás**lehetőséget. Adja meg az összes szükséges funkciót és a felügyeleti eszközöket. 
-   1. Válassza a **szolgáltatások hozzáadása**lehetőséget.
-   1. Válassza a **tovább**, majd a **Befejezés** lehetőséget a funkciók telepítéséhez.
+   1. A **szolgáltatások kiválasztása** területen válassza a **feladatátvételi fürtszolgáltatás** lehetőséget. Adja meg az összes szükséges funkciót és a felügyeleti eszközöket. 
+   1. Válassza a **szolgáltatások hozzáadása** lehetőséget.
+   1. Válassza a **tovább** , majd a **Befejezés** lehetőséget a funkciók telepítéséhez.
 
    A feladatátvételi fürtszolgáltatás PowerShell használatával történő telepítéséhez futtassa a következő parancsfájlt egy rendszergazdai PowerShell-munkamenetből az egyik virtuális gépen:
 
@@ -88,15 +88,25 @@ Ellenőrizze a fürtöt a felhasználói felületen vagy a PowerShell használat
 
 A fürt a felhasználói felületen való ellenőrzéséhez tegye a következőket az egyik virtuális gépen:
 
-1. A **Kiszolgálókezelő**területen válassza az **eszközök**, majd a **Feladatátvevőfürt-kezelő**lehetőséget.
-1. A **Feladatátvevőfürt-kezelő**alatt válassza a **művelet**, majd a **Konfiguráció ellenőrzése**lehetőséget.
+1. A **Kiszolgálókezelő** területen válassza az **eszközök** , majd a **Feladatátvevőfürt-kezelő** lehetőséget.
+1. A **Feladatátvevőfürt-kezelő** alatt válassza a **művelet** , majd a **Konfiguráció ellenőrzése** lehetőséget.
 1. Kattintson a **Tovább** gombra.
-1. A **kiszolgálók vagy fürt kijelölése**területen adja meg mindkét virtuális gép nevét.
-1. A **tesztelési beállítások**területen válassza a **csak a kiválasztott tesztek futtatása**lehetőséget. 
+1. A **kiszolgálók vagy fürt kijelölése** területen adja meg mindkét virtuális gép nevét.
+1. A **tesztelési beállítások** területen válassza a **csak a kiválasztott tesztek futtatása** lehetőséget. 
 1. Kattintson a **Tovább** gombra.
-1. A **teszt kiválasztása**területen válassza a minden teszt lehetőséget a **tárolás** és a **közvetlen tárolóhelyek**kivételével, ahogy az itt látható:
+1. A **teszt kiválasztása** területen válassza a minden teszt lehetőséget a **tárolás** és a **közvetlen tárolóhelyek** kivételével, ahogy az itt látható:
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Mindkét PowerShell-parancs másolása a fájlmegosztás csatlakozási portálján"
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Fürt-ellenőrzési tesztek kiválasztása":::
+
+1. Kattintson a **Tovább** gombra.
+1. A **megerősítés** területen válassza a **tovább** lehetőséget.
+
+A **Konfiguráció ellenőrzése** varázsló futtatja az ellenőrző teszteket.
+
+A fürt a PowerShell használatával történő ellenőrzéséhez futtassa a következő parancsfájlt egy rendszergazdai PowerShell-munkamenetből az egyik virtuális gépen:
+
+   ```powershell
+   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
    ```
 
 A fürt érvényesítése után hozza létre a feladatátvevő fürtöt.
@@ -139,9 +149,9 @@ Konfigurálja az üzleti igényeknek leginkább megfelelő kvórum megoldást. B
 
 ## <a name="test-cluster-failover"></a>Fürt feladatátvételének tesztelése
 
-Tesztelje a fürt feladatátvételét. A **Feladatátvevőfürt-kezelőban**kattintson a jobb gombbal a fürtre, válassza a **További műveletek**  >  csomópontot az**alapszintű fürt erőforrásainak**  >  **kiválasztásához**, majd válassza ki a fürt másik csomópontját. Helyezze át az alapszintű fürt erőforrását a fürt minden csomópontjára, majd helyezze vissza az elsődleges csomópontra. Ha sikeresen át tudja helyezni a fürtöt az egyes csomópontokra, készen áll a SQL Server telepítésére.  
+Tesztelje a fürt feladatátvételét. A **Feladatátvevőfürt-kezelőban** kattintson a jobb gombbal a fürtre, válassza a **További műveletek**  >  csomópontot az **alapszintű fürt erőforrásainak**  >  **kiválasztásához** , majd válassza ki a fürt másik csomópontját. Helyezze át az alapszintű fürt erőforrását a fürt minden csomópontjára, majd helyezze vissza az elsődleges csomópontra. Ha sikeresen át tudja helyezni a fürtöt az egyes csomópontokra, készen áll a SQL Server telepítésére.  
 
-:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Mindkét PowerShell-parancs másolása a fájlmegosztás csatlakozási portálján":::
+:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Fürt feladatátvételének tesztelése az alapvető erőforrás más csomópontokra való áthelyezésével":::
 
 
 ## <a name="create-sql-server-fci"></a>Létrehozás SQL Server
@@ -150,27 +160,27 @@ Miután konfigurálta a feladatátvevő fürtöt, létrehozhatja a SQL Server-t.
 
 1. Kapcsolódjon az első virtuális géphez RDP használatával.
 
-1. **Feladatátvevőfürt-kezelő**ellenőrizze, hogy az összes alapvető fürterőforrás az első virtuális gépen van-e. Ha szükséges, helyezze át az összes erőforrást erre a virtuális gépre.
+1. **Feladatátvevőfürt-kezelő** ellenőrizze, hogy az összes alapvető fürterőforrás az első virtuális gépen van-e. Ha szükséges, helyezze át az összes erőforrást erre a virtuális gépre.
 
 1. Keresse meg a telepítési adathordozót. Ha a virtuális gép az egyik Azure Marketplace-lemezképet használja, az adathordozó a következő helyen található: `C:\SQLServer_<version number>_Full` . 
 
-1. Válassza a **beállítás**lehetőséget.
+1. Válassza a **beállítás** lehetőséget.
 
-1. A **SQL Server telepítési központban**válassza a **telepítés**lehetőséget.
+1. A **SQL Server telepítési központban** válassza a **telepítés** lehetőséget.
 
-1. Válassza az **új SQL Server feladatátvevő fürt telepítése**lehetőséget, majd kövesse a varázsló utasításait a SQL Server-verzió telepítéséhez.
+1. Válassza az **új SQL Server feladatátvevő fürt telepítése** lehetőséget, majd kövesse a varázsló utasításait a SQL Server-verzió telepítéséhez.
 
    Az adatkönyvtárak a prémium fájlmegosztás esetében szükségesek. Adja meg a megosztás teljes elérési útját a következő formátumban: `\\storageaccountname.file.core.windows.net\filesharename\foldername` . Megjelenik egy figyelmeztetés, amely arról tájékoztat, hogy a fájlkiszolgáló adatkönyvtárként van megadva. Ez a figyelmeztetés várható. Győződjön meg arról, hogy a fájlmegosztás megtartásakor a virtuális gép RDP-kapcsolaton keresztüli elérésére használt felhasználói fiók ugyanaz a fiók, amelyet a SQL Server szolgáltatás a lehetséges hibák elkerülése érdekében használ.
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="Mindkét PowerShell-parancs másolása a fájlmegosztás csatlakozási portálján":::
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="Fájlmegosztás használata SQL-adatkönyvtárakként":::
 
 1. A varázsló lépéseinek elvégzése után a telepítő telepíti az első csomóponton egy SQL Server-t.
 
 1. Miután a telepítő telepíti a (z)-t az első csomóponton, csatlakozzon a második csomóponthoz RDP használatával.
 
-1. Nyissa meg a **SQL Server telepítési központot**, majd válassza a **telepítés**lehetőséget.
+1. Nyissa meg a **SQL Server telepítési központot** , majd válassza a **telepítés** lehetőséget.
 
-1. Válassza **a csomópont hozzáadása SQL Server feladatátvevő fürthöz**lehetőséget. A varázsló utasításait követve telepítse a SQL Servert, és adja hozzá a kiszolgálót a modulhoz.
+1. Válassza **a csomópont hozzáadása SQL Server feladatátvevő fürthöz** lehetőséget. A varázsló utasításait követve telepítse a SQL Servert, és adja hozzá a kiszolgálót a modulhoz.
 
    >[!NOTE]
    >Ha SQL Server használatával Azure Marketplace-katalógust használt, SQL Server eszközöket tartalmazott a rendszerképben. Ha nem használja ezeket a képeket, telepítse külön a SQL Server-eszközöket. További információ: [Download SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
@@ -200,9 +210,9 @@ Ha a forgalmat az aktuális elsődleges csomópontnak megfelelően szeretné ir�
 
 - A Microsoft Elosztott tranzakciók koordinátora (MSDTC) nem támogatott a Windows Server 2016-es és korábbi verzióiban. 
 - A FileStream nem támogatott egy prémium szintű fájlmegosztást használó feladatátvevő fürt esetén. A FileStream használatához [közvetlen tárolóhelyek](failover-cluster-instance-storage-spaces-direct-manually-configure.md) vagy [Azure Shared Disks](failover-cluster-instance-azure-shared-disks-manually-configure.md) használatával helyezze üzembe a fürtöt.
-- Csak az SQL VM erőforrás-szolgáltatóval való regisztráció [egyszerűsített felügyeleti módban](sql-vm-resource-provider-register.md#management-modes) támogatott. 
+- Csak az SQL VM erőforrás-szolgáltatóval való regisztráció [egyszerűsített felügyeleti módban](sql-server-iaas-agent-extension-automate-management.md#management-modes) támogatott. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg, állítsa be a kapcsolatot a [virtuális hálózat nevével és az Azure Load balancerrel](failover-cluster-instance-vnn-azure-load-balancer-configure.md) vagy az [elosztott hálózat nevével (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md). 
 

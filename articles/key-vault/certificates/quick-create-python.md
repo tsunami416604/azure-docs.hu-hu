@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: a5ba1699e082741db851ee2af3eb688ea8aa7843
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 05b1ea8e6daa9fae0588535534c4a8be45ab91d5
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748060"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285250"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-python"></a>Gyors útmutató: Azure Key Vault Certificate Library for Python
 
@@ -24,14 +24,14 @@ Ismerkedés az Azure Key Vault Certificate Pythonhoz készült ügyféloldali k�
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Python 2.7 + vagy 3.5.3 +](https://docs.microsoft.com/azure/developer/python/configure-local-development-environment)
+- [Python 2.7 + vagy 3.5.3 +](/azure/developer/python/configure-local-development-environment)
 - [Azure CLI](/cli/azure/install-azure-cli)
 
 Ez a rövid útmutató azt feltételezi, hogy az [Azure CLI](/cli/azure/install-azure-cli) -t egy Linux-terminál ablakban futtatja.
 
 ## <a name="set-up-your-local-environment"></a>A helyi környezet beállítása
 
-Ez a rövid útmutató az Azure Identity Library és az Azure CLI használatával hitelesíti a felhasználókat az Azure-szolgáltatásokban. A fejlesztők a Visual studiót vagy a Visual Studio Code-ot is használhatják a hívások hitelesítéséhez, további információért lásd: [az ügyfél hitelesítése az Azure Identity Client Library](https://docs.microsoft.com/java/api/overview/azure/identity-readme) segítségével
+Ez a rövid útmutató az Azure Identity Library és az Azure CLI használatával hitelesíti a felhasználókat az Azure-szolgáltatásokban. A fejlesztők a Visual studiót vagy a Visual Studio Code-ot is használhatják a hívások hitelesítéséhez, további információért lásd: [az ügyfél hitelesítése az Azure Identity Client Library](/java/api/overview/azure/identity-readme) segítségével
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -200,7 +200,7 @@ Ellenőrizze, hogy a tanúsítvány törölve lett-e az Azure CLI-paranccsal az 
 
 A törlés után a tanúsítvány törölve marad, de egy ideig is helyreállítható állapotban van. Ha újra futtatja a kódot, használjon másik nevet.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a [titkokkal](../secrets/quick-create-python.md) és [kulcsokkal](../keys/quick-create-python.md)is kísérletezni szeretne, a cikkben létrehozott Key Vault is felhasználhatja.
 

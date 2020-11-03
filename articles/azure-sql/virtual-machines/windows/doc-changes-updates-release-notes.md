@@ -11,12 +11,12 @@ ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/15/2020
-ms.openlocfilehash: 1d6eb4df91ce912832d15835a00bdb287f67e787
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 249e65b5a9440678015598d9969c0d2ed689c626
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789743"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285362"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Az Azure-beli SQL Server dokumentációjának változásai Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -88,7 +88,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 | **SQL Server VM Migrálás másik régióba** | A Azure Site Recovery használatával [áttelepítheti a SQL Server VM az egyik régióból a másikba](move-sql-vm-different-region.md). |
 |  **Új SQL-IaaS telepítési módjai** | A SQL Server szolgáltatás újraindításának elkerülése érdekében mostantól a SQL Server IaaS-bővítményt [egyszerűsített módban](sql-server-iaas-agent-extension-automate-management.md) is telepítheti.  |
 | **SQL Server kiadás módosítása** | Most már módosíthatja a SQL Server VM [kiadás tulajdonságát](change-sql-server-edition.md) . |
-| **Az SQL virtuális gép erőforrás-szolgáltatójának módosításai** | A [SQL Server VM az SQL VM erőforrás-szolgáltatóban regisztrálhatja](sql-vm-resource-provider-register.md) az új SQL IaaS módok használatával. Ez a funkció [Windows Server 2008](sql-vm-resource-provider-register.md#management-modes) rendszerképeket tartalmaz.|
+| **Az SQL virtuális gép erőforrás-szolgáltatójának módosításai** | A [SQL Server VM az SQL VM erőforrás-szolgáltatóban regisztrálhatja](sql-vm-resource-provider-register.md) az új SQL IaaS módok használatával. Ez a funkció [Windows Server 2008](sql-server-iaas-agent-extension-automate-management.md#management-modes) rendszerképeket tartalmaz.|
 | **Saját licencű lemezképek a Azure Hybrid Benefit használatával** | Az Azure Marketplace-ről üzembe helyezett saját licencű lemezképek mostantól az utólagos elszámolású [licencre](licensing-model-azure-hybrid-benefit-ahb-change.md#remarks)válthatnak.| 
 | **Új SQL Server VM-kezelés a Azure Portal** | Most már lehetőség van a SQL Server VM kezelésére a Azure Portal. További információ: [SQL Server virtuális gépek kezelése a Azure Portalban](manage-sql-vm-portal.md).  | 
 | **Kiterjesztett támogatás a SQL Server 2008 és a 2008 R2 rendszerhez** | *Az Azure* -beli virtuális gépekre való áttelepítéssel bővítheti SQL Server 2008 és SQL Server 2008 R2 [támogatását](sql-server-2008-extend-end-of-support.md) . | 

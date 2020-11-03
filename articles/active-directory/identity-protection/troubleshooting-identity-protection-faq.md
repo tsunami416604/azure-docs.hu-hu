@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b1c0ef42454b085c5d4dbcdc14162b2c829c6a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ec45ce7634b7bc0a8f38f354112cdc2e172f1e17
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074814"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288366"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Gyakori kérdések az identitások védelméről Azure Active Directory
 
@@ -27,14 +27,6 @@ A **felhasználói kockázat elvetése** a klasszikus Identity Protectionben az 
 A **felhasználói kockázat elvetése** az Identity Protection szolgáltatásban a felhasználó kockázati előzményeiben szereplő tulajdonost állítja be az Identity Protectionben **\<Admin’s name with a hyperlink pointing to user’s blade\>** .
 
 Létezik egy aktuálisan ismert probléma, ami késést okoz a felhasználói kockázat elbocsátási folyamatában. Ha a "felhasználói kockázati szabályzattal" rendelkezik, ez a szabályzat a "felhasználói kockázat elvetése" gombra kattintást követően néhány percen belül leállítja a felhasználókat. Azonban ismert késések vannak az UX-felhasználók "kockázat állapotának" frissítésével. Megkerülő megoldásként frissítse az oldalt a böngésző szintjén, hogy megtekintse a "kockázati állapot" nevű legújabb felhasználót.
-
-## <a name="risky-users-report-known-issues"></a>A kockázatos felhasználók ismert problémákat jelentettek
-
-A **Felhasználónév** mezőben lévő lekérdezések megkülönböztetik a kis-és nagybetűket, míg a **Name (név** ) mező lekérdezései a kis-és nagybetűket használják.
-
-A **dátumok megjelenítésének módosítása,** hogy elrejtse a **kockázat utolsó frissítésének** oszlopát. Az oszlop olvasásához kattintson a kockázatos felhasználók panel tetején található **oszlopok** elemre.
-
-A klasszikus Identity Protection **összes eseményének** bezárásakor a kockázati észlelések állapota **lezárva (megoldva)** állapotú.
 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések

@@ -11,14 +11,14 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 20f0d6a9d87caa8e95e7f9fa0b29ff45ed1195c2
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: a6b453b11c892b5d81c41cac9451b07be69aa4d3
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735466"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285926"
 ---
-# <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Azure Machine Learning következtetési környezet biztonságossá tétele virtuális hálózatokkal
+# <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Dedukciós Azure Machine Learning-környezet biztonságossá tétele virtuális hálózatokkal
 
 Ebből a cikkből megtudhatja, hogyan teheti biztonságossá a következtetési környezeteket Azure Machine Learning-beli virtuális hálózattal.
 
@@ -217,6 +217,9 @@ except:
 az ml computetarget create aks -n myaks --load-balancer-type InternalLoadBalancer
 ```
 
+> [!IMPORTANT]
+> A CLI-vel csak belső terheléselosztó használatával hozhat létre egy AK-fürtöt. Nincs az ml parancs egy meglévő fürt belső terheléselosztó használatára való frissítéséhez.
+
 További információ: az [ml computetarget Create AK](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-aks) Reference.
 
 ---
@@ -260,6 +263,9 @@ Ha egy virtuális hálózatban szeretné használni az ACI-t a munkaterületére
 
 2. Telepítse a modellt [AciWebservice.deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true)használatával, használja a `vnet_name` és a `subnet_name` paramétereket. Állítsa be ezeket a paramétereket a virtuális hálózat nevére és az alhálózatra, ahol engedélyezte a delegálást.
 
+## <a name="limit-outbound-connectivity-from-the-virtual-network"></a>A virtuális hálózat kimenő kapcsolatának korlátozása
+
+Ha nem szeretné az alapértelmezett kimenő szabályokat használni, és korlátozni szeretné a virtuális hálózat kimenő hozzáférését, engedélyeznie kell a Azure Container Registryhoz való hozzáférést. Győződjön meg például arról, hogy a hálózati biztonsági csoportok (NSG) olyan szabályt tartalmaznak, amely lehetővé teszi a __AzureContainerRegistry. RegionName__ szolgáltatáshoz való hozzáférést, ahol a (z) {RegionName} egy Azure-régió neve.
 
 ## <a name="next-steps"></a>Következő lépések
 

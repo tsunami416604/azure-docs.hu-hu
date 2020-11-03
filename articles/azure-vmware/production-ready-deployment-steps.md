@@ -3,12 +3,12 @@ title: Az Azure VMware-megoldás üzembe helyezésének megtervezése
 description: Ez a cikk egy Azure VMware-megoldás üzembe helyezési munkafolyamatát ismerteti.  A végeredmény egy olyan környezet, amely készen áll a virtuális gép (VM) létrehozására és áttelepítésére.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: e30692f26af786097f3cdb81690be617bfea0c79
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9b6d04e1e7a60bf812ca2b1e370c5075d306c432
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517361"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287058"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Az Azure VMware-megoldás üzembe helyezésének megtervezése
 
@@ -17,7 +17,7 @@ Ez a cikk az üzembe helyezés során használt adatok azonosításának és gy�
 Ennek a rövid útmutatónak a folyamatai a virtuális gépek (VM-EK) és a Migrálás létrehozására szolgáló, éles használatra kész környezetet eredményeznek. 
 
 >[!IMPORTANT]
->Az Azure VMware-megoldási erőforrás létrehozása előtt kövesse az [Azure VMware megoldás-erőforrás engedélyezése](enable-azure-vmware-solution.md) című cikket egy támogatási jegy elküldéséhez, hogy a csomópontok le legyenek foglalva. Miután a támogatási csapat megkapja a kérést, akár öt munkanapot is igénybe vesz, hogy erősítse meg a kérését, és lefoglalja a csomópontjait. Ha van egy meglévő Azure VMware-megoldás saját felhője, és több csomópontot szeretne lefoglalni, akkor ugyanezt a folyamatot kell megtennie. 
+>Az Azure VMware-megoldási erőforrás létrehozása előtt kövesse az [Azure VMware megoldás-erőforrás engedélyezése](enable-azure-vmware-solution.md) című cikket egy támogatási jegy elküldéséhez, hogy a gazdagépek le legyenek foglalva. Miután a támogatási csapat megkapja a kérést, akár öt munkanapot is igénybe vesz, hogy erősítse meg kérelmét, és foglalja le a gazdagépeket. Ha van egy meglévő Azure VMware-megoldás saját felhője, és több gazdagépet szeretne lefoglalni, akkor ugyanezt a folyamatot kell megtennie. 
 
 
 ## <a name="subscription"></a>Előfizetés
@@ -39,9 +39,9 @@ Azonosítsa az Azure VMware-megoldás üzembe helyezéséhez használni kívánt
 
 Adja meg az üzembe helyezés során használni kívánt erőforrás nevét.  Az erőforrás neve egy felhasználóbarát és leíró név, amelyben az Azure VMware-megoldás saját felhőjét adja meg.
 
-## <a name="size-nodes"></a>Csomópontok mérete
+## <a name="size-hosts"></a>Gazdagépek mérete
 
-Azonosítsa az Azure VMware-megoldás telepítésekor használni kívánt méretű csomópontokat.  A teljes listát az [Azure VMware megoldás privát felhők és fürtök](concepts-private-clouds-clusters.md#hosts) dokumentációjában találja.
+Azonosítsa az Azure VMware-megoldás telepítésekor használni kívánt gazdagépek méretét.  A teljes listát az [Azure VMware megoldás privát felhők és fürtök](concepts-private-clouds-clusters.md#hosts) dokumentációjában találja.
 
 ## <a name="number-of-hosts"></a>Gazdagépek száma
 
@@ -79,7 +79,7 @@ Ne feledje, hogy a létrehozott IP-szegmenseknek egyedinek kell lenniük az Azur
 
 **Példa:** 10.0.4.0/24
 
-:::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="Azonosítsa az IP-címek szegmensét" border="false":::     
+:::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="A virtuális gépek számítási feladataihoz tartozó IP-címek szegmensének azonosítása" border="false":::     
 
 ## <a name="optional-extend-networks"></a>Választható Hálózatok kiterjesztése
 
@@ -96,7 +96,7 @@ Azonosítson egy `/29` CIDR, amely a ExpressRoute Global REACH a társításhoz 
 
 **Példa:** 10.1.0.0/29
 
-:::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="Azonosítsa az IP-címek szegmensét" border="false":::
+:::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="ExpressRoute Global Reach-társítási hálózat azonosítása" border="false":::
 
 ## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Azure-Virtual Network az Azure VMware-megoldás csatlakoztatásához
 
@@ -119,7 +119,7 @@ Mindkét esetben dokumentálja, hogy mit szeretne tenni ebben a lépésben.
 >[!NOTE]
 >Ezt a virtuális hálózatot a helyszíni környezet és az Azure VMware-megoldás látja, ezért ügyeljen arra, hogy a virtuális hálózatban használt IP-szegmensek és alhálózatok ne fedjék át egymást.
 
-:::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="Azonosítsa az IP-címek szegmensét" border="false":::
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="Identitás – Azure Virtual Network az Azure VMware-megoldás csatlakoztatásához" border="false":::
 
 ## <a name="vmware-hcx-network-segments"></a>VMware HCX hálózati szegmensek
 
@@ -127,7 +127,7 @@ A VMware HCX egy olyan technológia, amely az Azure VMware megoldással együtt 
 
 [!INCLUDE [hcx-network-segments](includes/hcx-network-segments.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy összegyűjtötte és dokumentálta a szükséges információkat, folytassa a következő szakasszal, hogy létrehozza az Azure VMware-megoldás saját felhőjét.
 
 > [!div class="nextstepaction"]

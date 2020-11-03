@@ -12,12 +12,12 @@ ms.date: 10/21/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: efb3c80c9bcd4c4285db5c318aff6c81ce8db636
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e56748df2fb69ace4e9b8d9f6908bc8013176a19
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083388"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287807"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity platform Code Samples (v 2.0 végpont)
 
@@ -55,7 +55,8 @@ Az alábbi példák bemutatják a felhasználók bejelentkezési webalkalmazása
 
 | Platform | Csak a felhasználókhoz tartozó jelek | A felhasználók és a hívások jelei Microsoft Graph |
 | -------- | ------------------- | --------------------------------- |
-| ![Ez a képen a ASP.NET Core embléma látható](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [ASP.NET Core WebApp Signs-in Users oktatóanyag](https://aka.ms/aspnetcore-webapp-sign-in) | Ugyanaz a minta a [ASP.net Core Web App calls Microsoft Graph](https://aka.ms/aspnetcore-webapp-call-msgraph) fázisban |
+| ![Ez a képen a ASP.NET Core embléma látható](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [ASP.NET Core WebApp Signs-in Users oktatóanyag](https://aka.ms/aspnetcore-webapp-sign-in) | Ugyanaz a minta a [ASP.net Core Web App calls Microsoft Graph](https://aka.ms/aspnetcore-webapp-call-msgraph) fázisban</p>Speciális példa [a bejelentkezett felhasználó jogkivonat-gyorsítótárának elérésére a háttérben futó alkalmazások, API-k és szolgáltatások](https://github.com/Azure-Samples/ms-identity-dotnet-advanced-token-cache) segítségével |
+| ![Ez a képen a ASP.NET-keretrendszer emblémája látható](media/sample-v2-code/logo_NETframework.png)</p>ASP.NET Core | [AD FS az Azure ad Application Migration forgatókönyvét a fejlesztők](https://github.com/Azure-Samples/ms-identity-dotnet-adfs-to-aad) számára, hogy megtudja, hogyan lehet biztonságosan és biztonságosan migrálni az alkalmazásokat a Active Directory összevonási szolgáltatások (AD FS) (AD FS) szolgáltatással integrált Azure Active Directory (Azure ad) | |
 | ![Ez a képen a ASP.NET-keretrendszer emblémája látható](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET gyors útmutató](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [DotNet-WebApp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [DotNet-rendszergazda-korlátozott-hatókörök-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph – képzés – aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 | ![Ez a rendszerkép a Java-emblémát jeleníti meg](media/sample-v2-code/logo_java.png)  |                   | [MS-Identity-Java-WebApp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
 | ![Ez a képen a Python-embléma látható](media/sample-v2-code/logo_python.png)  | [MS-Identity-Python-lombik-WebApp-Authentication](https://github.com/Azure-Samples/ms-identity-python-flask-webapp-authentication) | [MS-Identity-Python-WebApp](https://github.com/Azure-Samples/ms-identity-python-webapp) |
@@ -67,7 +68,8 @@ Az alábbi példák olyan nyilvános ügyfélalkalmazások (asztali vagy mobil a
 
 | Ügyfélalkalmazás | Platform | Folyamat/támogatás | Hívások Microsoft Graph | ASP.NET Core webes API meghívása |
 | ------------------ | -------- |  ----------| ---------- | ------------------------- |
-| Asztali (WPF)      | ![Ez a rendszerkép a .NET/C# emblémát jeleníti meg](media/sample-v2-code/logo_NET.png) | [Engedélyezési kód](msal-authentication-flows.md#authorization-code)| [DotNet-Desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [DotNet-Native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi) |
+| Asztali oktatóanyag (.NET Core) – opcionálisan a következő használatával:</p>– a platformfüggetlen jogkivonat-gyorsítótár</p>– egyéni webes felhasználói felület | ![Ez a rendszerkép a .NET/C# emblémát jeleníti meg](media/sample-v2-code/logo_NETcore.png) | [Engedélyezési kód](msal-authentication-flows.md#authorization-code)| [MS-Identity-DotNet-Desktop-oktatóanyag](https://github.com/azure-samples/ms-identity-dotnet-desktop-tutorial) | |
+| Asztali (WPF)      | ![Ez a rendszerkép a .NET Desktop/C# emblémát jeleníti meg](media/sample-v2-code/logo_NET.png) | [Engedélyezési kód](msal-authentication-flows.md#authorization-code)| [DotNet-Desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [DotNet-Native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi) |
 | Asztal (konzol)   | ![A .NET/C# (asztali) emblémát megjelenítő rendszerkép](media/sample-v2-code/logo_NET.png) | [Integrált Windows-hitelesítés](msal-authentication-flows.md#integrated-windows-authentication) | [DotNet-IWA-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2) |  |
 | Asztal (konzol)   | ![Ez a rendszerkép a Java-emblémát jeleníti meg](media/sample-v2-code/logo_java.png) | [Integrált Windows-hitelesítés](msal-authentication-flows.md#integrated-windows-authentication) |[MS-Identity-Java-Desktop](https://github.com/Azure-Samples/ms-identity-java-desktop/) |  |
 | Asztal (konzol)   | ![Ez a .NET/C# (asztali) embléma](media/sample-v2-code/logo_NETcore.png) | [Felhasználónév/jelszó](msal-authentication-flows.md#usernamepassword) |[dotnetcore – v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) |  |
@@ -141,4 +143,4 @@ A Microsoft Graph API különböző használati mintáit bemutató [minták](htt
 
 ## <a name="see-also"></a>Lásd még
 
-[A Microsoft Graph API fogalma és referenciája](/graph/use-the-api?context=graph%2fapi%2fbeta&view=graph-rest-beta)
+[A Microsoft Graph API fogalma és referenciája](/graph/use-the-api?context=graph%2fapi%2fbeta&view=graph-rest-beta&preserve-view=true)

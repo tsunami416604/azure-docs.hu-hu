@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: c8d2304017a8fccd83c9c64559b8c5edf48481b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e8f1d2964f42c480026d13bed59921dd3f07610
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91604333"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286224"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault – hitelesítési alapok
 
@@ -24,8 +24,8 @@ Rendszergazdaként szigorúan szabályozhatja, hogy mely felhasználók és alka
 
 Ez a dokumentum azt feltételezi, hogy már ismeri a következő fogalmakat. Ha nem ismeri ezeket a fogalmakat, a továbblépés előtt kövesse a Súgó hivatkozásait.
 
-* Azure Active Directory [hivatkozás](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
-* Rendszerbiztonsági tag [hivatkozása](https://docs.microsoft.com/azure/key-vault/general/authentication#app-identity-and-security-principals)
+* Azure Active Directory [hivatkozás](../../active-directory/fundamentals/active-directory-whatis.md)
+* Rendszerbiztonsági tag [hivatkozása](./authentication.md#app-identity-and-security-principals)
 
 ## <a name="key-vault-configuration-steps-summary"></a>Key Vault konfigurációs lépések összegzése
 
@@ -42,8 +42,8 @@ Amikor egy felhasználó vagy alkalmazás a Key vaultnak küld egy kérést, a k
 Az alábbi dokumentációs hivatkozásokat követve megismerheti, hogyan regisztrálhat egy felhasználót vagy alkalmazást a Azure Active Directoryban.
 **Győződjön meg arról, hogy jelszót hoz létre a felhasználói regisztrációhoz, valamint az ügyfél titkos vagy ügyféltanúsítvány-alapú hitelesítő adatait az alkalmazásokhoz.**
 
-* Felhasználó regisztrálása Azure Active Directory [hivatkozásban](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory)
-* Alkalmazás regisztrálása Azure Active Directory [hivatkozásban](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)
+* Felhasználó regisztrálása Azure Active Directory [hivatkozásban](../../active-directory/fundamentals/add-users-azure-active-directory.md)
+* Alkalmazás regisztrálása Azure Active Directory [hivatkozásban](../../active-directory/develop/quickstart-register-app.md)
 
 ## <a name="assign-your-security-principal-a-role-in-azure-active-directory"></a>A rendszerbiztonsági tag szerepkör kiosztása Azure Active Directory
 
@@ -57,8 +57,8 @@ A Key Vault esetében ezek a szerepkör-hozzárendelések határozzák meg a ren
 >[!NOTE]
 > Ha Azure Active Directory bérlői szinten rendel hozzá egy szerepkör-hozzárendelést egy felhasználóhoz, ez az engedély a hozzárendelés hatókörén belül minden előfizetésre, erőforrás-csoportra és erőforrásra kiterjed. Ahhoz, hogy a legkevesebb jogosultsággal rendelkező rendszerbiztonsági tag legyen, részletesebben is elvégezheti ezt a szerepkör-hozzárendelést. Például hozzárendelhet egy felhasználót egy olvasói szerepkörhöz az előfizetés szintjén, és egy tulajdonosi szerepkört egyetlen kulcstartóhoz. Az előfizetés, az erőforráscsoport vagy a kulcstartó identitás-hozzáférés-kezelés (IAM) beállításainak megadásával részletesebben is elvégezheti a szerepkör-hozzárendelést.
 
-* További információ a Azure Active Directory roles [hivatkozásról](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
-* További információ a szerepkör [-hozzárendelések hozzárendeléséről](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) vagy eltávolításáról
+* További információ a Azure Active Directory roles [hivatkozásról](../../role-based-access-control/built-in-roles.md)
+* További információ a szerepkör [-hozzárendelések hozzárendeléséről](../../role-based-access-control/role-assignments-portal.md) vagy eltávolításáról
 
 ## <a name="configure-key-vault-access-policies-for-your-security-principal"></a>Key Vault-hozzáférési szabályzatok konfigurálása a rendszerbiztonsági tag számára
 
@@ -121,8 +121,8 @@ Key Vault a szerepkör-hozzárendelések olyan Azure beépített szerepkör-hozz
 
 Key Vault RBAC kapcsolatos további tudnivalókért tekintse meg a következő dokumentumokat:
 
-* Azure Key Vault RBAC [hivatkozás](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#management-plane-and-azure-rbac)
-* Azure Key Vault RBAC-szerepkörök (előzetes verzió) [hivatkozása](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-administrator-preview)
+* Azure Key Vault RBAC [hivatkozás](./secure-your-key-vault.md#management-plane-and-azure-rbac)
+* Azure Key Vault RBAC-szerepkörök (előzetes verzió) [hivatkozása](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview)
 
 ## <a name="configure-key-vault-firewall"></a>Key Vault tűzfal konfigurálása
 
@@ -132,9 +132,9 @@ A Key Vault-tűzfal engedélyezéséhez kattintson a hálózat fülre a Key Vaul
 
 * Adjon hozzá IPv4-címeket a Key Vault tűzfal engedélyezési listájához. Ez a beállítás a statikus IP-címmel rendelkező alkalmazások esetében ideális megoldás.
 
-* Adjon hozzá egy virtuális hálózatot a Key Vault-tűzfalhoz. Ez a beállítás olyan Azure-erőforrások esetében használható, amelyek dinamikus IP-címekkel rendelkeznek, például Virtual Machines. Azure-erőforrásokat adhat hozzá egy virtuális hálózathoz, és hozzáadhatja a virtuális hálózatot a Key Vault tűzfal engedélyezési listájához. Ez a beállítás egy szolgáltatási végpontot használ, amely a virtuális hálózaton belüli magánhálózati IP-cím. Ez egy további védelmi réteget biztosít, így a Key Vault és a virtuális hálózat közötti adatforgalom a nyilvános interneten keresztül irányítható. A szolgáltatási végpontról a következő dokumentációban olvashat bővebben. [hivatkozás](https://docs.microsoft.com/azure/key-vault/general/network-security)
+* Adjon hozzá egy virtuális hálózatot a Key Vault-tűzfalhoz. Ez a beállítás olyan Azure-erőforrások esetében használható, amelyek dinamikus IP-címekkel rendelkeznek, például Virtual Machines. Azure-erőforrásokat adhat hozzá egy virtuális hálózathoz, és hozzáadhatja a virtuális hálózatot a Key Vault tűzfal engedélyezési listájához. Ez a beállítás egy szolgáltatási végpontot használ, amely a virtuális hálózaton belüli magánhálózati IP-cím. Ez egy további védelmi réteget biztosít, így a Key Vault és a virtuális hálózat közötti adatforgalom a nyilvános interneten keresztül irányítható. A szolgáltatási végpontról a következő dokumentációban olvashat bővebben. [hivatkozás](./network-security.md)
 
-* Adjon hozzá egy privát kapcsolati kapcsolatot a kulcstartóhoz. Ez a lehetőség közvetlenül csatlakoztatja a virtuális hálózatot a Key Vault egy adott példányához, és így hatékonyan hozza létre a kulcstartót a virtuális hálózaton belül. A privát végpontok kulcstartóval való konfigurálásával kapcsolatos további tudnivalókért tekintse meg a következő [hivatkozást](https://docs.microsoft.com/azure/key-vault/general/private-link-service) :
+* Adjon hozzá egy privát kapcsolati kapcsolatot a kulcstartóhoz. Ez a lehetőség közvetlenül csatlakoztatja a virtuális hálózatot a Key Vault egy adott példányához, és így hatékonyan hozza létre a kulcstartót a virtuális hálózaton belül. A privát végpontok kulcstartóval való konfigurálásával kapcsolatos további tudnivalókért tekintse meg a következő [hivatkozást](./private-link-service.md) :
 
 ## <a name="test-your-service-principals-ability-to-access-key-vault"></a>Az egyszerű szolgáltatásnév hozzáférésének tesztelése
 
@@ -142,11 +142,11 @@ Ha követte a fenti lépéseket, a Key vaultból beállíthatók és beolvashat�
 
 ### <a name="authentication-process-for-users-examples"></a>Hitelesítési folyamat a felhasználók számára (példák)
 
-* A Key Vault használatához a felhasználók bejelentkezhetnek a Azure Portalba. [Key Vault portál rövid útmutatója](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)
+* A Key Vault használatához a felhasználók bejelentkezhetnek a Azure Portalba. [Key Vault portál rövid útmutatója](./quick-create-portal.md)
 
-* A felhasználók az Azure CLI használatával használhatják a Key vaultot. [Key Vault Azure CLI rövid útmutató](https://docs.microsoft.com/azure/key-vault/general/quick-create-cli)
+* A felhasználók az Azure CLI használatával használhatják a Key vaultot. [Key Vault Azure CLI rövid útmutató](./quick-create-cli.md)
 
-* A felhasználó a Azure PowerShell használatával használhatja a Key vaultot. [Key Vault Azure PowerShell gyors útmutató](https://docs.microsoft.com/azure/key-vault/general/quick-create-powershell)
+* A felhasználó a Azure PowerShell használatával használhatja a Key vaultot. [Key Vault Azure PowerShell gyors útmutató](./quick-create-powershell.md)
 
 ### <a name="azure-active-directory-authentication-process-for-applications-or-services-examples"></a>Alkalmazások és szolgáltatások hitelesítési folyamatának Azure Active Directory (példák)
 
@@ -156,7 +156,7 @@ Ha követte a fenti lépéseket, a Key vaultból beállíthatók és beolvashat�
 
 * Az Azure-erőforrások MSI-hitelesítéssel Azure Active Directory jogkivonat beszerzéséhez. 
 
-* További információ az MSI Authentication [hivatkozásról](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+* További információ az MSI Authentication [hivatkozásról](../../active-directory/managed-identities-azure-resources/overview.md)
 
 ### <a name="authentication-process-for-application-python-example"></a>Az alkalmazás hitelesítési folyamata (Python-példa)
 
@@ -196,4 +196,4 @@ if __name__ == "__main__":
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Key Vault-hitelesítés részletesebb megismeréséhez tekintse meg a következő dokumentumot. [Key Vault-hitelesítés](https://docs.microsoft.com/azure/key-vault/general/authentication)
+A Key Vault-hitelesítés részletesebb megismeréséhez tekintse meg a következő dokumentumot. [Key Vault-hitelesítés](./authentication.md)

@@ -4,21 +4,21 @@ description: Megtudhatja, hogyan konfigurálhatja és módosíthatja az alapért
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
+ms.date: 11/03/2020
 ms.author: tisande
-ms.openlocfilehash: d0ee7dc8890c228617eaeee8b1cdc72d2230458e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ede2e6b172c867a00f98c6b095381ad5a5f3a323
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93082963"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285755"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelési szabályzatai
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Az Azure Cosmos DB-ben minden tároló rendelkezik indexelési szabályzattal, amely meghatározza a tároló elemeinek indexelési módját. Az újonnan létrehozott tárolók alapértelmezett indexelési szabályzata az összes elem minden tulajdonságát indexeli, és minden sztringhez vagy számhoz tartományindexeket kényszerít ki. Ez lehetővé teszi a nagy lekérdezési teljesítményt anélkül, hogy az indexelést és az indexkezelést előre át kellene gondolni.
+Az Azure Cosmos DB-ben minden tároló rendelkezik indexelési szabályzattal, amely meghatározza a tároló elemeinek indexelési módját. Az újonnan létrehozott tárolók alapértelmezett indexelési szabályzata az összes elem minden tulajdonságát indexeli, és minden sztringhez vagy számhoz tartományindexeket kényszerít ki. Ez lehetővé teszi a jó lekérdezési teljesítmény elérését anélkül, hogy az indexelést és az indexelést előre kellene gondolni.
 
-Egyes esetekben előfordulhat, hogy felül szeretné bírálni ezt az automatikus viselkedést, hogy jobban megfeleljen az igényeinek. Az indexelési *mód* beállításával testre szabhatja a tároló indexelési házirendjét, és belefoglalhatja vagy kizárhatja a *Tulajdonságok elérési útját* .
+Egyes esetekben előfordulhat, hogy felül szeretné bírálni ezt az automatikus viselkedést, hogy jobban megfeleljen az igényeinek. Az indexelési *mód* beállításával testre szabhatja a tároló indexelési házirendjét, és belefoglalhatja vagy kizárhatja a *Tulajdonságok elérési útját*.
 
 > [!NOTE]
 > A cikkben ismertetett indexelési szabályzatok frissítésének módszere csak a Azure Cosmos DB SQL (Core) API-ra vonatkozik. Tudnivalók a [Azure Cosmos db API-MongoDB való](mongodb-indexing.md) indexeléséről
@@ -31,7 +31,7 @@ A Azure Cosmos DB két indexelési módot támogat:
 - **Nincs** : az indexelés le van tiltva a tárolón. Ez általában akkor használatos, ha egy tárolót tiszta kulcs-érték tárolóként használ a másodlagos indexek szükségessége nélkül. Emellett a tömeges műveletek teljesítményének javítására is használható. A tömeges műveletek befejezését követően az index mód beállítható Konzisztensre, majd a [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) a befejezésig figyelhető.
 
 > [!NOTE]
-> A Azure Cosmos DB a lusta indexelési módot is támogatja. A szakaszolt indexelés sokkal alacsonyabb prioritási szinttel végzi el az index frissítését, tehát akkor, amikor a motor nem végez semmilyen más munkát. Ez **inkonzisztens vagy hiányos** lekérdezési eredményekhez vezethet. Ha egy Cosmos-tároló lekérdezését tervezi, ne válassza a szakaszolt indexelést. 2020 júniusában bevezetett egy olyan változást, amely már nem teszi lehetővé az új tárolók lusta indexelési módba való beállítását. Ha a Azure Cosmos DB fiók már tartalmaz legalább egy olyan tárolót, amely lusta indexeléssel rendelkezik, akkor ez a fiók automatikusan mentesül a változás alól. Kivételt is igényelhet az [Azure-támogatással](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) való kapcsolatfelvételsel (kivéve, ha olyan [kiszolgáló](serverless.md) nélküli módban használ Azure Cosmos-fiókot, amely nem támogatja a lusta indexelést).
+> A Azure Cosmos DB a lusta indexelési módot is támogatja. A szakaszolt indexelés sokkal alacsonyabb prioritási szinttel végzi el az index frissítését, tehát akkor, amikor a motor nem végez semmilyen más munkát. Ez **inkonzisztens vagy hiányos** lekérdezési eredményekhez vezethet. Ha egy Cosmos-tároló lekérdezését tervezi, ne válassza a szakaszolt indexelést. Az új tárolók nem választhatnak lusta indexelést. A kivételt az [Azure támogatási szolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) kérheti le (kivéve, ha olyan [kiszolgáló](serverless.md) nélküli módban használ Azure Cosmos-fiókot, amely nem támogatja a lusta indexelést).
 
 Alapértelmezés szerint az indexelési házirend a következőre van beállítva: `automatic` . Ez úgy érhető el, `automatic` Ha a tulajdonságot az indexelési házirendben a értékre állítja `true` . Ennek a tulajdonságnak a beállításával `true` engedélyezheti, hogy az Azure CosmosDB automatikusan indexelje a dokumentumokat írásuk szerint.
 
@@ -74,7 +74,7 @@ Minden indexelési házirendnek tartalmaznia kell a gyökér elérési útját `
 - Adja meg a gyökér elérési útját az indexelni nem kívánt elérési utak szelektív kizárásához. Ez az ajánlott módszer, mivel lehetővé teszi, hogy Azure Cosmos DB proaktív módon indexelje a modellbe felvehető új tulajdonságokat.
 - Zárja ki a gyökér elérési útját, hogy szelektíven szerepeljenek az indexelni kívánt elérési utak.
 
-- A normál karaktereket tartalmazó elérési utak esetében: alfanumerikus karakterek és _ (aláhúzás), nem kell elmenekülnie az elérésiút-karakterláncot idézőjelek közé (például "/Path/?"). Más speciális karaktereket tartalmazó elérési utak esetén el kell kerülnie az elérésiút-karakterláncot az idézőjelek között (például: "/ \" path-ABC \" /?"). Ha az elérési úton speciális karaktereket vár, a biztonság érdekében minden elérési utat eljuthat. Funkcionálisan nem tesz különbséget, ha minden elérési utat és csak a speciális karaktereket tartalmazó útvonalat használ.
+- A normál karaktereket tartalmazó elérési utak esetében: alfanumerikus karakterek és _ (aláhúzás), nem kell elmenekülnie az elérésiút-karakterláncot idézőjelek közé (például "/Path/?"). Más speciális karaktereket tartalmazó elérési utak esetén el kell kerülnie az elérésiút-karakterláncot az idézőjelek között (például: "/ \" path-ABC \" /?"). Ha az elérési úton speciális karaktereket vár, a biztonság érdekében minden elérési utat eljuthat. Ez a művelet nem tesz különbséget, ha minden elérési utat és csak a speciális karaktereket tartalmazó útvonalat használ.
 
 - A System (rendszer `_etag` ) tulajdonság alapértelmezés szerint ki van zárva az indexelésből, kivéve, ha a ETAG hozzá lett adva a befoglalt útvonalhoz az indexeléshez.
 
@@ -102,7 +102,7 @@ Tekintse meg [ezt a szakaszt](how-to-manage-indexing-policy.md#indexing-policy-e
 
 Ha a belefoglalt elérési utak és a kizárt elérési utak ütköznek, a pontosabb elérési út elsőbbséget élvez.
 
-Íme egy példa:
+Például:
 
 **Belefoglalt elérési út** : `/food/ingredients/nutrition/*`
 
@@ -199,6 +199,7 @@ A következő szempontokat kell figyelembe venni összetett indexek létrehozás
 - Ha egy tulajdonság tartomány-szűrővel ( `>` ,,, `<` `<=` `>=` vagy `!=` ) rendelkezik, akkor ezt a tulajdonságot az összetett indexben kell megadni. Ha egy lekérdezés több tartományból álló szűrővel rendelkezik, nem fogja használni az összetett indexet.
 - Összetett index létrehozásakor, ha több szűrőkkel optimalizálja a lekérdezéseket, az `ORDER` összetett index nem lesz hatással az eredményekre. Ez a tulajdonság nem kötelező.
 - Ha nem definiál összetett indexet egy lekérdezéshez több tulajdonságra vonatkozó szűrőkkel, a lekérdezés továbbra is sikeres lesz. A lekérdezés RU-díja azonban egy összetett indexszel is csökkenthető.
+- A (például DARABSZÁM vagy összeg) összesítéssel rendelkező lekérdezések és a szűrők is kihasználhatják az összetett indexeket.
 
 Tekintse át az alábbi példákat, amelyekben összetett index van meghatározva a tulajdonságok neve, kora és időbélyeg:
 
@@ -206,6 +207,7 @@ Tekintse át az alábbi példákat, amelyekben összetett index van meghatározv
 | ----------------------- | -------------------------------- | -------------- |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c WHERE c.name = "John" AND c.age = 18``` | ```Yes```            |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c WHERE c.name = "John" AND c.age > 18```   | ```Yes```             |
+| ```(name ASC, age ASC)```   | ```SELECT COUNT(1) FROM c WHERE c.name = "John" AND c.age > 18```   | ```Yes```             |
 | ```(name DESC, age ASC)```    | ```SELECT * FROM c WHERE c.name = "John" AND c.age > 18``` | ```Yes```            |
 | ```(name ASC, age ASC)```     | ```SELECT * FROM c WHERE c.name != "John" AND c.age > 18``` | ```No```             |
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age = 18 AND c.timestamp > 123049923``` | ```Yes```            |
@@ -246,6 +248,7 @@ SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.time
 A következő szempontokat kell használni összetett indexek létrehozásához egy szűrővel és záradékkal rendelkező lekérdezés optimalizálásához `ORDER BY` :
 
 * Ha a lekérdezés a tulajdonságok alapján szűri, ezeket a záradékban elsőként kell szerepeltetni `ORDER BY` .
+* Ha a lekérdezés több tulajdonságra is szűr, az egyenlőségi szűrőknek a záradék első tulajdonságainak kell lenniük. `ORDER BY`
 * Ha nem definiál összetett indexet egy olyan lekérdezéshez, amely egy tulajdonságra vonatkozó szűrővel rendelkezik, és egy külön `ORDER BY` záradékot használ egy másik tulajdonság használatával, a lekérdezés továbbra is sikeres lesz. A lekérdezés RU-díja azonban egy összetett indexszel is csökkenthető, különösen akkor, ha a záradékban szereplő tulajdonság `ORDER BY` magas fokú.
 * Az összetett indexek `ORDER BY` több tulajdonsággal rendelkező lekérdezésekhez való létrehozásával, valamint a több tulajdonság szűrőit tartalmazó lekérdezésekkel kapcsolatos megfontolások továbbra is érvényesek.
 
@@ -253,6 +256,8 @@ A következő szempontokat kell használni összetett indexek létrehozásához 
 | **Összetett index**                      | **Példa `ORDER BY` lekérdezésre**                                  | **Támogatja az összetett index?** |
 | ---------------------------------------- | ------------------------------------------------------------ | --------------------------------- |
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.name ASC, c.timestamp ASC``` | `Yes` |
+| ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" AND c.timestamp > 1589840355 ORDER BY c.name ASC, c.timestamp ASC``` | `Yes` |
+| ```(timestamp ASC, name ASC)```          | ```SELECT * FROM c WHERE c.timestamp > 1589840355 AND c.name = "John" ORDER BY c.timestamp ASC, c.name ASC``` | `No` |
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp ASC, c.name ASC``` | `No`  |
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp ASC``` | ```No```   |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.age ASC, c.name ASC,c.timestamp ASC``` | `Yes` |
@@ -260,7 +265,7 @@ A következő szempontokat kell használni összetett indexek létrehozásához 
 
 ## <a name="modifying-the-indexing-policy"></a>Az indexelési szabályzat módosítása
 
-Egy tároló indexelési házirendjét bármikor frissítheti [a Azure Portal vagy a támogatott SDK-k egyikével](how-to-manage-indexing-policy.md). Az indexelési házirend frissítése elindítja a régi indexről az új verzióra történő átalakítást, amely online és helyben történik (így a művelet során nincs szükség további tárolóhelyre). A régi szabályzat indexét a rendszer hatékonyan átalakítja az új szabályzatra anélkül, hogy ez hatással lenne az írási rendelkezésre állásra, az olvasási rendelkezésre állásra vagy a tárolón kiosztott átviteli sebességre. Az index transzformáció egy aszinkron művelet, és a befejezéshez szükséges idő a kiépített átviteli sebességtől, az elemek számától és méretétől függ.
+Egy tároló indexelési házirendjét bármikor frissítheti [a Azure Portal vagy a támogatott SDK-k egyikével](how-to-manage-indexing-policy.md). Az indexelési házirend frissítése elindítja a régi indexről az új verzióra történő átalakítást, amely online és helyben történik (így a művelet során nincs szükség további tárolóhelyre). A régi indexelési házirendet a rendszer hatékonyan átalakítja az új szabályzatra anélkül, hogy ez hatással lenne az írási rendelkezésre állásra, az olvasási rendelkezésre állásra vagy a tárolón kiosztott átviteli sebességre. Az index transzformáció egy aszinkron művelet, és a befejezéshez szükséges idő a kiépített átviteli sebességtől, az elemek számától és méretétől függ.
 
 > [!IMPORTANT]
 > Az index transzformáció egy művelet, amely a [kérelmek egységeit](request-units.md)használja. Az index-átalakítás által felhasznált kérési egységek jelenleg nem számítanak fel díjat, ha [kiszolgáló](serverless.md) nélküli tárolókat használ. Ezek az adatkérési egységek a kiszolgáló nélküli, általánosan elérhetővé válnak.
@@ -281,14 +286,10 @@ Az indexek eltávolításakor és az eldobott indexeken szűrt lekérdezések az
 
 Az élettartam [(TTL) szolgáltatás](time-to-live.md) használatához indexelés szükséges. Ez azt jelenti, hogy:
 
-- nem lehet aktiválni az ÉLETTARTAMot olyan tárolón, ahol az indexelési mód nincs értékre van állítva.
+- nem lehet aktiválni az ÉLETTARTAMot olyan tárolón, amelyen az indexelési mód be van állítva. `none`
 - az indexelési mód nem állítható be egyetlen olyan tárolón sem, amelyben az élettartam aktiválva van.
 
-Olyan esetekben, ahol nem szükséges a tulajdonság elérési útjának indexelése, de az élettartam megadása kötelező, az indexelési házirendet a következővel használhatja:
-
-- az indexelési mód konzisztens értékre van beállítva, és
-- nincs belefoglalt elérési út, és
-- `/*` az egyetlen kizárt elérési út.
+Olyan esetekben, ahol nem szükséges a tulajdonság elérési útjának indexelése, de az élettartam megadása kötelező, az indexelési módot használhat egy indexelési móddal `consistent` , amely nem tartalmaz belefoglalt elérési utat és `/*` az egyetlen kizárt elérési utat.
 
 ## <a name="next-steps"></a>Következő lépések
 

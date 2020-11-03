@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c4c8d1101bd83b580c010132dd70284b78569392
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 9c1a08161dafa500e9cab2038621c2329cfe6d27
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124221"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286892"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Bevezetés a Key Vault-tanúsítványok használatába
 A következő forgatókönyvek felvázolják az Key Vault tanúsítványkezelő szolgáltatásának számos elsődleges használatát, beleértve az első tanúsítvány a kulcstartóban való létrehozásához szükséges további lépéseket.
@@ -37,7 +37,7 @@ A tanúsítványok három egymáshoz kapcsolódó erőforrásból állnak, amely
 
 **1. lépés** – hitelesítésszolgáltatói szolgáltatók  
 -   Az adott vállalat számára az informatikai rendszergazdaként, PKI-rendszergazdaként vagy a hitelesítésszolgáltatókkal rendelkező fiókok kezelésével foglalkozó felhasználó (pl. A contoso) Key Vault tanúsítványok használatának előfeltétele.  
-    A következő hitelesítésszolgáltatók az aktuális partneri szolgáltatók Key Vault. További információt [itt](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate#partnered-ca-providers) talál   
+    A következő hitelesítésszolgáltatók az aktuális partneri szolgáltatók Key Vault. További információt [itt](./create-certificate.md#partnered-ca-providers) talál   
     -   A DigiCert-Key Vault OV TLS/SSL-tanúsítványokat kínál a DigiCert.  
     -   A GlobalSign-Key Vault OV TLS/SSL-tanúsítványokat kínál a GlobalSign.  
 
@@ -50,7 +50,7 @@ A tanúsítványok három egymáshoz kapcsolódó erőforrásból állnak, amely
     -   Szolgáltató  
     -   Hitelesítő adatok – HITELESÍTÉSSZOLGÁLTATÓI fiók hitelesítő adatai. Minden HITELESÍTÉSSZOLGÁLTATÓ saját konkrét adattal rendelkezik.  
 
-    A CA-szolgáltatókkal való fiókok létrehozásával kapcsolatos további információkért tekintse meg a kapcsolódó bejegyzést a [Key Vault blogon](https://aka.ms/kvcertsblog).  
+    A CA-szolgáltatókkal való fiókok létrehozásával kapcsolatos további információkért tekintse meg a kapcsolódó bejegyzést a [Key Vault blogon](/archive/blogs/kv/manage-certificates-via-azure-key-vault).  
 
 **3,1. lépés** – [tanúsítvány-névjegyek](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) beállítása értesítésekhez. Ez a Key Vault felhasználó kapcsolattartója. A Key Vault nem kényszeríti ki ezt a lépést.  
 
@@ -82,7 +82,7 @@ Megjegyzés: Ez a folyamat az 3,1-es lépéssel egy egyszeri művelet.
       -   A létrehozás késleltetése miatt elindítható egy megszakítási művelet. Előfordulhat, hogy a Mégse nem érvényes.  
 
 ### <a name="network-security-and-access-policies-associated-with-integrated-ca"></a>Integrált HITELESÍTÉSSZOLGÁLTATÓhoz társított hálózati biztonsági és hozzáférési szabályzatok
-Key Vault a szolgáltatás kérelmeket küld a CA-nak (kimenő forgalom). Ezért teljes mértékben kompatibilis a tűzfallal kompatibilis kulcstartókkal. A Key Vault nem oszt meg hozzáférési házirendeket a HITELESÍTÉSSZOLGÁLTATÓval. A HITELESÍTÉSSZOLGÁLTATÓT úgy kell konfigurálni, hogy egymástól függetlenül fogadja az aláírási kéréseket. [Útmutató a megbízható HITELESÍTÉSSZOLGÁLTATÓ integrálásához](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)
+Key Vault a szolgáltatás kérelmeket küld a CA-nak (kimenő forgalom). Ezért teljes mértékben kompatibilis a tűzfallal kompatibilis kulcstartókkal. A Key Vault nem oszt meg hozzáférési házirendeket a HITELESÍTÉSSZOLGÁLTATÓval. A HITELESÍTÉSSZOLGÁLTATÓT úgy kell konfigurálni, hogy egymástól függetlenül fogadja az aláírási kéréseket. [Útmutató a megbízható HITELESÍTÉSSZOLGÁLTATÓ integrálásához](./how-to-integrate-certificate-authority.md)
 
 ## <a name="import-a-certificate"></a>Tanúsítvány importálása  
  Másik lehetőségként – egy tanúsítvány importálható Key Vault – PFX vagy PEM rendszerbe.  

@@ -3,14 +3,14 @@ title: Azure Functions megbízható események feldolgozása
 description: Kerülje az Event hub-üzenetek hiányzó Azure Functions
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/01/2020
 ms.author: cshoe
-ms.openlocfilehash: 93a12d40e876293eb587ffba865a1d3b1f5f4983
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aaafe6d4080d85822ec5af9639c27fc8c55c2ce6
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86506026"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287227"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions megbízható események feldolgozása
 
@@ -50,7 +50,7 @@ A Azure Functions az Event hub-eseményeket az alábbi lépések során használ
 
 Ez a viselkedés a következő fontos pontokat mutatja be:
 
-- *A nem kezelt kivételek miatt elveszítheti az üzeneteket.* A kivételt okozó végrehajtások továbbra is a mutató előrehaladását eredményezik.
+- *A nem kezelt kivételek miatt elveszítheti az üzeneteket.* A kivételt okozó végrehajtások továbbra is a mutató előrehaladását eredményezik.  Az [újrapróbálkozási szabályzat](./functions-bindings-error-pages.md#retry-policies) beállítása késlelteti a mutatót a teljes újrapróbálkozási házirend kiértékelése után.
 - *A függvények legalább egyszeri kézbesítést garantálnak.* Előfordulhat, hogy a kódnak és a függő rendszereknek is [figyelembe kell venniük azt a tényt, hogy ugyanazt az üzenetet kétszer is el lehet fogadni](./functions-idempotent.md).
 
 ## <a name="handling-exceptions"></a>Kivételek kezelése
@@ -59,9 +59,9 @@ Ez a viselkedés a következő fontos pontokat mutatja be:
 
 ### <a name="retry-mechanisms-and-policies"></a>Újrapróbálkozási mechanizmusok és szabályzatok
 
-Bizonyos kivételek átmeneti jellegűek, és nem jelennek meg újra, amikor egy művelet később próbálkozik újra. Ezért az első lépés az, hogy mindig újra kell próbálkoznia a művelettel. Megismételheti az újrapróbálkozási szabályok feldolgozását, de olyan általános, hogy számos eszköz áll rendelkezésre. Ezen könyvtárak használatával robusztus újrapróbálkozási házirendeket határozhat meg, amelyek segítenek megőrizni a feldolgozási sorrendet is.
+Bizonyos kivételek átmeneti jellegűek, és nem jelennek meg újra, amikor egy művelet később próbálkozik újra. Ezért az első lépés az, hogy mindig újra kell próbálkoznia a művelettel.  A függvény végrehajtásán belül kihasználhatja a Function app [újrapróbálkozási szabályzatait](./functions-bindings-error-pages.md#retry-policies) vagy a szerzői újrapróbálkozási logikát.
 
-A hibák kezelésére szolgáló kódtárak bevezetése a függvények számára lehetővé teszi az alapszintű és a speciális újrapróbálkozási házirendek definiálását is. Létrehozhat például egy olyan szabályzatot, amely a következő szabályok által illusztrált munkafolyamatot követi:
+A függvények hibatűrési viselkedésének bemutatása lehetővé teszi az alapszintű és a speciális újrapróbálkozási házirendek definiálását. Létrehozhat például egy olyan szabályzatot, amely a következő szabályok által illusztrált munkafolyamatot követi:
 
 - Próbáljon meg háromszor beszúrni egy üzenetet (esetleg az újrapróbálkozások közötti késleltetéssel).
 - Ha az újrapróbálkozások végeredménye hibát jelez, adjon hozzá egy üzenetet egy várólistához, hogy a feldolgozás folytatható legyen az adatfolyamban.
@@ -69,10 +69,6 @@ A hibák kezelésére szolgáló kódtárak bevezetése a függvények számára
 
 > [!NOTE]
 > A [Polly](https://github.com/App-vNext/Polly) egy példa arra, hogy hogyan használható a rugalmasság és az átmeneti hibák kezelésére szolgáló függvénytár C#-alkalmazásokhoz.
-
-Az előzetesen teljesített C#-kódtárak használatakor a [kivételi szűrők](/dotnet/csharp/language-reference/keywords/try-catch) lehetővé teszik a kód futtatását, amikor kezeletlen kivétel történik.
-
-A kivételi szűrők használatát bemutató példák a [Azure WEBJOBS SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) -tárházban érhetők el.
 
 ## <a name="non-exception-errors"></a>Kivételt nem okozó hibák
 
@@ -125,7 +121,7 @@ Ennek a módszernek a használatával egyetlen üzenet sem vész el, az összes 
 - [Megbízható esemény-feldolgozási minták](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
 - [Azure tartós entitás áramkör-megszakítója](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkat találhat az alábbi forrásokban:
 

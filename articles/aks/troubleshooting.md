@@ -4,12 +4,12 @@ description: Útmutató az Azure Kubernetes szolgáltatás (ak) használata sor�
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: dcbfed4fc83b980b3e54a808406b8d27e1e6c919
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d15e381baf3abdb77f63b17cbd1d33b24f5d3321
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074413"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286775"
 ---
 # <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
 
@@ -113,7 +113,7 @@ Előfordulhat, hogy ez a hiba azért fordul elő, mert a címkéket az AK-fürt�
 Ez a hiba akkor fordul elő, ha a fürtök több okból is hibás állapotba kerülnek. Kövesse az alábbi lépéseket a fürt sikertelen állapotának feloldásához a korábban sikertelen művelet újbóli megkísérlése előtt:
 
 1. Amíg a fürt állapota nem áll fenn `failed` , `upgrade` a `scale` műveletek sikertelenek lesznek. A leggyakoribb gyökérszintű problémák és megoldások a következők:
-    * A nem **megfelelő számítási (CRP-) kvóta**skálázása. A megoldáshoz először a kvótán belüli, stabil cél állapotba kell állítani a fürtöt. Ezután kövesse az alábbi [lépéseket a számítási kvóta növelésének](../azure-portal/supportability/resource-manager-core-quotas-request.md) megkezdéséhez, mielőtt a kezdeti kvóta-korlátokon felül ismét fel kellene mérni.
+    * A nem **megfelelő számítási (CRP-) kvóta** skálázása. A megoldáshoz először a kvótán belüli, stabil cél állapotba kell állítani a fürtöt. Ezután kövesse az alábbi [lépéseket a számítási kvóta növelésének](../azure-portal/supportability/resource-manager-core-quotas-request.md) megkezdéséhez, mielőtt a kezdeti kvóta-korlátokon felül ismét fel kellene mérni.
     * Fürt méretezése speciális hálózatkezeléssel és nem **elegendő alhálózat (Hálózatkezelés) erőforrásokkal**. A megoldáshoz először a kvótán belüli, stabil cél állapotba kell állítani a fürtöt. Ezután kövesse az [alábbi lépéseket az erőforrás-kvóta növelésének](../azure-resource-manager/templates/error-resource-quota.md#solution) megkezdéséhez, mielőtt a kezdeti kvóta-korlátokon felül ismét fel kellene mérni a skálázást.
 2. Miután megoldotta a frissítési hiba kiváltó okát, a fürtnek sikeres állapotban kell lennie. A sikeres állapot ellenőrzése után próbálja megismételni az eredeti műveletet.
 
@@ -154,10 +154,10 @@ A megfelelő dokumentum lépéseinek *megkezdése előtt* kövesse az AK-fürt m
 Az elnevezési korlátozásokat az Azure platform és az AK is implementálja. Ha egy erőforrás neve vagy paramétere megszakítja az egyik ilyen korlátozást, a rendszer hibaüzenetet küld, amely megkéri, hogy adjon meg egy másik bemenetet. A következő közös elnevezési irányelvek érvényesek:
 
 * A fürt nevének 1-63 karakterből kell állnia. Az egyetlen megengedett karakter betű, szám, kötőjel és aláhúzás. Az első és az utolsó karakternek betűnek vagy számnak kell lennie.
-* Az AK-csomópont/*MC_* erőforráscsoport neve kombinálja az erőforráscsoport nevét és az erőforrás nevét. Az automatikusan generált szintaxisának `MC_resourceGroupName_resourceName_AzureRegion` nem lehet nagyobb, mint 80 karakter. Ha szükséges, csökkentse az erőforráscsoport-név vagy az AK-fürt nevének hosszát. [A csomópont-erőforráscsoport nevét is testreszabhatja](cluster-configuration.md#custom-resource-group-name)
+* Az AK-csomópont/ *MC_* erőforráscsoport neve kombinálja az erőforráscsoport nevét és az erőforrás nevét. Az automatikusan generált szintaxisának `MC_resourceGroupName_resourceName_AzureRegion` nem lehet nagyobb, mint 80 karakter. Ha szükséges, csökkentse az erőforráscsoport-név vagy az AK-fürt nevének hosszát. [A csomópont-erőforráscsoport nevét is testreszabhatja](cluster-configuration.md#custom-resource-group-name)
 * A *dnsPrefix* alfanumerikus értékekkel kell kezdődnie és végződnie, és 1-54 karakter közöttinek kell lennie. Az érvényes karakterek alfanumerikus értékeket és kötőjeleket (-) tartalmazhatnak. A *dnsPrefix* nem tartalmazhat speciális karaktereket, például pontot (.).
 * Az AK-csomópontok készletének neve csak kisbetűket tartalmazhat, és 1-11 karakter hosszúnak kell lennie a Linux-csomópontok és a 1-6 karakter Windows-csomópontok számára A névnek betűvel kell kezdődnie, és csak betűket és számokat tartalmazhat.
-* A Linux-csomópontok rendszergazdai felhasználónevét beállító rendszergazda *-username*betűvel kell kezdődnie, és csak betűket, számokat, kötőjeleket és aláhúzásokat tartalmazhat, és legfeljebb 64 karakter hosszú lehet.
+* A Linux-csomópontok rendszergazdai felhasználónevét beállító rendszergazda *-username* betűvel kell kezdődnie, és csak betűket, számokat, kötőjeleket és aláhúzásokat tartalmazhat, és legfeljebb 64 karakter hosszú lehet.
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Hibák léptek fel a fürt létrehozása, frissítése, skálázása, törlése vagy frissítése során, ez a művelet nem engedélyezett, mert folyamatban van egy másik művelet.
 
@@ -167,7 +167,7 @@ A fürt műveletei korlátozottak, ha egy korábbi művelet még folyamatban van
 
 A fürt állapotának kimenete alapján:
 
-* Ha a fürt bármilyen kiépítési állapotban van, amely nem *sikeres* vagy *sikertelen volt*, várjon, amíg a művelet (*frissítés/frissítés/létrehozás/méretezés/törlés/áttelepítés*) be nem fejeződik. Az előző művelet befejeződése után próbálja megismételni a fürt legújabb műveletét.
+* Ha a fürt bármilyen kiépítési állapotban van, amely nem *sikeres* vagy *sikertelen volt* , várjon, amíg a művelet ( *frissítés/frissítés/létrehozás/méretezés/törlés/áttelepítés* ) be nem fejeződik. Az előző művelet befejeződése után próbálja megismételni a fürt legújabb műveletét.
 
 * Ha a fürtön sikertelen volt a frissítés, kövesse az itt leírt lépéseket, [amelyek a fürt hibás állapotba kerülnek, és a frissítés vagy a skálázás nem fog működni, amíg meg nem történik a javítás](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed).
 
@@ -198,7 +198,7 @@ Ha a kimenő forgalmat egy AK-fürtből korlátozza, akkor szükség van a [szü
 
 Győződjön meg arról, hogy a beállítások nem ütköznek a szükséges vagy választható választható kimenő portok/hálózati szabályok, valamint a teljes tartománynév/alkalmazás szabályaival.
 
-## <a name="im-receiving-429---too-many-requests-errors"></a>"429 – túl sok kérés" hibaüzenetet kapok 
+## <a name="im-receiving-429---too-many-requests-errors"></a>"429 – túl sok kérés" hibaüzenetet kapok
 
 Ha egy Azure-beli kubernetes-fürt (ak vagy nem) gyakran vertikális fel-vagy leskálázást végez, vagy a fürt automéretezőjét (CA) használja, akkor ezek a műveletek nagy számú HTTP-hívást eredményeznek, amelyekkel túllépi a meghibásodáshoz rendelt előfizetési kvótát. A hibák így néznek ki:
 
@@ -213,6 +213,12 @@ Az AK mérnöki csapatának átirányításával gondoskodhat arról, hogy legal
 Ezek a szabályozási hibák az előfizetés szintjén mérhetők, de a következő esetben is előfordulhatnak:
 - Harmadik féltől származó alkalmazások kapnak kérelmeket (például alkalmazások figyelése stb...). Az ajánlott megoldás a hívások gyakoriságának csökkentése.
 - A VMSS sok AK-alapú fürt/nodepools létezik. A szokásos javaslat az, hogy egy adott előfizetésben kevesebb mint 20-30 fürttel rendelkezzen.
+
+## <a name="my-clusters-provisioning-status-changed-from-ready-to-failed-with-or-without-me-performing-an-operation-what-should-i-do"></a>A fürt kiépítési állapota úgy módosult, hogy nem sikerült a művelet végrehajtása, vagy anélkül. Mit tegyek?
+
+Ha a fürt kiépítési állapota *készről* *sikertelenre* vált, vagy anélkül, hogy műveleteket hajt végre, de a fürtön lévő alkalmazások továbbra is futnak, ezt a problémát a szolgáltatás automatikusan feloldja, és az alkalmazásait nem kell érinteni.
+
+Ha a fürt kiépítési állapota sikertelen, vagy a fürtön futó alkalmazások *nem* működnek, [küldjön be egy támogatási kérést](https://azure.microsoft.com/support/options/#submit).
 
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Azure Storage-és AK-hibaelhárítás
@@ -250,7 +256,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 |--|:--:|
 | 1.10 | 1.10.2 vagy újabb |
 | 1,11 | 1.11.0 vagy újabb |
-| 1,12 és újabb verziók | N.A. |
+| 1,12 és újabb verziók | N/A |
 
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Hiba történt az UID és a GID beállításakor az Azure Disk mountOptions esetében
@@ -307,7 +313,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | 1.12 | 1.12.9 vagy újabb |
 | 1.13 | 1.13.6 vagy újabb |
 | 1,14 | 1.14.2 vagy újabb |
-| 1,15 és újabb verziók | N.A. |
+| 1,15 és újabb verziók | N/A |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont elavult lemezzel rendelkezik, enyhítheti a virtuális gépről a nem létező lemezek tömeges műveletként való leválasztásával. **A nem létező lemezek különálló leválasztása sikertelen lehet.**
 
@@ -326,7 +332,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | 1.12 | 1.12.10 vagy újabb |
 | 1.13 | 1.13.8 vagy újabb |
 | 1,14 | 1.14.4 vagy újabb |
-| 1,15 és újabb verziók | N.A. |
+| 1,15 és újabb verziók | N/A |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont meghibásodott állapotban van, a virtuális gép állapotának manuális frissítésével csökkentheti a következő lépések egyikét:
 
@@ -359,7 +365,7 @@ Ajánlott beállítások:
 | 1.12.0 – 1.12.1 | 0755 |
 | 1.12.2 és újabb verziók | 0777 |
 
-A csatlakoztatási beállítások a tárolási osztály objektumban adhatók meg. A következő példa a *0777*-es készletet állítja be:
+A csatlakoztatási beállítások a tárolási osztály objektumban adhatók meg. A következő példa a *0777* -es készletet állítja be:
 
 ```yaml
 kind: StorageClass
@@ -382,7 +388,7 @@ parameters:
 Néhány további hasznos *mountOptions* -beállítás:
 
 * a *mfsymlinks* Azure Files csatlakoztatási (CIFS) támogatást nyújt a szimbolikus hivatkozások támogatásához
-* a *nobrl* megakadályozza a bájtos tartomány zárolási kérelmeinek küldését a kiszolgálónak. Erre a beállításra akkor van szükség, ha a CIFS-stílusú kötelező bájtos tartományba tartozó zárolásokkal rendelkező alkalmazások számára szükséges. A legtöbb CIFS-kiszolgáló még nem támogatja a tanácsadói bájtok tartományában lévő zárolások igénylését. Ha nem használ *nobrl*-t, akkor a CIFS-stílusú kötelező bájt-tartomány zárolásával megszakított alkalmazások a következőhöz hasonló hibaüzeneteket eredményezhetnek:
+* a *nobrl* megakadályozza a bájtos tartomány zárolási kérelmeinek küldését a kiszolgálónak. Erre a beállításra akkor van szükség, ha a CIFS-stílusú kötelező bájtos tartományba tartozó zárolásokkal rendelkező alkalmazások számára szükséges. A legtöbb CIFS-kiszolgáló még nem támogatja a tanácsadói bájtok tartományában lévő zárolások igénylését. Ha nem használ *nobrl* -t, akkor a CIFS-stílusú kötelező bájt-tartomány zárolásával megszakított alkalmazások a következőhöz hasonló hibaüzeneteket eredményezhetnek:
     ```console
     Error: SQLITE_BUSY: database is locked
     ```
@@ -415,7 +421,7 @@ Ha engedélyezi a *hozzáférést a kiválasztott hálózatról* egy olyan Stora
 persistentvolume-controller (combined from similar events): Failed to provision volume with StorageClass "azurefile": failed to create share kubernetes-dynamic-pvc-xxx in account xxx: failed to create file share, err: storage: service returned error: StatusCode=403, ErrorCode=AuthorizationFailure, ErrorMessage=This request is not authorized to perform this operation.
 ```
 
-Ez a hiba azért van, mert a Kubernetes *persistentvolume-vezérlő* nem a kiválasztott *hálózatról való hozzáférés engedélyezése*beállításnál kiválasztott hálózaton van.
+Ez a hiba azért van, mert a Kubernetes *persistentvolume-vezérlő* nem a kiválasztott *hálózatról való hozzáférés engedélyezése* beállításnál kiválasztott hálózaton van.
 
 A probléma megoldásához a Azure Files használatával történő [statikus kiépítés](azure-files-volume.md)segítségével csökkentheti a problémát.
 
@@ -435,7 +441,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 |--|:--:|
 | 1.12 | 1.12.6 vagy újabb |
 | 1.13 | 1.13.4 vagy újabb |
-| 1,14 és újabb verziók | N.A. |
+| 1,14 és újabb verziók | N/A |
 
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Azure Files csatlakoztatás sikertelen, mert a Storage-fiók kulcsa módosult
 
@@ -470,11 +476,8 @@ Ennek a hibának az az oka, hogy egy felsőbb rétegbeli fürthöz tartozó auto
 
 ### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>Lassú lemez-melléklet, a GetAzureDiskLun 10 – 15 percet vesz igénybe, és hibaüzenetet kap
 
-A 1.15.0- **nál régebbi**Kubernetes-verziók esetén hibaüzenet jelenhet meg, például a **WaitForAttach nem találja a lemez LUN**elemét.  A probléma megkerülő megoldásához várjon körülbelül 15 percet, majd próbálkozzon újra.
+A 1.15.0- **nál régebbi** Kubernetes-verziók esetén hibaüzenet jelenhet meg, például a **WaitForAttach nem találja a lemez LUN** elemét.  A probléma megkerülő megoldásához várjon körülbelül 15 percet, majd próbálkozzon újra.
 
-<!-- LINKS - internal -->
-[view-master-logs]: view-master-logs.md
-[cluster-autoscaler]: cluster-autoscaler.md
 
 ### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>Miért nem sikerül a Kubernetes 1,16-es frissítés, ha kubernetes.io előtaggal rendelkező csomópont-címkéket használ
 
@@ -487,3 +490,9 @@ Ennek eredményeképpen a következők enyhítésére van lehetőség:
 3. A régebbi nodepool törlése
 
 Az AK vizsgálja a képességet, hogy az aktív címkéket nodepool a megoldás tökéletesítése érdekében.
+
+
+
+<!-- LINKS - internal -->
+[view-master-logs]: view-master-logs.md
+[cluster-autoscaler]: cluster-autoscaler.md

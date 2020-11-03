@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 155837802bd19ec1bb4e41484e229e1f5daef658
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1437ef8675d0ddc96eb7fc641b3663b66c3ea11b
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125252"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285234"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Az Azure Key Vault hozzáférési szabályzatával kapcsolatos problémák elhárítása
 
@@ -20,11 +20,11 @@ ms.locfileid: "92125252"
 
 ### <a name="how-can-i-identify-how-and-when-key-vaults-are-accessed"></a>Hogyan állapítható meg, hogyan és mikor érhetők el a kulcstartók?
 
-Egy vagy több kulcstartó létrehozása után valószínűleg figyelnie kell a kulcstartók elérésének módját és időpontját. A figyelést a Azure Key Vault naplózásának engedélyezésével végezheti el, részletes útmutató a naplózás engedélyezéséhez. [További információ](https://docs.microsoft.com/azure/key-vault/general/logging):.
+Egy vagy több kulcstartó létrehozása után valószínűleg figyelnie kell a kulcstartók elérésének módját és időpontját. A figyelést a Azure Key Vault naplózásának engedélyezésével végezheti el, részletes útmutató a naplózás engedélyezéséhez. [További információ](./logging.md):.
 
 ### <a name="how-can-i-monitor-vault-availability-service-latency-periods-or-other-performance-metrics-for-key-vault"></a>Hogyan figyelhető meg a tár rendelkezésre állása, a szolgáltatási késési időszakok vagy más teljesítménymutatók a Key Vault esetében?
 
-A szolgáltatás skálázásának megkezdése után a Key vaultba küldött kérések száma megemelkedik. Az ilyen igénynek lehetősége van arra, hogy növelje a kérések késését és a szélsőséges esetekben, hogy a kérések szabályozása megtörténjen, ami hatással lesz a szolgáltatás teljesítményére. Nyomon követheti a Key Vault teljesítmény-metrikáit, és riasztást kaphat a meghatározott küszöbértékekről, a figyelés konfigurálásának lépésenkénti útmutatójában bővebben [olvashat](https://docs.microsoft.com/azure/key-vault/general/alert).
+A szolgáltatás skálázásának megkezdése után a Key vaultba küldött kérések száma megemelkedik. Az ilyen igénynek lehetősége van arra, hogy növelje a kérések késését és a szélsőséges esetekben, hogy a kérések szabályozása megtörténjen, ami hatással lesz a szolgáltatás teljesítményére. Nyomon követheti a Key Vault teljesítmény-metrikáit, és riasztást kaphat a meghatározott küszöbértékekről, a figyelés konfigurálásának lépésenkénti útmutatójában bővebben [olvashat](./alert.md).
 
 ### <a name="i-am-not-able-to-modify-access-policy-how-can-it-be-enabled"></a>Nem tudom módosítani a hozzáférési szabályzatot, hogyan lehet engedélyezni?
 A felhasználónak elegendő HRE engedéllyel kell rendelkeznie a hozzáférési szabályzat módosításához. Ebben az esetben a felhasználónak magasabb közreműködő szerepkörrel kell rendelkeznie.
@@ -53,7 +53,7 @@ Az alkalmazásnak szüksége van legalább egy, a Key vaulthoz hozzárendelt ide
 
 Jelenleg Key Vault az újratelepítéskor a rendszer törli az összes hozzáférési házirendet a Key Vault, és azokat a ARM-sablon hozzáférési házirendjével helyettesíti. Nincs növekményes beállítás Key Vault hozzáférési házirendekhez. A hozzáférési szabályzatok Key Vaultban való megőrzéséhez olvassa el a meglévő hozzáférési szabályzatokat a Key Vault, és töltse ki az ARM-sablont ezekkel a szabályzatokkal a hozzáférési kimaradások elkerülése érdekében.
 
-Egy másik lehetőség, amely segíthet ehhez a forgatókönyvhöz, hogy RBAC-szerepköröket használjon a hozzáférési házirendek alternatívájaként. A RBAC segítségével újra üzembe helyezheti a kulcstartót anélkül, hogy újra megadta a szabályzatot. Ebben a megoldásban [itt](https://docs.microsoft.com/azure/key-vault/general/rbac-guide)találhat további tudnivalókat.
+Egy másik lehetőség, amely segíthet ehhez a forgatókönyvhöz, hogy RBAC-szerepköröket használjon a hozzáférési házirendek alternatívájaként. A RBAC segítségével újra üzembe helyezheti a kulcstartót anélkül, hogy újra megadta a szabályzatot. Ebben a megoldásban [itt](./rbac-guide.md)találhat további tudnivalókat.
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>A következő típusú hibák ajánlott hibaelhárítási lépései
 

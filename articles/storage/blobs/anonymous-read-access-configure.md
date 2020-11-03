@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/09/2020
+ms.date: 10/22/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 7248dff25af4693f7f264c8cbf42236612dddda0
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 7ea0cbfb8ddfa2991e2a362bcb321418428cb16b
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931070"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288125"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Névtelen nyilvános olvasási hozzáférés konfigurálása a tárolók és a Blobok számára
 
@@ -51,19 +51,16 @@ A Storage-fiókhoz való nyilvános hozzáférés letiltása megakadályozza a f
 > [!IMPORTANT]
 > A Storage-fiókhoz való nyilvános hozzáférés letiltása felülbírálja a Storage-fiókban lévő összes tároló nyilvános hozzáférési beállításait. Ha a Storage-fiókhoz való nyilvános hozzáférés nem engedélyezett, a fiókra vonatkozó jövőbeli névtelen kérelmek sikertelenek lesznek. A beállítás módosítása előtt ügyeljen arra, hogy Ismerje meg, hogy milyen hatással van az ügyfélalkalmazások névtelenül a Storage-fiókban lévő adatokhoz való hozzáférésre. További információ: a [Névtelen nyilvános olvasási hozzáférés megakadályozása a tárolók és a Blobok](anonymous-read-access-prevent.md)számára.
 
-A Storage-fiókok nyilvános hozzáférésének engedélyezéséhez vagy letiltásához konfigurálja a fiók **AllowBlobPublicAccess** tulajdonságát. Ez a tulajdonság minden olyan Storage-fiókhoz elérhető, amely a Azure Resource Manager telepítési modellel lett létrehozva. További információ: a [Storage-fiók áttekintése](../common/storage-account-overview.md).
+A Storage-fiókok nyilvános hozzáférésének engedélyezéséhez vagy letiltásához konfigurálja a fiók **AllowBlobPublicAccess** tulajdonságát. Ez a tulajdonság minden olyan Storage-fiókhoz elérhető, amely az Azure nyilvános felhőben vagy Azure Government-felhőben Azure Resource Manager üzembe helyezési modellel lett létrehozva. További információ: a [Storage-fiók áttekintése](../common/storage-account-overview.md).
 
-> [!NOTE]
-> A **AllowBlobPublicAccess** tulajdonság alapértelmezés szerint nincs beállítva, és nem ad vissza értéket, amíg explicit módon be nem állítja azt. A Storage-fiók engedélyezi a nyilvános hozzáférést, ha a tulajdonság értéke **Null** vagy **igaz**.
->
-> A **AllowBlobPublicAccess** tulajdonság az Azure nyilvános felhőben és Azure Government felhőkben található összes Storage-fiókhoz elérhető.
+A **AllowBlobPublicAccess** tulajdonság alapértelmezés szerint nincs beállítva, és nem ad vissza értéket, amíg explicit módon be nem állítja azt. A Storage-fiók engedélyezi a nyilvános hozzáférést, ha a tulajdonság értéke **Null** vagy **igaz**.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 A Azure Portal a Storage-fiókok nyilvános hozzáférésének engedélyezéséhez vagy letiltásához kövesse az alábbi lépéseket:
 
 1. Az Azure Portalon nyissa meg a tárfiókot.
-1. Keresse meg a **konfigurációs** beállítást a **Beállítások**területen.
+1. Keresse meg a **konfigurációs** beállítást a **Beállítások** területen.
 1. A **blob nyilvános hozzáférésének** beállítása **engedélyezett** vagy **Letiltva**.
 
     :::image type="content" source="media/anonymous-read-access-configure/blob-public-access-portal.png" alt-text="A fiókhoz tartozó nyilvános blob-hozzáférés engedélyezését és letiltását bemutató képernyőkép":::
@@ -72,7 +69,7 @@ A Azure Portal a Storage-fiókok nyilvános hozzáférésének engedélyezéséh
 
 Ha engedélyezni vagy engedélyezni szeretné a nyilvános hozzáférést egy Storage-fiókhoz a PowerShell-lel, telepítse [Azure PowerShell 4.4.0](https://www.powershellgallery.com/packages/Az/4.4.0) vagy újabb verzióját. Ezután konfigurálja a **AllowBlobPublicAccess** tulajdonságot egy új vagy meglévő Storage-fiókhoz.
 
-A következő példa létrehoz egy Storage-fiókot, és explicit módon beállítja a **AllowBlobPublicAccess** tulajdonságot **igaz**értékre. Ezután frissíti a Storage-fiókot, hogy **hamis**értékre állítsa a **AllowBlobPublicAccess** tulajdonságot. A példa az egyes esetekben a tulajdonság értékét is lekéri. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
+A következő példa létrehoz egy Storage-fiókot, és explicit módon beállítja a **AllowBlobPublicAccess** tulajdonságot **igaz** értékre. Ezután frissíti a Storage-fiókot, hogy **hamis** értékre állítsa a **AllowBlobPublicAccess** tulajdonságot. A példa az egyes esetekben a tulajdonság értékét is lekéri. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
 
 ```powershell
 $rgName = "<resource-group>"
@@ -102,7 +99,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName `
 
 Ha engedélyezni vagy letiltani szeretné a nyilvános hozzáférést egy Storage-fiókhoz az Azure CLI-vel, telepítse az Azure CLI Version 2.9.0 vagy újabb verzióját. További információ: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ezután konfigurálja a **allowBlobPublicAccess** tulajdonságot egy új vagy meglévő Storage-fiókhoz.
 
-A következő példa létrehoz egy Storage-fiókot, és explicit módon beállítja a **allowBlobPublicAccess** tulajdonságot **igaz**értékre. Ezután frissíti a Storage-fiókot, hogy **hamis**értékre állítsa a **allowBlobPublicAccess** tulajdonságot. A példa az egyes esetekben a tulajdonság értékét is lekéri. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
+A következő példa létrehoz egy Storage-fiókot, és explicit módon beállítja a **allowBlobPublicAccess** tulajdonságot **igaz** értékre. Ezután frissíti a Storage-fiókot, hogy **hamis** értékre állítsa a **allowBlobPublicAccess** tulajdonságot. A példa az egyes esetekben a tulajdonság értékét is lekéri. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
 
 ```azurecli-interactive
 az storage account create \
@@ -134,10 +131,10 @@ az storage account show \
 
 Egy sablonhoz tartozó Storage-fiók nyilvános hozzáférésének engedélyezéséhez vagy letiltásához hozzon létre egy olyan sablont, amely a **AllowBlobPublicAccess** tulajdonság értéke **true** vagy **false**. A következő lépések azt ismertetik, hogyan lehet sablont létrehozni a Azure Portalban.
 
-1. A Azure Portal válassza az **erőforrás létrehozása**lehetőséget.
-1. A **Keresés a piactéren**mezőbe írja be a **sablon központi telepítése**kifejezést, majd nyomja le az **ENTER**billentyűt.
-1. Válassza **template Deployment (üzembe helyezés egyéni sablonok használatával) (előzetes verzió)**, válassza a **Létrehozás**lehetőséget, majd **a szerkesztőben válassza a saját sablon**létrehozása lehetőséget.
-1. A sablon szerkesztőjében illessze be a következő JSON-t egy új fiók létrehozásához, és állítsa a **AllowBlobPublicAccess** tulajdonságot **true** vagy **false**értékre. Ne felejtse el lecserélni a helyőrzőket a saját értékeire a szögletes zárójelben.
+1. A Azure Portal válassza az **erőforrás létrehozása** lehetőséget.
+1. A **Keresés a piactéren** mezőbe írja be a **sablon központi telepítése** kifejezést, majd nyomja le az **ENTER** billentyűt.
+1. Válassza **template Deployment (üzembe helyezés egyéni sablonok használatával) (előzetes verzió)** , válassza a **Létrehozás** lehetőséget, majd **a szerkesztőben válassza a saját sablon** létrehozása lehetőséget.
+1. A sablon szerkesztőjében illessze be a következő JSON-t egy új fiók létrehozásához, és állítsa a **AllowBlobPublicAccess** tulajdonságot **true** vagy **false** értékre. Ne felejtse el lecserélni a helyőrzőket a saját értékeire a szögletes zárójelben.
 
     ```json
     {
@@ -198,7 +195,7 @@ Az egyes Blobok nyilvános hozzáférési szintje nem módosítható. A nyilván
 A Azure Portal egy vagy több meglévő tárolójának nyilvános hozzáférési szintjének frissítéséhez kövesse az alábbi lépéseket:
 
 1. A Azure Portalban navigáljon a Storage-fiók áttekintéséhez.
-1. A menü panel **blob Service** területén válassza a **tárolók**lehetőséget.
+1. A menü panel **blob Service** területén válassza a **tárolók** lehetőséget.
 1. Válassza ki azokat a tárolókat, amelyekhez a nyilvános hozzáférési szintet be szeretné állítani.
 1. A **hozzáférési szint módosítása** gomb használatával jelenítse meg a nyilvános hozzáférési beállításokat.
 1. Válassza ki a **nyilvános hozzáférési szint** legördülő menüből a kívánt nyilvános hozzáférési szintet, majd az OK gombra kattintva alkalmazza a módosítást a kijelölt tárolók elemre.
@@ -207,7 +204,7 @@ A Azure Portal egy vagy több meglévő tárolójának nyilvános hozzáférési
 
 Ha a Storage-fiókhoz a nyilvános hozzáférés nem engedélyezett, a tároló nyilvános hozzáférési szintje nem állítható be. Ha megkísérli a tároló nyilvános hozzáférési szintjének beállítását, láthatja, hogy a beállítás le van tiltva, mert a fiókhoz a nyilvános hozzáférés nem engedélyezett.
 
-:::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="A fiókhoz tartozó nyilvános blob-hozzáférés engedélyezését és letiltását bemutató képernyőkép":::
+:::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="Képernyőfelvétel, amely azt mutatja, hogy a tároló nyilvános hozzáférési szintje le van tiltva, ha a nyilvános hozzáférés nem engedélyezett":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

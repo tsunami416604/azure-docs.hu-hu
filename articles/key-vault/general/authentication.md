@@ -7,12 +7,12 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 3ec831bada19aa8d3872440ba628ac06bc64f749
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3fdc9a9f99b239f68022067a5aedbc7e6e0d12a4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099419"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287508"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Hitelesítés az Azure Key Vaulttal
 
@@ -20,7 +20,7 @@ Azure Key Vault lehetővé teszi a titkok tárolását és a terjesztésük irá
 
 ## <a name="app-identity-and-security-principals"></a>Alkalmazás-identitás és rendszerbiztonsági tag
 
-A Key Vault-alapú hitelesítés az [Azure Active Directory (Azure ad)](/azure/active-directory/fundamentals/active-directory-whatis)szolgáltatással együtt működik, amely az adott **rendszerbiztonsági tag** identitásának hitelesítéséhez felelős.
+A Key Vault-alapú hitelesítés az [Azure Active Directory (Azure ad)](../../active-directory/fundamentals/active-directory-whatis.md)szolgáltatással együtt működik, amely az adott **rendszerbiztonsági tag** identitásának hitelesítéséhez felelős.
 
 A rendszerbiztonsági tag egy olyan objektum, amely az Azure-erőforrásokhoz hozzáférést kérő felhasználót, csoportot, szolgáltatást vagy alkalmazást jelöl. Az Azure egy egyedi **objektumazonosítót** rendel minden rendszerbiztonsági tag számára.
 
@@ -36,9 +36,9 @@ Alkalmazások esetében kétféleképpen szerezhet be egyszerű szolgáltatást:
 
     A felügyelt identitással az Azure belsőleg kezeli az alkalmazás egyszerű szolgáltatását, és automatikusan hitelesíti az alkalmazást más Azure-szolgáltatásokkal. A felügyelt identitás számos szolgáltatáshoz központilag telepített alkalmazásokhoz érhető el.
 
-    További információ: a [felügyelt identitás áttekintése](/azure/active-directory/managed-identities-azure-resources/overview). Tekintse meg a [felügyelt identitást támogató Azure-szolgáltatásokat](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)is, amelyek az adott szolgáltatások felügyelt identitásának engedélyezését írják le (például App Service, Azure Functions, Virtual Machines stb.).
+    További információ: a [felügyelt identitás áttekintése](../../active-directory/managed-identities-azure-resources/overview.md). Tekintse meg a [felügyelt identitást támogató Azure-szolgáltatásokat](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)is, amelyek az adott szolgáltatások felügyelt identitásának engedélyezését írják le (például App Service, Azure Functions, Virtual Machines stb.).
 
-* Ha nem tudja használni a felügyelt identitást, az alkalmazást az Azure AD-Bérlővel **regisztrálja** , a gyors útmutató [: alkalmazás regisztrálása az Azure Identity platformon](/azure/active-directory/develop/quickstart-register-app)című témakörben leírtak szerint. A regisztráció egy második alkalmazásobjektum-objektumot is létrehoz, amely az alkalmazást az összes bérlőn azonosítja.
+* Ha nem tudja használni a felügyelt identitást, az alkalmazást az Azure AD-Bérlővel **regisztrálja** , a gyors útmutató [: alkalmazás regisztrálása az Azure Identity platformon](../../active-directory/develop/quickstart-register-app.md)című témakörben leírtak szerint. A regisztráció egy második alkalmazásobjektum-objektumot is létrehoz, amely az alkalmazást az összes bérlőn azonosítja.
 
 ## <a name="authorize-a-security-principal-to-access-key-vault"></a>Rendszerbiztonsági tag engedélyezése Key Vaulthoz való hozzáféréshez
 
@@ -56,13 +56,13 @@ Key Vault két külön engedélyezési szinttel működik:
  
     A szerepkörök hozzárendeléséhez és kezeléséhez tekintse meg a következő cikkeket:
 
-    - [Azure Portal](/azure/role-based-access-control/role-assignments-portal)
-    - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
-    - [Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell)
+    - [Azure Portal](../../role-based-access-control/role-assignments-portal.md)
+    - [Azure CLI](../../role-based-access-control/role-assignments-cli.md)
+    - [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
 
-    Key Vault jelenleg támogatja a [közreműködő](/azure/role-based-access-control/built-in-roles#key-vault-contributor) szerepkört, amely lehetővé teszi a felügyeleti műveleteket Key Vault erőforrásokon. Számos más szerepkör jelenleg előzetes verzióban érhető el. Egyéni szerepköröket is létrehozhat az [Azure Custom roles](/azure/role-based-access-control/custom-roles)című témakörben leírtak szerint.
+    Key Vault jelenleg támogatja a [közreműködő](../../role-based-access-control/built-in-roles.md#key-vault-contributor) szerepkört, amely lehetővé teszi a felügyeleti műveleteket Key Vault erőforrásokon. Számos más szerepkör jelenleg előzetes verzióban érhető el. Egyéni szerepköröket is létrehozhat az [Azure Custom roles](../../role-based-access-control/custom-roles.md)című témakörben leírtak szerint.
 
-    A szerepkörökkel kapcsolatos általános információkért lásd: [Mi az Azure Role-Based Access Control (RBAC)?](/azure/role-based-access-control/overview)
+    A szerepkörökkel kapcsolatos általános információkért lásd: [Mi az Azure Role-Based Access Control (RBAC)?](../../role-based-access-control/overview.md)
 
 
 > [!IMPORTANT]
@@ -72,7 +72,7 @@ Key Vault két külön engedélyezési szinttel működik:
 
 Alapértelmezés szerint a Key Vault nyilvános IP-címeken keresztül engedélyezi az erőforrásokhoz való hozzáférést. A nagyobb biztonság érdekében az adott IP-tartományokra, szolgáltatási végpontokra, virtuális hálózatokra vagy magánhálózati végpontokra is korlátozhatja a hozzáférést.
 
-További információ: [hozzáférés Azure Key Vault tűzfal mögött](/azure/key-vault/general/access-behind-firewall).
+További információ: [hozzáférés Azure Key Vault tűzfal mögött](./access-behind-firewall.md).
 
 
 ## <a name="the-key-vault-authentication-flow"></a>A Key Vault hitelesítési folyamat
@@ -80,7 +80,7 @@ További információ: [hozzáférés Azure Key Vault tűzfal mögött](/azure/k
 1. Egyszerű szolgáltatás kérése az Azure AD-vel való hitelesítéshez, például:
     * A felhasználó felhasználónévvel és jelszóval jelentkezik be a Azure Portalba.
     * Egy alkalmazás meghívja az Azure REST API, amely egy ügyfél-azonosítót és egy titkos kulcsot vagy egy ügyféltanúsítványt mutat be.
-    * Egy Azure-erőforrás, például egy felügyelt identitású virtuális gép kapcsolatba lép az [azure instance metadata Service (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) Rest-végponttal egy hozzáférési jogkivonat beszerzéséhez.
+    * Egy Azure-erőforrás, például egy felügyelt identitású virtuális gép kapcsolatba lép az [azure instance metadata Service (IMDS)](../../virtual-machines/windows/instance-metadata-service.md) Rest-végponttal egy hozzáférési jogkivonat beszerzéséhez.
 
 1. Ha az Azure AD-val való hitelesítés sikeres, az egyszerű szolgáltatásnév OAuth-tokent kap.
 
@@ -89,7 +89,7 @@ További információ: [hozzáférés Azure Key Vault tűzfal mögött](/azure/k
 1. Key Vault a tűzfal a következő feltételeket ellenőrzi. Ha bármelyik feltétel teljesül, a hívás engedélyezett. Ellenkező esetben a rendszer letiltja a hívást, és egy tiltott választ ad vissza.
 
     * A tűzfal le van tiltva, és a Key Vault nyilvános végpontja elérhető a nyilvános internetről.
-    * A hívó egy [Key Vault megbízható szolgáltatás](/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services), amely lehetővé teszi a tűzfal megkerülését.
+    * A hívó egy [Key Vault megbízható szolgáltatás](./overview-vnet-service-endpoints.md#trusted-services), amely lehetővé teszi a tűzfal megkerülését.
     * A hívó a tűzfalon IP-cím, virtuális hálózat vagy szolgáltatási végpont alapján jelenik meg.
     * A hívó elérheti Key Vault egy konfigurált magánhálózati kapcsolaton keresztül.    
 
@@ -109,20 +109,20 @@ Az alábbi táblázat különböző cikkekre mutat, amelyek bemutatják, hogyan 
 
 | Key Vault titkok | Kulcsok Key Vault | Tanúsítványok Key Vault |
 |  --- | --- | --- |
-| [Python](/azure/key-vault/secrets/quick-create-python) | [Python](/azure/key-vault/keys/quick-create-python) | [Python](/azure/key-vault/certificates/quick-create-python) | 
-| [.NET (SDK v4)](/azure/key-vault/secrets/quick-create-net) | -- | -- |
+| [Python](../secrets/quick-create-python.md) | [Python](../keys/quick-create-python.md) | [Python](../certificates/quick-create-python.md) | 
+| [.NET (SDK v4)](../secrets/quick-create-net.md) | -- | -- |
 | [.NET (SDK v3)](https://dotnet.microsoft.com/download/dotnet-core/3.0) | -- | -- |
-| [Java](/azure/key-vault/secrets/quick-create-java) | -- | -- |
-| [JavaScript](/azure/key-vault/secrets/quick-create-node) | -- | -- | 
+| [Java](../secrets/quick-create-java.md) | -- | -- |
+| [JavaScript](../secrets/quick-create-node.md) | -- | -- | 
 | | | |
-| [Azure Portal](/azure/key-vault/secrets/quick-create-portal) | [Azure Portal](/azure/key-vault/keys/quick-create-portal) | [Azure Portal](/azure/key-vault/certificates/quick-create-portal) |
-| [Azure CLI](/azure/key-vault/secrets/quick-create-cli) | [Azure CLI](/azure/key-vault/keys/quick-create-cli) | [Azure CLI](/azure/key-vault/certificates/quick-create-cli) |
-| [Azure PowerShell](/azure/key-vault/secrets/quick-create-powershell) | [Azure PowerShell](/azure/key-vault/keys/quick-create-powershell) | [Azure PowerShell](/azure/key-vault/certificates/quick-create-powershell) |
-| [ARM-sablon](/azure/key-vault/secrets/quick-create-net) | -- | -- |
+| [Azure Portal](../secrets/quick-create-portal.md) | [Azure Portal](../keys/quick-create-portal.md) | [Azure Portal](../certificates/quick-create-portal.md) |
+| [Azure CLI](../secrets/quick-create-cli.md) | [Azure CLI](../keys/quick-create-cli.md) | [Azure CLI](../certificates/quick-create-cli.md) |
+| [Azure PowerShell](../secrets/quick-create-powershell.md) | [Azure PowerShell](../keys/quick-create-powershell.md) | [Azure PowerShell](../certificates/quick-create-powershell.md) |
+| [ARM-sablon](../secrets/quick-create-net.md) | -- | -- |
 
 ## <a name="next-steps"></a>Következő lépések
 
 - [Key Vault hozzáférési szabályzat hibaelhárítása](troubleshooting-access-issues.md)
 - [Key Vault REST API hibakódok](rest-error-codes.md)
 - [Key Vault fejlesztői útmutató](developers-guide.md)
-- [Mi az Azure Role-Based Access Control (RBAC)?](/azure/role-based-access-control/overview)
+- [Mi az Azure Role-Based Access Control (RBAC)?](../../role-based-access-control/overview.md)

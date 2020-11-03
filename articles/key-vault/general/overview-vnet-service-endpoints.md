@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 3b1e71a5aadbe9e6a4fa89d4b3ec0fb6b1d9e6ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e491b89ec5e6488228dd8befed669a13842f9d15
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530454"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288549"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuális hálózati szolgáltatás végpontjai Azure Key Vault
 
@@ -54,7 +54,7 @@ További információ: [Azure Key Vault tűzfalak és virtuális hálózatok kon
 > Vegye figyelembe a következő konfigurációs korlátozásokat:
 > * Legfeljebb 127 virtuális hálózati szabály és 127 IPv4-szabály engedélyezett. 
 > * A "/31" vagy "/32" előtagot használó kisméretű címtartományok nem támogatottak. Ehelyett konfigurálja ezeket a tartományokat az egyes IP-címek szabályainak használatával.
-> * Az IP-hálózati szabályok csak nyilvános IP-címek esetén engedélyezettek. A magánhálózati hálózatok számára fenntartott IP-címtartományok (az RFC 1918-ben meghatározottak szerint) nem engedélyezettek az IP-szabályokban. A magánhálózatok közé tartoznak a következők: **10.**, **172.16-31**és **192,168.** 
+> * Az IP-hálózati szabályok csak nyilvános IP-címek esetén engedélyezettek. A magánhálózati hálózatok számára fenntartott IP-címtartományok (az RFC 1918-ben meghatározottak szerint) nem engedélyezettek az IP-szabályokban. A magánhálózatok közé tartoznak a következők: **10.** , **172.16-31** és **192,168.** 
 > * Jelenleg csak IPv4-címek támogatottak.
 
 ## <a name="trusted-services"></a>Megbízható szolgáltatások
@@ -63,23 +63,23 @@ Itt látható azoknak a megbízható szolgáltatásoknak a listája, amelyek hoz
 
 |Megbízható szolgáltatás|Támogatott használati forgatókönyvek|
 | --- | --- |
-|Azure Virtual Machines üzembe helyezési szolgáltatás|[Tanúsítványokat telepíthet az ügyfél által felügyelt Key Vault virtuális gépekre](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/).|
+|Azure Virtual Machines üzembe helyezési szolgáltatás|[Tanúsítványokat telepíthet az ügyfél által felügyelt Key Vault virtuális gépekre](/archive/blogs/kv/updated-deploy-certificates-to-vms-from-customer-managed-key-vault).|
 |Azure Resource Manager sablon központi telepítési szolgáltatása|[Biztonságos értékek továbbítása az üzembe helyezés során](../../azure-resource-manager/templates/key-vault-parameter.md).|
-|Azure Application Gateway v2 SKU|[TLS-lezárás Key Vault tanúsítványokkal](/azure/application-gateway/key-vault-certs)|
+|Azure Application Gateway v2 SKU|[TLS-lezárás Key Vault tanúsítványokkal](../../application-gateway/key-vault-certs.md)|
 |Azure Disk Encryption mennyiségi titkosítási szolgáltatás|Hozzáférés engedélyezése a BitLocker-kulcshoz (Windows VM) vagy DM-jelszóhoz (Linux virtuális gép) és a kulcs titkosítási kulcsához a virtuális gépek telepítése során. Ez lehetővé teszi a [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md).|
-|Azure Backup|A megfelelő kulcsok és titkok biztonsági mentésének és helyreállításának engedélyezése az Azure Virtual Machines Backup szolgáltatásban [Azure Backup](../../backup/backup-introduction-to-azure-backup.md)használatával.|
+|Azure Backup|A megfelelő kulcsok és titkok biztonsági mentésének és helyreállításának engedélyezése az Azure Virtual Machines Backup szolgáltatásban [Azure Backup](../../backup/backup-overview.md)használatával.|
 |Exchange Online & SharePoint Online-ban|Hozzáférés engedélyezése az Azure Storage Service Encryptionhoz az [ügyfél kulcsával](/microsoft-365/compliance/customer-key-overview).|
-|Azure Information Protection|A bérlői kulcs elérésének engedélyezése [Azure Information Protection számára.](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)|
+|Azure Information Protection|A bérlői kulcs elérésének engedélyezése [Azure Information Protection számára.](/azure/information-protection/what-is-information-protection)|
 |Azure App Service|[Azure webalkalmazás-tanúsítvány üzembe helyezése Key Vault használatával](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html).|
 |Azure SQL Database|[Transzparens adattitkosítás a Azure SQL Database és az Azure szinapszis Analytics (korábban SQL Data Warehouse) bring your own Key támogatásával](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current).|
-|Azure Storage|[Storage Service encryption az ügyfél által felügyelt kulcsokat Azure Key Vault](../../storage/common/storage-service-encryption-customer-managed-keys.md).|
+|Azure Storage|[Storage Service encryption az ügyfél által felügyelt kulcsokat Azure Key Vault](../../storage/common/customer-managed-keys-configure-key-vault.md).|
 |Azure Data Lake Store|A [Azure Data Lake Storeban lévő adattitkosítás](../../data-lake-store/data-lake-store-encryption.md) ügyfél által felügyelt kulccsal.|
-|Azure Databricks|[Gyors, könnyű és együttműködő Apache Spark-alapú elemzési szolgáltatás](../../azure-databricks/what-is-azure-databricks.md)|
+|Azure Databricks|[Gyors, könnyű és együttműködő Apache Spark-alapú elemzési szolgáltatás](/azure/databricks/scenarios/what-is-azure-databricks)|
 |Azure API Management|[Egyéni tartomány tanúsítványainak központi telepítése Key Vault az MSI használatával](../../api-management/api-management-howto-use-managed-service-identity.md#use-ssl-tls-certificate-from-azure-key-vault)|
 |Azure Data Factory|[Adattároló hitelesítő adatainak beolvasása a Key Vault Data Factory](https://go.microsoft.com/fwlink/?linkid=2109491)|
-|Azure Event Hubs|[Key Vault hozzáférésének engedélyezése az ügyfél által felügyelt kulcsok esetén](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
-|Azure Service Bus|[Key Vault hozzáférésének engedélyezése az ügyfél által felügyelt kulcsok esetén](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
-|Azure Import/Export| [Az ügyfél által felügyelt kulcsok használata Azure Key Vault importálási/exportálási szolgáltatáshoz](https://docs.microsoft.com/azure/storage/common/storage-import-export-encryption-key-portal)
+|Azure Event Hubs|[Key Vault hozzáférésének engedélyezése az ügyfél által felügyelt kulcsok esetén](../../event-hubs/configure-customer-managed-key.md)|
+|Azure Service Bus|[Key Vault hozzáférésének engedélyezése az ügyfél által felügyelt kulcsok esetén](../../service-bus-messaging/configure-customer-managed-key.md)|
+|Azure Import/Export| [Az ügyfél által felügyelt kulcsok használata Azure Key Vault importálási/exportálási szolgáltatáshoz](../../storage/common/storage-import-export-encryption-key-portal.md)
 |Azure Container Registry|[Beállításjegyzék-titkosítás az ügyfél által felügyelt kulcsokkal](../../container-registry/container-registry-customer-managed-keys.md)<br><br/>[Összetevők átvitele másik beállításjegyzékbe](../../container-registry/container-registry-transfer-images.md)
 
 > [!NOTE]

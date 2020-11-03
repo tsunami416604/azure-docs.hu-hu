@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 162e40555e11dff716b58eec4b1168728257693e
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 5423fc27ecc58bcd79b36a845e4b7569f342f712
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131173"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286699"
 ---
 # <a name="azure-key-vault-logging"></a>Az Azure Key Vault naplózása
 
@@ -26,7 +26,7 @@ A naplózási adatokat a Key Vault művelet után 10 perccel (legfeljebb) érhet
 * Az Azure szabványos hozzáférés-vezérlési módszereivel korlátozhatja a naplókhoz való hozzáférést, így megvédheti azokat.
 * Törölje azokat a naplókat, amelyeket nem kíván megőrizni a tárfiókban.
 
-További információ a Key Vaultről: [Mi az Azure Key Vault?](overview.md). További információ a Key Vault rendelkezésre állásáról: [díjszabási oldal](https://azure.microsoft.com/pricing/details/key-vault/). További információ a [Key Vault Azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview)használatáról.
+További információ a Key Vaultről: [Mi az Azure Key Vault?](overview.md). További információ a Key Vault rendelkezésre állásáról: [díjszabási oldal](https://azure.microsoft.com/pricing/details/key-vault/). További információ a [Key Vault Azure monitor](../../azure-monitor/insights/key-vault-insights-overview.md)használatáról.
 
 ## <a name="interpret-your-key-vault-logs"></a>A Key Vault naplóinak értelmezése
 
@@ -59,9 +59,9 @@ Az egyes blobok JSON-blobként, szöveges formában vannak tárolva. Nézzük me
 
 A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 
-| Mező neve | Description |
+| Mező neve | Leírás |
 | --- | --- |
-| **time** |Dátum és idő (UTC). |
+| **idő** |Dátum és idő (UTC). |
 | **resourceId** |Azure Resource Manager erőforrás-azonosító. Key Vault naplók esetében ez mindig a Key Vault erőforrás-azonosító. |
 | **operationName** |A művelet neve, ahogy a következő táblázat is mutatja. |
 | **operationVersion** |REST API az ügyfél által kért verziót. |
@@ -73,9 +73,9 @@ A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 | **callerIpAddress** |Annak az ügyfélnek az IP-címe, amely a kérelmet elvégezte. |
 | **correlationId** |Egy nem kötelező GUID, amelyet az ügyfél alkalmazhat az ügyféloldali és a szolgáltatásoldali (Key Vault) naplók egyeztetéséhez. |
 | **identitás** |Az REST API kérelemben bemutatott jogkivonat identitása. Ez általában a "felhasználó", "a" szolgáltatásnév "vagy" felhasználó + appId "kombinációja, amely egy Azure PowerShell-parancsmagból származó kérelem esetében van. |
-| **Tulajdonságok** |A művelettől (**operationName**) függően változó információk. A legtöbb esetben ez a mező tartalmazza az ügyfél adatait (az ügyfél által átadott felhasználói ügynök sztringjét), a pontos REST API kérelem URI-JÁT és a HTTP-állapotkódot. Emellett, ha egy objektum egy kérelem eredményeképpen érkezik (például a Key **create** vagy a **VaultGet**), a kulcs URI-ját (as), a tároló `id` URI-ját vagy a titkos kódot is tartalmazza. |
+| **Tulajdonságok** |A művelettől ( **operationName** ) függően változó információk. A legtöbb esetben ez a mező tartalmazza az ügyfél adatait (az ügyfél által átadott felhasználói ügynök sztringjét), a pontos REST API kérelem URI-JÁT és a HTTP-állapotkódot. Emellett, ha egy objektum egy kérelem eredményeképpen érkezik (például a Key **create** vagy a **VaultGet** ), a kulcs URI-ját (as), a tároló `id` URI-ját vagy a titkos kódot is tartalmazza. |
 
-A **OperationName** *ObjectVerb* formátumban vannak. Példa:
+A **OperationName** *ObjectVerb* formátumban vannak. Például:
 
 * A Key Vault összes műveletének `Vault<action>` formátuma, például `VaultGet` és `VaultCreate` .
 * Az összes kulcsfontosságú művelet `Key<action>` formátuma, például `KeySign` és `KeyList` .
@@ -88,32 +88,32 @@ A következő táblázat felsorolja a **operationName** és a hozzá tartozó RE
 | operationName | REST API parancs |
 | --- | --- |
 | **Hitelesítés** |Hitelesítés Azure Active Directory végponton keresztül |
-| **VaultGet** |[Kulcstároló adatainak lekérése](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
-| **VaultPut** |[Kulcstároló létrehozása vagy frissítése](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
-| **VaultDelete** |[Kulcstároló törlése](https://msdn.microsoft.com/library/azure/mt620022.aspx) |
-| **VaultPatch** |[Kulcstároló frissítése](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
-| **VaultList** |[Az erőforráscsoport összes kulcstárolójának listázása](https://msdn.microsoft.com/library/azure/mt620027.aspx) |
-| **KeyCreate** |[Kulcs létrehozása](https://msdn.microsoft.com/library/azure/dn903634.aspx) |
-| **KeyGet** |[Kulcs adatainak lekérése](https://msdn.microsoft.com/library/azure/dn878080.aspx) |
-| **KeyImport** |[Kulcs importálása egy tárolóba](https://msdn.microsoft.com/library/azure/dn903626.aspx) |
-| **KeyBackup** |[Kulcs biztonsági mentése](https://msdn.microsoft.com/library/azure/dn878058.aspx) |
-| **KeyDelete** |[Kulcs törlése](https://msdn.microsoft.com/library/azure/dn903611.aspx) |
-| **KeyRestore** |[Kulcs helyreállítása](https://msdn.microsoft.com/library/azure/dn878106.aspx) |
-| **KeySign** |[Aláírás kulccsal](https://msdn.microsoft.com/library/azure/dn878096.aspx) |
-| **KeyVerify** |[Ellenőrzés kulccsal](https://msdn.microsoft.com/library/azure/dn878082.aspx) |
-| **KeyWrap** |[Kulcs becsomagolása](https://msdn.microsoft.com/library/azure/dn878066.aspx) |
-| **KeyUnwrap** |[Kulcs kicsomagolása](https://msdn.microsoft.com/library/azure/dn878079.aspx) |
-| **KeyEncrypt** |[Titkosítás kulccsal](https://msdn.microsoft.com/library/azure/dn878060.aspx) |
-| **KeyDecrypt** |[Visszafejtés kulccsal](https://msdn.microsoft.com/library/azure/dn878097.aspx) |
-| **KeyUpdate** |[Kulcs frissítése](https://msdn.microsoft.com/library/azure/dn903616.aspx) |
-| **KeyList** |[Egy tároló kulcsainak listázása](https://msdn.microsoft.com/library/azure/dn903629.aspx) |
-| **KeyListVersions** |[Kulcs verzióinak listázása](https://msdn.microsoft.com/library/azure/dn986822.aspx) |
-| **SecretSet** |[Titkos kulcs létrehozása](https://msdn.microsoft.com/library/azure/dn903618.aspx) |
-| **SecretGet** |[Titkos kód beszerzése](https://msdn.microsoft.com/library/azure/dn903633.aspx) |
-| **SecretUpdate** |[Titkos kulcs frissítése](https://msdn.microsoft.com/library/azure/dn986818.aspx) |
-| **SecretDelete** |[Titkos kulcs törlése](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
-| **SecretList** |[Egy tároló titkos kulcsainak listázása](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
-| **SecretListVersions** |[Titkos kulcs verzióinak listázása](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
+| **VaultGet** |[Kulcstároló adatainak lekérése](/rest/api/keyvault/vaults) |
+| **VaultPut** |[Kulcstároló létrehozása vagy frissítése](/rest/api/keyvault/vaults) |
+| **VaultDelete** |[Kulcstároló törlése](/rest/api/keyvault/vaults) |
+| **VaultPatch** |[Kulcstároló frissítése](/rest/api/keyvault/vaults) |
+| **VaultList** |[Az erőforráscsoport összes kulcstárolójának listázása](/rest/api/keyvault/vaults) |
+| **KeyCreate** |[Kulcs létrehozása](/rest/api/keyvault/createkey) |
+| **KeyGet** |[Kulcs adatainak lekérése](/rest/api/keyvault/getkey) |
+| **KeyImport** |[Kulcs importálása egy tárolóba](/rest/api/keyvault/vaults) |
+| **KeyBackup** |[Kulcs biztonsági mentése](/rest/api/keyvault/backupkey) |
+| **KeyDelete** |[Kulcs törlése](/rest/api/keyvault/deletekey) |
+| **KeyRestore** |[Kulcs helyreállítása](/rest/api/keyvault/restorekey) |
+| **KeySign** |[Aláírás kulccsal](/rest/api/keyvault/sign) |
+| **KeyVerify** |[Ellenőrzés kulccsal](/rest/api/keyvault/vaults) |
+| **KeyWrap** |[Kulcs becsomagolása](/rest/api/keyvault/wrapkey) |
+| **KeyUnwrap** |[Kulcs kicsomagolása](/rest/api/keyvault/unwrapkey) |
+| **KeyEncrypt** |[Titkosítás kulccsal](/rest/api/keyvault/encrypt) |
+| **KeyDecrypt** |[Visszafejtés kulccsal](/rest/api/keyvault/decrypt) |
+| **KeyUpdate** |[Kulcs frissítése](/rest/api/keyvault/updatekey) |
+| **KeyList** |[Egy tároló kulcsainak listázása](/rest/api/keyvault/vaults) |
+| **KeyListVersions** |[Kulcs verzióinak listázása](/rest/api/keyvault/getkeyversions) |
+| **SecretSet** |[Titkos kulcs létrehozása](/rest/api/keyvault/updatecertificate) |
+| **SecretGet** |[Titkos kód beszerzése](/rest/api/keyvault/getsecret) |
+| **SecretUpdate** |[Titkos kulcs frissítése](/rest/api/keyvault/updatesecret) |
+| **SecretDelete** |[Titkos kulcs törlése](/rest/api/keyvault/deletesecret) |
+| **SecretList** |[Egy tároló titkos kulcsainak listázása](/rest/api/keyvault/vaults) |
+| **SecretListVersions** |[Titkos kulcs verzióinak listázása](/rest/api/keyvault/getsecretversions) |
 | **VaultAccessPolicyChangedEventGridNotification** | A tár hozzáférési szabályzatának változási eseménye közzétéve |
 | **SecretNearExpiryEventGridNotification** |Secret Near lejárat esemény közzététele |
 | **SecretExpiredEventGridNotification** |Titokban lejárt esemény közzétéve |

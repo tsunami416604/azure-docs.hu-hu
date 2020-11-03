@@ -8,22 +8,21 @@ ms.author: chalton
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: 6a4dcec2b50a13a256c82e4a5ec54c9b22aa973f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 11/02/2020
+ms.openlocfilehash: f0295c27f1d193b0dcd7829a11b4aabe0edb659b
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791987"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286339"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>Titkosított Blobok indexelése blob-indexelő és szakértelmével használatával az Azure-ban Cognitive Search
 
-Ez a cikk bemutatja, hogyan használható az [azure Cognitive Search](search-what-is-azure-search.md) az [blob Storage Azure](../storage/blobs/storage-blobs-introduction.md) -ban korábban titkosított dokumentumok [Azure Key Vault](../key-vault/general/overview.md)használatával történő indexeléséhez. Az indexelő általában nem tudja kibontani a tartalmat a titkosított fájlokból, mert nem fér hozzá a titkosítási kulcshoz. Azonban a [DecryptBlobFile](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile) egyéni képességeinek a [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md)után történő kihasználása révén szabályozott hozzáférést biztosíthat a kulcshoz a fájlok visszafejtéséhez, majd kinyerheti a tartalmat. Ezzel feloldja a dokumentumok indexelésének képességét, miközben soha nem kell aggódnia, hogy az adatok nem titkosítottak maradnak a nyugalmi állapotban.
+Ez a cikk bemutatja, hogyan használható az [azure Cognitive Search](search-what-is-azure-search.md) az [Azure-Blob Storage](../storage/blobs/storage-blobs-introduction.md) korábban titkosított dokumentumok [Azure Key Vault](../key-vault/general/overview.md)használatával történő indexeléséhez. Az indexelő általában nem tudja kibontani a tartalmat a titkosított fájlokból, mert nem fér hozzá a titkosítási kulcshoz. Azonban a [DecryptBlobFile](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile) egyéni képességeinek a [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md)után történő kihasználása révén szabályozott hozzáférést biztosíthat a kulcshoz a fájlok visszafejtéséhez, majd kinyerheti a tartalmat. Ezzel feloldja a dokumentumok indexelésének képességét a tárolt dokumentumok titkosítási állapotának veszélyeztetése nélkül.
 
-Ez az útmutató a Poster és a Search REST API-k használatával hajtja végre a következő feladatokat:
+A korábban titkosított teljes dokumentumok (strukturálatlan szöveg), például a PDF, a HTML, a DOCX és a PPTX az Azure Blob Storage-ban való elindítása esetén ez az útmutató a Poster és a keresési REST API-k használatával hajtja végre a következő feladatokat:
 
 > [!div class="checklist"]
-> * A teljes dokumentumok (strukturálatlan szöveg), például a PDF, a HTML, a DOCX és a PPTX használata az Azure Blob Storage-ban, amelyek titkosítása Azure Key Vault használatával történt.
 > * Definiáljon egy folyamatot, amely visszafejti a dokumentumokat, és kinyeri belőlük a szöveget.
 > * Definiáljon egy indexet a kimenet tárolásához.
 > * A folyamat végrehajtásával hozza létre és töltse be az indexet.
@@ -36,13 +35,10 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt nyisson meg egy [ingy
 Ez a példa feltételezi, hogy már feltöltötte a fájljait az Azure Blob Storageba, és titkosította őket a folyamatban. Ha segítségre van szüksége a fájlok első feltöltéséhez és titkosításához, tekintse meg [ezt az oktatóanyagot](../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md) .
 
 + [Azure Storage](https://azure.microsoft.com/services/storage/)
-+ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
++ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) ugyanabban az előfizetésben, mint az Azure Cognitive Search. A Key vaultnak engedélyezve kell lennie a helyreállítható **törlési** és **kiürítési védelemmel** .
++ [Azure-Cognitive Search](search-create-service-portal.md) egy [számlázható](search-sku-tier.md#tiers) szinten (bármely régióban)
 + [Azure-függvény](https://azure.microsoft.com/services/functions/)
 + [Postman asztali alkalmazás](https://www.getpostman.com/)
-+ [Meglévő keresési szolgáltatás](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) [létrehozása](search-create-service-portal.md) vagy keresése 
-
-> [!Note]
-> Ehhez az útmutatóhoz használhatja az ingyenes szolgáltatást. Az ingyenes keresési szolgáltatás három indexre, három indexelő elemre, három adatforrásra és három szakértelmével korlátozza. Ez az útmutató létrehozza az egyiket. Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a szolgáltatásban az új erőforrások elfogadására szolgáló helyiséggel.
 
 ## <a name="1---create-services-and-collect-credentials"></a>1 – szolgáltatások létrehozása és hitelesítő adatok összegyűjtése
 
@@ -142,10 +138,10 @@ Az érték beszerzéséhez `admin-key` használja a korábban feljegyzett Azure 
 | `function-uri` |  Az Azure-függvény főoldalának **alapok** területén. | 
 | `function-code` | Az Azure-függvényben navigáljon az **alkalmazás kulcsaihoz** , és kattintson az **alapértelmezett** kulcs megjelenítéséhez és az érték másolásához. | 
 | `api-version` | **2020-06-30** -ig marad. |
-| `datasource-name` | Maradjon **titkosítva – Blobok – DS** . | 
+| `datasource-name` | Maradjon **titkosítva – Blobok – DS**. | 
 | `index-name` | Maradjon **titkosítatlan Blobok-idx-** ként. | 
-| `skillset-name` | Maradjon **titkosítva – Blobok – SS** . | 
-| `indexer-name` | Maradjon **titkosítva – Blobok – IXR** . | 
+| `skillset-name` | Maradjon **titkosítva – Blobok – SS**. | 
+| `indexer-name` | Maradjon **titkosítva – Blobok – IXR**. | 
 
 ### <a name="review-the-request-collection-in-postman"></a>Tekintse át a Poster kérelem-gyűjteményét
 

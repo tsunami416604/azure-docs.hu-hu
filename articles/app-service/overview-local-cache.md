@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: b3c8f6015b4627d86a0665865fba2f3fdd39589d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9e43cb9188df8274d5bafa7fd9bc90c24339237
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88080711"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286838"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service a helyi gyorsítótár áttekintése
 
@@ -45,7 +45,11 @@ A Azure App Service helyi gyorsítótár szolgáltatás a tartalom webes szerepk
 * Az alkalmazás központi telepítése bármely támogatott módszerrel közvetlenül a tartós megosztott tartalom tárolójába kerül. A helyi gyorsítótárban lévő _D:\home\site_ -és _D:\home\siteextensions_ -mappák frissítéséhez az alkalmazást újra kell indítani. Az életciklus zökkenőmentesvé tételéhez tekintse meg a cikk későbbi részében található információkat.
 * Az SCM-hely alapértelmezett tartalmi nézete továbbra is megegyezik a megosztott tartalom tárolójával.
 
-## <a name="enable-local-cache-in-app-service"></a>Helyi gyorsítótár engedélyezése a App Serviceban
+## <a name="enable-local-cache-in-app-service"></a>Helyi gyorsítótár engedélyezése a App Serviceban 
+
+> [!NOTE]
+> A helyi gyorsítótár nem támogatott az **F1** vagy a **D1** szinten. 
+
 A helyi gyorsítótárat a fenntartott Alkalmazásbeállítások együttes használatával konfigurálhatja. Az Alkalmazásbeállítások a következő módszerekkel konfigurálhatók:
 
 * [Azure Portal](#Configure-Local-Cache-Portal)

@@ -7,32 +7,33 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 09/23/2020
+ms.date: 11/03/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 1db3b224d23664c83f21e77dcb445b0fb043a4c3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 607060851a8afa48b9570dfcb17732279a3629ee
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737854"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286663"
 ---
 # <a name="use-stored-procedures-in-synapse-sql"></a>Tárolt eljárások használata a szinapszis SQL-ben
 
-Tippek a tárolt eljárások megvalósításához a szinapszis SQL-készletben megoldások fejlesztéséhez.
+Az SQL kiosztott és kiszolgáló nélküli készletei lehetővé teszik összetett adatfeldolgozási logikák elhelyezését az SQL tárolt eljárásaiba. A tárolt eljárások nagyszerű lehetőséget biztosítanak az SQL-kód beágyazására és az adattárházban lévő adataihoz való közvetlen tárolásra. A tárolt eljárások segítséget nyújtanak a fejlesztőknek, hogy modularize a kódot a felügyelhető egységbe ágyazva, és megkönnyítsék a kód nagyobb mértékű újrahasználhatóságát. Az egyes tárolt eljárások is elfogadják a paramétereket, hogy azok még rugalmasabbak legyenek.
+Ebben a cikkben néhány tippet talál a tárolt eljárások megvalósításához a szinapszis SQL-készletben a megoldások fejlesztéséhez.
 
 ## <a name="what-to-expect"></a>Amire számíthat
 
-A szinapszis SQL számos, a SQL Serverban használt T-SQL-funkciót támogat. Még ennél is fontosabb, hogy a megoldás teljesítményének maximalizálása érdekében Felskálázási funkciók érhetők el.
+A szinapszis SQL számos, a SQL Serverban használt T-SQL-funkciót támogat. Még ennél is fontosabb, hogy a megoldás teljesítményének maximalizálása érdekében Felskálázási funkciók érhetők el. Ebből a cikkből megtudhatja, milyen funkciókat helyezhet el a tárolt eljárásokban.
 
 > [!NOTE]
-> Az eljárás törzsében csak a szinapszis SQL Surface területén támogatott funkciókat használhatja. Tekintse át [ezt a cikket](overview-features.md) a tárolt eljárásokban használható objektumok és utasítások azonosításához. Az ezekben a cikkekben található példákban olyan általános funkciók vannak használatban, amelyek kiszolgáló nélküli és kiépített felületen egyaránt elérhetők.
+> Az eljárás törzsében csak a szinapszis SQL Surface területén támogatott funkciókat használhatja. Tekintse át [ezt a cikket](overview-features.md) a tárolt eljárásokban használható objektumok és utasítások azonosításához. Az ezekben a cikkekben található példákban olyan általános funkciók vannak használatban, amelyek kiszolgáló nélküli és kiépített felületen egyaránt elérhetők. A cikk végén további [korlátozásokat talál a kiépített és a kiszolgáló nélküli SZINAPSZIS SQL-készletekben](#limitations) .
 
 Az SQL-készlet méretezésének és teljesítményének fenntartása érdekében vannak olyan funkciók és funkciók is, amelyek viselkedési különbségekkel és másokkal rendelkeznek, amelyek nem támogatottak.
 
 ## <a name="stored-procedures-in-synapse-sql"></a>Tárolt eljárások a szinapszis SQL-ben
 
-A tárolt eljárások nagyszerű lehetőséget biztosítanak az SQL-kód beágyazására és az adattárházban lévő adataihoz való közvetlen tárolásra. A tárolt eljárások segítik a fejlesztőket abban, hogy a kódot felügyelhető egységekre ágyazzák, így könnyebben felhasználhatóságot modularize. Az egyes tárolt eljárások is elfogadják a paramétereket, hogy azok még rugalmasabbak legyenek. A következő példában megtekintheti azokat az eljárásokat, amelyek eldobják a külső objektumokat, ha az adatbázisban vannak:
+A következő példában megtekintheti azokat az eljárásokat, amelyek eldobják a külső objektumokat, ha az adatbázisban vannak:
 
 ```sql
 CREATE PROCEDURE drop_external_table_if_exists @name SYSNAME
@@ -184,23 +185,26 @@ EXEC clean_up 'mytest'  -- This call is nest level 1
 
 ## <a name="insertexecute"></a>INSERT..EXEARANYOS
 
-A szinapszis SQL nem teszi lehetővé, hogy egy tárolt eljárás eredmény-készletét egy INSERT utasítással használja. Egy alternatív megközelítés is használható. Példaként tekintse meg a következő cikket: [ideiglenes táblák](develop-tables-temporary.md) a kiépített szinapszis SQL-készlethez.
+A kiépített szinapszis SQL-készlet nem teszi lehetővé, hogy a tárolt eljárás eredményét egy INSERT utasítással használja. Egy alternatív megközelítés is használható. Példaként tekintse meg a következő cikket: [ideiglenes táblák](develop-tables-temporary.md) a kiépített szinapszis SQL-készlethez.
 
 ## <a name="limitations"></a>Korlátozások
 
 Léteznek olyan Transact-SQL tárolt eljárások néhány aspektusa, amelyek nincsenek megvalósítva a szinapszis SQL-ben, például:
 
-* ideiglenes tárolt eljárások
-* számozott tárolt eljárások
-* kiterjesztett tárolt eljárások
-* CLR tárolt eljárásai
-* titkosítási beállítás
-* replikálási beállítás
-* tábla értékű paraméterek
-* csak olvasható paraméterek
-* alapértelmezett paraméterek (kiépített készletben)
-* végrehajtási környezetek
-* visszatérési utasítás
+| Szolgáltatás/beállítás | Kiépítve | Kiszolgáló nélküli |
+| --- | --- |
+| Ideiglenes tárolt eljárások | Nem | Igen |
+| Számozott tárolt eljárások | Nem | Nem |
+| Bővített tárolt eljárások | Nem | Nem |
+| CLR tárolt eljárásai | Nem | Nem |
+| Titkosítási beállítás | Nem | Igen |
+| Replikációs beállítás | Nem | Nem |
+| Ideiglenes értékű paraméterek | Nem | Nem |
+| Csak olvasható paraméterek | Nem | Nem |
+| Alapértelmezett paraméterek | Nem | Igen |
+| Végrehajtási környezetek | Nem | Nem |
+| Visszatérési utasítás | Nem | Igen |
+| BEILLESZTÉS A.. EXEC | Nem | Igen |
 
 ## <a name="next-steps"></a>Következő lépések
 

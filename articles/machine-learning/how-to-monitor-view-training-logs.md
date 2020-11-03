@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: aa4b55cb0700a47d9235a1d526ef1b1678d6db8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11e4b79bf76a4612728992f7c16000d840b9c639
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333817"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285952"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML futtatási naplók és metrikák figyelése és megtekintése
 
@@ -45,7 +45,7 @@ Ha figyelni szeretné a futtatásokat egy adott számítási célra a böngész�
 
     ![Válassza ki a betanítási fürtöt](./media/how-to-track-experiments/select-training-compute.png)
 
-1. Válassza a __futtatások__lehetőséget. Megjelenik a fürtöt használó futtatások listája. Egy adott Futtatás részleteinek megtekintéséhez használja a __Run (Futtatás__ ) oszlopban található hivatkozást. A kísérlet részleteinek megtekintéséhez használja a __kísérlet__ oszlopban található hivatkozást.
+1. Válassza a __futtatások__ lehetőséget. Megjelenik a fürtöt használó futtatások listája. Egy adott Futtatás részleteinek megtekintéséhez használja a __Run (Futtatás__ ) oszlopban található hivatkozást. A kísérlet részleteinek megtekintéséhez használja a __kísérlet__ oszlopban található hivatkozást.
 
     ![A betanítási fürt futtatásának kiválasztása](./media/how-to-track-experiments/show-runs-for-compute.png)
     
@@ -93,7 +93,7 @@ RunDetails(run).show()
 
 ## <a name="show-output-upon-completion"></a>Kimenet megjelenítése befejezés után
 
-A **ScriptRunConfig**használatakor a ```run.wait_for_completion(show_output = True)``` segítségével megjelenítheti a modell betanításának befejeződését. A ```show_output``` jelző részletes kimenetet biztosít. További információt a [naplózás engedélyezésének](how-to-track-experiments.md#scriptrun-logs)ScriptRunConfig című szakaszában talál.
+A **ScriptRunConfig** használatakor a ```run.wait_for_completion(show_output = True)``` segítségével megjelenítheti a modell betanításának befejeződését. A ```show_output``` jelző részletes kimenetet biztosít. További információt a [naplózás engedélyezésének](how-to-track-experiments.md#scriptrun-logs)ScriptRunConfig című szakaszában talál.
 
 <a id="queryrunmetrics"></a>
 ## <a name="query-run-metrics"></a>Lekérdezés-futtatási metrikák
@@ -105,7 +105,9 @@ A betanított modell metrikáit a használatával tekintheti meg ```run.get_metr
 
 A [Azure Machine learning Studióban](https://ml.azure.com)böngészhet a befejezett futtatási rekordok, beleértve a naplózott metrikákat is.
 
-Navigáljon a **kísérletek** lapra, és válassza ki a kísérletet. A kísérlet futtatása irányítópulton láthatja az egyes futtatások nyomon követett mérőszámait és naplóit. 
+Navigáljon a **kísérletek** lapra. Ha a munkaterületen lévő összes futtatást a kísérletek között szeretné megtekinteni, válassza a **minden Futtatás** lapot. A futtatások részletezését meghatározott kísérletek esetén a felső menüsorban a kísérlet szűrő alkalmazásával végezheti el. 
+
+Az egyes kísérletek nézet esetében válassza a **minden kísérlet** lapot. A kísérlet futtatása irányítópulton láthatja az egyes futtatások nyomon követett mérőszámait és naplóit. 
 
 Egy adott Futtatás részletezésével megtekintheti a kimeneteit vagy naplóit, vagy letöltheti a kísérlet pillanatképét, így megoszthatja a kísérlet mappáját másokkal.
 

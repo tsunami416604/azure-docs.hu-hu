@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/22/2020
 ms.author: sudbalas
-ms.openlocfilehash: 931aea02d0a3c26bb5c2e7158f9c4360976d3af5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: c55c87cd8ab1b2cd1dbaf2c877eb341744d822ef
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440518"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287464"
 ---
 # <a name="azure-key-vault-backup"></a>Azure Key Vault biztonsági mentés
 
@@ -25,9 +25,9 @@ Ebből a dokumentumból megtudhatja, hogyan készíthet biztonsági mentést a K
 
 A Azure Key Vault automatikusan biztosít olyan funkciókat, amelyek segítenek fenntartani a rendelkezésre állást, és megelőzni az adatvesztést. A titkok biztonsági mentése csak akkor, ha kritikus üzleti indoklással rendelkezik. A Key vaultban található titkos kulcsok biztonsági mentése olyan működési kihívásokat jelenthet, mint például a naplók, engedélyek és biztonsági másolatok több készletének fenntartása a titkok lejárta vagy elforgatása során.
 
-Key Vault megtartja a rendelkezésre állást a katasztrófa-forgatókönyvekben, és a felhasználó beavatkozása nélkül automatikusan felveszi a kéréseket egy párosított régióba. További információ: [Azure Key Vault rendelkezésre állás és redundancia](https://docs.microsoft.com/azure/key-vault/general/disaster-recovery-guidance).
+Key Vault megtartja a rendelkezésre állást a katasztrófa-forgatókönyvekben, és a felhasználó beavatkozása nélkül automatikusan felveszi a kéréseket egy párosított régióba. További információ: [Azure Key Vault rendelkezésre állás és redundancia](./disaster-recovery-guidance.md).
 
-Ha a titkos kódok véletlen vagy rosszindulatú törlésével szembeni védelmet szeretne védeni, konfigurálja a Key vaulton a helyreállítható törlési és kiürítő védelmi funkciókat. További információ: [Azure Key Vault Soft-delete áttekintése](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview).
+Ha a titkos kódok véletlen vagy rosszindulatú törlésével szembeni védelmet szeretne védeni, konfigurálja a Key vaulton a helyreállítható törlési és kiürítő védelmi funkciókat. További információ: [Azure Key Vault Soft-delete áttekintése](./soft-delete-overview.md).
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -67,7 +67,7 @@ Az ebben a szakaszban ismertetett lépéseket követve biztonsági másolatot k�
     ![Képernyőfelvétel: a kulcsok beállításának és a Key Vault objektumának kijelölése.](../media/backup-1.png)
 
 4. Válassza ki az objektumot.
-5. Válassza a **biztonsági mentés letöltése**lehetőséget.
+5. Válassza a **biztonsági mentés letöltése** lehetőséget.
 
     ![A Key vaultban a Backup letöltése gomb kiválasztásának helyét bemutató képernyőkép.](../media/backup-2.png)
     
@@ -82,7 +82,7 @@ Az ebben a szakaszban ismertetett lépéseket követve biztonsági másolatot k�
 1. Nyissa meg az Azure Portalt.
 2. Válassza ki a kulcstartót.
 3. Lépjen a visszaállítani kívánt objektum típusára (titkos kulcs, kulcs vagy tanúsítvány).
-4. Válassza a **biztonsági mentés visszaállítása**lehetőséget.
+4. Válassza a **biztonsági mentés visszaállítása** lehetőséget.
 
     ![Képernyőfelvétel: a biztonsági mentés visszaállításának helye a kulcstartóban.](../media/backup-4.png)
     
@@ -121,6 +121,6 @@ az keyvault secret restore --file {File Path} --vault-name {Key Vault Name} --su
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Key Vault [naplózásának és figyelésének](https://docs.microsoft.com/azure/key-vault/general/logging) bekapcsolása.
+Key Vault [naplózásának és figyelésének](./logging.md) bekapcsolása.

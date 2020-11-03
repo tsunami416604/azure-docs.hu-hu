@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8a975673bec3b3579eaa699f873fe8c4b1481d38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e0007f3b0dad8a68e9d81cebbe9fe24b5a7db3c
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744805"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285642"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Key Vault naplózás engedélyezése
 
@@ -64,7 +64,7 @@ Set-AzContext -SubscriptionId "<subscriptionID>"
 
 Habár meglévő Storage-fiókot is használhat a naplókhoz, egy új Storage-fiókot hozunk létre, amely Key Vault naplókhoz van hozzárendelve. 
 
-A könnyebb kezelhetőség érdekében ugyanazt az erőforráscsoportot fogjuk használni, mint amely a kulcstartót is tartalmazza. Az [Azure CLI](quick-create-cli.md) rövid útmutatójában [és Azure PowerShell](quick-create-powershell.md)rövid útmutatójában ez az erőforráscsoport a **myResourceGroup**nevű, a hely pedig *eastus*. Cserélje le ezeket az értékeket a megfelelő értékre. 
+A könnyebb kezelhetőség érdekében ugyanazt az erőforráscsoportot fogjuk használni, mint amely a kulcstartót is tartalmazza. Az [Azure CLI](quick-create-cli.md) rövid útmutatójában [és Azure PowerShell](quick-create-powershell.md)rövid útmutatójában ez az erőforráscsoport a **myResourceGroup** nevű, a hely pedig *eastus*. Cserélje le ezeket az értékeket a megfelelő értékre. 
 
 A Storage-fiók nevét is meg kell adnia. A Storage-fiókok nevének egyedinek kell lennie 3 és 24 karakter között, és csak számokból és kisbetűkből állhat.  Végül a "Standard_LRS" SKU Storage-fiókját fogjuk létrehozni.
 
@@ -147,7 +147,7 @@ A naplózott elemek:
   * A kulcsok vagy titkos kódok létrehozása, módosítása vagy törlése.
   * A kulcsok aláírása, ellenőrzése, titkosítása, visszafejtése, becsomagolása és kicsomagolása, a titkok beolvasása és a kulcsok és titkok listázása (és azok verziói).
 * A 401-es választ eredményező, nem hitelesített kérelmek. Ilyenek például azok a kérelmek, amelyek nem rendelkeznek olyan tulajdonosi jogkivonattal, amely nem formázott vagy lejárt, vagy érvénytelen tokent tartalmaz.  
-* Event Grid a közeljövőben lejáró értesítési események, a lejárt és a tár hozzáférési szabályzata megváltozott (az új verzió esemény nincs naplózva). Az események naplózása attól függetlenül történik, hogy van-e esemény-előfizetés létrehozva a Key vaultban. További információ: Event Grid- [esemény sémája Key Vault](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault)
+* Event Grid a közeljövőben lejáró értesítési események, a lejárt és a tár hozzáférési szabályzata megváltozott (az új verzió esemény nincs naplózva). Az események naplózása attól függetlenül történik, hogy van-e esemény-előfizetés létrehozva a Key vaultban. További információ: Event Grid- [esemény sémája Key Vault](../../event-grid/event-schema-key-vault.md)
 
 ## <a name="access-your-logs"></a>A naplók elérése
 
@@ -183,7 +183,7 @@ $blobs = Get-AzStorageBlob -Container $container -Context $sa.Context | Get-AzSt
 
 Ha ezt a második parancsmagot a PowerShellben futtatja, a **/** Blobok neveiben lévő határolójel teljes mappastruktúrát hoz létre a célmappában. Ezt a struktúrát fogja használni a Blobok fájlként való letöltéséhez és tárolásához.
 
-A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Példa:
+A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Például:
 
 * Ha több kulcstárolóval rendelkezik, de csak a CONTOSOKEYVAULT3 nevűhöz szeretne naplókat letölteni:
 

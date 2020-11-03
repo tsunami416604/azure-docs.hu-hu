@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 10/27/2020
+ms.date: 11/03/2020
 ms.custom: generated
-ms.openlocfilehash: 60e9ec88fd07d8b04254c5d3917aab09d671f517
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 701c901cb9b85aeaf329846c13e6ed051ea52e63
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900862"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288503"
 ---
 # <a name="azure-built-in-roles"></a>Beépített Azure-szerepkörök
 
@@ -27,7 +27,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 ## <a name="all"></a>Mind
 
 > [!div class="mx-tableFixed"]
-> | Beépített szerepkör | Description | ID (Azonosító) |
+> | Beépített szerepkör | Leírás | ID (Azonosító) |
 > | --- | --- | --- |
 > | **Általános** |  |  |
 > | [Közreműködő](#contributor) | Teljes hozzáférést biztosít az összes erőforrás kezeléséhez, de nem teszi lehetővé szerepkörök hozzárendelését az Azure RBAC-ben. | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -77,6 +77,12 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | **Web** |  |  |
 > | [Adatolvasó Azure Maps](#azure-maps-data-reader) | Hozzáférést biztosít egy Azure Maps-fiókból az olvasási leképezéssel kapcsolatos adatokhoz. | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
 > | [Search Service közreműködő](#search-service-contributor) | Lehetővé teszi a keresési szolgáltatások kezelését, az azokhoz való hozzáférés nélkül. | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
+> | [Szignáló AccessKey-olvasó](#signalr-accesskey-reader) | A Signaler szolgáltatás elérési kulcsainak olvasása | 04165923-9d83-45d5-8227-78b77b0a687e |
+> | [Signaler app Server (előzetes verzió)](#signalr-app-server-preview) | Lehetővé teszi az App Server hozzáférés-vezérlési szolgáltatását a HRE-hitelesítési beállításokkal. | 420fcaa2-552c-430f-98ca-3264be4806c7 |
+> | [Jeladó közreműködője](#signalr-contributor) | A Signaler szolgáltatás erőforrásainak létrehozása, olvasása, frissítése és törlése | 8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761 |
+> | [A jelző kiszolgáló nélküli közreműködői (előzetes verzió)](#signalr-serverless-contributor-preview) | Kiszolgáló nélküli módban teszi lehetővé az alkalmazás-hozzáférési szolgáltatás számára a HRE-hitelesítési beállításokat. | fd53cd77-2268-407a-8f46-7e7863d0f521 |
+> | [A signaler szolgáltatás tulajdonosa (előzetes verzió)](#signalr-service-owner-preview) | Teljes hozzáférés az Azure Signaler szolgáltatás REST API-khoz | 7e4f1700-ea5a-4f59-8f37-079cfe29dce3 |
+> | [Szignáló szolgáltatás olvasója (előzetes verzió)](#signalr-service-reader-preview) | Olvasási hozzáférés az Azure Signaler szolgáltatás REST API-khoz | ddde6b66-c0df-4114-a159-3618637b3035 |
 > | [Webes csomag közreműködői](#web-plan-contributor) | Lehetővé teszi a webhelyek webes csomagjainak kezelését, de azokhoz való hozzáférés nélkül. | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [Webhely közreműködői](#website-contributor) | Lehetővé teszi a webhelyek (nem webes csomagok) kezelését, de nem fér hozzájuk. | de139f84-1756-47ae-9be6-808fbbe84772 |
 > | **Containers** |  |  |
@@ -680,7 +686,7 @@ Tekintse meg Virtual Machines a portálon, és jelentkezzen be normál felhaszn�
 }
 ```
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 
 ### <a name="cdn-endpoint-contributor"></a>CDN-végpont közreműködői
@@ -1156,7 +1162,7 @@ Lehetővé teszi a Traffic Manager-profilok kezelését, de nem teszi lehetővé
 }
 ```
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 
 
 ### <a name="avere-contributor"></a>Avere közreműködője
@@ -2674,6 +2680,282 @@ Lehetővé teszi a keresési szolgáltatások kezelését, az azokhoz való hozz
 }
 ```
 
+### <a name="signalr-accesskey-reader"></a>Szignáló AccessKey-olvasó
+
+A Signaler szolgáltatás elérési kulcsainak olvasása
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | [Microsoft. SignalRService](resource-provider-operations.md#microsoftsignalrservice)/*/READ |  |
+> | [Microsoft. SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/listkeys/Action | A Signaler-hozzáférési kulcsok értékének megtekintése a felügyeleti portálon vagy az API-n keresztül |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/READ | Erőforráscsoportok beolvasása vagy felsorolása. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | *nincs* |  |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Read SignalR Service Access Keys",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/04165923-9d83-45d5-8227-78b77b0a687e",
+  "name": "04165923-9d83-45d5-8227-78b77b0a687e",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.SignalRService/*/read",
+        "Microsoft.SignalRService/SignalR/listkeys/action",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "SignalR AccessKey Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="signalr-app-server-preview"></a>Signaler app Server (előzetes verzió)
+
+Lehetővé teszi az App Server hozzáférés-vezérlési szolgáltatását a HRE-hitelesítési beállításokkal.
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | *nincs* |  |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | [Microsoft. SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/Auth/accessKey/Action | Ideiglenes AccessKey létrehozása a ClientTokens aláírásához. |
+> | [Microsoft. SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/serverConnection/Write | Indítsa el a kiszolgálói kapcsolatokat. |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets your app server access SignalR Service with AAD auth options.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/420fcaa2-552c-430f-98ca-3264be4806c7",
+  "name": "420fcaa2-552c-430f-98ca-3264be4806c7",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.SignalRService/SignalR/auth/accessKey/action",
+        "Microsoft.SignalRService/SignalR/serverConnection/write"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "SignalR App Server (Preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="signalr-contributor"></a>Jeladó közreműködője
+
+A Signaler szolgáltatás erőforrásainak létrehozása, olvasása, frissítése és törlése
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | [Microsoft. SignalRService](resource-provider-operations.md#microsoftsignalrservice)/* |  |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
+> | [Microsoft.](resource-provider-operations.md#microsoftinsights)/alertRules/* | Klasszikus metrikai riasztás létrehozása és kezelése |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/READ | Erőforráscsoportok beolvasása vagy felsorolása. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Központi telepítés létrehozása és kezelése |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | *nincs* |  |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Create, Read, Update, and Delete SignalR service resources",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761",
+  "name": "8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.SignalRService/*",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "SignalR Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="signalr-serverless-contributor-preview"></a>A jelző kiszolgáló nélküli közreműködői (előzetes verzió)
+
+Kiszolgáló nélküli módban teszi lehetővé az alkalmazás-hozzáférési szolgáltatás számára a HRE-hitelesítési beállításokat.
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | *nincs* |  |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | [Microsoft. SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/Auth/clientToken/Action | ClientToken létrehozása az Ügyfélkapcsolat elindításához. |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets your app access service in serverless mode with AAD auth options.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/fd53cd77-2268-407a-8f46-7e7863d0f521",
+  "name": "fd53cd77-2268-407a-8f46-7e7863d0f521",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.SignalRService/SignalR/auth/clientToken/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "SignalR Serverless Contributor (Preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="signalr-service-owner-preview"></a>A signaler szolgáltatás tulajdonosa (előzetes verzió)
+
+Teljes hozzáférés az Azure Signaler szolgáltatás REST API-khoz
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | *nincs* |  |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | [Microsoft. SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/hub/Send/Action | Üzenetek küldése a hub összes ügyfélkapcsolatának. |
+> | [Microsoft. SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/Group/Send/Action | Üzenet küldése a csoportnak. |
+> | [Microsoft. SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/Group/READ | A csoport létezésének vagy a felhasználó létezésének ellenőrzéséhez. |
+> | [Microsoft. SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/Group/Write | Csatlakozás/kilépés csoport. |
+> | [Microsoft. SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/Send/Action | Üzenetek küldése közvetlenül az ügyfél-kapcsolatok számára. |
+> | [Microsoft. SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/READ | Az Ügyfélkapcsolat létezésének ellenőrzéséhez. |
+> | [Microsoft. SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/Write | Az Ügyfélkapcsolat lezárása. |
+> | [Microsoft. SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/User/Send/Action | Üzenetek küldése a felhasználónak, aki több ügyfélkapcsolatból is állhat. |
+> | [Microsoft. SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/User/READ | A felhasználó létezésének ellenőrzéséhez. |
+> | [Microsoft. SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/User/Write |  |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Full access to Azure SignalR Service REST APIs",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/7e4f1700-ea5a-4f59-8f37-079cfe29dce3",
+  "name": "7e4f1700-ea5a-4f59-8f37-079cfe29dce3",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.SignalRService/SignalR/hub/send/action",
+        "Microsoft.SignalRService/SignalR/group/send/action",
+        "Microsoft.SignalRService/SignalR/group/read",
+        "Microsoft.SignalRService/SignalR/group/write",
+        "Microsoft.SignalRService/SignalR/clientConnection/send/action",
+        "Microsoft.SignalRService/SignalR/clientConnection/read",
+        "Microsoft.SignalRService/SignalR/clientConnection/write",
+        "Microsoft.SignalRService/SignalR/user/send/action",
+        "Microsoft.SignalRService/SignalR/user/read",
+        "Microsoft.SignalRService/SignalR/user/write"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "SignalR Service Owner (Preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="signalr-service-reader-preview"></a>Szignáló szolgáltatás olvasója (előzetes verzió)
+
+Olvasási hozzáférés az Azure Signaler szolgáltatás REST API-khoz
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | *nincs* |  |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | [Microsoft. SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/Group/READ | A csoport létezésének vagy a felhasználó létezésének ellenőrzéséhez. |
+> | [Microsoft. SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/READ | Az Ügyfélkapcsolat létezésének ellenőrzéséhez. |
+> | [Microsoft. SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/User/READ | A felhasználó létezésének ellenőrzéséhez. |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Read-only access to Azure SignalR Service REST APIs",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ddde6b66-c0df-4114-a159-3618637b3035",
+  "name": "ddde6b66-c0df-4114-a159-3618637b3035",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.SignalRService/SignalR/group/read",
+        "Microsoft.SignalRService/SignalR/clientConnection/read",
+        "Microsoft.SignalRService/SignalR/user/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "SignalR Service Reader (Preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="web-plan-contributor"></a>Webes csomag közreműködői
 
 Lehetővé teszi a webhelyek webes csomagjainak kezelését, de azokhoz való hozzáférés nélkül.
@@ -2788,7 +3070,7 @@ Lehetővé teszi a webhelyek (nem webes csomagok) kezelését, de nem fér hozz�
 }
 ```
 
-## <a name="containers"></a>Tárolók
+## <a name="containers"></a>Containers
 
 
 ### <a name="acrdelete"></a>AcrDelete
@@ -3943,7 +4225,7 @@ Lehetővé teszi az SQL-kiszolgálók és-adatbázisok biztonsággal kapcsolatos
 > | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/READ | A megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotának beolvasása |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Központi telepítés létrehozása és kezelése |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/READ | Erőforráscsoportok beolvasása vagy felsorolása. |
-> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Locations/administratorAzureAsyncOperation/READ |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Locations/administratorAzureAsyncOperation/READ | A felügyelt példány Azure aszinkron rendszergazdai műveletei eredményének beolvasása. |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/currentSensitivityLabels/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/recommendedSensitivityLabels/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/schemas/Tables/Columns/sensitivityLabels/* |  |
@@ -7336,7 +7618,7 @@ Lehetővé teszi, hogy új laborokat hozzon létre az Azure Lab-fiókjaiban. [To
 }
 ```
 
-## <a name="monitor"></a>Monitor
+## <a name="monitor"></a>Figyelés
 
 
 ### <a name="application-insights-component-contributor"></a>Application Insights összetevő közreműködője

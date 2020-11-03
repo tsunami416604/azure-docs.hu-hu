@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 1f62e0b3a40382c911cd07c777c521adb3649c4d
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d6f3d2051790ba02f5e4ea1687830ccbdf6dcf21
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282317"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285142"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Azure Key Vault és a tároló hozzáférési házirendjének létrehozása Resource Manager-sablonnal
 
@@ -84,7 +84,7 @@ A következő sablon egy alapszintű módszert mutat be kulcstartó létrehozás
 
 ```
 
-További információ az Key Vault sablon beállításairól: [Key Vault ARM-sablon referenciája](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults).
+További információ az Key Vault sablon beállításairól: [Key Vault ARM-sablon referenciája](/azure/templates/microsoft.keyvault/vaults).
 
 > [!IMPORTANT]
 > A sablon újbóli üzembe helyezése esetén a Key vaultban lévő összes meglévő hozzáférési szabályzat felülbírálva lesz. Azt javasoljuk, hogy a `accessPolicies` tulajdonságot meglévő hozzáférési házirendekkel töltse fel, hogy elkerülje a kulcstartóhoz való hozzáférés elvesztését. 
@@ -160,7 +160,7 @@ A teljes Key Vault-sablon újbóli üzembe helyezése nélkül is üzembe helyez
 }
 
 ```
-További információ az Key Vault sablon beállításairól: [Key Vault ARM-sablon referenciája](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/accesspolicies).
+További információ az Key Vault sablon beállításairól: [Key Vault ARM-sablon referenciája](/azure/templates/microsoft.keyvault/vaults/accesspolicies).
 
 ## <a name="more-key-vault-resource-manager-templates"></a>További Key Vault Resource Manager-sablonok
 
@@ -168,13 +168,13 @@ Más Resource Manager-sablonok is elérhetők Key Vault objektumokhoz:
 
 | Titkos kulcsok | Kulcsok | Tanúsítványok |
 |--|--|--|
-|<ul><li>[Gyors útmutató](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-template)<li>[Referencia](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/secrets)|N.A.|N.A.|
+|<ul><li>[Gyors útmutató](../secrets/quick-create-template.md)<li>[Referencia](/azure/templates/microsoft.keyvault/vaults/secrets)|N.A.|N.A.|
 
-További Key Vault sablonokat itt talál: [Key Vault Resource Manager-referenciát](https://docs.microsoft.com/azure/templates/microsoft.keyvault/allversions).
+További Key Vault sablonokat itt talál: [Key Vault Resource Manager-referenciát](/azure/templates/microsoft.keyvault/allversions).
 
 ## <a name="deploy-the-templates"></a>A sablonok üzembe helyezése
 
-A Azure Portal az előző sablonok üzembe helyezéséhez használja a **saját sablon létrehozása a szerkesztőben** című témakört az itt leírtak szerint: [erőforrások üzembe helyezése egyéni sablonból](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template).
+A Azure Portal az előző sablonok üzembe helyezéséhez használja a **saját sablon létrehozása a szerkesztőben** című témakört az itt leírtak szerint: [erőforrások üzembe helyezése egyéni sablonból](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
 Az előző sablonokat fájlokat is mentheti, és a következő parancsokat használhatja:  [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) és [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create):
 

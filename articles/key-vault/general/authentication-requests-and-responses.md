@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 2100572c0bcf5bf65fe5a70ab9e552c2d7f72934
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48f223a55e4a1e4db4ac7057065d67ae64fa0f2c
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983264"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288468"
 ---
 # <a name="authentication-requests-and-responses"></a>Hitelesítés, kérelmek és válaszok
 
@@ -39,7 +39,7 @@ Az egyes típusú objektumok eléréséhez használt URL-utótagok
 
 Azure Key Vault támogatja a JSON formátumú kérelmeket és válaszokat. A Azure Key Vaultra irányuló kérelmeket egy érvényes Azure Key Vault URL-címre irányítja a HTTPS protokollal, néhány URL-paraméterrel és JSON-kódolású kérelem és válasz Törzsével.
 
-Ez a témakör a Azure Key Vault szolgáltatásra vonatkozó jellemzőket ismerteti. Az Azure REST-felületek (például hitelesítés/engedélyezés és hozzáférési token beszerzése) használatával kapcsolatos általános információkért tekintse meg az [azure REST API referenciát](https://docs.microsoft.com/rest/api/azure).
+Ez a témakör a Azure Key Vault szolgáltatásra vonatkozó jellemzőket ismerteti. Az Azure REST-felületek (például hitelesítés/engedélyezés és hozzáférési token beszerzése) használatával kapcsolatos általános információkért tekintse meg az [azure REST API referenciát](/rest/api/azure).
 
 ## <a name="request-url"></a>URL-cím kérése  
  A kulcskezelő műveletek a HTTP POST használatával végeznek HTTP-TÖRLÉSt, beolvasást, javítást, PUT és HTTP POST és titkosítási műveleteket a meglévő kulcsfontosságú objektumokon. Azok az ügyfelek, amelyek nem támogatják az adott HTTP-műveleteket, a HTTP-BEJEGYZÉST is használhatják az X-HTTP-Request fejléc használatával a kívánt művelet megadásához. azok a kérelmek, amelyek általában nem igénylik a törzset, üres törzset is tartalmazhatnak a HTTP POST használatakor, például ha a POST törlés helyett a POST parancsot használják.  
@@ -111,7 +111,7 @@ Ez a témakör a Azure Key Vault szolgáltatásra vonatkozó jellemzőket ismert
 ## <a name="authentication"></a>Hitelesítés  
  A Azure Key Vault összes kérését hitelesíteni kell. Azure Key Vault támogatja Azure Active Directory hozzáférési jogkivonatokat, amelyek a OAuth2 [[RFC6749](https://tools.ietf.org/html/rfc6749)] használatával szerezhetők be. 
  
- Az alkalmazás regisztrálásával és a Azure Key Vault használatának hitelesítésével kapcsolatos további információkért lásd: [az ügyfélalkalmazás regisztrálása az Azure ad](https://docs.microsoft.com/rest/api/azure/index#register-your-client-application-with-azure-ad)-ben.
+ Az alkalmazás regisztrálásával és a Azure Key Vault használatának hitelesítésével kapcsolatos további információkért lásd: [az ügyfélalkalmazás regisztrálása az Azure ad](/rest/api/azure/index#register-your-client-application-with-azure-ad)-ben.
  
  A hozzáférési jogkivonatokat a HTTP-engedélyezési fejléc használatával kell elküldeni a szolgáltatásnak:  
 
@@ -133,5 +133,4 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
 -   engedélyezés: a OAuth2-engedélyezési szolgáltatás címe, amely a kérelem hozzáférési jogkivonatának beszerzésére használható.  
 
--   erőforrás: az `https://vault.azure.net` engedélyezési kérelemben használni kívánt erőforrás () neve.  
-
+-   erőforrás: az `https://vault.azure.net` engedélyezési kérelemben használni kívánt erőforrás () neve.

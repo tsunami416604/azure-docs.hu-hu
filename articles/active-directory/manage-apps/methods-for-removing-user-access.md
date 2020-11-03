@@ -1,26 +1,21 @@
 ---
-title: Felhasználó hozzáférésének eltávolítása egy alkalmazáshoz | Microsoft Docs
-description: Ismerje meg, hogyan távolíthatja el a felhasználók egy alkalmazáshoz való hozzáférését
+title: Felhasználó hozzáférésének eltávolítása Azure Active Directory
+description: Megtudhatja, hogyan távolíthatja el egy felhasználó hozzáférését egy alkalmazáshoz Azure Active Directory
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 10/17/2018
+ms.date: 11/02/2020
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f9626c256755e2fce81b593d95b8680f4bb55ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8544c35d77dfc32ece9b21a602f301ab15c22439
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763159"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288313"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>Felhasználó hozzáférésének eltávolítása egy alkalmazáshoz
 
@@ -36,29 +31,13 @@ Ha le szeretné tiltani az összes felhasználói bejelentkezést egy alkalmazá
 
 ## <a name="i-want-to-delete-an-application-entirely"></a>Teljesen törölni szeretném az alkalmazást
 
-**Egy alkalmazás törléséhez**kövesse az alábbi utasításokat:
-
-1. Nyissa meg a [**Azure Portal**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként** vagy **társ-** rendszergazdaként.
-
-2. Nyissa meg a **Azure Active Directory bővítményt** a bal oldali navigációs menü tetején található **összes szolgáltatás** elemre kattintva.
-
-3. Írja be a **"Azure Active Directory**" kifejezést a szűrő keresőmezőbe, és válassza ki a **Azure Active Directory** elemet.
-
-4. Kattintson a **vállalati alkalmazások** lehetőségre a bal oldali navigációs menü Azure Active Directory.
-
-5. Kattintson a **minden alkalmazás** elemre az alkalmazások listájának megtekintéséhez.
-
-   * Ha nem látja a használni kívánt alkalmazást, használja a **minden alkalmazás lista** tetején található **szűrő** vezérlőelemet, és állítsa a **show (megjelenítés** ) lehetőséget az **összes alkalmazásra.**
-
-6. Válassza ki a törölni kívánt alkalmazást.
-
-7. Az alkalmazás betöltése után kattintson a **Törlés** ikonra a felső alkalmazás **Áttekintés** paneljén.
+Az [alkalmazások kezelésének](delete-application-portal.md) gyors üzembe helyezési sorozata útmutatást nyújt az alkalmazások Azure Active Directory bérlőből való törléséhez.
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Le szeretném tiltani az összes jövőbeli felhasználói beleegyező műveletet bármely alkalmazáshoz
 
 A teljes címtár felhasználói beleegyezésének letiltása megakadályozza, hogy a végfelhasználók bármilyen alkalmazást fogadnak el. A rendszergazdák továbbra is engedélyezhetik a felhasználó nevében való hozzájárulásukat. Az alkalmazások beleegyezésével kapcsolatos további információkért, és miért nem kívánja ezt megtenni, olvassa el a [felhasználói és rendszergazdai beleegyezést](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)ismertető témakört. Lásd még:, [engedélyek és beleegyezett](../develop/v2-permissions-and-consent.md).
 
-Ha **le szeretné tiltani az összes jövőbeli felhasználói beleegyező műveletet a teljes címtárban**, kövesse az alábbi utasításokat:
+Ha **le szeretné tiltani az összes jövőbeli felhasználói beleegyező műveletet a teljes címtárban** , kövesse az alábbi utasításokat:
 
 1.  Nyissa meg a [**Azure Portalt**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként.**
 
@@ -66,11 +45,11 @@ Ha **le szeretné tiltani az összes jövőbeli felhasználói beleegyező műve
 
 3.  A navigációs menüben kattintson a **vállalati alkalmazások** elemre.
 
-5.  Kattintson a **felhasználói beállítások**elemre.
+5.  Kattintson a **felhasználói beállítások** elemre.
 
 6.  Beállíthatja, hogy a **felhasználók engedélyezhetik az alkalmazások számára, hogy a nevükben lévő vállalati adatcserét** **nem** értékre, majd kattintson a Save (Mentés) gombra.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az alkalmazásokhoz való hozzáférés kezelése](what-is-access-management.md)

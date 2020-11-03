@@ -9,18 +9,18 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e06a7a759c712b47f3a725a3c49a660226da6a09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23a36bfc048a6214ccb79b793a23c21d5f8e305e
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90064148"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288270"
 ---
 # <a name="migrate-from-vault-access-policy-to-an-azure-role-based-access-control-preview-permission-model"></a>Áttelepítés a tár hozzáférési házirendjéből egy Azure szerepköralapú hozzáférés-vezérlés (előzetes verzió) engedélyezési modelljére
 
 A tár hozzáférési szabályzatának modellje egy Key Vault beépített engedélyezési rendszer, amely hozzáférést biztosít a kulcsokhoz, a titkokhoz és a tanúsítványokhoz. A hozzáférést úgy szabályozhatja, hogy a rendszerbiztonsági tag (felhasználó, csoport, szolgáltatásnév, felügyelt identitás) egyéni engedélyeit rendeli hozzá Key Vault hatókörben. 
 
-Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) egy [Azure Resource Managerra](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) épülő engedélyezési rendszer, amely az Azure-erőforrások részletes hozzáférés-kezelését teszi lehetővé. A Key Vault kulcsok, titkok és tanúsítványok hozzáférés-vezérlésének Azure-RBAC jelenleg nyilvános előzetes verzióban érhető el. Az Azure RBAC szerepkör-hozzárendelések létrehozásával szabályozhatja az erőforrásokhoz való hozzáférést, amely három elemből áll: rendszerbiztonsági tag, szerepkör-definíció (az engedélyek előre meghatározott készlete) és a hatókör (erőforrás-csoport vagy egyedi erőforrás). További információ: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview).
+Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) egy [Azure Resource Managerra](../../azure-resource-manager/management/overview.md) épülő engedélyezési rendszer, amely az Azure-erőforrások részletes hozzáférés-kezelését teszi lehetővé. A Key Vault kulcsok, titkok és tanúsítványok hozzáférés-vezérlésének Azure-RBAC jelenleg nyilvános előzetes verzióban érhető el. Az Azure RBAC szerepkör-hozzárendelések létrehozásával szabályozhatja az erőforrásokhoz való hozzáférést, amely három elemből áll: rendszerbiztonsági tag, szerepkör-definíció (az engedélyek előre meghatározott készlete) és a hatókör (erőforrás-csoport vagy egyedi erőforrás). További információ: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md).
 
 Az Azure RBAC való Migrálás előtt fontos megérteni az előnyeit és korlátozásait.
 
@@ -28,7 +28,7 @@ Az Azure RBAC fő előnyei a tár-hozzáférési szabályzatok esetében:
 - Egyesített hozzáférés-vezérlési modellt biztosít az Azure-erőforrásokhoz – azonos API az Azure-szolgáltatások között
 - Központosított hozzáférés-kezelés rendszergazdák számára – egyetlen nézetben kezelheti az összes Azure-erőforrást
 - Integrált [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) az Időalapú hozzáférés-vezérléshez
-- Hozzárendelések megtagadása – a rendszerbiztonsági tag kizárásának lehetősége az adott hatókörön belül. További információ: az [Azure deny-hozzárendelések ismertetése](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments)
+- Hozzárendelések megtagadása – a rendszerbiztonsági tag kizárásának lehetősége az adott hatókörön belül. További információ: az [Azure deny-hozzárendelések ismertetése](../../role-based-access-control/deny-assignments.md)
 
 Az Azure RBAC hátrányai:
 - Szerepkör-hozzárendelések késése – a szerepkör-hozzárendelés alkalmazása több percet is igénybe vehet. A tár hozzáférési szabályzatait azonnal hozzárendeli a rendszer.
@@ -36,7 +36,7 @@ Az Azure RBAC hátrányai:
 
 ## <a name="access-policies-to-azure-roles-mapping"></a>Hozzáférési szabályzatok az Azure-szerepkörök hozzárendeléséhez
 
-Az Azure RBAC számos Azure beépített szerepkörrel rendelkezik, amelyeket a felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz és felügyelt identitásokhoz rendelhet hozzá. Ha a beépített szerepkörök nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját [Egyéni Azure-szerepköröket](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)is.
+Az Azure RBAC számos Azure beépített szerepkörrel rendelkezik, amelyeket a felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz és felügyelt identitásokhoz rendelhet hozzá. Ha a beépített szerepkörök nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját [Egyéni Azure-szerepköröket](../../role-based-access-control/custom-roles.md)is.
 
 Key Vault beépített szerepkörök a kulcsok, tanúsítványok és titkok hozzáférésének kezeléséhez:
 - Key Vault rendszergazda (előzetes verzió)
@@ -47,7 +47,7 @@ Key Vault beépített szerepkörök a kulcsok, tanúsítványok és titkok hozz�
 - Key Vault Secrets Officer (előzetes verzió)
 - Key Vault Secrets User (előzetes verzió)
 
-További információ a meglévő beépített szerepkörökről: [Azure beépített szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
+További információ a meglévő beépített szerepkörökről: [Azure beépített szerepkörök](../../role-based-access-control/built-in-roles.md)
 
 A tár-hozzáférési szabályzatok az egyénileg kiválasztott engedélyekkel vagy előre definiált engedélyezési sablonokkal rendelhetők hozzá.
 
@@ -75,11 +75,11 @@ Hozzáférési szabályzatok előre definiált engedélyezési sablonjai:
 | Titkos kód kezelése | Titkok: minden művelet| Key Vault Secrets Officer (előzetes verzió)|
 | Tanúsítványkezelés | Tanúsítványok: minden művelet | Key Vault Certificates Officer (előzetes verzió)|
 | SQL Server Connector | Kulcsok: Get, List, wrap Key, dewrap Key | Titkosítási szolgáltatás titkosításának Key Vault (előzetes verzió)|
-| Azure Data Lake Storage vagy Azure Storage | Kulcsok: beolvasás, Listázás, kicsomagolási kulcs | N.A.<br> Egyéni szerepkör szükséges|
-| Azure Backup | Kulcsok: beolvasás, Listázás, biztonsági mentés<br> Tanúsítvány: lekérés, Listázás, biztonsági mentés | N.A.<br> Egyéni szerepkör szükséges|
+| Azure Data Lake Storage vagy Azure Storage | Kulcsok: beolvasás, Listázás, kicsomagolási kulcs | N/A<br> Egyéni szerepkör szükséges|
+| Azure Backup | Kulcsok: beolvasás, Listázás, biztonsági mentés<br> Tanúsítvány: lekérés, Listázás, biztonsági mentés | N/A<br> Egyéni szerepkör szükséges|
 | Exchange Online-ügyfél kulcsa | Kulcsok: Get, List, wrap Key, dewrap Key | Titkosítási szolgáltatás titkosításának Key Vault (előzetes verzió)|
 | Exchange Online-ügyfél kulcsa | Kulcsok: Get, List, wrap Key, dewrap Key | Titkosítási szolgáltatás titkosításának Key Vault (előzetes verzió)|
-| Azure Information BYOK | Kulcsok: beolvasás, visszafejtés, aláírás | N.A.<br>Egyéni szerepkör szükséges|
+| Azure Information BYOK | Kulcsok: beolvasás, visszafejtés, aláírás | N/A<br>Egyéni szerepkör szükséges|
 
 
 ## <a name="assignment-scopes-mapping"></a>Hozzárendelési hatókörök leképezése  
@@ -102,10 +102,10 @@ A tár hozzáférési szabályzatának engedélyezési modellje csak Key Vault e
 ## <a name="vault-access-policy-to-azure-rbac-migration-steps"></a>A tár hozzáférési szabályzata az Azure RBAC áttelepítési lépéseihez
 Az Azure RBAC és a tár hozzáférési szabályzatának engedélyezési modellje számos különbséget mutat. A kiesések elkerülése érdekében az alábbi lépések ajánlottak.
  
-1. **Szerepkörök azonosítása és hozzárendelése**: a fenti leképezési táblázat alapján azonosítsa a beépített szerepköröket, és szükség esetén hozzon létre egyéni szerepköröket. Szerepkörök hozzárendelése hatókörökhöz a hatókörök hozzárendelési útmutatója alapján. A szerepkörök Key vaulthoz való hozzárendelésével kapcsolatos további információkért lásd: [hozzáférés biztosítása Key Vault Azure szerepköralapú hozzáférés-vezérléssel (előzetes verzió)](rbac-guide.md)
-1. **Szerepkörök hozzárendelésének ellenőrzése**: az Azure RBAC szerepkör-hozzárendelései több percet is igénybe vehetnek. A szerepkör-hozzárendelések vizsgálatával kapcsolatos útmutatóért lásd: [szerepkörök hozzárendeléseinek listázása a hatókörben](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal#list-role-assignments-for-a-user-at-a-scope)
-1. **Figyelés és riasztás konfigurálása a Key vaultban**: fontos, hogy engedélyezze a naplózást és a beállítás riasztást a hozzáférés-megtagadási kivételekhez. További információ: [figyelés és riasztás a Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/alert)
-1. **Azure szerepköralapú hozzáférés-vezérlési engedély modell beállítása Key Vault: az**Azure RBAC engedélyezési modell engedélyezése érvényteleníti az összes meglévő hozzáférési szabályzatot. Ha hiba történt, az engedélyezési modell visszaváltható az összes meglévő, érintetlen maradó hozzáférési házirenddel.
+1. **Szerepkörök azonosítása és hozzárendelése** : a fenti leképezési táblázat alapján azonosítsa a beépített szerepköröket, és szükség esetén hozzon létre egyéni szerepköröket. Szerepkörök hozzárendelése hatókörökhöz a hatókörök hozzárendelési útmutatója alapján. A szerepkörök Key vaulthoz való hozzárendelésével kapcsolatos további információkért lásd: [hozzáférés biztosítása Key Vault Azure szerepköralapú hozzáférés-vezérléssel (előzetes verzió)](rbac-guide.md)
+1. **Szerepkörök hozzárendelésének ellenőrzése** : az Azure RBAC szerepkör-hozzárendelései több percet is igénybe vehetnek. A szerepkör-hozzárendelések vizsgálatával kapcsolatos útmutatóért lásd: [szerepkörök hozzárendeléseinek listázása a hatókörben](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-for-a-user-at-a-scope)
+1. **Figyelés és riasztás konfigurálása a Key vaultban** : fontos, hogy engedélyezze a naplózást és a beállítás riasztást a hozzáférés-megtagadási kivételekhez. További információ: [figyelés és riasztás a Azure Key Vault](./alert.md)
+1. **Azure szerepköralapú hozzáférés-vezérlési engedély modell beállítása Key Vault: az** Azure RBAC engedélyezési modell engedélyezése érvényteleníti az összes meglévő hozzáférési szabályzatot. Ha hiba történt, az engedélyezési modell visszaváltható az összes meglévő, érintetlen maradó hozzáférési házirenddel.
 
 > [!NOTE]
 > Ha az Azure RBAC engedélyezési modellje engedélyezve van, az összes olyan parancsfájl sikertelen lesz, amely a hozzáférési szabályzatok frissítését kísérli meg. Fontos, hogy frissítse ezeket a parancsfájlokat az Azure RBAC használatához.
@@ -114,8 +114,8 @@ Az Azure RBAC és a tár hozzáférési szabályzatának engedélyezési modellj
 -  A szerepkör-hozzárendelés néhány perc elteltével nem működik – előfordulhatnak olyan helyzetek, amikor a szerepkör-hozzárendelések hosszabb időt vehetnek igénybe. Fontos, hogy az ilyen esetekben az újrapróbálkozási logikát írja a kódban.
 - A szerepkör-hozzárendelések eltűntek, ha Key Vault törölve lettek (Soft-delete) A helyreállítás után újra létre kell hozni az összes szerepkör-hozzárendelést.    
 
-## <a name="learn-more"></a>Tudjon meg többet
+## <a name="learn-more"></a>További információ
 
-- [Az Azure RBAC áttekintése](https://docs.microsoft.com/azure/role-based-access-control/overview)
-- [Egyéni szerepkörök oktatóanyaga](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-cli)
+- [Az Azure RBAC áttekintése](../../role-based-access-control/overview.md)
+- [Egyéni szerepkörök oktatóanyaga](../../role-based-access-control/tutorial-custom-role-cli.md)
 - [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)

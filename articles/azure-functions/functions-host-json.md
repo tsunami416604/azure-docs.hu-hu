@@ -3,12 +3,12 @@ title: host.jsAzure Functions 2. x esetén
 description: A v2 futtatókörnyezettel rendelkező fájl Azure Functions host.jsdokumentációja.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: f58eefd636b2bd59d6b3656bf162f7d601f7ff85
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 0b6fbe2553541b6260697584fa7066cdcb1fe122
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167651"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93284512"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x és újabb verziók – host.json referencia 
 
@@ -117,6 +117,11 @@ A (z) 2. x + verzióban található fájlon a következő minta *host.js* minden
     "managedDependency": {
         "enabled": true
     },
+    "retry": {
+      "strategy": "fixedDelay",
+      "maxRetryCount": 5,
+      "delayInterval": "00:00:05"
+    },
     "singleton": {
       "lockPeriod": "00:00:15",
       "listenerLockPeriod": "00:01:00",
@@ -167,7 +172,7 @@ A teljes JSON-struktúra esetében tekintse [meg a fájl host.jskorábbi példá
 | samplingPercentageDecreaseTimeout | 00:00:01 | A mintavételezés százalékos értékének megváltozásakor ez a tulajdonság határozza meg, hogy a későbbiekben milyen hamar Application Insights a mintavételezési százalékos arány a kevesebb adattal való rögzítéshez. |
 | minSamplingPercentage | 0,1 | Mivel a mintavételezési százalék változó, ez a tulajdonság határozza meg a minimálisan megengedett mintavételi százalékot. |
 | maxSamplingPercentage | 100,0 | Mivel a mintavételezési százalék változó, ez a tulajdonság határozza meg a maximálisan megengedett mintavételi százalékot. |
-| movingAverageRatio | 1.0 | A mozgóátlag kiszámításakor a legutóbbi értékhez rendelt súlyozást. 1 értékkel egyenlő vagy annál kisebb értéket használjon. A kisebb értékek miatt az algoritmus kevésbé lesz újraaktiválva a hirtelen változásokkal. |
+| movingAverageRatio | 1,0 | A mozgóátlag kiszámításakor a legutóbbi értékhez rendelt súlyozást. 1 értékkel egyenlő vagy annál kisebb értéket használjon. A kisebb értékek miatt az algoritmus kevésbé lesz újraaktiválva a hirtelen változásokkal. |
 | excludedTypes | null | Pontosvesszővel tagolt lista, amelyet nem szeretne mintát venni. A felismert típusok a következők:,,,, `Dependency` `Event` `Exception` `PageView` `Request` és `Trace` . A rendszer továbbítja a megadott típusok összes példányát. a nem megadott típusok mintául szolgálnak. |
 | includedTypes | null | A mintavételhez használni kívánt típusok pontosvesszővel tagolt listája; az üres lista minden típust magában foglalja. Írja be az `excludedTypes` itt felsorolt felülbírálási típusok listán szereplő típust. A felismert típusok a következők:,,,, `Dependency` `Event` `Exception` `PageView` `Request` és `Trace` . A megadott típusok példányainak mintája; a nem megadott vagy vélelmezett típusú típusok mintavételezés nélkül továbbítódnak. |
 
@@ -350,6 +355,28 @@ A felügyelt függőség egy olyan szolgáltatás, amely jelenleg csak PowerShel
 
 A konfigurációs beállítások a [Storage üzenetsor-eseményindítók és-kötések](functions-bindings-storage-queue-output.md#host-json)szolgáltatásban találhatók.  
 
+## <a name="retry"></a>retry
+
+Az [újrapróbálkozási házirend](./functions-bindings-error-pages.md#retry-policies) beállításait szabályozza az alkalmazás összes végrehajtásához.
+
+```json
+{
+    "retry": {
+        "strategy": "fixedDelay",
+        "maxRetryCount": 2,
+        "delayInterval": "00:00:03"  
+    }
+}
+```
+
+|Tulajdonság  |Alapértelmezett | Leírás |
+|---------|---------|---------| 
+|stratégia|null|Kötelező. A használt újrapróbálkozási stratégia. Az érvényes értékek a következők: `fixedDelay` vagy `exponentialBackoff` .|
+|Maxretrycount csak|null|Kötelező. Az újrapróbálkozások maximális száma egy függvény végrehajtásakor. `-1` azt jelenti, hogy határozatlan ideig próbálkozik.|
+|delayInterval|null|Az újrapróbálkozások közötti késleltetés a `fixedDelay` stratégia használatával.|
+|minimumInterval|null|A stratégia használatának minimális újrapróbálkozási késleltetése `exponentialBackoff` .|
+|maximumInterval|null|A stratégia használatának maximális újrapróbálkozási késleltetése `exponentialBackoff` .| 
+
 ## <a name="sendgrid"></a>sendGrid
 
 A konfigurációs beállítás a SendGrid- [Eseményindítók és-kötések](functions-bindings-sendgrid.md#host-json)szolgáltatásban található.
@@ -413,7 +440,7 @@ Tegyük fel például, hogy helyileg futtatta az alkalmazás-betekintési mintav
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Útmutató a host.jsfájl frissítéséhez](functions-reference.md#fileupdate)

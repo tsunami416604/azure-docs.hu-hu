@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: add94fe05eecd2fb77ba0d6d79fe6765afe3baaa
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 5558a57812414f6f1bb1be053a089af98533155a
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091015"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288337"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Az Azure-oldal Blobok áttekintése
 
@@ -24,6 +24,10 @@ Az Azure Storage háromféle blob Storage-típust kínál: Blobok blokkolását,
 Az oldal Blobok a 512 bájtos lapok gyűjteményei, amelyek lehetővé teszik a bájtok tetszőleges tartományának olvasását/írását. Ezért az oldal Blobok ideálisak az olyan index-alapú és ritka adatstruktúrák tárolására, mint az operációs rendszer és az adatlemezek Virtual Machines és adatbázisokhoz. Az Azure SQL DB például a blobokat használja az adatbázisok alapjául szolgáló állandó tárterületként. Emellett a Range-Based-frissítésekkel rendelkező fájlok esetében is gyakran használják az oldal blobokat.  
 
 Az Azure Page Blobok legfontosabb funkciói a REST-felület, a mögöttes tároló tartóssága, valamint a zökkenőmentes áttelepítési képességek az Azure-ban. Ezeket a funkciókat részletesebben a következő szakaszban tárgyaljuk. Emellett az Azure-lapok Blobok jelenleg két típusú tárolóban támogatottak: Premium Storage és standard Storage. A Premium Storage kifejezetten olyan számítási feladatokhoz lett tervezve, amelyek konzisztens nagy teljesítményű és kis késleltetésű, prémium szintű oldal-blobokat biztosítanak a nagy teljesítményű tárolási helyzetekben. A standard szintű Storage-fiókok költséghatékonyan használhatók a késést nem okozó számítási feladatok futtatásához.
+
+## <a name="restrictions"></a>Korlátozások
+
+Az oldal Blobok csak a **lassú elérési** szintet használhatják, nem használhatják a ritka **vagy az** **archiválási** szintet. A hozzáférési szintekkel kapcsolatos további információkért lásd: [hozzáférési szintek az Azure Blob Storage – gyors, ritka és archív](storage-blob-storage-tiers.md).
 
 ## <a name="sample-use-cases"></a>Használati példák
 
@@ -59,7 +63,7 @@ Először szerezzen be egy hivatkozást egy tárolóra. Az oldal blobjának lét
 
 # <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
-Az oldal blobjának létrehozásához először hozzon létre egy **CloudBlobClient** objektumot a Storage-fiók blob Storage-hoz való hozzáféréséhez szükséges alap URI-val (*pbaccount* az 1. ábrán) a **StorageCredentialsAccountAndKey** objektummal együtt, az alábbi példában látható módon. A példa ezután egy **CloudBlobContainer** objektumra mutató hivatkozást hoz létre, majd létrehozza a tárolót (*testvhds*), ha még nem létezik. Ezután a **CloudBlobContainer** objektum használatával hozzon létre egy **CloudPageBlob** objektumra mutató hivatkozást úgy, hogy megadhatja az oldal blobjának nevét (OS4. vhd) az eléréséhez. Az oldal blobjának létrehozásához hívja meg a [CloudPageBlob. Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create), és adja meg a blob létrehozásához szükséges maximális méretet. A *blobSize* 512 bájtos többszörösének kell lennie.
+Az oldal blobjának létrehozásához először hozzon létre egy **CloudBlobClient** objektumot a Storage-fiók blob Storage-hoz való hozzáféréséhez szükséges alap URI-val ( *pbaccount* az 1. ábrán) a **StorageCredentialsAccountAndKey** objektummal együtt, az alábbi példában látható módon. A példa ezután egy **CloudBlobContainer** objektumra mutató hivatkozást hoz létre, majd létrehozza a tárolót ( *testvhds* ), ha még nem létezik. Ezután a **CloudBlobContainer** objektum használatával hozzon létre egy **CloudPageBlob** objektumra mutató hivatkozást úgy, hogy megadhatja az oldal blobjának nevét (OS4. vhd) az eléréséhez. Az oldal blobjának létrehozásához hívja meg a [CloudPageBlob. Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create), és adja meg a blob létrehozásához szükséges maximális méretet. A *blobSize* 512 bájtos többszörösének kell lennie.
 
 ```csharp
 using Microsoft.Azure;

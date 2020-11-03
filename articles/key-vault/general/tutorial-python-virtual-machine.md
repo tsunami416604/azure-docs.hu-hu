@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 89118f13bc009ce60d4fd1c82dfe7688bf1e551b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ae62bf353f8a92c4408d4a38a91771ad60a13107
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741279"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285312"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>Oktatóanyag: Azure Key Vault használata virtuális géppel a Pythonban
 
@@ -148,7 +148,7 @@ print(f"The value of secret '{secretName}' in '{keyVaultName}' is: '{retrieved_s
 
 ## <a name="run-the-sample-python-app"></a>A Python-alkalmazás mintájának futtatása
 
-Végül futtassa a **sample.py** . Ha minden jól ment, vissza kell adni a titkos kulcs értékét:
+Végül futtassa a **sample.py**. Ha minden jól ment, vissza kell adni a titkos kulcs értékét:
 
 ```bash
 python3 sample.py
@@ -156,7 +156,7 @@ python3 sample.py
 The value of secret 'mySecret' in '<your-unique-keyvault-name>' is: 'Success!'
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rájuk szükség, törölje a virtuális gépet és a kulcstartót.  Ezt gyorsan elvégezheti, ha egyszerűen törli azt az erőforráscsoportot, amelyhez tartoznak:
 
@@ -166,4 +166,4 @@ az group delete -g myResourceGroup
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)
+[Azure Key Vault REST API](/rest/api/keyvault/)
