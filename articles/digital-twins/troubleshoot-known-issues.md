@@ -68,7 +68,7 @@ A személyes [Microsoft-fiók (MSA)](https://account.microsoft.com/account)szolg
 
 Az Azure-beli digitális Twins-alkalmazásokban az **[Azure. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) Library** **1.2.0** használatával történő írás során problémák merülhetnek fel a [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) metódussal.
 
-Ez nem a könyvtár legújabb verziója. A legújabb verzió az **1.2.2** .
+Ez nem a könyvtár legújabb verziója. A legújabb verzió az **1.2.2**.
 
 Az érintett módszert a következő cikkek használják: 
 * [*Oktatóanyag: ügyfélalkalmazás kódolása*](tutorial-code.md)

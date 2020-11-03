@@ -263,7 +263,7 @@ A runbook jelenleg a parancsmaghoz megadott erőforráscsoporthoz indítja el a 
 
 5. Válassza ki a `Start-AzVM` tevékenységet, majd kattintson a **Parameters (paraméterek** ) elemre.
 
-6. Módosítsa az **adatforrás** mezőjét a **Name** **Runbook bemenetre** . Ezután válassza a **VMName** lehetőséget.
+6. Módosítsa az **adatforrás** mezőjét a **Name** **Runbook bemenetre**. Ezután válassza a **VMName** lehetőséget.
 
 7. Módosítsa a **ResourceGroupName** **adatforrás** mezőjét a **Runbook bemenetre** , majd válassza a **ResourceGroupName** lehetőséget.
 
@@ -309,7 +309,7 @@ Mostantól módosíthatja a runbook, hogy csak akkor próbálja meg elindítani 
 
 12. Hozzon létre egy hivatkozást a alkalmazásból `Get-AzVM` `Code` .  
 
-13. Kattintson `Code` a és a lehetőségre a konfiguráció ablaktáblán, hogy lekérje a címkét az **állapot lekéréséhez** .
+13. Kattintson `Code` a és a lehetőségre a konfiguráció ablaktáblán, hogy lekérje a címkét az **állapot lekéréséhez**.
 
 14. Válassza ki `Code` a elemet, és megjelenik a Kódszerkesztő oldal.  
 
@@ -339,11 +339,11 @@ Mostantól módosíthatja a runbook, hogy csak akkor próbálja meg elindítani 
 
 20. Kétszer adja hozzá `Write-Output` a vászonhoz.
 
-21. Az első `Write-Output` vezérlőelem esetében kattintson a **Parameters (paraméterek** ) elemre, és módosítsa a **címke** értékét a **virtuális gép értesítéséhez** .
+21. Az első `Write-Output` vezérlőelem esetében kattintson a **Parameters (paraméterek** ) elemre, és módosítsa a **címke** értékét a **virtuális gép értesítéséhez**.
 
 22. A **inputobject elemnél** módosítsa az **adatforrást** a **PowerShell-kifejezésre** , és írja be a kifejezést a kifejezésbe `$VMName successfully started.` .
 
-23. A második `Write-Output` vezérlőn kattintson a **Paraméterek** elemre, és módosítsa a **címke** értéket a **virtuális gép értesítésének megkezdéséhez** .
+23. A második `Write-Output` vezérlőn kattintson a **Paraméterek** elemre, és módosítsa a **címke** értéket a **virtuális gép értesítésének megkezdéséhez**.
 
 24. A **inputobject elemnél** módosítsa az **adatforrást** a **PowerShell-kifejezésre** , és írja be a kifejezést a kifejezésbe `$VMName could not start` .
 

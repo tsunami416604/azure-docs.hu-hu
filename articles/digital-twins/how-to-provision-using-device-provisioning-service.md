@@ -52,7 +52,7 @@ Az architektúra egyes lépéseinek mélyebb magyarázatához tekintse meg az eg
 
 Ebben a szakaszban az eszköz kiépítési szolgáltatását az Azure digitális Twins-hoz csatlakoztatja, hogy automatikusan kiépítse az eszközöket az alábbi elérési úton. Ez a [korábban](#solution-architecture)bemutatott teljes architektúra kivonata.
 
-:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="Egy eszköz és számos Azure-szolgáltatás áttekintése egy végpontok közötti forgatókönyvben. Az adatforgalom a termosztátos eszköz és a DPS közötti kapcsolaton keresztül zajlik. Az adatok a DPS-ből a IoT Hubba és az Azure digitális Twins-ba is áramlanak a &quot;kiosztás&quot; címkével ellátott Azure-függvény használatával. A manuális &quot;eszköz törlése&quot; műveletből származó adatok IoT Hub > Event Hubs > Azure Functions > Azure digitális Ikreken keresztül áramlanak.":::
+:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="Flow kiépítése – a megoldás architektúra-diagramjának kivonata, amely a folyamat egyes részeit címkézi. Az adatforgalom egy termosztátos eszköz és a DPS (1 for Device > DPS és 5 a DPS > eszköz esetében) között zajlik. Az adatok a DPS-ből a IoT Hub (4) és az Azure digitális Twins (3) rendszerbe is áramlanak a &quot;kiosztás&quot; (2) címkével ellátott Azure-függvény használatával.":::
 
 Itt látható a folyamat folyamatábrája:
 1. Az eszköz kapcsolatba lép a DPS-végponttal, és azonosítja az azonosító adatokat, hogy igazolja az identitását.
@@ -246,9 +246,9 @@ Győződjön meg arról, hogy az engedélyek és a felügyelt identitás szerepk
 
 ### <a name="create-device-provisioning-enrollment"></a>Eszköz kiépítési regisztrációjának létrehozása
 
-Ezután létre kell hoznia egy regisztrációt az eszköz kiépítési szolgáltatásában egy **Egyéni foglalási függvénnyel** . Az egyéni kiosztási szabályzatokról szóló cikk az eszköz üzembe helyezése [*és az*](../iot-dps/how-to-use-custom-allocation-policies.md#create-the-enrollment) [*egyedi eszközök kulcsai*](../iot-dps/how-to-use-custom-allocation-policies.md#derive-unique-device-keys) szakasza című cikkben ismertetett útmutatást követve végezze el az alábbi utasításokat.
+Ezután létre kell hoznia egy regisztrációt az eszköz kiépítési szolgáltatásában egy **Egyéni foglalási függvénnyel**. Az egyéni kiosztási szabályzatokról szóló cikk az eszköz üzembe helyezése [*és az*](../iot-dps/how-to-use-custom-allocation-policies.md#create-the-enrollment) [*egyedi eszközök kulcsai*](../iot-dps/how-to-use-custom-allocation-policies.md#derive-unique-device-keys) szakasza című cikkben ismertetett útmutatást követve végezze el az alábbi utasításokat.
 
-A folyamat során a rendszer az imént létrehozott függvényhez csatolja a beléptetést, ha kiválasztja a függvényt a lépés során, hogy **kiválassza, hogyan kívánja hozzárendelni az eszközöket a hubokhoz** . A regisztráció létrehozása után a rendszer később a beléptetési nevet és az elsődleges vagy másodlagos SAS-kulcsot fogja használni az eszköz szimulátorjának konfigurálásához ehhez a cikkhez.
+A folyamat során a rendszer az imént létrehozott függvényhez csatolja a beléptetést, ha kiválasztja a függvényt a lépés során, hogy **kiválassza, hogyan kívánja hozzárendelni az eszközöket a hubokhoz**. A regisztráció létrehozása után a rendszer később a beléptetési nevet és az elsődleges vagy másodlagos SAS-kulcsot fogja használni az eszköz szimulátorjának konfigurálásához ehhez a cikkhez.
 
 ### <a name="set-up-the-device-simulator"></a>Az eszköz-szimulátor beállítása
 
@@ -281,7 +281,7 @@ node .\adt_custom_register.js
 ```
 
 Látnia kell az eszközt, amely regisztrálva van, és csatlakoztatva van IoT Hubhoz, majd megkezdi az üzenetek küldését.
-:::image type="content" source="media/how-to-provision-using-dps/output.png" alt-text="Egy eszköz és számos Azure-szolgáltatás áttekintése egy végpontok közötti forgatókönyvben. Az adatforgalom a termosztátos eszköz és a DPS közötti kapcsolaton keresztül zajlik. Az adatok a DPS-ből a IoT Hubba és az Azure digitális Twins-ba is áramlanak a &quot;kiosztás&quot; címkével ellátott Azure-függvény használatával. A manuális &quot;eszköz törlése&quot; műveletből származó adatok IoT Hub > Event Hubs > Azure Functions > Azure digitális Ikreken keresztül áramlanak.":::
+:::image type="content" source="media/how-to-provision-using-dps/output.png" alt-text="Az eszközök regisztrálását és az üzenetek küldését Parancsablak bemutató":::
 
 ### <a name="validate"></a>Érvényesítés
 
@@ -292,13 +292,13 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 ```
 
 Meg kell jelennie az Azure Digital Twins-példányban található eszköz két részének.
-:::image type="content" source="media/how-to-provision-using-dps/show-provisioned-twin.png" alt-text="Egy eszköz és számos Azure-szolgáltatás áttekintése egy végpontok közötti forgatókönyvben. Az adatforgalom a termosztátos eszköz és a DPS közötti kapcsolaton keresztül zajlik. Az adatok a DPS-ből a IoT Hubba és az Azure digitális Twins-ba is áramlanak a &quot;kiosztás&quot; címkével ellátott Azure-függvény használatával. A manuális &quot;eszköz törlése&quot; műveletből származó adatok IoT Hub > Event Hubs > Azure Functions > Azure digitális Ikreken keresztül áramlanak.":::
+:::image type="content" source="media/how-to-provision-using-dps/show-provisioned-twin.png" alt-text="Újonnan létrehozott Twin Parancsablak":::
 
 ## <a name="auto-retire-device-using-iot-hub-lifecycle-events"></a>Eszköz automatikus kivonása IoT Hub életciklus-események használatával
 
 Ebben a szakaszban IoT Hub életciklus-eseményeket csatlakoztat az Azure digitális Twins-hoz, hogy az alábbi elérési úton automatikusan kivonja az eszközöket. Ez a [korábban](#solution-architecture)bemutatott teljes architektúra kivonata.
 
-:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="Egy eszköz és számos Azure-szolgáltatás áttekintése egy végpontok közötti forgatókönyvben. Az adatforgalom a termosztátos eszköz és a DPS közötti kapcsolaton keresztül zajlik. Az adatok a DPS-ből a IoT Hubba és az Azure digitális Twins-ba is áramlanak a &quot;kiosztás&quot; címkével ellátott Azure-függvény használatával. A manuális &quot;eszköz törlése&quot; műveletből származó adatok IoT Hub > Event Hubs > Azure Functions > Azure digitális Ikreken keresztül áramlanak.":::
+:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="Az eszköz kivonása – a megoldás architektúra diagramjának kivonata, amely a folyamat egyes részeit címkézi. A termosztátos eszköz a diagramon az Azure-szolgáltatásokhoz való csatlakozás nélkül jelenik meg. A manuális &quot;eszköz törlése&quot; műveletből származó adatok IoT Hub (1) > Event Hubs (2) > Azure Functions > Azure digitális Twins (3) használatával áramlanak.":::
 
 Itt látható a folyamat folyamatábrája:
 1. Egy külső vagy manuális folyamat elindít egy eszköz törlését IoT Hubban.
@@ -464,7 +464,7 @@ A IoT Hub útvonal létrehozásával kapcsolatos útmutatást a cikk ismerteti: 
 A telepítéshez szükséges lépések a következők:
 1. Hozzon létre egy egyéni IoT Hub Event hub-végpontot. A végpontnak az [*Event hub létrehozása*](#create-an-event-hub) szakaszban létrehozott Event hub-t kell megcéloznia.
 2. Adjon hozzá egy *eszköz életciklus-események* útvonalát. Használja az előző lépésben létrehozott végpontot. Az eszköz életciklus-eseményeinek korlátozásával csak az útválasztási lekérdezés hozzáadásával lehet elküldeni a DELETE eseményeket `opType='deleteDeviceIdentity'` .
-    :::image type="content" source="media/how-to-provision-using-dps/lifecycle-route.png" alt-text="Egy eszköz és számos Azure-szolgáltatás áttekintése egy végpontok közötti forgatókönyvben. Az adatforgalom a termosztátos eszköz és a DPS közötti kapcsolaton keresztül zajlik. Az adatok a DPS-ből a IoT Hubba és az Azure digitális Twins-ba is áramlanak a &quot;kiosztás&quot; címkével ellátott Azure-függvény használatával. A manuális &quot;eszköz törlése&quot; műveletből származó adatok IoT Hub > Event Hubs > Azure Functions > Azure digitális Ikreken keresztül áramlanak.":::
+    :::image type="content" source="media/how-to-provision-using-dps/lifecycle-route.png" alt-text="Útvonal hozzáadása":::
 
 Miután elvégezte a folyamatot, minden úgy van beállítva, hogy teljes körűen kivonja az eszközöket.
 
@@ -485,7 +485,7 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 ```
 
 Látnia kell, hogy az eszköz két része nem található az Azure Digital Twins-példányban.
-:::image type="content" source="media/how-to-provision-using-dps/show-retired-twin.png" alt-text="Egy eszköz és számos Azure-szolgáltatás áttekintése egy végpontok közötti forgatókönyvben. Az adatforgalom a termosztátos eszköz és a DPS közötti kapcsolaton keresztül zajlik. Az adatok a DPS-ből a IoT Hubba és az Azure digitális Twins-ba is áramlanak a &quot;kiosztás&quot; címkével ellátott Azure-függvény használatával. A manuális &quot;eszköz törlése&quot; műveletből származó adatok IoT Hub > Event Hubs > Azure Functions > Azure digitális Ikreken keresztül áramlanak.":::
+:::image type="content" source="media/how-to-provision-using-dps/show-retired-twin.png" alt-text="Parancsablak a Twin nem található":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
 

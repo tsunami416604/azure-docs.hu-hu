@@ -52,7 +52,7 @@ Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="reuse-a-technical-configuration"></a>Technikai konfiguráció újbóli használata
 
-Ha több azonos típusú csomaggal rendelkezik, és a csomagok azonosak egymás között, akkor kiválaszthatja, hogy a **terv újrahasznosítja a technikai konfigurációt egy másik csomagból** . Ez a beállítás lehetővé teszi, hogy az ajánlathoz tartozó más csomagok valamelyikét kiválassza, és lehetővé teszi a technikai konfigurációjának újbóli használatát.
+Ha több azonos típusú csomaggal rendelkezik, és a csomagok azonosak egymás között, akkor kiválaszthatja, hogy a **terv újrahasznosítja a technikai konfigurációt egy másik csomagból**. Ez a beállítás lehetővé teszi, hogy az ajánlathoz tartozó más csomagok valamelyikét kiválassza, és lehetővé teszi a technikai konfigurációjának újbóli használatát.
 
 > [!NOTE]
 > Ha egy másik csomag technikai konfigurációját használja, a teljes **technikai konfiguráció** lap eltűnik ebből a csomagból. A csomagra vonatkozó technikai konfiguráció részleteit, beleértve a jövőbeli frissítéseket is, a tervhez is használni fogjuk. Ez a beállítás a terv közzététele után nem módosítható.
@@ -195,17 +195,17 @@ A virtuális gép létrehozása határozza meg az általa használt virtuális h
 
 2. Ha egy másik generációt szeretne hozzáadni egy csomaghoz, válassza a **Létrehozás hozzáadása** lehetőséget:
 
-    :::image type="content" source="./media/create-vm/azure-vm-generations-add.png" alt-text="A generáció legördülő listájának nézete":::
+    :::image type="content" source="./media/create-vm/azure-vm-generations-add.png" alt-text="A &quot;generáció hozzáadása&quot; hivatkozás nézete.":::
 
     Ezután adja meg a generáció részleteit:
 
-    :::image type="content" source="./media/create-vm/azure-vm-generations-details.png" alt-text="A generáció legördülő listájának nézete":::
+    :::image type="content" source="./media/create-vm/azure-vm-generations-details.png" alt-text="A generációs részletek ablakának nézete.":::
 
     A kiválasztott **létrehozási azonosító** az ügyfelek számára látható lesz, például a termék URL-címei és az ARM-sablonok (ha vannak ilyenek). Csak kisbetűket, alfanumerikus karaktereket, kötőjeleket vagy aláhúzást használjon; közzététel után nem módosítható.
 
 3. Ha olyan meglévő virtuális gépet szeretne frissíteni, amelynek 1. generációja már közzé van téve, egyszerűen szerkessze a részleteket a **technikai konfiguráció** oldalon:
 
-    :::image type="content" source="./media/create-vm/azure-vm-generations-updating.png" alt-text="A generáció legördülő listájának nézete":::
+    :::image type="content" source="./media/create-vm/azure-vm-generations-updating.png" alt-text="A terv technikai konfiguráció oldalának nézete.":::
 
 Ha többet szeretne megtudni az 1. és 2. generációs képességek közötti különbségekről, tekintse meg a [2. generációs virtuális gépek támogatása az Azure](../virtual-machines/generation-2.md)-ban című témakört.
 
@@ -220,7 +220,7 @@ Adja meg a lemez verziószámát és a virtuálisgép-lemezképek megosztott el�
 
 A használt operációs rendszertől függetlenül csak a megoldás által igényelt adatlemezek minimális számát adja hozzá. Az üzembe helyezés során az ügyfelek nem tudják eltávolítani a rendszerkép részét képező lemezeket, de mindig hozzáadhatnak lemezeket az üzembe helyezés során vagy azt követően is.
 
-A folytatás előtt válassza a **Piszkozat mentése** lehetőséget, és térjen vissza a **terv áttekintéséhez** .
+A folytatás előtt válassza a **Piszkozat mentése** lehetőséget, és térjen vissza a **terv áttekintéséhez**.
 
 ## <a name="next-steps"></a>Következő lépések
 

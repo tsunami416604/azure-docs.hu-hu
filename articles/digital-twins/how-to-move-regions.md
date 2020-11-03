@@ -89,7 +89,7 @@ Most meg kell jelennie a ADT Explorer-alkalmazásnak, amely egy böngészőben f
 
 A kapcsolat ellenőrzéséhez kattintson a *lekérdezés futtatása* gombra, és futtassa az alapértelmezett lekérdezést, amely az összes ikreket és kapcsolatot megjeleníti a Graph *Explorer* mezőben.
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="A böngészőablakban futó alkalmazást bemutató böngészőablak: 3000. Az alkalmazás neve ADT Explorer, és tartalmazza a lekérdezési Explorer, a modell nézet, a Graph View és a Property Explorer mezőit. Még nincsenek megjeleníthető adathalmazok." lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Az ablak felső részén található &quot;lekérdezés futtatása&quot; gomb beolvasása megnyomva jelenik meg" lightbox="media/how-to-move-regions/run-query.png":::
 
 A ADT Explorer futását elhagyhatja, mivel a cikk későbbi részében később újra fel fogja tölteni ezeket az elemeket az új példányba a célként megadott régióban.
 
@@ -101,9 +101,9 @@ Ha egyszerre szeretné letölteni ezeket, először győződjön meg arról, hog
  
 Ezután nyomja meg a Graph *nézet* ábrán látható diagram *exportálása* ikont.
 
-:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="A böngészőablakban futó alkalmazást bemutató böngészőablak: 3000. Az alkalmazás neve ADT Explorer, és tartalmazza a lekérdezési Explorer, a modell nézet, a Graph View és a Property Explorer mezőit. Még nincsenek megjeleníthető adathalmazok." lightbox="media/how-to-move-regions/export-graph.png":::
+:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="A gráf nézet mezőben egy ikon van kiemelve. Egy felhőből lefelé mutató nyilat mutat be." lightbox="media/how-to-move-regions/export-graph.png":::
 
-Ez lehetővé teszi a *letöltési* hivatkozást a *Graph nézetben* . Válassza ki a lekérdezési eredmény JSON-alapú megjelenítésének letöltéséhez, beleértve a modelleket, az ikreket és a kapcsolatokat. Ehhez le kell töltenie egy *. JSON* fájlt a gépre.
+Ez lehetővé teszi a *letöltési* hivatkozást a *Graph nézetben*. Válassza ki a lekérdezési eredmény JSON-alapú megjelenítésének letöltéséhez, beleértve a modelleket, az ikreket és a kapcsolatokat. Ehhez le kell töltenie egy *. JSON* fájlt a gépre.
 
 >[!NOTE]
 >Ha a letöltött fájl más kiterjesztésű, akkor próbálja meg közvetlenül szerkeszteni a bővítményt, és módosítsa a *. JSON* fájlba.
@@ -114,7 +114,7 @@ Ezután végrehajtja a példány áthelyezését úgy, hogy létrehoz egy új p�
 
 ### <a name="create-a-new-instance"></a>Új példány létrehozása
 
-Először **hozzon létre egy új Azure Digital Twins-példányt a megcélzott régióban** . Ennek elvégzéséhez kövesse az [*útmutató: példány és hitelesítés beállítása*](how-to-set-up-instance-portal.md), az alábbi mutatók szem előtt tartásával:
+Először **hozzon létre egy új Azure Digital Twins-példányt a megcélzott régióban**. Ennek elvégzéséhez kövesse az [*útmutató: példány és hitelesítés beállítása*](how-to-set-up-instance-portal.md), az alábbi mutatók szem előtt tartásával:
 * Megtarthatja az új példány nevét, **Ha** az egy másik erőforráscsoporthoz esik. Ha ugyanazt az erőforráscsoportot kell használnia, amely az eredeti példányt tartalmazza, akkor az új példánynak saját nevet kell adnia.
 * Ha a rendszer kéri, adja meg a cél új régiót.
 
@@ -134,11 +134,11 @@ Ellenkező esetben a folytatáshoz térjen vissza a **ADT Explorer** alkalmazás
 
 A ADT Explorer jelenleg az eredeti Azure Digital Twins-példányhoz csatlakozik. Állítsa át a kapcsolódást úgy, hogy az az új példányra mutasson, és a *Bejelentkezés* gombot az ablak tetején. 
 
-:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="A böngészőablakban futó alkalmazást bemutató böngészőablak: 3000. Az alkalmazás neve ADT Explorer, és tartalmazza a lekérdezési Explorer, a modell nézet, a Graph View és a Property Explorer mezőit. Még nincsenek megjeleníthető adathalmazok." lightbox="media/how-to-move-regions/sign-in.png":::
+:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="ADT Explorer – a bejelentkezési ikon kiemelése az ablak tetején. Az ikon a kulcs sziluettjét ábrázoló személy egyszerű sziluettjét jeleníti meg." lightbox="media/how-to-move-regions/sign-in.png":::
 
 Cserélje le a *ADT URL-címét* az új példánynak megfelelően. Módosítsa ezt az értéket úgy, hogy az beolvassa a *https://{New instance hostname}* szöveget.
 
-Kattintson a *kapcsolatra* . Előfordulhat, hogy az Azure-beli hitelesítő adataival újra be kell jelentkeznie, és/vagy meg kell adnia az alkalmazásnak a példányhoz való jóváhagyását.
+Kattintson a *kapcsolatra*. Előfordulhat, hogy az Azure-beli hitelesítő adataival újra be kell jelentkeznie, és/vagy meg kell adnia az alkalmazásnak a példányhoz való jóváhagyását.
 
 ##### <a name="upload-models-twins-and-graph"></a>Modellek, ikrek és gráfok feltöltése
 
@@ -146,9 +146,9 @@ Ezután töltse fel az új példányra korábban letöltött megoldás-összetev
 
 Ha fel szeretné tölteni a **modelleket, az ikreket és a Graphot** , nyomja meg az *importálási gráf* ikont a *gráf nézet* mezőben. Ez a lehetőség egyszerre mindhárom összetevőt feltölti (még a gráfban jelenleg nem használt modelleket is).
 
-:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="A böngészőablakban futó alkalmazást bemutató böngészőablak: 3000. Az alkalmazás neve ADT Explorer, és tartalmazza a lekérdezési Explorer, a modell nézet, a Graph View és a Property Explorer mezőit. Még nincsenek megjeleníthető adathalmazok." lightbox="media/how-to-move-regions/import-graph.png":::
+:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="A gráf nézet mezőben egy ikon van kiemelve. Egy felhőbe mutató nyilat mutat be." lightbox="media/how-to-move-regions/import-graph.png":::
 
-A fájl kiválasztása mezőben navigáljon a letöltött gráfhoz. Válassza ki a Graph *. JSON* fájlt, és kattintson a *Megnyitás gombra* .
+A fájl kiválasztása mezőben navigáljon a letöltött gráfhoz. Válassza ki a Graph *. JSON* fájlt, és kattintson a *Megnyitás gombra*.
 
 Néhány másodperc elteltével a ADT Explorer megnyílik egy *importálási* nézet, amely megjeleníti a betöltendő gráf előnézetét.
 
@@ -156,7 +156,7 @@ A gráf feltöltésének megerősítéséhez nyomja meg a *diagram nézet* jobb 
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-move-regions/graph-preview-save.png" alt-text="A böngészőablakban futó alkalmazást bemutató böngészőablak: 3000. Az alkalmazás neve ADT Explorer, és tartalmazza a lekérdezési Explorer, a modell nézet, a Graph View és a Property Explorer mezőit. Még nincsenek megjeleníthető adathalmazok." lightbox="media/how-to-move-regions/graph-preview-save.png":::
+        :::image type="content" source="media/how-to-move-regions/graph-preview-save.png" alt-text="A Save (Mentés) ikon kiemelése a gráf betekintő ablaktábláján" lightbox="media/how-to-move-regions/graph-preview-save.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -166,7 +166,7 @@ A ADT Explorer most feltölti modelljeit és gráfját (beleértve az ikreket é
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="A böngészőablakban futó alkalmazást bemutató böngészőablak: 3000. Az alkalmazás neve ADT Explorer, és tartalmazza a lekérdezési Explorer, a modell nézet, a Graph View és a Property Explorer mezőit. Még nincsenek megjeleníthető adathalmazok." lightbox="media/how-to-move-regions/import-success.png":::
+        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="A Graph importálás sikerességét jelző párbeszédpanel. A sikeres importálást olvassa be. 2 modell importálva. 4 ikrek importálva. 2 kapcsolat importálva. &quot;" lightbox="media/how-to-move-regions/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -176,11 +176,11 @@ A ADT Explorer most feltölti modelljeit és gráfját (beleértve az ikreket é
 
 Annak ellenőrzéséhez, hogy minden sikeresen feltöltve lett, a *Graph Explorerben* a *lekérdezés futtatása* gombra kattintva futtathatja az alapértelmezett lekérdezést, amely megjeleníti az összes ikreket és kapcsolatot a gráfban. Ez a *modell nézetben* is frissíti a modellek listáját.
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="A böngészőablakban futó alkalmazást bemutató böngészőablak: 3000. Az alkalmazás neve ADT Explorer, és tartalmazza a lekérdezési Explorer, a modell nézet, a Graph View és a Property Explorer mezőit. Még nincsenek megjeleníthető adathalmazok." lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Az ablak felső részén látható &quot;futtatási lekérdezés&quot; gomb kiemelése a korábbi verziók között" lightbox="media/how-to-move-regions/run-query.png":::
 
 Meg kell jelennie a gráfnak a *Graph Explorerben* megjelenő összes ikrek és kapcsolat között. Emellett a *modell nézet* mezőben is megjelennek a modellek.
 
-:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="A böngészőablakban futó alkalmazást bemutató böngészőablak: 3000. Az alkalmazás neve ADT Explorer, és tartalmazza a lekérdezési Explorer, a modell nézet, a Graph View és a Property Explorer mezőit. Még nincsenek megjeleníthető adathalmazok." lightbox="media/how-to-move-regions/post-upload.png":::
+:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="A ADT Explorer nézete, amely a &quot;Model View&quot; (modell nézet) mezőben Kiemelt 2 modellt mutatja be, és egy gráfot jelölt ki a &quot;Graph Explorer&quot; mezőben." lightbox="media/how-to-move-regions/post-upload.png":::
 
 Ezzel megerősíti, hogy a modelleket, az ikreket és a gráfot újra feltöltötte a célként megadott régióban lévő új példányra.
 
@@ -225,7 +225,7 @@ Az eredeti példánnyal futtatott egyéni alkalmazásokat vagy végpontok közö
 
 ## <a name="clean-up-source-resources"></a>Forrás erőforrásainak törlése
 
-Most, hogy az új példánya be van állítva a megcélzott régióban az eredeti példány adatai és kapcsolatainak másolatával, **törölheti az eredeti példányt** .
+Most, hogy az új példánya be van állítva a megcélzott régióban az eredeti példány adatai és kapcsolatainak másolatával, **törölheti az eredeti példányt**.
 
 Ezt megteheti a [Azure Portalban](https://portal.azure.com), a [CLI](how-to-use-cli.md)-vel vagy a [Control Plan sík API](how-to-use-apis-sdks.md#overview-control-plane-apis)-kkal.
 
@@ -233,4 +233,4 @@ Ha a Azure Portal használatával szeretné törölni a példányt, [nyissa meg 
 
 Nyomja meg a *delete (Törlés* ) gombot, és kövesse az utasításokat a törlés befejezéséhez.
 
-:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="A böngészőablakban futó alkalmazást bemutató böngészőablak: 3000. Az alkalmazás neve ADT Explorer, és tartalmazza a lekérdezési Explorer, a modell nézet, a Graph View és a Property Explorer mezőit. Még nincsenek megjeleníthető adathalmazok.":::
+:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="Tekintse meg az Azure Digital Twins-példány részleteit a Azure Portal az Áttekintés lapon. A törlés gomb ki van emelve":::
