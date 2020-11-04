@@ -4,15 +4,16 @@ description: Ismerje meg a Azure Cosmos DB hozzáférés-vezérlési fogalmait, 
 author: thomasweiss
 ms.author: thweiss
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 68f3fd34081868884782e007885befff59fa05da
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 936e98b3efa27f2d0a85c373ccae0ab223f4fd95
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096121"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340906"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Biztonságos hozzáférés az adatokhoz az Azure Cosmos DB-ben
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -21,7 +22,7 @@ Ez a cikk áttekintést nyújt a [Microsoft Azure Cosmos DBban](https://azure.mi
 
 Azure Cosmos DB kétféle kulcsot használ a felhasználók hitelesítéséhez és az adataihoz és erőforrásaihoz való hozzáférés biztosításához. 
 
-|Kulcs típusa|További források|
+|Kulcs típusa|Forrásanyagok|
 |---|---|
 |[Elsődleges kulcsok](#primary-keys) |Felügyeleti erőforrásokhoz használatos: adatbázis-fiókok, adatbázisok, felhasználók és engedélyek|
 |[Erőforrás-tokenek](#resource-tokens)|Alkalmazás-erőforrásokhoz használatos: tárolók, dokumentumok, mellékletek, tárolt eljárások, eseményindítók és UDF|
@@ -90,7 +91,7 @@ Cosmos DB erőforrás-tokenek olyan biztonságos alternatívát biztosítanak, a
 7. A telefonos alkalmazás továbbra is használhatja az erőforrás-jogkivonatot, hogy közvetlenül hozzáférhessen Cosmos DB erőforrásokhoz az erőforrás-jogkivonat által meghatározott engedélyekkel és az erőforrás-jogkivonat által engedélyezett intervallummal.
 8. Az erőforrás-jogkivonat lejárata után a további kérések 401 jogosulatlan kivételt kapnak.  Ezen a ponton a telefonos alkalmazás újból létrehozza az identitást, és új erőforrás-tokent kér.
 
-    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Elsődleges kulcs rotációja a Azure Portal – a NoSQL-adatbázis biztonságának bemutatása" border="false":::
+    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Azure Cosmos DB erőforrás-tokenek munkafolyamata" border="false":::
 
 Az erőforrás-jogkivonat létrehozását és felügyeletét a natív Cosmos DB ügyféloldali kódtárak kezelik. Ha azonban a REST-t használja, a kérelem/hitelesítés fejléceket kell létrehoznia. A REST-alapú hitelesítési fejlécek létrehozásával kapcsolatos további információkért lásd: [Access Control Cosmos db erőforrásokon](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) vagy a [.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/Authorization/AuthorizationHelper.cs) -hoz vagy a [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)-hoz tartozó forráskódhoz.
 
@@ -172,7 +173,7 @@ Azure Cosmos DB lehetővé teszi, hogy az adatbázisban vagy gyűjteményekben t
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a Cosmos Database biztonságáról: [Cosmos db adatbázis-biztonság](database-security.md).
 - A Azure Cosmos DB engedélyezési jogkivonatok létrehozásával kapcsolatos további információkért lásd: [Access Control Azure Cosmos db erőforrásokon](/rest/api/cosmos-db/access-control-on-cosmosdb-resources).

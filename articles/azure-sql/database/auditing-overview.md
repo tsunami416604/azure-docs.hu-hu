@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 8fd794822e9e4fe282d6ef8a8ccf1eb908c03560
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9339ac86595a1edbbd996e410d416074680695ed
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321656"
+ms.locfileid: "93340036"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>A Azure SQL Database és az Azure szinapszis Analytics naplózása
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -104,6 +104,13 @@ A Microsoft ügyfélszolgálata műveletek (előzetes verzió) naplózásának e
   > A Microsoft támogatási műveleteinek (előzetes verzió) naplózása nem támogatja a Storage-fiók célhelyét. A képesség engedélyezéséhez be kell állítani egy Log Analytics munkaterületet vagy egy Event hub-célhelyet.
 
 ![Képernyőkép a Microsoft ügyfélszolgálata műveletekről](./media/auditing-overview/support-operations.png)
+
+A Log Analytics munkaterületen Microsoft ügyfélszolgálata műveletek naplóinak áttekintéséhez használja a következő lekérdezést:
+
+```kusto
+AzureDiagnostics
+| where Category == "DevOpsOperationsAudit"
+```
 
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>Naplózás a tárolási célhelyre
 
@@ -205,9 +212,7 @@ Ha úgy döntött, hogy naplózza a naplókat egy Azure Storage-fiókba, a napl�
 - További metódusok:
 
   - Több fájl vagy a naplófájlokat tartalmazó almappa letöltése után helyileg egyesítheti azokat a korábban ismertetett SSMS-egyesítési naplófájlok című részben leírtak szerint.
-  - A blob-naplózási naplók programozott megjelenítése:
-
-    - [Kiterjesztett események fájljainak lekérdezése](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/) a PowerShell használatával.
+  - A blob-naplózási naplók programozott módon történő megtekintése: [kiterjesztett események fájljainak lekérdezése](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/) a PowerShell használatával.
 
 ## <a name="production-practices"></a><a id="production-practices"></a>Üzemi eljárások
 

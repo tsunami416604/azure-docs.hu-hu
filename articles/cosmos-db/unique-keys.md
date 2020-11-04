@@ -4,15 +4,16 @@ description: Ismerje meg, hogyan határozhat meg és használhat egyedi kulcsoka
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 3128f6783dc96fffb577a378cd1aaea4e58c7a4f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c3c42146ba93115e257924c23dc34785c8258533
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099194"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340447"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Egyedi kulcsokra vonatkozó korlátozások a Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -54,7 +55,7 @@ Egyedi kulcsokat csak akkor adhat meg, ha létrehoz egy Azure Cosmos-tárolót. 
 
 * Az egyedi kulcsnév megkülönbözteti a kis-és nagybetűket. Vegyünk például egy olyan tárolót, amelyben az egyedi kulcs megszorítása van beállítva `/address/zipcode` . Ha az adatai egy nevű mezővel rendelkeznek `ZipCode` , Azure Cosmos db a "NULL" értéket szúrja be egyedi kulcsként, mert `zipcode` nem ugyanaz, mint `ZipCode` . Ennek az esetnek az eltérése miatt az irányítószámmal nem szúrható be minden más rekord, mert az ismétlődő "NULL" megsérti az egyedi kulcs megkötését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [logikai partíciókhoz](partitioning-overview.md)
 * Ismerje [meg, hogyan határozhat meg egyedi kulcsokat](how-to-define-unique-keys.md) tároló létrehozásakor

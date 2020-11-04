@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 71ed590440a8c7e37a071b4eadfc09977ef91d5e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 424a1ef7a73b5abbdba0d89ededb44cb9efdd116
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310838"
+ms.locfileid: "93340988"
 ---
 # <a name="query-folders-and-multiple-files"></a>Mappák és több fájl lekérdezése  
 
@@ -29,7 +29,7 @@ Első lépésként létre kell **hoznia egy adatbázist** , amelyen végre kell 
 A minta lekérdezések követéséhez a *CSV/taxi* mappát kell használnia. A New York-i, a sárga taxis utazás a következő adatokat tartalmazza: július 2016 és június 2018. A *CSV/taxiban* található fájlokat a következő minta alapján nevezi el az év és hónap után: yellow_tripdata_ <year> - <month> . csv
 
 ## <a name="read-all-files-in-folder"></a>A mappában található összes fájl olvasása
-    
+
 Az alábbi példa az összes NYC Yellow taxi-adatfájlt beolvassa a *CSV/taxi* mappából, és az utasok és a túrák számát adja vissza évente. Emellett az összesítő függvények használatát is megjeleníti.
 
 ```sql
@@ -181,6 +181,49 @@ ORDER BY
 
 Mivel csak egy olyan mappa van, amely megfelel a feltételeknek, a lekérdezés eredménye megegyezik a [mappában található összes fájl olvasásával](#read-all-files-in-folder).
 
+## <a name="traverse-folders-recursively"></a>Mappák átjárása rekurzív módon
+
+A kiszolgáló nélküli SQL-készlet rekurzív módon áthaladhat a mappákban, ha az elérési út végén a/* * parancsot választja. A következő lekérdezés a *CSV* -mappában található összes mappából és almappából olvassa be az összes fájlt.
+
+```sql
+SELECT
+    YEAR(pickup_datetime) as [year],
+    SUM(passenger_count) AS passengers_total,
+    COUNT(*) AS [rides_total]
+FROM OPENROWSET(
+        BULK 'csv/taxi/**', 
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
+        FIRSTROW = 2
+    )
+    WITH (
+        vendor_id VARCHAR(100) COLLATE Latin1_General_BIN2, 
+        pickup_datetime DATETIME2, 
+        dropoff_datetime DATETIME2,
+        passenger_count INT,
+        trip_distance FLOAT,
+        rate_code INT,
+        store_and_fwd_flag VARCHAR(100) COLLATE Latin1_General_BIN2,
+        pickup_location_id INT,
+        dropoff_location_id INT,
+        payment_type INT,
+        fare_amount FLOAT,
+        extra FLOAT,
+        mta_tax FLOAT,
+        tip_amount FLOAT,
+        tolls_amount FLOAT,
+        improvement_surcharge FLOAT,
+        total_amount FLOAT
+    ) AS nyc
+GROUP BY
+    YEAR(pickup_datetime)
+ORDER BY
+    YEAR(pickup_datetime);
+```
+
+> [!NOTE]
+> Az egyetlen OPENROWSET elért összes fájlnak ugyanazzal a struktúrával kell rendelkeznie (például oszlopok és adattípusok száma).
+
 ## <a name="multiple-wildcards"></a>Több helyettesítő karakter
 
 Több helyettesítő karaktert is használhat a különböző elérési utak szintjén. Például a korábbi lekérdezések gazdagabbá tehetők csak a 2017 adatokkal rendelkező fájlok olvasására, az összes olyan mappából, amelynél a nevek a *t* értékkel kezdődnek, és az *i* -vel végződik.
@@ -230,6 +273,6 @@ ORDER BY
 
 Mivel csak egy olyan mappája van, amely megfelel a feltételeknek, a lekérdezés eredménye ugyanaz, mint a [mappában található fájlok olvasási részhalmaza](#read-subset-of-files-in-folder) , és az [összes fájl beolvasása az adott mappából](#read-all-files-from-specific-folder). Összetettebb helyettesítő karakteres használati forgatókönyvek találhatók a [lekérdezési parketta fájljaiban](query-parquet-files.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információt a [lekérdezési fájlok](query-specific-files.md) című cikkben talál.

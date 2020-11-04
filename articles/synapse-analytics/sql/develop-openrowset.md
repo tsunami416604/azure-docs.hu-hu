@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5059b051b16107ac7508e509d319159651de11e3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e7713239391b49663328a7a058f8f6fd5b444335
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324405"
+ms.locfileid: "93341331"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>A OPENROWSET használata kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
@@ -96,6 +96,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 [ , DATA_COMPRESSION = 'data_compression_method' ]
 [ , PARSER_VERSION = 'parser_version' ]
 [ , HEADER_ROW = { TRUE | FALSE } ]
+[ , DATAFILETYPE = { 'char' | 'widechar' } ]
 ```
 
 ## <a name="arguments"></a>Argumentumok
@@ -112,7 +113,7 @@ Az adatelérési utat kiépítő unstructured_data_path abszolút vagy relatív 
 - A "://" formátumú abszolút elérési út \<prefix> \<storage_account_path> / \<storage_path> lehetővé teszi a felhasználók számára, hogy közvetlenül beolvassák a fájlokat.
 - Relatív elérési út a (z) "<storage_path>" formátumban, amelyet a paraméterrel kell használni, `DATA_SOURCE` és a <storage_account_path> helyen definiált fájl mintáját ismerteti `EXTERNAL DATA SOURCE` . 
 
- Az alábbiakban megtalálhatja a megfelelő <storage account path> értékeket, amelyek az adott külső adatforráshoz kapcsolódnak. 
+Az alábbiakban megtalálhatja a megfelelő <storage account path> értékeket, amelyek az adott külső adatforráshoz kapcsolódnak. 
 
 | Külső adatforrás       | Előtag | Storage-fiók elérési útja                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |
@@ -125,16 +126,18 @@ Az adatelérési utat kiépítő unstructured_data_path abszolút vagy relatív 
 
 '\<storage_path>'
 
- Megadja a tárhelyen belüli útvonalat, amely az olvasni kívánt mappára vagy fájlra mutat. Ha az elérési út egy tárolóra vagy mappára mutat, a rendszer az adott tárolóból vagy mappából olvassa be az összes fájlt. Az almappákban található fájlok nem lesznek belefoglalva. 
+Megadja a tárhelyen belüli útvonalat, amely az olvasni kívánt mappára vagy fájlra mutat. Ha az elérési út egy tárolóra vagy mappára mutat, a rendszer az adott tárolóból vagy mappából olvassa be az összes fájlt. Az almappákban található fájlok nem lesznek belefoglalva. 
 
- A helyettesítő karakterek használatával több fájlt vagy mappát is megcélozhat. Több nem egymást követő helyettesítő karakter használata engedélyezett.
+A helyettesítő karakterek használatával több fájlt vagy mappát is megcélozhat. Több nem egymást követő helyettesítő karakter használata engedélyezett.
 Az alábbi példa az összes olyan *CSV* -fájlt beolvassa, amely a */CSV/Population* kezdődő összes mappából származó *populációval* kezdődik:  
 `https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
 Ha a unstructured_data_path mappaként adja meg, akkor a kiszolgáló nélküli SQL-készlet lekérdezése lekéri a fájlokat a mappából. 
 
+A kiszolgáló nélküli SQL-készlet arra utasítja a mappákat, hogy az elérési út végén a/* érték megadásával például a következőt írja be: `https://sqlondemandstorage.blob.core.windows.net/csv/population/**`
+
 > [!NOTE]
-> A Hadoop és a bázistól eltérően a kiszolgáló nélküli SQL-készlet nem ad vissza almappákat. Emellett a Hadoop és a bázistól eltérően a kiszolgáló nélküli SQL-készlet olyan fájlokat ad vissza, amelyekhez a fájlnév aláhúzással (_) vagy ponttal (.) kezdődik.
+> A Hadoop és a bázistól eltérően a kiszolgáló nélküli SQL-készlet nem ad vissza almappákat, kivéve, ha az elérési út végén megadja a/* * értéket. Emellett a Hadoop és a bázistól eltérően a kiszolgáló nélküli SQL-készlet olyan fájlokat ad vissza, amelyekhez a fájlnév aláhúzással (_) vagy ponttal (.) kezdődik.
 
 Ha az alábbi példában a unstructured_data_path = `https://mystorageaccount.dfs.core.windows.net/webdata/` , a kiszolgáló nélküli SQL-készlet lekérdezése mydata.txt és _hidden.txt sorait fogja visszaadni. Nem ad vissza mydata2.txt és mydata3.txt, mert egy almappában találhatók.
 
@@ -222,6 +225,10 @@ HEADER_ROW = {TRUE | HAMIS
 
 Meghatározza, hogy a CSV-fájl fejlécet tartalmaz-e. Az alapértelmezett érték a FALSE. PARSER_VERSION = "2.0" támogatja. Ha az értéke igaz, az oszlopok nevei az első sorból lesznek beolvasva a FIRSTROW argumentum alapján.
 
+ADATFÁJLTÍPUS = {' char ' | "(widechar)"}
+
+A kódolást adja meg: az UTF8-hoz használt char ((widechar)) a UTF16-fájlok esetében használatos.
+
 ## <a name="fast-delimited-text-parsing"></a>Gyors tagolt szöveg elemzése
 
 Két tagolt szöveges elemző verziója használható. A CSV-elemző 1,0-es verziója alapértelmezett, és a szolgáltatás gazdag, míg az elemző verziója a 2,0-es verzióra van építve. A 2,0-es elemző teljesítményének fejlesztése a fejlett elemzési technikáktól és a többszálas elemzéstől származik. A sebességbeli különbség nagyobb lesz, ahogy a fájlméret növekszik.
@@ -235,7 +242,7 @@ A Parquet-fájlok olyan oszlop-metaadatokat tartalmaznak, amelyek beolvasva lesz
 A CSV-fájlok oszlopainak nevei a fejlécsorból is olvashatók. Megadhatja, hogy a fejlécsor létezik-e HEADER_ROW argumentum használatával. Ha HEADER_ROW = FALSE, az általános oszlopnevek lesznek használatban: C1, C2,... CN, ahol n a fájlban lévő oszlopok száma. Az adattípusok az első 100 adatsorokból lesznek kikövetkeztetve. Tekintse [meg a CSV-fájlok olvasását a minták sémájának megadása nélkül](#read-csv-files-without-specifying-schema) .
 
 > [!IMPORTANT]
-> Vannak olyan esetek, amikor a megfelelő adattípus nem következtethető ki, mert az adatok hiánya és a nagyobb adattípusok használata nem lehetséges. Ez a teljesítmény terhelését eredményezi, és különösen fontos a karakteres oszlopok esetében, amelyek varchar (8000) értékre lesznek utalva. Ha a fájlokban karakter oszlopok szerepelnek, és a séma következtetését használja, az optimális teljesítmény érdekében [tekintse meg a késleltetett adattípusokat](best-practices-sql-on-demand.md#check-inferred-data-types) , és [használja a megfelelő adattípusokat](best-practices-sql-on-demand.md#use-appropriate-data-types).
+> Vannak olyan esetek, amikor a megfelelő adattípus nem következtethető ki, mert az adatok hiánya és a nagyobb adattípusok használata nem lehetséges. Ez a teljesítmény terhelését eredményezi, és különösen fontos a karakteres oszlopok esetében, amelyek varchar (8000) értékre lesznek utalva. Az optimális teljesítmény érdekében [tekintse meg a késleltetett adattípusokat](best-practices-sql-on-demand.md#check-inferred-data-types) , és [használja a megfelelő adattípusokat](best-practices-sql-on-demand.md#use-appropriate-data-types).
 
 ### <a name="type-mapping-for-parquet"></a>Típus leképezése a parketta számára
 
@@ -354,6 +361,6 @@ WITH (
 ) AS [r]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További példákat a [lekérdezési adattárolási](query-data-storage.md) útmutatóban talál, amelyből megtudhatja, hogyan használható a `OPENROWSET` [CSV](query-single-csv-file.md)-, a [parketta](query-parquet-files.md)-és a [JSON](query-json-files.md) -fájlformátumok olvasásához. [Ajánlott eljárások](best-practices-sql-on-demand.md) az optimális teljesítmény eléréséhez. Azt is megtudhatja, hogyan mentheti a lekérdezés eredményeit az Azure Storage-ba a [CETAS](develop-tables-cetas.md)használatával.

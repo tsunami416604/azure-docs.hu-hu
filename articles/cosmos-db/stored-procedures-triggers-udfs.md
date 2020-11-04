@@ -3,16 +3,17 @@ title: Tárolt eljárások, eseményindítók és UDF használata Azure Cosmos D
 description: Ez a cikk bemutatja az olyan fogalmakat, mint például a tárolt eljárások, eseményindítók és felhasználó által definiált függvények a Azure Cosmos DBban.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 7dc81581846f8abdae81fa3552d9fa4645f32a05
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0bd572da9bba9048e2c8b9c4b426056620c4c265
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101306"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340702"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -100,7 +101,7 @@ A [felhasználó által definiált függvények](sql-query-udfs.md) (UDF-k) az S
 
 Az SQL API-lekérdezési szintaxist használó lekérdezések kiadása mellett a [KISZOLGÁLÓOLDALI SDK](https://azure.github.io/azure-cosmosdb-js-server) lehetővé teszi, hogy az SQL ismerete nélkül JavaScript-interfész használatával végezzen lekérdezéseket. A JavaScript lekérdezési API lehetővé teszi, hogy programozott módon hozza létre a lekérdezéseket. A lekérdezéseket a JavaScript futtatókörnyezet elemzi, és a Azure Cosmos DBon belül hatékonyan hajtja végre. A JavaScript-lekérdezési API-támogatással kapcsolatos további információkért lásd: [a JavaScript nyelvi integrált lekérdezési API használata](javascript-query-api.md) című cikk. Példákat a [tárolt eljárások és eseményindítók írása JavaScript-lekérdezési API használatával](how-to-write-javascript-query-api.md) című cikkben talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan írhat és használhat tárolt eljárásokat, eseményindítókat és felhasználó által definiált függvényeket Azure Cosmos DB a következő cikkekkel:
 

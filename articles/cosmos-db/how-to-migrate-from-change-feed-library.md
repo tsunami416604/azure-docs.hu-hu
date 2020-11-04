@@ -3,16 +3,17 @@ title: Migrálás a Change feed Processor Library-ről a Azure Cosmos DB .NET v3
 description: Megtudhatja, hogyan migrálhatja az alkalmazást a refeed Processor Library módosítása a Azure Cosmos DB SDK v3 verzióra
 author: ealsur
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: e19c2a8711a9862bb72b29045c65ecd1bd5b5d20
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ce2d4d3ad3ae349718f01584ec077b18e11e4f8d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075501"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341263"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>Migrálás a Change feed Processor Library-ről a Azure Cosmos DB .NET v3 SDK-ra
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -49,13 +50,13 @@ Az SDK v3 változási hírcsatorna-feldolgozó processzora észlelni fogja a ré
 
 A régi kóddal biztonságosan leállíthatja az alkalmazást, áttelepítheti a kódot az új verzióra, elindíthatja az áttelepített alkalmazást, és az alkalmazás leállításakor bekövetkezett változásokat az új verzió fogja felvenni és feldolgozni.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Használati minták a GitHubon](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
 * [További minták a GitHubon](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkekben további tudnivalókat olvashat a hírcsatorna-feldolgozó szolgáltatással kapcsolatos változásokról:
 

@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 3132f19bd80d6958d4d073f63eb6a01c103c2776
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7621a19b510d302454465f9fcbacec27a14dddf9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101340"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340175"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Cosmos DB-hez készült Azure Synapse Link: Közel valós idejű elemzési használati esetek
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 Az [Azure szinapszis hivatkozása](synapse-link.md) Azure Cosmos db egy Felhőbeli natív hibrid tranzakciós és analitikai feldolgozási (HTAP) képesség, amely lehetővé teszi a közel valós idejű elemzések futtatását az operatív adaton keresztül. A szinapszis-kapcsolat szoros zökkenőmentes integrációt hoz létre Azure Cosmos DB és az Azure szinapszis Analytics között.
 
@@ -71,7 +71,7 @@ Az alábbiakban néhány útmutatást talál a Batch adatintegrációs & a Azure
 
 A kereskedőknek olyan biztonságos és skálázható e-kereskedelmi megoldásokat kell létrehozniuk, amelyek megfelelnek mind az ügyfelek, mind a vállalati igényeknek. Ezek az e-kereskedelmi megoldások testreszabott termékekkel és ajánlatokkal, gyorsan és biztonságosan dolgozzák fel az ügyfeleket, és a teljesítésre és az ügyfélszolgálatra összpontosítanak. Azure Cosmos DB a legújabb szinapszis-hivatkozással együtt, Azure Cosmos DB lehetővé teszi, hogy a kereskedők valós időben személyre szabott javaslatokat készítsenek az ügyfeleknek. Alacsony késleltetésű és hangolt konzisztencia-beállításokat használnak az azonnali felismerésekhez, ahogyan az a következő architektúrán látható:
 
-:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="Azure szinapszis-hivatkozás a Azure Cosmos DB az ellátási lánc elemzésében " border="false":::
+:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="Azure szinapszis-hivatkozás a Azure Cosmos DB valós idejű személyre szabásához" border="false":::
 
 Szinapszis-hivatkozás Azure Cosmos DB használati esethez:
 
@@ -83,7 +83,7 @@ Az ipari IOT innovációk jelentősen csökkentik a gépek leállását, és az 
 
 A következő egy architektúra, amely kihasználja az Azure szinapszis IoT-Azure Cosmos DB kapcsolatának Felhőbeli natív HTAP képességeit a prediktív karbantartásban:
 
-:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="Azure szinapszis-hivatkozás a Azure Cosmos DB az ellátási lánc elemzésében " border="false" :::
+:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="Azure-beli szinapszis-hivatkozás a IOT prediktív karbantartásban Azure Cosmos DB" border="false" :::
 
 Szinapszis-hivatkozás Azure Cosmos DB használati esetekhez:
 
@@ -105,7 +105,7 @@ Az alábbi lista áttekintést nyújt az operatív adatok által támogatott kü
 
 Az Azure szinapszis-hivatkozás lehetővé teszi, hogy a Azure Cosmos DB ne csak az áramellátási tranzakciós feladatokat használja, hanem a közel valós idejű analitikai számítási feladatokat is végrehajtsa a korábbi működési adatokon. A tranzakciós munkaterhelések esetében az ETL-követelmények és a garantált teljesítmény-elkülönítés nem történik meg.
 
-Az alábbi képen a számítási feladatok mintái a Azure Cosmos DB használatával: az :::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="Azure szinapszis-hivatkozás a Azure Cosmos DB az ellátási lánc elemzésében " border="false":::
+Az alábbi képen a számítási feladatok mintái a Azure Cosmos DB használatával: az :::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="Azure szinapszis hivatkozása Azure Cosmos db munkaterhelés-mintákhoz" border="false":::
 
 Tegyük fel például, hogy egy e-kereskedelmi cég CompanyXYZ a 20 ország/régió globális műveleteivel, hogy bemutassa a Azure Cosmos DB kiválasztásának előnyeit, mint egyetlen valós idejű adatbázis, amely a készletkezelési platform tranzakciós és analitikai követelményeit is kikapcsolja.
 
@@ -129,7 +129,7 @@ Tegyük fel például, hogy egy e-kereskedelmi cég CompanyXYZ a 20 ország/rég
 
   * A [Azure Cosmos db Analytical Store](analytical-store-introduction.md)egy teljesen elszigetelt oszlopdiagram használatával a szinapszis-hivatkozás nem teszi lehetővé, hogy az [Azure szinapszis Analytics](../synapse-analytics/overview-what-is.md) szolgáltatásban ne legyenek kinyerhető átalakítási-betöltési (etl) elemzések a globálisan elosztott operatív adatokon.  Az üzleti elemzők, adatmérnökök és adatszakértők mostantól a szinapszis Spark vagy a szinapszis SQL használatát interoperábilis módon futtathatják a közel valós idejű üzleti intelligenciát, elemzést és gépi tanulási folyamatokat anélkül, hogy ez hatással lenne a tranzakciós munkaterhelések teljesítményére a Azure Cosmos DB. További részletekért tekintse meg a [szinapszis-hivatkozás előnyeit Azure Cosmos DBban](synapse-link.md) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információért lásd a következő dokumentumokat:
 

@@ -4,15 +4,16 @@ description: Azure Functions használata a Azure Cosmos DB változási csatorná
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 83a422bbdc4e33ecd955451bb3c1e305cee2b2f4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7f4903cf29f15132db91e47d78efe5a556efd937
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93072841"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340243"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Kiszolgáló nélküli eseményvezérelt architektúrák Azure Cosmos DB és Azure Functions
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,7 +48,7 @@ Az [Azure-függvényt helyileg](../azure-functions/functions-develop-local.md) i
 
 Ha élő forgatókönyveket szeretne tesztelni a felhőben, akkor [ingyenesen kipróbálhatja a Cosmos DBT](https://azure.microsoft.com/try/cosmosdb/) bankkártyás vagy Azure-előfizetés nélkül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkekben továbbra is megismerheti a hírcsatornák változását:
 

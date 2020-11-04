@@ -3,16 +3,17 @@ title: Jogosulatlan kivételek Azure Cosmos DB hibáinak megoldása
 description: Ismerje meg, hogyan diagnosztizálhatja és javíthatja a jogosulatlan kivételeket.
 author: j82w
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 860748c7114017dcd1120551d9539e0d098fa1fa
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: dce956b932274a44e98a28b4c6567a5e98771613
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097843"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340005"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-unauthorized-exceptions"></a>Azure Cosmos DB jogosulatlan kivételek diagnosztizálása és megoldása
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -49,6 +50,6 @@ A 401 MAC-aláírási probléma röviddel a tároló létrehozása után láthat
 #### <a name="solution"></a>Megoldás:
 Létezik egy versenyhelyzet a tároló létrehozásával. Egy alkalmazás-példány megpróbál hozzáférni a tárolóhoz a tároló létrehozása után. A versenyhelyzet leggyakoribb forgatókönyve az, ha az alkalmazás fut, és a tároló törlődik, és ugyanazzal a névvel jön létre. Az SDK megpróbálja használni az új tárolót, de a tároló létrehozása még folyamatban van, így nem rendelkezik a kulcsokkal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A Azure Cosmos DB .NET SDK használatakor felmerülő problémák [diagnosztizálása és hibaelhárítása](troubleshoot-dot-net-sdk.md) .
 * A [.net v3](performance-tips-dotnet-sdk-v3-sql.md) és a [.NET v2](performance-tips.md)teljesítményére vonatkozó irányelvek ismertetése.

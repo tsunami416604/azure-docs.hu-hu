@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 2/28/2018
-ms.openlocfilehash: 45fa455d00a757e6df87d2a93982f33fe4e64bef
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4e82c8402584f694cb32bb37ae3e6eae9366eaf7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91710362"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341433"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rövid útmutató: a PHP használata az Azure Database for PostgreSQL-kiszolgálóval való kapcsolódáshoz és az adatlekérdezéshez
 
@@ -47,7 +47,7 @@ Telepítse a PHP-t a kiszolgálójára, vagy hozzon létre egy PHP-t tartalmazó
 Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
+2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver** ).
 3. Kattintson a kiszolgálónévre.
 4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
  :::image type="content" source="./media/connect-php/1-connection-string.png" alt-text="Azure Database for PostgreSQL-kiszolgáló neve":::
@@ -214,6 +214,16 @@ Cserélje le a `$host`, `$database`, `$user` és `$password` paramétereket a sa
     // Closing connection
     pg_close($connection);
 ?>
+```
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Az ebben a rövid útmutatóban használt összes erőforrás törléséhez törölje az erőforráscsoportot a következő parancs használatával:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>További lépések

@@ -3,16 +3,17 @@ title: Nem található kivételek Azure Cosmos DB hibáinak megoldása
 description: Ismerje meg, hogyan diagnosztizálhatja és javíthatja a nem található kivételeket.
 author: j82w
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 94aebd768987a9e56baf31967c13135031172ac5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f0fa8e5923639ea74a83a9a775bd5d580234b7ed
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081399"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340124"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>Azure Cosmos DB nem található kivételek diagnosztizálása és megoldása
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -105,6 +106,6 @@ A tárolók/gyűjtemények nevei megkülönböztetik a kis-és nagybetűket a Co
 #### <a name="solution"></a>Megoldás:
 Ügyeljen arra, hogy a pontos nevet használja a Cosmos DBhoz való csatlakozáskor.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A Azure Cosmos DB .NET SDK használatakor felmerülő problémák [diagnosztizálása és hibaelhárítása](troubleshoot-dot-net-sdk.md) .
 * A [.net v3](performance-tips-dotnet-sdk-v3-sql.md) és a [.NET v2](performance-tips.md)teljesítményére vonatkozó irányelvek ismertetése.

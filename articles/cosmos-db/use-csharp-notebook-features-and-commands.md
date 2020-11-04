@@ -3,16 +3,17 @@ title: Beépített notebook-parancsok és-szolgáltatások használata Azure Cos
 description: Ismerje meg, hogyan használhatók a beépített parancsok és szolgáltatások a Azure Cosmos DB beépített C# jegyzetfüzetekkel való gyakori működéséhez.
 author: deborahc
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 5fab63a0a0a34cd0417eb0a891133ac256ef3ac0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 67fe71d8e2d6ab239989cb30e9bf5a1b4d731037
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099164"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340478"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>Beépített notebook-parancsok és-szolgáltatások használata Azure Cosmos DB C# jegyzetfüzetekben (előzetes verzió)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -118,12 +119,12 @@ Például a *GetingStarted_Csharp. ipynb* példában kinyomtathatjuk a változó
 
 :::image type="content" source="media/use-notebook-features-and-commands/csharp-query-cell.png" alt-text="Csharp-lekérdezési cella":::
 
-:::image type="content" source="media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png" alt-text="Csharp-lekérdezési cella":::
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png" alt-text="nteract adatkezelő":::
 
 ## <a name="use-built-in-dictionary-viewer"></a>Beépített szótár-megjelenítő használata
 A változó megjelenítéséhez használhatja a beépített szótár megjelenítőjét. Egy cellában helyezze el az utolsó sorban megjeleníteni kívánt változót, amely automatikusan megjelenik a cella futtatásakor.
 
-:::image type="content" source="media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png" alt-text="Csharp-lekérdezési cella":::
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png" alt-text="Beépített szótár megjelenítője":::
 
 ## <a name="upload-json-items-to-a-container"></a>JSON-elemek feltöltése tárolóba
 A ``%%upload`` Magic paranccsal adatok tölthetők fel egy JSON-fájlból egy megadott Azure Cosmos-tárolóba. Az elemek feltöltéséhez használja az alábbi parancsot:
@@ -161,9 +162,9 @@ Cserélje le a helyére a ``{notebookName}`` futtatni kívánt jegyzetfüzet nev
 ## <a name="reset-notebooks-workspace"></a>Jegyzetfüzetek alaphelyzetbe állítása munkaterület
 Ha a jegyzetfüzetek munkaterületet az alapértelmezett beállításokra szeretné visszaállítani, válassza a parancssáv **munkaterület alaphelyzetbe** állítása lehetőséget. Ezzel eltávolítja az összes egyéni telepített csomagot, majd újraindítja a Jupyter-kiszolgálót. A jegyzetfüzeteket, a fájlokat és az Azure Cosmos-erőforrásokat nem érinti a rendszer.  
 
-:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="Csharp-lekérdezési cella":::
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="Jegyzetfüzetek alaphelyzetbe állítása munkaterület":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg [Azure Cosmos db Jupyter notebookok](cosmosdb-jupyter-notebooks.md) előnyeit
 - További információ a [Azure Cosmos db .net SDK for SQL API](https://github.com/Azure/azure-cosmos-dotnet-v3) -ról

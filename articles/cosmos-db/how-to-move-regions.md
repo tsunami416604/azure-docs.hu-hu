@@ -3,16 +3,17 @@ title: Azure Cosmos DB-fiók áthelyezése másik régióba
 description: Megtudhatja, hogyan helyezhet át egy Azure Cosmos DB fiókot egy másik régióba.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 09/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: 14839465c19908653e22fa80f634ef7e3fa28bd9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 29b5c5d3cf55cd11fe505c0d9ab9b894dc2ad267
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100150"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342028"
 ---
 # <a name="move-an-azure-cosmos-db-account-to-another-region"></a>Azure Cosmos DB-fiók áthelyezése másik régióba
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -74,7 +75,7 @@ A következő lépések bemutatják, hogyan telepíthet át egy Azure Cosmos DB 
 
     Ha a kérések mostantól teljesen átirányítva lettek az új példányra, törölheti a régi Azure Cosmos DB fiókot és az élő adatmigráló eszközt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Cosmos-fiók, valamint az adatbázisok és tárolók kezelésével kapcsolatos további információkért és példákért olvassa el a következő cikkeket:
 

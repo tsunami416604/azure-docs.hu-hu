@@ -5,15 +5,16 @@ author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8694a884b26194c61cc77d00848692a24e3009be
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 243f6f26be592e2db82d8f46df3de9aafcd2078b
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073706"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340463"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>A Azure Cosmos DB metrikáinak monitorozása és hibakeresése
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -52,13 +53,13 @@ Első lépésként lépjen a [Azure Portalra](https://portal.azure.com) , és na
 
 A leggyakoribb hiba az állapotkód 429 (ráta korlátozása/szabályozása). Ez a hiba azt jelenti, hogy a Azure Cosmos DBre irányuló kérelmek többek, mint a kiosztott átviteli sebesség. A probléma leggyakoribb megoldása az, hogy az adott gyűjteményhez tartozó [RUs vertikális felskálázását](./set-throughput.md) .
 
-:::image type="content" source="media/use-metrics/metrics-12.png" alt-text="Cosmos DB teljesítmény-metrikák a Azure Portal":::
+:::image type="content" source="media/use-metrics/metrics-12.png" alt-text="Kérelmek száma percenként":::
 
 ## <a name="determine-the-throughput-distribution-across-partitions"></a>Az átviteli sebesség eloszlásának meghatározása a partíciók között
 
 A partíciós kulcsok jó kihasználása elengedhetetlen a skálázható alkalmazások számára. A particionált tárolók partíciók szerinti elosztásának meghatározásához navigáljon a [Azure Portal](https://portal.azure.com) **metrikák** paneljére. Az **átviteli sebesség** lapon a tárolási bontás az **egyes fizikai partíciós diagramok maximális felhasznált ru/másodpercben** jelenik meg. Az alábbi ábrán egy példa látható az olyan gyenge adateloszlásra, amelyet a bal szélen lévő elferdített partíció is mutat.
 
-:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Cosmos DB teljesítmény-metrikák a Azure Portal":::
+:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Egyetlen partíció, amely nagy kihasználtságot lát":::
 
 Az egyenetlen átviteli sebesség a *gyakori partíciókat* okozhatja, ami szabályozható kérelmeket eredményezhet, és újraparticionálást igényelhet. A Azure Cosmos DB particionálásával kapcsolatos további információkért lásd: [particionálás és skálázás Azure Cosmos DBban](./partitioning-overview.md).
 
@@ -66,11 +67,11 @@ Az egyenetlen átviteli sebesség a *gyakori partíciókat* okozhatja, ami szab�
 
 A partíciók jó kihasználása elengedhetetlen a skálázható alkalmazások számára. Ha meg szeretné határozni, hogy a particionált tárolók tárolási eloszlása partíciók szerinti bontásban történjen-e, a [Azure Portal](https://portal.azure.com)metrikák paneljén. A Storage (tárolás) lapon a tárolók lebontása a felső partíciós kulcsok diagram által felhasznált adattábla és index tárolóban jelenik meg. Az alábbi ábra az adattárolás gyenge eloszlását mutatja be, ahogy azt a bal szélen található ferde partíció mutatja.
 
-:::image type="content" source="media/use-metrics/metrics-07.png" alt-text="Cosmos DB teljesítmény-metrikák a Azure Portal":::
+:::image type="content" source="media/use-metrics/metrics-07.png" alt-text="Gyenge adateloszlás – példa":::
 
 A diagramon a partícióra kattintva megadhatja, hogy melyik partíciós kulcs döntse el a terjesztést.
 
-:::image type="content" source="media/use-metrics/metrics-05.png" alt-text="Cosmos DB teljesítmény-metrikák a Azure Portal":::
+:::image type="content" source="media/use-metrics/metrics-05.png" alt-text="A partíciós kulcs elferdíti az eloszlást":::
 
 Miután meghatározta, hogy melyik partíciós kulcs okozza az elferdítés eloszlását, lehet, hogy újra kell particionálnia a tárolót egy elosztott partíciós kulccsal. A Azure Cosmos DB particionálásával kapcsolatos további információkért lásd: [particionálás és skálázás Azure Cosmos DBban](./partitioning-overview.md).
 
@@ -109,7 +110,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 A *QueryMetrics* részletesen ismerteti, hogy mennyi ideig tartott a lekérdezés egyes összetevőinek végrehajtása. A hosszú ideig futó lekérdezések esetében a leggyakoribb kiváltó ok a vizsgálatok, ami azt jelenti, hogy a lekérdezés nem tudta kihasználni az indexeket. Ez a probléma jobb szűrőfeltétel használatával oldható meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most megtanulta, hogyan figyelheti és hibakeresési hibákat a Azure Portalban megadott mérőszámok használatával. Ha többet szeretne megtudni az adatbázis teljesítményének növeléséről, olvassa el a következő cikkeket:
 

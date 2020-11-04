@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: d21b59b8822684598ac2fc3fd813278c1cf0c698
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8aae75aca585c30c0678c88247a8ecfe8a0b801d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319807"
+ms.locfileid: "93340260"
 ---
 # <a name="virtual-network-service-tags"></a>Virtuális hálózati szolgáltatás címkéi
 <a name="network-service-tags"></a>
@@ -40,7 +40,7 @@ Az oszlopok azt jelzik, hogy a címke:
 
 Alapértelmezés szerint a szolgáltatás címkéi a teljes felhő tartományait tükrözik. Egyes szolgáltatási címkék a megfelelő IP-tartományok adott régióra való korlátozásával is részletesebb szabályozást tesznek lehetővé. A szolgáltatás címkéje például az **Azure Storage-** t jelöli a teljes felhőhöz, de a **Storage. WestUS** leszűkíti a tartományt úgy, hogy csak a WestUS régióból származó tárolási IP-címekre legyenek érvényesek. Az alábbi táblázat azt jelzi, hogy az egyes szolgáltatási címkék támogatják-e az ilyen regionális hatókört.  
 
-| Címke | Rendeltetés | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
+| Címke | Cél | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ActionGroup** | Műveleti csoport. | Bejövő | Nem | Nem |
 | **ApiManagement** | Felügyeleti forgalom az Azure API Managementhoz – dedikált központi telepítések. <br/><br/>*Megjegyzés:* Ez a címke az Azure API Management szolgáltatási végpontját jelöli a vezérlési sík régiónként. Ez lehetővé teszi, hogy az ügyfelek felügyeleti műveleteket hajtsanak végre a API Management szolgáltatáson konfigurált API-kkal, műveletekkel, házirendekkel és NamedValues.  | Bejövő | Igen | Igen |
@@ -84,7 +84,6 @@ Alapértelmezés szerint a szolgáltatás címkéi a teljes felhő tartományait
 | **DataFactory**  | Azure Data Factory | Mindkettő | Nem | Nem |
 | **DataFactoryManagement** | Azure Data Factory felügyeleti forgalma. | Kimenő | Nem | Nem |
 | **Dynamics365ForMarketingEmail** | A Dynamics 365 marketing e-mail-szolgáltatásának címtartományt. | Kimenő | Igen | Nem |
-| **ElasticAFD** | Rugalmas Azure bejárati ajtó. | Mindkettő | Nem | Nem |
 | **EventHub** | Azure Event Hubs. | Kimenő | Igen | Igen |
 | **GatewayManager** | Az Azure VPN Gateway és Application Gateway számára dedikált központi telepítések kezelési forgalma. | Bejövő | Nem | Nem |
 | **GuestAndHybridManagement** | Azure Automation és vendég konfiguráció. | Kimenő | Nem | Igen |
@@ -150,5 +149,5 @@ Az ezekben a fájlokban lévő IP-címtartományok CIDR-jelöléssel rendelkezne
 - Az egyik kiadvány frissítései a következőre észlelhetők a JSON-fájlban lévő, megnövekedett *changeNumber* értékek alapján. Az egyes alszakaszok (például a **Storage. WestUS** ) saját *changeNumber* rendelkeznek, amely a változásoknak megfelelően növekszik. A fájl *changeNumber* legfelső szintje az alszakaszok bármelyikének megváltozásakor növekszik.
 - A szolgáltatási címke adatainak elemzésére (például a WestUS-ben az összes címtartomány beszerzésére) vonatkozó példákat a [Service tag felderítési API PowerShell](https://aka.ms/discoveryapi_powershell) dokumentációjában találja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Megtudhatja, hogyan [hozhat létre hálózati biztonsági csoportot](tutorial-filter-network-traffic.md).

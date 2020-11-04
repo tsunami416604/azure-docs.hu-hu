@@ -3,16 +3,17 @@ title: Adatok migrálása a Cassandra-ből Azure Cosmos DB Cassandra API a Blitz
 description: Ismerje meg, hogyan telepítheti át az Apache Cassandra Database-ből származó adatok Azure Cosmos DB Cassandra API a Blitzz használatával.
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 25c171cf20d86244958dbeb4565760115d6d7075
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c26d21e74e9808fe65890b7f4eba31ee742552a4
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092415"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339988"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Adatok migrálása a Cassandra-ből Azure Cosmos DB Cassandra API-fiókba a Blitzz használatával
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -55,7 +56,7 @@ Ez a szakasz ismerteti a Blitzz beállításához szükséges lépéseket, valam
 
    :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/blitzz-replicant-download.png" alt-text="Blitzz replikált eszköz letöltése":::
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/replicant-files.png" alt-text="Blitzz replikált eszköz letöltése":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/replicant-files.png" alt-text="Blitzz replikált-fájlok":::
 
 1. A CLI-terminálon állítsa be a forrás adatbázis konfigurációját. Nyissa meg a konfigurációs fájlt a **`vi conf/conn/cassandra.yml`** paranccsal, és adja hozzá a Cassandra csomópontok, a portszám, a Felhasználónév, a jelszó és a többi szükséges adat IP-címeinek vesszővel tagolt listáját. A következő példa a konfigurációs fájlban található tartalmakat szemlélteti:
 
@@ -72,9 +73,9 @@ Ez a szakasz ismerteti a Blitzz beállításához szükséges lépéseket, valam
 
    ```
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/open-connection-editor-cassandra.png" alt-text="Blitzz replikált eszköz letöltése":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/open-connection-editor-cassandra.png" alt-text="A Cassandra-kapcsolatok szerkesztőjének megnyitása":::
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-connection-configuration.png" alt-text="Blitzz replikált eszköz letöltése":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-connection-configuration.png" alt-text="Cassandra-kapcsolatok konfigurálása":::
 
    A konfigurációs adatok kitöltése után mentse és zárjuk be a fájlt.
 
@@ -93,7 +94,7 @@ Ez a szakasz ismerteti a Blitzz beállításához szükséges lépéseket, valam
 
 1. Az adatok áttelepítése előtt növelje a tároló átviteli sebességét az alkalmazás gyors áttelepítéséhez szükséges mennyiségre. Megnövelheti például az átviteli sebességet 100000 RUs-re. Az adatátviteli sebesség az áttelepítés megkezdése előtt méretezése segít az adatok áttelepítésében kevesebb idő alatt.
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/scale-throughput.png" alt-text="Blitzz replikált eszköz letöltése":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/scale-throughput.png" alt-text="Az Azure Cosmos-tároló méretezése az egész":::
 
    Csökkentse az átviteli sebességet az áttelepítés befejeződése után. A tárolt adatok mennyisége és az egyes műveletekhez szükséges RUs alapján megbecsülhető az adatáttelepítés után szükséges átviteli sebesség. Ha többet szeretne megtudni arról, hogyan kell megbecsülni az RUs-t, tekintse meg a [tárolók és adatbázisok átviteli sebességének kiépítése](set-throughput.md) és [a Azure Cosmos db Capacity Planner cikkeinek becslése](estimate-ru-with-capacity-planner.md) című cikket.
 
@@ -129,7 +130,7 @@ Ez a szakasz ismerteti a Blitzz beállításához szükséges lépéseket, valam
 
    A replikált felhasználói felületén látható a replikálási folyamat. Ha elkészült a séma-áttelepítési és a pillanatkép-művelet, a folyamat 100%-ot mutat. Az áttelepítés befejezése után érvényesítheti a cél Azure Cosmos-adatbázisban található adatforrásokat.
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-data-migration-output.png" alt-text="Blitzz replikált eszköz letöltése":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-data-migration-output.png" alt-text="Cassandra adatáttelepítés kimenete":::
 
 
 1. Mivel a teljes áttelepítési módot használta, olyan műveleteket hajthat végre, mint például az adatok beszúrása, frissítése vagy törlése a forrás Apache Cassandra-adatbázison. Később ellenőrizze, hogy a cél Azure Cosmos-adatbázisban valós időben replikálódnak-e. Az áttelepítés után csökkentse az Azure Cosmos-tárolóhoz konfigurált átviteli sebességet.
@@ -142,7 +143,7 @@ Ez a szakasz ismerteti a Blitzz beállításához szükséges lépéseket, valam
 
 Ha többet szeretne megtudni az adatáttelepítés célhelyre való áttelepítéséről, tekintse meg a [Blitzz replikált bemutatóját](https://www.youtube.com/watch?v=fsUhF9LUZmM).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Átviteli sebesség kiosztása tárolókra és adatbázisokra](set-throughput.md) 
 * [A partíciós kulcs ajánlott eljárásai](partitioning-overview.md#choose-partitionkey)

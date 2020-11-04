@@ -4,16 +4,18 @@ description: Megtudhatja, hogyan használhatja a TransactionalBatch-t a Azure Co
 author: stefArroyo
 ms.author: esarroyo
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: c27eb2b4e0dc0d269e1cffc9e213cebeb93443e2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 1f541b947c04619892291e47002ea9b0dbb6d38d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93328701"
+ms.locfileid: "93340562"
 ---
 # <a name="transactional-batch-operations-in-azure-cosmos-db-using-the-net-sdk"></a>Tranzakciós batch-műveletek Azure Cosmos DB a .NET SDK használatával
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A tranzakciós köteg olyan pont típusú műveletek egy csoportját írja le, amelyeknek egy tárolóban ugyanazzal a partíciós kulccsal kell rendelkezniük. A .NET SDK-ban az `TranscationalBatch` osztály a műveletek kötegének meghatározására szolgál. Ha az összes művelet a tranzakciós köteg műveletben ismertetett sorrendben sikeres, a tranzakció véglegesítve lesz. Ha azonban valamelyik művelet meghiúsul, a teljes tranzakció vissza lesz állítva.
 
@@ -109,7 +111,7 @@ Jelenleg két ismert korlát létezik:
 * Azure Cosmos DB kérések méretének korlátja megadja, hogy a `TransactionalBatch` hasznos adatok mérete ne haladja meg a 2 MB-ot, a maximális végrehajtási idő pedig 5 másodperc.
 * A jelenlegi korlátja 100 művelet/ `TransactionalBatch` , amely biztosítja, hogy a teljesítmény a vártnál és a SLA-n belül legyen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a TransactionalBatch-mel kapcsolatos [lehetőségekről](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/TransactionalBatch)
 

@@ -4,15 +4,16 @@ description: A TTL esetében a Microsoft Azure Cosmos DB lehetővé teszi a doku
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.reviewer: sngun
-ms.openlocfilehash: d4815f4be3c8ef1a2c262d6715756776a537eac1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f439fcd8b2aa1c75e1aff2c6b775921beabbcddf
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101051"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340551"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Élettartam (TTL) az Azure Cosmos DB-ben
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -85,7 +86,7 @@ A tárolón lévő TTL értéke 1000 (DefaultTimeToLive = 1000)
 |TTL =-1   |Az élettartam engedélyezve van. Az adott tétel soha nem jár le.|
 |TTL = 2000 |Az élettartam engedélyezve van. Az tétel 2000 másodperc után lejár.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan konfigurálhatja az élettartamot a következő cikkekben:
 

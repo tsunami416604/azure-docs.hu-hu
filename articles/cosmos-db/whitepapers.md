@@ -2,17 +2,18 @@
 title: Azure Cosmos DB fogalmakat ismertető tanulmányok
 description: Bemutatjuk a Azure Cosmos DBi tanulmányok listáját, és részletesen ismertetik a fogalmakat.
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1b4beba04bf90e61ac959c90d3559d8cef2db4db
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b9ad69114dedfdec151480b97ceccc279bcbd683
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099130"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340396"
 ---
 # <a name="azure-cosmos-db-whitepapers"></a>Azure Cosmos DB tanulmányok
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

@@ -6,16 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
-ms.openlocfilehash: 38077dca1b8a27098e8db17354b82340a651b880
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 55a73ada39f4f48aeb22c5482bd85d1092d54c35
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305182"
+ms.locfileid: "93342249"
 ---
-# <a name="use-power-bi-and-serverless-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>A Power BI és a kiszolgáló nélküli SQL-készlet használata a Azure Cosmos DB-alapú adatelemzéshez a szinapszis-hivatkozással (előzetes verzió)
-
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
+# <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>A Power BI és a kiszolgáló nélküli szinapszis SQL-készlet használata a Azure Cosmos DB-alapú adatelemzéshez a szinapszis-hivatkozással (előzetes verzió) 
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre kiszolgáló nélküli SQL Pool-adatbázist és-nézeteket a szinapszis-kapcsolaton keresztül a Azure Cosmos DBhoz. Ezután lekérdezi a Azure Cosmos DB tárolókat, majd létrehoz egy modellt, Power BI ezen nézetek alapján, hogy tükrözze a lekérdezést.
 
@@ -142,7 +141,7 @@ Miután kiválasztotta ezeket a beállításokat, az alábbi képernyőképhez h
 
 :::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="Jelentés, amely összehasonlítja a háztartások méretének relatív fontosságát az áruházbeli átlagos bevételhez képest.":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Azure Cosmos DB-adatlekérdezés a T-SQL használatával az Azure szinapszis hivatkozás használatával](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)
 

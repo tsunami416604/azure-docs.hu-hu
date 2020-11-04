@@ -2,21 +2,22 @@
 title: Szintetikus partíciós kulcs létrehozása a Azure Cosmos DBban
 description: Megtudhatja, hogyan használhatja a szintetikus partíciós kulcsokat az Azure Cosmos-tárolókban az adatok és a számítási feladatok egyenletes elosztása érdekében a partíciós kulcsok között.
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
-ms.openlocfilehash: d6868859247fc430ee96581ae85fb7077af04999
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6b8bc44f1ba5624c37620205aaa574e618ef395f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098025"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340651"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Szintetikus partíciókulcs létrehozása
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Az ajánlott eljárás egy olyan partíciós kulcs, amely számos különböző értékkel rendelkezik, például több száz vagy ezer. A cél az adatok és a számítási feladatok egyenletes elosztása a partíciós kulcs értékeihez társított elemek között. Ha egy ilyen tulajdonság nem létezik az adataiban, létrehozhat egy *szintetikus partíciós kulcsot* . Ez a dokumentum több alapvető technikát ismertet a Cosmos-tároló szintetikus partíciós kulcsának létrehozásához.
+Az ajánlott eljárás egy olyan partíciós kulcs, amely számos különböző értékkel rendelkezik, például több száz vagy ezer. A cél az adatok és a számítási feladatok egyenletes elosztása a partíciós kulcs értékeihez társított elemek között. Ha egy ilyen tulajdonság nem létezik az adataiban, létrehozhat egy *szintetikus partíciós kulcsot*. Ez a dokumentum több alapvető technikát ismertet a Cosmos-tároló szintetikus partíciós kulcsának létrehozásához.
 
 ## <a name="concatenate-multiple-properties-of-an-item"></a>Egy elem több tulajdonságának összefűzése
 
@@ -55,7 +56,7 @@ Vegye figyelembe az előző példát, ahol a tároló egy dátumot használ a pa
 
 Ezzel a stratégiával az írások egyenletesen oszlanak el a partíciós kulcs értékein és a partíciók között. Egy adott elem és dátum könnyen olvasható, mert kiszámíthatja egy adott értékhez tartozó partíciós kulcs értékét `Vehicle-Identification-Number` . Ennek a módszernek az előnye, hogy el kell kerülnie egy egyszerű, például egy olyan partíciós kulcs létrehozását, amely az összes munkaterhelést elvégzi. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A particionálási koncepcióról további információt a következő cikkekben talál:
 

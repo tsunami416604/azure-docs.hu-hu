@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: 90d059aaa16e24df1e71d4d439cb9aa23b786c77
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d0727f512ab24342b493ba2563262a9253d95d8c
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323206"
+ms.locfileid: "93339971"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Mi a Azure Cosmos DB Analytical Store (előzetes verzió)?
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 > [!IMPORTANT]
 > Azure Cosmos DB analitikus tároló jelenleg előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -229,7 +229,7 @@ Ha az analitikai tárolót egy tárolón engedélyezi:
 
 További információ: [az analitikai élettartam konfigurálása egy tárolón](configure-synapse-link.md#create-analytical-ttl).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információért lásd a következő dokumentumokat:
 

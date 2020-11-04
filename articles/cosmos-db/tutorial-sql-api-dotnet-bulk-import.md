@@ -4,16 +4,17 @@ description: Megtudhatja, hogyan importálhat és betöltheti az adatok Azure Co
 author: ealsur
 ms.author: maquaran
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: tutorial
 ms.date: 09/21/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e80a67890dcf76d115464ea62c0729aedd444667
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6e50fe1f5b1658458a2d561f8157f04d1cbceb41
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099226"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341239"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Az Azure Cosmos DB SQL API-fiókba való tömeges importálás a .NET SDK használatával
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -45,7 +46,7 @@ A cikkben szereplő utasítások követése előtt győződjön meg arról, hogy
 
 ## <a name="step-2-set-up-your-net-project"></a>2. lépés: a .NET-projekt beállítása
 
-Nyissa meg a Windows-parancssort vagy egy terminál-ablakot a helyi számítógépről. A következő szakaszban lévő összes parancsot a parancssorból vagy a terminálból fogja futtatni. Futtassa a következő DotNet új parancsot egy olyan új alkalmazás létrehozásához, amelynek a neve *tömeges importálás – bemutató* . A `--langVersion` paraméter beállítja a *LangVersion* tulajdonságot a létrehozott projektfájl számára.
+Nyissa meg a Windows-parancssort vagy egy terminál-ablakot a helyi számítógépről. A következő szakaszban lévő összes parancsot a parancssorból vagy a terminálból fogja futtatni. Futtassa a következő DotNet új parancsot egy olyan új alkalmazás létrehozásához, amelynek a neve *tömeges importálás – bemutató*. A `--langVersion` paraméter beállítja a *LangVersion* tulajdonságot a létrehozott projektfájl számára.
 
    ```bash
    dotnet new console –langVersion:8 -n bulk-import-demo
@@ -183,7 +184,7 @@ A minta futtatásához váltson az adattár könyvtárába, és használja a kö
    dotnet run
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következő lépéseket hajtotta végre:
 

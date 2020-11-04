@@ -11,12 +11,12 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: fe20304341d6e99eb77ad2818e675b0063efd693
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a50554c73958400f1f16348d3b8fb2bac88ac61b
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319519"
+ms.locfileid: "93340277"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>A szinapszis SQL hibaelhárítása Az Azure szinapszis Analyticsben
 
@@ -67,12 +67,10 @@ Ez a cikk a szinapszis SQL általános hibaelhárítási problémáit sorolja fe
 | :------------------------------------ | :----------------------------------------------------------- |
 | Nem támogatott SQL Database funkciók     | Lásd: nem [támogatott táblázatos funkciók](sql-data-warehouse-tables-overview.md#unsupported-table-features). |
 | Nem támogatott SQL Database adattípusok   | Lásd: nem [támogatott adattípusok](sql-data-warehouse-tables-data-types.md#identify-unsupported-data-types).        |
-| TÖRLÉSi és frissítési korlátozások         | [A nem támogatott frissítési és törlési szintaxissal](sql-data-warehouse-develop-ctas.md)kapcsolatban tekintse meg a [megoldások frissítése](sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements), a [megkerülő megoldások törlése](sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements) és a CTAS használata című témakört. |
-| A MERGE utasítás nem támogatott      | Lásd: [egyesítési Áthidaló megoldás](sql-data-warehouse-develop-ctas.md#replace-merge-statements).                  |
 | Tárolt eljárások korlátai          | A tárolt eljárások korlátainak megismeréséhez tekintse meg a [tárolt eljárásokra vonatkozó korlátozásokat](sql-data-warehouse-develop-stored-procedures.md#limitations) . |
 | A UDF nem támogatja a SELECT utasítások használatát | Ez a UDF jelenlegi korlátozása.  Az általunk támogatott szintaxishoz lásd: [create Function](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) . |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha további segítségre van szüksége a probléma megoldásához, néhány további erőforrást is kipróbálhat.
 

@@ -3,18 +3,20 @@ title: A Azure Cosmos DB szolgáltatás nem érhető el a Java v4 SDK-val való 
 description: Ismerje meg, hogyan diagnosztizálhatja és javíthatja Azure Cosmos DB szolgáltatás nem érhető el kivételeket a Java v4 SDK-val.
 author: kushagrathapar
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 10/28/2020
 ms.author: kuthapar
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: bba6465b8978b58fa3ef7be2a7575018828eabb2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 03c899307b00010ca87b279ed720b92946d3673c
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93103002"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340071"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-java-v4-sdk-service-unavailable-exceptions"></a>Az Azure Cosmos DB Java v4 SDK szolgáltatáshoz nem használható kivételek diagnosztizálása és megoldása
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 A Java v4 SDK nem tudott csatlakozni a Azure Cosmos DBhoz.
 
 ## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
@@ -36,6 +38,6 @@ A megoldásához kövesse az [időtúllépési kérelem hibaelhárításának l�
 Tekintse meg az [Azure állapotát](https://status.azure.com/status) , és ellenőrizze, hogy van-e folyamatban probléma.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A Azure Cosmos DB Java v4 SDK használatakor felmerülő problémák [diagnosztizálása és hibaelhárítása](troubleshoot-java-sdk-v4-sql.md) .
 * A [Java v4 SDK](performance-tips-java-sdk-v4-sql.md)teljesítményére vonatkozó irányelvek ismertetése.

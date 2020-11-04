@@ -3,15 +3,16 @@ title: Az SQL-lekérdezések első lépései a Azure Cosmos DBban
 description: Ismerje meg, hogyan lehet SQL-lekérdezéseket lekérdezni a Azure Cosmos DBról. A mintaadatok feltölthetők egy Azure Cosmos DB tárolóba, és lekérdezheti azt.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/24/2020
 ms.author: tisande
-ms.openlocfilehash: ee38e076e76111f4f4e6bf3b8fa8dde8c3debcfc
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7a4b2a778fc3d520c0ce85bed5bec0b49fc14384
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100813"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341909"
 ---
 # <a name="getting-started-with-sql-queries"></a>Bevezetés az SQL-lekérdezések használatába
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -179,7 +180,7 @@ Az előző példák a Cosmos DB lekérdezési nyelvének számos aspektusát mut
 
 * A Cosmos-tároló a JSON-elemek séma nélküli gyűjteménye. A tároló elemein belüli és azok közötti kapcsolatok implicit módon vannak rögzítve az adattárolással, nem az elsődleges kulcs és a idegenkulcs-kapcsolatok esetében. Ez a funkció fontos a cikk későbbi részében tárgyalt elemekhez tartozó illesztések esetében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Cosmos DB bemutatása](introduction.md)
 - [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)

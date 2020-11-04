@@ -3,16 +3,17 @@ title: TRUNC Azure Cosmos DB lekérdezési nyelven
 description: Ismerkedjen meg az SQL System Function TRUNC Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 5d68fcd0e608be7aceadced3a8adf0a72efce1eb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: cc6370e9183f897edb65ceb129cd7600729a85aa
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93093788"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341518"
 ---
 # <a name="trunc-azure-cosmos-db"></a>TRUNC (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -52,7 +53,7 @@ SELECT TRUNC(2.4) AS t1, TRUNC(2.6) AS t2, TRUNC(2.5) AS t3, TRUNC(-2.4) AS t4, 
 
 Ez a rendszerfunkció kihasználja a [tartomány indexét](index-policy.md#includeexclude-strategy).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

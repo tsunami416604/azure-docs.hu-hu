@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 10/18/2020
-ms.openlocfilehash: 96a655c99a5b6846e5f286e31d22a3756e69d06e
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 8820fd7b0812d925af6aca923a2b205d5bc92f3e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912123"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341450"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rövid útmutató: a .NET (C#) használatával csatlakozhat és lekérdezheti Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -42,7 +42,7 @@ Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz s
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver** ).
 3. Kattintson a kiszolgálónévre.
-4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet** . Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
+4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
  :::image type="content" source="./media/connect-csharp/1-connection-string.png" alt-text="Azure Database for PostgreSQL-kiszolgáló neve":::
 
 ## <a name="step-1-connect-and-insert-data"></a>1. lépés: az adatkapcsolat és az adatbeszúrás
@@ -323,7 +323,17 @@ namespace Driver
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Az ebben a rövid útmutatóban használt összes erőforrás törléséhez törölje az erőforráscsoportot a következő parancs használatával:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
+```
+
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Azure Database for MySQL-kiszolgáló kezelése a portál használatával](./howto-create-manage-server-portal.md)<br/>
 

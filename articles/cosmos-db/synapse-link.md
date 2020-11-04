@@ -7,15 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: d25cd7418ec34b8c4a4a53dba4892e85ed1a66d5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1e78a7ff806cbd6a7f30c68786e62f8508c850ac
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098076"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340685"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Mi az az Azure szinapszis-hivatkozás a Azure Cosmos DB (előzetes verzió)?
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 > [!IMPORTANT]
 > Az Azure szinapszis hivatkozása Azure Cosmos DB jelenleg előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -129,7 +129,7 @@ A szinapszis-hivatkozás nem ajánlott, ha olyan hagyományos adattárház-köve
 
 Az Azure szinapszis hivatkozás számlázási modellje tartalmazza a Azure Cosmos DB analitikus tároló és a szinapszis-futtatókörnyezet használatával felmerülő költségeket. További információért lásd a [Azure Cosmos db analitikus áruház díjszabását](analytical-store-introduction.md#analytical-store-pricing) és az [Azure szinapszis Analytics árképzési](https://azure.microsoft.com/pricing/details/synapse-analytics/) cikkeit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információért lásd a következő dokumentumokat:
 

@@ -3,15 +3,16 @@ title: A költségek becslése a Azure Cosmos DB Capacity Planner használatáva
 description: A Azure Cosmos DB Capacity Planner segítségével megbecsülheti a szükséges átviteli sebességet (RU/s) és a számítási feladathoz kapcsolódó költségeket. Ez a cikk azt ismerteti, hogyan használható a Capacity Planner új verziója az átviteli sebesség és a szükséges díj megbecsléséhez.
 author: deborahc
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: dech
-ms.openlocfilehash: 460f47ce453f183821ec0f49c38865c44b15ba9f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 017aeaaa24e8ac2d493d0de81a7abb655bae5611
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096716"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342079"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner"></a>RU/s becslése a Azure Cosmos DB Capacity Planner használatával
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -31,7 +32,7 @@ A Capacity Planner két módban is használható.
 ## <a name="estimate-provisioned-throughput-and-cost-using-basic-mode"></a>Kiépített átviteli sebesség és a Cost alapszintű módban való kibecslése
 Ha az alapszintű módban gyors becslést szeretne kapni a számítási feladathoz, navigáljon a [Capacity plannerhez](https://cosmos.azure.com/capacitycalculator/). Adja meg az alábbi paramétereket a munkaterhelés alapján: 
 
-|**Input (Bemenet)**  |**Leírás**  |
+|**Bevitel**  |**Leírás**  |
 |---------|---------|
 |Régiók száma|Azure Cosmos DB az összes Azure-régióban elérhető. Válassza ki a munkaterheléshez szükséges régiók számát. A Cosmos-fiókkal tetszőleges számú régiót rendelhet hozzá. További részletekért tekintse meg a Azure Cosmos DB [globális terjesztését](distribute-data-globally.md) ismertető témakört.|
 |Több régióba írt írások|Ha engedélyezi a [többrégiós írásokat](distribute-data-globally.md#key-benefits-of-global-distribution), az alkalmazás bármely Azure-régióba képes olvasni és írni. Ha letiltja a többrégiós írásokat, az alkalmazás egyetlen régióba írhat adatot. <br/><br/> Engedélyezze a többrégiós írásokat, ha olyan aktív-aktív számítási feladatra van szüksége, amely kis késleltetésű írásokat igényel különböző régiókban. Például egy olyan IOT számítási feladat, amely különböző régiókban lévő nagy mennyiségű adatbázisba ír adatot. <br/><br/> A többrégiós írások 99,999%-os olvasási és írási rendelkezésre állást garantálnak. A többrégiós írásokhoz több átviteli sebesség szükséges az egyetlen írási régióhoz képest. További információkért lásd: [az egyes és a többszörös írási régiókról szóló cikk, hogyan különböznek az RUs](optimize-cost-regions.md) .|
@@ -50,7 +51,7 @@ A speciális mód lehetővé teszi további beállítások megadását, amelyek 
 
 A bejelentkezést követően további mezőket is láthat a mezőkhöz képest alapszintű módban. Adja meg a további paramétereket a munkaterhelés alapján. 
 
-|**Input (Bemenet)**  |**Leírás**  |
+|**Bevitel**  |**Leírás**  |
 |---------|---------|
 |API|Azure Cosmos DB egy többmodelles és többplatformos szolgáltatás. Új munkaterhelések esetén válassza az SQL (mag) API elemet. |
 |Régiók száma|Azure Cosmos DB az összes Azure-régióban elérhető. Válassza ki a munkaterheléshez szükséges régiók számát. A Cosmos-fiókkal tetszőleges számú régiót rendelhet hozzá. További részletekért tekintse meg a Azure Cosmos DB [globális terjesztését](distribute-data-globally.md) ismertető témakört.|
@@ -63,7 +64,7 @@ A bejelentkezést követően további mezőket is láthat a mezőkhöz képest a
 
 Az aktuális becslést tartalmazó CSV-fájl letöltéséhez használhatja a **becslés mentése** gombot is. 
 
-:::image type="content" source="./media/estimate-ru-with-capacity-planner/advanced-mode.png" alt-text="A Capacity Planner alapszintű üzemmódja":::
+:::image type="content" source="./media/estimate-ru-with-capacity-planner/advanced-mode.png" alt-text="A Capacity Planner speciális módja":::
 
 A Azure Cosmos DB Capacity Planner által megjelenő díjak becslése az átviteli sebesség és a tárterület nyilvános díjszabási díja alapján történik. Az összes ár az USA dollárban jelenik meg. Az összes díjszabás régiónként való megjelenítéséhez tekintse meg a [Azure Cosmos db díjszabási oldalát](https://azure.microsoft.com/pricing/details/cosmos-db/) .  
 
@@ -73,7 +74,7 @@ Az Azure Cosmos Capacity kalkulátor feltételezi a pontok olvasását (egyetlen
 
 Ha például a számítási feladathoz lekérdezésre van szükség, ``SELECT * FROM c WHERE c.id = 'Alice'`` amely másodpercenként 100-szor fut, és a lekérdezés ru-díja 10 RUs, akkor a kérelmek kiszolgálásához a 100 lekérdezési/mp * 10 ru/Query = 1000 ru/s érték szükséges. Adja hozzá ezeket az RU/s-ket a számítási feladathoz tartozó olvasások vagy írások esetében szükséges RU/s értékhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [Azure Cosmos db díjszabási modelljéről](how-pricing-works.md).
 * Hozzon létre egy új [Cosmos-fiókot,-adatbázist és-tárolót](create-cosmosdb-resources-portal.md).

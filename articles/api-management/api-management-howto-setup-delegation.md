@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 76b82d3c008ede99e69f3a19a56911fbfecd5642
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 54193c9333c75fd8b973ebe33470fca3617e2f2d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148774"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341841"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>A felhasználói regisztráció és a termék-előfizetés delegálása
 
@@ -52,18 +52,18 @@ Most létre kell hoznia a **delegálási végpontot**. Számos műveletet kell v
    
     A bejelentkezési/regisztrációs eset lekérdezési paraméterei:
    
-   * **művelet**: azt határozza meg, hogy milyen típusú delegálási kérelem van – csak ebben az esetben lehet **bejelentkezési**
-   * **returnUrl**: annak az oldalnak az URL-címe, amelyen a felhasználó a bejelentkezés vagy a regisztráció hivatkozásra kattint
-   * **Salt**: a biztonsági kivonatok feldolgozásához használt speciális sós sztring
-   * **SIG**: a saját számított kivonathoz való összehasonlításhoz használt számított biztonsági kivonat
+   * **művelet** : azt határozza meg, hogy milyen típusú delegálási kérelem van – csak ebben az esetben lehet **bejelentkezési**
+   * **returnUrl** : annak az oldalnak az URL-címe, amelyen a felhasználó a bejelentkezés vagy a regisztráció hivatkozásra kattint
+   * **Salt** : a biztonsági kivonatok feldolgozásához használt speciális sós sztring
+   * **SIG** : a saját számított kivonathoz való összehasonlításhoz használt számított biztonsági kivonat
 2. Győződjön meg arról, hogy a kérés az Azure API Managementról érkezik (opcionális, de kifejezetten ajánlott a biztonság érdekében)
    
-   * HMAC-SHA512 kivonatának kiszámítása a **returnUrl** és a **Salt** lekérdezési paraméterek alapján ([példa az alább megadott kódra]):
+   * HMAC-SHA512 kivonatának kiszámítása a **returnUrl** és a **Salt** lekérdezési paraméterek alapján ( [példa az alább megadott kódra]):
      
-     > HMAC (**Salt** + "\n" + **returnUrl**)
+     > HMAC ( **Salt** + "\n" + **returnUrl** )
 
    * Hasonlítsa össze a fenti számított kivonatot a **SIG** Query paraméter értékével. Ha a két kivonat egyezik, lépjen a következő lépésre, ellenkező esetben tagadja meg a kérést.
-3. Győződjön meg arról, hogy a bejelentkezéshez vagy a regisztrációhoz kér kérést: a **művelet** lekérdezési paramétere "**bejelentkezési**" lesz.
+3. Győződjön meg arról, hogy a bejelentkezéshez vagy a regisztrációhoz kér kérést: a **művelet** lekérdezési paramétere " **bejelentkezési** " lesz.
 4. A felhasználó bejelentkezett felhasználói FELÜLETtel a bejelentkezéshez vagy a regisztrációhoz
 5. Ha a felhasználó regisztrál, létre kell hoznia egy hozzá tartozó fiókot API Managementban. [Hozzon létre egy felhasználót] a API Management REST API. Ha így tesz, győződjön meg arról, hogy a felhasználói azonosító értéke megegyezik a felhasználói tárolóban szereplő értékkel, vagy egy olyan AZONOSÍTÓval, amely nyomon követhető.
 6. A felhasználó sikeres hitelesítése után:
@@ -71,7 +71,7 @@ Most létre kell hoznia a **delegálási végpontot**. Számos műveletet kell v
    * [Közös hozzáférési token kérése] a API Management REST API
    * Fűzze hozzá a returnUrl lekérdezési paramétert a fenti API-hívásból kapott SSO URL-címhez:
      
-     > például: `https://customer.portal.azure-api.net/signin-sso?token=<URL-encoded token>&returnUrl=<URL-encoded URL, for example: %2Freturn%2Furl>` 
+     > például: `https://<developer portal domain, for example: contoso.developer.azure-api.net>/signin-sso?token=<URL-encoded token>&returnUrl=<URL-encoded URL, for example: %2Freturn%2Furl>` 
      
    * A felhasználó átirányítása a fenti létrehozott URL-címre
 
@@ -84,10 +84,10 @@ A **bejelentkezési** műveleten kívül az előző lépések végrehajtásával
 
 A következő lekérdezési paramétereket kell átadnia a fiókkezelés műveleteihez.
 
-* **művelet**: meghatározza, hogy milyen típusú delegálási kérelem (ChangePassword, ChangeProfile vagy CloseAccount)
-* **felhasználóazonosító**: a felügyelni kívánt fiók felhasználói azonosítója
-* **Salt**: a biztonsági kivonatok feldolgozásához használt speciális sós sztring
-* **SIG**: a saját számított kivonathoz való összehasonlításhoz használt számított biztonsági kivonat
+* **művelet** : meghatározza, hogy milyen típusú delegálási kérelem (ChangePassword, ChangeProfile vagy CloseAccount)
+* **felhasználóazonosító** : a felügyelni kívánt fiók felhasználói azonosítója
+* **Salt** : a biztonsági kivonatok feldolgozásához használt speciális sós sztring
+* **SIG** : a saját számított kivonathoz való összehasonlításhoz használt számított biztonsági kivonat
 
 ## <a name="delegating-product-subscription"></a><a name="delegate-product-subscription"> </a>A termék-előfizetés delegálása
 
@@ -97,7 +97,7 @@ A termék-előfizetés delegálása hasonlóan működik a felhasználói bejele
 2. A böngésző átirányítja a delegálási végpontra.
 3. A delegálási végpont a szükséges termék-előfizetési lépéseket hajtja végre. A lépések megtervezése. Tartalmazhatnak átirányítást egy másik lapra a számlázási információk kérelmezéséhez, további kérdések feltevéséhez vagy az adatok egyszerű tárolásához, és nem igényelnek felhasználói beavatkozást.
 
-A funkció engedélyezéséhez a **delegálás** lapon kattintson a **termék-előfizetés delegálása**elemre.
+A funkció engedélyezéséhez a **delegálás** lapon kattintson a **termék-előfizetés delegálása** elemre.
 
 Ezután győződjön meg arról, hogy a delegálási végpont a következő műveleteket végzi el:
 
@@ -108,21 +108,21 @@ Ezután győződjön meg arról, hogy a delegálási végpont a következő műv
    
     Lekérdezési paraméterek a termék-előfizetési esethez:
    
-   * **művelet**: azt határozza meg, hogy milyen típusú delegálási kérelem van. A termék-előfizetési kérelmek esetében az érvényes beállítások a következők:
+   * **művelet** : azt határozza meg, hogy milyen típusú delegálási kérelem van. A termék-előfizetési kérelmek esetében az érvényes beállítások a következők:
      * "Előfizetés": a felhasználó egy adott termékre való előfizetésére vonatkozó kérelem a megadott AZONOSÍTÓval (lásd alább)
      * "Leiratkozás": egy termék felhasználójának lemondására vonatkozó kérelem
      * "Megújítás": az előfizetés megújítására vonatkozó kérelem (például lejáró lehet)
-   * **Termékkód**: *előfizetéskor* – annak a terméknek az azonosítója, amelyre az előfizetést kérte
-   * **subscriptionId**: *lemondás* és *megújítás* – a termék-előfizetés azonosítója
-   * **felhasználóazonosító**: *előfizetés* – a KÉRÉSt kérő felhasználó azonosítója
-   * **Salt**: a biztonsági kivonatok feldolgozásához használt speciális sós sztring
-   * **SIG**: a saját számított kivonathoz való összehasonlításhoz használt számított biztonsági kivonat
+   * **Termékkód** : *előfizetéskor* – annak a terméknek az azonosítója, amelyre az előfizetést kérte
+   * **subscriptionId** : *lemondás* és *megújítás* – a termék-előfizetés azonosítója
+   * **felhasználóazonosító** : *előfizetés* – a KÉRÉSt kérő felhasználó azonosítója
+   * **Salt** : a biztonsági kivonatok feldolgozásához használt speciális sós sztring
+   * **SIG** : a saját számított kivonathoz való összehasonlításhoz használt számított biztonsági kivonat
 
 2. Győződjön meg arról, hogy a kérés az Azure API Managementról érkezik (opcionális, de kifejezetten ajánlott a biztonság érdekében)
    
-   * A HMAC-SHA512 kiszámítása a **Termékkód**, a **userId**és a **Salt** lekérdezési paraméterek alapján:
+   * A HMAC-SHA512 kiszámítása a **Termékkód** , a **userId** és a **Salt** lekérdezési paraméterek alapján:
      
-     > HMAC (**Salt** + ' \n ' + **Termékkód** + ' \n ' + **userId**)
+     > HMAC ( **Salt** + ' \n ' + **Termékkód** + ' \n ' + **userId** )
      > 
      > 
    * Hasonlítsa össze a fenti számított kivonatot a **SIG** Query paraméter értékével. Ha a két kivonat egyezik, lépjen a következő lépésre, ellenkező esetben tagadja meg a kérést.
@@ -133,7 +133,7 @@ Ezután győződjön meg arról, hogy a delegálási végpont a következő műv
 
 Ezek a kódok a következőket mutatják be:
 
-* Végezze el a *delegálás érvényesítési kulcsát*, amely a közzétevő portál delegálás képernyőjén van beállítva
+* Végezze el a *delegálás érvényesítési kulcsát* , amely a közzétevő portál delegálás képernyőjén van beállítva
 * Hozzon létre egy HMAC, amely az aláírás érvényesítésére szolgál, amely igazolja az átadott returnUrl érvényességét.
 
 Ugyanez a kód a termékkód és a userId kis módosításával is működik.
@@ -175,7 +175,7 @@ var signature = digest.toString('base64');
 > [!IMPORTANT]
 > A delegálási módosítások életbe léptetéséhez újra közzé kell tennie [a fejlesztői portált](api-management-howto-developer-portal-customize.md#publish) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A delegálással kapcsolatos további információkért tekintse meg a következő videót:
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Delegating-User-Authentication-and-Product-Subscription-to-a-3rd-Party-Site/player]

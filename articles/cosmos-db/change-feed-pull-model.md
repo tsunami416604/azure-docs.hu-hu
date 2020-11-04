@@ -4,16 +4,17 @@ description: Megtudhatja, hogyan használhatja a Azure Cosmos DB Change feed lek
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 6d2f39eae94b217ad1f95a6a559aa3e1044d10da
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b3f7a8fbe2afcf9b5603f288fe6e3bc429b14532
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93072689"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340192"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>A hírcsatorna lekérési modelljének módosítása Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -216,7 +217,7 @@ FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIte
 
 Amíg a Cosmos-tároló továbbra is létezik, a FeedIterator folytatási tokenje soha nem jár le.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A hírcsatorna változásának áttekintése](change-feed.md)
 * [Az adatcsatorna módosításának használata](change-feed-processor.md)

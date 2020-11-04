@@ -3,16 +3,17 @@ title: Teljesítmény-és méretezési tesztelés a Azure Cosmos DB
 description: Ismerje meg, hogyan végezheti el a méretezést és a teljesítmény tesztelését Azure Cosmos DB használatával. Ezután kiértékelheti Azure Cosmos DB funkcióit a nagy teljesítményű alkalmazási forgatókönyvek esetében.
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: b89c48b5040c198cb1b4a6ce383baed51dfac19e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f27e4f9f8e9f027233db89838614b523c5d0fe1f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097413"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341773"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Teljesítmény-és méretezési tesztelés a Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -92,7 +93,7 @@ Press any key to exit...
 
 Miután futtatta az alkalmazást, különböző [indexelési házirendeket](index-policy.md) és konzisztencia- [szinteket](consistency-levels.md) kipróbálva megtudhatja, milyen hatással vannak a teljesítményre és a késésre. Emellett áttekintheti a forráskódot, és hasonló konfigurációkat hozhat létre saját tesztelési lakosztállyal vagy éles alkalmazásokhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben azt vizsgáltuk, hogyan végezheti el a teljesítmény és a méretezés tesztelését Azure Cosmos DB használatával egy .NET-konzol alkalmazás használatával. További információkat az következő cikkekben talál:
 

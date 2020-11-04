@@ -1,6 +1,6 @@
 ---
-title: A Java és a JDBC használata Azure Database for PostgreSQL
-description: Ismerje meg, hogyan használható a Java és a JDBC egy Azure Database for PostgreSQL.
+title: 'Rövid útmutató: a Java és a JDBC használata Azure Database for PostgreSQL'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan használható a Java és a JDBC egy Azure Database for PostgreSQL.
 author: jdubois
 ms.author: judubois
 ms.service: postgresql
@@ -8,14 +8,14 @@ ms.custom: mvc, devcenter, devx-track-azurecli
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: 402e69606196ecb1030023c49fa5afefd31b9e94
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 42547338c0f5f2f3105833b12e499d40b6209b05
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92734986"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341416"
 ---
-# <a name="use-java-and-jdbc-with-azure-database-for-postgresql"></a>A Java és a JDBC használata Azure Database for PostgreSQL
+# <a name="quickstart-use-java-and-jdbc-with-azure-database-for-postgresql"></a>Rövid útmutató: a Java és a JDBC használata Azure Database for PostgreSQL
 
 Ez a témakör bemutatja, hogyan hozhat létre egy olyan minta alkalmazást, amely a javát és a [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) -t használja [Azure Database for PostgreSQLban](./index.yml)található információk tárolására és lekérésére.
 
@@ -485,7 +485,7 @@ A Main osztály végrehajtásához most a következő kimenetet kell létrehozni
 [INFO   ] Closing database connection 
 ```
 
-## <a name="conclusion-and-resources-clean-up"></a>Következtetések és erőforrások tisztítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Gratulálunk! Létrehozott egy Java-alkalmazást, amely a JDBC-t használja a Azure Database for PostgreSQL adatok tárolására és lekérésére.
 
@@ -497,6 +497,6 @@ az group delete \
     --yes
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./howto-migrate-using-export-and-import.md)

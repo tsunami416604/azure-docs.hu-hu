@@ -3,15 +3,16 @@ title: Rugalmasan méretezhető Cassandra APIekkel Azure Cosmos DB
 description: Ismerje meg az Azure Cosmos DB Cassandra API-fiók méretezésének lehetőségeit, valamint azok előnyeit/hátrányait
 author: TheovanKraay
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: 0d5aded62c9c3990a3fa102863f4850bbfda6702
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: aad2e80598146be7b45a8a7b8a02cfe050163102
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088679"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340957"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API fiók rugalmas skálázása
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -81,6 +82,6 @@ create table <keyspace name>.<table name> (pk int PRIMARY KEY, ck int) WITH cosm
 alter table <keyspace name>.<table name> WITH cosmosdb_autoscale_max_throughput=4000;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerkedés a [Cassandra API-fiókok, -adatbázisok és -táblák létrehozásával](create-cassandra-api-account-java.md) Java-alkalmazás használatával

@@ -1,19 +1,19 @@
 ---
 title: Az Azure Stream Analytics áttekintése
-description: Ismerje meg a Stream Analytics nevű felügyelt szolgáltatást, amely segít valós időben elemezni az eszközök internetes hálózatáról (IoT) származó streamadatokat.
+description: Ismerkedjen meg Stream Analyticsával, amely egy felügyelt szolgáltatás, amellyel valós időben elemezheti a eszközök internetes hálózata (IoT) adatfolyam-adatait.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
-ms.custom: mvc
-ms.date: 10/9/2020
-ms.openlocfilehash: 8e11611e679b4a900da0fd09d60ea33be4e15c98
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.custom: mvc, contperfq2
+ms.date: 11/03/2020
+ms.openlocfilehash: d81858db3f4d09b834a9199804a6f2631828496b
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124866"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342232"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Mi az az Azure Stream Analytics?
 
@@ -29,13 +29,13 @@ A következő forgatókönyvek példákat mutatnak a Azure Stream Analytics hasz
 
 ## <a name="how-does-stream-analytics-work"></a>Hogyan működik a Stream Analytics?
 
-Az Azure Stream Analytics feladatok egy bemenetből, lekérdezésből és kimenetből állnak. Stream Analytics az Azure-Event Hubs (beleértve Apache Kafka az Azure-Event Hubst is), az Azure IoT Hub vagy az Azure Blob Storage. A lekérdezés, amely SQL-lekérdezési nyelven alapul, egyszerűen szűrheti, rendezheti, összesítheti és összekapcsolhatja az adatfolyam-adatokat egy adott időszakban. Ezt az SQL nyelvet a JavaScript és a C# felhasználó által definiált függvények (UDF) használatával is kiterjesztheti. Az összesítési műveletek egyszerű nyelvi szerkezeteken és/vagy konfigurációkon keresztül történő előírásával egyszerűen beállíthatja az események rendezési beállításait és időtartamát.
+Az Azure Stream Analytics feladatok egy bemenetből, lekérdezésből és kimenetből állnak. Stream Analytics az Azure-Event Hubs (beleértve Apache Kafka az Azure-Event Hubst is), az Azure IoT Hub vagy az Azure Blob Storage. A lekérdezés, amely SQL-lekérdezési nyelven alapul, egyszerűen szűrheti, rendezheti, összesítheti és összekapcsolhatja az adatfolyam-adatokat egy adott időszakban. Ezt az SQL nyelvet a JavaScript és a C# felhasználó által definiált függvények (UDF) használatával is kiterjesztheti. Az összesítési műveletek egyszerű nyelvi szerkezeteken és/vagy konfigurációkon keresztül történő végrehajtásával egyszerűen beállíthatja az események rendezésének beállításait és időtartamát a Windowsban.
 
 Minden feladathoz tartozik egy vagy több kimenet az átalakított adatokhoz, és szabályozható, hogy mi történik az elemzett információkra adott válaszként. Megteheti például a következőt:
 
 * Adatokat küldhet a szolgáltatásoknak, például a Azure Functionsnak, Service Bus témákat vagy várólistákat a kommunikáció vagy az egyéni munkafolyamatok alsóbb rétegbeli elindításához.
 * Adatküldés egy Power BI Irányítópultra a valós idejű irányítópultok számára.
-* Az adatok tárolása más Azure Storage-szolgáltatásokban (például Azure Data Lake, Azure szinapszis Analitika stb.) a gépi tanulási modell betanításához a korábbi adatok alapján, illetve a Batch-elemzések elvégzéséhez.
+* Az adatok tárolása más Azure Storage-szolgáltatásokban (például Azure Data Lake, Azure szinapszis Analytics stb.) egy gépi tanulási modell betanításához a korábbi adatok alapján, illetve a Batch-elemzések elvégzéséhez.
 
 Az alábbi képen látható, hogyan történik az adatok továbbítása Stream Analytics, elemzése és elküldése más műveletekhez, például a tároláshoz vagy a bemutatóhoz:
 
@@ -43,21 +43,21 @@ Az alábbi képen látható, hogyan történik az adatok továbbítása Stream A
 
 ## <a name="key-capabilities-and-benefits"></a>Főbb képességek és előnyök
 
-Az Azure Stream Analytics szolgáltatást könnyen használhatónak, rugalmasnak, megbízhatónak és bármely feladathoz méretezhetőnek tervezték. Több Azure-régióban is elérhető, IoT Edge vagy Azure Stack futtatva.
+Az Azure Stream Analytics szolgáltatást könnyen használhatónak, rugalmasnak, megbízhatónak és bármely feladathoz méretezhetőnek tervezték. Több Azure-régióban is elérhető, és IoT Edge vagy Azure Stack fut.
 
 ## <a name="ease-of-getting-started"></a>Könnyű első lépések
 
-Azure Stream Analytics könnyen elindítható. Csak néhány kattintással csatlakozhat több forráshoz és mosogatóhoz, így végpontok közötti folyamatot hozhat létre. Stream Analytics tud csatlakozni az [azure Event Hubshoz](../event-hubs/index.yml) és az [Azure IoT hubhoz](../iot-hub/index.yml) a folyamatos adatfeldolgozáshoz, valamint az [Azure Blob Storage](../storage/common/storage-introduction.md) -hoz a korábbi adatmennyiségek betöltéséhez. A feladatok bemenete tartalmazhat statikus vagy lassan változó hivatkozási adatokat az Azure Blob Storage-ból vagy [SQL Database](stream-analytics-use-reference-data.md#azure-sql-database) , hogy a keresési műveletek elvégzéséhez csatlakozhat a folyamatos átvitelhez.
+Azure Stream Analytics könnyen elindítható. Csak néhány kattintással csatlakozhat több forráshoz és mosogatóhoz, így végpontok közötti folyamatot hozhat létre. Stream Analytics tud csatlakozni az Azure Event Hubshoz és az Azure IoT Hubhoz a folyamatos adatfeldolgozáshoz, valamint az Azure Blob Storage-hoz a korábbi adatmennyiségek betöltéséhez. A feladatok bemenete tartalmazhat statikus vagy lassan változó hivatkozási adatokat az Azure Blob Storage-ból vagy SQL Database, hogy a keresési műveletek elvégzéséhez csatlakozhat a folyamatos átvitelhez.
 
-Stream Analytics a feladatok kimenetét számos olyan tárolási rendszerre irányíthatja, mint például az [Azure Blob Storage](../storage/common/storage-introduction.md), a [Azure SQL Database](/azure/sql-database/), a [Azure Data Lake Store](../data-lake-store/index.yml)és az [Azure CosmosDB](../cosmos-db/introduction.md). A outpust az Azure szinapszis Analytics vagy a HDInsight segítségével is futtathatja a Batch Analytics szolgáltatást, vagy elküldheti a kimenetet egy másik szolgáltatásba, például a Event Hubst a felhasználáshoz, vagy [Power bi](/power-bi/) a valós idejű vizualizációhoz.
+Stream Analytics a feladatok kimenetét számos olyan tárolási rendszerre irányíthatja, mint például az Azure Blob Storage, a Azure SQL Database, a Azure Data Lake Store és az Azure CosmosDB. Az Azure szinapszis Analytics vagy a HDInsight használatával is futtathatja a Batch Analytics stream-kimeneteket, vagy elküldheti a kimenetet egy másik szolgáltatásba, például Event Hubs vagy Power BI a valós idejű vizualizációhoz.
 
 A Stream Analytics kimenetek teljes listájáért lásd: [Azure stream Analyticsokból származó kimenetek megismerése](stream-analytics-define-outputs.md).
 
 ## <a name="programmer-productivity"></a>Programozói termelékenység
 
-A Azure Stream Analytics egy SQL-lekérdezési nyelvet használ, amely hatékony időbeli korlátozásokkal bővült a mozgásban lévő adatelemzés során. A feladatokat olyan fejlesztői eszközök használatával is létrehozhatja, mint például a Azure PowerShell, az Azure CLI Stream Analytics, a [Visual Studio Tools](stream-analytics-tools-for-visual-studio-install.md), a [stream Analytics Visual Studio Code bővítmény](quick-create-visual-studio-code.md)vagy a Azure Resource Manager sablonok. A fejlesztői eszközök használata lehetővé teszi, hogy offline átalakítási lekérdezéseket fejlesszen, és a [CI/CD folyamat](stream-analytics-tools-for-visual-studio-cicd.md) használatával feladatokat küldjön az Azure-ba.
+A Azure Stream Analytics egy SQL-lekérdezési nyelvet használ, amely hatékony időbeli korlátozásokkal bővült a mozgásban lévő adatelemzés során. A feladatokat olyan fejlesztői eszközök használatával is létrehozhatja, mint például a Azure PowerShell, az Azure CLI Stream Analytics, a Visual Studio Tools, a [stream Analytics Visual Studio Code bővítmény](quick-create-visual-studio-code.md)vagy a Azure Resource Manager sablonok. A fejlesztői eszközök használata lehetővé teszi, hogy offline átalakítási lekérdezéseket fejlesszen, és a CI/CD folyamat használatával feladatokat küldjön az Azure-ba.
 
-A Stream Analytics lekérdezési nyelv lehetővé teszi a CEP (összetett esemény-Procssing) végrehajtását a folyamatos átviteli adatok elemzéséhez szükséges függvények széles skálájának felajánlásával. Ez a lekérdezési nyelv támogatja az egyszerű adatmanipulációt, az összesítési és elemzési funkciókat, a [térinformatikai funkciókat](./stream-analytics-geospatial-functions.md), a [mintázat megfeleltetését](/stream-analytics-query/match-recognize-stream-analytics) és a [rendellenességek észlelését](./stream-analytics-machine-learning-anomaly-detection.md). Szerkesztheti a lekérdezéseket a portálon vagy fejlesztői eszközeink segítségével, és tesztelheti azokat az élő streamből kinyert mintaadatok használatával.
+A Stream Analytics lekérdezési nyelv lehetővé teszi a CEP (összetett esemény-feldolgozás) végrehajtását a folyamatos átviteli adatok elemzéséhez szükséges függvények széles skálájának használatával. Ez a lekérdezési nyelv támogatja az egyszerű adatmanipulációt, az összesítési és elemzési funkciókat, a térinformatikai funkciókat, a mintázat megfeleltetését és a rendellenességek észlelését. Szerkesztheti a lekérdezéseket a portálon vagy fejlesztői eszközeink segítségével, és tesztelheti azokat az élő streamből kinyert mintaadatok használatával.
 
 A lekérdező nyelv lehetőségei függvények definiálásával és meghívásával tovább bővíthetők. A Azure Machine Learningban megadhatja az Azure Machine Learning megoldások előnyeit, valamint a JavaScript vagy C# felhasználó által definiált függvények (UDF) vagy a felhasználó által definiált összesítések integrálását az Stream Analytics lekérdezés részeként összetett számítások végrehajtásához.
 
@@ -80,13 +80,13 @@ Azure Stream Analytics világszerte több régióban érhető el, és úgy terve
 
 ### <a name="reliability"></a>Megbízhatóság
 
-Azure Stream Analytics garantálja a pontosan egyszeri esemény-feldolgozást és az események legalább egyszeri kézbesítését, így az események soha nem vesznek el. A pontosan egyszeri feldolgozás garantált a kiválasztott kimenettel, az [esemény kézbesítési garanciái](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics)között leírtak szerint.
+Azure Stream Analytics garantálja pontosan az események feldolgozását és az események legalább egyszeri kézbesítését, így az események soha nem vesznek el. Pontosan egyszer a feldolgozás garantált a kiválasztott kimenettel, az esemény kézbesítési garanciái között leírtak szerint.
 
 A Azure Stream Analytics beépített helyreállítási képességekkel rendelkezik abban az esetben, ha egy esemény kézbesítése meghiúsul. A Stream Analytics beépített ellenőrzőpontokat is biztosít a feladatok állapotának fenntartásához, és megismételhető eredményeket biztosít.
 
-Felügyelt szolgáltatásként Stream Analytics az események feldolgozását az 99,9%-os rendelkezésre állással biztosítja percenkénti részletességgel. További információ: [stream Analytics SLA](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/) oldal. 
+Felügyelt szolgáltatásként Stream Analytics az események feldolgozását az 99,9%-os rendelkezésre állással biztosítja percenkénti részletességgel. 
 
-### <a name="security"></a>Biztonsági őr
+### <a name="security"></a>Biztonság
 
 A biztonság szempontjából Azure Stream Analytics titkosítja az összes bejövő és kimenő kommunikációt, és támogatja a TLS 1,2-et. A beépített ellenőrzőpontok is titkosítva vannak. A Stream Analytics nem tárolja a bejövő adatmennyiséget, mert az összes feldolgozás a memóriában történik. A Stream Analytics az Azure Virtual Networks (VNET) szolgáltatást is támogatja, ha egy [stream Analytics fürtben](./cluster-overview.md)futtat feladatot.
 
@@ -98,7 +98,7 @@ Azure Stream Analytics az [Azure megfelelőségének áttekintése](https://gall
 
 A Stream Analytics másodpercenként több millió eseményt képes feldolgozni, és az eredményeket rendkívül alacsony késéssel kézbesítheti. Lehetővé teszi a vertikális felskálázást és a méretezést a nagy valós idejű és összetett eseménykezelő alkalmazások kezeléséhez. Stream Analytics a particionálás nagyobb teljesítményt nyújt, és lehetővé teszi, hogy az összetett lekérdezések párhuzamosak legyenek, és több folyamatos átviteli csomóponton fussanak. A Azure Stream Analytics a [trilla](https://github.com/Microsoft/Trill)-ra épülő, nagy teljesítményű, memóriabeli adatfolyam-elemzési motor, amely a Microsoft Research szolgáltatással együttműködve lett kifejlesztve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A cikk az Azure Stream Analytics szolgáltatásról nyújtott áttekintést. Ezután megismerheti a részleteket, és létrehozhatja első Stream Analytics-feladatát:
 

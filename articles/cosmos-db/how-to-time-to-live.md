@@ -3,16 +3,17 @@ title: Az idő konfigurálása és kezelése Azure Cosmos DB
 description: Megtudhatja, hogyan konfigurálhatja és kezelheti az időt egy tárolón és egy elemen a Azure Cosmos DB
 author: anfeldma-ms
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 7cf0f91a655901373b02a51004cf77eb25c8cf8e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2ddba95f9ccc25d536638dbc68c41027d26e71c7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085887"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341008"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Állítsa be az élettartamot Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -559,7 +560,7 @@ container = database.createContainerIfNotExists(containerProperties, 400).block(
 ```
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a következő cikkben található idő megadásáról:
 

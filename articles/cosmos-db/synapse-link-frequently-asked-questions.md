@@ -6,15 +6,15 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 30f139c92fe426369c609dabd826a7bff1617e72
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0791ed6882feedeab47b75eff6a69bf0a49ab7ee
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098042"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341289"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB-hez készült Azure Synapse Linkkel kapcsolatban
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 A Azure Cosmos DB Azure szinapszis-hivatkozása szoros integrációt hoz létre a Azure Cosmos DB és az Azure szinapszis Analytics között. Lehetővé teszi az ügyfelek számára a közel valós idejű elemzések futtatását a működési adataik teljes teljesítményének elkülönítésével a tranzakciós munkaterhelések és az ETL-folyamat nélkül. Ez a cikk az Azure Cosmos DB-hez készült Azure Synapse Linkkel kapcsolatos gyakori kérdésekre ad választ.
 
@@ -123,7 +123,7 @@ Az összes tranzakciós frissítést és törlést a rendszer átmásolja az ana
 
 A [Azure Cosmos db Analytical Store](analytical-store-introduction.md) nyilvános előzetes kiadásban érhető el, az analitikai tár díja nélkül, 2020. augusztus 30-ig. A szinapszis Spark és a szinapszis SQL számlázása a [szinapszis szolgáltatás felhasználásán](https://azure.microsoft.com/pricing/details/synapse-analytics/)keresztül történik.
 
-## <a name="security"></a>Biztonsági őr
+## <a name="security"></a>Biztonság
 
 ### <a name="what-are-the-ways-to-authenticate-with-the-analytical-store"></a>Milyen módon lehet hitelesíteni az analitikai tárolót?
 
@@ -157,13 +157,13 @@ Az analitikai tárolóval engedélyezett Azure Cosmos DB tárolóban a következ
 
 A rendszer a következő ikonnal fogja megjeleníteni a tranzakciós tároló tárolóját:
 
-:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Azure Cosmos DB tároló engedélyezve az analitikai tárolóval – ikon":::
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Azure Cosmos DB tároló engedélyezve a tranzakciós tárolóval – ikon":::
  
 ### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-azure-synapse-studio"></a>Hogyan továbbíthatja Azure Cosmos DB hitelesítő adatait az Azure szinapszis studióból?
 
 Jelenleg Azure Cosmos DB hitelesítő adatokat a rendszer a társított szolgáltatásnak a Azure Cosmos DB adatbázisokhoz hozzáféréssel rendelkező felhasználó általi létrehozásakor adja át. A tárolóhoz való hozzáférés a munkaterülethez hozzáférő más felhasználók számára is elérhető.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg az [Azure szinapszis-hivatkozás előnyeit](synapse-link.md#synapse-link-benefits)
 

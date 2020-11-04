@@ -4,15 +4,16 @@ description: Ismerje meg, hogyan azonosíthatja, diagnosztizálhatja és elhár�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
+ms.subservice: cosmosdb-mongo
 ms.date: 10/12/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: ece814ea316fe62bc2b8b64036b08983f65ccbef
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 88ef081c75a64b5cb7517ba6994834b3a64a0e6f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096359"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340889"
 ---
 # <a name="troubleshoot-query-issues-when-using-the-azure-cosmos-db-api-for-mongodb"></a>A MongoDB Azure Cosmos DB API-ját használó lekérdezési problémák elhárítása
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -263,7 +264,7 @@ Bármikor hozzáadhat új indexeket, és nem befolyásolhatja az írási és olv
 
 A legtöbb esetben a Azure Cosmos DB API-MongoDB található összesítési műveletek részben az indexeket fogják használni. A lekérdezési motor általában először alkalmazza az egyenlőség és a tartomány szűrőit, és használja az indexeket. A szűrők alkalmazása után a lekérdezési motor kiértékelheti a további szűrőket, és igény szerint betöltheti a fennmaradó dokumentumokat az Összesítés kiszámításához. 
 
-Íme egy példa:
+Például:
 
 ```
 db.coll.aggregate( [
@@ -344,7 +345,7 @@ Azure Cosmos DB a kiosztott átviteli sebességet a kérelmek egységében (RUs)
 
 Az érték az `estimatedDelayFromRateLimitingInMilliseconds` átviteli sebesség növelésének lehetséges késleltetési előnyeit adja meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Lekérdezési teljesítmény – hibakeresés (SQL API)](troubleshoot-query-performance.md)
 * [Az indexelés kezelése Azure Cosmos DB API-MongoDB](mongodb-indexing.md)

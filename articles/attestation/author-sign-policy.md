@@ -1,20 +1,20 @@
 ---
-title: Azure igazolási szabályzat készítése és aláírása
-description: Az igazolási szabályzatok létrehozásával és aláírásával kapcsolatos magyarázat.
+title: Azure igazolási szabályzat készítése
+description: Az igazolási szabályzatok létrehozási magyarázata.
 services: attestation
 author: msmbaldwin
 ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c8ffdcd0615913649e80b20f6873d005f4ad4410
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 3e36de62b79788e2efdc3e9abf711924c4fba0c4
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675984"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341807"
 ---
-# <a name="how-to-author-and-sign-an-attestation-policy"></a>Igazolási szabályzat létrehozása és aláírása
+# <a name="how-to-author-an-attestation-policy"></a>Igazolási szabályzat készítése
 
 Az igazolási házirend egy Microsoft Azure igazolásra feltöltött fájl. Az Azure-igazolás rugalmasságot biztosít a szabályzatok egy tanúsítvány-specifikus házirend-formátumban való feltöltéséhez. Másik lehetőségként a szabályzat kódolt verziója is feltölthető a JSON webes aláírásban. A szabályzat rendszergazdája felelős az igazolási szabályzat írásához. A legtöbb igazolási forgatókönyvben a függő entitás házirend-rendszergazdaként működik. Az igazolási hívást végző ügyfél tanúsító igazolást küld, amelyet a szolgáltatás elemez és konvertál a bejövő jogcímekre (tulajdonságok, érték). A szolgáltatás ezután feldolgozza a jogcímeket a Szabályzatban meghatározottak alapján, és visszaadja a számított eredményt.
 
@@ -44,7 +44,7 @@ A házirend-fájl három szegmensből áll, ahogy az a fentiekben látható:
 
     Jelenleg az egyetlen támogatott verzió a 1,0-es verzió.
 
-- **engedélyezési szabályok** : az első ellenőrizendő jogcím-szabályok gyűjteménye annak megállapítására, hogy az Azure-igazolásnak folytatódnia kell-e a **issuancerules** . A jogcím szabályai a definiált sorrendben lesznek érvényesek.
+- **engedélyezési szabályok** : az első ellenőrizendő jogcím-szabályok gyűjteménye annak megállapítására, hogy az Azure-igazolásnak folytatódnia kell-e a **issuancerules**. A jogcím szabályai a definiált sorrendben lesznek érvényesek.
 
 - **issuancerules** : olyan jogcím-szabályok gyűjteménye, amelyeket a rendszer kiértékel, hogy további információkat adjon hozzá az igazolási eredményhez a Szabályzatban meghatározottak szerint. A jogcím szabályai a definiált sorrendben érvényesek, és szintén nem kötelezőek.
 
@@ -54,7 +54,7 @@ További információért lásd a [jogcím és a jogcím szabályait](claim-rule
 
 1. Hozzon létre egy új fájlt.
 1. Adjon hozzá verziót a fájlhoz.
-1. Vegyen fel szakaszt a **engedélyezési szabályok** és a **issuancerules** .
+1. Vegyen fel szakaszt a **engedélyezési szabályok** és a **issuancerules**.
 
   ```
   version=1.0;
@@ -135,41 +135,6 @@ Miután létrehozott egy házirendet a szabályzat JWS formátumban való feltö
      - Ha a házirend-fájl szintaktikai hibáktól mentes, a szolgáltatás elfogadja a házirend-fájlt.
      - Ha a házirend-fájl szintaktikai hibákat tartalmaz, a szolgáltatás visszautasítja a házirend-fájlt.
 
-## <a name="signing-the-policy"></a>A szabályzat aláírása
-
-Az alábbiakban egy példa Python-szkriptet talál a házirend-aláírási művelet végrehajtásához
-
-```python
-from OpenSSL import crypto
-import jwt
-import getpass
-       
-def cert_to_b64(cert):
-              cert_pem = crypto.dump_certificate(crypto.FILETYPE_PEM, cert)
-              cert_pem_str = cert_pem.decode('utf-8')
-              return ''.join(cert_pem_str.split('\n')[1:-2])
-       
-print("Provide the path to the PKCS12 file:")
-pkcs12_path = str(input())
-pkcs12_password = getpass.getpass("\nProvide the password for the PKCS12 file:\n")
-pkcs12_bin = open(pkcs12_path, "rb").read()
-pkcs12 = crypto.load_pkcs12(pkcs12_bin, pkcs12_password.encode('utf8'))
-ca_chain = pkcs12.get_ca_certificates()
-ca_chain_b64 = []
-for chain_cert in ca_chain:
-   ca_chain_b64.append(cert_to_b64(chain_cert))
-   signing_cert_pkey = crypto.dump_privatekey(crypto.FILETYPE_PEM, pkcs12.get_privatekey())
-signing_cert_b64 = cert_to_b64(pkcs12.get_certificate())
-ca_chain_b64.insert(0, signing_cert_b64)
-
-print("Provide the path to the policy text file:")
-policy_path = str(input())
-policy_text = open(policy_path, "r").read()
-encoded = jwt.encode({'text': policy_text }, signing_cert_pkey, algorithm='RS256', headers={'x5c' : ca_chain_b64})
-print("\nAttestation Policy JWS:")
-print(encoded.decode('utf-8'))
-```
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Az Azure-igazolás beállítása a PowerShell használatával](quickstart-powershell.md)
 - [SGX ENKLÁVÉHOZ enklávé igazolása kód-minták használatával](/samples/browse/?expanded=azure&terms=attestation)

@@ -3,15 +3,16 @@ title: Gyakori kérdések a Cassandra APIról Azure Cosmos DB
 description: Választ kaphat a Azure Cosmos DB Cassandra APIával kapcsolatos gyakori kérdésekre.
 author: TheovanKraay
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: b467e191a8f009b85abb4866821dd64fc87ce657
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3436a0edf69efc71d3528bffaefd613668426fad
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092381"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339937"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Gyakran ismételt kérdések a Cassandra APIról Azure Cosmos DB
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -170,7 +171,7 @@ A fiókhoz tetszőleges számú régiót adhat hozzá, és szabályozhatja, hogy
 
 ### <a name="does-the-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Az Cassandra API indexeli az entitás összes attribútumát alapértelmezés szerint?
 
-Nincs. A Cassandra API támogatja a [másodlagos indexeket](cassandra-secondary-index.md), amelyek hasonló módon viselkednek az Apache Cassandra-ben. Az API alapértelmezés szerint nem indexel minden attribútumot.  
+Nem. A Cassandra API támogatja a [másodlagos indexeket](cassandra-secondary-index.md), amelyek hasonló módon viselkednek az Apache Cassandra-ben. Az API alapértelmezés szerint nem indexel minden attribútumot.  
 
 
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>Helyileg is használhatom az új Cassandra API SDK-t az emulátorral?
@@ -190,6 +191,6 @@ Visszajelzés küldése a [felhasználói](https://feedback.azure.com/forums/263
 [azure-portal]: https://portal.azure.com
 [query]: ./sql-query-getting-started.md
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerkedjen meg a [Azure Cosmos DB Cassandra API-fiók rugalmas skálázásával](manage-scale-cassandra.md).

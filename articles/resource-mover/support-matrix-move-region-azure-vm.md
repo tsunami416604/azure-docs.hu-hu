@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: 4ee442d1983e4f7c1825690e1c780454272971aa
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b59bc33698be516ec5a2e289b52dafcb9e9efcbe
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521305"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341858"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Azure-beli virtuális gépek Azure-régiók közötti áthelyezésének támogatása
 
@@ -101,7 +101,7 @@ SUSE Linux Enterprise Server 15 és 15 SP1 |  A rendszer minden SUSE 15 és 15 k
 **Beállítás** | **Támogatás** | **Részletek**
 --- | --- | ---
 Méret | Bármely Azure-beli VM-méret legalább két CPU-mag és 1 GB RAM-mal | Ellenőrizze az Azure-beli [virtuális gépek méretét](../virtual-machines/sizes-general.md).
-Rendelkezésre állási csoportok | Egyelőre nem támogatott | Ha hozzáad egy Azure-beli virtuális gépet egy rendelkezésre állási csoporttal az alapértelmezett beállításokkal, az előkészítési folyamat sikertelen lesz. Dönthet úgy, hogy áthelyezi a virtuális gépet egy rendelkezésre állási zónába, vagy áthelyezi azt egyetlen példányú virtuális gépre. Ezeket a beállításokat a cél tulajdonságainak szerkesztése lapon módosíthatja.
+Rendelkezésre állási csoportok | Támogatott | Támogatott.
 Rendelkezésreállási zónák | Támogatott | Támogatott, a célcsoportok támogatásának függvényében.
 Azure Gallery-lemezképek (közzétette: Microsoft) | Támogatott | Támogatott, ha a virtuális gép támogatott operációs rendszeren fut.
 Azure Gallery-lemezképek (harmadik fél által közzétett)  | Támogatott | Támogatott, ha a virtuális gép támogatott operációs rendszeren fut.
@@ -122,7 +122,7 @@ Ez a táblázat az Azure VM operációsrendszer-lemez, az adatlemez és az ideig
 **Összetevő** | **Támogatás** | **Részletek**
 --- | --- | ---
 OPERÁCIÓSRENDSZER-lemez maximális mérete | 2048 GB | [További](../virtual-machines/windows/managed-disks-overview.md) információ a VM-lemezekről.
-Ideiglenes lemez | Nem támogatott | Az ideiglenes lemez mindig ki van zárva az előkészítési folyamatból.<br/><br/> Ne tároljon állandó adatmennyiséget az ideiglenes lemezen. [További információk](../virtual-machines/windows/managed-disks-overview.md#temporary-disk).
+Ideiglenes lemez | Nem támogatott | Az ideiglenes lemez mindig ki van zárva az előkészítési folyamatból.<br/><br/> Ne tároljon állandó adatmennyiséget az ideiglenes lemezen. [További információ](../virtual-machines/windows/managed-disks-overview.md#temporary-disk).
 Adatlemez maximális mérete | 8192 GB felügyelt lemezekhez
 Adatlemez minimális mérete |  2 GB a felügyelt lemezekhez |
 Adatlemez maximális száma | Akár 64-ig, egy adott Azure-beli virtuálisgép-méret támogatásával összhangban | [További](../virtual-machines/windows/sizes.md) információ a virtuális gépek méreteiről.
@@ -188,6 +188,6 @@ Ha hálózati biztonsági csoport (NSG) szabályokat használ a kimenő kapcsola
 - Javasoljuk, hogy tesztelje a szabályokat nem éles környezetben. [Tekintse át a példákat](../site-recovery/azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags). 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbáljon [egy Azure-beli virtuális gépet](tutorial-move-region-virtual-machines.md) egy másik régióba helyezni az erőforrás-mozgató használatával.

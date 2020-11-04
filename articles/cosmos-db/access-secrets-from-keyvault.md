@@ -4,17 +4,16 @@ description: A Azure Key Vault használatával tárolhatja és érheti el Azure 
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
-ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: bd67f9641a644d3302e1f8bc1e53ad14a3801e47
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6c5ef4f0ee0d68e2eae755f000423db4620b834d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092840"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341382"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Cosmos-kulcsok védelme az Azure Key Vaulttal 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -48,7 +47,7 @@ A következő lépések szükségesek a Key Vault Azure Cosmos DB elérési kulc
 1. Navigáljon az előző lépésben létrehozott Key Vault, majd nyissa meg a **titkok** lapot.  
 2. Válassza a **+ előállítás/importálás** lehetőséget, 
 
-   * Válassza **Manual** a manuális **lehetőséget a feltöltési beállításokhoz** .
+   * Válassza **Manual** a manuális **lehetőséget a feltöltési beállításokhoz**.
    * Adja meg a titkos kulcs **nevét**
    * Adja meg a Cosmos DB-fiókjának a Value ( **érték** ) mezőbe való kapcsolási karakterláncát. Majd válassza a **Létrehozás** lehetőséget.
 
@@ -71,11 +70,11 @@ A következő lépések szükségesek a Key Vault Azure Cosmos DB elérési kulc
 
 5. Az alkalmazás telepítése után. A Azure Portal navigáljon az üzembe helyezett webalkalmazáshoz, és kapcsolja be az alkalmazás **felügyelt szolgáltatás identitását** .  
 
-   :::image type="content" source="./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png" alt-text="Titkos kulcs létrehozása":::
+   :::image type="content" source="./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png" alt-text="Felügyelt szolgáltatás identitása":::
 
 Ha most futtatja az alkalmazást, a következő hibaüzenet jelenik meg, mivel nem kapott engedélyt az alkalmazásra Key Vault.
 
-:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-without-access.png" alt-text="Titkos kulcs létrehozása":::
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-without-access.png" alt-text="Az alkalmazás hozzáférés nélkül lett üzembe helyezve":::
 
 ## <a name="register-the-application--grant-permissions-to-read-the-key-vault"></a>Regisztrálja az alkalmazást & engedélyt ad a Key Vault olvasásához
 
@@ -83,17 +82,17 @@ Ebben a szakaszban regisztrálnia kell az alkalmazást Azure Active Directory, �
 
 1. Navigáljon a Azure Portalhoz, és nyissa meg az előző szakaszban létrehozott **Key Vault** .  
 
-2. Nyissa meg a **hozzáférési házirendeket** , válassza az **+ új** keresés a telepített webalkalmazásban lehetőséget, válassza az engedélyek lehetőséget, majd kattintson **az OK gombra** .  
+2. Nyissa meg a **hozzáférési házirendeket** , válassza az **+ új** keresés a telepített webalkalmazásban lehetőséget, válassza az engedélyek lehetőséget, majd kattintson **az OK gombra**.  
 
-   :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="Titkos kulcs létrehozása":::
+   :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="Hozzáférési szabályzat hozzáadása":::
 
 Most, ha futtatja az alkalmazást, elolvashatja a titkos kulcsot Key Vaultról.
 
-:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-with-access.png" alt-text="Titkos kulcs létrehozása":::
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-with-access.png" alt-text="Titkos kulccsal üzembe helyezett alkalmazás":::
  
 Hasonlóképpen hozzáadhat egy felhasználót is a kulcstartó eléréséhez. A **hozzáférési szabályzatok** kiválasztásával, majd az alkalmazás Visual studióból való futtatásához szükséges összes engedély megadásával saját magának kell felvennie a Key Vault. Ha az alkalmazás az asztalról fut, az identitást veszi igénybe.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha Azure Cosmos DB tűzfalat szeretne konfigurálni, tekintse meg a [tűzfalat támogató](how-to-configure-firewall.md) cikket.
 * A virtuális hálózati szolgáltatás végpontjának konfigurálásához tekintse meg a [biztonságos hozzáférés a VNet szolgáltatás végpontjának használatával](how-to-configure-vnet-service-endpoint.md) című cikket.

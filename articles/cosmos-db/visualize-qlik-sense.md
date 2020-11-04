@@ -2,20 +2,21 @@
 title: Az Qlik-értelem összekapcsolásával Azure Cosmos DBhatja és megjelenítheti az adatait
 description: Ez a cikk azokat a lépéseket ismerteti, amelyek szükségesek ahhoz, hogy a Azure Cosmos DB összekapcsolásával Qlik az értelemben, és láthatóvá tegye az adatait.
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 author: SnehaGunda
 ms.author: sngun
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: ccd9f10bcf8be5539528be1f513f7e7dd74549e7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2401786a82b6a3e5bf6c6a893a8e7cd3656f3402
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073689"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340430"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Az Qlik-értelem összekapcsolásával Azure Cosmos DBhatja és megjelenítheti az adatait
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 A Qlik Sense egy adatvizualizációs eszköz, amely különböző forrásokból származó adatok egyetlen nézetbe való egyesítésére szolgál. A Qlik Sense indexeli az összes lehetséges kapcsolatot az adataiban, így azonnali elemzéseket nyerhet az adatairól. A Qlik értelem használatával megjelenítheti Azure Cosmos DBi adataikat. Ez a cikk azokat a lépéseket ismerteti, amelyek szükségesek ahhoz, hogy a Azure Cosmos DB összekapcsolásával Qlik az értelemben, és láthatóvá tegye az adatait. 
 
@@ -63,15 +64,15 @@ A cikkben szereplő utasítások követése előtt győződjön meg arról, hogy
 
 4. Váltson a **felhasználói DSN** -re, és válassza ki a korábban létrehozott ODBC-kapcsolatokat. Adja meg a kapcsolatok nevét, majd válassza a **Létrehozás** lehetőséget. 
 
-   :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="Új Qlik Sense-alkalmazás létrehozása":::
+   :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="Új kapcsolat létrehozása":::
 
 5. A kapcsolatok létrehozása után kiválaszthatja az adatbázist, a gyűjtemény helyét, ahol a videojáték-adatforrások találhatók, majd megtekintheti azt.
 
-   :::image type="content" source="./media/visualize-qlik-sense/choose-database-and-collection.png" alt-text="Új Qlik Sense-alkalmazás létrehozása"::: 
+   :::image type="content" source="./media/visualize-qlik-sense/choose-database-and-collection.png" alt-text="Az adatbázis és a gyűjtemény kiválasztása"::: 
 
 6. Ezután válassza az **adathozzáadás** lehetőséget az Qlik értelembe való betöltéséhez. Az adatok Qlik való betöltését követően elemzéseket készíthet, és elemzéseket végezhet az adatokon. Használhatja az elemzéseket, vagy létrehozhat egy saját alkalmazást, amely a videojátékok értékesítéseit vizsgálja. Az alábbi képen látható 
 
-   :::image type="content" source="./media/visualize-qlik-sense/visualize-data.png" alt-text="Új Qlik Sense-alkalmazás létrehozása":::
+   :::image type="content" source="./media/visualize-qlik-sense/visualize-data.png" alt-text="Adatok vizualizációja":::
 
 ### <a name="limitations-when-connecting-with-odbc"></a>Az ODBC-vel való csatlakozás korlátozásai 
 

@@ -2,14 +2,14 @@
 title: Erőforrások zárolása a módosítások megakadályozása érdekében
 description: Megakadályozhatja, hogy a felhasználók a kritikus Azure-erőforrások frissítését vagy törlését az összes felhasználó és szerepkör zárolásának alkalmazásával.
 ms.topic: conceptual
-ms.date: 10/20/2020
+ms.date: 11/03/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3830c7e78cf3cc607c7abfca63e6ae74f89b7aff
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 57b4fecd0293c714dfd910ae2ad4866397646ce8
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281750"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340141"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Erőforrások zárolása a váratlan módosítások megelőzése érdekében
 
@@ -24,7 +24,7 @@ Ha egy fölérendelt hatókörben zárolja a zárolást, akkor a hatókörben l�
 
 A felügyeleti zárolás a szerepköralapú hozzáférés-vezérléssel szemben minden felhasználóra és szerepkörre érvényes korlátozásokat alkalmaz. A felhasználók és szerepkörök engedélyeinek beállításáról további információt az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)című témakörben talál.
 
-A Resource Manager zárolásai csak a felügyeleti síkon történő műveletekre érvényesek, ezek pedig a `https://management.azure.com` címre küldött műveletek. A zárolások nem korlátozzák, hogy az erőforrások hogyan végzik saját funkcióikat. Az erőforrás változásai korlátozva vannak, de az erőforrás működése nincs korlátozva. Egy SQL Database írásvédett zárolása például megakadályozza az adatbázis törlését vagy módosítását. Nem akadályozza meg azonban az adatok létrehozását, frissítését és törlését az adatbázison belül. Az adattranzakciók engedélyezve vannak, mert ezek a műveletek nem lesznek elküldve a `https://management.azure.com` webhelyre.
+A Resource Manager zárolásai csak a felügyeleti síkon történő műveletekre érvényesek, ezek pedig a `https://management.azure.com` címre küldött műveletek. A zárolások nem korlátozzák, hogy az erőforrások hogyan végzik saját funkcióikat. Az erőforrás változásai korlátozva vannak, de az erőforrás működése nincs korlátozva. Egy SQL Database logikai kiszolgáló írásvédett zárolása például megakadályozza a kiszolgáló törlését vagy módosítását. Nem akadályozza meg az adatok létrehozását, frissítését és törlését az adott kiszolgálón lévő adatbázisokban. Az adattranzakciók engedélyezve vannak, mert ezek a műveletek nem lesznek elküldve a `https://management.azure.com` webhelyre.
 
 ## <a name="considerations-before-applying-locks"></a>Szempontok a zárolások alkalmazása előtt
 
@@ -76,17 +76,17 @@ A szolgáltatás összes elemének törléséhez, beleértve a zárolt infrastru
 
 Ha Resource Manager-sablont használ a zárolás üzembe helyezéséhez, a név és a típus eltérő értékeket használ a zárolás hatóköre alapján.
 
-Ha egy **erőforráshoz**zárolást alkalmaz, használja a következő formátumokat:
+Ha egy **erőforráshoz** zárolást alkalmaz, használja a következő formátumokat:
 
 * neve `{resourceName}/Microsoft.Authorization/{lockName}`
 * típusa `{resourceProviderNamespace}/{resourceType}/providers/locks`
 
-Ha egy **erőforráscsoport** vagy **előfizetés**esetében zárolást alkalmaz, használja a következő formátumokat:
+Ha egy **erőforráscsoport** vagy **előfizetés** esetében zárolást alkalmaz, használja a következő formátumokat:
 
 * neve `{lockName}`
 * típusa `Microsoft.Authorization/locks`
 
-Az alábbi példa egy olyan sablont mutat be, amely egy app Service-csomagot, egy webhelyet és egy zárolást hoz létre a webhelyen. A zárolás erőforrástípus a zárolási és **/providers/Locks**erőforrás típusa. A zárolás neve úgy jön létre, hogy összefűzi az erőforrás nevét a **/Microsoft.Authorization/** és a zárolás nevével.
+Az alábbi példa egy olyan sablont mutat be, amely egy app Service-csomagot, egy webhelyet és egy zárolást hoz létre a webhelyen. A zárolás erőforrástípus a zárolási és **/providers/Locks** erőforrás típusa. A zárolás neve úgy jön létre, hogy összefűzi az erőforrás nevét a **/Microsoft.Authorization/** és a zárolás nevével.
 
 ```json
 {
@@ -237,7 +237,7 @@ Zárolás létrehozásához futtassa a következő parancsot:
 PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
 ```
 
-A hatókör lehet előfizetés, erőforráscsoport vagy erőforrás. A zárolási név a zárolás meghívásához szükséges. Az API-Version esetében használja az **2016-09-01**-es verziót.
+A hatókör lehet előfizetés, erőforráscsoport vagy erőforrás. A zárolási név a zárolás meghívásához szükséges. Az API-Version esetében használja az **2016-09-01** -es verziót.
 
 A kérelemben adjon meg egy JSON-objektumot, amely meghatározza a zárolás tulajdonságait.
 
@@ -250,7 +250,7 @@ A kérelemben adjon meg egy JSON-objektumot, amely meghatározza a zárolás tul
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az erőforrások logikus rendszerezésével kapcsolatos további információkért lásd: [címkék használata az erőforrások rendszerezéséhez](tag-resources.md).
 * Az előfizetésre vonatkozó korlátozásokat és konvenciókat egyéni szabályzatokkal is alkalmazhat. További információ: [Mi az az Azure Policy?](../../governance/policy/overview.md)

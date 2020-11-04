@@ -3,16 +3,17 @@ title: A .NET SDK v3 Azure Cosmos DB teljesítményével kapcsolatos tippek
 description: Az ügyfél-konfigurációs beállítások megismerése Azure Cosmos DB .NET v3 SDK teljesítményének javításához.
 author: j82w
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet, contperfq2
-ms.openlocfilehash: 8c042032fb12e63ae32eb5a51b06e07386e5fbfc
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ab9fc4f08b96fc10a20125c30af2d6b8050c7606
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308847"
+ms.locfileid: "93341739"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Az Azure Cosmos DB és a .NET teljesítményével kapcsolatos tippek
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -256,7 +257,7 @@ További információt a [kérelmek egységei](request-units.md)című témakör
 
 Egy adott műveletre vonatkozó kérelem díja (azaz a kérelmek feldolgozási díja) közvetlenül a dokumentum méretével összefügg egymással. A nagyméretű dokumentumokon végzett műveletek többek között a kis dokumentumokon végzett műveletekhez szükségesek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az egyes ügyfélszámítógépeken a nagy teljesítményű forgatókönyvek Azure Cosmos DB kiértékeléséhez használt minta alkalmazással kapcsolatban lásd: [teljesítmény-és méretezési tesztek a Azure Cosmos db](performance-testing.md)használatával.
 
 Ha többet szeretne megtudni az alkalmazás méretezési és nagy teljesítményű kialakításáról, tekintse meg [a particionálás és skálázás Azure Cosmos DBban](partitioning-overview.md)című témakört.

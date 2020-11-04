@@ -3,17 +3,18 @@ title: Hibaelhárítás Azure Cosmos DB HTTP 408 vagy időtúllépési kérelmek
 description: Ismerje meg, hogyan diagnosztizálhatja és javíthatja a .NET SDK-kérelmek időtúllépési kivételeit.
 author: j82w
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 08/06/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 735c098fcf6fed76019850a1cb58d9eb6c485b7a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c8d448cf335f328b5ae55579fd30127ef0e37e9d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101017"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340498"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout-exceptions"></a>A .NET SDK-kérelmek időtúllépési kivételeinek diagnosztizálása és megoldása Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -89,6 +90,6 @@ Az alkalmazásnak képesnek kell lennie az átmeneti hibák kezelésére, és sz
 ### <a name="failure-rate-violates-the-azure-cosmos-db-sla"></a>A meghibásodási arány sérti a Azure Cosmos DB SLA-t
 Forduljon az [Azure ügyfélszolgálatához](https://aka.ms/azure-support).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A Azure Cosmos DB .NET SDK használatakor felmerülő problémák [diagnosztizálása és hibaelhárítása](troubleshoot-dot-net-sdk.md) .
 * A [.net v3](performance-tips-dotnet-sdk-v3-sql.md) és a [.NET v2](performance-tips.md)teljesítményére vonatkozó irányelvek ismertetése.

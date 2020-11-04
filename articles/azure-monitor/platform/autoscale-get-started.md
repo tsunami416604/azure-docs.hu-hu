@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan méretezheti az Azure-ban az erőforrás-webalk
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: b43b7488f2bb3fec810e8a9de67829a676f6b599
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e0c9770e2065002a4e2acc1198ed096dc588f8e5
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369267"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342215"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Ismerkedés az Azure-beli autoskálázással
 Ez a cikk azt ismerteti, hogyan állíthatja be az erőforráshoz tartozó autoskálázási beállításokat a Microsoft Azure Portalban.
@@ -32,18 +32,18 @@ A felső szűrő ablaktáblán a lista hatóköre alapján kiválaszthatja az er
 
 Az egyes erőforrásokhoz az aktuális példányszámot és az autoskálázási állapotot fogja megtalálni. Az autoskálázás állapota a következőket teheti:
 
-- **Nincs konfigurálva**: ennél az erőforrásnál még nem engedélyezte az autoskálázást.
-- **Engedélyezve**: engedélyezve van az erőforráshoz tartozó autoskálázás.
-- **Letiltva**: letiltotta az erőforrás-méretezést.
+- **Nincs konfigurálva** : ennél az erőforrásnál még nem engedélyezte az autoskálázást.
+- **Engedélyezve** : engedélyezve van az erőforráshoz tartozó autoskálázás.
+- **Letiltva** : letiltotta az erőforrás-méretezést.
 
 ## <a name="create-your-first-autoscale-setting"></a>Az első méretezési beállítás létrehozása
 
 Most ugorjon végig egy egyszerű, lépésenkénti útmutatót, amellyel létrehozhatja az első autoskálázási beállítást.
 
 1. Nyissa meg Azure Monitor az **autoscale** (méretezés) panelt, és válassza ki a méretezni kívánt erőforrást. (A következő lépések egy webalkalmazáshoz társított App Service tervet használnak. Az [első ASP.net-webalkalmazását 5 perc alatt létrehozhatja az Azure][4]-ban.)
-1. Vegye figyelembe, hogy a példányok aktuális száma 1. Kattintson az **autoskálázás engedélyezése**lehetőségre.
+1. Vegye figyelembe, hogy a példányok aktuális száma 1. Kattintson az **autoskálázás engedélyezése** lehetőségre.
   ![Méretezési beállítás az új webalkalmazáshoz][5]
-1. Adja meg a skálázási beállítás nevét, majd kattintson **a szabály hozzáadása**elemre. Figyelje meg, hogy a méretezési szabály beállításai a jobb oldalon a helyi ablaktáblán nyílnak meg. Alapértelmezés szerint ez a beállítás a példányszám 1 értékre való skálázását adja meg, ha az erőforrás CPU-százaléka meghaladja a 70 százalékot. Hagyja meg az alapértelmezett értékeket, majd kattintson a **Hozzáadás**gombra.
+1. Adja meg a skálázási beállítás nevét, majd kattintson **a szabály hozzáadása** elemre. Figyelje meg, hogy a méretezési szabály beállításai a jobb oldalon a helyi ablaktáblán nyílnak meg. Alapértelmezés szerint ez a beállítás a példányszám 1 értékre való skálázását adja meg, ha az erőforrás CPU-százaléka meghaladja a 70 százalékot. Hagyja meg az alapértelmezett értékeket, majd kattintson a **Hozzáadás** gombra.
   ![Méretezési beállítás létrehozása egy webalkalmazáshoz][6]
 1. Most létrehozta az első skálázási szabályt. Vegye figyelembe, hogy az UX az ajánlott eljárásokat javasolja, és azt állítja be, hogy "a szabálynak legalább egy méretezése van." Ehhez tegye a következőket:
 
@@ -51,7 +51,7 @@ Most ugorjon végig egy egyszerű, lépésenkénti útmutatót, amellyel létreh
 
     b. Az **operátor** beállítása **kisebb, mint**.
 
-    c. Állítsa a **küszöbértéket** **20**-ra.
+    c. Állítsa a **küszöbértéket** **20** -ra.
 
     d. Állítsa be a **műveletet** úgy, hogy **csökkentse a darabszámot**.
 
@@ -68,7 +68,7 @@ Gratulálunk! Most sikeresen létrehozta az első méretezési beállítást a w
 ### <a name="scale-based-on-a-schedule"></a>Méretezés ütemterv alapján
 A CPU-alapú skálázáson kívül a hét adott napjain különbözőképpen is beállíthatja a méretezést.
 
-1. Kattintson **a skálázási feltétel hozzáadása**elemre.
+1. Kattintson **a skálázási feltétel hozzáadása** elemre.
 1. A skálázási mód beállítása és a szabályok megegyeznek az alapértelmezett feltétellel.
 1. Válassza az **adott napok megismétlése** az ütemtervhez lehetőséget.
 1. Válassza ki a napokat és a kezdő/záró időpontot, ha alkalmazni szeretné a méretezési feltételt.
@@ -77,7 +77,7 @@ A CPU-alapú skálázáson kívül a hét adott napjain különbözőképpen is 
 ### <a name="scale-differently-on-specific-dates"></a>Eltérő méretezés adott dátumokon
 A PROCESSZORon alapuló skálázás mellett az adott dátumok esetében különbözőképpen is beállíthatja a méretezést.
 
-1. Kattintson **a skálázási feltétel hozzáadása**elemre.
+1. Kattintson **a skálázási feltétel hozzáadása** elemre.
 1. A skálázási mód beállítása és a szabályok megegyeznek az alapértelmezett feltétellel.
 1. Válassza az ütemterv **kezdő/záró dátumának megadása** lehetőséget.
 1. Válassza ki a kezdő/befejező dátumokat és a kezdő/záró időpontot a skálázási feltétel alkalmazásához.
@@ -111,17 +111,17 @@ Most már beállíthatja a manuálisan méretezni kívánt példányok számát.
 
 ![Manuális skálázás beállítása][14]
 
-Az **autoskálázás engedélyezése** és a **Mentés**lehetőségre kattintva bármikor visszatérhet az autoscale méretezéshez.
+Az **autoskálázás engedélyezése** és a **Mentés** lehetőségre kattintva bármikor visszatérhet az autoscale méretezéshez.
 
 ## <a name="route-traffic-to-healthy-instances-app-service"></a>Forgalom átirányítása kifogástalan állapotú példányokra (App Service)
 
-Ha több példányra bővíti a méretezést, App Service végezhet állapot-ellenőrzéseket a példányokon, hogy csak az egészséges példányokra irányítsa a forgalmat. Ehhez nyissa meg a portált a App Service, majd a **figyelés**területen válassza az **állapot-ellenőrzés** lehetőséget. Válassza az **Engedélyezés** lehetőséget, és adjon meg egy érvényes URL-útvonalat az alkalmazáson, például: `/health` vagy `/api/health` . Kattintson a **Mentés** gombra.
+Ha több példányra bővíti a méretezést, App Service végezhet állapot-ellenőrzéseket a példányokon, hogy csak az egészséges példányokra irányítsa a forgalmat. Ehhez nyissa meg a portált a App Service, majd a **figyelés** területen válassza az **állapot-ellenőrzés** lehetőséget. Válassza az **Engedélyezés** lehetőséget, és adjon meg egy érvényes URL-útvonalat az alkalmazáson, például: `/health` vagy `/api/health` . Kattintson a **Mentés** gombra.
 
 A szolgáltatás ARM-sablonokkal való engedélyezéséhez állítsa az `healthcheckpath` erőforrás tulajdonságát `Microsoft.Web/sites` a hely állapot-ellenőrzési útvonalára, például: `"/api/health/"` . A funkció letiltásához állítsa vissza a tulajdonságot az üres karakterláncra `""` .
 
 ### <a name="health-check-path"></a>Állapot-ellenőrzési útvonal
 
-Az elérési útnak egy percen belül kell válaszolnia a 200 és a 299 közötti állapotkódot (beleértve a szolgáltatást is). Ha az elérési út egy percen belül nem válaszol, vagy a tartományon kívüli állapotkódot ad vissza, akkor a példány "nem megfelelő" állapotnak minősül. A App Service nem követi a 302-es átirányítást az állapot-ellenőrzési útvonalon. Az állapot-ellenőrzési funkció a App Service hitelesítési és engedélyezési funkcióival integrálódik, a rendszer akkor is eléri a végpontot, ha ezek a Secuity funkciók engedélyezve vannak. Ha saját hitelesítési rendszerét használja, az állapot-ellenőrzési útvonalnak engedélyeznie kell a névtelen hozzáférést. Ha a hely csak HTTP **-t**engedélyez, a Healthcheck kérelmet a rendszer http-n keresztül küldi**el.**
+Az elérési útnak egy percen belül kell válaszolnia a 200 és a 299 közötti állapotkódot (beleértve a szolgáltatást is). Ha az elérési út egy percen belül nem válaszol, vagy a tartományon kívüli állapotkódot ad vissza, akkor a példány "nem megfelelő" állapotnak minősül. A App Service nem követi a 302-es átirányítást az állapot-ellenőrzési útvonalon. Az állapot-ellenőrzési funkció a App Service hitelesítési és engedélyezési funkcióival integrálódik, a rendszer akkor is eléri a végpontot, ha ezek a Secuity funkciók engedélyezve vannak. Ha saját hitelesítési rendszerét használja, az állapot-ellenőrzési útvonalnak engedélyeznie kell a névtelen hozzáférést. Ha a hely csak HTTP **-t** engedélyez, a Healthcheck kérelmet a rendszer http-n keresztül küldi **el.**
 
 Az állapot-ellenőrzési útvonalnak ellenőriznie kell az alkalmazás kritikus összetevőit. Ha például az alkalmazás egy adatbázistól és egy üzenetkezelő rendszertől függ, az állapot-ellenőrzési végpontnak csatlakoznia kell ezekhez az összetevőkhöz. Ha az alkalmazás nem tud csatlakozni egy kritikus összetevőhöz, az elérési útnak egy 500 szintű választ kell visszaadnia, amely azt jelzi, hogy az alkalmazás nem kifogástalan állapotú.
 
@@ -131,7 +131,7 @@ A nagyvállalati fejlesztési csapatoknak gyakran kell megfelelniük a kitett AP
 
 ### <a name="behavior"></a>Működés
 
-Az állapot-ellenőrzési útvonal megadásakor App Service fogja pingelni az elérési utat az összes példányon. Ha a sikeres válasz kódja 5 pingelés után nem érkezik meg, akkor a példány "nem megfelelő" állapotnak minősül. A nem kifogástalan állapotú példányok kimaradnak a terheléselosztó forgása alól. Emellett, ha a vertikális felskálázást végzi, App Service az állapot-ellenőrzési útvonal pingelésével biztosítja, hogy az új példányok készen álljanak a kérelmekre.
+Az állapot-ellenőrzési útvonal megadásakor App Service fogja pingelni az elérési utat az összes példányon. Ha a sikeres válasz kódja 5 pingelés után nem érkezik meg, akkor a példány "nem megfelelő" állapotnak minősül. A nem kifogástalan állapotú példányok kimaradnak a terheléselosztó forgása alól. Megadhatja, hogy a sikertelen pingelések száma az `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` alkalmazás beállításával történjen. Ez az Alkalmazásbeállítások 2 és 10 közötti egész számra állítható be. Ha például ezt a értékre állítja `2` , a rendszer a példányokat két sikertelen pingelés után eltávolítja a terheléselosztó közül. Emellett, ha a vertikális felskálázást végzi, App Service az állapot-ellenőrzési útvonal pingelésével biztosítja, hogy az új példányok készen álljanak a kérelmekre a terheléselosztó hozzáadása előtt.
 
 A fennmaradó kifogástalan állapotú példányok nagyobb terhelést tapasztalhatnak. A fennmaradó példányok túlnyomó számának elkerülése érdekében a példányok több mint fele ki lesz zárva. Ha például egy App Service csomag 4 példányra van kibővítve, és 3 nem kifogástalan állapotú, legfeljebb 2 lesz kizárva a terheléselosztó forgásból. A másik 2 példány (1 kifogástalan és 1 sérült) továbbra is fogadja a kéréseket. Abban a legrosszabb esetben, ha az összes példány állapota nem kifogástalan, a rendszer nem zárja ki az egyiket sem. Ha szeretné felülbírálni ezt a viselkedést, a `WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` és a közötti értékre állíthatja az alkalmazás beállítását `0` `100` . Ha magasabb értékre állítja ezt a beállítást, a rendszer eltávolítja a nem megfelelő állapotú példányokat (az alapértelmezett érték 50).
 
@@ -141,7 +141,7 @@ Ha egy példány nem kifogástalan állapotú egy órára, az új példánnyal l
 
 Az alkalmazás állapot-ellenőrzési útvonalának megadása után Azure Monitor használatával figyelheti a webhely állapotát. A portál **állapot-ellenőrzési** paneljén kattintson a felső eszköztár **metrikái** elemére. Ekkor megnyílik egy új panel, amelyen megtekintheti a hely korábbi állapotának állapotát, és létrehozhat egy új riasztási szabályt. A helyek figyelésével kapcsolatos további információkért [tekintse meg a következő útmutatót: Azure monitor](../../app-service/web-sites-monitor.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Műveletnapló-riasztás létrehozása az összes autoskálázási motor műveleteinek figyeléséhez az előfizetésen](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Műveletnapló-riasztás létrehozása az összes sikertelen, az előfizetésen kívüli méretezési és kibővítő művelet figyeléséhez](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 

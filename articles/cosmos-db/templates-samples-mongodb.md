@@ -3,15 +3,16 @@ title: Resource Manager-sablonok a MongoDB Azure Cosmos DB API-hoz
 description: Azure Resource Manager-sablonok használatával Azure Cosmos DB API-t hozhat létre és konfigurálhat a MongoDB.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: mjbrown
-ms.openlocfilehash: 821bf1329f32c8d4ca759baf2a5bbb5baed70674
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7664d48bad153b34e7557e9faaf4c8aa0d4215ad
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101095"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340624"
 ---
 # <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB MongoDB API-erőforrások kezelése Azure Resource Manager-sablonok használatával
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -48,7 +49,7 @@ Ez a sablon egy Azure Cosmos-fiókot hoz létre a MongoDB API-hoz (3,2 vagy 3,6)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-mongodb/azuredeploy.json":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Néhány további információforrás:
 

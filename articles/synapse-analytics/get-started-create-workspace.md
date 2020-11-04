@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 10/07/2020
-ms.openlocfilehash: 6e1eeba99e3ad98aa0fee2e6709bb817ff829ed9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: dfa2752be2da0a89c7246241177b3624984fa0d2
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93304755"
+ms.locfileid: "93342198"
 ---
 # <a name="creating-a-synapse-workspace"></a>Szinapszis-munkaterület létrehozása
 
@@ -31,13 +31,10 @@ Az oktatóanyag lépéseinek elvégzéséhez hozzáféréssel kell rendelkeznie 
 1. A keresési eredmények között, a **szolgáltatások** területen válassza az **Azure szinapszis Analytics (munkaterületek előzetes verzió)** lehetőséget.
 1. Munkaterület létrehozásához válassza a **Hozzáadás** lehetőséget.
 1. Az **alapvető beállítások** területen adja meg a kívánt **előfizetést** , **erőforráscsoportot** , **régiót** , majd válassza ki a munkaterület nevét. Ebben az oktatóanyagban a **sajátmunkaterület** -t fogjuk használni.
-1. Munkaterület létrehozásához szükség van egy ADLSGEN2-fiókra és egy tárolóra a fiókban. A legegyszerűbb lehetőség, hogy újat hozzon létre. Ha újra szeretné használni a meglévőket, néhány további konfigurálást is végre kell hajtania. 
-    1. A szinapszis munkaterület ezt a tárolót fogja használni a Spark-naplók és a Spark-táblákra vonatkozó adattárolás alapértelmezett helyeként.
-1. 1. lehetőség új ADLSGEN2-fiók létrehozása 
+1. Munkaterület létrehozásához szükség van egy ADLSGEN2-fiókra és egy tárolóra a fiókban. A szinapszis munkaterület ezt a tárolót fogja használni a Spark-naplók és a Spark-táblákra vonatkozó adattárolás alapértelmezett helyeként.
     1. Navigáljon a **2. generációs Data Lake Storage kiválasztásához**. 
     1. Kattintson az **új létrehozása** elemre, és nevezze el **contosolake**.
     1. Kattintson a **fájlrendszer** elemre, és nevezze el a **felhasználókat**. Ekkor létrejön egy **felhasználó** nevű tároló.
-1. 2. lehetőség meglévő ADLSGEN2-fiók használatával. Tekintse meg a jelen dokumentum alján található **ADLSGEN2-fiók előkészítésével** kapcsolatos utasításokat.
 1. Az Azure szinapszis-munkaterülete ezt a Storage-fiókot fogja használni az "elsődleges" Storage-fiók és a munkaterület-adattárolási tároló számára. A munkaterület Apache Spark táblákban tárolja az adattárakat. Egy **/Synapse/workspacename** nevű mappában tárolja a Spark-alkalmazás naplóit.
 1. Válassza a **Felülvizsgálat + létrehozás** > **Létrehozás** lehetőséget. A munkaterület pár percen belül elkészül.
 
@@ -83,41 +80,9 @@ Amikor Spark-tevékenységet hajt végre az Azure Szinapszisban, meg kell adnia 
 
 ## <a name="the-serverless-sql-pool"></a>A kiszolgáló nélküli SQL-készlet
 
-Minden munkaterülethez **beépített, beépített** készlet tartozik. Ez a készlet nem törölhető. A kiszolgáló nélküli SQL-készlet lehetővé teszi az SQL használatát anélkül, hogy létre kellene hoznia egy kiszolgáló nélküli SQL-készletet az Azure Szinapszisban.
+Minden munkaterülethez **beépített, beépített** készlet tartozik. Ez a készlet nem törölhető. A kiszolgáló nélküli SQL-készlet lehetővé teszi az SQL használatát anélkül, hogy létre kellene hoznia egy kiszolgáló nélküli SQL-készletet az Azure Szinapszisban. A dedikált SQL-készletektől eltérően a kiszolgáló nélküli SQL-készlet számlázása a lekérdezés futtatásához beolvasott adatmennyiségen alapul, nem a lekérdezés végrehajtásához használt erőforrások számától.
 
-
-A más típusú készletektől eltérően a kiszolgáló nélküli SQL-készlet számlázása a lekérdezés futtatásához beolvasott adatmennyiségen alapul, nem a lekérdezés végrehajtásához használt erőforrások számától.
-
-* A kiszolgáló nélküli SQL-készlet saját adatbázisokkal rendelkezik, amelyek a többi kiszolgáló nélküli SQL-készlettől függetlenül léteznek.
-* A munkaterületek mindig pontosan egy **beépített SQL-** készlettel rendelkeznek.
-
-## <a name="preparing-a-adlsgen2-storage-account"></a>ADLSGEN2 Storage-fiók előkészítése
-
-### <a name="perform-the-following-steps-before-you-create-your-workspace"></a>A munkaterület létrehozása előtt hajtsa végre a következő lépéseket
-
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
-1. Navigáljon a meglévő Storage-fiókjához
-1. A bal oldali panelen válassza a **hozzáférés-vezérlés (iam)** lehetőséget. 
-1. Rendelje hozzá a következő szerepköröket, vagy győződjön meg róla, hogy már hozzá van rendelve:
-    * Rendelje hozzá magát a **tulajdonosi** szerepkörhöz.
-    * Rendeljen hozzá saját magát a **Storage blob-adat tulajdonosi** szerepköréhez.
-1. A bal oldali ablaktáblán válassza a **tárolók** lehetőséget, és hozzon létre egy tárolót.
-1. Megadhatja a tároló nevét. Ebben a dokumentumban a  **felhasználók** nevet használjuk.
-1. Fogadja el az alapértelmezett **nyilvános hozzáférési szint** beállítást, majd válassza a **Létrehozás** lehetőséget.
-
-### <a name="perform-the-following-steps-after-you-create-your-workspace"></a>A munkaterület létrehozása után végezze el a következő lépéseket
-
-Konfigurálja a Storage-fiókhoz való hozzáférést a munkaterületről. Előfordulhat, hogy az Azure szinapszis-munkaterülethez tartozó felügyelt identitások már hozzáférnek a Storage-fiókhoz. Az alábbi lépéseket követve győződjön meg arról, hogy:
-
-1. Nyissa meg a munkaterülethez kiválasztott [Azure Portal](https://portal.azure.com) és elsődleges Storage-fiókot.
-1. A bal oldali panelen válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
-1. Rendelje hozzá a következő szerepköröket, vagy győződjön meg arról, hogy már hozzá van rendelve. Ugyanazt a nevet használjuk a munkaterület-identitáshoz és a munkaterület nevéhez.
-    * A Storage- **blob adatközreműködői** szerepköréhez a Storage-fiókban rendeljen **sajátmunkaterület** a munkaterület-identitáshoz.
-    * Rendelje hozzá a **sajátmunkaterület** a munkaterület neveként.
-1. Válassza a **Mentés** lehetőséget.
-
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Elemzés dedikált SQL-készlet használatával](get-started-analyze-sql-pool.md)

@@ -3,16 +3,17 @@ title: Felhasználó által definiált függvények (UDF) Azure Cosmos DB
 description: A Azure Cosmos DB felhasználó által definiált függvények megismerése.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 82251cf803168c282e55438ca801ae1f30a2d019
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 5c7050042d59156e1203b5830d710e61bd8eb382
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93093724"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341892"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Felhasználó által definiált függvények (UDF) Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -139,7 +140,7 @@ Ha az UDF-paraméterek által hivatkozott tulajdonságok nem érhetők el a JSON
 
 Ahogy az előző példákban is látható, a UDF integrálja a JavaScript nyelv erejét az SQL API-val. A UDF a beépített JavaScript-futtatókörnyezeti funkciókkal összetett eljárási, feltételes logikát biztosító, sokoldalú, programozható felületet biztosít. Az SQL API megadja a UDF argumentumait az egyes forrásoldali elemeknél az aktuális WHERE vagy SELECT záradékban a feldolgozáshoz. Az eredmény zökkenőmentesen be van építve a teljes végrehajtási folyamatba. Összefoglalva, a UDF nagyszerű eszközei a lekérdezések részeként összetett üzleti logikának.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Cosmos DB bemutatása](introduction.md)
 - [Rendszerfüggvények](sql-query-system-functions.md)

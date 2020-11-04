@@ -3,15 +3,16 @@ title: Több eredetű erőforrás-megosztás (CORS) Azure Cosmos DB
 description: Ez a cikk azt ismerteti, hogyan konfigurálható az CORS-alapú erőforrás-megosztás (Azure Cosmos DB) Azure Portal és Azure Resource Manager sablonok használatával.
 author: deborahc
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: 863c31ecac13337ea3f91d7a7ced49b0f7141e58
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: eba49ff45ba9ab1f5cfaa1d75973d656ac32ca6a
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93086414"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339897"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>Az idegen eredetű erőforrások megosztásának konfigurálása (CORS)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -84,7 +85,7 @@ module.exports = {
 Az alábbiakban egy olyan [mintakód-minta](https://github.com/christopheranderson/cosmos-browser-sample) látható, amely a Azure Cosmos db JavaScript SDK-könyvtárral rendelkező írógéppel és webpack-t használja egy olyan Todo-alkalmazás létrehozásához, amely valós idejű frissítéseket küld, amikor új elemek jönnek létre.
 Ajánlott eljárásként ne használja az elsődleges kulcsot a Azure Cosmos DB a böngészőből való kommunikációhoz. Ehelyett használjon erőforrás-jogkivonatokat a kommunikációhoz. Az erőforrás-jogkivonatokkal kapcsolatos további információkért lásd: [hozzáférés biztonságossá tétele Azure Cosmos db](secure-access-to-data.md#resource-tokens) cikkhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Cosmos-fiók biztonságossá tételének egyéb módjaival kapcsolatos további információkért tekintse meg a következő cikkeket:
 

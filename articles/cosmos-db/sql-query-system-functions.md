@@ -3,23 +3,24 @@ title: Rendszerfüggvények Azure Cosmos DB lekérdezési nyelven
 description: Ismerkedjen meg a beépített és a felhasználó által definiált SQL-rendszerfunkciókkal Azure Cosmos DBban.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/15/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: fc8473f1caf4a17aea926d2729e7db7918db40d7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b8883d7040ad5c73a376838f7cb1aaa1b558bfbd
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094047"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340827"
 ---
 # <a name="system-functions-azure-cosmos-db"></a>Rendszerfunkciók (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
  A Cosmos DB számos beépített SQL-függvényt biztosít. A beépített függvények kategóriái alább láthatók.  
   
-|Function csoport|Leírás|Műveletek|  
+|Function csoport|Description|Műveletek|  
 |--------------|-----------------|-----------------| 
 |[Tömb függvények](sql-query-array-functions.md)|A tömb függvények a tömb bemeneti értékén hajtanak végre műveletet, és numerikus, logikai vagy tömb értéket adnak vissza. | [ARRAY_CONCAT](sql-query-array-concat.md), [ARRAY_CONTAINS](sql-query-array-contains.md), [ARRAY_LENGTH](sql-query-array-length.md), [ARRAY_SLICE](sql-query-array-slice.md) |
 |[Dátum és idő függvények](sql-query-date-time-functions.md)|A dátum-és időfüggvények lehetővé teszik az aktuális UTC dátum és idő megszerzését két formában; egy numerikus időbélyeg, amelynek értéke a UNIX-kor ezredmásodpercben, vagy egy olyan karakterlánc, amely megfelel az ISO 8601 formátumnak. | [GetCurrentDateTime](sql-query-getcurrentdatetime.md), [GetCurrentTimestamp](sql-query-getcurrenttimestamp.md) |
@@ -36,7 +37,7 @@ Ha jelenleg olyan felhasználó által definiált függvényt (UDF) használ, am
 
 Cosmos DB függvények és az ANSI SQL functions közötti fő különbség az, hogy a Cosmos DB Functions úgy lett kialakítva, hogy megfelelően működjön a séma nélküli és a vegyes séma adataival. Ha például egy tulajdonság hiányzik vagy nem numerikus értékkel rendelkezik (például: `unknown` ), az elem kimarad a hiba helyett.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Cosmos DB bemutatása](introduction.md)
 - [Tömb függvények](sql-query-array-functions.md)

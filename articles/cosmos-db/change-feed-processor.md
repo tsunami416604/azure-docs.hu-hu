@@ -4,17 +4,18 @@ description: Megtudhatja, hogyan használhatja a Azure Cosmos DB Change feed pro
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dfd96e7c62d700ccec2ecd4b223668d7aca4f18f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 409b51682700a8b13b2840f171642bdcbee6f6d2
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93072806"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340226"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>A változáscsatorna feldolgozója az Azure Cosmos DB-ben
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -133,14 +134,14 @@ A módosítási hírcsatorna processzora bármely olyan platformon üzemeltethet
 
 Míg a változási csatorna processzora rövid életű környezetekben futtatható, mivel a címbérleti tároló fenntartja az állapotot, a környezetek indítási ciklusa késleltetést ad az értesítések fogadásához (a processzor a környezet indításakor fellépő terhelés miatt).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Minta alkalmazás teljes alkalmazása a GitHubon](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 * [További használati minták a GitHubon](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
 * [Cosmos DB workshop Labs az adatcsatornás processzor módosításához](https://azurecosmosdb.github.io/labs/dotnet/labs/08-change_feed_with_azure_functions.html#consume-cosmos-db-change-feed-via-the-change-feed-processor)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkekben további tudnivalókat olvashat a hírcsatorna-feldolgozó szolgáltatással kapcsolatos változásokról:
 

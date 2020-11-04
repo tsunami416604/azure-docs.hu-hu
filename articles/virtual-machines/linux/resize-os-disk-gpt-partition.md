@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: 30a960c3ed76788158b15022947fec49a95ae299
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: baa260e911673ea99b292ab5dc9895840d0098ef
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89375210"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340307"
 ---
 # <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>GPT-partícióval rendelkező operációsrendszer-lemez átméretezése
 
@@ -34,7 +34,7 @@ A `parted` paranccsal azonosíthatja, hogy a lemezpartíció a fő rendszertölt
 
 ### <a name="mbr-partition"></a>MBR-partíció
 
-A következő kimenetben a **partíciós tábla** az **MSDOS**értékét jeleníti meg. Ez az érték azonosítja az MBR-partíciót.
+A következő kimenetben a **partíciós tábla** az **MSDOS** értékét jeleníti meg. Ez az érték azonosítja az MBR-partíciót.
 
 ```
 [user@myvm ~]# parted -l /dev/sda
@@ -50,7 +50,7 @@ Number  Start   End     Size    Type     File system  Flags
 
 ### <a name="gpt-partition"></a>GPT-partíció
 
-A következő kimenetben a **partíciós tábla** a **GPT**értékét jeleníti meg. Ez az érték azonosítja a GPT-partíciót.
+A következő kimenetben a **partíciós tábla** a **GPT** értékét jeleníti meg. Ez az érték azonosítja a GPT-partíciót.
 
 ```
 [user@myvm ~]# parted -l /dev/sda
@@ -177,7 +177,7 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
 
 1. A fájlrendszer típusától függően használja a megfelelő parancsokat a fájlrendszer átméretezéséhez.
    
-   A **XFS**használja a következő parancsot:
+   A **XFS** használja a következő parancsot:
    
    ```
    #xfs_growfs /
@@ -200,13 +200,13 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
    data blocks changed from 7470331 to 12188923
    ```
    
-   Az **ext4**esetében használja a következő parancsot:
+   Az **ext4** esetében használja a következő parancsot:
    
    ```
    #resize2fs /dev/sda4
    ```
    
-1. A következő parancs használatával ellenőrizze a **DF-th**fájlrendszer méretének növelését:
+1. A következő parancs használatával ellenőrizze a **DF-th** fájlrendszer méretének növelését:
    
    ```
    #df -Thl
@@ -231,7 +231,7 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
    
    Az előző példában láthatjuk, hogy az operációsrendszer-lemez fájlrendszerének mérete megnőtt.
 
-### <a name="rhel"></a>RHEL
+### <a name="rhel-lvm"></a>RHEL LVM
 
 Az operációsrendszer-lemez méretének növeléséhez az RHEL 7. x és az LVM használatával:
 
@@ -352,6 +352,129 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
 > [!NOTE]
 > Ha ugyanezt az eljárást szeretné használni az egyéb logikai kötetek átméretezéséhez, módosítsa a 7. lépésben szereplő **lv** -nevet.
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="rhel-raw"></a>RHEL NYERS
+>[!NOTE]
+>Mindig készítsen pillanatképet a virtuális gépről az operációsrendszer-lemez méretének növelése előtt.
+
+Az operációsrendszer-lemez méretének növeléséhez a RHEL és a nyers partíciót:
+
+Állítsa le a virtuális gépet.
+Növelje az operációsrendszer-lemez méretét a portálon.
+Indítsa el a virtuális gépet.
+Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
+
+1. A következő parancs használatával érheti el a virtuális gépet **root** felhasználóként:
+ 
+   ```
+   sudo su
+   ```
+
+1. Telepítse a **gptfdisk** csomagot, amely az operációsrendszer-lemez méretének növeléséhez szükséges.
+
+   ```
+   yum install gdisk -y
+   ```
+
+1.  A lemezen elérhető összes szektor megtekintéséhez futtassa a következő parancsot:
+    ```
+    gdisk -l /dev/sda
+    ```
+
+1. Ekkor megjelenik a partíció típusával kapcsolatos részletek. Győződjön meg arról, hogy GPT. Azonosítsa a legfelső szintű partíciót. Ne módosítsa vagy törölje a rendszerindító partíciót (BIOS rendszerindító partíció) és a rendszerpartíciót ("EFI rendszerpartíció").
+
+1. Az alábbi parancs használatával indítsa el a particionálást első alkalommal. 
+    ```
+    gdisk /dev/sda
+    ```
+
+1. Most megjelenik egy üzenet, amely kéri a következő parancsot ("parancs:? Súgó "). 
+
+   ```
+   w
+   ```
+
+1. Figyelmeztető üzenet jelenik meg. A másodlagos fejléc túl korán kerül a lemezre. Szeretné kijavítani ezt a problémát? (I/N): ". Az "Y" billentyűt kell megnyomnia
+
+   ```
+   Y
+   ```
+
+1. Ekkor megjelenik egy üzenet, amely tájékoztatja, hogy a végső ellenőrzés befejeződik, és megerősítést kér. Az "Y" gomb megnyomása
+
+   ```
+   Y
+   ```
+
+1. Ellenőrizze, hogy minden megfelelően megtörtént-e a partprobe parancs használatával
+
+   ```
+   partprobe
+   ```
+
+1. A fenti lépések biztosítják, hogy a másodlagos GPT-fejléc a végén legyen elhelyezve. A következő lépés az átméretezés folyamatának elindítása a GDisk eszköz újbóli használatával. Használja az alábbi parancsot.
+
+   ```
+   gdisk /dev/sda
+   ```
+1. A parancs menüjében kattintson a "p" gombra a partíciók listájának megtekintéséhez. Azonosítsa a legfelső szintű partíciót (a lépésekben a sda2 tekinti a legfelső szintű partíciónak) és a rendszerindító partíciót (a lépésekben a sda3 a rendszerindító partíciónak számít). 
+
+   ```
+   p
+   ```
+    ![Gyökérszintű partíció és rendszerindító partíció](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
+
+1. A 'd gomb megnyomásával törölheti a partíciót, és kiválaszthatja a rendszerindításhoz rendelt partíció számát (ebben a példában ez a "3").
+   ```
+   d
+   3
+   ```
+1. A 'd gomb megnyomásával törölheti a partíciót, és kiválaszthatja a rendszerindításhoz rendelt partíció számát (ebben a példában ez a "2").
+   ```
+   d
+   2
+   ```
+    ![A gyökérszintű partíció és a rendszerindító partíció törlése](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
+
+1. Ha nagyobb mérettel szeretné újból létrehozni a főpartíciót, nyomja meg az n billentyűt, adja meg a korábban a root számára törölt ("2") partíció számát, és válassza az első szektort "alapértékként", utolsó szektorként "utolsó szektor értéke – rendszerindítási méret (4096 8300)
+   ```
+   n
+   2
+   (Enter default)
+   (Calculateed value of Last sector value - 4096)
+   8300
+   ```
+1. A rendszerindító partíció újbóli létrehozásához nyomja le az "n" billentyűt, adja meg a korábban a rendszerindításhoz előzőleg törölt partíció számát (ebben a példában a "3"), majd válassza az első szektort "alapértelmezett érték", utolsó szektor as "default Value" és hex Code as "EF02" néven.
+   ```
+   n
+   3
+   (Enter default)
+   (Enter default)
+   EF02
+   ```
+
+1. Írja meg a módosításokat a "w" paranccsal, és erősítse meg az "Y" gombot.
+   ```
+   w
+   Y
+   ```
+1. Futtassa a "partprobe" parancsot a lemez stabilitásának vizsgálatához.
+   ```
+   partprobe
+   ```
+1. A virtuális gép újraindítása és a gyökérszintű partíció méretének növelése
+   ```
+   reboot
+   ```
+
+   ![Új gyökérszintű partíció és rendszerindító partíció](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
+
+1. Az átméretezéshez futtassa a xfs_growfs parancsot a partíción.
+   ```
+   xfs_growfs /dev/sda2
+   ```
+
+   ![XFS Grow FS](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
+
+## <a name="next-steps"></a>További lépések
 
 - [Lemez átméretezése](expand-disks.md)

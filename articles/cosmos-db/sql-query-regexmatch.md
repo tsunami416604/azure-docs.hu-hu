@@ -3,16 +3,17 @@ title: RegexMatch Azure Cosmos DB lekérdezési nyelven
 description: Tudnivalók a RegexMatch SQL System függvényéről Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 16004ece7877358be54ba67c2f72eb3210f16fb0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7f5b2831f45e902b312636e4133557a16ee7ec95
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098127"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341637"
 ---
 # <a name="regexmatch-azure-cosmos-db"></a>REGEXMATCH (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,7 +41,7 @@ Megtudhatja, hogyan [hozhat létre reguláris kifejezéseket a perlban a szintax
 
 A Azure Cosmos DB a következő négy módosítót támogatja:
 
-| Módosító | Leírás |
+| Módosító | Description |
 | ------ | ----------- |
 | `m` | A karakterlánc-kifejezést több sorba való kereséshez kell kezelnie. A beállítás nélkül a "^" és a "$" egyeztetése a karakterlánc elején vagy végén, és nem minden egyes sorban történik. |
 | `s` | A "." engedélyezése bármely karakternek, beleértve a sortörési karaktert is. | 
@@ -110,7 +111,7 @@ WHERE RegexMatch (c.description, " s... ","i")
 
 Ez a rendszerfunkció kihasználhatja a [tartomány indexét](index-policy.md#includeexclude-strategy) , ha a reguláris kifejezés a StartsWith, a EndsWith, a tartalmaz vagy a StringEquals rendszerfunkciókkal is bontható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

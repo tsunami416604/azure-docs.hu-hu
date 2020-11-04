@@ -3,17 +3,18 @@ title: Teljesítménnyel kapcsolatos tippek Azure Cosmos DB aszinkron Java SDK v
 description: Az ügyfél-konfigurációs beállítások megismerése az Azure Cosmos Database teljesítményének az aszinkron Java SDK v2-hez való javításához
 author: anfeldma-ms
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java, contperfq2
-ms.openlocfilehash: c1dec2c8451ddd1feb4b5b0dac9c82e1716079b7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4285571ead30f74f9136ad81687e52d92fdd1c47
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325831"
+ms.locfileid: "93341756"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Teljesítménnyel kapcsolatos tippek Azure Cosmos DB aszinkron Java SDK v2-hez
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -303,6 +304,6 @@ _ **A leállítási megvalósítása getRetryAfterInMilliseconds időközönkén
 
     Egy adott műveletre vonatkozó kérelem díja (a kérelmek feldolgozási díja) közvetlenül összefügg a dokumentum méretével. A nagyméretű dokumentumokon végzett műveletek többek között a kis méretű dokumentumok műveleteinél nagyobb mértékben járnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni az alkalmazás méretezési és nagy teljesítményű kialakításáról, tekintse meg [a particionálás és skálázás Azure Cosmos DBban](partitioning-overview.md)című témakört.

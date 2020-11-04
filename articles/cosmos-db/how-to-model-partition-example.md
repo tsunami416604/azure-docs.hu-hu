@@ -3,16 +3,17 @@ title: Azure Cosmos DB-modell és-particionálás valós példával
 description: Ismerje meg, hogyan modellezheti és particionálhatja a valós példákat a Azure Cosmos DB Core API használatával
 author: ThomasWeiss
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 92d15337f511f534c23ff97d274b344714812a5e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ef999d4b452f3f31942e1fb2ddb46efe760acff0
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100252"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342147"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Adatok modellezése és particionálása az Azure Cosmos DB-ben való életből vett példa használatával
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -23,7 +24,7 @@ Ha általában a kapcsolatok adatbázisaival dolgozik, valószínűleg az adatmo
 
 ## <a name="the-scenario"></a>Esetleírás
 
-Ebben a gyakorlatban egy olyan blogging platform tartományát fogjuk figyelembe venni, ahol a *felhasználók* létrehozhatnak *bejegyzéseket* . *A felhasználók emellett* hozzáadhatnak *megjegyzéseket* a bejegyzésekhez.
+Ebben a gyakorlatban egy olyan blogging platform tartományát fogjuk figyelembe venni, ahol a *felhasználók* létrehozhatnak *bejegyzéseket*. *A felhasználók emellett* hozzáadhatnak *megjegyzéseket* a bejegyzésekhez.
 
 > [!TIP]
 > Kiemeltek néhány szót *dőlt betűvel* ; Ezek a szavak határozzák meg, hogy milyen típusú "dolgok" a modellnek.
@@ -138,7 +139,7 @@ Ez a kérelem egyszerűen megvalósítható a tárolóban lévő elemek létreho
 
 A felhasználók beolvasása a tároló megfelelő elemének beolvasásával történik `users` .
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q1.png" alt-text="Egyetlen elem írása a felhasználók tárolójába" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q1.png" alt-text="Egyetlen elem beolvasása a felhasználók tárolójából" border="false":::
 
 | **Késés** | **RU díj** | **Teljesítmény** |
 | --- | --- | --- |
@@ -148,7 +149,7 @@ A felhasználók beolvasása a tároló megfelelő elemének beolvasásával tö
 
 A **[C1]** -hez hasonlóan csak írni kell a `posts` tárolóba.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Egyetlen elem írása a felhasználók tárolójába" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Egyetlen elem írása a Posts tárolóba" border="false":::
 
 | **Késés** | **RU díj** | **Teljesítmény** |
 | --- | --- | --- |
@@ -158,7 +159,7 @@ A **[C1]** -hez hasonlóan csak írni kell a `posts` tárolóba.
 
 Kezdjük azzal, hogy beolvassa a megfelelő dokumentumot a `posts` tárolóból. De ez nem elég, a specifikációnk alapján pedig összesíteni kell a bejegyzés szerzőjének felhasználónevét, valamint azt is, hogy hány Megjegyzés és hány hozzászólás van jelen a bejegyzésben, amelyhez 3 további SQL-lekérdezést kell kiállítani.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q2.png" alt-text="Egyetlen elem írása a felhasználók tárolójába" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q2.png" alt-text="Bejegyzés beolvasása és további adatok összesítése" border="false":::
 
 A további lekérdezési szűrők a megfelelő tárolójának partíciós kulcsán alapulnak, ami pontosan a teljesítmény és a méretezhetőség maximalizálását kívánja. Végül azonban négy műveletet kell végrehajtania egy adott bejegyzés visszaadásához, ezért a következő iteráció során javítunk.
 
@@ -170,7 +171,7 @@ A további lekérdezési szűrők a megfelelő tárolójának partíciós kulcs�
 
 Először le kell kérnie a kívánt bejegyzéseket egy olyan SQL-lekérdezéssel, amely az adott felhasználóhoz tartozó bejegyzéseket kéri le. Emellett további lekérdezéseket is ki kell állítania a szerző felhasználónevének és a hozzászólások számának és a kívánt számoknak az összesítéséhez.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q3.png" alt-text="Egyetlen elem írása a felhasználók tárolójába" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q3.png" alt-text="A felhasználók összes bejegyzésének beolvasása és a további adatok összesítése" border="false":::
 
 Ez a megvalósítás számos hátrányat jelent:
 
@@ -185,7 +186,7 @@ Ez a megvalósítás számos hátrányat jelent:
 
 A Megjegyzés létrehozásához írja be a megfelelő elemeket a `posts` tárolóba.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Egyetlen elem írása a felhasználók tárolójába" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Egyetlen elem írása a Posts tárolóba" border="false":::
 
 | **Késés** | **RU díj** | **Teljesítmény** |
 | --- | --- | --- |
@@ -195,7 +196,7 @@ A Megjegyzés létrehozásához írja be a megfelelő elemeket a `posts` tárol�
 
 Kezdjük egy olyan lekérdezéssel, amely beolvassa az adott bejegyzéshez tartozó összes hozzászólást, és még egyszer, a felhasználóneveket külön kell összesíteni az egyes megjegyzésekhez.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q4.png" alt-text="Egyetlen elem írása a felhasználók tárolójába" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q4.png" alt-text="Bejegyzés összes megjegyzésének beolvasása és a további adatok összesítése" border="false":::
 
 Bár a fő lekérdezés a tároló partíciós kulcsát szűri, a felhasználónevek összesítése külön bünteti a teljes teljesítményt. Ezt később fejlesztjük.
 
@@ -207,7 +208,7 @@ Bár a fő lekérdezés a tároló partíciós kulcsát szűri, a felhasználón
 
 A **[C3]** -hoz hasonlóan a megfelelő elem is létrejön a `posts` tárolóban.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Egyetlen elem írása a felhasználók tárolójába" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Egyetlen elem írása a Posts tárolóba" border="false":::
 
 | **Késés** | **RU díj** | **Teljesítmény** |
 | --- | --- | --- |
@@ -217,7 +218,7 @@ A **[C3]** -hoz hasonlóan a megfelelő elem is létrejön a `posts` tárolóban
 
 Akárcsak a **[Q4]** esetében, lekérdezjük az adott bejegyzésre vonatkozó, majd összesített felhasználóneveket.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q5.png" alt-text="Egyetlen elem írása a felhasználók tárolójába" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q5.png" alt-text="Az összes kedvelt üzenet beolvasása és a további adatok összesítése" border="false":::
 
 | **Késés** | **RU díj** | **Teljesítmény** |
 | --- | --- | --- |
@@ -227,7 +228,7 @@ Akárcsak a **[Q4]** esetében, lekérdezjük az adott bejegyzésre vonatkozó, 
 
 A legutóbbi hozzászólások beolvasásához a tároló lekérdezése `posts` csökkenő létrehozási dátummal történik, majd összesíti a felhasználóneveket és a hozzászólások számát, és szereti az egyes bejegyzéseket.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q6.png" alt-text="Egyetlen elem írása a felhasználók tárolójába" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q6.png" alt-text="A Legutóbbi bejegyzések beolvasása és a további adatok összesítése" border="false":::
 
 A kezdeti lekérdezés nem a tároló partíciós kulcsára van szűrve `posts` , ami költséges ventilátort indít el. Ez még rosszabb, mint a sokkal nagyobb eredményhalmaz megcélzása és az eredmények egy záradékkal való rendezése `ORDER BY` , ami drágább a kérési egységek tekintetében.
 
@@ -338,7 +339,7 @@ A felhasználónevek eltérő megközelítést igényelnek, mivel a felhasznál�
 
 A példánkban a tároló változási csatornáját használjuk arra, `users` hogy reagáljon arra, amikor a felhasználók frissítik a felhasználóneveket. Ebben az esetben a változást egy másik tárolt eljárás meghívásával propagáljuk a `posts` tárolón:
 
-:::image type="content" source="./media/how-to-model-partition-example/denormalization-1.png" alt-text="Egyetlen elem írása a felhasználók tárolójába" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-1.png" alt-text="Felhasználónevek denormalizálása a Posts tárolóba" border="false":::
 
 ```javascript
 function updateUsernames(userId, username) {
@@ -378,7 +379,7 @@ Ez a tárolt eljárás a felhasználó AZONOSÍTÓját és a felhasználó új f
 
 Most, hogy a denormalizálás érvényben van, csak egyetlen elemből kell beolvasnia a kérés kezelését.
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q2.png" alt-text="Egyetlen elem írása a felhasználók tárolójába" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q2.png" alt-text="Egyetlen elem beolvasása a Posts tárolóból" border="false":::
 
 | **Késés** | **RU díj** | **Teljesítmény** |
 | --- | --- | --- |
@@ -388,7 +389,7 @@ Most, hogy a denormalizálás érvényben van, csak egyetlen elemből kell beolv
 
 Itt is megteheti a felhasználónevek beolvasására szolgáló további kéréseket, és végül egyetlen lekérdezéssel, amely a partíciós kulcsra szűr.
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q4.png" alt-text="Egyetlen elem írása a felhasználók tárolójába" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q4.png" alt-text="Bejegyzés összes megjegyzésének beolvasása" border="false":::
 
 | **Késés** | **RU díj** | **Teljesítmény** |
 | --- | --- | --- |
@@ -398,7 +399,7 @@ Itt is megteheti a felhasználónevek beolvasására szolgáló további kérés
 
 Ugyanezt a helyzetet kell megegyeznie, amikor felsorolja az szereti.
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q5.png" alt-text="Egyetlen elem írása a felhasználók tárolójába" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q5.png" alt-text="Egy bejegyzéshez tartozó összes üzenet beolvasása" border="false":::
 
 | **Késés** | **RU díj** | **Teljesítmény** |
 | --- | --- | --- |
@@ -406,13 +407,13 @@ Ugyanezt a helyzetet kell megegyeznie, amikor felsorolja az szereti.
 
 ## <a name="v3-making-sure-all-requests-are-scalable"></a>V3: az összes kérelem méretezhetőségének biztosítása
 
-Az általános teljesítménybeli tökéletesítéseken még két kérelem is található, amelyeket nem teljesen optimalizáltunk: **[Q3]** és **[K6]** . Ezek olyan lekérdezések, amelyek nem szűrik az általuk megcélzott tárolók partíciós kulcsára vonatkozó kérelmeket.
+Az általános teljesítménybeli tökéletesítéseken még két kérelem is található, amelyeket nem teljesen optimalizáltunk: **[Q3]** és **[K6]**. Ezek olyan lekérdezések, amelyek nem szűrik az általuk megcélzott tárolók partíciós kulcsára vonatkozó kérelmeket.
 
 ### <a name="q3-list-a-users-posts-in-short-form"></a>Q3 A felhasználó bejegyzéseinek rövid formában való listázása
 
 Ez a kérelem már a v2-ben bevezetett Újdonságok előnyeit is kihasználja, így további lekérdezéseket takaríthat meg.
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q3.png" alt-text="Egyetlen elem írása a felhasználók tárolójába" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q3.png" alt-text="Diagram, amely megjeleníti a felhasználó bejegyzéseit rövid formában listázó lekérdezést." border="false":::
 
 A fennmaradó lekérdezés azonban továbbra sem a tároló partíciós kulcsára van szűrve `posts` .
 
@@ -456,11 +457,11 @@ Vegye figyelembe:
 
 A denormalizálás érdekében ismét a változási csatornát használjuk. Ezúttal a tároló változási csatornáján reagálunk arra, `posts` hogy új vagy frissített bejegyzést küldjön a `users` tárolóba. Mivel a bejegyzések bejegyzései nem igénylik a teljes tartalom visszaküldését, a folyamat során lerövidítheti azokat.
 
-:::image type="content" source="./media/how-to-model-partition-example/denormalization-2.png" alt-text="Egyetlen elem írása a felhasználók tárolójába" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-2.png" alt-text="Bejegyzések denormalizálása a felhasználók tárolójába" border="false":::
 
 Most már elvégezhető a lekérdezés átirányítása a `users` tárolóba, a tároló partíciós kulcsának szűrésével.
 
-:::image type="content" source="./media/how-to-model-partition-example/V3-Q3.png" alt-text="Egyetlen elem írása a felhasználók tárolójába" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V3-Q3.png" alt-text="Felhasználó összes bejegyzésének beolvasása" border="false":::
 
 | **Késés** | **RU díj** | **Teljesítmény** |
 | --- | --- | --- |
@@ -470,7 +471,7 @@ Most már elvégezhető a lekérdezés átirányítása a `users` tárolóba, a 
 
 Ehhez hasonló helyzetet kell megbirkóznia: még a v2-ben bevezetett denormalizálás után a további lekérdezések megkímélte után is, a fennmaradó lekérdezés nem szűri a tároló partíciós kulcsát:
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q6.png" alt-text="Egyetlen elem írása a felhasználók tárolójába" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q6.png" alt-text="Azt a diagramot, amely a rövid formátumban létrehozott x legutóbbi álláshelyek listázására szolgáló lekérdezést mutatja." border="false":::
 
 Ugyanezt a megközelítést követve a kérés teljesítményének és méretezhetőségének maximalizálása megköveteli, hogy csak egy partíciót lásson. Ez elképzelhető, hogy csak korlátozott számú elemet kell visszaadnia. a blogírás platform kezdőlapjának feltöltéséhez csupán a 100 legújabb bejegyzéseit kell megszereznie, anélkül, hogy a teljes adathalmazon át kellene lapozni.
 
@@ -495,7 +496,7 @@ Ez a tároló particionálva van `type` , amely mindig `post` az elemek között
 
 A denormalizálás eléréséhez csak be kell kapcsolnia a változási csatornát, amelyet korábban már bevezetett, hogy az új tárolóba küldjön a bejegyzéseket. Fontos szem előtt tartani, hogy meg kell győződni arról, hogy csak a 100 legutóbbi bejegyzéseit tároljuk. Ellenkező esetben előfordulhat, hogy a tároló tartalma meghaladja a partíciók maximális méretét. Ezt úgy teheti meg, hogy minden alkalommal meghívja a [triggert](stored-procedures-triggers-udfs.md#triggers) , amikor egy dokumentumot adnak hozzá a tárolóhoz:
 
-:::image type="content" source="./media/how-to-model-partition-example/denormalization-3.png" alt-text="Egyetlen elem írása a felhasználók tárolójába" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-3.png" alt-text="Bejegyzések denormalizálása a hírcsatorna-tárolóba" border="false":::
 
 Itt látható a gyűjteményt lerövidítő trigger törzse:
 
@@ -546,7 +547,7 @@ function truncateFeed() {
 
 Az utolsó lépés a lekérdezés átirányítása az új `feed` tárolóra:
 
-:::image type="content" source="./media/how-to-model-partition-example/V3-Q6.png" alt-text="Egyetlen elem írása a felhasználók tárolójába" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V3-Q6.png" alt-text="Legutóbbi bejegyzések beolvasása" border="false":::
 
 | **Késés** | **RU díj** | **Teljesítmény** |
 | --- | --- | --- |
@@ -583,7 +584,7 @@ A jelen cikkben ismertetett skálázhatósági funkciók az adathalmazon belüli
 
 Az a változás, amelyet a frissítések más tárolók számára történő terjesztésére használunk, az összes frissítést tartósan tárolja. Ez lehetővé teszi az összes frissítés igénylését, mivel a tároló létrehozása és a rendszerindítási műveletek elvégezte a betöltési nézetek egyszeri észlelési műveletként, még akkor is, ha a rendszer már sok adattal rendelkezik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A gyakorlati adatmodellezés és particionálás után érdemes megtekinteni a következő cikkeket az érintett fogalmak áttekintéséhez:
 

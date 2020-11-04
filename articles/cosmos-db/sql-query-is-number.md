@@ -3,16 +3,17 @@ title: Azure Cosmos DB lekérdezési nyelv IS_NUMBER
 description: Ismerkedjen meg a Azure Cosmos DB SQL System Function IS_NUMBERával.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 11000eb9f8b875014b44f0bcad70031da5f9e6a1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 5a2bac51426e6e7fb96fb4e1691bb3d164a1db1e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101374"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340872"
 ---
 # <a name="is_number-azure-cosmos-db"></a>IS_NUMBER (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -59,7 +60,7 @@ SELECT
 
 Ez a rendszerfunkció kihasználja a [tartomány indexét](index-policy.md#includeexclude-strategy).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Type Check functions Azure Cosmos DB](sql-query-type-checking-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

@@ -3,15 +3,16 @@ title: Resource Manager-sablonok a Azure Cosmos DB Table API
 description: Azure Cosmos DB-Table API létrehozásához és konfigurálásához használjon Azure Resource Manager sablonokat.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-table
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: 41f3a4fe5afad1f993d91af83c7da27ac28e3759
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e8fb47cc54d520d44085c8d007a4dfe92972d1d4
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101068"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340583"
 ---
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB Table API erőforrások kezelése Azure Resource Manager sablonok használatával
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -51,7 +52,7 @@ Ez a sablon egy Azure Cosmos-fiókot hoz létre a Table APIhoz, és egy tábláz
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-table/azuredeploy.json":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Néhány további információforrás:
 

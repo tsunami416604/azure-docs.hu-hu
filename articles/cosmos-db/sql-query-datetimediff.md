@@ -3,20 +3,20 @@ title: DateTimeDiff Azure Cosmos DB lekérdezési nyelven
 description: Ismerkedjen meg az SQL System Function DateTimeDiff Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: d51c8774a8646a4b961906ee77913d8edbe752ee
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 09b801c48bf2998a2d8926009cae76287c1ac9b6
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095830"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342266"
 ---
 # <a name="datetimediff-azure-cosmos-db"></a>DateTimeDiff (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
-
 A megadott DateTimePart határait (aláírt egész értékként) adja vissza a megadott *StartDate* és *EndDate* között.
   
 ## <a name="syntax"></a>Szintaxis
@@ -45,7 +45,7 @@ DateTimeDiff (<DateTimePart> , <StartDate> , <EndDate>)
 *StartDate*  
     Az UTC dátum és idő ISO 8601 karakterláncának értéke a (z) formátumban `YYYY-MM-DDThh:mm:ss.fffffffZ` :
   
-  |Formátum|Leírás|
+  |Formátum|Description|
   |-|-|
   |ÉÉÉÉ|négyjegyű év|
   |MM|kétjegyű hónap (01 = Január stb.)|
@@ -119,7 +119,7 @@ SELECT DateTimeDiff("hh", "2020-01-01T01:00:00.1234527Z", "2020-01-01T01:59:59.1
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Dátum és idő függvények Azure Cosmos DB](sql-query-date-time-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

@@ -8,18 +8,18 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 66d09503f5db95811f807aa7faa83b92facca992
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a6923f0a1d568cc695b86d1538ba55a3eb3444da
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543695"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341484"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Oktatóanyag: Azure Database for MySQL-kiszolgáló kiépítése Azure Resource Manager sablon használatával
 
 A [Azure Database for MySQL REST API](/rest/api/mysql/) lehetővé teszi, hogy a DevOps-mérnökök automatizálják és integrálják a felügyelt MySQL-kiszolgálók és adatbázisok üzembe helyezését, konfigurálását és működését az Azure-ban.  Az API lehetővé teszi a MySQL-kiszolgálók és-adatbázisok létrehozását, számbavételét, kezelését és törlését a Azure Database for MySQL szolgáltatásban.
 
-Azure Resource Manager kihasználja az alapul szolgáló REST APIt, hogy az üzembe helyezéshez szükséges Azure-erőforrásokat kinyilvánítsa és bemutasson, és az infrastruktúrát a kód koncepciójának megfelelően hangolja össze. A sablon felparaméterezi az Azure-erőforrás nevét, az SKU-t, a hálózatot, a tűzfal konfigurációját és a beállításokat, ami lehetővé teszi, hogy egyszerre legyen létrehozva, és többször is használható legyen.  Azure Resource Manager sablonok könnyen létrehozhatók [Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) vagy [Visual Studio Code](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=CLI)használatával. Lehetővé teszik az alkalmazások csomagolását, a szabványosítást és az üzembe helyezés automatizálását, amely integrálható az DevOps CI/CD-folyamatba.  Ha például gyorsan szeretne üzembe helyezni egy webalkalmazást Azure Database for MySQL háttérrel, akkor a GitHub-galériából elvégezheti a végpontok közötti telepítést a gyors üzembe helyezési [sablon](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/) használatával.
+A Azure Resource Manager kihasználja az alapul szolgáló REST API, hogy kinyilvánítsa és beindítsa az üzembe helyezéshez szükséges Azure-erőforrásokat a skálázáshoz, és az infrastruktúrát kód-koncepcióként igazítsa. A sablon felparaméterezi az Azure-erőforrás nevét, az SKU-t, a hálózatot, a tűzfal konfigurációját és a beállításokat, ami lehetővé teszi, hogy egyszerre legyen létrehozva, és többször is használható legyen.  Azure Resource Manager sablonok könnyen létrehozhatók [Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) vagy [Visual Studio Code](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=CLI)használatával. Lehetővé teszik az alkalmazások csomagolását, a szabványosítást és az üzembe helyezés automatizálását, amely integrálható az DevOps CI/CD-folyamatba.  Ha például gyorsan szeretne üzembe helyezni egy webalkalmazást Azure Database for MySQL háttérrel, akkor a GitHub-galériából elvégezheti a végpontok közötti telepítést a gyors üzembe helyezési [sablon](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/) használatával.
 
 Ebben az oktatóanyagban Azure Resource Manager sablonnal és más segédprogramokkal megismerheti a következőket:
 
@@ -29,6 +29,8 @@ Ebben az oktatóanyagban Azure Resource Manager sablonnal és más segédprogram
 > * Mintaadatok betöltése
 > * Adatok lekérdezése
 > * Adatok frissítése
+
+## <a name="prerequisites"></a>Előfeltételek
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -115,7 +117,7 @@ A kiszolgálóhoz való kapcsolódáshoz meg kell adnia a gazdagép adatait és 
 az mysql server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-Az eredmény JSON formátumban van. Jegyezze fel a következőket: **fullyQualifiedDomainName** és **administratorLogin** .
+Az eredmény JSON formátumban van. Jegyezze fel a következőket: **fullyQualifiedDomainName** és **administratorLogin**.
 ```json
 {
   "administratorLogin": "myadmin",
@@ -199,13 +201,47 @@ A sor az adatok lekérésekor megfelelően frissül.
 SELECT * FROM inventory;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli az erőforráscsoport erőforrásait.
+
+# <a name="portal"></a>[Portál](#tab/azure-portal)
+
+1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki az **erőforráscsoportok** elemet.
+
+2. Az erőforráscsoport listán válassza ki az erőforráscsoport nevét.
+
+3. Az erőforráscsoport **Áttekintés** lapján válassza az **erőforráscsoport törlése** elemet.
+
+4. A megerősítő párbeszédpanelen írja be az erőforráscsoport nevét, majd válassza a **Törlés** lehetőséget.
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+Remove-AzResourceGroup -Name $resourceGroupName
+Write-Host "Press [ENTER] to continue..."
+```
+
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+az group delete --name $resourceGroupName &&
+echo "Press [ENTER] to continue ..."
+```
+
+---
+
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag a következőket mutatta be:
 > [!div class="checklist"]
 > * Azure Database for MySQL kiszolgáló létrehozása a VNet szolgáltatás-végponttal Azure Resource Manager sablon használatával
-> * Adatbázis létrehozása a [MySQL parancssori eszköz](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) használatával
+> * Adatbázis létrehozása a mysql parancssori eszközzel
 > * Mintaadatok betöltése
 > * Adatok lekérdezése
 > * Adatok frissítése
-> 
+
+> [!div class="nextstepaction"]
 > [Alkalmazások csatlakoztatása az Azure Database for MySQL-adatbázishoz](./howto-connection-string.md)

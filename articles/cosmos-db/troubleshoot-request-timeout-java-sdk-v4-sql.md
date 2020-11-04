@@ -3,18 +3,21 @@ title: Hibaelhárítás Azure Cosmos DB HTTP 408 vagy időtúllépési hibák a 
 description: Ismerje meg, hogyan diagnosztizálhatja és javíthatja a Java SDK-kérelmek időtúllépési kivételeit a Java v4 SDK-val.
 author: kushagrathapar
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 10/28/2020
 ms.author: kuthapar
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 45452109582be40f007ae57a00c2a151f216bdb8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 442d6638e88462b1dc87e9321dc631fe0a4f3a10
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93103010"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340079"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-java-v4-sdk-request-timeout-exceptions"></a>Az Azure Cosmos DB Java v4 SDK-kérelmek időtúllépési kivételeinek diagnosztizálása és megoldása
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 A HTTP 408 hiba akkor fordul elő, ha az SDK nem tudta befejezni a kérelmet az időkorlát lejárta előtt.
 
 ## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
@@ -30,7 +33,7 @@ Az SDK-t használó ügyfélalkalmazás vertikálisan fel-vagy kibővíthető.
 A kapcsolatok szabályozása akkor fordulhat elő, ha a gazdagép vagy az Azure SNAT (PAT) portjának kimerülése vagy a csatlakozás korlátja.
 
 ### <a name="connection-limit-on-a-host-machine"></a>A gazdagépre vonatkozó kapcsolatonként
-Bizonyos linuxos rendszerek (például a Red Hat) felső korláttal rendelkeznek a megnyitott fájlok teljes számánál. A Linux rendszerű szoftvercsatornák fájlokként vannak megvalósítva, így ez a szám a kapcsolatok teljes számát is korlátozza. Futtassa az alábbi parancsot:
+Bizonyos linuxos rendszerek (például a Red Hat) felső korláttal rendelkeznek a megnyitott fájlok teljes számánál. A Linux rendszerű szoftvercsatornák fájlokként vannak megvalósítva, így ez a szám a kapcsolatok teljes számát is korlátozza. Futtassa az alábbi parancsot.
 
 ```bash
 ulimit -a
@@ -87,6 +90,6 @@ Az alkalmazásnak képesnek kell lennie az átmeneti hibák kezelésére, és sz
 ### <a name="failure-rate-violates-the-azure-cosmos-db-sla"></a>A meghibásodási arány sérti a Azure Cosmos DB SLA-t
 Forduljon az [Azure ügyfélszolgálatához](https://aka.ms/azure-support).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A Azure Cosmos DB Java v4 SDK használatakor felmerülő problémák [diagnosztizálása és hibaelhárítása](troubleshoot-java-sdk-v4-sql.md) .
 * A [Java v4](performance-tips-java-sdk-v4-sql.md)teljesítményére vonatkozó irányelvek ismertetése.

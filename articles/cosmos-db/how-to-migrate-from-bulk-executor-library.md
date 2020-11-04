@@ -3,16 +3,17 @@ title: Migrálás a tömeges végrehajtó könyvtárából a Azure Cosmos DB .NE
 description: Ismerje meg, hogyan migrálhatja az alkalmazást a tömeges végrehajtó kódtár használatával a Azure Cosmos DB SDK v3-es verziójának tömeges támogatásához
 author: ealsur
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: f7f51f6944de48e58ff53e7685164df3a04afe56
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 24d6b475964e4bf7745495e9c41d0e89bb76f7e9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075585"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341285"
 ---
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>Migrálás a tömeges végrehajtó könyvtárából a Azure Cosmos DB .NET v3 SDK tömeges támogatásához
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -95,7 +96,7 @@ A .NET SDK-val végzett egyéb műveletekhez hasonlóan a stream API-k segítsé
 
 A stream API-k használata csak akkor lehetséges, ha a használt adat természete megegyezik a bájtos adatfolyamok (például a fájlok streamek) természetétől. Ilyen esetekben a `CreateItemStreamAsync` , `ReplaceItemStreamAsync` vagy a `DeleteItemStreamAsync` metódusok és a `ResponseMessage` (helyett `ItemResponse` ) használata növeli az elérhető átviteli sebességet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A .NET SDK kiadásával kapcsolatos további tudnivalókért tekintse meg a [Azure Cosmos db SDK](sql-api-sdk-dotnet.md) -cikket.
 * Szerezze be a teljes [áttelepítési forráskódot](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration) a githubról.

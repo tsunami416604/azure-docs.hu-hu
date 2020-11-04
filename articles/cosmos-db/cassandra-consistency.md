@@ -4,15 +4,16 @@ description: Apache Cassandra és Azure Cosmos DB konzisztencia-szintek.
 author: TheovanKraay
 ms.author: thvankra
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f640ad85fd34dd5a4803e7dd96f1c0283f0c859a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a02076c09d038b02c0ab846440ad14e799271733
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100428"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339954"
 ---
 # <a name="apache-cassandra-and-azure-cosmos-db-consistency-levels"></a>Apache Cassandra és Azure Cosmos DB konzisztencia-szintek
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -33,7 +34,7 @@ Ha az Azure Cosmos-fiókja nem az erős konzisztencia mellett van konfigurálva,
 
 A valószínűséggel határos elavulás azt mutatja, hogy a végleges konzisztencia milyen módon lehetséges. Ez a mérőszám betekintést nyújt abba, hogy milyen gyakran lehet erősebb konzisztencia, mint az Azure Cosmos-fiókjában jelenleg konfigurált konzisztencia-szint. Más szóval az írási és olvasási régiók kombinációjának nagy mértékben konzisztens olvasásának valószínűsége (ezredmásodpercben mérve) látható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Azure Cosmos DB globális eloszlásáról és konzisztenciáji szintjeiről:
 
