@@ -8,12 +8,12 @@ ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 404f435e321e53694807a627121d84f6cbf6724d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4e31af3a66927e0c93caf477a7daf1b86eebf8f5
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359679"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348695"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>A felügyelt lemezek teljesítményi szintjei (előzetes verzió)
 
@@ -42,10 +42,10 @@ A számlázási változások a rétegek változásakor változnak. Ha például 
 | 512 GiB | P20 | P30, P40, P50 |
 | 1 TiB | P30 | P40, P50 |
 | 2 TiB | P40 | P50 |
-| 4 TiB | P50 | Nincs |
+| 4 TiB | P50 | Nincsenek |
 | 8 TiB | P60 |  P70, P80 |
 | 16 TiB | P70 | P80 |
-| 32 tebibájt | P80 | Nincs |
+| 32 tebibájt | P80 | Nincsenek |
 
 Számlázási információk: a [felügyelt lemez díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/).
 
@@ -55,10 +55,6 @@ Számlázási információk: a [felügyelt lemez díjszabása](https://azure.mic
 - A lemez szintjeinek megváltoztatásához le kell szabadítania a virtuális gépet, vagy le kell választania a lemezt egy futó virtuális gépről.
 - A P60, a P70 és a P80 teljesítmény-szintjeinek használata a 4 096 GiB vagy újabb lemezekre korlátozódik.
 - A lemez teljesítményi szintje csak 24 óránként lehet visszaminősíthető.
-
-## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
-
-A felügyelt lemezek teljesítményi szintjének módosítása jelenleg csak a prémium szintű SSD-k esetében érhető el az USA 2. keleti régiójában, az USA déli középső régiójában, az USA nyugati középső régiójában, Dél-Ausztrália keleti régiójában.
 
 ## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>Hozzon létre egy üres adatlemezt, amely az alapcsomagnál magasabb szintű.
 

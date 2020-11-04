@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: 37cbd1b05249c694aaaa4ff5196a3b6328ccda7f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 8c2e7b6a02c0a0fea32fb1effb30b682971c3f6f
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126243"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348780"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Gyors útmutató: Azure Stream Analytics-feladatok létrehozása az Azure CLI használatával
 
@@ -77,7 +77,7 @@ A következő Azure CLI-kódrészletek olyan parancsok, amelyek előkészítik a
     az iot hub create --name "MyASAIoTHub" --resource-group streamanalyticsrg --sku S1
     ```
 
-    Miután létrejött az IoT hub, szerezze be a IoT Hub kapcsolati karakterláncot az az [IoT hub show-kapcsolat-string](/cli/azure/iot/hub?view=azure-cli-latest) parancs használatával. Másolja a teljes kapcsolódási karakterláncot, és mentse azt, amikor hozzáadja a IoT Hub a Stream Analytics feladathoz.
+    Miután létrejött az IoT hub, szerezze be a IoT Hub kapcsolati karakterláncot az az [IoT hub show-kapcsolat-string](/cli/azure/iot/hub) parancs használatával. Másolja a teljes kapcsolódási karakterláncot, és mentse azt, amikor hozzáadja a IoT Hub a Stream Analytics feladathoz.
 
     ```azurecli
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
@@ -138,7 +138,7 @@ A következő Azure CLI-kód blokkolja a feladatok kimenetéhez használt BLOB S
 
 A következő Azure CLI-kód blokkolja a Stream Analytics feladatok létrehozását. A kódok megismeréséhez tekintse át a szakaszt
 
-1. Hozzon létre egy Stream Analytics feladatot az az [stream-Analytics Job Create](/cli/azure/ext/stream-analytics/stream-analytics/job?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-job-create) paranccsal.
+1. Hozzon létre egy Stream Analytics feladatot az az [stream-Analytics Job Create](/cli/azure/ext/stream-analytics/stream-analytics/job#ext-stream-analytics-az-stream-analytics-job-create) paranccsal.
 
 ```azurecli
 az stream-analytics job create \
@@ -154,7 +154,7 @@ az stream-analytics job create \
 
 ## <a name="configure-input-to-the-job"></a>A feladat bemenetének konfigurálása
 
-Adjon hozzá egy bemenetet a feladathoz az az [stream-Analytics input](/cli/azure/ext/stream-analytics/stream-analytics/input?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-input-create) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat bemenetének a neve, az erőforráscsoport neve, és a feladat bemenetének definíciója adható meg paraméterként. A feladathoz tartozó bemeneti definíció egy olyan JSON-fájl, amely a feladatok bemenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ebben a példában egy IoT Hub fog létrehozni bemenetként.
+Adjon hozzá egy bemenetet a feladathoz az az [stream-Analytics input](/cli/azure/ext/stream-analytics/stream-analytics/input#ext-stream-analytics-az-stream-analytics-input-create) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat bemenetének a neve, az erőforráscsoport neve, és a feladat bemenetének definíciója adható meg paraméterként. A feladathoz tartozó bemeneti definíció egy olyan JSON-fájl, amely a feladatok bemenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ebben a példában egy IoT Hub fog létrehozni bemenetként.
 
 Hozzon létre a helyi gépén egy `datasource.json` nevű fájlt, és adja hozzá a következő JSON-adatokat. Győződjön meg arról, hogy az értéket lecseréli a `sharedAccessPolicyKey` `SharedAccessKey` IoT hub az előző szakaszban mentett kapcsolódási karakterlánc egy részével.
 
@@ -196,7 +196,7 @@ az stream-analytics input create
 
 ## <a name="configure-output-to-the-job"></a>A feladat kimenetének konfigurálása
 
-Adja hozzá a kimenetet a feladatokhoz az az [stream-Analytics output Create](/cli/azure/ext/stream-analytics/stream-analytics/output?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-output-create) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat kimenetének a neve, az erőforráscsoport neve, és a feladat kimenetének definíciója adható meg paraméterként. A feladatok kimenetének definíciója egy olyan JSON-fájl, amely a feladatok kimenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ez a példa egy Blob Storage-tárolót használ kimenetként.
+Adja hozzá a kimenetet a feladatokhoz az az [stream-Analytics output Create](/cli/azure/ext/stream-analytics/stream-analytics/output#ext-stream-analytics-az-stream-analytics-output-create) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat kimenetének a neve, az erőforráscsoport neve, és a feladat kimenetének definíciója adható meg paraméterként. A feladatok kimenetének definíciója egy olyan JSON-fájl, amely a feladatok kimenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ez a példa egy Blob Storage-tárolót használ kimenetként.
 
 Hozzon létre a helyi gépén egy `datasink.json` nevű fájlt, és adja hozzá a következő JSON-adatokat. Ügyeljen arra, hogy az értékét cserélje le a `accountKey` Storage-fiókja hozzáférési kulcsára, amely $storageAccountKey értékben tárolt érték.
 
@@ -231,7 +231,7 @@ az stream-analytics output create
 
 ## <a name="define-the-transformation-query"></a>A transzformációs lekérdezés definiálása
 
-Vegyen fel egy átalakítási feladatot az az [stream-Analytics Transformation Create](/cli/azure/ext/stream-analytics/stream-analytics/transformation?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-transformation-create) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat transzformációjának a neve, az erőforráscsoport neve, és a feladat transzformációjának definíciója adható meg paraméterként. 
+Vegyen fel egy átalakítási feladatot az az [stream-Analytics Transformation Create](/cli/azure/ext/stream-analytics/stream-analytics/transformation#ext-stream-analytics-az-stream-analytics-transformation-create) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat transzformációjának a neve, az erőforráscsoport neve, és a feladat transzformációjának definíciója adható meg paraméterként. 
 
 Futtassa a `az stream-analytics transformation create` parancsmagot.
 
@@ -255,7 +255,7 @@ az stream-analytics transformation create
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>A Stream Analytics-feladat indítása és a kimenet ellenőrzése
 
-Indítsa el a feladatot az az [stream-Analytics Job Start](/cli/azure/ext/stream-analytics/stream-analytics/job?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-job-start) parancsmag használatával. Ennél a parancsmagnál a feladat neve, az erőforráscsoport neve, a feladat kimenetének indítási módja, és a kezdés ideje adható meg paraméterként. Az `OutputStartMode` által elfogadott értékek: `JobStartTime`, `CustomTime` és `LastOutputEventTime`.
+Indítsa el a feladatot az az [stream-Analytics Job Start](/cli/azure/ext/stream-analytics/stream-analytics/job#ext-stream-analytics-az-stream-analytics-job-start) parancsmag használatával. Ennél a parancsmagnál a feladat neve, az erőforráscsoport neve, a feladat kimenetének indítási módja, és a kezdés ideje adható meg paraméterként. Az `OutputStartMode` által elfogadott értékek: `JobStartTime`, `CustomTime` és `LastOutputEventTime`.
 
 A következő parancsmag futtatása a `True` kimenetet adja vissza, ha a feladat elindult. A Storage-tárolóban létrejön egy kimeneti mappa, amely az átalakított adatokat tartalmazza.
 
@@ -266,7 +266,7 @@ az stream-analytics job start
     --output-start-mode JobStartTime
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos átviteli feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megakadályozhatja, hogy a feladat által felhasznált streamelési egységek kiszámlázásra kerüljenek. Ha később is szeretné használni a feladatot, akkor nem kell törölnie, hanem elég, ha leállítja. Ha nem kívánja tovább használni ezt a feladatot, törölje az ebben a rövid útmutatóban létrehozott összes erőforrást a következő parancsmag futtatásával:
 

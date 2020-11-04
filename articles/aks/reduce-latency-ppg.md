@@ -5,13 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 10/19/2020
-author: jluk
-ms.openlocfilehash: a96489495abe3bfbed3030b3e08ff121c5c7cddf
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fa81e293bc5e53a852bdb404f9e6d41c4297647b
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090797"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93349035"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups"></a>Csökkentse a késést a Proximity elhelyezési csoportokkal
 
@@ -112,7 +111,7 @@ az aks nodepool add \
     --ppg myPPGResourceID
 ```
 
-## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
 A fürt törléséhez használja a [`az group delete`][az-group-delete] parancsot az AK-erőforráscsoport törléséhez:
 

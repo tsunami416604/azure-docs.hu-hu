@@ -2,15 +2,15 @@
 title: Azure Automation Update Management engedélyezése az Automation-fiókból
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető a Update Management Automation-fiókból.
 services: automation
-ms.date: 10/26/2020
+ms.date: 11/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 9630b29def0c450ef907219895d1488d72fd78d1
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 6f14516f36975d84256f9bb1bd3b4949dbf80448
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669907"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348831"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Az Update Management engedélyezése Automation-fiókból
 
@@ -23,11 +23,11 @@ Ez a cikk azt ismerteti, hogyan használhatja az Automation-fiókját a környez
 
 * Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Egy [Automation-fiók](../index.yml) a gépek kezeléséhez.
-* Egy [Azure-beli virtuális gép](../../virtual-machines/windows/quick-create-portal.md), vagy az arc-kompatibilis kiszolgálókkal (előzetes verzió) regisztrált virtuális gépek vagy kiszolgálók. A nem Azure-beli virtuális gépeknek vagy kiszolgálóknak telepítve kell lennie a Windows vagy Linux rendszerhez készült [log Analytics ügynöknek](../../azure-monitor/platform/log-analytics-agent.md) , és az Automation-fiókhoz társított munkaterületre kell jelentenie Update Management engedélyezve van a rendszerben. Javasoljuk, hogy a Windows vagy Linux rendszerhez készült Log Analytics-ügynök telepítésével először csatlakoztassa a gépet az [Azure arc-kompatibilis kiszolgálókhoz](../../azure-arc/servers/overview.md), majd Azure Policy használatával rendelje hozzá a [log Analytics-ügynököt a *Linux* vagy a *Windows* Azure arc Machines](../../governance/policy/samples/built-in-policies.md#monitoring) beépített házirendjéhez. Ha azt tervezi, hogy a gépeket Azure Monitor for VMs használatával is figyeli, használja az [Enable Azure monitor for VMS](../../governance/policy/samples/built-in-initiatives.md#monitoring) Initiative parancsot.
+* Az arc-kompatibilis kiszolgálókon regisztrált Azure-beli [virtuális gépek](../../virtual-machines/windows/quick-create-portal.md)vagy virtuális gépek vagy kiszolgálók. A nem Azure-beli virtuális gépeknek vagy kiszolgálóknak telepítve kell lennie a Windows vagy Linux rendszerhez készült [log Analytics ügynöknek](../../azure-monitor/platform/log-analytics-agent.md) , és az Automation-fiókhoz társított munkaterületre kell jelentenie Update Management engedélyezve van a rendszerben. Javasoljuk, hogy a Windows vagy Linux rendszerhez készült Log Analytics Agent telepítéséhez először csatlakoztassa a gépet az [Azure arc-kompatibilis kiszolgálókhoz](../../azure-arc/servers/overview.md), majd a Azure Policy használatával rendelje hozzá a [log Analytics-ügynök üzembe helyezését a *Linux* vagy a *Windows* Azure arc Machines](../../governance/policy/samples/built-in-policies.md#monitoring) beépített házirendjéhez. Ha a gépeket Azure Monitor for VMs használatával kívánja figyelni, Ehelyett használja a [Azure monitor for VMS engedélyezése](../../governance/policy/samples/built-in-initiatives.md#monitoring) kezdeményezést.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 ## <a name="enable-update-management"></a>Az Update Management engedélyezése
 
@@ -67,7 +67,7 @@ A munkaterülethez már jelentést küldő gépeket vagy gépeket manuálisan ke
 
 3. A munkaterületre jelentett összes elérhető gép Update Management engedélyezéséhez válassza az **Engedélyezés lehetőséget az összes elérhető gépen** a gépek kezelése lapon. Ez a művelet letiltja a vezérlőt, hogy egyenként vegyen fel gépeket, és hozzáadja a munkaterületnek jelentő összes gépet a számítógépcsoport mentett keresési lekérdezéséhez `MicrosoftDefaultComputerGroup` . Ha be van jelölve, ez a művelet letiltja a **számítógépek kezelése** lehetőséget.
 
-4. Az összes rendelkezésre álló és jövőbeli gép funkciójának engedélyezéséhez válassza az **Engedélyezés lehetőséget az összes rendelkezésre álló és jövőbeli gépen** . Ez a beállítás törli a mentett keresés és a hatókör konfigurációját a munkaterületről, és lehetővé teszi, hogy a szolgáltatás a jelenleg vagy a jövőben is tartalmazza az összes Azure-és nem Azure-beli gépet, amely a munkaterületre vonatkozik. Ha ez a beállítás be van jelölve, a művelet véglegesen letiltja a **gépek kezelése** lehetőséget, mivel nincs elérhető hatókör-konfiguráció.
+4. Az összes rendelkezésre álló és jövőbeli gép funkciójának engedélyezéséhez válassza az **Engedélyezés lehetőséget az összes rendelkezésre álló és jövőbeli gépen**. Ez a beállítás törli a mentett keresés és a hatókör konfigurációját a munkaterületről, és lehetővé teszi, hogy a szolgáltatás a jelenleg vagy a jövőben is tartalmazza az összes Azure-és nem Azure-beli gépet, amely a munkaterületre vonatkozik. Ha ez a beállítás be van jelölve, a művelet véglegesen letiltja a **gépek kezelése** lehetőséget, mivel nincs elérhető hatókör-konfiguráció.
 
     > [!NOTE]
     > Mivel ez a lehetőség törli a mentett keresés és a hatókör konfigurációját a Log Analyticson belül, fontos, hogy a beállítás kiválasztása előtt távolítsa el az összes törlési zárolást a Log Analytics munkaterületen. Ha nem, akkor a beállítás nem távolítja el a konfigurációkat, ezért azokat manuálisan kell eltávolítania.

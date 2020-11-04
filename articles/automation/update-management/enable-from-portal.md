@@ -5,16 +5,16 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 681c5e169acc30cc6708b56b5ba180d2729919e5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 73813ffbb6ac1839a48fc455dec5f6ad26ed0164
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222316"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348789"
 ---
 # <a name="enable-update-management-from-the-azure-portal"></a>Az Update Management engedélyezése az Azure Portalról
 
-Ez a cikk azt ismerteti, hogyan engedélyezheti a virtuális gépek [Update Management](overview.md) funkcióját a Azure Portal tallózásával. Az Azure-beli virtuális gépek méretének engedélyezéséhez Update Management használatával engedélyeznie kell egy meglévő virtuális gépet.
+Ez a cikk azt ismerteti, hogyan engedélyezheti a virtuális gépek [Update Management](overview.md) funkcióját a Azure Portal tallózásával. Az Azure-beli virtuális gépek méretének engedélyezéséhez Update Management használatával engedélyeznie kell egy meglévő Azure-beli virtuális gépet.
 
 A virtuális gépek kezeléséhez használható erőforráscsoportok számát a Resource Manager-alapú üzemelő [példányok](../../azure-resource-manager/templates/cross-scope-deployment.md)korlátozzák. A Resource Manager-alapú üzemelő példányok, amelyek nem tévesztendő össze a frissítési környezetekkel, üzembe helyezésük legfeljebb öt erőforráscsoport lehet. Ezen erőforráscsoportok közül kettő a Log Analytics munkaterület, az Automation-fiók és a kapcsolódó erőforrások konfigurálására van fenntartva. Ez három erőforráscsoportot hagy el, amelyekkel kiválaszthatja a Update Management általi felügyeletet. Ez a korlát csak egyidejű telepítésre vonatkozik, nem az Automation szolgáltatással felügyelhető erőforráscsoportok számára.
 
@@ -35,7 +35,7 @@ Jelentkezzen be az Azure-ba https://portal.azure.com .
 
 1. A Azure Portal navigáljon a **virtuális gépekhez**.
 
-2. A jelölőnégyzetek használatával válassza ki a Update Management hozzáadni kívánt virtuális gépeket. Egyszerre legfeljebb három különböző erőforráscsoport számára adhat hozzá gépeket. Az Azure-beli virtuális gépek bármelyik régióban létezhetnek, az Automation-fiókja helyétől függetlenül.
+2. A **virtuális gépek** lapon jelölje be a jelölőnégyzeteket a Update Management hozzáadni kívánt virtuális gépek kiválasztásához. Egyszerre legfeljebb három különböző erőforráscsoport számára adhat hozzá gépeket. Az Azure-beli virtuális gépek bármelyik régióban létezhetnek, az Automation-fiókja helyétől függetlenül.
 
     ![Virtuális gépek listája](media/enable-from-portal/vmlist.png)
 

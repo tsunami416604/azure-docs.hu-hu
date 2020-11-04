@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: a800a176315dd3066a48f813c1bee84d2f1eb696
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 52c07861fcd3db5f9a53c4bd6730f89925b11ae6
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781872"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348950"
 ---
 # <a name="monitoring-azure-queue-storage"></a>Az Azure üzenetsor-tároló figyelése
 
@@ -28,7 +28,8 @@ Ha olyan kritikus fontosságú alkalmazásokkal és üzleti folyamatokkal rendel
 Az egyes üzenetsor-tárolási erőforrásokhoz tartozó Azure Portal **áttekintő** lapja az erőforrás-használat, például a kérések és az óránkénti számlázás rövid nézetét tartalmazza. Ezek az információk hasznosak, de csak kis mennyiségű figyelési adat érhető el. Az adatok némelyikét automatikusan gyűjti a rendszer, és az erőforrás létrehozásakor az elemzéshez azonnal elérhetővé válik. További típusú adatgyűjtést is engedélyezhet néhány konfigurációval.
 
 ## <a name="what-is-azure-monitor"></a>Mi az Azure Monitor?
-Az Azure üzenetsor-tároló a [Azure monitor](../../azure-monitor/overview.md)használatával hozza létre a figyelési adattárolási szolgáltatást, amely az Azure teljes verem-figyelési szolgáltatása. A Azure Monitor a funkciók teljes készletét biztosítja az Azure-erőforrások és-erőforrások figyelésére más felhőkben és a helyszínen. 
+
+Az Azure üzenetsor-tároló a [Azure monitor](../../azure-monitor/overview.md)használatával hozza létre a figyelési adattárolási szolgáltatást, amely az Azure teljes verem-figyelési szolgáltatása. A Azure Monitor a funkciók teljes készletét biztosítja az Azure-erőforrások és-erőforrások figyelésére más felhőkben és a helyszínen.
 
 A cikkből megtudhatja [, hogyan figyelheti az Azure-erőforrásokat a Azure monitor,](../../azure-monitor/insights/monitor-azure-resource.md) amely leírja a következőket:
 
@@ -42,7 +43,7 @@ Az alábbi, az Azure Storage-ból gyűjtött adatok leírásával a cikk a köve
 
 ## <a name="monitoring-data"></a>Adatok monitorozása
 
-Az Azure üzenetsor-tároló ugyanolyan típusú figyelési adatokat gyűjt, mint más Azure-erőforrások, amelyek az [Azure-erőforrások adatainak monitorozása](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)című témakörben olvashatók. 
+Az Azure üzenetsor-tároló ugyanolyan típusú figyelési adatokat gyűjt, mint más Azure-erőforrások, amelyek az [Azure-erőforrások adatainak monitorozása](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)című témakörben olvashatók.
 
 Tekintse meg az Azure üzenetsor- [tárolás figyelési adatait](monitor-queue-storage-reference.md) ismertető témakört, amely részletes információkat tartalmaz az Azure üzenetsor-tároló által létrehozott mérőszámokról és naplókról.
 
@@ -52,9 +53,9 @@ Ha szeretné, továbbra is használhatja a klasszikus metrikákat és naplókat.
 
 ## <a name="collection-and-routing"></a>Gyűjtés és Útválasztás
 
-A platform metrikáit és a tevékenység naplóját a rendszer automatikusan gyűjti, de diagnosztikai beállítás használatával más helyszínekre is átirányíthatja őket. 
+A platform metrikáit és a tevékenység naplóját a rendszer automatikusan gyűjti, de diagnosztikai beállítás használatával más helyszínekre is átirányíthatja őket.
 
-Az erőforrás-naplók összegyűjtéséhez létre kell hoznia egy diagnosztikai beállítást. A beállítás létrehozásakor válassza a **várólista** lehetőséget, mint azt a tárolási típust, amelyre engedélyezni szeretné a naplókat. Ezután adja meg az alábbi kategóriájú műveletek egyikét, amelyekhez naplókat szeretne gyűjteni. 
+Az erőforrás-naplók összegyűjtéséhez létre kell hoznia egy diagnosztikai beállítást. A beállítás létrehozásakor válassza a **várólista** lehetőséget, mint azt a tárolási típust, amelyre engedélyezni szeretné a naplókat. Ezután adja meg az alábbi kategóriájú műveletek egyikét, amelyekhez naplókat szeretne gyűjteni.
 
 | Kategória | Leírás |
 |:---|:---|
@@ -64,7 +65,7 @@ Az erőforrás-naplók összegyűjtéséhez létre kell hoznia egy diagnosztikai
 
 ## <a name="creating-a-diagnostic-setting"></a>Diagnosztikai beállítás létrehozása
 
-Diagnosztikai beállításokat a Azure Portal, a PowerShell, az Azure CLI vagy egy Azure Resource Manager sablon használatával hozhat létre. 
+Diagnosztikai beállításokat a Azure Portal, a PowerShell, az Azure CLI vagy egy Azure Resource Manager sablon használatával hozhat létre.
 
 Általános útmutatásért lásd: [diagnosztikai beállítás létrehozása platform-naplók és-metrikák gyűjtéséhez az Azure-ban](../../azure-monitor/platform/diagnostic-settings.md).
 
@@ -80,7 +81,7 @@ Diagnosztikai beállításokat a Azure Portal, a PowerShell, az Azure CLI vagy e
 3. A **figyelés** szakaszban kattintson a **diagnosztikai beállítások (előzetes verzió)** elemre.
 
    > [!div class="mx-imgBorder"]
-   > ![portál – diagnosztikai naplók](media/monitor-queue-storage/diagnostic-logs-settings-pane.png)   
+   > ![portál – diagnosztikai naplók](media/monitor-queue-storage/diagnostic-logs-settings-pane.png)
 
 4. Válassza a **várólista** lehetőséget, mint azt a tárolási típust, amelyre engedélyezni szeretné a naplókat.
 
@@ -100,30 +101,30 @@ Diagnosztikai beállításokat a Azure Portal, a PowerShell, az Azure CLI vagy e
 
 1. Jelölje ki az **archívumot egy Storage-fiók** jelölőnégyzetet, majd kattintson a **Konfigurálás** gombra.
 
-   > [!div class="mx-imgBorder"]   
+   > [!div class="mx-imgBorder"]
    > ![Diagnosztikai beállítások lap Archive Storage](media/monitor-queue-storage/diagnostic-logs-settings-pane-archive-storage.png)
 
-2. A **Storage-fiók** legördülő listában válassza ki azt a Storage-fiókot, amelybe archiválni szeretné a naplókat, kattintson az **OK** gombra, majd kattintson a **Mentés** gombra.
+2. A **Storage-fiók** legördülő listában válassza ki azt a Storage-fiókot, amelybe archiválni szeretné a naplókat, kattintson az **OK** gombra, majd válassza a **Mentés** gombot.
 
    > [!NOTE]
-   > Mielőtt az Exportálás célhelyként kiválasztja a Storage-fiókot, tekintse meg az [Azure-erőforrás-naplók archiválása](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage) című témakört az előfeltételek a Storage-fiókban való megismeréséhez.
+   > Mielőtt az Exportálás célhelyként kiválasztja a Storage-fiókot, tekintse meg az [Azure-erőforrás-naplók archiválása](/azure/azure-monitor/platform/resource-logs-collect-storage) című témakört az előfeltételek a Storage-fiókban való megismeréséhez.
 
 #### <a name="stream-logs-to-azure-event-hubs"></a>Stream-naplók az Azure Event Hubs
 
 1. Jelölje ki az **adatfolyamot az Event hub** jelölőnégyzetbe, majd kattintson a **Konfigurálás** gombra.
 
-2. Az **Event hub kiválasztása** ablaktáblán válassza ki annak az esemény-hubhoz a névterét, nevét és házirend-nevét, amelyre a naplókat továbbítani kívánja. 
+2. Az **Event hub kiválasztása** ablaktáblán válassza ki annak az esemény-hubhoz a névterét, nevét és házirend-nevét, amelyre a naplókat továbbítani kívánja.
 
    > [!div class="mx-imgBorder"]
    > ![Diagnosztikai beállítások lap Event hub](media/monitor-queue-storage/diagnostic-logs-settings-pane-event-hub.png)
 
-3. Kattintson az **OK** gombra, majd kattintson a **Save (Mentés** ) gombra.
+3. Kattintson az **OK** gombra, majd válassza a **Mentés** gombot.
 
 #### <a name="send-logs-to-azure-log-analytics"></a>Naplók elküldése az Azure Log Analyticsba
 
-1. Jelölje be a **küldés log Analytics** jelölőnégyzetet, válassza ki a log Analytics-munkaterületet, majd kattintson a, majd a **Mentés** gombra.
+1. Jelölje be a **küldés log Analytics** jelölőnégyzetet, válasszon ki egy log Analytics-munkaterületet, majd kattintson a **Save (Mentés** ) gombra.
 
-   > [!div class="mx-imgBorder"]   
+   > [!div class="mx-imgBorder"]
    > ![Diagnosztikai beállítások lap log Analytics](media/monitor-queue-storage/diagnostic-logs-settings-pane-log-analytics.png)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -142,7 +143,7 @@ Diagnosztikai beállításokat a Azure Portal, a PowerShell, az Azure CLI vagy e
 
 #### <a name="archive-logs-to-a-storage-account"></a>Naplók archiválása egy Storage-fiókba
 
-Engedélyezze a naplókat a [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell-parancsmag használatával a `StorageAccountId` paraméterrel együtt.
+Engedélyezze a naplókat a [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell-parancsmag használatával a `StorageAccountId` paraméterrel együtt.
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
@@ -152,43 +153,43 @@ Cserélje le az `<storage-service-resource--id>` ebben a kódrészletben találh
 
 `StorageRead` `StorageWrite` A (z), és a (z) `StorageDelete` paraméter **Category** értékeként a (z), és értéket használhatja.
 
-Íme egy példa:
+Például:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/queueServices/default -StorageAccountId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount -Enabled $true -Category StorageWrite,StorageDelete`
 
-Az egyes paraméterek leírását az [Azure-erőforrás-naplók archiválása Azure PowerShell használatával](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#archive-diagnostic-logs-via-azure-powershell)című részben tekintheti meg.
+Az egyes paraméterek leírását az [Azure-erőforrás-naplók archiválása Azure PowerShell használatával](/azure/azure-monitor/platform/archive-diagnostic-logs#archive-diagnostic-logs-via-azure-powershell)című részben tekintheti meg.
 
 #### <a name="stream-logs-to-an-event-hub"></a>Adatfolyam-naplók az Event hub-ba
 
-Engedélyezze a naplókat a [set-AzDiagnosticSetting PowerShell-](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) parancsmag használatával a `EventHubAuthorizationRuleId` paraméterrel.
+Engedélyezze a naplókat a [set-AzDiagnosticSetting PowerShell-](/powershell/module/az.monitor/set-azdiagnosticsetting) parancsmag használatával a `EventHubAuthorizationRuleId` paraméterrel.
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
-Íme egy példa:
+Például:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/queueServices/default -EventHubAuthorizationRuleId /subscriptions/20884142-a14v3-4234-5450-08b10c09f4/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey -Enabled $true -Category StorageDelete`
 
-Az egyes paraméterek leírását a következő témakörben találhatja [meg: stream-információk Event Hubs PowerShell-parancsmagok](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-event-hubs#via-powershell-cmdlets)használatával.
+Az egyes paraméterek leírását a következő témakörben találhatja [meg: stream-információk Event Hubs PowerShell-parancsmagok](/azure/azure-monitor/platform/diagnostic-logs-stream-event-hubs#via-powershell-cmdlets)használatával.
 
 #### <a name="send-logs-to-log-analytics"></a>Naplók küldése a Log Analyticsbe
 
-Engedélyezze a naplókat a [set-AzDiagnosticSetting PowerShell-](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) parancsmag használatával a `WorkspaceId` paraméterrel.
+Engedélyezze a naplókat a [set-AzDiagnosticSetting PowerShell-](/powershell/module/az.monitor/set-azdiagnosticsetting) parancsmag használatával a `WorkspaceId` paraméterrel.
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
-Íme egy példa:
+Például:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/queueServices/default -WorkspaceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace -Enabled $true -Category StorageDelete`
 
-További információ: [stream Azure-erőforrás-naplók log Analytics munkaterületre Azure monitorban](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store).
+További információ: [stream Azure-erőforrás-naplók log Analytics munkaterületre Azure monitorban](/azure/azure-monitor/platform/diagnostic-logs-stream-log-store).
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. Először nyissa meg a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), vagy ha helyileg [telepítette](https://docs.microsoft.com/cli/azure/install-azure-cli) az Azure CLI-t, nyisson meg egy parancssori alkalmazást, például a Windows PowerShellt.
+1. Először nyissa meg a [Azure Cloud Shell](/azure/cloud-shell/overview), vagy ha helyileg [telepítette](/cli/azure/install-azure-cli) az Azure CLI-t, nyisson meg egy parancssori alkalmazást, például a Windows PowerShellt.
 
 2. Ha az identitás egynél több előfizetéshez van társítva, akkor állítsa be az aktív előfizetését azon Storage-fiók előfizetésére, amelyhez engedélyezni szeretné a naplókat.
 
@@ -200,7 +201,7 @@ További információ: [stream Azure-erőforrás-naplók log Analytics munkater�
 
 #### <a name="archive-logs-to-a-storage-account"></a>Naplók archiválása egy Storage-fiókba
 
-Engedélyezze a naplókat az az [monitor diagnosztikai-Settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) paranccsal.
+Engedélyezze a naplókat az az [monitor diagnosztikai-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) paranccsal.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
@@ -210,50 +211,49 @@ Cserélje le az `<storage-service-resource--id>` ebben a kódrészletben találh
 
 `StorageRead` `StorageWrite` A (z), és a (z) `StorageDelete` paraméter **category** értékeként a (z), és értéket használhatja.
 
-Íme egy példa:
+Például:
 
 `az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/queueServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
 
-Az egyes paraméterek leírását az [erőforrás-naplók archiválása az Azure CLI használatával](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#archive-diagnostic-logs-via-the-azure-cli)című részben tekintheti meg.
+Az egyes paraméterek leírását az [erőforrás-naplók archiválása az Azure CLI használatával](/azure/azure-monitor/platform/archive-diagnostic-logs#archive-diagnostic-logs-via-the-azure-cli)című részben tekintheti meg.
 
 #### <a name="stream-logs-to-an-event-hub"></a>Adatfolyam-naplók az Event hub-ba
 
-Engedélyezze a naplókat az az [monitor diagnosztikai-Settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) paranccsal.
+Engedélyezze a naplókat az az [monitor diagnosztikai-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) paranccsal.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --event-hub <event-hub-name> --event-hub-rule <event-hub-namespace-and-key-name> --resource <storage-account-resource-id> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
 ```
 
-Íme egy példa:
+Például:
 
 `az monitor diagnostic-settings create --name setting1 --event-hub myeventhub --event-hub-rule /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/queueServices/default --logs '[{"category": StorageDelete, "enabled": true }]'`
 
-Az egyes paraméterek leírását az [Azure CLI-n keresztül Event Hubs stream-információk](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-event-hubs#via-azure-cli)című részben tekintheti meg.
+Az egyes paraméterek leírását az [Azure CLI-n keresztül Event Hubs stream-információk](/azure/azure-monitor/platform/diagnostic-logs-stream-event-hubs#via-azure-cli)című részben tekintheti meg.
 
 #### <a name="send-logs-to-log-analytics"></a>Naplók küldése a Log Analyticsbe
 
-Engedélyezze a naplókat az az [monitor diagnosztikai-Settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) paranccsal.
+Engedélyezze a naplókat az az [monitor diagnosztikai-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) paranccsal.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --workspace <log-analytics-workspace-resource-id> --resource <storage-account-resource-id> --logs '[{"category": <category name>, "enabled": true "retentionPolicy": {"days": <days>, "enabled": <retention-bool}}]'
 ```
 
-Íme egy példa:
+Például:
 
 `az monitor diagnostic-settings create --name setting1 --workspace /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/queueServices/default --logs '[{"category": StorageDelete, "enabled": true ]'`
 
- További információ: [stream Azure-erőforrás-naplók log Analytics munkaterületre Azure monitorban](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store).
+ További információ: [stream Azure-erőforrás-naplók log Analytics munkaterületre Azure monitorban](/azure/azure-monitor/platform/diagnostic-logs-stream-log-store).
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-Diagnosztikai beállítást létrehozó Azure Resource Manager-sablon megtekintéséhez lásd: [diagnosztikai beállítások az Azure Storage szolgáltatáshoz](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-diagnostic-settings#diagnostic-setting-for-azure-storage).
+Diagnosztikai beállítást létrehozó Azure Resource Manager-sablon megtekintéséhez lásd: [diagnosztikai beállítások az Azure Storage szolgáltatáshoz](/azure/azure-monitor/samples/resource-manager-diagnostic-settings#diagnostic-setting-for-azure-storage).
 
 ---
 
-
 ## <a name="analyzing-metrics"></a>Mérőszámok elemzése
 
-Az Azure Storage mérőszámait más Azure-szolgáltatásokból származó metrikákkal elemezheti Metrikaböngésző használatával. A **Azure monitor** menüből válassza a **metrikák** lehetőséget a Metrikaböngésző megnyitásához. Az eszköz használatáról további információt az [Azure Metrikaböngésző használatának első lépéseivel](../../azure-monitor/platform/metrics-getting-started.md)foglalkozó témakörben talál. 
+Az Azure Storage mérőszámait más Azure-szolgáltatásokból származó metrikákkal elemezheti Metrikaböngésző használatával. A **Azure monitor** menüből válassza a **metrikák** lehetőséget a Metrikaböngésző megnyitásához. Az eszköz használatáról további információt az [Azure Metrikaböngésző használatának első lépéseivel](../../azure-monitor/platform/metrics-getting-started.md)foglalkozó témakörben talál.
 
 Ebből a példából megtudhatja, hogyan tekintheti meg a **tranzakciókat** a fiók szintjén.
 
@@ -265,13 +265,12 @@ A dimenziókat támogató metrikák esetében szűrheti a mérőszámot a kívá
 
 Az Azure Storage által támogatott dimenziók teljes listájáért lásd: [mérőszámok méretei](monitor-queue-storage-reference.md#metrics-dimensions).
 
-Az Azure üzenetsor-tárolás metrikái a következő névterekben találhatók: 
+Az Azure üzenetsor-tárolás metrikái a következő névterekben találhatók:
 
 - Microsoft. Storage/storageAccounts
 - Microsoft. Storage/storageAccounts/queueServices
 
 Az Azure üzenetsor-tárolást magában foglaló összes Azure Monitor támogatási mérőszámok listáját lásd: [Azure monitor támogatott metrikák](../../azure-monitor/platform/metrics-supported.md).
-
 
 ### <a name="accessing-metrics"></a>Metrikák elérése
 
@@ -284,7 +283,7 @@ Az Azure üzenetsor-tárolást magában foglaló összes Azure Monitor támogat�
 
 A Storage-fiók vagy a üzenetsor-tárolási szolgáltatás metrikai definícióját is listázhatja. Használja a [Get-AzMetricDefinition](/powershell/module/az.monitor/get-azmetricdefinition) parancsmagot.
 
-Ebben a példában a helyőrzőt cserélje le a `<resource-ID>` teljes Storage-fiók erőforrás-azonosítójával vagy a várólista tárolási szolgáltatásának erőforrás-azonosítójával.  Ezek az erőforrás-azonosítók a Storage-fiók **tulajdonságlapján** találhatók a Azure Portal.
+Ebben a példában a helyőrzőt cserélje le a `<resource-ID>` teljes Storage-fiók erőforrás-azonosítójával vagy a várólista tárolási szolgáltatásának erőforrás-azonosítójával. Ezek az erőforrás-azonosítók a Storage-fiók **tulajdonságlapján** találhatók a Azure Portal.
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -305,7 +304,7 @@ A Storage-fiók vagy a üzenetsor-tárolási szolgáltatás fiók szintű mérő
 #### <a name="list-the-account-level-metric-definition"></a>A fiók szintű metrika definíciójának listázása
 
 A Storage-fiók vagy a üzenetsor-tárolási szolgáltatás metrikai definícióját is listázhatja. Használja az az [monitor Metrics List-fogalommeghatározások](/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) parancsot.
- 
+
 Ebben a példában a helyőrzőt cserélje le a `<resource-ID>` teljes Storage-fiók erőforrás-azonosítójával vagy a várólista tárolási szolgáltatásának erőforrás-azonosítójával. Ezek az erőforrás-azonosítók a Storage-fiók **tulajdonságlapján** találhatók a Azure Portal.
 
 ```azurecli-interactive
@@ -323,10 +322,10 @@ Megtekintheti a Storage-fiók vagy a üzenetsor-tárolási szolgáltatás metrik
 ### <a name="net"></a>[.NET](#tab/azure-portal)
 
 Azure Monitor biztosítja a [.net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) -t a metrika definíciójának és értékeinek olvasásához. A [mintakód](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) azt mutatja be, hogyan használható az SDK különböző paraméterekkel. A `0.18.0-preview` tárolási metrikák esetében vagy újabb verziót kell használnia.
- 
+
 Ezekben a példákban cserélje le a `<resource-ID>` helyőrzőt a teljes Storage-fiók vagy a üzenetsor-tárolási szolgáltatás erőforrás-azonosítójával. Ezek az erőforrás-azonosítók a Storage-fiók **tulajdonságlapján** találhatók a Azure Portal.
 
-Cserélje le a `<subscription-ID>` változót az előfizetés azonosítójával. A, a és a értékek értékének beszerzésével kapcsolatos útmutatásért `<tenant-ID>` `<application-ID>` `<AccessKey>` lásd: [a portál használata Azure ad-alkalmazás és-szolgáltatásnév létrehozásához, amely hozzáférhet az erőforrásokhoz](../../active-directory/develop/howto-create-service-principal-portal.md). 
+Cserélje le a `<subscription-ID>` változót az előfizetés azonosítójával. A, a és a értékek értékének beszerzésével kapcsolatos útmutatásért `<tenant-ID>` `<application-ID>` `<AccessKey>` lásd: [a portál használata Azure ad-alkalmazás és-szolgáltatásnév létrehozásához, amely hozzáférhet az erőforrásokhoz](../../active-directory/develop/howto-create-service-principal-portal.md).
 
 #### <a name="list-the-account-level-metric-definition"></a>A fiók szintű metrika definíciójának listázása
 
@@ -340,7 +339,6 @@ Az alábbi példa bemutatja, hogyan listázhat mérőszám-definíciót a fiók 
         var tenantId = "<tenant-ID>";
         var applicationId = "<application-ID>";
         var accessKey = "<AccessKey>";
-
 
         MonitorManagementClient readOnlyClient = AuthenticateWithReadOnlyClient(tenantId, applicationId, accessKey, subscriptionId).Result;
         IEnumerable<MetricDefinition> metricDefinitions = await readOnlyClient.MetricDefinitions.ListAsync(resourceUri: resourceId, cancellationToken: new CancellationToken());
@@ -459,9 +457,11 @@ Az alábbi példa bemutatja, hogyan olvashatja el a metrikus adatokat a többdim
     }
 
 ```
+
 ### <a name="template"></a>[Sablon](#tab/template)
 
-<a name="na"></a>N/A.
+N/A.
+
 ---
 
 ## <a name="analyzing-logs"></a>Naplók elemzése
@@ -503,13 +503,13 @@ A naplók úgy jelennek meg, mint a cél Storage-fiókban lévő tárolóban tá
 
 `https://<destination-storage-account>.blob.core.windows.net/insights-logs-<storage-operation>/resourceId=/subscriptions/<subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<source-storage-account>/queueServices/default/y=<year>/m=<month>/d=<day>/h=<hour>/m=<minute>/PT1H.json`
 
-Íme egy példa:
+Például:
 
 `https://mylogstorageaccount.blob.core.windows.net/insights-logs-storagewrite/resourceId=/subscriptions/`<br>`208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/queueServices/default/y=2019/m=07/d=30/h=23/m=12/PT1H.json`
 
 ### <a name="accessing-logs-in-an-event-hub"></a>Eseménynaplók elérése az Event hub-ban
 
-Az Event hub-nak küldött naplók nem fájlként vannak tárolva, de ellenőrizheti, hogy az Event hub kapott-e naplózási adatokat. A Azure Portal nyissa meg az Event hub eszközt, és ellenőrizze, hogy a **Bejövő üzenetek** száma nagyobb-e nullánál. 
+Az Event hub-nak küldött naplók nem fájlként vannak tárolva, de ellenőrizheti, hogy az Event hub kapott-e naplózási adatokat. A Azure Portal nyissa meg az Event hub eszközt, és ellenőrizze, hogy a **Bejövő üzenetek** száma nagyobb-e nullánál.
 
 ![Naplók](media/monitor-queue-storage/event-hub-log.png)
 
@@ -521,7 +521,7 @@ A Log Analytics munkaterületre küldött naplók Azure Monitor naplózási lek�
 
 További információ: [Bevezetés a log Analytics használatába Azure monitor](../../azure-monitor/log-query/get-started-portal.md).
 
-Az adattárolást a **StorageQueueLogs** táblában tárolja a rendszer.  
+Az adattárolást a **StorageQueueLogs** táblában tárolja a rendszer.
 
 #### <a name="sample-kusto-queries"></a>Példa Kusto-lekérdezésekre
 
@@ -532,7 +532,7 @@ Az adattárolást a **StorageQueueLogs** táblában tárolja a rendszer.
 
 Az alábbi lekérdezések segítségével figyelheti az Azure Storage-fiókokat:
 
-* A 10 leggyakoribb hiba listázása az elmúlt három napban.
+- A 10 leggyakoribb hiba listázása az elmúlt három napban.
 
     ```Kusto
     StorageQueueLogs
@@ -540,7 +540,8 @@ Az alábbi lekérdezések segítségével figyelheti az Azure Storage-fiókokat:
     | summarize count() by StatusText
     | top 10 by count_ desc
     ```
-* A legtöbb hibát okozó tíz művelet listázása az elmúlt három napban.
+
+- A legtöbb hibát okozó tíz művelet listázása az elmúlt három napban.
 
     ```Kusto
     StorageQueueLogs
@@ -548,7 +549,8 @@ Az alábbi lekérdezések segítségével figyelheti az Azure Storage-fiókokat:
     | summarize count() by OperationName
     | top 10 by count_ desc
     ```
-* Az elmúlt három nap során a leghosszabb késéssel rendelkező 10 művelet listázása.
+
+- Az elmúlt három nap során a leghosszabb késéssel rendelkező 10 művelet listázása.
 
     ```Kusto
     StorageQueueLogs
@@ -556,28 +558,33 @@ Az alábbi lekérdezések segítségével figyelheti az Azure Storage-fiókokat:
     | top 10 by DurationMs desc
     | project TimeGenerated, OperationName, DurationMs, ServerLatencyMs, ClientLatencyMs = DurationMs - ServerLatencyMs
     ```
-* Az összes olyan művelet listázása, amely a kiszolgálóoldali sávszélesség-szabályozási hibákat okozta az elmúlt három napban.
+
+- Az összes olyan művelet listázása, amely a kiszolgálóoldali sávszélesség-szabályozási hibákat okozta az elmúlt három napban.
 
     ```Kusto
     StorageQueueLogs
     | where TimeGenerated > ago(3d) and StatusText contains "ServerBusy"
     | project TimeGenerated, OperationName, StatusCode, StatusText
     ```
-* Az összes névtelen hozzáféréssel rendelkező kérelem listázása az elmúlt három napban.
+
+- Az összes névtelen hozzáféréssel rendelkező kérelem listázása az elmúlt három napban.
 
     ```Kusto
     StorageBlobLogs
     | where TimeGenerated > ago(3d) and AuthenticationType == "Anonymous"
     | project TimeGenerated, OperationName, AuthenticationType, Uri
     ```
-* Az elmúlt három napban használt műveletek kördiagramának létrehozása.
+
+- Az elmúlt három napban használt műveletek kördiagramának létrehozása.
+
     ```Kusto
     StorageQueueLogs
     | where TimeGenerated > ago(3d)
     | summarize count() by OperationName
-    | sort by count_ desc 
+    | sort by count_ desc
     | render piechart
     ```
+
 ## <a name="faq"></a>GYIK
 
 **Támogatja az Azure Storage a Managed Disks és a nem felügyelt lemezek metrikáit?**

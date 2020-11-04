@@ -4,13 +4,12 @@ description: Megtudhatja, hogyan védheti meg a hüvelyeket az Azure Kubernetes 
 services: container-service
 ms.topic: article
 ms.date: 09/22/2020
-author: jluk
-ms.openlocfilehash: 5178aa30c3bfec014dd10e2c4f3de182aaef7e68
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 8e437095b3d527647a453ba89adaa2ab62672177
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900121"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348525"
 ---
 # <a name="secure-pods-with-azure-policy"></a>Podok biztonságossá tétele az Azure Policyval
 
@@ -61,7 +60,7 @@ A következő általános korlátozások érvényesek a Kubernetes-fürtök Azur
 A következő korlátozások érvényesek az AK-ra vonatkozó Azure Policy-bővítményre:
 
 - Az [AK Pod biztonsági szabályzat (előzetes verzió)](use-pod-security-policies.md) és az AK Azure Policy bővítménye nem engedélyezhető egyszerre. 
-- A Azure Policy bővítmény által automatikusan kizárt névterek a következő kiértékeléshez: _Kube-System_ , _forgalomirányító-System_ és _AK-periszkóp_ .
+- A Azure Policy bővítmény által automatikusan kizárt névterek a következő kiértékeléshez: _Kube-System_ , _forgalomirányító-System_ és _AK-periszkóp_.
 
 ### <a name="recommendations"></a>Javaslatok
 
@@ -150,7 +149,7 @@ If the built-in initiatives to address pod security do not match your requiremen
 > [!WARNING]
 > Az olyan rendszergazdai névterekben található hüvelyek, mint például a Kube-System kell futniuk ahhoz, hogy a fürt kifogástalan maradjon, a szükséges névtér eltávolítása az alapértelmezett kizárt névterek listájáról a szükséges rendszer-Pod miatt megsértheti a házirend megsértését.
 
-Az ak-nak szüksége van a rendszerhüvelyek futtatására a fürtön a kritikus szolgáltatások, például a DNS-feloldás biztosításához. A pod funkcióit korlátozó szabályzatok hatással lehetnek a System Pod stabilitására. Ennek eredményeképpen a következő névterek **ki vannak zárva a házirend kiértékelése során a létrehozási, frissítési és házirend-naplózás során beléptetési kérelmek során** . Ez kényszeríti az ilyen névterek új központi telepítéseit az Azure-szabályzatokból való kizárásra.
+Az ak-nak szüksége van a rendszerhüvelyek futtatására a fürtön a kritikus szolgáltatások, például a DNS-feloldás biztosításához. A pod funkcióit korlátozó szabályzatok hatással lehetnek a System Pod stabilitására. Ennek eredményeképpen a következő névterek **ki vannak zárva a házirend kiértékelése során a létrehozási, frissítési és házirend-naplózás során beléptetési kérelmek során**. Ez kényszeríti az ilyen névterek új központi telepítéseit az Azure-szabályzatokból való kizárásra.
 
 1. Kube – rendszerek
 1. forgalomirányító – System

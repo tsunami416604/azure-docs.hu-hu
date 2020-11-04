@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 6a272294ca602e3f482156a7334084bf041f683e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1570bd9dfa62caa749d5a3983b93c2555be058ec
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307551"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348729"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Azure-beli virtuális gépek vészhelyreállításának beállítása az Azure PowerShell használatával
 
@@ -249,6 +249,15 @@ Write-Output $TempASRJob.State
 $RecoveryProtContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $RecoveryFabric -Name "A2AWestUSProtectionContainer"
 ```
 
+#### <a name="fabric-and-container-creation-when-enabling-zone-to-zone-replication"></a>A háló és a tároló létrehozása a zóna replikálásának engedélyezésekor
+
+A zónák replikálásának engedélyezésekor a rendszer csak egy hálót hoz létre. Két tárolónak is lennie kell. Feltételezve, hogy a régió Nyugat-Európa, az elsődleges és a védelmi tárolók beszerzéséhez használja az alábbi parancsokat:
+
+```azurepowershell
+$primaryProtectionContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric -Name "asr-a2a-default-westeurope-container"
+$recoveryPprotectionContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric -Name "asr-a2a-default-westeurope-t-container"
+```
+
 ### <a name="create-a-replication-policy"></a>Replikációs házirend létrehozása
 
 ```azurepowershell
@@ -287,6 +296,14 @@ Write-Output $TempASRJob.State
 $EusToWusPCMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $PrimaryProtContainer -Name "A2APrimaryToRecovery"
 ```
 
+#### <a name="protection-container-mapping-creation-when-enabling-zone-to-zone-replication"></a>Védelmi tároló hozzárendelésének létrehozása a zóna replikálásának engedélyezésekor
+
+Amikor engedélyezi a zóna replikálását, az alábbi paranccsal hozhatja létre a védelmi tárolók leképezését. Feltételezve, hogy a régió Nyugat-Európa, a parancs a-
+
+```azurepowershell
+$protContainerMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $PrimprotectionContainer -Name "westeurope-westeurope-24-hour-retention-policy-s"
+```
+
 ### <a name="create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>Védelmi tároló leképezésének létrehozása a feladat-visszavételhez (feladatátvétel utáni visszirányú replikálás)
 
 Feladatátvétel után, amikor készen áll arra, hogy a feladatátviteli virtuális gépet vissza lehessen állítani az eredeti Azure-régióba, feladat-visszavételt hajt végre. A feladat-visszavételhez a feladatátvételen átadott virtuális gép visszafelé replikálódik a feladatátvételi régióról az eredeti régióra. A visszirányú replikáláshoz az eredeti régió szerepkörei és a helyreállítási régió kapcsolója. Az eredeti régió most az új helyreállítási régió lesz, és eredetileg a helyreállítási régió lesz az elsődleges régió. A védelmi tárolók fordított replikáláshoz való leképezése az eredeti és a helyreállítási régiók átváltott szerepköreinek felel meg.
@@ -316,7 +333,7 @@ A cache Storage-fiók egy szabványos Storage-fiók, amely ugyanabban az Azure-r
 $EastUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestorage" -ResourceGroupName "A2AdemoRG" -Location 'East US' -SkuName Standard_LRS -Kind Storage
 ```
 
-A **felügyelt lemezeket nem használó**virtuális gépek esetén a cél Storage-fiók a helyreállítási régióban lévő Storage-fiók, amely a virtuális gép lemezeit replikálja. A célként megadott Storage-fiók lehet egy standard Storage-fiók vagy egy Premium Storage-fiók. Válassza ki a lemezekre vonatkozó adatváltozási arány (IO írási arány) alapján megkövetelt Storage-fiók típusát, valamint a tárolási típus Azure Site Recovery támogatott elváltozási korlátait.
+A **felügyelt lemezeket nem használó** virtuális gépek esetén a cél Storage-fiók a helyreállítási régióban lévő Storage-fiók, amely a virtuális gép lemezeit replikálja. A célként megadott Storage-fiók lehet egy standard Storage-fiók vagy egy Premium Storage-fiók. Válassza ki a lemezekre vonatkozó adatváltozási arány (IO írási arány) alapján megkövetelt Storage-fiók típusát, valamint a tárolási típus Azure Site Recovery támogatott elváltozási korlátait.
 
 ```azurepowershell
 #Create Target storage account in the recovery region. In this case a Standard Storage account

@@ -8,12 +8,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: 631717252abe956357cf8b588fa653890037bbc9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 97283a096d1b1549b2c7fa8f34a32b4bb4dca1eb
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322167"
+ms.locfileid: "93349052"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Gyors útmutató: a Linux Data Science Virtual Machine beállítása (Ubuntu)
 
@@ -121,12 +121,16 @@ Az Ubuntu DSVM egy többfelhasználós Jupyter-kiszolgálót futtat [JupyterHub]
 
    1. A helyi gépen nyisson meg egy webböngészőt, és navigáljon a https: \/ /Your-VM-IP: 8000 fájlhoz, és cserélje le a "Your-VM-IP" kifejezést a korábban jegyzett IP-címre.
    1. A böngésző valószínűleg nem fogja tudni megnyitni a lapot közvetlenül, és közli, hogy hiba történt a tanúsítványban. A DSVM egy önaláírt tanúsítványon keresztül biztosítja a biztonságot. A legtöbb böngésző lehetővé teszi, hogy a figyelmeztetést követően kattintson ide. Számos böngésző továbbra is biztosít valamilyen vizuális figyelmeztetést a tanúsítványról a webes munkamenet során.
+
+      >[!NOTE]
+      > Ha a böngészőben megjelenik a `ERR_EMPTY_RESPONSE` hibaüzenet, győződjön meg arról, hogy a *https* protokoll használatával explicit módon fér hozzá a géphez, nem pedig *http* vagy csak a webcím használatával. Ha a címnek a címben való megadása nélkül írja be a webcímet `https://` , a legtöbb böngésző alapértelmezett értékre kerül `http` , és ezt a hibaüzenetet fogja látni.
+
    1. Adja meg a virtuális gép létrehozásához használt felhasználónevet és jelszót, majd jelentkezzen be. 
 
       ![Adja meg a Jupyter-bejelentkezést](./media/dsvm-ubuntu-intro/jupyter-login.png)
 
->[!NOTE]
-> Ha ebben a fázisban 500 hibát kap, akkor valószínű, hogy a felhasználónévben tőkésített leveleket használt. Ez az Jupyter hub és az általa használt PAMAuthenticator közötti ismert interakció. Ha "nem lehet elérni ezt a lapot" hibaüzenet jelenik meg, akkor valószínű, hogy módosítani kell a hálózati biztonsági csoport engedélyeit. A Azure Portal keresse meg a hálózati biztonsági csoport erőforrását az erőforráscsoport területen. A JupyterHub nyilvános internetről való eléréséhez meg kell nyitni a 8000-es portot. (A rendszerkép azt mutatja, hogy ez a virtuális gép az igény szerinti hozzáféréshez van konfigurálva, de kifejezetten ajánlott. Lásd: [a felügyeleti portok biztonságossá tétele az](../../security-center/security-center-just-in-time.md)igény szerinti hozzáféréssel.) ![A hálózati biztonsági csoport konfigurációja](./media/dsvm-ubuntu-intro/nsg-permissions.png)
+      >[!NOTE]
+      > Ha ebben a fázisban 500 hibát kap, akkor valószínű, hogy a felhasználónévben tőkésített leveleket használt. Ez az Jupyter hub és az általa használt PAMAuthenticator közötti ismert interakció. Ha "nem lehet elérni ezt a lapot" hibaüzenet jelenik meg, akkor valószínű, hogy módosítani kell a hálózati biztonsági csoport engedélyeit. A Azure Portal keresse meg a hálózati biztonsági csoport erőforrását az erőforráscsoport területen. A JupyterHub nyilvános internetről való eléréséhez meg kell nyitni a 8000-es portot. (A rendszerkép azt mutatja, hogy ez a virtuális gép az igény szerinti hozzáféréshez van konfigurálva, de kifejezetten ajánlott. Lásd: [a felügyeleti portok biztonságossá tétele az](../../security-center/security-center-just-in-time.md)igény szerinti hozzáféréssel.) ![A hálózati biztonsági csoport konfigurációja](./media/dsvm-ubuntu-intro/nsg-permissions.png)
 
    1. Böngésszen a rendelkezésre álló számos jegyzetfüzetben.
 

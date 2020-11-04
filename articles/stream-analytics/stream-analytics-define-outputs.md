@@ -8,34 +8,34 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/2/2020
-ms.openlocfilehash: fdd610be1dd7c5fe9c7aa574fde33df866116dd2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 022e2e25c96473f49468f2bd48e5ee997933baea
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128834"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348712"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Kimenetek Azure Stream Analytics
 
 Az Azure Stream Analytics feladatok egy bemenetből, lekérdezésből és kimenetből állnak. Az átalakított adatokat több kimeneti típus is elküldheti. Ez a cikk az Stream Analytics támogatott kimeneteit sorolja fel. Amikor megtervezi a Stream Analytics lekérdezést, a [INTO záradék](/stream-analytics-query/into-azure-stream-analytics)használatával tekintse meg a kimenet nevét. A lekérdezéshez több INTO záradékot is használhat feladatokhoz, illetve több kimeneti adatfolyam-feladatokhoz (ha szüksége van rájuk).
 
-Stream Analytics feladatok kimenetének létrehozásához, szerkesztéséhez és teszteléséhez használhatja a [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-output), a [Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), a [.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), a [REST API](/rest/api/streamanalytics/)és a [Visual Studio alkalmazást](stream-analytics-quick-create-vs.md).
+Stream Analytics feladatok kimenetének létrehozásához, szerkesztéséhez és teszteléséhez használhatja a [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-output), a [Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), a [.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations), a [REST API](/rest/api/streamanalytics/)és a [Visual Studio alkalmazást](stream-analytics-quick-create-vs.md).
 
 Egyes kimeneti típusok támogatják a [particionálást](#partitioning), és a [kimeneti köteg mérete](#output-batch-size) eltérő az átviteli sebesség optimalizálása érdekében. A következő táblázat az egyes kimeneti típusok által támogatott szolgáltatásokat tartalmazza:
 
-| Kimenet típusa | Particionálás | Biztonsági őr | 
+| Kimenet típusa | Particionálás | Biztonság | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Igen|Azure Active Directory felhasználó </br> MSI|
+|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Yes|Azure Active Directory felhasználó </br> MSI|
 |[Azure SQL Database](sql-database-output.md)|Igen, nem kötelező.|SQL-felhasználó hitelesítése </br> MSI (előzetes verzió)|
-|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Igen|SQL-felhasználó hitelesítése|
-|[BLOB Storage és Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Igen|MSI </br> Hozzáférési kulcs|
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Yes|SQL-felhasználó hitelesítése|
+|[BLOB Storage és Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Yes|MSI </br> Hozzáférési kulcs|
 |[Azure Event Hubs](event-hubs-output.md)|Igen, be kell állítania a partíciós kulcs oszlopot a kimeneti konfigurációban.|Hozzáférési kulcs|
-|[Power BI](power-bi-output.md)|Nem|Azure Active Directory felhasználó </br> MSI|
-|[Azure Table storage](table-storage-output.md)|Igen|Fiókkulcs|
-|[Azure Service Bus-üzenetsorok](service-bus-queues-output.md)|Igen|Hozzáférési kulcs|
-|[Azure Service Bus témakörök](service-bus-topics-output.md)|Igen|Hozzáférési kulcs|
-|[Azure Cosmos DB](azure-cosmos-db-output.md)|Igen|Hozzáférési kulcs|
-|[Azure Functions](azure-functions-output.md)|Igen|Hozzáférési kulcs|
+|[Power BI](power-bi-output.md)|No|Azure Active Directory felhasználó </br> MSI|
+|[Azure Table storage](table-storage-output.md)|Yes|Fiókkulcs|
+|[Azure Service Bus-üzenetsorok](service-bus-queues-output.md)|Yes|Hozzáférési kulcs|
+|[Azure Service Bus témakörök](service-bus-topics-output.md)|Yes|Hozzáférési kulcs|
+|[Azure Cosmos DB](azure-cosmos-db-output.md)|Yes|Hozzáférési kulcs|
+|[Azure Functions](azure-functions-output.md)|Yes|Hozzáférési kulcs|
 
 ## <a name="partitioning"></a>Particionálás
 

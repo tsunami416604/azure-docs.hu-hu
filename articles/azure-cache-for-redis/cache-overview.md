@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 3bea474ae61ba4a0213d880934d9536d6ad71796
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 1b8b95ea318dd7a82d9512908838209bc5cc2995
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131632"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93349103"
 ---
 # <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 A Redis-hez készült Azure cache memóriában tárolt adattárakat biztosít a [Redis](https://redis.io/) szoftver alapján. A Redis javítja a háttérbeli adattárakat használó alkalmazások teljesítményét és méretezhetőségét. Nagy mennyiségű alkalmazás-kérést képes feldolgozni a gyakran használt adatoknak a kiszolgáló memóriájában való megtartásával, amely gyorsan beírható és olvasható. A Redis kritikus, kis késésű és nagy átviteli sebességű adattárolási megoldást nyújt a modern alkalmazásokhoz.
@@ -35,9 +35,6 @@ Az Azure cache for Redis az alkalmazások teljesítményének növelésével jav
 
 A Redis-hez készült Azure cache az OSS Redis 4. x-es verzióját és a 6,0-as előnézetét támogatja. Eldöntöttük, hogy kihagyjuk a Redis 5,0-et, hogy a legújabb verziót hozza létre. Korábban az Azure cache for Redis csak egyetlen Redis-verziót tart fenn. Egy újabb főverzió-frissítést és legalább egy régebbi stabil verziót fog biztosítani. Kiválaszthatja, hogy az alkalmazás [melyik verziója](cache-how-to-version.md) legyen a legmegfelelőbb.
 
-> [!NOTE]
-> A Redis 6,0 jelenleg előzetes verzióban érhető el – [vegye fel velünk a kapcsolatot](mailto:azurecache@microsoft.com) , ha érdekli. Ez az előzetes verzió szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
 
 ## <a name="service-tiers"></a>Szolgáltatásszintek
 A Redis készült Azure cache a következő szinteknél érhető el:
@@ -93,7 +90,7 @@ A vállalati rétegek a Redis Enterprise-t, a Redis kereskedelmi verzióját has
 
 ## <a name="next-steps"></a>Következő lépések
 * [Azure cache létrehozása a Redis-példányhoz](quickstart-create-redis.md)
-* [Vállalati szintű gyorsítótár létrehozása](quickstart-create-redis-enterprise.md)
+* [Nagyvállalati szintű gyorsítótár létrehozása](quickstart-create-redis-enterprise.md)
 * [Az Azure cache használata a Redis egy ASP.NET-webalkalmazásban](cache-web-app-howto.md)
 * [Az Azure cache használata a Redis a .NET Core-ban](cache-dotnet-core-quickstart.md)
 * [Az Azure cache használata a Redis a .NET-keretrendszerben](cache-dotnet-how-to-use-azure-redis-cache.md)

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: a9f48d95281971fc49a6a3fda93e4ee13ed8d753
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: b344e9e24d15189b805f586227c7253395e8448e
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130782"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348984"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Azure Stream Analytics-bemenetek ismertetése
 
@@ -26,7 +26,7 @@ Stream Analytics rendelkezik az első osztályú, négy típusú erőforrással 
 
 Ezek a bemeneti erőforrások ugyanabban az Azure-előfizetésben, mint a Stream Analytics-feladatban, vagy egy másik előfizetésben is elérhetők.
 
-A [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-input), a  [Azure PowerShell](/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput), a [.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), a [REST API](./stream-analytics-define-inputs.md)és a [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) segítségével stream Analytics feladatok bemeneteit hozhatja létre, szerkesztheti és tesztelheti.
+A [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-input), a  [Azure PowerShell](/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput), a [.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), a [REST API](/rest/api/streamanalytics/2016-03-01/inputs)és a [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) segítségével stream Analytics feladatok bemeneteit hozhatja létre, szerkesztheti és tesztelheti.
 
 ## <a name="stream-and-reference-inputs"></a>Stream-és hivatkozási bemenetek
 Ahogy az adatok egy adatforrásba kerülnek, a Stream Analytics feladatainak felhasználása és valós idejű feldolgozása történik. A bemenetek két típusra oszthatók: adatstream-bemenetekre és referenciaadat-bemenetekre.

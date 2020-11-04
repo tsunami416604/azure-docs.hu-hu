@@ -12,12 +12,12 @@ ms.date: 10/19/2020
 ms.author: kenwith
 ms.reviewer: arajpathak7
 ms.custom: contperfq2
-ms.openlocfilehash: e819073c3bc723a66f8beb2f9b2a094a07233ca9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 5fc0156b9b832f44fd38292ef2b9a25e39401610
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427688"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348661"
 ---
 # <a name="understand-oidc-based-single-sign-on"></a>A OIDC-alapú egyszeri bejelentkezés ismertetése
 Az alkalmazások felügyeletének rövid útmutató [sorozatában](view-applications-portal.md) megtudhatta, hogyan használhatja az Azure ad-t az alkalmazás identitás-szolgáltatója (identitásszolgáltató) használatával. Ez a cikk részletesebben ismerteti azokat az alkalmazásokat, amelyek az OpenID Connect standardot használják az egyszeri bejelentkezés megvalósításához. 
@@ -33,9 +33,9 @@ A jó megoldás, ha olyan alkalmazást ad hozzá, amely az egyszeri bejelentkez�
 
 OIDC-alapú alkalmazás hozzáadása Azure Active Directory
 
-> [!VIDEO https://www.youtube.com/embed/4kv-upsZCI0]
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4HoNI]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Gyorsindítás sorozat az alkalmazás-kezelésben](add-application-portal-setup-oidc-sso.md)
 - [Az egyszeri bejelentkezés beállításai](sso-options.md)

@@ -1,7 +1,7 @@
 ---
 title: A DevOps használata adatfeldolgozási folyamathoz
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan alkalmazhat DevOps-eljárásokat egy adatfeldolgozási folyamat létrehozásához az adatelőkészítéshez. A a Azure Data Factory és Azure Databrickst használja.
+description: Megtudhatja, hogyan alkalmazhat DevOps-eljárásokat egy adatfeldolgozási folyamat létrehozásához Azure Data Factory és Azure Databricks használatával történő adatelőkészítéshez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,12 +12,12 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 5e3774b360df6dce318d1d640903d0df2e21c856
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8f229c52b62c740c9d955f745a6922e59163b907
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320698"
+ms.locfileid: "93348559"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>A DevOps használata adatfeldolgozási folyamathoz
 

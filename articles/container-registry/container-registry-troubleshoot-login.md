@@ -3,12 +3,12 @@ title: A beállításjegyzékbe való bejelentkezés hibáinak megoldása
 description: Az Azure Container registrybe való bejelentkezés során felmerülő gyakori problémák tünetei, okai és megoldása
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: f7bac49a79d32af3a0e533f4c4e3431c62b82172
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a00db5cc34da6d90210a22005f33b0ad1bf20f1b
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148440"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348899"
 ---
 # <a name="troubleshoot-registry-login"></a>Beállításjegyzékbeli bejelentkezés – problémamegoldás
 
@@ -77,10 +77,11 @@ Kapcsolódó hivatkozások:
 Tekintse át a forgatókönyvhöz használt hitelesítő adatok érvényességét, vagy egy beállításjegyzék tulajdonosa adta meg. Néhány lehetséges probléma:
 
 * Ha Active Directory egyszerű szolgáltatást használ, ügyeljen arra, hogy a Active Directory bérlőben a megfelelő hitelesítő adatokat használja:
-  * Felhasználónév – egyszerű szolgáltatásnév alkalmazásának azonosítója (más néven *ügyfél-azonosító*)
-  * Jelszó – egyszerű szolgáltatás jelszava (más néven *ügyfél-titok*)
+  * Felhasználónév – egyszerű szolgáltatásnév alkalmazásának azonosítója (más néven *ügyfél-azonosító* )
+  * Jelszó – egyszerű szolgáltatás jelszava (más néven *ügyfél-titok* )
 * Ha egy Azure-szolgáltatást, például az Azure Kubernetes Service-t vagy az Azure DevOps-t használja a beállításjegyzék eléréséhez, erősítse meg a szolgáltatás beállításjegyzék-konfigurációját.
 * Ha `az acr login` a kapcsolóval futtatta a `--expose-token` beállításjegyzék-bejelentkezést a Docker-démon használata nélkül, győződjön meg arról, hogy a felhasználónévvel van hitelesítve `00000000-0000-0000-0000-000000000000` .
+* Ha a beállításjegyzék [Névtelen lekéréses hozzáférésre](container-registry-faq.md#how-do-i-enable-anonymous-pull-access)van konfigurálva, akkor az előző Docker-bejelentkezésből tárolt meglévő Docker-hitelesítő adatok megakadályozhatják a névtelen hozzáférést. Futtassa `docker logout` a parancsot a névtelen lekérési művelet a beállításjegyzékben való megkísérlése előtt.
 
 Kapcsolódó hivatkozások:
 

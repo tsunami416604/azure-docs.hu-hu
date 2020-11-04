@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 124d2cf4380153bd3ea68de9233f6a1b5eb6ba78
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2652b97c9392d3016bbc52209d4b2bda81c31706
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130697"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348967"
 ---
 # <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Azure Stream Analytics-feladatok leállítása vagy törlése
 
@@ -57,8 +57,8 @@ Ha a PowerShell használatával szeretné leállítani a feladatot, használja a
 
 ## <a name="stop-or-delete-a-job-using-azure-sdk-for-net"></a>Feladatok leállítása vagy törlése a .NET-hez készült Azure SDK-val
 
-Ha a .NET-hez készült Azure SDK-val szeretné leállítani a feladatot, használja a [StreamingJobsOperationsExtensions. BeginStop](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.beginstop?view=azure-dotnet) metódust. Feladatok törlése a .NET-hez készült Azure SDK-val, a [StreamingJobsOperationsExtensions. BeginDelete](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.begindelete?view=azure-dotnet) metódussal.
+Ha a .NET-hez készült Azure SDK-val szeretné leállítani a feladatot, használja a [StreamingJobsOperationsExtensions. BeginStop](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.beginstop) metódust. Feladatok törlése a .NET-hez készült Azure SDK-val, a [StreamingJobsOperationsExtensions. BeginDelete](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.begindelete) metódussal.
 
 ## <a name="stop-or-delete-a-job-using-rest-api"></a>Feladatok leállítása vagy törlése REST API használatával
 
-Ha REST APIt használó feladatot szeretne leállítani, tekintse meg a [Leállítás](/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#stop) metódust. Ha REST API használatával szeretne feladatot törölni, tekintse meg a [delete](/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#delete) metódust.
+Ha REST APIt használó feladatot szeretne leállítani, tekintse meg a [Leállítás](/rest/api/streamanalytics/2016-03-01/streamingjobs/stop) metódust. Ha REST API használatával szeretne feladatot törölni, tekintse meg a [delete](/rest/api/streamanalytics/2016-03-01/streamingjobs/delete) metódust.

@@ -3,12 +3,12 @@ title: Vendégkonfigurációs szabályzatok létrehozása Windows rendszeren
 description: Megtudhatja, hogyan hozhat létre Azure Policy vendég-konfigurációs házirendet a Windows rendszerhez.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 563b178b9ba92125967c779b59a78a8e105ec744
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 325b00ac1cc747555d38b4c250709638f5e74d95
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542862"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348882"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Vendégkonfigurációs szabályzatok létrehozása Windows rendszeren
 
@@ -23,8 +23,12 @@ A Windows naplózásakor a Vendégkonfiguráció egy [Desired State Configuratio
 A következő műveletek végrehajtásával hozhatja létre saját konfigurációját egy Azure-beli vagy nem Azure-beli gép állapotának ellenőrzéséhez.
 
 > [!IMPORTANT]
+> A Azure Government és az Azure China Environments szolgáltatásban a vendég-konfigurációval rendelkező egyéni házirend-definíciók előzetes verzióként használhatók.
+>
 > A naplózás Azure-beli virtuális gépeken történő végrehajtásához szükség van a Vendégkonfiguráció bővítményre.
 > Ha a bővítményt az összes Windows rendszerű gépen szeretné üzembe helyezni, rendelje hozzá a következő szabályzat-definíciókat: `Deploy prerequisites to enable Guest Configuration Policy on Windows VMs`
+> 
+> Ne használja a titkokat vagy a bizalmas információkat az egyéni tartalom csomagjaiban.
 
 ## <a name="install-the-powershell-module"></a>A PowerShell-modul telepítése
 
@@ -274,7 +278,7 @@ A parancsmag kimenete egy olyan objektumot ad vissza, amely a házirend-fájlok 
 
 Végül tegye közzé a szabályzat-definíciókat a `Publish-GuestConfigurationPolicy` parancsmag használatával. A parancsmag csak a **path** paraméterrel rendelkezik, amely a által létrehozott JSON-fájlok helyére mutat `New-GuestConfigurationPolicy` .
 
-A közzétételi parancs futtatásához hozzá kell férnie a szabályzatok létrehozásához az Azure-ban. A konkrét engedélyezési követelmények dokumentálva vannak a [Azure Policy áttekintés](../overview.md) oldalon. A legjobb beépített szerepkör az erőforrás- **házirend közreműködője** .
+A közzétételi parancs futtatásához hozzá kell férnie a szabályzatok létrehozásához az Azure-ban. A konkrét engedélyezési követelmények dokumentálva vannak a [Azure Policy áttekintés](../overview.md) oldalon. A legjobb beépített szerepkör az erőforrás- **házirend közreműködője**.
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPolicy -Path '.\policyDefinitions'
@@ -487,9 +491,13 @@ New-GuestConfigurationPackage `
 
 ## <a name="policy-lifecycle"></a>Szabályzat életciklusa
 
-Ha a szabályzat frissítését szeretné kibocsátani, két, figyelmet igénylő mező szükséges.
+Ha a szabályzat frissítését szeretné kibocsátani, három, figyelmet igénylő mező szükséges.
 
-- **Verzió** : a parancsmag futtatásakor meg `New-GuestConfigurationPolicy` kell adnia a jelenleg közzétett verziónál nagyobb verziószámot. A tulajdonság frissíti a vendég konfiguráció-hozzárendelés verzióját, hogy az ügynök felismeri a frissített csomagot.
+> [!NOTE]
+> A `version` vendég konfiguráció-hozzárendelés tulajdonsága csak a Microsoft által üzemeltetett csomagokat gyakorolja. Az egyéni tartalom verziószámozásának ajánlott eljárása, hogy tartalmazza a verziót a fájl nevében.
+
+- **Verzió** : a parancsmag futtatásakor meg `New-GuestConfigurationPolicy` kell adnia a jelenleg közzétett verziónál nagyobb verziószámot.
+- **contentUri** : a parancsmag futtatásakor meg `New-GuestConfigurationPolicy` kell adnia egy URI-t a csomag helyéhez. A fájl nevében szereplő csomag verziószáma biztosítja, hogy a tulajdonság értéke az egyes kiadásokban is megváltozik.
 - **contentHash** : ezt a tulajdonságot a parancsmag automatikusan frissíti `New-GuestConfigurationPolicy` . Ez a csomag által létrehozott kivonatoló érték `New-GuestConfigurationPackage` . A tulajdonságnak megfelelőnek kell lennie a `.zip` közzétett fájlhoz. Ha csak a **contentUri** tulajdonság frissül, a bővítmény nem fogadja el a csomag tartalmát.
 
 Egy frissített csomag kiadásának legegyszerűbb módja, ha megismétli a jelen cikkben ismertetett folyamatot, és megadja a verziószámot. Ez a folyamat garantálja az összes tulajdonság megfelelő frissítését.

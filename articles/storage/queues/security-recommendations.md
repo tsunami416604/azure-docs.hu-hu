@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 1b13bcbe17ac546030b177eea2b2bf8a290a6af6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9ec7dcc12b7452ee4bd40fab9b2bc53b5cca9be3
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781566"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348808"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>Biztonsági javaslatok a várólista-tároláshoz
 
@@ -45,7 +45,7 @@ Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági ál
 | Visszavonási tervvel kell rendelkeznie minden olyan SAS számára, amelyet az ügyfelek számára ad ki | Ha egy SAS biztonsága sérül, a lehető leghamarabb vissza kell vonnia az SAS-t. Ha vissza szeretne vonni egy felhasználói delegálási SAS-t, vonja vissza a felhasználói delegálási kulcsot, hogy gyorsan érvénytelenítse a kulcshoz társított összes aláírást. Egy tárolt hozzáférési szabályzattal társított szolgáltatási SAS visszavonásához törölheti a tárolt hozzáférési szabályzatot, átnevezheti a szabályzatot, vagy módosíthatja annak lejárati idejét egy múltbeli időpontra. További információ: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](../common/storage-sas-overview.md).  | - |
 | Ha egy szolgáltatás SAS-je nem egy tárolt hozzáférési szabályzathoz van társítva, akkor a lejárati időt állítsa egy órára vagy kevesebbre. | Nem lehet visszavonni egy olyan szolgáltatáshoz tartozó SAS-t, amely nincs hozzárendelve egy tárolt hozzáférési szabályzathoz. Emiatt a lejárati időt úgy kell korlátozni, hogy az SAS egy órán vagy kevesebb ideig érvényes legyen. | - |
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|

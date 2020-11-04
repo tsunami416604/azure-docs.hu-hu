@@ -3,25 +3,25 @@ title: Vendég-konfigurációs házirend definícióinak létrehozása a Windows
 description: Megtudhatja, hogyan alakíthatja át Csoportházirend a Windows Server 2019 biztonsági alaptervből egy házirend-definícióba.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: dce22885981ab01fe37fac8588899d12a5afb87d
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 7f7e2af70efa6771d94d7ceaa14d1408175b1d12
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893373"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348644"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Vendég-konfigurációs házirend definícióinak létrehozása a Windows Csoportházirend alapkonfigurációból
 
 Az egyéni házirend-definíciók létrehozása előtt érdemes beolvasni a koncepcionális áttekintési információkat [Azure Policy vendég konfigurációjában](../concepts/guest-configuration.md). A Linux rendszerhez készült egyéni vendég-konfigurációs házirend-definíciók létrehozásával kapcsolatos további információkért lásd: [vendég-konfigurációs szabályzatok létrehozása Linux rendszerhez](./guest-configuration-create-linux.md). További információ a Windows rendszerhez készült egyéni konfigurációs házirend-definíciók létrehozásáról: [vendég konfigurációs szabályzatok létrehozása Windows rendszerhez](./guest-configuration-create.md).
 
-A Windows naplózásakor a Vendégkonfiguráció egy [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) erőforrásmodul használatával hozza létre a konfigurációs fájlt. A DSC-konfiguráció határozza meg a gép kívánt állapotát. Ha a konfiguráció kiértékelése **nem megfelelő**, akkor a rendszer kiváltja a házirend hatására *auditIfNotExists* .
+A Windows naplózásakor a Vendégkonfiguráció egy [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) erőforrásmodul használatával hozza létre a konfigurációs fájlt. A DSC-konfiguráció határozza meg a gép kívánt állapotát. Ha a konfiguráció kiértékelése **nem megfelelő** , akkor a rendszer kiváltja a házirend hatására *auditIfNotExists* .
 [Azure Policy vendég konfiguráció](../concepts/guest-configuration.md) csak a gépeken belüli beállításokat naplózza.
 
 > [!IMPORTANT]
-> A vendég-konfigurációval rendelkező egyéni házirend-definíciók előzetes verziójú funkciók.
->
 > A naplózás Azure-beli virtuális gépeken történő végrehajtásához szükség van a Vendégkonfiguráció bővítményre. Ha a bővítményt az összes Windows rendszerű gépen szeretné üzembe helyezni, rendelje hozzá a következő szabályzat-definíciókat:
 > - [Telepítse az előfeltételeket, hogy engedélyezze a vendég-konfigurációs házirendet a Windows rendszerű virtuális gépeken.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+> 
+> Ne használja a titkokat vagy a bizalmas információkat az egyéni tartalom csomagjaiban.
 
 A DSC-Közösség közzétette a [BaselineManagement modult](https://github.com/microsoft/BaselineManagement) az exportált csoportházirend-sablonok DSC formátumra való konvertálásához. A GuestConfiguration parancsmaggal együtt a BaselineManagement modul Azure Policy vendég konfigurációs csomagot hoz létre a Windows rendszerhez Csoportházirend tartalomból. A BaselineManagement modul használatáról további információt a rövid útmutató [: csoportházirend konvertálása a DSC-be](/powershell/scripting/dsc/quickstarts/gpo-quickstart)című cikkben talál.
 
@@ -29,7 +29,7 @@ Ebből az útmutatóból megtudhatja, hogyan hozhat létre Azure Policy vendég 
 
 ## <a name="download-windows-server-2019-security-baseline-and-install-related-powershell-modules"></a>Töltse le a Windows Server 2019 biztonsági alaptervét, és telepítse a kapcsolódó PowerShell-modulokat
 
-A **DSC**, a **GuestConfiguration**, az alapkonfiguráció **kezelése**és a kapcsolódó Azure-modulok telepítése a PowerShellben:
+A **DSC** , a **GuestConfiguration** , az alapkonfiguráció **kezelése** és a kapcsolódó Azure-modulok telepítése a PowerShellben:
 
 1. A PowerShell-parancssorból futtassa a következő parancsot:
 
@@ -53,7 +53,7 @@ A **DSC**, a **GuestConfiguration**, az alapkonfiguráció **kezelése**és a ka
    Expand-Archive -Path C:\git\policyfiles\downloads\Server2019Baseline.zip -DestinationPath C:\git\policyfiles\downloads\
    ```
 
-1. Ellenőrizze a kiszolgáló 2019 alapkonfigurációjának tartalmát **MapGuidsToGpoNames.ps1**használatával.
+1. Ellenőrizze a kiszolgáló 2019 alapkonfigurációjának tartalmát **MapGuidsToGpoNames.ps1** használatával.
 
    ```azurepowershell-interactive
    # Show content details of downloaded GPOs
@@ -87,78 +87,12 @@ Ezután a letöltött Server 2019 alapkonfigurációt egy vendég konfiguráció
 
 ## <a name="create-azure-policy-guest-configuration"></a>Azure Policy vendég konfigurációjának létrehozása
 
-A következő lépés a fájl közzététele az Azure Blob Storageban. 
-
-1. Az alábbi szkript a feladat automatizálásához használható függvényt tartalmaz. Megjegyzés: a függvényben használt parancsokhoz `publish` szükség van a `Az.Storage` modulra.
+1. A következő lépés a fájl közzététele az Azure Blob Storageban. A parancshoz `Publish-GuestConfigurationPackage` a `Az.Storage` modul szükséges.
 
    ```azurepowershell-interactive
-    function Publish-Configuration {
-        param(
-        [Parameter(Mandatory=$true)]
-        $resourceGroup,
-        [Parameter(Mandatory=$true)]
-        $storageAccountName,
-        [Parameter(Mandatory=$true)]
-        $storageContainerName,
-        [Parameter(Mandatory=$true)]
-        $filePath,
-        [Parameter(Mandatory=$true)]
-        $blobName
-        )
-
-        # Get Storage Context
-        $Context = Get-AzStorageAccount -ResourceGroupName $resourceGroup `
-            -Name $storageAccountName | `
-            ForEach-Object { $_.Context }
-
-        # Upload file
-        $Blob = Set-AzStorageBlobContent -Context $Context `
-            -Container $storageContainerName `
-            -File $filePath `
-            -Blob $blobName `
-            -Force
-
-        # Get url with SAS token
-        $StartTime = (Get-Date)
-        $ExpiryTime = $StartTime.AddYears('3')  # THREE YEAR EXPIRATION
-        $SAS = New-AzStorageBlobSASToken -Context $Context `
-            -Container $storageContainerName `
-            -Blob $blobName `
-            -StartTime $StartTime `
-            -ExpiryTime $ExpiryTime `
-            -Permission rl `
-            -FullUri
-
-        # Output
-        return $SAS
-    }
+   Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName  myResourceGroupName -StorageAccountName myStorageAccountName
    ```
 
-1. Hozzon létre paramétereket az egyedi erőforráscsoport, a Storage-fiók és a tároló definiálásához. 
-   
-   ```azurepowershell-interactive
-    # Replace the $resourceGroup, $storageAccount, and $storageContainer values below.
-    $resourceGroup = 'rfc_customguestconfig'
-    $storageAccount = 'guestconfiguration'
-    $storageContainer = 'content'
-    $path = 'c:\git\policyfiles\Server2019Baseline\Server2019Baseline.zip'
-    $blob = 'Server2019Baseline.zip' 
-    ```
-
-1. A közzétételi függvénnyel a hozzárendelt paraméterekkel teheti közzé a vendég konfigurációs csomagot a nyilvános Blob Storage.
-
-
-   ```azurepowershell-interactive
-   $PublishConfigurationSplat = @{
-       resourceGroup = $resourceGroup
-       storageAccountName = $storageAccount
-       storageContainerName = $storageContainer
-       filePath = $path
-       blobName = $blob
-       FullUri = $true
-   }
-   $uri = Publish-Configuration @PublishConfigurationSplat
-    ```
 1. Miután létrehozta és feltöltötte a vendég konfigurációhoz tartozó egyéni házirend-csomagot, hozza létre a vendég-konfigurációs házirend definícióját. A `New-GuestConfigurationPolicy` parancsmag használatával hozza létre a vendég konfigurációját.
 
    ```azurepowershell-interactive
@@ -185,7 +119,7 @@ Az Azure-ban létrehozott szabályzattal az utolsó lépés a kezdeményezés ki
 > [!IMPORTANT]
 > A _AuditIfNotExists_ és a _DeployIfNotExists_ szabályzatot egyesítő kezdeményezéssel **mindig** hozzá kell rendelni a vendég-konfigurációs házirend definícióit. Ha csak a _AuditIfNotExists_ szabályzat van hozzárendelve, az előfeltételek nincsenek telepítve, és a házirend mindig azt mutatja, hogy a "0" kiszolgálók megfelelőek.
 
-Egy szabályzat-definíció _DeployIfNotExists_ -effektussal való hozzárendeléséhez további hozzáférési szint szükséges. A legalacsonyabb jogosultság megadásához létrehozhat egy egyéni szerepkör-definíciót, amely kibővíti az **erőforrás-házirend közreműködőjét**. Az alábbi példa létrehoz egy erőforrás- **házirend közreműködője** nevű szerepkört a _Microsoft. Authorization/roleAssignments/Write_további engedélyeivel.
+Egy szabályzat-definíció _DeployIfNotExists_ -effektussal való hozzárendeléséhez további hozzáférési szint szükséges. A legalacsonyabb jogosultság megadásához létrehozhat egy egyéni szerepkör-definíciót, amely kibővíti az **erőforrás-házirend közreműködőjét**. Az alábbi példa létrehoz egy erőforrás- **házirend közreműködője** nevű szerepkört a _Microsoft. Authorization/roleAssignments/Write_ további engedélyeivel.
 
    ```azurepowershell-interactive
    $subscriptionid = '00000000-0000-0000-0000-000000000000'

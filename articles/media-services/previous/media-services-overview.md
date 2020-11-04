@@ -3,7 +3,7 @@ title: Az Azure Media Services áttekintése | Microsoft Docs
 description: Microsoft Azure Media Services egy bővíthető, felhőalapú platform, amely lehetővé teszi a fejlesztők számára méretezhető médiafelügyeleti és -továbbítási alkalmazások létrehozását. Ez a cikk áttekintést nyújt a Azure Media Servicesról.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2019
-ms.author: juliako
-ms.openlocfilehash: 0d896b0ce23116f1b87718f492d407ac094b9e6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/03/2020
+ms.author: inhenkel
+ms.openlocfilehash: c6f889963e87d900040d1fe77031f943ab368837
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261155"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348746"
 ---
 # <a name="azure-media-services-overview"></a>Az Azure Media Services áttekintése
 
@@ -86,13 +86,12 @@ Az Azure Media Services alapfogalmaiért lásd: [Fogalmak](media-services-concep
 
 ## <a name="supported-scenarios-and-availability-of-media-services-across-data-centers"></a>Támogatott helyzetek és a Media Services rendelkezésre állása az egyes adatközpontokban
 
-Részletes információkért lásd az [AMS-forgatókönyvek és a funkciók és szolgáltatások az egyes adatközpontokban történő rendelkezésre állását](scenarios-and-availability.md) ismertető cikket.
+További információ az Azure gyakori forgatókönyvekről: [AMS-forgatókönyvek](scenarios-and-availability.md).
+További információ a regionális elérhetőségről: a [Media Service elérhetősége](availability-regions-v-2.md).
 
 ## <a name="service-level-agreement-sla"></a>Szolgáltatói szerződés (SLA)
 
 További információ: [Microsoft Azure SLA](https://azure.microsoft.com/support/legal/sla/)
-
-Az adatközpontokban lévő rendelkezésre állásról információért lásd a [Rendelkezésre állás](scenarios-and-availability.md#availability) című szakaszt.
 
 ## <a name="support"></a>Támogatás
 

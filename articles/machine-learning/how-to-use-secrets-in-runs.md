@@ -1,7 +1,7 @@
 ---
 title: Hitelesítési Titkok a betanításban
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogy miként továbbíthatja a titkokat a képzések biztonságos módon történő futtatásához a Azure Key Vault fo ryour munkaterületen.
+description: Megtudhatja, hogyan teheti elérhetővé a titkokat a képzésekben a munkaterülethez Azure Key Vault használatával biztonságos módon.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 60459579b277684355eaf5cb92ba2f75fb05cd28
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ce47041d888b8a7786f0f87f54e725919638e7f7
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305430"
+ms.locfileid: "93349018"
 ---
 # <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>Hitelesítő adatokkal kapcsolatos titkos kódok használata Azure Machine Learning betanítási futtatásokban
 

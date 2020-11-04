@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 189fa12b1fc11e79ab64231a7ecd453113b8771a
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 18b980a868173b1fa721f9fc0986d7e1efb203af
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336010"
+ms.locfileid: "93348916"
 ---
 # <a name="troubleshooting-shared-image-galleries-in-azure"></a>Megosztott rendszerkép-galériák hibaelhárítása Az Azure-ban
 
@@ -223,8 +223,8 @@ Ha problémát észlel a megosztott rendszerkép-katalógusokon, rendszerkép-de
 **OK** : az adatlemez-lemezképben használt lemez titkosítási készlet erőforrás-azonosítója érvénytelen formátumot használ.  
 **Áthidaló megoldás** : Győződjön meg arról, hogy a lemez titkosítási készletének erőforrás-azonosítója a következő formátumot követi:/Subscriptions/<subscriptionID \> /ResourceGroups/<ResourceGroupName \> /providers/Microsoft.Compute/<diskEncryptionSetName \> .
 
-*A galleryArtifactVersion. properties. publishingProfile. targetRegions. encryption. osDiskImage. diskEncryptionSetId paraméter értéke érvénytelen.* 
- **OK** : az operációsrendszer-lemez lemezképén használt lemez titkosítási készlet erőforrás-azonosítója érvénytelen formátumot használ  
+*A galleryArtifactVersion. properties. publishingProfile. targetRegions. encryption. osDiskImage. diskEncryptionSetId paraméter értéke érvénytelen.*  
+**OK** : az operációsrendszer-lemez lemezképén használt lemez titkosítási készlet erőforrás-azonosítója érvénytelen formátumot használ  
 **Áthidaló megoldás** : Győződjön meg arról, hogy a lemez titkosítási készletének erőforrás-azonosítója a következő formátumot követi:/Subscriptions/<subscriptionID \> /ResourceGroups/<ResourceGroupName \> /providers/Microsoft.Compute/<diskEncryptionSetName \> .
 
 *Nem adható meg az új adatlemez-lemezkép titkosítási LUN [<szám \> ] a (<régió] régióban található, lemezes titkosítási készlettel a \> frissítési katalógus lemezkép-verziójának kéréséhez. A verzió frissítéséhez távolítsa el az új logikai egységet. Ha módosítania kell az adatlemez-lemezkép titkosítási beállításait, létre kell hoznia egy új katalógus-rendszerkép verzióját a megfelelő beállításokkal.*  
@@ -323,6 +323,6 @@ A **--Expand ReplicationStatus** jelzővel ellenőrizze, hogy befejeződött-e a
 Az [Azure korlátai és kvótái](../azure-resource-manager/management/azure-subscription-service-limits.md) az összes megosztott képkatalógusra, a képdefinícióra és a rendszerkép verzió-erőforrásaira érvényesek. Győződjön meg arról, hogy az előfizetések korlátain belül van. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [megosztott képtárakról](./linux/shared-image-galleries.md).

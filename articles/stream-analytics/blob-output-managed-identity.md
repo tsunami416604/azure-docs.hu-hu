@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/11/2020
-ms.openlocfilehash: 99b7891f332298024c82103322cc6b58d066f587
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 7eb610f741681be89ef44f8288ed47674c1d6440
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123234"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348576"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>Felügyelt identitás használata az Azure Stream Analytics-feladatok hitelesítéséhez az Azure Blob Storage kimenetében
 
@@ -33,7 +33,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti a felügyelt identitást egy Stream 
 
 ## <a name="azure-resource-manager-deployment"></a>Az Azure Resource Manager üzembe helyezése
 
-A Azure Resource Manager használata lehetővé teszi, hogy teljes mértékben automatizálja Stream Analytics feladatainak üzembe helyezését. A Resource Manager-sablonokat Azure PowerShell vagy az [Azure CLI](/cli/azure/?view=azure-cli-latest)használatával is telepítheti. Az alábbi példák az Azure CLI-t használják.
+A Azure Resource Manager használata lehetővé teszi, hogy teljes mértékben automatizálja Stream Analytics feladatainak üzembe helyezését. A Resource Manager-sablonokat Azure PowerShell vagy az [Azure CLI](/cli/azure/)használatával is telepítheti. Az alábbi példák az Azure CLI-t használják.
 
 
 1. A felügyelt identitással rendelkező **Microsoft. StreamAnalytics/streamingjobs-** erőforrások létrehozásához a Resource Manager-sablon Resource (erőforrás) szakaszában a következő tulajdonságot is használhatja:
@@ -218,9 +218,9 @@ Ha hozzáférést szeretne adni a teljes fiókhoz, futtassa az alábbi parancsot
 
 A Storage-fiók **tűzfalának és virtuális hálózatának** konfigurálásakor engedélyezheti a hálózati forgalmat más megbízható Microsoft-szolgáltatásokból is. Ha a Stream Analytics felügyelt identitás használatával végzi a hitelesítést, igazolja, hogy a kérés megbízható szolgáltatásból származik. Az alábbi útmutatást követve engedélyezheti ezt a VNET hozzáférési kivételt.
 
-1.  Navigáljon a Storage-fiók konfigurációs paneljén található "tűzfalak és virtuális hálózatok" panelre.
-2.  Győződjön meg arról, hogy a "megbízható Microsoft-szolgáltatások hozzáférésének engedélyezése ehhez a Storage-fiókhoz" beállítás engedélyezve van.
-3.  Ha engedélyezte, kattintson a **Mentés** gombra.
+1.    Navigáljon a Storage-fiók konfigurációs paneljén található "tűzfalak és virtuális hálózatok" panelre.
+2.    Győződjön meg arról, hogy a "megbízható Microsoft-szolgáltatások hozzáférésének engedélyezése ehhez a Storage-fiókhoz" beállítás engedélyezve van.
+3.    Ha engedélyezte, kattintson a **Mentés** gombra.
 
    ![VNET-hozzáférés engedélyezése](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-vnet-exception.png)
 

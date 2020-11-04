@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 87ee8a9c57fc456ba02f97bf56db25e4c91e9398
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 11014c5a5c5cd0cabae1b62083bd5e662be2c6b7
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129813"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348933"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics feladatok kompatibilitási szintje
 
@@ -33,7 +33,7 @@ Amikor új Stream Analytics feladatot hoz létre, ajánlott azt a legújabb komp
 
 ## <a name="set-the-compatibility-level"></a>Kompatibilitási szint beállítása
 
-A Stream Analyticsi feladatokhoz tartozó kompatibilitási szint beállítható a Azure Portal vagy a [feladatok létrehozása REST API hívás](./stream-analytics-quick-create-portal.md)használatával.
+A Stream Analyticsi feladatokhoz tartozó kompatibilitási szint beállítható a Azure Portal vagy a [feladatok létrehozása REST API hívás](/rest/api/streamanalytics/2016-03-01/streamingjobs/createorreplace#compatibilitylevel)használatával.
 
 A Azure Portal a feladatokhoz tartozó kompatibilitási szint frissítése:
 
@@ -79,11 +79,11 @@ További információ: a [térinformatikai funkciók frissítései Azure stream 
 
 **1,2 szint:** A CosmosDB-kimenettel való natív, tömeges API-integráció maximalizálja az átviteli sebességet, és hatékonyan kezeli a szabályozási kérelmeket. További információkért tekintse meg [a Azure Cosmos DB Azure stream Analytics kimenete lapot](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12).
 
-A upsert viselkedése *INSERT vagy replace* .
+A upsert viselkedése *INSERT vagy replace*.
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>DateTimeOffset SQL-kimenetre írásakor
 
-**Előző szintek:** a [DATETIMEOFFSET](/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) -típusok UTC értékre lettek igazítva.
+**Előző szintek:** a [DATETIMEOFFSET](/sql/t-sql/data-types/datetimeoffset-transact-sql) -típusok UTC értékre lettek igazítva.
 
 **1,2 szint:** A DateTimeOffset már nincs módosítva.
 

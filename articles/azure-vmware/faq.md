@@ -4,12 +4,12 @@ description: Választ ad az Azure VMware megoldással kapcsolatos gyakori kérd�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 68eee2d55e3c22b502d17a91f4ba4509c292c31c
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a1ca50e1e1374b5e819c9355be1a48e2b7c3e536
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288670"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93349086"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Gyakran ismételt kérdések az Azure VMware-megoldásról
 
@@ -59,13 +59,7 @@ A szolgáltatásban végzett frissítések a Microsoft Azure szokásos módosít
 
 Az új Azure VMware-megoldással a Microsoft és a VMware közvetlen felhőalapú szolgáltatói partnerséggel rendelkezik. Az új megoldást a Microsoft tervezte, építi és támogatja, és a VMware támogatja. Az építészeti megoldások konzisztensek, és a VMware Technology stack egy dedikált Azure-infrastruktúrán fut.
 
-#### <a name="are-red-hat-solutions-supported-on-azure-vmware-solution"></a>A Red Hat-megoldások támogatottak az Azure VMware-megoldásokban?
 
-A Microsoft és a Red hat olyan integrált, közösen elhelyezett támogatási csapattal rendelkezik, amely egységes kapcsolattartási pontot biztosít az Azure platformon futó Red Hat-ökoszisztémák számára.  A Red Hat Enterprise Linux-vel dolgozó egyéb Azure platform-szolgáltatásokhoz hasonlóan az Azure VMware megoldás a Felhőbeli hozzáférés és az integrált támogatás égisze alá tartozik, és a Red Hat Enterprise Linux támogatott az Azure VMware-megoldáson belüli futtatásához.
-
-#### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>Elérhető a VMware HCX Enterprise Edition, és ha igen, Mennyibe kerül?
-
-A VMware HCX Enterprise Edition (EE) elérhető az Azure VMware-megoldással, amely *előzetes* funkcióként vagy szolgáltatásként érhető el. Habár az Azure VMware-megoldáshoz készült VMware HCX EE előzetes verzióban érhető el, ingyenes funkció vagy szolgáltatás, és az előzetes verziójú szolgáltatási feltételek és kikötések érvényesek. Miután a VMware HCX EE szolgáltatás elérhetővé válik, 30 napos értesítést kap arról, hogy a számlázás átvált. Kikapcsolhatja vagy letilthatja a szolgáltatást.
 
 #### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Az Azure VMware-megoldás virtuális gépei a VMRC-ben kezelhetők?
 Igen, ha a telepített rendszer be van kapcsolva, hozzáférhet a saját Felhőbeli vCenter, és nyilvános DNS-t használ az ESXi-állomásnevek feloldásához.
@@ -236,6 +230,14 @@ A Microsoft támogatást nyújt az Azure VMware-megoldáshoz. Egy [támogatási 
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>Milyen fiókokra van szükségem egy Azure VMware-megoldás saját Felhőbeli létrehozásához?
 
 Egy Azure-előfizetésben Azure-fiókra lesz szüksége.
+
+#### <a name="are-red-hat-solutions-supported-on-azure-vmware-solution"></a>A Red Hat-megoldások támogatottak az Azure VMware-megoldásokban?
+
+A Microsoft és a Red hat olyan integrált, közösen elhelyezett támogatási csapattal rendelkezik, amely egységes kapcsolattartási pontot biztosít az Azure platformon futó Red Hat-ökoszisztémák számára.  A Red Hat Enterprise Linux-vel dolgozó egyéb Azure platform-szolgáltatásokhoz hasonlóan az Azure VMware megoldás a Felhőbeli hozzáférés és az integrált támogatás égisze alá tartozik, és a Red Hat Enterprise Linux támogatott az Azure VMware-megoldáson belüli futtatásához.
+
+#### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>Elérhető a VMware HCX Enterprise Edition, és ha igen, Mennyibe kerül?
+
+A VMware HCX Enterprise Edition (EE) elérhető az Azure VMware-megoldással, amely *előzetes* funkcióként vagy szolgáltatásként érhető el. Habár az Azure VMware-megoldáshoz készült VMware HCX EE előzetes verzióban érhető el, ingyenes funkció vagy szolgáltatás, és az előzetes verziójú szolgáltatási feltételek és kikötések érvényesek. Miután a VMware HCX EE szolgáltatás elérhetővé válik, 30 napos értesítést kap arról, hogy a számlázás átvált. Kikapcsolhatja vagy letilthatja a szolgáltatást.
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Hogyan az Azure VMware-megoldáshoz tartozó gazdagép-kvóta növelését?
 
