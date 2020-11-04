@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
 ms.date: 10/16/2020
-ms.openlocfilehash: 3b8bf89bc43781fdf6c1a640992f15e21691cd63
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 51fd8b8427dd8214e22fa59e50b26bb9db237946
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676421"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322049"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Állapotalapú vagy állapot nélküli munkafolyamatok létrehozása a Visual Studio Code-ban az Azure Logic Apps (előzetes verzió) bővítményével
 
@@ -106,7 +106,7 @@ Ebben a nyilvános előzetes verzióban ezek a képességek nem érhetők el, va
 
 * A munkafolyamat elindításához használja a [beépített kérést, a http-t, Event Hubs vagy Service Bus triggert](../connectors/apis-list.md), amely natív módon fut a Logic apps futtatókörnyezettel. Jelenleg a [vállalati összekötők](../connectors/apis-list.md#enterprise-connectors), [a helyszíni adatátjáró-eseményindítók, a](../connectors/apis-list.md#on-premises-connectors)webhook-alapú eseményindítók, a csúszó ablak-eseményindítók, az [Egyéni összekötők](../connectors/apis-list.md#custom-apis-and-connectors), az integrációs fiókok, az összetevők és [az összekötők](../connectors/apis-list.md#integration-account-connectors) nem támogatottak ebben az előzetes verzióban. Az "Azure-függvény hívása" funkció nem érhető el, így most a HTTP- *művelettel* hívhatja meg az Azure-függvény kérésének URL-címét.
 
-  A korábban megadott eseményindítók kivételével az *állapot-nyilvántartó* munkafolyamatok az Azure-ban üzembe helyezett [felügyelt összekötők](../connectors/apis-list.md#managed-api-connectors)eseményindítóit és műveleteit is használhatják. Azonban az *állapot nélküli* munkafolyamatok jelenleg csak a felügyelt összekötők *műveleteit* támogatják, az eseményindítók nem. Bár lehetősége van az Azure-beli összekötők engedélyezésére az állapot nélküli munkafolyamatokhoz, a tervező nem jelenít meg felügyelt összekötő-eseményindítókat a kiválasztáshoz.
+  A korábban megadott eseményindítók kivételével az *állapot-nyilvántartó* munkafolyamatok a [felügyelt összekötők](../connectors/apis-list.md#managed-api-connectors)eseményindítóit és műveleteit is használhatják, amelyek az Azure-ban üzembe helyezhetők, és natív módon futnak a Logic apps futtatókörnyezettel. Azonban az *állapot nélküli* munkafolyamatok jelenleg csak a felügyelt összekötők *műveleteit* támogatják, az eseményindítók nem. Bár az Azure-ban engedélyezheti az összekötőket az állapot nélküli munkafolyamatokhoz, a tervező nem jeleníti meg a kiválasztható felügyelt összekötő-eseményindítókat.
 
 * Az új **Logic app (előzetes verzió)** típusú erőforrástípus csak [prémium vagy app Service üzemeltetési csomagra](#publish-azure) telepíthető az Azure-ban vagy egy [Docker-tárolóban](#deploy-docker), és nem [integrációs szolgáltatási környezetekben (ISEs)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). A **felhasználási** üzemeltetési csomagok nem támogatottak, és nem érhetők el az erőforrástípus üzembe helyezéséhez.
 
@@ -173,7 +173,7 @@ Ebben a nyilvános előzetes verzióban ezek a képességek nem érhetők el, va
 
     1. A Visual Studio Code-ban a bal oldali eszköztáron válassza a **bővítmények** lehetőséget.
 
-    1. A bővítmények keresési mezőjébe írja be a értéket `azure logic apps preview` . Az eredmények listából válassza a **Azure Logic apps (előzetes verzió)** **>** **telepítését** .
+    1. A bővítmények keresési mezőjébe írja be a értéket `azure logic apps preview` . Az eredmények listából válassza a **Azure Logic apps (előzetes verzió)** **>** **telepítését**.
 
        A telepítés befejezése után a nyilvános előzetes verzió a **bővítmények: telepített** listában jelenik meg.
 
@@ -193,7 +193,7 @@ Ebben a nyilvános előzetes verzióban ezek a képességek nem érhetők el, va
 
    A beállítás megadásához kövesse az alábbi lépéseket:
 
-   1. A **fájl** menüben válassza **a beállítások** **>** **Beállítások menüpontot** .
+   1. A **fájl** menüben válassza **a beállítások** **>** **Beállítások menüpontot**.
 
    1. A **felhasználó** lapon válassza a **szolgáltatások** **>** **bővítmények** lehetőséget.
 
@@ -204,7 +204,7 @@ Ebben a nyilvános előzetes verzióban ezek a képességek nem érhetők el, va
    * **Azure Logic Apps v2: panel mód**
    * **Azure Logic Apps v2: Project Runtime**
 
-   1. A **fájl** menüben válassza **a beállítások** **>** **Beállítások menüpontot** .
+   1. A **fájl** menüben válassza **a beállítások** **>** **Beállítások menüpontot**.
 
    1. A **felhasználó** lapon válassza a **>** **bővítmények** **>** **Azure Logic apps (előzetes verzió)** lehetőséget.
 
@@ -253,7 +253,7 @@ A logikai alkalmazás létrehozása előtt hozzon létre egy helyi projektet, ho
 
    ![Képernyőkép, amely az Azure panel eszköztárát az "új projekt létrehozása" lehetőség kiválasztásával jeleníti meg.](./media/create-stateful-stateless-workflows-visual-studio-code/create-new-project-folder.png)
 
-1. Ha a Windows Defender-tűzfal felszólítja a hálózati hozzáférés megadására `Code.exe` , amely a Visual Studio Code, és a `func.exe` , amely a Azure functions Core Tools, válassza a **magánhálózatok, például a saját otthoni vagy munkahelyi hálózat** **>** **lehetővé teszi a hozzáférést** .
+1. Ha a Windows Defender-tűzfal felszólítja a hálózati hozzáférés megadására `Code.exe` , amely a Visual Studio Code, és a `func.exe` , amely a Azure functions Core Tools, válassza a **magánhálózatok, például a saját otthoni vagy munkahelyi hálózat** **>** **lehetővé teszi a hozzáférést**.
 
 1. Keresse meg azt a helyet, ahová a projekt mappáját létrehozta, válassza ki a mappát, és folytassa a folytatást.
 
@@ -371,7 +371,7 @@ Ebben a példában a logikai alkalmazás munkafolyamata ezt az triggert és a k�
 
 * A beépített [kérelem triggere](../connectors/connectors-native-reqres.md), **Amikor HTTP-kérés érkezik** , amely bejövő hívásokat fogad, és olyan végpontot hoz létre, amelyet más szolgáltatások vagy logikai alkalmazások hívhatnak meg.
 
-* Az [Office 365 Outlook művelet](../connectors/connectors-create-api-office365-outlook.md), **e-mail küldése** .
+* Az [Office 365 Outlook művelet](../connectors/connectors-create-api-office365-outlook.md), **e-mail küldése**.
 
 * A beépített [Válasz művelet](../connectors/connectors-native-reqres.md), amellyel a rendszer visszaküldi a választ, és visszaküldi azokat a hívónak.
 
@@ -394,9 +394,9 @@ Ebben a példában a logikai alkalmazás munkafolyamata ezt az triggert és a k�
 
    1. A tervezőben válassza ki az elemet, amely megnyitja az elem részletek ablaktábláját a jobb oldalon.
 
-   1. Bontsa ki a Visual Studio Code ablakát úgy, hogy az trigger vagy a művelet neve mellett az ellipszisek ( **..** .) gomb a jobb felső sarokban jelenik meg. 
+   1. Bontsa ki a Visual Studio Code ablakát úgy, hogy az trigger vagy a művelet neve mellett az ellipszisek ( **..**.) gomb a jobb felső sarokban jelenik meg. 
 
-   1. Nyissa meg az ellipszisek ( **..** .) menüt, majd válassza a **Törlés** lehetőséget. A törlés megerősítéséhez kattintson **az OK gombra** .
+   1. Nyissa meg az ellipszisek ( **..**.) menüt, majd válassza a **Törlés** lehetőséget. A törlés megerősítéséhez kattintson **az OK gombra**.
 
       ![Képernyőfelvétel: a kijelölt elem megjelenítése a tervezőben az Open details panelen és a kijelölt ellipszisek gomb és a "Törlés" lehetőséggel.](./media/create-stateful-stateless-workflows-visual-studio-code/delete-item-from-designer.png)
 
@@ -408,7 +408,7 @@ Ebben a példában a logikai alkalmazás munkafolyamata ezt az triggert és a k�
 
 1. A **művelet hozzáadása** ablaktábla **művelet** keresése mezőjében válassza az **Azure** lehetőséget, így megkeresheti és kiválaszthatja az Azure-ban üzembe helyezett felügyelt összekötőhöz tartozó műveletet.
 
-   Ez a példa kiválasztja és használja az Office 365 Outlook műveletet, **E-mail küldése (v2)** .
+   Ez a példa kiválasztja és használja az Office 365 Outlook műveletet, **E-mail küldése (v2)**.
 
    ![Képernyőfelvétel: a Logic app Designer és a * * művelet hozzáadása * * ablaktábla Office 365 Outlook "e-mail küldése" művelet van kiválasztva.](./media/create-stateful-stateless-workflows-visual-studio-code/add-send-email-action.png)
 
@@ -494,7 +494,7 @@ A logikai alkalmazás teszteléséhez kövesse az alábbi lépéseket a hibakere
 
       ![Képernyőkép, amely az új gomb kiválasztásával mutatja be a Poster elemet](./media/create-stateful-stateless-workflows-visual-studio-code/postman-create-request.png)
 
-   1. Az **új ablaktábla létrehozás** paneljén kattintson a **kérelem** **elemre** .
+   1. Az **új ablaktábla létrehozás** paneljén kattintson a **kérelem** **elemre**.
 
    1. A kérelem **mentése** ablakban a kérelem **neve** alatt adja meg a kérelem nevét, például: `Test workflow trigger` .
 

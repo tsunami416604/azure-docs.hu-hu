@@ -1,6 +1,6 @@
 ---
-title: Erőforrások a szinapszis SQL-készlet fejlesztéséhez az Azure szinapszis Analyticsben
-description: Fejlesztési fogalmak, tervezési döntések, javaslatok és kódolási technikák az Azure szinapszis Analytics szolgáltatáshoz.
+title: Erőforrások egy dedikált SQL-készlet fejlesztéséhez az Azure szinapszis Analytics szolgáltatásban
+description: Fejlesztési fogalmak, tervezési döntések, javaslatok és kódolási technikák egy dedikált SQL-készlethez az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,18 +10,20 @@ ms.subservice: sql-dw
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 95f712f196c37650b52220c9e34f6cb6b50bff23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f158655cd7aeba647480325966c7f0cfcf65b13c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460609"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322134"
 ---
-# <a name="design-decisions-and-coding-techniques-for-a-synapse-sql-pool-in-azure-synapse-analytics"></a>Tervezési döntések és kódolási technikák a szinapszis SQL-készlethez az Azure szinapszis Analyticsben 
- Ebben a cikkben további forrásokat talál, amelyek segítségével jobban megismerheti az Azure Szinapszisban található SQL-készletek legfontosabb tervezési döntéseit, javaslatait és kódolási módszereit.
+# <a name="design-decisions-and-coding-techniques-for-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Tervezési döntések és kódolási technikák egy dedikált SQL-készlethez az Azure szinapszis Analyticsben 
+
+ Ebben a cikkben további forrásokat talál, amelyek segítenek jobban megérteni a legfontosabb tervezési döntéseket, javaslatokat és kódolási technikákat egy dedikált SQL-készlethez az Azure Szinapszisban.
 
 ## <a name="key-design-decisions"></a>Kulcsfontosságú tervezési döntések
-Az alábbi cikkek kiemelik az elosztott adattárház fejlesztésére vonatkozó fogalmakat és tervezési döntéseket az Azure szinapszis SQL Pool funkciójának használatával:
+
+Az alábbi cikkek kiemelik azokat az alapfogalmakat és kialakítási döntéseket, amelyekkel elosztott adattárházat fejleszthet az Azure szinapszis dedikált SQL Pool funkciójának használatával:
 
 * [kapcsolatok](../sql/connect-overview.md)
 * [Egyidejűség](resource-classes-for-workload-management.md)
@@ -34,7 +36,8 @@ Az alábbi cikkek kiemelik az elosztott adattárház fejlesztésére vonatkozó 
 * [statisztikák](sql-data-warehouse-tables-statistics.md)
 
 ## <a name="development-recommendations-and-coding-techniques"></a>Fejlesztési javaslatok és kódolási technikák
-Az alábbi cikkekben speciális kódolási technikák, tippek és javaslatok szerepelnek az SQL-készletek fejlesztéséhez:
+
+A következő cikkekben speciális kódolási technikák, tippek és javaslatok szerepelnek a dedikált SQL-készlet fejlesztéséhez:
 
 * [tárolt eljárások](sql-data-warehouse-develop-stored-procedures.md)
 * [Címkék](sql-data-warehouse-develop-label.md)
@@ -46,4 +49,5 @@ Az alábbi cikkekben speciális kódolási technikák, tippek és javaslatok sze
 * [változó-hozzárendelés](sql-data-warehouse-develop-variable-assignment.md)
 
 ## <a name="next-steps"></a>Következő lépések
+
 További információ: [T-SQL-utasítások](sql-data-warehouse-reference-tsql-statements.md).

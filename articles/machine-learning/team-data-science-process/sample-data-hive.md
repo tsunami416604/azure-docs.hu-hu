@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 339273c091a1bcfc4f2de66ef2f79ea8cebbc49b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a015da77cb7c0ba54be1dd5e729a9ee8a848c9d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86026049"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321880"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Adatmintavétel az Azure HDInsight Hive-táblákban
 Ez a cikk azt ismerteti, hogyan lehet lekérdezni az Azure HDInsight-struktúra tábláiban tárolt adatmintákat a kaptár-lekérdezések használatával, hogy az elemzéshez könnyebben kezelhető méretre csökkentse. Három népszerű használatú mintavételi módszert foglal magában:
@@ -28,7 +28,7 @@ Ez a cikk azt ismerteti, hogyan lehet lekérdezni az Azure HDInsight-struktúra 
 **Miért érdemes felvenni az adatait?**
 Ha az elemezni kívánt adatkészlet nagy méretű, általában egy jó ötlet, hogy lerövidítse az adatokat, hogy csökkentse azt kisebb, de reprezentatív és felügyelhető méretre. A leállási mintavételezés megkönnyíti az adatfelismerést, a feltárást és a szolgáltatások fejlesztését. A csapat adatelemzési folyamatának szerepe az adatfeldolgozási függvények és a gépi tanulási modellek gyors prototípusának engedélyezése.
 
-Ez a mintavételi feladat a [csoportos adatelemzési folyamat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)egyik lépése.
+Ez a mintavételi feladat a [csoportos adatelemzési folyamat (TDSP)](./index.yml)egyik lépése.
 
 ## <a name="how-to-submit-hive-queries"></a>Struktúra-lekérdezések beküldése
 A kaptár-lekérdezések a Hadoop-fürt fő csomópontján található Hadoop Command-Line konzolról is elindíthatók.  Jelentkezzen be a Hadoop-fürt fő csomópontjára, nyissa meg a Hadoop Command-Line konzolt, és küldje el innen a kaptár lekérdezéseit. A kaptár-lekérdezések a Hadoop Command-Line-konzolon való elküldésével kapcsolatos utasításokért lásd: [a kaptár-lekérdezések elküldése](move-hive-tables.md#submit).
@@ -54,7 +54,7 @@ where samplekey<='${hiveconf:sampleRate}'
 Itt `<sample rate, 0-1>` adhatja meg a rekordok azon hányadát, amelyet a felhasználók szeretne felvenni.
 
 ## <a name="random-sampling-by-groups"></a><a name="group"></a> Véletlenszerű mintavételezés csoportok szerint
-A kategorikus azonosítók mintavétele során érdemes lehet bevenni vagy kizárni az összes példányt a kategorikus változó egyes értékeinél. Ezt a fajta mintavételezést "mintavételezés csoportonként" nevezzük. Ha például egy "*State*" kategorikus változóval rendelkezik, amely olyan értékeket tartalmaz, mint például a NY, a ma, a CA, a NJ és a PA, akkor az egyes állapotokból származó rekordokat össze kell állítani, függetlenül attól, hogy mintát vesznek-e.
+A kategorikus azonosítók mintavétele során érdemes lehet bevenni vagy kizárni az összes példányt a kategorikus változó egyes értékeinél. Ezt a fajta mintavételezést "mintavételezés csoportonként" nevezzük. Ha például egy " *State* " kategorikus változóval rendelkezik, amely olyan értékeket tartalmaz, mint például a NY, a ma, a CA, a NJ és a PA, akkor az egyes állapotokból származó rekordokat össze kell állítani, függetlenül attól, hogy mintát vesznek-e.
 
 Íme egy példa a Group:
 
@@ -105,4 +105,3 @@ where state_rank <= state_cnt*'${hiveconf:sampleRate}'
 ```
 
 További információ a kaptárban elérhető fejlettebb mintavételi módszerekről: [LanguageManual mintavétel](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling).
-

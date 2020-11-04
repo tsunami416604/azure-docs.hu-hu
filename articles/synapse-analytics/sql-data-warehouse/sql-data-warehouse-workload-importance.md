@@ -1,6 +1,6 @@
 ---
 title: Számítási feladat fontossága
-description: Útmutatás a szinapszis SQL Pool-lekérdezések fontosságának beállításához az Azure szinapszis Analyticsben.
+description: Útmutató a dedikált SQL Pool-lekérdezések fontosságának beállításához az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 1b2c71d7bf9e796af77e9a2a4a3a31152f2ca884
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07c781672874bff306c9d25a464ec66414ebc9f1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85212343"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322123"
 ---
 # <a name="azure-synapse-analytics-workload-importance"></a>Az Azure szinapszis Analytics számítási feladatának fontossága
 
-Ez a cikk azt ismerteti, hogyan befolyásolható a számítási feladatok fontossága a szinapszis SQL Pool-kérelmek végrehajtásának sorrendjében az Azure Szinapszisban.
+Ez a cikk azt ismerteti, hogy a számítási feladatok fontossága milyen hatással lehet a dedikált SQL Pool-kérelmek végrehajtásának sorrendjére az Azure Szinapszisban.
 
 ## <a name="importance"></a>Fontosság
 
@@ -38,7 +38,7 @@ Az értékesítési és időjárási adatokkal kapcsolatos alapvető fontossági
 
 ### <a name="locking"></a>Zárolás
 
-Az olvasási és írási tevékenységek zárolásának elérése a természetes tartalom egyik területe. A [partíciók váltását](sql-data-warehouse-tables-partition.md) vagy [átnevezését](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) igénylő tevékenységek esetében emelt szintű zárolásra van szükség.  A számítási feladatok fontossága nélkül a szinapszis SQL-készlet az Azure Szinapszisban optimalizálja az átviteli sebességet. Az adatátviteli teljesítmény optimalizálása azt jelenti, hogy ha a futtatott és a várólistára helyezett kérelmek azonos zárolási igényekkel és erőforrásokkal rendelkeznek, az üzenetsor-kezelési kérelmek megkerülhetik a kérések várólistáján megjelenő, magasabb zárolási igényekkel rendelkező kérelmeket. Ha a számítási feladatok fontossága nagyobb a zárolási igényeket kielégítő kérelmek esetében. Az alacsonyabb fontosságú kérelem előtt a rendszer a nagyobb jelentőségű kérést fogja futtatni.
+Az olvasási és írási tevékenységek zárolásának elérése a természetes tartalom egyik területe. A [partíciók váltását](sql-data-warehouse-tables-partition.md) vagy [átnevezését](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) igénylő tevékenységek esetében emelt szintű zárolásra van szükség.  A számítási feladatok fontossága nélkül az Azure szinapszis dedikált SQL-készlete optimalizálja az átviteli sebességet. Az adatátviteli teljesítmény optimalizálása azt jelenti, hogy ha a futtatott és a várólistára helyezett kérelmek azonos zárolási igényekkel és erőforrásokkal rendelkeznek, az üzenetsor-kezelési kérelmek megkerülhetik a kérések várólistáján megjelenő, magasabb zárolási igényekkel rendelkező kérelmeket. Ha a számítási feladatok fontossága nagyobb a zárolási igényeket kielégítő kérelmek esetében. Az alacsonyabb fontosságú kérelem előtt a rendszer a nagyobb jelentőségű kérést fogja futtatni.
 
 Tekintse meg a következő példát:
 
@@ -50,7 +50,7 @@ Ha a Q2 és a Q3 is ugyanolyan fontossággal bír, és a Q1 még mindig végreha
 
 ### <a name="non-uniform-requests"></a>Nem egységes kérelmek
 
-Egy másik forgatókönyv, ahol a fontosság segíthet a lekérdezési igények kielégítésében, ha különböző erőforrás-osztályokkal rendelkező kérelmeket küld el.  Ahogy azt korábban említettük, ugyanilyen fontos, hogy a szinapszis SQL-készlet az Azure Szinapszisban optimalizálja az átviteli sebességet. Ha a vegyes méretre vonatkozó kérések (például a smallrc vagy a mediumrc) várólistára kerülnek, a szinapszis SQL-készlet kiválasztja az elérhető erőforrásokon belüli legkorábbi érkező kéréseket. Ha a számítási feladatok fontosságát alkalmazza, a rendszer a legnagyobb jelentőségű kérést ütemezi.
+Egy másik forgatókönyv, ahol a fontosság segíthet a lekérdezési igények kielégítésében, ha különböző erőforrás-osztályokkal rendelkező kérelmeket küld el.  Ahogy azt korábban említettük, ugyanilyen fontos, hogy az Azure szinapszis dedikált SQL-készlete optimalizálja az átviteli sebességet. Ha a vegyes méretre vonatkozó kérések (például a smallrc vagy a mediumrc) várólistán vannak, a dedikált SQL-készlet kiválasztja az elérhető erőforrásokon belüli legkorábbi érkező kéréseket. Ha a számítási feladatok fontosságát alkalmazza, a rendszer a legnagyobb jelentőségű kérést ütemezi.
   
 Vegye figyelembe a következő példát a DW500c:
 
@@ -60,7 +60,7 @@ Vegye figyelembe a következő példát a DW500c:
 
 Mivel a Q5 mediumrc, két párhuzamossági tárolóhelyre van szükség. A Q5-nek várnia kell, hogy a futó lekérdezések közül kettő befejeződjön.  Ha azonban az egyik futó lekérdezés (Q1-Q4) befejeződik, a K6 azonnal ütemezve van, mert az erőforrások a lekérdezés végrehajtásához léteznek.  Ha a Q5 nagyobb jelentőséggel bír, mint K6, a K6 addig vár, amíg az Q5 nem fut a végrehajtás megkezdése előtt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az osztályozó létrehozásával kapcsolatos további információkért lásd a [munkaterhelés-osztályozó létrehozása (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)című témakört.  
 - A számítási feladatok besorolásával kapcsolatos további információkért lásd: [munkaterhelés besorolása](sql-data-warehouse-workload-classification.md).  

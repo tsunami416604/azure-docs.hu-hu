@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4a4d3a1480a852218e698862a509c4af45e49eb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d9b2546553e03d1555cf4c587d699d9a4ea7e51
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76714410"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321931"
 ---
 # <a name="project-lead-tasks-in-the-team-data-science-process"></a>Projekt-érdeklődői feladatok a csoportos adatelemzési folyamatban
 
@@ -49,7 +49,7 @@ A Tárházak klónozásához és a tartalmak módosításához a helyi gépen va
 
 - Azure-előfizetés.
 - A git telepítve van a gépen. Ha DSVM használ, a git előre telepítve van. Egyéb esetben lásd: [platformok és eszközök függelék](platforms-and-tools.md#appendix).
-- Ha DSVM szeretne használni, az Azure-ban létrehozott és konfigurált Windows-vagy Linux-DSVM. További információt és útmutatást a [Data Science Virtual Machine dokumentációjában](/azure/machine-learning/data-science-virtual-machine/)talál.
+- Ha DSVM szeretne használni, az Azure-ban létrehozott és konfigurált Windows-vagy Linux-DSVM. További információt és útmutatást a [Data Science Virtual Machine dokumentációjában](../data-science-virtual-machine/index.yml)talál.
 - Windows DSVM esetén a [git Hitelesítőadat-kezelő (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) telepítve van a gépen. A *readme.MD* fájlban görgessen le a **letöltés és telepítés** szakaszban, és válassza ki a **legújabb telepítőt**. Töltse le az *. exe* -telepítőt a telepítő lapról, és futtassa. 
 - Linux DSVM esetében egy nyilvános SSH-kulcs, amely be van állítva a DSVM, és hozzá lett adva az Azure DevOps. További információt és útmutatást az **SSH nyilvános kulcs létrehozása** című szakaszban talál a [platformok és eszközök függelékben](platforms-and-tools.md#appendix). 
 
@@ -57,13 +57,13 @@ A Tárházak klónozásához és a tartalmak módosításához a helyi gépen va
 
 Projekt Tárház létrehozása a csapat **MyTeam** -projektben:
 
-1. Nyissa meg a csapat projekt- **Összefoglalás** lapját *https \/ / \<server name> / \<organization name> / \<team name> :*, például **https: \/ /dev.Azure.com/DataScienceUnit/MyTeam**, és válassza a bal oldali navigációs menüben a **repók** lehetőséget. 
+1. Nyissa meg a csapat projekt- **Összefoglalás** lapját *https \/ / \<server name> / \<organization name> / \<team name> :* , például **https: \/ /dev.Azure.com/DataScienceUnit/MyTeam** , és válassza a bal oldali navigációs menüben a **repók** lehetőséget. 
    
 1. Válassza ki az adattár nevét az oldal tetején, majd válassza az **új tárház** lehetőséget a legördülő menüből.
    
    ![Új tárház kiválasztása](./media/project-lead-tasks/project-leads-9-select-repos.png)
    
-1. Az **új Tárház létrehozása** párbeszédpanelen győződjön meg róla, hogy a **git** elem van kiválasztva a **típus**területen. Adja meg a *DSProject1* a **tárház neve**területen, majd válassza a **Létrehozás**lehetőséget.
+1. Az **új Tárház létrehozása** párbeszédpanelen győződjön meg róla, hogy a **git** elem van kiválasztva a **típus** területen. Adja meg a *DSProject1* a **tárház neve** területen, majd válassza a **Létrehozás** lehetőséget.
    
    ![Tárház létrehozása](./media/project-lead-tasks/project-leads-3-create-project-repo-2.png)
    
@@ -79,11 +79,11 @@ A Project-tárház feltöltése a Team template-tárház tartalmával:
    
 1. Válassza ki a tárház nevét az oldal tetején, majd válassza a **DSProject1** lehetőséget a legördülő listából.
    
-1. A **DSProject1 üres** lapon válassza az **Importálás**lehetőséget. 
+1. A **DSProject1 üres** lapon válassza az **Importálás** lehetőséget. 
    
    ![Importálás kiválasztása](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
    
-1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként**, majd adja meg a **TeamTemplate** -tárház URL-címét a **klónozási URL-cím**alatt. Az URL-cím *https: \/ / \<server name> / \<organization name> / \<team name> /_git \<team template repository name> /*. Például: **https: \/ /dev.Azure.com/DataScienceUnit/MyTeam/_git/TeamTemplate**. 
+1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként** , majd adja meg a **TeamTemplate** -tárház URL-címét a **klónozási URL-cím** alatt. Az URL-cím *https: \/ / \<server name> / \<organization name> / \<team name> /_git \<team template repository name> /*. Például: **https: \/ /dev.Azure.com/DataScienceUnit/MyTeam/_git/TeamTemplate**. 
    
 1. Válassza az **Importálás** lehetőséget. A Team template-tárház tartalmát a rendszer importálja a projekt adattárba. 
    
@@ -91,7 +91,7 @@ A Project-tárház feltöltése a Team template-tárház tartalmával:
 
 Ha testre kell szabnia a projekt-tárház tartalmát, hogy az megfeleljen a projekt konkrét igényeinek, hozzáadhat, törölhet vagy módosíthat adattár-fájlokat és mappákat. Közvetlenül dolgozhat az Azure-adattárakban, vagy a tárházat a helyi gépre vagy DSVM, módosíthatja és véglegesítheti, és leküldheti a frissítéseket a megosztott projekt adattárba. Kövesse a Team- [Tárházak tartalmának testreszabása](team-lead-tasks.md#customize-the-contents-of-the-team-repositories)című témakör utasításait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbiakban a csoportos adatelemzési folyamat által meghatározott egyéb szerepkörök és feladatok részletes ismertetésére talál hivatkozásokat:
 

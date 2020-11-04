@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0be75b3b0a7b9b5aaec0da1d9f41f67a7108e77a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c20bf1c5856276c4c7ee0e37ed4ef2120d1d93d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085310"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322035"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Funkciók létrehozása az adatokhoz az SQL Serveren SQL és Python használatával
 Ebből a dokumentumból megtudhatja, hogyan hozhatja ki az Azure-beli SQL Server VM tárolt adatok szolgáltatásait, amelyek segítségével az algoritmusok hatékonyabban megismerhetik az adatokból. Ezt a feladatot SQL vagy programozási nyelv (például Python) használatával hajthatja végre. Mindkét módszert itt mutatjuk be.
 
-Ez a feladat a [csoportos adatelemzési folyamat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)egyik lépése.
+Ez a feladat a [csoportos adatelemzési folyamat (TDSP)](./index.yml)egyik lépése.
 
 > [!NOTE]
 > Gyakorlati példákért tekintse meg a [New York-i taxi-adatkészletet](https://www.andresmh.com/nyctaxitrips/) , és tekintse meg a New York-i HUZAVONA nevű IPNB a [IPython notebook használatával SQL Server és](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) a végpontok közötti átjáráshoz.
@@ -99,12 +99,12 @@ Ezek a hely-alapú funkciók további, a korábban leírtaknak megfelelően tov�
 
 > [!TIP]
 > Programozott módon beszúrhatja a rekordokat a választott nyelv használatával. Előfordulhat, hogy az írási hatékonyság javítása érdekében be kell szúrnia az adattömbökbe az adathalmazokat. [Íme egy példa arra, hogyan teheti ezt meg a pyodbc használatával](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python).
-> Egy másik alternatíva az, hogy az adatbázisban a [BCP segédprogram](https://msdn.microsoft.com/library/ms162802.aspx) használatával szúr be adatbevitelt
+> Egy másik alternatíva az, hogy az adatbázisban a [BCP segédprogram](/sql/tools/bcp-utility) használatával szúr be adatbevitelt
 > 
 > 
 
 ### <a name="connecting-to-azure-machine-learning"></a><a name="sql-aml"></a>Csatlakozás a Azure Machine Learninghoz
-Az újonnan létrehozott funkció hozzáadhatók oszlopként egy meglévő táblához, vagy egy új táblában tárolhatók, és a Machine learning eredeti táblájához csatlakoznak. A szolgáltatások létrehozhatók vagy elérhetők, ha már létrejöttek, az [adatimportálási](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) modul használata az Azure ml-ben az alábbi ábrán látható módon:
+Az újonnan létrehozott funkció hozzáadhatók oszlopként egy meglévő táblához, vagy egy új táblában tárolhatók, és a Machine learning eredeti táblájához csatlakoznak. A szolgáltatások létrehozhatók vagy elérhetők, ha már létrejöttek, az [adatimportálási](/azure/machine-learning/studio-module-reference/import-data) modul használata az Azure ml-ben az alábbi ábrán látható módon:
 
 ![Azure ML-olvasók](./media/sql-server-virtual-machine/reader_db_featurizedinput.png)
 
@@ -126,5 +126,4 @@ A Pythonban található [Panda Library](https://pandas.pydata.org/) számos adat
 data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
 ```
 
-Most már dolgozhat a Panda adatkerettel, ahogy az az [Azure Blob Storage-hoz készült szolgáltatások létrehozása a Panda használatával](create-features-blob.md)című témakörben leírtak szerint.
-
+Most már dolgozhat a Panda adatkerettel, ahogy az az [Azure Blob Storage-hoz készült szolgáltatások létrehozása a Panda használatával](./explore-data-blob.md)című témakörben leírtak szerint.

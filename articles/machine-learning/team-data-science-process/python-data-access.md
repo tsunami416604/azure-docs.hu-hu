@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6c8e6fee2b9f01b8d7ab48990760aa4c4d6e11b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 497b8f5598cf7aa7720f47863d465f5e29789b07
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361500"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321948"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Hozzáférés az adathalmazokhoz Python segítségével, az Azure Machine Learning Python ügyfélkönyvtárat használva
 Microsoft Azure Machine Learning Python ügyféloldali kódtár előzetes verziója lehetővé teszi a Azure Machine Learning adatkészletek biztonságos elérését egy helyi Python-környezetből, és lehetővé teszi a munkaterületen lévő adatkészletek létrehozását és kezelését.
@@ -69,11 +69,11 @@ A Azure Machine Learning Studio (klasszikus) webes felületen létrehozhat kódr
 ### <a name="security-for-data-access"></a><a name="security"></a>Adathozzáférés biztonsága
 A Python ügyféloldali kódtár számára a Azure Machine Learning Studio (klasszikus) által biztosított kódrészletek tartalmazzák a munkaterület-azonosítót és az engedélyezési jogkivonatot. Ezek teljes hozzáférést biztosítanak a munkaterülethez, és védelemmel kell ellátni, például jelszóval.
 
-Biztonsági okokból a kódrészlet funkció csak olyan felhasználók számára érhető el, akiknek a szerepkörük **tulajdonosként** van beállítva a munkaterületen. A szerepkör a **felhasználók** lapon, a **Beállítások**területen jelenik meg Azure Machine learning Studio (klasszikus).
+Biztonsági okokból a kódrészlet funkció csak olyan felhasználók számára érhető el, akiknek a szerepkörük **tulajdonosként** van beállítva a munkaterületen. A szerepkör a **felhasználók** lapon, a **Beállítások** területen jelenik meg Azure Machine learning Studio (klasszikus).
 
 ![A képernyőkép a Azure Machine Learning Studio felhasználók lapján megjeleníti a beállításokat.][security]
 
-Ha a szerepkör nem **tulajdonosként**van beállítva, kérheti, hogy a rendszer visszahívja tulajdonosként, vagy kérje meg a munkaterület tulajdonosát, hogy megadja a kódrészletet.
+Ha a szerepkör nem **tulajdonosként** van beállítva, kérheti, hogy a rendszer visszahívja tulajdonosként, vagy kérje meg a munkaterület tulajdonosát, hogy megadja a kódrészletet.
 
 Az engedélyezési jogkivonat beszerzéséhez válasszon egyet a következő lehetőségek közül:
 
@@ -85,12 +85,12 @@ Az engedélyezési jogkivonat beszerzéséhez válasszon egyet a következő leh
 
 Ha a fejlesztők megszerezték a munkaterület-azonosítót és az engedélyezési jogkivonatot, akkor a szerepkörtől függetlenül hozzáférhetnek a munkaterülethez a kódrészlet használatával.
 
-Az engedélyezési jogkivonatok kezelése az **engedélyezési JOGkivonatok** lapon, a **Beállítások**területen történik. Újra létrehozhatja őket, de ez az eljárás visszavonja az előző tokenhez való hozzáférést.
+Az engedélyezési jogkivonatok kezelése az **engedélyezési JOGkivonatok** lapon, a **Beállítások** területen történik. Újra létrehozhatja őket, de ez az eljárás visszavonja az előző tokenhez való hozzáférést.
 
 ### <a name="access-datasets-from-a-local-python-application"></a><a name="accessingDatasets"></a>Adatkészletek elérése helyi Python-alkalmazásból
 1. Machine Learning Studio (klasszikus) területen kattintson a bal oldali navigációs sávban található **adatkészletek** elemre.
 2. Válassza ki az elérni kívánt adatkészletet. Bármelyik adatkészletet kiválaszthatja a **saját ADATkészletek** listából vagy a **minták** listából.
-3. Az alsó eszköztáron kattintson az **adatelérési kód előállítása**elemre. Ha az adatformátum nem kompatibilis a Python ügyféloldali függvénytárával, ez a gomb le lesz tiltva.
+3. Az alsó eszköztáron kattintson az **adatelérési kód előállítása** elemre. Ha az adatformátum nem kompatibilis a Python ügyféloldali függvénytárával, ez a gomb le lesz tiltva.
    
     ![A képernyőfelvételen az adatelérési kóddal GENERÁLT adatkészletek láthatók.][datasets]
 4. Válassza ki a kódrészletet a megjelenő ablakban, és másolja a vágólapra.
@@ -131,7 +131,7 @@ Az alábbi lépések egy kísérletet létrehozó példát mutatnak be, és a k�
 4. Helyezzen be egy [Konvertálás CSV][convert-to-csv] -modulba, és csatlakoztassa a bemenetét az egyik [felosztott][split] modul kimenetéhez.
 5. Mentse a kísérletet, futtassa, majd várjon, amíg a feladatok befejeződik.
 6. Kattintson a kimenet csomópontra az [átalakítás CSV-][convert-to-csv] modulba.
-7. Amikor megjelenik a helyi menü, válassza az **adatelérési kód létrehozása**lehetőséget.
+7. Amikor megjelenik a helyi menü, válassza az **adatelérési kód létrehozása** lehetőséget.
    
     ![Helyi menü][experiment]
 8. Válassza ki a kódrészletet, és másolja a vágólapra a megjelenő ablakban.
@@ -364,6 +364,5 @@ Ha az adatai már szerializálva vannak, `update_from_raw_data` a helyett haszn�
 
 
 <!-- Module References -->
-[convert-to-csv]: https://msdn.microsoft.com/library/azure/faa6ba63-383c-4086-ba58-7abf26b85814/
-[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
-
+[convert-to-csv]: /azure/machine-learning/studio-module-reference/convert-to-csv
+[split]: /azure/machine-learning/studio-module-reference/split-data

@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: 5e84a3930d350ec45cef7119342e3e4d2d5daaee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44b5baa074b62a072873d8097de184a2813b54ec
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250657"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322016"
 ---
 # <a name="feature-engineering-in-data-science"></a>Az adatelemzés funkcióinak mérnöki funkciója
 
 Ebből a cikkből megtudhatja, hogyan fejlesztheti a funkciók mérnöki funkcióit, és hogyan javíthatja az adatait a gépi tanulásban. Ismerkedjen meg [Azure Machine learning Studio (klasszikus)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) kísérletekből származó szemléltető példákkal. 
 
-* **Szolgáltatás-mérnöki**folyamat: új funkciók létrehozása a nyers adatokból a tanulási algoritmus prediktív teljesítményének növeléséhez. A mérnöki funkcióknak olyan további információkat kell rögzíteniük, amelyek nem könnyen láthatók az eredeti szolgáltatáskészlet esetében.
-* **Szolgáltatás kiválasztása**: a funkciók dimenzióját kiválasztásának folyamata, amely csökkenti a betanítási probléma mértékét.
+* **Szolgáltatás-mérnöki** folyamat: új funkciók létrehozása a nyers adatokból a tanulási algoritmus prediktív teljesítményének növeléséhez. A mérnöki funkcióknak olyan további információkat kell rögzíteniük, amelyek nem könnyen láthatók az eredeti szolgáltatáskészlet esetében.
+* **Szolgáltatás kiválasztása** : a funkciók dimenzióját kiválasztásának folyamata, amely csökkenti a betanítási probléma mértékét.
 
 A rendszer általában a szolgáltatások **fejlesztését** alkalmazza a további funkciók létrehozásához, majd a **funkció kiválasztásával** megszünteti a lényegtelen, redundáns vagy szorosan korrelált funkciókat.
 
@@ -60,7 +60,7 @@ Az A szolgáltatáskészlet mellett, amely már létezik az eredeti nyers adatba
 
 ### <a name="feature-engineering-using-studio-classic"></a>Feature Engineering a Studio használatával (klasszikus)
 
-A Studio (klasszikus) kísérlet során a rendszer ezt a négy betanítási adatkészletet négy ág alapján alkotja az előre feldolgozott bemeneti adatkészletből. A bal szélső ág kivételével mindegyik ág tartalmaz egy [végrehajtási R parancsfájl](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/) -modult, amelyben a származtatott funkciókat (B, C és D) a rendszer kiépíti és hozzáfűzi az importált adatkészlethez.
+A Studio (klasszikus) kísérlet során a rendszer ezt a négy betanítási adatkészletet négy ág alapján alkotja az előre feldolgozott bemeneti adatkészletből. A bal szélső ág kivételével mindegyik ág tartalmaz egy [végrehajtási R parancsfájl](/azure/machine-learning/studio-module-reference/execute-r-script) -modult, amelyben a származtatott funkciókat (B, C és D) a rendszer kiépíti és hozzáfűzi az importált adatkészlethez.
 
 Az alábbi ábra bemutatja a B. szolgáltatáskészlet létrehozásához használt R-szkriptet a második bal oldali ágban.
 
@@ -80,9 +80,9 @@ A szolgáltatások fejlesztését széles körben alkalmazzák a szöveges adatb
 
 ### <a name="feature-hashing"></a>Szolgáltatások kivonatolása
 
-Ennek a feladatnak a megvalósításához a rendszer a [szolgáltatás-kivonatolás](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/feature-hashing) nevű technikát alkalmazza, hogy hatékonyan kapcsolja be a tetszőleges szöveges funkciókat az indexekben. Ahelyett, hogy az egyes szöveges funkciókat (szavakat/kifejezéseket) egy adott indexhez társítsa, ez a módszer egy kivonatoló függvényt alkalmaz a funkciókra, és a kivonatok értékeit közvetlenül is használja.
+Ennek a feladatnak a megvalósításához a rendszer a [szolgáltatás-kivonatolás](/azure/machine-learning/studio-module-reference/feature-hashing) nevű technikát alkalmazza, hogy hatékonyan kapcsolja be a tetszőleges szöveges funkciókat az indexekben. Ahelyett, hogy az egyes szöveges funkciókat (szavakat/kifejezéseket) egy adott indexhez társítsa, ez a módszer egy kivonatoló függvényt alkalmaz a funkciókra, és a kivonatok értékeit közvetlenül is használja.
 
-A Studio (klasszikus) szolgáltatásban van egy [funkció-kivonatolási](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/feature-hashing) modul, amely a szó/kifejezés funkciókat kényelmesen hozza létre. Az alábbi ábrán egy példa látható a modul használatára. A bemeneti adatkészlet két oszlopot tartalmaz: a könyv minősítése 1-től 5-ig terjed, és a tényleges felülvizsgálati tartalom. Ennek a modulnak a célja egy olyan új funkció beolvasása, amely a megfelelő szó (ok)/phrase előfordulási gyakoriságát mutatja az adott könyv-ellenőrzésen belül. A modul használatához hajtsa végre a következő lépéseket:
+A Studio (klasszikus) szolgáltatásban van egy [funkció-kivonatolási](/azure/machine-learning/studio-module-reference/feature-hashing) modul, amely a szó/kifejezés funkciókat kényelmesen hozza létre. Az alábbi ábrán egy példa látható a modul használatára. A bemeneti adatkészlet két oszlopot tartalmaz: a könyv minősítése 1-től 5-ig terjed, és a tényleges felülvizsgálati tartalom. Ennek a modulnak a célja egy olyan új funkció beolvasása, amely a megfelelő szó (ok)/phrase előfordulási gyakoriságát mutatja az adott könyv-ellenőrzésen belül. A modul használatához hajtsa végre a következő lépéseket:
 
 * Először válassza ki a bemeneti szöveget tartalmazó oszlopot (ebben a példában a "Col2").
 * Másodszor állítsa a "kivonatolási bitsize" a 8-as értékre, ami azt jelenti, hogy 2 ^ 8 = 256 funkció lesz létrehozva. Az összes szövegben szereplő szó/fázis kivonata 256-es indexbe kerül. A "kivonatolási bitsize" paraméter 1 és 31 közötti tartományba esik. A/phrase (ok) kevésbé valószínű, hogy ugyanabba az indexbe kerül, ha nagyobb számra van beállítva.
