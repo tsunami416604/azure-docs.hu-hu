@@ -3,15 +3,16 @@ title: Tárolók lekérdezése az Azure Cosmos DB-ben
 description: Megtudhatja, hogyan kérdezheti le a tárolókat a Azure Cosmos DB partíciós és több partíciós lekérdezések használatával
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 3c363552d1a196bed49e1ef3448a8216b7bcae2f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0f08ca84597b08b9a236b7bfb0fc9c849423a752
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93086057"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335891"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Azure Cosmos-tároló lekérdezése
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -100,7 +101,7 @@ Próbálkozzon a több partíciós lekérdezések elkerülésével, ha a munkate
 - Több mint 30 000 RU-t tervez kiépíteni
 - 100 GB-nál több adat tárolását tervezi
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A particionálással kapcsolatos tudnivalókat az alábbi cikkekben találja Azure Cosmos DB:
 

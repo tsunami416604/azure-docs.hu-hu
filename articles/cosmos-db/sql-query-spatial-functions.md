@@ -3,16 +3,17 @@ title: Térbeli függvények Azure Cosmos DB lekérdezési nyelven
 description: Ismerje meg Azure Cosmos DB térbeli SQL-rendszerfunkcióit.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 515e6da43a115c092ba48fdfcd2457f0b0c60623
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 690a5cef2141af75412eaca207a16c59b37aa3ac
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93082436"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335381"
 ---
 # <a name="spatial-functions-azure-cosmos-db"></a>Térbeli függvények (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,7 +35,7 @@ A következő skaláris függvények végrehajtanak egy műveletet egy térbeli 
 
   
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
 - [Az Azure Cosmos DB bemutatása](introduction.md)

@@ -3,16 +3,17 @@ title: BŰN Azure Cosmos DB lekérdezési nyelven
 description: Ismerkedjen meg az SQL System Function SIN szolgáltatással Azure Cosmos DBban.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9f4c7933bed9d51e33ada21d03b9ab8447110e32
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fd7abb4364cf10e01008b980211949a65027d6a2
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93082470"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335398"
 ---
 # <a name="sin-azure-cosmos-db"></a>SIN (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -52,7 +53,7 @@ SELECT SIN(45.175643) AS sin
 
 Ez a rendszerfüggvény nem fogja használni az indexet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

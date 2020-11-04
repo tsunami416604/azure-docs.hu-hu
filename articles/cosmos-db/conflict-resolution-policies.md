@@ -3,16 +3,17 @@ title: Ütközés-feloldási típusok és megoldási szabályzatok a Azure Cosmo
 description: Ez a cikk a Azure Cosmos DB ütközési kategóriáit és ütközés-feloldási házirendjeit ismerteti.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: bfe4bd8483485ffc3b09e77e7683d2d0ec38ba75
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ba55d88de3a5a4087db30613b22a7d2441de9be1
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090188"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334378"
 ---
 # <a name="conflict-types-and-resolution-policies-when-using-multiple-write-regions"></a>Ütközési típusok és feloldási házirendek több írási régió használata esetén
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -47,7 +48,7 @@ Azure Cosmos DB rugalmas, házirend által vezérelt mechanizmust kínál az ír
   > [!NOTE]
   > Az egyéni ütközés-feloldási szabályzat csak az SQL API-fiókok esetében érhető el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan konfigurálhat ütközés-feloldási házirendeket:
 

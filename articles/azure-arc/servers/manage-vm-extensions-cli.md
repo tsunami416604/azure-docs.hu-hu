@@ -3,32 +3,19 @@ title: VM-bővítmény engedélyezése az Azure CLI-vel
 description: Ez a cikk bemutatja, hogyan telepíthet virtuálisgép-bővítményeket hibrid felhőalapú környezetekben futó Azure arc-kompatibilis kiszolgálókra az Azure CLI használatával.
 ms.date: 10/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8f09914f246635f07b3c51c682bd67591c706732
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 99504c86046c1ef34eeab500a703b9a028cb46fb
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92462961"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336732"
 ---
 # <a name="enable-azure-vm-extensions-using-the-azure-cli"></a>Azure VM-bővítmények engedélyezése az Azure CLI használatával
 
 Ez a cikk bemutatja, hogyan telepítheti és távolíthatja el az Azure arc-kompatibilis kiszolgálók által támogatott Azure-beli virtuálisgép-bővítményeket egy linuxos vagy Windowsos hibrid gépre az Azure CLI használatával.
 
 [!INCLUDE [Azure CLI Prepare your environment](../../../includes/azure-cli-prepare-your-environment.md)]
-
-## <a name="prerequisites"></a>Előfeltételek
-
-[Telepítse az Azure CLI](/cli/azure/install-azure-cli)-t.
-
-Mielőtt az Azure CLI-t használja az arc-kompatibilis kiszolgálók által felügyelt hibrid kiszolgálón lévő virtuálisgép-bővítmények kezeléséhez, telepítenie kell a `ConnectedMachine` CLI-bővítményt. Futtassa a következő parancsot az ív használatára képes kiszolgálón:
-
-```azurecli
-az extension add connectedmachine
-```
-
-A telepítés befejeztével a következő üzenet jelenik meg:
-
-`The installed extension `connectedmachine` is experimental and not covered by customer support. Please use with discretion.`
 
 ## <a name="enable-extension"></a>Bővítmény engedélyezése
 

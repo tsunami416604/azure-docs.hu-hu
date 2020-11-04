@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: f65707d80461385c28369e75a294865e03f8c662
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: cbe3ef7080397b135ea0fb17cd50de9b1ccfdf09
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367737"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336119"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveletcsoportok létrehozása és kezelése az Azure Portalon
 A műveleti csoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. A különböző riasztások ugyanazt a műveleti csoportot vagy különböző műveleti csoportokat használhatják a felhasználó igényeitől függően. Egy előfizetésben akár 2 000 műveleti csoportot is beállíthat.
@@ -20,31 +20,31 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet műveleti csopo
 
 Az egyes műveletek a következő tulajdonságokből állnak:
 
-* **Típus**: az értesítés vagy művelet elvégezve. Ilyenek például a hanghívások, SMS-üzenetek, e-mailek küldése, vagy különböző típusú automatizált műveletek elindítása. Lásd a cikk későbbi részében található típusokat.
-* **Name (név**): a műveleti csoporton belüli egyedi azonosító.
-* **Részletek**: a megfelelő részletek *típus*szerint változnak.
+* **Típus** : az értesítés vagy művelet elvégezve. Ilyenek például a hanghívások, SMS-üzenetek, e-mailek küldése, vagy különböző típusú automatizált műveletek elindítása. Lásd a cikk későbbi részében található típusokat.
+* **Name (név** ): a műveleti csoporton belüli egyedi azonosító.
+* **Részletek** : a megfelelő részletek *típus* szerint változnak.
 
 További információ arról, hogyan használhatók Azure Resource Manager sablonok a műveleti csoportok konfigurálásához: [Action Group Resource Manager-sablonok](./action-groups-create-resource-manager-template.md).
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>Műveleti csoport létrehozása a Azure Portal használatával
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza a **figyelő**elemet. A **figyelő** ablaktábla egyetlen nézetben összesíti az összes figyelési beállítást és az adatait.
+1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza a **figyelő** elemet. A **figyelő** ablaktábla egyetlen nézetben összesíti az összes figyelési beállítást és az adatait.
 
-1. Válassza a **riasztások**, majd a **műveletek kezelése**lehetőséget.
+1. Válassza a **riasztások** , majd a **műveletek kezelése** lehetőséget.
 
     ![Műveletek kezelése gomb](./media/action-groups/manage-action-groups.png)
     
-1. Válassza a **műveleti csoport hozzáadása**lehetőséget, és töltse ki a megfelelő mezőket a varázsló felhasználói felületén.
+1. Válassza a **műveleti csoport hozzáadása** lehetőséget, és töltse ki a megfelelő mezőket a varázsló felhasználói felületén.
 
     ![A "műveleti csoport hozzáadása" parancs](./media/action-groups/add-action-group.PNG)
 
 ### <a name="configure-basic-action-group-settings"></a>Alapszintű műveleti csoport beállításainak konfigurálása
 
-A **Project details**:
+A **Project details** :
 
 Válassza ki azt az **előfizetést** és **erőforráscsoportot** , amelyben a műveleti csoportot menti.
 
-A **példány részletei**területen:
+A **példány részletei** területen:
 
 1. Adja meg a **műveleti csoport nevét**.
 
@@ -59,15 +59,15 @@ A **példány részletei**területen:
 
 1. A riasztások indításakor küldendő értesítések listájának megadása. Minden értesítéshez adja meg a következőket:
 
-    a. **Értesítés típusa**: válassza ki az elküldeni kívánt értesítés típusát. Az alábbi lehetőségek közül választhat:
+    a. **Értesítés típusa** : válassza ki az elküldeni kívánt értesítés típusát. Az elérhető lehetőségek:
       * E-mail-Azure Resource Manager szerepkör – e-mail küldése az egyes előfizetési szintű ARM-szerepkörökhöz rendelt felhasználóknak.
       * E-mail/SMS/leküldés/hang – ezeket az értesítési típusokat megadott címzetteknek küldje el.
     
-    b. **Név**: adjon meg egy egyedi nevet az értesítéshez.
+    b. **Név** : adjon meg egy egyedi nevet az értesítéshez.
 
-    c. **Részletek**: a kiválasztott értesítési típus alapján írjon be egy e-mail-címet, telefonszámot stb.
+    c. **Részletek** : a kiválasztott értesítési típus alapján írjon be egy e-mail-címet, telefonszámot stb.
     
-    d. **Gyakori riasztási séma**: engedélyezheti a [közös riasztási sémát](./alerts-common-schema.md), amely lehetővé teszi, hogy egyetlen bővíthető és egységesített riasztási adattartalmat biztosítson a Azure monitor összes riasztási szolgáltatásában.
+    d. **Gyakori riasztási séma** : engedélyezheti a [közös riasztási sémát](./alerts-common-schema.md), amely lehetővé teszi, hogy egyetlen bővíthető és egységesített riasztási adattartalmat biztosítson a Azure monitor összes riasztási szolgáltatásában.
 
     ![Az értesítések lap](./media/action-groups/action-group-2-notifications.png)
     
@@ -77,13 +77,13 @@ A **példány részletei**területen:
 
 1. Megadhatja a riasztások aktiválásakor aktiválható műveletek listáját. Minden művelethez adja meg a következőket:
 
-    a. **Művelettípus**: válassza az Automation Runbook, az Azure Function, a ITSM, a Logic app, a Secure webhook és a webhook elemet.
+    a. **Művelettípus** : válassza az Automation Runbook, az Azure Function, a ITSM, a Logic app, a Secure webhook és a webhook elemet.
     
-    b. **Név**: adjon egyedi nevet a műveletnek.
+    b. **Név** : adjon egyedi nevet a műveletnek.
 
-    c. **Részletek**: a Művelettípus alapján adjon meg egy webhook URI-t, egy Azure-alkalmazást, egy ITSM-kapcsolat vagy egy Automation-runbook. A ITSM művelethez emellett adja meg a **munkaelemet** és a ITSM eszköz által igényelt egyéb mezőket.
+    c. **Részletek** : a Művelettípus alapján adjon meg egy webhook URI-t, egy Azure-alkalmazást, egy ITSM-kapcsolat vagy egy Automation-runbook. A ITSM művelethez emellett adja meg a **munkaelemet** és a ITSM eszköz által igényelt egyéb mezőket.
     
-    d. **Gyakori riasztási séma**: engedélyezheti a [közös riasztási sémát](./alerts-common-schema.md), amely lehetővé teszi, hogy egyetlen bővíthető és egységesített riasztási adattartalmat biztosítson a Azure monitor összes riasztási szolgáltatásában.
+    d. **Gyakori riasztási séma** : engedélyezheti a [közös riasztási sémát](./alerts-common-schema.md), amely lehetővé teszi, hogy egyetlen bővíthető és egységesített riasztási adattartalmat biztosítson a Azure monitor összes riasztási szolgáltatásában.
     
     ![A műveletek lap](./media/action-groups/action-group-3-actions.png)
 
@@ -287,21 +287,23 @@ Ha frissítéseket szeretne kapni ezen IP-címek változásairól, javasoljuk, h
 
 Előfordulhat, hogy egy műveleti csoportban korlátozott számú webhook-művelet van.
 
-### <a name="service-tag"></a>Szolgáltatás címkéje
+A forrás IP-címek gyakori frissítései elég időt igényelnek a webhookban. A *ActionGroup* **szolgáltatással** való használata megkönnyíti az IP-címek gyakori frissítéseinek manuális összetettségét. A fent megosztva a forrás IP-címek tartományának előtagjait a Microsoft automatikusan felügyeli a **Service tag** által felölelt módon.
+
+#### <a name="service-tag"></a>Szolgáltatás címkéje
 A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csoportját jelöli. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatás címkéjét a címek változásával, minimalizálva a ActionGroup vonatkozó hálózati biztonsági szabályok gyakori frissítéseinek összetettségét.
 
 1. Azure Portal az Azure-szolgáltatások területen keresse meg a *hálózati biztonsági csoportot*.
 2. Kattintson a **Hozzáadás** gombra, és hozzon létre egy hálózati biztonsági csoportot.
 
    1. Adja hozzá az erőforráscsoport nevét, majd adja meg a *példány részleteit*.
-   1. Kattintson a **felülvizsgálat + létrehozás** elemre, majd a *Létrehozás*gombra.
+   1. Kattintson a **felülvizsgálat + létrehozás** elemre, majd a *Létrehozás* gombra.
    
    :::image type="content" source="media/action-groups/action-group-create-security-group.png" alt-text="Példa hálózati biztonsági csoport létrehozására."border="true":::
 
 3. Nyissa meg az erőforráscsoportot, majd kattintson a létrehozott *hálózati biztonsági csoportra* .
 
-    1. Válassza a *bejövő biztonsági szabályok*lehetőséget.
-    1. Kattintson a **Hozzáadás**gombra.
+    1. Válassza a *bejövő biztonsági szabályok* lehetőséget.
+    1. Kattintson a **Hozzáadás** gombra.
     
     :::image type="content" source="media/action-groups/action-group-add-service-tag.png" alt-text="Példa szolgáltatási címke hozzáadására."border="true":::
 
@@ -312,9 +314,7 @@ A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csopo
     
     :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="Példa a szolgáltatási címke hozzáadására."border="true":::
 
-A ActionGroup **szolgáltatással** való használata segít minimalizálni az IP-címek gyakori frissítéseinek összetettségét.
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ az [SMS-riasztás viselkedéséről](./alerts-sms-behavior.md).  
 * Ismerkedjen meg [a tevékenység naplójának riasztása webhook sémával](./activity-log-alerts-webhook.md).  
 * További információ a [ITSM-csatolóról](./itsmc-overview.md).

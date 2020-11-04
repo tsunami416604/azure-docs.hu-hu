@@ -6,27 +6,24 @@ ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 10/06/2020
+ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: 35edcfb4bdb0715245f4a3190fb22638b1162429
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5873f28fed492f9ef906a9d7c1364d8ae07033a7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370984"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336061"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>Felügyelt lemez létrehozása lemezkép-verzióból
 
-Ha szükséges, a felügyelt lemezt egy megosztott képtárban tárolt lemezkép-verzióból is elvégezheti.
+Ha szükséges, exportálhatja az operációs rendszert vagy egy adatlemezt egy lemezkép-verzióról felügyelt lemezként egy megosztott képtárban tárolt lemezkép-verzióból.
 
 
 ## <a name="cli"></a>parancssori felület
 
-Állítsa a `source` változót a lemezkép verziójának azonosítójára, majd az [az Disk Create](/cli/azure/disk#az_disk_create) paranccsal hozza létre a felügyelt lemezt. 
-
-
-Az [az SIG rendszerkép-Version List](/cli/azure/sig/image-version#az_sig_image_version_list)paranccsal megtekintheti a képfájlok listáját. Ebben a példában az összes olyan rendszerkép-verziót keresjük, amelyek a *myImageDefinition* rendszerkép-definíció részét képezik a *MyGallery* -rendszerkép galériájában.
+Egy katalógusban lévő rendszerkép-verziók listázása az [az SIG rendszerkép-Version List](/cli/azure/sig/image-version.md#az_sig_image_version_list)paranccsal. Ebben a példában az összes olyan rendszerkép-verziót keresjük, amelyek a *myImageDefinition* rendszerkép-definíció részét képezik a *MyGallery* -rendszerkép galériájában.
 
 ```azurecli-interactive
 az sig image-version list \
@@ -36,28 +33,37 @@ az sig image-version list \
    -o table
 ```
 
+Állítsa a `source` változót a lemezkép verziójának azonosítójára, majd az [az Disk Create](/cli/azure/disk.md#az_disk_create) paranccsal hozza létre a felügyelt lemezt. 
 
-Ebben a példában egy *myManagedDisk*nevű felügyelt lemezt hozunk létre a *EastUS* régióban egy *myResourceGroup*nevű erőforráscsoporthoz. 
+Ebben a példában a lemezkép operációsrendszer-lemezét exportáljuk egy *myManagedOSDisk* nevű felügyelt lemez létrehozásához a *EastUS* régióban egy *myResourceGroup* nevű erőforráscsoport alatt. 
 
 ```azurecli-interactive
 source="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<galleryName>/images/<galleryImageDefinition>/versions/<imageVersion>"
 
-az disk create --resource-group myResourceGroup --location EastUS --name myManagedDisk --gallery-image-reference $source 
+az disk create --resource-group myResourceGroup --location EastUS --name myManagedOSDisk --gallery-image-reference $source 
 ```
 
-Ha a lemez adatlemez, a Hozzáadás `--gallery-image-reference-lun` gombra kattintva adja meg a LUN-t.
+
+
+Ha adatlemezt szeretne exportálni a rendszerkép verziójából, a Hozzáadás elemnél `--gallery-image-reference-lun` adja meg az exportálandó adatlemez LUN-helyét. 
+
+Ebben a példában a lemezkép verziójának 0. logikai egységében található adatlemezt exportáljuk egy *myManagedDataDisk* nevű felügyelt lemez létrehozásához a *EastUS* régióban egy *myResourceGroup* nevű erőforráscsoport esetében. 
+
+```azurecli-interactive
+source="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<galleryName>/images/<galleryImageDefinition>/versions/<imageVersion>"
+
+az disk create --resource-group myResourceGroup --location EastUS --name myManagedDataDisk --gallery-image-reference $source --gallery-image-reference-lun 0
+``` 
 
 ## <a name="powershell"></a>PowerShell
 
-A [Get-AzResource](/powershell/module/az.resources/get-azresource)használatával listázhatja az összes rendszerkép-verziót. 
+Katalógusban szereplő rendszerképek listázása a [Get-AzResource](/powershell/module/az.resources/get-azresource)használatával. 
 
 ```azurepowershell-interactive
 Get-AzResource `
    -ResourceType Microsoft.Compute/galleries/images/versions | `
    Format-Table -Property Name,ResourceId,ResourceGroupName
 ```
-
-
 
 Ha már rendelkezik az összes szükséges információval, a [Get-AzGalleryImageVersion](/powershell/module/az.compute/get-azgalleryimageversion) használatával lekérheti a használni kívánt forrás-rendszerkép verzióját, és hozzárendelheti azt egy változóhoz. Ebben a példában bemutatjuk a `1.0.0` definíció rendszerképének verzióját a forrás-katalógusban az `myImageDefinition` `myGallery` `myResourceGroup` erőforráscsoporthoz.
 
@@ -69,32 +75,47 @@ $sourceImgVer = Get-AzGalleryImageVersion `
    -Name 1.0.0
 ```
 
-Állítson be néhány változót a lemez adataihoz.
+Miután beállította a `source` változót a lemezkép verziójának azonosítójára, a [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) használatával hozzon létre egy lemez-konfigurációt, és hozzon létre egy [új AzDisk](/powershell/module/az.compute/new-azdisk) a lemez létrehozásához. 
 
-```azurepowershell-interactive
-$location = "East US"
-$resourceGroup = "myResourceGroup"
-$diskName = "myDisk"
-```
+Ebben a példában a lemezkép operációsrendszer-lemezét exportáljuk egy *myManagedOSDisk* nevű felügyelt lemez létrehozásához a *EastUS* régióban egy *myResourceGroup* nevű erőforráscsoport alatt. 
 
-Hozzon létre egy lemez-konfigurációt, majd a lemezt a forrás rendszerkép-verziójának AZONOSÍTÓjának használatával. A esetében a `-GalleryImageReference` LUN csak akkor szükséges, ha a forrás adatlemez.
-
+Hozzon létre egy lemez-konfigurációt.
 ```azurepowershell-interactive
 $diskConfig = New-AzDiskConfig `
-   -Location $location `
+   -Location EastUS `
    -CreateOption FromImage `
-   -GalleryImageReference @{Id = $sourceImgVer.Id; Lun=1}
+   -GalleryImageReference @{Id = $sourceImgVer.Id}
 ```
 
 Hozza létre a lemezt.
 
 ```azurepowershell-interactive
 New-AzDisk -Disk $diskConfig `
-   -ResourceGroupName $resourceGroup `
-   -DiskName $diskName
+   -ResourceGroupName myResourceGroup `
+   -DiskName myManagedOSDisk
 ```
 
-## <a name="next-steps"></a>Következő lépések
+Ha adatlemezt szeretne exportálni a lemezkép verziójában, adjon hozzá egy LUN-azonosítót a lemez konfigurációjához, és adja meg az exportálandó adatlemez logikai egységének helyét. 
+
+Ebben a példában a lemezkép verziójának 0. logikai egységében található adatlemezt exportáljuk egy *myManagedDataDisk* nevű felügyelt lemez létrehozásához a *EastUS* régióban egy *myResourceGroup* nevű erőforráscsoport esetében. 
+
+Hozzon létre egy lemez-konfigurációt.
+```azurepowershell-interactive
+$diskConfig = New-AzDiskConfig `
+   -Location EastUS `
+   -CreateOption FromImage `
+   -GalleryImageReference @{Id = $sourceImgVer.Id; Lun=0}
+```
+
+Hozza létre a lemezt.
+
+```azurepowershell-interactive
+New-AzDisk -Disk $diskConfig `
+   -ResourceGroupName myResourceGroup `
+   -DiskName myManagedDataDisk
+```
+
+## <a name="next-steps"></a>További lépések
 
 A felügyelt lemezekről az [Azure CLI](image-version-managed-image-cli.md) vagy a [PowerShell](image-version-managed-image-powershell.md)használatával is létrehozhat lemezkép-verziót.
 

@@ -8,33 +8,25 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: d2ea7233ee923881ee430aba8d8c23a37c29da7c
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 70441c3a1953fa1b6ebd69ef9cdb324d6cc04a5b
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027720"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336452"
 ---
-# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume-using-an-arm-template"></a>Gyors útmutató: Azure NetApp Files beállítása és NFS-kötet létrehozása ARM-sablonnal
+# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Gyors útmutató: Azure NetApp Files beállítása és NFS-kötet létrehozása
 
-Ebből a cikkből megtudhatja, hogyan állíthatja be gyorsan a Azure NetApp Filest, és hogyan hozhat létre egy kötetet egy Azure Resource Manager sablon használatával (ARM-sablon).
-
-[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+Ez a cikk bemutatja, hogyan állíthatja be gyorsan a Azure NetApp Filest, és hogyan hozhat létre kötetet.
 
 Ebben a rövid útmutatóban a következő elemeket fogja beállítani:
 
-- Regisztráció a Azure NetApp Files és a NetApp erőforrás-szolgáltatóhoz.
-- Egy NetApp-fiók.
-- Egy kapacitási készlet.
-- Egy Azure NetApp Files NFS-kötet.
+- Regisztráció a Azure NetApp Files és a NetApp erőforrás-szolgáltatóhoz
+- Egy NetApp-fiók
+- Egy kapacitás-készlet
+- Egy NFS-kötet a Azure NetApp Files
 
-Ha a környezet megfelel az előfeltételeknek, akkor már elvégezte az [első lépések](#before-you-begin) szakaszt, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon az Azure Portalon fog megnyílni.
-
-[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-anf-nfs-volume%2Fazuredeploy.json)
-
-## <a name="prerequisites"></a>Előfeltételek
-
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -43,24 +35,9 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="review-the-template"></a>A sablon áttekintése
-
-Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-anf-nfs-volume) közül származik.
-
- A sablon megtekintéséhez lásd: [azuredeploy.js](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-anf-nfs-volume/azuredeploy.json).
-
-Több erőforrás van definiálva a sablonban:
-
-- [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-- [Microsoft. NetApp/netAppAccounts](/azure/templates/microsoft.netapp/netappaccounts)
-- [Microsoft. NetApp/netAppAccounts/capacityPools](/azure/templates/microsoft.netapp/netappaccounts/capacitypools)
-- [Microsoft. NetApp/netAppAccounts/capacityPools/kötetek](/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes)
-
-## <a name="deploy-the-template"></a>A sablon üzembe helyezése
-
 ---
 
-### <a name="register-for-azure-netapp-files-and-netapp-resource-provider"></a>Regisztráljon Azure NetApp Files és a NetApp erőforrás-szolgáltatóra
+## <a name="register-for-azure-netapp-files-and-netapp-resource-provider"></a>Regisztráljon Azure NetApp Files és a NetApp erőforrás-szolgáltatóra
 
 > [!NOTE]
 > A regisztrációs folyamat hosszabb időt is igénybe vehet.
@@ -100,7 +77,7 @@ További információért lásd: [Azure NetApp Files regisztrálása](azure-neta
 
 ---
 
-### <a name="create-a-netapp-account"></a>NetApp-fiók létrehozása
+## <a name="create-a-netapp-account"></a>NetApp-fiók létrehozása
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -185,9 +162,9 @@ További információért lásd: [Azure NetApp Files regisztrálása](azure-neta
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-<!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-A következő kódrészlet azt mutatja be, hogyan hozható létre NetApp-fiók egy ARM-sablonban a [Microsoft. NetApp/netAppAccounts](/azure/templates/microsoft.netapp/netappaccounts) erőforrás használatával. A kód futtatásához töltse le a [teljes ARM-sablont](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-anf-nfs-volume/azuredeploy.json) a GitHub-adattárból.
+A következő kódrészlet azt mutatja be, hogyan hozható létre NetApp-fiók egy Azure Resource Manager sablonban (ARM-sablon) a [Microsoft. NetApp/netAppAccounts](/azure/templates/microsoft.netapp/netappaccounts) erőforrás használatával. A kód futtatásához töltse le a [teljes ARM-sablont](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) a GitHub-adattárból.
 
 :::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="177-183":::
 
@@ -195,7 +172,7 @@ A következő kódrészlet azt mutatja be, hogyan hozható létre NetApp-fiók e
 
 ---
 
-### <a name="set-up-a-capacity-pool"></a>Kapacitáskészlet beállítása
+## <a name="set-up-a-capacity-pool"></a>Kapacitáskészlet beállítása
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -261,7 +238,7 @@ A következő kódrészlet azt mutatja be, hogyan hozható létre NetApp-fiók e
 
 <!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
 
-A következő kódrészletből megtudhatja, hogyan hozhat létre kapacitási készletet egy ARM-sablonban a [Microsoft. NetApp/netAppAccounts/capacityPools](/azure/templates/microsoft.netapp/netappaccounts/capacitypools) erőforrás használatával. A kód futtatásához töltse le a [teljes ARM-sablont](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-anf-nfs-volume/azuredeploy.json) a GitHub-adattárból.
+A következő kódrészlet azt mutatja be, hogyan hozhat létre kapacitási készletet egy Azure Resource Manager sablonban (ARM-sablon) a [Microsoft. NetApp/netAppAccounts/capacityPools](/azure/templates/microsoft.netapp/netappaccounts/capacitypools) erőforrás használatával. A kód futtatásához töltse le a [teljes ARM-sablont](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) a GitHub-adattárból.
 
 :::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="184-196":::
 
@@ -269,7 +246,7 @@ A következő kódrészletből megtudhatja, hogyan hozhat létre kapacitási ké
 
 ---
 
-### <a name="create-nfs-volume-for-azure-netapp-files"></a>NFS-kötet létrehozása a Azure NetApp Fileshoz
+## <a name="create-nfs-volume-for-azure-netapp-files"></a>NFS-kötet létrehozása a Azure NetApp Fileshoz
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -410,7 +387,7 @@ A következő kódrészletből megtudhatja, hogyan hozhat létre kapacitási ké
 
 <!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
 
-A következő kódrészletek bemutatják, hogyan állíthat be egy VNet, és hogyan hozhat létre Azure NetApp Files kötetet egy ARM-sablonban. A VNet telepítője a [Microsoft. Network/virtualNetworks](/azure/templates/Microsoft.Network/virtualNetworks) erőforrást használja. A kötet létrehozása a [Microsoft. NetApp/netAppAccounts/capacityPools/Volumes](/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes) erőforrást használja. A kód futtatásához töltse le a [teljes ARM-sablont](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-anf-nfs-volume/azuredeploy.json) a GitHub-adattárból.
+A következő kódrészletek bemutatják, hogyan állíthat be egy VNet, és hogyan hozhat létre Azure NetApp Files kötetet egy Azure Resource Manager sablonban (ARM-sablon). A VNet telepítője a [Microsoft. Network/virtualNetworks](/azure/templates/Microsoft.Network/virtualNetworks) erőforrást használja. A kötet létrehozása a [Microsoft. NetApp/netAppAccounts/capacityPools/Volumes](/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes) erőforrást használja. A kód futtatásához töltse le a [teljes ARM-sablont](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) a GitHub-adattárból.
 
 :::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="148-176":::
 
@@ -422,7 +399,7 @@ A következő kódrészletek bemutatják, hogyan állíthat be egy VNet, és hog
 
 ---
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -483,7 +460,7 @@ Az erőforráscsoport törléséhez használja a Azure Portal, a PowerShellt vag
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Az Azure NetApp Files tárhely-hierarchiája](azure-netapp-files-understand-storage-hierarchy.md)

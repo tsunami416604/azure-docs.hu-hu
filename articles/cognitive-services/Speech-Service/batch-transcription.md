@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 11/03/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fe864212eaccb67335586ef8b25049529ab36b81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e4e5f4c1a50c814174dbbd5d419fe24b2e9f88e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360752"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336680"
 ---
 # <a name="how-to-use-batch-transcription"></a>A Batch-átírás használata
 
@@ -24,7 +24,7 @@ A Batch átírása REST API művelet, amely lehetővé teszi nagy mennyiségű h
 
 A Batch átírása REST API-kkal a következő módszereket hívhatja:
 
-|    Kötegelt átírási művelet                                             |    Módszer    |    REST API hívás                                   |
+|    Kötegelt átírási művelet                                             |    Metódus    |    REST API hívás                                   |
 |------------------------------------------------------------------------------|--------------|----------------------------------------------------|
 |    Új átírást hoz létre.                                              |    POST      |    speechtotext/v 3.0/átiratok            |
 |    Lekéri a hitelesített előfizetéshez tartozó átírások listáját.    |    GET       |    speechtotext/v 3.0/átiratok            |
@@ -36,8 +36,6 @@ A Batch átírása REST API-kkal a következő módszereket hívhatja:
 
 Áttekintheti és tesztelheti a részletes API-t, amely [hencegő dokumentumként](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)érhető el.
 
-Ez az API nem igényel egyéni végpontokat, és nem rendelkezik egyidejűségi követelményekkel.
-
 A Batch-átírási feladatok ütemezése a lehető legjobb megoldás szerint történik.
 Nem lehet megbecsülni, ha a feladat futási állapotba változik, de a normál rendszerterhelésnek megfelelően perceken belül meg kell történnie. Ha a futó állapotban van, az átirat gyorsabb, mint a lejátszási idő lejátszási sebessége.
 
@@ -46,9 +44,12 @@ Nem lehet megbecsülni, ha a feladat futási állapotba változik, de a normál 
 Ahogy a Speech Service összes funkciója esetében, létrehozhat egy előfizetési kulcsot a [Azure Portal](https://portal.azure.com) az első [lépéseket ismertető útmutatóban](overview.md#try-the-speech-service-for-free).
 
 >[!NOTE]
-> A Batch-átírás használatához standard előfizetés (S0) szükséges a Speech Service-hez. Az ingyenes előfizetési kulcsok (F0) nem működnek. További információ: [díjszabás és korlátok](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+> A Batch-átírás használatához standard előfizetés (S0) szükséges a Speech Service-hez. Az ingyenes előfizetés kulcsa (F0) nem fog működni. További információ: [díjszabás és korlátok](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 Ha azt tervezi, hogy testreszabja a modelleket, kövesse az [akusztikai Testreszabás](how-to-customize-acoustic-models.md) és a [nyelvi Testreszabás](how-to-customize-language-model.md)lépéseit. Ha a létrehozott modelleket a Batch-átírásban szeretné használni, szüksége lesz a modell helyére. A modell helyét a modell (tulajdonság) részleteinek vizsgálatával kérheti le `self` . A Batch átíró szolgáltatáshoz *nem szükséges* egy telepített egyéni végpont.
+
+>[!NOTE]
+> A REST API részeként a Batch-átírás [kvótákat és korlátokat](speech-services-quotas-and-limits.md#speech-to-text-quotas-and-limits-per-speech-resource)tartalmaz, amelyeket javasoljuk, hogy tekintse át. Ha szeretné kihasználni a Batch átírási képességét, hogy hatékonyan átmásolja a nagy mennyiségű hangfájlt, javasoljuk, hogy mindig több fájlt küldjön, vagy mutasson egy Blob Storage tárolóra a hangfájlok segítségével. A szolgáltatás az átfutási idő csökkentése érdekében egyszerre fogja átírni a fájlokat. Egyetlen kérelemben több fájl használata nagyon egyszerű és egyértelmű – lásd a [konfigurációs](#configuration) szakaszt. 
 
 ## <a name="batch-transcription-api"></a>Batch-átírási API
 
@@ -65,12 +66,16 @@ Rendezett végleges átirat létrehozásához használja a kiíráskor generált
 
 ### <a name="configuration"></a>Konfiguráció
 
-A konfigurációs paraméterek JSON-ként vannak megadva (egy vagy több különálló fájl):
+A konfigurációs paraméterek JSON-ként vannak megadva.
+
+**Egy vagy több különálló fájl átirata.** Ha egynél több fájlt szeretne átírni, javasoljuk, hogy több fájlt küldjön egy kérelembe. Az alábbi példa három fájlt használ:
 
 ```json
 {
   "contentUrls": [
-    "<URL to an audio file to transcribe>",
+    "<URL to an audio file 1 to transcribe>",
+    "<URL to an audio file 2 to transcribe>",
+    "<URL to an audio file 3 to transcribe>"
   ],
   "properties": {
     "wordLevelTimestampsEnabled": true
@@ -80,7 +85,7 @@ A konfigurációs paraméterek JSON-ként vannak megadva (egy vagy több külön
 }
 ```
 
-A konfigurációs paraméterek JSON-ként vannak megadva (teljes tároló feldolgozása):
+**Teljes tároló feldolgozása:**
 
 ```json
 {
@@ -93,12 +98,14 @@ A konfigurációs paraméterek JSON-ként vannak megadva (teljes tároló feldol
 }
 ```
 
-A következő JSON a Batch-átíráshoz használt egyéni betanított modellt adja meg:
+**Egyéni betanított modellt használhat a Batch-átíráshoz.** A példa három fájlt használ:
 
 ```json
 {
   "contentUrls": [
-    "<URL to an audio file to transcribe>",
+    "<URL to an audio file 1 to transcribe>",
+    "<URL to an audio file 2 to transcribe>",
+    "<URL to an audio file 3 to transcribe>"
   ],
   "properties": {
     "wordLevelTimestampsEnabled": true
@@ -156,7 +163,7 @@ Ezeket a választható tulajdonságokat az átírás konfigurálásához haszná
       `channels`
    :::column-end:::
    :::column span="2":::
-      Nem kötelező, `0` és `1` alapértelmezés szerint az átirata. A feldolgozandó csatorna-számok tömbje. Itt megadható a hangfájlban található elérhető csatornák egy részhalmaza (például `0` csak).
+      Nem kötelező, `0` és `1` alapértelmezés szerint az átirata. A feldolgozandó csatorna-számok tömbje. Itt megadhatja a hangfájlban található elérhető csatornák egy részhalmazát (például `0` csak).
 :::row-end:::
 :::row:::
    :::column span="1":::
@@ -323,7 +330,80 @@ Frissítse a mintát az előfizetési adatokkal, a szolgáltatási régióval, a
 
 A mintakód beállítja az ügyfelet, és elküldi az átírási kérelmet. Ezután lekérdezi az állapotadatok adatait, és kinyomtatja az átírási folyamat részleteit.
 
-[!code-csharp[Code to check batch transcription status](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#transcriptionstatus)]
+```csharp
+// get the status of our transcriptions periodically and log results
+int completed = 0, running = 0, notStarted = 0;
+while (completed < 1)
+{
+    completed = 0; running = 0; notStarted = 0;
+
+    // get all transcriptions for the user
+    paginatedTranscriptions = null;
+    do
+    {
+        // <transcriptionstatus>
+        if (paginatedTranscriptions == null)
+        {
+            paginatedTranscriptions = await client.GetTranscriptionsAsync().ConfigureAwait(false);
+        }
+        else
+        {
+            paginatedTranscriptions = await client.GetTranscriptionsAsync(paginatedTranscriptions.NextLink).ConfigureAwait(false);
+        }
+
+        // delete all pre-existing completed transcriptions. If transcriptions are still running or not started, they will not be deleted
+        foreach (var transcription in paginatedTranscriptions.Values)
+        {
+            switch (transcription.Status)
+            {
+                case "Failed":
+                case "Succeeded":
+                    // we check to see if it was one of the transcriptions we created from this client.
+                    if (!createdTranscriptions.Contains(transcription.Self))
+                    {
+                        // not created form here, continue
+                        continue;
+                    }
+
+                    completed++;
+
+                    // if the transcription was successful, check the results
+                    if (transcription.Status == "Succeeded")
+                    {
+                        var paginatedfiles = await client.GetTranscriptionFilesAsync(transcription.Links.Files).ConfigureAwait(false);
+
+                        var resultFile = paginatedfiles.Values.FirstOrDefault(f => f.Kind == ArtifactKind.Transcription);
+                        var result = await client.GetTranscriptionResultAsync(new Uri(resultFile.Links.ContentUrl)).ConfigureAwait(false);
+                        Console.WriteLine("Transcription succeeded. Results: ");
+                        Console.WriteLine(JsonConvert.SerializeObject(result, SpeechJsonContractResolver.WriterSettings));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Transcription failed. Status: {0}", transcription.Properties.Error.Message);
+                    }
+
+                    break;
+
+                case "Running":
+                    running++;
+                    break;
+
+                case "NotStarted":
+                    notStarted++;
+                    break;
+            }
+        }
+
+        // for each transcription in the list we check the status
+        Console.WriteLine(string.Format("Transcriptions status: {0} completed, {1} running, {2} not started yet", completed, running, notStarted));
+    }
+    while (paginatedTranscriptions.NextLink != null);
+
+    // </transcriptionstatus>
+    // check again after 1 minute
+    await Task.Delay(TimeSpan.FromMinutes(1)).ConfigureAwait(false);
+}
+```
 
 Az előző hívásokkal kapcsolatos részletes információkért tekintse meg a [hencegő dokumentumot](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0). Az itt látható teljes minta esetében lépjen a [githubra](https://aka.ms/csspeech/samples) az `samples/batch` alkönyvtárban.
 
@@ -336,6 +416,6 @@ Ez a mintakód nem ad meg egyéni modellt. A szolgáltatás az alapmodellt haszn
 > [!NOTE]
 > Az alapértékek átírásakor nem kell deklarálnia az alapmodell AZONOSÍTÓját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Beszéd a Text V3 API-hoz – dokumentáció](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)

@@ -3,15 +3,16 @@ title: Térinformatikai adatindexek indexelése Azure Cosmos DB
 description: Térbeli adatainak indexelése Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: tisande
-ms.openlocfilehash: 347617fb13041a8fb31c28f259aaf761baae2e53
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 47eedf1ddbb155180d364c42ec179b3e01279e44
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286310"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336214"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Térinformatikai adatindexek indexelése Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -160,7 +161,7 @@ A fenti indexelési házirend **boundingBox** (-10, 10) tartalmaz x koordinátá
 > [!NOTE]
 > Ha egy adattípusú tárolóhoz próbál felvenni egy **boundingBox** tartalmazó indexelési házirendet `geography` , a művelet sikertelen lesz. A BoundingBox hozzáadása előtt módosítania kell a tároló **geospatialConfig** `geometry` . **boundingBox** A tároló térinformatikai adattípusának kiválasztását megelőzően vagy azt követően módosíthatja az indexelési szabályzat hátralévő részét (például az elérési utakat és típusokat).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megtanulta, hogyan kezdheti meg a térinformatikai támogatás használatát Azure Cosmos DBban, a következő lehetőségekkel:
 
