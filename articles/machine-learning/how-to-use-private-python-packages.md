@@ -1,7 +1,7 @@
 ---
 title: Privát Python-csomagok használata
 titleSuffix: Azure Machine Learning
-description: Biztonságosan férhet hozzá a privát Python-csomagokhoz Azure Machine Learning környezetekről.
+description: Megtudhatja, hogyan dolgozhat biztonságosan a Azure Machine Learning-környezetekben található privát Python-csomagokkal.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 58bb08cad111e0744f7831783169901cd76caef4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a722746c8e06a691e702b095d3081f1530645de
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91772634"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318920"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Privát Python-csomagok használata Azure Machine Learning
 
@@ -27,16 +27,16 @@ Ebből a cikkből megtudhatja, hogyan használhatók biztonságosan a privát Py
 
 Az ajánlott módszer attól függ, hogy van-e néhány csomag egyetlen Azure Machine Learning-munkaterülethez, vagy a csomagok teljes tárháza a szervezeten belüli összes munkaterülethez.
 
-A privát csomagokat a [környezeti](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment) osztály használja. A környezeten belül deklarálhatja, hogy mely Python-csomagokat szeretné használni, beleértve a magánjellegűket is. Az általános Azure Machine Learning környezetének megismeréséhez tekintse meg a [környezetek használatát](how-to-use-environments.md)ismertető témakört. 
+A privát csomagokat a [környezeti](/python/api/azureml-core/azureml.core.environment.environment) osztály használja. A környezeten belül deklarálhatja, hogy mely Python-csomagokat szeretné használni, beleértve a magánjellegűket is. Az általános Azure Machine Learning környezetének megismeréséhez tekintse meg a [környezetek használatát](how-to-use-environments.md)ismertető témakört. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
- * A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
+ * A [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)
  * [Azure Machine learning munkaterület](how-to-manage-workspace.md)
 
 ## <a name="use-small-number-of-packages-for-development-and-testing"></a>Kis számú csomagot használhat a fejlesztéshez és a teszteléshez
 
-Ha kis mennyiségű privát csomagot használ egy adott munkaterülethez, használja a statikus [`Environment.add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#&preserve-view=trueadd-private-pip-wheel-workspace--file-path--exist-ok-false-) módszert. Ezzel a módszerrel gyorsan hozzáadhat egy privát csomagot a munkaterülethez, és kiválóan alkalmas fejlesztési és tesztelési célokra.
+Ha kis mennyiségű privát csomagot használ egy adott munkaterülethez, használja a statikus [`Environment.add_private_pip_wheel()`](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-private-pip-wheel-workspace--file-path--exist-ok-false-) módszert. Ezzel a módszerrel gyorsan hozzáadhat egy privát csomagot a munkaterülethez, és kiválóan alkalmas fejlesztési és tesztelési célokra.
 
 Mutasson a fájl elérési útja argumentumra egy helyi kerék fájlra, és futtassa a ```add_private_pip_wheel``` parancsot. A parancs egy URL-címet ad vissza, amellyel nyomon követheti a csomag helyét a munkaterületen belül. Rögzítse a tárolási URL-címet, és adja át a `add_pip_package()` metódusnak.
 
@@ -52,13 +52,13 @@ Belsőleg a Azure Machine Learning szolgáltatás a biztonságos SAS URL-cím al
 
 ## <a name="use-a-repository-of-packages-from-azure-devops-feed"></a>Csomagok tárházának használata az Azure DevOps-hírcsatornából
 
-Ha aktívan fejleszt Python-csomagokat a Machine learning-alkalmazáshoz, az Azure DevOps-tárházban tárolhatja őket, és hírcsatornáként közzéteheti őket. Ez a módszer lehetővé teszi, hogy integrálja a DevOps munkafolyamatot a csomagok létrehozásához a Azure Machine Learning-munkaterület. A Python-hírcsatornák Azure DevOps való beállításának megismeréséhez olvassa el [a Python-csomagok használatának első lépései az Azure-](https://docs.microsoft.com/azure/devops/artifacts/quickstarts/python-packages?view=azure-devops&preserve-view=true) összetevőkben című témakört.
+Ha aktívan fejleszt Python-csomagokat a Machine learning-alkalmazáshoz, az Azure DevOps-tárházban tárolhatja őket, és hírcsatornáként közzéteheti őket. Ez a módszer lehetővé teszi, hogy integrálja a DevOps munkafolyamatot a csomagok létrehozásához a Azure Machine Learning-munkaterület. A Python-hírcsatornák Azure DevOps való beállításának megismeréséhez olvassa el [a Python-csomagok használatának első lépései az Azure-](/azure/devops/artifacts/quickstarts/python-packages?preserve-view=true&view=azure-devops) összetevőkben című témakört.
 
 Ez a módszer személyes hozzáférési tokent használ a tárházon végzett hitelesítéshez. Ugyanez a módszer a jogkivonat-alapú hitelesítéssel, például a privát GitHub-adattárakkal rendelkező más adattárakra is érvényes. 
 
- 1. [Hozzon létre egy személyes hozzáférési jogkivonatot (Pat)](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&preserve-view=true&tabs=preview-page#create-a-pat) az Azure DevOps-példányhoz. Állítsa be a jogkivonat hatókörét __csomagolási > olvasásra__. 
+ 1. [Hozzon létre egy személyes hozzáférési jogkivonatot (Pat)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?preserve-view=true&tabs=preview-page&view=azure-devops#create-a-pat) az Azure DevOps-példányhoz. Állítsa be a jogkivonat hatókörét __csomagolási > olvasásra__. 
 
- 2. Adja hozzá az Azure DevOps URL-címét és a PAT as munkaterület-tulajdonságokat a [Workspace.set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#&preserve-view=trueset-connection-name--category--target--authtype--value-) metódus használatával.
+ 2. Adja hozzá az Azure DevOps URL-címét és a PAT as munkaterület-tulajdonságokat a [Workspace.set_connection](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py#&preserve-view=trueset-connection-name--category--target--authtype--value-) metódus használatával.
 
      ```python
     from azureml.core import Workspace

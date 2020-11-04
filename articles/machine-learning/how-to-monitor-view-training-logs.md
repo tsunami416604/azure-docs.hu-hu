@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 11e4b79bf76a4612728992f7c16000d840b9c639
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 7929c80f4f90de82c516b746310b5e58819a16bc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285952"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316677"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML futtatási naplók és metrikák figyelése és megtekintése
 
@@ -58,7 +58,7 @@ A Futtatás befejezése után már nem jelenik meg ezen a lapon. A befejezett fu
 
 ## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>A monitor futtatása a Jupyter notebook Widget használatával
 
-Ha a **ScriptRunConfig** metódust használja a futtatások elküldéséhez, tekintse meg a Futtatás előrehaladását a [Jupyter widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)használatával. A futtatás elküldéséhez hasonlóan a vezérlő aszinkron módon működik, és 10-15 másodpercenként élő állapotfrissítést biztosít a feladat befejeződéséig.
+Ha a **ScriptRunConfig** metódust használja a futtatások elküldéséhez, tekintse meg a Futtatás előrehaladását a [Jupyter widget](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)használatával. A futtatás elküldéséhez hasonlóan a vezérlő aszinkron módon működik, és 10-15 másodpercenként élő állapotfrissítést biztosít a feladat befejeződéséig.
 
 Tekintse meg a Jupyter widgetet a Futtatás befejeződésére való várakozás közben.
     
@@ -134,4 +134,3 @@ Próbálja ki a következő lépéseket a Azure Machine Learning használatának
 * Ismerje meg, hogyan [követheti nyomon a kísérleteket, és hogyan engedélyezheti a naplókat a Azure Machine learning Designerben](how-to-track-designer-experiments.md).
 
 * [A képosztályozási modellek Azure Machine Learninggel való betanításával](tutorial-train-models-with-aml.md) kapcsolatos témakörben talál példát arra, hogyan regisztrálhatja a legjobb modellt, és hogyan helyezheti üzembe.
-

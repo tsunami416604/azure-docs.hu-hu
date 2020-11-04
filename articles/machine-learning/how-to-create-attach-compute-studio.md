@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: c22593fbd1e1653efa98c760d5bbb73b03761059
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6cb455880852295d7176e813208a93919a2c14bb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708395"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318259"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Számítási célok létrehozása a modell betanításához és üzembe helyezéséhez Azure Machine Learning Studióban
 
@@ -45,7 +45,7 @@ A munkaterülethez tartozó összes számítási cél megjelenítéséhez köves
 
 1. Navigáljon [Azure Machine learning studióhoz](https://ml.azure.com).
  
-1. A __kezelés__területen válassza a __számítás__lehetőséget.
+1. A __kezelés__ területen válassza a __számítás__ lehetőséget.
 
 1. A felső lapfülek kiválasztásával jelenítheti meg az egyes számítási célkitűzéseket.
 
@@ -59,11 +59,11 @@ Az előző lépések végrehajtásával tekintheti meg a számítási célok lis
 
 1. Ha nincsenek számítási célok, válassza a  **Létrehozás** lehetőséget a lap közepén.
   
-    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="Számítási célok listájának megtekintése":::
+    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="Számítási cél létrehozása":::
 
 1. Ha megjelenik a számítási erőforrások listája, válassza a **+ új** elemet a lista fölött.
 
-    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="Számítási célok listájának megtekintése":::
+    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="Új kiválasztása":::
 
 
 1. Töltse ki az űrlapot a számítási típushoz:
@@ -77,14 +77,14 @@ Az előző lépések végrehajtásával tekintheti meg a számítási célok lis
 
 1. A létrehozási művelet állapotának megtekintéséhez válassza ki a listából a számítási célt:
 
-    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="Számítási célok listájának megtekintése":::
+    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="Számítási állapot megtekintése egy listából":::
 
 
 ### <a name="compute-instance"></a>Számítási példány
 
 A számítási példány létrehozásához kövesse a [fenti lépéseket](#portal-create) .  Ezután töltse ki az űrlapot a következőképpen:
 
-:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Számítási célok listájának megtekintése":::
+:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Új számítási példány létrehozása":::
 
 
 |Mező  |Leírás  |
@@ -93,7 +93,7 @@ A számítási példány létrehozásához kövesse a [fenti lépéseket](#porta
 |Virtuális gép típusa |  Válassza a CPU vagy a GPU lehetőséget. Ez a típus nem módosítható a létrehozás után     |
 |Virtuális gép mérete     |  A támogatott virtuálisgép-méretek a régióban korlátozottak lehetnek. Tekintse meg a [rendelkezésre állási listát](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 |SSH-hozzáférés engedélyezése/letiltása     |   Az SSH-hozzáférés alapértelmezés szerint le van tiltva.  Az SSH-hozzáférés nem lehet. a létrehozás után módosult. Győződjön meg arról, hogy engedélyezi a hozzáférést, ha interaktívan szeretne hibakeresést végezni a [vs Code Remote](how-to-set-up-vs-code-remote.md) használatával   |
-|Speciális beállítások     |  Választható. Virtuális hálózat konfigurálása. Válassza ki az **erőforráscsoportot**, a **virtuális hálózatot**és az **alhálózatot** , hogy létrehozza a számítási példányt egy Azure-Virtual Network (vnet) belül. További információ: a vnet vonatkozó [hálózati követelmények](how-to-enable-virtual-network.md#compute-instance) .  |
+|Speciális beállítások     |  Választható. Virtuális hálózat konfigurálása. Válassza ki az **erőforráscsoportot** , a **virtuális hálózatot** és az **alhálózatot** , hogy létrehozza a számítási példányt egy Azure-Virtual Network (vnet) belül. További információ: a vnet vonatkozó [hálózati követelmények](./how-to-secure-training-vnet.md) .  |
 
 ### <a name="compute-clusters"></a><a name="amlcompute"></a> Számítási fürtök
 
@@ -108,13 +108,13 @@ Hozzon létre egy vagy több csomópontos számítási fürtöt a képzéshez, a
 |Virtuális gép mérete     |  A támogatott virtuálisgép-méretek a régióban korlátozottak lehetnek. Tekintse meg a [rendelkezésre állási listát](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 |Csomópontok minimális száma | A kiépíteni kívánt csomópontok minimális száma. Ha dedikált számú csomópontot szeretne használni, itt állítsa be ezt a számot. A minimális érték 0 értékre állításával pénzt takaríthat meg, így nem fog fizetni minden csomópontért, ha a fürt üresjáratban van. |
 |Csomópontok maximális száma | A kiépíteni kívánt csomópontok maximális száma. A számítás a feladatok elküldésekor a csomópontok maximális száma alapján automatikusan méretezhető. |
-|Speciális beállítások     |  Választható. Virtuális hálózat konfigurálása. Válassza ki az **erőforráscsoportot**, a **virtuális hálózatot**és az **alhálózatot** , hogy létrehozza a számítási példányt egy Azure-Virtual Network (vnet) belül. További információ: a vnet vonatkozó [hálózati követelmények](how-to-enable-virtual-network.md#compute-instance) .   [Felügyelt identitásokat](#managed-identity) is csatolhat az erőforrásokhoz való hozzáférés biztosításához     |
+|Speciális beállítások     |  Választható. Virtuális hálózat konfigurálása. Válassza ki az **erőforráscsoportot** , a **virtuális hálózatot** és az **alhálózatot** , hogy létrehozza a számítási példányt egy Azure-Virtual Network (vnet) belül. További információ: a vnet vonatkozó [hálózati követelmények](./how-to-secure-training-vnet.md) .   [Felügyelt identitásokat](#managed-identity) is csatolhat az erőforrásokhoz való hozzáférés biztosításához     |
 
 #### <a name="set-up-managed-identity"></a><a name="managed-identity"></a> Felügyelt identitás beállítása
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-intro.md)]
 
-A fürt létrehozásakor vagy a számítási fürt részleteinek szerkesztésekor a **Speciális beállítások**lapon állítsa be **a felügyelt identitás hozzárendelése** beállítást, és adjon meg egy rendszer által hozzárendelt identitást vagy felhasználó által hozzárendelt identitást.
+A fürt létrehozásakor vagy a számítási fürt részleteinek szerkesztésekor a **Speciális beállítások** lapon állítsa be **a felügyelt identitás hozzárendelése** beállítást, és adjon meg egy rendszer által hozzárendelt identitást vagy felhasználó által hozzárendelt identitást.
 
 #### <a name="managed-identity-usage"></a>Felügyelt identitás használata
 
@@ -136,7 +136,7 @@ Hozzon létre vagy csatoljon egy Azure Kubernetes Service-(ak-) fürtöt a nagy 
 |Virtuális gép mérete     |  A támogatott virtuálisgép-méretek a régióban korlátozottak lehetnek. Tekintse meg a [rendelkezésre állási listát](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 |Fürt célja  | **Éles** vagy **fejlesztési-tesztelési** lehetőség kiválasztása |
 |Csomópontok száma | A virtuális gép (vCPU) által megszorozott csomópontok száma nem lehet nagyobb, mint 12. |
-| Hálózati konfiguráció | A **speciális** elemre kattintva hozhatja létre a számítást egy meglévő virtuális hálózaton belül. A virtuális hálózatban található AK-val kapcsolatos további információkért lásd: [hálózati elkülönítés a betanítás során, valamint a magánhálózati végpontokkal és a virtuális hálózatokkal való következtetés](how-to-enable-virtual-network.md#aksvnet). |
+| Hálózati konfiguráció | A **speciális** elemre kattintva hozhatja létre a számítást egy meglévő virtuális hálózaton belül. A virtuális hálózatban található AK-val kapcsolatos további információkért lásd: [hálózati elkülönítés a betanítás során, valamint a magánhálózati végpontokkal és a virtuális hálózatokkal való következtetés](./how-to-secure-inferencing-vnet.md). |
 | SSL-konfiguráció engedélyezése | Ezzel a beállítással konfigurálhatja az SSL-tanúsítványt a számítási feladatokhoz |
 
 ### <a name="attached-compute"></a>Csatolt számítás
@@ -157,10 +157,10 @@ A [fenti lépések](#portal-create) végrehajtásával csatolhat egy számítás
     > [!NOTE]
     > A Microsoft azt javasolja, hogy SSH-kulcsokat használjon, amelyek biztonságosabbak a jelszavaknál. A jelszavak ki vannak téve a találgatásos támadásoknak. Az SSH-kulcsok titkosítási aláírásokra támaszkodnak. Az Azure Virtual Machines használható SSH-kulcsok létrehozásával kapcsolatos információkért tekintse meg a következő dokumentumokat:
     >
-    > * [SSH-kulcsok létrehozása és használata Linux vagy macOS rendszeren](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
-    > * [SSH-kulcsok létrehozása és használata Windows rendszeren](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
+    > * [SSH-kulcsok létrehozása és használata Linux vagy macOS rendszeren](../virtual-machines/linux/mac-create-ssh-keys.md)
+    > * [SSH-kulcsok létrehozása és használata Windows rendszeren](../virtual-machines/linux/ssh-from-windows.md)
 
-1. Válassza a __csatolás__lehetőséget. 
+1. Válassza a __csatolás__ lehetőséget. 
 
 
 ## <a name="next-steps"></a>Következő lépések
@@ -176,4 +176,4 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 * [Oktatóanyag: a betanítási modell](tutorial-train-models-with-aml.md) felügyelt számítási célt használ a modellek betanításához.
 * Ismerje meg, hogy miként lehet [hatékonyan hangolni a hiperparaméterek beállítása](how-to-tune-hyperparameters.md) a jobb modellek létrehozásához.
 * A betanított modellel megtudhatja, [Hogyan és hol helyezheti üzembe a modelleket](how-to-deploy-and-where.md).
-* [Azure Machine Learning használata az Azure Virtual Networks használatával](how-to-enable-virtual-network.md)
+* [Azure Machine Learning használata az Azure Virtual Networks használatával](./how-to-network-security-overview.md)

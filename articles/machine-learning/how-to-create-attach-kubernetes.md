@@ -1,7 +1,7 @@
 ---
 title: Azure Kubernetes-szolgáltatás létrehozása és csatlakoztatása
 titleSuffix: Azure Machine Learning
-description: Az Azure Kubernetes Service (ak) használatával gépi tanulási modellt telepíthet webszolgáltatásként. Megtudhatja, hogyan hozhat létre egy új AK-fürtöt Azure Machine Learningon keresztül. Azt is megtudhatja, hogyan csatolhat egy meglévő AK-fürtöt a Azure Machine Learning-munkaterülethez.
+description: Ismerje meg, hogyan hozhat létre új Azure Kubernetes Service-fürtöt Azure Machine Learningon keresztül, illetve hogyan csatolhat egy meglévő AK-fürtöt a munkaterülethez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: 1126798bdf07f54811c83b932af9928f3e3115dc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9b14ba12c9f9b679d1d63008d31825647f42619d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792004"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318053"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service-fürt létrehozása és csatolása
 
@@ -26,25 +26,25 @@ A Azure Machine Learning betanított gépi tanulási modelleket telepíthet az A
 
 - Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
-- Az [Azure CLI-bővítmény Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), [Azure Machine learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)-hoz vagy a [Azure Machine learning Visual Studio Code bővítményhez](tutorial-setup-vscode-extension.md).
+- Az [Azure CLI-bővítmény Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), [Azure Machine learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)-hoz vagy a [Azure Machine learning Visual Studio Code bővítményhez](tutorial-setup-vscode-extension.md).
 
-- Ha Azure-Virtual Network használatát tervezi az Azure ML-munkaterület és az AK-fürt közötti kommunikáció biztonságossá tételéhez, olvassa el a [hálózati elkülönítést a & következtetések betanítása](how-to-enable-virtual-network.md) című cikkben.
+- Ha Azure-Virtual Network használatát tervezi az Azure ML-munkaterület és az AK-fürt közötti kommunikáció biztonságossá tételéhez, olvassa el a [hálózati elkülönítést a & következtetések betanítása](./how-to-network-security-overview.md) című cikkben.
 
 ## <a name="limitations"></a>Korlátozások
 
 - Ha egy alapszintű Load Balancer (BLB) helyett a fürtben telepített **standard Load Balancerra (SLB)** van szüksége, hozzon létre egy fürtöt az AK-portálon/CLI/SDK-ban, majd **CSATOLja** a pénzmosás-munkaterülethez.
 
-- Ha olyan Azure Policy rendelkezik, amely korlátozza a nyilvános IP-címek létrehozását, az AK-fürt létrehozása sikertelen lesz. Az ak-nak nyilvános IP-címet kell megadnia a [kimenő forgalomhoz](/azure/aks/limit-egress-traffic). A kimenő forgalomról szóló cikk emellett útmutatást nyújt a kimenő forgalomnak a fürtön keresztül a nyilvános IP-címen történő zárolásához, kivéve néhány teljes tartománynevet. A nyilvános IP-címek engedélyezésének két módja van:
+- Ha olyan Azure Policy rendelkezik, amely korlátozza a nyilvános IP-címek létrehozását, az AK-fürt létrehozása sikertelen lesz. Az ak-nak nyilvános IP-címet kell megadnia a [kimenő forgalomhoz](../aks/limit-egress-traffic.md). A kimenő forgalomról szóló cikk emellett útmutatást nyújt a kimenő forgalomnak a fürtön keresztül a nyilvános IP-címen történő zárolásához, kivéve néhány teljes tartománynevet. A nyilvános IP-címek engedélyezésének két módja van:
     - A fürt a BLB vagy a SLB által alapértelmezés szerint létrehozott nyilvános IP-címet is használhatja, vagy
-    - A fürt nyilvános IP-cím nélkül hozható létre, és a nyilvános IP-cím egy felhasználó által megadott útvonallal rendelkező tűzfallal van konfigurálva. További információ: a [fürt kimenő adatainak testreszabása felhasználó által definiált útvonalon](/azure/aks/egress-outboundtype).
+    - A fürt nyilvános IP-cím nélkül hozható létre, és a nyilvános IP-cím egy felhasználó által megadott útvonallal rendelkező tűzfallal van konfigurálva. További információ: a [fürt kimenő adatainak testreszabása felhasználó által definiált útvonalon](../aks/egress-outboundtype.md).
     
     A pénzmosás-vezérlési sík nem kommunikál ehhez a nyilvános IP-címhez. A központi telepítések esetében az AK-vezérlési síkon beszél. 
 
-- Ha egy AK-fürtöt **csatlakoztat** , amelynek [engedélyezett IP-tartománya engedélyezve van az API-kiszolgáló eléréséhez](/azure/aks/api-server-authorized-ip-ranges), engedélyezze a pénzmosás-vezérlési sík IP-tartományait az AK-fürthöz. A pénzmosás-vezérlési sík a párosított régiókban van üzembe helyezve, és következtetéseket helyez üzembe az AK-fürtön. Az API-kiszolgálóhoz való hozzáférés nélkül a következtetések nélküli hüvelyek nem helyezhetők üzembe. A [párosított régiók](/azure/best-practices-availability-paired-regions) [IP-tartományait](https://www.microsoft.com/download/confirmation.aspx?id=56519) is használhatja, ha egy AK-fürtben engedélyezi az IP-tartományokat.
+- Ha egy AK-fürtöt **csatlakoztat** , amelynek [engedélyezett IP-tartománya engedélyezve van az API-kiszolgáló eléréséhez](../aks/api-server-authorized-ip-ranges.md), engedélyezze a pénzmosás-vezérlési sík IP-tartományait az AK-fürthöz. A pénzmosás-vezérlési sík a párosított régiókban van üzembe helyezve, és következtetéseket helyez üzembe az AK-fürtön. Az API-kiszolgálóhoz való hozzáférés nélkül a következtetések nélküli hüvelyek nem helyezhetők üzembe. A [párosított régiók](../best-practices-availability-paired-regions.md) [IP-tartományait](https://www.microsoft.com/download/confirmation.aspx?id=56519) is használhatja, ha egy AK-fürtben engedélyezi az IP-tartományokat.
 
     A jóváhagyott IP-címtartományok csak standard Load Balancer esetén működnek.
 
-- Ha privát AK-fürtöt szeretne használni (az Azure Private link használatával), először létre kell hoznia a fürtöt, majd **csatolnia** kell a munkaterülethez. További információt a [privát Azure Kubernetes Service-fürt létrehozása](/azure/aks/private-clusters)című témakörben talál.
+- Ha privát AK-fürtöt szeretne használni (az Azure Private link használatával), először létre kell hoznia a fürtöt, majd **csatolnia** kell a munkaterülethez. További információt a [privát Azure Kubernetes Service-fürt létrehozása](../aks/private-clusters.md)című témakörben talál.
 
 - Az AK-fürthöz tartozó számítási névnek egyedinek kell lennie az Azure ML-munkaterületen belül.
     - A név megadása kötelező, és legfeljebb 3 – 24 karakter hosszúságú lehet.
@@ -70,7 +70,7 @@ A Azure Machine Learning betanított gépi tanulási modelleket telepíthet az A
 
 ## <a name="azure-kubernetes-service-version"></a>Az Azure Kubernetes Service verziója
 
-Az Azure Kubernetes szolgáltatás lehetővé teszi, hogy különböző Kubernetes-verziók használatával hozzon létre egy fürtöt. További információ az elérhető verziókról: [támogatott Kubernetes-verziók az Azure Kubernetes szolgáltatásban](/azure/aks/supported-kubernetes-versions).
+Az Azure Kubernetes szolgáltatás lehetővé teszi, hogy különböző Kubernetes-verziók használatával hozzon létre egy fürtöt. További információ az elérhető verziókról: [támogatott Kubernetes-verziók az Azure Kubernetes szolgáltatásban](../aks/supported-kubernetes-versions.md).
 
 Ha az alábbi módszerek egyikével **hozza létre** az Azure Kubernetes Service-fürtöt, akkor a létrehozott fürt *verziója nem választható* :
 
@@ -124,7 +124,7 @@ Result
 1.16.13
 ```
 
-Ha **programozottan szeretné megtekinteni az elérhető verziókat** , használja a [Container Service ügyfél-lista](https://docs.microsoft.com/rest/api/container-service/container%20service%20client/listorchestrators) rendszerszervezőket REST API. Az elérhető verziók megkereséséhez tekintse meg a következő bejegyzéseket: `orchestratorType` `Kubernetes` . A társított `orchestrationVersion` bejegyzések tartalmazzák a munkaterülethez csatlakoztatható elérhető **attached** verziókat.
+Ha **programozottan szeretné megtekinteni az elérhető verziókat** , használja a [Container Service ügyfél-lista](/rest/api/container-service/container%20service%20client/listorchestrators) rendszerszervezőket REST API. Az elérhető verziók megkereséséhez tekintse meg a következő bejegyzéseket: `orchestratorType` `Kubernetes` . A társított `orchestrationVersion` bejegyzések tartalmazzák a munkaterülethez csatlakoztatható elérhető **attached** verziókat.
 
 A fürt Azure Machine Learningon keresztüli **létrehozásakor** használt alapértelmezett verzió megkereséséhez keresse meg azt a bejegyzést, ahol `orchestratorType` az a `Kubernetes` és `default` az `true` . A társított `orchestratorVersion` érték az alapértelmezett verzió. A következő JSON-kódrészlet egy példa bejegyzést mutat be:
 
@@ -183,10 +183,10 @@ aks_target.wait_for_completion(show_output = True)
 
 Az ebben a példában használt osztályokkal, metódusokkal és paraméterekkel kapcsolatos további információkért tekintse meg a következő dokumentációt:
 
-* [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py&preserve-view=true)
+* [AksCompute.ClusterPurpose](/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?preserve-view=true&view=azure-ml-py)
 * [AksCompute.provisioning_configuration](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
-* [ComputeTarget. Create](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#create-workspace--name--provisioning-configuration-)
-* [ComputeTarget.wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#wait-for-completion-show-output-false-)
+* [ComputeTarget. Create](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#create-workspace--name--provisioning-configuration-)
+* [ComputeTarget.wait_for_completion](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#wait-for-completion-show-output-false-)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -194,7 +194,7 @@ Az ebben a példában használt osztályokkal, metódusokkal és paraméterekkel
 az ml computetarget create aks -n myaks
 ```
 
-További információ: az [ml computetarget Create AK](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-aks) Reference.
+További információ: az [ml computetarget Create AK](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks) Reference.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -215,12 +215,12 @@ Ha már rendelkezik AK-fürttel az Azure-előfizetésben, és 1,17-es vagy alacs
 > [!WARNING]
 > Ne hozzon létre több, egyidejű mellékletet ugyanahhoz az AK-fürthöz a munkaterületről. Például egy AK-fürt csatolása egy munkaterülethez két különböző név használatával. Minden új melléklet megtöri az előző meglévő melléklet (eke) t.
 >
-> Ha egy AK-fürtöt újra szeretne csatlakoztatni, például a TLS vagy más fürtkonfiguráció beállításának módosításához, először el kell távolítania a meglévő mellékletet a [AksCompute. leválasztás ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#detach--)használatával.
+> Ha egy AK-fürtöt újra szeretne csatlakoztatni, például a TLS vagy más fürtkonfiguráció beállításának módosításához, először el kell távolítania a meglévő mellékletet a [AksCompute. leválasztás ()](/python/api/azureml-core/azureml.core.compute.akscompute?preserve-view=true&view=azure-ml-py#detach--)használatával.
 
 A következő cikkekből megtudhatja, hogyan hozhat létre egy AK-fürtöt az Azure CLI vagy a portál használatával:
 
-* [AKS-fürt létrehozása (parancssori felület)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest&preserve-view=true#az-aks-create)
-* [AK-fürt létrehozása (portál)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest&preserve-view=true)
+* [AKS-fürt létrehozása (parancssori felület)](/cli/azure/aks?bc=%252fazure%252fbread%252ftoc.json&preserve-view=true&toc=%252fazure%252faks%252fTOC.json&view=azure-cli-latest#az-aks-create)
+* [AK-fürt létrehozása (portál)](../aks/kubernetes-walkthrough-portal.md?preserve-view=true&view=azure-cli-latest)
 * [AK-fürt létrehozása (ARM-sablon az Azure Gyorsindítás sablonjain)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
 
 Az alábbi példa bemutatja, hogyan csatolhat egy meglévő AK-fürtöt a munkaterülethez:
@@ -248,8 +248,8 @@ aks_target.wait_for_completion(show_output = True)
 Az ebben a példában használt osztályokkal, metódusokkal és paraméterekkel kapcsolatos további információkért tekintse meg a következő dokumentációt:
 
 * [AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
-* [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py&preserve-view=true)
-* [AksCompute. Attach](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#attach-workspace--name--attach-configuration-)
+* [AksCompute.ClusterPurpose](/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?preserve-view=true&view=azure-ml-py)
+* [AksCompute. Attach](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#attach-workspace--name--attach-configuration-)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -271,7 +271,7 @@ Ha a meglévő fürtöt a munkaterülethez szeretné csatolni, használja a köv
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-További információ: az [ml computetarget Attach AK](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-attach-aks) -referenciája.
+További információ: az [ml computetarget Attach AK](/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks) -referenciája.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -284,7 +284,7 @@ Az AK-fürtök portálon való csatlakoztatásával kapcsolatos információkér
 A fürt munkaterületről való leválasztásához használja az alábbi módszerek egyikét:
 
 > [!WARNING]
-> A gépi tanuláshoz készült Azure Machine Learning Studio, SDK vagy az Azure CLI bővítmény használata az AK-fürtök leválasztásához **nem törli az AK** -fürtöt. A fürt törléséhez lásd: [Az Azure CLI használata az AK-val](/azure/aks/kubernetes-walkthrough#delete-the-cluster).
+> A gépi tanuláshoz készült Azure Machine Learning Studio, SDK vagy az Azure CLI bővítmény használata az AK-fürtök leválasztásához **nem törli az AK** -fürtöt. A fürt törléséhez lásd: [Az Azure CLI használata az AK-val](../aks/kubernetes-walkthrough.md#delete-the-cluster).
 
 # <a name="python"></a>[Python](#tab/python)
 

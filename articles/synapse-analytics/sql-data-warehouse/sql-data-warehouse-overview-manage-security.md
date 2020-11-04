@@ -1,6 +1,6 @@
 ---
 title: Adatbázis biztonságossá tétele
-description: Tippek az adatbázisok védelméhez és megoldások fejlesztéséhez egy szinapszis SQL Pool-erőforrásban.
+description: Tippek egy dedikált SQL-készlet biztonságossá tételéhez és az Azure szinapszis Analytics-megoldások fejlesztéséhez.
 author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
@@ -11,14 +11,14 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: c94924c973a1095a4bebf6231d9853968facc1b2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f6c1370cab573926183a937b8e749ef490c19334
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516883"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317696"
 ---
-# <a name="secure-a-database-in-azure-synapse"></a>Adatbázis biztonságossá tétele az Azure Szinapszisban
+# <a name="secure-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Dedikált SQL-készlet védelme az Azure szinapszis Analytics szolgáltatásban
 
 > [!div class="op_single_selector"]
 >
@@ -27,7 +27,7 @@ ms.locfileid: "92516883"
 > * [Titkosítás (portál)](sql-data-warehouse-encryption-tde.md)
 > * [Titkosítás (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
-Ez a cikk végigvezeti a szinapszis SQL-készlet biztonságossá tételének alapjain. Ez a cikk bemutatja, hogyan használhatja az erőforrásokat a hozzáférés korlátozásához, az adatok védelméhez és a figyelési tevékenységekhez egy SQL-készlet használatával kiépített adatbázisban.
+Ez a cikk végigvezeti a dedikált SQL-készlet biztonságossá tételének alapjain. Ez a cikk bemutatja, hogyan használhatja az erőforrásokat a hozzáférés korlátozásához, az adatok védelméhez és a figyelési tevékenységekhez a dedikált SQL Pool használatával.
 
 ## <a name="connection-security"></a>Kapcsolatbiztonság
 
@@ -35,15 +35,15 @@ A kapcsolatbiztonság azt jelenti, hogy hogyan korlátozza és védi az adatbáz
 
 A tűzfalszabályok használatát mind a [logikai SQL-kiszolgáló](../../azure-sql/database/logical-servers.md) , mind az adatbázisai használják, hogy elutasítja a kapcsolódási kísérleteket a nem jóváhagyott IP-címekről. Ha engedélyezni szeretné az alkalmazás vagy az ügyfélszámítógép nyilvános IP-címének kapcsolatait, először létre kell hoznia egy kiszolgálói szintű tűzfalszabály-szabályt a Azure Portal, REST API vagy a PowerShell használatával.
 
-Az ajánlott eljárás az, hogy a lehető legnagyobb mértékben korlátozza a kiszolgálói szintű tűzfalon keresztül engedélyezett IP-címtartományt.  Ha a helyi számítógépről szeretné elérni az SQL-készletet, győződjön meg arról, hogy a tűzfal a hálózaton és a helyi számítógépen engedélyezi a kimenő kommunikációt az 1433-as TCP-porton  
+Az ajánlott eljárás az, hogy a lehető legnagyobb mértékben korlátozza a kiszolgálói szintű tűzfalon keresztül engedélyezett IP-címtartományt.  Ha a helyi számítógépről szeretné elérni a dedikált SQL-készletet, győződjön meg arról, hogy a tűzfal a hálózaton és a helyi számítógépen lehetővé teszi a kimenő kommunikációt a 1433-es TCP-porton.  
 
 Az Azure szinapszis Analytics kiszolgálói szintű IP-tűzfalszabályok használatával működik. Az adatbázis-szintű IP-tűzfalszabályok nem támogatottak. További információ: [Azure SQL Database tűzfalszabályok](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
-Az SQL-készlet kapcsolatai alapértelmezés szerint titkosítva vannak.  A rendszer figyelmen kívül hagyja a kapcsolódási beállítások módosítását a titkosítás letiltásához.
+A dedikált SQL-készlet kapcsolatai alapértelmezés szerint titkosítva vannak.  A rendszer figyelmen kívül hagyja a kapcsolódási beállítások módosítását a titkosítás letiltásához.
 
 ## <a name="authentication"></a>Hitelesítés
 
-A hitelesítés azt jelenti, hogy hogyan igazolja az identitását az adatbázishoz való kapcsolódáskor. Az SQL-készlet jelenleg támogatja a felhasználónévvel és jelszóval SQL Server hitelesítést, valamint a Azure Active Directory.
+A hitelesítés azt jelenti, hogy hogyan igazolja az identitását az adatbázishoz való kapcsolódáskor. A dedikált SQL-készlet jelenleg támogatja a felhasználónévvel és jelszóval SQL Server hitelesítést, valamint a Azure Active Directory.
 
 Amikor létrehozta a kiszolgálót az adatbázishoz, a "kiszolgálói rendszergazda" bejelentkezési azonosítót adta meg felhasználónévvel és jelszóval. Ezeknek a hitelesítő adatoknak a használatával a hitelesítő adatokat az adott kiszolgálón található adatbázis-tulajdonosként vagy a "dbo" SQL Server hitelesítésen keresztül végezheti el.
 
@@ -57,7 +57,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Ezután kapcsolódjon az **SQL-készlet adatbázisához** a kiszolgáló-rendszergazdai bejelentkezéssel, és hozzon létre egy adatbázis-felhasználót a létrehozott kiszolgálói bejelentkezés alapján.
+Ezután kapcsolódjon a **DEDIKÁLT SQL Pool-adatbázishoz** a kiszolgáló-rendszergazdai bejelentkezéssel, és hozzon létre egy adatbázis-felhasználót a létrehozott kiszolgálói bejelentkezés alapján.
 
 ```sql
 -- Connect to the database and create a database user
@@ -104,4 +104,4 @@ Az adatbázis titkosítása a [Azure Portal](sql-data-warehouse-encryption-tde.m
 
 ## <a name="next-steps"></a>Következő lépések
 
-További részletek és példák a Warehouse-hoz való csatlakozásra különböző protokollokkal: [Csatlakozás az SQL-készlethez](../sql/connect-overview.md).
+További részletek és példák a Warehouse-hoz való csatlakozásra különböző protokollokkal: [Csatlakozás DEDIKÁLT SQL-készlethez](../sql/connect-overview.md).

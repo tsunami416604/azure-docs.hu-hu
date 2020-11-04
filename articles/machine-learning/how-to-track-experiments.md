@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 7eaa2fbe6033f801a252f6f2c7afa5eb726bce2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6680bdc525c6f07b8330277056413f886412551b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318245"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318426"
 ---
 # <a name="enable-logging-in-azure-ml-training-runs"></a>Naplózás engedélyezése az Azure ML betanítási futtatásaiban
 
@@ -37,17 +37,17 @@ A naplókkal diagnosztizálhatja a hibákat és a figyelmeztetéseket, vagy nyom
 
 ## <a name="data-types"></a>Adattípusok
 
-Többféle adattípust is naplózhat, például skaláris értékeket, listákat, táblákat, rendszerképeket, könyvtárakat és egyebeket. További információt és a különböző adattípusok Python-kódmintáit a [futtatási osztály referenciaoldalán](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) találja.
+Többféle adattípust is naplózhat, például skaláris értékeket, listákat, táblákat, rendszerképeket, könyvtárakat és egyebeket. További információt és a különböző adattípusok Python-kódmintáit a [futtatási osztály referenciaoldalán](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) találja.
 
 ## <a name="interactive-logging-session"></a>Interaktív naplózási munkamenet
 
-Az interaktív naplózási munkameneteket általában jegyzetfüzet típusú környezetekben használják. Az [Experiment.start_logging()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truestart-logging--args----kwargs-) metódus elindít egy interaktív naplózási munkamenetet. A munkamenet során naplózott összes metrika a kísérlet futtatási rekordjába kerül. A [run.complete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecomplete--set-status-true-) metódus befejezi a munkameneteket, és befejezettként jelöli meg a futtatást.
+Az interaktív naplózási munkameneteket általában jegyzetfüzet típusú környezetekben használják. Az [Experiment.start_logging()](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truestart-logging--args----kwargs-) metódus elindít egy interaktív naplózási munkamenetet. A munkamenet során naplózott összes metrika a kísérlet futtatási rekordjába kerül. A [run.complete()](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truecomplete--set-status-true-) metódus befejezi a munkameneteket, és befejezettként jelöli meg a futtatást.
 
 ## <a name="scriptrun-logs"></a>ScriptRun naplók
 
-Ebben a szakaszban azt ismertetjük, hogyan adhat meg naplózási kódot a létrehozott futtatásokban a ScriptRunConfig paranccsal való konfiguráláskor. A [**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) osztállyal szkripteket és környezeteket ágyazhat be ismételhető futtatásokhoz. Ezzel a lehetőséggel azt is megteheti, hogy megjelenít egy vizuális Jupyter Notebooks-vezérlőt a monitorozáshoz.
+Ebben a szakaszban azt ismertetjük, hogyan adhat meg naplózási kódot a létrehozott futtatásokban a ScriptRunConfig paranccsal való konfiguráláskor. A [**ScriptRunConfig**](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) osztállyal szkripteket és környezeteket ágyazhat be ismételhető futtatásokhoz. Ezzel a lehetőséggel azt is megteheti, hogy megjelenít egy vizuális Jupyter Notebooks-vezérlőt a monitorozáshoz.
 
-Ez a példa paraméteres frissítést végez az alfa értékeken, és az eredményeket a [run.log()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truelog-name--value--description----) metódussal rögzíti.
+Ez a példa paraméteres frissítést végez az alfa értékeken, és az eredményeket a [run.log()](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truelog-name--value--description----) metódussal rögzíti.
 
 1. Hozza létre a naplózási logikát tartalmazó `train.py` betanítási szkriptet.
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: mjbrown
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 35c0b5529cd9ada612caf4884683fbeaacb25b33
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2c91b330f52733a91fbceb1dc9ca2309c0d10547
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100133"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317115"
 ---
 # <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>Többrégiós írások konfigurálása a Azure Cosmos DBt használó alkalmazásokban
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -21,6 +21,22 @@ Ha egy fiók több írási régióval lett létrehozva, akkor az alkalmazásban 
 
 > [!Note]
 > Az egyetlen írási régióval konfigurált Cosmos-fiókok több írási régióra is konfigurálhatók, nulla leállási idővel. További információ: [több írási régió konfigurálása](how-to-manage-database-account.md#configure-multiple-write-regions)
+
+## <a name="azure-portal"></a><a id="portal"></a> Azure Portal
+
+A következő lépésekkel engedélyezheti a többrégiós írásokat a Azure Portalből:
+
+1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com/).
+
+1. Navigáljon az Azure Cosmos-fiókjához, és a menüből nyissa meg az **adatok replikálása globális** ablaktáblát.
+
+1. A **többrégiós írások** lehetőségnél válassza az **Engedélyezés** lehetőséget. Automatikusan hozzáadja a meglévő régiókat a régiók olvasásához és írásához.
+
+1. További régiókat a Térkép ikonjainak kiválasztásával vagy a **régió hozzáadása** gombra kattintva adhat hozzá. Az összes hozzáadott régiónál engedélyezve lesz az olvasás és az írás is.
+
+1. A régiók listájának frissítése után kattintson a **Mentés** gombra a módosítások alkalmazásához.
+
+   :::image type="content" source="./media/how-to-multi-master/enable-multi-region-writes.png" alt-text="Képernyőfelvétel a többrégiós írásoknak a Azure Portal használatával történő engedélyezéséhez" lightbox="./media/how-to-multi-master/enable-multi-region-writes.png":::
 
 ## <a name="net-sdk-v2"></a><a id="netv2"></a>.NET SDK v2
 

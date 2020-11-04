@@ -9,22 +9,22 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 394521156d6192d25c3a4d254ac2c9b94c6231f5
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 1a78142ded7be46bdc06c49d6e0a26ef8b266300
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093548"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318396"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Szinapszis SQL-erőforrások felhasználása
 
 Ez a cikk a szinapszis SQL (előzetes verzió) erőforrás-felhasználási modelljeit ismerteti.
 
-## <a name="sql-on-demand"></a>Igény szerinti SQL
+## <a name="serverless-sql-pool"></a>Kiszolgáló nélküli SQL-készlet
 
-Az SQL on-demand a lekérdezési szolgáltatás díja, amely nem igényli a megfelelő méret kiválasztását. A rendszer a követelmények alapján automatikusan beállítja az infrastruktúra kezelését és a megoldás megfelelő méretének kiválasztását.
+A kiszolgáló nélküli SQL-készlet olyan fizetési szolgáltatás, amely nem igényli a megfelelő méret kiválasztását. A rendszer a követelmények alapján automatikusan beállítja az infrastruktúra kezelését és a megoldás megfelelő méretének kiválasztását.
 
-## <a name="sql-pool---data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>SQL-készlet – adatraktár-egységek (DWU-EK) és számítási adattárház-egységek (cDWUs)
+## <a name="dedicated-sql-pool---data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Dedikált SQL-készlet – adatraktár-egységek (DWU-EK) és számítási adattárház-egységek (cDWUs-EK)
 
 Javaslatok az adatraktár-egységek (DWU) ideális számának kiválasztásához az árak és a teljesítmény optimalizálásához, valamint az egységek számának módosításához.
 
@@ -50,12 +50,12 @@ Növekvő DWU:
 
 A szolgáltatási szint célkitűzése (SLO) a méretezhetőségi beállítás, amely meghatározza az adattárház költségeit és teljesítményét. A Gen2 szolgáltatási szintjeit számítási adattárház-egységek (cDWU-EK) mérik, például DW2000c. A Gen1 szolgáltatási szintjei a DWU-ben vannak mérve, például DW2000.
 
-A szolgáltatási szint célkitűzése (SLO) a méretezhetőségi beállítás, amely meghatározza az adattárház költségeit és teljesítményét. A Gen2 SQL-készlet szolgáltatási szintjei az adatraktár-egységekben (DWU) mérhetőek, például DW2000c.
+A szolgáltatási szint célkitűzése (SLO) a méretezhetőségi beállítás, amely meghatározza az adattárház költségeit és teljesítményét. A Gen2 dedikált SQL-készlet szolgáltatási szintjeit az adatraktár-egységek (DWU) mérik, például DW2000c.
 
 > [!NOTE]
 > Az Azure szinapszis Analytics Gen2 nemrégiben hozzáadott további méretezési képességeket a számítási rétegek támogatásához, ami 100 cDWU. A jelenleg a Gen1-on található meglévő adattárházak, amelyek az alacsonyabb számítási szinteket igénylik, mostantól a Gen2-ra frissíthetik azokat a régiókat, amelyek jelenleg elérhetők a további díjak nélkül.  Ha a régiója még nem támogatott, akkor továbbra is frissíthet egy támogatott régióra. További információ: [verziófrissítés a Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
-A T-SQL-ben a SERVICE_OBJECTIVE beállítás határozza meg az SQL-készlet szolgáltatási szintjét és teljesítményét.
+A T-SQL-ben a SERVICE_OBJECTIVE beállítás határozza meg a szolgáltatási szintet és a teljesítmény szintjét a dedikált SQL-készlethez.
 
 ```sql
 CREATE DATABASE mySQLDW
@@ -125,9 +125,9 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 DWU módosítása:
 
-1. Nyissa meg a [Azure Portal](https://portal.azure.com), nyissa meg az adatbázist, és válassza a **skála**lehetőséget.
+1. Nyissa meg a [Azure Portal](https://portal.azure.com), nyissa meg az adatbázist, és válassza a **skála** lehetőséget.
 
-2. A **skála**alatt mozgassa a csúszkát balra vagy jobbra a DWU beállítás módosításához.
+2. A **skála** alatt mozgassa a csúszkát balra vagy jobbra a DWU beállítás módosításához.
 
 3. Válassza a **Mentés** lehetőséget. Ekkor megjelenik egy megerősítő üzenet. Válassza az **Igen** lehetőséget a megerősítéshez **, vagy a Mégse gombra.**
 
@@ -204,7 +204,7 @@ AND       major_resource_id = 'MySQLDW'
 ;
 ```
 
-Ez a DMV az SQL-készlet különböző felügyeleti műveleteivel, például a művelettel és a művelet állapotával kapcsolatos információkat ad vissza, amely vagy IN_PROGRESS vagy kész.
+Ez a DMV a dedikált SQL-készlet különböző felügyeleti műveleteivel, például a művelettel és a művelet állapotával kapcsolatos információkat ad vissza, amely vagy IN_PROGRESS vagy kész.
 
 ### <a name="the-scaling-workflow"></a>A skálázási munkafolyamat
 

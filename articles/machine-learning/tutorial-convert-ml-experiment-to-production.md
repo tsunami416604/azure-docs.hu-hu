@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3a6ce5860704e6fd16b79fc253650dd45ec743e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f7746f079e740493348731376d0a5a7b1a9e954
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852616"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317857"
 ---
 # <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>Oktatóanyag: ML-kísérletek konvertálása éles Python-kódra
 
@@ -67,7 +67,7 @@ args = {
 }
 
 reg_model = Ridge(**args)
-reg.fit(data["train"]["X"], data["train"]["y"])
+reg_model.fit(data["train"]["X"], data["train"]["y"])
 
 preds = reg_model.predict(data["test"]["X"])
 mse = mean_squared_error(preds, y_test)
@@ -522,10 +522,10 @@ def test_train_model():
     np.testing.assert_almost_equal(preds, [9.93939393939394, 9.03030303030303])
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megértette, hogyan alakíthat át kísérletből termelési kódra, tekintse meg a következő hivatkozásokat a további tudnivalókhoz és a következő lépésekhez:
 
 + [MLOpsPython](https://github.com/microsoft/MLOpsPython/blob/master/docs/custom_model.md): CI/CD-folyamat létrehozása a saját modellek betanításához, kiértékeléséhez és üzembe helyezéséhez az Azure-folyamatok és a Azure Machine learning használatával
-+ [Azure ML-kísérletek futtatásának és metrikáinak monitorozása](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)
-+ [A ML webszolgáltatás-végpontokról származó adatok figyelése és gyűjtése](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)
++ [Azure ML-kísérletek futtatásának és metrikáinak monitorozása](./how-to-track-experiments.md)
++ [Adatok ML-webszolgáltatási végpontokról való monitorozása és gyűjtése](./how-to-enable-app-insights.md)

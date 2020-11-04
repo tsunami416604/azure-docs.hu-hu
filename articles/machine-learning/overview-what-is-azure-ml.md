@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: ad025d2278d6c9ab360ddbdc250e8db4b4eec665
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 4dcc1d755f4fe11dda69f84466d3e958ca981ddf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495746"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316293"
 ---
 # <a name="what-is-azure-machine-learning"></a>Mi az Azure Machine Learning?
 
@@ -43,7 +43,7 @@ A gépi tanulás által biztosított előrejelzéseket felhasználva intelligens
 Azure Machine Learning biztosítja a gépi tanulási munkafolyamataihoz szükséges összes eszközt a fejlesztők és az adatszakértők számára, beleértve a következőket:
 + A [Azure Machine learning Designer](tutorial-designer-automobile-price-train-score.md): húzzon-n-drop modulokat a kísérletek létrehozásához, majd a folyamatok üzembe helyezéséhez.
 
-+ Jupyter jegyzetfüzetek: a [példánkban szereplő jegyzetfüzetek](https://github.com/Azure/MachineLearningNotebooks) használatával vagy saját jegyzetfüzetek létrehozásával kihasználhatja a gépi tanuláshoz készült SDK-t a <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python</a> -mintákhoz. 
++ Jupyter jegyzetfüzetek: a [példánkban szereplő jegyzetfüzetek](https://github.com/Azure/MachineLearningNotebooks) használatával vagy saját jegyzetfüzetek létrehozásával kihasználhatja a gépi tanuláshoz készült SDK-t a <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python</a> -mintákhoz. 
 
 + R-parancsfájlok vagy jegyzetfüzetek, amelyekben a saját kód írásához használja az <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">SDK</a> -t, vagy használja a tervező R modulját.
 
@@ -61,9 +61,9 @@ A [MLflow használatával nyomon követheti a metrikákat, és üzembe helyezhet
 
 ## <a name="build-ml-models-in-python-or-r"></a>ML modellek készítése a Pythonban vagy az R-ben
 
-Indítsa el a képzést a helyi gépen a Azure Machine Learning <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">PYTHON SDK</a> vagy az <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a>használatával. Ezután kibővítheti a felhőt. 
+Indítsa el a képzést a helyi gépen a Azure Machine Learning <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">PYTHON SDK</a> vagy az <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a>használatával. Ezután kibővítheti a felhőt. 
 
-Számos elérhető [számítási cél](how-to-create-attach-compute-studio.md), például a Azure Machine learning számítási és [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks), valamint a [fejlett hiperparaméter-hangolási szolgáltatások](how-to-tune-hyperparameters.md)révén a felhő hatékonyságával gyorsabban hozhat létre jobb modelleket.
+Számos elérhető [számítási cél](how-to-create-attach-compute-studio.md), például a Azure Machine learning számítási és [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks), valamint a [fejlett hiperparaméter-hangolási szolgáltatások](how-to-tune-hyperparameters.md)révén a felhő hatékonyságával gyorsabban hozhat létre jobb modelleket.
 
 Az SDK segítségével [automatizálhatja a modell betanítását és finomhangolását](tutorial-auto-train-models.md) is.
 
@@ -92,9 +92,9 @@ A [Azure Machine learning Studio](https://studio.azureml.net) egy webes portál,
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps: & életciklus-felügyelet üzembe helyezése
 Ha rendelkezik a megfelelő modellel, egyszerűen használhatja egy webszolgáltatásban, egy IoT-eszközön vagy Power BI. További információ: a [telepítésének és helyének](how-to-deploy-and-where.md)ismertetése.
 
-Ezután felügyelheti a telepített modelleket a [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)-val, a [Azure Machine learning Studióval](https://ml.azure.com)vagy a [Machine learning parancssori](reference-azure-machine-learning-cli.md)felülettel.
+Ezután felügyelheti a telepített modelleket a [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)-val, a [Azure Machine learning Studióval](https://ml.azure.com)vagy a [Machine learning parancssori](reference-azure-machine-learning-cli.md)felülettel.
 
-Ezeket a modelleket felhasználhatja, és [valós időben](how-to-consume-web-service.md) vagy [aszinkron módon](how-to-use-parallel-run-step.md) , nagy mennyiségű adattal lehet visszaadni az előrejelzéseket.
+Ezeket a modelleket felhasználhatja, és [valós időben](how-to-consume-web-service.md) vagy [aszinkron módon](./tutorial-pipeline-batch-scoring-classification.md) , nagy mennyiségű adattal lehet visszaadni az előrejelzéseket.
 
 A fejlett [gépi tanulási folyamatokkal](concept-ml-pipelines.md)pedig az üzembe helyezés során az adatok előkészítése, a modell betanítása és a kiértékelés egyes lépésein is dolgozhat. A folyamatok a következőket teszik lehetővé:
 
@@ -111,10 +111,10 @@ A Azure Machine Learning használatának megkezdéséhez tekintse meg a [követk
 
 A Azure Machine Learning együttműködik az Azure platform egyéb szolgáltatásaival, és olyan nyílt forráskódú eszközökkel is integrálható, mint a git és a MLFlow.
 
-+ Számítási célok, például __Azure Kubernetes szolgáltatás__, __Azure Container instances__, __Azure Databricks__, __Azure Data Lake Analytics__és az __Azure HDInsight__. A számítási célokkal kapcsolatos további információkért lásd: [Mik a számítási célok?](concept-compute-target.md).
-+ __Azure Event Grid__. További információ: [Azure Machine learning események felhasználása](concept-event-grid-integration.md).
++ Számítási célok, például __Azure Kubernetes szolgáltatás__ , __Azure Container instances__ , __Azure Databricks__ , __Azure Data Lake Analytics__ és az __Azure HDInsight__. A számítási célokkal kapcsolatos további információkért lásd: [Mik a számítási célok?](concept-compute-target.md).
++ __Azure Event Grid__. További információ: [Azure Machine learning események felhasználása](./how-to-use-event-grid.md).
 + __Azure monitor__. További információ: [Monitoring Azure Machine learning](monitor-azure-machine-learning.md).
-+ Olyan adattárakat, mint például az __Azure Storage-fiókok__, a __Azure Data Lake Storage__, a __Azure SQL Database__, a __Azure Database for PostgreSQL__és az __Azure Open-adatkészletek__. További információ: az [Azure Storage szolgáltatásokban tárolt adatok elérése](how-to-access-data.md) és [adatkészletek létrehozása az Azure Open adatkészletekkel](how-to-create-register-datasets.md).
++ Olyan adattárakat, mint például az __Azure Storage-fiókok__ , a __Azure Data Lake Storage__ , a __Azure SQL Database__ , a __Azure Database for PostgreSQL__ és az __Azure Open-adatkészletek__. További információ: az [Azure Storage szolgáltatásokban tárolt adatok elérése](how-to-access-data.md) és [adatkészletek létrehozása az Azure Open adatkészletekkel](how-to-create-register-datasets.md).
 + __Azure-beli virtuális hálózatok__. További információ: [Virtual Network elkülönítés és Adatvédelem – áttekintés](how-to-network-security-overview.md).
 + __Azure-folyamatok__. További információ: a [gépi tanulási modellek betanítása és üzembe helyezése](/azure/devops/pipelines/targets/azure-machine-learning).
 + A __git-tárház naplói__. További információ: git- [integráció](concept-train-model-git-integration.md).

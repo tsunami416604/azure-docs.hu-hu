@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: c03051e2c8fddc21e4399375faeff6a40fb4d0d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b4755d1d2e14b8ce3b05cfef6d30d7f6102905d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288103"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318818"
 ---
-# <a name="use-file-metadata-in-queries"></a>Fájl metaadatainak használata a lekérdezésekben
+# <a name="use-file-metadata-in-serverless-sql-pool-queries"></a>Fájl metaadatainak használata kiszolgáló nélküli SQL Pool-lekérdezésekben
 
-Az igény szerinti SQL-alkalmazás több fájlt és mappát is képes kezelni a [lekérdezési mappák és a több fájl](query-folders-multiple-csv-files.md) című cikkben leírtak szerint. Ebből a cikkből megtudhatja, hogyan használhatja a lekérdezésekben a fájl-és mappanevek metaadat-információit.
+A kiszolgáló nélküli SQL-készlet több fájlt és mappát is képes kezelni a [lekérdezési mappák és a több fájl](query-folders-multiple-csv-files.md) című cikkben leírtak szerint. Ebből a cikkből megtudhatja, hogyan használhatja a lekérdezésekben a fájl-és mappanevek metaadat-információit.
 
 Előfordulhat, hogy tudnia kell, hogy melyik fájl-vagy mappa-forrás korrelál az eredményhalmaz egy adott sorával.
 

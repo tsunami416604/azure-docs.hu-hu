@@ -11,19 +11,19 @@ author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8f54ece9a932ed4cc0adc29747e1c58ee22646c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ee2280aba99606d9e31a0e565a67cd6202df3c2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333868"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317015"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Adatcsere (előzetes verzió) észlelése az adatkészleteken
 
 
 > [!IMPORTANT]
 > Az adatkészletek adateltolódásának észlelése jelenleg nyilvános előzetes verzióban érhető el.
-> Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Megtudhatja, hogyan figyelheti az adateltolódást, és hogyan állíthatja be a riasztásokat, ha magas a drift  
 
@@ -36,14 +36,14 @@ A Azure Machine Learning adatkészlet figyelők (előzetes verzió) segítségé
 
 Az [Azure Machine learning-adatkészlet](how-to-create-register-datasets.md) a figyelő létrehozásához használatos. Az adatkészletnek tartalmaznia kell egy timestamp oszlopot.
 
-Megtekintheti az adateltolódási metrikákat a Python SDK-val vagy a Azure Machine Learning Studióban.  Az egyéb mérőszámok és adatok az Azure Machine Learning munkaterülethez társított [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) -erőforráson keresztül érhetők el.
+Megtekintheti az adateltolódási metrikákat a Python SDK-val vagy a Azure Machine Learning Studióban.  Az egyéb mérőszámok és adatok az Azure Machine Learning munkaterülethez társított [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) -erőforráson keresztül érhetők el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az adatkészlet-figyelők létrehozásához és működéséhez a következőkre lesz szüksége:
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 * Egy [Azure Machine learning munkaterület](how-to-manage-workspace.md).
-* A [Azure Machine learning SDK for Python telepítve](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true), amely tartalmazza a azureml-adatkészletek csomagot.
+* A [Azure Machine learning SDK for Python telepítve](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py), amely tartalmazza a azureml-adatkészletek csomagot.
 * Strukturált (táblázatos) adatokat az adatokat tartalmazó fájl elérési útja, fájlneve vagy oszlopa által megadott időbélyeggel.
 
 ## <a name="what-is-data-drift"></a>Mi az az adateltolódás?
@@ -73,7 +73,7 @@ Adatkészlet-figyelővel a következőket teheti:
 
 Az adatdrift algoritmus az adatok változásának általános mértékét nyújtja, és jelzi, hogy mely szolgáltatások felelősek a további vizsgálatért. Az adatkészlet-figyelők számos más metrikát hoznak létre az adatkészletben lévő új adatok profilkészítésével `timeseries` . 
 
-Egyéni riasztások állíthatók be a figyelő által az [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)használatával létrehozott összes mérőszámon. Az adatkészlet-figyelők használatával gyorsan elvégezhető az adatvesztés, és csökkentheti a probléma hibakeresésének idejét a valószínűleg előforduló okok azonosításával.  
+Egyéni riasztások állíthatók be a figyelő által az [Azure Application Insights](../azure-monitor/app/app-insights-overview.md)használatával létrehozott összes mérőszámon. Az adatkészlet-figyelők használatával gyorsan elvégezhető az adatvesztés, és csökkentheti a probléma hibakeresésének idejét a valószínűleg előforduló okok azonosításával.  
 
 Elméletileg három fő forgatókönyv áll rendelkezésre az adatkészlet-figyelők beállításához Azure Machine Learningban.
 
@@ -87,7 +87,7 @@ Az adatkészlet-figyelők a következő Azure-szolgáltatásoktól függenek.
 
 |Azure-szolgáltatás  |Leírás  |
 |---------|---------|
-| *Adathalmaz* | A drift Machine Learning adatkészletek használatával kéri le a betanítási adatokat, és összehasonlítja az adatokat a modell betanításához  Az adatok profiljának generálása a jelentett mérőszámok némelyikét, például a min, a maximumot, a különböző értékeket, a különböző értékek számát hozza létre. |
+| *Adatkészlet* | A drift Machine Learning adatkészletek használatával kéri le a betanítási adatokat, és összehasonlítja az adatokat a modell betanításához  Az adatok profiljának generálása a jelentett mérőszámok némelyikét, például a min, a maximumot, a különböző értékeket, a különböző értékek számát hozza létre. |
 | *Azureml-folyamat és-számítás* | A drift számítási feladatot a azureml-folyamat tárolja.  A feladatot igény szerint, vagy ütemezés szerint kell elindítani a drift monitor létrehozási idején konfigurált számítási feladatok futtatásához.
 | *Application bepillantást*| A drift a Machine learning-munkaterülethez tartozó mérőszámokat bocsát ki Application Insights.
 | *Azure Blob Storage*| A drift JSON formátumú metrikákat bocsát ki az Azure Blob Storage-ba.
@@ -102,7 +102,7 @@ A célként megadott adatkészlethez meg kell adni a tulajdonságot úgy, hogy a
 
 ### <a name="python-sdk"></a><a name="sdk-dataset"></a>Python SDK
 
-Az [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) osztály [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)  metódus az adatkészlet időbélyegző oszlopát határozza meg.
+Az [`Dataset`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) osztály [`with_timestamp_columns()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)  metódus az adatkészlet időbélyegző oszlopát határozza meg.
 
 ```python 
 from azureml.core import Workspace, Dataset, Datastore
@@ -129,7 +129,7 @@ dset = dset.with_timestamp_columns('date')
 dset = dset.register(ws, 'target')
 ```
 
-Az `timeseries` adatkészletek tulajdonságaival kapcsolatos teljes példaként tekintse meg a [Jegyzetfüzet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) vagy az [adatkészletek SDK dokumentációját](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-).
+Az `timeseries` adatkészletek tulajdonságaival kapcsolatos teljes példaként tekintse meg a [Jegyzetfüzet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) vagy az [adatkészletek SDK dokumentációját](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-).
 
 ### <a name="azure-machine-learning-studio"></a><a name="studio-dataset"></a>Azure Machine Learning Studio
 
@@ -145,7 +145,7 @@ A **séma** beállításainál adja meg a megadott adatkészlet virtuális vagy 
 
 Ha az adatok a dátum szerint particionálva vannak, ahogy az itt látható, akkor megadhatja a partition_timestamp is.  Ez lehetővé teszi a dátumok hatékonyabb feldolgozását.
 
-:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="Időbélyeg beállítása":::
+:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="Partíció időbélyege":::
 
 
 ## <a name="create-dataset-monitors"></a>Adatkészlet-figyelők létrehozása
@@ -208,12 +208,12 @@ Az `timeseries` adatkészletek és adatdrift-detektorok beállításának teljes
 
 1. Navigáljon a [Studio kezdőlapjára](https://ml.azure.com).
 1. Válassza az **adatkészletek** fület a bal oldalon. 
-1. Válassza az **adatkészlet-figyelők**elemet.
+1. Válassza az **adatkészlet-figyelők** elemet.
    ![Figyelési lista](./media/how-to-monitor-datasets/monitor-list.png)
 
 1. Kattintson a **+ figyelő létrehozása** gombra, és folytassa a varázslót **a Tovább gombra kattintva.**  
 
-:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="Időbélyeg beállítása":::
+:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="Figyelő varázsló létrehozása":::
 
 * **Válassza ki a cél adatkészletet**.  A célként megadott adatkészlet egy olyan táblázatos adatkészlet, amelyben az időbélyegző oszlop van megadva, amelyet az adateltolódáshoz elemez a rendszer. A célként megadott adatkészletnek közös szolgáltatásokkal kell rendelkeznie az alapkonfigurációhoz, és olyan `timeseries` adatkészletnek kell lennie, amelybe a rendszer hozzáfűzi az új adatokat. A célként megadott adatkészletben lévő korábbi adatokat elemezni lehet, vagy az új adatokat lehet figyelni.
 
@@ -223,11 +223,11 @@ Az `timeseries` adatkészletek és adatdrift-detektorok beállításának teljes
 
     | Beállítás | Leírás | Tippek | Változtatható | 
     | ------- | ----------- | ---- | ------- |
-    | Name (Név) | Az adatkészlet figyelő neve. | | Nem |
-    | Szolgáltatások | Azoknak a szolgáltatásoknak a listája, amelyeket az adateltolódás az idő múlásával elemezni fog. | A modell kimeneti funkciójának beállítása a koncepciók eltolódásának mérésére. Ne tartalmazzon olyan funkciókat, amelyek természetesen az idő függvényében sodródnak (hónap, év, index stb.). A szolgáltatások listájának módosítása után a backfill és a meglévő adatdrift-figyelő is megadható. | Igen | 
+    | Name | Az adatkészlet figyelő neve. | | Nem |
+    | Funkciók | Azoknak a szolgáltatásoknak a listája, amelyeket az adateltolódás az idő múlásával elemezni fog. | A modell kimeneti funkciójának beállítása a koncepciók eltolódásának mérésére. Ne tartalmazzon olyan funkciókat, amelyek természetesen az idő függvényében sodródnak (hónap, év, index stb.). A szolgáltatások listájának módosítása után a backfill és a meglévő adatdrift-figyelő is megadható. | Igen | 
     | Számítási cél | Azure Machine Learning számítási célt az adatkészlet-figyelő feladatok futtatásához. | | Igen | 
     | Engedélyezés | Az adatkészlet-figyelő folyamatának ütemezett engedélyezése vagy letiltása | Tiltsa le az ütemtervet, hogy elemezze a korábbi adatértékeket a backfill beállítással. Az adatkészlet-figyelő létrehozása után is engedélyezhető. | Igen | 
-    | Frequency | A folyamat feladatainak beütemezett és a korábbi adatok elemzéséhez használt gyakoriság, ha backfill fut. A beállítások a következők: naponta, hetente vagy havonta. | Minden Futtatás összehasonlítja a cél adatkészletben lévő adatokat a gyakoriság szerint: <li>Napi: a legutóbbi teljes nap összehasonlítása a célként megadott adatkészlet alapkonfigurációval <li>Hetente: a legutóbbi teljes hét (hétfő – vasárnap) összehasonlítása a célként megadott adatkészlet alapkonfigurációval <li>Havi: a legutóbbi teljes hónap összehasonlítása a célként megadott adatkészlet alapkonfigurációval | Nem | 
+    | Gyakoriság | A folyamat feladatainak beütemezett és a korábbi adatok elemzéséhez használt gyakoriság, ha backfill fut. A beállítások a következők: naponta, hetente vagy havonta. | Minden Futtatás összehasonlítja a cél adatkészletben lévő adatokat a gyakoriság szerint: <li>Napi: a legutóbbi teljes nap összehasonlítása a célként megadott adatkészlet alapkonfigurációval <li>Hetente: a legutóbbi teljes hét (hétfő – vasárnap) összehasonlítása a célként megadott adatkészlet alapkonfigurációval <li>Havi: a legutóbbi teljes hónap összehasonlítása a célként megadott adatkészlet alapkonfigurációval | Nem | 
     | Késés | Az adatkészletbe való beérkezéshez szükséges idő (óra). Ha például három napot vesz igénybe az adatkészletet tároló SQL-ADATBÁZISba való beérkezési adat, a késést állítsa 72-re. | Az adatkészlet-figyelő létrehozása után nem módosítható | Nem | 
     | E-mail-címek | A riasztások e-mail-címei az adateltolódás százalékos küszöbértékének megszegése alapján. | Az e-maileket Azure Monitor küldi el a rendszer. | Igen | 
     | Küszöbérték | Az e-mail riasztások százalékos küszöbértéke az e-mailek küldéséhez. | További riasztások és események a munkaterület társított Application Insights erőforrásának számos más metrikáján is megadhatók. | Igen |
@@ -240,7 +240,7 @@ Ez a szakasz az Azure Studio **adatkészletek**  /  **adatkészlet-figyelők** l
 
 Kezdje a legfelső szintű betekintéssel az adateltolódás nagyságát, és a további megvizsgálandó funkciók kiemelését.
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="Időbélyeg beállítása":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="A drift áttekintése":::
 
 
 | Metrika | Leírás | 
@@ -253,7 +253,7 @@ Kezdje a legfelső szintű betekintéssel az adateltolódás nagyságát, és a 
 
 Megtudhatja, hogyan tér el az adatkészlet a megadott időszakban a cél adatkészlettől.  Minél közelebb a 100%-hoz, annál több a két adathalmaz eltérő.
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="Időbélyeg beállítása":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="Drift nagyságának trendje":::
 
 ### <a name="drift-magnitude-by-features"></a>Drift magnitúdó a funkciók alapján
 
@@ -263,7 +263,7 @@ A célként megadott adatkészlet az idő múlásával is bekerül. Az egyes szo
 
 A Azure Machine Learning Studióban kattintson a gráf egyik sávjára, és tekintse meg az adott dátumra vonatkozó szolgáltatási szint részleteit. Alapértelmezés szerint az alapadatkészlet eloszlása és a legutóbbi futtatási eloszlása is megjelenik ugyanazon funkció alapján.
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="Időbélyeg beállítása":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="Drift magnitúdó a funkciók alapján":::
 
 Ezek a metrikák a Python SDK-ban is beolvashatók `get_metrics()` egy objektum metódusával `DataDriftDetector` .
 
@@ -271,7 +271,7 @@ Ezek a metrikák a Python SDK-ban is beolvashatók `get_metrics()` egy objektum 
 
 Végül görgessen le az egyes funkciók részleteinek megtekintéséhez.  A diagram fölötti legördülő listából válassza ki a funkciót, és válassza ki a megtekinteni kívánt metrikát.
 
-:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="Időbélyeg beállítása":::
+:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="Numerikus funkciók gráfja és összehasonlítása":::
 
 A diagram metrikái a szolgáltatás típusától függenek.
 
@@ -288,16 +288,16 @@ A diagram metrikái a szolgáltatás típusától függenek.
     
     | Metrika | Leírás |  
     | ------ | ----------- |  
-    | Euklidészi távolság     |  Kategorikus oszlopok esetében kiszámítva.A euklideszi távolság két vektorra van kiszámítva, amely a két adatkészletből származó azonos kategorikus oszlop empirikus eloszlása alapján jön létre.0 azt jelzi, hogy nincs különbség az empirikus eloszlásokban.Minél többet tér el a 0 értéktől, annál több ez az oszlop sodródik.A tendenciák megfigyelhetők a metrika idősorozat-ábráján, és hasznosak lehetnek egy sodródó funkció felfedéséhez.  |
+    | Euklidészi távolság     |  Kategorikus oszlopok esetében kiszámítva. A euklideszi távolság két vektorra van kiszámítva, amely a két adatkészletből származó azonos kategorikus oszlop empirikus eloszlása alapján jön létre. 0 azt jelzi, hogy nincs különbség az empirikus eloszlásokban.  Minél többet tér el a 0 értéktől, annál több ez az oszlop sodródik. A tendenciák megfigyelhetők a metrika idősorozat-ábráján, és hasznosak lehetnek egy sodródó funkció felfedéséhez.  |
     | Egyedi értékek | A szolgáltatás egyedi értékeinek (kardinális) száma. |
 
 Ezen a diagramon válassza ki azt a dátumot, amellyel össze szeretné hasonlítani a szolgáltatások eloszlását a cél és a megjelenített szolgáltatás ezen dátuma között. A numerikus funkciók esetében ez két valószínűségi eloszlást mutat.  Ha a funkció numerikus, akkor megjelenik egy oszlopdiagram.
 
-:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="Időbélyeg beállítása":::
+:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="Válassza ki a célként összehasonlítani kívánt dátumot":::
 
 ## <a name="metrics-alerts-and-events"></a>Metrikák, riasztások és események
 
-A metrikák a Machine learning-munkaterülethez társított [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) -erőforrásban kérhetők le. A Application Insights összes funkcióját használhatja, beleértve az egyéni riasztási szabályok és a műveleti csoportok beállítását is, így például egy e-mail-, SMS-/leküldéses/hang-vagy Azure-függvényt. A részletekért tekintse meg a teljes Application Insights dokumentációját. 
+A metrikák a Machine learning-munkaterülethez társított [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) -erőforrásban kérhetők le. A Application Insights összes funkcióját használhatja, beleértve az egyéni riasztási szabályok és a műveleti csoportok beállítását is, így például egy e-mail-, SMS-/leküldéses/hang-vagy Azure-függvényt. A részletekért tekintse meg a teljes Application Insights dokumentációját. 
 
 Első lépésként navigáljon a [Azure Portal](https://portal.azure.com) , és válassza ki a munkaterület **Áttekintés** lapját.  A kapcsolódó Application Insights erőforrás a jobb szélen van:
 
@@ -322,6 +322,6 @@ Meglévő műveleti csoportot is használhat, vagy létrehozhat egy újat, hogy 
 ## <a name="next-steps"></a>Következő lépések
 
 * Hozzon létre egy adatkészlet-figyelőt a [Azure Machine learning Studióban](https://ml.azure.com) vagy a [Python-jegyzetfüzetben](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datadrift-tutorial/datadrift-tutorial.ipynb) .
-* Ismerje meg, hogyan állíthatja be az adateltolódást az [Azure Kubernetes szolgáltatásban üzembe helyezett modelleken](how-to-monitor-data-drift.md).
+* Ismerje meg, hogyan állíthatja be az adateltolódást az [Azure Kubernetes szolgáltatásban üzembe helyezett modelleken](./how-to-enable-data-collection.md).
 * Adatkészlet-drift figyelők beállítása az [Event Grid](how-to-use-event-grid.md)használatával. 
 * Ha problémákat tapasztal, tekintse meg ezeket a gyakori [hibaelhárítási tippeket](resource-known-issues.md#data-drift) .

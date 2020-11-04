@@ -11,14 +11,14 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: cf6616dcc3935946ad4a7213263bb20281d25354
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 731c6c743b103111a699074e10d8ba43a353d8e6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90896792"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317992"
 ---
-# <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Oktatóanyag: automatikus gépi tanulás használata a taxi viteldíjak előrejelzéséhez
+# <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Oktatóanyag: Automatizált gépi tanulás használata a taxiutak árának előrejelzéséhez
 
 
 Ebben az oktatóanyagban a Azure Machine Learning automatizált gépi tanulást használ egy regressziós modell létrehozásához a New York-i taxi díjszabásának előrejelzéséhez. Ez a folyamat fogadja az oktatási és konfigurációs beállításokat, és automatikusan megismétli a különböző funkció-normalizálás/szabványosítási módszerek, modellek és hiperparaméter-beállítások kombinációit, hogy a legjobb modellt lehessen megérkezni.
@@ -72,16 +72,16 @@ green_taxi_df.head(10)
 
 |vendorID| lpepPickupDatetime|  lpepDropoffDatetime|    passengerCount| tripDistance|   puLocationId|   doLocationId|   pickupLongitude|    pickupLatitude| dropoffLongitude    |...|   paymentType |fareAmount |extra| mtaTax| improvementSurcharge|   tipAmount|  tollsAmount|    ehailFee|   totalAmount|    tripType|
 |----|----|----|----|----|----|---|--|---|---|---|----|----|----|--|---|----|-----|----|----|----|----|---|
-|131969|2|2015-01-11 05:34:44|2015-01-11 05:45:03|3|4,84|Nincs|Nincs|– 73,88|40,84|– 73,94|...|2|15,00|0,50|0,50|0.3|0,00|0,00|Nan|16,30|1,00
-|1129817|2|2015-01-20 16:26:29|2015-01-20 16:30:26|1|0,69|Nincs|Nincs|– 73,96|40,81|– 73,96|...|2|4,50|1,00|0,50|0.3|0,00|0,00|Nan|6,30|1,00
-|1278620|2|2015-01-01 05:58:10|2015-01-01 06:00:55|1|0,45|Nincs|Nincs|– 73,92|40,76|– 73,91|...|2|4,00|0,00|0,50|0.3|0,00|0,00|Nan|4,80|1,00
-|348430|2|2015-01-17 02:20:50|2015-01-17 02:41:38|1|0,00|Nincs|Nincs|– 73,81|40,70|– 73,82|...|2|12,50|0,50|0,50|0.3|0,00|0,00|Nan|13,80|1,00
-1269627|1|2015-01-01 05:04:10|2015-01-01 05:06:23|1|0,50|Nincs|Nincs|– 73,92|40,76|– 73,92|...|2|4,00|0,50|0,50|0|0,00|0,00|Nan|5,00|1,00
-|811755|1|2015-01-04 19:57:51|2015-01-04 20:05:45|2|1.10|Nincs|Nincs|– 73,96|40,72|– 73,95|...|2|6,50|0,50|0,50|0.3|0,00|0,00|Nan|7,80|1,00
-|737281|1|2015-01-03 12:27:31|2015-01-03 12:33:52|1|0,90|Nincs|Nincs|– 73,88|40,76|– 73,87|...|2|6,00|0,00|0,50|0.3|0,00|0,00|Nan|6,80|1,00
-|113951|1|2015-01-09 23:25:51|2015-01-09 23:39:52|1|3,30|Nincs|Nincs|– 73,96|40,72|– 73,91|...|2|12,50|0,50|0,50|0.3|0,00|0,00|Nan|13,80|1,00
-|150436|2|2015-01-11 17:15:14|2015-01-11 17:22:57|1|1,19|Nincs|Nincs|– 73,94|40,71|– 73,95|...|1|7,00|0,00|0,50|0.3|1,75|0,00|Nan|9,55|1,00
-|432136|2|2015-01-22 23:16:33 2015-01-22 23:20:13 1 0,65|Nincs|Nincs|– 73,94|40,71|– 73,94|...|2|5,00|0,50|0,50|0.3|0,00|0,00|Nan|6,30|1,00
+|131969|2|2015-01-11 05:34:44|2015-01-11 05:45:03|3|4,84|Nincsenek|Nincsenek|– 73,88|40,84|– 73,94|...|2|15,00|0,50|0,50|0.3|0,00|0,00|Nan|16,30|1,00
+|1129817|2|2015-01-20 16:26:29|2015-01-20 16:30:26|1|0,69|Nincsenek|Nincsenek|– 73,96|40,81|– 73,96|...|2|4,50|1,00|0,50|0.3|0,00|0,00|Nan|6,30|1,00
+|1278620|2|2015-01-01 05:58:10|2015-01-01 06:00:55|1|0,45|Nincsenek|Nincsenek|– 73,92|40,76|– 73,91|...|2|4,00|0,00|0,50|0.3|0,00|0,00|Nan|4,80|1,00
+|348430|2|2015-01-17 02:20:50|2015-01-17 02:41:38|1|0,00|Nincsenek|Nincsenek|– 73,81|40,70|– 73,82|...|2|12,50|0,50|0,50|0.3|0,00|0,00|Nan|13,80|1,00
+1269627|1|2015-01-01 05:04:10|2015-01-01 05:06:23|1|0,50|Nincsenek|Nincsenek|– 73,92|40,76|– 73,92|...|2|4,00|0,50|0,50|0|0,00|0,00|Nan|5,00|1,00
+|811755|1|2015-01-04 19:57:51|2015-01-04 20:05:45|2|1.10|Nincsenek|Nincsenek|– 73,96|40,72|– 73,95|...|2|6,50|0,50|0,50|0.3|0,00|0,00|Nan|7,80|1,00
+|737281|1|2015-01-03 12:27:31|2015-01-03 12:33:52|1|0,90|Nincsenek|Nincsenek|– 73,88|40,76|– 73,87|...|2|6,00|0,00|0,50|0.3|0,00|0,00|Nan|6,80|1,00
+|113951|1|2015-01-09 23:25:51|2015-01-09 23:39:52|1|3,30|Nincsenek|Nincsenek|– 73,96|40,72|– 73,91|...|2|12,50|0,50|0,50|0.3|0,00|0,00|Nan|13,80|1,00
+|150436|2|2015-01-11 17:15:14|2015-01-11 17:22:57|1|1,19|Nincsenek|Nincsenek|– 73,94|40,71|– 73,95|...|1|7,00|0,00|0,50|0.3|1,75|0,00|Nan|9,55|1,00
+|432136|2|2015-01-22 23:16:33 2015-01-22 23:20:13 1 0,65|Nincsenek|Nincsenek|– 73,94|40,71|– 73,94|...|2|5,00|0,50|0,50|0.3|0,00|0,00|Nan|6,30|1,00
 
 Most, hogy a kezdeti adatok betöltődik, Definiáljon egy függvényt, amely különböző időalapú szolgáltatásokat hoz létre a pickup datetime mezőből. Ez új mezőket hoz létre a hónap, a hónap napja, a hét napja és a nap órájában, és lehetővé teszi a modell időalapú szezonális felszámítását. Használja a `apply()` függvényt a dataframe, hogy a iteratív alkalmazza a `build_time_features()` függvényt a taxi összes sorára.
 
@@ -101,16 +101,16 @@ green_taxi_df.head(10)
 
 |vendorID| lpepPickupDatetime|  lpepDropoffDatetime|    passengerCount| tripDistance|   puLocationId|   doLocationId|   pickupLongitude|    pickupLatitude| dropoffLongitude    |...|   paymentType|fareAmount  |extra| mtaTax| improvementSurcharge|   tipAmount|  tollsAmount|    ehailFee|   totalAmount|tripType|month_num|day_of_month|day_of_week|hour_of_day
 |----|----|----|----|----|----|---|--|---|---|---|----|----|----|--|---|----|-----|----|----|----|----|---|----|----|----
-|131969|2|2015-01-11 05:34:44|2015-01-11 05:45:03|3|4,84|Nincs|Nincs|– 73,88|40,84|– 73,94|...|2|15,00|0,50|0,50|0.3|0,00|0,00|Nan|16,30|1,00|1|11|6|5
-|1129817|2|2015-01-20 16:26:29|2015-01-20 16:30:26|1|0,69|Nincs|Nincs|– 73,96|40,81|– 73,96|...|2|4,50|1,00|0,50|0.3|0,00|0,00|Nan|6,30|1,00|1|20|1|16
-|1278620|2|2015-01-01 05:58:10|2015-01-01 06:00:55|1|0,45|Nincs|Nincs|– 73,92|40,76|– 73,91|...|2|4,00|0,00|0,50|0.3|0,00|0,00|Nan|4,80|1,00|1|1|3|5
-|348430|2|2015-01-17 02:20:50|2015-01-17 02:41:38|1|0,00|Nincs|Nincs|– 73,81|40,70|– 73,82|...|2|12,50|0,50|0,50|0.3|0,00|0,00|Nan|13,80|1,00|1|17|5|2
-1269627|1|2015-01-01 05:04:10|2015-01-01 05:06:23|1|0,50|Nincs|Nincs|– 73,92|40,76|– 73,92|...|2|4,00|0,50|0,50|0|0,00|0,00|Nan|5,00|1,00|1|1|3|5
-|811755|1|2015-01-04 19:57:51|2015-01-04 20:05:45|2|1.10|Nincs|Nincs|– 73,96|40,72|– 73,95|...|2|6,50|0,50|0,50|0.3|0,00|0,00|Nan|7,80|1,00|1|4|6|19
-|737281|1|2015-01-03 12:27:31|2015-01-03 12:33:52|1|0,90|Nincs|Nincs|– 73,88|40,76|– 73,87|...|2|6,00|0,00|0,50|0.3|0,00|0,00|Nan|6,80|1,00|1|3|5|12
-|113951|1|2015-01-09 23:25:51|2015-01-09 23:39:52|1|3,30|Nincs|Nincs|– 73,96|40,72|– 73,91|...|2|12,50|0,50|0,50|0.3|0,00|0,00|Nan|13,80|1,00|1|9|4|23
-|150436|2|2015-01-11 17:15:14|2015-01-11 17:22:57|1|1,19|Nincs|Nincs|– 73,94|40,71|– 73,95|...|1|7,00|0,00|0,50|0.3|1,75|0,00|Nan|9,55|1,00|1|11|6|17
-|432136|2|2015-01-22 23:16:33 2015-01-22 23:20:13 1 0,65|Nincs|Nincs|– 73,94|40,71|– 73,94|...|2|5,00|0,50|0,50|0.3|0,00|0,00|Nan|6,30|1,00|1|22|3|23
+|131969|2|2015-01-11 05:34:44|2015-01-11 05:45:03|3|4,84|Nincsenek|Nincsenek|– 73,88|40,84|– 73,94|...|2|15,00|0,50|0,50|0.3|0,00|0,00|Nan|16,30|1,00|1|11|6|5
+|1129817|2|2015-01-20 16:26:29|2015-01-20 16:30:26|1|0,69|Nincsenek|Nincsenek|– 73,96|40,81|– 73,96|...|2|4,50|1,00|0,50|0.3|0,00|0,00|Nan|6,30|1,00|1|20|1|16
+|1278620|2|2015-01-01 05:58:10|2015-01-01 06:00:55|1|0,45|Nincsenek|Nincsenek|– 73,92|40,76|– 73,91|...|2|4,00|0,00|0,50|0.3|0,00|0,00|Nan|4,80|1,00|1|1|3|5
+|348430|2|2015-01-17 02:20:50|2015-01-17 02:41:38|1|0,00|Nincsenek|Nincsenek|– 73,81|40,70|– 73,82|...|2|12,50|0,50|0,50|0.3|0,00|0,00|Nan|13,80|1,00|1|17|5|2
+1269627|1|2015-01-01 05:04:10|2015-01-01 05:06:23|1|0,50|Nincsenek|Nincsenek|– 73,92|40,76|– 73,92|...|2|4,00|0,50|0,50|0|0,00|0,00|Nan|5,00|1,00|1|1|3|5
+|811755|1|2015-01-04 19:57:51|2015-01-04 20:05:45|2|1.10|Nincsenek|Nincsenek|– 73,96|40,72|– 73,95|...|2|6,50|0,50|0,50|0.3|0,00|0,00|Nan|7,80|1,00|1|4|6|19
+|737281|1|2015-01-03 12:27:31|2015-01-03 12:33:52|1|0,90|Nincsenek|Nincsenek|– 73,88|40,76|– 73,87|...|2|6,00|0,00|0,50|0.3|0,00|0,00|Nan|6,80|1,00|1|3|5|12
+|113951|1|2015-01-09 23:25:51|2015-01-09 23:39:52|1|3,30|Nincsenek|Nincsenek|– 73,96|40,72|– 73,91|...|2|12,50|0,50|0,50|0.3|0,00|0,00|Nan|13,80|1,00|1|9|4|23
+|150436|2|2015-01-11 17:15:14|2015-01-11 17:22:57|1|1,19|Nincsenek|Nincsenek|– 73,94|40,71|– 73,95|...|1|7,00|0,00|0,50|0.3|1,75|0,00|Nan|9,55|1,00|1|11|6|17
+|432136|2|2015-01-22 23:16:33 2015-01-22 23:20:13 1 0,65|Nincsenek|Nincsenek|– 73,94|40,71|– 73,94|...|2|5,00|0,50|0,50|0.3|0,00|0,00|Nan|6,30|1,00|1|22|3|23
 
 Távolítson el néhány olyan oszlopot, amelyre nem lesz szüksége a betanításhoz vagy a további funkciók létrehozásához.
 
@@ -173,7 +173,7 @@ final_df.describe()
 
 ## <a name="configure-workspace"></a>Munkaterület konfigurálása
 
-Hozzon létre egy munkaterület-objektumot a meglévő munkaterületről. A [munkaterület](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) egy olyan osztály, amely elfogadja az Azure-előfizetést és az erőforrás-információkat. Létrehoz egy felhőalapú erőforrást is a modell futtatásának figyelésére és nyomon követésére. `Workspace.from_config()` beolvassa a (z) **config.js** fájlt, és betölti a hitelesítési adatokat egy nevű objektumba `ws` . A `ws` a kód további részében használható ebben az oktatóanyagban.
+Hozzon létre egy munkaterület-objektumot a meglévő munkaterületről. A [munkaterület](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) egy olyan osztály, amely elfogadja az Azure-előfizetést és az erőforrás-információkat. Létrehoz egy felhőalapú erőforrást is a modell futtatásának figyelésére és nyomon követésére. `Workspace.from_config()` beolvassa a (z) **config.js** fájlt, és betölti a hitelesítési adatokat egy nevű objektumba `ws` . A `ws` a kód további részében használható ebben az oktatóanyagban.
 
 ```python
 from azureml.core.workspace import Workspace
@@ -182,7 +182,7 @@ ws = Workspace.from_config()
 
 ## <a name="split-the-data-into-train-and-test-sets"></a>Az adat felosztása a vonatra és a tesztelési csoportokra
 
-Ossza fel az adatgyűjtést a betanítási és tesztelési készletekbe a `train_test_split` könyvtárban található függvény használatával `scikit-learn` . Ez a függvény elkülöníti az adatait az x (**szolgáltatások**) adatkészletbe a modell betanításához, valamint az y (**előre jelzett értékek**) adatkészletet a teszteléshez.
+Ossza fel az adatgyűjtést a betanítási és tesztelési készletekbe a `train_test_split` könyvtárban található függvény használatával `scikit-learn` . Ez a függvény elkülöníti az adatait az x ( **szolgáltatások** ) adatkészletbe a modell betanításához, valamint az y ( **előre jelzett értékek** ) adatkészletet a teszteléshez.
 
 A `test_size` paraméter határozza meg a teszteléshez lefoglalható adatmennyiség százalékos arányát. A `random_state` paraméter állítja be a magot a véletlenszerű generátorba, hogy a determinisztikus legyenek kiosztva.
 
@@ -212,7 +212,7 @@ A kísérlet paraméter és a modell beállításainak megadása a betanításho
 |**experiment_timeout_hours**|0.3|A kísérlet megszakítása előtt az összes iteráció együttes elvégzése ennyi idő alatt elvégezhető.|
 |**enable_early_stopping**|Igaz|Annak a jelzője, amely lehetővé teszi a korai megszakítást, ha a pontszám rövid távon nem javul.|
 |**primary_metric**| spearman_correlation | Az optimalizálni kívánt metrika. A legjobban illeszkedő modell a metrika alapján lesz kiválasztva.|
-|**featurization**| automatikus | Az **automatikus**használatával a kísérlet elődolgozhatja a bemeneti adatokat (a hiányzó adatok kezelésével, a szöveg és a numerikus szöveggé való átalakítással stb.).|
+|**featurization**| automatikus | Az **automatikus** használatával a kísérlet elődolgozhatja a bemeneti adatokat (a hiányzó adatok kezelésével, a szöveg és a numerikus szöveggé való átalakítással stb.).|
 |**részletességi**| logging.INFO | A naplózási szint szabályozása.|
 |**n_cross_validations**|5|Az ellenőrzési adatok megadásakor végrehajtandó, több ellenőrzési felosztások száma.|
 
@@ -300,7 +300,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-the-results"></a>Az eredmények vizsgálata
 
-Ismerje meg az automatikus képzés eredményeit egy [Jupyter widgettel](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true). A widget lehetővé teszi, hogy megtekintse az egyes futtatási ismétlések gráfját és táblázatát, valamint a betanítási pontossági mérőszámokat és metaadatokat. Emellett a legördülő választóval szűrheti az elsődleges metrikától eltérő pontossági mérőszámokat is.
+Ismerje meg az automatikus képzés eredményeit egy [Jupyter widgettel](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py). A widget lehetővé teszi, hogy megtekintse az egyes futtatási ismétlések gráfját és táblázatát, valamint a betanítási pontossági mérőszámokat és metaadatokat. Emellett a legördülő választóval szűrheti az elsődleges metrikától eltérő pontossági mérőszámokat is.
 
 ```python
 from azureml.widgets import RunDetails
@@ -393,9 +393,9 @@ Ha nem tervezi a létrehozott erőforrások használatát, törölje őket, így
 1. Válassza az **Erőforráscsoport törlése** elemet.
 1. Adja meg az erőforráscsoport nevét. Ezután válassza a **Törlés** elemet.
 
-Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, és válassza a **Törlés**lehetőséget.
+Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, és válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az automatizált gépi tanulási oktatóanyagban a következő feladatokat hajtotta végre:
 

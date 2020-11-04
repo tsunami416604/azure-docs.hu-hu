@@ -1,6 +1,6 @@
 ---
-title: Adatgyűjtés SQL-készletbe
-description: Ismerje meg, hogyan lehet az Azure szinapszis Analyticsben SQL-készletbe bevenni az információkat
+title: Az adat betöltése egy dedikált SQL-készletbe
+description: Ismerje meg, hogyan foglalhat be egy dedikált SQL-készletet az Azure szinapszis Analytics szolgáltatásban
 services: synapse-analytics
 author: djpmsft
 ms.service: synapse-analytics
@@ -9,22 +9,22 @@ ms.subservice: sql
 ms.date: 11/03/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 40f8834a69101682abaaa7eac8ec9cafe8ef3d9e
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 44d17bafe534fea2d408c92a3a01efb699250a78
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279367"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317778"
 ---
-# <a name="ingest-data-into-a-sql-pool"></a>Adatgyűjtés SQL-készletbe
+# <a name="ingest-data-into-a-dedicated-sql-pool"></a>Az adat betöltése egy dedikált SQL-készletbe
 
-Ebből a cikkből megtudhatja, hogyan végezheti el az adatok betöltését egy Azure Data Lake Gen 2 Storage-fiókból egy SQL-készletbe az Azure szinapszis Analytics használatával.
+Ebből a cikkből megtudhatja, hogyan végezheti el az adatok betöltését egy Azure Data Lake Gen 2 Storage-fiókból egy dedikált SQL-készletbe az Azure szinapszis Analyticsben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés** : Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) .
 * **Azure Storage-fiók** : a 2. generációs Azure Data Lake Storage használja *forrás* adattárként. Ha nem rendelkezik Storage-fiókkal, tekintse meg az [Azure Storage-fiók létrehozása](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) lépéseit.
-* **Azure szinapszis Analytics** : SQL-készletet használ *fogadó adattárként* . Ha nem rendelkezik Azure-beli szinapszis Analytics-példánnyal, tekintse meg az [SQL-készlet létrehozása](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) a létrehozás lépéseihez című témakört.
+* **Azure szinapszis Analytics** : egy dedikált SQL-készletet használ fogadó *adattárként* . Ha nem rendelkezik Azure szinapszis Analytics-példánnyal, tekintse meg [a DEDIKÁLT SQL-készlet létrehozása](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) című témakört a létrehozás lépéseihez.
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
 
@@ -39,7 +39,7 @@ Az Azure szinapszis Analyticsben a társított szolgáltatás a kapcsolati adato
 
 ## <a name="create-pipeline"></a>Folyamat létrehozása
 
-A folyamatok egy adott tevékenységek végrehajtásának logikai folyamatát tartalmazzák. Ebben a szakaszban egy másolási tevékenységet tartalmazó folyamatot fog létrehozni, amely a ADLS Gen2ból származó adatok SQL-készletbe való betöltését teszi elérhetővé.
+A folyamatok egy adott tevékenységek végrehajtásának logikai folyamatát tartalmazzák. Ebben a szakaszban egy másolási tevékenységet tartalmazó folyamatot hoz létre, amely a ADLS Gen2ból származó adatok egy dedikált SQL-készletbe való betöltését teszi elérhetővé.
 
 1. Nyissa meg az **integrálás** lapot. Válassza a folyamatok fejléc melletti plusz ikont, és válassza a **folyamat** lehetőséget.
 1. Az **áthelyezés és átalakítás** területen a tevékenységek panelen húzza az **Adatmásolás** elemet a folyamat vászonra.
@@ -68,7 +68,7 @@ Ebben a lépésben az előző lépésben közzétett folyamatot manuálisan ind�
 1. Válassza az **aktiválás hozzáadása** lehetőséget az eszköztáron, majd válassza az **aktiválás most** lehetőséget. A **Folyamatfuttatás** lapon válassza a **Befejezés** elemet.  
 1. Lépjen a **figyelés** lapra a bal oldali oldalsávban. Itt láthat egy manuális eseményindító által aktivált folyamatfuttatást. A **műveletek** oszlopban található hivatkozások használatával megtekintheti a tevékenységek részleteit, és újra futtathatja a folyamatot.
 1. A folyamat futásához társított tevékenységfuttatások megtekintéséhez kattintson a **Műveletek** oszlopban található **Tevékenységfuttatások megtekintése** hivatkozásra. Ebben a példában csak egy tevékenység van, így csak egy bejegyzés jelenik meg a listában. A másolási művelet részleteinek megtekintéséhez válassza a **Műveletek** oszlop **Részletek** hivatkozását (szemüveg ikon). Válassza a felső **folyamat futtatása** lehetőséget a folyamat futási nézetének visszalépéséhez. A nézet frissítéséhez válassza a **Frissítés** parancsot.
-1. Ellenőrizze, hogy az adatai helyesen vannak-e írva az SQL-készletben.
+1. Ellenőrizze, hogy az adatai helyesen vannak-e írva a dedikált SQL-készletben.
 
 
 ## <a name="next-steps"></a>Következő lépések

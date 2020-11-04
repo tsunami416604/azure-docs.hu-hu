@@ -4,15 +4,14 @@ description: Azure Cosmos-fiók létrehozása IP-tűzfallal
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
-ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 07/29/2020
-ms.openlocfilehash: 487c428110b63f66d7a069a7363bbc40bb685f1d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: cfa1273716c44aa54cd959c5a8e1d59c163f7b16
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100949"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316820"
 ---
 # <a name="create-an-azure-cosmos-account-with-ip-firewall-using-azure-cli"></a>Azure Cosmos-fiók létrehozása IP-tűzfallal az Azure CLI használatával
 [!INCLUDE[appliesto-all-apis](../../../includes/appliesto-all-apis.md)]
@@ -40,7 +39,7 @@ az group delete --name $resourceGroupName
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Létrehoz egy Azure Cosmos DB-fiókot. |

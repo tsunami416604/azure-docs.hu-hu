@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: az SQL igény szerinti összekapcsolása Power BI Desktop & jelentés létrehozása'
-description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztatható az SQL on-demand az Azure szinapszis Analytics szolgáltatásban Power BI asztalhoz, és hogyan hozhat létre bemutató jelentést egy nézet alapján.
+title: 'Oktatóanyag: kiszolgáló nélküli SQL-készlet összekötése Power BI Desktop & jelentés létrehozása'
+description: Ebből az oktatóanyagból megtudhatja, hogyan kapcsolódhat a kiszolgáló nélküli SQL-készlethez az Azure szinapszis Analytics Power BI szolgáltatásban, és hogyan hozhat létre egy bemutató jelentést egy nézet alapján.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5c86825d6dce8681e114ec930add751b6beae085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc2b068dd7c5e7fb3f9e3505f93245515d90ae23
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539554"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317197"
 ---
-# <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>Oktatóanyag: az SQL igény szerinti használata Power BI Desktop & jelentés létrehozása
+# <a name="tutorial-use-serverless-sql-pool-with-power-bi-desktop--create-a-report"></a>Oktatóanyag: kiszolgáló nélküli SQL-készlet használata a Power BI Desktop & jelentés létrehozása
 
 Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
@@ -24,7 +24,7 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 >
 > - Bemutató adatbázis létrehozása
 > - Jelentéshez használt nézet létrehozása
-> - Power BI Desktop összekapcsolása az SQL igény szerinti használatával
+> - Power BI Desktop összekötése kiszolgáló nélküli SQL-készlettel
 > - Jelentés létrehozása nézet alapján
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -42,8 +42,8 @@ A következő paraméterek értékei:
 
 | Paraméter                                 | Leírás                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| Igény szerinti SQL-szolgáltatás végpontjának címe    | Kiszolgáló neveként használatos                                   |
-| Igény szerinti SQL-szolgáltatás végpontjának régiója     | A mintákban használt tárterület meghatározására szolgál |
+| Kiszolgáló nélküli SQL Pool szolgáltatás végpontjának címe    | Kiszolgáló neveként használatos                                   |
+| Kiszolgáló nélküli SQL Pool szolgáltatás végponti régiója     | A mintákban használt tárterület meghatározására szolgál |
 | A végpontok hozzáférésének felhasználóneve és jelszava | Végponthoz való hozzáféréshez használatos                               |
 | A nézetek létrehozásához használni kívánt adatbázis     | A mintákban kiindulási pontként használt adatbázis       |
 
@@ -65,7 +65,7 @@ GO
 
 ## <a name="2---create-data-source"></a>2 – adatforrás létrehozása
 
-Egy adatforrás szükséges ahhoz, hogy az SQL igény szerinti szolgáltatás hozzáférjen a fájlokhoz a tárolóban. Hozzon létre egy olyan Storage-fiók adatforrását, amely ugyanabban a régióban található, mint a végpont. Bár az SQL igény szerint hozzáférhet a különböző régiókban található Storage-fiókokhoz, és az azonos régióban található tároló és végpont jobb teljesítményt biztosít.
+Egy adatforrás szükséges ahhoz, hogy a kiszolgáló nélküli SQL Pool szolgáltatás hozzáférjen a fájlokhoz a tárolóban. Hozzon létre egy olyan Storage-fiók adatforrását, amely ugyanabban a régióban található, mint a végpont. Bár a kiszolgáló nélküli SQL-készlet hozzáférhet a különböző régiókból származó Storage-fiókokhoz, és az azonos régióban található tárolók és végpontok jobb teljesítményt biztosítanak.
 
 Hozza létre az adatforrást a következő Transact-SQL (T-SQL) parancsfájl futtatásával:
 
@@ -109,11 +109,11 @@ Az USA népessége nemek és faji hovatartozás szerint, a 2000-es és a 2010-es
 
 Hozza létre a Power BI Desktop jelentést a következő lépések végrehajtásával:
 
-1. Nyissa meg a Power BI Desktop alkalmazást, és válassza az **adatlekérdezés**lehetőséget.
+1. Nyissa meg a Power BI Desktop alkalmazást, és válassza az **adatlekérdezés** lehetőséget.
 
    ![Nyissa meg Power BI asztali alkalmazást, és válassza az adatlekérdezés lehetőséget.](./media/tutorial-connect-power-bi-desktop/step-0-open-powerbi.png)
 
-2. Válassza az **Azure**  >  **Azure SQL Database**lehetőséget. 
+2. Válassza az **Azure**  >  **Azure SQL Database** lehetőséget. 
 
    ![Válassza ki az adatforrást.](./media/tutorial-connect-power-bi-desktop/step-1-select-data-source.png)
 
@@ -132,11 +132,11 @@ Hozza létre a Power BI Desktop jelentést a következő lépések végrehajtás
         ![SQL-bejelentkezés használata.](./media/tutorial-connect-power-bi-desktop/step-2.2-select-sql-auth.png)
 
 
-5. Válassza ki a nézetet `usPopulationView` , majd válassza a **Betöltés**lehetőséget. 
+5. Válassza ki a nézetet `usPopulationView` , majd válassza a **Betöltés** lehetőséget. 
 
    ![Válasszon ki egy nézetet a kiválasztott adatbázison.](./media/tutorial-connect-power-bi-desktop/step-3-select-view.png)
 
-6. Várjon, amíg a művelet befejeződik, majd megjelenik egy előugró üzenet `There are pending changes in your queries that haven't been applied` . Válassza a **módosítások alkalmazása**lehetőséget. 
+6. Várjon, amíg a művelet befejeződik, majd megjelenik egy előugró üzenet `There are pending changes in your queries that haven't been applied` . Válassza a **módosítások alkalmazása** lehetőséget. 
 
    ![Kattintson a módosítások alkalmazása lehetőségre.](./media/tutorial-connect-power-bi-desktop/step-4-apply-changes.png)
 
@@ -173,6 +173,6 @@ Ha elkészült a jelentéssel, törölje az erőforrásokat a következő lépé
    DROP DATABASE Demo;
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a [lekérdezési tároló fájljaival](develop-storage-files-overview.md) , hogy megtudja, hogyan kérdezheti le a tárolási fájlokat a szinapszis SQL használatával.

@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: overview
 ms.date: 04/23/2018
 ms.subservice: tables
-ms.openlocfilehash: 2670d9ce568195fd97350bf678059ac89610422f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 73813ae06858df62a88a08bb2f4f8f9f49940b1a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88236165"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316168"
 ---
 # <a name="what-is-azure-table-storage-"></a>Mi az Azure Table Storage? 
 
@@ -26,14 +26,14 @@ A Table Storage segítségével olyan rugalmas adatkészleteket tárolhat, mint 
 
 [!INCLUDE [storage-table-concepts-include](../../../includes/storage-table-concepts-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 
-* [Az Azure Table Storage használatának első lépései a .NET-ben](../../cosmos-db/table-storage-how-to-use-dotnet.md)
+* [Az Azure Table Storage használatának első lépései a .NET-ben](../../cosmos-db/tutorial-develop-table-dotnet.md)
 
 * A Table Service elérhető API-kat részletesen ismertető referenciadokumentációjának megtekintése:
 
-    * [A Storage ügyféloldali kódtára a .NET-hez – referencia](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+    * [A Storage ügyféloldali kódtára a .NET-hez – referencia](/dotnet/api/overview/azure/storage)
 
-    * [REST API-referencia](https://msdn.microsoft.com/library/azure/dd179355)
+    * [REST API-referencia](/rest/api/storageservices/)

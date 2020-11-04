@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Apache Spark-készlet létrehozása az Azure szinapszis Analyticsben webes eszközök használatával'
-description: Ez a rövid útmutató azt ismerteti, hogyan használható a webes eszközök Apache Spark készlet létrehozásához az Azure szinapszis Analyticsben, és hogyan futtathat egy Spark SQL-lekérdezést.
+title: 'Gyors útmutató: kiszolgáló nélküli Apache Spark-készlet létrehozása webes eszközökkel'
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre kiszolgáló nélküli Apache Spark készletet az Azure szinapszis Analytics szolgáltatásban, és hogyan futtathat Spark SQL-lekérdezést a web Tools használatával.
 services: synapse-analytics
 author: euangMS
 ms.author: euang
@@ -9,16 +9,16 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 10/16/2020
-ms.openlocfilehash: a4583e7fbf1eeaf4447e1e717c716159af645bfa
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b20f2ce88695cb68de496d126c5e3cd52f9eb6c8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742550"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316132"
 ---
-# <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Rövid útmutató: Apache Spark-készlet létrehozása az Azure szinapszis Analyticsben webes eszközök használatával
+# <a name="quickstart-create-a-serverless-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Gyors útmutató: kiszolgáló nélküli Apache Spark készlet létrehozása az Azure szinapszis Analyticsben webes eszközök használatával
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Apache Spark készletet (előzetes verzió) az Azure Szinapszisban webes eszközökkel. Ezután megismerheti a Apache Spark készlethez való kapcsolódást és a Spark SQL-lekérdezések futtatását a fájlokon és táblákon. Az Apache Spark a memóriában végzett feldolgozás segítségével teszi lehetővé a gyors adatelemzést és fürtszámítást. További információ a Sparkról az Azure Szinapszisban [: Áttekintés: Apache Spark az Azure szinapszisban](./spark/apache-spark-overview.md).
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre kiszolgáló nélküli Apache Spark készletet (előzetes verzió) az Azure Szinapszisban webes eszközökkel. Ezután megismerheti a Apache Spark készlethez való kapcsolódást és a Spark SQL-lekérdezések futtatását a fájlokon és táblákon. Az Apache Spark a memóriában végzett feldolgozás segítségével teszi lehetővé a gyors adatelemzést és fürtszámítást. További információ a Sparkról az Azure Szinapszisban [: Áttekintés: Apache Spark az Azure szinapszisban](./spark/apache-spark-overview.md).
 
 > [!IMPORTANT]
 > A Spark-példányok számlázása percenként történik, függetlenül attól, hogy használja-e őket. A használata után állítsa le a Spark-példányt, vagy állítson be egy rövid időkorlátot. További információkért lásd a cikk **Az erőforrások eltávolítása** című szakaszát.
@@ -29,11 +29,11 @@ Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy in
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 - [Szinapszis Analytics-munkaterület](quickstart-create-workspace.md)
-- [Apache Spark készlet](quickstart-create-apache-spark-pool-studio.md)
+- [Kiszolgáló nélküli Apache Spark készlet](quickstart-create-apache-spark-pool-studio.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
@@ -120,7 +120,7 @@ A Structured Query Language (SQL) a leggyakoribb és legszélesebb körben haszn
 6. Az X tengely oszlop mezőjében válassza az "állapot" lehetőséget.
 7. Az Y tengely oszlop mezőjében válassza a "fizetés" lehetőséget.
 8. Az **Összesítés** mezőben válassza az "AVG" lehetőséget.
-9. Kattintson az **Alkalmaz** gombra.
+9. Válassza az **Alkalmaz** lehetőséget.
 
    ![Diagram kimenete az Azure szinapszis Sparkban](./media/quickstart-apache-spark-notebook/spark-get-started-query-chart-output.png "Diagram kimenete az Azure szinapszis Sparkban")
 
@@ -132,9 +132,12 @@ A Structured Query Language (SQL) a leggyakoribb és legszélesebb körben haszn
 
 11. A korábban végrehajtott cellák mindegyike lehetőséget kapott az **Előzmények kiszolgáló** és a **figyelés** megugrására. A hivatkozásokra kattintva a felhasználói élmény különböző részeire juthat.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+> [!NOTE]
+> A [Apache Spark hivatalos dokumentációja](https://spark.apache.org/docs/latest/) a Spark-konzolt használja, amely nem érhető el a szinapszis Sparkban. Ehelyett használjon [jegyzetfüzetet](quickstart-apache-spark-notebook.md) vagy [IntelliJ](./spark/intellij-tool-synapse.md) -élményt.
 
-Az Azure szinapszis Azure Data Lake Storage tárolja az adatait. Ha nincs használatban, nyugodtan engedélyezheti a Spark-példányok leállítását. Az Azure szinapszis Apache Spark-készletért kell fizetnie, ha az fut, még akkor is, ha nincs használatban. 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Az Azure szinapszis Azure Data Lake Storage tárolja az adatait. Ha nincs használatban, nyugodtan engedélyezheti a Spark-példányok leállítását. A kiszolgáló nélküli Apache Spark-készletért kell fizetnie, ha az fut, még akkor is, ha nincs használatban. 
 
 Mivel a készlet díjai több időt vesznek igénybe, mint a tárterületre vonatkozó díjak, a gazdasági érzék lehetővé teszi, hogy a Spark-példányok leálljanak, amikor nincsenek használatban.
 
@@ -142,11 +145,10 @@ A Spark-példány leállításának biztosításához fejezze be a csatlakoztato
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre Azure szinapszis Apache Spark készletet, és hogyan futtathat egy alapszintű Spark SQL-lekérdezést.
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre kiszolgáló nélküli Apache Spark készletet, és hogyan futtathat egy alapszintű Spark SQL-lekérdezést.
 
 - [Azure Synapse Analytics](overview-what-is.md)
 - [.NET Apache Spark dokumentációhoz](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Apache Spark hivatalos dokumentáció](https://spark.apache.org/docs/latest/)
 
->[!NOTE]
-> A hivatalos Apache Spark dokumentációja a Spark-konzol használatával működik, amely az Azure szinapszis Sparkon nem érhető el. Ehelyett használjon [jegyzetfüzetet](quickstart-apache-spark-notebook.md) vagy [IntelliJ](./spark/intellij-tool-synapse.md) -élményt.
+
+

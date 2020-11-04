@@ -1,6 +1,6 @@
 ---
-title: Igény szerinti SQL-(előzetes verzió) önsegítő funkció
-description: Ez a szakasz olyan információkat tartalmaz, amelyek segítséget nyújtanak az SQL on-demand (előzetes verzió) problémáinak elhárításában.
+title: Kiszolgáló nélküli SQL-készlet (előzetes verzió) – önsegítő
+description: Ez a szakasz olyan információkat tartalmaz, amelyek segíthetnek a kiszolgáló nélküli SQL-készlet (előzetes verzió) hibáinak elhárításában.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,37 +9,37 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8bd955e844c9569438c5d35f152ba1bcdfccc306
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9753fc491cb5950d679ae3633a18cdd5c1170291
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288001"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317288"
 ---
-# <a name="self-help-for-sql-on-demand-preview"></a>Önkiszolgáló Súgó az SQL igény szerinti használatra (előzetes verzió)
+# <a name="self-help-for-serverless-sql-pool-preview"></a>Önsegítő kiszolgáló nélküli SQL-készlet (előzetes verzió)
 
-Ez a cikk azt ismerteti, hogyan lehet az Azure szinapszis Analytics szolgáltatásban az SQL on-demand (előzetes verzió) leggyakoribb problémáinak elhárítására.
+Ez a cikk azt ismerteti, hogyan lehet elhárítani a leggyakoribb problémákat a kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban.
 
-## <a name="sql-on-demand-is-grayed-out-in-synapse-studio"></a>Az SQL on-demand szürkén jelenik meg a szinapszis Studióban
+## <a name="serverless-sql-pool-is-grayed-out-in-synapse-studio"></a>A kiszolgáló nélküli SQL-készlet szürkén jelenik meg a szinapszis Studióban
 
-Ha a szinapszis Studio nem tud kapcsolatot létesíteni az SQL-on igény szerinti kapcsolattal, megfigyelheti, hogy az SQL on-demand szürkén jelenik meg, vagy a "kapcsolat nélküli" állapotot jeleníti meg. Ez a probléma általában akkor fordul elő, ha a következő esetek valamelyike történik:
+Ha a szinapszis Studio nem tud kapcsolatot létesíteni a kiszolgáló nélküli SQL-készlettel, megfigyelheti, hogy a kiszolgáló nélküli SQL-készlet szürkén jelenik meg, vagy "offline" állapotot jelenít meg. Ez a probléma általában akkor fordul elő, ha a következő esetek valamelyike történik:
 
-1) A hálózat megakadályozza az Azure szinapszis-háttérrel való kommunikációt. A leggyakoribb eset az, hogy a 1443-es port le van tiltva. Az SQL igény szerinti működésének megkezdéséhez tiltsa le a portot. Más problémák miatt előfordulhat, hogy az SQL on-demand is működik. [További információért látogasson el a teljes hibaelhárítási útmutatóba](../troubleshoot/troubleshoot-synapse-studio.md).
-2) Nincs engedélye az SQL igény szerinti bejelentkezni. A hozzáféréshez az Azure szinapszis-munkaterület rendszergazdáinak egyike adja hozzá a munkaterület-rendszergazdához vagy az SQL-rendszergazdai szerepkörhöz. [További információkért tekintse meg a hozzáférés-vezérlés teljes útmutatóját](access-control.md).
+1) A hálózat megakadályozza az Azure szinapszis-háttérrel való kommunikációt. A leggyakoribb eset az, hogy a 1443-es port le van tiltva. A kiszolgáló nélküli SQL-készlet működésének megkezdéséhez tiltsa le a portot. Más problémák miatt előfordulhat, hogy a kiszolgáló nélküli SQL-készlet is működik, [További információért látogasson el a teljes hibaelhárítási útmutatóba](../troubleshoot/troubleshoot-synapse-studio.md).
+2) Nincs engedélye a kiszolgáló nélküli SQL-készletbe való bejelentkezésre. A hozzáféréshez az Azure szinapszis-munkaterület rendszergazdáinak egyike adja hozzá a munkaterület-rendszergazdához vagy az SQL-rendszergazdai szerepkörhöz. [További információkért tekintse meg a hozzáférés-vezérlés teljes útmutatóját](access-control.md).
 
 ## <a name="query-fails-because-file-cannot-be-opened"></a>A lekérdezés sikertelen, mert a fájl nem nyitható meg
 
-Ha a lekérdezés sikertelen a "fájl nem nyitható meg, mert nem létezik, vagy egy másik folyamat használja", és biztos benne, hogy mindkét fájl létezik, és egy másik folyamat nem használja azt, azt jelenti, hogy az SQL igény szerint nem fér hozzá a fájlhoz. Ez a probléma általában azért fordul elő, mert a Azure Active Directory identitása nem rendelkezik jogosultsággal a fájl eléréséhez. Alapértelmezés szerint az SQL on-demand a Azure Active Directory identitás használatával próbál hozzáférni a fájlhoz. A probléma megoldásához megfelelő jogosultságokkal kell rendelkeznie a fájl eléréséhez. Ennek legegyszerűbb módja, ha „Storage-blobadatok közreműködője” szerepkört ad saját magának ahhoz a tárterülethez, amelyet lekérdezni próbál. [További információért tekintse meg az Azure Active Directory teljes körű tárterülethozzáférés-vezérlési útmutatóját](../../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). 
+Ha a lekérdezés sikertelen a "fájl nem nyitható meg, mert nem létezik, vagy egy másik folyamat használja", és biztos benne, hogy mindkét fájl létezik, és egy másik folyamat nem használja azt, az azt jelenti, hogy a kiszolgáló nélküli SQL-készlet nem fér hozzá a fájlhoz. Ez a probléma általában azért fordul elő, mert a Azure Active Directory identitása nem rendelkezik jogosultsággal a fájl eléréséhez. Alapértelmezés szerint a kiszolgáló nélküli SQL-készlet a Azure Active Directory identitásával próbál hozzáférni a fájlhoz. A probléma megoldásához megfelelő jogosultságokkal kell rendelkeznie a fájl eléréséhez. Ennek legegyszerűbb módja, ha „Storage-blobadatok közreműködője” szerepkört ad saját magának ahhoz a tárterülethez, amelyet lekérdezni próbál. [További információért tekintse meg az Azure Active Directory teljes körű tárterülethozzáférés-vezérlési útmutatóját](../../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). 
 
 ## <a name="query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints"></a>A lekérdezés sikertelen, mert a jelenlegi erőforrás-megkötések miatt nem hajtható végre. 
 
-Ha a lekérdezés sikertelen, a következő hibaüzenet jelenik meg: "Ez a lekérdezés nem hajtható végre az aktuális erőforrás-korlátozások miatt", az azt jelenti, hogy az SQL igény szerint nem hajtható végre az erőforrás-korlátozások miatt jelenleg. 
+Ha a lekérdezés sikertelen, a következő hibaüzenet jelenik meg: "Ez a lekérdezés nem hajtható végre az aktuális erőforrás-korlátozások miatt", az azt jelenti, hogy a kiszolgáló nélküli SQL-készlet nem tudja végrehajtani az adott pillanatban az erőforrás-megkötések miatt. 
 
 - Győződjön meg arról, hogy megfelelő méretű adattípusok vannak használatban. Emellett a karakterlánc-oszlopokhoz tartozó Parquet-fájlok sémáját is megadhatja, mivel alapértelmezés szerint VARCHAR (8000) lesz. 
 
-- Ha a lekérdezés CSV-fájlokat céloz meg, érdemes lehet [statisztikai adatokat létrehoznia](develop-tables-statistics.md#statistics-in-sql-on-demand-preview). 
+- Ha a lekérdezés CSV-fájlokat céloz meg, érdemes lehet [statisztikai adatokat létrehoznia](develop-tables-statistics.md#statistics-in-serverless-sql-pool-preview). 
 
-- A lekérdezés optimalizálásához tekintse meg [az SQL igény szerinti teljesítményére vonatkozó ajánlott eljárásokat](best-practices-sql-on-demand.md) .  
+- A lekérdezés optimalizálásához látogasson el [a kiszolgáló nélküli SQL-készlet teljesítményének bevált eljárásaira](best-practices-sql-on-demand.md) .  
 
 ## <a name="create-statement-is-not-supported-in-master-database"></a>A CREATE "utasítás" nem támogatott a Master adatbázisban
 
@@ -47,7 +47,7 @@ Ha a lekérdezés nem sikerül, a következő hibaüzenet jelenik meg:
 
 > ' A lekérdezés végrehajtása sikertelen. Hiba: külső tábla/ADATFORRÁS/adatbázis-HATÓKÖRű HITELESÍTő adat/FÁJLFORMÁTUM létrehozása nem támogatott a Master adatbázisban. " 
 
-Ez azt jelenti, hogy az SQL igény szerinti Master adatbázisa nem támogatja a következő létrehozását:
+Ez azt jelenti, hogy a kiszolgáló nélküli SQL-készletben lévő Master adatbázis nem támogatja a következő létrehozását:
   - Külső táblák
   - Külső adatforrások
   - Adatbázis-hatókörrel rendelkező hitelesítő adatok
@@ -71,9 +71,9 @@ CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat]
 WITH ( FORMAT_TYPE = PARQUET)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az SQL igény szerinti használatáról az alábbi cikkekben olvashat bővebben:
+Tekintse át a következő cikkeket, amelyekből többet tudhat meg a kiszolgáló nélküli SQL-készlet használatáról:
 
 - [Egyetlen CSV-fájl lekérdezése](query-single-csv-file.md)
 

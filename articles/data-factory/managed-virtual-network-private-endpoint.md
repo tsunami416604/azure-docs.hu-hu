@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 7a0d3c60841cb12f2999a929eb4af351716abda7
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: a34f2e50a5eb4ab87a02a5128cb912fa220849f1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635779"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317078"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory felügyelt Virtual Network (előzetes verzió)
 
@@ -51,7 +51,7 @@ A felügyelt magánhálózati végpontok a Azure Data Factory felügyelt Virtual
 
 ![Új felügyelt magánhálózati végpont](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
 
-Azure Data Factory támogatja a privát hivatkozásokat. A privát hivatkozás lehetővé teszi az Azure (Pásti) szolgáltatások elérését (például Azure Storage, Azure Cosmos DB, Azure szinapszis Analytics (korábban Azure SQL Data Warehouse)).
+Azure Data Factory támogatja a privát hivatkozásokat. A privát hivatkozás lehetővé teszi az Azure (Pásti) szolgáltatások elérését (például Azure Storage, Azure Cosmos DB, Azure szinapszis Analytics (korábban SQL Data Warehouse)).
 
 Privát kapcsolat használatakor az adattárak és a felügyelt Virtual Network közötti adatforgalom teljes egészében a Microsoft gerinc hálózatán halad át. A privát hivatkozás védi az adatkiszűrése kockázatait. Privát végpont létrehozásával létrehozhat egy erőforrásra mutató privát hivatkozást.
 
@@ -81,7 +81,7 @@ Az alábbi adatforrások az ADF által felügyelt Virtual Networkon keresztüli 
 - Azure Files
 - Azure Data Lake Gen2
 - Azure SQL Database (nem tartalmazza az Azure SQL felügyelt példányát)
-- Azure Synapse Analytics (korábban Azure SQL Data Warehouse)
+- Azure Synapse Analytics (korábban SQL Data Warehouse)
 - Azure CosmosDB SQL
 - Azure Key Vault
 - Azure Private link Service

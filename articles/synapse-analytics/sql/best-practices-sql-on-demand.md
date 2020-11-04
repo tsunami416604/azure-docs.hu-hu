@@ -1,6 +1,6 @@
 ---
-title: Ajánlott eljárások az SQL igény szerinti használatra (előzetes verzió)
-description: Javaslatok és ajánlott eljárások az SQL on-demand (előzetes verzió) használata esetén.
+title: Ajánlott eljárások kiszolgáló nélküli SQL-készlethez (előzetes verzió)
+description: Javaslatok és ajánlott eljárások a kiszolgáló nélküli SQL-készlet (előzetes verzió) használata esetén.
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -10,32 +10,32 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9de3e3503d63cf6dcaa98adc318d86df7700458d
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 6fd0ba19739b75e72541ac84d6b1696ab2819dee
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241871"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317428"
 ---
-# <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Ajánlott eljárások az SQL igény szerinti használatára (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
+# <a name="best-practices-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Ajánlott eljárások a kiszolgáló nélküli SQL-készlethez (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
-Ebben a cikkben megtalálja az ajánlott eljárások gyűjteményét az SQL on-demand (előzetes verzió) használatához. Az SQL on-demand az Azure szinapszis Analytics egyik erőforrása.
+Ebből a cikkből megtudhatja, hogyan használhatók az ajánlott eljárások a kiszolgáló nélküli SQL-készlet (előzetes verzió) használatához. A kiszolgáló nélküli SQL-készlet az Azure szinapszis Analytics egyik erőforrása.
 
 ## <a name="general-considerations"></a>Általános megfontolások
 
-Az SQL on-demand lehetővé teszi fájlok lekérdezését az Azure Storage-fiókokban. Nem rendelkezik helyi tárolási vagy betöltési képességekkel. Tehát az összes olyan fájl, amelyet a lekérdezés a célként használt SQL-eszközökön kívülre mutat. A fájlok tárterületről való olvasásával kapcsolatos minden művelet hatással lehet a lekérdezés teljesítményére.
+A kiszolgáló nélküli SQL-készlet lehetővé teszi a fájlok lekérdezését az Azure Storage-fiókokban. Nem rendelkezik helyi tárolási vagy betöltési képességekkel. Tehát az összes olyan fájl, amelyet a lekérdezés a kiszolgáló nélküli SQL-készleten kívülre mutat. A fájlok tárterületről való olvasásával kapcsolatos minden művelet hatással lehet a lekérdezés teljesítményére.
 
-## <a name="colocate-your-azure-storage-account-and-sql-on-demand"></a>Az Azure Storage-fiók és az SQL igény szerinti elhelyezése
+## <a name="colocate-your-azure-storage-account-and-serverless-sql-pool"></a>Az Azure Storage-fiók és a kiszolgáló nélküli SQL-készlet közös elhelyezése
 
-A késés csökkentése érdekében helyezze el az Azure Storage-fiókját és az SQL igény szerinti végpontját. A munkaterület létrehozása során kiépített Storage-fiókok és-végpontok ugyanabban a régióban találhatók.
+A késés csökkentése érdekében helyezze el az Azure Storage-fiókot és a kiszolgáló nélküli SQL-készlet végpontját. A munkaterület létrehozása során kiépített Storage-fiókok és-végpontok ugyanabban a régióban találhatók.
 
-Az optimális teljesítmény érdekében, ha más Storage-fiókokhoz is hozzáfér az SQL on-demand szolgáltatással, győződjön meg róla, hogy ugyanabban a régióban van. Ha nem ugyanabban a régióban találhatók, az adatok hálózati átvitele nagyobb késéssel jár a távoli régió és a végpont régiója között.
+Az optimális teljesítmény érdekében, ha a kiszolgáló nélküli SQL-készlettel rendelkező más Storage-fiókokhoz fér hozzá, győződjön meg róla, hogy ugyanabban a régióban vannak. Ha nem ugyanabban a régióban találhatók, az adatok hálózati átvitele nagyobb késéssel jár a távoli régió és a végpont régiója között.
 
 ## <a name="azure-storage-throttling"></a>Azure Storage-szabályozás
 
-Előfordulhat, hogy több alkalmazás és szolgáltatás fér hozzá a Storage-fiókhoz. A tárolási szabályozás akkor fordul elő, ha az alkalmazások, szolgáltatások és az SQL igény szerinti munkaterhelése által generált kombinált IOPS vagy átviteli sebesség meghaladja a Storage-fiók korlátait. Ennek eredményeképpen jelentős negatív hatást tapasztal a lekérdezési teljesítményre.
+Előfordulhat, hogy több alkalmazás és szolgáltatás fér hozzá a Storage-fiókhoz. A tárolás szabályozása akkor történik meg, ha az alkalmazások, szolgáltatások és kiszolgáló nélküli SQL-készlet számítási feladatainak által generált kombinált IOPS vagy átviteli sebesség meghaladja a Storage-fiók korlátait. Ennek eredményeképpen jelentős negatív hatást tapasztal a lekérdezési teljesítményre.
 
-A szabályozás észlelése esetén az SQL on-demand beépített kezeléssel rendelkezik a megoldásához. Az SQL igény szerint lassabban, a szabályozás feloldása után kéri a tárterületet.
+A szabályozás észlelése esetén a kiszolgáló nélküli SQL-készlet beépített kezeléssel rendelkezik a megoldásához. A kiszolgáló nélküli SQL-készlet lassabb ütemben kéri a tárolást, amíg a szabályozás meg nem oldódik.
 
 > [!TIP]
 > Az optimális lekérdezés-végrehajtás érdekében a lekérdezés végrehajtása során ne hangsúlyozzák a Storage-fiókot más munkaterhelésekkel.
@@ -44,7 +44,7 @@ A szabályozás észlelése esetén az SQL on-demand beépített kezeléssel ren
 
 Ha lehetséges, készíthet fájlokat a jobb teljesítmény érdekében:
 
-- A CSV és a JSON konvertálása a parketta formátumba. A parketta oszlopos formátumú. Mivel tömörítve van, a fájlméretük kisebb, mint a CSV-vagy JSON-fájlok, amelyek ugyanazokat az adatmennyiségeket tartalmazzák. Az SQL on-demand kevesebb időt és kevesebb tárolási kérést igényel a beolvasáshoz.
+- A CSV és a JSON konvertálása a parketta formátumba. A parketta oszlopos formátumú. Mivel tömörítve van, a fájlméretük kisebb, mint a CSV-vagy JSON-fájlok, amelyek ugyanazokat az adatmennyiségeket tartalmazzák. A kiszolgáló nélküli SQL-készletnek kevesebb időt és kevesebb tárolási kérést kell elolvasnia.
 - Ha egy lekérdezés egyetlen nagyméretű fájlt céloz meg, akkor a több kisebb fájlra is kihasználhatja.
 - Próbálja meg a CSV-fájl méretét 10 GB alatt tartani.
 - Jobb, ha azonos méretű fájlokat szeretne egy OPENROWSET elérési úthoz vagy egy külső tábla HELYéhez.
@@ -52,7 +52,7 @@ Ha lehetséges, készíthet fájlokat a jobb teljesítmény érdekében:
 
 ## <a name="push-wildcards-to-lower-levels-in-the-path"></a>Helyettesítő karakterek leküldése az elérési út alacsonyabb szintjeire
 
-Az elérési úton helyettesítő karaktereket használhat [több fájl és mappa lekérdezéséhez](query-data-storage.md#query-multiple-files-or-folders). Az SQL on-demand listázza a Storage-fiókban lévő fájlokat, az elsőtől kezdve a Storage API használatával. Kiküszöböli a megadott elérési úttal nem egyező fájlokat. A fájlok kezdeti listájának csökkentése növelheti a teljesítményt, ha sok olyan fájl található, amely megfelel a megadott elérési útnak az első helyettesítő karakternek.
+Az elérési úton helyettesítő karaktereket használhat [több fájl és mappa lekérdezéséhez](query-data-storage.md#query-multiple-files-or-folders). A kiszolgáló nélküli SQL-készlet felsorolja a Storage-fiókban lévő fájlokat, az elsőtől kezdve a Storage API használatával. Kiküszöböli a megadott elérési úttal nem egyező fájlokat. A fájlok kezdeti listájának csökkentése növelheti a teljesítményt, ha sok olyan fájl található, amely megfelel a megadott elérési útnak az első helyettesítő karakternek.
 
 ## <a name="use-appropriate-data-types"></a>Megfelelő adattípusok használata
 
@@ -60,17 +60,17 @@ A lekérdezésben használt adattípusok hatással vannak a teljesítményre. Ha
 
 - Használja a legkisebb adatméretet, amely a lehető legnagyobb értéket fogja kielégíteni.
   - Ha a karakteres érték legfeljebb 30 karakter hosszúságú, akkor a karakter adattípusa 30.
-  - Ha az összes karakteres oszlop értéke rögzített méretű, használja a **char** vagy a **NCHAR** . Ellenkező esetben használja a **varchar** vagy a **nvarchar** .
-  - Ha a maximális egész oszlop értéke 500, használja a **smallint** , mert ez a legkisebb adattípus, amely képes erre az értékre. [Ebben a cikkben](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=sql-server-ver15&preserve-view=true)az egész adattípus-tartományokat is megtalálhatja.
+  - Ha az összes karakteres oszlop értéke rögzített méretű, használja a **char** vagy a **NCHAR**. Ellenkező esetben használja a **varchar** vagy a **nvarchar**.
+  - Ha a maximális egész oszlop értéke 500, használja a **smallint** , mert ez a legkisebb adattípus, amely képes erre az értékre. [Ebben a cikkben](/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=azure-sqldw-latest&preserve-view=true)az egész adattípus-tartományokat is megtalálhatja.
 - Ha lehetséges, használja a **varchar** és a **char** helyett a **nvarchar** és a **NCHAR** értéket.
 - Ha lehetséges, használja az egész szám alapú adattípust. A RENDEZÉSi, ILLESZTÉSi és csoportosítási műveletek a karakteres adatoknál gyorsabban, egész számokon vannak végrehajtva.
 - Ha séma-következtetést használ, ellenőrizze a [késleltetett adattípusokat](#check-inferred-data-types).
 
 ## <a name="check-inferred-data-types"></a>Késleltetett adattípusok keresése
 
-A [séma-következtetések](query-parquet-files.md#automatic-schema-inference) segítségével gyorsan írhat lekérdezéseket, és megvizsgálhatja az adatfájl-sémák ismerete nélkül. Ennek a kényelemnek a díja, hogy a következtetett adattípusok nagyobbak lehetnek, mint a tényleges adattípusok. Ez akkor fordulhat elő, ha nincs elegendő információ a forrásfájlok számára a megfelelő adattípus használata érdekében. A Parquet-fájlok például nem tartalmaznak metaadatokat a karakteres oszlopok maximális hosszával kapcsolatban. Így az SQL igény szerint varchar (8000) értékűre következtet.
+A [séma-következtetések](query-parquet-files.md#automatic-schema-inference) segítségével gyorsan írhat lekérdezéseket, és megvizsgálhatja az adatfájl-sémák ismerete nélkül. Ennek a kényelemnek a díja, hogy a következtetett adattípusok nagyobbak lehetnek, mint a tényleges adattípusok. Ez akkor fordulhat elő, ha nincs elegendő információ a forrásfájlok számára a megfelelő adattípus használata érdekében. A Parquet-fájlok például nem tartalmaznak metaadatokat a karakteres oszlopok maximális hosszával kapcsolatban. Így a kiszolgáló nélküli SQL-készlet varchar (8000)-ként következtet rá.
 
-A lekérdezés eredményül kapott adattípusait a [sp_describe_first_results_set](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql?view=sql-server-ver15&preserve-view=true) használatával is megtekintheti.
+A lekérdezés eredményül kapott adattípusait a [sp_describe_first_results_set](/sql/relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql?view=sql-server-ver15&preserve-view=true) használatával is megtekintheti.
 
 Az alábbi példa bemutatja, hogyan optimalizálhatja a késleltetett adattípusokat. Ez az eljárás a késleltetett adattípusok megjelenítésére szolgál: 
 ```sql  
@@ -111,7 +111,7 @@ FROM
 
 ## <a name="use-filename-and-filepath-functions-to-target-specific-partitions"></a>Fájlnevek és filepath függvények használata adott partíciók célzásához
 
-Az adathalmazok gyakran partíciókban vannak rendszerezve. Az SQL igény szerint kérhető az adott mappák és fájlok lekérdezésére. Ez csökkenti a fájlok számát és a lekérdezés által beolvasott és feldolgozandó adatmennyiséget. A hozzáadott bónusz az, hogy jobb teljesítményt érhet el.
+Az adathalmazok gyakran partíciókban vannak rendszerezve. A kiszolgáló nélküli SQL-készletet utasíthatja arra, hogy adott mappákat és fájlokat Kérdezzen le. Ez csökkenti a fájlok számát és a lekérdezés által beolvasott és feldolgozandó adatmennyiséget. A hozzáadott bónusz az, hogy jobb teljesítményt érhet el.
 
 További információért olvassa el a [filename](query-data-storage.md#filename-function) és a [filepath](query-data-storage.md#filepath-function) függvényt, és tekintse meg az [adott fájlok lekérdezésének](query-specific-files.md)példáit.
 
@@ -121,7 +121,7 @@ További információért olvassa el a [filename](query-data-storage.md#filename
 > [!NOTE]
 > A partíció-eltávolításhoz, a filepath és a filenamehez használt függvények jelenleg nem támogatottak a külső táblák esetében, az Apache Spark for Azure szinapszis Analytics szolgáltatásban létrehozott minden egyes tábla esetében automatikusan létrehozva.
 
-Ha a tárolt adatai nincsenek particionálva, érdemes particionálni. Ezen függvények használatával optimalizálhatja azokat a lekérdezéseket, amelyek a fájlokat célozzák meg. Ha [lekérdezi az Azure-beli szinapszis-táblák particionált Apache Sparkeit](develop-storage-files-spark-tables.md) az SQL igény szerint, a lekérdezés automatikusan csak a szükséges fájlokat fogja megcélozni.
+Ha a tárolt adatai nincsenek particionálva, érdemes particionálni. Ezen függvények használatával optimalizálhatja azokat a lekérdezéseket, amelyek a fájlokat célozzák meg. Ha [lekérdezi az Azure szinapszis-táblák particionált Apache Sparkét](develop-storage-files-spark-tables.md) a kiszolgáló nélküli SQL-készletből, a lekérdezés automatikusan csak a szükséges fájlokat fogja megcélozni.
 
 ## <a name="use-parser_version-20-to-query-csv-files"></a>CSV-fájlok lekérdezése PARSER_VERSION 2,0 használatával
 
@@ -129,7 +129,7 @@ A CSV-fájlok lekérdezése teljesítményre optimalizált elemző használatáv
 
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>A CETAS használata a lekérdezések teljesítményének és illesztésének növeléséhez
 
-A [CETAS](develop-tables-cetas.md) az SQL igény szerint elérhető legfontosabb funkcióinak egyike. A CETAS egy párhuzamos művelet, amely létrehozza a külső tábla metaadatait, és exportálja a SELECT lekérdezési eredményeket a Storage-fiókban lévő fájlok készletére.
+A [CETAS](develop-tables-cetas.md) a kiszolgáló nélküli SQL-készlet legfontosabb funkcióinak egyike. A CETAS egy párhuzamos művelet, amely létrehozza a külső tábla metaadatait, és exportálja a SELECT lekérdezési eredményeket a Storage-fiókban lévő fájlok készletére.
 
 A CETAS használatával a lekérdezések gyakran használt részeit (például az összekapcsolt hivatkozási táblákat) a fájlok új készletéhez is tárolhatja. Ezután ehhez az egyetlen külső táblához csatlakozhat, és nem kell ismétlődő közös illesztéseket használnia több lekérdezésben.
 
@@ -137,10 +137,10 @@ Ahogy a CETAS a parketta-fájlokat hozza létre, a statisztikák automatikusan l
 
 ## <a name="azure-ad-pass-through-performance"></a>Azure AD-alapú átmenő teljesítmény
 
-Az SQL on-demand lehetővé teszi a tárolóban lévő fájlok elérését Azure Active Directory (Azure AD) áteresztő vagy SAS hitelesítő adatok használatával. Előfordulhat, hogy lassabb teljesítményt tapasztal az Azure AD-n keresztül, mint az SAS.
+A kiszolgáló nélküli SQL-készlet lehetővé teszi a tárolóban lévő fájlok elérését Azure Active Directory (Azure AD) áteresztő vagy SAS hitelesítő adatok használatával. Előfordulhat, hogy lassabb teljesítményt tapasztal az Azure AD-n keresztül, mint az SAS.
 
 Ha jobb teljesítményre van szüksége, próbálja meg SAS hitelesítő adatok használatával hozzáférni a tárolóhoz, amíg az Azure AD átmenő teljesítmény nem javul.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Tekintse át a gyakori problémák megoldására vonatkozó [hibaelhárítási](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) cikket. Ha SQL-készletek helyett SQL-készleteket használ, tekintse meg az [ajánlott eljárásokat az SQL-készletekhez](best-practices-sql-pool.md) az adott útmutatáshoz.
+Tekintse át a gyakori problémák megoldására vonatkozó [hibaelhárítási](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) cikket. Ha kiszolgáló nélküli SQL-készlet helyett dedikált SQL-készlettel dolgozik, tekintse meg az ajánlott [eljárásokat a DEDIKÁLT SQL](best-practices-sql-pool.md) -készletekhez az adott útmutatáshoz.

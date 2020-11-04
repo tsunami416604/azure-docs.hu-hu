@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 1dc7c343087e4fc11aef20e95bc9cafea20a99b4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8082694b9f08023653d47e1f7fb442219cf8b475
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672853"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316695"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Azure Machine Learning munkaterület biztonságossá tétele virtuális hálózatokkal
 
@@ -48,7 +48,7 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti a következő munkaterüle
     - "Microsoft. Network/virtualNetworks/JOIN/Action" a virtuális hálózati erőforráson.
     - "Microsoft. Network/virtualNetworks/subnet/JOIN/Action" az alhálózati erőforráson.
 
-    A hálózatkezeléssel rendelkező Azure RBAC kapcsolatos további információkért tekintse meg a [hálózatkezelés beépített szerepköreit](/azure/role-based-access-control/built-in-roles#networking) .
+    A hálózatkezeléssel rendelkező Azure RBAC kapcsolatos további információkért tekintse meg a [hálózatkezelés beépített szerepköreit](../role-based-access-control/built-in-roles.md#networking) .
 
 
 ## <a name="secure-the-workspace-with-private-endpoint"></a>Munkaterület védelme privát végponttal
@@ -66,7 +66,7 @@ Azure Machine Learning támogatja a szolgáltatás-végpontok vagy a magánhál�
 >
 > A munkaterület létrehozásakor a rendszer automatikusan kiépíti az alapértelmezett Storage-fiókot.
 >
-> A nem alapértelmezett tárolási fiókok esetében a `storage_account` [ `Workspace.create()` függvény](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-&preserve-view=true) paramétere lehetővé teszi egyéni Storage-fiók megadását az Azure erőforrás-azonosító alapján.
+> A nem alapértelmezett tárolási fiókok esetében a `storage_account` [ `Workspace.create()` függvény](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-&preserve-view=true) paramétere lehetővé teszi egyéni Storage-fiók megadását az Azure erőforrás-azonosító alapján.
 
 Ha egy virtuális hálózatban lévő munkaterülethez Azure Storage-fiókot szeretne használni, kövesse az alábbi lépéseket:
 
@@ -95,7 +95,7 @@ Ha egy virtuális hálózatban lévő munkaterülethez Azure Storage-fiókot sze
     > [!IMPORTANT]
     > Ha a Azure Machine Learning SDK-val dolgozik, a fejlesztési környezetnek képesnek kell lennie csatlakozni az Azure Storage-fiókhoz. Ha a Storage-fiók egy virtuális hálózaton belül van, a tűzfalnak engedélyeznie kell a hozzáférést a fejlesztői környezet IP-címéről.
     >
-    > A Storage-fiókhoz való hozzáférés engedélyezéséhez keresse fel a Storage-fiókhoz tartozó __tűzfalakat és virtuális hálózatokat__ a *fejlesztői ügyfél webböngészőjéből* . Ezután használja az __ügyfél IP-címének hozzáadása__ jelölőnégyzetet az ügyfél IP-címének a __címtartományból__ való hozzáadásához. A __címtartomány__ mező használatával manuálisan is megadhatja a fejlesztési környezet IP-címét. Miután hozzáadta az ügyfél IP-címét, az SDK-val elérheti a Storage-fiókot.
+    > A Storage-fiókhoz való hozzáférés engedélyezéséhez keresse fel a Storage-fiókhoz tartozó __tűzfalakat és virtuális hálózatokat__ a *fejlesztői ügyfél webböngészőjéből*. Ezután használja az __ügyfél IP-címének hozzáadása__ jelölőnégyzetet az ügyfél IP-címének a __címtartományból__ való hozzáadásához. A __címtartomány__ mező használatával manuálisan is megadhatja a fejlesztési környezet IP-címét. Miután hozzáadta az ügyfél IP-címét, az SDK-val elérheti a Storage-fiókot.
 
    [![A Azure Portal tűzfalak és virtuális hálózatok panelje](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
 
@@ -188,7 +188,7 @@ Ha Azure Machine Learning kísérletezési képességeket szeretne használni a 
 
 Ha Azure Container Registryt szeretne használni egy virtuális hálózaton belül, meg kell felelnie a következő követelményeknek:
 
-* A Azure Container Registrynak prémium verziójúnak kell lennie. További információ a frissítésről: a [SKU módosítása](/azure/container-registry/container-registry-skus#changing-skus).
+* A Azure Container Registrynak prémium verziójúnak kell lennie. További információ a frissítésről: a [SKU módosítása](../container-registry/container-registry-skus.md#changing-tiers).
 
 * A Azure Container Registrynak ugyanabban a virtuális hálózatban és alhálózatban kell lennie, mint a betanításhoz vagy következtetéshez használt Storage-fióknak és számítási céloknak.
 
@@ -233,7 +233,7 @@ A követelmények teljesítése után a következő lépésekkel engedélyezheti
     > [!IMPORTANT]
     > A Storage-fióknak, a számítási fürtnek és a Azure Container Registrynek a virtuális hálózat azonos alhálózatán kell lennie.
     
-    További információkért tekintse meg a [frissítési ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-&preserve-view=true) metódus-referenciát.
+    További információkért tekintse meg a [frissítési ()](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-&preserve-view=true) metódus-referenciát.
 
 1. Alkalmazza a következő Azure Resource Manager sablont. Ez a sablon lehetővé teszi, hogy a munkaterület kommunikáljon az ACR-szel.
 
@@ -289,7 +289,7 @@ A követelmények teljesítése után a következő lépésekkel engedélyezheti
 
     Ez a sablon létrehoz egy _magánhálózati végpontot_ a munkaterületről az ACR-be való hálózati hozzáféréshez. Az alábbi képernyőképen egy példa látható a privát végpontra.
 
-    :::image type="content" source="media/how-to-secure-workspace-vnet/acr-private-endpoint.png" alt-text="Azure Container Registry a munkaterülethez":::
+    :::image type="content" source="media/how-to-secure-workspace-vnet/acr-private-endpoint.png" alt-text="ACR magánhálózati végpont beállításai":::
 
     > [!IMPORTANT]
     > Ne törölje ezt a végpontot! Ha véletlenül törli, újra alkalmazhatja a sablont ebben a lépésben, hogy újat hozzon létre.

@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a21cee6806c4200a73b35afba73cf04d7ca60308
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 33571283b876506e419ed675dde0988974c3841e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279992"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317866"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure szinapszis Analytics üzleti intelligencia-partnerek
 
@@ -41,7 +41,7 @@ Az adattárház-megoldás létrehozásához különböző piacvezető eszközök
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>A tabló önkiszolgáló elemzési szolgáltatásának segítségével bárki megtekintheti és értelmezheti az adatait, és számos különböző típusú, a fájloktól az adatbázisokig terjedő adatmennyiséget. A tabló egy natív, optimalizált összekötővel rendelkezik a szinapszis SQL-készlethez, amely egyaránt támogatja az élő és a memóriabeli elemzéseket. |[Termék lap](https://www.tableau.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/tableau.tableau-server)<br>|
 | ![Targit](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**Targit (döntési csomag)**<br>A Targit döntési csomagja olyan BI platformot biztosít, amely valós idejű irányítópultokat, önkiszolgáló elemzéseket, felhasználóbarát jelentéskészítést, látványos mobil képességeket és egyszerű adatfelderítési technológiát kínál. Mindent egyetlen, összetartó megoldásban. A Targit a vállalatoknak a bátorságot, hogy cselekedjenek. |[Termék lap](https://www.targit.com/targit-decision-suite/analytics)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/targit.targit-decision-suite)<br> |
 | ![ThoughtSpot](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**ThoughtSpot**<br>A keresés segítségével részletes elemzéseket készíthet több milliárd sorból, vagy megadhatja, hogy a mesterséges intelligencia feltárjon olyan kérdéseket, amelyeket nem gondolt. A ThoughtSpot segít az üzletembereknek másodpercek alatt megtalálni a vállalati adatelemzéseket. A keresés segítségével elemezheti az adatait, és automatizált elemzéseket kaphat, amikor szüksége van rájuk.|[Termék lap](https://www.thoughtspot.com)<br>|
-| ![Sárgaúszójú](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Sárgaúszójú**<br>A sárgaúszójú egy legtöbbet értékelt felhőalapú BI-szállító a BERETTYÓ által biztosított _ad hoc_ jelentéskészítéshez és irányítópultokhoz. A BI-felmérés. Kapcsolódjon a szinapszis SQL-készlethez, majd hozzon létre és osszon meg gyönyörű jelentéseket és irányítópultokat a díjnyertes, együttműködésen alapuló BI és Location intelligencia funkciókkal. |[Termék lap](https://www.yellowfinbi.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/yellowfin.yellowfin-for-azure-byol) |
+| ![Sárgaúszójú](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Sárgaúszójú**<br>A sárgaúszójú egy legtöbbet értékelt felhőalapú BI-szállító a BERETTYÓ által biztosított _ad hoc_ jelentéskészítéshez és irányítópultokhoz. A BI-felmérés. Kapcsolódjon egy dedikált SQL-készlethez az Azure szinapszis Analytics szolgáltatásban, majd hozzon létre és osszon meg gyönyörű jelentéseket és irányítópultokat a díjnyertes együttműködési BI és Location intelligencia funkciókkal. |[Termék lap](https://www.yellowfinbi.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/yellowfin.yellowfin-for-azure-byol) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->
 

@@ -1,6 +1,6 @@
 ---
-title: Nézetek létrehozása és használata igény szerinti SQL-ben (előzetes verzió)
-description: Ebből a szakaszból megtudhatja, hogyan hozhat létre és használhat nézeteket az SQL igény szerinti (előzetes verziójú) lekérdezésének becsomagolásához. A nézetek segítségével újra felhasználhatja ezeket a lekérdezéseket. A nézetekre akkor is szükség van, ha olyan eszközöket kíván használni, mint például a Power BI az SQL igény szerinti használata esetén.
+title: Nézetek létrehozása és használata kiszolgáló nélküli SQL-készletben (előzetes verzió)
+description: Ebből a szakaszból megtudhatja, hogyan hozhat létre és használhat nézeteket a kiszolgáló nélküli SQL-készletek (előzetes verziójú) lekérdezések becsomagolásához. A nézetek segítségével újra felhasználhatja ezeket a lekérdezéseket. A nézetekre akkor is szükség van, ha olyan eszközöket kíván használni, mint például a Power BI, a kiszolgáló nélküli SQL-készlettel együtt.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: c965b27fde80e1cb8d52b1061917d83e5cd7f5d6
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: d578529839afb5393dd013cb10f48c755f08addd
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927804"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316243"
 ---
-# <a name="create-and-use-views-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Nézetek létrehozása és használata igény szerinti SQL-ben (előzetes verzió) az Azure szinapszis Analytics használatával
+# <a name="create-and-use-views-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Nézetek létrehozása és használata kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
-Ebből a szakaszból megtudhatja, hogyan hozhat létre és használhat nézeteket az SQL igény szerinti (előzetes verziójú) lekérdezésének becsomagolásához. A nézetek segítségével újra felhasználhatja ezeket a lekérdezéseket. A nézetekre akkor is szükség van, ha olyan eszközöket kíván használni, mint például a Power BI az SQL igény szerinti használata esetén.
+Ebből a szakaszból megtudhatja, hogyan hozhat létre és használhat nézeteket a kiszolgáló nélküli SQL-készletek (előzetes verziójú) lekérdezések becsomagolásához. A nézetek segítségével újra felhasználhatja ezeket a lekérdezéseket. A nézetekre akkor is szükség van, ha olyan eszközöket kíván használni, mint például a Power BI, a kiszolgáló nélküli SQL-készlettel együtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

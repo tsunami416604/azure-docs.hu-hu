@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: 1c8958062c7430f98db0925c2b3996887bfe5548
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 11f4e7c50acc8256722949a50760c574d3b9d9e9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637360"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318246"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Adatintegráció a Azure Data Factory és az Azure-adatmegosztás használatával
 
@@ -129,7 +129,7 @@ Azure Data Factory egy folyamat olyan tevékenységek logikai csoportosítása, 
 1. Keresse meg **Azure SQL Database** , majd kattintson a Folytatás gombra.
 
     ![Portál 5. példánya](media/lab-data-flow-data-share/copy5.png)
-1. Hívja meg a "TripData" adatkészletet. A társított szolgáltatásként válassza a "SQLDB" lehetőséget. Válassza a táblanév dbo elemet. TripData "a tábla neve legördülő listából. Importálja a sémát a **kapcsolatok/tárolóból** . Ha elkészült, kattintson az OK gombra.
+1. Hívja meg a "TripData" adatkészletet. A társított szolgáltatásként válassza a "SQLDB" lehetőséget. Válassza a táblanév dbo elemet. TripData "a tábla neve legördülő listából. Importálja a sémát a **kapcsolatok/tárolóból**. Ha elkészült, kattintson az OK gombra.
 
     ![Portál 6. példánya](media/lab-data-flow-data-share/copy6.png)
 
@@ -212,7 +212,7 @@ Az ebben a lépésben létrehozott adatfolyam összekapcsolja az előző szakasz
 1. Válassza ki a **Azure SQL Database** csempét, és kattintson a Folytatás gombra. *Megjegyzés: Előfordulhat, hogy az adatelőállítóban található számos összekötő nem támogatott a leképezési adatfolyamban. Az adatoknak az egyik forrásból való átalakításához a másolási tevékenység használatával egy támogatott forrásba kell* bevenni.
 
     ![Portál adatfolyama 10](media/lab-data-flow-data-share/dataflow10.png)
-1. Hívja meg a "TripFares" adatkészletet. A társított szolgáltatásként válassza a "SQLDB" lehetőséget. Válassza a táblanév dbo elemet. TripFares "a tábla neve legördülő listából. Importálja a sémát a **kapcsolatok/tárolóból** . Ha elkészült, kattintson az OK gombra.
+1. Hívja meg a "TripFares" adatkészletet. A társított szolgáltatásként válassza a "SQLDB" lehetőséget. Válassza a táblanév dbo elemet. TripFares "a tábla neve legördülő listából. Importálja a sémát a **kapcsolatok/tárolóból**. Ha elkészült, kattintson az OK gombra.
 
     ![Portál – adatfolyam 11](media/lab-data-flow-data-share/dataflow11.png)
 1. Az adatelőnézet **lapon megtekintheti az adatait** .
@@ -320,7 +320,7 @@ Ha létrehozta az adatmegosztást, akkor a kalapot vált, és az *adatfogyasztó
 
     ![Portál hirdetései](media/lab-data-flow-data-share/portal-ads.png)
 
-1. Válassza ki a "provider" nevű adatmegosztási fiókot a névben. Például: **DataProvider0102** . 
+1. Válassza ki a "provider" nevű adatmegosztási fiókot a névben. Például: **DataProvider0102**. 
 
 1. Válassza **az adatmegosztás megkezdése** lehetőséget.
 
@@ -346,8 +346,6 @@ Ha létrehozta az adatmegosztást, akkor a kalapot vált, és az *adatfogyasztó
 
     ![Adatkészlet SQL-adatbázisának hozzáadása](media/lab-data-flow-data-share/add-dataset-sql.png)
 
-> [!NOTE]
-> SQL Data Warehouse mostantól az Azure szinapszis Analytics néven is ismert
 
 1. A folytatáshoz meg kell adni egy parancsfájlt, amelyet futtatnia kell. A megadott parancsfájl létrehoz egy felhasználót az SQL-adatbázisban, hogy az Azure-beli adatmegosztási MSI hitelesítse magát a nevében. 
 
@@ -374,7 +372,7 @@ Ha létrehozta az adatmegosztást, akkor a kalapot vált, és az *adatfogyasztó
 
 1. Kattintson a **Tovább** gombra.
 
-1. Bontsa ki a *wwtaxidata* . A *Boston taxi-adatközpont* kibontása. Figyelje meg, hogy a fájlok szintjén is megosztható. 
+1. Bontsa ki a *wwtaxidata*. A *Boston taxi-adatközpont* kibontása. Figyelje meg, hogy a fájlok szintjén is megosztható. 
 
 1. Válassza ki a *Boston taxi* -adatmappát, és adja hozzá a teljes mappát az adatmegosztáshoz. 
 
@@ -436,7 +434,7 @@ A rendszer kérheti az előfizetés kiválasztását. Győződjön meg arról, h
 
 1. **Adatmegosztási fiók** esetén válassza a **DataConsumer** lehetőséget. Létrehozhat egy új adatmegosztási fiókot is. 
 
-1. A **fogadott megosztás neve** mellett láthatja, hogy az alapértelmezett megosztás neve az adatszolgáltató által megadott név. Adjon meg egy felhasználóbarát nevet, amely leírja a kapott információkat, például a **TaxiDataShare** .
+1. A **fogadott megosztás neve** mellett láthatja, hogy az alapértelmezett megosztás neve az adatszolgáltató által megadott név. Adjon meg egy felhasználóbarát nevet, amely leírja a kapott információkat, például a **TaxiDataShare**.
 
     ![Meghívás elfogadása](media/lab-data-flow-data-share/consumer-accept.png)
 
@@ -480,7 +478,7 @@ A rendszer kérheti az előfizetés kiválasztását. Győződjön meg arról, h
 
 1. Nyisson meg egy új Azure Portal lapot. Ne zárjuk be a meglévő fület, mert egy pillanat alatt vissza kell térnie rá. 
 
-1. Az új lapon megnyitva navigáljon az **SQL-adatbázisokhoz** .
+1. Az új lapon megnyitva navigáljon az **SQL-adatbázisokhoz**.
 
 1. Válassza ki az SQL-adatbázist (csak az előfizetésében kell lennie). Ügyeljen arra, hogy ne válassza ki az adatraktárat. 
 

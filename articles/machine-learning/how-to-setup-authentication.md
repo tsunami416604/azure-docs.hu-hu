@@ -1,7 +1,7 @@
 ---
 title: Hitelesítés beállítása
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan állíthatja be és konfigurálhatja a hitelesítési módszert a Azure Machine Learning különböző erőforrásaihoz és munkafolyamataihoz. A szolgáltatáson belüli hitelesítés több módon is konfigurálható és használható, az egyszerű, felhasználói felületen alapuló hitelesítéstől kezdve a fejlesztési és tesztelési célokra, a teljes Azure Active Directory a szolgáltatás egyszerű hitelesítése.
+description: Megtudhatja, hogyan állíthatja be és konfigurálhatja a hitelesítési módszert a Azure Machine Learning különböző erőforrásaihoz és munkafolyamataihoz.
 services: machine-learning
 author: cjgronlund
 ms.author: cgronlun
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: a23f44e60bd68e51c26cc6a0bbf3e85e64914135
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: fd6f933e1b3c1e7c003f62e03215273e3d28ea5c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125767"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318540"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning erőforrások és munkafolyamatok hitelesítésének beállítása
 
@@ -38,7 +38,7 @@ A használt hitelesítési típustól függetlenül az Azure szerepköralapú ho
 ## <a name="interactive-authentication"></a>Interaktív hitelesítés
 
 > [!IMPORTANT]
-> Az interaktív hitelesítés a böngészőt használja, és cookie-kat igényel (beleértve a harmadik féltől származó cookie-kat is). Ha letiltotta a cookie-kat, a következő hibaüzenet jelenhet meg: "nem sikerült bejelentkezni." Ez a hiba akkor is előfordulhat, ha engedélyezte az [Azure multi-Factor Authentication](/azure/active-directory/authentication/concept-mfa-howitworks)szolgáltatást.
+> Az interaktív hitelesítés a böngészőt használja, és cookie-kat igényel (beleértve a harmadik féltől származó cookie-kat is). Ha letiltotta a cookie-kat, a következő hibaüzenet jelenhet meg: "nem sikerült bejelentkezni." Ez a hiba akkor is előfordulhat, ha engedélyezte az [Azure multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)szolgáltatást.
 
 A dokumentációban és a mintákban a legtöbb példa interaktív hitelesítést használ. Az SDK használatakor például két függvényhívás van, amely automatikusan rákérdez a felhasználói felületen alapuló hitelesítési folyamatra:
 
@@ -77,7 +77,7 @@ Az egyszerű szolgáltatásnév (SP) hitelesítéséhez először létre kell ho
 >
 > A legkevesebb hozzáférés megadásának oka az, hogy egy egyszerű szolgáltatásnév jelszót használ a hitelesítéshez, és a jelszót egy Automation-parancsfájl részeként lehet tárolni. Ha a jelszó kiszivárgott, az adott feladatokhoz szükséges minimális hozzáférés minimálisra csökken az SP rosszindulatú használata esetén.
 
-Az [Azure parancssori](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)felületének használatával a legkönnyebben hozhat létre egy SP-t, és hozzáférést biztosíthat a munkaterületéhez. Egyszerű szolgáltatásnév létrehozásához és a munkaterülethez való hozzáférés biztosításához kövesse az alábbi lépéseket:
+Az [Azure parancssori](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)felületének használatával a legkönnyebben hozhat létre egy SP-t, és hozzáférést biztosíthat a munkaterületéhez. Egyszerű szolgáltatásnév létrehozásához és a munkaterülethez való hozzáférés biztosításához kövesse az alábbi lépéseket:
 
 > [!NOTE]
 > Ezen lépések végrehajtásához rendszergazdai jogosultsággal kell rendelkeznie az előfizetésben.
@@ -92,7 +92,7 @@ Az [Azure parancssori](https://docs.microsoft.com/cli/azure/install-azure-cli?vi
 
     [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-    A hitelesítés egyéb módszereivel kapcsolatban lásd: [Bejelentkezés az Azure CLI-vel](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true).
+    A hitelesítés egyéb módszereivel kapcsolatban lásd: [Bejelentkezés az Azure CLI-vel](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest).
 
 1. Telepítse a Azure Machine Learning bővítményt:
 
@@ -190,11 +190,11 @@ ws.get_details()
 
 ### <a name="use-a-service-principal-from-the-azure-cli"></a>Egyszerű szolgáltatásnév használata az Azure CLI-vel
 
-Az Azure CLI-parancsokhoz használhat egyszerű szolgáltatást. További információ: [Bejelentkezés egyszerű szolgáltatásnév használatával](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest&preserve-view=true#sign-in-using-a-service-principal).
+Az Azure CLI-parancsokhoz használhat egyszerű szolgáltatást. További információ: [Bejelentkezés egyszerű szolgáltatásnév használatával](/cli/azure/create-an-azure-service-principal-azure-cli?preserve-view=true&view=azure-cli-latest#sign-in-using-a-service-principal).
 
 ### <a name="use-a-service-principal-with-the-rest-api-preview"></a>Egyszerű szolgáltatásnév használata a REST API (előzetes verzió)
 
-Az egyszerű szolgáltatásnév a Azure Machine Learning [REST API](https://docs.microsoft.com/rest/api/azureml/) (előzetes verzió) hitelesítésére is használható. A Azure Active Directory ügyfél- [hitelesítő adatok engedélyezési folyamatát](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)használja, amely lehetővé teszi, hogy a szolgáltatások közötti hívás a fej nélküli hitelesítéshez automatizált munkafolyamatokban történjen. A példák a Python és a Node.js [ADAL-függvénytárával](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) valósulnak meg, de az OpenID Connect 1,0-et támogató nyílt forráskódú kódtár is használható.
+Az egyszerű szolgáltatásnév a Azure Machine Learning [REST API](/rest/api/azureml/) (előzetes verzió) hitelesítésére is használható. A Azure Active Directory ügyfél- [hitelesítő adatok engedélyezési folyamatát](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)használja, amely lehetővé teszi, hogy a szolgáltatások közötti hívás a fej nélküli hitelesítéshez automatizált munkafolyamatokban történjen. A példák a Python és a Node.js [ADAL-függvénytárával](../active-directory/azuread-dev/active-directory-authentication-libraries.md) valósulnak meg, de az OpenID Connect 1,0-et támogató nyílt forráskódú kódtár is használható.
 
 > [!NOTE]
 > MSAL.js egy újabb könyvtár, mint a ADAL, de az ügyfél hitelesítő adataival nem végezhető el a szolgáltatás és a szolgáltatás közötti hitelesítés MSAL.js, mivel ez elsősorban olyan ügyféloldali függvénytár, amely egy adott felhasználóhoz kötött interaktív/felhasználói felületi hitelesítéshez készült. Javasoljuk, hogy az alábbi módon használja az ADAL-t az automatizált munkafolyamatok létrehozásához a REST API használatával.
@@ -391,7 +391,7 @@ Ha engedélyezi a jogkivonat-hitelesítést egy webszolgáltatáshoz, a felhaszn
 
 * **Alapértelmezés szerint** a jogkivonat-hitelesítés le van tiltva az Azure Kubernetes Service-ben való üzembe helyezéskor.
 * A jogkivonat-hitelesítés **nem támogatott** , ha Azure Container instances telepíti.
-* A jogkivonat-hitelesítés **nem használható a kulcs alapú hitelesítéssel megegyező időpontban** .
+* A jogkivonat-hitelesítés **nem használható a kulcs alapú hitelesítéssel megegyező időpontban**.
 
 A jogkivonat-hitelesítés vezérléséhez használja a (z) `token_auth_enabled` paramétert a központi telepítés létrehozásakor vagy frissítésekor:
 

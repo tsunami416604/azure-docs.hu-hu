@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e48261c4c6aeb75556663e1bf77c675557bcd1b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b638cb2b33f24220e7ceb852402862c707cc7bc6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91315490"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316000"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>A csoportos adatelemzési folyamat működés közben: az Azure szinapszis Analytics használata
 Ebben az oktatóanyagban bemutatjuk, hogyan hozhat létre és helyezhet üzembe gépi tanulási modellt az Azure szinapszis Analytics használatával egy nyilvánosan elérhető adatkészlethez – a [New York-i taxis](https://www.andresmh.com/nyctaxitrips/) adatkészlethez. A bináris besorolási modell alapján megjósolható, hogy egy adott utazási tipp díjköteles-e.  A modellek többosztályos besorolást tartalmaznak (legyen szó vagy sem a tippről) és a regresszióról (a tip-összeg kifizetésének eloszlása).
 
-Az eljárás a [csoportos adatelemzési folyamat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) munkafolyamatát követi. Bemutatjuk, hogyan állíthatja be az adatelemzési környezetet, hogyan tölthető be az Azure szinapszis Analyticsbe az adat, és hogyan használható az Azure szinapszis Analytics vagy egy IPython notebook az adat-és mérnöki funkciók modellezéséhez. Ezután bemutatjuk, hogyan hozhat létre és helyezhet üzembe egy modellt Azure Machine Learning használatával.
+Az eljárás a [csoportos adatelemzési folyamat (TDSP)](./index.yml) munkafolyamatát követi. Bemutatjuk, hogyan állíthatja be az adatelemzési környezetet, hogyan tölthető be az Azure szinapszis Analyticsbe az adat, és hogyan használható az Azure szinapszis Analytics vagy egy IPython notebook az adat-és mérnöki funkciók modellezéséhez. Ezután bemutatjuk, hogyan hozhat létre és helyezhet üzembe egy modellt Azure Machine Learning használatával.
 
 ## <a name="the-nyc-taxi-trips-dataset"></a><a name="dataset"></a>A New York-i taxis adatkészlete
 A New York-i taxi Trip-adat körülbelül 20 GB tömörített CSV-fájlból áll (~ 48 GB tömörítetlen), amely több mint 173 000 000 egyedi utazást és az egyes utazásokhoz fizetett viteldíjat rögzíti. Az egyes utazási rekordok tartalmazzák a felvételi és a lemorzsolódási helyszíneit és időpontját, a névtelen csapkod (illesztőprogram) licencének számát és a digitális medált (a taxi egyedi AZONOSÍTÓját). Az adat a 2013-as év összes utazására vonatkozik, és a következő két adatkészletben szerepel minden hónapban:
@@ -63,8 +63,8 @@ Az utazáshoz és az utazási viteldíjhoz való csatlakozáshoz használt **egy
 ## <a name="address-three-types-of-prediction-tasks"></a><a name="mltasks"></a>Az előrejelzési feladatok három típusának kezelése
 Három előrejelzési problémát fogalmazunk meg a *Tipp \_ összege* alapján, amely háromféle modellezési feladatot ábrázol:
 
-1. **Bináris besorolás**: Ha meg szeretné jósolni, hogy egy adott utazási tipp kifizetése megtörtént-e, azaz az $0-nál nagyobb *Tipp- \_ összeg* pozitív példa, míg az $0-es *tip- \_ mennyiség* negatív példa.
-2. **Többosztályos besorolás**: az utazáshoz fizetett tipp tartományának előrejelzése. A *Tipp \_ összegét* öt raktárhelyre vagy osztályra osztjuk:
+1. **Bináris besorolás** : Ha meg szeretné jósolni, hogy egy adott utazási tipp kifizetése megtörtént-e, azaz az $0-nál nagyobb *Tipp- \_ összeg* pozitív példa, míg az $0-es *tip- \_ mennyiség* negatív példa.
+2. **Többosztályos besorolás** : az utazáshoz fizetett tipp tartományának előrejelzése. A *Tipp \_ összegét* öt raktárhelyre vagy osztályra osztjuk:
 
 `Class 0 : tip_amount = $0`
 
@@ -76,15 +76,15 @@ Három előrejelzési problémát fogalmazunk meg a *Tipp \_ összege* alapján,
 
 `Class 4 : tip_amount > $20`
 
-3. **Regressziós feladat**: az utazáshoz fizetett tipp mennyiségének előrejelzése.
+3. **Regressziós feladat** : az utazáshoz fizetett tipp mennyiségének előrejelzése.
 
 ## <a name="set-up-the-azure-data-science-environment-for-advanced-analytics"></a><a name="setup"></a>Az Azure adatelemzési környezet beállítása a speciális elemzésekhez
 Az Azure-beli adatelemzési környezet beállításához kövesse az alábbi lépéseket.
 
 **Saját Azure Blob Storage-fiók létrehozása**
 
-* Ha saját Azure Blob Storage-tárolót épít ki, válasszon egy földrajzi helyet az Azure Blob Storage-hoz a vagy a lehető legközelebb az **USA déli középső**régiójában, ahol a NYC-taxi adatai tárolódnak. Az adatok másolása a AzCopy használatával történik a nyilvános blob Storage-tárolóból a saját Storage-fiókjában lévő tárolóba. Minél közelebb az Azure Blob Storage-hoz az USA déli középső régiója, annál gyorsabb ez a feladat (4. lépés).
-* Saját Azure Storage-fiók létrehozásához kövesse az [Azure Storage-fiókokról](../../storage/common/storage-create-storage-account.md)című témakör lépéseit. Ügyeljen arra, hogy jegyezze fel az alábbi Storage-fiók hitelesítő adataihoz tartozó értékeket, mivel ezek az útmutató későbbi szakaszában is szükségesek.
+* Ha saját Azure Blob Storage-tárolót épít ki, válasszon egy földrajzi helyet az Azure Blob Storage-hoz a vagy a lehető legközelebb az **USA déli középső** régiójában, ahol a NYC-taxi adatai tárolódnak. Az adatok másolása a AzCopy használatával történik a nyilvános blob Storage-tárolóból a saját Storage-fiókjában lévő tárolóba. Minél közelebb az Azure Blob Storage-hoz az USA déli középső régiója, annál gyorsabb ez a feladat (4. lépés).
+* Saját Azure Storage-fiók létrehozásához kövesse az [Azure Storage-fiókokról](../../storage/common/storage-account-create.md)című témakör lépéseit. Ügyeljen arra, hogy jegyezze fel az alábbi Storage-fiók hitelesítő adataihoz tartozó értékeket, mivel ezek az útmutató későbbi szakaszában is szükségesek.
 
   * **Storage-fiók neve**
   * **Storage-fiók kulcsa**
@@ -93,7 +93,7 @@ Az Azure-beli adatelemzési környezet beállításához kövesse az alábbi lé
 **Az Azure szinapszis Analytics-példány kiépítése.**
 Az Azure szinapszis Analytics-példány kiépítéséhez kövesse a [Azure Portal Azure szinapszis Analytics létrehozása és lekérdezése](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) című dokumentumát. Győződjön meg arról, hogy a következő Azure szinapszis Analytics-beli hitelesítő adatokkal rendelkezik, amelyeket a későbbi lépésekben fog használni.
 
-* **Kiszolgáló neve**: \<server Name> . database.Windows.net
+* **Kiszolgáló neve** : \<server Name> . database.Windows.net
 * **SQLDW (adatbázis) neve**
 * **Felhasználónév**
 * **Jelszó**
@@ -120,7 +120,7 @@ END CATCH;
 **Hozzon létre egy Azure Machine Learning munkaterületet az Azure-előfizetésében.** Útmutatásért lásd: [Azure Machine learning munkaterület létrehozása](../classic/create-workspace.md).
 
 ## <a name="load-the-data-into-azure-synapse-analytics"></a><a name="getdata"></a>Az Azure szinapszis Analytics szolgáltatásba való betöltés
-Nyisson meg egy Windows PowerShell-parancssori konzolt. A következő PowerShell-parancsok futtatásával töltse le a GitHubon megosztott SQL-parancsfájlokat egy helyi könyvtárba, amelyet a *-DestDir*paraméterrel adott meg. A *DestDir* paraméter értékét bármely helyi könyvtárra módosíthatja. Ha a *-DestDir* nem létezik, akkor a PowerShell-szkript hozza létre.
+Nyisson meg egy Windows PowerShell-parancssori konzolt. A következő PowerShell-parancsok futtatásával töltse le a GitHubon megosztott SQL-parancsfájlokat egy helyi könyvtárba, amelyet a *-DestDir* paraméterrel adott meg. A *DestDir* paraméter értékét bármely helyi könyvtárra módosíthatja. Ha a *-DestDir* nem létezik, akkor a PowerShell-szkript hozza létre.
 
 > [!NOTE]
 > Előfordulhat, hogy **rendszergazdaként kell futtatnia** a következő PowerShell-parancsfájl futtatásakor, ha a *DestDir* -címtárhoz rendszergazdai jogosultság szükséges a létrehozásához vagy a írásához.
@@ -139,7 +139,7 @@ A sikeres végrehajtás után a jelenlegi munkakönyvtára a *-DestDir-* ra vál
 
 ![Aktuális munkakönyvtár változásai][19]
 
-A *-DestDir*futtassa a következő PowerShell-parancsfájlt rendszergazdai módban:
+A *-DestDir* futtassa a következő PowerShell-parancsfájlt rendszergazdai módban:
 
 ```azurepowershell
 ./SQLDW_Data_Import.ps1
@@ -154,7 +154,7 @@ Amikor a PowerShell-parancsfájl első alkalommal fut, a rendszer arra kéri, ho
 
 Ez a **PowerShell-parancsfájl** a következő feladatokat hajtja végre:
 
-* **Letölti és telepíti a AzCopy**, ha a AzCopy még nincs telepítve
+* **Letölti és telepíti a AzCopy** , ha a AzCopy még nincs telepítve
 
   ```azurepowershell
   $AzCopy_path = SearchAzCopy
@@ -383,7 +383,7 @@ Sikeres végrehajtás után a következőhöz hasonló képernyő jelenik meg:
 ![Sikeres parancsfájl-végrehajtás kimenete][20]
 
 ## <a name="data-exploration-and-feature-engineering-in-azure-synapse-analytics"></a><a name="dbexplore"></a>Az Azure szinapszis Analytics adatfelderítési és-funkciós mérnöki szolgáltatása
-Ebben a szakaszban a **Visual Studio Adateszközeivel**közvetlenül az Azure szinapszis Analytics szolgáltatásban futtatott SQL-lekérdezéseket végzünk az adatok feltárásához és a szolgáltatások létrehozásához. Az ebben a szakaszban használt összes SQL-lekérdezés megtalálható a *SQLDW_Explorations. SQL*nevű minta parancsfájlban. Ez a fájl már le van töltve a helyi könyvtárba a PowerShell-szkripttel. Azt is lekérheti a [githubról](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql). A GitHubon található fájl azonban nem rendelkezik az Azure szinapszis Analytics-információkkal, amelyekhez csatlakoztatva van.
+Ebben a szakaszban a **Visual Studio Adateszközeivel** közvetlenül az Azure szinapszis Analytics szolgáltatásban futtatott SQL-lekérdezéseket végzünk az adatok feltárásához és a szolgáltatások létrehozásához. Az ebben a szakaszban használt összes SQL-lekérdezés megtalálható a *SQLDW_Explorations. SQL* nevű minta parancsfájlban. Ez a fájl már le van töltve a helyi könyvtárba a PowerShell-szkripttel. Azt is lekérheti a [githubról](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql). A GitHubon található fájl azonban nem rendelkezik az Azure szinapszis Analytics-információkkal, amelyekhez csatlakoztatva van.
 
 Kapcsolódjon az Azure szinapszis Analytics szolgáltatáshoz a Visual Studióval az Azure szinapszis Analytics bejelentkezési nevével és jelszavával, és nyissa meg az **SQL Object Explorer** az adatbázis és a táblák importálásának megerősítéséhez. Kérje le a *SQLDW_Explorations. SQL* fájlt.
 
@@ -396,7 +396,7 @@ A jelen szakaszban leírt adatelemzési és szolgáltatás-létrehozási feladat
 
 * Ismerkedjen meg néhány mező adateloszlásával a különböző időtartományokban.
 * Vizsgálja meg a hosszúsági és a szélességi mezők adatminőségét.
-* Bináris és többosztályos besorolási Címkék készítése a **tip- \_ összeg**alapján.
+* Bináris és többosztályos besorolási Címkék készítése a **tip- \_ összeg** alapján.
 * Szolgáltatások és számítások előállítása és az utazási távolságok összehasonlítása.
 * Csatlakoztassa a két táblázatot, és bontson ki egy véletlenszerű mintát, amelyet a rendszer a modellek létrehozásához használ majd.
 
@@ -418,7 +418,7 @@ Ezek a lekérdezések gyors ellenőrzést biztosítanak a táblák sorainak és 
 **Kimenet:** 173 179 759 és 14 oszlopot kell kapnia.
 
 ### <a name="exploration-trip-distribution-by-medallion"></a>Kutatás: utazások eloszlása a medál alapján
-Ez a példában szereplő lekérdezés azokat a medálokat (taxi számokat) azonosítja, amelyek egy adott időszakon belül több mint 100 utazást teljesítenek. A lekérdezés kihasználja a particionált tábla elérését, mivel azt a **felvételi \_ datetime**partíciós sémája feltétele. A teljes adatkészlet lekérdezése a particionált tábla és/vagy indexek vizsgálatát is igénybe veszi.
+Ez a példában szereplő lekérdezés azokat a medálokat (taxi számokat) azonosítja, amelyek egy adott időszakon belül több mint 100 utazást teljesítenek. A lekérdezés kihasználja a particionált tábla elérését, mivel azt a **felvételi \_ datetime** partíciós sémája feltétele. A teljes adatkészlet lekérdezése a particionált tábla és/vagy indexek vizsgálatát is igénybe veszi.
 
 ```sql
 SELECT medallion, COUNT(*)
@@ -547,7 +547,7 @@ AND pickup_longitude != '0' AND dropoff_longitude != '0'
 ```
 
 ### <a name="feature-engineering-using-sql-functions"></a>Az SQL functions funkcióinak fejlesztései
-Az SQL functions esetenként hatékony lehetőséget biztosít a funkciók mérnöki működéséhez. Ebben az útmutatóban egy SQL-függvényt definiálunk a pickup és a lemorzsolódási helyei közötti közvetlen távolság kiszámításához. A **Visual Studio Adateszközeiben**a következő SQL-szkripteket futtathatja.
+Az SQL functions esetenként hatékony lehetőséget biztosít a funkciók mérnöki működéséhez. Ebben az útmutatóban egy SQL-függvényt definiálunk a pickup és a lemorzsolódási helyei közötti közvetlen távolság kiszámításához. A **Visual Studio Adateszközeiben** a következő SQL-szkripteket futtathatja.
 
 Itt látható a távolság függvényt definiáló SQL-parancsfájl.
 
@@ -609,7 +609,7 @@ AND pickup_longitude != '0' AND dropoff_longitude != '0'
 | 3 |40,761456 |– 73,999886 |40,766544 |– 73,988228 |0.7037227967 |
 
 ### <a name="prepare-data-for-model-building"></a>Az adatmodell-létrehozási művelet előkészítése
-A következő lekérdezés összekapcsolja a **nyctaxi \_ Trip** és a **nyctaxi \_ viteldíj** -táblázatokat, létrehoz egy bináris besorolási címkét, egy többosztályos besorolási címke **Tipp \_ osztályt** **, és**Kinyer egy mintát a teljes csatlakoztatott adatkészletből. A mintavétel az utazások egy részhalmazának beolvasásával történik a felvételi idő alapján.  Ez a lekérdezés átmásolható közvetlenül a [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net) [Importálás][adatimportálási] modulba az Azure-beli SQL Database példányból származó közvetlen adatfeldolgozáshoz. A lekérdezés helytelen (0, 0) koordinátákat tartalmazó rekordokat hagy figyelmen kívül.
+A következő lekérdezés összekapcsolja a **nyctaxi \_ Trip** és a **nyctaxi \_ viteldíj** -táblázatokat, létrehoz egy bináris besorolási címkét, egy többosztályos besorolási címke **Tipp \_ osztályt** **, és** Kinyer egy mintát a teljes csatlakoztatott adatkészletből. A mintavétel az utazások egy részhalmazának beolvasásával történik a felvételi idő alapján.  Ez a lekérdezés átmásolható közvetlenül a [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net) [Importálás][adatimportálási] modulba az Azure-beli SQL Database példányból származó közvetlen adatfeldolgozáshoz. A lekérdezés helytelen (0, 0) koordinátákat tartalmazó rekordokat hagy figyelmen kívül.
 
 ```sql
 SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
@@ -634,7 +634,7 @@ Ha készen áll a Azure Machine Learning folytatására, az alábbiakat teheti:
 2. Maradjon meg az új Azure szinapszis Analytics-táblázatban a modell-létrehozáshoz használni kívánt mintavételes és megtervezett adattípusok, és használja az új táblázatot az[adatimportálási] Adatmodul [importálása]Azure Machine Learningban. A korábbi lépésben a PowerShell-szkript elvégezte ezt a feladatot. Az adatok importálása modulból közvetlenül a táblázatból is olvashat.
 
 ## <a name="data-exploration-and-feature-engineering-in-ipython-notebook"></a><a name="ipnb"></a>Adatfelderítési és-funkció-mérnöki IPython notebookon
-Ebben a szakaszban az adatok feltárását és a szolgáltatás létrehozását fogjuk elvégezni a Python-és SQL-lekérdezésekkel a korábban létrehozott Azure szinapszis Analytics használatával. Egy **SQLDW_Explorations. ipynb** nevű és egy Python-parancsfájlt tartalmazó minta IPython-jegyzetfüzetet **SQLDW_Explorations_Scripts.** a helyi könyvtárba letöltöttük. A [githubon](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/SQLDW)is elérhetők. Ez a két fájl azonos a Python-parancsfájlokban. Ha nem rendelkezik IPython notebook-kiszolgálóval, akkor a Python-parancsfájlt a rendszer arra az esetre kapja meg. Ez a két minta Python-fájl a **python 2,7**alatt lett tervezve.
+Ebben a szakaszban az adatok feltárását és a szolgáltatás létrehozását fogjuk elvégezni a Python-és SQL-lekérdezésekkel a korábban létrehozott Azure szinapszis Analytics használatával. Egy **SQLDW_Explorations. ipynb** nevű és egy Python-parancsfájlt tartalmazó minta IPython-jegyzetfüzetet **SQLDW_Explorations_Scripts.** a helyi könyvtárba letöltöttük. A [githubon](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/SQLDW)is elérhetők. Ez a két fájl azonos a Python-parancsfájlokban. Ha nem rendelkezik IPython notebook-kiszolgálóval, akkor a Python-parancsfájlt a rendszer arra az esetre kapja meg. Ez a két minta Python-fájl a **python 2,7** alatt lett tervezve.
 
 A IPython jegyzetfüzetben és a helyi gépre letöltött Python-parancsfájlban a szükséges Azure szinapszis-elemzési információkat a korábban a PowerShell-parancsfájl csatlakoztatta. A végrehajtható fájlok módosítás nélkül futtathatók.
 
@@ -643,13 +643,13 @@ Ha már beállított egy Azure Machine Learning munkaterületet, közvetlenül f
 1. Jelentkezzen be a Azure Machine Learning munkaterületre, kattintson a felül található **Studio** elemre, majd a weblap bal oldalán kattintson a **jegyzetfüzetek** elemre.
 
     ![Kattintson a Studio, majd a JEGYZETFÜZETek elemre.][22]
-2. Kattintson az **új** elemre a weblap bal alsó sarkában, és válassza a **Python 2**lehetőséget. Ezután adjon meg egy nevet a jegyzetfüzetnek, és kattintson a pipa jelre az új üres IPython-jegyzetfüzet létrehozásához.
+2. Kattintson az **új** elemre a weblap bal alsó sarkában, és válassza a **Python 2** lehetőséget. Ezután adjon meg egy nevet a jegyzetfüzetnek, és kattintson a pipa jelre az új üres IPython-jegyzetfüzet létrehozásához.
 
     ![Kattintson az új, majd a Python 2 elemre.][23]
 3. Kattintson a **Jupyter** szimbólumra az új IPython jegyzetfüzet bal felső sarkában.
 
     ![Kattintson a Jupyter szimbólumra][24]
-4. Húzza a minta IPython jegyzetfüzetet a AzureML IPython notebook szolgáltatás **faoldalára** , és kattintson a **feltöltés**elemre. Ezt követően a rendszer feltölti a minta IPython notebookot a AzureML IPython notebook szolgáltatásba.
+4. Húzza a minta IPython jegyzetfüzetet a AzureML IPython notebook szolgáltatás **faoldalára** , és kattintson a **feltöltés** elemre. Ezt követően a rendszer feltölti a minta IPython notebookot a AzureML IPython notebook szolgáltatásba.
 
     ![Kattintson a feltöltés gombra][25]
 
@@ -814,7 +814,7 @@ pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
 ![Nyomtatási sor kimenete][4]
 
 ### <a name="visualization-scatterplot-examples"></a>Vizualizáció: scatterplot-példák
-Az ** \_ időpontot \_ \_ másodpercben** , a ** \_ távolságot** pedig a menetidő között láthatjuk, hogy van-e korreláció
+Az **\_ időpontot \_ \_ másodpercben** , a **\_ távolságot** pedig a menetidő között láthatjuk, hogy van-e korreláció
 
 ```sql
 plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
@@ -822,7 +822,7 @@ plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
 ![Scatterplot az idő és a távolság közötti kapcsolat kimenete][6]
 
-Hasonlóképpen ellenőrizhető a **ráta \_ kódja** és az **utazási \_ távolság**közötti kapcsolat.
+Hasonlóképpen ellenőrizhető a **ráta \_ kódja** és az **utazási \_ távolság** közötti kapcsolat.
 
 ```sql
 plt.scatter(df1['passenger_count'], df1['trip_distance'])
@@ -937,9 +937,9 @@ pd.read_sql(query,conn)
 ## <a name="build-models-in-azure-machine-learning"></a><a name="mlmodel"></a>Modellek készítése Azure Machine Learning
 Most már készen áll az építés és a modell üzembe helyezésének modellezésére [Azure Machine Learningban](https://studio.azureml.net). Az adatgyűjtés készen áll arra, hogy a korábban azonosított előrejelzési problémák bármelyikében felhasználható legyen, nevezetesen:
 
-1. **Bináris besorolás**: megjósolhatja, hogy fizetett-e borravalót egy útra.
-2. **Többosztályos besorolás**: a kifizetett tipp tartományának előrejelzéséhez a korábban definiált osztályok alapján.
-3. **Regressziós feladat**: az utazáshoz fizetett tipp mennyiségének előrejelzése.
+1. **Bináris besorolás** : megjósolhatja, hogy fizetett-e borravalót egy útra.
+2. **Többosztályos besorolás** : a kifizetett tipp tartományának előrejelzéséhez a korábban definiált osztályok alapján.
+3. **Regressziós feladat** : az utazáshoz fizetett tipp mennyiségének előrejelzése.
 
 A modellezési gyakorlat megkezdéséhez jelentkezzen be a **Azure Machine learning (klasszikus)** munkaterületre. Ha még nem hozott létre Machine learning-munkaterületet, tekintse meg a [Azure Machine learning Studio (klasszikus) munkaterület létrehozása](../classic/create-workspace.md)című témakört.
 
@@ -968,7 +968,7 @@ Ebben a gyakorlatban már megvizsgáltuk és megtervezjük az Azure szinapszis A
 2. Válassza a **Azure SQL Database** lehetőséget a **Tulajdonságok** panelen lévő **adatforrásként** .
 3. Adja meg az adatbázis DNS-nevét az **adatbázis-kiszolgáló neve** mezőben. Formátumban `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Adja meg az **adatbázis nevét** a megfelelő mezőben.
-5. Adja meg az *SQL-felhasználónevet* a **kiszolgáló felhasználói fiókjának nevében**, és a *jelszót* a **kiszolgáló felhasználói fiókjának jelszavában**.
+5. Adja meg az *SQL-felhasználónevet* a **kiszolgáló felhasználói fiókjának nevében** , és a *jelszót* a **kiszolgáló felhasználói fiókjának jelszavában**.
 7. Az **adatbázis-lekérdezés** szövegmezőben illessze be azt a lekérdezést, amely kibontja a szükséges adatbázis-mezőket (beleértve a kiszámított mezőket, például a címkéket), és a legördülő menüben az adatok kinyerését a kívánt minta méretre.
 
 Példa egy bináris besorolási kísérletre, amely közvetlenül az Azure szinapszis Analytics-adatbázisból olvassa be az adatot, az alábbi ábrán látható (ne felejtse el lecserélni a táblanév nyctaxi_trip és nyctaxi_fare a séma neve és a forgatókönyvben használt táblanév alapján). A többosztályos besoroláshoz és a regressziós problémákhoz hasonló kísérletek is létrehozhatók.
@@ -976,7 +976,7 @@ Példa egy bináris besorolási kísérletre, amely közvetlenül az Azure szina
 ![Azure ML-vonat][10]
 
 > [!IMPORTANT]
-> Az előző szakaszban ismertetett modellezési adatok kinyerésére és mintavételezésére vonatkozó példákban a **három modellezési gyakorlat összes címkéje szerepel a lekérdezésben**. A modellezési gyakorlatok fontos (kötelező) lépése, hogy **kizárják** a másik két probléma felesleges címkéit, valamint az egyéb **megcélzott szivárgásokat**. Ha például bináris besorolást használ, használja a megjelenő **címkét** , és zárja ki a mezők **Tipp \_ osztályát**, a **Tipp \_ összegét**és a **teljes \_ mennyiséget**. Az utóbbi a célzott szivárgásokat célozza meg, mivel a borravalót befizették.
+> Az előző szakaszban ismertetett modellezési adatok kinyerésére és mintavételezésére vonatkozó példákban a **három modellezési gyakorlat összes címkéje szerepel a lekérdezésben**. A modellezési gyakorlatok fontos (kötelező) lépése, hogy **kizárják** a másik két probléma felesleges címkéit, valamint az egyéb **megcélzott szivárgásokat**. Ha például bináris besorolást használ, használja a megjelenő **címkét** , és zárja ki a mezők **Tipp \_ osztályát** , a **Tipp \_ összegét** és a **teljes \_ mennyiséget**. Az utóbbi a célzott szivárgásokat célozza meg, mivel a borravalót befizették.
 >
 > A szükségtelen oszlopok vagy a célzott szivárgások kizárásához használja az [Oszlopok kiválasztása az adatkészlet][select-columns] modulban vagy a [metaadatok szerkesztése][edit-metadata]lehetőséget. További információ: [Oszlopok kiválasztása az adatkészletben][select-columns] és a [metaadatokat][edit-metadata] tartalmazó hivatkozások szerkesztése.
 >
@@ -1006,13 +1006,13 @@ Az alábbi ábrán egy minta pontozási kísérlet szerepel. Ha készen áll a t
 
 ![Azure ML-közzététel][11]
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Ahhoz, hogy beolvassa az ebben az útmutatóban ismertetett oktatóanyagot, létrehozott egy Azure-beli adatelemzési környezetet, amely egy nagyméretű nyilvános adatkészlettel dolgozott, a csoportos adatelemzési folyamaton keresztül, egészen az adatgyűjtésig a modell betanítása, majd egy Azure Machine Learning webszolgáltatás üzembe helyezése során.
 
 ### <a name="license-information"></a>Licencelési információk
 Ez a minta-útmutató és a hozzá tartozó parancsfájlok és IPython-jegyzetfüzet (ek) a Microsoft által a MIT licenc alatt vannak megosztva. További részletekért olvassa el a GitHubon található mintakód könyvtárában lévő LICENSE.txt fájlt.
 
-## <a name="references"></a>Hivatkozások
+## <a name="references"></a>Referencia
 - [Andrés Monroy NYC taxi TRIPS letöltési oldal](https://www.andresmh.com/nyctaxitrips/)
 - [A New York-i taxis utazási adatvédelme Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/)
 - [A New York-i taxi és a limuzin Bizottság kutatási és statisztikai adatai](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
@@ -1046,6 +1046,6 @@ Ez a minta-útmutató és a hozzá tartozó parancsfájlok és IPython-jegyzetf�
 
 
 <!-- Module References -->
-[edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
-[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[adatimportálás]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[edit-metadata]: /azure/machine-learning/studio-module-reference/edit-metadata
+[select-columns]: /azure/machine-learning/studio-module-reference/select-columns-in-dataset
+[adatimportálás]: /azure/machine-learning/studio-module-reference/import-data

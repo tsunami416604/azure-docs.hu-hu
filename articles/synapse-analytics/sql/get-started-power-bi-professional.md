@@ -1,6 +1,6 @@
 ---
 title: Kapcsolódás a szinapszis SQL-hez Power BI Professional használatával
-description: Ebben az oktatóanyagban áttekintjük, hogyan csatlakoztatható Power BI asztal az SQL on-demand (előzetes verzió) szolgáltatáshoz.
+description: Ebben az oktatóanyagban áttekintjük, hogyan csatlakoztatható Power BI asztali kiszolgáló nélküli SQL-készlethez (előzetes verzió).
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: d88406646099a136d196a104f9cf4352a367f6d2
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 97b611c449302c95d4b24c305ce50ee7683e85ea
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899114"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316472"
 ---
-# <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Kapcsolódás a szinapszis SQL-hez Power BI Professional használatával
+# <a name="connect-to-serverless-sql-pool-with-power-bi-professional"></a>Kapcsolódás kiszolgáló nélküli SQL-készlethez Power BI Professional használatával
 
 > [!div class="op_single_selector"]
 >
@@ -26,7 +26,7 @@ ms.locfileid: "92899114"
 > - [Sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > - [SSMS](get-started-ssms.md)
 
-Ebben az oktatóanyagban áttekintjük a Power BI Desktop és az SQL on-demand (előzetes verzió) összekapcsolásának lépéseit.
+Ebben az oktatóanyagban áttekintjük a Power BI Desktop kiszolgáló nélküli SQL-készlethez (előzetes verzió) való csatlakoztatásának lépéseit.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -43,17 +43,17 @@ Paraméterek:
 
 | Paraméter                                 | Leírás                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| Igény szerinti SQL-szolgáltatás végpontjának címe    | Kiszolgáló neveként lesz használva                                   |
-| Igény szerinti SQL-szolgáltatás végpontjának régiója     | A rendszer annak meghatározására szolgál, hogy milyen tárterületet fogunk használni a mintákban |
+| Kiszolgáló nélküli SQL Pool szolgáltatás végpontjának címe    | Kiszolgáló neveként lesz használva                                   |
+| Kiszolgáló nélküli SQL Pool szolgáltatás végponti régiója     | A rendszer annak meghatározására szolgál, hogy milyen tárterületet fogunk használni a mintákban |
 | A végpontok hozzáférésének felhasználóneve és jelszava | A végpont eléréséhez lesz használva                               |
-| A nézetek létrehozásához használni kívánt adatbázis     | Ez az adatbázis a mintákban kezdőpontként lesz használva       |
+| A nézetek létrehozásához használni kívánt adatbázis       | Ez az adatbázis a mintákban kezdőpontként lesz használva       |
 
 ## <a name="first-time-setup"></a>Első beállítás
 
 A minták használata előtt két lépésből áll:
 
 1. Adatbázis létrehozása a nézetekhez
-2. A Storage-ban tárolt fájlok eléréséhez igény szerint használandó hitelesítő adatok létrehozása
+2. A kiszolgáló nélküli SQL-készlet által a tárolóban lévő fájlok eléréséhez használandó hitelesítő adatok létrehozása
 
 ### <a name="create-database"></a>Adatbázis létrehozása
 
@@ -70,10 +70,10 @@ DROP DATABASE IF EXISTS demo;
 
 ### <a name="create-credentials"></a>Hitelesítő adatok létrehozása
 
-A lekérdezések futtatása előtt létre kell hoznia a hitelesítő adatokat. Ezt a hitelesítő adatot az SQL igény szerinti szolgáltatása fogja használni a tárolóban lévő fájlok eléréséhez.
+A lekérdezések futtatása előtt létre kell hoznia a hitelesítő adatokat. Ezt a hitelesítő adatot a kiszolgáló nélküli SQL Pool szolgáltatás fogja használni a tárolóban lévő fájlok eléréséhez.
 
 > [!NOTE]
-> A Storage-fiókhoz való hozzáféréshez hitelesítő adatokat kell létrehoznia. Bár az SQL igény szerint a különböző régiókban is elérheti a tárolókat, a Storage és az Azure szinapszis munkaterület az adott régióban jobb teljesítményt nyújt.
+> A Storage-fiókhoz való hozzáféréshez hitelesítő adatokat kell létrehoznia. Bár a kiszolgáló nélküli SQL-készlet képes a különböző régiókból származó tárterület elérésére, a Storage és az Azure szinapszis munkaterület az adott régióban jobb teljesítményt nyújt.
 
 Kódrészlet **a népszámlálási adattárolók hitelesítő adatainak létrehozásához** :
 
@@ -98,7 +98,7 @@ Nyissa meg a Power BI asztali alkalmazást, és válassza az **adatlekérdezés*
 
 ### <a name="step-1---select-data-source"></a>1. lépés – adatforrás kiválasztása
 
-Válassza ki az **Azure** -t a menüben, majd **Azure SQL Database** .
+Válassza ki az **Azure** -t a menüben, majd **Azure SQL Database**.
 ![Válassza ki az adatforrást.](./media/get-started-power-bi-professional/step-1-select-data-source.png)
 
 ### <a name="step-2---select-database"></a>2. lépés – adatbázis kiválasztása
@@ -108,5 +108,4 @@ Válassza ki az **Azure** -t a menüben, majd **Azure SQL Database** .
 
 ## <a name="next-steps"></a>Következő lépések
 
-A [Storage-fájlok lekérdezésével](get-started-azure-data-studio.md) megtudhatja, hogyan CSATLAKOZHAT az SQL on-demandhoz a Azure Data Studio használatával.
- 
+A [tárolási fájlok lekérdezésével](get-started-azure-data-studio.md) megtudhatja, hogyan csatlakozhat a kiszolgáló nélküli SQL-készlethez Azure Data Studio használatával.

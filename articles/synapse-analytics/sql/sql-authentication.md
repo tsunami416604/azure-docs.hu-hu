@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8edf782c03300cf22bd349548da425669f492bc1
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 460fed7244ba8094da41ae6b5b8161de3d9efe65
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093531"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317269"
 ---
 # <a name="sql-authentication"></a>SQL-hitelesítés
 
@@ -22,20 +22,20 @@ Az Azure szinapszis Analytics két SQL-űrlapot tartalmaz – az erőforrás-fel
 
 A szinapszis SQL engedélyezéséhez két engedélyezési típust használhat:
 
-- HRE-hitelesítés
+- Azure Active Directory engedélyezése
 - SQL-engedélyezés
 
-A HRE-hitelesítés a Azure Active Directoryra támaszkodik, és lehetővé teszi, hogy egyetlen helyet biztosítson a felhasználók felügyeletéhez. Az SQL-hitelesítés lehetővé teszi, hogy az örökölt alkalmazások jól ismert módon használják a szinapszis SQL-t.
+Azure Active Directory lehetővé teszi, hogy egyetlen helyet biztosítson a felhasználók felügyeletéhez. Az SQL-hitelesítés lehetővé teszi, hogy az örökölt alkalmazások jól ismert módon használják a szinapszis SQL-t.
 
 ## <a name="administrative-accounts"></a>Rendszergazdai fiókok
 
-Kettő rendszergazdaként működő felügyeleti fiók létezik (**Kiszolgálói rendszergazdai** és **Active Directory-rendszergazdai**). Az SQL Serverhez tartozó rendszergazdai fiókok azonosításához nyissa meg a Azure Portal, és keresse meg a szinapszis SQL Tulajdonságok lapját.
+Kettő rendszergazdaként működő felügyeleti fiók létezik ( **Kiszolgálói rendszergazdai** és **Active Directory-rendszergazdai** ). Az SQL Serverhez tartozó rendszergazdai fiókok azonosításához nyissa meg a Azure Portal, és keresse meg a szinapszis SQL Tulajdonságok lapját.
 
 ![SQL Server-rendszergazdák](./media/sql-authentication/sql-admins.png)
 
 - **Kiszolgálói rendszergazda**
 
-  Az Azure szinapszis Analytics létrehozásakor a **kiszolgáló-rendszergazdai bejelentkezési**nevet kell megadnia. Az SQL-kiszolgáló ekkor létrehozza a fiókot a master adatbázis egyik bejelentkezési neveként. Ez a fiók SQL Server-hitelesítéssel csatlakozik (felhasználónévvel és jelszóval). Ilyen fiókból csak egy létezhet.
+  Az Azure szinapszis Analytics létrehozásakor a **kiszolgáló-rendszergazdai bejelentkezési** nevet kell megadnia. Az SQL-kiszolgáló ekkor létrehozza a fiókot a master adatbázis egyik bejelentkezési neveként. Ez a fiók SQL Server-hitelesítéssel csatlakozik (felhasználónévvel és jelszóval). Ilyen fiókból csak egy létezhet.
 
 - **Azure Active Directory-rendszergazda**
 
@@ -51,18 +51,18 @@ A **kiszolgálói rendszergazda** és az **Azure ad-rendszergazdai** fiókok jel
 - Tagokat adhat hozzá és távolíthat el a `dbmanager` és a `loginmanager` szerepkörökhöz.
 - Megtekintheti a `sys.sql_logins` rendszertáblát.
 
-## <a name="sql-on-demand-preview"></a>[Igény szerinti SQL-verzió (előzetes verzió)](#tab/serverless)
+## <a name="serverless-sql-pool-preview"></a>[Kiszolgáló nélküli SQL-készlet (előzetes verzió)](#tab/serverless)
 
-Az SQL igény szerinti elérésére jogosult felhasználók kezeléséhez az alábbi utasításokat használhatja.
+A kiszolgáló nélküli SQL-készlethez hozzáféréssel rendelkező felhasználók kezeléséhez az alábbi utasításokat használhatja.
 
-Az SQL igény szerinti bejelentkezéséhez használja a következő szintaxist:
+A kiszolgáló nélküli SQL-készletbe való bejelentkezéshez használja a következő szintaxist:
 
 ```sql
 CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
 -- or
 CREATE LOGIN Mary@domainname.net FROM EXTERNAL PROVIDER;
 ```
-Ha a bejelentkezési azonosító létezik, létrehozhat felhasználókat az SQL igény szerinti végpontján belül az egyes adatbázisokban, és megadhatja a szükséges engedélyeket a felhasználóknak. A használat létrehozásához a következő szintaxist használhatja:
+Ha a bejelentkezési azonosító létezik, létrehozhat felhasználókat az egyes adatbázisokban a kiszolgáló nélküli SQL Pool végponton belül, és megadhatja a szükséges engedélyeket ezekhez a felhasználókhoz. A használat létrehozásához a következő szintaxist használhatja:
 ```sql
 CREATE USER Mary FROM LOGIN Mary;
 -- or
@@ -158,7 +158,7 @@ Azure SQL Database vagy szinapszis kiszolgáló nélküli verziójában használ
 ALTER ROLE db_owner ADD MEMBER Mary;
 ```
 
-Az SQL-készletben használja az [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+A dedikált SQL-készletben használja az [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ```sql
 EXEC sp_addrolemember 'db_owner', 'Mary';
@@ -187,7 +187,7 @@ A hatékony hozzáférés-kezelés egyéni bejelentkezési adatok helyett csopor
 
 - SQL Server-hitelesítés használata esetén hozzon létre tartalmazottadatbázis-felhasználókat az adatbázisban. Helyezzen egy vagy több adatbázis-felhasználót egy [adatbázis-szerepkörbe](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), majd rendeljen [engedélyeket](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) az adatbázis-szerepkörhöz.
 
-Az adatbázis-szerepkörök lehetnek beépített szerepkörök, mint például a **db_owner**, a **db_ddladmin**, a **db_datawriter**, a **db_datareader**, a **db_denydatawriter** vagy a **db_denydatareader**. A **db_owner** általában teljes körű engedélyek biztosítására szolgál néhány felhasználó számára. A többi rögzített adatbázis-szerepkör hasznos az egyszerű adatbázisok fejlesztésének gyors elkezdéséhez, de a legtöbb éles környezetbeli adatbázishoz nem ajánlott. 
+Az adatbázis-szerepkörök lehetnek beépített szerepkörök, mint például a **db_owner** , a **db_ddladmin** , a **db_datawriter** , a **db_datareader** , a **db_denydatawriter** vagy a **db_denydatareader**. A **db_owner** általában teljes körű engedélyek biztosítására szolgál néhány felhasználó számára. A többi rögzített adatbázis-szerepkör hasznos az egyszerű adatbázisok fejlesztésének gyors elkezdéséhez, de a legtöbb éles környezetbeli adatbázishoz nem ajánlott. 
 
 A **db_datareader** rögzített adatbázis-szerepkör csak olvasási hozzáférést biztosít az adatbázis minden táblájához, ami általában több a feltétlenül szükségesnél. 
 
@@ -208,7 +208,7 @@ A SQL Database-beli bejelentkezések és felhasználók kezelésekor vegye figye
 - Az utasítások végrehajtásakor csatlakoznia kell a **Master** adatbázishoz `CREATE/ALTER/DROP DATABASE` .
 - A **kiszolgáló-rendszergazdai** bejelentkezéshez tartozó adatbázis-felhasználó nem módosítható és nem távolítható el.
 - A **kiszolgáló-rendszergazdai** bejelentkezés alapértelmezett nyelve az amerikai angol (US-English).
-- Csak a rendszergazdák (**kiszolgáló-rendszergazdai** bejelentkező vagy Azure AD-rendszergazda) és a **master** adatbázis **dbmanager** adatbázis-szerepkörének tagjai rendelkeznek a `CREATE DATABASE` és a `DROP DATABASE` utasítások futtatásához szükséges engedéllyel.
+- Csak a rendszergazdák ( **kiszolgáló-rendszergazdai** bejelentkező vagy Azure AD-rendszergazda) és a **master** adatbázis **dbmanager** adatbázis-szerepkörének tagjai rendelkeznek a `CREATE DATABASE` és a `DROP DATABASE` utasítások futtatásához szükséges engedéllyel.
 - A `CREATE/ALTER/DROP LOGIN` utasítások futtatásához csatlakoznia kell a master adatbázishoz. A bejelentkezési adatok használata azonban nem javasolt. Helyette használja a tartalmazott adatbázis felhasználóit.
 - A felhasználói adatbázishoz történő csatlakozáshoz adja meg a kapcsolati sztringben szereplő adatbázis nevét.
 - Csak a kiszolgálószintű fő bejelentkező és a **master adatbázis****loginmanager** adatbázis-szerepkörének tagjai rendelkeznek a `CREATE LOGIN`, `ALTER LOGIN` és `DROP LOGIN` utasítások futtatásához szükséges engedéllyel.

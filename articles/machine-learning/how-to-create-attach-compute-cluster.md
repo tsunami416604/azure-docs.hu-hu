@@ -11,30 +11,30 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 56ab5ba93545ffdbfd36850c08eda78cc239f694
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: ce80c6bbd3e4a5154e80317c3918776c771e67fb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207121"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318213"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Azure Machine Learning számítási fürt létrehozása
 
 Megtudhatja, hogyan hozhat létre és kezelhet egy [számítási fürtöt](concept-compute-target.md#azure-machine-learning-compute-managed) a Azure Machine learning munkaterületen.
 
-Azure Machine Learning számítási fürt használatával a felhőben lévő CPU-vagy GPU-számítási csomópontok fürtön keresztül terjesztheti ki a képzéseket vagy a Batch-alapú következtetéseket. A GPU-ket tartalmazó virtuálisgép-méretekkel kapcsolatos további információkért lásd: [GPU-optimalizált virtuális gépek méretei](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu). 
+Azure Machine Learning számítási fürt használatával a felhőben lévő CPU-vagy GPU-számítási csomópontok fürtön keresztül terjesztheti ki a képzéseket vagy a Batch-alapú következtetéseket. A GPU-ket tartalmazó virtuálisgép-méretekkel kapcsolatos további információkért lásd: [GPU-optimalizált virtuális gépek méretei](../virtual-machines/sizes-gpu.md). 
 
 Ebből a cikkből megtudhatja, hogyan:
 
 * Számítási fürt létrehozása
 * Csökkentse a számítási fürt költségeit
-* [Felügyelt identitás](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) beállítása a fürthöz
+* [Felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md) beállítása a fürthöz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
-* Az [Azure CLI-bővítmény Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), [Azure Machine learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)-hoz vagy a [Azure Machine learning Visual Studio Code bővítményhez](tutorial-setup-vscode-extension.md).
+* Az [Azure CLI-bővítmény Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), [Azure Machine learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)-hoz vagy a [Azure Machine learning Visual Studio Code bővítményhez](tutorial-setup-vscode-extension.md).
 
 ## <a name="what-is-a-compute-cluster"></a>Mi az a számítási fürt?
 
@@ -48,7 +48,7 @@ A számítási fürtök biztonságos módon futtathatják a feladatokat egy [vir
 
     Ha újra csatolni szeretné a számítási célt, például a fürtkonfiguráció beállításainak módosításához, először el kell távolítania a meglévő mellékletet.
 
-* A jelen dokumentumban felsorolt forgatókönyvek némelyike __előzetesként__van megjelölve. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül is elérhetők, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+* A jelen dokumentumban felsorolt forgatókönyvek némelyike __előzetesként__ van megjelölve. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül is elérhetők, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 * Azure Machine Learning a számítások alapértelmezett korlátai, például a lefoglalt magok száma. További információ: [Az Azure-erőforrások kezelése és kvóták igénylése](how-to-manage-quotas.md).
 
@@ -60,7 +60,7 @@ A számítási fürtök biztonságos módon futtathatják a feladatokat egy [vir
 
 ## <a name="create"></a>Létrehozás
 
-**Becsült idő**: körülbelül 5 perc.
+**Becsült idő** : körülbelül 5 perc.
 
 Azure Machine Learning a számítások újra felhasználhatók a futtatások között. A számítás a munkaterület más felhasználóival is megoszthatók, és a futtatások között megmaradnak, automatikusan felfelé vagy lefelé skálázást, a csomópontok száma és a fürtön beállított max_nodes alapján. A min_nodes beállítás szabályozza a rendelkezésre álló minimális csomópontokat.
 
@@ -74,13 +74,13 @@ A számítási műveletek nem a használat során nulla csomópontra vannak lebo
 
 Állandó Azure Machine Learning számítási erőforrás Pythonban való létrehozásához válassza a **vm_size** és **max_nodes** tulajdonságokat. A Azure Machine Learning ezután az intelligens alapértelmezett értékeket használja a többi tulajdonsághoz. 
     
-* **vm_size**: a Azure Machine learning számítás által létrehozott csomópontok virtuálisgép-családja.
-* **max_nodes**: azon csomópontok maximális száma, amelyeknek az autoskálázása Azure Machine learning számítási feladatok futtatásakor.
+* **vm_size** : a Azure Machine learning számítás által létrehozott csomópontok virtuálisgép-családja.
+* **max_nodes** : azon csomópontok maximális száma, amelyeknek az autoskálázása Azure Machine learning számítási feladatok futtatásakor.
 
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
 
-Azure Machine Learning számítás létrehozásakor több speciális tulajdonság is konfigurálható. A tulajdonságok lehetővé teszik a rögzített méretű állandó fürt vagy az előfizetéshez tartozó meglévő Azure-Virtual Network létrehozását.  A részletekért tekintse meg a [AmlCompute osztályt](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true) .
+Azure Machine Learning számítás létrehozásakor több speciális tulajdonság is konfigurálható. A tulajdonságok lehetővé teszik a rögzített méretű állandó fürt vagy az előfizetéshez tartozó meglévő Azure-Virtual Network létrehozását.  A részletekért tekintse meg a [AmlCompute osztályt](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?preserve-view=true&view=azure-ml-py) .
 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -90,7 +90,7 @@ Azure Machine Learning számítás létrehozásakor több speciális tulajdonsá
 az ml computetarget create amlcompute -n cpu --min-nodes 1 --max-nodes 1 -s STANDARD_D3_V2
 ```
 
-További információ: [az ml computetarget Create amlcompute](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute&preserve-view=true).
+További információ: [az ml computetarget Create amlcompute](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute&preserve-view=true).
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
@@ -217,4 +217,4 @@ Lásd: [felügyelt identitás beállítása a Studióban](how-to-create-attach-c
 A számítási fürt használatával:
 
 * [Betanítási Futtatás beküldése](how-to-set-up-training-targets.md) 
-* [Futtassa a Batch-következtetést](how-to-use-parallel-run-step.md).
+* [Futtassa a Batch-következtetést](./tutorial-pipeline-batch-scoring-classification.md).

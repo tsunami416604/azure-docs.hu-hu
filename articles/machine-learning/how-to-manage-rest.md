@@ -1,7 +1,7 @@
 ---
 title: A REST használata az ML-erőforrások kezeléséhez
 titleSuffix: Azure Machine Learning
-description: A REST API-k használata Azure ML-erőforrások létrehozásához, futtatásához és törléséhez
+description: A REST API-k használata Azure Machine Learning erőforrások, például munkaterületek létrehozására, futtatására és törlésére, valamint modellek regisztrálására.
 author: lobrien
 ms.author: laobri
 services: machine-learning
@@ -10,18 +10,18 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b733fbc44deefe46e3496e288ebad525346ef005
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09a0580adbe6d51e4de811a57ee17203d65a2435
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322308"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316909"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Azure ML-erőforrások létrehozása, futtatása és törlése a REST használatával
 
 
 
-Az Azure ML-erőforrások több módon is kezelhetők. Használhatja a [portált](https://portal.azure.com/), a [parancssori felületet](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true)vagy a [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)-t. Vagy a REST API is kiválaszthatja. A REST API a HTTP-műveleteket szabványos módon használja az erőforrások létrehozásához, lekéréséhez, frissítéséhez és törléséhez. A REST API bármely olyan nyelven vagy eszközzel működik, amely HTTP-kéréseket tesz elérhetővé. A REST egyszerű szerkezete sokszor jó választás a parancsfájlkezelési környezetekben és a MLOps-automatizálásban. 
+Az Azure ML-erőforrások több módon is kezelhetők. Használhatja a [portált](https://portal.azure.com/), a [parancssori felületet](/cli/azure/?preserve-view=true&view=azure-cli-latest)vagy a [Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)-t. Vagy a REST API is kiválaszthatja. A REST API a HTTP-műveleteket szabványos módon használja az erőforrások létrehozásához, lekéréséhez, frissítéséhez és törléséhez. A REST API bármely olyan nyelven vagy eszközzel működik, amely HTTP-kéréseket tesz elérhetővé. A REST egyszerű szerkezete sokszor jó választás a parancsfájlkezelési környezetekben és a MLOps-automatizálásban. 
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -36,9 +36,9 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 ## <a name="prerequisites"></a>Előfeltételek
 
 - **Azure-előfizetés** , amelyhez rendszergazdai jogosultságokkal rendelkezik. Ha nem rendelkezik ilyen előfizetéssel, próbálja ki az [ingyenes vagy fizetős személyes előfizetést](https://aka.ms/AMLFree)
-- Egy [Azure Machine learning-munkaterület](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
-- A rendszergazdai REST-kérelmek az egyszerű szolgáltatásnév hitelesítését használják. Az egyszerű szolgáltatás munkaterületen való létrehozásához kövesse a [hitelesítés beállítása Azure Machine learning erőforrásokhoz és munkafolyamatokhoz](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication) című témakör lépéseit.
-- A **curl** segédprogram. A **curl** program a [Windows alrendszerben Linux](https://aka.ms/wslinstall/) vagy bármely Unix-disztribúció számára elérhető. A PowerShellben a **curl** a **meghívó-webkérések** aliasa, amely a következő `curl -d "key=val" -X POST uri` lesz: `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri` . 
+- Egy [Azure Machine learning-munkaterület](./how-to-manage-workspace.md)
+- A rendszergazdai REST-kérelmek az egyszerű szolgáltatásnév hitelesítését használják. Az egyszerű szolgáltatás munkaterületen való létrehozásához kövesse a [hitelesítés beállítása Azure Machine learning erőforrásokhoz és munkafolyamatokhoz](./how-to-setup-authentication.md#service-principal-authentication) című témakör lépéseit.
+- A **curl** segédprogram. A **curl** program a [Windows alrendszerben Linux](/windows/wsl/install-win10) vagy bármely Unix-disztribúció számára elérhető. A PowerShellben a **curl** a **meghívó-webkérések** aliasa, amely a következő `curl -d "key=val" -X POST uri` lesz: `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri` . 
 
 ## <a name="retrieve-a-service-principal-authentication-token"></a>Egyszerű szolgáltatásnév hitelesítési jogkivonatának beolvasása
 
@@ -48,7 +48,7 @@ A rendszergazdai REST-kérelmek hitelesítése OAuth2 implicit folyamattal tört
 - Az ügyfél-azonosító (amely a létrehozott jogkivonathoz lesz társítva)
 - Az ügyfél titkos kulcsa (amelyet védenie kell)
 
-Ezeket az értékeket az egyszerű szolgáltatásnév létrehozási válasza alapján kell megkapnia. Ezeket az értékeket a [Azure Machine learning erőforrások és munkafolyamatok hitelesítésének beállítása](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication)című szakaszban tárgyaljuk. Ha céges előfizetését használja, lehet, hogy nincs engedélye egy egyszerű szolgáltatásnév létrehozásához. Ebben az esetben [ingyenes vagy fizetős személyes előfizetést](https://aka.ms/AMLFree)kell használnia.
+Ezeket az értékeket az egyszerű szolgáltatásnév létrehozási válasza alapján kell megkapnia. Ezeket az értékeket a [Azure Machine learning erőforrások és munkafolyamatok hitelesítésének beállítása](./how-to-setup-authentication.md#service-principal-authentication)című szakaszban tárgyaljuk. Ha céges előfizetését használja, lehet, hogy nincs engedélye egy egyszerű szolgáltatásnév létrehozásához. Ebben az esetben [ingyenes vagy fizetős személyes előfizetést](https://aka.ms/AMLFree)kell használnia.
 
 Token lekérése:
 
@@ -236,7 +236,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/com
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-Elnevezett számítási erőforrás létrehozásához vagy felülírásához PUT-kérést kell használni. A következő, a, a, a, a, a, a, a, a, a, a, a, a, a és a értékek már ismerős helyettesítései mellett `your-subscription-id` `your-resource-group` `your-workspace-name` `your-access-token` `your-compute-name` `location` `vmSize` `vmPriority` `scaleSettings` `adminUserName` `adminUserPassword` . A (z) [Machine learning Compute – SDK létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate)című hivatkozásban megadott módon a következő parancs létrehoz egy dedikált, egycsomópontos Standard_D1 (egy alapszintű CPU-számítási erőforrást), amely 30 perc után le lesz méretezve:
+Elnevezett számítási erőforrás létrehozásához vagy felülírásához PUT-kérést kell használni. A következő, a, a, a, a, a, a, a, a, a, a, a, a, a és a értékek már ismerős helyettesítései mellett `your-subscription-id` `your-resource-group` `your-workspace-name` `your-access-token` `your-compute-name` `location` `vmSize` `vmPriority` `scaleSettings` `adminUserName` `adminUserPassword` . A (z) [Machine learning Compute – SDK létrehozása vagy frissítése](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate)című hivatkozásban megadott módon a következő parancs létrehoz egy dedikált, egycsomópontos Standard_D1 (egy alapszintű CPU-számítási erőforrást), amely 30 perc után le lesz méretezve:
 
 ```bash
 curl -X PUT \
@@ -271,7 +271,7 @@ Egy sikeres kérelem kap egy `201 Created` választ, de a válasz egyszerűen az
 
 ### <a name="create-an-experimental-run"></a>Kísérleti Futtatás létrehozása
 
-Egy kísérleten belüli Futtatás indításához szüksége van egy zip-mappára, amely tartalmazza a betanítási parancsfájlt és a kapcsolódó fájlokat, valamint egy Run definition JSON-fájlt. A zip-mappának tartalmaznia kell a Python-bejegyzés fájlját a gyökérkönyvtárában. Például egy triviális Python-programot, például a következőt egy **train.zip**nevű mappába.
+Egy kísérleten belüli Futtatás indításához szüksége van egy zip-mappára, amely tartalmazza a betanítási parancsfájlt és a kapcsolódó fájlokat, valamint egy Run definition JSON-fájlt. A zip-mappának tartalmaznia kell a Python-bejegyzés fájlját a gyökérkönyvtárában. Például egy triviális Python-programot, például a következőt egy **train.zip** nevű mappába.
 
 ```python
 # hello.py
@@ -349,7 +349,7 @@ curl 'https://{regional-api-server}/history/v1.0/subscriptions/{your-subscriptio
 
 ### <a name="delete-resources-you-no-longer-need"></a>A már nem szükséges erőforrások törlése
 
-Néhány, de nem minden erőforrás támogatja a TÖRLÉSi műveletet. Győződjön meg arról, hogy az [API-hivatkozás](https://docs.microsoft.com/rest/api/azureml/) a törléshez szükséges REST API véglegesítése előtt. Egy modell törléséhez például a következőt használhatja:
+Néhány, de nem minden erőforrás támogatja a TÖRLÉSi műveletet. Győződjön meg arról, hogy az [API-hivatkozás](/rest/api/azureml/) a törléshez szükséges REST API véglegesítése előtt. Egy modell törléséhez például a következőt használhatja:
 
 ```bash
 curl
@@ -422,6 +422,6 @@ A Azure Machine Learning munkaterület egyes műveletekhez Azure Container Regis
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ismerkedjen meg a teljes [AzureML REST API-referenciával](https://docs.microsoft.com/rest/api/azureml/).
-- Megtudhatja, hogyan használhatja a tervezőt az [autó árának előrejelzésére a tervezővel](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score).
-- Ismerkedjen meg [Azure Machine learning Jupyter notebookokkal](https://docs.microsoft.com/azure//machine-learning/samples-notebooks).
+- Ismerkedjen meg a teljes [AzureML REST API-referenciával](/rest/api/azureml/).
+- Megtudhatja, hogyan használhatja a tervezőt az [autó árának előrejelzésére a tervezővel](./tutorial-designer-automobile-price-train-score.md).
+- Ismerkedjen meg [Azure Machine learning Jupyter notebookokkal](..//machine-learning/samples-notebooks.md).
