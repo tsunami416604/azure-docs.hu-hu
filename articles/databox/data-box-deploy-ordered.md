@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: f36836681e338c597c068a91a6d4bc011cce3511
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 400c5bd4dd31daaf826ed63ada75266d4ab3099c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206797"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313216"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box megrendelése
 
@@ -237,7 +237,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 
     ![Képernyőkép a választható adatméretekről: Data Box Disk 40 terabájt, Data Box 100 terabájt, Data Box Heavy, 1000 terabájt, és küldje el a saját lemezeit 1 terabájt.](media/data-box-deploy-ordered/select-data-box-import-05.png)
 
-6. A **sorrendben**válassza az **alapok** lapot. Adja meg vagy válassza ki a következő adatokat, majd válassza a **Tovább: adatok célhelye>** elemet.
+6. A **sorrendben** válassza az **alapok** lapot. Adja meg vagy válassza ki a következő adatokat, majd válassza a **Tovább: adatok célhelye>** elemet.
 
     |Beállítás  |Érték  |
     |---------|---------|
@@ -249,13 +249,13 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 
     Alapértelmezés szerint az eszköz zárolásának feloldására szolgáló jelszó Microsoft által felügyelt kulccsal van titkosítva. A megrendelés befejezése után hozzáadhat egy ügyfél által felügyelt kulcsot. Az ügyfél által felügyelt kulcs lehetővé teszi, hogy az Azure Key Vault-kulcsból saját kulcsot használjon az eszköz feloldási jelszavának a megvédése érdekében. További információ: [az ügyfél által felügyelt kulcsok használata Azure Key Vaultban Azure Data Box](data-box-customer-managed-encryption-key-portal.md).
 
-7. Az **adatcélhely** lapon válassza az **adatcél**lehetőséget.
+7. Az **adatcélhely** lapon válassza az **adatcél** lehetőséget.
 
     Ha a Storage- **fiók (ok)** tároló célhelyként használja, a következő képernyőkép jelenik meg:
 
     ![Azure Data Box adatcélhely](media/data-box-deploy-ordered/select-data-box-import-07.png)
 
-    A megadott Azure-régió alapján válasszon ki egy vagy több tárfiókot a meglévő tárfiókok szűrt listájából. A Data Box legfeljebb 10 tárfiókkal köthető össze. Létrehozhat egy új **Általános célú v1**, **Általános célú v2** fiókot vagy egy **Blob Storage-fiókot** is.
+    A megadott Azure-régió alapján válasszon ki egy vagy több tárfiókot a meglévő tárfiókok szűrt listájából. A Data Box legfeljebb 10 tárfiókkal köthető össze. Létrehozhat egy új **Általános célú v1** , **Általános célú v2** fiókot vagy egy **Blob Storage-fiókot** is.
 
     A virtuális hálózattal rendelkező tárfiókok támogatottak. Ahhoz, hogy a Data Box szolgáltatás működjön a biztonságos tárfiókok esetében, engedélyezze a megbízható szolgáltatásokat a tárfiók hálózati tűzfalának beállításai között. További információ: [Azure Data Box hozzáadása megbízható szolgáltatásként](../storage/common/storage-network-security.md#exceptions).
 
@@ -279,31 +279,31 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 
     ![Data Box importálási sorrend biztonsági képernyője](media/data-box-deploy-ordered/select-data-box-import-security-01.png)
 
-1. Ha nem szeretné, hogy a rendszer által generált jelszavakat Azure Data Box alapértelmezetten használja, bontsa ki **a saját jelszó**használata lehetőséget.
+1. Ha nem szeretné, hogy a rendszer által generált jelszavakat Azure Data Box alapértelmezetten használja, bontsa ki **a saját jelszó** használata lehetőséget.
 
    A rendszer által létrehozott jelszavak biztonságosak, és csak akkor ajánlott, ha a szervezet más nem igényel.
 
    ![A saját jelszó beállításainak kibontása Data Box importálási sorrendhez](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
 
-   - Ha saját jelszavát szeretné használni az új eszközhöz, az **eszköz jelszavának beállításával**válassza a **saját jelszó használata**lehetőséget, és írjon be egy jelszót, amely megfelel a biztonsági követelményeknek.
+   - Ha saját jelszavát szeretné használni az új eszközhöz, az **eszköz jelszavának beállításával** válassza a **saját jelszó használata** lehetőséget, és írjon be egy jelszót, amely megfelel a biztonsági követelményeknek.
    
      ![Biztonsági képernyő Data Box importáláshoz, a saját eszköz jelszavának használatára vonatkozó beállítások](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
 
    - Saját jelszavak használata megosztásokhoz:
 
-     1. A **jelszavak megosztása**beállításnál válassza a **saját jelszavak használata** lehetőséget, majd **válassza a megosztások jelszavait**.
+     1. A **jelszavak megosztása** beállításnál válassza a **saját jelszavak használata** lehetőséget, majd **válassza a megosztások jelszavait**.
      
         ![Biztonsági képernyő Data Box importáláshoz, a saját megosztási jelszavak használatára vonatkozó beállítások](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
 
      1. A sorrendben adja meg az egyes Storage-fiókok jelszavát. A jelszót a rendszer a Storage-fiók összes megosztásán használni fogja.
      
-        Ha az összes Storage-fiókhoz ugyanazt a jelszót szeretné használni, válassza a **Másolás az összesbe**lehetőséget. Ha végzett, válassza a **Mentés**lehetőséget.
+        Ha az összes Storage-fiókhoz ugyanazt a jelszót szeretné használni, válassza a **Másolás az összesbe** lehetőséget. Ha végzett, válassza a **Mentés** lehetőséget.
      
         ![A megosztási jelszavak megadására szolgáló képernyő a Data Box importálási sorrendjéhez](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
 
-       A **Biztonság** képernyőn a **jelszavak módosítása lehetőségre kattintva módosíthatja** a jelszavakat.
+       A **Biztonság** képernyőn **megtekintheti vagy módosíthatja a jelszavakat** a jelszavak módosításához.
 
-1. Ha a **biztonságban**engedélyezni szeretné a szoftveres kettős titkosítást, bontsa ki a **kettős titkosítás (a biztonságos környezetek esetében)** elemet, és válassza **a rendeléshez a dupla titkosítás engedélyezése**lehetőséget.
+1. Ha a **biztonságban** engedélyezni szeretné a szoftveres kettős titkosítást, bontsa ki a **kettős titkosítás (a biztonságos környezetek esetében)** elemet, és válassza **a rendeléshez a dupla titkosítás engedélyezése** lehetőséget.
 
    ![Biztonsági képernyő Data Box importáláshoz, szoftveres titkosítás engedélyezése Data Box-rendeléshez](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
 
@@ -314,7 +314,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 
    A folytatáshoz válassza a **tovább lehetőséget: kapcsolattartási adatok** .
 
-8. A **kapcsolattartási adatok**területen válassza a **+ szállítási címek hozzáadása**elemet.
+8. A **kapcsolattartási adatok** területen válassza a **+ szállítási címek hozzáadása** elemet.
 
     ![Képernyőfelvétel: a varázsló kapcsolattartási adatokkal kapcsolatos lépése, amely a szállítási címek hozzáadása lehetőséggel jelenik meg.](media/data-box-deploy-ordered/select-data-box-import-08a.png)
 
@@ -326,7 +326,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 
 10. Válassza a **szállítási címek hozzáadása** lehetőséget a szállítási adatok sikeres ellenőrzése után. Vissza fog térni a **kapcsolattartási adatok** lapra.
 
-11. Miután visszatért a **kapcsolattartási adatokhoz**, adjon hozzá egy vagy több e-mail-címet. A szolgáltatás e-mail-értesítést küld a megrendelés állapotának minden változásáról a megadott e-mail-címekre.
+11. Miután visszatért a **kapcsolattartási adatokhoz** , adjon hozzá egy vagy több e-mail-címet. A szolgáltatás e-mail-értesítést küld a megrendelés állapotának minden változásáról a megadott e-mail-címekre.
 
     Javasoljuk a csoportos e-mail-cím használatát, hogy az értesítéseket a rendszergazda távollétében is kézhez kaphassa.
 
@@ -709,7 +709,7 @@ Azure Data Box rendelés megszakításához futtassa [az az databox Job Cancel](
    |erőforrás-csoport [kötelező]| A törlendő rendeléshez társított erőforráscsoport neve. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | myresourcegroup|
    |név [kötelező]| A törlendő megrendelés neve. | "mydataboxorder"|
    |ok [kötelező]| A megrendelés megszakításának oka. | "Hibás adatokat adtam meg, és a megrendelés megszakításához szükséges." |
-   |igen| Ne kérjen megerősítést. | – Igen (-y)| – igen – y |
+   |yes| Ne kérjen megerősítést. | – Igen (-y)| – igen – y |
    |debug| Hibakeresési információk belefoglalása a részletes naplózásba | – hibakeresés |
    |segítség| Súgó megjelenítése ehhez a parancshoz. | --Help-h |
    |csak a-show-hibák| Csak a hibák megjelenítése, a figyelmeztetések letiltása. | – csak megjelenítés – hibák |
@@ -746,7 +746,7 @@ Ha megszakította Azure Data Box rendelést, az az [databox Job delete](/cli/azu
    |erőforrás-csoport [kötelező]| A törlendő rendeléshez társított erőforráscsoport neve. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | myresourcegroup|
    |név [kötelező]| A törlendő megrendelés neve. | "mydataboxorder"|
    |előfizetést| Az Azure-előfizetés neve vagy azonosítója (GUID). | "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" |
-   |igen| Ne kérjen megerősítést. | – Igen (-y)| – igen – y |
+   |yes| Ne kérjen megerősítést. | – Igen (-y)| – igen – y |
    |debug| Hibakeresési információk belefoglalása a részletes naplózásba | – hibakeresés |
    |segítség| Súgó megjelenítése ehhez a parancshoz. | --Help-h |
    |csak a-show-hibák| Csak a hibák megjelenítése, a figyelmeztetések letiltása. | – csak megjelenítés – hibák |

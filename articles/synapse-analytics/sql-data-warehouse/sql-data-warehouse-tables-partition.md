@@ -1,6 +1,6 @@
 ---
 title: Táblázatok particionálása
-description: Javaslatok és példák a táblázatos partíciók használatára a szinapszis SQL-készletben
+description: Javaslatok és példák a Table Partitions használatára dedikált SQL-készletben
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ed5c0a140c69e9042fc9b85589719a54b65e985e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39a1f41d97b1f4576d5877e4f35c99b3e189e3b2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88763133"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314507"
 ---
-# <a name="partitioning-tables-in-synapse-sql-pool"></a>Táblázatok particionálása a szinapszis SQL-készletben
+# <a name="partitioning-tables-in-dedicated-sql-pool"></a>Táblák particionálása dedikált SQL-készletben
 
-Javaslatok és példák a táblázatos partíciók használatára a szinapszis SQL-készletben.
+Javaslatok és példák a Table Partitions használatára dedikált SQL-készletben.
 
 ## <a name="what-are-table-partitions"></a>Mik azok a táblázatos partíciók?
 
-A Table Partitions lehetővé teszi az adatai kisebb adatcsoportokra osztását. A legtöbb esetben a tábla partíciói egy Date oszlopon jönnek létre. A particionálás az összes szinapszis SQL Pool-tábla típusában támogatott. többek között fürtözött oszlopcentrikus, fürtözött index és halom. A particionálás az összes terjesztési típuson is támogatott, beleértve a kivonatot vagy a ciklikus multiplexelés eloszlását is.  
+A Table Partitions lehetővé teszi az adatai kisebb adatcsoportokra osztását. A legtöbb esetben a tábla partíciói egy Date oszlopon jönnek létre. A particionálás az összes dedikált SQL Pool-tábla típusában támogatott. többek között fürtözött oszlopcentrikus, fürtözött index és halom. A particionálás az összes terjesztési típuson is támogatott, beleértve a kivonatot vagy a ciklikus multiplexelés eloszlását is.  
 
 A particionálás az adatkarbantartás és a lekérdezési teljesítmény előnyeit is kihasználhatja. Függetlenül attól, hogy mind a kettő, akár csak egy, az betöltéstől függ, és hogy ugyanazt az oszlopot mindkét célra használhatja-e, mivel a particionálás csak egy oszlopon végezhető el.
 
 ### <a name="benefits-to-loads"></a>Betöltési előnyök
 
-A szinapszis SQL-készlet particionálásának elsődleges előnye, hogy a partíciók törlésével, a váltással és az összevonással növeli az adatterhelés hatékonyságát és teljesítményét. A legtöbb esetben az adatok egy dátum oszlopra vannak particionálva, amely szorosan kötődik ahhoz a sorrendhez, amelyben az adatok betöltődik az adatbázisba. Az egyik legnagyobb előnye, hogy a partíciók használatával tartja karban az adattárolást, így elkerülhető a tranzakciók naplózása. Noha egyszerűen beillesztheti, frissítheti vagy törölheti az adatvesztést, némi gondolkodással és erőfeszítéssel, ami jelentősen növelheti a teljesítményt a betöltési folyamat során.
+A dedikált SQL-készlet particionálásának elsődleges előnye, hogy a partíciók törlésével, a váltással és az összevonással növeli az adatterhelés hatékonyságát és teljesítményét. A legtöbb esetben az adatok egy dátum oszlopra vannak particionálva, amely szorosan kötődik ahhoz a sorrendhez, amelyben az adatok betöltődik az adatbázisba. Az egyik legnagyobb előnye, hogy a partíciók használatával tartja karban az adattárolást, így elkerülhető a tranzakciók naplózása. Noha egyszerűen beillesztheti, frissítheti vagy törölheti az adatvesztést, némi gondolkodással és erőfeszítéssel, ami jelentősen növelheti a teljesítményt a betöltési folyamat során.
 
 A partíciós váltással gyorsan eltávolíthatja vagy lecserélheti a táblák egy szakaszát.  Előfordulhat például, hogy egy értékesítési tény táblázata csak az elmúlt 36 hónapra vonatkozó adatforgalmat tartalmaz. Minden hónap végén az értékesítési adatok legrégebbi hónapja törlődik a táblából.  Ezt az adattörlési utasítás segítségével törölheti a legrégebbi hónapra vonatkozó adatok törléséhez. 
 
@@ -48,17 +48,17 @@ Míg a particionálás felhasználható bizonyos forgatókönyvek teljesítmény
 
 Ahhoz, hogy a particionálás hasznos legyen, fontos megérteni, hogy mikor kell használni a particionálást és a létrehozandó partíciók számát. Nincs olyan nehéz szabály, amely szerint a partíciók száma túl sok, az adataitól függ, és hány partíciót tölt egyszerre. A sikeres particionálási séma általában több tízezer partíciót tartalmaz, és nem ezer.
 
-**Fürtözött oszlopcentrikus** táblákon a partíciók létrehozásakor fontos megfontolni, hogy hány sor tartozik az egyes partíciók közé. A fürtözött oszlopcentrikus táblák optimális tömörítéséhez és teljesítményéhez legalább 1 000 000 sort kell kiszolgálni, és partícióra van szükség. A partíciók létrehozása előtt a szinapszis SQL-készlet már felosztja az egyes táblákat a 60 elosztott adatbázisokba. 
+**Fürtözött oszlopcentrikus** táblákon a partíciók létrehozásakor fontos megfontolni, hogy hány sor tartozik az egyes partíciók közé. A fürtözött oszlopcentrikus táblák optimális tömörítéséhez és teljesítményéhez legalább 1 000 000 sort kell kiszolgálni, és partícióra van szükség. A partíciók létrehozása előtt a dedikált SQL-készlet már felosztja az egyes táblákat a 60 elosztott adatbázisokba. 
 
-A táblákhoz hozzáadott particionálások a háttérben létrehozott eloszlások mellett is megtalálhatók. Ha ezt a példát használja, ha az értékesítési tény táblázata 36 havi partíciót tartalmazott, és mivel egy szinapszis SQL-készletnek 60-eloszlása van, akkor az értékesítési tény táblázatának tartalmaznia kell az 60 000 000-as sorszámot havonta, vagy 2 100 000 000-sort, ha az összes hónap fel van töltve. Ha egy tábla kevesebb, mint az ajánlott minimális számú sor a partíción, érdemes lehet kevesebb partíciót használni a sorok partíciók számának növeléséhez. 
+A táblákhoz hozzáadott particionálások a háttérben létrehozott eloszlások mellett is megtalálhatók. Ha ezt a példát használja, ha az értékesítési tény táblázata 36 havi partíciót tartalmazott, és mivel egy dedikált SQL-készlet 60-disztribúcióval rendelkezik, akkor az értékesítési tény táblázatának tartalmaznia kell az 60 000 000-as sorokat havonta, vagy 2 100 000 000-sort, ha az összes hónap fel van töltve. Ha egy tábla kevesebb, mint az ajánlott minimális számú sor a partíción, érdemes lehet kevesebb partíciót használni a sorok partíciók számának növeléséhez. 
 
 További információ: [indexelési](sql-data-warehouse-tables-index.md) cikk, amely a fürt oszlopcentrikus indexek minőségét értékelő lekérdezéseket tartalmaz.
 
 ## <a name="syntax-differences-from-sql-server"></a>Szintaxisbeli különbségek SQL Server
 
-A szinapszis SQL-készlet bevezeti a SQL Servernál egyszerűbb partíciók definiálásának módját. A particionálási függvények és sémák nem használatosak a szinapszis SQL-készletben, mivel azok SQL Server vannak. Ehelyett mindössze annyit kell tennie, hogy azonosítja a particionált oszlopot és a határ pontokat. 
+A dedikált SQL-készlet bevezeti a SQL Servernál egyszerűbb partíciók definiálásának módját. A particionálási függvények és sémák nem használhatók dedikált SQL-készletben, mivel azok SQL Server vannak. Ehelyett mindössze annyit kell tennie, hogy azonosítja a particionált oszlopot és a határ pontokat. 
 
-Míg a particionálás szintaxisa kis mértékben eltérhet a SQL Servertól, az alapvető fogalmak ugyanazok. A SQL Server és a szinapszis SQL-készlet támogatja a tábla egy partíciós oszlopát, amely lehet tartományhoz tartozó partíció. További információ a particionálásról: [particionált táblák és indexek](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Míg a particionálás szintaxisa kis mértékben eltérhet a SQL Servertól, az alapvető fogalmak ugyanazok. A SQL Server és a dedikált SQL-készlet támogatja a tábla egy partíciós oszlopát, amely lehet tartományhoz tartozó partíció. További információ a particionálásról: [particionált táblák és indexek](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 A következő példa a [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítást használja a FactInternetSales tábla particionálásához a OrderDateKey oszlopon:
 
@@ -88,12 +88,12 @@ WITH
 
 ## <a name="migrating-partitioning-from-sql-server"></a>Particionálás áttelepítése SQL Serverról
 
-SQL Server partíciós definíciók áttelepíthetők a szinapszis SQL-készletbe egyszerűen:
+SQL Server partíciós definíciók migrálása dedikált SQL-készletbe egyszerűen:
 
 - Távolítsa el a SQL Server [partíciós sémát](/sql/t-sql/statements/create-partition-scheme-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 - Adja hozzá a [partíciós függvény](/sql/t-sql/statements/create-partition-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) definícióját a Create TABLEhoz.
 
-Ha SQL Server-példányról telepít át particionált táblát, a következő SQL segítségével megtalálhatja az egyes partíciókban található sorok számát. Ne feledje, hogy ha ugyanazt a particionálási részletességet használja a szinapszis SQL-készletben, a partíciók száma a 60 tényezővel csökken.  
+Ha SQL Server-példányról telepít át particionált táblát, a következő SQL segítségével megtalálhatja az egyes partíciókban található sorok számát. Ne feledje, hogy ha ugyanazt a particionálási részletességet használja a dedikált SQL-készletben, a partíciók száma a 60 tényezővel csökken.  
 
 ```sql
 -- Partition information for a SQL Server Database
@@ -131,7 +131,7 @@ GROUP BY    s.[name]
 
 ## <a name="partition-switching"></a>Partíciós váltás
 
-A szinapszis SQL-készlet támogatja a partíciók felosztását, az egyesítést és a váltást. Ezeket a függvényeket az [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítás használatával hajtja végre.
+A dedikált SQL-készlet támogatja a partíciók felosztását, az egyesítést és a váltást. Ezeket a függvényeket az [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítás használatával hajtja végre.
 
 Két táblázat közötti partíciók váltásához gondoskodnia kell arról, hogy a partíciók illeszkedjenek a megfelelő szegélyekhez, és hogy a tábla definíciói megegyezzenek. Mivel az ellenőrzési megkötések nem érhetők el egy tábla értékei tartományának betartatásához, a forrás táblának ugyanazokat a partíciós határokat kell tartalmaznia, mint a célként megadott tábla. Ha a partíció határai nem azonosak, akkor a partíciós kapcsoló meghiúsul, mert a partíciós metaadatok nem lesznek szinkronizálva.
 
@@ -253,7 +253,7 @@ Az adatpartíciók partíciók közötti betöltésének kényelmes módja, ha o
 
 Egy partíció meglévő adattartalmának törléséhez az `ALTER TABLE` adatváltáshoz szükséges.  Ezután egy másikra `ALTER TABLE` volt szükség az új adatváltáshoz.  
 
-A szinapszis SQL-készletben a `TRUNCATE_TARGET` parancs támogatja a beállítást `ALTER TABLE` .  `TRUNCATE_TARGET`A `ALTER TABLE` paranccsal felülírja a partícióban lévő meglévő adatértékeket az új adattal.  Az alábbi példa egy `CTAS` új tábla létrehozását mutatja be a meglévő adattal, beszúrja az új adatbevitelt, majd visszaváltja az összes adathalmazt a célként megadott táblába, felülírja a meglévőket.
+A dedikált SQL-készletben a `TRUNCATE_TARGET` parancs támogatja a beállítást `ALTER TABLE` .  `TRUNCATE_TARGET`A `ALTER TABLE` paranccsal felülírja a partícióban lévő meglévő adatértékeket az új adattal.  Az alábbi példa egy `CTAS` új tábla létrehozását mutatja be a meglévő adattal, beszúrja az új adatbevitelt, majd visszaváltja az összes adathalmazt a célként megadott táblába, felülírja a meglévőket.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]
@@ -357,6 +357,6 @@ Ha el szeretné kerülni a tábla definícióját a forrás-ellenőrzési rendsz
 
 Ezzel a módszerrel a verziókövetés kódja statikus marad, és a particionálási határértékek dinamikusak. az adatbázis időbeli alakulása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A táblázatok létrehozásával kapcsolatos további információkért tekintse meg a táblák [áttekintését](sql-data-warehouse-tables-overview.md)ismertető cikket.

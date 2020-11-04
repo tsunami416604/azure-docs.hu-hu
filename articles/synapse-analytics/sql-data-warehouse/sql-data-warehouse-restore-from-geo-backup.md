@@ -1,6 +1,6 @@
 ---
-title: Adattárház visszaállítása geo-biztonsági mentésből
-description: Útmutató egy SQL-készlet geo-visszaállításához.
+title: Dedikált SQL-készlet visszaállítása geo-biztonsági mentésből
+description: Útmutató a dedikált SQL-készlet geo-visszaállításához az Azure szinapszis Analyticsben
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,29 +11,29 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3c8d78c164cefbab03d9d3fa783c75ded9773d38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7496cedd127182482bccf97909cc0a0a4a78253f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87075809"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313414"
 ---
-# <a name="geo-restore-for-sql-pool"></a>Geo-visszaállítás az SQL-készlethez
+# <a name="geo-restore-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Dedikált SQL-készlet geo visszaállítása az Azure szinapszis Analyticsben
 
-Ebből a cikkből megtudhatja, hogyan állíthatja vissza az SQL-készletet a Geo-biztonsági mentésből Azure Portal és a PowerShell használatával.
+Ebből a cikkből megtudhatja, hogyan állíthatja vissza a dedikált SQL-készletet egy geo-biztonsági mentésből Azure Portal és a PowerShell használatával.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**Ellenőrizze a DTU kapacitását.** Minden SQL-készletet egy [logikai SQL-kiszolgáló](../../azure-sql/database/logical-servers.md) (például MyServer.database.Windows.net) üzemeltet, amely rendelkezik alapértelmezett DTU-kvótával. Ellenőrizze, hogy az SQL-kiszolgáló rendelkezik-e elegendő fennmaradó DTU-kvótával az adatbázis visszaállításához. A szükséges DTU kiszámításához, illetve további DTU igényléséhez lásd: [DTU-kvóta megváltoztatásának kérése](sql-data-warehouse-get-started-create-support-ticket.md).
+**Ellenőrizze a DTU kapacitását.** Minden dedikált SQL-készletet egy [logikai SQL-kiszolgáló](../../azure-sql/database/logical-servers.md) (például MyServer.database.Windows.net) üzemeltet, amely rendelkezik alapértelmezett DTU-kvótával. Ellenőrizze, hogy az SQL-kiszolgáló rendelkezik-e elegendő fennmaradó DTU-kvótával az adatbázis visszaállításához. A szükséges DTU kiszámításához, illetve további DTU igényléséhez lásd: [DTU-kvóta megváltoztatásának kérése](sql-data-warehouse-get-started-create-support-ticket.md).
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>Visszaállítás egy Azure földrajzi régióból a PowerShell használatával
 
 A Geo biztonsági mentésből való visszaállításhoz használja a [Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) és a [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancsmagot.
 
 > [!NOTE]
-> A Gen2 a Geo-visszaállítást is elvégezheti. Ehhez meg kell adnia egy Gen2-ServiceObjectiveName (például DW1000**c**) választható paraméterként.
+> A Gen2 a Geo-visszaállítást is elvégezheti. Ehhez meg kell adnia egy Gen2-ServiceObjectiveName (például DW1000 **c** ) választható paraméterként.
 >
 
 1. Mielőtt elkezdené, győződjön meg arról, hogy a [Azure PowerShell telepítését](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)végzi.
@@ -74,7 +74,7 @@ A helyreállított adatbázis TDE válik, ha a forrásadatbázis TDE engedélyez
 
 ## <a name="restore-from-an-azure-geographical-region-through-azure-portal"></a>Visszaállítás egy Azure földrajzi régióból Azure Portal
 
-Az SQL-készletek földrajzi biztonsági mentésből történő visszaállításához kövesse az alábbi lépéseket:
+Az alábbi lépéseket követve állíthatja vissza a dedikált SQL-készletet egy földrajzi biztonsági mentésből:
 
 1. Jelentkezzen be [Azure Portal](https://portal.azure.com/) -fiókjába.
 2. Kattintson az **+ Erőforrás létrehozása** gombra.
@@ -87,7 +87,7 @@ Az SQL-készletek földrajzi biztonsági mentésből történő visszaállítás
 
 4. Adja meg az **alapok** lapon kért információkat, majd kattintson a **Tovább gombra: további beállítások**.
 
-   ![Alapvető beállítások](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
+   ![Alapbeállítások](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 
 5. A **meglévő** Adatparaméter használata esetén válassza a **biztonsági mentés** lehetőséget, és válassza ki a megfelelő biztonsági mentést a görgetési beállítások közül. Kattintson a **Felülvizsgálat + létrehozás** elemre.
 
@@ -95,7 +95,7 @@ Az SQL-készletek földrajzi biztonsági mentésből történő visszaállítás
 
 6. Az adattárház visszaállítása után győződjön meg arról, hogy az **állapot online állapotban** van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Meglévő SQL-készlet visszaállítása](sql-data-warehouse-restore-active-paused-dw.md)
-- [Törölt SQL-készlet visszaállítása](sql-data-warehouse-restore-deleted-dw.md)
+- [Meglévő dedikált SQL-készlet visszaállítása](sql-data-warehouse-restore-active-paused-dw.md)
+- [Törölt dedikált SQL-készlet visszaállítása](sql-data-warehouse-restore-deleted-dw.md)

@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 93f23cdcfb3fb7107e3b1838b48b3e58ccc2d028
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d0805aaf694f1569e613ab74135c95e454adbdc0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288766"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315063"
 ---
 # <a name="cetas-with-synapse-sql"></a>CETAS a szinapszis SQL-sel
 
-A következő feladatok végrehajtásához használhatja az SQL-készlet vagy az SQL on-demand (előzetes verzió) szolgáltatásban a CREATE EXTERNAL TABLE AS SELECT (CETAS) parancsot:  
+A következő feladatok végrehajtásához használhatja a CREATE EXTERNAL TABLE AS SELECT (CETAS) elemet a dedikált SQL Pool vagy a kiszolgáló nélküli SQL-készletben (előzetes verzió):  
 
 - Külső tábla létrehozása
 - A Transact-SQL SELECT utasítás eredményeinek párhuzamos exportálása a következőre:
@@ -27,13 +27,13 @@ A következő feladatok végrehajtásához használhatja az SQL-készlet vagy az
   - Azure Storage Blob
   - 2. generációs Azure Data Lake Storage
 
-## <a name="cetas-in-sql-pool"></a>CETAS az SQL-készletben
+## <a name="cetas-in-dedicated-sql-pool"></a>CETAS dedikált SQL-készletben
 
-SQL-készlet esetén a CETAS-használat és-szintaxis beállításnál tekintse meg a [külső tábla létrehozása elemet](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) . Emellett az SQL Pool használatával történő CTAS kapcsolatos útmutatásért tekintse meg a [CREATE TABLE as Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) cikket.
+A dedikált SQL-készlet esetében a CETAS-használat és-szintaxis [beállításnál jelölje be a külső tábla létrehozása a Select](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) cikkként jelölőnégyzetet. Emellett a dedikált SQL Pool használatával történő CTAS kapcsolatos útmutatásért tekintse meg a [CREATE TABLE as Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) cikket.
 
-## <a name="cetas-in-sql-on-demand"></a>Igény szerinti SQL-CETAS
+## <a name="cetas-in-serverless-sql-pool"></a>CETAS a kiszolgáló nélküli SQL-készletben
 
-Ha igény szerinti SQL-t használ, a CETAS egy külső tábla létrehozására és a lekérdezési eredmények exportálására Azure Storage Blob vagy Azure Data Lake Storage Gen2.
+A kiszolgáló nélküli SQL-készlet használatakor a CETAS egy külső tábla létrehozására és a lekérdezési eredmények exportálására szolgál Azure Storage Blob vagy Azure Data Lake Storage Gen2.
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -56,7 +56,7 @@ CREATE EXTERNAL TABLE [ [database_name  . [ schema_name ] . ] | schema_name . ] 
 
 *[[ *database_name* . [ *schema_name* ]. ] | *schema_name* . ] *table_name**
 
-A létrehozandó tábla egy vagy három részének neve. Külső táblák esetében az igény szerinti SQL csak a tábla metaadatait tárolja. A tényleges adatok nem helyezhetők át vagy nem tárolódnak az SQL on-demandban.
+A létrehozandó tábla egy vagy három részének neve. Külső tábla esetén a kiszolgáló nélküli SQL-készlet csak a tábla metaadatait tárolja. Nem történik tényleges adatok áthelyezése vagy tárolása a kiszolgáló nélküli SQL-készletben.
 
 LOCATION = *' path_to_folder '*
 
@@ -171,6 +171,6 @@ A következő adattípusok nem használhatók a CETAS kiválasztása részben:
 - túlcsordulási
 - uniqueidentifier
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja meg Apache Spark lekérdezését [Az Azure szinapszis külső tábláihoz](develop-storage-files-spark-tables.md).

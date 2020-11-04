@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 06b535b25df19e5062d16184f4469d9e9253b9c0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 00920f30061832bd1d685f04113a63781df718b4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87042618"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313697"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network-preview"></a>Azure szinapszis Analytics által felügyelt Virtual Network (előzetes verzió)
 
@@ -21,7 +21,7 @@ Ez a cikk ismerteti a felügyelt Virtual Network az Azure szinapszis Analyticsbe
 
 ## <a name="managed-workspace-virtual-network"></a>Felügyelt munkaterület Virtual Network
 
-Az Azure szinapszis-munkaterület létrehozásakor kiválaszthatja, hogy hozzárendelje-e egy Microsoft Azure Virtual Networkhoz. A munkaterülethez társított Virtual Network az Azure szinapszis kezeli. Ezt a Virtual Network *felügyelt munkaterület Virtual Network*nevezzük.
+Az Azure szinapszis-munkaterület létrehozásakor kiválaszthatja, hogy hozzárendelje-e egy Microsoft Azure Virtual Networkhoz. A munkaterülethez társított Virtual Network az Azure szinapszis kezeli. Ezt a Virtual Network *felügyelt munkaterület Virtual Network* nevezzük.
 
 A felügyelt munkaterület Virtual Network négyféle módon biztosít értéket:
 
@@ -30,11 +30,11 @@ A felügyelt munkaterület Virtual Network négyféle módon biztosít értéket
 - Nem kell létrehoznia alhálózatot a Spark-fürtökhöz a csúcsérték terhelése alapján.
 - A felügyelt munkaterület Virtual Network és a felügyelt privát végpontok is megvédik az kiszűrése. Felügyelt privát végpontokat csak olyan munkaterületen hozhat létre, amelyhez felügyelt munkaterület Virtual Network társítva van.
 
-Ha olyan munkaterületet hoz létre, amely felügyelt munkaterülettel Virtual Network társítva, akkor biztosítja, hogy a munkaterület más munkaterületekről izolált hálózat legyen. Az Azure szinapszis különböző analitikai képességeket biztosít egy munkaterületen: Adatintegráció, Apache Spark, SQL-készlet és igény szerinti SQL-szolgáltatás.
+Ha olyan munkaterületet hoz létre, amely felügyelt munkaterülettel Virtual Network társítva, akkor biztosítja, hogy a munkaterület más munkaterületekről izolált hálózat legyen. Az Azure szinapszis különböző analitikai képességeket biztosít egy munkaterületen: Adatintegráció, kiszolgáló nélküli Apache Spark készlet, dedikált SQL-készlet és kiszolgáló nélküli SQL-készlet.
 
 Ha a munkaterület felügyelt munkaterülettel rendelkezik Virtual Network, a rendszer az adatintegrációt és a Spark-erőforrásokat is telepíti. A felügyelt munkaterület Virtual Network a Spark-tevékenységek felhasználói szintű elkülönítését is lehetővé teszi, mivel mindegyik Spark-fürt a saját alhálózatán található.
 
-Az SQL-készlet és az igény szerinti SQL-példány több-bérlős képesség, ezért a felügyelt munkaterület Virtual Networkján kívül található. Az SQL-készleten belüli és az igény szerinti SQL-alapú kommunikáció az Azure-beli privát hivatkozások használatával. A rendszer automatikusan létrehozza ezeket a magánhálózati hivatkozásokat, amikor létrehoz egy olyan munkaterületet, amelyhez felügyelt munkaterület Virtual Network társítva van.
+A dedikált SQL-készlet és a kiszolgáló nélküli SQL-készlet több-bérlős képesség, ezért a felügyelt munkaterület Virtual Networkján kívül található. A dedikált SQL-készletbe és a kiszolgáló nélküli SQL-készletbe való munkaterület-kommunikáció az Azure privát hivatkozásait használja. A rendszer automatikusan létrehozza ezeket a magánhálózati hivatkozásokat, amikor létrehoz egy olyan munkaterületet, amelyhez felügyelt munkaterület Virtual Network társítva van.
 
 >[!IMPORTANT]
 >Ez a munkaterület-konfiguráció a munkaterület létrehozása után nem módosítható. Nem konfigurálhat például olyan munkaterületet, amelyhez nem tartozik felügyelt munkaterület Virtual Network társítva, és hozzá kell rendelnie egy Virtual Network. Hasonlóképpen, nem lehet újrakonfigurálni egy munkaterületet egy felügyelt munkaterülettel Virtual Network társítva, és nem rendeli hozzá a Virtual Network.
@@ -43,7 +43,7 @@ Az SQL-készlet és az igény szerinti SQL-példány több-bérlős képesség, 
 
 Ha még nem tette meg, regisztrálja a hálózati erőforrás-szolgáltatót. Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. A [regisztráláskor](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)válassza a *Microsoft. Network* elemet az erőforrás-szolgáltatók listájából.
 
-Ha olyan Azure szinapszis-munkaterületet szeretne létrehozni, amelynek felügyelt munkaterülete Virtual Network társítva van, válassza a **Biztonság + hálózatkezelés** fület Azure Portal, és jelölje be a **felügyelt virtuális hálózat engedélyezése** jelölőnégyzetet.
+Olyan Azure-beli szinapszis-munkaterület létrehozásához, amelyhez felügyelt munkaterület Virtual Network társítva van, válassza a **hálózatkezelés** fület a Azure Portal, és jelölje be a **felügyelt virtuális hálózat engedélyezése** jelölőnégyzetet.
 
 Ha a jelölőnégyzet nincs bejelölve, a munkaterülethez nem tartozik Virtual Network társítva.
 
@@ -59,7 +59,7 @@ Megtekintheti, hogy az Azure szinapszis-munkaterülete felügyelt munkaterületh
 
 ![A munkaterület áttekintése Azure Portal](./media/synapse-workspace-managed-vnet/enable-managed-vnet-2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure szinapszis-munkaterület](../quickstart-create-workspace.md) létrehozása
 

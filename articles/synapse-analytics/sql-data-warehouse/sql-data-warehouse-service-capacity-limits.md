@@ -1,6 +1,6 @@
 ---
-title: Kapacitási korlátok – Azure szinapszis Analytics (korábban SQL DW)
-description: A szinapszis SQL-készlet különböző összetevői számára engedélyezett maximális értékek az Azure Szinapszisban.
+title: A dedikált SQL-készlet kapacitásának korlátai
+description: Az Azure szinapszis Analytics szolgáltatásban a dedikált SQL-készlet különböző összetevői számára engedélyezett maximális értékek megengedettek.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,22 +11,22 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4e06dbee5b1edbb4fd1a3379ee2d9aa06f9949ab
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: dac2a60b6b9db082a10d2473eb22b86d8097eee0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742459"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313139"
 ---
-# <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Az Azure szinapszis Analytics (korábbi nevén SQL DW) kapacitásának korlátai
+# <a name="capacity-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>A dedikált SQL-készlet kapacitásának korlátai az Azure szinapszis Analyticsben
 
-Az Azure szinapszis különböző összetevői számára engedélyezett maximális értékek.
+Az Azure szinapszis Analytics szolgáltatásban a dedikált SQL-készlet különböző összetevői számára engedélyezett maximális értékek megengedettek.
 
 ## <a name="workload-management"></a>Számítási feladatok kezelése
 
 | Kategória | Leírás | Maximum |
 |:--- |:--- |:--- |
-| [Adatraktár-egységek (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maximális DWU egyetlen SQL-készlethez (adatraktár-egységhez) | Gen1: DW6000<br></br>Gen2: DW30000c |
+| [Adatraktár-egységek (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maximális DWU egyetlen dedikált SQL-készlethez (adattárház-egységhez) | Gen1: DW6000<br></br>Gen2: DW30000c |
 | [Adatraktár-egységek (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Alapértelmezett DTU kiszolgálónkénti |54 000<br></br>Alapértelmezés szerint minden SQL-kiszolgáló (például myserver.database.windows.net) 54 000-as DTU-kvótával rendelkezik, amely akár DW5000c is lehetővé teszi. Ez a kvóta egyszerűen egy biztonsági korlát. A kvótát megnövelheti [egy támogatási jegy létrehozásával](sql-data-warehouse-get-started-create-support-ticket.md) , és a kérelem típusaként kiválaszthatja a *kvótát* .  A DTU-szükségletek kiszámításához szorozza meg a 7,5-et a szükséges teljes DWU, vagy szorozza meg a 9,5-et a szükséges teljes cDWU. Például:<br></br>DW6000 x 7,5 = 45 000 DTU<br></br>DW5000c x 9,5 = 47 500 DTU.<br></br>Az aktuális DTU-felhasználást a portálon, az SQL Server lehetőségnél tekintheti meg. A DTU-kvótába a szüneteltetett és a nem szüneteltetett adatbázisok is beleszámítanak. |
 | Adatbázis-kapcsolatok |Egyidejű nyitott munkamenetek maximális száma |1024<br/><br/>Az egyidejű nyitott munkamenetek száma a kiválasztott DWU függően változhat. A DWU600c és újabb verziók legfeljebb 1024 nyitott munkamenetet támogatnak. A DWU500c és az alatta az egyidejű nyitott munkamenetek maximális 512-os korlátját támogatja. Vegye figyelembe, hogy az egyidejűleg végrehajtható lekérdezések száma korlátozott. Ha túllépi a párhuzamossági korlátot, a kérelem egy belső várólistába kerül, ahol a rendszer feldolgozza azt. |
 | Adatbázis-kapcsolatok |Előkészített utasítások maximális memóriája |20 MB |
@@ -62,7 +62,7 @@ Az Azure szinapszis különböző összetevői számára engedélyezett maximál
 | Kategória | Leírás | Maximum |
 |:--- |:--- |:--- |
 | Alapszintű terhelések |MB/sor |1<br/><br/>A kiinduló nem 1 MB-nál kisebb sorokat tölt be. Az LOB-adattípusok fürtözött Oszlopcentrikus Indextel (CCI) rendelkező táblákba való betöltése nem támogatott.<br/> |
-|Alapszintű terhelések|Fájlok teljes száma|1,000,000<br/><br/>A kiinduló terhelés nem haladhatja meg az 1 millió fájlt. A következő hibaüzenet jelenhet meg: a **művelet nem sikerült, mert a 1000000 felső határát meghaladó felosztási szám** .|
+|Alapszintű terhelések|Fájlok teljes száma|1,000,000<br/><br/>A kiinduló terhelés nem haladhatja meg az 1 millió fájlt. A következő hibaüzenet jelenhet meg: a **művelet nem sikerült, mert a 1000000 felső határát meghaladó felosztási szám**.|
 
 ## <a name="queries"></a>Lekérdezések
 

@@ -1,6 +1,6 @@
 ---
 title: Elsődleges, idegen és egyedi kulcsok
-description: Táblázatos korlátozások a szinapszis SQL-készlet támogatása az Azure szinapszis Analyticsben
+description: A táblázat megkötései támogatják a dedikált SQL-készlet használatát az Azure szinapszis Analyticsben
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,33 +11,33 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 562e2cce317d8774ecf72971d53be4f66f9c3da4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd1d92dd6be47b2bdf6b8ca2f9a99c62e35eb12a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85212768"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313068"
 ---
-# <a name="primary-key-foreign-key-and-unique-key-in-synapse-sql-pool"></a>Elsődleges kulcs, külső kulcs és egyedi kulcs a szinapszis SQL-készletben
+# <a name="primary-key-foreign-key-and-unique-key-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Elsődleges kulcs, külső kulcs és egyedi kulcs dedikált SQL-készlet használatával az Azure szinapszis Analyticsben
 
-Ismerje meg a szinapszis SQL-készletben található táblázatos korlátozásokat, beleértve az elsődleges kulcsot, a külső kulcsot és az egyedi kulcsot.
+Ismerje meg a dedikált SQL-készletben található táblázatos korlátozásokat, beleértve az elsődleges kulcsot, a külső kulcsot és az egyedi kulcsot.
 
 ## <a name="table-constraints"></a>Táblakorlátozások
 
-A szinapszis SQL-készlet a következő táblázatos korlátozásokat támogatja: 
+A dedikált SQL-készlet a következő táblázatos korlátozásokat támogatja: 
 - Az elsődleges kulcs csak akkor támogatott, ha nem FÜRTÖZÖTT és nem KÉNYSZERÍTett érték is használatban van.    
 - Az egyedi korlátozás csak a nem KÉNYSZERÍTett használata esetén támogatott.
 
 A szintaxishoz kattintson az [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) és a [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)elemre. 
 
-A FOREIGN KEY korlátozás nem támogatott a szinapszis SQL-készletben.  
+A külső kulcs megkötése dedikált SQL-készletben nem támogatott.  
 
 
 ## <a name="remarks"></a>Megjegyzések
 
-Az elsődleges kulcs és/vagy egyedi kulcs lehetővé teszi a szinapszis SQL Pool Engine számára, hogy optimális végrehajtási tervet készítsen a lekérdezésekhez.  Az elsődleges kulcs oszlopában vagy egyedi korlátozási oszlopában szereplő összes értéknek egyedinek kell lennie.
+Az elsődleges kulcs és/vagy az egyedi kulcs lehetővé teszi a dedikált SQL Pool Engine számára, hogy optimális végrehajtási tervet készítsen a lekérdezésekhez.  Az elsődleges kulcs oszlopában vagy egyedi korlátozási oszlopában szereplő összes értéknek egyedinek kell lennie.
 
-Miután létrehozott egy elsődleges kulccsal vagy egyedi megkötéssel rendelkező táblázatot a szinapszis SQL-készletben, a felhasználóknak meg kell győződniük arról, hogy az oszlopok összes értéke egyedi.  Ennek megsértése miatt előfordulhat, hogy a lekérdezés pontatlan eredményt ad vissza.  Ez a példa azt mutatja be, hogyan lehet a lekérdezés pontatlan eredményt adni, ha az elsődleges kulcs vagy az egyedi megkötés oszlop duplikált értékeket tartalmaz.  
+A dedikált SQL-készletben elsődleges kulccsal vagy egyedi megkötéssel rendelkező tábla létrehozása után a felhasználóknak meg kell győződniük arról, hogy az adott oszlopokban szereplő összes érték egyedi.  Ennek megsértése miatt előfordulhat, hogy a lekérdezés pontatlan eredményt ad vissza.  Ez a példa azt mutatja be, hogyan lehet a lekérdezés pontatlan eredményt adni, ha az elsődleges kulcs vagy az egyedi megkötés oszlop duplikált értékeket tartalmaz.  
 
 ```sql
  -- Create table t1
@@ -164,17 +164,18 @@ a1          total
 
 ## <a name="examples"></a>Példák
 
-Hozzon létre egy szinapszis SQL Pool-táblázatot egy elsődleges kulccsal: 
+Dedikált SQL Pool-tábla létrehozása elsődleges kulccsal: 
 
 ```sql 
 CREATE TABLE mytable (c1 INT PRIMARY KEY NONCLUSTERED NOT ENFORCED, c2 INT);
 ```
-A szinapszis SQL Pool-tábla létrehozása egyedi korlátozással:
+
+Dedikált SQL Pool-tábla létrehozása egyedi korlátozással:
 
 ```sql
 CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Miután létrehozta a szinapszis SQL-készlethez tartozó táblákat, a következő lépés az adatai betöltése a táblába. Betöltési oktatóanyagért lásd: [az adatgyűjtés a SZINAPSZIS SQL-készletbe](load-data-wideworldimportersdw.md).
+Miután létrehozta a táblákat a dedikált SQL-készlethez, a következő lépés az adat betöltése a táblába. A betöltési oktatóanyagért lásd: [az adattöltés DEDIKÁLT SQL-készletbe](load-data-wideworldimportersdw.md).

@@ -1,6 +1,6 @@
 ---
 title: Tárolt eljárások használata
-description: Tippek a tárolt eljárások megvalósításához a szinapszis SQL-ben megoldások fejlesztéséhez.
+description: Tippek a tárolt eljárások megvalósításához a szinapszis SQL használatával az Azure szinapszis Analyticsben a megoldás fejlesztéséhez.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 11/03/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 607060851a8afa48b9570dfcb17732279a3629ee
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 3940d762dbc249e0303ddf905acbeeed7f96aa4f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286663"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315553"
 ---
-# <a name="use-stored-procedures-in-synapse-sql"></a>Tárolt eljárások használata a szinapszis SQL-ben
+# <a name="stored-procedures-using-synapse-sql-in-azure-synapse-analytics"></a>Tárolt eljárások a szinapszis SQL használatával az Azure szinapszis Analyticsben
 
 Az SQL kiosztott és kiszolgáló nélküli készletei lehetővé teszik összetett adatfeldolgozási logikák elhelyezését az SQL tárolt eljárásaiba. A tárolt eljárások nagyszerű lehetőséget biztosítanak az SQL-kód beágyazására és az adattárházban lévő adataihoz való közvetlen tárolásra. A tárolt eljárások segítséget nyújtanak a fejlesztőknek, hogy modularize a kódot a felügyelhető egységbe ágyazva, és megkönnyítsék a kód nagyobb mértékű újrahasználhatóságát. Az egyes tárolt eljárások is elfogadják a paramétereket, hogy azok még rugalmasabbak legyenek.
 Ebben a cikkben néhány tippet talál a tárolt eljárások megvalósításához a szinapszis SQL-készletben a megoldások fejlesztéséhez.
@@ -27,7 +27,7 @@ Ebben a cikkben néhány tippet talál a tárolt eljárások megvalósításáho
 A szinapszis SQL számos, a SQL Serverban használt T-SQL-funkciót támogat. Még ennél is fontosabb, hogy a megoldás teljesítményének maximalizálása érdekében Felskálázási funkciók érhetők el. Ebből a cikkből megtudhatja, milyen funkciókat helyezhet el a tárolt eljárásokban.
 
 > [!NOTE]
-> Az eljárás törzsében csak a szinapszis SQL Surface területén támogatott funkciókat használhatja. Tekintse át [ezt a cikket](overview-features.md) a tárolt eljárásokban használható objektumok és utasítások azonosításához. Az ezekben a cikkekben található példákban olyan általános funkciók vannak használatban, amelyek kiszolgáló nélküli és kiépített felületen egyaránt elérhetők. A cikk végén további [korlátozásokat talál a kiépített és a kiszolgáló nélküli SZINAPSZIS SQL-készletekben](#limitations) .
+> Az eljárás törzsében csak a szinapszis SQL Surface területén támogatott funkciókat használhatja. Tekintse át [ezt a cikket](overview-features.md) a tárolt eljárásokban használható objektumok és utasítások azonosításához. A cikkben szereplő példák olyan általános funkciókat használnak, amelyek kiszolgáló nélküli és dedikált felületen is elérhetők. A cikk végén további [korlátozásokat talál a kiépített és a kiszolgáló nélküli SZINAPSZIS SQL-készletekben](#limitations) .
 
 Az SQL-készlet méretezésének és teljesítményének fenntartása érdekében vannak olyan funkciók és funkciók is, amelyek viselkedési különbségekkel és másokkal rendelkeznek, amelyek nem támogatottak.
 

@@ -9,16 +9,16 @@ ms.date: 10/16/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 31201bb7168910915ee33d4361bf944e7669db66
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: fbcc7ffbde49acfd9afc180418d618060eb923c1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737974"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313530"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Apache Spark kódtárainak kezelése az Azure szinapszis Analyticsben
 
-A tárak újrafelhasználható kódot biztosítanak, amelyet a programok vagy projektek számára érdemes felvenni. Ahhoz, hogy a harmadik féltől származó vagy helyileg létrehozott kódokat elérhetővé tegye az alkalmazásai számára, telepíthet egy függvénytárat az egyik Spark-készletbe (előzetes verzió). Miután telepítette a tárat egy Spark-készlethez, az minden munkamenet számára elérhető lesz, amely ugyanazt a készletet használja. 
+A tárak újrafelhasználható kódot biztosítanak, amelyet a programok vagy projektek számára érdemes felvenni. Ahhoz, hogy a harmadik féltől származó vagy helyileg létrehozott kódot elérhetővé tegye az alkalmazásai számára, telepítheti a kódtárat az egyik kiszolgáló nélküli Apache Spark készletbe (előzetes verzió). Miután telepítette a tárat egy Spark-készlethez, az minden munkamenet számára elérhető lesz, amely ugyanazt a készletet használja. 
 
 ## <a name="default-installation"></a>Alapértelmezett telepítés
 Apache Spark az Azure szinapszis Analyticsben a teljes anacondas telepítése és további könyvtárak is elérhetők. A teljes kódtárak listája a következő címen érhető el: [Apache Spark Version support](apache-spark-version-support.md). 
@@ -68,7 +68,7 @@ További kódtárak frissítése vagy hozzáadása a Spark-készlethez (előzete
    
 2.  Indítsa el az Azure szinapszis Analytics-munkaterületet a Azure Portal.
 
-3.  Válassza a **felügyelet** elemet a fő navigációs panelen, majd válassza ki **Apache Spark készleteket** .
+3.  Válassza a **felügyelet** elemet a fő navigációs panelen, majd válassza ki **Apache Spark készleteket**.
    
 4. Válasszon egyetlen Spark-készletet, és töltse fel a környezet konfigurációs fájlját a lap  **csomagok** területén található fájl-választóval.
 

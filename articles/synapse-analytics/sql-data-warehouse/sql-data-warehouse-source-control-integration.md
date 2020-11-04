@@ -1,6 +1,6 @@
 ---
 title: Verziókövetés integrálása
-description: Nagyvállalati szintű adatbázis-DevOps az SQL-készlethez az Azure Repos (git és GitHub) használatával történő natív verziókövetés-integrációval.
+description: Nagyvállalati szintű adatbázis-DevOps élmény a dedikált SQL-készlethez az Azure Repos (git és GitHub) használatával történő natív verziókövetés-integrációval.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 84abfea39cb7311e7cd60346d936c08c28c334d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4751f3cf213098873b0c53b15df82f57d155787a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89441321"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313306"
 ---
-# <a name="source-control-integration-for-sql-pool"></a>Verziókövetés integrálása az SQL-készletbe
+# <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Verziókövetés integrálása dedikált SQL-készlethez az Azure szinapszis Analyticsben
 
-Ez az oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Adateszköz-(SSDT-) adatbázis-projekt a verziókövetés használatával.  A verziókövetés integrációja az első lépés a folyamatos integrációs és üzembe helyezési folyamat létrehozásához az SQL Pool-erőforrással az Azure szinapszis Analyticsben.
+Ez az oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Adateszköz-(SSDT-) adatbázis-projekt a verziókövetés használatával.  A verziókövetés integrációja az első lépés a folyamatos integrációs és üzembe helyezési folyamat létrehozásához az Azure szinapszis Analytics dedikált SQL Pool-erőforrásával.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -33,15 +33,15 @@ Ez az oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Adateszköz
 
    ![Projekt létrehozása](./media/sql-data-warehouse-source-control-integration/1-create-project-azure-devops.png "Projekt létrehozása")
 
-2. Nyissa meg a Visual studiót, és kapcsolódjon az Azure DevOps-szervezethez és-projekthez az első lépésben a **kapcsolat kezelése**lehetőség kiválasztásával
+2. Nyissa meg a Visual studiót, és kapcsolódjon az Azure DevOps-szervezethez és-projekthez az első lépésben a **kapcsolat kezelése** lehetőség kiválasztásával
 
    ![Kapcsolatok kezelése](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Kapcsolatok kezelése")
 
-3. Kapcsolódjon a projekthez a **kapcsolatok kezelése**, majd **a projekthez való csatlakozás**lehetőség kiválasztásával.
+3. Kapcsolódjon a projekthez a **kapcsolatok kezelése** , majd **a projekthez való csatlakozás** lehetőség kiválasztásával.
  ![Connect1](./media/sql-data-warehouse-source-control-integration/3-connect-project.png "Kapcsolódás")
 
 
-4. Keresse meg az első lépésben létrehozott projektet, majd válassza a **kapcsolat**lehetőséget.
+4. Keresse meg az első lépésben létrehozott projektet, majd válassza a **kapcsolat** lehetőséget.
 ![Connect2](./media/sql-data-warehouse-source-control-integration/3.5-connect.png "Kapcsolódás")
 
 
@@ -53,7 +53,7 @@ A projektek Visual Studióval való összekapcsolásával kapcsolatos további i
 
 ## <a name="create-and-connect-your-project"></a>Projekt létrehozása és összekapcsolása
 
-1. A Visual Studióban hozzon létre egy új SQL Server adatbázis-projektet a **helyi klónozott tárház**címtár-és helyi git-tárházával.
+1. A Visual Studióban hozzon létre egy új SQL Server adatbázis-projektet a **helyi klónozott tárház** címtár-és helyi git-tárházával.
 
    ![Új projekt létrehozása](./media/sql-data-warehouse-source-control-integration/5-create-new-project.png "Új projekt létrehozása")  
 
@@ -85,8 +85,8 @@ A projektek Visual Studióval való összekapcsolásával kapcsolatos további i
 
    ![Ellenőrzés](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "Módosítások ellenőrzése")
 
-4. (Nem**kötelező**) A séma összehasonlításával és a cél adattárház változásainak a SSDT használatával történő frissítésével biztosíthatja, hogy az Azure-tárházban az objektum-definíciók és a helyi adattár tükrözzék az adattárházat.
+4. (Nem **kötelező** ) A séma összehasonlításával és a cél adattárház változásainak a SSDT használatával történő frissítésével biztosíthatja, hogy az Azure-tárházban az objektum-definíciók és a helyi adattár tükrözzék az adattárházat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [SQL-készlet fejlesztése](sql-data-warehouse-overview-develop.md)
+- [Fejlesztés dedikált SQL-készlethez](sql-data-warehouse-overview-develop.md)

@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to
-ms.openlocfilehash: 116dd65bf04c01f513e196a2f1b37d54aacbf1fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8868b930abe28ed205446df0c6c9b0f111213eb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841356"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312786"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Kapcsolódás adatkapcsolathoz a Azure Machine Learning Studióval
 
@@ -31,13 +31,13 @@ Az alábbi táblázat az adattárolók és adatkészletek előnyeit határozza m
 
 Ha meg szeretné tudni, hogy az adattárolók és adatkészletek hogyan illeszkednek Azure Machine Learning összesített adatelérési munkafolyamataiba, tekintse meg a [biztonságos hozzáférésről](concept-data.md#data-workflow) szóló cikket.
 
-A Code első használatakor tekintse meg az alábbi cikkeket a [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) használatára a következő cikkekben:
+A Code első használatakor tekintse meg az alábbi cikkeket a [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) használatára a következő cikkekben:
 * [Azure Storage-szolgáltatásokhoz való kapcsolódás adattárolókkal](how-to-access-data.md). 
 * [Hozzon létre Azure Machine learning adatkészleteket](how-to-create-register-datasets.md). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+- Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
 - Hozzáférés [Azure Machine learning studióhoz](https://ml.azure.com/).
 
@@ -48,27 +48,27 @@ A Code első használatakor tekintse meg az alábbi cikkeket a [Azure Machine le
 
 ## <a name="create-datastores"></a>Adattárolók létrehozása
 
-[Ezekből az Azure Storage-megoldásokból is létrehozhat adattárakat](how-to-access-data.md#matrix). **A nem támogatott tárolási megoldások esetében**, valamint a kimenő adatforgalomnak a ml-kísérletek során történő mentéséhez az adatait egy támogatott Azure Storage-megoldásba kell [áthelyeznie](how-to-access-data.md#move) . [További információ az](how-to-access-data.md)adattárolók használatáról. 
+[Ezekből az Azure Storage-megoldásokból is létrehozhat adattárakat](how-to-access-data.md#matrix). **A nem támogatott tárolási megoldások esetében** , valamint a kimenő adatforgalomnak a ml-kísérletek során történő mentéséhez az adatait egy támogatott Azure Storage-megoldásba kell [áthelyeznie](how-to-access-data.md#move) . [További információ az](how-to-access-data.md)adattárolók használatáról. 
 
 
 
 Hozzon létre egy új adattárt néhány lépésben a Azure Machine Learning Studióval.
 
 > [!IMPORTANT]
-> Ha az adattároló-fiók egy virtuális hálózaton található, további konfigurációs lépések szükségesek ahhoz, hogy a Studio hozzáférhessen az adataihoz. A megfelelő konfigurációs lépések végrehajtásához tekintse meg a [hálózati elkülönítés & az adatvédelem](how-to-enable-virtual-network.md#machine-learning-studio) témakört.
+> Ha az adattároló-fiók egy virtuális hálózaton található, további konfigurációs lépések szükségesek ahhoz, hogy a Studio hozzáférhessen az adataihoz. A megfelelő konfigurációs lépések végrehajtásához tekintse meg a [hálózati elkülönítés & az adatvédelem](how-to-enable-studio-virtual-network.md) témakört.
 
 1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com/).
 1. A **kezelés** **alatt kattintson a** bal oldali ablaktábla adattárolók elemére.
-1. Válassza az **+ új adattár**lehetőséget.
+1. Válassza az **+ új adattár** lehetőséget.
 1. Töltse ki az űrlapot egy új adattárhoz. Az űrlap intelligens módon frissül saját maga, az Azure Storage-típus és a hitelesítési típus választása alapján. Az űrlap feltöltéséhez szükséges hitelesítő adatok megkereséséhez tekintse meg a [tárolási hozzáférés és engedélyek című szakaszt](#access-validation) .
 
-Az alábbi példa bemutatja, hogyan néz ki az űrlap az **Azure Blob-adattár**létrehozásakor:
+Az alábbi példa bemutatja, hogyan néz ki az űrlap az **Azure Blob-adattár** létrehozásakor:
 
 ![Űrlap új adattárhoz](media/how-to-connect-data-ui/new-datastore-form.png)
 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
 
-Az adattár létrehozása után hozzon létre egy adatkészletet az adataival való kommunikációhoz. Az adatkészletek a gépi tanulási feladatokhoz, például a képzéshez egy lustán kiértékelt adatforrásba csomagolják az adatokat. [További tudnivalók az adatkészletekről](how-to-create-register-datasets.md).
+Az adattár létrehozása után hozzon létre egy adatkészletet az adataival való kommunikációhoz. Az adatkészletek a gépi tanulási feladatokhoz, például a képzéshez egy lustán kiértékelt adatforrásba csomagolják az adatokat. [További információ az adathalmazokról](how-to-create-register-datasets.md).
 
 Kétféle adatkészlet létezik, a FileDataset és a TabularDataset. 
 A [FileDatasets](how-to-create-register-datasets.md#filedataset) egy vagy több fájlra vagy nyilvános URL-címekre mutató hivatkozásokat hoz létre. Míg a [TabularDatasets](how-to-create-register-datasets.md#tabulardataset) táblázatos formában jeleníti meg az adatokat. 
@@ -86,7 +86,7 @@ Adatkészlet létrehozása a Studióban:
 1. Válassza az **adatkészlet létrehozása** lehetőséget az adatkészlet forrásának kiválasztásához. Ez a forrás lehet helyi fájl, adattár, nyilvános URL-cím vagy [Azure Open-adatkészlet](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md).
 1. Válassza a **táblázatos** vagy a **fájl** lehetőséget az adatkészlet típusához.
 1. Kattintson a **tovább** gombra az **adattár és a fájl kiválasztása** űrlap megnyitásához. Ezen az űrlapon kiválaszthatja, hogy hol szeretné megőrizni az adatkészletet a létrehozás után, valamint kiválaszthatja az adatkészlethez használni kívánt adatfájlokat.
-    1. Az érvényesítés kihagyásának engedélyezése, ha az adatai virtuális hálózaton vannak. További információ a [virtuális hálózatok elkülönítéséről és adatvédelméről](how-to-enable-virtual-network.md#machine-learning-studio).
+    1. Az érvényesítés kihagyásának engedélyezése, ha az adatai virtuális hálózaton vannak. További információ a [virtuális hálózatok elkülönítéséről és adatvédelméről](how-to-enable-studio-virtual-network.md).
     1. Táblázatos adatkészletek esetében megadhat egy "idősor" tulajdonságot, amely lehetővé teszi az időkereten alapuló műveletek engedélyezését. Megtudhatja, hogyan [adhatja hozzá a idősor-tulajdonságokat az adatkészlethez](how-to-monitor-datasets.md#studio-dataset).
 1. Válassza a **tovább** lehetőséget a **beállítások és az előnézet** és a **séma** űrlapok feltöltéséhez; ezeket a fájltípusok alapján intelligens módon töltik fel, és az űrlapokon való létrehozás előtt további beállításokkal konfigurálhatja az adatkészletet. 
 1. Kattintson a **tovább** gombra a **részletek megerősítése** űrlap áttekintéséhez. Válassza ki a beállításokat, és hozzon létre egy opcionális adatprofilt az adatkészlethez. További információ az [adatprofilkészítésről](#profile).
@@ -115,7 +115,7 @@ Azure Machine Learning adatkészlet adatprofilja az alábbiakat tartalmazza:
 
 |Statisztikai adatok|Leírás
 |------|------
-|Szolgáltatás| Az összesíteni kívánt oszlop neve.
+|Funkció| Az összesíteni kívánt oszlop neve.
 |Profil| Beágyazott vizualizáció a következtetett típus alapján. Például a karakterláncok, a logikai értékek és a dátumok értékének számít, míg a tizedesjegyek (numerikus értékek) közelítő hisztogramtal rendelkeznek. Ez lehetővé teszi az adateloszlás gyors megismerését.
 |Típus eloszlása| Az oszlopokban lévő típusok soron belüli értékeinek száma. A nullák a saját típusúak, így ez a vizualizáció hasznos lehet a páratlan vagy hiányzó értékek észleléséhez.
 |Típus|Az oszlop késleltetett típusa. A lehetséges értékek a következők: karakterláncok, logikai értékek, dátumok és tizedesjegyek.
@@ -136,13 +136,13 @@ Az Azure Storage szolgáltatáshoz való biztonságos kapcsolódás érdekében 
 
 ### <a name="virtual-network"></a>Virtuális hálózat
 
-Ha az adattároló-fiók egy **virtuális hálózaton**található, további konfigurációs lépések szükségesek ahhoz, hogy Azure Machine learning hozzáférjen az adataihoz. Az adattár létrehozásakor és regisztrálása során a megfelelő konfigurációs lépések végrehajtásához tekintse meg a [hálózati elkülönítés & az adatvédelem](how-to-enable-virtual-network.md#machine-learning-studio) témakört.  
+Ha az adattároló-fiók egy **virtuális hálózaton** található, további konfigurációs lépések szükségesek ahhoz, hogy Azure Machine learning hozzáférjen az adataihoz. Az adattár létrehozásakor és regisztrálása során a megfelelő konfigurációs lépések végrehajtásához tekintse meg a [hálózati elkülönítés & az adatvédelem](how-to-enable-studio-virtual-network.md) témakört.  
 
 ### <a name="access-validation"></a>Hozzáférés ellenőrzése
 
-**A kezdeti adattár-létrehozási és regisztrációs folyamat részeként**Azure Machine learning automatikusan ellenőrzi, hogy a mögöttes tárolási szolgáltatás létezik-e, és hogy a felhasználó által megadott rendszerbiztonsági tag (Felhasználónév, szolgáltatásnév vagy sas-jogkivonat) hozzáfér-e a megadott tárolóhoz.
+**A kezdeti adattár-létrehozási és regisztrációs folyamat részeként** Azure Machine learning automatikusan ellenőrzi, hogy a mögöttes tárolási szolgáltatás létezik-e, és hogy a felhasználó által megadott rendszerbiztonsági tag (Felhasználónév, szolgáltatásnév vagy sas-jogkivonat) hozzáfér-e a megadott tárolóhoz.
 
-Az **adattár létrehozása után**ezt az ellenőrzést csak olyan metódusok hajtják végre, amelyek hozzáférést igényelnek a mögöttes tárolóhoz, **nem** minden alkalommal, amikor az adattár-objektumokat lekérik. Például az ellenőrzés akkor történik meg, ha le szeretné tölteni a fájlokat az adattárból. Ha azonban csak módosítani szeretné az alapértelmezett adattárat, akkor az érvényesítés nem történik meg.
+Az **adattár létrehozása után** ezt az ellenőrzést csak olyan metódusok hajtják végre, amelyek hozzáférést igényelnek a mögöttes tárolóhoz, **nem** minden alkalommal, amikor az adattár-objektumokat lekérik. Például az ellenőrzés akkor történik meg, ha le szeretné tölteni a fájlokat az adattárból. Ha azonban csak módosítani szeretné az alapértelmezett adattárat, akkor az érvényesítés nem történik meg.
 
 A mögöttes tárolási szolgáltatáshoz való hozzáférésének hitelesítéséhez a létrehozni kívánt adattár típusa alapján megadhatja a fiók kulcsát, a közös hozzáférési aláírások (SAS) tokenjét vagy az egyszerű szolgáltatást. A [tárolási típus mátrixa](how-to-access-data.md#matrix) felsorolja az egyes adattár-típusoknak megfelelő támogatott hitelesítési típusokat.
 
@@ -153,7 +153,7 @@ Megtalálhatja a fiók kulcsát, az SAS-tokent és az egyszerű szolgáltatásn�
       1. A fiókok kulcsai lapon lépjen a **hozzáférési kulcsok** elemre a **Beállítások** ablaktáblán.
       1. SAS-tokenek esetén a beállítások ablaktáblán válassza a **közös hozzáférésű aláírások** **lehetőséget** .
 
-* Ha egy [egyszerű szolgáltatásnév](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) használatát tervezi hitelesítésre, lépjen a **Alkalmazásregisztrációk** , és válassza ki a használni kívánt alkalmazást.
+* Ha egy [egyszerű szolgáltatásnév](../active-directory/develop/howto-create-service-principal-portal.md) használatát tervezi hitelesítésre, lépjen a **Alkalmazásregisztrációk** , és válassza ki a használni kívánt alkalmazást.
     * A megfelelő **áttekintő** oldal tartalmazni fogja a szükséges információkat, például a bérlő azonosítóját és az ügyfél-azonosítót.
 
 > [!IMPORTANT]
@@ -161,7 +161,7 @@ Megtalálhatja a fiók kulcsát, az SAS-tokent és az egyszerű szolgáltatásn�
 
 ### <a name="permissions"></a>Engedélyek
 
-Az Azure Blob Container és Azure Data Lake 2. generációs tárolók esetében ellenőrizze, hogy a hitelesítési hitelesítő adatai rendelkeznek-e **Storage blob-Adatolvasóval** . További információ a [Storage blob-Adatolvasóról](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader). 
+Az Azure Blob Container és Azure Data Lake 2. generációs tárolók esetében ellenőrizze, hogy a hitelesítési hitelesítő adatai rendelkeznek-e **Storage blob-Adatolvasóval** . További információ a [Storage blob-Adatolvasóról](../role-based-access-control/built-in-roles.md#storage-blob-data-reader). 
 
 ## <a name="train-with-datasets"></a>Betanítás adathalmazok használatával
 

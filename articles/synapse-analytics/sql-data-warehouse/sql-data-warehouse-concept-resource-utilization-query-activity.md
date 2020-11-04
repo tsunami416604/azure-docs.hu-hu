@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 334d37ad36336d1aa737894482fd8f66e929c822
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f66efb9112a9342122f5b56ab11b862ce3c7c61b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87077683"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314437"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Erőforrás-kihasználtság és lekérdezési tevékenységek figyelése az Azure szinapszis Analyticsben
 
@@ -31,8 +31,8 @@ A következő mérőszámok érhetők el a szinapszis SQL-Azure Portalban. Ezek 
 | Processzorhasználat (%)          | CPU-kihasználtság az adatraktár összes csomópontja között      | AVG, min, Max    |
 | Adat IO kihasználtsága (%)      | I/o-kihasználtság az adatraktár összes csomópontja között       | AVG, min, Max    |
 | Memória százaléka       | Memória kihasználtsága (SQL Server) az adatraktár összes csomópontján | AVG, min, Max   |
-| Aktív lekérdezések          | A rendszeren futtatott aktív lekérdezések száma             | Sum              |
-| Várólistán lévő lekérdezések          | A végrehajtás megkezdésére váró üzenetsor-lekérdezések száma          | Sum              |
+| Aktív lekérdezések          | A rendszeren futtatott aktív lekérdezések száma             | Összeg              |
+| Várólistán lévő lekérdezések          | A végrehajtás megkezdésére váró üzenetsor-lekérdezések száma          | Összeg              |
 | Sikeres kapcsolatok  | A sikeres kapcsolatok (bejelentkezések) száma az adatbázison | Összeg, darabszám       |
 | Sikertelen kapcsolatok      | Sikertelen kapcsolatok (bejelentkezések) száma az adatbázison | Összeg, darabszám       |
 | Tűzfal blokkolja     | A letiltott adatraktárba való bejelentkezések száma     | Összeg, darabszám       |
@@ -53,13 +53,13 @@ A metrikák megtekintésekor megfontolandó szempontok és riasztások beállít
 
 Programozási élmény a szinapszis SQL T-SQL-n keresztül történő figyelése során a szolgáltatás a dinamikus felügyeleti nézetek (DMV-EK) készletét nyújtja. Ezek a nézetek akkor hasznosak, ha aktívan hibaelhárítást végez, és azonosítja a teljesítménnyel kapcsolatos szűk keresztmetszeteket.
 
-A szinapszis SQL-re vonatkozó DMV listájának megtekintéséhez tekintse meg ezt a [dokumentációt](../sql/reference-tsql-system-views.md#sql-pool-dynamic-management-views-dmvs). 
+A szinapszis SQL-re vonatkozó DMV listájának megtekintéséhez tekintse meg ezt a [dokumentációt](../sql/reference-tsql-system-views.md#dedicated-sql-pool-dynamic-management-views-dmvs). 
 
 ## <a name="metrics-and-diagnostics-logging"></a>Metrikák és diagnosztikai naplózás 
 
 Mindkét metrika és napló exportálható Azure Monitorba, pontosabban a [Azure monitor naplózó](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) összetevőt, és a [naplózási lekérdezésekkel](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)programozott módon férhet hozzá. A szinapszis SQL-naplózási késése körülbelül 10-15 percet vesz igénybe. A késést befolyásoló tényezőkkel kapcsolatos további információkért látogasson el a következő dokumentációra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi útmutató a gyakori forgatókönyveket és a használati eseteket ismerteti az adatraktár monitorozása és kezelése során:
 

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2bac9645fa66cd33c7cda79f16628c1104e27d7d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 00b4f38f4a2a44b88718224db2b2442033816f83
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480547"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313899"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>Azure szinapszis Analytics IP-tűzfalszabályok (előzetes verzió)
 
@@ -21,7 +21,7 @@ Ez a cikk ismerteti az IP-tűzfalszabályok szabályait, és megtanítja, hogyan
 
 ## <a name="ip-firewall-rules"></a>IP-tűzfalszabályok
 
-Az IP-tűzfalszabályok engedélyezik vagy megtagadják a hozzáférését a szinapszis munkaterülethez az egyes kérések származó IP-címe alapján. Beállíthatja a munkaterület IP-tűzfalszabályok szabályait. A munkaterület szintjén konfigurált IP-tűzfalszabályok a munkaterület összes nyilvános végpontján érvényesek (SQL-készletek, SQL on-demand és fejlesztés).
+Az IP-tűzfalszabályok engedélyezik vagy megtagadják a hozzáférését a szinapszis munkaterülethez az egyes kérések származó IP-címe alapján. Beállíthatja a munkaterület IP-tűzfalszabályok szabályait. A munkaterület szintjén konfigurált IP-tűzfalszabályok a munkaterület összes nyilvános végpontján érvényesek (dedikált SQL-készletek, kiszolgáló nélküli SQL-készlet és fejlesztés).
 
 ## <a name="create-and-manage-ip-firewall-rules"></a>IP-tűzfalszabályok létrehozása és kezelése
 
@@ -37,7 +37,7 @@ A munkaterület létrehozása után IP-tűzfalszabályok is hozzáadhatók egy s
 
 ## <a name="connect-to-synapse-from-your-own-network"></a>Csatlakozás a Synapse-hez a saját hálózatáról
 
-A szinapszis-munkaterülethez a szinapszis Studio használatával csatlakozhat. A munkaterületen a SQL Server Management Studio (SSMS) használatával is csatlakozhat az SQL-erőforrásokhoz (az SQL-készletek és az SQL on-demand).
+A szinapszis-munkaterülethez a szinapszis Studio használatával csatlakozhat. SQL Server Management Studio (SSMS) használatával is csatlakozhat az SQL-erőforrásokhoz (dedikált SQL-készletek és kiszolgáló nélküli SQL-készlet) a munkaterületen.
 
 Győződjön meg arról, hogy a hálózat és a helyi számítógép tűzfala lehetővé teszi a kimenő kommunikációt a 80, 443 és 1443 TCP-portokon a szinapszis studióhoz.
 

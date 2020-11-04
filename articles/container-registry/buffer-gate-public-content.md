@@ -5,12 +5,12 @@ author: dlepow
 ms.topic: article
 ms.author: danlep
 ms.date: 10/29/2020
-ms.openlocfilehash: e5fd70cdde6be431f7bb1950a42ca43e81b34e36
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: bb185e7d5803219135fddf421b7d6a89edd296b0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130850"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315807"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>Nyilvános tartalom kezelése Azure Container Registry
 
@@ -25,16 +25,14 @@ A megfelelő vezérlők nélkül a nyilvános beállításjegyzékbeli tartalomm
 
 ## <a name="authenticate-with-docker-hub"></a>Hitelesítés a Docker hub használatával
 
-Első lépésként, ha jelenleg a Docker hub nyilvános lemezképeit egy Build vagy üzembe helyezési munkafolyamat részeként kéri le, javasoljuk, hogy a névtelen lekéréses kérelem helyett Docker hub-fiókkal végezzen hitelesítést.
+Első lépésként, ha jelenleg a Docker hub nyilvános lemezképeit egy Build vagy üzembe helyezési munkafolyamat részeként kéri le, javasoljuk, hogy a névtelen lekéréses kérelem helyett [Docker hub-fiókkal végezzen hitelesítést](https://docs.docker.com/docker-hub/download-rate-limit/#how-do-i-authenticate-pull-requests) .
 
 > [!NOTE]
-> 2020. november 2., a letöltési sebességre vonatkozó korlátozások a Docker ingyenes csomag fiókjaiból származó névtelen és hitelesített kérelmekre vonatkoznak, és az IP-cím kényszeríti. 
+> 2020. november 2., a [letöltési sebességre vonatkozó korlátozások](https://docs.docker.com/docker-hub/download-rate-limit) a Docker ingyenes csomag fiókjaiban a Docker hub névtelen és hitelesített kéréseire vonatkoznak, és az IP-cím és a Docker-azonosító, a respecitively alapján kényszerítik ki. 
 >
-> A lekéréses kérelmek számának becslése során vegye figyelembe, hogy ha a felhőalapú szolgáltatói szolgáltatásokat használja, vagy a vállalati NAT mögött dolgozik, több felhasználó fog megjelenni a Docker hub-ban az IP-címek részhalmazában.  Ha hozzáadta a Docker fizetős fiókjának hitelesítését a Docker hub felé irányuló kérelmekhez, azzal elkerülhető, hogy a szolgáltatás megszakadjon a sávszélesség-korlátozás miatt.
+> A lekéréses kérelmek számának becslése során vegye figyelembe, hogy ha a felhőalapú szolgáltatói szolgáltatásokat használja, vagy a vállalati NAT mögött dolgozik, több felhasználó fog megjelenni a Docker hub-ban az IP-címek részhalmazában. Ha hozzáadta a Docker fizetős fiókjának hitelesítését a Docker hub felé irányuló kérelmekhez, azzal elkerülhető, hogy a szolgáltatás megszakadjon a sávszélesség-korlátozás miatt.
 >
 > Részletekért lásd a [Docker díjszabását és előfizetéseit](https://www.docker.com/pricing) , valamint a [Docker szolgáltatási feltételeit](https://www.docker.com/legal/docker-terms-service).
-
-A hitelesítési példák és forgatókönyvek esetében lásd: [letöltési sebesség korlátozása](https://docs.docker.com/docker-hub/download-rate-limit/).
 
 ### <a name="docker-hub-access-token"></a>Docker hub hozzáférési token
 

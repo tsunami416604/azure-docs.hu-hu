@@ -1,6 +1,6 @@
 ---
-title: Külső táblák létrehozása és használata az igény szerinti SQL-ben (előzetes verzió)
-description: Ebből a szakaszból megtudhatja, hogyan hozhat létre és használhat külső táblákat az igény szerinti SQL-ben (előzetes verzió).
+title: Külső táblák létrehozása és használata a kiszolgáló nélküli SQL-készletben (előzetes verzió)
+description: Ebből a szakaszból megtudhatja, hogyan hozhat létre és használhat külső táblákat a kiszolgáló nélküli SQL-készletben (előzetes verzió).
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 182deba959144f6a3992bb41243f29023bad5e5c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0a52db131311d9956cf7217d910f22c3a4f07738
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91289327"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314727"
 ---
-# <a name="create-and-use-external-tables-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Külső táblák létrehozása és használata az igény szerinti SQL-ben (előzetes verzió) az Azure szinapszis Analytics használatával
+# <a name="create-and-use-external-tables-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Külső táblák létrehozása és használata kiszolgáló nélküli SQL-készlet (előzetes verzió) használatával az Azure szinapszis Analyticsben
 
-Ebből a szakaszból megtudhatja, hogyan hozhat létre és használhat [külső táblákat](develop-tables-external-tables.md) az igény szerinti SQL-ben (előzetes verzió). A külső táblák akkor hasznosak, ha szabályozni szeretné az SQL igény szerinti külső adatelérését, és ha olyan eszközöket szeretne használni, mint például a Power BI, az SQL igény szerinti használatával. A külső táblák két típusú tárterületet érhetnek el:
+Ebből a szakaszból megtudhatja, hogyan hozhat létre és használhat [külső táblákat](develop-tables-external-tables.md) a kiszolgáló nélküli SQL-készletben (előzetes verzió). A külső táblák akkor hasznosak, ha a kiszolgáló nélküli SQL-készletben lévő külső adatbázisokhoz való hozzáférést szeretné vezérelni, és ha olyan eszközöket szeretne használni, mint például a Power BI, a kiszolgáló nélküli SQL-készlettel együtt. A külső táblák két típusú tárterületet érhetnek el:
 - Nyilvános tárterület, ahol a felhasználók hozzáférhetnek a nyilvános tárolási fájlokhoz.
 - Védett tároló, amelyben a felhasználók az SAS hitelesítő adatokkal, az Azure AD-identitással vagy a szinapszis munkaterület felügyelt identitásával férnek hozzá a tárolóhelyekhez.
 
@@ -130,6 +130,6 @@ ORDER BY
     [population] DESC;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A lekérdezés eredményeinek a tárolóra való tárolásával kapcsolatos további információkért tekintse meg az [áruház lekérdezési eredményeit a Storage](../sql/create-external-table-as-select.md) cikkben.

@@ -11,18 +11,18 @@ ms.topic: sample
 ms.date: 06/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: 406092466b7ab5ca729a08f7c703bcb30812901d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7a361319c3fc6c80c6dac80c48fb10155a3ff5b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86027511"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314851"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Adatáttekintés és modellezés a Spark segítségével
 
 Ismerje meg, hogyan használhatja a HDInsight Sparkot a gépi tanulási modellek betanításához a Spark MLlib használatával a taxi viteldíj-előrejelzéséhez.
 
-Ez a példa a [csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)különböző lépéseit mutatja be. A New York-i City Taxi Trip és a fare 2013 adatkészlet egy részhalmaza az betöltésre, feltárásra és előkészítésre szolgál. Ezt követően a Spark MLlib, a bináris besorolás és a regressziós modellek betanításával előre megjósolható, hogy az utazás után kell-e fizetni a tippnek, és meg kell becsülni a tipp összegét.
+Ez a példa a [csoportos adatelemzési folyamat](./index.yml)különböző lépéseit mutatja be. A New York-i City Taxi Trip és a fare 2013 adatkészlet egy részhalmaza az betöltésre, feltárásra és előkészítésre szolgál. Ezt követően a Spark MLlib, a bináris besorolás és a regressziós modellek betanításával előre megjósolható, hogy az utazás után kell-e fizetni a tippnek, és meg kell becsülni a tipp összegét.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -92,7 +92,7 @@ A Jupyter-jegyzetfüzetekhez biztosított PySpark-kernelek előre beállított k
 A PySpark kernel tartalmaz néhány előre definiált "varázslatot", amelyek a (z)%% használatával hívható speciális parancsok. A kód mintáinak két ilyen parancsa van használatban.
 
 * **%% helyi** Megadja, hogy a következő sorokban lévő kódot helyileg kell végrehajtani. A kódnak érvényes Python-kódnak kell lennie.
-* **%% SQL-o \<variable name> ** Struktúra-lekérdezést hajt végre a sqlContext. Ha a-o paraméter át lett adva, a lekérdezés eredménye a (z)%% helyi Python-kontextusban, pandák DataFrame.
+* **%% SQL-o \<variable name>** Struktúra-lekérdezést hajt végre a sqlContext. Ha a-o paraméter át lett adva, a lekérdezés eredménye a (z)%% helyi Python-kontextusban, pandák DataFrame.
 
 További információ a Jupyter notebook-kernelekről és az előre definiált "varázslatokról": a [Jupyter notebookokhoz elérhető kernelek a HDInsight Spark Linux-fürtökkel a HDInsight-on](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
@@ -181,7 +181,7 @@ Miután az adatgyűjtés bekerült a Sparkba, az adatelemzési folyamat követke
 Ez a kód és az azt követő kódrészletek az SQL Magic használatával kérdezik le a mintát és a helyi mágiát az adatábrázoláshoz.
 
 * **SQL Magic ( `%%sql` )** a HDInsight PySpark kernel egyszerűen beágyazott HiveQL-lekérdezéseket támogat a sqlContext. Az (-o VARIABLE_NAME) argumentum megőrzi az SQL-lekérdezés kimenetét a Jupyter-kiszolgálón található pandák DataFrame. Ezzel a beállítással a kimenet elérhetővé válik a helyi módban.
-* A ** `%%local` Magic** a kód helyi futtatására szolgál a Jupyter-kiszolgálón, amely a HDInsight-fürt átjárócsomóponthoz. Általában `%%local` a Magic `%%sql` és a-o paraméter együttes használata. Az-o paraméter megőrzi az SQL-lekérdezés helyi kimenetét, majd%% local Magic elindítja a következő kódrészletet, hogy helyileg fusson a helyileg megőrzött SQL-lekérdezések kimenetén.
+* A **`%%local` Magic** a kód helyi futtatására szolgál a Jupyter-kiszolgálón, amely a HDInsight-fürt átjárócsomóponthoz. Általában `%%local` a Magic `%%sql` és a-o paraméter együttes használata. Az-o paraméter megőrzi az SQL-lekérdezés helyi kimenetét, majd%% local Magic elindítja a következő kódrészletet, hogy helyileg fusson a helyileg megőrzött SQL-lekérdezések kimenetén.
 
 A rendszer automatikusan megjeleníti a kimenetet a kód futtatása után.
 
@@ -697,7 +697,7 @@ A fenti cella végrehajtásához szükséges idő: 57,61 másodperc
 
 **A ROC-görbe ábrázolása.**
 
-A *predictionAndLabelsDF* táblaként, *tmp_resultsként*van regisztrálva az előző cellában. a *tmp_results* a lekérdezések és a kimeneti eredmények a sqlResults adatkeretbe való elvégzésére használhatók a rajzoláshoz. Itt látható a kód.
+A *predictionAndLabelsDF* táblaként, *tmp_resultsként* van regisztrálva az előző cellában. a *tmp_results* a lekérdezések és a kimeneti eredmények a sqlResults adatkeretbe való elvégzésére használhatók a rajzoláshoz. Itt látható a kód.
 
 ```python
 # QUERY RESULTS                              
@@ -1119,4 +1119,4 @@ Most, hogy létrehozta a regressziós és besorolási modelleket a Spark MlLib, 
 
 **Modell felhasználása:** A jelen témakörben létrehozott besorolási és regressziós modellek pontszámának és értékelésének megismeréséhez tekintse meg a [Spark által készített gépi tanulási modellek pontszámát és értékelését](spark-model-consumption.md)ismertető szakaszt.
 
-**Több ellenőrzés és hiperparaméter**: a [fejlett adatfeltárás és-modellezés a Spark](spark-advanced-data-exploration-modeling.md) használatával a modellek több ellenőrzéssel és a Hyper-paraméterrel történő elvetésével is betanítható
+**Több ellenőrzés és hiperparaméter** : a [fejlett adatfeltárás és-modellezés a Spark](spark-advanced-data-exploration-modeling.md) használatával a modellek több ellenőrzéssel és a Hyper-paraméterrel történő elvetésével is betanítható

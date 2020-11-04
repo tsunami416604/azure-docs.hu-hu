@@ -11,14 +11,14 @@ author: blackmist
 ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a36f69c9956dd05c5fbd85d7e37b90c0b1e4c21e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09eeafa99c14984f74f8807014f646379c7507f0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897647"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314210"
 ---
-# <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>A ML webszolgáltatás-végpontokról származó adatok figyelése és gyűjtése
+# <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Adatok ML-webszolgáltatási végpontokról való monitorozása és gyűjtése
 
 
 Ebből a cikkből megtudhatja, hogyan gyűjthet adatokat a webszolgáltatási végpontokra telepített modellekről az Azure Kubernetes szolgáltatásban (ak) vagy Azure Container Instances (ACI). Az [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) használatával gyűjtsön egy végpontból a következő adatokat:
@@ -144,7 +144,7 @@ Az Azure Application Insights a Azure Machine Learning studióból is engedélye
 
 1. Jelentkezzen be a studióba a címen https://ml.azure.com .
 1. Nyissa meg a **modelleket** , és válassza ki a telepíteni kívánt modellt.
-1. Válassza a  **+ telepítés**lehetőséget.
+1. Válassza a  **+ telepítés** lehetőséget.
 1. Töltse ki a **modell üzembe helyezése** űrlapot.
 1. Bontsa ki a **speciális** menüt.
 
@@ -172,13 +172,13 @@ logs = service.get_logs()
 Az Azure Application Insights a szolgáltatás naplóit a Azure Machine Learning munkaterülettel azonos erőforráscsoporthoz tárolja. Az alábbi lépésekkel tekintheti meg az adatait a Studióval:
 
 1. Lépjen a Azure Machine Learning munkaterületére a [Studióban](https://ml.azure.com/).
-1. Válassza a **végpontok**lehetőséget.
+1. Válassza a **végpontok** lehetőséget.
 1. Válassza ki a telepített szolgáltatást.
 1. Válassza ki a **Application Insights URL-** hivatkozást.
 
     [![Application Insights URL-cím keresése](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 
-1. Application Insights az **Áttekintés** lapon vagy a __figyelés__ szakaszban válassza a __naplók__lehetőséget.
+1. Application Insights az **Áttekintés** lapon vagy a __figyelés__ szakaszban válassza a __naplók__ lehetőséget.
 
     [![A figyelés áttekintése lap](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
@@ -204,9 +204,9 @@ A webszolgáltatás-kérelem adatainak naplózásához adjon hozzá `print` utas
 ## <a name="export-data-for-retention-and-processing"></a>Adatok exportálása megőrzésre és feldolgozásra
 
 >[!Important]
-> Az Azure Application Insights csak a blob Storage-ba való exportálást támogatja. A megvalósítás korlátaival kapcsolatos további információkért lásd: [telemetria exportálása az alkalmazásból](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry#continuous-export-advanced-storage-configuration).
+> Az Azure Application Insights csak a blob Storage-ba való exportálást támogatja. A megvalósítás korlátaival kapcsolatos további információkért lásd: [telemetria exportálása az alkalmazásból](../azure-monitor/app/export-telemetry.md#continuous-export-advanced-storage-configuration).
 
-Az adatok egy blob Storage-fiókba való exportálásához Application Insights [folyamatos exportálást](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) használhat, ahol megadhatja az adatmegőrzési beállításokat. Application Insights JSON formátumban exportálja az adatmennyiséget. 
+Az adatok egy blob Storage-fiókba való exportálásához Application Insights [folyamatos exportálást](../azure-monitor/app/export-telemetry.md) használhat, ahol megadhatja az adatmegőrzési beállításokat. Application Insights JSON formátumban exportálja az adatmennyiséget. 
 
 :::image type="content" source="media/how-to-enable-app-insights/continuous-export-setup.png" alt-text="Folyamatos exportálás":::
 
@@ -215,8 +215,8 @@ Az adatok egy blob Storage-fiókba való exportálásához Application Insights 
 Ebben a cikkben megtanulta, hogyan engedélyezheti a naplózást és megtekintheti a webszolgáltatási végpontok naplóit. Próbálja ki ezeket a cikkeket a következő lépésekhez:
 
 
-* [Modell üzembe helyezése AK-fürtön](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service)
+* [Modell üzembe helyezése AK-fürtön](./how-to-deploy-azure-kubernetes-service.md)
 
-* [Modell üzembe helyezése Azure Container Instances](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-container-instance)
+* [Modell üzembe helyezése Azure Container Instances](./how-to-deploy-azure-container-instance.md)
 
-* [MLOps: modellek kezelése, üzembe helyezése és monitorozása a Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment) segítségével többet tudhat meg az éles modellekben gyűjtött adatok kihasználásáról. Ezek az adatai segíthetnek a gépi tanulási folyamat folyamatos fejlesztésében.
+* [MLOps: modellek kezelése, üzembe helyezése és monitorozása a Azure Machine learning](./concept-model-management-and-deployment.md) segítségével többet tudhat meg az éles modellekben gyűjtött adatok kihasználásáról. Ezek az adatai segíthetnek a gépi tanulási folyamat folyamatos fejlesztésében.

@@ -1,6 +1,6 @@
 ---
 title: Apache Spark alapvető fogalmak
-description: Az Azure szinapszis Analytics és a különböző fogalmak Apache Sparkának bemutatása.
+description: Az Azure szinapszis Analytics Apache Spark alapfogalmai.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: bb5c7e082dc4a35183190f5d2d6a4b305b907f4f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d29fa6454839b0c34830374282b8abb5fa6e4c51
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480479"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313404"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Apache Spark az Azure szinapszis Analytics alapvető fogalmakkal
 
@@ -24,7 +24,7 @@ Az Azure szinapszis megkönnyíti a Spark-képességek létrehozását és konfi
 
 ## <a name="spark-pools-preview"></a>Spark-készletek (előzetes verzió)
 
-A rendszer létrehoz egy Spark-készletet (előzetes verzió) a Azure Portal. Ez egy olyan Spark-készlet definíciója, amely a példányok létrehozásakor egy olyan Spark-példány létrehozására szolgál, amely az adatfeldolgozást végzi. Spark-készlet létrehozásakor a rendszer csak metaadatként működik, és nem használja fel, nem futtatja és nem számlázza fel az erőforrásokat. A Spark-készlet olyan tulajdonságokkal rendelkezik, amelyek a Spark-példány jellemzőit vezérlik. Ezek a tulajdonságok közé tartoznak például a név, a méret, a skálázási viselkedés, az élettartam.
+A rendszer létrehoz egy kiszolgáló nélküli Apache Spark készletet (előzetes verzió) a Azure Portal. Ez egy olyan Spark-készlet definíciója, amely a példányok létrehozásakor egy olyan Spark-példány létrehozására szolgál, amely az adatfeldolgozást végzi. Spark-készlet létrehozásakor a rendszer csak metaadatként működik, és nem használja fel, nem futtatja és nem számlázza fel az erőforrásokat. A Spark-készlet olyan tulajdonságokkal rendelkezik, amelyek a Spark-példány jellemzőit vezérlik. Ezek a tulajdonságok közé tartoznak például a név, a méret, a skálázási viselkedés, az élettartam.
 
 Mivel a Spark-készletek létrehozásához nem jár dollár vagy erőforrás-díj, tetszőleges számú különböző konfigurációval hozható létre. Az engedélyek olyan Spark-készletekre is alkalmazhatók, amelyek lehetővé teszik a felhasználók számára, hogy mások számára is hozzáférjenek.
 

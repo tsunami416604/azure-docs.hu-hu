@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: gépi tanulási modell pontozási varázsló SQL-készletekhez'
-description: Oktatóanyag a Machine learning Model pontozási varázslójának használatáról a szinapszis SQL-készletekben lévő adatfrissítéshez
+title: 'Oktatóanyag: gépi tanulási modell pontozási varázsló dedikált SQL-készletekhez'
+description: Oktatóanyag a gépi tanulási modell pontozási varázslójának használatáról a dedikált SQL-készletekbe tartozó adatfrissítéshez.
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: machine-learning
@@ -9,29 +9,29 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 8e92ff75bb6a9757c06de3561a385cbcbb7f75ba
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: f5c5edc067b3f7b525fd129462c48ca50fdafc8f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019970"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314043"
 ---
-# <a name="tutorial-machine-learning-model-scoring-wizard-for-synapse-sql-pools"></a>Oktatóanyag: a számítógép-tanulási modell pontozási varázslója a szinapszis SQL-készletekhez
+# <a name="tutorial-machine-learning-model-scoring-wizard-for-dedicated-sql-pools"></a>Oktatóanyag: gépi tanulási modell pontozási varázsló dedikált SQL-készletekhez
 
-Ismerje meg, hogyan gazdagíthatja adatait az SQL-készletekben a prediktív gépi tanulási modellel.  Az adatszakértők által létrehozott modellek mostantól könnyen elérhetők az adatszakemberek számára a prediktív elemzésekhez. A Szinapszisban található adatszakember egyszerűen kiválaszthat egy modellt a Azure Machine Learning modell beállításjegyzékből a szinapszis SQL-készletekbe való üzembe helyezéshez, és előrejelzéseket indíthat az adatok dúsítására.
+Megtudhatja, hogyan gazdagíthatja adatait a dedikált SQL-készletekben a prediktív gépi tanulási modellekkel.  Az adatszakértők által létrehozott modellek mostantól könnyen elérhetők az adatszakemberek számára a prediktív elemzésekhez. A Szinapszisban található adatszakember egyszerűen kiválaszthat egy modellt a Azure Machine Learning modell beállításjegyzékből a szinapszis SQL-készletekbe való üzembe helyezéshez, és előrejelzéseket indíthat az adatok dúsítására.
 
 Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
 > [!div class="checklist"]
 > - A prediktív gépi tanulási modell betanítása és a modell regisztrálása Azure Machine Learning modell beállításjegyzékében
-> - Az SQL pontozás varázsló használata a szinapszis SQL-készletben lévő előrejelzések elindításához
+> - Az SQL pontozás varázsló használata a dedikált SQL-készletben lévő előrejelzések elindításához
 
 Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A [szinapszis Analytics-munkaterület](../get-started-create-workspace.md) egy ADLS Gen2 Storage-fiókkal, amely alapértelmezett tárolóként van konfigurálva. A ADLS Gen2-fájlrendszer **Storage blob-Adatközreműködőinek** kell lennie.
-- Szinapszis SQL-készlet a szinapszis Analytics-munkaterületen. Részletekért lásd: [SZINAPSZIS SQL-készlet létrehozása](../quickstart-create-sql-pool-studio.md).
+- Dedikált SQL-készlet a szinapszis Analytics-munkaterületen. Részletekért lásd [a DEDIKÁLT SQL-készlet létrehozása](../quickstart-create-sql-pool-studio.md)című témakört.
 - Azure Machine Learning társított szolgáltatást a szinapszis Analytics-munkaterületen. Részletekért lásd: [Azure Machine learning társított szolgáltatás létrehozása a szinapszisban](quickstart-integrate-azure-machine-learning.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
@@ -52,17 +52,17 @@ A jegyzetfüzet összes cellájának futtatása előtt ellenőrizze, hogy fut-e 
 
 1. Indítsa el a Azure Machine Learning munkaterületet a [Azure Machine learning Studióban](https://ml.azure.com).
 
-1. Nyissa meg a **jegyzetfüzeteket** , és kattintson a **fájlok feltöltése**elemre, válassza a "New York taxi tips. ipynb" lehetőséget, hogy letöltötte és feltöltse a fájlt.
+1. Nyissa meg a **jegyzetfüzeteket** , és kattintson a **fájlok feltöltése** elemre, válassza a "New York taxi tips. ipynb" lehetőséget, hogy letöltötte és feltöltse a fájlt.
    ![Fájl feltöltése](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00a.png)
 
-1. A jegyzetfüzet feltöltése és megnyitása után kattintson az **összes cella futtatása**lehetőségre.
+1. A jegyzetfüzet feltöltése és megnyitása után kattintson az **összes cella futtatása** lehetőségre.
 
    Előfordulhat, hogy az egyik cella meghibásodik, és az Azure-ban történő hitelesítést kéri. Tartsa szem előtt ezt a cella kimenetében, és végezze el a hitelesítést a böngészőben a hivatkozás követésével és a kód megadásával. Ezután futtassa újra a jegyzetfüzetet.
 
 1. A jegyzetfüzet ONNX-modellt fog betanítani, és regisztrálja azt a MLFlow. Nyissa meg a **modelleket** , és ellenőrizze, hogy az új modell regisztrálása megfelelő-e.
    ![Modell a beállításjegyzékben](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00c.png)
 
-1. A jegyzetfüzet futtatásakor a rendszer egy CSV-fájlba is exportálja a tesztelési adatait. Töltse le a CSV-fájlt a helyi rendszeren. Később importálja a CSV-fájlt az SQL-készletbe, majd a modell teszteléséhez használja az adattípust.
+1. A jegyzetfüzet futtatásakor a rendszer egy CSV-fájlba is exportálja a tesztelési adatait. Töltse le a CSV-fájlt a helyi rendszeren. Később importálja a CSV-fájlt a dedikált SQL-készletbe, majd az adat használatával teszteli a modellt.
 
    A CSV-fájl a jegyzetfüzet-fájllal megegyező mappában jön létre. Ha nem látja azonnal, kattintson a "frissítés" gombra a fájlkezelőben.
 
@@ -72,11 +72,11 @@ A jegyzetfüzet összes cellájának futtatása előtt ellenőrizze, hogy fut-e 
 
 1. Nyissa meg a szinapszis munkaterületet a szinapszis Studióval.
 
-1. Navigáljon az **adatkapcsolattal**rendelkező  ->  **Linked**  ->  **Storage-fiókokhoz**. Töltse fel `test_data.csv` az alapértelmezett Storage-fiókba.
+1. Navigáljon az **adatkapcsolattal** rendelkező  ->  **Linked**  ->  **Storage-fiókokhoz**. Töltse fel `test_data.csv` az alapértelmezett Storage-fiókba.
 
    ![Adatok feltöltése](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00a.png)
 
-1. Ugrás az SQL-parancsfájlok **fejlesztéséhez**  ->  **SQL scripts**. Hozzon létre egy új SQL-szkriptet az SQL-készletbe való betöltéshez `test_data.csv` .
+1. Ugrás az SQL-parancsfájlok **fejlesztéséhez**  ->  **SQL scripts**. Hozzon létre egy új SQL-szkriptet a dedikált SQL-készletbe való betöltéshez `test_data.csv` .
 
    > [!NOTE]
    > A szkript futtatása előtt frissítse a fájl URL-címét.
@@ -117,9 +117,9 @@ A jegyzetfüzet összes cellájának futtatása előtt ellenőrizze, hogy fut-e 
    GO
    ```
 
-   ![Az SQL-készletbe való betöltés](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00b.png)
+   ![Adat betöltése dedikált SQL-készletbe](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00b.png)
 
-1. Ugrás az **Data**  ->  **munkaterületre**. Az SQL-pontozási varázsló megnyitásához kattintson a jobb gombbal az SQL-készlet táblára. Válassza **Machine Learning**  ->  **a Machine learning a meglévő modellel való**bővítés lehetőséget.
+1. Ugrás az **Data**  ->  **munkaterületre**. Az SQL-pontozási varázsló megnyitásához kattintson a jobb gombbal a dedikált SQL-készlet táblára. Válassza **Machine Learning**  ->  **a Machine learning a meglévő modellel való** bővítés lehetőséget.
 
    > [!NOTE]
    > A Machine learning lehetőség nem jelenik meg, ha nem rendelkezik a Azure Machine Learninghoz létrehozott társított szolgáltatással (lásd az oktatóanyag elején található **Előfeltételek** című részt).
@@ -128,7 +128,7 @@ A jegyzetfüzet összes cellájának futtatása előtt ellenőrizze, hogy fut-e 
 
 1. Válassza ki a csatolt Azure Machine Learning munkaterületet a legördülő listából. Ez betölti a gépi tanulási modellek listáját a kiválasztott Azure Machine Learning munkaterület modell-beállításjegyzékében. Jelenleg csak a ONNX modellek támogatottak, így ez csak ONNX-modelleket fog megjeleníteni.
 
-1. Válassza ki az imént betanított modellt, majd kattintson a **Folytatás**gombra.
+1. Válassza ki az imént betanított modellt, majd kattintson a **Folytatás** gombra.
 
    ![Azure Machine Learning modell kiválasztása](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00d.png)
 
@@ -138,7 +138,7 @@ A jegyzetfüzet összes cellájának futtatása előtt ellenőrizze, hogy fut-e 
 
    ![Táblázat – modell leképezése](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00e.png)
 
-1. A generált T-SQL-kód egy tárolt eljárásba van csomagolva. Ezért meg kell adnia egy nevet a tárolt eljárásnak. A modell bináris fájljai, beleértve a metaadatokat (verzió, leírás stb.) fizikailag át lesznek másolva Azure Machine Learningról egy SQL-készlet táblájába. Ezért meg kell adnia, hogy melyik táblát mentse a modellbe. A "meglévő tábla használata" vagy "új tábla létrehozása" lehetőség közül választhat. Ha elkészült, kattintson a **modell telepítése + szerkesztő megnyitása** lehetőségre a modell üzembe helyezéséhez és egy T-SQL-előrejelzési parancsfájl létrehozásához.
+1. A generált T-SQL-kód egy tárolt eljárásba van csomagolva. Ezért meg kell adnia egy nevet a tárolt eljárásnak. A modell bináris fájljai, beleértve a metaadatokat (verzió, leírás stb.) fizikailag át lesznek másolva Azure Machine Learningból egy dedikált SQL Pool-táblába. Ezért meg kell adnia, hogy melyik táblát mentse a modellbe. A "meglévő tábla használata" vagy "új tábla létrehozása" lehetőség közül választhat. Ha elkészült, kattintson a **modell telepítése + szerkesztő megnyitása** lehetőségre a modell üzembe helyezéséhez és egy T-SQL-előrejelzési parancsfájl létrehozásához.
 
    ![Eljárás létrehozása](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00f.png)
 

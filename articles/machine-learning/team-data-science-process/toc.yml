@@ -80,23 +80,23 @@
       href: environment-setup.md
       items:
         - name: Azure Storage-fiókok
-          href: /azure/storage/common/storage-create-storage-account?context=azure/machine-learning/team-data-science-process/context/ml-context
+          href: ../../storage/common/storage-account-create.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
         - name: Platformok és eszközök
           href: platforms-and-tools.md
         - name: R és Python a HDInsight-fürtökön
           items:
             - name: A HDInsight-alapú Spark bemutatása
-              href: /azure/hdinsight/spark/apache-spark-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../../hdinsight/spark/apache-spark-overview.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
             - name: Apache Spark-fürt létrehozása az Azure HDInsightban
-              href: /azure/hdinsight/spark/apache-spark-jupyter-spark-sql?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
             - name: PySpark-kernelek Jupyter notebookokhoz
-              href: /azure/hdinsight/spark/apache-spark-jupyter-notebook-kernels?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
             - name: R Server a HDInsightban
-              href: /azure/hdinsight/r-server/r-server-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../../hdinsight/r-server/r-server-overview.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
             - name: R Server a HDInsightban – első lépések
-              href: /azure/hdinsight/r-server/r-server-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../../hdinsight/r-server/r-server-overview.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
         - name: Machine Learning Studio- (klasszikus) munkaterület
-          href: /azure/machine-learning/studio/create-workspace?context=azure/machine-learning/team-data-science-process/context/ml-context
+          href: ../classic/create-workspace.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
     - name: Üzleti igények elemzése
       items:
         - name: A szituáció azonosítása
@@ -115,9 +115,9 @@
                 - name: A Storage Explorer használata
                   href: move-data-to-azure-blob-using-azure-storage-explorer.md
                 - name: Az AzCopy használata
-                  href: 'https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10'
+                  href: ../../storage/common/storage-use-azcopy-v10.md
                 - name: A Python használata
-                  href: /azure/storage/blobs/storage-python-how-to-use-blob-storage?context=azure/machine-learning/team-data-science-process/context/ml-context
+                  href: ../../storage/blobs/storage-quickstart-blobs-python.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
                 - name: Az SSIS használata
                   href: move-data-to-azure-blob-using-ssis.md
             - name: Áthelyezés virtuális gépen futó SQL-be
@@ -185,15 +185,15 @@
         - name: Modellek létrehozása és betanítása
           items:
             - name: Algoritmusok kiválasztása
-              href: /azure/machine-learning/how-to-select-algorithms?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../how-to-select-algorithms.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
             - name: Algoritmus-adatlap
-              href: /azure/machine-learning/algorithm-cheat-sheet?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../algorithm-cheat-sheet.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
     - name: Modellek üzembe helyezése éles környezetben
       href: deploy-models-in-production.md
 - name: Kapcsolódó témakörök
   items:
     - name: Cognitive Services
-      href: 'https://docs.microsoft.com/azure/cognitive-services/'
+      href: ../../cognitive-services/index.yml
     - name: Rendellenességek észlelése
       href: apps-anomaly-detection-api.md
     - name: Prediktív karbantartás
@@ -215,7 +215,7 @@
     - name: Kapcsolódó Microsoft-források
       items:
         - name: Microsoft Q&A kérdések oldala
-          href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html'
+          href: /answers/topics/azure-machine-learning-studio-classic.html
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'
         - name: Videók

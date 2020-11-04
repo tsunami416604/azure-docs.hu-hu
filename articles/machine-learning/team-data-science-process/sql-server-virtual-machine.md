@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e387d5f7ee0b1926457717b30b03bbfeb8d70a1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8be878cf40967356d68e9be0765e898c81b5ba0a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86027426"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314626"
 ---
 # <a name="process-data-in-sql-server-virtual-machine-on-azure"></a><a name="heading"></a>Adatfeldolgozás az Azure-beli SQL Server virtuális gépen
 Ez a dokumentum ismerteti, hogyan lehet az Azure-ban SQL Server VM tárolt adatkezelési funkciókat és szolgáltatásokat előállítani. Ezt a célt az SQL használatával vagy a Pythonhoz hasonló programozási nyelv használatával lehet elvégezni az huzavona.
@@ -98,7 +98,7 @@ Ebben a szakaszban bemutatjuk, hogyan hozhatja ki egy tábla egyetlen oszlopát 
 * Az ötödik tizedes tört érték 1,1 m-re van beállítva: megkülönbözteti a fákat egymástól. Az ehhez a szinthez tartozó pontosságot a kereskedelmi GPS-egységekkel csak különbözeti korrekcióval lehet megvalósítani.
 * A hatodik tizedes tört érték akár 0,11 m is lehet: a szerkezetek részletes kialakításához, a Tájképek tervezéséhez, az utak létrehozásához használhatja ezt a lehetőséget. A gleccserek és a folyók forgalmának nyomon követéséhez elég jó legyen. Ezt úgy érheti el, ha a GPS-vel kapcsolatos aprólékos mértékeket, például differentially korrigált GPS-t használ.
 
-A tartózkodási hely adatai a következőképpen featurized, elkülönítve a régió, a hely és a város információit. Meghívhat egy REST-végpontot is, például a Bing Maps API-t, [ahol megkeresheti](https://msdn.microsoft.com/library/ff701710.aspx) a régió/körzet információit.
+A tartózkodási hely adatai a következőképpen featurized, elkülönítve a régió, a hely és a város információit. Meghívhat egy REST-végpontot is, például a Bing Maps API-t, [ahol megkeresheti](/bingmaps/rest-services/locations/find-a-location-by-point) a régió/körzet információit.
 
 ```sql
 select 
@@ -116,7 +116,7 @@ from <tablename>
 Ezek a hely-alapú funkciók további, a korábban leírtaknak megfelelően további Count-funkciók létrehozásához használhatók. 
 
 > [!TIP]
-> Programozott módon beszúrhatja a rekordokat a választott nyelv használatával. Előfordulhat, hogy az írás hatékonyságának javításához be kell szúrnia az adattömbökben lévő adattömböket (például a pyodbc használatával, lásd: [HelloWorld-minta a Pythonhoz való SQLServer eléréséhez](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)). Egy másik alternatíva az, hogy a [BCP segédprogram](https://msdn.microsoft.com/library/ms162802.aspx)használatával szúrja be az adatbázist az adatbázisba.
+> Programozott módon beszúrhatja a rekordokat a választott nyelv használatával. Előfordulhat, hogy az írás hatékonyságának javításához be kell szúrnia az adattömbökben lévő adattömböket (például a pyodbc használatával, lásd: [HelloWorld-minta a Pythonhoz való SQLServer eléréséhez](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)). Egy másik alternatíva az, hogy a [BCP segédprogram](/sql/tools/bcp-utility)használatával szúrja be az adatbázist az adatbázisba.
 > 
 > 
 
@@ -152,5 +152,4 @@ Az Azure adatelemzési folyamat egy nyilvános adatkészletet használó teljes 
 
 
 <!-- Module References -->
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-
+[import-data]: /azure/machine-learning/studio-module-reference/import-data

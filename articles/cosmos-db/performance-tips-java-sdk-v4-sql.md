@@ -7,13 +7,13 @@ ms.devlang: java
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: anfeldma
-ms.custom: devx-track-java
-ms.openlocfilehash: 49827b7387edc1e914bbd58c63df2db74f4ed17b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: devx-track-java, contperfq2
+ms.openlocfilehash: c65cd4012d29146061183ea13749a0f42c03b1eb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091276"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314340"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Teljesítménnyel kapcsolatos tippek az Azure Cosmos DB Java SDK v4-hez
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -107,7 +107,7 @@ További részletekért tekintse meg a Windows és a [Linux](../virtual-network/
 
 * **Az alkalmazáshoz szükséges legalacsonyabb konzisztencia-szint használata**
 
-    *CosmosClient* létrehozásakor a rendszer az alapértelmezett konzisztenciát használja, ha nincs explicit módon beállítva a *munkamenet* . Ha az alkalmazás logikája nem igényli a *munkamenet* konzisztenciáját, állítsa a *konzisztenciát* a *végső* értékre. Megjegyzés: javasoljuk, hogy legalább a *munkamenetek* konzisztenciáját használja a Azure Cosmos db változási csatornát használó alkalmazásokban.
+    *CosmosClient* létrehozásakor a rendszer az alapértelmezett konzisztenciát használja, ha nincs explicit módon beállítva a *munkamenet*. Ha az alkalmazás logikája nem igényli a *munkamenet* konzisztenciáját, állítsa a *konzisztenciát* a *végső* értékre. Megjegyzés: javasoljuk, hogy legalább a *munkamenetek* konzisztenciáját használja a Azure Cosmos db változási csatornát használó alkalmazásokban.
 
 * **Az aszinkron API használata a kiépített átviteli sebesség max.**
 
@@ -151,7 +151,7 @@ További részletekért tekintse meg a Windows és a [Linux](../virtual-network/
 
     * ***A Direct Mode _ áttekintése**
 
-        :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="A Azure Cosmos DB-kapcsolatok házirendjének ábrája" border="false":::
+        :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="A közvetlen módú architektúra ábrája" border="false":::
 
         A közvetlen módban alkalmazott ügyféloldali architektúra előre jelezhető hálózati kihasználtságot és többszörös hozzáférést biztosít Azure Cosmos DB replikához. A fenti ábrán látható, hogy a Direct Mode hogyan irányítja az ügyfelek kérelmeit a Cosmos DB háttérbeli replikára. A közvetlen üzemmód architektúrája legfeljebb 10 _ *csatornát* foglal le az ügyfél oldalán az adatbázis-replikák esetében. A csatornák egy TCP-kapcsolatok, amely előtt egy kérelem-puffer található, amely 30 kérelem mélyét képezi. A replikához tartozó csatornák dinamikusan vannak lefoglalva a replika **szolgáltatási végpontja** által igényelt módon. Amikor a felhasználó közvetlen módban bocsát ki egy kérést, a **TransportClient** a megfelelő szolgáltatási végpontra irányítja a kérést a partíciós kulcs alapján. A kérelmek **várólistájának** pufferei a szolgáltatási végpont előtt érkeznek.
 

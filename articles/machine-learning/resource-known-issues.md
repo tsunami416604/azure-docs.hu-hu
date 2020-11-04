@@ -11,14 +11,14 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperfq4
 ms.date: 10/02/2020
-ms.openlocfilehash: d214a746a4eb5035e007136da80f4c69ae1dd1c8
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: b49e7ab7f3412177ee9eafad8d1a68525e054421
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204461"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314755"
 ---
-# <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Ismert problémák és hibaelhárítás a Azure Machine Learningban
+# <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Ismert problémák és hibaelhárítás az Azure Machine Learningben
 
 Ez a cikk segítséget nyújt a Azure Machine Learning használatakor felmerülő ismert problémák elhárításában. 
 
@@ -34,7 +34,7 @@ Esetenként hasznos lehet, ha a Segítség kérése során diagnosztikai adatoka
 1. A bal oldali oldalon válassza a **kísérlet** lehetőséget. 
 1. Válasszon ki egy kísérletet.
 1. Válasszon egy futtatást.
-1. A felső részen válassza a **kimenetek + naplók**lehetőséget.
+1. A felső részen válassza a **kimenetek + naplók** lehetőséget.
 
 > [!NOTE]
 > Azure Machine Learning a különböző forrásokból származó információkat naplózza a betanítás során, például a AutoML vagy a betanítási feladatot futtató Docker-tárolóban. A naplók közül sok nincs dokumentálva. Ha problémákat tapasztal, és felveszi a kapcsolatot a Microsoft ügyfélszolgálatával, előfordulhat, hogy a hibaelhárítás során ezeket a naplókat is használni tudja.
@@ -143,13 +143,13 @@ Esetenként hasznos lehet, ha a Segítség kérése során diagnosztikai adatoka
 
     Azt is megteheti, hogy init-parancsfájlokat használ, ha a Python-kódtárakkal együtt tartja a telepítési problémákat. Ez a megközelítés nem támogatott hivatalosan. További információ: [fürtökre kiterjedő init-parancsfájlok](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
 
-* **Databricks-importálási hiba: a név nem importálható `Timedelta` innen `pandas._libs.tslibs` **: Ha az automatikus gépi tanulást használja, futtassa a következő két sort a jegyzetfüzetben:
+* **Databricks-importálási hiba: a név nem importálható `Timedelta` innen `pandas._libs.tslibs`** : Ha az automatikus gépi tanulást használja, futtassa a következő két sort a jegyzetfüzetben:
     ```
     %sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
     %sh /databricks/python/bin/pip install pandas==0.23.4
     ```
 
-* **Databricks-importálási hiba: nincs "pandák. Core. Indexes" nevű modul**: Ha ezt a hibaüzenetet látja, amikor automatikus gépi tanulást használ:
+* **Databricks-importálási hiba: nincs "pandák. Core. Indexes" nevű modul** : Ha ezt a hibaüzenetet látja, amikor automatikus gépi tanulást használ:
 
     1. Futtassa ezt a parancsot két csomag telepítéséhez a Azure Databricks-fürtön:
     
@@ -162,7 +162,7 @@ Esetenként hasznos lehet, ha a Segítség kérése során diagnosztikai adatoka
     
     Ha ezek a lépések nem oldják meg a problémát, próbálja meg újraindítani a fürtöt.
 
-* **Databricks FailToSendFeather**: Ha `FailToSendFeather` Azure Databricks fürtön lévő adatolvasáskor hibaüzenet jelenik meg, tekintse át a következő megoldásokat:
+* **Databricks FailToSendFeather** : Ha `FailToSendFeather` Azure Databricks fürtön lévő adatolvasáskor hibaüzenet jelenik meg, tekintse át a következő megoldásokat:
     
     * `azureml-sdk[automl]`A csomag frissítése a legújabb verzióra.
     * Adja hozzá a `azureml-dataprep` 1.1.8 vagy újabb verziót.
@@ -173,11 +173,11 @@ Esetenként hasznos lehet, ha a Segítség kérése során diagnosztikai adatoka
 > [!WARNING]
 > Ha áthelyezi a Azure Machine Learning munkaterületet egy másik előfizetésbe, vagy áthelyezi a tulajdonosi előfizetést egy új bérlőre, nem támogatott. Ez hibákhoz vezethet.
 
-* **Azure Portal**: 
+* **Azure Portal** : 
   * Ha az SDK-ból vagy a Azure Portalból közvetlenül a munkaterületre lép, nem tekintheti meg a szabványos **Áttekintés** lapot, amely előfizetési adatokat tartalmaz a bővítményben. Ebben a forgatókönyvben nem válthat másik munkaterületre is. Ha egy másik munkaterületet szeretne megtekinteni, lépjen közvetlenül a [Azure Machine learning studióra](https://ml.azure.com) , és keresse meg a munkaterület nevét.
   * Minden eszköz (adatkészletek, kísérletek, számítások stb.) csak [Azure Machine learning Studióban](https://ml.azure.com)érhető el. *Nem* érhetők el a Azure Portal.
 
-* A **Azure Machine learning Studio webportálon támogatott böngészők**: javasoljuk, hogy az operációs rendszerével kompatibilis legújabb böngészőt használja. A következő böngészők támogatottak:
+* A **Azure Machine learning Studio webportálon támogatott böngészők** : javasoljuk, hogy az operációs rendszerével kompatibilis legújabb böngészőt használja. A következő böngészők támogatottak:
   * Microsoft Edge (az új Microsoft Edge, legújabb verzió. Nem a Microsoft Edge örökölt)
   * Safari (csak Mac, legújabb verzió)
   * Chrome (legújabb verzió)
@@ -185,9 +185,9 @@ Esetenként hasznos lehet, ha a Segítség kérése során diagnosztikai adatoka
 
 ## <a name="set-up-your-environment"></a>A környezet kialakítása
 
-* **Hiba történt a AmlCompute létrehozásakor**: ritkán fordul elő, hogy néhány felhasználó létrehozta Azure Machine learning munkaterületét a Azure Portal, mielőtt a ga-kiadás nem tudja létrehozni a AmlCompute az adott munkaterületen. Felvehet egy támogatási kérést a szolgáltatásra, vagy létrehozhat egy új munkaterületet a portálon vagy az SDK-ban, hogy azonnal feloldja a zárolást.
+* **Hiba történt a AmlCompute létrehozásakor** : ritkán fordul elő, hogy néhány felhasználó létrehozta Azure Machine learning munkaterületét a Azure Portal, mielőtt a ga-kiadás nem tudja létrehozni a AmlCompute az adott munkaterületen. Felvehet egy támogatási kérést a szolgáltatásra, vagy létrehozhat egy új munkaterületet a portálon vagy az SDK-ban, hogy azonnal feloldja a zárolást.
 
-* **Azure Container Registry jelenleg nem támogatja a Unicode-karaktereket az erőforráscsoport-nevekben**: lehetséges, hogy az ACR-kérések meghiúsulnak, mert az erőforráscsoport neve Unicode-karaktereket tartalmaz. A probléma enyhítése érdekében javasoljuk, hogy hozzon létre egy ACR-et egy eltérő névvel ellátott erőforráscsoporthoz.
+* **Azure Container Registry jelenleg nem támogatja a Unicode-karaktereket az erőforráscsoport-nevekben** : lehetséges, hogy az ACR-kérések meghiúsulnak, mert az erőforráscsoport neve Unicode-karaktereket tartalmaz. A probléma enyhítése érdekében javasoljuk, hogy hozzon létre egy ACR-et egy eltérő névvel ellátott erőforráscsoporthoz.
 
 ## <a name="work-with-data"></a>Adatok használata
 
@@ -199,7 +199,7 @@ Ha más számítási feladatokhoz (például adatátvitelhez) használ fájlmego
 
 ### <a name="passing-data-as-input"></a>Adatok továbbítása bemenetként
 
-*  **TypeError: FileNotFound: nincs ilyen fájl vagy könyvtár**: Ez a hiba akkor fordul elő, ha a megadott elérési út nem az a fájl, ahol a fájl található. Meg kell győződnie arról, hogy a fájlra vonatkozó hivatkozás konzisztens, ha az adatkészletet a számítási célra csatlakoztatta. A determinisztikus állapotának biztosítása érdekében javasoljuk, hogy az absztrakt elérési utat használja az adatkészlet számítási célra való csatlakoztatásakor. A következő kódban például az adathalmazt csatlakoztatjuk a számítási cél fájlrendszerének gyökeréhez `/tmp` . 
+*  **TypeError: FileNotFound: nincs ilyen fájl vagy könyvtár** : Ez a hiba akkor fordul elő, ha a megadott elérési út nem az a fájl, ahol a fájl található. Meg kell győződnie arról, hogy a fájlra vonatkozó hivatkozás konzisztens, ha az adatkészletet a számítási célra csatlakoztatta. A determinisztikus állapotának biztosítása érdekében javasoljuk, hogy az absztrakt elérési utat használja az adatkészlet számítási célra való csatlakoztatásakor. A következő kódban például az adathalmazt csatlakoztatjuk a számítási cél fájlrendszerének gyökeréhez `/tmp` . 
     
     ```python
     # Note the leading / in '/tmp/dataset'
@@ -211,7 +211,7 @@ Ha más számítási feladatokhoz (például adatátvitelhez) használ fájlmego
     Ha nem tartalmazza a Lead Forward perjelet, a "/" előtagot kell létrehoznia a munkakönyvtárhoz, például a `/mnt/batch/.../tmp/dataset` számítási célra, hogy jelezze, hová szeretné csatlakoztatni az adatkészletet.
 
 ### <a name="mount-dataset"></a>Csatlakoztatási adatkészlet
-* Az **adatkészlet inicializálása nem sikerült: várakozás a csatlakozási pont készenléti**állapotának megszakadása esetén: a `azureml-sdk >=1.12.0` probléma elhárításához próbálkozzon újra a logikával. Ha a korábbi azureml-SDK-verziókat használja, frissítsen a legújabb verzióra. Ha már be van kapcsolva `azureml-sdk>=1.12.0` , hozza létre újra a környezetet, hogy a javítással rendelkezzen a legújabb javítással.
+* Az **adatkészlet inicializálása nem sikerült: várakozás a csatlakozási pont készenléti** állapotának megszakadása esetén: a `azureml-sdk >=1.12.0` probléma elhárításához próbálkozzon újra a logikával. Ha a korábbi azureml-SDK-verziókat használja, frissítsen a legújabb verzióra. Ha már be van kapcsolva `azureml-sdk>=1.12.0` , hozza létre újra a környezetet, hogy a javítással rendelkezzen a legújabb javítással.
 
 ### <a name="data-labeling-projects"></a>Adatcímkéző projektek
 
@@ -244,7 +244,7 @@ Az adatdrift figyelőkkel kapcsolatos korlátozások és ismert problémák:
     1. Az **adatkészlet-figyelők** lapon válassza a kísérlet hivatkozást a Futtatás állapotának vizsgálatához.  Ez a hivatkozás a tábla jobb szélén található.
     1. Ha a Futtatás sikeresen befejeződött, ellenőrizze az illesztőprogram-naplókat, hogy hány mérőszám lett létrehozva, vagy hogy van-e figyelmeztető üzenet.  A kísérletre való kattintás után keresse meg az illesztőprogram-naplókat a **kimenet + naplók** lapon.
 
-* Ha az SDK `backfill()` -függvény nem hozza ki a várt kimenetet, előfordulhat, hogy egy hitelesítési probléma okozza.  Amikor létrehozza a számítást, hogy átadja ezt a függvényt, ne használja `Run.get_context().experiment.workspace.compute_targets` .  Ehelyett használja a [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py&preserve-view=true) , például az alábbiakat a függvénybe beadott számítási számítás létrehozásához `backfill()` : 
+* Ha az SDK `backfill()` -függvény nem hozza ki a várt kimenetet, előfordulhat, hogy egy hitelesítési probléma okozza.  Amikor létrehozza a számítást, hogy átadja ezt a függvényt, ne használja `Run.get_context().experiment.workspace.compute_targets` .  Ehelyett használja a [ServicePrincipalAuthentication](/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?preserve-view=true&view=azure-ml-py) , például az alábbiakat a függvénybe beadott számítási számítás létrehozásához `backfill()` : 
 
   ```python
    auth = ServicePrincipalAuthentication(
@@ -273,7 +273,7 @@ time.sleep(600)
 
 A valós idejű végpontok naplófájljai a vásárlói adatmennyiség. A valós idejű végpontok hibaelhárításához a következő kódot használhatja a naplók engedélyezéséhez. 
 
-További részletek a webszolgáltatási végpontok figyeléséről [ebben a cikkben](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights#query-logs-for-deployed-models).
+További részletek a webszolgáltatási végpontok figyeléséről [ebben a cikkben](./how-to-enable-app-insights.md#query-logs-for-deployed-models).
 
 ```python
 from azureml.core import Workspace
@@ -292,27 +292,27 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 ## <a name="train-models"></a>Modellek betanítása
 
-* **ModuleErrors (nincs nevű modul)**: Ha a ModuleErrors-ben futtatott kísérleteket az Azure ml-ben, az azt jelenti, hogy a betanítási parancsfájl egy telepítendő csomagot vár, de nincs hozzáadva. A csomag nevének megadása után az Azure ML telepíti a csomagot a betanítási futtatáshoz használt környezetben. 
+* **ModuleErrors (nincs nevű modul)** : Ha a ModuleErrors-ben futtatott kísérleteket az Azure ml-ben, az azt jelenti, hogy a betanítási parancsfájl egy telepítendő csomagot vár, de nincs hozzáadva. A csomag nevének megadása után az Azure ML telepíti a csomagot a betanítási futtatáshoz használt környezetben. 
 
     Ha a becslések-t használja a kísérletek elküldéséhez, megadhatja a csomag nevét `pip_packages` `conda_packages` a kalkulátoron keresztül vagy paraméterrel, attól függően, hogy melyik forrásból szeretné telepíteni a csomagot. Egy YML-fájlt is megadhat az összes függőségének használatával, `conda_dependencies_file` vagy listázhatja az összes pip-követelményét egy txt-fájlban a `pip_requirements_file` paraméter használatával. Ha rendelkezik saját Azure ML-környezetbeli objektummal, amellyel felül szeretné bírálni a kalkulátor által használt alapértelmezett rendszerképet, megadhatja ezt a környezetet a `environment` kalkulátor konstruktorának paraméterén keresztül.
 
     Az Azure ML a TensorFlow, a PyTorch, a Chainer és a SKLearn keretrendszer-specifikus becslések is biztosítja. Ezeknek a becslések a használata biztosítja, hogy az alapvető keretrendszer függőségei a betanításhoz használt környezetben legyenek telepítve az Ön nevében. Lehetősége van további függőségek megadására a fentiekben leírtak szerint. 
  
     Az Azure ML által karbantartott Docker-rendszerképek és azok tartalma [AzureML-tárolókban](https://github.com/Azure/AzureML-Containers)láthatók.
-    A keretrendszer-specifikus függőségek a megfelelő keretrendszer dokumentációs [láncában](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks), a [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks), a [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks)és a [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks)listájában találhatók meg.
+    A keretrendszer-specifikus függőségek a megfelelő keretrendszer dokumentációs [láncában](/python/api/azureml-train-core/azureml.train.dnn.chainer?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks), a [PyTorch](/python/api/azureml-train-core/azureml.train.dnn.pytorch?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks), a [TensorFlow](/python/api/azureml-train-core/azureml.train.dnn.tensorflow?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)és a [SKLearn](/python/api/azureml-train-core/azureml.train.sklearn.sklearn?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)listájában találhatók meg.
 
     > [!Note]
     > Ha úgy gondolja, hogy egy adott csomag elég gyakori ahhoz, hogy hozzá lehessen adni az Azure ML karbantartott lemezképekhez és környezetekhez, hozzon létre GitHub-problémát a [AzureML-tárolókban](https://github.com/Azure/AzureML-Containers). 
  
-* **NameError (név nincs meghatározva), AttributeError (objektum nem rendelkezik attribútummal)**: Ez a kivétel a betanítási szkriptből származik. A naplófájlokat a Azure Portalból tekintheti meg, ha további információt szeretne kapni a nem definiált névvel vagy az attribútum hibával kapcsolatban. Az SDK segítségével `run.get_details()` megtekintheti a hibaüzenetet. Ekkor a rendszer a futtatáshoz létrehozott összes naplófájlt is felsorolja. Győződjön meg arról, hogy megtekinti a betanítási szkriptet, és javítsa ki a hibát, mielőtt elküldené a futtatást. 
+* **NameError (név nincs meghatározva), AttributeError (objektum nem rendelkezik attribútummal)** : Ez a kivétel a betanítási szkriptből származik. A naplófájlokat a Azure Portalból tekintheti meg, ha további információt szeretne kapni a nem definiált névvel vagy az attribútum hibával kapcsolatban. Az SDK segítségével `run.get_details()` megtekintheti a hibaüzenetet. Ekkor a rendszer a futtatáshoz létrehozott összes naplófájlt is felsorolja. Győződjön meg arról, hogy megtekinti a betanítási szkriptet, és javítsa ki a hibát, mielőtt elküldené a futtatást. 
 
-* A **Horovod le lett**állítva: a legtöbb esetben, ha "AbortedError: Horovod" állapotba került, akkor ez a kivétel azt jelenti, hogy a Horovod leállítását okozó egyik folyamat egy mögöttes kivételt észlelt. Az MPI-feladat mindegyik rangsora saját dedikált naplófájllal fog rendelkezni az Azure ML-ben. Ezen naplók neve `70_driver_logs`. Elosztott betanítás esetén a naplók neve a `_rank` utótaggal egészül ki, hogy könnyebben meg tudja őket különböztetni. A Horovod leállítását okozó pontos hiba megtalálásához folytassa az összes naplófájlt, és keresse meg a `Traceback` driver_log fájlok végén található fájlt. Ezen fájlok egyike megadja a tényleges mögöttes kivételt. 
+* A **Horovod le lett** állítva: a legtöbb esetben, ha "AbortedError: Horovod" állapotba került, akkor ez a kivétel azt jelenti, hogy a Horovod leállítását okozó egyik folyamat egy mögöttes kivételt észlelt. Az MPI-feladat mindegyik rangsora saját dedikált naplófájllal fog rendelkezni az Azure ML-ben. Ezen naplók neve `70_driver_logs`. Elosztott betanítás esetén a naplók neve a `_rank` utótaggal egészül ki, hogy könnyebben meg tudja őket különböztetni. A Horovod leállítását okozó pontos hiba megtalálásához folytassa az összes naplófájlt, és keresse meg a `Traceback` driver_log fájlok végén található fájlt. Ezen fájlok egyike megadja a tényleges mögöttes kivételt. 
 
-* A **Run vagy a Experiment művelet törlése**: a kísérletek a [kísérlet. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truearchive--) metódussal vagy a Azure Machine learning Studio-ügyfél kísérlet lapjának az "Archive Experiment" gomb használatával is archiválható. Ez a művelet elrejti a kísérletet a lekérdezések és nézetek listájában, de nem törli azt.
+* A **Run vagy a Experiment művelet törlése** : a kísérletek a [kísérlet. Archive](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truearchive--) metódussal vagy a Azure Machine learning Studio-ügyfél kísérlet lapjának az "Archive Experiment" gomb használatával is archiválható. Ez a művelet elrejti a kísérletet a lekérdezések és nézetek listájában, de nem törli azt.
 
     Az egyes kísérletek vagy futtatások végleges törlése jelenleg nem támogatott. További információ a munkaterület-eszközök törléséről: [Machine learning szolgáltatás-munkaterület adatainak exportálása vagy törlése](how-to-export-delete-data.md).
 
-* A **metrikai dokumentum túl nagy**: a Azure Machine learning belső korláttal rendelkezik azon metrikai objektumok méretén, amelyek bejelentkezhetnek a betanítási futtatás során. Ha „a metrikadokumentum túl nagy” hibát észlel egy értéklistát tartalmazó metrika naplózásakor, próbálja meg felosztani a listát kisebb tömbökre, például:
+* A **metrikai dokumentum túl nagy** : a Azure Machine learning belső korláttal rendelkezik azon metrikai objektumok méretén, amelyek bejelentkezhetnek a betanítási futtatás során. Ha „a metrikadokumentum túl nagy” hibát észlel egy értéklistát tartalmazó metrika naplózásakor, próbálja meg felosztani a listát kisebb tömbökre, például:
 
     ```python
     run.log_list("my metric name", my_metric[:N])
@@ -323,7 +323,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 ## <a name="automated-machine-learning"></a>Automatizált gépi tanulás
 
-* A **AutoML-függőségek újabb verzióra történő frissítése a kompatibilitási kompatibilitást eredményezi**: az SDK verziójának 1.13.0 a modellek nem lesznek betöltve a régebbi SDK-kba, mert nem kompatibilisek az előző csomagokban rögzített korábbi verziók és a most rögzített újabb verziók között. A következő hibaüzenetet fogja látni:
+* A **AutoML-függőségek újabb verzióra történő frissítése a kompatibilitási kompatibilitást eredményezi** : az SDK verziójának 1.13.0 a modellek nem lesznek betöltve a régebbi SDK-kba, mert nem kompatibilisek az előző csomagokban rögzített korábbi verziók és a most rögzített újabb verziók között. A következő hibaüzenetet fogja látni:
   * A modul nem található: ex. `No module named 'sklearn.decomposition._truncated_svd` ,
   * Importálási hibák: pl. `ImportError: cannot import name 'RollingOriginValidator'` ,
   * Attribútum hibái: pl. `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
@@ -343,9 +343,9 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     pip install --upgrade scikit-learn==0.20.3
   ```
  
-* Az **előrejelzési R2 pontszáma mindig nulla**: Ez a probléma akkor fordul elő, ha a megadott betanítási adatsorozatban az utolsó `n_cv_splits`  +  `forecasting_horizon` adatpontok esetében azonos érték szerepel. Ha ez a minta várható az idősorozatban, átválthatja az elsődleges metrikát normalizált, legfelső szintű négyzetes hibára.
+* Az **előrejelzési R2 pontszáma mindig nulla** : Ez a probléma akkor fordul elő, ha a megadott betanítási adatsorozatban az utolsó `n_cv_splits`  +  `forecasting_horizon` adatpontok esetében azonos érték szerepel. Ha ez a minta várható az idősorozatban, átválthatja az elsődleges metrikát normalizált, legfelső szintű négyzetes hibára.
  
-* **TensorFlow**: az SDK-ból származó 1.5.0-es verziótól kezdve az automatikus gépi tanulás nem telepíti a TensorFlow-modelleket alapértelmezés szerint. A TensorFlow telepítéséhez és az automatikus ML-kísérletekhez való használatához telepítse a TensorFlow = = 1.12.0-et a CondaDependecies-n keresztül. 
+* **TensorFlow** : az SDK-ból származó 1.5.0-es verziótól kezdve az automatikus gépi tanulás nem telepíti a TensorFlow-modelleket alapértelmezés szerint. A TensorFlow telepítéséhez és az automatikus ML-kísérletekhez való használatához telepítse a TensorFlow = = 1.12.0-et a CondaDependecies-n keresztül. 
  
    ```python
    from azureml.core.runconfig import RunConfiguration
@@ -353,18 +353,18 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
    run_config = RunConfiguration()
    run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['tensorflow==1.12.0'])
   ```
-* **Kísérletezési diagramok**: a bináris besorolású diagramok (precíziós visszahívás, ROC, nyereség görbe stb.) az automatizált ml-kísérletek ismétlései között nem megfelelően jelennek meg a felhasználói felületen a 4/12 óta. A diagram ábrázolása jelenleg inverz eredményeket mutat, ahol a jobb teljesítményű modellek alacsonyabb eredményekkel jelennek meg. Egy megoldás a vizsgálat alatt áll.
+* **Kísérletezési diagramok** : a bináris besorolású diagramok (precíziós visszahívás, ROC, nyereség görbe stb.) az automatizált ml-kísérletek ismétlései között nem megfelelően jelennek meg a felhasználói felületen a 4/12 óta. A diagram ábrázolása jelenleg inverz eredményeket mutat, ahol a jobb teljesítményű modellek alacsonyabb eredményekkel jelennek meg. Egy megoldás a vizsgálat alatt áll.
 
-* **Automatikus gépi tanulási Databricks megszakítása**: Ha Azure Databrickson automatikus gépi tanulási funkciót használ, a Futtatás megszakításához és az új kísérlet futtatásához indítsa újra a Azure Databricks-fürtöt.
+* **Automatikus gépi tanulási Databricks megszakítása** : Ha Azure Databrickson automatikus gépi tanulási funkciót használ, a Futtatás megszakításához és az új kísérlet futtatásához indítsa újra a Azure Databricks-fürtöt.
 
-* **Databricks >10 iteráció az automatizált gépi tanuláshoz**: az automatikus gépi tanulási beállításokban, ha több mint 10 iteráció van, akkor állítsa `show_output` be `False` a parancsot a futtatáskor.
+* **Databricks >10 iteráció az automatizált gépi tanuláshoz** : az automatikus gépi tanulási beállításokban, ha több mint 10 iteráció van, akkor állítsa `show_output` be `False` a parancsot a futtatáskor.
 
-* **A Azure Machine learning SDK és az automatizált gépi tanulás Databricks widgetje**: az Azure Machine learning SDK widget nem támogatott a Databricks-jegyzetfüzetekben, mert a jegyzetfüzetek nem tudják elemezni a HTML widgeteket. A widgetet a portálon tekintheti meg a Azure Databricks notebook-cellában található Python-kód használatával:
+* **A Azure Machine learning SDK és az automatizált gépi tanulás Databricks widgetje** : az Azure Machine learning SDK widget nem támogatott a Databricks-jegyzetfüzetekben, mert a jegyzetfüzetek nem tudják elemezni a HTML widgeteket. A widgetet a portálon tekintheti meg a Azure Databricks notebook-cellában található Python-kód használatával:
 
     ```
     displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
     ```
-* **automl_setup sikertelen**: 
+* **automl_setup sikertelen** : 
     * Windows rendszeren futtasson automl_setup egy Anaconda-parancssorból. Ezzel a hivatkozással [telepítheti a Miniconda](https://docs.conda.io/en/latest/miniconda.html).
     * A parancs futtatásával győződjön meg arról, hogy a 64 bites Conda telepítve van, és nem 32 bites `conda info` . A legyen `platform` `win-64` Windows vagy Mac rendszerű `osx-64` .
     * Győződjön meg arról, hogy a Conda 4.4.10 vagy újabb verziója telepítve van. A verziót a paranccsal lehet megtekinteni `conda -V` . Ha telepítve van egy korábbi verziója, a paranccsal frissítheti a parancsot: `conda update conda` .
@@ -372,36 +372,36 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
       *  Ha a `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` hiba előfordul, telepítse a Build Essentials parancsot a paranccsal `sudo apt-get install build-essential` .
       * Új Conda-környezet létrehozásához adjon meg egy új nevet az első paraméterként automl_setup. Megtekintheti a meglévő Conda-környezeteket `conda env list` , és eltávolíthatja őket a használatával `conda env remove -n <environmentname>` .
       
-* a **automl_setup_linux. sh sikertelen**: ha a automl_setup_linus. sh sikertelen Ubuntu Linux a következő hibával:`unable to execute 'gcc': No such file or directory`-
+* a **automl_setup_linux. sh sikertelen** : ha a automl_setup_linus. sh sikertelen Ubuntu Linux a következő hibával:`unable to execute 'gcc': No such file or directory`-
   1. Győződjön meg arról, hogy a 53-es és a 80-es kimenő portok engedélyezve vannak. Egy Azure-beli virtuális gépen ezt elvégezheti a Azure Portal a virtuális gép kiválasztásával, majd a hálózatkezelés elemre kattintva.
   2. Futtassa a parancsot: `sudo apt-get update`
   3. Futtassa a parancsot: `sudo apt-get install build-essential --fix-missing`
   4. Futtatás `automl_setup_linux.sh` újra
 
-* a **Configuration. ipynb sikertelen**:
+* a **Configuration. ipynb sikertelen** :
   * A helyi Conda esetében először győződjön meg arról, hogy a automl_setup sikeresen futott.
   * Győződjön meg arról, hogy a subscription_id helyes. Keresse meg a subscription_id a Azure Portal a minden szolgáltatás, majd az előfizetések lehetőség kiválasztásával. A (z) "<" és a ">" karakterek nem szerepelhetnek a subscription_id értékben. Például `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` érvényes a formátuma.
   * Győződjön meg arról, hogy a közreműködő vagy a tulajdonos hozzáférése van az előfizetéshez.
   * Győződjön meg arról, hogy a régió a támogatott régiók egyike:,,,,,, `eastus2` `eastus` `westcentralus` `southeastasia` `westeurope` `australiaeast` `westus2` , `southcentralus` .
   * A Azure Portal használatával győződjön meg arról, hogy a régióhoz fér hozzá.
   
-* **sikertelen volt az importálás AutoMLConfig**: a Machine learning 1.0.76-verziójában módosult a csomag, amely az új verzióra való frissítés előtt el kell távolítani a korábbi verziót. Ha a `ImportError: cannot import name AutoMLConfig` rendszer a v 1.0.76 v 1.0.76 vagy újabb verzióra történő frissítés után észlelt, hárítsa el a hibát a következő parancs futtatásával: `pip uninstall azureml-train automl` és `pip install azureml-train-auotml` . A automl_setup. cmd parancsfájl ezt automatikusan elvégzi. 
+* **sikertelen volt az importálás AutoMLConfig** : a Machine learning 1.0.76-verziójában módosult a csomag, amely az új verzióra való frissítés előtt el kell távolítani a korábbi verziót. Ha a `ImportError: cannot import name AutoMLConfig` rendszer a v 1.0.76 v 1.0.76 vagy újabb verzióra történő frissítés után észlelt, hárítsa el a hibát a következő parancs futtatásával: `pip uninstall azureml-train automl` és `pip install azureml-train-auotml` . A automl_setup. cmd parancsfájl ezt automatikusan elvégzi. 
 
-* **Workspace.from_config sikertelen**: Ha a ws = Workspace.from_config () hívása sikertelen –
+* **Workspace.from_config sikertelen** : Ha a ws = Workspace.from_config () hívása sikertelen –
   1. Győződjön meg arról, hogy a Configuration. ipynb jegyzetfüzet sikeresen futott.
   2. Ha a jegyzetfüzet olyan mappából fut, amely nem a `configuration.ipynb` futtatott mappában található, másolja a aml_config mappát, és a fájl config.jsaz új mappába. Workspace.from_config beolvassa az config.jsa jegyzetfüzet mappájába vagy a szülőmappa mappájába.
   3. Ha új előfizetést, erőforráscsoportot, munkaterületet vagy régiót használ, győződjön meg arról, hogy a `configuration.ipynb` jegyzetfüzetet újra futtatja. config.jsközvetlen módosítása csak akkor működik, ha a munkaterület már létezik a megadott erőforrás-csoportban a megadott előfizetésben.
   4. Ha módosítani szeretné a régiót, módosítsa a munkaterületet, az erőforráscsoportot vagy az előfizetést. `Workspace.create` a nem hoz létre vagy frissít egy munkaterületet, ha már létezik, még akkor is, ha a megadott régió eltér.
   
-* A **minta jegyzetfüzet sikertelen**: Ha egy minta jegyzetfüzet hibát jelez, a tulajdonság, a metódus vagy a könyvtár nem létezik:
+* A **minta jegyzetfüzet sikertelen** : Ha egy minta jegyzetfüzet hibát jelez, a tulajdonság, a metódus vagy a könyvtár nem létezik:
   * Győződjön meg arról, hogy a megfelelő kernel van kiválasztva a jupyter-jegyzetfüzetben. A kernel a notebook oldal jobb felső sarkában jelenik meg. Az alapértelmezett érték azure_automl. Vegye figyelembe, hogy a rendszer a rendszermagot a jegyzetfüzet részeként menti. Ha tehát új Conda-környezetre vált, ki kell választania az új kernelt a jegyzetfüzetben.
       * Azure Notebooks esetén a Python 3,6-es értéknek kell lennie. 
       * Helyi Conda környezetekben a automl_setupban megadott Conda-környezeti nevet kell megadni.
   * Győződjön meg arról, hogy a jegyzetfüzet a használt SDK-verzióhoz készült. Az SDK verziójának ellenőrzéséhez futtassa a `azureml.core.VERSION` jupyter jegyzetfüzet-cellát. A minta jegyzetfüzetek előző verzióját a GitHubról töltheti le, ha a `Branch` gombra kattint, majd kiválasztja a `Tags` fület, majd kiválasztja a verziót.
 
-* A **NumPy importálása sikertelen a Windows**rendszerben: egyes Windows-környezetek a NumPy betöltésével kapcsolatos hibát látnak a legújabb Python-verzió 3.6.8. Ha ezt a problémát látja, próbálkozzon a Python-verzió 3.6.7.
+* A **NumPy importálása sikertelen a Windows** rendszerben: egyes Windows-környezetek a NumPy betöltésével kapcsolatos hibát látnak a legújabb Python-verzió 3.6.8. Ha ezt a problémát látja, próbálkozzon a Python-verzió 3.6.7.
 
-* A **NumPy importálása sikertelen**: az automatikus ml Conda-környezetben keresse meg a TensorFlow verzióját. A támogatott verziók a következők: < 1,13. Távolítsa el a TensorFlow a környezetből, ha a verziószáma >= 1,13 a TensorFlow és az Eltávolítás verzióját a következőképpen is megtekintheti:
+* A **NumPy importálása sikertelen** : az automatikus ml Conda-környezetben keresse meg a TensorFlow verzióját. A támogatott verziók a következők: < 1,13. Távolítsa el a TensorFlow a környezetből, ha a verziószáma >= 1,13 a TensorFlow és az Eltávolítás verzióját a következőképpen is megtekintheti:
   1. Indítsa el a parancssort, aktiválja a Conda-környezetet, amelyben az automatikus ml-csomagok telepítve vannak.
   2. Adja meg `pip freeze` és keresse meg `tensorflow` , ha található, a felsorolt verziónak < 1,13
   3. Ha a felsorolt verzió nem támogatott verzió, a `pip uninstall tensorflow` parancs-rendszerhéjban írja be az y értéket a megerősítéshez.
@@ -452,11 +452,11 @@ kubectl get secret/azuremlfessl -o yaml
 
 ### <a name="detaching-azure-kubernetes-service"></a>Az Azure Kubernetes szolgáltatás leválasztása
 
-A gépi tanuláshoz készült Azure Machine Learning Studio, SDK vagy az Azure CLI bővítmény használata az AK-fürtök leválasztásához nem törli az AK-fürtöt. A fürt törléséhez lásd: [Az Azure CLI használata az AK-val](/azure/aks/kubernetes-walkthrough#delete-the-cluster).
+A gépi tanuláshoz készült Azure Machine Learning Studio, SDK vagy az Azure CLI bővítmény használata az AK-fürtök leválasztásához nem törli az AK-fürtöt. A fürt törléséhez lásd: [Az Azure CLI használata az AK-val](../aks/kubernetes-walkthrough.md#delete-the-cluster).
 
 ### <a name="webservices-in-azure-kubernetes-service-failures"></a>Webszolgáltatások az Azure Kubernetes szolgáltatásban – hibák
 
-Az Azure Kubernetes szolgáltatásban számos webszolgáltatási hiba oldható fel a fürthöz való csatlakozással a használatával `kubectl` . Az `kubeconfig.json` Azure Kubernetes Service-fürtöket a következő futtatásával kérheti le:
+Az Azure Kubernetes Service számos webszolgáltatási hibája megoldható azzal, ha a `kubectl` használatával csatlakozik a fürthöz. Az `kubeconfig.json` Azure Kubernetes Service-fürtöket a következő futtatásával kérheti le:
 
 ```azurecli-interactive
 az aks get-credentials -g <rg> -n <aks cluster name>
@@ -496,4 +496,4 @@ További hibaelhárítási cikkek a Azure Machine Learning:
 * [Gépi tanulási folyamatok hibakeresése](how-to-debug-pipelines.md)
 * [A ParallelRunStep osztály hibakeresése az Azure Machine Learning SDK-val](how-to-debug-parallel-run-step.md)
 * [Machine learning számítási példány interaktív hibakeresése a VS Code-ban](how-to-debug-visual-studio-code.md)
-* [A Application Insights használata a gépi tanulási folyamatok hibakereséséhez](how-to-debug-pipelines-application-insights.md)
+* [A Application Insights használata a gépi tanulási folyamatok hibakereséséhez](./how-to-log-pipelines-application-insights.md)

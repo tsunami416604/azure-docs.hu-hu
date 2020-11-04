@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 232260ada4d810127584e675480f91d0213e3953
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2b0a56bac1652881e9d1733bcb52b02610e27e9e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091497"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314170"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Azure Machine Learning képzési környezet biztonságossá tétele virtuális hálózatokkal
 
@@ -47,7 +47,7 @@ Ebből a cikkből megtudhatja, hogyan védheti meg a virtuális hálózatok köv
     - "Microsoft. Network/virtualNetworks/JOIN/Action" a virtuális hálózati erőforráson.
     - "Microsoft. Network/virtualNetworks/subnet/JOIN/Action" az alhálózati erőforráson.
 
-    A hálózatkezeléssel rendelkező Azure RBAC kapcsolatos további információkért tekintse meg a [hálózatkezelés beépített szerepköreit](/azure/role-based-access-control/built-in-roles#networking) .
+    A hálózatkezeléssel rendelkező Azure RBAC kapcsolatos további információkért tekintse meg a [hálózatkezelés beépített szerepköreit](../role-based-access-control/built-in-roles.md#networking) .
 
 
 ## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>Számítási fürtök & példányok 
@@ -61,17 +61,17 @@ Ha [felügyelt Azure Machine learning __számítási célt__](concept-compute-ta
 > * Ha egy virtuális hálózatban több számítási példányt vagy fürtöt szeretne létrehozni, előfordulhat, hogy egy vagy több erőforrásra vonatkozó kvóta-növelést kell kérnie.
 > * Ha a munkaterülethez tartozó Azure Storage-fiók (ok) is védett virtuális hálózatban, akkor a Azure Machine Learning számítási példánnyal vagy fürttel azonos virtuális hálózatban kell lenniük. 
 > * A számítási példányok Jupyter működéséhez győződjön meg arról, hogy a webes szoftvercsatorna-kommunikáció nincs letiltva. Győződjön meg arról, hogy a hálózat engedélyezi a WebSocket-kapcsolatokat a *. instances.azureml.net és a *. instances.azureml.ms. 
-> * Ha a számítási példány egy privát kapcsolati munkaterületen van üzembe helyezve, akkor csak a virtuális hálózaton belülről lehet hozzáférni. Ha egyéni DNS-vagy hosts fájlt használ, adjon hozzá egy bejegyzést a `<instance-name>.<region>.instances.azureml.ms` munkaterület privát végpontjának magánhálózati IP-címéhez. További információ az [Egyéni DNS-](https://docs.microsoft.com/azure/machine-learning/how-to-custom-dns) cikkben található.
+> * Ha a számítási példány egy privát kapcsolati munkaterületen van üzembe helyezve, akkor csak a virtuális hálózaton belülről lehet hozzáférni. Ha egyéni DNS-vagy hosts fájlt használ, adjon hozzá egy bejegyzést a `<instance-name>.<region>.instances.azureml.ms` munkaterület privát végpontjának magánhálózati IP-címéhez. További információ az [Egyéni DNS-](./how-to-custom-dns.md) cikkben található.
     
 > [!TIP]
-> A Machine Learning számítási példány vagy fürt automatikusan további hálózati erőforrásokat foglal le __a virtuális hálózatot tartalmazó erőforráscsoporthoz__ . A szolgáltatás minden számítási példányhoz vagy fürthöz a következő erőforrásokat foglalja le:
+> A Machine Learning számítási példány vagy fürt automatikusan további hálózati erőforrásokat foglal le __a virtuális hálózatot tartalmazó erőforráscsoporthoz__. A szolgáltatás minden számítási példányhoz vagy fürthöz a következő erőforrásokat foglalja le:
 > 
 > * Egy hálózati biztonsági csoport
 > * Egy nyilvános IP-cím
 > * Egy Load Balancer
 > 
 > Fürtök esetében ezeket az erőforrásokat a rendszer minden alkalommal törli (és újból létrehozza), amikor a fürt 0 csomópontra van lebontva, azonban az erőforrásokat a rendszer a példány teljes törlése előtt megtartja (a Leállítás nem távolítja el az erőforrásokat). 
-> Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) vonatkoznak.
+> Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../azure-resource-manager/management/azure-subscription-service-limits.md) vonatkoznak.
 
 
 ### <a name="required-ports"></a><a id="mlcports"></a> Szükséges portok
@@ -154,17 +154,17 @@ A Azure Portal NSG-szabályának konfigurációja a következő képen látható
 
 ### <a name="forced-tunneling"></a>Alagúthasználat kényszerítése
 
-Ha [kényszerített bújtatást](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm) használ Azure Machine learning számítási feladatokkal, akkor engedélyeznie kell a kommunikációt a nyilvános internettel a számítási erőforrást tartalmazó alhálózatból. Ez a kommunikáció a feladatütemezés és az Azure Storage elérésére szolgál.
+Ha [kényszerített bújtatást](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) használ Azure Machine learning számítási feladatokkal, akkor engedélyeznie kell a kommunikációt a nyilvános internettel a számítási erőforrást tartalmazó alhálózatból. Ez a kommunikáció a feladatütemezés és az Azure Storage elérésére szolgál.
 
 Ez kétféleképpen valósítható meg:
 
 * [Virtual Network NAT](../virtual-network/nat-overview.md)használata. A NAT-átjáró kimenő internetkapcsolatot biztosít a virtuális hálózat egy vagy több alhálózatához. További információ: [virtuális hálózatok tervezése NAT Gateway-erőforrásokkal](../virtual-network/nat-gateway-resource.md).
 
-* Adja hozzá a [felhasználó által megadott útvonalakat (UDR)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) a számítási erőforrást tartalmazó alhálózathoz. Hozzon létre egy UDR minden olyan IP-címhez, amelyet a Azure Batch szolgáltatás használ azon a régióban, ahol az erőforrásai léteznek. Ezek a UDR lehetővé teszik a Batch szolgáltatás számára a feladatütemezés számítási csomópontjaival való kommunikációját. Adja hozzá azt a Azure Machine Learning-szolgáltatáshoz tartozó IP-címet is, ahol az erőforrások léteznek, mivel ez szükséges a számítási példányokhoz való hozzáféréshez. A Batch szolgáltatás és a Azure Machine Learning szolgáltatás IP-címeinek listájának megjelenítéséhez használja a következő módszerek egyikét:
+* Adja hozzá a [felhasználó által megadott útvonalakat (UDR)](../virtual-network/virtual-networks-udr-overview.md) a számítási erőforrást tartalmazó alhálózathoz. Hozzon létre egy UDR minden olyan IP-címhez, amelyet a Azure Batch szolgáltatás használ azon a régióban, ahol az erőforrásai léteznek. Ezek a UDR lehetővé teszik a Batch szolgáltatás számára a feladatütemezés számítási csomópontjaival való kommunikációját. Adja hozzá azt a Azure Machine Learning-szolgáltatáshoz tartozó IP-címet is, ahol az erőforrások léteznek, mivel ez szükséges a számítási példányokhoz való hozzáféréshez. A Batch szolgáltatás és a Azure Machine Learning szolgáltatás IP-címeinek listájának megjelenítéséhez használja a következő módszerek egyikét:
 
     * Töltse le az [Azure IP-címtartományok és a szolgáltatás címkéit](https://www.microsoft.com/download/details.aspx?id=56519) , és keresse meg a és a fájlt `BatchNodeManagement.<region>` `AzureMachineLearning.<region>` , ahol `<region>` az az Azure-régió.
 
-    * Az adatok letöltéséhez használja az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) -t. Az alábbi példa letölti az IP-cím adatait, és kiszűri az USA 2. keleti régiójának információit:
+    * Az adatok letöltéséhez használja az [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) -t. Az alábbi példa letölti az IP-cím adatait, és kiszűri az USA 2. keleti régiójának információit:
 
         ```azurecli-interactive
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
@@ -278,9 +278,9 @@ Ebből a szakaszból megtudhatja, hogyan használhatja a virtuális gépet vagy 
 ### <a name="create-the-vm-or-hdinsight-cluster"></a>A virtuális gép vagy a HDInsight-fürt létrehozása
 
 Hozzon létre egy virtuális GÉPET vagy HDInsight-fürtöt a Azure Portal vagy az Azure CLI használatával, és helyezze üzembe a fürtöt egy Azure-beli virtuális hálózaton. További információkat az következő cikkekben talál:
-* [Azure Virtual Networks létrehozása és kezelése Linux rendszerű virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
+* [Azure Virtual Networks létrehozása és kezelése Linux rendszerű virtuális gépekhez](../virtual-machines/linux/tutorial-virtual-network.md)
 
-* [HDInsight kiterjesztése Azure Virtual Network használatával](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)
+* [HDInsight kiterjesztése Azure Virtual Network használatával](../hdinsight/hdinsight-plan-virtual-network-deployment.md)
 
 ### <a name="configure-network-ports"></a>Hálózati portok konfigurálása 
 
@@ -302,7 +302,7 @@ Engedélyezze Azure Machine Learning a virtuális gép vagy fürt SSH-portjával
 
 1. A __művelet__ területen válassza az __Engedélyezés__ lehetőséget.
 
-Tartsa meg a hálózati biztonsági csoport alapértelmezett kimenő szabályait. További információ: [biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)alapértelmezett biztonsági szabályai.
+Tartsa meg a hálózati biztonsági csoport alapértelmezett kimenő szabályait. További információ: [biztonsági csoportok](../virtual-network/network-security-groups-overview.md#default-security-rules)alapértelmezett biztonsági szabályai.
 
 Ha nem szeretné használni az alapértelmezett kimenő szabályokat, és szeretné korlátozni a virtuális hálózat kimenő hozzáférését, tekintse meg a [Kimenő kapcsolat korlátozása a virtuális hálózattal](#limiting-outbound-from-vnet) szakaszt.
 

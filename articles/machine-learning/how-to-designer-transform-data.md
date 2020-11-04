@@ -10,19 +10,19 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 9124bbfc7300f3a5116c572d569b41e15356ab8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f08d0f1be166630d9cf4b0b9236d78228fd78aae
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983846"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312810"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>Az adatátalakítás Azure Machine Learning Designerben
 
 
 Ebből a cikkből megtudhatja, hogyan alakíthat át és menthet adatkészleteket Azure Machine Learning Designerben, hogy előkészítse saját adatait a gépi tanuláshoz.
 
-A minta [felnőtt népszámlálás jövedelmének bináris besorolási](sample-designer-datasets.md) adatkészletét a következő két adatkészlet előkészítésére fogja használni: egy adatkészletet, amely kizárólag a Egyesült Államok és egy olyan adathalmazt tartalmaz, amely nem USA-beli felnőtteknek szóló népszámlálási információkat tartalmaz.
+A minta [felnőtt népszámlálás jövedelmének bináris besorolási](./samples-designer.md) adatkészletét a következő két adatkészlet előkészítésére fogja használni: egy adatkészletet, amely kizárólag a Egyesült Államok és egy olyan adathalmazt tartalmaz, amely nem USA-beli felnőtteknek szóló népszámlálási információkat tartalmaz.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -48,13 +48,13 @@ A minta adatkészlet importálásához kövesse az alábbi lépéseket.
 
 1. Válasszon ki egy alapértelmezett számítási célt a folyamat futtatásához.
 
-1. Az adatkészletek és modulok palettájának bal oldalán található. Válassza az **adatkészletek**lehetőséget. Ezután tekintse meg a **minták** szakaszt.
+1. Az adatkészletek és modulok palettájának bal oldalán található. Válassza az **adatkészletek** lehetőséget. Ezután tekintse meg a **minták** szakaszt.
 
 1. Húzza a **felnőtt népszámlálás jövedelmének bináris besorolási** adatkészletét a vászonra.
 
 1. Válassza ki a **felnőtt népszámlálás-bevétel** adatkészletének modulját.
 
-1. A vászon jobb oldalán megjelenő részletek ablaktáblán válassza a **kimenetek**lehetőséget.
+1. A vászon jobb oldalán megjelenő részletek ablaktáblán válassza a **kimenetek** lehetőséget.
 
 1. Megjelenítés ikon kiválasztása ![ikon megjelenítése](media/how-to-designer-transform-data/visualize-icon.png).
 
@@ -74,7 +74,7 @@ Ebben a szakaszban az [Adatfelosztási modul](algorithm-module-reference/split-d
 
 1. A vászontól jobbra található modul részletei ablaktáblán állítsa be a **felosztási módot** **reguláris kifejezésre**.
 
-1. Adja meg a **reguláris kifejezést**: `\"native-country" United-States` .
+1. Adja meg a **reguláris kifejezést** : `\"native-country" United-States` .
 
     A **reguláris kifejezés** mód egyetlen oszlopot tesztel egy értékhez. További információ az adatfelosztási modulról: a kapcsolódó [algoritmus moduljának hivatkozási lapja](algorithm-module-reference/split-data.md).
 
@@ -97,36 +97,36 @@ Most, hogy a folyamat az adat felosztására van beállítva, meg kell adnia, ho
 
     ![Az adatexportálási modulok összekapcsolását bemutató képernyőkép](media/how-to-designer-transform-data/export-data-pipeline.png).
 
-1. Válassza ki az **adatexportálási** modult, amely az **osztott** adatmodul *bal*szélső portjához csatlakozik.
+1. Válassza ki az **adatexportálási** modult, amely az **osztott** adatmodul *bal* szélső portjához csatlakozik.
 
     A kimeneti portok sorrendje az **Adatfelosztási** modulhoz. Az első kimeneti port tartalmazza azokat a sorokat, amelyekben a reguláris kifejezés igaz. Ebben az esetben az első port az USA-alapú bevétel sorát tartalmazza, a második port pedig a nem USA-alapú bevétel sorait tartalmazza.
 
 1. A vászontól jobbra a modul részletei ablaktábláján adja meg a következő beállításokat:
     
-    **Adattár típusa**: Azure Blob Storage
+    **Adattár típusa** : Azure Blob Storage
 
-    **Adattár**: válasszon ki egy meglévő adattárat, vagy válassza az "új adattár" lehetőséget a létrehozáshoz.
+    **Adattár** : válasszon ki egy meglévő adattárat, vagy válassza az "új adattár" lehetőséget a létrehozáshoz.
 
-    **Elérési út**: `/data/us-income`
+    **Elérési út** : `/data/us-income`
 
-    **Fájl formátuma**: CSV
+    **Fájl formátuma** : CSV
 
     > [!NOTE]
     > Ez a cikk azt feltételezi, hogy van hozzáférése az aktuális Azure Machine Learning munkaterülethez regisztrált adattárhoz. Az adattár beállításával kapcsolatos utasításokért lásd: [Kapcsolódás az Azure Storage Serviceshez](how-to-connect-data-ui.md#create-datastores).
 
     Ha nincs adattára, létrehozhat egyet. Ez a cikk például az adatkészletek mentését fogja menteni a munkaterülethez társított alapértelmezett blob Storage-fiókba. Az adatkészleteket `azureml` egy új mappában fogja menteni a tárolóba `data` .
 
-1.  Válassza ki az **adatexportálási** modult az **osztott** adatmodul *jobb*szélső portjához csatlakoztatva.
+1.  Válassza ki az **adatexportálási** modult az **osztott** adatmodul *jobb* szélső portjához csatlakoztatva.
 
 1. A vászontól jobbra a modul részletei ablaktábláján adja meg a következő beállításokat:
     
-    **Adattár típusa**: Azure Blob Storage
+    **Adattár típusa** : Azure Blob Storage
 
-    **Adattár**: válassza ki a fenti adattárat
+    **Adattár** : válassza ki a fenti adattárat
 
-    **Elérési út**: `/data/non-us-income`
+    **Elérési út** : `/data/non-us-income`
 
-    **Fájl formátuma**: CSV
+    **Fájl formátuma** : CSV
 
 1. Erősítse meg, hogy az **adatexportálási** **modul a** **felosztott** adatmennyiség bal oldali portjához csatlakozik `/data/us-income` .
 
@@ -140,7 +140,7 @@ Most, hogy a folyamat az adat felosztására van beállítva, meg kell adnia, ho
 
 Most, hogy a folyamat az adatfelosztást és-exportálást állítja be, elküld egy folyamat futtatását.
 
-1. A vászon tetején válassza a **Küldés**lehetőséget.
+1. A vászon tetején válassza a **Küldés** lehetőséget.
 
 1. A **folyamat futtatásának beállítása** párbeszédpanelen válassza az **új létrehozása** lehetőséget a kísérlet létrehozásához.
 
@@ -156,13 +156,13 @@ A folyamat futásának befejeződése után megtekintheti az eredményeket, ha a
 
 1. Válassza ki az **Adatfelosztási** modult.
 
-1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **kimenetek + naplók**lehetőséget. 
+1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **kimenetek + naplók** lehetőséget. 
 
-1. Válassza a vizualizáció ikon ![ megjelenítése ikont az ](media/how-to-designer-transform-data/visualize-icon.png) **eredmények DataSet1 elemet**mellett. 
+1. Válassza a vizualizáció ikon ![ megjelenítése ikont az ](media/how-to-designer-transform-data/visualize-icon.png) **eredmények DataSet1 elemet** mellett. 
 
 1. Ellenőrizze, hogy a "natív ország" oszlop csak az "Egyesült Államok" értéket tartalmazza-e.
 
-1. Válassza a vizualizáció ikon ![ megjelenítése ikont az ](media/how-to-designer-transform-data/visualize-icon.png) **eredmények dataset2**mellett. 
+1. Válassza a vizualizáció ikon ![ megjelenítése ikont az ](media/how-to-designer-transform-data/visualize-icon.png) **eredmények dataset2** mellett. 
 
 1. Ellenőrizze, hogy a "natív ország" oszlop nem tartalmazza-e az "Egyesült Államok" értéket.
 

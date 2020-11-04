@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: f5c2690ea97136c2b7887a8450c2788e3902d4e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3ba5751e7a0c2369d505535896bbb4ff7523c02
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91369960"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314576"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Oktatóanyag: az első gépi tanulási modell betanítása (4. rész)
 
@@ -98,7 +98,7 @@ trainset = torchvision.datasets.CIFAR10(
     transform=torchvision.transforms.ToTensor(),
 )
 trainloader = torch.utils.data.DataLoader(
-    trainset, batch_size=4, shuffle=True, num_workers=2
+    trainset, batch_size=4, shuffle=True
 )
 
 if __name__ == "__main__":
@@ -220,7 +220,7 @@ if __name__ == "__main__":
       `env = ...`
    :::column-end:::
    :::column span="2":::
-      Azure Machine Learning egy olyan [környezet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) koncepcióját mutatja be, amely egy reprodukálható, verziószámmal rendelkező Python-környezetet jelöl a kísérletek futtatásához. Könnyen létrehozhat környezetet helyi Conda vagy pip-környezetből.
+      Azure Machine Learning egy olyan [környezet](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) koncepcióját mutatja be, amely egy reprodukálható, verziószámmal rendelkező Python-környezetet jelöl a kísérletek futtatásához. Könnyen létrehozhat környezetet helyi Conda vagy pip-környezetből.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -228,7 +228,7 @@ if __name__ == "__main__":
       `config.run_config.environment = env`
    :::column-end:::
    :::column span="2":::
-      Hozzáadja a környezetet a [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)-hez.
+      Hozzáadja a környezetet a [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)-hez.
    :::column-end:::
 :::row-end:::
 
@@ -402,11 +402,11 @@ Ez alkalommal, amikor felkeresi a stúdiót, ugorjon a **metrikák** lapra, ahol
 
 :::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="A metrikák lapon megjelenő adatvesztési gráf":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a munkamenetben egy alapszintű "Helló világból" frissítünk. parancsfájlt egy reálisabb betanítási parancsfájlhoz, amely egy adott Python-környezet futtatásához szükséges. Megismerte, hogyan végezheti el a helyi Conda-környezetet a felhőben Azure Machine Learning környezettel. Végül azt is láttuk, hogy a kódok néhány sorában hogyan naplózhatja a mérőszámokat Azure Machine Learningba.
 
-Azure Machine Learning környezetek is létrehozhatók, például [egy pip requirements.txt](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-pip-requirements-name--file-path-) fájlból vagy [egy meglévő helyi Conda-környezetből](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-existing-conda-environment-name--conda-environment-name-).
+Azure Machine Learning környezetek is létrehozhatók, például [egy pip requirements.txt](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#from-pip-requirements-name--file-path-) fájlból vagy [egy meglévő helyi Conda-környezetből](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#from-existing-conda-environment-name--conda-environment-name-).
 
 A következő munkamenetben láthatja, hogyan dolgozhat a Azure Machine Learningban lévő adatokat, ha feltölti a CIFAR10-adatkészletet az Azure-ba.
 

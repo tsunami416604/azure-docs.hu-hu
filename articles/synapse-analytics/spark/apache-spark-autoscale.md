@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 03/31/2020
-ms.openlocfilehash: c043941543088d9bdbfd535f372e2335e1ba55a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f34bcfa8b743fbee6ee3b78fc1a042d1df0abfde
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500351"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313639"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Az Azure szinapszis Analytics Apache Spark-készletek automatikus méretezése
 
@@ -49,7 +49,7 @@ A leskálázás, a végrehajtók száma, az alkalmazás főkiszolgálói és a j
 
 ## <a name="get-started"></a>Bevezetés
 
-### <a name="create-a-spark-pool-with-autoscaling"></a>Spark-készlet létrehozása automatikus skálázással
+### <a name="create-a-serverless-apache-spark-pool-with-autoscaling"></a>Kiszolgáló nélküli Apache Spark készlet létrehozása automatikus skálázással
 
 Az autoscale funkció engedélyezéséhez hajtsa végre a következő lépéseket a készlet normál létrehozási folyamatának részeként:
 
@@ -73,6 +73,6 @@ A példány skálázási folyamata során az automatikus skálázás leszerelés
 
 A futó feladatok továbbra is futnak és befejeződik. A függőben lévő feladatok várhatóan a megszokott módon lesznek ütemezve kevesebb elérhető csomóponttal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Új Spark-készlet létrehozásának első lépései [Spark-készlet létrehozása](../quickstart-create-apache-spark-pool-portal.md)

@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick,
-ms.openlocfilehash: da4cef50610b219689e2271e9f70fd1adb1a235f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 979e360bb920fc3b34a201b1287b50b141bffa9b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540506"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313618"
 ---
 # <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>Oktatóanyag: kísérletek futtatása az Azure automatizált ML és Apache Spark használatával
 
@@ -29,13 +29,16 @@ Ez az oktatóanyag a következő feladatokat ismerteti:
 - Modell pontosságának kiszámítása
 
 ### <a name="before-you-begin"></a>Előkészületek
-- Hozzon létre egy Apache Spark készletet az [Apache Spark készlet létrehozása oktatóanyag](../quickstart-create-apache-spark-pool-studio.md)követésével.
+
+- Hozzon létre egy kiszolgáló nélküli Apache Spark készletet a [kiszolgáló nélküli Apache Spark készlet](../quickstart-create-apache-spark-pool-studio.md)gyors üzembe helyezési útmutatójának követésével.
 - Ha nem rendelkezik meglévő Azure Machine Learning munkaterülettel, fejezze be a [Azure Machine learning munkaterület beállítási oktatóanyagát](https://docs.microsoft.com/azure/machine-learning/tutorial-1st-experiment-sdk-setup) . 
 
 ### <a name="understand-regression-models"></a>A regressziós modellek ismertetése
+
 A *regressziós modellek* előre jelezik a numerikus kimeneti értékeket a független előrejelzők alapján. A regresszió során a cél az, hogy segítsen a független prediktív változók közötti kapcsolat kialakításában azzal, hogy megbecsüli, hogyan befolyásolja a többi változó.  
 
 ### <a name="regression-analysis-example-on-the-nyc-taxi-data"></a>Regressziós elemzési példa a New York-i taxik adataihoz
+
 Ebben a példában a Spark használatával elvégezheti a New York-i taxi Trip-adatok elemzését. Az adatokat az [Azure Open-adatkészletek](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)segítségével érheti el. Az adatkészlet ezen részhalmaza a Yellow taxi-utakról tartalmaz információkat, beleértve az egyes utazásokkal, a kezdési és befejezési időponttal és a hellyel, a díjszabással és egyéb érdekes attribútumokkal kapcsolatos információkat.
 
 > [!IMPORTANT]
@@ -143,7 +146,7 @@ ws = Workspace(workspace_name = workspace_name,
 ```
 
 ## <a name="convert-a-dataframe-to-an-azure-machine-learning-dataset"></a>Dataframe átalakítása Azure Machine Learning adatkészletbe
-Távoli kísérlet elküldéséhez át kell alakítania az adatkészletet egy Azure Machine Learningba ```TabularDatset``` . A [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) táblázatos formátumban jeleníti meg az adatokat a megadott fájlok elemzésével.
+Távoli kísérlet elküldéséhez át kell alakítania az adatkészletet egy Azure Machine Learningba ```TabularDatset``` . A [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) táblázatos formátumban jeleníti meg az adatokat a megadott fájlok elemzésével.
 
 A következő kód lekéri a meglévő munkaterületet és az alapértelmezett Azure Machine Learning alapértelmezett adattárat. Ezután átadja az adattár és a fájl helyét a Path paraméternek egy új létrehozásához ```TabularDataset``` . 
 
@@ -165,7 +168,7 @@ dataset_training = Dataset.Tabular.from_delimited_files(path = [(datastore, 'tra
 
 ![A feltöltött adatkészlet képe.](./media/apache-spark-machine-learning-aml-notebook/upload-dataset.png)
 
-## <a name="submit-an-auto-ml-experiment"></a>Automatikus ML-kísérlet küldése
+## <a name="submit-an-automl-experiment"></a>AutoML-kísérlet küldése
 
 #### <a name="define-training-settings"></a>Képzési beállítások megadása
 

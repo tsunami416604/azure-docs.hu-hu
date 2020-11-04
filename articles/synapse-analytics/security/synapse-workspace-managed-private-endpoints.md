@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 091f73aa2383094973db35efb05c5f93034efa39
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 60087dc23b804dac6644dc09cddc031526fb0f8f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738094"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313774"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Szinapszis felügyelt privát végpontok (előzetes verzió)
 
@@ -43,17 +43,17 @@ Ha a tulajdonos jóváhagyja a kapcsolatot, a magánhálózati kapcsolat létrej
 
 Csak egy felügyelt magánhálózati végpont engedélyezett állapotban küldhet forgalmat egy adott privát kapcsolati erőforrásnak.
 
-## <a name="managed-private-endpoints-for-sql-pool-and-sql-on-demand"></a>Felügyelt magánhálózati végpontok az SQL-készlethez és az igény szerinti SQL-hez
+## <a name="managed-private-endpoints-for-dedicated-sql-pool-and-serverless-sql-pool"></a>Felügyelt privát végpontok dedikált SQL-készlethez és kiszolgáló nélküli SQL-készlethez
 
-Az SQL-készlet és az SQL on-demand analitikus funkciók az Azure szinapszis-munkaterületen. Ezek a képességek olyan több-bérlős infrastruktúrát használnak, amely nincs telepítve a [felügyelt munkaterületen Virtual Network](./synapse-workspace-managed-vnet.md).
+a dedikált SQL-készlet és a kiszolgáló nélküli SQL-készlet az Azure szinapszis-munkaterületének analitikai képességei. Ezek a képességek olyan több-bérlős infrastruktúrát használnak, amely nincs telepítve a [felügyelt munkaterületen Virtual Network](./synapse-workspace-managed-vnet.md).
 
-Munkaterületek létrehozásakor az Azure szinapszis két felügyelt magánhálózati végpontot hoz létre az SQL-készletbe, és igény szerint az SQL-t a munkaterületen. 
+Munkaterületek létrehozásakor az Azure szinapszis két felügyelt magánhálózati végpontot hoz létre a munkaterületen, egyet a dedikált SQL-készlethez, egy pedig a kiszolgáló nélküli SQL-készlethez. 
 
 Ez a két felügyelt magánhálózati végpont az Azure szinapszis Studióban szerepel. Válassza a **kezelés** lehetőséget a bal oldali navigációs sávon, majd válassza a **felügyelt virtuális hálózatok** lehetőséget a Studióban való megjelenítéshez.
 
-A felügyelt magánhálózati végpont, amely az SQL-készletet célozza, *szinapszis- \<workspacename\> ws-SQL--* nek nevezi, és az SQL on-demand célpontjának neve *szinapszis-ws-sqlOnDemand-- \<workspacename\>* .
+A felügyelt magánhálózati végpont, amely az SQL-készletet célozza, *szinapszis- \<workspacename\> ws-SQL--* nek nevezi, és a kiszolgáló nélküli SQL-készletet tároló egyik neve *szinapszis-ws-sqlOnDemand-- \<workspacename\>*.
 
-![Felügyelt magánhálózati végpontok az SQL-készlethez és az igény szerinti SQL-hez](./media/synapse-workspace-managed-private-endpoints/managed-pe-for-sql-1.png)
+![Felügyelt privát végpontok dedikált SQL-készlethez és kiszolgáló nélküli SQL-készlethez](./media/synapse-workspace-managed-private-endpoints/managed-pe-for-sql-1.png)
 
 Ez a két felügyelt magánhálózati végpont automatikusan létrejön az Azure szinapszis-munkaterület létrehozásakor. Ez a két felügyelt magánhálózati végpont esetében nem számítunk fel díjat.
 

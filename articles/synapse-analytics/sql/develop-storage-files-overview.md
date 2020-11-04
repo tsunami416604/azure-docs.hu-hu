@@ -1,6 +1,6 @@
 ---
-title: Fájlok elérése a Storage-ban az SQL on-demand (előzetes verzió)
-description: Leírja a tárolási fájlok lekérdezését az SQL on-demand (előzetes verzió) típusú, a szinapszis SQLon belüli erőforrásainak használatával.
+title: Fájlok elérése a tárolóban a kiszolgáló nélküli SQL-készletben (előzetes verzió)
+description: Leírja a tárolási fájlok lekérdezését a kiszolgáló nélküli SQL-készlet (előzetes verzió) használatával az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8884f62ba015cc4b33b75a133f21264dac6430e5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 73a5414a979742c4a7df16dcd2a5edda3748abef
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288987"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315941"
 ---
-# <a name="access-external-storage-in-synapse-sql-on-demand"></a>Külső tárterület elérése a szinapszis SQL-ben (igény szerint)
+# <a name="access-external-storage-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Külső tárterület elérése az Azure szinapszis Analytics kiszolgáló nélküli SQL-készletével (előzetes verzió)
 
-Ez a dokumentum azt ismerteti, hogyan olvasható be a felhasználó az Azure Storage-ban tárolt fájlokból származó adatokból a szinapszis SQL-ben (igény szerint). A felhasználók a következő beállításokkal férhetnek hozzá a tárolóhoz:
+Ez a dokumentum azt ismerteti, hogyan lehet a felhasználók beolvasni az Azure Storage-ban tárolt fájlok adatait a kiszolgáló nélküli SQL-készletben. A felhasználók a következő beállításokkal férhetnek hozzá a tárolóhoz:
 
 - [OpenRowset](develop-openrowset.md) függvény, amely alkalmi lekérdezéseket tesz lehetővé az Azure Storage-ban található fájlokon.
 - Külső [tábla](develop-tables-external-tables.md) , amely a külső fájlok készletére épülő, előre definiált adatstruktúra.
@@ -27,7 +27,7 @@ A felhasználó [különböző hitelesítési módszereket](develop-storage-file
 
 ## <a name="query-files-using-openrowset"></a>Fájlok lekérdezése a OPENROWSET használatával
 
-A OPENROWSET lehetővé teszi a felhasználók számára az Azure Storage-beli külső fájlok lekérdezését, ha azok hozzáférnek a tárolóhoz. A szinapszis SQL igény szerinti végponthoz csatlakozó felhasználónak a következő lekérdezéssel kell elolvasnia az Azure Storage-ban tárolt fájlok tartalmát:
+A OPENROWSET lehetővé teszi a felhasználók számára az Azure Storage-beli külső fájlok lekérdezését, ha hozzáférnek a tárolóhoz. A kiszolgáló nélküli SQL-készlethez csatlakozó felhasználónak a következő lekérdezéssel kell elolvasnia az Azure Storage-ban tárolt fájlok tartalmát:
 
 ```sql
 SELECT * FROM
@@ -188,7 +188,7 @@ A következő táblázat a fent felsorolt műveletekhez szükséges engedélyeke
 | KIVÁLASZTÁS KÜLSŐ TÁBLÁBÓL | `SELECT TABLE` és `REFERENCES DATABASE SCOPED CREDENTIAL` |
 | CETAS | Tábla létrehozása:, `CREATE TABLE` , `ALTER ANY SCHEMA` `ALTER ANY DATA SOURCE` , és `ALTER ANY EXTERNAL FILE FORMAT` . Az adat olvasása: `ADMINISTER BULK OPERATIONS` vagy a `REFERENCES CREDENTIAL` `SELECT TABLE` lekérdezés + R/W engedélyének minden táblája/nézete/funkciója a Storage-ban |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már készen áll a folytatásra a következő cikkekkel:
 

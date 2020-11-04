@@ -1,6 +1,6 @@
 ---
 title: Megosztott metaadatok táblái
-description: Az Azure szinapszis Analytics olyan megosztott metaadat-modellt biztosít, amelyben egy tábla létrehozása Apache Spark az adatok duplikálása nélkül elérhetővé válik az SQL on-demand (előzetes verzió) és az SQL Pool Engine szolgáltatásból.
+description: Az Azure szinapszis Analytics olyan megosztott metaadat-modellt biztosít, amelyben egy tábla kiszolgáló nélküli Apache Spark készletből való létrehozása lehetővé teszi, hogy a kiszolgáló nélküli SQL-készletből (előzetes verzió) és a dedikált SQL-készletből az adatok duplikálása nélkül legyen elérhető.
 services: sql-data-warehouse
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,30 +10,30 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d19376d21081d899d8ff7226c6d7c5b76267fabf
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: f269217908bea4b5e8ef3c0004a9cec9d5d682c7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280448"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314545"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Az Azure szinapszis Analytics megosztott metaadatait tartalmazó táblái
 
 [!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Az Azure szinapszis Analytics lehetővé teszi, hogy a különböző munkaterület-számítási motorok megosszák az adatbázisokat és a parketta által támogatott táblákat a Apache Spark készletek (előzetes verzió) és az SQL on-demand (előzetes verzió) motorja között.
+Az Azure szinapszis Analytics lehetővé teszi, hogy a különböző munkaterület-számítási motorok a Apache Spark-készletek (előzetes verzió) és a kiszolgáló nélküli SQL-készlet (előzetes verzió) között megosszák az adatbázisokat és a parketta által támogatott táblákat.
 
 Miután létrehozta az adatbázist egy Spark-feladatokkal, a Sparkban létrehozhat olyan táblákat, amelyek tárolási formátumként használják a parketta-t. Ezek a táblák azonnal elérhetővé válnak az Azure szinapszis-munkaterület Spark-készletei bármelyikének lekérdezéséhez. Ezek bármelyik Spark-feladatból is felhasználhatók, az engedélyek alá tartoznak.
 
-A Spark által létrehozott, felügyelt és külső táblákat külső táblákként is elérhetővé teszi a megfelelő szinkronizált adatbázisban az SQL igény szerint. Az [SQL-ben a Spark-táblázat](#expose-a-spark-table-in-sql) további részleteket tartalmaz a tábla szinkronizálásával kapcsolatban.
+A Spark által létrehozott, felügyelt és külső táblák is elérhetők a kiszolgáló nélküli SQL-készletben található megfelelő szinkronizált adatbázisban található azonos nevű külső táblákként. Az [SQL-ben a Spark-táblázat](#expose-a-spark-table-in-sql) további részleteket tartalmaz a tábla szinkronizálásával kapcsolatban.
 
-Mivel a táblákat aszinkron módon szinkronizálják az SQL-be, a rendszer késést okoz, amíg meg nem jelenik.
+Mivel a táblázatok aszinkron módon lesznek szinkronizálva a kiszolgáló nélküli SQL-készletbe, a rendszer késést okoz, amíg meg nem jelenik.
 
 ## <a name="manage-a-spark-created-table"></a>Spark-létrehozott tábla kezelése
 
-A Spark segítségével kezelheti a Spark által létrehozott adatbázisokat. Például törölheti azt egy Spark-készlet feladatokon keresztül, és létrehozhat táblákat a Sparkból.
+A Spark segítségével kezelheti a Spark által létrehozott adatbázisokat. Például törölheti azt egy kiszolgáló nélküli Apache Spark Pool-feladatokon keresztül, és létrehozhat táblákat a Sparkból.
 
-Ha ilyen adatbázisban hoz létre objektumokat az SQL on-demand vagy az adatbázis eldobására, akkor a művelet sikeres lesz, de az eredeti Spark-adatbázis nem módosul.
+Ha egy ilyen adatbázisban hoz létre objektumokat a kiszolgáló nélküli SQL-készletből, vagy megpróbálja eldobni az adatbázist, a művelet sikeres lesz, de az eredeti Spark-adatbázis nem módosul.
 
 ## <a name="expose-a-spark-table-in-sql"></a>Spark-táblázat közzététele az SQL-ben
 
@@ -95,9 +95,9 @@ A mappákra és fájlokra vonatkozó engedélyek beállításával kapcsolatos t
 
 ## <a name="examples"></a>Példák
 
-### <a name="create-a-managed-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>Hozzon létre egy felügyelt táblázatot a parketta használatával a Sparkban, és kérdezze le az SQL igény szerinti lekérdezését
+### <a name="create-a-managed-table-backed-by-parquet-in-spark-and-query-from-serverless-sql-pool"></a>Felügyelt tábla létrehozása a Sparkban és a kiszolgáló nélküli SQL-készletből lekérdezéssel
 
-Ebben az esetben egy nevű Spark-adatbázissal rendelkezik `mytestdb` . Lásd: [Létrehozás és kapcsolódás egy Spark-adatbázishoz SQL-igény szerint](database.md#create-and-connect-to-spark-database-with-sql-on-demand).
+Ebben az esetben egy nevű Spark-adatbázissal rendelkezik `mytestdb` . Lásd: [Létrehozás és kapcsolódás egy Spark-adatbázishoz kiszolgáló nélküli SQL-készlettel](database.md#create-and-connect-to-spark-database-with-serverless-sql-pool).
 
 Hozzon létre egy felügyelt Spark-táblázatot a SparkSQL a következő parancs futtatásával:
 
@@ -105,7 +105,7 @@ Hozzon létre egy felügyelt Spark-táblázatot a SparkSQL a következő parancs
     CREATE TABLE mytestdb.myParquetTable(id int, name string, birthdate date) USING Parquet
 ```
 
-Ez a parancs létrehozza a táblát `myParquetTable` az adatbázisban `mytestdb` . Rövid késleltetés után megtekintheti a táblázatot az SQL on-demand használatával. Futtassa például az alábbi utasítást az SQL igény szerint.
+Ez a parancs létrehozza a táblát `myParquetTable` az adatbázisban `mytestdb` . Rövid késleltetés után megtekintheti a táblát a kiszolgáló nélküli SQL-készletben. Futtassa például a következő utasítást a kiszolgáló nélküli SQL-készletből.
 
 ```sql
     USE mytestdb;
@@ -140,7 +140,7 @@ var df = spark.CreateDataFrame(data, schema);
 df.Write().Mode(SaveMode.Append).InsertInto("mytestdb.myParquetTable");
 ```
 
-Az SQL igény szerinti adatait az alábbi módon olvashatja:
+Most már elolvashatja a kiszolgáló nélküli SQL-készlet adatait a következőképpen:
 
 ```sql
 SELECT * FROM mytestdb.dbo.myParquetTable WHERE name = 'Alice';
@@ -154,7 +154,7 @@ id | name | birthdate
 1 | Alice | 2010-01-01
 ```
 
-### <a name="create-an-external-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>Külső tábla létrehozása a Sparkban, és az SQL igény szerinti lekérdezése
+### <a name="create-an-external-table-backed-by-parquet-in-spark-and-query-from-serverless-sql-pool"></a>Külső tábla létrehozása a Sparkban lévő parketta és a kiszolgáló nélküli SQL-készlet lekérdezése alapján
 
 Ebben a példában hozzon létre egy külső Spark-táblázatot a kezelt tábla előző példájában létrehozott parketta-adatfájlok felett.
 
@@ -168,7 +168,7 @@ CREATE TABLE mytestdb.myExternalParquetTable
 
 A helyőrzőt cserélje le `<fs>` a fájlrendszer nevére, amely a munkaterület alapértelmezett fájlrendszere, a helyőrző pedig annak a `<synapse_ws>` szinapszis-munkaterületnek a neve, amelyet a példa futtatásához használ.
 
-Az előző példa létrehozza a táblát `myExtneralParquetTable` az adatbázisban `mytestdb` . Rövid késleltetés után megtekintheti a táblázatot az SQL on-demand használatával. Futtassa például az alábbi utasítást az SQL igény szerint.
+Az előző példa létrehozza a táblát `myExtneralParquetTable` az adatbázisban `mytestdb` . Rövid késleltetés után megtekintheti a táblát a kiszolgáló nélküli SQL-készletben. Futtassa például a következő utasítást a kiszolgáló nélküli SQL-készletből.
 
 ```sql
 USE mytestdb;
@@ -177,7 +177,7 @@ SELECT * FROM sys.tables;
 
 Ellenőrizze, hogy `myExternalParquetTable` szerepel-e az eredmények között.
 
-Az SQL igény szerinti adatait az alábbi módon olvashatja:
+Most már elolvashatja a kiszolgáló nélküli SQL-készlet adatait a következőképpen:
 
 ```sql
 SELECT * FROM mytestdb.dbo.myExternalParquetTable WHERE name = 'Alice';

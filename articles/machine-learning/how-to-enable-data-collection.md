@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 5a04e5a7136ac1a33766bf543a27ff7794498c26
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: be2afad7e7cb08d9c677e589846f3d67cf43e708
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996357"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314236"
 ---
 # <a name="collect-data-from-models-in-production"></a>Adatok gyűjtése üzemi modellből
 
@@ -67,11 +67,11 @@ A blob kimeneti adatelérési útja a következő szintaxist követi:
 
 - Szüksége van egy AK-fürtre. További információ a létrehozásáról és telepítéséről: a [telepítés és a hol](how-to-deploy-and-where.md).
 
-- [Állítsa be a környezetet](how-to-configure-environment.md) , és telepítse a [Azure Machine learning monitoring SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)-t.
+- [Állítsa be a környezetet](how-to-configure-environment.md) , és telepítse a [Azure Machine learning monitoring SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)-t.
 
 ## <a name="enable-data-collection"></a>Az adatgyűjtés engedélyezése
 
-Az [adatgyűjtést](https://docs.microsoft.com/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?view=azure-ml-py&preserve-view=true) a Azure Machine learning vagy más eszközökön keresztül üzembe helyezett modelltől függetlenül is engedélyezheti.
+Az [adatgyűjtést](/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?preserve-view=true&view=azure-ml-py) a Azure Machine learning vagy más eszközökön keresztül üzembe helyezett modelltől függetlenül is engedélyezheti.
 
 Az adatgyűjtés engedélyezéséhez a következőket kell tennie:
 
@@ -91,7 +91,7 @@ Az adatgyűjtés engedélyezéséhez a következőket kell tennie:
     prediction_dc = ModelDataCollector("best_model", designation="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
-    A *correlationId* egy opcionális paraméter. Nem kell használni, ha a modell nem igényli. A *correlationId* használata megkönnyíti a többi adattal, például a *LoanNumber* vagy a *Vevőkód*használatával való leképezést.
+    A *correlationId* egy opcionális paraméter. Nem kell használni, ha a modell nem igényli. A *correlationId* használata megkönnyíti a többi adattal, például a *LoanNumber* vagy a *Vevőkód* használatával való leképezést.
     
     A rendszer később az *azonosító* paramétert használja a mappa struktúrájának létrehozásához a blobban. Felhasználhatja a feldolgozott adatokból származó nyers adatok megkülönböztetésére is.
 
@@ -138,7 +138,7 @@ A blob Storage-ban összegyűjtött adatok elemzéséhez kiválaszthatja a kív�
 
 1. Nyissa meg a munkaterületet.
 
-1. Válassza a **tárterület**lehetőséget.
+1. Válassza a **tárterület** lehetőséget.
 
     [![Válassza ki a tárolási beállítást](./media/how-to-enable-data-collection/StorageLocation.png)](././media/how-to-enable-data-collection/StorageLocation.png#lightbox)
 
@@ -153,13 +153,13 @@ A blob Storage-ban összegyűjtött adatok elemzéséhez kiválaszthatja a kív�
 
 1. Töltse le és nyissa meg [Power bi Desktop](https://www.powerbi.com).
 
-1. Válassza **az adatlekérdezés** lehetőséget, és válassza az [**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources)lehetőséget.
+1. Válassza **az adatlekérdezés** lehetőséget, és válassza az [**Azure Blob Storage**](/power-bi/desktop-data-sources)lehetőséget.
 
     [![Power BI blob beállítása](./media/how-to-enable-data-collection/PBIBlob.png)](././media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
 1. Adja meg a Storage-fiók nevét, és adja meg a Storage-kulcsát. Ezt az információt a blobban található **Beállítások**  >  **hozzáférési kulcsok** lehetőség kiválasztásával érheti el.
 
-1. Válassza ki a **modell** adattárolót, és válassza a **Szerkesztés**lehetőséget.
+1. Válassza ki a **modell** adattárolót, és válassza a **Szerkesztés** lehetőséget.
 
     [![Power BI-navigátor](./media/how-to-enable-data-collection/pbiNavigator.png)](././media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
@@ -179,7 +179,7 @@ A blob Storage-ban összegyűjtött adatok elemzéséhez kiválaszthatja a kív�
 
     [![Power BI fájlok egyesítése](./media/how-to-enable-data-collection/pbiCombine.png)](././media/how-to-enable-data-collection/pbiCombine.png#lightbox)
 
-1. Válassza **a Bezárás és alkalmaz**lehetőséget.
+1. Válassza **a Bezárás és alkalmaz** lehetőséget.
 
 1. Ha hozzáadta a bemeneteket és az előrejelzéseket, a táblákat a rendszer automatikusan **kérelemazonosító** -értékek alapján rendezi.
 
@@ -187,15 +187,15 @@ A blob Storage-ban összegyűjtött adatok elemzéséhez kiválaszthatja a kív�
 
 ### <a name="analyze-model-data-using-azure-databricks"></a><a id="databricks"></a> A modell adatai elemzése Azure Databricks használatával
 
-1. Hozzon létre egy [Azure Databricks munkaterületet](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal).
+1. Hozzon létre egy [Azure Databricks munkaterületet](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal).
 
 1. Nyissa meg a Databricks-munkaterületet.
 
-1. A Databricks munkaterületen válassza az **adatok feltöltése**lehetőséget.
+1. A Databricks munkaterületen válassza az **adatok feltöltése** lehetőséget.
 
     [![Databricks adatok feltöltése lehetőség kiválasztása](./media/how-to-enable-data-collection/dbupload.png)](././media/how-to-enable-data-collection/dbupload.png#lightbox)
 
-1. Válassza az **új tábla létrehozása** lehetőséget, és válassza az **egyéb adatforrások**  >  **Azure Blob Storage**  >  **tábla létrehozása jegyzetfüzetben**elemet.
+1. Válassza az **új tábla létrehozása** lehetőséget, és válassza az **egyéb adatforrások**  >  **Azure Blob Storage**  >  **tábla létrehozása jegyzetfüzetben** elemet.
 
     [![Databricks-tábla létrehozása](./media/how-to-enable-data-collection/dbtable.PNG)](././media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 

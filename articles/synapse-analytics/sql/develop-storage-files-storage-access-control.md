@@ -1,6 +1,6 @@
 ---
-title: A Storage-fiók hozzáférésének vezérlése az SQL igény szerinti használatához (előzetes verzió)
-description: Leírja, hogyan fér hozzá az SQL on-demand (előzetes verzió) az Azure Storage szolgáltatáshoz, és hogyan szabályozhatja az SQL igény szerinti tárolási hozzáférését az Azure szinapszis Analytics szolgáltatásban.
+title: A Storage-fiók hozzáférésének szabályozása kiszolgáló nélküli SQL-készlethez (előzetes verzió)
+description: Leírja, hogy a kiszolgáló nélküli SQL-készlet (előzetes verzió) hogyan fér hozzá az Azure Storage-hoz, és Hogyan szabályozható a kiszolgáló nélküli SQL-készlet tárolási hozzáférése az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 182ab55f8e86d972293222f8a3bcf32dada89328
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 958f371a0018d20331e73d0eabba9354614d121c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91449470"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315733"
 ---
-# <a name="control-storage-account-access-for-sql-on-demand-preview"></a>A Storage-fiók hozzáférésének vezérlése az SQL igény szerinti használatához (előzetes verzió)
+# <a name="control-storage-account-access-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>A Storage-fiók hozzáférésének szabályozása kiszolgáló nélküli SQL-készlethez (előzetes verzió) az Azure szinapszis Analyticsben
 
-Az igény szerinti SQL-lekérdezés közvetlenül az Azure Storage-ból olvassa be a fájlokat. Az Azure Storage-beli fájlok eléréséhez szükséges engedélyek két szinten vannak szabályozva:
+A kiszolgáló nélküli SQL-készlet lekérdezése közvetlenül az Azure Storage-ból olvassa be a fájlokat. Az Azure Storage-beli fájlok eléréséhez szükséges engedélyek két szinten vannak szabályozva:
 - **Tárolási szint** – a felhasználónak engedéllyel kell rendelkeznie a mögöttes tárolási fájlok eléréséhez. A tároló rendszergazdájának engedélyeznie kell az Azure AD-rendszerbiztonsági tag számára a fájlok olvasását/írását, vagy a tároló eléréséhez használni kívánt SAS-kulcs létrehozását.
 - **SQL-szolgáltatási szint** – a felhasználónak engedéllyel kell rendelkeznie az `SELECT` adatok [külső táblából](develop-tables-external-tables.md) való beolvasásához vagy `ADMINISTER BULK ADMIN` a végrehajtáshoz szükséges engedélyekhez, `OPENROWSET` valamint a tároló elérésére használt hitelesítő adatok használatára is.
 
@@ -26,14 +26,14 @@ Ez a cikk ismerteti a használható hitelesítő adatok típusait, valamint azt,
 
 ## <a name="supported-storage-authorization-types"></a>Támogatott tárolási engedélyezési típusok
 
-Egy SQL igény szerinti erőforrásba bejelentkezett felhasználónak jogosultnak kell lennie az Azure Storage-ban tárolt fájlok elérésére és lekérdezésére, ha a fájlok nyilvánosan nem érhetők el. Három engedélyezési típust használhat a nem nyilvános tár – [felhasználói identitás](?tabs=user-identity), [közös hozzáférésű aláírás](?tabs=shared-access-signature)és [felügyelt identitás](?tabs=managed-identity)eléréséhez.
+A kiszolgáló nélküli SQL-készletbe bejelentkezett felhasználók számára engedélyezni kell az Azure Storage-ban tárolt fájlok elérését és lekérdezését, ha a fájlok nyilvánosan nem érhetők el. Három engedélyezési típust használhat a nem nyilvános tár – [felhasználói identitás](?tabs=user-identity), [közös hozzáférésű aláírás](?tabs=shared-access-signature)és [felügyelt identitás](?tabs=managed-identity)eléréséhez.
 
 > [!NOTE]
 > A munkaterületek létrehozásakor az **Azure ad pass-through** az alapértelmezett viselkedés.
 
 ### <a name="user-identity"></a>[Felhasználói identitás](#tab/user-identity)
 
-A **felhasználói identitás**(más néven "Azure ad pass-through") olyan engedélyezési típus, amelyben az SQL-on igénybe vett Azure ad-felhasználó identitása az adatok elérésének engedélyezésére szolgál. Az adatok elérése előtt az Azure Storage rendszergazdájának engedélyeket kell adnia az Azure AD-felhasználónak. Ahogy az alábbi táblázatban is látható, az SQL-felhasználó típusa nem támogatott.
+A **felhasználói identitás** , amely az "Azure ad pass-through" néven is ismert, olyan engedélyezési típus, ahol a kiszolgáló nélküli SQL-készletbe bejelentkezett Azure ad-felhasználó identitása az adatok elérésének engedélyezésére szolgál. Az adatok elérése előtt az Azure Storage rendszergazdájának engedélyeket kell adnia az Azure AD-felhasználónak. Ahogy az alábbi táblázatban is látható, az SQL-felhasználó típusa nem támogatott.
 
 > [!IMPORTANT]
 > Az adatok eléréséhez rendelkeznie kell egy Storage blob-adattulajdonosi/közreműködői/olvasói szerepkörrel, amely az Ön identitását használja.
@@ -49,7 +49,7 @@ A **közös hozzáférésű aláírás (SAS)** delegált hozzáférést biztosí
 SAS-token beszerzéséhez lépjen a **Azure Portal-> Storage-fiókhoz – > közös hozzáférésű aláírás – > konfigurálja az engedélyeket – > sas létrehozása és kapcsolati karakterlánc.**
 
 > [!IMPORTANT]
-> SAS-token létrehozásakor a jogkivonat elején szerepel egy kérdőjel ("?"). Ha az SQL-ben igény szerint szeretné használni a tokent, el kell távolítania a kérdőjelet ("?") a hitelesítő adatok létrehozásakor. Például:
+> SAS-token létrehozásakor a jogkivonat elején szerepel egy kérdőjel ("?"). Ha a tokent kiszolgáló nélküli SQL-készletben szeretné használni, el kell távolítania a kérdőjelet ("?") a hitelesítő adatok létrehozásakor. Például:
 >
 > SAS-jogkivonat:? SV = 2018-03-28&SS = bfqt&SRT = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = HTTPS&SIG = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
 
@@ -57,7 +57,7 @@ Ha SAS-token használatával szeretné engedélyezni a hozzáférést, létre ke
 
 ### <a name="managed-identity"></a>[Felügyelt identitás](#tab/managed-identity)
 
-A **felügyelt identitást** MSI-ként is nevezzük. Azure Active Directory (Azure AD) szolgáltatása, amely Azure-szolgáltatásokat biztosít igény szerinti SQL-szolgáltatásokhoz. Emellett automatikusan felügyelt identitást helyez üzembe az Azure AD-ben. Ez az identitás használható az Azure Storage-beli adatelérési kérelem engedélyezésére.
+A **felügyelt identitást** MSI-ként is nevezzük. Azure Active Directory (Azure AD) szolgáltatása, amely Azure-szolgáltatásokat biztosít a kiszolgáló nélküli SQL-készlethez. Emellett automatikusan felügyelt identitást helyez üzembe az Azure AD-ben. Ez az identitás használható az Azure Storage-beli adatelérési kérelem engedélyezésére.
 
 Az adatok elérése előtt az Azure Storage rendszergazdájának engedélyeket kell adnia a felügyelt identitásnak az adatok eléréséhez. A felügyelt identitásra vonatkozó engedélyek megadásának módja ugyanúgy történik, mint bármely más Azure AD-felhasználó számára.
 
@@ -95,7 +95,7 @@ Az engedélyezési és az Azure Storage-típusok következő kombinációit hasz
 
 ## <a name="credentials"></a>Hitelesítő adatok
 
-Az Azure Storage-ban található fájlok lekérdezéséhez az SQL igény szerinti végpontjának a hitelesítési adatokat tartalmazó hitelesítő adatokra van szüksége. A hitelesítő adatok két típusát használják:
+Az Azure Storage-ban található fájl lekérdezéséhez a kiszolgáló nélküli SQL-készlet végpontjának a hitelesítési adatokat tartalmazó hitelesítő adatokra van szüksége. A hitelesítő adatok két típusát használják:
 - A kiszolgálói szintű HITELESÍTő adatok a függvény használatával végrehajtott ad hoc lekérdezésekhez használatosak `OPENROWSET` . A hitelesítő adatok nevének egyeznie kell a tároló URL-címével.
 - Az adatbázis-HATÓKÖRrel rendelkező hitelesítő adatok külső táblákhoz használatosak. A külső tábla `DATA SOURCE` arra a hitelesítő adatokra hivatkozik, amelyet a tároló elérésére kell használni.
 
@@ -144,7 +144,7 @@ Az SQL-felhasználók nem használhatják az Azure AD-hitelesítést a tárolóh
 
 A következő parancsfájl egy kiszolgálói szintű hitelesítő adatot hoz létre, amelyet a függvények használhatnak az `OPENROWSET` Azure Storage-beli fájlok sas-token használatával való eléréséhez. Ennek a hitelesítő adatnak a létrehozásával engedélyezheti az olyan SQL-rendszerbiztonsági tag számára, amely végrehajtja `OPENROWSET` a függvényt az SAS-kulccsal védett fájlok olvasásához az Azure Storage-ban a hitelesítő adatok
 
-Az Exchange <*mystorageaccountname*> a tényleges Storage-fiók nevével, és <*mystorageaccountcontainername*> a tároló tényleges nevével:
+Az Exchange < *mystorageaccountname* > a tényleges Storage-fiók nevével, és < *mystorageaccountcontainername* > a tároló tényleges nevével:
 
 ```sql
 CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
@@ -318,7 +318,7 @@ SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE 
 GO
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alább felsorolt cikkek segítenek megismerni a különböző típusú mappák, fájltípusok és a nézetek létrehozásának és használatának a lekérdezését:
 

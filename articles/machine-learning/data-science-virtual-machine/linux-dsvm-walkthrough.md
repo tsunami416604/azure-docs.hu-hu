@@ -9,12 +9,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 09/17/2020
-ms.openlocfilehash: 65a627cc009699660de0897ce853acaa78381f6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0ee83cdf3ea710974ce6985db3fc8ce8782351c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275982"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315797"
 ---
 # <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>Adatelemzés Ubuntu-Data Science Virtual Machine az Azure-ban
 
@@ -28,9 +28,9 @@ A Linux-DSVM használatához a következő előfeltételek szükségesek:
 
 * **Azure-előfizetés**. Azure-előfizetés beszerzéséhez tekintse [meg még ma az ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/)című témakört.
 
-* [**Ubuntu Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). További információ a virtuális gép kiépítéséről: [az Ubuntu Data Science Virtual Machine kiépítése](linux-dsvm-intro.md).
-* A [**X2Go**](https://wiki.x2go.org/doku.php) egy nyílt Xfce-munkamenettel telepítette a számítógépre. További információ: [a X2Go-ügyfél telepítése és konfigurálása](linux-dsvm-intro.md#x2go).
-* Ha gördülékenyebb görgetést kíván, a DSVM Firefox böngészőben kapcsolja be a `gfx.xrender.enabled` jelölőt `about:config` . [További információk](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). A beállítást is érdemes megfontolni `mousewheel.enable_pixel_scrolling` `False` . [További információk](https://support.mozilla.org/questions/981140).
+* [**Ubuntu Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). További információ a virtuális gép kiépítéséről: [az Ubuntu Data Science Virtual Machine kiépítése](./release-notes.md).
+* A [**X2Go**](https://wiki.x2go.org/doku.php) egy nyílt Xfce-munkamenettel telepítette a számítógépre. További információ: [a X2Go-ügyfél telepítése és konfigurálása](dsvm-ubuntu-intro.md#x2go).
+* Ha gördülékenyebb görgetést kíván, a DSVM Firefox böngészőben kapcsolja be a `gfx.xrender.enabled` jelölőt `about:config` . [További információ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). A beállítást is érdemes megfontolni `mousewheel.enable_pixel_scrolling` `False` . [További információ](https://support.mozilla.org/questions/981140).
 
 ## <a name="download-the-spambase-dataset"></a>A spambase adatkészlet letöltése
 
@@ -62,8 +62,8 @@ mv headers spambaseHeaders.data
 
 Az adatkészlet többféle statisztikai adattípussal rendelkezik az egyes e-mailekhez:
 
-* Az olyan oszlopok, mint a **Word \_ freq \_ _Word_ ** , az e-mailben szereplő *szavak százalékos*arányát jelölik. Ha például a **Word \_ freq \_ make** értéke **1**, akkor az e-mailben szereplő összes szó 1%- *a.*
-* Oszlopok, például *a char* ** \_ freq \_ _char_ ** az e-mailben szereplő összes karakter százalékos arányát jelzi.
+* Az olyan oszlopok, mint a **Word \_ freq \_ _Word_** , az e-mailben szereplő *szavak százalékos* arányát jelölik. Ha például a **Word \_ freq \_ make** értéke **1** , akkor az e-mailben szereplő összes szó 1%- *a.*
+* Oszlopok, például *a char* **\_ freq \_ _char_** az e-mailben szereplő összes karakter százalékos arányát jelzi.
 * a **tőke \_ futtatásának \_ \_ leghosszabb hossza** a nagybetűk sorozatának leghosszabb hosszúsága.
 * a **tőke \_ futtatásának \_ \_ átlagos** hossza a nagybetűk összes sorozatának átlagos hossza.
 * a **tőke \_ futtatásának \_ hossza \_ összesen** érték a nagybetűk összes sorozatának teljes hosszát adja meg.
@@ -213,7 +213,7 @@ A keretrendszeren alapuló minták mellett átfogó útmutatók is elérhetők. 
 
 - [Útmutató a képeken belüli termékek észlelésére szolgáló teljes körű megoldás](https://github.com/Azure/cortana-intelligence-product-detection-from-images)létrehozásához: a képészlelés egy olyan technika, amely képes objektumokat megkeresni és osztályozni a képeken belül. A technológiának lehetősége van arra, hogy hatalmas előnyökkel jutalmazza a sok valós üzleti tartományát. A kiskereskedők például használhatják ezt a technikát annak meghatározására, hogy az ügyfél melyik terméket választotta fel a polcról. Ezek az információk segítenek a termékek leltározásának kezelésében. 
 
-- [Mély tanulás a hanghoz](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/): ez az oktatóanyag azt mutatja be, hogyan lehet betanítani a mély tanulási modellt a Hangesemények észlelésére a [városi hangokat tartalmazó adatkészletben](https://urbansounddataset.weebly.com/). Az oktatóanyag áttekintést nyújt a hangadatokkal való munkavégzésről.
+- [Mély tanulás a hanghoz](/archive/blogs/machinelearning/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure): ez az oktatóanyag azt mutatja be, hogyan lehet betanítani a mély tanulási modellt a Hangesemények észlelésére a [városi hangokat tartalmazó adatkészletben](https://urbansounddataset.weebly.com/). Az oktatóanyag áttekintést nyújt a hangadatokkal való munkavégzésről.
 
 - [Szöveges dokumentumok besorolása](https://github.com/anargyri/lstm_han): Ez a bemutató azt mutatja be, hogyan lehet két különböző neurális hálózati architektúrát felépíteni és betanítani: a hierarchikus hálózati és hosszú távú memória (LSTM). Ezek a neurális hálózatok a kerasz API-t használják a mélyreható tanuláshoz a szöveges dokumentumok besorolásához. A kerasz a legelterjedtebb mély tanulási keretrendszerek: Microsoft Cognitive Toolkit, TensorFlow és theano.
 
@@ -315,7 +315,7 @@ Több minta jegyzetfüzet már telepítve van a DSVM:
 
 ### <a name="rattle"></a>Rattle
 
-A [csörgő](https://cran.r-project.org/web/packages/rattle/index.html) (*R* *a*analitikus *t*OOL *t*o *L*keres *E*asily) egy grafikus R-eszköz az adatbányászathoz. A Rattle olyan intuitív kezelőfelülettel rendelkezik, amely megkönnyíti az adatterhelést, az elemzést és az átalakítást, valamint a modellek kiépítését és értékelését. [Csörgő: az R adatbányászati grafikus felhasználói felülete](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) egy olyan bemutatót biztosít, amely bemutatja a csörgő funkcióit.
+A [csörgő](https://cran.r-project.org/web/packages/rattle/index.html) ( *R* *a* analitikus *t* OOL *t* o *L* keres *E* asily) egy grafikus R-eszköz az adatbányászathoz. A Rattle olyan intuitív kezelőfelülettel rendelkezik, amely megkönnyíti az adatterhelést, az elemzést és az átalakítást, valamint a modellek kiépítését és értékelését. [Csörgő: az R adatbányászati grafikus felhasználói felülete](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) egy olyan bemutatót biztosít, amely bemutatja a csörgő funkcióit.
 
 Telepítse és indítsa el a csörgőt a következő parancsok futtatásával:
 
@@ -328,34 +328,34 @@ rattle()
 > [!NOTE]
 > Nem kell telepítenie a csörgőt a DSVM. Előfordulhat azonban, hogy a rendszer megkéri a további csomagok telepítését a csörgő megnyitásakor.
 
-A csörgő egy tabulátor-alapú felületet használ. A lapok többsége megfelel a [csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)lépéseinek, például az adat betöltésének vagy az adatfelderítésnek. Az adatelemzési folyamat balról jobbra halad a lapokon. Az utolsó lapon a csörgő által futtatott R-parancsok naplója szerepel.
+A csörgő egy tabulátor-alapú felületet használ. A lapok többsége megfelel a [csoportos adatelemzési folyamat](../team-data-science-process/index.yml)lépéseinek, például az adat betöltésének vagy az adatfelderítésnek. Az adatelemzési folyamat balról jobbra halad a lapokon. Az utolsó lapon a csörgő által futtatott R-parancsok naplója szerepel.
 
 Az adatkészlet betöltése és konfigurálása:
 
 1. A fájl betöltéséhez válassza az **adatlapot.**
-1. Válassza ki a **fájlnév**melletti választót, majd válassza az **spambaseHeaders.**-adatelemet.
-1. A fájl betöltéséhez. Válassza a **végrehajtás**lehetőséget. Az egyes oszlopok összegzését kell látnia, beleértve az azonosított adattípust is. legyen szó bemenetről, célhoz vagy más típusú változóról; és az egyedi értékek száma.
-1. A csörgő helyesen azonosította a **Levélszemét** oszlopot célként. Válassza ki a **Levélszemét** oszlopot, majd állítsa a **Target adattípus** értéket **Categoric**értékre.
+1. Válassza ki a **fájlnév** melletti választót, majd válassza az **spambaseHeaders.** -adatelemet.
+1. A fájl betöltéséhez. Válassza a **végrehajtás** lehetőséget. Az egyes oszlopok összegzését kell látnia, beleértve az azonosított adattípust is. legyen szó bemenetről, célhoz vagy más típusú változóról; és az egyedi értékek száma.
+1. A csörgő helyesen azonosította a **Levélszemét** oszlopot célként. Válassza ki a **Levélszemét** oszlopot, majd állítsa a **Target adattípus** értéket **Categoric** értékre.
 
 Az adatelemzés:
 
 1. Kattintson a **Tallózás** fülre.
-1. Ha szeretné megtekinteni a változó típusokkal és néhány összefoglaló statisztikával kapcsolatos információkat, válassza az **Összefoglalás**  >  **végrehajtás**lehetőséget.
-1. Ha meg szeretné tekinteni az egyes változókkal kapcsolatos egyéb statisztikai adatokat, válassza a további lehetőségek, például a **Leírás** vagy az **alapvető**beállítások lehetőséget.
+1. Ha szeretné megtekinteni a változó típusokkal és néhány összefoglaló statisztikával kapcsolatos információkat, válassza az **Összefoglalás**  >  **végrehajtás** lehetőséget.
+1. Ha meg szeretné tekinteni az egyes változókkal kapcsolatos egyéb statisztikai adatokat, válassza a további lehetőségek, például a **Leírás** vagy az **alapvető** beállítások lehetőséget.
 
 A **Tallózás** lapon éleslátó ábrákat is létrehozhat. Az adathisztogram ábrázolása:
 
-1. Válassza a **disztribúciók**lehetőséget.
-1. **Word_freq_remove** és **word_freq_you**esetében válassza a **hisztogram**lehetőséget.
+1. Válassza a **disztribúciók** lehetőséget.
+1. **Word_freq_remove** és **word_freq_you** esetében válassza a **hisztogram** lehetőséget.
 1. Válassza a **Végrehajtás** lehetőséget. Mindkét sűrűséget egyetlen Graph-ablakban kell látnia, ahol egyértelmű, hogy _a szó sokkal gyakrabban jelenik meg az_ e-mailekben, mint az _Eltávolítás_.
 
 A **korrelációs** mintaterületek is érdekesek. Egy mintaterület létrehozásához:
 
-1. A **Típus mezőben**válassza a **korreláció**lehetőséget.
+1. A **Típus mezőben** válassza a **korreláció** lehetőséget.
 1. Válassza a **Végrehajtás** lehetőséget.
 1. A csörgő figyelmezteti, hogy legfeljebb 40 változót javasol. A mintaterület megtekintéséhez válassza az **Igen** lehetőséget.
 
-Vannak érdekes összefüggések, amelyek a következők: a _technológia_ szorosan összefügg a _HP_ -vel és a _laborokkal_, például. Emellett a _650_ -as rendszer is szorosan összefügg, mivel az adatkészletek adományozóinak körzetszáma 650.
+Vannak érdekes összefüggések, amelyek a következők: a _technológia_ szorosan összefügg a _HP_ -vel és a _laborokkal_ , például. Emellett a _650_ -as rendszer is szorosan összefügg, mivel az adatkészletek adományozóinak körzetszáma 650.
 
 A szavak közötti korrelációk numerikus értékei a **Tallózás** ablakban érhetők el. Fontos megjegyezni, hogy például a _technológia_ negatívan összefügg a _saját és a_ _pénzével_.
 
@@ -374,20 +374,20 @@ A csörgő a fürt elemzését is képes futtatni. Kizárunk néhány funkciót,
 * word_freq_business
 * spam
 
-Térjen vissza a **fürt** lapra. Válassza a **KMeans**lehetőséget, majd állítsa a **fürtök számát** **4**-re. Válassza a **Végrehajtás** lehetőséget. Az eredmények a kimenet ablakban jelennek meg. Az egyik fürt a _George_ és a _HP_nagy gyakorisággal rendelkezik, és valószínűleg egy legitim üzleti e-mail-cím.
+Térjen vissza a **fürt** lapra. Válassza a **KMeans** lehetőséget, majd állítsa a **fürtök számát** **4** -re. Válassza a **Végrehajtás** lehetőséget. Az eredmények a kimenet ablakban jelennek meg. Az egyik fürt a _George_ és a _HP_ nagy gyakorisággal rendelkezik, és valószínűleg egy legitim üzleti e-mail-cím.
 
 Alapszintű döntés faszerkezetű gépi tanulási modell létrehozása:
 
 1. Válassza a **modell** fület,
-1. A **típushoz**válassza a **fa**elemet.
+1. A **típushoz** válassza a **fa** elemet.
 1. Az **Execute (végrehajtás** ) lehetőség kiválasztásával megjelenítheti a faszerkezetet szöveges formában a kimeneti ablakban.
 1. A **Rajzolás** gomb megnyomásával megtekintheti a grafikus verziót. A döntési fa hasonlít a korábban a rpart használatával beszerzett fához.
 
 A Rattle hasznos funkciója, hogy több gépi tanulási módszert is futtathat, és gyorsan kiértékelheti azokat. A lépések a következők:
 
-1. A **Típus mezőben**válassza az **összes**lehetőséget.
+1. A **Típus mezőben** válassza az **összes** lehetőséget.
 1. Válassza a **Végrehajtás** lehetőséget.
-1. Ha a csörgő befejezi a futást, kiválaszthat bármilyen **típusú** értéket, például a **SVM**, és megtekintheti az eredményeket.
+1. Ha a csörgő befejezi a futást, kiválaszthat bármilyen **típusú** értéket, például a **SVM** , és megtekintheti az eredményeket.
 1. Az ellenőrzési csoport modelljeinek teljesítményét az **értékelés** lapon is összehasonlíthatja. A **hiba-mátrix** kiválasztása például megjeleníti a zűrzavar mátrixot, a teljes hibát és az átlagos osztály-hibát az ellenőrzési készlet egyes modelljeinél. Emellett a ROC-görbék, az érzékenységi elemzések és más típusú modellek kiértékelései is megtekinthetők.
 
 Amikor elkészült a modellek létrehozásával, a **napló** lapon megtekintheti a csörgő által a munkamenet során futtatott R-kódot. Válassza az **Exportálás** gombot a mentéshez.
@@ -416,7 +416,7 @@ host    all             all             127.0.0.1/32            ident
 host    all             all             ::1/128                 ident
 ```
 
-Módosítsa az **IPv4 helyi kapcsolatok** vonalat úgy, hogy az **MD5** -et használja az **ident**helyett, így bejelentkezhet a Felhasználónév és a jelszó használatával:
+Módosítsa az **IPv4 helyi kapcsolatok** vonalat úgy, hogy az **MD5** -et használja az **ident** helyett, így bejelentkezhet a Felhasználónév és a jelszó használatával:
 
 ```
 # IPv4 local connections:
@@ -464,23 +464,23 @@ Most Ismerkedjen meg az adataival, és futtasson néhány lekérdezést a mókus
 
 Első lépésként nyissa meg a mókus SQL **alkalmazást az alkalmazások** menüben. Az illesztőprogram beállítása:
 
-1. Válassza a **Windows**-  >  **illesztőprogramok megtekintése**lehetőséget.
-1. Kattintson a jobb gombbal a **PostgreSQL** elemre, és válassza az **illesztőprogram módosítása**lehetőséget.
-1. Válassza a **további osztály elérési útja**  >  **Hozzáadás**lehetőséget.
-1. A **fájlnév**mezőben adja meg a **/usr/share/Java/jdbcdrivers/PostgreSQL-9.4.1208.jre6.jar**nevet.
+1. Válassza a **Windows** -  >  **illesztőprogramok megtekintése** lehetőséget.
+1. Kattintson a jobb gombbal a **PostgreSQL** elemre, és válassza az **illesztőprogram módosítása** lehetőséget.
+1. Válassza a **további osztály elérési útja**  >  **Hozzáadás** lehetőséget.
+1. A **fájlnév** mezőben adja meg a **/usr/share/Java/jdbcdrivers/PostgreSQL-9.4.1208.jre6.jar** nevet.
 1. Válassza a **Megnyitás** lehetőséget.
-1. Válassza az **illesztőprogramok listázása**lehetőséget. Az **Osztálynév**mezőben válassza a **org. PostgreSQL. Driver**elemet, majd kattintson **az OK gombra**.
+1. Válassza az **illesztőprogramok listázása** lehetőséget. Az **Osztálynév** mezőben válassza a **org. PostgreSQL. Driver** elemet, majd kattintson **az OK gombra**.
 
 A helyi kiszolgálóhoz való kapcsolódás beállítása:
 
 1. Válassza a **Windows**  >  **View aliasok lehetőséget.**
 1. Az **+** új alias létrehozásához kattintson a gombra. Az új alias neve mezőbe írja be a **Levélszemét-adatbázist**. 
-1. Az **illesztőprogram**esetében válassza a **PostgreSQL**lehetőséget.
-1. Állítsa be az URL-címet a **JDBC: PostgreSQL://localhost/spam**értékre.
+1. Az **illesztőprogram** esetében válassza a **PostgreSQL** lehetőséget.
+1. Állítsa be az URL-címet a **JDBC: PostgreSQL://localhost/spam** értékre.
 1. Adja meg a felhasználónevét és a jelszavát.
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 1. A **kapcsolódási** ablak megnyitásához kattintson duplán a **Levélszemét-adatbázis** aliasára.
-1. Kattintson a **Csatlakozás** gombra.
+1. Válassza a **Kapcsolódás** lehetőséget.
 
 Lekérdezések futtatása:
 
@@ -494,7 +494,7 @@ Az adatelemzéshez számos további lekérdezés is futtatható. Hogyan változi
 SELECT avg(word_freq_make), spam from data group by spam;
 ```
 
-Vagy milyen jellemzőkkel rendelkezik az e-mailek gyakran tartalmaznak *3D*-ket?
+Vagy milyen jellemzőkkel rendelkezik az e-mailek gyakran tartalmaznak *3D* -ket?
 
 ```SQL
 SELECT * from data order by word_freq_3d desc;
@@ -538,5 +538,3 @@ GO
 ```
 
 A mókus SQL használatával is lekérdezheti. Kövesse a PostgreSQL-hez hasonló lépéseket a SQL Server JDBC-illesztő használatával. A JDBC-illesztő a/usr/share/Java/jdbcdrivers/sqljdbc42.jar mappában található.
-
-

@@ -1,6 +1,6 @@
 ---
-title: Meglévő adattárház visszaállítása
-description: Útmutató egy meglévő SQL-készlet visszaállításához.
+title: Meglévő dedikált SQL-készlet visszaállítása
+description: Útmutató egy meglévő dedikált SQL-készlet visszaállításához.
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: dead71d08b5a7a16871816580107c8aed8a0a77c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b5ced43e1277ffbb1c9988af08ee032ab93a15e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91405105"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313497"
 ---
-# <a name="restore-an-existing-sql-pool"></a>Meglévő SQL-készlet visszaállítása
+# <a name="restore-an-existing-dedicated-sql-pool-in-azure-synapse-analytics"></a>Meglévő dedikált SQL-készlet visszaállítása az Azure szinapszis Analyticsben
 
-Ebből a cikkből megtudhatja, hogyan állíthatja vissza egy meglévő SQL-készletet az Azure szinapszis Analyticsben a Azure Portal és a PowerShell használatával.
+Ebből a cikkből megtudhatja, hogyan állíthatja vissza egy meglévő dedikált SQL-készletet az Azure szinapszis Analyticsben az Azure Portal és a PowerShell használatával.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -31,9 +31,9 @@ Ebből a cikkből megtudhatja, hogyan állíthatja vissza egy meglévő SQL-kés
 1. Győződjön meg arról, hogy a [Azure PowerShell telepítését](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)végzi.
 2. Rendelkeznie kell egy meglévő visszaállítási ponttal, amelyet vissza szeretne állítani. Ha új visszaállítást szeretne létrehozni, tekintse meg [az új felhasználó által definiált visszaállítási pont létrehozását ismertető oktatóanyagot](sql-data-warehouse-restore-points.md).
 
-## <a name="restore-an-existing-sql-pool-through-powershell"></a>Meglévő SQL-készlet visszaállítása a PowerShell használatával
+## <a name="restore-an-existing-dedicated-sql-pool-through-powershell"></a>Meglévő dedikált SQL-készlet visszaállítása a PowerShell-lel
 
-Ha egy meglévő SQL-készletet szeretne visszaállítani egy visszaállítási pontról, használja a [Restore-AzSqlDatabase PowerShell-](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancsmagot.
+Ha egy meglévő dedikált SQL-készletet szeretne visszaállítani egy visszaállítási pontról, használja a [Restore-AzSqlDatabase PowerShell-](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancsmagot.
 
 1. Nyissa meg a PowerShellt.
 
@@ -41,18 +41,18 @@ Ha egy meglévő SQL-készletet szeretne visszaállítani egy visszaállítási 
 
 3. Válassza ki azt az előfizetést, amely a visszaállítani kívánt adatbázist tartalmazza.
 
-4. Az SQL-készlet visszaállítási pontjainak listázása.
+4. A dedikált SQL-készlet visszaállítási pontjainak listázása.
 
 5. Válassza ki a kívánt visszaállítási pontot a RestorePointCreationDate használatával.
 
-6. Állítsa vissza az SQL-készletet a kívánt visszaállítási pontra a [Restore-AzSqlDatabase PowerShell-](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancsmag használatával.
+6. Állítsa vissza a dedikált SQL-készletet a kívánt visszaállítási pontra a [Restore-AzSqlDatabase PowerShell-](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancsmag használatával.
 
-    1. Ha egy másik kiszolgálóra szeretné visszaállítani az SQL-készletet, mindenképpen adja meg a másik kiszolgálónevet.  Ez a kiszolgáló más erőforráscsoport és régió is lehet.
+    1. Ha egy másik kiszolgálóra szeretné visszaállítani a dedikált SQL-készletet, ügyeljen arra, hogy a másik kiszolgálónevet adja meg.  Ez a kiszolgáló más erőforráscsoport és régió is lehet.
     2. Másik előfizetésre való visszaállításhoz használja az "áthelyezés" gombot a kiszolgáló másik előfizetésre való áthelyezéséhez.
 
-7. Ellenőrizze, hogy a visszaállított SQL-készlet online állapotban van-e.
+7. Ellenőrizze, hogy a visszaállított dedikált SQL-készlet online állapotban van-e.
 
-8. A visszaállítás befejezését követően a helyreállított SQL-készletet a helyreállítás után az [adatbázis konfigurálása](../../azure-sql/database/disaster-recovery-guidance.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)után állíthatja be.
+8. A visszaállítás befejezését követően a helyreállított dedikált SQL-készletet a helyreállítás után az [adatbázis konfigurálását](../../azure-sql/database/disaster-recovery-guidance.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)követően állíthatja be.
 
 ```Powershell
 
@@ -89,19 +89,19 @@ $RestoredDatabase.status
 
 ```
 
-## <a name="restore-an-existing-sql-pool-through-the-azure-portal"></a>Meglévő SQL-készlet visszaállítása a Azure Portal
+## <a name="restore-an-existing-dedicated-sql-pool-through-the-azure-portal"></a>Meglévő dedikált SQL-készlet visszaállítása a Azure Portal
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Navigáljon arra az SQL-készletre, amelyet vissza szeretne állítani.
-3. Az Áttekintés panel tetején válassza a **visszaállítás**lehetőséget.
+2. Navigáljon arra a dedikált helyre, amelyet vissza szeretne állítani.
+3. Az Áttekintés panel tetején válassza a **visszaállítás** lehetőséget.
 
     ![ Visszaállítás áttekintése](./media/sql-data-warehouse-restore-active-paused-dw/restoring-01.png)
 
-4. Válassza ki az **Automatikus visszaállítási pontokat** vagy a **felhasználó által definiált visszaállítási pontokat**. Ha az SQL-készlet nem rendelkezik Automatikus visszaállítási ponttal, várjon néhány órát, vagy hozzon létre egy felhasználó által definiált visszaállítási pontot a visszaállítás előtt. User-Defined visszaállítási pontok esetén válasszon ki egy meglévőt, vagy hozzon létre egy újat. A **Server**esetében választhat egy kiszolgálót egy másik erőforráscsoporthoz és régióban, vagy létrehozhat egy újat. Az összes paraméter megadása után kattintson a **felülvizsgálat + visszaállítás**elemre.
+4. Válassza ki az **Automatikus visszaállítási pontokat** vagy a **felhasználó által definiált visszaállítási pontokat**. Ha a dedikált SQL-készlet nem rendelkezik Automatikus visszaállítási ponttal, várjon néhány órát, vagy hozzon létre egy felhasználó által definiált visszaállítási pontot a visszaállítás előtt. User-Defined visszaállítási pontok esetén válasszon ki egy meglévőt, vagy hozzon létre egy újat. A **Server** esetében választhat egy kiszolgálót egy másik erőforráscsoporthoz és régióban, vagy létrehozhat egy újat. Az összes paraméter megadása után kattintson a **felülvizsgálat + visszaállítás** elemre.
 
     ![Automatikus visszaállítási pontok](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Törölt SQL-készlet visszaállítása](sql-data-warehouse-restore-deleted-dw.md)
-- [Visszaállítás egy földrajzi biztonsági mentési SQL-készletből](sql-data-warehouse-restore-from-geo-backup.md)
+- [Törölt dedikált SQL-készlet visszaállítása](sql-data-warehouse-restore-deleted-dw.md)
+- [Visszaállítás egy földrajzi biztonsági mentéssel dedikált SQL-készletből](sql-data-warehouse-restore-from-geo-backup.md)

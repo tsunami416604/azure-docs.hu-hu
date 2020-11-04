@@ -10,19 +10,19 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
-ms.openlocfilehash: b1357c9bb125cb881ac4aa6dd31c9dcaf53954f0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 538802cc2129a8e8f379c8b569bd1f8696097dab
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87919939"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314177"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Data Science Virtual Machine-alapú Team Analytics és AI-környezet 
 A [Data Science Virtual Machine](overview.md) (DSVM) az Azure platformon gazdag környezetet biztosít, amely a mesterséges intelligencia (AI) és az adatelemzések előre elkészített szoftvereit tartalmazza.
 
 A DSVM hagyományosan egyedi analitikai asztali szolgáltatásként használták. Az egyes adatszakértők a közös, előre elkészített elemzési környezettel vehetik igénybe a hatékonyságot. A nagyméretű elemzési csapatok az adatszakértők és a mesterséges intelligencia-fejlesztők számára tervezik meg a környezeteket, és az ismétlődő témák egyike egy közös elemzési infrastruktúra a fejlesztéshez és kísérletezéshez. Ezt az infrastruktúrát a vállalati informatikai szabályzatoknak megfelelően kezelik, amelyek az adatelemzési és az elemzési csapatok együttműködését és következetességét is megkönnyítik.
 
-A megosztott infrastruktúra lehetővé teszi az elemzési környezet jobb kihasználtságát. Egyes szervezetek a Team-alapú adatelemzési/elemzési infrastruktúrát egy *elemzési homokozóban*hívják meg. Lehetővé teszi az adatszakértők számára a különböző adategységek elérését az adatok gyors megismerése érdekében. Ez a homokozó-környezet lehetővé teszi az adatszakértők számára a kísérletek futtatását, a hipotézisek érvényesítését és a prediktív modellek kialakítását anélkül, hogy ez hatással lenne az éles környezetre.
+A megosztott infrastruktúra lehetővé teszi az elemzési környezet jobb kihasználtságát. Egyes szervezetek a Team-alapú adatelemzési/elemzési infrastruktúrát egy *elemzési homokozóban* hívják meg. Lehetővé teszi az adatszakértők számára a különböző adategységek elérését az adatok gyors megismerése érdekében. Ez a homokozó-környezet lehetővé teszi az adatszakértők számára a kísérletek futtatását, a hipotézisek érvényesítését és a prediktív modellek kialakítását anélkül, hogy ez hatással lenne az éles környezetre.
 
 Mivel a DSVM az Azure-infrastruktúra szintjén működnek, a rendszergazdák könnyedén konfigurálhatják a DSVM, hogy azok megfeleljenek a vállalat informatikai szabályzatának. A DSVM teljes rugalmasságot biztosít a különböző megosztási architektúrák megvalósításában, miközben felügyelt módon biztosít hozzáférést a vállalati adategységekhez.
 
@@ -37,13 +37,13 @@ A vállalati csapat elemzési környezetének kulcsfontosságú építőelemei a
 
 Ez a sorozat az előző témakörökhöz nyújt útmutatást és mutatókat. Nem fedi le az Dsvm nagyméretű vállalati konfigurációkban való üzembe helyezésével kapcsolatos szempontokat és követelményeket. Íme néhány további Azure-erőforrás, amelyet a vállalati DSVM-példányok megvalósítása során használhat:
 
-* [Hálózati biztonság](https://docs.microsoft.com/azure/security/fundamentals/network-security)
-* [Figyelés](https://docs.microsoft.com/azure/virtual-machines/windows/monitor) és [felügyelet](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
-* [Naplózás](https://docs.microsoft.com/azure/security/fundamentals/log-audit)
-* [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Hálózati biztonság](../../security/fundamentals/network-overview.md)
+* [Figyelés](../../azure-monitor/insights/monitor-vm-azure.md) és [felügyelet](../../virtual-machines/maintenance-and-updates.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json%252c%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json%253ftoc%253d%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)
+* [Naplózás](../../security/fundamentals/log-audit.md)
+* [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md)
 * [Házirend-beállítás és kényszerítés](../../governance/policy/overview.md)
-* [Kártevőirtó](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
-* [Titkosítás](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-overview)
-* [Adatfelderítés és-irányítás](https://docs.microsoft.com/azure/data-catalog/)
+* [Kártevőirtó](../../security/fundamentals/antimalware.md)
+* [Titkosítás](../../virtual-machines/windows/disk-encryption-overview.md)
+* [Adatfelderítés és-irányítás](../../data-catalog/index.yml)
 
-Végül a [Azure Architecture Center](https://docs.microsoft.com/azure/architecture/) részletes, végpontok közötti architektúrát és modelleket biztosít a felhőalapú elemzési infrastruktúra kiépítéséhez és kezeléséhez.
+Végül a [Azure Architecture Center](/azure/architecture/) részletes, végpontok közötti architektúrát és modelleket biztosít a felhőalapú elemzési infrastruktúra kiépítéséhez és kezeléséhez.
