@@ -9,23 +9,23 @@ author: peterclu
 ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: 0064509c1158d8b016413046cb528bfd125b5f2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 158541d34568b7ea02ea82dbfe90f5801824716f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362316"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325787"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Klasszikus Studio-webszolgáltatás újratanítása és üzembe helyezése
 
-**a következőkre vonatkozik:** ![ Zöld pipa. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasszikus) ![ X, amely nem.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
+**a következőkre vonatkozik:** ![ Zöld pipa. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasszikus) ![ X, amely nem. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 A gépi tanulási modellek átképzésének egyik módja annak biztosítása, hogy pontosak maradjanak, és a rendelkezésre álló legfontosabb információk alapján. Ez a cikk bemutatja, hogyan végezheti el a klasszikus Studio (klasszikus) webszolgáltatás újratanítását. Az új Studio (klasszikus) webszolgáltatás újratanításával kapcsolatos útmutatóért [tekintse meg ezt a cikket.](retrain-machine-learning-model.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk feltételezi, hogy már rendelkezik egy átképzési kísérlettel és egy prediktív kísérlettel is. Ezeket a lépéseket a [Machine learning-modellek újratanítása és üzembe helyezése](/azure/machine-learning/studio/retrain-machine-learning-model) című témakör ismerteti. A gépi tanulási modell új webszolgáltatásként való üzembe helyezése helyett azonban klasszikus webszolgáltatásként kell üzembe helyezni a prediktív kísérletet.
+Ez a cikk feltételezi, hogy már rendelkezik egy átképzési kísérlettel és egy prediktív kísérlettel is. Ezeket a lépéseket a [Machine learning-modellek újratanítása és üzembe helyezése](./retrain-machine-learning-model.md) című témakör ismerteti. A gépi tanulási modell új webszolgáltatásként való üzembe helyezése helyett azonban klasszikus webszolgáltatásként kell üzembe helyezni a prediktív kísérletet.
      
 ## <a name="add-a-new-endpoint"></a>Új végpont hozzáadása
 
@@ -47,7 +47,7 @@ Pontozási végpontokat adhat hozzá a [GitHub-tárházban](https://github.com/h
 ### <a name="use-the-azure-web-services-portal-to-add-an-endpoint"></a>Végpont hozzáadása az Azure Web Services portál használatával
 
 1. Machine Learning Studio (klasszikus), a bal oldali navigációs oszlopban kattintson a webszolgáltatások elemre.
-1. A webszolgáltatás irányítópultjának alján kattintson a **végpontok kezelése előnézet**elemre.
+1. A webszolgáltatás irányítópultjának alján kattintson a **végpontok kezelése előnézet** elemre.
 1. Kattintson a **Hozzáadás** parancsra.
 1. Adja meg az új végpont nevét és leírását. Válassza ki a naplózási szintet, valamint azt, hogy a mintaadatok engedélyezve vannak-e. További információ a naplózásról: [Machine learning webszolgáltatások naplózásának engedélyezése](web-services-logging.md).
 
@@ -60,7 +60,7 @@ Kövesse az alábbi lépéseket a javítás URL-címének beszerzéséhez a webe
 1. Jelentkezzen be a [Azure Machine learning Web Services](https://services.azureml.net/) portálra.
 1. Kattintson felül a **webszolgáltatások** vagy a **klasszikus webszolgáltatások** lehetőségre.
 1. Kattintson arra a pontozási webszolgáltatásra, amelyen dolgozik (ha nem módosította a webszolgáltatás alapértelmezett nevét, akkor a "[pontozási exp.]" kifejezés jelenik meg).
-1. Kattintson az **+ új**elemre.
+1. Kattintson az **+ új** elemre.
 1. A végpont hozzáadása után kattintson a végpont nevére.
 1. A **patch** URL-cím alatt kattintson az **API Súgó** elemre a javítási Súgó lap megnyitásához.
 
@@ -76,7 +76,7 @@ A javítás súgója lapon a használni kívánt PATCH URL-cím szerepel, és a 
 
 Most már a betanított modellt is használhatja a korábban létrehozott pontozási végpont frissítéséhez.
 
-Az alábbi mintakód bemutatja, hogyan használhatja a *BaseLocation*, a *RelativeLocation*, a *SasBlobToken*és a patch URL-címet a végpont frissítéséhez.
+Az alábbi mintakód bemutatja, hogyan használhatja a *BaseLocation* , a *RelativeLocation* , a *SasBlobToken* és a patch URL-címet a végpont frissítéséhez.
 
 ```csharp
 private async Task OverwriteModel()
@@ -123,12 +123,12 @@ A hívás *apiKey* és *endpointUrl* a végpont-irányítópultból szerezhető 
 Az *erőforrásokban* lévő *Name* paraméter értékének meg kell egyeznie a prediktív kísérletben a mentett betanított modell erőforrásának nevével. Az erőforrás nevének lekérése:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali menüben kattintson a **Machine learning**elemre.
-1. A név területen kattintson a munkaterületre, majd a **webszolgáltatások**elemre.
+1. A bal oldali menüben kattintson a **Machine learning** elemre.
+1. A név területen kattintson a munkaterületre, majd a **webszolgáltatások** elemre.
 1. A név területen kattintson a **népszámlálási modell [prediktív exp.]** elemre.
 1. Kattintson a hozzáadott új végpontra.
-1. A végpont Irányítópultján kattintson az **erőforrás frissítése**elemre.
-1. A webszolgáltatáshoz tartozó Resource API-dokumentáció frissítése oldalon megtekintheti az **erőforrás nevét** a **frissíthető erőforrások**területen.
+1. A végpont Irányítópultján kattintson az **erőforrás frissítése** elemre.
+1. A webszolgáltatáshoz tartozó Resource API-dokumentáció frissítése oldalon megtekintheti az **erőforrás nevét** a **frissíthető erőforrások** területen.
 
 Ha az SAS-jogkivonat lejár a végpont frissítése előtt, akkor a lekérést a feladatnak kell megadnia a friss jogkivonat beszerzéséhez.
 

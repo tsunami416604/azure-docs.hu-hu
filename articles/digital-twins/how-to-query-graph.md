@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 8aad0d9fde30a235903364d57a73c1c53f08ecce
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 7bb38824f2071e2575877940795f9b90a2a384b4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145786"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325761"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Az Azure Digital Twins Twin gráf lekérdezése
 
@@ -85,7 +85,7 @@ A kivetítések használatával kiválaszthatja, hogy a lekérdezés mely oszlop
 >[!NOTE]
 >Jelenleg az összetett tulajdonságok nem támogatottak. Annak ellenőrzéséhez, hogy a leképezési tulajdonságok érvényesek-e, kombinálja a kivetítéseket egy `IS_PRIMITIVE` ellenőrzéssel.
 
-Íme egy példa egy olyan lekérdezésre, amely kivetítést használ az ikrek és a kapcsolatok visszaküldéséhez. A következő lekérdezés a *fogyasztót* , a *gyárat* és az *Edge* -t olyan forgatókönyv alapján tervezi meg, ahol az *ABC* azonosítóval rendelkező *gyár* a *Factory. Customer* kapcsolaton keresztül kapcsolódik a *fogyasztóhoz* , és ez a kapcsolat a *peremhálózat* .
+Íme egy példa egy olyan lekérdezésre, amely kivetítést használ az ikrek és a kapcsolatok visszaküldéséhez. A következő lekérdezés a *fogyasztót* , a *gyárat* és az *Edge* -t olyan forgatókönyv alapján tervezi meg, ahol az *ABC* azonosítóval rendelkező *gyár* a *Factory. Customer* kapcsolaton keresztül kapcsolódik a *fogyasztóhoz* , és ez a kapcsolat a *peremhálózat*.
 
 ```sql
 SELECT Consumer, Factory, Edge
@@ -104,7 +104,7 @@ WHERE Factory.$dtId = 'ABC'
 AND IS_PRIMITIVE(Consumer.name)
 ```
 
-A kivetítés használatával egy kapcsolat tulajdonságát is visszaadhatja. Ahogy az előző példában is látható, a következő lekérdezés a Gyárhoz kapcsolódó *felhasználók* *Name (név* ) tulajdonságát az *ABC* azonosítójával együtt a *Factory. Customer* kapcsolaton keresztül. *Factory* Most azonban a kapcsolat két tulajdonságát is visszaadja, a *prop1* és a *prop2* . Ez a kapcsolati *Szegély* elnevezésével és a tulajdonságainak összegyűjtésével végezhető el.  
+A kivetítés használatával egy kapcsolat tulajdonságát is visszaadhatja. Ahogy az előző példában is látható, a következő lekérdezés a Gyárhoz kapcsolódó *felhasználók* *Name (név* ) tulajdonságát az *ABC* azonosítójával együtt a *Factory. Customer* kapcsolaton keresztül. *Factory* Most azonban a kapcsolat két tulajdonságát is visszaadja, a *prop1* és a *prop2*. Ez a kapcsolati *Szegély* elnevezésével és a tulajdonságainak összegyűjtésével végezhető el.  
 
 ```sql
 SELECT Consumer.name, Edge.prop1, Edge.prop2, Factory.area
@@ -151,7 +151,7 @@ AND T.Temperature = 70
 > [!TIP]
 > A Digital Twin AZONOSÍTÓját a rendszer a metaadatok mező használatával kérdezi le `$dtId` .
 
-Azt is megteheti, **hogy egy bizonyos tulajdonság definiálva van-e** . Itt látható egy olyan lekérdezés, amely a megadott *Location* tulajdonsággal rendelkező ikreket tartalmaz:
+Azt is megteheti, **hogy egy bizonyos tulajdonság definiálva van-e**. Itt látható egy olyan lekérdezés, amely a megadott *Location* tulajdonsággal rendelkező ikreket tartalmaz:
 
 ```sql
 SELECT *
@@ -175,39 +175,41 @@ WHERE IS_NUMBER(T.Temperature)
 
 Az `IS_OF_MODEL` operátor használható a Twin [**modell**](concepts-models.md)alapján történő szűrésre.
 
-Figyelembe veszi az [öröklési](concepts-models.md#model-inheritance) és a [verziószám-sorrendet](how-to-manage-model.md#update-models) , és kiértékeli az **igaz** értéket egy adott Twin esetében, ha a Twin megfelel a következő feltételek egyikének:
+Figyelembe veszi az [öröklést](concepts-models.md#model-inheritance) és a modell [verziószámozását](how-to-manage-model.md#update-models), és **igaz** értékre értékeli az adott Twin esetében, ha a Twin a következő feltételek valamelyikét teljesíti:
 
 * A Twin közvetlenül megvalósítja a által biztosított modellt `IS_OF_MODEL()` , a modell verziószáma pedig *nagyobb vagy egyenlő, mint* a megadott modell verziószáma.
 * A Twin olyan modellt valósít meg, amely *kibővíti* a által biztosított modellt `IS_OF_MODEL()` , és a Twin modell verziószáma *nagyobb vagy egyenlő, mint* a megadott modell verziószáma.
 
-Ez a metódus több túlterhelési lehetőséggel rendelkezik.
+Így például, ha a modellhez tartozó ikreket kérdezi le `dtmi:example:widget;4` , a lekérdezés minden olyan ikreket visszaad, amely a **4-es vagy újabb verzión** alapul, valamint **a** **4-es vagy újabb** verzióra épülő, a **widgettől örökölt modellek** esetében is.
+
+`IS_OF_MODEL` több különböző paramétert is igénybe vehet, a szakasz többi része pedig a különböző túlterhelési lehetőségekre van kijelölve.
 
 A legegyszerűbb használata `IS_OF_MODEL` csak a (z `twinTypeName` ) paramétert veszi igénybe: `IS_OF_MODEL(twinTypeName)` .
 Az alábbi példa egy olyan lekérdezési példát mutat be, amely a paraméter értékét továbbítja:
 
 ```sql
-SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1')
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:example:thing;1')
 ```
 
 Ha egynél több (például a használatban lévő) értéknél szeretne keresni egy dupla gyűjteményt `JOIN` , adja hozzá a következő `twinCollection` paramétert: `IS_OF_MODEL(twinCollection, twinTypeName)` .
 Az alábbi példa egy olyan lekérdezési példát mutat be, amely a paraméter értékét adja meg:
 
 ```sql
-SELECT * FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1')
+SELECT * FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:example:thing;1')
 ```
 
 A pontos egyezéshez adja hozzá a következő `exact` paramétert: `IS_OF_MODEL(twinTypeName, exact)` .
 Az alábbi példa egy olyan lekérdezési példát mutat be, amely a paraméter értékét adja meg:
 
 ```sql
-SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1', exact)
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:example:thing;1', exact)
 ```
 
 Mindhárom argumentumot együtt is át lehet adni: `IS_OF_MODEL(twinCollection, twinTypeName, exact)` .
 Íme egy lekérdezési példa, amely mindhárom paraméter értékét megadja:
 
 ```sql
-SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', exact)
+SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:example:thing;1', exact)
 ```
 
 ### <a name="query-based-on-relationships"></a>Lekérdezés kapcsolatok alapján
@@ -277,7 +279,7 @@ AND Room.$dtId IN ['room1', 'room2']
 
 A fenti típusú lekérdezéseket **kombinálhatja** a kombinált operátorok használatával, így több részletet is megadhat egyetlen lekérdezésben. Íme néhány további példa az összetett lekérdezésekre, amelyek egyszerre több típusú Twin-leírót kérdeznek le.
 
-| Description | Lekérdezés |
+| Leírás | Lekérdezés |
 | --- | --- |
 | A 123-as *termetű* eszközökön a kezelő szerepkört kiszolgáló MxChip-eszközöket kell visszaadnia. | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
 | Olyan ikrek beszerzése, amelyekben egy nevű kapcsolat *található* egy másik, *ID1* azonosítóval | `SELECT Room`<br>`FROM DIGITALTWINS Room`<br>`JOIN Thermostat RELATED Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
@@ -297,7 +299,7 @@ A következő operátorok támogatottak:
 | Összehasonlítás |=,! =, <, >, <=, >= |
 | Contains | , NIN |
 
-### <a name="functions"></a>Függvények
+### <a name="functions"></a>Functions
 
 A következő típusú ellenőrzési és öntési függvények támogatottak:
 
