@@ -1,7 +1,7 @@
 ---
-title: DevOps adatfeldolgozási folyamathoz
+title: A DevOps használata adatfeldolgozási folyamathoz
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan alkalmazhat DevOps-eljárásokat olyan adatfeldolgozási folyamat létrehozásához, amely az adatfeldolgozáshoz használatos az Azure Machine Learningsal való használatra. A betöltési folyamat Azure Data Factory és Azure Databricks használ. Az Azure-folyamat segítségével folyamatos integrációt és kézbesítési folyamatot hozhat létre a betöltési folyamathoz.
+description: Megtudhatja, hogyan alkalmazhat DevOps-eljárásokat egy adatfeldolgozási folyamat létrehozásához az adatelőkészítéshez. A a Azure Data Factory és Azure Databrickst használja.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,20 +12,20 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 47b41e807c4d7b9a9fce6591da6655db74f483f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e3774b360df6dce318d1d640903d0df2e21c856
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90971266"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320698"
 ---
-# <a name="devops-for-a-data-ingestion-pipeline"></a>DevOps adatfeldolgozási folyamathoz
+# <a name="devops-for-a-data-ingestion-pipeline"></a>A DevOps használata adatfeldolgozási folyamathoz
 
 A legtöbb esetben az adatfeldolgozási megoldás a parancsfájlok, a szolgáltatások meghívásai és az összes tevékenységet összehangoló folyamat. Ebből a cikkből megtudhatja, hogyan alkalmazhatja a DevOps gyakorlatokat egy olyan közös adatfeldolgozási folyamat fejlesztési életciklusára, amely előkészíti a gépi tanulási modell betanításához szükséges információkat. A folyamat a következő Azure-szolgáltatások használatával készült:
 
-* __Azure Data Factory__: beolvassa a nyers adatokat, és összehangolja az adatokat.
-* __Azure Databricks__: egy Python-jegyzetfüzetet futtat, amely átalakítja az adatfájlokat.
-* __Azure-folyamatok__: automatizálja a folyamatos integrációt és a fejlesztési folyamatot.
+* __Azure Data Factory__ : beolvassa a nyers adatokat, és összehangolja az adatokat.
+* __Azure Databricks__ : egy Python-jegyzetfüzetet futtat, amely átalakítja az adatfájlokat.
+* __Azure-folyamatok__ : automatizálja a folyamatos integrációt és a fejlesztési folyamatot.
 
 ## <a name="data-ingestion-pipeline-workflow"></a>Adatfeldolgozási folyamat munkafolyamata
 
@@ -78,12 +78,11 @@ A folyamatos integrációs folyamat végső célja, hogy összegyűjtse a közö
 
 ### <a name="python-notebook-ci"></a>Python notebook CI
 
-A Python-jegyzetfüzetek CI-folyamata beolvassa az együttműködési ág kódját (például ***Master*** vagy ***fejlesztése***), és a következő tevékenységeket végzi el:
-* Kód
+A Python-jegyzetfüzetek CI-folyamata megkapja az együttműködési ág kódját (például * **Master** _ vagy _*_fejlesztés_*_ ), és a következő tevékenységeket végzi el: _ kód
 * Egységtesztelés
 * A kód mentése összetevőként
 
-A következő kódrészlet bemutatja, hogyan hajthatja végre ezeket a lépéseket egy Azure DevOps ***YAML*** -folyamatban:
+A következő kódrészlet bemutatja, hogyan hajthatja végre ezeket a lépéseket egy Azure DevOps * **YAML** _-folyamat során:
 
 ```yaml
 steps:
@@ -99,7 +98,7 @@ steps:
 - task: PublishTestResults@2
   condition: succeededOrFailed()
   inputs:
-    testResultsFiles: '$(Build.BinariesDirectory)/*-testresults.xml'
+    testResultsFiles: '$(Build.BinariesDirectory)/_-testresults.xml'
     testRunTitle: 'Linting & Unit tests'
     failTaskOnFailedTests: true
   displayName: 'Publish linting and unit test results'
@@ -116,13 +115,13 @@ Ha a kivezetés és az egység tesztelése sikeres, a folyamat a forráskódot �
 
 ### <a name="azure-data-factory-ci"></a>Azure Data Factory CI
 
-Az adatfeldolgozási folyamatok esetében a CI folyamat egy Azure Data Factoryi folyamat szűk keresztmetszete. Nincs folyamatos integráció. A Azure Data Factory telepíthető összetevője Azure Resource Manager-sablonok gyűjteménye. A sablonok előállításának egyetlen módja, ha a Azure Data Factory munkaterület ***Közzététel*** gombjára kattint.
+Az adatfeldolgozási folyamatok esetében a CI folyamat egy Azure Data Factoryi folyamat szűk keresztmetszete. Nincs folyamatos integráció. A Azure Data Factory telepíthető összetevője Azure Resource Manager-sablonok gyűjteménye. A sablonok előállításának egyetlen módja, ha a Azure Data Factory munkaterületen a * **Közzététel** _ gombra kattint.
 
-1. Az adatmérnökök egyesítik a forráskódot a szolgáltatási ágakból az együttműködési ágban, például a ***Master*** vagy a ***fejlesztés***során. 
-1. A megadott engedélyekkel rendelkező személy a ***Közzététel*** gombra kattintva hozza Azure Resource Manager sablonokat az együttműködési ág forráskódjában. 
-1. A munkaterület ellenőrzi a folyamatokat (úgy gondolja, hogy az kihelyezés és az egység tesztelése), Azure Resource Manager sablonokat hoz létre (például az építésből), és a generált sablonokat egy technikai ***adf_publish*** ág számára menti, amely ugyanabban a tárban található (a közzétételi összetevőktől függetlenül). Ezt az ágat a Azure Data Factory munkaterület automatikusan létrehozta. 
+1. Az adatmérnökök egyesítik a forráskódot a szolgáltatási ágakból az együttműködési ágban, például a _*_Master_*_ vagy a _*_fejlesztés_*_ során. 
+1. A megadott engedélyekkel rendelkező személy a _*_Közzététel_*_ gombra kattintva hozza Azure Resource Manager sablonokat az együttműködési ág forráskódjában. 
+1. A munkaterület ellenőrzi a folyamatokat (úgy gondolja, hogy az kihelyezés és az egység tesztelése), Azure Resource Manager sablonokat hoz létre (például az építésből), és a generált sablonokat egy technikai _*_adf_publish_*_ ág számára menti, amely ugyanabban a tárban található (a közzétételi összetevőktől függetlenül). Ezt az ágat a Azure Data Factory munkaterület automatikusan létrehozta. 
 
-A folyamattal kapcsolatos további információkért lásd: [folyamatos integráció és kézbesítés Azure Data Factoryban](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment).
+A folyamattal kapcsolatos további információkért lásd: [folyamatos integráció és kézbesítés Azure Data Factoryban](../data-factory/continuous-integration-deployment.md).
 
 Fontos annak biztosítása, hogy a generált Azure Resource Manager sablonok a környezet agnosztikusok legyenek. Ez azt jelenti, hogy minden olyan érték, amely a környezetek között eltérő lehet, parametrized. Azure Data Factory elég okos ahhoz, hogy az értékek többségét elérhetővé tegye a paraméterként. A következő sablonban például a Azure Machine Learning munkaterület kapcsolódási tulajdonságai paraméterekként vannak kitéve:
 
@@ -166,7 +165,7 @@ labels = np.array(data['target'])
 ...
 ```
 
-Ez a név különbözik a ***fejlesztési***, a ***QA***-, a ***ellenőrzését***-és a ***Prod*** -környezetekben. A több tevékenységgel rendelkező összetett folyamatokban több egyéni tulajdonság is lehet. Célszerű az összes értéket összegyűjteni egy helyen, és a folyamat ***változóként***definiálni őket:
+Ez a név különbözik a _*_fejlesztési_*_ , a _*_QA_*_ -, a _*_ellenőrzését_*_ -és a _*_Prod_*_ -környezetekben. A több tevékenységgel rendelkező összetett folyamatokban több egyéni tulajdonság is lehet. Célszerű az összes értéket összegyűjteni egy helyen, és a folyamat _*_változóként_*_ definiálni őket:
 
 ![A képernyőképen egy PrepareData nevű jegyzetfüzet és egy M L művelet-végrehajtási folyamat fut, amelynek neve: M L végrehajtási folyamat felül, az alábbi változók lapon, az új változók hozzáadásával, névvel, típussal és alapértelmezett értékkel.](media/how-to-cicd-data-ingestion/adf-variables.png)
 
@@ -174,13 +173,13 @@ A folyamat tevékenységei a folyamat változóit a tényleges használat közbe
 
 ![A képernyőképen egy PrepareData nevű jegyzetfüzet és egy M L végrehajtási folyamat fut, amelynek neve: M L végrehajtási folyamat, az alább kiválasztott beállítások lapon.](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
 
-A Azure Data Factory munkaterület alapértelmezés szerint ***nem*** tesz elérhetővé Azure Resource Manager sablon paraméterként a folyamat változóit. A munkaterület az [alapértelmezett paraméterezés-sablont](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) használja, amely azt diktálja, hogy a folyamat mely tulajdonságai legyenek elérhetők Azure Resource Manager sablon paramétereinek. Ha a listához szeretné hozzáadni a folyamat változóit, frissítse az `"Microsoft.DataFactory/factories/pipelines"` [alapértelmezett paraméterezés-sablon](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) szakaszát az alábbi kódrészlettel, és helyezze el az eredmény JSON-fájlját a forrás mappa gyökerébe:
+A Azure Data Factory munkaterület alapértelmezés szerint _*_nem_*_ tesz elérhetővé Azure Resource Manager sablon paraméterként a folyamat változóit. A munkaterület az [alapértelmezett paraméterezés-sablont](../data-factory/continuous-integration-deployment.md#default-parameterization-template) használja, amely azt diktálja, hogy a folyamat mely tulajdonságai legyenek elérhetők Azure Resource Manager sablon paramétereinek. Ha a listához szeretné hozzáadni a folyamat változóit, frissítse az `"Microsoft.DataFactory/factories/pipelines"` [alapértelmezett paraméterezés-sablon](../data-factory/continuous-integration-deployment.md#default-parameterization-template) szakaszát az alábbi kódrészlettel, és helyezze el az eredmény JSON-fájlját a forrás mappa gyökerébe:
 
 ```json
 "Microsoft.DataFactory/factories/pipelines": {
         "properties": {
             "variables": {
-                "*": {
+                "_": {
                     "defaultValue": "="
                 }
             }
@@ -188,7 +187,7 @@ A Azure Data Factory munkaterület alapértelmezés szerint ***nem*** tesz elér
     }
 ```
 
-Ennek hatására a Azure Data Factory munkaterület felveszi a változókat a paraméterek listára, amikor a ***Közzététel*** gombra kattint:
+Ennek hatására a Azure Data Factory munkaterület felveszi a változókat a paraméterek listára, ha a * **Közzététel** _ gombra kattint:
 
 ```json
 {
@@ -212,18 +211,18 @@ A JSON-fájl értékei a folyamat definíciójában megadott alapértelmezett é
 
 A folyamatos kézbesítési folyamat az összetevőket veszi át, és telepíti őket az első célként megadott környezetbe. Gondoskodik arról, hogy a megoldás a tesztek futtatásával működjön. Ha a művelet sikeres, az továbbra is a következő környezetbe kerül. 
 
-A CD Azure-folyamat a környezeteket képviselő több szakaszból áll. Mindegyik szakasz a következő lépéseket végrehajtó [központi telepítéseket](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) és [feladatokat](https://docs.microsoft.com/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml) tartalmazza:
+A CD Azure-folyamat a környezeteket képviselő több szakaszból áll. Mindegyik szakasz a következő lépéseket végrehajtó [központi telepítéseket](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) és [feladatokat](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops) tartalmazza:
 
-* Python-jegyzetfüzet üzembe helyezése Azure Databricks munkaterületen
+Egy Python-jegyzetfüzet üzembe helyezése Azure Databricks munkaterületen
 * Azure Data Factory folyamat üzembe helyezése 
 * A folyamat futtatása
 * Az adatfeldolgozás eredményének ellenőrzéséhez
 
-A folyamat fázisai olyan [jóváhagyásokkal](https://docs.microsoft.com/azure/devops/pipelines/process/approvals?view=azure-devops&tabs=check-pass) és [kapukkal](https://docs.microsoft.com/azure/devops/pipelines/release/approvals/gates?view=azure-devops) konfigurálhatók, amelyek további szabályozást biztosítanak a telepítési folyamatnak a környezetek láncán való kialakulásához.
+A folyamat fázisai olyan [jóváhagyásokkal](/azure/devops/pipelines/process/approvals?tabs=check-pass&view=azure-devops) és [kapukkal](/azure/devops/pipelines/release/approvals/gates?view=azure-devops) konfigurálhatók, amelyek további szabályozást biztosítanak a telepítési folyamatnak a környezetek láncán való kialakulásához.
 
 ### <a name="deploy-a-python-notebook"></a>Python-jegyzetfüzet üzembe helyezése
 
-Az alábbi kódrészlet egy olyan Azure-alapú folyamat- [telepítést](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) határoz meg, amely egy Python-jegyzetfüzetet másol egy Databricks-fürtre:
+Az alábbi kódrészlet egy olyan Azure-alapú folyamat- [telepítést](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) határoz meg, amely egy Python-jegyzetfüzetet másol egy Databricks-fürtre:
 
 ```yaml
 - stage: 'Deploy_to_QA'
@@ -259,13 +258,13 @@ Az alábbi kódrészlet egy olyan Azure-alapú folyamat- [telepítést](https://
               displayName: 'Deploy (copy) data processing notebook to the Databricks cluster'       
 ```            
 
-A CI által előállított összetevők automatikusan átkerülnek a központi telepítési ügynökre, és elérhetők a `$(Pipeline.Workspace)` mappában. Ebben az esetben a telepítési feladat a Python-jegyzetfüzetet tartalmazó összetevőre hivatkozik `di-notebooks` . Ez [az](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) üzemelő példány a [Databricks Azure DevOps bővítmény](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks) használatával másolja a notebook-fájlokat a Databricks-munkaterületre.
+A CI által előállított összetevők automatikusan átkerülnek a központi telepítési ügynökre, és elérhetők a `$(Pipeline.Workspace)` mappában. Ebben az esetben a telepítési feladat a Python-jegyzetfüzetet tartalmazó összetevőre hivatkozik `di-notebooks` . Ez [az](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) üzemelő példány a [Databricks Azure DevOps bővítmény](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks) használatával másolja a notebook-fájlokat a Databricks-munkaterületre.
 
 A `Deploy_to_QA` szakasz az `devops-ds-qa-vg` Azure DevOps projektben definiált változóra mutató hivatkozást tartalmaz. Az ebben a szakaszban szereplő lépések a változókat az adott változócsoport (például és) változóit jelentik `$(DATABRICKS_URL)` `$(DATABRICKS_TOKEN)` . Az elképzelés az, hogy a következő szakasz (például `Deploy_to_UAT` ) ugyanazokat a változókat fogja használni, mint a saját ellenőrzését-hatókörű változó csoportjában.
 
 ### <a name="deploy-an-azure-data-factory-pipeline"></a>Azure Data Factory folyamat üzembe helyezése
 
-A Azure Data Factory telepíthető összetevője Azure Resource Manager sablon. Az ***Azure erőforráscsoport-telepítési*** feladattal lesz üzembe helyezve, mivel az alábbi kódrészletben látható:
+A Azure Data Factory telepíthető összetevője Azure Resource Manager sablon. A rendszer az * **Azure Resource Group Deployment** _ feladat használatával fogja telepíteni, ahogy az a következő kódrészletben látható:
 
 ```yaml
   - deployment: "Deploy_to_ADF"
@@ -286,7 +285,7 @@ A Azure Data Factory telepíthető összetevője Azure Resource Manager sablon. 
                 csmParametersFile: '$(Pipeline.Workspace)/adf-pipelines/ARMTemplateParametersForFactory.json'
                 overrideParameters: -data-ingestion-pipeline_properties_variables_data_file_name_defaultValue "$(DATA_FILE_NAME)"
 ```
-Az adatfájlnév paraméter értéke a `$(DATA_FILE_NAME)` minőségbiztosítási fázis változó csoportjában definiált változóból származik. Hasonlóképpen, a ***ARMTemplateForFactory.json*** definiált összes paraméter felülbírálható. Ha nem, akkor a rendszer az alapértelmezett értékeket használja.
+Az adatfájlnév paraméter értéke a `$(DATA_FILE_NAME)` minőségbiztosítási fázis változó csoportjában definiált változóból származik. Hasonlóképpen, a _*_ARMTemplateForFactory.json_*_ definiált összes paraméter felülbírálható. Ha nem, akkor a rendszer az alapértelmezett értékeket használja.
 
 ### <a name="run-the-pipeline-and-check-the-data-ingestion-result"></a>A folyamat futtatása és az adatfeldolgozás eredményének ellenőrzéséhez
 
@@ -335,15 +334,14 @@ A feladat utolsó feladata ellenőrzi a jegyzetfüzet végrehajtásának eredmé
 
 ## <a name="putting-pieces-together"></a>Összeállítás
 
-A teljes CI/CD Azure-folyamat a következő szakaszokból áll:
-* CI
+A teljes CI/CD Azure-folyamat a következő szakaszokból áll: _ CI
 * Üzembe helyezés a QA-ben
     * Üzembe helyezés a Databricks és az ADF üzembe helyezése
     * Integrációs teszt
 
-Számos ***üzembe helyezési*** fázist tartalmaz, amely megegyezik a megcélzott környezetek számával. Mindegyik ***üzembe helyezési*** szakasz két olyan [központi telepítést](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) tartalmaz, amelyek párhuzamosan futnak, valamint egy olyan [feladatot](https://docs.microsoft.com/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml) , amely az üzembe helyezést követően fut a megoldás teszteléséhez a környezetben.
+Számos * **üzembe helyezési** fázist tartalmaz, amely megegyezik a megcélzott környezetek számával. Mindegyik _*_üzembe helyezési_*_ szakasz két olyan [központi telepítést](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) tartalmaz, amelyek párhuzamosan futnak, valamint egy olyan [feladatot](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops) , amely az üzembe helyezést követően fut a megoldás teszteléséhez a környezetben.
 
-A folyamat egy minta implementációját a következő ***YAML*** -kódrészletben kell összeállítani:
+A folyamat egy minta implementációját a következő _*_YAML_*_ -kódrészletben kell összeállítani:
 
 ```yaml
 variables:
@@ -378,7 +376,7 @@ stages:
     - task: PublishTestResults@2
     condition: succeededOrFailed()
     inputs:
-        testResultsFiles: '$(Build.BinariesDirectory)/*-testresults.xml'
+        testResultsFiles: '$(Build.BinariesDirectory)/_-testresults.xml'
         testRunTitle: 'Linting & Unit tests'
         failTaskOnFailedTests: true
     displayName: 'Publish linting and unit test results'    
@@ -480,6 +478,6 @@ stages:
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Verziókövetés az Azure Data Factoryben](https://docs.microsoft.com/azure/data-factory/source-control)
-* [Folyamatos integráció és kézbesítés Azure Data Factory](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment)
+* [Verziókövetés az Azure Data Factoryben](../data-factory/source-control.md)
+* [Folyamatos integráció és kézbesítés Azure Data Factory](../data-factory/continuous-integration-deployment.md)
 * [Azure Databricks DevOps](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks)

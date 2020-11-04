@@ -10,17 +10,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: fe00d7f107911e2245041419c20f86e2e32a0480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5e514602668c96d63562e45fb114cf9770a54a9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289259"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321489"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Fejlesztési ajánlott eljárások a szinapszis SQL-hez
+
 Ez a cikk útmutatást és ajánlott eljárásokat ismertet az adattárház-megoldás fejlesztése során. 
 
-## <a name="sql-pool-development-best-practices"></a>SQL Pool-fejlesztés – ajánlott eljárások
+## <a name="dedicated-sql-pool-development-best-practices"></a>Az SQL Pool dedikált fejlesztése – ajánlott eljárások
 
 ### <a name="reduce-cost-with-pause-and-scale"></a>Költségek csökkentése felfüggesztés és méretezés által
 
@@ -55,12 +56,12 @@ A terjesztési oszlopok kiválasztásával kapcsolatos további részletekért t
 Lásd még: [táblák áttekintése](develop-tables-overview.md), [táblázat terjesztése](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), a [táblázat terjesztése](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)és [CREATE TABLE kiválasztása](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ### <a name="do-not-over-partition"></a>Túl sok partíció használatának kerülése
-Míg az adatparticionálás hatékonyan kezelheti az adatait a partíciók váltásával vagy a vizsgálatok optimalizálásával a partíciók eltávolításával, a túl sok partíció lelassíthatja a lekérdezéseket.  Gyakran olyan nagy részletességű particionálási stratégia, amely jól működik SQL Server előfordulhat, hogy nem működik megfelelően az SQL-készleten.  
+Míg az adatparticionálás hatékonyan kezelheti az adatait a partíciók váltásával vagy a vizsgálatok optimalizálásával a partíciók eltávolításával, a túl sok partíció lelassíthatja a lekérdezéseket.  Gyakran olyan nagy részletességű particionálási stratégia, amely jól használható SQL Server előfordulhat, hogy nem működik megfelelően a dedikált SQL-készleten.  
 
 > [!NOTE]
-> Gyakran olyan nagy részletességű particionálási stratégia, amely jól működik SQL Server előfordulhat, hogy nem működik megfelelően az SQL-készleten.  
+> Gyakran olyan nagy részletességű particionálási stratégia, amely jól használható SQL Server előfordulhat, hogy nem működik megfelelően a dedikált SQL-készleten.  
 
-A túl sok partíció a fürtözött oszlopcentrikus indexek hatékonyságát is csökkentheti, ha az egyes partíciók kevesebb mint 1 millió sorral rendelkeznek. Az SQL Pool a 60 adatbázisba particionálja adatait. 
+A túl sok partíció a fürtözött oszlopcentrikus indexek hatékonyságát is csökkentheti, ha az egyes partíciók kevesebb mint 1 millió sorral rendelkeznek. A dedikált SQL Pool a 60-adatbázisokba particionálja adatait. 
 
 Tehát ha 100 partíciót tartalmazó táblát hoz létre, akkor az eredmény 6000 partíció lesz.  Mindegyik számítási feladat különböző, így érdemes kísérletezni a particionálással, és kideríteni, hogy az adott számítási feladatnál melyik megoldás a célravezető.  
 
@@ -95,7 +96,7 @@ Lásd még: [táblák áttekintése](develop-tables-overview.md), [tábla adatt�
 
 ### <a name="optimize-clustered-columnstore-tables"></a>Fürtözött oszlopcentrikus táblák optimalizálása
 
-A fürtözött oszlopcentrikus indexek az egyik leghatékonyabb módszer az SQL-készletben tárolt adattároláshoz.  Alapértelmezés szerint az SQL-készletben lévő táblák fürtözött Oszlopcentrikus jönnek létre.  
+A fürtözött oszlopcentrikus indexek az egyik leghatékonyabb módszer, amellyel az adatai a dedikált SQL-készletben tárolhatók.  Alapértelmezés szerint a dedikált SQL-készletben lévő táblák fürtözött Oszlopcentrikus jönnek létre.  
 
 Annak érdekében, hogy az oszlopcentrikus táblák a lehető legjobb teljesítménnyel fussanak, fontos a jó szegmensminőség.  Amikor a sorokat nagy memóriaterhelés mellett írja oszlopcentrikus táblákba, az oszlopcentrikus szegmens minősége gyengülhet.  
 
@@ -103,7 +104,7 @@ A szegmensminőség a tömörített sorcsoportokban található sorok száma ala
 
 Mivel a kiváló minőségű oszlopcentrikus szegmensek fontosak, hasznos lehet a közepes vagy nagy erőforrás-osztályba tartozó felhasználói azonosítók használata az betöltéshez. Az alacsonyabb [adattárház-egységek](resource-consumption-models.md) használata azt jelenti, hogy nagyobb erőforrás-osztályt szeretne hozzárendelni a betöltési felhasználóhoz.
 
-Mivel a oszlopcentrikus-táblák általában nem küldenek le az adatlemezeket egy tömörített oszlopcentrikus, amíg a táblázat több mint 1 000 000 sort tartalmaz, és minden SQL Pool-tábla 60-táblázatba van particionálva, a oszlopcentrikus-táblák nem kapnak lekérdezést, kivéve, ha a tábla több mint 60 000 000 sorral rendelkezik.  
+Mivel a oszlopcentrikus-táblák általában nem küldenek le az adataikat egy tömörített oszlopcentrikus, amíg a táblázat több mint 1 000 000 sort tartalmaz, és minden dedikált SQL Pool-tábla 60-táblázatba van particionálva, a oszlopcentrikus-táblák nem kapnak lekérdezést, kivéve, ha a tábla több mint 60 000 000 sorral rendelkezik.  
 
 > [!TIP]
 > Az 60 000 000-nál kevesebb sorral rendelkező táblák esetében előfordulhat, hogy a oszlopcentrikus index nem az optimális megoldás.  
@@ -116,23 +117,23 @@ Oszlopcentrikus tábla lekérdezésekor a lekérdezések gyorsabban futnak, ha c
 
 Lásd még: [Table indexek](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [oszlopcentrikus indexek útmutató](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), [oszlopcentrikus indexek újjáépítése](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#rebuilding-indexes-to-improve-segment-quality).
 
-## <a name="sql-on-demand-development-best-practices"></a>Igény szerinti SQL-fejlesztés – ajánlott eljárások
+## <a name="serverless-sql-pool-development-best-practices"></a>A kiszolgáló nélküli SQL Pool fejlesztése – ajánlott eljárások
 
 ### <a name="general-considerations"></a>Általános megfontolások
 
-Az SQL on-demand lehetővé teszi fájlok lekérdezését az Azure Storage-fiókokban. Nem rendelkezik helyi tárterülettel vagy betöltési képességekkel, ami azt jelenti, hogy a lekérdezés által célként megadott összes fájl kívül van az SQL-on igény szerint. Így a fájlok tárterületről való olvasásával kapcsolatos minden művelet hatással lehet a lekérdezés teljesítményére.
+A kiszolgáló nélküli SQL-készlet lehetővé teszi a fájlok lekérdezését az Azure Storage-fiókokban. Nem rendelkezik helyi tárterülettel vagy betöltési képességekkel, ami azt jelenti, hogy a lekérdezés által célként megadott összes fájl kívül van a kiszolgáló nélküli SQL-készleten. Így a fájlok tárterületről való olvasásával kapcsolatos minden művelet hatással lehet a lekérdezés teljesítményére.
 
-### <a name="colocate-azure-storage-account-and-sql-on-demand"></a>Az Azure Storage-fiók és az SQL igény szerinti elhelyezése
+### <a name="colocate-azure-storage-account-and-serverless-sql-pool"></a>Azure Storage-fiók és kiszolgáló nélküli SQL-készlet közös elhelyezése
 
-A késés csökkentése érdekében helyezze el az Azure Storage-fiókját és az SQL igény szerinti végpontját. A munkaterület létrehozása során kiépített Storage-fiókok és-végpontok ugyanabban a régióban találhatók.
+A késés csökkentése érdekében helyezze el az Azure Storage-fiókot és a kiszolgáló nélküli SQL-készlet végpontját. A munkaterület létrehozása során kiépített Storage-fiókok és-végpontok ugyanabban a régióban találhatók.
 
-Az optimális teljesítmény érdekében, ha más Storage-fiókokhoz is hozzáfér az SQL igény szerint, ügyeljen arra, hogy ugyanabban a régióban legyenek. Ellenkező esetben a távoli régióról a végpont régiójára irányuló adatátvitel nagyobb késéssel jár.
+Az optimális teljesítmény érdekében, ha a kiszolgáló nélküli SQL-készlettel rendelkező más Storage-fiókokhoz fér hozzá, ügyeljen arra, hogy ugyanabban a régióban legyenek. Ellenkező esetben a távoli régióról a végpont régiójára irányuló adatátvitel nagyobb késéssel jár.
 
 ### <a name="azure-storage-throttling"></a>Azure Storage-szabályozás
 
-Több alkalmazás és szolgáltatás is hozzáférhet a Storage-fiókhoz. Ha az alkalmazások, szolgáltatások és az SQL igény szerinti munkaterhelése által generált kombinált IOPS vagy átviteli sebesség meghaladja a Storage-fiók korlátait, a tárterület-szabályozás történik. Tárolási sávszélesség esetén jelentős negatív hatással van a lekérdezés teljesítményére.
+Több alkalmazás és szolgáltatás is hozzáférhet a Storage-fiókhoz. Ha az alkalmazások, a szolgáltatások és a kiszolgáló nélküli SQL-készlet számítási feladata által generált kombinált IOPS vagy átviteli sebesség meghaladja a Storage-fiók korlátait, a tárterület-szabályozás történik. Tárolási sávszélesség esetén jelentős negatív hatással van a lekérdezés teljesítményére.
 
-A szabályozás észlelése után az SQL on-demand beépített kezeléssel rendelkezik ebben a forgatókönyvben. Az SQL igény szerint lassabban, a szabályozás feloldása után kéri a tárterületet. 
+A szabályozás észlelése után a kiszolgáló nélküli SQL-készlet beépített kezelést tartalmaz ebben a forgatókönyvben. A kiszolgáló nélküli SQL-készlet lassabb ütemben kéri a tárolást, amíg a szabályozás meg nem oldódik. 
 
 Az optimális lekérdezés-végrehajtás érdekében azonban javasoljuk, hogy a lekérdezés végrehajtása során ne hangsúlyozza a Storage-fiókot más munkaterhelésekkel.
 
@@ -140,7 +141,7 @@ Az optimális lekérdezés-végrehajtás érdekében azonban javasoljuk, hogy a 
 
 Ha lehetséges, készíthet fájlokat a jobb teljesítmény érdekében:
 
-- CSV konvertálása a parkettára – a parketta oszlopos formátumú. Mivel tömörítve van, kisebb fájlméretet tartalmaz, mint a CSV-fájlok, és az igénybe vett SQL-kérések kevesebb időt és tárterületet igényelnek az olvasáshoz.
+- CSV konvertálása a parkettára – a parketta oszlopos formátumú. Mivel tömörítve van, kisebb fájlméretet tartalmaz, mint a CSV-fájlok ugyanazzal az adattal, és a kiszolgáló nélküli SQL-készletnek kevesebb időt és tárolási kérést kell elolvasnia.
 - Ha egy lekérdezés egyetlen nagyméretű fájlt céloz meg, akkor a több kisebb fájlra való felosztása is hasznos lesz.
 - Próbálja megtartani a CSV-fájl méretét 10GB-ban.
 - Azt javasolt, hogy egyenlő méretű fájlokat lehessen használni egyetlen OPENROWSET elérési úthoz vagy egy külső tábla HELYéhez.
@@ -148,17 +149,17 @@ Ha lehetséges, készíthet fájlokat a jobb teljesítmény érdekében:
 
 ### <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>Fileinfo és filepath függvények használata adott partíciók célzásához
 
-Az adathalmazok gyakran partíciókban vannak rendszerezve. Az SQL igény szerint kérhető az adott mappák és fájlok lekérdezésére. Ez csökkenti a fájlok számát és az adatmennyiséget, amelyet a lekérdezésnek el kell olvasnia és fel kell dolgoznia. 
+Az adathalmazok gyakran partíciókban vannak rendszerezve. A kiszolgáló nélküli SQL-készletet utasíthatja arra, hogy adott mappákat és fájlokat Kérdezzen le. Ez csökkenti a fájlok számát és az adatmennyiséget, amelyet a lekérdezésnek el kell olvasnia és fel kell dolgoznia. 
 
 Így jobb teljesítményt érhet el. További információért olvassa el a [filename](query-data-storage.md#filename-function) és a [filepath](query-data-storage.md#filepath-function) függvények és példák című témakört a [megadott fájlok lekérdezéséhez](query-specific-files.md).
 
 Ha a tárolóban lévő adatok particionálása nem történik meg, érdemes particionálni, hogy ezeket a függvényeket a fájlokra irányuló lekérdezések optimalizálására is használhatja.
 
-Ha az [Azure szinapszis külső tábláihoz particionált Apache Sparkt kérdez](develop-storage-files-spark-tables.md) le az SQL igény szerint, a lekérdezés automatikusan csak a szükséges fájlokat fogja megcélozni.
+Ha az [Azure szinapszis külső tábláihoz particionált Apache Spark lekérdezést](develop-storage-files-spark-tables.md) végez kiszolgáló nélküli SQL-készletből, a lekérdezés automatikusan csak a szükséges fájlokat célozza meg.
 
 ### <a name="use-cetas-to-enhance-query-performance-and-joins"></a>A CETAS használata a lekérdezések teljesítményének és illesztésének növeléséhez
 
-A [CETAS](develop-tables-cetas.md) az SQL igény szerint elérhető legfontosabb funkcióinak egyike. A CETAS egy párhuzamos művelet, amely létrehozza a külső tábla metaadatait, és exportálja a SELECT lekérdezés eredményét a Storage-fiókban lévő fájlok egy halmazára.
+A [CETAS](develop-tables-cetas.md) a kiszolgáló nélküli SQL-készlet legfontosabb funkcióinak egyike. A CETAS egy párhuzamos művelet, amely létrehozza a külső tábla metaadatait, és exportálja a SELECT lekérdezés eredményét a Storage-fiókban lévő fájlok egy halmazára.
 
 A CETAS-t használhatja a lekérdezések gyakran használt részeinek tárolására, például az összekapcsolt hivatkozási táblákat egy új fájlra. Később is csatlakozhat ehhez az egyetlen külső táblához, és nem kell ismétlődő közös illesztéseket használnia több lekérdezésben. 
 
@@ -166,7 +167,7 @@ Ahogy a CETAS a parketta-fájlokat hozza létre, a statisztikák automatikusan l
 
 ### <a name="next-steps"></a>Következő lépések
 
-Ha a jelen cikkben nem szereplő információkra van szüksége, használja az oldal bal oldalán található **Keresés a doc** függvényt az SQL-készlet összes dokumentumának kereséséhez.  A [Microsoft Q&az SQL-készletre vonatkozó kérdés-oldal](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) egy olyan hely, amellyel kérdéseket tehet fel más felhasználóknak és az SQL Pool termék csoportjának.  
+Ha a jelen cikkben nem szereplő információkra van szüksége, használja az oldal bal oldalán található **Keresés a doc** függvényt az SQL-készlet összes dokumentumának kereséséhez.  A [Microsoft Q&az Azure szinapszis Analytics-re vonatkozó kérdés oldalának](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) célja, hogy kérdéseket tegyen fel más felhasználók és az Azure szinapszis Analytics-termékcsoport számára. Aktívan figyeljük ezt a fórumot, és gondoskodunk róla, hogy tőlünk vagy egy másik felhasználótól választ kapjon a kérdéseire.  
 
-Aktívan figyeljük ezt a fórumot, és gondoskodunk róla, hogy tőlünk vagy egy másik felhasználótól választ kapjon a kérdéseire.  Ha szeretne kérdéseket feltenni a Stack Overflowra, egy [Azure SQL-készlettel](https://stackoverflow.com/questions/tagged/azure-sqldw)is rendelkezünk stack overflow fórumban.
+Ha szeretne kérdéseket feltenni a Stack Overflowra, egy Azure-beli [szinapszis Analytics-stack overflow fórum](https://stackoverflow.com/questions/tagged/azure-sqldw)is rendelkezésre áll.
  

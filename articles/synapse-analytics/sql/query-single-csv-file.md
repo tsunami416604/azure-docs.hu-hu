@@ -1,6 +1,6 @@
 ---
-title: CSV-fájlok lekérdezése az SQL on-demand használatával (előzetes verzió)
-description: Ebből a cikkből megtudhatja, hogyan kérdezheti le az önálló CSV-fájlokat különböző fájlformátumokban az SQL on-demand (előzetes verzió) használatával.
+title: CSV-fájlok lekérdezése kiszolgáló nélküli SQL-készlettel (előzetes verzió)
+description: Ebből a cikkből megtudhatja, hogyan kérdezheti le az egyetlen CSV-fájlt különböző fájlformátumokkal a kiszolgáló nélküli SQL-készlet (előzetes verzió) használatával.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: d2f8a30503e14e647cbc9151ebcea7efa000ca07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e5a64a75ca6cde4172e49eb77dde42a44c06d5e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288290"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321456"
 ---
 # <a name="query-csv-files"></a>CSV-fájlok lekérdezése
 
-Ebből a cikkből megtudhatja, hogyan kérdezheti le egyetlen CSV-fájlt az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analyticsben. A CSV-fájlok formátuma eltérő lehet: 
+Ebből a cikkből megtudhatja, hogyan kérdezheti le egyetlen CSV-fájlt a kiszolgáló nélküli SQL-készlet (előzetes verzió) használatával az Azure szinapszis Analytics szolgáltatásban. A CSV-fájlok formátuma eltérő lehet: 
 
 - Fejléc-sorral és anélkül
 - Vesszővel és tabulátorral tagolt értékek

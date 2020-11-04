@@ -1,6 +1,6 @@
 ---
-title: SQL-készlet tranzakcióinak optimalizálása
-description: Útmutató a tranzakciós kód teljesítményének optimalizálásához az SQL-készletben.
+title: Tranzakciók optimalizálása dedikált SQL-készlethez
+description: Útmutató a tranzakciós kód teljesítményének optimalizálásához a dedikált SQL-készletben.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,22 +10,22 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 174ae84e66f10db4ad24ed561b228f0031492d97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a17e3c80f15bb1e4c5aacba4dc974e363eca285e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288647"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319862"
 ---
-# <a name="optimize-transactions-in-sql-pool"></a>Tranzakciók optimalizálása az SQL-készletben
+# <a name="optimize-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Tranzakciók optimalizálása dedikált SQL-készlettel az Azure szinapszis Analyticsben 
 
-Megtudhatja, hogyan optimalizálhatja a tranzakciós kód teljesítményét az SQL-készletben, miközben minimalizálja a hosszú visszaállítások kockázatát.
+Megtudhatja, hogyan optimalizálhatja a tranzakciós kód teljesítményét a dedikált SQL-készletben, miközben minimalizálja a hosszú visszaállítások kockázatát.
 
 ## <a name="transactions-and-logging"></a>Tranzakciók és naplózás
 
-A tranzakciók a kapcsolatok adatbázis-működtetői egyik fontos összetevője. Az SQL-készlet tranzakciókat használ az adatmódosítás során. Ezek a tranzakciók explicitek vagy implicitek lehetnek. Az egyszeri INSERT, UPDATE és DELETE utasítások mindegyike implicit tranzakcióra mutat. A Explicit tranzakciók a BEGIN TRAN, a COMMon TRAN vagy a VISSZAÁLLÍTÁSi TRAN szolgáltatást használják. A explicit tranzakciókat jellemzően akkor használják, ha több módosítási utasítást kell egyesíteni egyetlen atomi egységben.
+A tranzakciók a kapcsolatok adatbázis-működtetői egyik fontos összetevője. A dedikált SQL-készlet tranzakciókat használ az adatmódosítás során. Ezek a tranzakciók explicitek vagy implicitek lehetnek. Az egyszeri INSERT, UPDATE és DELETE utasítások mindegyike implicit tranzakcióra mutat. A Explicit tranzakciók a BEGIN TRAN, a COMMon TRAN vagy a VISSZAÁLLÍTÁSi TRAN szolgáltatást használják. A explicit tranzakciókat jellemzően akkor használják, ha több módosítási utasítást kell egyesíteni egyetlen atomi egységben.
 
-Az SQL-készlet a tranzakciós naplók használatával véglegesíti az adatbázis módosításait. Minden elosztás saját tranzakciónaplóval rendelkezik. A tranzakciónapló-írások automatikusak. Nincs szükség konfigurációra. Bár ez a folyamat garantálja az írást, a rendszer terhelést vezet be. Ezt a hatást a tranzakciós hatékony kód írásával csökkentheti. A tranzakciós szempontból hatékony kód nagyjából két kategóriába esik.
+A dedikált SQL-készlet a tranzakciós naplók használatával véglegesíti az adatbázis módosításait. Minden elosztás saját tranzakciónaplóval rendelkezik. A tranzakciónapló-írások automatikusak. Nincs szükség konfigurációra. Bár ez a folyamat garantálja az írást, a rendszer terhelést vezet be. Ezt a hatást a tranzakciós hatékony kód írásával csökkentheti. A tranzakciós szempontból hatékony kód nagyjából két kategóriába esik.
 
 * Minimális naplózási szerkezetek használata, ha lehetséges
 * Az adatfeldolgozás hatókörrel rendelkező kötegek használatával a hosszú ideig futó tranzakciók elkerülése érdekében
@@ -50,7 +50,7 @@ A következő műveletek képesek minimálisan naplózni:
 * AZ ALTER INDEX ÚJRAÉPÍTÉSE
 * DROP INDEX
 * TRUNCATE TABLE
-* TÁBLÁZAT ELDOBÁSA
+* DROP TABLE
 * MÓDOSÍTÁSI TÁBLA KAPCSOLÓJÁNAK PARTÍCIÓJA
 
 <!--
@@ -68,7 +68,7 @@ CTAS és Beszúrás... Válassza a tömeges betöltési műveletek lehetőséget
 
 | Elsődleges index | Betöltési forgatókönyv | Naplózási mód |
 | --- | --- | --- |
-| Halommemória |Bármelyik |**Minimális** |
+| Halommemória |Bármely |**Minimális** |
 | Fürtözött index |Üres céltábla |**Minimális** |
 | Fürtözött index |A betöltött sorok nem fedik át a cél meglévő lapjait |**Minimális** |
 | Fürtözött index |A betöltött sorok átfedésben vannak a cél meglévő lapjaival |Összes |
@@ -78,7 +78,7 @@ CTAS és Beszúrás... Válassza a tömeges betöltési műveletek lehetőséget
 Érdemes megjegyezni, hogy a másodlagos vagy nem fürtözött indexek frissítésére vonatkozó írások mindig teljesen naplózott műveletnek számítanak.
 
 > [!IMPORTANT]
-> Az SQL-készlethez 60-disztribúció tartozik. Ezért feltételezve, hogy az összes sort egyenletesen osztják el, és egy partíción belül kikerülnek, a kötegnek legalább 6 144 000 sort kell tartalmaznia, hogy a rendszer minimálisan naplózza a fürtözött Oszlopcentrikus indexbe való íráskor. Ha a tábla particionálva van, és a sorok kiosztási partíció határain belül vannak beszúrva, akkor a partíciók határán 6 144 000 sor szükséges, feltéve, hogy az adateloszlás is megtörténik. Az egyes eloszlások mindegyik partíciójának egymástól függetlennek kell lennie, mint a Beszúrás minimálisan megengedett 102 400-as küszöbértéke.
+> A dedikált SQL-készlet 60-disztribúcióval rendelkezik. Ezért feltételezve, hogy az összes sort egyenletesen osztják el, és egy partíción belül kikerülnek, a kötegnek legalább 6 144 000 sort kell tartalmaznia, hogy a rendszer minimálisan naplózza a fürtözött Oszlopcentrikus indexbe való íráskor. Ha a tábla particionálva van, és a sorok kiosztási partíció határain belül vannak beszúrva, akkor a partíciók határán 6 144 000 sor szükséges, feltéve, hogy az adateloszlás is megtörténik. Az egyes eloszlások mindegyik partíciójának egymástól függetlennek kell lennie, mint a Beszúrás minimálisan megengedett 102 400-as küszöbértéke.
 
 A fürtözött indexekkel rendelkező, nem üres táblába való betöltés általában a teljesen naplózott és a minimálisan naplózott sorok keverékét is tartalmazhatja. A fürtözött indexek lapok kiegyensúlyozott fastruktúrája (b-Tree). Ha a megírt lap már tartalmaz egy másik tranzakció sorait, akkor ezek az írások teljesen be lesznek jelentkezve. Ha azonban az oldal üres, akkor az adott oldalra való írás a legkevesebb naplóba kerül.
 
@@ -177,7 +177,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> A nagyméretű táblák újbóli létrehozása hasznos lehet az SQL Pool munkaterhelés-kezelési funkcióinak használatával. További információ: erőforrás- [osztályok a számítási feladatok kezeléséhez](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+> A nagyméretű táblák újbóli létrehozása kihasználhatja a dedikált SQL Pool számítási feladatok kezelési funkcióit. További információ: erőforrás- [osztályok a számítási feladatok kezeléséhez](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 ## <a name="optimize-with-partition-switching"></a>Optimalizálás partíciós váltással
 
@@ -406,20 +406,20 @@ END
 
 ## <a name="pause-and-scaling-guidance"></a>Útmutató szüneteltetése és skálázása
 
-Az Azure szinapszis Analytics lehetővé teszi az SQL-készlet [szüneteltetését, folytatását és méretezését](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) igény szerint. 
+Az Azure szinapszis Analytics lehetővé teszi a dedikált SQL-készlet [szüneteltetését, folytatását és méretezését](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) igény szerint. 
 
-Ha szünetelteti vagy méretezi az SQL-készletet, fontos tisztában lennie azzal, hogy a repülés közbeni tranzakciók azonnal megszűnnek; a nyitott tranzakciók visszaállításának visszavonása. 
+Ha szünetelteti vagy méretezi a dedikált SQL-készletet, fontos tisztában lennie azzal, hogy a repülés közbeni tranzakciók azonnal megszűnnek; a nyitott tranzakciók visszaállításának visszavonása. 
 
-Ha a munkaterhelés a szüneteltetési vagy a skálázási művelet előtt hosszú ideig futó és hiányos adatmódosítást adott ki, akkor ennek a munkának vissza kell maradnia. Ezzel a művelettel az SQL-készlet szüneteltetéséhez vagy méretezéséhez szükséges idő is hatással lehet. 
+Ha a munkaterhelés a szüneteltetési vagy a skálázási művelet előtt hosszú ideig futó és hiányos adatmódosítást adott ki, akkor ennek a munkának vissza kell maradnia. Ezzel a művelettel a dedikált SQL-készlet szüneteltetéséhez vagy méretezéséhez szükséges idő is hatással lehet. 
 
 > [!IMPORTANT]
 > Mindkettő `UPDATE` és `DELETE` teljesen naplózott művelet, így ezek a visszavonási/ismétlési műveletek jelentősen hosszabb időt vehetnek igénybe, mint az egyenértékű, minimálisan naplózott műveletek.
 
-A legjobb megoldás az, ha az SQL-készlet szüneteltetése vagy skálázása előtt befejezi a repülési adatmódosítási tranzakciók befejezését. Előfordulhat azonban, hogy ez a forgatókönyv nem mindig praktikus. A hosszú visszaállítás kockázatának enyhítéséhez vegye figyelembe az alábbi lehetőségek egyikét:
+A legjobb megoldás, ha a dedikált SQL-készlet szüneteltetése vagy skálázása előtt a repülési adatmódosítási tranzakciók befejeződik. Előfordulhat azonban, hogy ez a forgatókönyv nem mindig praktikus. A hosszú visszaállítás kockázatának enyhítéséhez vegye figyelembe az alábbi lehetőségek egyikét:
 
 * A hosszú ideig futó műveletek újraírása a [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) használatával
 * A művelet felosztása darabokra; a sorok egy részhalmazán működik
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az elkülönítési szintekkel és a tranzakciós korlátokkal kapcsolatos további tudnivalókért tekintse meg az [SQL-készletben található tranzakciókat](develop-transactions.md) .  Az egyéb ajánlott eljárások áttekintését lásd: [SQL Pool – ajánlott eljárások](best-practices-sql-pool.md).
+Az elkülönítési szintekkel és a tranzakciós korlátokkal kapcsolatos további tudnivalókért tekintse meg a [DEDIKÁLT SQL-készlet tranzakciói](develop-transactions.md) című témakört.  Az egyéb ajánlott eljárások áttekintését lásd: [SQL Pool – ajánlott eljárások](best-practices-sql-pool.md).

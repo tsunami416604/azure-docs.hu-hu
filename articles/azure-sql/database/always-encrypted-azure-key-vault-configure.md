@@ -11,13 +11,13 @@ ms.topic: how-to
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
-ms.date: 04/23/2020
-ms.openlocfilehash: 27daa160cc784665a487a0988429e3783257962e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/02/2020
+ms.openlocfilehash: 45aca00adab8ef5b33a376af34642261c5e73255
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678144"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321634"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Always Encrypted konfigurálása Azure Key Vault használatával 
 
@@ -100,8 +100,8 @@ az group create --location $location --name $resourceGroupName
 
 az keyvault create --name $vaultName --resource-group $resourceGroupName --location $location
 
-az keyvault set-policy --name $vaultName --key-permissions create, get, list, sign, unwrapKey, verify, wrapKey --resource-group $resourceGroupName --upn $userPrincipalName
-az keyvault set-policy --name $vaultName --key-permissions get, list, sign, unwrapKey, verify, wrapKey --resource-group $resourceGroupName --spn $applicationId
+az keyvault set-policy --name $vaultName --key-permissions create get list sign unwrapKey verify wrapKey --resource-group $resourceGroupName --upn $userPrincipalName
+az keyvault set-policy --name $vaultName --key-permissions get list sign unwrapKey verify wrapKey --resource-group $resourceGroupName --spn $applicationId
 ```
 
 ---
@@ -151,7 +151,7 @@ A SSMS olyan varázslót biztosít, amely megkönnyíti a Always Encrypted konfi
 
     ![Képernyőfelvétel: az oszlopok titkosításának kiemelése... menüpont.](./media/always-encrypted-azure-key-vault-configure/encrypt-columns.png)
 
-A Always Encrypted varázsló a következő szakaszokat tartalmazza: **Oszlopok kiválasztása** , **főkulcs konfigurálása** , **ellenőrzés** és **Összefoglalás** .
+A Always Encrypted varázsló a következő szakaszokat tartalmazza: **Oszlopok kiválasztása** , **főkulcs konfigurálása** , **ellenőrzés** és **Összefoglalás**.
 
 ### <a name="column-selection"></a>Oszlop kijelölése
 
@@ -204,7 +204,7 @@ Most, hogy a Always Encrypted be van állítva, létrehozhat egy olyan alkalmaz�
 
 1. Nyissa meg a Visual studiót, és hozzon létre egy új C# **Console-alkalmazást** (visual Studio 2015 és korábbi) vagy a **Console app (.NET Framework)** (Visual Studio 2017 és újabb verziók). Győződjön meg arról, hogy a projekt a **.NET-keretrendszer 4,6** -es vagy újabb verziójára van beállítva.
 2. Nevezze el a projekt **AlwaysEncryptedConsoleAKVApp** , és kattintson **az OK** gombra.
-3. Telepítse a következő NuGet-csomagokat az **eszközök**  >  **NuGet Package Manager**  >  **csomagkezelő konzolon** .
+3. Telepítse a következő NuGet-csomagokat az **eszközök**  >  **NuGet Package Manager**  >  **csomagkezelő konzolon**.
 
 Futtassa a következő két sornyi kódot a Package Manager konzolon:
 
@@ -576,7 +576,7 @@ Láthatja, hogy a titkosított oszlopok nem tartalmaznak egyszerű szöveges inf
 
    ![Képernyőkép, amely azt mutatja, hogy a titkosított oszlopok nem tartalmaznak egyszerű szöveges adattípust.](./media/always-encrypted-azure-key-vault-configure/ssms-encrypted.png)
 
-Ahhoz, hogy a SSMS használatával hozzáférhessen az egyszerű szöveges információhoz, először ellenőrizze, hogy a felhasználó rendelkezik-e megfelelő engedélyekkel a Azure Key Vault: *Get* , *unwrapKey* és *ellenőrzés* . Részletes információkért lásd: [oszlopok főkulcsainak létrehozása és tárolása (Always encrypted)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted).
+Ahhoz, hogy a SSMS használatával hozzáférhessen az egyszerű szöveges információhoz, először ellenőrizze, hogy a felhasználó rendelkezik-e megfelelő engedélyekkel a Azure Key Vault: *Get* , *unwrapKey* és *ellenőrzés*. Részletes információkért lásd: [oszlopok főkulcsainak létrehozása és tárolása (Always encrypted)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted).
 
 Ezután adja hozzá az *oszlop titkosítási beállítás = engedélyezve* paramétert a csatlakozáskor.
 

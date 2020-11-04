@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: b570968a66a0cfd60ac4d6ce6dd7dc31a1003240
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 766da55f2589e2a8eb09e0f1b1c9a0a5027c8c3c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440456"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320948"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Adatelemzés Windows Data Science Virtual Machine
 
@@ -58,7 +58,7 @@ A Jupyter megkezdése után navigáljon a `/notebooks` könyvtárba, például a
 
 * Válassza ki a jegyzetfüzetet a kód megtekintéséhez.
 * Futtassa az egyes cellákat a SHIFT + ENTER billentyűkombináció kiválasztásával.
-* Futtassa a teljes jegyzetfüzetet a **cella**futtatása lehetőség kiválasztásával  >  **Run**.
+* Futtassa a teljes jegyzetfüzetet a **cella** futtatása lehetőség kiválasztásával  >  **Run**.
 * Hozzon létre egy új jegyzetfüzetet úgy, hogy kiválasztja a Jupyter ikont (a bal felső sarokban), majd kiválasztja az **új** gombot a jobb oldalon, majd kiválasztja a jegyzetfüzet nyelvét (más néven kerneleket).   
 
 > [!NOTE]
@@ -75,13 +75,13 @@ Az R esetében használhat olyan IDE-t, mint a RStudio, amely a Start menüben v
 
 A Python esetében használhat olyan IDE-t, mint a Visual Studio Community Edition, amelyen előre telepítve van a Python Tools for Visual Studio (PTVS) bővítmény. Alapértelmezés szerint csak a Python 3,6, a root Conda-környezet van konfigurálva a PTVS. A következő lépések elvégzésével engedélyezheti az anaconda Python 2,7-et:
 
-1. Hozzon létre egyéni környezeteket az egyes verziókhoz az **eszközök**  >  **Python-eszközök**  >  **Python-környezetek**területen, majd válassza a **+ Custom** elemet a Visual Studio Community Edition kiadásban.
+1. Hozzon létre egyéni környezeteket az egyes verziókhoz az **eszközök**  >  **Python-eszközök**  >  **Python-környezetek** területen, majd válassza a **+ Custom** elemet a Visual Studio Community Edition kiadásban.
 1. Adjon meg egy leírást, és állítsa be a környezeti előtag elérési útját **c:\anaconda\envs\python2** for anaconda Python 2,7.
 1. A környezet mentéséhez válassza az **automatikus észlelés**  >  **alkalmazása** elemet.
 
-A Python-környezetek létrehozásával kapcsolatos további információkért tekintse meg a [PTVS dokumentációját](https://aka.ms/ptvsdocs) .
+A Python-környezetek létrehozásával kapcsolatos további információkért tekintse meg a [PTVS dokumentációját](/visualstudio/python/) .
 
-Most, hogy létrehoz egy új Python-projektet. Nyissa meg a **fájl**  >  **új**  >  **projekt**  >  **Python** elemet, és válassza ki az Ön által felépített Python-alkalmazás típusát. Az aktuális projekt Python-környezetét a kívánt verzióra (Python 2,7 vagy 3,6) állíthatja be úgy, hogy a jobb gombbal a **Python-környezetek** lehetőségre kattint, majd kiválasztja a **Python-környezetek hozzáadása/eltávolítása**lehetőséget. A PTVS használatáról a [termékdokumentációban](https://aka.ms/ptvsdocs)talál további információt.
+Most, hogy létrehoz egy új Python-projektet. Nyissa meg a **fájl**  >  **új**  >  **projekt**  >  **Python** elemet, és válassza ki az Ön által felépített Python-alkalmazás típusát. Az aktuális projekt Python-környezetét a kívánt verzióra (Python 2,7 vagy 3,6) állíthatja be úgy, hogy a jobb gombbal a **Python-környezetek** lehetőségre kattint, majd kiválasztja a **Python-környezetek hozzáadása/eltávolítása** lehetőséget. A PTVS használatáról a [termékdokumentációban](/visualstudio/python/)talál további információt.
 
 
 
@@ -91,7 +91,7 @@ A DSVM nem csupán azt teszi lehetővé, hogy az elemzési megoldást helyileg h
 Az Azure-előfizetések és a felhőalapú erőforrások felügyeletéhez két lehetőség közül választhat:
 + Használja a böngészőt, és lépjen a [Azure Portal](https://portal.azure.com).
 
-+ PowerShell-parancsfájlok használata. Azure PowerShell futtatása az asztal egyik parancsikonjára vagy a **Start** menüből. A részletekért tekintse meg a [Microsoft Azure PowerShell dokumentációját](../../powershell-azure-resource-manager.md) . 
++ PowerShell-parancsfájlok használata. Azure PowerShell futtatása az asztal egyik parancsikonjára vagy a **Start** menüből. A részletekért tekintse meg a [Microsoft Azure PowerShell dokumentációját](../../azure-resource-manager/management/manage-resources-powershell.md) . 
 
 ## <a name="extend-storage-by-using-shared-file-systems"></a>Tárterület kiterjesztése megosztott fájlrendszerek használatával
 Az adatszakértők megoszthatnak nagy adatkészleteket, kódokat vagy más erőforrásokat a csapaton belül. A DSVM körülbelül 45 GB szabad területtel rendelkezik. A tárterület bővítéséhez Azure Files használhat, és csatlakoztathatja egy vagy több DSVM-példányhoz, vagy elérheti azt egy REST API keresztül. A [Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md) is használhatja, vagy a [Azure PowerShell](../../virtual-machines/windows/attach-disk-ps.md) használatával további dedikált adatlemezeket adhat hozzá. 
@@ -162,7 +162,7 @@ Az Azure Blob Storage egy megbízható, gazdaságos felhőalapú tárolási szol
 
    ![Képernyőfelvétel a Storage-fiók létrehozási folyamatáról a Azure Portal](./media/vm-do-ten-things/create-azure-blob.png)
 
-* Ellenőrizze, hogy a parancssori AzCopy eszköz előre van-e telepítve: ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` . A azcopy.exet tartalmazó könyvtár már a PATH környezeti változóban van, így az eszköz futtatásakor nem lehet beírni a teljes parancs elérési útját. A AzCopy eszközzel kapcsolatos további információkért tekintse meg a [AzCopy dokumentációját](../../storage/common/storage-use-azcopy.md).
+* Ellenőrizze, hogy a parancssori AzCopy eszköz előre van-e telepítve: ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` . A azcopy.exet tartalmazó könyvtár már a PATH környezeti változóban van, így az eszköz futtatásakor nem lehet beírni a teljes parancs elérési útját. A AzCopy eszközzel kapcsolatos további információkért tekintse meg a [AzCopy dokumentációját](../../storage/common/storage-use-azcopy-v10.md).
 * Indítsa el a Azure Storage Explorer eszközt. A  [Storage Explorer weboldaláról](https://storageexplorer.com/)tölthető le. 
 
    ![A Storage-fiók elérésének Azure Storage Explorer képernyőképe](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
@@ -197,7 +197,7 @@ Miután futtatta a AzCopy parancsot egy Azure-blobba való másolásra, a fájl 
 Az adatok a virtuális gépen lévő helyi fájlból is tölthetők fel Azure Storage Explorer használatával:
 
 * Az adatok tárolóba való feltöltéséhez válassza ki a tárolót, és kattintson a **feltöltés** gombra. ![ Képernyőkép a feltöltés gombról Azure Storage Explorer](./media/vm-do-ten-things/storage-accounts.png)
-* A **fájlok** mező jobb oldalán válassza a három pontot (**..**.), válassza ki a fájlrendszerből feltölteni kívánt fájlokat, majd válassza a **feltöltés** lehetőséget a fájlok feltöltésének megkezdéséhez. ![ Képernyőfelvétel a fájlok feltöltése párbeszédpanelről](./media/vm-do-ten-things/upload-files-to-blob.png)
+* A **fájlok** mező jobb oldalán válassza a három pontot ( **..**.), válassza ki a fájlrendszerből feltölteni kívánt fájlokat, majd válassza a **feltöltés** lehetőséget a fájlok feltöltésének megkezdéséhez. ![ Képernyőfelvétel a fájlok feltöltése párbeszédpanelről](./media/vm-do-ten-things/upload-files-to-blob.png)
 
 #### <a name="read-data-from-an-azure-blob-python-odbc"></a>Adatok beolvasása egy Azure-blobból: Python ODBC
 
@@ -255,7 +255,7 @@ Az adatgyűjtés adatkeretként történik:
 ### <a name="azure-synapse-analytics-formerly-sql-dw-and-databases"></a>Azure szinapszis Analytics (korábban SQL DW) és adatbázisok
 Az Azure szinapszis Analytics (korábbi nevén SQL DW) egy rugalmas adattárház, amely nagyvállalati szintű SQL Server felülettel rendelkezik.
 
-Az Azure szinapszis Analytics kiépítéséhez kövesse az ebben a [cikkben](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)található utasításokat. Az Azure szinapszis Analytics üzembe helyezése után [ezzel az útmutatóval](../team-data-science-process/sqldw-walkthrough.md) az adatok feltöltését, feltárását és modellezését végezheti el az Azure szinapszis Analytics szolgáltatásban található adatok használatával.
+Az Azure szinapszis Analytics kiépítéséhez kövesse az ebben a [cikkben](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)található utasításokat. Az Azure szinapszis Analytics üzembe helyezése után [ezzel az útmutatóval](../team-data-science-process/sqldw-walkthrough.md) az adatok feltöltését, feltárását és modellezését végezheti el az Azure szinapszis Analytics szolgáltatásban található adatok használatával.
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 Azure Cosmos DB egy NoSQL-adatbázis a felhőben. Használhatja a JSON-hoz hasonló dokumentumokkal, valamint a dokumentumok tárolására és lekérdezésére.
@@ -269,7 +269,7 @@ A következő előfeltételek végrehajtásával érheti el Azure Cosmos DB a DS
    
     `/s:JsonFile /s.Files:https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 
-Az adat importálása után nyissa meg a Jupyter, és nyissa meg a *DocumentDBSample*című jegyzetfüzetet. Python-kódot tartalmaz a Azure Cosmos DB eléréséhez, és elvégezheti az alapszintű lekérdezéseket. A Azure Cosmos DBról további információt a szolgáltatás [dokumentációs oldalának](https://docs.microsoft.com/azure/cosmos-db/)webhelyén talál.
+Az adat importálása után nyissa meg a Jupyter, és nyissa meg a *DocumentDBSample* című jegyzetfüzetet. Python-kódot tartalmaz a Azure Cosmos DB eléréséhez, és elvégezheti az alapszintű lekérdezéseket. A Azure Cosmos DBról további információt a szolgáltatás [dokumentációs oldalának](../../cosmos-db/index.yml)webhelyén talál.
 
 ## <a name="use-power-bi-reports-and-dashboards"></a>Power BI jelentések és irányítópultok használata 
 Megjelenítheti a vulkáni JSON-fájlt az előző Azure Cosmos DB például Power BI Desktop, hogy vizuális elemzéseket nyerjen az adatokból. A részletes lépések a [Power bi cikkben](../../cosmos-db/powerbi-visualize.md)találhatók. A magas szintű lépések:
@@ -315,7 +315,7 @@ Előfordulhat, hogy néhány nagy méretű elemzést kell kezelnie, és több PR
 ## <a name="add-more-tools"></a>További eszközök hozzáadása
 A DSVM beépített eszközök számos gyakori adatelemzési igényt tudnak kezelni. Ezzel időt takaríthat meg, mert nem kell egyenként telepítenie és konfigurálnia a környezeteket. Pénzt takarít meg, mivel csak a felhasznált erőforrásokért kell fizetnie.
 
-A cikkben ismertetett egyéb Azure-adatelemzési és-elemzési szolgáltatások segítségével javíthatja az elemzési környezetét. Bizonyos esetekben további eszközökre lehet szükség, beleértve néhány saját partneri eszközt is. A virtuális gépen teljes körű rendszergazdai hozzáféréssel rendelkezik a szükséges új eszközök telepítéséhez. További csomagokat is telepíthet a Pythonban és az R-ben, amelyek nincsenek előre telepítve. A Python esetében használhatja a vagy a programot is ```conda``` ```pip``` . Az r esetében használhatja az ```install.packages()``` r-konzolt, vagy használhatja az ide-t, és válassza a **csomagok**  >  **telepítési csomagok**lehetőséget.
+A cikkben ismertetett egyéb Azure-adatelemzési és-elemzési szolgáltatások segítségével javíthatja az elemzési környezetét. Bizonyos esetekben további eszközökre lehet szükség, beleértve néhány saját partneri eszközt is. A virtuális gépen teljes körű rendszergazdai hozzáféréssel rendelkezik a szükséges új eszközök telepítéséhez. További csomagokat is telepíthet a Pythonban és az R-ben, amelyek nincsenek előre telepítve. A Python esetében használhatja a vagy a programot is ```conda``` ```pip``` . Az r esetében használhatja az ```install.packages()``` r-konzolt, vagy használhatja az ide-t, és válassza a **csomagok**  >  **telepítési csomagok** lehetőséget.
 
 ## <a name="deep-learning"></a>Deep learning
 
@@ -326,10 +326,9 @@ A keretrendszeren alapuló mintákon kívül olyan átfogó útmutatók is besze
 
 - [Útmutató a képeken belüli termékek észlelésére szolgáló teljes körű megoldás](https://github.com/Azure/cortana-intelligence-product-detection-from-images)létrehozásához: a képészlelés egy olyan technika, amely képes objektumokat megkeresni és osztályozni a képeken belül. Ez a technológia jelentős előnyökkel bír számos valós üzleti tartományban. A kiskereskedők például használhatják ezt a technikát annak meghatározására, hogy az ügyfél melyik terméket választotta fel a polcról. Ezek az információk segítenek a termékek leltározásának kezelésében. 
 
-- [Mély tanulás a hanggal](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/): ez az oktatóanyag azt mutatja be, hogyan lehet betanítani a Hangesemények észlelésére szolgáló mélyreható tanulási modellt a [városi hangok adatkészletében](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html). Emellett áttekintést nyújt a hangadatokkal való munkáról.
+- [Mély tanulás a hanggal](/archive/blogs/machinelearning/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure): ez az oktatóanyag azt mutatja be, hogyan lehet betanítani a Hangesemények észlelésére szolgáló mélyreható tanulási modellt a [városi hangok adatkészletében](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html). Emellett áttekintést nyújt a hangadatokkal való munkáról.
 
 - [Szöveges dokumentumok besorolása](https://github.com/anargyri/lstm_han): Ez a bemutató azt mutatja be, hogyan lehet két neurális hálózati architektúrát létrehozni és betanítani: hierarchikus figyelmet a hálózatra és a hosszú távú memória-(LSTM-) hálózatra. Ezek a neurális hálózatok a kerasz API-t használják a mélyreható tanuláshoz a szöveges dokumentumok besorolásához. 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Ez a cikk néhány olyan dolgot ismertetett, amelyet a Microsoft Data Science Virtual Machine végezhet el. Számos további dolgot tehet a DSVM hatékony elemzési környezetének elvégzéséhez.
-

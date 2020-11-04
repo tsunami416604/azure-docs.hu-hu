@@ -1,6 +1,6 @@
 ---
-title: Táblázatok statisztikáinak létrehozása és frissítése az Azure szinapszis SQL használatával
-description: Javaslatok és példák a lekérdezés-optimalizálási statisztikák létrehozására és frissítésére a szinapszis SQL-készlet tábláiban.
+title: Statisztikák létrehozása és frissítése a táblákon
+description: Javaslatok és példák a lekérdezés-optimalizálási statisztikák létrehozására és frissítésére a dedikált SQL-készlet tábláiban.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,42 +11,42 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 15ba0d4b77461d77a2d0b89ecc9e411a105d49d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9349c5d1c4e6255dc0854537bb7e93e3e636ce8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88799315"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321061"
 ---
-# <a name="table-statistics-in-synapse-sql-pool"></a>Táblázat statisztikái a szinapszis SQL-készletben
+# <a name="table-statistics-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>A dedikált SQL-készlet táblázatos statisztikái az Azure szinapszis Analyticsben
 
-Ebben a cikkben javaslatokat és példákat talál a lekérdezés-optimalizálási statisztikák létrehozásához és frissítéséhez az SQL-készlet tábláiban.
+Ez a cikk ajánlásokat és példákat tartalmaz a lekérdezés-optimalizálási statisztikák létrehozására és frissítésére a dedikált SQL-készlet tábláiban.
 
 ## <a name="why-use-statistics"></a>Miért használja a statisztikát?
 
-Minél több SQL-készlet ismeri az adatait, annál gyorsabban végezhet lekérdezéseket. Miután betöltötte az adatokat az SQL-készletbe, az adatokra vonatkozó statisztikák gyűjtése az egyik legfontosabb dolog, amit a lekérdezések optimalizálására használhat.
+Minél több dedikált SQL-készlet ismeri az adatait, annál gyorsabban végezhet lekérdezéseket. Miután betöltötte az adatokat a dedikált SQL-készletbe, az adatokra vonatkozó statisztikák gyűjtése az egyik legfontosabb dolog, amit a lekérdezések optimalizálására tehet.
 
-Az SQL Pool lekérdezés-optimalizáló egy költséghatékony optimalizáló. Összehasonlítja a különböző lekérdezési csomagok költségeit, majd kiválasztja a legalacsonyabb díjszabású csomagot. A legtöbb esetben azt a tervet választja, amely a leggyorsabb végrehajtást fogja végrehajtani.
+A dedikált SQL Pool lekérdezés-optimalizáló egy költséghatékony optimalizáló. Összehasonlítja a különböző lekérdezési csomagok költségeit, majd kiválasztja a legalacsonyabb díjszabású csomagot. A legtöbb esetben azt a tervet választja, amely a leggyorsabb végrehajtást fogja végrehajtani.
 
 Ha például az optimalizáló becslése szerint a lekérdezés szűrésének dátuma egy sort ad vissza, akkor egy csomagot fog kiválasztani. Ha úgy becsüli, hogy a kijelölt dátum 1 000 000 sort ad vissza, akkor egy másik csomagot ad vissza.
 
 ## <a name="automatic-creation-of-statistic"></a>Statisztika automatikus létrehozása
 
-Ha az adatbázis AUTO_CREATE_STATISTICS lehetőség be van kapcsolva, az SQL-készlet elemzi a hiányzó statisztikai adatok bejövő felhasználói lekérdezéseit.
+Ha az adatbázis AUTO_CREATE_STATISTICS lehetőség be van kapcsolva, a dedikált SQL-készlet elemzi a bejövő felhasználói lekérdezéseket a hiányzó statisztikákhoz.
 
 Ha a statisztikai adatok hiányoznak, a lekérdezés-optimalizáló a lekérdezési predikátum egyes oszlopaira vonatkozó statisztikát hoz létre, vagy összekapcsolási feltételt biztosít a lekérdezési tervhez tartozó sarkalatos becslések javítására
 
 > [!NOTE]
 > A statisztikák automatikus létrehozása jelenleg alapértelmezés szerint be van kapcsolva.
 
-A következő parancs futtatásával megtekintheti, hogy az SQL-készlet AUTO_CREATE_STATISTICS konfigurálva van-e:
+A következő parancs futtatásával megtekintheti, hogy a dedikált SQL-készlet AUTO_CREATE_STATISTICS konfigurálva van-e:
 
 ```sql
 SELECT name, is_auto_create_stats_on
 FROM sys.databases
 ```
 
-Ha az SQL-készlet nem rendelkezik AUTO_CREATE_STATISTICS konfigurálva, javasoljuk, hogy engedélyezze ezt a tulajdonságot a következő parancs futtatásával:
+Ha a dedikált SQL-készlet nem rendelkezik AUTO_CREATE_STATISTICS konfigurálva, javasoljuk, hogy engedélyezze ezt a tulajdonságot a következő parancs futtatásával:
 
 ```sql
 ALTER DATABASE <yourdatawarehousename>
@@ -72,7 +72,7 @@ A mérhető teljesítmény elkerülése érdekében először létre kell hoznia
 > [!NOTE]
 > A statisztikák létrehozása [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) egy másik felhasználói környezet alatt lesz naplózva.
 
-Az automatikus statisztikák létrehozásakor a rendszer a (z) _WA_Sys_<8 jegyű oszlop azonosítóját hexadecimális>_<8 számjegyű tábla azonosítóját hexadecimális>. A már létrehozott statisztikákat a [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) parancs futtatásával tekintheti meg:
+Az automatikus statisztikák létrehozásakor a rendszer a (z) _WA_Sys_ <8 jegyű oszlop azonosítóját hexadecimális>_<8 számjegyű tábla azonosítóját hexadecimális>. A már létrehozott statisztikákat a [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) parancs futtatásával tekintheti meg:
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -82,11 +82,11 @@ A table_name a megjelenítendő statisztikát tartalmazó tábla neve. Ez a táb
 
 ## <a name="update-statistics"></a>Frissítési statisztika
 
-Az egyik legjobb megoldás az, ha naponta frissíti a dátum oszlopokat az új dátumok hozzáadásakor. Minden alkalommal, amikor új sorok töltődnek be az SQL-készletbe, új betöltési dátumok vagy tranzakciós dátumok lesznek hozzáadva. Ezek a hozzáadások módosítják az adateloszlást, és a statisztikákat elavultan teszik elérhetővé.
+Az egyik legjobb megoldás az, ha naponta frissíti a dátum oszlopokat az új dátumok hozzáadásakor. Minden alkalommal, amikor új sorok töltődnek be a dedikált SQL-készletbe, új betöltési dátumok vagy tranzakciós dátumok lesznek hozzáadva. Ezek a hozzáadások módosítják az adateloszlást, és a statisztikákat elavultan teszik elérhetővé.
 
 Előfordulhat, hogy az ügyfél tábla ország/régió oszlopának statisztikáját soha nem kell frissíteni, mert az értékek eloszlása nem változik. Feltételezve, hogy a terjesztés állandó az ügyfelek között, és új sorokat ad hozzá a táblázat variációhoz, nem fogja módosítani az adateloszlást.
 
-Ha azonban az SQL-készlet csak egy országot/régiót tartalmaz, és az adatokat egy új országból/régióból helyezi el, ami több ország/régió adatait tárolja, akkor frissítenie kell az ország/régió oszlop statisztikáit.
+Ha azonban a dedikált SQL-készlet csak egy országot/régiót tartalmaz, és egy új országból/régióból származó adatokat hoz, így több országból vagy régióból származó adatokat tárol, akkor frissítenie kell az ország/régió oszlop statisztikáit.
 
 A következő javaslatok frissítik a statisztikát:
 
@@ -101,7 +101,7 @@ Ezt a kérdést nem lehet megválaszolni az adatkor alapján. Előfordulhat, hog
 
 Nincs dinamikus felügyeleti nézet annak megállapítására, hogy a táblázatban lévő adatok módosultak-e a legutóbbi statisztika frissítése óta.  A következő két lekérdezés segíthet megállapítani, hogy a statisztikák elavultak-e.
 
-**1. lekérdezés:**  Megtudhatja, hogy miben különbözik a sorok száma a statisztikában (**stats_row_count**) és a tényleges sorok száma (**actual_row_count**). 
+**1. lekérdezés:**  Megtudhatja, hogy miben különbözik a sorok száma a statisztikában ( **stats_row_count** ) és a tényleges sorok száma ( **actual_row_count** ). 
 
 ```sql
 select 
@@ -182,11 +182,11 @@ WHERE
     st.[user_created] = 1;
 ```
 
-Egy **SQL-** készletben például általában gyakori statisztikai frissítésekre van szükség. Minden alkalommal, amikor új sorok töltődnek be az SQL-készletbe, új betöltési dátumok vagy tranzakciós dátumok lesznek hozzáadva. Ezek a hozzáadások módosítják az adateloszlást, és a statisztikákat elavultan teszik elérhetővé.
+A dedikált **SQL-** készletben például általában gyakori statisztikai frissítésekre van szükség. Minden alkalommal, amikor új sorok töltődnek be a dedikált SQL-készletbe, új betöltési dátumok vagy tranzakciós dátumok lesznek hozzáadva. Ezek a hozzáadások módosítják az adateloszlást, és a statisztikákat elavultan teszik elérhetővé.
 
 Ezzel ellentétben előfordulhat, hogy az ügyfél táblában nem kell frissíteni a nemek szerinti oszlop statisztikáit. Feltételezve, hogy a terjesztés állandó az ügyfelek között, és új sorokat ad hozzá a táblázat variációhoz, nem fogja módosítani az adateloszlást.
 
-Ha az SQL-készlet csak egyetlen nemet tartalmaz, és az új követelmények több nemet eredményeznek, akkor frissítenie kell a nemek oszlop statisztikáit.
+Ha a dedikált SQL-készlet csak egyetlen nemet tartalmaz, és az új követelmények több nemet eredményeznek, akkor frissítenie kell a nemek oszlop statisztikáit.
 
 További információ: általános útmutató a [statisztikákhoz](/sql/relational-databases/statistics/statistics?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
@@ -214,7 +214,7 @@ Ezek a példák azt mutatják be, hogyan használhatók a különböző beállí
 
 Egy oszlop statisztikáinak létrehozásához adja meg a statisztikai objektum nevét és az oszlop nevét.
 
-Ez a szintaxis az összes alapértelmezett beállítást használja. Alapértelmezés szerint az SQL Pool a tábla **20 százalékát** , amikor statisztikai adatokat hoz létre.
+Ez a szintaxis az összes alapértelmezett beállítást használja. Alapértelmezés szerint a tábla **20 százalékát** kell mintát venni a statisztikák létrehozásakor.
 
 ```sql
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
@@ -282,13 +282,13 @@ Több oszlopból álló statisztikai objektum létrehozásához használja az el
 > [!NOTE]
 > A lekérdezési eredményben szereplő sorok számának becsléséhez használt hisztogram csak a statisztikai objektum definíciójában felsorolt első oszlop esetében érhető el.
 
-Ebben a példában a hisztogram a *termék \_ kategóriájában*van. Az oszlopokra vonatkozó statisztikákat a *termék \_ kategóriája* és a *termék \_ sub_category*alapján számítjuk ki:
+Ebben a példában a hisztogram a *termék \_ kategóriájában* van. Az oszlopokra vonatkozó statisztikákat a *termék \_ kategóriája* és a *termék \_ sub_category* alapján számítjuk ki:
 
 ```sql
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-Mivel a *termék \_ kategóriája* és a *termék \_ \_ alkategóriája*közötti korreláció áll fenn, a többoszlopos statisztikai objektum akkor lehet hasznos, ha ezek az oszlopok egyszerre érhetők el.
+Mivel a *termék \_ kategóriája* és a *termék \_ \_ alkategóriája* közötti korreláció áll fenn, a többoszlopos statisztikai objektum akkor lehet hasznos, ha ezek az oszlopok egyszerre érhetők el.
 
 ### <a name="create-statistics-on-all-columns-in-a-table"></a>Statisztikák létrehozása egy tábla összes oszlopához
 
@@ -314,7 +314,7 @@ CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 
 ### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>Tárolt eljárás használata statisztikák létrehozásához az adatbázis összes oszlopán
 
-Az SQL-készlet nem rendelkezik olyan rendszertárolt eljárással, amely egyenértékű a SQL Server sp_create_statsával. Ez a tárolt eljárás egyetlen oszlopos statisztikai objektumot hoz létre az adatbázis minden olyan oszlopán, amely még nem rendelkezik statisztikával.
+A dedikált SQL-készlet nem rendelkezik olyan rendszerszintű tárolt eljárással, amely egyenértékű a SQL Server sp_create_statsával. Ez a tárolt eljárás egyetlen oszlopos statisztikai objektumot hoz létre az adatbázis minden olyan oszlopán, amely még nem rendelkezik statisztikával.
 
 Az alábbi példa segítséget nyújt az adatbázis kialakításának megkezdéséhez. Nyugodtan alkalmazkodhat az igényeihez.
 
@@ -462,7 +462,7 @@ UPDATE STATISTICS dbo.table1;
 A frissítés STATISZTIKÁi utasítás egyszerűen használható. Ne feledje, hogy a táblázat *összes* statisztikáját frissíti, ezért a szükségesnél több munkát is végrehajthat. Ha a teljesítmény nem jelent problémát, ez a legegyszerűbb és legteljesebb módszer annak biztosítására, hogy a statisztikák naprakészek legyenek.
 
 > [!NOTE]
-> Egy tábla összes statisztikájának frissítésekor az SQL-készlet ellenőrzi, hogy az egyes statisztikai objektumok táblázatát kell-e felvenni. Ha a tábla nagyméretű, és sok oszlopot és számos statisztikát tartalmaz, akkor lehet, hogy hatékonyabban kell frissíteni az egyes statisztikákat igény szerint.
+> Egy tábla összes statisztikájának frissítésekor a dedikált SQL-készlet ellenőrzi, hogy az egyes statisztikai objektumok táblázatát kell-e felvenni. Ha a tábla nagyméretű, és sok oszlopot és számos statisztikát tartalmaz, akkor lehet, hogy hatékonyabban kell frissíteni az egyes statisztikákat igény szerint.
 
 Egy eljárás végrehajtásához `UPDATE STATISTICS` tekintse meg az [ideiglenes táblákat](sql-data-warehouse-tables-temporary.md). A megvalósítási módszer némileg eltér az előző `CREATE STATISTICS` eljárástól, de az eredmény ugyanaz.
 
@@ -546,7 +546,7 @@ A DBCC SHOW_STATISTICS () megjeleníti a statisztikai objektumon belül tárolt 
 A statisztikával kapcsolatos fejléc-metaadatok. A hisztogram megjeleníti az értékek eloszlását a statisztikai objektum első kulcs oszlopában. A sűrűség vektor az oszlopok közötti korrelációt méri.
 
 > [!NOTE]
-> Az SQL-készlet a statisztikai objektum bármely adatával kiszámítja a kardinális becsléseket.
+> A dedikált SQL-készlet a statisztikai objektum bármely adatával kiszámítja a kardinális becsléseket.
 
 ### <a name="show-header-density-and-histogram"></a>Fejléc, sűrűség és hisztogram megjelenítése
 
@@ -578,7 +578,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 
 ## <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS () különbségek
 
-A DBCC SHOW_STATISTICS () az SQL-készletben sokkal szigorúbban implementálva van, mint SQL Server:
+A DBCC SHOW_STATISTICS () a SQL Serverhoz képest a dedikált SQL-készletben szigorúan implementálva van:
 
 - A nem dokumentált funkciók nem támogatottak.
 - A Stats_stream nem használható.
@@ -588,6 +588,6 @@ A DBCC SHOW_STATISTICS () az SQL-készletben sokkal szigorúbban implementálva 
 - A statisztikai objektumok azonosítására szolgáló oszlopnevek nem használhatók.
 - A 2767-es egyéni hiba nem támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A lekérdezési teljesítmény javítása érdekében lásd: [a munkaterhelés figyelése](sql-data-warehouse-manage-monitor.md)

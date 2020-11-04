@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: igény szerinti SQL használata'
-description: Ebből a rövid útmutatóból megtudhatja, hogy milyen egyszerű a különböző típusú fájlok lekérdezése az SQL on-demand (előzetes verzió) használatával.
+title: 'Gyors útmutató: kiszolgáló nélküli SQL-készlet használata'
+description: Ebből a rövid útmutatóból megtudhatja, hogy milyen egyszerűen lekérdezheti a különböző típusú fájlokat a kiszolgáló nélküli SQL-készlet (előzetes verzió) használatával.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: fe07192b0077518cdd73092f53342c298034cfa8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b2e502a984e71a06eb57b345371d70d659c6a031
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86274169"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321681"
 ---
-# <a name="quickstart-use-sql-on-demand"></a>Gyors útmutató: igény szerinti SQL használata
+# <a name="quickstart-use-serverless-sql-pool"></a>Gyors útmutató: kiszolgáló nélküli SQL-készlet használata
 
-A szinapszis SQL on-demand (előzetes verzió) egy kiszolgáló nélküli lekérdezési szolgáltatás, amely lehetővé teszi, hogy SQL-lekérdezéseket futtasson az Azure Storage-ban elhelyezett fájlokon. Ebből a rövid útmutatóból megtudhatja, hogyan kérdezheti le a különböző típusú fájlokat az SQL igény szerinti használatával. A támogatott formátumok a [OpenRowset](sql/develop-openrowset.md)-ben vannak felsorolva.
+A szinapszis kiszolgáló nélküli SQL-készlete (előzetes verzió) egy kiszolgáló nélküli lekérdezési szolgáltatás, amely lehetővé teszi, hogy SQL-lekérdezéseket futtasson az Azure Storage-ban elhelyezett fájlokon. Ebből a rövid útmutatóból megtudhatja, hogyan kérdezheti le a különböző típusú fájlokat a kiszolgáló nélküli SQL-készlet használatával. A támogatott formátumok a [OpenRowset](sql/develop-openrowset.md)-ben vannak felsorolva.
 
 Ez a rövid útmutató a következő lekérdezéseket mutatja be: CSV, Apache Parquet és JSON-fájlok.
 
@@ -34,8 +34,8 @@ A rövid útmutató paraméterei:
 
 | Paraméter                                 | Leírás                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| Igény szerinti SQL-szolgáltatás végpontjának címe    | Kiszolgáló neveként használatos                                   |
-| Igény szerinti SQL-szolgáltatás végpontjának régiója     | Annak meghatározására szolgál, hogy milyen tárterületet fogunk használni a mintákban |
+| kiszolgáló nélküli SQL Pool szolgáltatás végpontjának címe    | Kiszolgáló neveként használatos                                   |
+| kiszolgáló nélküli SQL Pool szolgáltatás végponti régiója     | Annak meghatározására szolgál, hogy milyen tárterületet fogunk használni a mintákban |
 | A végpontok hozzáférésének felhasználóneve és jelszava | Végponthoz való hozzáféréshez használatos                               |
 | A nézetek létrehozásához használt adatbázis         | A mintákban kezdőpontként használt adatbázis       |
 
@@ -44,7 +44,7 @@ A rövid útmutató paraméterei:
 A minták használata előtt:
 
 - Adatbázis létrehozása a nézetekhez (ha a nézeteket szeretné használni)
-- A Storage-ban tárolt fájlok eléréséhez igény szerint használandó hitelesítő adatok létrehozása
+- A kiszolgáló nélküli SQL-készlet által a tárolóban lévő fájlok eléréséhez használandó hitelesítő adatok létrehozása
 
 ### <a name="create-database"></a>Adatbázis létrehozása
 
@@ -62,7 +62,7 @@ CREATE DATABASE mydbname
 
 ### <a name="create-data-source"></a>Adatforrás létrehozása
 
-Ha SQL igény szerint szeretné futtatni a lekérdezéseket, hozzon létre olyan adatforrást, amelyet az SQL igény szerint használhat a tárolóban lévő fájlok eléréséhez.
+Ha kiszolgáló nélküli SQL-készlettel szeretne lekérdezéseket futtatni, hozzon létre olyan adatforrást, amelyet a kiszolgáló nélküli SQL-készlet használhat a tárolóban található fájlok elérésére.
 A következő kódrészlet végrehajtásával hozza létre az ebben a szakaszban található mintákban használt adatforrást:
 
 ```sql
@@ -115,7 +115,7 @@ További példákat a [CSV-fájl lekérdezése](sql/query-single-csv-file.md)cí
 Az alábbi példa a Parquet-fájlok lekérdezésének automatikus séma-következtetéseit mutatja be. A 2017 szeptemberében visszaadja a sorok számát a séma meghatározása nélkül.
 
 > [!NOTE]
-> A Parquet-fájlok olvasásakor nem kell megadnia az oszlopok a `OPENROWSET WITH` záradékban. Ebben az esetben az SQL on-demand metaadatokat használ a Parquet fájlban, és az oszlopokat név szerint köti össze.
+> A Parquet-fájlok olvasásakor nem kell megadnia az oszlopok a `OPENROWSET WITH` záradékban. Ebben az esetben a kiszolgáló nélküli SQL-készlet metaadatokat használ a Parquet fájlban, és az oszlopokat név szerint köti össze.
 
 ```sql
 SELECT COUNT_BIG(*)
@@ -133,7 +133,7 @@ További információ a [Parquet-fájlok lekérdezéséről](sql/query-parquet-f
 
 ### <a name="json-sample-file"></a>JSON-minta fájl
 
-A fájlok *JSON* -tárolóban, *címjegyzékekben*tárolódnak, és az alábbi struktúrával rendelkező egykönyves bejegyzéseket tartalmaznak:
+A fájlok *JSON* -tárolóban, *címjegyzékekben* tárolódnak, és az alábbi struktúrával rendelkező egykönyves bejegyzéseket tartalmaznak:
 
 ```json
 {  
@@ -153,7 +153,7 @@ A fájlok *JSON* -tárolóban, *címjegyzékekben*tárolódnak, és az alábbi s
 
 ### <a name="query-json-files"></a>JSON-fájlok lekérdezése
 
-Az alábbi lekérdezés azt mutatja be, hogyan használhatók a [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) a skaláris értékek (title, kiadó) egy könyvből való lekéréséhez a *Cryptology-ben a valószínűséggel és statisztikai metódusokkal, a kiválasztott cikkek bevezetésével*:
+Az alábbi lekérdezés azt mutatja be, hogyan használhatók a [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) a skaláris értékek (title, kiadó) egy könyvből való lekéréséhez a *Cryptology-ben a valószínűséggel és statisztikai metódusokkal, a kiválasztott cikkek bevezetésével* :
 
 ```sql
 SELECT
@@ -178,7 +178,7 @@ WHERE
 > [!IMPORTANT]
 > A teljes JSON-fájlt egysoros/oszlopként olvasjuk. Így a FIELDTERMINATOR, a FIELDQUOTE és a ROWTERMINATOR a 0x0b értékre van állítva, mert nem várjuk, hogy megkeresjük a fájlban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már készen áll a folytatásra a következő cikkekkel:
 

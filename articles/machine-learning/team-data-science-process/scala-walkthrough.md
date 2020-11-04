@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 56f266eaba76bb990a4d2bc3d902f4c5911d9c47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ae4549fe343422bbf60275a97768ca407f2dc7c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86026185"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321377"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Adatelemzés a Scala és a Spark használatával az Azure rendszerben
-Ez a cikk bemutatja, hogyan használható a Scala a felügyelt gépi tanulási feladatokhoz a Spark skálázható MLlib és a Spark ML-csomagok egy Azure HDInsight Spark-fürtön. Végigvezeti az [adatelemzési folyamatot](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)alkotó feladatokon: az adatok betöltését és feltárását, a vizualizációt, a szolgáltatások mérnöki használatát, a modellezést és a modell felhasználását. A cikkben szereplő modellek közé tartozik a logisztika és a lineáris regresszió, a véletlenszerű erdők és a gradiens által növelt fák (GBTs), valamint két közös felügyelt gépi tanulási feladat:
+Ez a cikk bemutatja, hogyan használható a Scala a felügyelt gépi tanulási feladatokhoz a Spark skálázható MLlib és a Spark ML-csomagok egy Azure HDInsight Spark-fürtön. Végigvezeti az [adatelemzési folyamatot](./index.yml)alkotó feladatokon: az adatok betöltését és feltárását, a vizualizációt, a szolgáltatások mérnöki használatát, a modellezést és a modell felhasználását. A cikkben szereplő modellek közé tartozik a logisztika és a lineáris regresszió, a véletlenszerű erdők és a gradiens által növelt fák (GBTs), valamint két közös felügyelt gépi tanulási feladat:
 
 * Regressziós probléma: a tipp összegének ($) előrejelzése egy taxis útra
 * Bináris besorolás: tipp vagy nincs tipp (1/0) a taxis utazáshoz
@@ -52,7 +52,7 @@ A telepítési lépések és kódok ebben a cikkben az Azure HDInsight 3,4 Spark
 A New York-i utazási adatokról és a Spark-fürtön található Jupyter-jegyzetfüzetből származó kódok végrehajtásával kapcsolatos útmutatásért tekintse meg a megfelelő részeket az [adatelemzés az Azure HDInsight-on való használatának áttekintése](spark-overview.md)című témakörben.  
 
 ## <a name="execute-scala-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Scala-kód végrehajtása Jupyter-jegyzetfüzetből a Spark-fürtön
-Jupyter notebookot a Azure Portal is indíthat. Keresse meg az irányítópulton a Spark-fürtöt, majd kattintson rá a fürt felügyeleti lapjának megadásához. Ezután kattintson a **fürt irányítópultok**elemre, majd kattintson a **Jupyter notebook** elemre a Spark-fürthöz társított jegyzetfüzet megnyitásához.
+Jupyter notebookot a Azure Portal is indíthat. Keresse meg az irányítópulton a Spark-fürtöt, majd kattintson rá a fürt felügyeleti lapjának megadásához. Ezután kattintson a **fürt irányítópultok** elemre, majd kattintson a **Jupyter notebook** elemre a Spark-fürthöz társított jegyzetfüzet megnyitásához.
 
 ![A fürt irányítópultja és a Jupyter notebookok](./media/scala-walkthrough/spark-jupyter-on-portal.png)
 
@@ -62,7 +62,7 @@ A Jupyter-jegyzetfüzeteket a https:// &lt; clustername. azurehdinsight.net/jupy
 
 A **Scala** lehetőség kiválasztásával megtekintheti a PySpark API-t használó előre csomagolt jegyzetfüzetek néhány példáját tartalmazó könyvtárat. A "a" ipynb notebook, amely tartalmazza a következő Spark-csomagokhoz tartozó kódrészleteket, a a [githubon](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala)érhető el: a felderítési modellezés és pontozás.
 
-A jegyzetfüzetet közvetlenül a GitHubról a Spark-fürt Jupyter Notebook kiszolgálójára töltheti fel. A Jupyter kezdőlapján kattintson a **feltöltés** gombra. A Fájlkezelőben illessze be a Scala notebookhoz tartozó GitHub (nyers tartalom) URL-címét, majd kattintson a **Megnyitás**gombra. A Scala notebook a következő URL-címen érhető el:
+A jegyzetfüzetet közvetlenül a GitHubról a Spark-fürt Jupyter Notebook kiszolgálójára töltheti fel. A Jupyter kezdőlapján kattintson a **feltöltés** gombra. A Fájlkezelőben illessze be a Scala notebookhoz tartozó GitHub (nyers tartalom) URL-címét, majd kattintson a **Megnyitás** gombra. A Scala notebook a következő URL-címen érhető el:
 
 [Feltárás – modellezés és pontozás – a-Scala. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 
@@ -257,9 +257,9 @@ sqlResultsDF.show(3)
 
 | fare_amount | passenger_count | tip_amount | végű |
 | --- | --- | --- | --- |
-|        13,5 |1.0 |2.9 |1.0 |
-|        16,0 |2,0 |3.4 |1.0 |
-|        10,5 |2,0 |1.0 |1.0 |
+|        13,5 |1,0 |2.9 |1,0 |
+|        16,0 |2,0 |3.4 |1,0 |
+|        10,5 |2,0 |1,0 |1,0 |
 
 ## <a name="data-exploration-and-visualization"></a>Adatfelderítés és-vizualizáció
 Miután a Sparkba helyezte az információt, az adatelemzési folyamat következő lépése az adatelemzési és vizualizációs eredmények mélyebb megismerése. Ebben a szakaszban az SQL-lekérdezések használatával vizsgálja meg a taxi-adatforrásokat. Ezt követően importálja az eredményeket egy adatkeretbe, hogy az automatikus vizualizáció Jupyter funkció használatával kirajzolja a célzott változókat és a vizuális ellenőrzéshez szükséges jövőbeli funkciókat.
@@ -300,7 +300,7 @@ sqlResults
 
  A Spark kernel automatikusan megjeleníti az SQL-(HiveQL-) lekérdezések kimenetét a kód futtatása után. Több típusú vizualizáció közül választhat:
 
-* Táblázat
+* Tábla
 * Torta
 * Vonal
 * Terület
@@ -353,7 +353,7 @@ A Spark ML-ből és a MLlib-ből származó famodelles modellezési függvények
 1. Hozzon létre egy új szolgáltatást **dobozolási** órával a forgalmi idő gyűjtőbe.
 2. Alkalmazzon **indexelést és egy gyors kódolást** a kategorikus funkciókra.
 3. **Kóstolja meg és ossza szét az adathalmazt** képzésbe és tesztelési frakcióba.
-4. **Adja meg a betanítási változót és a funkciókat**, majd hozzon létre indexelt vagy egy gyors kódolású betanítást, és tesztelje a bemeneti feliratú pont rugalmas elosztott adatkészleteit (RDD) vagy adatkereteket.
+4. **Adja meg a betanítási változót és a funkciókat** , majd hozzon létre indexelt vagy egy gyors kódolású betanítást, és tesztelje a bemeneti feliratú pont rugalmas elosztott adatkészleteit (RDD) vagy adatkereteket.
 5. A gépi tanulási modellekhez bemenetként használandó **funkciók és célok automatikus kategorizálása és vektorizálhatja** .
 
 ### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>Hozzon létre egy új szolgáltatást dobozolási órával a forgalmi idő gyűjtők számára
@@ -922,11 +922,11 @@ Ebben a szakaszban a fejlesztők által gyakran használt gépi tanulási segéd
 * A modell optimalizálása a Spark ML CrossValidator funkciójának (bináris besorolás) használatával történő átállítási és a Hyper-paraméteres Elvetés használatával
 * Optimalizálja a modellt egyéni, átellenőrzési és paraméter-elsöprő kód használatával bármely Machine learning-függvény és-paraméter használatára (lineáris regresszió)
 
-A többszörös **Érvényesítés** egy olyan technika, amely kiértékeli, hogy az ismert adathalmazon alapuló modellek mennyire jól általánosítják az olyan adatkészletek funkcióinak előrejelzését, amelyeken még nincs betanítva. Ennek a technikának az általános ötlete, hogy a modell az ismert adatok adathalmazára van betanítva, és az előrejelzések pontossága egy független adatkészleten van tesztelve. A közös megvalósítás egy adatkészlet felosztása a *k*-redők közé, majd a modell betanítása egy ciklikus multiplexelés, de az egyik hajtogatási módszer.
+A többszörös **Érvényesítés** egy olyan technika, amely kiértékeli, hogy az ismert adathalmazon alapuló modellek mennyire jól általánosítják az olyan adatkészletek funkcióinak előrejelzését, amelyeken még nincs betanítva. Ennek a technikának az általános ötlete, hogy a modell az ismert adatok adathalmazára van betanítva, és az előrejelzések pontossága egy független adatkészleten van tesztelve. A közös megvalósítás egy adatkészlet felosztása a *k* -redők közé, majd a modell betanítása egy ciklikus multiplexelés, de az egyik hajtogatási módszer.
 
 A **Hyper-paraméter optimalizálása** olyan Hyper-paraméterek kiválasztásának a problémája, amely egy tanulási algoritmushoz szükséges, általában azzal a céllal, hogy az algoritmus teljesítményének mértékét egy független adathalmazon optimalizálja. A Hyper-paraméter olyan érték, amelyet a modell betanítási eljárásán kívül kell megadnia. A Hyper-paraméterek értékeivel kapcsolatos feltételezések befolyásolhatják a modell rugalmasságát és pontosságát. A döntési fák olyan Hyper-paraméterekkel rendelkeznek, mint például a kívánt mélység és a fában lévő levelek száma. A támogatási vektoros gép (SVM) esetében meg kell adni egy téves besorolási szankciót.
 
-A Hyper-paraméterek optimalizálásának gyakori módja, ha egy rácsos keresést használ, más néven a **paramétert**is. A rácsos keresés során a rendszer részletes keresést hajt végre egy tanulási algoritmus Hyper-paraméterének egy adott részhalmazának értékein. A kereszthivatkozások teljesítmény-mérőszámot biztosíthatnak a rácsos keresési algoritmus által előállított optimális eredmények rendezéséhez. Ha a több-ellenőrzéses Hyper-paramétert használja, akkor a problémák korlátozásához, például a modell túlillesztéséhez használhatja az adatképzést. Így a modell megőrzi a kapacitást arra az általános adathalmazra, amelyből a betanítási adatok kinyerése megtörténik.
+A Hyper-paraméterek optimalizálásának gyakori módja, ha egy rácsos keresést használ, más néven a **paramétert** is. A rácsos keresés során a rendszer részletes keresést hajt végre egy tanulási algoritmus Hyper-paraméterének egy adott részhalmazának értékein. A kereszthivatkozások teljesítmény-mérőszámot biztosíthatnak a rácsos keresési algoritmus által előállított optimális eredmények rendezéséhez. Ha a több-ellenőrzéses Hyper-paramétert használja, akkor a problémák korlátozásához, például a modell túlillesztéséhez használhatja az adatképzést. Így a modell megőrzi a kapacitást arra az általános adathalmazra, amelyből a betanítási adatok kinyerése megtörténik.
 
 ### <a name="optimize-a-linear-regression-model-with-hyper-parameter-sweeping"></a>Lineáris regressziós modell optimalizálása Hyper-paraméter-megtakarítással
 Ezután bontsa ki az adat a betanítási és ellenőrzési készletekbe lehetőséget, és a modell optimalizálásához használja a Hyper-paramétert, és értékelje ki az ellenőrzési készletet (lineáris regresszió).
@@ -1135,9 +1135,8 @@ val test_rsqr = new RegressionMetrics(labelAndPreds).r2
 A cella futtatásának ideje: 61 másodperc.
 
 ## <a name="consume-spark-built-machine-learning-models-automatically-with-scala"></a>Spark által készített gépi tanulási modellek automatikus használata a Scala-vel
-Az Azure adatelemzési folyamatát alkotó feladatokkal kapcsolatos témakörök áttekintését itt találja: [csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Az Azure adatelemzési folyamatát alkotó feladatokkal kapcsolatos témakörök áttekintését itt találja: [csoportos adatelemzési folyamat](./index.yml).
 
 A [csoportos adatelemzési folyamat](walkthroughs.md) bemutatói ismertetik azokat a végpontok közötti bemutatókat, amelyek bemutatják a csoportos adatelemzési folyamat lépéseit adott forgatókönyvek esetén. A forgatókönyvek azt is bemutatják, hogyan kombinálhatja a Felhőbeli és a helyszíni eszközöket és szolgáltatásokat munkafolyamat vagy folyamatba egy intelligens alkalmazás létrehozásához.
 
 A [Spark-alapú gépi tanulási modellek](spark-model-consumption.md) azt mutatják be, hogyan használható a Scala Code az új adatkészletek automatikus betöltéséhez és az Azure Blob Storage-ban mentett gépi tanulási modellekkel való összegyűjtéséhez. Követheti az itt megadott utasításokat, és egyszerűen lecserélheti a Python-kódot a Scala Code-ra ebben a cikkben az automatikus felhasználás érdekében.
-

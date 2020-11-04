@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 2c487b5bc5c8d5fa01388b2942a70defa0001253
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e50cce74f7291a6673e5d43f3485a1c63c81d827
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791528"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319287"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>Kiszolgálók és önálló adatbázisok létrehozása és kezelése Azure SQL Database
 
@@ -123,10 +123,10 @@ A kiszolgálók, adatbázisok és tűzfalak a Transact-SQL használatával tört
 
 | Parancs | Leírás |
 | --- | --- |
-|[ADATBÁZIS LÉTREHOZÁSA](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)|Létrehoz egy új önálló adatbázist. Új adatbázis létrehozásához csatlakoznia kell a Master adatbázishoz.|
-| [ADATBÁZIS MÓDOSÍTÁSA](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Módosít egy adatbázist vagy egy rugalmas készletet. |
+|[ADATBÁZIS LÉTREHOZÁSA](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true)|Létrehoz egy új önálló adatbázist. Új adatbázis létrehozásához csatlakoznia kell a Master adatbázishoz.|
+| [ADATBÁZIS MÓDOSÍTÁSA](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Módosít egy adatbázist vagy egy rugalmas készletet. |
 |[ADATBÁZIS ELDOBÁSA](/sql/t-sql/statements/drop-database-transact-sql)|Töröl egy adatbázist.|
-|[sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Visszaadja a kiadást (szolgáltatási szintet), a szolgáltatási célt (árképzési szintet) és a rugalmas készlet nevét (ha van ilyen) Azure SQL Database vagy egy Azure szinapszis Analytics SQL-készlethez. Ha bejelentkezett a főadatbázisba egy SQL Database-kiszolgálón, az összes adatbázisra vonatkozó információt adja vissza. Az Azure szinapszis Analytics esetében csatlakoznia kell a Master adatbázishoz.|
+|[sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Visszaadja a kiadást (szolgáltatási szintet), a szolgáltatási célt (árképzési szintet) és a rugalmas készlet nevét (ha van ilyen) Azure SQL Database vagy egy dedikált SQL-készletet az Azure szinapszis Analyticsben. Ha bejelentkezett a főadatbázisba egy SQL Database-kiszolgálón, az összes adatbázisra vonatkozó információt adja vissza. Az Azure szinapszis Analytics esetében csatlakoznia kell a Master adatbázishoz.|
 |[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| A CPU-t, az i/o-t és a memória-felhasználást adja vissza egy Azure SQL Database adatbázisában. 15 másodpercenként egy sor létezik, még akkor is, ha nincs tevékenység az adatbázisban.|
 |[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Egy adatbázis CPU-használati és tárolási adatait adja vissza Azure SQL Database. Az adatok gyűjtése és összesítése öt percen belül történik.|
 |[sys.database_connection_stats](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|A SQL Database kapcsolódási események statisztikáit tartalmazza, áttekintést nyújt az adatbázis-kapcsolat sikerességéről és a hibákról. |

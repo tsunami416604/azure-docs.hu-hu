@@ -1,7 +1,7 @@
 ---
 title: Profil-modell memória-és CPU-használat
 titleSuffix: Azure Machine Learning
-description: Ismerje meg a modell memória-és CPU-használatának profilját
+description: Az üzembe helyezés előtt megismerheti a modell profilját. A profilkészítés meghatározza a modell memória-és CPU-használatát.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,12 +12,12 @@ ms.topic: conceptual
 zone_pivot_groups: aml-control-methods
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 95f35c2734e0a8dbc39d409847976b8b31716f81
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: b9ae40b3d2673961f9b84ed702f18b25b79b6d0c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998772"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320404"
 ---
 # <a name="profile-your-model-to-determine-resource-utilization"></a>A modell profiljának meghatározása az erőforrások kihasználtságának meghatározásához
 
@@ -133,7 +133,7 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Sikertelen üzembe helyezés hibáinak megoldása](how-to-troubleshoot-deployment.md)
+* [Sikertelen üzembe helyezés hibaelhárítása](how-to-troubleshoot-deployment.md)
 * [Üzembe helyezés az Azure Kubernetes Service-ben](how-to-deploy-azure-kubernetes-service.md)
 * [Ügyfélalkalmazások létrehozása webszolgáltatások felhasználásához](how-to-consume-web-service.md)
 * [Webszolgáltatás frissítése](how-to-deploy-update-web-service.md)

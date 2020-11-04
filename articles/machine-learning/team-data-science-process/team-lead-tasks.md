@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df7d2278487c1b098615a14562c498b9187c56eb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75864281"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321198"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>A Team adatelemzési folyamatának csapatával kapcsolatos feladatok
 
@@ -31,7 +31,7 @@ Az alábbi ábrán a csapat által vezetett feladatok munkafolyamata látható a
 
 1. Hozzon létre egy **Team-projektet** a csoport szervezetében az Azure DevOps. 
   
-1. Nevezze át az alapértelmezett **TeamUtilities**a csoportba.
+1. Nevezze át az alapértelmezett **TeamUtilities** a csoportba.
   
 1. Hozzon létre egy új **TeamTemplate** -tárházat a csapat projektben. 
   
@@ -61,7 +61,7 @@ A Tárházak klónozásához és a tartalmak helyi gépen vagy DSVM való módos
 
 - Azure-előfizetés.
 - A git telepítve van a gépen. Ha DSVM használ, a git előre telepítve van. Egyéb esetben lásd: [platformok és eszközök függelék](platforms-and-tools.md#appendix).
-- Ha DSVM szeretne használni, az Azure-ban létrehozott és konfigurált Windows-vagy Linux-DSVM. További információt és útmutatást a [Data Science Virtual Machine dokumentációjában](/azure/machine-learning/data-science-virtual-machine/)talál.
+- Ha DSVM szeretne használni, az Azure-ban létrehozott és konfigurált Windows-vagy Linux-DSVM. További információt és útmutatást a [Data Science Virtual Machine dokumentációjában](../data-science-virtual-machine/index.yml)talál.
 - Windows DSVM esetén a [git Hitelesítőadat-kezelő (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) telepítve van a gépen. A *readme.MD* fájlban görgessen le a **letöltés és telepítés** szakaszban, és válassza ki a **legújabb telepítőt**. Töltse le az *. exe* -telepítőt a telepítő lapról, és futtassa. 
 - Linux DSVM esetében egy nyilvános SSH-kulcs, amely be van állítva a DSVM, és hozzá lett adva az Azure DevOps. További információt és útmutatást az **SSH nyilvános kulcs létrehozása** című szakaszban talál a [platformok és eszközök függelékben](platforms-and-tools.md#appendix). 
 
@@ -77,7 +77,7 @@ Az ebben az oktatóanyagban szereplő adattárakhoz és könyvtárakhoz megadott
 - Egy kis adattudományi csoport, amely nem rendelkezik több adatelemzési csapattal. 
 - Egy nagyobb adatelemzési csoport több adatelemző csapattal, amelyek ennek ellenére szeretnének optimalizálni a csapaton belüli együttműködést olyan tevékenységekkel, mint a csoport szintű Sprint-tervezés. 
 
-Ha a csapatok úgy döntenek, hogy a csoportra jellemző adattárak egyetlen csoportos projektben vannak, akkor a csapat által létrehozott tárolók a * \<TeamName> sablonhoz* és a * \<TeamName> segédprogramokhoz*hasonló névvel hozhatnak létre adattárakat. Például: *TeamATemplate* és *TeamAUtilities*. 
+Ha a csapatok úgy döntenek, hogy a csoportra jellemző adattárak egyetlen csoportos projektben vannak, akkor a csapat által létrehozott tárolók a *\<TeamName> sablonhoz* és a *\<TeamName> segédprogramokhoz* hasonló névvel hozhatnak létre adattárakat. Például: *TeamATemplate* és *TeamAUtilities*. 
 
 A csapatnak minden esetben meg kell adnia, hogy a csapat tagjai tudják, hogy mely sablon és segédprogramok tárházat állítanak be a beállításhoz és a klónozáshoz. A projekt-érdeklődőknek követniük kell az [adatelemzési csapat projekt-vezető feladatait](project-lead-tasks.md) a projekt-Tárházak létrehozásához, akár külön projektek, akár egyetlen projekt keretében. 
 
@@ -85,32 +85,32 @@ A csapatnak minden esetben meg kell adnia, hogy a csapat tagjai tudják, hogy me
 
 Különálló projekt létrehozása a csapat számára:
 
-1. A böngészőben nyissa meg a csoport Azure DevOps-szervezetének kezdőlapját a *https: \/ / \<server name> / \<organization name> *címen, és válassza az **új projekt**lehetőséget. 
+1. A böngészőben nyissa meg a csoport Azure DevOps-szervezetének kezdőlapját a *https: \/ / \<server name> / \<organization name>* címen, és válassza az **új projekt** lehetőséget. 
    
    ![Új projekt kiválasztása](./media/team-lead-tasks/team-leads-2-create-new-team.png)
    
-1. A **projekt létrehozása** párbeszédpanelen adja meg a csoport nevét (például *MyTeam*) a **projekt neve**alatt, majd válassza a **speciális**lehetőséget. 
+1. A **projekt létrehozása** párbeszédpanelen adja meg a csoport nevét (például *MyTeam* ) a **projekt neve** alatt, majd válassza a **speciális** lehetőséget. 
    
-1. A **verziókövetés**területen válassza a **git**lehetőséget, majd a **munkaelemek feldolgozása**területen válassza az **agilis**lehetőséget. Ezután válassza a **Létrehozás** elemet. 
+1. A **verziókövetés** területen válassza a **git** lehetőséget, majd a **munkaelemek feldolgozása** területen válassza az **agilis** lehetőséget. Ezután válassza a **Létrehozás** elemet. 
    
    ![Projekt létrehozása](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
    
-Megnyílik a Team Project **Összefoglaló** lapja, a Page URL *https: \/ / \<server name> / \<organization name> / \<team name> *.
+Megnyílik a Team Project **Összefoglaló** lapja, a Page URL *https: \/ / \<server name> / \<organization name> / \<team name>*.
 
 ### <a name="rename-the-myteam-default-repository-to-teamutilities"></a>A MyTeam alapértelmezett tárházának átnevezése a TeamUtilities
 
-1. A **MyTeam** -projekt **összegzése** lapon válassza ki, **hogy milyen szolgáltatást szeretne kezdeni?** lehetőségnél válassza a **repók**lehetőséget. 
+1. A **MyTeam** -projekt **összegzése** lapon válassza ki, **hogy milyen szolgáltatást szeretne kezdeni?** lehetőségnél válassza a **repók** lehetőséget. 
    
    ![A repók kiválasztása](./media/team-lead-tasks/team-leads-6-rename-team-project-repo.png)
    
 1. A **MyTeam** -adattár lapon válassza ki a **MyTeam** -tárházat az oldal tetején, majd válassza a legördülő listából a **tárolók kezelése** lehetőséget. 
    
    ![Válassza ki a tárak kezelése elemet](./media/team-lead-tasks/team-leads-7-rename-team-project-repo-2.png)
-1. A **Project Settings (projekt beállításai** ) lapon válassza a **...** lehetőséget a **MyTeam** adattár mellett, majd válassza a **tárház átnevezése**elemet. 
+1. A **Project Settings (projekt beállításai** ) lapon válassza a **...** lehetőséget a **MyTeam** adattár mellett, majd válassza a **tárház átnevezése** elemet. 
    
    ![Adattár átnevezésének kiválasztása](./media/team-lead-tasks/team-leads-8-rename-team-project-repo-3.png)
    
-1. Az **MyTeam-tárház átnevezése** felugró ablakban adja meg a *TeamUtilities*, majd válassza az **Átnevezés**lehetőséget. 
+1. Az **MyTeam-tárház átnevezése** felugró ablakban adja meg a *TeamUtilities* , majd válassza az **Átnevezés** lehetőséget. 
 
 ### <a name="create-the-teamtemplate-repository"></a>A TeamTemplate adattár létrehozása
 
@@ -120,7 +120,7 @@ Megnyílik a Team Project **Összefoglaló** lapja, a Page URL *https: \/ / \<se
    
    Vagy válassza az **MyTeam** -projekt **összegzése** lap bal oldali navigációs menüjében található **repók** lehetőséget, válasszon ki egy adattárat a lap tetején, majd válassza ki az **új tárház** elemet a legördülő menüből.
    
-1. Az **új Tárház létrehozása** párbeszédpanelen győződjön meg róla, hogy a **git** elem van kiválasztva a **típus**területen. Adja meg a *TeamTemplate* a **tárház neve**területen, majd válassza a **Létrehozás**lehetőséget.
+1. Az **új Tárház létrehozása** párbeszédpanelen győződjön meg róla, hogy a **git** elem van kiválasztva a **típus** területen. Adja meg a *TeamTemplate* a **tárház neve** területen, majd válassza a **Létrehozás** lehetőséget.
    
    ![Tárház létrehozása](./media/team-lead-tasks/team-leads-10-create-team-utilities-2.png)
    
@@ -136,11 +136,11 @@ A csapat adattárainak feltöltése a Group Manager által beállított közös 
    
    Megnyílik az alapértelmezett **TeamTemplate** adattár. 
    
-1. A **TeamTemplate üres** lapon válassza az **Importálás**lehetőséget. 
+1. A **TeamTemplate üres** lapon válassza az **Importálás** lehetőséget. 
    
    ![Importálás kiválasztása](./media/team-lead-tasks/import-repo.png)
    
-1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként**, majd adja meg a csoport általános sablonjának URL-címét a **klónozott URL-cím**alatt. Az URL-cím *https: \/ / \<server name> / \<organization name> /_git \<repository name> /*. Például: *https: \/ /dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
+1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként** , majd adja meg a csoport általános sablonjának URL-címét a **klónozott URL-cím** alatt. Az URL-cím *https: \/ / \<server name> / \<organization name> /_git \<repository name> /*. Például: *https: \/ /dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
    
 1. Válassza az **Importálás** lehetőséget. A Group template-tárház tartalmát a rendszer importálja a Team template adattárba. 
    
@@ -148,7 +148,7 @@ A csapat adattárainak feltöltése a Group Manager által beállított közös 
    
 1. A projekt **reposs** oldalának tetején válassza a legördülő listát, és válassza ki a **TeamUtilities** -tárházat.
    
-1. Az importálási folyamat megismétlésével importálja a Group Common Utilities-tárház (például *GroupUtilities*) tartalmát a **TeamUtilities** -tárházba. 
+1. Az importálási folyamat megismétlésével importálja a Group Common Utilities-tárház (például *GroupUtilities* ) tartalmát a **TeamUtilities** -tárházba. 
    
 A két csapat tárháza mostantól tartalmazza a megfelelő csoport közös tárházának fájljait. 
 
@@ -158,25 +158,25 @@ Ha testre szeretné szabni, hogy a csapata mely tárházait szeretné kielégít
 
 Fájlok és mappák módosítása, feltöltése vagy létrehozása közvetlenül az Azure DevOps:
 
-1. A **MyTeam** -projekt **összegzése** lapon válassza a **repók**lehetőséget. 
+1. A **MyTeam** -projekt **összegzése** lapon válassza a **repók** lehetőséget. 
    
 1. A lap tetején válassza ki a testreszabni kívánt tárházat.
 
 1. A tárház-címtár struktúrájában navigáljon a módosítani kívánt mappához vagy fájlhoz. 
    
-   - Új mappák vagy fájlok létrehozásához kattintson az **új**elem melletti nyílra. 
+   - Új mappák vagy fájlok létrehozásához kattintson az **új** elem melletti nyílra. 
      
      ![Új fájl létrehozása](./media/team-lead-tasks/new-file.png)
      
-   - Fájlok feltöltéséhez válassza a **fájl (ok) feltöltése**lehetőséget. 
+   - Fájlok feltöltéséhez válassza a **fájl (ok) feltöltése** lehetőséget. 
      
      ![Fájlok feltöltése](./media/team-lead-tasks/upload-files.png)
      
-   - Meglévő fájlok szerkesztéséhez navigáljon a fájlhoz, majd válassza a **Szerkesztés**lehetőséget. 
+   - Meglévő fájlok szerkesztéséhez navigáljon a fájlhoz, majd válassza a **Szerkesztés** lehetőséget. 
      
      ![Fájl szerkesztése](./media/team-lead-tasks/edit-file.png)
      
-1. Fájlok hozzáadása vagy szerkesztése után válassza a **véglegesítés**lehetőséget.
+1. Fájlok hozzáadása vagy szerkesztése után válassza a **véglegesítés** lehetőséget.
    
    ![Módosítások véglegesítve](./media/team-lead-tasks/commit.png)
 
@@ -184,11 +184,11 @@ A helyi gépen vagy DSVM lévő adattárakkal való munkavégzéshez először m
 
 Tárak klónozása:
 
-1. A **MyTeam** -projekt **összegzése** lapon válassza a **repók**lehetőséget, majd a lap tetején válassza ki a klónozott tárházat.
+1. A **MyTeam** -projekt **összegzése** lapon válassza a **repók** lehetőséget, majd a lap tetején válassza ki a klónozott tárházat.
    
 1. A tárház lapon kattintson a jobb felső sarokban található **klónozás** elemre.
    
-1. A **klónozási tárház** párbeszédpanel **parancssor**területén válassza a **https** lehetőséget egy http-kapcsolathoz vagy **SSH** -kapcsolathoz, és másolja a klónozási URL-címet a vágólapra.
+1. A **klónozási tárház** párbeszédpanel **parancssor** területén válassza a **https** lehetőséget egy http-kapcsolathoz vagy **SSH** -kapcsolathoz, és másolja a klónozási URL-címet a vágólapra.
    
    ![Klón URL-címének másolása](./media/team-lead-tasks/clone.png)
    
@@ -240,28 +240,28 @@ Tagok hozzáadása a csapathoz:
 
 1. Az Azure DevOps a **MyTeam** projekt kezdőlapján válassza a **projekt beállításai** lehetőséget a bal oldali navigációs sávon. 
    
-1. A **projekt beállításai** bal oldali navigációs sávon válassza **a csapatok**lehetőséget, majd a **csapatok** lapon válassza ki a **MyTeam csapatot**. 
+1. A **projekt beállításai** bal oldali navigációs sávon válassza **a csapatok** lehetőséget, majd a **csapatok** lapon válassza ki a **MyTeam csapatot**. 
    
    ![Csapatok konfigurálása](./media/team-lead-tasks/teams.png)
    
-1. A **csapat profilja** lapon válassza a **Hozzáadás**lehetőséget.
+1. A **csapat profilja** lapon válassza a **Hozzáadás** lehetőséget.
    
    ![Hozzáadás a MyTeam csapathoz](./media/team-lead-tasks/add-to-team.png)
    
-1. A **felhasználók és csoportok hozzáadása** párbeszédpanelen keresse meg és válassza ki a csoporthoz hozzáadni kívánt tagokat, majd kattintson a **módosítások mentése**gombra. 
+1. A **felhasználók és csoportok hozzáadása** párbeszédpanelen keresse meg és válassza ki a csoporthoz hozzáadni kívánt tagokat, majd kattintson a **módosítások mentése** gombra. 
    
    ![Felhasználók és csoportok hozzáadása](./media/team-lead-tasks/add-users.png)
    
 
 A csapattagok engedélyeinek konfigurálása:
 
-1. A **projekt beállításai** bal oldali navigációs sávon válassza az **engedélyek**lehetőséget. 
+1. A **projekt beállításai** bal oldali navigációs sávon válassza az **engedélyek** lehetőséget. 
    
 1. Az **engedélyek** lapon válassza ki azt a csoportot, amelyhez hozzá kívánja adni a tagokat. 
    
-1. Az adott csoport lapján válassza a **tagok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget. 
+1. Az adott csoport lapján válassza a **tagok** lehetőséget, majd válassza a **Hozzáadás** lehetőséget. 
    
-1. A **tagok meghívása** felugró ablakban keresse meg és válassza ki a csoportba felvenni kívánt tagokat, majd kattintson a **Mentés**gombra. 
+1. A **tagok meghívása** felugró ablakban keresse meg és válassza ki a csoportba felvenni kívánt tagokat, majd kattintson a **Mentés** gombra. 
    
    ![Engedélyek megadása a tagoknak](./media/team-lead-tasks/grant-permissions.png)
 
@@ -296,7 +296,7 @@ További információ a csapattal (például Azure HDInsight Spark-fürtökkel) 
    
 1. Válassza ki a használni kívánt Storage-fiókot, vagy hozzon létre egy újat a kiválasztott előfizetéshez. Az Azure file Storage neveként kisbetűket, számokat és kötőjeleket is használhat.
    
-1. A tárterület csatlakoztatásának és megosztásának megkönnyítéséhez nyomja le az ENTER billentyűt, vagy az *Y* érték megadásával mentse az Azure file Storage-adatokat egy szövegfájlba az aktuális könyvtárban. Ezt a szövegfájlt a **TeamTemplate** adattárba is bejelölheti, ideális esetben a **Docs\DataDictionaries**alatt, így a csapat összes projektje elérheti azt. Az Azure file Storage az Azure-DSVM való csatlakoztatásához a következő szakaszban is szükség van a fájl adataira. 
+1. A tárterület csatlakoztatásának és megosztásának megkönnyítéséhez nyomja le az ENTER billentyűt, vagy az *Y* érték megadásával mentse az Azure file Storage-adatokat egy szövegfájlba az aktuális könyvtárban. Ezt a szövegfájlt a **TeamTemplate** adattárba is bejelölheti, ideális esetben a **Docs\DataDictionaries** alatt, így a csapat összes projektje elérheti azt. Az Azure file Storage az Azure-DSVM való csatlakoztatásához a következő szakaszban is szükség van a fájl adataira. 
    
 ### <a name="mount-azure-file-storage-on-your-local-machine-or-dsvm"></a>Az Azure file Storage csatlakoztatása a helyi gépen vagy DSVM
 
@@ -318,13 +318,13 @@ További információ a csapattal (például Azure HDInsight Spark-fürtökkel) 
    
 1. Nyomja le az ENTER billentyűt, vagy a folytatáshoz adja meg az *Y* értéket, ha az előző lépésben mentett egy Azure file Storage-információs fájlt. Adja meg a létrehozott fájl teljes elérési útját és nevét. 
    
-   Ha nem rendelkezik Azure file Storage-információs fájllal, írja be az *n*értéket, és kövesse az utasításokat az előfizetés, az Azure Storage-fiók és az Azure file Storage-információk megadásához.
+   Ha nem rendelkezik Azure file Storage-információs fájllal, írja be az *n* értéket, és kövesse az utasításokat az előfizetés, az Azure Storage-fiók és az Azure file Storage-információk megadásához.
    
 1. Adja meg annak a helyi vagy TDSP-meghajtónak a nevét, amelybe a fájlmegosztást csatlakoztatni szeretné. A képernyőn megjelenik a meglévő meghajtók neveinek listája. Olyan nevet adjon meg, amely még nem létezik.
    
 1. Győződjön meg arról, hogy az új meghajtó és a tároló sikeresen csatlakoztatva van a gépen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbiakban a csoportos adatelemzési folyamat által meghatározott egyéb szerepkörök és feladatok részletes ismertetésére talál hivatkozásokat:
 

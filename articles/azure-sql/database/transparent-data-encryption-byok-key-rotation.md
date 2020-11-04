@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: c24c82e6e013734798b75d7c2cfa5ca126e32bc4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 37931aee24e2dbcab03bca400d58f236601c87e5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788604"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321428"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector"></a>A transzparens adattitkosítás (TDE) oltalmazó elforgatása
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -28,7 +28,7 @@ Ez a cikk a Azure Key Vault-ból származó TDE-védőt használó [kiszolgáló
 Ez az útmutató két lehetőséget tárgyal a TDE-védő a kiszolgálón való elforgatására.
 
 > [!NOTE]
-> A szüneteltetett Azure szinapszis Analytics SQL-készletet a kulcsok elforgatása előtt folytatni kell.
+> A kulcsfontosságú rotációk előtt folytatni kell a szüneteltetett dedikált SQL-készletet az Azure szinapszis Analyticsben.
 
 > [!IMPORTANT]
 > Egy rollover után ne törölje a kulcs korábbi verzióit. A kulcsok átadásakor a rendszer bizonyos adatokat továbbra is titkosít az előző kulcsokkal, például a régebbi adatbázis-biztonsági mentésekkel.

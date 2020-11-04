@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4ec7f4242e5046e90fdf0eb8c6c0579f402e4f55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc4262d0190084064103aeabe48bec806213ea7f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76721353"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321220"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>Csoportos adatelemzési folyamat csoport-kezelő feladatai
 
@@ -43,17 +43,17 @@ Az alábbi oktatóanyag részletesen ismerteti a lépéseket.
    
    ![Jelentkezzen be a Microsoft-fiókba](./media/group-manager-tasks/signinvs.png)
    
-   Ha nincs Microsoft-fiók, válassza a **regisztráció most**lehetőséget, hozzon létre egy Microsoft-fiók, és jelentkezzen be ezzel a fiókkal. Ha a szervezet rendelkezik Visual Studio-előfizetéssel, jelentkezzen be az előfizetéshez tartozó hitelesítő adatokkal.
+   Ha nincs Microsoft-fiók, válassza a **regisztráció most** lehetőséget, hozzon létre egy Microsoft-fiók, és jelentkezzen be ezzel a fiókkal. Ha a szervezet rendelkezik Visual Studio-előfizetéssel, jelentkezzen be az előfizetéshez tartozó hitelesítő adatokkal.
    
-1. Miután bejelentkezett, a jobb felső sarokban az Azure DevOps lapon válassza az **új szervezet létrehozása**lehetőséget.
+1. Miután bejelentkezett, a jobb felső sarokban az Azure DevOps lapon válassza az **új szervezet létrehozása** lehetőséget.
    
    ![Új szervezet létrehozása](./media/group-manager-tasks/create-organization.png)
    
-1. Ha a rendszer kéri, hogy fogadja el a szolgáltatási feltételeket, az adatvédelmi nyilatkozatot és a viselkedési szabályzatot, válassza a **Folytatás**lehetőséget.
+1. Ha a rendszer kéri, hogy fogadja el a szolgáltatási feltételeket, az adatvédelmi nyilatkozatot és a viselkedési szabályzatot, válassza a **Folytatás** lehetőséget.
    
 1. A feliratkozás párbeszédpanelen nevezze el az Azure DevOps-szervezetet, és fogadja el a gazdagép régiójának hozzárendelését, vagy válasszon egy másik régiót. Ezután válassza a **Folytatás** elemet. 
 
-1. A kezdéshez **a projekt létrehozása**szakaszban adja meg a *GroupCommon*, majd a **projekt létrehozása**elemet. 
+1. A kezdéshez **a projekt létrehozása** szakaszban adja meg a *GroupCommon* , majd a **projekt létrehozása** elemet. 
    
    ![Projekt létrehozása](./media/group-manager-tasks/create-project.png)
 
@@ -65,9 +65,9 @@ Megnyílik az **GroupCommon** projekt **Összefoglaló** lapja. A lap URL-címe 
 
 Az Azure Repos a következő típusú tárházat üzemelteti a csoport számára:
 
-- **Közös adattárak**: általános célú adattárak, amelyekben az adatelemzési egységek több csapata is elfogadhat számos adatelemzési projektet. 
-- **Csapat adattárai**: adatelemző egységen belüli adott csapatokhoz tartozó adattárak. Ezek a Tárházak egyediek a csapat igényeihez, és az adott csapaton belüli több projekthez is használhatók, de nem elég általánosak ahhoz, hogy egy adattudományi egységen belül több csapaton lehessen használni.
-- **Projekt-Tárházak**: adott projektekhez tartozó Tárházak. Előfordulhat, hogy az ilyen adattárak nem elég általánosak a csapaton belüli több projekthez, illetve az adatelemzési egységben lévő más csapatokhoz.
+- **Közös adattárak** : általános célú adattárak, amelyekben az adatelemzési egységek több csapata is elfogadhat számos adatelemzési projektet. 
+- **Csapat adattárai** : adatelemző egységen belüli adott csapatokhoz tartozó adattárak. Ezek a Tárházak egyediek a csapat igényeihez, és az adott csapaton belüli több projekthez is használhatók, de nem elég általánosak ahhoz, hogy egy adattudományi egységen belül több csapaton lehessen használni.
+- **Projekt-Tárházak** : adott projektekhez tartozó Tárházak. Előfordulhat, hogy az ilyen adattárak nem elég általánosak a csapaton belüli több projekthez, illetve az adatelemzési egységben lévő más csapatokhoz.
 
 A csoport közös tárházának beállításához a következőket kell tennie: 
 - Az alapértelmezett **GroupCommon** -tárház átnevezése **GroupProjectTemplate**
@@ -75,19 +75,19 @@ A csoport közös tárházának beállításához a következőket kell tennie:
 
 ### <a name="rename-the-default-project-repository-to-groupprojecttemplate"></a>Az alapértelmezett Project-tárház átnevezése GroupProjectTemplate
 
-Az alapértelmezett **GroupCommon** -projekt tárházának átnevezése az **GroupProjectTemplate**-re:
+Az alapértelmezett **GroupCommon** -projekt tárházának átnevezése az **GroupProjectTemplate** -re:
 
-1. A **GroupCommon** -projekt **összegzése** lapon válassza a **repók**lehetőséget. Ez a művelet a GroupCommon projekt alapértelmezett **GroupCommon** adattárát veszi igénybe, amely jelenleg üres.
+1. A **GroupCommon** -projekt **összegzése** lapon válassza a **repók** lehetőséget. Ez a művelet a GroupCommon projekt alapértelmezett **GroupCommon** adattárát veszi igénybe, amely jelenleg üres.
    
-1. A lap tetején húzza le a **GroupCommon** melletti nyilat, majd válassza a **tárolók kezelése**lehetőséget.
+1. A lap tetején húzza le a **GroupCommon** melletti nyilat, majd válassza a **tárolók kezelése** lehetőséget.
    
    ![Adattárak kezelése](./media/group-manager-tasks/rename-groupcommon-repo-3.png)
    
-1. A **Project Settings (projekt beállításai** ) lapon válassza a **...** elemet a **GroupCommon**mellett, majd válassza a **tárház átnevezése**elemet. 
+1. A **Project Settings (projekt beállításai** ) lapon válassza a **...** elemet a **GroupCommon** mellett, majd válassza a **tárház átnevezése** elemet. 
    
    ![Válassza a... lehetőséget. majd válassza a tárház átnevezése elemet.](./media/group-manager-tasks/rename-groupcommon-repo-4.png)
    
-1. Az **GroupCommon-tárház átnevezése** felugró ablakban adja meg a *GroupProjectTemplate*, majd válassza az **Átnevezés**lehetőséget. 
+1. Az **GroupCommon-tárház átnevezése** felugró ablakban adja meg a *GroupProjectTemplate* , majd válassza az **Átnevezés** lehetőséget. 
    
    ![Adattár átnevezése](./media/group-manager-tasks/rename-groupcommon-repo-6.png)
 
@@ -95,13 +95,13 @@ Az alapértelmezett **GroupCommon** -projekt tárházának átnevezése az **Gro
 
 A **GroupUtilities** adattár létrehozása:
 
-1. A **GroupCommon** -projekt **összegzése** lapon válassza a **repók**lehetőséget. 
+1. A **GroupCommon** -projekt **összegzése** lapon válassza a **repók** lehetőséget. 
    
-1. A lap tetején húzza le a **GroupProjectTemplate** melletti nyilat, és válassza az **új tárház**elemet.
+1. A lap tetején húzza le a **GroupProjectTemplate** melletti nyilat, és válassza az **új tárház** elemet.
    
    ![Új tárház kiválasztása](./media/group-manager-tasks/create-grouputilities-repo-1.png)
    
-1. Az **új Tárház létrehozása** párbeszédpanelen válassza a **git** **lehetőséget, írja be a** *GroupUtilities* **nevet az adattár neveként**, majd válassza a **Létrehozás**lehetőséget.
+1. Az **új Tárház létrehozása** párbeszédpanelen válassza a **git** **lehetőséget, írja be a** *GroupUtilities* **nevet az adattár neveként** , majd válassza a **Létrehozás** lehetőséget.
    
    ![GroupUtilities-Tárház létrehozása](./media/group-manager-tasks/create-grouputilities-repo-2.png)
    
@@ -117,17 +117,17 @@ A TDSP-csoport adattárainak importálása:
 
 1. A **GroupCommon** projekt kezdőlapján kattintson a bal oldali navigációs sávon a **repók** elemre. Megnyílik az alapértelmezett **GroupProjectTemplate** -tárház. 
    
-1. A **GroupProjectTemplate üres** lapon válassza az **Importálás**lehetőséget. 
+1. A **GroupProjectTemplate üres** lapon válassza az **Importálás** lehetőséget. 
    
    ![Importálás kiválasztása](./media/group-manager-tasks/import-repo.png)
    
-1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként**, majd a **klónozási URL-cím**mezőbe írja be a *https: \/ /GitHub.com/Azure/Azure-TDSP-ProjectTemplate.git* értéket. Ezután válassza az **Importálás**lehetőséget. A Microsoft TDSP Team ProjectTemplate adattárának tartalmát a rendszer a GroupProjectTemplate adattárba importálja. 
+1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként** , majd a **klónozási URL-cím** mezőbe írja be a *https: \/ /GitHub.com/Azure/Azure-TDSP-ProjectTemplate.git* értéket. Ezután válassza az **Importálás** lehetőséget. A Microsoft TDSP Team ProjectTemplate adattárának tartalmát a rendszer a GroupProjectTemplate adattárba importálja. 
    
    ![Microsoft TDSP-csoport adattárának importálása](./media/group-manager-tasks/import-repo-2.png)
    
 1. A **reposs** oldal tetején válassza a legördülő listát, és válassza ki a **GroupUtilities** -tárházat.
    
-1. Ismételje meg az importálási folyamatot a Microsoft TDSP Team **Utilities** adattár, a *https: \/ /GitHub.com/Azure/Azure-TDSP-Utilities.git*tartalmának importálásához a **GroupUtilities** adattárba. 
+1. Ismételje meg az importálási folyamatot a Microsoft TDSP Team **Utilities** adattár, a *https: \/ /GitHub.com/Azure/Azure-TDSP-Utilities.git* tartalmának importálásához a **GroupUtilities** adattárba. 
    
 A két csoport összes tárháza már tartalmazza az összes fájlt, kivéve a *. git* könyvtárában lévő fájlokat a Microsoft TDSP csapatának megfelelő tárházában. 
 
@@ -139,25 +139,25 @@ Ha testre szeretné szabni a csoport adattárainak tartalmát, hogy azok megfele
 
 A tárház tartalmának testreszabása:
 
-1. A **GroupCommon** -projekt **összegzése** lapon válassza a **repók**lehetőséget. 
+1. A **GroupCommon** -projekt **összegzése** lapon válassza a **repók** lehetőséget. 
    
 1. A lap tetején válassza ki a testreszabni kívánt tárházat.
 
 1. A tárház-címtár struktúrájában navigáljon a módosítani kívánt mappához vagy fájlhoz. 
    
-   - Új mappák vagy fájlok létrehozásához kattintson az **új**elem melletti nyílra. 
+   - Új mappák vagy fájlok létrehozásához kattintson az **új** elem melletti nyílra. 
      
      ![Új fájl létrehozása](./media/group-manager-tasks/new-file.png)
      
-   - Fájlok feltöltéséhez válassza a **fájl (ok) feltöltése**lehetőséget. 
+   - Fájlok feltöltéséhez válassza a **fájl (ok) feltöltése** lehetőséget. 
      
      ![Fájlok feltöltése](./media/group-manager-tasks/upload-files.png)
      
-   - Meglévő fájlok szerkesztéséhez navigáljon a fájlhoz, majd válassza a **Szerkesztés**lehetőséget. 
+   - Meglévő fájlok szerkesztéséhez navigáljon a fájlhoz, majd válassza a **Szerkesztés** lehetőséget. 
      
      ![Fájl szerkesztése](./media/group-manager-tasks/edit-file.png)
      
-1. Fájlok hozzáadása vagy szerkesztése után válassza a **véglegesítés**lehetőséget.
+1. Fájlok hozzáadása vagy szerkesztése után válassza a **véglegesítés** lehetőséget.
    
    ![Módosítások véglegesítve](./media/group-manager-tasks/commit.png)
 
@@ -167,13 +167,13 @@ Ha a helyi géppel vagy DSVM szeretné végrehajtani a módosításokat, és lek
 
 - Azure-előfizetés, ha DSVM szeretne létrehozni.
 - A git telepítve van a gépen. Ha DSVM használ, a git előre telepítve van. Egyéb esetben lásd: [platformok és eszközök függelék](platforms-and-tools.md#appendix).
-- Ha DSVM szeretne használni, az Azure-ban létrehozott és konfigurált Windows-vagy Linux-DSVM. További információt és útmutatást a [Data Science Virtual Machine dokumentációjában](/azure/machine-learning/data-science-virtual-machine/)talál.
+- Ha DSVM szeretne használni, az Azure-ban létrehozott és konfigurált Windows-vagy Linux-DSVM. További információt és útmutatást a [Data Science Virtual Machine dokumentációjában](../data-science-virtual-machine/index.yml)talál.
 - Windows DSVM esetén a [git Hitelesítőadat-kezelő (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) telepítve van a gépen. A *readme.MD* fájlban görgessen le a **letöltés és telepítés** szakaszban, és válassza ki a **legújabb telepítőt**. Töltse le az *. exe* -telepítőt a telepítő lapról, és futtassa. 
 - Linux DSVM esetében egy nyilvános SSH-kulcs, amely be van állítva a DSVM, és hozzá lett adva az Azure DevOps. További információt és útmutatást az **SSH nyilvános kulcs létrehozása** című szakaszban talál a [platformok és eszközök függelékben](platforms-and-tools.md#appendix). 
 
 Először másolja vagy *klónozása* a tárházat a helyi gépre. 
    
-1. A **GroupCommon** -projekt **összegzése** lapon válassza a **repók**lehetőséget, majd a lap tetején válassza ki a klónozott tárházat.
+1. A **GroupCommon** -projekt **összegzése** lapon válassza a **repók** lehetőséget, majd a lap tetején válassza ki a klónozott tárházat.
    
 1. A tárház lapon kattintson a jobb felső sarokban található **klónozás** elemre.
    
@@ -229,32 +229,32 @@ Tagok hozzáadása a csoporthoz:
 
 1. Az Azure DevOps a **GroupCommon** projekt kezdőlapján válassza a **projekt beállításai** lehetőséget a bal oldali navigációs sávon. 
    
-1. A **projekt beállításai** bal oldali navigációs sávon válassza **a csapatok**lehetőséget, majd a **csapatok** lapon válassza ki a **GroupCommon csapatot**. 
+1. A **projekt beállításai** bal oldali navigációs sávon válassza **a csapatok** lehetőséget, majd a **csapatok** lapon válassza ki a **GroupCommon csapatot**. 
    
    ![Csapatok konfigurálása](./media/group-manager-tasks/teams.png)
    
-1. A **csapat profilja** lapon válassza a **Hozzáadás**lehetőséget.
+1. A **csapat profilja** lapon válassza a **Hozzáadás** lehetőséget.
    
    ![Hozzáadás a GroupCommon csapathoz](./media/group-manager-tasks/add-to-team.png)
    
-1. A **felhasználók és csoportok hozzáadása** párbeszédpanelen keresse meg és válassza ki a csoporthoz hozzáadni kívánt tagokat, majd kattintson a **módosítások mentése**gombra. 
+1. A **felhasználók és csoportok hozzáadása** párbeszédpanelen keresse meg és válassza ki a csoporthoz hozzáadni kívánt tagokat, majd kattintson a **módosítások mentése** gombra. 
    
    ![Felhasználók és csoportok hozzáadása](./media/group-manager-tasks/add-users.png)
    
 
 A tagok engedélyeinek konfigurálása:
 
-1. A **projekt beállításai** bal oldali navigációs sávon válassza az **engedélyek**lehetőséget. 
+1. A **projekt beállításai** bal oldali navigációs sávon válassza az **engedélyek** lehetőséget. 
    
 1. Az **engedélyek** lapon válassza ki azt a csoportot, amelyhez hozzá kívánja adni a tagokat. 
    
-1. Az adott csoport lapján válassza a **tagok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget. 
+1. Az adott csoport lapján válassza a **tagok** lehetőséget, majd válassza a **Hozzáadás** lehetőséget. 
    
-1. A **tagok meghívása** felugró ablakban keresse meg és válassza ki a csoportba felvenni kívánt tagokat, majd kattintson a **Mentés**gombra. 
+1. A **tagok meghívása** felugró ablakban keresse meg és válassza ki a csoportba felvenni kívánt tagokat, majd kattintson a **Mentés** gombra. 
    
    ![Engedélyek megadása a tagoknak](./media/group-manager-tasks/grant-permissions.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi hivatkozások a csoportos adatelemzési folyamat egyéb szerepköreinek és feladatainak részletes leírására mutatnak:
 

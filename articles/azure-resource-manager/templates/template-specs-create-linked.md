@@ -2,17 +2,17 @@
 title: Sablon létrehozása a csatolt sablonokkal
 description: Útmutató sablon létrehozásához csatolt sablonokkal.
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: adcce8194f380b90eb9a29f4da25763e112b9f12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/03/2020
+ms.openlocfilehash: b1862789ede4a9d2ab8c57bdb913c449a560dc58
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728539"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321598"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Oktatóanyag: spec sablon létrehozása csatolt sablonokkal (előzetes verzió)
 
-Megtudhatja, hogyan hozhat létre egy [sablon-specifikációt](template-specs.md) [csatolt sablonnal](linked-templates.md#linked-template). A sablon specifikációi segítségével megoszthatja az ARM-sablonokat a szervezet más felhasználóival. Ebből a cikkből megtudhatja, hogyan hozhat létre egy sablon-specifikációt a fősablon és a hozzá társított sablonok a `relativePath` [telepítési erőforrás](/azure/templates/microsoft.resources/deployments)tulajdonságával történő előkészítéséhez.
+Megtudhatja, hogyan hozhat létre egy [sablon-SPECT](template-specs.md) egy fő sablonnal és egy [csatolt sablonnal](linked-templates.md#linked-template). A sablon specifikációi segítségével megoszthatja az ARM-sablonokat a szervezet más felhasználóival. Ebből a cikkből megtudhatja, hogyan hozhat létre egy sablon-specifikációt a fősablon és a hozzá társított sablonok a `relativePath` [telepítési erőforrás](/azure/templates/microsoft.resources/deployments)tulajdonságával történő előkészítéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -27,7 +27,7 @@ Hozza létre a fő sablont és a csatolt sablont.
 
 Sablon csatolásához vegyen fel egy [központi telepítési erőforrást](/azure/templates/microsoft.resources/deployments) a fő sablonba. A `templateLink` tulajdonságban a fölérendelt sablon elérési útjának megfelelően határozza meg a csatolt sablon relatív elérési útját.
 
-A csatolt sablon neve **linkedTemplate.json**, és a fő sablon tárolási útvonalán található **összetevők nevű** almappában tárolódik.  A következő értékek egyikét használhatja a relativePath:
+A csatolt sablon neve **linkedTemplate.json** , és a fő sablon tárolási útvonalán található **összetevők nevű** almappában tárolódik.  A következő értékek egyikét használhatja a relativePath:
 
 - `./artifacts/linkedTemplate.json`
 - `/artifacts/linkedTemplate.json`

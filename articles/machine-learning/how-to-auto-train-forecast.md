@@ -10,17 +10,17 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: ce8ff8bedc6f6e4f99a940bbdb26bd3fafc930d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b708d85e94782ea264432ae3780b2b1f0d240396
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296773"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320807"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhat és betaníthat egy idősorozat-előrejelző regressziós modellt a [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)-ban, az automatikus gépi tanulás, a AutoML használatával. 
+Ebből a cikkből megtudhatja, hogyan konfigurálhat és betaníthat egy idősorozat-előrejelző regressziós modellt a [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)-ban, az automatikus gépi tanulás, a AutoML használatával. 
 
 Ehhez a következőket kell tennie: 
 
@@ -120,7 +120,7 @@ További információ arról, hogy a AutoML hogyan alkalmazza a határokon átny
 
 ## <a name="configure-experiment"></a>Kísérlet konfigurálása
 
-Az [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) objektum meghatározza az automatizált gépi tanulási feladatokhoz szükséges beállításokat és adatmennyiséget. Az előrejelzési modell konfigurációja hasonló a standard regressziós modell beállításához, de bizonyos modellek, konfigurációs beállítások és featurization lépések kifejezetten az idősorozat-adatsorokra vonatkoznak. 
+Az [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) objektum meghatározza az automatizált gépi tanulási feladatokhoz szükséges beállításokat és adatmennyiséget. Az előrejelzési modell konfigurációja hasonló a standard regressziós modell beállításához, de bizonyos modellek, konfigurációs beállítások és featurization lépések kifejezetten az idősorozat-adatsorokra vonatkoznak. 
 
 ### <a name="supported-models"></a>Támogatott modellek
 Az automatizált gépi tanulás automatikusan különböző modelleket és algoritmusokat próbál a modell létrehozási és hangolási folyamatának részeként. Felhasználóként nem kell megadnia az algoritmust. Az előrejelzési kísérletek esetében a natív idősorozat és a Deep learning modellek is a javaslati rendszer részét képezik. A következő táblázat összefoglalja a modellek ezen részhalmazát. 
@@ -138,7 +138,7 @@ ForecastTCN (előzetes verzió)| A ForecastTCN egy olyan neurális hálózati mo
 
 A regressziós problémákhoz hasonlóan szabványos betanítási paramétereket is definiálhat, például a feladattípust, az ismétlések számát, a betanítási adatok számát és az eltérő érvényességi értéket. Az előrejelzési feladatokhoz további paramétereket kell megadni, amelyek hatással vannak a kísérletre. 
 
-A következő táblázat összefoglalja ezeket a további paramétereket. Tekintse meg a szintaxis kialakítási mintáit ismertető [dokumentációt](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) .
+A következő táblázat összefoglalja ezeket a további paramétereket. Tekintse meg a szintaxis kialakítási mintáit ismertető [dokumentációt](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) .
 
 | Paraméter &nbsp; neve | Leírás | Kötelező |
 |-------|-------|-------|
@@ -149,10 +149,11 @@ A következő táblázat összefoglalja ezeket a további paramétereket. Tekint
 |`target_lags`|A megcélzott értékeket az adatok gyakorisága alapján késleltető sorok száma. A lag listaként vagy egyetlen egész számként jelenik meg. A késést akkor kell használni, ha a független változók és a függő változó közötti kapcsolat alapértelmezés szerint nem felel meg egymásnak. ||
 |`feature_lags`| A rendszer automatikusan eldönti a lag funkcióit, ha `target_lags` be van állítva, és `feature_lags` be van állítva `auto` . A szolgáltatás lekésésének engedélyezése segíthet a pontosság növelésében. A funkció alapértelmezés szerint le van tiltva. ||
 |`target_rolling_window_size`|*n* korábbi időszakok, amelyeket az előre jelzett értékek előállítására használhat, <= betanítási készlet mérete. Ha nincs megadva, az *n* a teljes betanítási készlet mérete. Akkor válassza ezt a paramétert, ha csak bizonyos mennyiségű előzményt szeretne figyelembe venni a modell betanításakor. További információ a [cél gördülő ablak összesítéséről](#target-rolling-window-aggregation).||
+|`short_series_handling`| Lehetővé teszi a rövid idősorozatok kezelését, hogy elkerülje a nem megfelelő adatmennyiséget a betanítás során. A rövid adatsorozat-kezelő alapértelmezés szerint True (igaz) értékre van állítva.|
 
 
 A következő kód, 
-* Létrehozza a `time-series settings` szótár objektumot. 
+* Kihasználja az `ForecastingParameters` osztályt, hogy meghatározza az előrejelzési paramétereket a kísérlet betanításához
 * Beállítja a `time_column_name` értékét az `day_datetime` adatkészlet mezőjére. 
 * A paramétert adja meg a következőhöz: `time_series_id_column_names` `"store"` . Ez biztosítja, hogy az **adatsorozatok két különálló csoportja** legyen létrehozva. egyet az A és A B áruházhoz.
 * A 50 értékre állítja a `forecast_horizon` teljes tesztelési készlet előrejelzését. 
@@ -161,16 +162,18 @@ A következő kód,
 * `target_lags`Az ajánlott "automatikus" beállítást állítja be, amely automatikusan felismeri ezt az értéket.
 
 ```python
-time_series_settings = {
-    "time_column_name": "day_datetime",
-    "time_series_id_column_names": ["store"],
-    "forecast_horizon": 50,
-    "target_lags": "auto",
-    "target_rolling_window_size": 10,
-}
+from azureml.automl.core.forecasting_parameters import ForecastingParameters
+
+forecasting_parameters = ForecastingParameters(
+    time_column_name='day_datetime', 
+    forecast_horizon=50,
+    time_series_id_column_names=["store"],
+    target_lags='auto',
+    target_rolling_window_size=10
+)
 ```
 
-Ezeket a `time_series_settings` rendszer a szabványos `AutoMLConfig` objektumba továbbítja a `forecasting` feladat típusa, az elsődleges metrika, a kilépési feltételek és a betanítási adatok mellett. 
+Ezeket a `forecasting_parameters` rendszer a szabványos `AutoMLConfig` objektumba továbbítja a `forecasting` feladat típusa, az elsődleges metrika, a kilépési feltételek és a betanítási adatok mellett. 
 
 ```python
 from azureml.core.workspace import Workspace
@@ -346,4 +349,3 @@ Tekintse meg az [előrejelzési minta jegyzetfüzeteket](https://github.com/Azur
 * Ismerje meg az [értelmezést: modell-magyarázatok az automatikus gépi tanulásban (előzetes verzió)](how-to-machine-learning-interpretability-automl.md). 
 * Ismerje meg, hogyan taníthat több modellt a AutoML [számos modell megoldás-gyorsító](https://aka.ms/many-models)használatával.
 * A kísérletek automatikus gépi tanulással történő létrehozásához kövesse az [oktatóanyagot](tutorial-auto-train-models.md) a teljes körű példához.
-

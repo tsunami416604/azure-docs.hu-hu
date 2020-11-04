@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 91aac279a264d64ace5988d147c4caf8c52e9656
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1662af6cd3499fdf851d4e1bd8a0db48da7635b4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75864145"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320129"
 ---
 # <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>HDInsight Spark-adatelemzési útmutató a PySpark és a Scala használatával az Azure-ban
 
@@ -40,12 +40,11 @@ Tekintse meg a [fejlett adatfeltárást és-modellezést a sparktal](spark-advan
 
 ## <a name="predict-taxi-tips-using-scala-on-azure-spark"></a>Taxi tippek előrejelzése a Scala használatával az Azure Sparkban
 
-A [Scala és a Spark on Azure bemutató használata](scala-walkthrough.md) azt jelzi, hogy a tipp fizetős-e, és a várhatóan fizetendő összegek köre. Azt mutatja be, hogyan használható a Scala a felügyelt gépi tanulási feladatokhoz a Spark Machine learning Library (MLlib) és a SparkML-csomagok használatával egy Azure HDInsight Spark-fürtön. Végigvezeti az [adatelemzési folyamatot](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)alkotó feladatokon: az adatok betöltését és feltárását, a vizualizációt, a szolgáltatások mérnöki használatát, a modellezést és a modell felhasználását. A modellek a következők: logisztikai és lineáris regresszió, véletlenszerű erdők és átmenetes kiemeléses fák.
+A [Scala és a Spark on Azure bemutató használata](scala-walkthrough.md) azt jelzi, hogy a tipp fizetős-e, és a várhatóan fizetendő összegek köre. Azt mutatja be, hogyan használható a Scala a felügyelt gépi tanulási feladatokhoz a Spark Machine learning Library (MLlib) és a SparkML-csomagok használatával egy Azure HDInsight Spark-fürtön. Végigvezeti az [adatelemzési folyamatot](./index.yml)alkotó feladatokon: az adatok betöltését és feltárását, a vizualizációt, a szolgáltatások mérnöki használatát, a modellezést és a modell felhasználását. A modellek a következők: logisztikai és lineáris regresszió, véletlenszerű erdők és átmenetes kiemeléses fák.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A csoportos adatelemzési folyamat áttekintését lásd: a [csoportos adatelemzési folyamat áttekintése](overview.md).
 
-A csoportos adatelemzési folyamat életciklusának megvitatására a [csoportos adatelemzési folyamat életciklusa](lifecycle.md)című témakörben olvashat. Ez az életciklus az elejétől a végéig terjedő lépéseket ismerteti, amelyeket a projektek általában a végrehajtásuk után követnek. 
-
+A csoportos adatelemzési folyamat életciklusának megvitatására a [csoportos adatelemzési folyamat életciklusa](lifecycle.md)című témakörben olvashat. Ez az életciklus az elejétől a végéig terjedő lépéseket ismerteti, amelyeket a projektek általában a végrehajtásuk után követnek.

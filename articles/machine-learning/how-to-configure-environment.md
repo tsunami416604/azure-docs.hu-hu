@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: a6612f3df5fba834dff8fc60e90c359ceff4cbe1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7e189885fbf7befcaea3f63148a42c81dc1da03e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743112"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320494"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>Fejlesztési környezet beállítása Azure Machine Learninghoz
 
@@ -55,7 +55,7 @@ A munkaterület-konfigurációs fájl egy JSON-fájl, amely közli az SDK-val, h
 
 A JSON-fájlnak a Python-szkripteket vagy Jupyter-jegyzetfüzeteket tartalmazó címtár-struktúrában kell lennie. Ez lehet ugyanabban a címtárban, egy *. azureml* nevű alkönyvtár vagy egy szülő könyvtárban.
 
-Ha ezt a fájlt a kódból szeretné használni, használja a [`Workspace.from_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#from-config-path-none--auth-none---logger-none---file-name-none-&preserve-view=true) metódust. Ez a kód betölti az adatokat a fájlból, és csatlakozik a munkaterülethez.
+Ha ezt a fájlt a kódból szeretné használni, használja a [`Workspace.from_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#from-config-path-none--auth-none---logger-none---file-name-none-&preserve-view=true) metódust. Ez a kód betölti az adatokat a fájlból, és csatlakozik a munkaterülethez.
 
 Hozzon létre egy munkaterület-konfigurációs fájlt az alábbi módszerek egyikével:
 
@@ -67,7 +67,7 @@ Hozzon létre egy munkaterület-konfigurációs fájlt az alábbi módszerek egy
 
 * Python SDK Azure Machine Learning
 
-    Hozzon létre egy parancsfájlt a Azure Machine Learning munkaterülethez való kapcsolódáshoz, és a [`write_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) metódus használatával hozza létre a fájlt, és mentse *. azureml/config.js* . Győződjön meg arról, hogy a, a `subscription_id` `resource_group` és a és a együtt van lecserélve `workspace_name` .
+    Hozzon létre egy parancsfájlt a Azure Machine Learning munkaterülethez való kapcsolódáshoz, és a [`write_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) metódus használatával hozza létre a fájlt, és mentse *. azureml/config.js*. Győződjön meg arról, hogy a, a `subscription_id` `resource_group` és a és a együtt van lecserélve `workspace_name` .
 
     ```python
     from azureml.core import Workspace
@@ -97,7 +97,7 @@ Helyi fejlesztési környezet (amely lehet távoli virtuális gép is, például
     > Ha Linux vagy macOS rendszerű, és a bashtől eltérő (például zsh) rendszerhéjat használ, előfordulhat, hogy bizonyos parancsok futtatásakor hibák jelentkeznek. A probléma megkerüléséhez a `bash` paranccsal indítson el egy új bash-rendszerhéjat, és futtassa a parancsokat.
 
 1. Aktiválja az újonnan létrehozott Python virtuális környezetet.
-1. Telepítse a [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)-t.
+1. Telepítse a [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)-t.
 1. A helyi környezet a Azure Machine Learning munkaterület használatára való konfigurálásához [hozzon létre egy munkaterület-konfigurációs fájlt](#workspace) , vagy használjon egy meglévőt.
 
 Most, hogy beállította a helyi környezetét, készen áll a Azure Machine Learning használatának megkezdésére. A kezdéshez tekintse meg a [Azure Machine learning Python első lépések útmutatóját](tutorial-1st-experiment-sdk-setup-local.md) .
@@ -223,7 +223,7 @@ Hogyan működik a Azure Databricks Azure Machine Learning:
 
 ### <a name="set-up-your-databricks-cluster"></a>A Databricks-fürt beállítása
 
-Hozzon létre egy [Databricks-fürtöt](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). Egyes beállítások csak akkor érvényesek, ha az SDK-t a Databricks-on lévő automatizált gépi tanuláshoz telepíti.
+Hozzon létre egy [Databricks-fürtöt](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal). Egyes beállítások csak akkor érvényesek, ha az SDK-t a Databricks-on lévő automatizált gépi tanuláshoz telepíti.
 **A fürt létrehozása néhány percig is eltarthat.**
 
 Használja ezeket a beállításokat:
@@ -297,4 +297,4 @@ Próbálja ki:
 ## <a name="next-steps"></a>Következő lépések
 
 - [Modell Betanítása](tutorial-train-models-with-aml.md) Azure Machine learningre a MNIST adatkészlettel
-- A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) -dokumentáció megtekintése
+- A [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -dokumentáció megtekintése

@@ -11,22 +11,22 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18, devx-track-azurecli
-ms.openlocfilehash: cba01684457c8b3a7f6c8c51c7d202bf8963658e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: aa84d7cce09b370ab35ef67029f4dbe2ca29cabb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736617"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320852"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning-munkaterülethez való hozzáférés kezelése
 
-Ebből a cikkből megtudhatja, hogyan kezelheti az Azure Machine Learning-munkaterülethez való hozzáférést. Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](/azure/role-based-access-control/overview) az Azure-erőforrásokhoz való hozzáférés kezelésére szolgál. A Azure Active Directory lévő felhasználók meghatározott szerepköröket kapnak, amelyek hozzáférést biztosítanak az erőforrásokhoz. Az Azure beépített szerepköröket és egyéni szerepkörök létrehozását is lehetővé teszi.
+Ebből a cikkből megtudhatja, hogyan kezelheti az Azure Machine Learning-munkaterülethez való hozzáférést. Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md) az Azure-erőforrásokhoz való hozzáférés kezelésére szolgál. A Azure Active Directory lévő felhasználók meghatározott szerepköröket kapnak, amelyek hozzáférést biztosítanak az erőforrásokhoz. Az Azure beépített szerepköröket és egyéni szerepkörök létrehozását is lehetővé teszi.
 
 ## <a name="default-roles"></a>Alapértelmezett szerepkörök
 
 Az Azure Machine Learning-munkaterület egy Azure-erőforrás. A többi Azure-erőforráshoz hasonlóan az új Azure Machine Learning-munkaterületek is három alapértelmezett szerepkörrel rendelkeznek a létrehozásukkor. Felhasználókat adhat hozzá a munkaterülethez, és hozzárendelheti őket a beépített szerepkörök valamelyikéhez.
 
-| Role | Hozzáférési szint |
+| Szerepkör | Hozzáférési szint |
 | --- | --- |
 | **Olvasó** | Csak olvasási műveletek a munkaterületen. Az olvasók listázhatja és megtekintheti az eszközöket, beleértve az [adattár](how-to-access-data.md) hitelesítő adatait is egy munkaterületen. Az olvasók nem tudják létrehozni vagy frissíteni ezeket az eszközöket. |
 | **Közreműködő** | Munkaterületen lévő eszközök megtekintése, létrehozása, szerkesztése vagy törlése (ha van ilyen). A közreműködők például létrehozhatnak egy kísérletet, létrehozhatnak vagy csatolhatnak egy számítási fürtöt, futtatást végezhetnek és webszolgáltatásokat helyezhetnek üzembe. |
@@ -34,18 +34,18 @@ Az Azure Machine Learning-munkaterület egy Azure-erőforrás. A többi Azure-er
 | **Egyéni szerepkör** | Lehetővé teszi a munkaterületen belüli adott vezérlési vagy adatsík-műveletekhez való hozzáférés testreszabását. Például elküldheti egy futtatást, létrehozhat egy számítási modellt, üzembe helyezheti a modelleket, vagy regisztrálhat egy adatkészletet. |
 
 > [!IMPORTANT]
-> A szerepkör-hozzáférés az Azure több szintjére is kiterjed. Előfordulhat például, hogy valaki tulajdonosi hozzáféréssel rendelkezik a munkaterülethez, és nem rendelkezik tulajdonosi hozzáféréssel a munkaterületet tartalmazó erőforráscsoporthoz. További információt az [Azure RBAC működéséről](/azure/role-based-access-control/overview#how-azure-rbac-works)szóló témakörben talál.
+> A szerepkör-hozzáférés az Azure több szintjére is kiterjed. Előfordulhat például, hogy valaki tulajdonosi hozzáféréssel rendelkezik a munkaterülethez, és nem rendelkezik tulajdonosi hozzáféréssel a munkaterületet tartalmazó erőforráscsoporthoz. További információt az [Azure RBAC működéséről](../role-based-access-control/overview.md#how-azure-rbac-works)szóló témakörben talál.
 
-Az adott beépített szerepkörökkel kapcsolatos további információkért lásd: [Az Azure beépített szerepkörei](/azure/role-based-access-control/built-in-roles).
+Az adott beépített szerepkörökkel kapcsolatos további információkért lásd: [Az Azure beépített szerepkörei](../role-based-access-control/built-in-roles.md).
 
 ## <a name="manage-workspace-access"></a>Munkaterület-hozzáférés kezelése
 
 Ha Ön a munkaterület tulajdonosa, szerepköröket adhat hozzá és távolíthat el a munkaterülethez. Szerepköröket is hozzárendelhet a felhasználókhoz. A következő hivatkozások segítségével megismerheti a hozzáférés kezelését:
-- [Azure Portal felhasználói felület](/azure/role-based-access-control/role-assignments-portal)
-- [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
-- [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
-- [REST API](/azure/role-based-access-control/role-assignments-rest)
-- [Azure Resource Manager sablonok](/azure/role-based-access-control/role-assignments-template)
+- [Azure Portal felhasználói felület](../role-based-access-control/role-assignments-portal.md)
+- [PowerShell](../role-based-access-control/role-assignments-powershell.md)
+- [Azure CLI](../role-based-access-control/role-assignments-cli.md)
+- [REST API](../role-based-access-control/role-assignments-rest.md)
+- [Azure Resource Manager sablonok](../role-based-access-control/role-assignments-template.md)
 
 Ha telepítette a [Azure Machine learning CLI](reference-azure-machine-learning-cli.md)-t, a parancssori felület parancsaival rendelhet hozzá szerepköröket a felhasználókhoz:
 
@@ -65,7 +65,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 
 ## <a name="azure-machine-learning-operations"></a>Azure Machine Learning műveletek
 
-Számos művelethez és feladathoz Azure Machine Learning beépített műveleteket. A teljes listát lásd: az [Azure erőforrás-szolgáltató műveletei](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
+Számos művelethez és feladathoz Azure Machine Learning beépített műveleteket. A teljes listát lásd: az [Azure erőforrás-szolgáltató műveletei](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices).
 
 ## <a name="mlflow-operations-in-azure-machine-learning"></a>MLflow műveletek az Azure Machine learningben
 
@@ -135,7 +135,7 @@ Az üzembe helyezés után ez a szerepkör elérhetővé válik a megadott munka
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
-További információ az egyéni szerepkörökről: [Egyéni Azure-szerepkörök](/azure/role-based-access-control/custom-roles). Az egyéni szerepkörökkel használható műveletekkel (műveletekkel és nem műveletekkel) kapcsolatos további információkért lásd: [erőforrás-szolgáltatói műveletek](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
+További információ az egyéni szerepkörökről: [Egyéni Azure-szerepkörök](../role-based-access-control/custom-roles.md). Az egyéni szerepkörökkel használható műveletekkel (műveletekkel és nem műveletekkel) kapcsolatos további információkért lásd: [erőforrás-szolgáltatói műveletek](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices).
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -165,7 +165,7 @@ A következő táblázat a Azure Machine Learning tevékenységek összegzését
 
 ### <a name="q-are-we-publishing-azure-built-in-roles-for-the-machine-learning-service"></a>K. Az Azure beépített szerepköreit tesszük közzé a Machine Learning szolgáltatáshoz?
 
-Jelenleg nem tesszük közzé az [Azure beépített szerepköreit](/azure/role-based-access-control/built-in-roles) a Machine learning szolgáltatáshoz. Nem lehet frissíteni egy beépített szerepkört a közzététel után, és az ügyfél-forgatókönyvek és a visszajelzések alapján továbbra is megerősítjük a szerepkör-definíciókat. 
+Jelenleg nem tesszük közzé az [Azure beépített szerepköreit](../role-based-access-control/built-in-roles.md) a Machine learning szolgáltatáshoz. Nem lehet frissíteni egy beépített szerepkört a közzététel után, és az ügyfél-forgatókönyvek és a visszajelzések alapján továbbra is megerősítjük a szerepkör-definíciókat. 
 
 <a id="customroles"></a>
 
@@ -419,7 +419,7 @@ Futtassa az alábbi parancsot az Azure CLI-ben.
 az provider operation show –n Microsoft.MachineLearningServices
 ```
 
-Ezek az [erőforrás-szolgáltatói műveletek](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)listájában is megtalálhatók.
+Ezek az [erőforrás-szolgáltatói műveletek](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices)listájában is megtalálhatók.
 
 
 ### <a name="q-what-are-some-common-gotchas-when-using-azure-rbac"></a>K. Melyek az Azure RBAC használatának gyakori megtartása?
@@ -427,18 +427,18 @@ Ezek az [erőforrás-szolgáltatói műveletek](/azure/role-based-access-control
 Íme néhány tudnivaló az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata során:
 
 - Ha az Azure-ban hoz létre egy erőforrást, mondjuk egy munkaterületet, nem közvetlenül a munkaterület tulajdonosa. A szerepkör örökölt a legmagasabb hatókörű szerepkörtől, amelyet az adott előfizetésben engedélyez. Például ha Ön hálózati rendszergazda, és rendelkezett a Machine Learning munkaterület létrehozásához szükséges engedélyekkel, akkor a hálózati rendszergazda szerepkört a munkaterülethez kell rendelni, nem pedig a tulajdonosi szerepkörhöz.
-- Ha két szerepkör-hozzárendelés van ugyanahhoz a Azure Active Directory-felhasználóhoz, amely ütközik a műveletek és a tevékenységek ütköző részeivel, akkor előfordulhat, hogy az egyik szerepkörtől való kizárásban felsorolt műveletek nem lépnek érvénybe, ha egy másik szerepkör Műveleteiként is szerepelnek. Ha többet szeretne megtudni arról, hogy az Azure hogyan elemzi a szerepkör-hozzárendeléseket, olvassa el, [hogyan határozza meg, hogy a felhasználó rendelkezik-e erőforrás-hozzáféréssel az Azure RBAC](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource)
+- Ha két szerepkör-hozzárendelés van ugyanahhoz a Azure Active Directory-felhasználóhoz, amely ütközik a műveletek és a tevékenységek ütköző részeivel, akkor előfordulhat, hogy az egyik szerepkörtől való kizárásban felsorolt műveletek nem lépnek érvénybe, ha egy másik szerepkör Műveleteiként is szerepelnek. Ha többet szeretne megtudni arról, hogy az Azure hogyan elemzi a szerepkör-hozzárendeléseket, olvassa el, [hogyan határozza meg, hogy a felhasználó rendelkezik-e erőforrás-hozzáféréssel az Azure RBAC](../role-based-access-control/overview.md#how-azure-rbac-determines-if-a-user-has-access-to-a-resource)
 - A számítási erőforrások VNet való üzembe helyezéséhez explicit módon rendelkeznie kell a következő műveletekhez szükséges engedélyekkel:
     - "Microsoft. Network/virtualNetworks/JOIN/Action" a VNet-erőforráson.
     - "Microsoft. Network/virtualNetworks/subnet/JOIN/Action" az alhálózati erőforráson.
     
-    A hálózatkezeléssel rendelkező Azure RBAC kapcsolatos további információkért tekintse meg a [hálózatkezelés beépített szerepköreit](/azure/role-based-access-control/built-in-roles#networking).
+    A hálózatkezeléssel rendelkező Azure RBAC kapcsolatos további információkért tekintse meg a [hálózatkezelés beépített szerepköreit](../role-based-access-control/built-in-roles.md#networking).
 
 - Időnként akár 1 óráig is eltarthat, amíg az új szerepkör-hozzárendelések érvénybe lépnek a gyorsítótárban tárolt engedélyekkel szemben a veremben.
 
 ### <a name="q-what-permissions-do-i-need-to-use-a-user-assigned-managed-identity-with-my-amlcompute-clusters"></a>K. Milyen engedélyek szükségesek egy felhasználó által hozzárendelt felügyelt identitás használatához a Amlcompute-fürtökkel?
 
-Ahhoz, hogy egy felhasználóhoz hozzárendelt identitást rendeljen a Amlcompute-fürtökhöz, az egyiknek írási engedéllyel kell rendelkeznie a számítási és [felügyelt identitás-kezelői szerepkör](/azure/role-based-access-control/built-in-roles#managed-identity-operator)létrehozásához. A felügyelt identitásokkal rendelkező Azure RBAC kapcsolatos további információkért olvassa el a [felhasználó által hozzárendelt identitás kezelése](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) című témakört.
+Ahhoz, hogy egy felhasználóhoz hozzárendelt identitást rendeljen a Amlcompute-fürtökhöz, az egyiknek írási engedéllyel kell rendelkeznie a számítási és [felügyelt identitás-kezelői szerepkör](../role-based-access-control/built-in-roles.md#managed-identity-operator)létrehozásához. A felügyelt identitásokkal rendelkező Azure RBAC kapcsolatos további információkért olvassa el a [felhasználó által hozzárendelt identitás kezelése](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) című témakört.
 
 
 ### <a name="q-do-we-support-role-based-access-control-on-the-studio-portal"></a>K. Támogatjuk a szerepköralapú hozzáférés-vezérlést a Studio portálon?
@@ -480,4 +480,4 @@ Az előfizetési szintű engedélyekre van szükség a munkaterületen találhat
 - [Vállalati biztonság áttekintése](concept-enterprise-security.md)
 - [Virtual Network elkülönítés és Adatvédelem – áttekintés](how-to-network-security-overview.md)
 - [Oktatóanyag: modellek betanítása](tutorial-train-models-with-aml.md)
-- [Erőforrás-szolgáltatói műveletek](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)
+- [Erőforrás-szolgáltatói műveletek](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices)

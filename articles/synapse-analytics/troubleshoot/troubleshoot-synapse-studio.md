@@ -8,28 +8,28 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 33022d005deca5d1350278218fb6f1fca1a35ca1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fe31f83ccc0dcbd2d61a7c70d40a64da08d13a1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287747"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321027"
 ---
 # <a name="azure-synapse-studio-preview-troubleshooting"></a>Az Azure szinapszis Studio (előzetes verzió) hibaelhárítása
 
 Ez a hibaelhárítási útmutató útmutatást nyújt arról, hogy milyen információkat kell megadnia a hálózati kapcsolattal kapcsolatos támogatási jegyek megnyitásakor. A megfelelő információkkal a probléma gyorsabban oldható fel.
 
-## <a name="sql-on-demand-preview-service-connectivity-issue"></a>Az SQL on-demand (előzetes verzió) szolgáltatás kapcsolódási problémája
+## <a name="serverless-sql-pool-preview-service-connectivity-issue"></a>Kiszolgáló nélküli SQL-készlet (előzetes verzió) szolgáltatás kapcsolódási problémája
 
 ### <a name="symptom-1"></a>1. tünet
 
-Az "SQL on-demand" beállítás szürkén jelenik meg a "kapcsolódás a legördülő listához".
+A "kiszolgáló nélküli SQL-készlet" beállítás szürkén jelenik meg a "kapcsolódás a legördülő listához".
 
 ![symptom1](media/troubleshooting-synapse-studio/symptom1v2.png)
 
 ### <a name="symptom-2"></a>2. tünet
 
-A lekérdezés "SQL on-demand" használatával történő futtatásával "nem sikerült kapcsolatot létesíteni a kiszolgálóval" hibaüzenet jelenik meg.
+Ha a lekérdezést a "kiszolgáló nélküli SQL-készlettel" futtatja, a "nem sikerült kapcsolatot létesíteni a kiszolgálóval" hibaüzenet jelenik meg.
 
 ![2. tünet](media/troubleshooting-synapse-studio/symptom2.png)
  
@@ -45,7 +45,7 @@ Nyissa meg a "diagnosztikai adatok" panelt, és válassza a "diagnosztika letöl
 
 A hibaelhárítás megkezdéséhez próbálja megismételni az Azure szinapszis Studióban végrehajtott műveletet.
 
-- Az 1. tünet esetében válassza az "adatbázis használata" legördülő menüből jobbra található "frissítés" gombot az "SQL-parancsfájl" lapon, és ellenőrizze, hogy látható-e az "SQL on-demand".
+- Az 1. tünet esetében válassza az "adatbázis használata" legördülő menüből jobbra található "frissítés" gombot, és ellenőrizze, hogy látható-e a "kiszolgáló nélküli SQL-készlet".
 - A 2. tünet esetében próbálkozzon újra a lekérdezés futtatásával, és ellenőrizze, hogy sikeresen végrehajtja-e a műveletet.
 
 Ha a probléma továbbra is fennáll, nyomja meg az F12 billentyűt a böngészőben a "Fejlesztői eszközök" (DevTools) megnyitásához.
@@ -61,7 +61,7 @@ Keresse meg azt az elemet, amelynek URL-oszlopa megfelel a következő mintának
 
 `https://[*A*]-ondemand.database.windows.net:1443/databases/[*B*]/query?api-version=2018-08-01-preview&application=ArcadiaSqlOnDemandExplorer`
 
-Ahol [*A*] a munkaterület neve, és a "-OnDemand" lehet "-sqlod", és A [*B*] nevet kell megadni, például: "Master". Legfeljebb két elemnek kell lennie ugyanazzal az URL-címmel, de eltérő metódusi értékekkel; BEÁLLÍTÁSOK és POST. Győződjön meg arról, hogy a két elem "200" vagy "20x" értékkel rendelkezik az Állapot oszlopban, ahol az "x" egyetlen számjegy lehet.
+Ahol [ *A* ] a munkaterület neve, és a "-OnDemand" lehet "-sqlod", és A [ *B* ] nevet kell megadni, például: "Master". Legfeljebb két elemnek kell lennie ugyanazzal az URL-címmel, de eltérő metódusi értékekkel; BEÁLLÍTÁSOK és POST. Győződjön meg arról, hogy a két elem "200" vagy "20x" értékkel rendelkezik az Állapot oszlopban, ahol az "x" egyetlen számjegy lehet.
 
 Ha egyikük sem a "20x", sem a következőhöz tartozik:
 
@@ -71,7 +71,7 @@ Ha egyikük sem a "20x", sem a következőhöz tartozik:
 
     - Ha megjelenik a ERR_NAME_NOT_RESOLVED, és 10 percen belül létrehozta a munkaterületet, várjon 10 percet, és próbálkozzon újra annak megtekintésével, hogy a probléma továbbra is fennáll-e.
     - Ha ERR_INTERNET_DISCONNECTED vagy ERR_NETWORK_CHANGED jelenik meg, akkor előfordulhat, hogy a számítógép hálózati kapcsolataival kapcsolatban problémák léptek fel. Győződjön meg a hálózati kapcsolatban, majd próbálja megismételni a műveletet.
-    - Ha ERR_CONNECTION_RESET, ERR_SSL_PROTOCOL_ERROR vagy más, SSL-t tartalmazó hibakód jelenik meg, akkor előfordulhat, hogy a helyi SSL-konfiguráció problémákba ütközik, vagy a hálózati rendszergazda letiltotta az SQL igény szerinti kiszolgálójának elérését. Nyisson meg egy támogatási jegyet, és csatolja a hibakódot a leírásban.
+    - Ha ERR_CONNECTION_RESET, ERR_SSL_PROTOCOL_ERROR vagy más, SSL-t tartalmazó hibakód jelenik meg, akkor előfordulhat, hogy a helyi SSL-konfiguráció problémákba ütközik, vagy ha a hálózati rendszergazdája letiltotta a hozzáférést a kiszolgáló nélküli SQL-készlet kiszolgálóhoz. Nyisson meg egy támogatási jegyet, és csatolja a hibakódot a leírásban.
     - Ha ERR_NETWORK_ACCESS_DENIED jelenik meg, előfordulhat, hogy a rendszergazdával kell ellenőriznie, hogy a helyi tűzfal házirendje letiltotta-e a (z) *. database.windows.net tartomány elérését vagy a 1443-es távoli portot.
     - Ha szeretné, próbálja megismételni ugyanezt a műveletet egy másik gépen és/vagy hálózati környezetben, hogy kizárja a hálózati konfigurációs problémát a SZÁMÍTÓGÉPén.
 

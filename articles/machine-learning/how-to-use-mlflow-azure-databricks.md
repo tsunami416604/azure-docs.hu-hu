@@ -11,18 +11,18 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: c6bcf6f228049c4f5c4d1cd0d22cb69fb9677c1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e72784dbdcf08d672a8498609ca3a5bbd11e632d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91344333"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319031"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>Azure Databricks ML-kísérletek nyomon követése MLflow és Azure Machine Learning (előzetes verzió)
 
 Ebből a cikkből megtudhatja, hogyan engedélyezheti a MLflow követési URI-és naplózási API-JÁT, azaz a [MLflow-követést](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api), amely a Azure DATABRICKS (ADB) kísérletek, a MLflow és a Azure Machine learning összekapcsolására szolgál.
 
-A [MLflow](https://www.mlflow.org) egy nyílt forráskódú kódtár a gépi tanulási kísérletek életciklusának kezeléséhez. A MLFlow Tracking a MLflow egy olyan összetevője, amely naplózza és nyomon követi a képzések futtatási metrikáit és a modelleket. További információ a [Azure Databricks és a MLflow](https://docs.microsoft.com/azure/databricks/applications/mlflow/). 
+A [MLflow](https://www.mlflow.org) egy nyílt forráskódú kódtár a gépi tanulási kísérletek életciklusának kezeléséhez. A MLFlow Tracking a MLflow egy olyan összetevője, amely naplózza és nyomon követi a képzések futtatási metrikáit és a modelleket. További információ a [Azure Databricks és a MLflow](/azure/databricks/applications/mlflow/). 
 
 További MLflow és Azure Machine Learning funkciók integrálásához tekintse meg a [kísérlet futtatásának nyomon követése és a végpontok létrehozása a MLflow és a Azure Machine learning segítségével](how-to-use-mlflow.md) című témakört.
 
@@ -35,8 +35,8 @@ További MLflow és Azure Machine Learning funkciók integrálásához tekintse 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Telepítse az `azureml-mlflow` csomagot. 
-    * Ez a csomag automatikusan bevezeti a `azureml-core` [Azure Machine learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)-t, amely biztosítja a kapcsolatot a MLflow a munkaterület eléréséhez.
-* [Azure Databricks munkaterület és fürt](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal).
+    * Ez a csomag automatikusan bevezeti a `azureml-core` [Azure Machine learning Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)-t, amely biztosítja a kapcsolatot a MLflow a munkaterület eléréséhez.
+* [Azure Databricks munkaterület és fürt](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal).
 * [Hozzon létre egy Azure Machine learning-munkaterület](how-to-manage-workspace.md).
 
 ## <a name="track-azure-databricks-runs"></a>Azure Databricks futtatások nyomon követése
@@ -156,9 +156,9 @@ A modell betanítása után naplózhatja és regisztrálhatja a modelleket a há
 
 Alapértelmezés szerint a háttér-nyomkövetési kiszolgáló a Azure Databricks munkaterület. Ha úgy döntött, hogy a [MLflow-követést csak a Azure Machine learning munkaterület nyomon követésére állítja be](#set-mlflow-tracking-to-only-track-in-your-azure-machine-learning-workspace), akkor a háttér-követési kiszolgáló a Azure Machine learning munkaterület.   
 
-* **Ha a nevű regisztrált modell nem létezik**, a metódus regisztrálja az 1. verziót, és egy ModelVersion MLflow objektumot ad vissza. 
+* **Ha a nevű regisztrált modell nem létezik** , a metódus regisztrálja az 1. verziót, és egy ModelVersion MLflow objektumot ad vissza. 
 
-* **Ha már létezik ilyen nevű regisztrált modell**, a metódus létrehoz egy új modell-verziót, és visszaadja a Version objektumot. 
+* **Ha már létezik ilyen nevű regisztrált modell** , a metódus létrehoz egy új modell-verziót, és visszaadja a Version objektumot. 
 
 ```python
 mlflow.spark.log_model(model, artifact_path = "model", 
@@ -234,4 +234,4 @@ A [Azure Machine learning notebookokkal rendelkező MLflow](https://github.com/A
 
 * [A modellek kezelése](concept-model-management-and-deployment.md).
 * [A kísérlet futtatásának nyomon követése és végpontok létrehozása a MLflow és a Azure Machine learning](how-to-use-mlflow.md). 
-* További információ a [Azure Databricks és a MLflow](https://docs.microsoft.com/azure/databricks/applications/mlflow/).
+* További információ a [Azure Databricks és a MLflow](/azure/databricks/applications/mlflow/).

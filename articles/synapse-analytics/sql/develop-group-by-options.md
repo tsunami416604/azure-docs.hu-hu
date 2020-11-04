@@ -11,25 +11,26 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 0d9d28bacac02326ee781ca56309b7a72e921960
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d160040620fcaa60a8adc955efcc54ac3ca2609e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289169"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321444"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>CSOPORTOSÍTÁSi lehetőségek a szinapszis SQL-ben
+
 A szinapszis SQL lehetővé teszi a megoldások fejlesztését különböző CSOPORTOSÍTÁSi beállításokkal. 
 
-## <a name="what-does-group-by-do"></a>Mit tesz a GROUP BY do
+## <a name="what-group-by-does"></a>A csoportosítás alapja
 
 A [Group By](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL záradék összesíti az adatokat egy sorok összesítési halmazával.
 
-Az SQL on-demand a CSOPORTOSÍTÁSi lehetőségek teljes körét támogatja. Az SQL-készlet korlátozott számú CSOPORTOSÍTÁSi lehetőséget támogat.
+A kiszolgáló nélküli SQL-készlet a CSOPORTOSÍTÁSi lehetőségek teljes körét támogatja. A dedikált SQL-készlet korlátozott számú CSOPORTOSÍTÁSi lehetőséget támogat.
 
-## <a name="group-by-options-supported-in-sql-pool"></a>Csoportosítás az SQL-készletben támogatott lehetőségek alapján
+## <a name="group-by-options-supported-in-dedicated-sql-pool"></a>Csoportosítás a dedikált SQL-készletben támogatott beállítások alapján
 
-A CSOPORTOSÍTÁSi lehetőségek az SQL-készlet által nem támogatott beállítások. Ezek a beállítások megkerülő megoldásokkal rendelkeznek, amelyek a következők:
+A CSOPORTOSÍTÁSi lehetőségek a dedikált SQL-készlet által nem támogatott beállítások. Ezek a beállítások megkerülő megoldásokkal rendelkeznek, amelyek a következők:
 
 * Csoportosítás ÖSSZESÍTÉSsel
 * CSOPORTOSÍTÁSI KÉSZLETEK

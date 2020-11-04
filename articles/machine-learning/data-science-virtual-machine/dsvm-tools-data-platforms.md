@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 83c0fd796b7527c6f5e396a813def984b88ee9ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f432b417140440584bf4dfd01ed45814a746953
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440354"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320909"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>A Data Science Virtual Machine támogatott adatplatformok
 
@@ -31,7 +31,7 @@ A DSVM a következő adatplatform-eszközöket támogatja.
 | Támogatott DSVM-kiadások      | Windows 2016: SQL Server 2017, Windows 2019: SQL Server 2019      |
 | Jellemző felhasználások      | <ul><li>Gyors fejlesztés helyileg, kisebb adatkészlettel</li><li>Futtatás a-adatbázisban R</li></ul> |
 | Mintákra mutató hivatkozások      | <ul><li>A New York City-adathalmazok egy kis mintája betöltődik az SQL Database-be:<br/>  `nyctaxi`</li><li>A Microsoft Machine Learning Server és az adatbázison belüli elemzéseket bemutató Jupyter-minta a következő helyen található:<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`</li></ul> |
-| A DSVM kapcsolódó eszközök       | <ul><li>Az SQL Server Management Studio</li><li>ODBC/JDBC-illesztőprogramok</li><li>pyodbc, RODBC</li><li>Apache Drill</li></ul> |
+| A DSVM kapcsolódó eszközök       | <ul><li>SQL Server Management Studio</li><li>ODBC/JDBC-illesztőprogramok</li><li>pyodbc, RODBC</li><li>Apache Drill</li></ul> |
 
 > [!NOTE]
 > SQL Server Developer kiadás csak fejlesztési és tesztelési célokra használható. Az üzemi környezetben való futtatásához licencre vagy a SQL Server virtuális gépek egyikére van szükség.
@@ -103,5 +103,4 @@ Az Azure Blob Storage-ból vagy a Azure Data Lake Storageból származó adatok 
 
 Ahhoz, hogy a DSVM található Spark-példány hozzáférjen a blob Storage-ban vagy a Azure Data Lake Storageban tárolt adatfájlokhoz, a `core-site.xml` fájlt a $SPARK _HOME/conf/core-site.xml. template fájlban található sablon alapján kell létrehoznia és konfigurálnia. A blob Storage-hoz és a Azure Data Lake Storagehoz is hozzá kell férnie a megfelelő hitelesítő adatokkal. (Vegye figyelembe, hogy a sablonfájlok helyőrzőket használnak a blob Storage és a Azure Data Lake Storage konfigurációkhoz.)
 
-Azure Data Lake Storage szolgáltatás hitelesítő adatainak létrehozásával kapcsolatos részletes információkért lásd: [hitelesítés a Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)használatával. Miután megadta a blob Storage vagy a Azure Data Lake Storage hitelesítő adatait a core-site.xml fájlban, az ezekben a forrásokban tárolt adatokra a wasb://vagy a adl://URI-előtagjának használatával hivatkozhat.
-
+Azure Data Lake Storage szolgáltatás hitelesítő adatainak létrehozásával kapcsolatos részletes információkért lásd: [hitelesítés a Azure Data Lake Storage Gen1](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md)használatával. Miután megadta a blob Storage vagy a Azure Data Lake Storage hitelesítő adatait a core-site.xml fájlban, az ezekben a forrásokban tárolt adatokra a wasb://vagy a adl://URI-előtagjának használatával hivatkozhat.

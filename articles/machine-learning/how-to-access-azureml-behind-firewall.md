@@ -1,7 +1,7 @@
 ---
 title: Tűzfal használata
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning-munkaterületek Azure-tűzfalakkal való hozzáférésének szabályozása. Ismerje meg azokat a gazdagépeket, amelyeket engedélyezni kell a tűzfalon a Azure Machine Learning megfelelő működéséhez.
+description: Azure Machine Learning-munkaterületek Azure-tűzfalakkal való hozzáférésének szabályozása. Ismerje meg azokat a gazdagépeket, amelyeket engedélyeznie kell a tűzfalon.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: d0f30edeb24f3c4abed6f144f3fb7f755cc08a72
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 5ba1804630649044d29dd2919ef8375265a69a08
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629459"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320880"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Munkaterület használata tűzfal mögött Azure Machine Learning
 
@@ -43,7 +43,7 @@ Ha nincs megfelelően konfigurálva, a tűzfal problémákat okozhat a munkater�
 
 Az ebben a szakaszban található gazdagépek a Microsoft tulajdonában vannak, és biztosítják a munkaterület megfelelő működéséhez szükséges szolgáltatásokat.
 
-| **Állomásnév** | **Cél** |
+| **Állomásnév** | **Rendeltetés** |
 | ---- | ---- |
 | **login.microsoftonline.com** | Hitelesítés |
 | **management.azure.com** | A munkaterület adatainak beolvasásához használatos |
@@ -74,7 +74,7 @@ Az ebben a szakaszban található gazdagépek a Microsoft tulajdonában vannak, 
 
 Az ebben a szakaszban található gazdagépek a Python-csomagok telepítéséhez használatosak. A fejlesztés, a képzés és a telepítés során szükségesek. 
 
-| **Állomásnév** | **Cél** |
+| **Állomásnév** | **Rendeltetés** |
 | ---- | ---- |
 | **anaconda.com**</br>**\*. anaconda.com** | Az alapértelmezett csomagok telepítéséhez használatos. |
 | **\*. anaconda.org** | A tárház-adatgyűjtéshez használatos. |
@@ -87,7 +87,7 @@ A jelen szakaszban található gazdagépek az R-csomagok telepítéséhez haszn�
 > [!IMPORTANT]
 > Belsőleg az R SDK for Azure Machine Learning Python-csomagokat használ. Így a Python-gazdagépeket is engedélyeznie kell a tűzfalon.
 
-| **Állomásnév** | **Cél** |
+| **Állomásnév** | **Rendeltetés** |
 | ---- | ---- |
 | **cloud.r-project.org** | A CRAN-csomagok telepítésekor használatos. |
 
@@ -95,7 +95,7 @@ A jelen szakaszban található gazdagépek az R-csomagok telepítéséhez haszn�
 
 A Azure Government-régiókhoz szükséges URL-címek.
 
-| **Állomásnév** | **Cél** |
+| **Állomásnév** | **Rendeltetés** |
 | ---- | ---- |
 | **usgovarizona.api.ml.azure.us** | Az US-Arizona régió |
 | **usgovvirginia.api.ml.azure.us** | Az US-Virginia régió |

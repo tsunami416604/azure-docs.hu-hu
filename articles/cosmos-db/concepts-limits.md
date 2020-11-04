@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 070c1ef4eeec2b4ed15f2f4720d9fbd8494fca0f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e8b13369cb961d4be49f0045805a805fda38a59c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090426"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319827"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -133,7 +133,6 @@ Attól függően, hogy melyik API-t használja, egy Azure Cosmos-elem a gyűjtem
 | Partíciós kulcs értékének maximális hossza | 2048 bájt |
 | AZONOSÍTÓ érték maximális hossza | 1023 bájt |
 | Tulajdonságok maximális száma cikkenként | Nincs gyakorlati korlát |
-| Maximális beágyazási mélység | Nincs gyakorlati korlát |
 | Tulajdonságnév maximális hossza | Nincs gyakorlati korlát |
 | Tulajdonságérték maximális hossza | Nincs gyakorlati korlát |
 | Karakterlánc-tulajdonságérték maximális hossza | Nincs gyakorlati korlát |

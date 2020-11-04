@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cb0138603cad52c40b3471c60104f091367e88e9
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 4e6b0afab5c86131575d0e3d12b9984a8463f5a3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636901"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321106"
 ---
 # <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>Töltsön be 1 TB-ot az Azure szinapszis Analytics szolgáltatásba 15 perc alatt Data Factory
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "92636901"
 
 Az [Azure szinapszis Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) egy felhőalapú, kibővíthető adatbázis, amely nagy mennyiségű, a kapcsolatok és a nem kapcsolatok kezelésére képes.  A nagymértékben párhuzamos feldolgozási (MPP) architektúrára épülő Azure szinapszis Analytics a vállalati adattárház számítási feladataihoz van optimalizálva.  A felhő rugalmasságának köszönhetően rugalmasan méretezheti a tárolást és a számításokat egymástól függetlenül.
 
-Az Azure szinapszis Analytics használatának első lépései mostantól minden eddiginél könnyebben **Azure Data Factory** .  A Azure Data Factory egy teljes körűen felügyelt felhőalapú adatintegrációs szolgáltatás, amely az Azure szinapszis Analytics és a meglévő rendszer adatainak feltöltésére használható, és értékes időt takaríthat meg az Azure szinapszis Analytics kiértékelése és az elemzési megoldások kiépítése során. Az alábbi főbb előnyökkel jár az Azure szinapszis Analytics szolgáltatásba való betöltés a Azure Data Factory használatával:
+Az Azure szinapszis Analytics használatának első lépései mostantól minden eddiginél könnyebben **Azure Data Factory**.  A Azure Data Factory egy teljes körűen felügyelt felhőalapú adatintegrációs szolgáltatás, amely az Azure szinapszis Analytics és a meglévő rendszer adatainak feltöltésére használható, és értékes időt takaríthat meg az Azure szinapszis Analytics kiértékelése és az elemzési megoldások kiépítése során. Az alábbi főbb előnyökkel jár az Azure szinapszis Analytics szolgáltatásba való betöltés a Azure Data Factory használatával:
 
 * **Könnyen beállítható** : 5 lépésből álló intuitív varázsló, amely nem igényel parancsfájlt.
 * **Gazdag adattár-támogatás** : beépített támogatás a helyszíni és felhőalapú adattárak gazdag készletéhez.
@@ -65,7 +65,7 @@ Ez a cikk részletes útmutatást nyújt az adatáthelyezéshez az Azure szinaps
   >
   >
 
-    Ha 6 000 DWU rendelkező szinapszis SQL-készletet szeretne létrehozni, helyezze át a teljesítmény csúszkát jobbra:
+    Ha a 6 000 DWU rendelkező dedikált SQL-készletet szeretne létrehozni, helyezze át a teljesítmény csúszkát jobbra:
 
     ![Teljesítmény csúszka](media/data-factory-load-sql-data-warehouse/performance-slider.png)
 
@@ -115,13 +115,13 @@ Ez a cikk részletes útmutatást nyújt az adatáthelyezéshez az Azure szinaps
 2. Kattintson az **erőforrás létrehozása** elemre a bal felső sarokban, kattintson az **intelligencia és Analitika** elemre, majd a **Data Factory** elemre.
 3. Az **új adatgyár** panelen:
 
-   1. Adja **LoadIntoSQLDWDataFactory** meg a LoadIntoSQLDWDataFactory **nevet** .
+   1. Adja **LoadIntoSQLDWDataFactory** meg a LoadIntoSQLDWDataFactory **nevet**.
        Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a következő hibaüzenetet kapja: a **"LoadIntoSQLDWDataFactory" nem érhető el** az adatfeldolgozó neve, módosítsa az adatgyár nevét (például yournameLoadIntoSQLDWDataFactory), és próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.  
-   2. Válassza ki az Azure- **előfizetését** .
+   2. Válassza ki az Azure- **előfizetését**.
    3. Az erőforráscsoportban hajtsa végre a következő lépések egyikét:
       1. Meglévő erőforráscsoport kiválasztásához kattintson a **Use existing** (Meglévő használata) elemre.
       2. Az erőforráscsoport nevének megadásához válassza ki a **Create new** (Új létrehozása) lehetőséget.
-   4. Válassza ki a Data Factory **helyét** .
+   4. Válassza ki a Data Factory **helyét**.
    5. A panel alján jelölje be a **Pin to dashboard** (Rögzítés az irányítópulton) jelölőnégyzetet.  
    6. Kattintson a **Létrehozás** gombra.
 4. A létrehozás befejezése után a **Data Factory** panel jelenik meg, ahogy az a következő képen látható:

@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c024b12210d408fe2a9987cba56a08e4b660ae1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f4a8fb82a42c5121105ddf7bb9d3d886b531350
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86027545"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321333"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Speciális adatáttekintés és modellezés a Spark segítségével
 
-Ez az útmutató a HDInsight Spark használatával teszi elérhetővé az adatfeltárást és a bináris besorolási és regressziós modelleket, a New York-i taxi Trip és a fare 2013 adatkészlet mintájára. Végigvezeti az [adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)lépésein, teljes egészében a HDInsight Spark-fürt feldolgozásához és az Azure-Blobok tárolásához az adatkezeléshez és a modellekhez. A folyamat felderíti és megjeleníti a Azure Storage Blob beérkező adatait, majd előkészíti a prediktív modellek létrehozásához szükséges adatok előkészítését. A Python a megoldás kódolásához és a kapcsolódó mintaterületek megjelenítéséhez használatos. Ezeket a modelleket a Spark MLlib Toolkit használatával hozhatja létre bináris besorolási és regressziós modellezési feladatok végrehajtásához. 
+Ez az útmutató a HDInsight Spark használatával teszi elérhetővé az adatfeltárást és a bináris besorolási és regressziós modelleket, a New York-i taxi Trip és a fare 2013 adatkészlet mintájára. Végigvezeti az [adatelemzési folyamat](./index.yml)lépésein, teljes egészében a HDInsight Spark-fürt feldolgozásához és az Azure-Blobok tárolásához az adatkezeléshez és a modellekhez. A folyamat felderíti és megjeleníti a Azure Storage Blob beérkező adatait, majd előkészíti a prediktív modellek létrehozásához szükséges adatok előkészítését. A Python a megoldás kódolásához és a kapcsolódó mintaterületek megjelenítéséhez használatos. Ezeket a modelleket a Spark MLlib Toolkit használatával hozhatja létre bináris besorolási és regressziós modellezési feladatok végrehajtásához. 
 
 * A **bináris besorolási** feladattal megjósolhatja, hogy a rendszer kifizet-e egy tippet az utazásért. 
 * A **regresszió** feladata, hogy előre megjósolja a tipp mennyiségét más tip-funkciók alapján. 
@@ -119,7 +119,7 @@ A Jupyter-jegyzetfüzetekhez biztosított PySpark-kernelek előre beállított k
 A PySpark kernel tartalmaz néhány előre definiált "varázslatot", amelyek a (z)%% használatával hívható speciális parancsok. A kód mintáinak két ilyen parancsa van használatban.
 
 * **%% helyi** Megadja, hogy a következő sorokban lévő kódot helyileg kell végrehajtani. A kódnak érvényes Python-kódnak kell lennie.
-* **%% SQL-o \<variable name> ** Struktúra-lekérdezést hajt végre a sqlContext. Ha a-o paraméter át lett adva, a lekérdezés eredménye a (z)%% helyi Python-kontextusban, pandák DataFrame.
+* **%% SQL-o \<variable name>** Struktúra-lekérdezést hajt végre a sqlContext. Ha a-o paraméter át lett adva, a lekérdezés eredménye a (z)%% helyi Python-kontextusban, pandák DataFrame.
 
 A Jupyter-jegyzetfüzetek és az azok által megadott "Magics" kernelekkel kapcsolatos további információkért tekintse meg a [Jupyter notebookok számára elérhető kerneleket HDInsight Spark Linux-fürtökkel a HDInsight-on](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
@@ -202,7 +202,7 @@ Miután az adatgyűjtés bekerült a Sparkba, az adatelemzési folyamat követke
 Ez a kód és az azt követő kódrészletek az SQL Magic használatával kérdezik le a mintát és a helyi mágiát az adatábrázoláshoz.
 
 * **SQL Magic ( `%%sql` )** a HDInsight PySpark kernel egyszerűen beágyazott HiveQL-lekérdezéseket támogat a sqlContext. Az (-o VARIABLE_NAME) argumentum megőrzi az SQL-lekérdezés kimenetét a Jupyter-kiszolgálón található pandák DataFrame. Ez azt jelenti, hogy a helyi módban érhető el.
-* A ** `%%local` Magic** a kód helyi futtatására szolgál a Jupyter-kiszolgálón, amely a HDInsight-fürt átjárócsomóponthoz. `%%local`A mágia általában a Magic használatával `%%sql -o` futtatott lekérdezés futtatására szolgál. Az-o paraméter megőrzi az SQL-lekérdezés helyi kimenetét. Ezután a `%%local` Magic elindítja a kódrészletek következő készletét, hogy helyileg fusson a helyileg megőrzött SQL-lekérdezések kimenetén. A rendszer automatikusan megjeleníti a kimenetet a kód futtatása után.
+* A **`%%local` Magic** a kód helyi futtatására szolgál a Jupyter-kiszolgálón, amely a HDInsight-fürt átjárócsomóponthoz. `%%local`A mágia általában a Magic használatával `%%sql -o` futtatott lekérdezés futtatására szolgál. Az-o paraméter megőrzi az SQL-lekérdezés helyi kimenetét. Ezután a `%%local` Magic elindítja a kódrészletek következő készletét, hogy helyileg fusson a helyileg megőrzött SQL-lekérdezések kimenetén. A rendszer automatikusan megjeleníti a kimenetet a kód futtatása után.
 
 A lekérdezés az utasok száma alapján kérdezi le az utakat. 
 
@@ -594,7 +594,7 @@ Az egyes modellek felépítési kódok szakasza a következő lépésekre oszlik
 Azt mutatjuk be, hogyan végezhető el az adatellenőrzés (CV) két módon:
 
 1. Olyan **általános** egyéni kód használata, amely a MLlib bármely algoritmusára alkalmazható, és egy algoritmus bármely paramétere számára. 
-2. A **PySpark CrossValidator folyamat függvény**használata. A CrossValidator a Spark 1.5.0 néhány korlátozásával rendelkezik: 
+2. A **PySpark CrossValidator folyamat függvény** használata. A CrossValidator a Spark 1.5.0 néhány korlátozásával rendelkezik: 
    
    * A folyamat modelljei nem menthetők és nem maradnak meg a későbbi felhasználás céljából.
    * Modell minden paramétere esetében nem használható.
@@ -764,7 +764,7 @@ A fenti cella végrehajtásához szükséges idő: 2,67 másodperc
 
 **A ROC-görbe ábrázolása.**
 
-A *predictionAndLabelsDF* táblaként, *tmp_resultsként*van regisztrálva az előző cellában. a *tmp_results* a lekérdezések és a kimeneti eredmények a sqlResults adatkeretbe való elvégzésére használhatók a rajzoláshoz. Itt látható a kód.
+A *predictionAndLabelsDF* táblaként, *tmp_resultsként* van regisztrálva az előző cellában. a *tmp_results* a lekérdezések és a kimeneti eredmények a sqlResults adatkeretbe való elvégzésére használhatók a rajzoláshoz. Itt látható a kód.
 
 ```python
 # QUERY RESULTS                              
@@ -895,7 +895,7 @@ A fenti cella végrehajtásához szükséges idő: 107,98 másodperc
 
 **A ROC-görbe ábrázolása.**
 
-A *predictionAndLabelsDF* táblaként, *tmp_resultsként*van regisztrálva az előző cellában. a *tmp_results* a lekérdezések és a kimeneti eredmények a sqlResults adatkeretbe való elvégzésére használhatók a rajzoláshoz. Itt látható a kód.
+A *predictionAndLabelsDF* táblaként, *tmp_resultsként* van regisztrálva az előző cellában. a *tmp_results* a lekérdezések és a kimeneti eredmények a sqlResults adatkeretbe való elvégzésére használhatók a rajzoláshoz. Itt látható a kód.
 
 ```python
 # QUERY RESULTS
@@ -1508,4 +1508,3 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 Most, hogy létrehozta a regressziós és besorolási modelleket a Spark MlLib, készen áll arra, hogy megtudja, hogyan szerzi be és értékelje ki ezeket a modelleket.
 
 **Modell felhasználása:** A jelen témakörben létrehozott besorolási és regressziós modellek pontszámának és értékelésének megismeréséhez tekintse meg a [Spark által készített gépi tanulási modellek pontszámát és értékelését](spark-model-consumption.md)ismertető szakaszt.
-

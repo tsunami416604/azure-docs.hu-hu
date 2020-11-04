@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1cb49fc33567b13065351a28a557232212c6adc4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1d32aa011e9e816f97b050d43f9558af0cf82e90
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479340"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319650"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure szinapszis Analytics (korábban SQL DW) architektúrája
 
@@ -25,8 +25,8 @@ Az Azure Synapse egy korlátok nélküli elemzőszolgáltatás, amely egyesíti 
 
 - Szinapszis SQL: teljes T-SQL-alapú elemzés
 
-  - SQL-készlet (fizetés/DWU kiépítve) – általánosan elérhető
-  - Igény szerinti SQL-szolgáltatás (fizetés/TB feldolgozott) – (előzetes verzió)
+  - Dedikált SQL-készlet (fizetés/DWU kiépítve) – általánosan elérhető
+  - Kiszolgáló nélküli SQL-készlet (fizetés/TB feldolgozott) – (előzetes verzió)
 - Spark: mélyen integrált Apache Spark (előzetes verzió)
 - Adatintegráció: hibrid Adatintegráció (előzetes verzió)
 - Studio: egyesített felhasználói élmény.  (Előzetes verzió)
@@ -35,7 +35,7 @@ Az Azure Synapse egy korlátok nélküli elemzőszolgáltatás, amely egyesíti 
 
 ## <a name="synapse-sql-architecture-components"></a>Szinapszis SQL Architecture-összetevők
 
-A [SZINAPSZIS SQL](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) egy kibővített architektúrát használ a számítási folyamatok több csomóponton történő elosztására. A skála egysége az [adattárház-egységként](what-is-a-data-warehouse-unit-dwu-cdwu.md)ismert számítási teljesítmény absztrakciója. A számítás elkülönül a tárterülettől, ami lehetővé teszi a számítások egymástól független skálázását a rendszeren lévő adatoktól függetlenül.
+A [SZINAPSZIS SQL](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse) egy kibővített architektúrát használ a számítási folyamatok több csomóponton történő elosztására. A skála egysége az [adattárház-egységként](what-is-a-data-warehouse-unit-dwu-cdwu.md)ismert számítási teljesítmény absztrakciója. A számítás elkülönül a tárterülettől, ami lehetővé teszi a számítások egymástól független skálázását a rendszeren lévő adatoktól függetlenül.
 
 ![A Synapse SQL architektúrája](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 

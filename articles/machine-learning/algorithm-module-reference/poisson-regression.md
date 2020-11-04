@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: a1a09357c7f80d4af0198a33a2e0007782ef232f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91d6d15fc8855b49bece3a7ed903074e716b7ac4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905260"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319419"
 ---
 # <a name="poisson-regression"></a>Poisson-regresszió
 
@@ -29,7 +29,7 @@ Ezzel a modullal létrehozhat egy Poisson-regressziós modellt egy folyamaton be
 - A Poisson-eloszlás diszkrét eloszlás; ezért nem értelmezhető, hogy ezt a metódust nem egész számokkal használja.
 
 > [!TIP]
-> Ha a cél nem szám, a Poisson-regresszió valószínűleg nem megfelelő módszer. Próbálkozzon [más regressziós modulokkal a tervezőben](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference#machine-learning-algorithms). 
+> Ha a cél nem szám, a Poisson-regresszió valószínűleg nem megfelelő módszer. Próbálkozzon [más regressziós modulokkal a tervezőben](./module-reference.md#machine-learning-algorithms). 
 
 Miután beállította a regressziós módszert, be kell tanítania a modellt egy olyan adatkészlet használatával, amely a megjósolni kívánt értékre mutató példákat tartalmaz. Ezt követően a betanított modell segítségével előrejelzéseket készíthet.
 
@@ -49,7 +49,7 @@ Mivel a válasz változó Poisson-eloszlással rendelkezik, a modell eltérő fe
 
 ## <a name="how-to-configure-poisson-regression"></a>A Poisson-regresszió konfigurálása
 
-1. Adja hozzá a **Poisson regressziós** modult a folyamathoz a Designerben. Ez a modul a **regressziós** kategóriában **Machine learning algoritmusok**alatt található.
+1. Adja hozzá a **Poisson regressziós** modult a folyamathoz a Designerben. Ez a modul a **regressziós** kategóriában **Machine learning algoritmusok** alatt található.
 
 2. Adjon hozzá egy adatkészletet, amely a megfelelő típusú betanítási adatokat tartalmazza. 
 
@@ -57,13 +57,13 @@ Mivel a válasz változó Poisson-eloszlással rendelkezik, a modell eltérő fe
 
 3. A **Poisson regressziós** moduljának jobb oldali ablaktábláján határozza meg, hogyan kívánja betanítani a modellt az **oktatói mód létrehozása** lehetőség beállításával.  
   
-    - **Egyetlen paraméter**: ha tudja, hogyan szeretné konfigurálni a modellt, adjon meg egy adott értékeket argumentumként.
+    - **Egyetlen paraméter** : ha tudja, hogyan szeretné konfigurálni a modellt, adjon meg egy adott értékeket argumentumként.
   
-    - **Paraméter tartománya**: Ha nem biztos benne, hogy a legjobb paramétereket használja, hajtson végre egy paramétert a [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modullal. Az oktató megismétli több megadott értéket az optimális konfiguráció megtalálásához.
+    - **Paraméter tartománya** : Ha nem biztos benne, hogy a legjobb paramétereket használja, hajtson végre egy paramétert a [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modullal. Az oktató megismétli több megadott értéket az optimális konfiguráció megtalálásához.
   
-4. **Optimalizálási tolerancia**: adjon meg egy értéket, amely meghatározza a tűréshatár intervallumát az optimalizálás során. Minél kisebb az érték, annál lassabb és pontosabb a szerelvény.
+4. **Optimalizálási tolerancia** : adjon meg egy értéket, amely meghatározza a tűréshatár intervallumát az optimalizálás során. Minél kisebb az érték, annál lassabb és pontosabb a szerelvény.
 
-5. **L1 regularizációs súlyozás** és **L2 regularizációs súlyozás**: az L1 és a L2 regularizációs használandó értékek megadása. A *regularizációs* megkötéseket hoz létre a modell azon szempontjaira vonatkozóan, amelyek függetlenek a betanítási információtól. A regularizációs általában a túlilleszkedés elkerülésére használják. 
+5. **L1 regularizációs súlyozás** és **L2 regularizációs súlyozás** : az L1 és a L2 regularizációs használandó értékek megadása. A *regularizációs* megkötéseket hoz létre a modell azon szempontjaira vonatkozóan, amelyek függetlenek a betanítási információtól. A regularizációs általában a túlilleszkedés elkerülésére használják. 
 
     - Az L1 regularizációs akkor hasznos, ha a cél egy olyan modell, amely a lehető legritkább.
 
@@ -73,9 +73,9 @@ Mivel a válasz változó Poisson-eloszlással rendelkezik, a modell eltérő fe
 
     Ebben a modulban az L1 és az L2 regularizations kombinációját is alkalmazhatja. Az L1 és az L2 regularizációs kombinálásával kényszerítheti a paraméterek értékeinek mértékét. A tanuló megpróbálja minimalizálni a büntetést a veszteség minimalizálása érdekében.
 
-    Az L1 és az L2 regularizációs jó megvitatására lásd: [L1 és L2 regularizációs Machine learning](https://msdn.microsoft.com/magazine/dn904675.aspx).
+    Az L1 és az L2 regularizációs jó megvitatására lásd: [L1 és L2 regularizációs Machine learning](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning).
 
-6. Az **L-BFGS memória mérete**: Itt adhatja meg, hogy mennyi memóriát kell lefoglalni a modell-szerelvényhez és az optimalizáláshoz.
+6. Az **L-BFGS memória mérete** : Itt adhatja meg, hogy mennyi memóriát kell lefoglalni a modell-szerelvényhez és az optimalizáláshoz.
 
      Az L-BFGS egy adott optimalizálási módszer a Broyden – Fletcher – Goldfarb – Shanno (BFGS) algoritmus alapján. A metódus korlátozott mennyiségű memóriát (L) használ a következő lépés irányának kiszámításához.
 
@@ -83,9 +83,9 @@ Mivel a válasz változó Poisson-eloszlással rendelkezik, a modell eltérő fe
 
 7. Kapcsolja össze a betanítási adatkészletet és a nem betanított modellt az egyik betanítási modulhoz: 
 
-    - Ha az **oktatói módot** **egyetlen paraméterként**állítja be, használja a [Train Model](train-model.md) modult.
+    - Ha az **oktatói módot** **egyetlen paraméterként** állítja be, használja a [Train Model](train-model.md) modult.
 
-    - Ha az **oktatói mód** beállítása **paraméter-tartományra**van beállítva, használja a [Model hiperparaméterek beállítása (modell hangolása](tune-model-hyperparameters.md) ) modult.
+    - Ha az **oktatói mód** beállítása **paraméter-tartományra** van beállítva, használja a [Model hiperparaméterek beállítása (modell hangolása](tune-model-hyperparameters.md) ) modult.
 
     > [!WARNING]
     > 
@@ -101,8 +101,8 @@ Mivel a válasz változó Poisson-eloszlással rendelkezik, a modell eltérő fe
 
 A betanítás befejezése után:
 
-+ Ha menteni szeretné a betanított modell pillanatképét, válassza ki a betanítási modult, majd váltson a **kimenet + naplók** lapra a jobb oldali panelen. Kattintson az ikonra az **adatkészlet regisztrálása**elemre.  A mentett modellt megtalálhatja modulként a modul fájában. 
++ Ha menteni szeretné a betanított modell pillanatképét, válassza ki a betanítási modult, majd váltson a **kimenet + naplók** lapra a jobb oldali panelen. Kattintson az ikonra az **adatkészlet regisztrálása** elemre.  A mentett modellt megtalálhatja modulként a modul fájában. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

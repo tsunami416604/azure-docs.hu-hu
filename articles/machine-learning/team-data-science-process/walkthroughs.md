@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 76027275d6f0b838ed6fbb7275086f190701d286
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a1af48d89fbf5d303c2a6b8ef85ca3117debd5a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439827"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320078"
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>Útmutató a csoportos adatelemzési folyamat végrehajtásához
 
@@ -42,5 +42,4 @@ A csoportos adatelemzési folyamatot alkotó főbb összetevőkről a [csoportos
 
 A csoportos adatelemzési folyamat életciklusának megvitatására a [csoportos adatelemzési folyamat életciklusa](lifecycle.md)című témakörben olvashat. Ez az életciklus az elejétől a végéig terjedő lépéseket ismerteti, amelyeket a projektek általában a végrehajtásuk után követnek. 
 
-Az áttekintést lásd: [adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). 
-
+Az áttekintést lásd: [adatelemzési folyamat](./index.yml).

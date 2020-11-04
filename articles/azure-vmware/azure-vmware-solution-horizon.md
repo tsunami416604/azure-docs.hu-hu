@@ -3,12 +3,12 @@ title: Horizont üzembe helyezése az Azure VMware-megoldáson
 description: Ismerje meg, hogyan helyezhet üzembe VMware horizontot az Azure VMware-megoldáson.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 6a466aea5cbdf4452a2c46b455932042d920c3b9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: babce512b896009c08165d2e3d9aec7c33724bf4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369012"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321350"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Horizont üzembe helyezése az Azure VMware-megoldáson 
 
@@ -86,7 +86,7 @@ Az Azure Private Cloud és a SDDC maximális korlátja miatt ajánlott üzembe h
 
 Az Azure Virtual Networkról az Azure privát felhőkre/SDDCs való kapcsolódást ExpressRoute FastPath kell konfigurálni. Az alábbi ábrán egy alapszintű Horizon Pod üzemelő példány látható.
 
-:::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="Az Azure VMware-megoldás és a Horizon-felhő horizontja az Azure-ban" border="false":::
+:::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="Tipikus Horizon Pod-telepítés a ExpressPath gyors elérési úttal" border="false":::
 
 ## <a name="network-connectivity-to-scale-horizon-on-azure-vmware-solution"></a>Hálózati kapcsolat az Azure VMware-megoldás méretezési horizontjának használatával
 
@@ -94,7 +94,7 @@ Ez a szakasz magas szintű hálózati architektúrát mutat be néhány gyakori 
 
 ### <a name="single-horizon-pod-on-azure-vmware-solution"></a>Egy Horizon Pod az Azure VMware-megoldásban
 
-:::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Az Azure VMware-megoldás és a Horizon-felhő horizontja az Azure-ban" border="false":::
+:::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Egy Horizon Pod az Azure VMware-megoldásban" border="false":::
 
 Az egyetlen Horizon Pod a legközvetlenebb üzembe helyezési forgatókönyv, mivel az USA keleti régiójában csak egy Horizon Pod-t telepíthet.  Mivel az egyes privát felhő-és SDDC a 4 000 asztali munkamenetek kezelésére becsültek, a maximális horizont Pod-méretet kell telepítenie.  Akár három privát felhők/SDDCs üzembe helyezését is megtervezheti.
 
@@ -112,7 +112,7 @@ Az alapszintű példa egyik variációja lehet a helyszíni erőforrások kapcso
 
 A diagram bemutatja, hogyan támogathatja a helyszíni erőforrások kapcsolódását. Ha a vállalati hálózathoz szeretne csatlakozni az Azure Virtual Networkhoz, szüksége lesz egy ExpressRoute-áramkörre.  Emellett a ExpressRoute Global Reach használatával össze kell kapcsolni a vállalati hálózatot a saját felhő-és SDDCs.  Lehetővé teszi, hogy a SDDC a ExpressRoute-áramkörhöz és a helyszíni erőforrásokhoz való kapcsolódást. 
 
-:::image type="content" source="media/horizon/connect-corporate-network-azure-virtual-network.png" alt-text="Az Azure VMware-megoldás és a Horizon-felhő horizontja az Azure-ban" border="false":::
+:::image type="content" source="media/horizon/connect-corporate-network-azure-virtual-network.png" alt-text="Vállalati hálózat összekötése egy Azure-Virtual Network" border="false":::
 
 ### <a name="multiple-horizon-pods-on-azure-vmware-solution-across-multiple-regions"></a>Több Horizontos hüvely az Azure VMware megoldásban több régióban
 
@@ -120,9 +120,9 @@ Egy másik forgatókönyv több hüvelyen is méretezhető.  Ebben a forgatókö
 
 Az Azure-Virtual Network az egyes régiókban a másik régióban található privát Felhőkkel/SDDCs kell összekötnie. A rendszer lehetővé teszi, hogy a CPA-összevonás számára a Horizon kapcsolati kiszolgálók a felügyelet alatt lévő összes asztalhoz csatlakozzanak. Ha további privát felhőket/SDDCs ad hozzá ehhez a konfigurációhoz, a teljes skálára méretezheti a 24 000-es munkameneteket. 
 
-Ugyanezek az alapelvek érvényesek, ha két Horizontos hüvelyt helyez üzembe ugyanabban a régióban.  Ügyeljen arra, hogy a második horizont Pod-ot *külön Azure-Virtual Network*telepítse. Az egyetlen Pod-példához hasonlóan a vállalati hálózatot és a helyszíni Pod-t is összekapcsolhatja ehhez a több-Pod/régióhoz tartozó példához a ExpressRoute és a Global Reach használatával. 
+Ugyanezek az alapelvek érvényesek, ha két Horizontos hüvelyt helyez üzembe ugyanabban a régióban.  Ügyeljen arra, hogy a második horizont Pod-ot *külön Azure-Virtual Network* telepítse. Az egyetlen Pod-példához hasonlóan a vállalati hálózatot és a helyszíni Pod-t is összekapcsolhatja ehhez a több-Pod/régióhoz tartozó példához a ExpressRoute és a Global Reach használatával. 
 
-:::image type="content" source="media/horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text="Az Azure VMware-megoldás és a Horizon-felhő horizontja az Azure-ban" border="false":::
+:::image type="content" source="media/horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text=" Több Horizontos hüvely az Azure VMware megoldásban több régióban" border="false":::
 
 ## <a name="size-azure-vmware-solution-hosts-for-horizon-deployments"></a>Azure VMware-megoldási gazdagépek mérete horizonton üzemelő példányokhoz 
 
@@ -211,3 +211,6 @@ A standard telepítési architektúra alapján a horizont infrastruktúra virtu�
 | Windows-fájlmegosztás               | D4sv3          |         | *Nem kötelező*                               |
 
 Az infrastruktúra virtuálisgép \$ -díja havonta 0,36, a fenti példában szereplő 2 000-Desktop üzembe helyezés esetén. Ez a példa az USA keleti Azure-példányának 2020-es díjszabását használja. A díjszabás a régiótól, a kiválasztott beállításoktól és az Időzítéstől függően változhat.
+
+## <a name="next-steps"></a>Következő lépések
+Ha többet szeretne megtudni az Azure VMware-megoldással kapcsolatos VMware Horizontról, olvassa el a [VMware Horizon – gyakori kérdések](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/products/horizon/vmw-horizon-on-microsoft-azure-vmware-solution-faq.pdf)című témakört.

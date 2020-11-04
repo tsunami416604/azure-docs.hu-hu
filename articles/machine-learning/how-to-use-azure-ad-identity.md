@@ -11,22 +11,22 @@ ms.subservice: core
 ms.date: 02/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ac7420e47077e4e2b5bcfce0f33766554cd5c76d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1789f83f048a2ab0fb75aa33635e58b0850b865b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89647336"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319125"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Azure AD-identitás használata a gépi tanulási webszolgáltatással az Azure Kubernetes Service-ben
 
-Ebben az útmutatóban megtudhatja, hogyan rendelhet hozzá egy Azure Active Directory (HRE) identitást az üzembe helyezett Machine learning-modellhez az Azure Kubernetes szolgáltatásban. A [HRE Pod Identity](https://github.com/Azure/aad-pod-identity) projekt lehetővé teszi az alkalmazások számára, hogy biztonságosan hozzáférjenek a HRE a [felügyelt identitás](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) -és Kubernetes primitívek használatával. Ez lehetővé teszi a webszolgáltatás számára az Azure-erőforrások biztonságos elérését anélkül, hogy hitelesítő adatokat kellene beágyaznia vagy a tokeneket közvetlenül a `score.py` szkriptben kezelnie. Ez a cikk bemutatja, hogyan hozhat létre és telepíthet Azure-identitást az Azure Kubernetes Service-fürtben, és hogyan rendelheti hozzá az identitást az üzembe helyezett webszolgáltatáshoz.
+Ebben az útmutatóban megtudhatja, hogyan rendelhet hozzá egy Azure Active Directory (HRE) identitást az üzembe helyezett Machine learning-modellhez az Azure Kubernetes szolgáltatásban. A [HRE Pod Identity](https://github.com/Azure/aad-pod-identity) projekt lehetővé teszi az alkalmazások számára, hogy biztonságosan hozzáférjenek a HRE a [felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md) -és Kubernetes primitívek használatával. Ez lehetővé teszi a webszolgáltatás számára az Azure-erőforrások biztonságos elérését anélkül, hogy hitelesítő adatokat kellene beágyaznia vagy a tokeneket közvetlenül a `score.py` szkriptben kezelnie. Ez a cikk bemutatja, hogyan hozhat létre és telepíthet Azure-identitást az Azure Kubernetes Service-fürtben, és hogyan rendelheti hozzá az identitást az üzembe helyezett webszolgáltatáshoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az [Azure CLI-bővítmény a Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), a [pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)-hoz vagy a [Visual Studio Code](tutorial-setup-vscode-extension.md)-hoz készült Azure Machine learning.
+- Az [Azure CLI-bővítmény a Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), a [pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)-hoz vagy a [Visual Studio Code](tutorial-setup-vscode-extension.md)-hoz készült Azure Machine learning.
 
-- Hozzáférés az AK-fürthöz a `kubectl` parancs használatával. További információ: [Kapcsolódás a fürthöz](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)
+- Hozzáférés az AK-fürthöz a `kubectl` parancs használatával. További információ: [Kapcsolódás a fürthöz](../aks/kubernetes-walkthrough.md#connect-to-the-cluster)
 
 - Egy Azure Machine Learning webszolgáltatás üzembe helyezése az AK-fürtön.
 
@@ -48,7 +48,7 @@ Ebben az útmutatóban megtudhatja, hogyan rendelhet hozzá egy Azure Active Dir
         kubectl apply -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
         ```
     
-    * Ha az AK-fürthöz **nincs engedélyezve a RBAC**, használja a következő parancsot:
+    * Ha az AK-fürthöz **nincs engedélyezve a RBAC** , használja a következő parancsot:
     
         ```azurecli-interactive
         kubectl apply -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
@@ -75,7 +75,7 @@ Ebben az útmutatóban megtudhatja, hogyan rendelhet hozzá egy Azure Active Dir
 
 ## <a name="assign-azure-identity-to-machine-learning-web-service"></a>Azure-identitás kiosztása a Machine learning-webszolgáltatáshoz
 
-A következő lépések az előző szakaszban létrehozott Azure-identitást használják, és a **választó címkén**keresztül rendelheti hozzá az AK-webszolgáltatáshoz.
+A következő lépések az előző szakaszban létrehozott Azure-identitást használják, és a **választó címkén** keresztül rendelheti hozzá az AK-webszolgáltatáshoz.
 
 Először azonosítsa az üzemelő példány nevét és névterét az AK-fürtben, amelyhez hozzá szeretné rendelni az Azure-identitást. Ezt az információt a következő parancs futtatásával kérheti le. A névtereknek a Azure Machine Learning-munkaterület nevével kell rendelkezniük, és a telepítési névnek a-portálon láthatónak kell lennie a végpont neveként.
 
@@ -126,7 +126,7 @@ Miután a hüvely működik, az üzembe helyezéshez használt webszolgáltatás
 
 ## <a name="assign-the-appropriate-roles-to-your-azure-identity"></a>A megfelelő szerepkörök kiosztása az Azure-identitáshoz
 
-[Rendelje hozzá az Azure felügyelt identitását megfelelő szerepkörökkel](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) más Azure-erőforrások eléréséhez. Győződjön meg arról, hogy a hozzárendelt szerepkörök megfelelő **Adatműveletekkel**rendelkeznek. Előfordulhat például, hogy a [Storage blob-Adatolvasó szerepkör](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) olvasási engedéllyel rendelkezik a Storage-blobhoz, amíg az általános [olvasó szerepkör](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) nem lesz.
+[Rendelje hozzá az Azure felügyelt identitását megfelelő szerepkörökkel](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) más Azure-erőforrások eléréséhez. Győződjön meg arról, hogy a hozzárendelt szerepkörök megfelelő **Adatműveletekkel** rendelkeznek. Előfordulhat például, hogy a [Storage blob-Adatolvasó szerepkör](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) olvasási engedéllyel rendelkezik a Storage-blobhoz, amíg az általános [olvasó szerepkör](../role-based-access-control/built-in-roles.md#reader) nem lesz.
 
 ## <a name="use-azure-identity-with-your-machine-learning-web-service"></a>Az Azure Identity használata a Machine learning webszolgáltatással
 
@@ -134,7 +134,7 @@ Modell üzembe helyezése az AK-fürtön. A `score.py` szkript olyan műveleteke
 
 ### <a name="access-key-vault-from-your-web-service"></a>Hozzáférés Key Vault a webszolgáltatásból
 
-Ha az Azure Identity olvasási hozzáférést kapott egy **Key Vaultban**található titkos kulcshoz, az a `score.py` következő kód használatával férhet hozzá.
+Ha az Azure Identity olvasási hozzáférést kapott egy **Key Vaultban** található titkos kulcshoz, az a `score.py` következő kód használatával férhet hozzá.
 
 ```python
 from azure.identity import DefaultAzureCredential
@@ -153,11 +153,11 @@ secret = secret_client.get_secret(my_secret_name)
 ```
 
 > [!IMPORTANT]
-> Ez a példa a DefaultAzureCredential használja. Ha hozzáférést szeretne biztosítani az identitáshoz egy adott hozzáférési házirend használatával, tekintse meg a [Key Vault hozzáférési szabályzat hozzárendelése az Azure CLI használatával](/azure/key-vault/general/assign-access-policy-cli)című témakört.
+> Ez a példa a DefaultAzureCredential használja. Ha hozzáférést szeretne biztosítani az identitáshoz egy adott hozzáférési házirend használatával, tekintse meg a [Key Vault hozzáférési szabályzat hozzárendelése az Azure CLI használatával](../key-vault/general/assign-access-policy-cli.md)című témakört.
 
 ### <a name="access-blob-from-your-web-service"></a>A blob elérése a webszolgáltatásból
 
-Ha az Azure Identity olvasási hozzáférést kapott a **Storage-blobon**belüli adatokhoz, az a `score.py` következő kód használatával férhet hozzá.
+Ha az Azure Identity olvasási hozzáférést kapott a **Storage-blobon** belüli adatokhoz, az a `score.py` következő kód használatával férhet hozzá.
 
 ```python
 from azure.identity import DefaultAzureCredential

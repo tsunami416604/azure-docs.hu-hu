@@ -10,20 +10,20 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5fe11b20ff8e96bc4b0d997c49201aafdd2e2cac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbe822b75368a1ab72bcd7f73419770b291d2508
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320523"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321156"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Adatelemzési feladatok végrehajtása: feltárás, modellezés és üzembe helyezés
 
 A tipikus adatelemzési feladatok közé tartozik az adatok feltárása, modellezése és üzembe helyezése. Ez a cikk bemutatja, hogyan használható az interaktív adatelemzési **, elemzési és jelentéskészítési (ideaer-)** és **automatizált modellezési és jelentéskészítési (-)** segédprogramok számos olyan általános adatelemzési feladat végrehajtásához, mint például az interaktív adatok feltárása, az adatok elemzése, a jelentéskészítés és a modellek létrehozása. A modellek éles környezetben történő üzembe helyezésének lehetőségei a következők lehetnek:
 
 - [Azure Machine Learning](../index.yml)
-- [SQL-Server ML-szolgáltatásokkal](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
-- [Microsoft Machine Learning-kiszolgáló](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
+- [SQL-Server ML-szolgáltatásokkal](/sql/advanced-analytics/r/r-services)
+- [Microsoft Machine Learning-kiszolgáló](/machine-learning-server/what-is-machine-learning-server)
 
 
 ## <a name="1--exploration"></a>1. <a name='DataQualityReportUtility-1'></a> feltárás 
@@ -76,7 +76,7 @@ Több modell létrehozása után általában a modellek regisztrálásához és 
 1. [Azure Machine Learning – modell-kezelési szolgáltatás](../index.yml)
 2. [ModelDB az MIT](http://modeldb.csail.mit.edu:3000/projects) 
 3. [SQL-kiszolgáló modell-felügyeleti rendszerként](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
-4. [Microsoft Machine Learning-kiszolgáló](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+4. [Microsoft Machine Learning-kiszolgáló](/sql/advanced-analytics/r/r-server-standalone)
 
 ## <a name="3--deployment"></a>3. <a name='Deployment-3'></a> üzembe helyezés
 
@@ -87,15 +87,15 @@ A modellek éles környezetben való üzembe helyezéséhez különböző megkö
 
 
 - [Modell üzembe helyezése Azure Machine Learning](../how-to-deploy-and-where.md)
-- [Modell üzembe helyezése az SQL-Serverben](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
-- [Microsoft Machine Learning-kiszolgáló](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+- [Modell üzembe helyezése az SQL-Serverben](/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
+- [Microsoft Machine Learning-kiszolgáló](/sql/advanced-analytics/r/r-server-standalone)
 
 > [!NOTE]
 > Az üzembe helyezés előtt az egyiknek biztosítania kell, hogy a modell pontozásának késése elég alacsony legyen az éles környezetben való használathoz.
 >
 >
 
-További példákat talál az útmutatókban, amelyek a folyamat összes lépését mutatják be **adott forgatókönyvek**esetén. Ezek a példákban láthatók és a miniatűr leírásokkal vannak összekapcsolva a [példában szereplő forgatókönyvek](walkthroughs.md) című cikkben. Bemutatják, hogyan kombinálhatók a felhő, a helyszíni eszközök és a szolgáltatások egy munkafolyamatban vagy folyamatban egy intelligens alkalmazás létrehozásához.
+További példákat talál az útmutatókban, amelyek a folyamat összes lépését mutatják be **adott forgatókönyvek** esetén. Ezek a példákban láthatók és a miniatűr leírásokkal vannak összekapcsolva a [példában szereplő forgatókönyvek](walkthroughs.md) című cikkben. Bemutatják, hogyan kombinálhatók a felhő, a helyszíni eszközök és a szolgáltatások egy munkafolyamatban vagy folyamatban egy intelligens alkalmazás létrehozásához.
 
 > [!NOTE]
 > A Azure Machine Learning Studio használatával történő üzembe helyezéssel kapcsolatban lásd: [Azure Machine learning webszolgáltatás üzembe helyezése](../classic/deploy-a-machine-learning-web-service.md).

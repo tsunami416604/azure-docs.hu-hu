@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 13d43eb788c750a2f24033a6138ebf00ac57fffe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 123e55202de8a33bca88afcfd1f0dc0c7edeae77
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372569"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320091"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Oktatóanyag: saját adatai használata (4. rész)
 
@@ -202,7 +202,7 @@ datastore.upload(src_dir='./data', target_path='datasets/cifar10', overwrite=Tru
 Az `target_path` érték határozza meg az adattároló azon elérési útját, ahol a CIFAR10-adatfeltöltés történik.
 
 >[!TIP] 
-> Az adatok feltöltéséhez Azure Machine Learning használatakor a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) használatával ad hoc fájlokat tölthet fel. Ha ETL-eszközre van szüksége, a [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) használatával betöltheti adatait az Azure-ba.
+> Az adatok feltöltéséhez Azure Machine Learning használatakor a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) használatával ad hoc fájlokat tölthet fel. Ha ETL-eszközre van szüksége, a [Azure Data Factory](../data-factory/introduction.md) használatával betöltheti adatait az Azure-ba.
 
 Az adatok feltöltéséhez futtassa a Python-fájlt. (A feltöltésnek gyorsnak, 60 másodpercnél rövidebbnek kell lennie.)
 
@@ -271,7 +271,7 @@ A vezérlő parancsfájl hasonló a [sorozat 3. részéből](tutorial-1st-experi
       `dataset = Dataset.File.from_files( ... )`
    :::column-end:::
    :::column span="2":::
-      Az [adatkészletek](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true) az Azure Blob Storageba feltöltött adatokat használják. Az adatkészletek olyan absztrakt rétegek, amelyek a megbízhatóság és a megbízhatóság javítása érdekében lettek kialakítva.
+      Az [adatkészletek](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py) az Azure Blob Storageba feltöltött adatokat használják. Az adatkészletek olyan absztrakt rétegek, amelyek a megbízhatóság és a megbízhatóság javítása érdekében lettek kialakítva.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -279,7 +279,7 @@ A vezérlő parancsfájl hasonló a [sorozat 3. részéből](tutorial-1st-experi
       `config = ScriptRunConfig(...)`
    :::column-end:::
    :::column span="2":::
-      A [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) úgy módosul, hogy tartalmazza a számára átadott argumentumok listáját `train.py` . Az `dataset.as_named_input('input').as_mount()` argumentum azt jelenti, hogy a megadott könyvtár a számítási célhoz lesz _csatlakoztatva_ .
+      A [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) úgy módosul, hogy tartalmazza a számára átadott argumentumok listáját `train.py` . Az `dataset.as_named_input('input').as_mount()` argumentum azt jelenti, hogy a megadott könyvtár a számítási célhoz lesz _csatlakoztatva_ .
    :::column-end:::
 :::row-end:::
 
@@ -295,7 +295,7 @@ Ez a kód egy URL-címet fog kinyomtatni a kísérlethez a Azure Machine Learnin
 
 ### <a name="inspect-the-log-file"></a>A naplófájl vizsgálata
 
-A Studióban nyissa meg a kísérlet futtatását (az előző URL-kimenet kiválasztásával), majd a **kimenetek + naplók**elemet. Válassza ki a `70_driver_log.txt` fájlt. A következő kimenetnek kell megjelennie:
+A Studióban nyissa meg a kísérlet futtatását (az előző URL-kimenet kiválasztásával), majd a **kimenetek + naplók** elemet. Válassza ki a `70_driver_log.txt` fájlt. A következő kimenetnek kell megjelennie:
 
 ```txt
 Processing 'input'.
@@ -338,9 +338,9 @@ Megjegyzčs
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, és válassza a **Törlés**lehetőséget.
+Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, és válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban láttuk, hogyan tölthetők fel adatok az Azure-ba a használatával `Datastore` . Az adattár Felhőbeli tárolóként szolgál a munkaterülethez, így megőrizheti az adatok megőrzésének állandó és rugalmas helyét.
 

@@ -12,12 +12,12 @@ ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 04/28/2020
 tag: azure-synpase
-ms.openlocfilehash: 2ba0c53b9d0b9791364f532d999d86c74fa21177
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: eae7d0a34d6bd76dae5998f05f9d64e0d40f7d9b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678058"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321603"
 ---
 # <a name="conditional-access-with-azure-sql-database-and-azure-synapse-analytics"></a>Feltételes hozzáférés a Azure SQL Database és az Azure szinapszis Analytics használatával
 
@@ -29,7 +29,7 @@ A következő lépések bemutatják, hogyan konfigurálhatja az Azure SQL Databa
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A Azure Active Directory (Azure AD) hitelesítés támogatásához konfigurálnia kell Azure SQL Database, az Azure SQL felügyelt példányát vagy az Azure-beli SQL-készletet az Azure Szinapszisban. Konkrét lépések: [Azure Active Directory hitelesítés konfigurálása és kezelése SQL Database vagy Azure szinapszis segítségével](authentication-aad-configure.md).  
+- A Azure Active Directory (Azure AD) hitelesítés támogatásához konfigurálnia kell Azure SQL Database, Azure SQL felügyelt példányt vagy dedikált SQL-készletet az Azure Szinapszisban. Konkrét lépések: [Azure Active Directory hitelesítés konfigurálása és kezelése SQL Database vagy Azure szinapszis segítségével](authentication-aad-configure.md).  
 - Ha a Multi-Factor Authentication engedélyezve van, egy támogatott eszközzel kell kapcsolódnia, például a legújabb SQL Server Management Studio (SSMS). További információ: [Azure SQL Database multi-Factor Authentication konfigurálása SQL Server Management studiohoz](authentication-mfa-ssms-configure.md).  
 
 ## <a name="configure-conditional-access"></a>Feltételes hozzáférés konfigurálása

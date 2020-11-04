@@ -10,12 +10,12 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: d57de4d52ccf3a029a8dd1350635fb65dd3ac829
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b98384d4d735f4c124c6af40d6edbff896900ce
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828567"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320976"
 ---
 # <a name="upgrade-your-data-science-virtual-machine-to-ubuntu-1804"></a>Adatelemzési virtuális gép frissítése az Ubuntu 18.04-es verziójára
 
@@ -38,9 +38,9 @@ A Azure Portalban keresse meg a **Pillanatképek** funkciót a keresősáv haszn
 
 :::image type="content" source="media/ubuntu_upgrade/azure-portal-search-bar.png" alt-text="Képernyőkép a Azure Portal és a keresősáv megjelenítéséről, a * * pillanatképek * * kiemelve":::
 
-1. Válassza a **Hozzáadás**lehetőséget, amely a **pillanatkép létrehozása** lapra kerül. Válassza ki a virtuális gép előfizetését és erőforrás-csoportját. A **régió**mezőben válassza ki azt a régiót, ahol a cél tároló létezik. Válassza ki a DSVM és a további biztonsági mentési beállításokat. A **standard HDD** megfelelő tárolási típus ehhez a biztonsági mentési forgatókönyvhöz.
+1. Válassza a **Hozzáadás** lehetőséget, amely a **pillanatkép létrehozása** lapra kerül. Válassza ki a virtuális gép előfizetését és erőforrás-csoportját. A **régió** mezőben válassza ki azt a régiót, ahol a cél tároló létezik. Válassza ki a DSVM és a további biztonsági mentési beállításokat. A **standard HDD** megfelelő tárolási típus ehhez a biztonsági mentési forgatókönyvhöz.
 
-:::image type="content" source="media/ubuntu_upgrade/create-snapshot-options.png" alt-text="Képernyőkép a Azure Portal és a keresősáv megjelenítéséről, a * * pillanatképek * * kiemelve":::
+:::image type="content" source="media/ubuntu_upgrade/create-snapshot-options.png" alt-text="Képernyőkép a &quot;pillanatkép létrehozása&quot; beállításokról":::
 
 2. Az összes adat kitöltése és érvényesítése után válassza a **felülvizsgálat + létrehozás** lehetőséget a pillanatkép ellenőrzéséhez és létrehozásához. A pillanatkép sikeres befejeződése után megjelenik egy üzenet, amely közli, hogy a telepítés befejeződött.
 
@@ -65,12 +65,17 @@ A frissítési folyamat eltarthat egy ideig. Ha a rendszer átadja, a program en
 
 A virtuális gép frissítését és újraindítását követően próbálja meg újra elérni az SSH-n keresztül. Lehetséges, hogy az IP-cím módosult az újraindítás során, ezért a kapcsolódás megkísérlése előtt erősítse meg.
 
-Ha a **távoli GAZDAGÉP azonosításának hibája módosult**, újra kell létrehoznia az SSH hitelesítő adatait.
+Ha a **távoli GAZDAGÉP azonosításának hibája módosult** , újra kell létrehoznia az SSH hitelesítő adatait.
 
-:::image type="content" source="media/ubuntu_upgrade/remote-host-warning.png" alt-text="Képernyőkép a Azure Portal és a keresősáv megjelenítéséről, a * * pillanatképek * * kiemelve"
+:::image type="content" source="media/ubuntu_upgrade/remote-host-warning.png" alt-text="A távoli gazdagép azonosítását jelző PowerShell-képernyőkép figyelmeztetést váltott ki":::
+
+Ehhez futtassa a következő parancsot a helyi gépen:
+
+```bash
+ssh-keygen -R "your server hostname or ip"
 ```
 
-Most már képesnek kell lennie az SSH-val való kapcsolódásra. Ha továbbra is problémákat tapasztal, a **Csatlakozás** oldalon kövesse az **SSH-kapcsolattal kapcsolatos problémák elhárítására**szolgáló hivatkozást.
+Most már képesnek kell lennie az SSH-val való kapcsolódásra. Ha továbbra is problémákat tapasztal, a **Csatlakozás** oldalon kövesse az **SSH-kapcsolattal kapcsolatos problémák elhárítására** szolgáló hivatkozást.
 
 ## <a name="side-by-side-migration"></a>Párhuzamos áttelepítés
 
@@ -98,19 +103,19 @@ Dönthet úgy, hogy a fájlrendszer operációs rendszerének részeit frissíti
 
 Ha még nem hozott létre virtuálisgép-pillanatképet az előzőekben leírtak szerint, tegye meg a következőt:. 
 
-1. A Azure Portalban keressen **lemezeket** , és válassza a **Hozzáadás**lehetőséget, amely megnyitja a **lemez** lapot.
+1. A Azure Portalban keressen **lemezeket** , és válassza a **Hozzáadás** lehetőséget, amely megnyitja a **lemez** lapot.
 
-:::image type="content" source="media/ubuntu_upgrade/portal-disks-search.png" alt-text="Képernyőkép a Azure Portal és a keresősáv megjelenítéséről, a * * pillanatképek * * kiemelve":::
+:::image type="content" source="media/ubuntu_upgrade/portal-disks-search.png" alt-text="Képernyőkép Azure Portal a lemezek keresése lap és a Hozzáadás gomb megjelenítése":::
 
-2. Állítsa be az **előfizetést**, az **erőforráscsoportot**és a **régiót** a virtuális gép pillanatképének értékeire. Válassza ki a létrehozandó lemez **nevét** .
+2. Állítsa be az **előfizetést** , az **erőforráscsoportot** és a **régiót** a virtuális gép pillanatképének értékeire. Válassza ki a létrehozandó lemez **nevét** .
 
 3. Válassza a **forrás típusa** **pillanatképként** lehetőséget, és válassza ki a virtuális gép pillanatképét a **forrás pillanatképként**. Tekintse át és hozza létre a lemezt. 
 
-:::image type="content" source="media/ubuntu_upgrade/disk-create-options.png" alt-text="Képernyőkép a Azure Portal és a keresősáv megjelenítéséről, a * * pillanatképek * * kiemelve":::
+:::image type="content" source="media/ubuntu_upgrade/disk-create-options.png" alt-text="Képernyőkép a lemez létrehozásáról párbeszédpanel, amely a beállításokat jeleníti meg":::
 
 ### <a name="create-a-new-ubuntu-data-science-virtual-machine"></a>Új Ubuntu-Data Science Virtual Machine létrehozása
 
-Hozzon létre egy új Ubuntu-Data Science Virtual Machine a [Azure Portal](https://portal.azure.com) vagy egy [ARM-sablon](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager)használatával. 
+Hozzon létre egy új Ubuntu-Data Science Virtual Machine a [Azure Portal](https://portal.azure.com) vagy egy [ARM-sablon](./dsvm-tutorial-resource-manager.md)használatával. 
 
 ### <a name="recreate-user-accounts-on-your-new-data-science-virtual-machine"></a>Hozza létre újra a felhasználói fiók (oka) t az új Data Science Virtual Machine
 
@@ -118,17 +123,17 @@ Mivel csak a régi számítógépről másolja az adatait, újra létre kell hoz
 
 A Linux elég rugalmas ahhoz, hogy testreszabja az új telepítéshez tartozó címtárakat és elérési utakat a régi gép követéséhez. Általánosságban elmondható azonban, hogy könnyebben használhatja a modern Ubuntu előnyben részesített elrendezését, és módosíthatja a felhasználói környezetet és a szkripteket az alkalmazkodáshoz.
 
-További információ [: gyors útmutató: a Linux Data Science Virtual Machine beállítása (Ubuntu)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro).
+További információ [: gyors útmutató: a Linux Data Science Virtual Machine beállítása (Ubuntu)](./dsvm-ubuntu-intro.md).
 
 ### <a name="mount-the-disk-of-the-snapshotted-vm-as-a-data-disk-on-your-new-data-science-virtual-machine"></a>Csatlakoztassa a pillanatfelvétel virtuális gép lemezét adatlemezként az új Data Science Virtual Machine
 
 1. Győződjön meg arról, hogy a Data Science Virtual Machine fut a Azure Portal.
 
-2. A Azure Portal nyissa meg a Data Science Virtual Machine lapját. Válassza a **lemezek** panelt a bal oldali vasúton. Válassza a **meglévő lemezek csatolása**lehetőséget.
+2. A Azure Portal nyissa meg a Data Science Virtual Machine lapját. Válassza a **lemezek** panelt a bal oldali vasúton. Válassza a **meglévő lemezek csatolása** lehetőséget.
 
 3. A **lemez neve** legördülő menüben válassza ki a régi virtuális gép pillanatképéről létrehozott lemezt.
 
-:::image type="content" source="media/ubuntu_upgrade/attach-data-disk.png" alt-text="Képernyőkép a Azure Portal és a keresősáv megjelenítéséről, a * * pillanatképek * * kiemelve":::
+:::image type="content" source="media/ubuntu_upgrade/attach-data-disk.png" alt-text="Képernyőfelvétel a DSVM beállításairól lap a lemez mellékletének beállításairól":::
 
 4. A virtuális gép frissítéséhez válassza a **Mentés** lehetőséget.
 
@@ -147,7 +152,7 @@ További információ [: gyors útmutató: a Linux Data Science Virtual Machine 
     
     Az eredményeknek az alábbi képhez hasonlóan kell kinézniük. A rendszerképben a lemez `sda1` a gyökérhez van csatlakoztatva, és `sdb2` Ez a lemez `/mnt` . A régi virtuális gépről készített pillanatképből létrehozott adatlemezt a rendszer a `sdc1` csatlakoztatási hely hiánya által jelzett módon azonosítja, de még nem érhető el. Előfordulhat, hogy az eredmények eltérő azonosítóval rendelkeznek, de hasonló mintát kell látnia.
     
-    :::image type="content" source="media/ubuntu_upgrade/lsblk-results.png" alt-text="Képernyőkép a Azure Portal és a keresősáv megjelenítéséről, a * * pillanatképek * * kiemelve":::
+    :::image type="content" source="media/ubuntu_upgrade/lsblk-results.png" alt-text="A leválasztott adatmeghajtót bemutató képernyőkép a lsblk kimenetről":::
     
 3. Az adatmeghajtó eléréséhez hozzon létre egy helyet a számára, és csatlakoztassa azt. Cserélje le a `/dev/sdc1` értéket a megfelelő értékre `lsblk` :
 
@@ -157,7 +162,7 @@ További információ [: gyors útmutató: a Linux Data Science Virtual Machine 
     
 4. A most `/datadrive` a régi Data Science Virtual Machine könyvtárait és fájljait tartalmazza. Helyezze át vagy másolja át a kívánt könyvtárakat vagy fájlokat az adatmeghajtóról az új virtuális gépre, ahogy szeretné.
 
-További információ: [adatlemez csatlakoztatása egy Linux rendszerű virtuális géphez a portál használatával](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#connect-to-the-linux-vm-to-mount-the-new-disk).
+További információ: [adatlemez csatlakoztatása egy Linux rendszerű virtuális géphez a portál használatával](../../virtual-machines/linux/attach-disk-portal.md#connect-to-the-linux-vm-to-mount-the-new-disk).
 
 ## <a name="connect-and-confirm-version-upgrade"></a>A verziófrissítés és a verziófrissítés megerősítése
 
@@ -169,13 +174,13 @@ cat /etc/os-release
 
 És látnia kell, hogy Ubuntu 18,04-et futtat.
 
-:::image type="content" source="media/ubuntu_upgrade/ssh-os-release.png" alt-text="Képernyőkép a Azure Portal és a keresősáv megjelenítéséről, a * * pillanatképek * * kiemelve":::
+:::image type="content" source="media/ubuntu_upgrade/ssh-os-release.png" alt-text="Az operációs rendszer verziószámát bemutató Ubuntu-terminál képernyőképe":::
 
 A verzió módosítása a Azure Portal is látható.
 
-:::image type="content" source="media/ubuntu_upgrade/portal-showing-os-version.png" alt-text="Képernyőkép a Azure Portal és a keresősáv megjelenítéséről, a * * pillanatképek * * kiemelve":::
+:::image type="content" source="media/ubuntu_upgrade/portal-showing-os-version.png" alt-text="Képernyőkép a portálról, amely a DSVM tulajdonságait, beleértve az operációs rendszer verzióját":::
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Adatelemzés egy Ubuntu adatelemzési géppel az Azure-ban](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/linux-dsvm-walkthrough)
-- [Milyen eszközöket tartalmaz az Azure Data Science Virtual Machine?](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/tools-included)
+- [Adatelemzés egy Ubuntu adatelemzési géppel az Azure-ban](./linux-dsvm-walkthrough.md)
+- [Milyen eszközöket tartalmaz az Azure Data Science Virtual Machine?](./tools-included.md)

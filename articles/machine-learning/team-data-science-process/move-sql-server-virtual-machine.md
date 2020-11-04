@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8350437d04fd019aab8fb22be8ad0e9a4a2831d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c80a90b07e25942e751d52cafa47f6e3e94852ab
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87012178"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320329"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Adatok áthelyezés SQL Server-kiszolgálóra Azure-beli virtuális gépeken
 
@@ -43,7 +43,7 @@ Ez az oktatóanyag feltételezi, hogy rendelkezik a következővel:
 
 * Egy **Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/).
 * Egy **Azure Storage-fiók**. Ebben az oktatóanyagban egy Azure Storage-fiókot fog használni az adattároláshoz. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozása](../../storage/common/storage-account-create.md) című cikket. A Storage-fiók létrehozása után be kell szereznie a tárolóhoz való hozzáféréshez használt fiók kulcsát. Lásd: a [Storage-fiók elérési kulcsainak kezelése](../../storage/common/storage-account-keys-manage.md).
-* Kiépített **SQL Server egy Azure-beli virtuális gépen**. Útmutatásért lásd: [Azure SQL Server virtuális gép beállítása IPython notebook-kiszolgálóként a speciális elemzésekhez](../data-science-virtual-machine/setup-sql-server-virtual-machine.md).
+* Kiépített **SQL Server egy Azure-beli virtuális gépen**. Útmutatásért lásd: [Azure SQL Server virtuális gép beállítása IPython notebook-kiszolgálóként a speciális elemzésekhez](../data-science-virtual-machine/overview.md).
 * **Azure PowerShell** helyileg telepítve és konfigurálva. Útmutatásért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/).
 
 ## <a name="moving-data-from-a-flat-file-source-to-sql-server-on-an-azure-vm"></a><a name="filesource_to_sqlonazurevm"></a> Adatok áthelyezése egy egyszerű fájlból a SQL Serverba egy Azure-beli virtuális gépen
@@ -58,7 +58,7 @@ A BCP egy SQL Server telepített parancssori segédprogram, amely az adatáthely
 
 > [!NOTE]
 > **Hol kell az adataim a BCP-hez?**  
-> Habár nem szükséges, a forrásként szolgáló fájlok, amelyek a célként SQL Server ugyanazon a gépen találhatók, lehetővé teszik a gyorsabb átvitelt (a hálózati sebesség és a helyi lemez i/o-sebessége). Áthelyezheti az adatok tárolására szolgáló sima fájlokat a gépre, ahol a SQL Server a különböző fájlmásolás-eszközök, például a [AZCopy](../../storage/common/storage-use-azcopy.md), a [Azure Storage Explorer](https://storageexplorer.com/) vagy a Windows másolási/beillesztési RDP protokoll (RDP) használatával telepíthetők.
+> Habár nem szükséges, a forrásként szolgáló fájlok, amelyek a célként SQL Server ugyanazon a gépen találhatók, lehetővé teszik a gyorsabb átvitelt (a hálózati sebesség és a helyi lemez i/o-sebessége). Áthelyezheti az adatok tárolására szolgáló sima fájlokat a gépre, ahol a SQL Server a különböző fájlmásolás-eszközök, például a [AZCopy](../../storage/common/storage-use-azcopy-v10.md), a [Azure Storage Explorer](https://storageexplorer.com/) vagy a Windows másolási/beillesztési RDP protokoll (RDP) használatával telepíthetők.
 >
 >
 
@@ -82,7 +82,7 @@ A BCP egy SQL Server telepített parancssori segédprogram, amely az adatáthely
 
     `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attempt -t \t -r \n`
 
-> **BCP-beszúrások optimalizálása** A lapkák optimalizálásához tekintse meg a következő cikket ["a tömeges importálás optimalizálásához"](https://technet.microsoft.com/library/ms177445%28v=sql.105%29.aspx) című cikkben.
+> **BCP-beszúrások optimalizálása** A lapkák optimalizálásához tekintse meg a következő cikket ["a tömeges importálás optimalizálásához"](/previous-versions/sql/sql-server-2008-r2/ms177445(v=sql.105)) című cikkben.
 >
 >
 
@@ -133,7 +133,7 @@ Set-ExecutionPolicy Restricted #reset the execution policy
 ```
 
 ### <a name="bulk-insert-sql-query"></a><a name="insert-tables-bulkquery"></a>SQL-lekérdezés tömeges beszúrása
-A [tömeges beszúrási SQL-lekérdezéssel](https://msdn.microsoft.com/library/ms188365) adatok importálhatók az adatbázisba a sor/oszlop alapú fájlok alapján (a támogatott típusok az[adatok előkészítése tömeges exportálásra vagy importálásra (SQL Server)](https://msdn.microsoft.com/library/ms188609)) című témakörben találhatók.
+A [tömeges beszúrási SQL-lekérdezéssel](/sql/t-sql/statements/bulk-insert-transact-sql) adatok importálhatók az adatbázisba a sor/oszlop alapú fájlok alapján (a támogatott típusok az[adatok előkészítése tömeges exportálásra vagy importálásra (SQL Server)](/sql/relational-databases/import-export/prepare-data-for-bulk-export-or-import-sql-server)) című témakörben találhatók.
 
 Íme néhány példa a tömeges beszúrási parancsokra:  
 
@@ -158,10 +158,10 @@ A [tömeges beszúrási SQL-lekérdezéssel](https://msdn.microsoft.com/library/
 
 ### <a name="built-in-utilities-in-sql-server"></a><a name="sql-builtin-utilities"></a>Beépített segédprogramok a SQL Server
 A SQL Server Integration Services (SSIS) használatával adatok importálhatók az Azure-beli SQL Server VMba egy sima fájlból.
-A SSIS két Studio-környezetben érhető el. Részletekért lásd: [Integration Services (SSIS) és Studio-környezetek](https://technet.microsoft.com/library/ms140028.aspx):
+A SSIS két Studio-környezetben érhető el. Részletekért lásd: [Integration Services (SSIS) és Studio-környezetek](/sql/integration-services/integration-services-ssis-development-and-management-tools):
 
-* A SQL Server Data Tools részleteiért lásd: [Microsoft SQL Server Adateszközök](https://msdn.microsoft.com/data/tools.aspx)  
-* Az importálási/exportálási varázsló részleteiért lásd: [SQL Server Importálás és exportálás varázsló](https://msdn.microsoft.com/library/ms141209.aspx) .
+* A SQL Server Data Tools részleteiért lásd: [Microsoft SQL Server Adateszközök](/sql/ssdt/download-sql-server-data-tools-ssdt)  
+* Az importálási/exportálási varázsló részleteiért lásd: [SQL Server Importálás és exportálás varázsló](/sql/integration-services/import-export-data/import-and-export-data-with-the-sql-server-import-and-export-wizard) .
 
 ## <a name="moving-data-from-on-premises-sql-server-to-sql-server-on-an-azure-vm"></a><a name="sqlonprem_to_sqlonazurevm"></a>Adatok áthelyezése helyszíni SQL Serverból egy Azure-beli virtuális gépen SQL Server
 A következő áttelepítési stratégiákat is használhatja:
@@ -177,13 +177,13 @@ Az alábbi lehetőségeket ismertetjük:
 Az **SQL Server-adatbázis központi telepítése Microsoft Azure virtuális gépre varázsló** egyszerű és ajánlott módszer az adatok áthelyezésére egy helyszíni SQL Server-példányról egy Azure-beli virtuális gépen SQL Server. A részletes lépések, valamint a további alternatívák megvitatására lásd: [adatbázisok Áttelepítésének SQL Server Azure-beli virtuális gépen](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md).
 
 ### <a name="export-to-flat-file"></a><a name="export-flat-file"></a>Exportálás az egyszerű fájlba
-Számos módszer használható a helyszíni SQL Server adatainak tömeges exportálására az [adatok tömeges importálása és exportálása (SQL Server)](https://msdn.microsoft.com/library/ms175937.aspx) című témakörben leírtak szerint. Ez a dokumentum a tömeges másolási programot (BCP) fedi le példaként. Ha az adatexportálást egy egyszerű fájlba exportálja, az importálható egy másik SQL Server-kiszolgálóra tömeges importálás használatával.
+Számos módszer használható a helyszíni SQL Server adatainak tömeges exportálására az [adatok tömeges importálása és exportálása (SQL Server)](/sql/relational-databases/import-export/bulk-import-and-export-of-data-sql-server) című témakörben leírtak szerint. Ez a dokumentum a tömeges másolási programot (BCP) fedi le példaként. Ha az adatexportálást egy egyszerű fájlba exportálja, az importálható egy másik SQL Server-kiszolgálóra tömeges importálás használatával.
 
 1. Exportálja a helyszíni SQL Server adatait egy fájlba a BCP segédprogrammal a következőképpen:
 
     `bcp dbname..tablename out datafile.tsv -S    servername\sqlinstancename -T -t \t -t \n -c`
 2. Hozza létre az adatbázist és a táblázatot a SQL Server VM az Azure- `create database` ban a és az `create table` 1. lépésben exportált tábla sémájának használatával.
-3. Hozzon létre egy formázó fájlt, amely leírja az exportált/importált adatmennyiség táblázatos sémáját. A formátumú fájl részletes ismertetését lásd: [Format fájl létrehozása (SQL Server)](https://msdn.microsoft.com/library/ms191516.aspx).
+3. Hozzon létre egy formázó fájlt, amely leírja az exportált/importált adatmennyiség táblázatos sémáját. A formátumú fájl részletes ismertetését lásd: [Format fájl létrehozása (SQL Server)](/sql/relational-databases/import-export/create-a-format-file-sql-server).
 
     Fájl létrehozásának formázása a BCP SQL Server számítógépről való futtatásakor
 
@@ -202,8 +202,8 @@ Számos módszer használható a helyszíni SQL Server adatainak tömeges export
 ### <a name="database-back-up-and-restore"></a><a name="sql-backup"></a>Adatbázis biztonsági mentése és visszaállítása
 SQL Server a következőket támogatja:
 
-1. Az [adatbázis biztonsági mentése és visszaállítása funkció](https://msdn.microsoft.com/library/ms187048.aspx) (mindkettő egy helyi fájlra, vagy a blobba történő exportálás bacpac) és [az adatcsomag-alkalmazásokra](https://msdn.microsoft.com/library/ee210546.aspx) (a bacpac használatával).
-2. Lehetőség van arra, hogy közvetlenül létrehozzon SQL Server virtuális gépeket az Azure-ban egy másolt adatbázissal, vagy másoljon egy meglévő adatbázisba SQL Database. További információ: [az adatbázis másolása varázsló használata](https://msdn.microsoft.com/library/ms188664.aspx).
+1. Az [adatbázis biztonsági mentése és visszaállítása funkció](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases) (mindkettő egy helyi fájlra, vagy a blobba történő exportálás bacpac) és [az adatcsomag-alkalmazásokra](/sql/relational-databases/data-tier-applications/data-tier-applications) (a bacpac használatával).
+2. Lehetőség van arra, hogy közvetlenül létrehozzon SQL Server virtuális gépeket az Azure-ban egy másolt adatbázissal, vagy másoljon egy meglévő adatbázisba SQL Database. További információ: [az adatbázis másolása varázsló használata](/sql/relational-databases/databases/use-the-copy-database-wizard).
 
 Alább látható az adatbázis biztonsági mentési/visszaállítási lehetőségeinek képernyőképe SQL Server Management Studio.
 

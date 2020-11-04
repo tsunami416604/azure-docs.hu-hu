@@ -1,6 +1,6 @@
 ---
 title: Ajánlott adatbetöltési eljárások
-description: Javaslatok és teljesítmény-optimalizálás az adat szinapszis SQL-be való betöltéséhez
+description: Javaslatok és teljesítmény-optimalizálás az adatgyűjtés dedikált SQL-készletbe való betöltéséhez az Azure szinapszis Analytics szolgáltatásban.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4c07ad2aaf6c682dc370e3223dba1f199242ca2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e706f12a251cd38c3525a48553743606ed199b6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289231"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321514"
 ---
-# <a name="best-practices-for-loading-data-for-data-warehousing"></a>Ajánlott adatbetöltési eljárások adatraktározáshoz
+# <a name="best-practices-for-loading-data-into-a-dedicated-sql-pool-azure-synapse-analytics"></a>Ajánlott eljárások az Azure szinapszis Analytics dedikált SQL-készletbe való betöltéséhez
 
 Ebből a cikkből megtudhatja, milyen javaslatokat és teljesítmény-optimalizálást talál az adat betöltéséhez.
 
 ## <a name="prepare-data-in-azure-storage"></a>Az Azure Storage-ban való adatelőkészítés
 
-A késés minimalizálásához helyezze a tárolási réteget és az adattárházat.
+A késés minimalizálásához helyezze a tárolási réteget és a dedikált SQL-készletet.
 
 Az adatok ORC fájlformátumba való exportálásakor Java memóriahiány-hibák jelentkezhetnek, ha a szövegoszlopok túl nagyok. Ezt a korlátozást úgy küszöbölheti ki, ha az oszlopok csak egy részhalmazát exportálja.
 
@@ -36,7 +36,7 @@ A nagy tömörített fájlokat ossza fel kisebb tömörített fájlokra.
 
 ## <a name="run-loads-with-enough-compute"></a>A terhelések futtatása elegendő számítási feladatokkal
 
-A leggyorsabb betöltési sebesség érdekében egyszerre egy betöltési feladatot futtasson. Ha ez nem lehetséges, egyszerre a lehető legkevesebb betöltést futtassa. Ha nagy betöltési feladatot vár, érdemes megfontolnia az SQL-készlet méretezését a terhelés előtt.
+A leggyorsabb betöltési sebesség érdekében egyszerre egy betöltési feladatot futtasson. Ha ez nem lehetséges, egyszerre a lehető legkevesebb betöltést futtassa. Ha nagy betöltési feladatra számíthat, érdemes lehet a dedikált SQL-készletet a terhelés előtt méretezni.
 
 A betöltések megfelelő számítási erőforrásokkal való futtatásához hozzon létre betöltések futtatására kijelölt felhasználókat. Rendelje hozzá az egyes betöltési felhasználókat egy adott erőforrás-osztályhoz vagy munkaterhelési csoporthoz. Betöltés futtatásához jelentkezzen be az egyik betöltési felhasználóként, majd futtassa a betöltést. A betöltés a felhasználó erőforrásosztályával fut.  Ez a módszer egyszerűbb, mint a felhasználó erőforrásosztályának módosításával próbálkozni, hogy az megfeleljen az aktuális erőforrásosztály-igénynek.
 

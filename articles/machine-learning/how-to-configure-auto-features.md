@@ -11,14 +11,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 0138715e4c9df8ae05c9a3eade64d539eb7cdeda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 229bcbb8c8c429b7fe4e5878b0e57e74dd828b72
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91756551"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320656"
 ---
-# <a name="featurization-in-automated-machine-learning"></a>Featurization az automatizált gépi tanulásban
+# <a name="featurization-in-automated-machine-learning"></a>Jellemzőkre bontás az automatizált gépi tanulásban
 
 
 
@@ -27,7 +27,7 @@ Ebben az útmutatóban a következőket tanulhatja meg:
 - Milyen featurization-beállítások Azure Machine Learning ajánlatokat.
 - A funkciók testre szabása [automatizált gépi tanulási kísérletekhez](concept-automated-ml.md).
 
-A *szolgáltatás-mérnöki* folyamat az adat tartományon alapuló ismeretét használja olyan funkciók létrehozásához, amelyek segítenek a Machine learning (ml) algoritmusok jobb megismerésében. Azure Machine Learning az adatméretezési és-normalizálás technikákat a funkciók mérnöki működésének megkönnyítésére alkalmazza a rendszer. Ezeket a technikákat és a szolgáltatás-fejlesztéseket együttesen *featurization* nevezzük az automatizált gépi tanulásban, vagy *AutoML*, kísérletekben.
+A *szolgáltatás-mérnöki* folyamat az adat tartományon alapuló ismeretét használja olyan funkciók létrehozásához, amelyek segítenek a Machine learning (ml) algoritmusok jobb megismerésében. Azure Machine Learning az adatméretezési és-normalizálás technikákat a funkciók mérnöki működésének megkönnyítésére alkalmazza a rendszer. Ezeket a technikákat és a szolgáltatás-fejlesztéseket együttesen *featurization* nevezzük az automatizált gépi tanulásban, vagy *AutoML* , kísérletekben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,7 +38,7 @@ Ez a cikk azt feltételezi, hogy már tudja, hogyan konfigurálhat egy AutoML-k�
 
 ## <a name="configure-featurization"></a>Featurization konfigurálása
 
-Az automatikus [skálázási és normalizáló technikákat](#featurization) minden automatizált gépi tanulási kísérlet során alapértelmezés szerint alkalmazza a rendszer az adataira. Ezek a technikák olyan featurization-típusok, amelyek *bizonyos* , különböző léptékű funkciókra érzékeny algoritmusokat nyújtanak. Engedélyezheti azonban a további featurization, például a *hiányzó értékek imputálási*, *kódolását*és *átalakítását*is.
+Az automatikus [skálázási és normalizáló technikákat](#featurization) minden automatizált gépi tanulási kísérlet során alapértelmezés szerint alkalmazza a rendszer az adataira. Ezek a technikák olyan featurization-típusok, amelyek *bizonyos* , különböző léptékű funkciókra érzékeny algoritmusokat nyújtanak. Engedélyezheti azonban a további featurization, például a *hiányzó értékek imputálási* , *kódolását* és *átalakítását* is.
 
 > [!NOTE]
 > Az automatizált gépi tanulási featurization (például a funkciók normalizálása, a hiányzó adatokat kezelő vagy a numerikus szöveg konvertálása) lépései az alapul szolgáló modell részévé válnak. Ha az előrejelzési modellt használja, a betanítás során alkalmazott featurization-lépéseket a rendszer automatikusan alkalmazza a bemeneti adatokra.
@@ -64,11 +64,11 @@ Az alábbi táblázat összefoglalja az adataira automatikusan alkalmazott techn
 
 |Featurization &nbsp; lépések| Leírás |
 | ------------- | ------------- |
-|**A nagyfokú és a variancia nélküli funkciók eldobása*** |Ezeket a funkciókat a betanítási és az ellenőrzési készletekből dobja el. Az összes hiányzó értékkel rendelkező szolgáltatásokra vonatkozik, amelyek az összes sorban azonos értékkel rendelkeznek, vagy magas fokú (például kivonatok, azonosítók vagy GUID azonosítók).|
-|**Hiányzó értékek imputált értéke*** |Numerikus funkciók esetében az érték az oszlopban szereplő értékek átlagát tartalmazza.<br/><br/>A kategorikus funkciók esetében a leggyakoribb értékkel kell eltulajdonítani a bevonást.|
-|**További funkciók előállítása*** |A DateTime funkciók esetében: év, hónap, nap, hét napja, év napja, negyedév, év hete, óra, perc, másodperc.<br><br> *Az előrejelzési feladatokhoz* a következő datetime-funkciók jönnek létre: ISO év, félév, naptári hónap karakterláncként, hét, hét napja karakterláncként, negyedév napja, év napja, AM/PM (0 Ha az óra délig van (12 óra), 1 egyéb), AM/PM as sztring, óra (12 HR-alapú)<br/><br/>A szöveges funkciókhoz: unigrams, bigrams és Trigrams alapuló kifejezés gyakorisága. További információ arról, [hogy ez hogyan történik a bertban.](#bert-integration)|
-|**Átalakítás és kódolás***|A több egyedi értékkel rendelkező numerikus funkciók átalakítása kategorikus funkciókba.<br/><br/>A kis-és nagymértékű kategorikus funkciók esetében egy gyors kódolást használunk. A rendszer egy-egy gyors kivonatoló kódolást használ a magas fokú, kategorikus funkciókhoz.|
-|**Word-beágyazások**|A szöveges Képtulajdonság egy előre betanított modell használatával alakítja át a szöveges tokenek vektorait a mondatokra. Az egyes Word-dokumentumok beágyazási vektora a többivel együtt a dokumentum-szolgáltatás vektorának előállítására szolgál.|
+|**Drop magas fokú vagy nem variancia funkciók** _ |Ezeket a funkciókat a betanítási és az ellenőrzési készletekből dobja el. Az összes hiányzó értékkel rendelkező szolgáltatásokra vonatkozik, amelyek az összes sorban azonos értékkel rendelkeznek, vagy magas fokú (például kivonatok, azonosítók vagy GUID azonosítók).|
+|_*Hiányzó értékek imputált értéke**_ |Numerikus funkciók esetében az érték az oszlopban szereplő értékek átlagát tartalmazza.<br/><br/>A kategorikus funkciók esetében a leggyakoribb értékkel kell eltulajdonítani a bevonást.|
+|_*További funkciók előállítása**_ |A DateTime funkciók esetében: év, hónap, nap, hét napja, év napja, negyedév, év hete, óra, perc, másodperc.<br><br> _For előrejelzési feladatok, * ezek a további DateTime-funkciók a következők: ISO év, félév, naptári hónap karakterláncként, hét, hét napja karakterláncként, negyedév napja, év napja, AM/PM (0, ha az óra délig van (12 óra), 1 egyéb), AM/PM as sztring, óra (12 HR alapján)<br/><br/>A szöveges funkciókhoz: unigrams, bigrams és Trigrams alapuló kifejezés gyakorisága. További információ arról, [hogy ez hogyan történik a bertban.](#bert-integration)|
+|**Átalakítás és kódolás** _|A több egyedi értékkel rendelkező numerikus funkciók átalakítása kategorikus funkciókba.<br/><br/>A kis-és nagymértékű kategorikus funkciók esetében egy gyors kódolást használunk. A rendszer egy-egy gyors kivonatoló kódolást használ a magas fokú, kategorikus funkciókhoz.|
+|_ *Word-beágyazások**|A szöveges Képtulajdonság egy előre betanított modell használatával alakítja át a szöveges tokenek vektorait a mondatokra. Az egyes Word-dokumentumok beágyazási vektora a többivel együtt a dokumentum-szolgáltatás vektorának előállítására szolgál.|
 |**Cél kódolások**|A kategorikus funkciók esetében ez a lépés leképezi az egyes kategóriákat a regressziós problémák átlagos céljával, valamint az osztályok valószínűségét az egyes osztályok számára a besorolási problémák esetében. A rendszer a gyakoriságon alapuló súlyozást és a k-fold kereszt-ellenőrzést alkalmazza, hogy csökkentse a ritka adatkategóriák által okozott leképezés és zaj túlillesztését.|
 |**Szöveges cél kódolása**|Szöveges bevitel esetén a rendszer egy halmozott lineáris modellt használ, amelyben a rendszer az egyes osztályok valószínűségét állítja elő.|
 |**Bizonyítékok súlyozása (jaj)**|Kiszámítja a jaj-et a kategorikus oszlopok korrelációja alapján a cél oszlophoz. A jaj kiszámításának eredménye az osztályban és az osztályon kívüli valószínűségek arányának naplója. Ez a lépés egységenként egy numerikus funkció oszlopot hoz létre, és eltávolítja a hiányzó értékek és a kiugró adatok explicit módon történő bevonásának szükségességét.|
@@ -80,8 +80,8 @@ Az *adatok guardrails* segítségével azonosíthatja az adataival kapcsolatos l
 
 A rendszer alkalmazza az guardrails:
 
-- **SDK-kísérletek esetén**: Ha a paraméterek `"featurization": 'auto'` vagy az `validation=auto` `AutoMLConfig` objektumban vannak megadva.
-- **Studio-kísérletek**esetén: Ha engedélyezve van az automatikus featurization.
+- **SDK-kísérletek esetén** : Ha a paraméterek `"featurization": 'auto'` vagy az `validation=auto` `AutoMLConfig` objektumban vannak megadva.
+- **Studio-kísérletek** esetén: Ha engedélyezve van az automatikus featurization.
 
 A kísérlethez tartozó guardrails áttekintéséhez tekintse át a következőt:
 
@@ -105,18 +105,18 @@ A következő táblázat ismerteti a jelenleg támogatott guardrails, valamint a
 
 Guardrail|status|Trigger feltétele &nbsp; &nbsp;
 ---|---|---
-**Hiányzó szolgáltatási értékek imputálási** |Telt <br><br><br> Kész| A betanítási adatok nem észleltek hiányzó szolgáltatási értékeket. További információ a [hiányzó értékű imputálási.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> A rendszer hiányzó szolgáltatási értékeket észlelt a betanítási adatokban, és imputáltak voltak.
+**Hiányzó szolgáltatási értékek imputálási** |Telt <br><br><br> Kész| A betanítási adatok nem észleltek hiányzó szolgáltatási értékeket. További információ a [hiányzó értékű imputálási.](./how-to-use-automated-ml-for-ml-models.md#customize-featurization) <br><br> A rendszer hiányzó szolgáltatási értékeket észlelt a betanítási adatokban, és imputáltak voltak.
 **Magas fokú szolgáltatások kezelését** |Telt <br><br><br> Kész| A rendszer elemezte a bemeneteket, és nem észlelt magas szintű funkciókat. <br><br> A rendszer a Kiemelt funkciókat észlelte a bemenetekben, és kezelte azokat.
-**Ellenőrzés felosztásának ellenőrzése** |Kész| Az érvényesítési konfiguráció értékre lett állítva `'auto'` , a betanítási adatként pedig *kevesebb, mint 20 000 sor*szerepel. <br> A betanított modell minden egyes iterációját kereszt-ellenőrzéssel érvényesíti a program. További információ az [érvényesítési](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data)információkról. <br><br> Az érvényesítési konfiguráció értékre lett állítva `'auto'` , a betanítási adatként pedig *több mint 20 000 sor*szerepel. <br> A bemeneti adatok egy betanítási adatkészletbe és egy ellenőrzési adatkészletbe vannak osztva a modell érvényesítéséhez.
-**Osztály kiegyensúlyozásának észlelése** |Telt <br><br><br><br>Riasztást kap <br><br><br>Kész | A rendszer elemezte a bemeneteket, és az összes osztály kiegyensúlyozottan szerepel a betanítási adatokban. Az adatkészletek akkor tekinthetők kiegyensúlyozottnak, ha az egyes osztályok jó ábrázolással rendelkeznek az adatkészletben, a minták számával és arányával mérve. <br><br> A rendszer kiegyensúlyozatlan osztályokat észlelt a bemenetekben. A modell torzításának javításához javítsa ki a kiegyenlítési problémát. További információ a [kiegyensúlyozatlan adatvédelemről](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data).<br><br> A rendszer kiegyensúlyozatlan osztályokat észlelt a bemenetekben, és a megtakarítási logikát úgy döntött, hogy az egyensúlyt alkalmazza.
-**Memória-problémák észlelése** |Telt <br><br><br><br> Kész |<br> A kiválasztott értékeket (horizont, lag, gördülő ablak) elemezték, és a rendszer nem észlelt memóriabeli problémákat. További információ az idősorozat- [előrejelzési konfigurációkról](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment). <br><br><br>A kiválasztott értékeket (horizont, lag, gördülő ablak) elemezte a rendszer, és a kísérlet miatt kifogyhat a memória. A késés vagy a működés közbeni ablak konfigurációk ki lettek kapcsolva.
-**Gyakoriság észlelése** |Telt <br><br><br><br> Kész |<br> Az idősorozat elemzése megtörtént, és az összes adatpont az észlelt gyakorisággal van igazítva. <br> <br> Az idősorozat elemzése megtörtént, és az észlelt gyakorisággal nem igazított adatpontok észlelhetők. Ezek az adatpontok el lettek távolítva az adatkészletből. További információ az [idősorozat-előrejelzés adatainak előkészítéséről](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data).
+**Ellenőrzés felosztásának ellenőrzése** |Kész| Az érvényesítési konfiguráció értékre lett állítva `'auto'` , a betanítási adatként pedig *kevesebb, mint 20 000 sor* szerepel. <br> A betanított modell minden egyes iterációját kereszt-ellenőrzéssel érvényesíti a program. További információ az [érvényesítési](./how-to-configure-auto-train.md#training-validation-and-test-data)információkról. <br><br> Az érvényesítési konfiguráció értékre lett állítva `'auto'` , a betanítási adatként pedig *több mint 20 000 sor* szerepel. <br> A bemeneti adatok egy betanítási adatkészletbe és egy ellenőrzési adatkészletbe vannak osztva a modell érvényesítéséhez.
+**Osztály kiegyensúlyozásának észlelése** |Telt <br><br><br><br>Riasztást kap <br><br><br>Kész | A rendszer elemezte a bemeneteket, és az összes osztály kiegyensúlyozottan szerepel a betanítási adatokban. Az adatkészletek akkor tekinthetők kiegyensúlyozottnak, ha az egyes osztályok jó ábrázolással rendelkeznek az adatkészletben, a minták számával és arányával mérve. <br><br> A rendszer kiegyensúlyozatlan osztályokat észlelt a bemenetekben. A modell torzításának javításához javítsa ki a kiegyenlítési problémát. További információ a [kiegyensúlyozatlan adatvédelemről](./concept-manage-ml-pitfalls.md#identify-models-with-imbalanced-data).<br><br> A rendszer kiegyensúlyozatlan osztályokat észlelt a bemenetekben, és a megtakarítási logikát úgy döntött, hogy az egyensúlyt alkalmazza.
+**Memória-problémák észlelése** |Telt <br><br><br><br> Kész |<br> A kiválasztott értékeket (horizont, lag, gördülő ablak) elemezték, és a rendszer nem észlelt memóriabeli problémákat. További információ az idősorozat- [előrejelzési konfigurációkról](./how-to-auto-train-forecast.md#configuration-settings). <br><br><br>A kiválasztott értékeket (horizont, lag, gördülő ablak) elemezte a rendszer, és a kísérlet miatt kifogyhat a memória. A késés vagy a működés közbeni ablak konfigurációk ki lettek kapcsolva.
+**Gyakoriság észlelése** |Telt <br><br><br><br> Kész |<br> Az idősorozat elemzése megtörtént, és az összes adatpont az észlelt gyakorisággal van igazítva. <br> <br> Az idősorozat elemzése megtörtént, és az észlelt gyakorisággal nem igazított adatpontok észlelhetők. Ezek az adatpontok el lettek távolítva az adatkészletből. További információ az [idősorozat-előrejelzés adatainak előkészítéséről](./how-to-auto-train-forecast.md#preparing-data).
 
 ## <a name="customize-featurization"></a>Featurization testreszabása
 
 Testreszabhatja a featurization beállításait, így biztosíthatja, hogy a ML-modellek betanításához használt adatokat és szolgáltatásokat a megfelelő előrejelzések képezzék.
 
-A featurizations testreszabásához adja meg  `"featurization": FeaturizationConfig` az `AutoMLConfig` objektumot az objektumban. Ha a kísérlethez a Azure Machine Learning Studiot használja, tekintse meg a [útmutató cikket](how-to-use-automated-ml-for-ml-models.md#customize-featurization). Az előrejelzési feladatokhoz tartozó featurization testreszabásához tekintse meg az [előrejelzési útmutató című témakört](how-to-auto-train-forecast.md#customize-featurization).
+A featurizations testreszabásához adja meg `"featurization": FeaturizationConfig` az `AutoMLConfig` objektumot az objektumban. Ha a kísérlethez a Azure Machine Learning Studiot használja, tekintse meg a [útmutató cikket](how-to-use-automated-ml-for-ml-models.md#customize-featurization). Az előrejelzési feladatokhoz tartozó featurization testreszabásához tekintse meg az [előrejelzési útmutató című témakört](how-to-auto-train-forecast.md#customize-featurization).
 
 A támogatott testreszabások a következők:
 
@@ -318,7 +318,7 @@ A AutoML a következő lépéseket hajtja végre a BERT esetében.
 
 1. **Az összes szöveges oszlop előfeldolgozása és jogkivonatok létrehozása**. Például a "StringCast" átalakító a végső modell featurization összegzésében található. [Ebben a jegyzetfüzetben](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b)egy példát láthat a modell featurization összegzésének elkészítésére.
 
-2. Az **összes szöveges oszlop összefűzése egyetlen szöveges oszlopba**, ezért a `StringConcatTransformer` végső modellben. 
+2. Az **összes szöveges oszlop összefűzése egyetlen szöveges oszlopba** , ezért a `StringConcatTransformer` végső modellben. 
 
     A BERT implementációja a betanítási minta teljes szöveges hosszát 128 tokenre korlátozza. Ez azt jelenti, hogy az összes szöveges oszlop összefűzése esetén ideális esetben legfeljebb 128 tokennek kell lennie. Ha több oszlop van jelen, az egyes oszlopokat metszeni kell, hogy ez a feltétel teljesül. Ellenkező esetben az összefűzött oszlopok hossza >128 tokens BERT tokenizer rétege csonkolja ezt a bemenetet 128-tokenekre.
 
