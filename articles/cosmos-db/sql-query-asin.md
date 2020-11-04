@@ -3,16 +3,17 @@ title: ASIN Azure Cosmos DB lekérdezési nyelven
 description: Ismerje meg, hogy a Azure Cosmos DB arkusz (ASIN) SQL System függvénye hogyan adja vissza azt a szöget (radiánban), amelynek szinusza a megadott numerikus kifejezés
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 6f2a3e87f464c2b5d0365785fcd7b81623ef09ef
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 69862df5809bffe7c975b0340993b8e42aa47337
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93089254"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332474"
 ---
 # <a name="asin-azure-cosmos-db"></a>ASIN (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -52,7 +53,7 @@ SELECT ASIN(-1) AS asin
 
 Ez a rendszerfüggvény nem fogja használni az indexet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

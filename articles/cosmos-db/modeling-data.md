@@ -5,14 +5,15 @@ description: Ismerje meg a NoSQL-adatbázisokban található adatmodellezést, a
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 0868b0d3e917b857d09c89e3a35d03872c42a23e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a141177846def9c94216684c1083d0d336eeda1e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096648"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333240"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Adatmodellezés Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -86,9 +87,9 @@ Az adatok denormalizálása esetén előfordulhat, hogy az alkalmazásnak kevese
 
 * **Az entitások között találhatók kapcsolatok** .
 * Az entitások között **egy-az-egyhez** kapcsolat áll fenn.
-* A beágyazott adatértékek **ritkán változnak** .
-* Olyan beágyazott adat is van, amely nem növekszik **kötés nélkül** .
-* Vannak olyan beágyazott adathalmazok, amelyek **gyakran vannak lekérdezve** .
+* A beágyazott adatértékek **ritkán változnak**.
+* Olyan beágyazott adat is van, amely nem növekszik **kötés nélkül**.
+* Vannak olyan beágyazott adathalmazok, amelyek **gyakran vannak lekérdezve**.
 
 > [!NOTE]
 > Általában a denormalizált adatmodellek jobb **olvasási** teljesítményt nyújtanak.
@@ -242,8 +243,8 @@ Mivel jelenleg nem áll rendelkezésre a korlátozás, a külső kulcs vagy más
 
 * **Egy-a-többhöz** kapcsolatot jelképez.
 * **Több-a-többhöz** kapcsolatot jelképez.
-* A kapcsolódó **adatváltozások gyakran változnak** .
-* A hivatkozott adat nem **köthető** .
+* A kapcsolódó **adatváltozások gyakran változnak**.
+* A hivatkozott adat nem **köthető**.
 
 > [!NOTE]
 > A normalizálás általában jobb **írási** teljesítményt nyújt.
@@ -300,7 +301,7 @@ A fenti példában eldobta a nem kötött gyűjteményt a közzétevői dokument
 Egy relációs adatbázisban *: sok* kapcsolat gyakran az illesztési táblázatokkal van modellezve, ami csak a többi táblázat rekordjait egyesíti.
 
 
-:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="Rokon adatbázis-modell" border="false":::
+:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="Táblák csatlakoztatása" border="false":::
 
 Lehet, hogy megkísértette ugyanazt a dolgot a dokumentumok használatával, és olyan adatmodellt hoz létre, amely a következőhöz hasonlóan néz ki.
 
@@ -403,7 +404,7 @@ Győződjön meg arról, hogy ha a szerző neve megváltozott, vagy frissíteni 
 
 A példában vannak **előre kiszámított összesítési** értékek, amelyek a költséges feldolgozást mentik egy olvasási műveletre. A példában a szerzői dokumentumba beágyazott egyes adatmennyiségek a futásidőben kiszámított adatértékek. Minden alkalommal, amikor új könyvet tesznek közzé, létrejön egy könyv **-** dokumentum, és a countOfBooks mező az adott szerző számára létező könyv-dokumentumok száma alapján számított értékre van állítva. Ez az optimalizálás hasznos lehet az olvasási nehéz rendszerekben, ahol a beolvasások optimalizálása érdekében az írásokra vonatkozó számításokat tehetünk.
 
-Az előre kiszámított mezőket tartalmazó modell lehetővé teszi, hogy Azure Cosmos DB támogassa a **többdokumentumos tranzakciókat** . Számos NoSQL-tároló nem tud tranzakciókat felvenni a dokumentumok között, ezért a tervezési döntések, például a "minden esetben beágyazása" lehetőséget a korlátozás miatt. A Azure Cosmos DB használatával kiszolgálóoldali eseményindítókat vagy tárolt eljárásokat is használhat, amelyek a könyvek beszúrását és a szerzők frissítését mind egy savas tranzakción belül. Most nem **kell** semmit beágyaznia egyetlen dokumentumba, hogy az adatai konzisztensek maradnak.
+Az előre kiszámított mezőket tartalmazó modell lehetővé teszi, hogy Azure Cosmos DB támogassa a **többdokumentumos tranzakciókat**. Számos NoSQL-tároló nem tud tranzakciókat felvenni a dokumentumok között, ezért a tervezési döntések, például a "minden esetben beágyazása" lehetőséget a korlátozás miatt. A Azure Cosmos DB használatával kiszolgálóoldali eseményindítókat vagy tárolt eljárásokat is használhat, amelyek a könyvek beszúrását és a szerzők frissítését mind egy savas tranzakción belül. Most nem **kell** semmit beágyaznia egyetlen dokumentumba, hogy az adatai konzisztensek maradnak.
 
 ## <a name="distinguishing-between-different-document-types"></a>Különböző dokumentumtípusok megkülönböztetése
 
@@ -433,7 +434,7 @@ Review documents:
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatja, hogy az adatmodellezés egy séma nélküli világban annyira fontos, mint valaha.
 

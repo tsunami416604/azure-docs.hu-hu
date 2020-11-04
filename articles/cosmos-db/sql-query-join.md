@@ -3,15 +3,16 @@ title: SQL JOIN-lekérdezések Azure Cosmos DB
 description: Ismerje meg, hogyan CSATLAKOZHAT több táblázathoz a Azure Cosmos DBban az adatlekérdezéshez
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: b4c754455e2a686274eab8b1f77713b8983251a4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c3fad0c7eed2b42a9ac340a091f17b90e22b000a
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100796"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333834"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Illesztések Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -253,7 +254,7 @@ Az eredmény a következő:
     ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Bevezetés](sql-query-getting-started.md)
 - [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)

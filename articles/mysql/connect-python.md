@@ -11,12 +11,12 @@ ms.custom:
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: a08145ba5ffb5b30eb2c472d3eb8f608703f44a0
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 8d181483032deed35adfd6eebcbf870b89593407
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743454"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332066"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rövid útmutató: a Python használatával csatlakozhat és lekérdezheti Azure Database for MySQL
 
@@ -67,7 +67,7 @@ Szerezze be a Azure Database for MySQLhoz való kapcsolódáshoz szükséges kap
    
 1. A kiszolgáló **Áttekintés** lapján jegyezze fel a **kiszolgáló nevét** és a **kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, akkor ezen a lapon is visszaállíthatja a jelszót.
    
-   :::image type="content" source="./media/connect-python/azure-database-for-mysql-server-overview-name-login.png" alt-text="A MySQL-hez készült Azure Database-kiszolgáló neve":::
+   :::image type="content" source="./media/connect-python/azure-database-for-mysql-server-overview-name-login.png" alt-text="Azure Database for MySQL kiszolgáló neve 2":::
 
 ## <a name="run-the-python-examples"></a>A Python-példák futtatása
 
@@ -79,7 +79,7 @@ A cikkben szereplő kódok mindegyike esetében:
 1. A kód futtatásához nyisson meg egy parancssort vagy egy `bash` rendszerhéjat, és módosítsa a könyvtárat a Project mappájába, például: `cd pythonmysql` . Írja be a `python` parancsot, majd a fájlnevet, `python createtable.py` majd nyomja le az ENTER billentyűt. 
    
    > [!NOTE]
-   > Windows rendszeren, ha *python.exe* nem található, lehet, hogy hozzá kell adnia a Python elérési útját a PATH környezeti változóhoz, vagy meg kell adnia a *python.exe*teljes elérési útját, például: `C:\python27\python.exe createtable.py` .
+   > Windows rendszeren, ha *python.exe* nem található, lehet, hogy hozzá kell adnia a Python elérési útját a PATH környezeti változóhoz, vagy meg kell adnia a *python.exe* teljes elérési útját, például: `C:\python27\python.exe createtable.py` .
 
 ## <a name="create-a-table-and-insert-data"></a>Tábla létrehozása és az adatbeszúrás
 
@@ -270,6 +270,16 @@ else:
   cursor.close()
   conn.close()
   print("Done.")
+```
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Az ebben a rövid útmutatóban használt összes erőforrás törléséhez törölje az erőforráscsoportot a következő parancs használatával:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>További lépések

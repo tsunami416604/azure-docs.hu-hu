@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 38aea30c5f716df927b5924754eb07e7f94c7ebc
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: da2535a9764c909af3a491402311fe263dbb48fb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92038581"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331137"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Az Azure Virtual WAN a GA-ban található?
 
@@ -70,7 +70,7 @@ A P2S-ügyfelekhez két lehetőség van a DNS-kiszolgálók hozzáadására. Az 
 
    // Re-generate Vpn profile either from PS/Portal for Vpn clients to have the specified dns servers
    ```
-2. Ha a Windows 10 rendszerhez készült Azure VPN-ügyfelet használja, akkor a letöltött profil XML-fájlját is módosíthatja, ** \<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers> ** és az importálás előtt hozzáadhatja a címkéket.
+2. Ha a Windows 10 rendszerhez készült Azure VPN-ügyfelet használja, akkor a letöltött profil XML-fájlját is módosíthatja, **\<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers>** és az importálás előtt hozzáadhatja a címkéket.
 
    ```powershell
       <azvpnprofile>
@@ -259,6 +259,8 @@ Igen. Ez a beállítás jelenleg csak a powershellen keresztül érhető el. A v
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Támogatja az IPv6-ot a virtuális WAN-ban?
 
 A Virtual WAN hub és az átjárók nem támogatják az IPv6 protokollt. Ha olyan VNet rendelkezik, amely IPv4-és IPv6-támogatással rendelkezik, és szeretné, hogy a VNet a virtuális WAN-hoz kapcsolódjon, ez a forgatókönyv jelenleg nem támogatott. 
+
+Ha a pont – hely (felhasználó) VPN-forgatókönyv az Internet breakout használatával Azure Firewall, valószínűleg ki kell kapcsolni az IPv6-kapcsolatot az ügyfélszámítógépen, hogy az a virtuális WAN-hubhoz érkező forgalmat kényszerítse. Ennek az az oka, hogy a modern eszközök alapértelmezés szerint az IPv6-címeket használják.
 
 ### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>Mi a javasolt API-verzió, amelyet a parancsfájlok a különböző virtuális WAN-funkciók automatizálására használnak?
 

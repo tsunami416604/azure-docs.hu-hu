@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 07/09/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5c9c8fa8099848eec09e689bf9491f71f378e9e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5999c012ea970a7e05c66c9d4f8650261f01168
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90606665"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331138"
 ---
 Egy böngészőből lépjen az Azure Portalra, majd jelentkezzen be az Azure-fiókjával.
 
 1. Navigáljon a virtuális WAN lapra. A portálon kattintson az **+Erőforrás létrehozása** gombra. Írja be a **virtuális WAN** kifejezést a keresőmezőbe, majd válassza az ENTER billentyűt.
-1. Válassza ki a **virtuális WAN** elemet az eredmények közül. A virtuális WAN lapon kattintson a **Létrehozás** elemre a WAN létrehozása lap megnyitásához.
+1. Válassza ki a **virtuális WAN** elemet az eredmények közül. A virtuális WAN lapon válassza a **Létrehozás** lehetőséget a WAN létrehozása lap megnyitásához.
 1. A **WAN létrehozása** lap **alapok** lapján töltse ki a következő mezőket:
 
    :::image type="content" source="./media/virtual-wan-create-vwan-include/basics.png" alt-text="A képernyőfelvétel a WAN létrehozása panelt jeleníti meg, ahol az alapok lap van kiválasztva.":::
@@ -27,6 +27,6 @@ Egy böngészőből lépjen az Azure Portalra, majd jelentkezzen be az Azure-fi�
    * **Erőforráscsoport** – új létrehozása vagy meglévő használata.
    * **Erőforráscsoport helye** – válasszon ki egy erőforrás-helyet a legördülő listából. A WAN egy globális erőforrás, és nem egy adott régióhoz tartozik. Mindazonáltal mégis ki kell választania egy régiót, hogy könnyebben kezelhesse és megtalálhassa a létrehozott WAN-erőforrást.
    * **Név** – írja be a WAN-híváshoz használni kívánt nevet.
-   * **Típus** – alapszintű vagy standard. Ha alapszintű WAN-t hoz létre, akkor csak egy alapszintű hubot hozhat létre. Az alapszintű hubok csak a VPN-helyek közötti kapcsolatra képesek.
-1. Miután befejezte a mezők kitöltését, válassza a **felülvizsgálat + létrehozás**lehetőséget.
+   * **Típus** – alapszintű vagy standard. Válassza a **standard** lehetőséget. Ha az alapszintű VWAN lehetőséget választja, akkor az alapszintű VWANs csak olyan alapszintű hubokat tartalmazhat, amelyek a kapcsolat típusát a helyek közötti helyre korlátozzák.
+1. Miután befejezte a mezők kitöltését, válassza a **felülvizsgálat + létrehozás** lehetőséget.
 1. Az ellenőrzés után válassza a **Létrehozás** lehetőséget a virtuális WAN létrehozásához.

@@ -128,7 +128,7 @@
               href: graphical-runbook-sdk.md
         - name: Runbookok monitorozása
           items:
-            - name: Runbook kimenetének monitorozása
+            - name: Runbook kimenetének konfigurálása
               href: automation-runbook-output-and-messages.md
             - name: Hibák kezelése a grafikus runbookokban
               href: automation-runbook-graphical-error-handling.md

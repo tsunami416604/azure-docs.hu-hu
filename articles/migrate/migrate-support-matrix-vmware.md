@@ -3,12 +3,12 @@ title: VMware Assessment-támogatás a Azure Migrate
 description: Ismerkedjen meg a VMware virtuális gépek felmérésének támogatásával Azure Migrate kiszolgáló értékelésével.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 0fd884a7d95edaf6586e7eecd644400c05c15e5a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 9d5c954be2a6f05e5132a5f57f8169f436719a8d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315792"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332270"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>A VMware Assessment támogatási mátrixa 
 
@@ -66,14 +66,14 @@ A gépek felderítése mellett a kiszolgálók értékelése a gépeken futó al
 
 **Támogatás** | **Részletek**
 --- | ---
-**Támogatott gépek** | Az alkalmazások felderítése jelenleg csak a VMware virtuális gépek esetében támogatott.
+**Támogatott gépek** | Az alkalmazások felderítése jelenleg csak a VMware virtuális gépek esetében támogatott. Az egyes Azure Migrate készülékekről akár 10000 VMware virtuális gépre telepített alkalmazásokat is felfedezhet.
 **Felderítés** | Az alkalmazás felderítése ügynök nélkül történik. A számítógép vendég hitelesítő adatait használja, és távolról fér hozzá a gépekhez a WMI-és SSH-hívásokkal.
 **VM-támogatás** | Az App-Discovery az összes Windows-és Linux-verziót futtató virtuális gépek esetében támogatott.
-**vCenter** | Az értékeléshez használt vCenter Server írásvédett fióknak **Virtual Machines**vendég műveletekhez szükséges jogosultságokat kell biztosítania  >  **Guest Operations**, hogy együttműködjön a virtuális géppel az alkalmazások felderítése érdekében.
+**vCenter** | Az értékeléshez használt vCenter Server írásvédett fióknak **Virtual Machines** vendég műveletekhez szükséges jogosultságokat kell biztosítania  >  **Guest Operations** , hogy együttműködjön a virtuális géppel az alkalmazások felderítése érdekében.
 **VM-hozzáférés** | Az alkalmazás-felderítésnek helyi felhasználói fiókra van szüksége a virtuális gépen az alkalmazások felderítéséhez.<br/><br/> Azure Migrate jelenleg egyetlen hitelesítő adat használatát támogatja az összes Windows-kiszolgálón, és egy hitelesítő adatot az összes Linux-kiszolgáló számára.<br/><br/> Létrehoz egy vendég felhasználói fiókot a Windows rendszerű virtuális gépekhez, valamint egy normál/normál felhasználói fiókot (nem sudo hozzáférés) az összes Linux rendszerű virtuális géphez.
 **VMware-eszközök** | A felderíteni kívánt virtuális gépeken telepíteni és futtatni kell a VMware-eszközöket. <br/><br/> A VMware-eszközök verziójának későbbinek kell lennie, mint 10.2.0.
 **PowerShell** | A virtuális gépeknek telepítve kell lennie a PowerShell 2,0-es vagy újabb verziójával.
-**Port-hozzáférés** | A felderíteni kívánt virtuális gépeket futtató ESXi-gazdagépeken a Azure Migrate készüléknek képesnek kell lennie csatlakozni a 443-es TCP-porthoz.
+**Port-hozzáférés** | Az Azure Migrate készüléknek képesnek kell lennie csatlakozni az 443-es TCP-porthoz az ESXi-gazdagépeken futó, a virtuális gépeket futtató, és az alkalmazásokat felderítő A vCenter Server ESXI gazdagép-kapcsolódást ad vissza, amely az alkalmazás adatait tartalmazó fájlt tölti le.
 **Korlátok** | Az App-Discovery esetében akár 10000 virtuális gépet is felderítheti az egyes Azure Migrate berendezéseken.
 
 
@@ -114,7 +114,7 @@ A függőségek [elemzése](concepts-dependency-visualization.md) segít azonos�
 **Azure Government** | Az ügynök-alapú függőség elemzése nem támogatott.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Tekintse át](best-practices-assessment.md) az értékelések létrehozásával kapcsolatos ajánlott eljárásokat.
 - [Felkészülés a VMware](./tutorial-discover-vmware.md) -értékelésre.

@@ -3,16 +3,17 @@ title: ACO-Azure Cosmos DB lekérdezési nyelv
 description: Ismerje meg, hogy az ACO-arccosice (Azure Cosmos DB) SQL System függvénye hogyan adja vissza azt a szöget (radiánban), amelynek koszinusza a megadott numerikus kifejezés
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 99730b4c67adc841a33ea9d60440b00a19f90e48
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ed5adaad6c0ee160fd55341e1d7c48fcf3e49a28
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090953"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332814"
 ---
 # <a name="acos-azure-cosmos-db"></a>ACO-i (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -52,7 +53,7 @@ SELECT ACOS(-1) AS acos
 
 Ez a rendszerfüggvény nem fogja használni az indexet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

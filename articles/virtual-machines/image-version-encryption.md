@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 11/3/2020
 ms.author: cynthn
-ms.openlocfilehash: 73a7090afe771eef82523753c4067399d9f5dd5e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f6bf436110e9822d687419b74a8a22bad7a6d700
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048083"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333464"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Előzetes verzió: az ügyfél által felügyelt kulcsok használata a rendszerképek titkosításához
 
@@ -25,7 +25,7 @@ Az ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosí
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ehhez a cikkhez már van szükség a lemezképhez használni kívánt lemezes titkosításra.
+Ehhez a cikkhez az szükséges, hogy minden régióban rendelkezzen egy lemezes titkosítási készlettel, amelyre a lemezképet replikálni szeretné.
 
 - Ha csak az ügyfél által felügyelt kulcsot szeretné használni, tekintse meg az **ügyfél által felügyelt kulcsok engedélyezése kiszolgálóoldali titkosítással** a [Azure Portal](./disks-enable-customer-managed-keys-portal.md) vagy a [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset)használatával című témakört.
 
@@ -48,7 +48,7 @@ Az ügyfél által felügyelt kulcsok használata több korlátozást is igényb
 
 > [!IMPORTANT]
 > Az ügyfél által felügyelt kulcsokkal történő titkosítás jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
 ## <a name="powershell"></a>PowerShell
@@ -210,14 +210,14 @@ Amikor létrehozza a rendszerkép verzióját a portálon, a **titkosítás** la
 
 
 1. A **rendszerkép verziójának létrehozása** lapon válassza a **titkosítás** lapot.
-2. A **titkosítás típusa**beállításnál válassza ki a **REST-alapú titkosítást egy ügyfél által felügyelt kulccsal** , vagy a **platform által felügyelt és az ügyfél által felügyelt kulcsokkal rendelkező dupla titkosítással**. 
+2. A **titkosítás típusa** beállításnál válassza ki a **REST-alapú titkosítást egy ügyfél által felügyelt kulccsal** , vagy a **platform által felügyelt és az ügyfél által felügyelt kulcsokkal rendelkező dupla titkosítással**. 
 3. A rendszerkép minden egyes lemezén válassza ki a legördülő listából a használni kívánt **lemezes titkosítási beállítást** . 
 
 ### <a name="create-the-vm"></a>A virtuális gép létrehozása
 
-Létrehozhat egy virtuális gépet a rendszerkép verziójának használatával, és az ügyfél által felügyelt kulcsokkal titkosíthatja a lemezeket. Amikor létrehozza a virtuális gépet a portálon, a **lemezek** lapon válassza a **titkosítás az ügyfél által felügyelt kulcsokkal** vagy a **kettős titkosítás a platform által felügyelt és az ügyfél által felügyelt kulcsokkal** a **titkosítási típushoz**lehetőséget. Ezután kiválaszthatja a titkosítási készletet a legördülő menüből.
+Létrehozhat egy virtuális gépet a rendszerkép verziójának használatával, és az ügyfél által felügyelt kulcsokkal titkosíthatja a lemezeket. Amikor létrehozza a virtuális gépet a portálon, a **lemezek** lapon válassza a **titkosítás az ügyfél által felügyelt kulcsokkal** vagy a **kettős titkosítás a platform által felügyelt és az ügyfél által felügyelt kulcsokkal** a **titkosítási típushoz** lehetőséget. Ezután kiválaszthatja a titkosítási készletet a legördülő menüből.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [kiszolgálóoldali lemezek titkosításáról](./windows/disk-encryption.md).
 

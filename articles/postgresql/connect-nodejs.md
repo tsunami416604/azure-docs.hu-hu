@@ -13,12 +13,12 @@ ms.custom:
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 5360c053370d4963b9fa9f6e24273edd4038b9ac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7569606429740de23b56767d490b9bb14283d468
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91710396"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331692"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Gyors útmutató: a Node.js használata az adatAzure Database for PostgreSQL egyetlen kiszolgálón való kapcsolódáshoz és adatlekérdezéshez
 
@@ -48,7 +48,7 @@ npm list
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
-1. A [Azure Portal](https://portal.azure.com/)keresse meg és válassza ki a létrehozott kiszolgálót (például **mydemoserver**).
+1. A [Azure Portal](https://portal.azure.com/)keresse meg és válassza ki a létrehozott kiszolgálót (például **mydemoserver** ).
 
 1. A kiszolgáló **Áttekintés** paneljén jegyezze fel a **kiszolgáló nevét** és a **rendszergazdai felhasználónevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
 
@@ -250,6 +250,16 @@ function queryDatabase() {
             throw err;
         });
 }
+```
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Az ebben a rövid útmutatóban használt összes erőforrás törléséhez törölje az erőforráscsoportot a következő parancs használatával:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>További lépések

@@ -4,15 +4,16 @@ description: A MongoDB Azure Cosmos DB API konzisztenciáji szintjeinek leképez
 author: sivethe
 ms.author: sivethe
 ms.service: cosmos-db
+ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 37c128a42ca68134b770b32c940d59834261ce44
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e8ac3e376c8d67e82def3a57910707c6b1433912
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096580"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333154"
 ---
 # <a name="consistency-levels-for-azure-cosmos-db-and-the-api-for-mongodb"></a>A Azure Cosmos DB és a MongoDB API-k konzisztenciáji szintjei
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -42,7 +43,7 @@ Ha az Azure Cosmos-fiókja nem az erős konzisztencia mellett van konfigurálva,
 
 A valószínűséggel határos elavulás azt mutatja, hogy a végleges konzisztencia milyen módon lehetséges. Ez a mérőszám betekintést nyújt abba, hogy milyen gyakran lehet erősebb konzisztencia, mint az Azure Cosmos-fiókjában jelenleg konfigurált konzisztencia-szint. Más szóval az írási és olvasási régiók kombinációjának nagy mértékben konzisztens olvasásának valószínűsége (ezredmásodpercben mérve) látható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Azure Cosmos DB globális eloszlásáról és konzisztenciáji szintjeiről:
 

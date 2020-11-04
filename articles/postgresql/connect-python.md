@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/28/2020
-ms.openlocfilehash: 2ee616bfe9e88f2f3da37f1e4963ec7a73d59468
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: db94a82112f2670facd4d89178f11653c5316c36
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912089"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331777"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rövid útmutató: a Python használata az Azure Database for PostgreSQL-kiszolgálóval való kapcsolódáshoz és az adatlekérdezéshez
 
@@ -45,7 +45,7 @@ Ehhez a rövid útmutatóhoz a következőkre lesz szüksége:
 Azure Database for PostgreSQL-adatbázishoz való csatlakozáshoz a teljes kiszolgálónév és a bejelentkezési hitelesítő adatok szükségesek. Ezt az információt a Azure Portalból kérheti le.
 
 1. A [Azure Portal](https://portal.azure.com/)keresse meg és válassza ki a Azure Database for PostgreSQL-kiszolgáló nevét.
-1. A kiszolgáló **Áttekintés** lapján másolja a teljes **kiszolgálónevet** és a **rendszergazdai felhasználónevet** . A teljes **kiszolgálónév** mindig a form *\<my-server-name> . postgres.database.Azure.com* , a **rendszergazdai Felhasználónév** pedig mindig *\<my-admin-username>@\<my-server-name>* az űrlap.
+1. A kiszolgáló **Áttekintés** lapján másolja a teljes **kiszolgálónevet** és a **rendszergazdai felhasználónevet**. A teljes **kiszolgálónév** mindig a form *\<my-server-name> . postgres.database.Azure.com* , a **rendszergazdai Felhasználónév** pedig mindig *\<my-admin-username>@\<my-server-name>* az űrlap.
 
    Szüksége lesz a rendszergazdai jelszavára is. Ha elfelejti, ezt a lapról állíthatja vissza.
 
@@ -101,7 +101,7 @@ conn.close()
 
 A kód sikeres futtatásakor a következő kimenetet hozza létre:
 
-:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="Azure Database for PostgreSQL-kiszolgáló neve":::
+:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="Parancssori kimenet":::
 
 
 [Problémák léptek fel? Tudassa velünk](https://aka.ms/postgres-doc-feedback)
@@ -150,7 +150,17 @@ print("Deleted 1 row of data")
 
 [Problémák léptek fel? Tudassa velünk](https://aka.ms/postgres-doc-feedback)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Az ebben a rövid útmutatóban használt összes erőforrás törléséhez törölje az erőforráscsoportot a következő parancs használatával:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
+```
+
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Azure Database for MySQL-kiszolgáló kezelése a portál használatával](./howto-create-manage-server-portal.md)<br/>
 

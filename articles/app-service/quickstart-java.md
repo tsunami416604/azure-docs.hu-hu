@@ -10,12 +10,12 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 6d154d8b35c175b88e91545ddc1e78f58f9be685
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 3c5a04bd14bdcbf250908db78c622b963f191d91
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146824"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333086"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service
 
@@ -71,7 +71,7 @@ A Azure App Service üzembe helyezési folyamata automatikusan az Azure CLI-vel 
 Futtassa az alábbi Maven-parancsot az üzemelő példány konfigurálásához. Ez a parancs segítséget nyújt a App Service operációs rendszer, a Java-verzió és a Tomcat-verzió beállításához.
 
 ```bash
-mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 ```
 
 ::: zone pivot="platform-windows"
@@ -79,9 +79,10 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
 # <a name="java-se"></a>[Java SE](#tab/javase)
 
 1. Ha a rendszer megkérdezi az **előfizetést** , válassza ki a megfelelő értéket, ha `Subscription` beírja a kívánt számú nyomtatást a sor elején.
-1. Ha a rendszer a **webalkalmazást** kéri, fogadja el a defaut lehetőséget az `<create>` ENTER billentyű lenyomásával.
+1. Ha a rendszer rákérdez a **webalkalmazás** lehetőségre, fogadja el a defaut lehetőséget az `<create>` ENTER billentyű lenyomásával vagy egy meglévő alkalmazás kiválasztásával.
 1. Ha a rendszer az **operációs rendszer** beállítását kéri, válassza a **Windows** lehetőséget a beírásával `3` .
-1. Használja az alapértelmezett Java-verziót (1,8) az ENTER billentyű lenyomásával.
+1. Ha a rendszer a **díjszabási** csomaggal kéri, válassza a **B2** lehetőséget a beírásával `2` .
+1. Használja az alapértelmezett Java-verziót ( **Java 8** ) az ENTER billentyű lenyomásával.
 1. Végül nyomja le az ENTER billentyűt az utolsó üzenetben, hogy erősítse meg a beállításokat.
 
     Az összefoglalás kimenete az alább látható kódrészlethez hasonlóan fog kinézni.
@@ -92,7 +93,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
     AppName : spring-boot-1599007390755
     ResourceGroup : spring-boot-1599007390755-rg
     Region : westeurope
-    PricingTier : PremiumV2_P1v2
+    PricingTier : Basic_B2
     OS : Windows
     Java : 1.8
     WebContainer : java 8
@@ -110,10 +111,11 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
 # <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
 1. Ha a rendszer megkérdezi az **előfizetést** , válassza ki a megfelelő értéket, ha `Subscription` beírja a kívánt számú nyomtatást a sor elején.
-1. Ha a rendszer a **webalkalmazást** kéri, fogadja el a defaut lehetőséget az `<create>` ENTER billentyű lenyomásával.
-1. Ha a rendszer az **operációs rendszer** beállítását kéri, válassza a **Windows** lehetőséget a beírásával `2` .
-1. Használja az alapértelmezett Java-verziót (1,8) az ENTER billentyű lenyomásával.
-1. A Tomcat 8,5 alapértelmezett webes tárolót az ENTER billentyű lenyomásával használhatja.
+1. Ha a rendszer rákérdez a **webalkalmazás** lehetőségre, fogadja el a defaut lehetőséget az `<create>` ENTER billentyű lenyomásával vagy egy meglévő alkalmazás kiválasztásával.
+1. Ha a rendszer az **operációs rendszer** beállítását kéri, válassza a **Windows** lehetőséget a beírásával `3` .
+1. Ha a rendszer a **díjszabási** csomaggal kéri, válassza a **B2** lehetőséget a beírásával `2` .
+1. Használja az alapértelmezett Java-verziót ( **Java 8** ) az ENTER billentyű lenyomásával.
+1. A **Tomcat 8,5** alapértelmezett webes tárolót az ENTER billentyű lenyomásával használhatja.
 1. Végül nyomja le az ENTER billentyűt az utolsó üzenetben, hogy erősítse meg a beállításokat.
 
     Az összefoglalás kimenete az alább látható kódrészlethez hasonlóan fog kinézni.
@@ -124,7 +126,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
     AppName : helloworld-1599003152123
     ResourceGroup : helloworld-1599003152123-rg
     Region : westeurope
-    PricingTier : PremiumV2_P1v2
+    PricingTier : Basic_B2
     OS : Windows
     Java : 1.8
     WebContainer : tomcat 8.5
@@ -147,9 +149,10 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
 ### <a name="java-se"></a>[Java SE](#tab/javase)
 
 1. Ha a rendszer megkérdezi az **előfizetést** , válassza ki a megfelelő értéket, ha `Subscription` beírja a kívánt számú nyomtatást a sor elején.
-1. Ha a rendszer a **webalkalmazást** kéri, fogadja el a defaut lehetőséget az `<create>` ENTER billentyű lenyomásával.
+1. Ha a rendszer rákérdez a **webalkalmazás** lehetőségre, fogadja el a defaut lehetőséget az `<create>` ENTER billentyű lenyomásával vagy egy meglévő alkalmazás kiválasztásával.
 1. Ha a rendszer az **operációs rendszer** beállítását kéri, az ENTER billentyű lenyomásával válassza a **Linux** lehetőséget.
-1. Használja az alapértelmezett Java-verziót (1,8) az ENTER billentyű lenyomásával.
+1. Ha a rendszer a **díjszabási** csomaggal kéri, válassza a **B2** lehetőséget a beírásával `2` .
+1. Használja az alapértelmezett Java-verziót ( **Java 8** ) az ENTER billentyű lenyomásával.
 1. Végül nyomja le az ENTER billentyűt az utolsó üzenetben, hogy erősítse meg a beállításokat.
 
     ```
@@ -158,7 +161,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
     AppName : spring-boot-1599007116351
     ResourceGroup : spring-boot-1599007116351-rg
     Region : westeurope
-    PricingTier : PremiumV2_P1v2
+    PricingTier : Basic_B2
     OS : Linux
     RuntimeStack : JAVA 8-jre8
     Deploy to slot : false
@@ -175,10 +178,11 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
 ### <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
 1. Ha a rendszer megkérdezi az **előfizetést** , válassza ki a megfelelő értéket, ha `Subscription` beírja a kívánt számú nyomtatást a sor elején.
-1. Ha a rendszer a **webalkalmazást** kéri, fogadja el a defaut lehetőséget az `<create>` ENTER billentyű lenyomásával.
+1. Ha a rendszer rákérdez a **webalkalmazás** lehetőségre, fogadja el a defaut lehetőséget az `<create>` ENTER billentyű lenyomásával vagy egy meglévő alkalmazás kiválasztásával.
 1. Ha a rendszer az **operációs rendszer** beállítását kéri, az ENTER billentyű lenyomásával válassza a **Linux** lehetőséget.
-1. Használja az alapértelmezett Java-verziót (1,8) az ENTER billentyű lenyomásával.
-1. A Tomcat 8,5 alapértelmezett webes tárolót az ENTER billentyű lenyomásával használhatja.
+1. Ha a rendszer a **díjszabási** csomaggal kéri, válassza a **B2** lehetőséget a beírásával `2` .
+1. Használja az alapértelmezett Java-verziót ( **Java 8** ) az ENTER billentyű lenyomásával.
+1. A **Tomcat 8,5** alapértelmezett webes tárolót az ENTER billentyű lenyomásával használhatja.
 1. Végül nyomja le az ENTER billentyűt az utolsó üzenetben, hogy erősítse meg a beállításokat.
 
     ```
@@ -187,7 +191,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
     AppName : helloworld-1599003744223
     ResourceGroup : helloworld-1599003744223-rg
     Region : westeurope
-    PricingTier : PremiumV2_P1v2
+    PricingTier : Basic_B2
     OS : Linux
     RuntimeStack : TOMCAT 8.5-jre8
     Deploy to slot : false
@@ -213,10 +217,10 @@ Tulajdonság | Kötelező | Leírás | Verzió
 `<subscriptionId>` | hamis | Határozza meg az előfizetés azonosítóját. | 0.1.0 +
 `<resourceGroup>` | true | Azure-erőforráscsoport a webalkalmazáshoz. | 0.1.0 +
 `<appName>` | true | A webalkalmazás neve. | 0.1.0 +
-`<region>` | true | Meghatározza azt a régiót, ahol a webalkalmazás üzemeltetve lesz; az alapértelmezett érték a **westeurope** . A [támogatott régiók](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) szakaszban található összes érvényes régió. | 0.1.0 +
-`<pricingTier>` | hamis | A webalkalmazás díjszabási szintje. Az alapértelmezett érték a **P1V2** .| 0.1.0 +
-`<runtime>` | true | A futásidejű környezet konfigurációja a részleteket [itt](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)tekintheti meg. | 0.1.0 +
-`<deployment>` | true | A központi telepítés konfigurálásával [itt](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)láthatja a részleteket. | 0.1.0 +
+`<region>` | true | Meghatározza azt a régiót, ahol a webalkalmazás üzemeltetve lesz; az alapértelmezett érték a **westeurope**. A [támogatott régiók](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) szakaszban található összes érvényes régió. | 0.1.0 +
+`<pricingTier>` | hamis | A webalkalmazás díjszabási szintje. Az alapértelmezett érték az éles számítási feladatokhoz **P1V2** , a **B2** pedig a javasolt minimum a Java dev/testhez. [További információ](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0 +
+`<runtime>` | true | A futásidejű környezet konfigurációja a részleteket [itt](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)tekintheti meg. | 0.1.0 +
+`<deployment>` | true | A központi telepítés konfigurálásával [itt](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)láthatja a részleteket. | 0.1.0 +
 
 Ügyeljen arra, hogy a `<appName>` és a `<resourceGroup>` ( `helloworld-1590394316693` és `helloworld-1590394316693-rg` ennek megfelelően a bemutatóban) értékeit később is használni fogjuk.
 
@@ -225,7 +229,7 @@ Tulajdonság | Kötelező | Leírás | Verzió
 
 ## <a name="deploy-the-app"></a>Az alkalmazás üzembe helyezése
 
-A Maven beépülő modul a fiók hitelesítő adatait használja az Azure CLI-ből a App Services üzembe helyezéséhez. [A folytatás előtt jelentkezzen be az Azure CLI-vel](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) .
+A Maven beépülő modul a fiók hitelesítő adatait használja az Azure CLI-ből a App Services üzembe helyezéséhez. [A folytatás előtt jelentkezzen be az Azure CLI-vel](/cli/azure/authenticate-azure-cli) .
 
 ```azurecli
 az login
@@ -246,7 +250,7 @@ Az üzembe helyezés befejezése után az alkalmazás készen áll `http://<appN
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=deploy)
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Ha nem várható, hogy a jövőben szüksége lenne ezekre az erőforrásokra, törölje az erőforráscsoportot a portálról, vagy futtassa a következő parancsot a Cloud Shellban:
 
@@ -256,7 +260,7 @@ az group delete --name <your resource group name; for example: helloworld-155840
 
 A parancs futtatása egy percig is eltarthat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Kapcsolódás a PostgreSQL-hez készült Azure-ADATBÁZIShoz Java használatával](../postgresql/connect-java.md)

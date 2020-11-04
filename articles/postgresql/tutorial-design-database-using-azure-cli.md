@@ -8,12 +8,12 @@ ms.custom: mvc, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 475c2dfecbc882575955627d73b7159fa33ac4d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 019e6e738ea312b7e6a16c44354c7dcd54e24f2f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710175"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331896"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Oktatóanyag: Azure Database for PostgreSQL egyetlen kiszolgáló megtervezése az Azure CLI használatával 
 Ebben az oktatóanyagban az Azure CLI (parancssori felület) és egyéb segédprogramok segítségével a következőket sajátíthatja el:
@@ -28,6 +28,9 @@ Ebben az oktatóanyagban az Azure CLI (parancssori felület) és egyéb segédpr
 
 Az oktatóanyag parancsainak futtatásához használja az Azure Cloud Shellt egy böngészőben, vagy [telepítse az Azure CLI-t]( /cli/azure/install-azure-cli) a számítógépen.
 
+## <a name="prerequisites"></a>Előfeltételek
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
@@ -37,7 +40,7 @@ Ha több előfizetéssel rendelkezik, válassza a megfelelő előfizetést, amel
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) az [az group create](/cli/azure/group) paranccsal. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myresourcegroup` helyen.
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
@@ -199,9 +202,9 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 Az `az postgres server restore` parancshoz a következő paraméterekre van szükség:
 
-| Beállítás | Ajánlott érték | Leírás  |
+| Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
-| resource-group |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgáló található.  |
+| resource-group |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgáló található.  |
 | name | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Válassza ki az időpontot, amelynek az állapotát vissza szeretné állítani. Ennek a dátumnak és időnek a forráskiszolgáló biztonsági mentésének megőrzési időszakán belül kell lennie. ISO8601 dátum- és időformátumot használjon. Használhatja például a saját helyi időzónáját (például `2017-04-13T05:59:00-08:00`), de UTC Zulu formátumot is használhat (`2017-04-13T13:59:00Z`). |
 | source-server | mydemoserver | A forráskiszolgáló neve vagy azonosítója, amelyről a visszaállítást végzi. |
@@ -210,16 +213,21 @@ Ha egy adott időpontra állít vissza egy kiszolgálót, azzal létrehoz egy ú
 
 Egy szinkron parancsról van szó, amelyet a rendszer a kiszolgáló visszaállítása után visszaad. Ha a visszaállítás kész, keresse meg a létrehozott új kiszolgálót. Ellenőrizze, hogy az adatok a várt módon álltak-e vissza.
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Az előző lépésekben Azure-erőforrásokat hozott létre egy kiszolgálócsoport számára. Ha nem várható, hogy a jövőben szüksége lesz ezekre az erőforrásokra, törölje a kiszolgálót. A kiszolgálócsoport *Áttekintés* lapján kattintson a *Törlés* gombra. Amikor a rendszer rákérdez egy előugró oldalra, erősítse meg a kiszolgálócsoport nevét, és kattintson a végleges *Törlés* gombra.
+
 
 ## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket az Azure CLI (parancssori felület) és más segédprogramok használatával:
 > [!div class="checklist"]
 > * Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz
 > * A kiszolgáló tűzfalának konfigurálása
-> * Adatbázis létrehozása a [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html) segédprogrammal
+> * Adatbázis létrehozása a **psql** segédprogram használatával
 > * Mintaadatok betöltése
 > * Adatok lekérdezése
 > * Adatok frissítése
 > * Adatok visszaállítása
 
-Ha azt is meg szeretné tudni, hogyan végezhet el hasonló feladatokat az Azure Portallal, tekintse át a következő oktatóanyagot: [Az első Azure Database for PostgreSQL megtervezése az Azure Portallal](tutorial-design-database-using-azure-portal.md)
+> [!div class="nextstepaction"]
+> [Az első Azure Database for PostgreSQL szolgáltatás megtervezése az Azure Portallal](tutorial-design-database-using-azure-portal.md)

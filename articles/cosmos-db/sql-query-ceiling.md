@@ -3,16 +3,17 @@ title: FELSŐ határ Azure Cosmos DB lekérdezési nyelven
 description: Megtudhatja, hogyan adja vissza a Azure Cosmos DB a PLAFONt tartalmazó SQL System függvényt a megadott numerikus kifejezésnél nagyobb vagy azzal egyenlő legkisebb egész szám értékkel.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2ffc1ba208ca6b587354fcce683dc7db3a8ccb64
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8c5fdda416aca698b9ad0a68ef050957f32aef31
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081688"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332406"
 ---
 # <a name="ceiling-azure-cosmos-db"></a>FELSŐ határ (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -52,7 +53,7 @@ SELECT CEILING(123.45) AS c1, CEILING(-123.45) AS c2, CEILING(0.0) AS c3
 
 Ez a rendszerfunkció kihasználja a [tartomány indexét](index-policy.md#includeexclude-strategy).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

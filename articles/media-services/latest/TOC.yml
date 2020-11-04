@@ -437,5 +437,7 @@
       href: limits-quotas-constraints.md
     - name: Azure-felhők és -régiók
       href: azure-clouds-regions.md
+    - name: Regionális kódnevek és végpontok
+      href: azure-regions-code-names.md
     - name: Dokumentációfrissítések
       href: docs-release-notes.md

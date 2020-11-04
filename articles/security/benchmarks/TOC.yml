@@ -127,6 +127,8 @@
       href: ../../web-application-firewall/security-baseline.md
     - name: A Batch biztonsági alapkonfigurációja
       href: ../../batch/security-baseline.md
+    - name: A Cloud Services biztonsági alapkonfigurációja
+      href: ../../cloud-services/security-baseline.md
     - name: A Cloud Shell biztonsági alapkonfigurációja
       href: ../../cloud-shell/security-baseline.md
     - name: A Cognitive Services biztonsági alapkonfigurációja
@@ -177,5 +179,7 @@
       href: ../../virtual-machines/windows/security-baseline.md
     - name: A virtuális hálózatok biztonsági alapkonfigurációja
       href: ../../virtual-network/security-baseline.md
+    - name: A virtuális WAN biztonsági alapkonfigurációja
+      href: ../../virtual-wan/security-baseline.md
     - name: A VPN Gateway biztonsági alapkonfigurációja
       href: ../../vpn-gateway/security-baseline.md

@@ -98,14 +98,50 @@
       href: samples/web-calling-sample.md
 - name: Hivatkozások
   items:
+    - name: A referenciadokumentáció áttekintése
+      href: concepts/reference.md
     - name: REST API – dokumentáció
       href: 'https://docs.microsoft.com/rest/api/communication/'
-    - name: Hívási kódtár (Android/Java)
-      href: 'https://docs.microsoft.com/java/api/com.azure.communication.calling?view=communication-services-java-android'
-    - name: Hívási kódtár (JS)
-      href: 'https://docs.microsoft.com/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js'
-    - name: Hívási kódtár (iOS)
-      href: 'https://docs.microsoft.com/objectivec/communication-services/calling/'
+    - name: Hívási kódtárak
+      items:
+        - name: Hívás (JavaScript)
+          href: 'https://docs.microsoft.com/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js'
+        - name: Hívás (Android/Java)
+          href: 'https://docs.microsoft.com/java/api/com.azure.communication.calling?view=communication-services-java-android'
+        - name: Hívás (iOS)
+          href: 'https://docs.microsoft.com/objectivec/communication-services/calling/'
+    - name: Csevegési kódtárak
+      items:
+        - name: Csevegés (JavaScript)
+          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-chat'
+        - name: Csevegés (.NET)
+          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationchat'
+        - name: Csevegés (Android/Java)
+          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-chat'
+    - name: SMS-kódtárak
+      items:
+        - name: SMS (JavaScript)
+          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-sms'
+        - name: SMS (.NET)
+          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationsms'
+        - name: SMS (Android/Java)
+          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-sms'
+    - name: Felügyeleti kódtárak
+      items:
+        - name: Felügyelet (JavaScript)
+          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-administration'
+        - name: Felügyelet (.NET)
+          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationadministration'
+        - name: Felügyelet (Android/Java)
+          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-administration'
+    - name: Általános kódtárak
+      items:
+        - name: Általános (JavaScript)
+          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-common'
+        - name: Általános (.NET)
+          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationcommon'
+        - name: Általános (Android/Java)
+          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-common'
 - name: További források
   items:
     - name: Kibocsátási megjegyzések

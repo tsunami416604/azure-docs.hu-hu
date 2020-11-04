@@ -116,6 +116,8 @@
           items:
             - name: Biztonsági mentés és visszaállítás
               href: backup-restore-postgresql-hyperscale.md
+            - name: A PostgreSQL-port módosítása
+              href: change-postgresql-port.md
             - name: Konfigurálás és skálázás
               items:
                 - name: Konfiguráció megjelenítése

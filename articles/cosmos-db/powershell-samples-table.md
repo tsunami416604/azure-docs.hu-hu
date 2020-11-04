@@ -3,15 +3,16 @@ title: Azure PowerShell minták Azure Cosmos DB Table API
 description: A Azure PowerShell minták beszerzése általános feladatok végrehajtásához Azure Cosmos DB Table API
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 10/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 4594f1d3f33f3fc20bfc5582f58945e5382a7db8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: be0fd7db7b28ea9801e065f1327596021b3e31b1
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096172"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332899"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-table-api"></a>Azure PowerShell minták Azure Cosmos DB Table API
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]

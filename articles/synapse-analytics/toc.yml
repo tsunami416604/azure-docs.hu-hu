@@ -21,13 +21,13 @@
     - name: 1. Synapse-munkaterület létrehozása
       href: get-started-create-workspace.md
       displayName: 'get, started'
-    - name: 2. Elemzés SQL-készlettel
+    - name: 2. Elemzés dedikált SQL-készlettel
       href: get-started-analyze-sql-pool.md
       displayName: 'get, started'
     - name: 3. Elemzés a Spark használatával
       href: get-started-analyze-spark.md
       displayName: 'get, started'
-    - name: 4. Elemzés igény szerinti SQL használatával
+    - name: 4. Elemzés kiszolgáló nélküli SQL-készlettel
       href: get-started-analyze-sql-on-demand.md
       displayName: 'get, started'
     - name: 5. Tárfiók adatainak elemzése
@@ -119,7 +119,7 @@
                   href: ../sql-database/sql-database-control-access.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Synapse-munkaterület által felügyelt identitás
                   href: ./security/synapse-workspace-managed-identity.md
-                - name: Készlet és igény szerinti
+                - name: SQL-készletek
                   href: ./sql/access-control.md
                   displayname: 'access, control'
         - name: 'Eszközök integrációja (AI, ETL, BI)'
@@ -149,6 +149,8 @@
                   displayname: links
                 - name: Társított szolgáltatás kiépítése és védelme felügyelt virtuális hálózattal
                   href: ./data-integration/linked-service.md
+                - name: Csatlakozás Synapse-munkaterülethez korlátozott hálózatból
+                  href: security/how-to-connect-to-workspace-from-restricted-network.md
 - name: Synapse SQL
   items:
     - name: Áttekintés
@@ -156,10 +158,10 @@
         - name: A Synapse SQL architektúrája
           href: sql/overview-architecture.md
           displayName: overview
-        - name: Igény szerinti SQL
+        - name: Kiszolgáló nélküli SQL-készlet
           href: sql/on-demand-workspace-overview.md
           displayname: overview
-        - name: SQL-készlet
+        - name: Dedikált SQL-készlet
           href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
           displayname: overview
         - name: Architektúra
@@ -168,17 +170,17 @@
           href: sql/overview-features.md
         - name: Erőforrás-felhasználási modellek
           href: sql/resource-consumption-models.md
-        - name: Az igény szerinti SQL használatára vonatkozó ajánlott eljárások
+        - name: A kiszolgáló nélküli SQL-készletek használatára vonatkozó ajánlott eljárások
           href: sql/best-practices-sql-on-demand.md
-        - name: Az SQL-készletek használatára vonatkozó ajánlott eljárások
+        - name: A dedikált SQL-készletek használatára vonatkozó ajánlott eljárások
           href: sql/best-practices-sql-pool.md
     - name: Rövid útmutatók
       items:
-        - name: SQL-készlet létrehozása a Synapse Studio használatával
+        - name: Dedikált SQL-készlet létrehozása a Synapse Studióval
           href: quickstart-create-sql-pool-studio.md
-        - name: SQL-készlet létrehozása az Azure Portal használatával
+        - name: Dedikált SQL-készlet létrehozása az Azure Portallal
           href: quickstart-create-sql-pool-portal.md
-        - name: Adatok betöltése SQL-készletek használatával
+        - name: Adatok betöltése dedikált SQL-készletekkel
           items:
             - name: COPY utasítás
               href: ./sql-data-warehouse/quickstart-bulk-load-copy-tsql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -189,11 +191,11 @@
             - name: Synapse Studio
               href: quickstart-load-studio-sql-pool.md
               displayname: sql pool
-        - name: Az igény szerinti SQL használata
+        - name: Kiszolgáló nélküli SQL-készlet használata
           href: quickstart-sql-on-demand.md
     - name: Oktatóanyagok
       items:
-        - name: Az igény szerinti SQL használata adatelemzéshez
+        - name: Kiszolgáló nélküli SQL-készlet használata adatok elemzéséhez
           href: ./sql/tutorial-data-analyst.md
         - name: Power BI Desktop
           href: ./sql/tutorial-connect-power-bi-desktop.md
@@ -489,7 +491,7 @@
               items:
                 - name: Adatok importálása és exportálása az Apache Spark használatával
                   href: ./spark/synapse-spark-sql-pool-import-export.md
-- name: Synapse-hivatkozás
+- name: Synapse Link
   items:
     - name: Rövid útmutatók
       items:
@@ -517,12 +519,16 @@
           href: ../cosmos-db/synapse-link-power-bi.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Az Azure Cosmos DB elemzési tárának lekérdezése az Apache Sparkkal
           href: ./synapse-link/how-to-query-analytical-store-spark.md
-        - name: Adatok másolása Synapse Linkből SQL-készletbe Apache Spark használatával
+        - name: Adatok másolása a Synapse Linkből dedikált SQL-készletbe az Apache Sparkkal
           href: ./synapse-link/how-to-copy-to-sql-pool.md
-        - name: Az Azure Cosmos DB elemzési tárának lekérdezése az igény szerinti SQL-lel
+        - name: Az Azure Cosmos DB elemzési tárának lekérdezése kiszolgáló nélküli SQL-készlettel
           href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
 - name: Folyamat és adatfolyam
   items:
+    - name: Rövid útmutatók
+      items:
+        - name: Adatok betöltése SQL-készletekbe másolási tevékenységgel
+          href: quickstart-copy-activity-load-sql-pool.md
     - name: Alapelvek
       items:
         - name: Folyamat és tevékenység
@@ -1013,7 +1019,7 @@
       href: ./sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Önsegítő tartalmak ügyfeleknek
       items:
-        - name: Igény szerinti SQL
+        - name: kiszolgáló nélküli SQL-készlet
           href: sql/resources-self-help-sql-on-demand.md
     - name: Partnerek
       items:

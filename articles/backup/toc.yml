@@ -406,6 +406,8 @@
           href: backup-encryption.md
         - name: Titkosítás az ügyfelek által felügyelt kulcsokkal
           href: encryption-at-rest-with-cmk.md
+        - name: Transport Layer Security
+          href: transport-layer-security.md
         - name: Az Azure Policy biztonsági vezérlői
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md

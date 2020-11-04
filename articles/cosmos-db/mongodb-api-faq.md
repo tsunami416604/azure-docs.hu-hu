@@ -3,15 +3,16 @@ title: A Azure Cosmos DB API-MongoDB kapcsolatos gyakori kérdések
 description: Válaszok a Azure Cosmos DB API-MongoDB kapcsolatos gyakori kérdésekre
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 03c47b398a715a128a32fb6a6fd9d99564ccb891
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4c93aea5a37fb286b49dabfb97522bf40c8f5429
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096631"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333171"
 ---
 # <a name="frequently-asked-questions-about-the-azure-cosmos-dbs-api-for-mongodb"></a>A Azure Cosmos DB API-MongoDB kapcsolatos gyakori kérdések
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -30,7 +31,7 @@ További információ: a [Cosmos-adatbázishoz való kapcsolódás Azure Cosmos 
 
 A Common MongoDB-hibakódokkal együtt a Azure Cosmos DB API-ját a MongoDB saját specifikus hibakódokkal rendelkezik:
 
-| Hiba               | Code  | Leírás  | Megoldás  |
+| Hiba               | Code  | Description  | Megoldás  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | A felhasználható kérelmek teljes száma nagyobb, mint a tárolóhoz kiépített kérelem-egység sebessége, és a rendszer szabályozott. | Érdemes lehet egy tárolóhoz rendelt átviteli sebességet, vagy a Azure Portal tárolók készletét vagy újrapróbálkozni. |
 | ExceededMemoryLimit | 16501 | Több-bérlős szolgáltatásként a művelet túllépte az ügyfél memóriájának kiosztását. | Csökkentse a művelet hatókörét szigorúbb lekérdezési feltételekkel, vagy forduljon a [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)támogatási szolgálatához. <br><br> Például: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
@@ -41,7 +42,7 @@ A Common MongoDB-hibakódokkal együtt a Azure Cosmos DB API-ját a MongoDB saj�
 
 Igen, használhatja a Simba Mongo ODBC-illesztőjét Azure Cosmos DB API-val a MongoDB
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [.NET-Webalkalmazás létrehozása a MongoDB-hez készült Azure Cosmos DB API-val](create-mongodb-dotnet.md)
 * [Hozzon létre egy, a Java és a MongoDB API-t használó Console-alkalmazást Azure Cosmos DB](create-mongodb-java.md)

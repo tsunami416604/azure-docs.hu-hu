@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 47eae616ffc62e42448da23fb02152dae17aa548
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 29518fb971649087d8a5afa39d69c7fc2c014f98
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92116665"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331158"
 ---
 | Erőforrás | Cél | Rögzített korlát |
 |----------|--------------|------------|
@@ -21,7 +21,7 @@ ms.locfileid: "92116665"
 | Szinkronizálási csoportok/Storage Sync Service | 200 szinkronizálási csoportok | Igen |
 | Regisztrált kiszolgálók/Storage Sync Service | 99-kiszolgálók | Igen |
 | Felhőbeli végpontok szinkronizálása csoportonként | 1 Felhőbeli végpont | Igen |
-| Kiszolgálói végpontok szinkronizálási csoportonként | 50 kiszolgálói végpontok | Nem |
+| Kiszolgálói végpontok szinkronizálási csoportonként | 100 kiszolgálói végpontok | Igen |
 | Kiszolgálói végpontok száma kiszolgálónként | 30 kiszolgálói végpont | Igen |
 | Fájlrendszerbeli objektumok (címtárak és fájlok) szinkronizálási csoportonként | 100 000 000 objektum | Nem |
 | A fájlrendszer objektumainak maximális száma (címtárak és fájlok) a címtárban | 5 000 000 objektum | Igen |

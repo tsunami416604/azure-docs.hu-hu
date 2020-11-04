@@ -4,14 +4,15 @@ description: Megtudhatja, hogyan frissítheti meglévő .NET-alkalmazását a v2
 author: stefArroyo
 ms.author: esarroyo
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: 3cddf76ae0157c6729e6f58e40ee3f1725a9d395
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 514a6c6daccfe63865ae0b2b9f5bf29c5cbedc29
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096665"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334021"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-net-sdk-v3"></a>Az alkalmazás migrálása a Azure Cosmos DB .NET SDK v3 használatára
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -639,7 +640,7 @@ private static async Task DeleteItemAsync(DocumentClient client)
 ```
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Konzolos alkalmazás létrehozása](sql-api-get-started.md) Azure Cosmos db SQL API-alapú adatkezeléshez a v3 SDK használatával
 * További információ [a v3 SDK-val kapcsolatos lehetőségekről](sql-api-dotnet-v3sdk-samples.md)

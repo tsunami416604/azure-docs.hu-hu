@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 5ec6aab8aaa63b848131d44f78867100f154d251
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 57bd8348977270de9b0e445e0a40c006b65d8392
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90896327"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332040"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rövid útmutató: a MySQL Workbench használata az Azure Database for MySQL-beli adatlekérdezéshez
 
@@ -35,7 +35,7 @@ Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szüks�
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
-2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
+2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver** ).
 
 3. Kattintson a kiszolgálónévre.
 
@@ -49,7 +49,7 @@ Kapcsolódás az Azure MySQL-kiszolgálóhoz a MySQL Workbench GUI eszköz haszn
 
 2.    A **Setup New Connection** (Új kapcsolat beállítása) párbeszédpanelen adja meg a következő információkat a **Parameters** (Paraméterek) lapon:
 
-:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="A MySQL-hez készült Azure Database-kiszolgáló neve":::
+:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="új kapcsolat beállítása":::
 
 | **Beállítás** | **Ajánlott érték** | **Mező leírása** |
 |---|---|---|
@@ -103,13 +103,23 @@ Kapcsolódás az Azure MySQL-kiszolgálóhoz a MySQL Workbench GUI eszköz haszn
 
     A képernyőkép az SQL-példakódot és a futtatás utáni kimenetet mutatja az SQL Workbench-ben.
     
-    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="A MySQL-hez készült Azure Database-kiszolgáló neve":::
+    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="MySQL Workbench SQL lap SQL-mintakód futtatásához":::
 
 2. A SQL-mintakód futtatásához kattintson az **SQL File** (SQL-fájl) lévő eszköztár villám ikonjára.
 3. Figyelje meg az oldal közepén, a **Result Grid** (Eredménytáblázat) szakaszban lévő többlapos eredményeket. 
 4. Figyelje meg az oldal alján lévő **Output** (Kimenet) listát. Láthatja az egyes parancsok állapotát. 
 
 A MySQL Workbench használatával csatlakozott az Azure Database for MySQL kiszolgálóhoz, és az SQL nyelv használatával lekérdezte az adatokat.
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Az ebben a rövid útmutatóban használt összes erőforrás törléséhez törölje az erőforráscsoportot a következő parancs használatával:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
+```
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]

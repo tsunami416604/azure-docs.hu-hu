@@ -8,12 +8,12 @@ ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-t
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 48e6a2a6bcf20e22edbf0d2f98607b8310d2f22d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 55c352df83e8f72a418452dd28d621556b207e5e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91307857"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332168"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Gyors útmutató: Node.js használata az adatAzure Database for MySQLhoz való kapcsolódáshoz és adatlekérdezéshez
 
@@ -50,7 +50,7 @@ A platformtól függően kövesse a megfelelő szakaszban található utasítás
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 
-1. A **Node.js** és az **npm**, a Node.js csomagkezelőjének telepítéséhez futtassa a következő parancsokat.
+1. A **Node.js** és az **npm** , a Node.js csomagkezelőjének telepítéséhez futtassa a következő parancsokat.
 
    ```bash
    sudo apt-get install -y nodejs npm
@@ -66,9 +66,9 @@ A platformtól függően kövesse a megfelelő szakaszban található utasítás
    ```
 3. Ellenőrizze a telepítést a NPM-lista kimeneti szövegének ellenőrzésével. Új javítások kiadásakor a verziószám változhat.
 
-### <a name="mac-os"></a>Mac OS
+### <a name="macos"></a>macOS
 
-1. A **brew**, egy Mac OS X-szel és a **Node.js**-vel kompatibilis, egyszerűen használható csomagkezelő telepítéséhez adja meg a következő parancsokat.
+1. A **Brew** , a MacOS és a **Node.js** könnyen használható csomagkezelő telepítéséhez adja meg a következő parancsokat.
 
    ```bash
    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -90,7 +90,7 @@ A platformtól függően kövesse a megfelelő szakaszban található utasítás
 Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Azure Portal bal oldali menüjében válassza a **minden erőforrás**elemet, majd keresse meg a létrehozott kiszolgálót (például **mydemoserver**).
+2. Azure Portal bal oldali menüjében válassza a **minden erőforrás** elemet, majd keresse meg a létrehozott kiszolgálót (például **mydemoserver** ).
 3. Válassza ki a kiszolgálónevet.
 4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
  :::image type="content" source="./media/connect-nodejs/server-name-azure-database-mysql.png" alt-text="A MySQL-hez készült Azure Database-kiszolgáló neve":::
@@ -319,6 +319,16 @@ function deleteData(){
                 else  console.log('Done.') 
         });
 };
+```
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Az ebben a rövid útmutatóban használt összes erőforrás törléséhez törölje az erőforráscsoportot a következő parancs használatával:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>További lépések

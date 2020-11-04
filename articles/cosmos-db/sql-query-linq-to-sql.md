@@ -3,15 +3,16 @@ title: LINQ to SQL fordítás Azure Cosmos DB
 description: Ismerje meg, hogy a LINQ-operátorok támogatottak-e, és hogy a LINQ-lekérdezések hogyan vannak leképezve a Azure Cosmos DB SQL-
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 7/29/2020
 ms.author: tisande
-ms.openlocfilehash: c7d47b0bb167b3211b3859a47b0c8e11876b1614
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 38d37d03c99bd3a39b00276da110ea0ef6bb962e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075401"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332372"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL fordítás
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -84,7 +85,7 @@ Az SQL .NET SDK-ban található LINQ Provider a következő operátorokat támog
 - **Hol** : a szűrők a [WHERE](sql-query-where.md)és a, `&&` `||` valamint `!` az SQL-operátorok közötti fordítást támogatják.
 - **SelectMany** : lehetővé teszi a tömbök felcsévélését az [JOIN](sql-query-join.md) záradékba. A paranccsal a tömb elemeinek szűréséhez használhatja a kifejezéseket.
 - **OrderBy** és **OrderByDescending** : lefordítható az ASC vagy a desc [szerinti sorrendbe](sql-query-order-by.md) .
-- Az [összesítéshez](sql-query-aggregates.md)a **Count** , a **Sum** , a **min** , a **Max** és az **átlag** operátor, valamint a **CountAsync** , a **SumAsync** , a **MinAsync** , a **MaxAsync** és a **AverageAsync** .
+- Az [összesítéshez](sql-query-aggregates.md)a **Count** , a **Sum** , a **min** , a **Max** és az **átlag** operátor, valamint a **CountAsync** , a **SumAsync** , a **MinAsync** , a **MaxAsync** és a **AverageAsync**.
 - **Compareto metódus végrehajtása** : a tartomány-összehasonlításokra fordít. Általában a sztringek esetében használatos, mivel azok nem összehasonlíthatóak a .NET-ben.
 - **Kihagyás** és **végrehajtás:** lefordítja az [eltolást, és korlátozza](sql-query-offset-limit.md) a lekérdezés eredményeinek korlátozását és tördelését.
 - **Matematikai függvények** : a .net,,,,,,,,,,,,,,,, `Abs` `Acos` `Asin` `Atan` `Ceiling` `Cos` `Exp` `Floor` `Log` `Log10` `Pow` `Round` `Sign` `Sin` `Sqrt` `Tan` és `Truncate` az egyenértékű [beépített matematikai funkciókhoz](sql-query-mathematical-functions.md)való fordítást támogatja.
@@ -343,7 +344,7 @@ Egy beágyazott lekérdezés a belső lekérdezést alkalmazza a külső tárol�
       WHERE c.familyName = f.parents[0].familyName
   ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Dokumentumadatok modellezése](modeling-data.md)

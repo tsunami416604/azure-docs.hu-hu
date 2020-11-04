@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 73f5dc6bdc976bd0166cfb1f2621f57f558f944c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 70edf224494fdf1395d59d1c591d0369b9b20557
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478592"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333011"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-powershell"></a>Oktatóanyag: Azure Database for PostgreSQL – egyetlen kiszolgáló tervezése a PowerShell használatával
 
@@ -52,7 +52,7 @@ Ha több Azure-előfizetéssel rendelkezik, válassza ki a megfelelő előfizet�
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmag használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer csoportként helyezi üzembe és kezeli az Azure-erőforrásokat.
 
@@ -66,7 +66,7 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 
 Hozzon létre egy Azure Database for PostgreSQL kiszolgálót a `New-AzPostgreSqlServer` parancsmaggal. Egy kiszolgáló több adatbázist is tud kezelni. Általában külön adatbázissal rendelkezik minden projekt vagy felhasználó.
 
-A következő példa létrehoz egy PostgreSQL-kiszolgálót az **USA nyugati** régiójában, a **mydemoserver** nevű **myresourcegroup** -erőforráscsoport pedig a **myadmin**kiszolgáló-rendszergazdai bejelentkezési felhasználónevét. Ez egy általános célú, 2 virtuális mag és a Geo-redundáns biztonsági mentést használó, általános célú árképzési szinten található Gen 5 kiszolgáló. Dokumentálja a példa első sorában használt jelszót, mivel ez a PostgreSQL-kiszolgáló rendszergazdai fiókjának jelszava.
+A következő példa létrehoz egy PostgreSQL-kiszolgálót az **USA nyugati** régiójában, a **mydemoserver** nevű **myresourcegroup** -erőforráscsoport pedig a **myadmin** kiszolgáló-rendszergazdai bejelentkezési felhasználónevét. Ez egy általános célú, 2 virtuális mag és a Geo-redundáns biztonsági mentést használó, általános célú árképzési szinten található Gen 5 kiszolgáló. Dokumentálja a példa első sorában használt jelszót, mivel ez a PostgreSQL-kiszolgáló rendszergazdai fiókjának jelszava.
 
 > [!TIP]
 > A kiszolgáló neve egy DNS-névbe van leképezve, ezért globálisan egyedinek kell lennie az Azure-ban.
@@ -104,7 +104,7 @@ New-AzPostgreSqlFirewallRule -Name AllowMyIP -ResourceGroupName myresourcegroup 
 
 ## <a name="get-the-connection-information"></a>Kapcsolatadatok lekérése
 
-A kiszolgálóhoz való kapcsolódáshoz meg kell adnia a gazdagép adatait és a hozzáférési hitelesítő adatokat. A kapcsolódási adatok megállapításához használja az alábbi példát. Jegyezze fel a **FullyQualifiedDomainName** és a **AdministratorLogin**értékeit.
+A kiszolgálóhoz való kapcsolódáshoz meg kell adnia a gazdagép adatait és a hozzáférési hitelesítő adatokat. A kapcsolódási adatok megállapításához használja az alábbi példát. Jegyezze fel a **FullyQualifiedDomainName** és a **AdministratorLogin** értékeit.
 
 ```azurepowershell-interactive
 Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
@@ -217,7 +217,11 @@ A visszaállítási folyamat befejeződése után keresse meg az új kiszolgál�
 
 A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón található VNet-szolgáltatási végpontokkal. Ezeket a szabályokat külön kell beállítani az új kiszolgálóhoz. A rendszer visszaállítja az eredeti kiszolgáló tűzfalszabályok beállításait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Az előző lépésekben Azure-erőforrásokat hozott létre egy kiszolgálócsoport számára. Ha nem várható, hogy a jövőben szüksége lesz ezekre az erőforrásokra, törölje a kiszolgálót. A kiszolgálócsoport *Áttekintés* lapján kattintson a *Törlés* gombra. Amikor a rendszer rákérdez egy előugró oldalra, erősítse meg a kiszolgálócsoport nevét, és kattintson a végleges *Törlés* gombra.
+
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Azure Database for PostgreSQL-kiszolgáló biztonsági mentése és visszaállítása a PowerShell használatával](howto-restore-server-powershell.md)

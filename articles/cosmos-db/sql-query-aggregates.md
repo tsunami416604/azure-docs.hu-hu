@@ -3,15 +3,16 @@ title: Összesítő függvények a Azure Cosmos DBban
 description: Ismerje meg az SQL összesítő függvények szintaxisát, a Azure Cosmos DB által támogatott összesítő függvények típusait.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: tisande
-ms.openlocfilehash: 8d71b9b888c47847dd4a5f5c40504190e5c1ec84
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7c988f379e94bf2f69854c90d45af42fe2a7ec4f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090936"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332780"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Összesítő függvények a Azure Cosmos DBban
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -81,7 +82,7 @@ A tömb iterációjának eredményét is összesítheti.
 
 Ezek az összesített rendszerfunkciók kihasználják a [tartomány indexét](index-policy.md#includeexclude-strategy). Ha a (z),,, `COUNT` `SUM` `MIN` `MAX` vagy tulajdonságot szeretné elvégezni, a `AVG` [megfelelő elérési utat is meg kell adni az indexelési házirendben](index-policy.md#includeexclude-strategy).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Cosmos DB bemutatása](introduction.md)
 - [Rendszerfüggvények](sql-query-system-functions.md)

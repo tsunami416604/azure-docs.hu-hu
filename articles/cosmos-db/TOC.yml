@@ -557,14 +557,9 @@
               href: sql-query-linq-to-sql.md
         - name: Tárolók és elemek
           items:
-            - name: Indexelés
-              items:
-                - name: Indexelés áttekintése
-                  displayName: 'range, spatial'
-                  href: index-overview.md
-                - name: Indexelési szabályzatok
-                  displayName: 'consistent, none'
-                  href: index-policy.md
+            - name: Indexelés áttekintése
+              displayName: 'range, spatial'
+              href: index-overview.md
             - name: Élettartam
               displayName: 'delete, delete data, ttl'
               href: time-to-live.md
@@ -665,8 +660,6 @@
             - name: Élettartam konfigurálása
               displayName: 'delete, delete data, ttl'
               href: how-to-time-to-live.md
-            - name: Indexelési szabályzatok kezelése
-              href: how-to-manage-indexing-policy.md
             - name: Egyedi kulcsok meghatározása
               href: how-to-define-unique-keys.md
         - name: Teljesítmény
@@ -677,6 +670,13 @@
                   href: profile-sql-api-query.md
                 - name: Lekérdezési teljesítmény hangolása
                   href: sql-api-query-metrics.md
+            - name: Indexelés
+              items:
+                - name: Indexelési szabályzatok
+                  displayName: 'consistent, none, indexing, policy'
+                  href: index-policy.md
+                - name: Indexelési szabályzatok kezelése
+                  href: how-to-manage-indexing-policy.md
             - name: .NET
               items:
                 - name: Teljesítménnyel kapcsolatos tippek .NET SDK v3-hoz
@@ -753,6 +753,8 @@
               href: create-sql-api-java-changefeed.md
         - name: Kiszolgálóoldali programozás
           items:
+            - name: Tranzakciós kötegműveletek végrehajtása
+              href: transactional-batch.md
             - name: 'Tárolt eljárások, eseményindítók és felhasználói függvények írása'
               href: how-to-write-stored-procedures-triggers-udfs.md
             - name: Tárolt eljárások és eseményindítók írása a JavaScript lekérdezési API-val

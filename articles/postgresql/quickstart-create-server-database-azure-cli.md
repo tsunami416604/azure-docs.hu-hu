@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 8a9661f7f5cdd66dc0aab6d937701cda48048219
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1ddc8c2b9531dd78c1c6746e28b8ff5864af563e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488027"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331947"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>Gyors útmutató: Azure Database for PostgreSQL-kiszolgáló létrehozása az Azure CLI használatával
 
@@ -61,9 +61,9 @@ Az előző argumentumok részletei:
 name | mydemoserver | A Azure Database for PostgreSQL-kiszolgálót azonosító egyedi név. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. Az értéknek 3 – 63 karaktert kell tartalmaznia. További információ: [Azure Database for PostgreSQL elnevezési szabályok](../azure-resource-manager/management/resource-name-rules.md#microsoftdbforpostgresql).
 resource-group | myResourceGroup | Az Azure-erőforráscsoport neve.
 location | westus | A kiszolgáló Azure-beli helye.
-admin-user | myadmin | A rendszergazdai bejelentkezéshez használt Felhasználónév. Nem lehet **azure_superuser**, **Admin**, **Administrator**, **root**, **Guest**vagy **Public**.
+admin-user | myadmin | A rendszergazdai bejelentkezéshez használt Felhasználónév. Nem lehet **azure_superuser** , **Admin** , **Administrator** , **root** , **Guest** vagy **Public**.
 admin-password | *secure password* | A rendszergazda felhasználó jelszava. A következő kategóriák közül legalább a 8 – 128 karaktert kell tartalmaznia: angol nagybetűs karakterek, angol kisbetűk, számok és nem alfanumerikus karakterek.
-sku-name|GP_Gen5_2| A díjszabási csomag és a számítási konfiguráció neve. Kövesse a {díjszabási csomag} {_számítási generáció}_{virtuális mag} konvenciót a gyorsírásban. További információ: [Azure Database for PostgreSQL díjszabása](https://azure.microsoft.com/pricing/details/postgresql/server/).
+sku-name|GP_Gen5_2| A díjszabási csomag és a számítási konfiguráció neve. Kövesse a {díjszabási csomag} { _számítási generáció}_ {virtuális mag} konvenciót a gyorsírásban. További információ: [Azure Database for PostgreSQL díjszabása](https://azure.microsoft.com/pricing/details/postgresql/server/).
 
 >[!IMPORTANT] 
 >- Az alapértelmezett PostgreSQL-verzió a kiszolgálón 9,6. Az összes támogatott verzió megtekintéséhez lásd: [támogatott PostgreSQL főverziók](./concepts-supported-versions.md).
@@ -150,10 +150,6 @@ Ha csak az újonnan létrehozott kiszolgálót szeretné törölni, futtathatja 
 az postgres server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálás és importálás használatával](./howto-migrate-using-export-and-import.md)
-> 
-> [Django-webalkalmazás üzembe helyezése a PostgreSQL-sel](../app-service/tutorial-python-postgresql-app.md)
->
-> [Node.JS alkalmazással való kapcsolat](./connect-nodejs.md)

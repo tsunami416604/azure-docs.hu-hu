@@ -3,15 +3,16 @@ title: Apache Spark összekötése a Azure Cosmos DB
 description: Ismerkedjen meg a Azure Cosmos DB Spark-összekötővel, amely lehetővé teszi Apache Spark összekapcsolását Azure Cosmos DBhoz.
 author: tknandu
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: df7792c37b1db330264554cf6d9c179cf9f22611
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: eae5c38c80c43ffed5138733d9425e2055dc0b76
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098705"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334004"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Gyorsítsa fel big data elemzést az Azure Cosmos DB Connector Apache Spark használatával
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -32,7 +33,7 @@ Az összekötőt használhatja [Azure Databricks](https://azure.microsoft.com/se
 > Cosmos DB Cassandra API esetén használja a [Cassandra Spark-összekötőt](https://github.com/datastax/spark-cassandra-connector).
 >
 
-## <a name="quickstart"></a>Gyorsútmutató
+## <a name="quickstart"></a>Első lépések
 
 * Kövesse az Ismerkedés a [Java SDK-val](./create-sql-api-java.md) című témakör lépéseit Cosmos db fiók beállításához és adatok feltöltéséhez.
 * Azure Databricks munkaterület és fürt beállításához kövesse [Azure Databricks első](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal) lépések című szakasz lépéseit.
@@ -314,7 +315,7 @@ További információ a `azure-cosmosdb-spark` [wikiben](https://github.com/Azur
 
 * [Spark-feladatok figyelése az Application bepillantást](https://github.com/Azure/azure-cosmosdb-spark/tree/2.3/samples/monitoring)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha még nem tette meg, töltse le a Sparkot Azure Cosmos DB összekötőt az [Azure-cosmosdb-Spark](https://github.com/Azure/azure-cosmosdb-spark) GitHub adattárból. Fedezze fel a következő további forrásokat a tárházban:
 
