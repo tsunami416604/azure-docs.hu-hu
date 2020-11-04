@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 11/03/2020
 ms.custom: generated
-ms.openlocfilehash: 3f192493dfd6bfc2fb3d5802b1dd94cd4ca3a9a9
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: e337cef9121dc5992f87b9996cfd01d16d9cc188
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285222"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309366"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure erőforrás-szolgáltatói műveletek
 
@@ -4100,7 +4100,7 @@ Azure-szolgáltatás: [Azure SQL Database](../azure-sql/database/index.yml), [Az
 > | Microsoft. SQL/kiszolgálók/adatbázisok/dataMaskingPolicies/szabályok/törlés | Az adatmaszkolási házirend szabályának törlése egy adott adatbázisra vonatkozóan |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/dataWarehouseQueries/olvasás | Az adatraktár-terjesztési lekérdezési adatokat adja vissza a kiválasztott lekérdezési AZONOSÍTÓhoz. |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/dataWarehouseQueries/dataWarehouseQuerySteps/READ | Az adatraktár-lekérdezés elosztott lekérdezési lépésének információit adja vissza a kiválasztott lépés-AZONOSÍTÓhoz |
-> | Microsoft. SQL/kiszolgálók/adatbázisok/dataWarehouseUserActivities/olvasás | Lekéri egy SQL Data Warehouse példány felhasználói tevékenységét, amely tartalmazza a futó és a felfüggesztett lekérdezéseket |
+> | Microsoft. SQL/kiszolgálók/adatbázisok/dataWarehouseUserActivities/olvasás | Az Azure szinapszis Analytics dedikált SQL-készletének felhasználói tevékenységeit kérdezi le, beleértve a futó és a felfüggesztett lekérdezéseket is |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/extendedAuditingSettings/olvasás | Az adott adatbázisban konfigurált kiterjesztett blob-naplózási szabályzat részleteinek beolvasása |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/extendedAuditingSettings/írás | Egy adott adatbázis kiterjesztett blob-naplózási szabályzatának módosítása |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/bővítmények/olvasás | Az adatbázishoz tartozó bővítmények gyűjteményét kéri le. |

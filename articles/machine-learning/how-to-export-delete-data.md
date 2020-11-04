@@ -11,12 +11,12 @@ ms.author: laobri
 ms.date: 04/24/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e847f62c2ae3d1d68c39685a38b67e1d0ada8c2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82e128ffdc215a084110a68170ac12accd8fca0e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91251014"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308138"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Machine Learning szolgáltatás-munkaterület adatainak exportálása vagy törlése
 
@@ -50,19 +50,19 @@ Ezeket az erőforrásokat törölheti, ha kiválasztja őket a listából, és k
 
 A futtatási előzményeket tartalmazó dokumentumok, amelyek személyes felhasználói adatokat is tartalmazhatnak, a blob Storage-ban található Storage-fiókban tárolódnak a-ben `/azureml` . Az adatok a portálról tölthetők le és törölhetők.
 
-:::image type="content" source="media/how-to-export-delete-data/storage-account-folders.png" alt-text="Képernyőkép a portálról, a törlés ikon kiemelve":::
+:::image type="content" source="media/how-to-export-delete-data/storage-account-folders.png" alt-text="Képernyőkép a azureml könyvtáráról a portálon belül":::
 
 ## <a name="export-and-delete-machine-learning-resources-using-azure-machine-learning-studio"></a>Gépi tanulási erőforrások exportálása és törlése Azure Machine Learning Studio használatával
 
-A Azure Machine Learning Studio egységes áttekintést nyújt a gépi tanulási erőforrásokról, például jegyzetfüzetekről, adatkészletekről, modellekről és kísérletekről. Azure Machine Learning Studio az adatok és kísérletek rekordjának megőrzését hangsúlyozza. A számítási erőforrások, például a folyamatok és a számítási erőforrások a böngésző használatával törölhetők. Ezekhez az erőforrásokhoz navigáljon a szóban forgó erőforráshoz, és válassza a **Törlés**lehetőséget. 
+A Azure Machine Learning Studio egységes áttekintést nyújt a gépi tanulási erőforrásokról, például jegyzetfüzetekről, adatkészletekről, modellekről és kísérletekről. Azure Machine Learning Studio az adatok és kísérletek rekordjának megőrzését hangsúlyozza. A számítási erőforrások, például a folyamatok és a számítási erőforrások a böngésző használatával törölhetők. Ezekhez az erőforrásokhoz navigáljon a szóban forgó erőforráshoz, és válassza a **Törlés** lehetőséget. 
 
 Az adatkészletek nem regisztrálhatók, és a kísérletek archiválása is lehetséges, de ezek a műveletek nem törlik az adatokat. Az adatkészletek és az adatfuttatások teljes eltávolításához a tárolási szinten törölni kell az adatokat. A tárolási szint törlését a portálon végezheti el, az előzőekben leírtak szerint.
 
-A Studio használatával letölthetők a kísérleti futtatásokból származó tananyagok. Válassza ki a **kísérletet** és a **futtatást** , amelyben érdekli. Válassza a **kimenet + naplók** lehetőséget, és navigáljon a letölteni kívánt összetevőkhöz. Válassza a **...** és a **Letöltés**lehetőséget.
+A Studio használatával letölthetők a kísérleti futtatásokból származó tananyagok. Válassza ki a **kísérletet** és a **futtatást** , amelyben érdekli. Válassza a **kimenet + naplók** lehetőséget, és navigáljon a letölteni kívánt összetevőkhöz. Válassza a **...** és a **Letöltés** lehetőséget.
 
-A regisztrált modell letöltéséhez navigáljon a kívánt **modellre** , és válassza a **Letöltés**lehetőséget. 
+A regisztrált modell letöltéséhez navigáljon a kívánt **modellre** , és válassza a **Letöltés** lehetőséget. 
 
-:::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="Képernyőkép a portálról, a törlés ikon kiemelve":::
+:::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="Képernyőkép a Studio Model lapról a letöltési lehetőség kiemelésével":::
 
 ## <a name="export-and-delete-resources-using-the-python-sdk"></a>Erőforrások exportálása és törlése a Python SDK használatával
 
@@ -84,8 +84,7 @@ A következő gépi tanulási erőforrások törölhetők a Python SDK használa
 
 | Típus | Függvény hívása | Jegyzetek | 
 | --- | --- | --- |
-| `Workspace` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete-delete-dependent-resources-false--no-wait-false-) | `delete-dependent-resources`A törlés kaszkádolt használatával |
-| `Model` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--) | | 
-| `ComputeTarget` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--) | |
-| `WebService` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true) | | 
-
+| `Workspace` | [`delete`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete-delete-dependent-resources-false--no-wait-false-) | `delete-dependent-resources`A törlés kaszkádolt használatával |
+| `Model` | [`delete`](/python/api/azureml-core/azureml.core.model%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--) | | 
+| `ComputeTarget` | [`delete`](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--) | |
+| `WebService` | [`delete`](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py) | |

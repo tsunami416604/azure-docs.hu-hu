@@ -9,12 +9,12 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f8b4b86656e7b1b4dfd8b69cbc8386f5b6ff6a8c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 791b50f1458ba7ee127d45ee374b5589ade588e0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674928"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308192"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Oktatóanyag: a Databricks-különbözeti tábla frissítéséhez a adattó rögzítési mintájának megvalósítása
 
@@ -37,7 +37,7 @@ Ezt a megoldást fordított sorrendben fogjuk felépíteni, kezdve a Azure Datab
 
 * Hozzon létre egy hierarchikus névteret (Azure Data Lake Storage Gen2) tartalmazó Storage-fiókot. Ez az oktatóanyag egy nevű Storage-fiókot használ `contosoorders` . Győződjön meg arról, hogy a felhasználói fiókja rendelkezik a [Storage blob adatközreműködői szerepkörhöz](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) hozzárendelve.
 
-  Lásd: [Azure Data Lake Storage Gen2 fiók létrehozása](data-lake-storage-quickstart-create-account.md).
+   Lásd: [Azure Data Lake Storage Gen2 használatával használandó Storage-fiók létrehozása](create-data-lake-storage-account.md).
 
 * Egyszerű szolgáltatásnév létrehozása. [Útmutató: a portál használatával létrehozhat egy Azure ad-alkalmazást és egy egyszerű szolgáltatást, amely hozzáférhet az erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
@@ -69,7 +69,7 @@ Először hozzon létre egy CSV-fájlt, amely leírja az értékesítési sorren
    536365,85123A,WHITE HANGING HEART T-LIGHT HOLDER,6,12/1/2010 8:26,2.55,17850,United Kingdom
    ```
 
-4. Mentse ezt a fájlt a helyi számítógépre, és adjon neki nevet **data.csvnak** .
+4. Mentse ezt a fájlt a helyi számítógépre, és adjon neki nevet **data.csvnak**.
 
 5. A Storage Explorerban töltse fel ezt a fájlt a **bemeneti** mappába.  
 
@@ -285,7 +285,7 @@ Hozzon létre egy Azure-függvényt, amely futtatja a feladatot.
 
    ![Új függvény](./media/data-lake-storage-events/new-function.png "Új függvény")
 
-8. Válassza ki **Azure Event Grid triggert** .
+8. Válassza ki **Azure Event Grid triggert**.
 
    Ha a rendszer kéri, telepítse a **Microsoft. Azure. webjobs. Extensions. EventGrid** kiterjesztést. Ha telepítenie kell, a függvény létrehozásához ki kell választania **Azure Event Grid triggert** .
 
@@ -407,7 +407,7 @@ Ebben a szakaszban olyan Event Grid-előfizetést hoz létre, amely meghívja az
 
    ![A frissített rekord megjelenik a táblában](./media/data-lake-storage-events/final_query-2.png "A frissített rekord megjelenik a táblában")
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rájuk szükség, törölje az erőforráscsoportot és az összes kapcsolódó erőforrást. Ehhez válassza ki a Storage-fiókhoz tartozó erőforráscsoportot, és válassza a **Törlés** lehetőséget.
 

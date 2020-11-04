@@ -12,16 +12,20 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 2a8f9734714f0439383f6242cda3b51690284852
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1e913e3a5356ad7f49d8b3066f5bd3da7eddd2c2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363419"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308777"
 ---
 # <a name="publisher-verification"></a>Közzétevő ellenőrzése
 
-A kiadói ellenőrzés segítségével a rendszergazdák és a végfelhasználók megismerhetik az alkalmazások fejlesztőinek a Microsoft Identity platformmal való integrálásának eredetiségét. Ha az alkalmazás közzétevőként van megjelölve, az azt jelenti, hogy a közzétevő ellenőrizte az identitását egy olyan [Microsoft Partner Network](https://partner.microsoft.com/membership) -fiókkal, amely befejezte az [ellenőrzési](/partner-center/verification-responses) folyamatot, és társította ezt az MPN-fiókot az alkalmazás regisztrálásával. 
+A kiadói ellenőrzés segítségével a rendszergazdák és a végfelhasználók megismerhetik az alkalmazások fejlesztőinek a Microsoft Identity platformmal való integrálásának eredetiségét. 
+
+> [!VIDEO https://www.youtube.com/embed/IYRN2jDl5dc]
+
+Ha az alkalmazás közzétevőként van megjelölve, az azt jelenti, hogy a közzétevő ellenőrizte az identitását egy olyan [Microsoft Partner Network](https://partner.microsoft.com/membership) -fiókkal, amely befejezte az [ellenőrzési](/partner-center/verification-responses) folyamatot, és társította ezt az MPN-fiókot az alkalmazás regisztrálásával. 
 
 Egy kék "ellenőrzött" jelvény jelenik meg az Azure AD-hozzájárulási kérdésben és a többi képernyőn: ![ beleegyezés kérése](./media/publisher-verification-overview/consent-prompt.png)
 
@@ -29,11 +33,11 @@ Ez a funkció elsősorban olyan fejlesztők számára készült, akik több-bér
 
 ## <a name="benefits"></a>Előnyök
 A kiadói ellenőrzés a következő előnyöket biztosítja:
-- **Megnövekedett átláthatóság és a kockázatok csökkentése az ügyfelek számára**– ez a funkció segíti az ügyfeleket abban, hogy a szervezetében használt alkalmazásokat az általuk megbízhatónak tartott fejlesztők teszik közzé. 
+- **Megnövekedett átláthatóság és a kockázatok csökkentése az ügyfelek számára** – ez a funkció segíti az ügyfeleket abban, hogy a szervezetében használt alkalmazásokat az általuk megbízhatónak tartott fejlesztők teszik közzé. 
 
-- **Továbbfejlesztett védjegyezés**– az "ellenőrzött" jelvény jelenik meg az Azure ad- [hozzájárulási kérdés](application-consent-experience.md), a vállalati alkalmazások lapon, valamint a végfelhasználók és a rendszergazdák által használt további UX-felületek. 
+- **Továbbfejlesztett védjegyezés** – az "ellenőrzött" jelvény jelenik meg az Azure ad- [hozzájárulási kérdés](application-consent-experience.md), a vállalati alkalmazások lapon, valamint a végfelhasználók és a rendszergazdák által használt további UX-felületek. 
 
-- **Gördülékeny nagyvállalati elfogadás**– a rendszergazdák a [felhasználói jóváhagyási házirendeket](../manage-apps/configure-user-consent.md)konfigurálhatják, a közzétevő ellenőrzési állapotát pedig az elsődleges házirend feltételei közé.
+- **Gördülékeny nagyvállalati elfogadás** – a rendszergazdák a [felhasználói jóváhagyási házirendeket](../manage-apps/configure-user-consent.md)konfigurálhatják, a közzétevő ellenőrzési állapotát pedig az elsődleges házirend feltételei közé.
 
 > [!NOTE]
 > November 2020-től kezdve a végfelhasználók nem tudnak jóváhagyást adni a legtöbb újonnan regisztrált több-bérlős alkalmazásnak ellenőrzött közzétevők nélkül. Ez a november 8th 2020 után regisztrált alkalmazásokra vonatkozik, és a OAuth 2.0-s verzióját használja az alapszintű bejelentkezés és a felhasználói profil olvasása után, valamint a különböző bérlők felhasználói számára történő kérésének megadására, ha az alkalmazás regisztrálva van. Egy figyelmeztetés jelenik meg a jóváhagyás képernyőn, amely tájékoztatja a felhasználókat arról, hogy ezek az alkalmazások kockázatos, és nem ellenőrzött közzétevők.    

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: az SQL on-demand (előzetes verzió) használata az Azure-beli nyílt adatkészletek elemzéséhez az Azure szinapszis Studióban (előzetes verzió)'
-description: Ebből az oktatóanyagból megtudhatja, hogyan végezhet könnyedén olyan felderítő adatelemzéseket, amelyek különböző Azure Open-adatkészleteket egyesítenek az SQL igény szerinti (előzetes verzió) használatával, és megjeleníthetik az eredményeket az Azure szinapszis Studióban.
+title: 'Oktatóanyag: kiszolgáló nélküli SQL-készlet (előzetes verzió) használata Azure Open-adatkészletek elemzéséhez az Azure szinapszis Studióban (előzetes verzió)'
+description: Ebből az oktatóanyagból megtudhatja, hogyan végezheti el a különböző Azure Open-adatkészleteket ötvöző felderítő adatok elemzését a kiszolgáló nélküli SQL-készlet (előzetes verzió) használatával, és megjelenítheti az eredményeket az Azure szinapszis Studióban.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0471bd594dcf1b0654d6b4c496e5d39ade2739fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cec16041edd10a57088df4ae9cfe0587906919eb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539520"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309280"
 ---
-# <a name="tutorial-use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Oktatóanyag: az SQL igény szerinti használata az Azure Open-adatkészletek elemzésére és az eredmények megjelenítésére az Azure szinapszis Studióban
+# <a name="tutorial-use-serverless-sql-pool-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Oktatóanyag: kiszolgáló nélküli SQL-készlet használata az Azure Open-adatkészletek elemzéséhez és az eredmények megjelenítéséhez az Azure szinapszis Studióban
 
-Ebből az oktatóanyagból megtudhatja, hogyan végezheti el a felderítő adatok elemzését, ha különböző Azure Open-adatkészleteket egyesít az SQL igény szerinti használatával, majd megjeleníti az eredményeket az Azure szinapszis Studióban.
+Ebből az oktatóanyagból megtudhatja, hogyan végezheti el a felderítő adatok elemzését a különböző Azure Open-adatkészletek kiszolgáló nélküli SQL-készlettel való kombinálásával, majd az eredmények megjelenítésével az Azure szinapszis Studióban.
 
 Például elemezzük a [New York City (NYC) taxi adatkészletet](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) , amely a következőket tartalmazza:
 
@@ -102,7 +102,7 @@ Az alábbi kódrészlet a taxik éves számának eredményét mutatja:
 
 ![A taxi rides eredményének éves száma](./media/tutorial-data-analyst/4.png)
 
-Az adatok megjeleníthetők a szinapszis Studióban úgy, hogy a **táblázatról** a **diagram** nézetre vált. Különböző típusú diagramok közül választhat, például a **területen**, a **sáv**, az **oszlop**, a **vonal**, a **torta**és a **Scatter**. Ebben az esetben ábrázolja az **oszlopdiagram** és a **category (kategória** ) oszlopot a **current_year**értékre:
+Az adatok megjeleníthetők a szinapszis Studióban úgy, hogy a **táblázatról** a **diagram** nézetre vált. Különböző típusú diagramok közül választhat, például a **területen** , a **sáv** , az **oszlop** , a **vonal** , a **torta** és a **Scatter**. Ebben az esetben ábrázolja az **oszlopdiagram** és a **category (kategória** ) oszlopot a **current_year** értékre:
 
 ![A rides/Year diagramot bemutató oszlopdiagram](./media/tutorial-data-analyst/5.png)
 
@@ -131,7 +131,7 @@ A következő kódrészlet a lekérdezés eredményét jeleníti meg:
 
 ![A 2016-es találatok napi száma](./media/tutorial-data-analyst/6.png)
 
-Újra könnyedén megjelenítheti az adatdiagramot úgy, **current_day** hogy az **oszlopdiagram** a **category (kategória** ) oszlopra van beállítva, és a **Jelmagyarázat (sorozat)** oszlopa **rides_per_day**értékre van állítva.
+Újra könnyedén megjelenítheti az adatdiagramot úgy, **current_day** hogy az **oszlopdiagram** a **category (kategória** ) oszlopra van beállítva, és a **Jelmagyarázat (sorozat)** oszlopa **rides_per_day** értékre van állítva.
 
 ![Oszlopdiagram, amely a 2016-as napi számú túrákat mutatja](./media/tutorial-data-analyst/7.png)
 
@@ -213,9 +213,9 @@ A lekérdezés eredménye azt jelzi, hogy a taxik számának csökkenése a köv
 - Hideg volt (a hőmérséklet nem éri el a nulla fokos Celsius-fokot).
 - Szeles (~ 10 m/s).
 
-Ebből az oktatóanyagból megtudhatta, hogy az adatelemzők hogyan tudják gyorsan végrehajtani a felderítő adatelemzést, és a különböző adatkészleteket egyszerűen kombinálhatja az SQL igény szerinti használatával, és megjelenítheti az eredményeket az Azure szinapszis Studio használatával.
+Ebből az oktatóanyagból megtudhatta, hogy az adatelemzők hogyan tudják gyorsan végrehajtani a felderítő adatelemzést, és hogy a kiszolgáló nélküli SQL-készlet használatával könnyedén egyesítheti a különböző adatkészleteket, és megjelenítheti az eredményeket az Azure szinapszis Studio használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha szeretné megtudni, hogyan csatlakoztatható az SQL on-demand Power BI Desktop és hogyan hozhat létre jelentéseket, tekintse meg az [SQL igény szerinti csatolása Power bi Desktop és jelentések létrehozása](tutorial-connect-power-bi-desktop.md)című témakört.
+A kiszolgáló nélküli SQL-Power BI Desktop készlet összekapcsolásával és a jelentések létrehozásával kapcsolatos további információkért lásd: [kiszolgáló nélküli SQL-készlet összekötése a Power bi Desktop és jelentések létrehozásához](tutorial-connect-power-bi-desktop.md).
  

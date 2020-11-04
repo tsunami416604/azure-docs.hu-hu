@@ -11,12 +11,12 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 10/13/2020
 ms.custom: contperfq4, devx-track-python
-ms.openlocfilehash: 3f131e1f8d5604e566c8d7b41fa9d45cb7d2a7a2
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: f7d1cffb44914535fe218980c750270ebba14445
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054882"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309448"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Oktatóanyag: Azure Machine Learning folyamat létrehozása a Batch-pontozáshoz
 
@@ -63,7 +63,7 @@ ws = Workspace.from_config()
 
 A `pipelinedata` fiókban szerezze be a nyilvános blob-tárolóból a ImageNet kiértékelése nyilvános adatok mintáját `sampledata` . Hívja `register_azure_blob_container()` meg a nevet a munkaterület számára elérhetővé tenni kívánt adat számára `images_datastore` . Ezután állítsa be a munkaterület alapértelmezett adattárát kimeneti adattárként. A kimeneti adattárral szerzi be a folyamat kimenetét.
 
-Az adatok elérésével kapcsolatos további információkért lásd: [az adatok elérése](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#python-sdk).
+Az adatok elérésével kapcsolatos további információkért lásd: [az adatok elérése](./how-to-access-data.md).
 
 ```python
 from azureml.core.datastore import Datastore
@@ -140,9 +140,9 @@ model = Model.register(model_path="models/inception_v3.ckpt",
 
 ## <a name="create-and-attach-the-remote-compute-target"></a>A távoli számítási cél létrehozása és csatolása
 
-A gépi tanulási folyamatokat nem lehet helyileg futtatni, így Felhőbeli erőforrásokon vagy *távoli számítási célokon*futtathatja őket. A távoli számítási cél egy újrafelhasználható virtuális számítási környezet, amelyben kísérleteket és gépi tanulási munkafolyamatokat futtat. 
+A gépi tanulási folyamatokat nem lehet helyileg futtatni, így Felhőbeli erőforrásokon vagy *távoli számítási célokon* futtathatja őket. A távoli számítási cél egy újrafelhasználható virtuális számítási környezet, amelyben kísérleteket és gépi tanulási munkafolyamatokat futtat. 
 
-Futtassa a következő kódot egy GPU-t támogató cél létrehozásához [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true) , majd csatolja azt a munkaterülethez. További információ a számítási célokról: [fogalmi cikk](https://docs.microsoft.com/azure/machine-learning/concept-compute-target).
+Futtassa a következő kódot egy GPU-t támogató cél létrehozásához [`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?preserve-view=true&view=azure-ml-py) , majd csatolja azt a munkaterülethez. További információ a számítási célokról: [fogalmi cikk](./concept-compute-target.md).
 
 
 ```python
@@ -305,7 +305,7 @@ A folyamat lépés egy olyan objektum, amely minden olyan objektumot magában fo
 * Bemeneti és kimeneti adatok, valamint bármely egyéni paraméter
 * Hivatkozás a lépés során futtatandó parancsfájlra vagy SDK-logikára
 
-Több osztály örökli a szülő osztályt [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py&preserve-view=true) . Kiválaszthatja az osztályokat, hogy meghatározott keretrendszerek vagy stackek használatával hozzon létre egy lépést. Ebben a példában a `ParallelRunStep` osztály használatával határozhatja meg a lépés logikáját egyéni Python-parancsfájl használatával. Ha a parancsfájlhoz tartozó argumentum vagy a lépés kimenete vagy a lépéshez tartozó érték, akkor az argumentumot *a* `arguments` tömbben *és* a `input` vagy a paraméterben is meg kell adni `output` . 
+Több osztály örökli a szülő osztályt [`PipelineStep`](/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?preserve-view=true&view=azure-ml-py) . Kiválaszthatja az osztályokat, hogy meghatározott keretrendszerek vagy stackek használatával hozzon létre egy lépést. Ebben a példában a `ParallelRunStep` osztály használatával határozhatja meg a lépés logikáját egyéni Python-parancsfájl használatával. Ha a parancsfájlhoz tartozó argumentum vagy a lépés kimenete vagy a lépéshez tartozó érték, akkor az argumentumot *a* `arguments` tömbben *és* a `input` vagy a paraméterben is meg kell adni `output` . 
 
 Abban az esetben, ha több lépés is van, a tömbben lévő objektum hivatkozása egy `outputs` későbbi folyamat lépésének *bemenetként* válik elérhetővé.
 
@@ -329,7 +329,7 @@ batch_score_step = ParallelRunStep(
 )
 ```
 
-A különböző lépésekhez használható osztályok listáját a [Steps csomagban](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py&preserve-view=true)tekintheti meg.
+A különböző lépésekhez használható osztályok listáját a [Steps csomagban](/python/api/azureml-pipeline-steps/azureml.pipeline.steps?preserve-view=true&view=azure-ml-py)tekintheti meg.
 
 ## <a name="submit-the-pipeline"></a>A folyamat elküldése
 
@@ -338,7 +338,7 @@ Most futtassa a folyamatot. Először hozzon létre egy `Pipeline` objektumot a 
 Ezután a függvény használatával `Experiment.submit()` küldje el a folyamatot végrehajtásra. A `wait_for_completion` függvény a folyamat létrehozása során megjeleníti a naplókat. A naplók segítségével megtekintheti az aktuális folyamatot.
 
 > [!IMPORTANT]
-> Az első folyamat futtatása körülbelül *15 percet*vesz igénybe. Minden függőséget le kell tölteni, létre kell hozni egy Docker-rendszerképet, és a Python-környezet kiépítve és létrehozva. A folyamat újbóli futtatása jelentősen kevesebb időt vesz igénybe, mivel ezek az erőforrások a létrehozás helyett újra felhasználhatók. A folyamat teljes futási ideje azonban a parancsfájlok és az egyes folyamatokban futó folyamatok mennyiségétől függ.
+> Az első folyamat futtatása körülbelül *15 percet* vesz igénybe. Minden függőséget le kell tölteni, létre kell hozni egy Docker-rendszerképet, és a Python-környezet kiépítve és létrehozva. A folyamat újbóli futtatása jelentősen kevesebb időt vesz igénybe, mivel ezek az erőforrások a létrehozás helyett újra felhasználhatók. A folyamat teljes futási ideje azonban a parancsfájlok és az egyes folyamatokban futó folyamatok mennyiségétől függ.
 
 ```python
 from azureml.core import Experiment
@@ -386,9 +386,9 @@ published_pipeline
 
 A folyamat REST-végpontból való futtatásához szüksége van egy OAuth2-tulajdonos típusú hitelesítési fejlécre. Az alábbi példa interaktív hitelesítést használ (illusztrációs célokra), de az automatizált vagy a fej nélküli hitelesítést igénylő üzemi forgatókönyvek esetében használja az egyszerű szolgáltatás hitelesítését a [jelen cikkben leírtak](how-to-setup-authentication.md)szerint.
 
-Az egyszerű szolgáltatás hitelesítése magában foglalja az *alkalmazás regisztrációjának* létrehozását *Azure Active Directory*-ben. Először létrehoz egy ügyfél-titkos kulcsot, majd megadja a szolgáltatás elsődleges *szerepkörének hozzáférését* a Machine learning-munkaterülethez. A [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py&preserve-view=true) hitelesítési folyamat kezeléséhez használja a osztályt. 
+Az egyszerű szolgáltatás hitelesítése magában foglalja az *alkalmazás regisztrációjának* létrehozását *Azure Active Directory* -ben. Először létrehoz egy ügyfél-titkos kulcsot, majd megadja a szolgáltatás elsődleges *szerepkörének hozzáférését* a Machine learning-munkaterülethez. A [`ServicePrincipalAuthentication`](/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?preserve-view=true&view=azure-ml-py) hitelesítési folyamat kezeléséhez használja a osztályt. 
 
-Mindkettő [`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py&preserve-view=true) és `ServicePrincipalAuthentication` öröklése a következőtől: `AbstractAuthentication` . Mindkét esetben használja a [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-authentication-header--) függvényt ugyanúgy, hogy beolvassa a fejlécet:
+Mindkettő [`InteractiveLoginAuthentication`](/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?preserve-view=true&view=azure-ml-py) és `ServicePrincipalAuthentication` öröklése a következőtől: `AbstractAuthentication` . Mindkét esetben használja a [`get_authentication_header()`](/python/api/azureml-core/azureml.core.authentication.abstractauthentication?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-authentication-header--) függvényt ugyanúgy, hogy beolvassa a fejlécet:
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication
@@ -438,12 +438,12 @@ Ne hajtsa végre ezt a szakaszt, ha más Azure Machine Learning oktatóanyagokat
 
 Ha nem tervezi a létrehozott erőforrások használatát, törölje őket, így nem számítunk fel díjat:
 
-1. A Azure Portal bal oldali menüjében válassza az **erőforráscsoportok**lehetőséget.
+1. A Azure Portal bal oldali menüjében válassza az **erőforráscsoportok** lehetőséget.
 1. Az erőforráscsoportok listájában válassza ki a létrehozott erőforráscsoportot.
 1. Válassza az **Erőforráscsoport törlése** elemet.
-1. Adja meg az erőforráscsoport nevét. Ezután válassza a **Törlés**lehetőséget.
+1. Adja meg az erőforráscsoport nevét. Ezután válassza a **Törlés** lehetőséget.
 
-Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, majd válassza a **Törlés**lehetőséget.
+Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, majd válassza a **Törlés** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

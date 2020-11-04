@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 11/02/2020
 ms.author: inhenkel
-ms.openlocfilehash: c03950d64c9ead17dfa5c07ef70ab2b7ee0e90bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 33aed32c30f298fd3432f4cebcc28b9c20974545
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89296651"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309069"
 ---
-# <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Media Services metrikák és diagnosztikai naplók figyelése Azure Monitor használatával
+# <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>Media Services metrikák és diagnosztikai naplók figyelése a Azure Monitor
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -67,8 +67,10 @@ A következő Media Services [folyamatos átviteli végpontok](/rest/api/media/s
 |Kérelmek|Kérelmek|A folyamatos átviteli végpont által kiszolgált HTTP-kérelmek teljes számát adja meg.|
 |Kimenő forgalom|Kimenő forgalom|Kimenő átviteli végpontok percenkénti bájtjainak száma.|
 |SuccessE2ELatency|A Befejezés végének késése|Az az időtartam, amikor a folyamatos átviteli végpont a válasz utolsó bájtjának küldésére vonatkozó kérést kapott.|
+|Processzorhasználat| A prémium szintű streaming-végpontok CPU-használata. Ezek az adatátviteli végpontok nem érhetők el. |
+|Kimenő sávszélesség | Kimenő forgalom (bit/mp).|
 
-### <a name="why-would-i-want-to-use-metrics"></a>Miért érdemes mérőszámokat használni?
+### <a name="metrics-are-useful"></a>A metrikák hasznosak
 
 Íme néhány példa arra, hogy a monitorozási Media Services mérőszámai hogyan segíthetnek az alkalmazások teljesítményének megismerésében. Media Services metrikákkal foglalkozó kérdések a következők:
 
@@ -79,6 +81,8 @@ A következő Media Services [folyamatos átviteli végpontok](/rest/api/media/s
 * Hogyan láthatom a sikertelen kérelmek részletezését, és mi okozza a hibát?
 * Honnan tudhatom meg, hogy hány HLS-vagy DASH-kérelem van lehúzva a csomagolóból?
 * A Hogyan riasztást állít be, hogy a rendszer mikor találta meg a sikertelen kérelmek száma értékének küszöbértékét?
+
+A párhuzamosság az egyetlen fiókban használt adatfolyam-végpontok számának időbeli alakulására vonatkozik. Figyelembe kell vennie az egyidejű streamek és az összetett közzétételi paraméterek (például a dinamikus csomagolás több protokoll, több DRM-titkosítás stb.) közötti kapcsolatát. Minden további közzétett élő adatfolyam hozzáadja a PROCESSZORt és a kimeneti sávszélességet a streaming végponton. Ennek szem előtt tartásával érdemes Azure Monitor a folyamatos átviteli végpont kihasználtságának (CPU és kimenő kapacitás) alapos figyelésére, hogy a megfelelő méretezéssel (vagy több folyamatos átviteli végpont közötti adatforgalom felosztásával) legyen.
 
 ### <a name="example"></a>Példa
 

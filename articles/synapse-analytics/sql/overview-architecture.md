@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: ae3b54ca72c92722dffa370b0b8be1ca2c490f97
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 22cbd0b4ce512df70d13d89c5f2539420dac2b85
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476008"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307026"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure szinapszis SQL-architektúra 
 
@@ -27,9 +27,9 @@ Ez a cikk a szinapszis SQL architektúrájának összetevőit ismerteti.
 
 A szinapszis SQL egy kibővíthető architektúrát használ a számítási folyamatok több csomóponton történő elosztásához. A számítás elkülönül a tárterülettől, ami lehetővé teszi a számítások egymástól független skálázását a rendszeren lévő adatoktól függetlenül. 
 
-Az SQL-készlet esetében a skála egysége az [adattárház-egységként](resource-consumption-models.md)ismert számítási teljesítmény absztrakciója. 
+A dedikált SQL-készlet esetében a skála egysége az [adattárház-egységként](resource-consumption-models.md)ismert számítási teljesítmény absztrakciója. 
 
-A kiszolgáló nélküli SQL igény esetén a méretezés automatikusan történik a lekérdezési erőforrások követelményeinek kielégítése érdekében. Mivel a topológia az idő múlásával módosul a csomópontok vagy feladatátvételek hozzáadásával, eltávolításával, alkalmazkodik a változásokhoz, és gondoskodik arról, hogy a lekérdezés elegendő erőforrással rendelkezik, és sikeresen befejeződik. Az alábbi képen például a 4 számítási csomópontot használó SQL on-demand használatával végezhető el a lekérdezés végrehajtása.
+A kiszolgáló nélküli SQL-készlet esetén a kiszolgáló nélküli méretezés automatikusan történik a lekérdezési erőforrások követelményeinek kielégítése érdekében. Mivel a topológia az idő múlásával módosul a csomópontok vagy feladatátvételek hozzáadásával, eltávolításával, alkalmazkodik a változásokhoz, és gondoskodik arról, hogy a lekérdezés elegendő erőforrással rendelkezik, és sikeresen befejeződik. Az alábbi képen például egy 4 számítási csomópontot használó kiszolgáló nélküli SQL-készlet látható a lekérdezés végrehajtásához.
 
 ![A Synapse SQL architektúrája](./media//overview-architecture/sql-architecture.png)
 
@@ -37,13 +37,13 @@ A szinapszis SQL egy node-alapú architektúrát használ. Az alkalmazások a T-
 
 Az Azure szinapszis SQL-vezérlő csomópontja elosztott lekérdezési motort használ a párhuzamos feldolgozásra irányuló lekérdezések optimalizálásához, majd a műveleteket a számítási csomópontok számára továbbítja a munkájukat párhuzamosan. 
 
-Az igény szerinti SQL-vezérlési csomópont elosztott lekérdezés-feldolgozási (DQP) motort használ a felhasználói lekérdezések elosztott végrehajtásának optimalizálására és összehangolására azáltal, hogy a számítási csomópontokon végrehajtandó kisebb lekérdezésekre bontja azt. A rendszer minden kis lekérdezést feladatnak nevez, és elosztott végrehajtási egységet jelöl. Beolvassa a fájl (oka) t a tárolóból, a más feladatokból beolvasott más feladatokból, csoportokból vagy rendelésekből származó adatokat is összekapcsol. 
+A kiszolgáló nélküli SQL-készlet vezérlési csomópontja elosztott lekérdezés-feldolgozási (DQP) motort használ a felhasználói lekérdezések elosztott végrehajtásának optimalizálására és összehangolására azáltal, hogy a számítási csomópontokon végrehajtandó kisebb lekérdezésekre osztja fel azokat. A rendszer minden kis lekérdezést feladatnak nevez, és elosztott végrehajtási egységet jelöl. Beolvassa a fájl (oka) t a tárolóból, a más feladatokból beolvasott más feladatokból, csoportokból vagy rendelésekből származó adatokat is összekapcsol. 
 
 A számítási csomópontok az összes felhasználói adatot az Microsoft Azure Storage-ban tárolják, és futtatják a párhuzamos lekérdezéseket. Az adatáthelyezési szolgáltatás (DMS) egy rendszerszintű belső szolgáltatás, amely szükség szerint áthelyezi az adatokat a csomópontok között a lekérdezések párhuzamos futtatásához és pontos eredmények visszaadásához. 
 
-A leválasztott tárolással és számítással a szinapszis SQL egyik használata a számítási kapacitás független méretezését is kihasználhatja a tárolási igényektől függetlenül. Az SQL igény szerinti skálázása automatikusan történik, míg az SQL-készlethez a következőket teheti:
+A leválasztott tárolással és számítással a szinapszis SQL egyik használata a számítási kapacitás független méretezését is kihasználhatja a tárolási igényektől függetlenül. A kiszolgáló nélküli SQL-készlet skálázása automatikusan történik, míg a dedikált SQL-készlethez a következőket teheti:
 
-* Az adatok áthelyezése nélkül növelheti vagy csökkentheti a számítási teljesítményt egy SQL-készleten (adatraktáron) belül.
+* Az adatok áthelyezése nélkül növelheti vagy csökkentheti a számítási teljesítményt egy dedikált SQL-készleten belül.
 * Szüneteltetheti a számítási kapacitást az adatok megőrzésével, hogy csak a tárterületért kelljen fizetnie.
 * Működési időben újra aktiválhatja a számítási kapacitást.
 
@@ -51,7 +51,7 @@ A leválasztott tárolással és számítással a szinapszis SQL egyik használa
 
 A szinapszis SQL kihasználja az Azure Storage-t a felhasználói adatai biztonságának megőrzése érdekében. Mivel az Azure Storage tárolja és kezeli az adatait, külön díjat számítunk fel a tárterület-felhasználásért. 
 
-Az SQL on-demand lehetővé teszi, hogy az adattárban lévő fájlokat csak olvasható módon kérdezze le, az SQL-készlet pedig lehetővé teszi az adatbevitelt is. Az SQL-készletbe való betöltéskor az adat felosztása **eloszlásba** történik a rendszer teljesítményének optimalizálása érdekében. Kiválaszthatja, hogy melyik horizontális Felskálázási mintát kell használnia az adatterjesztéshez a tábla meghatározásakor. Ezek a horizontális skálázási minták támogatottak:
+A kiszolgáló nélküli SQL-készlet lehetővé teszi, hogy a fájlok lekérdezését csak olvasható módon lehessen lekérdezni, az SQL-készlet pedig az adatbevitelt is lehetővé teszi. Ha az adat betöltése dedikált SQL-készletbe történik, az adat **elosztásra** kerül a rendszer teljesítményének optimalizálása érdekében. Kiválaszthatja, hogy melyik horizontális Felskálázási mintát kell használnia az adatterjesztéshez a tábla meghatározásakor. Ezek a horizontális skálázási minták támogatottak:
 
 * Kivonat
 * Ciklikus időszeletelés
@@ -61,34 +61,34 @@ Az SQL on-demand lehetővé teszi, hogy az adattárban lévő fájlokat csak olv
 
 A vezérlő csomópont az architektúra agya. Ez az az előtérbeli rendszer, amely az összes alkalmazással és kapcsolattal együttműködik. 
 
-A szinapszis SQL-ben az elosztott lekérdezési motor a vezérlő csomóponton fut a párhuzamos lekérdezések optimalizálása és koordinálása érdekében. Ha T-SQL-lekérdezést küld az SQL-készletnek, a vezérlési csomópont átalakítja azokat a lekérdezéseket, amelyek párhuzamosan futnak az egyes eloszlásokon.
+A szinapszis SQL-ben az elosztott lekérdezési motor a vezérlő csomóponton fut a párhuzamos lekérdezések optimalizálása és koordinálása érdekében. Ha T-SQL-lekérdezést küld a dedikált SQL-készletnek, a vezérlési csomópont átalakítja azokat a lekérdezéseket, amelyek párhuzamosan futnak az egyes eloszlásokon.
 
-Az SQL on-demand szolgáltatásban a DQP motor a vezérlési csomóponton futtatja a felhasználói lekérdezések elosztott végrehajtásának optimalizálását és koordinálását úgy, hogy a számítási csomópontokon végrehajtandó kisebb lekérdezésekre osztja fel azokat. Emellett az egyes csomópontok által feldolgozandó fájlok készleteit is hozzárendeli.
+A kiszolgáló nélküli SQL-készletben a DQP motor a vezérlési csomóponton futtatja a felhasználói lekérdezés elosztott végrehajtásának optimalizálását és koordinálását úgy, hogy a számítási csomópontokon végrehajtandó kisebb lekérdezésekre bontja. Emellett az egyes csomópontok által feldolgozandó fájlok készleteit is hozzárendeli.
 
 ## <a name="compute-nodes"></a>Számítási csomópontok
 
 A számítási csomópontok biztosítják a számítási teljesítményt. 
 
-Az SQL-készletben a disztribúciók a számítási csomópontokat dolgozzák fel feldolgozásra. A további számítási erőforrásokért a készlet újraképezi a disztribúciókat a rendelkezésre álló számítási csomópontokra. A számítási csomópontok száma 1-től 60-ig terjed, és az SQL-készlet szolgáltatási szintje határozza meg. Minden számítási csomóponthoz tartozik egy csomópont-azonosító, amely a rendszernézetekben látható. A számítási csomópont AZONOSÍTÓját úgy tekintheti meg, hogy megkeresi a node_id oszlopot a rendszernézetekben, amelyek nevei a sys.pdw_nodeskal kezdődnek. A rendszernézetek listáját a következő témakörben tekintheti meg: [SZINAPSZIS SQL rendszer nézetei](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest).
+A dedikált SQL-készletben a disztribúciók leképezik a számítási csomópontokat a feldolgozáshoz. A további számítási erőforrásokért a készlet újraképezi a disztribúciókat a rendelkezésre álló számítási csomópontokra. A számítási csomópontok száma 1 és 60 közötti tartományba esik, és a dedikált SQL-készlet szolgáltatási szintje határozza meg. Minden számítási csomóponthoz tartozik egy csomópont-azonosító, amely a rendszernézetekben látható. A számítási csomópont AZONOSÍTÓját úgy tekintheti meg, hogy megkeresi a node_id oszlopot a rendszernézetekben, amelyek nevei a sys.pdw_nodeskal kezdődnek. A rendszernézetek listáját a következő témakörben tekintheti meg: [SZINAPSZIS SQL rendszer nézetei](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest).
 
-Az SQL on-demand szolgáltatásban minden számítási csomóponthoz hozzá kell rendelni egy feladatot, valamint a feladat végrehajtásához szükséges fájlokat. A feladat elosztott lekérdezés-végrehajtási egység, amely ténylegesen a lekérdezés felhasználója számára van elküldve. Az automatikus skálázás érvényes annak biztosítására, hogy elegendő számítási csomópont legyen kihasználva a felhasználói lekérdezés végrehajtásához.
+A kiszolgáló nélküli SQL-készletben minden számítási csomóponthoz hozzá kell rendelni egy feladatot, valamint a feladat végrehajtásához szükséges fájlokat. A feladat elosztott lekérdezés-végrehajtási egység, amely ténylegesen a lekérdezés felhasználója számára van elküldve. Az automatikus skálázás érvényes annak biztosítására, hogy elegendő számítási csomópont legyen kihasználva a felhasználói lekérdezés végrehajtásához.
 
 ## <a name="data-movement-service"></a>Adatáthelyezési szolgáltatás
 
-Az adatátviteli szolgáltatás (DMS) az SQL-készlet adatátviteli technológiája, amely a számítási csomópontok közötti adatáthelyezést koordinálja. Egyes lekérdezések adatáthelyezést igényelnek annak biztosításához, hogy a párhuzamos lekérdezések pontos eredményeket állítsanak vissza. Ha adatáthelyezésre van szükség, a DMS biztosítja a megfelelő adatelérést a megfelelő helyre.
+Az adatátviteli szolgáltatás (DMS) a dedikált SQL-készlet adatátviteli technológiája, amely a számítási csomópontok közötti adatáthelyezést koordinálja. Egyes lekérdezések adatáthelyezést igényelnek annak biztosításához, hogy a párhuzamos lekérdezések pontos eredményeket állítsanak vissza. Ha adatáthelyezésre van szükség, a DMS biztosítja a megfelelő adatelérést a megfelelő helyre.
 
 > [!VIDEO https://www.youtube.com/embed/PlyQ8yOb8kc]
 
 ## <a name="distributions"></a>Disztribúciók
 
-A disztribúció az SQL-készletben elosztott adatokon futó párhuzamos lekérdezések tárolási és feldolgozási alapegysége. Ha az SQL-készlet egy lekérdezést futtat, a munka 60 kisebb, párhuzamosan futó lekérdezésre van osztva. 
+A terjesztés a dedikált SQL-készletben elosztott adatokon futó párhuzamos lekérdezések tárolásának és feldolgozásának alapvető egysége. Ha a dedikált SQL-készlet egy lekérdezést futtat, a munka 60 kisebb, párhuzamosan futó lekérdezésekre van osztva. 
 
-Az 60-es kisebb lekérdezések az egyik adateloszláson futnak. Minden számítási csomópont egy vagy több 60-disztribúciót kezel. A maximális számítási erőforrásokkal rendelkező SQL-készletekhez számítási csomópontok egyetlen eloszlással rendelkeznek. A minimális számítási erőforrásokkal rendelkező SQL-készletek egy számítási csomóponton lévő összes disztribúcióval rendelkeznek. 
+Az 60-es kisebb lekérdezések az egyik adateloszláson futnak. Minden számítási csomópont egy vagy több 60-disztribúciót kezel. A maximális számítási erőforrásokkal rendelkező dedikált SQL-készlethez számítási csomópontok egyetlen eloszlása tartozik. A minimális számítási erőforrásokkal rendelkező dedikált SQL-készlet minden eloszlása egy számítási csomóponton található. 
 
 ## <a name="hash-distributed-tables"></a>Kivonat alapján elosztott táblák
 A kivonat alapján elosztott tábla nyújtja a legnagyobb lekérdezési teljesítményt az összekapcsolásoknál és aggregációknál nagy táblák esetén. 
 
-Az adatokat egy kivonattal elosztott táblába helyezheti el, az SQL-készlet kivonatoló függvényt használ az egyes sorok egyetlen eloszláshoz való hozzárendeléséhez determinisztikus módon. A tábla definíciójában az oszlopok egyike elosztási oszlopként van megjelölve. A kivonatolási függvény az elosztási oszlop értékeit használja az egyes sorok elosztáshoz rendeléséhez.
+Az adatszegmensek kivonatos elosztott táblába való felosztásához a dedikált SQL-készlet kivonatoló függvényt használ az egyes sorok egyetlen eloszláshoz való hozzárendeléséhez determinisztikus módon. A tábla definíciójában az oszlopok egyike elosztási oszlopként van megjelölve. A kivonatolási függvény az elosztási oszlop értékeit használja az egyes sorok elosztáshoz rendeléséhez.
 
 Az alábbi ábra azt szemlélteti, hogyan történik a teljes (nem elosztott) táblázat tárolása kivonatként elosztott táblaként. 
 
@@ -117,4 +117,4 @@ Az alábbi ábrán egy olyan replikált tábla látható, amely az első eloszl�
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy már ismeri a szinapszis SQL-t, ismerkedjen meg az [SQL-készlet gyors létrehozásával](../quickstart-create-sql-pool-portal.md) és a [mintaadatok betöltésével](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) (./SQL-Data-Warehouse-Load-Sample-Databases.MD). Vagy megkezdheti az [SQL igény szerinti használatát](../quickstart-sql-on-demand.md). Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét](../../azure-glossary-cloud-terminology.md), amikor az új fogalmakkal ismerkedik. 
+Most, hogy már ismeri a szinapszis SQL-t, ismerkedjen meg [a DEDIKÁLT SQL-készlet gyors létrehozásával](../quickstart-create-sql-pool-portal.md) és a [mintaadatok betöltésével](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) (./SQL-Data-Warehouse-Load-Sample-Databases.MD). Vagy elkezdheti [használni a kiszolgáló nélküli SQL-készletet](../quickstart-sql-on-demand.md). Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét](../../azure-glossary-cloud-terminology.md), amikor az új fogalmakkal ismerkedik. 

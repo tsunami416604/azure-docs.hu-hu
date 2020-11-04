@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 9a18b35ce974aebb38f8f58b892fd93b94f5e3c8
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 8480a0b8722fbfff0f1d8a8fafc1a64f38d21d6e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314789"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307207"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Mély tanulási modell üzembe helyezése a GPU-val való következtetéshez
 
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan használható a Azure Machine Learning egy GPU-t tá
 A következtetés vagy a modell pontozása az a fázis, amelyben az üzembe helyezett modellt használják az előrejelzések készítéséhez. A GPU-k használata a CPU-k helyett teljesítménybeli előnyökkel jár a nagyon párhuzamosítható számításokhoz.
 
 > [!IMPORTANT]
-> A webszolgáltatások üzembe helyezése esetén a GPU-következtetések csak az Azure Kubernetes szolgáltatásban támogatottak. Ha __gépi tanulási folyamattal__kíván következtetni, a GPU-k csak Azure Machine learning számítások esetén támogatottak. A ML-folyamatok használatáról további információt az [oktatóanyag: Azure Machine learning folyamat létrehozása kötegelt pontozáshoz](tutorial-pipeline-batch-scoring-classification.md)című témakörben talál. 
+> A webszolgáltatások üzembe helyezése esetén a GPU-következtetések csak az Azure Kubernetes szolgáltatásban támogatottak. Ha __gépi tanulási folyamattal__ kíván következtetni, a GPU-k csak Azure Machine learning számítások esetén támogatottak. A ML-folyamatok használatáról további információt az [oktatóanyag: Azure Machine learning folyamat létrehozása kötegelt pontozáshoz](tutorial-pipeline-batch-scoring-classification.md)című témakörben talál. 
 
 > [!TIP]
 > Bár a cikkben szereplő kódrészletek egy TensorFlow modellt használnak, a GPU-t támogató gépi tanulási keretrendszerre alkalmazhatja az adatokat.
@@ -38,7 +38,7 @@ A következtetés vagy a modell pontozása az a fázis, amelyben az üzembe hely
 
 * Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
-* A Azure Machine Learning SDK-val telepített Python-fejlesztési környezet. További információ: [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).  
+* A Azure Machine Learning SDK-val telepített Python-fejlesztési környezet. További információ: [Azure Machine learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).  
 
 * GPU-t használó regisztrált modell.
 
@@ -192,7 +192,7 @@ inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
 ```
 
 További információ a környezetekről: [környezetek létrehozása és kezelése képzéshez és üzembe helyezéshez](how-to-use-environments.md).
-További információkért tekintse meg a [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true)dokumentációját.
+További információkért tekintse meg a [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py)dokumentációját.
 
 ## <a name="deploy-the-model"></a>A modell üzembe helyezése
 
@@ -217,7 +217,7 @@ aks_service.wait_for_deployment(show_output=True)
 print(aks_service.state)
 ```
 
-További információ: a [modell](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true)dokumentációja.
+További információ: a [modell](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py)dokumentációja.
 
 ## <a name="issue-a-sample-query-to-your-service"></a>Lekérdezés kiadása a szolgáltatásnak
 

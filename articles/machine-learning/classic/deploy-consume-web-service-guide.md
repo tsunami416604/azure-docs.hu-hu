@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 52404aa1514dc3189305117181408e25e233fce8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc71dc87ca972c52fabb91a6412eec702eee5460
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362401"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307430"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások: üzembe helyezés és felhasználás
 
-**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 A gépi tanulási munkafolyamatok és modellek webszolgáltatásként való üzembe helyezéséhez Azure Machine Learning Studio (klasszikus) használható. Ezek a webszolgáltatások a gépi tanulási modellek interneten keresztüli meghívására használhatók az előrejelzések valós idejű vagy kötegelt módban történő elvégzéséhez. Mivel a webszolgáltatások REST-alapúak, különböző programozási nyelveken és platformokon, például a .NET-ben és a Java-ban, illetve az alkalmazásokból, például az Excelből is meghívhatók.
 
@@ -44,7 +44,7 @@ Az alábbi hivatkozások általános információkat nyújtanak az új webszolg�
 
 A webszolgáltatások Azure Machine Learning Studio (klasszikus) erőforrás-szolgáltatója lehetővé teszi a webszolgáltatások üzembe helyezését és kezelését REST API-hívások használatával. További információ: [Machine learning webszolgáltatás (REST)](/rest/api/machinelearning/index) referenciája.
 
-<!-- [Machine Learning Web Service (REST)](https://msdn.microsoft.com/library/azure/mt767538.aspx) reference. -->
+<!-- [Machine Learning Web Service (REST)](/rest/api/machinelearning/webservices) reference. -->
 
 ### <a name="with-powershell-cmdlets"></a>PowerShell-parancsmagokkal
 
@@ -69,7 +69,7 @@ Az alkalmazás futtatása webszolgáltatási JSON-sablont hoz létre. Ha a sablo
 
 Adja hozzá őket a JSON-sablonhoz a *Tulajdonságok* csomópont gyermekeiként a *MachineLearningWorkspace* csomóponttal megegyező szinten.
 
-Bemutatunk egy példát:
+Például:
 
 ```json
 "StorageAccount": {
@@ -83,7 +83,7 @@ Bemutatunk egy példát:
 
 További részletekért tekintse meg a következő cikkeket és mintakód-kódot:
 
-* [Azure Machine learning Studio (klasszikus) parancsmagok](https://docs.microsoft.com/powershell/module/az.machinelearning) referenciája az MSDN-ben
+* [Azure Machine learning Studio (klasszikus) parancsmagok](/powershell/module/az.machinelearning) referenciája az MSDN-ben
 
 ## <a name="consume-the-web-services"></a>A webszolgáltatások felhasználása
 

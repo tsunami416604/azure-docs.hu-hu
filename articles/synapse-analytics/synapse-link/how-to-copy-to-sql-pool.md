@@ -1,6 +1,6 @@
 ---
-title: A Azure Cosmos DB-beli SQL-készletbe másolt szinapszis-hivatkozás másolása Apache Spark használatával
-description: Betöltheti az adatkészletet egy Spark-dataframe, megfordíthatja az adatgyűjtést, és betöltheti egy SQL Pool-táblába
+title: Azure Cosmos DB-adathoz tartozó szinapszis-hivatkozás másolása egy dedikált SQL-készletbe Apache Spark használatával
+description: Az adat betöltése egy Spark-dataframe, az adat kurátora, és betöltése egy dedikált SQL Pool-táblába
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
@@ -9,35 +9,35 @@ ms.subservice: synapse-link
 ms.date: 08/10/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 409f1ecee5ccf42a0168d500b40337366e07bfc0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 13891f9614e658be39adbb69fed1503a0c66d5e4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91287850"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309222"
 ---
-# <a name="copy-data-from-azure-cosmos-db-into-a-sql-pool-using-apache-spark"></a>Adatok másolása Azure Cosmos DBból egy SQL-készletbe Apache Spark használatával
+# <a name="copy-data-from-azure-cosmos-db-into-a-dedicated-sql-pool-using-apache-spark"></a>Adatok másolása Azure Cosmos DBból egy dedikált SQL-készletbe a Apache Spark használatával
 
 Az Azure szinapszis hivatkozása Azure Cosmos DB lehetővé teszi, hogy a felhasználók közel valós idejű elemzést futtassanak a Azure Cosmos DBban lévő működési adaton. Vannak azonban olyan időpontok, amikor bizonyos adatokat össze kell összesíteni és bővíteni kell az adattárház-felhasználók kiszolgálásához. A kisegítő és az exportálási szinapszis-kapcsolati adat csak néhány cellával elvégezhető egy jegyzetfüzetben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 * [Szinapszis-munkaterület kiépítése](../quickstart-create-workspace.md) az alábbiakkal:
-    * [Spark-készlet](../quickstart-create-apache-spark-pool-studio.md)
-    * [SQL-készlet](../quickstart-create-sql-pool-studio.md)
+    * [Kiszolgáló nélküli Apache Spark készlet](../quickstart-create-apache-spark-pool-studio.md)
+    * [dedikált SQL-készlet](../quickstart-create-sql-pool-studio.md)
 * [Cosmos DB fiók kiépítése HTAP-tárolóval](../../cosmos-db/configure-synapse-link.md)
 * [A Azure Cosmos DB HTAP-tároló összekötése a munkaterülettel](./how-to-connect-synapse-link-cosmos-db.md)
-* [A megfelelő beállítással importálhatja az adatait egy SQL-készletbe a Sparkból](../spark/synapse-spark-sql-pool-import-export.md)
+* [A megfelelő beállítással importálhatja az adatok egy dedikált SQL-készletbe a Spark-ból](../spark/synapse-spark-sql-pool-import-export.md)
 
 ## <a name="steps"></a>Lépések
 Ebben az oktatóanyagban csatlakozni fog az analitikai tárolóhoz, hogy ne legyen hatással a tranzakciós tárolóra (nem használja fel a kérelmek egységét). A következő lépéseket hajtjuk végre:
 1. A Cosmos DB HTAP-tároló beolvasása Spark-dataframe
 2. Eredmények összesítése új dataframe
-3. Az adatgyűjtés egy SQL-készletbe
+3. Az adat betöltése egy dedikált SQL-készletbe
 
 [![Spark – SQL 1. lépés](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png)](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png#lightbox)
 
 ## <a name="data"></a>Adatok
-Ebben a példában egy **RetailSales**nevű HTAP-tárolót használunk. Egy **ConnectedData**nevű társított szolgáltatás része, és a következő sémával rendelkezik:
+Ebben a példában egy **RetailSales** nevű HTAP-tárolót használunk. Egy **ConnectedData** nevű társított szolgáltatás része, és a következő sémával rendelkezik:
 * _rid: sztring (null értékű = igaz)
 * _ts: hosszú (null értékű = igaz)
 * logQuantity: Double (null értékű = igaz)
@@ -50,7 +50,7 @@ Ebben a példában egy **RetailSales**nevű HTAP-tárolót használunk. Egy **Co
 * weekStarting: hosszú (null értékű = igaz)
 * _etag: sztring (null értékű = igaz)
 
-A Sales (*mennyiség*, *bevétel* (ár x mennyiség) összegét *productCode* és *weekStarting* szerint összesítjük jelentéskészítési célokra. Végezetül a **dbo. productsales**nevű SQL Pool-táblába exportáljuk ezeket az adatfájlokat.
+A Sales ( *mennyiség* , *bevétel* (ár x mennyiség) összegét *productCode* és *weekStarting* szerint összesítjük jelentéskészítési célokra. Végezetül a **dbo. productsales** nevű dedikált SQL Pool-táblába exportáljuk ezeket az adatfájlokat.
 
 ## <a name="configure-a-spark-notebook"></a>Spark-jegyzetfüzet konfigurálása
 A fő nyelvként hozzon létre egy Spark-jegyzetfüzetet a Scala as Spark (Scala) néven. A jegyzetfüzet alapértelmezett beállítását használjuk a munkamenethez.
@@ -67,7 +67,7 @@ val df_olap = spark.read.format("cosmos.olap").
 
 ## <a name="aggregate-the-results-in-a-new-dataframe"></a>Eredmények összesítése új dataframe
 
-A második cellában az új dataframe szükséges átalakítást és összesítéseket futtatjuk, mielőtt betöltjük egy SQL-készlet adatbázisába.
+A második cellában az új dataframe szükséges átalakítást és összesítéseket futtatjuk a dedikált SQL Pool-adatbázisba való betöltés előtt.
 
 ```java
 // Select relevant columns and create revenue
@@ -77,12 +77,12 @@ val df_olap_aggr = df_olap_step1.groupBy("productCode","weekStarting").agg(sum("
     withColumn("AvgPrice",col("Sum_revenue")/col("Sum_quantity"))
 ```
 
-## <a name="load-the-results-into-a-sql-pool"></a>Az eredmények betöltése SQL-készletbe
+## <a name="load-the-results-into-a-dedicated-sql-pool"></a>Az eredmények betöltése egy dedikált SQL-készletbe
 
-A harmadik cellában az SQL-készletbe tölti be az adathalmazt. Automatikusan létrehoz egy ideiglenes külső táblát, külső adatforrást és egy külső fájlformátumot, amelyet a rendszer a feladatok elvégzése után töröl.
+A harmadik cellában az adat egy dedikált SQL-készletbe van betöltve. Automatikusan létrehoz egy ideiglenes külső táblát, külső adatforrást és egy külső fájlformátumot, amelyet a rendszer a feladatok elvégzése után töröl.
 
 ```java
-df_olap_aggr.write.sqlanalytics("arnaudpool.dbo.productsales", Constants.INTERNAL)
+df_olap_aggr.write.sqlanalytics("userpool.dbo.productsales", Constants.INTERNAL)
 ```
 
 ## <a name="query-the-results-with-sql"></a>Eredmények lekérdezése az SQL-sel
@@ -99,5 +99,5 @@ SELECT  [productCode]
 
 A lekérdezés a következő eredményeket mutatja be diagram módban: [ ![ Spark – SQL 2. lépés](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png)](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png#lightbox)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Azure Cosmos DB analitikus áruház lekérdezése Apache Spark](./how-to-query-analytical-store-spark.md)

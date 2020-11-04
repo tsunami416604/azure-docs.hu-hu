@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
-ms.openlocfilehash: 8ffdd8c15cf225e4f5b99a0b84b71bdbed456234
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 31cb2b2b5411968f1eba71fa9afc7bdc8296407c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130085"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307403"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Mi az a gépi tanulás (AutoML)?
 
@@ -204,7 +204,7 @@ Például az __egyes példányok vagy egyedi__ modellek létrehozása a követke
 
 A Azure Machine Learning két felületet biztosít az automatikus ML-vel való munkavégzéshez:
 
-* A Code tapasztalt ügyfelek esetében [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) -t 
+* A Code tapasztalt ügyfelek esetében [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -t 
 
 * A korlátozott/nem kódokkal rendelkező ügyfelek számára Azure Machine Learning Studio at [https://ml.azure.com](https://ml.azure.com/)  
 
@@ -289,8 +289,7 @@ Tekintse át a részletes példákat és a használati eseteket a [GitHub notebo
 
 ### <a name="python-sdk-reference"></a>Python SDK-referencia
 
-Az SDK tervezési mintáinak és az [AutoML osztály dokumentációjának](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true)elmélyítésére szaktudását. 
+Az SDK tervezési mintáinak és az [AutoML osztály dokumentációjának](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py)elmélyítésére szaktudását. 
 
 > [!Note]
-> Az automatizált gépi tanulási képességek más Microsoft-megoldásokban is elérhetők, mint például a, a [ml.net](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), a [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), a [Power bi](https://docs.microsoft.com/power-bi/service-machine-learning-automated) és a [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)
-
+> Az automatizált gépi tanulási képességek más Microsoft-megoldásokban is elérhetők, mint például a, a [ml.net](/dotnet/machine-learning/automl-overview), a [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), a [Power bi](/power-bi/service-machine-learning-automated) és a [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)

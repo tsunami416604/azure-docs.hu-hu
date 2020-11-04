@@ -1,6 +1,6 @@
 ---
-title: Alapszintű betöltési stratégia megtervezése az SQL-készlethez
-description: ETL helyett a kinyerési, betöltési és átalakítási (ELT) folyamatot kell megterveznie az adatok vagy az SQL-készlet betöltéséhez.
+title: Alapszintű adatok betöltésére szolgáló stratégia kialakítása dedikált SQL-készlethez
+description: ETL helyett egy kinyerési, betöltési és átalakítási (ELT) folyamatot kell megterveznie az adatok dedikált SQL-sel való betöltéséhez.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: dbbed2ccaa62a99bb54a6d3d2eecf0c644281404
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a57abd080bdbbaefbe07258a2b241c093dc8c441
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474665"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308737"
 ---
-# <a name="design-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Alapszintű betöltési stratégia kialakítása az Azure szinapszis SQL-készlethez
+# <a name="design-a-polybase-data-loading-strategy-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Alapszintű betöltési stratégia kialakítása dedikált SQL-készlethez az Azure szinapszis Analyticsben
 
 A hagyományos SMP-adattárházak kinyerési, átalakítási és betöltési (ETL) folyamatot használnak az adatok betöltéséhez. Az Azure SQL Pool egy nagymértékben párhuzamos feldolgozási (MPP) architektúra, amely kihasználja a számítási és tárolási erőforrások méretezhetőségét és rugalmasságát. A kinyerési, betöltési és átalakítási (ELT) folyamat használatával kihasználhatja a beépített elosztott lekérdezés-feldolgozási képességek előnyeit, és eltávolíthatja az adatoknak a betöltés előtt való átalakításához szükséges erőforrásokat.
 
@@ -29,12 +29,12 @@ Míg az SQL-készlet számos betöltési módszert támogat, többek között a 
 
 A kinyerési, betöltési és átalakítási (ELT) folyamat során a rendszer kinyeri az adatforrásrendszer adatait, betölti azokat egy adattárházba, majd átalakítja azokat.
 
-Az SQL-készlethez tartozó ELT megvalósításának alapvető lépései a következők:
+A következő lépésekkel végezhető el az alapszintű ELT a dedikált SQL-készlet megvalósításához:
 
 1. A forrásadatok kinyerése szövegfájlokba.
 2. Az Azure Blob Storage-ba vagy Azure Data Lake Storeba helyezheti az adatterületet.
 3. Az adatgyűjtés előkészítése a betöltéshez.
-4. Az adatok betöltése az SQL Pool előkészítési tábláiba a Base használatával.
+4. Az adatok betöltése a dedikált SQL-készlet előkészítési tábláiba a Base használatával.
 5. Alakítsa át az adathalmazt.
 6. Adatok beszúrása az éles üzemi táblákba.
 
@@ -85,11 +85,11 @@ Az Azure Storage-ba történő adatáthelyezéshez használható eszközök és 
 
 - Az [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) szolgáltatás javítja a hálózat teljesítményét, a teljesítményt és a kiszámíthatóságot. A ExpressRoute egy olyan szolgáltatás, amely az Azure-hoz való dedikált privát kapcsolatban továbbítja az adatait. A ExpressRoute-kapcsolatok nem a nyilvános interneten keresztül irányítják az adattovábbítást. A kapcsolatok nagyobb megbízhatóságot, gyorsabb sebességet, kisebb késést és nagyobb biztonságot biztosítanak, mint a szokásos kapcsolatok a nyilvános interneten.
 - A [AZCopy segédprogram](../../storage/common/storage-use-azcopy-v10.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) az Azure Storage-ba helyezi át az adatátvitelt a nyilvános interneten keresztül. Ez akkor működik, ha az adatméretek 10 TB-nál kisebbek. A AZCopy rendszeres betöltéséhez tesztelje a hálózati sebességet, és ellenőrizze, hogy elfogadható-e.
-- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) olyan átjáróval rendelkezik, amelyet telepíthet a helyi kiszolgálóra. Ezután létrehozhat egy folyamatot, amely a helyi kiszolgálóról az Azure Storage-ba helyezi át az adatok áthelyezését. A Data Factory SQL-készlettel való használatához lásd: [az SQL-készletbe való betöltés](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) olyan átjáróval rendelkezik, amelyet telepíthet a helyi kiszolgálóra. Ezután létrehozhat egy folyamatot, amely a helyi kiszolgálóról az Azure Storage-ba helyezi át az adatok áthelyezését. Ha a Data Factory dedikált SQL-készlettel szeretné használni, tekintse meg az [adat betöltése DEDIKÁLT SQL-készletbe](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)című témakört.
 
 ## <a name="3-prepare-the-data-for-loading"></a>3. az adatgyűjtés előkészítése a betöltéshez
 
-Előfordulhat, hogy az SQL-készletbe való betöltés előtt elő kell készítenie és meg kell tisztítania a Storage-fiókban tárolt adatait. Az adatelőkészítés elvégezhető, miközben az adatai a forrásban vannak, miközben az adatait szövegfájlba exportálja, vagy az Azure Storage-ban tárolt adatai.  A lehető leghamarabb dolgozhat az adatkezelési folyamatokkal.  
+Előfordulhat, hogy elő kell készítenie és törölnie kell a Storage-fiókban tárolt adatait, mielőtt a dedikált SQL-készletbe betölti azt. Az adatelőkészítés elvégezhető, miközben az adatai a forrásban vannak, miközben az adatait szövegfájlba exportálja, vagy az Azure Storage-ban tárolt adatai.  A lehető leghamarabb dolgozhat az adatkezelési folyamatokkal.  
 
 ### <a name="define-external-tables"></a>Külső táblák definiálása
 
@@ -110,7 +110,7 @@ A szövegfájlok formázása:
 - Formázza a szövegfájlban található adattípusokat az oszlopokhoz és az adattípusokhoz való igazításhoz az SQL-készlet célhelye táblában. A külső szövegfájlokban lévő adattípusok és az adatraktár tábla közötti helytelen igazítás a sorok elutasítását okozza a terhelés során.
 - Külön mezők a szövegfájlban egy lezáró fájllal.  Ügyeljen arra, hogy olyan karaktert vagy karaktert használjon, amely nem található a forrásadatok között. Használja a [külső fájlformátum létrehozásakor](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)megadott lezárót.
 
-## <a name="4-load-the-data-into-sql-pool-staging-tables-using-polybase"></a>4. az adatok betöltése az SQL Pool előkészítési tábláiba a Base használatával
+## <a name="4-load-the-data-into-dedicated-sql-pool-staging-tables-using-polybase"></a>4. az adatok betöltése a dedikált SQL-készlet előkészítési tábláiba a Base használatával
 
 Az ajánlott eljárás az, ha az adatgyűjtést egy előkészítési táblába tölti be. Az előkészítési táblázatok lehetővé teszik a hibák kezelését az éles táblákkal való beavatkozás nélkül. Az előkészítési táblázat lehetővé teszi az SQL Pool beépített elosztott lekérdezés-feldolgozási funkcióinak használatát az adatátalakításokhoz, mielőtt az adatfeldolgozási táblákba beszúrja azokat.
 
@@ -125,7 +125,7 @@ Az adatok alapszintű betöltéséhez használhatja a következő betöltési le
 
 ### <a name="non-polybase-loading-options"></a>Nem albase betöltési beállítások
 
-Ha az adatok nem kompatibilisek a SQLBulkCopy, használhatja a [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) -t vagy a [API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)-t. a BCP közvetlenül az SQL-készletbe töltődik be anélkül, hogy az Azure Blob Storage-t kellene átvennie, és kizárólag kis terhelések esetén. Vegye figyelembe, hogy ezeknek a beállításoknak a betöltési teljesítménye jóval lassabb, mint a kiinduló.
+Ha az adatok nem kompatibilisek a SQLBulkCopy, használhatja a [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) -t vagy a [API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)-t. a BCP közvetlenül a dedikált SQL-készletbe töltődik be anélkül, hogy az Azure Blob Storage szolgáltatáson keresztül kellene eljutnia, és kizárólag kis terhelések esetén. Vegye figyelembe, hogy ezeknek a beállításoknak a betöltési teljesítménye jóval lassabb, mint a kiinduló.
 
 ## <a name="5-transform-the-data"></a>5. az adatátalakítás
 

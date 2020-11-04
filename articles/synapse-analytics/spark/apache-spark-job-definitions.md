@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: f942525f1360a134f58f18e0ec76a84b0ceee50b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b8c7792a09dd86e7d4ac043c572f69fc47ee6e63
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738176"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307172"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Oktatóanyag: Apache Spark feladatdefiníció létrehozása a szinapszis Studióban
 
-Ez az oktatóanyag azt mutatja be, hogyan használható az Azure szinapszis Studio Apache Spark feladatdefiníció létrehozásához, majd egy Apache Spark-készletbe való beküldéséhez.
+Ez az oktatóanyag azt mutatja be, hogyan használható az Azure szinapszis Studio Apache Spark feladatdefiníció létrehozásához, majd küldje el őket egy kiszolgáló nélküli Apache Spark készletbe.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 > [!div class="checklist"]
@@ -33,7 +33,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 Mielőtt nekilát az oktatóanyagnak, ellenőrizze, hogy megfelel-e a következő feltételeknek:
 
 * Egy Azure szinapszis Analytics-munkaterület. Útmutatásért lásd: [Azure szinapszis Analytics-munkaterület létrehozása](../../machine-learning/how-to-manage-workspace.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#create-a-workspace).
-* Egy Apache Spark készlet.
+* Kiszolgáló nélküli Apache Spark készlet.
 * Egy ADLS Gen2 Storage-fiók. A használni kívánt ADLS Gen2 fájlrendszer **Storage blob-Adattulajdonosának** kell lennie. Ha nem, manuálisan kell hozzáadnia az engedélyt.
 * Ha nem szeretné használni a munkaterület alapértelmezett tárolóját, kapcsolja össze a szükséges ADLS Gen2 Storage-fiókot a szinapszis Studióban. 
 

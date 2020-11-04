@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: a8a04d9e1b17c7e65be946cb51bfc41019e0706d
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 9bcf6ac9991c1ad070f823c97b5bd0460eff07c2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233992"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309090"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Erőforrások kvótáinak kezelése és növelése Azure Machine Learning
 
@@ -52,7 +52,7 @@ Ebben a szakaszban az alábbi erőforrásokra vonatkozó alapértelmezett és ma
 + Azure Storage
 
 > [!IMPORTANT]
-> A korlátozások változhatnak. A legfrissebb információkért tekintse meg az [Azure-előfizetések és-szolgáltatások korlátozásait, kvótáit és korlátozásait](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits/) az Azure-ban.
+> A korlátozások változhatnak. A legfrissebb információkért tekintse meg az [Azure-előfizetések és-szolgáltatások korlátozásait, kvótáit és korlátozásait](../azure-resource-manager/management/azure-subscription-service-limits.md) az Azure-ban.
 
 ### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 Minden Azure-előfizetés korlátozza a virtuális gépek számát az összes szolgáltatáson belül. A virtuálisgép-magok méretének regionális korlátja és a regionális korlátok száma. Mindkét korlátot külön kényszeríti a rendszer.
@@ -100,7 +100,7 @@ A következő táblázat további korlátozásokat mutat be, amelyeket nem lehet
 
 ### <a name="container-instances"></a>Tárolópéldányok
 
-További információ: [Container instances korlátok](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits).
+További információ: [Container instances korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#container-instances-limits).
 
 ### <a name="storage"></a>Storage
 Az Azure Storage-ban legfeljebb 250 Storage-fiók lehet, előfizetése pedig régiónként. Ez a korlát a standard és a Premium Storage-fiókokat is tartalmazza.
@@ -156,7 +156,7 @@ Az előző táblázatokban megjelenő maximális értékek felett nem lehet hat�
 Ha a kvóta növelését kéri, válassza ki azt a szolgáltatást, amelyet figyelembe kíván venni. Válassza például a Azure Machine Learning, a Container Instances vagy a Storage lehetőséget. Azure Machine Learning számításhoz a kvóta **megkeresése** gombra kattintva megtekintheti a kvótát az előző lépésekben.
 
 > [!NOTE]
-> Az [ingyenes próbaverziós előfizetések](https://azure.microsoft.com/offers/ms-azr-0044p) nem jogosultak a korlát vagy a kvóta növelésére. Ha ingyenes próbaverziós előfizetéssel rendelkezik, [az utólagos](https://azure.microsoft.com/offers/ms-azr-0003p/) elszámolású előfizetésre válthat. További információ: az [Azure ingyenes próbaverziójának frissítése az](https://docs.microsoft.com/azure/cost-management-billing/manage/upgrade-azure-subscription) utólagos [elszámolású és az ingyenes Azure-fiókra vonatkozó gyakori kérdések](https://azure.microsoft.com/free/free-account-faq).
+> Az [ingyenes próbaverziós előfizetések](https://azure.microsoft.com/offers/ms-azr-0044p) nem jogosultak a korlát vagy a kvóta növelésére. Ha ingyenes próbaverziós előfizetéssel rendelkezik, [az utólagos](https://azure.microsoft.com/offers/ms-azr-0003p/) elszámolású előfizetésre válthat. További információ: az [Azure ingyenes próbaverziójának frissítése az](../cost-management-billing/manage/upgrade-azure-subscription.md) utólagos [elszámolású és az ingyenes Azure-fiókra vonatkozó gyakori kérdések](https://azure.microsoft.com/free/free-account-faq).
 
 ## <a name="private-endpoint-and-private-dns-quota-increases"></a>Privát végpont és saját DNS kvótájának növelése
 
@@ -172,12 +172,12 @@ A Azure Machine Learning erőforrásokat hoz létre az (ügyfél-) előfizetésb
 
 Ezen forgatókönyvek esetében a következő lépések végrehajtásával igényelhet támogatást:
 
-1. [Hozzon létre egy Azure-támogatási kérést](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request) , és válassza ki az alábbi beállításokat az __alapok__ szakaszban:
+1. [Hozzon létre egy Azure-támogatási kérést](../azure-portal/supportability/how-to-create-azure-support-request.md#create-a-support-request) , és válassza ki az alábbi beállításokat az __alapok__ szakaszban:
 
     | Mező | Kiválasztás |
     | ----- | ----- |
     | Probléma típusa | **Műszaki** |
-    | Szolgáltatás | **Saját szolgáltatások** . Ezután válassza a __Machine learning__ lehetőséget a legördülő listában. |
+    | Szolgáltatás | **Saját szolgáltatások**. Ezután válassza a __Machine learning__ lehetőséget a legördülő listában. |
     | Probléma típusa | **Munkaterület konfigurációja és biztonság** |
     | Probléma altípusa | **A privát végpont és a saját DNS zóna juttatására vonatkozó kérelem** |
 

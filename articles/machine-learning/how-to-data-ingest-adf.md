@@ -12,18 +12,18 @@ ms.reviewer: larryfr
 ms.date: 03/01/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ad04566699b2eebb0cbd7a9f242de38bc75e2015
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cf0abdeaf3a7fe71213b6fa4f78f057bf2f92eb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986397"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307368"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>Adatbetöltés az Azure Data Factoryvel
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre adatfeldolgozási folyamatot Azure Data Factory (ADF) használatával. Ez a folyamat a Azure Machine Learningsal való használatra szolgáló adatbevitelhez használatos. Azure Data Factory lehetővé teszi az adatok egyszerű kinyerését, átalakítását és betöltését (ETL). Az adatgyűjtés és a tárolóba való betöltés után a gépi tanulási modellek betanítására is használható.
 
-Az egyszerű adatátalakítás a natív ADF-tevékenységekkel és olyan eszközökkel kezelhető, mint például az [adatfolyam](https://docs.microsoft.com/azure/data-factory/control-flow-execute-data-flow-activity). Bonyolultabb forgatókönyvek esetén az adatok feldolgozhatók egyéni kódokkal is. Például: Python vagy R code.
+Az egyszerű adatátalakítás a natív ADF-tevékenységekkel és olyan eszközökkel kezelhető, mint például az [adatfolyam](../data-factory/control-flow-execute-data-flow-activity.md). Bonyolultabb forgatókönyvek esetén az adatok feldolgozhatók egyéni kódokkal is. Például: Python vagy R code.
 
 Számos gyakori módszer áll rendelkezésre a Azure Data Factory az adatfeldolgozás során történő átalakítására. Minden technikának van olyan előnye és hátránya, amely meghatározza, hogy megfelelő-e az adott használati esethez:
 
@@ -39,11 +39,11 @@ Számos gyakori módszer áll rendelkezésre a Azure Data Factory az adatfeldolg
 
 Azure Functions lehetővé teszi, hogy kis mennyiségű kódot (functions) futtasson anélkül, hogy az alkalmazás-infrastruktúrával kellene foglalkoznia. Ebben a beállításban az Azure-függvénybe becsomagolt egyéni Python-kóddal dolgozza fel az adatfeldolgozást. 
 
-A függvényt az [ADF Azure Function tevékenység](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity)hívja meg. Ez a megközelítés jó választás az egyszerűsített adatátalakításokhoz. 
+A függvényt az [ADF Azure Function tevékenység](../data-factory/control-flow-azure-function-activity.md)hívja meg. Ez a megközelítés jó választás az egyszerűsített adatátalakításokhoz. 
 
 * Szakemberek
     * Az adatok feldolgozása kiszolgáló nélküli számításban történik, viszonylag alacsony késéssel
-    * Az ADF-folyamat olyan [tartós Azure-függvényt](/azure/azure-functions/durable/durable-functions-overview) hívhat meg, amely kifinomult Adatátalakítási folyamatot valósít meg 
+    * Az ADF-folyamat olyan [tartós Azure-függvényt](../azure-functions/durable/durable-functions-overview.md) hívhat meg, amely kifinomult Adatátalakítási folyamatot valósít meg 
     * Az adatok átalakításának részleteit az Azure-függvény elküldi, amely a többi helyről újra felhasználható és meghívható
 * Hátránya
     * Az ADF-sel való használat előtt létre kell hozni a Azure Functions.
@@ -53,10 +53,10 @@ A függvényt az [ADF Azure Function tevékenység](https://docs.microsoft.com/a
 
 ![Az ábrán egy Azure Data Factory folyamat látható, amely egy egyéni összetevővel és az M L folyamat futtatásával, valamint egy Azure Machine Learning folyamattal, valamint a betanítási modellel, valamint a nyers és az előkészített adattal való interakcióval.](media/how-to-data-ingest-adf/adf-customcomponent.png)
 
-Ebben a beállításban az adatfeldolgozást egyéni Python-kóddal, végrehajtható fájlba csomagolja a rendszer. A rendszer az [Egyéni ADF-összetevő tevékenységével](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity)hívja meg. Ez a megközelítés jobban illeszkedik az előző technikánál nagyobb méretű adatmennyiséghez.
+Ebben a beállításban az adatfeldolgozást egyéni Python-kóddal, végrehajtható fájlba csomagolja a rendszer. A rendszer az [Egyéni ADF-összetevő tevékenységével](../data-factory/transform-data-using-dotnet-custom-activity.md)hívja meg. Ez a megközelítés jobban illeszkedik az előző technikánál nagyobb méretű adatmennyiséghez.
 
 * Szakemberek
-    * Az adat [Azure batch](https://docs.microsoft.com/azure/batch/batch-technical-overview) készletre lesz feldolgozva, amely nagy léptékű párhuzamos és nagy teljesítményű számítástechnikai lehetőségeket biztosít
+    * Az adat [Azure batch](../batch/batch-technical-overview.md) készletre lesz feldolgozva, amely nagy léptékű párhuzamos és nagy teljesítményű számítástechnikai lehetőségeket biztosít
     * Nehéz algoritmusok futtatására és jelentős adatmennyiségek feldolgozására is használható.
 * Hátránya
     * Azure Batch készletet az ADF-sel való használat előtt létre kell hozni
@@ -68,7 +68,7 @@ Ebben a beállításban az adatfeldolgozást egyéni Python-kóddal, végrehajth
 
 A [Azure Databricks](https://azure.microsoft.com/services/databricks/) egy Apache Spark-alapú elemzési platform a Microsoft Cloud-ban.
 
-Ebben a technikában az adatátalakítást egy Azure Databricks-fürtön futó [Python-jegyzetfüzet](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook)hajtja végre. Ez valószínűleg a leggyakoribb megközelítés, amely kihasználja egy Azure Databricks szolgáltatás teljes erejét. A szolgáltatás nagy léptékű elosztott adatfeldolgozásra lett tervezve.
+Ebben a technikában az adatátalakítást egy Azure Databricks-fürtön futó [Python-jegyzetfüzet](../data-factory/transform-data-using-databricks-notebook.md)hajtja végre. Ez valószínűleg a leggyakoribb megközelítés, amely kihasználja egy Azure Databricks szolgáltatás teljes erejét. A szolgáltatás nagy léptékű elosztott adatfeldolgozásra lett tervezve.
 
 * Szakemberek
     * Az adatfeldolgozás a leghatékonyabban használt Azure-szolgáltatásra épül, amelyet Apache Spark környezet készít biztonsági mentésre
@@ -84,12 +84,12 @@ Ebben a technikában az adatátalakítást egy Azure Databricks-fürtön futó [
 
 ![A diagram egy Azure Data Factory folyamatot és egy Azure Machine Learning folyamatot mutat be, valamint azt, hogy hogyan működnek együtt a nyers és az előkészített adatfeldolgozási folyamat. Az Data Factory folyamat az adatokat az előkészített adatadatbázisba küldi, amely egy adattárat, amely a Machine Learning munkaterületen található adatkészleteket táplálja.](media/how-to-data-ingest-adf/aml-dataset.png)
 
-Az ADF-folyamatból származó átalakított adatok adattárolóba (például Azure Blobba) lesznek mentve. [A Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores) adattárolók és [adatkészletek](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)használatával érheti el ezeket az adatokat.
+Az ADF-folyamatból származó átalakított adatok adattárolóba (például Azure Blobba) lesznek mentve. [A Azure Machine learning](./how-to-access-data.md#create-and-register-datastores) adattárolók és [adatkészletek](./how-to-create-register-datasets.md)használatával érheti el ezeket az adatokat.
 
 Minden alkalommal, amikor az ADF-folyamat fut, a rendszer az adattárolást egy másik helyre menti. Ha át szeretné adni a helyet a Azure Machine Learningnak, az ADF-folyamat meghívja a Azure Machine Learning folyamatot. A ML-folyamat meghívásakor az adatok helye és a futtatási azonosító paraméterként lesz elküldve. A ML-folyamat Ezután létrehoz egy adattárt/adatkészletet az adathelyen. 
 
 > [!TIP]
-> Az adatkészletek [támogatják a verziószámozást](https://docs.microsoft.com/azure/machine-learning/how-to-version-track-datasets), így a ml-folyamat képes regisztrálni az adatkészlet új verzióját, amely az ADF-folyamat legutóbbi adatait mutat.
+> Az adatkészletek [támogatják a verziószámozást](./how-to-version-track-datasets.md), így a ml-folyamat képes regisztrálni az adatkészlet új verzióját, amely az ADF-folyamat legutóbbi adatait mutat.
 
 Ha az adat egy adattáron vagy adatkészleten keresztül érhető el, egy ML-modell betanítására is használható. Előfordulhat, hogy a betanítási folyamat az ADF-ből meghívott azonos ML folyamat része. Vagy lehet különálló folyamat, például kísérletezés egy Jupyter jegyzetfüzetben.
 
@@ -97,8 +97,7 @@ Mivel az adatkészletek támogatják a verziószámozást, és a folyamat minden
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Databricks-jegyzetfüzet futtatása Azure Data Factory](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook)
-* [Az Azure Storage-szolgáltatásokban tárolt adathozzáférés](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores)
-* [Modellek betanítása adatkészletekkel Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-train-with-datasets)
-* [DevOps adatfeldolgozási folyamathoz](https://docs.microsoft.com/azure/machine-learning/how-to-cicd-data-ingestion)
-
+* [Databricks-jegyzetfüzet futtatása Azure Data Factory](../data-factory/transform-data-using-databricks-notebook.md)
+* [Az Azure Storage-szolgáltatásokban tárolt adathozzáférés](./how-to-access-data.md#create-and-register-datastores)
+* [Modellek betanítása adatkészletekkel Azure Machine Learning](./how-to-train-with-datasets.md)
+* [A DevOps használata adatfeldolgozási folyamathoz](./how-to-cicd-data-ingestion.md)

@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
 ms.date: 06/15/2017
-ms.openlocfilehash: b30cd926f6908c26c6f71c1513a8c68c8a46bf43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 154479be1eae01bcc533b556b751ed24aee3da2b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91359749"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308574"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások naplózásának engedélyezése
 
-**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Ez a dokumentum a Machine Learning Studio (klasszikus) webszolgáltatások naplózási képességével kapcsolatos információkat tartalmaz. A naplózási szolgáltatás további információkat tartalmaz, amelyek csak egy adott számú és egy üzeneten felül segítenek a Machine Learning Studio (klasszikus) API-k hívásának hibakeresésében.  
@@ -38,7 +38,7 @@ Engedélyezi a naplózást a [Azure Machine learning Studio (klasszikus) webszol
 
 3. Új webszolgáltatás esetén kattintson a webszolgáltatás nevére. Klasszikus webszolgáltatás esetén kattintson a webszolgáltatás nevére, majd a következő lapon kattintson a megfelelő végpontra.
 
-4. A felső menüsorban kattintson a **Konfigurálás**elemre.
+4. A felső menüsorban kattintson a **Konfigurálás** elemre.
 
 5. Állítsa be a **naplózás engedélyezése** beállítást a *hiba* (csak a hibák naplózása) vagy az *összes* (teljes naplózáshoz) beállításnál.
 
@@ -52,9 +52,9 @@ Engedélyezi a naplózást a [Azure Machine learning Studio (klasszikus) webszol
 
    1. A [Azure Portal](https://portal.azure.com)lépjen a webszolgáltatáshoz társított Storage-fiókra.
 
-   2. A **blob szolgáltatás**alatt kattintson a **tárolók**elemre.
+   2. A **blob szolgáltatás** alatt kattintson a **tárolók** elemre.
 
-   3. Ha a tároló **ml-diagnosztika** nem létezik, kattintson a **+ tároló**elemre, adja meg a tárolónak a "ml-diagnosztika" nevet, és válassza a **hozzáférési típust** "blob"-ként. Kattintson az **OK** gombra.
+   3. Ha a tároló **ml-diagnosztika** nem létezik, kattintson a **+ tároló** elemre, adja meg a tárolónak a "ml-diagnosztika" nevet, és válassza a **hozzáférési típust** "blob"-ként. Kattintson az **OK** gombra.
 
       ![Hozzon létre egy új tárolót a diagnosztikai naplók tárolásához](./media/web-services-logging/create-ml-diagnostics-container.png)
 
@@ -66,7 +66,7 @@ Engedélyezi a naplózást a [Azure Machine learning Studio (klasszikus) webszol
 ## <a name="the-effects-of-enabling-logging"></a>A naplózás engedélyezésének hatásai
 Ha a naplózás engedélyezve van, a webszolgáltatási végpont diagnosztika és hibák naplózása a felhasználó munkaterületéhez társított Azure Storage **-fiók ml-diagnosztika blob-** tárolójában történik. Ez a tároló tartalmazza az összes webszolgáltatási végponthoz tartozó diagnosztikai információt az ehhez a Storage-fiókhoz társított összes munkaterülethez.
 
-A naplók az Azure Storage-fiók megismeréséhez rendelkezésre álló számos eszköz használatával tekinthetők meg. A legegyszerűbb lehet, ha a Azure Portal a Storage-fiókra kattint **, kattintson a tárolók**elemre, majd kattintson a tároló **ml-diagnosztika**elemre.  
+A naplók az Azure Storage-fiók megismeréséhez rendelkezésre álló számos eszköz használatával tekinthetők meg. A legegyszerűbb lehet, ha a Azure Portal a Storage-fiókra kattint **, kattintson a tárolók** elemre, majd kattintson a tároló **ml-diagnosztika** elemre.  
 
 ## <a name="log-blob-detail-information"></a>A blob részletes adatainak naplózása
 A tárolóban lévő összes blob a diagnosztikai adatokat a következő műveletek pontosan egyikének megfelelően tárolja:
@@ -85,5 +85,4 @@ Ahol a _napló típusa_ a következő értékek egyike:
 
 * kötegelt  
 * pontszám/kérelmek  
-* pontszám/init  
-
+* pontszám/init

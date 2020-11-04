@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 5cfd76d6b2f6bb9429a7605ac05adb23d87a80d3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 76ecd811ab0bffe20b4bddcc4dc2eacaffaed588
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790882"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308340"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transzparens adattitkosítás ügyfél által kezelt kulccsal
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -82,7 +82,7 @@ A rendszernaplók a Azure Monitor használatával ellenőrizhetik a Key Vault Au
 
 - Adja meg a kiszolgáló vagy a felügyelt példány hozzáférését a Key vaulthoz (get, wrapKey, unwrapKey) a saját Azure Active Directory identitásának használatával. A Azure Portal használatakor az Azure AD-identitás automatikusan létrejön. A PowerShell vagy a parancssori felület használatakor az Azure AD-identitást explicit módon létre kell hozni, és ellenőrizni kell a befejezést. Lásd: a TDE és a [BYOK](transparent-data-encryption-byok-configure.md) konfigurálása, valamint a TDE és a [BYOK konfigurálása az SQL felügyelt példányához](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) , részletes útmutatást nyújt a PowerShell használatakor.
 
-- Ha a AKV használatával tűzfalat használ, engedélyeznie kell *a megbízható Microsoft-szolgáltatások engedélyezése beállítást a tűzfal megkerüléséhez* .
+- Ha a AKV használatával tűzfalat használ, engedélyeznie kell *a megbízható Microsoft-szolgáltatások engedélyezése beállítást a tűzfal megkerüléséhez*.
 
 ### <a name="requirements-for-configuring-tde-protector"></a>A TDE-védő konfigurálásának követelményei
 
@@ -135,7 +135,7 @@ A kulcshoz való hozzáférés visszaállítását követően az adatbázis viss
 
 - Ha a kulcs-hozzáférés 8 órán belül helyreáll, az adatbázis a következő órában automatikusan meggyógyítható.
 
-- Ha a rendszer 8 óránál hosszabb idő után állítja vissza a kulcsot, az automatikus javítás nem lehetséges, az adatbázis visszaállításához további lépésekre van szükség a portálon, és a folyamat az adatbázis méretétől függően jelentős időmennyiséget vehet igénybe. Miután az adatbázis ismét online állapotba került, korábban konfigurálta a kiszolgálói szintű beállításokat, például a [feladatátvételi csoport](auto-failover-group-overview.md) konfigurációját, az időponthoz tartozó visszaállítási előzményeket, a címkék pedig **elvesznek** . Ezért javasoljuk olyan értesítési rendszer megvalósítását, amely lehetővé teszi, hogy 8 órán belül azonosítsa és kezelje az alapul szolgáló kulcsfontosságú hozzáférési problémákat.
+- Ha a rendszer 8 óránál hosszabb idő után állítja vissza a kulcsot, az automatikus javítás nem lehetséges, az adatbázis visszaállításához további lépésekre van szükség a portálon, és a folyamat az adatbázis méretétől függően jelentős időmennyiséget vehet igénybe. Miután az adatbázis ismét online állapotba került, korábban konfigurálta a kiszolgálói szintű beállításokat, például a [feladatátvételi csoport](auto-failover-group-overview.md) konfigurációját, az időponthoz tartozó visszaállítási előzményeket, a címkék pedig **elvesznek**. Ezért javasoljuk olyan értesítési rendszer megvalósítását, amely lehetővé teszi, hogy 8 órán belül azonosítsa és kezelje az alapul szolgáló kulcsfontosságú hozzáférési problémákat.
 
 Az alábbiakban megtekintheti a portálon megjelenő további lépéseket, amelyekkel elérhetetlenné válik az adatbázisok online állapotba helyezése.
 
@@ -156,7 +156,7 @@ Előfordulhat, hogy a Key vaulthoz megfelelő hozzáférési jogokkal rendelkez�
 
 - a kiszolgáló felügyelt identitásának törlése Azure Active Directory
 
-További információ [az adatbázisok elérhetetlenné válásának gyakori okairól](/sql/relational-databases/security/encryption/troubleshoot-tde?view=azuresqldb-current#common-errors-causing-databases-to-become-inaccessible).
+További információ [az adatbázisok elérhetetlenné válásának gyakori okairól](/sql/relational-databases/security/encryption/troubleshoot-tde?view=azuresqldb-current&preserve-view=true#common-errors-causing-databases-to-become-inaccessible).
 
 ## <a name="monitoring-of-the-customer-managed-tde"></a>Az ügyfél által felügyelt TDE figyelése
 
@@ -179,7 +179,7 @@ Ha a biztonsági mentés visszaállításához szükséges kulcs már nem érhet
 
 Ennek enyhítéséhez futtassa a [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) parancsmagot a célkiszolgálón vagy a [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) a célként felügyelt példányhoz, hogy visszaadja a rendelkezésre álló kulcsok listáját, és azonosítsa a hiányzókat. Annak érdekében, hogy az összes biztonsági másolat visszaállítható, győződjön meg arról, hogy a visszaállításhoz használt célkiszolgáló hozzáfér az összes szükséges kulcshoz. Ezeket a kulcsokat nem kell TDE-védőként megjelölni.
 
-Ha többet szeretne megtudni a SQL Database biztonsági mentési helyreállításáról, tekintse meg az [adatbázis helyreállítása SQL Databaseban](recovery-using-backups.md)című témakört. További információ az SQL-készlet biztonsági mentésének helyreállításáról: [SQL-készlet helyreállítása](../../synapse-analytics/sql-data-warehouse/backup-and-restore.md). SQL Server natív biztonsági mentése/visszaállítása SQL felügyelt példánnyal: rövid útmutató [: adatbázis visszaállítása SQL felügyelt példányra](../managed-instance/restore-sample-database-quickstart.md)
+Ha többet szeretne megtudni a SQL Database biztonsági mentési helyreállításáról, tekintse meg az [adatbázis helyreállítása SQL Databaseban](recovery-using-backups.md)című témakört. Ha többet szeretne megtudni a dedikált SQL-készlet biztonsági mentési helyreállításáról az Azure szinapszis Analyticsben, tekintse meg [a DEDIKÁLT SQL-készlet helyreállítása](../../synapse-analytics/sql-data-warehouse/backup-and-restore.md)című témakört. SQL Server natív biztonsági mentése/visszaállítása SQL felügyelt példánnyal: rövid útmutató [: adatbázis visszaállítása SQL felügyelt példányra](../managed-instance/restore-sample-database-quickstart.md)
 
 További szempontok a naplófájlok számára: a biztonsági másolatba mentett naplófájlok továbbra is titkosítva maradnak az eredeti TDE-védővel, még akkor is, ha azt elforgatták, és az adatbázis mostantól új TDE-védőt használ.  A visszaállítás ideje alatt mindkét kulcsra szükség lesz az adatbázis visszaállításához.  Ha a naplófájl Azure Key Vaultban tárolt TDE-védőt használ, a kulcs visszaállításkor is szükséges lesz, még akkor is, ha az adatbázist úgy módosították, hogy a szolgáltatás által felügyelt TDE időközben is használhassa.
 

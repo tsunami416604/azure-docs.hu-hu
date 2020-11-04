@@ -9,12 +9,12 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 205aed1811c3d9d21a10be7bc4f01c73eb7295b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17418b0255182934045acc9174b34cff2aefff99
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89254800"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307444"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>Kísérletek követése és modellek üzembe helyezése Azure Machine Learning
 
@@ -26,11 +26,11 @@ Az alábbi ábra azt szemlélteti, hogy a MLflow nyomon követésével nyomon k�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Létre kell [hoznia egy Azure Machine learning-munkaterület](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace)
+* Létre kell [hoznia egy Azure Machine learning-munkaterület](../how-to-manage-workspace.md#create-a-workspace)
 
 ## <a name="create-a-new-notebook"></a>Új jegyzetfüzet létrehozása
 
-A Azure Machine Learning és a MLFlow SDK előre telepítve van a Data Science VM, és a **azureml_py36_ \* ** Conda-környezetben érhető el. A Jupyterlab-ben kattintson az indítóra, és válassza ki a következő kernelt:
+A Azure Machine Learning és a MLFlow SDK előre telepítve van a Data Science VM, és a * *azureml_py36_ \** _ Conda környezetben érhető el. A Jupyterlab-ben kattintson az indítóra, és válassza ki a következő kernelt:
 
 ![kernel kiválasztása](./media/how-to-track-experiments/experiment-tracking-1.png)
 
@@ -137,7 +137,7 @@ A [AzureML Studio](https://ml.azure.com) bal oldali menüjében kattintson a __s
 
 Az __új viszonyítási fürt__ ablaktáblán adja meg a következő adatokat:
 
-* Számítási név
+_ Számítási név
 * Kubernetes szolgáltatás – válassza az új létrehozása lehetőséget.
 * Régió kiválasztása
 * Válassza ki a virtuális gép méretét (ebben az oktatóanyagban az alapértelmezett Standard_D3_v2 elegendő)
@@ -145,7 +145,7 @@ Az __új viszonyítási fürt__ ablaktáblán adja meg a következő adatokat:
 * A csomópontok számának __1__ értékűnek kell lennie
 * Hálózati konfiguráció – alapszintű
 
-Ezután kattintson a __Létrehozás__gombra.
+Ezután kattintson a __Létrehozás__ gombra.
 
 ![számítás részletei](./media/how-to-track-experiments/mlflow-experiments-7.png)
 
@@ -159,7 +159,7 @@ Amikor regisztrálta a modellt a kódban a használatával `register_model` , a 
 
 A kód nélküli központi telepítés azt jelenti, hogy az adott pontozási parancsfájl megadásához nem szükséges, hogy a modellből egyenesen lehessen telepíteni.
 
-A diabétesz modell üzembe helyezéséhez lépjen a [Azure Machine learning Studio](https://ml.azure.com) bal oldali menüjére, és válassza a __modellek__lehetőséget. Ezután kattintson a regisztrált diabetes_modelra:
+A diabétesz modell üzembe helyezéséhez lépjen a [Azure Machine learning Studio](https://ml.azure.com) bal oldali menüjére, és válassza a __modellek__ lehetőséget. Ezután kattintson a regisztrált diabetes_modelra:
 
 ![Modell kiválasztása](./media/how-to-track-experiments/mlflow-experiments-3.png)
 
@@ -167,7 +167,7 @@ Ezután kattintson a __telepítés__ gombra a modell részletei ablaktáblán:
 
 ![Üzembe helyezés](./media/how-to-track-experiments/mlflow-experiments-4.png)
 
-A modellt az 1. lépésben létrehozott következtetési fürt (Azure Kubernetes szolgáltatás) számára fogjuk üzembe helyezni. Adja meg az alábbi adatokat a szolgáltatás nevének megadásával, valamint az AK számítási fürt nevét (az 1. lépésben létrehozva). Azt is javasoljuk, hogy növelje a __CPU-foglalási kapacitást__ 1 (0,1) értékre, és a __memória tartalék kapacitása__ 1 (0,5) értékre, ha a __speciális__ gombra kattint, és kitölti a részleteket. Ezután kattintson a __telepítés__elemre.
+A modellt az 1. lépésben létrehozott következtetési fürt (Azure Kubernetes szolgáltatás) számára fogjuk üzembe helyezni. Adja meg az alábbi adatokat a szolgáltatás nevének megadásával, valamint az AK számítási fürt nevét (az 1. lépésben létrehozva). Azt is javasoljuk, hogy növelje a __CPU-foglalási kapacitást__ 1 (0,1) értékre, és a __memória tartalék kapacitása__ 1 (0,5) értékre, ha a __speciális__ gombra kattint, és kitölti a részleteket. Ezután kattintson a __telepítés__ elemre.
 
 ![központi telepítés részletei](./media/how-to-track-experiments/mlflow-experiments-5.png)
 
@@ -204,4 +204,4 @@ Törölje az 1. lépésben létrehozott következtetési számítást, hogy ne l
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ a [modellek üzembe helyezéséről a AzureML-ben](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)
+* További információ a [modellek üzembe helyezéséről a AzureML-ben](../how-to-deploy-and-where.md)

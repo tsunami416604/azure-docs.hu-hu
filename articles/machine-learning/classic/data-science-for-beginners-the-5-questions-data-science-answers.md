@@ -9,12 +9,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: a0c99c05701c7f2d64fcfc2f70081f2d7475ce5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae4eca82df498f1aa8f9ef84691cecdf719d0d76
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91343419"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307492"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Adatelemzés kezdőknek – 1. videó: 5 kérdés, amelyre az adatelemzés választ ad
 
@@ -37,7 +37,7 @@ Az *adatelemzés kezdőknek* gyors bevezetést biztosítanak az adatelemzésből
 * 5. videó: [a többi személy munkájának másolása az adatelemzéshez](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 perc 18 mp)*
 
 ## <a name="transcript-the-5-questions-data-science-answers"></a>Átirat: az adatelemzés 5 kérdésre adott válasz
-Hello! Köszönti a *kezdőknek szóló*Video Series-adatelemzés.
+Hello! Köszönti a *kezdőknek szóló* Video Series-adatelemzés.
 
 Az adatelemzés megfélemlítő lehet, ezért az alapismereteket itt mutatjuk be egyenletek vagy számítógépes programozási zsargon nélkül.
 
@@ -45,7 +45,7 @@ Ebben az első videóban az "5 kérdés adatelemzési válasz" kifejezésre fogu
 
 Az adatelemzés számokat és neveket (más néven kategóriákat vagy címkéket) használ a kérdésekre adott válaszok előrejelzéséhez.
 
-Lehet, hogy meglepő, de az *adattudományi válaszok közül csak öt kérdés*:
+Lehet, hogy meglepő, de az *adattudományi válaszok közül csak öt kérdés* :
 
 * Ez A vagy B?
 * Ez fura?
@@ -66,7 +66,7 @@ Az algoritmusok ezt a családját kétosztályos besorolásnak nevezzük.
 
 Minden olyan kérdés esetében hasznos, amely csak két lehetséges választ tartalmaz.
 
-Példa:
+Például:
 
 * A gumiabroncs sikertelen lesz a következő 1 000 mérföldben: Igen vagy nem?
 * Mely több ügyfelet tartalmaz: egy $5 kupont vagy 25%-os kedvezményt?
@@ -136,4 +136,4 @@ Tehát az az 5 kérdés, hogy az adatelemzés válaszolni tud.
 
 ## <a name="next-steps"></a>Következő lépések
 * [Próbálja ki az első adatelemzési kísérletet Machine Learning Studio (klasszikus)](create-experiment.md)
-* [Bevezetés a Machine Learning on Microsoft Azure](/azure/machine-learning/overview-what-is-azure-ml)
+* [Bevezetés a Machine Learning on Microsoft Azure](../overview-what-is-azure-ml.md)

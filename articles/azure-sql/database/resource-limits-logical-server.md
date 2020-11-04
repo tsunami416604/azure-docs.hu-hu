@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 09/15/2020
-ms.openlocfilehash: 813f229d414ab911169f404dfc6b3cbf93fa96b3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9dfe70cf6c91a0c12604f91e583a9a4eb9b4e088
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780784"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308824"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>A Azure SQL Database és az Azure szinapszis Analytics-kiszolgálók erőforrás-korlátai
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -131,7 +131,7 @@ A Azure SQL Database erőforrás-szabályozás hierarchikus jellegű. Fentről l
 
 Az adatio-szabályozás egy olyan folyamat, Azure SQL Database az olvasási és írási fizikai IO-t az adatbázisok adatfájljaira korlátozza. Az egyes IOPS korlátokat úgy állítjuk be, hogy a lehető legkisebbre csökkentsék a "zajos szomszéd" hatást, hogy az erőforrás-elosztás méltányos legyen a több-bérlős szolgáltatásban, és a mögöttes hardver és tárterület képességein belül maradjon.
 
-Az önálló adatbázisok esetében a munkaterhelési csoportra vonatkozó korlátok a-adatbázisra vonatkozó összes adatforgalomra érvényesek, míg az erőforrás-készletre vonatkozó korlátozások az adott SQL-készletben található összes adatbázisra vonatkoznak az összes tárterületre, beleértve az `tempdb` adatbázist is. A rugalmas készletek esetében a munkaterhelési csoport korlátai a készlet minden adatbázisára érvényesek, míg az erőforráskészlet-korlát a teljes rugalmas készletre vonatkozik, beleértve az adatbázist is, `tempdb` amely a készletben lévő összes adatbázis között meg van osztva. Az erőforrás-készlet korlátai általában nem valósíthatók meg egy adatbázison (akár egyetlen, akár készletezett) keresztül, mert a munkaterhelés-csoport korlátai alacsonyabbak az erőforráskészlet korlátainál, és hamarabb korlátozzák a IOPS/átviteli sebességet. A készletre vonatkozó korlátokat azonban a kombinált munkaterhelés is elérheti ugyanazon a készleten lévő több adatbázisra vonatkozóan.
+Az önálló adatbázisok esetében a munkaterhelési csoportra vonatkozó korlátokat a rendszer az adatbázisra vonatkozó összes összes tárterületre alkalmazza, az erőforrás-készlet korlátozásai pedig az azonos dedikált SQL-készlet összes adatbázisára érvényesek, az `tempdb` adatbázissal együtt. A rugalmas készletek esetében a munkaterhelési csoport korlátai a készlet minden adatbázisára érvényesek, míg az erőforráskészlet-korlát a teljes rugalmas készletre vonatkozik, beleértve az adatbázist is, `tempdb` amely a készletben lévő összes adatbázis között meg van osztva. Az erőforrás-készlet korlátai általában nem valósíthatók meg egy adatbázison (akár egyetlen, akár készletezett) keresztül, mert a munkaterhelés-csoport korlátai alacsonyabbak az erőforráskészlet korlátainál, és hamarabb korlátozzák a IOPS/átviteli sebességet. A készletre vonatkozó korlátokat azonban a kombinált munkaterhelés is elérheti ugyanazon a készleten lévő több adatbázisra vonatkozóan.
 
 Ha például egy lekérdezés az i/o-erőforrás szabályozása nélkül 1000 IOPS hoz létre, de a munkaterhelési csoport maximális IOPS értéke 900 IOPS, a lekérdezés nem fog tudni több mint 900 IOPS-t létrehozni. Ha azonban az erőforráskészlet maximális IOPS-korlátja 1500 IOPS, és az erőforráskészlet összes munkaterhelési csoportjának teljes IO-értéke meghaladja az 1500-as IOPS, akkor az azonos lekérdezés IO-értéke a 900 IOPS munkacsoport-korlátja alatt csökkenhet.
 

@@ -10,20 +10,20 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 1cb0c5094d49eac5a1c8f63406a28d2927d8fa94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5604e42c2c27463e10c136ccd18c3c21846fc5a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79477323"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309145"
 ---
 # <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>Hozzáférési hitelesítő adatok biztonságos tárolása Azure-Data Science Virtual Machine
 
 Gyakori, hogy a Felhőbeli alkalmazásokban található kód hitelesítő adatokat tartalmaz a Cloud Services-hitelesítéshez. A hitelesítő adatok kezelése és védelme jól ismert kihívás a felhőalapú alkalmazások létrehozásához. Ideális esetben a hitelesítő adatok soha nem jelennek meg a fejlesztői munkaállomásokon, vagy bejelentkezhetnek a verziókövetésba.
 
-Az [Azure-erőforrások felügyelt identitásai](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) lehetővé teszik a probléma egyszerűbb megoldását azáltal, hogy az Azure-szolgáltatások automatikusan felügyelt identitást biztosítanak a Azure Active Directory (Azure ad) szolgáltatásban. Ezzel az identitással bármely, Azure AD-hitelesítést támogató szolgáltatáshoz végezhet hitelesítést anélkül, hogy a hitelesítő adatokat a kódban kellene tárolnia.
+Az [Azure-erőforrások felügyelt identitásai](../../active-directory/managed-identities-azure-resources/overview.md) lehetővé teszik a probléma egyszerűbb megoldását azáltal, hogy az Azure-szolgáltatások automatikusan felügyelt identitást biztosítanak a Azure Active Directory (Azure ad) szolgáltatásban. Ezzel az identitással bármely, Azure AD-hitelesítést támogató szolgáltatáshoz végezhet hitelesítést anélkül, hogy a hitelesítő adatokat a kódban kellene tárolnia.
 
-A hitelesítő adatok biztonságossá tételének egyik módja a Windows Installer (MSI) használata a [Azure Key Vaultkal](https://docs.microsoft.com/azure/key-vault/)és egy felügyelt Azure-szolgáltatással együtt, amely biztonságosan tárolja a titkokat és a titkosítási kulcsokat. A Key vaultot a felügyelt identitás használatával érheti el, majd beolvashatja az erre jogosult titkos kulcsokat és titkosítási kulcsokat a Key vaultból.
+A hitelesítő adatok biztonságossá tételének egyik módja a Windows Installer (MSI) használata a [Azure Key Vaultkal](../../key-vault/index.yml)és egy felügyelt Azure-szolgáltatással együtt, amely biztonságosan tárolja a titkokat és a titkosítási kulcsokat. A Key vaultot a felügyelt identitás használatával érheti el, majd beolvashatja az erre jogosult titkos kulcsokat és titkosítási kulcsokat a Key vaultból.
 
 Az Azure-erőforrások és a Key Vault felügyelt identitásával kapcsolatos dokumentáció átfogó erőforrást tartalmaz a szolgáltatásokkal kapcsolatos részletes információkhoz. A cikk további részében az MSI és a Key Vault Data Science Virtual Machine (DSVM) alapszintű használata érhető el az Azure-erőforrások eléréséhez. 
 

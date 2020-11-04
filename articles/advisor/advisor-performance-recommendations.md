@@ -3,12 +3,12 @@ title: Az Azure-alkalmazások teljesítményének javítása az Advisor szolgál
 description: Az üzleti szempontból kritikus fontosságú alkalmazások sebességének és reagálásának javítása érdekében Azure Advisor teljesítményre vonatkozó javaslatokat használhat.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 44252171a714acec0a9c0e83c9272b2f845560b3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 6a008411d4422853e6a98fad59bd4519b42a9548
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077813"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308686"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Az Azure-alkalmazások teljesítményének növelése Azure Advisor használatával
 
@@ -22,7 +22,7 @@ A Azure Advisor olyan Traffic Manager-profilokat azonosít, amelyekhez már van 
 
 ## <a name="improve-database-performance-by-using-sql-database-advisor-temporarily-disabled"></a>Az adatbázis teljesítményének javítása SQL Database Advisor használatával (átmenetileg letiltva)
 
-Azure Advisor egységes, összevont áttekintést nyújt az összes Azure-erőforrásra vonatkozó javaslatokról. A SQL Database Advisor integrálható az adatbázisok teljesítményének javítására vonatkozó javaslatok bevezetéséhez.SQL Database Advisor a használati előzmények elemzésével értékeli az adatbázisok teljesítményét. Ezután ajánlásokat nyújt az adatbázis tipikus számítási feladatainak futtatásához.
+Azure Advisor egységes, összevont áttekintést nyújt az összes Azure-erőforrásra vonatkozó javaslatokról. A SQL Database Advisor integrálható az adatbázisok teljesítményének javítására vonatkozó javaslatok bevezetéséhez. SQL Database Advisor a használati előzmények elemzésével értékeli az adatbázisok teljesítményét. Ezután ajánlásokat nyújt az adatbázis tipikus számítási feladatainak futtatásához.
 
 > [!NOTE]
 > A javaslatok beszerzése előtt az adatbázist körülbelül egy hétig kell használni, és ezen a héten belül bizonyos konzisztens tevékenységre van szükség. A SQL Database Advisor könnyebben optimalizálható a konzisztens lekérdezési mintáknál, mint a tevékenységek véletlenszerű kitörése esetén.
@@ -108,7 +108,7 @@ Az Advisor észleli, hogy növelhető-e a terhelési teljesítmény és az átvi
 
 ## <a name="co-locate-the-storage-account-in-the-same-region-to-minimize-latency-when-loading"></a>Az azonos régióban található Storage-fiók megkeresése a késés minimalizálásához a betöltéskor
 
-Az Advisor észleli, hogy az SQL-készlettől eltérő régióból töltődik-e be. Érdemes lehet betölteni egy olyan Storage-fiókból, amely ugyanabban a régióban található, mint az SQL-készlet, hogy csökkentse a késést az adatok betöltésekor. Ez a változás segít csökkenteni a késést, és növeli a terhelési teljesítményt.
+Az Advisor észleli, hogy egy olyan régióból tölt be, amely eltér a dedikált SQL-készlettől. Érdemes lehet betölteni egy olyan Storage-fiókból, amely ugyanabban a régióban található, mint a dedikált SQL-készlet, hogy az adatok betöltése során csökkentse a késést. Ez a változás segít csökkenteni a késést, és növeli a terhelési teljesítményt.
 
 ## <a name="use-a-supported-kubernetes-version"></a>Támogatott Kubernetes-verzió használata
 
@@ -120,17 +120,17 @@ Az Advisor észleli a Kubernetes nem támogatott verzióit.
 A CPU hosszú időn keresztül történő magas kihasználtsága lassú lekérdezési teljesítményt eredményezhet a munkaterhelés számára. A CPU méretének növelésével optimalizálható az adatbázis-lekérdezések futtatókörnyezete, és javítható a teljes teljesítmény. Az Advisor magas CPU-kihasználtsággal rendelkező kiszolgálókat azonosít, amelyek valószínűleg a CPU által korlátozott munkaterheléseket futtatják, és a számítási feladatok skálázását ajánlják.
 
 ### <a name="reduce-memory-constraints-on-your-azure-database-for-mysql-azure-database-for-postgresql-and-azure-database-for-mariadb-servers-or-move-to-a-memory-optimized-sku"></a>Csökkentse a memória korlátozásait a Azure Database for MySQL-, Azure Database for PostgreSQL-és Azure Database for MariaDB-kiszolgálókon, vagy térjen át a memóriára optimalizált SKU-ra.
-Az alacsony gyorsítótár-találatok aránya lassabb lekérdezési teljesítményt és nagyobb IOPS eredményezhet. Ezt az állapotot egy hibás lekérdezési csomag vagy egy nagy mennyiségű számítási feladat okozhatja. A lekérdezési terv kijavítása vagy a Azure Database for PostgreSQL, Azure Database for MySQL vagy Azure Database for MariaDB kiszolgáló [memóriájának növelésével](../postgresql/concepts-pricing-tiers.md) optimalizálható az adatbázis-számítási feladatok végrehajtása. A Azure Advisor azonosítja a nagy puffer-készlet által érintett kiszolgálókat. Azt javasolja, hogy a következő műveletek egyikét végezze el: 
+Az alacsony gyorsítótár-találatok aránya lassabb lekérdezési teljesítményt és nagyobb IOPS eredményezhet. Ezt az állapotot egy hibás lekérdezési csomag vagy egy nagy mennyiségű számítási feladat okozhatja. A lekérdezési terv kijavítása vagy a Azure Database for PostgreSQL, Azure Database for MySQL vagy Azure Database for MariaDB kiszolgáló [memóriájának növelésével](../postgresql/concepts-pricing-tiers.md) optimalizálható az adatbázis-számítási feladatok végrehajtása. A Azure Advisor azonosítja a nagy puffer-készlet által érintett kiszolgálókat. Azt javasolja, hogy a következő műveletek egyikét végezze el: 
 - A lekérdezési terv kijavítása
 - Olyan SKU-ra váltson, amely több memóriát tartalmaz 
 - Növelje a tárterület méretét, hogy minél több IOPS.
 
 ### <a name="use-an-azure-database-for-mysql-or-azure-database-for-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Azure Database for MySQL vagy Azure Database for PostgreSQL olvasási replika használata az olvasási igényű számítási feladatok felskálázásához
-Az Advisor munkaterhelés-alapú heurisztikus adatokat használ, például az olvasások arányát a kiszolgálón az elmúlt hét napban az olvasási igényű számítási feladatok azonosítására. A magas olvasási/írási aránnyal rendelkező Azure Database for PostgreSQL vagy Azure Database for MySQL erőforrás CPU-vagy memória-tartalmakat eredményezhet, és lassú lekérdezési teljesítményt eredményezhet. A [replika](../postgresql/howto-read-replicas-portal.md) hozzáadásával kibővítheti a replika-kiszolgáló olvasási felskálázását, és megakadályozhatja a CPU-vagy memória-korlátozásokat az elsődleges kiszolgálón. Az Advisor az olvasási igényű munkaterhelésekkel rendelkező kiszolgálókat azonosítja, és azt javasolja, hogy adjon hozzá egy [olvasási replikát](../postgresql/concepts-read-replicas.md)   a beolvasott számítási feladatok kiszervezéséhez.
+Az Advisor munkaterhelés-alapú heurisztikus adatokat használ, például az olvasások arányát a kiszolgálón az elmúlt hét napban az olvasási igényű számítási feladatok azonosítására. A magas olvasási/írási aránnyal rendelkező Azure Database for PostgreSQL vagy Azure Database for MySQL erőforrás CPU-vagy memória-tartalmakat eredményezhet, és lassú lekérdezési teljesítményt eredményezhet. A [replika](../postgresql/howto-read-replicas-portal.md) hozzáadásával kibővítheti a replika-kiszolgáló olvasási felskálázását, és megakadályozhatja a CPU-vagy memória-korlátozásokat az elsődleges kiszolgálón. Az Advisor az olvasási igényű munkaterhelésekkel rendelkező kiszolgálókat azonosítja, és azt javasolja, hogy adjon hozzá egy [olvasási replikát](../postgresql/concepts-read-replicas.md) a beolvasott számítási feladatok kiszervezéséhez.
 
 
 ### <a name="scale-your-azure-database-for-mysql-azure-database-for-postgresql-or-azure-database-for-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Azure Database for MySQL, Azure Database for PostgreSQL vagy Azure Database for MariaDB kiszolgáló méretezése magasabb SKU-ra a kapcsolódási kényszerek megelőzése érdekében
-Az adatbázis-kiszolgáló minden új kapcsolódása memóriát foglal le. Az adatbázis-kiszolgáló teljesítménye romlik, ha a kiszolgálóhoz való kapcsolódás a memória [felső korlátja](../postgresql/concepts-limits.md) miatt meghiúsul. A Azure Advisor számos sikertelen kapcsolatfelvételi hibát használó kiszolgálókat azonosít. Azt javasolja, hogy a kiszolgáló kapcsolódási korlátait úgy frissítse, hogy több memóriát biztosítson a kiszolgálónak a következő műveletek egyikének megkezdésével:
+Az adatbázis-kiszolgáló minden új kapcsolódása memóriát foglal le. Az adatbázis-kiszolgáló teljesítménye romlik, ha a kiszolgálóhoz való kapcsolódás a memória [felső korlátja](../postgresql/concepts-limits.md) miatt meghiúsul. A Azure Advisor számos sikertelen kapcsolatfelvételi hibát használó kiszolgálókat azonosít. Azt javasolja, hogy a kiszolgáló kapcsolódási korlátait úgy frissítse, hogy több memóriát biztosítson a kiszolgálónak a következő műveletek egyikének megkezdésével:
 - A számítási kapacitás vertikális felskálázása. 
 - Használjon a memóriához optimalizált SKU-ket, amelyek több számítási egységenként vannak.
 

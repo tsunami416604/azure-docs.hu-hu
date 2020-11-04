@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 141cc47adb398cbd5730fbe33bcd90fece809ed3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2597aa1f0589fea75af0a3ac41244e3718d5eb3e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91543468"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307966"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>Gyors útmutató: új Azure Machine Learning társított szolgáltatás létrehozása a Szinapszisban
 
@@ -50,7 +50,7 @@ Ez a lépés létrehoz egy új egyszerű szolgáltatásnevet. Ha egy meglévő s
 
    ![Titkos kód készítése](media/quickstart-integrate-azure-machine-learning/quickstart-integrate-azure-machine-learning-createsp-00a.png)
 
-1. Hozzon létre egy egyszerű szolgáltatásnevet az alkalmazáshoz. Nyissa **meg az alkalmazás**  ->  **áttekintését** , majd kattintson az **egyszerű szolgáltatás létrehozása**elemre. Bizonyos esetekben ez az egyszerű szolgáltatásnév automatikusan létrejön.
+1. Hozzon létre egy egyszerű szolgáltatásnevet az alkalmazáshoz. Nyissa **meg az alkalmazás**  ->  **áttekintését** , majd kattintson az **egyszerű szolgáltatás létrehozása** elemre. Bizonyos esetekben ez az egyszerű szolgáltatásnév automatikusan létrejön.
 
    ![Egyszerű szolgáltatás létrehozása](media/quickstart-integrate-azure-machine-learning/quickstart-integrate-azure-machine-learning-createsp-00b.png)
 
@@ -60,7 +60,7 @@ Ez a lépés létrehoz egy új egyszerű szolgáltatásnevet. Ha egy meglévő s
 
 ## <a name="create-a-linked-service"></a>Társított szolgáltatás létrehozása
 
-1. A szinapszis munkaterületen, ahol létre szeretné hozni az új Azure Machine learning társított szolgáltatást, lépjen a **felügyelet**  ->  **társított szolgáltatás**elemre, és hozzon létre egy új társított szolgáltatást "Azure Machine learning" típussal.
+1. A szinapszis munkaterületen, ahol létre szeretné hozni az új Azure Machine learning társított szolgáltatást, lépjen a **felügyelet**  ->  **társított szolgáltatás** elemre, és hozzon létre egy új társított szolgáltatást "Azure Machine learning" típussal.
 
    ![Társított szolgáltatás létrehozása](media/quickstart-integrate-azure-machine-learning/quickstart-integrate-azure-machine-learning-create-linked-service-00a.png)
 
@@ -73,11 +73,11 @@ Ez a lépés létrehoz egy új egyszerű szolgáltatásnevet. Ha egy meglévő s
 
    - Egyszerű szolgáltatásnév kulcsa: az előző szakaszban létrehozott titok.
 
-3. Kattintson a **Kapcsolódás tesztelése** elemre annak ellenőrzéséhez, hogy a konfiguráció megfelelő-e. Ha a kapcsolatok tesztelése sikeres, kattintson a **Mentés**gombra.
+3. Kattintson a **Kapcsolódás tesztelése** elemre annak ellenőrzéséhez, hogy a konfiguráció megfelelő-e. Ha a kapcsolatok tesztelése sikeres, kattintson a **Mentés** gombra.
 
    Ha a kapcsolatok tesztelése nem sikerült, győződjön meg arról, hogy az egyszerű szolgáltatásnév és a titkos kód helyes, és próbálkozzon újra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Oktatóanyag: Machine learning Model pontozási varázsló – SQL-készlet](tutorial-sql-pool-model-scoring-wizard.md)
+- [Oktatóanyag: gépi tanulási modell pontozása varázsló – dedikált SQL-készlet](tutorial-sql-pool-model-scoring-wizard.md)
 - [Az Azure szinapszis Analytics Machine Learning képességei (munkaterületek előzetes verzió)](what-is-machine-learning.md)

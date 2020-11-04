@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: mvc
-ms.openlocfilehash: c7bdf3e0300bffaffb7191aea019bed719cdc6fa
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 01ec0c7c0d2d060bbd930a099fe3db54de6cb150
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220618"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308959"
 ---
 # <a name="azure-media-services-v3-overview"></a>Az Azure Media Services v3 áttekintése
 
@@ -59,12 +59,12 @@ Media Services a felhőben különböző adathordozó-munkafolyamatokat hozhat l
 * A Azure Media Services és az [Azure Cognitive Services API-k](../../index.yml?pivot=products&panel=ai) együttes használatával feliratokat és feliratokat adhat hozzá a videókhoz, hogy a szélesebb közönség számára is elérhető legyen (például a fogyatékkal élők vagy más nyelveken elolvasni kívánt személyek).
 * Lehetővé teszi, hogy a Azure CDN nagyobb skálázást érjenek el a pillanatnyi magas terhelések jobb kezelése érdekében (például egy termék indítási eseményének megkezdése).
 
-## <a name="how-can-i-get-started-with-v3"></a>Hogyan kezdhetem meg a v3 használatát? 
+## <a name="how-can-i-get-started-with-v3"></a>Hogyan kezdhetem meg a v3 használatát?
 
 Megtudhatja, hogyan kódolhat és csomagolhat tartalmakat, közvetítheti a videókat igény szerint, hogyan közvetítheti élőben, és hogyan elemezheti videóit a Media Services v3 használatával. Az oktatóanyagok, API-referenciák és az egyéb dokumentációk bemutatják, hogyan közvetíthet biztonságosan igény szerinti vagy élő videó- és audióstreameket akár felhasználók millióira méretezhetően is.
 
 > [!TIP]
-> A fejlesztés megkezdése előtt tekintse át a következőt:<br/>* [Alapvető fogalmak](concepts-overview.md) (beleértve a fontos fogalmakat, például a csomagolást, a kódolást és a védelmet)<br/>* [Fejlesztés Media Services V3 API](media-services-apis-overview.md) -kkal (beleértve az API-k elérésére, az elnevezési konvenciók stb. vonatkozó információkat)
+> A fejlesztés megkezdése előtt tekintse át az [alapvető fogalmakat](concepts-overview.md) , amelyek olyan fontos fogalmakat tartalmaznak, mint például a csomagolás, a kódolás és a védelem, valamint [a Media Services V3 API](media-services-apis-overview.md) -kkal való fejlesztés, amely az API-k, elnevezési konvenciók és így tovább.
 
 ### <a name="sdks"></a>SDK-k
 

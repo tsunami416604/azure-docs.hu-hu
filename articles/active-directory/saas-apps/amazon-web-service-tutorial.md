@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/14/2020
+ms.date: 11/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 2ec4bafac46526c95d48a1a8d9c8faaa7a49df98
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: eb784d02ec4c380d72438a1c000290fe3a4eea78
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043443"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307509"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Amazon Web Servicestal (AWS)
 
@@ -61,7 +61,6 @@ Első lépésként a következő elemeket kell megadnia:
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
 * Amazon Web Services (AWS) támogatja **az SP-t és a identitásszolgáltató** KEZDEMÉNYEZett SSO-t
-* Miután konfigurálta Amazon Web Services (AWS), kikényszerítheti a munkamenet-vezérlést, így valós időben biztosíthatja a szervezete bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
@@ -276,9 +275,9 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     ![A házirend létrehozása lap képernyőképe, a név és leírás mezők kiemelve](./media/amazon-web-service-tutorial/policy2.png)
 
-    a. A **név** mezőbe írja be a következőt: **AzureAD_SSOUserRole_Policy** .
+    a. A **név** mezőbe írja be a következőt: **AzureAD_SSOUserRole_Policy**.
 
-    b. A **Leírás** mezőbe írja be a szabályzatot, **amely lehetővé teszi, hogy az AWS-fiókokból beolvassa a szerepköröket** .
+    b. A **Leírás** mezőbe írja be a szabályzatot, **amely lehetővé teszi, hogy az AWS-fiókokból beolvassa a szerepköröket**.
 
     c. Válassza a **Create policy** (Szabályzat létrehozása) lehetőséget.
 
@@ -296,7 +295,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     ![A felhasználó hozzáadása lap képernyőképe, a Felhasználónév és a hozzáférés típusa kiemelve](./media/amazon-web-service-tutorial/adduser1.png)
 
-    * Adja meg a felhasználónevet **AzureADRoleManager** .
+    * Adja meg a felhasználónevet **AzureADRoleManager**.
 
     * A hozzáférési típushoz válassza a **programozott hozzáférés** lehetőséget. Így a felhasználó meghívhatja az API-kat, és beolvashatja a szerepköröket az AWS-fiókból.
 
@@ -308,9 +307,9 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     a. Válassza a **meglévő házirendek csatolása közvetlenül** lehetőséget.
 
-    b. Keresse meg az újonnan létrehozott szabályzatot a szűrő szakaszban **AzureAD_SSOUserRole_Policy** .
+    b. Keresse meg az újonnan létrehozott szabályzatot a szűrő szakaszban **AzureAD_SSOUserRole_Policy**.
 
-    c. Válassza ki a szabályzatot, majd kattintson a **Tovább gombra: Áttekintés** .
+    c. Válassza ki a szabályzatot, majd kattintson a **Tovább gombra: Áttekintés**.
 
 19. Tekintse át a szabályzatot a csatlakoztatott felhasználó számára.
 
@@ -324,7 +323,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     ![A felhasználói hitelesítő adatok beolvasásához a felhasználó hozzáadása lap Letöltés c s v gombját jeleníti meg.](./media/amazon-web-service-tutorial/adduser4.png)
 
-    a. Másolja a felhasználói **hozzáférési kulcs azonosítóját** és a **titkos elérési kulcsot** .
+    a. Másolja a felhasználói **hozzáférési kulcs azonosítóját** és a **titkos elérési kulcsot**.
 
     b. Adja meg ezeket a hitelesítő adatokat az Azure AD-felhasználó kiépítési szakaszában a szerepkörök az AWS-konzolról való beolvasásához.
 
@@ -364,38 +363,40 @@ Ennek a szakasznak a célja egy B. Simon nevű felhasználó létrehozása Amazo
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-Ha a hozzáférési panelen a Amazon Web Services (AWS) csempére kattint, automatikusan be kell jelentkeznie a Amazon Web Servicesba (AWS), amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>Az SP inicializálva:
+
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a Amazon Web Services (AWS) bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot.  
+
+* Lépjen a Amazon Web Services (AWS) bejelentkezési URL-címére közvetlenül, és indítsa el onnan a bejelentkezési folyamatot.
+
+#### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
+
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a Amazon Web Services (AWS), amelyhez be szeretné állítani az egyszeri bejelentkezést 
+
+A Microsoft Access panel használatával bármilyen módban tesztelheti az alkalmazást. Ha a hozzáférési panelen a Amazon Web Services (AWS) csempére kattint, ha az SP módban van konfigurálva, akkor a bejelentkezési folyamat elindításához és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie arra a Amazon Web Services (AWS), amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
 
 ## <a name="known-issues"></a>Ismert problémák
 
  * A **kiépítési** szakaszban a **leképezések** alszakasz a "betöltés..." szakaszt jeleníti meg. üzenet, és soha nem jeleníti meg az attribútumok leképezéseit. Az egyetlen jelenleg támogatott kiépítési munkafolyamat az AWS-ből az Azure AD-be való, a felhasználó vagy a csoport hozzárendelése során történő kiválasztáshoz. Az attribútumhoz tartozó hozzárendelések előre meg vannak határozva, és nem konfigurálhatók.
 
- * A **kiépítési** szakasz egyszerre csak egy AWS-bérlőhöz tartozó hitelesítő adatok megadását támogatja. Az összes importált szerepkör az AWS- `appRoles` bérlőhöz tartozó Azure ad- [ `servicePrincipal` objektum](/graph/api/resources/serviceprincipal?view=graph-rest-beta) tulajdonságára íródik.
+ * A **kiépítési** szakasz egyszerre csak egy AWS-bérlőhöz tartozó hitelesítő adatok megadását támogatja. Az összes importált szerepkör az AWS- `appRoles` bérlőhöz tartozó Azure ad- [ `servicePrincipal` objektum](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) tulajdonságára íródik.
 
    A katalógusból több AWS-bérlőt `servicePrincipals` is hozzáadhat az Azure ad-hoz az üzembe helyezéshez. Van azonban egy ismert probléma, amely nem képes automatikusan írni az összes importált szerepkört a több AWS-ből, amelyet `servicePrincipals` az egyszeri `servicePrincipal` bejelentkezéshez használtak.
 
-   Megkerülő megoldásként a [Microsoft Graph API](/graph/api/resources/serviceprincipal?view=graph-rest-beta) -val kinyerheti az összes `appRoles` importált AWS-t, `servicePrincipal` ahol a kiépítés konfigurálva van. Ezeket a szerepkör-karakterláncokat később is hozzáadhatja az AWS-hez, `servicePrincipal` ahol az SSO konfigurálva van.
+   Megkerülő megoldásként a [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) -val kinyerheti az összes `appRoles` importált AWS-t, `servicePrincipal` ahol a kiépítés konfigurálva van. Ezeket a szerepkör-karakterláncokat később is hozzáadhatja az AWS-hez, `servicePrincipal` ahol az SSO konfigurálva van.
 
 * A szerepköröknek a következő követelményeknek kell megfelelniük, hogy az AWS-ből az Azure AD-be való importálásra jogosult legyen:
 
   * A szerepköröknek pontosan egy SAML-szolgáltatót kell meghatároznia az AWS-ben
-  * A szerepkörhöz tartozó ARN (Amazon-erőforrás neve) és a társított SAML-szolgáltatóhoz tartozó ARN együttes hossza nem haladja meg a 119 karaktert
+  * A szerepkörhöz tartozó ARN (Amazon-erőforrás neve) és a társított SAML-szolgáltatóhoz tartozó ARN együttes hossza nem haladja meg a 120 karaktert
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="next-steps"></a>Következő lépések
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
+Miután konfigurálta Amazon Web Services (AWS), kikényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
-
-- [Amazon Web Services (AWS) kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
-
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
-
-- [A Amazon Web Services (AWS) védelem speciális láthatósággal és vezérlőkkel](/cloud-app-security/protect-aws)
 
 [11]: ./media/amazon-web-service-tutorial/ic795031.png
 [12]: ./media/amazon-web-service-tutorial/ic795032.png

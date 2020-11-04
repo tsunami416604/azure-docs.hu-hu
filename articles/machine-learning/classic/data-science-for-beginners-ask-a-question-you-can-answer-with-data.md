@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: ff08af00649cf61134c3e27d07b329e40169ea66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbac7c8818300ffb09959969e6b79f949177f457
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91343475"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307672"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Adatokkal megválaszolható kérdések megfogalmazása
 ## <a name="video-3-data-science-for-beginners-series"></a>3. videó: az adatelemzés kezdőknek sorozata
@@ -69,9 +69,9 @@ Ha nem rendelkezik célként megadott adattal, néhányat meg kell kapnia. Nem f
 ## <a name="reformulate-your-question"></a>A kérdés újrafogalmazása
 Előfordulhat, hogy a kérdését újra felhasználva hasznos választ kaphat.
 
-A kérdés az, hogy ez az adatpont vagy B? egy adott kategória (vagy név vagy címke) előrejelzése. A válaszhoz egy *besorolási algoritmust*használunk.
+A kérdés az, hogy ez az adatpont vagy B? egy adott kategória (vagy név vagy címke) előrejelzése. A válaszhoz egy *besorolási algoritmust* használunk.
 
-A kérdés "mennyit?" vagy "hány?" egy összeg előrejelzése. Válaszként *regressziós algoritmust*használunk.
+A kérdés "mennyit?" vagy "hány?" egy összeg előrejelzése. Válaszként *regressziós algoritmust* használunk.
 
 Ha szeretné megtudni, hogyan alakíthatja át ezeket, nézzük meg a kérdést: "melyik Hírek a legérdekesebb az olvasó számára?" Több lehetőség közül egyetlen választási lehetőséget kér – más szóval: "ez A vagy B vagy C vagy D?" – és egy besorolási algoritmust használ.
 
@@ -91,4 +91,4 @@ Tekintse meg a többi videót a "kezdő adatelemzés" Microsoft Azure Machine Le
 
 ## <a name="next-steps"></a>Következő lépések
 * [Próbálja ki az első adatelemzési kísérletet Machine Learning Studio (klasszikus)](create-experiment.md)
-* [Bevezetés a Machine Learning on Microsoft Azure](/azure/machine-learning/overview-what-is-azure-ml)
+* [Bevezetés a Machine Learning on Microsoft Azure](../overview-what-is-azure-ml.md)

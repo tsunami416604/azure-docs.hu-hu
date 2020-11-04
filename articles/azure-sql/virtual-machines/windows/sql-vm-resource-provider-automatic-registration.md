@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/21/2020
-ms.openlocfilehash: 23ecc3bdfb0ca85caf219fc262348937923f53c3
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: d4a2d9e43dadc53008c04b44ea1dda9cb337da99
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286128"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308348"
 ---
 # <a name="automatic-registration-with-sql-vm-resource-provider"></a>Automatikus regisztráció az SQL VM erőforrás-szolgáltatóval
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ Ha engedélyezve van az automatikus regisztráció egy előfizetéshez, a SQL Se
 
 A SQL Server VM erőforrás-szolgáltatóval való regisztrálásához a következőkre lesz szüksége: 
 
-- Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
+- Egy [Azure-előfizetés](https://azure.microsoft.com/free/) és legalább [közreműködő szerepkör](../../../role-based-access-control/built-in-roles.md#all) -engedély.
 - Egy Azure Resource Model [Windows Server 2008 R2 (vagy újabb) rendszerű virtuális gép](../../../virtual-machines/windows/quick-create-portal.md) , amelyen [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads) központilag vagy Azure Government felhőben üzembe helyezhetők. A Windows Server 2008 nem támogatott. 
 
 

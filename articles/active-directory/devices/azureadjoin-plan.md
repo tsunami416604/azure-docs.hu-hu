@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a559b29502adb1c507b1543463d84eb3bd15d5a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3587ef6be9d6c9969dff5d1af2181ed51aea7d29
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083286"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308277"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: az Azure AD JOIN megvalósításának megtervezése
 
@@ -119,7 +119,7 @@ Az Azure AD-hez csatlakoztatott eszközök kezelésének két módja van:
 - **Csak Mdm** – az eszközöket kizárólag olyan Mdm-szolgáltatók felügyelik, mint az Intune. Az összes szabályzatot a MDM regisztrációs folyamatának részeként továbbítja a rendszer. Prémium szintű Azure AD-vagy EMS-ügyfelek esetén a MDM egy olyan automatizált lépés, amely egy Azure AD-csatlakozás részét képezi.
 - **Közös felügyelet** – az eszközt egy Mdm-szolgáltató és egy SCCM kezeli. Ebben a megközelítésben a SCCM-ügynök egy MDM által felügyelt eszközre van telepítve bizonyos szempontok felügyeletéhez.
 
-Ha csoportházirendeket használ, értékelje ki a MDM-szabályzat paritását a [Mdm Migration Analysis Tool (MMAT)](https://github.com/WindowsDeviceManagement/MMAT)használatával. 
+Ha csoportházirendeket használ, a Microsoft Endpoint Managerben [csoportházirend Analytics](/mem/intune/configuration/group-policy-analytics) használatával értékelje ki a csoportházirend-objektum és a Mdm házirend paritását. 
 
 A támogatott és nem támogatott házirendek áttekintésével állapítsa meg, hogy csoportházirendek helyett használhat-e MDM-megoldást. Nem támogatott házirendek esetén vegye figyelembe a következőket:
 
@@ -272,7 +272,7 @@ A MDM-konfigurációhoz három URL-cím kapcsolódik:
 - MDM-felderítési URL-cím 
 - MDM megfelelőségi URL-címe
 
-:::image type="content" source="./media/azureadjoin-plan/06.png" alt-text="Képernyőkép a Azure Active Directory alkalmazás hozzáadása oldalról. A rendszer több M D M szolgáltatót is listáz." border="false":::
+:::image type="content" source="./media/azureadjoin-plan/06.png" alt-text="Képernyőkép a Azure Active Directory M D M konfigurációs szakaszának egy részéről, ahol U R L mezők találhatók a M D M használati feltételekhez, a felderítéshez és a megfelelőséghez." border="false":::
 
 Mindegyik URL-címnek előre definiált alapértelmezett értéke van. Ha ezek a mezők üresek, további információért forduljon a MDM-szolgáltatóhoz.
 

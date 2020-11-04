@@ -1,6 +1,6 @@
 ---
 title: Kapcsolat hibaelhárítása
-description: A szinapszis SQL-készlet kapcsolatának hibaelhárítása.
+description: A dedikált SQL-készletben található kapcsolat hibaelhárítása.
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,47 +11,47 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-csharp
-ms.openlocfilehash: d32a51e391edbfd32cf57265562d4e0cb8fe0681
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82b9f988ef4a7f4a53cd0b451da28642b53bcb65
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362180"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308371"
 ---
-# <a name="troubleshooting-connectivity-issues-in-synapse-sql-pool"></a>A szinapszis SQL-készlet kapcsolódási problémáinak elhárítása
+# <a name="troubleshooting-connectivity-issues-in-dedicated-sql-pool"></a>A dedikált SQL-készlet kapcsolódási problémáinak elhárítása
 
-Ez a cikk az SQL Pool-adatbázishoz való csatlakozással kapcsolatos gyakori hibaelhárítási technikákat sorolja fel.
+Ez a cikk a dedikált SQL Pool-adatbázishoz való csatlakozással kapcsolatos gyakori hibaelhárítási technikákat ismerteti.
 
 ## <a name="check-service-availability"></a>Szolgáltatás rendelkezésre állásának keresése
 
-Ellenőrizze, hogy elérhető-e a szolgáltatás. A Azure Portal nyissa meg a csatlakoztatni kívánt SQL-készletet. A bal oldali tartalomjegyzék panelen kattintson a **problémák diagnosztizálása és megoldása**elemre.
+Ellenőrizze, hogy elérhető-e a szolgáltatás. A Azure Portal lépjen arra a dedikált SQL-készletre, amelyhez csatlakozni próbál. A bal oldali tartalomjegyzék panelen kattintson a **problémák diagnosztizálása és megoldása** elemre.
 
 ![Erőforrás állapotának kiválasztása](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-Az SQL-készlet állapota itt jelenik meg. Ha a szolgáltatás nem **elérhetőként**jelenik meg, tekintse meg a további lépéseket.
+A dedikált SQL-készlet állapota itt jelenik meg. Ha a szolgáltatás nem **elérhetőként** jelenik meg, tekintse meg a további lépéseket.
 
 ![Elérhető szolgáltatás](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-Ha az erőforrás állapota azt mutatja, hogy az SQL Pool-példány szüneteltetve van vagy méretezést végez, kövesse az útmutatást a példány folytatásához.
+Ha az erőforrás állapota azt mutatja, hogy a dedikált SQL Pool-példány szüneteltetve van vagy méretezést végez, a példány folytatásához kövesse az útmutatást.
 
 ![A képernyőfelvételen az SQL-adattárház egy olyan példánya látható, amely szüneteltetve vagy méretezhető.](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png)
 Resource Health további információ itt található.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Szüneteltetett vagy skálázási művelet keresése
 
-Ellenőrizze a portálon, hogy az SQL Pool-példány szüneteltetve van-e, illetve hogy van-e skálázás.
+Ellenőrizze a portálon, hogy a dedikált SQL Pool-példány szünetel-e vagy sem.
 
 ![A képernyőfelvétel azt mutatja be, hogy az adatraktár szüneteltetve van-e.](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-Ha úgy látja, hogy a szolgáltatás szüneteltetve van vagy méretezést végez, ellenőrizze, hogy nem a karbantartási ütemterv alatt van-e. Az SQL-készlet *áttekintését*bemutató portálon láthatja a választott karbantartási ütemtervet.
+Ha úgy látja, hogy a szolgáltatás szüneteltetve van vagy méretezést végez, ellenőrizze, hogy nem a karbantartási ütemterv alatt van-e. A dedikált SQL-készlet *áttekintését* bemutató portálon megtekintheti a választott karbantartási ütemtervet.
 
 ![Az Áttekintés karbantartási ütemterve](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-Ellenkező esetben kérdezze meg a rendszergazdát, hogy a karbantartás nem ütemezett esemény-e. Az SQL Pool-példány folytatásához kövesse az [alábbi lépéseket](pause-and-resume-compute-portal.md).
+Ellenkező esetben kérdezze meg a rendszergazdát, hogy a karbantartás nem ütemezett esemény-e. A dedikált SQL Pool-példány folytatásához kövesse az [alábbi lépéseket](pause-and-resume-compute-portal.md).
 
 ## <a name="check-your-firewall-settings"></a>A tűzfalbeállítások ellenőrzése
 
-Az SQL-készlet adatbázisa a 1433-as porton keresztül kommunikál.Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni a [logikai kiszolgálóhoz](../../azure-sql/database/logical-servers.md) , ha az informatikai részleg nem nyitja meg a 1433-es portot. A tűzfal-konfigurációkról további információt [itt](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)találhat.
+A dedikált SQL Pool-adatbázis a 1433-as porton keresztül kommunikál.Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni a [logikai kiszolgálóhoz](../../azure-sql/database/logical-servers.md) , ha az informatikai részleg nem nyitja meg a 1433-es portot. A tűzfal-konfigurációkról további információt [itt](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)találhat.
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>A Vnet/szolgáltatásvégpont beállításainak ellenőrzése
 
@@ -61,7 +61,7 @@ Ha a 40914-es és a 40615-es hibákat kapja, tekintse meg [itt a hiba leírása 
 
 ### <a name="software"></a>Szoftverek
 
-Győződjön meg arról, hogy a legújabb eszközöket használja az SQL-készlethez való kapcsolódáshoz:
+Győződjön meg arról, hogy a legújabb eszközöket használja a dedikált SQL-készlethez való kapcsolódáshoz:
 
 - SSMS
 - Azure Data Studio
@@ -106,7 +106,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>Időszakos kapcsolódási problémák
 
-Ellenőrizze, hogy nagy terhelés alatt áll-e a kiszolgáló, sok várólistára helyezett kéréssel. Előfordulhat, hogy további erőforrásokhoz is szükség van az SQL-készlet vertikális felskálázására.
+Ellenőrizze, hogy nagy terhelés alatt áll-e a kiszolgáló, sok várólistára helyezett kéréssel. Előfordulhat, hogy további erőforrásokhoz is szükség van a dedikált SQL-készlet vertikális felskálázására.
 
 ## <a name="common-error-messages"></a>Gyakori hibaüzenetek
 

@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 22e834ccc31e2d01646250c973080848173661de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbc532acf704128e2311f440aabe8f707fc03aea
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743777"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307224"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>PyTorch-modellek betanítása méretekben Azure Machine Learning
 
@@ -36,7 +36,7 @@ Futtassa ezt a kódot ezen környezetek bármelyikén:
     - A notebook-kiszolgáló minták Deep learning mappájában keresse meg a befejezett és kibontott jegyzetfüzetet a következő könyvtárra való navigálással: **útmutató – használat-azureml > ml-keretrendszerek > pytorch > Train-hiperparaméter-Tune-Deploy-with-pytorch** mappa. 
  
  - Saját Jupyter Notebook-kiszolgáló
-    - [Telepítse az Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) -t (>= 1.15.0).
+    - [Telepítse az Azure Machine learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) -t (>= 1.15.0).
     - [Hozzon létre egy munkaterület-konfigurációs fájlt](how-to-configure-environment.md#workspace).
     - [A minta parancsfájl fájljainak letöltése](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch)`pytorch_train.py`
      
@@ -63,7 +63,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Munkaterület inicializálása
 
-A [Azure Machine learning munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy objektum létrehozásával érheti el a munkaterület összetevőit [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) .
+A [Azure Machine learning munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy objektum létrehozásával érheti el a munkaterület összetevőit [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) .
 
 Hozzon létre egy munkaterület-objektumot az `config.json` [Előfeltételek szakaszban](#prerequisites)létrehozott fájlból.
 
@@ -182,7 +182,7 @@ További információ a környezetek létrehozásáról és használatáról: [s
 
 ### <a name="create-a-scriptrunconfig"></a>ScriptRunConfig létrehozása
 
-Hozzon létre egy [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) objektumot a betanítási feladatok konfigurációs adatainak megadásához, beleértve a betanítási parancsfájlt, a használni kívánt környezetet és a futtatáshoz szükséges számítási célt. A program a (z `arguments` ) paraméterben megadott paraméterekkel adja át a betanítási parancsfájl összes argumentumát. 
+Hozzon létre egy [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) objektumot a betanítási feladatok konfigurációs adatainak megadásához, beleértve a betanítási parancsfájlt, a használni kívánt környezetet és a futtatáshoz szükséges számítási célt. A program a (z `arguments` ) paraméterben megadott paraméterekkel adja át a betanítási parancsfájl összes argumentumát. 
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -204,7 +204,7 @@ A feladatok ScriptRunConfig-vel való konfigurálásával kapcsolatos további i
 
 ## <a name="submit-your-run"></a>A Futtatás beküldése
 
-A [Run objektum](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) biztosítja a felületet a futtatási előzményekhez, miközben a feladatot futtatja, és a művelet befejeződött.
+A [Run objektum](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) biztosítja a felületet a futtatási előzményekhez, miközben a feladatot futtatja, és a művelet befejeződött.
 
 ```Python
 run = Experiment(ws, name='pytorch-birds').submit(src)
@@ -214,13 +214,13 @@ run.wait_for_completion(show_output=True)
 ### <a name="what-happens-during-run-execution"></a>Mi történik a Futtatás végrehajtásakor
 A Futtatás végrehajtásakor a következő szakaszokon halad végig:
 
-- **Előkészítés**: a Docker-rendszerkép a definiált környezetnek megfelelően jön létre. A rendszer feltölti a rendszerképet a munkaterület tároló-Hivatalához, és a gyorsítótárba helyezi a későbbi futtatásokhoz. A naplók a futtatási előzményekre is továbbítva lesznek, és a folyamat figyelésére is megtekinthetők. Ha helyette egy kurátori környezet van megadva, akkor a rendszer a kiválasztott gyorsítótárazott rendszerképet fogja használni.
+- **Előkészítés** : a Docker-rendszerkép a definiált környezetnek megfelelően jön létre. A rendszer feltölti a rendszerképet a munkaterület tároló-Hivatalához, és a gyorsítótárba helyezi a későbbi futtatásokhoz. A naplók a futtatási előzményekre is továbbítva lesznek, és a folyamat figyelésére is megtekinthetők. Ha helyette egy kurátori környezet van megadva, akkor a rendszer a kiválasztott gyorsítótárazott rendszerképet fogja használni.
 
-- **Skálázás**: a fürt akkor kísérli meg a skálázást, ha a Batch AI fürthöz több csomópont szükséges a jelenleg elérhető futtatáshoz.
+- **Skálázás** : a fürt akkor kísérli meg a skálázást, ha a Batch AI fürthöz több csomópont szükséges a jelenleg elérhető futtatáshoz.
 
-- **Futtatás**: a rendszer a parancsfájl mappájában lévő összes parancsfájlt feltölti a számítási célra, az adattárakat csatlakoztatja vagy másolja, és `script` végrehajtja a szolgáltatást. Az stdout és a **./logs** mappa kimeneteit a rendszer a futtatási előzményekre továbbítja, és a Futtatás figyelésére használható.
+- **Futtatás** : a rendszer a parancsfájl mappájában lévő összes parancsfájlt feltölti a számítási célra, az adattárakat csatlakoztatja vagy másolja, és `script` végrehajtja a szolgáltatást. Az stdout és a **./logs** mappa kimeneteit a rendszer a futtatási előzményekre továbbítja, és a Futtatás figyelésére használható.
 
-- **Utómunka**: a Futtatás **./outputs** mappáját a rendszer átmásolja a futtatási előzményekbe.
+- **Utómunka** : a Futtatás **./outputs** mappáját a rendszer átmásolja a futtatási előzményekbe.
 
 ## <a name="register-or-download-a-model"></a>Modell regisztrálása vagy letöltése
 
@@ -268,7 +268,7 @@ dependencies:
   - horovod==0.19.5
 ```
 
-Elosztott feladatok az Azure ML-ben használt MPI/Horovod használatával történő végrehajtásához meg kell adnia egy [MpiConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true) a `distributed_job_config` ScriptRunConfig konstruktor paramétereként. Az alábbi kód egy 2 csomópontos elosztott feladatot konfigurál, amely egy folyamatot futtat egy csomóponton. Ha egy csomóponton belül több folyamatot is futtatni kíván (például ha a fürt SKU-jának több GPU-val rendelkezik), adja meg a `process_count_per_node` paramétert a MpiConfiguration (ez az alapértelmezett érték `1` ).
+Elosztott feladatok az Azure ML-ben használt MPI/Horovod használatával történő végrehajtásához meg kell adnia egy [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py) a `distributed_job_config` ScriptRunConfig konstruktor paramétereként. Az alábbi kód egy 2 csomópontos elosztott feladatot konfigurál, amely egy folyamatot futtat egy csomóponton. Ha egy csomóponton belül több folyamatot is futtatni kíván (például ha a fürt SKU-jának több GPU-val rendelkezik), adja meg a `process_count_per_node` paramétert a MpiConfiguration (ez az alapértelmezett érték `1` ).
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -286,7 +286,7 @@ Az elosztott PyTorch az Azure ML-Horovod való futtatásával kapcsolatos teljes
 ### <a name="distributeddataparallel"></a>DistributedDataParallel
 Ha a PyTorch beépített [DistributedDataParallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html) modulját használja, amely a betanítási kódban a **Torch. Distributed** Package használatával készült, akkor az ELOSZTOTT feladatot az Azure ml-n keresztül is elindíthatja.
 
-Elosztott PyTorch-feladatok DistributedDataParallel való futtatásához adja meg a [PyTorchConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?view=azure-ml-py&preserve-view=true) a `distributed_job_config` ScriptRunConfig konstruktor paraméteréhez. A NCCL-háttér a Torch. Distributed paranccsal való használatához határozza meg `communication_backend='Nccl'` a PyTorchConfiguration. Az alábbi kód egy 2 csomópontos elosztott feladatot fog konfigurálni. A NCCL háttérrendszer az ajánlott háttérrendszer a PyTorch elosztott GPU-képzésekhez.
+Elosztott PyTorch-feladatok DistributedDataParallel való futtatásához adja meg a [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) a `distributed_job_config` ScriptRunConfig konstruktor paraméteréhez. A NCCL-háttér a Torch. Distributed paranccsal való használatához határozza meg `communication_backend='Nccl'` a PyTorchConfiguration. Az alábbi kód egy 2 csomópontos elosztott feladatot fog konfigurálni. A NCCL háttérrendszer az ajánlott háttérrendszer a PyTorch elosztott GPU-képzésekhez.
 
 Az PyTorchConfiguration-n keresztül konfigurált elosztott PyTorch-feladatok esetében az Azure ML az alábbi környezeti változókat fogja beállítani a számítási cél csomópontjain:
 

@@ -8,16 +8,16 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
-ms.openlocfilehash: 186289826273e85c9faa7f972b6f48d34e38416f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5c9e27e894541d71986fe929cbc5d6fde31bc18
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357369"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308813"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Az alkalmazások életciklusának kezelése Azure Machine Learning Studio (klasszikus)
 
-**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 A Azure Machine Learning Studio (klasszikus) az Azure Cloud platformon üzemelő gépi tanulási kísérletek fejlesztésére szolgáló eszköz. Olyan, mint a Visual Studio IDE és a skálázható felhőalapú szolgáltatás egyetlen platformba egyesítve. A standard szintű alkalmazás-életciklus-kezelési (ALM) eljárásokat beépítheti a különböző eszközökről az automatikus végrehajtásra és üzembe helyezésre Azure Machine Learning Studio (klasszikus). Ez a cikk néhány lehetőséget és megközelítést ismertet.
@@ -46,7 +46,7 @@ A futtatási előzmények pillanatképei megőrzik a kísérlet megváltoztathat
 A JSON-fájl a kísérleti gráf szöveges ábrázolása, amely tartalmazhatja a munkaterületen lévő eszközökre, például egy adatkészletre vagy egy betanított modellre mutató hivatkozást is. Nem tartalmazza az eszköz szerializált verzióját. Ha a JSON-dokumentumot visszahelyezi a munkaterületre, a hivatkozott objektumoknak már léteznie kell ugyanazzal az azonosítóval, amely a kísérletben hivatkozik. Ellenkező esetben nem férhet hozzá az importált kísérlethez.
 
 ## <a name="versioning-trained-model"></a>A betanított modell verziószámozása
-Azure Machine Learning Studio (klasszikus) betanított modell szerializálható egy iLearner-fájlként () ismert formátumba `.iLearner` , és a munkaterülethez társított Azure Blob Storage-fiókban tárolódik. A iLearner-fájl másolatának beszerzésének egyik módja az átképzési API-n keresztül történik. [Ez a cikk](/azure/machine-learning/studio/retrain-machine-learning-model) bemutatja, hogyan működik az átképzési API. A magas szintű lépések:
+Azure Machine Learning Studio (klasszikus) betanított modell szerializálható egy iLearner-fájlként () ismert formátumba `.iLearner` , és a munkaterülethez társított Azure Blob Storage-fiókban tárolódik. A iLearner-fájl másolatának beszerzésének egyik módja az átképzési API-n keresztül történik. [Ez a cikk](./retrain-machine-learning-model.md) bemutatja, hogyan működik az átképzési API. A magas szintű lépések:
 
 1. Állítsa be a betanítási kísérletet.
 2. Adjon hozzá egy webszolgáltatás kimeneti portját a Train Model modulhoz vagy a betanított modellt létrehozó modulhoz, például a modell Hiperparaméter vagy az R-modell létrehozásához.
@@ -78,7 +78,7 @@ Idővel több végpont is létrehozható ugyanabban a webszolgáltatásban. Mind
 Emellett számos azonos webszolgáltatás-végpontot is létrehozhat, majd a iLearner-fájl különböző verzióit a végpontra is kijavíthatja hasonló hatás eléréséhez. [Ez a cikk](create-models-and-endpoints-with-powershell.md) részletesebben ismerteti ezt a feladatot.
 
 ### <a name="new-web-service"></a>Új webszolgáltatás
-Ha új Azure Resource Manager-alapú webszolgáltatást hoz létre, a végpont-összeállítás már nem érhető el. A webszolgáltatás-definíciós (WSD) fájlokat JSON formátumban is létrehozhatja a prediktív kísérletből az [export-AmlWebServiceDefinitionFromExperiment PowerShell-](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) parancsmagot, vagy egy telepített Resource Manager-alapú webszolgáltatásból származó [*export-AzMlWebservice PowerShell-*](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) parancsmagot használatával.
+Ha új Azure Resource Manager-alapú webszolgáltatást hoz létre, a végpont-összeállítás már nem érhető el. A webszolgáltatás-definíciós (WSD) fájlokat JSON formátumban is létrehozhatja a prediktív kísérletből az [export-AmlWebServiceDefinitionFromExperiment PowerShell-](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) parancsmagot, vagy egy telepített Resource Manager-alapú webszolgáltatásból származó [*export-AzMlWebservice PowerShell-*](/powershell/module/az.machinelearning/export-azmlwebservice) parancsmagot használatával.
 
 Az exportált WSD-fájl és-verzió vezérlése után a WSD-t új webszolgáltatásként is telepítheti egy másik Azure-régióban található webszolgáltatási csomagba. Csak győződjön meg arról, hogy a megfelelő tárolási fiók konfigurációját és az új webszolgáltatás-csomag AZONOSÍTÓját adja meg. A különböző iLearner-fájlok javításához módosíthatja a WSD-fájlt, és frissítheti a betanított modell hivatkozási helyét, és telepítheti azt új webszolgáltatásként.
 

@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: d23702a71bababec2e172181c8e75c26241d0460
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b7ec7273848b9e8bb5be809b9cf48cdc919d3949
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91348980"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307972"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-machine-learning-studio-classic"></a>Rövid útmutató: az első adatelemzési kísérlet létrehozása Machine Learning Studio (klasszikus)
 
-**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
+**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
@@ -55,7 +55,7 @@ Ebben az adathalmazban számos különböző autót bemutató bejegyzés szerepe
 
 A következőképpen vonhatja be az adathalmazt a kísérletbe.
 
-1. Hozzon létre egy új kísérletet az Machine Learning Studio (klasszikus) ablak alján található **+ új** elemre kattintva. Válassza a **kísérlet**  >   **üres kísérlet**lehetőséget.
+1. Hozzon létre egy új kísérletet az Machine Learning Studio (klasszikus) ablak alján található **+ új** elemre kattintva. Válassza a **kísérlet**  >   **üres kísérlet** lehetőséget.
 
 1. A kísérlet kap egy alapértelmezett nevet, amelyet a vászon tetején láthat. Jelölje ki ezt a szöveget, és módosítsa valami értelmesebbre, például arra, hogy **Autó árának előrejelzése**. A névnek nem kell egyedinek lennie.
 
@@ -65,7 +65,7 @@ A következőképpen vonhatja be az adathalmazt a kísérletbe.
 
     ![Az autókat tartalmazó adathalmaz megkeresése és a kísérleti vászonra húzása](./media/create-experiment/type-automobile.png)
 
-Ha szeretné megtekinteni az adatokat, kattintson az autó adatkészletének alján található kimeneti portra, majd válassza a **Megjelenítés**lehetőséget.
+Ha szeretné megtekinteni az adatokat, kattintson az autó adatkészletének alján található kimeneti portra, majd válassza a **Megjelenítés** lehetőséget.
 
 ![Kattintson a kimeneti portra, majd válassza a „Visualize” (Képi megjelenítés) lehetőséget](./media/create-experiment/select-visualize.png)
 
@@ -78,7 +78,7 @@ Ebben az adatkészletben minden sor egy automobilt jelöl, és az egyes autókho
 
 ![Az autókra vonatkozó adatok megtekintése az adatokat megjelenítő ablakban](./media/create-experiment/visualize-auto-data.png)
 
-A jobb felső sarokban látható „**x**” gombra kattintva zárja be a képi megjelenítési ablakot.
+A jobb felső sarokban látható „ **x** ” gombra kattintva zárja be a képi megjelenítési ablakot.
 
 ## <a name="prepare-the-data"></a>Az adatok előkészítése
 
@@ -209,7 +209,7 @@ Most, hogy adataink 75 százalékával betanítottuk a modellt, a maradék 25 sz
 
     ![A „Score Model” (Modell pontozása) modul összekötése a „Train Model” (Modell betanítása) és a „Split Data” (Adatok felosztása) modulokkal](./media/create-experiment/connect-score-model.png)
 
-1. Futtassa a kísérletet, és tekintse meg a [pontszám modell][score-model] modul kimenetét úgy, hogy a [pontszám modell][score-model] kimeneti portjára kattint, **és kiválasztja a**vizualizáció lehetőséget. A modul megjeleníti az előre jelzett árat, valamint a tesztadatokból ismert tényleges értéket.  
+1. Futtassa a kísérletet, és tekintse meg a [pontszám modell][score-model] modul kimenetét úgy, hogy a [pontszám modell][score-model] kimeneti portjára kattint, **és kiválasztja a** vizualizáció lehetőséget. A modul megjeleníti az előre jelzett árat, valamint a tesztadatokból ismert tényleges értéket.  
 
     ![A „Score Model” (Modell pontozása) modul kimenete](./media/create-experiment/score-model-output.png)
 
@@ -225,7 +225,7 @@ Az [Evaluate Model][evaluate-model] (Modell kiértékelése) modul eredményéne
 
 A következő statisztikák tekinthetők meg:
 
-- **Mean Absolute Error** (átlagos abszolút eltérés, MAE): az abszolút eltérések átlaga (*eltérésnek* az előre jelzett érték és a tényleges érték közötti különbséget nevezzük).
+- **Mean Absolute Error** (átlagos abszolút eltérés, MAE): az abszolút eltérések átlaga ( *eltérésnek* az előre jelzett érték és a tényleges érték közötti különbséget nevezzük).
 - **Root Mean Squared Error** (gyökátlagos négyzetes eltérés, RMSE): a tesztelési adathalmazon végzett előrejelzések eltéréseinek négyzetéből számított átlag négyzetgyöke.
 - **Relative Absolute Error** (relatív abszolút eltérés): a tényleges értékek és az összes tényleges értékek átlaga közötti különbségek abszolút eltérésének átlaga.
 - **Relative Squared Error** (relatív négyzetes eltérés): a négyzetes eltérések átlaga a tényleges értékek és az összes tényleges érték átlaga közötti különbség négyzetes értékéhez viszonyítva.
@@ -237,7 +237,7 @@ Az összes hibastatisztikára igaz, hogy minél kisebb az érték, annál jobb a
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy egyszerű kísérletet egy minta adatkészlet használatával. Ha szeretné megvizsgálni, hogyan hozhat létre és helyezhet üzembe egy modellt részletesebben, folytassa a prediktív megoldás oktatóanyagával.
 
@@ -245,10 +245,10 @@ Ebben a rövid útmutatóban létrehozott egy egyszerű kísérletet egy minta a
 > [Oktatóanyag: prediktív megoldás fejlesztése a Studióban (klasszikus)](tutorial-part1-credit-risk.md)
 
 <!-- Module References -->
-[evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/
-[linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
-[clean-missing-data]: https://msdn.microsoft.com/library/azure/d2c5ca2f-7323-41a3-9b7e-da917c99f0c4/
-[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
-[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
-[train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
+[evaluate-model]: /azure/machine-learning/studio-module-reference/evaluate-model
+[linear-regression]: /azure/machine-learning/studio-module-reference/linear-regression
+[clean-missing-data]: /azure/machine-learning/studio-module-reference/clean-missing-data
+[select-columns]: /azure/machine-learning/studio-module-reference/select-columns-in-dataset
+[score-model]: /azure/machine-learning/studio-module-reference/score-model
+[split]: /azure/machine-learning/studio-module-reference/split-data
+[train-model]: /azure/machine-learning/studio-module-reference/train-model
