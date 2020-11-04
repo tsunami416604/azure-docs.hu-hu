@@ -5,12 +5,14 @@
   items:
     - name: Mi az a Metrics Advisor?
       href: overview.md
+    - name: Újdonságok
+      href: whats-new.md
 - name: Rövid útmutatók
   items:
     - name: A webes portál használata
       href: quickstarts/web-portal.md
-    - name: A REST API használata
-      href: quickstarts/rest-api.md
+    - name: A REST API vagy az ügyféloldali kódtárak használata
+      href: quickstarts/rest-api-and-client-library.md
 - name: Használati útmutatók
   items:
     - name: Az adatok előkészítése
