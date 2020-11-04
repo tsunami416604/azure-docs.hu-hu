@@ -10,18 +10,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.custom: how-to
-ms.openlocfilehash: eb1a3c1f306b6941987d0981967cf5d096a68735
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: cb4e57cfe8b7494b7d5c38869f83190bff76ef2a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133674"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305764"
 ---
 # <a name="make-predictions-with-an-automl-onnx-model-in-net"></a>Előrejelzések készítése AutoML ONNX-modellel a .NET-ben
 
 Ebből a cikkből megtudhatja, hogyan használhatja az automatikus ML (AutoML) nyílt neurális hálózati Exchange (ONNX) modellt, hogy előrejelzéseket készítsen a C# .NET Core konzol alkalmazásban a ML.NET-mel.
 
-A [ml.net](https://docs.microsoft.com/dotnet/machine-learning/) egy nyílt forráskódú, platformfüggetlen, gépi tanulási keretrendszer a .net-ökoszisztémához, amely lehetővé teszi az egyéni gépi tanulási modellek betanítását és felhasználását a C# vagy F # kód-első megközelítéssel, valamint az alacsony kódú eszközök, például a [Model Builder](https://docs.microsoft.com/dotnet/machine-learning/automate-training-with-model-builder) és a [ml.net CLI](https://docs.microsoft.com/dotnet/machine-learning/automate-training-with-cli)használatával. A keretrendszer bővíthető is, és lehetővé teszi más népszerű gépi tanulási keretrendszerek, például a TensorFlow és a ONNX használatát.
+A [ml.net](/dotnet/machine-learning/) egy nyílt forráskódú, platformfüggetlen, gépi tanulási keretrendszer a .net-ökoszisztémához, amely lehetővé teszi az egyéni gépi tanulási modellek betanítását és felhasználását a C# vagy F # kód-első megközelítéssel, valamint az alacsony kódú eszközök, például a [Model Builder](/dotnet/machine-learning/automate-training-with-model-builder) és a [ml.net CLI](/dotnet/machine-learning/automate-training-with-cli)használatával. A keretrendszer bővíthető is, és lehetővé teszi más népszerű gépi tanulási keretrendszerek, például a TensorFlow és a ONNX használatát.
 
 A ONNX az AI-modellek nyílt forráskódú formátuma. A ONNX támogatja a keretrendszerek közötti együttműködési képességet. Ez azt jelenti, hogy a modelleket a számos népszerű Machine learning-keretrendszer (például a PyTorch) egyikében betaníthatja, ONNX formátumba alakíthatja át, és a ONNX modellt más, például ML.NET-keretrendszerben is használhatja. További információért látogasson el a [ONNX webhelyére](https://onnx.ai/).
 
@@ -34,7 +34,7 @@ A ONNX az AI-modellek nyílt forráskódú formátuma. A ONNX támogatja a keret
 
 ## <a name="create-a-c-console-application"></a>C# konzolos alkalmazás létrehozása
 
-Ebben a példában a a .NET Core parancssori felülete használatával hozza létre az alkalmazást, de ugyanezeket a feladatokat a Visual Studióval is végrehajthatja. További információ a [a .net Core parancssori felületeról](https://docs.microsoft.com/dotnet/core/tools/).
+Ebben a példában a a .NET Core parancssori felülete használatával hozza létre az alkalmazást, de ugyanezeket a feladatokat a Visual Studióval is végrehajthatja. További információ a [a .net Core parancssori felületeról](/dotnet/core/tools/).
 
 1. Nyisson meg egy terminált, és hozzon létre egy új C# .NET Core Console-alkalmazást. Ebben a példában az alkalmazás neve: `AutoMLONNXConsoleApp` . A címtárat ugyanazzal a névvel hozza létre az alkalmazás tartalmával.
 
@@ -71,7 +71,7 @@ Ebben a példában a a .NET Core parancssori felülete használatával hozza lé
 
 ## <a name="add-a-reference-to-the-onnx-model"></a>Hivatkozás hozzáadása a ONNX-modellhez
 
-A ONNX modell eléréséhez a konzol alkalmazásnak hozzá kell adnia azt a Build output könyvtárba.  Az MSBuild általános elemeivel kapcsolatos további tudnivalókért tekintse meg az [MSBuild útmutatót](https://docs.microsoft.com/visualstudio/msbuild/common-msbuild-project-items).
+A ONNX modell eléréséhez a konzol alkalmazásnak hozzá kell adnia azt a Build output könyvtárba.  Az MSBuild általános elemeivel kapcsolatos további tudnivalókért tekintse meg az [MSBuild útmutatót](/visualstudio/msbuild/common-msbuild-project-items).
 
 Adjon hozzá egy hivatkozást a ONNX-modell fájljához az alkalmazásban
 
@@ -86,7 +86,7 @@ Adjon hozzá egy hivatkozást a ONNX-modell fájljához az alkalmazásban
     </ItemGroup>
     ```
 
-    Ebben az esetben a ONNX-modell fájljának neve *automl. ONNX* .
+    Ebben az esetben a ONNX-modell fájljának neve *automl. ONNX*.
 
 1. Nyissa meg a *program.cs* fájlt, és adja hozzá a következő sort az `Program` osztályban belül.
 
@@ -161,7 +161,7 @@ Az [`ColumnName`](xref:Microsoft.ML.Data.ColumnNameAttribute) attribútum segít
   
 Numerikus értékek esetén a ML.NET csak az [`Single`](xref:System.Single) értékek típusán működik. Az egyes oszlopok eredeti adattípusa azonban egész szám. Az [`OnnxMapType`](xref:Microsoft.ML.Transforms.Onnx.OnnxMapTypeAttribute) attribútum a ONNX és a ml.net közötti típusokat képezi le.
 
-Az adatattribútumokkal kapcsolatos további tudnivalókért tekintse meg a [ml.net betöltési útmutatója](https://docs.microsoft.com/dotnet/machine-learning/how-to-guides/load-data-ml-net)című témakört.
+Az adatattribútumokkal kapcsolatos további tudnivalókért tekintse meg a [ml.net betöltési útmutatója](/dotnet/machine-learning/how-to-guides/load-data-ml-net)című témakört.
 
 ### <a name="define-model-output-schema"></a>Modell kimeneti sémájának definiálása
 
@@ -179,7 +179,7 @@ A `OnnxInput` verzióhoz hasonlóan a (z [`ColumnName`](xref:Microsoft.ML.Data.C
 
 ## <a name="define-a-prediction-pipeline"></a>Előrejelzési folyamat definiálása
 
-A ML.NET-ben a folyamat jellemzően olyan láncolt átalakítások sorozata, amelyek a bemeneti adatokon működnek, és kimenetet hoznak létre. További információ az adatátalakításokról: [ml.net-Adatátalakítási útmutató](https://docs.microsoft.com/dotnet/machine-learning/resources/transforms).
+A ML.NET-ben a folyamat jellemzően olyan láncolt átalakítások sorozata, amelyek a bemeneti adatokon működnek, és kimenetet hoznak létre. További információ az adatátalakításokról: [ml.net-Adatátalakítási útmutató](/dotnet/machine-learning/resources/transforms).
 
 1. Hozzon létre egy új, nevű metódust `GetPredictionPipeline` az `Program` osztályon belül
 
@@ -226,7 +226,7 @@ A ML.NET-ben a folyamat jellemzően olyan láncolt átalakítások sorozata, ame
     A [`Fit`](xref:Microsoft.ML.IEstimator%601.Fit%2A) metódus egy [`IDataView`](xref:Microsoft.ML.IDataView) bemenetként vár a műveletek végrehajtásához. Az a [`IDataView`](xref:Microsoft.ML.IDataView) ml.net táblázatos formátumban jeleníti meg az adatokat. Mivel ebben az esetben a folyamat csak előrejelzésekhez használatos, üresen is megadhatja a [`IDataView`](xref:Microsoft.ML.IDataView) [`ITransformer`](xref:Microsoft.ML.ITransformer) szükséges bemeneti és kimeneti séma adatait. Ezután a [`ITransformer`](xref:Microsoft.ML.ITransformer) rendszer visszaküldi az alkalmazást a további használatra.
 
     > [!TIP]
-    > Ebben a példában a folyamat definiálva van, és ugyanazon az alkalmazáson belül használatos. Javasoljuk azonban, hogy külön alkalmazások használatával határozza meg és használja a folyamatot az előrejelzések készítéséhez. A ML.NET a folyamatokat szerializálhatja és mentheti további használatra a .NET végfelhasználói alkalmazásaiban. A ML.NET különböző telepítési célokat támogat, például asztali alkalmazásokat, webszolgáltatásokat, webszerelvény-alkalmazásokat * és sok más szolgáltatást. Ha többet szeretne megtudni a folyamatok mentéséről, tekintse meg a [ml.net Save and load betanított modellek útmutatót](https://docs.microsoft.com/dotnet/machine-learning/how-to-guides/save-load-machine-learning-models-ml-net).
+    > Ebben a példában a folyamat definiálva van, és ugyanazon az alkalmazáson belül használatos. Javasoljuk azonban, hogy külön alkalmazások használatával határozza meg és használja a folyamatot az előrejelzések készítéséhez. A ML.NET a folyamatokat szerializálhatja és mentheti további használatra a .NET végfelhasználói alkalmazásaiban. A ML.NET különböző telepítési célokat támogat, például asztali alkalmazásokat, webszolgáltatásokat, webszerelvény-alkalmazásokat * és sok más szolgáltatást. Ha többet szeretne megtudni a folyamatok mentéséről, tekintse meg a [ml.net Save and load betanított modellek útmutatót](/dotnet/machine-learning/how-to-guides/save-load-machine-learning-models-ml-net).
     >
     > * A webszerelvény csak a .NET Core 5 vagy újabb verzióban támogatott
 
@@ -284,9 +284,9 @@ Most, hogy már rendelkezik egy folyamattal, itt az ideje, hogy előrejelzéseke
     Predicted Fare: 15.621523
     ```
 
-Ha többet szeretne megtudni az előrejelzések létrehozásáról a ML.NET-ben, tekintse meg a [modell használata az előrejelzések készítéséhez című útmutatót](https://docs.microsoft.com/dotnet/machine-learning/how-to-guides/machine-learning-model-predictions-ml-net).
+Ha többet szeretne megtudni az előrejelzések létrehozásáról a ML.NET-ben, tekintse meg a [modell használata az előrejelzések készítéséhez című útmutatót](/dotnet/machine-learning/how-to-guides/machine-learning-model-predictions-ml-net).
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [A modell üzembe helyezése ASP.NET Core webes API-ként](https://docs.microsoft.com/dotnet/machine-learning/how-to-guides/serve-model-web-api-ml-net)
-- [A modell üzembe helyezése kiszolgáló nélküli .NET Azure-függvényként](https://docs.microsoft.com/dotnet/machine-learning/how-to-guides/serve-model-serverless-azure-functions-ml-net)
+- [A modell üzembe helyezése ASP.NET Core webes API-ként](/dotnet/machine-learning/how-to-guides/serve-model-web-api-ml-net)
+- [A modell üzembe helyezése kiszolgáló nélküli .NET Azure-függvényként](/dotnet/machine-learning/how-to-guides/serve-model-serverless-azure-functions-ml-net)

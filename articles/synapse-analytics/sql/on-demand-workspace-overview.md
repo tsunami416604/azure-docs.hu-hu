@@ -1,6 +1,6 @@
 ---
-title: Igény szerinti SQL-verzió (előzetes verzió)
-description: Ismerje meg az Azure szinapszis Analytics-ben igénybe veszi az SQL-t.
+title: Kiszolgáló nélküli SQL-készlet (előzetes verzió)
+description: Ismerje meg a kiszolgáló nélküli SQL-készletet az Azure szinapszis Analytics szolgáltatásban.
 services: synapse analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,59 +9,59 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: dc47bf73f39d73861c166674a692932d51064e6d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e0d47567c3bc0b05c47efafa3bdc8b297a7bdbea
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288528"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93306875"
 ---
-# <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>SQL on-demand (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban 
+# <a name="serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Kiszolgáló nélküli SQL-készlet (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban 
 
-Az Azure szinapszis Analytics-munkaterülete (előzetes verzió) az SQL on-demand (előzetes verzió)-végpontokat tartalmazza, amelyekkel a Lake-ben lévő adatlekérdezéseket lehet használni.
+Az Azure szinapszis Analytics-munkaterülete (előzetes verzió) kiszolgáló nélküli SQL-készlet (előzetes verzió) típusú végpontokat tartalmaz, amelyek segítségével a Lake-ben lévő adatlekérdezéseket végezheti el.
 
-Az SQL on-demand egy lekérdezési szolgáltatás a adatközpontban található adaton keresztül. Az alábbi funkciókkal érheti el az adatait:
+A kiszolgáló nélküli SQL-készlet egy lekérdezési szolgáltatás a adatközpontban található adaton keresztül. Az alábbi funkciókkal érheti el az adatait:
  
 - A jól ismert T-SQL-szintaxist, amellyel az adatlekérdezés nem szükséges, és nem kell egy speciális tárolóba másolni vagy betölteni az adatfájlokat. 
 - Integrált kapcsolódás a T-SQL felületen keresztül, amely számos üzleti intelligenciát és alkalmi lekérdezési eszközt kínál, beleértve a legnépszerűbb illesztőprogramokat is. 
 
-Az SQL on-demand egy elosztott adatfeldolgozó rendszer, amely nagy léptékű adatokra és számítási funkciókra épül. Az SQL on-demand lehetővé teszi a nagy mennyiségű adatok elemzését másodpercek alatt, a munkaterhelés függvényében. A beépített lekérdezés-végrehajtás hibatűrésének köszönhetően a rendszer magas megbízhatóságot és sikerességi arányt biztosít, még a nagy adatkészleteket is tartalmazó hosszan futó lekérdezések esetében is.
+A kiszolgáló nélküli SQL-készlet egy elosztott adatfeldolgozó rendszer, amely nagy léptékű adatokra és számítási funkciókra épül. A kiszolgáló nélküli SQL-készlet lehetővé teszi, hogy a munkaterheléstől függően másodpercek alatt elemezze Big adatait. A beépített lekérdezés-végrehajtás hibatűrésének köszönhetően a rendszer magas megbízhatóságot és sikerességi arányt biztosít, még a nagy adatkészleteket is tartalmazó hosszan futó lekérdezések esetében is.
 
-Az SQL igény szerinti kiszolgáló nélküli, ezért nincs szükség a telepítéshez és a fürtök karbantartásához szükséges infrastruktúra kiépítésére. A szolgáltatás alapértelmezett végpontja minden Azure szinapszis-munkaterületen elérhető, így a munkaterület létrehozása után azonnal elindíthatja az adatlekérdezést. 
+A kiszolgáló nélküli SQL-készlet kiszolgáló nélküli, ezért nincs szükség a telepítéshez vagy a fürtök karbantartásához szükséges infrastruktúra kiépítésére. A szolgáltatás alapértelmezett végpontja minden Azure szinapszis-munkaterületen elérhető, így a munkaterület létrehozása után azonnal elindíthatja az adatlekérdezést. 
 
 A fenntartott erőforrások díjmentesek, csak a futtatott lekérdezések által feldolgozott adatmennyiségért kell fizetnie, ezért ez a modell egy valódi használaton kívüli modell.  
 
-Ha az adatfolyamatban az Azure Szinapszishoz Apache Sparkt használ, az adatok előkészítése, tisztítása vagy dúsítása érdekében [lekérdezheti](develop-storage-files-spark-tables.md) a folyamat során létrehozott külső Spark-táblákat közvetlenül az SQL igény szerint. Használja a [privát hivatkozást](../security/how-to-connect-to-workspace-with-private-links.md) , hogy az SQL igény szerinti végpontját a [felügyelt munkaterület VNet](../security/synapse-workspace-managed-vnet.md)hozza.  
+Ha az adatfolyamatban az Azure Szinapszishoz Apache Sparkt használ, az adatok előkészítése, tisztítása vagy dúsítása érdekében a folyamat során létrehozott [külső Spark-táblákat](develop-storage-files-spark-tables.md) közvetlenül a kiszolgáló nélküli SQL-készletből kérdezheti le. A [privát hivatkozás](../security/how-to-connect-to-workspace-with-private-links.md) használatával hozza a kiszolgáló nélküli SQL-készlet végpontját a [felügyelt munkaterület VNet](../security/synapse-workspace-managed-vnet.md).  
 
-## <a name="sql-on-demand-benefits"></a>Igény szerinti SQL-előnyök
+## <a name="serverless-sql-pool-benefits"></a>A kiszolgáló nélküli SQL-készlet előnyei
 
-Ha meg kell vizsgálnia az adattárban lévő adatok elemzését, vagy a meglévő Adatátalakítási folyamat optimalizálását, igénybe veheti az SQL igény szerinti használatát. A következő esetekben alkalmas:
+Ha meg kell vizsgálnia az adattárban található adatok elemzését, vagy optimalizálni szeretné a meglévő Adatátalakítási folyamatát, a kiszolgáló nélküli SQL-készlet használata is hasznos lehet. A következő esetekben alkalmas:
 
 - Alapszintű felderítés és feltárás – gyorsan elsajátíthatja az adatok különböző formátumokban (a parketta, a CSV, a JSON) tárolt adatait, így megtervezheti az elemzések kinyerését.
 - Logikai adattárház – az adatok áthelyezése és átalakítása nélkül, a nyers vagy a különböző adatokon alapuló összevont absztrakciót biztosít, amely lehetővé teszi az adatok naprakész áttekintését.
 - Adatátalakítás – egyszerű, méretezhető és elvégezhető az adatok átalakítása a tóban a T-SQL használatával, így a BI-hoz és más eszközökhöz is betölthetők, vagy egy rokon adattárolóba (szinapszis SQL-adatbázisok, Azure SQL Database stb.).
 
-A különböző szakmai szerepkörök az SQL igény szerint részesülhetnek:
+A kiszolgáló nélküli SQL-készletből a különböző szakmai szerepkörök is részesülhetnek:
 
 - Az adatmérnökök megtekinthetik a tavat, átalakítják és előkészíthetik az adatfeldolgozást, és egyszerűbbé teszik az Adatátalakítási folyamatokat. További információért olvassa el ezt az [oktatóanyagot](tutorial-data-analyst.md).
 - Az adatszakértők gyorsan megtudhatják, hogy a tó adatainak tartalma és szerkezete milyen funkciókkal, például a OPENROWSET és az automatikus séma-következtetésekkel kapcsolatos.
-- Az adatelemzők megtekinthetik az adatszakértők vagy adatmérnökök által létrehozott, ismerős T-SQL nyelvet vagy a kedvenc eszközeiket használó, az igénybe vehető SQL-eszközökhöz kapcsolódó [külső táblákat](develop-storage-files-spark-tables.md) .
+- Az adatelemzők megtekinthetik az adatelemzők és az adatmérnökök által létrehozott, ismerős T-SQL nyelvvel vagy azok kedvenc eszközeivel létrehozott, és a kiszolgáló nélküli SQL-készlethez való kapcsolódásra képes [külső táblákat](develop-storage-files-spark-tables.md) .
 - A BI-szakemberek gyorsan [hozhatnak létre Power bi jelentéseket a Lake és a](tutorial-connect-power-bi-desktop.md) Spark tábláiban.
 
-## <a name="how-to-start-using-sql-on-demand"></a>Az SQL igény szerinti használatának megkezdése
+## <a name="how-to-start-using-serverless-sql-pool"></a>A kiszolgáló nélküli SQL-készlet használatának megkezdése
 
-Az igény szerinti SQL-végpont minden Azure-beli szinapszis-munkaterületen elérhető. Létrehozhat egy munkaterületet, és azonnal megkezdheti az adatlekérdezést az Ön által jól ismert eszközök használatával.
+A kiszolgáló nélküli SQL Pool végpont minden Azure-beli szinapszis-munkaterületen elérhető. Létrehozhat egy munkaterületet, és azonnal megkezdheti az adatlekérdezést az Ön által jól ismert eszközök használatával.
 
 ## <a name="client-tools"></a>Ügyféleszközök
 
-Az SQL on-demand lehetővé teszi a meglévő SQL ad-hoc lekérdezési és üzleti intelligenciát használó eszközök használatát a (z) adatközpontba. Ahogy a jól ismert T-SQL-szintaxist nyújt, a TDS-kapcsolati SQL-ajánlatokat kiépítő bármely eszköz [csatlakozhat és lekérdezheti a SZINAPSZIS SQL igény szerinti elérését](connect-overview.md) . A Azure Data Studiohoz csatlakozhat, és alkalmi lekérdezéseket futtathat, vagy csatlakozhat a Power BIhoz, és percek alatt megszerezheti a betekintést.
+A kiszolgáló nélküli SQL-készlet lehetővé teszi a meglévő SQL ad-hoc lekérdezési és üzleti intelligenciát szolgáló eszközök használatát a Microsoft-adatközpontba való koppintáshoz. Ahogy a jól ismert T-SQL-szintaxist nyújt, a TDS-kapcsolati SQL-ajánlatokat kiépítő bármely eszköz [csatlakozhat és lekérdezheti a SZINAPSZIS SQL igény szerinti elérését](connect-overview.md) . A Azure Data Studiohoz csatlakozhat, és alkalmi lekérdezéseket futtathat, vagy csatlakozhat a Power BIhoz, és percek alatt megszerezheti a betekintést.
 
 ## <a name="t-sql-support"></a>T-SQL-támogatás
 
-Az SQL on-demand a T-SQL lekérdezési felületét kínálja, amely némileg kibővített/bővíthető bizonyos aspektusokban, hogy a részben strukturált és strukturálatlan adatmennyiségek lekérdezéséhez igazodjon. Emellett a T-SQL nyelv bizonyos szempontjai nem támogatottak az SQL igény szerinti kialakítása miatt, például a DML funkció jelenleg nem támogatott.
+A kiszolgáló nélküli SQL-készlet olyan T-SQL-lekérdezési felületet kínál, amely kis mértékben bővül/bővíthető bizonyos aspektusokban, hogy a részben strukturált és strukturálatlan adatmennyiségek lekérdezéséhez igazodjon. Emellett a T-SQL nyelv néhány aspektusa nem támogatott a kiszolgáló nélküli SQL-készlet kialakítása miatt, például a DML funkció jelenleg nem támogatott.
 
 - A számítási feladatok jól ismert fogalmakkal rendezhetők:
-- Adatbázisok – az igény szerinti SQL-végpont több adatbázissal is rendelkezhet.
+- Adatbázisok – a kiszolgáló nélküli SQL-készlet végpontja több adatbázissal is rendelkezhet.
 - Sémák – egy adatbázison belül egy vagy több, sémák nevű objektum tulajdonosi csoport is lehet.
 - Nézetek
 - Külső erőforrások – adatforrások, fájlformátumok és táblák
@@ -79,7 +79,7 @@ Támogatott T-SQL:
 - CETAS – KÜLSŐ TÁBLA LÉTREHOZÁSA KIJELÖLÉSKÉNT
 - Csak nézetekkel és biztonsággal kapcsolatos DDL-utasítások
 
-Az SQL on-demand nem rendelkezik helyi tárterülettel, csak a metaadat-objektumokat tárolja az adatbázisokban. Ezért a következő fogalmakhoz kapcsolódó T-SQL nem támogatott:
+A kiszolgáló nélküli SQL-készletnek nincs helyi tárterülete, csak a metaadat-objektumokat tárolja az adatbázisokban. Ezért a következő fogalmakhoz kapcsolódó T-SQL nem támogatott:
 
 - Táblák
 - Triggerek
@@ -89,7 +89,7 @@ Az SQL on-demand nem rendelkezik helyi tárterülettel, csak a metaadat-objektum
 
 ### <a name="extensions"></a>Bővítmények
 
-Ahhoz, hogy zökkenőmentesen lehessen megtapasztalni a fájlokban tárolt adatlekérdezéseket a adattárban, az SQL igény szerint kiterjeszti a meglévő [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) függvényt a következő képességek hozzáadásával:
+A következő képességek hozzáadásával lehetővé teszi a zökkenőmentes működést a fájlokban tárolt adatlekérdezések esetében, a kiszolgáló nélküli SQL-készlet pedig kibővíti a meglévő [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) funkciót:
 
 [Több fájl vagy mappa lekérdezése](query-data-storage.md#query-multiple-files-or-folders)
 
@@ -109,41 +109,41 @@ Ahhoz, hogy zökkenőmentesen lehessen megtapasztalni a fájlokban tárolt adatl
 
 ## <a name="security"></a>Biztonság
 
-Az SQL on-demand az adataihoz való hozzáférés biztosítására szolgáló mechanizmusokat kínál.
+A kiszolgáló nélküli SQL-készlet az adataihoz való hozzáférés biztosítására szolgáló mechanizmusokat kínál.
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory-integráció és többtényezős hitelesítés
 
-Az SQL on-demand segítségével központilag kezelheti az adatbázis-felhasználó és más Microsoft-szolgáltatások identitásait [Azure Active Directory integrációval](../../azure-sql/database/authentication-aad-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Ez a funkció egyszerűsíti az engedélyek kezelését és fokozza a biztonságot. A Azure Active Directory (Azure AD) támogatja a [többtényezős hitelesítést](../../azure-sql/database/authentication-mfa-ssms-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) az adatkezelés és az alkalmazások biztonságának növelésére az egyszeri bejelentkezési folyamat támogatása mellett.
+A kiszolgáló nélküli SQL-készlet lehetővé teszi az adatbázis-felhasználó és más Microsoft-szolgáltatások identitásának központilag kezelését [Azure Active Directory integrációval](../../azure-sql/database/authentication-aad-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Ez a funkció egyszerűsíti az engedélyek kezelését és fokozza a biztonságot. A Azure Active Directory (Azure AD) támogatja a [többtényezős hitelesítést](../../azure-sql/database/authentication-mfa-ssms-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) az adatkezelés és az alkalmazások biztonságának növelésére az egyszeri bejelentkezési folyamat támogatása mellett.
 
 #### <a name="authentication"></a>Hitelesítés
 
-Az igény szerinti SQL-hitelesítés arra utal, hogy a felhasználók hogyan igazolják identitásukat a végponthoz való csatlakozáskor. Két hitelesítési típus támogatott:
+A kiszolgáló nélküli SQL-készlet hitelesítése arra utal, hogy a felhasználók hogyan igazolják identitásukat a végponthoz való csatlakozáskor. Két hitelesítési típus támogatott:
 
 - **SQL-hitelesítés**
 
   Ez a hitelesítési módszer egy felhasználónevet és egy jelszót használ.
 
-- **Azure Active Directory hitelesítés**:
+- **Azure Active Directory hitelesítés** :
 
   Ez a hitelesítési módszer Azure Active Directory által felügyelt identitásokat használ. Az Azure AD-felhasználók esetében a többtényezős hitelesítés is engedélyezhető. [Amikor csak lehet](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), használja az Active Directory-hitelesítést (beépített biztonság).
 
 #### <a name="authorization"></a>Engedélyezés
 
-Az engedélyezés arra utal, hogy a felhasználók mit tehetnek egy SQL igény szerinti adatbázison belül, és a felhasználói fiók adatbázis-szerepkör-tagságai és objektum-szintű engedélyei vezérlik.
+Az engedélyezés arra utal, hogy a felhasználók mit tehetnek egy kiszolgáló nélküli SQL Pool-adatbázisban, és a felhasználói fiók adatbázis-szerepkör-tagságai és objektum-szintű engedélyei vezérlik.
 
-SQL-hitelesítés használata esetén az SQL-felhasználó csak az igény szerinti SQL-alkalmazásban létezik, és az engedélyek hatóköre az SQL igény szerinti objektumaira vonatkozik. A biztonságos objektumok elérését más szolgáltatásokban (például az Azure Storage-ban) nem lehet közvetlenül az SQL-felhasználó számára biztosítani, mert csak az SQL igény szerinti hatókörében van. Az SQL-felhasználónak a [támogatott engedélyezési típusok](develop-storage-files-storage-access-control.md#supported-storage-authorization-types) egyikét kell használnia a fájlok eléréséhez.
+SQL-hitelesítés használata esetén az SQL-felhasználó csak a kiszolgáló nélküli SQL-készletben létezik, és az engedélyek hatóköre a kiszolgáló nélküli SQL-készlet objektumaira terjed ki. A biztonságos objektumok elérését más szolgáltatásokban (például az Azure Storage-ban) nem lehet közvetlenül az SQL-felhasználó számára biztosítani, mert csak a kiszolgáló nélküli SQL-készlet hatókörében van. Az SQL-felhasználónak a [támogatott engedélyezési típusok](develop-storage-files-storage-access-control.md#supported-storage-authorization-types) egyikét kell használnia a fájlok eléréséhez.
 
-Ha az Azure AD-hitelesítést használja, a felhasználók bejelentkezhetnek az SQL igény szerinti és egyéb szolgáltatásaiba, például az Azure Storage-ba, és engedélyeket adhatnak az Azure AD-felhasználónak.
+Ha az Azure AD-hitelesítést használja, a felhasználók bejelentkezhetnek a kiszolgáló nélküli SQL-készletbe és más szolgáltatásokba, például az Azure Storage-ba, és engedélyeket adhatnak az Azure AD-felhasználónak.
 
 ### <a name="access-to-storage-accounts"></a>Hozzáférés a Storage-fiókokhoz
 
-Az SQL igény szerinti szolgáltatásba bejelentkezett felhasználónak jogosultnak kell lennie az Azure Storage-ban tárolt fájlok elérésére és lekérdezésére. Az SQL on-demand a következő engedélyezési típusokat támogatja:
+A kiszolgáló nélküli SQL Pool szolgáltatásba bejelentkezett felhasználó számára engedélyezni kell a fájlok elérését és lekérdezését az Azure Storage-ban. a kiszolgáló nélküli SQL-készlet a következő engedélyezési típusokat támogatja:
 
 - A **közös hozzáférésű aláírás (SAS)** delegált hozzáférést biztosít a Storage-fiók erőforrásaihoz. A SAS használatával a fiók kulcsainak megosztása nélkül biztosíthat hozzáférést az ügyfeleknek a Storage-fiók erőforrásaihoz. Az SAS részletesen szabályozhatja az olyan ügyfelek számára biztosított hozzáférés típusát, akik SAS: érvényességi időtartam, megadott engedélyek, elfogadható IP-címtartomány, elfogadható protokoll (https/http).
 
-- A **felhasználói identitás** (más néven "átmenő") olyan engedélyezési típus, ahol az SQL-on igénybe vett Azure ad-felhasználó identitása az adatokhoz való hozzáférés engedélyezésére szolgál. Az adatok elérése előtt az Azure Storage rendszergazdájának engedélyeket kell adnia az Azure AD-felhasználónak az adatokhoz való hozzáféréshez. Ez az engedélyezési típus az SQL on-demand szolgáltatásba bejelentkezett Azure AD-felhasználót használja, ezért az SQL-felhasználók típusai nem támogatottak.
+- A **felhasználói identitás** (más néven "átmenő") olyan engedélyezési típus, ahol a kiszolgáló nélküli SQL-készletbe bejelentkezett Azure ad-felhasználó identitása az adatokhoz való hozzáférés engedélyezésére szolgál. Az adatok elérése előtt az Azure Storage rendszergazdájának engedélyeket kell adnia az Azure AD-felhasználónak az adatokhoz való hozzáféréshez. Ez az engedélyezési típus a kiszolgáló nélküli SQL-készletbe bejelentkezett Azure AD-felhasználót használja, ezért az SQL-felhasználói típusok nem támogatottak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A végponti kapcsolatok és a lekérdezési fájlok további információi a következő cikkekben találhatók: 
 - [Kapcsolódás a végponthoz](connect-overview.md)
 - [Fájlok lekérdezése](develop-storage-files-overview.md)

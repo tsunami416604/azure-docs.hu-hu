@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7224a7bb26ef491915df9fcb9b6b84ff171a9fc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2294ccb1d958b229a71e45bb502b8134d8d5c7f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76720520"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305661"
 ---
 # <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>A csoportos adatelemzési folyamat életciklusának ügyfél-elfogadási szakasza
 
@@ -34,13 +34,13 @@ Itt látható a TDSP életciklus vizuális ábrázolása:
 
 
 ## <a name="goal"></a>Cél
-**Projekt-végtermékek véglegesítése**: Ellenőrizze, hogy a folyamat, a modell és az üzemi környezetben való üzembe helyezése megfelel-e az ügyfél célkitűzéseinek.
+**Projekt-végtermékek véglegesítése** : Ellenőrizze, hogy a folyamat, a modell és az üzemi környezetben való üzembe helyezése megfelel-e az ügyfél célkitűzéseinek.
 
 ## <a name="how-to-do-it"></a>Útmutató
 Ebben a szakaszban két fő feladat foglalkozik:
 
-   * **Rendszer-ellenőrzés**: Ellenőrizze, hogy az üzembe helyezett modell és a folyamat megfelel-e az ügyfél igényeinek.
-   * **Projekt-kikapcsolás**: kapcsolja ki a projektet arra az entitásra, amelyen a rendszer éles környezetben fog futni.
+   * **Rendszer-ellenőrzés** : Ellenőrizze, hogy az üzembe helyezett modell és a folyamat megfelel-e az ügyfél igényeinek.
+   * **Projekt-kikapcsolás** : kapcsolja ki a projektet arra az entitásra, amelyen a rendszer éles környezetben fog futni.
 
 Az ügyfélnek ellenőriznie kell, hogy a rendszer megfelel-e az üzleti igényeknek, és hogy a megfelelő pontossággal válaszol-e a rendszer éles környezetben való üzembe helyezésére az ügyfél alkalmazása általi használatra. Az összes dokumentáció véglegesítése és felülvizsgálata megtörténik. A projekt átadásra kerül a műveletekért felelős entitás számára. Ez az entitás lehet például egy IT vagy Customer adattudományi csapat, vagy az ügyfélnek a rendszer éles környezetben való futtatásért felelős ügynöke. 
 
@@ -48,7 +48,7 @@ Az ügyfélnek ellenőriznie kell, hogy a rendszer megfelel-e az üzleti igénye
 Az ebben az utolsó szakaszban létrehozott fő összetevő az **ügyfélre vonatkozó projekt kilépési jelentése**. Ez a technikai jelentés tartalmazza a teljes projekt részletes ismertetését, amely a rendszer működésének megismeréséhez hasznos. A TDSP egy [kilépési jelentési](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md) sablont biztosít. A sablont használhatja, vagy testre is szabhatja az ügyfél igényeihez. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbiakban a TDSP életciklusának egyes lépéseire mutató hivatkozásokat talál:
 
@@ -60,4 +60,4 @@ Az alábbiakban a TDSP életciklusának egyes lépéseire mutató hivatkozásoka
 
 Teljes körű bemutatókat biztosítunk, amelyek bemutatják a folyamat összes lépését adott forgatókönyvek esetében. A [példákat](walkthroughs.md) bemutató cikk a hivatkozásokat és a miniatűr leírásait tartalmazza. Az útmutató bemutatja, hogyan egyesítheti a felhőt, a helyszíni eszközöket és a szolgáltatásokat egy munkafolyamatban vagy folyamatban egy intelligens alkalmazás létrehozásához. 
 
-A Azure Machine Learning Studiot használó TDSPs lépéseinek végrehajtásával kapcsolatos Példákért lásd: [a TDSP használata Azure Machine learning használatával](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+A Azure Machine Learning Studiot használó TDSPs lépéseinek végrehajtásával kapcsolatos Példákért lásd: [a TDSP használata Azure Machine learning használatával](./index.yml).

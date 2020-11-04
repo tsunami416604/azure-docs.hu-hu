@@ -270,7 +270,7 @@
         - name: Kapcsolatok kezelése
           href: manage-connections.md
           displayName: best practice
-        - name: Hibakezelés
+        - name: Hibakezelés és újrapróbálkozások
           href: functions-bindings-error-pages.md
         - name: Nem HTTP által aktivált függvény manuális futtatása
           href: functions-manually-run-non-http.md

@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: ba6f79fffe5287be7574d422f026489d4da2795e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d7e8ea231dd6db9eab6cf9115f6ce2e62893371a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87287505"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305415"
 ---
 # <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure szinapszis Analytics (munkaterületek előzetes verzió) – gyakori kérdések
 
@@ -26,11 +26,11 @@ Ebben az útmutatóban megtalálja a szinapszis-elemzések leggyakrabban feltett
 
 ### <a name="q-what-is-azure-synapse-analytics"></a>K: Mi az az Azure szinapszis Analytics?
 
-A: az Azure szinapszis egy integrált adatplatform a BI, AI és folyamatos intelligencia számára. Különböző elemzési futtatókörnyezeteket (például SQL és Spark) kapcsol össze egyetlen platformon keresztül, amely egységes módszert biztosít a következőkhöz:
+A: az Azure szinapszis egy integrált adatplatform a BI, AI és folyamatos intelligencia számára. Különböző elemzési futtatókörnyezeteket (például SQL-t és Apache Spark) kapcsol össze egyetlen platformon keresztül, amely egységes módszert biztosít a következőkhöz:
 
 - Védje elemzési erőforrásait, beleértve a hálózatot, a készlethez, az adatforrásokhoz és a fejlesztési összetevőkhöz való egyszeri bejelentkezések kezelését.
 - Egyszerűen figyelheti és gyorsan optimalizálhatja, reagálhatja és hibakeresési eseményeket végezhet a munkaterület tevékenységeiben bármely rétegben.
-- A metaadatok kezelése a motorok között. Hozzon létre egy Spark-táblázatot, amely automatikusan elérhető lesz az Azure szinapszis-adatbázisaiban.
+- A metaadatok kezelése a motorok között. Hozzon létre egy kiszolgáló nélküli Apache Spark készlet táblát, amely automatikusan elérhető lesz az Azure szinapszis-adatbázisaiban.
 - Az adatkezelés egységes felhasználói élményt nyújt. A szinapszis Studio nagy adatfejlesztőket, adatmérnököket, Adattervezők, adatelemzőket és adatszakértőket kínál ugyanahhoz a platformhoz.
 
 További információ: [Mi az az Azure szinapszis Analytics](https://docs.microsoft.com/azure/synapse-analytics/overview-what-is).
@@ -39,15 +39,15 @@ További információ: [Mi az az Azure szinapszis Analytics](https://docs.micros
 
 A: az Azure szinapszis a következő képességekkel rendelkezik:
 
-- Az elemzési funkciók az SQL-készleten vagy az SQL on-demand (előzetes verzió) (kiszolgáló nélküli) elérhetők.
-- Apache Spark készlet (előzetes verzió) teljes körű támogatással a Scala, a Python, a SparkSQL és a C szolgáltatáshoz #
+- Az elemzési képességek dedikált SQL-készlet vagy kiszolgáló nélküli SQL-készlet (előzetes verzió) használatával érhetők el.
+- Kiszolgáló nélküli Apache Spark készlet (előzetes verzió) teljes körű támogatással a Scala, a Python, a Spark, az SQL és a C szolgáltatásokhoz #
 - A Code-Free big data átalakítási felületét biztosító adatfolyam
 - Adatintegrációs &-előkészítés az adatai integrálásához és az összes működővé tenni való hozzáféréshez
 - A Studio ezen képességek egyetlen webes felhasználói felületen keresztüli eléréséhez
 
 ### <a name="q-how-does-azure-synapse-analytics-relate-to-azure-sql-data-warehouse"></a>K: hogyan kapcsolódik az Azure szinapszis Analytics Azure SQL Data Warehouse
 
-A: az Azure szinapszis Analytics a Azure SQL Data Warehouse fejlődése egy elemzési platformon, amely az SQL-készletet is tartalmazza adattárház-megoldásként. Ez a platform ötvözi az adatfeltárást, a betöltést, az átalakítást, az előkészítést és a kiszolgáló elemzési rétegét.
+A: az Azure szinapszis Analytics a Azure SQL Data Warehouse fejlődése egy elemzési platformon, amely egy dedikált SQL-készletet tartalmaz az adattárház-megoldásként. Ez a platform ötvözi az adatfeltárást, a betöltést, az átalakítást, az előkészítést és a kiszolgáló elemzési rétegét.
 
 ## <a name="use-cases"></a>Használati esetek
 
@@ -55,27 +55,27 @@ A: az Azure szinapszis Analytics a Azure SQL Data Warehouse fejlődése egy elem
 
 A: egy közzétett összetevő-fájl átnevezéséhez először a fájlt kell megadnia, és átnevezni az új fájlt a kívánt névre. Manuálisan kell frissítenie az összetevő összes hivatkozását az új fájlnévre, és törölnie kell a régit.
 
-### <a name="q-what-is-a-good-use-case-for-synapse-sql-pool"></a>K: mi a jó használati eset a szinapszis SQL-készlethez
+### <a name="q-what-is-a-good-use-case-for-dedicated-sql-pool"></a>K: mi a jó használati eset a dedikált SQL-készlethez
 
-A: az SQL-készlet az adattárház-szükségletek szíve. Ez a vezető adattárház-megoldás az [ár/teljesítmény](https://azure.microsoft.com/services/sql-data-warehouse/compare/)szolgáltatásban. Az SQL Pool piacvezető felhőalapú adattárház-megoldás, mivel a következőket teheti:
+A: a dedikált SQL-készlet az adattárház-szükségletek szíve. Ez a vezető adattárház-megoldás az [ár/teljesítmény](https://azure.microsoft.com/services/sql-data-warehouse/compare/)szolgáltatásban. A dedikált SQL Pool az piacvezető felhőalapú adattárház-megoldás, mivel a következőket teheti:
 
 - nagy és vegyes számítási feladatok ellátása anélkül, hogy a magas párhuzamosság és a számítási feladatok elkülönítése is negatív hatással lenne
 - az adatok biztonságos védelme a hálózati biztonságtól egészen a részletesen elérhető speciális funkciókkal
 - számos öko-rendszer előnye
 
-### <a name="q-what-is-a-good-use-case-for-spark-in-synapse"></a>K: mi a jó használati eset a Sparkhoz a Szinapszisban
+### <a name="q-what-is-a-good-use-case-for-serverless-apache-spark-pool-in-azure-synapse"></a>K: mi a hasznos használati eset a kiszolgáló nélküli Apache Spark készlet számára az Azure Szinapszisban
 
 A: az első célunk, hogy nagy adattervezési élményt nyújtson az adatkezeléshez a tavon a Batch vagy a stream használatával. Az adatelőkészítés szoros és egyszerű integrálása révén a fejlesztési munka operacionalizálási válik.
 
-A Spark egy másik felhasználási esete, hogy az adattudós:
+A Apache Spark egy másik használati esete az, hogy egy adattudós:
 
 - szolgáltatás kibontása
 - az adatfelfedezés
 - modell betanítása
 
-### <a name="q-what-is-a-good-use-case-for-sql-on-demand-in-synapse"></a>K: mi a jó használati eset az SQL igény szerinti használatához a Szinapszisban
+### <a name="q-what-is-a-good-use-case-for-serverless-sql-pool-in-azure-synapse"></a>K: mi a hasznos használati eset a kiszolgáló nélküli SQL-készlethez az Azure Szinapszisban
 
-A: az SQL on-demand egy lekérdezési szolgáltatás az adatközpontban található adaton keresztül. Lehetővé teszi, hogy demokratizálni az összes adataihoz való hozzáférést úgy, hogy ismerős T-SQL-szintaxist biztosít az adatlekérdezéshez, anélkül, hogy egy speciális tárolóba kellene másolnia vagy betöltenie az adatait.
+A: a kiszolgáló nélküli SQL-készlet egy lekérdezési szolgáltatás a adatközpontban található adaton keresztül. Lehetővé teszi, hogy demokratizálni az összes adataihoz való hozzáférést úgy, hogy ismerős T-SQL-szintaxist biztosít az adatlekérdezéshez, anélkül, hogy egy speciális tárolóba kellene másolnia vagy betöltenie az adatait.
 
 Használati példák például a következők:
 
@@ -83,13 +83,13 @@ Használati példák például a következők:
 - logikai adattárház – az adatelemzők teljes kifejező-T futtathatnak a T-SQL nyelvről közvetlenül az Azure Storage-ban tárolt adat lekérdezésére és elemzésére, valamint ismerős BI-eszközök (például Azure Analysis Services, Power BI Premium stb.) használatára az irányítópultok frissítéséhez a Starlight lekérdezési lekérdezések újrafuttatásával
 - "egyszeri lekérdezés" ETL – lehetővé teszi az adatmérnökök számára, hogy az Azure Storage-alapú adatokat az egyik formátumból a másikba, szűrésre, összesítésre és a nagymértékben párhuzamos feldolgozási divatba alakítsa át, a lekérdezési eredményeket az Azure Storage-ba, és azonnal elérhetővé tegye a további feldolgozáshoz a Starlight-lekérdezésben vagy más hasznos szolgáltatások
 
-### <a name="q-what-is-a-good-use-case-for-data-flow-in-synapse"></a>K: mi a jó használati eset a Szinapszisban zajló adatforgalomhoz
+### <a name="q-what-is-a-good-use-case-for-data-flow-in-azure-synapse"></a>K: mi a jó használati eset az Azure Szinapszisban zajló adatforgalomhoz
 
 A: az adatforgalom lehetővé teszi, hogy az adatmérnökök programkód írása nélkül fejlesszenek grafikus Adatátalakítási logikát. Az eredményül kapott adatfolyamatok az adatintegrációs &-előkészítési tevékenységen belül lesznek végrehajtva. Az adatáramlási tevékenységek a meglévő ütemezési, vezérlési, folyamat-és figyelési képességek segítségével is működőképesek.
 
 ## <a name="security-and-access"></a>Biztonság és hozzáférés
 
-A: a teljes körű egyszeri bejelentkezési élmény egy fontos hitelesítési folyamat a szinapszis Analyticsben. Az identitások teljes HRE-integráción keresztül történő kezelése és átadása kötelező.
+A: a teljes körű egyszeri bejelentkezési élmény egy fontos hitelesítési folyamat a szinapszis Analyticsben. Az identitások teljes körű Azure AD-integráción keresztül történő kezelése és átadása kötelező.
 
 ### <a name="q-how-do-i-get-access-to-files-and-folders-in-the-adls-gen2"></a>K: Hogyan hozzáférhet a fájlokhoz és mappákhoz a ADLS Gen2
 
@@ -97,12 +97,12 @@ A: a fájlokhoz és mappákhoz való hozzáférés jelenleg ADLS Gen2 felügyelh
 
 ### <a name="q-can-i-use-third-party-business-intelligence-tools-to-access-azure-synapse-analytics"></a>K: használhatok harmadik féltől származó üzleti intelligencia eszközöket az Azure szinapszis Analytics eléréséhez
 
-Válasz: igen, a harmadik féltől származó üzleti alkalmazásokat, például a tablót és a Power BI is használhatja az SQL-készlethez és az igény szerinti SQL-hez való kapcsolódáshoz. A Spark támogatja a IntelliJ.
+Válasz: igen, a harmadik féltől származó üzleti alkalmazásokat, például a tablót és a Power BI is használhatja a dedikált SQL-készlethez és a kiszolgáló nélküli SQL-készlethez való kapcsolódáshoz. A Spark támogatja a IntelliJ.
 
 ## <a name="next-steps"></a>Következő lépések
 
 - [Munkaterület létrehozása](quickstart-create-workspace.md)
 - [A Synapse Studio használata](quickstart-synapse-studio.md)
-- [SQL-készlet létrehozása](quickstart-create-sql-pool-portal.md)
-- [Az igény szerinti SQL használata](quickstart-sql-on-demand.md)
-- [Apache Spark-készlet létrehozása](quickstart-create-apache-spark-pool-portal.md) 
+- [Dedikált SQL-készlet létrehozása](quickstart-create-sql-pool-portal.md)
+- [Kiszolgáló nélküli SQL-készlet használata](quickstart-sql-on-demand.md)
+- [Kiszolgáló nélküli Apache Spark készlet létrehozása](quickstart-create-apache-spark-pool-portal.md) 

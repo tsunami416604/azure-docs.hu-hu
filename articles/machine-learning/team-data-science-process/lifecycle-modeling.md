@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c3406b28c44644053fa984f2cf7739bb53ccf6c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3845c5e5d7cf6bb372744fb3c740c44aa2b94236
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336445"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305607"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>A csoportos adatelemzési folyamat életciklusának modellezési szakasza
 
@@ -41,8 +41,8 @@ Itt látható a TDSP életciklus vizuális ábrázolása:
 ## <a name="how-to-do-it"></a>Útmutató
 Ebben a szakaszban három fő feladat foglalkozik:
 
-  * **Szolgáltatás-mérnöki**: adatszolgáltatások létrehozása a nyers adatokból a modell betanításának elősegítése érdekében.
-  * **Modell betanítása**: keresse meg a modellt, amely a lehető legpontosabban válaszol a sikerességi mérőszámok összehasonlításával.
+  * **Szolgáltatás-mérnöki** : adatszolgáltatások létrehozása a nyers adatokból a modell betanításának elősegítése érdekében.
+  * **Modell betanítása** : keresse meg a modellt, amely a lehető legpontosabban válaszol a sikerességi mérőszámok összehasonlításával.
   * Állapítsa meg, hogy a modell **alkalmas-e a gyártásra.**
 
 ### <a name="feature-engineering"></a>Jellemzőkiemelés
@@ -59,11 +59,11 @@ A modell betanításának folyamata a következő lépéseket tartalmazza:
 
    * **A bemeneti adatok véletlenszerűen való felosztása** modellezési adatkészletbe és tesztelési adatkészletbe.
    * Hozza **létre a modelleket** a betanítási adatkészlet használatával.
-   * **Értékelje** ki a betanítást és a tesztelési adatkészletet. A különböző társított hangolási paraméterekkel, valamint az aktuális adatokkal kapcsolatos kérdések megválaszolásával megválaszolva *parameter sweep*a versengő gépi tanulási algoritmusok sorozatát is használhatja.
+   * **Értékelje** ki a betanítást és a tesztelési adatkészletet. A különböző társított hangolási paraméterekkel, valamint az aktuális adatokkal kapcsolatos kérdések megválaszolásával megválaszolva *parameter sweep* a versengő gépi tanulási algoritmusok sorozatát is használhatja.
    * **Határozza meg a "legjobb" megoldást** a kérdés megválaszolásához az alternatív módszerek közötti sikerességi mérőszámok összehasonlításával.
 
 > [!NOTE]
-> A **szivárgás elkerülése**: adatszivárgást okozhat, ha a betanítási adatkészleten kívülről származó adatokkal is rendelkezik, ami lehetővé teszi, hogy a modell vagy a gépi tanulási algoritmus reálisan jó előrejelzéseket készítsen. A szivárgás gyakori oka annak, hogy az adatelemzők miért idegesek, amikor olyan prediktív eredményeket kapnak, amelyek túl jól tűnnek a valóságnak. Ezek a függőségek nehezen észlelhetők. A szivárgás elkerüléséhez az Analysis-adatkészletek kiépítése, a modell létrehozása és az eredmények pontosságának kiértékelése között ismétlődő lépések szükségesek. 
+> A **szivárgás elkerülése** : adatszivárgást okozhat, ha a betanítási adatkészleten kívülről származó adatokkal is rendelkezik, ami lehetővé teszi, hogy a modell vagy a gépi tanulási algoritmus reálisan jó előrejelzéseket készítsen. A szivárgás gyakori oka annak, hogy az adatelemzők miért idegesek, amikor olyan prediktív eredményeket kapnak, amelyek túl jól tűnnek a valóságnak. Ezek a függőségek nehezen észlelhetők. A szivárgás elkerüléséhez az Analysis-adatkészletek kiépítése, a modell létrehozása és az eredmények pontosságának kiértékelése között ismétlődő lépések szükségesek. 
 > 
 > 
 
@@ -74,7 +74,7 @@ Az ebben a szakaszban bemutatott összetevők a következők:
 
    * [Szolgáltatások készletei](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md): a modellezéshez kifejlesztett funkciók leírása az **adatdefiníciós** jelentés **szolgáltatáskészlet-készletek** szakaszában található. A kód mutatóit tartalmazza a funkciók létrehozásához és a szolgáltatás létrehozásának leírásához.
    * [Modell jelentés](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): minden olyan modell esetében, amely minden egyes kísérlethez meg van határozva, egy standard, sablon alapú jelentés készül, amely részletesen ismerteti az egyes kísérletek részleteit.
-   * **Ellenőrzőpont-döntés**: annak kiértékelése, hogy a modell megfelelően működik-e az éles környezetben. Néhány fontos kérdés:
+   * **Ellenőrzőpont-döntés** : annak kiértékelése, hogy a modell megfelelően működik-e az éles környezetben. Néhány fontos kérdés:
      * A modell megfelelő megbízhatósággal válaszol a kérdésre a tesztelési adat miatt? 
      * Érdemes kipróbálnia bármilyen alternatív megközelítést? További adatok gyűjtése, több funkció-mérnöki megoldás vagy más algoritmusok kipróbálása?
 
@@ -90,4 +90,4 @@ Az alábbiakban a TDSP életciklusának egyes lépéseire mutató hivatkozásoka
 
 Teljes körű útmutatót biztosítunk, amely bemutatja a folyamat összes lépését adott forgatókönyvek esetén. A [példákat](walkthroughs.md) bemutató cikk a hivatkozásokat és a miniatűr leírásait tartalmazza. Az útmutató bemutatja, hogyan egyesítheti a felhőt, a helyszíni eszközöket és a szolgáltatásokat egy munkafolyamatban vagy folyamatban egy intelligens alkalmazás létrehozásához. 
 
-A Azure Machine Learning Studiot használó TDSPs lépéseinek végrehajtásával kapcsolatos Példákért lásd: [a TDSP használata Azure Machine learning használatával](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). 
+A Azure Machine Learning Studiot használó TDSPs lépéseinek végrehajtásával kapcsolatos Példákért lásd: [a TDSP használata Azure Machine learning használatával](./index.yml).

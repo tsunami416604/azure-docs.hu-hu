@@ -1,7 +1,7 @@
 ---
 title: Paritás a nyilvános és a szuverén régiók között
 titleSuffix: Azure Machine Learning
-description: A Azure Machine Learning egyes funkciói, például a nyilvános előzetes verziójú funkciók, csak nyilvános Felhőbeli régiókban érhetők el. Ez a cikk felsorolja, hogy mely funkciók érhetők el a Azure Government, az Azure Germany és az Azure China 21Vianet régióiban is.
+description: Ez a cikk a nyilvános felhő és a Azure Government, az Azure Germany és az Azure China 21Vianet régiói közötti szolgáltatási paritást sorolja fel.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: ddfe1344b235500f0f1ea69b6e3d8c537f96b855
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 0300dab1fa7d0ef0d20c4236cc452135b3ade20e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426529"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305755"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure Machine Learning szuverén felhő paritása
 
@@ -24,7 +24,7 @@ Ismerje meg, hogy milyen Azure Machine Learning funkciók érhetők el a szuver�
 
 A globális Azure-régiók listájában több "szuverén" régió is található, amelyek adott piacokat szolgálnak ki. Például a Azure Government és az Azure China 21Vianet régiói. Jelenleg Azure Machine Learning üzembe helyezése a következő szuverén Felhőbeli régiókba történik:
 
-* Azure Government az **USA – Arizona** és **USA – Virginia**régiókat.
+* Azure Government az **USA – Arizona** és **USA – Virginia** régiókat.
 * Azure China 21Vianet-régió, **Kína – Kelet – 2**.
 
 > [!TIP]
@@ -34,7 +34,7 @@ Célunk, hogy a nyilvános felhő és a szuverén régiók között maximális p
 
 ## <a name="azure-government"></a>Azure Government 
 
-| Szolgáltatás | Nyilvános felhő állapota  | US-Virginia | US-Arizona| 
+| Funkció | Nyilvános felhő állapota  | US-Virginia | US-Arizona| 
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|:-------------:|
 | **Automatizált gépi tanulás** | | | |
 | Kísérletek létrehozása és futtatása jegyzetfüzetekben                                    | FE                   | IGEN                | IGEN         |
@@ -147,7 +147,7 @@ Célunk, hogy a nyilvános felhő és a szuverén régiók között maximális p
 
 ## <a name="azure-china-21vianet"></a>Azure China 21Vianet 
 
-| Szolgáltatás                                       | Nyilvános felhő állapota | CH-Kelet – 2 | CH-Észak-3 |
+| Funkció                                       | Nyilvános felhő állapota | CH-Kelet – 2 | CH-Észak-3 |
 |----------------------------------------------------------------------------|:------------------:|:--------------------:|:-------------:|
 | **Automatizált gépi tanulás** |    | | |
 | Kísérletek létrehozása és futtatása jegyzetfüzetekben                                    | FE               | IGEN       | N/A        |
@@ -239,6 +239,6 @@ Célunk, hogy a nyilvános felhő és a szuverén régiók között maximális p
 * IP-címtartományok: az [VNet kényszerített bújtatási](how-to-secure-training-vnet.md#forced-tunneling) utasításban használt CLI-parancs nem ad vissza IP-tartományokat. Ehelyett használja az [Azure IP-címtartományok és a szolgáltatás címkéit az Azure China-](https://www.microsoft.com//download/details.aspx?id=57062) hoz.
 * Azure Machine Learning a számítási példányok előzetes verziója nem támogatott olyan munkaterületen, amelyben a magánhálózati kapcsolat már engedélyezve van, de a CI a szolgáltatás bővítésének következő üzembe helyezése során is támogatott lesz az összes pénzmosás-régióra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni arról, hogy az Azure Machine learning mely régiókban érhető el, tekintse meg a [termékek régiónként](https://azure.microsoft.com/global-infrastructure/services/)című témakört.

@@ -8,14 +8,14 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: 6b475e34c01ca26abd3d8ab1d904521de19f941b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 01efb5736d7becf1b46c7c2898c22648b0421dd1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947084"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305816"
 ---
-# <a name="create-and-delete-jobs-in-an-azure-stream-analytics-cluster"></a>Feladatok létrehozása és törlése egy Azure Stream Analytics-fürtben
+# <a name="add-and-remove-jobs-in-an-azure-stream-analytics-cluster"></a>Feladatok hozzáadása és eltávolítása egy Azure Stream Analytics-fürtben
 
 Stream Analytics-fürtökön több Azure Stream Analytics feladatot is futtathat. A feladatok fürtön való futtatása egyszerű, kétlépéses folyamat: adja hozzá a feladatot a fürthöz, és indítsa el a feladatot. Ebből a cikkből megtudhatja, hogyan adhat hozzá és távolíthat el feladatokat egy meglévő fürtből. Ha még nem rendelkezik ilyennel, kövesse a rövid útmutatót [stream Analytics-fürt létrehozásához](create-cluster.md) .
 
@@ -25,7 +25,7 @@ Csak a meglévő Stream Analytics feladatok adhatók hozzá a fürtökhöz. A r�
 
 1. A Azure Portal keresse meg és válassza ki a Stream Analytics-fürtöt.
 
-1. A **Beállítások**területen válassza a **stream Analytics feladatok**elemet. Ezután válassza a **meglévő feladatok hozzáadása**elemet.
+1. A **Beállítások** területen válassza a **stream Analytics feladatok** elemet. Ezután válassza a **meglévő feladatok hozzáadása** elemet.
 
 1. Válassza ki azt az előfizetést és Stream Analytics feladatot, amelyet hozzá szeretne adni a fürthöz. A fürthöz csak olyan Stream Analytics feladatok adhatók hozzá, amelyek ugyanabban a régióban találhatók, mint a fürt.
 
@@ -41,15 +41,15 @@ Stream Analytics feladatnak leállított állapotban kell lennie ahhoz, hogy el 
 
 1. Keresse meg és válassza ki a Stream Analytics-fürtöt.
 
-1. A **Beállítások**területen válassza a **stream Analytics feladatok**elemet.
+1. A **Beállítások** területen válassza a **stream Analytics feladatok** elemet.
 
-1. Válassza ki a fürtből eltávolítani kívánt feladatokat, majd válassza az **Eltávolítás**lehetőséget.
+1. Válassza ki a fürtből eltávolítani kívánt feladatokat, majd válassza az **Eltávolítás** lehetőséget.
 
    ![feladatok eltávolítása a fürtből](./media/manage-jobs-cluster/remove-job.png)
 
    Ha eltávolít egy feladatot egy Stream Analytics-fürtről, a rendszer visszaadja a standard több-bérlős környezetet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már tudja, hogyan adhat hozzá és távolíthat el feladatokat a Azure Stream Analytics-fürtben. Ezután megtudhatja, hogyan kezelheti a privát végpontokat és méretezheti a fürtöket:
 

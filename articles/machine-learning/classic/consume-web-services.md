@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-python, devx-track-js, devx-track-csharp
 ms.date: 05/29/2020
-ms.openlocfilehash: 66c9368d06960790c6dc960d2d95bd82be1a6e39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9922ddf0859e4f28d5759108581f5ef538f0c294
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91343688"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305565"
 ---
 # <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>Machine Learning Studio (klasszikus) webszolgáltatás felhasználása
 
-**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
+**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Miután telepített egy Azure Machine Learning Studio (klasszikus) prediktív modellt webszolgáltatásként, használhat egy REST API az adatküldés és az előrejelzések beszerzése érdekében. Az adatküldés valós időben vagy batch módban is elvégezhető.
@@ -51,7 +51,7 @@ Az új Machine Learning webszolgáltatás API-kulcsának beolvasása:
 
 1. A Azure Machine Learning webszolgáltatások portálján kattintson a **webszolgáltatások** lehetőségre a felső menüben.
 2. Kattintson arra a webszolgáltatásra, amelynek a kulcsát le szeretné kérni.
-3. A felső **menüben kattintson a**felhasználás elemre.
+3. A felső **menüben kattintson a** felhasználás elemre.
 4. Másolja és mentse az **elsődleges kulcsot**.
 
 A klasszikus Machine Learning webszolgáltatás API-kulcsának beolvasása:
@@ -59,7 +59,7 @@ A klasszikus Machine Learning webszolgáltatás API-kulcsának beolvasása:
 1. A Azure Machine Learning webszolgáltatások portálján kattintson a **klasszikus webes szolgáltatások** elemre a felső menüben.
 2. Kattintson arra a webszolgáltatásra, amellyel dolgozik.
 3. Kattintson arra a végpontra, amelynek a kulcsát le szeretné kérni.
-4. A felső **menüben kattintson a**felhasználás elemre.
+4. A felső **menüben kattintson a** felhasználás elemre.
 5. Másolja és mentse az **elsődleges kulcsot**.
 
 ### <a name="classic-web-service"></a>Klasszikus webszolgáltatás
@@ -77,7 +77,7 @@ A Machine Learning API súgója az előrejelzési webszolgáltatás részleteit 
 
 1. Kattintson arra a webszolgáltatásra, amellyel dolgozik.
 2. Kattintson arra a végpontra, amelynek meg szeretné tekinteni az API-Súgó lapját.
-3. A felső **menüben kattintson a**felhasználás elemre.
+3. A felső **menüben kattintson a** felhasználás elemre.
 4. Kattintson az **API-Súgó lap** Request-Response vagy batch végrehajtási végpontok elemére.
 
 **Új webszolgáltatás Machine Learning API-súgójának megtekintése**
@@ -99,8 +99,8 @@ Machine Learning webszolgáltatáshoz való kapcsolódáshoz telepíteni kell a 
 **A Microsoft. AspNet. WebApi. Client NuGet telepítése a Visual Studióban**
 
 1. Tegye közzé a letöltési adatkészletet az UCI: Adult 2 Class adatkészlet webszolgáltatás webszolgáltatásból.
-2. Kattintson az **eszközök**  >  **NuGet Package**Manager  >  **csomagkezelő konzol**elemre.
-3. Válassza a **Microsoft. AspNet. WebApi. Client csomag telepítése**lehetőséget.
+2. Kattintson az **eszközök**  >  **NuGet Package** Manager  >  **csomagkezelő konzol** elemre.
+3. Válassza a **Microsoft. AspNet. WebApi. Client csomag telepítése** lehetőséget.
 
 **A mintakód futtatása**
 

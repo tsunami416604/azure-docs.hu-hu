@@ -8,15 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/02/2020
+ms.date: 11/03/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ed5c554e6307b08c412de16d1bb92b458c5f15f
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+zone_pivot_groups: keyword-quickstart
+ms.openlocfilehash: 2d15da55c0bab42571d2a9660156a780c5d27881
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166454"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305892"
 ---
 # <a name="get-started-with-custom-keyword"></a>Bevezetés az egyéni kulcsszavak használatába
 
@@ -38,7 +39,7 @@ Egyéni kulcsszó használata előtt létre kell hoznia egy kulcsszót a [Speech
 
 1. Az [egyéni kulcsszó](https://aka.ms/sdsdk-wakewordportal) lapon hozzon létre egy **új projektet**. 
 
-1. Adjon meg egy **nevet**, egy opcionális **leírást**, és válassza ki a nyelvet. Nyelvenként egy projektre van szüksége, és a támogatás jelenleg a `en-US` nyelvre korlátozódik.
+1. Adjon meg egy **nevet** , egy opcionális **leírást** , és válassza ki a nyelvet. Nyelvenként egy projektre van szüksége, és a támogatás jelenleg a `en-US` nyelvre korlátozódik.
 
     ![A kulcsszavas projekt leírása](media/custom-keyword/custom-kws-portal-new-project.png)
 
@@ -46,9 +47,9 @@ Egyéni kulcsszó használata előtt létre kell hoznia egy kulcsszót a [Speech
 
     ![Válassza ki a kulcsszavas projektet](media/custom-keyword/custom-kws-portal-project-list.png)
 
-1. Új kulcsszó-modell létrehozásához kattintson a **betanítási modell**elemre.
+1. Új kulcsszó-modell létrehozásához kattintson a **betanítási modell** elemre.
 
-1. Adja meg a modell **nevét** , a választható **leírást**, valamint az Ön által választott **kulcsszót** , majd kattintson a **tovább**gombra. Tekintse meg a hatályos kulcsszó kiválasztására [vonatkozó útmutatást](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword) .
+1. Adja meg a modell **nevét** , a választható **leírást** , valamint az Ön által választott **kulcsszót** , majd kattintson a **tovább** gombra. Tekintse meg a hatályos kulcsszó kiválasztására [vonatkozó útmutatást](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword) .
 
     ![Adja meg a kulcsszót](media/custom-keyword/custom-kws-portal-new-model.png)
 
@@ -64,26 +65,18 @@ Egyéni kulcsszó használata előtt létre kell hoznia egy kulcsszót a [Speech
 
 ## <a name="use-a-keyword-model-with-the-sdk"></a>Kulcsszavas modell használata az SDK-val
 
-Először töltse be a kulcsszavas modellt tartalmazó fájlt a `FromFile()` statikus függvénnyel, amely egy értéket ad vissza `KeywordRecognitionModel` . Használja a `.table` Speech studióból letöltött fájl elérési útját. Emellett `AudioConfig` az alapértelmezett mikrofon használatával is létrehoz egy új példányt a `KeywordRecognizer` hangkonfiguráció használatával.
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [C# Basics include](includes/how-to/keyword-recognition/keyword-basics-csharp.md)]
+::: zone-end
 
-```csharp
-using Microsoft.CognitiveServices.Speech;
-using Microsoft.CognitiveServices.Speech.Audio;
+::: zone pivot="programming-language-python"
+[!INCLUDE [Python Basics include](includes/how-to/keyword-recognition/keyword-basics-python.md)]
+::: zone-end
 
-var keywordModel = KeywordRecognitionModel.FromFile("your/path/to/Activate_device.table");
-using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
-using var keywordRecognizer = new KeywordRecognizer(audioConfig);
-```
+::: zone pivot="programming-languages-objectivec-swift"
+[!INCLUDE [ObjectiveC/Swift Basics include](includes/how-to/keyword-recognition/keyword-basics-objc.md)]
+::: zone-end
 
-Ezután a kulcsszó-felismerés futtatása egy hívással történik `RecognizeOnceAsync()` a Model objektum átadásával. Ez elindít egy kulcsszó-felismerési munkamenetet, amely addig tart, amíg el nem ismeri a kulcsszót. Ezért ezt a kialakítási mintát általában többszálas alkalmazásokban vagy használati esetekben érdemes használni, ahol előfordulhat, hogy a rendszer határozatlan ideig várakozik.
-
-```csharp
-KeywordRecognitionResult result = await keywordRecognizer.RecognizeOnceAsync(keywordModel);
-```
-
-> [!NOTE]
-> Az itt látható példa a helyi kulcsszavas felismerést használja, mert nincs szükség `SpeechConfig` objektumra a hitelesítési környezethez, és nem lép kapcsolatba a háttérrel. A kulcsszó-felismerést és az ellenőrzést azonban [folyamatos háttérbeli kapcsolatok](https://docs.microsoft.com/azure/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk#view-the-source-code-that-enables-keyword)használatával is futtathatja.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tesztelje egyéni kulcsszavait a [Speech Devices SDK](https://aka.ms/sdsdk-quickstart)rövid útmutatójában.

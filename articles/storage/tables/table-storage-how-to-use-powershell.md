@@ -8,17 +8,17 @@ ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: tables
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e643a7ce5ccf4aa5107df1e505d90a0767517350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a7502d48095fe18b983c1971d5145f51e766c95
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89070411"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93306911"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Azure Table Storage-műveletek végrehajtása a Azure PowerShell 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
-Az Azure Table Storage egy NoSQL-adattár, amellyel nagy mennyiségű strukturált, nem összehasonlítható adat tárolható és kérdezhető le. A szolgáltatás fő összetevői a táblák, az entitások és a tulajdonságok. A tábla entitások gyűjteménye. Az entitások tulajdonságok halmazai. Minden entitás legfeljebb 252 tulajdonsággal rendelkezhet, amelyek mindegyike név-érték párokat tartalmaz. Ez a cikk azt feltételezi, hogy már ismeri az Azure Table Storage szolgáltatással kapcsolatos fogalmakat. Részletes információkért lásd: [a Table Service adatmodell megismerése](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) és az [Azure Table Storage használatának első lépései a .NET használatával](../../cosmos-db/table-storage-how-to-use-dotnet.md).
+Az Azure Table Storage egy NoSQL-adattár, amellyel nagy mennyiségű strukturált, nem összehasonlítható adat tárolható és kérdezhető le. A szolgáltatás fő összetevői a táblák, az entitások és a tulajdonságok. A tábla entitások gyűjteménye. Az entitások tulajdonságok halmazai. Minden entitás legfeljebb 252 tulajdonsággal rendelkezhet, amelyek mindegyike név-érték párokat tartalmaz. Ez a cikk azt feltételezi, hogy már ismeri az Azure Table Storage szolgáltatással kapcsolatos fogalmakat. Részletes információkért lásd: [a Table Service adatmodell megismerése](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) és az [Azure Table Storage használatának első lépései a .NET használatával](../../cosmos-db/tutorial-develop-table-dotnet.md).
 
 Ez a cikk a közös Azure Table Storage-műveletekre vonatkozik. Az alábbiak végrehajtásának módját ismerheti meg: 
 
@@ -38,7 +38,7 @@ A példákhoz a PowerShell-modulok és a szükségesek `Az.Storage (1.1.0 or gre
 > Ha ezt az Azure-szolgáltatást a PowerShell használatával szeretné használni, `Az` telepítenie kell a modult. A jelenlegi verziója `AzTable` nem kompatibilis a régebbi AzureRM modullal.
 > Szükség esetén kövesse az az [modul telepítéséhez szükséges legújabb telepítési útmutatót](/powershell/azure/install-az-ps) .
 
-Azure PowerShell telepítését vagy frissítését követően telepítenie kell a **AzTable**modult, amely az entitások kezelésére szolgáló parancsokat tartalmaz. A modul telepítéséhez futtassa a PowerShellt rendszergazdaként, és használja az **install-Module** parancsot.
+Azure PowerShell telepítését vagy frissítését követően telepítenie kell a **AzTable** modult, amely az entitások kezelésére szolgáló parancsokat tartalmaz. A modul telepítéséhez futtassa a PowerShellt rendszergazdaként, és használja az **install-Module** parancsot.
 
 > [!IMPORTANT]
 > A modul neve kompatibilitási okokból továbbra is ugyanezt a modult tesszük közzé a régi néven `AzureRmStorageTables` PowerShell-Galéria. Ez a dokumentum csak az új névre hivatkozik.
@@ -57,7 +57,7 @@ Add-AzAccount
 
 ## <a name="retrieve-list-of-locations"></a>Helyszínek listájának beolvasása
 
-Ha nem tudja, melyik helyet szeretné használni, kilistázhatja az elérhető helyeket. A megjelenő listában keresse meg a használni kívánt helyet. Ezek a példák a **eastus**-t használják. Tárolja ezt az értéket a változó **helyén** későbbi használatra.
+Ha nem tudja, melyik helyet szeretné használni, kilistázhatja az elérhető helyeket. A megjelenő listában keresse meg a használni kívánt helyet. Ezek a példák a **eastus** -t használják. Tárolja ezt az értéket a változó **helyén** későbbi használatra.
 
 ```powershell
 Get-AzLocation | select Location
@@ -120,7 +120,7 @@ $storageTable = Get-AzStorageTable –Name $tableName –Context $ctx
 > [!IMPORTANT]
 > A CloudTable használata kötelező, ha a **AzTable** PowerShell-modullal dolgozik. Hívja meg a **Get-AzStorageTable** parancsot az objektumra mutató hivatkozás beszerzéséhez. Ez a parancs a táblát is létrehozza, ha még nem létezik.
 
-Ha a **AzTable**-t használó táblán műveleteket szeretne végrehajtani, akkor egy adott tábla CloudTable tulajdonságára kell hivatkoznia.
+Ha a **AzTable** -t használó táblán műveleteket szeretne végrehajtani, akkor egy adott tábla CloudTable tulajdonságára kell hivatkoznia.
 
 ```powershell
 $cloudTable = (Get-AzStorageTable –Name $tableName –Context $ctx).CloudTable

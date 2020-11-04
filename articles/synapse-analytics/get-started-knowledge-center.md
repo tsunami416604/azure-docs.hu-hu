@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: dd055eecaef00a2f3b555034f44f3c04684a1722
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 2857989fb09555ecd808bfdba95bcf58e4444594
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171861"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93304905"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>A szinapszis Tudásközpont megismerése
 
@@ -25,7 +25,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan használhatja a szinapszis Studio
 
 A Knowledge Center a szinapszis Studióban kétféleképpen megtalálható:
 
-  1. A Kezdőlap központ hasznos hivatkozások területén kattintson a **Knowledge Center**nevű első hivatkozásra.
+  1. A Kezdőlap központ hasznos hivatkozások területén kattintson a **Knowledge Center** nevű első hivatkozásra.
   2. A felső menüsorban kattintson a gombra **?** és a  **Knowledge Center**.
 
 Válassza a metódust, és nyissa meg a **tudásbázist**.
@@ -35,11 +35,11 @@ Válassza a metódust, és nyissa meg a **tudásbázist**.
 A **Tudásközpont** három dolgot tesz lehetővé:
 * A **mintákat azonnal használhatja**. Ez a beállítás úgy van optimalizálva, hogy a lehető leggyorsabban lássa az elemzést. Ha a szinapszis működésének gyors példáját szeretné használni, válassza ezt a lehetőséget.
 * A **böngésző elérhető mintája**. Ez a beállítás lehetővé teszi a mintaadatok-készletek összekapcsolását és a mintakód hozzáadását SQL-parancsfájlok, jegyzetfüzetek és folyamatok formájában.
-* A **szinapszis Studio**bemutatása. Ez a lehetőség a szinapszis Studio alaprészének rövid bemutatóját veszi igénybe. Ez akkor hasznos, ha még soha nem használta a szinapszis Studio alkalmazást.
+* A **szinapszis Studio** bemutatása. Ez a lehetőség a szinapszis Studio alaprészének rövid bemutatóját veszi igénybe. Ez akkor hasznos, ha még soha nem használta a szinapszis Studio alkalmazást.
 
-## <a name="exploring-blob-storage-with-sql-on-demand"></a>A blob Storage és az SQL igény szerinti felderítése
+## <a name="exploring-blob-storage-with-serverless-sql-pool"></a>BLOB Storage felderítése kiszolgáló nélküli SQL-készlettel
 
-1. A **Tudásbázisban**kattintson a **minták azonnali használata** elemre.
+1. A **Tudásbázisban** kattintson a **minták azonnali használata** elemre.
 1. **SQL-alapú lekérdezések** kiválasztása 
 1. Kattintson a **minták azonnali használata** elemre.
 1. Ekkor létrejön egy új SQL-szkript.
@@ -47,10 +47,10 @@ A **Tudásközpont** három dolgot tesz lehetővé:
 1. Kattintson a Futtatás elemre. A kiválasztott szöveget fogja futtatni.
 
 ## <a name="loading-more-nyc-taxi-data"></a>A New York-i taxi-adathalmazok betöltése
-1. A **Tudásbázisban**kattintson az **elérhető minták tallózása** elemre. 
+1. A **Tudásbázisban** kattintson az **elérhető minták tallózása** elemre. 
 1. Válassza a felül található **SQL-parancsfájlok** lapot.
 1. Válassza **a New York taxik-adatkészlet betöltése** lehetőséget.
-1. A **bemenetek**területen válassza **a meglévő készlet kijelölése** lehetőséget, és válassza a **SQLDB1** lehetőséget.
+1. A **bemenetek** területen válassza **a meglévő készlet kijelölése** lehetőséget, és válassza a **SQLDB1** lehetőséget.
 1. Kattintson a **parancsfájl megnyitása** lehetőségre.
 1. Ekkor megjelenik egy új SQL-szkript.
 1. Kattintson a **Futtatás** gombra.
@@ -60,4 +60,4 @@ A **Tudásközpont** három dolgot tesz lehetővé:
 
 * [Ismerkedés az Azure szinapszis Analytics szolgáltatással](get-started.md)
 * [Munkaterület létrehozása](quickstart-create-workspace.md)
-* [Az igény szerinti SQL használata](quickstart-sql-on-demand.md)
+* [Kiszolgáló nélküli SQL-készlet használata](quickstart-sql-on-demand.md)

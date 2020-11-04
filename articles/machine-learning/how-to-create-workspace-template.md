@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 4a80b1f9bfa5d477c47e340f1dec1b37e4c69258
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 70e3185257c7c70d74fdc8492cf0a2b4970c03b1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631044"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305472"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Munkaterületek létrehozása Azure Machine Learninghez Azure Resource Manager sablon használatával
 
@@ -28,9 +28,9 @@ További információ: [alkalmazások központi telepítése Azure Resource Mana
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy **Azure-előfizetés** . Ha még nem rendelkezik ilyennel, próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+* Egy **Azure-előfizetés**. Ha még nem rendelkezik ilyennel, próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
-* Ha a parancssori felületről szeretne sablont használni, [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)-t kell használnia.
+* Ha a parancssori felületről szeretne sablont használni, [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) vagy az [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)-t kell használnia.
 
 * Egyes esetekben támogatási jegyet kell megnyitni. Ezek a forgatókönyvek a következők:
 
@@ -69,7 +69,7 @@ A példa sablon két **kötelező** paraméterrel rendelkezik:
 > [!TIP]
 > Míg a dokumentumhoz társított sablon új Azure Container Registry hoz létre, a tároló-beállításjegyzék létrehozása nélkül is létrehozhat egy új munkaterületet. A rendszer létrehoz egy tároló-beállításjegyzéket igénylő művelet végrehajtásakor. Például egy modell betanítása vagy üzembe helyezése.
 >
-> Egy meglévő tároló beállításjegyzék-vagy Storage-fiókra is hivatkozhat a Azure Resource Manager sablonban, ahelyett, hogy újat hozna létre. A használt tároló-beállításjegyzéknek azonban engedélyezve kell lennie a __rendszergazdai fióknak__ . A rendszergazdai fiók engedélyezésével kapcsolatos információkért lásd: [rendszergazdai fiók](/azure/container-registry/container-registry-authentication#admin-account).
+> Egy meglévő tároló beállításjegyzék-vagy Storage-fiókra is hivatkozhat a Azure Resource Manager sablonban, ahelyett, hogy újat hozna létre. A használt tároló-beállításjegyzéknek azonban engedélyezve kell lennie a __rendszergazdai fióknak__ . A rendszergazdai fiók engedélyezésével kapcsolatos információkért lásd: [rendszergazdai fiók](../container-registry/container-registry-authentication.md#admin-account).
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
@@ -77,7 +77,7 @@ A sablonokkal kapcsolatos további információkért tekintse meg a következő 
 
 * [Azure Resource Manager sablonok szerzője](../azure-resource-manager/templates/template-syntax.md)
 * [Alkalmazás üzembe helyezése Azure Resource Manager-sablonokkal](../azure-resource-manager/templates/deploy-powershell.md)
-* [Microsoft. MachineLearningServices erőforrástípusok](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
+* [Microsoft. MachineLearningServices erőforrástípusok](/azure/templates/microsoft.machinelearningservices/allversions)
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 
@@ -219,7 +219,7 @@ __To get the values__ A `cmk_keyvault` sablonhoz szükséges (Key Vault) és a `
 
 Az ügyfél által felügyelt kulcsok használatának engedélyezéséhez állítsa be a következő paramétereket a sablon telepítésekor:
 
-* **Encryption_status** **engedélyezett** .
+* **Encryption_status** **engedélyezett**.
 * **cmk_keyvault** az `cmk_keyvault` előző lépések során beszerzett értékre.
 * **resource_cmk_uri** az `resource_cmk_uri` előző lépések során beszerzett értékre.
 
@@ -541,7 +541,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-1. Kövesse az [erőforrások telepítése egyéni sablonból](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)című témakör lépéseit. Amikor megérkezik a __sablon kiválasztása__ képernyőre, válassza ki a **201-Machine-learning-Advanced** sablont a legördülő listából.
+1. Kövesse az [erőforrások telepítése egyéni sablonból](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)című témakör lépéseit. Amikor megérkezik a __sablon kiválasztása__ képernyőre, válassza ki a **201-Machine-learning-Advanced** sablont a legördülő listából.
 1. Válassza a sablon __kiválasztása__ lehetőséget a sablon használatához. A telepítési forgatókönyvtől függően adja meg a következő szükséges információkat és egyéb paramétereket.
 
    * Előfizetés: válassza ki az erőforrásokhoz használni kívánt Azure-előfizetést.
@@ -549,7 +549,7 @@ New-AzResourceGroupDeployment `
    * Régió: válassza ki azt az Azure-régiót, ahol létre kívánja hozni az erőforrásokat.
    * Munkaterület neve: a létrehozandó Azure Machine Learning munkaterület nevét fogja használni. A munkaterület nevének 3 és 33 karakter közöttinek kell lennie. Csak alfanumerikus karaktereket és "-" karaktert tartalmazhat.
    * Hely: válassza ki azt a helyet, ahová létre kívánja hozni az erőforrásokat.
-1. Válassza az __Áttekintés + létrehozás__ lehetőséget.
+1. Válassza a __Felülvizsgálat + létrehozás__ lehetőséget.
 1. A __felülvizsgálat + létrehozás__ képernyőn fogadja el a felsorolt feltételeket és kikötéseket, majd válassza a __Létrehozás__ lehetőséget.
 
 További információ: [erőforrások központi telepítése egyéni sablonból](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
@@ -576,7 +576,7 @@ A probléma elkerüléséhez a következő módszerek egyikét javasoljuk:
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query properties.accessPolicies
     ```
 
-    A sablon szakaszának használatával kapcsolatos további információkért `accessPolicies` tekintse meg a [AccessPolicyEntry objektum hivatkozását](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry).
+    A sablon szakaszának használatával kapcsolatos további információkért `accessPolicies` tekintse meg a [AccessPolicyEntry objektum hivatkozását](/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry).
 
 * Ellenőrizze, hogy a Key Vault erőforrás már létezik-e. Ha igen, ne hozza létre újra a sablonon keresztül. Ha például a meglévő Key Vault szeretné használni, ahelyett, hogy újat hozna létre, végezze el a következő módosításokat a sablonon:
 

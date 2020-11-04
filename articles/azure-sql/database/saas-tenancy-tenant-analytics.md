@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: dd77305a1b2f7d11a2e371f7682855e15739ee7d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 98896b5b728a729a29f989b3b9a76f29131af8d7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790933"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305966"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Több-bérlős elemzés a kinyert adategységek használatával – egybérlős alkalmazás
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ A több-bérlős SaaS-alkalmazások általában nagy mennyiségű, a felhőben t
 
 Az összes bérlőre vonatkozó adatok elérése egyszerű, ha az összes adatok csak egy több-bérlős adatbázisban vannak. A hozzáférés azonban összetettebb, ha akár több ezer adatbázis között történik a skálázás. Az egyik módszer az összetettség és a tranzakciós adatokon alapuló elemzési lekérdezések hatásának minimalizálására, hogy az adatok egy célra tervezett elemzési adatbázisba vagy adattárházba legyenek kinyerve.
 
-Ez az oktatóanyag egy teljes elemzési forgatókönyvet mutat be a Wingtip tickets SaaS-alkalmazáshoz. Első lépésként a *rugalmas feladatok* segítségével kinyerheti az egyes bérlői adatbázisok adatait, és betöltheti azokat átmeneti táblákba egy elemzési tárolóban. Az elemzési tár lehet egy SQL Database vagy egy SQL-készlet. Nagy mennyiségű Adatkiemelés esetén [Azure Data Factory](../../data-factory/introduction.md) ajánlott.
+Ez az oktatóanyag egy teljes elemzési forgatókönyvet mutat be a Wingtip tickets SaaS-alkalmazáshoz. Első lépésként a *rugalmas feladatok* segítségével kinyerheti az egyes bérlői adatbázisok adatait, és betöltheti azokat átmeneti táblákba egy elemzési tárolóban. Az elemzési tár lehet egy SQL Database vagy egy dedikált SQL-készlet. Nagy mennyiségű Adatkiemelés esetén [Azure Data Factory](../../data-factory/introduction.md) ajánlott.
 
 Ezt követően az összesített adatokat a rendszer a [Star-Schema](https://www.wikipedia.org/wiki/Star_schema) tábláiba alakítja át. A táblák egy központi tény tábla és a kapcsolódó dimenzió táblákból állnak.  Wingtip jegyek esetén:
 
@@ -55,7 +55,7 @@ A központi tény és a dimenzió táblázatok együttesen teszik lehetővé a h
  
 ![architectureOverView](./media/saas-tenancy-tenant-analytics/StarSchema.png)
 
-Végezetül az elemzési tárolót a **PowerBI** használatával kérdezi le a bérlői viselkedés és a Wingtip tickets-alkalmazás használatának kiemeléséhez. A lekérdezéseket a következőket kell futtatnia:
+Végül a **Power bi** használatával kérdezi le az elemzési tárolót, hogy kiemelje a bérlői viselkedést és a Wingtip tickets-alkalmazás használatát. A lekérdezéseket a következőket kell futtatnia:
  
 - Az egyes helyszínek relatív népszerűségének megjelenítése
 - Minták kiemelése a jegyek értékesítésében különböző eseményekhez
@@ -77,7 +77,7 @@ Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételekne
 
 ### <a name="create-data-for-the-demo"></a>Adatgyűjtés a bemutatóhoz
 
-Ebben az oktatóanyagban az elemzés a Ticket Sales adatain történik. Az aktuális lépésben a bérlők számára is létrehoz jegyet.  Az adatelemzéshez később kinyeri az adatgyűjtést. *Győződjön meg arról, hogy a korábban leírtaknak megfelelően kiépítte a bérlők kötegét, hogy jelentős mennyiségű adattal rendelkezzen* . Egy elég nagy mennyiségű adattal számos különböző jegy-vásárlási minta is elérhető.
+Ebben az oktatóanyagban az elemzés a Ticket Sales adatain történik. Az aktuális lépésben a bérlők számára is létrehoz jegyet.  Az adatelemzéshez később kinyeri az adatgyűjtést. *Győződjön meg arról, hogy a korábban leírtaknak megfelelően kiépítte a bérlők kötegét, hogy jelentős mennyiségű adattal rendelkezzen*. Egy elég nagy mennyiségű adattal számos különböző jegy-vásárlási minta is elérhető.
 
 1. A PowerShell ISE-ben nyissa meg a *. ..\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* , és állítsa be a következő értéket:
     - **$DemoScenario**  =  **1** vásárlási jegyek minden helyszínen
@@ -107,7 +107,7 @@ A Object Explorer hajtsa végre a következő lépéseket:
 Az elemzési tár csomópontjának kibontásával tekintse meg a SSMS Object Explorer következő adatbázis-elemeit:
 
 - A táblák **TicketsRawData** és **EventsRawData** a bérlői adatbázisokból származó nyers kinyert adatokkal rendelkeznek.
-- A Star-Schema táblák a következők: **fact_Tickets** , **dim_Customers** , **dim_Venues** , **dim_Events** és **dim_Dates** .
+- A Star-Schema táblák a következők: **fact_Tickets** , **dim_Customers** , **dim_Venues** , **dim_Events** és **dim_Dates**.
 - A tárolt eljárás a Star-Schema táblák nyers adattáblákból való feltöltésére szolgál.
 
 ![Képernyőkép a SSMS Object Explorer látható adatbázis-elemekről.](./media/saas-tenancy-tenant-analytics/tenantAnalytics.png)
@@ -116,7 +116,7 @@ Az elemzési tár csomópontjának kibontásával tekintse meg a SSMS Object Exp
 
 ### <a name="create-target-groups"></a>Célcsoportok létrehozása 
 
-A folytatás előtt győződjön meg arról, hogy telepítette a projektfeladat-és jobaccount-adatbázist. A következő lépésekben a rugalmas feladatok az egyes bérlői adatbázisokból származó adatok kinyerésére és az adatoknak az elemzési tárolóban történő tárolására szolgálnak. Ezután a második feladatsor felfordítja az adatokra, és a csillag-séma tábláiba tárolja azokat. Ez a két feladat két különböző célcsoporton fut, nevezetesen a **TenantGroup** és a **AnalyticsGroup** . A kinyerési művelet az összes bérlői adatbázist tartalmazó TenantGroup fut. Az aprítási feladatok a AnalyticsGroup futnak, amely csak az Analytics-tárolót tartalmazza. Hozza létre a célcsoportokat a következő lépések végrehajtásával:
+A folytatás előtt győződjön meg arról, hogy telepítette a projektfeladat-és jobaccount-adatbázist. A következő lépésekben a rugalmas feladatok az egyes bérlői adatbázisokból származó adatok kinyerésére és az adatoknak az elemzési tárolóban történő tárolására szolgálnak. Ezután a második feladatsor felfordítja az adatokra, és a csillag-séma tábláiba tárolja azokat. Ez a két feladat két különböző célcsoporton fut, nevezetesen a **TenantGroup** és a **AnalyticsGroup**. A kinyerési művelet az összes bérlői adatbázist tartalmazó TenantGroup fut. Az aprítási feladatok a AnalyticsGroup futnak, amely csak az Analytics-tárolót tartalmazza. Hozza létre a célcsoportokat a következő lépések végrehajtásával:
 
 1. A SSMS-ben kapcsolódjon a **jobaccount** -adatbázishoz a Catalog-DPT-User-ben &lt; &gt; .
 2. A SSMS nyissa meg a *. ..\Learning Modules\Operational Analytics\Tenant Analytics \ célcsoportok. SQL* 
@@ -133,7 +133,7 @@ A nagy mennyiségű adatmódosítás gyakrabban fordulhat elő a *Ticket és az 
 Az egyes feladatok kinyerik az adataikat, és beolvasják azokat az Analytics-tárolóba. A kinyert adatok az Analytics Star-Schema-ben egy külön feladatsorból állnak.
 
 1. A SSMS-ben kapcsolódjon a **jobaccount** -adatbázishoz a Catalog-DPT- &lt; User &gt; kiszolgálón.
-2. A SSMS-ben nyissa meg a *. ..\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.SQL* .
+2. A SSMS-ben nyissa meg a *. ..\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.SQL*.
 3. Módosítsa a @User szkript felső részén, és cserélje le a parancsot `<User>` a Wingtip SaaS-alkalmazás üzembe helyezésekor használt felhasználónévre. 
 4. Az F5 billentyű lenyomásával futtathatja a parancsfájlt, amely létrehozza és futtatja a jegyeket és az ügyfelek adatait az egyes bérlői adatbázisokból. A művelet elmenti az adatok elemzését az Analytics-tárolóba.
 5. A tenantanalytics-adatbázis TicketsRawData táblájának lekérdezése annak biztosítására, hogy a tábla az összes bérlőről származó jegyek adataival legyen feltöltve.
@@ -153,7 +153,7 @@ A következő lépés a kinyert nyers adatok beillesztése az elemzési lekérde
 Az oktatóanyag ezen szakaszában definiálhat és futtathat egy olyan feladatot, amely egyesíti a kinyert nyers adatmennyiséget a Star-Schema táblákban található adatokkal. Az egyesítési feladatok befejezése után a rendszer törli a nyers adatokat, így a táblák készen állnak a következő bérlői adatkivonati feladatokkal való feltöltésre.
 
 1. A SSMS-ben kapcsolódjon a **jobaccount** -adatbázishoz a Catalog-DPT-User-ben &lt; &gt; .
-2. A SSMS-ben nyissa meg a *. ..\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.SQL* .
+2. A SSMS-ben nyissa meg a *. ..\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.SQL*.
 3. Nyomja le az **F5** billentyűt a szkript futtatásához egy olyan feladat definiálásához, amely meghívja az sp_ShredRawExtractedData tárolt eljárást az elemzési tárolóban.
 4. A feladatok sikeres futtatásának engedélyezése elég idő.
     - Keresse meg jobs.jobs_execution tábla **életciklus** oszlopát a feladatok állapotára vonatkozóan. A folytatás előtt győződjön meg arról, hogy a művelet **sikeres** volt. A sikeres Futtatás az alábbi diagramhoz hasonló adattípust jelenít meg:

@@ -1,6 +1,6 @@
 ---
-title: A Parquet-fájlok lekérdezése az SQL on-demand használatával (előzetes verzió)
-description: Ebből a cikkből megtudhatja, hogyan kérdezheti le a Parquet-fájlokat az SQL on-demand (előzetes verzió) használatával.
+title: A Parquet-fájlok lekérdezése kiszolgáló nélküli SQL-készlettel (előzetes verzió)
+description: Ebből a cikkből megtudhatja, hogyan kérdezheti le a Parquet-fájlokat a kiszolgáló nélküli SQL-készlet (előzetes verzió) használatával.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2e00ecd6048239683951a2d1e60d3bcb0eb5aa68
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 3559b3724d14be6aade07c4884190afce30c0715
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242432"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93306867"
 ---
-# <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>A Parquet-fájlok lekérdezése az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analyticsben
+# <a name="query-parquet-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>A Parquet-fájlok lekérdezése kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
-Ebből a cikkből megtudhatja, hogyan írhat egy lekérdezést az SQL on-demand (előzetes verzió) használatával, amely beolvassa a parketta-fájlokat.
+Ebből a cikkből megtudhatja, hogyan írhat egy lekérdezést a kiszolgáló nélküli SQL-készlet (előzetes verzió) használatával, amely a Parquet-fájlokat fogja olvasni.
 
 ## <a name="quickstart-example"></a>Rövid útmutató – példa
 
@@ -111,7 +111,7 @@ A Parquet-fájlok olvasásakor nem szükséges a OPENROWSET WITH záradék haszn
 Az alábbi minta a Parquet-fájlok automatikus sémájának következtetéseit mutatja be. A sorok számát a 2017 szeptemberében adja vissza a séma meghatározása nélkül.
 
 > [!NOTE]
-> A Parquet-fájlok olvasásakor nem szükséges oszlopokat megadni a OPENROWSET WITH záradékban. Ebben az esetben az SQL igény szerinti lekérdezési szolgáltatása metaadatokat használ a Parquet fájlban, és az oszlopokat név alapján köti össze.
+> A Parquet-fájlok olvasásakor nem szükséges oszlopokat megadni a OPENROWSET WITH záradékban. Ebben az esetben a kiszolgáló nélküli SQL Pool Query szolgáltatás metaadatokat használ a Parquet fájlban, és az oszlopokat név alapján köti össze.
 
 ```sql
 SELECT TOP 10 *
@@ -128,7 +128,7 @@ FROM
 Az ebben a mintában megadott adathalmaz külön almappákba van osztva (particionálva). A filepath függvény használatával konkrét partíciókat is megcélozhat. Ez a példa a viteldíjak összegét mutatja év, hónap és payment_type szerint az 2017-as első három hónapban.
 
 > [!NOTE]
-> Az igény szerinti SQL-lekérdezés a kaptár/Hadoop particionálási sémával kompatibilis.
+> A kiszolgáló nélküli SQL-készlet lekérdezése kompatibilis a kaptár/Hadoop particionálási sémával.
 
 ```sql
 SELECT

@@ -11,30 +11,30 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 368d43283d713b8d4e101c2ee26724242f29756c
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: 6d59d64c861b74610e82b962ddd5db2331d3db64
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148252"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305019"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statisztika a szinapszis SQL-ben
 
-Ez a cikk ajánlásokat és példákat tartalmaz a lekérdezés-optimalizálási statisztikák létrehozására és frissítésére a szinapszis SQL-erőforrások használatával: SQL-készlet és SQL on-demand (előzetes verzió).
+Ez a cikk ajánlásokat és példákat tartalmaz a lekérdezés-optimalizálási statisztikák létrehozására és frissítésére a szinapszis SQL-erőforrások használatával: dedikált SQL-készlet és kiszolgáló nélküli SQL-készlet (előzetes verzió).
 
-## <a name="statistics-in-sql-pool"></a>Statisztika az SQL-készletben
+## <a name="statistics-in-dedicated-sql-pool"></a>Statisztika a dedikált SQL-készletben
 
 ### <a name="why-use-statistics"></a>Miért használja a statisztikát?
 
-Minél több az SQL Pool-erőforrás ismeri az adatait, annál gyorsabban futtathat lekérdezéseket. Miután betöltötte az adatokat az SQL-készletbe, az adatokra vonatkozó statisztikák begyűjtése az egyik legfontosabb dolog, amit a lekérdezés optimalizálásához használhat.  
+Minél több dedikált SQL-készlet ismeri az adatait, annál gyorsabban végezhet lekérdezéseket. Miután betöltötte az adatokat egy dedikált SQL-készletbe, az adatok statisztikáinak összegyűjtése az egyik legfontosabb dolog, amit a lekérdezés optimalizálásához használhat.  
 
-Az SQL Pool lekérdezés-optimalizáló egy költséghatékony optimalizáló. Összehasonlítja a különböző lekérdezési csomagok költségeit, majd kiválasztja a legalacsonyabb díjszabású csomagot. A legtöbb esetben azt a tervet választja, amely a leggyorsabb végrehajtást fogja végrehajtani.
+A dedikált SQL Pool lekérdezés-optimalizáló egy költséghatékony optimalizáló. Összehasonlítja a különböző lekérdezési csomagok költségeit, majd kiválasztja a legalacsonyabb díjszabású csomagot. A legtöbb esetben azt a tervet választja, amely a leggyorsabb végrehajtást fogja végrehajtani.
 
 Ha például az optimalizáló becslése szerint a lekérdezés szűrésének dátuma egy sort ad vissza, akkor az egy csomagot fog választani. Ha úgy becsüli, hogy a kijelölt dátum 1 000 000 sort ad vissza, akkor egy másik csomagot ad vissza.
 
 ### <a name="automatic-creation-of-statistics"></a>Statisztikák automatikus létrehozása
 
-Az SQL-készlet elemzi a hiányzó statisztikai adatok bejövő felhasználói lekérdezéseit, amikor az adatbázis AUTO_CREATE_STATISTICS beállítás értéke: `ON` .  Ha hiányoznak a statisztikák, a lekérdezés-optimalizáló a lekérdezési predikátumban vagy a csatlakozás feltételben lévő egyes oszlopokra vonatkozó statisztikát hoz létre. 
+A dedikált SQL Pool motor elemzi a hiányzó statisztikai adatok bejövő felhasználói lekérdezéseit, amikor az adatbázis AUTO_CREATE_STATISTICS beállítás értéke: `ON` .  Ha hiányoznak a statisztikák, a lekérdezés-optimalizáló a lekérdezési predikátumban vagy a csatlakozás feltételben lévő egyes oszlopokra vonatkozó statisztikát hoz létre. 
 
 Ez a függvény a lekérdezési tervhez tartozó kardinális becslések javítására szolgál.
 
@@ -166,7 +166,7 @@ Ezek a példák azt mutatják be, hogyan használhatók a különböző beállí
 #### <a name="create-single-column-statistics-with-default-options"></a>Egyoszlopos statisztikák létrehozása alapértelmezett beállításokkal
 
 Egy oszlop statisztikáinak létrehozásához adja meg a statisztikai objektum nevét és az oszlop nevét.
-Ez a szintaxis az összes alapértelmezett beállítást használja. Alapértelmezés szerint az SQL Pool a tábla **20 százalékát** , amikor statisztikai adatokat hoz létre.
+Ez a szintaxis az összes alapértelmezett beállítást használja. Alapértelmezés szerint a dedikált SQL Pool a tábla **20 százalékát** , amikor statisztikai adatokat hoz létre.
 
 ```sql
 CREATE STATISTICS [statistics_name]
@@ -430,7 +430,7 @@ A frissítés STATISZTIKÁi utasítás egyszerűen használható. Ne feledje, ho
 Ha a teljesítmény nem jelent problémát, ez a módszer a legegyszerűbb és legteljesebb mód annak biztosítására, hogy a statisztikák naprakészek legyenek.
 
 > [!NOTE]
-> Egy tábla összes statisztikájának frissítésekor az SQL-készlet ellenőrzi, hogy az egyes statisztikai objektumok táblázatát kell-e felvenni. Ha a tábla nagyméretű, és sok oszlopot és számos statisztikát tartalmaz, akkor lehet, hogy hatékonyabban kell frissíteni az egyes statisztikákat igény szerint.
+> Egy tábla összes statisztikájának frissítésekor a dedikált SQL-készlet ellenőrzi, hogy az egyes statisztikai objektumok táblázatát kell-e felvenni. Ha a tábla nagyméretű, és sok oszlopot és számos statisztikát tartalmaz, akkor lehet, hogy hatékonyabban kell frissíteni az egyes statisztikákat igény szerint.
 
 Egy eljárás végrehajtásához `UPDATE STATISTICS` tekintse meg az [ideiglenes táblákat](develop-tables-temporary.md). A megvalósítási módszer némileg eltér az előző `CREATE STATISTICS` eljárástól, de az eredmény ugyanaz.
 A teljes szintaxist a [statisztika frissítése](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)című részben tekintheti meg.
@@ -443,7 +443,7 @@ A statisztikával kapcsolatos információk megkereséséhez számos rendszerné
 
 Ezek a rendszernézetek a statisztikával kapcsolatos információkat tartalmaznak:
 
-| Katalógus nézet | Description |
+| Katalógus nézet | Leírás |
 |:--- |:--- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Egy sor az egyes oszlopokhoz. |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Egy sor az adatbázis minden objektumához. |
@@ -457,7 +457,7 @@ Ezek a rendszernézetek a statisztikával kapcsolatos információkat tartalmazn
 
 Ezek a rendszerfunkciók a statisztikákkal való munkavégzéshez hasznosak:
 
-| System függvény | Description |
+| System függvény | Leírás |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |A statisztikai objektum utolsó frissítésének dátuma. |
 | [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Összegző szint és részletes információk az értékek eloszlásáról a statisztikai objektum által értelmezett módon. |
@@ -512,7 +512,7 @@ A DBCC SHOW_STATISTICS () megjeleníti a statisztikai objektumon belül tárolt 
 
 A fejléc a statisztikával kapcsolatos metaadatokat tartalmaz. A hisztogram megjeleníti az értékek eloszlását a statisztikai objektum első kulcs oszlopában. 
 
-A sűrűség vektor az oszlopok közötti korrelációt méri. Az SQL-készlet a statisztikai objektum bármely adatával kiszámítja a kardinális becsléseket.
+A sűrűség vektor az oszlopok közötti korrelációt méri. A dedikált SQL-készlet a statisztikai objektum bármely adatával kiszámítja a kardinális becsléseket.
 
 #### <a name="show-header-density-and-histogram"></a>Fejléc, sűrűség és hisztogram megjelenítése
 
@@ -546,7 +546,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 
 ### <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS () különbségek
 
-`DBCC SHOW_STATISTICS()` szigorúbban implementálva van az SQL-készletben a SQL Serverhoz képest:
+`DBCC SHOW_STATISTICS()` szigorúbban implementálva van a dedikált SQL-készletben a SQL Serverhoz képest:
 
 - A nem dokumentált funkciók nem támogatottak.
 - A Stats_stream nem használható.
@@ -556,25 +556,22 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 - Nem használhatók oszlopnevek a statisztikai objektumok azonosításához.
 - A 2767-es egyéni hiba nem támogatott.
 
-### <a name="next-steps"></a>Következő lépések
 
-A lekérdezési teljesítmény javítása érdekében lásd: [a munkaterhelés figyelése](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-
-## <a name="statistics-in-sql-on-demand-preview"></a>SQL on-demand (előzetes verzió) statisztikája
+## <a name="statistics-in-serverless-sql-pool-preview"></a>Statisztika a kiszolgáló nélküli SQL-készletben (előzetes verzió)
 
 Az adott adatkészlethez (tárolási útvonal) tartozó statisztikákat egy adott oszlop alapján hozza létre a rendszer.
 
 ### <a name="why-use-statistics"></a>Miért használja a statisztikát?
 
-Minél több SQL-igény (előzetes verzió) ismeri az adatait, annál gyorsabban végezhet lekérdezéseket. Az adatokra vonatkozó statisztikák gyűjtése az egyik legfontosabb dolog, amit a lekérdezések optimalizálásához is el lehet végezni. 
+Minél több kiszolgáló nélküli SQL-készlet (előzetes verzió) ismeri az adatait, annál gyorsabban végezhet lekérdezéseket. Az adatokra vonatkozó statisztikák gyűjtése az egyik legfontosabb dolog, amit a lekérdezések optimalizálásához is el lehet végezni. 
 
-Az igény szerinti SQL-alapú lekérdezés-optimalizáló egy költséghatékony optimalizáló. Összehasonlítja a különböző lekérdezési csomagok költségeit, majd kiválasztja a legalacsonyabb díjszabású csomagot. A legtöbb esetben azt a tervet választja, amely a leggyorsabb végrehajtást fogja végrehajtani. 
+A kiszolgáló nélküli SQL Pool lekérdezés-optimalizáló egy költséghatékony optimalizáló. Összehasonlítja a különböző lekérdezési csomagok költségeit, majd kiválasztja a legalacsonyabb díjszabású csomagot. A legtöbb esetben azt a tervet választja, amely a leggyorsabb végrehajtást fogja végrehajtani. 
 
 Ha például az optimalizáló becslése szerint a lekérdezés szűrésének dátuma egy sort ad vissza, akkor egy csomagot fog kiválasztani. Ha úgy becsüli, hogy a kijelölt dátum 1 000 000 sort ad vissza, akkor egy másik csomagot ad vissza.
 
 ### <a name="automatic-creation-of-statistics"></a>Statisztikák automatikus létrehozása
 
-Az SQL on-demand elemzi a bejövő felhasználói lekérdezéseket a hiányzó statisztikákhoz. Ha a statisztikai adatok hiányoznak, a lekérdezés-optimalizáló a lekérdezési predikátum egyes oszlopaira vonatkozó statisztikát hoz létre, vagy összekapcsolási feltételt biztosít a lekérdezési tervhez tartozó sarkalatos becslések javítására
+A kiszolgáló nélküli SQL-készlet elemzi a bejövő felhasználói lekérdezéseket a hiányzó statisztikákhoz. Ha a statisztikai adatok hiányoznak, a lekérdezés-optimalizáló a lekérdezési predikátum egyes oszlopaira vonatkozó statisztikát hoz létre, vagy összekapcsolási feltételt biztosít a lekérdezési tervhez tartozó sarkalatos becslések javítására
 
 A SELECT utasítás elindítja a statisztikák automatikus létrehozását.
 
@@ -585,7 +582,7 @@ A statisztikák automatikus létrehozása szinkron módon történik, így előf
 
 ### <a name="manual-creation-of-statistics"></a>Statisztikák manuális létrehozása
 
-Az SQL on-demand segítségével manuálisan hozhat létre statisztikai adatokat. CSV-fájlok esetén manuálisan kell létrehoznia a statisztikát, mivel a statisztikai adatok automatikus létrehozása nincs bekapcsolva a CSV-fájlokhoz. 
+A kiszolgáló nélküli SQL-készlet lehetővé teszi a statisztikák manuális létrehozását. CSV-fájlok esetén manuálisan kell létrehoznia a statisztikát, mivel a statisztikai adatok automatikus létrehozása nincs bekapcsolva a CSV-fájlokhoz. 
 
 A statisztikák manuális létrehozásával kapcsolatos útmutatásért tekintse meg az alábbi példákat.
 
@@ -593,7 +590,7 @@ A statisztikák manuális létrehozásával kapcsolatos útmutatásért tekintse
 
 A fájlokban lévő adatok, a törlés és a fájlok hozzáadásával végzett módosítások adateloszlási változásokat eredményeznek, és elavult statisztikákat tesznek elérhetővé. Ebben az esetben frissíteni kell a statisztikát.
 
-Az SQL on-demand automatikusan újból létrehozza a statisztikát, ha az adatok jelentősen változnak. A rendszer minden alkalommal automatikusan létrehozza a statisztikát, és az adatkészlet aktuális állapotát is menti: fájlelérési utak, méretek, utolsó módosítás dátuma.
+A kiszolgáló nélküli SQL-készlet automatikusan újból létrehozza a statisztikát, ha az adatok jelentősen változnak. A rendszer minden alkalommal automatikusan létrehozza a statisztikát, és az adatkészlet aktuális állapotát is menti: fájlelérési utak, méretek, utolsó módosítás dátuma.
 
 Ha a statisztikák elavultak, újak jönnek létre. Az algoritmus áthalad az adatokat, és összehasonlítja az adatkészlet aktuális állapotával. Ha a módosítások mérete meghaladja az adott küszöbértéket, a rendszer törli a régi statisztikákat, és az új adatkészleten újra létrehozza azokat.
 
@@ -650,7 +647,7 @@ Argumentumok: [ @stmt =] N "statement_text" – egy Transact-SQL-utasítás, ame
 
 Egy oszlop statisztikáinak létrehozásához adjon meg egy lekérdezést, amely visszaadja azt az oszlopot, amelyhez statisztikára van szüksége.
 
-Ha nem ad meg mást, alapértelmezés szerint az SQL igény szerint az adatkészletben megadott adatok 100%-át használja, amikor statisztikát hoz létre.
+Ha nem ad meg mást, alapértelmezés szerint a kiszolgáló nélküli SQL-készlet az adatkészletben megadott adatok 100%-át használja statisztikai adatok létrehozásakor.
 
 Ha például az alapértelmezett beállításokkal (FULLSCAN) szeretne statisztikákat létrehozni az adatkészlet év oszlopához a population.csv fájl alapján:
 
@@ -816,4 +813,6 @@ CREATE STATISTICS sState
 
 ## <a name="next-steps"></a>Következő lépések
 
-A további lekérdezések teljesítményének növelését lásd: [ajánlott eljárások az SQL-készlethez](best-practices-sql-pool.md#maintain-statistics).
+A dedikált SQL-készlet lekérdezési teljesítményének növeléséhez lásd: a számítási feladatok és ajánlott eljárások [figyelése](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) [dedikált SQL-készlethez](best-practices-sql-pool.md#maintain-statistics).
+
+A kiszolgáló nélküli SQL-készlet lekérdezési teljesítményének növeléséhez tekintse meg az [ajánlott eljárások a kiszolgáló nélküli SQL-készlethez](best-practices-sql-on-demand.md) című témakört.

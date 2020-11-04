@@ -1,22 +1,23 @@
 ---
-title: Power BI és kiszolgáló nélküli szinapszis SQL-készlet a Azure Cosmos DB-alapú adatelemzéshez a szinapszis-hivatkozással
-description: Megtudhatja, hogyan hozhat létre egy kiszolgáló nélküli szinapszis SQL-készletet tartalmazó adatbázist, és hogyan tekintheti át a Azure Cosmos DB szinapszis hivatkozását, hogyan kérdezheti le az Azure Cosmos-tárolókat, és hogyan hozhat létre egy modellt, amely Power BI
+title: Power BI és kiszolgáló nélküli SQL-készlet a Azure Cosmos DB-alapú adatelemzéshez a szinapszis-hivatkozással
+description: Megtudhatja, hogyan hozhat létre egy szinapszis SQL Server nélküli adatbázist és nézetet a Azure Cosmos DB szinapszis hivatkozásán keresztül, lekérdezheti a Azure Cosmos DB tárolókat, majd felépítheti a modelleket Power BI a nézetek fölé.
 author: ArnoMicrosoft
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
-ms.openlocfilehash: 8599ebf1932d7c30622855cbf38af867d30b52b8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 38077dca1b8a27098e8db17354b82340a651b880
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098059"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305182"
 ---
-# <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>A Power BI és a kiszolgáló nélküli szinapszis SQL-készlet használata a Azure Cosmos DB-alapú adatelemzéshez a szinapszis-hivatkozással (előzetes verzió) 
+# <a name="use-power-bi-and-serverless-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>A Power BI és a kiszolgáló nélküli SQL-készlet használata a Azure Cosmos DB-alapú adatelemzéshez a szinapszis-hivatkozással (előzetes verzió)
+
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre egy kiszolgáló nélküli szinapszis SQL-készletet (amely korábban **SQL on-demand-** adatbázis néven ismert), és a Azure Cosmos db-ra vonatkozó szinapszis-hivatkozáson keresztül. Ezután lekérdezi az Azure Cosmos-tárolókat, majd létrehoz egy modellt, amely Power BI a nézeteket, hogy azok tükrözzék a lekérdezést.
+Ebből a cikkből megtudhatja, hogyan hozhat létre kiszolgáló nélküli SQL Pool-adatbázist és-nézeteket a szinapszis-kapcsolaton keresztül a Azure Cosmos DBhoz. Ezután lekérdezi a Azure Cosmos DB tárolókat, majd létrehoz egy modellt, Power BI ezen nézetek alapján, hogy tükrözze a lekérdezést.
 
 Ebben a forgatókönyvben a felületi termékek értékesítésével kapcsolatos dummy-információkat a partner kiskereskedelmi tárolójában fogjuk használni. A bevételeket a rendszer a nagy háztartások közelsége és a hirdetés egy adott hétre gyakorolt hatása alapján elemzi. Ebben a cikkben két nézetet hoz létre a **RetailSales** és a **StoreDemographics** nevű nézetben, valamint egy lekérdezést közöttük. Ebből a [GitHub](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) -tárházból lekérheti a minta termék adatait.
 
@@ -42,9 +43,9 @@ A szinapszis munkaterületen lépjen a **fejlesztés** lapra, válassza ki az **
 
 :::image type="content" source="./media/synapse-link-power-bi/add-sql-script.png" alt-text="SQL-szkript hozzáadása a szinapszis Analytics-munkaterülethez":::
 
-Minden munkaterület kiszolgáló nélküli SQL-végpontot tartalmaz. Az SQL-szkript létrehozása után a felső eszköztáron, az **SQL-hez igény szerint** .
+Minden munkaterület kiszolgáló nélküli SQL-végpontot tartalmaz. Miután létrehozta az SQL-szkriptet, a felső részen található eszköztárról a **beépített elemre**.
 
-:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="SQL-szkript hozzáadása a szinapszis Analytics-munkaterülethez":::
+:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="Az SQL-parancsfájl engedélyezése a kiszolgáló nélküli SQL-végpont használatára a munkaterületen":::
 
 Hozzon létre egy új, **RetailCosmosDB** nevű adatbázist, és egy SQL-nézetet a szinapszis kapcsolattal rendelkező tárolók között. A következő parancs bemutatja, hogyan hozhat létre adatbázist:
 
@@ -104,7 +105,7 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 
 Válassza a **Futtatás** lehetőséget, amely a következő táblázatot adja eredményként:
 
-:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="SQL-szkript hozzáadása a szinapszis Analytics-munkaterülethez":::
+:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="Lekérdezési eredmények a StoreDemographics és a RetailSales nézetek csatlakoztatása után":::
 
 ## <a name="model-views-over-containers-with-power-bi"></a>A tárolók Power BI
 
@@ -114,7 +115,7 @@ Ezután nyissa meg a Power BI asztalt, és kapcsolódjon a kiszolgáló nélkül
 
 1. Válassza az **Azure szinapszis Analytics (SQL DW)** lehetőséget a Kapcsolatbeállítások listájából.
 
-1. Adja meg annak az SQL-végpontnak a nevét, ahol az adatbázis található. Adja meg `SynapseLinkBI-ondemand.sql.azuresynapse.net` a **kiszolgáló** mezőt. Ebben a példában a  **SynapseLinkBI** a munkaterület neve. Cserélje le, ha más nevet adott a munkaterületnek. Válassza az adatkapcsolati mód **közvetlen lekérdezés** lehetőséget, majd kattintson **az OK gombra** .
+1. Adja meg annak az SQL-végpontnak a nevét, ahol az adatbázis található. Adja meg `SynapseLinkBI-ondemand.sql.azuresynapse.net` a **kiszolgáló** mezőt. Ebben a példában a  **SynapseLinkBI** a munkaterület neve. Cserélje le, ha más nevet adott a munkaterületnek. Válassza az adatkapcsolati mód **közvetlen lekérdezés** lehetőséget, majd kattintson **az OK gombra**.
 
 1. Válassza ki az előnyben részesített hitelesítési módszert, például az Azure AD-t.
 
@@ -139,10 +140,10 @@ Most lépjen a **jelentés** ablakra, és hozzon létre egy jelentést, amely ö
 1. Húzza a **productCode** a **RetailSales** nézetből a jelmagyarázatba egy adott termékcsoport kiválasztásához.
 Miután kiválasztotta ezeket a beállításokat, az alábbi képernyőképhez hasonló diagramot kell látnia:
 
-:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="SQL-szkript hozzáadása a szinapszis Analytics-munkaterülethez":::
+:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="Jelentés, amely összehasonlítja a háztartások méretének relatív fontosságát az áruházbeli átlagos bevételhez képest.":::
 
 ## <a name="next-steps"></a>Következő lépések
 
 [Azure Cosmos DB-adatlekérdezés a T-SQL használatával az Azure szinapszis hivatkozás használatával](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)
 
-A kiszolgáló nélküli szinapszis SQL-készlet használata az [Azure Open-adatkészletek elemzésére és az eredmények megjelenítésére az Azure szinapszis Studióban](../synapse-analytics/sql/tutorial-data-analyst.md)
+A kiszolgáló nélküli SQL-készlet használata az [Azure Open-adatkészletek elemzésére és az eredmények megjelenítésére az Azure szinapszis Studióban](../synapse-analytics/sql/tutorial-data-analyst.md)

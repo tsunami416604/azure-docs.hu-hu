@@ -1,6 +1,6 @@
 ---
 title: Az adatraktár rendezési típusai
-description: Az Azure szinapszis Analytics SQL-készletben támogatott rendezési típusok.
+description: Az Azure szinapszis Analyticsben dedikált SQL-készlethez támogatott rendezési típusok.
 services: synapse-analytics
 author: antvgski
 manager: igorstan
@@ -11,16 +11,16 @@ ms.date: 12/04/2019
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 08a008e2f2402072dce3069c5d059b297239b7dd
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 8d76d70c4c84f1d63d4643e1fba3f66d3541beff
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090454"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305250"
 ---
-# <a name="database-collation-support-for-azure-synapse-analytics-sql-pool"></a>Az Azure szinapszis Analytics SQL-készlet adatbázis-rendezési támogatása
+# <a name="database-collation-support-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Adatbázis-rendezési támogatás a dedikált SQL-készlethez az Azure szinapszis Analyticsben 
 
-Az új Azure szinapszis SQL Pool-adatbázis létrehozásakor módosíthatja a Azure Portal alapértelmezett adatbázis-rendezését. Ezzel a képességgel még könnyebben hozhat létre egy új adatbázist a 3800 támogatott adatbázis-rendezések egyikével.
+Az adatbázis alapértelmezett rendezését az új dedikált SQL Pool-adatbázis létrehozásakor módosíthatja a Azure Portal. Ezzel a képességgel még könnyebben hozhat létre egy új adatbázist a 3800 támogatott adatbázis-rendezések egyikével.
 
 A rendezések lehetővé teszik a területi beállítás, a kódlap, a rendezési sorrend és a karakteres adattípusok megkülönböztetésére vonatkozó szabályok megadását. Ha kiválasztotta, a rendezési adatokat igénylő összes oszlop és kifejezés örökli a kiválasztott rendezést az adatbázis-beállítástól. Az alapértelmezett öröklés felülbírálható úgy, hogy egy karakter alapú adattípus esetében explicit módon megadhat egy másik rendezést.
 

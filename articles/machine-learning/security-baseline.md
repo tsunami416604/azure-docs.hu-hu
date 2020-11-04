@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c473955dbc2b41f434267e12f7983f19d4a0e4c5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ccc9f7c2521f846529642c644e70654d17ae54ce
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100959"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305714"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure Machine Learning Azure biztonsági alapterve
 
@@ -21,7 +21,7 @@ Az Microsoft Azure Machine Learning Azure biztonsági alapkonfigurációja olyan
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-*További információt az [Azure biztonsági teljesítményteszt: hálózati biztonság](/azure/security/benchmarks/security-control-network-security)című témakörben talál.*
+*További információt az [Azure biztonsági teljesítményteszt: hálózati biztonság](../security/benchmarks/security-control-network-security.md)című témakörben talál.*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-erőforrások biztosítása virtuális hálózatokon belül
 
@@ -71,11 +71,11 @@ Engedélyezze a hálózati biztonsági csoport adatfolyam-naplóit, és küldje 
 
 Azure Firewall üzembe helyezése minden szervezet hálózati határain, és a fenyegetésekkel kapcsolatos intelligencia-alapú Szűrés engedélyezve van, és úgy van beállítva, hogy a "riasztás és megtagadás" a kártékony hálózati forgalmat.
 
-- [A DDoS Protection konfigurálása](../virtual-network/manage-ddos-protection.md)
+- [A DDoS Protection konfigurálása](../ddos-protection/manage-ddos-protection.md)
 
 - [Azure Firewall mögötti munkaterület használata Azure Machine Learning](how-to-access-azureml-behind-firewall.md)
 
-- [További információ a Azure Security Center fenyegetések észleléséről](/azure/security-center/security-center-alerts-service-layer)
+- [További információ a Azure Security Center fenyegetések észleléséről](../security-center/azure-defender.md)
 
 **Azure Security Center figyelés** : igen
 
@@ -145,7 +145,7 @@ Azure Machine Learning a szolgáltatás dokumentálja a számítási célokhoz t
 
 A Description (Leírás) mezőt támogató Azure Machine Learning virtuális hálózatban lévő erőforrások számára a használatával dokumentálhatja azokat a szabályokat, amelyek engedélyezik a hálózatra irányuló adatforgalmat.
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés** : nem alkalmazható
 
@@ -155,7 +155,7 @@ A Description (Leírás) mezőt támogató Azure Machine Learning virtuális há
 
 **Útmutató** : az Azure-tevékenység naplójának használata a hálózati erőforrás-konfigurációk figyelésére és a Azure Machine learning kapcsolódó hálózati erőforrások változásainak észlelésére. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](/azure/azure-monitor/platform/activity-log-view)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -165,7 +165,7 @@ A Description (Leírás) mezőt támogató Azure Machine Learning virtuális há
 
 ## <a name="logging-and-monitoring"></a>Naplózás és figyelés
 
-*További információt az [Azure biztonsági teljesítményteszt: naplózás és figyelés](/azure/security/benchmarks/security-control-logging-monitoring)című témakörben talál.*
+*További információt az [Azure biztonsági teljesítményteszt: naplózás és figyelés](../security/benchmarks/security-control-logging-monitoring.md)című témakörben talál.*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: a jóváhagyott idő-szinkronizálási források használata
 
@@ -197,7 +197,7 @@ Biztonsági és megfelelőségi célokból is korrelálhat Machine Learning szol
 
 - [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../azure-monitor/platform/platform-logs-overview.md)
 
-- [Bejelentkezés engedélyezése Azure Machine Learning](/azure/machine-learning/how-to-enable-logging)
+- [Bejelentkezés engedélyezése Azure Machine Learning](./how-to-track-experiments.md)
 
 - [Figyelés Azure Machine Learning](monitor-azure-machine-learning.md)
 
@@ -237,7 +237,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Azure Machine Learning lekérdezések végrehajtása Log Analytics-munkaterületeken](monitor-azure-machine-learning.md#analyzing-log-data)
 
-- [Bejelentkezés engedélyezése Azure Machine Learning](/azure/machine-learning/how-to-enable-logging)
+- [Bejelentkezés engedélyezése Azure Machine Learning](./how-to-track-experiments.md)
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
@@ -299,7 +299,7 @@ A Azure Machine Learning különböző számítási erőforrásokon és saját s
 
 ## <a name="identity-and-access-control"></a>Identitás- és hozzáférés-vezérlés
 
-*További információt az [Azure biztonsági teljesítményteszt: identitás-és hozzáférés-vezérlés](/azure/security/benchmarks/security-control-identity-access-control)című témakörben talál.*
+*További információt az [Azure biztonsági teljesítményteszt: identitás-és hozzáférés-vezérlés](../security/benchmarks/security-control-identity-access-control.md)című témakörben talál.*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
 
@@ -311,7 +311,7 @@ Az Azure AD PowerShell-modullal is elvégezheti az alkalmi lekérdezéseket a fe
 
 - [Az Azure szerepköralapú hozzáférés-vezérlésének megismerése Azure Machine Learning](how-to-assign-roles.md)
 
-- [Címtárbeli szerepkör beszerzése Azure Active Directory a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Címtárbeli szerepkör beszerzése Azure Active Directory a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
 **Azure Security Center figyelés** : igen
 
@@ -333,7 +333,7 @@ Azure AD Privileged Identity Management és Azure Resource Manager használatáv
 
 - [További Machine Learning alapértelmezett szerepkörök](how-to-assign-roles.md#default-roles)
 
-- [További információ a Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [További információ a Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 **Azure Security Center figyelés** : igen
 
@@ -377,7 +377,7 @@ Azure AD Privileged Identity Management és Azure Resource Manager használatáv
 
 **Útmutató** : Azure Active Directory biztonsági jelentések és figyelés használata a környezetben előforduló gyanús vagy nem biztonságos tevékenységek észlelésére. A Azure Security Center használatával figyelheti az identitás-és hozzáférési tevékenységeket.
 
-- [A kockázatos tevékenységre megjelölt Azure AD-felhasználók azonosítása](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [A kockázatos tevékenységre megjelölt Azure AD-felhasználók azonosítása](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [A felhasználók identitás-és hozzáférési tevékenységének figyelése Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -417,11 +417,11 @@ A szerepkör-hozzáférés az Azure több szintjére is kiterjed. Machine Learni
  
 A naplók és a riasztások generálásához használjon Azure Active Directory (Azure AD) Privileged Identity Management (PIM), ha a környezetben gyanús vagy nem biztonságos tevékenységek történnek.
 
-- [Az Azure AD jelentéskészítés ismertetése](/azure/active-directory/reports-monitoring)
+- [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml)
 
 - [Az Azure AD-identitás és a hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
-- [Azure AD Privileged Identity Management (PIM) üzembe helyezése](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [Azure AD Privileged Identity Management (PIM) üzembe helyezése](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
 **Azure Security Center figyelés** : igen
 
@@ -434,7 +434,7 @@ A naplók és a riasztások generálásához használjon Azure Active Directory 
 Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz létre az Azure AD felhasználói fiókjaihoz, és elküldi a naplókat és a bejelentkezési naplókat egy Log Analytics munkaterületre. Log Analytics munkaterületen belül konfigurálhatja a kívánt riasztásokat.
  
  
-- [Azure-beli Tevékenységnaplók integrálása a Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-beli Tevékenységnaplók integrálása a Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure Security Center figyelés** : nem alkalmazható
 
@@ -444,7 +444,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató** : a Azure ad Identity Protection funkcióinak használatával konfigurálhatja a felhasználói identitásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. További vizsgálat céljából az Azure Sentinelbe is betöltheti az adatmennyiséget.
  
-- [Az Azure AD kockázatos bejelentkezések megtekintése](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Az Azure AD kockázatos bejelentkezések megtekintése](../active-directory/identity-protection/overview-identity-protection.md)
  
 - [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
  
@@ -464,13 +464,13 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 ## <a name="data-protection"></a>Adatvédelem
 
-*További információt az [Azure biztonsági teljesítményteszt: Adatvédelem](/azure/security/benchmarks/security-control-data-protection)című témakörben talál.*
+*További információt az [Azure biztonsági teljesítményteszt: Adatvédelem](../security/benchmarks/security-control-data-protection.md)című témakörben talál.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: bizalmas információk leltárának fenntartása
 
 **Útmutató** : a címkék használatával segítheti a bizalmas adatokat tároló vagy feldolgozó Azure-erőforrások nyomon követését.
  
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés** : nem alkalmazható
 
@@ -480,11 +480,11 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató** : az elkülönítés megvalósítása különálló előfizetések és felügyeleti csoportok használatával az egyes biztonsági tartományokhoz, például a környezeti típusokhoz és az adatérzékeny szintekhez. Korlátozhatja az alkalmazásaihoz és a vállalati környezetekhez igénybe veheti az Azure-erőforrásokhoz való hozzáférés szintjét. Az Azure-erőforrásokhoz való hozzáférést az Azure RBAC segítségével szabályozhatja.
  
-- [További Azure-előfizetések létrehozása](/azure/billing/billing-create-subscription)
+- [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-- [Felügyeleti csoportok létrehozása](../governance/management-groups/create.md)
+- [Felügyeleti csoportok létrehozása](../governance/management-groups/create-management-group-portal.md)
  
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés** : nem alkalmazható
 
@@ -554,7 +554,7 @@ A Microsoft kezeli a Machine Learning alapjául szolgáló infrastruktúrát, é
 
 - [A inaktív adatok titkosításának megismerése az Azure-ban](../security/fundamentals/encryption-atrest.md)
 
-- [Az ügyfél által felügyelt titkosítási kulcsok konfigurálása](../storage/common/storage-encryption-keys-portal.md)
+- [Az ügyfél által felügyelt titkosítási kulcsok konfigurálása](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 **Azure Security Center figyelés** : nem alkalmazható
 
@@ -572,7 +572,7 @@ A Microsoft kezeli a Machine Learning alapjául szolgáló infrastruktúrát, é
 
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 
-*További információért lásd az [Azure biztonsági teljesítményteszt: biztonsági rés kezelése](/azure/security/benchmarks/security-control-vulnerability-management)című témakört.*
+*További információért lásd az [Azure biztonsági teljesítményteszt: biztonsági rés kezelése](../security/benchmarks/security-control-vulnerability-management.md)című témakört.*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatikus biztonsági rések vizsgálatára szolgáló eszközök futtatása
 
@@ -580,7 +580,7 @@ A Microsoft kezeli a Machine Learning alapjául szolgáló infrastruktúrát, é
 
 A Azure Machine Learning különböző számítási erőforrásokon és saját számítási erőforrásokon is eltérő támogatást nyújt. A szervezete tulajdonában lévő számítási erőforrások esetében kövesse Azure Security Center a sebezhetőségi felmérések Azure-beli virtuális gépeken, tároló-lemezképeken és SQL-kiszolgálókon történő végrehajtásához szükséges ajánlásokat.
 
-- [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Security Center figyelés** : nem alkalmazható
 
@@ -592,9 +592,9 @@ A Azure Machine Learning különböző számítási erőforrásokon és saját s
 
 A Azure Machine Learning különböző számítási erőforrásokon és saját számítási erőforrásokon is eltérő támogatást nyújt. A szervezete tulajdonában lévő számítási erőforrások esetében Azure Automation Update Management segítségével győződjön meg arról, hogy a legújabb biztonsági frissítések telepítve vannak a Windows-és Linux-alapú virtuális gépeken. Windows rendszerű virtuális gépek esetén győződjön meg arról, hogy Windows Update engedélyezve van, és automatikus frissítésre van beállítva.
 
-- [Virtuális gépek Update Management konfigurálása az Azure-ban](/azure/automation/update-management/overview)
+- [Virtuális gépek Update Management konfigurálása az Azure-ban](../automation/update-management/overview.md)
 
-- [A Security Center által figyelt Azure biztonsági házirendek ismertetése](../security-center/security-center-policy-definitions.md)
+- [A Security Center által figyelt Azure biztonsági házirendek ismertetése](../security-center/policy-reference.md)
 
 **Azure Security Center figyelés** : nem alkalmazható
 
@@ -612,7 +612,7 @@ A Azure Machine Learning különböző számítási erőforrásokon és saját s
 
 **Útmutató** : a Azure Machine learning különböző számítási erőforrásokon és akár saját számítási erőforrásoknál is különböző támogatást nyújt. A szervezete tulajdonában lévő számítási erőforrások esetében az Azure Security Center ajánlásainak követése az Azure-beli virtuális gépeken, a tároló-lemezképeken és az SQL-kiszolgálókon végzett sebezhetőségi felmérések végrehajtásához. A vizsgálati eredményeket konzisztens időközönként exportálja, és összehasonlítja az eredményeket a korábbi vizsgálatokkal annak ellenőrzéséhez, hogy a biztonsági rések szervizelése megtörtént-e. A Azure Security Center által javasolt sebezhetőség-kezelési javaslatok használatakor a kiválasztott megoldás portálján megtekintheti a korábbi vizsgálati adataikat.
 
-- [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Security Center figyelés** : nem alkalmazható
 
@@ -628,7 +628,7 @@ A Azure Machine Learning különböző számítási erőforrásokon és saját s
 
 ## <a name="inventory-and-asset-management"></a>Leltár- és eszközfelügyelet
 
-*További információt az [Azure biztonsági teljesítményteszt: leltár és eszközkezelés](/azure/security/benchmarks/security-control-inventory-asset-management)című témakörben talál.*
+*További információt az [Azure biztonsági teljesítményteszt: leltár és eszközkezelés](../security/benchmarks/security-control-inventory-asset-management.md)című témakörben talál.*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: automatikus eszköz-felderítési megoldás használata
 
@@ -638,7 +638,7 @@ Bár a klasszikus Azure-erőforrások az Azure Resource Graph Explorerben is fel
 
 - [Lekérdezések létrehozása az Azure Resource Graph Explorerrel](../governance/resource-graph/first-query-portal.md)
 
-- [Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
@@ -650,7 +650,7 @@ Bár a klasszikus Azure-erőforrások az Azure Resource Graph Explorerben is fel
 
 **Útmutató** : címkék alkalmazása az Azure-erőforrásokra, metaadatok hozzáadása a logikai rendszerezéshez a besorolás szerint.
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés** : nem alkalmazható
 
@@ -662,15 +662,15 @@ Bár a klasszikus Azure-erőforrások az Azure Resource Graph Explorerben is fel
  
  
  
-- [ További Azure-előfizetések létrehozása](/azure/billing/billing-create-subscription)
+- [ További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
  
  
  
-- [ Felügyeleti csoportok létrehozása](../governance/management-groups/create.md)
+- [ Felügyeleti csoportok létrehozása](../governance/management-groups/create-management-group-portal.md)
  
  
  
-- [ Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [ Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés** : nem alkalmazható
 
@@ -784,7 +784,7 @@ Harmadik féltől származó megoldás implementálása, ha az adaptív alkalmaz
 
 **Útmutató** : a Azure Machine learning különböző számítási erőforrásokon és akár saját számítási erőforrásoknál is különböző támogatást nyújt. A szervezete tulajdonában lévő számítási erőforrások esetében a parancsfájlok típusától függően az operációs rendszerre jellemző konfigurációk vagy harmadik féltől származó erőforrások segítségével korlátozható, hogy a felhasználók képesek-e parancsfájlokat végrehajtani az Azure számítási erőforrásaiban.  Azure Security Center adaptív alkalmazás-vezérlők használatával biztosíthatja, hogy csak a hitelesített szoftverek legyenek végrehajtva, és az összes jogosulatlan szoftver le legyen tiltva az Azure-Virtual Machines.
 
-- [A PowerShell-parancsfájlok végrehajtásának szabályozása Windows-környezetekben](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+- [A PowerShell-parancsfájlok végrehajtásának szabályozása Windows-környezetekben](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
 - [Azure Security Center adaptív alkalmazás-vezérlők használata](../security-center/security-center-adaptive-application.md)
 
@@ -802,7 +802,7 @@ Harmadik féltől származó megoldás implementálása, ha az adaptív alkalmaz
 
 ## <a name="secure-configuration"></a>Biztonságos konfiguráció
 
-*További információt az [Azure biztonsági teljesítményteszt: biztonságos konfiguráció](/azure/security/benchmarks/security-control-secure-configuration)című témakörben talál.*
+*További információt az [Azure biztonsági teljesítményteszt: biztonságos konfiguráció](../security/benchmarks/security-control-secure-configuration.md)című témakörben talál.*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
 
@@ -814,7 +814,7 @@ A Azure Security Center javaslatai az Azure-erőforrások biztonságos alapkonfi
 
 Azure Machine Learning teljes mértékben támogatja a git-Tárházak használatát a nyomon követéshez; a Tárházak klónozása közvetlenül a megosztott munkaterület fájlrendszerén, a git használata a helyi munkaállomáson, és gondoskodjon arról, hogy a biztonságos konfigurációk a kód erőforrásaira vonatkozzanak a Machine Learning környezet részeként.
 
-- [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében](../governance/policy/tutorials/create-and-manage.md)
 
@@ -870,7 +870,7 @@ A Azure Machine Learning különböző számítási erőforrásokon és saját s
 
 Vegye figyelembe, hogy a Microsoft által közzétett Azure Marketplace virtuálisgép-rendszerképeket a Microsoft felügyeli és tartja karban. 
 
-- [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](../security-center/deploy-vulnerability-assessment-vm.md)
 
 - [Azure-beli virtuális gép létrehozása ARM-sablonból](../virtual-machines/windows/ps-template.md)
 
@@ -892,9 +892,9 @@ Vegye figyelembe, hogy a Microsoft által közzétett Azure Marketplace virtuál
 
 Azure Machine Learning teljes mértékben támogatja a git-Tárházak használatát a nyomon követéshez; a Tárházak klónozása közvetlenül a megosztott munkaterület fájlrendszerén, a git használata a helyi munkaállomáson, és gondoskodjon arról, hogy a biztonságos konfigurációk a kód erőforrásaira vonatkozzanak a Machine Learning környezet részeként.
 
-- [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Az Azure Repos dokumentációja](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Az Azure Repos dokumentációja](/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center figyelés** : nem alkalmazható
 
@@ -958,7 +958,7 @@ A Azure Machine Learning különböző számítási erőforrásokon és saját s
 
 A Azure Machine Learning különböző számítási erőforrásokon és saját számítási erőforrásokon is eltérő támogatást nyújt. A szervezete tulajdonában lévő számítási erőforrások esetében Azure Security Center számítási alkalmazásokat kell használnia, &amp; és követnie kell a virtuális gépek és a kiszolgálók, valamint a tárolók javaslatait.
 
-- [Az Azure Security Center tárolókra vonatkozó ajánlásainak értelmezése](/azure/security-center/security-center-container-recommendations)
+- [Az Azure Security Center tárolókra vonatkozó ajánlásainak értelmezése](../security-center/container-security.md)
 
 **Azure Security Center figyelés** : nem alkalmazható
 
@@ -978,11 +978,11 @@ A betanítási szkriptek nem titkosított szöveg helyett a Azure Key Vault hasz
 
 - [Felügyelt identitások használata Azure-erőforrásokhoz](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [Key Vault létrehozása](/azure/key-vault/quick-create-portal)
+- [Key Vault létrehozása](../key-vault/secrets/quick-create-portal.md)
 
-- [Hitelesítés Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+- [Hitelesítés Key Vault](../key-vault/general/authentication.md)
 
-- [Key Vault hozzáférési szabályzatok kiosztása](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+- [Key Vault hozzáférési szabályzatok kiosztása](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center figyelés** : igen
 
@@ -1013,7 +1013,7 @@ A betanítási szkriptek nem titkosított szöveg helyett a Azure Key Vault hasz
 
 ## <a name="malware-defense"></a>Kártevők elleni védelem
 
-*További információt az [Azure biztonsági teljesítményteszt: kártevők elleni védelem](/azure/security/benchmarks/security-control-malware-defense)című témakörben talál.*
+*További információt az [Azure biztonsági teljesítményteszt: kártevők elleni védelem](../security/benchmarks/security-control-malware-defense.md)című témakörben talál.*
 
 ### <a name="81-use-centrally-managed-antimalware-software"></a>8,1: központilag felügyelt kártevő szoftver használata
 
@@ -1023,7 +1023,7 @@ A Azure Machine Learning különböző számítási erőforrásokon és saját s
 
 - [Az Azure-hoz készült Microsoft antimalware konfigurálása](../security/fundamentals/antimalware.md)
 
-- [Fenyegetésvédelem az Azure Security Centerben](../security-center/threat-protection.md)
+- [Fenyegetésvédelem az Azure Security Centerben](../security-center/azure-defender.md)
 
 **Azure Security Center figyelés** : nem alkalmazható
 
@@ -1053,7 +1053,7 @@ A Azure Machine Learning különböző számítási erőforrásokon és saját s
 
 ## <a name="data-recovery"></a>Adat-helyreállítás
 
-*További információt az [Azure biztonsági teljesítményteszt: adat-helyreállítás](/azure/security/benchmarks/security-control-data-recovery)című témakörben talál.*
+*További információt az [Azure biztonsági teljesítményteszt: adat-helyreállítás](../security/benchmarks/security-control-data-recovery.md)című témakörben talál.*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: rendszeres automatizált biztonsági másolatok biztosítása
 
@@ -1070,7 +1070,7 @@ A Azure Machine Learning különböző számítási erőforrásokon és saját s
 **Útmutató** : a Machine learning szolgáltatásban tárolt adatbiztonsági mentés a csatlakoztatott adattárakon lévő adatkezelésen keresztül történik. Engedélyezze a virtuális gépek Azure Backupét, és konfigurálja a kívánt gyakoriságot és megőrzési időt. Az ügyfél által felügyelt kulcsok biztonsági mentése Azure Key Vault-ben.
 
 - [Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából](../backup/backup-azure-restore-files-from-vm.md)
-- [Key Vault kulcsok visszaállítása az Azure-ban](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Key Vault kulcsok visszaállítása az Azure-ban](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center figyelés** : nem alkalmazható
 
@@ -1095,9 +1095,9 @@ A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelme érdekébe
  
 - [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
-- [A védelem lágy törlésének és kiürítésének engedélyezése a Key Vaultban](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [A védelem lágy törlésének és kiürítésének engedélyezése a Key Vaultban](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-- [Soft DELETE az Azure Blob Storage-hoz](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Soft DELETE az Azure Blob Storage-hoz](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center figyelés** : nem alkalmazható
 
@@ -1105,7 +1105,7 @@ A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelme érdekébe
 
 ## <a name="incident-response"></a>Incidensmegoldás
 
-*További információt az [Azure biztonsági teljesítményteszt: incidens válasza](/azure/security/benchmarks/security-control-incident-response)című témakörben talál.*
+*További információt az [Azure biztonsági teljesítményteszt: incidens válasza](../security/benchmarks/security-control-incident-response.md)című témakörben talál.*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
 
@@ -1129,7 +1129,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 - [Biztonsági riasztások az Azure Security Centerben](../security-center/security-center-alerts-overview.md)
 
-- [Címkék használata az Azure-erőforrások rendszerezéséhez](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék használata az Azure-erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés** : igen
 
@@ -1179,7 +1179,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Behatolási tesztek és Red Team-gyakorlatok
 
-*További információkért tekintse meg az [Azure biztonsági teljesítményteszt: behatolási tesztek és a Red Team gyakorlatok](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)című témakört.*
+*További információkért tekintse meg az [Azure biztonsági teljesítményteszt: behatolási tesztek és a Red Team gyakorlatok](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)című témakört.*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: az Azure-erőforrások rendszeres behatolásának tesztelése, valamint az összes kritikus biztonsági vizsgálat szervizelésének biztosítása
 
@@ -1195,5 +1195,5 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
-- További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)
+- Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
+- További információ az [Azure biztonsági alaptervekről](../security/benchmarks/security-baselines-overview.md)

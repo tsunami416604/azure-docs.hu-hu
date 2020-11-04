@@ -11,14 +11,15 @@ ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a3e8ea3b0ed2840e5eee7a046fa3a145f82884dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59e0aed3ceda369909c6a4aecd03637a82a2dd1b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85200698"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305382"
 ---
 # <a name="connect-to-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>Kapcsolódás az Azure szinapszis Analyticshez a Visual Studióval és a SSDT
+
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](../sql/get-started-azure-data-studio.md)
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
@@ -28,18 +29,18 @@ ms.locfileid: "85200698"
 > 
 > 
 
-A Visual Studióval mindössze néhány perc alatt lekérdezheti az SQL-készletet az Azure szinapszison belül. Ez a metódus a SQL Server Data Tools (SSDT) bővítményt használja a Visual Studio 2019-ben. 
+A Visual Studióval mindössze néhány perc alatt lekérdezheti az Azure szinapszison belül egy dedikált SQL-készletet. Ez a metódus a SQL Server Data Tools (SSDT) bővítményt használja a Visual Studio 2019-ben. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
 
-* Egy meglévő SQL-készlet. A létrehozáshoz tekintse meg [az SQL-készlet létrehozása](create-data-warehouse-portal.md)című témakört.
+* Egy meglévő dedikált SQL-készlet. A létrehozáshoz tekintse meg [a DEDIKÁLT SQL-készlet létrehozása](create-data-warehouse-portal.md)című témakört.
 * SSDT a Visual Studióhoz. Ha rendelkezik a Visual Studióval, valószínűleg már rendelkezik SSDT a Visual Studióval. A telepítés menetéről és a beállításokról [A Visual Studio és az SSDT telepítése](sql-data-warehouse-install-visual-studio.md) című cikkben olvashat bővebben.
-* Az Azure SQL-kiszolgáló teljes neve. Az információk megkereséséhez lásd: [Kapcsolódás az SQL-készlethez](../sql/connect-overview.md).
+* Az Azure SQL-kiszolgáló teljes neve. Az információk megkereséséhez lásd: [Kapcsolódás DEDIKÁLT SQL-készlethez](../sql/connect-overview.md).
 
-## <a name="1-connect-to-your-sql-pool"></a>1. kapcsolódás az SQL-készlethez
+## <a name="1-connect-to-your-dedicated-sql-pool"></a>1. kapcsolódás a dedikált SQL-készlethez
 1. Nyissa meg a Visual Studio 2019 alkalmazást.
-2. SQL Server Object Explorer megnyitásához válassza a **nézet**  >  **SQL Server Object Explorer**lehetőséget.
+2. SQL Server Object Explorer megnyitásához válassza a **nézet**  >  **SQL Server Object Explorer** lehetőséget.
    
     ![SQL Server Object Explorer](./media/sql-data-warehouse-query-visual-studio/open-ssdt.png)
 3. Kattintson az **Add SQL Server** (SQL Server hozzáadása) ikonra.
@@ -76,7 +77,7 @@ Most, hogy létrejött a kapcsolat az adatbázissal, ideje lefuttatni egy lekér
    
     ![Lekérdezés eredményei](./media/sql-data-warehouse-query-visual-studio/query-results.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy tud-e kapcsolatot létesíteni és lekérdezni, próbálja meg [az Power bi segítségével megjeleníteni az adatmegjelenítést](sql-data-warehouse-get-started-visualize-with-power-bi.md).
 
-A környezet Azure Active Directory hitelesítéshez való konfigurálásával kapcsolatban lásd: [hitelesítés az SQL-készlettel](sql-data-warehouse-authentication.md).
+A környezet Azure Active Directory hitelesítéshez való konfigurálásával kapcsolatban lásd: [hitelesítés DEDIKÁLT SQL-készletbe](sql-data-warehouse-authentication.md).

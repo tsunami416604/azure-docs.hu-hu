@@ -1,6 +1,6 @@
 ---
 title: CEF-adatkapcsolatok összekötése az Azure Sentinel előzetes verziójával | Microsoft Docs
-description: Csatlakoztasson egy olyan külső megoldást, amely Common Event Format (CEF) üzeneteket küld az Azure Sentinelnek egy Linux rendszerű géppel, proxyként.
+description: Csatlakoztasson egy olyan külső megoldást, amely Common Event Format (CEF) üzeneteket küld az Azure Sentinelnek egy Linux rendszerű géppel, mint egy naplófájl-továbbító.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: dae8ce6cbad1ae08898ae439c1f621bef185b5df
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e09b44504623516d41b6d310a82e78619477367c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747898"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93304977"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>A külső megoldás összekötése a közös esemény formátumával
 
@@ -50,40 +50,49 @@ Ahhoz, hogy TLS-kommunikációt lehessen használni a syslog-forrás és a syslo
  
 ## <a name="prerequisites"></a>Előfeltételek
 
-Győződjön meg arról, hogy a proxyként használt Linux-gép az alábbi operációs rendszerek egyikét futtatja:
+Győződjön meg arról, hogy a naplózási továbbítóként használt Linux-gép a következő operációs rendszerek egyikét futtatja:
 
 - 64 bites
-  - CentOS 7 és alverziók, valamint magasabb (nem 6)
+  - CentOS 7 és 8, beleértve az alverziókat (nem 6)
   - Amazon Linux 2017,09
   - Oracle Linux 7
-  - Red Hat Enterprise Linux (RHEL) Server 7 és alverziók, valamint magasabb (nem 6)
-  - Debian GNU/Linux 8 és 9
+  - Red Hat Enterprise Linux (RHEL) Server 7 és 8, beleértve az alverziókat (nem 6)
+  - Debian GNU/Linux 8, 9 és 10
   - Ubuntu Linux 14,04 LTS, 16,04 LTS és 18,04 LTS
-  - SUSE Linux Enterprise Server 12
+  - SUSE Linux Enterprise Server 12, 15
+
 - 32 bites
-   - CentOS 7
-   - Oracle Linux 7
-   - Red Hat Enterprise Linux Server 7
-   - Debian GNU/Linux 8 és 9
-   - Ubuntu Linux 14,04 LTS és 16,04 LTS
+  - CentOS 7 és 8, beleértve az alverziókat (nem 6)
+  - Oracle Linux 7
+  - Red Hat Enterprise Linux (RHEL) Server 7 és 8, beleértve az alverziókat (nem 6)
+  - Debian GNU/Linux 8, 9 és 10
+  - Ubuntu Linux 14,04 LTS és 16,04 LTS
  
- - Daemon-verziók
-   - Syslog-ng: 2,1 – 3.22.1
-   - Rsyslog: V8
+- Daemon-verziók
+  - Syslog-ng: 2,1 – 3.22.1
+  - Rsyslog: V8
   
- - A syslog RFC-k támogatottak
-   - Syslog RFC 3164
-   - Syslog RFC 5424
+- A syslog RFC-k támogatottak
+  - Syslog RFC 3164
+  - Syslog RFC 5424
  
 Győződjön meg arról, hogy a gép a következő követelményeknek is megfelel: 
+
 - Engedélyek
-    - Emelt szintű engedélyekkel (sudo) kell rendelkeznie a gépen. 
+  - Emelt szintű engedélyekkel (sudo) kell rendelkeznie a gépen. 
+
 - Szoftverkövetelmények
-    - Győződjön meg arról, hogy a Python 2,7 fut a gépen.
+  - Győződjön meg arról, hogy a Python 2,7 fut a gépen.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebből a dokumentumból megtudhatta, hogyan csatlakoztathatók a CEF-készülékek az Azure Sentinel szolgáltatáshoz. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+Ebből a dokumentumból megtudhatta, hogy az Azure Sentinel hogyan gyűjt CEF-naplókat a biztonsági megoldásokból és készülékekről. Ha szeretné megtudni, hogyan csatlakoztatható a megoldás az Azure Sentinel szolgáltatáshoz, tekintse meg a következő cikkeket:
+
+- 1. lépés: [a CEF összekötése syslog/CEF-továbbító üzembe helyezésével](connect-cef-agent.md)
+- 2. lépés: a [megoldásra vonatkozó lépések végrehajtása](connect-cef-solution-config.md)
+- 3. lépés: a [kapcsolat ellenőrzése](connect-cef-verify.md)
+
+Ha többet szeretne megtudni arról, hogy mi a teendő az Azure Sentinelben összegyűjtött adatokkal, tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
 

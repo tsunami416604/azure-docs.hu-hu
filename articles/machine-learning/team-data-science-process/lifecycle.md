@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a043a1655950f3ed7688e59352f8a912146e12c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed54fda744978ac43bbffc6a70d6b331e85dc5e7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76720452"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305590"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>A csoportos adatelemzési folyamat életciklusa
 
@@ -43,12 +43,12 @@ A TDSP életciklusa ismétlődő lépések sorozatából áll, amely útmutatás
 
 Az egyes fázisok esetében a következő információkat adjuk meg:
 
-   * **Célok**: az adott célkitűzések.
-   * **Útmutató**: a feladatok végrehajtásának részletes ismertetése és útmutatása.
-   * Összetevők **: a**termékek és a hozzájuk tartozó támogatás.
+   * **Célok** : az adott célkitűzések.
+   * **Útmutató** : a feladatok végrehajtásának részletes ismertetése és útmutatása.
+   * Összetevők **: a** termékek és a hozzájuk tartozó támogatás.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Teljes körű útmutatót biztosítunk, amely bemutatja a folyamat összes lépését adott forgatókönyvek esetén. A [példákat](walkthroughs.md) bemutató cikk a hivatkozásokat és a miniatűr leírásait tartalmazza. Az útmutató bemutatja, hogyan egyesítheti a felhőt, a helyszíni eszközöket és a szolgáltatásokat egy munkafolyamatban vagy folyamatban egy intelligens alkalmazás létrehozásához. 
 
-A Azure Machine Learning Studiot használó TDSPs lépéseinek végrehajtásával kapcsolatos Példákért lásd: [a TDSP használata Azure Machine learning használatával](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+A Azure Machine Learning Studiot használó TDSPs lépéseinek végrehajtásával kapcsolatos Példákért lásd: [a TDSP használata Azure Machine learning használatával](./index.yml).

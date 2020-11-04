@@ -1,7 +1,7 @@
 ---
 title: Modell üzembe helyezése a Cognitive Searchcsel történő használatra
 titleSuffix: Azure Machine Learning
-description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Machine Learningt modell üzembe helyezéséhez az Azure Cognitive Search használatával. A Cognitive Search a Azure Machine Learning által üzembe helyezett modelleket egyéni képességként használhatja a keresési élmény gazdagítása érdekében.
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning-t egy modell üzembe helyezéséhez Cognitive Search használatával. A modell egyéni képességként használható a keresési élmény gazdagítása érdekében.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: cjgronlund
 ms.reviewer: larryfr
 ms.date: 06/11/2020
 ms.custom: deploy
-ms.openlocfilehash: 5d198a27d7aeca679f1ee17f35d3f4384283f13c
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: e1eebf88b72c87ce9db02760c5c44a0aa25c57cc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998916"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305925"
 ---
 # <a name="deploy-a-model-for-use-with-cognitive-search"></a>Modell üzembe helyezése a Cognitive Searchcsel történő használatra
 
@@ -25,7 +25,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Azure Machine Learningt mo
 
 Cognitive Search a tartalom feldolgozását különböző-tartalomon keresztül végzi el, hogy az emberek vagy az alkalmazások lekérdezhető legyen. Ez a folyamat a Azure Machine Learning-ból üzembe helyezett modell használatával javítható.
 
-Azure Machine Learning a betanított modellt webszolgáltatásként helyezheti üzembe. A webszolgáltatás ezután beágyazva van egy Cognitive Search- _képességbe_, amely a feldolgozási folyamat részévé válik.
+Azure Machine Learning a betanított modellt webszolgáltatásként helyezheti üzembe. A webszolgáltatás ezután beágyazva van egy Cognitive Search- _képességbe_ , amely a feldolgozási folyamat részévé válik.
 
 > [!IMPORTANT]
 > A cikkben található információk a modell üzembe helyezésére vonatkoznak. Információt nyújt a támogatott központi telepítési konfigurációkról, amelyek lehetővé teszik a modell használatát Cognitive Search.
@@ -46,7 +46,7 @@ Az Azure Cognitive Search-hoz való használatra szolgáló modell telepítések
 
 * Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
-* A Azure Machine Learning SDK-val telepített Python-fejlesztési környezet. További információ: [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).  
+* A Azure Machine Learning SDK-val telepített Python-fejlesztési környezet. További információ: [Azure Machine learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).  
 
 * Egy regisztrált modell. Ha nem rendelkezik modellel, használja a példán látható jegyzetfüzetet a következő helyen: [https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill) .
 
@@ -75,7 +75,7 @@ except:
 
 ## <a name="create-a-kubernetes-cluster"></a>Kubernetes-fürt létrehozása
 
-**Becsült idő**: körülbelül 20 perc.
+**Becsült idő** : körülbelül 20 perc.
 
 A Kubernetes-fürt virtuálisgép-példányok (más néven csomópontok) készlete, amely a tároló alkalmazások futtatására szolgál.
 
@@ -252,7 +252,7 @@ from azureml.core.model import InferenceConfig
 inf_config = InferenceConfig(entry_script='score.py', environment=myenv)
 ```
 
-További információkért tekintse meg a [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true)dokumentációját.
+További információkért tekintse meg a [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py)dokumentációját.
 
 ## <a name="deploy-the-model"></a>A modell üzembe helyezése
 
@@ -277,7 +277,7 @@ aks_service.wait_for_deployment(show_output = True)
 print(aks_service.state)
 ```
 
-További információ: a [modell](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true)dokumentációja.
+További információ: a [modell](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py)dokumentációja.
 
 ## <a name="issue-a-sample-query-to-your-service"></a>Lekérdezés kiadása a szolgáltatásnak
 
