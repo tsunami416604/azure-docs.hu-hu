@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
-ms.openlocfilehash: f211ce7e52ccaa6793435159d0ce1c64fe8b63ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a12068259d82e833826bcac5e6c58059fb51c56c
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91705281"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336979"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Oktatóanyag: Azure Database for PostgreSQL figyelése és finomhangolása – egyetlen kiszolgáló
 
@@ -23,11 +23,11 @@ Az Azure Database for PostgreSQL olyan funkciókkal rendelkezik, amelyek segíte
 > * Adatbázis-elemzés a teljesítménnyel kapcsolatos javaslatokért
 > * Teljesítménnyel kapcsolatos javaslatok alkalmazása
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="prerequisites"></a>Előfeltételek
 Szükség van egy 9.6-os vagy 10-es verziójú PostgreSQL-t futtató Azure Database for PostgreSQL kiszolgálóra. A kiszolgáló létrehozásához kövesse a [Létrehozási oktatóanyagban](tutorial-design-database-using-azure-portal.md) megadott lépéseket.
 
 > [!IMPORTANT]
-> A **Lekérdezéstár**, a **Lekérdezési terheléselemző** és a **Teljesítménnyel kapcsolatos javaslatok** nyilvános előzetes verzióban érhetők el.
+> A **Lekérdezéstár** , a **Lekérdezési terheléselemző** és a **Teljesítménnyel kapcsolatos javaslatok** nyilvános előzetes verzióban érhetők el.
 
 ## <a name="enabling-data-collection"></a>Adatgyűjtés engedélyezése
 A [Lekérdezéstár](concepts-query-store.md) rögzíti a kiszolgálója lekérdezéseinek és várakozási statisztikáinak előzményeit, és a kiszolgáló **azure_sys** adatbázisában tárolja őket. Ez egy bekapcsolható funkció. Az engedélyezéséhez:
@@ -52,7 +52,7 @@ A Microsoft Azure Portal [Lekérdezési terheléselemző](concepts-query-perform
 
 2. A **Hosszú ideig futó lekérdezések** lapon az 5 leggyakoribb lekérdezés látható a végrehajtásonkénti átlagos időtartam szerint, 15 perces időközönként összesítve. 
    
-   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png" alt-text="A Lekérdezéstár kiszolgálóparaméterei":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png" alt-text="A Lekérdezési terheléselemző kezdőlapja":::
 
    Több lekérdezés megtekintéséhez válasszon értéket a **Lekérdezések száma** legördülő menüből. A diagram színei ekkor egy adott lekérdezésazonosító tekintetében változhatnak.
 
@@ -64,7 +64,7 @@ A Microsoft Azure Portal [Lekérdezési terheléselemző](concepts-query-perform
 
 6. A kiszolgálóval kapcsolatos megfelelő várakozási adatok vizualizációinak megjelenítéséhez válassza a **Várakozási statisztikák** fület.
    
-   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png" alt-text="A Lekérdezéstár kiszolgálóparaméterei":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png" alt-text="A Lekérdezési terheléselemző várakozási statisztikái":::
 
 ### <a name="permissions"></a>Engedélyek
 A Lekérdezési terheléselemző lekérdezéseinek szövegét **Tulajdonos** vagy **Közreműködő** jogosultsággal lehet megjeleníteni. **Olvasó** jogosultsággal a diagramok és táblázatok megtekinthetők, de a lekérdezés szövege nem.
@@ -75,7 +75,7 @@ A [Teljesítménnyel kapcsolatos javaslatok](concepts-performance-recommendation
 
 1. Nyissa meg a PostgreSQL-kiszolgálója Azure portáloldalán lévő menüsáv **Támogatás és hibaelhárítás** részén lévő **Teljesítménnyel kapcsolatos javaslatok** menüpontot.
    
-   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png" alt-text="A Lekérdezéstár kiszolgálóparaméterei":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png" alt-text="A Teljesítménnyel kapcsolatos javaslatok kezdőlapja":::
 
 2. Jelölje ki az **Elemzés** funkciót, és válasszon egy adatbázist. Ez elindítja az elemzést.
 
@@ -83,14 +83,20 @@ A [Teljesítménnyel kapcsolatos javaslatok](concepts-performance-recommendation
 
 4. A **Teljesítménnyel kapcsolatos javaslatok** ablakban megjelenik a javaslatok listája (ha vannak). 
 
-5. A javaslat információt jelenít meg a releváns **adatbázisról**, **tábláról**, **oszlopról** és **indexméretről**.
+5. A javaslat információt jelenít meg a releváns **adatbázisról** , **tábláról** , **oszlopról** és **indexméretről**.
 
-   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-result.png" alt-text="A Lekérdezéstár kiszolgálóparaméterei":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-result.png" alt-text="A Teljesítménnyel kapcsolatos javaslatok eredményei":::
 
 6. A javaslat megvalósításához másolja ki a lekérdezés szövegét, és futtassa azt a választott ügyfélről.
 
 ### <a name="permissions"></a>Engedélyek
 A Teljesítménnyel kapcsolatos javaslatok funkcióval futtatott elemzéshez **Tulajdonos** vagy **Közreműködő** jogosultság szükséges.
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Az előző lépésekben Azure-erőforrásokat hozott létre egy kiszolgálócsoport számára. Ha nem várható, hogy a jövőben szüksége lesz ezekre az erőforrásokra, törölje a kiszolgálót. A kiszolgálócsoport *Áttekintés* lapján kattintson a *Törlés* gombra. Amikor a rendszer rákérdez egy előugró oldalra, erősítse meg a kiszolgálócsoport nevét, és kattintson a végleges *Törlés* gombra.
+
 ## <a name="next-steps"></a>További lépések
-- További információk az Azure Database for PostgreSQL [monitoringjához és finomhangolásához](concepts-monitoring.md).
+
+> [!div class="nextstepaction"]
+> További információk az Azure Database for PostgreSQL [monitoringjához és finomhangolásához](concepts-monitoring.md).

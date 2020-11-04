@@ -1,5 +1,5 @@
 ---
-title: A Java és a JDBC használata Azure Database for MySQL
+title: 'Rövid útmutató: a Java és a JDBC használata Azure Database for MySQL'
 description: Ismerje meg, hogyan használható a Java és a JDBC Azure Database for MySQL adatbázissal.
 author: jdubois
 ms.author: judubois
@@ -8,14 +8,14 @@ ms.custom: mvc, devcenter, devx-track-azurecli
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: b7db124f8f5ba56f760dc054491990889e4e738f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 457f7e07391c647d2ab0e7d78197086f6f5e2cf7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745270"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337439"
 ---
-# <a name="use-java-and-jdbc-with-azure-database-for-mysql"></a>A Java és a JDBC használata Azure Database for MySQL
+# <a name="quickstart-use-java-and-jdbc-with-azure-database-for-mysql"></a>Rövid útmutató: a Java és a JDBC használata Azure Database for MySQL
 
 Ez a témakör bemutatja, hogyan hozhat létre egy olyan minta alkalmazást, amely a javát és a [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) -t használja [Azure Database for MySQLban](./index.yml)található információk tárolására és lekérésére.
 
@@ -493,7 +493,7 @@ A Main osztály végrehajtásához most a következő kimenetet kell létrehozni
 [INFO   ] Closing database connection 
 ```
 
-## <a name="conclusion-and-resources-clean-up"></a>Következtetések és erőforrások tisztítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Gratulálunk! Létrehozott egy Java-alkalmazást, amely a JDBC-t használja a Azure Database for MySQL adatok tárolására és lekérésére.
 
@@ -505,7 +505,7 @@ az group delete \
     --yes
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [MySQL-adatbázis migrálása a MySQL-hez készült Azure Database-be memóriakép és visszaállítás használatával](concepts-migrate-dump-restore.md)

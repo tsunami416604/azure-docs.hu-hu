@@ -3,15 +3,16 @@ title: A JSON használata az Azure Cosmos DB-ben
 description: További információ a beágyazott JSON-tulajdonságok lekérdezéséről és eléréséről, valamint speciális karakterek használata Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/19/2020
 ms.author: tisande
-ms.openlocfilehash: 1cc79862bccee3253e41ce5f1c6bc8c149d9b3ae
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9a9300db1adc3ff238c44887012400702690b0e8
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100643"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337829"
 ---
 # <a name="working-with-json-in-azure-cosmos-db"></a>A JSON használata az Azure Cosmos DB-ben
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -292,7 +293,7 @@ Az eredmény a következő:
 
 Az aliasok nem használhatók olyan tulajdonság neveként, amely szóközt, speciális karaktert vagy fenntartott szót használ. Ha például egy érték kivetítését szeretné módosítani egy szóközzel, használhat egy [JSON-kifejezést](#json-expressions).
 
-Íme egy példa:
+Például:
 
 ```sql
     SELECT
@@ -302,7 +303,7 @@ Az aliasok nem használhatók olyan tulajdonság neveként, amely szóközt, spe
     WHERE f.id = "AndersenFamily"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Bevezetés](sql-query-getting-started.md)
 - [SELECT záradék](sql-query-select.md)

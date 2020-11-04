@@ -4,15 +4,16 @@ description: 'Oktatóanyag: Ismerje meg, hogyan importálhat adatokat Azure Cosm
 author: deborahc
 ms.topic: tutorial
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 24ef78d44a1a632b86bf62e309960dd74b609c81
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e16a738264e64e37cfa42722832dac7e34fee899
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088811"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339495"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Oktatóanyag: jegyzetfüzet létrehozása Azure Cosmos DBban az adat elemzéséhez és megjelenítéséhez
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -29,13 +30,13 @@ Ebben a szakaszban létrehozza az Azure Cosmos-adatbázist, a tárolót, és imp
 
 1. Navigáljon az Azure Cosmos-fiókjához, és nyissa meg a **adatkezelő.**
 
-1. Lépjen a **jegyzetfüzetek** lapra, válassza a `…` **saját jegyzetfüzetek** lehetőséget, majd hozzon létre egy **új jegyzetfüzetet** . Az alapértelmezett Kernelként válassza a **Python 3** elemet.
+1. Lépjen a **jegyzetfüzetek** lapra, válassza a `…` **saját jegyzetfüzetek** lehetőséget, majd hozzon létre egy **új jegyzetfüzetet**. Az alapértelmezett Kernelként válassza a **Python 3** elemet.
 
-   :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="Új jegyzetfüzet létrehozása&quot;:::
+   :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="Új jegyzetfüzet létrehozása":::
 
 1. Egy új jegyzetfüzet létrehozása után átnevezheti a **VisualizeRetailData. ipynb** -hoz hasonló módon.
 
-1. Ezután létre fog hozni egy &quot;RetailDemo&quot; nevű adatbázist és egy &quot;WebsiteData" nevű tárolót a kiskereskedelmi adattároláshoz. A/CartID-t használhatja partíciós kulcsként. Másolja és illessze be a következő kódot egy új cellába a jegyzetfüzetben, majd futtassa azt:
+1. Ezután létre fog hozni egy "RetailDemo" nevű adatbázist és egy "WebsiteData" nevű tárolót a kiskereskedelmi adattároláshoz. A/CartID-t használhatja partíciós kulcsként. Másolja és illessze be a következő kódot egy új cellába a jegyzetfüzetben, majd futtassa azt:
 
    ```python
    import azure.cosmos
@@ -50,11 +51,7 @@ Ebben a szakaszban létrehozza az Azure Cosmos-adatbázist, a tárolót, és imp
 
    Cella futtatásához válassza ki `Shift + Enter` vagy válassza ki a cellát, majd válassza az **aktív cella futtatása** lehetőséget az adatkezelő navigációs sávján.
 
-   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="Új jegyzetfüzet létrehozása&quot;:::
-
-1. Egy új jegyzetfüzet létrehozása után átnevezheti a **VisualizeRetailData. ipynb** -hoz hasonló módon.
-
-1. Ezután létre fog hozni egy &quot;RetailDemo&quot; nevű adatbázist és egy &quot;WebsiteData":::
+   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="Az aktív cella futtatása":::
 
    Az adatbázis és a tároló a jelenlegi Azure Cosmos-fiókban jön létre. A tároló 400 RU/s-vel van kiépítve. Az adatbázis és a tároló létrehozása után a következő kimenet jelenik meg. 
 
@@ -65,11 +62,23 @@ Ebben a szakaszban létrehozza az Azure Cosmos-adatbázist, a tárolót, és imp
 
    Emellett frissítheti az **adatlapot,** és megtekintheti az újonnan létrehozott erőforrásokat:
 
-   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="Új jegyzetfüzet létrehozása&quot;:::
+   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="Az új tároló megjelenítéséhez frissítse az adatlapot":::
 
-1. Egy új jegyzetfüzet létrehozása után átnevezheti a **VisualizeRetailData. ipynb** -hoz hasonló módon.
+1. A következő lépésként importálni fogja a minta kiskereskedelmi adattárat az Azure Cosmos-tárolóba. Itt látható a kiskereskedelmi adatokból származó elem formátuma:
 
-1. Ezután létre fog hozni egy &quot;RetailDemo&quot; nevű adatbázist és egy &quot;WebsiteData"
+   ```json
+    {
+       "CartID":5399,
+       "Action":"Viewed",
+       "Item":"Cosmos T-shirt",
+       "Price":350,
+       "UserName":"Demo.User10",
+       "Country":"Iceland",
+       "EventDate":"2015-06-25T00:00:00",
+       "Year":2015,"Latitude":-66.8673,
+       "Longitude":-29.8214,
+       "Address":"852 Modesto Loop, Port Ola, Iceland",
+       "id":"00ffd39c-7e98-4451-9b91-b2bcf2f9a32d"
     }
    ```
 
@@ -128,11 +137,7 @@ Egy új jegyzetfüzet-cellában futtassa a következő kódot a kimenet első 10
 df_cosmos.head(10)
 ```
 
-:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="Új jegyzetfüzet létrehozása&quot;:::
-
-1. Egy új jegyzetfüzet létrehozása után átnevezheti a **VisualizeRetailData. ipynb** -hoz hasonló módon.
-
-1. Ezután létre fog hozni egy &quot;RetailDemo&quot; nevű adatbázist és egy &quot;WebsiteData":::
+:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="Lekérdezés futtatása az első 10 elem lekéréséhez":::
 
 ## <a name="run-queries-and-analyze-your-data"></a>Lekérdezések futtatása és az adataik elemzése
 
@@ -145,11 +150,7 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
    display(df_revenue.head(5))
    ```
 
-   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="Új jegyzetfüzet létrehozása&quot;:::
-
-1. Egy új jegyzetfüzet létrehozása után átnevezheti a **VisualizeRetailData. ipynb** -hoz hasonló módon.
-
-1. Ezután létre fog hozni egy &quot;RetailDemo&quot; nevű adatbázist és egy &quot;WebsiteData":::
+   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="Értékesítési bevétel teljes kimenete":::
 
 * **Query2:** Az öt legfontosabb megvásárolt elem listájának lekéréséhez nyisson meg egy új jegyzetfüzet-cellát, és futtassa a következő kódot:
 
@@ -160,11 +161,7 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
    pd.DataFrame(df_cosmos[df_cosmos['Action']=='Purchased'].groupby('Item').size().sort_values(ascending=False).head(5), columns=['Count'])
    ```
 
-   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="Új jegyzetfüzet létrehozása&quot;:::
-
-1. Egy új jegyzetfüzet létrehozása után átnevezheti a **VisualizeRetailData. ipynb** -hoz hasonló módon.
-
-1. Ezután létre fog hozni egy &quot;RetailDemo&quot; nevű adatbázist és egy &quot;WebsiteData":::
+   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="Az öt legfontosabb megvásárolt elem":::
 
 ## <a name="visualize-your-data"></a>Adatok vizualizációja  
 
@@ -240,11 +237,7 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
 
    A kimenet a világ térképét jeleníti meg különböző színekkel. A világosabb színek a legalacsonyabb bevételsel rendelkező országokat és régiókat jelölik.
 
-   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="Új jegyzetfüzet létrehozása&quot;:::
-
-1. Egy új jegyzetfüzet létrehozása után átnevezheti a **VisualizeRetailData. ipynb** -hoz hasonló módon.
-
-1. Ezután létre fog hozni egy &quot;RetailDemo&quot; nevű adatbázist és egy &quot;WebsiteData":::
+   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="Országok/régiók bevételi Térkép vizualizációja":::
 
 1. Lássuk egy másik esetet az adatvizualizációhoz. A WebsiteData-tároló olyan felhasználókat tartalmaz, akik megtekintett egy tételt, hozzáadták őket a kosárhoz, és megvásárolták az adott tételt. Nézzük meg a megvásárolt elemek konverziós arányát. Futtassa az alábbi kódot egy új cellában az egyes elemek konverziós arányának megjelenítéséhez:
 
@@ -295,12 +288,8 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
    show(p)
    ```
 
-   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="Új jegyzetfüzet létrehozása&quot;:::
+   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="Vásárlási konverziós arány megjelenítése":::
 
-1. Egy új jegyzetfüzet létrehozása után átnevezheti a **VisualizeRetailData. ipynb** -hoz hasonló módon.
-
-1. Ezután létre fog hozni egy &quot;RetailDemo&quot; nevű adatbázist és egy &quot;WebsiteData":::
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha többet szeretne megtudni a Python notebook-parancsokról, olvassa el a következő témakört: [a beépített notebook-parancsok és-szolgáltatások használata Azure Cosmos db](use-python-notebook-features-and-commands.md) cikkben.

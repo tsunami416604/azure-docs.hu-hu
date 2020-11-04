@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 25eaca08202bd01ad4777fdb73eb75abff458c29
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f065b1bc98eab86542ecff73e1471e4d90cd4182
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677912"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339533"
 ---
 # <a name="vm-certification-troubleshooting"></a>Virtuális gépek tanúsításával kapcsolatos hibaelhárítás
 
@@ -47,8 +47,8 @@ Ellenőrizze, hogy a rendszerkép támogatja-e a virtuálisgép-bővítményeket
 A virtuálisgép-bővítmények engedélyezéséhez tegye a következőket:
 
 1. Válassza ki a linuxos virtuális gépet.
-1. Lépjen a **diagnosztikai beállítások menüpontra** .
-1. Az alapmátrixok engedélyezéséhez frissítse a **Storage-fiókot** .
+1. Lépjen a **diagnosztikai beállítások menüpontra**.
+1. Az alapmátrixok engedélyezéséhez frissítse a **Storage-fiókot**.
 1. Válassza a **Mentés** lehetőséget.
 
    ![Vendégszintű monitorozás engedélyezése](./media/create-vm/vm-certification-issues-solutions-1.png)
@@ -81,6 +81,45 @@ A kiépítési problémák a következő meghibásodási helyzetekben lehetnek:
 > A virtuális gépek általánosításával kapcsolatos további információkért lásd:
 > - [Linux-dokumentáció](azure-vm-create-using-approved-base.md#generalize-the-image)
 > - [Windows-dokumentáció](../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep)
+
+
+## <a name="vhd-specifications"></a>VHD-specifikációk
+
+### <a name="conectix-cookie-and-other-vhd-specifications"></a>Conectix cookie-k és egyéb VHD-specifikációk
+A "conectix" karakterlánc a VHD-specifikáció részét képezi, és a fájl létrehozóját azonosító, az alábbi VHD-láblécben 8 bájtos "cookie"-ként van definiálva. A Microsoft által létrehozott összes vhd-fájl rendelkezik ezzel a cookie-val. 
+
+A VHD-formázott Blobok 512 bájtos lábléctel rendelkeznek; Ez a VHD-lábléc formátuma:
+
+|Merevlemez láblécének mezői|Méret (bájt)|
+|---|---|
+Cookie|8
+Funkciók|4
+Fájlformátum verziója|4
+Adateltolás|8
+Időbélyegző|4
+Létrehozó alkalmazás|4
+Létrehozó verziója|4
+Létrehozó gazdagép operációs rendszere|4
+Eredeti méret|8
+Aktuális méret|8
+Lemez geometriája|4
+Lemez típusa|4
+Ellenőrzőösszeg|4
+Egyedi azonosító|16
+Mentett állapot|1
+Fenntartva|427
+
+
+### <a name="vhd-specifications"></a>VHD-specifikációk
+A zökkenőmentes közzétételi élmény biztosításához győződjön meg arról, hogy a **VHD megfelel a következő feltételeknek:**
+* A cookie-nak tartalmaznia kell a "conectix" karakterláncot.
+* A lemez típusát rögzíteni kell
+* A VHD virtuális mérete legalább 20 MB
+* A VHD igazítása (azaz a virtuális méretnek 1 MB-nál többnek kell lennie)
+* A VHD-blob hossza = virtuális méret + VHD-lábléc hossza (512)
+
+A VHD-specifikáció innen tölthető le [.](https://www.microsoft.com/download/details.aspx?id=23850)
+
 
 ## <a name="software-compliance-for-windows"></a>Windows rendszerhez készült szoftverek megfelelősége
 
@@ -534,7 +573,7 @@ Az ajánlat újbóli közzétételéhez folytassa a következő szakasszal.
 
 A közzétételi folyamat befejezéséhez tekintse meg az [ajánlatok áttekintése és közzététele](review-publish-offer.md)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Virtuálisgép-ajánlat tulajdonságainak konfigurálása](azure-vm-create-properties.md)
 - [Aktív Piactéri előnyök](partner-center-portal/marketplace-rewards.md)

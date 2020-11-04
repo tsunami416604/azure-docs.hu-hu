@@ -3,15 +3,16 @@ title: Gyakori kérdések a Gremlin API-ról Azure Cosmos DB
 description: Válaszok a Gremlin API-val kapcsolatos gyakori kérdésekre Azure Cosmos DB
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 8f9e4211b05503f70987b9e476d9a55510bbd520
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6840b2188f3d7e7524c4c98d7e1b6d32440e6812
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078322"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339359"
 ---
 # <a name="frequently-asked-questions-about-the-gremlin-api-in-azure-cosmos-db"></a>Gyakori kérdések a Gremlin API-ról Azure Cosmos DB
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -145,7 +146,7 @@ A Gremlin-kapcsolat egy WebSocket-kapcsolaton keresztül történik. Bár a WebS
 
 A Azure Cosmos DB Gremlin API még nem támogatja a Fluent API-hívásokat. A Fluent API-hívások olyan belső formázási funkciót igényelnek, amely a Azure Cosmos DB Gremlin API által jelenleg nem támogatott bytecode-támogatás. Ugyanezen ok miatt a legújabb Gremlin-JavaScript illesztőprogram is jelenleg nem támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Cosmos DB Gremlin-támogatás](gremlin-support.md)
 * Azure Cosmos DB Graph-adatbázis létrehozása, lekérdezése és bejárása a [Gremlin-konzol](create-graph-gremlin-console.md) használatával

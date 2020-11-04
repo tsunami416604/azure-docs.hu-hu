@@ -1,5 +1,5 @@
 ---
-title: Az alkalmazás közzététele az Azure AD App Galleryben
+title: Az alkalmazás közzététele a Azure Active Directory app Galleryben
 description: Megtudhatja, hogyan listázhat egy olyan alkalmazást, amely támogatja az egyszeri bejelentkezést a Azure Active Directory-alkalmazás galériájában.
 services: active-directory
 author: kenwith
@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/19/2020
+ms.date: 11/03/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5ade98e04853ae8293f762f237b3b3154c876f7e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d6df94cca46d82c3e066779cd28584c84f12fbce
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275715"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339434"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Az alkalmazás közzététele az Azure AD App Galleryben
 
@@ -60,11 +60,28 @@ Az alkalmazás Azure AD-katalógusban való közzétételének lépései a köve
 5. Küldje el az alkalmazást.
 6. Csatlakozzon a Microsoft partner Networkhöz.
 
+## <a name="what-is-the-azure-ad-application-gallery"></a>Mi az Azure AD Application Gallery?
+
+- Az ügyfelek megtalálják a lehető legjobb egyszeri bejelentkezési élményt.
+- Az alkalmazás konfigurálása egyszerű és minimális.
+- A gyors keresés megkeresi az alkalmazást a galériában.
+- Az ingyenes, alapszintű és prémium szintű Azure AD-ügyfelek használhatják ezt az integrációt.
+- A kölcsönös ügyfelek részletes konfigurációs oktatóanyagot kapnak.
+- Azok a felhasználók, akik a rendszert használják a tartományok közötti Identitáskezelés ([scim](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) számára, használhatják a kiépítés használatát ugyanahhoz az alkalmazáshoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Állandó fiókra van szükség legalább két regisztrált felhasználó teszteléséhez.
 
+- Összevont alkalmazások esetében (Open ID és SAML/WS-Fed) az alkalmazásnak támogatnia kell az Azure AD-katalógusban való ismerkedéshez szükséges szoftveres (SaaS) modellt. A nagyvállalati katalógus alkalmazásainak több ügyfél-konfigurációt kell támogatnia, és nem adott ügyfelet.
+- A nyitott AZONOSÍTÓk összekapcsolásához az alkalmazásnak több-Bérlőnek kell lennie, és az [Azure ad-beli engedélyezési keretrendszert](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) megfelelően kell megvalósítani az alkalmazáshoz. A felhasználó elküldheti a bejelentkezési kérést egy közös végpontnak, így bármely ügyfél beleegyezik az alkalmazásba. A felhasználó hozzáférését a bérlő azonosítója és a tokenben kapott felhasználó egyszerű felhasználóneve alapján szabályozhatja.
+- Az SAML 2.0/WS-fed esetében az alkalmazásnak képesnek kell lennie az SAML/WS-fed SSO-integráció SP-vagy IDENTITÁSSZOLGÁLTATÓ módban történő elvégzésére. Győződjön meg arról, hogy ez a funkció megfelelően működik a kérelem elküldése előtt.
+- Az egyszeri jelszavas bejelentkezéshez győződjön meg arról, hogy az alkalmazás támogatja az űrlapos hitelesítést, hogy a jelszó-tárolót úgy lehessen elvégezni, hogy az egyszeri bejelentkezés a várt módon működjön.
+- Állandó fiókra van szükség legalább két regisztrált felhasználó teszteléséhez.
+
+**Hogyan szerezhet be Azure AD-t a fejlesztőknek?**
+
+A prémium szintű Azure AD-funkciókkal ingyenes tesztelési fiókot vehet igénybe – a 90 napos ingyenes és a bővíthető, ha a fejlesztői munkát végzik: https://docs.microsoft.com/office/developer-program/office-365-developer-program
 
 ## <a name="step-1---choose-the-right-single-sign-on-standard-for-your-app"></a>1. lépés – az alkalmazás megfelelő egyszeri bejelentkezéses szabványának kiválasztása
 
@@ -159,9 +176,9 @@ Alternatív megoldásként az Azure AD-bérlő minden Microsoft 365-előfizetés
 
 Ha bérlője van, engedélyeznie kell és tesztelni kell az egyszeri bejelentkezéses hozzáférést. 
 
-**OIDC vagy esküt használó alkalmazások**esetén [regisztrálja alkalmazását](quickstart-register-app.md) több-bérlős alkalmazásként. A támogatott fióktípus területen válassza ki a szervezeti címtár és a személyes Microsoft-fiókok lehetőséget.
+**OIDC vagy esküt használó alkalmazások** esetén [regisztrálja alkalmazását](quickstart-register-app.md) több-bérlős alkalmazásként. A támogatott fióktípus területen válassza ki a szervezeti címtár és a személyes Microsoft-fiókok lehetőséget.
 
-**Az SAML-és a WS-fed-alapú alkalmazások esetében**az [SAML-alapú egyszeri bejelentkezéses](../manage-apps/configure-saml-single-sign-on.md) alkalmazásokat az Azure ad általános SAML-sablonjának használatával konfigurálhatja.
+**Az SAML-és a WS-fed-alapú alkalmazások esetében** az [SAML-alapú egyszeri bejelentkezéses](../manage-apps/configure-saml-single-sign-on.md) alkalmazásokat az Azure ad általános SAML-sablonjának használatával konfigurálhatja.
 
 Ha szükséges, [egyetlen bérlős alkalmazást is át lehet alakítani több-bérlőre](howto-convert-app-to-be-multi-tenant.md) .
 
@@ -202,7 +219,7 @@ Amikor első alkalommal próbál bejelentkezni a portálra, a két képernyő eg
 
 Ha a "nem működött" üzenet jelenik meg, akkor kapcsolatba kell lépnie az [Azure ad SSO integrációs csapatával](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Adja meg a kérelem elküldéséhez használni kívánt e-mail-fiókot. Egy üzleti e-mail-cím, például `name@yourbusiness.com` előnyben részesített. Az Azure AD csapata felveszi a fiókot a Microsoft Application Network portálon.
 
-Ha megjelenik a "hozzáférés kérése" oldal, töltse ki az üzleti indoklást, és válassza a **hozzáférés kérése**lehetőséget.
+Ha megjelenik a "hozzáférés kérése" oldal, töltse ki az üzleti indoklást, és válassza a **hozzáférés kérése** lehetőséget.
 
 A fiók hozzáadása után bejelentkezhet a Microsoft Application Network portálra, és elküldheti a kérést, ha a kezdőlapon a **küldési kérelem (ISV)** csempét választja.
 
@@ -236,7 +253,7 @@ Ha az OpenID Connect használatával szeretné felvenni az alkalmazást a katal�
 
 ![OpenID Connect-alkalmazás listázása a katalógusban](./media/howto-app-gallery-listing/openid.png)
 
-Ha az **saml 2,0** vagy a **ws-fed**használatával szeretné felvenni az alkalmazást a katalógusba, válassza az **SAML 2.0/ws-fed** lehetőséget, amint az látható.
+Ha az **saml 2,0** vagy a **ws-fed** használatával szeretné felvenni az alkalmazást a katalógusba, válassza az **SAML 2.0/ws-fed** lehetőséget, amint az látható.
 
 ![SAML 2,0-vagy WS-Fed-alkalmazás listázása a katalógusban](./media/howto-app-gallery-listing/saml.png)
 
@@ -256,6 +273,16 @@ A [Microsoft Application Network portálon](https://microsoft.sharepoint.com/tea
 
 > [!NOTE]
 > Ha problémák merülnek fel a hozzáféréssel kapcsolatban, tekintse át az előző szakaszt a fiók létrehozásáról. Ha ez nem működik, lépjen kapcsolatba az [Azure ad SSO integrációs csapatával](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+
+### <a name="list-requests-by-customers"></a>Ügyfelek által küldött kérések listázása
+
+Az ügyfelek az alkalmazások **igénylésére vonatkozó** kérelmet küldhetnek az  >  **új kérés beküldéséhez**.
+
+![Az ügyfél által kért alkalmazások csempe megjelenítése](./media/howto-app-gallery-listing/customer-submit-request.png)
+
+Az ügyfél által kért alkalmazások folyamata.
+
+![Az ügyfél által kért alkalmazások folyamatát jeleníti meg](./media/howto-app-gallery-listing/customer-request-2.png)
 
 
 ### <a name="timelines"></a>Idősorok
@@ -277,6 +304,6 @@ Bármilyen eszkaláció esetén küldjön e-mailt az [Azure ad SSO integrációs
 A Microsoft Partner Network azonnali hozzáférést biztosít az exkluzív erőforrásokhoz, programokhoz, eszközökhöz és kapcsolatokhoz. A hálózathoz való csatlakozáshoz és a piacra jutási terv létrehozásához tekintse meg a [kereskedelmi ügyfelek elérhetőségét](https://partner.microsoft.com/explore/commercial#gtm)ismertető témakört.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 * [Hitelesítési forgatókönyvek az Azure AD-hez](authentication-flows-app-scenarios.md)

@@ -2,17 +2,18 @@
 title: Migrálás a CouchBase-ből Azure Cosmos DB SQL API-ba
 description: Részletes útmutató a CouchBase-ről Azure Cosmos DB SQL API-ra való áttelepítéshez
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: 0f286b5586a0d74afed0bb185179454bb1efff95
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 73d6fe0233eccea9ebf1d82beb509c56fb45f4da
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097549"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339512"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migrálás a CouchBase-ből Azure Cosmos DB SQL API-ba
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -312,7 +313,7 @@ Ez egy egyszerű számítási feladat, amelyben lekérdezések helyett keresési
 
 1. Ügyeljen arra, hogy a "/ID" elsődleges kulcs legyen, amely biztosítja, hogy a keresési művelet közvetlenül az adott partíción legyen végrehajtva. Hozzon létre egy gyűjteményt, és válassza a "/ID" lehetőséget partíciós kulcsként.
 
-1. Az indexelést teljesen ki kell kapcsolni. Mivel keresési műveleteket hajt végre, nincs olyan pont, amely az indexelési terhelést hordozza. Az indexelés kikapcsolásához jelentkezzen be Azure Portal, goto Azure Cosmos DB-fiókkal. Nyissa meg a **adatkezelőt** , válassza ki az **adatbázist** és a **tárolót** . Nyissa meg a **méretezési & beállítások** lapot, és válassza ki az  **indexelési házirendet** . Az indexelési szabályzat jelenleg a következőhöz hasonlít:
+1. Az indexelést teljesen ki kell kapcsolni. Mivel keresési műveleteket hajt végre, nincs olyan pont, amely az indexelési terhelést hordozza. Az indexelés kikapcsolásához jelentkezzen be Azure Portal, goto Azure Cosmos DB-fiókkal. Nyissa meg a **adatkezelőt** , válassza ki az **adatbázist** és a **tárolót**. Nyissa meg a **méretezési & beállítások** lapot, és válassza ki az  **indexelési házirendet**. Az indexelési szabályzat jelenleg a következőhöz hasonlít:
     
    ```json
    {

@@ -1,20 +1,20 @@
 ---
-title: Az ID Broker (előzetes verzió) használata a hitelesítő adatok kezeléséhez – Azure HDInsight
+title: Azure HDInsight ID Broker (HIB)
 description: Ismerje meg az Azure HDInsight ID Broker szolgáltatást a tartományhoz csatlakoztatott Apache Hadoop fürtök hitelesítésének egyszerűsítése érdekében.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
-ms.date: 09/23/2020
-ms.openlocfilehash: 6617c778c0b79a55058eafb40fd9b49b627819ea
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 11/03/2020
+ms.openlocfilehash: df4faf367951402914abb03285498e0da6f3105f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043260"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337676"
 ---
-# <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID Broker (előzetes verzió)
+# <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight ID Broker (HIB)
 
 Ez a cikk az Azure HDInsight ID Broker szolgáltatás beállítását és használatát ismerteti. Ezzel a funkcióval modern OAuth-hitelesítést érhet el az Apache Ambari, miközben a többtényezős hitelesítés kényszerítése nélkül, anélkül, hogy örökölt jelszó-kivonatokat kellene Azure Active Directory Domain Services (Azure AD DS).
 
@@ -45,7 +45,7 @@ A rendszer továbbra is sok olyan örökölt alkalmazást támogat, amelyek csak
 
 Az alábbi ábrán az összevont felhasználók alapszintű hitelesítési folyamata látható. Először az átjáró megkísérli végrehajtani a hitelesítést a [ROPC flow](../../active-directory/develop/v2-oauth-ropc.md)használatával. Ha az Azure AD-ben nincsenek szinkronizálva a jelszó-kivonatok, az AD FS végpont felfedéséhez, és a AD FS végponthoz való hozzáféréssel végrehajtja a hitelesítést.
 
-:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="A HDInsight ID Broker hitelesítési folyamatát ábrázoló diagram.":::
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Az alapszintű hitelesítéssel rendelkező architektúrát ábrázoló diagram.":::
 
 
 ## <a name="enable-hdinsight-id-broker"></a>HDInsight-azonosító-átvitelszervező engedélyezése
@@ -138,7 +138,7 @@ curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application
 
 A Beeline és a Livy használata esetén az [itt](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/HIB/HIBSamples) megadott példákkal is követheti az ügyfelet a OAuth használatára és a fürthöz való kapcsolódásra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [HDInsight-fürt konfigurálása Enterprise Security Package használatával Azure Active Directory Domain Services](apache-domain-joined-configure-using-azure-adds.md)
 * [Azure Active Directory-felhasználók HDInsight-fürttel való szinkronizálása](../hdinsight-sync-aad-users-to-cluster.md)

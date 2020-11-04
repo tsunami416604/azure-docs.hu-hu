@@ -2,14 +2,14 @@
 title: Azure Service Bus hozzáférés-vezérlés közös hozzáférési aláírásokkal
 description: A Service Bus hozzáférés-vezérlésének áttekintése a közös hozzáférési aláírások használatával – áttekintés, a SAS-engedélyezéssel kapcsolatos részletek Azure Service Bus.
 ms.topic: article
-ms.date: 07/30/2020
+ms.date: 11/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fb90b2ae290752753b58b5e96c6c8a8b23f4c168
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f71320613682f7d4b9f3b706845e68f581b3dc10
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012075"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339410"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus hozzáférés-vezérlés közös hozzáférési aláírásokkal
 
@@ -20,7 +20,7 @@ Az SAS az engedélyezési szabályokon alapuló Service Bushoz fér hozzá. Ezek
 > [!NOTE]
 > Azure Service Bus támogatja a Service Bus névterek és az entitások hozzáférésének engedélyezését Azure Active Directory (Azure AD) használatával. Az Azure AD által visszaadott OAuth 2,0 tokent használó felhasználók vagy alkalmazások engedélyezése kiváló biztonságot és egyszerű használatot biztosít a közös hozzáférésű aláírások (SAS) számára. Az Azure AD-ben nincs szükség a jogkivonatok tárolására a kódban, és kockázatos biztonsági réseket.
 >
-> A Microsoft azt javasolja, hogy ha lehetséges, az Azure AD-t használja a Azure Service Bus alkalmazásaihoz. További információkért tekintse át a következő cikkeket:
+> A Microsoft azt javasolja, hogy ha lehetséges, az Azure AD-t használja a Azure Service Bus alkalmazásaihoz. További információkat az következő cikkekben talál:
 > - [Azure Active Directory használatával hitelesítheti és engedélyezheti az alkalmazást Azure Service Bus entitások eléréséhez](authenticate-application.md).
 > - [Felügyelt identitás hitelesítése Azure Active Directory használatával Azure Service Bus erőforrások eléréséhez](service-bus-managed-service-identity.md)
 
@@ -36,7 +36,7 @@ A [közös hozzáférésű aláírási](/dotnet/api/microsoft.servicebus.shareda
 
 Minden Service Bus névtérnek és minden Service Bus entitásnak van egy közös hozzáférési engedélyezési szabályzata, amely szabályokból áll. A névtér szintjén lévő szabályzat a névtéren belüli összes entitásra vonatkozik, függetlenül az egyes házirend-konfigurációtól.
 
-Minden egyes engedélyezési házirend-szabályhoz három információt kell eldöntenie: **név**, **hatókör**és **jogosultságok**. A **név** csak az; a hatókörön belüli egyedi név. A hatókör elég egyszerű: Ez a kérdéses erőforrás URI-ja. Service Bus névtér esetében a hatókör a teljes tartománynév (FQDN), például: `https://<yournamespace>.servicebus.windows.net/` .
+Minden egyes engedélyezési házirend-szabályhoz három információt kell eldöntenie: **név** , **hatókör** és **jogosultságok**. A **név** csak az; a hatókörön belüli egyedi név. A hatókör elég egyszerű: Ez a kérdéses erőforrás URI-ja. Service Bus névtér esetében a hatókör a teljes tartománynév (FQDN), például: `https://<yournamespace>.servicebus.windows.net/` .
 
 A házirend-szabály által biztosított jogok a következőket foglalhatják magukban:
 
@@ -48,9 +48,23 @@ A "kezelés" jogosultság magában foglalja a "Send" és a "Receive" jogosultsá
 
 A névtér vagy az entitások házirendje legfeljebb 12 közös hozzáférési engedélyezési szabályt tud tárolni, amelyek három szabálykészlet számára biztosítanak helyet, amelyek mindegyike rendelkezik az alapszintű jogokkal, valamint a Küldés és a figyelés kombinációjával. Ez a korlát azt hangsúlyozza, hogy a SAS-szabályzat tárolója nem a felhasználó-vagy szolgáltatásfiók-tároló. Ha az alkalmazásnak felhasználói vagy szolgáltatásbeli identitások alapján kell hozzáférést biztosítania Service Bushoz, akkor olyan biztonsági jogkivonat-szolgáltatást kell létrehoznia, amely az SAS-tokeneket a hitelesítés és a hozzáférés-ellenőrzések után bocsátja ki.
 
-Az engedélyezési szabályokhoz egy *elsődleges kulcs* és egy *másodlagos kulcs*van rendelve. Ezek kriptográfiai szempontból erős kulcsok. Ne veszítse el őket, vagy ne szivárogjon rájuk – mindig a [Azure Portal][Azure portal]lesznek elérhetők. A generált kulcsok bármelyikét használhatja, és bármikor újragenerálhatja őket. Ha újra létrehoz vagy módosít egy kulcsot a házirendben, az adott kulcson alapuló, korábban kiadott jogkivonatok azonnal érvénytelenné válnak. Az ilyen jogkivonatok alapján létrehozott folyamatban lévő kapcsolatok azonban továbbra is működni fognak, amíg a jogkivonat le nem jár.
+Az engedélyezési szabályokhoz egy *elsődleges kulcs* és egy *másodlagos kulcs* van rendelve. Ezek kriptográfiai szempontból erős kulcsok. Ne veszítse el őket, vagy ne szivárogjon rájuk – mindig a [Azure Portal][Azure portal]lesznek elérhetők. A generált kulcsok bármelyikét használhatja, és bármikor újragenerálhatja őket. Ha újra létrehoz vagy módosít egy kulcsot a házirendben, az adott kulcson alapuló, korábban kiadott jogkivonatok azonnal érvénytelenné válnak. Az ilyen jogkivonatok alapján létrehozott folyamatban lévő kapcsolatok azonban továbbra is működni fognak, amíg a jogkivonat le nem jár.
 
 Service Bus névtér létrehozásakor a rendszer automatikusan létrehoz egy **RootManageSharedAccessKey** nevű házirend-szabályt a névtérhez. Ez a szabályzat a teljes névtérre vonatkozó engedélyeket kezeli. Javasoljuk, hogy ezt a szabályt rendszergazdai **főfiókként** kezelje, és ne használja az alkalmazásban. A portálon, a PowerShell vagy az Azure CLI használatával további szabályzatokat hozhat létre a névtér **configure (Konfigurálás** ) lapján.
+
+## <a name="best-practices-when-using-sas"></a>A SAS használatával kapcsolatos ajánlott eljárások
+Ha közös hozzáférési aláírásokat használ az alkalmazásokban, a következő két lehetséges kockázattal kell tisztában lennie:
+
+- Ha egy SAS kiszivárgott, azt bárki felhasználhatja, aki beolvassa azt, ami potenciálisan veszélyeztetheti a Event Hubs erőforrásait.
+- Ha egy ügyfélalkalmazás számára megadott SAS lejár, és az alkalmazás nem tud beolvasni egy új SAS-t a szolgáltatásból, akkor az alkalmazás funkciói akadályozva lehetnek.
+
+A közös hozzáférési aláírások használatára vonatkozó alábbi javaslatok segíthetnek a kockázatok enyhítésében:
+
+- **Ha szükséges, az ügyfelek automatikusan megújítják az SAS** -t, ha szükséges: az ügyfeleknek a lejárat előtt is meg kell újítaniuk a sas-t, hogy az újrapróbálkozások ideje ne legyen elérhető. Ha a SAS-t kis számú azonnali, rövid életű művelethez kívánja használni, amelyeket a lejárati időszakon belül el kell végezni, akkor előfordulhat, hogy az SAS-t nem kell megújítani. Ha azonban olyan ügyfele van, amely az SAS-n keresztül rutinul kéri a kérelmeket, akkor a lejárati lehetőség a lejátszásra kerül. A legfontosabb szempont, hogy az SAS-nek rövid életűnek kell lennie (ahogy azt korábban már említettük) annak biztosításához, hogy az ügyfél kellő időben megújítsa a megújítást (a sikeres megújítás előtt lejáró SAS miatti megszakítás elkerülése érdekében).
+- Ügyeljen **a sas indítási időpontjára** : Ha **most** beállítja az SAS kezdési idejét, majd az óra eldöntése miatt (a különböző gépektől függően a jelenlegi idő eltérése), a hibák időnként megfigyelhetők az első pár percben. Általában úgy állítsa be a kezdési időpontot, hogy legalább 15 perccel korábbi legyen. Vagy ne állítsa be egyáltalán, hogy minden esetben azonnal érvényes lesz. Ugyanez általában a lejárati időre is vonatkozik. Ne feledje, hogy akár 15 perces órajelet is megvizsgálhat a kérések bármelyik irányában. 
+- **Legyen egyedi az elérni kívánt erőforrással** : biztonsági szempontból ajánlott a minimálisan szükséges jogosultságokat biztosítani a felhasználónak. Ha egy felhasználónak csak olvasási hozzáférésre van szüksége egyetlen entitáshoz, akkor olvasási hozzáféréssel kell rendelkeznie az adott entitáshoz, és nem kell olvasási/írási/törlési hozzáférést adni az összes entitáshoz. Emellett segít csökkenteni a károkat abban az esetben, ha egy SAS biztonsága sérül, mert az SAS a támadó kezében kevesebb árammal rendelkezik.
+- **Ne mindig az SAS-t használja** : időnként az adott művelethez kapcsolódó kockázatok meghaladják az SAS előnyeit Event Hubs. Ilyen műveletekhez hozzon létre egy olyan középszintű szolgáltatást, amely az üzleti szabályok érvényesítése, hitelesítése és naplózása után a Event Hubs ír.
+- **Mindig https használata** : sas létrehozása vagy terjesztése mindig HTTPS használatával. Ha a SAS átadása HTTP-n keresztül történik, és a rendszer elvégzi a lehallgatást, az ember által a középső csatolást végző támadó elolvashatja az SAS-t, majd ugyanúgy használhatja azt, mint amennyire a kívánt felhasználó rendelkezhet, esetleg veszélyezteti a bizalmas adatokat, vagy engedélyezheti az adatsérülést a rosszindulatú felhasználó számára.
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>A közös hozzáférésű aláírások hitelesítésének konfigurációja
 
@@ -58,7 +72,7 @@ A [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sha
 
 ![SAS](./media/service-bus-sas/service-bus-namespace.png)
 
-Ebben az ábrán a *manageRuleNS*, a *SendRuleNS*és a *listenRuleNS* engedélyezési szabályok mind a "Q1", mind a "T1" témakörre érvényesek, míg a *listenRuleQ* és a *sendRuleQ* csak a Q1-es és a sendRuleT-re vonatkozik, és a *sendRuleT* csak a (
+Ebben az ábrán a *manageRuleNS* , a *SendRuleNS* és a *listenRuleNS* engedélyezési szabályok mind a "Q1", mind a "T1" témakörre érvényesek, míg a *listenRuleQ* és a *sendRuleQ* csak a Q1-es és a sendRuleT-re vonatkozik, és a *sendRuleT* csak a (
 
 ## <a name="generate-a-shared-access-signature-token"></a>Közös hozzáférésű aláírási jogkivonat létrehozása
 
@@ -73,7 +87,7 @@ SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-e
 * **`sr`** -Az elérni kívánt erőforrás URI-ja.
 * **`sig`** Aláírás.
 
-Az az `signature-string` SHA-256 kivonat, amely az erőforrás URI-ja alapján**scope** lett kiszámítva (az előző szakaszban leírtak szerint), valamint a jogkivonat lejárati időpontjának karakterláncos ábrázolása, az LF elválasztva.
+Az az `signature-string` SHA-256 kivonat, amely az erőforrás URI-ja alapján **scope** lett kiszámítva (az előző szakaszban leírtak szerint), valamint a jogkivonat lejárati időpontjának karakterláncos ábrázolása, az LF elválasztva.
 
 A kivonatoló számítás a következő pszeudo-kódhoz hasonlóan néz ki, és egy 256 bites/32 bájtos kivonatoló értéket ad vissza.
 
@@ -85,7 +99,7 @@ A jogkivonat a nem kivonatos értékeket tartalmazza, így a címzett újra kisz
 
 Az erőforrás URI-ja annak a Service Bus-erőforrásnak a teljes URI azonosítója, amelyhez hozzáférést igényelnek. Például: `http://<namespace>.servicebus.windows.net/<entityPath>` vagy `sb://<namespace>.servicebus.windows.net/<entityPath>` ;, azaz, `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3` . 
 
-**Az URI-nak [százalékos kódolással](/dotnet/api/system.web.httputility.urlencode?view=netcore-3.1)kell rendelkeznie.**
+**Az URI-nak [százalékos kódolással](/dotnet/api/system.web.httputility.urlencode)kell rendelkeznie.**
 
 Az aláíráshoz használt megosztott hozzáférés-engedélyezési szabályt az URI által megadott entitáson vagy annak egyik hierarchikus szülője szerint kell konfigurálni. Például vagy az `http://contoso.servicebus.windows.net/contosoTopics/T1` `http://contoso.servicebus.windows.net` előző példában.
 
@@ -160,7 +174,7 @@ sendClient.Send(helloMessage);
 
 A jogkivonat-szolgáltatót közvetlenül is használhatja a jogkivonatok kiadására a más ügyfelek számára.
 
-A kapcsolati karakterláncok tartalmazhatnak egy szabály nevét (*SharedAccessKeyName*) és a szabály kulcsát (*SharedAccessKey*) vagy egy korábban kiállított tokent (*SharedAccessSignature*). Ha ezek szerepelnek a kapcsolati sztringet fogadó vagy előállító metódusnak átadott kapcsolati sztringben, a rendszer automatikusan létrehozza és feltölti az SAS-jogkivonat-szolgáltatót.
+A kapcsolati karakterláncok tartalmazhatnak egy szabály nevét ( *SharedAccessKeyName* ) és a szabály kulcsát ( *SharedAccessKey* ) vagy egy korábban kiállított tokent ( *SharedAccessSignature* ). Ha ezek szerepelnek a kapcsolati sztringet fogadó vagy előállító metódusnak átadott kapcsolati sztringben, a rendszer automatikusan létrehozza és feltölti az SAS-jogkivonat-szolgáltatót.
 
 Vegye figyelembe, hogy az SAS-hitelesítés Service Bus-továbbítókkal való használatához a Service Bus névtérben konfigurált SAS-kulcsokat is használhat. Ha explicit módon létrehoz egy továbbítót a névtérben ([NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) egy [RelayDescription](/dotnet/api/microsoft.servicebus.messaging.relaydescription)), akkor csak az adott továbbítóra vonatkozóan állíthatja be a sas-szabályokat. Az SAS-engedélyezés Service Bus-előfizetésekkel való használatához Service Bus névtérben vagy témakörben konfigurált SAS-kulcsokat használhat.
 
@@ -299,7 +313,7 @@ A következő táblázat a Service Bus erőforrásokon végzett különféle mű
 | Szabály törlése |Kezelés |.. /myTopic/Subscriptions/mySubscription |
 | Szabályok számbavétele |Kezelés vagy figyelés |.. /myTopic/Subscriptions/mySubscription/Rules
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Service Bus üzenetkezelésről az alábbi témakörökben találhat további információkat.
 

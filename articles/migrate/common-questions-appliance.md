@@ -3,12 +3,12 @@ title: Azure Migrate készülék – gyakori kérdések
 description: Választ kaphat a Azure Migrate berendezéssel kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: e0fd170859de2d4a9d38fdba0fff0575921c6d32
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 7be6260a7d3eb25ce2854f6949554e2c66019980
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314781"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337591"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate berendezés: gyakori kérdések
 
@@ -42,12 +42,13 @@ A berendezés a következőképpen telepíthető:
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Hogyan kapcsolódik a készülék az Azure-hoz?
 
-A készülék az interneten keresztül vagy az Azure ExpressRoute segítségével csatlakozhat. Győződjön meg arról, hogy ezek az [URL-címek](./migrate-appliance.md#url-access) jóváhagyva lettek, hogy a készülék csatlakozhasson az Azure-hoz.
+A készülék az interneten keresztül vagy az Azure ExpressRoute segítségével csatlakozhat. 
 
-- Ha az Azure ExpressRoute-t szeretné használni Azure Migrate replikációs forgalomhoz, a Microsoft-társításhoz vagy egy meglévő nyilvános társításhoz van szükség (az új ER-létrehozásokhoz elavult a nyilvános társrendszer).
-- Az Azure ExpressRoute-en keresztüli replikáció az (only) Private peering engedélyezése esetén nem támogatott.
+- Győződjön meg arról, hogy a készülék képes csatlakozni ezekhez az [Azure URL-címekhez](./migrate-appliance.md#url-access). 
+- A ExpressRoute-et Microsoft-partnerekkel is használhatja.  A nyilvános társítás elavult, és nem érhető el az új ExpressRoute-áramkörökhöz.
+- A privát társ-kezelés csak nem támogatott.
 
-A replikálási forgalomhoz az ajánlott útválasztási tartomány a Microsoft társközi szolgáltatással konfigurált Azure-ExpressRoute.
+
 
 ## <a name="does-appliance-analysis-affect-performance"></a>Befolyásolja a berendezések elemzése a teljesítményt?
 
@@ -65,9 +66,9 @@ A készüléknek hozzá kell férnie az Azure URL-címeihez. [Tekintse át](migr
 
 A következő cikkekben talál információt arról, hogy az Azure Migrate készülék milyen adatokat gyűjt a virtuális gépeken:
 
-- **VMWare virtuális gép**: [tekintse át](migrate-appliance.md#collected-data---vmware) az összegyűjtött adatokat.
-- **Hyper-V virtuális gép**: [tekintse át](migrate-appliance.md#collected-data---hyper-v) az összegyűjtött adatokat.
-- **Fizikai vagy virtuális kiszolgálók**: az összegyűjtött adatok[áttekintése](migrate-appliance.md#collected-data---physical) .
+- **VMWare virtuális gép** : [tekintse át](migrate-appliance.md#collected-data---vmware) az összegyűjtött adatokat.
+- **Hyper-V virtuális gép** : [tekintse át](migrate-appliance.md#collected-data---hyper-v) az összegyűjtött adatokat.
+- **Fizikai vagy virtuális kiszolgálók** : az összegyűjtött adatok [áttekintése](migrate-appliance.md#collected-data---physical) .
 
 ## <a name="how-is-data-stored"></a>Hogyan történik az adatok tárolása?
 
@@ -147,6 +148,6 @@ Ezek az automatikus frissítések csak a készülék és a berendezés ügynöke
 
 Igen. A portálon nyissa meg az Azure Migrate: Server Assessment vagy Azure Migrate: Server áttelepítési eszköz **ügynök állapota** lapját. Itt megtekintheti a kapcsolat állapotát az Azure és a készüléken található felderítési és értékelési ügynökök között.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Olvassa el a [Azure Migrate áttekintést](migrate-services-overview.md).

@@ -3,15 +3,16 @@ title: SQL-állandók a Azure Cosmos DBban
 description: Ismerje meg, hogyan használhatók az SQL-lekérdezési állandók a Azure Cosmos DBban egy adott adatérték ábrázolásához
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: ebc1f66e68d4cf37546e7d33a9b723385330395c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b0973dca980b65b85ac66cc1b3c9ed45f0f9c779
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100864"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339202"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL-lekérdezés állandói  
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,7 +25,7 @@ ms.locfileid: "93100864"
 |-|-|  
 |**Nem definiált**|Egyetlen érték: nem **definiált**|  
 |**Null**|Egyetlen érték: **Null**|  
-|**Logikai**|Értékek: **false** , **true** .|  
+|**Logikai**|Értékek: **false** , **true**.|  
 |**Szám**|Egy kétszeres pontosságú lebegőpontos szám, IEEE 754 standard.|  
 |**Sztring**|Nulla vagy több Unicode-karakterből álló sorozatot. A karakterláncokat szimpla vagy idézőjelek közé kell foglalni.|  
 |**Tömb**|Nulla vagy több elemből álló sorozatot. Minden elem bármely skaláris adattípus értéke lehet, kivéve a nem **definiált** értéket.|  
@@ -117,7 +118,7 @@ ms.locfileid: "93100864"
 |\t| tabulátor|U + 0009|  
 |\uXXXX|4 hexadecimális számjegy által definiált Unicode-karakter.|U + XXXX|  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Dokumentumadatok modellezése](modeling-data.md)

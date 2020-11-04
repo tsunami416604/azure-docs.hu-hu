@@ -3,15 +3,16 @@ title: Megismerheti, hogyan kezelhet adatbázisfiókokat az Azure Cosmos DB-ben.
 description: Megtudhatja, hogyan kezelheti Azure Cosmos DB erőforrásait a Azure Portal, a PowerShell, a CLI és a Azure Resource Manager sablonok használatával
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 4977a9ef8af75797f1e1989975688d7904f0c7b1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d8763a794d2fb96d0c464fb1249b9eb400fd23e7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93086448"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339869"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos-fiók kezelése
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -48,7 +49,7 @@ Tekintse meg [Azure Cosmos db fiók létrehozása Azure Resource Manager-sablono
 
 1. A régiók eltávolításához törölje a térképen egy vagy több régiót úgy, hogy a kék hatszögeket jelöli a pipa jelekkel. Vagy válassza a 🗑 jobb oldalon található régió melletti "szemétkosár" () ikont.
 
-1. A módosítások mentéséhez kattintson **az OK gombra** .
+1. A módosítások mentéséhez kattintson **az OK gombra**.
 
    :::image type="content" source="./media/how-to-manage-database-account/add-region.png" alt-text="Régiók hozzáadása vagy eltávolítása menü":::
 
@@ -70,7 +71,7 @@ További információ: [régiók hozzáadása vagy eltávolítása a PowerShell]
 
 Nyissa meg az **adatreplikálás globálisan** lapot, és válassza az **Engedélyezés** lehetőséget a többrégiós írások engedélyezéséhez. Miután engedélyezte a többrégiós írást, az összes olyan olvasási régió, amelyre jelenleg a fiók tartozik, olvasási és írási régiók lesznek.
 
-:::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="Régiók hozzáadása vagy eltávolítása menü":::
+:::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="Az Azure Cosmos-fiók konfigurálja a többrégiós írások képernyőképét":::
 
 ### <a name="azure-cli"></a><a id="configure-multiple-write-regions-cli"></a>Azure CLI
 
@@ -150,13 +151,13 @@ Az automatikus feladatátvételi beállítás lehetővé teszi, hogy az Azure Co
 
 2. A panel tetején válassza az **automatikus feladatátvétel** lehetőséget.
 
-   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Régiók hozzáadása vagy eltávolítása menü":::
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Adatok globális replikálása menü":::
 
 3. Az **automatikus feladatátvétel** ablaktáblán **Győződjön meg arról** , hogy az **automatikus feladatátvétel engedélyezése** beállítás be értékre van állítva. 
 
 4. Válassza a **Mentés** lehetőséget.
 
-   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Régiók hozzáadása vagy eltávolítása menü":::
+   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Automatikus feladatátvétel menü a portálon":::
 
 ### <a name="azure-cli"></a><a id="enable-automatic-failover-via-cli"></a>Azure CLI
 
@@ -179,7 +180,7 @@ Ha egy Cosmos-fiók automatikus feladatátvételre van konfigurálva, a régiók
 
 2. A panel tetején válassza az **automatikus feladatátvétel** lehetőséget.
 
-   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Régiók hozzáadása vagy eltávolítása menü":::
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Adatok globális replikálása menü":::
 
 3. Az **automatikus feladatátvétel** ablaktáblán **Győződjön meg arról** , hogy az **automatikus feladatátvétel engedélyezése** beállítás be értékre van állítva.
 
@@ -187,7 +188,7 @@ Ha egy Cosmos-fiók automatikus feladatátvételre van konfigurálva, a régiók
 
 5. Válassza a **Mentés** lehetőséget.
 
-   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Régiók hozzáadása vagy eltávolítása menü":::
+   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Automatikus feladatátvétel menü a portálon":::
 
 ### <a name="azure-cli"></a><a id="set-failover-priorities-via-cli"></a>Azure CLI
 
@@ -213,13 +214,13 @@ A manuális feladatátvétel végrehajtásának folyamata magában foglalja a fi
 
 2. A menü tetején válassza a **manuális feladatátvétel** lehetőséget.
 
-   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Régiók hozzáadása vagy eltávolítása menü":::
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Adatok globális replikálása menü":::
 
 3. A **manuális feladatátvétel** menüben válassza ki az új írási régiót. Jelölje be a jelölőnégyzetet, és jelezze, hogy ezt a lehetőséget az írási régió módosításakor adja meg.
 
-4. A feladatátvétel elindításához kattintson **az OK gombra** .
+4. A feladatátvétel elindításához kattintson **az OK gombra**.
 
-   :::image type="content" source="./media/how-to-manage-database-account/manual-failover.png" alt-text="Régiók hozzáadása vagy eltávolítása menü":::
+   :::image type="content" source="./media/how-to-manage-database-account/manual-failover.png" alt-text="Manuális feladatátvétel menü a portálon":::
 
 ### <a name="azure-cli"></a><a id="enable-manual-failover-via-cli"></a>Azure CLI
 
@@ -229,7 +230,7 @@ Lásd: [a manuális feladatátvétel elindítása az Azure CLI-vel](manage-with-
 
 Lásd: [a manuális feladatátvétel elindítása a PowerShell](manage-with-powershell.md#trigger-manual-failover) -lel
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Cosmos-fiók, valamint az adatbázis és a tárolók kezelésével kapcsolatos további információkért és példákért olvassa el a következő cikkeket:
 

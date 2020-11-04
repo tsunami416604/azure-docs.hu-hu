@@ -3,16 +3,17 @@ title: Azure Cosmos-tárolók létrehozása nagyméretű partíciós kulccsal
 description: Megtudhatja, hogyan hozhat létre tárolót Azure Cosmos DB nagyméretű partíciós kulccsal Azure Portal és különböző SDK-k használatával.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/28/2019
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a93bf4fe92cc7b2240a7411b093a7bab5a1a275e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4ad26d63ca06f5a46a4a1f77d329d04896e96c52
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098824"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339295"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Nagyméretű partíciós kulccsal rendelkező tárolók létrehozása
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -79,7 +80,7 @@ A nagyméretű partíciós kulcsokat a következő SDK-k minimális verziói tá
 
 Jelenleg nem használhat nagyméretű partíciós kulccsal rendelkező tárolókat Power BI és Azure Logic Apps. Ezekből az alkalmazásokból nagyméretű partíciós kulcs nélkül is használhat tárolókat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Particionálás az Azure Cosmos DB-ben](partitioning-overview.md)
 * [Az Azure Cosmos DB kérelemegységei](request-units.md)

@@ -3,15 +3,16 @@ title: Skaláris kifejezések a Azure Cosmos DB SQL-lekérdezésekben
 description: Ismerkedjen meg a skaláris kifejezés SQL-szintaxisával Azure Cosmos DB. Ez a cikk azt is ismerteti, hogyan lehet a skaláris kifejezéseket összetett kifejezésekkel egyesíteni a kezelők használatával.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: c40916d975b8acabaa7083cf57259291f09b40a9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 34df2d2f4a2209cca93c3f7ac12dcd203bf4a089
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93082606"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339631"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Skaláris kifejezések a Azure Cosmos DB SQL-lekérdezésekben
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -140,7 +141,7 @@ Az eredmény a következő:
     ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Cosmos DB bemutatása](introduction.md)
 - [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)

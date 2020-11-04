@@ -5,15 +5,16 @@ author: SnehaGunda
 ms.author: sngun
 tags: azure-resource-manager
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 37f5acdb2921b6f2bf4a5ed5a8c435db78e01513
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b97702bb84eb38d185fe97ffcc596e374f28fbe2
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93087366"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339665"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-an-arm-template"></a>Rövid útmutató: Azure Cosmos DB és tároló létrehozása ARM-sablonnal
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -58,13 +59,13 @@ További Azure Cosmos DB-sablonok a gyorsindítási [sablonok](https://azure.mic
 
 2. Válassza ki vagy adja meg a következő értékeket.
 
-   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="Üzembe helyezés az Azure-ban":::
+   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="ARM-sablon, Azure Cosmos DB integráció, portál üzembe helyezése":::
 
     Ha meg van adva, használja az alapértelmezett értékeket az Azure Cosmos-erőforrások létrehozásához.
 
     * **Előfizetés** : válasszon ki egy Azure-előfizetést.
     * **Erőforráscsoport** : válassza az **új létrehozása** lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK** gombra.
-    * **Hely** : válasszon ki egy helyet.  Például: **USA középső régiója** .
+    * **Hely** : válasszon ki egy helyet.  Például: **USA középső régiója**.
     * **Fiók neve** : adja meg az Azure Cosmos-fiók nevét. Globálisan egyedinek kell lennie.
     * **Hely** : adjon meg egy helyet, ahol létre szeretné hozni az Azure Cosmos-fiókot. Az Azure Cosmos-fiók ugyanazon a helyen lehet, mint az erőforráscsoport.
     * **Elsődleges régió** : az Azure Cosmos-fiók elsődleges replika régiója.
@@ -79,7 +80,7 @@ További Azure Cosmos DB-sablonok a gyorsindítási [sablonok](https://azure.mic
 
 3. Válassza a **Beszerzés** lehetőséget. Miután sikeresen telepítette az Azure Cosmos-fiókot, értesítést kap:
 
-   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="Üzembe helyezés az Azure-ban":::
+   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="ARM-sablon, Cosmos DB integráció, portál-értesítés üzembe helyezése":::
 
 Az Azure Portalon helyezhető üzembe a sablon. A Azure Portalon kívül használhatja a Azure PowerShell, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../azure-resource-manager/templates/deploy-powershell.md).
 

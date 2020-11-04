@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 887e76fb1fa3dc630b12862c49689b3fa923b656
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7cc92c8bfb7dd9cb0328820009828ed0dd22e2a1
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795231"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339461"
 ---
 # <a name="certificate-authorities-used-by-azure-active-directory"></a>Azure Active Directory által használt hitelesítésszolgáltatók
 
@@ -31,7 +31,7 @@ A hitelesítésszolgáltatók besorolhatók a legfelső szintű Hitelesítésszo
 
 ## <a name="cas-used-in-azure-public-and-azure-us-government-clouds"></a>Az Azure nyilvános és az USA-beli kormányzati felhőkben használt hitelesítésszolgáltatók
 
-A különböző szolgáltatások különböző gyökér-vagy köztes hitelesítésszolgáltatókat alkalmazhatnak.
+A különböző szolgáltatások különböző gyökér-vagy köztes hitelesítésszolgáltatókat alkalmazhatnak. Ezért előfordulhat, hogy az alább felsorolt összes bejegyzés megadása kötelező.
 
 ### <a name="digicert-global-root-g2"></a>DigiCert globális root G2
 
@@ -78,9 +78,8 @@ A különböző szolgáltatások különböző gyökér-vagy köztes hitelesít�
 | Kiállító és közbenső HITELESÍTÉSSZOLGÁLTATÓ| Sorozatszám| Kiállítás dátuma lejárati dátuma| SHA1 ujjlenyomat| URI |
 | - | - | - | - | - |
 | DigiCert SHA2 biztonságos kiszolgálói HITELESÍTÉSSZOLGÁLTATÓ| 01fda3eb6eca75c 888438b724bcfbc91| Március 8., 2013. március 8., 2023| 1fb86b1168ec743154062 e8c9cc5b171a4b7ccb4| [AIA](http://cacerts.digicert.com/DigiCertSHA2SecureServerCA.crt)<br>[CDP](http://crl3.digicert.com/ssca-sha2-g6.crl)<br>[OCSP](http://ocsp.digicert.com/) |
+| DigiCert SHA2 biztonságos kiszolgálói HITELESÍTÉSSZOLGÁLTATÓ |02742eaa17ca8e21 c717bb1ffcfd0ca0 |Szeptember 22., 2020<br>Szeptember 22., 2030|626d44e704d1ceabe3bf 0d53397464ac8080142c|[AIA](http://cacerts.digicert.com/DigiCertSHA2SecureServerCA-2.crt)<br>[CDP](http://crl3.digicert.com/DigiCertSHA2SecureServerCA.crl)<br>[OCSP](http://ocsp.digicert.com/)|
 
-
- 
 
 ## <a name="cas-used-in-azure-china-21vianet-cloud"></a>Az Azure China 21Vianet-felhőben használt hitelesítésszolgáltatók
 

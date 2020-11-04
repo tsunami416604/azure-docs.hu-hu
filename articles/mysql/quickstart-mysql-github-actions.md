@@ -7,14 +7,14 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: ce045da7d21c2af0dfde5ee896b4f7f343ce6545
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 57e740e6c47d9518c12a49473e103d0abe772618
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541264"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337013"
 ---
-# <a name="use-github-actions-to-connect-to-azure-mysql"></a>A GitHub-műveletek használata az Azure MySQL-hez való kapcsolódáshoz
+# <a name="quickstart-use-github-actions-to-connect-to-azure-mysql"></a>Rövid útmutató: a GitHub-műveletek használata az Azure MySQL-hez való kapcsolódáshoz
 
 Ismerkedjen meg a [GitHub-műveletekkel](https://docs.github.com/en/actions) egy munkafolyamattal, amely az adatbázis-frissítések [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/)való üzembe helyezésére használható. 
 
@@ -66,7 +66,7 @@ A kimenet egy JSON-objektum, amely a szerepkör-hozzárendelés hitelesítő ada
 
 ## <a name="copy-the-mysql-connection-string"></a>A MySQL-kapcsolatok karakterláncának másolása 
 
-A Azure Portal lépjen a Azure Database for MySQL-kiszolgálóhoz, és nyissa meg a **Beállítások**  >  **kapcsolódási karakterláncokat** . Másolja az **ADO.NET** kapcsolati sztringet. Cserélje le a és a helyőrző értékét `your_database` `your_password` . A kapcsolódási karakterlánc ehhez hasonlóan fog kinézni. 
+A Azure Portal lépjen a Azure Database for MySQL-kiszolgálóhoz, és nyissa meg a **Beállítások**  >  **kapcsolódási karakterláncokat**. Másolja az **ADO.NET** kapcsolati sztringet. Cserélje le a és a helyőrző értékét `your_database` `your_password` . A kapcsolódási karakterlánc ehhez hasonlóan fog kinézni. 
 
 ```output
    Server=my-mysql-server.mysql.database.azure.com; Port=3306; Database={your_database}; Uid=adminname@my-mysql-server; Pwd={your_password}; SslMode=Preferred;
@@ -184,11 +184,11 @@ A kapcsolatok karakterláncát GitHub-titokként fogja használni.
  
     :::image type="content" source="media/quickstart-mysql-github-actions/github-actions-run-mysql.png" alt-text="A GitHub-műveletek futtatásának naplója":::
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha az Azure MySQL-adatbázisra és-tárházra már nincs szükség, távolítsa el az üzembe helyezett erőforrásokat az erőforráscsoport és a GitHub-tárház törlésével. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ismerje meg az Azure-t és a GitHub-integrációt](/azure/developer/github/)
