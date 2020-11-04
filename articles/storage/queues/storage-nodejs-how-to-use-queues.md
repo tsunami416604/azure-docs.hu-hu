@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: seo-javascript-september2019, devx-track-js
-ms.openlocfilehash: 77c35ae4b9e845cd3c0f638407c0d71c36fcf9f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5a9fb1a179164d24c84213762ee7e2332a1aa25
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289684"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345941"
 ---
 # <a name="how-to-use-azure-queue-storage-from-nodejs"></a>Az Azure üzenetsor-tároló használata a Node.js
 
@@ -44,7 +44,7 @@ A [javascripthez készült Azure Storage ügyféloldali kódtára][Azure Storage
 
 1. Írja be a **NPM az \@ Azure/Storage-üzenetsor telepítése** parancsot a parancsablakban.
 
-1. Ellenőrizze, hogy létrejött-e a **csomópont- \_ modulok** mappája. A mappában megtalálja az ** \@ Azure/Storage-üzenetsor** csomagot, amely tartalmazza a tárterület eléréséhez szükséges ügyféloldali kódtárat.
+1. Ellenőrizze, hogy létrejött-e a **csomópont- \_ modulok** mappája. A mappában megtalálja az **\@ Azure/Storage-üzenetsor** csomagot, amely tartalmazza a tárterület eléréséhez szükséges ügyféloldali kódtárat.
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
@@ -82,7 +82,7 @@ Ha a várólista már létezik, kivételt dobott a rendszer.
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
-Az Azure-modul beolvassa a környezeti változókat `AZURE_STORAGE_ACCOUNT` `AZURE_STORAGE_ACCESS_KEY` , illetve `AZURE_STORAGE_CONNECTION_STRING` Az Azure Storage-fiókhoz való kapcsolódáshoz szükséges információkat. Ha a környezeti változók nincsenek beállítva, a **createQueueService**meghívásakor meg kell adnia a fiók adatait.
+Az Azure-modul beolvassa a környezeti változókat `AZURE_STORAGE_ACCOUNT` `AZURE_STORAGE_ACCESS_KEY` , illetve `AZURE_STORAGE_CONNECTION_STRING` Az Azure Storage-fiókhoz való kapcsolódáshoz szükséges információkat. Ha a környezeti változók nincsenek beállítva, a **createQueueService** meghívásakor meg kell adnia a fiók adatait.
 
 A következő kód létrehoz egy **QueueService** objektumot, amely lehetővé teszi a várólistákkal való munkavégzést.
 
@@ -160,13 +160,13 @@ Az alábbi példa egy üzenet szövegét frissíti.
 
 # <a name="javascript-v12"></a>[JavaScript V12](#tab/javascript)
 
-A [updateMessage](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--number--queueupdatemessageoptions-)meghívásával módosítsa a várólistán lévő üzenet tartalmát. 
+A [updateMessage](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--number--queueupdatemessageoptions-)meghívásával módosítsa a várólistán lévő üzenet tartalmát.
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_UpdateMessage":::
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
-A **updateMessage**meghívásával módosítsa a várólistán lévő üzenet tartalmát. 
+A **updateMessage** meghívásával módosítsa a várólistán lévő üzenet tartalmát.
 
 ```javascript
 queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
@@ -200,7 +200,7 @@ Ha üzenetet szeretne kapni, hívja meg a [receiveMessages](/javascript/api/@azu
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_DequeueMessage":::
 
-Alapértelmezés szerint az üzenetek csak 30 másodpercig vannak elrejtve. 30 másodperc elteltével más ügyfelek is láthatják. A **receiveMessages**hívásakor megadhat egy másik értéket a [Options. visibilityTimeout](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#visibilitytimeout) beállításával.
+Alapértelmezés szerint az üzenetek csak 30 másodpercig vannak elrejtve. 30 másodperc elteltével más ügyfelek is láthatják. A **receiveMessages** hívásakor megadhat egy másik értéket a [Options. visibilityTimeout](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#visibilitytimeout) beállításával.
 
 A **receiveMessages** meghívása, ha a várólistában nem található üzenetek hibaüzenetet adnak vissza. Azonban a rendszer nem ad vissza üzeneteket.
 
@@ -234,8 +234,8 @@ A **getMessages** használata, ha a várólistában nem található üzenetek ne
 
 Az üzenetek lekérését kétféleképpen lehet testreszabni egy várólistából:
 
-* [Options. numberOfMessages](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#numberofmessages) – üzenetek kötegének beolvasása (legfeljebb 32.)
-* [Options. visibilityTimeout](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#visibilitytimeout) – nagyobb vagy rövidebb láthatósági időtúllépést állíthat be.
+- [Options. numberOfMessages](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#numberofmessages) – üzenetek kötegének beolvasása (legfeljebb 32.)
+- [Options. visibilityTimeout](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#visibilitytimeout) – nagyobb vagy rövidebb láthatósági időtúllépést állíthat be.
 
 A következő példa a **receiveMessages** metódus használatával öt üzenetet kap egy hívásban. Ezután az összes üzenetet feldolgozza egy `for` hurok használatával. Emellett a metódus által visszaadott összes üzenet esetében öt percre állítja be a láthatósági időtúllépést.
 
@@ -245,8 +245,8 @@ A következő példa a **receiveMessages** metódus használatával öt üzenete
 
 Az üzenetek lekérését kétféleképpen lehet testreszabni egy várólistából:
 
-* `options.numOfMessages` – Üzenetek kötegének beolvasása (legfeljebb 32.)
-* `options.visibilityTimeout` -Egy többé vagy rövidebb láthatósági időkorlát beállítása.
+- `options.numOfMessages` – Üzenetek kötegének beolvasása (legfeljebb 32.)
+- `options.visibilityTimeout` -Egy többé vagy rövidebb láthatósági időkorlát beállítása.
 
 A következő példa a **getMessages** metódus használatával 15 üzenetet kap egy hívásban. Ezután az összes üzenetet feldolgozza egy `for` hurok használatával. Emellett a metódus által visszaadott összes üzenet esetében öt percre állítja be a láthatósági időtúllépést.
 
@@ -295,7 +295,7 @@ queueSvc.getQueueMetadata('myqueue', function(error, results, response){
 
 # <a name="javascript-v12"></a>[JavaScript V12](#tab/javascript)
 
-A várólisták listájának lekéréséhez hívja meg a [QueueServiceClient. listQueues](). Egy adott előtag által szűrt lista lekéréséhez adja meg a [Options. prefix beállítást](/javascript/api/@azure/storage-queue/servicelistqueuesoptions#prefix) a **listQueues**-hívásban.
+A várólisták listájának lekéréséhez hívja meg a [QueueServiceClient. listQueues](). Egy adott előtag által szűrt lista lekéréséhez adja meg a [Options. prefix beállítást](/javascript/api/@azure/storage-queue/servicelistqueuesoptions#prefix) a **listQueues** -hívásban.
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_ListQueues":::
 
@@ -347,8 +347,8 @@ Ha törölni szeretné a várólista összes üzenetét anélkül, hogy töröln
 
 Most, hogy megismerte a várólista-tárolás alapjait, az alábbi hivatkozásokat követve megismerheti az összetettebb tárolási feladatokat.
 
-* Az Újdonságok megismeréséhez látogasson el az [Azure Storage csapatának blogjára][Azure Storage Team Blog] .
-* Látogasson el az [Azure Storage ügyféloldali kódtárara][Azure Storage client library for JavaScript] a githubon található JavaScript-adattárhoz
+- Az Újdonságok megismeréséhez látogasson el az [Azure Storage csapatának blogjára][Azure Storage Team Blog] .
+- Látogasson el az [Azure Storage ügyféloldali kódtárara][Azure Storage client library for JavaScript] a githubon található JavaScript-adattárhoz
 
 [Azure Storage client library for JavaScript]: https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage#azure-storage-client-library-for-javascript
 [Azure Storage Team Blog]: https://techcommunity.microsoft.com/t5/azure-storage/bg-p/AzureStorageBlog

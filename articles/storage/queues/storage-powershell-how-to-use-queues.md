@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e558b8ca6498b8419ce6d7ce5ff1b161c05ef3c6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a2f1229ab8a292b06dfc43b95d9047ed8d233523
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791137"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345703"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure Queue Storage-műveletek végrehajtása az Azure PowerShell-lel
 
@@ -22,12 +22,12 @@ Az Azure üzenetsor-tároló egy olyan szolgáltatás, amely a világ bármely p
 
 > [!div class="checklist"]
 >
-> * Üzenetsor létrehozása
-> * Üzenetsor beolvasása
-> * Üzenet hozzáadása
-> * Üzenet elolvasása
-> * Üzenet törlése
-> * Üzenetsor törlése
+> - Üzenetsor létrehozása
+> - Üzenetsor beolvasása
+> - Üzenet hozzáadása
+> - Üzenet elolvasása
+> - Üzenet törlése
+> - Üzenetsor törlése
 
 Ez a útmutató a Azure PowerShell modul az 0,7-es vagy újabb verzióját igényli. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket.
 
@@ -127,7 +127,7 @@ Ha a [Azure Storage Explorer](https://storageexplorer.com)használja, kapcsolód
 
 ## <a name="read-a-message-from-the-queue-then-delete-it"></a>Üzenet olvasása a sorból, majd a törlés
 
-Az üzenetek beolvasása a legjobb – első kijelentkezési sorrendben. Ez nem garantált. Ha elolvassa az üzenetet a várólistából, a rendszer láthatatlanná válik a várólistában megtekintett összes többi folyamatnál. Ez biztosítja, hogy ha a kód hardver vagy szoftver meghibásodása miatt nem tudja feldolgozni az üzenetet, a kód egy másik példánya ugyanazt az üzenetet kapja, és próbálkozzon újra.  
+Az üzenetek beolvasása a legjobb – első kijelentkezési sorrendben. Ez nem garantált. Ha elolvassa az üzenetet a várólistából, a rendszer láthatatlanná válik a várólistában megtekintett összes többi folyamatnál. Ez biztosítja, hogy ha a kód hardver vagy szoftver meghibásodása miatt nem tudja feldolgozni az üzenetet, a kód egy másik példánya ugyanazt az üzenetet kapja, és próbálkozzon újra.
 
 Ez a **láthatósági időkorlát** azt határozza meg, hogy az üzenet hányszor maradjon láthatatlan, mielőtt újra elérhetővé válik a feldolgozáshoz. Az alapértelmezett érték 30 mp.
 
@@ -171,7 +171,7 @@ Ha törölni szeretne egy várólistát és a benne található összes üzenete
 Remove-AzStorageQueue –Name $queueName –Context $ctx
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az ebben a gyakorlatban létrehozott összes eszköz eltávolításához távolítsa el az erőforráscsoportot. Így törli a csoportban lévő összes erőforrást is. Ebben az esetben eltávolítja a létrehozott Storage-fiókot és magát az erőforráscsoportot.
 
@@ -185,17 +185,17 @@ Ebben a útmutatóban megtanulta az alapszintű üzenetsor-tárolás kezelését
 
 > [!div class="checklist"]
 >
-> * Üzenetsor létrehozása
-> * Üzenetsor beolvasása
-> * Üzenet hozzáadása
-> * A következő üzenet elolvasása
-> * Üzenet törlése
-> * Üzenetsor törlése
+> - Üzenetsor létrehozása
+> - Üzenetsor beolvasása
+> - Üzenet hozzáadása
+> - A következő üzenet elolvasása
+> - Üzenet törlése
+> - Üzenetsor törlése
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets"></a>Microsoft Azure PowerShell Storage-parancsmagok
 
-* [Tárolási PowerShell-parancsmagok](/powershell/module/az.storage)
+- [Tárolási PowerShell-parancsmagok](/powershell/module/az.storage)
 
 ### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
 
-* A [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
+- A [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.

@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 4cb706bfa1c10e941e6d2d44358c784549973302
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: f6ec6bced9c84e4e5b0f04cc32eebb438052bd6c
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927974"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348287"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – rugalmas kiszolgáló (előzetes verzió)
 
@@ -50,7 +50,7 @@ Ha a zóna redundáns magas rendelkezésre állása be van állítva, a szolgál
 
 További részletekért tekintse meg a [magas rendelkezésre állással kapcsolatos fogalmakat](concepts-high-availability.md) .
 
-:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="Önálló zóna – magas rendelkezésre állás fogalmi diagramja"::: 
+:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="Zone redundáns magas rendelkezésre állás fogalmi diagramja"::: 
 
 ## <a name="automated-patching-with-managed-maintenance-window"></a>Automatizált javítás a felügyelt karbantartási időszakmal
 
@@ -66,7 +66,7 @@ További információért lásd a [biztonsági mentési fogalmakat](concepts-bac
 
 ## <a name="network-isolation"></a>Hálózatelkülönítés
 
-Két hálózati lehetőség közül választhat a Azure Database for MySQL rugalmas kiszolgálóhoz való kapcsolódáshoz. A lehetőségek a következők: **privát hozzáférés (VNet-integráció)** és **nyilvános hozzáférés (engedélyezett IP-címek)** . 
+Két hálózati lehetőség közül választhat a Azure Database for MySQL rugalmas kiszolgálóhoz való kapcsolódáshoz. A lehetőségek a következők: **privát hozzáférés (VNet-integráció)** és **nyilvános hozzáférés (engedélyezett IP-címek)**. 
 
 * **Privát hozzáférés (VNet-integráció)** – a rugalmas kiszolgálót üzembe helyezheti az [Azure-Virtual Network](../../virtual-network/virtual-networks-overview.md). Az Azure Virtual Network privát és biztonságos hálózati kommunikációt biztosít. A virtuális hálózatok erőforrásai privát IP-címeken keresztül kommunikálhatnak.
 
@@ -89,7 +89,7 @@ További információért lásd a [számítási és tárolási fogalmakat](conce
 
 A MySQL az egyik népszerű adatbázismotor a webes és mobil alkalmazások futtatásához. Számos ügyfelünk a saját online oktatási szolgáltatásaihoz, a video streaming-szolgáltatásokhoz, a digitális fizetési megoldásokhoz, az e-kereskedelmi platformokhoz, a szerencsejáték-szolgáltatásokhoz, a hírek portálokhoz, a kormányzati és az egészségügyi webhelyekhez használható. Ezek a szolgáltatások a webes vagy mobil alkalmazások forgalmának növeléséhez és méretezéséhez szükségesek.
 
-Az alkalmazások oldalon az alkalmazás általában Java vagy PHP nyelven lett kifejlesztve, és át lett telepítve az [Azure-beli virtuálisgép-méretezési csoportokon](/azure/virtual-machine-scale-sets/overview.md)vagy az Azure app Services-on való futtatásra,   vagy az [Azure App Services](/azure/app-service/overview.md)    [Azure Kubernetes szolgáltatásban (ak)](/azure/aks/intro-kubernetes.md)való futtatásra. A virtuálisgép-méretezési csoport, a App Service vagy az AK az alapul szolgáló infrastruktúrának megfelelően egyszerűsíti az alkalmazások skálázását azáltal, hogy azonnal kiépíti az új virtuális gépeket, és replikálja az alkalmazás állapot nélküli összetevőit, hogy azok a kérések ellátására szolgálnak, de gyakran az adatbázis a központosított állapot-nyilvántartó összetevőként végződik.
+Az alkalmazások oldalon az alkalmazás általában Java vagy PHP nyelven lett kifejlesztve, és át lett telepítve az [Azure-beli virtuálisgép-méretezési csoportokon](../../virtual-machine-scale-sets/overview.md)vagy az Azure app Services-on való futtatásra,   vagy az [Azure App Services](../../app-service/overview.md)    [Azure Kubernetes szolgáltatásban (ak)](../../aks/intro-kubernetes.md)való futtatásra. A virtuálisgép-méretezési csoport, a App Service vagy az AK az alapul szolgáló infrastruktúrának megfelelően egyszerűsíti az alkalmazások skálázását azáltal, hogy azonnal kiépíti az új virtuális gépeket, és replikálja az alkalmazás állapot nélküli összetevőit, hogy azok a kérések ellátására szolgálnak, de gyakran az adatbázis a központosított állapot-nyilvántartó összetevőként végződik.
 
 Az olvasási replika funkció lehetővé teszi az adatok replikálását egy Azure Database for MySQL rugalmas kiszolgálóról egy írásvédett kiszolgálóra. A forrás-kiszolgálóról **legfeljebb 10 replikára** lehet replikálni. A replikák aszinkron módon frissülnek a MySQL motor natív [bináris naplójának (BinLog) fájljának pozíció-alapú replikációs technológiájának](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)használatával. A terheléselosztó proxy-megoldásait, például a [ProxySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042) -t használva zökkenőmentesen kibővítheti az alkalmazás számítási feladatait a replikák olvasására az alkalmazás újraszámítási díja nélkül. 
 

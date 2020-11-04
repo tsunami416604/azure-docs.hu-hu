@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre Azure Policy vendég-konfiguráci
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c0559e284f1e7022510a458209ec8d985ffc6324
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 240f22a076b5f185ebe3028b201b66d187c9bb2d
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305540"
+ms.locfileid: "93346876"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Vendégkonfigurációs szabályzatok létrehozása Linux rendszeren
 
@@ -24,7 +24,11 @@ A Linux naplózásakor a Vendégkonfiguráció a [Chef InSpecet](https://www.ins
 A következő műveletek végrehajtásával hozhatja létre saját konfigurációját egy Azure-beli vagy nem Azure-beli gép állapotának ellenőrzéséhez.
 
 > [!IMPORTANT]
+> A Azure Government és az Azure China Environments szolgáltatásban a vendég-konfigurációval rendelkező egyéni házirend-definíciók előzetes verzióként használhatók.
+>
 > A naplózás Azure-beli virtuális gépeken történő végrehajtásához szükség van a Vendégkonfiguráció bővítményre. Ha a bővítményt a Linux rendszerű gépek skáláján szeretné üzembe helyezni, rendelje hozzá a következő szabályzat-definíciót: `Deploy prerequisites to enable Guest Configuration Policy on Linux VMs`
+> 
+> Ne használja a titkokat vagy a bizalmas információkat az egyéni tartalom csomagjaiban.
 
 ## <a name="install-the-powershell-module"></a>A PowerShell-modul telepítése
 
@@ -49,7 +53,9 @@ Azok az operációs rendszerek, amelyeken telepítve van a modul:
 - Windows
 
 > [!NOTE]
-> A "test-GuestConfigurationPackage" parancsmaghoz az OpenSSL 1,0-es verziója szükséges. Ez hibát okoz az OpenSSL 1,1-es vagy újabb verziójával rendelkező környezetekben.
+> A parancsmaghoz a (z `Test-GuestConfigurationPackage` ) 1,0-es OpenSSL-verzióra van szükség, mert egy a következőtől függ:. Ez hibát okoz az OpenSSL 1,1-es vagy újabb verziójával rendelkező környezetekben.
+>
+> A parancsmag futtatása `Test-GuestConfigurationPackage` csak a Windows for Guest konfigurációs modul 2.1.0 verziója esetén támogatott.
 
 A vendég konfigurációs erőforrás-modulhoz a következő szoftverek szükségesek:
 
@@ -319,13 +325,16 @@ Configuration AuditFilePathExists
 
 ## <a name="policy-lifecycle"></a>Szabályzat életciklusa
 
-A házirend-definíció frissítésének kiadásához két, figyelmet igénylő mező szükséges.
+A házirend-definíció frissítésének kiadásához három, figyelmet igénylő mező szükséges.
 
-- **Verzió** : a parancsmag futtatásakor meg `New-GuestConfigurationPolicy` kell adnia a jelenleg közzétett verziónál nagyobb verziószámot. A tulajdonság frissíti a vendég konfiguráció-hozzárendelés verzióját, hogy az ügynök felismeri a frissített csomagot.
+> [!NOTE]
+> A `version` vendég konfiguráció-hozzárendelés tulajdonsága csak a Microsoft által üzemeltetett csomagokat gyakorolja. Az egyéni tartalom verziószámozásának ajánlott eljárása, hogy tartalmazza a verziót a fájl nevében.
+
+- **Verzió** : a parancsmag futtatásakor meg `New-GuestConfigurationPolicy` kell adnia a jelenleg közzétett verziónál nagyobb verziószámot.
+- **contentUri** : a parancsmag futtatásakor meg `New-GuestConfigurationPolicy` kell adnia egy URI-t a csomag helyéhez. A fájl nevében szereplő csomag verziószáma biztosítja, hogy a tulajdonság értéke az egyes kiadásokban is megváltozik.
 - **contentHash** : ezt a tulajdonságot a parancsmag automatikusan frissíti `New-GuestConfigurationPolicy` . Ez a csomag által létrehozott kivonatoló érték `New-GuestConfigurationPackage` . A tulajdonságnak megfelelőnek kell lennie a `.zip` közzétett fájlhoz. Ha csak a **contentUri** tulajdonság frissül, a bővítmény nem fogadja el a csomag tartalmát.
 
 Egy frissített csomag kiadásának legegyszerűbb módja, ha megismétli a jelen cikkben ismertetett folyamatot, és megadja a verziószámot. Ez a folyamat garantálja az összes tulajdonság megfelelő frissítését.
-
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>Vendég konfigurációs szabályzatok szűrése címkék használatával
 

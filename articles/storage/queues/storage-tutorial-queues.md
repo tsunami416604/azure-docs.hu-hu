@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 23684dbbc5cb8c2d5fc4880ae8fe1999450928e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d661800c53cc0795efde1f411675d17661fb968
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400570"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345533"
 ---
 # <a name="tutorial-work-with-azure-storage-queues-in-net"></a>Oktatóanyag: az Azure Storage-várólisták használata a .NET-ben
 
@@ -47,9 +47,9 @@ Először hozzon létre egy Azure Storage-fiókot. A Storage-fiók létrehozás�
 
 ## <a name="create-the-app"></a>Az alkalmazás létrehozása
 
-Hozzon létre egy **QueueApp**nevű .net Core-alkalmazást. Az egyszerűség kedvéért ez az alkalmazás az üzenetsor használatával küldi el és fogadja az üzeneteket.
+Hozzon létre egy **QueueApp** nevű .net Core-alkalmazást. Az egyszerűség kedvéért ez az alkalmazás az üzenetsor használatával küldi el és fogadja az üzeneteket.
 
-1. A konzol ablakban (például a CMD, a PowerShell vagy az Azure CLI) a `dotnet new` paranccsal hozzon létre egy új, **QueueApp**nevű Console-alkalmazást. Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: **program.cs**.
+1. A konzol ablakban (például a CMD, a PowerShell vagy az Azure CLI) a `dotnet new` paranccsal hozzon létre egy új, **QueueApp** nevű Console-alkalmazást. Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: **program.cs**.
 
    ```console
    dotnet new console -n QueueApp
@@ -94,6 +94,8 @@ Hozzon létre egy **QueueApp**nevű .net Core-alkalmazást. Az egyszerűség ked
 
    C:\Tutorials\QueueApp>_
    ```
+
+<!-- markdownlint-disable MD023 -->
 
 ## <a name="add-the-azure-client-libraries"></a>Az Azure-ügyfél kódtárainak hozzáadása
 
@@ -160,7 +162,7 @@ Adja hozzá a kapcsolati karakterláncot az alkalmazáshoz, hogy hozzáférhesse
 
 1. Váltson vissza a Visual Studio Code-ra.
 
-1. A **Main**  metódusban cserélje le a `Console.WriteLine("Hello World!");` kódot a következő sorra, amely a környezeti változóból lekéri a kapcsolatok karakterláncát.
+1. A **Main** metódusban cserélje le a `Console.WriteLine("Hello World!");` kódot a következő sorra, amely a környezeti változóból lekéri a kapcsolatok karakterláncát.
 
    # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
@@ -262,7 +264,7 @@ Ha vannak olyan parancssori argumentumok, amelyek bekerültek az alkalmazásba, 
 
 Ha nincsenek parancssori argumentumok, próbálkozzon egy lekérési művelettel. Hívja meg a **RetrieveNextMessageAsync** metódust az üzenetsor következő üzenetének lekéréséhez.
 
-Végül várjon a felhasználói bevitelre, mielőtt kilép a **Console. readline**hívásával.
+Végül várjon a felhasználói bevitelre, mielőtt kilép a **Console. readline** hívásával.
 
 1. Bontsa ki a **Main** metódust a parancssori argumentumok kereséséhez, és várjon a felhasználói adatbevitelre.
 

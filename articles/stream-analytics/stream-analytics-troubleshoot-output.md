@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: bc630fc5ea9407c284e2e2e879c349a83302cd9f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 6942fd68625fd8eac18ea899330fd99f31f771f7
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93122623"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346111"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics kimenetek hibáinak megoldása
 
@@ -91,7 +91,7 @@ Amikor az SQL kimenettel rendelkező Stream Analytics-feladatok megkapják az el
 2. A művelet beolvassa a céltábla sémáját.
 3. A feladattípus ellenőrzi az oszlopnevek és a típusokat a céltábla sémáján.
 4. A feladatsor felkészíti a memóriában tárolt adattáblázatot a köteg kimeneti rekordjaiból.
-5. A feladatsor a bulkcopy objektum céloszlopa [API](/dotnet/api/system.data.sqlclient.sqlbulkcopy.writetoserver?view=dotnet-plat-ext-3.1)használatával írja az adattáblát az SQL-re.
+5. A feladatsor a bulkcopy objektum céloszlopa [API](/dotnet/api/system.data.sqlclient.sqlbulkcopy.writetoserver)használatával írja az adattáblát az SQL-re.
 
 A fenti lépések során az SQL-kimenet a következő típusú hibákat képes megtapasztalni:
 

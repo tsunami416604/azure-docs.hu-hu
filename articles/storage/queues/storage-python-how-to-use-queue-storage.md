@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: seo-javascript-october2019, devx-track-python
-ms.openlocfilehash: 0b4592b846477fe16e5ebcff7c9adfb45f7fe559
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ac75b89548d346945901d752672ef0f08601ccfb
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790508"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345652"
 ---
 # <a name="how-to-use-azure-queue-storage-from-python"></a>Az Azure üzenetsor-tároló használata a Pythonból
 
@@ -33,7 +33,7 @@ A cikkben szereplő példák Pythonban íródtak, és a [Pythonhoz készült Azu
 ## <a name="download-and-install-azure-storage-sdk-for-python"></a>A Pythonhoz készült Azure Storage SDK letöltése és telepítése
 
 A [Pythonhoz készült Azure Storage SDK](https://github.com/azure/azure-storage-python) használatához a Python 2,7-es, 3,3-as vagy újabb verziója szükséges.
- 
+
 ### <a name="install-via-pypi"></a>Telepítés a PyPI-on keresztül
 
 A Python Package index (PyPI) használatával történő telepítéshez írja be a következőt:
@@ -73,7 +73,7 @@ A [QueueService](/azure/developer/python/sdk/storage/azure-storage-queue/azure.s
 
 ```python
 from azure.storage.queue import (
-        QueueService, 
+        QueueService,
         QueueMessageFormat
 )
 
@@ -297,9 +297,9 @@ queue_service.delete_queue(queue_name)
 
 Most, hogy megismerte a várólista-tárolás alapjait, kövesse az alábbi hivatkozásokat további információért.
 
-* [Az Azure Queues Python API-referenciája](/python/api/azure-storage-queue)
-* [Python fejlesztői központ](https://azure.microsoft.com/develop/python/)
-* [Az Azure Storage-szolgáltatások REST API-ja](/rest/api/storageservices/)
+- [Az Azure Queues Python API-referenciája](/python/api/azure-storage-queue)
+- [Python fejlesztői központ](https://azure.microsoft.com/develop/python/)
+- [Az Azure Storage-szolgáltatások REST API-ja](/rest/api/storageservices/)
 
 [Az Azure üzenetsor Storage ügyféloldali kódtára a Pythonhoz]: https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue
 [Azure SDK for Python]: https://github.com/azure/azure-sdk-for-python

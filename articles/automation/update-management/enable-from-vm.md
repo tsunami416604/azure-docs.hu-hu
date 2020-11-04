@@ -2,19 +2,19 @@
 title: Azure Automation Update Management engedélyezése Azure-beli virtuális gépről
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető a Update Management egy Azure-beli virtuális gépről.
 services: automation
-ms.date: 09/16/2020
+ms.date: 11/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 2d81b822986f641e64b9211300f83e3b254f316d
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 1ed4ad3e1bae34b5007d13c7d092f46e972ac8a8
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222865"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347080"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>Az Update Management engedélyezése Azure-beli virtuális gépről
 
-Ez a cikk azt ismerteti, hogyan használható egy Azure-beli virtuális gép a [Update Management](overview.md) funkció más gépeken való engedélyezéséhez. Az Azure-beli virtuális gépek méretének engedélyezéséhez Update Management használatával engedélyeznie kell egy meglévő virtuális gépet.
+Ez a cikk azt ismerteti, hogyan engedélyezhető a [Update Management](overview.md) funkció egy vagy több Azure-beli virtuális GÉPEN (VM). Az Azure-beli virtuális gépek méretének engedélyezéséhez Update Management használatával engedélyeznie kell egy meglévő Azure-beli virtuális gépet.
 
 > [!NOTE]
 > A Update Management engedélyezésekor csak bizonyos régiók támogatottak Log Analytics munkaterület és egy Automation-fiók összekapcsolásához. A támogatott leképezési párok listáját lásd: [az Automation-fiók és a log Analytics munkaterület-hozzárendelési területe](../how-to/region-mappings.md).
@@ -35,7 +35,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Válassza ki azt a virtuális gépet, amelynek engedélyezni szeretné a Update Management. A virtuális gépek bármelyik régióban létezhetnek, az Automation-fiókja helyétől függetlenül. Ön
 
-3. A virtuális gép lap **műveletek**területén válassza a **vendég + gazdagép frissítései**lehetőséget.
+3. A virtuális gép lap **műveletek** területén válassza a **vendég + gazdagép frissítései** lehetőséget.
 
     ![Vendég + gazdagép frissítéseinek kiválasztása a bal oldali panelen](media/enable-from-vm/select-guest-and-os-updates.png)
 

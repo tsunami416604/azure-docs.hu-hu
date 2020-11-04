@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: 957695892c39dd3ddfd9dc45d60158c89eb22698
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 62cb8db094cf1bfd7d81b1da06dd7a1b743ec045
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130629"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347482"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge-modulajánlat létrehozása
 
@@ -31,13 +31,13 @@ Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé egy eszközök inter
 
 ### <a name="offer-id-and-alias"></a>Ajánlat azonosítója és alias
 
-Adja meg az **ajánlat azonosítóját** . Ez a fiókban található egyes ajánlatok egyedi azonosítója.
+Adja meg az **ajánlat azonosítóját**. Ez a fiókban található egyes ajánlatok egyedi azonosítója.
 
 - Ez az azonosító látható az ügyfelek számára a Piactéri ajánlathoz tartozó webcímek és Azure Resource Manager sablonok esetében, ha van ilyen.
 - Csak kisbetűket és számokat használjon. Tartalmazhat kötőjeleket és aláhúzásokat, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1** értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - Az ajánlat azonosítója a **Létrehozás** gombra kattintva nem módosítható.
 
-Adjon meg egy **ajánlat-aliast** . Ez a partner Centerben az ajánlathoz használt név.
+Adjon meg egy **ajánlat-aliast**. Ez a partner Centerben az ajánlathoz használt név.
 
 - Ez a név nem használatos a piactéren, és nem egyezik meg az ajánlat nevével és az ügyfelek számára megjelenített egyéb értékekkel.
 - Ez a **Létrehozás** gombra kattintva nem módosítható.
@@ -131,7 +131,7 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 > [!NOTE]
 > Az ajánlat részleteit nem kötelező angol nyelven megadni, ha az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelvű] verzióban érhető el." Azt is megteheti, hogy hasznos hivatkozást biztosít, hogy olyan nyelven kínálja a tartalmat, amely különbözik az ajánlati lista részleteiben használt nyelvtől.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Név
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 
@@ -234,7 +234,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 3. Támogatási címe (hivatkozás)
 4. használati feltételei
 5. Adatvédelmi szabályzat címe (hivatkozás)
-6. Name
+6. Név
 7. Összegzés
 8. Leírás
 9. Hasznos hivatkozások
@@ -242,7 +242,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 
 <br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az Azure Marketplace keresési eredményei között:
 
-:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
+:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactér keresési eredményei között.":::
 
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
@@ -252,7 +252,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 
 <br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Azure Portalban:
 
-:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
+:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="Bemutatja, hogyan jelennek meg az ajánlat a Azure Portalban.":::
 
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
@@ -263,7 +263,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 
 <br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Azure Portal keresési eredmények között:
 
-:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
+:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat a Azure Portal keresési eredmények között.":::
 
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
@@ -319,7 +319,7 @@ A **terv neve** mezőbe írja be a csomag nevét. Az ügyfelek ezt a nevet látj
 > [!NOTE]
 > A terv azonosítója a **Létrehozás** gombra kattintva nem módosítható.
 
-Válassza a **Létrehozás** lehetőséget.
+Kattintson a **Létrehozás** gombra.
 
 ### <a name="plan-setup"></a>Csomag beállítása
 
@@ -362,7 +362,7 @@ A mezők befejezése után válassza a **Piszkozat mentése** lehetőséget.
 
 Íme egy példa az Azure Marketplace-csomag részleteire (a felsorolt árak kizárólag a tényleges költségekkel kapcsolatosak, és nem tükrözik a tényleges költségeket):
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="Bemutatja az Azure Marketplace-csomag részleteit.":::
 
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
@@ -372,7 +372,7 @@ A mezők befejezése után válassza a **Piszkozat mentése** lehetőséget.
 
 <br>Íme egy példa a Azure Portal terv részleteire (a felsorolt díjak csak a felhasználási célokra szolgálnak, és nem tükrözik a tényleges költségeket):
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="A Azure Portal terv részleteit mutatja be.":::
 
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
@@ -413,15 +413,15 @@ Az **Azure Container Registry neve** : adja meg annak a [Azure Container Registr
 
 A **Azure Container Registry rendszergazdai felhasználóneve** : adja meg a tároló képével rendelkező Azure Container Registryhoz társított [rendszergazdai felhasználónevet](../../container-registry/container-registry-authentication.md#admin-account)). A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A rendszergazdai Felhasználónév és jelszó beszerzéséhez állítsa a **rendszergazdai** jogosultsággal rendelkező tulajdonságot **true** értékre az Azure Command-Line Interface (CLI) használatával. Igény szerint beállíthatja, hogy a **rendszergazda felhasználó** **engedélyezze** a Azure Portal.
 
-:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
+:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="A tároló-beállításjegyzék frissítése párbeszédpanelt mutatja be.":::
 
 #### <a name="call-out-description"></a>Visszahívás leírása
 
 1. Rendszergazdai felhasználó
 
-<br>**A Azure Container Registryhoz tartozó jelszó** : adja meg a Azure Container Registryhoz társított rendszergazdai Felhasználónév és a tároló képét. A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A jelszót a Azure Portal **Container Registry**  >  **hozzáférési kulcsok** vagy az Azure CLI használatával a [show paranccsal](/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show) kérheti le.
+<br>**A Azure Container Registryhoz tartozó jelszó** : adja meg a Azure Container Registryhoz társított rendszergazdai Felhasználónév és a tároló képét. A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A jelszót a Azure Portal **Container Registry**  >  **hozzáférési kulcsok** vagy az Azure CLI használatával a [show paranccsal](/cli/azure/acr/credential#az-acr-credential-show) kérheti le.
 
-:::image type="content" source="media/example-iot-access-keys.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
+:::image type="content" source="media/example-iot-access-keys.png" alt-text="A Azure Portal a Hívóbetű képernyőjét mutatja.":::
 
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
@@ -429,7 +429,7 @@ A **Azure Container Registry rendszergazdai felhasználóneve** : adja meg a tá
 2. Felhasználónév
 3. Jelszó
 
-**A tárház neve a Azure Container Registryon belül** . Adja meg a rendszerképet tartalmazó Azure Container Registry adattár nevét. Adja meg az adattár nevét, amikor leküldi a rendszerképet a beállításjegyzékbe. A tárház nevét a [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **adattárak lapon** találja. További információ: [a Container Registry-Tárházak megtekintése a Azure Portalban](../../container-registry/container-registry-repositories.md). A név beállítása után nem módosítható. Egyedi nevet adjon a fiókjában található összes ajánlathoz.
+**A tárház neve a Azure Container Registryon belül**. Adja meg a rendszerképet tartalmazó Azure Container Registry adattár nevét. Adja meg az adattár nevét, amikor leküldi a rendszerképet a beállításjegyzékbe. A tárház nevét a [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **adattárak lapon** találja. További információ: [a Container Registry-Tárházak megtekintése a Azure Portalban](../../container-registry/container-registry-repositories.md). A név beállítása után nem módosítható. Egyedi nevet adjon a fiókjában található összes ajánlathoz.
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>Képcímkék az ajánlat új verzióihoz
 
@@ -441,7 +441,7 @@ A frissítések közzétételekor az ügyfeleknek képesnek kell lenniük automa
 
 Adja meg a IoT Edge modul üzembe helyezésének leggyakoribb beállításait. Az ügyfelek központi telepítésének optimalizálása azáltal, hogy elindítják a IoT Edge modult az alapértelmezett beállításokkal.
 
-**Alapértelmezett útvonalak** . Az IoT Edge hub a modulok, a IoT Hub és az eszközök közötti kommunikációt kezeli. Megadhat útvonalakat a modulok és a IoT Hub közötti adatbevitelhez és kimenethez, ami lehetővé teszi a rugalmasságot, hogy olyan üzeneteket küldjön, amelyekre szükségük van anélkül, hogy további szolgáltatásokat kellene feldolgoznia az üzenetek feldolgozásához vagy további kód írásához. Az útvonalak név/érték párok használatával vannak kialakítva. Legfeljebb öt alapértelmezett útvonal-nevet határozhat meg, amelyek mindegyike legfeljebb 512 karakter hosszú lehet.
+**Alapértelmezett útvonalak**. Az IoT Edge hub a modulok, a IoT Hub és az eszközök közötti kommunikációt kezeli. Megadhat útvonalakat a modulok és a IoT Hub közötti adatbevitelhez és kimenethez, ami lehetővé teszi a rugalmasságot, hogy olyan üzeneteket küldjön, amelyekre szükségük van anélkül, hogy további szolgáltatásokat kellene feldolgoznia az üzenetek feldolgozásához vagy további kód írásához. Az útvonalak név/érték párok használatával vannak kialakítva. Legfeljebb öt alapértelmezett útvonal-nevet határozhat meg, amelyek mindegyike legfeljebb 512 karakter hosszú lehet.
 
 Ügyeljen arra, hogy a megfelelő [útvonal-szintaxist](../../iot-edge/module-composition.md#declare-routes)használja az útvonal értékeként (ez általában a következő:/üzenet/* a $upstream). Ez azt jelenti, hogy a modulok által küldött összes üzenet a IoT Hub. A modulra való hivatkozáshoz használja az alapértelmezett modul nevét, amely az **ajánlat neve** , szóközök vagy speciális karakterek nélkül. Ha más, még nem ismert modulokra szeretne hivatkozni, használja a <FROM_MODULE_NAME>-konvenciót, hogy az ügyfelek tudják, hogy frissíteniük kell ezt az információt. IoT Edge útvonalakkal kapcsolatos további információkért lásd: [útvonalak deklarálása](../../iot-edge/module-composition.md#declare-routes)).
 
@@ -452,21 +452,21 @@ Ha például a modul ContosoModule figyeli a ContosoInput és a kimeneti adatok 
 - Név #2: FromContosoModuleToCloud
 - Érték #2:/messages/modules/ContonsoModule/outputs/ContosoOutput-ből $upstream
 
-**Alapértelmezett modul – Twin kívánt tulajdonságok** . A Twin modul egy JSON-dokumentum a IoT Hubban, amely egy modul-példány állapotinformációkat tárolja, beleértve a kívánt tulajdonságokat is. A kívánt tulajdonságok a jelentett tulajdonságokkal együtt használhatók a modul konfigurációjának vagy feltételeinek szinkronizálásához. A megoldás háttere beállíthatja a kívánt tulajdonságokat, a modul pedig elolvashatja őket. A modul a kívánt tulajdonságok között is fogadhatja a módosítási értesítéseket. A kívánt tulajdonságok legfeljebb öt név/érték párok használatával jönnek létre, és minden alapértelmezett értéknek 512 karakternél rövidebbnek kell lennie. Legfeljebb öt név/érték Twin kívánt tulajdonságot adhat meg. A Twin kívánt tulajdonságok értékének érvényes JSON-nek kell lennie, és nem Escape-ként kell lennie, és nem szabad olyan tömbök nélkül lennie, amelyek maximális beágyazott hierarchiája négy szinten Olyan esetekben, amikor egy alapértelmezett értékhez szükséges paraméter nem értelmezhető (például az ügyfél kiszolgálójának IP-címe), az alapértelmezett értékként adhat hozzá egy paramétert. A Twin kívánt tulajdonságokkal kapcsolatos további tudnivalókért lásd a [kívánt tulajdonságok meghatározása vagy frissítése](../../iot-edge/module-composition.md#define-or-update-desired-properties)című témakört.
+**Alapértelmezett modul – Twin kívánt tulajdonságok**. A Twin modul egy JSON-dokumentum a IoT Hubban, amely egy modul-példány állapotinformációkat tárolja, beleértve a kívánt tulajdonságokat is. A kívánt tulajdonságok a jelentett tulajdonságokkal együtt használhatók a modul konfigurációjának vagy feltételeinek szinkronizálásához. A megoldás háttere beállíthatja a kívánt tulajdonságokat, a modul pedig elolvashatja őket. A modul a kívánt tulajdonságok között is fogadhatja a módosítási értesítéseket. A kívánt tulajdonságok legfeljebb öt név/érték párok használatával jönnek létre, és minden alapértelmezett értéknek 512 karakternél rövidebbnek kell lennie. Legfeljebb öt név/érték Twin kívánt tulajdonságot adhat meg. A Twin kívánt tulajdonságok értékének érvényes JSON-nek kell lennie, és nem Escape-ként kell lennie, és nem szabad olyan tömbök nélkül lennie, amelyek maximális beágyazott hierarchiája négy szinten Olyan esetekben, amikor egy alapértelmezett értékhez szükséges paraméter nem értelmezhető (például az ügyfél kiszolgálójának IP-címe), az alapértelmezett értékként adhat hozzá egy paramétert. A Twin kívánt tulajdonságokkal kapcsolatos további tudnivalókért lásd a [kívánt tulajdonságok meghatározása vagy frissítése](../../iot-edge/module-composition.md#define-or-update-desired-properties)című témakört.
 
 Ha például egy modul támogatja a dinamikusan konfigurálható frissítési sebességet Twin kívánt tulajdonságok használatával, érdemes megadnia a következő alapértelmezett dupla kívánt tulajdonságot:
 
 - Név #1: RefreshRate
 - Érték #1:60
 
-**Alapértelmezett környezeti változók** . A környezeti változók kiegészítő információkat biztosítanak a konfigurációs folyamatot segítő modulhoz. A környezeti változók név/érték párok használatával jönnek létre. Az alapértelmezett környezeti változók nevének és értékének 512 karakternél rövidebbnek kell lennie, és legfeljebb öt adható meg. Ha az alapértelmezett értékhez egy paraméter szükséges (például az ügyfél kiszolgálójának IP-címe), az alapértelmezett értékként adhat hozzá egy paramétert.
+**Alapértelmezett környezeti változók**. A környezeti változók kiegészítő információkat biztosítanak a konfigurációs folyamatot segítő modulhoz. A környezeti változók név/érték párok használatával jönnek létre. Az alapértelmezett környezeti változók nevének és értékének 512 karakternél rövidebbnek kell lennie, és legfeljebb öt adható meg. Ha az alapértelmezett értékhez egy paraméter szükséges (például az ügyfél kiszolgálójának IP-címe), az alapértelmezett értékként adhat hozzá egy paramétert.
 
 Ha például egy modulnak el kell fogadnia a használati feltételeket az indítás előtt, megadhatja a következő környezeti változót:
 
 - Név #1: ACCEPT_EULA
 - Érték #1: Y
 
-**Alapértelmezett tároló-létrehozási beállítások** . A tároló-létrehozási lehetőségek a IoT Edge modul Docker-tárolójának létrehozását irányítják. A IoT Edge támogatja a Docker-Motor API-hoz tartozó tároló-létrehozási lehetőségeket. Tekintse meg az összes lehetőséget a [List tárolók listájában.](https://docs.docker.com/engine/api/v1.30/#operation/ContainerList) A Create Options mezőnek érvényes JSON-, nem Escape-és 512 karakternél rövidebbnek kell lennie.
+**Alapértelmezett tároló-létrehozási beállítások**. A tároló-létrehozási lehetőségek a IoT Edge modul Docker-tárolójának létrehozását irányítják. A IoT Edge támogatja a Docker-Motor API-hoz tartozó tároló-létrehozási lehetőségeket. Tekintse meg az összes lehetőséget a [List tárolók listájában.](https://docs.docker.com/engine/api/v1.30/#operation/ContainerList) A Create Options mezőnek érvényes JSON-, nem Escape-és 512 karakternél rövidebbnek kell lennie.
 
 Ha például egy modulhoz port kötés szükséges, adja meg a következő létrehozási beállításokat:
 
@@ -492,4 +492,4 @@ Egy e-mailt küldünk, amelyből megtudhatja, hogy az ajánlat előzetes verzió
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Meglévő ajánlat frissítése a kereskedelmi piactéren](//azure/marketplace/partner-center-portal/update-existing-offer)
+- [Meglévő ajánlat frissítése a kereskedelmi piactéren](update-existing-offer.md)

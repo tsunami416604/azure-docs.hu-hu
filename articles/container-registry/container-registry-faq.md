@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 09/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 4c65ca24b3fa4dccb2bb0060996ade50c90bd02a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a2cddc9bbe868a2d18ee8111aabf6db7dc8643cf
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148521"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346995"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Gyakori kérdések a Azure Container Registry
 
@@ -262,7 +262,8 @@ A kép karanténba helyezése jelenleg az ACR előzetes verziójú funkciója. E
 Az Azure Container Registry for Anonymous (nyilvános) lekéréses hozzáférés beállítása jelenleg előzetes verziójú szolgáltatás. Ha a beállításjegyzékben bármely [hatókör-hozzárendelési (felhasználó) vagy token-erőforrás](./container-registry-repository-scoped-permissions.md) szerepel, törölje őket a támogatási jegy előléptetése előtt (a rendszer-hatóköri térképek figyelmen kívül hagyhatók). A nyilvános hozzáférés engedélyezéséhez nyisson meg egy támogatási jegyet a következő címen: https://aka.ms/acr/support/create-ticket . Részletekért tekintse meg az [Azure visszajelzési fórumát](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
 
 > [!NOTE]
-> Névtelenül csak az ismert rendszerképek lekéréséhez szükséges API-k érhetők el. Nem érhetők el más API-k olyan műveletekhez, mint a címkék vagy a Tárházak listája.
+> * Névtelenül csak az ismert rendszerképek lekéréséhez szükséges API-k érhetők el. Nem érhetők el más API-k olyan műveletekhez, mint a címkék vagy a Tárházak listája.
+> * A névtelen lekérési művelet megkísérlése előtt futtassa `docker logout` a parancsot, és győződjön meg arról, hogy a meglévő Docker-hitelesítő adatok törlődnek.
 
 ## <a name="diagnostics-and-health-checks"></a>Diagnosztika és állapot-ellenőrzések
 
@@ -321,7 +322,7 @@ unauthorized: authentication required
 ```
 
 A hiba elhárítása:
-1. Adja hozzá a kapcsolót `--signature-verification=false` a Docker-démon konfigurációs fájljához `/etc/sysconfig/docker` . Példa:
+1. Adja hozzá a kapcsolót `--signature-verification=false` a Docker-démon konfigurációs fájljához `/etc/sysconfig/docker` . Például:
    
    `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`
    

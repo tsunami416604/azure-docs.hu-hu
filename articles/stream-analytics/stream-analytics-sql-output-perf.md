@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: db396bbd2f26638c39f2573fb6014cd2602279d0
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 362c16a87e5a24c35b3aa637171b6a3f77aa62a6
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129745"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346332"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics kimenet Azure SQL Database
 
@@ -35,7 +35,7 @@ A Azure Stream Analyticsban az SQL-kimenet támogatja az írást párhuzamosan, 
 
 ## <a name="sql-azure"></a>SQL Azure
 
-- **Particionált tábla és indexek** [– particionált SQL-](/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) táblázat és particionált indexek használatával a táblán ugyanazzal az oszloppal, mint a partíciós kulccsal (például PartitionID) az írás során jelentősen csökkenthetik a partíciók közötti adattartalmakat. Particionált tábla esetén létre kell hoznia egy [Partition függvényt](/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) és egy [partíciós sémát](/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) az elsődleges fájlcsoportja. Ez a meglévő adatmennyiségek rendelkezésre állását is növeli az új adatbetöltések során. A log IO-korlát lehet a partíciók száma alapján, ami növelhető az SKU frissítésével.
+- **Particionált tábla és indexek** [– particionált SQL-](/sql/relational-databases/partitions/partitioned-tables-and-indexes) táblázat és particionált indexek használatával a táblán ugyanazzal az oszloppal, mint a partíciós kulccsal (például PartitionID) az írás során jelentősen csökkenthetik a partíciók közötti adattartalmakat. Particionált tábla esetén létre kell hoznia egy [Partition függvényt](/sql/t-sql/statements/create-partition-function-transact-sql) és egy [partíciós sémát](/sql/t-sql/statements/create-partition-scheme-transact-sql) az elsődleges fájlcsoportja. Ez a meglévő adatmennyiségek rendelkezésre állását is növeli az új adatbetöltések során. A log IO-korlát lehet a partíciók száma alapján, ami növelhető az SKU frissítésével.
 
 - **Kerülje az egyedi kulcs megsértését** – ha [több kulcs megsértését jelző figyelmeztető üzenetet](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) kap a Azure stream Analyticsi tevékenység naplójában, ügyeljen arra, hogy a feladatot ne befolyásolja az egyedi korlátozás megsértése, amely valószínűleg a helyreállítási esetekben fog történni. Ennek elkerüléséhez állítsa be a [dup- \_ \_ kulcs mellőzése](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) beállítást az indexeken.
 

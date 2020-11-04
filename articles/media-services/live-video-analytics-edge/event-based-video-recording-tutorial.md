@@ -3,18 +3,18 @@ title: Eseményvezérelt videó rögzítése a felhőben és lejátszás a Felh�
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Live Video Analytics szolgáltatást a Azure IoT Edgeon, hogy rögzítse a felhőbe, és hogyan játssza vissza a felhőből.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: a2388a01544d2158e7ca6f1692df07b14ec03a93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03c97854673b369db9fe1cb026161a1e81a6bf31
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91773552"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346639"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Oktatóanyag: esemény-alapú videofelvétel a felhőbe és a felhőből való lejátszás
 
 Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Azure IoT Edge az Azure Live Video Analytics szolgáltatást, hogy az élő videó forrásának egyes részeit szelektíven rögzítse a felhőben Azure Media Services. Ez a használati eset az oktatóanyagban az [Event-based video Recording](event-based-video-recording-concept.md) (EVR) néven is ismert. Élő videó részeinek rögzítéséhez egy objektum-észlelési AI-modell használatával kell keresnie az objektumokat a videóban, és csak bizonyos típusú objektumok észlelésekor rögzíthet videoklipeket. Azt is megismerheti, hogyan lehet lejátszani a rögzített videoklipeket Media Services használatával. Ez a képesség számos olyan forgatókönyv esetében hasznos, ahol meg kell őrizni az érdekes videoklipek archívumát. 
 
-Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+Az oktatóanyagban a következőket végezheti el:
 
 > [!div class="checklist"]
 > * Állítsa be a megfelelő erőforrásokat.
@@ -63,7 +63,7 @@ Az Event-alapú videofelvétel arra utal, hogy az esemény által aktivált vide
 Azt is megteheti, hogy csak akkor aktiválja a rögzítést, ha egy következtetési szolgáltatás észleli, hogy egy adott esemény történt. Ebben az oktatóanyagban egy autópályán mozgó és videós klipeket tartalmazó videót fog használni, amikor egy teherautót észlelnek.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording-tutorial/overview.svg" alt-text="Médiagrafikon&quot;:::
+> :::image type="content" source="./media/event-based-video-recording-tutorial/overview.svg" alt-text="Médiagrafikon":::
 
 A diagram a [Media Graph](media-graph-concept.md) képi ábrázolása és a kívánt forgatókönyvet megvalósító további modulok. Négy IoT Edge modult érint:
 
@@ -75,26 +75,30 @@ A diagram a [Media Graph](media-graph-concept.md) képi ábrázolása és a kív
 Ahogy az ábrán látható, egy RTSP- [forrás](media-graph-concept.md#rtsp-source) csomópontot fog használni a Media Graphban, hogy rögzítse a szimulált élő videót egy autópályán, és küldje el a videót két elérési útra:
 
 * Az első útvonal egy [frame rate szűrő processzor](media-graph-concept.md#frame-rate-filter-processor) -csomópont, amely a képkockákat a megadott (csökkentett) képkockán jeleníti meg. Ezeket a képkockákat a rendszer egy HTTP-bővítményi csomópontba továbbítja. Ezután a csomópont továbbítja a képkockákat képként, az AI-modul YOLO v3, amely egy objektum-detektor. A csomópont fogadja az eredményeket, amelyek a modell által észlelt objektumok (a forgalomban lévő járművek). A HTTP-bővítmény csomópont ezt követően közzéteszi az eredményeket az IoT Hub Message fogadó csomóponton keresztül az IoT Edge hubhoz.
-* A objectCounter modul úgy van beállítva, hogy üzeneteket fogadjon az IoT Edge hubhoz, amely tartalmazza az objektum-észlelési eredményeket (a forgalomban lévő járműveket). A modul ellenőrzi ezeket az üzeneteket, és egy adott típusú objektumokat keres, amelyeket egy beállítással konfiguráltak. Ha ilyen objektum található, a modul üzenetet küld az IoT Edge hubhoz. Az &quot;objektum található" üzeneteket a rendszer átirányítja a Media Graph IoT Hub forrás csomópontjára. Ilyen üzenet fogadásakor a Media Graph IoT Hub forrás csomópontja elindítja a [Signal Gate processzor](media-graph-concept.md#signal-gate-processor) csomópontját. A Signal Gate processzor csomópontja ekkor megnyílik a beállított időtartamra. A videó a kapun keresztül áramlik át az eszköz fogadó csomópontjára az adott időtartamra. Az élő adatfolyam ezen részét a rendszer az [eszköz](media-graph-concept.md#asset-sink) fogadó csomópontján keresztül rögzíti a Azure Media Services fiókjában lévő egyik [eszközre](terminology.md#asset) .
+* A objectCounter modul úgy van beállítva, hogy üzeneteket fogadjon az IoT Edge hubhoz, amely tartalmazza az objektum-észlelési eredményeket (a forgalomban lévő járműveket). A modul ellenőrzi ezeket az üzeneteket, és egy adott típusú objektumokat keres, amelyeket egy beállítással konfiguráltak. Ha ilyen objektum található, a modul üzenetet küld az IoT Edge hubhoz. Az "objektum található" üzeneteket a rendszer átirányítja a Media Graph IoT Hub forrás csomópontjára. Ilyen üzenet fogadásakor a Media Graph IoT Hub forrás csomópontja elindítja a [Signal Gate processzor](media-graph-concept.md#signal-gate-processor) csomópontját. A Signal Gate processzor csomópontja ekkor megnyílik a beállított időtartamra. A videó a kapun keresztül áramlik át az eszköz fogadó csomópontjára az adott időtartamra. Az élő adatfolyam ezen részét a rendszer az [eszköz](media-graph-concept.md#asset-sink) fogadó csomópontján keresztül rögzíti a Azure Media Services fiókjában lévő egyik [eszközre](terminology.md#asset) .
 
 ## <a name="set-up-your-development-environment"></a>A fejlesztési környezet beállítása
 
 Mielőtt elkezdené, győződjön meg róla, hogy végrehajtotta a harmadik felsorolásjelet az [Előfeltételekben](#prerequisites). Az erőforrás-telepítési parancsfájl befejeződése után válassza ki a kapcsos zárójeleket, hogy elérhetővé tegye a mappastruktúrát. A ~/clouddrive/LVA-Sample könyvtár alatt létrehozott néhány fájl megjelenik.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstarts/clouddrive.png" alt-text="Médiagrafikon&quot;:::
+> :::image type="content" source="./media/quickstarts/clouddrive.png" alt-text="Alkalmazásbeállítások":::
 
-A diagram a [Media Graph](media-graph-concept.md) képi ábrázolása és a kívánt forgatókönyvet megvalósító további modulok. Négy IoT Edge modult érint:
+Ebben az oktatóanyagban a következő fájlok szerepelnek:
 
-* Élő videó-elemzés egy IoT Edge modulon.
-* Egy Edge-modul, amely egy HTTP-végpont mögötti AI-modellt futtat. Ez az AI-modul a [YOLO v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modellt használja, amely számos típusú objektumot képes felderíteni.
-* Az objektumok számlálására és szűrésére szolgáló egyéni modul, amelyet a diagram objektum-számlálójának nevezünk. Ebben az oktatóanyagban létrehoz egy objektum-számlálót, és telepíti azt.
-* Egy [RTSP szimulátor-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) , amely egy RTSP-kamerát szimulál.
-    
-Ahogy az ábrán látható, egy RTSP- [forrás](media-graph-concept.md#rtsp-source) csomópontot fog használni a Media Graphban, hogy rögzítse a szimulált élő videót egy autópályán, és küldje el a videót két elérési útra:
+* **~/clouddrive/LVA-Sample/Edge-Deployment/.env** : olyan tulajdonságokat tartalmaz, amelyeket a Visual Studio Code használ a modulok peremhálózati eszközre való telepítéséhez.
+* **~/clouddrive/lva-sample/appsetting.json** : a mintakód futtatásához a Visual Studio Code használatos.
 
-* Az első útvonal egy [frame rate szűrő processzor](media-graph-concept.md#frame-rate-filter-processor) -csomópont, amely a képkockákat a megadott (csökkentett) képkockán jeleníti meg. Ezeket a képkockákat a rendszer egy HTTP-bővítményi csomópontba továbbítja. Ezután a csomópont továbbítja a képkockákat képként, az AI-modul YOLO v3, amely egy objektum-detektor. A csomópont fogadja az eredményeket, amelyek a modell által észlelt objektumok (a forgalomban lévő járművek). A HTTP-bővítmény csomópont ezt követően közzéteszi az eredményeket az IoT Hub Message fogadó csomóponton keresztül az IoT Edge hubhoz.
-* A objectCounter modul úgy van beállítva, hogy üzeneteket fogadjon az IoT Edge hubhoz, amely tartalmazza az objektum-észlelési eredményeket (a forgalomban lévő járműveket). A modul ellenőrzi ezeket az üzeneteket, és egy adott típusú objektumokat keres, amelyeket egy beállítással konfiguráltak. Ha ilyen objektum található, a modul üzenetet küld az IoT Edge hubhoz. Az &quot;objektum található" : "HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX",  
+Ezekre a lépésekre szüksége lesz a fájlokra.
+
+1. A tárház klónozása a GitHub-hivatkozásról https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp .
+1. Indítsa el a Visual Studio Code-ot, és nyissa meg azt a mappát, ahová a tárházat letöltötte.
+1. A Visual Studio Code-ban keresse meg a src/Cloud-to-Device-Console-app mappát, és hozzon létre egy **appsettings.js** nevű fájlt. Ez a fájl tartalmazza a program futtatásához szükséges beállításokat.
+1. Másolja a tartalmat a ~/clouddrive/LVA-Sample/appsettings.jsfájlból. A szövegnek a következőhöz hasonlóan kell kinéznie:
+
+    ```
+    {  
+        "IoThubConnectionString" : "HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX",  
         "deviceId" : "lva-sample-device",  
         "moduleId" : "lvaEdge"  
     }
@@ -102,8 +106,8 @@ Ahogy az ábrán látható, egy RTSP- [forrás](media-graph-concept.md#rtsp-sour
 
     A IoT Hub kapcsolódási karakterlánc lehetővé teszi, hogy a Visual Studio Code használatával parancsokat küldjön az Edge-moduloknak az Azure IoT Hub segítségével.
     
-1. Ezután keresse meg a src/Edge mappát, és hozzon létre egy **. env**nevű fájlt.
-1. Másolja a tartalmat a ~/clouddrive/LVA-sample/.env fájlból. A szövegnek a következőhöz hasonlóan kell kinéznie:
+1. Ezután keresse meg a src/Edge mappát, és hozzon létre egy **. env** nevű fájlt.
+1. Másolja a tartalmat a ~/clouddrive/LVA-Sample/Edge-Deployment/.env fájlból. A szövegnek a következőhöz hasonlóan kell kinéznie:
 
     ```
     SUBSCRIPTION_ID="<Subscription ID>"  
@@ -128,10 +132,10 @@ A Visual Studio Code-ban keresse meg az src/Edge lehetőséget. Ekkor megjelenik
 
 Az src/Edge/deployment.objectCounter.template.jsmegnyitása a következőn:. A **modulok** szakasz négy bejegyzést tartalmaz, amelyek megfelelnek az előző "fogalmak" szakaszban felsorolt elemeknek:
 
-* **lvaEdge**: az élő videó Analytics IoT Edge modulon.
-* **yolov3**: Ez a YOLO v3 modell használatával létrehozott AI-modul.
-* **rtspsim**: ez az RTSP-szimulátor.
-* **objectCounter**: ez az a modul, amely a yolov3 eredményeiből származó adott objektumokat keresi.
+* **lvaEdge** : az élő videó Analytics IoT Edge modulon.
+* **yolov3** : Ez a YOLO v3 modell használatával létrehozott AI-modul.
+* **rtspsim** : ez az RTSP-szimulátor.
+* **objectCounter** : ez az a modul, amely a yolov3 eredményeiből származó adott objektumokat keresi.
 
 A objectCounter modul esetében tekintse meg a "rendszerkép" értékhez használt karakterláncot ($ {modules. objectCounter}). Ez a IoT Edge modul fejlesztésének [oktatóanyagán](../../iot-edge/tutorial-develop-for-linux.md) alapul. A Visual Studio Code automatikusan felismeri, hogy a objectCounter modul kódja az src/Edge/modules/objectCounter. 
 
@@ -151,40 +155,16 @@ Az üzembe helyezési jegyzék meghatározza, hogy milyen modulok vannak üzembe
 A Visual Studio Code használatával a Docker-be való bejelentkezéshez kövesse az [alábbi utasításokat](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution) . Ezután válassza **a létrehozás és Leküldés IoT Edge megoldást**. Ehhez a lépéshez használja az src/Edge/deployment.objectCounter.template.js-t.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording-tutorial/build-push.png" alt-text="Médiagrafikon&quot;:::
-
-A diagram a [Media Graph](media-graph-concept.md) képi ábrázolása és a kívánt forgatókönyvet megvalósító további modulok. Négy IoT Edge modult érint:
-
-* Élő videó-elemzés egy IoT Edge modulon.
-* Egy Edge-modul, amely egy HTTP-végpont mögötti AI-modellt futtat. Ez az AI-modul a [YOLO v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modellt használja, amely számos típusú objektumot képes felderíteni.
-* Az objektumok számlálására és szűrésére szolgáló egyéni modul, amelyet a diagram objektum-számlálójának nevezünk. Ebben az oktatóanyagban létrehoz egy objektum-számlálót, és telepíti azt.
-* Egy [RTSP szimulátor-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) , amely egy RTSP-kamerát szimulál.
-    
-Ahogy az ábrán látható, egy RTSP- [forrás](media-graph-concept.md#rtsp-source) csomópontot fog használni a Media Graphban, hogy rögzítse a szimulált élő videót egy autópályán, és küldje el a videót két elérési útra:
-
-* Az első útvonal egy [frame rate szűrő processzor](media-graph-concept.md#frame-rate-filter-processor) -csomópont, amely a képkockákat a megadott (csökkentett) képkockán jeleníti meg. Ezeket a képkockákat a rendszer egy HTTP-bővítményi csomópontba továbbítja. Ezután a csomópont továbbítja a képkockákat képként, az AI-modul YOLO v3, amely egy objektum-detektor. A csomópont fogadja az eredményeket, amelyek a modell által észlelt objektumok (a forgalomban lévő járművek). A HTTP-bővítmény csomópont ezt követően közzéteszi az eredményeket az IoT Hub Message fogadó csomóponton keresztül az IoT Edge hubhoz.
-* A objectCounter modul úgy van beállítva, hogy üzeneteket fogadjon az IoT Edge hubhoz, amely tartalmazza az objektum-észlelési eredményeket (a forgalomban lévő járműveket). A modul ellenőrzi ezeket az üzeneteket, és egy adott típusú objektumokat keres, amelyeket egy beállítással konfiguráltak. Ha ilyen objektum található, a modul üzenetet küld az IoT Edge hubhoz. Az &quot;objektum található":::
+> :::image type="content" source="./media/event-based-video-recording-tutorial/build-push.png" alt-text="IoT Edge-megoldás létrehozása és leküldése":::
 
 Ez a művelet létrehozza a objectCounter modult az objektumok számlálásához, és leküldi a rendszerképet a Azure Container Registry.
 
 * Győződjön meg arról, hogy rendelkezik a környezeti változókkal CONTAINER_REGISTRY_USERNAME_myacr és CONTAINER_REGISTRY_PASSWORD_myacr a. env fájlban.
 
-Ez a lépés létrehozza a IoT Edge üzembe helyezési jegyzéket az src/Edge/config/deployment.objectCounter.amd64.json címen. Kattintson a jobb gombbal a fájlra, és válassza **a központi telepítés létrehozása egyetlen eszközhöz**lehetőséget.
+Ez a lépés létrehozza a IoT Edge üzembe helyezési jegyzéket az src/Edge/config/deployment.objectCounter.amd64.json címen. Kattintson a jobb gombbal a fájlra, és válassza **a központi telepítés létrehozása egyetlen eszközhöz** lehetőséget.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstarts/create-deployment-single-device.png" alt-text="Médiagrafikon&quot;:::
-
-A diagram a [Media Graph](media-graph-concept.md) képi ábrázolása és a kívánt forgatókönyvet megvalósító további modulok. Négy IoT Edge modult érint:
-
-* Élő videó-elemzés egy IoT Edge modulon.
-* Egy Edge-modul, amely egy HTTP-végpont mögötti AI-modellt futtat. Ez az AI-modul a [YOLO v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modellt használja, amely számos típusú objektumot képes felderíteni.
-* Az objektumok számlálására és szűrésére szolgáló egyéni modul, amelyet a diagram objektum-számlálójának nevezünk. Ebben az oktatóanyagban létrehoz egy objektum-számlálót, és telepíti azt.
-* Egy [RTSP szimulátor-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) , amely egy RTSP-kamerát szimulál.
-    
-Ahogy az ábrán látható, egy RTSP- [forrás](media-graph-concept.md#rtsp-source) csomópontot fog használni a Media Graphban, hogy rögzítse a szimulált élő videót egy autópályán, és küldje el a videót két elérési útra:
-
-* Az első útvonal egy [frame rate szűrő processzor](media-graph-concept.md#frame-rate-filter-processor) -csomópont, amely a képkockákat a megadott (csökkentett) képkockán jeleníti meg. Ezeket a képkockákat a rendszer egy HTTP-bővítményi csomópontba továbbítja. Ezután a csomópont továbbítja a képkockákat képként, az AI-modul YOLO v3, amely egy objektum-detektor. A csomópont fogadja az eredményeket, amelyek a modell által észlelt objektumok (a forgalomban lévő járművek). A HTTP-bővítmény csomópont ezt követően közzéteszi az eredményeket az IoT Hub Message fogadó csomóponton keresztül az IoT Edge hubhoz.
-* A objectCounter modul úgy van beállítva, hogy üzeneteket fogadjon az IoT Edge hubhoz, amely tartalmazza az objektum-észlelési eredményeket (a forgalomban lévő járműveket). A modul ellenőrzi ezeket az üzeneteket, és egy adott típusú objektumokat keres, amelyeket egy beállítással konfiguráltak. Ha ilyen objektum található, a modul üzenetet küld az IoT Edge hubhoz. Az &quot;objektum található":::
+> :::image type="content" source="./media/quickstarts/create-deployment-single-device.png" alt-text="Üzemelő példány létrehozása egyetlen eszközhöz":::
 
 Ha ez az első oktatóanyag a IoT Edge Live Video Analytics szolgáltatással, a Visual Studio Code felszólítja, hogy adja meg a IoT Hub kapcsolódási karakterláncot. A fájlt átmásolhatja a appsettings.jsfájlból.
 
@@ -194,19 +174,7 @@ Ebben a szakaszban az Edge-modulok üzembe helyezése a IoT Edge eszközön megk
 Körülbelül 30 másodperc alatt frissítse az Azure IoT Hubt a Visual Studio Code bal alsó részén. Látnia kell, hogy a lvaEdge, a rtspsim, a yolov3 és a objectCounter nevű négy modul van üzembe helyezve.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording-tutorial/iot-hub.png" alt-text="Médiagrafikon&quot;:::
-
-A diagram a [Media Graph](media-graph-concept.md) képi ábrázolása és a kívánt forgatókönyvet megvalósító további modulok. Négy IoT Edge modult érint:
-
-* Élő videó-elemzés egy IoT Edge modulon.
-* Egy Edge-modul, amely egy HTTP-végpont mögötti AI-modellt futtat. Ez az AI-modul a [YOLO v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modellt használja, amely számos típusú objektumot képes felderíteni.
-* Az objektumok számlálására és szűrésére szolgáló egyéni modul, amelyet a diagram objektum-számlálójának nevezünk. Ebben az oktatóanyagban létrehoz egy objektum-számlálót, és telepíti azt.
-* Egy [RTSP szimulátor-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) , amely egy RTSP-kamerát szimulál.
-    
-Ahogy az ábrán látható, egy RTSP- [forrás](media-graph-concept.md#rtsp-source) csomópontot fog használni a Media Graphban, hogy rögzítse a szimulált élő videót egy autópályán, és küldje el a videót két elérési útra:
-
-* Az első útvonal egy [frame rate szűrő processzor](media-graph-concept.md#frame-rate-filter-processor) -csomópont, amely a képkockákat a megadott (csökkentett) képkockán jeleníti meg. Ezeket a képkockákat a rendszer egy HTTP-bővítményi csomópontba továbbítja. Ezután a csomópont továbbítja a képkockákat képként, az AI-modul YOLO v3, amely egy objektum-detektor. A csomópont fogadja az eredményeket, amelyek a modell által észlelt objektumok (a forgalomban lévő járművek). A HTTP-bővítmény csomópont ezt követően közzéteszi az eredményeket az IoT Hub Message fogadó csomóponton keresztül az IoT Edge hubhoz.
-* A objectCounter modul úgy van beállítva, hogy üzeneteket fogadjon az IoT Edge hubhoz, amely tartalmazza az objektum-észlelési eredményeket (a forgalomban lévő járműveket). A modul ellenőrzi ezeket az üzeneteket, és egy adott típusú objektumokat keres, amelyeket egy beállítással konfiguráltak. Ha ilyen objektum található, a modul üzenetet küld az IoT Edge hubhoz. Az &quot;objektum található":::
+> :::image type="content" source="./media/event-based-video-recording-tutorial/iot-hub.png" alt-text="Négy modul üzembe helyezése":::
 
 ## <a name="prepare-for-monitoring-events"></a>Felkészülés a figyelési eseményekre
 
@@ -214,57 +182,71 @@ A objectCounter modul eseményeinek és az élő videó Analytics IoT Edge modul
 
 1. Nyissa meg az Explorer panelt a Visual Studio Code-ban, és keresse meg az **Azure IoT hub** a bal alsó sarokban.
 1. Bontsa ki az **eszközök** csomópontot.
-1. Kattintson a jobb gombbal a LVA-Sample-Device fájlra, és válassza a **figyelés beépített esemény végpontja**lehetőséget.
+1. Kattintson a jobb gombbal a LVA-Sample-Device fájlra, és válassza a **figyelés beépített esemény végpontja** lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstarts/start-monitoring-iothub-events.png" alt-text="Médiagrafikon&quot;:::
-
-A diagram a [Media Graph](media-graph-concept.md) képi ábrázolása és a kívánt forgatókönyvet megvalósító további modulok. Négy IoT Edge modult érint:
-
-* Élő videó-elemzés egy IoT Edge modulon.
-* Egy Edge-modul, amely egy HTTP-végpont mögötti AI-modellt futtat. Ez az AI-modul a [YOLO v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modellt használja, amely számos típusú objektumot képes felderíteni.
-* Az objektumok számlálására és szűrésére szolgáló egyéni modul, amelyet a diagram objektum-számlálójának nevezünk. Ebben az oktatóanyagban létrehoz egy objektum-számlálót, és telepíti azt.
-* Egy [RTSP szimulátor-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) , amely egy RTSP-kamerát szimulál.
-    
-Ahogy az ábrán látható, egy RTSP- [forrás](media-graph-concept.md#rtsp-source) csomópontot fog használni a Media Graphban, hogy rögzítse a szimulált élő videót egy autópályán, és küldje el a videót két elérési útra:
-
-* Az első útvonal egy [frame rate szűrő processzor](media-graph-concept.md#frame-rate-filter-processor) -csomópont, amely a képkockákat a megadott (csökkentett) képkockán jeleníti meg. Ezeket a képkockákat a rendszer egy HTTP-bővítményi csomópontba továbbítja. Ezután a csomópont továbbítja a képkockákat képként, az AI-modul YOLO v3, amely egy objektum-detektor. A csomópont fogadja az eredményeket, amelyek a modell által észlelt objektumok (a forgalomban lévő járművek). A HTTP-bővítmény csomópont ezt követően közzéteszi az eredményeket az IoT Hub Message fogadó csomóponton keresztül az IoT Edge hubhoz.
-* A objectCounter modul úgy van beállítva, hogy üzeneteket fogadjon az IoT Edge hubhoz, amely tartalmazza az objektum-észlelési eredményeket (a forgalomban lévő járműveket). A modul ellenőrzi ezeket az üzeneteket, és egy adott típusú objektumokat keres, amelyeket egy beállítással konfiguráltak. Ha ilyen objektum található, a modul üzenetet küld az IoT Edge hubhoz. Az &quot;objektum található":::
+    > :::image type="content" source="./media/quickstarts/start-monitoring-iothub-events.png" alt-text="A beépített esemény-végpont figyelésének megkezdése":::
     
 ## <a name="run-the-program"></a>A program futtatása
 
 1. A Visual Studio Code-ban nyissa meg a **bővítmények** lapot (vagy nyomja le a CTRL + SHIFT + X billentyűkombinációt), és keressen rá az Azure IoT hubra.
-1. Kattintson a jobb gombbal, és válassza a **bővítmény beállításai**lehetőséget.
+1. Kattintson a jobb gombbal, és válassza a **bővítmény beállításai** lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Médiagrafikon&quot;:::
-
-A diagram a [Media Graph](media-graph-concept.md) képi ábrázolása és a kívánt forgatókönyvet megvalósító további modulok. Négy IoT Edge modult érint:
-
-* Élő videó-elemzés egy IoT Edge modulon.
-* Egy Edge-modul, amely egy HTTP-végpont mögötti AI-modellt futtat. Ez az AI-modul a [YOLO v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modellt használja, amely számos típusú objektumot képes felderíteni.
-* Az objektumok számlálására és szűrésére szolgáló egyéni modul, amelyet a diagram objektum-számlálójának nevezünk. Ebben az oktatóanyagban létrehoz egy objektum-számlálót, és telepíti azt.
-* Egy [RTSP szimulátor-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) , amely egy RTSP-kamerát szimulál.
-    
-Ahogy az ábrán látható, egy RTSP- [forrás](media-graph-concept.md#rtsp-source) csomópontot fog használni a Media Graphban, hogy rögzítse a szimulált élő videót egy autópályán, és küldje el a videót két elérési útra:
-
-* Az első útvonal egy [frame rate szűrő processzor](media-graph-concept.md#frame-rate-filter-processor) -csomópont, amely a képkockákat a megadott (csökkentett) képkockán jeleníti meg. Ezeket a képkockákat a rendszer egy HTTP-bővítményi csomópontba továbbítja. Ezután a csomópont továbbítja a képkockákat képként, az AI-modul YOLO v3, amely egy objektum-detektor. A csomópont fogadja az eredményeket, amelyek a modell által észlelt objektumok (a forgalomban lévő járművek). A HTTP-bővítmény csomópont ezt követően közzéteszi az eredményeket az IoT Hub Message fogadó csomóponton keresztül az IoT Edge hubhoz.
-* A objectCounter modul úgy van beállítva, hogy üzeneteket fogadjon az IoT Edge hubhoz, amely tartalmazza az objektum-észlelési eredményeket (a forgalomban lévő járműveket). A modul ellenőrzi ezeket az üzeneteket, és egy adott típusú objektumokat keres, amelyeket egy beállítással konfiguráltak. Ha ilyen objektum található, a modul üzenetet küld az IoT Edge hubhoz. Az &quot;objektum található" lehetőséget.
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Bővítmény beállításai":::
+1. Keresse meg és engedélyezze a "részletes üzenet megjelenítése" lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Médiagrafikon&quot;:::
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Részletes üzenet megjelenítése":::
+1. <!--In Visual Studio Code, go-->Lépjen a src/Cloud-to-Device-Console-app/operations.jselemre.
+1. A **GraphTopologySet** csomópont alatt szerkessze a következőket:
 
-A diagram a [Media Graph](media-graph-concept.md) képi ábrázolása és a kívánt forgatókönyvet megvalósító további modulok. Négy IoT Edge modult érint:
-
-* Élő videó-elemzés egy IoT Edge modulon.
-* Egy Edge-modul, amely egy HTTP-végpont mögötti AI-modellt futtat. Ez az AI-modul a [YOLO v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modellt használja, amely számos típusú objektumot képes felderíteni.
-* Az objektumok számlálására és szűrésére szolgáló egyéni modul, amelyet a diagram objektum-számlálójának nevezünk. Ebben az oktatóanyagban létrehoz egy objektum-számlálót, és telepíti azt.
-* Egy [RTSP szimulátor-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) , amely egy RTSP-kamerát szimulál.
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json"`
     
-Ahogy az ábrán látható, egy RTSP- [forrás](media-graph-concept.md#rtsp-source) csomópontot fog használni a Media Graphban, hogy rögzítse a szimulált élő videót egy autópályán, és küldje el a videót két elérési útra:
+1. Ezután a **GraphInstanceSet** és az **GraphTopologyDelete** csomópont alatt szerkessze a következőt:
 
-* Az első útvonal egy [frame rate szűrő processzor](media-graph-concept.md#frame-rate-filter-processor) -csomópont, amely a képkockákat a megadott (csökkentett) képkockán jeleníti meg. Ezeket a képkockákat a rendszer egy HTTP-bővítményi csomópontba továbbítja. Ezután a csomópont továbbítja a képkockákat képként, az AI-modul YOLO v3, amely egy objektum-detektor. A csomópont fogadja az eredményeket, amelyek a modell által észlelt objektumok (a forgalomban lévő járművek). A HTTP-bővítmény csomópont ezt követően közzéteszi az eredményeket az IoT Hub Message fogadó csomóponton keresztül az IoT Edge hubhoz.
-* A objectCounter modul úgy van beállítva, hogy üzeneteket fogadjon az IoT Edge hubhoz, amely tartalmazza az objektum-észlelési eredményeket (a forgalomban lévő járműveket). A modul ellenőrzi ezeket az üzeneteket, és egy adott típusú objektumokat keres, amelyeket egy beállítással konfiguráltak. Ha ilyen objektum található, a modul üzenetet küld az IoT Edge hubhoz. Az &quot;objektum található"
+    `"topologyName" : "EVRtoAssetsOnObjDetect"`
+1. Indítsa el a hibakeresési munkamenetet az F5 billentyű kiválasztásával. Néhány üzenet jelenik meg a **terminál** ablakban.
+1. A fájl operations.jselindul a GraphTopologyList és a GraphInstanceList hívásával. Ha az előző rövid útmutatók vagy oktatóanyagok után törölte az erőforrásokat, akkor ez a művelet üres listát ad vissza, és szünetelteti az **ENTER billentyű** lenyomását, amint az alábbi ábrán látható:
+
+    ```
+    --------------------------------------------------------------------------
+    Executing operation GraphTopologyList
+    -----------------------  Request: GraphTopologyList  --------------------------------------------------
+    {
+      "@apiVersion": "1.0"
+    }
+    ---------------  Response: GraphTopologyList - Status: 200  ---------------
+    {
+      "value": []
+    }
+    --------------------------------------------------------------------------
+    Executing operation WaitForInput
+    Press Enter to continue
+    ```
+1. Miután kiválasztotta az **ENTER billentyűt** a **terminál** ablakban, a következő közvetlen metódus-hívások is létrejönnek:
+   * A GraphTopologySet hívása az előző topologyUrl használatával
+   * A GraphInstanceSet hívása a következő törzs használatával
+     
+        ```
+        {
+          "@apiVersion": "1.0",
+          "name": "Sample-Graph-1",
+          "properties": {
+            "topologyName": "EVRtoAssetsOnObjDetect",
+            "description": "Sample graph description",
+            "parameters": [
+              {
+                "name": "rtspUrl",
+                "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
+              },
+              {
+                "name": "rtspUserName",
+                "value": "testuser"
+              },
+              {
+                "name": "rtspPassword",
+                "value": "testpassword"
               }
             ]
           }
@@ -419,38 +401,14 @@ Megvizsgálhatja a gráf által létrehozott Media Services adategységet, ha be
 1. Válassza az **eszközök** lehetőséget a **Media Services** listában.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/continuous-video-recording-tutorial/assets.png" alt-text="Médiagrafikon&quot;:::
-
-A diagram a [Media Graph](media-graph-concept.md) képi ábrázolása és a kívánt forgatókönyvet megvalósító további modulok. Négy IoT Edge modult érint:
-
-* Élő videó-elemzés egy IoT Edge modulon.
-* Egy Edge-modul, amely egy HTTP-végpont mögötti AI-modellt futtat. Ez az AI-modul a [YOLO v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modellt használja, amely számos típusú objektumot képes felderíteni.
-* Az objektumok számlálására és szűrésére szolgáló egyéni modul, amelyet a diagram objektum-számlálójának nevezünk. Ebben az oktatóanyagban létrehoz egy objektum-számlálót, és telepíti azt.
-* Egy [RTSP szimulátor-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) , amely egy RTSP-kamerát szimulál.
-    
-Ahogy az ábrán látható, egy RTSP- [forrás](media-graph-concept.md#rtsp-source) csomópontot fog használni a Media Graphban, hogy rögzítse a szimulált élő videót egy autópályán, és küldje el a videót két elérési útra:
-
-* Az első útvonal egy [frame rate szűrő processzor](media-graph-concept.md#frame-rate-filter-processor) -csomópont, amely a képkockákat a megadott (csökkentett) képkockán jeleníti meg. Ezeket a képkockákat a rendszer egy HTTP-bővítményi csomópontba továbbítja. Ezután a csomópont továbbítja a képkockákat képként, az AI-modul YOLO v3, amely egy objektum-detektor. A csomópont fogadja az eredményeket, amelyek a modell által észlelt objektumok (a forgalomban lévő járművek). A HTTP-bővítmény csomópont ezt követően közzéteszi az eredményeket az IoT Hub Message fogadó csomóponton keresztül az IoT Edge hubhoz.
-* A objectCounter modul úgy van beállítva, hogy üzeneteket fogadjon az IoT Edge hubhoz, amely tartalmazza az objektum-észlelési eredményeket (a forgalomban lévő járműveket). A modul ellenőrzi ezeket az üzeneteket, és egy adott típusú objektumokat keres, amelyeket egy beállítással konfiguráltak. Ha ilyen objektum található, a modul üzenetet küld az IoT Edge hubhoz. Az &quot;objektum található":::
+    > :::image type="content" source="./media/continuous-video-recording-tutorial/assets.png" alt-text="Folyamatos videófelvétel":::
 1. Itt található egy sampleAssetFromEVR-LVAEdge-{DateTime} nevű eszköz. Ez a RecordingStarted esemény outputLocation tulajdonságában megadott név. A topológia assetNamePattern határozza meg a név létrejöttének módját.
 1. Válassza ki az objektumot.
 1. Az eszköz adatai lapon válassza az **új létrehozása** lehetőséget a **streaming URL-cím** szövegmezőben.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/continuous-video-recording-tutorial/new-asset.png" alt-text="Médiagrafikon&quot;:::
-
-A diagram a [Media Graph](media-graph-concept.md) képi ábrázolása és a kívánt forgatókönyvet megvalósító további modulok. Négy IoT Edge modult érint:
-
-* Élő videó-elemzés egy IoT Edge modulon.
-* Egy Edge-modul, amely egy HTTP-végpont mögötti AI-modellt futtat. Ez az AI-modul a [YOLO v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modellt használja, amely számos típusú objektumot képes felderíteni.
-* Az objektumok számlálására és szűrésére szolgáló egyéni modul, amelyet a diagram objektum-számlálójának nevezünk. Ebben az oktatóanyagban létrehoz egy objektum-számlálót, és telepíti azt.
-* Egy [RTSP szimulátor-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) , amely egy RTSP-kamerát szimulál.
-    
-Ahogy az ábrán látható, egy RTSP- [forrás](media-graph-concept.md#rtsp-source) csomópontot fog használni a Media Graphban, hogy rögzítse a szimulált élő videót egy autópályán, és küldje el a videót két elérési útra:
-
-* Az első útvonal egy [frame rate szűrő processzor](media-graph-concept.md#frame-rate-filter-processor) -csomópont, amely a képkockákat a megadott (csökkentett) képkockán jeleníti meg. Ezeket a képkockákat a rendszer egy HTTP-bővítményi csomópontba továbbítja. Ezután a csomópont továbbítja a képkockákat képként, az AI-modul YOLO v3, amely egy objektum-detektor. A csomópont fogadja az eredményeket, amelyek a modell által észlelt objektumok (a forgalomban lévő járművek). A HTTP-bővítmény csomópont ezt követően közzéteszi az eredményeket az IoT Hub Message fogadó csomóponton keresztül az IoT Edge hubhoz.
-* A objectCounter modul úgy van beállítva, hogy üzeneteket fogadjon az IoT Edge hubhoz, amely tartalmazza az objektum-észlelési eredményeket (a forgalomban lévő járműveket). A modul ellenőrzi ezeket az üzeneteket, és egy adott típusú objektumokat keres, amelyeket egy beállítással konfiguráltak. Ha ilyen objektum található, a modul üzenetet küld az IoT Edge hubhoz. Az &quot;objektum található":::
-1. A megnyíló varázslóban fogadja el az alapértelmezett beállításokat, majd válassza a **Hozzáadás**lehetőséget. [További információ: videolejátszás](video-playback-concept.md).
+    > :::image type="content" source="./media/continuous-video-recording-tutorial/new-asset.png" alt-text="Új eszköz":::
+1. A megnyíló varázslóban fogadja el az alapértelmezett beállításokat, majd válassza a **Hozzáadás** lehetőséget. [További információ: videolejátszás](video-playback-concept.md).
 
     > [!TIP]
     > Ellenőrizze, hogy [fut-e a folyamatos átviteli végpont](../latest/streaming-endpoint-concept.md).
@@ -463,7 +421,7 @@ Ahogy az ábrán látható, egy RTSP- [forrás](media-graph-concept.md#rtsp-sour
 
 Ha szeretné kipróbálni a többi oktatóanyagot, tartsa be a létrehozott erőforrásokat. Ellenkező esetben lépjen a Azure Portal, keresse meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben az oktatóanyagot futtatta, és törölje az erőforráscsoportot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Használjon olyan [IP-kamerát](https://en.wikipedia.org/wiki/IP_camera) , amely támogatja az RTSP-t az RTSP-szimulátor használata helyett. Az ONVIF-kompatibilis [termékek lapon](https://www.onvif.org/conformant-products/) megkeresheti az RTSP-támogatással rendelkező IP-kamerákat a G, S vagy T profiloknak megfelelő eszközök keresésével.
 * AMD64 vagy x64 Linux rendszerű eszköz használata (Azure Linux rendszerű virtuális gép használata). Az eszköznek ugyanabban a hálózaton kell lennie, mint az IP-kamerának. Kövesse a következő témakör utasításait: [Install Azure IoT Edge Runtime on Linux](../../iot-edge/how-to-install-iot-edge-linux.md). Ezután kövesse az [első IoT Edge modul üzembe helyezése virtuális Linux-eszközre című](../../iot-edge/quickstart-linux.md) rövid útmutatót az eszköz Azure IoT hub való regisztrálásához.

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: d2a9063a202ba542279efd8017d282fe0aa78d42
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c578febf088148e9e0496d87b715c953c5bd9d36
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129864"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348372"
 ---
 # <a name="service-bus-topics-output-from-azure-stream-analytics"></a>Service Bus témakörök kimenete Azure Stream Analytics
 
@@ -61,11 +61,11 @@ A következő példában a mezők és a `DeviceId` `DeviceStatus` metaadatokhoz 
 
 Az alábbi ábrán a EventHub által a [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)használatával megtekintett kimeneti üzenet várt tulajdonságai láthatók.
 
-:::image type="content" source="media/service-bus-topics-output/custom-properties.png" alt-text="Tulajdonságok oszlopai":::
+:::image type="content" source="media/service-bus-topics-output/custom-properties.png" alt-text="Egyéni esemény tulajdonságai":::
 
 ## <a name="system-properties"></a>Rendszertulajdonságok
 
-A lekérdezési oszlopokat [rendszertulajdonságként](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) csatolhatja a kimenő Service Bus-üzenetsor vagy-témakör üzeneteihez. Ezek az oszlopok nem lépnek be a hasznos adatokba, hanem a megfelelő BrokeredMessage [rendszertulajdonságot](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) a lekérdezési oszlop értékeivel töltik fel.
+A lekérdezési oszlopokat [rendszertulajdonságként](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties) csatolhatja a kimenő Service Bus-üzenetsor vagy-témakör üzeneteihez. Ezek az oszlopok nem lépnek be a hasznos adatokba, hanem a megfelelő BrokeredMessage [rendszertulajdonságot](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties) a lekérdezési oszlop értékeivel töltik fel.
 Ezek a Rendszertulajdonságok támogatottak – `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc` .
 
 Ezeknek az oszlopoknak a karakterlánc-értékeit a rendszer a megfelelő rendszertulajdonság-érték típusként értelmezi, és az elemzési hibák adathibákként lesznek kezelve.

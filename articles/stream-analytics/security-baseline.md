@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7cf3caa0e309c1640db6ca2817a91f9db71c5110
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 03655e88d4d4c9183bff71e04bf447f470fcf557
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129915"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348406"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Stream Analytics Azure biztonsági alapterve
 
@@ -238,9 +238,9 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 **Útmutató** : az Azure ad olyan beépített szerepköröket tartalmaz, amelyeket explicit módon kell hozzárendelni. A szerepköröket a tagság felderítésére lehet lekérdezni. Az Azure AD PowerShell-modullal ad hoc lekérdezéseket hajthat végre a felügyeleti csoportok tagjait futtató fiókok felderítéséhez.
 
-* [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Azure Security Center figyelés** : igen
 
@@ -542,7 +542,7 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 * [Lekérdezések létrehozása az Azure Resource Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-* [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription)
 
 * [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
@@ -682,7 +682,7 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 **Útmutató** : Azure Policy aliasok használata a "Microsoft. StreamAnalytics" névtérben egyéni szabályzatok létrehozásához a Azure stream Analytics konfigurációjának naplózásához vagy érvényesítéséhez. Használhatja a Azure Stream Analyticshoz kapcsolódó beépített szabályzat-definíciókat is, például a következőt: – a Azure Stream Analytics diagnosztikai naplóit engedélyezni kell
 
-* [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias)
 
 * [Azure Policy beépített szabályzat-definíciók](../governance/policy/samples/built-in-policies.md)
 
@@ -724,7 +724,7 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 **Útmutató** : az Azure Repos használatával biztonságosan tárolhatók és kezelhetők a kódok, beleértve az egyéni Azure-házirendeket, a Azure Resource Manager sablonokat, a kívánt állapotú konfigurációs parancsfájlokat, a felhasználó által definiált függvényeket és lekérdezéseket Az Azure DevOps felügyelt erőforrásainak eléréséhez engedélyeket adhat meg vagy tagadhat meg bizonyos felhasználók, beépített biztonsági csoportok vagy Azure Active Directory (Azure AD) által meghatározott csoportok számára, ha az integrálva van az Azure DevOps, vagy Active Directory, ha a TFS integrálva van.
 
-* [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
 
 * [Engedélyek és csoportok az Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
@@ -880,7 +880,7 @@ A Storage-fiók által támogatott szolgáltatásokból származó adatok bizton
 
 Az ügyfél által felügyelt/biztosított kulcsok Azure Key Vault az Azure CLI vagy a PowerShell használatával is készíthetők.
 
-* [Key Vault-kulcsok biztonsági mentése az Azure-ban](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Key Vault-kulcsok biztonsági mentése az Azure-ban](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Azure Security Center figyelés** : jelenleg nem érhető el
 

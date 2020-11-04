@@ -5,22 +5,23 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 21bbe15a37e95df297f580064beb63ebd5debe57
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 9becd6341baad54a74f10ae2f38cf9ccf1fd3037
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899894"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347896"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Azure Kubernetes Services (ak) fürt létrehozása és konfigurálása virtuális csomópontok használatára a Azure Portalban
 
-A számítási feladatok gyors üzembe helyezéséhez egy Azure Kubernetes-szolgáltatásbeli (ak-beli) fürtben virtuális csomópontokat használhat. A virtuális csomópontokkal gyorsan kiépítheti a hüvelyeket, és a végrehajtásuk ideje alatt csak másodpercenként kell fizetnie. Skálázási helyzetben nem kell megvárnia, hogy a Kubernetes-fürt automatikus méretezése virtuálisgép-számítási csomópontokat helyezzen üzembe a további hüvelyek futtatásához. A virtuális csomópontok csak Linux-hüvelyek és-csomópontok esetén támogatottak.
+Ez a cikk bemutatja, hogyan hozhatja létre és konfigurálhatja a virtuális hálózati erőforrásokat és egy AK-fürtöt a virtuális csomópontok engedélyezésével a Azure Portal használatával.
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat virtuális hálózati erőforrásokat és egy AK-fürtöt az engedélyezett virtuális csomópontokkal.
+> [!NOTE]
+> [Ez a cikk](virtual-nodes.md) áttekintést nyújt a régió rendelkezésre állásáról és a virtuális csomópontok használatával kapcsolatos korlátozásokról.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A virtuális csomópontok hálózati kommunikációt tesznek lehetővé Azure Container Instances (ACI) és az AK-fürtön futó hüvelyek között. A kommunikáció biztosításához létre kell hozni egy virtuális hálózati alhálózatot, és hozzá kell rendelni a delegált engedélyeket. A virtuális csomópontok csak a *speciális* hálózatkezelés használatával létrehozott AK-fürtökkel működnek. Alapértelmezés szerint az AK-fürtök *alapszintű* hálózatkezeléssel jönnek létre. Ebből a cikkből megtudhatja, hogyan hozhat létre virtuális hálózatot és alhálózatokat, majd helyezzen üzembe egy speciális hálózatkezelést használó AK-fürtöt.
+A virtuális csomópontok hálózati kommunikációt tesznek lehetővé Azure Container Instances (ACI) és az AK-fürtön futó hüvelyek között. A kommunikáció biztosításához létre kell hozni egy virtuális hálózati alhálózatot, és hozzá kell rendelni a delegált engedélyeket. A virtuális csomópontok csak a *speciális* hálózatkezelés (Azure CNI) használatával létrehozott AK-fürtökkel működnek. Alapértelmezés szerint az AK-fürtök *alapszintű* hálózatkezeléssel (kubenet) jönnek létre. Ebből a cikkből megtudhatja, hogyan hozhat létre virtuális hálózatot és alhálózatokat, majd helyezzen üzembe egy speciális hálózatkezelést használó AK-fürtöt.
 
 Ha korábban még nem használta az ACI-t, regisztrálja a szolgáltatót az előfizetésében. Az ACI-szolgáltató regisztrációjának állapotát az az [Provider List][az-provider-list] parancs használatával tekintheti meg, ahogy az az alábbi példában is látható:
 
@@ -42,34 +43,6 @@ Ha a szolgáltató *NotRegistered* -ként jelenik meg, regisztrálja a szolgált
 az provider register --namespace Microsoft.ContainerInstance
 ```
 
-## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
-
-A virtuális csomópontok központi telepítése a következő régiókat támogatja:
-
-* Kelet-Ausztrália (australiaeast)
-* USA középső régiója (CentralUS)
-* USA keleti régiója (eastus)
-* USA 2. keleti régiója (eastus2)
-* Kelet-Japán (japaneast)
-* Észak-Európa (northeurope)
-* Délkelet-Ázsia (southeastasia)
-* USA nyugati középső régiója (westcentralus)
-* Nyugat-Európa (westeurope)
-* USA nyugati régiója (westus)
-* USA 2. nyugati régiója (westus2)
-
-## <a name="known-limitations"></a>Ismert korlátozások
-A virtuális csomópontok funkciói nagy mértékben függenek az ACI funkciójának. A [Azure Container instances kvótái és korlátai](../container-instances/container-instances-quotas.md)mellett a virtuális csomópontok még nem támogatják a következő forgatókönyveket:
-
-* Egyszerű szolgáltatásnév használata az ACR-lemezképek lekéréséhez. [Megkerülő megoldás](https://github.com/virtual-kubelet/azure-aci/blob/master/README.md#private-registry) a [Kubernetes-titkok](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) használata
-* [Virtual Network korlátozásokat](../container-instances/container-instances-virtual-network-concepts.md) , beleértve a VNet-társítást, a Kubernetes hálózati házirendeket és az internetre irányuló kimenő adatforgalmat hálózati biztonsági csoportokkal.
-* Init-tárolók
-* [Gazdagép-aliasok](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
-* A exec [argumentumai](../container-instances/container-instances-exec.md#restrictions) az ACI-ban
-* A [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) nem helyezi üzembe a hüvelyeket a virtuális csomóponton.
-* A virtuális csomópontok támogatják a Linux-hüvelyek ütemezését. Manuálisan is telepítheti a nyílt forráskódú [virtuális KUBELET ACI](https://github.com/virtual-kubelet/azure-aci) -szolgáltatót a Windows Server-tárolók ACI-ra való beosztásához.
-* A virtuális csomópontok az Azure CNI hálózatkezeléssel rendelkező AK-fürtöket igényelnek
-
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
 Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
@@ -80,10 +53,10 @@ A Azure Portal bal felső sarkában válassza az **erőforrás létrehozása**  
 
 Az **Alapvető beállítások** lapon konfigurálja az alábbiakat:
 
-- *PROJEKT ADATAI* : Válasszon ki egy Azure-előfizetést, majd válasszon ki vagy hozzon létre egy Azure-erőforráscsoportot, például: *myResourceGroup* . Adja meg a **Kubernetes-fürt nevét** , például *myAKSCluster* .
+- *PROJEKT ADATAI* : Válasszon ki egy Azure-előfizetést, majd válasszon ki vagy hozzon létre egy Azure-erőforráscsoportot, például: *myResourceGroup*. Adja meg a **Kubernetes-fürt nevét** , például *myAKSCluster*.
 - *FÜRT ADATAI* : Válasszon egy régiót, Kubernetes-verziót és DNS-névelőtagot az AKS-fürthöz.
 - *Elsődleges csomóponti készlet* : válasszon ki egy virtuálisgép-méretet az AK-csomópontok számára. A virtuálisgép-méret az AKS-fürt telepítését követően **nem** módosítható.
-     - Adja meg a fürtre telepítendő csomópontok számát. Ehhez a cikkhez állítsa a **csomópontok száma** *1* értékre. A csomópontok száma a fürt telepítése után is **módosítható** .
+     - Adja meg a fürtre telepítendő csomópontok számát. Ehhez a cikkhez állítsa a **csomópontok száma** *1* értékre. A csomópontok száma a fürt telepítése után is **módosítható**.
 
 Kattintson a **Tovább: skála** lehetőségre.
 
@@ -95,7 +68,7 @@ Alapértelmezés szerint létrejön egy Azure Active Directory egyszerű szolgá
 
 A fürt speciális hálózatkezelésre is konfigurálva van. A virtuális csomópontok saját Azure-beli virtuális hálózati alhálózatának használatára vannak konfigurálva. Ez az alhálózat delegált engedélyekkel rendelkezik az Azure-erőforrások az AK-fürthöz való összekapcsolásához. Ha még nem rendelkezik delegált alhálózattal, a Azure Portal létrehozza és konfigurálja az Azure-beli virtuális hálózatot és az alhálózatot a virtuális csomópontokkal való használatra.
 
-Válassza a **Felülvizsgálat és létrehozás** lehetőséget. Az ellenőrzés befejezése után válassza a **Létrehozás** lehetőséget.
+Válassza a **Felülvizsgálat + létrehozás** lehetőséget. Az ellenőrzés befejezése után válassza a **Létrehozás** lehetőséget.
 
 Az AKS-fürt létrehozása és a használatra való előkészítése néhány percet vesz igénybe.
 
@@ -241,5 +214,5 @@ A virtuális csomópontok egy méretezési megoldás egyik összetevője az AK-b
 [aks-hpa]: tutorial-kubernetes-scale.md
 [aks-cluster-autoscaler]: cluster-autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
-[az-provider-list]: /cli/azure/provider#az-provider-list
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register
+[az-provider-list]: /cli/azure/provider&preserve-view=true#az-provider-list
+[az-provider-register]: /cli/azure/provider?view=azure-cli-latest&preserve-view=true#az-provider-register

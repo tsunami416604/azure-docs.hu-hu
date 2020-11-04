@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 1c30a9997fcc7ac10b1072d4f164c3e7bfa16f0b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 5e1c5d696e97ac6e14c1739be2feb93814975586
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130510"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347063"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure-tárolóra vonatkozó ajánlat létrehozása az Azure Marketplace-en
 
@@ -33,13 +33,13 @@ Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé egy tároló-ajánla
 
 ### <a name="offer-id-and-alias"></a>Ajánlat azonosítója és alias
 
-Adja meg az **ajánlat azonosítóját** . Ez a fiókban található egyes ajánlatok egyedi azonosítója.
+Adja meg az **ajánlat azonosítóját**. Ez a fiókban található egyes ajánlatok egyedi azonosítója.
 
 - Ez az azonosító látható az ügyfelek számára a Piactéri ajánlathoz tartozó webcímek és Azure Resource Manager sablonok esetében, ha van ilyen.
 - Csak kisbetűket és számokat használjon. Tartalmazhat kötőjeleket és aláhúzásokat, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1** értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - Az ajánlat azonosítója a **Létrehozás** gombra kattintva nem módosítható.
 
-Adjon meg egy **ajánlat-aliast** . Ez a partner Centerben az ajánlathoz használt név.
+Adjon meg egy **ajánlat-aliast**. Ez a partner Centerben az ajánlathoz használt név.
 
 - Ez a név nem használatos a piactéren, és nem egyezik meg az ajánlat nevével és az ügyfelek számára megjelenített egyéb értékekkel.
 - Ez a **Létrehozás** gombra kattintva nem módosítható.
@@ -65,7 +65,7 @@ Az ajánlat beállításához kövesse az alábbi lépéseket.
 
 Ha az ajánlatot a kereskedelmi piactéren a partner centerrel teszi közzé, akkor azt az Ügyfélkapcsolat-kezelési (CRM) rendszerhez is összekapcsolhatjuk. Ez lehetővé teszi az ügyfelek kapcsolattartási adatainak megszerzését, amint valaki érdeklődik a termék iránt, vagy használja a terméket.
 
-1. **Válassza ki a kívánt érdeklődő célhelyet, ahová az ügyfél-érdeklődőket küldeni szeretné** . A partner Center a következő CRM-rendszereket támogatja:
+1. **Válassza ki a kívánt érdeklődő célhelyet, ahová az ügyfél-érdeklődőket küldeni szeretné**. A partner Center a következő CRM-rendszereket támogatja:
 
    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) ügyfél-engagement
    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
@@ -133,7 +133,7 @@ Ezen a lapon megadhatja a kereskedelmi piactéren megjelenő ajánlat részletei
 > [!NOTE]
 > Az ajánlat részletei nem szükségesek angolul, ha az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelven] érhető el." Azt is megteheti, hogy hasznos hivatkozást biztosít, hogy olyan nyelven kínálja a tartalmat, amely különbözik az ajánlati lista részleteiben használt nyelvtől.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Név
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 
@@ -172,7 +172,7 @@ Adja meg az ajánlatával kapcsolatos kiegészítő online dokumentumokat. Legfe
 
 ### <a name="contact-information"></a>Kapcsolattartási adatok
 
-Meg kell adnia egy **támogatási kapcsolattartó** nevét, e-mail-címét és telefonszámát, valamint egy **mérnöki kapcsolattartót** . Ez az információ nem jelenik meg az ügyfelek számára, de a Microsoft számára elérhető. Emellett a Cloud Solution Provider (CSP) partnerei is megadhatók.
+Meg kell adnia egy **támogatási kapcsolattartó** nevét, e-mail-címét és telefonszámát, valamint egy **mérnöki kapcsolattartót**. Ez az információ nem jelenik meg az ügyfelek számára, de a Microsoft számára elérhető. Emellett a Cloud Solution Provider (CSP) partnerei is megadhatók.
 
 - Támogatási kapcsolattartó (kötelező): általános támogatási kérdések.
 - Engineering Contact (kötelező): technikai kérdések és minősítési problémák esetén.
@@ -223,19 +223,19 @@ Az alábbi példák azt mutatják be, hogyan jelennek meg az ajánlat-listaeleme
 
 Ez az Azure Marketplace **ajánlati lista** lapját jeleníti meg:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-6-offer-listing-mkt-plc.png" alt-text="Bemutatja a Microsoft kereskedelmi Marketplace-re vonatkozó szabványos szerződés használatát jelölőnégyzetet." :::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-6-offer-listing-mkt-plc.png" alt-text="Az ajánlati lista oldalát szemlélteti az Azure piactéren." :::
 
 Ez a keresési eredményeket mutatja az Azure Marketplace-en:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-7-search-results-mkt-plc.png" alt-text="Bemutatja a Microsoft kereskedelmi Marketplace-re vonatkozó szabványos szerződés használatát jelölőnégyzetet.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-7-search-results-mkt-plc.png" alt-text="A keresési eredményeket szemlélteti az Azure Marketplace-en.":::
 
 Itt látható az **ajánlati lista** lapja Azure Portal:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-8-offer-listing-portal.png" alt-text="Bemutatja a Microsoft kereskedelmi Marketplace-re vonatkozó szabványos szerződés használatát jelölőnégyzetet.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-8-offer-listing-portal.png" alt-text="Az ajánlati lista oldalát mutatja Azure Portalban.":::
 
 Ez a Azure Portal keresési eredményeit jeleníti meg:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-9-search-results-portal.png" alt-text="Bemutatja a Microsoft kereskedelmi Marketplace-re vonatkozó szabványos szerződés használatát jelölőnégyzetet.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-9-search-results-portal.png" alt-text="A keresési eredményeket mutatja Azure Portalban.":::
 
 ## <a name="preview"></a>Előnézet
 
@@ -298,7 +298,7 @@ Válassza a [Azure Government](../../azure-government/documentation-government-w
 
 #### <a name="azure-government-certifications"></a>Azure Government minősítések
 
-Ez a beállítás csak akkor látható, ha **Azure Government** van kiválasztva az **Azure-régiókban** .
+Ez a beállítás csak akkor látható, ha **Azure Government** van kiválasztva az **Azure-régiókban**.
 
 Azure Government szolgáltatások kezelik bizonyos kormányzati előírások és követelmények hatálya alá eső adatmennyiséget. Például: FedRAMP, NIST 800,171 (DIB), ITAR, IRS 1075, DoD L4 és CJIS.
 
@@ -328,11 +328,11 @@ Az alábbi példák bemutatják, hogyan jelennek meg a díjcsomag mezői külön
 
 A terv részleteinek megtekintésekor ezek a mezők az Azure Marketplace-en:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-10-plan-details-mtplc.png" alt-text="Bemutatja a Microsoft kereskedelmi Marketplace-re vonatkozó szabványos szerződés használatát jelölőnégyzetet.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-10-plan-details-mtplc.png" alt-text="A terv részleteinek az Azure Marketplace-en való megtekintésekor megjelenő mezőket mutatja be.":::
 
 Ezek a Azure Portal terv részletei:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="Bemutatja a Microsoft kereskedelmi Marketplace-re vonatkozó szabványos szerződés használatát jelölőnégyzetet.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="A Azure Portal tervének részleteit mutatja be.":::
 
 ### <a name="plan-availability"></a>A rendelkezésre állás megtervezése
 
@@ -363,13 +363,13 @@ Adja meg a következő információkat a **rendszerkép-tárház részletei** la
 
 **A Azure Container Registry rendszergazdai felhasználóneve** – adja meg a [rendszergazdai felhasználónevet](../../container-registry/container-registry-authentication.md#admin-account), amely a tároló képével rendelkező Azure Container Registryhoz van társítva. A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A rendszergazdai Felhasználónév és jelszó beszerzéséhez állítsa a **rendszergazdai** jogosultsággal rendelkező tulajdonságot **true** értékre az Azure Command-Line Interface (CLI) használatával. Igény szerint beállíthatja, hogy a **rendszergazda felhasználó** Azure Portal **engedélyezze** .
 
- :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Bemutatja a Microsoft kereskedelmi Marketplace-re vonatkozó szabványos szerződés használatát jelölőnégyzetet.":::
+ :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="A tároló-beállításjegyzék frissítése párbeszédpanelt mutatja be.":::
 
-**A Azure Container Registry jelszava** – adja meg a Azure Container Registryhoz társított rendszergazdai Felhasználónév és a tároló képét. A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A jelszót a Azure Portal **Container Registry**  >  **hozzáférési kulcsok** vagy az Azure CLI használatával a [show paranccsal](/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)kérheti le.
+**A Azure Container Registry jelszava** – adja meg a Azure Container Registryhoz társított rendszergazdai Felhasználónév és a tároló képét. A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A jelszót a Azure Portal **Container Registry**  >  **hozzáférési kulcsok** vagy az Azure CLI használatával a [show paranccsal](/cli/azure/acr/credential#az-acr-credential-show)kérheti le.
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="Bemutatja a Microsoft kereskedelmi Marketplace-re vonatkozó szabványos szerződés használatát jelölőnégyzetet.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="A hozzáférési kulcs menüjét mutatja be.":::
 
-**A tárház neve a Azure Container Registryon belül** . Adja meg a rendszerképet tartalmazó Azure Container Registry adattár nevét. Adja meg az adattár nevét, amikor a rendszerképet a beállításjegyzékbe küldi. A tárház nevét a [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **adattárak** lapon találja. További információ: [a Container Registry-Tárházak megtekintése Azure Portalban](../../container-registry/container-registry-repositories.md).
+**A tárház neve a Azure Container Registryon belül**. Adja meg a rendszerképet tartalmazó Azure Container Registry adattár nevét. Adja meg az adattár nevét, amikor a rendszerképet a beállításjegyzékbe küldi. A tárház nevét a [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **adattárak** lapon találja. További információ: [a Container Registry-Tárházak megtekintése Azure Portalban](../../container-registry/container-registry-repositories.md).
 
 > [!NOTE]
 > A név beállítása után nem módosítható. Egyedi nevet adjon a fiókjában található összes ajánlathoz.

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
-ms.openlocfilehash: 11c6cdff852a0695d4b2071f1d0a60c05dba2410
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0ee3d9c26d6972da9e528660d034432ce696aa45
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88213494"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347199"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Gyors útmutató: várólista létrehozása és üzenet hozzáadása a Azure Portal
 
@@ -28,7 +28,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan használható az [Azure Porta
 Ha várólistát szeretne létrehozni a Azure Portalban, kövesse az alábbi lépéseket:
 
 1. Az Azure Portalon lépjen az új tárfiókjára.
-2. A Storage-fiók bal oldali menüjében görgessen a **Queue szolgáltatás** szakaszra, majd válassza a **várólisták**elemet.
+2. A Storage-fiók bal oldali menüjében görgessen a **Queue szolgáltatás** szakaszra, majd válassza a **várólisták** elemet.
 3. Kattintson a **+ várólista** gombra.
 4. Adja meg az új üzenetsor nevét. A várólista nevének kisbetűnek kell lennie, betűvel vagy számmal kell kezdődnie, és csak betűket, számokat és kötőjel (-) karaktert tartalmazhat.
 6. A várólista létrehozásához kattintson **az OK gombra** .
@@ -55,13 +55,13 @@ Az üzenet hozzáadása után a Azure Portal megjeleníti a várólistán lévő
 
 ## <a name="dequeue-a-message"></a>Üzenet eltávolítása az üzenetsorból
 
-A várólista elején lévő üzenet a Azure Portalból is elvégezhető. Amikor elvégez egy üzenetet, a rendszer törli az üzenetet. 
+A várólista elején lévő üzenet a Azure Portalból is elvégezhető. Amikor elvégez egy üzenetet, a rendszer törli az üzenetet.
 
-A dequeuing mindig eltávolítja a legrégebbi üzenetet a várólistában. 
+A dequeuing mindig eltávolítja a legrégebbi üzenetet a várólistában.
 
 ![Az üzenetnek a portálról való eltávolítását bemutató képernyőkép](media/storage-quickstart-queues-portal/dequeue-message.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre egy üzenetsor, hogyan adhat hozzá egy üzenetet, megtekintheti az üzenet tulajdonságait, és elvégezheti az üzenetek elküldését a Azure Portal.
 

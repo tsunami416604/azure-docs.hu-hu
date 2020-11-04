@@ -4,18 +4,22 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a Python használ
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 0de25cc804844b5aa414e521fa641761d9a4b4f4
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3d459f4249c65f2d09f9d8df6e7958adf852a2ea
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108422"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346315"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
 Ez a cikk bemutatja, hogyan fejlesztheti Azure Functions a Python használatával. Az alábbi tartalom azt feltételezi, hogy már elolvasta a [Azure functions fejlesztői útmutatót](functions-reference.md).
 
-A Pythonban futó önálló függvények esetében tekintse meg a [Python függvények mintáit](/samples/browse/?products=azure-functions&languages=python).
+Python-fejlesztőként a következő cikkek egyike is érdekli:
+
+| Első lépések | Alapelvek| Forgatókönyvek/minták |
+| -- | -- | -- | 
+| <ul><li>[Python-függvény a Visual Studio Code használatával](./functions-create-first-function-vs-code.md?pivots=programming-language-python)</li><li>[Python-függvény a Terminal/Command parancssorral](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> | <ul><li>[Képek besorolása a PyTorch használatával](machine-learning-pytorch.md)</li><li>[Azure Automation-minta](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[Gépi tanulás a TensorFlow-val](functions-machine-learning-tensorflow.md)</li><li>[Python-minták tallózása](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 ## <a name="programming-model"></a>Programozási modell
 
@@ -44,7 +48,7 @@ def main(req: azure.functions.HttpRequest) -> str:
     return f'Hello, {user}!'
 ```
 
-Használja az [Azure. functions. *](/python/api/azure-functions/azure.functions?view=azure-python) csomagban található Python-megjegyzéseket a bemenetek és kimenetek a metódusokhoz való kötéséhez.
+Használja az [Azure. functions. *](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true) csomagban található Python-megjegyzéseket a bemenetek és kimenetek a metódusokhoz való kötéséhez.
 
 ## <a name="alternate-entry-point"></a>Másodlagos belépési pont
 
@@ -83,19 +87,19 @@ A Python functions projekt javasolt mappastruktúrát a következő példához h
 ```
 A fő projekt mappája ( \_ \_ alkalmazás \_ \_ ) a következő fájlokat tartalmazza:
 
-* *local.settings.json*: az Alkalmazásbeállítások és a kapcsolódási karakterláncok helyi futtatásakor való tárolásához használatos. Ez a fájl nem jelenik meg az Azure-ban. További információ: [Local. Settings. file](functions-run-local.md#local-settings-file).
-* *requirements.txt*: azon csomagok listáját tartalmazza, amelyeket a rendszeren az Azure-ba való közzétételkor telepít.
-* *host.json*: olyan globális konfigurációs beállításokat tartalmaz, amelyek a Function alkalmazás összes funkcióját érintik. Ez a fájl közzé van téve az Azure-ban. Nem minden beállítás támogatott a helyi futtatásakor. További információ: [host.json](functions-host-json.md).
-* *. funcignore*: (nem kötelező) deklarálja azokat a fájlokat, amelyek nem tudnak közzétenni az Azure-ban.
-* *Docker*: (nem kötelező) a projekt [Egyéni tárolóban](functions-create-function-linux-custom-image.md)történő közzétételekor használatos.
+* *local.settings.json* : az Alkalmazásbeállítások és a kapcsolódási karakterláncok helyi futtatásakor való tárolásához használatos. Ez a fájl nem jelenik meg az Azure-ban. További információ: [Local. Settings. file](functions-run-local.md#local-settings-file).
+* *requirements.txt* : azon csomagok listáját tartalmazza, amelyeket a rendszeren az Azure-ba való közzétételkor telepít.
+* *host.json* : olyan globális konfigurációs beállításokat tartalmaz, amelyek a Function alkalmazás összes funkcióját érintik. Ez a fájl közzé van téve az Azure-ban. Nem minden beállítás támogatott a helyi futtatásakor. További információ: [host.json](functions-host-json.md).
+* *. funcignore* : (nem kötelező) deklarálja azokat a fájlokat, amelyek nem tudnak közzétenni az Azure-ban.
+* *Docker* : (nem kötelező) a projekt [Egyéni tárolóban](functions-create-function-linux-custom-image.md)történő közzétételekor használatos.
 
 Minden függvényhez tartozik a saját kód fájlja és a kötési konfigurációs fájl (function.js).
 
-Ha a projektet egy Azure-beli Function alkalmazásba helyezi üzembe, a fő projekt (* \_ \_ alkalmazás \_ \_ *) mappájának teljes tartalmát bele kell foglalni a csomagba, de nem maga a mappa. Javasoljuk, hogy a teszteket a Project mappától eltérő mappában tartsa karban, ebben a példában `tests` . Így a tesztelési kód üzembe helyezése az alkalmazással megtartható. További információ: [Unit Testing (egység tesztelése](#unit-testing)).
+Ha a projektet egy Azure-beli Function alkalmazásba helyezi üzembe, a fő projekt ( *\_ \_ alkalmazás \_ \_* ) mappájának teljes tartalmát bele kell foglalni a csomagba, de nem maga a mappa. Javasoljuk, hogy a teszteket a Project mappától eltérő mappában tartsa karban, ebben a példában `tests` . Így a tesztelési kód üzembe helyezése az alkalmazással megtartható. További információ: [Unit Testing (egység tesztelése](#unit-testing)).
 
 ## <a name="import-behavior"></a>Importálási viselkedés
 
-A függvény kódjában lévő modulokat explicit relatív és abszolút referenciák használatával is importálhatja. A fent látható mappa szerkezete alapján a következő importálások működnek a Function file * \_ \_ app \_ \_ My \_ első \_ függvényében: \\ _ \_ init \_ \_ .* a (z)
+A függvény kódjában lévő modulokat explicit relatív és abszolút referenciák használatával is importálhatja. A fent látható mappa szerkezete alapján a következő importálások működnek a Function file *\_ \_ app \_ \_ My \_ első \_ függvényében: \\ _ \_ init \_ \_ .* a (z)
 
 ```python
 from . import example #(explicit relative)
@@ -127,7 +131,7 @@ from example import some_helper_code
 import shared_code
 ```
 
-A megosztott kódokat az * \_ \_ alkalmazás \_ \_ *egy külön mappájába kell megőrizni. A *megosztott \_ kód* mappában található modulok hivatkozásait a következő szintaxissal végezheti el:
+A megosztott kódokat az *\_ \_ alkalmazás \_ \_* egy külön mappájába kell megőrizni. A *megosztott \_ kód* mappában található modulok hivatkozásait a következő szintaxissal végezheti el:
 
 ```python
 from __app__.shared_code import my_first_helper_function
@@ -194,7 +198,7 @@ A kimenet a visszatérési értékben és a kimeneti paraméterekben is kifejezh
 
 Egy függvény visszatérési értékének egy kimeneti kötés értékeként való használatához a `name` kötés tulajdonságát a következő értékre kell beállítani `$return` : `function.json` .
 
-Több kimenet létrehozásához használja a `set()` csatoló által biztosított metódust, [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python) amellyel egy értéket rendelhet a kötéshez. A következő függvény például leküldheti az üzeneteket egy várólistába, és HTTP-választ is küldhet.
+Több kimenet létrehozásához használja a `set()` csatoló által biztosított metódust, [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) amellyel egy értéket rendelhet a kötéshez. A következő függvény például leküldheti az üzeneteket egy várólistába, és HTTP-választ is küldhet.
 
 ```json
 {
@@ -310,7 +314,7 @@ A teljesítmény javítására szolgáló kulcs azt mutatja be, hogy az alkalmaz
 
 Az alapértelmezett konfigurációk a legtöbb Azure Functions alkalmazáshoz megfelelőek. Az alkalmazások teljesítményének növelését azonban a munkaterhelés-profilon alapuló konfigurációk alkalmazásával növelheti. Első lépésként ismernie kell a futtatott számítási feladatok típusát.
 
-|| I/O-kötésű munkaterhelés | PROCESSZORral kötött munkaterhelés |
+|&nbsp;| I/O-kötésű munkaterhelés | PROCESSZORral kötött munkaterhelés |
 |--| -- | -- |
 |Function alkalmazás jellemzői| <ul><li>Az alkalmazásnak számos egyidejű hívást kell kezelnie.</li> <li> Az alkalmazás nagy mennyiségű I/O-eseményt dolgoz fel, például hálózati hívásokat és lemezes olvasási/írási műveleteket.</li> </ul>| <ul><li>Az alkalmazás hosszú ideig futó számításokat végez, például a képek átméretezését.</li> <li>Az alkalmazás adatátalakítást végez.</li> </ul> |
 |Példák| <ul><li>Webes API-k</li><ul> | <ul><li>Adatfeldolgozás</li><li> Gépi tanulás – következtetés</li><ul>|
@@ -381,9 +385,9 @@ A FUNCTIONS_WORKER_PROCESS_COUNT minden olyan gazdagépre vonatkozik, amelyet a 
 
 ## <a name="context"></a>Környezet
 
-Ha egy függvény hívási környezetét szeretné lekérni a végrehajtás során, adja [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) meg az argumentumot az aláírásában.
+Ha egy függvény hívási környezetét szeretné lekérni a végrehajtás során, adja [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) meg az argumentumot az aláírásában.
 
-Példa:
+Például:
 
 ```python
 import azure.functions
@@ -394,7 +398,7 @@ def main(req: azure.functions.HttpRequest,
     return f'{context.invocation_id}'
 ```
 
-A [**környezeti**](/python/api/azure-functions/azure.functions.context?view=azure-python) osztály a következő karakterlánc-attribútumokkal rendelkezik:
+A [**környezeti**](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) osztály a következő karakterlánc-attribútumokkal rendelkezik:
 
 `function_directory` Az a címtár, amelyben a függvény fut.
 
@@ -742,11 +746,11 @@ A következő lista a gyakori problémákkal kapcsolatos hibaelhárítási útmu
 
 Az összes ismert probléma és szolgáltatás kérését a [GitHub-problémák](https://github.com/Azure/azure-functions-python-worker/issues) listája követheti nyomon. Ha probléma lép fel, és a GitHubon nem találja a problémát, nyisson meg egy új problémát, és adja meg a probléma részletes leírását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkat találhat az alábbi forrásokban:
 
-* [Azure Functions csomag API-dokumentációja](/python/api/azure-functions/azure.functions?view=azure-python)
+* [Azure Functions csomag API-dokumentációja](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true)
 * [Azure Functions – ajánlott eljárások](functions-best-practices.md)
 * [Eseményindítók és kötések Azure Functions](functions-triggers-bindings.md)
 * [BLOB Storage-kötések](functions-bindings-storage-blob.md)
@@ -755,5 +759,5 @@ További információkat találhat az alábbi forrásokban:
 * [Időzítő-eseményindító](functions-bindings-timer.md)
 
 
-[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python
-[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python
+[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python&preserve-view=true
+[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python&preserve-view=true

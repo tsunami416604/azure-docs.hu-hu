@@ -3,12 +3,12 @@ title: Erőforrás-elnevezési korlátozások
 description: Az Azure-erőforrások elnevezési szabályait és korlátozásait mutatja be.
 ms.topic: conceptual
 ms.date: 10/01/2020
-ms.openlocfilehash: ff92eff9351e944f8baa11cf981e8511ad8e4ae1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 206bd6604ecd9dfece9c946c653b2720e75ff1e3
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653366"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347794"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Az Azure-erőforrásokra vonatkozó elnevezési szabályok és korlátozások
 
@@ -494,6 +494,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | firewallPolicies | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
 > | firewallPolicies / ruleGroups | tűzfal házirendje | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
 > | frontDoors | globális | 5-64 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdő és záró alfanumerikus karakterek. |
+> | frontdoorWebApplicationFirewallPolicies | erőforráscsoport | 1-128 | Alfanumerikus karaktereket.<br><br>Kezdje a betűvel. |
 > | loadBalancers | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
 > | loadBalancers/inboundNatRules | terheléselosztó | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
 > | localNetworkGateways | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Záró alfanumerikus vagy aláhúzás. |
@@ -543,7 +544,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | megoldások | munkaterület | N.A. | A Microsoft által létrehozott megoldások esetében a névnek a következő mintában kell szerepelnie:<br>`SolutionType(WorkspaceName)`<br><br>Harmadik felek által létrehozott megoldások esetében a névnek a következő mintában kell lennie:<br>`SolutionType[WorkspaceName]`<br><br>Egy érvényes név például a következő:<br>`AntiMalware(contoso-IT)`<br><br>A megoldás típusa megkülönbözteti a kis-és nagybetűket. |
+> | megoldások | munkaterület | N/A | A Microsoft által létrehozott megoldások esetében a névnek a következő mintában kell szerepelnie:<br>`SolutionType(WorkspaceName)`<br><br>Harmadik felek által létrehozott megoldások esetében a névnek a következő mintában kell lennie:<br>`SolutionType[WorkspaceName]`<br><br>Egy érvényes név például a következő:<br>`AntiMalware(contoso-IT)`<br><br>A megoldás típusa megkülönbözteti a kis-és nagybetűket. |
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 
@@ -604,7 +605,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | névterek | globális | 6-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje betűvel. Betűvel vagy számmal végződik.<br><br>További információt a [névtér létrehozása](/rest/api/servicebus/create-namespace)című témakörben talál. |
 > | névterek/engedélyezési szabályok | névtér | 1-50 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Kezdés és Befejezés a alphnumeric. |
 > | névterek/disasterRecoveryConfigs | globális | 6-50 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdje a betűvel. Alfanumerikus karakterrel végződik. |
-> | névterek/migrationConfigurations | névtér |  | Mindig **$default**kell lennie. |
+> | névterek/migrationConfigurations | névtér |  | Mindig **$default** kell lennie. |
 > | névterek/várólisták | névtér | 1-260 | Alfanumerikus karakterek, időszakok, kötőjelek, aláhúzások és perjelek.<br><br>Kezdő és záró alfanumerikus karakterek. |
 > | névterek/várólisták/engedélyezési szabályok | üzenetsor | 1-50 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Kezdés és Befejezés a alphnumeric. |
 > | névterek/témakörök | névtér | 1-260 | Alfanumerikus karakterek, időszakok, kötőjelek, aláhúzások és perjelek.<br><br>Kezdő és záró alfanumerikus karakterek. |
@@ -653,7 +654,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | storageAccounts/managementPolicies | tárfiók |  | Kell lennie `default` . |
 > | blob | tároló | 1–1024 | Bármely URL-karakter, kis-és nagybetűk megkülönböztetése |
 > | üzenetsor | tárfiók | 3-63 | Kisbetűk, számok és kötőjelek.<br><br>A kötőjel nem kezdődhet vagy végződhet. Egymást követő kötőjelek nem használhatók. |
-> | tábla | tárfiók | 3-63 | Alfanumerikus karaktereket.<br><br>Kezdje a betűvel. |
+> | table | tárfiók | 3-63 | Alfanumerikus karaktereket.<br><br>Kezdje a betűvel. |
 
 ## <a name="microsoftstoragesync"></a>Microsoft. StorageSync
 

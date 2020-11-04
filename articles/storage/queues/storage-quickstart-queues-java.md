@@ -8,12 +8,12 @@ ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: b6be3c0f3b7ff8e44bd9dda089c803a27e883383
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 25b6bdcb293379e3206cc6714fae65fe40f6e6c5
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783436"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345601"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Gyors útmutató: Azure üzenetsor Storage ügyféloldali kódtára a Javához
 
@@ -21,26 +21,26 @@ Ismerkedjen meg az Azure üzenetsor Storage ügyféloldali kódtár 12-es verzi�
 
 Használja az Azure üzenetsor Storage ügyféloldali kódtárat a Javához a következőhöz:
 
-* Üzenetsor létrehozása
-* Üzenetek hozzáadása egy várólistához
-* Üzenetek betekintése egy várólistába
-* Üzenetsor frissítése
-* Üzenetek fogadása és törlése egy várólistából
-* Üzenetsor törlése
+- Üzenetsor létrehozása
+- Üzenetek hozzáadása egy várólistához
+- Üzenetek betekintése egy várólistába
+- Üzenetsor frissítése
+- Üzenetek fogadása és törlése egy várólistából
+- Üzenetsor törlése
 
 További források:
 
-* [API-referenciadokumentáció](/java/api/overview/azure/storage-queue-readme)
-* [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
-* [Csomag (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
-* [Példák](../common/storage-samples-java.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
+- [API-referenciadokumentáció](/java/api/overview/azure/storage-queue-readme)
+- [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
+- [Csomag (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
+- [Példák](../common/storage-samples-java.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Java Development Kit (JDK)](/java/azure/jdk/) 8-as vagy újabb verziója
-* [Apache Maven](https://maven.apache.org/download.cgi)
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* Azure Storage-fiók – [Storage-fiók létrehozása](../common/storage-account-create.md)
+- A [Java Development Kit (JDK)](/java/azure/jdk/) 8-as vagy újabb verziója
+- [Apache Maven](https://maven.apache.org/download.cgi)
+- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+- Azure Storage-fiók – [Storage-fiók létrehozása](../common/storage-account-create.md)
 
 ## <a name="setting-up"></a>Beállítás
 
@@ -151,9 +151,9 @@ public class App
 
 Az Azure Queue Storage szolgáltatás nagy számú üzenet tárolására szolgál. Egy üzenetsor-üzenet akár 64 KB méretű is lehet. Egy üzenetsor akár több millió üzenetet is tartalmazhat, akár egy Storage-fiók teljes kapacitási korlátját. A várólistákat általában arra használják, hogy egy várakozó munkafolyamatot hozzon létre aszinkron feldolgozásra. A várólista-tárolás háromféle típusú erőforrást kínál:
 
-* A Storage-fiók
-* A Storage-fiókban lévő üzenetsor
-* Üzenetek a várólistán belül
+- A Storage-fiók
+- A Storage-fiókban lévő üzenetsor
+- Üzenetek a várólistán belül
 
 Az alábbi ábra az ezen erőforrások közötti kapcsolatot mutatja be.
 
@@ -161,22 +161,22 @@ Az alábbi ábra az ezen erőforrások közötti kapcsolatot mutatja be.
 
 A következő Java-osztályok használhatók az alábbi erőforrásokkal való kommunikációhoz:
 
-* [QueueClientBuilder](/java/api/com.azure.storage.queue.queueclientbuilder): a `QueueClientBuilder` osztály egy objektumot konfigurál és hoz létre `QueueClient` .
-* [QueueServiceClient](/java/api/com.azure.storage.queue.queueserviceclient): a `QueueServiceClient` lehetővé teszi a Storage-fiók összes várólistájának kezelését.
-* [QueueClient](/java/api/com.azure.storage.queue.queueclient): a `QueueClient` osztály segítségével kezelheti és kezelheti az egyes várólistákat és azok üzeneteit.
-* [QueueMessageItem](/java/api/com.azure.storage.queue.models.queuemessageitem): az `QueueMessageItem` osztály a [receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) egy várólistán való meghívásakor visszaadott egyedi objektumokat jelöli.
+- [QueueClientBuilder](/java/api/com.azure.storage.queue.queueclientbuilder): a `QueueClientBuilder` osztály egy objektumot konfigurál és hoz létre `QueueClient` .
+- [QueueServiceClient](/java/api/com.azure.storage.queue.queueserviceclient): a `QueueServiceClient` lehetővé teszi a Storage-fiók összes várólistájának kezelését.
+- [QueueClient](/java/api/com.azure.storage.queue.queueclient): a `QueueClient` osztály segítségével kezelheti és kezelheti az egyes várólistákat és azok üzeneteit.
+- [QueueMessageItem](/java/api/com.azure.storage.queue.models.queuemessageitem): az `QueueMessageItem` osztály a [receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) egy várólistán való meghívásakor visszaadott egyedi objektumokat jelöli.
 
 ## <a name="code-examples"></a>Kódpéldák
 
 Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következő műveleteket az Azure üzenetsor-tárolás ügyféloldali kódtára Javával:
 
-* [A kapcsolati sztring lekérése](#get-the-connection-string)
-* [Üzenetsor létrehozása](#create-a-queue)
-* [Üzenetek hozzáadása egy várólistához](#add-messages-to-a-queue)
-* [Üzenetek betekintése egy várólistába](#peek-at-messages-in-a-queue)
-* [Üzenetsor frissítése](#update-a-message-in-a-queue)
-* [Üzenetek fogadása és törlése egy várólistából](#receive-and-delete-messages-from-a-queue)
-* [Üzenetsor törlése](#delete-a-queue)
+- [A kapcsolati sztring lekérése](#get-the-connection-string)
+- [Üzenetsor létrehozása](#create-a-queue)
+- [Üzenetek hozzáadása egy várólistához](#add-messages-to-a-queue)
+- [Üzenetek betekintése egy várólistába](#peek-at-messages-in-a-queue)
+- [Üzenetsor frissítése](#update-a-message-in-a-queue)
+- [Üzenetek fogadása és törlése egy várólistából](#receive-and-delete-messages-from-a-queue)
+- [Üzenetsor törlése](#delete-a-queue)
 
 ### <a name="get-the-connection-string"></a>A kapcsolati sztring lekérése
 
@@ -202,7 +202,6 @@ Döntse el az új üzenetsor nevét. Az alábbi kód egy GUID értéket fűz hoz
 
 > [!IMPORTANT]
 > A várólisták nevei csak kisbetűket, számokat és kötőjeleket tartalmazhatnak, és betűvel vagy számmal kell kezdődnie. A kötőjelek előtt és után csak nem kötőjel karakter állhat. A névnek 3 – 63 karakter hosszúnak kell lennie. További információ a várólisták elnevezéséről: [várólisták és metaadatok elnevezése](/rest/api/storageservices/naming-queues-and-metadata).
-
 
 Hozza létre a [QueueClient](/java/api/com.azure.storage.queue.queueclient) osztály egy példányát. Ezután hívja meg a [create](/java/api/com.azure.storage.queue.queueclient.create) metódust az üzenetsor létrehozásához a Storage-fiókban.
 
@@ -266,7 +265,7 @@ System.out.println("\nUpdating the third message in the queue...");
 // Update a message using the result that
 // was saved when sending the message
 queueClient.updateMessage(result.getMessageId(),
-                          result.getPopReceipt(), 
+                          result.getPopReceipt(),
                           "Third message has been updated",
                           Duration.ofSeconds(1));
 ```
@@ -374,4 +373,4 @@ Oktatóanyagok, minták, gyors indítás és egyéb dokumentáció:
 > [!div class="nextstepaction"]
 > [Azure Java-felhőfejlesztőknek](/azure/developer/java/)
 
-* További Azure üzenetsor-tárolási minta alkalmazások megjelenítéséhez folytassa az [Azure üzenetsor Storage SDK V12 Java ügyféloldali függvénytár-mintákkal](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue).
+- További Azure üzenetsor-tárolási minta alkalmazások megjelenítéséhez folytassa az [Azure üzenetsor Storage SDK V12 Java ügyféloldali függvénytár-mintákkal](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue).

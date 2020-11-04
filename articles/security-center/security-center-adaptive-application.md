@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: ee5a88dfcc3b4ab29cd3ad8c5ff7c4701d1fced6
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 95c3ad6f689893195e0e5c17c59ab31143cf238d
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339713"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346519"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Az adaptív alkalmazás-vezérlőelemek használatával csökkentheti a gépek támadási felületét
 
@@ -61,11 +61,11 @@ Ha az ismert alkalmazások listáját definiálja, és riasztásokat állít el�
 
 ## <a name="enable-application-controls-on-a-group-of-machines"></a>Alkalmazás-vezérlőelemek engedélyezése gépek csoportján
 
-Ha a Security Center az előfizetésekben lévő olyan csoportokat azonosított, amelyek folyamatosan hasonló alkalmazásokat futtatnak, akkor a következő javaslattal kell megjelennie: az **adaptív alkalmazás-vezérlők a biztonságos alkalmazások definiálásához engedélyezni**kell a számítógépeken.
+Ha a Security Center az előfizetésekben lévő olyan csoportokat azonosított, amelyek folyamatosan hasonló alkalmazásokat futtatnak, akkor a következő javaslattal kell megjelennie: az **adaptív alkalmazás-vezérlők a biztonságos alkalmazások definiálásához engedélyezni** kell a számítógépeken.
 
 Válassza ki a javaslatot, vagy nyissa meg az adaptív alkalmazás-vezérlők lapot, ahol megtekintheti a javasolt ismert biztonságos alkalmazások és számítógépcsoportok listáját.
 
-1. Nyissa meg az Azure Defender irányítópultját, és a speciális védelem területen válassza az **adaptív alkalmazás-vezérlőelemek**lehetőséget.
+1. Nyissa meg az Azure Defender irányítópultját, és a speciális védelem területen válassza az **adaptív alkalmazás-vezérlőelemek** lehetőséget.
 
     :::image type="content" source="./media/security-center-adaptive-application/opening-adaptive-application-control.png" alt-text="Az adaptív alkalmazások vezérlőinek megnyitása az Azure irányítópultról" lightbox="./media/security-center-adaptive-application/opening-adaptive-application-control.png":::
 
@@ -112,7 +112,7 @@ Válassza ki a javaslatot, vagy nyissa meg az adaptív alkalmazás-vezérlők la
       > 
       > Az alkalmazásokat a közzétevőik definiálják, ha az alkalmazás nem rendelkezik közzétevői információval (előjel nélküli), az adott alkalmazás teljes elérési útjához elérésiút-szabály jön létre.
 
-   1. A szabály alkalmazásához válassza a **naplózás**lehetőséget. 
+   1. A szabály alkalmazásához válassza a **naplózás** lehetőséget. 
 
 
 
@@ -123,7 +123,7 @@ Dönthet úgy, hogy egy adott számítógépcsoport engedélyezési listáját a
 
 A számítógépek csoportjára vonatkozó szabályok szerkesztése:
 
-1. Nyissa meg az Azure Defender irányítópultját, és a speciális védelem területen válassza az **adaptív alkalmazás-vezérlőelemek**lehetőséget.
+1. Nyissa meg az Azure Defender irányítópultját, és a speciális védelem területen válassza az **adaptív alkalmazás-vezérlőelemek** lehetőséget.
 
 1. A **konfigurált** lapon válassza ki a szerkeszteni kívánt szabályt tartalmazó csoportot.
 
@@ -131,11 +131,11 @@ A számítógépek csoportjára vonatkozó szabályok szerkesztése:
 
 1. Szükség esetén adjon hozzá egy vagy több egyéni szabályt:
 
-   1. Válassza a **szabály hozzáadása**elemet.
+   1. Válassza a **szabály hozzáadása** elemet.
 
       ![Egyéni szabály hozzáadása](./media/security-center-adaptive-application/adaptive-application-add-custom-rule.png)
 
-   1. Ha ismert biztonságos elérési utat definiál, módosítsa a **szabály típusát** "Path" értékre. Az elérési úthoz helyettesítő karaktereket is használhat.
+   1. Ha ismert biztonságos elérési utat definiál, módosítsa a **szabály típusát** "Path" értékre, és adjon meg egy elérési utat. Az elérési úthoz helyettesítő karaktereket is használhat.
    
       > [!TIP]
       > Bizonyos esetekben hasznos lehet az elérési út helyettesítő karakterei:
@@ -145,9 +145,9 @@ A számítógépek csoportjára vonatkozó szabályok szerkesztése:
   
    1. Adja meg az engedélyezett felhasználók és a védett fájltípusok típusát.
 
-   1. Ha befejezte a szabály definiálását, válassza a **Hozzáadás**lehetőséget.
+   1. Ha befejezte a szabály definiálását, válassza a **Hozzáadás** lehetőséget.
 
-1. A módosítások alkalmazásához válassza a **Mentés**lehetőséget.
+1. A módosítások alkalmazásához válassza a **Mentés** lehetőséget.
 
 
 ## <a name="review-and-edit-a-groups-settings"></a>Csoport beállításainak áttekintése és szerkesztése
@@ -156,16 +156,16 @@ A számítógépek csoportjára vonatkozó szabályok szerkesztése:
 
     Ez a panel a csoport nevét (amely módosítható), az operációs rendszer típusát, a helyet és az egyéb releváns adatokat jeleníti meg.
 
-    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="Az adaptív alkalmazások vezérlőinek megnyitása az Azure irányítópultról" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
+    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="A csoport beállításai lap az adaptív alkalmazás-vezérlőkhöz" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
 
     > [!IMPORTANT]
     > A **kikényszerítés** lehetőség a fájltípus védelmi mód beállításaiban **minden** esetben szürkén jelenik meg. Jelenleg nem érhető el kényszerítési lehetőség. 
     >
-    > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="Az adaptív alkalmazások vezérlőinek megnyitása az Azure irányítópultról":::
+    > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="A fájlok védelmének érvényesítési módja tartósan szürkén jelenik meg. Nem érhető el kényszerítési lehetőség.":::
 
 1. Szükség esetén módosíthatja a csoport nevét vagy fájltípusának védelmi módjait.
 
-1. Válassza az **alkalmaz** és a **Mentés**lehetőséget.
+1. Válassza az **alkalmaz** és a **Mentés** lehetőséget.
 
 
 
@@ -181,14 +181,14 @@ A problémák megoldásához:
 
 1. Tekintse át az alkalmazás- **vezérlési szabályok konfigurálása** lap különböző szakaszait az [adaptív alkalmazás-vezérlőelemek engedélyezése gépek csoportjára](#enable-application-controls-on-a-group-of-machines)című részben leírtak szerint.
 
-1. A módosítások alkalmazásához válassza a **naplózás**lehetőséget.
+1. A módosítások alkalmazásához válassza a **naplózás** lehetőséget.
 
 
 
 
 ## <a name="audit-alerts-and-violations"></a>Riasztások és szabálysértések naplózása
 
-1. Nyissa meg az Azure Defender irányítópultját, és a speciális védelem területen válassza az **adaptív alkalmazás-vezérlőelemek**lehetőséget.
+1. Nyissa meg az Azure Defender irányítópultját, és a speciális védelem területen válassza az **adaptív alkalmazás-vezérlőelemek** lehetőséget.
 
 1. Ha olyan gépeket szeretne látni, amelyeken a legutóbbi riasztások vannak, tekintse át a **configured (konfigurált** ) lapon felsorolt csoportokat.
 
@@ -204,17 +204,17 @@ A problémák megoldásához:
 
 Ha a gépet az egyik csoportból a másikba helyezi át, a rendszer az alkalmazás-vezérlési házirendet annak a csoportnak a beállításaira módosítja, amelyre áthelyezte. A számítógépeket egy konfigurált csoportból nem konfigurált csoportba is áthelyezheti, ezzel eltávolítja a gépre alkalmazott összes alkalmazás-ellenőrzési szabályt.
 
-1. Nyissa meg az Azure Defender irányítópultját, és a speciális védelem területen válassza az **adaptív alkalmazás-vezérlőelemek**lehetőséget.
+1. Nyissa meg az Azure Defender irányítópultját, és a speciális védelem területen válassza az **adaptív alkalmazás-vezérlőelemek** lehetőséget.
 
 1. Az **adaptív alkalmazás vezérlői** lap **konfigurált** lapján válassza ki az áthelyezni kívánt gépet tartalmazó csoportot.
 
-1. Nyissa meg a  **konfigurált gépek**listáját.
+1. Nyissa meg a  **konfigurált gépek** listáját.
 
-1. Nyissa meg a gép menüjét a sor végén található három pontról, majd kattintson az **Áthelyezés**elemre. Megnyílik a **gép áthelyezése másik csoportba** panel.
+1. Nyissa meg a gép menüjét a sor végén található három pontról, majd kattintson az **Áthelyezés** elemre. Megnyílik a **gép áthelyezése másik csoportba** panel.
 
-1. Válassza ki a célcsoportot, és válassza a **gép áthelyezése**lehetőséget.
+1. Válassza ki a célcsoportot, és válassza a **gép áthelyezése** lehetőséget.
 
-1. A módosítások mentéséhez válassza a **Mentés**lehetőséget.
+1. A módosítások mentéséhez válassza a **Mentés** lehetőséget.
 
 
 

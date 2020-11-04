@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: banders
 ms.openlocfilehash: f773c964d900c45a51eac433c3616a6e4b8978ae
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "92131139"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>Hitelkártya hozzáadása vagy frissítése az Azure-ban
@@ -116,7 +116,7 @@ Hitelkártya szerkesztéséhez kövesse az alábbi lépéseket:
    ![Képernyőkép a menü fizetési módok eleméről](./media/change-credit-card/payment-methods-tab-mca.png)
 1. A **Saját hitelkártyák** szakaszban keresse meg a szerkeszteni kívánt hitelkártyát.
 1. Válassza ki a sor végén található három pontot (`...`).  
-    :::image type="content" source="./media/change-credit-card/edit-delete-credit-card-mca.png" alt-text="Képernyőkép a Csere lehetőségről" :::
+    :::image type="content" source="./media/change-credit-card/edit-delete-credit-card-mca.png" alt-text="Képernyőkép a három pontról" :::
 1. A hitelkártya adatainak szerkesztéséhez válassza a **Szerkesztés** lehetőséget a helyi menüből.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás

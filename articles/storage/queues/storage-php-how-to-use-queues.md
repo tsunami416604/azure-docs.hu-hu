@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: aefd03b9d0ce726e086dff96a648e5f3a6b28e6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e5b7ed75f22659a9a38ac761cc61c841102a067
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84809201"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345839"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>How to use Queue storage from PHP (A Queue Storage használata PHP-val)
 
@@ -38,7 +38,7 @@ Ebben az útmutatóban a üzenetsor-tárolási szolgáltatás olyan funkcióit h
 ### <a name="install-via-composer"></a>Telepítés a Zeneszerzőn keresztül
 
 1. Hozzon létre egy **composer.js** nevű fájlt a projekt gyökérkönyvtárában, és adja hozzá a következő kódot:
-   
+
     ```json
     {
       "require": {
@@ -46,9 +46,10 @@ Ebben az útmutatóban a üzenetsor-tárolási szolgáltatás olyan funkcióit h
       }
     }
     ```
+
 2. A **[zeneszerző. farmakovigilancia][composer-phar]** letöltése a projekt gyökerében.
 3. Nyisson meg egy parancssort, és hajtsa végre a következő parancsot a projekt gyökerében
-   
+
     ```
     php composer.phar install
     ```
@@ -89,8 +90,9 @@ UseDevelopmentStorage=true
 
 Azure Queue szolgáltatás-ügyfél létrehozásához a **QueueRestProxy** osztályt kell használnia. A következő módszerek egyikét használhatja:
 
-* Adja át közvetlenül a kapcsolódási karakterláncot.
-* A webalkalmazásban környezeti változók használatával tárolhatja a kapcsolati karakterláncot. A kapcsolati karakterláncok konfigurálásához tekintse meg az [Azure-webalkalmazás konfigurációs beállításainak](../../app-service/configure-common.md) dokumentumát.
+- Adja át közvetlenül a kapcsolódási karakterláncot.
+- A webalkalmazásban környezeti változók használatával tárolhatja a kapcsolati karakterláncot. A kapcsolati karakterláncok konfigurálásához tekintse meg az [Azure-webalkalmazás konfigurációs beállításainak](../../app-service/configure-common.md) dokumentumát.
+
 Az itt ismertetett példák esetében a kapcsolati sztringet közvetlenül továbbítjuk.
 
 ```php
@@ -139,8 +141,6 @@ catch(ServiceException $e){
 
 > [!NOTE]
 > A metaadat-kulcsok esetében ne használjon kis-és nagybetűket. A rendszer minden kulcsot kisbetűsen olvas be a szolgáltatásból.
-> 
-> 
 
 ## <a name="add-a-message-to-a-queue"></a>Üzenet hozzáadása egy várólistához
 
@@ -174,7 +174,7 @@ catch(ServiceException $e){
 
 ## <a name="peek-at-the-next-message"></a>Betekintés a következő üzenetbe
 
-A várólista elején megtekintheti az üzenetet (vagy üzeneteket) anélkül, hogy el kellene távolítania azt a sorból a **QueueRestProxy->peekMessages**meghívásával. Alapértelmezés szerint a **peekMessage** metódus egyetlen üzenetet ad vissza, de a **PeekMessagesOptions->setNumberOfMessages** metódus használatával módosíthatja ezt az értéket.
+A várólista elején megtekintheti az üzenetet (vagy üzeneteket) anélkül, hogy el kellene távolítania azt a sorból a **QueueRestProxy->peekMessages** meghívásával. Alapértelmezés szerint a **peekMessage** metódus egyetlen üzenetet ad vissza, de a **PeekMessagesOptions->setNumberOfMessages** metódus használatával módosíthatja ezt az értéket.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -223,7 +223,7 @@ else{
 
 ## <a name="de-queue-the-next-message"></a>A következő üzenet kivétele az üzenetsorból
 
-A kód két lépésben eltávolít egy üzenetet egy várólistából. Először hívja meg a **QueueRestProxy->listMessages**, amely az üzenetet a várólistából beolvasott bármely más kód számára láthatatlanná teszi. Alapértelmezés szerint az üzenet 30 másodpercig marad láthatatlan. (Ha az üzenet nem törlődik ebben az időszakban, ismét láthatóvá válik a várólistán.) Az üzenet várólistából való eltávolításának befejezéséhez hívnia kell a **QueueRestProxy->deleteMessage**. Az üzenetek eltávolításának kétlépéses folyamata biztosítja, hogy ha a kód a hardver vagy a szoftver meghibásodása miatt nem tud feldolgozni egy üzenetet, a kód egy másik példánya ugyanazt az üzenetet kapja, és próbálkozzon újra. A kód a **deleteMessage** közvetlenül az üzenet feldolgozása után hívja meg.
+A kód két lépésben eltávolít egy üzenetet egy várólistából. Először hívja meg a **QueueRestProxy->listMessages** , amely az üzenetet a várólistából beolvasott bármely más kód számára láthatatlanná teszi. Alapértelmezés szerint az üzenet 30 másodpercig marad láthatatlan. (Ha az üzenet nem törlődik ebben az időszakban, ismét láthatóvá válik a várólistán.) Az üzenet várólistából való eltávolításának befejezéséhez hívnia kell a **QueueRestProxy->deleteMessage**. Az üzenetek eltávolításának kétlépéses folyamata biztosítja, hogy ha a kód a hardver vagy a szoftver meghibásodása miatt nem tud feldolgozni egy üzenetet, a kód egy másik példánya ugyanazt az üzenetet kapja, és próbálkozzon újra. A kód a **deleteMessage** közvetlenül az üzenet feldolgozása után hívja meg.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -265,7 +265,7 @@ catch(ServiceException $e){
 
 ## <a name="change-the-contents-of-a-queued-message"></a>Üzenetsorban található üzenet tartalmának módosítása
 
-A várólistán található üzenet tartalmát a **QueueRestProxy->updateMessage**meghívásával módosíthatja. Ha az üzenet munkafeladatot jelöl, ezzel a funkcióval frissítheti a munkafeladat állapotát. A következő kód új tartalommal frissíti az üzenetsor-üzenetet, és beállítja a láthatósági időtúllépést, hogy kiterjesszen egy újabb 60 másodpercet. Ezzel elmenti az üzenethez társított munkahelyi állapotot, és egy percet ad az ügyfélnek, hogy folytassa a munkát az üzeneten. Ezzel a technikával többlépéses munkafolyamatokat is nyomon követhet az üzenetsor üzenetein anélkül, hogy újra kéne kezdenie, ha a folyamat valamelyik lépése hardver- vagy szoftverhiba miatt meghiúsul. A rendszer általában nyilván tartja az újrapróbálkozások számát, és ha az üzenettel *n* alkalomnál többször próbálkoznak, akkor törlődik. Ez védelmet biztosít az ellen, hogy egy üzenetet minden feldolgozásakor kiváltson egy alkalmazáshibát.
+A várólistán található üzenet tartalmát a **QueueRestProxy->updateMessage** meghívásával módosíthatja. Ha az üzenet munkafeladatot jelöl, ezzel a funkcióval frissítheti a munkafeladat állapotát. A következő kód új tartalommal frissíti az üzenetsor-üzenetet, és beállítja a láthatósági időtúllépést, hogy kiterjesszen egy újabb 60 másodpercet. Ezzel elmenti az üzenethez társított munkahelyi állapotot, és egy percet ad az ügyfélnek, hogy folytassa a munkát az üzeneten. Ezzel a technikával többlépéses munkafolyamatokat is nyomon követhet az üzenetsor üzenetein anélkül, hogy újra kéne kezdenie, ha a folyamat valamelyik lépése hardver- vagy szoftverhiba miatt meghiúsul. A rendszer általában nyilván tartja az újrapróbálkozások számát, és ha az üzenettel *n* alkalomnál többször próbálkoznak, akkor törlődik. Ez védelmet biztosít az ellen, hogy egy üzenetet minden feldolgozásakor kiváltson egy alkalmazáshibát.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -421,12 +421,12 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az Azure üzenetsor-tárolás alapjait, az alábbi hivatkozásokat követve megismerheti az összetettebb tárolási feladatokat:
 
-* Az [Azure Storage php ügyféloldali kódtár API-referenciájának](https://azure.github.io/azure-storage-php/) felkeresése
-* Lásd a [speciális üzenetsor példáját](https://github.com/Azure/azure-storage-php/blob/master/samples/QueueSamples.php).
+- Az [Azure Storage php ügyféloldali kódtár API-referenciájának](https://azure.github.io/azure-storage-php/) felkeresése
+- Lásd a [speciális üzenetsor példáját](https://github.com/Azure/azure-storage-php/blob/master/samples/QueueSamples.php).
 
 További információ: a [php fejlesztői központ](https://azure.microsoft.com/develop/php/)is.
 

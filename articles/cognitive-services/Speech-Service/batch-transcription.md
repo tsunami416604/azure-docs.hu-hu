@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5e4e5f4c1a50c814174dbbd5d419fe24b2e9f88e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: f89dd6b7926baf6c1c64cff81e8b613461a3e925
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336680"
+ms.locfileid: "93345499"
 ---
 # <a name="how-to-use-batch-transcription"></a>A Batch-átírás használata
 
@@ -49,7 +49,7 @@ Ahogy a Speech Service összes funkciója esetében, létrehozhat egy előfizet�
 Ha azt tervezi, hogy testreszabja a modelleket, kövesse az [akusztikai Testreszabás](how-to-customize-acoustic-models.md) és a [nyelvi Testreszabás](how-to-customize-language-model.md)lépéseit. Ha a létrehozott modelleket a Batch-átírásban szeretné használni, szüksége lesz a modell helyére. A modell helyét a modell (tulajdonság) részleteinek vizsgálatával kérheti le `self` . A Batch átíró szolgáltatáshoz *nem szükséges* egy telepített egyéni végpont.
 
 >[!NOTE]
-> A REST API részeként a Batch-átírás [kvótákat és korlátokat](speech-services-quotas-and-limits.md#speech-to-text-quotas-and-limits-per-speech-resource)tartalmaz, amelyeket javasoljuk, hogy tekintse át. Ha szeretné kihasználni a Batch átírási képességét, hogy hatékonyan átmásolja a nagy mennyiségű hangfájlt, javasoljuk, hogy mindig több fájlt küldjön, vagy mutasson egy Blob Storage tárolóra a hangfájlok segítségével. A szolgáltatás az átfutási idő csökkentése érdekében egyszerre fogja átírni a fájlokat. Egyetlen kérelemben több fájl használata nagyon egyszerű és egyértelmű – lásd a [konfigurációs](#configuration) szakaszt. 
+> A REST API részeként a Batch-átírás [kvótákat és korlátokat](speech-services-quotas-and-limits.md#batch-transcription)tartalmaz, amelyeket javasoljuk, hogy tekintse át. Ha szeretné kihasználni a Batch átírási képességét, hogy hatékonyan átmásolja a nagy mennyiségű hangfájlt, javasoljuk, hogy mindig több fájlt küldjön, vagy mutasson egy Blob Storage tárolóra a hangfájlok segítségével. A szolgáltatás az átfutási idő csökkentése érdekében egyszerre fogja átírni a fájlokat. Egyetlen kérelemben több fájl használata nagyon egyszerű és egyértelmű – lásd a [konfigurációs](#configuration) szakaszt. 
 
 ## <a name="batch-transcription-api"></a>Batch-átírási API
 
@@ -416,6 +416,6 @@ Ez a mintakód nem ad meg egyéni modellt. A szolgáltatás az alapmodellt haszn
 > [!NOTE]
 > Az alapértékek átírásakor nem kell deklarálnia az alapmodell AZONOSÍTÓját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Beszéd a Text V3 API-hoz – dokumentáció](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)

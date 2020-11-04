@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 1446b501b9d91c94c12c82755d0e31f361f8cd8f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: f72d8b332f00b3d298f4d5a1a04937f562647f9e
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783419"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347157"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>Gyors útmutató: Azure üzenetsor Storage ügyféloldali kódtár a JavaScripthez
 
@@ -21,26 +21,26 @@ Ismerkedjen meg az Azure üzenetsor Storage ügyféloldali kódtár 12-es verzi�
 
 A JavaScripthez készült Azure üzenetsor Storage ügyféloldali kódtára a következőre használható:
 
-* Üzenetsor létrehozása
-* Üzenetek hozzáadása egy várólistához
-* Üzenetek betekintése egy várólistába
-* Üzenetsor frissítése
-* Üzenetek fogadása egy várólistából
-* Üzenetek törlése egy várólistából
-* Üzenetsor törlése
+- Üzenetsor létrehozása
+- Üzenetek hozzáadása egy várólistához
+- Üzenetek betekintése egy várólistába
+- Üzenetsor frissítése
+- Üzenetek fogadása egy várólistából
+- Üzenetek törlése egy várólistából
+- Üzenetsor törlése
 
 További források:
 
-* [API-referenciadokumentáció](/javascript/api/@azure/storage-queue/)
-* [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)
-* [Csomag (node Package Manager)](https://www.npmjs.com/package/@azure/storage-queue)
-* [Példák](../common/storage-samples-javascript.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
+- [API-referenciadokumentáció](/javascript/api/@azure/storage-queue/)
+- [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)
+- [Csomag (node Package Manager)](https://www.npmjs.com/package/@azure/storage-queue)
+- [Példák](../common/storage-samples-javascript.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* Azure Storage-fiók – [Storage-fiók létrehozása](../common/storage-account-create.md)
-* Az operációs rendszer jelenlegi [Node.js](https://nodejs.org/en/download/) .
+- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+- Azure Storage-fiók – [Storage-fiók létrehozása](../common/storage-account-create.md)
+- Az operációs rendszer jelenlegi [Node.js](https://nodejs.org/en/download/) .
 
 ## <a name="setting-up"></a>Beállítás
 
@@ -126,9 +126,9 @@ A projekt könyvtárából:
 
 Az Azure Queue Storage szolgáltatás nagy számú üzenet tárolására szolgál. Egy üzenetsor-üzenet akár 64 KB méretű is lehet. Egy üzenetsor akár több millió üzenetet is tartalmazhat, akár egy Storage-fiók teljes kapacitási korlátját. A várólistákat általában arra használják, hogy egy várakozó munkafolyamatot hozzon létre aszinkron feldolgozásra. A várólista-tárolás háromféle típusú erőforrást kínál:
 
-* A Storage-fiók
-* A Storage-fiókban lévő üzenetsor
-* Üzenetek a várólistán belül
+- A Storage-fiók
+- A Storage-fiókban lévő üzenetsor
+- Üzenetek a várólistán belül
 
 Az alábbi ábra az ezen erőforrások közötti kapcsolatot mutatja be.
 
@@ -136,22 +136,22 @@ Az alábbi ábra az ezen erőforrások közötti kapcsolatot mutatja be.
 
 Használja az alábbi JavaScript-osztályokat a következő erőforrásokkal való interakcióhoz:
 
-* [QueueServiceClient](/javascript/api/@azure/storage-queue/queueserviceclient): a `QueueServiceClient` lehetővé teszi a Storage-fiók összes várólistájának kezelését.
-* [QueueClient](/javascript/api/@azure/storage-queue/queueclient): a `QueueClient` osztály segítségével kezelheti és kezelheti az egyes várólistákat és azok üzeneteit.
-* [QueueMessage](/javascript/api/@azure/storage-queue/queuemessage): az `QueueMessage` osztály a [receiveMessages](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) egy várólistán való meghívásakor visszaadott egyedi objektumokat jelöli.
+- [QueueServiceClient](/javascript/api/@azure/storage-queue/queueserviceclient): a `QueueServiceClient` lehetővé teszi a Storage-fiók összes várólistájának kezelését.
+- [QueueClient](/javascript/api/@azure/storage-queue/queueclient): a `QueueClient` osztály segítségével kezelheti és kezelheti az egyes várólistákat és azok üzeneteit.
+- [QueueMessage](/javascript/api/@azure/storage-queue/queuemessage): az `QueueMessage` osztály a [receiveMessages](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) egy várólistán való meghívásakor visszaadott egyedi objektumokat jelöli.
 
 ## <a name="code-examples"></a>Kódpéldák
 
 Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következő műveleteket az Azure üzenetsor-tárolási ügyféloldali kódtár használatával a JavaScripthez:
 
-* [A kapcsolati sztring lekérése](#get-the-connection-string)
-* [Üzenetsor létrehozása](#create-a-queue)
-* [Üzenetek hozzáadása egy várólistához](#add-messages-to-a-queue)
-* [Üzenetek betekintése egy várólistába](#peek-at-messages-in-a-queue)
-* [Üzenetsor frissítése](#update-a-message-in-a-queue)
-* [Üzenetek fogadása egy várólistából](#receive-messages-from-a-queue)
-* [Üzenetek törlése egy várólistából](#delete-messages-from-a-queue)
-* [Üzenetsor törlése](#delete-a-queue)
+- [A kapcsolati sztring lekérése](#get-the-connection-string)
+- [Üzenetsor létrehozása](#create-a-queue)
+- [Üzenetek hozzáadása egy várólistához](#add-messages-to-a-queue)
+- [Üzenetek betekintése egy várólistába](#peek-at-messages-in-a-queue)
+- [Üzenetsor frissítése](#update-a-message-in-a-queue)
+- [Üzenetek fogadása egy várólistából](#receive-messages-from-a-queue)
+- [Üzenetek törlése egy várólistából](#delete-messages-from-a-queue)
+- [Üzenetsor törlése](#delete-a-queue)
 
 ### <a name="get-the-connection-string"></a>A kapcsolati sztring lekérése
 
@@ -249,7 +249,7 @@ console.log("Message updated, requestId:", updateMessageResponse.requestId);
 
 ### <a name="receive-messages-from-a-queue"></a>Üzenetek fogadása egy várólistából
 
-A korábban hozzáadott üzenetek letöltése a [receiveMessages](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) metódus meghívásával.  A `numberOfMessages` mezőben adja meg a híváshoz fogadott üzenetek maximális számát.
+A korábban hozzáadott üzenetek letöltése a [receiveMessages](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) metódus meghívásával. A `numberOfMessages` mezőben adja meg a híváshoz fogadott üzenetek maximális számát.
 
 Adja hozzá ezt a kódot a függvény végéhez `main` :
 
@@ -356,5 +356,5 @@ Oktatóanyagok, minták, gyors indítás és egyéb dokumentáció:
 > [!div class="nextstepaction"]
 > [Azure a JavaScripthez – dokumentáció](/azure/developer/javascript/)
 
-* További információ: [Azure Storage-üzenetsor ügyféloldali kódtára a javascripthez](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue).
-* További Azure üzenetsor-tárolási minta alkalmazások megjelenítéséhez folytassa az [Azure üzenetsor-tárolás ügyféloldali kódtár V12 JavaScript-mintáit](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples).
+- További információ: [Azure Storage-üzenetsor ügyféloldali kódtára a javascripthez](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue).
+- További Azure üzenetsor-tárolási minta alkalmazások megjelenítéséhez folytassa az [Azure üzenetsor-tárolás ügyféloldali kódtár V12 JavaScript-mintáit](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples).

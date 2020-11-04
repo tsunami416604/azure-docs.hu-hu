@@ -5,12 +5,12 @@ author: dlepow
 ms.topic: article
 ms.author: danlep
 ms.date: 10/29/2020
-ms.openlocfilehash: bb185e7d5803219135fddf421b7d6a89edd296b0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: def1c3a9b8a1086f453c7e71d766ab0dd89b0c2d
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315807"
+ms.locfileid: "93347522"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>Nyilvános tartalom kezelése Azure Container Registry
 
@@ -28,7 +28,7 @@ A megfelelő vezérlők nélkül a nyilvános beállításjegyzékbeli tartalomm
 Első lépésként, ha jelenleg a Docker hub nyilvános lemezképeit egy Build vagy üzembe helyezési munkafolyamat részeként kéri le, javasoljuk, hogy a névtelen lekéréses kérelem helyett [Docker hub-fiókkal végezzen hitelesítést](https://docs.docker.com/docker-hub/download-rate-limit/#how-do-i-authenticate-pull-requests) .
 
 > [!NOTE]
-> 2020. november 2., a [letöltési sebességre vonatkozó korlátozások](https://docs.docker.com/docker-hub/download-rate-limit) a Docker ingyenes csomag fiókjaiban a Docker hub névtelen és hitelesített kéréseire vonatkoznak, és az IP-cím és a Docker-azonosító, a respecitively alapján kényszerítik ki. 
+> 2020. november 2. [között a letöltési sebességre vonatkozó korlátozások](https://docs.docker.com/docker-hub/download-rate-limit) a Docker ingyenes csomag fiókjaiban a Docker hub névtelen és hitelesített kéréseire vonatkoznak, és az IP-cím és a Docker-azonosító alapján érvényesítik azokat. 
 >
 > A lekéréses kérelmek számának becslése során vegye figyelembe, hogy ha a felhőalapú szolgáltatói szolgáltatásokat használja, vagy a vállalati NAT mögött dolgozik, több felhasználó fog megjelenni a Docker hub-ban az IP-címek részhalmazában. Ha hozzáadta a Docker fizetős fiókjának hitelesítését a Docker hub felé irányuló kérelmekhez, azzal elkerülhető, hogy a szolgáltatás megszakadjon a sávszélesség-korlátozás miatt.
 >
