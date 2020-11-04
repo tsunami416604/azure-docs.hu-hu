@@ -1,6 +1,6 @@
 ---
-title: Mappák és több fájl lekérdezése az SQL igény szerinti használatával (előzetes verzió)
-description: Az SQL on-demand (előzetes verzió) támogatja több fájl/mappa olvasását helyettesítő karakterekkel, amelyek hasonlóak a Windows operációs rendszerben használt helyettesítő karakterekhez.
+title: Mappák és több fájl lekérdezése kiszolgáló nélküli SQL-készlettel (előzetes verzió)
+description: A kiszolgáló nélküli SQL-készlet (előzetes verzió) a helyettesítő karakterek használatával több fájl/mappa olvasását is támogatja, amelyek a Windows operációs rendszerben használt helyettesítő karakterekhez hasonlóak.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 54ef116878dee2ed1c351fac3dacdf359abbe574
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71ed590440a8c7e37a071b4eadfc09977ef91d5e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288341"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310838"
 ---
 # <a name="query-folders-and-multiple-files"></a>Mappák és több fájl lekérdezése  
 
-Ebből a cikkből megtudhatja, hogyan írhat egy lekérdezést az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analytics szolgáltatásban.
+Ebből a cikkből megtudhatja, hogyan írhat lekérdezéseket kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban.
 
-Az SQL on-demand támogatja több fájl/mappa olvasását helyettesítő karakterek használatával, amelyek a Windows operációs rendszerben használt helyettesítő karakterekhez hasonlóak. Ez azonban nagyobb rugalmasságot jelent, mivel több helyettesítő karakter is engedélyezett.
+A kiszolgáló nélküli SQL-készlet támogatja több fájl/mappa olvasását helyettesítő karakterekkel, amelyek hasonlóak a Windows operációs rendszerben használt helyettesítő karakterekhez. Ez azonban nagyobb rugalmasságot jelent, mivel több helyettesítő karakter is engedélyezett.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -138,7 +138,7 @@ ORDER BY
 A fájlok több mappából is olvashatók a helyettesítő karakterek használatával. A következő lekérdezés beolvassa az összes olyan fájlt, amely a *CSV* mappában található összes mappából a *t* és a t végződéssel kezdődő neveket *tartalmaz.*
 
 > [!NOTE]
-> Jegyezze fel az elérési út végén található/végét az alábbi lekérdezésben. Egy mappát jelöl. Ha a/ki van hagyva, a lekérdezés a " *t &ast; * " nevű fájlokat fogja megcélozni.
+> Jegyezze fel az elérési út végén található/végét az alábbi lekérdezésben. Egy mappát jelöl. Ha a/ki van hagyva, a lekérdezés a " *t &ast;* " nevű fájlokat fogja megcélozni.
 
 ```sql
 SELECT
@@ -183,10 +183,10 @@ Mivel csak egy olyan mappa van, amely megfelel a feltételeknek, a lekérdezés 
 
 ## <a name="multiple-wildcards"></a>Több helyettesítő karakter
 
-Több helyettesítő karaktert is használhat a különböző elérési utak szintjén. Például a korábbi lekérdezések gazdagabbá tehetők csak a 2017 adatokkal rendelkező fájlok olvasására, az összes olyan mappából, amelynél a nevek a *t* értékkel kezdődnek, és az *i*-vel végződik.
+Több helyettesítő karaktert is használhat a különböző elérési utak szintjén. Például a korábbi lekérdezések gazdagabbá tehetők csak a 2017 adatokkal rendelkező fájlok olvasására, az összes olyan mappából, amelynél a nevek a *t* értékkel kezdődnek, és az *i* -vel végződik.
 
 > [!NOTE]
-> Jegyezze fel az elérési út végén található/végét az alábbi lekérdezésben. Egy mappát jelöl. Ha a/ki van hagyva, a lekérdezés a " *t &ast; * " nevű fájlokat fogja megcélozni.
+> Jegyezze fel az elérési út végén található/végét az alábbi lekérdezésben. Egy mappát jelöl. Ha a/ki van hagyva, a lekérdezés a " *t &ast;* " nevű fájlokat fogja megcélozni.
 > Lekérdezés legfeljebb 10 helyettesítő karakterből áll.
 
 ```sql

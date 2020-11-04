@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b6c6d15b553e8b19fff2c464dfb856550f7bcbf0
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 9cde7fe32d1b7b13c5f95bf3d99497926f68c88e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494925"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311191"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Automatizált ML használata Azure Machine Learning-folyamatokban a Pythonban
 
@@ -25,7 +25,7 @@ A Azure Machine Learning automatizált ML-funkciói lehetővé teszik a nagy tel
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot a feladatok megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Egy Azure Machine Learning-munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).  
 
@@ -41,15 +41,15 @@ Az első lépés az, _Ha az adatátvitelt egy ml_ -folyamatba kívánja használ
 
 
 > [!TIP]
-> Az ideiglenes adatátviteli folyamat lépéseinek átadását továbbfejlesztettük a nyilvános előzetes osztályokban,  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) és [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) .  Ezek az osztályok [kísérleti](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true#&preserve-view=truestable-vs-experimental) előzetes funkciók, és bármikor változhatnak.
+> Az ideiglenes adatátviteli folyamat lépéseinek átadását továbbfejlesztettük a nyilvános előzetes osztályokban,  [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) és [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) .  Ezek az osztályok [kísérleti](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental) előzetes funkciók, és bármikor változhatnak.
 
-A `AutoMLStep` konfigurálása egy `AutoMLConfig` objektumon keresztül történik. `AutoMLConfig` a egy rugalmas osztály, amelyet az [automatikus ml-kísérletek konfigurálása a Pythonban](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings)című cikkben talál. 
+A `AutoMLStep` konfigurálása egy `AutoMLConfig` objektumon keresztül történik. `AutoMLConfig` a egy rugalmas osztály, amelyet az [automatikus ml-kísérletek konfigurálása a Pythonban](./how-to-configure-auto-train.md#configure-your-experiment-settings)című cikkben talál. 
 
 Egy `Pipeline` fut az a-ben `Experiment` . A folyamat `Run` minden egyes lépéshez gyermeket tartalmaz `StepRun` . Az automatizált ML kimenetei `StepRun` a betanítási mérőszámok és a legmagasabb teljesítményű modellek.
 
 A dolgok konkrét elvégzéséhez ez a cikk egy egyszerű folyamatot hoz létre egy besorolási feladathoz. A feladat a Titanic túlélésének előrejelzése, de az adatok vagy a feladat nem kerül megvitatásra, kivéve az átadást.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 ### <a name="retrieve-initial-dataset"></a>Kezdeti adatkészlet beolvasása
 
@@ -106,7 +106,7 @@ compute_target = ws.compute_targets[compute_name]
 
 Az adatelőkészítés és az automatikus ML-lépés közötti köztes adatfeldolgozás a munkaterület alapértelmezett adattárában tárolható, így nem kell többet megtennie, mint `get_default_datastore()` a hívás az `Workspace` objektumon. 
 
-Ezt követően a kód ellenőrzi, hogy már létezik-e a pénzmosás-számítási cél `'cpu-cluster'` . Ha nem, azt adjuk meg, hogy egy kis CPU-alapú számítási célt szeretnénk használni. Ha az automatizált ML mély tanulási funkcióit szeretné használni (például DNN-támogatással rendelkező szöveges featurization), akkor a GPU-ra [optimalizált virtuálisgép-méretek](https://docs.microsoft.com/azure/virtual-machines/sizes-gpu)című cikkben leírtak szerint válasszon ki egy erős GPU-támogatással rendelkező számítást. 
+Ezt követően a kód ellenőrzi, hogy már létezik-e a pénzmosás-számítási cél `'cpu-cluster'` . Ha nem, azt adjuk meg, hogy egy kis CPU-alapú számítási célt szeretnénk használni. Ha az automatizált ML mély tanulási funkcióit szeretné használni (például DNN-támogatással rendelkező szöveges featurization), akkor a GPU-ra [optimalizált virtuálisgép-méretek](../virtual-machines/sizes-gpu.md)című cikkben leírtak szerint válasszon ki egy erős GPU-támogatással rendelkező számítást. 
 
 A kód blokkolja a cél üzembe helyezését, majd kinyomtatja az imént létrehozott számítási cél részleteit. Végül a rendszer lekéri a nevesített számítási célt a munkaterületről, és hozzárendeli a következőhöz: `compute_target` . 
 
@@ -137,7 +137,7 @@ else:
         pin_sdk_version=False)
 ```
 
-A fenti kód két lehetőséget mutat a függőségek kezelésére. Ahogy az a `USE_CURATED_ENV = True` esetében is látható, a konfiguráció egy kurátori környezetben alapul. A "előre ellátott" környezetek közös, egymástól függő kódtárakkal rendelkeznek, és jelentősen gyorsabban online állapotba helyezhetők. A kurátori környezetek előre összeállított Docker-rendszerképekkel rendelkeznek a [Microsoft Container Registryban](https://hub.docker.com/publishers/microsoftowner). Az elérési út, ha úgy módosítja `USE_CURATED_ENV` , hogy `False` a függőségek explicit beállítására szolgáló mintázatot jeleníti meg. Ebben az esetben egy új egyéni Docker-rendszerkép jön létre és lesz regisztrálva az erőforráscsoport egy Azure Container Registryjában (lásd: [Bevezetés az Azure-beli privát Docker-jegyzékbe](https://docs.microsoft.com/azure/container-registry/container-registry-intro)). A rendszerkép kiépítése és regisztrálása néhány percet is igénybe vehet. 
+A fenti kód két lehetőséget mutat a függőségek kezelésére. Ahogy az a `USE_CURATED_ENV = True` esetében is látható, a konfiguráció egy kurátori környezetben alapul. A "előre ellátott" környezetek közös, egymástól függő kódtárakkal rendelkeznek, és jelentősen gyorsabban online állapotba helyezhetők. A kurátori környezetek előre összeállított Docker-rendszerképekkel rendelkeznek a [Microsoft Container Registryban](https://hub.docker.com/publishers/microsoftowner). Az elérési út, ha úgy módosítja `USE_CURATED_ENV` , hogy `False` a függőségek explicit beállítására szolgáló mintázatot jeleníti meg. Ebben az esetben egy új egyéni Docker-rendszerkép jön létre és lesz regisztrálva az erőforráscsoport egy Azure Container Registryjában (lásd: [Bevezetés az Azure-beli privát Docker-jegyzékbe](../container-registry/container-registry-intro.md)). A rendszerkép kiépítése és regisztrálása néhány percet is igénybe vehet. 
 
 ## <a name="prepare-data-for-automated-machine-learning"></a>Az automatizált gépi tanulásra vonatkozó adatelőkészítés
 
@@ -251,11 +251,11 @@ dataprep_step = PythonScriptStep(
 Az `prepped_data_path` objektum típusa `PipelineOutputFileDataset` . Figyelje meg, hogy a és az argumentumokban is meg van adva `arguments` `outputs` . Ha áttekinti az előző lépést, látni fogja, hogy az adatelőkészítési kódban az argumentum értéke annak `'--output_path'` a fájlnak az elérési útja, amelybe a Parquet fájl íródott. 
 
 > [!TIP]
-> A köztes adatátviteli folyamat lépéseinek átadásával kapcsolatos továbbfejlesztett élmény a nyilvános előzetes verzióban érhető el [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) . Az osztályt használó kódrészletek esetében `OutputFileDatasetConfig` tekintse meg a [két lépésből álló ml-folyamat](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)létrehozása című témakört.
+> A köztes adatátviteli folyamat lépéseinek átadásával kapcsolatos továbbfejlesztett élmény a nyilvános előzetes verzióban érhető el [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) . Az osztályt használó kódrészletek esetében `OutputFileDatasetConfig` tekintse meg a [két lépésből álló ml-folyamat](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)létrehozása című témakört.
 
 ## <a name="train-with-automlstep"></a>Tanítás AutoMLStep
 
-Az automatikus ML-folyamat konfigurálása lépés az `AutoMLConfig` osztálysal történik. Ez a rugalmas osztály az [automatikus ml-kísérletek konfigurálása a Pythonban](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)című témakörben található. Az adatok bevitele és kimenete a konfiguráció egyetlen olyan eleme, amely különleges figyelmet igényel egy ML-folyamatban. A folyamatokban a bemeneti és kimeneti adatokat az `AutoMLConfig` alábbiakban részletesen tárgyaljuk. Az adatokon túl a ML-folyamatok előnye, hogy különböző számítási célokat is használhat a különböző lépésekhez. Dönthet úgy is, hogy a hatékonyabban `ComputeTarget` csak az automatikus ml-t használja. Ez olyan egyszerű, mint `RunConfiguration` az objektum paramétereinek kiosztása `AutoMLConfig` `run_configuration` .
+Az automatikus ML-folyamat konfigurálása lépés az `AutoMLConfig` osztálysal történik. Ez a rugalmas osztály az [automatikus ml-kísérletek konfigurálása a Pythonban](./how-to-configure-auto-train.md)című témakörben található. Az adatok bevitele és kimenete a konfiguráció egyetlen olyan eleme, amely különleges figyelmet igényel egy ML-folyamatban. A folyamatokban a bemeneti és kimeneti adatokat az `AutoMLConfig` alábbiakban részletesen tárgyaljuk. Az adatokon túl a ML-folyamatok előnye, hogy különböző számítási célokat is használhat a különböző lépésekhez. Dönthet úgy is, hogy a hatékonyabban `ComputeTarget` csak az automatikus ml-t használja. Ez olyan egyszerű, mint `RunConfiguration` az objektum paramétereinek kiosztása `AutoMLConfig` `run_configuration` .
 
 ### <a name="send-data-to-automlstep"></a>Az adatküldés `AutoMLStep`
 
@@ -270,7 +270,7 @@ prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
 A fenti kódrészlet magas teljesítményt eredményez az `PipelineOutputTabularDataset` `PipelineOutputFileDataset` adatelőkészítési lépés kimenetében.
 
 > [!TIP]
-> A nyilvános előzetes verzió osztálya [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) tartalmazza azt a [read_delimited_files ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true#&preserve-view=trueread-delimited-files-include-path-false--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none--path-glob-none--set-column-types-none-) metódust, amely átalakítja a `OutputFileDatasetConfig` into a-t az [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) AutoML-ben való felhasználásra.
+> A nyilvános előzetes verzió osztálya [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) tartalmazza azt a [read_delimited_files ()](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py#&preserve-view=trueread-delimited-files-include-path-false--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none--path-glob-none--set-column-types-none-) metódust, amely átalakítja a `OutputFileDatasetConfig` into a-t az [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) AutoML-ben való felhasználásra.
 
 Egy másik lehetőség a `Dataset` munkaterületen regisztrált objektumok használata:
 
@@ -315,7 +315,7 @@ A fenti kódrészlet létrehozza a két `PipelineData` objektumot a metrikák é
 
 ### <a name="configure-and-create-the-automated-ml-pipeline-step"></a>Az automatikus ML-folyamat lépésének konfigurálása és létrehozása
 
-A bemenetek és kimenetek meghatározása után itt az ideje, hogy létrehozza a `AutoMLConfig` és a értéket `AutoMLStep` . A konfiguráció részletei a feladattól függenek, az [automatikus ml-kísérletek konfigurálása a Pythonban](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)című témakörben leírtak szerint. A Titanic túlélési besorolása feladathoz az alábbi kódrészlet egy egyszerű konfigurációt mutat be.
+A bemenetek és kimenetek meghatározása után itt az ideje, hogy létrehozza a `AutoMLConfig` és a értéket `AutoMLStep` . A konfiguráció részletei a feladattól függenek, az [automatikus ml-kísérletek konfigurálása a Pythonban](./how-to-configure-auto-train.md)című témakörben leírtak szerint. A Titanic túlélési besorolása feladathoz az alábbi kódrészlet egy egyszerű konfigurációt mutat be.
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -353,7 +353,7 @@ A `automl_settings` szótárt a rendszer a kwargs adja át a `AutoMLConfig` kons
 - `task``classification`erre a példára van beállítva. A többi érvényes érték a `regression` és a `forecasting`
 - `path` és `debug_log` írja le a projekt elérési útját és egy helyi fájlt, amelybe a rendszer a hibakeresési adatokat írni fogja 
 - `compute_target` a korábban definiált, `compute_target` amely ebben a példában egy olcsó CPU-alapú gép. Ha a AutoML mély tanulási szolgáltatásait használja, a számítási célt GPU-alapúra szeretné módosítani
-- `featurization` értékre van állítva `auto` . További részletek az automatikus ML konfigurációs dokumentum [adat Featurization](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#data-featurization) szakaszában találhatók. 
+- `featurization` értékre van állítva `auto` . További részletek az automatikus ML konfigurációs dokumentum [adat Featurization](./how-to-configure-auto-train.md#data-featurization) szakaszában találhatók. 
 - `label_column_name` azt jelzi, hogy melyik oszlopot érdekli az előrejelzés 
 - `training_data` az `PipelineOutputTabularDataset` adatelőkészítési lépés eredményeiből származó objektumokra van beállítva 
 
@@ -525,4 +525,4 @@ Végül a rendszer letölti a tényleges mérőszámokat és modelleket a helyi 
 - Futtassa ezt a Jupyter-jegyzetfüzetet egy olyan folyamaton, amely egy regressziót használó [folyamatban lévő AUTOMATIZÁLT ml-](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) t mutat a taxi viteldíjak előrejelzéséhez
 - [Automatizált ML-kísérletek létrehozása kód írása nélkül](how-to-use-automated-ml-for-ml-models.md)
 - Ismerkedjen meg az [automatikus ml-t bemutató különböző Jupyter notebookokkal](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)
-- Olvassa el a folyamat integrálása a teljes [MLOps](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment#automate-the-ml-lifecycle) vagy a [MLOps GitHub-tárház](https://github.com/Microsoft/MLOpspython) vizsgálatával foglalkozó részt 
+- Olvassa el a folyamat integrálása a teljes [MLOps](./concept-model-management-and-deployment.md#automate-the-ml-lifecycle) vagy a [MLOps GitHub-tárház](https://github.com/Microsoft/MLOpspython) vizsgálatával foglalkozó részt

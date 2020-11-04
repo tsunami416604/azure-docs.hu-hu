@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: f159e38eb66e1758feaf743c32d8de30c614b234
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fe30a2a0885e1a579eb32ad84ef467f7162febe4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288511"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310327"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Az Azure szinapszis SQL által támogatott Transact-SQL-funkciók
 
@@ -37,7 +37,7 @@ A szinapszis SQL felhasználási modelljei lehetővé teszik különböző adatb
 | **Eseményindítók** | Nem | Nem |
 | **Külső táblák** | [Igen](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). Lásd: támogatott [adatformátumok](#data-formats). | [Igen](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). Lásd: támogatott [adatformátumok](#data-formats). |
 | **Gyorsítótárazási lekérdezések** | Igen, több űrlap (SSD-alapú gyorsítótárazás, memóriabeli, eredményhalmazt gyorsítótárazás). Emellett a rendszer az anyagbeli nézetet is támogatja | Nem |
-| **Táblázat változói** | [Nem](/sql/t-sql/data-types/table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), ideiglenes táblák használata | Nem |
+| **Ideiglenes változók** | [Nem](/sql/t-sql/data-types/table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), ideiglenes táblák használata | Nem |
 | **[Tábla eloszlása](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**               | Igen | Nem |
 | **[Tábla indexei](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                           | Igen | Nem |
 | **[Tábla partíciói](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                     | Igen | Nem |
@@ -79,8 +79,8 @@ A szinapszis SQL lehetővé teszi, hogy az adatai védelméhez és a hozzáfér�
 | **Felhasználók** |  N/A (csak a benne foglalt felhasználók támogatottak az adatbázisokban) | Igen |
 | **[Tartalmazott felhasználók](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)** | Igen. **Megjegyzés:** csak egy Azure ad-felhasználó lehet korlátlan rendszergazda | Igen |
 | **SQL Felhasználónév/jelszó hitelesítése**| Igen | Igen |
-| **Azure Active Directory (HRE) hitelesítés**| Igen, az Azure AD-felhasználók | Igen, Azure AD-bejelentkezések és felhasználók |
-| **Storage Azure Active Directory (HRE) továbbító hitelesítés** | Igen | Igen |
+| **Azure Active Directory (Azure AD) hitelesítés**| Igen, az Azure AD-felhasználók | Igen, Azure AD-bejelentkezések és felhasználók |
+| **Storage Azure Active Directory (Azure AD) továbbító hitelesítés** | Igen | Igen |
 | **Storage SAS-jogkivonat hitelesítése** | Nem | Igen, az [adatbázis-hatókörrel rendelkező hitelesítő adatok](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) használata [külső adatforrásban](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) vagy példány-szintű [hitelesítő](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)adatban. |
 | **Tárterület-hozzáférési kulcs hitelesítése** | Igen, [adatbázis-hatókörű hitelesítő](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) adat használata a [külső adatforrásban](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Nem |
 | **Storage [felügyelt identitások](../security/synapse-workspace-managed-identity.md) hitelesítése** | Igen, [Managed Service Identity hitelesítő adat](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) használatával | Igen, a `Managed Identity` hitelesítő adatok használatával. |
@@ -103,7 +103,7 @@ A szinapszis SQL lehetővé teszi, hogy az adatai védelméhez és a hozzáfér�
 | **[Tűzfalszabályok](../security/synapse-workspace-ip-firewall.md)**| Igen | Igen |
 | **[Privát végpont](../security/synapse-workspace-managed-private-endpoints.md)**| Igen | Igen |
 
-Az SQL-készlet és az SQL on-demand standard Transact-SQL nyelvű használata az adatlekérdezéshez. A részletes különbségekért tekintse meg a [Transact-SQL nyelvi referenciáját](/sql/t-sql/language-reference).
+A dedikált SQL-készlet és a kiszolgáló nélküli SQL-készlet szabványos Transact-SQL nyelvet használ az adat lekérdezéséhez. A részletes különbségekért tekintse meg a [Transact-SQL nyelvi referenciáját](/sql/t-sql/language-reference).
 
 ## <a name="tools"></a>Eszközök
 
@@ -115,10 +115,10 @@ Az adatlekérdezéshez különféle eszközöket használhat a szinapszis SQL-he
 | **Power BI** | Igen | [Igen](tutorial-connect-power-bi-desktop.md) |
 | **Azure Analysis Service** | Igen | Igen |
 | **Azure Data Studio** | Igen | Igen, 1.18.0 vagy újabb verzió. Az SQL-parancsfájlok és az SQL-jegyzetfüzetek támogatottak. |
-| **Az SQL Server Management Studio** | Igen | Igen, 18,5-es vagy újabb verzió |
+| **SQL Server Management Studio** | Igen | Igen, 18,5-es vagy újabb verzió |
 
 > [!NOTE]
-> A SSMS használatával csatlakozhat az SQL on-demand (előzetes verzió) szolgáltatáshoz és a lekérdezéshez. Részlegesen támogatott a 18,5-es verziótól kezdődően, csak a kapcsolódáshoz és a lekérdezésekhez használható.
+> A SSMS segítségével csatlakozhat a kiszolgáló nélküli SQL-készlethez (előzetes verzió) és a lekérdezéshez. Részlegesen támogatott a 18,5-es verziótól kezdődően, csak a kapcsolódáshoz és a lekérdezésekhez használható.
 
 Az alkalmazások többsége a standard Transact-SQL nyelvet használja, amely a szinapszis SQL kiépített és kiszolgáló nélküli használati modelljeit is lekérdezheti.
 
@@ -150,7 +150,7 @@ Az elemzett adattárak különböző tárolási formátumokban tárolhatók. A k
 | **[CDM](https://docs.microsoft.com/common-data-model/)** | Nem | Nem |
 
 ## <a name="next-steps"></a>Következő lépések
-Az SQL Pool és az SQL on-demand ajánlott eljárásaival kapcsolatos további információkért tekintse meg a következő cikkeket:
+A dedikált SQL-készlet és a kiszolgáló nélküli SQL-készlet ajánlott eljárásaival kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Ajánlott eljárások az SQL-készlethez](best-practices-sql-pool.md)
-- [Ajánlott eljárások az SQL igény szerinti kezeléséhez](best-practices-sql-on-demand.md)
+- [Ajánlott eljárások a dedikált SQL-készlethez](best-practices-sql-pool.md)
+- [Ajánlott eljárások kiszolgáló nélküli SQL-készlethez](best-practices-sql-on-demand.md)

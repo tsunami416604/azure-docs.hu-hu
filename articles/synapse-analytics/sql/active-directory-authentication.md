@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: a3bd565b26d011e6186cc6957769db57f9cd1c9c
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 7518d6ac8bc0cde515ab8da2f3d9c1496cb93f08
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093412"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311711"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>Azure Active Directory hitelesítés használata a szinapszis SQL-sel való hitelesítéshez
 
@@ -39,7 +39,7 @@ A konfigurációs lépések a következő eljárásokat ismertetik Azure Active 
 3. Szerepkör kiosztása létrehozva Azure Active Directory identitás a szinapszis munkaterületen (előzetes verzió)
 4. Kapcsolódjon a szinapszis studióhoz az Azure AD-identitások használatával.
 
-## <a name="aad-pass-through-in-azure-synapse-analytics"></a>HRE átmenő Azure szinapszis Analytics
+## <a name="azure-ad-pass-through-in-azure-synapse-analytics"></a>Azure AD-továbbítás az Azure szinapszis Analytics szolgáltatásban
 
 Az Azure szinapszis Analytics lehetővé teszi, hogy a Azure Active Directory identitásával hozzáférhessen az adatokhoz a Lake-ben.
 
@@ -49,13 +49,13 @@ A különböző adatmotorokban tiszteletben lévő fájlokra és adatforrásokra
 
 A következő magas szintű diagram összefoglalja az Azure AD-hitelesítés és a szinapszis SQL használatával történő használatának megoldási architektúráját. Az Azure AD natív felhasználói jelszavának támogatásához csak a felhő részét és az Azure AD/szinapszis szinapszis SQL-t kell figyelembe venni. Az összevont hitelesítés (vagy a Windows rendszerbeli hitelesítő adatok felhasználó/jelszó) támogatásához az ADFS-blokktal folytatott kommunikáció szükséges. A nyilak a kommunikációs útvonalakat jelzik.
 
-![HRE-hitelesítési diagram](./media/aad-authentication/1-active-directory-authentication-diagram.png)
+![Azure ad-hitelesítési diagram](./media/aad-authentication/1-active-directory-authentication-diagram.png)
 
 A következő ábra azokat az összevonási, megbízhatósági és üzemeltetési kapcsolatokat mutatja be, amelyek lehetővé teszik az ügyfél számára, hogy jogkivonat elküldésével csatlakozhasson egy adatbázishoz. A tokent egy Azure AD hitelesíti, és az adatbázis megbízhatónak tartja. 
 
 Az 1. ügyfél a natív felhasználókkal vagy egy összevont felhasználókkal rendelkező Azure AD-val rendelkező Azure Active Directoryt jelenthet. A 2. ügyfél egy lehetséges megoldást jelent, beleértve az importált felhasználókat is; Ebben a példában egy összevont Azure Active Directory, amellyel az ADFS szinkronizálva van Azure Active Directoryval. 
 
-Fontos tisztában lenni azzal, hogy az Azure AD-hitelesítést használó adatbázisokhoz való hozzáféréshez szükséges, hogy az üzemeltetési előfizetés az Azure AD-hez legyen társítva. Ugyanezt az előfizetést kell használni a Azure SQL Database-vagy SQL-készletet üzemeltető SQL Server létrehozásához.
+Fontos tisztában lenni azzal, hogy az Azure AD-hitelesítést használó adatbázisokhoz való hozzáféréshez szükséges, hogy az üzemeltetési előfizetés az Azure AD-hez legyen társítva. Ugyanezt az előfizetést kell használni a Azure SQL Database vagy dedikált SQL-készletet üzemeltető SQL Server létrehozásához.
 
 ![előfizetés kapcsolata](./media/aad-authentication/2-subscription-relationship.png)
 
@@ -109,7 +109,7 @@ Azure Active Directory hitelesítés a következő módszereket támogatja az ad
 - Univerzális Azure Active Directory MFA-val
 - Alkalmazás-jogkivonat hitelesítésének használata
 
-Az Azure AD Server-rendszerbiztonsági tag (Logins) (**nyilvános előzetes**verzió) esetében az alábbi hitelesítési módszerek támogatottak:
+Az Azure AD Server-rendszerbiztonsági tag (Logins) ( **nyilvános előzetes** verzió) esetében az alábbi hitelesítési módszerek támogatottak:
 
 - Azure Active Directory jelszó
 - Integrált Azure Active Directory
@@ -119,10 +119,10 @@ Az Azure AD Server-rendszerbiztonsági tag (Logins) (**nyilvános előzetes**ver
 
 - A kezelhetőség növelése érdekében javasoljuk, hogy hozzon létre egy dedikált Azure AD-csoportot rendszergazdaként.
 - Egyszerre csak egy Azure AD-rendszergazda (egy felhasználó vagy csoport) konfigurálható a szinapszis SQL-készlethez.
-  - Az SQL on-demand (előzetes verzió) Azure AD-kiszolgálói rendszerbiztonsági tagjainak (bejelentkezési funkcióinak) hozzáadásával több Azure AD-kiszolgáló rendszerbiztonsági tag (bejelentkezés) hozható létre, amelyek hozzáadhatók a `sysadmin` szerepkörhöz.
-- A szinapszis SQL-hez csak egy Azure AD-rendszergazda csatlakozhat a szinapszis SQL-hez egy Azure Active Directory fiók használatával. A Active Directory rendszergazda konfigurálhatja a következő Azure AD-adatbázis felhasználóit.
+  - A szinapszis SQL (előzetes verzió) szolgáltatáshoz készült Azure AD Server-rendszerbiztonsági tag (login) hozzáadása lehetővé teszi több Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezés) létrehozását, amelyek hozzáadhatók a `sysadmin` szerepkörhöz.
+- Csak a szinapszis SQL Azure AD-rendszergazdája csatlakozhat a szinapszis SQL-hez egy Azure Active Directory fiók használatával. A Active Directory rendszergazda konfigurálhatja a következő Azure AD-adatbázis felhasználóit.
 - Javasoljuk, hogy a kapcsolat időtúllépését 30 másodpercre állítsa be.
-- SQL Server 2016 Management Studio és SQL Server Data Tools a Visual Studio 2015 (14.0.60311.1 április 2016-ös vagy újabb verziója) támogatja a Azure Active Directory hitelesítést. (Az Azure AD-hitelesítést a **.NET-keretrendszer SQLServer-adatszolgáltatója**támogatja; legalább a .NET-keretrendszer 4,6-es verziója). Így az eszközök és adatrétegbeli alkalmazások legújabb verziói (DAC és. A BACPAC) az Azure AD-hitelesítést is használhatja.
+- SQL Server 2016 Management Studio és SQL Server Data Tools a Visual Studio 2015 (14.0.60311.1 április 2016-ös vagy újabb verziója) támogatja a Azure Active Directory hitelesítést. (Az Azure AD-hitelesítést a **.NET-keretrendszer SQLServer-adatszolgáltatója** támogatja; legalább a .NET-keretrendszer 4,6-es verziója). Így az eszközök és adatrétegbeli alkalmazások legújabb verziói (DAC és. A BACPAC) az Azure AD-hitelesítést is használhatja.
 - A 15.0.1 verziótól kezdődően a [Sqlcmd segédprogram](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) és a [BCP segédprogram](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) támogatja a többtényezős hitelesítés (MFA) Active Directoryét.
 - A Visual Studio 2015 SQL Server Data Tools használatához legalább az Adateszközök (14.0.60311.1-verzió) április 2016-es verziója szükséges. Az Azure AD-felhasználók jelenleg nem jelennek meg a SSDT Object Explorerban. Áthidaló megoldásként tekintse meg [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)felhasználóit.
 - [A SQL Server rendszerhez készült Microsoft JDBC-6,0 illesztőprogram támogatja az](https://www.microsoft.com/download/details.aspx?id=11774) Azure ad-hitelesítést. Lásd még: [a kapcsolatok tulajdonságainak beállítása](/sql/connect/jdbc/setting-the-connection-properties?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).

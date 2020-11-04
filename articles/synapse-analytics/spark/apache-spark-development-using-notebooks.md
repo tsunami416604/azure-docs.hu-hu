@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 02f304af10ae1907326d3f77f318a058155a4c21
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ea765ae5ff93625cc6a0ed36776a8925e5fce836
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738753"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311132"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>A szinapszis Studio (előzetes verzió) jegyzetfüzetek létrehozása, fejlesztése és karbantartása az Azure szinapszis Analyticsben
 
@@ -32,7 +32,7 @@ Ez a cikk bemutatja, hogyan használhatók a jegyzetfüzetek az Azure szinapszis
 
 ## <a name="create-a-notebook"></a>Jegyzetfüzet létrehozása
 
-Kétféleképpen hozhat létre jegyzetfüzetet. Létrehozhat egy új jegyzetfüzetet, vagy importálhat egy meglévő jegyzetfüzetet egy Azure-beli szinapszis-munkaterületre a **Object Explorerból** . Az Azure szinapszis Studio notebookok felismerik a standard Jupyter Notebook IPYNB-fájlokat.
+Kétféleképpen hozhat létre jegyzetfüzetet. Létrehozhat egy új jegyzetfüzetet, vagy importálhat egy meglévő jegyzetfüzetet egy Azure-beli szinapszis-munkaterületre a **Object Explorerból**. Az Azure szinapszis Studio notebookok felismerik a standard Jupyter Notebook IPYNB-fájlokat.
 
 ![importálási jegyzetfüzet létrehozása](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook.png)
 
@@ -44,7 +44,7 @@ A jegyzetfüzetek cellákból állnak, amelyek a kód vagy a szöveg különáll
 
 Több módon is hozzáadhat új cellákat a jegyzetfüzethez.
 
-1. Bontsa ki a bal felső **+ cella** gombot, és válassza a **kódlap hozzáadása** vagy a **szöveg hozzáadása cellát** .
+1. Bontsa ki a bal felső **+ cella** gombot, és válassza a **kódlap hozzáadása** vagy a **szöveg hozzáadása cellát**.
 
     ![cella hozzáadása a cellához – gomb](./media/apache-spark-development-using-notebooks/synapse-add-cell-1.png)
 
@@ -86,7 +86,7 @@ Az alábbi ábrán egy példa látható arra, hogyan írhat PySpark-lekérdezés
 
 Az adat-és változók nem hivatkozhatnak közvetlenül különböző nyelveken a szinapszis Studio jegyzetfüzetben. A Sparkban egy ideiglenes tábla is szerepelhet a nyelvek között. Íme egy példa arra, hogyan lehet beolvasni egy `Scala` DataFrame a `PySpark` és a `SparkSQL` Spark Temp-tábla használatával megkerülő megoldásként.
 
-1. Az 1. cellában olvassa el a DataFrame az SQL Pool-összekötőről a Scala használatával, és hozzon létre egy ideiglenes táblát.
+1. Az 1. cellában olvassa el a DataFrame egy SQL Pool-összekötőről a Scala használatával, és hozzon létre egy ideiglenes táblát.
 
    ```scala
    %%scala
@@ -112,7 +112,7 @@ Az adat-és változók nem hivatkozhatnak közvetlenül különböző nyelveken 
 
 Az Azure szinapszis Studio notebookok integrálva vannak a Monaco-szerkesztővel, hogy IDE-stílusú IntelliSense kerüljön a cellás szerkesztőbe. A szintaxis kiemelése, a hiba jelölője és az automatikus kód befejezése segít a kód írásához és a problémák gyorsabb azonosításához.
 
-Az IntelliSense-funkciók a különböző nyelveken a lejárat különböző szintjein vannak. Az alábbi táblázat segítségével megtekintheti, hogy mi támogatott.
+Az IntelliSense-funkciók a különböző nyelveken a lejárat különböző szintjein vannak. A következő táblázat segítségével megtekintheti a támogatott műveleteket.
 
 |Nyelvek| Szintaxis kiemelése | Szintaktikai hiba jelölője  | Szintaxis kód befejezése | Változó kód befejezése| Rendszerfunkció kódja – Befejezés| Felhasználói függvény kódjának befejezése| Intelligens behúzás | Kód összecsukható|
 |--|--|--|--|--|--|--|--|--|
@@ -172,7 +172,7 @@ A kód több módon is futtatható a cellában.
    ![Futtatás – 1. cella](./media/apache-spark-development-using-notebooks/synapse-run-cell.png)
 
 
-2. A jobb szélen található további cellahivatkozások menü eléréséhez válassza a három pontot ( **..** .). Ezután válassza a **cella futtatása** lehetőséget.
+2. A jobb szélen található további cellahivatkozások menü eléréséhez válassza a három pontot ( **..**.). Ezután válassza a **cella futtatása** lehetőséget.
 
    ![Futtatás – 2. cella](./media/apache-spark-development-using-notebooks/synapse-run-cell-2.png)
    
@@ -186,7 +186,7 @@ Az **összes futtatása** gomb kiválasztásával az aktuális jegyzetfüzet ös
 
 ### <a name="run-all-cells-above-or-below"></a>Az összes fenti vagy alatti cella futtatása
 
-A jobb szélen található további cellahivatkozások menü eléréséhez válassza a három pontot ( **..** .). Ezután válassza a **fenti cellák futtatása** lehetőséget, hogy az összes cellát az aktuálisan futó sorban futtassa. Válassza az **alábbi cellák futtatása** lehetőséget az összes cella az aktuális szakasz alatti futtatásához.
+A jobb szélen található további cellahivatkozások menü eléréséhez válassza a három pontot ( **..**.). Ezután válassza a **fenti cellák futtatása** lehetőséget, hogy az összes cellát az aktuálisan futó sorban futtassa. Válassza az **alábbi cellák futtatása** lehetőséget az összes cella az aktuális szakasz alatti futtatásához.
 
    ![futtatási cellák – fent vagy lent](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
@@ -203,7 +203,7 @@ Egy lépésenkénti cella-végrehajtási állapot jelenik meg a cella alatt, hog
 
 ### <a name="spark-progress-indicator"></a>Spark folyamatjelzője
 
-Az Azure szinapszis Studio notebook kizárólag Spark-alapú. A cellákat a Spark-készleten távolról hajtja végre a rendszer. A Spark-feladatok folyamatjelzője egy valós idejű folyamatjelzővel jelenik meg, amely a feladatok végrehajtási állapotának megértéséhez nyújt segítséget.
+Az Azure szinapszis Studio notebook kizárólag Spark-alapú. A kód cellái a kiszolgáló nélküli Apache Spark készleten futnak távolról. A Spark-feladatok folyamatjelzője egy valós idejű folyamatjelzővel jelenik meg, amely a feladatok végrehajtási állapotának megértéséhez nyújt segítséget.
 Az egyes feladatokhoz vagy fázisokhoz tartozó feladatok száma segít a Spark-feladat párhuzamos szintjének azonosításában. Az adott feladathoz (vagy fázishoz) tartozó Spark felhasználói felületen mélyebben is megtekintheti a feladatot (vagy fázis).
 
 
@@ -211,7 +211,7 @@ Az egyes feladatokhoz vagy fázisokhoz tartozó feladatok száma segít a Spark-
 
 ### <a name="spark-session-config"></a>Spark-munkamenet konfigurációja
 
-Megadhatja az időtúllépés időtartamát, a számot és a végrehajtók számát, hogy az aktuális Spark-munkamenetet adja meg a **konfigurálási munkamenetben** . Indítsa újra a Spark-munkamenetet a konfigurációs módosítások érvénybe léptetéséhez. Az összes gyorsítótárazott jegyzetfüzet-változó törlődik.
+Megadhatja az időtúllépés időtartamát, a számot és a végrehajtók számát, hogy az aktuális Spark-munkamenetet adja meg a **konfigurálási munkamenetben**. Indítsa újra a Spark-munkamenetet a konfigurációs módosítások érvénybe léptetéséhez. Az összes gyorsítótárazott jegyzetfüzet-változó törlődik.
 
 [![munkamenet-kezelés](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png#lightbox)
 
@@ -275,7 +275,7 @@ Az elsődleges Storage-fiókban lévő adatelérést közvetlenül is elérheti.
 
 ### <a name="produce-rendered-table-view"></a>Megjelenített táblázatos nézet létrehozása
 
-Táblázatos eredményeket tartalmazó nézetet biztosítunk a sávdiagram, a diagram, a tortadiagram, a pontdiagram és a diagramterület létrehozásához. Az adatait anélkül is megjelenítheti, hogy kódot kellene írnia. A diagramok testreszabhatók a **diagram beállításaiban** . 
+Táblázatos eredményeket tartalmazó nézetet biztosítunk a sávdiagram, a diagram, a tortadiagram, a pontdiagram és a diagramterület létrehozásához. Az adatait anélkül is megjelenítheti, hogy kódot kellene írnia. A diagramok testreszabhatók a **diagram beállításaiban**. 
 
 A **(z)%% SQL** Magic parancsok kimenete alapértelmezés szerint a megjelenített tábla nézetben jelenik meg. Meghívhatja <code>display(df)</code> a Spark DataFrames, a pandák DataFrames, a List vagy a rugalmas elosztott adatkészletek (RDD) függvényt a megjelenített tábla nézet létrehozásához.
 
@@ -294,7 +294,7 @@ A <code>display(df, summary = True)</code> segítségével megtekintheti egy ado
 
 ### <a name="render-html-or-interactive-libraries"></a>HTML-vagy interaktív könyvtárak renderelése
 
-A **displayHTML ()** használatával HTML-kódot is megjelenítheti, beleértve a JavaScriptet, a CSS-t, a D3-t vagy az interaktív kódtárakat, például a **bokeh** -t
+A **displayHTML ()** használatával HTML-kódot is megadhat, beleértve a JavaScriptet, a CSS-t, a D3-t vagy az interaktív kódtárakat, például a **bokeh** -t.
 
 Az alábbi ábrán egy példa látható a karakterjelek ábrázolására a **bokeh** használatával.
 

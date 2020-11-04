@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 69eefce50cefe9f54ed931c96ccbe94b2057cae4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb87afcc6edc02d241dca763aff9ecdd594e4711
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362367"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310090"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások Excel-bővítménye
 
-**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Az Excel megkönnyíti a webszolgáltatások közvetlen meghívását anélkül, hogy kódot kellene írnia.
@@ -36,10 +36,10 @@ Az Excel megkönnyíti a webszolgáltatások közvetlen meghívását anélkül,
 2. Válassza ki a webszolgáltatást a következőre kattintva: "Titanic Survivor-előrejelző (Excel-bővítmény minta) [score]" ebben a példában.
    
     ![Webszolgáltatás kiválasztása](./media/excel-add-in-for-web-services/image1.png)
-3. Ezzel elkerül a **prediktív** szakaszba.  Ez a munkafüzet már tartalmaz mintaadatok, de üres munkafüzeteknél kijelölhet egy cellát az Excelben, és kattintson a **mintaadatok használata**lehetőségre.
+3. Ezzel elkerül a **prediktív** szakaszba.  Ez a munkafüzet már tartalmaz mintaadatok, de üres munkafüzeteknél kijelölhet egy cellát az Excelben, és kattintson a **mintaadatok használata** lehetőségre.
 4. Válassza ki a fejléceket tartalmazó adatokat, majd kattintson a bemeneti adattartomány ikonra.  Győződjön meg arról, hogy a "saját adatfejlécek" jelölőnégyzet be van jelölve.
-5. A **kimenet**alatt adja meg azt a cellát, ahol a kimenetet szeretné megadni, például a "H1" értéket.
-6. Kattintson az **Előrejelzés**gombra. Ha bejelöli az "automatikus előrejelzés" jelölőnégyzetet, akkor a kiválasztott területeken (a bemenetként megadottak szerint) a kérést és a kimeneti cellák frissítését a prediktív gomb megnyomása nélkül kell elindítania.
+5. A **kimenet** alatt adja meg azt a cellát, ahol a kimenetet szeretné megadni, például a "H1" értéket.
+6. Kattintson az **Előrejelzés** gombra. Ha bejelöli az "automatikus előrejelzés" jelölőnégyzetet, akkor a kiválasztott területeken (a bemenetként megadottak szerint) a kérést és a kimeneti cellák frissítését a prediktív gomb megnyomása nélkül kell elindítania.
    
     ![Előrejelzési szakasz](./media/excel-add-in-for-web-services/image1.png)
 
@@ -65,21 +65,21 @@ Szerezze be a webszolgáltatás API-kulcsát. A művelet végrehajtása attól f
 
 **Új webszolgáltatás használata**
 
-1. A [Azure Machine learning webszolgáltatások](https://services.azureml.net) **portálján kattintson a webszolgáltatások**, majd a webszolgáltatás elemre. 
-2. Kattintson **a**felhasználás gombra.
+1. A [Azure Machine learning webszolgáltatások](https://services.azureml.net) **portálján kattintson a webszolgáltatások** , majd a webszolgáltatás elemre. 
+2. Kattintson **a** felhasználás gombra.
 3. Keresse meg az **alapszintű felhasználás adatai** szakaszt. Másolja és mentse az **elsődleges kulcsot** és a **kérelem-válasz** URL-címet.
 
 ## <a name="steps-to-add-a-new-web-service"></a>Új webszolgáltatás hozzáadásának lépései
 
 1. Webszolgáltatások üzembe helyezése vagy meglévő webszolgáltatás használata. Webszolgáltatások üzembe helyezésével kapcsolatos további információkért lásd: [3. Oktatóanyag: hitelkockázat-modell üzembe helyezése](tutorial-part3-credit-risk-deploy.md).
-2. Kattintson **a**felhasználás gombra.
+2. Kattintson **a** felhasználás gombra.
 3. Keresse meg az **alapszintű felhasználás adatai** szakaszt. Másolja és mentse az **elsődleges kulcsot** és a **kérelem-válasz** URL-címet.
 4. Az Excelben nyissa meg a **webszolgáltatások** szakaszt (ha az **Előrejelzés** szakaszban látható, kattintson a vissza nyílra a webszolgáltatások listájának megugrásához).
    
     ![Ugrás a webszolgáltatás kiválasztására](./media/excel-add-in-for-web-services/image3.png)
-5. Kattintson a **webszolgáltatás hozzáadása**lehetőségre.
+5. Kattintson a **webszolgáltatás hozzáadása** lehetőségre.
 6. Illessze be az URL-címet az Excel-bővítmény szövegmezőbe feliratú **URL-címébe**.
-7. Illessze be az API-t és az elsődleges kulcsot a szövegmezőbe az **API-kulcs**feliratú mezőbe.
+7. Illessze be az API-t és az elsődleges kulcsot a szövegmezőbe az **API-kulcs** feliratú mezőbe.
 8. Kattintson a **Hozzáadás** parancsra.
    
     ![Egy klasszikus webszolgáltatáshoz tartozó URL-cím és API-kulcs.](./media/excel-add-in-for-web-services/image6.png)
@@ -88,4 +88,4 @@ Szerezze be a webszolgáltatás API-kulcsát. A művelet végrehajtása attól f
 ## <a name="sharing-your-workbook"></a>A munkafüzet megosztása
 Ha menti a munkafüzetet, a hozzáadott webszolgáltatásokhoz tartozó API/elsődleges kulcs is mentve lesz. Ez azt jelenti, hogy csak a megbízható személyeknek kell megosztania a munkafüzetet.
 
-Tegye fel kérdéseit a következő megjegyzésekkel foglalkozó szakaszban vagy a [fórumunkat](https://docs.microsoft.com/answers/topics/azure-machine-learning.html).
+Tegye fel kérdéseit a következő megjegyzésekkel foglalkozó szakaszban vagy a [fórumunkat](/answers/topics/azure-machine-learning.html).

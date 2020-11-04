@@ -1,6 +1,6 @@
 ---
 title: Rendezési támogatás
-description: Az Azure szinapszis SQL-ben támogatott rendezési típusok
+description: Rendezési típusok támogatása a szinapszis SQL-hez az Azure szinapszis Analyticsben
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: reference
@@ -8,25 +8,25 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5e46cd744be609adff764edfe5a506b710e9d788
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 436dbac814197556385a33d956928f97fd4716bf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288069"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311917"
 ---
-# <a name="database-collation-support-for-synapse-sql"></a>Adatbázis-rendezési támogatás a szinapszis SQL-hez
+# <a name="database-collation-support-for-synapse-sql-in-azure-synapse-analytics"></a>Adatbázis-rendezési támogatás a szinapszis SQL-hez az Azure szinapszis Analyticsben 
 
 A rendezések a területi beállítás, a kódlap, a rendezési sorrend és a karakteres adattípusok esetében a karakterek megkülönböztetésére szolgáló szabályokat biztosítják. Ha kiválasztotta, a rendezési adatokat igénylő összes oszlop és kifejezés örökli a kiválasztott rendezést az adatbázis-beállítástól. Az alapértelmezett öröklés felülbírálható úgy, hogy egy karakter alapú adattípus esetében explicit módon megadhat egy másik rendezést.
 
-Az adatbázis alapértelmezett rendezését az új SQL Pool-adatbázis létrehozásakor módosíthatja a Azure Portal. Ezzel a képességgel még könnyebben hozhat létre egy új adatbázist a 3800 támogatott adatbázis-rendezések egyikével.
+Az adatbázis alapértelmezett rendezését az új dedikált SQL Pool-adatbázis létrehozásakor módosíthatja a Azure Portal. Ezzel a képességgel még könnyebben hozhat létre egy új adatbázist a 3800 támogatott adatbázis-rendezések egyikével.
 
-Megadhatja az alapértelmezett szinapszis SQL on-demand adatbázis-rendezést a létrehozáskor az adatbázis létrehozása utasítás használatával.
+Megadhatja az alapértelmezett kiszolgáló nélküli SQL-készlet adatbázis-rendezését a létrehozáskor az adatbázis létrehozása utasítás használatával.
 
 ## <a name="change-collation"></a>Rendezés módosítása
-Az SQL Pool-adatbázis alapértelmezett rendezésének módosításához frissítsen a rendezés mezőre a létesítési élményben. Ha például meg szeretné változtatni az alapértelmezett rendezést a kis-és nagybetűk megkülönböztetésére, akkor a rendezést SQL_Latin1_General_CP1_CI_ASról SQL_Latin1_General_CP1_CS_ASra kell átnevezni. 
+A dedikált SQL Pool-adatbázis alapértelmezett rendezésének módosításához frissítsen a rendezés mezőre a létesítési élményben. Ha például meg szeretné változtatni az alapértelmezett rendezést a kis-és nagybetűk megkülönböztetésére, akkor a rendezést SQL_Latin1_General_CP1_CI_ASról SQL_Latin1_General_CP1_CS_ASra kell átnevezni. 
 
-Az SQL on-demand adatbázis alapértelmezett rendezésének módosításához használhatja az ALTER DATABASE utasítást.
+Egy kiszolgáló nélküli SQL Pool-adatbázis alapértelmezett rendezésének módosításához használhatja az ALTER DATABASE utasítást.
 
 ## <a name="list-of-unsupported-collation-types"></a>Nem támogatott rendezési típusok listája
 *    Japanese_Bushu_Kakusu_140_BIN
@@ -98,7 +98,7 @@ Az SQL on-demand adatbázis alapértelmezett rendezésének módosításához ha
 *    Japanese_XJIS_140_CS_AS_KS
 *    Japanese_XJIS_140_CS_AS_KS_WS
 
-Emellett az SQL-készlet nem támogatja a következő rendezési típusokat:
+Emellett a dedikált SQL-készlet nem támogatja a következő rendezési típusokat:
 
 *    SQL_EBCDIC1141_CP1_CS_AS
 *    SQL_EBCDIC277_2_CP1_CS_AS
@@ -113,9 +113,9 @@ Ha a tulajdonság paraméterként a "rendezés" értéket adta át, a DatabasePr
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az SQL Pool és az SQL on-demand ajánlott eljárásaival kapcsolatos további információkért tekintse meg a következő cikkeket:
+A dedikált SQL-készlet és a kiszolgáló nélküli SQL-készlet ajánlott eljárásaival kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Ajánlott eljárások az SQL-készlethez](best-practices-sql-pool.md)
-- [Ajánlott eljárások az SQL igény szerinti kezeléséhez](best-practices-sql-on-demand.md)
+- [Ajánlott eljárások a dedikált SQL-készlethez](best-practices-sql-pool.md)
+- [Ajánlott eljárások kiszolgáló nélküli SQL-készlethez](best-practices-sql-on-demand.md)
 
 

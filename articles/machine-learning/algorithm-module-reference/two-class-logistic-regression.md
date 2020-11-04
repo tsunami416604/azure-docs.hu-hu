@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 525293c7ae3d0af49f6deaa0ce9d3cb037d9ba38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68bd42b6e9f1498db294b57d0ea1ffdac5245be8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907705"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309980"
 ---
 # <a name="two-class-logistic-regression-module"></a>Two-Class logisztikai regressziós modul
 
@@ -40,13 +40,13 @@ Előfordulhat például, hogy a Label (címke) oszlop [szavazott], és az "igen"
   
 2.  Határozza meg, hogyan kívánja képezni a modellt az **oktatói mód létrehozása** lehetőség beállításával.  
   
-    -   **Egyetlen paraméter**: ha tudja, hogyan szeretné konfigurálni a modellt, megadhatja az értékek adott készletét argumentumként.  
+    -   **Egyetlen paraméter** : ha tudja, hogyan szeretné konfigurálni a modellt, megadhatja az értékek adott készletét argumentumként.  
 
-    -   **Paraméter tartománya**: Ha nem biztos benne, hogy a legjobb paramétereket használja, megkeresheti az optimális paramétereket az [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modullal. Bizonyos értékeket adhat meg, és az oktató a beállítások több kombinációján keresztül megismétli a legjobb eredményt eredményező értékek kombinációját.
+    -   **Paraméter tartománya** : Ha nem biztos benne, hogy a legjobb paramétereket használja, megkeresheti az optimális paramétereket az [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modullal. Bizonyos értékeket adhat meg, és az oktató a beállítások több kombinációján keresztül megismétli a legjobb eredményt eredményező értékek kombinációját.
   
-3.  Az **optimalizálási tolerancia**beállításnál a modell optimalizálásakor használandó küszöbértéket határozza meg. Ha az ismétlések közötti javulás a megadott küszöbérték alá esik, az algoritmus úgy tekintendő, hogy a megoldás konvergál, és a képzés leáll.  
+3.  Az **optimalizálási tolerancia** beállításnál a modell optimalizálásakor használandó küszöbértéket határozza meg. Ha az ismétlések közötti javulás a megadott küszöbérték alá esik, az algoritmus úgy tekintendő, hogy a megoldás konvergál, és a képzés leáll.  
   
-4.  Az **L1 regularizációs súlyozáshoz** és az **L2 regularizációs súlyozáshoz**adja meg az L1 és a regularizációs paraméterekhez használandó értéket. A nem nulla értékű érték mindkét esetében ajánlott.  
+4.  Az **L1 regularizációs súlyozáshoz** és az **L2 regularizációs súlyozáshoz** adja meg az L1 és a regularizációs paraméterekhez használandó értéket. A nem nulla értékű érték mindkét esetében ajánlott.  
      A *regularizációs* olyan módszer, amellyel megelőzhető a rendkívül hatékony értékekkel rendelkező modellek szankcionálása. A regularizációs úgy működik, hogy a hipotézis hibája alapján együttható értékekkel társított büntetést ad hozzá. Így a rendkívül hatékony értékekkel rendelkező pontos modell többre is felhasználható, de a kevésbé pontos, konzervatív értékekkel rendelkező modellek kevesebbet büntetik.  
   
      Az L1 és az L2 regularizációs különböző effektusokkal és felhasználással rendelkeznek.  
@@ -58,24 +58,24 @@ Előfordulhat például, hogy a Label (címke) oszlop [szavazott], és az "igen"
      Ez az algoritmus az L1 és az L2 regularizációs értékek lineáris kombinációját támogatja: Ez a (z), ha <code>x = L1</code> és <code>y = L2</code> , majd <code>ax + by = c</code> meghatározza a regularizációs kifejezések lineáris hosszát.  
   
     > [!NOTE]
-    >  Többet szeretne megtudni az L1 és az L2 regularizációs? A következő cikk azt ismerteti, hogy az L1 és az L2 regularizációs miben különböznek, és hogy azok hogyan befolyásolják a modell-kialakítást, a logisztikai regressziós és neurális hálózati modellek esetében pedig:  [L1 és L2 regularizációs Machine learning](https://msdn.microsoft.com/magazine/dn904675.aspx)  
+    >  Többet szeretne megtudni az L1 és az L2 regularizációs? A következő cikk azt ismerteti, hogy az L1 és az L2 regularizációs miben különböznek, és hogy azok hogyan befolyásolják a modell-kialakítást, a logisztikai regressziós és neurális hálózati modellek esetében pedig:  [L1 és L2 regularizációs Machine learning](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning)  
     >
     > Az L1 és a L2 kifejezések különböző lineáris kombinációit a logisztikai regressziós modellekhez alakítottuk ki: például a [rugalmas háló regularizációs](https://wikipedia.org/wiki/Elastic_net_regularization). Javasoljuk, hogy ezeket a kombinációkat a modellben érvényes lineáris kombináció meghatározására hivatkozzon.
       
-5.  Az **l-BFGS memória méretéhez**határozza meg az *l-BFGS* optimalizáláshoz használandó memória mennyiségét.  
+5.  Az **l-BFGS memória méretéhez** határozza meg az *l-BFGS* optimalizáláshoz használandó memória mennyiségét.  
   
      Az L-BFGS a "korlátozott memória Broyden-Fletcher-Goldfarb-Shanno" értékre áll. Ez egy optimalizálási algoritmus, amely népszerű a paraméterek becsléséhez. Ez a paraméter a következő lépés kiszámítására szolgáló korábbi pozíciók és színátmenetek számát jelzi.  
   
      Ez az optimalizálási paraméter a következő lépés és irány kiszámításához használt memória mennyiségét korlátozza. Ha kevesebb memóriát ad meg, a képzés gyorsabb, de kevésbé pontos.  
   
-6.  A **véletlenszerű számú magok**mezőben adjon meg egy egész számot. A mag értékének meghatározása akkor fontos, ha azt szeretné, hogy az eredmények reprodukálva legyenek ugyanazon folyamat több futtatására.  
+6.  A **véletlenszerű számú magok** mezőben adjon meg egy egész számot. A mag értékének meghatározása akkor fontos, ha azt szeretné, hogy az eredmények reprodukálva legyenek ugyanazon folyamat több futtatására.  
   
   
 8. Vegyen fel egy címkével ellátott adatkészletet a folyamatba, és tanítsa be a modellt:
 
-    + Ha az **oktatói módot** **egyetlen paraméterként**állítja be, csatlakoztasson egy címkézett adatkészletet és a [betanítási modell](train-model.md) modult.  
+    + Ha az **oktatói módot** **egyetlen paraméterként** állítja be, csatlakoztasson egy címkézett adatkészletet és a [betanítási modell](train-model.md) modult.  
   
-    + Ha az **oktatói mód** beállítása **paraméter-tartományra**van beállítva, csatlakoztasson egy címkézett adatkészletet, és a modell betanításához használja a [modell hiperparaméterek beállítása](tune-model-hyperparameters.md).  
+    + Ha az **oktatói mód** beállítása **paraméter-tartományra** van beállítva, csatlakoztasson egy címkézett adatkészletet, és a modell betanításához használja a [modell hiperparaméterek beállítása](tune-model-hyperparameters.md).  
   
     > [!NOTE]
     > 
@@ -97,4 +97,4 @@ A betanítás befejezése után:
 
 ## <a name="next-steps"></a>Következő lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

@@ -11,29 +11,29 @@ author: jhirono
 ms.date: 10/05/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: b16c8873a1778b907b288486c204d74ee31683cb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 168dc342eaf61a9ede632fb429311f6f5c1d4be4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097957"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311569"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>A munkaterület használata egyéni DNS-kiszolgálóval
 
-Ha virtuális hálózattal Azure Machine Learning használ, a [DNS-névfeloldás több módon is kezelhető](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances). Alapértelmezés szerint az Azure automatikusan kezeli a munkaterület és a magánhálózati végpont névfeloldását. A __saját egyéni DNS-kiszolgáló használatakor__ azonban manuálisan kell létrehoznia a munkaterület DNS-bejegyzéseit.
+Ha virtuális hálózattal Azure Machine Learning használ, a [DNS-névfeloldás több módon is kezelhető](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md). Alapértelmezés szerint az Azure automatikusan kezeli a munkaterület és a magánhálózati végpont névfeloldását. A __saját egyéni DNS-kiszolgáló használatakor__ azonban manuálisan kell létrehoznia a munkaterület DNS-bejegyzéseit.
 
 > [!IMPORTANT]
 > Ez a cikk csak a teljes tartománynév (FQDN) és az IP-címek megkeresését ismerteti ezen bejegyzések esetében, ezért nem nyújt információt ezen elemek DNS-rekordjainak konfigurálásáról. A rekordok hozzáadásával kapcsolatos információkért olvassa el a DNS-szoftver dokumentációját.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Azure-Virtual Network, amely [a saját DNS-kiszolgálóját](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)használja.
+- Egy Azure-Virtual Network, amely [a saját DNS-kiszolgálóját](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)használja.
 
 - Egy privát végponttal rendelkező Azure Machine Learning munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
-- A [hálózat elkülönítésének ismerete a & következtetések betanítása során](how-to-enable-virtual-network.md).
+- A [hálózat elkülönítésének ismerete a & következtetések betanítása során](./how-to-network-security-overview.md).
 
-- Opcionálisan, [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) vagy [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- Opcionálisan, [Azure CLI](/cli/azure/install-azure-cli) vagy [Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="find-the-ip-addresses"></a>IP-címek keresése
 
@@ -68,7 +68,7 @@ $workspaceDns.CustomDnsConfigs | format-table
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. A [Azure Portal](https://portal.azure.com)válassza ki Azure Machine learning __munkaterületét__ .
+1. A [Azure Portal](https://portal.azure.com)válassza ki Azure Machine learning __munkaterületét__.
 1. A __Beállítások__ szakaszban válassza a __privát végponti kapcsolatok__ elemet.
 1. Válassza ki a hivatkozást a __privát végpont__ oszlopban, amely megjelenik.
 1. A munkaterület privát végpontjának teljes tartományneve (FQDN) és IP-címeinek listája az oldal alján található.

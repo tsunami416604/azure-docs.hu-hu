@@ -1,6 +1,6 @@
 ---
 title: Ideiglenes táblák
-description: Alapvető útmutató az ideiglenes táblák használatához a szinapszis SQL-készletben, a munkamenet-szintű ideiglenes táblák alapelveinek kiemelése.
+description: Alapvető útmutatás az ideiglenes táblák használatához a dedikált SQL-készletben, a munkamenet-szintű ideiglenes táblák alapelveinek kiemelése.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,30 +10,32 @@ ms.subservice: sql-dw
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 61cc351470c0446b58d83d2d7f9c998d959c3649
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 077782099d6d61982052dc1690d545e58e928d8c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85414402"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310684"
 ---
-# <a name="temporary-tables-in-synapse-sql-pool"></a>Ideiglenes táblák a szinapszis SQL-készletben
+# <a name="temporary-tables-in-dedicated-sql-pool"></a>Ideiglenes táblák a dedikált SQL-készletben
+
 Ez a cikk alapvető útmutatást tartalmaz az ideiglenes táblák használatához, és kiemeli a munkamenetek szintjének ideiglenes tábláira vonatkozó alapelveket. 
 
 A cikkben található információk használatával modularize a kódot, és javíthatja az újrahasználhatóságot és a könnyű karbantartást is.
 
 ## <a name="what-are-temporary-tables"></a>Mik azok az ideiglenes táblák?
-Az ideiglenes táblák hasznosak az adatfeldolgozás során, különösen az átalakítás során, ahol a közbenső eredmények átmenetiek. Az SQL-készletben ideiglenes táblák találhatók a munkamenet szintjén.  
+
+Az ideiglenes táblák hasznosak az adatfeldolgozás során, különösen az átalakítás során, ahol a közbenső eredmények átmenetiek. A dedikált SQL-készletben ideiglenes táblák találhatók a munkamenet szintjén.  
 
 Az ideiglenes táblák csak abban a munkamenetben láthatók, amelyben létrehozták őket, és automatikusan el lesznek dobva a munkamenet kilépésekor.  
 
 Az ideiglenes táblák teljesítménybeli előnyt kínálnak, mivel a rendszer a távoli tárterület helyett a helyi verzióra ír.
 
-Az ideiglenes táblák hasznosak az adatfeldolgozás során, különösen az átalakítás során, ahol a közbenső eredmények átmenetiek. Az SQL-készlettel az ideiglenes táblák a munkamenet szintjén találhatók.  Csak abban a munkamenetben láthatók, amelyben létrehozták őket. Ilyenkor a rendszer automatikusan elveti őket, amikor a munkamenet kijelentkezik. 
+Az ideiglenes táblák hasznosak az adatfeldolgozás során, különösen az átalakítás során, ahol a közbenső eredmények átmenetiek. A dedikált SQL-készlettel ideiglenes táblák találhatók a munkamenet szintjén.  Csak abban a munkamenetben láthatók, amelyben létrehozták őket. Ilyenkor a rendszer automatikusan elveti őket, amikor a munkamenet kijelentkezik. 
 
-## <a name="temporary-tables-in-sql-pool"></a>Ideiglenes táblák az SQL-készletben
+## <a name="temporary-tables-in-dedicated-sql-pool"></a>Ideiglenes táblák a dedikált SQL-készletben
 
-Az SQL Pool-erőforrásban az ideiglenes táblák teljesítménybeli előnyt biztosítanak, mert az eredményeket a rendszer a távoli tárterület helyett helyire írja.
+A dedikált SQL Pool-erőforrásban az ideiglenes táblák teljesítménybeli előnyt biztosítanak, mert az eredményeket a rendszer a távoli tárterület helyett a helyi környezetbe írja.
 
 ### <a name="create-a-temporary-table"></a>Ideiglenes tábla létrehozása
 
@@ -205,7 +207,7 @@ Ez a tárolt eljárás elveszít egy meglévő #stats_ddl, hogy az ne legyen sik
 
 Mivel azonban a tárolt eljárás végén nem szerepel a tárolt eljárás, a tárolt `DROP TABLE` eljárás befejezése után elhagyja a létrehozott táblázatot, hogy a tárolt eljáráson kívül is olvasható legyen.  
 
-Az SQL-készletben más SQL Server adatbázisokkal ellentétben lehetséges az ideiglenes tábla használata az azt létrehozó eljáráson kívül.  Az SQL Pool ideiglenes táblái a munkameneten belül **bárhol** használhatók. Ez a funkció több moduláris és felügyelhető kódot eredményezhet, ahogy az alábbi példában is látható:
+A dedikált SQL-készletben más SQL Server-adatbázisokkal ellentétben lehetséges az ideiglenes tábla használata az azt létrehozó eljáráson kívül.  A dedikált SQL Pool ideiglenes táblái a munkameneten belül **bárhol** használhatók. Ez a funkció több moduláris és felügyelhető kódot eredményezhet, ahogy az alábbi példában is látható:
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -227,11 +229,11 @@ DROP TABLE #stats_ddl;
 ```
 
 ## <a name="temporary-table-limitations"></a>Ideiglenes táblák korlátozásai
-Az SQL-készlet több korlátozást is kikényszerít az ideiglenes táblák megvalósításakor.  Jelenleg csak a munkamenet-hatókörű ideiglenes táblák támogatottak.  A globális ideiglenes táblák nem támogatottak.  
+A dedikált SQL-készlet több korlátozást is kikényszerít az ideiglenes táblák megvalósítása során.  Jelenleg csak a munkamenet-hatókörű ideiglenes táblák támogatottak.  A globális ideiglenes táblák nem támogatottak.  
 
 Emellett a nézetek nem hozhatók létre ideiglenes táblákon.  Ideiglenes táblákat csak kivonattal vagy ciklikus multiplexelés eloszlással lehet létrehozni.  A replikált ideiglenes tábla eloszlása nem támogatott. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A táblázatok létrehozásával kapcsolatos további tudnivalókért tekintse meg a [táblák tervezése a SZINAPSZIS SQL-erőforrások használatával](sql-data-warehouse-tables-overview.md) című cikket.
+A táblázatok létrehozásával kapcsolatos további tudnivalókért tekintse meg a [táblák tervezése DEDIKÁLT SQL Pool használatával](sql-data-warehouse-tables-overview.md) című cikket.
 

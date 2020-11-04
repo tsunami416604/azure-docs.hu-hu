@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 08981ad21c15b6fc375e2e0733564c40d54932ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce068f1b43fcd6611d4abf65029cbcc5de3b7d30
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708254"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311593"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Az adatelemzési csomag használata a Python (előzetes verzió) &i előrejelzésekben
 
@@ -354,7 +354,7 @@ Kövesse az alábbi elérési utakat a vizualizációs irányítópult elérés�
    [![Vizualizációs irányítópult helyi funkciójának fontossága a AzureML Studióban a kísérletek során](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * **Modellek** panel
-  1. Ha regisztrálta az eredeti modelljét a [modellek Azure Machine learning használatával történő üzembe helyezésének](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)lépéseivel, a bal oldali ablaktáblán kiválaszthatja a **modelleket** , és megtekintheti.
+  1. Ha regisztrálta az eredeti modelljét a [modellek Azure Machine learning használatával történő üzembe helyezésének](./how-to-deploy-and-where.md)lépéseivel, a bal oldali ablaktáblán kiválaszthatja a **modelleket** , és megtekintheti.
   1. Válasszon ki egy modellt, majd a **magyarázatok** lapon tekintse meg a magyarázó vizualizáció irányítópultját.
 
 ## <a name="interpretability-at-inference-time"></a>Tolmácsolás a következtetés időpontjában
@@ -419,7 +419,7 @@ A magyarázatot az eredeti modellel is üzembe helyezheti, és a következtetés
 
 1. Telepítse a lemezképet egy számítási célra a következő lépésekkel:
 
-   1. Ha szükséges, regisztrálja az eredeti előrejelzési modellt a [modellek üzembe helyezése Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)használatával című témakörben ismertetett lépéseket követve.
+   1. Ha szükséges, regisztrálja az eredeti előrejelzési modellt a [modellek üzembe helyezése Azure Machine learning](./how-to-deploy-and-where.md)használatával című témakörben ismertetett lépéseket követve.
 
    1. Hozzon létre egy pontozási fájlt.
 
@@ -553,4 +553,3 @@ A magyarázatot az eredeti modellel is üzembe helyezheti, és a következtetés
 [További információ a modell értelmezéséről](how-to-machine-learning-interpretability.md)
 
 [Tekintse meg Azure Machine Learning a értelmező minta notebookok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)
-

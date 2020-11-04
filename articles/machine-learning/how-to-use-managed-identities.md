@@ -10,16 +10,16 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: c4ea7609c343532f17144e388be7583eab427eee
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3490e3004e5f5dd99795967f0deb8510200fa50b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440450"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311032"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Felügyelt identitások használata Azure Machine Learning (előzetes verzió)
 
-A [felügyelt identitások](/azure/active-directory/managed-identities-azure-resources/overview) lehetővé teszik a munkaterület konfigurálását az *erőforrásokhoz való hozzáférés minimálisan szükséges engedélyeivel*. 
+A [felügyelt identitások](../active-directory/managed-identities-azure-resources/overview.md) lehetővé teszik a munkaterület konfigurálását az *erőforrásokhoz való hozzáférés minimálisan szükséges engedélyeivel*. 
 
 Azure Machine Learning munkaterület megbízható módon történő konfigurálásakor fontos biztosítani, hogy a munkaterülethez társított különböző szolgáltatások rendelkezzenek a megfelelő szintű hozzáféréssel. A Machine learning-munkafolyamatok során például a munkaterületnek hozzá kell férnie a Docker-rendszerképekhez tartozó Azure Container Registry (ACR) és a betanítási adatgyűjtési fiókok számára. 
 
@@ -37,9 +37,9 @@ Ebből a cikkből megtudhatja, hogyan használhatja a felügyelt identitásokat 
 
 - Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 - [Machine learning szolgáltatás Azure CLI-bővítménye](reference-azure-machine-learning-cli.md)
-- A [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-t.
-- A szerepkörök hozzárendeléséhez az Azure-előfizetéshez tartozó bejelentkezési azonosítónak rendelkeznie kell a [felügyelt identitás-kezelő](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkörrel, vagy más olyan szerepkörrel, amely a szükséges műveleteket (például a __tulajdonost__) biztosítja.
-- Ismernie kell a [felügyelt identitások](/azure/active-directory/managed-identities-azure-resources/overview)létrehozását és a velük való munkát.
+- A [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/intro?view=azure-ml-py)-t.
+- A szerepkörök hozzárendeléséhez az Azure-előfizetéshez tartozó bejelentkezési azonosítónak rendelkeznie kell a [felügyelt identitás-kezelő](../role-based-access-control/built-in-roles.md#managed-identity-operator) szerepkörrel, vagy más olyan szerepkörrel, amely a szükséges műveleteket (például a __tulajdonost__ ) biztosítja.
+- Ismernie kell a [felügyelt identitások](../active-directory/managed-identities-azure-resources/overview.md)létrehozását és a velük való munkát.
 
 ## <a name="configure-managed-identities"></a>Felügyelt identitások konfigurálása
 
@@ -56,10 +56,10 @@ A munkaterület létrehozásakor letilthatja a saját ACR-t a rendszergazda felh
 
 Ha az ACR rendszergazdai felhasználót nem engedélyezi az előfizetés-szabályzat, először létre kell hoznia az ACR-t rendszergazdai felhasználó nélkül, majd hozzá kell rendelnie a munkaterülethez. Továbbá, ha a meglévő ACR-t a rendszergazda felhasználó letiltotta, csatolhatja azt a munkaterülethez.
 
-[Hozzon létre ACR-t az Azure CLI-ből az](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli) argumentum beállítása nélkül ```--admin-enabled``` , vagy Azure Portal a rendszergazda felhasználó engedélyezése nélkül. Ezután Azure Machine Learning munkaterület létrehozásakor adja meg az ACR Azure-erőforrás-AZONOSÍTÓját. Az alábbi példa bemutatja, hogyan hozhat létre egy meglévő ACR-t használó új Azure ML-munkaterületet:
+[Hozzon létre ACR-t az Azure CLI-ből az](../container-registry/container-registry-get-started-azure-cli.md) argumentum beállítása nélkül ```--admin-enabled``` , vagy Azure Portal a rendszergazda felhasználó engedélyezése nélkül. Ezután Azure Machine Learning munkaterület létrehozásakor adja meg az ACR Azure-erőforrás-AZONOSÍTÓját. Az alábbi példa bemutatja, hogyan hozhat létre egy meglévő ACR-t használó új Azure ML-munkaterületet:
 
 > [!TIP]
-> A paraméter értékének lekéréséhez `--container-registry` használja az az [ACR show](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az_acr_show) parancsot az ACR adatainak megjelenítéséhez. A `id` mező tartalmazza az ACR erőforrás-azonosítóját.
+> A paraméter értékének lekéréséhez `--container-registry` használja az az [ACR show](/cli/azure/acr?view=azure-cli-latest#az_acr_show) parancsot az ACR adatainak megjelenítéséhez. A `id` mező tartalmazza az ACR erőforrás-azonosítóját.
 
 ```azurecli-interactive
 az ml workspace create -w <workspace name> \
@@ -106,7 +106,7 @@ A munkaterület ACR eléréséhez hozzon létre egy gépi tanulási számítási
 
 # <a name="python"></a>[Python](#tab/python)
 
-Amikor számítási fürtöt hoz létre a [AmlComputeProvisioningConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration?view=azure-ml-py), használja a `identity_type` paramétert a felügyelt identitás típusának megadásához.
+Amikor számítási fürtöt hoz létre a [AmlComputeProvisioningConfiguration](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration?view=azure-ml-py), használja a `identity_type` paramétert a felügyelt identitás típusának megadásához.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -173,7 +173,7 @@ env.python.user_managed_dependencies = True
 
 Ebben az esetben a Azure Machine Learning szolgáltatás a privát ACR-ből származó alaprendszerképre épülő képzést vagy következtetési környezetet épít. Mivel a rendszerkép-létrehozási feladat az ACR-feladatok használatával történik a munkaterület ACR-ben, további lépéseket kell végrehajtania a hozzáférés engedélyezéséhez.
 
-1. Hozzon létre __felhasználó által hozzárendelt felügyelt identitást__ , és adja meg az identitás ACRPull hozzáférését a __privát ACR__-hez.  
+1. Hozzon létre __felhasználó által hozzárendelt felügyelt identitást__ , és adja meg az identitás ACRPull hozzáférését a __privát ACR__ -hez.  
 1. Az előző lépésben a __felhasználó által hozzárendelt felügyelt identitásban__ adjon meg egy felügyelt identitás-kezelő szerepkört a munkaterület __rendszerhez rendelt felügyelt__ identitásnak. Ez a szerepkör lehetővé teszi, hogy a munkaterület hozzárendelje a felhasználóhoz rendelt felügyelt identitást az ACR-feladathoz a felügyelt környezet létrehozásához. 
 
     1. A munkaterület-rendszerhez rendelt felügyelt identitás rendszerbiztonsági AZONOSÍTÓjának beszerzése:
@@ -190,7 +190,7 @@ Ebben az esetben a Azure Machine Learning szolgáltatás a privát ACR-ből szá
 
         A UAI erőforrás-azonosító a felhasználó által hozzárendelt identitás Azure-erőforrás-azonosítója a formátumban `/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAI name>` .
 
-1. [Workspace.set_connection metódus](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-)használatával határozza meg a __felhasználó által hozzárendelt felügyelt identitás__ külső ACR-és ügyfél-azonosítóját a munkaterület-kapcsolatokban:
+1. [Workspace.set_connection metódus](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-)használatával határozza meg a __felhasználó által hozzárendelt felügyelt identitás__ külső ACR-és ügyfél-azonosítóját a munkaterület-kapcsolatokban:
 
     ```python
     workspace.set_connection(
@@ -210,7 +210,7 @@ env = Environment(name="my-env")
 env.docker.base_image = "<acr url>/my-repo/my-image:latest"
 ```
 
-Megadhatja a felügyelt identitás erőforrásának URL-címét és az ügyfél-azonosítót a környezeti definícióban a [RegistryIdentity](https://docs.microsoft.com/python/api/azureml-core/azureml.core.container_registry.registryidentity?view=azure-ml-py)használatával. Ha explicit módon használja a beállításjegyzék-identitást, a felülbírálja a korábban megadott munkaterület-kapcsolatokat:
+Megadhatja a felügyelt identitás erőforrásának URL-címét és az ügyfél-azonosítót a környezeti definícióban a [RegistryIdentity](/python/api/azureml-core/azureml.core.container_registry.registryidentity?view=azure-ml-py)használatával. Ha explicit módon használja a beállításjegyzék-identitást, a felülbírálja a korábban megadott munkaterület-kapcsolatokat:
 
 ```python
 from azureml.core.container_registry import RegistryIdentity
@@ -229,6 +229,6 @@ Miután konfigurálta az ACR-t a korábban leírtaknak megfelelően a rendszerga
 > [!NOTE]
 > Ha saját AK-fürtöt használ, a fürtnek a felügyelt identitás helyett engedélyeznie kell az egyszerű szolgáltatásnevet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Azure Machine learning vállalati biztonságáról](concept-enterprise-security.md).

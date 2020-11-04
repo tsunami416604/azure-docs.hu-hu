@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 31e129b9b1a4b5161ed33c27ea4da76168170dbe
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 345c925d3b1350dfc2ea69d65d8d14688c6930b9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495987"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310175"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Mi az Azure Machine Learning Studio?
 
@@ -61,7 +61,7 @@ A gépi tanulási eszközöket közvetlenül a böngészőben kezelheti. Az eszk
 - Notebooks
 - Kísérletek
 - Naplók futtatása
-- Pipelines 
+- Folyamatok 
 - Folyamat végpontjai
 
 Még ha tapasztalt fejlesztő is, a Studio leegyszerűsítheti a munkaterület-erőforrások kezelését.
@@ -74,16 +74,16 @@ A **Azure Machine learning** egy különálló és modernizált szolgáltatás, 
 
 A **Azure Machine learning Studio** *egy Azure Machine learning* webportálja, amely alacsony kódú és kód nélküli lehetőségeket tartalmaz a projektek készítéséhez és az eszközök kezeléséhez. 
 
-Azt javasoljuk, hogy az új felhasználók ML Studio (klasszikus) helyett **Azure Machine learning**válasszanak az adatelemzési eszközök legújabb tartományához.
+Azt javasoljuk, hogy az új felhasználók ML Studio (klasszikus) helyett **Azure Machine learning** válasszanak az adatelemzési eszközök legújabb tartományához.
 
 ### <a name="feature-comparison"></a>Szolgáltatások összehasonlítása
 
 Az alábbi táblázat összefoglalja ML Studio (klasszikus) és Azure Machine Learning közötti fő különbségeket.
 
-| Szolgáltatás | ML Studio (klasszikus) | Azure Machine Learning |
+| Funkció | ML Studio (klasszikus) | Azure Machine Learning |
 |---| --- | --- |
 | Húzási interfész | Klasszikus felhasználói élmény | Frissített tapasztalat – [Azure Machine learning Designer](concept-designer.md)| 
-| SDK-kód | Nem támogatott | Teljes mértékben integrált [Azure Machine learning Python](https://docs.microsoft.com/python/api/overview/azure/ml/) és [R](tutorial-1st-r-experiment.md) SDK-k |
+| SDK-kód | Nem támogatott | Teljes mértékben integrált [Azure Machine learning Python](/python/api/overview/azure/ml/) és [R](tutorial-1st-r-experiment.md) SDK-k |
 | Experiment | Skálázható (10 GB-os betanítási adatkorlát) | Méretezés számítási céllal |
 | Számítási célok betanítása | Tulajdonosi számítási cél, csak CPU-támogatás | Testreszabható [képzési számítási célok](concept-compute-target.md#train)széles köre. GPU-val és CPU-támogatással rendelkezik | 
 | Üzembe helyezési számítási célok | Tulajdonosi webszolgáltatás formátuma, nem testreszabható | Testreszabható [üzembe helyezési számítási célok](concept-compute-target.md#deploy)széles köre. GPU-val és CPU-támogatással rendelkezik |
@@ -103,4 +103,3 @@ Látogasson el a [studióba](https://ml.azure.com), vagy Ismerje meg a különb�
   + [Jupyter notebookok használata számítási példányokon a & üzembe helyezési modelljeinek betanításához](tutorial-1st-experiment-sdk-setup.md)
   + [Az automatizált gépi tanulás használata a & üzembe helyezési modelljeinek betanításához](tutorial-first-experiment-automated-ml.md)  
   + [A Designer használata & üzembe helyezési modelljeinek betanításához](tutorial-designer-automobile-price-train-score.md)
-

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2
-ms.openlocfilehash: d66c5001d94d0c2d28ae3c55b468fbaf45871c98
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 681e965d5fb64e35374b580cbbb238defd619492
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280359"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311486"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Az automatizált Machine learning-kísérletek eredményeinek kiértékelése
 
@@ -41,7 +41,7 @@ Például a AutoML különböző diagramokat biztosít a besorolási és regress
 
 Az automatizált gépi tanulási kísérlet befejezése után a futtatások előzményei a Machine learning-munkaterületen találhatók a [Azure Machine learning studión](overview-what-is-machine-learning-studio.md)keresztül. 
 
-Az SDK-kísérletek esetében ugyanezeket az eredményeket tekintheti meg a Futtatás során, amikor a `RunDetails` [Jupyter widgetet](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)használja.
+Az SDK-kísérletek esetében ugyanezeket az eredményeket tekintheti meg a Futtatás során, amikor a `RunDetails` [Jupyter widgetet](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)használja.
 
 A következő lépések és animációk bemutatják, hogyan lehet megtekinteni egy adott modell futtatási előzményeit és teljesítmény-metrikáit és diagramját a Studióban.
 

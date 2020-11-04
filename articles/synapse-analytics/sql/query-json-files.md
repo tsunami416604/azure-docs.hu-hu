@@ -1,6 +1,6 @@
 ---
-title: JSON-fájlok lekérdezése az SQL on-demand használatával (előzetes verzió)
-description: Ez a szakasz azt ismerteti, hogyan olvashatók be a JSON-fájlok az SQL igény szerinti használatával az Azure szinapszis Analytics szolgáltatásban.
+title: JSON-fájlok lekérdezése kiszolgáló nélküli SQL-készlettel (előzetes verzió)
+description: Ez a szakasz azt ismerteti, hogyan lehet JSON-fájlokat beolvasni a kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 86ed3f005788627166c65b30398279f04388546c
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5dbad07401d77a15cd860a8ae492560c5fced819
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930849"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310605"
 ---
-# <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>JSON-fájlok lekérdezése az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analyticsben
+# <a name="query-json-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>JSON-fájlok lekérdezése kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
-Ebből a cikkből megtudhatja, hogyan írhat egy lekérdezést az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analytics szolgáltatásban. A lekérdezés célja, hogy beolvassa a JSON-fájlokat a [OpenRowset](develop-openrowset.md)használatával. 
+Ebből a cikkből megtudhatja, hogyan írhat lekérdezéseket kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban. A lekérdezés célja, hogy beolvassa a JSON-fájlokat a [OpenRowset](develop-openrowset.md)használatával. 
 - Szabványos JSON-fájlok, amelyek több JSON-dokumentumot is tárolnak JSON-tömbként.
 - Sor-tagolt JSON-fájlok, ahol a JSON-dokumentumok a New-line karakterrel vannak elválasztva. Az ilyen típusú fájlok általános bővítményei:, `jsonl` `ldjson` és `ndjson` .
 

@@ -1,6 +1,6 @@
 ---
 title: A kiszolgáló nélküli SQL-készlettel Azure Cosmos DB-adatlekérdezés az Azure szinapszis hivatkozásában (előzetes verzió)
-description: Ebből a cikkből megtudhatja, hogyan kérdezheti le Azure Cosmos DB az SQL igény szerinti használatával az Azure szinapszis-hivatkozáson (előzetes verzió).
+description: Ebből a cikkből megtudhatja, hogyan lehet lekérdezni Azure Cosmos DB a kiszolgáló nélküli SQL-készlet használatával az Azure szinapszis hivatkozásában (előzetes verzió).
 services: synapse analytics
 author: jovanpop-msft
 ms.service: synapse-analytics
@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2b1af6fa5b0ccb95476c4ae169481e4aaa15f4f9
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9f57d435134bffbb8e7576adffeacb92bf687124
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737830"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310300"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Lekérdezés Azure Cosmos DB az Azure-beli kiszolgáló nélküli SQL-készlettel az Azure szinapszis-hivatkozás (előzetes verzió)
 
 A szinapszis kiszolgáló nélküli SQL-készlete lehetővé teszi az olyan Azure Cosmos DB-tárolókban lévő adatok elemzését, amelyek az [Azure szinapszis hivatkozásával](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) közel valós időben engedélyezve vannak, anélkül, hogy ez hatással lenne a tranzakciós számítási feladatok teljesítményére. Jól ismert T-SQL-szintaxist kínál, amely az [analitikus áruházból](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) származó adatok lekérdezését, valamint a bi-és ad-hoc lekérdezési eszközök széles köréhez való integrált csatlakozást biztosít a t-SQL felületen keresztül.
 
-Azure Cosmos DB lekérdezéséhez a [OpenRowset](develop-openrowset.md) függvény a teljes [kijelölés](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) felületét támogatja, beleértve az [SQL-függvények és-operátorok](overview-features.md)többségét. Azt is megteheti, hogy a lekérdezés eredményeit a Azure Cosmos DB az Azure Blob Storage vagy Azure Data Lake Storage a [külső tábla létrehozása lehetőséggel](develop-tables-cetas.md#cetas-in-sql-on-demand)együtt beolvassa az adatokat. A kiszolgáló nélküli SQL-készlet lekérdezési eredményei jelenleg nem tárolhatók a [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand)használatával Azure Cosmos db.
+Azure Cosmos DB lekérdezéséhez a [OpenRowset](develop-openrowset.md) függvény a teljes [kijelölés](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) felületét támogatja, beleértve az [SQL-függvények és-operátorok](overview-features.md)többségét. Azt is megteheti, hogy a lekérdezés eredményeit a Azure Cosmos DB az Azure Blob Storage vagy Azure Data Lake Storage a [külső tábla létrehozása lehetőséggel](develop-tables-cetas.md#cetas-in-serverless-sql-pool)együtt beolvassa az adatokat. A kiszolgáló nélküli SQL-készlet lekérdezési eredményei jelenleg nem tárolhatók a CETAS használatával Azure Cosmos DB. 
 
 Ebből a cikkből megtudhatja, hogyan írhat lekérdezéseket kiszolgáló nélküli SQL-készlettel, amely az Azure Cosmos DB tárolók adatait fogja lekérdezni, amelyeken engedélyezve van a szinapszis-hivatkozás. Ezután további információt olvashat a kiszolgáló nélküli SQL-készlet nézeteinek létrehozásáról Azure Cosmos DB tárolók között, és összekapcsolhatja őket [az oktatóanyag Power bi](./tutorial-data-analyst.md) modelljeivel. 
 
@@ -358,6 +358,6 @@ A javaslatok és a problémák jelentése az [Azure szinapszis visszajelzéseit 
 
 További információkat az következő cikkekben talál:
 
-- [Power BI és kiszolgáló nélküli szinapszis SQL-készlet használata az Azure szinapszis hivatkozásával](../../cosmos-db/synapse-link-power-bi.md)
-- [Hogyan hozhatók létre és használhatók nézetek az SQL igény szerinti használatával](create-use-views.md) 
-- [Oktatóanyag az SQL on-demand nézeteinek létrehozásához Azure Cosmos DB és a DirectQuery-on keresztüli Power BI modellekhez való csatlakoztatásához](./tutorial-data-analyst.md)
+- [Power BI és kiszolgáló nélküli SQL-készlet használata az Azure szinapszis hivatkozásával](../../cosmos-db/synapse-link-power-bi.md)
+- [Nézetek létrehozása és használata kiszolgáló nélküli SQL-készletben](create-use-views.md) 
+- [Oktatóanyag kiszolgáló nélküli SQL Pool-nézetek létrehozásához Azure Cosmos DB és a DirectQuery-en keresztüli Power BI modellekhez való csatlakoztatásához](./tutorial-data-analyst.md)

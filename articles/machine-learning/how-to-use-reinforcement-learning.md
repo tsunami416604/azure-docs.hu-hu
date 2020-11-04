@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 6221b36263b55f54faef18d6596f97c5b3798d3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf4b321425ccaae877c2ff5c9b54f429d95a3515
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541713"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312305"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Megerősítő tanulás (előzetes verzió) Azure Machine Learning
 
@@ -49,8 +49,8 @@ Futtassa ezt a kódot az alábbi környezetek egyikében. Javasoljuk, hogy prób
  
  - Saját Jupyter Notebook-kiszolgáló
 
-    - Telepítse a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)-t.
-    - Telepítse a [Azure Machine learning RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py&preserve-view=true)-t: `pip install --upgrade azureml-contrib-reinforcementlearning`
+    - Telepítse a [Azure Machine learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)-t.
+    - Telepítse a [Azure Machine learning RL SDK](/python/api/azureml-contrib-reinforcementlearning/?preserve-view=true&view=azure-ml-py)-t: `pip install --upgrade azureml-contrib-reinforcementlearning`
     - Hozzon létre egy [munkaterület-konfigurációs fájlt](how-to-configure-environment.md#workspace).
     - Futtassa a virtuális hálózat [beállítása jegyzetfüzetet](https://aka.ms/azure-rl-env-setup) az elosztott megerősítési tanuláshoz használt hálózati portok megnyitásához.
 
@@ -59,7 +59,7 @@ Futtassa ezt a kódot az alábbi környezetek egyikében. Javasoljuk, hogy prób
 
 A megerősítő tanulás (RL) a gépi tanulás olyan megközelítése, amellyel megtanulható. Míg más gépi tanulási technikák a bemeneti adatok passzív bevitelével és az abban belüli minták megtalálásával tanulnak, az RL a **képzési ügynökökkel** aktívan hozza döntéseket és tanulja meg az eredményeket.
 
-A képzési ügynökök egy **szimulált környezetben**tanulják meg a pongot. A betanítási ügynökök a játék minden keretén megdöntik, hogy a lapát fel-vagy leállt, vagy a helyükön maradjon. A döntés végrehajtásához a játék állapotát (a képernyő RGB-képét) tekinti át.
+A képzési ügynökök egy **szimulált környezetben** tanulják meg a pongot. A betanítási ügynökök a játék minden keretén megdöntik, hogy a lapát fel-vagy leállt, vagy a helyükön maradjon. A döntés végrehajtásához a játék állapotát (a képernyő RGB-képét) tekinti át.
 
 Az RL a **jutalmak** használatával közli az ügynököt, ha döntése sikeres. Ebben a környezetben az ügynök pozitív jutalomban részesül, amikor egy pontot és negatív jutalmat kap, amikor egy pontot Kinyer. A képzési ügynök számos iteráción keresztül megtanulja, hogy a jelenlegi állapot alapján kiválassza a műveletet, amely a várható jövőbeli jutalmak összegét optimalizálja.
 
@@ -107,7 +107,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-reinforcement-learning-experiment"></a>Megerősítési tanulási kísérlet létrehozása
 
-Hozzon létre egy [kísérletet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true) a megerősítő tanulás futtatásának nyomon követésére. Azure Machine Learning a kísérletek a kapcsolódó kísérletek logikai gyűjteményei a futtatási naplók, előzmények, kimenetek és egyebek rendezéséhez.
+Hozzon létre egy [kísérletet](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py) a megerősítő tanulás futtatásának nyomon követésére. Azure Machine Learning a kísérletek a kapcsolódó kísérletek logikai gyűjteményei a futtatási naplók, előzmények, kimenetek és egyebek rendezéséhez.
 
 ```python
 experiment_name='rllib-pong-multi-node'
@@ -131,7 +131,7 @@ Ez a példa külön számítási célokat használ a Ray Head és a Worker csom�
 
 Ez a példa egy GPU-vel felszerelt fő fürtöt használ a mély tanulási teljesítmény optimalizálása érdekében. A főcsomópont betanítja azt az neurális hálózatot, amelyet az ügynök a döntések elvégzéséhez használ. A fő csomópont a munkavégző csomópontokból származó adatpontokat is gyűjti a neurális hálózat további betanításához.
 
-A Head számítás egyetlen [ `STANDARD_NC6` virtuális gépet](https://docs.microsoft.com/azure/virtual-machines/nc-series) (VM) használ. 6 virtuális CPU-val rendelkezik, ami azt jelenti, hogy a munka a 6 munkaprocesszoron keresztül terjeszthető.
+A Head számítás egyetlen [ `STANDARD_NC6` virtuális gépet](../virtual-machines/nc-series.md) (VM) használ. 6 virtuális CPU-val rendelkezik, ami azt jelenti, hogy a munka a 6 munkaprocesszoron keresztül terjeszthető.
 
 
 ```python
@@ -173,7 +173,7 @@ else:
 
 ### <a name="worker-computing-cluster"></a>Feldolgozói számítástechnikai fürt
 
-Ez a példa négy [ `STANDARD_D2_V2` virtuális](https://docs.microsoft.com/azure/virtual-machines/nc-series) gépet használ a munkavégző számítási célra. Minden munkavégző csomópont 2 rendelkezésre álló processzorral rendelkezik, összesen 8 rendelkezésre álló CPU-integrálással a munkához.
+Ez a példa négy [ `STANDARD_D2_V2` virtuális](../virtual-machines/nc-series.md) gépet használ a munkavégző számítási célra. Minden munkavégző csomópont 2 rendelkezésre álló processzorral rendelkezik, összesen 8 rendelkezésre álló CPU-integrálással a munkához.
 
 A GPU-k nem szükségesek a munkavégző csomópontok számára, mivel nem rendelkeznek mély tanulással. A feldolgozók futtatják a játék szimulációit, és adatokat gyűjtenek.
 
@@ -213,7 +213,7 @@ else:
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>Megerősítő tanulási kalkulátor létrehozása
 
-Ebből a szakaszból megtudhatja, hogyan küldhet betanítási feladatot a Azure Machine Learningba a [ReinforcementLearningEstimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py&preserve-view=true) használatával.
+Ebből a szakaszból megtudhatja, hogyan küldhet betanítási feladatot a Azure Machine Learningba a [ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?preserve-view=true&view=azure-ml-py) használatával.
 
 Azure Machine Learning a kalkulátor osztályokat használja a futtatási konfigurációs adatok beágyazásához. Így egyszerűen megadhatja, hogyan konfigurálhat egy parancsfájl-végrehajtást. 
 
@@ -248,7 +248,7 @@ A bejegyzési parancsfájl `pong_rllib.py` elfogadja a betanítási feladatok v�
 
 A megfelelő beállítás megadásával `num_workers` a lehető legtöbbet hozhatja ki a párhuzamos. Állítsa be a feldolgozók számát a rendelkezésre álló processzorok számával megegyező értékre. Ehhez a példához a következőképpen számíthat:
 
-A fő csomópont egy 6 vCPU rendelkező [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) . A munkavégző fürt 4 [Standard_D2_V2 virtuális gép](https://docs.microsoft.com/azure/cloud-services/cloud-services-sizes-specs#dv2-series) 2 processzorral, összesen 8 processzorral. Azonban ki kell vonnia az 1 PROCESSZORt a munkavégzők számáról, mivel az 1 elemet a fő csomóponti szerepkörhöz kell hozzárendelni. 6 processzor + 8 processzor – 1 fő CPU = 13 egyidejű feldolgozók. Azure Machine Learning a fő-és feldolgozói fürtöket használja a számítási erőforrások megkülönböztetéséhez. A Ray azonban nem különbözteti meg a fej és a feldolgozók között, és az összes processzor elérhető processzorokkal rendelkezik a munkavégző szál végrehajtásához.
+A fő csomópont egy 6 vCPU rendelkező [Standard_NC6](../virtual-machines/nc-series.md) . A munkavégző fürt 4 [Standard_D2_V2 virtuális gép](../cloud-services/cloud-services-sizes-specs.md#dv2-series) 2 processzorral, összesen 8 processzorral. Azonban ki kell vonnia az 1 PROCESSZORt a munkavégzők számáról, mivel az 1 elemet a fő csomóponti szerepkörhöz kell hozzárendelni. 6 processzor + 8 processzor – 1 fő CPU = 13 egyidejű feldolgozók. Azure Machine Learning a fő-és feldolgozói fürtöket használja a számítási erőforrások megkülönböztetéséhez. A Ray azonban nem különbözteti meg a fej és a feldolgozók között, és az összes processzor elérhető processzorokkal rendelkezik a munkavégző szál végrehajtásához.
 
 
 ```python
@@ -399,7 +399,7 @@ def on_train_result(info):
 
 ## <a name="submit-a-run"></a>Futtatás küldése
 
-A [Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) a folyamatban lévő vagy a Befejezett feladatok futtatási előzményeit kezeli. 
+A [Run](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) a folyamatban lévő vagy a Befejezett feladatok futtatási előzményeit kezeli. 
 
 ```python
 run = exp.submit(config=rl_estimator)

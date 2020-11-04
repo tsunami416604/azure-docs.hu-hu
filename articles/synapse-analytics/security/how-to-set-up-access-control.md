@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f142c8abfc9056e0f8ca1d921f2c6bfc72292730
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: 080e56a5b6be8ba68c901509fe87421632144643
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186620"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312037"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>A szinapszis munkaterület biztonságossá tétele (előzetes verzió) 
 
@@ -92,7 +92,7 @@ A szinapszis munkaterületnek hozzá kell férnie a STG1 és a CNT1, hogy képes
   - Ha nem látja a hozzárendelést, rendelje hozzá.
   - Az MSI neve megegyezik a munkaterülettel. Ebben az esetben a &quot; WS1 lenne &quot; .
 
-## <a name="step-5-configure-admin-access-for-sql-pools"></a>5. lépés: rendszergazdai hozzáférés konfigurálása SQL-készletekhez
+## <a name="step-5-configure-admin-access-for-synapse-sql"></a>5. lépés: rendszergazdai hozzáférés konfigurálása a szinapszis SQL-hez
 
 - Nyissa meg az Azure Portalt
 - Navigáljon a WS1
@@ -114,11 +114,11 @@ Az egyes szerepkörökben lévő felhasználóknak a következő lépéseket kel
 | Szám | Lépés | Munkaterület-rendszergazdák | Spark-rendszergazdák | SQL-rendszergazdák |
 | --- | --- | --- | --- | --- |
 | 1 | Parquet-fájl feltöltése a CNT1-be | IGEN | IGEN | IGEN |
-| 2 | A Parquet-fájl beolvasása az SQL igény szerinti használatával | IGEN | NO | IGEN |
-| 3 | Spark-készlet létrehozása | IGEN [1] | IGEN [1] | NO  |
+| 2 | A Parquet-fájl olvasása kiszolgáló nélküli SQL-készlettel | IGEN | NO | IGEN |
+| 3 | Kiszolgáló nélküli Apache Spark készlet létrehozása | IGEN [1] | IGEN [1] | NO  |
 | 4 | A Parquet-fájl beolvasása jegyzetfüzettel | IGEN | IGEN | NO |
 | 5 | Hozzon létre egy folyamatot a jegyzetfüzetből, és indítsa el a folyamatot most | IGEN | NO | NO |
-| 6 | Hozzon létre egy SQL-készletet, és futtasson egy SQL-parancsfájlt, például &quot; válassza az 1 elemet&quot; | IGEN [1] | NO | IGEN [1] |
+| 6 | Hozzon létre egy dedikált SQL-készletet, és futtasson egy SQL-parancsfájlt, például &quot; válassza az 1&quot; | IGEN [1] | NO | IGEN [1] |
 
 > [!NOTE]
 > [1] SQL-vagy Spark-készletek létrehozásához a felhasználónak legalább közreműködő szerepkörrel kell rendelkeznie a szinapszis munkaterületen.
@@ -148,8 +148,8 @@ A szinapszis Studio a felhasználói szerepkörök alapján eltérően fog műk�
 | Adatközpont/lásd a csatolt ADLS Gen2 fiókokat és tárolókat | IGEN [1] | IGEN [1] | IGEN [1] |
 | Adatközpont/adatbázis-információk | IGEN | IGEN | IGEN |
 | Adatközpont/objektumok megjelenítése az adatbázisokban | IGEN | IGEN | IGEN |
-| Adatközpont/hozzáférési információ az SQL-készlet adatbázisaiban | IGEN   | NO   | IGEN   |
-| Adatközpont/hozzáférés az SQL igény szerinti adatbázisaihoz | IGEN [2]  | NO  | IGEN [2]  |
+| Adatközpont/hozzáférési információ a szinapszis SQL Database-adatbázisokban | IGEN   | NO   | IGEN   |
+| Adatközpont/hozzáférési információ a kiszolgáló nélküli SQL-készlet adatbázisaiban | IGEN [2]  | NO  | IGEN [2]  |
 | Adatközpont/hozzáférési információ a Spark-adatbázisokban | IGEN [2] | IGEN [2] | IGEN [2] |
 | A fejlesztés központ használata | IGEN | IGEN | IGEN |
 | Hub/Author SQL-parancsfájlok fejlesztése | IGEN | NO | IGEN |
@@ -159,7 +159,7 @@ A szinapszis Studio a felhasználói szerepkörök alapján eltérően fog műk�
 | A hangszerelő központ használata | IGEN | IGEN | IGEN |
 | Hubok összehangolása/folyamatok használata | IGEN | NO | NO |
 | A Manage hub használata | IGEN | IGEN | IGEN |
-| Hub/SQL-készletek kezelése | IGEN | NO | IGEN |
+| Hub/szinapszis SQL kezelése | IGEN | NO | IGEN |
 | Hub/Spark-készletek kezelése | IGEN | IGEN | NO |
 | Hub/triggerek kezelése | IGEN | NO | NO |
 | Hub/társított szolgáltatások kezelése | IGEN | IGEN | IGEN |
@@ -182,6 +182,6 @@ A szinapszis Studio a felhasználói szerepkörök alapján eltérően fog műk�
 > [1] a tárolókban lévő adatokhoz való hozzáférés a ADLS Gen2 hozzáférés-vezérléstől függ. </br>
 > [2] az SQL OD-táblák és a Spark-táblázatok tárolja az ADLS Gen2 és a hozzáféréshez szükséges megfelelő engedélyeket a ADLS Gen2.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Szinapszis- [munkaterület](../quickstart-create-workspace.md) létrehozása

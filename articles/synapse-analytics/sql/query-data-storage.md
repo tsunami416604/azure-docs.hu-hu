@@ -1,6 +1,6 @@
 ---
-title: Adatlekérdezés a Storage-ban az SQL on-demand (előzetes verzió) használatával
-description: Ez a cikk bemutatja, hogyan kérdezheti le az Azure Storage-t az Azure-beli SQL on-demand (előzetes verzió) erőforrás használatával az Azure szinapszis Analyticsben.
+title: Adattárolás lekérdezése kiszolgáló nélküli SQL-készlettel (előzetes verzió)
+description: Ez a cikk azt ismerteti, hogyan lehet lekérdezni az Azure Storage-t az Azure-beli kiszolgáló nélküli SQL Pool (előzetes verzió) erőforrás használatával az Azure szinapszis Analytics
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,27 +9,27 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0ac54eb5d6350cc234eb7036a3a1dc97a4f1b083
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3fd3a94efd6e7870ae3919a011fc24f66b97c559
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288375"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310949"
 ---
-# <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Storage-fájlok lekérdezése az SQL on-demand (előzetes verzió) erőforrásain belül a szinapszis SQL-ben
+# <a name="query-storage-files-with-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Tárolási fájlok lekérdezése kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
-Az SQL on-demand (előzetes verzió) segítségével lekérdezheti az adatait az adattóban. Egy T-SQL-lekérdezési felületet kínál, amely a félig strukturált és a strukturálatlan adatlekérdezéseket is tartalmazza. A lekérdezéshez a következő T-SQL-szempontok támogatottak:
+A kiszolgáló nélküli SQL-készlet (előzetes verzió) segítségével lekérdezheti az adatait az adattóban. Egy T-SQL-lekérdezési felületet kínál, amely a félig strukturált és a strukturálatlan adatlekérdezéseket is tartalmazza. A lekérdezéshez a következő T-SQL-szempontok támogatottak:
 
 - Teljes [kijelölés](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) felületi terület, beleértve az [SQL-függvények és-operátorok](overview-features.md)többségét.
 - KÜLSŐ tábla létrehozása SELECT ([CETAS](develop-tables-cetas.md)) – létrehoz egy [külső táblát](develop-tables-external-tables.md) , majd párhuzamosan exportálja a Transact-SQL SELECT utasítás eredményeit az Azure Storage-ba.
 
-Ha többet szeretne megtudni arról, hogy mi is a jelenleg nem támogatott, olvassa el az [SQL igény szerinti áttekintését ismertető](on-demand-workspace-overview.md) cikket, vagy a következő cikkeket:
+További információ a mi és a jelenleg nem támogatott kapcsolatban: a [kiszolgáló nélküli SQL-készlet áttekintő](on-demand-workspace-overview.md) cikke, vagy a következő cikkek:
 - [Tárterület-hozzáférés fejlesztése](develop-storage-files-overview.md) , amelyből megtudhatja, hogyan lehet a [külső tábla](develop-tables-external-tables.md) és a [OpenRowset](develop-openrowset.md) függvény használatával beolvasni az adatait a tárolóból.
 - A [tárterület-hozzáférés vezérlése](develop-storage-files-storage-access-control.md) , amelyből megtudhatja, hogyan engedélyezheti a szinapszis SQL számára a tárhely ELÉRÉSét sas-hitelesítés vagy a munkaterület felügyelt identitása segítségével.
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure Storage-fájlokban található adatlekérdezés zökkenőmentes működésének támogatásához az SQL on-demand a [OpenRowset](develop-openrowset.md) függvényt használja további képességekkel:
+Az Azure Storage-fájlokban található adatlekérdezés zökkenőmentes működésének támogatásához a kiszolgáló nélküli SQL-készlet a [OpenRowset](develop-openrowset.md) függvényt használja további képességekkel:
 
 - [Több fájl vagy mappa lekérdezése](#query-multiple-files-or-folders)
 - [PARKETTA fájlformátum](#query-parquet-files)
@@ -65,7 +65,7 @@ WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
 Néhány további lehetőség is használható az elemzési szabályok egyéni CSv-formátumra való beállításához:
 - A ESCAPE_CHAR = "char" a fájlban szereplő karaktert határozza meg, amely a fájlban lévő összes elválasztó érték kiszökésére szolgál. Ha az Escape-karaktert a saját maga vagy az elválasztó értékek egyike követi, az escape-karakter eldobása az érték beolvasása közben történik.
 A ESCAPE_CHAR paraméter akkor lesz alkalmazva, ha a FIELDQUOTE vagy nincs engedélyezve. A rendszer nem használja fel az idézett karakter megmenekülésére. Az idézőjel karakternek egy másik idézőjel karakterrel kell megszöknie. Az idézőjel karakter csak akkor szerepelhet az oszlop értékén belül, ha az érték idézőjelekkel van ellátva.
-- A FIELDTERMINATOR = ' field_terminator ' meghatározza a használni kívánt lezáró mezőt. Az alapértelmezett lezáró mező egy vessző ("**,**")
+- A FIELDTERMINATOR = ' field_terminator ' meghatározza a használni kívánt lezáró mezőt. Az alapértelmezett lezáró mező egy vessző (" **,** ")
 - A ROWTERMINATOR = ' row_terminator ' megadja a használandó sort. Az alapértelmezett sor lezáró egy sortörési karakter: **\r\n**.
 
 ## <a name="file-schema"></a>Fájl sémája
@@ -146,7 +146,7 @@ A visszatérési adattípus a következő: nvarchar (1024). Az optimális teljes
 
 ## <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>Összetett típusok és beágyazott vagy ismétlődő adatstruktúrák használata
 
-A beágyazott vagy ismétlődő adattípusokban (például a [Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) -fájlokban) tárolt adathalmazok zökkenőmentes használatának lehetővé tételéhez az SQL on-demand hozzáadta a következő bővítményeket.
+A beágyazott vagy ismétlődő adattípusokban (például a [Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) -fájlokban) tárolt adathalmazok zökkenőmentes használatának lehetővé tételéhez a kiszolgáló nélküli SQL-készlet hozzáadta a következő bővítményeket.
 
 #### <a name="project-nested-or-repeated-data"></a>Beágyazott vagy ismétlődő projekt
 
@@ -224,7 +224,7 @@ A különböző típusú adattípusok lekérdezésével kapcsolatos további inf
 A lekérdezések kibocsátásához szükséges eszközök:
     - Azure szinapszis Studio (előzetes verzió)
     - Azure Data Studio
-    - Az SQL Server Management Studio
+    - SQL Server Management Studio
 
 ### <a name="demo-setup"></a>Bemutató beállítása
 
@@ -260,7 +260,7 @@ A demo-adat a következő adatkészleteket tartalmazza:
 | /json/books/                                                 | Könyvekből származó JSON-fájlok                                   |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A különböző fájltípusok lekérdezésével, valamint a nézetek létrehozásával és használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 

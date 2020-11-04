@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 708b8255f6cf7c60e2d2fc7fbd280b477c06a3d6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a0fbcab194b90bbe89948fee1efb604266dbbb0f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503283"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311742"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Munkaterületekhez, adatbázisokhoz és folyamatokhoz való hozzáférés kezelése
 
@@ -64,7 +64,7 @@ A munkaterület kiépítés után ki kell választania egy [Azure Data Lake Stor
 
 1. Ugrás az [ **Azure szinapszis webes felhasználói felületére**](https://web.azuresynapse.net)
 2. Ugrás a **Manage**   >  **biztonsági**  >  **hozzáférés-vezérlés** kezelése
-3. Válassza a **rendszergazda hozzáadása**lehetőséget, majd válassza a `Synapse_WORKSPACENAME_Admins`
+3. Válassza a **rendszergazda hozzáadása** lehetőséget, majd válassza a `Synapse_WORKSPACENAME_Admins`
 
 ### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>4. lépés: az SQL-rendszergazdai hozzáférés konfigurálása a munkaterülethez
 
@@ -74,7 +74,7 @@ A munkaterület kiépítés után ki kell választania egy [Azure Data Lake Stor
 4. Válassza a **rendszergazda beállítása** lehetőséget.
 5. A következők szerint válasszon: `Synapse_WORKSPACENAME_Admins`
 6. Válassza a **kiválasztás** lehetőséget.
-7. Válassza a **Mentés** lehetőséget
+7. Válassza a **Mentés** lehetőséget.
 
 > [!NOTE]
 > WORKSPACENAME – ezt a részt a munkaterület tényleges nevével kell helyettesíteni.
@@ -94,21 +94,21 @@ A munkaterület kiépítés után ki kell választania egy [Azure Data Lake Stor
 Az alapul szolgáló adat hozzáférés-vezérlése három részre oszlik:
 
 - Adatsík-hozzáférés a Storage-fiókhoz (a 2. lépésben már fentebb van konfigurálva)
-- Adatsíkokhoz való hozzáférés az SQL-adatbázisokhoz (SQL-készletek és SQL-igény esetén egyaránt)
-- Hitelesítő adatok létrehozása az igény szerinti SQL-adatbázisokhoz a Storage-fiókon keresztül
+- Adatsíkokhoz való hozzáférés az SQL-adatbázisokhoz (dedikált SQL-készletek és kiszolgáló nélküli SQL-készlet esetén)
+- Hitelesítő adatok létrehozása kiszolgáló nélküli SQL Pool-adatbázisokhoz a Storage-fiókon keresztül
 
 ## <a name="access-control-to-sql-databases"></a>Hozzáférés-vezérlés SQL-adatbázisokhoz
 
 > [!TIP]
 > Az alábbi lépéseket **minden** SQL-adatbázishoz le kell futtatni ahhoz, hogy felhasználói hozzáférést biztosítson az összes SQL-adatbázishoz, kivéve a szakasz [kiszolgálói szintű engedélyét](#server-level-permission) , ahol rendszergazdai szerepkört rendelhet a felhasználóhoz.
 
-### <a name="sql-on-demand"></a>Igény szerinti SQL
+### <a name="serverless-sql-pool"></a>Kiszolgáló nélküli SQL-készlet
 
 Ebben a szakaszban példákat talál arra, hogy hogyan adhat engedélyt a felhasználónak egy adott adatbázisra vagy teljes kiszolgálói engedélyekre.
 
 #### <a name="database-level-permission"></a>Adatbázis szintű engedély
 
-Ha hozzáférést szeretne adni egy felhasználónak **egyetlen** SQL igény szerinti adatbázishoz, kövesse az alábbi példában szereplő lépéseket:
+Ha **egyetlen** kiszolgáló nélküli SQL Pool-adatbázishoz szeretne hozzáférést adni egy felhasználónak, kövesse az alábbi példában szereplő lépéseket:
 
 1. Bejelentkezés létrehozása
 
@@ -140,16 +140,16 @@ Ha hozzáférést szeretne adni egy felhasználónak **egyetlen** SQL igény sze
 
 #### <a name="server-level-permission"></a>Kiszolgálói szintű engedély
 
-Ha teljes hozzáférést szeretne biztosítani egy felhasználónak az **összes** SQL-igény szerinti adatbázishoz, kövesse a jelen példában szereplő lépést:
+Ha teljes hozzáférést szeretne biztosítani egy felhasználóhoz az **összes** kiszolgáló nélküli SQL Pool-adatbázishoz, kövesse a jelen példában szereplő lépést:
 
 ```sql
 CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
 ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
 ```
 
-### <a name="sql-pools"></a>SQL-készletek
+### <a name="dedicated-sql-pool"></a>Dedikált SQL-készlet
 
-Ha hozzáférést szeretne adni egy felhasználónak **egyetlen** SQL Databasehoz, kövesse az alábbi lépéseket:
+Ha **egyetlen** SQL-adatbázishoz szeretne hozzáférést adni egy felhasználónak, kövesse az alábbi lépéseket:
 
 1. Hozza létre a felhasználót az adatbázisban a következő parancs futtatásával, amely a helyi választóban célozza meg a kívánt adatbázist (a legördülő listából válassza az adatbázisok lehetőséget):
 
@@ -167,18 +167,18 @@ Ha hozzáférést szeretne adni egy felhasználónak **egyetlen** SQL Databaseho
 
 > [!IMPORTANT]
 > a *db_datareader* és a *db_datawriter* írási/olvasási engedélyekkel is működhet, ha a *db_owner* engedély megadása nem kívánatos.
-> Ahhoz, hogy egy Spark-felhasználó közvetlenül a Sparkból vagy egy SQL-készletből olvassa el és írja az írást, *db_owner* engedélyre van szükség.
+> Ahhoz, hogy egy Spark-felhasználó közvetlenül a Sparkból vagy egy dedikált SQL-készletből beolvasson és írjon, *db_owner* engedélyre van szükség.
 
-A felhasználók létrehozása után ellenőrizze, hogy az SQL on-demand képes-e lekérdezni a Storage-fiókot.
+A felhasználók létrehozása után ellenőrizze, hogy le tudja-e kérdezni a Storage-fiókot a kiszolgáló nélküli SQL-készlet használatával.
 
 ## <a name="access-control-to-workspace-pipeline-runs"></a>Hozzáférés-vezérlés a munkaterület-folyamat futtatásához
 
 ### <a name="workspace-managed-identity"></a>Munkaterület által felügyelt identitás
 
 > [!IMPORTANT]
-> Az SQL-készletre hivatkozó adatkészleteket vagy tevékenységeket tartalmazó folyamatok sikeres futtatásához a munkaterület identitásának közvetlenül az SQL-készlethez kell hozzáférést biztosítania.
+> A dedikált SQL-készletre hivatkozó adatkészleteket vagy tevékenységeket tartalmazó folyamatok sikeres futtatásához a munkaterület identitásának közvetlenül kell hozzáférést biztosítania az SQL-készlethez.
 
-Futtassa az alábbi parancsokat az egyes SQL-készleteken, hogy a munkaterület által felügyelt identitás az SQL-készlet adatbázisában futtasson folyamatokat:
+Futtassa az alábbi parancsokat az egyes dedikált SQL-készleteken, hogy a munkaterület által felügyelt identitás az SQL-készlet adatbázisában futtasson folyamatokat:
 
 ```sql
 --Create user in DB

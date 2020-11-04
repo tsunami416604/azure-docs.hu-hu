@@ -1,6 +1,6 @@
 ---
-title: A parketta beágyazott típusai lekérdezése az SQL on-demand (előzetes verzió) használatával
-description: Ebből a cikkből megtudhatja, hogyan kérdezheti le a parketta beágyazott típusait az SQL on-demand (előzetes verzió) használatával.
+title: A parketta beágyazott típusai lekérdezése kiszolgáló nélküli SQL-készlettel (előzetes verzió)
+description: Ebből a cikkből megtudhatja, hogyan lehet lekérdezni a parketta beágyazott típusait a kiszolgáló nélküli SQL-készlet (előzetes verzió) használatával.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,22 +9,22 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 08502704515c791bf63f4803b7446a0471c0a869
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3463e4dfc423a3f12ce7a42cb0def36574bcb2d3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288256"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312008"
 ---
-# <a name="query-nested-types-in-parquet-and-json-files-by-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Beágyazott típusok lekérdezése a parketta és a JSON-fájlokban SQL igény szerinti (előzetes verzió) használatával az Azure szinapszis Analyticsben
+# <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Beágyazott típusok lekérdezése a parketta és a JSON-fájlokban kiszolgáló nélküli SQL-készlet (előzetes verzió) használatával az Azure szinapszis Analyticsben
 
-Ebből a cikkből megtudhatja, hogyan írhat egy lekérdezést az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analytics szolgáltatásban. A lekérdezés a parketta beágyazott típusait fogja olvasni.
+Ebből a cikkből megtudhatja, hogyan írhat lekérdezéseket kiszolgáló nélküli SQL-készlet (előzetes verzió) használatával az Azure szinapszis Analytics szolgáltatásban. A lekérdezés a parketta beágyazott típusait fogja olvasni.
 A beágyazott típusok olyan összetett struktúrák, amelyek objektumokat vagy tömböket jelképeznek. A beágyazott típusok a ben tárolhatók: 
 - [Parketta](query-parquet-files.md), ahol több, tömböket és objektumokat tartalmazó összetett oszlop is lehet.
 - Hierarchikus [JSON-fájlok](query-json-files.md), ahol egy összetett JSON-dokumentumot egyetlen oszlopként lehet beolvasni.
 - Azure Cosmos DB gyűjtemények (jelenleg a nyilvános előzetes verzió alatt), ahol minden dokumentum összetett beágyazott tulajdonságokat tartalmazhat.
 
-Az Azure szinapszis SQL igény szerinti formátuma minden beágyazott típus JSON-objektumként és tömbökként. Így [összetett objektumokat is kinyerhet vagy MÓDOSÍTHAT JSON-függvények használatával](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) vagy [a JSON-adatok elemzésével a openjson utasítással függvény használatával](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
+A kiszolgáló nélküli SQL-készlet összes beágyazott típusát JSON-objektumként és tömbökként formázza. Így [összetett objektumokat is kinyerhet vagy MÓDOSÍTHAT JSON-függvények használatával](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) vagy [a JSON-adatok elemzésével a openjson utasítással függvény használatával](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
 
 Az alábbi példa egy olyan lekérdezést mutat be, amely a [COVID-19 nyílt kutatási adatkészlet JSON-](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) fájljából Kinyeri a skaláris és az objektum értékeit, amelyek beágyazott objektumokat tartalmaznak: 
 

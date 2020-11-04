@@ -15,6 +15,10 @@
       href: virtual-wan-expressroute-portal.md
 - name: Alapelvek
   items:
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: Távmunka
       items:
         - name: A távmunka támogatása

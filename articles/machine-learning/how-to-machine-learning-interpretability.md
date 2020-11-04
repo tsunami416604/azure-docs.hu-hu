@@ -11,12 +11,12 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: d063af3ba3b9261100af5e48a2c507a80ac76d98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f98e18abb8ba06ea632ee9c63c1a726879e825d2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322359"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311507"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Modell értelmezése Azure Machine Learningban (előzetes verzió)
 
@@ -39,7 +39,7 @@ A modell fejlesztésének két fő fázisában fontos a gépi tanulási modell e
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Értelmezés Azure Machine Learning
 
-Az értelmező osztályok a következő SDK-csomagon keresztül érhetők el: (útmutató a [Azure Machine learning SDK-csomagjainak telepítéséhez](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true))
+Az értelmező osztályok a következő SDK-csomagon keresztül érhetők el: (útmutató a [Azure Machine learning SDK-csomagjainak telepítéséhez](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py))
 
 * `azureml.interpret`, a Microsoft által támogatott funkciókat tartalmaz.
 
@@ -64,10 +64,10 @@ Ismerje meg a támogatott értelmező technikákat, a támogatott gépi tanulás
 
 |Értelmező technika|Leírás|Típus|
 |--|--|--------------------|
-|ALAKÍTÁSi fa magyarázata| A SHAP 's Tree [Deformálója](https://github.com/slundberg/shap), amely a **fák és a fák különböző részeire**jellemző, a többhelyes idő gyors formálására szolgáló algoritmusra koncentrál.|Modell-specifikus|
+|ALAKÍTÁSi fa magyarázata| A SHAP 's Tree [Deformálója](https://github.com/slundberg/shap), amely a **fák és a fák különböző részeire** jellemző, a többhelyes idő gyors formálására szolgáló algoritmusra koncentrál.|Modell-specifikus|
 |Mélyreható magyarázat kialakítása| A SHAPer magyarázata alapján a Deep deformáló "egy nagy sebességű közelítési algoritmus az értékek alakításához a Deep learning-modellekben, amely egy, a [SHAP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)-beli DeepLIFT-ben leírt módon létesített kapcsolatban. A **TensorFlow** modellek és **kerasz** modellek támogatottak a TensorFlow-háttér használatával (a PyTorch előzetes támogatása is elérhető).|Modell-specifikus|
-|Lineáris elmagyarázó ALAKÍTÁS| A SHAP lineáris elmagyarázó számítási funkciói a **lineáris modell**értékeit, opcionálisan elvégzik a szolgáltatások közötti korrelációk elszámolását.|Modell-specifikus|
-|A rendszermag magyarázatának kialakítása| A SHAP kernel-magyarázata egy speciálisan súlyozott, helyi lineáris regressziót használ az **egyes modellek**formálási értékeinek becsléséhez.|Modell – agnosztikus|
+|Lineáris elmagyarázó ALAKÍTÁS| A SHAP lineáris elmagyarázó számítási funkciói a **lineáris modell** értékeit, opcionálisan elvégzik a szolgáltatások közötti korrelációk elszámolását.|Modell-specifikus|
+|A rendszermag magyarázatának kialakítása| A SHAP kernel-magyarázata egy speciálisan súlyozott, helyi lineáris regressziót használ az **egyes modellek** formálási értékeinek becsléséhez.|Modell – agnosztikus|
 |Elmagyarázó (globális helyettes)| Az adatutánozás elmagyarázása a [globális helyettesítő modellek](https://christophm.github.io/interpretable-ml-book/global.html) a tábla modelljeinek utánzására való betanításának gondolatán alapul. A globális helyettesítő modell egy belsőleg értelmezhető modell, amely úgy van kitanítva, hogy a lehető legpontosabban közelítse meg a **fekete Box-modellek** előrejelzéseit. Az adatszakértők a helyettesítő modellt úgy tudják értelmezni, hogy levonja a fekete Box-modellel kapcsolatos következtetéseket. A következő értelmezhető modellek egyikét használhatja helyettesítő modellként: LightGBM (LGBMExplainableModel), lineáris regresszió (LinearExplainableModel), sztochasztikus gradiens deillatos modell (SGDExplainableModel) és döntési fa (DecisionTreeExplainableModel).|Modell – agnosztikus|
 |A permutáció funkció fontossági magyarázata (PFI)| A permutáció funkció fontossága egy olyan módszer, amely a [Breiman véletlenszerű erdőkkel kapcsolatos tanulmányai](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) által ihletett besorolási és regressziós modellek magyarázatára szolgál (lásd: 10. szakasz). Magas szinten a működésének módja az, hogy a teljes adatkészlet esetében véletlenszerűen végzi el az adatok egy funkciójának a kiszámítását, és kiszámítja, hogy a teljesítmény mérőszáma milyen mértékben változik. Minél nagyobb a változás, annál fontosabb a funkció. A PFI megmagyarázhatja a **mögöttes modellek** általános viselkedését, de nem magyarázza el az egyes előrejelzéseket. |Modell – agnosztikus|
 

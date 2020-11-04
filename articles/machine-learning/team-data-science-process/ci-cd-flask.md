@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
-ms.openlocfilehash: 42433ec419ac9e02077cd0359e18b5114206f27d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af7900faff18d526686b80f23b9de3b3bce5ec5c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76721829"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309610"
 ---
 # <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>CI/CD-folyamatok létrehozása AI-alkalmazásokhoz az Azure-folyamatok, a Docker és a Kubernetes használatával
 
@@ -34,9 +34,9 @@ A letöltött forráskód és oktatóanyag használatához a következő előfel
 - A GitHub-fiókhoz tartozó [forráskód-tárház](https://github.com/Azure/DevOps-For-AI-Apps)
 - [Azure DevOps-szervezet](/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
 - [Azure CLI](/cli/azure/install-azure-cli)
-- [Kubernetes-(ak-) fürt Azure Container Service](/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
+- [Kubernetes-(ak-) fürt Azure Container Service](/previous-versions/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) parancsok futtatása és a konfiguráció beolvasása az AK-fürtből 
-- Egy [Azure Container Registry (ACR) fiók](/azure/container-registry/container-registry-get-started-portal)
+- Egy [Azure Container Registry (ACR) fiók](../../container-registry/container-registry-get-started-portal.md)
 
 ## <a name="cicd-pipeline-summary"></a>CI/CD-folyamat összegzése
 
@@ -62,7 +62,7 @@ Az alábbi ábra és lépések a CI/CD folyamat architektúráját írják le:
 
 ## <a name="see-also"></a>Lásd még
 
-- [Csoportos adatelemzési folyamat (TDSP)](/azure/machine-learning/team-data-science-process/)
-- [Azure Machine Learning (AML)](/azure/machine-learning/)
+- [Csoportos adatelemzési folyamat (TDSP)](./index.yml)
+- [Azure Machine Learning (AML)](../index.yml)
 - [Azure DevOps](https://azure.microsoft.com/services/devops/)
-- [Azure Kubernetes Services (AKS)](/azure/aks/intro-kubernetes)
+- [Azure Kubernetes Services (AKS)](../../aks/intro-kubernetes.md)

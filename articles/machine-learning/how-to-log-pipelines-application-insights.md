@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8a3a82e091791b39ddf36e39987590dcddea320f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 624409be4d7e2cfba37dbe16e083904766ae1389
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897498"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309669"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>A gépi tanulási folyamat naplófájljainak összegyűjtése a riasztások és a hibakeresés Application Insights
 
@@ -38,7 +38,7 @@ Ha a naplók a helyükön vannak, a kivételek és a hibaüzenetek előzményeit
 
 Ez a szakasz a OpenCensus egy Azure Machine Learning folyamatból történő használatával kapcsolatos bevezetés. Részletes oktatóanyagért lásd: [OpenCensus Azure monitor-exportőrök](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
 
-Adjon hozzá egy PythonScriptStep az Azure ML-adatcsatornához. Konfigurálja a [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true) a opencensus-ext-Azure függőségével. Konfigurálja a `APPLICATIONINSIGHTS_CONNECTION_STRING` környezeti változót.
+Adjon hozzá egy PythonScriptStep az Azure ML-adatcsatornához. Konfigurálja a [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration?preserve-view=true&view=azure-ml-py) a opencensus-ext-Azure függőségével. Konfigurálja a `APPLICATIONINSIGHTS_CONNECTION_STRING` környezeti változót.
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies
@@ -153,7 +153,7 @@ A Application Insights eredményében megjelenik a naplózási üzenet és a szi
 
 ### <a name="additional-helpful-queries"></a>További hasznos lekérdezések
 
-Az alábbi lekérdezések némelyike a "customDimensions. level" használatát használja. Ezek a súlyossági szintek annak a szintnek felelnek meg, amelyben a Python-napló eredetileg el lett küldve. További lekérdezési információk: [Azure monitor naplózási lekérdezések](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language).
+Az alábbi lekérdezések némelyike a "customDimensions. level" használatát használja. Ezek a súlyossági szintek annak a szintnek felelnek meg, amelyben a Python-napló eredetileg el lett küldve. További lekérdezési információk: [Azure monitor naplózási lekérdezések](/azure/data-explorer/kusto/query/).
 
 | Használati eset                                                               | Lekérdezés                                                                                              |
 |------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
@@ -166,4 +166,4 @@ Az alábbi lekérdezések némelyike a "customDimensions. level" használatát h
 
 Miután megtörtént a naplók beolvasása a Application Insights-példányban, a rendszer a lekérdezés eredményei alapján [Azure monitor riasztások](../azure-monitor/platform/alerts-overview.md#what-you-can-alert-on) beállítására is használható.
 
-A lekérdezéseket egy [Azure-irányítópulton](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards#add-logs-analytics-query) is hozzáadhatja további információkhoz.
+A lekérdezéseket egy [Azure-irányítópulton](../azure-monitor/learn/tutorial-app-dashboards.md#add-logs-query) is hozzáadhatja további információkhoz.

@@ -1,6 +1,6 @@
 ---
 title: A szinapszis SQL összekötése és lekérdezése a Visual Studióval és a SSDT
-description: Az SQL-készlet lekérdezése az Azure szinapszis Analytics használatával a Visual Studióval.
+description: A Visual Studio használatával lekérdezheti a dedikált SQL-készletet az Azure szinapszis Analytics segítségével.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,15 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 93c975bbbc69a43f1bd47bd4b1e7b857338ac1c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 098256c3174f5a737bec4f6a62cb1d2af99e6f4f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87089243"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311079"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Kapcsolódás a szinapszis SQLhoz a Visual Studióval és a SSDT
+
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
@@ -26,21 +27,22 @@ ms.locfileid: "87089243"
 > 
 > 
 
-Az SQL-készlet lekérdezése az Azure szinapszis Analytics használatával a Visual Studióval. Ez a metódus a SQL Server Data Tools (SSDT) bővítményt használja a Visual Studio 2019-ben. 
+A Visual Studio használatával lekérdezheti a dedikált SQL-készletet az Azure szinapszis Analytics segítségével. Ez a metódus a SQL Server Data Tools (SSDT) bővítményt használja a Visual Studio 2019-ben. 
 
 > [!NOTE]
-> A SSDT nem támogatja az SQL on-demand (előzetes verzió) használatát.
+> A SSDT nem támogatja a kiszolgáló nélküli SQL-készlet (előzetes verzió) használatát.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Az oktatóanyag használatához a következő összetevőket kell használnia:
 
-* Egy meglévő SQL-készlet. Ha még nem rendelkezik ilyennel, tekintse meg az [SQL-készlet létrehozása](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) az előfeltételek elvégzéséhez című témakört.
+* Egy meglévő dedikált SQL-készlet. Ha még nem rendelkezik ilyennel, tekintse meg a [DEDIKÁLT SQL-készlet létrehozása](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) az előfeltételek elvégzéséhez című témakört.
 * SSDT a Visual Studióhoz. Ha rendelkezik a Visual Studióval, valószínűleg már rendelkezik ezzel az összetevővel. A telepítés menetéről és a beállításokról [A Visual Studio és az SSDT telepítése](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) című cikkben olvashat bővebben.
-* Az Azure SQL-kiszolgáló teljes neve. A kiszolgálónév megkereséséhez lásd: [Kapcsolódás az SQL-készlethez](connect-overview.md).
+* Az Azure SQL-kiszolgáló teljes neve. A kiszolgáló nevének megkereséséhez lásd: [Kapcsolódás DEDIKÁLT SQL-készlethez](connect-overview.md).
 
-## <a name="1-connect-to-sql-pool"></a>1. kapcsolódás az SQL-készlethez
+## <a name="1-connect-to-a-dedicated-sql-pool"></a>1. kapcsolódás dedikált SQL-készlethez
 1. Nyissa meg a Visual Studio 2019 alkalmazást.
-2. Nyissa meg a SQL Server Object Explorer a **nézet**SQL Server Object Explorer lehetőség kiválasztásával  >  **SQL Server Object Explorer**.
+2. Nyissa meg a SQL Server Object Explorer a **nézet** SQL Server Object Explorer lehetőség kiválasztásával  >  **SQL Server Object Explorer**.
    
     ![SQL Server Object Explorer](./media/get-started-visual-studio/open-ssdt.png)
 3. Kattintson az **Add SQL Server** (SQL Server hozzáadása) ikonra.
@@ -50,9 +52,9 @@ Az oktatóanyag használatához a következő összetevőket kell használnia:
    
     ![Csatlakozás kiszolgálóhoz](./media/get-started-visual-studio/connection-dialog.png)
    
-   * **Kiszolgáló neve**: adja meg a korábban azonosított **kiszolgálónevet** .
-   * **Hitelesítés**: válassza **SQL Server hitelesítés** vagy **Active Directory integrált hitelesítés**lehetőséget:
-   * **Felhasználónév** és **jelszó**: adja meg felhasználónevét és jelszavát, ha SQL Server hitelesítés lett kiválasztva.
+   * **Kiszolgáló neve** : adja meg a korábban azonosított **kiszolgálónevet** .
+   * **Hitelesítés** : válassza **SQL Server hitelesítés** vagy **Active Directory integrált hitelesítés** lehetőséget:
+   * **Felhasználónév** és **jelszó** : adja meg felhasználónevét és jelszavát, ha SQL Server hitelesítés lett kiválasztva.
    * Kattintson a **Csatlakozás** gombra.
 5. A részletes megtekintéshez bontsa ki az Azure SQL-kiszolgálót. Megtekintheti a kiszolgálóhoz társított adatbázisokat. Bontsa ki az AdventureWorksDW elemet a mintaadatbázis tábláinak megtekintéséhez.
    
@@ -77,7 +79,7 @@ Most, hogy létrejött egy kapcsolódás az adatbázishoz, meg kell írnia egy l
    
     ![Lekérdezés eredményei](./media/get-started-visual-studio/query-results.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy tud-e kapcsolatot létesíteni és lekérdezni, próbálja meg [az Power bi segítségével megjeleníteni az adatmegjelenítést](get-started-power-bi-professional.md).
-A környezet Azure Active Directory hitelesítéshez való konfigurálásával kapcsolatban lásd: [hitelesítés az SQL-készlettel](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+A környezet Azure Active Directory hitelesítéshez való konfigurálásával kapcsolatban lásd: [hitelesítés DEDIKÁLT SQL-készletbe](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
  
