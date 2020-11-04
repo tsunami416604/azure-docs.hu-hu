@@ -1,7 +1,7 @@
 ---
 title: Ml modellek üzembe helyezése Azure App Service (előzetes verzió)
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan helyezhet üzembe modelleket Azure App Service-ban webalkalmazásokban a Azure Machine Learning használatával.
+description: Megtudhatja, hogyan helyezhet üzembe egy betanított ML-modellt egy webalkalmazásban Azure App Service használatával a Azure Machine Learning használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 31c9f203a8602b6c078fe2e9c672c539140f9990
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: bea3270821888334ed876bb827dab56b4c206b6a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744441"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325248"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Gépi tanulási modell üzembe helyezése Azure App Service (előzetes verzió)
 
@@ -28,11 +28,11 @@ Megtudhatja, hogyan helyezhet üzembe modellt Azure Machine Learning webalkalmaz
 
 A Azure Machine Learning segítségével Docker-rendszerképeket hozhat létre a képzett gépi tanulási modellekből. Ez a rendszerkép olyan webszolgáltatást tartalmaz, amely fogadja az adatok fogadását, elküldi a modellbe, majd visszaadja a választ. A Azure App Service használható a lemezkép üzembe helyezéséhez, és a következő funkciókat biztosítja:
 
-* Speciális [hitelesítés](/azure/app-service/configure-authentication-provider-aad) a fokozott biztonsághoz. A hitelesítési módszerek közé tartozik a Azure Active Directory és a multi-Factor Auth is.
-* Az [autoskálázást](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json) anélkül, hogy újra kellene telepíteni.
-* [TLS-támogatás](/azure/app-service/configure-ssl-certificate-in-code) az ügyfelek és a szolgáltatás közötti biztonságos kommunikációhoz.
+* Speciális [hitelesítés](../app-service/configure-authentication-provider-aad.md) a fokozott biztonsághoz. A hitelesítési módszerek közé tartozik a Azure Active Directory és a multi-Factor Auth is.
+* Az [autoskálázást](../azure-monitor/platform/autoscale-get-started.md?toc=%252fazure%252fapp-service%252ftoc.json) anélkül, hogy újra kellene telepíteni.
+* [TLS-támogatás](../app-service/configure-ssl-certificate-in-code.md) az ügyfelek és a szolgáltatás közötti biztonságos kommunikációhoz.
 
-A Azure App Service által nyújtott szolgáltatásokkal kapcsolatos további információkért tekintse meg a [app Service áttekintését](/azure/app-service/overview).
+A Azure App Service által nyújtott szolgáltatásokkal kapcsolatos további információkért tekintse meg a [app Service áttekintését](../app-service/overview.md).
 
 > [!IMPORTANT]
 > Ha szüksége van az üzembe helyezett modellel használt pontozási-adatnapló vagy a pontozás eredményeinek naplózására, ehelyett üzembe kell helyeznie az Azure Kubernetes Service-t. További információ: [adatgyűjtés az éles modelleken](how-to-enable-data-collection.md).
@@ -40,7 +40,7 @@ A Azure App Service által nyújtott szolgáltatásokkal kapcsolatos további in
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Azure Machine Learning-munkaterület. További információt a [Munkaterület létrehozása](how-to-manage-workspace.md) című cikkben talál.
-* Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)-vel.
+* Az [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)-vel.
 * A munkaterületen regisztrált, betanított gépi tanulási modell. Ha nem rendelkezik modellel, használja a [képbesorolási oktatóanyagot: a betanítási modell](tutorial-train-models-with-aml.md) betanítása és regisztrálása.
 
     > [!IMPORTANT]
@@ -56,7 +56,7 @@ A Azure App Service által nyújtott szolgáltatásokkal kapcsolatos további in
 
 A telepítés előtt meg kell határoznia, hogy mire van szükség a modell webszolgáltatásként való futtatásához. Az alábbi lista a központi telepítéshez szükséges fő elemeket ismerteti:
 
-* Egy __bejegyzési parancsfájl__ . Ez a szkript fogadja a kéréseket, a modell használatával szerzi a kérést, és visszaadja az eredményeket.
+* Egy __bejegyzési parancsfájl__. Ez a szkript fogadja a kéréseket, a modell használatával szerzi a kérést, és visszaadja az eredményeket.
 
     > [!IMPORTANT]
     > A bejegyzési parancsfájl a modellre jellemző. meg kell ismernie a bejövő kérelmek adatainak formátumát, a modell által várt adatformátumot, valamint az ügyfeleknek visszaadott adatformátumot.
@@ -66,7 +66,7 @@ A telepítés előtt meg kell határoznia, hogy mire van szükség a modell webs
     > [!IMPORTANT]
     > A Azure Machine Learning SDK nem biztosít lehetőséget a webszolgáltatás számára az adattár vagy az adatkészletek elérésére. Ha a központi telepítésen kívül tárolt adatokat szeretné elérni az üzembe helyezett modellel, például egy Azure Storage-fiókban, egyéni kódot kell létrehoznia a megfelelő SDK használatával. Például a [Pythonhoz készült Azure Storage SDK](https://github.com/Azure/azure-storage-python)-t.
     >
-    > Egy másik alternatíva, amely a forgatókönyv esetében is működhet, a [Batch-előrejelzések](how-to-use-parallel-run-step.md), amelyek a pontozáskor hozzáférést biztosítanak az adattárolóhoz.
+    > Egy másik alternatíva, amely a forgatókönyv esetében is működhet, a [Batch-előrejelzések](./tutorial-pipeline-batch-scoring-classification.md), amelyek a pontozáskor hozzáférést biztosítanak az adattárolóhoz.
 
     A beléptetési parancsfájlokkal kapcsolatos további információkért lásd: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
@@ -75,7 +75,7 @@ A telepítés előtt meg kell határoznia, hogy mire van szükség a modell webs
 Ezek az entitások egy __következtetési konfigurációba__ vannak ágyazva. A következtetési konfiguráció a bejegyzés parancsfájljára és további függőségekre hivatkozik.
 
 > [!IMPORTANT]
-> Ha Azure App Service-vel való használatra vonatkozó következtetési konfigurációt hoz létre, [környezeti](https://docs.microsoft.com//python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true) objektumot kell használnia. Vegye figyelembe, hogy ha egyéni környezetet határoz meg, akkor a >= 1.0.45 verzióval rendelkező azureml kell hozzáadnia pip-függőségként. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. Az alábbi példa bemutatja, hogyan hozható létre egy környezeti objektum, és hogyan használhatja azt egy következtetési konfigurációval:
+> Ha Azure App Service-vel való használatra vonatkozó következtetési konfigurációt hoz létre, [környezeti](//python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py) objektumot kell használnia. Vegye figyelembe, hogy ha egyéni környezetet határoz meg, akkor a >= 1.0.45 verzióval rendelkező azureml kell hozzáadnia pip-függőségként. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. Az alábbi példa bemutatja, hogyan hozható létre egy környezeti objektum, és hogyan használhatja azt egy következtetési konfigurációval:
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -97,11 +97,11 @@ További információ a környezetekről: [környezetek létrehozása és kezel�
 További információ a konfigurációval kapcsolatban: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
 > [!IMPORTANT]
-> A Azure App Service való telepítésekor nem kell létrehoznia __központi telepítési konfigurációt__ .
+> A Azure App Service való telepítésekor nem kell létrehoznia __központi telepítési konfigurációt__.
 
 ## <a name="create-the-image"></a>A rendszerkép létrehozása
 
-A Azure App Service üzembe helyezett Docker-rendszerkép létrehozásához használja a [Model. package csomagot](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-). A következő kódrészlet bemutatja, hogyan hozhat létre egy új rendszerképet a modellből és a következtetések konfigurálásával:
+A Azure App Service üzembe helyezett Docker-rendszerkép létrehozásához használja a [Model. package csomagot](//python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-). A következő kódrészlet bemutatja, hogyan hozhat létre egy új rendszerképet a modellből és a következtetések konfigurálásával:
 
 > [!NOTE]
 > A kódrészlet feltételezi, hogy `model` egy regisztrált modellt tartalmaz, amely `inference_config` tartalmazza a következtetési környezet konfigurációját. További információ: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
@@ -271,7 +271,7 @@ print(response.json())
 ## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan konfigurálhatja a webalkalmazást a Linux dokumentációjának [app Service](/azure/app-service/containers/) .
-* További információ az automatikus skálázás az [Azure](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json)-ban való használatáról.
-* [Használjon TLS/SSL-tanúsítványt a Azure app Service](/azure/app-service/configure-ssl-certificate-in-code).
-* [Konfigurálja a app Service alkalmazást Azure Active Directory bejelentkezés használatára](/azure/app-service/configure-authentication-provider-aad).
+* További információ az automatikus skálázás az [Azure](../azure-monitor/platform/autoscale-get-started.md?toc=%252fazure%252fapp-service%252ftoc.json)-ban való használatáról.
+* [Használjon TLS/SSL-tanúsítványt a Azure app Service](../app-service/configure-ssl-certificate-in-code.md).
+* [Konfigurálja a app Service alkalmazást Azure Active Directory bejelentkezés használatára](../app-service/configure-authentication-provider-aad.md).
 * [Webszolgáltatásként üzembe helyezett ML-modell felhasználása](how-to-consume-web-service.md)

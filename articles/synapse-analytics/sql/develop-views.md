@@ -1,6 +1,6 @@
 ---
-title: T-SQL-nézetek a szinapszis SQL használatával
-description: Tippek a T-SQL-nézetek használatához és megoldások a szinapszis SQL-sel való fejlesztéséhez.
+title: SQL-készleteket használó T-SQL-nézetek
+description: Tippek a T-SQL-nézetek használatához és a megoldások fejlesztéséhez dedikált SQL-készlettel és kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,15 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: fafa0c2e1b02cc49bfb852ed7770b0927b0e9334
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e416974d1326415e9a459e39d7bdea8e3fd8a84c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90032724"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323811"
 ---
-# <a name="t-sql-views-using-synapse-sql"></a>T-SQL-nézetek a szinapszis SQL használatával
-Ebből a cikkből megtudhatja, hogyan használhatja a T-SQL nézeteket, és hogyan fejleszthet megoldásokat a szinapszis SQL használatával. 
+# <a name="t-sql-views-with-dedicated-sql-pool-and-serverless-sql-pool-preview--in-azure-synapse-analytics"></a>T-SQL-nézetek dedikált SQL-készlettel és kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
+
+Ebből a cikkből megtudhatja, hogyan használhatók a T-SQL-nézetek és a megoldások fejlesztése dedikált SQL-készlettel és kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban.
 
 ## <a name="why-use-views"></a>A nézetek használata
 
@@ -26,12 +27,7 @@ A nézetek számos különböző módon használhatók a megoldás minőségéne
 ### <a name="sql-pool---create-view"></a>SQL-készlet – nézet létrehozása
 
 > [!NOTE]
-> **SQL-készlet**: a létrehozás nézet szintaxisa nem szerepel ebben a cikkben. További információ: [create View](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) dokumentáció.
-
-### <a name="sql-on-demand-preview---create-view"></a>Igény szerinti SQL-(előzetes verzió) – nézet létrehozása
-
-> [!NOTE]
-> **SQL on-demand**: a létrehozás nézet szintaxisa nem szerepel ebben a cikkben. További információ: [create View](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) dokumentáció.
+> Ez a cikk nem tárgyalja a létrehozás nézet szintaxisát. További információ: [create View](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) dokumentáció.
 
 ## <a name="architectural-abstraction"></a>Építészeti absztrakció
 
@@ -54,7 +50,6 @@ FROM   dbo.DimDate_stg AS stg
 
 RENAME OBJECT DimDate TO DimDate_Old;
 RENAME OBJECT DimDate_New TO DimDate;
-
 ```
 
 Ne feledje, hogy ez a megközelítés azt eredményezheti, hogy a táblák megjelenhetnek és eltűnnek a felhasználó nézetében, és a "táblázat nem létezik" hibaüzenetek jelennek meg. A nézetek segítségével konzisztens megjelenítési réteget biztosíthat a felhasználók számára, miközben az alapul szolgáló objektumok átnevezve lesznek.

@@ -1,6 +1,6 @@
 ---
 title: Az elosztott táblák tervezési útmutatója
-description: Javaslatok kivonatok elosztott és ciklikusan elosztott táblázatának tervezéséhez a szinapszis SQL-készletben.
+description: Javaslatok a kivonatok elosztott és ciklikusan elosztott tábláinak tervezéséhez, dedikált SQL-készlettel az Azure szinapszis Analytics szolgáltatásban.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 10d37dd5fd9703246913959b9eeec3e1fbc2e913
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a3715abdebce319979d867d12764a22b4ed16c35
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487007"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323621"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Útmutatás elosztott táblák Synapse SQL-készletben történő tervezéséhez
+# <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Útmutató elosztott táblák tervezéséhez dedikált SQL-készlet használatával az Azure szinapszis Analyticsben
 
-Javaslatok kivonatoláshoz elosztott és ciklikusan elosztott táblázatok kialakításához a szinapszis SQL-készletekben.
+Javaslatok kivonatok elosztott és ciklikusan elosztott tábláinak tervezéséhez dedikált SQL-készletekben.
 
-Ez a cikk azt feltételezi, hogy már ismeri az adateloszlást és az adatáthelyezési fogalmakat a szinapszis SQL-ben.  További információ: [Azure szinapszis Analytics-architektúra](massively-parallel-processing-mpp-architecture.md).
+Ez a cikk feltételezi, hogy ismeri az adateloszlási és adatáthelyezési fogalmakat a dedikált SQL-készletben.  További információ: [Azure szinapszis Analytics-architektúra](massively-parallel-processing-mpp-architecture.md).
 
 ## <a name="what-is-a-distributed-table"></a>Mi az elosztott tábla?
 
@@ -36,7 +36,7 @@ A tábla kialakításának részeként a lehető legnagyobb mértékben megismer
 
 - Mekkora a táblázat?
 - Milyen gyakran frissül a tábla?
-- Van egy szinapszis SQL-készletben a tény-és dimenziós táblák?
+- Van egy dedikált SQL-készletben a tény-és dimenziós táblák?
 
 ### <a name="hash-distributed"></a>Kivonat kiosztva
 
@@ -44,7 +44,7 @@ A kivonatok – az elosztott tábla a számítási csomópontok között egy det
 
 ![Elosztott tábla](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "Elosztott tábla")  
 
-Mivel az azonos értékek mindig azonos eloszlásba kerülnek, az adattárház beépített ismeretekkel rendelkezik a sorok helyeiről. A szinapszis SQL-készletben ez az információ az adatáthelyezés minimalizálására szolgál a lekérdezések során, ami javítja a lekérdezési teljesítményt.
+Mivel az azonos értékek mindig azonos eloszlásba kerülnek, az adattárház beépített ismeretekkel rendelkezik a sorok helyeiről. A dedikált SQL-készletben ez az információ az adatáthelyezés minimalizálására szolgál a lekérdezések során, ami javítja a lekérdezési teljesítményt.
 
 A kivonattal terjesztett táblázatok jól működnek a csillag sémában található nagyméretű táblákhoz. Nagyon nagy mennyiségű sorból állhatnak, és továbbra is nagy teljesítmény érhető el. Természetesen vannak olyan kialakítási megfontolások, amelyek segítenek az elosztott rendszer által biztosított teljesítmény megszerzésében. A megfelelő terjesztési oszlop kiválasztása az ebben a cikkben ismertetett szempontok egyike.
 
@@ -113,7 +113,7 @@ A párhuzamos feldolgozás kiegyensúlyozásához válasszon egy terjesztési os
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>Az adatáthelyezést lecsökkentő terjesztési oszlop kiválasztása
 
-A lekérdezési eredmények helyes lekérdezéséhez az adatok az egyik számítási csomópontról egy másikra helyezhetők át. Az adatáthelyezés általában akkor történik, amikor a lekérdezések összekapcsolással és összesítésekkel rendelkeznek az elosztott táblákon. Az adatáthelyezés minimálisra csökkentését segítő terjesztési oszlop kiválasztása az egyik legfontosabb stratégia a szinapszis SQL-készlet teljesítményének optimalizálásához.
+A lekérdezési eredmények helyes lekérdezéséhez az adatok az egyik számítási csomópontról egy másikra helyezhetők át. Az adatáthelyezés általában akkor történik, amikor a lekérdezések összekapcsolással és összesítésekkel rendelkeznek az elosztott táblákon. Egy olyan terjesztési oszlop kiválasztása, amely segít az adatáthelyezés minimalizálásában, az egyik legfontosabb stratégia a dedikált SQL-készlet teljesítményének optimalizálásához.
 
 Az adatáthelyezés minimalizálásához válasszon ki egy terjesztési oszlopot:
 
@@ -225,5 +225,5 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 Elosztott tábla létrehozásához használja az alábbi utasítások egyikét:
 
-- [CREATE TABLE (szinapszis SQL-készlet)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE TABLE a SELECT (szinapszis SQL Pool) ELEMnél](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE (dedikált SQL-készlet)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE a SELECT (dedikált SQL Pool) ELEMnél](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

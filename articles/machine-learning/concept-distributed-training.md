@@ -9,12 +9,12 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 62edee6a882191551ce2409646ea8b617576c059
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c479a64b2100cfc1a6fdf17f5e6f5636d3a689d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651149"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322232"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Elosztott képzés Azure Machine Learning
 
@@ -24,9 +24,9 @@ Az elosztott képzésben a modell betanításához szükséges számítási fela
 
 ## <a name="deep-learning-and-distributed-training"></a>Mélyreható tanulás és elosztott képzés 
 
-Az elosztott képzésnek két fő típusa van: az [adatpárhuzamosság](#data-parallelism) és a [modell párhuzamossága](#model-parallelism). A részletes tanulási modelleken a [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) támogatja a népszerű keretrendszerek, a PyTorch és a TensorFlow integrációját. Mindkét keretrendszer adatpárhuzamosságot alkalmaz az elosztott képzések esetében, és a számítási sebesség optimalizálása érdekében [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) is képes kihasználni. 
+Az elosztott képzésnek két fő típusa van: az [adatpárhuzamosság](#data-parallelism) és a [modell párhuzamossága](#model-parallelism). A részletes tanulási modelleken a [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) támogatja a népszerű keretrendszerek, a PyTorch és a TensorFlow integrációját. Mindkét keretrendszer adatpárhuzamosságot alkalmaz az elosztott képzések esetében, és a számítási sebesség optimalizálása érdekében [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) is képes kihasználni. 
 
-* [Elosztott képzés a PyTorch](how-to-train-pytorch.md#distributed-training)
+* [Elosztott betanítás a PyTorch használatával](how-to-train-pytorch.md#distributed-training)
 
 * [Elosztott képzés a TensorFlow](how-to-train-tensorflow.md#distributed-training)
 
@@ -51,6 +51,6 @@ A modell párhuzamossága esetében a feldolgozó csomópontoknak csak egyszer k
 ## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [használhatók a számítási célok a modell betanításához](how-to-set-up-training-targets.md) a Python SDK-val.
-* Technikai példákért tekintse meg a [hivatkozási architektúra forgatókönyvét](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/training-deep-learning).
+* Technikai példákért tekintse meg a [hivatkozási architektúra forgatókönyvét](/azure/architecture/reference-architectures/ai/training-deep-learning).
 * [Ml modellek betanítása a TensorFlow](how-to-train-tensorflow.md).
-* [Ml modellek betanítása a PyTorch](how-to-train-pytorch.md). 
+* [Ml modellek betanítása a PyTorch](how-to-train-pytorch.md).

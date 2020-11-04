@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 18bbecbe811a9f0bc6a56194830c7e92d8770979
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 401398da4d71f32973f720dd0ca5cc9b550892e8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890177"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323045"
 ---
 # <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Adatfeldolgozási lehetőségek Azure Machine Learning munkafolyamatokhoz
 
@@ -33,7 +33,7 @@ Az adatfeldolgozás az a folyamat, amelyben a strukturálatlan adatok kinyerése
 
 ## <a name="azure-data-factory"></a>Azure Data Factory
 
-A [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) natív támogatást nyújt az adatfeldolgozási folyamatokhoz használt adatforrás-figyeléshez és-eseményindítóhoz.  
+A [Azure Data Factory](../data-factory/introduction.md) natív támogatást nyújt az adatfeldolgozási folyamatokhoz használt adatforrás-figyeléshez és-eseményindítóhoz.  
 
 Az alábbi táblázat összefoglalja az adatfeldolgozási munkafolyamatok Azure Data Factory használatának előnyeit és hátrányait.
 
@@ -41,11 +41,11 @@ Az alábbi táblázat összefoglalja az adatfeldolgozási munkafolyamatok Azure 
 ---|---
 Kifejezetten az adatok kinyerésére, betöltésére és átalakítására készült.|A jelenleg korlátozott számú Azure Data Factory folyamattal kapcsolatos feladatot biztosít 
 Lehetővé teszi, hogy adatvezérelt munkafolyamatokat hozzon létre az adatáthelyezés és az átalakítások méretezése érdekében.|Költséges a létrehozás és a karbantartás. További információért tekintse meg Azure Data Factory [díjszabási lapját](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) .
-Különböző Azure-eszközökkel integrált, például [Azure Databricks](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook) és [Azure functions](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity) | A parancsfájlok nem futnak natív módon, hanem külön számítási feladatokra támaszkodnak a parancsfájlok futtatásához. 
+Különböző Azure-eszközökkel integrált, például [Azure Databricks](../data-factory/transform-data-using-databricks-notebook.md) és [Azure functions](../data-factory/control-flow-azure-function-activity.md) | A parancsfájlok nem futnak natív módon, hanem külön számítási feladatokra támaszkodnak a parancsfájlok futtatásához. 
 Natív módon támogatja az adatforráshoz indított adatfeldolgozást| 
 Az adatelőkészítési és-modell-betanítási folyamatok elkülönül.|
 Beágyazott adatbányászati képesség Azure Data Factory adatfolyamok|
-Alacsony kódú [felhasználói felületet](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal) biztosít a nem parancsfájl-kezelési módszerekhez |
+Alacsony kódú [felhasználói felületet](../data-factory/quickstart-create-data-factory-portal.md) biztosít a nem parancsfájl-kezelési módszerekhez |
 
 Ezek a lépések és a következő ábra a Azure Data Factory adatfeldolgozási munkafolyamatát szemlélteti.
 
@@ -60,7 +60,7 @@ Megtudhatja, hogyan hozhat létre adatfeldolgozási folyamatot a [Azure Data Fac
 
 ## <a name="azure-machine-learning-python-sdk"></a>Python SDK Azure Machine Learning 
 
-A [PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml)-val beépítheti az adatfeldolgozási feladatokat egy [Azure Machine learning folyamat](how-to-create-your-first-pipeline.md) lépésbe.
+A [PYTHON SDK](/python/api/overview/azure/ml)-val beépítheti az adatfeldolgozási feladatokat egy [Azure Machine learning folyamat](how-to-create-your-first-pipeline.md) lépésbe.
 
 Az alábbi táblázat összefoglalja az SDK-t és az adatfeldolgozási feladatokhoz szükséges ML folyamatokat.
 

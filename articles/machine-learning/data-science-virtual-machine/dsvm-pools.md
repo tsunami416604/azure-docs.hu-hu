@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 0745957620aab7ed4d08cb016c706b56e6da1c5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 789c6c36def21bfe1c2acc8797c1847455a5c86c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708968"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324388"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Adatelemzési Virtual Machines megosztott készletének létrehozása
 
@@ -27,7 +27,7 @@ Számos módszert és technológiát használhat a Dsvm készletének létrehoz�
 
 A teljes AI/adatelemzési csapat által megosztott interaktív virtuális gépek készlete lehetővé teszi a felhasználók számára, hogy a DSVM elérhető példányára jelentkezzenek be ahelyett, hogy dedikált példányt kellene létrehoznia az egyes felhasználók számára. Ez a beállítás lehetővé teszi az erőforrások jobb rendelkezésre állását és hatékonyabb kihasználását.
 
-Az [Azure virtuálisgép-méretezési](https://docs.microsoft.com/azure/virtual-machine-scale-sets/) csoportok technológiájának használatával interaktív virtuálisgép-készletet hozhat létre. A méretezési csoportok segítségével azonos, elosztott terhelésű és automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti.
+Az [Azure virtuálisgép-méretezési](../../virtual-machine-scale-sets/index.yml) csoportok technológiájának használatával interaktív virtuálisgép-készletet hozhat létre. A méretezési csoportok segítségével azonos, elosztott terhelésű és automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti.
 
 A felhasználó bejelentkezik a fő készlet IP-címére vagy DNS-címére. A méretezési csoport automatikusan átirányítja a munkamenetet a méretezési csoport egy elérhető DSVM. Mivel a felhasználók egységes és ismerős környezetet kívánnak, függetlenül attól, hogy milyen virtuális gépről jelentkeznek be, a méretezési csoport minden példánya megosztott hálózati meghajtót csatlakoztat, például egy Azure Files megosztást vagy egy hálózati fájlrendszert (NFS-megosztást). A felhasználó megosztott munkaterülete általában az egyes példányokra csatlakoztatott megosztott fájlon marad.
 
@@ -53,7 +53,7 @@ Az előző sablon lehetővé teszi, hogy az SSH és a JupyterHub port az előté
 
 A [Azure Files megosztást csatlakoztató szkript](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Extensions/General/mountazurefiles.sh) a GitHub Azure DataScienceVM adattárában is elérhető. A parancsfájl a paraméter fájljának megadott csatlakoztatási pontján csatlakoztatja a Azure Files megosztást. A parancsfájl emellett a kezdeti felhasználó kezdőkönyvtárának hivatkozásait is létrehozza a csatlakoztatott meghajtóra. A Azure Files-megosztásban lévő felhasználó-specifikus jegyzetfüzet-könyvtár nem kapcsolódik a `$HOME/notebooks/remote` címtárhoz, így a felhasználók hozzáférhetnek, futtathatnak és menthetik a Jupyter-jegyzetfüzeteket. Ugyanezt az egyezményt akkor használhatja, ha további felhasználókat hoz létre a virtuális gépen, hogy az egyes felhasználók Jupyter-munkaterületét az Azure Files-megosztásra irányítsa.
 
-A virtuálisgép-méretezési csoportok támogatják az automatikus skálázást. Szabályokat állíthat be a további példányok létrehozásához és a példányok méretezési idejéhez. Ha például a virtuális gépeket egyáltalán nem használják, a Felhőbeli hardver használati költségeire csökkentheti a példányok méretét. A virtuálisgép-méretezési csoportok dokumentációs oldalain részletes útmutatást talál az automatikus [skálázáshoz](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview).
+A virtuálisgép-méretezési csoportok támogatják az automatikus skálázást. Szabályokat állíthat be a további példányok létrehozásához és a példányok méretezési idejéhez. Ha például a virtuális gépeket egyáltalán nem használják, a Felhőbeli hardver használati költségeire csökkentheti a példányok méretét. A virtuálisgép-méretezési csoportok dokumentációs oldalain részletes útmutatást talál az automatikus [skálázáshoz](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

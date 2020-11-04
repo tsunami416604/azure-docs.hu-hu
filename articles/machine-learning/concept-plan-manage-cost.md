@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: f73643baa92956280d67d0d931459af3a80925ee
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: e8554bf4385c7ddad540b8ba807988618fe80b53
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233748"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322994"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>A Azure Machine Learning költségeinek megtervezése és kezelése
 
@@ -53,11 +53,11 @@ További információ: [Azure Machine learning díjszabása](https://azure.micro
 
 ## <a name="get-cost-alerts"></a>Cost-riasztások beszerzése
 
-Hozzon létre [költségvetéseket](../cost-management/tutorial-acm-create-budgets.md) a költségek kezeléséhez, és hozzon létre [riasztásokat](../cost-management/cost-mgt-alerts-monitor-usage-spending.md) , amelyek automatikusan értesítik az érintetteket a kiesések elköltéséről A riasztások a költségvetés és a költségek küszöbértékei alapján működnek. Az Azure-előfizetésekhez és-erőforráscsoportokhöz költségvetést és riasztásokat hoznak létre, így azok a teljes költségű figyelési stratégia részeként hasznosak. A költségvetések és a riasztások azonban korlátozott funkcionalitással rendelkezhetnek az egyes Azure-szolgáltatások költségeinek kezeléséhez, mert a költségek magasabb szinten való nyomon követésére szolgálnak.
+Hozzon létre [költségvetéseket](../cost-management-billing/costs/tutorial-acm-create-budgets.md) a költségek kezeléséhez, és hozzon létre [riasztásokat](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md) , amelyek automatikusan értesítik az érintetteket a kiesések elköltéséről A riasztások a költségvetés és a költségek küszöbértékei alapján működnek. Az Azure-előfizetésekhez és-erőforráscsoportokhöz költségvetést és riasztásokat hoznak létre, így azok a teljes költségű figyelési stratégia részeként hasznosak. A költségvetések és a riasztások azonban korlátozott funkcionalitással rendelkezhetnek az egyes Azure-szolgáltatások költségeinek kezeléséhez, mert a költségek magasabb szinten való nyomon követésére szolgálnak.
 
 ## <a name="monitor-costs"></a>Költségek figyelése
 
-A Azure Machine Learningekkel rendelkező erőforrások használatakor költségek merülnek fel. Az Azure Erőforrás-használati egység költségei az időintervallumok (másodperc, perc, óra és nap) vagy a kérési egység használata szerint változnak. Amint a Azure Machine Learning használata megkezdődik, a költségek felmerülnek. Ezeket a költségeket a Azure Portal [Cost Analysis](../cost-management/quick-acm-cost-analysis.md) paneljén tekintheti meg.
+A Azure Machine Learningekkel rendelkező erőforrások használatakor költségek merülnek fel. Az Azure Erőforrás-használati egység költségei az időintervallumok (másodperc, perc, óra és nap) vagy a kérési egység használata szerint változnak. Amint a Azure Machine Learning használata megkezdődik, a költségek felmerülnek. Ezeket a költségeket a Azure Portal [Cost Analysis](../cost-management-billing/costs/quick-acm-cost-analysis.md) paneljén tekintheti meg.
 
 A költségeket diagramokban és táblákban is megtekintheti a különböző időintervallumokhoz. A költségeket a költségvetések és az előre jelzett költségek között is megtekintheti. Ha a hosszabb nézetekre vált, az idő múlásával azonosíthatja a kiadási trendeket, és megtekintheti, hogy hol történt a túltöltés. Ha költségvetéseket hozott létre, tekintse meg a hol túlléptéket.  
 
@@ -86,7 +86,7 @@ Azt is beállíthatja, hogy a csomópont mennyi ideig tétlen legyen a skáláz�
 + Ha kevesebb iterációs kísérletezést végez, csökkentse ezt az időt a költségek megtakarítása érdekében.
 + Ha nagy mértékben ismétlődő fejlesztési/tesztelési kísérleteket hajt végre, akkor előfordulhat, hogy meg kell nőnie az időt, hogy a képzési parancsfájl vagy környezet minden módosítása után ne fizessen az állandó skálázásra.
 
-A AmlCompute-fürtök konfigurálhatók a munkaterhelési követelmények Azure Portalban való módosításához a [AMLCOMPUTE SDK osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true), a [AmlCompute CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)és a [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable)-k használatával.
+A AmlCompute-fürtök konfigurálhatók a munkaterhelési követelmények Azure Portalban való módosításához a [AMLCOMPUTE SDK osztály](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?preserve-view=true&view=azure-ml-py), a [AmlCompute CLI](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)és a [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable)-k használatával.
 
 ```azurecli
 az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 --min-nodes 0 --max-nodes 5 --idle-seconds-before-scaledown 300

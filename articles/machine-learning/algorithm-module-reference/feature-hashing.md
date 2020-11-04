@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 444cb6a7819fa72f5987a21807fc707e0ba8b396
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9ef6ff81a2c9f3697f7c3ccf1cd8e91ad2fb683
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907914"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323726"
 ---
 # <a name="feature-hashing-module-reference"></a>Szolgáltatás-kivonatolási modul referenciája
 
@@ -22,7 +22,7 @@ Ez a cikk a Azure Machine Learning Designer részét képező modult ismerteti.
 
 A szolgáltatás-kivonatolási modul használatával az angol nyelvű adatfolyamokat egész számokból álló funkciókba alakíthatja át. Ezt követően átadhatja ezt a kivonatoló funkciót egy gépi tanulási algoritmusba egy szöveges elemzési modell betanításához.
 
-Az ebben a modulban megadott funkció-kivonatolási funkció a nimbusml-keretrendszeren alapul. További információ: [NgramHash osztály](https://docs.microsoft.com/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest).
+Az ebben a modulban megadott funkció-kivonatolási funkció a nimbusml-keretrendszeren alapul. További információ: [NgramHash osztály](/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest).
 
 ## <a name="what-is-feature-hashing"></a>Mi a funkció-kivonatolás?
 
@@ -39,7 +39,7 @@ Tegyük fel például, hogy a fentiekhez hasonló egyszerű mondatokat, majd egy
 
 Belsőleg a funkció-kivonatolási modul egy n-grammos szótárt hoz létre. Az adatkészlet bigrams listája például a következőhöz hasonló lesz:
 
-|Kifejezés (bigrams)|Frequency|
+|Kifejezés (bigrams)|Gyakoriság|
 |------------|---------------|
 |Ez a könyv|3|
 |Szerettem|1|
@@ -48,7 +48,7 @@ Belsőleg a funkció-kivonatolási modul egy n-grammos szótárt hoz létre. Az 
 
 Az n-gramm méretének szabályozására az **n-gramm** tulajdonság használható. Ha a bigrams lehetőséget választja, a rendszer a unigrams is kiszámítja. A szótár a következőhöz hasonló egyetlen kifejezést is tartalmaz:
 
-|Kifejezés (unigrams)|Frequency|
+|Kifejezés (unigrams)|Gyakoriság|
 |------------|---------------|
 |könyv|3|
 |I|3|
@@ -90,7 +90,7 @@ A numerikus kimenetek a gyakori gépi tanulási módszerek használatát is tesz
     
     Az alapértelmezett bit mérete 10. Számos probléma esetén ez az érték megfelelő. Előfordulhat, hogy a betanítási szövegben az n-gramm szókincs méretétől függően több helyre van szükség az ütközések elkerüléséhez.
     
-1. **N-gramm**esetén adjon meg egy számot, amely meghatározza a képzési szótárhoz hozzáadandó N-g maximális hosszát. Az n-Gram az *n* betűs sorozat, amely egyedi egységként van kezelve.
+1. **N-gramm** esetén adjon meg egy számot, amely meghatározza a képzési szótárhoz hozzáadandó N-g maximális hosszát. Az n-Gram az *n* betűs sorozat, amely egyedi egységként van kezelve.
 
     Ha például a 3, a unigrams, a bigrams és a Trigrams értéket adja meg, a rendszer létrehozza a következőt:.
 
@@ -131,4 +131,4 @@ Az egyes megoldásokban alkalmazandó előfeldolgozási módszerek optimális k�
 
 ## <a name="next-steps"></a>Következő lépések
             
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md)

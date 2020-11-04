@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 10/30/2020
 ms.author: normesta
-ms.openlocfilehash: dc0b620629b5dce651e02e5fe95b0619c1d42a78
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: be440407fb6f4d9715ba80c584af023a5f662394
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131156"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324227"
 ---
 # <a name="premium-tier-for-azure-data-lake-storage"></a>Prémium szintű Azure Data Lake Storage
 
@@ -75,11 +75,11 @@ A következő képen a **Storage-fiók létrehozása** lapon látható ez a beá
 
 A Azure Data Lake Storage prémium szintje a következő régiókban érhető el.
 
-|Region|Redundancia|
+|Régió|Redundancia|
 |--|--|
 |USA keleti régiója|LRS, ZRS|
 |USA 2. keleti régiója|LRS, ZRS|
-|Az USA középső régiója|LRS|
+|USA középső régiója|LRS|
 |USA nyugati régiója|LRS|
 |USA 2. nyugati régiója|LRS, ZRS|
 |USA nyugati középső régiója|LRS|
@@ -103,3 +103,12 @@ A Azure Data Lake Storage prémium szintje a következő régiókban érhető el
 |Kelet-Ausztrália|LRS, ZRS|
 |Délkelet-Ausztrália|LRS|
 |Dél-Brazília|LRS|
+
+## <a name="next-steps"></a>Következő lépések
+
+A prémium szintű Azure Data Lake Storage a kedvenc analitikai szolgáltatásával, például a Azure Databricks, az Azure HDInsight és az Azure szinapszis Analytics használatával. 
+
+- [Oktatóanyag: Azure Data Lake Storage Gen2, Azure Databricks & Spark](data-lake-storage-use-databricks-spark.md) 
+- [Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) A HDInsight jelenleg olyan fiókot támogat, amely a prémium szintű teljesítményt használja, valamint egy olyan HBase-fürtöt, amelynél engedélyezve van a gyorsított írás.
+- [Rövid útmutató: szinapszis-munkaterület létrehozása](../../synapse-analytics/quickstart-create-workspace.md)
+

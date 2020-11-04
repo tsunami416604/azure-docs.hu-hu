@@ -1,7 +1,7 @@
 ---
 title: A szabályzatok megfelelőségének naplózása és kezelése
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja a Azure Policy a beépített szabályzatok használatára a Azure Machine Learninghoz.
+description: Megtudhatja, hogyan használhatja a Azure Policy a beépített szabályzatok használatára Azure Machine Learning annak biztosítására, hogy a munkaterületei megfeleljenek a követelményeknek.
 author: jhirono
 ms.author: jhirono
 ms.date: 09/15/2020
@@ -10,25 +10,25 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: d371ea077b479ad2256e782dadd5d037f53004f2
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 47a97bb8fbe52d3dde84afd77997b179a5c9248d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900140"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325500"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>Azure Machine Learning naplózása és kezelése Azure Policy használatával
 
-A [Azure Policy](/azure/governance/policy) egy irányítási eszköz, amely lehetővé teszi, hogy az Azure-erőforrások megfeleljenek a szabályzatoknak. A Azure Machine Learning használatával a következő házirendeket rendelheti hozzá:
+A [Azure Policy](../governance/policy/index.yml) egy irányítási eszköz, amely lehetővé teszi, hogy az Azure-erőforrások megfeleljenek a szabályzatoknak. A Azure Machine Learning használatával a következő házirendeket rendelheti hozzá:
 
 * **Ügyfél által felügyelt kulcs** : naplózás vagy betartatás, hogy a munkaterületeknek ügyfél által felügyelt kulcsot kell-e használniuk.
 * **Privát hivatkozás** : annak ellenőrzése, hogy a munkaterületek használnak-e privát végpontot a virtuális hálózattal való kommunikációhoz.
 
-A házirendek különböző hatókörökön állíthatók be, például az előfizetés vagy az erőforráscsoport szintjén. További információ: [Azure Policy dokumentáció](/azure/governance/policy/overview).
+A házirendek különböző hatókörökön állíthatók be, például az előfizetés vagy az erőforráscsoport szintjén. További információ: [Azure Policy dokumentáció](../governance/policy/overview.md).
 
 ## <a name="built-in-policies"></a>Beépített szabályzatok
 
-A Azure Machine Learning olyan házirendeket biztosít, amelyek a Azure Machine Learningval kapcsolatos gyakori forgatókönyvekhez használhatók. Ezeket a házirend-definíciókat hozzárendelheti meglévő előfizetéséhez, vagy felhasználhatja azokat a saját egyéni definícióinak létrehozásához. A Azure Machine Learning beépített házirendjeinek teljes listáját a [Azure Machine learning beépített szabályzatai](/azure/governance/policy/samples/built-in-policies#machine-learning)című témakörben tekintheti meg.
+A Azure Machine Learning olyan házirendeket biztosít, amelyek a Azure Machine Learningval kapcsolatos gyakori forgatókönyvekhez használhatók. Ezeket a házirend-definíciókat hozzárendelheti meglévő előfizetéséhez, vagy felhasználhatja azokat a saját egyéni definícióinak létrehozásához. A Azure Machine Learning beépített házirendjeinek teljes listáját a [Azure Machine learning beépített szabályzatai](../governance/policy/samples/built-in-policies.md#machine-learning)című témakörben tekintheti meg.
 
 A Azure Machine Learninghöz kapcsolódó beépített szabályzat-definíciók megtekintéséhez kövesse az alábbi lépéseket:
 
@@ -36,9 +36,9 @@ A Azure Machine Learninghöz kapcsolódó beépített szabályzat-definíciók m
 1. Válassza a __definíciók__ lehetőséget.
 1. A __Típus mezőben__ válassza a _beépített_ lehetőséget, és a __kategóriánál__ válassza a __Machine learning__ lehetőséget.
 
-Itt kiválaszthatja a szabályzat-definíciókat a megtekintéshez. Egy definíció megtekintése közben a __hozzárendelés__ hivatkozásra kattintva hozzárendelheti a szabályzatot egy adott hatókörhöz, és konfigurálhatja a szabályzat paramétereit. További információ: [szabályzatok társítása – portál](/azure/governance/policy/assign-policy-portal).
+Itt kiválaszthatja a szabályzat-definíciókat a megtekintéshez. Egy definíció megtekintése közben a __hozzárendelés__ hivatkozásra kattintva hozzárendelheti a szabályzatot egy adott hatókörhöz, és konfigurálhatja a szabályzat paramétereit. További információ: [szabályzatok társítása – portál](../governance/policy/assign-policy-portal.md).
 
-A házirendeket [Azure PowerShell](/azure/governance/policy/assign-policy-powershell), az [Azure CLI](https://docs.microsoft.com/azure/governance/policy/assign-policy-azurecli)és a [sablonok](/azure/governance/policy/assign-policy-template)használatával is hozzárendelheti.
+A házirendeket [Azure PowerShell](../governance/policy/assign-policy-powershell.md), az [Azure CLI](../governance/policy/assign-policy-azurecli.md)és a [sablonok](../governance/policy/assign-policy-template.md)használatával is hozzárendelheti.
 
 ## <a name="workspaces-encryption-with-customer-managed-key"></a>Munkaterületek titkosítása az ügyfél által felügyelt kulccsal
 
@@ -56,6 +56,6 @@ A szabályzat konfigurálásához állítsa be a Effect paramétert a __naplóz�
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Az Azure Policy dokumentációja](/azure/governance/policy/overview)
+* [Az Azure Policy dokumentációja](../governance/policy/overview.md)
 * [Beépített szabályzatok a Azure Machine Learninghoz](policy-reference.md)
-* [A biztonsági szabályzatok használata a Azure Security Center](/azure/security-center/tutorial-security-policy)
+* [A biztonsági szabályzatok használata a Azure Security Center](../security-center/tutorial-security-policy.md)

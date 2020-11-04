@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 21c57257f9ce5a33585f151d38c16736f94a166c
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 3509530994b07a16fb1f2780fffc6fd27cf8aa7c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998704"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325519"
 ---
 # <a name="how-to-deploy-an-encrypted-inferencing-web-service-preview"></a>Titkosított viszonyítási webszolgáltatás üzembe helyezése (előzetes verzió)
 
-Megtudhatja, hogyan helyezhet üzembe egy lemezkép-besorolási modellt titkosított, [Azure Container instances](https://docs.microsoft.com/azure/container-instances/) (ACI) webszolgáltatásként. A webszolgáltatás egy Docker-tároló képe, amely tartalmazza a modell és a pontozási logikát.
+Megtudhatja, hogyan helyezhet üzembe egy lemezkép-besorolási modellt titkosított, [Azure Container instances](../container-instances/index.yml) (ACI) webszolgáltatásként. A webszolgáltatás egy Docker-tároló képe, amely tartalmazza a modell és a pontozási logikát.
 
 Ebben az útmutatóban Azure Machine Learning szolgáltatást használ a következőhöz:
 
@@ -28,9 +28,9 @@ Ebben az útmutatóban Azure Machine Learning szolgáltatást használ a követk
 > * Titkosított viszonyítási webszolgáltatás üzembe helyezése
 > * Tesztelési célú adatfeldolgozás
 > * Titkosított előrejelzések készítése
-> * Erőforrások felszabadítása
+> * Az erőforrások eltávolítása
 
-Az ACI nagyszerű megoldás a modell üzembe helyezési munkafolyamatának tesztelésére és megismerésére. Skálázható termelési környezetek esetén fontolja meg az Azure Kubernetes Service használatát. További információ: [a telepítés és a hol](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where).
+Az ACI nagyszerű megoldás a modell üzembe helyezési munkafolyamatának tesztelésére és megismerésére. Skálázható termelési környezetek esetén fontolja meg az Azure Kubernetes Service használatát. További információ: [a telepítés és a hol](./how-to-deploy-and-where.md).
 
 A mintában használt titkosítási módszer a [homomorphic titkosítás](https://github.com/Microsoft/SEAL#homomorphic-encryption). A homomorphic titkosítás lehetővé teszi a számítások elvégzését a titkosított adatokon anélkül, hogy hozzá kellene férnie egy titkos (visszafejtési) kulcshoz. A számítások eredményei titkosítottak, és csak a titkos kulcs tulajdonosa által láthatók. 
 
@@ -319,7 +319,7 @@ Titkosított előrejelzések készítése:
     print ( ' Actual Label : ', y_test[sample_index])
     ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A mintában létrehozott webszolgáltatás törlése:
 

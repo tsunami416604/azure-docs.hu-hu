@@ -8,16 +8,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: e34fa4af08be898785acbc6f00aa735c1412ec47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff8ade938433e09c6b9ff9deffe64d8294d96b8c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897561"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325553"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Képek címkézése egy címkézési projektben 
 
-Miután a projekt rendszergazdája [létrehoz egy címkézési projektet](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) a Azure Machine Learningban, a címkézés eszközzel (nyilvános előzetes verzió) gyorsan elő tudja készíteni a Machine learning projekt adatait. Ez a cikk a következőket ismerteti:
+Miután a projekt rendszergazdája [létrehoz egy címkézési projektet](./how-to-create-labeling-projects.md#create-a-labeling-project) a Azure Machine Learningban, a címkézés eszközzel (nyilvános előzetes verzió) gyorsan elő tudja készíteni a Machine learning projekt adatait. Ez a cikk a következőket ismerteti:
 
 > [!div class="checklist"]
 > * A címkézési projektek elérése
@@ -41,7 +41,7 @@ Miután a projekt rendszergazdája [létrehoz egy címkézési projektet](https:
 
 Az adatcímkéző projektek táblázatában válassza a projekt **felirat hivatkozását** .
 
-Megtekintheti a projektre vonatkozó utasításokat. Leírják, hogy milyen típusú adatokra van szüksége, hogyan teheti meg a döntéseket és egyéb releváns információkat. Miután elolvasta ezeket az információkat, a lap tetején válassza a **feladatok**lehetőséget.  Vagy az oldal alján kattintson a **címkézés indítása**lehetőségre.
+Megtekintheti a projektre vonatkozó utasításokat. Leírják, hogy milyen típusú adatokra van szüksége, hogyan teheti meg a döntéseket és egyéb releváns információkat. Miután elolvasta ezeket az információkat, a lap tetején válassza a **feladatok** lehetőséget.  Vagy az oldal alján kattintson a **címkézés indítása** lehetőségre.
 
 ## <a name="common-features-of-the-labeling-task"></a>A címkézési feladat gyakori funkciói
 
@@ -66,7 +66,7 @@ Miután elküldte a címkéket az adatokhoz, az Azure frissíti a lapot egy új 
 
 > [!IMPORTANT]
 > A támogatott gépi tanulás jelenleg nyilvános előzetes verzióban érhető el.
-> Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Előfordulhat, hogy a gépi tanulási algoritmusok aktiválva vannak. Ha ezek az algoritmusok engedélyezve vannak a projektben, a következők jelenhetnek meg:
 
@@ -80,9 +80,9 @@ Különösen a címkézési projekt korai szakaszában a gépi tanulási modell 
 
 ## <a name="tag-images-for-multi-class-classification"></a>Képek címkézése többosztályos besoroláshoz
 
-Ha a projekt "képbesorolás többosztályos" típusú, akkor egyetlen címkét fog rendelni a teljes képhez. Ha bármikor át szeretné tekinteni az utasításokat, lépjen az **utasítások** lapra, és válassza a **részletes utasítások megtekintése**lehetőséget.
+Ha a projekt "képbesorolás többosztályos" típusú, akkor egyetlen címkét fog rendelni a teljes képhez. Ha bármikor át szeretné tekinteni az utasításokat, lépjen az **utasítások** lapra, és válassza a **részletes utasítások megtekintése** lehetőséget.
 
-Ha úgy látja, hogy hibát vétett, miután hozzárendelt egy címkét egy képhez, azt megteheti. A címke törléséhez válassza ki a képen látható "**X**" címkét. Vagy válassza ki a képet, és válasszon egy másik osztályt. Az újonnan kiválasztott érték a korábban alkalmazott címkét váltja fel.
+Ha úgy látja, hogy hibát vétett, miután hozzárendelt egy címkét egy képhez, azt megteheti. A címke törléséhez válassza ki a képen látható " **X** " címkét. Vagy válassza ki a képet, és válasszon egy másik osztályt. Az újonnan kiválasztott érték a korábban alkalmazott címkét váltja fel.
 
 ## <a name="tag-images-for-multi-label-classification"></a>Képek címkézése többcímkés besoroláshoz
 
@@ -96,7 +96,7 @@ Válassza ki a címkét, majd válassza ki a címkét. A címke az összes kijel
 
 ![Az animáció többcímkés folyamatot mutat be](./media/how-to-label-images/multilabel.gif)
 
-A hiba elhárításához kattintson az "**X**" elemre egy adott címke törléséhez, vagy válassza ki a képeket, majd válassza ki a címkét, amely törli a címkét az összes kijelölt rendszerképből. Ez a forgatókönyv itt látható. A "Land" elemre kattintva a rendszer törli a címkét a két kiválasztott rendszerképből.
+A hiba elhárításához kattintson az " **X** " elemre egy adott címke törléséhez, vagy válassza ki a képeket, majd válassza ki a címkét, amely törli a címkét az összes kijelölt rendszerképből. Ez a forgatókönyv itt látható. A "Land" elemre kattintva a rendszer törli a címkét a két kiválasztott rendszerképből.
 
 ![A képernyőképen több kijelölés látható](./media/how-to-label-images/multiple-deselection.png)
 
@@ -133,7 +133,6 @@ Ha címkézett adatok oldalát küldi el, az Azure új címkézetlen adatok hozz
 
 Ha végzett a címkézéssel, válassza ki a nevét a címkézési portál jobb felső sarkában, majd válassza a **kijelentkezés lehetőséget.** Ha nem jelentkezik ki, az Azure-ban az idő kimarad, és az adatait egy másik Labeler rendeli hozzá.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Ismerje meg a [képbesorolási modellek betanítását az Azure-ban](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml)
-
+* Ismerje meg a [képbesorolási modellek betanítását az Azure-ban](./tutorial-train-models-with-aml.md)

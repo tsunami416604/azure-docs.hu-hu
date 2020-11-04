@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Translator, Translator Service, szöveg lefordítása, átbetűzés-szöveg, nyelvfelismerés
-ms.openlocfilehash: 874b3379208f7f716dc421f9825ef6b4d823ff14
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 8250141c2baa92478c5929a300ec7b17b8ed7131
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287070"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322511"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Gyors útmutató: a fordító használatának első lépései
 
@@ -105,7 +105,7 @@ Ha a Translator szolgáltatást a REST használatával hívja meg, meg kell győ
   <th>Leírás</th>
   <tr>
     <td>Hitelesítési fejléc (ek)</td>
-    <td><em>Kötelező kérelem fejléce</em><br/>Tekintse <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>.</td>
+    <td><em>Kötelező kérelem fejléce</em><br/><code>Ocp-Apim-Subscription-Key</code><br/><br/><em>A kötelező kérelem fejléce Cognitive Services erőforrás használata esetén. Nem kötelező, ha fordítói erőforrást használ.</em><br/><code>Ocp-Apim-Subscription-Region</code><br/><br/>Tekintse <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>.</td>
   </tr>
   <tr>
     <td>Content-Type</td>

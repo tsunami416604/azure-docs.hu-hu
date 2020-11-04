@@ -10,17 +10,17 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bbd82f856213bb36e71625eabc8bce9999ccd53f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 532ada430e7ff2ae76eb0cfbc389792bb0d98209
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91289395"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322649"
 ---
 # <a name="connect-to-synapse-sql"></a>Kapcsolódás a szinapszis SQL-hez
 Kapcsolódjon a szinapszis SQL-képességhez az Azure szinapszis Analytics szolgáltatásban.
 
-## <a name="supported-tools-for-sql-on-demand-preview"></a>Támogatott SQL-eszközök az igény szerinti használatra (előzetes verzió)
+## <a name="supported-tools-for-serverless-sql-pool-preview"></a>A kiszolgáló nélküli SQL-készlethez támogatott eszközök (előzetes verzió)
 
 A [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) teljes mértékben támogatott a 1.18.0 verziótól kezdődően. A SSMS részlegesen támogatott a 18,5-es verziótól kezdődően, csak a kapcsolódáshoz és a lekérdezésekhez használható.
 
@@ -31,13 +31,13 @@ A [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) teljes 
 
 ## <a name="find-your-server-name"></a>A kiszolgálónév lekérdezése
 
-A következő példában az SQL-készlet kiszolgálójának neve: showdemoweu.sql.azuresynapse.net.
-Az SQL igény szerinti kiszolgálójának neve a következő példában: showdemoweu-ondemand.sql.azuresynapse.net.
+A következő példában a dedikált SQL-készlet kiszolgálójának neve: showdemoweu.sql.azuresynapse.net.
+A kiszolgáló nélküli SQL-készlet kiszolgálójának neve a következő példában: showdemoweu-ondemand.sql.azuresynapse.net.
 
 A teljes kiszolgálónév lekérdezése:
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
-2. Válassza a **szinapszis-munkaterületek**lehetőséget.
+2. Válassza a **szinapszis-munkaterületek** lehetőséget.
 3. Válassza ki azt a munkaterületet, amelyhez csatlakozni szeretne.
 4. Ugrás az áttekintéshez.
 5. Keresse meg a teljes kiszolgálónevet.
@@ -46,9 +46,9 @@ A teljes kiszolgálónév lekérdezése:
 
 ![Teljes kiszolgálónév](./media/connect-overview/server-connect-example.png)
 
-## <a name="sql-on-demand"></a>**Igény szerinti SQL**
+## <a name="serverless-sql-pool"></a>**kiszolgáló nélküli SQL-készlet**
 
-![Teljes kiszolgálónév SQL igény szerint](./media/connect-overview/server-connect-example-sqlod.png)
+![Teljes kiszolgálónév kiszolgáló nélküli SQL-készlete](./media/connect-overview/server-connect-example-sqlod.png)
 
 ## <a name="supported-drivers-and-connection-strings"></a>Támogatott illesztők és kapcsolati sztringek
 A szinapszis SQL támogatja a [ADO.net](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), az [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), a [php](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)és a [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)használatát. A legújabb verzió és dokumentáció megkereséséhez válasszon egyet az előző illesztőprogramok közül. Ha az illesztőprogramhoz tartozó kapcsolati karakterláncot szeretné automatikusan létrehozni a Azure Portalból, válassza az előző példában az **adatbázis-kapcsolati karakterláncok megjelenítése** lehetőséget. A következő néhány példa bemutatja, hogy néz ki a kapcsolati sztring az egyes illesztők esetében.
@@ -92,7 +92,7 @@ A szinapszis SQL bizonyos beállításokat a kapcsolatok és az objektumok létr
 
 ## <a name="recommendations"></a>Javaslatok
 
-Az **igény szerinti SQL-** lekérdezések végrehajtásához ajánlott eszközök a [Azure Data Studio](get-started-azure-data-studio.md) és az Azure szinapszis Studio.
+A kiszolgáló nélküli **SQL Pool** -lekérdezések végrehajtásához a javasolt eszközök a [Azure Data Studio](get-started-azure-data-studio.md) és az Azure szinapszis Studio.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Visual Studióval végzett csatlakozásról és lekérdezésről lásd: [Lekérdezés a Visual Studióval](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). A hitelesítési lehetőségekkel kapcsolatos további információkért lásd: [hitelesítés a SZINAPSZIS SQL](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)-hez.

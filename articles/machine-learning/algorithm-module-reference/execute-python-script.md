@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: e07e12e82d96b591db324673f4c24b9074128065
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e6a7eabec76cf27044b5d0e13acfc2431cb19b77
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092993"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323759"
 ---
 # <a name="execute-python-script-module"></a>Python parancsfájl-modul végrehajtása
 
@@ -61,7 +61,7 @@ if spec is None:
 > A Excute Python parancsfájl-modulja nem támogatja olyan csomagok telepítését, amelyek olyan további natív kódtárak függenek, mint a "apt-get", például a Java, a PyODBC és az etc. Ennek az az oka, hogy ezt a modult egy egyszerű, csak a Python előre telepített és nem rendszergazdai engedéllyel rendelkező környezetben hajtja végre.  
 
 ## <a name="upload-files"></a>Fájlok feltöltése
-A Python parancsfájl végrehajtása modul támogatja a fájlok feltöltését a [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#upload-file-name--path-or-stream-)használatával.
+A Python parancsfájl végrehajtása modul támogatja a fájlok feltöltését a [Azure Machine learning PYTHON SDK](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#upload-file-name--path-or-stream-)használatával.
 
 Az alábbi példa bemutatja, hogyan tölthet fel egy képfájlt a Python parancsfájl végrehajtása modulban:
 
@@ -114,13 +114,13 @@ A Python-szkript végrehajtása modul olyan minta Python-kódot tartalmaz, amely
 
     Az adatkészlet használata nem kötelező. Akkor használja, ha a Python használatával kívánja előállítani az adatgyűjtést, vagy a Python-kód használatával importálja az adategységeket közvetlenül a modulba.
 
-    Ez a modul támogatja egy második adatkészlet hozzáadását a **Dataset2** -on. Hivatkozzon a Python-szkript második adatkészletére **DataFrame2** .
+    Ez a modul támogatja egy második adatkészlet hozzáadását a **Dataset2** -on. Hivatkozzon a Python-szkript második adatkészletére **DataFrame2**.
 
     Az Azure Machine Learningban tárolt adatkészletek automatikusan a Panda adatkeretbe lesznek konvertálva, ha a modul betöltődik.
 
     ![Python bemeneti térképének végrehajtása](media/module/python-module.png)
 
-4. Ha új Python-csomagokat vagy-kódokat szeretne felvenni, akkor az ezeket az egyéni erőforrásokat tartalmazó tömörített fájlt a **parancsfájl-előfizetői** porthoz kell kötni. Ha a szkript mérete meghaladja a 16 KB-ot, a **parancsfájl** -létrehozási port használatával elkerülhető, hogy a *commandline érték meghaladja a 16597 karakteres korlátot* . 
+4. Ha új Python-csomagokat vagy-kódokat szeretne felvenni, akkor az ezeket az egyéni erőforrásokat tartalmazó tömörített fájlt a **parancsfájl-előfizetői** porthoz kell kötni. Ha a szkript mérete meghaladja a 16 KB-ot, a **parancsfájl** -létrehozási port használatával elkerülhető, hogy a *commandline érték meghaladja a 16597 karakteres korlátot*. 
 
     
     1. A szkriptet és más egyéni erőforrásokat csomagolja egy zip-fájlba.
@@ -315,4 +315,4 @@ Az előre telepített csomagok a következők:
 
 ## <a name="next-steps"></a>Következő lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

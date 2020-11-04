@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 66216cc21101f133281f9adbda96d395661dcbfe
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: d5467537e105225541ffc501d345fd2fa57e0803
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280483"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324564"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Oktatóanyag: végpontok közötti megoldás kiépítése
 
@@ -329,7 +329,7 @@ Ehhez használja a *ProcessDTRoutedData* Azure-függvényt, hogy frissítsen egy
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-c.png" alt-text="Egy részlet a teljes építési forgatókönyvből, grafikus kiemeléssel C, az Azure Digital Twins utáni elemek: a Event Grid és a második Azure-függvény":::
 
 Az alábbi műveleteket hajthatja végre az adatfolyamatok beállításához:
-1. Hozzon létre egy Azure digitális Twins-végpontot, amely összekapcsolja a példányt Event Grid
+1. Hozzon létre egy Event Grid végpontot az Azure Digital Ikrekben, amely összekapcsolja a példányt a Event Grid
 2. Hozzon létre egy útvonalat az Azure Digital Ikreken belül, hogy a Twin Property változási eseményeit elküldi a végpontnak.
 3. Helyezzen üzembe egy Azure Functions alkalmazást, amely a végponton figyeli ( [Event Grid](../event-grid/overview.md)), és ennek megfelelően frissíti a többi ikreket
 4. Futtassa a szimulált eszközt, és az Azure digitális Twins lekérdezésével tekintse meg az élő eredményeket
@@ -354,7 +354,7 @@ az eventgrid topic create -g <your-resource-group> --name <name-for-your-event-g
 
 A parancs kimenete az Ön által létrehozott Event Grid-témakörre vonatkozó információkat tartalmazza.
 
-Következő lépésként hozzon létre egy Azure digitális Twins-végpontot, amely az Event Grid-témakörre mutat. Használja az alábbi parancsot, és szükség szerint töltse ki a helyőrző mezőket:
+Következő lépésként hozzon létre egy Event Grid-végpontot az Azure digitális Twins-ben, amely a példányt az Event Grid-témakörhöz fogja kapcsolni. Használja az alábbi parancsot, és szükség szerint töltse ki a helyőrző mezőket:
 
 ```azurecli-interactive
 az dt endpoint create eventgrid --dt-name <your-Azure-Digital-Twins-instance> --eventgrid-resource-group <your-resource-group> --eventgrid-topic <your-event-grid-topic> --endpoint-name <name-for-your-Azure-Digital-Twins-endpoint>
@@ -372,11 +372,11 @@ Keresse meg a `provisioningState` kimenetben a mezőt, és ellenőrizze, hogy az
 
 :::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="A végpont-lekérdezés eredménye, amely a sikeres provisioningState rendelkező végpontot mutatja":::
 
-Mentse az Event Grid-témakörbe és az Azure Digital Twins-végpontba kapott neveket. Ezeket később fogja használni.
+Mentse az Event Grid-témakörben és a Event Grid-végpontban megadott neveket az Azure digitális Twins-ban. Ezeket később fogja használni.
 
 ### <a name="set-up-route"></a>Útvonal beállítása
 
-Következő lépésként hozzon létre egy Azure digitális Twins-útvonalat, amely az imént létrehozott Azure digitális Twins-végpontnak küld eseményeket.
+Következő lépésként hozzon létre egy Azure Digital Twins-útvonalat, amely az imént létrehozott Event Grid-végpontnak küld eseményeket.
 
 ```azurecli-interactive
 az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> --route-name <name-for-your-Azure-Digital-Twins-route>

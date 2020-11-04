@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: e58e9271ad3b6161a1b2c72509ecc4045b75e1db
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 63089e853be825f9399081f2d39845e22b18ed2a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741981"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325169"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Modell üzembe helyezése egyéni Docker-alapú rendszerkép használatával
 
@@ -42,10 +42,10 @@ Ez a dokumentum két részre oszlik:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Azure Machine Learning-munkaterület. További információt a [Munkaterület létrehozása](how-to-manage-workspace.md) című cikkben talál.
-* A [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). 
-* Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)-vel.
+* A [Azure Machine learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py). 
+* Az [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)-vel.
 * A [Azure Machine learning CLI-bővítménye](reference-azure-machine-learning-cli.md).
-* Az interneten elérhető [Azure Container Registry](/azure/container-registry) vagy más Docker-beállításjegyzék.
+* Az interneten elérhető [Azure Container Registry](../container-registry/index.yml) vagy más Docker-beállításjegyzék.
 * A jelen dokumentum lépései azt feltételezik, hogy a modell üzembe helyezésének részeként már ismeri a __következtetési konfigurációs__ objektum létrehozását és használatát. További információ: [hol kell telepíteni, és hogyan](how-to-deploy-and-where.md).
 
 ## <a name="create-a-custom-base-image"></a>Egyéni alaprendszerkép létrehozása
@@ -61,9 +61,9 @@ Az ebben a szakaszban található információk azt feltételezik, hogy Azure Co
 
     __Önálló tároló-beállításjegyzékben__ tárolt rendszerképek használata esetén konfigurálnia kell egy egyszerű szolgáltatásnevet, amely legalább olvasási hozzáféréssel rendelkezik. Ezután megadhatja az egyszerű szolgáltatás AZONOSÍTÓját (felhasználónevét) és jelszavát, amely a beállításjegyzékből származó lemezképeket használ. Ez alól kivételt képez, ha nyilvánosan elérhetővé teszi a tároló-beállításjegyzéket.
 
-    A privát Azure Container Registry létrehozásával kapcsolatos információkért lásd: [saját tároló beállításjegyzékének létrehozása](/azure/container-registry/container-registry-get-started-azure-cli).
+    A privát Azure Container Registry létrehozásával kapcsolatos információkért lásd: [saját tároló beállításjegyzékének létrehozása](../container-registry/container-registry-get-started-azure-cli.md).
 
-    További információ az egyszerű szolgáltatások Azure Container Registry használatával történő használatáról: [Azure Container Registry hitelesítés az egyszerű szolgáltatásokkal](/azure/container-registry/container-registry-auth-service-principal).
+    További információ az egyszerű szolgáltatások Azure Container Registry használatával történő használatáról: [Azure Container Registry hitelesítés az egyszerű szolgáltatásokkal](../container-registry/container-registry-auth-service-principal.md).
 
 * Azure Container Registry-és képinformációk: adja meg a rendszerkép nevét a használni kívánt felhasználók számára. Például egy `myimage` nevű beállításjegyzékbeli nevű rendszerképet `myregistry` `myregistry.azurecr.io/myimage` a rendszer a rendszerképnek a modell központi telepítésére való használatakor hivatkozik.
 
@@ -91,6 +91,9 @@ A GPU-lemezképek esetében az Azure ML jelenleg a cuda9 és a cuda10 alaprendsz
 
 A CPU-lemezképek Ubuntu-16.04 épülnek. A cuda9 készült GPU-lemezképek NVIDIA/CUDA: 9.0-cudnn7-devel-Ubuntu 16.04 épülnek. A cuda10 tartozó GPU-lemezképek NVIDIA/CUDA: 10.0-cudnn7-devel-Ubuntu 16.04 épülnek.
 <a id="getname"></a>
+
+> [!IMPORTANT]
+> Egyéni Docker-rendszerképek használata esetén ajánlott a csomagok verzióinak rögzítése a reprodukálhatóság jobb biztosítása érdekében.
 
 ### <a name="get-container-registry-information"></a>Tároló beállításjegyzék-adatainak beolvasása
 
@@ -189,22 +192,22 @@ Az ebben a szakaszban ismertetett lépések végigvezetik az egyéni Docker-rend
     Run ID: cda was successful after 2m56s
     ```
 
-A rendszerképek Azure Container Registry használatával történő létrehozásával kapcsolatos további információkért lásd: [tároló lemezképének létrehozása és futtatása Azure Container Registry feladatokkal](https://docs.microsoft.com/azure/container-registry/container-registry-quickstart-task-cli)
+A rendszerképek Azure Container Registry használatával történő létrehozásával kapcsolatos további információkért lásd: [tároló lemezképének létrehozása és futtatása Azure Container Registry feladatokkal](../container-registry/container-registry-quickstart-task-cli.md)
 
-A meglévő lemezképek Azure Container Registryra való feltöltésével kapcsolatos további információkért lásd: [az első rendszerkép leküldése egy privát Docker-tároló beállításjegyzékbe](/azure/container-registry/container-registry-get-started-docker-cli).
+A meglévő lemezképek Azure Container Registryra való feltöltésével kapcsolatos további információkért lásd: [az első rendszerkép leküldése egy privát Docker-tároló beállításjegyzékbe](../container-registry/container-registry-get-started-docker-cli.md).
 
 ## <a name="use-a-custom-base-image"></a>Egyéni alaprendszerkép használata
 
 Egyéni rendszerkép használatához a következő információk szükségesek:
 
-* A __rendszerkép neve__ . Például `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest` a Microsoft által biztosított egyszerű Docker-rendszerkép elérési útja.
+* A __rendszerkép neve__. Például `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest` a Microsoft által biztosított egyszerű Docker-rendszerkép elérési útja.
 
     > [!IMPORTANT]
     > A létrehozott egyéni lemezképek esetében ügyeljen arra, hogy tartalmazza a képhez használt címkéket. Például, ha a rendszerkép egy adott címkével lett létrehozva, például: `:v1` . Ha nem adott meg címkét a rendszerkép létrehozásakor, a rendszer egy címkét `:latest` alkalmazott.
 
 * Ha a rendszerkép egy __privát tárházban__ található, a következő információkra lesz szüksége:
 
-    * A beállításjegyzék __címe__ . Például: `myregistry.azureecr.io`.
+    * A beállításjegyzék __címe__. Például: `myregistry.azureecr.io`.
     * Egy egyszerű szolgáltatásnév __felhasználóneve__ és __jelszava__ , amely olvasási hozzáféréssel rendelkezik a beállításjegyzékhez.
 
     Ha nem rendelkezik ezekkel az információkkal, beszéljen a rendszerképet tartalmazó Azure Container Registry rendszergazdájához.
@@ -231,7 +234,7 @@ További információ: [Azure Machine learning containers](https://github.com/Az
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>Rendszerkép használata az Azure Machine Learning SDK-val
 
-Ha a **munkaterülethez Azure Container Registry** tárolt képet vagy egy **nyilvánosan elérhető tároló-beállításjegyzéket** szeretne használni, állítsa be a következő [környezeti](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) attribútumokat:
+Ha a **munkaterülethez Azure Container Registry** tárolt képet vagy egy **nyilvánosan elérhető tároló-beállításjegyzéket** szeretne használni, állítsa be a következő [környezeti](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) attribútumokat:
 
 + `docker.enabled=True`
 + `docker.base_image`: Állítsa a beállításjegyzékre és a rendszerkép elérési útjára.
@@ -265,7 +268,7 @@ myenv.python.conda_dependencies=conda_dep
 
 Pip-függőségként hozzá kell adnia a azureml (>= 1.0.45) alapértelmezett verzióját. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. A környezet inferencing_stack_version tulajdonságát a "legújabb" értékre kell állítania, ez a webszolgáltatás által igényelt speciális apt-csomagokat fogja telepíteni. 
 
-A környezet meghatározása után használja azt egy [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true) objektummal annak a következtetési környezetnek a meghatározásához, amelyben a modell és a webszolgáltatás futni fog.
+A környezet meghatározása után használja azt egy [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py) objektummal annak a következtetési környezetnek a meghatározásához, amelyben a modell és a webszolgáltatás futni fog.
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -294,7 +297,7 @@ A Python-környezet testreszabásával kapcsolatos további információkért l�
 > [!IMPORTANT]
 > A Machine Learning CLI jelenleg a munkaterülethez vagy a nyilvánosan elérhető adattárakhoz tartozó Azure Container Registry képeket is használhat. Önálló privát beállításjegyzékből származó lemezképeket nem használhat.
 
-Mielőtt a Machine Learning parancssori felület használatával telepítené a modellt, hozzon létre egy [környezetet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) , amely az egyéni rendszerképet használja. Ezután hozzon létre egy következtetési konfigurációs fájlt, amely hivatkozik a környezetre. A környezetet közvetlenül is megadhatja a következtetési konfigurációs fájlban. A következő JSON-dokumentum bemutatja, hogyan hivatkozhat egy rendszerképre egy nyilvános tároló beállításjegyzékében. Ebben a példában a környezet beágyazottként van definiálva:
+Mielőtt a Machine Learning parancssori felület használatával telepítené a modellt, hozzon létre egy [környezetet](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) , amely az egyéni rendszerképet használja. Ezután hozzon létre egy következtetési konfigurációs fájlt, amely hivatkozik a környezetre. A környezetet közvetlenül is megadhatja a következtetési konfigurációs fájlban. A következő JSON-dokumentum bemutatja, hogyan hivatkozhat egy rendszerképre egy nyilvános tároló beállításjegyzékében. Ebben a példában a környezet beágyazottként van definiálva:
 
 ```json
 {

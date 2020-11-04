@@ -8,23 +8,23 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 11/29/2017
-ms.openlocfilehash: e422c1a7b333254ed49b53bcdf2d10e65f2846e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cfdeaee863c8e11a76ac5842ae6c35d370e2ae2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91343176"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322552"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>A modell eredményeinek értelmezése Azure Machine Learning Studio (klasszikus)
 
-**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
+**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Ez a témakör bemutatja, hogyan jelenítheti meg és értelmezheti az előrejelzési eredményeket Azure Machine Learning Studio (klasszikus). Miután betanított egy modellt, és elvégezte az előrejelzések megtételét ("a modell értékelése"), meg kell ismernie és el kell értelmezni az előrejelzés eredményét.
 
 A gépi tanulási modellek négy fő típusa Azure Machine Learning Studio (klasszikus):
 
-* Osztályozás
+* Besorolás
 * Fürtözés
 * Regresszió
 * Ajánló rendszerek
@@ -41,7 +41,7 @@ A modellek kiértékeléséről a [modell teljesítményének kiértékelését]
 
 Ha új ML Studio (klasszikus), [Ismerje meg, hogyan hozhat létre egy egyszerű kísérletet](create-experiment.md).
 
-## <a name="classification"></a>Osztályozás
+## <a name="classification"></a>Besorolás
 A besorolási problémák két alkategóriája van:
 
 * Problémák csak két osztállyal (kétosztályos vagy bináris besorolású)
@@ -80,7 +80,7 @@ Miután megértette az előrejelzési eredményeket, és megítélte a hangot, a
 
 3. ábra Az írisz kétosztályos besorolási problémás kísérletének pontozása
 
-Most be kell állítania a webszolgáltatás bemenetét és kimenetét. A bemenet a [pontszám modell][score-model]megfelelő bemeneti portja, amely az írisz virág funkcióinak bemenete. A kimenet kiválasztása attól függ, hogy érdekli-e az előre jelzett osztály (a mutató címkéje), a kiszámított valószínűség vagy mindkettő. Ebben a példában feltételezzük, hogy mindkét esetben érdekli Önt. A kívánt kimeneti oszlopok kiválasztásához használjon egy [Select oszlopot az adatkészlet][select-columns] modulban. Kattintson [az Oszlopok kiválasztása az adatkészletben][select-columns]lehetőségre, kattintson az **oszlop kiválasztásának indítása**elemre, és válassza a pontozott **címkék** és a **mutatós valószínűségek**lehetőséget. Miután beállította az [oszlopok kiválasztását az adatkészletben][select-columns] , és újra futtatja, készen kell állnia a pontozási kísérlet webszolgáltatásként való közzétételére a **webszolgáltatás közzététele**lehetőségre kattintva. A végső kísérlet a 4. ábrára hasonlít.
+Most be kell állítania a webszolgáltatás bemenetét és kimenetét. A bemenet a [pontszám modell][score-model]megfelelő bemeneti portja, amely az írisz virág funkcióinak bemenete. A kimenet kiválasztása attól függ, hogy érdekli-e az előre jelzett osztály (a mutató címkéje), a kiszámított valószínűség vagy mindkettő. Ebben a példában feltételezzük, hogy mindkét esetben érdekli Önt. A kívánt kimeneti oszlopok kiválasztásához használjon egy [Select oszlopot az adatkészlet][select-columns] modulban. Kattintson [az Oszlopok kiválasztása az adatkészletben][select-columns]lehetőségre, kattintson az **oszlop kiválasztásának indítása** elemre, és válassza a pontozott **címkék** és a **mutatós valószínűségek** lehetőséget. Miután beállította az [oszlopok kiválasztását az adatkészletben][select-columns] , és újra futtatja, készen kell állnia a pontozási kísérlet webszolgáltatásként való közzétételére a **webszolgáltatás közzététele** lehetőségre kattintva. A végső kísérlet a 4. ábrára hasonlít.
 
 ![Az írisz kétosztályos besorolási kísérlet](./media/interpret-model-results/4.png)
 
@@ -107,7 +107,7 @@ A betanítási adatokban 16 funkció van kinyerve a kézzel írt levelekből sz�
 
 6. ábra A betűk felismerése többosztályos besorolással kapcsolatos probléma
 
-A [pontszám modell][score-model] modul eredményeinek megjelenítéséhez kattintson a [pontszám modell][score-model] modul kimeneti portjára, majd a vizualizáció elemre **, a**7. ábrán látható módon kell látnia a tartalmat.
+A [pontszám modell][score-model] modul eredményeinek megjelenítéséhez kattintson a [pontszám modell][score-model] modul kimeneti portjára, majd a vizualizáció elemre **, a** 7. ábrán látható módon kell látnia a tartalmat.
 
 ![Pontszám modell eredményei](./media/interpret-model-results/7.png)
 
@@ -185,7 +185,7 @@ Hozzon létre egy fürtszolgáltatási kísérletet a szivárványhártya-adatha
 
 A fürtözés eltér a besorolástól, hogy a betanítási adatkészletben ne legyenek saját maguk az alapigazságok feliratai. Csoportosítja a betanítási adatkészlet példányait különálló fürtökre. A betanítási folyamat során a modell felcímkézi a bejegyzéseket úgy, hogy megtanítja a funkcióik közötti különbségeket. Ezt követően a betanított modell a jövőbeli bejegyzések további besorolására is használható. Az eredmény két részből áll, ezért egy fürtözési problémán belül érdeklik. Az első rész a betanítási adatkészletet jelöli, a második pedig egy új adathalmazt osztályoz a betanított modellel.
 
-Az eredmény első részének **megjelenítéséhez**kattintson a [vonat fürtözési modell][train-clustering-model] bal oldali kimeneti portjára, majd kattintson a vizualizáció lehetőségre. A vizualizáció a 16. ábrán látható.
+Az eredmény első részének **megjelenítéséhez** kattintson a [vonat fürtözési modell][train-clustering-model] bal oldali kimeneti portjára, majd kattintson a vizualizáció lehetőségre. A vizualizáció a 16. ábrán látható.
 
 ![Fürtözés eredménye](./media/interpret-model-results/16.png)
 
@@ -247,7 +247,7 @@ Az ajánló rendszer tipikus Azure Machine Learning Studio (klasszikus) kísérl
 
 **Egy adott felhasználó és tétel minősítésének előrejelzése**
 
-Ha kijelöli a **minősítés előrejelzését** az **Ajánlói előrejelzési típus**alatt, arra kéri az ajánlót, hogy Jósolja meg az adott felhasználó és elem minősítését. A [pontszám Matchbox-ajánlati][score-matchbox-recommender] kimenetének vizualizációja a 21. ábrán látható.
+Ha kijelöli a **minősítés előrejelzését** az **Ajánlói előrejelzési típus** alatt, arra kéri az ajánlót, hogy Jósolja meg az adott felhasználó és elem minősítését. A [pontszám Matchbox-ajánlati][score-matchbox-recommender] kimenetének vizualizációja a 21. ábrán látható.
 
 ![Az Ajánlói rendszerek pontszámának eredményei – értékelés előrejelzése](./media/interpret-model-results/21.png)
 
@@ -257,7 +257,7 @@ Az első két oszlop a bemeneti adatok által megadott felhasználó-tétel pár
 
 **Elemek ajánlása egy adott felhasználónak**
 
-Ha az **Ajánlói előrejelzési típus** **elemre** kattint, az ajánló rendszer javaslatot tesz az elemek egy adott felhasználóhoz való ajánlására. Az ebben a forgatókönyvben kiválasztott utolsó paraméter *ajánlott elem kiválasztása*. A **névleges elemek (modell kiértékelése)** lehetőségeit elsősorban a betanítási folyamat során a modell kiértékelésére használják. Ebben az előrejelzési szakaszban az **összes elemet**választjuk. A [pontszám Matchbox-ajánlati][score-matchbox-recommender] kimenetének vizualizációja a 22. ábrán látható.
+Ha az **Ajánlói előrejelzési típus** **elemre** kattint, az ajánló rendszer javaslatot tesz az elemek egy adott felhasználóhoz való ajánlására. Az ebben a forgatókönyvben kiválasztott utolsó paraméter *ajánlott elem kiválasztása*. A **névleges elemek (modell kiértékelése)** lehetőségeit elsősorban a betanítási folyamat során a modell kiértékelésére használják. Ebben az előrejelzési szakaszban az **összes elemet** választjuk. A [pontszám Matchbox-ajánlati][score-matchbox-recommender] kimenetének vizualizációja a 22. ábrán látható.
 
 ![Az ajánlórendszer pontszámának eredményei – tételre vonatkozó javaslat](./media/interpret-model-results/22.png)
 
@@ -267,7 +267,7 @@ A hat oszlop első eleme a megadott felhasználói azonosítókat jelöli, amely
 
 **Egy adott felhasználóhoz kapcsolódó felhasználók keresése**
 
-A **kapcsolódó felhasználók** kiválasztásával az **Ajánlói előrejelzési típus**szerint az ajánló rendszer megkeresi a kapcsolódó felhasználókat egy adott felhasználóhoz. A kapcsolódó felhasználók a hasonló beállításokkal rendelkező felhasználók. A forgatókönyvben kiválasztott utolsó paraméter a *kapcsolódó felhasználó kijelölése*. A **felhasználóktól, akik a minősítéssel rendelkező elemeket (a modell kiértékelése esetében)** elsődlegesen a modell kiértékelésére használják a betanítási folyamat során. Az előrejelzési fázis **minden felhasználója** közül választhat. A [pontszám Matchbox-ajánlati][score-matchbox-recommender] kimenetének vizualizációja a 23. ábrát hasonlítja.
+A **kapcsolódó felhasználók** kiválasztásával az **Ajánlói előrejelzési típus** szerint az ajánló rendszer megkeresi a kapcsolódó felhasználókat egy adott felhasználóhoz. A kapcsolódó felhasználók a hasonló beállításokkal rendelkező felhasználók. A forgatókönyvben kiválasztott utolsó paraméter a *kapcsolódó felhasználó kijelölése*. A **felhasználóktól, akik a minősítéssel rendelkező elemeket (a modell kiértékelése esetében)** elsődlegesen a modell kiértékelésére használják a betanítási folyamat során. Az előrejelzési fázis **minden felhasználója** közül választhat. A [pontszám Matchbox-ajánlati][score-matchbox-recommender] kimenetének vizualizációja a 23. ábrát hasonlítja.
 
 ![Az ajánlott rendszerszintű felhasználók pontszámának eredménye](./media/interpret-model-results/23.png)
 
@@ -277,7 +277,7 @@ A hat oszlop első része a megadott felhasználói azonosítókat jeleníti meg
 
 **Egy adott elemhez kapcsolódó elemek keresése**
 
-A **kapcsolódó elemek** kiválasztásával az **Ajánlói előrejelzési típus**alatt megkérdezi, hogy az ajánló rendszer megkeresse-e az adott elemhez kapcsolódó elemeket. A kapcsolódó elemek azok az elemek, amelyek valószínűleg ugyanazt a felhasználót szeretik. A forgatókönyvben kiválasztott utolsó paraméter a *kapcsolódó elem kijelölése*. A **névleges elemek (modell kiértékelése)** lehetőségeit elsősorban a betanítási folyamat során a modell kiértékelésére használják. Az előrejelzési fázis **összes elemét** kiválasztjuk. A [pontszám Matchbox-ajánlati][score-matchbox-recommender] kimenetének vizualizációja a 24. ábrán látható.
+A **kapcsolódó elemek** kiválasztásával az **Ajánlói előrejelzési típus** alatt megkérdezi, hogy az ajánló rendszer megkeresse-e az adott elemhez kapcsolódó elemeket. A kapcsolódó elemek azok az elemek, amelyek valószínűleg ugyanazt a felhasználót szeretik. A forgatókönyvben kiválasztott utolsó paraméter a *kapcsolódó elem kijelölése*. A **névleges elemek (modell kiértékelése)** lehetőségeit elsősorban a betanítási folyamat során a modell kiértékelésére használják. Az előrejelzési fázis **összes elemét** kiválasztjuk. A [pontszám Matchbox-ajánlati][score-matchbox-recommender] kimenetének vizualizációja a 24. ábrán látható.
 
 ![Az Ajánlói rendszerek által kapcsolódó elemek eredményei](./media/interpret-model-results/24.png)
 
@@ -304,10 +304,10 @@ A webszolgáltatás futtatásakor a visszaadott eredmény a 26. ábrára hasonl�
 26. ábra. Webszolgáltatás-szolgáltatás eredménye – probléma
 
 <!-- Module References -->
-[assign-to-clusters]: https://msdn.microsoft.com/library/azure/eed3ee76-e8aa-46e6-907c-9ca767f5c114/
-[execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[score-matchbox-recommender]: https://msdn.microsoft.com/library/azure/55544522-9a10-44bd-884f-9a91a9cec2cd/
-[score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
-[train-clustering-model]: https://msdn.microsoft.com/library/azure/bb43c744-f7fa-41d0-ae67-74ae75da3ffd/
-[train-matchbox-recommender]: https://msdn.microsoft.com/library/azure/fa4aa69d-2f1c-4ba4-ad5f-90ea3a515b4c/
+[assign-to-clusters]: /azure/machine-learning/studio-module-reference/assign-data-to-clusters
+[execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script
+[select-columns]: /azure/machine-learning/studio-module-reference/select-columns-in-dataset
+[score-matchbox-recommender]: /azure/machine-learning/studio-module-reference/score-matchbox-recommender
+[score-model]: /azure/machine-learning/studio-module-reference/score-model
+[train-clustering-model]: /azure/machine-learning/studio-module-reference/train-clustering-model
+[train-matchbox-recommender]: /azure/machine-learning/studio-module-reference/train-matchbox-recommender

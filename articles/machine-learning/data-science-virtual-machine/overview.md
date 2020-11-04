@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 04/02/2020
-ms.openlocfilehash: 2bfcdfcb01e7908c199054e793d82cdfa1b726c7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7bcee0f571fe42e4c00499f188e35d0e0ff2ebe7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88816337"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322503"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Mi a Linux és a Windows rendszerhez készült Azure Data Science Virtual Machine?
 
@@ -28,7 +28,7 @@ A DSVM a következő címen érhető el:
 
 ## <a name="comparison-with-azure-machine-learning"></a>Összehasonlítás a Azure Machine Learning
 
-A DSVM egy testreszabott virtuálisgép-rendszerkép az adatelemzéshez, de a [Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) (AzureML) egy végpontok közötti platform, amely a következőket foglalja magában:
+A DSVM egy testreszabott virtuálisgép-rendszerkép az adatelemzéshez, de a [Azure Machine learning](../overview-what-is-azure-ml.md) (AzureML) egy végpontok közötti platform, amely a következőket foglalja magában:
 
 + Teljes körűen felügyelt számítás
   + Compute Instances (Számítási példányok)
@@ -44,12 +44,12 @@ A DSVM egy testreszabott virtuálisgép-rendszerkép az adatelemzéshez, de a [A
 
 ### <a name="comparison-with-azureml-compute-instances"></a>Összehasonlítás AzureML számítási példányokkal
 
-[Azure Machine learning számítási példányok](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance) teljes mértékben konfigurált és __felügyelt__ virtuálisgép-rendszerképek, míg a DSVM egy nem __felügyelt__ virtuális gép.
+[Azure Machine learning számítási példányok](../concept-compute-instance.md) teljes mértékben konfigurált és __felügyelt__ virtuálisgép-rendszerképek, míg a DSVM egy nem __felügyelt__ virtuális gép.
 
 A két termék-ajánlat közötti fő különbségek a következők:
 
 
-|Szolgáltatás |Adattudomány<br>VM |AzureML<br>Számítási példány  | 
+|Funkció |Adattudomány<br>VM |AzureML<br>Számítási példány  | 
 |---------|---------|---------|
 | Teljes körűen felügyelt | Nem        | Igen        |
 |Nyelvi támogatás     |  Python, R, Julia, SQL, C#,<br> Java, Node.js, F #       | Python és R        |
@@ -92,7 +92,7 @@ A DSVM egy igény szerinti környezetet hoz létre egy konzisztens beállításs
 
 A Windows-és Linux-Dsvm található eszközök teljes listáját [itt](tools-included.md)találja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ ezekről a cikkekről:
 

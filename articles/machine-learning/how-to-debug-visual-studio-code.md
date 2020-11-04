@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: 374cc79b42d2dcaed0312c0ec205073906ce1fc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e042fd62d99c9fdf88a144c93739bf1f3f08a78c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530674"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325589"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interaktív hibakeresés a Visual Studio Code-ban
 
@@ -38,7 +38,7 @@ A Azure Machine Learning bővítmény használatával ellenőrizheti, futtathatj
 > Windows rendszeren a [Docker konfigurálása Linux-tárolók használatára](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
 
 > [!TIP]
-> A Windows esetében, bár nem szükséges, erősen ajánlott a [Docker használata a Linux Windows alrendszerével (WSL) 2](https://docs.microsoft.com/windows/wsl/tutorials/wsl-containers#install-docker-desktop).
+> A Windows esetében, bár nem szükséges, erősen ajánlott a [Docker használata a Linux Windows alrendszerével (WSL) 2](/windows/wsl/tutorials/wsl-containers#install-docker-desktop).
 
 > [!IMPORTANT]
 > A kísérlet helyi futtatása előtt győződjön meg arról, hogy a Docker fut.
@@ -48,17 +48,17 @@ A Azure Machine Learning bővítmény használatával ellenőrizheti, futtathatj
 1. A VS Code-ban nyissa meg a Azure Machine Learning bővítmény nézetet.
 1. Bontsa ki a munkaterületet tartalmazó előfizetés csomópontot. Ha még nem rendelkezik ilyennel, [létrehozhat egy Azure Machine learning munkaterületet](how-to-manage-resources-vscode.md#create-a-workspace) a bővítmény használatával.
 1. Bontsa ki a munkaterület csomópontot.
-1. Kattintson a jobb gombbal a **kísérletek** csomópontra, majd válassza a **kísérlet létrehozása**lehetőséget. Ha megjelenik a kérdés, adja meg a kísérlet nevét.
-1. Bontsa ki a **kísérletek** csomópontot, kattintson a jobb gombbal a futtatni kívánt kísérletre, és válassza a **kísérlet futtatása**parancsot.
-1. A kísérlet futtatásához válassza a **helyileg**lehetőséget a lehetőségek listájából.
-1. **Első alkalommal csak Windows rendszeren használható**. Amikor a rendszer kéri, hogy engedélyezze a fájlmegosztást, válassza az **Igen**lehetőséget. A fájlmegosztás engedélyezése lehetővé teszi a Docker számára a parancsfájlt tartalmazó könyvtár csatlakoztatását a tárolóhoz. Emellett lehetővé teszi a Docker számára a naplók és kimenetek tárolását a rendszer egy ideiglenes könyvtárába.
+1. Kattintson a jobb gombbal a **kísérletek** csomópontra, majd válassza a **kísérlet létrehozása** lehetőséget. Ha megjelenik a kérdés, adja meg a kísérlet nevét.
+1. Bontsa ki a **kísérletek** csomópontot, kattintson a jobb gombbal a futtatni kívánt kísérletre, és válassza a **kísérlet futtatása** parancsot.
+1. A kísérlet futtatásához válassza a **helyileg** lehetőséget a lehetőségek listájából.
+1. **Első alkalommal csak Windows rendszeren használható**. Amikor a rendszer kéri, hogy engedélyezze a fájlmegosztást, válassza az **Igen** lehetőséget. A fájlmegosztás engedélyezése lehetővé teszi a Docker számára a parancsfájlt tartalmazó könyvtár csatlakoztatását a tárolóhoz. Emellett lehetővé teszi a Docker számára a naplók és kimenetek tárolását a rendszer egy ideiglenes könyvtárába.
 1. A kísérlet hibakereséséhez válassza az **Igen** lehetőséget. Egyéb esetben a **Nem** választógombot jelölje be. A nem gombra kattintva helyileg futtathatja a kísérletet a hibakeresőhöz való csatolás nélkül.
 1. A futtatási konfiguráció létrehozásához válassza az **új futtatási konfiguráció létrehozása** lehetőséget. A futtatási konfiguráció határozza meg a futtatni kívánt parancsfájlt, a függőségeket és a használt adatkészleteket. Ha már rendelkezik ilyennel, válassza ki a legördülő menüből.
     1. Válassza ki a környezetet. Bármelyik [Azure Machine learning](resource-curated-environments.md) közül választhat, vagy létrehozhatja a sajátját.
     1. Adja meg a futtatni kívánt parancsfájl nevét. Az elérési út a VS Code-ban megnyitott könyvtárhoz képest relatív.
     1. Válassza ki, hogy Azure Machine Learning adatkészletet kíván-e használni, vagy sem. A bővítmény használatával létrehozhat [Azure Machine learning adatkészleteket](how-to-manage-resources-vscode.md#create-dataset) .
-    1. Debugpy szükséges ahhoz, hogy a hibakeresőt a kísérletet futtató tárolóhoz csatolja. Ha függőségként szeretné hozzáadni a debugpy, válassza a **Debugpy hozzáadása**elemet. Ellenkező esetben válassza a **kihagyás**lehetőséget. Ha nem ad hozzá debugpy, a rendszer a hibakeresőhöz való csatolás nélkül futtatja a kísérletet.
-    1. A szerkesztőben megnyílik a futtatási konfigurációs beállításokat tartalmazó konfigurációs fájl. Ha elégedett a beállításokkal, válassza a **kísérlet küldése**lehetőséget. Azt is megteheti, hogy a menüsávban megnyitja a parancssort (**> a parancs-paletta megtekintése**), és a `Azure ML: Submit experiment` parancsot a szövegmezőbe írja be.
+    1. Debugpy szükséges ahhoz, hogy a hibakeresőt a kísérletet futtató tárolóhoz csatolja. Ha függőségként szeretné hozzáadni a debugpy, válassza a **Debugpy hozzáadása** elemet. Ellenkező esetben válassza a **kihagyás** lehetőséget. Ha nem ad hozzá debugpy, a rendszer a hibakeresőhöz való csatolás nélkül futtatja a kísérletet.
+    1. A szerkesztőben megnyílik a futtatási konfigurációs beállításokat tartalmazó konfigurációs fájl. Ha elégedett a beállításokkal, válassza a **kísérlet küldése** lehetőséget. Azt is megteheti, hogy a menüsávban megnyitja a parancssort ( **> a parancs-paletta megtekintése** ), és a `Azure ML: Submit experiment` parancsot a szövegmezőbe írja be.
 1. Miután elküldte a kísérletet, a parancsfájlt tartalmazó Docker-rendszerkép és a futtatási konfigurációban megadott konfigurációk jönnek létre.
 
     A Docker-rendszerkép létrehozási folyamatának megkezdése után a fájl tartalma a `60_control_log.txt` kimeneti konzolra kerül a vs Code-ban.
@@ -73,7 +73,7 @@ A Azure Machine Learning bővítmény használatával ellenőrizheti, futtathatj
 
 Ezen a ponton át kell lépnie a kódot, és hibakeresést végezhet a VS Code használatával.
 
-Ha bármikor le szeretné mondani a futtatást, kattintson a jobb gombbal a Futtatás csomópontra, és válassza a **Futtatás megszakítása**parancsot.
+Ha bármikor le szeretné mondani a futtatást, kattintson a jobb gombbal a Futtatás csomópontra, és válassza a **Futtatás megszakítása** parancsot.
 
 A távoli kísérletekhez hasonlóan a Futtatás csomópont is kiterjeszthető a naplók és kimenetek vizsgálatához.
 
@@ -86,10 +86,10 @@ Bizonyos esetekben előfordulhat, hogy interaktívan kell hibakeresést végezni
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-* Egy __Azure Machine learning munkaterület__ , amely __Azure-Virtual Network__használatára van konfigurálva.
+* Egy __Azure Machine learning munkaterület__ , amely __Azure-Virtual Network__ használatára van konfigurálva.
 * Egy __Azure Machine learning folyamat__ , amely a folyamat lépéseinek részeként Python-parancsfájlokat használ. Például egy PythonScriptStep.
 * Egy Azure Machine Learning számítási fürt, amely __a virtuális hálózaton__ található, és amelyet __a folyamat a képzéshez használ__.
-* A __virtuális hálózatban__található __fejlesztési környezet__ . A fejlesztési környezet a következők egyike lehet:
+* A __virtuális hálózatban__ található __fejlesztési környezet__ . A fejlesztési környezet a következők egyike lehet:
 
   * Egy Azure-beli virtuális gép a virtuális hálózaton
   * Jegyzetfüzet virtuális gép számítási példánya a virtuális hálózaton
@@ -292,7 +292,7 @@ Mentse az `ip_address` értéket. A következő szakaszban használatos.
 
 1. Ha úgy szeretné konfigurálni a VS Code-t, hogy kommunikáljon a hibakeresőt futtató Azure Machine Learning számítási feladatokkal, hozzon létre egy új hibakeresési konfigurációt:
 
-    1. A VS Code-ból válassza a __hibakeresés__ menüt, majd válassza a __konfigurációk megnyitása__lehetőséget. Megnyílik egy __launch.js__ nevű fájl.
+    1. A VS Code-ból válassza a __hibakeresés__ menüt, majd válassza a __konfigurációk megnyitása__ lehetőséget. Megnyílik egy __launch.js__ nevű fájl.
 
     1. A fájl __launch.js__ keresse meg a benne található sort `"configurations": [` , majd szúrja be a következő szöveget. Módosítsa a `"host": "<IP-ADDRESS>"` bejegyzést a naplókban az előző szakaszban visszaadott IP-címhez. Módosítsa a `"localRoot": "${workspaceFolder}/code/step"` bejegyzést egy helyi könyvtárba, amely a hibakereső parancsfájl másolatát tartalmazza:
 
@@ -327,7 +327,7 @@ Mentse az `ip_address` értéket. A következő szakaszban használatos.
 
 1. Nyissa meg a VS Code-ot, és nyissa meg a parancsfájl helyi példányát.
 2. Állítsa be azokat a töréspontokat, amelyeken a parancsfájlt le szeretné állítani a csatolása után.
-3. Amíg az alárendelt folyamat futtatja a szkriptet, és `Timeout for debug connection` megjelenik a naplókban, használja az F5 billentyűt, vagy válassza a __hibakeresés__lehetőséget. Ha a rendszer kéri, válassza a __Azure Machine learning számítás: Távoli hibakeresési__ konfiguráció elemet. Azt is megteheti, hogy kijelöli a hibakeresés ikont az oldalsó sávon, a __Azure Machine learning: Távoli hibakeresési__ bejegyzést a hibakeresés legördülő menüből, majd a zöld nyíl használatával csatlakoztatja a hibakeresőt.
+3. Amíg az alárendelt folyamat futtatja a szkriptet, és `Timeout for debug connection` megjelenik a naplókban, használja az F5 billentyűt, vagy válassza a __hibakeresés__ lehetőséget. Ha a rendszer kéri, válassza a __Azure Machine learning számítás: Távoli hibakeresési__ konfiguráció elemet. Azt is megteheti, hogy kijelöli a hibakeresés ikont az oldalsó sávon, a __Azure Machine learning: Távoli hibakeresési__ bejegyzést a hibakeresés legördülő menüből, majd a zöld nyíl használatával csatlakoztatja a hibakeresőt.
 
     Ezen a ponton a VS Code csatlakozik a debugpy a számítási csomóponton, és a korábban beállított törésponton leáll. Most már megkezdheti a kód futtatását, megtekintheti a változókat stb.
 
@@ -339,7 +339,7 @@ Mentse az `ip_address` értéket. A következő szakaszban használatos.
 Bizonyos esetekben előfordulhat, hogy interaktívan kell hibakeresést végeznie a modell üzembe helyezésében található Python-kóddal. Ha például a bejegyzési parancsfájl meghibásodik, és az ok nem határozható meg további naplózással. A VS Code és a debugpy használatával a Docker-tárolón belül futó kód is csatolható.
 
 > [!IMPORTANT]
-> Ez a hibakeresési módszer nem működik `Model.deploy()` helyi modell használatakor és `LocalWebservice.deploy_configuration` üzembe helyezése esetén. Ehelyett létre kell hoznia egy rendszerképet a [Model. package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-) metódus használatával.
+> Ez a hibakeresési módszer nem működik `Model.deploy()` helyi modell használatakor és `LocalWebservice.deploy_configuration` üzembe helyezése esetén. Ehelyett létre kell hoznia egy rendszerképet a [Model. package ()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-) metódus használatával.
 
 A helyi webszolgáltatás üzembe helyezéséhez a helyi rendszeren működő Docker-telepítés szükséges. A Docker használatával kapcsolatos további információkért lásd a [Docker dokumentációját](https://docs.docker.com/). Vegye figyelembe, hogy a számítási példányok használatakor a Docker már telepítve van.
 
@@ -355,7 +355,7 @@ A helyi webszolgáltatás üzembe helyezéséhez a helyi rendszeren működő Do
 
 1. Ha a VS Code-t úgy szeretné konfigurálni, hogy kommunikáljon a Docker-lemezképpel, hozzon létre egy új hibakeresési konfigurációt:
 
-    1. A VS Code-ból válassza a __hibakeresés__ menüt, majd válassza a __konfigurációk megnyitása__lehetőséget. Megnyílik egy __launch.js__ nevű fájl.
+    1. A VS Code-ból válassza a __hibakeresés__ menüt, majd válassza a __konfigurációk megnyitása__ lehetőséget. Megnyílik egy __launch.js__ nevű fájl.
 
     1. A fájl __launch.js__ keresse meg a tartalmazó sort `"configurations": [` , majd szúrja be a következő szöveget:
 

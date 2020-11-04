@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 654c1beb0f8f544219ed802cab92f06055d70960
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: d253699199617489947dd95a44d9bcd1eff17334
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628677"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325410"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Jupyter-jegyzetfüzetek futtatása a munkaterületen
 
@@ -80,11 +80,11 @@ A terminál elérése:
 1. Válasszon ki egy **számítási** célt, vagy hozzon létre egy újat, és várjon, amíg fut.
 1. Válassza a **nyitott terminál** ikont.
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Új fájl létrehozása":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Terminál megnyitása":::
 
 1. Ha nem látja az ikont, válassza a **...** lehetőséget a számítási cél jobb oldalán, majd válassza a **terminál megnyitása** lehetőséget.
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Új fájl létrehozása":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Terminál megnyitása a következőből:...":::
 
 
 További információ a [git-adattáraknak a munkaterület-fájlrendszerbe való klónozásáról](concept-train-model-git-integration.md#clone-git-repositories-into-your-workspace-file-system).
@@ -116,7 +116,7 @@ Az aktuális nézet kibontásához használja a fókusz módot, így az aktív l
 1. A terminál ablak eszköztárán válassza a **fókusz mód** lehetőséget a fókusz üzemmód bekapcsolásához. Az ablak szélessége függően ez az eszköztár. **..** menüpontjában lehet.
 1. Fókusz módban a normál **nézet** lehetőségre kattintva térjen vissza a normál nézetbe.
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Új fájl létrehozása":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Fókusz mód/normál nézet váltása":::
 
 
 ### <a name="use-intellisense"></a>IntelliSense használata
@@ -136,7 +136,8 @@ A jegyzetfüzetek létrehozása során általában az adatfeltáráshoz vagy a h
 1. Futtassa az összes jegyzetfüzet-cellát.
 1. Válassza ki azt a cellát, amely tartalmazza az új jegyzetfüzet futtatásához használni kívánt kódot. Például egy kísérletet elküldő kód, vagy esetleg a modellt regisztráló kód.
 1. Válassza a cella eszköztárán megjelenő **összegyűjtési** ikont.
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="Új fájl létrehozása" jegyzetfüzet nevét.  
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="Képernyőfelvétel: a gyűjtés ikon kiválasztása":::
+1. Adja meg az új "összegyűjtött" jegyzetfüzet nevét.  
 
 Az új jegyzetfüzet csak programkódot tartalmaz, és az összes cellának ugyanazokat az eredményeket kell megadnia, mint a begyűjtéshez kiválasztott cella.
 
@@ -146,7 +147,7 @@ A Azure Machine Learning egy *ipynb* -fájl létrehozásakor létrehoz egy ellen
 
 A jegyzetfüzet eszköztárán válassza ki a menüt, majd a **fájl &gt; mentése és ellenőrzőpont** elemet a jegyzetfüzet manuális mentéséhez, és a rendszer hozzáadja a jegyzetfüzethez tartozó ellenőrzőpont-fájlt.
 
-:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Új fájl létrehozása":::
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Képernyőkép a Mentés eszközről a jegyzetfüzet eszköztárán":::
 
 Minden jegyzetfüzetet 30 másodpercenként kell megtakarítani. Az automatikus mentés szolgáltatás csak a kezdeti *ipynb* -fájlt frissíti, nem az ellenőrzőpont-fájlt.
  
@@ -179,7 +180,7 @@ A következő módokon *törölheti* a **felhasználói fájlok** jegyzetfüzete
 Egy kísérlet jegyzetfüzetből való futtatásához először egy futó [számítási példányhoz](concept-compute-instance.md)kell csatlakoznia. Ha nem rendelkezik számítási példánnyal, az alábbi lépésekkel hozhat létre egyet: 
 
 1. Válassza ki **+** a jegyzetfüzet eszköztárát. 
-2. Nevezze el a számítást, és válassza ki a **virtuális gép méretét** . 
+2. Nevezze el a számítást, és válassza ki a **virtuális gép méretét**. 
 3. Kattintson a **Létrehozás** gombra.
 4. A számítási példány automatikusan csatlakozik a jegyzetfüzethez, és most már futtathatja a cellákat.
 
@@ -187,7 +188,7 @@ Csak az Ön által létrehozott számítási példányok láthatók és használ
 
 ### <a name="view-logs-and-output"></a>Naplók és kimenet megtekintése
 
-A Futtatás és a naplók előrehaladásának megtekintéséhez [Jegyzetfüzet-minialkalmazások](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true) használhatók. A widgetek aszinkron módon frissülnek, és frissítéseket biztosítanak, amíg befejeződik a képzés. A Azure Machine Learning widgeteket a Jupyter és a JupterLab is támogatja.
+A Futtatás és a naplók előrehaladásának megtekintéséhez [Jegyzetfüzet-minialkalmazások](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py) használhatók. A widgetek aszinkron módon frissülnek, és frissítéseket biztosítanak, amíg befejeződik a képzés. A Azure Machine Learning widgeteket a Jupyter és a JupterLab is támogatja.
 
 ## <a name="change-the-notebook-environment"></a>A notebook-környezet módosítása
 

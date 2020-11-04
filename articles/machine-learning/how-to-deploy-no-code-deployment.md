@@ -1,7 +1,7 @@
 ---
 title: Nincs programkód-telepítés (előzetes verzió)
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan helyezhet üzembe egy modellt a beléptetési parancsfájl nélkül.
+description: A kód központi telepítése nem teszi lehetővé, hogy egy modellt webszolgáltatásként telepítsen anélkül, hogy manuálisan létre kellene hoznia egy belépési parancsfájlt.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: deploy
 ms.reviewer: larryfr
-ms.openlocfilehash: 32b2afe036b443846199b5e9d74e690859fb581d
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: a17126695aa5138d1df7fd17cfaa2f5f75ad1004
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998863"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324925"
 ---
 # <a name="preview-no-code-model-deployment"></a>Előnézet Nem kód modell telepítése
 
@@ -63,7 +63,7 @@ service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
-A modellek kiértékeléséhez tekintse meg a [webszolgáltatásként üzembe helyezett Azure Machine learning modell felhasználása](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service)című témakört. Számos ONNX-projekt protopuf-fájlokat használ a betanítási és érvényesítési adatmennyiségek tömörítéséhez, ami megnehezíti a szolgáltatás által várt adatformátum megismeretét. Modell fejlesztőként dokumentálja a fejlesztőket:
+A modellek kiértékeléséhez tekintse meg a [webszolgáltatásként üzembe helyezett Azure Machine learning modell felhasználása](./how-to-consume-web-service.md)című témakört. Számos ONNX-projekt protopuf-fájlokat használ a betanítási és érvényesítési adatmennyiségek tömörítéséhez, ami megnehezíti a szolgáltatás által várt adatformátum megismeretét. Modell fejlesztőként dokumentálja a fejlesztőket:
 
 * Bemeneti formátum (JSON vagy bináris)
 * Bemeneti adatok alakja és típusa (például az alakban lévő lebegőpontos tömb [100100, 3])
@@ -130,7 +130,7 @@ print(output)
 ```
 ## <a name="next-steps"></a>Következő lépések
 
-* [Sikertelen üzembe helyezés hibáinak megoldása](how-to-troubleshoot-deployment.md)
+* [Sikertelen üzembe helyezés hibaelhárítása](how-to-troubleshoot-deployment.md)
 * [Üzembe helyezés az Azure Kubernetes Service-ben](how-to-deploy-azure-kubernetes-service.md)
 * [Ügyfélalkalmazások létrehozása webszolgáltatások felhasználásához](how-to-consume-web-service.md)
 * [Webszolgáltatás frissítése](how-to-deploy-update-web-service.md)

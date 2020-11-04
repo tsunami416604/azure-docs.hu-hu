@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 08/26/2020
 ms.author: martinle
 ms.reviewer: euang
-ms.openlocfilehash: 90e7297236994650e0820e883c94a98b29c49fb7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1cdb010e34674d52ebe2135ad1591a163a078708
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91249416"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324960"
 ---
 # <a name="securing-your-credentials-through-linked-services-with-the-tokenlibrary"></a>A hitelesítő adatok biztonságossá tétele a társított szolgáltatásokkal a TokenLibrary
 A külső forrásokból származó adatokhoz való hozzáférés gyakori minta. Ha a külső adatforrás engedélyezi a névtelen hozzáférést, akkor előfordulhat, hogy a kapcsolatot hitelesítő adatokkal, titkos kulccsal vagy kapcsolati karakterlánccal kell védenie.  
@@ -120,7 +120,7 @@ accountKey = token_library.getConnectionStringAsMap("<LINKED SERVICE NAME>").get
 print(accountKey)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Írás az SQL-készletbe](./synapse-spark-sql-pool-import-export.md)
+- [Írás dedikált SQL-készletbe](./synapse-spark-sql-pool-import-export.md)
 

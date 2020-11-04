@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: afc851be08e6708efc0138dc45931cda147c67c1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 7bee7bede0219f41d9d5e56214a6dc1b94977cb5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895885"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322727"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Oktatóanyag: a "Helló világ!" futtatása Python-szkript (2. rész/4)
 
@@ -99,7 +99,7 @@ Itt látható a vezérlő parancsfájl működésének leírása:
       `ws = Workspace.from_config()`
    :::column-end:::
    :::column span="2":::
-      A [munkaterület](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) a Azure Machine learning munkaterülethez csatlakozik, hogy kommunikálni tudjon a Azure Machine learning erőforrásaival.
+      A [munkaterület](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) a Azure Machine learning munkaterülethez csatlakozik, hogy kommunikálni tudjon a Azure Machine learning erőforrásaival.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -107,7 +107,7 @@ Itt látható a vezérlő parancsfájl működésének leírása:
       `experiment =  Experiment( ... )`
    :::column-end:::
    :::column span="2":::
-      A [Experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true) egyszerű módszert kínál több Futtatás egyetlen névvel való rendszerezésére. Később láthatja, hogyan könnyíti meg a kísérletek a több tucat futtatás közötti mérőszámok összehasonlítását.
+      A [Experiment](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py) egyszerű módszert kínál több Futtatás egyetlen névvel való rendszerezésére. Később láthatja, hogyan könnyíti meg a kísérletek a több tucat futtatás közötti mérőszámok összehasonlítását.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -115,7 +115,7 @@ Itt látható a vezérlő parancsfájl működésének leírása:
       `config = ScriptRunConfig( ... )` 
    :::column-end:::
    :::column span="2":::
-      A [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) becsomagolja a `hello.py` kódot, és átadja a munkaterületnek. Ahogy a neve is sugallja, ezt az osztályt használhatja annak _konfigurálásához_ , hogy a _parancsfájl_ hogyan _fusson_ Azure Machine learning. Azt is meghatározza, hogy a parancsfájl milyen számítási célt fog futni. Ebben a kódban a cél az a számítási fürt, amelyet a [beállítási oktatóanyagban](tutorial-1st-experiment-sdk-setup-local.md)hozott létre.
+      A [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) becsomagolja a `hello.py` kódot, és átadja a munkaterületnek. Ahogy a neve is sugallja, ezt az osztályt használhatja annak _konfigurálásához_ , hogy a _parancsfájl_ hogyan _fusson_ Azure Machine learning. Azt is meghatározza, hogy a parancsfájl milyen számítási célt fog futni. Ebben a kódban a cél az a számítási fürt, amelyet a [beállítási oktatóanyagban](tutorial-1st-experiment-sdk-setup-local.md)hozott létre.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -123,7 +123,7 @@ Itt látható a vezérlő parancsfájl működésének leírása:
       `run = experiment.submit(config)`
    :::column-end:::
    :::column span="2":::
-       Elküldi a parancsfájlt. Ezt a beküldést [futtatásnak](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true)nevezzük. A Futtatás egyetlen végrehajtást ágyaz be a kódjába. Egy futtatással figyelheti a parancsfájl előrehaladását, rögzítheti a kimenetet, elemezheti az eredményeket, megjelenítheti a metrikákat, és egyéb műveleteket is alkalmazhat.
+       Elküldi a parancsfájlt. Ezt a beküldést [futtatásnak](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)nevezzük. A Futtatás egyetlen végrehajtást ágyaz be a kódjába. Egy futtatással figyelheti a parancsfájl előrehaladását, rögzítheti a kimenetet, elemezheti az eredményeket, megjelenítheti a metrikákat, és egyéb műveleteket is alkalmazhat.
    :::column-end:::
 :::row-end:::
 :::row:::

@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 695539e4739002480b3622eb217ef920d4cb34e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 279c07ff892cb261c8bda1937c6e9f8f1b6c6793
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357488"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325701"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-a-sql-server-database"></a>Elemzések végrehajtása Azure Machine Learning Studio (klasszikus) SQL Server-adatbázis használatával
 
-**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 A helyszíni adatokkal dolgozó vállalatok gyakran szeretnék kihasználni a felhő méretezését és rugalmasságát a gépi tanulási munkaterhelésekhez. Azonban nem szeretnék megszakítani a jelenlegi üzleti folyamatokat és munkafolyamatokat azáltal, hogy áthelyezik a helyszíni és a felhőbe. Azure Machine Learning Studio (klasszikus) mostantól támogatja az adatok SQL Server adatbázisból való olvasását, majd az adatokkal rendelkező modellek betanítását és pontozását. Már nem kell manuálisan átmásolnia és szinkronizálnia az adatait a felhő és a helyszíni kiszolgáló között. Ehelyett a Azure Machine Learning Studio (klasszikus) **adatimportálási** modulja most már közvetlenül a SQL Server-adatbázisból is olvasható a betanítási és pontozási feladatokhoz.
@@ -89,17 +89,17 @@ Első lépésként létre kell hoznia és be kell állítania az átjárót az S
 5. Az adatátjáró letöltése és regisztrálása párbeszédpanelen másolja az ÁTJÁRÓ regisztrációs KULCSát a vágólapra.
 
     ![Az adatátjáró letöltése és regisztrálása](./media/use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
-6. <span id="note-1" class="anchor"></span>Ha még nem töltötte le és nem telepítette a Microsoft adatkezelés-átjárót, kattintson az **adatkezelési átjáró letöltése**elemre. Ezzel elvégezheti a Microsoft letöltőközpontból, ahol kiválaszthatja a szükséges átjáró verzióját, letöltheti és telepítheti. A telepítési előfeltételekről, a telepítési lépésekről és a hibaelhárítási tippekről részletes információkat talál az [adatok áthelyezése a helyszíni források és a felhő között adatkezelés átjáróval](../../data-factory/tutorial-hybrid-copy-portal.md)című cikkben.
-7. Az átjáró telepítése után a adatkezelés átjáró Configuration Manager megnyílik, és megjelenik az **átjáró regisztrálása** párbeszédpanel. Illessze be a vágólapra másolt **átjáró-regisztrációs kulcsot** , majd kattintson a **regisztráció**elemre.
-8. Ha már telepített egy átjárót, futtassa a adatkezelés átjáró Configuration Manager. Kattintson a **kulcs módosítása**gombra, illessze be az előző lépésben vágólapra másolt **átjáró regisztrációs kulcsot** , majd kattintson **az OK**gombra.
-9. Ha a telepítés befejeződött, megjelenik a Microsoft adatkezelés Gateway-Configuration Manager-átjárójának **regisztrálása** párbeszédpanel. Illessze be az ÁTJÁRÓ regisztrációs KULCSát, amelyet az előző lépésben a vágólapra másolt, majd kattintson a **regisztráció**elemre.
+6. <span id="note-1" class="anchor"></span>Ha még nem töltötte le és nem telepítette a Microsoft adatkezelés-átjárót, kattintson az **adatkezelési átjáró letöltése** elemre. Ezzel elvégezheti a Microsoft letöltőközpontból, ahol kiválaszthatja a szükséges átjáró verzióját, letöltheti és telepítheti. A telepítési előfeltételekről, a telepítési lépésekről és a hibaelhárítási tippekről részletes információkat talál az [adatok áthelyezése a helyszíni források és a felhő között adatkezelés átjáróval](../../data-factory/tutorial-hybrid-copy-portal.md)című cikkben.
+7. Az átjáró telepítése után a adatkezelés átjáró Configuration Manager megnyílik, és megjelenik az **átjáró regisztrálása** párbeszédpanel. Illessze be a vágólapra másolt **átjáró-regisztrációs kulcsot** , majd kattintson a **regisztráció** elemre.
+8. Ha már telepített egy átjárót, futtassa a adatkezelés átjáró Configuration Manager. Kattintson a **kulcs módosítása** gombra, illessze be az előző lépésben vágólapra másolt **átjáró regisztrációs kulcsot** , majd kattintson **az OK** gombra.
+9. Ha a telepítés befejeződött, megjelenik a Microsoft adatkezelés Gateway-Configuration Manager-átjárójának **regisztrálása** párbeszédpanel. Illessze be az ÁTJÁRÓ regisztrációs KULCSát, amelyet az előző lépésben a vágólapra másolt, majd kattintson a **regisztráció** elemre.
 
     ![Átjáró regisztrálása](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-register-gateway.png)
 10. Az átjáró konfigurációja akkor fejeződik be, ha a Microsoft adatkezelés Gateway Configuration Manager **Kezdőlap** lapján a következő értékek vannak beállítva:
 
     * Az **átjáró** neve és a **példány neve** az átjáró nevére van beállítva.
-    * A **regisztráció** a **regisztrált**értékre van állítva.
-    * Az **állapot** az **elindítva**értékre van állítva.
+    * A **regisztráció** a **regisztrált** értékre van állítva.
+    * Az **állapot** az **elindítva** értékre van állítva.
     * A Lenti állapotsor megjeleníti a **adatkezelés Gateway Cloud Service-hez csatlakoztatott átjárót** , zöld pipa mellett.
 
       ![adatkezelés Gateway Manager](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-registered.png)
@@ -134,7 +134,7 @@ Az átjáró beállítása után hozzáadhat egy **adatimportálási** modult eg
 5. Válassza ki a telepített és regisztrált **adatátjárót** . Beállíthat egy másik átjárót az "(új adatátjáró hozzáadása...)" lehetőség kiválasztásával.
 
    ![Adatátjáró kiválasztása adatmodul importálásához](./media/use-data-from-an-on-premises-sql-server/import-data-select-on-premises-data-source.png)
-6. Adja meg az SQL **Database-kiszolgáló nevét** és az **adatbázis nevét**, valamint azt az SQL **Database-lekérdezést** , amelyet végre szeretne hajtani.
+6. Adja meg az SQL **Database-kiszolgáló nevét** és az **adatbázis nevét** , valamint azt az SQL **Database-lekérdezést** , amelyet végre szeretne hajtani.
 7. Kattintson az **értékek megadása** a **Felhasználónév és a jelszó** területen, majd adja meg az adatbázis hitelesítő adatait. A SQL Server konfigurálásának módjától függően integrált Windows-hitelesítést vagy SQL Server hitelesítést használhat.
 
    ![Adja meg az adatbázis hitelesítő adatait](./media/use-data-from-an-on-premises-sql-server/database-credentials.png)
@@ -144,6 +144,6 @@ Az átjáró beállítása után hozzáadhat egy **adatimportálási** modult eg
    ![Adatmodul tulajdonságainak importálása](./media/use-data-from-an-on-premises-sql-server/import-data-properties-entered.png)
 8. A kísérlet futtatásához kattintson a **Futtatás** gombra.
 
-Miután a kísérlet futása befejeződött, az **adatok importálása** modul kimeneti portjára kattintva megjelenítheti az adatbázisból importált adatokat, és kiválaszthatja a **Megjelenítés**elemet.
+Miután a kísérlet futása befejeződött, az **adatok importálása** modul kimeneti portjára kattintva megjelenítheti az adatbázisból importált adatokat, és kiválaszthatja a **Megjelenítés** elemet.
 
 Miután befejezte a kísérletet, üzembe helyezheti és működővé tenni a modellt. A Batch végrehajtási szolgáltatás használatával az **adatimportálási** modulban konfigurált SQL Server adatbázisból származó adatok beolvasása és pontozása történik. Habár a kérés-válasz szolgáltatást használhatja a helyszíni adatkereséshez, a Microsoft az [Excel-bővítmény](excel-add-in-for-web-services.md) használatát javasolja helyette. Jelenleg az **exportálási adataival** SQL Server adatbázisba való írás nem támogatott a kísérletekben vagy a közzétett webszolgáltatásokban.

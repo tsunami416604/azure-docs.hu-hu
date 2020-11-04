@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Apache Spark-készlet létrehozása (előzetes verzió) a szinapszis Studio használatával'
-description: Hozzon létre egy új Apache Spark készletet a szinapszis Studióval a jelen útmutató lépéseinek követésével.
+title: 'Gyors útmutató: kiszolgáló nélküli Apache Spark készlet (előzetes verzió) létrehozása a szinapszis Studio használatával'
+description: Hozzon létre egy kiszolgáló nélküli Apache Spark készletet a szinapszis Studióval a jelen útmutató lépéseinek követésével.
 services: synapse-analytics
 author: saveenr
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 10/16/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: c497b9974ad2d6fdd9482ae673de5807669d8ff5
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 313ad0c620fe06158e96c208ae265702134b58d1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748326"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324208"
 ---
-# <a name="quickstart-create-an-apache-spark-pool-preview-using-synapse-studio"></a>Rövid útmutató: Apache Spark-készlet létrehozása (előzetes verzió) a szinapszis Studio használatával
+# <a name="quickstart-create-a-serverless-apache-spark-pool-preview-using-synapse-studio"></a>Gyors útmutató: kiszolgáló nélküli Apache Spark készlet (előzetes verzió) létrehozása a szinapszis Studio használatával
 
 Az Azure szinapszis Analytics számos analitikai motort kínál az adatai betöltéséhez, átalakításához, modellezéséhez, elemzéséhez és kiszolgálásához. A Apache Spark Pool nyílt forráskódú big data számítási funkciókat kínál. Miután létrehozta a Apache Spark-készletet a szinapszis munkaterületen, az adatgyűjtést, a modellezést, a feldolgozást és a kiszolgált elemzések beszerzésére is képes.  
 
@@ -47,7 +47,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
 
 ## <a name="launch-synapse-studio"></a>A Synapse Studio indítása 
 
-A munkaterület áttekintés területén válassza a **szinapszis Studio elindítása** lehetőséget a Apache Spark-készlet létrehozási helyének megnyitásához. Írja be a szolgáltatás nevét vagy az erőforrás nevét közvetlenül a keresősávba.
+A munkaterület-Áttekintés lapon válassza ki a **munkaterület webes URL-címét** a szinapszis Studio megnyitásához.
 
 ![Azure Portal szinapszis-munkaterület áttekintése](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-20.png)
 

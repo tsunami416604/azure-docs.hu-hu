@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: fae958542f1bc391f285104d80d1e19131470abe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 919b8fb89e9189df7cb1964cbe0149dc6945ad2d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87065471"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323163"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>Felügyelt privát végpont létrehozása az adatforráshoz (előzetes verzió)
 
@@ -21,12 +21,11 @@ Ez a cikk bemutatja, hogyan hozhat létre felügyelt privát végpontot az Azure
 
 ## <a name="step-1-open-your-azure-synapse-workspace-in-azure-portal"></a>1. lépés: az Azure szinapszis-munkaterület megnyitása Azure Portal
 
-Az Azure szinapszis studióból létrehozhat egy felügyelt privát végpontot az adatforráshoz. Válassza az **Áttekintés** lapot Azure Portal és válassza a **szinapszis Studio elindítása**lehetőséget.
-![Az Azure szinapszis Studio elindítása](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-1.png)
+Az Azure szinapszis studióból létrehozhat egy felügyelt privát végpontot az adatforráshoz. Válassza az **Áttekintés** fület Azure Portal, majd a kezdeti lépések szakaszban **válassza a Megnyitás lehetőséget a** szinapszis Studio-kártyán.
 
 ## <a name="step-2-navigate-to-the-managed-virtual-networks-tab-in-synapse-studio"></a>2. lépés: navigáljon a Virtual Networks (felügyelt virtuális hálózatok) lapra a szinapszis Studióban
 
-Az Azure szinapszis Studióban válassza a **kezelés** fület a bal oldali navigációs sávon. Válassza a **felügyelt virtuális hálózatok** lehetőséget, majd válassza az **+ új**lehetőséget.
+Az Azure szinapszis Studióban válassza a **kezelés** fület a bal oldali navigációs sávon. Válassza a **felügyelt privát végpontok** lehetőséget, majd válassza az **+ új** lehetőséget.
 ![Új felügyelt privát végpont létrehozása](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-2.png)
 
 ## <a name="step-3-select-the-data-source-type"></a>3. lépés: az adatforrás típusának kiválasztása
@@ -43,9 +42,9 @@ A következő ablakban adja meg az adatforrással kapcsolatos adatokat. Ebben a 
 
 A kérelem elküldése után megjelenik az állapota. Annak ellenőrzéséhez, hogy létrejött-e a felügyelt privát végpont sikeres létrehozása, ellenőrizze annak *kiépítési állapotát*. Előfordulhat, hogy várnia kell 1 percet, majd a **frissítés** elemre kell kattintania a kiépítési állapot frissítéséhez. Láthatja, hogy a felügyelt magánhálózati végpont sikeresen létrejött a ADLS Gen2 fiókban.
 
-Azt is láthatja, hogy a *jóváhagyási állapot* *függőben*van. A célként megadott erőforrás tulajdonosa jóváhagyhatja vagy megtagadhatja a magánhálózati végponti kapcsolatok kérelmét. Ha a tulajdonos jóváhagyja a magánhálózati végponti kapcsolódási kérelmet, akkor létrejön egy privát kapcsolat. Ha meg van tagadva, a magánhálózati kapcsolat nincs létrehozva.
+Azt is láthatja, hogy a *jóváhagyási állapot* *függőben* van. A célként megadott erőforrás tulajdonosa jóváhagyhatja vagy megtagadhatja a magánhálózati végponti kapcsolatok kérelmét. Ha a tulajdonos jóváhagyja a magánhálózati végponti kapcsolódási kérelmet, akkor létrejön egy privát kapcsolat. Ha meg van tagadva, a magánhálózati kapcsolat nincs létrehozva.
 ![Felügyelt magánhálózati végpont-létrehozási kérelem állapota](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-5.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [felügyelt privát végpontokról](./synapse-workspace-managed-private-endpoints.md)

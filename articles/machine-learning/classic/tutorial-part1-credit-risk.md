@@ -9,16 +9,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 6947c567ee2ffd70fdb3a1dfc17a641f63124ffb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 946435175ea5cd366103bc1254bae0d9afe0926e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91348586"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325802"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>1. Oktatóanyag: hitelkockázat előrejelzése – Azure Machine Learning Studio (klasszikus)
 
-**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
+**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
@@ -65,7 +65,7 @@ A munkaterület létrehozása után nyissa meg Machine Learning Studio (klasszik
 > [!TIP]
 > Ha Ön a munkaterület tulajdonosa, megoszthatja azokat a kísérleteket, amelyekkel a munkaterületet másokkal meghívja. Ezt megteheti Machine Learning Studio (klasszikus) a **Beállítások** lapon. Az egyes felhasználókhoz csak Microsoft-fiók vagy szervezeti fiókra van szükség.
 > 
-> A **Beállítások** lapon kattintson a **felhasználók**elemre, majd kattintson az ablak ALJÁn található **további felhasználók meghívása** elemre.
+> A **Beállítások** lapon kattintson a **felhasználók** elemre, majd kattintson az ablak ALJÁn található **további felhasználók meghívása** elemre.
 > 
 
 ## <a name="upload-existing-data"></a><a name="upload"></a>Meglévő adatok feltöltése
@@ -75,7 +75,7 @@ A hitelkockázat-előrejelző modell kifejlesztéséhez olyan adatforrásokra va
 
 A **német.** az adatfájlt fogja használni. Töltse le ezt a fájlt a helyi merevlemez-meghajtóra.  
 
-A **német.** adatadatkészlet 20 változóból álló sorokat tartalmaz a 1000-es múltbeli pályázók számára. Ez a 20 változó az adatkészlet azon funkcióinak készletét jelöli (a *szolgáltatás vektora*), amely az egyes kreditek azonosítására szolgáló jellemzőket biztosít. Az egyes sorokban egy további oszlop jelenti a kérelmező számított hitelkockázat-kockázatát, amelynek 700 kérelmezője alacsony hitelkockázat és 300 magas kockázatnak minősül.
+A **német.** adatadatkészlet 20 változóból álló sorokat tartalmaz a 1000-es múltbeli pályázók számára. Ez a 20 változó az adatkészlet azon funkcióinak készletét jelöli (a *szolgáltatás vektora* ), amely az egyes kreditek azonosítására szolgáló jellemzőket biztosít. Az egyes sorokban egy további oszlop jelenti a kérelmező számított hitelkockázat-kockázatát, amelynek 700 kérelmezője alacsony hitelkockázat és 300 magas kockázatnak minősül.
 
 Az UCI webhely ismerteti az ehhez az adatszolgáltatási vektorhoz tartozó attribútumok leírását. Ezek az adatok a pénzügyi adatokat, a kreditek előzményeit, a foglalkoztatás állapotát és a személyes adatokat tartalmazzák. Minden egyes kérelmező esetében egy bináris minősítés lett megadva, amely azt jelzi, hogy alacsony vagy magas a hitelkockázat. 
 
@@ -119,11 +119,11 @@ Miután az adatok CSV formátumra lettek konvertálva, fel kell töltenie Machin
 
 1. Nyissa meg a Machine Learning Studio (klasszikus) kezdőlapját ( [https://studio.azureml.net](https://studio.azureml.net) ). 
 
-2. Kattintson az ablak bal felső sarkában található menü menüre, majd a ![ ](./media/tutorial-part1-credit-risk/menu.png) **Azure Machine learning**elemre, válassza a **Studio**lehetőséget, és jelentkezzen be.
+2. Kattintson az ablak bal felső sarkában található menü menüre, majd a ![ ](./media/tutorial-part1-credit-risk/menu.png) **Azure Machine learning** elemre, válassza a **Studio** lehetőséget, és jelentkezzen be.
 
 3. Az ablak alján kattintson az **+ új** elemre.
 
-4. Válassza az **adatkészlet**lehetőséget.
+4. Válassza az **adatkészlet** lehetőséget.
 
 5. Válasszon **a helyi fájlból**.
 
@@ -154,7 +154,7 @@ A más típusú adatok kísérletbe való importálásával kapcsolatos további
 Az oktatóanyag következő lépése egy olyan Machine Learning Studio (klasszikus) kísérlet létrehozása, amely a feltöltött adatkészletet használja.  
 
 1. A Studio (klasszikus) területen kattintson az **+ új** elemre az ablak alján.
-1. Válassza a **kísérlet**, majd az "üres kísérlet" lehetőséget. 
+1. Válassza a **kísérlet** , majd az "üres kísérlet" lehetőséget. 
 
     ![Új kísérlet létrehozása](./media/tutorial-part1-credit-risk/create-new-experiment.png)
 
@@ -169,7 +169,7 @@ Az oktatóanyag következő lépése egy olyan Machine Learning Studio (klasszik
    > ![Kísérlet tulajdonságai](./media/tutorial-part1-credit-risk/experiment-properties.png)
    > 
 
-1. A kísérleti vászon bal oldalán található modul palettán bontsa ki a **mentett adatkészletek**elemet.
+1. A kísérleti vászon bal oldalán található modul palettán bontsa ki a **mentett adatkészletek** elemet.
 1. Keresse meg a **saját adatkészletek** alatt létrehozott adatkészletet, és húzza a vászonra. Az adatkészletet úgy is megtalálhatja, hogy a paletta fölötti **keresőmezőbe** írja be a nevet.  
 
     ![Adatkészlet hozzáadása a kísérlethez](./media/tutorial-part1-credit-risk/add-dataset-to-experiment.png)
@@ -177,9 +177,9 @@ Az oktatóanyag következő lépése egy olyan Machine Learning Studio (klasszik
 
 ### <a name="prepare-the-data"></a>Az adatok előkészítése
 
-Megtekintheti az adatok első 100 sorát és a teljes adathalmazra vonatkozó statisztikai adatokat: kattintson az adatkészlet kimeneti portjára (alul lévő kis kör), majd válassza a **Megjelenítés**lehetőséget.  
+Megtekintheti az adatok első 100 sorát és a teljes adathalmazra vonatkozó statisztikai adatokat: kattintson az adatkészlet kimeneti portjára (alul lévő kis kör), majd válassza a **Megjelenítés** lehetőséget.  
 
-Mivel az adatfájl nem tartalmaz oszlopfejléceket, a Studio (klasszikus) általános fejléceket (Col1, Col2 *stb.*) adott meg. A megfelelő fejlécek nem elengedhetetlenek a modell létrehozásához, de megkönnyítik a kísérlet során felhasználható adatfeldolgozást. Emellett, amikor végül közzéteszi ezt a modellt egy webszolgáltatásban, a fejlécek segítenek azonosítani az oszlopokat a szolgáltatás felhasználójának.  
+Mivel az adatfájl nem tartalmaz oszlopfejléceket, a Studio (klasszikus) általános fejléceket (Col1, Col2 *stb.* ) adott meg. A megfelelő fejlécek nem elengedhetetlenek a modell létrehozásához, de megkönnyítik a kísérlet során felhasználható adatfeldolgozást. Emellett, amikor végül közzéteszi ezt a modellt egy webszolgáltatásban, a fejlécek segítenek azonosítani az oszlopokat a szolgáltatás felhasználójának.  
 
 Oszlopfejlécek hozzáadásához használhatja a [metaadatok szerkesztése][edit-metadata] modult.
 
@@ -205,9 +205,9 @@ A [metaadatok szerkesztésének][edit-metadata]használatához először meg kel
     > ![Metaadat-modul szerkesztése megjegyzéssel hozzáadva](./media/tutorial-part1-credit-risk/edit-metadata-with-comment.png)
     > 
 
-1. Válassza a [metaadatok szerkesztése][edit-metadata]lehetőséget, és a vászontól jobbra található **Tulajdonságok** ablaktáblán kattintson az **oszlop választójának indítása**lehetőségre.
+1. Válassza a [metaadatok szerkesztése][edit-metadata]lehetőséget, és a vászontól jobbra található **Tulajdonságok** ablaktáblán kattintson az **oszlop választójának indítása** lehetőségre.
 
-1. Az **Oszlopok kiválasztása** párbeszédpanelen válassza ki a **rendelkezésre álló oszlopok** összes sorát, és kattintson a > elemre a **kijelölt oszlopokra**való áthelyezéshez.
+1. Az **Oszlopok kiválasztása** párbeszédpanelen válassza ki a **rendelkezésre álló oszlopok** összes sorát, és kattintson a > elemre a **kijelölt oszlopokra** való áthelyezéshez.
    A párbeszédpanelnek így kell kinéznie:
 
    ![Oszlop-választó az összes kijelölt oszloppal](./media/tutorial-part1-credit-risk/select-columns.png)
@@ -226,7 +226,7 @@ A [metaadatok szerkesztésének][edit-metadata]használatához először meg kel
    ![A metaadatok szerkesztésének tulajdonságai](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
 
    > [!TIP]
-   > Ha ellenőrizni szeretné az oszlopfejlécek fejléceit, futtassa a kísérletet (kattintson a kísérlet vászon alatt **lévő Futtatás** elemre). Ha a futása befejeződött (egy zöld pipa jelenik meg a [metaadatok szerkesztése][edit-metadata]elemnél), kattintson a [metaadatok szerkesztése][edit-metadata] modul kimeneti portjára, majd válassza a **Megjelenítés**lehetőséget. Bármelyik modul kimenetét ugyanúgy megtekintheti, hogy megtekintse az adatokat a kísérlet során.
+   > Ha ellenőrizni szeretné az oszlopfejlécek fejléceit, futtassa a kísérletet (kattintson a kísérlet vászon alatt **lévő Futtatás** elemre). Ha a futása befejeződött (egy zöld pipa jelenik meg a [metaadatok szerkesztése][edit-metadata]elemnél), kattintson a [metaadatok szerkesztése][edit-metadata] modul kimeneti portjára, majd válassza a **Megjelenítés** lehetőséget. Bármelyik modul kimenetét ugyanúgy megtekintheti, hogy megtekintse az adatokat a kísérlet során.
    > 
    > 
 
@@ -274,13 +274,13 @@ Ezt a replikálást az R-kóddal végezheti el:
 
 Ugyanezt a replikálási műveletet kell végrehajtania az [Adatfelosztó][split] modul minden egyes kimenetéhez, hogy a betanítási és tesztelési adatokat ugyanazzal a költséghatékonysággal lehessen elvégezni. Ezt a legegyszerűbben úgy teheti meg, ha duplikálja az imént létrehozott [R-szkript][execute-r-script] modult, és csatlakoztatja a [felosztott][split] adatmodul másik kimeneti portjához.
 
-1. Kattintson a jobb gombbal az [R-parancsfájl végrehajtása][execute-r-script] elemre, majd válassza a **Másolás**lehetőséget.
+1. Kattintson a jobb gombbal az [R-parancsfájl végrehajtása][execute-r-script] elemre, majd válassza a **Másolás** lehetőséget.
 
-1. Kattintson a jobb gombbal a kísérlet vászonra, majd válassza a **Beillesztés**lehetőséget.
+1. Kattintson a jobb gombbal a kísérlet vászonra, majd válassza a **Beillesztés** lehetőséget.
 
 1. Húzza az új modult a pozícióba, majd az új [végrehajtási R script][execute-r-script] modul első bemeneti portjához kapcsolja össze az [adatbontó][split] modul jobb kimeneti portját. 
 
-1. A vászon alján kattintson a **Futtatás**elemre. 
+1. A vászon alján kattintson a **Futtatás** elemre. 
 
 > [!TIP]
 > Az R-szkript végrehajtása modul másolata ugyanazt a parancsfájlt tartalmazza, mint az eredeti modul. Amikor egy modult másol és illeszt be a vásznon, a másolat megőrzi az eredeti összes tulajdonságát.  
@@ -298,7 +298,7 @@ További információ az R-szkriptek kísérletekben való használatáról: [a 
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következő lépéseket végezte el: 
  
@@ -313,6 +313,6 @@ Most már készen áll az adatmodellek betanítására és kiértékelésére.
 > [2. oktatóanyag – modellek betanítása és kiértékelése](tutorial-part2-credit-risk-train.md)
 
 <!-- Module References -->
-[execute-r-script]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/execute-r-script
-[edit-metadata]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/edit-metadata
-[split]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/split-data
+[execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script
+[edit-metadata]: /azure/machine-learning/studio-module-reference/edit-metadata
+[split]: /azure/machine-learning/studio-module-reference/split-data

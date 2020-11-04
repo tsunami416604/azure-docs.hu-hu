@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: ab14547ef5d9791728ce96fdf2c414945a46aab9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef9ea055f437b53313dc9ee11b0b91f095664f5e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362486"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322849"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>Több webszolgáltatás-végpont létrehozása egy kísérletből ML Studio (klasszikus) és a PowerShell használatával
 
-**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 Íme egy gyakori gépi tanulási probléma: több olyan modellt szeretne létrehozni, amely azonos képzési munkafolyamattal rendelkezik, és ugyanazt az algoritmust használja. Azonban azt szeretné, hogy a különböző betanítási adatkészletek bemenetként legyenek kiválasztva. Ebből a cikkből megtudhatja, hogyan végezheti el ezt a méretezést Azure Machine Learning Studio (klasszikus) használatával csupán egyetlen kísérlettel.
 
@@ -28,7 +28,7 @@ A modellt betaníthatja, ha az összes adathalmaz összevont verzióját haszná
 
 Ez lehet a legjobb megközelítés, de nem kívánja létrehozni a 1 000-es tanítási kísérleteket Azure Machine Learning Studio (klasszikus), és mindegyik egy egyedi helyet jelképez. Amellett, hogy elsöprő feladat, nem hatékonynak tűnik, mivel minden kísérlethez ugyanaz az összetevők tartoznak, kivéve a betanítási adatkészletet.
 
-Szerencsére ezt a [Azure Machine learning Studio (klasszikus) átképzési API](/azure/machine-learning/studio/retrain-machine-learning-model) használatával hajthatja végre, és automatizálhatja a feladatot a [Azure Machine learning Studio (klasszikus) PowerShell](powershell-module.md)-lel.
+Szerencsére ezt a [Azure Machine learning Studio (klasszikus) átképzési API](./retrain-machine-learning-model.md) használatával hajthatja végre, és automatizálhatja a feladatot a [Azure Machine learning Studio (klasszikus) PowerShell](powershell-module.md)-lel.
 
 > [!NOTE]
 > Ahhoz, hogy a minta gyorsabban fusson, csökkentse a 1 000 és 10 közötti tárolóhelyek számát. Ugyanezek az alapelvek és eljárások azonban az 1 000-es helyszínekre érvényesek. Ha azonban az 1 000-adatkészletből szeretne betanítani, akkor előfordulhat, hogy párhuzamosan szeretné futtatni a következő PowerShell-parancsfájlokat. Ennek a cikknek a hatóköre meghaladja a jelen cikkben ismertetett műveleteket, de a PowerShell több szálon is használható.  
@@ -43,7 +43,7 @@ Használja a [Cortana Intelligence Galleryban](https://gallery.azure.ai)találha
 > 
 > 
 
-A kísérlet egy **adatimportálási** modul használatával importálja a betanítási adatkészletet *customer001.csv* egy Azure Storage-fiókból. Tegyük fel, hogy begyűjtötte a betanítási adatkészleteket az összes kerékpár-kölcsönzési helyről, és ugyanabban a blob Storage-helyen tárolja őket, és a fájlnevek *rentalloc001.csvtól * kezdve a *rentalloc10.csvig *.
+A kísérlet egy **adatimportálási** modul használatával importálja a betanítási adatkészletet *customer001.csv* egy Azure Storage-fiókból. Tegyük fel, hogy begyűjtötte a betanítási adatkészleteket az összes kerékpár-kölcsönzési helyről, és ugyanabban a blob Storage-helyen tárolja őket, és a fájlnevek *rentalloc001.csvtól* kezdve a *rentalloc10.csvig*.
 
 ![Olvasó modul adatok importálása Azure-blobból](./media/create-models-and-endpoints-with-powershell/reader-module.png)
 
@@ -55,13 +55,13 @@ Ezt többféleképpen is elvégezheti. Egy webszolgáltatási paraméterrel rend
 
 ![Egy betanított modell modul kimenete egy webszolgáltatás kimeneti moduljának](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 
-Most futtassuk ezt a betanítási kísérletet az alapértelmezett értékkel *rental001.csv* a betanítási adatkészletként. Ha megtekinti a **kiértékelési** modul kimenetét (kattintson a kimenetre, **majd válassza a**vizualizáció lehetőséget), láthatja, hogy a *AUC* = 0,91 egy tisztességes teljesítményt nyújt. Ezen a ponton készen áll arra, hogy üzembe helyezzen egy webszolgáltatást ebből a betanítási kísérletből.
+Most futtassuk ezt a betanítási kísérletet az alapértelmezett értékkel *rental001.csv* a betanítási adatkészletként. Ha megtekinti a **kiértékelési** modul kimenetét (kattintson a kimenetre, **majd válassza a** vizualizáció lehetőséget), láthatja, hogy a *AUC* = 0,91 egy tisztességes teljesítményt nyújt. Ezen a ponton készen áll arra, hogy üzembe helyezzen egy webszolgáltatást ebből a betanítási kísérletből.
 
 ## <a name="deploy-the-training-and-scoring-web-services"></a>A képzési és pontozási webszolgáltatások üzembe helyezése
-A betanítási webszolgáltatás üzembe helyezéséhez kattintson a kísérlet vászon alatt a **webszolgáltatás beállítása** gombra, és válassza a **webszolgáltatás telepítése**lehetőséget. Hívja meg ezt a webszolgáltatást "Bike Rental Training".
+A betanítási webszolgáltatás üzembe helyezéséhez kattintson a kísérlet vászon alatt a **webszolgáltatás beállítása** gombra, és válassza a **webszolgáltatás telepítése** lehetőséget. Hívja meg ezt a webszolgáltatást "Bike Rental Training".
 
 Most telepítenie kell a pontozási webszolgáltatás szolgáltatást.
-Ennek elvégzéséhez kattintson a **webszolgáltatás beállítása** a vásznon elemre, majd válassza a **prediktív webszolgáltatás**lehetőséget. Ez létrehoz egy pontozási kísérletet.
+Ennek elvégzéséhez kattintson a **webszolgáltatás beállítása** a vásznon elemre, majd válassza a **prediktív webszolgáltatás** lehetőséget. Ez létrehoz egy pontozási kísérletet.
 Néhány kisebb módosítást kell végrehajtania, hogy webszolgáltatásként működjön. Távolítsa el a "CNT" címke oszlopot a bemeneti adatokból, és korlátozza a kimenetet csak a példány-azonosítóra és a megfelelő előre jelzett értékre.
 
 A munka megtakarításához megnyithatja a [prediktív kísérletet](https://gallery.azure.ai/Experiment/Bike-Rental-Predicative-Experiment-1) a katalógusban, amely már elkészült.
@@ -92,14 +92,14 @@ For ($i = 1; $i -le 10; $i++){
 }
 ```
 
-Most létrehozott 10 végpontot, és mindegyikük ugyanazt a betanított modellt tartalmazza *customer001.csvon *. Megtekintheti őket a Azure Portalban.
+Most létrehozott 10 végpontot, és mindegyikük ugyanazt a betanított modellt tartalmazza *customer001.csvon*. Megtekintheti őket a Azure Portalban.
 
 ![A portálon megtekintheti a betanított modellek listáját](./media/create-models-and-endpoints-with-powershell/created-endpoints.png)
 
 ## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>A végpontok frissítése külön betanítási adatkészletek használatára a PowerShell használatával
 A következő lépés a végpontok frissítése az egyes ügyfelek egyedi adateszközeire egyedileg betanított modellekkel. Először is létre kell hoznia ezeket a modelleket a **Bike Rental Training** web szolgáltatásból. Térjünk vissza a **Bike Rental Training** webszolgáltatáshoz. 10 különböző modell létrehozásához meg kell hívnia a BES-végpontot 10 alkalommal 10 különböző betanítási adatkészlettel. Ehhez használja a **InovkeAmlWebServiceBESEndpoint** PowerShell-parancsmagot.
 
-Emellett a blob Storage-fiókjához tartozó hitelesítő adatokat is meg kell adnia a alkalmazásban `$configContent` . A következő mezőkben: `AccountName` `AccountKey` és `RelativeLocation` . Az `AccountName` lehet az egyik fiók neve, ahogy az a **Azure Portalban** látható (*Storage* TAB). Miután rákattintott egy Storage-fiókra, az a `AccountKey` (z) alján található **hozzáférési kulcsok kezelése** gomb lenyomásával és az *elsődleges elérési kulcs*másolásával érhető el. Az a `RelativeLocation` tárolóhoz viszonyított elérési út, ahol egy új modellt fog tárolni. Például a következő parancsfájl elérési útja `hai/retrain/bike_rental/` egy nevű tárolóra mutat `hai` , és `/retrain/bike_rental/` almappák. Jelenleg nem hozhatók létre almappák a portál felhasználói felületén keresztül, de [több Azure Storage-tallózó](../../storage/common/storage-explorers.md) is lehetővé teszi. Azt javasoljuk, hogy hozzon létre egy új tárolót a tárolóban az új betanított modellek (. iLearner fájlok) tárolásához a következő módon: a tárterület lapon kattintson az alján található **Hozzáadás** gombra, és nevezze el `retrain` . Összefoglalva, a következő parancsfájl szükséges módosításai a, `AccountName` `AccountKey` és `RelativeLocation` (:) értékre vonatkoznak `"retrain/model' + $seq + '.ilearner"` .
+Emellett a blob Storage-fiókjához tartozó hitelesítő adatokat is meg kell adnia a alkalmazásban `$configContent` . A következő mezőkben: `AccountName` `AccountKey` és `RelativeLocation` . Az `AccountName` lehet az egyik fiók neve, ahogy az a **Azure Portalban** látható ( *Storage* TAB). Miután rákattintott egy Storage-fiókra, az a `AccountKey` (z) alján található **hozzáférési kulcsok kezelése** gomb lenyomásával és az *elsődleges elérési kulcs* másolásával érhető el. Az a `RelativeLocation` tárolóhoz viszonyított elérési út, ahol egy új modellt fog tárolni. Például a következő parancsfájl elérési útja `hai/retrain/bike_rental/` egy nevű tárolóra mutat `hai` , és `/retrain/bike_rental/` almappák. Jelenleg nem hozhatók létre almappák a portál felhasználói felületén keresztül, de [több Azure Storage-tallózó](../../storage/common/storage-explorers.md) is lehetővé teszi. Azt javasoljuk, hogy hozzon létre egy új tárolót a tárolóban az új betanított modellek (. iLearner fájlok) tárolásához a következő módon: a tárterület lapon kattintson az alján található **Hozzáadás** gombra, és nevezze el `retrain` . Összefoglalva, a következő parancsfájl szükséges módosításai a, `AccountName` `AccountKey` és `RelativeLocation` (:) értékre vonatkoznak `"retrain/model' + $seq + '.ilearner"` .
 
 ```powershell
 # Invoke the retraining API 10 times
@@ -123,7 +123,7 @@ For ($i = 1; $i -le 10; $i++){
 
 Ahogy a fentiekben is látható, a 10 különböző BES-beli konfigurációs JSON-fájl létrehozása helyett Ehelyett dinamikusan létrehozza a konfigurációs karakterláncot. Ezután a **InvokeAmlWebServceBESEndpoint** parancsmag *jobConfigString* paraméteréhez adja a csatornát. A lemezen nem kell megőrizni a másolást.
 
-Ha minden jól megy, egy idő után 10. iLearner-fájlt kell látnia a *model001. iLearner* fájlból a *model010. iLearner*-be az Azure Storage-fiókban. Most már készen áll arra, hogy frissítse a 10 pontozásos webszolgáltatás-végpontot ezekkel a modellekkel a **patch-AmlWebServiceEndpoint** PowerShell-parancsmag használatával. Ne feledje újra, hogy csak a korábban létrehozott, nem alapértelmezett végpontok javítását végezheti el.
+Ha minden jól megy, egy idő után 10. iLearner-fájlt kell látnia a *model001. iLearner* fájlból a *model010. iLearner* -be az Azure Storage-fiókban. Most már készen áll arra, hogy frissítse a 10 pontozásos webszolgáltatás-végpontot ezekkel a modellekkel a **patch-AmlWebServiceEndpoint** PowerShell-parancsmag használatával. Ne feledje újra, hogy csak a korábban létrehozott, nem alapértelmezett végpontok javítását végezheti el.
 
 ```powershell
 # Patch the 10 endpoints with respective .ilearner models

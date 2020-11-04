@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: 4f6fa73130e3e78b573a866dbb6524acbc88c50c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa650fe9cb7df64a6a7a948224be225ecfad9057
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88691462"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324616"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>Recept: prediktív karbantartás a nagy adatmennyiséggel rendelkező Cognitive Services
 
-Ez a recept bemutatja, hogyan használható az Azure szinapszis Analytics és a Cognitive Services a Sparkban a IoT-eszközök prediktív karbantartásához. Követjük a [CosmosDB és a szinapszis hivatkozás](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples) mintáját. Az egyszerű dolgok megtartása érdekében ebben a receptben közvetlenül egy CSV-fájlból fogjuk beolvasni az adatátvitelt a CosmosDB és a szinapszis-kapcsolaton keresztül. Határozottan javasoljuk, hogy tekintse át a szinapszis hivatkozás mintáját.
+Ez a recept bemutatja, hogyan használható az Azure szinapszis Analytics és a Cognitive Services on Apache Spark a IoT-eszközök prediktív karbantartásához. Követjük a [CosmosDB és a szinapszis hivatkozás](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples) mintáját. Az egyszerű dolgok megtartása érdekében ebben a receptben közvetlenül egy CSV-fájlból fogjuk beolvasni az adatátvitelt a CosmosDB és a szinapszis-kapcsolaton keresztül. Határozottan javasoljuk, hogy tekintse át a szinapszis hivatkozás mintáját.
 
 ## <a name="hypothetical-scenario"></a>Feltételezett forgatókönyv
 
@@ -31,7 +31,7 @@ Az adatokat véletlenszerű gyakorisággal lehet kiugróan értelmezni. Ezekben 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
-* [Spark-készlettel](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool) konfigurált [Azure szinapszis-munkaterület](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)
+* [Kiszolgáló nélküli Apache Spark készlettel](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool) konfigurált [Azure szinapszis-munkaterület](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)
 
 ## <a name="setup"></a>Telepítés
 
@@ -98,7 +98,7 @@ df_anomaly.select("timestamp","value","deviceId","anomalies.isAnomaly").show(3)
 
 Ennek a cellának a következőhöz hasonló eredményt kell eredményeznie:
 
-| időbélyeg           |   érték | deviceId   | isAnomaly   |
+| időbélyeg           |   value | deviceId   | isAnomaly   |
 |:--------------------|--------:|:-----------|:------------|
 | 2020-05-01 18:33:51 |    3174 | dev-7      | Hamis       |
 | 2020-05-01 18:33:52 |    2976 | dev-7      | Hamis       |
@@ -149,6 +149,6 @@ Ha a művelet sikeres, a kimenet a következőképpen fog kinézni:
 
 ![Anomália-detektor ábrázolása](../media/anomaly-output.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan végezheti el a prediktív karbantartást az Azure Cognitive Services, az Azure szinapszis Analytics és az Azure CosmosDB használatával. További információ: teljes minta a [githubon](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples).

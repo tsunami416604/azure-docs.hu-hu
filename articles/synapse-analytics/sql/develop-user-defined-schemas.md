@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: aebe1d995f3cb6da4663876b8d39d36a1a8b16c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a21d2f0debb2ade8e46b0cdb5b3fa5b51f0a180c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030167"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323856"
 ---
 # <a name="user-defined-schemas-within-synapse-sql"></a>Felhasználó által definiált sémák a szinapszis SQL-en belül
 
@@ -27,7 +27,7 @@ A hagyományos elemzési architektúra gyakran külön adatbázisokat használ a
 Ehelyett a szinapszis SQL egy adatbázison belül futtatja a teljes elemzési munkafolyamatot. Az adatbázison keresztüli illesztések nem engedélyezettek. A szinapszis SQL elvárja, hogy a raktár által használt összes tábla az egy adatbázisban legyen tárolva.
 
 > [!NOTE]
-> Az SQL-készletek nem támogatják a különböző típusú adatbázisok lekérdezéseit. Ennek következtében az ezt a mintát használó elemzési implementációkat felül kell vizsgálni. Az SQL on-demand (előzetes verzió) támogatja az adatbázisok közötti lekérdezéseket.
+> A dedikált SQL-készletek nem támogatják a különböző típusú adatbázisok lekérdezéseit. Ennek következtében az ezt a mintát használó elemzési implementációkat felül kell vizsgálni. A kiszolgáló nélküli SQL-készlet (előzetes verzió) támogatja az adatbázison keresztüli lekérdezéseket.
 
 ## <a name="user-defined-schema-recommendations"></a>Felhasználó által definiált séma-javaslatok
 

@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: a36c7076de0c4db64b67f4eba38de4daf4213bca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f46222740ad668b8bb6ec9eb85e78efb0f673528
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446686"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322247"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Adatelérés védelme Azure Machine Learning
 
@@ -29,7 +29,7 @@ A Azure Machine Learning megkönnyíti a felhőben tárolt adataihoz való kapcs
     
 ## <a name="data-workflow"></a>Adatmunkafolyamat
 
-Ha készen áll a felhőalapú tárolási megoldásban tárolt adatfelhasználásra, javasoljuk, hogy a következő adattovábbítási munkafolyamatot ajánljuk. Ez a munkafolyamat feltételezi, hogy rendelkezik [Azure Storage-fiókkal](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) és-adattal az Azure felhőalapú tárolási szolgáltatásában. 
+Ha készen áll a felhőalapú tárolási megoldásban tárolt adatfelhasználásra, javasoljuk, hogy a következő adattovábbítási munkafolyamatot ajánljuk. Ez a munkafolyamat feltételezi, hogy rendelkezik [Azure Storage-fiókkal](../storage/common/storage-account-create.md?tabs=azure-portal) és-adattal az Azure felhőalapú tárolási szolgáltatásában. 
 
 1. Hozzon létre egy [Azure Machine learning adattárt](#datastores) a kapcsolódási adatok Azure Storage-ba való tárolásához.
 
@@ -81,9 +81,9 @@ Az adatkészletek helyi fájlokból, nyilvános URL-címekből, [Azure Open-adat
 
 Két típusú adatkészlet létezik: 
 
-+ A [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py&preserve-view=true) egy vagy több fájlt hivatkozik az adattárolókban vagy a nyilvános URL-címeken. Ha az adatok már ki vannak takarítva, és használatra készen állnak a betanítási kísérletekben, [letöltheti vagy csatlakoztathatja](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) a FileDatasets által hivatkozott fájlokat a számítási célra.
++ A [FileDataset](/python/api/azureml-core/azureml.data.file_dataset.filedataset?preserve-view=true&view=azure-ml-py) egy vagy több fájlt hivatkozik az adattárolókban vagy a nyilvános URL-címeken. Ha az adatok már ki vannak takarítva, és használatra készen állnak a betanítási kísérletekben, [letöltheti vagy csatlakoztathatja](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) a FileDatasets által hivatkozott fájlokat a számítási célra.
 
-+ A [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) táblázatos formátumban jeleníti meg az adatokat a megadott fájl vagy fájlok listájának elemzésével. A TabularDataset egy Panda vagy Spark DataFrame is betöltheti további manipuláció és tisztítás céljából. A TabularDatasets létrehozásához használható adatformátumok teljes listáját a [TabularDatasetFactory osztályban](https://aka.ms/tabulardataset-api-reference)tekintheti meg.
++ A [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) táblázatos formátumban jeleníti meg az adatokat a megadott fájl vagy fájlok listájának elemzésével. A TabularDataset egy Panda vagy Spark DataFrame is betöltheti további manipuláció és tisztítás céljából. A TabularDatasets létrehozásához használható adatformátumok teljes listáját a [TabularDatasetFactory osztályban](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory)tekintheti meg.
 
 Az adatkészletek további funkciói a következő dokumentációban találhatók:
 
@@ -100,7 +100,7 @@ Az adatkészletekkel számos gépi tanulási feladatot hajthat végre Azure Mach
      + a [tervező](tutorial-designer-automobile-price-train-score.md#import-data)
      + [notebookok](how-to-train-with-datasets.md)
      + [Azure Machine Learning folyamatok](how-to-create-your-first-pipeline.md)
-+ Az adatkészletek a [gépi tanulási folyamatokban](how-to-create-your-first-pipeline.md)a [Batch-következtetéssel](how-to-use-parallel-run-step.md) való pontozáshoz érhetők el.
++ Az adatkészletek a [gépi tanulási folyamatokban](how-to-create-your-first-pipeline.md)a [Batch-következtetéssel](./tutorial-pipeline-batch-scoring-classification.md) való pontozáshoz érhetők el.
 + Adatkészlet-figyelő beállítása az [adateltolódás](#drift) észleléséhez.
 
 <a name="label"></a>

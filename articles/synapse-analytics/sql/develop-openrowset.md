@@ -1,6 +1,6 @@
 ---
-title: A OPENROWSET használata igény szerinti SQL-ben (előzetes verzió)
-description: Ez a cikk az SQL on-demand (előzetes verzió) OPENROWSET szintaxisát ismerteti, és ismerteti az argumentumok használatát.
+title: A OPENROWSET használata kiszolgáló nélküli SQL-készletben (előzetes verzió)
+description: Ez a cikk a kiszolgáló nélküli SQL-készlet (előzetes verzió) OPENROWSET szintaxisát ismerteti, és ismerteti az argumentumok használatát.
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2ef09fd81aaeca92e87be2a0fddbc9be16ebac1d
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 5059b051b16107ac7508e509d319159651de11e3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242041"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324405"
 ---
-# <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>Igény szerinti SQL-OPENROWSET használata (előzetes verzió)
+# <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>A OPENROWSET használata kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
-A `OPENROWSET(BULK...)` függvény lehetővé teszi a fájlok elérését az Azure Storage-ban. `OPENROWSET` a függvény egy távoli adatforrás tartalmát olvassa be (például fájl), és a tartalmat sorok halmaza adja vissza. Az SQL on-demand (előzetes verzió) erőforráson belül a OPENROWSET tömeges sorhalmaz szolgáltatója a OPENROWSET függvény meghívásával és a TÖMEGES beállítás megadásával érhető el.  
+A `OPENROWSET(BULK...)` függvény lehetővé teszi a fájlok elérését az Azure Storage-ban. `OPENROWSET` a függvény egy távoli adatforrás tartalmát olvassa be (például fájl), és a tartalmat sorok halmaza adja vissza. A kiszolgáló nélküli SQL-készlet (előzetes verzió) erőforráson belül a OPENROWSET tömeges sorhalmaz szolgáltatója a OPENROWSET függvény meghívásával és a TÖMEGES beállítás megadásával érhető el.  
 
 A `OPENROWSET` függvény hivatkozhat a `FROM` lekérdezés záradékára úgy, mintha a tábla neve lenne `OPENROWSET` . Olyan beépített TÖMEGES szolgáltatón keresztül támogatja a tömeges műveleteket, amely lehetővé teszi, hogy egy fájlból származó adatok beolvassák és visszaadjanak a sorhalmazban.
 
@@ -131,12 +131,12 @@ Az adatelérési utat kiépítő unstructured_data_path abszolút vagy relatív 
 Az alábbi példa az összes olyan *CSV* -fájlt beolvassa, amely a */CSV/Population* kezdődő összes mappából származó *populációval* kezdődik:  
 `https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
-Ha a unstructured_data_path mappát adja meg, az SQL igény szerinti lekérdezése a mappában lévő fájlokat fogja lekérni. 
+Ha a unstructured_data_path mappaként adja meg, akkor a kiszolgáló nélküli SQL-készlet lekérdezése lekéri a fájlokat a mappából. 
 
 > [!NOTE]
-> A Hadoop és a Base függvénytől eltérően az SQL on-demand nem ad vissza almappákat. Emellett a Hadoop és a Base függvénytől eltérően az SQL igény szerint visszaadja azokat a fájlokat, amelyekhez a fájlnév aláhúzással (_) vagy ponttal (.) kezdődik.
+> A Hadoop és a bázistól eltérően a kiszolgáló nélküli SQL-készlet nem ad vissza almappákat. Emellett a Hadoop és a bázistól eltérően a kiszolgáló nélküli SQL-készlet olyan fájlokat ad vissza, amelyekhez a fájlnév aláhúzással (_) vagy ponttal (.) kezdődik.
 
-Ha az alábbi példában a unstructured_data_path =, az `https://mystorageaccount.dfs.core.windows.net/webdata/` SQL igény szerinti lekérdezése mydata.txt és _hidden.txt sorait fogja visszaadni. Nem ad vissza mydata2.txt és mydata3.txt, mert egy almappában találhatók.
+Ha az alábbi példában a unstructured_data_path = `https://mystorageaccount.dfs.core.windows.net/webdata/` , a kiszolgáló nélküli SQL-készlet lekérdezése mydata.txt és _hidden.txt sorait fogja visszaadni. Nem ad vissza mydata2.txt és mydata3.txt, mert egy almappában találhatók.
 
 ![Rekurzív adatértékek külső táblákhoz](./media/develop-openrowset/folder-traversal.png)
 
@@ -255,10 +255,10 @@ A Parquet-fájlok minden oszlop típusának leírását tartalmazzák. A követk
 | BINÁRIS |KARAKTERLÁNC |varchar \* (UTF8-rendezés) |
 | BINÁRIS |ENUM|varchar \* (UTF8-rendezés) |
 | BINÁRIS |UUID |uniqueidentifier |
-| BINÁRIS |DECIMÁLIS |decimal |
+| BINÁRIS |DECIMÁLIS |tizedes tört |
 | BINÁRIS |JSON |varchar (max) \* (UTF8-rendezés) |
 | BINÁRIS |BSON |varbinary (max.) |
-| FIXED_LEN_BYTE_ARRAY |DECIMÁLIS |decimal |
+| FIXED_LEN_BYTE_ARRAY |DECIMÁLIS |tizedes tört |
 | BYTE_ARRAY |IDŐKÖZ |varchar (max), szabványosított formátumba szerializálva |
 | INT32 |INT (8, igaz) |smallint |
 | INT32 |INT (16, igaz) |smallint |
@@ -267,11 +267,11 @@ A Parquet-fájlok minden oszlop típusának leírását tartalmazzák. A követk
 | INT32 |INT (16, hamis) |int |
 | INT32 |INT (32, hamis) |bigint |
 | INT32 |DATE |dátum |
-| INT32 |DECIMÁLIS |decimal |
+| INT32 |DECIMÁLIS |tizedes tört |
 | INT32 |IDŐ (MILLIS)|time |
 | INT64 |INT (64, true) |bigint |
 | INT64 |INT (64, hamis) |decimális (20, 0) |
-| INT64 |DECIMÁLIS |decimal |
+| INT64 |DECIMÁLIS |tizedes tört |
 | INT64 |IDŐ (MICROS/NANOS) |time |
 |INT64 |IDŐBÉLYEG (MILLIS/MICROES/NANOS) |datetime2 |
 |[Összetett típus](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |LISTÁJÁT |varchar (max), JSON-ba szerializálva |

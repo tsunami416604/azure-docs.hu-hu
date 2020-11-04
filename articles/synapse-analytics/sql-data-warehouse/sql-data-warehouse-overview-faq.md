@@ -1,6 +1,6 @@
 ---
 title: Azure szinapszis Analytics (korábban SQL DW) – gyakori kérdések
-description: Ez a cikk az Azure szinapszis Analytics (korábban SQL DW) ügyfelektől és fejlesztőktől származó gyakori kérdéseit sorolja fel.
+description: Ez a cikk az Azure szinapszis Analytics (korábbi nevén SQL DW) az ügyfelektől és a fejlesztőktől érkező gyakori kérdéseit sorolja fel.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 228fa18fef0f681437fd2c0c87e3114d14977a49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1e2f82ecd80579d19f3a8793db64f6b8a17a440
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462649"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323599"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure szinapszis Analytics (korábban SQL DW) – gyakori kérdések
 
@@ -29,9 +29,9 @@ K. Mi történt a Azure SQL Data Warehouse?
 
 A. Az Azure szinapszis Azure SQL Data Warehouse fejlődött. Ugyanezt az piacvezető adattárházat készítettük a teljesítmény és a képességek egész új szintjére. Az Azure szinapszis használatával folytathatja a meglévő adattárház-számítási feladatok futtatását az éles környezetben. További információ: [Mi az az Azure szinapszis Analytics](sql-data-warehouse-overview-what-is.md).
 
-K. Mi az a szinapszis SQL Pool?
+K. Mi az a dedikált SQL-készlet?
 
-A. A szinapszis SQL-készlet az Azure szinapszis szolgáltatással általánosan elérhető nagyvállalati adattárház-funkciókra utal. További információ: [Mi az az Azure szinapszis Analytics](sql-data-warehouse-overview-what-is.md).
+A. A dedikált SQL-készlet az Azure szinapszis szolgáltatással általánosan elérhető nagyvállalati adattárház-funkciókra utal. További információ: [Mi az az Azure szinapszis Analytics](sql-data-warehouse-overview-what-is.md).
 
 K. Hogyan az Azure szinapszis megkezdése?
 
@@ -49,7 +49,7 @@ K. Csatlakozhatok Power BIhoz?
 
 A. Igen! Habár Power BI támogatja az Azure szinapszis közvetlen lekérdezését, nem sok felhasználónak vagy valós idejű adatmennyiségnek a célja. A Power BI teljesítményének további optimalizálása érdekében érdemes lehet Power BIt használni a Azure Analysis Services vagy az Analysis Service IaaS.
 
-K. Mik a szinapszis SQL Pool kapacitási korlátai?
+K. Mik a dedikált SQL-készletek kapacitásának korlátai?
 
 A. Tekintse meg a jelenlegi [Kapacitási korlátok](sql-data-warehouse-service-capacity-limits.md) lapot.
 
@@ -83,15 +83,15 @@ A. Számos funkció támogatott. A nem támogatott funkciók a nem támogatott [
 
 ## <a name="tooling-and-administration"></a>Eszközök és felügyelet
 
-K. Támogatja a szinapszis SQL Pool a REST API-kat?
+K. Támogatja a dedikált SQL Pool a REST API-kat?
 
-A. Igen. A SQL Database használatával használható legtöbb REST-funkció a szinapszis SQL-készlettel is elérhető. A REST dokumentációs oldalain vagy [adatbázisaiban](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)találhat API-információkat.
+A. Igen. A SQL Database használható legtöbb REST-funkció a dedikált SQL-készlettel is elérhető. A REST dokumentációs oldalain vagy [adatbázisaiban](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)találhat API-információkat.
 
-## <a name="loading"></a>Betöltése
+## <a name="loading"></a>Betöltés
 
 K. Milyen ügyfél-illesztőprogramokat támogat?
 
-A. A szinapszis SQL-készlet illesztőprogram-támogatása a [kapcsolatok karakterláncok](../sql/connection-strings.md) oldalán található.
+A. A dedikált SQL-készlet illesztőprogram-támogatása a [kapcsolatok karakterláncok](../sql/connection-strings.md) oldalán található.
 
 K: milyen fájlformátumokat támogat a Base?
 
@@ -107,7 +107,7 @@ A: nem, a csak a Storage-összetevőkkel kommunikáló
 
 K: csatlakozhatok a HDI szolgáltatáshoz?
 
-A: a HDI a ADLS vagy a WASB is használhatja a HDFS rétegként. Ha a HDFS réteggel rendelkezik, az adatait egy szinapszis SQL-készletbe is betöltheti. Azonban nem hozhatja pushdown számítást a HDI-példányra.
+A: a HDI a ADLS vagy a WASB is használhatja a HDFS rétegként. Ha a HDFS réteggel rendelkezik, ezeket az adatait egy dedikált SQL-készletbe töltheti be. Azonban nem hozhatja pushdown számítást a HDI-példányra.
 
 ## <a name="next-steps"></a>Következő lépések
 

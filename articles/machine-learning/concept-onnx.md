@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: acaab8aaa12a107f4d0f8a8aac0baf7d5ebb8e4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7b818de12a968869d655a80917572ddf5f2c210
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87012758"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323006"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX és Azure Machine Learning: ML modellek létrehozása és felgyorsítása
 
@@ -28,10 +28,10 @@ A Microsoft és a partnerek egyik közössége nyílt szabványként hozta létr
 
 A [ONNX Runtime](https://onnxruntime.ai) egy nagy teljesítményű, a ONNX-modellek éles környezetben történő üzembe helyezéséhez használható. A felhő és a peremhálózat számára egyaránt optimalizált, és Linux, Windows és Mac rendszereken is működik. A C++ nyelven írt C, Python, C#, Java és JavaScript (Node.js) API-kat is tartalmaz különböző környezetekben való használathoz. Az ONNX Runtime támogatja mind a DNN, mind a hagyományos ML-modelleket, és integrálható a különböző hardveres gyorssegédekkel, például a TensorRT NVidia GPU-k, az Intel processzorok OpenVINO, a Windows DirectML és sok más szolgáltatással. A ONNX Runtime használatával kihasználhatja a nagy teljesítményű optimalizálási, tesztelési és folyamatos fejlesztéseket.
 
-A ONNX futtatókörnyezet nagy léptékű Microsoft-szolgáltatásokban, például a Bing, az Office és az Azure Cognitive Servicesban használatos. A teljesítménnyel kapcsolatos nyereségek számos tényezőtől függenek, de ezek a Microsoft-szolgáltatások __átlagosan 2x teljesítménybeli nyereséget észleltek a CPU__-ban. A szolgáltatások Azure Machine Learningán kívül a ONNX Runtime más, Machine Learning munkaterheléseket támogató termékekben is fut, beleértve a következőket:
-+ Windows: a futtatókörnyezet a Windows [Machine learning](https://docs.microsoft.com/windows/ai/windows-ml/) részeként van beépítve, és több száz millió eszközön fut. 
-+ Azure SQL termékcsalád: natív pontozás futtatása az [Azure SQL Edge](https://docs.microsoft.com/azure/azure-sql-edge/onnx-overview) -ben és az [Azure SQL felügyelt példányain](https://docs.microsoft.com/azure/azure-sql/managed-instance/machine-learning-services-overview).
-+ ML.NET: [ONNX modellek futtatása a ml.net-ben](https://docs.microsoft.com/dotnet/machine-learning/tutorials/object-detection-onnx).
+A ONNX futtatókörnyezet nagy léptékű Microsoft-szolgáltatásokban, például a Bing, az Office és az Azure Cognitive Servicesban használatos. A teljesítménnyel kapcsolatos nyereségek számos tényezőtől függenek, de ezek a Microsoft-szolgáltatások __átlagosan 2x teljesítménybeli nyereséget észleltek a CPU__ -ban. A szolgáltatások Azure Machine Learningán kívül a ONNX Runtime más, Machine Learning munkaterheléseket támogató termékekben is fut, beleértve a következőket:
++ Windows: a futtatókörnyezet a Windows [Machine learning](/windows/ai/windows-ml/) részeként van beépítve, és több száz millió eszközön fut. 
++ Azure SQL termékcsalád: natív pontozás futtatása az [Azure SQL Edge](../azure-sql-edge/onnx-overview.md) -ben és az [Azure SQL felügyelt példányain](../azure-sql/managed-instance/machine-learning-services-overview.md).
++ ML.NET: [ONNX modellek futtatása a ml.net-ben](/dotnet/machine-learning/tutorials/object-detection-onnx).
 
 
 [![ONNX-folyamatábra, amely bemutatja a képzést, a konvertereket és az üzembe helyezést](./media/concept-onnx/onnx.png)](././media/concept-onnx/onnx.png#lightbox)
@@ -42,7 +42,7 @@ A ONNX-modelleket többféleképpen is beszerezheti:
 + Új ONNX-modell betanítása a Azure Machine Learningban (lásd a cikk alján található példákat) vagy az [automatizált Machine learning képességek](concept-automated-ml.md#automl--onnx) használatával
 + Meglévő modell átalakítása más formátumból ONNX (lásd az [oktatóanyagokat](https://github.com/onnx/tutorials)) 
 + Előre betanított ONNX-modell beszerzése a [ONNX Model Zoo](https://github.com/onnx/models) -ból
-+ Testreszabott ONNX-modell létrehozása az [Azure Custom Vision szolgáltatásból](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) 
++ Testreszabott ONNX-modell létrehozása az [Azure Custom Vision szolgáltatásból](../cognitive-services/custom-vision-service/index.yml) 
 
 Számos modell, beleértve a képbesorolást, az objektumok észlelését és a ONNX modellként is megjeleníthető. Ha olyan hibába ütközne, amely nem alakítható át sikeresen, akkor a megfelelő átalakítóból egy olyan problémát kell megadnia, amelyet Ön használt. A probléma megoldása előtt továbbra is használhatja a meglévő Format modellt.
 
@@ -98,5 +98,3 @@ További információ a **ONNX** vagy a projekthez való hozzájárulásról:
 További információ a **ONNX futtatókörnyezetről** vagy a projekthez való hozzájárulásról:
 + [ONNX futásidejű projekt webhelye](https://onnxruntime.ai)
 + [ONNX futásidejű GitHub-tárház](https://github.com/Microsoft/onnxruntime)
-
-

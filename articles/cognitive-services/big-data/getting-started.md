@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 5256db4547f8c19960a6f470ce3c84b2eef25e24
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 444b76a594e768face892462da12a1cbb35a5106
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776612"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324683"
 ---
 # <a name="getting-started"></a>Első lépések
 
@@ -35,15 +35,15 @@ A felhőalapú Cognitive Services az Azure-ban üzemeltetett intelligens algorit
 
 ### <a name="containerized-services-optional"></a>Tároló szolgáltatások (nem kötelező)
 
-Ha az alkalmazás vagy a számítási feladat rendkívül nagy adatkészleteket használ, magánhálózat szükséges, vagy nem tud kapcsolatba lépni a felhővel, előfordulhat, hogy a felhőalapú szolgáltatásokkal folytatott kommunikáció nem lehetséges. Ebben az esetben a tároló Cognitive Services a következő előnyökkel jár:
+Ha az alkalmazás vagy a munkaterhelés nagyméretű adatkészleteket használ, magánhálózat szükséges, vagy nem tud kapcsolatba lépni a felhővel, előfordulhat, hogy a felhőalapú szolgáltatásokkal folytatott kommunikáció nem lehetséges. Ebben az esetben a tároló Cognitive Services a következő előnyökkel jár:
 
-* **Alacsony kapcsolat**: a tárolók Cognitive Services üzembe helyezése bármely számítástechnikai környezetben, a felhőben és a szolgáltatáson kívül is. Ha az alkalmazás nem tud kapcsolatba lépni a felhővel, vegye fontolóra a tárolók Cognitive Services telepítését az alkalmazáson.
+* **Alacsony kapcsolat** : a tárolók Cognitive Services üzembe helyezése bármely számítástechnikai környezetben, a felhőben és a szolgáltatáson kívül is. Ha az alkalmazás nem tud kapcsolatba lépni a felhővel, vegye fontolóra a tárolók Cognitive Services telepítését az alkalmazáson.
 
-* **Kis késés**: mivel a tároló szolgáltatások nem igénylik a felhőbe irányuló kétirányú kommunikációt, a válaszok sokkal alacsonyabb késéssel lesznek visszaadva.
+* **Kis késés** : mivel a tároló szolgáltatások nem igénylik a felhőbe irányuló kétirányú kommunikációt, a válaszok sokkal alacsonyabb késéssel lesznek visszaadva.
 
-* **Adatvédelem és**adatvédelem: a tárolón keresztüli szolgáltatásokat központilag telepítheti a hálózatba, így a bizalmas adatok nem hagyják el a hálózatot.
+* **Adatvédelem és** adatvédelem: a tárolón keresztüli szolgáltatásokat központilag telepítheti a hálózatba, így a bizalmas adatok nem hagyják el a hálózatot.
 
-* **Magas skálázhatóság**: a tároló szolgáltatások nem rendelkeznek a "díjszabási korlátokkal", és a felhasználó által felügyelt számítógépeken futnak. Így a Cognitive Services méretezés nélkül is méretezhető, így sokkal nagyobb számítási feladatokat kezelhet.
+* **Magas skálázhatóság** : a tároló szolgáltatások nem rendelkeznek a "díjszabási korlátokkal", és a felhasználó által felügyelt számítógépeken futnak. Így a Cognitive Services méretezés nélkül is méretezhető, így sokkal nagyobb számítási feladatokat kezelhet.
 
 Kövesse [ezt az útmutatót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support?tabs=luis) egy tárolós kognitív szolgáltatás létrehozásához.
 
@@ -70,7 +70,7 @@ A Azure Databricks egy Apache Spark-alapú elemzési platform, amely egy kattint
 A szinapszis Analytics használatával Spark-fürtöt is létrehozhat. Az Azure szinapszis Analytics egyesíti a vállalati adattárházat és a big data elemzéseket. Lehetővé teszi, hogy a feltételek alapján lekérdezzen egy kiszolgáló nélküli igény szerinti vagy kiépített erőforrást a skálán. A szinapszis Analytics használatának megkezdéséhez kövesse az alábbi lépéseket:
 
 1. [Hozzon létre egy szinapszis-munkaterületet (előzetes verzió)](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace).
-1. [Hozzon létre egy új Apache Spark készletet (előzetes verzió) a Azure Portal használatával](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool-portal).
+1. [Hozzon létre egy új kiszolgáló nélküli Apache Spark készletet (előzetes verzió) a Azure Portal használatával](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool-portal).
 
 A szinapszis Analyticsben alapértelmezés szerint a Cognitive Services Big default típusú adatmennyiség van telepítve.
 
@@ -100,7 +100,7 @@ Először is létrehozhatunk egy jegyzetfüzetet Azure Databricks. Más Spark-f�
 
     Kattintson a **Létrehozás** gombra.
 
-1. Illessze be az alábbi kódrészletet az új jegyzetfüzetbe.
+1. Illessze be ezt a kódrészletet az új jegyzetfüzetbe.
 
 ```python
 from mmlspark.cognitive import *

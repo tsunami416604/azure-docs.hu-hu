@@ -8,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: e807cde2d99cf23d459b395444d642e46ada32ab
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3b5f96e60e088f94561bf3398469ec913a71bba6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93071453"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322449"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Rövid útmutató: a Windows Data Science Virtual Machine beállítása
 
@@ -41,13 +41,13 @@ DSVM-példány létrehozása:
       * **Virtuális gép neve** : adja meg a virtuális gép nevét. Így fog megjelenni a Azure Portalban.
       * **Hely** : válassza ki a legmegfelelőbb adatközpontot. A leggyorsabb hálózati hozzáféréshez ez az adatközpont, amely a legtöbb adattal rendelkezik, vagy a legközelebb áll a fizikai helyhez. További információ az [Azure-régiókról](https://azure.microsoft.com/global-infrastructure/regions/).
       * **Rendszerkép** : hagyja meg az alapértelmezett értéket.
-      * **Méret** : az általános számítási feladatokhoz megfelelő méretű automatikus feltöltést kell megadni. További információ a [Windowsos virtuális gépek méretéről az Azure-ban](../../virtual-machines/windows/sizes.md).
+      * **Méret** : az általános számítási feladatokhoz megfelelő méretű automatikus feltöltést kell megadni. További információ a [Windowsos virtuális gépek méretéről az Azure-ban](../../virtual-machines/sizes.md).
       * **Felhasználónév** : adja meg a rendszergazda felhasználónevét. Ezt a felhasználónevet fogja használni a virtuális gépre való bejelentkezéshez, és nem kell megegyeznie az Azure-felhasználónévvel.
       * **Password (jelszó** ): adja meg a virtuális gépre való bejelentkezéshez használni kívánt jelszót.    
 1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 1. **Felülvizsgálat + létrehozás**
    * Győződjön meg arról, hogy a megadott összes adat helyes. 
-   * Válassza a **Létrehozás** lehetőséget.
+   * Kattintson a **Létrehozás** gombra.
 
 
 > [!NOTE]
@@ -56,7 +56,7 @@ DSVM-példány létrehozása:
 
 ## <a name="access-the-dsvm"></a>A DSVM elérése
 
-A virtuális gép létrehozása és üzembe helyezése után kövesse a felsorolt lépéseket az [Azure-alapú virtuális géphez való kapcsolódáshoz](https://docs.microsoft.com/azure/marketplace/azure-vm-create-using-approved-base). Használja a virtuális gép létrehozásának **alapjai** lépésében konfigurált rendszergazdai fiók hitelesítő adatait. 
+A virtuális gép létrehozása és üzembe helyezése után kövesse a felsorolt lépéseket az [Azure-alapú virtuális géphez való kapcsolódáshoz](../../marketplace/azure-vm-create-using-approved-base.md). Használja a virtuális gép létrehozásának **alapjai** lépésében konfigurált rendszergazdai fiók hitelesítő adatait. 
 
 Készen áll a virtuális gépen telepített és konfigurált eszközök használatának megkezdésére. A **Start** menü csempéi és asztali ikonjai számos eszközt is elérhet.
 
@@ -70,4 +70,3 @@ Emellett DSVM is csatolhat Azure Notebooks a Jupyter notebookok futtatásához a
 * A **Start** menü megnyitásával tárja fel a DSVM található eszközöket.
 * Ismerje meg a Azure Machine Learningt, ha elolvasta [, mi az Azure Machine learning?](../overview-what-is-azure-ml.md) , és próbálja ki az [oktatóanyagokat](../index.yml).
 * Olvassa el az [adatelemzési cikk a Windows Data Science Virtual Machine az Azure-ban](./vm-do-ten-things.md) című cikket
-

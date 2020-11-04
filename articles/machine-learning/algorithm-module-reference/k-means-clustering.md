@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/04/2020
-ms.openlocfilehash: 97cadfb8f5004cfd2701335172d4416c64f05259
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e0b61c1ca6ae30044e4c9d4705bdce01eac1942
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907873"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323685"
 ---
 # <a name="module-k-means-clustering"></a>Modul: K – fürtözést jelenti
 
@@ -22,7 +22,7 @@ Ez a cikk azt ismerteti, hogyan használható a *"k-meaning" típusú fürtözé
  
 A K-means az egyik legegyszerűbb és legismertebb, nem *felügyelt* tanulási algoritmus. Az algoritmus számos gépi tanulási feladathoz használható, például: 
 
-* [Rendellenes adatelemzések észlelése](https://msdn.microsoft.com/magazine/jj891054.aspx).
+* [Rendellenes adatelemzések észlelése](/archive/msdn-magazine/2013/february/data-clustering-detecting-abnormal-data-using-k-means-clustering).
 * Fürtözött szöveges dokumentumok.
 * Adatkészletek elemzése más besorolási vagy regressziós módszerek használata előtt. 
 
@@ -58,46 +58,46 @@ Amikor feldolgozza a betanítási adatmennyiséget, a K-means algoritmus a véle
   
 2.  A modell képzésének megadásához válassza az **oktatói mód létrehozása** lehetőséget.  
   
-    -   **Egyetlen paraméter**: Ha ismeri a fürtözési modellben használni kívánt pontos paramétereket, megadhatja az értékek egy adott halmazát argumentumként.  
+    -   **Egyetlen paraméter** : Ha ismeri a fürtözési modellben használni kívánt pontos paramétereket, megadhatja az értékek egy adott halmazát argumentumként.  
   
-3.  A **Centroids száma**mezőben adja meg, hogy hány fürtből kell kezdeni az algoritmust.  
+3.  A **Centroids száma** mezőben adja meg, hogy hány fürtből kell kezdeni az algoritmust.  
   
      A modell nem garantált, hogy pontosan ezt a számú fürtöt hozza létre. Az algoritmus ezzel a számú adatponttal és iterációval kezdődik az optimális konfiguráció megtalálásához. A [sklearn forráskódját](https://github.com/scikit-learn/scikit-learn/blob/fd237278e/sklearn/cluster/_kmeans.py#L1069)a következő címen tekintheti meg:.
   
 4.  A tulajdonságok **inicializálásával** adhatja meg a fürt kezdeti konfigurációjának definiálásához használt algoritmust.  
   
-    -   **Első N**: egyes adatpontok kezdeti száma az adatkészletből van kiválasztva, és a kezdeti módon használatos. 
+    -   **Első N** : egyes adatpontok kezdeti száma az adatkészletből van kiválasztva, és a kezdeti módon használatos. 
     
-         Ezt a metódust *hamis metódusnak*is nevezzük.  
+         Ezt a metódust *hamis metódusnak* is nevezzük.  
   
-    -   **Véletlenszerű**: az algoritmus véletlenszerűen elhelyez egy adatpontot a fürtben, majd kiszámítja a kezdeti középértéket, hogy a fürt véletlenszerűen hozzárendelt pontjainak középpontját legyen. 
+    -   **Véletlenszerű** : az algoritmus véletlenszerűen elhelyez egy adatpontot a fürtben, majd kiszámítja a kezdeti középértéket, hogy a fürt véletlenszerűen hozzárendelt pontjainak középpontját legyen. 
 
          Ezt a metódust *véletlenszerű partíciós* metódusnak is nevezzük.  
   
-    -   **K-azt jelenti + +**: ez az alapértelmezett módszer a fürtök inicializálásához.  
+    -   **K-azt jelenti + +** : ez az alapértelmezett módszer a fürtök inicializálásához.  
   
          A **k-= + +** algoritmust a 2007-as, David Arthur és Szergej Vassilvitskii javasolta, hogy elkerülje a standard k-means algoritmus általi gyenge fürtözést. A **k-azt jelenti** , hogy a + + és a standard szintű k-t is javítja, ha más módszert használ a kezdeti fürtcsomópontok kiválasztásához.  
   
     
-5.  A **véletlenszerű számú magok**esetében szükség esetén adja meg a fürt inicializálásának magjaként használandó értéket. Ez az érték jelentős hatással lehet a fürt kiválasztására.  
+5.  A **véletlenszerű számú magok** esetében szükség esetén adja meg a fürt inicializálásának magjaként használandó értéket. Ez az érték jelentős hatással lehet a fürt kiválasztására.  
   
-6.  A **metrika**mezőben válassza ki a fürt vektorai közötti távolság, illetve az új adatpontok és a véletlenszerűen kiválasztott középpontját közötti távolság méréséhez használni kívánt függvényt. Azure Machine Learning a következő szektorcsoport-távolsági metrikákat támogatja:  
+6.  A **metrika** mezőben válassza ki a fürt vektorai közötti távolság, illetve az új adatpontok és a véletlenszerűen kiválasztott középpontját közötti távolság méréséhez használni kívánt függvényt. Azure Machine Learning a következő szektorcsoport-távolsági metrikákat támogatja:  
   
-    -   **Euklideszi**: a euklideszi távolságot általában a fürtök szórásának mértékéhez használják, amely a fürtözést jelenti. Ez a mérőszám előnyben részesített, mert a lekicsinyíti a pontok és a centroids közötti átlagos távolságot.
+    -   **Euklideszi** : a euklideszi távolságot általában a fürtök szórásának mértékéhez használják, amely a fürtözést jelenti. Ez a mérőszám előnyben részesített, mert a lekicsinyíti a pontok és a centroids közötti átlagos távolságot.
   
-7.  Az **Ismétlések**mezőben adja meg, hogy az algoritmus hány alkalommal ismételje meg a betanítási adatmennyiséget, mielőtt véglegesíti a centroids kiválasztását.  
+7.  Az **Ismétlések** mezőben adja meg, hogy az algoritmus hány alkalommal ismételje meg a betanítási adatmennyiséget, mielőtt véglegesíti a centroids kiválasztását.  
   
      Ezt a paramétert beállíthatja úgy, hogy a pontosságot kiegyensúlyozza a képzési idő alapján.  
   
-8.  A **címke-hozzárendelési mód**beállításnál válassza ki azt a lehetőséget, amely meghatározza, hogy a felirat oszlop hogyan legyen kezelve az adatkészletben.  
+8.  A **címke-hozzárendelési mód** beállításnál válassza ki azt a lehetőséget, amely meghatározza, hogy a felirat oszlop hogyan legyen kezelve az adatkészletben.  
   
      Mivel a K-azt jelenti, hogy a fürtözés nem felügyelt gépi tanulási módszer, a címkék megadása nem kötelező. Ha azonban az adatkészlet már rendelkezik címke oszloppal, ezeket az értékeket használhatja a fürtök kijelölésének irányításához, vagy megadhatja, hogy a rendszer figyelmen kívül hagyja-e az értékeket.  
   
-    -   **Címke oszlopának mellőzése**: a címke oszlopban szereplő értékek figyelmen kívül lesznek hagyva, és nem használatosak a modell felépítésekor.
+    -   **Címke oszlopának mellőzése** : a címke oszlopban szereplő értékek figyelmen kívül lesznek hagyva, és nem használatosak a modell felépítésekor.
   
-    -   **Hiányzó értékek kitöltése**: a címke oszlop értékei a fürtök létrehozásához használható funkciókként használatosak. Ha bármelyik sorban hiányzik egy címke, az érték más funkciók használatával lesz beszámítva.  
+    -   **Hiányzó értékek kitöltése** : a címke oszlop értékei a fürtök létrehozásához használható funkciókként használatosak. Ha bármelyik sorban hiányzik egy címke, az érték más funkciók használatával lesz beszámítva.  
   
-    -   **Felülírás a legközelebb a középponthoz**: a felirat oszlopainak értékei az aktuális középpontját legközelebb eső pont címkéjével lesznek lecserélve.  
+    -   **Felülírás a legközelebb a középponthoz** : a felirat oszlopainak értékei az aktuális középpontját legközelebb eső pont címkéjével lesznek lecserélve.  
 
 8.  Válassza a **funkciók normalizálása** lehetőséget, ha a betanítás előtt szeretné normalizálni a szolgáltatásokat.
   
@@ -105,7 +105,7 @@ Amikor feldolgozza a betanítási adatmennyiséget, a K-means algoritmus a véle
 
 10. A modell betanítása.  
   
-    -   Ha úgy állítja be az **oktatói módot** , hogy **egyetlen paramétert**adjon meg, vegyen fel egy címkézett adatkészletet, és adja ki a modellt a [vonat-fürtszolgáltatási modell](train-clustering-model.md) modullal.  
+    -   Ha úgy állítja be az **oktatói módot** , hogy **egyetlen paramétert** adjon meg, vegyen fel egy címkézett adatkészletet, és adja ki a modellt a [vonat-fürtszolgáltatási modell](train-clustering-model.md) modullal.  
   
 ## <a name="results"></a>Results (Eredmények)
 
@@ -127,7 +127,7 @@ Ha a vonat- [fürtszolgáltatási modell](train-clustering-model.md) modult hasz
 
 1. Kattintson a jobb gombbal a **vonat-fürtszolgáltatási modell** modulra.
 
-2. Válassza a **Megjelenítés**lehetőséget.
+2. Válassza a **Megjelenítés** lehetőséget.
 
 ### <a name="tips-for-generating-the-best-clustering-model"></a>Tippek a legjobb fürtözési modell létrehozásához  
 
@@ -145,4 +145,4 @@ A fürtözési modellek esetében általánosságban lehetséges, hogy bármely 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

@@ -1,5 +1,5 @@
 ---
-title: Azure Analysis Services kód-, projekt-és adatbázis-minták | Microsoft Docs
+title: Kód-, projekt-és adatbázis-minták Azure Analysis Services
 description: Ez a cikk a Azure Analysis Services programkód-, projekt-és adatbázis-mintáinak megismerésére szolgáló forrásokat ismerteti.
 author: minewiskan
 ms.service: azure-analysis-services
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b63581b5192c93a8377a642c21eacbd291579b22
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 920cc5142d14308fce412ad44543ddc46dc1663e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013678"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324371"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services minták
 
@@ -28,7 +28,7 @@ A GitHubon futó [Analysis Services Adventure működik](https://github.com/Micr
 
 ## <a name="sample-database-on-azure"></a>Mintaadatbázis az Azure-ban
 
-Az Azure szinapszis Analytics (SQL Data Warehouse) egy minta AdventureWorksDW-adatbázist biztosít, amely egy kiépített erőforrásban is szerepelhet. További információ: gyors útmutató [: Azure szinapszis Analytics SQL-készlet létrehozása és lekérdezése](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
+Az Azure szinapszis Analytics (korábban SQL Data Warehouse) egy minta AdventureWorksDW-adatbázist biztosít, amely egy kiépített erőforrásban is szerepelhet. További információ: gyors útmutató [: DEDIKÁLT SQL-készlet létrehozása és lekérdezése az Azure szinapszis Analyticsben ](/azure/sql-data-warehouse/create-data-warehouse-portal).
 
 ## <a name="sample-databases-on-github"></a>Minta-adatbázisok a GitHubon
 
@@ -40,7 +40,7 @@ A GitHubon található minta-adatbázisok a saját modelljeinek létrehozására
 
 ## <a name="adventure-works-internet-sales-sample-model-in-azure-portal"></a>Adventure Works internetes értékesítési minta modell Azure Portal
 
-Ha Azure Portal Analysis Services-kiszolgálóval rendelkezik, gyorsan és könnyen létrehozhat egy minta modellt. A Azure Portal-kiszolgáló áttekintés lapján kattintson az **új modell**elemre, majd az **adatforrás választása**területen válassza a **mintaadatok**elemet.
+Ha Azure Portal Analysis Services-kiszolgálóval rendelkezik, gyorsan és könnyen létrehozhat egy minta modellt. A Azure Portal-kiszolgáló áttekintés lapján kattintson az **új modell** elemre, majd az **adatforrás választása** területen válassza a **mintaadatok** elemet.
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: A T-SQL nyelvi elemei
-description: A szinapszis SQL-készletben támogatott T-SQL nyelvi elemek dokumentációjának hivatkozásai.
+title: A T-SQL nyelvi elemei a dedikált SQL-készlethez
+description: Az Azure szinapszis Analytics szolgáltatásban a dedikált SQL-készlet által támogatott T-SQL nyelvi elemek dokumentációjának hivatkozásai.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: bccbe67c1ea4b93a7a1938fbab6b6f3d06cb5da3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 966df3be13eda4450608d42890fcfe2240ac61a9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289497"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324654"
 ---
-# <a name="t-sql-language-elements-supported-in-synapse-sql-pool"></a>A szinapszis SQL-készletben támogatott T-SQL nyelvi elemek
+# <a name="t-sql-language-elements-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>A T-SQL nyelvi elemei a dedikált SQL-készlethez az Azure szinapszis Analyticsben 
 
-A szinapszis SQL-készletben támogatott T-SQL nyelvi elemek dokumentációjának hivatkozásai.
+A dedikált SQL-készletben támogatott T-SQL nyelvi elemek dokumentációjának hivatkozásai.
 
 ## <a name="core-elements"></a>Alapvető elemek
 
@@ -290,4 +290,4 @@ A szinapszis SQL-készletben támogatott T-SQL nyelvi elemek dokumentációjána
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ: [T-SQL-utasítások a SZINAPSZIS SQL-készletben](sql-data-warehouse-reference-tsql-statements.md), valamint [rendszernézetek a szinapszis SQL-készletben](../sql/reference-tsql-system-views.md).
+További információ: [T-SQL-utasítások a DEDIKÁLT SQL-készletben](sql-data-warehouse-reference-tsql-statements.md)és a [rendszernézetek a dedikált SQL-készletben](../sql/reference-tsql-system-views.md).

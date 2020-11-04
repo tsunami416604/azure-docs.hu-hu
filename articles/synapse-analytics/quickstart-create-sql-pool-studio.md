@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: szinapszis SQL-készlet létrehozása a szinapszis Studio használatával'
-description: Hozzon létre egy új szinapszis SQL-készletet a szinapszis Studio használatával az útmutató lépéseinek követésével.
+title: 'Rövid útmutató: dedikált dedikált SQL-készlet létrehozása a szinapszis Studio használatával'
+description: Hozzon létre egy dedikált SQL-készletet a szinapszis Studio használatával az útmutató lépéseinek követésével.
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 10/16/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 806831ac5e965afcd076066f4baa498297a43a3e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 6ffa7bb07ddb42946acdcef6ee3b7f2aa804f774
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740508"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324299"
 ---
-# <a name="quickstart-create-a-synapse-sql-pool-using-synapse-studio"></a>Rövid útmutató: szinapszis SQL-készlet létrehozása a szinapszis Studio használatával
+# <a name="quickstart-create-a-dedicated-sql-pool-using-synapse-studio"></a>Rövid útmutató: dedikált SQL-készlet létrehozása a szinapszis Studio használatával
 
-Az Azure szinapszis Analytics számos analitikai motort kínál az adatai betöltéséhez, átalakításához, modellezéséhez és elemzéséhez. Az SQL-készlet A T-SQL-alapú számítási és tárolási funkciókat kínál. Miután létrehozta az SQL-készletet a szinapszis munkaterületen, az adatmennyiség betölthető, modellezhető, feldolgozható és leküldhető a gyorsabb elemzési elemzéshez.
+Az Azure szinapszis Analytics számos analitikai motort kínál az adatai betöltéséhez, átalakításához, modellezéséhez és elemzéséhez. A dedikált SQL-készlet A T-SQL-alapú számítási és tárolási funkciókat kínál. Miután létrehozott egy dedikált SQL-készletet a szinapszis munkaterületen, az adat betölthető, modellezhető, feldolgozható és leküldhető a gyorsabb elemzési elemzéshez.
 
-Ez a rövid útmutató ismerteti, hogyan hozhat létre SQL-készletet egy szinapszis-munkaterületen a szinapszis Studio használatával.
+Ez a rövid útmutató ismerteti, hogyan hozhat létre dedikált SQL-készletet egy szinapszis-munkaterületen a szinapszis Studio használatával.
 
 Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/).
 
@@ -36,7 +36,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
 
 ## <a name="navigate-to-the-synapse-workspace"></a>Navigáljon a szinapszis munkaterületre
 
-1. Navigáljon ahhoz a szinapszis-munkaterülethez, ahol az SQL-készletet hozza létre, majd írja be a szolgáltatás nevét (vagy az erőforrás nevét közvetlenül) a keresősávba.
+1. Navigáljon ahhoz a szinapszis-munkaterülethez, ahol a dedikált SQL-készlet létre lesz hozva. Ehhez írja be a szolgáltatás nevét (vagy az erőforrás nevét közvetlenül) a keresősávba.
 
     ![Azure Portal keresési sáv, amelyben szinapszis-munkaterületek vannak beírva.](media/quickstart-create-sql-pool/create-sql-pool-00a.png)
 1. A munkaterületek listájából írja be a megnyitni kívánt munkaterület nevét (vagy annak egy részét). Ebben a példában egy **contosoanalytics** nevű munkaterületet fogunk használni.
@@ -45,11 +45,11 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
 
 ## <a name="launch-synapse-studio"></a>A Synapse Studio indítása
 
-1. A munkaterület áttekintés területén válassza a **szinapszis Studio elindítása** lehetőséget, hogy megnyissa azt a helyet, ahol az SQL-készlet létre lesz hozva. Írja be a szolgáltatás nevét vagy az erőforrás nevét közvetlenül a keresősávba.
+1. A munkaterület-Áttekintés lapon válassza ki a **munkaterület webes URL-címét** a szinapszis Studio elindításához.
 
-    ![Azure Portal szinapszis-munkaterület áttekintése](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-20.png)
+    ![Azure Portal szinapszis-munkaterület áttekintése a munkaterület webes URL-címével kiemelve.](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-20.png)
 
-## <a name="create-a-sql-pool-in-synapse-studio"></a>SQL-készlet létrehozása a szinapszis Studióban
+## <a name="create-a-dedicated-sql-pool-in-synapse-studio"></a>Dedikált SQL-készlet létrehozása a szinapszis Studióban
 
 1. A szinapszis Studio kezdőlapján navigáljon a **felügyeleti hubhoz** a bal oldali navigációs sávon a **kezelés** ikonra kattintva.
 
@@ -67,12 +67,12 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
 
     | Beállítás | Ajánlott érték | Leírás |
     | :------ | :-------------- | :---------- |
-    | **SQL-készlet neve** | contosoedw | Ez az a név, amelyet az SQL-készlet fog tartalmazni. |
+    | **SQL-készlet neve** | contosoedw | Ez a név, amelyet a dedikált SQL-készlet fog tartalmazni. |
     | **Teljesítményszint** | DW100c | Állítsa be ezt a legkisebb méretre a rövid útmutató költségeinek csökkentése érdekében |
 
     ![SQL-készletek létrehozási folyamat – alapbeállítások lap.](media/quickstart-create-sql-pool/create-sql-pool-studio-24.png)
     > [!IMPORTANT]
-    > Vegye figyelembe, hogy az SQL-készletek által használható nevekre vonatkozó korlátozások érvényesek. A nevek nem tartalmazhatnak speciális karaktereket, csak 15 karakterből állhatnak, és nem tartalmazhatnak fenntartott szavakat, és egyedinek kell lenniük a munkaterületen.
+    > Vegye figyelembe, hogy a dedikált SQL-készletek által használható nevekre vonatkozó korlátozások érvényesek. A nevek nem tartalmazhatnak speciális karaktereket, csak 15 karakterből állhatnak, és nem tartalmazhatnak fenntartott szavakat, és egyedinek kell lenniük a munkaterületen.
 
 4. A következő lapon a **További beállítások** területen válassza a **nincs** lehetőséget, ha az SQL-készletet szeretné kiépíteni az információk nélkül. Az alapértelmezett rendezést hagyja kiválasztva.
 
@@ -90,24 +90,24 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
 
     ![SQL-készlet folyamat létrehozása – erőforrás-kiépítés.](media/quickstart-create-sql-pool/create-sql-pool-studio-27.png)
 
-1. Az SQL-készlet létrehozása után a munkaterület elérhető lesz az adatok betöltéséhez, a streamek feldolgozásához, a tótól való olvasáshoz stb.
+1. A dedikált SQL-készlet létrehozása után elérhető lesz a munkaterületen az adatok betöltéséhez, a streamek feldolgozásához, a tótól való olvasáshoz stb.
 
-## <a name="clean-up-sql-pools-using-synapse-studio"></a>SQL-készletek tisztítása a szinapszis Studio használatával    
+## <a name="clean-up-dedicated-sql-pool-using-synapse-studio"></a>Dedikált SQL-készlet tisztítása a szinapszis Studio használatával    
 
-Az alábbi lépések végrehajtásával törölheti az SQL-készletet a munkaterületről a szinapszis Studio használatával.
+Az alábbi lépések végrehajtásával törölje a dedikált SQL-készletet a munkaterületről a szinapszis Studio használatával.
 > [!WARNING]
-> Ha töröl egy SQL-készletet, a rendszer eltávolítja az elemzési motort a munkaterületről. Többé nem lesz lehetséges a készlethez való kapcsolódás, és az SQL-készletet használó összes lekérdezés, folyamat és szkript többé nem fog működni.
+> Ha egy dedikált SQL-készletet töröl, a rendszer eltávolítja az elemzési motort a munkaterületről. Többé nem lesz lehetséges a készlethez való kapcsolódás, és a dedikált SQL-készletet használó összes lekérdezés, folyamat és szkript többé nem fog működni.
 
-Ha törölni szeretné az SQL-készletet, tegye a következőket:
+Ha törölni szeretné a dedikált SQL-készletet, tegye a következőket:
 
 1. Navigáljon az SQL-készletekhez a szinapszis Studióban, a felügyeleti központban.
-1. Válassza ki a törölni kívánt SQL-készlet három pontját (ebben az esetben **contosoedw** ) az SQL-készlet parancsainak megjelenítéséhez:
+1. Válassza ki a törölni kívánt dedikált SQL-készlet három pontját (ebben az esetben **contosoedw** ) a dedikált SQL-készlet parancsainak megjelenítéséhez:
 
     ![Az SQL-készletek listázása a közelmúltban létrehozott készlettel.](media/quickstart-create-sql-pool/create-sql-pool-studio-28.png)
 1. Nyomja le a **delete** billentyűt.
 1. Erősítse meg a törlést, majd nyomja le a **delete (Törlés** ) gombot.
-1. Ha a folyamat sikeresen befejeződik, az SQL-készlet többé nem jelenik meg a munkaterület erőforrásaiban.
+1. Ha a folyamat sikeresen befejeződik, a dedikált SQL-készlet többé nem jelenik meg a munkaterület erőforrásaiban.
 
 ## <a name="next-steps"></a>Következő lépések 
 - Tekintse meg a rövid útmutató [: Apache Spark jegyzetfüzet létrehozása](quickstart-apache-spark-notebook.md)című témakört.
-- Lásd [: gyors útmutató: SZINAPSZIS SQL-készlet létrehozása a Azure Portal használatával](quickstart-create-sql-pool-portal.md).
+- Lásd [: gyors útmutató: DEDIKÁLT SQL-készlet létrehozása a Azure Portal használatával](quickstart-create-sql-pool-portal.md).

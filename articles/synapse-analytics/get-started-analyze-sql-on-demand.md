@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: az adatelemzés első lépései a serverles SQL-sel'
-description: Ebből az oktatóanyagból megtudhatja, hogyan elemezheti az SQL-on keresztül igénybe venni kívánt információkat a Spark-adatbázisokban található adatforrások használatával.
+title: 'Oktatóanyag: az adatelemzés megkezdése kiszolgáló nélküli SQL-készlettel'
+description: Ebből az oktatóanyagból megtudhatja, hogyan elemezheti az információkat egy kiszolgáló nélküli SQL-készlettel a Spark-adatbázisokban található adatforrások használatával.
 services: synapse-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,20 +10,20 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: fa87ee06e0ed01828148a58b2d2f754a40d8803a
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 4ca9ababbeb7843f1a014a4bd51a5e24a74acbae
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088465"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322942"
 ---
-# <a name="analyze-data-with-sql-on-demand"></a>Az SQL igény szerinti elemzése
+# <a name="analyze-data-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Az Azure szinapszis Analytics szolgáltatásban kiszolgáló nélküli SQL-készlettel elemezheti az adatelemzést
 
-Ebből az oktatóanyagból megtudhatja, hogyan elemezheti az adatforrást a kiszolgáló nélküli SQL használatával egy igény szerinti SQL-készlettel a Spark-adatbázisokban található adatforrások használatával. 
+Ebből az oktatóanyagból megtudhatja, hogyan elemezheti az információkat a kiszolgáló nélküli SQL-készlettel a Spark-adatbázisokban található adatforrások használatával. 
 
-## <a name="analyze-nyc-taxi-data-in-blob-storage-using-sql-on-demand-pool"></a>NYC-alapú taxi-adatelemzés a blob Storage-ban SQL igény szerinti készlet használatával
+## <a name="analyze-nyc-taxi-data-in-blob-storage-using-serverless-sql-pool"></a>NYC-alapú taxi-adatelemzés a blob Storage-ban kiszolgáló nélküli SQL-készlettel
 
-1. Az **adatközpontban** kattintson a jobb gombbal az **Azure Blob Storage > minta adatkészletek > nyc_tlc_yellow** elemre **, és**válassza a **legfelső 100-sorok kiválasztása** lehetőséget.
+1. Az **adatközpontban** kattintson a jobb gombbal az **Azure Blob Storage > minta adatkészletek > nyc_tlc_yellow** elemre **, és** válassza a **legfelső 100-sorok kiválasztása** lehetőséget.
 1. Ekkor létrejön egy új SQL-parancsfájl a következő kóddal:
 
     ```
@@ -37,12 +37,12 @@ Ebből az oktatóanyagból megtudhatja, hogyan elemezheti az adatforrást a kisz
     ```
 1. Kattintson a **Futtatás** gombra.
 
-## <a name="analyze-nyc-taxi-data-in-spark-databases-using-sql-on-demand"></a>NYC-alapú taxi-adatelemzés a Spark-adatbázisokban az SQL igény szerinti használatával
+## <a name="analyze-nyc-taxi-data-in-spark-databases-using-serverless-sql-pool"></a>New York-i taxi-adatelemzés a Spark-adatbázisokban kiszolgáló nélküli SQL-készlettel
 
-A Spark-adatbázisok táblái automatikusan láthatók, és az SQL igény szerint is lekérdezhető.
+A Spark-adatbázisok táblái automatikusan láthatók, és a kiszolgáló nélküli SQL-készlet által is lekérdezhető.
 
 1. A szinapszis Studióban nyissa meg a **fejlesztés** csomópontot, és hozzon létre egy új SQL-szkriptet.
-1. Állítsa be a **Kapcsolódás** az **SQL-hez igény szerint**lehetőséget.
+1. Állítsa be **a kapcsolódás** **kiszolgáló nélküli SQL-készlethez** lehetőséget.
 1. Illessze be a következő szöveget a parancsfájlba, és futtassa a parancsfájlt.
 
     ```sql
@@ -51,7 +51,7 @@ A Spark-adatbázisok táblái automatikusan láthatók, és az SQL igény szerin
     ```
 
     > [!NOTE]
-    > Amikor először futtat egy SQL on-demand lekérdezést, a lekérdezés futtatásához szükséges SQL-erőforrások összegyűjtéséhez körülbelül 10 másodpercre van szükség az SQL igény szerint. A további lekérdezések sokkal gyorsabban fognak megjelenni.
+    > Amikor a kiszolgáló nélküli SQL-készletet használó lekérdezést először futtatja, a kiszolgáló nélküli SQL-készlet körülbelül 10 másodpercig tart, hogy összegyűjtse a lekérdezések futtatásához szükséges SQL-erőforrásokat. A további lekérdezések sokkal gyorsabban fognak megjelenni.
   
 
 

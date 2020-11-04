@@ -1,6 +1,6 @@
 ---
 title: IDENTITÁS használata helyettesítő kulcsok létrehozásához
-description: Javaslatok és példák az IDENTITY tulajdonság használatára helyettesítő kulcsok létrehozásához a szinapszis SQL-készlet tábláiban.
+description: Javaslatok és példák az IDENTITY tulajdonság használatára helyettesítő kulcsok létrehozásához dedikált SQL-készlet tábláiban.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8b4e9aa73a959bcaac18df38f975331ecbf6b034
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 96e81b3d7781f1c6f7bf5743a083e9640dd6c831
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876005"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323591"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Helyettesítő kulcsok létrehozása identitás használatával a szinapszis SQL-készletben
+# <a name="using-identity-to-create-surrogate-keys-using-dedicated-sql-pool-in-azuresynapse-analytics"></a>Helyettesítő kulcsok létrehozása az identitás használatával dedikált SQL-készlet használatával a AzureSynapse Analyticsben
 
-Ebben a cikkben javaslatokat és példákat talál arra, hogy az IDENTITY tulajdonság használatával helyettesítő kulcsokat hozzon létre a szinapszis SQL-készlet tábláiban.
+Ebből a cikkből megtudhatja, hogyan használhatja az IDENTITY tulajdonságot arra, hogy helyettesítő kulcsokat hozzon létre a dedikált SQL-készlet tábláiban.
 
 ## <a name="what-is-a-surrogate-key"></a>Mi az a helyettesítő kulcs?
 
@@ -31,7 +31,7 @@ A tábla egy helyettesítő kulcsa az egyes sorok egyedi azonosítóját tartalm
 
 ## <a name="creating-a-table-with-an-identity-column"></a>Tábla létrehozása azonosító oszloppal
 
-Az IDENTITY tulajdonság úgy lett kialakítva, hogy a kibővítse a szinapszis SQL-készlet összes eloszlását anélkül, hogy ez befolyásolná a terhelési teljesítményt. Ezért az identitás megvalósítása a célok megvalósítása felé irányul.
+Az IDENTITY (identitás) tulajdonság úgy lett kialakítva, hogy a dedikált SQL-készlet összes disztribúcióján át lehessen méretezni a terhelési teljesítmény befolyásolása nélkül. Ezért az identitás megvalósítása a célok megvalósítása felé irányul.
 
 A tábla első létrehozásakor a következő utasításhoz hasonló szintaxissal definiálhat egy táblázatot, amely az IDENTITY tulajdonságot használja:
 
@@ -53,7 +53,7 @@ Ez a szakasz a megvalósítás árnyalatait emeli ki, hogy könnyebben megértse
 
 ### <a name="allocation-of-values"></a>Értékek kiosztása
 
-Az IDENTITY tulajdonság nem garantálja azt a sorrendet, amelyben a helyettesítő értékek le lesznek foglalva az adatraktár elosztott architektúrája miatt. Az IDENTITY tulajdonság úgy lett kialakítva, hogy a kibővítse a szinapszis SQL-készlet összes eloszlását anélkül, hogy ez befolyásolná a terhelési teljesítményt. 
+Az IDENTITY tulajdonság nem garantálja azt a sorrendet, amelyben a helyettesítő értékek le lesznek foglalva az adatraktár elosztott architektúrája miatt. Az IDENTITY (identitás) tulajdonság úgy lett kialakítva, hogy a dedikált SQL-készlet összes disztribúcióján át lehessen méretezni a terhelési teljesítmény befolyásolása nélkül. 
 
 A következő példa egy illusztráció:
 
@@ -103,7 +103,7 @@ CREATE TABLE AS SELECT (CTAS) a SELECT... SQL Server viselkedését követi. A. 
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Értékek explicit beszúrása egy IDENTITY oszlopba
 
-A szinapszis SQL-készlet támogatja a `SET IDENTITY_INSERT <your table> ON|OFF` szintaxist. Ezt a szintaxist használva explicit módon szúrhat be értékeket az IDENTITY oszlopba.
+A dedikált SQL-készlet támogatja a `SET IDENTITY_INSERT <your table> ON|OFF` szintaxist. Ezt a szintaxist használva explicit módon szúrhat be értékeket az IDENTITY oszlopba.
 
 Számos adatmodell, például az előre meghatározott negatív értékek használata a dimenziókban megadott sorokhoz. Ilyen például az-1 vagy az "ismeretlen tag" sor.
 
@@ -164,7 +164,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > A jelenleg nem használható, `CREATE TABLE AS SELECT` Ha az adatok betöltését egy azonosító oszlopot tartalmazó táblába helyezi.
 >
 
-Az adatok betöltésével kapcsolatos további információkért lásd: [a kinyerési, betöltési és átalakítási (elt) tervezése a SZINAPSZIS SQL-készlethez](design-elt-data-loading.md) , valamint az  [ajánlott eljárások betöltése](guidance-for-loading-data.md).
+Az adatok betöltésével kapcsolatos további információkért lásd: [a kinyerési, betöltési és átalakítási (elt) tervezés a DEDIKÁLT SQL-készlethez és az](design-elt-data-loading.md)  [ajánlott eljárások betöltéséhez](guidance-for-loading-data.md).
 
 ## <a name="system-views"></a>Rendszernézetek
 
@@ -198,7 +198,7 @@ Az IDENTITY tulajdonság nem használható:
 - Ha az oszlop is a terjesztési kulcs
 - Ha a tábla külső tábla
 
-A következő kapcsolódó függvények nem támogatottak a szinapszis SQL-készletben:
+A következő kapcsolódó függvények nem támogatottak a dedikált SQL-készletekben:
 
 - [IDENTITÁS ()](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

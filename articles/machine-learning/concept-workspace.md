@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 5b40ce0951e2d9c8933d4f0ea9d24b1673e254d6
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 1076b49a101d5657397ef12b8fac672d37e477b0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495713"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324803"
 ---
-# <a name="what-is-an-azure-machine-learning-workspace"></a>Mi az Azure Machine Learning munkaterület?
+# <a name="what-is-an-azure-machine-learning-workspace"></a>Mi az az Azure Machine Learning-munkaterület?
 
 A munkaterület a Azure Machine Learning legfelső szintű erőforrása, amely központosított helyet biztosít a Azure Machine Learning használatakor létrehozott összes összetevővel való együttműködéshez.  A munkaterület megőrzi az összes betanítási Futtatás előzményeit, beleértve a naplókat, a metrikákat, a kimenetet és a parancsfájlok pillanatképét. Ezekkel az információkkal meghatározhatja, hogy melyik betanítási Futtatás a legjobb modellt állítja elő.  
 
@@ -52,9 +52,9 @@ A munkaterületet a következő módokon használhatja:
 + A weben:
     + [Azure Machine Learning Studio ](https://ml.azure.com) 
     + [Azure Machine Learning Designer](concept-designer.md) 
-+ Bármely Python-környezetben a [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)-val.
++ Bármely Python-környezetben a [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)-val.
 + Bármilyen R-környezetben az [r-hez készült Azure Machine learning SDK-val (előzetes verzió)](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
-+ A parancssorban a Azure Machine Learning [CLI bővítmény](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) használatával
++ A parancssorban a Azure Machine Learning [CLI bővítmény](./reference-azure-machine-learning-cli.md) használatával
 + [Azure Machine Learning VS Code-bővítmény](how-to-manage-resources-vscode.md#workspaces)
 
 
@@ -103,7 +103,7 @@ Amikor új munkaterületet hoz létre, az automatikusan létrehoz több Azure-er
 + [Azure Storage-fiók](https://azure.microsoft.com/services/storage/): a munkaterület alapértelmezett adattára.  A Azure Machine Learning számítási példányokhoz használt Jupyter-jegyzetfüzeteket is itt tárolja. 
   
   > [!IMPORTANT]
-  > Alapértelmezés szerint a Storage-fiók egy általános célú v1-fiók. Ezt az [általános célú v2-re frissítheti](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) a munkaterület létrehozása után. Az általános célú v2-re való frissítés után ne engedélyezze a hierarchikus névteret a Storage-fiókban.
+  > Alapértelmezés szerint a Storage-fiók egy általános célú v1-fiók. Ezt az [általános célú v2-re frissítheti](../storage/common/storage-account-upgrade.md) a munkaterület létrehozása után. Az általános célú v2-re való frissítés után ne engedélyezze a hierarchikus névteret a Storage-fiókban.
 
   Meglévő Azure Storage-fiók használatához nem lehet prémium szintű fiók (Premium_LRS és Premium_GRS). Emellett nem lehet hierarchikus névtér (Azure Data Lake Storage Gen2). A munkaterület _alapértelmezett_ Storage-fiókja nem támogatja a Premium Storage-t vagy a hierarchikus névtereket. A Premium Storage vagy a hierarchikus névtér _nem alapértelmezett Storage-_ fiókokkal használható.
   
@@ -135,5 +135,5 @@ A Azure Machine Learning megkezdéséhez tekintse meg a következőt:
 + [Oktatóanyag: a Azure Machine Learning első lépései a fejlesztési környezetben](tutorial-1st-experiment-sdk-setup-local.md)
 + [Oktatóanyag: az első ML-kísérlet létrehozása számítási példányon](tutorial-1st-experiment-sdk-setup.md)
 + [Oktatóanyag: az Azure Machine Learning első lépései az R SDK-val](tutorial-1st-r-experiment.md)
-+ [Oktatóanyag: az első besorolási modell létrehozása automatizált gépi tanulással](tutorial-first-experiment-automated-ml.md) 
++ [Oktatóanyag: Az első besorolási modell létrehozása automatizált gépi tanulással](tutorial-first-experiment-automated-ml.md) 
 + [Oktatóanyag: az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md)

@@ -9,16 +9,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: c2782d15d8be82d07f14f7ada5732b1dbef699c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59567cf2dc03952a78852f3288e78ba06aa769ee
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91348577"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325682"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>2. Oktatóanyag: a kredit kockázati modelljeinek betanítása – Azure Machine Learning Studio (klasszikus)
 
-**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
+**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Ez az oktatóanyag részletesen bemutatja a prediktív elemzési megoldások fejlesztésének folyamatát. Egy egyszerű modellt fejleszt Machine Learning Studio (klasszikus).  Ezután Azure Machine Learning webszolgáltatásként helyezheti üzembe a modellt.  Ez a központilag telepített modell új adatelemzést végezhet az előrejelzésekhez. Ez az oktatóanyag **egy háromrészes oktatóanyag-sorozat második része**.
@@ -82,9 +82,9 @@ A kísérletnek ez a része most a következőhöz hasonlóan néz ki:
 
 Most meg kell adnia a [betanítási modell][train-model] modulját, amely alapján a modell megjósolhatja a hitelkockázat értékét.
 
-1. Válassza ki a [Train Model][train-model] modult. A **Tulajdonságok** ablaktáblán kattintson az **oszlop kiválasztó indítása**elemre.
+1. Válassza ki a [Train Model][train-model] modult. A **Tulajdonságok** ablaktáblán kattintson az **oszlop kiválasztó indítása** elemre.
 
-1. Az **egyetlen oszlop kijelölése** párbeszédpanelen írja be a "hitelkockázat" kifejezést az **elérhető oszlopok**területen található Keresés mezőbe, válassza a "hitelkockázat" lehetőséget az alábbi listában, majd kattintson a jobbra mutató nyílra ( **>** ) a "hitelkockázat" gombra a **kijelölt oszlopokra**. 
+1. Az **egyetlen oszlop kijelölése** párbeszédpanelen írja be a "hitelkockázat" kifejezést az **elérhető oszlopok** területen található Keresés mezőbe, válassza a "hitelkockázat" lehetőséget az alábbi listában, majd kattintson a jobbra mutató nyílra ( **>** ) a "hitelkockázat" gombra a **kijelölt oszlopokra**. 
 
     ![Válassza ki a betanítási modell moduljának hitelkockázat oszlopát](./media/tutorial-part2-credit-risk-train/train-model-select-column.png)
 
@@ -100,7 +100,7 @@ A SVM modell beállításához tegye a következőket:
 
 1. Keresse meg a [kétosztályos támogatás Vector Machine][two-class-support-vector-machine] modult a modul palettáján, és húzza a vászonra.
 
-1. Kattintson a jobb gombbal a [vonat modell][train-model] modulra, válassza a **Másolás**lehetőséget, majd kattintson a jobb gombbal a vászonra, és válassza a **Beillesztés**lehetőséget. A [betanítási modell][train-model] moduljának másolata ugyanazzal az oszloppal van kiválasztva, mint az eredeti.
+1. Kattintson a jobb gombbal a [vonat modell][train-model] modulra, válassza a **Másolás** lehetőséget, majd kattintson a jobb gombbal a vászonra, és válassza a **Beillesztés** lehetőséget. A [betanítási modell][train-model] moduljának másolata ugyanazzal az oszloppal van kiválasztva, mint az eredeti.
 
 1. A [kétosztályos támogatású vektoros gép][two-class-support-vector-machine] kimenetének összekötése a második [Train Model][train-model] -modul bal oldali bemeneti portjával.
 
@@ -118,7 +118,7 @@ Most konfigurálja a [normalizálás][normalize-data] adatmodult:
 
 1. Kattintson ide az [Adatnormalizálás][normalize-data] modul kiválasztásához. A **Tulajdonságok** panelen válassza a **TANH** lehetőséget az **átalakítási módszer** paraméterhez.
 
-1. Kattintson **az oszlop kiválasztásának indítása**lehetőségre, válassza a "nincs oszlop" lehetőséget a **kezdéshez**, **jelölje be az** első legördülő menüben válassza az **oszlop típusa** lehetőséget a második legördülő menüben, majd válassza a **numerikus** lehetőséget a harmadik legördülő menüben. Ez azt jelenti, hogy az összes numerikus oszlop (és csak numerikus) át lett alakítva.
+1. Kattintson **az oszlop kiválasztásának indítása** lehetőségre, válassza a "nincs oszlop" lehetőséget a **kezdéshez** , **jelölje be az** első legördülő menüben válassza az **oszlop típusa** lehetőséget a második legördülő menüben, majd válassza a **numerikus** lehetőséget a harmadik legördülő menüben. Ez azt jelenti, hogy az összes numerikus oszlop (és csak numerikus) át lett alakítva.
 
 1. Kattintson a sor jobb oldalán a pluszjelre (+), ez egy sort hoz létre a legördülő listáról. Válassza a **kizárás** lehetőséget az első legördülő menüben, majd a második legördülő listában válassza az **oszlopnevek** lehetőséget, majd a szövegmezőbe írja be a "hitelkockázat" értéket. Ez azt jelenti, hogy a hitelkockázat oszlopot figyelmen kívül kell hagyni (ezt azért kell megtennie, mert ez az oszlop numerikus, ezért a rendszer átalakítja, ha nem zárja ki).
 
@@ -179,7 +179,7 @@ A kísérletnek ekkor az alábbihoz hasonlóan kell kinéznie:
 ![Mindkét modell kiértékelése](./media/tutorial-part2-credit-risk-train/final-experiment.png)
 
 
-Az eredmények ellenőrzéséhez kattintson a [modell kiértékelése][evaluate-model] modul kimeneti portjára, és válassza a **Megjelenítés**lehetőséget.  
+Az eredmények ellenőrzéséhez kattintson a [modell kiértékelése][evaluate-model] modul kimeneti portjára, és válassza a **Megjelenítés** lehetőséget.  
 
 A [modell kiértékelése][evaluate-model] modul olyan görbéket és mérőszámokat hoz létre, amelyek lehetővé teszik a két pontozásos modell eredményének összehasonlítását. Az eredményeket megtekintheti a fogadó operátor jellemző (ROC) görbék, a pontosság/visszahívás görbék vagy a lift görbék használatával. További megjelenített adatok: a görbe (AUC) alatti terület összesített értékei, valamint egyéb mérőszámok. A küszöbértéket a csúszka balra vagy jobbra mozgatásával módosíthatja, és megtekintheti, hogyan befolyásolja a metrikák készletét.  
 
@@ -208,7 +208,7 @@ Az eredmények értelmezése és a modell teljesítményének finomhangolása az
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következő lépéseket végezte el: 
  
@@ -224,14 +224,14 @@ Most már készen áll az ilyen típusú adatmodellek üzembe helyezésére.
 
 
 <!-- Module References -->
-[execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-[edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
-[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
-[evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/
-[execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-[normalize-data]: https://msdn.microsoft.com/library/azure/986df333-6748-4b85-923d-871df70d6aaf/
-[score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
-[train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
-[two-class-boosted-decision-tree]: https://msdn.microsoft.com/library/azure/e3c522f8-53d9-4829-8ea4-5c6a6b75330c/
-[two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
+[execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script
+[edit-metadata]: /azure/machine-learning/studio-module-reference/edit-metadata
+[split]: /azure/machine-learning/studio-module-reference/split-data
+[evaluate-model]: /azure/machine-learning/studio-module-reference/evaluate-model
+[execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script
+[normalize-data]: /azure/machine-learning/studio-module-reference/normalize-data
+[score-model]: /azure/machine-learning/studio-module-reference/score-model
+[train-model]: /azure/machine-learning/studio-module-reference/train-model
+[two-class-boosted-decision-tree]: /azure/machine-learning/studio-module-reference/two-class-boosted-decision-tree
+[two-class-support-vector-machine]: /azure/machine-learning/studio-module-reference/two-class-support-vector-machine
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/

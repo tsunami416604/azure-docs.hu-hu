@@ -1,6 +1,6 @@
 ---
 title: Táblázatok indexelése
-description: Javaslatok és példák a szinapszis SQL-készletben található táblázatok indexeléséhez.
+description: Javaslatok és példák a táblák indexeléséhez dedikált SQL-készletben.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 605c3320b0fcc7ac9663acc1578740e2cb3f3174
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05551f39203f2c070dd2ede0740135d6963aedcf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797598"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323565"
 ---
-# <a name="indexing-tables-in-synapse-sql-pool"></a>Táblázatok indexelése a szinapszis SQL-készletben
+# <a name="indexing-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Táblázatok indexelése dedikált SQL-készlet használatával az Azure szinapszis Analyticsben
 
-Javaslatok és példák a szinapszis SQL-készletben található táblázatok indexeléséhez.
+Javaslatok és példák a táblák indexeléséhez dedikált SQL-készletben.
 
 ## <a name="index-types"></a>Indextípusok
 
-A szinapszis SQL Pool számos indexelési lehetőséget kínál, többek között a [fürtözött oszlopcentrikus indexeket](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), a [fürtözött indexeket és a nem fürtözött indexeket](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [, valamint a](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)nem indexelt lehetőséget is.  
+A dedikált SQL-készlet több indexelési lehetőséget is kínál, többek között a [fürtözött oszlopcentrikus indexeket](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), a [fürtözött indexeket és a nem fürtözött indexeket](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [, valamint a](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)nem indexelt lehetőséget is.  
 
-Indextel rendelkező tábla létrehozásához tekintse meg a [create Table (SZINAPSZIS SQL-készlet)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dokumentációját.
+Indextel rendelkező tábla létrehozásához tekintse meg a [create Table (DEDIKÁLT SQL-készlet)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dokumentációját.
 
 ## <a name="clustered-columnstore-indexes"></a>Fürtözött oszlopcentrikus indexek
 
-Alapértelmezés szerint a szinapszis SQL Pool létrehoz egy fürtözött oszlopcentrikus indexet, ha nincs megadva tárgymutató-beállítás a táblán. A fürtözött oszlopcentrikus táblák a legmagasabb szintű adattömörítést, valamint a legjobb összesített lekérdezési teljesítményt egyaránt tartalmazzák.  A fürtözött oszlopcentrikus táblák általában jobban teljesítik a fürtözött indexet vagy a kupac táblákat, és általában a legjobb választás a nagyméretű táblákhoz.  Ezen okok miatt a fürtözött oszlopcentrikus a legjobb kiindulópont, ha nem tudja, hogyan indexelheti a táblázatot.  
+Alapértelmezés szerint a dedikált SQL-készlet létrehoz egy fürtözött oszlopcentrikus indexet, ha nincs megadva tárgymutató-beállítás a táblán. A fürtözött oszlopcentrikus táblák a legmagasabb szintű adattömörítést, valamint a legjobb összesített lekérdezési teljesítményt egyaránt tartalmazzák.  A fürtözött oszlopcentrikus táblák általában jobban teljesítik a fürtözött indexet vagy a kupac táblákat, és általában a legjobb választás a nagyméretű táblákhoz.  Ezen okok miatt a fürtözött oszlopcentrikus a legjobb kiindulópont, ha nem tudja, hogyan indexelheti a táblázatot.  
 
 Fürtözött oszlopcentrikus-tábla létrehozásához egyszerűen írja be a FÜRTÖZÖTT OSZLOPCENTRIKUS INDEXet a WITH záradékban, vagy hagyja ki a WITH záradékot:
 
@@ -52,7 +52,7 @@ Vannak olyan helyzetek, amikor a fürtözött oszlopcentrikus esetleg nem jó me
 
 ## <a name="heap-tables"></a>Halom táblák
 
-Amikor átmenetileg kikerül a szinapszis SQL-készletbe, előfordulhat, hogy egy halom tábla használatával a folyamat gyorsabban elvégezhető. Ennek az az oka, hogy a halomba való betöltés gyorsabb, mint a táblák indexelése, és bizonyos esetekben az ezt követő olvasás a gyorsítótárból hajtható végre.  Ha csak a további átalakítások futtatása előtt kívánja betölteni az adatgyűjtést, a tábla betöltése a halom táblába sokkal gyorsabb, mint a fürtözött oszlopcentrikus táblába való betöltés. Emellett az adatok [ideiglenes táblába](sql-data-warehouse-tables-temporary.md) való betöltése gyorsabban betöltődik, mint a tábla állandó tárterületre való betöltése.  Az betöltést követően indexeket hozhat létre a táblában a lekérdezési teljesítmény gyorsabb elérése érdekében.  
+Ha ideiglenesen kiveszi az adattárolást a dedikált SQL-készletben, akkor előfordulhat, hogy egy halom tábla használatával a folyamat gyorsabb lesz. Ennek az az oka, hogy a halomba való betöltés gyorsabb, mint a táblák indexelése, és bizonyos esetekben az ezt követő olvasás a gyorsítótárból hajtható végre.  Ha csak a további átalakítások futtatása előtt kívánja betölteni az adatgyűjtést, a tábla betöltése a halom táblába sokkal gyorsabb, mint a fürtözött oszlopcentrikus táblába való betöltés. Emellett az adatok [ideiglenes táblába](sql-data-warehouse-tables-temporary.md) való betöltése gyorsabban betöltődik, mint a tábla állandó tárterületre való betöltése.  Az betöltést követően indexeket hozhat létre a táblában a lekérdezési teljesítmény gyorsabb elérése érdekében.  
 
 A fürt oszlopcentrikus táblái megkezdik az optimális tömörítést, ha több mint 60 000 000 sor van.  Kisméretű keresési táblák esetében, kevesebb mint 60 000 000 sor, érdemes lehet HEAP vagy fürtözött indexet használni a gyorsabb lekérdezési teljesítmény érdekében. 
 
@@ -204,13 +204,13 @@ A kötegelt frissítési és beszúrási műveletek, amelyek túllépik az 102 4
 
 ### <a name="small-or-trickle-load-operations"></a>Kis-vagy csepegtető terhelési műveletek
 
-A szinapszis SQL-készletbe beáramló kis terhelések is más néven szivárgási terhelésként is ismertek. Általában a rendszer által betöltött, közel állandó adatfolyamot jelentenek. Mivel azonban ez az adatfolyam közel folyamatos, a sorok mennyisége nem különösebben nagy. Gyakrabban, mint nem az adat jelentősen a közvetlen betöltés oszlopcentrikus formátumhoz szükséges küszöbérték alatt van.
+A dedikált SQL-készletbe beáramló kis terhelések is más néven szivárgási terhelésként is ismertek. Általában a rendszer által betöltött, közel állandó adatfolyamot jelentenek. Mivel azonban ez az adatfolyam közel folyamatos, a sorok mennyisége nem különösebben nagy. Gyakrabban, mint nem az adat jelentősen a közvetlen betöltés oszlopcentrikus formátumhoz szükséges küszöbérték alatt van.
 
 Ezekben az esetekben általában jobb az Azure Blob Storage-ban az adatgyűjtés, és a betöltés előtt is felhalmozható. Ezt a technikát gyakran nevezik *mikro-kötegnek*.
 
 ### <a name="too-many-partitions"></a>Túl sok partíció
 
-Egy másik megfontolandó dolog a fürtözött oszlopcentrikus-táblák particionálásának hatása.  A particionálás előtt a szinapszis SQL-készlet már 60 adatbázisba osztja az adatait.  A particionálás tovább osztja az adatait.  Ha particionálja az adatait, vegye figyelembe, hogy az **egyes** partíciók legalább 1 000 000 sort igényelnek egy fürtözött oszlopcentrikus-index kihasználása érdekében.  Ha 100 partícióra particionálja a táblázatot, a táblának legalább 6 000 000 000 sort kell használnia a fürtözött oszlopcentrikus-index (60-disztribúciók *100-partíciók* 1 000 000-sorok) kihasználása érdekében. Ha az 100-Partition tábla nem rendelkezik 6 000 000 000-sorral, csökkentse a partíciók számát, vagy használjon egy halom táblát.
+Egy másik megfontolandó dolog a fürtözött oszlopcentrikus-táblák particionálásának hatása.  A particionálás előtt a dedikált SQL-készlet már 60-adatbázisba osztja az adatait.  A particionálás tovább osztja az adatait.  Ha particionálja az adatait, vegye figyelembe, hogy az **egyes** partíciók legalább 1 000 000 sort igényelnek egy fürtözött oszlopcentrikus-index kihasználása érdekében.  Ha 100 partícióra particionálja a táblázatot, a táblának legalább 6 000 000 000 sort kell használnia a fürtözött oszlopcentrikus-index (60-disztribúciók *100-partíciók* 1 000 000-sorok) kihasználása érdekében. Ha az 100-Partition tábla nem rendelkezik 6 000 000 000-sorral, csökkentse a partíciók számát, vagy használjon egy halom táblát.
 
 Miután betöltötte a táblákat néhány adattal, az alábbi lépéseket követve azonosíthatja és újraépítheti a táblákat az optimális oszlopcentrikus-indexekkel.
 
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-A szinapszis SQL-készletben lévő index újraépítése offline művelet.  Az indexek újraépítésével kapcsolatos további információkért tekintse meg az indexek átállítása az [Oszlopcentrikus indexek töredezettségmentesítéséről](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)című szakaszt, és [módosítsa az indexet](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Az indexek újraépítése a dedikált SQL-készletben offline művelet.  Az indexek újraépítésével kapcsolatos további információkért tekintse meg az indexek átállítása az [Oszlopcentrikus indexek töredezettségmentesítéséről](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)című szakaszt, és [módosítsa az indexet](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>3. lépés: a fürtözött oszlopcentrikus szegmens minőségének ellenőrzése javult
 
@@ -283,8 +283,8 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
-A partíciók CTAS használatával történő ismételt létrehozásával kapcsolatos további információkért lásd: [partíciók használata a SZINAPSZIS SQL-készletben](sql-data-warehouse-tables-partition.md).
+További információ a partíciók újbóli létrehozásáról a CTAS használatával: [partíciók használata DEDIKÁLT SQL-készletben](sql-data-warehouse-tables-partition.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a táblázatok létrehozásáról: a [táblázatok fejlesztése](sql-data-warehouse-tables-overview.md).

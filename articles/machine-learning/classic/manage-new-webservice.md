@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: fc9da659e7e55e8b15071f957d6a51e3b4673244
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 37f10cc8eb3d606d99eb5b3f821a486e9e4ea2fe
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427570"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322346"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Webszolgáltatás kezelése a Azure Machine Learning Studio (klasszikus) webszolgáltatások portál használatával
 
-**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 A Microsoft Azure Machine Learning webszolgáltatások portál használatával kezelheti Machine Learning új és klasszikus webszolgáltatásait. Mivel a klasszikus webszolgáltatások és az új webszolgáltatások különböző alapul szolgáló technológiákon alapulnak, némileg eltérő felügyeleti képességei vannak.
@@ -51,7 +51,7 @@ A hozzáférési engedélyek beállításával kapcsolatos további információ
 Az új webszolgáltatások kezeléséhez:
 
 1. Jelentkezzen be a [Microsoft Azure Machine learning webszolgáltatások](https://services.azureml.net/quickstart) portálra a Microsoft Azure-fiók használatával – használja az Azure-előfizetéshez társított fiókot.
-2. A menüben kattintson a **Web Services**elemre.
+2. A menüben kattintson a **Web Services** elemre.
 
 Megjelenik az előfizetéshez tartozó telepített webszolgáltatások listája. 
 
@@ -118,9 +118,9 @@ A terv irányítópultja a következő információkat tartalmazza:
 A klasszikus webszolgáltatások kezeléséhez:
 
 1. Jelentkezzen be a [Microsoft Azure Machine learning webszolgáltatások](https://services.azureml.net/quickstart) portálra a Microsoft Azure-fiók használatával – használja az Azure-előfizetéshez társított fiókot.
-2. A menüben kattintson a **klasszikus webes szolgáltatások**elemre.
+2. A menüben kattintson a **klasszikus webes szolgáltatások** elemre.
 
-A klasszikus webszolgáltatás kezeléséhez kattintson a **klasszikus webszolgáltatások**lehetőségre. A klasszikus webszolgáltatások oldalon a következőket teheti:
+A klasszikus webszolgáltatás kezeléséhez kattintson a **klasszikus webszolgáltatások** lehetőségre. A klasszikus webszolgáltatások oldalon a következőket teheti:
 
 * Kattintson a webszolgáltatásra a társított végpontok megtekintéséhez.
 * Webszolgáltatás törlése.
@@ -155,5 +155,3 @@ A következő tulajdonságokat frissítheti:
 * A **Leírás** lehetővé teszi a webszolgáltatás leírásának megadását. A leírás mező kitöltése kötelező.
 * A **naplózással** engedélyezheti vagy letilthatja a hibák naplózását a végponton. További információ a naplózásról: [Machine learning webszolgáltatások naplózásának](web-services-logging.md)engedélyezése.
 * A **mintaadatok engedélyezése** lehetővé teszi a Request-Response szolgáltatás tesztelésére használható mintaadatok megadását. Ha a webszolgáltatást Machine Learning Studioban (klasszikus) hozta létre, a mintaadatok a modell betanításához használt adatokból származnak. Ha programozott módon hozta létre a szolgáltatást, az adatok a JSON-csomag részeként megadott adatokból származnak.
-
-

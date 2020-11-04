@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 10/02/2020
+ms.date: 11/03/2020
 tags: connectors
-ms.openlocfilehash: cb851734dc8f71347168e7ac16ac0752845dda7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31714eee2e79481bbc8afb47718ed38e178d5b82
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823627"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324246"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-fájlok monitorozása, létrehozása és kezelése SSH és az Azure Logic Apps használatával
 
@@ -41,6 +41,8 @@ Az SFTP-SSH-összekötő és az SFTP-összekötő közötti különbségekért t
 
 ## <a name="limits"></a>Korlátok
 
+* Az SFTP-SSH összekötő a titkos kulcsos hitelesítés vagy a jelszó-hitelesítés használatát is támogatja.
+
 * SFTP – az [adatdarabolást](../logic-apps/logic-apps-handle-large-messages.md) támogató SSH-műveletek legfeljebb 1 GB-tal kezelhetik a fájlokat, míg az olyan SFTP-SSH-műveletek, amelyek nem támogatják a darabolást, akár 50 MB-ot is kezelhetnek. Bár az alapértelmezett méret 15 MB, ez a méret dinamikusan változhat, 5 MB-tól kezdődően, és fokozatosan növekszik a 50 MB-os maximális értékre, az olyan tényezők alapján, mint a hálózati késés, a kiszolgáló válaszideje és így tovább.
 
   > [!NOTE]
@@ -52,18 +54,18 @@ Az SFTP-SSH-összekötő és az SFTP-összekötő közötti különbségekért t
 
   | Művelet | Adatdarabolás támogatása | Adatméret-méretezési támogatás felülbírálása |
   |--------|------------------|-----------------------------|
-  | **Fájl másolása** | Nem | Nem alkalmazható |
+  | **Fájl másolása** | Nem | Nem értelmezhető |
   | **Fájl létrehozása** | Igen | Igen |
-  | **Mappa létrehozása** | Nem alkalmazható | Nem alkalmazható |
-  | **Fájl törlése** | Nem alkalmazható | Nem alkalmazható |
-  | **Archív fájl kibontása a mappába** | Nem alkalmazható | Nem alkalmazható |
+  | **Mappa létrehozása** | Nem értelmezhető | Nem értelmezhető |
+  | **Fájl törlése** | Nem értelmezhető | Nem értelmezhető |
+  | **Archív fájl kibontása a mappába** | Nem értelmezhető | Nem értelmezhető |
   | **Fájl tartalmának beolvasása** | Igen | Igen |
   | **Fájl tartalmának beolvasása elérési út alapján** | Igen | Igen |
-  | **Fájl metaadatainak beolvasása** | Nem alkalmazható | Nem alkalmazható |
-  | **Fájl metaadatainak beolvasása elérési út használatával** | Nem alkalmazható | Nem alkalmazható |
-  | **Mappában található fájlok listázása** | Nem alkalmazható | Nem alkalmazható |
-  | **Fájl átnevezése** | Nem alkalmazható | Nem alkalmazható |
-  | **Fájl frissítése** | Nem | Nem alkalmazható |
+  | **Fájl metaadatainak beolvasása** | Nem értelmezhető | Nem értelmezhető |
+  | **Fájl metaadatainak beolvasása elérési út használatával** | Nem értelmezhető | Nem értelmezhető |
+  | **Mappában található fájlok listázása** | Nem értelmezhető | Nem értelmezhető |
+  | **Fájl átnevezése** | Nem értelmezhető | Nem értelmezhető |
+  | **Fájl frissítése** | Nem | Nem értelmezhető |
   ||||
 
 * SFTP – az SSH-eseményindítók nem támogatják az üzenetek darabolását. Fájl tartalmának kérésekor az eseményindítók csak a 15 MB vagy annál kisebb fájlokat jelölik ki. A 15 MB-nál nagyobb fájlok lekéréséhez kövesse az alábbi mintát:
@@ -84,7 +86,7 @@ Az SFTP-SSH-összekötő és az SFTP-összekötő közötti különbségekért t
 
 * Megadja a **fájl átnevezése** műveletet, amely átnevezi az SFTP-kiszolgálón található fájlt.
 
-* *Akár 1 óráig*is gyorsítótárazza a kapcsolatot az SFTP-kiszolgálóval, ami javítja a teljesítményt, és csökkenti a próbálkozások számát a kiszolgálóhoz való csatlakozáskor. A gyorsítótárazási viselkedés időtartamának beállításához szerkessze a [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) tulajdonságot az SFTP-kiszolgálón található SSH-konfigurációban.
+* *Akár 1 óráig* is gyorsítótárazza a kapcsolatot az SFTP-kiszolgálóval, ami javítja a teljesítményt, és csökkenti a próbálkozások számát a kiszolgálóhoz való csatlakozáskor. A gyorsítótárazási viselkedés időtartamának beállításához szerkessze a [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) tulajdonságot az SFTP-kiszolgálón található SSH-konfigurációban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -96,16 +98,16 @@ Az SFTP-SSH-összekötő és az SFTP-összekötő közötti különbségekért t
   >
   > Az SFTP-SSH összekötő *csak* ezeket a titkos kulcs formátumait, algoritmusait és ujjlenyomatait támogatja:
   >
-  > * **Titkos kulcs formátuma**: RSA (Rivest-Adleman) és DSA (digitális aláírási algoritmus) kulcsok az OpenSSH-ban és a SSH.com-formátumokban. Ha a titkos kulcs Putty (. PPK) fájlformátumban van, először [alakítsa át a kulcsot az OpenSSH (. PEM)](#convert-to-openssh)fájlformátumba.
+  > * **Titkos kulcs formátuma** : RSA (Rivest-Adleman) és DSA (digitális aláírási algoritmus) kulcsok az OpenSSH-ban és a SSH.com-formátumokban. Ha a titkos kulcs Putty (. PPK) fájlformátumban van, először [alakítsa át a kulcsot az OpenSSH (. PEM)](#convert-to-openssh)fájlformátumba.
   >
-  > * **Titkosítási algoritmusok**: des-EDE3-CBC, des-EDE3-CFB, des-CBC, AES-128-CBC, AES-192-CBC és aes-256-CBC
+  > * **Titkosítási algoritmusok** : des-EDE3-CBC, des-EDE3-CFB, des-CBC, AES-128-CBC, AES-192-CBC és aes-256-CBC
   >
-  > * **Ujjlenyomat**: MD5
+  > * **Ujjlenyomat** : MD5
   >
-  > Miután hozzáadta az SFTP-SSH-triggert vagy a logikai alkalmazáshoz használni kívánt műveletet, meg kell adnia az SFTP-kiszolgáló kapcsolódási adatait. Ha megadja az SSH titkos kulcsát ehhez a csatlakozáshoz, ***ne adja meg manuálisan a kulcsot, vagy szerkessze a kulcsot***, ami miatt a kapcsolódás sikertelen lehet. Ehelyett a ***kulcsot másolja*** a titkos SSH-kulcs fájljából, és ***illessze*** be a kulcsot a kapcsolat részleteibe. 
+  > Miután hozzáadta az SFTP-SSH-triggert vagy a logikai alkalmazáshoz használni kívánt műveletet, meg kell adnia az SFTP-kiszolgáló kapcsolódási adatait. Ha megadja az SSH titkos kulcsát ehhez a csatlakozáshoz, a * *_ne adja meg manuálisan a_* (_) kulcsot, ami miatt a kapcsolódás sikertelen lehet. Ehelyett a _*_kulcsot másolja_*_ a titkos SSH-kulcs fájljából, és _*_illessze_*_ be a kulcsot a kapcsolat részleteibe. 
   > További információkért lásd a jelen cikk a [Kapcsolódás az SFTP-hez SSH-val](#connect) című szakaszát.
 
-* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+_ Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 * Az a logikai alkalmazás, ahová el szeretné érni az SFTP-fiókját. Egy SFTP-SSH triggerrel való kezdéshez [hozzon létre egy üres logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ha SFTP-SSH műveletet szeretne használni, indítsa el a logikai alkalmazást egy másik eseményindítóval, például az **ismétlődési** eseményindítóval.
 
@@ -137,7 +139,7 @@ Ha a titkos kulcs Putty formátumú, amely a. PPK (Putty titkos kulcs) fájlnév
 
    `puttygen <path-to-private-key-file-in-PuTTY-format> -O private-openssh -o <path-to-private-key-file-in-OpenSSH-format>`
 
-   Példa:
+   Például:
 
    `puttygen /tmp/sftp/my-private-key-putty.ppk -O private-openssh -o /tmp/sftp/my-private-key-openssh.pem`
 
@@ -145,13 +147,13 @@ Ha a titkos kulcs Putty formátumú, amely a. PPK (Putty titkos kulcs) fájlnév
 
 1. Ha még nem tette meg, [töltse le a legújabb Putty Generator (puttygen.exe) eszközt](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), majd indítsa el az eszközt.
 
-1. Ezen a képernyőn válassza a **Betöltés**lehetőséget.
+1. Ezen a képernyőn válassza a **Betöltés** lehetőséget.
 
    ![Válassza a "betöltés" lehetőséget](./media/connectors-sftp-ssh/puttygen-load.png)
 
-1. Tallózással keresse meg a titkos kulcs fájlját Putty formátumban, majd válassza a **Megnyitás**lehetőséget.
+1. Tallózással keresse meg a titkos kulcs fájlját Putty formátumban, majd válassza a **Megnyitás** lehetőséget.
 
-1. A **konverziók** menüben válassza az OpenSSH- **kulcs exportálása**lehetőséget.
+1. A **konverziók** menüben válassza az OpenSSH- **kulcs exportálása** lehetőséget.
 
    ![Válassza az "OpenSSH-kulcs exportálása" lehetőséget](./media/connectors-sftp-ssh/export-openssh-key.png)
 
@@ -179,9 +181,9 @@ Az SFTP-kiszolgálón található fájl létrehozásához használhatja az SFTP-
 
    -vagy-
 
-   Meglévő Logic apps esetén az utolsó lépésben, amelyhez műveletet szeretne hozzáadni, válassza az **új lépés**lehetőséget. A keresőmezőbe írja be `sftp ssh` szűrőként a kifejezést. A műveletek listában válassza ki a kívánt műveletet.
+   Meglévő Logic apps esetén az utolsó lépésben, amelyhez műveletet szeretne hozzáadni, válassza az **új lépés** lehetőséget. A keresőmezőbe írja be `sftp ssh` szűrőként a kifejezést. A műveletek listában válassza ki a kívánt műveletet.
 
-   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
+   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása** lehetőséget.
 
 1. Adja meg a kapcsolathoz szükséges adatokat.
 
@@ -193,13 +195,13 @@ Az SFTP-kiszolgálón található fájl létrehozásához használhatja az SFTP-
 
    1. Nyissa meg az SSH titkos kulcs fájlját egy szövegszerkesztőben. Ezek a lépések példaként használják a jegyzettömböt.
 
-   1. A Jegyzettömb **Szerkesztés** menüjében válassza az **összes kijelölése**lehetőséget.
+   1. A Jegyzettömb **Szerkesztés** menüjében válassza az **összes kijelölése** lehetőséget.
 
-   1. Válassza **Edit**a  >  **Másolás**szerkesztése lehetőséget.
+   1. Válassza **Edit** a  >  **Másolás** szerkesztése lehetőséget.
 
-   1. Az SFTP-SSH-trigger vagy a hozzáadott művelet esetében illessze be a *teljes* kulcsot, amelyet a **titkos SSH-kulcs** tulajdonságba másolt, amely több sort is támogat.  ***Ügyeljen rá, hogy illessze be*** a kulcsot. ***Ne adja meg manuálisan a kulcsot, vagy szerkessze***azt.
+   1. Az SFTP-SSH-trigger vagy a hozzáadott művelet esetében illessze be a *teljes* kulcsot, amelyet a **titkos SSH-kulcs** tulajdonságba másolt, amely több sort is támogat.  **_Ügyeljen rá, hogy a kulcsot illessze be_* a kulcsba. _*_Ne adja meg manuálisan a kulcsot, vagy szerkessze_*_ azt.
 
-1. Ha végzett a kapcsolat részleteinek megadásával, válassza a **Létrehozás**lehetőséget.
+1. Ha végzett a kapcsolat részleteinek megadásával, válassza a _ * létrehozás * * lehetőséget.
 
 1. Most adja meg a kiválasztott trigger vagy művelet szükséges adatait, és folytassa a logikai alkalmazás munkafolyamatának összeállítását.
 
@@ -209,11 +211,11 @@ Az SFTP-kiszolgálón található fájl létrehozásához használhatja az SFTP-
 
 A darabolást használó alapértelmezett adaptív működés felülbírálásához megadhat egy állandó adatméretet 5 MB és 50 MB között.
 
-1. A művelet jobb felső sarkában válassza az ellipszisek gombot (**...**), majd válassza a **Beállítások**lehetőséget.
+1. A művelet jobb felső sarkában válassza az ellipszisek gombot ( **...** ), majd válassza a **Beállítások** lehetőséget.
 
    ![Az SFTP-SSH beállítások megnyitása](./media/connectors-sftp-ssh/sftp-ssh-connector-setttings.png)
 
-1. A **tartalom átvitele**elemnél, a **darab mérete** tulajdonságban adjon meg egy egész számot a `5` `50` következőből:, például: 
+1. A **tartalom átvitele** elemnél, a **darab mérete** tulajdonságban adjon meg egy egész számot a `5` `50` következőből:, például: 
 
    ![Válassza ki a használni kívánt adatméretet](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
 
@@ -227,7 +229,7 @@ A darabolást használó alapértelmezett adaptív működés felülbírálásá
 
 Ez az aktiválás egy logikai alkalmazás munkafolyamatát indítja el, amikor egy fájlt hozzáadnak vagy módosítanak egy SFTP-kiszolgálón. Hozzáadhat például egy olyan feltételt, amely ellenőrzi a fájl tartalmát, és beolvassa a tartalmat attól függően, hogy a tartalom megfelel-e a megadott feltételnek. Ezután hozzáadhat egy műveletet, amely beolvassa a fájl tartalmát, és az SFTP-kiszolgáló egy mappájába helyezi a tartalmat.
 
-**Vállalati példa**: ezt az triggert használhatja az ügyfél-megrendeléseket képviselő új fájlok SFTP-mappájának figyelésére. Ezután használhat egy SFTP-műveletet, például a **fájlok beolvasása** lehetőséget, így a sorrend tartalmát megtekintve további feldolgozást hajthat végre, és a rendelést egy Orders adatbázisban tárolhatja.
+**Vállalati példa** : ezt az triggert használhatja az ügyfél-megrendeléseket képviselő új fájlok SFTP-mappájának figyelésére. Ezután használhat egy SFTP-műveletet, például a **fájlok beolvasása** lehetőséget, így a sorrend tartalmát megtekintve további feldolgozást hajthat végre, és a rendelést egy Orders adatbázisban tárolhatja.
 
 <a name="get-content"></a>
 
@@ -249,25 +251,27 @@ Ez a hiba akkor fordulhat elő, ha a logikai alkalmazás egy új fájlt hoz lét
 
 Ha nem tudja elkerülni vagy késleltetni a fájl áthelyezését, kihagyhatja a fájl metaadatainak olvasását a fájl létrehozása után, a következő lépések végrehajtásával:
 
-1. A **fájl létrehozása** műveletben nyissa meg az **új paraméter hozzáadása** listát, válassza a **minden fájl metaadatainak beolvasása** tulajdonságot, és állítsa a **nem**értékre.
+1. A **fájl létrehozása** műveletben nyissa meg az **új paraméter hozzáadása** listát, válassza a **minden fájl metaadatainak beolvasása** tulajdonságot, és állítsa a **nem** értékre.
 
 1. Ha később szüksége van erre a fájl-metaadatokra, használhatja a **fájl metaadatainak beolvasása** műveletet.
 
+<a name="connection-attempt-failed"></a>
+
 ### <a name="504-error-a-connection-attempt-failed-because-the-connected-party-did-not-properly-respond-after-a-period-of-time-or-established-connection-failed-because-connected-host-has-failed-to-respond-or-request-to-the-sftp-server-has-taken-more-than-000030-seconds"></a>504 hiba: "A kapcsolódási kísérlet sikertelen volt, mert a csatlakoztatott fél nem válaszolt egy adott idő elteltével, vagy a kapcsolat létrejötte sikertelen volt, mert a csatlakoztatott gazdagép nem válaszolt a (z)" vagy "kérelemre az SFTP-kiszolgálónak több mint" 00:00:30 "másodpercet.
 
-Ez a hiba akkor fordulhat elő, ha a logikai alkalmazás nem tud sikeresen kapcsolatot létesíteni az SFTP-kiszolgálóval. Számos különböző ok lehet, és javasoljuk, hogy a probléma elhárításához kövesse a következő szempontokat. 
+Ez a hiba akkor fordulhat elő, ha a logikai alkalmazás nem tud sikeresen kapcsolatot létesíteni az SFTP-kiszolgálóval. Ennek a problémának különböző okai lehetnek, ezért próbálkozzon a következő hibaelhárítási lehetőségekkel:
 
-1. A kapcsolatok időtúllépése 20 másodperc. Győződjön meg arról, hogy az SFTP-kiszolgáló megfelelő teljesítmény-és intermidiate-eszközökkel rendelkezik, például a tűzfal nem vesz fel nagy terhelést. 
+* A kapcsolat időkorlátja 20 másodperc. Győződjön meg arról, hogy az SFTP-kiszolgáló jó teljesítménnyel és köztes eszközökkel, például tűzfalakkal rendelkezik, és nem növeli a terhelést. 
 
-2. Ha van tűzfal, ellenőrizze, hogy a **felügyelt összekötő IP-** címei hozzá lettek-e adva a jóváhagyott listához. Ezek az IP-címek megtalálhatók a logikai alkalmazás régiójához [**itt**] (https://docs.microsoft.com/azure/logic-apps/logic-apps-limits-and-config#multi-tenant-azure---outbound-ip-addresses)
+* Ha beállított tűzfalat, győződjön meg arról, hogy hozzáadja a **felügyelt összekötő IP-** címeit a jóváhagyott listához. A logikai alkalmazás régiójának IP-címeinek megkereséséhez tekintse meg a [Azure Logic apps korlátai és konfigurálása](../logic-apps/logic-apps-limits-and-config.md#multi-tenant-azure---outbound-ip-addresses)című témakört.
 
-3. Ha ez a probléma átmeneti, ellenőrizze az újrapróbálkozási beállítást, és ellenőrizze, hogy az újrapróbálkozások száma meghaladja-e az alapértelmezett 4-es értéket.
+* Ha ez a hiba időnként bekövetkezik, módosítsa az SFTP-SSH művelet **újrapróbálkozási házirend** -beállítását az újrapróbálkozások számára az alapértelmezett négy próbálkozásnál nagyobb értékre.
 
-4. Ellenőrizze, hogy az SFTP-kiszolgáló korlátozza-e a kapcsolatok számát az egyes IP-címekről. Ha igen, szükség lehet az egyidejű Logic apps-példányok számának korlátozására. 
+* Győződjön meg arról, hogy az SFTP-kiszolgáló korlátozza-e a kapcsolatok számát az egyes IP-címekről. Ha egy korlát létezik, lehet, hogy korlátozni kell az egyidejű Logic app-példányok számát.
 
-5. Növelje a [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) tulajdonságot úgy, hogy az az SFTP-kiszolgálón lévő SSH-konfigurációban az 1 órára hasonlítson, hogy csökkentse a kapcsolatok létesítésének költségeit.
+* Ha csökkenteni szeretné a kapcsolatok létesítésének költségeit, az SFTP-kiszolgáló SSH-konfigurációjában növelje a [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) tulajdonságot körülbelül egy óráig.
 
-6. Az SFTP-kiszolgáló naplójában megtekintheti, hogy a logikai alkalmazás kérelme elérte-e az SFTP-kiszolgálót. A tűzfalon és az SFTP-kiszolgálón is igénybe vehet néhány hálózati nyomkövetést a kapcsolódási problémák további kiásásához.
+* Tekintse át az SFTP-kiszolgáló naplóját annak ellenőrzéséhez, hogy a logikai alkalmazástól érkező kérés elérte-e az SFTP-kiszolgálót. Ha további információkra van szüksége a kapcsolódási problémáról, akkor a tűzfalon és az SFTP-kiszolgálón is futtathat hálózati nyomkövetést.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 

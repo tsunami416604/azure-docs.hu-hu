@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 08/05/2020
-ms.openlocfilehash: 689b90fc1f45faad72640f47e5eebe936d2dc8b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2ece76ef3594cadfa1fcda89259ee18eb1f9084
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87829390"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324844"
 ---
 # <a name="what-is-responsible-machine-learning-preview"></a>Mi a felelős gépi tanulás? (előzetes verzió)
 
@@ -73,7 +73,7 @@ A hagyományos Felhőbeli tárolási és számítási megoldások esetében a fe
 
 A homomorphic titkosítás lehetővé teszi a számítások elvégzését a titkosított adatokon anélkül, hogy hozzá kellene férnie egy titkos (visszafejtési) kulcshoz. A számítások eredményei titkosítottak, és csak a titkos kulcs tulajdonosa által láthatók. A homomorphic titkosítás használata esetén a Felhőbeli operátorok soha nem titkosítják a tárolt és a számítástechnikai adataikat. A számításokat a rendszer közvetlenül a titkosított adatokon hajtja végre. Az adatok védelme a legkorszerűbb titkosításra támaszkodik, az adatok tulajdonosa pedig az összes információ kiadását vezérli. A Microsoft homomorphic-titkosításával kapcsolatos további információkért lásd: [Microsoft Research](https://www.microsoft.com/research/project/homomorphic-encryption/).
 
-A Azure Machine Learning homomorphic-titkosítás használatának megkezdéséhez használja a [Microsoft Seal](https://github.com/microsoft/SEAL) [titkosított-következtetések Python-](https://pypi.org/project/encrypted-inference/) kötéseit. A Microsoft SEAL egy nyílt forráskódú homomorphic titkosítási függvénytár, amely lehetővé teszi, hogy a hozzáadások és a szorzások titkosított egész számokon vagy valós számokon legyenek elvégezve. A Microsoft SEAL szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [Azure Architecture Center](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/homomorphic-encryption-seal) vagy a [Microsoft kutatási projektjét ismertető oldalt](https://www.microsoft.com/research/project/microsoft-seal/).
+A Azure Machine Learning homomorphic-titkosítás használatának megkezdéséhez használja a [Microsoft Seal](https://github.com/microsoft/SEAL) [titkosított-következtetések Python-](https://pypi.org/project/encrypted-inference/) kötéseit. A Microsoft SEAL egy nyílt forráskódú homomorphic titkosítási függvénytár, amely lehetővé teszi, hogy a hozzáadások és a szorzások titkosított egész számokon vagy valós számokon legyenek elvégezve. A Microsoft SEAL szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [Azure Architecture Center](/azure/architecture/solution-ideas/articles/homomorphic-encryption-seal) vagy a [Microsoft kutatási projektjét ismertető oldalt](https://www.microsoft.com/research/project/microsoft-seal/).
 
 A következő példában megtudhatja, [Hogyan helyezhet üzembe egy titkosított, Azure Machine learning-alapú webszolgáltatást](how-to-homomorphic-encryption-seal.md).
 
@@ -96,5 +96,5 @@ Tekintse meg az alábbi mintát, amelyből megtudhatja, hogyan hozhatja létre a
 
 ## <a name="additional-resources"></a>További források
 
-- További információkért tekintse meg a [felelős innovációs eszközkészletet](https://docs.microsoft.com/azure/architecture/guide/responsible-innovation/) az ajánlott eljárások megismeréséhez.
+- További információkért tekintse meg a [felelős innovációs eszközkészletet](/azure/architecture/guide/responsible-innovation/) az ajánlott eljárások megismeréséhez.
 - További információ a Machine learning-rendszer dokumentációjának a [ml](https://www.partnershiponai.org/about-ml/) -készletéről.

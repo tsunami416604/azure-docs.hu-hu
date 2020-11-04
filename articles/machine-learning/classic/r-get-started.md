@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 133c7e95e620bfea51d1d6c9f6fd1d2946eeca33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7c442aaf6484e8e47bd6d00c91023fba43af75d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91344483"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325016"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Első lépések az Azure Machine Learning Studio (klasszikus) az R-ben
 
-**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
+**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 <!-- Stephen F Elston, Ph.D. -->
@@ -143,8 +143,8 @@ A szakasz teljes kódja a [MachineLearningSamples-notebook/Studio-Samples](https
 Először töltse be a **csdairydata.csv** -fájlt Machine learning Studio (klasszikus) fájlba.
 
 1. Indítsa el a Machine Learning Studio (klasszikus) környezetet.
-1. Válassza az **+ új** lehetőséget a képernyő bal alsó részén, és válassza az **adatkészlet**lehetőséget.
-1. Válasszon a **helyi fájlból**, majd válassza a **Tallózás** lehetőséget a fájl kiválasztásához.
+1. Válassza az **+ új** lehetőséget a képernyő bal alsó részén, és válassza az **adatkészlet** lehetőséget.
+1. Válasszon a **helyi fájlból** , majd válassza a **Tallózás** lehetőséget a fájl kiválasztásához.
 1. Ügyeljen arra, hogy az adatkészlethez tartozó **általános CSV-fájlt (fejléc (. csv)** adja meg.
 1. Jelölje be a pipa.
 1. Az adatkészlet feltöltése után az új adatkészlet jelenik meg, amikor kiválasztja az **adatkészletek** lapot.
@@ -153,14 +153,14 @@ Először töltse be a **csdairydata.csv** -fájlt Machine learning Studio (klas
 
 Most, hogy Machine Learning Studio (klasszikus) adataink vannak, létre kell hozni egy kísérletet az elemzés elvégzéséhez.  
 
-1. Válassza az **+ új** lehetőséget a képernyő bal alsó részén, és válassza a **kísérlet**  >  **üres kísérlet**lehetőséget.
-1. A kísérletet a lap tetején található címmel **létrehozott kísérlet** kiválasztásával és módosításával nevezheti ki. Módosítsa például a **CA Dairy Analysis**értékre.
-1. A kísérlet lap bal oldalán válassza a **mentett adatkészletek**  >  **saját adatkészletek**lehetőséget. Ekkor meg kell jelennie a korábban feltöltött **cadairydata.csv** fájlnak.
+1. Válassza az **+ új** lehetőséget a képernyő bal alsó részén, és válassza a **kísérlet**  >  **üres kísérlet** lehetőséget.
+1. A kísérletet a lap tetején található címmel **létrehozott kísérlet** kiválasztásával és módosításával nevezheti ki. Módosítsa például a **CA Dairy Analysis** értékre.
+1. A kísérlet lap bal oldalán válassza a **mentett adatkészletek**  >  **saját adatkészletek** lehetőséget. Ekkor meg kell jelennie a korábban feltöltött **cadairydata.csv** fájlnak.
 1. Húzzon **csdairydata.csv adatkészletet** a kísérletre.
 1. A bal oldali ablaktábla felső részén található **kísérleti kísérletek keresése** mezőben írja be az [R-szkript végrehajtása][execute-r-script]elemet. A modul megjelenik a keresési listán.
 1. Húzza az [R szkript végrehajtása][execute-r-script] modult a raklapra.
-1. **csdairydata.csv adatkészlet** kimenetének csatlakoztatása a [végrehajtási R-szkript][execute-r-script]bal szélső bemenetéhez (**DataSet1 elemet**).
-1. Kattintson a **Mentés** gombra.
+1. **csdairydata.csv adatkészlet** kimenetének csatlakoztatása a [végrehajtási R-szkript][execute-r-script]bal szélső bemenetéhez ( **DataSet1 elemet** ).
+1. Válassza a **Mentés** lehetőséget.
 
 Ezen a ponton a kísérletnek ehhez a példához hasonlóan kell kinéznie.
 
@@ -169,7 +169,7 @@ Ezen a ponton a kísérletnek ehhez a példához hasonlóan kell kinéznie.
 
 #### <a name="check-on-the-data"></a>Az adatkeresés
 
-Tekintsük át a kísérletbe betöltött adatgyűjtést. A kísérletben válassza ki a **cadairydata.csv adatkészlet**kimenetét, és válassza a **Megjelenítés**lehetőséget. Ehhez az összegzéshez hasonlóan kell megjelennie.
+Tekintsük át a kísérletbe betöltött adatgyűjtést. A kísérletben válassza ki a **cadairydata.csv adatkészlet** kimenetét, és válassza a **Megjelenítés** lehetőséget. Ehhez az összegzéshez hasonlóan kell megjelennie.
 
 ![A cadairydata.csv adatkészlet összegzését bemutató képernyőkép.](./media/r-quickstart/fig4.png)
 
@@ -231,9 +231,9 @@ Már beszéltünk az adathalmaz [betöltési](#loading)adatkészletének betölt
    maml.mapOutputPort('cadairydata')
    ```
 
-1. Hozzon létre egy zip-fájlt, és másolja a szkriptet ebbe a zip-fájlba. A Windowsban kattintson a jobb gombbal a fájlra, és válassza a **Küldés**  >  **tömörített mappába**lehetőséget. Ez a művelet létrehoz egy új zip-fájlt, amely tartalmazza a **simpleplot. R** -fájl.
+1. Hozzon létre egy zip-fájlt, és másolja a szkriptet ebbe a zip-fájlba. A Windowsban kattintson a jobb gombbal a fájlra, és válassza a **Küldés**  >  **tömörített mappába** lehetőséget. Ez a művelet létrehoz egy új zip-fájlt, amely tartalmazza a **simpleplot. R** -fájl.
 
-1. Adja hozzá a fájlt a Machine Learning Studio (klasszikus) **adatkészletekhez** , és adja meg a típust **zip**-ként. Ekkor megjelenik a zip-fájl az adatkészletekben.
+1. Adja hozzá a fájlt a Machine Learning Studio (klasszikus) **adatkészletekhez** , és adja meg a típust **zip** -ként. Ekkor megjelenik a zip-fájl az adatkészletekben.
 
 1. Húzza a zip-fájlt az **adatkészletek** rajzsablonról a **ml Studio (klasszikus) vászonra**.
 
@@ -241,7 +241,7 @@ Már beszéltünk az adathalmaz [betöltési](#loading)adatkészletének betölt
 
 1. Adja meg a `source()` zip-fájl nevét tartalmazó függvényt az [R-szkript végrehajtása][execute-r-script] modul kódjának ablakában. Ebben az esetben a következőt írtunk be: `source("src/simpleplot.R")` .
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 A lépések elvégzése után az [r szkript végrehajtása][execute-r-script] modul végrehajtja az r-szkriptet a zip-fájlban a kísérlet futtatásakor. Ezen a ponton a kísérletnek ehhez a példához hasonlóan kell kinéznie.
 
@@ -313,7 +313,7 @@ Az R-dataframe tartalmát téglalap alakú táblázatként is kiválaszthatja az
 maml.mapOutputPort('cadairydata')
 ```
 
-A kísérlet futtatása után válassza ki az eredmény Dataset1 elemet kimeneti portot, majd válassza a **Megjelenítés**lehetőséget. Ehhez a példához hasonlóan kell megjelennie.
+A kísérlet futtatása után válassza ki az eredmény Dataset1 elemet kimeneti portot, majd válassza a **Megjelenítés** lehetőséget. Ehhez a példához hasonlóan kell megjelennie.
 
 ![Képernyőkép, amely a kaliforniai tejtermékek eredményeinek megjelenítését jeleníti meg.](./media/r-quickstart/fig7.png)
 
@@ -323,7 +323,7 @@ Ez a kimenet megegyezik a bemenettel, pontosan a várt módon.
 
 Az [R-szkript végrehajtása][execute-r-script] modul kimenete üzenetekkel és grafikus kimenettel rendelkezik. Az R szabványos kimeneti és standard hibaüzeneteket küld az R-eszköz kimeneti portjára.
 
-Az R-eszköz kimenetének megtekintéséhez válassza ki a portot, majd válassza a **Megjelenítés**lehetőséget. Az R-szkript standard kimeneti és standard hibáját itt találja.
+Az R-eszköz kimenetének megtekintéséhez válassza ki a portot, majd válassza a **Megjelenítés** lehetőséget. Az R-szkript standard kimeneti és standard hibáját itt találja.
 
 ![Képernyőkép, amely az R-eszköz portjának standard kimenetét és standard hibáját mutatja.](./media/r-quickstart/fig8.png)
 
@@ -404,7 +404,7 @@ Hajtsa végre ezt a kódot, és tekintse meg az R-szkript kimeneti naplóját. I
 [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 ```
 
-A hónap típusának mostantól a következő tényezőt kell tartalmaznia: **w/14 szint**. Ez a típus problémát jelent, mert az év során csak 12 hónap van. Azt is megtekintheti, hogy az eredményül kapott adatkészlet-port **megjelenítésének** típusa **kategorikus**-e.
+A hónap típusának mostantól a következő tényezőt kell tartalmaznia: **w/14 szint**. Ez a típus problémát jelent, mert az év során csak 12 hónap van. Azt is megtekintheti, hogy az eredményül kapott adatkészlet-port **megjelenítésének** típusa **kategorikus** -e.
 
 A probléma az, hogy a hónap oszlop nem lett szisztematikusan kódolva. Bizonyos esetekben egy hónapot április, mások pedig ápr rövidítenek. Ezt a problémát úgy oldhatja meg, hogy a sztringet három karakterre vágja. A kód most a következő példához hasonlóan jelenik meg.
 
@@ -1029,10 +1029,10 @@ Ez a függvény a következő kimenetet hozza létre.
 ##
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
-## (Intercept)       6.33e+00   1.45e-01   43.60   <2e-16 ***
-## Time              1.63e-09   1.72e-10    9.47   <2e-16 ***
+## (Intercept)       6.33e+00   1.45e-01   43.60   <2e-16 **_
+## Time              1.63e-09   1.72e-10    9.47   <2e-16 _*_
 ## I(Month.Count^2) -1.71e-06   4.89e-06   -0.35    0.726
-## I(Month.Count^3) -3.24e-08   1.49e-08   -2.17    0.031 *  
+## I(Month.Count^3) -3.24e-08   1.49e-08   -2.17    0.031 _  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
@@ -1062,10 +1062,10 @@ Ez a függvény a következő kimenetet hozza létre.
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
 ## (Intercept)       6.38e+00   4.07e-02   156.6   <2e-16 ***
-## Time              1.57e-09   4.32e-11    36.3   <2e-16 ***
-## I(Month.Count^3) -3.76e-08   2.50e-09   -15.1   <2e-16 ***
+## Time              1.57e-09   4.32e-11    36.3   <2e-16 **_
+## I(Month.Count^3) -3.76e-08   2.50e-09   -15.1   <2e-16 _*_
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '_*_' 0.001 '_*' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
 ## Residual standard error: 0.0417 on 213 degrees of freedom
 ## Multiple R-squared:  0.941,  Adjusted R-squared:  0.94
@@ -1113,21 +1113,21 @@ Ez a függvény a következő kimenetet hozza létre.
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
 ## Time              1.57e-09   2.72e-11    57.7   <2e-16 ***
-## I(Month.Count^3) -3.74e-08   1.57e-09   -23.8   <2e-16 ***
-## MonthApr          6.40e+00   2.63e-02   243.3   <2e-16 ***
-## MonthAug          6.38e+00   2.63e-02   242.2   <2e-16 ***
-## MonthDec          6.38e+00   2.64e-02   241.9   <2e-16 ***
-## MonthFeb          6.31e+00   2.63e-02   240.1   <2e-16 ***
-## MonthJan          6.39e+00   2.63e-02   243.1   <2e-16 ***
-## MonthJul          6.39e+00   2.63e-02   242.6   <2e-16 ***
-## MonthJun          6.38e+00   2.63e-02   242.4   <2e-16 ***
-## MonthMar          6.42e+00   2.63e-02   244.2   <2e-16 ***
-## MonthMay          6.43e+00   2.63e-02   244.3   <2e-16 ***
-## MonthNov          6.34e+00   2.63e-02   240.6   <2e-16 ***
-## MonthOct          6.37e+00   2.63e-02   241.8   <2e-16 ***
-## MonthSep          6.34e+00   2.63e-02   240.6   <2e-16 ***
+## I(Month.Count^3) -3.74e-08   1.57e-09   -23.8   <2e-16 **_
+## MonthApr          6.40e+00   2.63e-02   243.3   <2e-16 _*_
+## MonthAug          6.38e+00   2.63e-02   242.2   <2e-16 _*_
+## MonthDec          6.38e+00   2.64e-02   241.9   <2e-16 _*_
+## MonthFeb          6.31e+00   2.63e-02   240.1   <2e-16 _*_
+## MonthJan          6.39e+00   2.63e-02   243.1   <2e-16 _*_
+## MonthJul          6.39e+00   2.63e-02   242.6   <2e-16 _*_
+## MonthJun          6.38e+00   2.63e-02   242.4   <2e-16 _*_
+## MonthMar          6.42e+00   2.63e-02   244.2   <2e-16 _*_
+## MonthMay          6.43e+00   2.63e-02   244.3   <2e-16 _*_
+## MonthNov          6.34e+00   2.63e-02   240.6   <2e-16 _*_
+## MonthOct          6.37e+00   2.63e-02   241.8   <2e-16 _*_
+## MonthSep          6.34e+00   2.63e-02   240.6   <2e-16 _*_
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '_*_' 0.001 '_*' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
 ## Residual standard error: 0.0263 on 202 degrees of freedom
 ## Multiple R-squared:     1,    Adjusted R-squared:     1
@@ -1276,9 +1276,9 @@ Ezekből az eredményekből láthatjuk, hogy a modellhez tartozó szezonális t�
 
 A RStudio jól dokumentálva van. Íme néhány hivatkozás a RStudio dokumentációjának főbb részeire, hogy megismerkedjen az első lépésekkel.
 
-* **Projektek létrehozása**: a RStudio használatával rendszerezheti és kezelheti az R-kódját projektjeiben. További információ: [using Projects (projektek használata](https://support.rstudio.com/hc/articles/200526207-Using-Projects)). Kövesse ezeket az utasításokat, és hozzon létre egy projektet az R Code-példákhoz ebben a cikkben.
-* **R-kód szerkesztése és végrehajtása**: a RStudio integrált környezetet biztosít az r-kód szerkesztéséhez és végrehajtásához. További információ: [kód szerkesztése és végrehajtása](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code).
-* **Hibakeresés**: a RStudio hatékony hibakeresési képességeket tartalmaz. További információ ezekről a funkciókról: [hibakeresés a RStudio](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio)-mel. A Töréspont hibaelhárítási funkcióiról a [töréspont hibaelhárítása](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting)című témakörben talál további információt.
+* **Projektek létrehozása** : a RStudio használatával rendszerezheti és kezelheti az R-kódját projektjeiben. További információ: [using Projects (projektek használata](https://support.rstudio.com/hc/articles/200526207-Using-Projects)). Kövesse ezeket az utasításokat, és hozzon létre egy projektet az R Code-példákhoz ebben a cikkben.
+* **R-kód szerkesztése és végrehajtása** : a RStudio integrált környezetet biztosít az r-kód szerkesztéséhez és végrehajtásához. További információ: [kód szerkesztése és végrehajtása](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code).
+* **Hibakeresés** : a RStudio hatékony hibakeresési képességeket tartalmaz. További információ ezekről a funkciókról: [hibakeresés a RStudio](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio)-mel. A Töréspont hibaelhárítási funkcióiról a [töréspont hibaelhárítása](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting)című témakörben talál további információt.
 
 ## <a name="further-reading"></a><a id="appendixb"></a>További információ
 

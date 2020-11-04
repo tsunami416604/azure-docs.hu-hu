@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: efea5d6548814dc0f165bab9281e5234f3eae925
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4539709dbac992979af6a56e3dae81725a35739d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791324"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325005"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Virtuális hálózati szolgáltatási végpontok és szabályok használata a Azure SQL Database-kiszolgálókon
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -83,7 +83,7 @@ Azure SQL Database esetében a virtuális hálózati szabályok funkció a köve
 
 - A tűzfalon az IP-címtartományok a következő hálózati elemekre vonatkoznak, a virtuális hálózati szabályok azonban nem:
   - [Helyek közötti (S2S) virtuális magánhálózat (VPN)][vpn-gateway-indexmd-608y]
-  - Helyszíni [ExpressRoute][expressroute-indexmd-744v] -on keresztül
+  - Helyszíni [ExpressRoute](../../expressroute/index.yml) -on keresztül
 
 ### <a name="considerations-when-using-service-endpoints"></a>A szolgáltatási végpontok használatának szempontjai
 
@@ -231,14 +231,14 @@ Belsőleg a PowerShell-parancsmagok az SQL VNet műveleteihez REST API-kat hívn
 
 Már rendelkeznie kell egy olyan alhálózattal, amely az adott Virtual Network szolgáltatás végpontjának Azure SQL Databasehoz tartozó *nevét adja* meg.
 
-- A megfelelő végpont-típus neve a **Microsoft. SQL** .
+- A megfelelő végpont-típus neve a **Microsoft. SQL**.
 - Ha az alhálózat nem címkézhető a típus nevével, tekintse [meg az alhálózat ellenőrzése végpontot][sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100].
 
 <a name="a-portal-steps-for-vnet-rule-200"></a>
 
 ## <a name="azure-portal-steps"></a>Azure Portal lépések
 
-1. Jelentkezzen be az [Azure Portal][http-azure-portal-link-ref-477t].
+1. Jelentkezzen be az [Azure Portalra][http-azure-portal-link-ref-477t].
 
 2. Keresse meg és válassza ki az **SQL-kiszolgálók** elemet, majd válassza ki a kiszolgálót. A **Biztonság** területen válassza a **tűzfalak és virtuális hálózatok** lehetőséget.
 

@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 700cc461563f145f58e02f7ed9a09b2899a4eb5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fc7fd1f3f7615c0622b684e3da4020c7da601f5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91343579"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322875"
 ---
 # <a name="create-and-share-an-machine-learning-studio-classic-workspace"></a>Machine Learning Studio (klasszikus) munkaterület létrehozása és megosztása
 
-**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
+**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 Azure Machine Learning Studio (klasszikus) használatához Machine Learning Studio (klasszikus) munkaterületre van szükség. Ez a munkaterület tartalmazza a kísérletek létrehozásához, kezeléséhez és közzétételéhez szükséges eszközöket.
 
@@ -44,7 +44,7 @@ Ha Machine Learning Studio (klasszikus) munkaterületet szeretne megnyitni, be k
 
      ![Új Studio (klasszikus) munkaterület létrehozása](./media/create-workspace/create-new-workspace.png)
 
-5. Kattintson a **Létrehozás** lehetőségre.
+5. Kattintson a **Létrehozás** gombra.
 
    Machine Learning jelenleg korlátozott számú régióban érhető el. Ha az előfizetése nem tartalmaz ilyen régiókat, a következő hibaüzenet jelenhet meg: "nincsenek előfizetések az engedélyezett régiókban."  Ha egy régiót szeretne felvenni az előfizetésbe, hozzon létre egy új Microsoft-támogatási kérelmet a Azure Portal, válassza a **számlázás** lehetőséget a probléma típusaként, és kövesse az utasításokat a kérelem elküldéséhez.
 
@@ -61,7 +61,7 @@ Miután telepítette a munkaterületet, megnyithatja azt Machine Learning Studio
 
     ![Munkaterület kiválasztása](./media/create-workspace/open-workspace.png)
 
-3. Kattintson **a saját kísérletek**elemre.
+3. Kattintson **a saját kísérletek** elemre.
 
     ![Kísérletek megnyitása](./media/create-workspace/my-experiments.png)
 
@@ -114,7 +114,7 @@ Miután létrehozta az új Machine Learning Studio (klasszikus) munkaterületet,
 
 **Böngésző cookie-k törlése**
 
-1. Ha az Internet Explorert használja, kattintson a jobb felső sarokban található **eszközök** gombra, és válassza az **Internetbeállítások**lehetőséget.  
+1. Ha az Internet Explorert használja, kattintson a jobb felső sarokban található **eszközök** gombra, és válassza az **Internetbeállítások** lehetőséget.  
 
    ![Internetbeállítások](media/troubleshooting-creating-ml-workspace/screen4.png)
 
@@ -122,7 +122,7 @@ Miután létrehozta az új Machine Learning Studio (klasszikus) munkaterületet,
 
    ![Általános lap](media/troubleshooting-creating-ml-workspace/screen5.png)
 
-3. A **böngészési előzmények törlése** párbeszédpanelen ellenőrizze, hogy ki van-e jelölve a **cookie-k és a webhely-adatértékek** , majd kattintson a **Törlés**gombra.
+3. A **böngészési előzmények törlése** párbeszédpanelen ellenőrizze, hogy ki van-e jelölve a **cookie-k és a webhely-adatértékek** , majd kattintson a **Törlés** gombra.
 
    ![Cookie-k törlése](media/troubleshooting-creating-ml-workspace/screen6.png)
 

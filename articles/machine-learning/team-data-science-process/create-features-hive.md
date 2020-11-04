@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6261e31fd84b9471fa4ea5d30e1d6a4afbac9115
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30c0a02c2cbc11002f8e0bf0295dab91de5d0365
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085378"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323667"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Hadoop-fürtben lévő adatszolgáltatások létrehozása struktúra-lekérdezések használatával
 Ebből a dokumentumból megtudhatja, hogyan hozhat létre egy Azure HDInsight Hadoop-fürtön tárolt adatszolgáltatásokat a kaptár-lekérdezések használatával. Ezek a kaptár-lekérdezések beágyazott kaptár User-Defined functions (UDF), a megadott parancsfájlokat használják.
@@ -25,15 +25,15 @@ A funkciók létrehozásához szükséges műveletek memória-igényesek lehetne
 
 A bemutatott lekérdezésekre jellemző példák a New York-i [taxi Trip](https://chriswhong.com/open-data/foil_nyc_taxi/) adatforgatókönyvek esetében is elérhetők a [GitHub-tárházban](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Ezeknek a lekérdezéseknek már van megadott adatsémája, és készen állnak a futtatásra. Az utolsó szakaszban a felhasználók által beállítható paraméterek is megtalálhatók a kaptár-lekérdezések teljesítményének növelése érdekében.
 
-Ez a feladat a [csoportos adatelemzési folyamat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)egyik lépése.
+Ez a feladat a [csoportos adatelemzési folyamat (TDSP)](./index.yml)egyik lépése.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk feltételezi, hogy rendelkezik a következővel:
 
 * Létrehozott egy Azure Storage-fiókot. Ha útmutatásra van szüksége, tekintse meg [Az Azure Storage-fiók létrehozása](../../storage/common/storage-account-create.md) című témakört.
-* Testreszabott Hadoop-fürt kiépítve a HDInsight szolgáltatással.  Ha útmutatásra van szüksége, tekintse meg [a Azure HDInsight Hadoop-fürtök testreszabása speciális elemzésekhez](customize-hadoop-cluster.md)című témakört.
+* Testreszabott Hadoop-fürt kiépítve a HDInsight szolgáltatással.  Ha útmutatásra van szüksége, tekintse meg [a Azure HDInsight Hadoop-fürtök testreszabása speciális elemzésekhez](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)című témakört.
 * Az adatfeltöltés Azure HDInsight Hadoop fürtök struktúrájának tábláiba történt. Ha még nem tette meg, kövesse az [adatok létrehozása és betöltése a kaptár-táblákba](move-hive-tables.md) lehetőséget, hogy először töltse fel az adatok a kaptár-táblákba.
-* Engedélyezve van a távoli hozzáférés a fürthöz. Ha útmutatásra van szüksége, tekintse meg [a Hadoop-fürt fő csomópontjának elérését](customize-hadoop-cluster.md)ismertető témakört.
+* Engedélyezve van a távoli hozzáférés a fürthöz. Ha útmutatásra van szüksége, tekintse meg [a Hadoop-fürt fő csomópontjának elérését](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)ismertető témakört.
 
 ## <a name="feature-generation"></a><a name="hive-featureengineering"></a>Szolgáltatás létrehozása
 Ebben a szakaszban számos példát láthat arra, hogyan hozhatók létre a szolgáltatások a kaptár-lekérdezések használatával. Ha további funkciókat hozott létre, azokat oszlopként hozzáadhatja a meglévő táblához, vagy létrehozhat egy új táblát a további funkciókkal és elsődleges kulccsal, amelyek ezután az eredeti táblával is összekapcsolhatók. Az alábbi példákat mutatjuk be:
@@ -104,7 +104,7 @@ select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime f
 from <databasename>.<tablename>;
 ```
 
-Ebben a lekérdezésben, ha a *\<datetime field>* minta például a *03/26/2015 12:04:39*, akkor * \<pattern of the datetime field> * a következőnek kell lennie: `'MM/dd/yyyy HH:mm:ss'` . A teszteléshez a felhasználók futtathatnak
+Ebben a lekérdezésben, ha a *\<datetime field>* minta például a *03/26/2015 12:04:39* , akkor *\<pattern of the datetime field>* a következőnek kell lennie: `'MM/dd/yyyy HH:mm:ss'` . A teszteléshez a felhasználók futtathatnak
 
 ```hiveql
 select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
@@ -124,7 +124,7 @@ from <databasename>.<tablename>;
 ### <a name="calculate-distances-between-sets-of-gps-coordinates"></a><a name="hive-gpsdistance"></a>Távolságok kiszámítása a GPS-koordináták készletei között
 Az ebben a szakaszban megadott lekérdezés közvetlenül alkalmazható a New York-i taxis-adatra. A lekérdezés célja, hogy bemutassa, hogyan alkalmazhat egy beágyazott matematikai függvényt a kaptárban funkciók létrehozásához.
 
-A lekérdezésben használt mezők a felvételi és lemorzsolódási helyeinek GPS-koordinátái, a pickup * \_ hosszúsága*, a *pickup \_ szélesség*, a *lemorzsolódási \_ hosszúság*és a *lemorzsolódási \_ szélesség*. A felvételi és lemorzsolódási koordináták közötti közvetlen távolságot kiszámító lekérdezések a következők:
+A lekérdezésben használt mezők a felvételi és lemorzsolódási helyeinek GPS-koordinátái, a pickup *\_ hosszúsága* , a *pickup \_ szélesség* , a *lemorzsolódási \_ hosszúság* és a *lemorzsolódási \_ szélesség*. A felvételi és lemorzsolódási koordináták közötti közvetlen távolságot kiszámító lekérdezések a következők:
 
 ```hiveql
 set R=3959;
@@ -144,7 +144,7 @@ and dropoff_latitude between 30 and 90
 limit 10;
 ```
 
-A két GPS-koordináták közötti távolságot kiszámító matematikai egyenletek megtalálhatók a (z) Peter Lapisu által készített <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a> webhelyen. Ebben a JavaScriptben a függvény `toRad()` csak *lat_or_lon*PI/180, amely a fok és a radián közötti értéket alakítja át. Itt *lat_or_lon* a szélesség vagy a hosszúság. Mivel a kaptár nem adja meg a függvényt `atan2` , de a függvényt biztosítja `atan` , a `atan2` függvényt a `atan` fenti struktúra lekérdezésében a <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">wikipedia</a>által megadott definíció használatával valósítja meg.
+A két GPS-koordináták közötti távolságot kiszámító matematikai egyenletek megtalálhatók a (z) Peter Lapisu által készített <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a> webhelyen. Ebben a JavaScriptben a függvény `toRad()` csak *lat_or_lon* PI/180, amely a fok és a radián közötti értéket alakítja át. Itt *lat_or_lon* a szélesség vagy a hosszúság. Mivel a kaptár nem adja meg a függvényt `atan2` , de a függvényt biztosítja `atan` , a `atan2` függvényt a `atan` fenti struktúra lekérdezésében a <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">wikipedia</a>által megadott definíció használatával valósítja meg.
 
 ![Munkaterület létrehozása](./media/create-features-hive/atan2new.png)
 
@@ -153,7 +153,7 @@ A kaptár beágyazott UDF teljes listája megtalálható a <a href="https://cwik
 ## <a name="advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a> Speciális témakörök: a struktúra paramétereinek finomhangolása a lekérdezési sebesség javítása érdekében
 Előfordulhat, hogy a kaptár-fürt alapértelmezett paraméter-beállításai nem megfelelőek a kaptár-lekérdezésekhez és a lekérdezések által feldolgozott adatmennyiségekhez. Ez a szakasz azokat a paramétereket ismerteti, amelyeket a felhasználók a kaptár-lekérdezések teljesítményének javítására tudnak hangolni. A felhasználóknak az adatfeldolgozási lekérdezések előtt hozzá kell adni a paraméter-hangolási lekérdezéseket.
 
-1. **Java-halom területe**: a nagyméretű adatkészletek csatlakoztatását, illetve a hosszú rekordok feldolgozását végző lekérdezések esetében az egyik gyakori hiba az, hogy kifogyott a **rendelkezésre álló terület** . Ezt a hibát el lehet kerülni a paraméterek *MapReduce. map. Java. dönt* és *MapReduce. Task. IO. sort. MB* és a kívánt értékek megadásával. Alább bemutatunk egy példát:
+1. **Java-halom területe** : a nagyméretű adatkészletek csatlakoztatását, illetve a hosszú rekordok feldolgozását végző lekérdezések esetében az egyik gyakori hiba az, hogy kifogyott a **rendelkezésre álló terület** . Ezt a hibát el lehet kerülni a paraméterek *MapReduce. map. Java. dönt* és *MapReduce. Task. IO. sort. MB* és a kívánt értékek megadásával. Alább bemutatunk egy példát:
    
     ```hiveql
     set mapreduce.map.java.opts=-Xmx4096m;
@@ -162,20 +162,20 @@ Előfordulhat, hogy a kaptár-fürt alapértelmezett paraméter-beállításai n
 
     Ez a paraméter 4 GB memóriát foglal le a Java kupac területéhez, és hatékonyabbá teszi a rendezést azáltal, hogy több memóriát foglal le. Érdemes lehet lejátszani ezeket a foglalásokat, ha a rendszer feladattal kapcsolatos hibákat észlelt a heap területtel kapcsolatban.
 
-1. **DFS-blokk mérete**: Ez a paraméter a fájlrendszer által tárolt adatmennyiség legkisebb egységét állítja be. Ha például az elosztott fájlrendszerbeli blokk mérete 128 MB, akkor a méretnél kisebb és legfeljebb 128 MB méretű adatmennyiség egyetlen blokkban tárolódik. A 128 MB-nál nagyobb adatmennyiség további blokkokat is kiosztott. 
+1. **DFS-blokk mérete** : Ez a paraméter a fájlrendszer által tárolt adatmennyiség legkisebb egységét állítja be. Ha például az elosztott fájlrendszerbeli blokk mérete 128 MB, akkor a méretnél kisebb és legfeljebb 128 MB méretű adatmennyiség egyetlen blokkban tárolódik. A 128 MB-nál nagyobb adatmennyiség további blokkokat is kiosztott. 
 2. A kis blokk méretének kiválasztásakor a Hadoop nagy méretűek lehetnek, mivel a név csomópontnak több kérést kell feldolgoznia, hogy megtalálja a fájlhoz tartozó megfelelő blokkot. A gigabájt (vagy nagyobb) adatmennyiség esetén ajánlott beállítás:
 
     ```hiveql
     set dfs.block.size=128m;
     ```
 
-2. **Összekapcsolási művelet optimalizálása a kaptárban**: míg a Térkép/csökkentés keretrendszerben lévő csatlakozási műveletek jellemzően a csökkentési fázisban vannak, időnként a térképi fázisban (más néven "mapjoins") lévő összekapcsolások ütemezésével is nagy nyereség érhető el. Beállítás beállítása:
+2. **Összekapcsolási művelet optimalizálása a kaptárban** : míg a Térkép/csökkentés keretrendszerben lévő csatlakozási műveletek jellemzően a csökkentési fázisban vannak, időnként a térképi fázisban (más néven "mapjoins") lévő összekapcsolások ütemezésével is nagy nyereség érhető el. Beállítás beállítása:
    
     ```hiveql
     set hive.auto.convert.join=true;
     ```
 
-3. **A kaptárak számának megadása a struktúra számára**: míg a Hadoop lehetővé teszi a felhasználó számára a szűkítők számának megadását, a leképezések számát általában nem a felhasználó állítja be. Egy olyan trükk, amely lehetővé teszi, hogy a szám bizonyos fokú szabályozása kiválassza a Hadoop változókat *mapred. min. Split. size* és *mapred. max. Split. size* értékre, az egyes leképezési feladatok méretének meghatározásához:
+3. **A kaptárak számának megadása a struktúra számára** : míg a Hadoop lehetővé teszi a felhasználó számára a szűkítők számának megadását, a leképezések számát általában nem a felhasználó állítja be. Egy olyan trükk, amely lehetővé teszi, hogy a szám bizonyos fokú szabályozása kiválassza a Hadoop változókat *mapred. min. Split. size* és *mapred. max. Split. size* értékre, az egyes leképezési feladatok méretének meghatározásához:
    
     ```hiveql
     num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))
@@ -198,4 +198,3 @@ Előfordulhat, hogy a kaptár-fürt alapértelmezett paraméter-beállításai n
     set mapred.reduce.tasks=128;
     set mapred.tasktracker.reduce.tasks.maximum=128;
     ```
-

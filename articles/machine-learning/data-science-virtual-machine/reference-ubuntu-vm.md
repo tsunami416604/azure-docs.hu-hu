@@ -9,12 +9,12 @@ ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: d356bd43e5e09dfce96a801732e79d2efe8c08bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9da757e47308fe0fe1a96958e464b440d99f0984
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440337"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324737"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Hivatkozás: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -67,7 +67,7 @@ A MXNet a hatékonyságot és a rugalmasságot célzó, mélyreható tanulási k
 
 Az NVIDIA Deep learning GPU képzési rendszer, az úgynevezett SZÁMJEGYek, egy olyan rendszer, amely leegyszerűsíti a közös mély tanulási feladatokat. Ezen feladatok közé tartozik az adatok kezelése, a neurális hálózatok tervezése és betanítása a GPU-rendszereken, valamint a teljesítmény valós idejű figyelése a speciális vizualizációkkal.
 
-A SZÁMJEGYek *számjegyek nevű*szolgáltatásként érhetők el. Indítsa el a szolgáltatást, és tallózással keresse meg az `http://localhost:5000` első lépéseket.
+A SZÁMJEGYek *számjegyek nevű* szolgáltatásként érhetők el. Indítsa el a szolgáltatást, és tallózással keresse meg az `http://localhost:5000` első lépéseket.
 
 A SZÁMJEGYek a Conda-gyökér környezetében is Python-modulként települnek.
 
@@ -97,7 +97,7 @@ Az R-szkripttel az [első 20 R-csomagot](https://www.kdnuggets.com/2015/06/top-2
 
 ## <a name="python"></a>Python
 
-A anaconda Python a Python 2,7-es és 3,5-es környezetekkel van telepítve. Az 2,7-es környezet neve _root_, a 3,5-környezet neve pedig _py35_. Ez a disztribúció tartalmazza a Python alapját, valamint a legnépszerűbb matematikai, mérnöki és adatelemzési csomagokat 300.
+A anaconda Python a Python 2,7-es és 3,5-es környezetekkel van telepítve. Az 2,7-es környezet neve _root_ , a 3,5-környezet neve pedig _py35_. Ez a disztribúció tartalmazza a Python alapját, valamint a legnépszerűbb matematikai, mérnöki és adatelemzési csomagokat 300.
 
 A py35-környezet az alapértelmezett. A root (2,7) környezet aktiválásához használja a következő parancsot:
 
@@ -148,7 +148,7 @@ A Jupyter notebook-kiszolgálót bármely gazdagépről elérheti. Adja meg a **
 > [!NOTE]
 > A 8000-es port alapértelmezés szerint a tűzfalon van megnyitva, amikor a virtuális gép ki van építve. 
 
-Becsomagoltunk egy minta jegyzetfüzetet – egy Pythonban és egy az R-ben. A minták hivatkozását a notebook kezdőlapján láthatja, miután a helyi linuxos felhasználónevével és jelszavával hitelesíti magát a Jupyter notebookon. Új jegyzetfüzet létrehozásához válassza az **új**lehetőséget, majd válassza ki a megfelelő nyelvi kernelt. Ha nem jelenik meg az **új** gomb, a bal felső sarokban található **Jupyter** ikonra kattintva lépjen a notebook-kiszolgáló kezdőlapjára.
+Becsomagoltunk egy minta jegyzetfüzetet – egy Pythonban és egy az R-ben. A minták hivatkozását a notebook kezdőlapján láthatja, miután a helyi linuxos felhasználónevével és jelszavával hitelesíti magát a Jupyter notebookon. Új jegyzetfüzet létrehozásához válassza az **új** lehetőséget, majd válassza ki a megfelelő nyelvi kernelt. Ha nem jelenik meg az **új** gomb, a bal felső sarokban található **Jupyter** ikonra kattintva lépjen a notebook-kiszolgáló kezdőlapjára.
 
 ## <a name="apache-spark-standalone"></a>Önálló Apache Spark
 
@@ -206,13 +206,13 @@ További információ: [mókus SQL](http://squirrel-sql.sourceforge.net/index.ph
 
 A SQL Server ODBC-illesztőprogram-csomagja két parancssori eszközt is tartalmaz:
 
-- **BCP**: a BCP-eszköz tömegesen másol egy Microsoft SQL Server egy példánya és egy, a felhasználó által megadott formátumban tárolt adatfájl között. A BCP eszközzel nagy számú új sort importálhat SQL Server táblákba, vagy exportálhatja a táblákból az adatokból az adatfájlokat. Az adattáblázatba való importáláshoz az adott táblához létrehozott formátumú fájlt kell használnia. Vagy tisztában kell lennie a tábla struktúrájával és az oszlopokhoz érvényes adattípusokkal.
+- **BCP** : a BCP-eszköz tömegesen másol egy Microsoft SQL Server egy példánya és egy, a felhasználó által megadott formátumban tárolt adatfájl között. A BCP eszközzel nagy számú új sort importálhat SQL Server táblákba, vagy exportálhatja a táblákból az adatokból az adatfájlokat. Az adattáblázatba való importáláshoz az adott táblához létrehozott formátumú fájlt kell használnia. Vagy tisztában kell lennie a tábla struktúrájával és az oszlopokhoz érvényes adattípusokkal.
 
-  További információ: [Csatlakozás a BCP-vel](https://msdn.microsoft.com/library/hh568446.aspx).
+  További információ: [Csatlakozás a BCP-vel](/sql/connect/odbc/linux-mac/connecting-with-bcp).
 
-- **Sqlcmd**: a Sqlcmd eszközzel megadhatja a Transact-SQL-utasításokat. A parancssorban megadhatja a rendszerfolyamatokat és a parancsfájlokat is. Ez az eszköz az ODBC-t használja a Transact-SQL-kötegek futtatásához.
+- **Sqlcmd** : a Sqlcmd eszközzel megadhatja a Transact-SQL-utasításokat. A parancssorban megadhatja a rendszerfolyamatokat és a parancsfájlokat is. Ez az eszköz az ODBC-t használja a Transact-SQL-kötegek futtatásához.
 
-  További információ: [Csatlakozás a Sqlcmd](https://msdn.microsoft.com/library/hh568447.aspx)-hoz.
+  További információ: [Csatlakozás a Sqlcmd](/sql/connect/odbc/linux-mac/connecting-with-sqlcmd)-hoz.
 
   > [!NOTE]
   > Ez az eszköz a Linux és a Windows platform közötti különbségeket is tárgyalja. A részletekért tekintse meg a dokumentációt.
@@ -228,13 +228,13 @@ A kódtárak az R és a Python alkalmazásban érhetők el az adatbázis-hozzáf
 
 A következő Azure-eszközök vannak telepítve a virtuális gépre:
 
-* **Azure CLI**: az Azure parancssori felületének használatával Azure-erőforrásokat hozhat létre és kezelhet a rendszerhéj-parancsokkal. Az Azure-eszközök megnyitásához adja meg az **Azure súgóját**. További információkért tekintse meg az [Azure CLI dokumentációs oldalát](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
-* **Azure Storage Explorer**: a Azure Storage Explorer egy grafikus eszköz, amellyel böngészhet az Azure Storage-fiókban tárolt objektumokon, valamint az Azure-blobokból és az onnan érkező adatok feltöltésével és letöltésével. A Storage Explorer az asztali parancsikon ikonján keresztül érheti el. A **StorageExplorer**megadásával is megnyithatja azt egy rendszerhéj-parancssorból. Be kell jelentkeznie egy X2Go-ügyfélről, vagy be kell állítania az X11-továbbítást.
-* **Azure-kódtárak**: az alábbiakban néhány előre telepített függvénytár található.
+* **Azure CLI** : az Azure parancssori felületének használatával Azure-erőforrásokat hozhat létre és kezelhet a rendszerhéj-parancsokkal. Az Azure-eszközök megnyitásához adja meg az **Azure súgóját**. További információkért tekintse meg az [Azure CLI dokumentációs oldalát](/cli/azure/get-started-with-az-cli2).
+* **Azure Storage Explorer** : a Azure Storage Explorer egy grafikus eszköz, amellyel böngészhet az Azure Storage-fiókban tárolt objektumokon, valamint az Azure-blobokból és az onnan érkező adatok feltöltésével és letöltésével. A Storage Explorer az asztali parancsikon ikonján keresztül érheti el. A **StorageExplorer** megadásával is megnyithatja azt egy rendszerhéj-parancssorból. Be kell jelentkeznie egy X2Go-ügyfélről, vagy be kell állítania az X11-továbbítást.
+* **Azure-kódtárak** : az alábbiakban néhány előre telepített függvénytár található.
   
-  * **Python**: az Azure-hoz kapcsolódó kódtárak a Pythonban az *Azure*, a *azureml*, a *pydocumentdb*és a *pyodbc*. Az első három függvénytárban hozzáférhet az Azure Storage szolgáltatásaihoz, Azure Machine Learninghoz és Azure Cosmos DBhoz (NoSQL-adatbázis az Azure-ban). A pyodbc (a SQL Server Microsoft ODBC-illesztővel együtt) negyedik könyvtára lehetővé teszi a SQL Server, a Azure SQL Database és az Azure szinapszis-elemzések elérését a Pythonból egy ODBC-felület használatával. Az összes felsorolt könyvtár megjelenítéséhez adja meg a **pip-listát** . Mindenképpen futtassa ezt a parancsot a Python 2,7-es és a 3,5-es környezetekben.
-  * **R**: az Azure-beli, r-hez kapcsolódó kódtárak a AzureML és a RODBC.
-  * **Java**: az Azure Java-kódtárak listája a virtuális gép címtárának/dsvm/SDK/AzureSDKJava található. A legfontosabb kódtárak az Azure Storage és a Management API-k, a Azure Cosmos DB és a SQL Server JDBC-illesztőprogramjai.  
+  * **Python** : az Azure-hoz kapcsolódó kódtárak a Pythonban az *Azure* , a *azureml* , a *pydocumentdb* és a *pyodbc*. Az első három függvénytárban hozzáférhet az Azure Storage szolgáltatásaihoz, Azure Machine Learninghoz és Azure Cosmos DBhoz (NoSQL-adatbázis az Azure-ban). A pyodbc (a SQL Server Microsoft ODBC-illesztővel együtt) negyedik könyvtára lehetővé teszi a SQL Server, a Azure SQL Database és az Azure szinapszis-elemzések elérését a Pythonból egy ODBC-felület használatával. Az összes felsorolt könyvtár megjelenítéséhez adja meg a **pip-listát** . Mindenképpen futtassa ezt a parancsot a Python 2,7-es és a 3,5-es környezetekben.
+  * **R** : az Azure-beli, r-hez kapcsolódó kódtárak a AzureML és a RODBC.
+  * **Java** : az Azure Java-kódtárak listája a virtuális gép címtárának/dsvm/SDK/AzureSDKJava található. A legfontosabb kódtárak az Azure Storage és a Management API-k, a Azure Cosmos DB és a SQL Server JDBC-illesztőprogramjai.  
 
 A [Azure Portal](https://portal.azure.com) az előre telepített Firefox böngészőből érhető el. A Azure Portal az Azure-erőforrások létrehozását, kezelését és figyelését is elvégezheti.
 
@@ -246,7 +246,7 @@ Miután bejelentkezett Azure Machine Learning studióba, a kísérletezési vás
 
 Működővé tenni azokat a gépi tanulási modelleket, amelyeket a webszolgáltatási felületen való becsomagolással készített. A végrehajtott Machine learning-modellek lehetővé teszik bármely nyelven írt ügyfelek számára az előrejelzések meghívását ezekből a modellből. További információ: [Machine learning dokumentáció](https://azure.microsoft.com/documentation/services/machine-learning/).
 
-Az R-vagy Python-modelleket a virtuális gépen is létrehozhatja, majd üzembe helyezheti őket éles környezetben Azure Machine Learningon. A funkció engedélyezéséhez az R (**AzureML**) és a Python (**AzureML**) függvénytárait telepítettük.
+Az R-vagy Python-modelleket a virtuális gépen is létrehozhatja, majd üzembe helyezheti őket éles környezetben Azure Machine Learningon. A funkció engedélyezéséhez az R ( **AzureML** ) és a Python ( **AzureML** ) függvénytárait telepítettük.
 
 > [!NOTE]
 > Ezek az utasítások a Data Science Virtual Machine Windows-verziójára lettek írva. A modelleknek a Azure Machine Learning való üzembe helyezésére vonatkozó információk azonban a Linux rendszerű virtuális gépre érvényesek.
@@ -255,12 +255,12 @@ Az R-vagy Python-modelleket a virtuális gépen is létrehozhatja, majd üzembe 
 
 A virtuális gép olyan gépi tanulási eszközöket és algoritmusokat tartalmaz, amelyek előre le lettek fordítva, és helyileg lettek telepítve. Ezek a következők:
 
-* **Vowpal Wabbit**: gyors online tanulási algoritmus.
-* **xgboost**: olyan eszköz, amely optimalizált, növelt fa algoritmusokat biztosít.
-* **Csörgő**: egy R-alapú grafikus eszköz, amely megkönnyíti az adatfeltárást és a modellezést.
-* **Python**: a anaconda Python a gépi tanulási algoritmusokkal, például a Scikit-Learn csomaggal rendelkezik. A parancs használatával más kódtárakat is telepíthet `pip install` .
-* **LightGBM**: gyors, elosztott, nagy teljesítményű színátmenet-növelő keretrendszer döntési fa algoritmusok alapján.
-* **R**: a gépi tanulási függvények széles tárháza érhető el az r-hez. az előre telepített kódtárak közé tartozik az LM, a GLM, a randomForest és a rpart. A következő parancs futtatásával más kódtárakat is telepíthet:
+* **Vowpal Wabbit** : gyors online tanulási algoritmus.
+* **xgboost** : olyan eszköz, amely optimalizált, növelt fa algoritmusokat biztosít.
+* **Csörgő** : egy R-alapú grafikus eszköz, amely megkönnyíti az adatfeltárást és a modellezést.
+* **Python** : a anaconda Python a gépi tanulási algoritmusokkal, például a Scikit-Learn csomaggal rendelkezik. A parancs használatával más kódtárakat is telepíthet `pip install` .
+* **LightGBM** : gyors, elosztott, nagy teljesítményű színátmenet-növelő keretrendszer döntési fa algoritmusok alapján.
+* **R** : a gépi tanulási függvények széles tárháza érhető el az r-hez. az előre telepített kódtárak közé tartozik az LM, a GLM, a randomForest és a rpart. A következő parancs futtatásával más kódtárakat is telepíthet:
 
     ```r
     install.packages(<lib name>)
@@ -316,7 +316,7 @@ A xgboost kapcsolatos további információkért tekintse meg a [xgboost dokumen
 
 ### <a name="rattle"></a>Rattle
 
-A csörgő (az **R** **a**analitikus **t**OOL **t**o **L**keres **E**asily) GUI-alapú adatelemzést és modellezést használ. Az adatok statisztikai és vizuális összefoglalóit, a könnyen modellezhető adatok átalakítását, a nem felügyelt és a felügyelt modelleket is felépíti az adatokból, a modellek grafikus megjelenítését, valamint az új adatkészletek pontszámát mutatja be. Emellett R-kódot is létrehoz, replikálja a műveleteket a felhasználói felületen, amely közvetlenül az R-ben futtatható, vagy további elemzés céljából használható kiindulási pontként.
+A csörgő (az **R** **a** analitikus **t** OOL **t** o **L** keres **E** asily) GUI-alapú adatelemzést és modellezést használ. Az adatok statisztikai és vizuális összefoglalóit, a könnyen modellezhető adatok átalakítását, a nem felügyelt és a felügyelt modelleket is felépíti az adatokból, a modellek grafikus megjelenítését, valamint az új adatkészletek pontszámát mutatja be. Emellett R-kódot is létrehoz, replikálja a műveleteket a felhasználói felületen, amely közvetlenül az R-ben futtatható, vagy további elemzés céljából használható kiindulási pontként.
 
 A csörgő futtatásához grafikus asztali bejelentkezési munkamenetben kell lennie. A terminálon írja be az **r** parancsot az r-környezet megnyitásához. Az R-parancssorba írja be a következő parancsokat:
 

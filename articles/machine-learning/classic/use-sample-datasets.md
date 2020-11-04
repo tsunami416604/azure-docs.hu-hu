@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 6b252164027f07e4f26ab84ac12e2425e1da05f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 737c63c02ea852e8cf17e2d520ca91b05a5ba12b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357298"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325611"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>A minta adatkészletek használata Azure Machine Learning Studio (klasszikus)
 
-**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 [top]: #machine-learning-sample-datasets
@@ -27,7 +27,7 @@ Ha Azure Machine Learning Studio (klasszikus) új munkaterületet hoz létre, a 
 
 Ezen adatkészletek némelyike elérhető az Azure Blob Storage-ban. Ezen adatkészletek esetében a következő táblázat egy közvetlen hivatkozást tartalmaz. Ezeket az adatkészleteket a kísérletekben az [adat importálása][import-data] modul használatával használhatja.
 
-Ezen minta-adatkészletek további része a munkaterületen a **mentett adatkészletek**területen érhető el. Ez a modul paletta bal oldalán található, Machine Learning Studio (klasszikus).
+Ezen minta-adatkészletek további része a munkaterületen a **mentett adatkészletek** területen érhető el. Ez a modul paletta bal oldalán található, Machine Learning Studio (klasszikus).
 A saját kísérletekben bármelyik adatkészletet használhatja a kísérlet vászonra húzva.
 
 ## <a name="datasets"></a>Adathalmazok
@@ -408,10 +408,10 @@ Az adatkészlet letöltése és tárolása az Azure Blob Storage-ban (<a href="h
 
 </table>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Példa a kísérletek Kickstart-re](sample-experiments.md)
 
 <!-- Module References -->
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[import-data]: /azure/machine-learning/studio-module-reference/import-data

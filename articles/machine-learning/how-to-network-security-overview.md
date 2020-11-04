@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: 7ec62e4a6a864ca37011014341a2d059615873d5
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: fdfaef554e4e641656abd3fd2b4a5d3bbc519ccd
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131938"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325422"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Virtual Network elkülönítés és Adatvédelem – áttekintés
 
@@ -31,10 +31,10 @@ A sorozat további cikkei:
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez a cikk azt feltételezi, hogy a következő témakörök ismerete szükséges:
-+ [Azure-beli virtuális hálózatok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
-+ [IP-hálózatkezelés](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)
++ [Azure-beli virtuális hálózatok](../virtual-network/virtual-networks-overview.md)
++ [IP-hálózatkezelés](../virtual-network/public-ip-addresses.md)
 + [Azure Private Link](how-to-configure-private-link.md)
-+ [Hálózati biztonsági csoportok (NSG)](../virtual-network/security-overview.md)
++ [Hálózati biztonsági csoportok (NSG)](../virtual-network/network-security-groups-overview.md)
 + [Hálózati tűzfalak](../firewall/overview.md)
 
 ## <a name="example-scenario"></a>Példaforgatókönyv

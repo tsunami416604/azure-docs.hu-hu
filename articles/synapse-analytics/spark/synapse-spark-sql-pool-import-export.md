@@ -1,6 +1,6 @@
 ---
-title: Adatimportálás és-exportálás a Spark-készletek (előzetes verzió) és az SQL-készletek között
-description: Ez a cikk azt ismerteti, hogyan használható az egyéni összekötő az adatoknak az SQL-készletek és a Spark-készletek (előzetes verzió) közötti áthelyezéséhez.
+title: A kiszolgáló nélküli Apache Spark készletek (előzetes verzió) és az SQL-készletek közötti adatimportálás és exportálás
+description: Ez a cikk azt ismerteti, hogyan használható az egyéni összekötő az adatok dedikált SQL-készletek és kiszolgáló nélküli Apache Spark készletek (előzetes verzió) közötti áthelyezéséhez.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,22 +9,22 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 11f73d2becb40b800c49afe0cd58f56953f8d42d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ee82fbaa9687e064747908600c7e5c9017f8f1a9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91259918"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323902"
 ---
 # <a name="introduction"></a>Bevezetés
 
-Az Azure szinapszis Apache Spark a szinapszis SQL connectorhoz az Azure szinapszisban az adatoknak a Spark-készletek (előzetes verzió) és az SQL-készletek közötti hatékony átvitelét szolgálja. Az Azure szinapszis Apache Spark a szinapszis SQL-összekötő csak az SQL-készleteken működik, az SQL igény szerint nem működik.
+Az Azure szinapszis Apache Spark a szinapszis SQL connectorhoz úgy lett kialakítva, hogy hatékonyan vigye át az adatátvitelt a kiszolgáló nélküli Apache Spark készletek (előzetes verzió) és az SQL-készletek között az Azure Szinapszisban Az Azure szinapszis Apache Spark, hogy a szinapszis SQL Connector csak dedikált SQL-készleteken működik, nem működik a kiszolgáló nélküli SQL-készlettel.
 
 ## <a name="design"></a>Tervezés
 
 A Spark-készletek és az SQL-készletek közötti adatátvitel a JDBC használatával végezhető el. Azonban a két elosztott rendszer, például a Spark és az SQL-készletek miatt a JDBC általában szűk keresztmetszetet jelent a soros adatátvitel során.
 
-Az Azure szinapszis Apache Spark Pool to szinapszis SQL Connector a Apache Spark adatforrások implementációja. Az SQL-készletekben a Azure Data Lake Storage Gen2t és a bázist használja az adatok hatékony átviteléhez a Spark-fürt és a szinapszis SQL-példány között.
+Az Azure szinapszis Apache Spark Pool to szinapszis SQL Connector a Apache Spark adatforrások implementációja. A dedikált SQL-készletekben lévő Azure Data Lake Storage Gen2t és a viszonyítási alapot használja a Spark-fürt és a szinapszis SQL-példány közötti adatátvitel hatékony átviteléhez.
 
 ![Összekötő-architektúra](./media/synapse-spark-sqlpool-import-export/arch1.png)
 
@@ -32,7 +32,7 @@ Az Azure szinapszis Apache Spark Pool to szinapszis SQL Connector a Apache Spark
 
 A rendszerek közötti hitelesítés zökkenőmentesen elérhető az Azure szinapszis Analytics szolgáltatásban. A jogkivonat-szolgáltatás a Azure Active Directory használatával csatlakozik a Storage-fiókhoz vagy az adatraktár-kiszolgálóhoz való hozzáféréshez szükséges biztonsági jogkivonatok beszerzéséhez.
 
-Emiatt nem kell hitelesítő adatokat létrehoznia, vagy megadnia azokat az összekötő API-ban, ha a HRE-Auth konfigurálva van a Storage-fiókban és az adatraktár-kiszolgálón. Ha nem, akkor megadható az SQL-hitelesítés. További részleteket a [használati](#usage) szakaszban talál.
+Ezért nem kell hitelesítő adatokat létrehoznia, vagy megadnia azokat az összekötő API-ban, amíg az Azure AD-Auth konfigurálva van a Storage-fiókban és az adatraktár-kiszolgálón. Ha nem, akkor megadható az SQL-hitelesítés. További részleteket a [használati](#usage) szakaszban talál.
 
 ## <a name="constraints"></a>Korlátozások
 
@@ -67,7 +67,7 @@ EXEC sp_addrolemember 'db_exporter',[mike@contoso.com]
 
 Az importálási utasítások nem szükségesek, ezeket a rendszer előre importálja a jegyzetfüzet felhasználói felületén.
 
-### <a name="transfer-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>Adatok átvitele a munkaterülethez csatolt SQL-készletbe vagy-ból
+### <a name="transfer-data-to-or-from-a-dedicated-sql-pool-attached-within-the-workspace"></a>Adatok átvitele a munkaterületen belül csatolt, dedikált SQL-készletbe vagy onnan
 
 > [!NOTE]
 > **A notebook-élményben nem szükséges importálás**
@@ -91,12 +91,12 @@ A fenti API a belső (felügyelt) és az SQL-készletben található külső tá
 df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-Az írási API létrehozza a táblát az SQL-készletben, majd meghívja a albase-et az adatok betöltéséhez.  A tábla nem létezhet az SQL-készletben, és a rendszer hibaüzenetet ad vissza, amely szerint a "már van egy nevű objektum..."
+Az írási API létrehozza a táblát a dedikált SQL-készletben, majd meghívja a albase-et az adatok betöltéséhez.  A tábla nem létezhet a dedikált SQL-készletben, vagy a rendszer hibaüzenetet küld, amely szerint a "már létezik objektum neve..."
 
 TableType-értékek
 
-- Állandók. belső felügyelt tábla az SQL-készletben
-- Konstansok. külső külső tábla az SQL-készletben
+- Állandók. belső felügyelt tábla dedikált SQL-készletben
+- Konstansok. külső külső tábla dedikált SQL-készletben
 
 SQL-készlet – felügyelt tábla
 
@@ -106,10 +106,10 @@ df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 
 SQL Pool – külső tábla
 
-SQL-készlet külső táblájába való íráshoz egy külső adatforrást és egy külső FÁJLFORMÁTUMot kell létrehozni az SQL-készleten.  További információért olvassa el a [külső adatforrás](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) és az SQL-készlet külső [fájlformátumainak](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) létrehozása című témakört.  Az alábbiakban a külső adatforrás és a külső fájlformátumok SQL-készletben való létrehozására mutatunk példákat.
+Egy dedikált SQL-készlet külső táblájába való íráshoz külső adatforrásra és külső FÁJLFORMÁTUMra van szükség a dedikált SQL-készleten.  További információért olvassa el a [külső adatforrás](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) és a [külső fájlformátumok](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) létrehozása a dedikált SQL-készletben című témakört.  Az alábbi példák egy külső adatforrás és a külső fájlformátumok létrehozására szolgálnak a dedikált SQL-készletben.
 
 ```sql
---For an external table, you need to pre-create the data source and file format in SQL pool using SQL queries:
+--For an external table, you need to pre-create the data source and file format in dedicated SQL pool using SQL queries:
 CREATE EXTERNAL DATA SOURCE <DataSourceName>
 WITH
   ( LOCATION = 'abfss://...' ,
@@ -134,7 +134,7 @@ df.write.
 
 ```
 
-### <a name="if-you-transfer-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>Ha a munkaterületen kívüli SQL-készletbe vagy-adatbázisba küldi az adatátvitelt
+### <a name="transfer-data-to-or-from-a-dedicated-sql-pool-or-database-outside-the-workspace"></a>Adatok átvitele egy dedikált SQL-készletből vagy-adatbázisból a munkaterületen kívül
 
 > [!NOTE]
 > A notebook-élményben nem szükséges importálás
@@ -160,11 +160,11 @@ option(Constants.SERVER, "samplews.database.windows.net").
 sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-### <a name="use-sql-auth-instead-of-aad"></a>SQL-hitelesítés használata a HRE helyett
+### <a name="use-sql-auth-instead-of-azure-ad"></a>SQL-hitelesítés használata az Azure AD helyett
 
 #### <a name="read-api"></a>API olvasása
 
-Az összekötő jelenleg nem támogatja a jogkivonat-alapú hitelesítést a munkaterületen kívüli SQL-készletre. Az SQL-hitelesítést kell használnia.
+Az összekötő jelenleg nem támogatja a jogkivonat-alapú hitelesítés használatát egy olyan dedikált SQL-készleten, amely a munkaterületen kívül esik. Az SQL-hitelesítést kell használnia.
 
 ```scala
 val df = spark.read.
@@ -227,7 +227,7 @@ A munkaterülethez csatlakoztatott ADLS Gen2 Storage-fiókban tárolnia kell a b
 
 - Az összes mappát le kell tudnia adni a "szinapszis" mappából, és a Azure Portal lefelé haladva. A root "/" mappa ACL-jéhez kövesse az alábbi utasításokat.
 
-- Csatlakozás a munkaterülethez csatlakoztatott Storage-fiókhoz Storage Explorer a HRE használatával
+- Csatlakozás a munkaterülethez csatlakoztatott Storage-fiókhoz Storage Explorer az Azure AD használatával
 - Válassza ki a fiókját, és adja meg a munkaterület ADLS Gen2 URL-címét és alapértelmezett fájlrendszerét
 - Ha megjelenik a felsorolt Storage-fiók, kattintson a jobb gombbal a Listázás munkaterületre, és válassza a "hozzáférés kezelése" lehetőséget.
 - Adja hozzá a felhasználót a/mappához a "végrehajtás" hozzáférési engedéllyel. Válassza az OK lehetőséget
@@ -235,7 +235,7 @@ A munkaterülethez csatlakoztatott ADLS Gen2 Storage-fiókban tárolnia kell a b
 > [!IMPORTANT]
 > Ügyeljen arra, hogy ne válassza az "alapértelmezett" lehetőséget, ha nem kívánja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [SQL-készlet létrehozása a Azure Portal használatával](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
+- [Dedikált SQL-készlet létrehozása a Azure Portal használatával](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 - [Új Apache Spark-készlet létrehozása a Azure Portal használatával](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md) 

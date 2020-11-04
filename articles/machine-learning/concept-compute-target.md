@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 18f9af0198c7a89b607630c686fbf8dafdd01a50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72cdfe2ebe79abb9649ac497a6ecddda8918b951
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841949"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322269"
 ---
-# <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik azok a számítási célok Azure Machine Learning?
+# <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik a számítási célok az Azure Machine Learningben?
 
 A *számítási cél* egy kijelölt számítási erőforrás vagy környezet, amelyben futtathatja a betanítási szkriptet, vagy üzemeltetheti a szolgáltatás központi telepítését. Ez a hely lehet a helyi számítógép vagy egy felhőalapú számítási erőforrás. A számítási célok használata megkönnyíti a számítási környezet későbbi módosítását anélkül, hogy módosítani kellene a kódot.
 
@@ -54,7 +54,7 @@ A következtetések elvégzése során a Azure Machine Learning létrehoz egy Do
 
 * Olyan _Batch-következtetési_ végpontként, amely a kötegek rendszeres feldolgozásához használatos. A Batch-következtetések [Azure Machine learning számítási fürtöket](how-to-create-attach-compute-cluster.md)használnak.
 
-* Egy _IoT-eszközre_ (előzetes verzió). A IoT-eszközre történő központi telepítés csak az Azure Machine Learningra támaszkodik a Docker-tároló felépítéséhez. Innen a Azure IoT Edge használatával telepíthető. További információ: [telepítés IoT Edge modulként (előzetes verzió)](/azure/iot-edge/tutorial-deploy-machine-learning).
+* Egy _IoT-eszközre_ (előzetes verzió). A IoT-eszközre történő központi telepítés csak az Azure Machine Learningra támaszkodik a Docker-tároló felépítéséhez. Innen a Azure IoT Edge használatával telepíthető. További információ: [telepítés IoT Edge modulként (előzetes verzió)](../iot-edge/tutorial-deploy-machine-learning.md).
 
 Megtudhatja, [hol és hogyan helyezheti üzembe a modellt egy számítási célra](how-to-deploy-and-where.md).
 
@@ -89,7 +89,7 @@ A létrehozáskor ezek a számítási erőforrások automatikusan a munkaterüle
 
 ### <a name="supported-vm-series-and-sizes"></a>Támogatott VM-sorozatok és-méretek
 
-Ha Azure Machine Learning felügyelt számítási erőforráshoz kiválasztja a csomópont méretét, az Azure-ban elérhető virtuálisgép-méretek közül választhat. Az Azure számos méretet kínál a különböző számítási feladatokhoz használható Linux és Windows rendszerekhez. További információ: [VM-típusok és-méretek](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+Ha Azure Machine Learning felügyelt számítási erőforráshoz kiválasztja a csomópont méretét, az Azure-ban elérhető virtuálisgép-méretek közül választhat. Az Azure számos méretet kínál a különböző számítási feladatokhoz használható Linux és Windows rendszerekhez. További információ: [VM-típusok és-méretek](../virtual-machines/sizes.md).
 
 A virtuális gépek méretének kiválasztására néhány kivétel és korlátozás vonatkozik:
 
@@ -133,7 +133,7 @@ A jelenlegi elkülönített VM-ajánlatok a következők:
 
 *RDMA-kompatibilis
 
-További információ az elkülönítésről: [elkülönítés az Azure nyilvános felhőben](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices).
+További információ az elkülönítésről: [elkülönítés az Azure nyilvános felhőben](../security/fundamentals/isolation-choices.md).
 
 ## <a name="unmanaged-compute"></a>Nem felügyelt számítás
 

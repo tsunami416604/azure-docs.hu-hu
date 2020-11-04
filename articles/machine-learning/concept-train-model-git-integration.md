@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: 71ac7793fe5226215c5d4eab98f84dba356b114c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f13773a8e3e78451dfb587e55c40a20d1b4b385c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275965"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324761"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-integráció a Azure Machine Learning
 
@@ -39,7 +39,7 @@ A klónozással kapcsolatos további információkért tekintse meg a [git paran
 
 ## <a name="authenticate-your-git-account-with-ssh"></a>A git-fiók hitelesítése SSH-val
 ### <a name="generate-a-new-ssh-key"></a>Új SSH-kulcs létrehozása
-1) [Nyissa meg a terminál ablakot](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal) a Azure Machine learning notebook lapon.
+1) [Nyissa meg a terminál ablakot](./how-to-run-jupyter-notebooks.md#terminal) a Azure Machine learning notebook lapon.
 
 2) Illessze be az alábbi szöveget az e-mail-címébe való Behelyettesítéssel.
 
@@ -89,7 +89,7 @@ cat ~/.ssh/id_rsa.pub
 
 + [GitLab](https://docs.gitlab.com/ee/ssh/#adding-an-ssh-key-to-your-gitlab-account)
 
-+ [Azure-DevOps](https://docs.microsoft.com/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs)  Kezdje a **2. lépéssel**.
++ [Azure-DevOps](/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs)  Kezdje a **2. lépéssel**.
 
 + [BitBucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2). Kezdje a **4. lépéssel**.
 
@@ -115,7 +115,7 @@ Warning: Permanently added 'github.com,192.30.255.112' (RSA) to the list of know
 
 Előfordulhat, hogy az SSH megjeleníti a kiszolgáló SSH-ujjlenyomatát, és megkéri, hogy ellenőrizze. Győződjön meg arról, hogy a megjelenített ujjlenyomat megegyezik az SSH nyilvános kulcsok oldalának egyik ujjlenyomatával.
 
-Az SSH ezt az ujjlenyomatot jeleníti meg, amikor egy ismeretlen gazdagéphez csatlakozik, és így védelmet nyújt a támadók [számára.](https://technet.microsoft.com/library/cc959354.aspx) Ha elfogadja a gazdagép ujjlenyomatát, az SSH nem kérdezi újra, ha az ujjlenyomat megváltozása megtörténik.
+Az SSH ezt az ujjlenyomatot jeleníti meg, amikor egy ismeretlen gazdagéphez csatlakozik, és így védelmet nyújt a támadók [számára.](/previous-versions/windows/it-pro/windows-2000-server/cc959354(v=technet.10)) Ha elfogadja a gazdagép ujjlenyomatát, az SSH nem kérdezi újra, ha az ujjlenyomat megváltozása megtörténik.
 
 3) Ha a rendszer megkérdezi, hogy szeretné-e folytatni a csatlakozást, írja be a következőt: `yes` . A git a tárház klónozásával és az SSH-val a későbbi git-parancsokkal való kapcsolódáshoz állítja be a forrás távoli kapcsolatot.
 
@@ -153,9 +153,9 @@ A git-adatokat egy tanítási Futtatás tulajdonságai tárolják. Ezeket az inf
 ### <a name="azure-portal"></a>Azure Portal
 
 1. A [Studio portálon](https://ml.azure.com)válassza ki a munkaterületet.
-1. Válassza a __kísérletek__lehetőséget, majd válassza ki az egyik kísérletet.
+1. Válassza a __kísérletek__ lehetőséget, majd válassza ki az egyik kísérletet.
 1. Válassza ki a __futtatások száma__ oszlop egyik futtatását.
-1. Válassza a __kimenetek + naplók__lehetőséget, majd bontsa ki a __naplók__ és a __azureml__ bejegyzéseket. Válassza ki a hivatkozást, amely az __ ### \_ Azure__-ban kezdődik.
+1. Válassza a __kimenetek + naplók__ lehetőséget, majd bontsa ki a __naplók__ és a __azureml__ bejegyzéseket. Válassza ki a hivatkozást, amely az __### \_ Azure__ -ban kezdődik.
 
 A naplózott információ a következő JSON-hoz hasonló szöveget tartalmaz:
 
@@ -178,7 +178,7 @@ A naplózott információ a következő JSON-hoz hasonló szöveget tartalmaz:
 
 ### <a name="python-sdk"></a>Python SDK
 
-A betanítási Futtatás elküldése után a rendszer egy [futtatási](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) objektumot ad vissza. Az `properties` objektum attribútuma tartalmazza a naplózott git-információkat. A következő kód például lekéri a véglegesítő kivonatot:
+A betanítási Futtatás elküldése után a rendszer egy [futtatási](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) objektumot ad vissza. Az `properties` objektum attribútuma tartalmazza a naplózott git-információkat. A következő kód például lekéri a véglegesítő kivonatot:
 
 ```python
 run.properties['azureml.git.commit']
@@ -192,7 +192,7 @@ A `az ml run` CLI-parancs használatával lekérheti a tulajdonságokat egy futt
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'
 ```
 
-További információ: az [ml Run](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest&preserve-view=true) Reference dokumentáció.
+További információ: az [ml Run](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest) Reference dokumentáció.
 
 ## <a name="next-steps"></a>Következő lépések
 

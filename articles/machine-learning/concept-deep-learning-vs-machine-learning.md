@@ -10,18 +10,18 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 09/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: d462ed4627254275703d88cadbaf5d55a106da55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a6708214eadb2f5d0d66d72f5db5cb4a195d206
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330128"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324872"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Mélyreható tanulás és gépi tanulás a Azure Machine Learning
 
 Ez a cikk a részletes tanulást és a gépi tanulást ismerteti, valamint azt, hogy azok hogyan illeszkednek a mesterséges intelligencia tágabb kategóriába. Ismerkedjen meg a Azure Machine Learningre épülő mélyreható tanulási megoldásokkal, például a csalások észlelésével, a hang-és Arcfelismerés, a hangulat elemzése és az idősorozat-előrejelzés használatával.
 
-Az algoritmusok megoldáshoz való kiválasztásával kapcsolatos útmutatásért tekintse meg a [Machine learning algoritmust tartalmazó Cheat lapot](algorithm-cheat-sheet.md).
+Az algoritmusok megoldáshoz való kiválasztásával kapcsolatos útmutatásért tekintse meg a [Machine learning algoritmust tartalmazó Cheat lapot](https://docs.microsoft.com/azure/machine-learning/algorithm-cheat-sheet?WT.mc_id=docs-article-lazzeri).
 
 ## <a name="deep-learning-machine-learning-and-ai"></a>Mély tanulás, gépi tanulás és AI
 
@@ -73,7 +73,7 @@ A Deep learning számos objektum-észlelési használati esettel lett alkalmazva
 
 Az objektumok észlelése már használatban van olyan iparágakban, mint például a játékok, a kiskereskedelem, a turizmus és az önkiszolgáló autók.
 
-Megtudhatja, hogyan használhat képbesorolási modellt egy nyílt forráskódú keretrendszerből Azure Machine Learning: [rendszerképek osztályozása Pytorch-modell használatával](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
+Megtudhatja, hogyan használhat képbesorolási modellt egy nyílt forráskódú keretrendszerből Azure Machine Learning: [rendszerképek osztályozása Pytorch-modell használatával](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)
 
 ### <a name="image-caption-generation"></a>Képfelirat létrehozása
 
@@ -93,7 +93,7 @@ A mélyreható tanulási módszereken alapuló szöveges elemzések nagy mennyis
 
 A vállalatok mély tanulással végeznek szöveges elemzést a bennfentes kereskedelem és a kormányzati szabályozásoknak való megfelelés észlelése érdekében. Egy másik gyakori példa a biztosítási csalás: a szöveges elemzés gyakran a nagy mennyiségű dokumentum elemzésére szolgál, hogy felismerje a biztosítási követelések csalásának esélyét. 
 
-Ismerje meg, hogyan használhat TensorFlow modellt a Azure Machine Learningban: [kézzel írt számjegyek osztályozása TensorFlow-modell használatával](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
+Ismerje meg, hogyan használhat TensorFlow modellt a Azure Machine Learningban: [kézzel írt számjegyek osztályozása TensorFlow-modell használatával](./how-to-train-tensorflow.md?WT.mc_id=docs-article-lazzeri)
 
 ## <a name="artificial-neural-networks"></a>Mesterséges neurális hálózatok
 
@@ -117,8 +117,8 @@ A többszintű neurális hálózatok olyan területeken lettek felhasználva, mi
 
 ## <a name="next-steps"></a>Következő lépések
 
-A következő cikkek további lehetőségeket mutatnak be a nyílt forráskódú mély tanulási modellek [Azure Machine Learningban](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri)való használatára:
+A következő cikkek további lehetőségeket mutatnak be a nyílt forráskódú mély tanulási modellek [Azure Machine Learningban](./index.yml?WT.mc_id=docs-article-lazzeri)való használatára:
 
-- [Kézzel írt számjegyek osztályozása TensorFlow-kalkulátor és kerasz használatával](https://docs.microsoft.com/azure/machine-learning/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
+- [Kézzel írt számjegyek osztályozása TensorFlow-kalkulátor és kerasz használatával](./how-to-train-keras.md?WT.mc_id=docs-article-lazzeri)
 
-- [Kézzel írt számjegyek besorolása egy Láncer-modell használatával](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models)
+- [Kézzel írt számjegyek besorolása egy Láncer-modell használatával](./how-to-set-up-training-targets.md)

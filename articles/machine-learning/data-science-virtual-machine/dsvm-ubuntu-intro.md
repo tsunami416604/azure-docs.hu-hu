@@ -8,12 +8,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: a14f7ac212d9957e5258f75a386b8730ad5de700
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 631717252abe956357cf8b588fa653890037bbc9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233838"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322167"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Gyors útmutató: a Linux Data Science Virtual Machine beállítása (Ubuntu)
 
@@ -46,7 +46,7 @@ Az alábbi lépéseket követve hozhatja létre a Data Science Virtual Machine U
        * **Virtuális gép neve** : adja meg a virtuális gép nevét. Ezt a nevet fogja használni a Azure Portal.
        * **Régió** : válassza ki a legmegfelelőbb adatközpontot. A leggyorsabb hálózati hozzáféréshez ez az adatközpont, amely a legtöbb adattal rendelkezik, vagy a legközelebb áll a fizikai helyhez. További információ az [Azure-régiókról](https://azure.microsoft.com/global-infrastructure/regions/).
        * **Rendszerkép** : hagyja meg az alapértelmezett értéket.
-       * **Méret** : Ez a beállítás az általános számítási feladatokhoz megfelelő mérettel automatikusan feltölthető. További információ a [LINUXOS virtuális gépek méretéről az Azure-ban](../../virtual-machines/linux/sizes.md).
+       * **Méret** : Ez a beállítás az általános számítási feladatokhoz megfelelő mérettel automatikusan feltölthető. További információ a [LINUXOS virtuális gépek méretéről az Azure-ban](../../virtual-machines/sizes.md).
        * **Hitelesítés típusa** : a gyorsabb telepítéshez válassza a "jelszó" lehetőséget. 
          
          > [!NOTE]
@@ -144,6 +144,6 @@ c.Spawner.default_url = '/lab'
 
 * A [Linux rendszerhez készült Data Science Virtual Machine adatelemzés](linux-dsvm-walkthrough.md) azt mutatja be, hogyan végezhető el számos általános adatelemzési feladat az itt kiépített Linux-DSVM. 
 * A jelen cikkben ismertetett eszközök kipróbálásával megismerheti a DSVM különböző adatelemzési eszközeit. A `dsvm-more-info` virtuális gépen található rendszerhéjon is futtathatja az alapszintű bevezetést és a mutatókat, hogy további információkhoz lehessen jutni a virtuális gépre telepített eszközökről.  
-* Ismerje meg, hogyan hozhat létre szisztematikusan analitikai megoldásokat a [csoportos adatelemzési folyamat](https://aka.ms/tdsp)használatával.
+* Ismerje meg, hogyan hozhat létre szisztematikusan analitikai megoldásokat a [csoportos adatelemzési folyamat](../team-data-science-process/index.yml)használatával.
 * Látogasson el az Azure AI-szolgáltatásokat használó gépi tanulási és adatelemzési minták [Azure AI Gallery](https://gallery.azure.ai/) .
 * Olvassa el a virtuális gép megfelelő [dokumentációját](./reference-ubuntu-vm.md) .

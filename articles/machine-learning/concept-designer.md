@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: c92351131a60b571a102b85f7d11b79ab29d939e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 059b521461969d8148ced90cb3ceffd14a00c4bb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883121"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322252"
 ---
 # <a name="what-is-azure-machine-learning-designer"></a>Mi az Azure Machine Learning Designer? 
 
@@ -54,7 +54,7 @@ A [folyamatok](concept-azure-machine-learning-architecture.md#ml-pipelines) adat
 
 ### <a name="pipeline-draft"></a>Folyamat piszkozata
 
-Amikor szerkeszt egy folyamatot a tervezőben, a **rendszer folyamatként**menti az előrehaladást. A folyamat piszkozatait bármikor szerkesztheti a modulok hozzáadásával vagy eltávolításával, a számítási célok konfigurálásával, a paraméterek létrehozásával és így tovább.
+Amikor szerkeszt egy folyamatot a tervezőben, a **rendszer folyamatként** menti az előrehaladást. A folyamat piszkozatait bármikor szerkesztheti a modulok hozzáadásával vagy eltávolításával, a számítási célok konfigurálásával, a paraméterek létrehozásával és így tovább.
 
 Egy érvényes folyamat a következő jellemzőkkel rendelkezik:
 
@@ -67,7 +67,7 @@ Amikor készen áll a folyamat piszkozatának futtatására, elküld egy folyama
 
 ### <a name="pipeline-run"></a>Folyamat futtatása
 
-Minden alkalommal, amikor futtat egy folyamatot, a folyamat és annak eredményei a munkaterületen a **folyamat futtatásakor**tárolódnak. Visszatérhet bármelyik folyamat futtatásához, és megvizsgálhatja a hibaelhárítási és naplózási célokat. Egy folyamat futásának **klónozásával** létrehozhat egy új folyamat-piszkozatot a szerkesztéshez.
+Minden alkalommal, amikor futtat egy folyamatot, a folyamat és annak eredményei a munkaterületen a **folyamat futtatásakor** tárolódnak. Visszatérhet bármelyik folyamat futtatásához, és megvizsgálhatja a hibaelhárítási és naplózási célokat. Egy folyamat futásának **klónozásával** létrehozhat egy új folyamat-piszkozatot a szerkesztéshez.
 
 A folyamat-futtatások [kísérletekbe](concept-azure-machine-learning-architecture.md#experiments) vannak csoportosítva a futtatási előzmények rendszerezéséhez. Megadhatja a kísérletet minden egyes folyamat futtatásához. 
 
@@ -90,7 +90,7 @@ Ha segítségre van az elérhető gépi tanulási algoritmusok könyvtárában, 
 
 A munkaterületen lévő számítási erőforrások használatával futtathatja a folyamatot, és üzemeltetheti a telepített modelleket valós idejű végpontok vagy folyamat-végpontok (a Batch-következtetések esetében). A támogatott számítási célok a következők:
 
-| Számítási cél | Oktatás | Üzembe helyezés |
+| Számítási cél | Képzés | Üzembe helyezés |
 | ---- |:----:|:----:|
 | Azure Machine Learning számítás | ✓ | |
 | Azure Machine Learning számítási példány | ✓ | |
@@ -100,7 +100,7 @@ A számítási célok a [Azure Machine learning munkaterülethez](concept-worksp
 
 ## <a name="deploy"></a>Üzembe helyezés
 
-A valós idejű következtetések elvégzéséhez a folyamatot **valós idejű végpontként**kell üzembe helyezni. A valós idejű végpont egy külső alkalmazás és a pontozási modell közötti felületet hoz létre. A valós idejű végpontra irányuló hívás valós időben adja vissza az előrejelzési eredményeket az alkalmazásnak. A valós idejű végpontok hívásához át kell adni a végpont üzembe helyezésekor létrehozott API-kulcsot. A végpont egy REST-alapú, népszerű architektúra a webes programozási projektekhez.
+A valós idejű következtetések elvégzéséhez a folyamatot **valós idejű végpontként** kell üzembe helyezni. A valós idejű végpont egy külső alkalmazás és a pontozási modell közötti felületet hoz létre. A valós idejű végpontra irányuló hívás valós időben adja vissza az előrejelzési eredményeket az alkalmazásnak. A valós idejű végpontok hívásához át kell adni a végpont üzembe helyezésekor létrehozott API-kulcsot. A végpont egy REST-alapú, népszerű architektúra a webes programozási projektekhez.
 
 A valós idejű végpontokat egy Azure Kubernetes Service-fürtre kell telepíteni.
 
@@ -108,13 +108,13 @@ A modell üzembe helyezésével kapcsolatos további információkért lásd [: 
 
 ## <a name="publish"></a>Közzététel
 
-A folyamat egy folyamat **végpontján**is közzétehető. A valós idejű végponthoz hasonlóan a folyamat végpontja lehetővé teszi, hogy az új folyamat külső alkalmazásokból is fusson REST-hívásokat használva. Azonban a folyamat végpontján keresztül nem lehet valós időben elküldeni vagy fogadni az adataikat.
+A folyamat egy folyamat **végpontján** is közzétehető. A valós idejű végponthoz hasonlóan a folyamat végpontja lehetővé teszi, hogy az új folyamat külső alkalmazásokból is fusson REST-hívásokat használva. Azonban a folyamat végpontján keresztül nem lehet valós időben elküldeni vagy fogadni az adataikat.
 
 A közzétett folyamatok rugalmasak, felhasználhatók modellek betanítására és újraképzésére, [kötegelt következtetések elvégzésére](how-to-run-batch-predictions-designer.md), új adatok feldolgozására és sok más lehetőségre. Több folyamatot is közzétehet egyetlen folyamat-végponton, és megadhatja, hogy melyik folyamat melyik verzióját szeretné futtatni.
 
 A közzétett folyamat az egyes modulokhoz tartozó folyamat piszkozatában definiált számítási erőforrásokon fut.
 
-A tervező létrehoz egy [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py&preserve-view=true) -objektumot, mint az SDK-t.
+A tervező létrehoz egy [PublishedPipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?preserve-view=true&view=azure-ml-py) -objektumot, mint az SDK-t.
 
 ## <a name="next-steps"></a>Következő lépések
 

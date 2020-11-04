@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: c9cfe05b6547cbdc61a1c8cc6223f08900cf09d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a588195f2095b2d0cb261e1573eeb9ec881f2fd
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342960"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322841"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatás üzembe helyezése
 
-**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
+**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 A Azure Machine Learning Studio (klasszikus) lehetővé teszi prediktív elemzési megoldások készítését és tesztelését. Ezután webszolgáltatásként üzembe helyezheti a megoldást.
@@ -89,11 +89,11 @@ Ha ezt a betanítási kísérletet prediktív kísérletre konvertálja, ezeknek
   
     Ebben a példában például a minta adatkészlet hiányzó értékekkel rendelkezhet, ezért a rendszer egy [tiszta hiányzó][clean-missing-data] adatmodult tartalmazott a velük való kezeléshez. Emellett a minta adatkészlet olyan oszlopokat is tartalmaz, amelyek nem szükségesek a modell betanításához. Így az [adatkészlet modul Select oszlopai][select-columns] is kizárhatók a további oszlopoknak az adatfolyamatból való kizárásával. Ha tudja, hogy a webszolgáltatáson keresztüli pontozásra elküldött adatok nem rendelkeznek hiányzó értékekkel, akkor eltávolíthatja a [hiányzó adatok][clean-missing-data] törlése modult. Mivel azonban az [adatkészlet modul Select oszlopai][select-columns] segítenek meghatározni a betanított modell által várt adatoszlopokat, a modulnak meg kell maradnia.
 
-* **Betanítás** – ezek a modulok a modell betanítására szolgálnak. Ha a **webszolgáltatás beállítása**elemre kattint, a rendszer lecseréli ezeket a modulokat egyetlen modulra, amely tartalmazza a betanított modellt. Ezt az új modult a modul paletta **betanított modellek** szakasza menti.
+* **Betanítás** – ezek a modulok a modell betanítására szolgálnak. Ha a **webszolgáltatás beállítása** elemre kattint, a rendszer lecseréli ezeket a modulokat egyetlen modulra, amely tartalmazza a betanított modellt. Ezt az új modult a modul paletta **betanított modellek** szakasza menti.
 
 * **Pontszám** – ebben a [példában az adatstreamek a][split] tesztelési és a betanítási adatként való felosztására szolgálnak. A prediktív kísérletben nem dolgozunk fel többé, ezért a [felosztott adatvesztést][split] el lehet távolítani. Hasonlóképpen, a második [pontszámot modellező][score-model] modul és a [modell kiértékelése][evaluate-model] modul a vizsgálati adatok eredményeinek összehasonlítására szolgál, így ezek a modulok nem szükségesek a prediktív kísérlet során. A fennmaradó [pontszám modell][score-model] modulnak azonban a webszolgáltatáson keresztüli pontszám eredményét kell visszaadnia.
 
-A példa a **webszolgáltatás beállítása**elemre való kattintás után a következőképpen néz ki:
+A példa a **webszolgáltatás beállítása** elemre való kattintás után a következőképpen néz ki:
 
 ![Átalakított prediktív kísérlet](./media/convert-training-experiment-to-scoring-experiment/figure3.png)
 
@@ -138,7 +138,7 @@ A következő lépések leírják, hogyan helyezhet üzembe egy prediktív kís�
 
 Most, hogy előkészítette a prediktív kísérletet, üzembe helyezheti új (Resource Manager-alapú) Azure-webszolgáltatásként. A webszolgáltatás használatával a felhasználók elküldhetik az adatait a modellbe, és a modell visszaadja az előrejelzéseit.
 
-A prediktív kísérlet üzembe helyezéséhez kattintson a **Run (Futtatás** ) gombra a kísérlet vászon alján. A kísérlet befejezését követően kattintson a **webszolgáltatás üzembe helyezése** lehetőségre, és válassza a **webszolgáltatás [új]telepítése**lehetőséget.  Megnyílik a Machine Learning Studio (klasszikus) webszolgáltatás-portál üzembe helyezés lapja.
+A prediktív kísérlet üzembe helyezéséhez kattintson a **Run (Futtatás** ) gombra a kísérlet vászon alján. A kísérlet befejezését követően kattintson a **webszolgáltatás üzembe helyezése** lehetőségre, és válassza a **webszolgáltatás [új]telepítése** lehetőséget.  Megnyílik a Machine Learning Studio (klasszikus) webszolgáltatás-portál üzembe helyezés lapja.
 
 > [!NOTE] 
 > Új webszolgáltatás telepítéséhez megfelelő engedélyekkel kell rendelkeznie ahhoz az előfizetéshez, amelyhez a webszolgáltatást telepíti. További információ: [webszolgáltatások kezelése a Azure Machine learning webszolgáltatások portálján](manage-new-webservice.md). 
@@ -149,8 +149,8 @@ A kísérlet telepítése lapon adja meg a webszolgáltatás nevét.
 Válasszon árképzési tervet. Ha meglévő díjszabási csomaggal rendelkezik, akkor kiválaszthatja azt, ellenkező esetben létre kell hoznia egy új díjcsomagot a szolgáltatáshoz.
 
 1. Az **árlista** legördülő menüben válasszon ki egy meglévő csomagot, vagy válassza az **új csomag kiválasztása** lehetőséget.
-2. A **csomag neve**mezőben adjon meg egy nevet, amely azonosítja a csomagot a számlán.
-3. Válassza ki a **havi díjcsomag**egyikét. A csomag alapértelmezett értéke az alapértelmezett régió csomagjai, a webszolgáltatás pedig az adott régióban van üzembe helyezve.
+2. A **csomag neve** mezőben adjon meg egy nevet, amely azonosítja a csomagot a számlán.
+3. Válassza ki a **havi díjcsomag** egyikét. A csomag alapértelmezett értéke az alapértelmezett régió csomagjai, a webszolgáltatás pedig az adott régióban van üzembe helyezve.
 
 Kattintson a **telepítés** elemre, és **megnyílik a webszolgáltatás** rövid útmutató lapja.
 
@@ -164,17 +164,17 @@ Az új webszolgáltatás teszteléséhez kattintson a gyakori feladatok terület
 
 Az ERŐFORRÁSREKORDOK tesztelése oldalon megjelennek a kísérlethez megadott bemenetek, kimenetek és a globális paraméterek. A webszolgáltatás teszteléséhez manuálisan megadhatja a bemenetek megfelelő értékeit, vagy megadhatja a tesztelési értékeket tartalmazó vesszővel tagolt (CSV) formátumú fájlt.
 
-Ha az ERŐFORRÁSREKORDOK használatával szeretne tesztelni, a listanézet módból írja be a megfelelő értékeket a bemenetekhez, és kattintson a **kérelem-válasz tesztelése**elemre. Az előrejelzés eredményei a kimenet oszlopban a bal oldalon jelennek meg.
+Ha az ERŐFORRÁSREKORDOK használatával szeretne tesztelni, a listanézet módból írja be a megfelelő értékeket a bemenetekhez, és kattintson a **kérelem-válasz tesztelése** elemre. Az előrejelzés eredményei a kimenet oszlopban a bal oldalon jelennek meg.
 
 ![Adja meg a megfelelő értékeket a webszolgáltatás teszteléséhez](./media/publish-a-machine-learning-web-service/figure-5-test-request-response.png)
 
-A BES teszteléséhez kattintson a **Batch**elemre. A Batch test lapon kattintson a Tallózás elemre a bevitel alatt, és válasszon ki egy CSV-fájlt, amely tartalmazza a megfelelő értékeket. Ha nem rendelkezik CSV-fájllal, és létrehozta a prediktív kísérletet Machine Learning Studio (klasszikus) használatával, letöltheti az adatkészletet a prediktív kísérlethez, és használhatja azt.
+A BES teszteléséhez kattintson a **Batch** elemre. A Batch test lapon kattintson a Tallózás elemre a bevitel alatt, és válasszon ki egy CSV-fájlt, amely tartalmazza a megfelelő értékeket. Ha nem rendelkezik CSV-fájllal, és létrehozta a prediktív kísérletet Machine Learning Studio (klasszikus) használatával, letöltheti az adatkészletet a prediktív kísérlethez, és használhatja azt.
 
-Az adathalmaz letöltéséhez nyissa meg Machine Learning Studio (klasszikus). Nyissa meg a prediktív kísérletet, és kattintson a jobb gombbal a kísérlethez tartozó bemenetre. A helyi menüben válassza az **adatkészlet** elemet, majd válassza a **Letöltés**lehetőséget.
+Az adathalmaz letöltéséhez nyissa meg Machine Learning Studio (klasszikus). Nyissa meg a prediktív kísérletet, és kattintson a jobb gombbal a kísérlethez tartozó bemenetre. A helyi menüben válassza az **adatkészlet** elemet, majd válassza a **Letöltés** lehetőséget.
 
 ![Az adatkészlet letöltése a Studio (klasszikus) vászonról](./media/publish-a-machine-learning-web-service/figure-7-mls-download.png)
 
-Kattintson a **teszt**gombra. A Batch-végrehajtási feladat állapota a **teszt batch-feladatok**területen a jobb oldalon jelenik meg.
+Kattintson a **teszt** gombra. A Batch-végrehajtási feladat állapota a **teszt batch-feladatok** területen a jobb oldalon jelenik meg.
 
 ![A Batch-végrehajtási feladatok tesztelése a webszolgáltatás-portálon](./media/publish-a-machine-learning-web-service/figure-6-test-batch-execution.png)
 
@@ -194,7 +194,7 @@ A Machine Learning Studio (klasszikus) webszolgáltatás elérésével kapcsolat
 
 ### <a name="manage-your-new-web-service"></a>Az új webszolgáltatás kezelése
 
-Az új webszolgáltatásokat Machine Learning Studio (klasszikus) webszolgáltatási portál használatával kezelheti. A [fő portál lapon](https://services.azureml.net/)kattintson a **webszolgáltatások**elemre. A webszolgáltatások lapon törölheti vagy másolhatja a szolgáltatást. Egy adott szolgáltatás figyeléséhez kattintson a szolgáltatásra, majd az **irányítópult**elemre. A webszolgáltatáshoz társított batch-feladatok figyeléséhez kattintson a **Batch-kérelmek naplója**elemre.
+Az új webszolgáltatásokat Machine Learning Studio (klasszikus) webszolgáltatási portál használatával kezelheti. A [fő portál lapon](https://services.azureml.net/)kattintson a **webszolgáltatások** elemre. A webszolgáltatások lapon törölheti vagy másolhatja a szolgáltatást. Egy adott szolgáltatás figyeléséhez kattintson a szolgáltatásra, majd az **irányítópult** elemre. A webszolgáltatáshoz társított batch-feladatok figyeléséhez kattintson a **Batch-kérelmek naplója** elemre.
 
 ### <a name="deploy-your-new-web-service-to-multiple-regions"></a><a id="multi-region"></a> Az új webszolgáltatás üzembe helyezése több régióban
 
@@ -206,33 +206,33 @@ A díjszabás régió-specifikus, ezért meg kell határoznia egy számlázási 
 
 1. Jelentkezzen be [Microsoft Azure Machine learning webszolgáltatásba](https://services.azureml.net/).
 2. Kattintson a **csomagok** menüpontra.
-3. A megjelenő csomagok nézet lapon kattintson az **új**elemre.
+3. A megjelenő csomagok nézet lapon kattintson az **új** elemre.
 4. Az **előfizetés** legördülő listából válassza ki azt az előfizetést, amelyben az új terv fog szerepelni.
 5. A **régió** legördülő listából válassza ki az új csomag régióját. A kiválasztott régióhoz tartozó csomag beállításai a lap **csomag beállításai** szakaszában jelennek meg.
 6. Az **erőforráscsoport** legördülő listából válassza ki a csomaghoz tartozó erőforráscsoportot. További információ az erőforráscsoportok használatáról: [Azure Resource Manager Overview (áttekintés](../../azure-resource-manager/management/overview.md)).
 7. A **csomag neve** mezőbe írja be a csomag nevét.
-8. A **terv beállításai**területen kattintson az új csomag számlázási szintjére.
-9. Kattintson a **Létrehozás** lehetőségre.
+8. A **terv beállításai** területen kattintson az új csomag számlázási szintjére.
+9. Kattintson a **Létrehozás** gombra.
 
 #### <a name="deploy-the-web-service-to-another-region"></a>Webszolgáltatás üzembe helyezése egy másik régióban
 
 1. A Microsoft Azure Machine Learning webszolgáltatások lapon kattintson a **webszolgáltatások** menüpontra.
 2. Válassza ki az új régióba telepítendő webszolgáltatást.
-3. Kattintson a **Másolás**gombra.
-4. A **webszolgáltatás neve**mezőbe írja be a webszolgáltatás új nevét.
-5. A **webszolgáltatás leírása**mezőbe írja be a webszolgáltatás leírását.
+3. Kattintson a **Másolás** gombra.
+4. A **webszolgáltatás neve** mezőbe írja be a webszolgáltatás új nevét.
+5. A **webszolgáltatás leírása** mezőbe írja be a webszolgáltatás leírását.
 6. Az **előfizetés** legördülő listából válassza ki azt az előfizetést, amelyben az új webszolgáltatást tárolni fogja.
 7. Az **erőforráscsoport** legördülő menüben válasszon ki egy erőforráscsoportot a webszolgáltatáshoz. További információ az erőforráscsoportok használatáról: [Azure Resource Manager Overview (áttekintés](../../azure-resource-manager/management/overview.md)).
 8. A **régió** legördülő listából válassza ki azt a régiót, amelyben a webszolgáltatást telepíteni kívánja.
 9. A **Storage-fiók** legördülő listából válassza ki azt a Storage-fiókot, amelyben a webszolgáltatást tárolni szeretné.
 10. Az **árlista** legördülő menüben válasszon ki egy csomagot a 8. lépésben kiválasztott régióban.
-11. Kattintson a **Másolás**gombra.
+11. Kattintson a **Másolás** gombra.
 
 ## <a name="deploy-it-as-a-classic-web-service"></a>Üzembe helyezés klasszikus webszolgáltatásként
 
 Most, hogy a prediktív kísérlet megfelelően elkészült, telepítheti klasszikus Azure-alapú webszolgáltatásként. A webszolgáltatás használatával a felhasználók elküldhetik az adatait a modellbe, és a modell visszaadja az előrejelzéseit.
 
-A prediktív kísérlet üzembe helyezéséhez kattintson a **Futtatás** gombra a kísérlet vászon alján, majd kattintson a **webszolgáltatás telepítése**parancsra. A webszolgáltatás be van állítva, és a webszolgáltatás irányítópultra kerül.
+A prediktív kísérlet üzembe helyezéséhez kattintson a **Futtatás** gombra a kísérlet vászon alján, majd kattintson a **webszolgáltatás telepítése** parancsra. A webszolgáltatás be van állítva, és a webszolgáltatás irányítópultra kerül.
 
 ![Webszolgáltatások üzembe helyezése a studióból (klasszikus)](./media/publish-a-machine-learning-web-service/figure-2.png)
 
@@ -240,7 +240,7 @@ A prediktív kísérlet üzembe helyezéséhez kattintson a **Futtatás** gombra
 
 A webszolgáltatást a Machine Learning Studio (klasszikus) webszolgáltatások portálon vagy Machine Learning Studio (klasszikus) is tesztelheti.
 
-A kérelem válasz webszolgáltatásának teszteléséhez kattintson a **teszt** gombra a webszolgáltatás irányítópultján. Megjelenik egy párbeszédpanel, amely rákérdez a szolgáltatás bemeneti adatára. Ezek a pontozási kísérlet által várt oszlopok. Adjon meg egy adatkészletet, majd kattintson **az OK**gombra. A webszolgáltatás által generált eredmények az irányítópult alján jelennek meg.
+A kérelem válasz webszolgáltatásának teszteléséhez kattintson a **teszt** gombra a webszolgáltatás irányítópultján. Megjelenik egy párbeszédpanel, amely rákérdez a szolgáltatás bemeneti adatára. Ezek a pontozási kísérlet által várt oszlopok. Adjon meg egy adatkészletet, majd kattintson **az OK** gombra. A webszolgáltatás által generált eredmények az irányítópult alján jelennek meg.
 
 A **tesztelési** előnézet hivatkozásra kattintva tesztelheti a szolgáltatást a Azure Machine learning Studio (klasszikus) webszolgáltatások portálján, ahogyan az az új webszolgáltatás szakaszban is látható.
 
@@ -250,7 +250,7 @@ A Batch-végrehajtási szolgáltatás teszteléséhez kattintson a **teszt** el�
 
 A **konfiguráció** lapon módosíthatja a szolgáltatás megjelenítendő nevét, és megadhatja a leírását. A név és a leírás a webszolgáltatások kezelése [Azure Portalban](https://portal.azure.com/) jelenik meg.
 
-Megadhatja a bemeneti adatok, a kimeneti adatok és a webszolgáltatás paramétereinek leírását, ha megad egy karakterláncot minden oszlophoz a **bemeneti séma**, a **kimeneti séma**és a **webszolgáltatás paraméter**alatt. Ezeket a leírásokat a webszolgáltatáshoz megadott mintakód-dokumentációban lehet használni.
+Megadhatja a bemeneti adatok, a kimeneti adatok és a webszolgáltatás paramétereinek leírását, ha megad egy karakterláncot minden oszlophoz a **bemeneti séma** , a **kimeneti séma** és a **webszolgáltatás paraméter** alatt. Ezeket a leírásokat a webszolgáltatáshoz megadott mintakód-dokumentációban lehet használni.
 
 Engedélyezheti a naplózást a webszolgáltatás elérésekor észlelt hibák diagnosztizálásához. További információt a [Machine learning Studio (klasszikus) webszolgáltatások naplózásának engedélyezése](web-services-logging.md)című témakörben talál.
 
@@ -275,14 +275,14 @@ További információ: [Azure Machine learning Studio (klasszikus) munkaterület
 ## <a name="update-the-web-service"></a>Webszolgáltatás frissítése
 Módosíthatja a webszolgáltatást, például frissítheti a modellt további betanítási adataival, és újra telepítheti az eredeti webszolgáltatás felülírásával.
 
-A webszolgáltatás frissítéséhez nyissa meg a webszolgáltatás üzembe helyezéséhez használt eredeti prediktív kísérletet, és végezze el a szerkeszthető másolást a **Mentés másként lehetőségre**kattintva. Végezze el a módosításokat, majd kattintson a **webszolgáltatás üzembe helyezése**lehetőségre.
+A webszolgáltatás frissítéséhez nyissa meg a webszolgáltatás üzembe helyezéséhez használt eredeti prediktív kísérletet, és végezze el a szerkeszthető másolást a **Mentés másként lehetőségre** kattintva. Végezze el a módosításokat, majd kattintson a **webszolgáltatás üzembe helyezése** lehetőségre.
 
 Mivel korábban már üzembe helyezte ezt a kísérletet, a rendszer megkérdezi, hogy szeretné-e felülírni (klasszikus webszolgáltatás) vagy a meglévő szolgáltatás frissítését (új webszolgáltatás). Az **Igen** vagy a **frissítés** gombra kattintva leállítja a meglévő webszolgáltatást, és üzembe helyezi az új prediktív kísérletet.
 
 > [!NOTE]
 > Ha módosította az eredeti webszolgáltatás konfigurációjának módosításait, például egy új megjelenítendő név vagy leírás beírását, akkor újra meg kell adnia ezeket az értékeket.
 
-A webszolgáltatás frissítésének egyik lehetősége a modell programozott módon történő újratanítása. További információ: [Machine learning Studio (klasszikus) modellek programozott módon történő átképzése](/azure/machine-learning/studio/retrain-machine-learning-model).
+A webszolgáltatás frissítésének egyik lehetősége a modell programozott módon történő újratanítása. További információ: [Machine learning Studio (klasszikus) modellek programozott módon történő átképzése](./retrain-machine-learning-model.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -305,11 +305,11 @@ A webszolgáltatás frissítésének egyik lehetősége a modell programozott m�
 
 [webserviceparameters]: web-service-parameters.md
 [deploy]: deploy-a-machine-learning-web-service.md
-[clean-missing-data]: https://msdn.microsoft.com/library/azure/d2c5ca2f-7323-41a3-9b7e-da917c99f0c4/
-[evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/
-[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-[score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
-[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
-[train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
-[export-data]: https://msdn.microsoft.com/library/azure/7a391181-b6a7-4ad4-b82d-e419c0d6522c/
+[clean-missing-data]: /azure/machine-learning/studio-module-reference/clean-missing-data
+[evaluate-model]: /azure/machine-learning/studio-module-reference/evaluate-model
+[select-columns]: /azure/machine-learning/studio-module-reference/select-columns-in-dataset
+[import-data]: /azure/machine-learning/studio-module-reference/import-data
+[score-model]: /azure/machine-learning/studio-module-reference/score-model
+[split]: /azure/machine-learning/studio-module-reference/split-data
+[train-model]: /azure/machine-learning/studio-module-reference/train-model
+[export-data]: /azure/machine-learning/studio-module-reference/export-data

@@ -9,12 +9,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: reference
 ms.date: 10/10/2019
-ms.openlocfilehash: b83effa95b17d712d4019f8ab5bf13c4f02a7d2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 864b5e519875029149e93df248aa5953f62ec51e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78206520"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322955"
 ---
 # <a name="known-issues-and-troubleshooting-the-azure-data-science-virtual-machine"></a>Ismert problémák és hibaelhárítás az Azure Data Science Virtual Machine
 
@@ -30,7 +30,7 @@ Ez a cikk segít megkeresni és kijavítani az Azure-Data Science Virtual Machin
 
 ### <a name="disk-encryption-fails-on-the-ubuntu-dsvm"></a>A lemez titkosítása meghiúsul az Ubuntu DSVM
 
-A Azure Disk Encryption (ADE) jelenleg nem támogatott az Ubuntu-DSVM. Áthidaló megoldásként érdemes lehet konfigurálni [Az Azure Managed Disks kiszolgálóoldali titkosítását](../../virtual-machines/windows/disk-encryption.md).
+A Azure Disk Encryption (ADE) jelenleg nem támogatott az Ubuntu-DSVM. Áthidaló megoldásként érdemes lehet konfigurálni [Az Azure Managed Disks kiszolgálóoldali titkosítását](../../virtual-machines/disk-encryption.md).
 
 ## <a name="tool-appears-disabled"></a>Az eszköz le van tiltva
 
@@ -46,4 +46,3 @@ A Hyper-V kezdetben nem működik a Windowsban a várt viselkedés. A rendszerin
 A végső képernyőnek így kell kinéznie:
 
    ![A Hyper-V engedélyezése](./media/workaround/hyperv-enable-dsvm.png)
-

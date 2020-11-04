@@ -11,19 +11,19 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: ef56274e0bda3f1a9d494852520a77ecdfc25799
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8caf6cd5072b4c098adff57194784491c92bb0a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89048006"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325376"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>Az ELŐREJELZÉSsel rendelkező gépi tanulási modellek pontszáma
 
 A szinapszis SQL lehetővé teszi a gépi tanulási modellek a jól ismert T-SQL nyelv használatával való kiértékelését. A T-SQL [előrejelzéssel](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)megadhatja a már meglévő gépi tanulási modelleket, és az adattárház biztonságos határain belül is megszerezheti azokat. A PREDIKTÍV függvény [ONNX (Open neurális hálózati Exchange)](https://onnx.ai/) modellt és adatokat használ bemenetként. Ez a szolgáltatás kiküszöböli az értékes adattárházon kívüli adatáthelyezés lépéseit. Az informatikai szakemberek számára lehetővé teszi, hogy az ismerős T-SQL-felülettel könnyedén üzembe helyezhetik a gépi tanulási modelleket, valamint hogy zökkenőmentesen működjenek együtt a feladataik megfelelő keretrendszerével dolgozó adatszakértőkkel.
 
 > [!NOTE]
-> Ez a funkció jelenleg nem támogatott az SQL igény szerinti használata esetén.
+> Ez a funkció jelenleg nem támogatott a kiszolgáló nélküli SQL-készletekben.
 
 A funkció használatához a modellt a szinapszis SQL-en kívül kell tanítani. A modell felépítése után töltse be az adattárházba, és a T-SQL előrejelzési szintaxissal szerzi be az adatokból származó elemzéseket.
 

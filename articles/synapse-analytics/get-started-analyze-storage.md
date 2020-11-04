@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: c4c7b8da659fa7fe8879ae92c4947b7f0867274c
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 2a22174fb23a4f0f7bebd58e276a6778e986ce9e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173495"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322917"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>A Storage-fiókban tárolt adatelemzés
 
@@ -42,11 +42,11 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
 
 ### <a name="analyze-data-in-a-storage-account"></a>A Storage-fiókban tárolt adatelemzés
 
-1. A szinapszis Studióban nyissa meg **az** adatközpontot, majd kattintson a **csatolt**elemre.
+1. A szinapszis Studióban nyissa meg **az** adatközpontot, majd kattintson a **csatolt** elemre.
 1. Nyissa meg a **Storage accounts**  >  **sajátmunkaterület (Primary-contosolake)**.
-1. Válassza a **felhasználók (elsődleges)** lehetőséget. Ekkor megjelenik a **NYCTaxi** mappa. A belsejében két, **PassengerCountStats.csv** és **PassengerCountStats. Parque**nevű mappát kell látnia.
+1. Válassza a **felhasználók (elsődleges)** lehetőséget. Ekkor megjelenik a **NYCTaxi** mappa. A belsejében két, **PassengerCountStats.csv** és **PassengerCountStats. Parque** nevű mappát kell látnia.
 1. Nyissa meg a **PassengerCountStats. Parque** mappát. A (z) rendszerben egy, a következőhöz hasonló nevű parketta-fájl jelenik meg: `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` .
-1. Kattintson a jobb gombbal a **. parketta**elemre, majd válassza az **új jegyzetfüzet**lehetőséget. Létrehoz egy jegyzetfüzetet, amely a következőhöz hasonló cellával rendelkezik:
+1. Kattintson a jobb gombbal a **. parketta** elemre, majd válassza az **új jegyzetfüzet** lehetőséget. Létrehoz egy jegyzetfüzetet, amely a következőhöz hasonló cellával rendelkezik:
 
     ```py
     %%pyspark
@@ -55,7 +55,7 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
     ```
 
 1. Futtassa a cellát.
-1. Kattintson a jobb gombbal a parketta fájlra, majd válassza az **új SQL-parancsfájl**lehetőséget, majd válassza a  >  **Top 100 sort**. A következőhöz hasonló SQL-parancsfájlt hoz létre:
+1. Kattintson a jobb gombbal a parketta fájlra, majd válassza az **új SQL-parancsfájl** lehetőséget, majd válassza a  >  **Top 100 sort**. A következőhöz hasonló SQL-parancsfájlt hoz létre:
 
     ```sql
     SELECT TOP 100 *
@@ -65,7 +65,7 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
     ) AS [r];
     ```
 
-    A parancsfájl ablakban a **Kapcsolódás** mező értéke **SQL on-demand**.
+    A parancsfájl ablakban a **Kapcsolódás** mező **kiszolgáló nélküli SQL-készletre** van állítva.
 
 1. Futtassa a szkriptet.
 

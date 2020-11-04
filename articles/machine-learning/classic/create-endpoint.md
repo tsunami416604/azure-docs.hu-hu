@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: 5f06374e67d1aad689662c77084fa593bb09c8ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1032a90a35e60643e2ce937ed457a1fe3493d4d7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362469"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322888"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>Végpontok létrehozása központilag telepített Azure Machine Learning Studio (klasszikus) webszolgáltatásokhoz
 
-**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 > [!NOTE]
@@ -35,8 +35,8 @@ A Azure Machine Learning webszolgáltatások portál használatával hozzáadhat
 > Ha további végpontokat adott hozzá a webszolgáltatáshoz, nem törölheti az alapértelmezett végpontot.
 
 1. Machine Learning Studio (klasszikus), a bal oldali navigációs oszlopban kattintson a webszolgáltatások elemre.
-2. A webszolgáltatás irányítópultjának alján kattintson a **végpontok kezelése**elemre. Megnyílik az Azure Machine Learning webszolgáltatások portál a webszolgáltatás végpontok lapjára.
-3. Kattintson az **új**gombra.
+2. A webszolgáltatás irányítópultjának alján kattintson a **végpontok kezelése** elemre. Megnyílik az Azure Machine Learning webszolgáltatások portál a webszolgáltatás végpontok lapjára.
+3. Kattintson az **új** gombra.
 4. Adja meg az új végpont nevét és leírását. A végpontok neveinek 24 vagy kevesebb karakterből kell állnia, és csak kisbetűkből vagy számokból állhatnak. Válassza ki a naplózási szintet, valamint azt, hogy a mintaadatok engedélyezve vannak-e. További információ a naplózásról: [Machine learning webszolgáltatások naplózásának engedélyezése](web-services-logging.md).
 
 ## <a name="scale-a-web-service-by-adding-additional-endpoints"></a><a id="scaling"></a> Webszolgáltatás méretezése további végpontok hozzáadásával

@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: c0a55780687b4c03d6809d1d740bf0b0afcd63fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05926f7ce25714fb76415802876db0640eb30aae
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908090"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323779"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>A tervezőhöz tartozó kivételek és hibakódok
 
@@ -187,9 +187,9 @@ Győződjön meg arról is, hogy a fiók, a tároló vagy a blob törölve lett-
 
 Azure Machine Learning nem támogatja néhány újabb fióktípus használatát. Például az új "forró" vagy "hideg" tárolási típusok nem használhatók gépi tanuláshoz. Mind a klasszikus Storage-fiókok, mind a Storage-fiókok "általános célú"-ként lettek létrehozva.
 
-Ha meg van adva egy blob teljes elérési útja, ellenőrizze, hogy az elérési út **tároló-vagy blobname**van-e megadva, és hogy a tároló és a blob is létezik-e a fiókban.  
+Ha meg van adva egy blob teljes elérési útja, ellenőrizze, hogy az elérési út **tároló-vagy blobname** van-e megadva, és hogy a tároló és a blob is létezik-e a fiókban.  
 
- Az elérési út nem tartalmazhat kezdő perjelet. A **/Container/blob** például helytelen, és **tárolóként vagy blobként**kell megadni.  
+ Az elérési út nem tartalmazhat kezdő perjelet. A **/Container/blob** például helytelen, és **tárolóként vagy blobként** kell megadni.  
 
 
 |Kivételek üzenetei|
@@ -357,7 +357,7 @@ A csoportosításhoz vagy kategorizáláshoz használni kívánt oszlopok eseté
 ## <a name="error-0018"></a>0018 hiba  
  Kivétel történik, ha a bemeneti adatkészlet érvénytelen.  
 
-**Megoldás:** Ez a hiba Azure Machine Learning több kontextusban is megjelenhet, így nincs egyetlen megoldás. Általánosságban a hiba azt jelzi, hogy a modulba bemenetként megadott adatok helytelen számú oszlopot tartalmaz, vagy az adattípus nem felel meg a modul követelményeinek. Példa:  
+**Megoldás:** Ez a hiba Azure Machine Learning több kontextusban is megjelenhet, így nincs egyetlen megoldás. Általánosságban a hiba azt jelzi, hogy a modulba bemenetként megadott adatok helytelen számú oszlopot tartalmaz, vagy az adattípus nem felel meg a modul követelményeinek. Például:  
 
 -   A modulhoz címke típusú oszlopra van szükség, de az oszlop nem jelölésként van megjelölve, vagy még nem jelölt ki felirat oszlopot.  
   
@@ -439,7 +439,7 @@ A csoportosításhoz vagy kategorizáláshoz használni kívánt oszlopok eseté
 ## <a name="error-0022"></a>0022 hiba  
  Kivétel történik, ha a bemeneti adatkészlet kiválasztott oszlopainak száma nem egyezik a várt számmal.  
 
- Ez a hiba Azure Machine Learning akkor fordulhat elő, ha az alárendelt modulnak vagy műveletnek adott számú oszlopot vagy bemenetet kell használnia, és túl kevés vagy túl sok oszlopot vagy bemenetet adott meg. Példa:  
+ Ez a hiba Azure Machine Learning akkor fordulhat elő, ha az alárendelt modulnak vagy műveletnek adott számú oszlopot vagy bemenetet kell használnia, és túl kevés vagy túl sok oszlopot vagy bemenetet adott meg. Például:  
 
 -   Egyetlen címkét tartalmazó oszlopot vagy kulcs oszlopot kell megadnia, és véletlenül több oszlopot is kiválasztott.  
   
@@ -540,7 +540,7 @@ Azt is megteheti, hogy egy felirat típusú oszlop szerepel az adatkészletben, 
   
 -   Ha két adatkészletet csatlakoztat vagy ÖSSZEFŰZ, győződjön meg róla, hogy ugyanazzal a sémával rendelkeznek.  
   
--   Ha két olyan adatkészletet hoz létre, amelyek több oszloppal rendelkeznek, győződjön meg arról, hogy a kulcs oszlopai azonos adattípussal rendelkeznek, és válassza az **Ismétlődések engedélyezése és az oszlopok megőrzése a kijelölésben**lehetőséget.  
+-   Ha két olyan adatkészletet hoz létre, amelyek több oszloppal rendelkeznek, győződjön meg arról, hogy a kulcs oszlopai azonos adattípussal rendelkeznek, és válassza az **Ismétlődések engedélyezése és az oszlopok megőrzése a kijelölésben** lehetőséget.  
 
 |Kivételek üzenetei|
 |------------------------|
@@ -604,7 +604,7 @@ Azt is megteheti, hogy egy felirat típusú oszlop szerepel az adatkészletben, 
 
  Ez a hiba Azure Machine Learning akkor fordul elő, ha a kiválasztott oszlopok száma kisebb a szükségesnél.  Ez a hibaüzenet akkor jelenik meg, ha nincs kiválasztva a minimálisan szükséges oszlopok száma.  
 
-**Megoldás:** Adjon hozzá további oszlopokat az oszlop kiválasztásához az **oszlop választójának**használatával.  
+**Megoldás:** Adjon hozzá további oszlopokat az oszlop kiválasztásához az **oszlop választójának** használatával.  
 
 |Kivételek üzenetei|
 |------------------------|
@@ -713,7 +713,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 **Megoldás:** Ezt a hibát számos feltétel okozta, és nincs konkrét orvoslás.  
  A következő táblázat a hiba általános üzeneteit tartalmazza, amelyeket a feltétel adott leírása követ. 
 
- Ha nem áll rendelkezésre adat, a [Microsoft Q&egy kérdést a visszajelzések küldéséhez](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html) , és információt nyújt a hibát eredményező modulokról és a kapcsolódó feltételekről.
+ Ha nem áll rendelkezésre adat, a [Microsoft Q&egy kérdést a visszajelzések küldéséhez](/answers/topics/azure-machine-learning-studio-classic.html) , és információt nyújt a hibát eredményező modulokról és a kapcsolódó feltételekről.
 
 |Kivételek üzenetei|
 |------------------------|
@@ -862,7 +862,7 @@ Ez a hiba akkor fordulhat elő, ha olyan oszlopot próbál használni, amely leb
 
  Ez a hiba Azure Machine Learning akkor fordul elő, ha az Azure Storage-fiók eléréséhez használt kulcs helytelen. Előfordulhat például, hogy ez a hiba akkor jelenik meg, ha az Azure Storage-kulcsot a vágólapra másolta és beillesztette, vagy ha rossz kulcsot használt.  
 
- További információ az Azure Storage-fiókok kulcsának beszerzéséről: [tároló-hozzáférési kulcsok megtekintése, másolása és újragenerálása](https://azure.microsoft.com/documentation/articles/storage-create-storage-account-classic-portal/).  
+ További információ az Azure Storage-fiókok kulcsának beszerzéséről: [tároló-hozzáférési kulcsok megtekintése, másolása és újragenerálása](../../storage/common/storage-account-create.md).  
 
 **Megoldás:** Nyissa meg újra a modult, és győződjön meg arról, hogy az Azure Storage-kulcs helyes a fiókhoz; szükség esetén másolja újra a kulcsot a klasszikus Azure portálról.  
 
@@ -915,7 +915,7 @@ Ez a hiba akkor fordulhat elő, ha olyan oszlopot próbál használni, amely leb
 
 **Felbontás**
 
- Ez a hiba csak akkor fog megjelenni **, ha**korábban már beállította a tulajdonságot az **Azure Blob Storage írási módjára** . A tervezés szerint ez a modul hibát jelez, ha olyan blobhoz próbál meg írni egy adatkészletet, amely már létezik.
+ Ez a hiba csak akkor fog megjelenni **, ha** korábban már beállította a tulajdonságot az **Azure Blob Storage írási módjára** . A tervezés szerint ez a modul hibát jelez, ha olyan blobhoz próbál meg írni egy adatkészletet, amely már létezik.
 
  - Nyissa meg a modul tulajdonságait, és módosítsa az **Azure Blob Storage írási mód** tulajdonságát a **felülíráshoz**.
  - Másik lehetőségként beírhatja egy másik cél blob vagy fájl nevét is, és megadhat egy olyan blobot, amely még nem létezik.  
@@ -1083,9 +1083,9 @@ A struktúra hibaüzenetét általában visszaküldi a rendszer a hibanaplóba, 
 
 A Machine learninghez készült kaptár-lekérdezésekkel kapcsolatos segítségért tekintse meg a következő cikkeket:
 
-+ [Struktúra-táblák létrehozása és adatok betöltése az Azure Blob Storage](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-move-hive-tables)
-+ [A táblákban lévő adatelemzés struktúra-lekérdezésekkel](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-explore-data-hive-tables)
-+ [Funkciók létrehozása az adatokhoz egy Hadoop-fürtben Hive-lekérdezések segítségével](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-create-features-hive)
++ [Struktúra-táblák létrehozása és adatok betöltése az Azure Blob Storage](../team-data-science-process/move-hive-tables.md)
++ [A táblákban lévő adatelemzés struktúra-lekérdezésekkel](../team-data-science-process/explore-data-hive-tables.md)
++ [Funkciók létrehozása az adatokhoz egy Hadoop-fürtben Hive-lekérdezések segítségével](../team-data-science-process/create-features-hive.md)
 + [SQL-felhasználók számára készült kaptár (PDF)](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf)
 
   
@@ -1106,8 +1106,8 @@ A Machine learninghez készült kaptár-lekérdezésekkel kapcsolatos segítség
  Ellenőrizze, hogy a lekérdezés megfelelően működik-e az Azure ML-n keresztül, ha közvetlenül az adatbázis-kiszolgálóra jelentkezik be, és futtatja a lekérdezést.  
 
  Ha a modul kivétele szerint egy SQL által generált üzenet jelenik meg, akkor a jelentett hiba alapján végezze el a műveletet. Előfordulhat például, hogy a hibaüzenetek időnként konkrét útmutatást tartalmaznak a valószínű hibára vonatkozóan:
-+ *Nincs ilyen oszlop vagy hiányzó adatbázis*, ami azt jelzi, hogy helytelen az oszlopnév beírása. Ha biztos benne, hogy az oszlop neve helyes, az oszlop azonosítójának bejelöléséhez használjon szögletes zárójeleket vagy idézőjeleket.
-+ *SQL-logikai hiba \<SQL keyword\> a közelében *, ami azt jelzi, hogy szintaktikai hiba történt a megadott kulcsszó előtt
++ *Nincs ilyen oszlop vagy hiányzó adatbázis* , ami azt jelzi, hogy helytelen az oszlopnév beírása. Ha biztos benne, hogy az oszlop neve helyes, az oszlop azonosítójának bejelöléséhez használjon szögletes zárójeleket vagy idézőjeleket.
++ *SQL-logikai hiba \<SQL keyword\> a közelében* , ami azt jelzi, hogy szintaktikai hiba történt a megadott kulcsszó előtt
 
   
 |Kivételek üzenetei|
@@ -1164,7 +1164,7 @@ Ez a hiba Azure Machine Learning akkor következik be, amikor nem támogatott me
 
 Az eseményhez tartozó hibakezelés a Azure Machine Learning egy korábbi verziójában lett bevezetve, amely a dobozolási metódusok további testreszabását tette lehetővé. Jelenleg az összes dobozolási-módszer egy legördülő lista egy kiválasztásán alapul, így a továbbiakban nem lehet ezt a hibát megszerezni.
 
- <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Microsoft Q&A question page for Azure Machine Learning](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html), providing the data types, parameter settings, and the exact error message.  -->
+ <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Microsoft Q&A question page for Azure Machine Learning](/answers/topics/azure-machine-learning-studio-classic.html), providing the data types, parameter settings, and the exact error message.  -->
 
 |Kivételek üzenetei|
 |------------------------|
@@ -1201,7 +1201,7 @@ Az eseményhez tartozó hibakezelés a Azure Machine Learning egy korábbi verzi
 
  Ez a hiba Azure Machine Learning akkor fordul elő, ha az Azure Storage-tároló neve helytelenül van megadva. Ezt a hibaüzenetet akkor kapja meg, ha a tárolót és a blobot (fájl) nem adta meg **a blob elérési útja alapján az** Azure Blob Storageba való íráskor.  
 
-**Megoldás:** Tekintse át újra az [adatexportálási](export-data.md) modult, és ellenőrizze, hogy a blob megadott elérési útja tartalmazza-e a tárolót és a fájlnevet is a **tároló/fájlnév**formátumban.  
+**Megoldás:** Tekintse át újra az [adatexportálási](export-data.md) modult, és ellenőrizze, hogy a blob megadott elérési útja tartalmazza-e a tárolót és a fájlnevet is a **tároló/fájlnév** formátumban.  
 
 |Kivételek üzenetei|
 |------------------------|
@@ -1516,11 +1516,10 @@ Belső függvénytár-kivétel.
 
 Ez a hiba a nem kezelt belső motor hibáinak rögzítésére szolgál. Ezért előfordulhat, hogy a hiba oka eltérő lehet a hibát generáló modultól függően.  
 
-Ha további segítségre van szüksége, javasoljuk, hogy tegye közzé a hibához tartozó részletes üzenetet a [Azure Machine learning fórumnak](https://docs.microsoft.com/answers/topics/azure-machine-learning.html), a forgatókönyv leírásával együtt, beleértve a bemenetként használt adatokat is. Ez a visszajelzés segít rangsorolni a hibákat, és azonosítani a legfontosabb problémákat a további munkához.  
+Ha további segítségre van szüksége, javasoljuk, hogy tegye közzé a hibához tartozó részletes üzenetet a [Azure Machine learning fórumnak](/answers/topics/azure-machine-learning.html), a forgatókönyv leírásával együtt, beleértve a bemenetként használt adatokat is. Ez a visszajelzés segít rangsorolni a hibákat, és azonosítani a legfontosabb problémákat a további munkához.  
 
 |Kivételek üzenetei|
 |------------------------|
 |Függvénytár-kivétel.|
 |Függvénytár-kivétel: {Exception}.|
 |Ismeretlen függvénytár-kivétel: {Exception}. {customer_support_guidance}.|
-

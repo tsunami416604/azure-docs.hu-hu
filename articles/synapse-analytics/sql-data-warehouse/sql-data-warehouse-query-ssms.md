@@ -1,6 +1,6 @@
 ---
 title: Csatlakozás SSMS segítségével
-description: A SQL Server Management Studio (SSMS) használatával csatlakozhat az Azure szinapszis Analytics szolgáltatáshoz, és lekérdezheti azokat.
+description: A SQL Server Management Studio (SSMS) használatával csatlakozhat egy dedikált SQL-készlethez az Azure szinapszis Analytics szolgáltatásban, és lekérdezheti azokat.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 772e4253244f5e13a60f155549d5f5513695e5fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2fab8f02f31897a2e3d38094b9bd365f8e921e9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85200749"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325324"
 ---
-# <a name="connect-to-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>Kapcsolódás az Azure szinapszis Analyticshez SQL Server Management Studio (SSMS) használatával
+# <a name="connect-to-a-dedicated-sql-pool-in-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>Kapcsolódás dedikált SQL-készlethez az Azure szinapszis Analyticsben SQL Server Management Studio (SSMS) használatával
 
 > [!div class="op_single_selector"]
 >
@@ -34,14 +34,14 @@ A SQL Server Management Studio (SSMS) használatával csatlakozhat egy adattárh
 
 Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
 
-* Egy meglévő SQL-készlet. A létrehozáshoz tekintse meg [az SQL-készlet létrehozása](create-data-warehouse-portal.md)című témakört.
+* Egy meglévő dedikált SQL-készlet. A létrehozáshoz tekintse meg [a DEDIKÁLT SQL-készlet létrehozása](create-data-warehouse-portal.md)című témakört.
 * SQL Server Management Studio (SSMS) telepítve. [Töltse le](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ingyenesen a SSMS, ha még nem rendelkezik vele.
-* Az Azure SQL-kiszolgáló teljes neve. Az információk megkereséséhez lásd: [Kapcsolódás az SQL-készlethez](sql-data-warehouse-connect-overview.md).
+* Az Azure SQL-kiszolgáló teljes neve. Az információk megkereséséhez lásd: [Kapcsolódás DEDIKÁLT SQL-készlethez](sql-data-warehouse-connect-overview.md).
 
-## <a name="1-connect-to-your-sql-pool"></a>1. kapcsolódás az SQL-készlethez
+## <a name="1-connect-to-your-dedicated-sql-pool"></a>1. kapcsolódás a dedikált SQL-készlethez
 
 1. Nyissa meg az SSMS-t.
-2. A **fájl**-  >  **csatlakozási Object Explorer**kiválasztásával nyissa meg Object Explorer.
+2. A **fájl** -  >  **csatlakozási Object Explorer** kiválasztásával nyissa meg Object Explorer.
 
     ![SQL Server Object Explorer](./media/sql-data-warehouse-query-ssms/connect-object-explorer.png)
 3. Töltse ki az összes mezőt a Connect to Server (Csatlakozás a kiszolgálóhoz) ablakban.
@@ -77,6 +77,6 @@ Most, hogy létrejött a kapcsolat az adatbázissal, ideje lefuttatni egy lekér
 
    ![Lekérdezés eredményei](./media/sql-data-warehouse-query-ssms/results.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most, hogy tud-e kapcsolatot létesíteni és lekérdezni, próbálja meg [az Power bi segítségével megjeleníteni az adatmegjelenítést](sql-data-warehouse-get-started-visualize-with-power-bi.md). A környezet Azure Active Directory hitelesítéshez való konfigurálásával kapcsolatban lásd: [hitelesítés az SQL-készlettel](sql-data-warehouse-authentication.md).
+Most, hogy tud-e kapcsolatot létesíteni és lekérdezni, próbálja meg [az Power bi segítségével megjeleníteni az adatmegjelenítést](sql-data-warehouse-get-started-visualize-with-power-bi.md). A környezet Azure Active Directory hitelesítéshez való konfigurálásával kapcsolatban lásd: [hitelesítés DEDIKÁLT SQL-készletbe](sql-data-warehouse-authentication.md).

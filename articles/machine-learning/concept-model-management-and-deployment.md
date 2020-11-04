@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6f03a1e44fdb62570b693753f5e01c7ab0f53e78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64784d747e9f33961c2f5d2df95e0d5a83e01548
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302417"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324828"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: a modell kezelése, üzembe helyezése és figyelése Azure Machine Learning
 
@@ -46,7 +46,7 @@ A modell betanítási folyamatában szereplő összes lépés összefűzéséhez
 
 A ML-folyamatok az adatok előkészítésének lépéseit is tartalmazhatják, hogy hiperparaméter a hangolást a modell kiértékeléséhez. További információ: [ml folyamatok](concept-ml-pipelines.md).
 
-Ha a [Designer](concept-designer.md) használatával hozza létre az ml-folyamatokat, akkor a tervező oldal jobb felső sarkában található **"..."** gombra kattintva bármikor kiválaszthatja a **klónozás**elemet. A folyamat klónozása lehetővé teszi, hogy a régi verziók elvesztése nélkül megismételje a folyamat kialakítását.  
+Ha a [Designer](concept-designer.md) használatával hozza létre az ml-folyamatokat, akkor a tervező oldal jobb felső sarkában található **"..."** gombra kattintva bármikor kiválaszthatja a **klónozás** elemet. A folyamat klónozása lehetővé teszi, hogy a régi verziók elvesztése nélkül megismételje a folyamat kialakítását.  
 
 ## <a name="create-reusable-software-environments"></a>Újrafelhasználható szoftveres környezetek létrehozása
 
@@ -70,6 +70,9 @@ A regisztrált modelleket a név és a verziószám azonosítja. Ha egy modellt 
 
 Aktív központi telepítésben használt regisztrált modell nem törölhető.
 További információkért lásd a [modellek üzembe helyezése](how-to-deploy-and-where.md#registermodel)című szakaszt a modell regisztrálása szakaszban.
+
+> [!IMPORTANT]
+> Ha `Tags` Azure Machine learning Studio modellek lapján a szűrés lehetőséggel használja, az ügyfelek használata helyett `TagName : TagValue` `TagName=TagValue` (szóköz nélkül)
 
 ### <a name="profile-models"></a>Profilmodellek
 
@@ -106,7 +109,7 @@ Meg kell adnia az üzembe helyezés célplatformjának konfigurációját is. P�
 A rendszerkép létrehozását követően a rendszer hozzáadja az Azure Machine Learning által igényelt összetevőket is. Ilyenek például a webszolgáltatás futtatásához és az IoT Edge-dzsel való interakciókhoz szükséges eszközök.
 
 #### <a name="batch-scoring"></a>Batch-pontozás
-A Batch pontozása ML-folyamatok esetében támogatott. További információ: batch- [előrejelzések Big Data](how-to-use-parallel-run-step.md).
+A Batch pontozása ML-folyamatok esetében támogatott. További információ: batch- [előrejelzések Big Data](./tutorial-pipeline-batch-scoring-classification.md).
 
 #### <a name="real-time-web-services"></a>Valós idejű webszolgáltatások
 
@@ -136,13 +139,13 @@ További információ: ML- [modellek vezérelt bevezetése](how-to-deploy-azure-
 
 #### <a name="iot-edge-devices"></a>Eszközök IoT Edge
 
-A modelleket IoT eszközökkel **Azure IoT Edge modulokon**keresztül is használhatja. IoT Edge modulok üzembe helyezése egy hardvereszközön történik, amely lehetővé teszi a következtetések kiértékelését vagy a modellek pontozását az eszközön.
+A modelleket IoT eszközökkel **Azure IoT Edge modulokon** keresztül is használhatja. IoT Edge modulok üzembe helyezése egy hardvereszközön történik, amely lehetővé teszi a következtetések kiértékelését vagy a modellek pontozását az eszközön.
 
 További információ: [modellek üzembe helyezése](how-to-deploy-and-where.md).
 
 ### <a name="analytics"></a>Elemzés
 
-A Microsoft Power BI támogatja a gépi tanulási modellek használatát az adatelemzéshez. További információ: [Azure Machine learning Integration in Power bi (előzetes verzió)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
+A Microsoft Power BI támogatja a gépi tanulási modellek használatát az adatelemzéshez. További információ: [Azure Machine learning Integration in Power bi (előzetes verzió)](/power-bi/service-machine-learning-integration).
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Rögzítse a végpontok közötti ML életciklus rögzítéséhez szükséges irányítási adatmennyiséget
 
@@ -156,9 +159,9 @@ Az Azure ML lehetővé teszi az összes ML-eszköz teljes körű naplózásának
 - Az Azure-nal való [integráció](how-to-use-event-grid.md) lehetővé teszi, hogy az ml-életcikluson belüli eseményeket cselekedjen. Például a modell regisztrációjának, üzembe helyezésének, adateltolódásának és képzésének (futtatásának) eseményei.
 
 > [!TIP]
-> Míg a modellekkel és adatkészletekkel kapcsolatos néhány információ automatikusan rögzítve van, a __címkék__használatával további információkat is hozzáadhat. Ha regisztrált modelleket és adatkészleteket keres a munkaterületen, használhat címkéket szűrőként.
+> Míg a modellekkel és adatkészletekkel kapcsolatos néhány információ automatikusan rögzítve van, a __címkék__ használatával további információkat is hozzáadhat. Ha regisztrált modelleket és adatkészleteket keres a munkaterületen, használhat címkéket szűrőként.
 >
-> Az adatkészlet regisztrált modellel való társítása egy választható lépés. Az adatkészletek modelljének regisztrálásakor való hivatkozással kapcsolatos információkért tekintse meg a [modell](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true) osztályának referenciáját.
+> Az adatkészlet regisztrált modellel való társítása egy választható lépés. Az adatkészletek modelljének regisztrálásakor való hivatkozással kapcsolatos információkért tekintse meg a [modell](/python/api/azureml-core/azureml.core.model%28class%29?preserve-view=true&view=azure-ml-py) osztályának referenciáját.
 
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>A ML-életciklus eseményeinek értesítése, automatizálása és riasztása

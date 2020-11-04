@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fe5eba72b507ebea6bc1012c567de70bc3deb5ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3bf8e5f81ae7bf35ff34039fa1e81c9fd4a406b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261345"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324548"
 ---
 # <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>A csoportos adatelemzési folyamat életciklusának üzembe helyezési szakasza
 
@@ -39,7 +39,7 @@ Modellek üzembe helyezése adatfolyamattal éles vagy éles környezetben, a v�
 ## <a name="how-to-do-it"></a>Útmutató
 Az ebben a szakaszban tárgyalt fő feladat:
 
-**Működővé tenni**: a modell és a folyamat üzembe helyezése éles vagy éles környezetben az alkalmazások felhasználásához.
+**Működővé tenni** : a modell és a folyamat üzembe helyezése éles vagy éles környezetben az alkalmazások felhasználásához.
 
 ### <a name="operationalize-a-model"></a>Modell üzembe helyezése
 Miután jól teljesített modelleket tartalmazó készletet használ, működővé tenni azokat más alkalmazások számára. Az üzleti követelményektől függően a jóslatok valós időben vagy batch alapon történnek. A modellek üzembe helyezéséhez egy nyitott API-felülettel kell kitenni őket. Az interfész lehetővé teszi, hogy a modell könnyen felhasználható legyen különböző alkalmazásokból, például:
@@ -71,4 +71,4 @@ Az alábbiakban a TDSP életciklusának egyes lépéseire mutató hivatkozásoka
 
 Teljes körű bemutatókat biztosítunk, amelyek bemutatják a folyamat összes lépését adott forgatókönyvek esetében. A [példákat](walkthroughs.md) bemutató cikk a hivatkozásokat és a miniatűr leírásait tartalmazza. Az útmutató bemutatja, hogyan egyesítheti a felhőt, a helyszíni eszközöket és a szolgáltatásokat egy munkafolyamatban vagy folyamatban egy intelligens alkalmazás létrehozásához. 
 
-A Azure Machine Learning Studiot használó TDSPs lépéseinek végrehajtásával kapcsolatos Példákért lásd: [a TDSP használata Azure Machine learning használatával](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+A Azure Machine Learning Studiot használó TDSPs lépéseinek végrehajtásával kapcsolatos Példákért lásd: [a TDSP használata Azure Machine learning használatával](./index.yml).

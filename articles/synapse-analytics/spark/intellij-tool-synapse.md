@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag – Azure Toolkit for IntelliJ (Spark-alkalmazás)
-description: Oktatóanyag – a Azure Toolkit for IntelliJ használatával fejlesztheti a Scala-ben írt Spark-alkalmazásokat, és beküldheti azokat egy Apache Spark-készletbe (előzetes verzió).
+description: Oktatóanyag – a Azure Toolkit for IntelliJ használatával fejlesztheti a Scala-ben írt Spark-alkalmazásokat, és beküldheti azokat egy kiszolgáló nélküli Apache Spark-készletbe (előzetes verzió).
 services: synapse-analytics
 author: hrasheed-msft
 ms.author: jejiang
@@ -9,16 +9,16 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: be127d4214577e017522aec6a1b61b8f62638ed9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5a9fcf3e13c2f86a11e9626be486a585ec659044
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368740"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325218"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>Oktatóanyag: Apache Spark-alkalmazás létrehozása a IntelliJ a szinapszis-munkaterület használatával
 
-Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Azure Toolkit for IntelliJ beépülő modult a [Scala](https://www.scala-lang.org/)-ban írt, Apache Spark alkalmazások fejlesztéséhez, majd beküldheti őket egy Spark-készletbe (előzetes verzió) közvetlenül a IntelliJ integrált fejlesztői környezetből (ide). A beépülő modult többféleképpen is használhatja:
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Azure Toolkit for IntelliJ beépülő modult Apache Spark alkalmazások fejlesztéséhez, amelyek a [Scala](https://www.scala-lang.org/)-ben íródtak, majd a IntelliJ integrált fejlesztői környezetből (ide) közvetlenül beküldhetik a kiszolgáló nélküli Apache Spark készletbe (előzetes verzió). A beépülő modult többféleképpen is használhatja:
 
 - Egy Spark-készleten fejlesztheti és küldheti el a Scala Spark-alkalmazásokat.
 - Hozzáférhet a Spark-készletek erőforrásaihoz.
@@ -40,7 +40,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 - A következő előfeltétel csak a Windows-felhasználók számára érhető el:
 
   Ha a helyi Spark Scala alkalmazást Windows rendszerű számítógépen futtatja, előfordulhat, hogy a [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356)című részben leírtak szerint kivételt tapasztal. A kivétel oka, hogy WinUtils.exe hiányzik a Windows rendszerből.
-  A hiba elhárításához töltse le a [WinUtils végrehajtható fájlt](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) egy olyan helyre, mint például a **C:\WinUtils\bin**. Ezután adja hozzá **HADOOP_HOME**környezeti változót, és állítsa a változó értékét **C:\WinUtils**értékre.
+  A hiba elhárításához töltse le a [WinUtils végrehajtható fájlt](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) egy olyan helyre, mint például a **C:\WinUtils\bin**. Ezután adja hozzá **HADOOP_HOME** környezeti változót, és állítsa a változó értékét **C:\WinUtils** értékre.
 
 ## <a name="create-a-spark-scala-application-for-a-spark-pool"></a>Spark Scala-alkalmazás létrehozása Spark-készlethez
 
@@ -62,7 +62,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     |Projektnév| Adjon meg egy nevet. Ebben az oktatóanyagban a következőt használjuk: `myApp`.|
     |Projekt &nbsp; helye| Adja meg a kívánt helyet a projekt mentéséhez.|
     |Projekt SDK| Előfordulhat, hogy az első ÖTLETE üres. Válassza az **új...** lehetőséget, és navigáljon a JDK-hez.|
-    |Spark-verzió|A létrehozás varázsló a Spark SDK és a Scala SDK megfelelő verzióját integrálja. A szinapszis csak a **Spark 2.4.0**támogatja.|
+    |Spark-verzió|A létrehozás varázsló a Spark SDK és a Scala SDK megfelelő verzióját integrálja. A szinapszis csak a **Spark 2.4.0** támogatja.|
     |||
 
     ![Az Apache Spark SDK kiválasztása](./media/intellij-tool-synapse/create-synapse-application02.png)
@@ -72,7 +72,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
    a. A menüsávban navigáljon a **fájl**  >  **projekt szerkezete...** elemre.
 
-   b. A **projekt szerkezete** **ablakban válassza az**összetevők elemet.
+   b. A **projekt szerkezete** **ablakban válassza az** összetevők elemet.
 
    c. A lelet megtekintése után válassza a **Mégse** lehetőséget.
 
@@ -92,19 +92,19 @@ Jelentkezzen be az Azure-előfizetésbe a Spark-készletekhez való kapcsolódá
 
    ![A IntelliJ ÖTLETE az Azure Explorert mutatja be](./media/intellij-tool-synapse/show-azure-explorer1.png)
 
-2. Az Azure Explorerben kattintson a jobb gombbal az **Azure** -csomópontra, majd válassza a **Bejelentkezés**lehetőséget.
+2. Az Azure Explorerben kattintson a jobb gombbal az **Azure** -csomópontra, majd válassza a **Bejelentkezés** lehetőséget.
 
    ![A IntelliJ IDEA Explorer jobb oldali gombjával kattintson az Azure elemre](./media/intellij-tool-synapse/explorer-rightclick-azure.png)
 
-3. Az **Azure bejelentkezési** párbeszédpanelen válassza az **eszköz bejelentkezés**lehetőséget, majd válassza a **Bejelentkezés**lehetőséget.
+3. Az **Azure bejelentkezési** párbeszédpanelen válassza az **eszköz bejelentkezés** lehetőséget, majd válassza a **Bejelentkezés** lehetőséget.
 
     ![IntelliJ IDEA Azure-bejelentkezés](./media/intellij-tool-synapse/intellij-view-explorer2.png)
 
-4. Az **Azure-eszköz bejelentkezési** párbeszédpaneljén válassza a **Másolás&Megnyitás**elemet.
+4. Az **Azure-eszköz bejelentkezési** párbeszédpaneljén válassza a **Másolás&Megnyitás** elemet.
 
    ![IntelliJ IDEA Azure-eszköz bejelentkezés](./media/intellij-tool-synapse/intellij-view-explorer5.png)
 
-5. A böngésző felületén illessze be a kódot, majd kattintson a **tovább**gombra.
+5. A böngésző felületén illessze be a kódot, majd kattintson a **tovább** gombra.
 
    ![A Microsoft beírja a HDI kód párbeszédpanelt](./media/intellij-tool-synapse/intellij-view-explorer6.png)
 
@@ -112,11 +112,11 @@ Jelentkezzen be az Azure-előfizetésbe a Spark-készletekhez való kapcsolódá
 
    ![A Microsoft e-mail-párbeszédpanelét írja be a HDI számára](./media/intellij-tool-synapse/intellij-view-explorer7.png)
 
-7. Miután bejelentkezett, az **előfizetések kiválasztása** párbeszédpanel felsorolja az összes olyan Azure-előfizetést, amely társítva van a hitelesítő adatokhoz. Válassza ki az előfizetését, majd válassza a **kiválasztás**lehetőséget.
+7. Miután bejelentkezett, az **előfizetések kiválasztása** párbeszédpanel felsorolja az összes olyan Azure-előfizetést, amely társítva van a hitelesítő adatokhoz. Válassza ki az előfizetését, majd válassza a **kiválasztás** lehetőséget.
 
     ![Az Előfizetések kiválasztása párbeszédpanel](./media/intellij-tool-synapse/Select-Subscriptions.png)
 
-8. Az **Azure Explorerben**bontsa ki a **szinapszis Apache Spark** elemét az előfizetésében található munkaterületek megtekintéséhez.
+8. Az **Azure Explorerben** bontsa ki a **szinapszis Apache Spark** elemét az előfizetésében található munkaterületek megtekintéséhez.
 
     ![IntelliJ IDEA Azure Explorer – fő nézet](./media/intellij-tool-synapse/azure-explorer-workspace.png)
 
@@ -132,17 +132,17 @@ A Scala-alkalmazás létrehozása után távolról futtathatja azt.
 
     ![A Spark-alkalmazás beküldése az 1. HDInsight-parancsra](./media/intellij-tool-synapse/open-configuration-window.png)
 
-2. A **Futtatás/hibakeresés konfiguráció** párbeszédpanelen válassza a elemet **+** , majd válassza **a Apache Spark a szinapszison**lehetőséget.
+2. A **Futtatás/hibakeresés konfiguráció** párbeszédpanelen válassza a elemet **+** , majd válassza **a Apache Spark a szinapszison** lehetőséget.
 
     ![A Spark-alkalmazás beküldése a HDInsight 2. parancsba](./media/intellij-tool-synapse/create-synapse-configuration02.png)
 
-3. A **Futtatás/hibakeresés konfigurációk** ablakban adja meg a következő értékeket, majd kattintson az **OK gombra**:
+3. A **Futtatás/hibakeresés konfigurációk** ablakban adja meg a következő értékeket, majd kattintson az **OK gombra** :
 
     |Tulajdonság |Érték |
     |----|----|
     |Spark-készletek|Válassza ki azokat a Spark-készleteket, amelyeken futtatni szeretné az alkalmazást.|
     |Válassza ki a elküldeni kívánt összetevőt|Hagyja meg az alapértelmezett beállítást.|
-    |Fő osztály neve|Az alapértelmezett érték a kijelölt fájl fő osztálya. Az osztályt a három pont (**..**.) gombra kattintva módosíthatja, és egy másik osztályt is választhat.|
+    |Fő osztály neve|Az alapértelmezett érték a kijelölt fájl fő osztálya. Az osztályt a három pont ( **..**.) gombra kattintva módosíthatja, és egy másik osztályt is választhat.|
     |Feladatok konfigurációi|Módosíthatja az alapértelmezett kulcsot és értékeket. További információ: [Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html).|
     |Parancssori argumentumok|Szükség esetén megadhat argumentumokat szóközzel elválasztva a Main osztály számára.|
     |Hivatkozott tégelyek és hivatkozott fájlok|Megadhatja a hivatkozott tégelyek és fájlok elérési útját, ha van ilyen. Az Azure-beli virtuális fájlrendszerben is böngészheti a fájlokat, amelyek jelenleg csak ADLS Gen2 fürtöt támogatják. További információ: [Apache Spark konfiguráció] https://spark.apache.org/docs/2.4.5/configuration.html#runtime-environment) és [erőforrások feltöltése a fürtbe](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).|
@@ -166,7 +166,7 @@ Az alábbi útmutatást követve állíthatja be a helyi futtatást és a helyi 
 
 ### <a name="scenario-1-do-local-run"></a>1. forgatókönyv: helyi Futtatás
 
-1. Nyissa meg a **futtatási/hibakeresési beállítások** párbeszédpanelt, és válassza a pluszjelet ( **+** ). Ezután válassza ki a **Apache Spark a szinapszis** lehetőségnél. Adja **meg a menteni**kívánt **Főosztály** nevét.
+1. Nyissa meg a **futtatási/hibakeresési beállítások** párbeszédpanelt, és válassza a pluszjelet ( **+** ). Ezután válassza ki a **Apache Spark a szinapszis** lehetőségnél. Adja **meg a menteni** kívánt **Főosztály** nevét.
 
     ![IntelliJ futtatása hibakeresési konfigurációk helyi futtatása 1](./media/intellij-tool-synapse/local-run-synapse.png)
 
@@ -195,11 +195,11 @@ Az Azure Explorerben különböző műveleteket hajthat végre Azure Toolkit for
 
 ### <a name="launch-workspace"></a>Munkaterület elindítása
 
-1. Az Azure Explorerben navigáljon **Apache Spark a szinapszis**elemre, majd bontsa ki azt.
+1. Az Azure Explorerben navigáljon **Apache Spark a szinapszis** elemre, majd bontsa ki azt.
 
     ![IntelliJ IDEA Azure Explorer – fő nézet](./media/intellij-tool-synapse/azure-explorer-workspace.png)
 
-2. Kattintson a jobb gombbal a munkaterületre, majd válassza a **munkaterület elindítása**lehetőséget, majd megnyílik a webhely.
+2. Kattintson a jobb gombbal a munkaterületre, majd válassza a **munkaterület elindítása** lehetőséget, majd megnyílik a webhely.
 
     ![Spark-feladatok nézet alkalmazás részletei 1](./media/intellij-tool-synapse/launch-workspace-synapse.png)
 
@@ -216,7 +216,7 @@ Győződjön meg arról, hogy teljesítette a WINUTILS.EXE előfeltételt.
 1. A menüsávban navigáljon **a**  >  **konfigurációk szerkesztése..**. lehetőségre.
 2. A **Futtatás/hibakeresés konfigurációk** ablakban, a bal oldali ablaktáblán navigáljon a **Apache Sparkra a szinapszisban**  >  **[a Spark on szinapszis] SajátPr**.
 3. A fő ablakban válassza a **helyileg futtatott** lapot.
-4. Adja meg a következő értékeket, majd kattintson **az OK gombra**:
+4. Adja meg a következő értékeket, majd kattintson **az OK gombra** :
 
     |Tulajdonság |Érték |
     |----|----|
@@ -225,9 +225,9 @@ Győződjön meg arról, hogy teljesítette a WINUTILS.EXE előfeltételt.
 
     ![Helyi konzol beállítása – konfiguráció](./media/intellij-tool-synapse/local-console-synapse01.png)
 
-5. A projekt területen navigáljon a **SajátPr**  >  **src**  >  **Main**  >  **Scala**-  >  **SajátPr**.
+5. A projekt területen navigáljon a **SajátPr**  >  **src**  >  **Main**  >  **Scala** -  >  **SajátPr**.
 6. A menüsávban navigáljon az **eszközök**  >  **Spark-konzol**  >  **Futtatás Spark helyi konzol (Scala)** elemre.
-7. Ezután két párbeszédpanel jelenik meg, amely megkérdezi, hogy szeretné-e automatikusan kijavítani a függőségeket. Ha igen, válassza az **Automatikus javítás**lehetőséget.
+7. Ezután két párbeszédpanel jelenik meg, amely megkérdezi, hogy szeretné-e automatikusan kijavítani a függőségeket. Ha igen, válassza az **Automatikus javítás** lehetőséget.
 
     ![IntelliJ ötlet Spark automatikus javítás dialog1](./media/intellij-tool-synapse/intellij-console-autofix1.png)
 
@@ -247,7 +247,7 @@ Ez csak a 2018,2-es és a 2018,3-es IntelliJ támogatott.
 
 3. A főablakban válassza a **távoli Futtatás a fürtben** lapot.
 
-4. Adja meg a következő értékeket, majd kattintson **az OK gombra**:
+4. Adja meg a következő értékeket, majd kattintson **az OK gombra** :
 
     |Tulajdonság |Érték |
     |----|----|
@@ -257,16 +257,16 @@ Ez csak a 2018,2-es és a 2018,3-es IntelliJ támogatott.
 
     ![Interaktív konzol beállított konfigurációja](./media/intellij-tool-synapse/interactive-console-configuration.png)
 
-5. A projekt területen navigáljon a **SajátPr**  >  **src**  >  **Main**  >  **Scala**-  >  **SajátPr**.
+5. A projekt területen navigáljon a **SajátPr**  >  **src**  >  **Main**  >  **Scala** -  >  **SajátPr**.
 
-6. A menüsávban navigáljon az **eszközök**  >  **Spark-konzolon**a  >  **Spark Livy interaktív munkamenet-konzolja (Scala)** elemre.
+6. A menüsávban navigáljon az **eszközök**  >  **Spark-konzolon** a  >  **Spark Livy interaktív munkamenet-konzolja (Scala)** elemre.
 7. A konzolnak az alábbi ábrához hasonlóan kell kinéznie. A konzol ablakában írja be a következőt: `sc.appName` , majd nyomja le a CTRL + ENTER billentyűkombinációt. Ekkor megjelenik az eredmény. A helyi konzolt a vörös gomb kiválasztásával állíthatja le.
 
     ![A IntelliJ IDEA interaktív konzoljának eredménye](./media/intellij-tool-synapse/interactive-console-result.png)
 
 ### <a name="send-selection-to-spark-console"></a>Kijelölés küldése a Spark-konzolra
 
-Előfordulhat, hogy a szkript eredményét úgy szeretné látni, hogy elküld egy kódot a helyi konzolon vagy a Livy interaktív munkamenet-konzolján (Scala). Ehhez jelöljön ki egy kódot a Scala-fájlban, majd kattintson a jobb gombbal a **kijelölés küldése a Spark-konzolra**lehetőségre. A rendszer elküldi a kiválasztott kódot a konzolra, és készen áll. Az eredmény a konzolon a kód után fog megjelenni. A konzol a meglévő hibákat fogja ellenőriznie.
+Előfordulhat, hogy a szkript eredményét úgy szeretné látni, hogy elküld egy kódot a helyi konzolon vagy a Livy interaktív munkamenet-konzolján (Scala). Ehhez jelöljön ki egy kódot a Scala-fájlban, majd kattintson a jobb gombbal a **kijelölés küldése a Spark-konzolra** lehetőségre. A rendszer elküldi a kiválasztott kódot a konzolra, és készen áll. Az eredmény a konzolon a kód után fog megjelenni. A konzol a meglévő hibákat fogja ellenőriznie.
 
    ![Kijelölés küldése a Spark-konzolra](./media/intellij-tool-synapse/send-selection-to-console.png)
 

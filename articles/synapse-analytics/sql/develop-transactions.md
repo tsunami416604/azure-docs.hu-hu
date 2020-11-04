@@ -1,6 +1,6 @@
 ---
 title: Tranzakciók használata
-description: Tippek a tranzakciók megvalósításához az SQL-készletben (adattárházban) a megoldások fejlesztéséhez.
+description: Tippek a tranzakciók megvalósításához dedikált SQL-készlettel az Azure szinapszis Analyticsben megoldások fejlesztéséhez.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,20 +10,20 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: de36d1eda21903480eee986df72c5274e1aa6dff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2597a4bc6c5ed44f0e0050be3f69d7e840665e5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288613"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323845"
 ---
-# <a name="use-transactions-in-sql-pool"></a>Tranzakciók használata az SQL-készletben
+# <a name="use-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Tranzakciók használata dedikált SQL-készlettel az Azure szinapszis Analyticsben
 
-Tippek a tranzakciók megvalósításához az SQL-készletben (adattárházban) a megoldások fejlesztéséhez.
+Tippek a tranzakciók megvalósításához dedikált SQL-készlettel az Azure szinapszis Analyticsben megoldások fejlesztéséhez.
 
 ## <a name="what-to-expect"></a>Amire számíthat
 
-Ahogy várható, az SQL-készlet az adatraktár számítási feladatainak részeként támogatja a tranzakciókat. Az SQL-készlet teljesítményének biztosítása érdekében azonban bizonyos funkciók korlátozottak lesznek a SQL Serverhoz képest. Ez a cikk kiemeli a különbségeket, és felsorolja a többiet.
+Ahogy azt várnánk, a dedikált SQL-készlet az adatraktár számítási feladatainak részeként támogatja a tranzakciókat. A dedikált SQL-készlet teljesítményének biztosítása érdekében azonban bizonyos funkciók korlátozottak lesznek a SQL Serverhoz képest. Ez a cikk kiemeli a különbségeket, és felsorolja a többiet.
 
 ## <a name="transaction-isolation-levels"></a>Tranzakciók elkülönítési szintjei
 
@@ -92,7 +92,7 @@ A naplóba írt adatmennyiség optimalizálása és minimálisra csökkentése �
 Az SQL-készlet a XACT_STATE () függvényt használja a sikertelen tranzakciók jelentésére a-2 érték használatával. Ez az érték azt jelenti, hogy a tranzakció meghiúsult, és csak visszaállításra van megjelölve.
 
 > [!NOTE]
-> A (2) XACT_STATE függvény használata a sikertelen tranzakciók jelölésére a SQL Server eltérő viselkedését jelöli. A SQL Server a-1 érték használatával nem véglegesíthető tranzakciót jelöl. A SQL Server egy tranzakción belül bizonyos hibákat el lehet viselni anélkül, hogy nem véglegesíthető jelöléssel kellene megjelölni. Például `SELECT 1/0` hibát okozhat, de nem kényszerítheti a tranzakciót nem véglegesíthető állapotba. A SQL Server a nem véglegesíthető tranzakcióban is engedélyezi a beolvasást. Az SQL-készlet azonban nem teszi lehetővé. Ha egy SQL Pool-tranzakción belül hiba történik, a rendszer automatikusan megadja a-2 állapotot, és nem fog tudni további kiválasztási utasításokat készíteni, amíg az utasítás vissza nem áll. Ezért fontos, hogy az alkalmazás kódjában ellenőrizze, hogy az XACT_STATE () protokollt használja-e, mivel előfordulhat, hogy programkódot kell módosítania.
+> A (2) XACT_STATE függvény használata a sikertelen tranzakciók jelölésére a SQL Server eltérő viselkedését jelöli. A SQL Server a-1 érték használatával nem véglegesíthető tranzakciót jelöl. A SQL Server egy tranzakción belül bizonyos hibákat el lehet viselni anélkül, hogy nem véglegesíthető jelöléssel kellene megjelölni. Például `SELECT 1/0` hibát okozhat, de nem kényszerítheti a tranzakciót nem véglegesíthető állapotba. A SQL Server a nem véglegesíthető tranzakcióban is engedélyezi a beolvasást. A dedikált SQL-készlet azonban nem teszi lehetővé. Ha egy dedikált SQL Pool-tranzakción belül hiba történik, akkor a rendszer automatikusan megadja a-2 állapotot, és nem fog tudni további kiválasztási utasításokat készíteni, amíg az utasítás vissza nem áll. Ezért fontos, hogy az alkalmazás kódjában ellenőrizze, hogy az XACT_STATE () protokollt használja-e, mivel előfordulhat, hogy programkódot kell módosítania.
 
 SQL Server például a következőhöz hasonló tranzakció jelenhet meg:
 
@@ -138,7 +138,7 @@ Msg 111233, 16. szint, állapot 1, sor 1 111233; Az aktuális tranzakció meg le
 
 A ERROR_ * függvények kimenete nem jelenik meg.
 
-Az SQL-készletben a kódot kis mértékben módosítani kell:
+A dedikált SQL-készletben a kódot kis mértékben módosítani kell:
 
 ```sql
 SET NOCOUNT ON;
@@ -181,11 +181,11 @@ Az összes módosult, hogy a tranzakció visszagörgetése még azelőtt törté
 
 ## <a name="error_line-function"></a>Error_Line () függvény
 
-Azt is érdemes megjegyezni, hogy az SQL-készlet nem implementálja és nem támogatja a ERROR_LINE () függvényt. Ha ezt a függvényt a kódban, el kell távolítania, hogy az megfeleljen az SQL-készletnek. Az egyenértékű funkciók megvalósítása helyett használja a kódban a lekérdezési címkéket. További információkért lásd a [címkét](develop-label.md) ismertető cikket.
+Azt is érdemes megjegyezni, hogy a dedikált SQL-készlet nem implementálja és nem támogatja a ERROR_LINE () függvényt. Ha ezt a függvényt a kódban, el kell távolítania, hogy az megfeleljen a dedikált SQL-készletnek. Az egyenértékű funkciók megvalósítása helyett használja a kódban a lekérdezési címkéket. További információkért lásd a [címkét](develop-label.md) ismertető cikket.
 
 ## <a name="use-of-throw-and-raiserror"></a>A THROW és a RAISERROR használata
 
-Az SQL-készletben a kivételek növelésének modern implementációja, de a RAISERROR is támogatott. Van néhány eltérés, amely azonban érdemes odafigyelni.
+Ez a modern implementáció a kivételek előléptetéséhez a dedikált SQL-készletben, de a RAISERROR is támogatott. Van néhány eltérés, amely azonban érdemes odafigyelni.
 
 * A felhasználó által definiált hibaüzenetek száma nem lehet a következő 100 000-150 000 tartományban: THROW
 * A RAISERROR-hibaüzenetek a következő időpontban vannak kijavítva: 50 000
@@ -204,4 +204,4 @@ Az SQL-készletnek van néhány más korlátozása, amely a tranzakcióhoz kapcs
 
 ## <a name="next-steps"></a>Következő lépések
 
-A tranzakciók optimalizálásával kapcsolatos további tudnivalókért tekintse meg a [tranzakciók ajánlott eljárásai](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)című témakört. Az [SQL-készlet](best-practices-sql-pool.md) és az [igény szerinti SQL-szolgáltatás (előzetes verzió)](best-practices-sql-on-demand.md)további ajánlott eljárásokat ismertető útmutatók is rendelkezésre állnak.
+A tranzakciók optimalizálásával kapcsolatos további tudnivalókért tekintse meg a [tranzakciók ajánlott eljárásai](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)című témakört. További ajánlott eljárások az [SQL-készlethez](best-practices-sql-pool.md) és a [kiszolgáló nélküli SQL-készlethez (előzetes verzió)](best-practices-sql-on-demand.md)is elérhetők.

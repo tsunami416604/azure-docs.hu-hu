@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 71032c49ac5164f13189baf64668f8998fdc186a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c96263b5d40d4f6a4904a6da3d40ad98ac81f030
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276084"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322304"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>A Azure Machine Learning működése: architektúra és fogalmak
 
@@ -53,9 +53,9 @@ A munkaterületeket másokkal is megoszthatja.
 
 A Azure Machine Learning a gépi tanulási feladatokhoz konfigurált két teljes körűen felügyelt felhőalapú virtuális gépet (VM) mutatja be:
 
-* <a name="compute-instance"></a>**Számítási példány**: a számítási példány egy olyan virtuális gép, amely a gépi tanuláshoz telepített több eszközt és környezetet is tartalmaz. A számítási példány elsődleges használata a fejlesztési munkaállomás számára szükséges.  Megkezdheti a telepítés megkezdése nélkül megjelenő minta-jegyzetfüzetek futtatását. A számítási példányok számítási célként is használhatók a betanítási és a következtetési feladatokhoz.
+* <a name="compute-instance"></a>**Számítási példány** : a számítási példány egy olyan virtuális gép, amely a gépi tanuláshoz telepített több eszközt és környezetet is tartalmaz. A számítási példány elsődleges használata a fejlesztési munkaállomás számára szükséges.  Megkezdheti a telepítés megkezdése nélkül megjelenő minta-jegyzetfüzetek futtatását. A számítási példányok számítási célként is használhatók a betanítási és a következtetési feladatokhoz.
 
-* **Számítási fürtök**: a számítási fürtök több csomópontos skálázási képességekkel rendelkező virtuális gépekből álló fürtök. A számítási fürtök jobban illeszkednek a nagyméretű feladatok és az éles számítási célokhoz.  A fürt automatikusan méretezi a feladatokat, amikor elküld egy feladatot.  Használjon képzési számítási célt vagy fejlesztési/tesztelési célú üzembe helyezést.
+* **Számítási fürtök** : a számítási fürtök több csomópontos skálázási képességekkel rendelkező virtuális gépekből álló fürtök. A számítási fürtök jobban illeszkednek a nagyméretű feladatok és az éles számítási célokhoz.  A fürt automatikusan méretezi a feladatokat, amikor elküld egy feladatot.  Használjon képzési számítási célt vagy fejlesztési/tesztelési célú üzembe helyezést.
 
 A számítási célok betanításával kapcsolatos további információkért lásd: [számítási célok betanítása](concept-compute-target.md#train).  További információ az üzembe helyezési számítási célokról: [telepítési célok](concept-compute-target.md#deploy).
 
@@ -102,7 +102,7 @@ A futtatást akkor kell létrehoznia, ha parancsfájlt küld a modell betanítá
 
 [Munkaterület](#workspace)  >  [Kísérletek](#experiments)  >  [Futtatás](#runs)  >  **Konfiguráció futtatása**
 
-A futtatási konfiguráció határozza meg, hogyan fusson egy parancsfájl egy adott számítási célhelyen. A konfiguráció segítségével megadhatja a parancsfájlt, a számítási célt és az Azure ML-környezetet a futtatáshoz, a feladatokra vonatkozó elosztott konfigurációkat és néhány további tulajdonságot. További információ a futtatások konfigurálható lehetőségeinek teljes készletéről: [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true).
+A futtatási konfiguráció határozza meg, hogyan fusson egy parancsfájl egy adott számítási célhelyen. A konfiguráció segítségével megadhatja a parancsfájlt, a számítási célt és az Azure ML-környezetet a futtatáshoz, a feladatokra vonatkozó elosztott konfigurációkat és néhány további tulajdonságot. További információ a futtatások konfigurálható lehetőségeinek teljes készletéről: [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py).
 
 A futtatási konfiguráció a betanítási parancsfájlt tartalmazó könyvtárban található fájlban maradhat.   Vagy egy memóriában tárolt objektumként is létrehozható, és futtatásra is elküldhető.
 
@@ -204,7 +204,7 @@ Ha engedélyezte a figyelést, az Azure a modellből gyűjt telemetria adatokat 
 Azure IoT Edge biztosítja, hogy a modul fut, és figyeli az azt üzemeltető eszközt. 
 ## <a name="automation"></a>Automation
 
-### <a name="azure-machine-learning-cli"></a>Azure Machine Learning parancssori felület 
+### <a name="azure-machine-learning-cli"></a>Azure Machine Learning CLI 
 
 A [Azure Machine learning CLI](reference-azure-machine-learning-cli.md) az Azure CLI egy platformfüggetlen parancssori felülete az Azure platformhoz. Ez a bővítmény parancsokat biztosít a gépi tanulási tevékenységek automatizálásához.
 
@@ -231,12 +231,12 @@ A Studióban a Azure Machine Learning részét képező interaktív eszközök i
 
 > [!IMPORTANT]
 > Az alábbi megjelölésű eszközök (előzetes verzió) jelenleg nyilvános előzetes verzióban érhetők el.
-> Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-+  A szolgáltatással bármilyen Python-környezetben dolgozhat a [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)-val.
++  A szolgáltatással bármilyen Python-környezetben dolgozhat a [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)-val.
 + A szolgáltatás használata bármely R-környezetben az R- [hez készült Azure Machine learning SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html) -val (előzetes verzió).
 + A [Azure Machine learning Designer](concept-designer.md) használatával hajtsa végre a munkafolyamat lépéseit anélkül, hogy kódot kellene írnia. 
-+ Az automatizáláshoz használja a [Azure Machine learning CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) -t.
++ Az automatizáláshoz használja a [Azure Machine learning CLI](./reference-azure-machine-learning-cli.md) -t.
 + A [számos Modelles megoldás-gyorsító](https://aka.ms/many-models) (előzetes verzió) a Azure Machine Learningra épít, és lehetővé teszi több száz vagy akár több ezer gépi tanulási modell betanítását, üzemeltetését és felügyeletét.
 
 ## <a name="next-steps"></a>Következő lépések

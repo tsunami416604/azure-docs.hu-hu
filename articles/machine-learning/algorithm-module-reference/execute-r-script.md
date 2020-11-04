@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: a86c0b115ef866453e457ad528dd694ed7b49b48
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 0a3dbb42e69978a8a4895f44b57cc3ca5353e799
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330393"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323738"
 ---
 # <a name="execute-r-script-module"></a>R-parancsfájl végrehajtása modul
 
@@ -121,7 +121,7 @@ A folyamat futásának befejezése után a rendszerképet a modul jobb oldali pa
 
 ## <a name="access-to-registered-dataset"></a>Hozzáférés a regisztrált adatkészlethez
 
-A következő mintakód a munkaterületén [regisztrált adatkészletekhez való hozzáféréshez](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets#access-datasets-in-your-script) használható:
+A következő mintakód a munkaterületén [regisztrált adatkészletekhez való hozzáféréshez](../how-to-create-register-datasets.md) használható:
 
 ```R
         azureml_main <- function(dataframe1, dataframe2){
@@ -147,11 +147,11 @@ A tervezőben tárolt adatkészletek automatikusan egy R-adatkeretre lesznek kon
 
 1. Csatlakoztasson minden olyan bemenetet, amelyhez a szkriptnek szüksége van. A bemenetek nem kötelezőek, és tartalmazhatnak adatokat és további R-kódokat is.
 
-    * **DataSet1 elemet**: az első bemenetre hivatkozik `dataframe1` . A bemeneti adatkészletet CSV-, TSV-vagy ARFF-fájlként kell formázni. Vagy összekapcsolhat egy Azure Machine Learning adatkészletet.
+    * **DataSet1 elemet** : az első bemenetre hivatkozik `dataframe1` . A bemeneti adatkészletet CSV-, TSV-vagy ARFF-fájlként kell formázni. Vagy összekapcsolhat egy Azure Machine Learning adatkészletet.
 
-    * **Dataset2**: a második bemenetre hivatkozik `dataframe2` . Ezt az adatkészletet CSV-, TSV-vagy ARFF-fájlként, vagy Azure Machine Learning adatkészletként kell formázni.
+    * **Dataset2** : a második bemenetre hivatkozik `dataframe2` . Ezt az adatkészletet CSV-, TSV-vagy ARFF-fájlként, vagy Azure Machine Learning adatkészletként kell formázni.
 
-    * **Parancsfájl-csomag**: a harmadik bemenet elfogadja a. zip fájlokat. A tömörített fájlok több fájlt és több fájltípust is tartalmazhatnak.
+    * **Parancsfájl-csomag** : a harmadik bemenet elfogadja a. zip fájlokat. A tömörített fájlok több fájlt és több fájltípust is tartalmazhatnak.
 
 1. Az **r-szkript** szövegmezőbe írja be vagy illessze be az érvényes R-szkriptet.
 
@@ -216,7 +216,7 @@ A tervezőben tárolt adatkészletek automatikusan egy R-adatkeretre lesznek kon
     }
     ```
 
-1.  **Véletlenszerű vetőmag**esetén adjon meg egy értéket, amelyet az R-környezetben a véletlenszerű mag értékeként kíván használni. Ez a paraméter egyenértékű az R-kódban való meghívással `set.seed(value)` .  
+1.  **Véletlenszerű vetőmag** esetén adjon meg egy értéket, amelyet az R-környezetben a véletlenszerű mag értékeként kíván használni. Ez a paraméter egyenértékű az R-kódban való meghívással `set.seed(value)` .  
 
 1. A folyamat elküldése.  
 
@@ -237,7 +237,7 @@ A folyamatokat többféleképpen is kiterjesztheti egyéni R-parancsfájlok hasz
 
 Az R-szkript végrehajtása modul bemenetként támogatja a tetszőleges R-parancsfájlokat. A használatához a. zip fájl részeként fel kell töltenie őket a munkaterületre.
 
-1. Ha R-kódot tartalmazó. zip-fájlt szeretne feltölteni a munkaterületre, ugorjon az **adatkészletek** eszköz oldalára. Válassza az **adatkészlet létrehozása**elemet, majd válassza a **helyi fájlból** és a **fájl** adatkészletének típusa lehetőséget.  
+1. Ha R-kódot tartalmazó. zip-fájlt szeretne feltölteni a munkaterületre, ugorjon az **adatkészletek** eszköz oldalára. Válassza az **adatkészlet létrehozása** elemet, majd válassza a **helyi fájlból** és a **fájl** adatkészletének típusa lehetőséget.  
 
 1. Ellenőrizze, hogy a tömörített fájl megjelenik-e az **adatkészletekben** a bal oldali modul fájának **adatkészletek** kategóriája alatt.
 
@@ -503,6 +503,6 @@ Jelenleg a következő előre telepített R-csomagok érhetők el:
 | zeallot      | 0.1.0      | 
 | zoo          | 1.8-6      | 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c003145acd423fd96dd0ac6c054884024c2ce4a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac6055029b8fc7bbba11a8e3b789df3b6b1622e2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75864230"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322746"
 ---
 # <a name="team-data-science-process-project-planning"></a>Csoportos adatelemzési folyamat – projekttervezés
 
@@ -30,7 +30,7 @@ Az életciklus a projektek jellemzően végrehajtandó főbb szakaszait vázolja
 - Üzembe helyezés
 - Ügyfél-elfogadás
 
-Az egyes fázisok leírását lásd: [csoportos adatelemzési folyamat életciklusa](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle).
+Az egyes fázisok leírását lásd: [csoportos adatelemzési folyamat életciklusa](./lifecycle.md).
 
  
 ## <a name="microsoft-project-template"></a>Microsoft Project-sablon
@@ -56,9 +56,8 @@ Ezeket a sablonokat a saját kockázatára használhatja. A [szokásos kizárás
 
 A [Project template-tárház](https://github.com/Azure/Azure-TDSP-ProjectTemplate) használatával hatékonyan támogathatja a projektek végrehajtását és együttműködését. Ez a tárház a saját TDSP-projekthez használható szabványosított címtár-struktúrát és dokumentumtárakat biztosít.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az adatelemzési projektek gyors fejlesztése](agile-development.md) Ez a dokumentum egy adatelemzési projektet ismertet a csoportos adatelemzési folyamattal, amely szisztematikus, vezérelt és együttműködő módon működik.
 
-Az **adott forgatókönyvek** folyamatának összes lépését bemutató útmutatókat is megadja. Ezek a példákban láthatók és a miniatűr leírásokkal vannak összekapcsolva a [példában szereplő forgatókönyvek](walkthroughs.md) című cikkben. Bemutatják, hogyan kombinálhatók a felhő, a helyszíni eszközök és a szolgáltatások egy munkafolyamatban vagy folyamatban egy intelligens alkalmazás létrehozásához. 
-
+Az **adott forgatókönyvek** folyamatának összes lépését bemutató útmutatókat is megadja. Ezek a példákban láthatók és a miniatűr leírásokkal vannak összekapcsolva a [példában szereplő forgatókönyvek](walkthroughs.md) című cikkben. Bemutatják, hogyan kombinálhatók a felhő, a helyszíni eszközök és a szolgáltatások egy munkafolyamatban vagy folyamatban egy intelligens alkalmazás létrehozásához.

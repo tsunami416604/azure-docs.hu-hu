@@ -9,12 +9,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 1cfe617ab424fbb29e2866cd98d4b8c390f306c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c02abf095beefdd131a5835d015175d56a63de47
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91343931"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322827"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Válasz előrejelzése egy egyszerű modell segítségével
 
@@ -71,7 +71,7 @@ A következő lépésben egy függőleges tengelyt rajzolunk az ár rögzítés�
 
 ![Súlyozási és díjszabási tengelyek](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/weight-and-price-axes.png)
 
-Most ezeket az adatsorokat fogjuk kialakítani, és egy *Scatter-területre*fogjuk kapcsolni. Ez nagyszerű módja a numerikus adatkészletek megjelenítésének.
+Most ezeket az adatsorokat fogjuk kialakítani, és egy *Scatter-területre* fogjuk kapcsolni. Ez nagyszerű módja a numerikus adatkészletek megjelenítésének.
 
 Az első adatpontnál a szemgolyó egy függőleges vonal, 1,01 karátos. Ezt követően a $7 366-kor egy vízszintes vonalat. Ahol megfelelnek, egy pontot rajzolunk. Ez az első gyémántot jelöli.
 
@@ -88,7 +88,7 @@ Egy sor rajzolásával létrehozunk egy *modellt*. Képzelje el ezt úgy, hogy a
 
 Az a tény, hogy az összes pont nem pontosan a sorban halad, rendben van. Az adatszakértők ezt a modellt ismertetik, amely azt jelzi, hogy létezik a modell – Ez a vonal, majd minden egyes ponthoz tartozik valamilyen *zaj* vagy *variancia* . Ott van a mögöttes tökéletes kapcsolat, és ott van a kavicsos, valós világ, amely zaj-és bizonytalanságot ad.
 
-Mivel a kérdés megválaszolása mennyit jelent *?* ezt *regressziónak*nevezzük. És mivel egyenes vonalat használunk, *lineáris regresszió*.
+Mivel a kérdés megválaszolása mennyit jelent *?* ezt *regressziónak* nevezzük. És mivel egyenes vonalat használunk, *lineáris regresszió*.
 
 ## <a name="use-the-model-to-find-the-answer"></a>A modell használata a válasz megkereséséhez
 Most már van egy modellünk, és feltesszük a kérdést: Mennyibe kerül a 1,35 Carat Diamond díja?
@@ -98,7 +98,7 @@ A kérdés megválaszolásához a szemgolyó 1,35 karátos, és rajzoljon egy f�
 ![Válasz keresése a modellen](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/find-the-answer.png)
 
 ## <a name="create-a-confidence-interval"></a>Megbízhatósági intervallum létrehozása
-Ez természetes, hogy meggondolja, mennyire pontos ez az előrejelzés. Hasznos tudni, hogy a 1,35 Carat Diamond nagyon közel van-e a $10 000-hez, vagy jóval magasabb vagy alacsonyabb. Ennek megállapításához rajzoljon egy keretet a regressziós vonal körül, amely a pontok többségét tartalmazza. Ezt a borítékot a *megbízhatósági intervallumnak*nevezzük: biztosak vagyunk abban, hogy az árak a borítékon belül esnek, mert a legkorábbi többségük. Két további vízszintes vonalat is megrajzolhat, amelyből a 1,35 karátos vonal a boríték tetején és alján halad.
+Ez természetes, hogy meggondolja, mennyire pontos ez az előrejelzés. Hasznos tudni, hogy a 1,35 Carat Diamond nagyon közel van-e a $10 000-hez, vagy jóval magasabb vagy alacsonyabb. Ennek megállapításához rajzoljon egy keretet a regressziós vonal körül, amely a pontok többségét tartalmazza. Ezt a borítékot a *megbízhatósági intervallumnak* nevezzük: biztosak vagyunk abban, hogy az árak a borítékon belül esnek, mert a legkorábbi többségük. Két további vízszintes vonalat is megrajzolhat, amelyből a 1,35 karátos vonal a boríték tetején és alján halad.
 
 ![Megbízhatósági intervallum](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/confidence-interval.png)
 
@@ -109,7 +109,7 @@ Megtettük, hogy milyen adatszakértők fizettek a teendőknek, és a következ�
 
 * Feltettük azt a kérdést, hogy az adatválaszok
 * A *lineáris regressziót* használó *modellt* készítettünk
-* *Előrejelzést*készítettünk, amely *megbízhatósági intervallummal* fejeződött be
+* *Előrejelzést* készítettünk, amely *megbízhatósági intervallummal* fejeződött be
 
 A matematikai vagy a számítógépeket nem használjuk a művelet elvégzésére.
 
@@ -129,4 +129,4 @@ Tekintse meg a többi videót a "kezdő adatelemzés" Microsoft Azure Machine Le
 
 ## <a name="next-steps"></a>Következő lépések
 * [Próbálja ki az első adatelemzési kísérletet Machine Learning Studio (klasszikus)](create-experiment.md)
-* [Bevezetés a Machine Learning on Microsoft Azure](/azure/machine-learning/overview-what-is-azure-ml)
+* [Bevezetés a Machine Learning on Microsoft Azure](../overview-what-is-azure-ml.md)

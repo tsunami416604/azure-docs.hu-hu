@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: a5206ed55dfe2632c7f6604c4f3d8e3199e23b99
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 781b37405bebc5ddc3d33cbbc089049b0c0f8ca4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792021"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325533"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure Machine Learning Studio használata Azure-beli virtuális hálózaton
 
@@ -36,7 +36,7 @@ Tekintse meg a sorozat egyéb cikkeit:
 
 
 > [!IMPORTANT]
-> Ha a munkaterület __szuverén felhőben__ van, például Azure Government vagy az Azure China 21Vianet, az integrált jegyzetfüzetek _nem_ támogatják a virtuális hálózatban lévő tárolók használatát. Ehelyett Jupyter jegyzetfüzeteket használhat egy számítási példányból. További információkért tekintse meg a [hozzáférési adatokat egy számítási példányú jegyzetfüzet](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) szakaszban.
+> Ha a munkaterület __szuverén felhőben__ van, például Azure Government vagy az Azure China 21Vianet, az integrált jegyzetfüzetek _nem_ támogatják a virtuális hálózatban lévő tárolók használatát. Ehelyett használhatja egy számítási példány Jupyter-notebookjait. További információkért tekintse meg a [hozzáférési adatokat egy számítási példányú jegyzetfüzet](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) szakaszban.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -87,7 +87,7 @@ Azure Machine Learning adattárolókat [használ a Storage-](concept-data.md#dat
 
     Meglévő adattár frissítéséhez válassza ki az adattárt, és válassza a __hitelesítő adatok frissítése__ lehetőséget.
 
-1. Az adattár beállításainál válassza az __Igen__ lehetőséget a  __Azure Machine learning szolgáltatás számára a munkaterület által felügyelt identitás használatával való elérésének engedélyezéséhez__ .
+1. Az adattár beállításainál válassza az __Igen__ lehetőséget a  __Azure Machine learning szolgáltatás számára a munkaterület által felügyelt identitás használatával való elérésének engedélyezéséhez__.
 
 
 Ezek a lépések hozzáadja a munkaterület által felügyelt identitást __olvasóként__ a Storage szolgáltatáshoz az Azure erőforrás-alapú hozzáférés-vezérlés (Azure RBAC) használatával. Az __olvasói__ hozzáférés lehetővé teszi, hogy a munkaterület beolvassa a tűzfal beállításait, és gondoskodjon arról, hogy a virtuális hálózat ne maradjon meg
@@ -119,7 +119,7 @@ Azure Data Lake Storage Gen1 csak a POSIX stílusú hozzáférés-vezérlési li
 
 A felügyelt identitással Azure SQL Database tárolt adatok eléréséhez létre kell hoznia egy olyan SQL-beli felhasználót, amely a felügyelt identitásra van leképezve. Ha további információt szeretne arról, hogyan hozhat létre egy felhasználót egy külső szolgáltatótól, tekintse meg az [Azure ad-identitásokhoz leképezett felhasználók létrehozása](../azure-sql/database/authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)című témakört.
 
-Miután létrehozta az SQL-T tartalmazó felhasználót, adja meg az engedélyt a [T-SQL parancs](https://docs.microsoft.com/sql/t-sql/statements/grant-object-permissions-transact-sql)használatával.
+Miután létrehozta az SQL-T tartalmazó felhasználót, adja meg az engedélyt a [T-SQL parancs](/sql/t-sql/statements/grant-object-permissions-transact-sql)használatával.
 
 ### <a name="azure-machine-learning-designer-default-datastore"></a>Azure Machine Learning Designer alapértelmezett adattár
 

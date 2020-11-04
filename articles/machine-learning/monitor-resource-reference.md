@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2020
-ms.openlocfilehash: edd2b3e02c1a768b1f18a62faaf9b59539b92774
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: be8d6ca79a43ddd2bd709390dd476cb9dcfa7b29
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739147"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323940"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Az Azure Machine learning-adatreferenciák monitorozása
 
@@ -22,7 +22,7 @@ Ismerje meg az Azure Monitor által gyűjtött adatokat és erőforrásokat az A
 
 ## <a name="metrics"></a>Mérőszámok
 
-Ez a szakasz felsorolja a Azure Machine Learning összegyűjtött, automatikusan összegyűjtött platform-metrikákat. A metrikák erőforrás-szolgáltatója a [Microsoft. MachineLearningServices/workspaces](/azure/azure-monitor/platform/metrics-supported#microsoftmachinelearningservicesworkspaces).
+Ez a szakasz felsorolja a Azure Machine Learning összegyűjtött, automatikusan összegyűjtött platform-metrikákat. A metrikák erőforrás-szolgáltatója a [Microsoft. MachineLearningServices/workspaces](../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces).
 
 **Modell**
 
@@ -73,7 +73,7 @@ A képzések futtatásával kapcsolatos információk.
 
 ## <a name="metric-dimensions"></a>Metrikus méretek
 
-A metrikus dimenziókkal kapcsolatos további információkért lásd: [többdimenziós mérőszámok](/azure/azure-monitor/platform/data-platform-metrics#multi-dimensional-metrics).
+A metrikus dimenziókkal kapcsolatos további információkért lásd: [többdimenziós mérőszámok](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics).
 
 A Azure Machine Learning a metrikához tartozó következő dimenziókkal rendelkezik.
 
@@ -87,7 +87,7 @@ A Azure Machine Learning a metrikához tartozó következő dimenziókkal rendel
 | NodeId | Annak a csomópontnak az azonosítója, amelybe a feladatot futtatja. Csak CpuUtilization és GpuUtilization esetén érhető el. |
 | RunId | A futtatási/feladatokhoz tartozó azonosító. Csak CpuUtilization és GpuUtilization esetén érhető el. |
 | ComputeType | A futtatáshoz használt számítási típus. Csak a befejezett futtatások, a sikertelen futtatások és a megkezdett futtatások esetében érhető el. |
-| PipelineStepType | A Futtatás során használt [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py&preserve-view=true) típusa. Csak a befejezett futtatások, a sikertelen futtatások és a megkezdett futtatások esetében érhető el. |
+| PipelineStepType | A Futtatás során használt [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?preserve-view=true&view=azure-ml-py) típusa. Csak a befejezett futtatások, a sikertelen futtatások és a megkezdett futtatások esetében érhető el. |
 | PublishedPipelineId | A futtatásban használt közzétett folyamat azonosítója. Csak a befejezett futtatások, a sikertelen futtatások és a megkezdett futtatások esetében érhető el. |
 | RunType | A Futtatás típusa. Csak a befejezett futtatások, a sikertelen futtatások és a megkezdett futtatások esetében érhető el. |
 
@@ -116,7 +116,7 @@ A következő táblázat felsorolja azokat a Azure Machine Learning kapcsolódó
 
 Ez a szakasz felsorolja a Azure Machine Learning munkaterülethez összegyűjthető erőforrás-naplók típusait.
 
-Erőforrás-szolgáltató és típus: [Microsoft. MachineLearningServices/munkaterület](/azure/azure-monitor/platform/resource-logs-categories#microsoftmachinelearningservicesworkspaces).
+Erőforrás-szolgáltató és típus: [Microsoft. MachineLearningServices/munkaterület](../azure-monitor/platform/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces).
 
 | Kategória | Megjelenítendő név |
 | ----- | ----- |
@@ -231,4 +231,4 @@ A következő sémákat használják Azure Machine Learning
 ## <a name="see-also"></a>Lásd még
 
 - A figyelési Azure Machine Learning leírását a [figyelés Azure Machine learning](monitor-azure-machine-learning.md) című részben tekintheti meg.
-- Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](/azure/azure-monitor/insights/monitor-azure-resource) .
+- Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../azure-monitor/insights/monitor-azure-resource.md) .

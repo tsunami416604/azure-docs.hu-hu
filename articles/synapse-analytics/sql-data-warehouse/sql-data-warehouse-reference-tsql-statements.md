@@ -1,6 +1,6 @@
 ---
-title: T-SQL-utasítások
-description: Hivatkozások a szinapszis SQL-készletben támogatott T-SQL-utasítások dokumentációjában.
+title: T-SQL-utasítások az SQL-készlethez
+description: Hivatkozások a dedikált SQL-készlethez az Azure szinapszis Analyticsben támogatott T-SQL-utasítások dokumentációjában.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7a52049dc08b0a8170acc4d15860db69aea44a2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 390907eaf529df3f9adfd481e96ff166be543d01
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86276447"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324625"
 ---
-# <a name="t-sql-statements-supported-in-synapse-sql-pool"></a>A szinapszis SQL-készletben támogatott T-SQL-utasítások
+# <a name="t-sql-statements-supported-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Az Azure szinapszis Analytics szolgáltatásban a dedikált SQL-készlet által támogatott T-SQL-utasítások 
 
-Hivatkozások a szinapszis SQL-készletben támogatott T-SQL-utasítások dokumentációjában.
+Hivatkozások a dedikált SQL-készletben támogatott T-SQL-utasítások dokumentációjában.
 
 ## <a name="data-definition-language-ddl-statements"></a>Az adatdefiníciós nyelv (DDL) utasításai
 
@@ -82,7 +82,7 @@ Hivatkozások a szinapszis SQL-készletben támogatott T-SQL-utasítások dokume
 
 ## <a name="query-statements"></a>Lekérdezési utasítások
 
-* [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+* [Válassza](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [Common_table_expression](/sql/t-sql/queries/with-common-table-expression-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [KIVÉVE és METSZeni](/sql/t-sql/language-elements/set-operators-except-and-intersect-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [MEGMAGYARÁZNI](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -129,6 +129,6 @@ Hivatkozások a szinapszis SQL-készletben támogatott T-SQL-utasítások dokume
 * [FELHASZNÁLÓ ELDOBÁSA](/sql/t-sql/statements/drop-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [FŐKULCS MEGNYITÁSA](/sql/t-sql/statements/open-master-key-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ: a [T-SQL nyelvi elemei a SZINAPSZIS SQL-készletben](sql-data-warehouse-reference-tsql-language-elements.md), valamint [rendszernézetek a szinapszis SQL-készletben](../sql/reference-tsql-system-views.md).
+További információ: a [T-SQL nyelvi elemei a DEDIKÁLT SQL-készletben](sql-data-warehouse-reference-tsql-language-elements.md)és a [rendszernézetek a dedikált SQL-készletben](../sql/reference-tsql-system-views.md).

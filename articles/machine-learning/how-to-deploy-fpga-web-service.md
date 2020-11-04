@@ -11,16 +11,16 @@ author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2, devx-track-python, deploy
-ms.openlocfilehash: 18b1c155c0bb85e346ec28d5c145e6578ca3ec48
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 6ac28e430681f35d9935cf0f484529074403bf54
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999073"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324973"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>ML modellek üzembe helyezése programozható Gate-tömbökben (FPGA) Azure Machine Learning 
 
-Ebből a cikkből megtudhatja, hogyan helyezheti üzembe a FPGA, és hogyan telepítheti az ML-modelleket egy Azure-FPGA a [hardveres gyorsítású modellek Python-csomag](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py&preserve-view=true) használatával a [Azure Machine Learningból](overview-what-is-azure-ml.md).
+Ebből a cikkből megtudhatja, hogyan helyezheti üzembe a FPGA, és hogyan telepítheti az ML-modelleket egy Azure-FPGA a [hardveres gyorsítású modellek Python-csomag](/python/api/azureml-accel-models/azureml.accel?preserve-view=true&view=azure-ml-py) használatával a [Azure Machine Learningból](overview-what-is-azure-ml.md).
 
 ## <a name="what-are-fpgas"></a>Mi a FPGA?
 Az FPGA-k programozható logikai blokkok tömbjét és újrakonfigurálható összekötők hierarchiáját tartalmazzák. Az összekapcsolások lehetővé teszik, hogy ezeket a blokkokat különböző módokon konfigurálja a gyártás után. A többi zsetonnal összehasonlítva a FPGA a programozhatóság és a teljesítmény kombinációját biztosítja. 
@@ -31,7 +31,7 @@ A FPGA újrakonfigurálhatja különböző típusú gépi tanulási modellekhez.
 
 ![Azure Machine Learning FPGA összehasonlításának ábrája](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|Processzor| Rövidítés |Description|
+|Processzor| Rövidítés |Leírás|
 |---|:-------:|------|
 |Alkalmazásspecifikus integrált áramkörök|ASICs|Az egyéni áramkörök – például a Google TensorFlow Processor Units (TPU) – biztosítják a lehető legnagyobb hatékonyságot. Az igények változása miatt nem konfigurálhatók újra.|
 |Mező – programozható Gate-tömbök|FPGA-k|A FPGA, például az Azure-on elérhetők, az ASICs-hoz hasonló teljesítményt biztosítanak. Az új logika megvalósításához az idő múlásával rugalmasan és újrakonfigurálható is.|
@@ -56,7 +56,7 @@ Az **Azure-beli virtuális gépek PBS-családja** Intel Arria 10 FPGA tartalmaz.
 
 ## <a name="deploy-models-on-fpgas"></a>Modellek üzembe helyezése a FPGA
 
-A modelleket webszolgáltatásként is üzembe helyezheti a FPGA [Azure Machine Learning Hardware Accelerated models](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py&preserve-view=true)használatával. A FPGA használata rendkívül kis késleltetésű következtetést biztosít, akár egyetlen batch-méret is. 
+A modelleket webszolgáltatásként is üzembe helyezheti a FPGA [Azure Machine Learning Hardware Accelerated models](/python/api/azureml-accel-models/azureml.accel?preserve-view=true&view=azure-ml-py)használatával. A FPGA használata rendkívül kis késleltetésű következtetést biztosít, akár egyetlen batch-méret is. 
 
 Ebben a példában egy TensorFlow gráfot hoz létre a bemeneti rendszerkép előfeldolgozásához, hogy a Képtulajdonság a ResNet 50-et használja egy FPGA, majd a szolgáltatásokat a ImageNet-adatkészletben szereplő osztályozó használatával futtassa. Ezután a modell üzembe helyezése egy AK-fürtön történik.
 
@@ -68,7 +68,7 @@ Ebben a példában egy TensorFlow gráfot hoz létre a bemeneti rendszerkép el�
  
 - A hardveres gyorsítású modellek csomagja:  `pip install --upgrade azureml-accel-models[cpu]`    
     
-- Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
+- Az [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
 
 - FPGA kvóta. Küldje el a [kvótára vonatkozó kérelmet](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2nac9-PZhBDnNSV2ITz0LNUN0U5S0hXRkNITk85QURTWk9ZUUFUWkkyTC4u), vagy futtassa ezt a CLI-parancsot a kvóta vizsgálatához: 
 
@@ -80,7 +80,7 @@ Ebben a példában egy TensorFlow gráfot hoz létre a bemeneti rendszerkép el�
 
 ### <a name="define-the-tensorflow-model"></a>A TensorFlow modell megadása
 
-Kezdje a [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) -val egy szolgáltatás definíciójának létrehozásához. A szolgáltatás definíciója egy olyan fájl, amely a diagramok (bemenet, Képtulajdonság és osztályozó) folyamatát írja le a TensorFlow alapján. A telepítési parancs tömöríti a definíciót és a diagramokat egy ZIP-fájlba, és feltölti a ZIP-fájlt az Azure Blob Storage-ba. A DNN már telepítve van, hogy a FPGA fusson.
+Kezdje a [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -val egy szolgáltatás definíciójának létrehozásához. A szolgáltatás definíciója egy olyan fájl, amely a diagramok (bemenet, Képtulajdonság és osztályozó) folyamatát írja le a TensorFlow alapján. A telepítési parancs tömöríti a definíciót és a diagramokat egy ZIP-fájlba, és feltölti a ZIP-fájlt az Azure Blob Storage-ba. A DNN már telepítve van, hogy a FPGA fusson.
 
 1. Azure Machine Learning munkaterület betöltése
 
@@ -223,7 +223,7 @@ A FPGA való üzembe helyezés előtt alakítsa át a modellt [ONNX](https://onn
 
 ### <a name="containerize-and-deploy-the-model"></a>A modell tárolóba helyezése és üzembe helyezése
 
-Ezután hozzon létre egy Docker-rendszerképet a konvertált modellből és az összes függőségből.  Ezt a Docker-rendszerképet ezután üzembe helyezheti és létrehozhatja.  A támogatott üzembe helyezési célok közé tartozik az Azure Kubernetes Service (ak) a felhőben vagy egy peremhálózati eszköz, például a [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview).  Címkéket és leírásokat is hozzáadhat a regisztrált Docker-rendszerképhez.
+Ezután hozzon létre egy Docker-rendszerképet a konvertált modellből és az összes függőségből.  Ezt a Docker-rendszerképet ezután üzembe helyezheti és létrehozhatja.  A támogatott üzembe helyezési célok közé tartozik az Azure Kubernetes Service (ak) a felhőben vagy egy peremhálózati eszköz, például a [Azure Data Box Edge](../databox-online/azure-stack-edge-overview.md).  Címkéket és leírásokat is hozzáadhat a regisztrált Docker-rendszerképhez.
 
    ```python
    from azureml.core.image import Image
@@ -297,7 +297,7 @@ Ezután hozzon létre egy Docker-rendszerképet a konvertált modellből és az 
 
 #### <a name="deploy-to-a-local-edge-server"></a>Üzembe helyezés helyi peremhálózati kiszolgálón
 
-Minden [Azure Data Box Edge eszköz](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview
+Minden [Azure Data Box Edge eszköz](../databox-online/azure-stack-edge-overview.md
 ) tartalmaz egy FPGA a modell futtatásához.  Egyszerre csak egy modell futhat a FPGA.  Egy másik modell futtatásához egyszerűen helyezzen üzembe egy új tárolót. [Ebben az Azure-mintában](https://github.com/Azure-Samples/aml-hardware-accelerated-models)az utasítások és a mintakód is megtalálható.
 
 ### <a name="consume-the-deployed-model"></a>Az üzembe helyezett modell felhasználása
@@ -347,9 +347,9 @@ for top in sorted_results[:5]:
     print(classes_entries[top[0]], 'confidence:', top[1])
 ```
 
-### <a name="clean-up-resources"></a>Erőforrások felszabadítása
+### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A szükségtelen költségek elkerülése érdekében **ebben a sorrendben**törölje az erőforrásokat: webszolgáltatás, majd rendszerkép, majd a modell.
+A szükségtelen költségek elkerülése érdekében **ebben a sorrendben** törölje az erőforrásokat: webszolgáltatás, majd rendszerkép, majd a modell.
 
 ```python
 aks_service.delete()

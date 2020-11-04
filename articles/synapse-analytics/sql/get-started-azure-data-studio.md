@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: c3c1b61cb4f799b79ca00fc92ffadc2374a61c03
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: fb4c7f8ba49cf701ef13cb57ab2b323a94c928cc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132465"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323830"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Kapcsolódás a szinapszis SQLhoz a Azure Data Studio használatával (előzetes verzió)
 
@@ -30,7 +30,7 @@ ms.locfileid: "92132465"
 
 ## <a name="connect"></a>Kapcsolódás
 
-A szinapszis SQLhoz való kapcsolódáshoz nyissa meg Azure Data Studio és válassza az **új kapcsolat**lehetőséget.
+A szinapszis SQLhoz való kapcsolódáshoz nyissa meg Azure Data Studio és válassza az **új kapcsolat** lehetőséget.
 
 ![Azure Data Studio megnyitása](./media/get-started-azure-data-studio/1-start.png)
 
@@ -42,15 +42,15 @@ A kapcsolathoz a következő paraméterek szükségesek:
 * **Adatbázis:** Adatbázis neve
 
 > [!NOTE]
-> Ha az **SQL on-demand (előzetes verzió)** használatát szeretné használni, az URL-címnek a következőképpen kell kinéznie:
+> Ha **kiszolgáló nélküli SQL-készletet szeretne használni (előzetes verzió)** , az URL-címnek a következőképpen kell kinéznie:
 >
 > - `<Azure Synapse workspace name>`– ondemand.sql.azuresynapse.net.
 >
-> Ha az **SQL-készletet** szeretné használni, az URL-címnek a következőhöz hasonlóan kell kinéznie:
+> Ha **DEDIKÁLT SQL-készletet** szeretne használni, az URL-címnek a következőképpen kell kinéznie:
 >
 > - `<Azure Synapse workspace name>`. sql.azuresynapse.net
 
-**Hitelesítési típusként**válassza a **Windows-hitelesítés**, a **Azure Active Directory**vagy az **SQL-bejelentkezés** lehetőséget.
+**Hitelesítési típusként** válassza a **Windows-hitelesítés** , a **Azure Active Directory** vagy az **SQL-bejelentkezés** lehetőséget.
 
 Ha az **SQL-bejelentkezést** hitelesítési típusként szeretné használni, adja hozzá a username/Password paramétert:
 
@@ -65,7 +65,7 @@ A következő képernyőképen a **Windows-hitelesítés** **kapcsolati adatai**
 
 ![Windows-hitelesítés](./media/get-started-azure-data-studio/3-windows-auth.png)
 
-Az alábbi képernyőképen az **SQL-bejelentkezés**használatával láthatók a **kapcsolat részletei** :
+Az alábbi képernyőképen az **SQL-bejelentkezés** használatával láthatók a **kapcsolat részletei** :
 
 ![SQL-bejelentkezés](./media/get-started-azure-data-studio/2-database-details.png)
 
@@ -77,7 +77,7 @@ A csatlakozást követően lekérdezheti a szinapszis SQLot a példányon támog
 
 ![Új lekérdezés](./media/get-started-azure-data-studio/5-new-query.png)
 
-Például a következő Transact-SQL-utasítás használatával [lekérdezheti a Parquet-fájlokat](query-parquet-files.md) az SQL igény szerinti használatával:
+Például a következő Transact-SQL-utasítás használatával lehet [lekérdezni a Parquet-fájlokat](query-parquet-files.md) a kiszolgáló nélküli SQL-készlet használatával:
 
 ```sql
 SELECT COUNT(*)

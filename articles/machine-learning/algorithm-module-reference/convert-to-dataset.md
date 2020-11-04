@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 9b2d003ef4938681229317b625aae4526787ac15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c014f14149b903713ae2f03b98956cd4ecaf8a1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898704"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323052"
 ---
 # <a name="convert-to-dataset"></a>Átalakítás adathalmazzá
 
@@ -25,7 +25,7 @@ A legtöbb esetben nem szükséges a konverzió. Azure Machine Learning implicit
 Azt javasoljuk, hogy az adatokat az adatkészlet formátumára mentse, ha valamilyen normalizálás vagy tisztítás történt egy adott adathalmazon, és biztosítani szeretné, hogy a módosítások más folyamatokban is használhatók legyenek.  
   
 > [!NOTE]
-> Az adatkészletre való átalakítás csak az adat formátumát módosítja. Nem menti a munkaterületen lévő új másolatát. Az adatkészlet mentéséhez kattintson duplán a kimeneti portra, válassza a **Mentés adatkészletként**lehetőséget, és adjon meg egy új nevet.  
+> Az adatkészletre való átalakítás csak az adat formátumát módosítja. Nem menti a munkaterületen lévő új másolatát. Az adatkészlet mentéséhez kattintson duplán a kimeneti portra, válassza a **Mentés adatkészletként** lehetőséget, és adjon meg egy új nevet.  
   
 ## <a name="how-to-use-convert-to-dataset"></a>A convert for DataSet használata  
 
@@ -35,18 +35,18 @@ Azt javasoljuk, hogy a [metaadatok szerkesztése](edit-metadata.md) modul haszn�
 
 2. Csatlakoztatása bármely modulhoz, amely egy adatkészletet eredményez.   
 
-    Ha az adat [táblázatos](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true), akkor átalakíthatja azt egy adatkészletbe. Ez magában foglalja az [importálási adaton](import-data.md)keresztül betöltött adatokat, az [adatbevitel manuális](enter-data-manually.md)használatával létrehozott adatokat, vagy az átalakított adatkészleteket az [alkalmazás-átalakítás](apply-transformation.md)használatával.
+    Ha az adat [táblázatos](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py), akkor átalakíthatja azt egy adatkészletbe. Ez magában foglalja az [importálási adaton](import-data.md)keresztül betöltött adatokat, az [adatbevitel manuális](enter-data-manually.md)használatával létrehozott adatokat, vagy az átalakított adatkészleteket az [alkalmazás-átalakítás](apply-transformation.md)használatával.
 
 3.  A **művelet** legördülő listában adja meg, hogy az adatkészlet mentése előtt szeretné-e elvégezni az adattisztítást:  
   
-    - **Nincs**: használja az-t a következőképpen.  
+    - **Nincs** : használja az-t a következőképpen.  
   
-    - **SetMissingValue**: egy adott értéket állít be egy hiányzó értékre az adatkészletben. Az alapértelmezett helyőrző a kérdőjel (?) karakter, de az  **Egyéni hiányzó érték** lehetőséggel más értéket is megadhat. Ha például az **Egyéni hiányzó értékhez**a **taxit** adja meg, akkor az adatkészlet **Taxi** összes példánya a hiányzó értékre lesz módosítva.
+    - **SetMissingValue** : egy adott értéket állít be egy hiányzó értékre az adatkészletben. Az alapértelmezett helyőrző a kérdőjel (?) karakter, de az  **Egyéni hiányzó érték** lehetőséggel más értéket is megadhat. Ha például az **Egyéni hiányzó értékhez** a **taxit** adja meg, akkor az adatkészlet **Taxi** összes példánya a hiányzó értékre lesz módosítva.
   
-    - **ReplaceValues**: ezzel a beállítással egyetlen pontos értéket adhat meg, amelyet más pontos értékkel kell helyettesíteni. A hiányzó értékeket vagy egyéni értékeket a **replace** metódus beállításával helyettesítheti:
+    - **ReplaceValues** : ezzel a beállítással egyetlen pontos értéket adhat meg, amelyet más pontos értékkel kell helyettesíteni. A hiányzó értékeket vagy egyéni értékeket a **replace** metódus beállításával helyettesítheti:
 
-      - **Hiányzik**: válassza ezt a lehetőséget a hiányzó értékek lecserélése a bemeneti adatkészletben. Az **új érték**mezőben adja meg a hiányzó értékeket a értékkel lecserélő értéket.
-      - **Egyéni**: válassza ezt a lehetőséget, ha az egyéni értékeket a bemeneti adatkészletben szeretné lecserélni. **Egyéni érték**esetén adja meg a keresett értéket. Ha például az adatok a `obs` hiányzó értékek helyőrzőként használt sztringjét tartalmazzák, akkor adja meg a következőt: `obs` . Az **új érték**mezőben adja meg az új értéket az eredeti sztring helyett.
+      - **Hiányzik** : válassza ezt a lehetőséget a hiányzó értékek lecserélése a bemeneti adatkészletben. Az **új érték** mezőben adja meg a hiányzó értékeket a értékkel lecserélő értéket.
+      - **Egyéni** : válassza ezt a lehetőséget, ha az egyéni értékeket a bemeneti adatkészletben szeretné lecserélni. **Egyéni érték** esetén adja meg a keresett értéket. Ha például az adatok a `obs` hiányzó értékek helyőrzőként használt sztringjét tartalmazzák, akkor adja meg a következőt: `obs` . Az **új érték** mezőben adja meg az új értéket az eredeti sztring helyett.
   
     Vegye figyelembe, hogy a **ReplaceValues** művelet csak a pontos egyezésekre vonatkozik. Például a következő sztringek nem lesznek érintettek: `obs.` , `obsolete` .  
  
@@ -70,4 +70,4 @@ Azt javasoljuk, hogy a [metaadatok szerkesztése](edit-metadata.md) modul haszn�
   
 ## <a name="next-steps"></a>Következő lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

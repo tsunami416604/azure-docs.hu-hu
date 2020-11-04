@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: d7f1f1f004fb8c9c4d67f409072ce061c6047569
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: fa05f8a8b05a0acddae906a93c90c42424466969
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127011"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322596"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Azure szinapszis-hivatkozás (előzetes verzió) Azure Cosmos DB támogatott funkciókhoz
 
@@ -40,7 +40,7 @@ A szinapszis-hivatkozás engedélyezése nélkül csatlakozhat egy Azure Cosmos 
 | **Írás**   | Használható az Azure szinapszis futtatókörnyezete az adatAzure Cosmos DB tárolóba való írásra | Igen | Nem |
 
 * Ha a Sparkból ír Azure Cosmos DB tárolóba, ez a folyamat a Azure Cosmos DB tranzakciós tárolójából történik. Ez hatással lesz Azure Cosmos DB tranzakciós teljesítményére a kérelmek elfogyasztásával.
-* Az SQL Pool külső táblákon keresztüli integrációja jelenleg nem támogatott.
+* A dedikált SQL Pool külső táblákon keresztüli integrációja jelenleg nem támogatott.
  
 ## <a name="supported-code-generated-actions-for-spark"></a>Támogatott, kód által generált műveletek a Sparkhoz
 
@@ -64,4 +64,4 @@ A szinapszis-hivatkozás engedélyezése nélkül csatlakozhat egy Azure Cosmos 
 ## <a name="next-steps"></a>Következő lépések
 
 * Lásd: [Csatlakozás a szinapszishoz hivatkozás Azure Cosmos db](../quickstart-connect-synapse-link-cosmos-db.md)
-* [Ismerje meg, hogyan kérdezheti le az analitikai áruházat a Spark használatával](how-to-query-analytical-store-spark.md)
+* [Ismerje meg, hogyan kérdezheti le a Cosmos DB analitikus áruházat a Spark használatával](how-to-query-analytical-store-spark.md)

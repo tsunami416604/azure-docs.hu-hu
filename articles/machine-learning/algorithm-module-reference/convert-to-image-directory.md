@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/09/2020
-ms.openlocfilehash: 2e597299c9b157d79a5317c97550fc30820636d6
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 8abcbc74506599e7896ad6d41b9444e946172283
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940358"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324910"
 ---
 # <a name="convert-to-image-directory"></a>Átalakítás képkönyvtárrá
 
@@ -49,7 +49,7 @@ Ez a cikk bemutatja, hogyan alakíthatja át a képkészletet a rendszerkép-ada
 
     Pontozás esetén a rendszerkép adatkészlet mappájának csak nem besorolt képeket kell tartalmaznia.
 
-1. [Regisztrálja a rendszerkép-adatkészletet](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) a munkaterületen található fájl adatkészletként, mivel a képkönyvtári modulba való konvertálás bemenetének **fájl-adatkészletnek**kell lennie.
+1. [Regisztrálja a rendszerkép-adatkészletet](../how-to-create-register-datasets.md) a munkaterületen található fájl adatkészletként, mivel a képkönyvtári modulba való konvertálás bemenetének **fájl-adatkészletnek** kell lennie.
 
 1. Adja hozzá a regisztrált rendszerkép-adatkészletet a vászonhoz. A regisztrált adatkészletet a vászon bal oldalán található modul lista **adatkészletek** kategóriájában találja. A Designer jelenleg nem támogatja a képadatkészlet megjelenítését.
 
@@ -82,4 +82,4 @@ A Képkönyvtár-modulba **való átalakítás** kimenete **Képkönyvtár** for
 
 ## <a name="next-steps"></a>Következő lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

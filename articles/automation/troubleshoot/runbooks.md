@@ -2,16 +2,16 @@
 title: Azure Automation runbook kapcsolatos problémák elhárítása
 description: Ez a cikk a Azure Automation runbookok kapcsolatos hibák elhárítását és megoldását ismerteti.
 services: automation
-ms.date: 07/28/2020
+ms.date: 11/03/2020
 ms.topic: conceptual
 ms.service: automation
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1cbb5be8c1a4045b218c0e6bf5ac7ed0b901aa80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e173e76b80717d6685e9a6b383ee98eddf910f5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87904802"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323482"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbookkal kapcsolatos hibák elhárítása
 
@@ -42,7 +42,7 @@ Ha a Azure Automation runbook végrehajtása során hibákat kap, a következő 
     * Ha a futtató fiók lejárt, [újítsa meg a tanúsítványt](../manage-runas-account.md#cert-renewal) .
     * [Újítsa meg a webhookot](../automation-webhooks.md#renew-a-webhook) , ha a runbook elindításához egy lejárt webhookot próbál használni.
     * [Ellenőrizze a feladatok állapotát](../automation-runbook-execution.md#job-statuses) az aktuális runbook állapotának meghatározásához és a probléma lehetséges okainak megállapításához.
-    * [További kimenet hozzáadása](../automation-runbook-output-and-messages.md#monitor-message-streams) a runbook annak azonosításához, hogy mi történjen a runbook felfüggesztése előtt.
+    * [További kimenet hozzáadása](../automation-runbook-output-and-messages.md#working-with-message-streams) a runbook annak azonosításához, hogy mi történjen a runbook felfüggesztése előtt.
     * [Kezelje](../automation-runbook-execution.md#exceptions) a feladatokban felmerülő kivételeket.
 
 1. Ezt a lépést akkor hajtsa végre, ha a hibrid Runbook-feldolgozó runbook-feladata vagy-környezete nem válaszol.
@@ -201,7 +201,7 @@ Ez a hiba akkor fordulhat elő, ha:
 Az alábbi lépéseket követve megállapíthatja, hogy hitelesített-e az Azure-ban, és hozzáfér-e a kiválasztani kívánt előfizetéshez:
 
 1. Annak ellenőrzéséhez, hogy a parancsfájl önállóan működik-e, tesztelje a Azure Automationon kívül.
-1. A parancsmag futtatása előtt győződjön meg arról, hogy a parancsfájl a [AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) parancsmagot futtatja `Select-*` .
+1. A parancsmag futtatása előtt győződjön meg arról, hogy a parancsfájl a [AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) parancsmagot futtatja `Select-*` .
 1. Hozzáadás a `Disable-AzContextAutosave –Scope Process` runbook elejéhez. Ez a parancsmag biztosítja, hogy a hitelesítő adatok csak az aktuális runbook végrehajtásához legyenek érvényesek.
 1. Ha továbbra is megjelenik a hibaüzenet, módosítsa a kódját a paraméter hozzáadásával `AzContext` `Connect-AzAccount` , majd hajtsa végre a kódot.
 
@@ -291,7 +291,7 @@ Ezt a hibát az elavult Azure-modulok használatával lehet okozni.
 
 A hiba megoldásához frissítse az Azure-modulokat a legújabb verzióra:
 
-1. Az Automation-fiókban válassza a **modulok**lehetőséget, majd válassza az **Azure-modulok frissítése**lehetőséget.
+1. Az Automation-fiókban válassza a **modulok** lehetőséget, majd válassza az **Azure-modulok frissítése** lehetőséget.
 1. A frissítés nagyjából 15 percet vesz igénybe. A művelet befejezése után futtassa újra a sikertelen runbook.
 
 A modulok frissítésével kapcsolatos további információkért lásd: [Azure-modulok frissítése Azure Automationban](../automation-update-azure-modules.md).
@@ -398,7 +398,7 @@ Ha az adatfolyam objektumokat tartalmaz, `Start-AzAutomationRunbook` nem kezeli 
 
 ### <a name="resolution"></a>Feloldás
 
-Hozzon létre egy lekérdezési logikát, és használja a [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) parancsmagot a kimenet lekéréséhez. Ennek a logikának a mintája itt van definiálva:
+Hozzon létre egy lekérdezési logikát, és használja a [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput) parancsmagot a kimenet lekéréséhez. Ennek a logikának a mintája itt van definiálva:
 
 ```powershell
 $automationAccountName = "ContosoAutomationAccount"
@@ -476,14 +476,14 @@ A parancsmag futtatásakor a következő hibaüzenet jelenik meg `Get-AzAutomati
 
 ### <a name="cause"></a>Ok
 
-Ez a hiba akkor fordulhat elő, ha a feladatok kimenetét olyan runbook kérdezi le, amely sok [részletes adatfolyammal](../automation-runbook-output-and-messages.md#monitor-verbose-stream)rendelkezik.
+Ez a hiba akkor fordulhat elő, ha a feladatok kimenetét olyan runbook kérdezi le, amely sok [részletes adatfolyammal](../automation-runbook-output-and-messages.md#write-output-to-verbose-stream)rendelkezik.
 
 ### <a name="resolution"></a>Feloldás
 
 A hiba elhárításához hajtsa végre az alábbi műveletek egyikét:
 
 * Szerkessze a runbook, és csökkentse az általa kibocsátott feladatokhoz tartozó adatfolyamok számát.
-* Csökkentse a lekérdezni kívánt adatfolyamok számát a parancsmag futtatásakor. Ehhez a `Stream` [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) parancsmag paraméterének értékét állíthatja be csak kimeneti adatfolyamok lekéréséhez. 
+* Csökkentse a lekérdezni kívánt adatfolyamok számát a parancsmag futtatásakor. Ehhez a `Stream` [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput) parancsmag paraméterének értékét állíthatja be csak kimeneti adatfolyamok lekéréséhez. 
 
 ## <a name="scenario-runbook-job-fails-because-allocated-quota-was-exceeded"></a><a name="quota-exceeded"></a>Forgatókönyv: a Runbook feladata meghiúsult, mert túllépte a lefoglalt kvótát
 
@@ -505,7 +505,7 @@ Ha havonta több mint 500 perces feldolgozást szeretne használni, módosítsa 
 
 1. Jelentkezzen be az Azure-előfizetésbe.
 1. Válassza ki a frissítendő Automation-fiókot.
-1. Válassza a **Beállítások**, majd a **díjszabás**lehetőséget.
+1. Válassza a **Beállítások** , majd a **díjszabás** lehetőséget.
 1. Kattintson az **Engedélyezés** elemre az oldal alján a fiók alapszintű szintre való frissítéséhez.
 
 ## <a name="scenario-runbook-output-stream-greater-than-1-mb"></a><a name="output-stream-greater-1mb"></a>Forgatókönyv: az 1 MB-nál nagyobb kimeneti adatfolyam Runbook
@@ -576,7 +576,7 @@ Ez a hiba arra utalhat, hogy az Azure-beli homokozóban futó runbookok nem futt
 
 A hiba kétféleképpen oldható fel:
 
-* A [Start-Job](/powershell/module/microsoft.powershell.core/start-job?view=powershell-7)használata helyett a [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) használatával indítsa el a runbook.
+* A [Start-Job](/powershell/module/microsoft.powershell.core/start-job)használata helyett a [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) használatával indítsa el a runbook.
 * Próbálja meg futtatni a runbook egy hibrid Runbook-feldolgozón.
 
 Ha többet szeretne megtudni erről a viselkedésről és a Azure Automation runbookok egyéb viselkedéséről, tekintse meg a következő témakört: [Runbook-végrehajtás Azure Automation](../automation-runbook-execution.md).
@@ -605,8 +605,8 @@ Egy másik megoldás a runbook optimalizálása [gyermek runbookok](../automatio
 
 A gyermek runbook-forgatókönyvet engedélyező PowerShell-parancsmagok a következők:
 
-* [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0). Ez a parancsmag lehetővé teszi, hogy elindítson egy runbookot, és paramétereket adjon át a számára.
-* [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0). Ha vannak olyan műveletek, amelyeket a gyermek runbook befejezését követően kell végrehajtani, ez a parancsmag lehetővé teszi, hogy minden gyermeknél ellenőrizze a feladatok állapotát.
+* [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook). Ez a parancsmag lehetővé teszi, hogy elindítson egy runbookot, és paramétereket adjon át a számára.
+* [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob). Ha vannak olyan műveletek, amelyeket a gyermek runbook befejezését követően kell végrehajtani, ez a parancsmag lehetővé teszi, hogy minden gyermeknél ellenőrizze a feladatok állapotát.
 
 ## <a name="scenario-error-in-job-streams-about-the-get_serializationsettings-method"></a><a name="get-serializationsettings"></a>Forgatókönyv: hiba történt a get_SerializationSettings metódussal kapcsolatos feladatokban
 
@@ -642,7 +642,7 @@ Ha a runbook vagy alkalmazás egy Azure-beli homokozóban próbál futni, a kör
 
 ### <a name="cause"></a>Ok
 
-Ez a probléma azért fordulhat elő, mert az Azure-beli munkaterületek megakadályozzák az összes folyamaton kívüli COM-kiszolgáló elérését. Például egy munkapéldányos alkalmazás vagy runbook nem hívható meg Windows Management Instrumentation (WMI) vagy a Windows Installer szolgáltatásba (msiserver.exe). 
+Ez a probléma azért fordulhat elő, mert az Azure-beli munkaterületek megakadályozzák az összes folyamaton kívüli COM-kiszolgáló elérését. Például egy munkapéldányos alkalmazás vagy runbook nem hívható meg Windows Management Instrumentation (WMI) vagy a Windows Installer szolgáltatásba (msiserver.exe).
 
 ### <a name="resolution"></a>Feloldás
 
@@ -686,4 +686,4 @@ Ha nem találja a problémát, vagy nem tudja feloldani a problémát, próbálj
 
 * Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
 * A szolgáltatással való együttműködéshez [@AzureSupport](https://twitter.com/azuresupport) a hivatalos Microsoft Azure fiók a felhasználói élmény javítása érdekében. Az Azure-támogatás a válaszokat, támogatást és szakértőket az Azure-közösséghez köti.
-* Ha további segítségre van szüksége, egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése**lehetőséget.
+* Ha további segítségre van szüksége, egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése** lehetőséget.

@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 21dad66670da7a538039ae795d6be87cc4dbce96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f070cfc1fd9b4326c5a80ce31f6263aadbe8e8bc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883093"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325440"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Batch-előrejelzések futtatása Azure Machine Learning Designer használatával
 
@@ -29,7 +29,7 @@ Ebben az útmutatóban a következő feladatokat tanulhatja meg:
 > * Folyamat-végpont felhasználása
 > * Végpontok verzióinak kezelése
 
-A Batch-pontozási szolgáltatások SDK-val való beállításával kapcsolatos további információkért lásd a kapcsolódó [útmutató](how-to-run-batch-predictions.md)című témakört.
+A Batch-pontozási szolgáltatások SDK-val való beállításával kapcsolatos további információkért lásd a kapcsolódó [útmutató](./tutorial-pipeline-batch-scoring-classification.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -51,9 +51,9 @@ A betanítási folyamatnak legalább egyszer futnia kell, hogy létre lehessen h
 
 Most, hogy a betanítási folyamat futott, létrehozhat egy batch-következtetési folyamatot.
 
-1. A **Küldés**lehetőség mellett válassza az új legördülő lista **létrehozása következtetési folyamat**lehetőséget.
+1. A **Küldés** lehetőség mellett válassza az új legördülő lista **létrehozása következtetési folyamat** lehetőséget.
 
-1. Válassza a **Batch-következtetési folyamat**lehetőséget.
+1. Válassza a **Batch-következtetési folyamat** lehetőséget.
 
     ![Batch-következtetési folyamat létrehozása](./media/how-to-run-batch-predictions-designer/create-batch-inference.png)
     
@@ -80,7 +80,7 @@ Most már készen áll a következtetési folyamat üzembe helyezésére. Ezzel 
 
 1. Válassza ki a **Közzététel** gombot.
 
-1. A megjelenő párbeszédpanelen bontsa ki a **PipelineEndpoint**legördülő listát, és válassza az **új PipelineEndpoint**lehetőséget.
+1. A megjelenő párbeszédpanelen bontsa ki a **PipelineEndpoint** legördülő listát, és válassza az **új PipelineEndpoint** lehetőséget.
 
 1. Adja meg a végpont nevét és leírását (nem kötelező).
 
@@ -101,13 +101,13 @@ Ebben a szakaszban egy manuális folyamat futtatását kell beállítania, és m
 
 1. Az üzembe helyezés befejezése után lépjen a **végpontok** szakaszra.
 
-1. Válassza a **folyamat-végpontok**lehetőséget.
+1. Válassza a **folyamat-végpontok** lehetőséget.
 
 1. Válassza ki a létrehozott végpont nevét.
 
 ![Végponti hivatkozás](./media/how-to-run-batch-predictions-designer/manage-endpoints.png)
 
-1. Válassza a **közzétett folyamatok**elemet.
+1. Válassza a **közzétett folyamatok** elemet.
 
     Ezen a képernyőn a végpont alatt közzétett összes közzétett folyamat látható.
 

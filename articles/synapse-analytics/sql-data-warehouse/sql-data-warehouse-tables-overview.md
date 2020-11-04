@@ -1,6 +1,6 @@
 ---
 title: Táblák tervezése
-description: Bevezetés a a szinapszis SQL-készletben található táblázatok tervezéséhez.
+description: Bevezetés a táblák megtervezésére a dedikált SQL-készlet használatával az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,22 +11,22 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7973c85c7ca8051cae2ab7155dda94bec43ebd59
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3bdf234156c55e3c30df74c672866a118fd2f4f1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486939"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323506"
 ---
-# <a name="design-tables-in-synapse-sql-pool"></a>Tervezési táblázatok a szinapszis SQL-készletben
+# <a name="design-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Táblák tervezése dedikált SQL-készlettel az Azure szinapszis Analytics szolgáltatásban
 
-Ez a cikk kulcsfontosságú bevezető fogalmakat tartalmaz a táblázatok SQL-készletben való tervezéséhez.
+Ez a cikk kulcsfontosságú bevezető fogalmakat tartalmaz a táblázatok dedikált SQL-készletben való tervezéséhez.
 
 ## <a name="determine-table-category"></a>Táblázat kategóriájának meghatározása
 
 A [csillag sémák](https://en.wikipedia.org/wiki/Star_schema) a tény-és dimenziós táblákba rendezik az adathalmazokat. Bizonyos táblákat az integrációhoz vagy az előkészítéshez kell használni, mielőtt a rendszer egy tény-vagy dimenzió-táblázatba helyezi át őket. A tábla tervezésekor döntse el, hogy a tábla adategysége tartalmaz-e egy tény-, dimenzió-vagy integrációs táblát. Ez a döntés a megfelelő tábla szerkezetét és eloszlását ismerteti.
 
-- A **Fact Tables** olyan mennyiségi adatmennyiségeket tartalmaz, amelyeket a tranzakciós rendszer általában generál, majd betölti az SQL-készletbe. Egy kiskereskedelmi üzlet például naponta hoz létre értékesítési tranzakciókat, majd betölti az adataikat egy SQL Pool egyedkapcsolat-táblába elemzés céljából.
+- A **Fact Tables** olyan mennyiségi adatmennyiségeket tartalmaz, amelyek a tranzakciós rendszerekben gyakran keletkeznek, majd betöltődik a dedikált SQL-készletbe. Egy kiskereskedelmi vállalat például minden nap értékesítési tranzakciókat hoz létre, majd betölti az adathalmazt egy dedikált SQL Pool egyedkapcsolat-táblázatba az elemzéshez.
 
 - A **dimenzió táblák** olyan attribútum-adatértékeket tartalmaznak, amelyek változhatnak, de általában ritkán változnak. Az ügyfél neve és címe például egy dimenzió táblában tárolódik, és csak akkor frissül, ha az ügyfél profilja megváltozik. A nagyméretű egyedkapcsolatok méretének minimalizálásához az ügyfél nevét és a címet nem kell a Fact tábla minden sorában megadni. Ehelyett a tény tábla és a dimenzió tábla megoszthat egy ügyfél-azonosítót. Egy lekérdezés csatlakozhat a két táblához, és hozzárendelheti az ügyfél profilját és tranzakcióit.
 
@@ -34,28 +34,28 @@ A [csillag sémák](https://en.wikipedia.org/wiki/Star_schema) a tény-és dimen
 
 ## <a name="schema-and-table-names"></a>Séma-és táblanév
 
-A sémák a táblázatok hasonló módon történő csoportosítására szolgálnak.  Ha több adatbázist telepít át egy helyszíni megoldásból az SQL-készletbe, az a legjobb megoldás, ha az összes tényt, dimenziót és integrációs táblát át szeretné telepíteni az SQL-készlet egyetlen sémájára.
+A sémák a táblázatok hasonló módon történő csoportosítására szolgálnak.  Ha több adatbázist telepít át egy helyszíni megoldásból egy dedikált SQL-készletbe, a legjobb, ha az összes tényt, dimenziót és integrációs táblát áttelepíti egy dedikált SQL-készlet egyik sémájára.
 
-A [wideworldimportersdw adattárházat](/sql/sample/world-wide-importers/database-catalog-wwi-olap?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) mintául szolgáló SQL-készletben lévő összes táblát tárolhatja például egy első világháború nevű sémán belül. A következő kód egy, az első világháború nevű [felhasználó által definiált sémát](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) hoz létre.
+Például a [wideworldimportersdw adattárházat](/sql/sample/world-wide-importers/database-catalog-wwi-olap?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) -minta összes tábláját tárolhatja egy, az első világháború nevű sémán belül a dedikált SQL-készletben. A következő kód egy, az első világháború nevű [felhasználó által definiált sémát](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) hoz létre.
 
 ```sql
 CREATE SCHEMA wwi;
 ```
 
-Az SQL-készletben lévő táblák szervezetének megjelenítéséhez használhatja a Fact, a Dim és az int előtagot a táblázat neveként. A következő táblázat a Wideworldimportersdw adattárházat sémájának és táblázatának egyes neveit mutatja be.  
+A táblák Szervezetének a dedikált SQL-készletben való megjelenítéséhez a Fact, a Dim és az int előtagot használhatja a táblázatok neveihez. A következő táblázat a Wideworldimportersdw adattárházat sémájának és táblázatának egyes neveit mutatja be.  
 
-| Wideworldimportersdw adattárházat táblázat  | Tábla típusa | SQL-készlet |
+| Wideworldimportersdw adattárházat táblázat  | Tábla típusa | Dedikált SQL-készlet |
 |:-----|:-----|:------|:-----|
 | City | Dimenzió | WWI. DimCity |
 | Rendelés | Fact | WWI. FactOrder |
 
 ## <a name="table-persistence"></a>Tábla megőrzése
 
-A táblák az Azure Storage-ban, ideiglenesen az Azure Storage-ban vagy az SQL-készleten kívüli adattárban tárolják az adattárolást.
+A táblák az Azure Storage-ban, ideiglenesen az Azure Storage-ban vagy a dedikált SQL-készleten kívüli adattárban tárolják az adataikat.
 
 ### <a name="regular-table"></a>Normál tábla
 
-A normál tábla az Azure Storage-ban tárolja az SQL-készlet részét képező adatmennyiséget. A tábla és az adatmennyiség attól függetlenül megmarad, hogy nyitva van-e a munkamenet.  A következő példa egy normál táblát hoz létre két oszloppal.
+A normál táblázat a dedikált SQL-készlet részeként tárolja az Azure Storage-ban tárolt adatait. A tábla és az adatmennyiség attól függetlenül megmarad, hogy nyitva van-e a munkamenet.  A következő példa egy normál táblát hoz létre két oszloppal.
 
 ```sql
 CREATE TABLE MyTable (col1 int, col2 int );  
@@ -69,17 +69,17 @@ Az ideiglenes táblák a helyi tárterületet használják a gyors teljesítmén
 
 ### <a name="external-table"></a>Külső tábla
 
-A külső tábla az Azure Storage-blobban vagy Azure Data Lake Storeban található adatterületre mutat. Ha a CREATE TABLE AS SELECT utasítással együtt használja, a külső táblából való kijelöléssel az adatok importálása az SQL-készletbe.
+A külső tábla az Azure Storage-blobban vagy Azure Data Lake Storeban található adatterületre mutat. Ha a CREATE TABLE AS SELECT utasítással együtt használja, a külső táblából való kijelöléskor a rendszer a dedikált SQL-készletbe importálja az adatokból.
 
 Így a külső táblázatok hasznosak az betöltéshez. A betöltési oktatóanyagért lásd: az [adatok Azure Blob Storage-ból való betöltésének használata](load-data-from-azure-blob-storage-using-polybase.md).
 
 ## <a name="data-types"></a>Adattípusok
 
-Az SQL-készlet a leggyakrabban használt adattípusokat támogatja. A támogatott adattípusok listáját a CREATE TABLE utasításban található [CREATE TABLE-hivatkozás adattípusai](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#DataTypes) című témakörben tekintheti meg. Az adattípusok használatára vonatkozó útmutatásért lásd az [adattípusokat](sql-data-warehouse-tables-data-types.md).
+A dedikált SQL-készlet a leggyakrabban használt adattípusokat támogatja. A támogatott adattípusok listáját a CREATE TABLE utasításban található [CREATE TABLE-hivatkozás adattípusai](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#DataTypes) című témakörben tekintheti meg. Az adattípusok használatára vonatkozó útmutatásért lásd az [adattípusokat](sql-data-warehouse-tables-data-types.md).
 
 ## <a name="distributed-tables"></a>Elosztott táblák
 
-A szinapszis SQL alapszintű funkciója, hogy képes a táblázatok tárolására és üzemeltetésére a különböző [disztribúciókban](massively-parallel-processing-mpp-architecture.md#distributions). A szinapszis SQL három módszert támogat az adatterjesztéshez: ciklikus multiplexelés (alapértelmezett), kivonat és replikálás.
+A dedikált SQL-készlet alapvető funkciója, hogy miként tárolhatók és használhatók a táblázatok között a [disztribúciókban](massively-parallel-processing-mpp-architecture.md#distributions).  A dedikált SQL-készlet három módszert támogat az adatterjesztéshez: ciklikus multiplexelés (alapértelmezett), kivonat és replikált.
 
 ### <a name="hash-distributed-tables"></a>Kivonat alapján elosztott táblák
 
@@ -119,7 +119,7 @@ ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION
 
 ## <a name="columnstore-indexes"></a>Oszlopcentrikus indexek
 
-Alapértelmezés szerint az SQL-készlet fürtözött oszlopcentrikus indexként tárolja a táblát. Ez az adattárolási űrlap nagy méretű táblákon biztosítja a nagy adattömörítést és a lekérdezési teljesítményt.  
+Alapértelmezés szerint a dedikált SQL-készlet fürtözött oszlopcentrikus indexként tárolja a táblát. Ez az adattárolási űrlap nagy méretű táblákon biztosítja a nagy adattömörítést és a lekérdezési teljesítményt.  
 
 A fürtözött oszlopcentrikus index általában a legjobb választás, de bizonyos esetekben egy fürtözött index vagy egy halom a megfelelő tárolási struktúra.  
 
@@ -138,7 +138,7 @@ A statisztikák frissítése nem történik meg automatikusan. A statisztikák f
 
 ## <a name="primary-key-and-unique-key"></a>Elsődleges kulcs és egyedi kulcs
 
-Az elsődleges kulcs csak akkor támogatott, ha nem FÜRTÖZÖTT és nem KÉNYSZERÍTett érték is használatban van.  Az egyedi korlátozás csak a nem KÉNYSZERÍTett használata esetén támogatott.  [SQL-készlet táblázatának korlátozásai](sql-data-warehouse-table-constraints.md).
+Az elsődleges kulcs csak akkor támogatott, ha nem FÜRTÖZÖTT és nem KÉNYSZERÍTett érték is használatban van.  Az egyedi korlátozás csak a nem KÉNYSZERÍTett használata esetén támogatott.  A [DEDIKÁLT SQL-készlet táblázatának korlátozásai](sql-data-warehouse-table-constraints.md).
 
 ## <a name="commands-for-creating-tables"></a>Táblázatok létrehozásához szükséges parancsok
 
@@ -147,19 +147,19 @@ Táblát új üres táblaként is létrehozhat. Létrehozhat és fel is tölthet
 | T-SQL-utasítás | Leírás |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Egy üres táblát hoz létre a tábla összes oszlopának és beállításának definiálásával. |
-| [KÜLSŐ TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Létrehoz egy külső táblát. A tábla definícióját az SQL-készlet tárolja. A tábla az Azure Blob Storage-ban vagy Azure Data Lake Storeban tárolódik. |
+| [KÜLSŐ TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Létrehoz egy külső táblát. A tábla definícióját a dedikált SQL-készlet tárolja. A tábla az Azure Blob Storage-ban vagy Azure Data Lake Storeban tárolódik. |
 | [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Egy új táblát tölt ki egy SELECT utasítás eredményeivel. A táblázat oszlopai és adattípusai a SELECT utasítás eredményein alapulnak. Az adatok importálásához ez az utasítás külső táblából is kiválasztható. |
 | [KÜLSŐ TÁBLA LÉTREHOZÁSA KIJELÖLÉSKÉNT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Új külső tábla létrehozása egy SELECT utasítás eredményének külső helyre való exportálásával.  A hely vagy az Azure Blob Storage vagy a Azure Data Lake Store. |
 
-## <a name="aligning-source-data-with-the-sql-pool"></a>Forrásadatok igazítása az SQL-készlettel
+## <a name="aligning-source-data-with-dedicated-sql-pool"></a>Forrásadatok igazítása dedikált SQL-készlettel
 
-Az SQL-készlet táblái egy másik adatforrás adatainak betöltésével tölthetők fel. A sikeres betöltés végrehajtásához a forrásadatok oszlopainak számának és adattípusának összhangban kell lennie az SQL-készletben található táblázat-definícióval. A táblázatok megtervezésének legnehezebb része lehet az igazítani kívánt adatmennyiség.
+A dedikált SQL Pool-táblázatok az adatok másik adatforrásból való betöltésével vannak feltöltve. A sikeres betöltés végrehajtásához a forrásadatok oszlopainak számát és adattípusait a dedikált SQL-készletben található tábla-definícióval kell összehangolni. A táblázatok megtervezésének legnehezebb része lehet az igazítani kívánt adatmennyiség.
 
-Ha az adatok több adattárból érkeznek, az adatok betöltését az SQL-készletbe, és egy integrációs táblába kell menteni. Miután az adatok bekerültek az integrációs táblába, használhatja az SQL-készlet erejét az átalakítási műveletek elvégzéséhez. Az adatelőkészítést követően beillesztheti az éles táblákba.
+Ha az adatok több adattárból származnak, az adatok betölthetők a dedikált SQL-készletbe, és egy integrációs táblában tárolhatók. Miután az adatok bekerültek az integrációs táblába, használhatja a dedikált SQL-készlet erejét az átalakítási műveletek elvégzéséhez. Az adatelőkészítést követően beillesztheti az éles táblákba.
 
 ## <a name="unsupported-table-features"></a>Nem támogatott táblázat-funkciók
 
-Az SQL-készlet támogatja a más adatbázisok által kínált tábla-funkciók számos, de nem az összes funkcióját.  Az alábbi lista a tábla azon funkcióit mutatja be, amelyek az SQL-készletben nem támogatottak:
+A dedikált SQL-készlet a más adatbázisok által kínált tábla-funkciók számos, de nem az összes funkcióját támogatja.  Az alábbi lista a dedikált SQL-készletben nem támogatott táblázat-funkciókat mutatja be:
 
 - Külső kulcs, ellenőrzési [táblázat megkötései](/sql/t-sql/statements/alter-table-table-constraint-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [Számított oszlopok](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -375,4 +375,4 @@ ORDER BY    distribution_id
 
 ## <a name="next-steps"></a>Következő lépések
 
-Miután létrehozta az SQL-készlethez tartozó táblákat, a következő lépésben be kell töltenie az adatait a táblába.  A betöltési oktatóanyagért lásd: [az SQL-készletbe való betöltés](load-data-wideworldimportersdw.md).
+Miután létrehozta a táblákat a dedikált SQL-készlethez, a következő lépés az adat betöltése a táblába.  A betöltési oktatóanyagért lásd: [az adattöltés DEDIKÁLT SQL-készletbe](load-data-wideworldimportersdw.md).
