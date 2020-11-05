@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/24/2020
+ms.date: 11/04/2020
 ms.author: tisande
-ms.openlocfilehash: 7a4b2a778fc3d520c0ce85bed5bec0b49fc14384
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9176205b93519f0afac0c57f5da8593df6673c0f
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341909"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356620"
 ---
 # <a name="getting-started-with-sql-queries"></a>Bevezetés az SQL-lekérdezések használatába
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -21,26 +21,35 @@ Azure Cosmos DB SQL API-fiókokban kétféleképpen olvashatók be az informáci
 
 **Pont beolvasása** – a kulcs/érték megkeresése egyetlen *elem-azonosítón* és partíciós kulcson végezhető el. Az *Item azonosító* és a partíciós kulcs kombinációja a kulcs, és maga az az érték. 1 KB-os dokumentum esetén a pont általában az 1., 10 MS alatti késéssel rendelkező [kérési egységet](request-units.md) olvassa. A pont olvasás egyetlen elemmel tér vissza.
 
-**SQL-lekérdezések** – az adatlekérdezéshez lekérdezéseket írhat a STRUCTURED Query Language (SQL) használatával JSON-lekérdezési nyelvként. A lekérdezések mindig legalább 2,3-es kérési egységbe kerülnek, és általánosságban a pont olvasásakor nagyobb és nagyobb a változó késése. A lekérdezések számos elemet adhatnak vissza.
-
-A legtöbb nagy mennyiségű olvasási terhelés Azure Cosmos DB a pontok és az SQL-lekérdezések kombinációját használja. Ha csak egyetlen elem olvasását kell elolvasnia, az olvasások olcsóbbak és gyorsabbak a lekérdezéseknél. A pont olvasásának nem kell a lekérdezési motort használnia az adateléréshez, és közvetlenül is elolvashatja az adatokat. Természetesen nem lehetséges, hogy az összes számítási feladat kizárólag olvasási pontok használatával olvassa az adatokat, így az SQL lekérdezési nyelvként és a [séma-agnosztikus indexelés](index-overview.md) révén rugalmasabban férhet hozzá az adatokhoz.
-
-Íme néhány példa arra, hogyan végezheti el a pontok olvasását az egyes SDK-kal:
+Íme néhány példa arra, hogyan végezheti el a **pontok olvasását** az egyes SDK-kal:
 
 - [.NET SDK](/dotnet/api/microsoft.azure.cosmos.container.readitemasync?preserve-view=true&view=azure-dotnet)
 - [Java SDK](/java/api/com.azure.cosmos.cosmoscontainer.readitem?preserve-view=true&view=azure-java-stable#com_azure_cosmos_CosmosContainer__T_readItem_java_lang_String_com_azure_cosmos_models_PartitionKey_com_azure_cosmos_models_CosmosItemRequestOptions_java_lang_Class_T__)
 - [Node.js SDK](/javascript/api/@azure/cosmos/item?preserve-view=true&view=azure-node-latest#read-requestoptions-)
 - [Python SDK](/python/api/azure-cosmos/azure.cosmos.containerproxy?preserve-view=true&view=azure-python#read-item-item--partition-key--populate-query-metrics-none--post-trigger-include-none----kwargs-)
 
+**SQL-lekérdezések** – az adatlekérdezéshez lekérdezéseket írhat a STRUCTURED Query Language (SQL) használatával JSON-lekérdezési nyelvként. A lekérdezések mindig legalább 2,3-es kérési egységbe kerülnek, és általánosságban a pont olvasásakor nagyobb és nagyobb a változó késése. A lekérdezések számos elemet adhatnak vissza.
+
+A legtöbb nagy mennyiségű olvasási terhelés Azure Cosmos DB a pontok és az SQL-lekérdezések kombinációját használja. Ha csak egyetlen elem olvasását kell elolvasnia, az olvasások olcsóbbak és gyorsabbak a lekérdezéseknél. A pont olvasásának nem kell a lekérdezési motort használnia az adateléréshez, és közvetlenül is elolvashatja az adatokat. Természetesen nem lehetséges, hogy az összes számítási feladat kizárólag olvasási pontok használatával olvassa az adatokat, így az SQL lekérdezési nyelvként és a [séma-agnosztikus indexelés](index-overview.md) révén rugalmasabban férhet hozzá az adatokhoz.
+
+Íme néhány példa arra, hogyan végezheti el az **SQL-lekérdezéseket** az egyes SDK-kal:
+
+- [.NET SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-dotnet-v3sdk-samples#query-examples)
+- [Java SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-java-sdk-samples#query-examples)
+- [Node.js SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-nodejs-samples#item-examples)
+- [Python SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-python-samples#item-examples)
+
 A dokumentum hátralévő része azt mutatja be, hogyan kezdheti el az SQL-lekérdezések írását a Azure Cosmos DBban. Az SQL-lekérdezések az SDK-n vagy a Azure Portalon is futtathatók.
 
 ## <a name="upload-sample-data"></a>Mintaadatok feltöltése
 
-Az SQL API Cosmos DB fiókjában hozzon létre egy nevű tárolót `Families` . Hozzon létre két egyszerű JSON-elemet a tárolóban. Az adathalmaz használatával a Azure Cosmos DB lekérdezési dokumentációjában a legtöbb lekérdezési lekérdezést futtathatja.
+Az SQL API-Cosmos DB fiókjában nyissa meg a [adatkezelő](https://docs.microsoft.com/azure/cosmos-db/data-explorer) egy nevű tároló létrehozásához `Families` . A létrehozást követően az adatstruktúrák böngésző használatával megkeresheti és megnyithatja. A `Families` tárolóban megjelenik a `Items` tároló neve alatti jobb oldali lehetőség. Nyissa meg ezt a beállítást, és egy gomb jelenik meg a képernyő középső menüsorában egy új elem létrehozásához. Ezt a funkciót fogja használni az alábbi JSON-elemek létrehozásához.
 
 ### <a name="create-json-items"></a>JSON-elemek létrehozása
 
-A következő kód két egyszerű JSON-elemet hoz létre a családokról. Az Andersen és a Wakefield család egyszerű JSON-elemei közé tartoznak a szülők, a gyermekek és a hozzájuk tartozó háziállatok, a címek és a regisztrációs adatok. Az első elem sztringeket, számokat, logikai elemeket, tömböket és beágyazott tulajdonságokat tartalmaz.
+A következő két JSON-elem az Andersen és a Wakefield családokról származó dokumentumok. Ezek közé tartoznak a szülők, a gyermekek és a hozzájuk tartozó háziállatok, a lakcímek és a regisztrációs adatok. 
+
+Az első elem sztringeket, számokat, logikai elemeket, tömböket és beágyazott tulajdonságokat tartalmaz:
 
 ```json
 {
@@ -64,7 +73,7 @@ A következő kód két egyszerű JSON-elemet hoz létre a családokról. Az And
 }
 ```
 
-A második tétel a `givenName` és `familyName` a helyett a és a értéket használja `firstName` `lastName` .
+A második tétel a `givenName` és `familyName` a helyett `firstName` a `lastName` következőket használja:
 
 ```json
 {
@@ -180,7 +189,7 @@ Az előző példák a Cosmos DB lekérdezési nyelvének számos aspektusát mut
 
 * A Cosmos-tároló a JSON-elemek séma nélküli gyűjteménye. A tároló elemein belüli és azok közötti kapcsolatok implicit módon vannak rögzítve az adattárolással, nem az elsődleges kulcs és a idegenkulcs-kapcsolatok esetében. Ez a funkció fontos a cikk későbbi részében tárgyalt elemekhez tartozó illesztések esetében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Cosmos DB bemutatása](introduction.md)
 - [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)

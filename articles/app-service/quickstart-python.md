@@ -5,12 +5,13 @@ ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
-ms.openlocfilehash: 8f48f31cdaaa555e0a8f6f0fd4756bb61a9f417d
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+adobe-target: true
+ms.openlocfilehash: c77465997f74d0f279080a68fd317af0d161127a
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741102"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357521"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure App Service Linuxon
 
@@ -244,7 +245,7 @@ Ha bármikor le szeretné állítani a naplózási adatfolyamot, nyomja le a **C
 
 ## <a name="manage-the-azure-app"></a>Az Azure-alkalmazás kezelése
 
-A létrehozott alkalmazás kezeléséhez lépjen a <a href="https://portal.azure.com" target="_blank">Azure Portal</a> . Keresse meg és válassza ki a **app Services** .
+A létrehozott alkalmazás kezeléséhez lépjen a <a href="https://portal.azure.com" target="_blank">Azure Portal</a> . Keresse meg és válassza ki a **app Services**.
 
 ![Navigáljon App Services a Azure Portal](./media/quickstart-python/navigate-to-app-services-in-the-azure-portal.png)
 
@@ -260,7 +261,7 @@ A App Service menü különböző lapokat biztosít az alkalmazás konfigurálá
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/FlaskCLIQuickstartHelp)
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Az erőforráscsoport neve például "appsvc_rg_Linux_CentralUS", a tartózkodási helytől függően. Ha az ingyenes F1-es csomagtól eltérő App Service SKU-t használ, ezek az erőforrások folyamatos költségekkel járnak (lásd a [app Service díjszabását](https://azure.microsoft.com/pricing/details/app-service/linux/)).
 

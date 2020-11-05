@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/01/2017
+ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4683a77b9467775fbe368e2017416e0fbff9718c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0769366ad56e1b7431dbfa7c95f1256c509d24fa
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266289"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358167"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Egy Azure-beli virtuális gépen található Azure-erőforrások felügyelt identitásának használata hozzáférési jogkivonat beszerzéséhez 
 
@@ -64,7 +64,7 @@ Az ügyfélalkalmazások felügyelt identitásokat igényelhetnek az Azure-erőf
 
 A hozzáférési token beszerzésének alapvető felülete a REST-alapú, így elérhetővé válik bármely, a virtuális gépen futó ügyfélalkalmazás számára, amely HTTP REST-hívásokat tesz lehetővé. Ez hasonló az Azure AD programozási modellhez, kivéve, ha az ügyfél egy végpontot használ a virtuális gépen (vs egy Azure AD-végpont).
 
-Példa az Azure Instance Metadata Service (IMDS) végpontjának használatával történő kérelemre *(ajánlott)*:
+Példa az Azure Instance Metadata Service (IMDS) végpontjának használatával történő kérelemre *(ajánlott)* :
 
 ```
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
@@ -81,7 +81,7 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `client_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a client_idét jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van.|
 | `mi_res_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a mi_res_idét (Azure Resource ID) jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van. |
 
-Mintául szolgáló kérelem az Azure-erőforrások virtuálisgép-bővítmény végpontjának felügyelt identitások használatával (a 2019 januári verzióban való *használatra tervezett)*:
+Mintául szolgáló kérelem az Azure-erőforrások virtuálisgép-bővítmény végpontjának felügyelt identitások használatával (a 2019 januári verzióban való *használatra tervezett)* :
 
 ```http
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1

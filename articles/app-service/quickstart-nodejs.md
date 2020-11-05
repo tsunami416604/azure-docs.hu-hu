@@ -6,12 +6,13 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: mvc, devcenter, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: f105acaa4e2801ca6dc8c33b404fdb9f9d65adc8
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+adobe-target: true
+ms.openlocfilehash: b42abfda863ed38eb3c29004630f905edef075c4
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633722"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359102"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Node.js-webalkalmazás létrehozása az Azure-ban
 
@@ -70,7 +71,7 @@ Ebben a szakaszban az Node.js alkalmazást a VS Code és a Azure App Service bő
 
 1. Az **Azure app Service** EXPLORERBEN a vs Code-ban kattintson a kék felfelé mutató nyíl ikonra az alkalmazás üzembe helyezéséhez az Azure-ban. (Ugyanezt a parancsot a **parancssorból** is meghívhatja ( **CTRL** + **SHIFT** + **P** ) a "üzembe helyezés a webalkalmazásba" parancs beírásával, és a **Azure app Service: üzembe helyezés a webalkalmazásban** ) lehetőségre.
 
-    :::image type="content" source="media/quickstart-nodejs/deploy.png" alt-text="Képernyőkép az Azure app Service-ről a VS Code-ban, amelyen a kék nyíl ikon van kiválasztva.&quot;:::
+    :::image type="content" source="media/quickstart-nodejs/deploy.png" alt-text="Képernyőkép az Azure app Service-ről a VS Code-ban, amelyen a kék nyíl ikon van kiválasztva.":::
         
 1. Válassza ki a *NodeJS-docs-Hello-World* mappát.
 
@@ -79,7 +80,7 @@ Ebben a szakaszban az Node.js alkalmazást a VS Code és a Azure App Service bő
     - Linux: válassza az **új Webalkalmazás létrehozása** lehetőséget.
     - Windows: válassza az **új Webalkalmazás létrehozása... lehetőséget. Speciális**
 
-1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az **ENTER** billentyűt. A névnek egyedinek kell lennie az összes Azure-ban, és csak alfanumerikus karaktereket (&quot;A-Z&quot;, &quot;a-z&quot; és &quot;0-9&quot;) és kötőjeleket (&quot;-&quot;) kell használnia.
+1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az **ENTER** billentyűt. A névnek egyedinek kell lennie az összes Azure-ban, és csak alfanumerikus karaktereket ("A-Z", "a-z" és "0-9") és kötőjeleket ("-") kell használnia.
 
 1. A Linux megcélzása esetén válassza ki a Node.js verziót, amikor a rendszer kéri. Az **LTS** -verzió használata javasolt.
 
@@ -96,9 +97,9 @@ Ebben a szakaszban az Node.js alkalmazást a VS Code és a Azure App Service bő
 
     ![Rákérdezés a konfiguráció frissítésére a cél Linux-kiszolgálón](media/quickstart-nodejs/server-build.png)
 
-1. Ha a rendszer kéri, válassza az **Igen** lehetőséget, és **mindig telepítse a &quot;NodeJS-docs-Hello-World&quot; munkaterületet az (alkalmazás neve)** elemre. Ha az **Igen** lehetőséget választja, a vs Code automatikusan ugyanazt a app Service webalkalmazást célozza meg a későbbi központi telepítésekkel.
+1. Ha a rendszer kéri, válassza az **Igen** lehetőséget, és **mindig telepítse a "NodeJS-docs-Hello-World" munkaterületet az (alkalmazás neve)** elemre. Ha az **Igen** lehetőséget választja, a vs Code automatikusan ugyanazt a app Service webalkalmazást célozza meg a későbbi központi telepítésekkel.
 
-1. Ha Linux rendszerre telepíti a rendszert, válassza a **Tallózás webhely** lehetőséget a kérdésben, hogy a telepítés befejezése után megtekintse a frissen telepített webalkalmazást. A böngészőben meg kell jelennie a következőnek: &quot;„Helló világ!” alkalmazás!"
+1. Ha Linux rendszerre telepíti a rendszert, válassza a **Tallózás webhely** lehetőséget a kérdésben, hogy a telepítés befejezése után megtekintse a frissen telepített webalkalmazást. A böngészőben meg kell jelennie a következőnek: "„Helló világ!” alkalmazás!"
 
 1. Ha Windows rendszeren telepíti a rendszert, először be kell állítania a Node.js verziószámát a webalkalmazáshoz:
 
@@ -142,35 +143,7 @@ Az `console.log` alkalmazásból közvetlenül a vs Code kimenet ablakban megtek
 
 1. Ha a rendszer kéri, válassza a naplózás engedélyezését, és indítsa újra az alkalmazást. Az alkalmazás újraindítása után a VS Code kimenet ablak megnyílik a log streamtel létesített kapcsolatban. 
 
-    :::image type="content" source="media/quickstart-nodejs/enable-restart.png" alt-text="Képernyőkép az Azure app Service-ről a VS Code-ban, amelyen a kék nyíl ikon van kiválasztva.&quot;:::
-        
-1. Válassza ki a *NodeJS-docs-Hello-World* mappát.
-
-1. Válasszon egy létrehozási lehetőséget azon operációs rendszer alapján, amelyre telepíteni kívánja a következőt:
-
-    - Linux: válassza az **új Webalkalmazás létrehozása** lehetőséget.
-    - Windows: válassza az **új Webalkalmazás létrehozása... lehetőséget. Speciális**
-
-1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az **ENTER** billentyűt. A névnek egyedinek kell lennie az összes Azure-ban, és csak alfanumerikus karaktereket (&quot;A-Z&quot;, &quot;a-z&quot; és &quot;0-9&quot;) és kötőjeleket (&quot;-&quot;) kell használnia.
-
-1. A Linux megcélzása esetén válassza ki a Node.js verziót, amikor a rendszer kéri. Az **LTS** -verzió használata javasolt.
-
-1. Ha a Windowst célozza meg, kövesse a további utasításokat:
-    1. Válassza az **Új erőforráscsoport létrehozása** lehetőséget, majd adja meg az erőforráscsoport nevét, például: `AppServiceQS-rg` .
-    1. Válassza a **Windows** lehetőséget az operációs rendszer számára.
-    1. Válassza az **új App Service terv létrehozása** lehetőséget, majd adja meg a csomag nevét (például `AppServiceQS-plan` ), majd válassza az **ingyenes F1** lehetőséget a díjszabási szinten.
-    1. Válassza **a Kihagyás lehetőséget,** amikor a rendszer rákérdez a Application Insightsra.
-    1. Válasszon egy Önhöz közeli régiót vagy az elérni kívánt erőforrások közelében.
-
-1. Az összes kérésre való válaszadás után a VS Code megjeleníti az alkalmazáshoz létrehozott Azure-erőforrásokat az értesítési felugró ablakban.
-
-    Linux rendszeren való üzembe helyezéskor válassza az **Igen** lehetőséget, ha a rendszer felszólítja, hogy frissítse a konfigurációt `npm install` a cél Linux-kiszolgálón való futtatásra.
-
-    ![Rákérdezés a konfiguráció frissítésére a cél Linux-kiszolgálón](media/quickstart-nodejs/server-build.png)
-
-1. Ha a rendszer kéri, válassza az **Igen** lehetőséget, és **mindig telepítse a &quot;NodeJS-docs-Hello-World&quot; munkaterületet az (alkalmazás neve)** elemre. Ha az **Igen** lehetőséget választja, a vs Code automatikusan ugyanazt a app Service webalkalmazást célozza meg a későbbi központi telepítésekkel.
-
-1. Ha Linux rendszerre telepíti a rendszert, válassza a **Tallózás webhely** lehetőséget a kérdésben, hogy a telepítés befejezése után megtekintse a frissen telepített webalkalmazást. A böngészőben meg kell jelennie a következőnek: &quot;„Helló világ!” alkalmazás!":::
+    :::image type="content" source="media/quickstart-nodejs/enable-restart.png" alt-text="Képernyőfelvétel a Visual Studio Code-ról a naplózás engedélyezéséhez és az alkalmazás újraindításához az igen gomb kiválasztásával.":::
 
 1. Néhány másodperc elteltével a kimeneti ablak egy üzenetet jelenít meg, amely jelzi, hogy csatlakozik a log-streaming szolgáltatáshoz. A böngészőben az oldal frissítésével több kimeneti tevékenység is létrehozható.
 
@@ -292,35 +265,16 @@ code .
 
 Az **Azure app Service** Explorerben válassza a kék felfelé mutató nyíl ikont az alkalmazás üzembe helyezéséhez az Azure-ban.
 
-:::image type="content" source="./media/quickstart-nodejs/deploy.png" alt-text="Képernyőkép az Azure app Service-ről a VS Code-ban, amelyen a kék nyíl ikon van kiválasztva.&quot;:::
-        
-1. Válassza ki a *NodeJS-docs-Hello-World* mappát.
+:::image type="content" source="./media/quickstart-nodejs/deploy.png" alt-text="Képernyőfelvétel a Visual Studio Code Azure App Service menüjéről a kiválasztott kék üzembe helyezési nyíllal.":::
 
-1. Válasszon egy létrehozási lehetőséget azon operációs rendszer alapján, amelyre telepíteni kívánja a következőt:
+> [!TIP]
+> A **parancssorból** (CTRL + SHIFT + P) is üzembe helyezheti az "üzembe helyezés a webalkalmazásba" parancsot, és futtathatja a **Azure app Service: Deploy to Web App** paranccsal.
 
-    - Linux: válassza az **új Webalkalmazás létrehozása** lehetőséget.
-    - Windows: válassza az **új Webalkalmazás létrehozása... lehetőséget. Speciális**
+1. Válassza ki a jelenleg megnyitott könyvtárat `myExpressApp` .
 
-1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az **ENTER** billentyűt. A névnek egyedinek kell lennie az összes Azure-ban, és csak alfanumerikus karaktereket (&quot;A-Z&quot;, &quot;a-z&quot; és &quot;0-9&quot;) és kötőjeleket (&quot;-&quot;) kell használnia.
+1. Válassza a **Create New Web App (új Webalkalmazás létrehozása** ) lehetőséget, amely alapértelmezés szerint a Linux rendszeren app Service.
 
-1. A Linux megcélzása esetén válassza ki a Node.js verziót, amikor a rendszer kéri. Az **LTS** -verzió használata javasolt.
-
-1. Ha a Windowst célozza meg, kövesse a további utasításokat:
-    1. Válassza az **Új erőforráscsoport létrehozása** lehetőséget, majd adja meg az erőforráscsoport nevét, például: `AppServiceQS-rg` .
-    1. Válassza a **Windows** lehetőséget az operációs rendszer számára.
-    1. Válassza az **új App Service terv létrehozása** lehetőséget, majd adja meg a csomag nevét (például `AppServiceQS-plan` ), majd válassza az **ingyenes F1** lehetőséget a díjszabási szinten.
-    1. Válassza **a Kihagyás lehetőséget,** amikor a rendszer rákérdez a Application Insightsra.
-    1. Válasszon egy Önhöz közeli régiót vagy az elérni kívánt erőforrások közelében.
-
-1. Az összes kérésre való válaszadás után a VS Code megjeleníti az alkalmazáshoz létrehozott Azure-erőforrásokat az értesítési felugró ablakban.
-
-    Linux rendszeren való üzembe helyezéskor válassza az **Igen** lehetőséget, ha a rendszer felszólítja, hogy frissítse a konfigurációt `npm install` a cél Linux-kiszolgálón való futtatásra.
-
-    ![Rákérdezés a konfiguráció frissítésére a cél Linux-kiszolgálón](media/quickstart-nodejs/server-build.png)
-
-1. Ha a rendszer kéri, válassza az **Igen** lehetőséget, és **mindig telepítse a &quot;NodeJS-docs-Hello-World&quot; munkaterületet az (alkalmazás neve)** elemre. Ha az **Igen** lehetőséget választja, a vs Code automatikusan ugyanazt a app Service webalkalmazást célozza meg a későbbi központi telepítésekkel.
-
-1. Ha Linux rendszerre telepíti a rendszert, válassza a **Tallózás webhely** lehetőséget a kérdésben, hogy a telepítés befejezése után megtekintse a frissen telepített webalkalmazást. A böngészőben meg kell jelennie a következőnek: &quot;„Helló világ!” alkalmazás!" és "-".
+1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az ENTER billentyűt. Az alkalmazás nevének érvényes karaktereinek neve: "a-z", "0-9" és "-".
 
 1. Válassza ki a **Node.js verzióját** , az LTS használata javasolt.
 
@@ -328,67 +282,11 @@ Az **Azure app Service** Explorerben válassza a kék felfelé mutató nyíl iko
 
 1. Válassza az **Igen** lehetőséget, ha a rendszer felszólítja, hogy frissítse a konfigurációt a célkiszolgálón való futtatásra `npm install` . Ezután üzembe helyezi az alkalmazást.
 
-    :::image type="content" source="./media/quickstart-nodejs/server-build.png" alt-text="Képernyőkép az Azure app Service-ről a VS Code-ban, amelyen a kék nyíl ikon van kiválasztva.&quot;:::
-        
-1. Válassza ki a *NodeJS-docs-Hello-World* mappát.
-
-1. Válasszon egy létrehozási lehetőséget azon operációs rendszer alapján, amelyre telepíteni kívánja a következőt:
-
-    - Linux: válassza az **új Webalkalmazás létrehozása** lehetőséget.
-    - Windows: válassza az **új Webalkalmazás létrehozása... lehetőséget. Speciális**
-
-1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az **ENTER** billentyűt. A névnek egyedinek kell lennie az összes Azure-ban, és csak alfanumerikus karaktereket (&quot;A-Z&quot;, &quot;a-z&quot; és &quot;0-9&quot;) és kötőjeleket (&quot;-&quot;) kell használnia.
-
-1. A Linux megcélzása esetén válassza ki a Node.js verziót, amikor a rendszer kéri. Az **LTS** -verzió használata javasolt.
-
-1. Ha a Windowst célozza meg, kövesse a további utasításokat:
-    1. Válassza az **Új erőforráscsoport létrehozása** lehetőséget, majd adja meg az erőforráscsoport nevét, például: `AppServiceQS-rg` .
-    1. Válassza a **Windows** lehetőséget az operációs rendszer számára.
-    1. Válassza az **új App Service terv létrehozása** lehetőséget, majd adja meg a csomag nevét (például `AppServiceQS-plan` ), majd válassza az **ingyenes F1** lehetőséget a díjszabási szinten.
-    1. Válassza **a Kihagyás lehetőséget,** amikor a rendszer rákérdez a Application Insightsra.
-    1. Válasszon egy Önhöz közeli régiót vagy az elérni kívánt erőforrások közelében.
-
-1. Az összes kérésre való válaszadás után a VS Code megjeleníti az alkalmazáshoz létrehozott Azure-erőforrásokat az értesítési felugró ablakban.
-
-    Linux rendszeren való üzembe helyezéskor válassza az **Igen** lehetőséget, ha a rendszer felszólítja, hogy frissítse a konfigurációt `npm install` a cél Linux-kiszolgálón való futtatásra.
-
-    ![Rákérdezés a konfiguráció frissítésére a cél Linux-kiszolgálón](media/quickstart-nodejs/server-build.png)
-
-1. Ha a rendszer kéri, válassza az **Igen** lehetőséget, és **mindig telepítse a &quot;NodeJS-docs-Hello-World&quot; munkaterületet az (alkalmazás neve)** elemre. Ha az **Igen** lehetőséget választja, a vs Code automatikusan ugyanazt a app Service webalkalmazást célozza meg a későbbi központi telepítésekkel.
-
-1. Ha Linux rendszerre telepíti a rendszert, válassza a **Tallózás webhely** lehetőséget a kérdésben, hogy a telepítés befejezése után megtekintse a frissen telepített webalkalmazást. A böngészőben meg kell jelennie a következőnek: &quot;„Helló világ!” alkalmazás!":::
+    :::image type="content" source="./media/quickstart-nodejs/server-build.png" alt-text="Képernyőkép a konfiguráció frissítéséről a célkiszolgálón az igen gomb kiválasztásával.":::
 
 1. Ha elindul az üzembe helyezés, a rendszer kéri, hogy frissítse a munkaterületet, hogy a későbbi központi telepítések automatikusan ugyanazt a App Service webalkalmazást célozzák meg. Válassza az **Igen** lehetőséget, hogy a módosítások a megfelelő alkalmazásra legyenek telepítve.
 
-    :::image type="content" source="./media/quickstart-nodejs/save-configuration.png" alt-text="Képernyőkép az Azure app Service-ről a VS Code-ban, amelyen a kék nyíl ikon van kiválasztva.&quot;:::
-        
-1. Válassza ki a *NodeJS-docs-Hello-World* mappát.
-
-1. Válasszon egy létrehozási lehetőséget azon operációs rendszer alapján, amelyre telepíteni kívánja a következőt:
-
-    - Linux: válassza az **új Webalkalmazás létrehozása** lehetőséget.
-    - Windows: válassza az **új Webalkalmazás létrehozása... lehetőséget. Speciális**
-
-1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az **ENTER** billentyűt. A névnek egyedinek kell lennie az összes Azure-ban, és csak alfanumerikus karaktereket (&quot;A-Z&quot;, &quot;a-z&quot; és &quot;0-9&quot;) és kötőjeleket (&quot;-&quot;) kell használnia.
-
-1. A Linux megcélzása esetén válassza ki a Node.js verziót, amikor a rendszer kéri. Az **LTS** -verzió használata javasolt.
-
-1. Ha a Windowst célozza meg, kövesse a további utasításokat:
-    1. Válassza az **Új erőforráscsoport létrehozása** lehetőséget, majd adja meg az erőforráscsoport nevét, például: `AppServiceQS-rg` .
-    1. Válassza a **Windows** lehetőséget az operációs rendszer számára.
-    1. Válassza az **új App Service terv létrehozása** lehetőséget, majd adja meg a csomag nevét (például `AppServiceQS-plan` ), majd válassza az **ingyenes F1** lehetőséget a díjszabási szinten.
-    1. Válassza **a Kihagyás lehetőséget,** amikor a rendszer rákérdez a Application Insightsra.
-    1. Válasszon egy Önhöz közeli régiót vagy az elérni kívánt erőforrások közelében.
-
-1. Az összes kérésre való válaszadás után a VS Code megjeleníti az alkalmazáshoz létrehozott Azure-erőforrásokat az értesítési felugró ablakban.
-
-    Linux rendszeren való üzembe helyezéskor válassza az **Igen** lehetőséget, ha a rendszer felszólítja, hogy frissítse a konfigurációt `npm install` a cél Linux-kiszolgálón való futtatásra.
-
-    ![Rákérdezés a konfiguráció frissítésére a cél Linux-kiszolgálón](media/quickstart-nodejs/server-build.png)
-
-1. Ha a rendszer kéri, válassza az **Igen** lehetőséget, és **mindig telepítse a &quot;NodeJS-docs-Hello-World&quot; munkaterületet az (alkalmazás neve)** elemre. Ha az **Igen** lehetőséget választja, a vs Code automatikusan ugyanazt a app Service webalkalmazást célozza meg a későbbi központi telepítésekkel.
-
-1. Ha Linux rendszerre telepíti a rendszert, válassza a **Tallózás webhely** lehetőséget a kérdésben, hogy a telepítés befejezése után megtekintse a frissen telepített webalkalmazást. A böngészőben meg kell jelennie a következőnek: &quot;„Helló világ!” alkalmazás!":::
+    :::image type="content" source="./media/quickstart-nodejs/save-configuration.png" alt-text="Képernyőkép a munkaterület frissítéséről a kiválasztott igen gombbal.":::
 
 > [!TIP]
 > Győződjön meg arról, hogy az alkalmazás figyeli a PORT környezeti változó által biztosított portot: `process.env.PORT` .
@@ -418,35 +316,7 @@ Megnyílik a VS Code kimenet ablak a log streamtel létesített kapcsolatban.
 
 ![Folyamatos átviteli naplók megtekintése](./media/quickstart-nodejs/view-logs.png)
 
-:::image type="content" source="./media/quickstart-nodejs/enable-restart.png" alt-text="Képernyőkép az Azure app Service-ről a VS Code-ban, amelyen a kék nyíl ikon van kiválasztva.&quot;:::
-        
-1. Válassza ki a *NodeJS-docs-Hello-World* mappát.
-
-1. Válasszon egy létrehozási lehetőséget azon operációs rendszer alapján, amelyre telepíteni kívánja a következőt:
-
-    - Linux: válassza az **új Webalkalmazás létrehozása** lehetőséget.
-    - Windows: válassza az **új Webalkalmazás létrehozása... lehetőséget. Speciális**
-
-1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az **ENTER** billentyűt. A névnek egyedinek kell lennie az összes Azure-ban, és csak alfanumerikus karaktereket (&quot;A-Z&quot;, &quot;a-z&quot; és &quot;0-9&quot;) és kötőjeleket (&quot;-&quot;) kell használnia.
-
-1. A Linux megcélzása esetén válassza ki a Node.js verziót, amikor a rendszer kéri. Az **LTS** -verzió használata javasolt.
-
-1. Ha a Windowst célozza meg, kövesse a további utasításokat:
-    1. Válassza az **Új erőforráscsoport létrehozása** lehetőséget, majd adja meg az erőforráscsoport nevét, például: `AppServiceQS-rg` .
-    1. Válassza a **Windows** lehetőséget az operációs rendszer számára.
-    1. Válassza az **új App Service terv létrehozása** lehetőséget, majd adja meg a csomag nevét (például `AppServiceQS-plan` ), majd válassza az **ingyenes F1** lehetőséget a díjszabási szinten.
-    1. Válassza **a Kihagyás lehetőséget,** amikor a rendszer rákérdez a Application Insightsra.
-    1. Válasszon egy Önhöz közeli régiót vagy az elérni kívánt erőforrások közelében.
-
-1. Az összes kérésre való válaszadás után a VS Code megjeleníti az alkalmazáshoz létrehozott Azure-erőforrásokat az értesítési felugró ablakban.
-
-    Linux rendszeren való üzembe helyezéskor válassza az **Igen** lehetőséget, ha a rendszer felszólítja, hogy frissítse a konfigurációt `npm install` a cél Linux-kiszolgálón való futtatásra.
-
-    ![Rákérdezés a konfiguráció frissítésére a cél Linux-kiszolgálón](media/quickstart-nodejs/server-build.png)
-
-1. Ha a rendszer kéri, válassza az **Igen** lehetőséget, és **mindig telepítse a &quot;NodeJS-docs-Hello-World&quot; munkaterületet az (alkalmazás neve)** elemre. Ha az **Igen** lehetőséget választja, a vs Code automatikusan ugyanazt a app Service webalkalmazást célozza meg a későbbi központi telepítésekkel.
-
-1. Ha Linux rendszerre telepíti a rendszert, válassza a **Tallózás webhely** lehetőséget a kérdésben, hogy a telepítés befejezése után megtekintse a frissen telepített webalkalmazást. A böngészőben meg kell jelennie a következőnek: &quot;„Helló világ!” alkalmazás!":::
+:::image type="content" source="./media/quickstart-nodejs/enable-restart.png" alt-text="Képernyőfelvétel a VS Code parancssorról a fájlok naplózásának engedélyezéséhez és a webalkalmazás újraindításához az igen gomb kiválasztásával.":::
 
 Néhány másodperc elteltével megjelenik egy üzenet, amely jelzi, hogy csatlakozik a log-streaming szolgáltatáshoz. Frissítse az oldalt néhányszor, hogy láthassa a tevékenységeket.
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7bb38824f2071e2575877940795f9b90a2a384b4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 57b6bac49f0142b008a21accfffb614453cc6aec
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325761"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358150"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Az Azure Digital Twins Twin gráf lekérdezése
 
@@ -154,21 +154,19 @@ AND T.Temperature = 70
 Azt is megteheti, **hogy egy bizonyos tulajdonság definiálva van-e**. Itt látható egy olyan lekérdezés, amely a megadott *Location* tulajdonsággal rendelkező ikreket tartalmaz:
 
 ```sql
-SELECT *
-FROM DIGITALTWINS WHERE IS_DEFINED(Location)
+SELECT * FROM DIGITALTWINS WHERE IS_DEFINED(Location)
 ```
 
 Ez segít az ikreknek a *címke* tulajdonságai alapján való beszerzésében, a [Címkék hozzáadása a digitális ikrekhez](how-to-use-tags.md)című témakörben leírtak szerint. Itt látható egy olyan lekérdezés, amely a *vörös színnel* jelölt összes ikreket lekéri:
 
 ```sql
-select * from digitaltwins where is_defined(tags.red)
+SELECT * FROM DIGITALTWINS WHERE IS_DEFINED(tags.red)
 ```
 
 Az ikreket **egy tulajdonság típusa** alapján is elérheti. Íme egy lekérdezés, amely olyan ikreket kap, amelyek *hőmérsékleti* tulajdonsága egy szám:
 
 ```sql
-SELECT * FROM DIGITALTWINS T
-WHERE IS_NUMBER(T.Temperature)
+SELECT * FROM DIGITALTWINS T WHERE IS_NUMBER(T.Temperature)
 ```
 
 ### <a name="query-by-model"></a>Lekérdezés modell szerint

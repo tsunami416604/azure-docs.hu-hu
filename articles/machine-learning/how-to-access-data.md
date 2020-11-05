@@ -1,5 +1,5 @@
 ---
-title: Csatlakozás Azure Storage-szolgáltatásokhoz
+title: Kapcsolódás az Azure Storage Services szolgáltatásához
 titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogyan használhatja az adattárakat az Azure Storage-szolgáltatásokhoz való biztonságos kapcsolódásra Azure Machine Learning
 services: machine-learning
@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
-ms.date: 07/22/2020
-ms.custom: how-to, contperfq1, devx-track-python
-ms.openlocfilehash: db641eee13350f5a774e4ffd138e38c474af4981
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/03/2020
+ms.custom: how-to, contperfq1, devx-track-python, data4ml
+ms.openlocfilehash: f60d864bd367b5f44869abc9ccac4e4cc266075a
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320870"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358099"
 ---
-# <a name="connect-to-azure-storage-services"></a>Csatlakozás Azure Storage-szolgáltatásokhoz
+# <a name="connect-to-storage-services-azure"></a>Kapcsolódás a Storage Services Azure-hoz
 
-Ebből a cikkből megtudhatja, hogyan **csatlakozhat az Azure Storage-szolgáltatásokhoz Azure Machine learning adattáron keresztül**. Az adattárolók biztonságosan csatlakoznak az Azure Storage szolgáltatáshoz a hitelesítő adatok és az eredeti adatforrások integritásának veszélyeztetése nélkül. A kapcsolati adatokat, például az előfizetési AZONOSÍTÓját és a jogkivonat-engedélyezést a munkaterülethez társított [Key Vault](https://azure.microsoft.com/services/key-vault/) tárolják, így biztonságosan hozzáférhet a tárolóhoz anélkül, hogy a parancsfájlokban rögzített kódokat kellene megtennie. Az adattárolók létrehozásához és regisztrálásához használhatja a [Azure Machine learning PYTHON SDK](#python) -t vagy a [Azure Machine learning Studio alkalmazást](how-to-connect-data-ui.md) .
+Ebből a cikkből megtudhatja, hogyan **kapcsolódhat az Azure-beli tárolási szolgáltatásokhoz Azure Machine learning adattárolók használatával**. Az adattárolók biztonságosan csatlakoznak az Azure Storage szolgáltatáshoz a hitelesítő adatok és az eredeti adatforrások integritásának veszélyeztetése nélkül. A kapcsolati adatokat, például az előfizetési AZONOSÍTÓját és a jogkivonat-engedélyezést a munkaterülethez társított [Key Vault](https://azure.microsoft.com/services/key-vault/) tárolják, így biztonságosan hozzáférhet a tárolóhoz anélkül, hogy a parancsfájlokban rögzített kódokat kellene megtennie. Az adattárolók létrehozásához és regisztrálásához használhatja a [Azure Machine learning PYTHON SDK](#python) -t vagy a [Azure Machine learning Studio alkalmazást](how-to-connect-data-ui.md) .
 
 Ha az adattárolókat a Azure Machine Learning VS Code bővítménnyel szeretné létrehozni és kezelni, További tudnivalókért tekintse meg a [vs Code erőforrás-kezelési útmutatóját](how-to-manage-resources-vscode.md#datastores) .
 
@@ -109,11 +109,13 @@ Megtalálhatja a fiók kulcsát, az SAS-tokent és az egyszerű szolgáltatásn�
     * A megfelelő **áttekintő** oldal tartalmazni fogja a szükséges információkat, például a bérlő azonosítóját és az ügyfél-azonosítót.
 
 > [!IMPORTANT]
-> Biztonsági okokból előfordulhat, hogy módosítania kell az Azure Storage-fiókhoz tartozó hozzáférési kulcsokat (a fiók kulcsát vagy SAS-tokenjét). Ha ezt teszi, ügyeljen arra, hogy szinkronizálja az új hitelesítő adatokat a munkaterülettel és a hozzá csatlakoztatott adattárolókkal. Útmutató [a frissített hitelesítő adatok szinkronizálásához](how-to-change-storage-access-key.md). 
-
+> * Ha módosítania kell egy Azure Storage-fiók (fiók vagy SAS-token) hozzáférési kulcsait, akkor ügyeljen arra, hogy szinkronizálja az új hitelesítő adatokat a munkaterülettel és a hozzá csatlakoztatott adattárakkal. Útmutató [a frissített hitelesítő adatok szinkronizálásához](how-to-change-storage-access-key.md). 
 ### <a name="permissions"></a>Engedélyek
 
-Az Azure Blob Container és Azure Data Lake 2. generációs tárolók esetében ellenőrizze, hogy a hitelesítési hitelesítő adatai rendelkeznek-e **Storage blob-Adatolvasóval** . További információ a [Storage blob-Adatolvasóról](../role-based-access-control/built-in-roles.md#storage-blob-data-reader). A fiók SAS-tokenje alapértelmezés szerint nem rendelkezik engedélyekkel. Az adatok olvasási hozzáféréséhez a hitelesítő adatoknak legalább listáját és olvasási engedélyeket kell tartalmazniuk a tárolók és objektumok számára. Az adatírások eléréséhez írási és hozzáadási engedélyekre is szükség van.
+Az Azure Blob Container és Azure Data Lake 2. generációs tárolók esetében ellenőrizze, hogy a hitelesítési hitelesítő adatok rendelkeznek-e a **Storage blob Adatolvasóval** . További információ a [Storage blob-Adatolvasóról](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader). A fiók SAS-tokenje alapértelmezés szerint nem rendelkezik engedélyekkel. 
+* Az adatok **olvasási hozzáféréséhez** a hitelesítő adatoknak legalább listáját és olvasási engedélyeket kell tartalmazniuk a tárolók és objektumok számára. 
+
+* Az **adatírások eléréséhez** írási és hozzáadási engedélyekre is szükség van.
 
 <a name="python"></a>
 
@@ -130,6 +132,8 @@ Ebben a szakaszban példákat talál egy adattár létrehozására és regisztr�
  Más támogatott tárolási szolgáltatásokhoz tartozó adattárolók létrehozásához tekintse meg a [megfelelő `register_azure_*` módszerek dokumentációját](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=truemethods).
 
 Ha alacsony szintű felhasználói élményt szeretne, tekintse meg az [Azure Machine learning Studióval való kapcsolódás](how-to-connect-data-ui.md)az adatkapcsolathoz című témakört.
+>[!IMPORTANT]
+> Ha törli a regisztrációt, és újra regisztrálja az adattárolót ugyanazzal a névvel, és a művelet meghiúsul, előfordulhat, hogy a munkaterület Azure Key Vault nem rendelkezik a helyreállítható törléssel. Alapértelmezés szerint a Soft-delete engedélyezve van a munkaterület által létrehozott Key Vault-példányon, de ez nem engedélyezhető, ha meglévő kulcstartót használt, vagy pedig az október 2020. előtt létrehozott munkaterülettel rendelkezik. További információ a helyreállítható törlés engedélyezéséről: [a meglévő kulcstartó bekapcsolásának bekapcsolása]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault).
 
 > [!NOTE]
 > Az adattár neve csak kisbetűkből, számokból és aláhúzásokból állhat. 

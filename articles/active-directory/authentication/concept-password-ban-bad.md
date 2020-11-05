@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fd367b337a0f26323411111ea7eb1120bf6d75d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c4da1066166a3384ffb5f0f94599452829faed1b
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965182"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356586"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Helytelen jelszavak eltávolítása Azure Active Directory jelszavas védelem használatával
 
@@ -61,7 +61,7 @@ Ha a feltételek hozzáadódnak az egyéni tiltott jelszavak listájához, azok 
 
 ![Az egyéni tiltott jelszavak listájának módosítása a hitelesítési módszerek területen](./media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png)
 
-Vegyünk egy *contoso*nevű ügyfelet. A vállalat székhelye Londonban található, és egy *widget*nevű terméket tesz elérhetővé. Ebben a példában az ügyfél számára a felesleges és kevésbé biztonságos megoldás a jelen feltételek adott változatának letiltására, például a következőkre:
+Vegyünk egy *contoso* nevű ügyfelet. A vállalat székhelye Londonban található, és egy *widget* nevű terméket tesz elérhetővé. Ebben a példában az ügyfél számára a felesleges és kevésbé biztonságos megoldás a jelen feltételek adott változatának letiltására, például a következőkre:
 
 - "Contoso! 1"
 - "Contoso@London"
@@ -202,7 +202,7 @@ Nézzük meg egy kissé eltérő példát, amely azt szemlélteti, hogy a jelsz�
 > [!IMPORTANT]
 > A betiltott jelszó-algoritmus, valamint a globálisan tiltott jelszavak listája az Azure-ban bármikor megváltoztatható a folyamatos biztonsági elemzés és kutatás alapján.
 >
-> Hibrid forgatókönyvekben a helyszíni DC Agent szolgáltatás esetében a frissített algoritmusok csak a DC-ügynök szoftverének újratelepítése után lépnek érvénybe.
+> Hibrid forgatókönyvekben a helyszíni DC Agent szolgáltatás esetében a frissített algoritmusok csak a DC-ügynök szoftverének frissítésekor lépnek érvénybe.
 
 ## <a name="what-do-users-see"></a>Mit látnak a felhasználók?
 
@@ -214,8 +214,8 @@ Amikor egy felhasználó megpróbál visszaállítani egy jelszót a betiltott v
 
 | Felhasználók | Azure AD jelszavas védelem a globálisan tiltott jelszavak listájával | Azure AD jelszavas védelem egyéni tiltott jelszavak listájával|
 |-------------------------------------------|---------------------------|---------------------------|
-| Csak felhőalapú felhasználók                          | Azure AD Free             | prémium szintű Azure AD P1 vagy P2 |
-| A helyszíni AD DSról szinkronizált felhasználók | prémium szintű Azure AD P1 vagy P2 | prémium szintű Azure AD P1 vagy P2 |
+| Csak felhőalapú felhasználók                          | Azure AD Free             | Prémium szintű Azure AD P1 vagy P2 |
+| A helyszíni AD DSról szinkronizált felhasználók | Prémium szintű Azure AD P1 vagy P2 | Prémium szintű Azure AD P1 vagy P2 |
 
 > [!NOTE]
 > A helyszíni AD DS az Azure AD-vel nem szinkronizált felhasználók az Azure AD jelszavas védelmet is igénybe vehetik a szinkronizált felhasználók meglévő licencelése alapján.

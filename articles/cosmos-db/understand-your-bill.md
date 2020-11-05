@@ -5,14 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
+ms.date: 11/04/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 7b26c88bcbd303f00dc6163dd0323b07cbb83dcf
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3ac90b79053e59047dbe64598688e77b9df059d1
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073825"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358711"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Az Azure Cosmos DB számláinak ismertetése
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -103,11 +103,11 @@ Ha egy tárolóra vagy tárolók egy készletére emeli a kiépített átviteli 
 
 * 720 óra alatt, ha 300 óra kiépített átviteli sebesség volt a 120-K RU/s, és a fennmaradó 420 óra kiépített átviteli sebesség a következő volt: 155-K RU/s, a havi számla az alábbiak szerint fog megjelenni: 300 x $9.60/Hour + 420 x $12.40/óra = $2 880 + $5 208 = $8088/month. 
 
-:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="Dedikált átviteli sebesség – példa":::
+:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="Megosztott átviteli sebesség – példa":::
 
-## <a name="billing-examples-with-geo-replication-and-multi-region-writes"></a>Számlázási példák a Geo-replikációval és a többrégiós írásokkal  
+## <a name="billing-examples-with-geo-replication"></a>Számlázási példák földrajzi replikálással  
 
-Bármikor hozzáadhat vagy eltávolíthat Azure-régiókat a világ bármely pontján az Azure Cosmos-adatbázis fiókjához. A különböző Azure Cosmos-adatbázisok és-tárolók számára konfigurált átviteli sebesség az Azure Cosmos Database-fiókhoz társított összes Azure-régióban le lesz foglalva. Ha a kiépített átviteli sebesség (RU/s) összege az Azure Cosmos Database-fiókban (óránként kiépítve) található összes adatbázisban és tárolóban konfigurálva van, és az adatbázis-fiókjához tartozó Azure-régiók száma N, ezután az adott órában az Azure Cosmos-adatbázis fiókjához (a) tartozó, egyetlen írási régióval konfigurált összes kiépített átviteli sebesség egyenlő a T x N RU/s értékkel, és (b) az összes olyan régióban konfigurálva van, amely a feldolgozásra alkalmas írások esetében a T x (N + 1) RU/s értékkel egyenlő. Kiépített átviteli sebesség (egyszeres írási régió): $0.008/óra/100 RU/s és kiépített átviteli sebesség több írható régióval (többrégiós írási konfiguráció) költségek $0.016/óra/óránként 100 RU/s (lásd a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/)). Akár egyetlen írási régiója, akár több írási régiója is van, Azure Cosmos DB lehetővé teszi az adatok bármely régióból való beolvasását.
+Bármikor hozzáadhat vagy eltávolíthat Azure-régiókat a világ bármely pontján az Azure Cosmos-adatbázis fiókjához. A különböző Azure Cosmos-adatbázisok és-tárolók számára konfigurált átviteli sebesség az Azure Cosmos Database-fiókhoz társított összes Azure-régióban le lesz foglalva. Ha a kiépített átviteli sebesség (RU/mp) az Azure Cosmos Database-fiókban (óránként kiépítve) található összes adatbázisban és tárolóban konfigurálva van, az adatbázis-fiókhoz társított Azure-régiók száma N, akkor az Azure Cosmos Database-fiókhoz tartozó teljes kiosztott átviteli sebesség a T x N RU/s értékkel egyenlő. Kiépített átviteli sebesség (egyszeres írási régió): $0.008/óra/100 RU/s és kiépített átviteli sebesség több írható régióval (többrégiós írási konfiguráció) költségek $0.016/óra/óránként 100 RU/s (lásd a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/)). Akár egyetlen írási régiója, akár több írási régiója is van, Azure Cosmos DB lehetővé teszi az adatok bármely régióból való beolvasását.
 
 ### <a name="billing-example-multi-region-azure-cosmos-account-single-region-writes"></a>Számlázási példa: több régióból álló Azure Cosmos-fiók, egyrégiós írások
 
@@ -193,7 +193,7 @@ Tekintsük át a következő példát, ahol olyan többrégiós Azure Cosmos-fi�
 
 Az alábbi ábrán látható, hogy a teljes kiépített átviteli sebesség változásai a hónapban 720 óra alatt jelennek meg: 
 
-:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="Dedikált átviteli sebesség – példa":::
+:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="Valós élet – példa":::
 
 A teljes havi számla (feltéve, hogy a havi 30 nap/720 óra) a következőképpen lesz kiszámítva:
 
@@ -301,7 +301,7 @@ A ténylegesen megvásárolt kreditek összege $8 óránként, 100 K/s áron, az
 |----|----|----|----|----|
 |USA keleti régiója|$0,008 |50 K|$4|$2 880 |
 |Kelet-Japán|$0,009 |50 K| $4,50 |$3 240 |
-|||Használatalapú fizetés|$8,50|$6120|
+|||Utólagos elszámolás|$8,50|$6120|
 |Lefoglalt kapacitás megvásárlása|$0,0064 (20% kedvezmény) |100 RU/s vagy $8 kapacitás előre megvásárolva |– $8|– $5 760 |
 |Nettó számla|||$0.50 |$360 |
 

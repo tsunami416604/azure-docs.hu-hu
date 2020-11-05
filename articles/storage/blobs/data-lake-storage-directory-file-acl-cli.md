@@ -10,12 +10,12 @@ ms.date: 05/18/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 22d048b15cc097cd8a24e5ed57bbe4d5a6183e2f
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: ee461193be81297c6577ce4c264cabbf08e72417
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131598"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359442"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Könyvtárak, fájlok és ACL-ek kezelése az Azure CLI használatával Azure Data Lake Storage Gen2
 
@@ -249,7 +249,7 @@ Ebben a példában a tulajdonos felhasználó olvasási, írási és végrehajt�
 
 ### <a name="set-an-acl"></a>ACL beállítása
 
-A `az storage fs access set` parancs használatával állítsa be a **címtár**ACL-listáját. 
+A `az storage fs access set` parancs használatával állítsa be a **címtár** ACL-listáját. 
 
 Ez a példa a tulajdonos felhasználó, tulajdonos csoport vagy más felhasználók könyvtárának ACL-listáját állítja be, majd kinyomtatja az ACL-t a konzolra.
 
@@ -263,7 +263,7 @@ Ez a példa a tulajdonos felhasználó, tulajdonos csoport vagy más felhasznál
 az storage fs access set --acl "default:user::rw-,group::rw-,other::-wx" -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-A `az storage fs access set` parancs használatával állítsa be egy **fájl**ACL-listáját. 
+A `az storage fs access set` parancs használatával állítsa be egy **fájl** ACL-listáját. 
 
 Ez a példa egy fájl ACL-fájlját állítja be a tulajdonos felhasználó, tulajdonos csoport vagy más felhasználók számára, majd kinyomtatja az ACL-t a konzolra.
 
@@ -283,13 +283,13 @@ Ezt az engedélyt úgy is beállíthatja, hogy a `az storage fs access set` para
 
 Frissítse a címtár vagy fájl ACL-listáját úgy `-permissions` , hogy a paramétert egy ACL rövid formájára állítja be.
 
-Ez a példa egy **könyvtár**ACL-listáját frissíti.
+Ez a példa egy **könyvtár** ACL-listáját frissíti.
 
 ```azurecli
 az storage fs access set --permissions rwxrwxrwx -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-Ez a példa egy **fájl**ACL-listáját frissíti.
+Ez a példa egy **fájl** ACL-listáját frissíti.
 
 ```azurecli
 az storage fs access set --permissions rwxrwxrwx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
@@ -307,7 +307,12 @@ Ez a példa egy fájl tulajdonosát módosítja.
 
 ```azurecli
 az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
+
 ```
+
+### <a name="set-an-acl-recursively"></a>ACL beállítása rekurzív módon
+
+Az ACL-eket a szülő könyvtár meglévő alárendelt elemein is hozzáadhatja, frissítheti és eltávolíthatja anélkül, hogy ezeket a módosításokat egyenként el kellene végeznie az egyes alárendelt elemek esetében. További információ: [rekurzív hozzáférés-vezérlési listák (ACL-ek) beállítása Azure Data Lake Storage Gen2hoz](recursive-access-control-lists.md).
 
 ## <a name="see-also"></a>Lásd még
 

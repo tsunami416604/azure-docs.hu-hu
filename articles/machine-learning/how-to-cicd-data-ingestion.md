@@ -6,18 +6,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
+ms.custom: how-to, devx-track-python, data4ml
 ms.author: iefedore
 author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 8f229c52b62c740c9d955f745a6922e59163b907
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: fe2f35708f6a148f8db9ef6fd0a598e19e746fbd
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348559"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358626"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>A DevOps használata adatfeldolgozási folyamathoz
 
@@ -211,18 +211,18 @@ A JSON-fájl értékei a folyamat definíciójában megadott alapértelmezett é
 
 A folyamatos kézbesítési folyamat az összetevőket veszi át, és telepíti őket az első célként megadott környezetbe. Gondoskodik arról, hogy a megoldás a tesztek futtatásával működjön. Ha a művelet sikeres, az továbbra is a következő környezetbe kerül. 
 
-A CD Azure-folyamat a környezeteket képviselő több szakaszból áll. Mindegyik szakasz a következő lépéseket végrehajtó [központi telepítéseket](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) és [feladatokat](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops) tartalmazza:
+A CD Azure-folyamat a környezeteket képviselő több szakaszból áll. Mindegyik szakasz a következő lépéseket végrehajtó [központi telepítéseket](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) és [feladatokat](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops&preserve-view=true) tartalmazza:
 
 Egy Python-jegyzetfüzet üzembe helyezése Azure Databricks munkaterületen
 * Azure Data Factory folyamat üzembe helyezése 
 * A folyamat futtatása
 * Az adatfeldolgozás eredményének ellenőrzéséhez
 
-A folyamat fázisai olyan [jóváhagyásokkal](/azure/devops/pipelines/process/approvals?tabs=check-pass&view=azure-devops) és [kapukkal](/azure/devops/pipelines/release/approvals/gates?view=azure-devops) konfigurálhatók, amelyek további szabályozást biztosítanak a telepítési folyamatnak a környezetek láncán való kialakulásához.
+A folyamat fázisai olyan [jóváhagyásokkal](/azure/devops/pipelines/process/approvals?tabs=check-pass&view=azure-devops&preserve-view=true) és [kapukkal](/azure/devops/pipelines/release/approvals/gates?view=azure-devops&preserve-view=true) konfigurálhatók, amelyek további szabályozást biztosítanak a telepítési folyamatnak a környezetek láncán való kialakulásához.
 
 ### <a name="deploy-a-python-notebook"></a>Python-jegyzetfüzet üzembe helyezése
 
-Az alábbi kódrészlet egy olyan Azure-alapú folyamat- [telepítést](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) határoz meg, amely egy Python-jegyzetfüzetet másol egy Databricks-fürtre:
+Az alábbi kódrészlet egy olyan Azure-alapú folyamat- [telepítést](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) határoz meg, amely egy Python-jegyzetfüzetet másol egy Databricks-fürtre:
 
 ```yaml
 - stage: 'Deploy_to_QA'
@@ -258,7 +258,7 @@ Az alábbi kódrészlet egy olyan Azure-alapú folyamat- [telepítést](/azure/d
               displayName: 'Deploy (copy) data processing notebook to the Databricks cluster'       
 ```            
 
-A CI által előállított összetevők automatikusan átkerülnek a központi telepítési ügynökre, és elérhetők a `$(Pipeline.Workspace)` mappában. Ebben az esetben a telepítési feladat a Python-jegyzetfüzetet tartalmazó összetevőre hivatkozik `di-notebooks` . Ez [az](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) üzemelő példány a [Databricks Azure DevOps bővítmény](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks) használatával másolja a notebook-fájlokat a Databricks-munkaterületre.
+A CI által előállított összetevők automatikusan átkerülnek a központi telepítési ügynökre, és elérhetők a `$(Pipeline.Workspace)` mappában. Ebben az esetben a telepítési feladat a Python-jegyzetfüzetet tartalmazó összetevőre hivatkozik `di-notebooks` . Ez [az](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) üzemelő példány a [Databricks Azure DevOps bővítmény](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks) használatával másolja a notebook-fájlokat a Databricks-munkaterületre.
 
 A `Deploy_to_QA` szakasz az `devops-ds-qa-vg` Azure DevOps projektben definiált változóra mutató hivatkozást tartalmaz. Az ebben a szakaszban szereplő lépések a változókat az adott változócsoport (például és) változóit jelentik `$(DATABRICKS_URL)` `$(DATABRICKS_TOKEN)` . Az elképzelés az, hogy a következő szakasz (például `Deploy_to_UAT` ) ugyanazokat a változókat fogja használni, mint a saját ellenőrzését-hatókörű változó csoportjában.
 
@@ -339,7 +339,7 @@ A teljes CI/CD Azure-folyamat a következő szakaszokból áll: _ CI
     * Üzembe helyezés a Databricks és az ADF üzembe helyezése
     * Integrációs teszt
 
-Számos * **üzembe helyezési** fázist tartalmaz, amely megegyezik a megcélzott környezetek számával. Mindegyik _*_üzembe helyezési_*_ szakasz két olyan [központi telepítést](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) tartalmaz, amelyek párhuzamosan futnak, valamint egy olyan [feladatot](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops) , amely az üzembe helyezést követően fut a megoldás teszteléséhez a környezetben.
+Számos * **üzembe helyezési** fázist tartalmaz, amely megegyezik a megcélzott környezetek számával. Mindegyik _*_üzembe helyezési_*_ szakasz két olyan [központi telepítést](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) tartalmaz, amelyek párhuzamosan futnak, valamint egy olyan [feladatot](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops&preserve-view=true) , amely az üzembe helyezést követően fut a megoldás teszteléséhez a környezetben.
 
 A folyamat egy minta implementációját a következő _*_YAML_*_ -kódrészletben kell összeállítani:
 

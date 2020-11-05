@@ -9,12 +9,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 94696eacd9a75129f493a97bca201ad5ffb3456c
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 2526f8a79cb9f9bc312c6338e3a005244a4a901c
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131564"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359136"
 ---
 # <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>A Java segítségével kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2
 
@@ -398,6 +398,10 @@ static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
 
 }
 ```
+
+### <a name="set-an-acl-recursively"></a>ACL beállítása rekurzív módon
+
+Az ACL-eket a szülő könyvtár meglévő alárendelt elemein is hozzáadhatja, frissítheti és eltávolíthatja anélkül, hogy ezeket a módosításokat egyenként el kellene végeznie az egyes alárendelt elemek esetében. További információ: [rekurzív hozzáférés-vezérlési listák (ACL-ek) beállítása Azure Data Lake Storage Gen2hoz](recursive-access-control-lists.md).
 
 ## <a name="see-also"></a>Lásd még
 

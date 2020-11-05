@@ -1,7 +1,7 @@
 ---
 title: Mi az az automatizált ML? Auto ML
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan hozhatja ki a Azure Machine Learning automatikusan egy algoritmust, és létrehoz egy modellt, hogy időt takarítson meg az Ön által megadott paraméterek és feltételek használatával, hogy kiválassza a modellhez legmegfelelőbb algoritmust.
+description: Megtudhatja, hogyan hozhatja ki automatikusan a modelleket az Ön által megadott paraméterek és feltételek használatával Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,13 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
-ms.openlocfilehash: 31cb2b2b5411968f1eba71fa9afc7bdc8296407c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: automl
+ms.openlocfilehash: ca0cfd7c38dde5e7307c31989791aa3906b9cbe5
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307403"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357283"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Mi az a gépi tanulás (AutoML)?
 
@@ -33,7 +34,7 @@ Az adatszakértők, az elemzők és a fejlesztők az egész iparágban az automa
 + Az adatelemzési ajánlott eljárások kihasználása
 + Gyors problémamegoldás
 
-### <a name="classification"></a>Besorolás
+### <a name="classification"></a>Osztályozás
 
 A besorolás egy gyakori gépi tanulási feladat. A besorolás olyan felügyelt tanulás típusa, amelyben a modellek bemutatják a betanítási információkat, és ezeket a tanulmányokat az új adatra alkalmazzák. Azure Machine Learning a featurizations kifejezetten ezekhez a feladatokhoz, például a Deep neurális hálózati szöveg featurizers a besoroláshoz. További információ a [featurization beállításairól](how-to-configure-auto-features.md#featurization). 
 

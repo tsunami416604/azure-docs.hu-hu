@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: d6df94cca46d82c3e066779cd28584c84f12fbce
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 3b9f744e414e83c103f6b9249a0ccf5020588463
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339434"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356348"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Az alkalmazás közzététele az Azure AD App Galleryben
 
@@ -97,6 +97,7 @@ A következő táblázat összehasonlítja a fő szabványokat: nyílt hitelesí
 | Mobile-alapú egyszeri kijelentkezés| √| √* |
 | A mobil alkalmazások feltételes hozzáférési szabályzatai| √| X |
 | Zökkenőmentes MFA-élmény a Mobile Applications szolgáltatáshoz| √| X |
+| SCIM kiépítés| √| √ |
 | Hozzáférés Microsoft Graph| √| X |
 
 * Lehetséges, de a Microsoft nem ad meg mintákat vagy útmutatást.
@@ -261,7 +262,7 @@ Ha hozzá szeretné adni az alkalmazást a katalógusban a jelszó SSO használa
 
 ![Jelszó-SSO-alkalmazás listázása a katalógusban](./media/howto-app-gallery-listing/passwordsso.png)
 
-Ha SCIM 2,0-végpontot hoz létre a felhasználók üzembe helyezéséhez, válassza a látható lehetőséget. 
+Ha [SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) 2,0-végpontot hoz létre a felhasználók üzembe helyezéséhez, válassza a látható lehetőséget. 
 
    ![A felhasználó kiépítési kérelme](./media/howto-app-gallery-listing/user-provisioning.png)
 
@@ -304,6 +305,6 @@ Bármilyen eszkaláció esetén küldjön e-mailt az [Azure ad SSO integrációs
 A Microsoft Partner Network azonnali hozzáférést biztosít az exkluzív erőforrásokhoz, programokhoz, eszközökhöz és kapcsolatokhoz. A hálózathoz való csatlakozáshoz és a piacra jutási terv létrehozásához tekintse meg a [kereskedelmi ügyfelek elérhetőségét](https://partner.microsoft.com/explore/commercial#gtm)ismertető témakört.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 * [Hitelesítési forgatókönyvek az Azure AD-hez](authentication-flows-app-scenarios.md)

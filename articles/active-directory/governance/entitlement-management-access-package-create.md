@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c1734af799ee473d6ba75fe2e8ab8429afa51d0
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: f6c30dffbc8f97273ee59ce33ae3fe75ed730763
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318202"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356637"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Új hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében
 
@@ -59,15 +59,15 @@ Az alábbi lépésekkel hozhat létre új hozzáférési csomagot.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Kattintson a **Azure Active Directory** , majd az **identitás-szabályozás**elemre.
+1. Kattintson a **Azure Active Directory** , majd az **identitás-szabályozás** elemre.
 
-1. A bal oldali menüben kattintson a **hozzáférési csomagok**elemre.
+1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre.
 
-1. Kattintson az **új hozzáférési csomag**elemre.
+1. Kattintson az **új hozzáférési csomag** elemre.
    
     ![Jogosultságok kezelése a Azure Portal](./media/entitlement-management-shared/access-packages-list.png)
 
-## <a name="basics"></a>Alapvető beállítások
+## <a name="basics"></a>Alapbeállítások
 
 Az **alapvető beállítások** lapon adja meg a hozzáférési csomag nevét, és adja meg, hogy melyik katalógusban hozza létre a hozzáférési csomagot a alkalmazásban.
 
@@ -79,7 +79,7 @@ Az **alapvető beállítások** lapon adja meg a hozzáférési csomag nevét, �
 
     ![Hozzáférési csomag – alapismeretek](./media/entitlement-management-access-package-create/basics.png)
 
-    Ha Ön globális rendszergazda, felhasználói rendszergazda vagy katalógus létrehozója, és egy új katalógusban szeretné létrehozni a hozzáférési csomagot, akkor kattintson az **új katalógus létrehozása**lehetőségre. Adja meg a katalógus nevét és leírását, majd kattintson a **Létrehozás**gombra.
+    Ha Ön globális rendszergazda, felhasználói rendszergazda vagy katalógus létrehozója, és egy új katalógusban szeretné létrehozni a hozzáférési csomagot, akkor kattintson az **új katalógus létrehozása** lehetőségre. Adja meg a katalógus nevét és leírását, majd kattintson a **Létrehozás** gombra.
 
     A létrehozott hozzáférési csomag és a benne található összes erőforrás hozzá lesz adva az új katalógushoz. Később további katalógus-tulajdonosokat is hozzáadhat.
 
@@ -89,7 +89,7 @@ Az **alapvető beállítások** lapon adja meg a hozzáférési csomag nevét, �
 
 Az **erőforrás-szerepkörök** lapon válassza ki a hozzáférési csomagban szerepeltetni kívánt erőforrásokat. A hozzáférési csomagot kérő és fogadó felhasználók megkapják a hozzáférési csomagban található összes erőforrás-szerepkört.
 
-1. Kattintson a hozzáadni kívánt erőforrástípus (**csoportok**, munkacsoportok, **alkalmazások**vagy SharePoint- **webhelyek**) elemre.
+1. Kattintson a hozzáadni kívánt erőforrástípus ( **csoportok** , munkacsoportok, **alkalmazások** vagy SharePoint- **webhelyek** ) elemre.
 
 1. A megjelenő Select (kiválasztás) ablaktáblán válasszon ki egy vagy több erőforrást a listából.
 
@@ -125,7 +125,7 @@ A **felülvizsgálat + létrehozás** lapon áttekintheti a beállításait, és
 
 1. A hozzáférési csomag beállításainak áttekintése
 
-    ![Hozzáférési csomag – házirend – házirend-beállítás engedélyezése](./media/entitlement-management-access-package-create/review-create.png)
+    ![Hozzáférési csomag – házirend-beállítás engedélyezése](./media/entitlement-management-access-package-create/review-create.png)
 
 1. A hozzáférési csomag létrehozásához kattintson a **Létrehozás** gombra.
 

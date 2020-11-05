@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: f1da7149a41ec8dd08e307394cba3e7feabec42a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 02772ff6279ee813b86f92984742ba8301bdf74e
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320707"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357946"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>A Storage-fiók elérési kulcsainak újragenerálása
 
@@ -26,7 +26,8 @@ Megtudhatja, hogyan módosíthatja a Azure Machine Learning által használt Azu
 Biztonsági okokból előfordulhat, hogy módosítania kell egy Azure Storage-fiók hozzáférési kulcsait. A hozzáférési kulcs újralétrehozásakor a Azure Machine Learning frissíteni kell az új kulcs használatához. A Azure Machine Learning a Storage-fiókot is használhatja mind a Model Storage, mind pedig adattárként.
 
 > [!IMPORTANT]
-> Az adattárolókkal nyilvántartó hitelesítő adatokat a rendszer a munkaterülethez társított Azure Key Vault menti. Ha a Key Vault a [Törlés](../key-vault/general/soft-delete-overview.md) engedélyezve van, ügyeljen arra, hogy a hitelesítő adatok frissítéséhez kövesse ezt a cikket. Az adattár regisztrációjának törlése és az ugyanazon a néven való újbóli regisztrálása sikertelen lesz.
+
+> Az adattárolókkal regisztrált hitelesítő adatokat a munkaterülethez társított Azure Key Vault menti a rendszer. Ha a Key Vault rendelkezik a helyreállítható [törléssel](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) , ez a cikk útmutatást nyújt a hitelesítő adatok frissítéséhez. Ha törli az adattár regisztrációját, és megpróbálja újból regisztrálni ugyanazon a néven, a művelet sikertelen lesz. A következő témakörben talál további információt a Soft delete [bekapcsolása meglévő kulcstartóhoz]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault) című cikkben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -10,21 +10,21 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 10/09/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq2
-ms.openlocfilehash: 681e965d5fb64e35374b580cbbb238defd619492
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, contperfq2, automl
+ms.openlocfilehash: fcbe0fc5049f6e892f80f048a885c75420bc636e
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311486"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359085"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Az automatizált Machine learning-kísérletek eredményeinek kiértékelése
 
-Ebből a cikkből megtudhatja, hogyan tekintheti meg és értékelheti ki az automatizált gépi tanulás, a AutoML és a kísérletek eredményeit. Ezek a kísérletek több futtatásból állnak, ahol minden Futtatás létrehoz egy modellt. Az egyes modellek kiértékelése érdekében a AutoML automatikusan generál teljesítménymutatókat és diagramokat a kísérlet típusához. 
+Ebből a cikkből megtudhatja, hogyan tekintheti meg és értékelheti ki az automatizált gépi tanulás eredményeit, az automatikus ML-t, a kísérleteket. Ezek a kísérletek több futtatásból állnak, ahol minden Futtatás létrehoz egy modellt. Az egyes modellek kiértékelése érdekében az automatikus ML automatikusan generál teljesítménymutatókat és diagramokat a kísérlet típusához. 
 
-Például a AutoML különböző diagramokat biztosít a besorolási és regressziós modellekhez. 
+Az automatikus ML például különböző diagramokat biztosít a besorolási és regressziós modellekhez. 
 
-|Besorolás|Regresszió
+|Osztályozás|Regresszió
 |---|---|
 |<li> [Keveredési mátrix](#confusion-matrix) <li>[Precíziós visszahívási diagram](#precision-recall-chart) <li> [Fogadó működési jellemzői (vagy ROC)](#roc) <li> [Emelő görbe](#lift-curve)<li> [Nyereségi görbe](#gains-curve)<li> [Kalibrálási ábra](#calibration-plot) | <li> [Előre jelzett vagy igaz](#pvt) <li> [Maradványok hisztogramja](#histo)|
 
@@ -61,7 +61,7 @@ A futtatási előzmények és a modell teljesítmény-metrikáinak és diagramja
 
 ## <a name="classification-performance-metrics"></a>Besorolási teljesítmény mérőszámai
 
-A következő táblázat összefoglalja a modell teljesítményének mérőszámait, amelyeket a AutoML a kísérlethez generált egyes besorolási modellekhez kiszámít. 
+A következő táblázat összefoglalja a modell teljesítményének mérőszámait, amelyeket az automatizált ML kiszámít a kísérlethez generált egyes besorolási modellekhez. 
 
 Metrika|Leírás|Számítás|További paraméterek
 --|--|--|--
@@ -88,7 +88,7 @@ weighted_accuracy|A súlyozott pontosság az a pontosság, amelyben az egyes pé
 
 ### <a name="binary-vs-multiclass-metrics"></a>Bináris és többosztályos metrikák
 
-A AutoML nem tesz különbséget a bináris és a többosztályos metrikák között. Ugyanazokat az érvényesítési metrikákat kell jelenteni, hogy az adatkészlet két osztályból vagy kettőből áll-e. Néhány metrika azonban többosztályos besorolásra szolgál. Bináris adatkészletre alkalmazva ezek a mérőszámok nem kezelik osztályként az osztályt `true` , ahogy az várható. A többosztályos használatra szánt metrikák a, a vagy a utótaggal vannak ellátva `micro` `macro` `weighted` . Ilyenek például a következők:,,, `average_precision_score` `f1_score` `precision_score` `recall_score` és `AUC` .
+Az automatikus ML nem tesz különbséget a bináris és a többosztályos metrikák között. Ugyanazokat az érvényesítési metrikákat kell jelenteni, hogy az adatkészlet két osztályból vagy kettőből áll-e. Néhány metrika azonban többosztályos besorolásra szolgál. Bináris adatkészletre alkalmazva ezek a mérőszámok nem kezelik osztályként az osztályt `true` , ahogy az várható. A többosztályos használatra szánt metrikák a, a vagy a utótaggal vannak ellátva `micro` `macro` `weighted` . Ilyenek például a következők:,,, `average_precision_score` `f1_score` `precision_score` `recall_score` és `AUC` .
 
 Például a felidézés helyett `tp / (tp + fn)` a többosztályos átlagú visszahívás ( `micro` , `macro` , vagy `weighted` ) átlaga szerepel a bináris besorolási adatkészlet mindkét osztályán. Ez egyenértékű az osztály és az osztály visszahívásának kiszámításával `true` `false` , majd a kettő átlagát veszi figyelembe.
 
@@ -209,7 +209,7 @@ A jól kalibrált modell az y = x sorral összhangban van, ahol helyesen Jósolj
 
 ## <a name="regression-performance-metrics"></a>Regressziós teljesítmény mérőszámai
 
-A következő táblázat összefoglalja a modell teljesítményének mérőszámait, amelyeket a AutoML a kísérlethez generált egyes regressziós vagy előrejelzési modellekhez számít ki. 
+A következő táblázat összefoglalja a modell teljesítményének mérőszámait, amelyeket az automatikus ML kiszámít a kísérlethez generált regressziós vagy előrejelzési modellekhez. 
 
 |Metrika|Leírás|Számítás|További paraméterek
 --|--|--|--|

@@ -1,7 +1,7 @@
 ---
 title: 'Regressziós oktatóanyag: automatizált ML'
 titleSuffix: Azure Machine Learning
-description: Ebből az oktatóanyagból megtudhatja, hogyan hozhatja elő a gépi tanulási modellt az automatizált gépi tanulás használatával. A Azure Machine Learning az adatok előfeldolgozását, az algoritmus kiválasztását és a hiperparaméter kiválasztását automatizált módon végezheti el.
+description: Hozzon létre egy automatizált gépi tanulási kísérletet, amely egy regressziós modellt hoz létre az Ön által megadott képzési és konfigurációs beállítások alapján.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: aniththa
 ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: 731c6c743b103111a699074e10d8ba43a353d8e6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: devx-track-python, automl
+ms.openlocfilehash: 811f1c27af660d388ecb875741c073591bd25f7f
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317992"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358609"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Oktatóanyag: Automatizált gépi tanulás használata a taxiutak árának előrejelzéséhez
 

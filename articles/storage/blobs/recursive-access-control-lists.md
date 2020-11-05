@@ -9,19 +9,16 @@ ms.date: 11/03/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c0323bed627fd622471724b20677914736c564d3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 38699f94ae446295332deb9529a0da80d6df4301
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319913"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356863"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlési listák (ACL-ek) rekurzív beállítása Azure Data Lake Storage Gen2
 
 Az ACL öröklése már elérhető az új alárendelt elemekhez, amelyeket a rendszer a szülő címtárban hozott létre. Mostantól hozzáadhatja, frissítheti és eltávolíthatja a hozzáférés-vezérlési listákat a szülő könyvtár meglévő alárendelt elemeihez anélkül, hogy ezeket a módosításokat egyenként el kellene végeznie az egyes alárendelt elemek esetében.
-
-> [!NOTE]
-> A hozzáférési listák rekurzív beállításának lehetősége nyilvános előzetes verzióban érhető el, és minden régióban elérhető.  
 
 [Könyvtárak](#libraries)  |  [Példák](#code-samples)  |  [Ajánlott eljárások](#best-practice-guidelines)  |  [Visszajelzés küldése](#provide-feedback)
 
@@ -847,40 +844,19 @@ A futásidejű vagy az engedélyekkel kapcsolatos hibák merülhetnek fel. Futá
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Ez a példa az ACL-eket állítja be kötegekben. A **set-AzDataLakeGen2AclRecursive** minden hívása egy folytatási tokent ad vissza, amíg az összes ACL be nem fejeződik. Ez a példa egy nevű változót állít be `$ContinueOnFailure` `$false` , amely azt jelzi, hogy a folyamat nem folytathatja az ACL-ek beállítását az engedélyezési hiba esetén. A folytatási token változóként van tárolva `&token` . Hiba esetén a token a meghibásodási pontról folytatott folyamat folytatására használható.
+Ez a példa az eredményeket a változóhoz adja vissza, majd a hibás bejegyzéseket a formázott táblába.
 
 ```powershell
-$ContinueOnFailure = $false
+$result = Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
+$result
+$result.FailedEntries | ft 
+```
 
-$token = $null
-$TotalDirectoriesSuccess = 0
-$TotalFilesSuccess = 0
-$totalFailure = 0
-$FailedEntries = New-Object System.Collections.Generic.List[System.Object]
-do
-{
-    if ($ContinueOnFailure)
-    {
-        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 -ContinueOnFailure
-    }
-    else
-    {
-        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 
-    }
-    echo $result
-    $TotalFilesSuccess += $result.TotalFilesSuccessfulCount
-    $TotalDirectoriesSuccess += $result.TotalDirectoriesSuccessfulCount
-    $totalFailure += $result.TotalFailureCount
-    $FailedEntries += $result.FailedEntries
-    $token = $result.ContinuationToken
-} while (($token -ne $null) -and (($ContinueOnFailure) -or ($result.TotalFailureCount -eq 0)))
-echo ""
-echo "[Result Summary]"
-echo "TotalDirectoriesSuccessfulCount: `t$($TotalDirectoriesSuccess)"
-echo "TotalFilesSuccessfulCount: `t`t`t$($TotalFilesSuccess)"
-echo "TotalFailureCount: `t`t`t`t`t$($totalFailure)"
-echo "FailedEntries:"$($FailedEntries | ft)
+A táblázat kimenete alapján kijavíthatja az engedélyek hibáit, majd folytathatja a végrehajtást a folytatási token használatával.
 
+```powershell
+$result = Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl -ContinuationToken $result.ContinuationToken
+$result
 
 ```
 
@@ -991,41 +967,22 @@ Ha azt szeretné, hogy a folyamat az engedélyekkel kapcsolatos hibák mellett b
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Ez a példa úgy állítja be a `$ContinueOnFailure` változót, hogy `$true` jelezze, hogy a folyamat engedélyezési hiba esetén folytatja az ACL-ek beállítását. 
+Ez a példa a `ContinueOnFailure` paramétert használja, hogy a végrehajtás akkor is folytatódjon, ha a művelet engedélyekkel kapcsolatos hibát észlel. 
 
 ```powershell
-$ContinueOnFailure = $true
 
-$token = $null
 $TotalDirectoriesSuccess = 0
 $TotalFilesSuccess = 0
 $totalFailure = 0
 $FailedEntries = New-Object System.Collections.Generic.List[System.Object]
-do
-{
-    if ($ContinueOnFailure)
-    {
-        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 -ContinueOnFailure
-    }
-    else
-    {
-        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 
-    }
-    echo $result
-    $TotalFilesSuccess += $result.TotalFilesSuccessfulCount
-    $TotalDirectoriesSuccess += $result.TotalDirectoriesSuccessfulCount
-    $totalFailure += $result.TotalFailureCount
-    $FailedEntries += $result.FailedEntries
-    $token = $result.ContinuationToken
-} while (($token -ne $null) -and (($ContinueOnFailure) -or ($result.TotalFailureCount -eq 0)))
-echo ""
+
+$result = Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl -ContinueOnFailure
+
 echo "[Result Summary]"
-echo "TotalDirectoriesSuccessfulCount: `t$($TotalDirectoriesSuccess)"
-echo "TotalFilesSuccessfulCount: `t`t`t$($TotalFilesSuccess)"
-echo "TotalFailureCount: `t`t`t`t`t$($totalFailure)"
-echo "FailedEntries:"$($FailedEntries | ft)
-
-
+echo "TotalDirectoriesSuccessfulCount: `t$($result.TotalFilesSuccessfulCount)"
+echo "TotalFilesSuccessfulCount: `t`t`t$($result.TotalDirectoriesSuccessfulCount)"
+echo "TotalFailureCount: `t`t`t`t`t$($result.TotalFailureCount)"
+echo "FailedEntries:"$($result.FailedEntries | ft) 
 ```
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)

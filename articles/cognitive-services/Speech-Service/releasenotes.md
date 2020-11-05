@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 8faf9c913ea9bab2feaf698efeb6fd5b3ca63179
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 01c9cbe0438ee0efeece4c7e6b17e9607db4c4cc
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289619"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356688"
 ---
 # <a name="speech-service-release-notes"></a>Beszédfelismerési szolgáltatás kibocsátási megjegyzései
 
@@ -34,6 +34,9 @@ https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audioda
 -  **C++/c #/Java/Python/Objective-C/Swift** : a `stopSpeakingAsync()` szöveg-beszéd szintézis leállítására szolgáló metódust adott hozzá. Olvassa el itt a dokumentációt ( [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace)), itt ( [C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet), itt [(Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech?view=azure-java-stable), [itt (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)és [itt (Objective-C/Swift)](https://docs.microsoft.com/objectivec/cognitive-services/speech/).
 - **C#, C++, Java** : felvett egy `FromDialogServiceConnector()` függvényt a `Connection` osztályhoz, amely a kapcsolatok és a leválasztási események figyelésére használható `DialogServiceConnector` . Olvassa el itt a dokumentációt ( [C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet), [itt (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)és [itt (Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection?view=azure-java-stable).
 <!-- - **C++/C#/Java/Python/Objective-C/Swift**: Added support for Pronunciation Assessment, which evaluates speech pronunciation and gives speakers feedback on the accuracy and fluency of spoken audio. Read the documentation [here](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment). -->
+
+**Változás megszakítása**
+- **JavaScript** : a PullAudioOutputStream. Read () visszatérési típusa egy belső ígéretből egy natív JavaScript-ígéretre vált.
 
 **Hibajavítások**
 - **Összes** : rögzített 1,13 regresszió, `SetServiceProperty` ahol bizonyos speciális karaktereket tartalmazó értékek figyelmen kívül lettek hagyva.

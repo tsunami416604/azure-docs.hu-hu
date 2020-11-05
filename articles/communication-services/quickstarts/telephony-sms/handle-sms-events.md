@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e66d5c4dd4fc1c6c641da975b0ac2254f459642a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e153c873305cc128ce97ae7c6a907a8f592f8b32
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976929"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357470"
 ---
 # <a name="quickstart-handle-sms-events"></a>Gyors útmutató: SMS-események kezelése
 
@@ -41,11 +41,11 @@ Az Azure Portalon:
 
 1. Válassza az **előfizetések** lehetőséget a bal oldali menüben.
 2. Válassza ki az Event Gridhez használt előfizetést.
-3. A bal oldali menüben, a **Beállítások**területen válassza az **erőforrás-szolgáltatók**elemet.
+3. A bal oldali menüben, a **Beállítások** területen válassza az **erőforrás-szolgáltatók** elemet.
 4. Keresse ki a **Microsoft.EventGrid** elemet.
 5. Ha nincs regisztrálva, válassza a **Regisztrálás** lehetőséget. 
 
-Lehetséges, hogy a regisztráció végrehajtása eltart néhány pillanatig. Válassza a **Frissítés** lehetőséget az állapotfrissítéshez. Ha az **Állapot** értéke **Regisztrált**, folytathatja.
+Lehetséges, hogy a regisztráció végrehajtása eltart néhány pillanatig. Válassza a **Frissítés** lehetőséget az állapotfrissítéshez. Ha az **Állapot** értéke **Regisztrált** , folytathatja.
 
 ### <a name="event-grid-viewer-deployment"></a>Event Grid Viewer üzembe helyezése
 
@@ -63,21 +63,23 @@ Az **esemény-előfizetés létrehozása** lapon adja meg az esemény-előfizet�
 
 Előfizethet bizonyos eseményekre, hogy elmondja Event Grid a nyomon követni kívánt SMS-események, valamint az események küldésének helyét. Válassza ki azokat az eseményeket, amelyekre elő szeretné fizetni a legördülő menüből. SMS-ben lehetőség van a és a kiválasztására `SMS Received` `SMS Delivery Report Received` . 
 
+Ha a rendszer megkéri, hogy adjon meg egy **rendszertéma-nevet** , adjon meg egy egyedi azonosítót, amelyet igény szerint a kibocsátott események szűrésére használhat.
+
 Tekintse meg az [Azure kommunikációs szolgáltatások által támogatott események](../../concepts/event-handling.md)teljes listáját.
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="Képernyőfelvétel: az esemény-előfizetések gombjának kiválasztása az erőforrás események lapján.":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="Képernyőfelvétel: az SMS-ben fogadott és SMS-kézbesítési jelentés bejelölt esemény-típusai.":::
 
 Válassza a **webes Hook** lehetőséget a **végpont típusához**. 
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="Képernyőfelvétel: az esemény-előfizetések gombjának kiválasztása az erőforrás események lapján.":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="Képernyőfelvétel: a végpont típusa mező, amely a web Hookra van beállítva.":::
 
-A **végpont**esetében kattintson a **válasszon egy végpontot**lehetőségre, és adja meg a webalkalmazás URL-címét.
+A **végpont** esetében kattintson a **válasszon egy végpontot** lehetőségre, és adja meg a webalkalmazás URL-címét.
 
 Ebben az esetben a rövid útmutatóban korábban beállított [Azure Event Grid Viewer-minta](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) URL-címét fogjuk használni. A minta URL-címe a következő formátumban jelenik meg: `https://{{site-name}}.azurewebsites.net/api/updates`
 
-Ezután válassza a **kijelölés megerősítése**lehetőséget.
+Ezután válassza a **kijelölés megerősítése** lehetőséget.
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-selectwebhook-epadd.png" alt-text="Képernyőfelvétel: az esemény-előfizetések gombjának kiválasztása az erőforrás események lapján.":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-selectwebhook-epadd.png" alt-text="A webhook-végpont megerősítését bemutató képernyőkép.":::
 
 ## <a name="viewing-sms-events"></a>SMS-események megtekintése
 
@@ -94,13 +96,13 @@ Tekintse meg az [Azure kommunikációs szolgáltatások által támogatott esem�
 
 A fenti műveletek elvégzése után láthatja, hogy a rendszer `SMS Received` `SMS Delivery Report Received` elküldi az eseményeket a végpontnak. Ezek az események az elején beállított [Azure Event Grid Viewer-mintában](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) jelennek meg. Az esemény melletti szem ikon megnyomásával megtekintheti a teljes adattartalmat. Az események így fognak kinézni:
 
-:::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="Képernyőfelvétel: az esemény-előfizetések gombjának kiválasztása az erőforrás események lapján.":::
+:::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="Az SMS-ben fogadott esemény Event Grid sémáját ábrázoló képernyőkép.":::
 
-:::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="Képernyőfelvétel: az esemény-előfizetések gombjának kiválasztása az erőforrás események lapján.":::
+:::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="Képernyőfelvétel: a Event Grid sémája egy SMS kézbesítési jelentés eseményéhez.":::
 
 További információk az [esemény-sémákkal és egyéb eseményvezérelt fogalmakkal](../../concepts/event-handling.md)kapcsolatban.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek. További információ az [erőforrások tisztításáról](../create-communication-resource.md#clean-up-resources).
 

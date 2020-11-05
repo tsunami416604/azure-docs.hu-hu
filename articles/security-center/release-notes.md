@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: 3ea8e944a004dc89dadc74e4ab2e3e4b295b3a9b
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 6de06e4ab9a302517a09b34de56c1b5535b245a9
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900239"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357810"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -29,6 +29,37 @@ Ha szeretne többet megtudni a Security Center hamarosan elérhető *tervezett* 
 
 > [!TIP]
 > Ha hat hónapnál régebbi elemeket keres, az archívumban találhatja meg a [Azure Security Center újdonságait](release-notes-archive.md).
+
+
+## <a name="november-2020"></a>November 2020
+
+### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>29 előzetes javaslat hozzáadva az Azure biztonsági teljesítményteszt lefedettségének növeléséhez
+
+Az Azure biztonsági teljesítményteszt a Microsoft által létrehozott, Azure-specifikus irányelvek a biztonsági és megfelelőségi szabályzatok közös megfelelőségi keretrendszereken alapuló bevált eljárásaihoz. [További tudnivalók az Azure-biztonsági teljesítménytesztről](../security/benchmarks/introduction.md).
+
+A jelen teljesítményteszt lefedettségének növeléséhez a következő 29 előzetes javaslat lett hozzáadva a Security Centerhoz.
+
+Az előzetes verzióra vonatkozó javaslatok nem jelenítik meg az erőforrás állapotát, és nem tartoznak bele a biztonságos pontszám számításaiba. Ha lehetséges, javítsa őket, hogy ha az előzetes verzió időtartama lejár, a pontszáma is hozzájárul. További információ a javaslatokról a [Azure Security Centerban található javaslatok szervizelése](security-center-remediate-recommendations.md)című témakörben található.
+
+| Biztonsági ellenőrzés                     | Új javaslatok                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Adatforgalom titkosítása              | -Az SSL-kapcsolat érvényesítése engedélyezve kell legyen a PostgreSQL-adatbázis-kiszolgálókhoz<br>– Engedélyezni kell az SSL-kapcsolat betartatását a MySQL adatbázis-kiszolgálókon<br>-A TLS-t frissíteni kell az API-alkalmazás legújabb verziójára<br>-A TLS-t frissíteni kell a Function alkalmazás legújabb verziójára<br>– A TLS-t a webalkalmazás legújabb verziójára kell frissíteni<br>-FTPS szükséges az API-alkalmazásban<br>– A FTPS kötelező megadni a Function alkalmazásban<br>– A FTPS kötelező megadni a webalkalmazásban                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Hozzáférés és engedélyek kezelése        | – A webalkalmazásoknak SSL-tanúsítványt kell igényelnie minden bejövő kérelemhez<br>-Felügyelt identitást kell használni az API-alkalmazásban<br>-Felügyelt identitást kell használni a Function alkalmazásban<br>-Felügyelt identitást kell használni a webalkalmazásban                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Jogosulatlan hálózati hozzáférés korlátozása | -A privát végpontot engedélyezni kell a PostgreSQL-kiszolgálókhoz<br>-A privát végpontot engedélyezni kell a MariaDB-kiszolgálókon<br>-A privát végpontot engedélyezni kell a MySQL-kiszolgálókon                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| Naplózás és naplózás engedélyezése          | – A App Services diagnosztikai naplóit engedélyezni kell                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Ajánlott biztonsági eljárások megvalósítása    | -Azure Backup engedélyezni kell a virtuális gépeket<br>-A Geo-redundáns biztonsági mentést engedélyezni kell a Azure Database for MariaDB<br>-A Geo-redundáns biztonsági mentést engedélyezni kell a Azure Database for MySQL<br>-A Geo-redundáns biztonsági mentést engedélyezni kell a Azure Database for PostgreSQL<br>-A PHP-t frissíteni kell az API-alkalmazás legújabb verziójára<br>– A PHP-t a webalkalmazás legújabb verziójára kell frissíteni<br>– A Java-t az API-alkalmazás legújabb verziójára kell frissíteni<br>– A Java-t a Function app legújabb verziójára kell frissíteni<br>– A Java-t a webalkalmazás legújabb verziójára kell frissíteni<br>-A Pythont az API-alkalmazás legújabb verziójára kell frissíteni<br>-A Pythont a Function alkalmazás legújabb verziójára kell frissíteni<br>-A Pythont a webalkalmazás legújabb verziójára kell frissíteni<br>– Az SQL-kiszolgálók naplózási megőrzését legalább 90 napra kell beállítani |
+|                                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+
+Kapcsolódó hivatkozások:
+
+- [További információ az Azure biztonsági teljesítménytesztről](../security/benchmarks/introduction.md)
+- [További információ az Azure API apps szolgáltatásról](../app-service/app-service-web-tutorial-rest-api.md)
+- [További információ az Azure Function apps szolgáltatásról](../azure-functions/functions-overview.md)
+- [További információ az Azure Web Apps szolgáltatásról](../app-service/overview.md)
+- [További információ a Azure Database for MariaDB](../mariadb/overview.md)
+- [További információ a Azure Database for MySQL](../mysql/overview.md)
+- [További információ a Azure Database for PostgreSQL](../postgresql/overview.md)
+
 
 
 
@@ -98,7 +129,33 @@ Azure Security Center esetében az ARG és a [Kusto lekérdezési nyelv (KQL)](h
 
 Az ARG-n belül a lekérdezésekben használható adattáblák találhatók.
 
-:::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="A hitelesítő IP-tartományokat a Kubernetes Services javaslatban kell meghatározni a gyors javítás lehetőséggel"
+:::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="Az Azure Resource Graph Explorer és a rendelkezésre álló táblák":::
+
+> [!TIP]
+> Az ARG dokumentációja felsorolja az összes elérhető táblázatot az [Azure Resource Graph-táblában és az erőforrástípus-referenciában](../governance/resource-graph/reference/supported-tables-resources.md).
+
+Ebből a frissítésből a **Microsoft. Security/securityStatuses** tábla el lett távolítva. A securityStatuses API továbbra is elérhető.
+
+Az adatcsere a Microsoft. Security/Assessments tábla használatával végezhető el.
+
+A Microsoft. Security/securityStatuses és a Microsoft. Security/Assessments között a legfontosabb különbség az, hogy míg az első az értékelések összesítését mutatja, a másodpercek mindegyike egyetlen rekorddal rendelkezik.
+
+Például a Microsoft. Security/securityStatuses egy olyan eredményt ad vissza, amely két policyAssessments tömbjét eredményezi:
+
+```
+{
+id: "/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet",
+name: "mico-rg-vnet",
+type: "Microsoft.Security/securityStatuses",
+properties:  {
+    policyAssessments: [
+        {assessmentKey: "e3deicce-f4dd-3b34-e496-8b5381bazd7e", category: "Networking", policyName: "Azure DDOS Protection Standard should be enabled",...},
+        {assessmentKey: "sefac66a-1ec5-b063-a824-eb28671dc527", category: "Compute", policyName: "",...}
+    ],
+    securitystateByCategory: [{category: "Networking", securityState: "None" }, {category: "Compute",...],
+    name: "GenericResourceHealthProperties",
+    type: "VirtualNetwork",
+    securitystate: "High"
 }
 ```
 Míg a Microsoft. Security/Assessments egy rekordot tart fenn az egyes házirend-értékelésekhez a következőképpen:
@@ -298,7 +355,7 @@ Security Center integrált sebezhetőségi felmérési eszközei a "szülő" jav
 
 A biztonsági megállapítások mostantól a folyamatos exportálással is elérhetők, amikor kiválasztja az ajánlások lehetőséget, és engedélyezi a **biztonsági megállapítások belefoglalása** lehetőséget.
 
-:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="A hitelesítő IP-tartományokat a Kubernetes Services javaslatban kell meghatározni a gyors javítás lehetőséggel" :::
+:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Biztonsági megállapítások bekapcsolása a folyamatos exportálási konfigurációban" :::
 
 Kapcsolódó lapok:
 
@@ -363,7 +420,7 @@ Emellett az **előzetes** verzióra vonatkozó javaslatok nem teszik lehetővé 
 
 Példa az előzetes verziójú javaslatra:
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="A hitelesítő IP-tartományokat a Kubernetes Services javaslatban kell meghatározni a gyors javítás lehetőséggel":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Javaslat az előnézet jelölővel":::
 
 [További információ a biztonságos pontszámról](secure-score-security-controls.md).
 
@@ -372,7 +429,7 @@ Példa az előzetes verziójú javaslatra:
 
 A javaslatok részleteit tartalmazó oldal mostantól tartalmazza a frissességi intervallum jelzőjét (ha van ilyen), valamint a javaslat súlyosságának egyértelmű megjelenítését.
 
-:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="A hitelesítő IP-tartományokat a Kubernetes Services javaslatban kell meghatározni a gyors javítás lehetőséggel":::
+:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="A frissességet és súlyosságot mutató javaslat oldal":::
 
 
 
@@ -715,137 +772,3 @@ A szabályzatok az Azure Policy szolgáltatásban találhatók:
 |                                                                                                                                                                                                                                                                       |                                      |
 
 További információ a [veszélyforrások elleni védelemről Azure Security Center](azure-defender.md).
-
-
-
-
-
-## <a name="may-2020"></a>2020. május
-
-A frissítések a következők lehetnek:
-- [Riasztás-elnyomási szabályok (előzetes verzió)](#alert-suppression-rules-preview)
-- [A virtuális gépek sebezhetőségi felmérése mostantól általánosan elérhető](#virtual-machine-vulnerability-assessment-is-now-generally-available)
-- [Az igény szerinti (JIT) virtuális gépekhez való hozzáférés módosításai](#changes-to-just-in-time-jit-virtual-machine-vm-access)
-- [Egyéni javaslatok lettek áthelyezve egy külön biztonsági vezérlőbe](#custom-recommendations-have-been-moved-to-a-separate-security-control)
-- [A bekapcsolva beállítással megtekintheti a vezérlőkre vagy a lapos listára vonatkozó javaslatokat](#toggle-added-to-view-recommendations-in-controls-or-as-a-flat-list)
-- [Kibővített biztonsági szabályozás – az ajánlott biztonsági eljárások megvalósítása](#expanded-security-control-implement-security-best-practices)
-- [Az egyéni metaadatokkal rendelkező egyéni szabályzatok már általánosan elérhetők](#custom-policies-with-custom-metadata-are-now-generally-available)
-- [Összeomlási memóriakép-elemzési képességek migrálása a fájlok közötti támadás észlelése érdekében](#crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection)
-
-
-### <a name="alert-suppression-rules-preview"></a>Riasztás-elnyomási szabályok (előzetes verzió)
-
-Ez az új funkció (jelenleg előzetes verzióban érhető el) segít csökkenteni a riasztások fáradtságát. Szabályok használatával automatikusan elrejtheti azokat a riasztásokat, amelyek ismerten ártalmatlanok vagy a szervezeten belüli szokásos tevékenységekkel kapcsolatosak. Ez lehetővé teszi, hogy a leginkább releváns fenyegetésekre koncentráljon. 
-
-Az engedélyezett letiltási szabályoknak megfelelő riasztások továbbra is létrejönnek, de az állapotukat a rendszer elutasítja. Megtekintheti az állapotot a Azure Portalban, vagy hozzáférhet a Security Center biztonsági riasztásokhoz.
-
-A mellőzési szabályok határozzák meg azokat a feltételeket, amelyeknek a riasztásait automatikusan el kell utasítani. Általában letiltási szabályt kell használnia a következőkhöz:
-
-- hamis pozitívként azonosított riasztások letiltása
-
-- a túl gyakran kiváltott riasztások mellőzése
-
-További információ a [riasztások Azure Security Center fenyegetés elleni védelemből való letiltásáról](alerts-suppression-rules.md).
-
-
-### <a name="virtual-machine-vulnerability-assessment-is-now-generally-available"></a>A virtuális gépek sebezhetőségi felmérése mostantól általánosan elérhető
-
-A Security Center standard szintű csomagja mostantól egy integrált sebezhetőségi felmérést is tartalmaz a virtuális gépekhez, felár nélkül. Ezt a bővítményt a Qualys működteti, de az eredményeket közvetlenül visszaküldi Security Centerra. Nincs szüksége Qualys-licencre, vagy akár Qualys-fiókra is – minden a Security Centeron belül zökkenőmentesen kezelhető.
-
-Az új megoldás segítségével folyamatosan ellenőrizheti a virtuális gépeket, és megtalálhatja a biztonsági réseket, és bemutathatja az eredményeket a Security Centerban. 
-
-A megoldás üzembe helyezéséhez használja az új biztonsági javaslatot:
-
-"A beépített sebezhetőségi felmérési megoldás engedélyezése a virtuális gépeken (Qualys-alapú)"
-
-További információ a [Security Center a virtuális gépek integrált sebezhetőségi felméréséről](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner).
-
-
-
-### <a name="changes-to-just-in-time-jit-virtual-machine-vm-access"></a>Az igény szerinti (JIT) virtuális gépekhez való hozzáférés módosításai
-
-Security Center tartalmaz egy opcionális szolgáltatást a virtuális gépek felügyeleti portjainak a megóvásához. Ez védelmet nyújt a találgatásos támadás leggyakoribb formája ellen.
-
-Ez a frissítés a következő módosításokat hajtja végre a szolgáltatásban:
-
-- A rendszer azt ajánlja, hogy a JIT engedélyezése egy virtuális gépen legyen átnevezve. Korábban "igény szerinti hálózati hozzáférés-vezérlést kell alkalmazni a virtuális gépeken." most már: "a virtuális gépek felügyeleti portjait az igény szerinti hálózati hozzáférés-vezérléssel kell védeni."
-
-- A javaslat csak akkor aktiválódik, ha nyitott felügyeleti portok vannak.
-
-További információ [az JIT-hozzáférési szolgáltatásról](security-center-just-in-time.md).
-
-
-### <a name="custom-recommendations-have-been-moved-to-a-separate-security-control"></a>Egyéni javaslatok lettek áthelyezve egy külön biztonsági vezérlőbe
-
-A fokozott biztonságú pontszámmal bevezetett egyik biztonsági vezérlő a következő: "az ajánlott biztonsági eljárások megvalósítása". Az előfizetésekhez létrehozott egyéni javaslatok automatikusan ebbe a vezérlőbe kerülnek. 
-
-Ahhoz, hogy könnyebben megtalálja az egyéni javaslatokat, áthelyezte őket egy dedikált biztonsági vezérlőbe, "egyéni javaslatok". Ez a vezérlő nem befolyásolja a biztonságos pontszámot.
-
-További információ a biztonsági ellenőrzésekről a [Azure Security Center továbbfejlesztett biztonságos pontszám (előzetes verzió)](secure-score-security-controls.md)című témakörben.
-
-
-### <a name="toggle-added-to-view-recommendations-in-controls-or-as-a-flat-list"></a>A bekapcsolva beállítással megtekintheti a vezérlőkre vagy a lapos listára vonatkozó javaslatokat
-
-A biztonsági vezérlők a kapcsolódó biztonsági javaslatok logikai csoportjai. A sebezhető támadási felületeket tükrözik. A vezérlők a biztonsági javaslatok összessége, amelyek útmutatást nyújtanak a javaslatok megvalósításához.
-
-Ha szeretné azonnal megtekinteni, hogy a szervezet milyen jól védi az egyes támadási felületet, tekintse át az egyes biztonsági vezérlők pontszámait.
-
-Alapértelmezés szerint a javaslatok a biztonsági vezérlőkben jelennek meg. Ebből a frissítésből listát is megjeleníthet. Ha az érintett erőforrások állapotának megfelelően rendezi az egyszerű listát, használja az új "Group By Controls" (csoportosítás a vezérlők szerint) lehetőséget. A váltógomb a portálon megjelenő lista felett van.
-
-A biztonsági vezérlők – és ez a váltás – az új biztonsági pontszám részét képezik. Ne feledje, hogy küldje el nekünk a visszajelzéseit a portálon belülről.
-
-További információ a biztonsági ellenőrzésekről a [Azure Security Center továbbfejlesztett biztonságos pontszám (előzetes verzió)](secure-score-security-controls.md)című témakörben.
-
-:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="A hitelesítő IP-tartományokat a Kubernetes Services javaslatban kell meghatározni a gyors javítás lehetőséggel":::
-
-### <a name="expanded-security-control-implement-security-best-practices"></a>Kibővített biztonsági szabályozás – az ajánlott biztonsági eljárások megvalósítása 
-
-A fokozottan biztonságos pontszámsal bevezetett egyik biztonsági vezérlő "az ajánlott biztonsági eljárások megvalósítása". Ha egy javaslat ebben a vezérlőben van, az nem érinti a biztonságos pontszámot. 
-
-Ezzel a frissítéssel három javaslatot helyeztek el azokról a vezérlőkről, amelyekben eredetileg elhelyezték őket, és az ajánlott eljárások szabályozásával. Azért tettük ezt a lépést, mert azt állapítottuk meg, hogy a három javaslat kockázata alacsonyabb, mint eredetileg gondolták.
-
-Emellett két új javaslat is be lett vezetve, és hozzá lett adva a vezérlőhöz.
-
-Az áthelyezett három javaslat a következőket tartalmazza:
-
-- Az **MFA-t engedélyezni kell az előfizetés olvasási engedéllyel rendelkező fiókjain** (eredetileg az "MFA engedélyezése" vezérlőben)
-- Az **olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből** (eredetileg a "hozzáférés és engedélyek kezelése" vezérlőben)
-- Az **előfizetéshez legfeljebb 3 tulajdonost kell kijelölni** (eredetileg a "hozzáférés és engedélyek kezelése" vezérlőben)
-
-A vezérlőhöz hozzáadott két új javaslat a következő:
-
-- **A vendég konfigurációs bővítményt a Windows rendszerű virtuális gépekre (előzetes verzió) kell telepíteni** – a [Azure Policy vendég konfigurációjának](../governance/policy/concepts/guest-configuration.md) használatával a virtuális gépeken belül láthatók a kiszolgálók és az alkalmazások beállításai (csak Windows).
-
-- A **Windows Defender Exploit Guard védelmet engedélyezni kell a gépeken (előzetes verzió)** – a Windows Defender Exploit Guard kihasználja a Azure Policy vendég konfigurációs ügynököt. A kiaknázási Gárda négy összetevőből áll, amelyek célja, hogy zárolják az eszközöket a különböző támadási vektorok és a kártevők elleni támadásokban leggyakrabban használt viselkedések blokkolásával, miközben lehetővé teszik a vállalatok számára a biztonsági kockázatok és a termelékenységi követelmények kiegyensúlyozását (csak Windows).
-
-További információ a Windows Defender Exploit Guard-védelemről a biztonsági [rés kiaknázására szolgáló szabályzat létrehozása és üzembe helyezése című](/mem/configmgr/protect/deploy-use/create-deploy-exploit-guard-policy)témakörben.
-
-További információ a biztonsági ellenőrzésekről: [bővített biztonságos pontszám (előzetes verzió)](secure-score-security-controls.md).
-
-
-
-### <a name="custom-policies-with-custom-metadata-are-now-generally-available"></a>Az egyéni metaadatokkal rendelkező egyéni szabályzatok már általánosan elérhetők
-
-Az egyéni szabályzatok mostantól a Security Center javaslatok, a biztonságos pontszám és a szabályozási megfelelőségi szabványok irányítópultjának részét képezik. Ez a funkció mostantól általánosan elérhető, és lehetővé teszi a szervezet biztonsági értékelésének kiterjesztését Security Center. 
-
-Hozzon létre egy egyéni kezdeményezést az Azure Policy-ben, adja hozzá a szabályzatokat, és helyezze be Azure Security Centerba, és jelenítse meg javaslatként.
-
-Most hozzáadjuk az egyéni ajánlási metaadatok szerkesztésének lehetőségét is. A metaadat-beállítások közé tartozik a súlyosság, a Szervizelési lépések, a fenyegetésekkel kapcsolatos információk és egyebek.  
-
-További információk az [Egyéni javaslatok részletes információkkal történő növeléséről](custom-security-policies.md#enhance-your-custom-recommendations-with-detailed-information).
-
-
-
-### <a name="crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection"></a>Összeomlási memóriakép-elemzési képességek migrálása a fájlok közötti támadás észlelése érdekében 
-
-Integráljuk a Windows Crash dump Analysis (CDA) észlelési funkcióit a [fájlok közötti támadás észlelésére](defender-for-servers-introduction.md#what-are-the-benefits-of-azure-defender-for-servers). A fájlok közötti támadás észlelésének elemzése a következő biztonsági riasztások továbbfejlesztett verzióit biztosítja a Windows rendszerű gépekhez: kód befecskendezése felderített, álcázott Windows-modul, észlelt Héjkód, és gyanús kódrészletet észlelt.
-
-Az áttérés néhány előnye:
-
-- **Proaktív és kellő időben kártevő szoftverek észlelése** – a CDA megközelítése arra vár, hogy összeomlik, majd futtatja az elemzést a kártékony összetevők kereséséhez. A fájlok közötti támadás észlelésével a memóriában tárolt fenyegetések proaktív módon azonosíthatók a futás közben. 
-
-- Bővített **riasztások** – a fájlokkal nem rendelkező támadások észlelésével kapcsolatos biztonsági riasztások közé tartoznak a CDA-ból nem elérhető bővítések, például az aktív hálózati kapcsolatok adatai. 
-
-- **Riasztások összesítése** – ha a CDA több támadási mintát észlelt egyetlen összeomlási memóriaképen belül, több biztonsági riasztást váltott ki. A fájl nélkül történő támadás észlelése az összes azonosított támadási mintát egyetlen riasztásba ötvözi, így nem kell több riasztást összekapcsolni.
-
-- A **log Analytics munkaterületre vonatkozó kisebb követelmények** – a potenciálisan bizalmas adatokat tartalmazó összeomlási memóriaképek többé nem lesznek feltöltve a log Analytics-munkaterületre.

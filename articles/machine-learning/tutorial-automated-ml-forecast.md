@@ -10,12 +10,13 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
-ms.openlocfilehash: 6ad3e0f3077e6f65642496d4da097fa713bddd53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: automl
+ms.openlocfilehash: 5577a0d9270f3e4566bf57876b8abc3d1a3ae4be
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979081"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356501"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Oktatóanyag: az automatikus gépi tanulás iránti igény előrejelzése
 
@@ -47,11 +48,11 @@ Ebben az oktatóanyagban létrehozhatja az automatizált ML-kísérletet Azure M
 
 1. Válassza ki az előfizetését és a létrehozott munkaterületet.
 
-1. Válassza az első **lépések**lehetőséget.
+1. Válassza az első **lépések** lehetőséget.
 
 1. A bal oldali panelen válassza az **automatikus ml** lehetőséget a **Szerző** szakaszban.
 
-1. Válassza az **+ új AUTOMATIZÁLT ml Futtatás**lehetőséget. 
+1. Válassza az **+ új AUTOMATIZÁLT ml Futtatás** lehetőséget. 
 
 ## <a name="create-and-load-dataset"></a>Adatkészlet létrehozása és betöltése
 
@@ -59,7 +60,7 @@ A kísérlet konfigurálása előtt töltse fel az adatfájlt a munkaterületre 
 
 1. Az **adatkészlet kiválasztása** űrlapon válassza a **helyi fájlok** lehetőséget a  **+ adatkészlet létrehozása** legördülő menüből. 
 
-    1. Az **alapszintű információ** űrlapon adja meg az adatkészlet nevét, és adjon meg egy opcionális leírást. Az adatkészlet típusának alapértelmezettnek kell lennie a **táblázatos**értéknél, mivel a Azure Machine learning Studio automatikus ml-je jelenleg csak a táblázatos adatkészleteket támogatja.
+    1. Az **alapszintű információ** űrlapon adja meg az adatkészlet nevét, és adjon meg egy opcionális leírást. Az adatkészlet típusának alapértelmezettnek kell lennie a **táblázatos** értéknél, mivel a Azure Machine learning Studio automatikus ml-je jelenleg csak a táblázatos adatkészleteket támogatja.
     
     1. Kattintson a **Next (tovább) gombra** a bal alsó sarokban
 
@@ -73,7 +74,7 @@ A kísérlet konfigurálása előtt töltse fel az adatfájlt a munkaterületre 
 
        A feltöltés befejezésekor a beállítások és az előnézet űrlap előre fel van töltve a fájl típusa alapján. 
        
-    1. Győződjön meg arról, hogy a **beállítások és az előnézet** űrlap a következőképpen van feltöltve, majd válassza a **tovább**lehetőséget.
+    1. Győződjön meg arról, hogy a **beállítások és az előnézet** űrlap a következőképpen van feltöltve, majd válassza a **tovább** lehetőséget.
         
         Mező|Leírás| Az oktatóanyag értéke
         ---|---|---
@@ -81,13 +82,13 @@ A kísérlet konfigurálása előtt töltse fel az adatfájlt a munkaterületre 
         Elválasztó|Egy vagy több karakter, amely egy &nbsp; egyszerű szövegben vagy más adatfolyamban található különálló, egymástól független régiók között határozza meg a határt. |Vessző
         Encoding|Meghatározza, hogy az adatkészletek olvasásához milyen bitet kell használni a séma-tábla.| UTF-8
         Oszlopfejlécek| Azt jelzi, hogy a rendszer hogyan kezeli az adatkészlet fejléceit (ha van ilyen).| Fejlécek használata az első fájlból
-        Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.| Nincs
+        Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.| Nincsenek
 
     1. A **séma** űrlap lehetővé teszi az adatai további konfigurálását a kísérlethez. 
     
         1. Ebben a példában válassza az **alkalmi** és a **regisztrált** oszlopok figyelmen kívül hagyása lehetőséget. Ezek az oszlopok a  **CNT** oszlop részletezését jelentik, ezért nem tartalmazzák azokat.
 
-        1. Ebben a példában a **Tulajdonságok** és a **típus**alapértelmezett értékei is megmaradnak. 
+        1. Ebben a példában a **Tulajdonságok** és a **típus** alapértelmezett értékei is megmaradnak. 
         
         1. Kattintson a **Tovább** gombra.
 
@@ -97,7 +98,7 @@ A kísérlet konfigurálása előtt töltse fel az adatfájlt a munkaterületre 
 
     1. Válassza ki az adatkészletet, amint megjelenik a listában.
 
-    1. Válassza a  **tovább**lehetőséget.
+    1. Válassza a  **tovább** lehetőséget.
 
 ## <a name="configure-experiment-run"></a>Kísérlet futtatásának konfigurálása
 
@@ -117,7 +118,7 @@ Miután betöltötte és konfigurálta az adatait, állítsa be a távoli szám�
         Virtuális &nbsp; gép &nbsp; mérete| Válassza ki a virtuális gép méretét a számítási feladatokhoz.|Standard_DS12_V2
         Csomópontok minimális/maximális száma| A profilhoz legalább 1 csomópontot kell megadnia.|Minimális csomópontok: 1<br>Csomópontok maximális száma: 6
         Leskálázás előtt üresjárati másodperc | Üresjárati idő a fürt automatikus skálázása előtt a csomópontok minimális száma szerint.|120 (alapértelmezett)
-        Speciális beállítások | Beállítások egy virtuális hálózat konfigurálásához és engedélyezéséhez a kísérlethez.| Nincs
+        Speciális beállítások | Beállítások egy virtuális hálózat konfigurálásához és engedélyezéséhez a kísérlethez.| Nincsenek
   
         1. A számítási cél beszerzéséhez válassza a **Létrehozás** lehetőséget. 
 
@@ -142,22 +143,22 @@ A Machine learning-feladattípus és a konfigurációs beállítások megadásá
     További &nbsp; konfigurációk|Leírás|&nbsp;Az &nbsp; oktatóanyag értéke
     ------|---------|---
     Elsődleges metrika| Az értékelési metrika, amelyet a Machine learning algoritmusa fog mérni.|Normalizált legfelső szintű, négyzetes hiba
-    A legjobb modell ismertetése| A automatikusan mutatja az automatizált ML által létrehozott legjobb modell magyarázatát.| Engedélyezés
+    A legjobb modell ismertetése| A automatikusan mutatja az automatizált ML által létrehozott legjobb modell magyarázatát.| Bekapcsolás
     Letiltott algoritmusok | A betanítási feladatokból kizárni kívánt algoritmusok| Extrém véletlenszerű fák
-    További előrejelzési beállítások| Ezek a beállítások segítenek a modell pontosságának javításában <br><br> _**Előrejelzési cél késések:**_ milyen messzire kívánja állítani a cél változó késéseit <br> _**Cél gördülő ablak**_: megadja a gördülő ablak méretét, amely felett a funkciók, például a *Max, a min* és a *Sum*érték lesz létrehozva. | <br><br>Előrejelzési &nbsp; cél &nbsp; késései: nincs <br> Cél &nbsp; gördülési &nbsp; ablakának &nbsp; mérete: nincs
+    További előrejelzési beállítások| Ezek a beállítások segítenek a modell pontosságának javításában <br><br> _**Előrejelzési cél késések:**_ milyen messzire kívánja állítani a cél változó késéseit <br> _**Cél gördülő ablak**_ : megadja a gördülő ablak méretét, amely felett a funkciók, például a *Max, a min* és a *Sum* érték lesz létrehozva. | <br><br>Előrejelzési &nbsp; cél &nbsp; késései: nincs <br> Cél &nbsp; gördülési &nbsp; ablakának &nbsp; mérete: nincs
     Kilépési feltétel| Ha teljesülnek a feltételek, a betanítási feladatok leállnak. |Betanítási &nbsp; feladatok &nbsp; időpontja (óra): 3 <br> Metrika &nbsp; pontszámának &nbsp; küszöbértéke: nincs
     Érvényesítés | Válasszon egy több ellenőrzési típust és a tesztek számát.|Érvényesítés típusa:<br>&nbsp;k-szeres &nbsp; keresztek ellenőrzése <br> <br> Érvényességek száma: 5
     Egyidejűség| A másodpercenként végrehajtott párhuzamos ismétlések maximális száma| &nbsp;Egyidejű &nbsp; Ismétlések maximális száma: 6
     
-    Kattintson a **Mentés** gombra.
+    Válassza a **Mentés** lehetőséget.
 
 ## <a name="run-experiment"></a>Kísérlet futtatása
 
-A kísérlet futtatásához válassza a **Befejezés**lehetőséget. Megnyílik a futtatási **részletek**  képernyő, amelyen a Futtatás **állapota** látható a futtatási szám mellett. Ez az állapot frissíti a kísérlet előrehaladását.
+A kísérlet futtatásához válassza a **Befejezés** lehetőséget. Megnyílik a futtatási **részletek**  képernyő, amelyen a Futtatás **állapota** látható a futtatási szám mellett. Ez az állapot frissíti a kísérlet előrehaladását.
 
 >[!IMPORTANT]
 > Az előkészítés **10-15 percet** vesz igénybe a kísérlet futtatásának előkészítése érdekében.
-> A futása után **az egyes iterációk esetében 2-3 percet**vesz igénybe.  <br> <br>
+> A futása után **az egyes iterációk esetében 2-3 percet** vesz igénybe.  <br> <br>
 > Éles környezetben valószínű, hogy ez a folyamat időt vesz igénybe. Várakozás közben javasoljuk, hogy a kipróbált algoritmusokat a kész **modellek** lapon vizsgálja meg. 
 
 ##  <a name="explore-models"></a>Modellek megismerése
@@ -200,7 +201,7 @@ Ezt a modellt üzembe helyezjük, de javasoljuk, hogy az üzembe helyezés kör�
 
 1. Válassza az **Üzembe helyezés** lehetőséget.  
 
-    A **futtatási** képernyő tetején megjelenik egy zöld sikert jelző üzenet, amely azt jelzi, hogy a központi telepítés sikeresen elindult. Az üzembe helyezés folyamata a **modell összegzése** ablaktáblán, az **üzembe helyezés állapota**területen található.
+    A **futtatási** képernyő tetején megjelenik egy zöld sikert jelző üzenet, amely azt jelzi, hogy a központi telepítés sikeresen elindult. Az üzembe helyezés folyamata a **modell összegzése** ablaktáblán, az **üzembe helyezés állapota** területen található.
     
 Miután az üzembe helyezés sikeres volt, rendelkezik egy operatív webszolgáltatással az előrejelzések létrehozásához. 
 
@@ -214,17 +215,17 @@ Az üzembe helyezési fájlok nagyobb méretűek, mint az adatmennyiség és a k
 
 Törölje a központi telepítési példányt a Azure Machine Learning studióból, ha meg szeretné tartani az erőforráscsoportot és a munkaterületet más oktatóanyagok és feltárás céljából. 
 
-1. Nyissa meg a [Azure Machine learning studiót](https://ml.azure.com/). Navigáljon a munkaterülethez, és a bal oldalon az **eszközök** ablaktáblán válassza a **végpontok**lehetőséget. 
+1. Nyissa meg a [Azure Machine learning studiót](https://ml.azure.com/). Navigáljon a munkaterülethez, és a bal oldalon az **eszközök** ablaktáblán válassza a **végpontok** lehetőséget. 
 
-1. Válassza ki a törölni kívánt központi telepítést, és válassza a **Törlés**lehetőséget. 
+1. Válassza ki a törölni kívánt központi telepítést, és válassza a **Törlés** lehetőséget. 
 
-1. Válassza a **Folytatás**lehetőséget.
+1. Válassza a **Folytatás** lehetőséget.
 
 ### <a name="delete-the-resource-group"></a>Az erőforráscsoport törlése
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az automatikus ML-t használta a Azure Machine Learning Studióban egy idősorozat-előrejelzési modell létrehozásához és üzembe helyezéséhez, amely előre jelezi a bike Share bérleti igényét. 
 

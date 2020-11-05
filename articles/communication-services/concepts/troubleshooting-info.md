@@ -8,16 +8,16 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 4921078e9e7b5d9de06fbbc9a97dc4a964569e04
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ff3e7fee87661fb89ba930b7368bd54e71ad57bf
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92754743"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357623"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Hibaelhárítás az Azure kommunikációs szolgáltatásokban
 
-Ez a dokumentum segítséget nyújt a kommunikációs szolgáltatások megoldásához szükséges információk összegyűjtésében.
+Ez a dokumentum segítséget nyújt a kommunikációs szolgáltatási megoldásban felmerülő problémák elhárításában. Ha SMS-sel kapcsolatos hibaelhárítást végez, [engedélyezheti a kézbesítési jelentéskészítést Event Grid](../quickstarts/telephony-sms/handle-sms-events.md) az SMS-kézbesítési adatok rögzítéséhez.
 
 ## <a name="getting-help"></a>Segítség kérése
 
@@ -33,6 +33,8 @@ Bizonyos típusú problémák elhárítása érdekében a következő informáci
 * **MS-CV-azonosító** : ez az azonosító a hívások és üzenetek hibakereséséhez használatos. 
 * **Call ID** : ez az azonosító a kommunikációs szolgáltatások hívásainak azonosítására szolgál.
 * **SMS-üzenet azonosítója** : ez az azonosító az SMS-üzenetek azonosítására szolgál.
+* **Hívásnaplók: ezek** a naplók részletes információkat tartalmaznak, amelyek a hívási és hálózati problémák megoldásához használhatók.
+
 
 ## <a name="access-your-ms-cv-id"></a>Hozzáférés az MS-CV-AZONOSÍTÓhoz
 
@@ -126,6 +128,44 @@ console.log(result); // your message ID will be in the result
 }
 ```
 ---
+
+## <a name="enable-and-access-call-logs"></a>Hívásnaplók engedélyezése és elérése
+
+
+
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+A következő kód használatával konfigurálhatja a `AzureLogger` naplófájlokat a konzolon a JavaScript ügyféloldali kódtár segítségével:
+
+```javascript
+import { AzureLogger } from '@azure/logger'; 
+
+AzureLogger.verbose = (...args) => { console.info(...args); } 
+AzureLogger.info = (...args) => { console.info(...args); } 
+AzureLogger.warning = (...args) => { console.info(...args); } 
+AzureLogger.error = (...args) => { console.info(...args); } 
+
+callClient = new CallClient({logger: AzureLogger}); 
+```
+
+# <a name="ios"></a>[iOS](#tab/ios)
+
+Az iOS rendszerre való fejlesztéskor a naplók `.blog` fájlokba kerülnek. Vegye figyelembe, hogy a naplókat nem lehet közvetlenül megtekinteni, mert azok titkosítottak.
+
+Ezek a Xcode megnyitásával érhetők el. Nyissa meg a Windows > eszközök és szimulátorok > eszközöket. Jelölje ki az eszközét. A telepített alkalmazások területen válassza ki az alkalmazást, és kattintson a "tároló letöltése" elemre. 
+
+Ezzel egy fájlt fog adni `xcappdata` . Kattintson a jobb gombbal a fájlra, és válassza a "csomag tartalmának megjelenítése" lehetőséget. Ekkor megjelenik az `.blog` Azure-támogatási kérelemhez csatolni kívánt fájlok.
+
+# <a name="android"></a>[Android](#tab/android)
+
+Az Android rendszerre való fejlesztéskor a rendszer fájlokba tárolja a naplókat `.blog` . Vegye figyelembe, hogy a naplókat nem lehet közvetlenül megtekinteni, mert azok titkosítottak.
+
+Android Studioon navigáljon az eszköz Fájlkezelőhöz úgy, hogy kijelöli a megtekintés > eszköz Windows > eszköz Fájlkezelő lehetőséget a szimulátorból és az eszközről. A `.blog` fájl az alkalmazás könyvtárában fog megjelenni, és így kell kinéznie `/data/data/[app_name_space:com.contoso.com.acsquickstartapp]/files/acs_sdk.blog` . Ezt a fájlt csatolhatja a támogatási kérelemhez. 
+   
+
+---
+
 
 ## <a name="related-information"></a>Kapcsolódó információk
 - [Naplók és diagnosztika](logging-and-diagnostics.md)

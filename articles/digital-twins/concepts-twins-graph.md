@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: c62d1a0b17fda2531a963c292fbd16aaf3a551b3
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: a1fc5be93e2b9729838aa9fb3a777936003c5f45
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145990"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356390"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>A digitális ikrek és a Twin Graph ismertetése
 
@@ -49,7 +49,7 @@ A Twin tulajdonságot inicializálhatja a létrehozáskor, vagy később is beá
 
 [!INCLUDE [Azure Digital Twins code: create twin](../../includes/digital-twins-code-create-twin.md)]
 
-Használhat egy nevű segítő osztályt is `BasicDigitalTwin` , amely egy "Twin" objektumban található tulajdonság-mezőket közvetlenül a szótár használata alternatívájaként tárolja. További információ a segítő osztályról és a használatáról: a [*digitális*](how-to-manage-twin.md#create-a-digital-twin) ikerek kezelése című rész, amely *bemutatja a digitális ikrek kezelését* .
+Használhat egy nevű segítő osztályt is `BasicDigitalTwin` , amely egy "Twin" objektumban található tulajdonság-mezőket közvetlenül a szótár használata alternatívájaként tárolja. További információ a segítő osztályról és a használatáról: a [*digitális*](how-to-manage-twin.md#create-a-digital-twin) ikerek kezelése című rész, amely *bemutatja a digitális ikrek kezelését*.
 
 >[!NOTE]
 >Míg a Twin tulajdonságokat nem kötelezőként kezeli a rendszer, ezért nem kell inicializálni, a Twin-ben lévő összes [összetevőt](concepts-models.md#elements-of-a-model) **be kell állítani** a Twin létrehozásakor. Lehetnek üres objektumok, de maguknak az összetevőknek is léteznie kell.
@@ -71,7 +71,7 @@ var relationship = new BasicRelationship
 try
 {
     string relId = $"GroundFloor-contains-Cafe";
-    await client.CreateOrReplaceRelationshipAsync("GroundFloor", relId, relationship);
+    await client.CreateOrReplaceRelationshipAsync<BasicRelationship>("GroundFloor", relId, relationship);
 } catch(ErrorResponseException e)
 {
     Console.WriteLine($"*** Error creating relationship: {e.Response.StatusCode}");
@@ -86,7 +86,7 @@ A digitális Twin-és a kapcsolati adatfájlok egyaránt JSON formátumban vanna
 
 Ha JSON-objektumként jelenik meg, a Digital Twin a következő mezőket jeleníti meg:
 
-| Mező neve | Description |
+| Mező neve | Leírás |
 | --- | --- |
 | `$dtId` | A digitális Twin AZONOSÍTÓját jelölő, felhasználó által megadott karakterlánc |
 | `$etag` | A webkiszolgáló által hozzárendelt szabványos HTTP-mező |
@@ -153,7 +153,7 @@ Ha JSON-objektumként jelenik meg, a Digital Twin a következő mezőket jelení
 
 Ha JSON-objektumként jelenik meg, a digitális iker kapcsolata a következő mezőket jeleníti meg:
 
-| Mező neve | Description |
+| Mező neve | Leírás |
 | --- | --- |
 | `$relationshipId` | Egy felhasználó által megadott karakterlánc, amely a kapcsolat AZONOSÍTÓját jelöli. Ez a karakterlánc egyedi a forrásként szolgáló digitális Twin környezetben, ami azt is jelenti, hogy az `sourceId`  +  `relationshipId` Azure Digital Twins-példány kontextusában egyedi. |
 | `$etag` | A webkiszolgáló által hozzárendelt szabványos HTTP-mező |

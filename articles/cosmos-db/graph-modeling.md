@@ -1,18 +1,18 @@
 ---
 title: Graph adatmodellezés Azure Cosmos DB Gremlin API-hoz
 description: Útmutató a Graph-adatbázisok modellezéséhez Azure Cosmos DB Gremlin API használatával. Ez a cikk azt ismerteti, hogy mikor érdemes gráf-adatbázist és ajánlott eljárásokat használni az entitások és a kapcsolatok modellezéséhez.
-author: jasonwhowell
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 12/02/2019
-ms.author: jasonh
-ms.openlocfilehash: 70cbe3a7dae243105a659e1363a44f17f03758e2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.author: chrande
+ms.openlocfilehash: d99e2e2ffd63b050e7373c98084fed3fb14727bf
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129643"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357045"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Graph adatmodellezés Azure Cosmos DB Gremlin API-hoz
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -46,7 +46,7 @@ Az [Apache Tinkerpop Property Graph standard](https://tinkerpop.apache.org/docs/
 
 A Graph-objektumok tulajdonságaira vonatkozó ajánlott eljárások a következők:
 
-| Objektum | Tulajdonság | Típus | Megjegyzések |
+| Objektum | Tulajdonság | Típus | Jegyzetek |
 | --- | --- | --- |  --- |
 | Vertex | ID (Azonosító) | Sztring | A partíciók egyedi kikényszerítve. Ha nincs megadva érték a beszúráskor, az automatikusan generált GUID-t fogja tárolni. |
 | Vertex | címke | Sztring | Ez a tulajdonság határozza meg a csúcspont által reprezentált entitás típusát. Ha nincs megadva érték, a rendszer az alapértelmezett "Vertex" értéket fogja használni. |
@@ -68,7 +68,7 @@ Az alábbi irányelvek egy Azure Cosmos DB Gremlin API Graph-adatbázis adatmode
 
 ### <a name="modeling-vertices-and-properties"></a>Modellezési csúcspontok és tulajdonságok 
 
-A Graph adatmodell első lépése az összes azonosított entitás leképezése egy csúcspont- **objektumra** . Az összes entitásnak a csúcspontokra való hozzárendelésének egy kezdeti lépésnek kell lennie, és a változás változhat.
+A Graph adatmodell első lépése az összes azonosított entitás leképezése egy csúcspont- **objektumra**. Az összes entitásnak a csúcspontokra való hozzárendelésének egy kezdeti lépésnek kell lennie, és a változás változhat.
 
 Az egyik gyakori buktató az egyetlen entitás tulajdonságainak leképezése különálló csúcspontként. Vegye figyelembe az alábbi példát, ahol ugyanaz az entitás két különböző módon van ábrázolva:
 
@@ -78,7 +78,7 @@ Az egyik gyakori buktató az egyetlen entitás tulajdonságainak leképezése k�
 
 * **Tulajdonsággal beágyazott csúcspontok** : Ez a megközelítés kihasználja a kulcs-érték párok listáját, hogy az entitás összes tulajdonságát reprezentálja a csúcsponton belül. Ez a megközelítés csökkenti a modell bonyolultságát, ami egyszerűbb lekérdezéseket és költséghatékonyabb bejárásokat eredményez.
 
-:::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="Entitás-modell a tulajdonságok csúcspontokkal." border="false":::
+:::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="Az ábrán az előző diagram Luis csúcspontja látható az i d, a Label és a Properties tulajdonsággal." border="false":::
 
 > [!NOTE]
 > A fenti példák egy egyszerűsített gráfot mutatnak be, amely csak az entitás tulajdonságainak felosztására szolgáló két módszer összehasonlítását mutatja be.
@@ -89,7 +89,7 @@ Vannak azonban olyan helyzetek, amikor egy tulajdonságra hivatkozva előnyt jel
 
 ### <a name="relationship-modeling-with-edge-directions"></a>Kapcsolat modellezése Edge-utasításokkal
 
-A csúcspontok modellezése után a szegélyek hozzáadhatók a közöttük lévő kapcsolatok jelöléséhez. Az első szempont, amelyet ki kell értékelni a **kapcsolat irányát** . 
+A csúcspontok modellezése után a szegélyek hozzáadhatók a közöttük lévő kapcsolatok jelöléséhez. Az első szempont, amelyet ki kell értékelni a **kapcsolat irányát**. 
 
 Az Edge-objektumok alapértelmezett iránya a vagy a függvény használatakor bejárási `out()` `outE()` művelet. Ennek a természetes irányú iránynak a használata hatékony műveletet eredményez, mivel minden csúcspontot a kimenő élek tárolnak. 
 
@@ -106,7 +106,7 @@ A leíró kapcsolati címkék használatával javítható a peremhálózat-felol
 * Használjon nem általános kifejezéseket a kapcsolatok címkézéséhez.
 * Társítsa a forrás csúcspontjának címkéjét a cél csúcspontjának címkéjéhez a kapcsolat nevével.
 
-:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="Entitás-modell a tulajdonságok csúcspontokkal." border="false":::
+:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="Relációs címkézési példák." border="false":::
 
 Minél pontosabb a felirat, amelyet a bejárás használ az élek szűrésére, annál jobb. Ez a döntés jelentős hatással lehet a lekérdezési díjakra is. A lekérdezési költségeket bármikor kiértékelheti [a executionProfile lépés használatával](graph-execution-profile.md).
 

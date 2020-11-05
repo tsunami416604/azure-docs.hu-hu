@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7c830641b0e76a7d63229b68a8ab2bf60cab4015
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 31b37435426e9550aef625540d8334fccc003e88
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173866"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358355"
 ---
 # <a name="use-net-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>A .NET használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2
 
@@ -371,7 +371,7 @@ public async Task ManageFileACLs(DataLakeFileSystemClient fileSystemClient)
 }
 ```
 
-### <a name="set-an-acl-recursively-preview"></a>ACL rekurzív beállítása (előzetes verzió)
+### <a name="set-an-acl-recursively"></a>ACL beállítása rekurzív módon
 
 Az ACL-eket a szülő könyvtár meglévő alárendelt elemein is hozzáadhatja, frissítheti és eltávolíthatja anélkül, hogy ezeket a módosításokat egyenként el kellene végeznie az egyes alárendelt elemek esetében. További információ: [rekurzív hozzáférés-vezérlési listák (ACL-ek) beállítása Azure Data Lake Storage Gen2hoz](recursive-access-control-lists.md).
 
