@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 3908e5f4b7b246fe1c74e5ac4d20053242ece9f6
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: df27d7b25010fa68fc86ffe093318b2b0b7f4e96
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927685"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393829"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Virtuális gép operációsrendszer-meghajtójának bővítése
 
@@ -46,11 +46,11 @@ Amikor új virtuális gépet (VM) hoz létre egy erőforráscsoporthoz egy rends
  
 3. A **lemez neve** területen válassza ki az átméretezni kívánt lemezt.
 
-    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="A menü Beállítások szakaszában kiválasztott lemezek lehetőséget megjelenítő képernyőkép.":::
+    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="Képernyőkép, amely a lemezeket tartalmazó panelt jeleníti meg a kijelölt lemezzel.":::
 
 4. A **Beállítások** területen a bal oldali menüben válassza a **Konfigurálás** lehetőséget.
 
-    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="A menü Beállítások szakaszában kiválasztott lemezek lehetőséget megjelenítő képernyőkép.":::
+    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="A menü Beállítások szakaszában kiválasztott konfigurációs beállítást bemutató képernyőkép.":::
 
 5. A **méret (GIB)** területen válassza ki a kívánt méretű lemezt.
    
@@ -58,11 +58,11 @@ Amikor új virtuális gépet (VM) hoz létre egy erőforráscsoporthoz egy rends
    > Az új méretnek nagyobbnak kell lennie a meglévő lemezméretnél. Az operációsrendszer-lemezek esetében a maximálisan megengedett 2 048 GB. (Lehetséges, hogy a VHD-blobot ezen a méreten túl szeretné kibontani, de az operációs rendszer csak az első 2 048 GB területtel működik.)
    > 
 
-    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="A menü Beállítások szakaszában kiválasztott lemezek lehetőséget megjelenítő képernyőkép.":::
+    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Képernyőkép, amely a kiválasztott lemezterülettel rendelkező konfigurációs ablaktáblát jeleníti meg.":::
 
 6. Válassza a **Mentés** lehetőséget.
 
-    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="A menü Beállítások szakaszában kiválasztott lemezek lehetőséget megjelenítő képernyőkép.":::
+    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Képernyőkép, amely megjeleníti a konfiguráció ablaktáblát a Mentés gomb kiválasztásával.":::
 
 
 ## <a name="resize-a-managed-disk-by-using-powershell"></a>Felügyelt lemez átméretezése a PowerShell használatával
@@ -226,7 +226,7 @@ Hasonlóképpen a virtuális géphez csatolt más adatlemezekre is hivatkozhat, 
 **Nem felügyelt lemez**
 
 ```powershell
-($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'}).DiskSizeGB = 1023
+($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'})).DiskSizeGB = 1023
 ```
 
 ## <a name="expand-the-volume-within-the-os"></a>A kötet kibontása az operációs rendszeren belül
@@ -244,6 +244,6 @@ Ha kibontotta a virtuális gép lemezét, be kell lépnie az operációs rendsze
 5. A **DiskPart** parancssorba írja be a következőt: `extend [size=<size>]` . Ez kibővíti a kijelölt *size* kötetet megabájtban (MB).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A [Azure Portal](attach-managed-disk-portal.md)használatával is csatolhat lemezeket.

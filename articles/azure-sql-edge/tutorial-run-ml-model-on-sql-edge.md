@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: abd1bc9b53c303d094d74683da0d6e3fad4d715f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7bb5d58e0c11ef65a6839383f79d32def4fa67a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90887472"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392095"
 ---
 # <a name="deploy-ml-model-on-azure-sql-edge-using-onnx"></a>ML modell üzembe helyezése az Azure SQL Edge-ben a ONNX használatával 
 
@@ -135,7 +135,7 @@ Adja meg a következő Python-kódot a Azure Data Studio jegyzetfüzetben, és f
    df.describe()
    ```
 
-1. Indítsa el a AzureML kísérletet a legjobb algoritmus megkereséséhez és betanításához. Ebben az esetben az összes regressziós algoritmust teszteli, és a normalizált legfelső szintű, négyzetes hibával (NRMSE) rendelkező elsődleges metrikával dolgozik. További információt az [Azure ml-kísérletek elsődleges metrikája](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#primary-metric)című témakörben talál. A következő kód az ML kísérlet helyi futtatását indítja el.
+1. Indítsa el a AzureML kísérletet a legjobb algoritmus megkereséséhez és betanításához. Ebben az esetben az összes regressziós algoritmust teszteli, és a normalizált legfelső szintű, négyzetes hibával (NRMSE) rendelkező elsődleges metrikával dolgozik. További információt az [Azure ml-kísérletek elsődleges metrikája](../machine-learning/how-to-configure-auto-train.md#primary-metric)című témakörben talál. A következő kód az ML kísérlet helyi futtatását indítja el.
 
    ```python
    ## Define the X_train and the y_train data sets for the AutoML experiments. X_Train are the inputs or the features, while y_train is the outcome or the prediction result. 

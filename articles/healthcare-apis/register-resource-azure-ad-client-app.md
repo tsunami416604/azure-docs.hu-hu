@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: e92fab392dc73d8de0b7b2547e38b3f345562930
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e22eaacd73bb15ddf43f416831ff5ff42923b6e0
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975858"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393387"
 ---
 # <a name="register-a-resource-application-in-azure-active-directory"></a>Erőforrás-alkalmazás regisztrálása Azure Active Directory
 
@@ -43,7 +43,7 @@ Ha a nyílt forráskódú FHIR-kiszolgálót használja az Azure-hoz, az alábbi
 
 1. Az [Azure Portal](https://portal.azure.com) bal oldali navigációs paneljén kattintson az **Azure Active Directory** elemre.
 
-2. A **Azure Active Directory** panelen kattintson **Alkalmazásregisztrációk**:
+2. A **Azure Active Directory** panelen kattintson **Alkalmazásregisztrációk** :
 
     ![Azure Portal. Új alkalmazás regisztrálása.](media/how-to-aad/portal-aad-new-app-registration.png)
 
@@ -61,9 +61,9 @@ Az erőforrás-alkalmazások azonosító URI-ja (alkalmazásspecifikus azonosít
 
 1. Kattintson **az API közzététele** lehetőségre
 
-2. Kattintson az alkalmazás- *azonosító URI*elem melletti **beállítás** gombra.
+2. Kattintson az alkalmazás- *azonosító URI* elem melletti **beállítás** gombra.
 
-3. Adja meg az azonosító URI-t, majd kattintson a **Mentés**gombra. A jó azonosító URI a FHIR-kiszolgáló URI-ja lenne.
+3. Adja meg az azonosító URI-t, majd kattintson a **Mentés** gombra. A jó azonosító URI a FHIR-kiszolgáló URI-ja lenne.
 
 4. Kattintson **a hatókör hozzáadása** lehetőségre, és adja hozzá az API-hoz definiálni kívánt hatóköröket. Legalább egy hatókört hozzá kell adnia ahhoz, hogy a jövőben engedélyeket adjon az erőforrás-alkalmazásnak. Ha nem rendelkezik olyan konkrét hatókörökkel, amelyeket hozzá szeretne adni, hatókörként adhat hozzá user_impersonation.
 
@@ -71,9 +71,9 @@ Az erőforrás-alkalmazások azonosító URI-ja (alkalmazásspecifikus azonosít
 
 ### <a name="define-application-roles"></a>Alkalmazási szerepkörök definiálása
 
-A FHIR-hez készült Azure API és az Azure-beli OSS FHIR-kiszolgáló a szerepköralapú hozzáférés-vezérléshez [Azure Active Directory alkalmazás-szerepköröket](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles) használ. Ha meg szeretné határozni, hogy mely szerepkörök legyenek elérhetők a FHIR-kiszolgáló API-hoz, nyissa meg az erőforrás-alkalmazás [jegyzékfájlját](https://docs.microsoft.com/azure/active-directory/active-directory-application-manifest/):
+A FHIR-hez készült Azure API és az Azure-beli OSS FHIR-kiszolgáló a szerepköralapú hozzáférés-vezérléshez [Azure Active Directory alkalmazás-szerepköröket](/azure/architecture/multitenant-identity/app-roles) használ. Ha meg szeretné határozni, hogy mely szerepkörök legyenek elérhetők a FHIR-kiszolgáló API-hoz, nyissa meg az erőforrás-alkalmazás [jegyzékfájlját](/azure/active-directory/active-directory-application-manifest/):
 
-1. Kattintson a **jegyzékfájlra**:
+1. Kattintson a **jegyzékfájlra** :
 
     ![Alkalmazás szerepkörei](media/how-to-aad/portal-aad-register-new-app-registration-APP-ROLES.png)
 
@@ -105,7 +105,7 @@ A FHIR-hez készült Azure API és az Azure-beli OSS FHIR-kiszolgáló a szerepk
     ],
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan regisztrálhat egy erőforrás-alkalmazást Azure Active Directoryban. Következő lépésként regisztrálja a bizalmas ügyfélalkalmazás alkalmazását.
  

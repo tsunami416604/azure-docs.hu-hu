@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 16ad757fc00439bb390a7e0dea902901c468dd1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31a454c93ad5192f387306a8ec557c4e4d3ae991
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90946516"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395291"
 ---
 # <a name="deploy-an-azure-sql-edge-container-in-kubernetes"></a>Azure SQL Edge-tároló üzembe helyezése a Kubernetes-ben
 
@@ -48,7 +48,7 @@ A következő ábrán a tárolót üzemeltető csomópont `azure-sql-edge` meghi
 * **Kubernetes-fürt**
    - Az oktatóanyaghoz Kubernetes-fürt szükséges. A lépések a [kubectl](https://kubernetes.io/docs/user-guide/kubectl/) használatával kezelik a fürtöt. 
 
-   - Ebben az oktatóanyagban az Azure Kubernetes Service-t fogjuk használni az Azure SQL Edge üzembe helyezéséhez. Lásd: [Azure Kubernetes-szolgáltatás (ak) fürt üzembe helyezése](https://docs.microsoft.com/azure/aks/tutorial-kubernetes-deploy-cluster) egy egycsomópontos Kubernetes-fürt létrehozásához és kapcsolódásához a-ben `kubectl` . 
+   - Ebben az oktatóanyagban az Azure Kubernetes Service-t fogjuk használni az Azure SQL Edge üzembe helyezéséhez. Lásd: [Azure Kubernetes-szolgáltatás (ak) fürt üzembe helyezése](../aks/tutorial-kubernetes-deploy-cluster.md) egy egycsomópontos Kubernetes-fürt létrehozásához és kapcsolódásához a-ben `kubectl` . 
 
    >[!NOTE]
    >A csomópontok meghibásodása elleni védelem érdekében a Kubernetes-fürtök több csomópontot igényelnek.
@@ -108,7 +108,7 @@ A következő parancs egy jelszót hoz létre az SA-fiókhoz:
          storage: 8Gi
    ```
 
-   Mentse a fájlt (például: **PVC. YAML**).
+   Mentse a fájlt (például: **PVC. YAML** ).
 
 2. Hozza létre az állandó kötet jogcímet a Kubernetes-ben.
 
@@ -241,7 +241,7 @@ spec:
    >[!NOTE]
    >A `LoadBalancer` szolgáltatás típusának használatával az Azure SQL Edge-példány távolról (az interneten keresztül) elérhető az 1433-as porton.
 
-   Mentse a fájlt (például **sqledgedeploy. YAML**).
+   Mentse a fájlt (például **sqledgedeploy. YAML** ).
 
 2. Hozza létre a központi telepítést.
 
@@ -305,7 +305,7 @@ A hiba és a helyreállítás ellenőrzéséhez törölheti a hüvelyt. Hajtsa v
 
 A Kubernetes automatikusan újra létrehozza a pod-t egy Azure SQL Edge-példány helyreállításához, és csatlakozik az állandó tárolóhoz. `kubectl get pods`A használatával ellenőrizheti, hogy telepítve van-e az új Pod. Ezzel a paranccsal `kubectl get services` ellenőrizheti, hogy az új tároló IP-címe azonos-e. 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebben az oktatóanyagban megtanulta, hogyan helyezhet üzembe Azure SQL Edge-tárolókat egy Kubernetes-fürtön a magas rendelkezésre állás érdekében. 
 
@@ -318,8 +318,7 @@ Ebben az oktatóanyagban megtanulta, hogyan helyezhet üzembe Azure SQL Edge-tá
 
 ## <a name="next-steps"></a>További lépések
 
-- [Bevezetés a Kubernetes használatába](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+- [Bevezetés a Kubernetes használatába](../aks/intro-kubernetes.md)
 - [Machine learning és mesterséges intelligencia a ONNX az SQL Edge-ben](onnx-overview.md).
 - [Végpontok közötti IoT-megoldás létrehozása az SQL Edge használatával IoT Edge segítségével](tutorial-deploy-azure-resources.md).
 - [Adatfolyamok az Azure SQL Edge-ben](stream-data.md)
-

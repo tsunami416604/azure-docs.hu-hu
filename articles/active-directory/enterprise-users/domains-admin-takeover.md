@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: how-to
 ms.workload: identity
-ms.date: 04/29/2020
+ms.date: 11/04/2020
 ms.author: curtand
-ms.reviewer: elkuzmen
+ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6a7dcb1d24f3c1ff848e3393687b04d79d28058
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 11708aeb434f3b258377c02f15214f1ac9ae4295
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375669"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393625"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Nem felügyelt címtár átvétele rendszergazdaként az Azure Active Directoryban
 
@@ -38,9 +38,9 @@ Egyes, a SharePoint-és OneDrive tartalmazó termékek, például a Microsoft 36
 
 1. Hozzon létre egy felhasználói környezetet a nem felügyelt szervezetben a Power BI regisztrálásával. Például a következő lépések elvégzésével feltételezhető, hogy az elérési út.
 
-2. Nyissa meg az [Power bi webhelyet](https://powerbi.com) , és válassza az **ingyenes indítás**lehetőséget. Adjon meg egy olyan felhasználói fiókot, amely a szervezet tartománynevét használja; például: `admin@fourthcoffee.xyz` . Az ellenőrző kód megadása után tekintse meg az e-mailt a megerősítő kódhoz.
+2. Nyissa meg az [Power bi webhelyet](https://powerbi.com) , és válassza az **ingyenes indítás** lehetőséget. Adjon meg egy olyan felhasználói fiókot, amely a szervezet tartománynevét használja; például: `admin@fourthcoffee.xyz` . Az ellenőrző kód megadása után tekintse meg az e-mailt a megerősítő kódhoz.
 
-3. A Power BI megerősítő e-mailben válassza az **Igen, ez nekem**lehetőséget.
+3. A Power BI megerősítő e-mailben válassza az **Igen, ez nekem** lehetőséget.
 
 4. Jelentkezzen be a [Microsoft 365 felügyeleti központba](https://portal.office.com/admintakeover) a Power bi felhasználói fiókkal. Megjelenik egy üzenet, amely arra utasítja Önt, hogy a nem felügyelt szervezetben már ellenőrzött tartománynév **rendszergazdája legyen** . válassza **az igen, szeretnék a rendszergazdát**.
   
@@ -59,7 +59,7 @@ Az előző lépések elvégzése után a Microsoft 365 negyedik kávéházának 
 1. Nyissa meg a [Microsoft 365 felügyeleti központot](https://admin.microsoft.com).
 2. Válassza a **felhasználók** fület, és hozzon létre egy olyan nevű új felhasználói fiókot, amely nem használja az egyéni tartománynevet (például *felhasználói \@ fourthcoffeexyz.onmicrosoft.com* ). 
 3. Győződjön meg arról, hogy az új felhasználói fiók globális rendszergazdai jogosultságokkal rendelkezik az Azure AD-szervezethez.
-4. Nyissa meg a **tartományok** fület a Microsoft 365 felügyeleti központban, válassza ki a tartománynevet, és válassza az **Eltávolítás**lehetőséget. 
+4. Nyissa meg a **tartományok** fület a Microsoft 365 felügyeleti központban, válassza ki a tartománynevet, és válassza az **Eltávolítás** lehetőséget. 
   
    ![A tartománynév eltávolítása Microsoft 365](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
@@ -67,12 +67,12 @@ Az előző lépések elvégzése után a Microsoft 365 negyedik kávéházának 
   
 6. Jelentkezzen be az [Azure ad felügyeleti központba](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) egy olyan fiókkal, amely az Azure ad-szervezet globális rendszergazdája.
   
-7. Válassza az **Egyéni tartománynevek**lehetőséget, majd adja hozzá a tartománynevet. A tartománynév tulajdonjogának ellenőrzéséhez meg kell adnia a DNS TXT-rekordokat. 
+7. Válassza az **Egyéni tartománynevek** lehetőséget, majd adja hozzá a tartománynevet. A tartománynév tulajdonjogának ellenőrzéséhez meg kell adnia a DNS TXT-rekordokat. 
   
    ![Az Azure AD-hez hozzáadott tartomány ellenőrizve](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> A Power BI vagy az Azure Rights Management szolgáltatás azon felhasználóinak, akiknek a Microsoft 365 szervezethez hozzárendelt licenccel rendelkeznek, menteniük kell az irányítópultokat, ha a tartománynév el lett távolítva. A felhasználóknak olyan felhasználónévvel kell bejelentkezniük, mint a *felhasználói \@ fourthcoffeexyz.onmicrosoft.com* , nem pedig a *User \@ fourthcoffee. xyz*néven.
+> A Power BI vagy az Azure Rights Management szolgáltatás azon felhasználóinak, akiknek a Microsoft 365 szervezethez hozzárendelt licenccel rendelkeznek, menteniük kell az irányítópultokat, ha a tartománynév el lett távolítva. A felhasználóknak olyan felhasználónévvel kell bejelentkezniük, mint a *felhasználói \@ fourthcoffeexyz.onmicrosoft.com* , nem pedig a *User \@ fourthcoffee. xyz* néven.
 
 ## <a name="external-admin-takeover"></a>Külső rendszergazdai átvétel
 
@@ -118,10 +118,10 @@ parancsmag | Használat
 `connect-msolservice` | Ha a rendszer kéri, jelentkezzen be a felügyelt szervezetbe.
 `get-msoldomain` | Megjeleníti az aktuális szervezethez társított tartományneveket.
 `new-msoldomain –name <domainname>` | Nem ellenőrzöttként adja hozzá a tartománynevet a szervezethez (a DNS-ellenőrzés még nem lett elvégezve).
-`get-msoldomain` | A tartománynév már szerepel a felügyelt szervezethez társított tartománynevek listáján, de nem **ellenőrzöttként**van felsorolva.
+`get-msoldomain` | A tartománynév már szerepel a felügyelt szervezethez társított tartománynevek listáján, de nem **ellenőrzöttként** van felsorolva.
 `get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | Megadja a tartományhoz tartozó új DNS TXT-rekordba (MS = XXXXX) való üzembe helyezéshez szükséges adatokat. Előfordulhat, hogy az ellenőrzés nem történik meg azonnal, mert eltart egy ideig a TXT-rekord propagálásához, ezért várjon néhány percet, mielőtt fontolóra venné a **-ForceTakeover** kapcsolót. 
 `confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Ha a tartománynevet még nem ellenőrzi, folytathatja a **-ForceTakeover** kapcsolót. Ellenőrzi, hogy létrejött-e a TXT-rekord, és elindította-e az átvételi folyamatot.<li>A **-ForceTakeover** beállítást csak akkor adja hozzá a parancsmaghoz, ha a külső rendszergazdai átvételt kényszeríti, például ha a nem felügyelt szervezet Microsoft 365 szolgáltatás blokkolja az átvételt.
-`get-msoldomain` | A tartománynevek mostantól **ellenőrzöttként**jelenítik meg a tartománynevet.
+`get-msoldomain` | A tartománynevek mostantól **ellenőrzöttként** jelenítik meg a tartománynevet.
 
 > [!NOTE]
 > A nem felügyelt Azure AD-szervezet 10 nappal a külső átvételi kényszerítési lehetőség gyakorlása után törlődik.
@@ -144,12 +144,12 @@ parancsmag | Használat
    ```powershell
    Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
    ```
-    Például:
+    Ilyenek többek között:
    ```
    Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
    ```
 
-4. Másolja ki a parancs által visszaadott értéket (a kihívást). Például:
+4. Másolja ki a parancs által visszaadott értéket (a kihívást). Ilyenek többek között:
    ```powershell
    MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
@@ -160,7 +160,7 @@ parancsmag | Használat
    Confirm-MsolDomain –DomainName *your_domain_name* –ForceTakeover Force
    ```
   
-   Például:
+   Ilyenek többek között:
   
    ```powershell
    Confirm-MsolDomain –DomainName contoso.com –ForceTakeover Force
@@ -168,13 +168,13 @@ parancsmag | Használat
 
 A sikeres kihívás egy hiba nélkül visszaadja a kérést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Egyéni tartománynév hozzáadása az Azure AD-hez](../fundamentals/add-custom-domain.md)
 * [How to install and configure Azure PowerShell (Az Azure PowerShell telepítése és konfigurálása)](/powershell/azure/)
 * [Azure PowerShell](/powershell/azure/)
 * [Azure parancsmag-referencia](/powershell/azure/get-started-azureps)
-* [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
+* [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0&preserve-view=true)
 
 <!--Image references-->
 [1]: ./media/active-directory-self-service-signup/SelfServiceSignUpControls.png

@@ -1,5 +1,5 @@
 ---
-title: Felkészülés az Azure VMware megoldás VM vész-helyreállítására Azure Site Recovery
+title: Azure VMware-megoldás előkészítése a Azure Site Recovery vész-helyreállításra
 description: Ismerje meg, hogyan készítheti elő az Azure VMware megoldás-kiszolgálókat az Azure-ba való vész-helyreállításra az Azure Site Recovery szolgáltatás használatával.
 author: Harsha-CS
 manager: rochakm
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: harshacs
 ms.custom: MVC
-ms.openlocfilehash: 9b04faf6797d04404dc0c5d617af2fd62a68c49a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e77ede7b04c95bfd6b6b8f660c8d811e7434c0f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91814579"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395444"
 ---
-# <a name="prepare-azure-vmware-solution-servers-for-disaster-recovery-to-azure"></a>Azure VMware-megoldási kiszolgálók előkészítése az Azure-ba való vész-helyreállításhoz
+# <a name="prepare-azure-vmware-solution-for-disaster-recovery-to-azure-site-recovery"></a>Azure VMware-megoldás előkészítése a Azure Site Recovery vész-helyreállításra
 
 Ez a cikk azt ismerteti, hogyan lehet előkészíteni az Azure VMware megoldás-kiszolgálókat az Azure-ba való vész-helyreállításra az [Azure site Recovery](site-recovery-overview.md) szolgáltatások használatával. 
 
@@ -68,8 +68,8 @@ Készítse elő a fiókot az alábbiak szerint:
 
 Készítsen elő egy tartományi vagy helyi fiókot, amely rendelkezik a virtuális gépre való telepítéshez szükséges engedélyekkel.
 
-- **Windows rendszerű virtuális gépek**: Ha Windows rendszerű virtuális gépekre kíván telepíteni, de nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi számítógépen. Ehhez adja hozzá a **LocalAccountTokenFilterPolicy** DWORD bejegyzést 1 értékkel a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** helyen található beállításjegyzékhez.
-- **Linux rendszerű virtuális gépek**: Ha Linux rendszerű virtuális gépekre kíván telepíteni, készítsen elő egy rendszergazdai fiókot a Linux-forráskiszolgálón.
+- **Windows rendszerű virtuális gépek** : Ha Windows rendszerű virtuális gépekre kíván telepíteni, de nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi számítógépen. Ehhez adja hozzá a **LocalAccountTokenFilterPolicy** DWORD bejegyzést 1 értékkel a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** helyen található beállításjegyzékhez.
+- **Linux rendszerű virtuális gépek** : Ha Linux rendszerű virtuális gépekre kíván telepíteni, készítsen elő egy rendszergazdai fiókot a Linux-forráskiszolgálón.
 
 
 ## <a name="check-vmware-requirements"></a>A VMware követelményeinek ellenőrzése
@@ -92,10 +92,10 @@ A feladatátvételt követően előfordulhat, hogy az Azure-beli VMware-megoldá
 Ha a feladatátvételt követően RDP segítségével szeretne kapcsolódni a Windows virtuális gépekhez, tegye a következőket:
 
 - **Internet-hozzáférés**. A feladatátvétel előtt engedélyezze az RDP-t az Azure VMware megoldás virtuális gépen a feladatátvétel előtt. Ellenőrizze, hogy a **Nyilvános** profilnál felvette-e a listára a TCP- és UDP-szabályokat, valamint hogy a **Windows-tűzfal** > **Engedélyezett alkalmazások** területén az összes profil számára engedélyezve van-e az RDP.
-- **Helyek közötti VPN-elérés**:
+- **Helyek közötti VPN-elérés** :
     - A feladatátvétel előtt engedélyezze az RDP-t az Azure VMware megoldás virtuális gépén.
     - Az RDP-t engedélyezni kell a **Windows tűzfal**  ->  **engedélyezett alkalmazásaiban és szolgáltatásaiban** a **tartományok és magánhálózatok** számára.
-    - Ellenőrizze, hogy az operációs rendszer tárolóhálózati szabályzata **OnlineAll** értékre van-e állítva. [További információk](https://support.microsoft.com/kb/3031135).
+    - Ellenőrizze, hogy az operációs rendszer tárolóhálózati szabályzata **OnlineAll** értékre van-e állítva. [További információ](https://support.microsoft.com/kb/3031135).
 - A virtuális gépen nem lehetnek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Ha vannak, akkor nem fog tudni bejelentkezni a virtuális gépre, amíg a frissítés be nem fejeződik.
 - A feladatátvételt követően ellenőrizze a **Rendszerindítási diagnosztika** részt a Windows Azure virtuális gépen a virtuális gép képernyőképének megtekintéséhez. Ha nem sikerül, ellenőrizze, hogy fut-e a virtuális gép, majd tekintse át a [hibaelhárítási tippeket](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 

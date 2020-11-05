@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: ee2d65d66caef5cd9405d6e3d0e094de2e30ae87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9408aaa8fd5b677f012392ef4bd51c8826650eee
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90902495"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395155"
 ---
 # <a name="enable-and-disable-data-retention-policies"></a>Adatmegőrzési szabályzatok engedélyezése és letiltása
 
@@ -22,7 +22,7 @@ Ez a témakör azt ismerteti, hogyan lehet engedélyezni és letiltani az adatme
 
 ## <a name="enable-data-retention-for-a-database"></a>Adatmegőrzés engedélyezése egy adatbázis számára
 
-Az alábbi példa bemutatja, hogyan engedélyezheti az adatmegőrzést az [Alter Database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options)használatával.
+Az alábbi példa bemutatja, hogyan engedélyezheti az adatmegőrzést az [Alter Database](/sql/t-sql/statements/alter-database-transact-sql-set-options)használatával.
 
 ```sql
 ALTER DATABASE [<DatabaseName>] SET DATA_RETENTION  ON;
@@ -38,9 +38,9 @@ FROM sys.databases;
 
 ## <a name="enable-data-retention-for-a-table"></a>Adatmegőrzés engedélyezése egy táblánál
 
-Minden olyan táblánál engedélyezve kell lennie az adatmegőrzésnek, amelyhez az adatok automatikus kiürítését szeretné. Ha az adatmegőrzés engedélyezve van az adatbázison és a táblán, a háttérben futó rendszerfeladat rendszeresen megvizsgálja a táblázatot az elavult (idős) sorok azonosítására és törlésére. Az adatmegőrzés engedélyezhető egy táblán a [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) vagy az [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql)paranccsal a tábla létrehozása során.
+Minden olyan táblánál engedélyezve kell lennie az adatmegőrzésnek, amelyhez az adatok automatikus kiürítését szeretné. Ha az adatmegőrzés engedélyezve van az adatbázison és a táblán, a háttérben futó rendszerfeladat rendszeresen megvizsgálja a táblázatot az elavult (idős) sorok azonosítására és törlésére. Az adatmegőrzés engedélyezhető egy táblán a [CREATE TABLE](/sql/t-sql/statements/create-table-transact-sql) vagy az [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql)paranccsal a tábla létrehozása során.
 
-Az alábbi példa bemutatja, hogyan engedélyezhető az adatmegőrzés egy táblához a [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql)használatával. 
+Az alábbi példa bemutatja, hogyan engedélyezhető az adatmegőrzés egy táblához a [CREATE TABLE](/sql/t-sql/statements/create-table-transact-sql)használatával. 
 
 ```sql
 CREATE TABLE [dbo].[data_retention_table] 
@@ -63,7 +63,7 @@ A `WITH (DATA_DELETION = ON ( FILTER_COLUMN = [dbdatetime2], RETENTION_PERIOD = 
     - DateTimeOffset
 - RETENTION_PERIOD – egész érték, amelyet egy egység leírója követ. Az engedélyezett egységek: nap, nap, hét, hét, hónap, hónap, év és év.
 
-Az alábbi példa bemutatja, hogyan engedélyezheti az adatmegőrzést a tábla számára az [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql)paranccsal.  
+Az alábbi példa bemutatja, hogyan engedélyezheti az adatmegőrzést a tábla számára az [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql)paranccsal.  
 
 ```sql
 Alter Table [dbo].[data_retention_table]
@@ -101,7 +101,7 @@ Az adatbázis és a tábla adatmegőrzési beállítása a (z) együtt használh
 
 ## <a name="disable-data-retention-on-a-table"></a>Adatok megőrzésének letiltása egy táblában 
 
-Az adatmegőrzés le lehet tiltani egy táblában az [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql)paranccsal. A következő parancs használatával letilthatja az adatmegőrzést egy táblán.
+Az adatmegőrzés le lehet tiltani egy táblában az [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql)paranccsal. A következő parancs használatával letilthatja az adatmegőrzést egy táblán.
 
 ```sql
 Alter Table [dbo].[data_retention_table]
@@ -110,12 +110,12 @@ Set (DATA_DELETION = OFF)
 
 ## <a name="disable-data-retention-on-a-database"></a>Adatok megőrzésének letiltása egy adatbázison
 
-Az adatmegőrzés letiltható egy táblán az [Alter Database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options)utasítás használatával. Az alábbi parancs használatával letilthatja az adatmegőrzést egy adatbázison.
+Az adatmegőrzés letiltható egy táblán az [Alter Database](/sql/t-sql/statements/alter-database-transact-sql-set-options)utasítás használatával. Az alábbi parancs használatával letilthatja az adatmegőrzést egy adatbázison.
 
 ```sql
 ALTER DATABASE <DatabaseName> SET DATA_RETENTION  OFF;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Adatmegőrzés és az automatikus Adattisztítás](data-retention-overview.md)
 - [Korábbi adatok kezelése adatmegőrzési házirenddel](data-retention-cleanup.md)

@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 7bee7bede0219f41d9d5e56214a6dc1b94977cb5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 20173c4ba02f53a526167a5a8e22bd0cedc85594
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322727"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393218"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Oktatóanyag: a "Helló világ!" futtatása Python-szkript (2. rész/4)
 
@@ -139,6 +139,14 @@ Itt látható a vezérlő parancsfájl működésének leírása:
 
 Futtassa a vezérlési parancsfájlt, amely viszont a `hello.py` [telepítési oktatóanyagban](tutorial-1st-experiment-sdk-setup-local.md)létrehozott számítási fürtön fut.
 
+A legelső Futtatás 5-10 percet vesz igénybe. Ennek az az oka, hogy a következők történnek:
+
+* A Docker-rendszerkép a felhőben van felépítve
+* A számítási fürt 0 és 1 csomópont között van átméretezve
+* A rendszer letölti a Docker-rendszerképet a számításba. 
+
+A későbbi futtatások sokkal gyorsabbak (~ 15 másodperc), mivel a Docker-rendszerkép gyorsítótárazva van a számításban – ezt úgy tesztelheti, hogy az első futtatás befejezése után újraküldi az alábbi kódot.
+
 ```bash
 python 03-run-hello.py
 ```
@@ -178,7 +186,7 @@ A 8. sorban a "Helló világ!" kifejezés látható kimeneti.
 
 A `70_driver_log.txt` fájl egy futtatásból származó standard kimenetet tartalmaz. Ez a fájl akkor lehet hasznos, ha távoli futtatásokat végez a felhőben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy egyszerű "Helló világ!" szkriptet, és futtatta azt az Azure-ban. Megismerte, hogyan csatlakozhat a Azure Machine Learning-munkaterülethez, létrehozhat egy kísérletet, és elküldheti a `hello.py` kódot a felhőbe.
 

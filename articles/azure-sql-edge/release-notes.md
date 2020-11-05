@@ -10,12 +10,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: afd78acadf133a9f128eec402eba9d0eed51b8e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 543a71bc2a77f0a31f8ddaa0de13135b93db48ec
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91284482"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395036"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Az Azure SQL Edge kibocsátási megjegyzései 
 
@@ -37,9 +37,9 @@ Ez a cikk ismerteti az újdonságokat és az Azure SQL Edge minden új buildjét
    - Párhuzamos végrehajtási forgatókönyvek engedélyezése
 6. Energiatakarékos az alacsony energiaellátású üzemmód fejlesztése
 7. A streaming új funkcióinak támogatása 
-   - [Pillanatkép-Windows](https://docs.microsoft.com/stream-analytics-query/snapshot-window-azure-stream-analytics) : az új ablak típusa lehetővé teszi, hogy a pontos időpontra érkező események csoportosítsák. 
-   - A [TopOne](https://docs.microsoft.com/stream-analytics-query/topone-azure-stream-analytics) és a [CollectTop](https://docs.microsoft.com/stream-analytics-query/collecttop-azure-stream-analytics) analitikai függvényként való engedélyezése lehetővé teszi, hogy a választott oszlop által rendezett rekordokat visszaadja, anélkül, hogy egy ablakhoz kellene tartoznia. 
-   - A [MATCH_RECOGNIZE](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics)fejlesztése. 
+   - [Pillanatkép-Windows](/stream-analytics-query/snapshot-window-azure-stream-analytics) : az új ablak típusa lehetővé teszi, hogy a pontos időpontra érkező események csoportosítsák. 
+   - A [TopOne](/stream-analytics-query/topone-azure-stream-analytics) és a [CollectTop](/stream-analytics-query/collecttop-azure-stream-analytics) analitikai függvényként való engedélyezése lehetővé teszi, hogy a választott oszlop által rendezett rekordokat visszaadja, anélkül, hogy egy ablakhoz kellene tartoznia. 
+   - A [MATCH_RECOGNIZE](/stream-analytics-query/match-recognize-stream-analytics)fejlesztése. 
 
 ### <a name="fixes"></a>Javítások
 1. További hibaüzenetek és részletek a TSQL adatfolyam-továbbítási műveleteivel kapcsolatos hibák elhárításához. 

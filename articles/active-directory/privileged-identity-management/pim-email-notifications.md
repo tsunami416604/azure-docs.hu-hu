@@ -16,12 +16,12 @@ ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02fbfc83c16cb13376cce820f19b247a7cd7db59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe57a44a5a6fa9a631604d92419fd8f5ebcce50a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82232308"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394730"
 ---
 # <a name="email-notifications-in-pim"></a>E-mail-értesítések a PIM-ben
 
@@ -50,11 +50,11 @@ Kik kapják meg ezeket az e-maileket az Azure AD-szerepkörökhöz a szerepkört
 
 | Felhasználó | A szerepkör aktiválása jóváhagyásra vár | Szerepkör-aktiválási kérelem befejeződött | A PIM engedélyezve van |
 | --- | --- | --- | --- |
-| Kiemelt szerepkörű rendszergazda</br>(Aktivált/jogosult) | Igen</br>(csak akkor, ha nincs megadva explicit jóváhagyó) | Igen* | Igen |
-| Biztonsági rendszergazda</br>(Aktivált/jogosult) | Nem | Igen* | Igen |
-| Globális rendszergazda</br>(Aktivált/jogosult) | Nem | Igen* | Igen |
+| Kiemelt szerepkörű rendszergazda</br>(Aktivált/jogosult) | Yes</br>(csak akkor, ha nincs megadva explicit jóváhagyó) | Igen* | Yes |
+| Biztonsági rendszergazda</br>(Aktivált/jogosult) | No | Igen* | Yes |
+| Globális rendszergazda</br>(Aktivált/jogosult) | No | Igen* | Yes |
 
-\*Ha az [ **értesítések** beállítás](pim-how-to-change-default-settings.md#notifications) **engedélyezve**értékre van állítva.
+\*Ha az [ **értesítések** beállítás](pim-how-to-change-default-settings.md#notifications) **engedélyezve** értékre van állítva.
 
 Az alábbi példa egy olyan e-mailt mutat be, amelyet a rendszer akkor küld, amikor egy felhasználó aktivál egy Azure AD-szerepkört a kitalált contoso-szervezet számára.
 
@@ -79,10 +79,13 @@ A **legfelső szintű szerepkörök áttekintése** szakasz a szervezet első ö
 
 ## <a name="email-timing-for-activation-approvals"></a>Az aktiválási jóváhagyások e-mail-időzítése
 
-Ha a felhasználó aktiválja a szerepkört, és a szerepkör-beállítás jóváhagyást igényel, a jóváhagyók három e-mailt kapnak az egyes jóváhagyásokhoz:
+Ha a felhasználó aktiválja a szerepkört, és a szerepkör-beállítás jóváhagyást igényel, a jóváhagyók két e-mailt kapnak az egyes jóváhagyásokhoz:
 
 - A felhasználó aktiválási kérelmének jóváhagyása vagy elutasítása (a kérelem-jóváhagyási motor által elküldve)
 - A felhasználó kérését jóváhagyták (a kérelem-jóváhagyási motor küldi el)
+
+Emellett a globális rendszergazdák és a Kiemelt szerepkörű rendszergazdák e-mailben kapják meg az egyes jóváhagyásokat:
+
 - A felhasználó szerepköre aktiválva van (Privileged Identity Management által eljuttatva)
 
 A kérelem-jóváhagyási motor által küldött első két e-mail késleltethető. Jelenleg az e-mailek 90%-a három-tíz percet vesz igénybe, de 1%-os ügyfelek esetében akár tizenöt percig is tarthat.

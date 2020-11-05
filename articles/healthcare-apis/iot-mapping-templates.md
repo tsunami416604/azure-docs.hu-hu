@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 4eede07b285614c061f4b59845c8f44d82083ec2
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 1702c17555d1d3c39a83fa16ca790d6f8f2b3344
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558533"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394237"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Az FHIR-hez készült Azure IoT-összekötő (előzetes verzió) leképezési sablonjai
 Ez a cikk részletesen ismerteti, hogyan konfigurálhatja az Azure IoT Connectort a FHIR * szolgáltatáshoz a leképezési sablonok használatával.
@@ -81,7 +81,7 @@ A JsonPathContentTemplate lehetővé teszi, hogy az Event hub-üzenetből a JSON
 ---
 **Pulzusszám**
 
-*Üzenet*
+*Üzenetet*
 ```json
 {
     "Body": {
@@ -115,7 +115,7 @@ A JsonPathContentTemplate lehetővé teszi, hogy az Event hub-üzenetből a JSON
 ---
 **Vérnyomás**
 
-*Üzenet*
+*Üzenetet*
 ```json
 {
     "Body": {
@@ -153,7 +153,7 @@ A JsonPathContentTemplate lehetővé teszi, hogy az Event hub-üzenetből a JSON
 
 **Több mérés kivetítése egyetlen üzenetből**
 
-*Üzenet*
+*Üzenetet*
 ```json
 {
     "Body": {
@@ -208,7 +208,7 @@ A JsonPathContentTemplate lehetővé teszi, hogy az Event hub-üzenetből a JSON
 
 **Több mérés kivetítése a tömbből az üzenetben**
 
-*Üzenet*
+*Üzenetet*
 ```json
 {
     "Body": [
@@ -254,14 +254,14 @@ A JsonPathContentTemplate lehetővé teszi, hogy az Event hub-üzenetből a JSON
 #### <a name="iotjsonpathcontenttemplate"></a>IotJsonPathContentTemplate
 A IotJsonPathContentTemplate hasonló a JsonPathContentTemplate, kivéve a DeviceIdExpression és a TimestampExpression-t.
 
-A sablon használatakor a kiértékelt üzenetek az [Azure IoT hub Device SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-device-sdks)-k használatával lettek elküldve. Ezen SDK-k használatakor az eszköz identitása (feltéve, hogy az Azure IOT hub/Central eszközének azonosítóját a rendszer regisztrálja az termékazonosító a cél FHIR-kiszolgálón), és az üzenet időbélyege ismert. Ha az Azure IoT Hub eszköz SDK-kat használja, de egyéni tulajdonságokat használ az üzenettörzs vagy a mérési időbélyeg számára, akkor továbbra is használhatja a JsonPathContentTemplate.
+A sablon használatakor a kiértékelt üzenetek az [Azure IoT hub Device SDK](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks)-k használatával lettek elküldve. Ezen SDK-k használatakor az eszköz identitása (feltéve, hogy az Azure IOT hub/Central eszközének azonosítóját a rendszer regisztrálja az termékazonosító a cél FHIR-kiszolgálón), és az üzenet időbélyege ismert. Ha az Azure IoT Hub eszköz SDK-kat használja, de egyéni tulajdonságokat használ az üzenettörzs vagy a mérési időbélyeg számára, akkor továbbra is használhatja a JsonPathContentTemplate.
 
 *Megjegyzés: a IotJsonPathContentTemplate használatakor a TypeMatchExpression a teljes üzenetre JToken kell oldania. Tekintse meg az alábbi példákat.* 
 ##### <a name="examples"></a>Példák
 ---
 **Pulzusszám**
 
-*Üzenet*
+*Üzenetet*
 ```json
 {
     "Body": {
@@ -297,7 +297,7 @@ A sablon használatakor a kiértékelt üzenetek az [Azure IoT hub Device SDK](h
 ---
 **Vérnyomás**
 
-*Üzenet*
+*Üzenetet*
 ```json
 {
     "Body": {

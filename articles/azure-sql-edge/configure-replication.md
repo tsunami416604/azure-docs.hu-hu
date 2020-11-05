@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a748bf977e76357c710518e608c12ad19a8cd0be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b424ece9207328d87068160f78ebc78a3bd1a8d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888417"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395223"
 ---
 # <a name="configure-replication-to-azure-sql-edge"></a>Replikáció konfigurálása az Azure SQL Edge-be 
 
@@ -24,8 +24,8 @@ Az Azure SQL Edge egy példányát leküldéses előfizetőként konfigurálhatj
   
 - Az Azure SQL Edge példányának leküldéses előfizetőnek kell lennie a közzétevő számára.
 - A közzétevő és a terjesztő a következők egyike lehet:
-   - Helyszíni vagy SQL Server Azure-beli virtuális gépen futó példánya SQL Server. További információ: [SQL Server az Azure Virtual Machines áttekintése](https://docs.microsoft.com/azure/azure-sql/virtual-machines/). SQL Server példányoknak a SQL Server 2016-nál későbbi verziót kell használnia.
-   - Az Azure SQL felügyelt példányának egy példánya. Az SQL felügyelt példánya képes a közzétevő, a terjesztő és az előfizetői adatbázisok üzemeltetésére. További információ: [replikáció SQL Database felügyelt példánnyal](https://docs.microsoft.com/azure/sql-database/replication-with-sql-database-managed-instance/).
+   - Helyszíni vagy SQL Server Azure-beli virtuális gépen futó példánya SQL Server. További információ: [SQL Server az Azure Virtual Machines áttekintése](../azure-sql/virtual-machines/index.yml). SQL Server példányoknak a SQL Server 2016-nál későbbi verziót kell használnia.
+   - Az Azure SQL felügyelt példányának egy példánya. Az SQL felügyelt példánya képes a közzétevő, a terjesztő és az előfizetői adatbázisok üzemeltetésére. További információ: [replikáció SQL Database felügyelt példánnyal](/azure/sql-database/replication-with-sql-database-managed-instance/).
 
 - A terjesztési adatbázis és a replikációs ügynökök nem helyezhetők el az Azure SQL Edge egy példányán.  
 
@@ -36,7 +36,7 @@ Az Azure SQL Edge egy példányát leküldéses előfizetőként konfigurálhatj
 
 Az alábbi követelmények és ajánlott eljárások fontosak a replikáció konfigurálásához:
 
-- [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)használatával is konfigurálhatja a replikációt. Azt is megteheti, hogy Transact-SQL-utasításokat futtat a közzétevőn SQL Server Management Studio vagy [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)használatával.
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)használatával is konfigurálhatja a replikációt. Azt is megteheti, hogy Transact-SQL-utasításokat futtat a közzétevőn SQL Server Management Studio vagy [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)használatával.
 - Az Azure SQL Edge egy példányára való replikáláshoz SQL Server hitelesítést kell használnia a bejelentkezéshez.
 - A replikált tábláknak elsődleges kulccsal kell rendelkezniük.
 - SQL Server egyetlen kiadványa képes támogatni az Azure SQL Edge és a SQL Server (helyszíni és SQL Server Azure-beli virtuális gépeken) előfizetők számára.  
@@ -80,17 +80,15 @@ Az Azure SQL Edge-előfizetések esetében az alábbi beállítások nem támoga
 
 ## <a name="examples"></a>Példák
 
-Hozzon létre egy kiadványt és egy leküldéses előfizetést. További információkért lásd:
+Hozzon létre egy kiadványt és egy leküldéses előfizetést. További információ:
   
-- [Kiadvány létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Hozzon létre egy leküldéses előfizetést](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) az Azure SQL Edge-kiszolgáló nevével és IP-címével előfizetőként (például **myEdgeinstance, 1433**), valamint egy adatbázisnevet az Azure SQL Edge-példányon célként megadott adatbázisként (például **AdventureWorks**).  
+- [Kiadvány létrehozása](/sql/relational-databases/replication/publish/create-a-publication)
+- [Hozzon létre egy leküldéses előfizetést](/sql/relational-databases/replication/create-a-push-subscription/) az Azure SQL Edge-kiszolgáló nevével és IP-címével előfizetőként (például **myEdgeinstance, 1433** ), valamint egy adatbázisnevet az Azure SQL Edge-példányon célként megadott adatbázisként (például **AdventureWorks** ).  
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
-- [Kiadvány létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Leküldéses előfizetés létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [Replikálási típusok](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
-- [Figyelés (replikálás)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
-- [Előfizetés inicializálása](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  
-
-
+- [Kiadvány létrehozása](/sql/relational-databases/replication/publish/create-a-publication)
+- [Leküldéses előfizetés létrehozása](/sql/relational-databases/replication/create-a-push-subscription/)
+- [Replikálási típusok](/sql/relational-databases/replication/types-of-replication)
+- [Figyelés (replikálás)](/sql/relational-databases/replication/monitor/monitoring-replication)
+- [Előfizetés inicializálása](/sql/relational-databases/replication/initialize-a-subscription)

@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: 240b96a47c84ec3b15a356edc35549a4a197b219
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2dbc75ac4f143089db778b260bb2c4bee5b49f6a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967967"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393166"
 ---
-# <a name="password-and-account-lockout-policies-on-active-directory-domain-services-managed-domains"></a>Jelszó-és fiókzárolási házirendek Active Directory tartományi szolgáltatások felügyelt tartományokban
+# <a name="password-and-account-lockout-policies-on-azure-active-directory-domain-services-managed-domains"></a>Jelszó-és fiókzárolási házirendek Azure Active Directory Domain Services felügyelt tartományokban
 
 A Azure Active Directory Domain Services (Azure AD DS) felhasználói biztonságának kezeléséhez olyan részletes jelszóházirendek is megadhatók, amelyek a fiókzárolás beállításait vagy a jelszó minimális hosszát és összetettségét vezérlik. A rendszer az Azure AD DS felügyelt tartomány összes felhasználójára vonatkozóan létrehoz és alkalmaz egy alapértelmezett részletes jelszóházirendek-házirendet. A részletes szabályozás biztosításához és adott üzleti vagy megfelelőségi igények kielégítéséhez további szabályzatok hozhatók létre és alkalmazhatók a felhasználók bizonyos csoportjaira.
 
@@ -90,7 +90,7 @@ Egyéni jelszóházirend létrehozásához a Active Directory felügyeleti eszk�
 > [!NOTE]
 > Egyéni jelszóházirend felügyelt tartományban való létrehozásához be kell jelentkeznie egy olyan felhasználói fiókba, amely az *HRE DC-rendszergazdák* csoport tagja.
 
-1. A kezdőképernyőn válassza a **felügyeleti eszközök**elemet. Megjelenik a rendelkezésre álló felügyeleti eszközök listája, amely az oktatóanyagban a [felügyeleti virtuális gép létrehozásához][tutorial-create-management-vm]lett telepítve.
+1. A kezdőképernyőn válassza a **felügyeleti eszközök** elemet. Megjelenik a rendelkezésre álló felügyeleti eszközök listája, amely az oktatóanyagban a [felügyeleti virtuális gép létrehozásához][tutorial-create-management-vm]lett telepítve.
 1. A szervezeti egységek létrehozásához és kezeléséhez válassza ki a **Active Directory felügyeleti központ** elemet a felügyeleti eszközök listájából.
 1. A bal oldali ablaktáblán válassza ki a felügyelt tartományt, például *aaddscontoso.com*.
 1. Nyissa meg a **rendszer** tárolót, majd a **jelszóbeállítás-tároló**.
@@ -99,8 +99,8 @@ Egyéni jelszóházirend létrehozásához a Active Directory felügyeleti eszk�
 
     ![Jelszavas szabályzat létrehozása a Active Directory felügyeleti központban](./media/password-policy/create-password-policy-adac.png)
 
-1. A jobb oldali **feladatok** panelen válassza az **új > a jelszó beállításai**lehetőséget.
-1. A **jelszó-beállítások létrehozása** párbeszédpanelen adja meg a szabályzat nevét (például *MyCustomFGPP*).
+1. A jobb oldali **feladatok** panelen válassza az **új > a jelszó beállításai** lehetőséget.
+1. A **jelszó-beállítások létrehozása** párbeszédpanelen adja meg a szabályzat nevét (például *MyCustomFGPP* ).
 1. Ha több jelszóházirend létezik, a rendszer egy felhasználóra alkalmazza a legmagasabb prioritású házirendet vagy prioritást. Minél kisebb a szám, annál magasabb a prioritás. Az alapértelmezett jelszóházirend prioritása *200*.
 
     Állítsa be az egyéni jelszóházirend elsőbbségét az alapértelmezett érték felülbírálásához, például: *1*.
@@ -112,12 +112,12 @@ Egyéni jelszóházirend létrehozásához a Active Directory felügyeleti eszk�
 
     ![Egyéni részletes jelszóházirendek létrehozása](./media/password-policy/custom-fgpp.png)
 
-1. Törölje **a jelet a védelem véletlen törlésből**jelölőnégyzetből. Ha ez a beállítás be van jelölve, nem mentheti a FGPP.
+1. Törölje **a jelet a védelem véletlen törlésből** jelölőnégyzetből. Ha ez a beállítás be van jelölve, nem mentheti a FGPP.
 1. A **közvetlenül alkalmazandó** szakaszban válassza a **Hozzáadás** gombot. A **felhasználók vagy csoportok kiválasztása** párbeszédpanelen kattintson a **helyszínek** gombra.
 
     ![Válassza ki azokat a felhasználókat és csoportokat, amelyekre alkalmazni szeretné a jelszóházirend alkalmazását](./media/password-policy/fgpp-applies-to.png)
 
-1. A jelszóházirend csak csoportokra alkalmazható. A **helyszínek** párbeszédpanelen bontsa ki a tartománynevet (például *aaddscontoso.com*), majd válasszon ki egy szervezeti egységet, például a **AADDC-felhasználók**elemet. Ha olyan egyéni szervezeti egységtel rendelkezik, amely az alkalmazni kívánt felhasználói csoportot tartalmazza, válassza ki azt a szervezeti egységet.
+1. A jelszóházirend csak csoportokra alkalmazható. A **helyszínek** párbeszédpanelen bontsa ki a tartománynevet (például *aaddscontoso.com* ), majd válasszon ki egy szervezeti egységet, például a **AADDC-felhasználók** elemet. Ha olyan egyéni szervezeti egységtel rendelkezik, amely az alkalmazni kívánt felhasználói csoportot tartalmazza, válassza ki azt a szervezeti egységet.
 
     ![Válassza ki azt a szervezeti egységet, amelyhez a csoport tartozik](./media/password-policy/fgpp-container.png)
 
@@ -127,7 +127,7 @@ Egyéni jelszóházirend létrehozásához a Active Directory felügyeleti eszk�
 
 1. Ha a kiválasztott csoport neve **közvetlenül** a (z) szakaszban látható, kattintson az **OK** gombra az egyéni jelszóházirend mentéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A jelszóházirend és a Active Directory felügyeleti központ használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 

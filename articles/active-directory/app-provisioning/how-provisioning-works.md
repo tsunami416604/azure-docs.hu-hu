@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/20/2020
+ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: c9d8bf42d8856ffcf7bb0247172f6c0fd49600e0
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 31c9dcaf6c6f26d28d70e3d1664665c2dbc37ce6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424619"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393081"
 ---
 # <a name="how-provisioning-works"></a>Az üzembe helyezés menete
 
@@ -43,9 +43,7 @@ Ha olyan alkalmazáshoz szeretne automatikus Azure AD-kiépítési összekötőt
 
 ## <a name="authorization"></a>Engedélyezés
 
-A hitelesítő adatok szükségesek ahhoz, hogy az Azure AD csatlakozhasson az alkalmazás felhasználói felügyeleti API-hoz. Egy alkalmazás automatikus felhasználó-kiépítési beállításakor érvényes hitelesítő adatokat kell megadnia. Az alkalmazáshoz tartozó hitelesítő adatokat és követelményeket az alkalmazásra vonatkozó oktatóanyagra utalva találja meg. A Azure Portalon tesztelheti a hitelesítő adatokat azáltal, hogy az Azure AD megpróbál csatlakozni az alkalmazás kiépítési alkalmazásához a megadott hitelesítő adatok használatával.
-
-Ha SAML-alapú egyszeri bejelentkezést is konfigurál az alkalmazáshoz, az Azure AD belső, alkalmazáson belüli tárolási korlátja 1024 bájt. Ez a korlát magában foglalja az alkalmazás egyetlen példányához társított összes tanúsítványt, titkos jogkivonatot, hitelesítő adatokat és kapcsolódó konfigurációs adatot (más néven az Azure AD-beli egyszerű szolgáltatásnév). Ha az SAML-alapú egyszeri bejelentkezés konfigurálva van, az SAML-tokenek aláírására használt tanúsítvány gyakran a terület 50%-át használja fel. A felhasználók üzembe helyezése során megadott további elemek (titkos jogkivonatok, URI-k, értesítő e-mail-címek, felhasználónevek és jelszavak) meghaladják a tárolási korlátot. További információ: a [rendszergazdai hitelesítő adatok mentése a felhasználó üzembe helyezésének beállítása során](./application-provisioning-config-problem-storage-limit.md).
+A hitelesítő adatok szükségesek ahhoz, hogy az Azure AD csatlakozhasson az alkalmazás felhasználói felügyeleti API-hoz. Egy alkalmazás automatikus felhasználó-kiépítési beállításakor érvényes hitelesítő adatokat kell megadnia. A katalógus alkalmazásaihoz az alkalmazásra vonatkozó oktatóanyagra hivatkozó hitelesítő adatokat és követelményeket talál. A nem katalógusos alkalmazások esetében a [scim](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#authorization-for-provisioning-connectors-in-the-application-gallery) dokumentációjában tájékozódhat a hitelesítő adatok típusairól és követelményeiről. A Azure Portalon tesztelheti a hitelesítő adatokat azáltal, hogy az Azure AD megpróbál csatlakozni az alkalmazás kiépítési alkalmazásához a megadott hitelesítő adatok használatával.
 
 ## <a name="mapping-attributes"></a>Leképezési attribútumok
 
@@ -53,7 +51,7 @@ Ha engedélyezi a felhasználók kiosztását egy külső SaaS-alkalmazáshoz, a
 
 Az Azure AD felhasználói objektumai és az egyes SaaS-alkalmazások felhasználói objektumai között előre konfigurált attribútumok és attribútumok vannak megadva. Egyes alkalmazások más típusú objektumokat is kezelhetnek a felhasználók, például a csoportok mellett.
 
-A kiépítés beállításakor fontos, hogy áttekintse és konfigurálja azokat az attribútum-hozzárendeléseket és munkafolyamatokat, amelyek meghatározzák, hogy az Azure AD mely felhasználói (vagy csoport-) tulajdonságait kell az alkalmazásnak megadnia. Tekintse át és konfigurálja a megfelelő tulajdonságot (az**attribútumot használó objektumok egyeztetése**), amely a felhasználók és csoportok egyedi azonosítására és a két rendszer közötti egyeztetésére szolgál.
+A kiépítés beállításakor fontos, hogy áttekintse és konfigurálja azokat az attribútum-hozzárendeléseket és munkafolyamatokat, amelyek meghatározzák, hogy az Azure AD mely felhasználói (vagy csoport-) tulajdonságait kell az alkalmazásnak megadnia. Tekintse át és konfigurálja a megfelelő tulajdonságot (az **attribútumot használó objektumok egyeztetése** ), amely a felhasználók és csoportok egyedi azonosítására és a két rendszer közötti egyeztetésére szolgál.
 
 Az alapértelmezett attribútum-hozzárendelések testreszabhatók az üzleti igényeknek megfelelően. Így módosíthatja vagy törölheti a meglévő attribútum-hozzárendeléseket, illetve létrehozhat új attribútum-hozzárendeléseket is. Részletekért lásd: [felhasználói üzembe helyezési attribútumok testreszabása – SaaS-alkalmazások leképezése](./customize-application-attributes.md).
 
@@ -64,7 +62,7 @@ Ha egy SaaS-alkalmazásra konfigurálja az üzembe helyezést, a megadható attr
 
 Az Azure AD-ből egy SaaS-alkalmazásba való kimenő kiépítés esetén a felhasználók [vagy csoportok hozzárendeléseire](../manage-apps/assign-user-or-group-access-portal.md) támaszkodva a leggyakoribb módszer annak meghatározására, hogy mely felhasználók tartoznak a kiépítés hatálya alá. Mivel a felhasználói hozzárendelések az egyszeri bejelentkezés engedélyezéséhez is használatosak, ugyanezt a módszert használhatja a hozzáférés és a kiépítés kezelésére is. A hozzárendelés-alapú hatókör nem vonatkozik a bejövő kiépítési forgatókönyvekre, például a munkanapokra és a SuccessFactors.
 
-* **Csoportok.** A prémium szintű Azure AD-licenccel a csoportok használatával rendelhet hozzá hozzáférést egy SaaS-alkalmazáshoz. Ezt követően, ha a kiépítési hatókör **csak a hozzárendelt felhasználók és csoportok szinkronizálására**van beállítva, az Azure ad-kiépítési szolgáltatás a felhasználókat attól függően fogja kiépíteni vagy kiépíteni, hogy az alkalmazáshoz rendelt csoport tagjai-e. Maga a csoport objektum sincs kiépítve, kivéve, ha az alkalmazás támogatja a csoportok objektumait. Győződjön meg arról, hogy az alkalmazáshoz rendelt csoportok "SecurityEnabled" tulajdonsága "true" (igaz) értékre van állítva.
+* **Csoportok.** A prémium szintű Azure AD-licenccel a csoportok használatával rendelhet hozzá hozzáférést egy SaaS-alkalmazáshoz. Ezt követően, ha a kiépítési hatókör **csak a hozzárendelt felhasználók és csoportok szinkronizálására** van beállítva, az Azure ad-kiépítési szolgáltatás a felhasználókat attól függően fogja kiépíteni vagy kiépíteni, hogy az alkalmazáshoz rendelt csoport tagjai-e. Maga a csoport objektum sincs kiépítve, kivéve, ha az alkalmazás támogatja a csoportok objektumait. Győződjön meg arról, hogy az alkalmazáshoz rendelt csoportok "SecurityEnabled" tulajdonsága "true" (igaz) értékre van állítva.
 
 * **Dinamikus csoportok.** Az Azure AD-beli felhasználó-kiépítési szolgáltatás a [dinamikus csoportokba](../enterprise-users/groups-create-rule.md)tartozó felhasználókat tudja olvasni és kiépíteni. Tartsa szem előtt ezeket a figyelmeztetéseket és javaslatokat:
 
@@ -135,7 +133,7 @@ A kezdeti ciklus után az összes többi ciklus a következő lesz:
 10. A növekményes ciklus végén egy új vízjel marad, amely a későbbi növekményes ciklusok kiindulási pontját adja meg.
 
 > [!NOTE]
-> A **létrehozási**, **frissítési**vagy **törlési** műveletet letilthatja a [leképezések](customize-application-attributes.md) szakasz **cél objektum műveletei** jelölőnégyzetének használatával. A felhasználók egy frissítés során való letiltásának logikáját a (z) "accountEnabled" mezőből származó attribútum-hozzárendeléssel is ellenőrzik.
+> A **létrehozási** , **frissítési** vagy **törlési** műveletet letilthatja a [leképezések](customize-application-attributes.md) szakasz **cél objektum műveletei** jelölőnégyzetének használatával. A felhasználók egy frissítés során való letiltásának logikáját a (z) "accountEnabled" mezőből származó attribútum-hozzárendeléssel is ellenőrzik.
 
 A kiépítési szolgáltatás továbbra is határozatlan időre futtatja az [egyes alkalmazásokra vonatkozó oktatóanyagban](../saas-apps/tutorial-list.md)meghatározott időközöket. A növekményes ciklusok addig folytatódnak, amíg az alábbi események egyike nem következik be:
 
@@ -192,7 +190,7 @@ A következő forgatókönyvek letiltást vagy törlést indítanak el:
 * Egy felhasználó nem rendelhető hozzá egy alkalmazáshoz.
 * A felhasználó hatókörből kívülre kerül a hatókörből (nem haladja meg a hatókör-szűrőt).
 
-:::image type="content" source="./media/how-provisioning-works/delete-user.png" alt-text="Felhasználó letiltása" lightbox="./media/how-provisioning-works/delete-user.png":::
+:::image type="content" source="./media/how-provisioning-works/delete-user.png" alt-text="Felhasználó törlése" lightbox="./media/how-provisioning-works/delete-user.png":::
 
 Alapértelmezés szerint az Azure AD-kiépítési szolgáltatás nem törli vagy letiltja a hatókörön kívüli felhasználókat. Ha szeretné felülbírálni ezt az alapértelmezett viselkedést, beállíthatja a jelölőt a [hatókörbeli törlés kihagyásához.](skip-out-of-scope-deletions.md)
 

@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: quickstart
 ms.date: 09/08/2020
 ms.author: punagpal
-ms.openlocfilehash: 3b6db74d637ac17ef5d09e1d9c5d3dac30ba8ba9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1e3101c8abcaef52c0ae9aaafef36b23aa45b586
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89594373"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394509"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>Gyors útmutató: az Azure IoT-összekötő üzembe helyezése a FHIR-ben (előzetes verzió) a Azure Portal használatával
 
@@ -75,7 +75,7 @@ Az eszköz-hozzárendelési sablon egy normalizált sémába alakítja át az es
 
 [![IoT-összekötő kattintson az eszköz-hozzárendelés konfigurálása elemre.](media/quickstart-iot-fhir-portal/portal-iot-connector-click-device-mapping.jpg)](media/quickstart-iot-fhir-portal/portal-iot-connector-click-device-mapping.jpg#lightbox)
 
-Az **eszköz-hozzárendelés** lapon adja hozzá a következő parancsfájlt a JSON-szerkesztőhöz, és kattintson a **Mentés**gombra.
+Az **eszköz-hozzárendelés** lapon adja hozzá a következő parancsfájlt a JSON-szerkesztőhöz, és kattintson a **Mentés** gombra.
 
 ```json
 {
@@ -108,7 +108,7 @@ A FHIR-leképezési sablon normalizált üzenetet alakít át egy FHIR-alapú me
 
 [![IoT-összekötő kattintson a FHIR-leképezés konfigurálása elemre.](media/quickstart-iot-fhir-portal/portal-iot-connector-click-fhir-mapping.jpg)](media/quickstart-iot-fhir-portal/portal-iot-connector-click-fhir-mapping.jpg#lightbox)
 
-A **FHIR-leképezés** lapon adja hozzá a következő parancsfájlt a JSON-szerkesztőhöz, és kattintson a **Mentés**gombra.
+A **FHIR-leképezés** lapon adja hozzá a következő parancsfájlt a JSON-szerkesztőhöz, és kattintson a **Mentés** gombra.
 
 ```json
 {
@@ -163,16 +163,16 @@ A kapcsolódási karakterlánc megőrzése egy későbbi lépésben való haszn�
 
 Az Azure a IoT-termékek széles választékát kínálja a IoT-eszközök csatlakoztatásához és kezeléséhez. Az Azure IoT Hub használatával saját megoldását is létrehozhatja, vagy elindíthatja a IoT-alkalmazások kezelése platformot az Azure IoT Central segítségével. Ebben az oktatóanyagban kihasználjuk az Azure IoT Central-t, amely az iparági környezettel foglalkozó megoldási sablonokkal segíti az első lépéseket.
 
-Telepítse a [folyamatos beteg monitorozási alkalmazás sablonját](https://docs.microsoft.com/azure/iot-central/healthcare/tutorial-continuous-patient-monitoring#create-an-application-template). Ez a sablon két szimulált eszközt tartalmaz, amelyek valós idejű adatfeldolgozást biztosítanak az első lépések megtételéhez: **intelligens vitális javítás** és **intelligens térd zárójel**.
+Telepítse a [folyamatos beteg monitorozási alkalmazás sablonját](../iot-central/healthcare/tutorial-continuous-patient-monitoring.md#create-an-application-template). Ez a sablon két szimulált eszközt tartalmaz, amelyek valós idejű adatfeldolgozást biztosítanak az első lépések megtételéhez: **intelligens vitális javítás** és **intelligens térd zárójel**.
 
 > [!NOTE]
-> Ha a valódi eszközök készen állnak, ugyanazt a IoT Central alkalmazást használhatja az [eszközök](https://docs.microsoft.com/azure/iot-central/core/howto-set-up-template) bevezetéséhez és az eszköz-szimulátorok cseréjéhez. Az eszköz adatai automatikusan FHIR is áramlanak. 
+> Ha a valódi eszközök készen állnak, ugyanazt a IoT Central alkalmazást használhatja az [eszközök](../iot-central/core/howto-set-up-template.md) bevezetéséhez és az eszköz-szimulátorok cseréjéhez. Az eszköz adatai automatikusan FHIR is áramlanak. 
 
 ## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>Csatlakoztassa a IoT-adatait az Azure IoT-összekötővel a FHIR (előzetes verzió) szolgáltatáshoz
 > [!WARNING]
 > Az útmutatóban megadott eszköz-hozzárendelési sablon úgy van kialakítva, hogy az adatexportálással (örökölt) működjön a IoT Centralon belül.
 
-Miután telepítette a IoT Central alkalmazást, a két beépített szimulált eszköz elkezdi a telemetria generálását. Ebben az oktatóanyagban betöltjük a telemetria a *Smart vitals patch* Simulator-ből a FHIR-be a FHIR-hez készült Azure IoT-összekötőn keresztül. Ha a IoT-adatait az Azure IoT-Összekötőbe szeretné exportálni a FHIR-hez, [be kell állítania egy folyamatos adatexportálást IoT Centralon belül](https://docs.microsoft.com/azure/iot-central/core/howto-export-data-legacy). A folyamatos adatexportálás lapon:
+Miután telepítette a IoT Central alkalmazást, a két beépített szimulált eszköz elkezdi a telemetria generálását. Ebben az oktatóanyagban betöltjük a telemetria a *Smart vitals patch* Simulator-ből a FHIR-be a FHIR-hez készült Azure IoT-összekötőn keresztül. Ha a IoT-adatait az Azure IoT-Összekötőbe szeretné exportálni a FHIR-hez, [be kell állítania egy folyamatos adatexportálást IoT Centralon belül](../iot-central/core/howto-export-data-legacy.md). A folyamatos adatexportálás lapon:
 - Válassza az *Azure Event Hubs* exportálás célhelyként.
 - Válassza a **Event Hubs névtér** mezőhöz tartozó *kapcsolatok karakterláncának használata* elemet.
 - Adja meg az Azure IoT-összekötőt a FHIR azon csatlakozási karakterláncához, amely egy előző lépésben a **csatlakozási sztring** mezőhöz lett beszerzett.

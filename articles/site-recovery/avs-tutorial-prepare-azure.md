@@ -1,5 +1,5 @@
 ---
-title: Azure-erőforrások előkészítése az Azure VMware-megoldás vész-helyreállításához a Azure Site Recovery
+title: Azure Site Recovery erőforrások előkészítése az Azure VMware-Megoldásbeli virtuális gépek vész-helyreállításához
 description: Ismerje meg, hogyan készítheti elő az Azure-erőforrásokat az Azure VMware-megoldások Azure Site Recovery használatával történő vész-helyreállításához.
 services: site-recovery
 author: Harsha-CS
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: harshacs
 ms.custom: MVC
-ms.openlocfilehash: 83e2c46e1ce1977d0dd136e821c90843ce2de481
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bd305e3760a8c3d743037e7d90b71f5e9579eda
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91814578"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395478"
 ---
-# <a name="prepare-azure-resources-for-disaster-recovery-of-azure-vmware-solution-to-azure"></a>Azure-erőforrások előkészítése az Azure VMware-megoldás Azure-ba történő helyreállításához
+# <a name="prepare-azure-site-recovery-resources-for-disaster-recovery-of-azure-vmware-solution-vms"></a>Azure Site Recovery erőforrások előkészítése az Azure VMware-Megoldásbeli virtuális gépek vész-helyreállításához
 
 Ez a cikk az Azure-erőforrások és-összetevők előkészítését ismerteti, hogy az Azure VMware-megoldás virtuális gépei vész-helyreállítását [Azure site Recovery](site-recovery-overview.md) szolgáltatás használatával állítsa be. Az [Azure VMware megoldás](../azure-vmware/introduction.md) saját felhőket biztosít az Azure-ban. Ezek a privát felhők olyan vSphere-fürtöket tartalmaznak, amelyek dedikált operációs rendszer nélküli Azure-infrastruktúrából épülnek fel.
 
@@ -42,7 +42,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 - A [VMware](vmware-azure-architecture.md) vész-helyreállítási architektúrájának áttekintése
 - Gyakori kérdések a [VMware](vmware-azure-common-questions.md) -ről
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd. Ezután jelentkezzen be a [Azure Portalba](https://portal.azure.com).
+Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/). Ezután jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
 
 ## <a name="verify-account-permissions"></a>Fiókengedélyek ellenőrzése
@@ -59,17 +59,17 @@ A feladatok végrehajtásához az Ön fiókjának rendelkeznie kell a Virtuális
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
-1. A Azure Portal menüben válassza az **erőforrás létrehozása**lehetőséget, és keresse meg a piactéren a **helyreállítást**.
-2. Válassza a **biztonsági mentés és site Recovery** lehetőséget a keresési eredmények közül, majd a biztonsági mentés és a site Recovery lapon kattintson a **Létrehozás**gombra. 
-3. A Recovery Services-tároló **létrehozása** lapon válassza ki az **előfizetést**. **Contoso-előfizetést**használunk.
-4. Az **erőforráscsoport**területen válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. Ebben az oktatóanyagban a **contosoRG**-ot használjuk.
-5. A tár **neve**mezőben adjon meg egy rövid nevet a tároló azonosításához. Ehhez az oktatóanyag-sorozathoz a **ContosoVMVault** nevet használjuk.
-6. A **régió**területen válassza ki azt a régiót, amelyben a tárolót el szeretné helyezni. a **Nyugat-Európa** beállítást használjuk.
+1. A Azure Portal menüben válassza az **erőforrás létrehozása** lehetőséget, és keresse meg a piactéren a **helyreállítást**.
+2. Válassza a **biztonsági mentés és site Recovery** lehetőséget a keresési eredmények közül, majd a biztonsági mentés és a site Recovery lapon kattintson a **Létrehozás** gombra. 
+3. A Recovery Services-tároló **létrehozása** lapon válassza ki az **előfizetést**. **Contoso-előfizetést** használunk.
+4. Az **erőforráscsoport** területen válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. Ebben az oktatóanyagban a **contosoRG** -ot használjuk.
+5. A tár **neve** mezőben adjon meg egy rövid nevet a tároló azonosításához. Ehhez az oktatóanyag-sorozathoz a **ContosoVMVault** nevet használjuk.
+6. A **régió** területen válassza ki azt a régiót, amelyben a tárolót el szeretné helyezni. a **Nyugat-Európa** beállítást használjuk.
 7. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
    ![A Recovery Services-tár létrehozása lap képernyőképe.](./media/tutorial-prepare-azure/new-vault-settings.png)
 
-   Az új tároló ekkor megjelenik az **irányítópult**  >  **minden erőforrás**és a fő **Recovery Services** -tárolók lapon.
+   Az új tároló ekkor megjelenik az **irányítópult**  >  **minden erőforrás** és a fő **Recovery Services** -tárolók lapon.
 
 ## <a name="set-up-an-azure-network"></a>Azure-hálózat beállítása
 
@@ -78,13 +78,13 @@ A feladatok végrehajtásához az Ön fiókjának rendelkeznie kell a Virtuális
 1. Az [Azure Portalon](https://portal.azure.com) válassza az **Erőforrás létrehozása** > **Hálózatkezelés** > **Virtuális hálózat** lehetőséget.
 2. Válassza ki a **Resource Managert** a telepítési modellként.
 3. A **Név** mezőben adjon meg egy hálózatnevet. A névnek egyedinek kell lennie az Azure-erőforráscsoporton belül. Ebben az oktatóanyagban a **ContosoASRnet** nevet használjuk.
-4. A **címterület**mezőben adja meg a virtuális hálózat CÍMTARTOMÁNYT a CdR jelöléssel. A **10.1.0.0/24-** et használjuk.
+4. A **címterület** mezőben adja meg a virtuális hálózat CÍMTARTOMÁNYT a CdR jelöléssel. A **10.1.0.0/24-** et használjuk.
 5. Az **Előfizetés** mezőben válassza ki azt az előfizetést, amelyben létre kívánja hozni a hálózatot.
 6. Itt adhatja meg azt az **erőforráscsoportot** , amelyben a hálózat létrejön. A **contosoRG** meglévő erőforráscsoportot használjuk.
-7. A **hely**mezőben válassza ki ugyanazt a régiót, mint amelyben a Recovery Services-tárolót létrehozták. Az oktatóanyagban ez **Nyugat-Európa**. A hálózatnak ugyanabban a régióban kell lennie, mint a tárolónak.
-8. A **címtartomány**mezőben adja meg a hálózat tartományát. A **10.1.0.0/24**-et használja, és nem használ alhálózatot.
+7. A **hely** mezőben válassza ki ugyanazt a régiót, mint amelyben a Recovery Services-tárolót létrehozták. Az oktatóanyagban ez **Nyugat-Európa**. A hálózatnak ugyanabban a régióban kell lennie, mint a tárolónak.
+8. A **címtartomány** mezőben adja meg a hálózat tartományát. A **10.1.0.0/24** -et használja, és nem használ alhálózatot.
 9. Elhagyjuk az alapszintű DDoS-védelem alapértelmezett lehetőségeit, a szolgáltatási végpontok nélkül vagy a tűzfalat a hálózaton.
-9. Kattintson a **Létrehozás** gombra.
+9. Válassza a **Létrehozás** lehetőséget.
 
    ![Képernyőkép a virtuális hálózati beállítások létrehozásáról.](media/tutorial-prepare-azure/create-network.png)
 

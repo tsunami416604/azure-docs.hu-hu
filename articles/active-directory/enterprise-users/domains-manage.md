@@ -9,28 +9,28 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 01/31/2019
+ms.date: 11/05/2020
 ms.author: curtand
-ms.reviewer: elkuzmen
+ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48f924cef12db974faae8fb8ed73f01ff8c9a3f8
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 66c7229c7e6d32bbec9a7659329aff7a90e7887d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375632"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393608"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Egyéni tartománynevek kezelése a Azure Active Directoryban
 
-A tartománynév fontos részét képezi az azonosítónak számos címtár-erőforráshoz: ez egy felhasználó felhasználónevének vagy e-mail-címének része, egy csoport címének egy része, és esetenként egy alkalmazáshoz tartozó alkalmazás-azonosító URI része. Azure Active Directory (Azure AD) egyik erőforrása tartalmazhat olyan tartománynevet, amely az erőforrást tartalmazó könyvtár tulajdonában van. Csak globális rendszergazda kezelhet tartományokat az Azure AD-ben.
+A tartománynév fontos részét képezi a sok Azure Active Directory (Azure AD) erőforrás azonosítójának, amely egy felhasználó felhasználónevének vagy e-mail-címének részét képezi, a csoport címének egy részét, és esetenként az alkalmazáshoz tartozó alkalmazás-azonosító URI-JÁT is része. Az Azure AD-ban található erőforrások tartalmazhatnak egy olyan tartománynevet, amely az erőforrást tartalmazó szervezet tulajdonában van. Csak globális rendszergazda kezelhet tartományokat az Azure AD-ben.
 
-## <a name="set-the-primary-domain-name-for-your-azure-ad-directory"></a>Az Azure AD-címtár elsődleges tartománynevének beállítása
+## <a name="set-the-primary-domain-name-for-your-azure-ad-organization"></a>Az Azure AD-szervezet elsődleges tartománynevének beállítása
 
-A címtár létrehozásakor a kezdeti tartománynév (például "contoso.onmicrosoft.com") egyben az elsődleges tartománynév is. Új felhasználó létrehozásakor az elsődleges tartomány az új felhasználó alapértelmezett tartományneve. Az elsődleges tartománynév beállítása egyszerűbbé teszi a rendszergazda számára, hogy új felhasználókat hozzon létre a portálon. Az elsődleges tartomány nevének módosítása:
+A szervezet létrehozásakor a kezdeti tartománynév (például "contoso.onmicrosoft.com") egyben az elsődleges tartománynév is. Új felhasználó létrehozásakor az elsődleges tartomány az új felhasználó alapértelmezett tartományneve. Az elsődleges tartománynév beállítása egyszerűbbé teszi a rendszergazda számára, hogy új felhasználókat hozzon létre a portálon. Az elsődleges tartomány nevének módosítása:
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
-2. Válassza a **Azure Active Directory**lehetőséget.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) egy olyan fiókkal, amely a szervezet globális rendszergazdája.
+2. Válassza a **Azure Active Directory** lehetőséget.
 3. Válassza az **Egyéni tartománynevek** elemet.
   
    ![A felhasználó-felügyeleti lap megnyitása](./media/domains-manage/add-custom-domain.png)
@@ -39,19 +39,19 @@ A címtár létrehozásakor a kezdeti tartománynév (például "contoso.onmicro
   
    ![Tartománynév megadása az elsődlegesnek](./media/domains-manage/make-primary-domain.png)
 
-A címtár elsődleges tartománynevét úgy módosíthatja, hogy bármely ellenőrzött egyéni tartomány legyen, amely nem összevont. A címtár elsődleges tartományának módosítása nem módosítja a meglévő felhasználók felhasználónevét.
+A szervezet elsődleges tartománynevét úgy módosíthatja, hogy bármely ellenőrzött egyéni tartomány legyen, amely nem összevont. A szervezet elsődleges tartományának módosítása nem módosítja a meglévő felhasználók felhasználónevét.
 
 ## <a name="add-custom-domain-names-to-your-azure-ad-organization"></a>Egyéni tartománynevek hozzáadása az Azure AD-szervezethez
 
-Legfeljebb 900 felügyelt tartománynevet adhat hozzá. Ha az összes tartományt a helyszíni Active Directory segítségével konfigurálja az összevonáshoz, az egyes címtárakban akár 450 tartománynevet is hozzáadhat.
+Legfeljebb 900 felügyelt tartománynevet adhat hozzá. Ha az összes tartományt a helyszíni Active Directory segítségével konfigurálja az összevonáshoz, az egyes szervezetekben akár 450 tartománynevet is hozzáadhat.
 
 ## <a name="add-subdomains-of-a-custom-domain"></a>Egyéni tartomány altartományának hozzáadása
 
-Ha egy harmadik szintű tartománynevet (például "europe.contoso.com") szeretne hozzáadni a címtárhoz, először fel kell vennie és ellenőriznie kell a második szintű tartományt, például contoso.com. Az altartományt az Azure AD automatikusan ellenőrzi. Ha szeretné látni, hogy a hozzáadott altartomány ellenőrzése megtörtént, frissítse a tartomány listáját a böngészőben.
+Ha egy altartománynevet (például "europe.contoso.com") szeretne felvenni a szervezetbe, először fel kell vennie és ellenőriznie kell a legfelső tartományt, például contoso.com. Az altartományt az Azure AD automatikusan ellenőrzi. Ha szeretné látni, hogy a hozzáadott altartomány ellenőrzése megtörtént, frissítse a tartomány listáját a böngészőben.
 
-Megjegyzés
+Ha már hozzáadott egy contoso.com-tartományt egy Azure AD-szervezethez, akkor azt is ellenőrizheti, hogy egy másik Azure AD-szervezet altartománya is europe.contoso.com. Az altartomány hozzáadásakor a rendszer kéri, hogy adjon hozzá egy TXT-rekordot a DNS-szolgáltatóhoz.
 
-Ha már hozzáadott egy contoso.com-tartományt egy Azure AD-bérlőhöz, hozzáadhat egy második Azure AD-bérlőhöz a europe.contoso.com altartományt is. Az altartomány hozzáadásakor a rendszer felszólítja, hogy adjon hozzá egy TXT-rekordot a DNS-szolgáltatóhoz.
+
 
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Mi a teendő, ha megváltoztatja a DNS-regisztrálót az egyéni tartománynévhez
 
@@ -61,19 +61,19 @@ Ha megváltoztatja a DNS-regisztrálókat, az Azure AD-ben nincsenek további ko
 
 Törölheti az egyéni tartománynevet az Azure AD-ből, ha a szervezet már nem használja ezt a tartománynevet, vagy ha ezt a tartománynevet egy másik Azure AD-vel kell használnia.
 
-Egyéni tartománynév törléséhez először gondoskodnia kell arról, hogy a címtárban lévő erőforrások ne legyenek a tartománynévre támaszkodva. A tartománynevet nem lehet törölni a címtárból, ha:
+Egyéni tartománynév törléséhez először győződjön meg arról, hogy a szervezet egyetlen erőforrása sem támaszkodik a tartomány nevére. Nem törölhet tartománynevet a szervezetből, ha:
 
 * Minden felhasználó rendelkezik egy olyan felhasználónévvel, e-mail-címmel vagy proxy címmel, amely tartalmazza a tartománynevet.
 * Bármely csoport rendelkezik egy e-mail-címmel vagy proxy címmel, amely tartalmazza a tartománynevet.
 * Az Azure AD-ban található bármely alkalmazáshoz tartozik egy, a tartománynevet tartalmazó alkalmazás-azonosító URI.
 
-Az Egyéni tartománynév törlése előtt módosítania vagy törölnie kell az összes ilyen erőforrást az Azure AD-címtárban.
+Az Egyéni tartománynév törlése előtt módosítania vagy törölnie kell az összes ilyen erőforrást az Azure AD-szervezetben.
 
 ### <a name="forcedelete-option"></a>ForceDelete beállítás
 
-A **ForceDelete** az [Azure ad felügyeleti központban](https://aad.portal.azure.com) vagy [Microsoft Graph API](/graph/api/domain-forcedelete?view=graph-rest-beta)-val is felhasználhatja. Ezek a beállítások egy aszinkron műveletet használnak, és az egyéni tartománynévből származó összes referenciát (például " user@contoso.com ") a kezdeti alapértelmezett tartománynévre (például "") frissítik user@contoso.onmicrosoft.com . 
+A **ForceDelete** az [Azure ad felügyeleti központban](https://aad.portal.azure.com) vagy [Microsoft Graph API](/graph/api/domain-forcedelete?view=graph-rest-beta&preserve-view=true)-val is felhasználhatja. Ezek a beállítások egy aszinkron műveletet használnak, és az egyéni tartománynévből származó összes referenciát (például " user@contoso.com ") a kezdeti alapértelmezett tartománynévre (például "") frissítik user@contoso.onmicrosoft.com .
 
-A **ForceDelete** meghívásához a Azure Portalban meg kell győződnie arról, hogy a tartománynévnek kevesebb, mint 1000 hivatkozása van, és az Exchange [felügyeleti központban](https://outlook.office365.com/ecp/)frissíteni vagy törölni kell a kiépítési szolgáltatást. Ide tartoznak az Exchange Mail-Enabled biztonsági csoportok és az elosztott listák; További információ: [levelezésre képes biztonsági csoportok eltávolítása](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups). Emellett a **ForceDelete** művelet nem fog sikerülni, ha a következők egyike igaz:
+A **ForceDelete** meghívásához a Azure Portalban meg kell győződnie arról, hogy a tartománynévnek kevesebb, mint 1000 hivatkozása van, és az Exchange [felügyeleti központban](https://outlook.office365.com/ecp/)frissíteni vagy törölni kell a kiépítési szolgáltatást. Ide tartoznak az Exchange Mail-Enabled biztonsági csoportok és az elosztott listák; További információ: [levelezésre képes biztonsági csoportok eltávolítása](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups&preserve-view=true). Emellett a **ForceDelete** művelet nem fog sikerülni, ha a következők egyike igaz:
 
 * A tartományt Microsoft 365 tartományi előfizetési szolgáltatásokon keresztül vásárolta
 * Ön egy másik ügyfél-szervezet nevében felügyelt partner
@@ -110,11 +110,11 @@ Ha úgy látja, hogy a feltételek bármelyike nem teljesült, manuálisan tör�
 
 Azure Active Directory a tartománynevek legtöbb felügyeleti feladata a Microsoft PowerShell használatával vagy programozott módon, a Microsoft Graph API használatával is elvégezhető.
 
-* [Tartománynevek kezelése a PowerShell használatával az Azure AD-ben](/powershell/module/azuread/?view=azureadps-2.0#domains)
-* [Tartományi erőforrás típusa](/graph/api/resources/domain?view=graph-rest-1.0)
+* [Tartománynevek kezelése a PowerShell használatával az Azure AD-ben](/powershell/module/azuread/?view=azureadps-2.0#domains&preserve-view=true)
+* [Tartományi erőforrás típusa](/graph/api/resources/domain?view=graph-rest-1.0&preserve-view=true)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Egyéni tartománynevek hozzáadása](../fundamentals/add-custom-domain.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)
-* [Exchange-levelezésre képes biztonsági csoportok eltávolítása az Exchange felügyeleti központban az Azure AD-beli egyéni tartománynévben](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups)
-* [ForceDelete egy egyéni tartománynevet Microsoft Graph API-val](/graph/api/domain-forcedelete?view=graph-rest-beta)
+* [Exchange-levelezésre képes biztonsági csoportok eltávolítása az Exchange felügyeleti központban az Azure AD-beli egyéni tartománynévben](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups&preserve-view=true)
+* [ForceDelete egy egyéni tartománynevet Microsoft Graph API-val](/graph/api/domain-forcedelete?view=graph-rest-beta&preserve-view=true)

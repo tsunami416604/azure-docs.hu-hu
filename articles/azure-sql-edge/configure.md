@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 6284e85d8c4e9ad9f9896081f04c6b7669b8e1c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c49f5ab9f10456c32f7f8516cba0e851fa80e74
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446943"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392333"
 ---
 # <a name="configure-azure-sql-edge"></a>Az Azure SQL Edge konfigurálása
 
@@ -51,7 +51,7 @@ Az Azure SQL Edge nem támogatja az alábbi SQL Server on Linux környezeti vál
 
 ### <a name="specify-the-environment-variables"></a>Környezeti változók meghatározása
 
-Az SQL Edge környezeti változóinak megadása, amikor a [Azure Portalon](deploy-portal.md)keresztül telepíti a szolgáltatást. A modul központi telepítésének **környezeti változók** szakaszában vagy a **tároló létrehozása lehetőség**részeként is hozzáadhatja őket.
+Az SQL Edge környezeti változóinak megadása, amikor a [Azure Portalon](deploy-portal.md)keresztül telepíti a szolgáltatást. A modul központi telepítésének **környezeti változók** szakaszában vagy a **tároló létrehozása lehetőség** részeként is hozzáadhatja őket.
 
 Értékek hozzáadása **környezeti változókban**.
 
@@ -66,7 +66,7 @@ Az SQL Edge környezeti változóinak megadása, amikor a [Azure Portalon](deplo
 
 ## <a name="configure-by-using-an-mssqlconf-file"></a>Konfigurálás az MSSQL. conf fájl használatával
 
-Az Azure SQL Edge nem tartalmazza az [MSSQL-conf konfigurációs segédprogramot](/sql/linux/sql-server-linux-configure-mssql-conf/) , mint például a SQL Server on Linux. Manuálisan kell konfigurálnia az MSSQL. conf fájlt, és az SQL Edge-modul/var/opt/MSSQL/mappájára leképezett állandó tárolóban kell elhelyeznie. Ha az SQL Edge-t az Azure Marketplace-ről telepíti, ez a leképezés a **tároló létrehozási beállításai**között a **csatlakoztatások** lehetőséggel van megadva.
+Az Azure SQL Edge nem tartalmazza az [MSSQL-conf konfigurációs segédprogramot](/sql/linux/sql-server-linux-configure-mssql-conf/) , mint például a SQL Server on Linux. Manuálisan kell konfigurálnia az MSSQL. conf fájlt, és az SQL Edge-modul/var/opt/MSSQL/mappájára leképezett állandó tárolóban kell elhelyeznie. Ha az SQL Edge-t az Azure Marketplace-ről telepíti, ez a leképezés a **tároló létrehozási beállításai** között a **csatlakoztatások** lehetőséggel van megadva.
 
 ```json
     {
@@ -95,11 +95,11 @@ A következő MSSQL. conf beállítások nem alkalmazhatók az SQL Edge-re:
 |**Ügyfélvisszajelzés** | Válassza ki, hogy SQL Server küldjön-e visszajelzést a Microsoftnak. |
 |**Adatbázisbeli levelezési profil** | Állítsa be SQL Server on Linux alapértelmezett adatbázis-levelezési profilját. |
 |**Magas rendelkezésre állás** | Rendelkezésre állási csoportok engedélyezése. |
-|**Microsoft Elosztott tranzakciók koordinátora** | Az MSDTC konfigurálása és hibakeresése Linux rendszeren. További elosztott tranzakciókkal kapcsolatos konfigurációs beállítások nem támogatottak az SQL Edge esetében. További információ ezekről a további konfigurációs lehetőségekről: az [MSDTC konfigurálása](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#msdtc). |
+|**Microsoft Elosztott tranzakciók koordinátora** | Az MSDTC konfigurálása és hibakeresése Linux rendszeren. További elosztott tranzakciókkal kapcsolatos konfigurációs beállítások nem támogatottak az SQL Edge esetében. További információ ezekről a további konfigurációs lehetőségekről: az [MSDTC konfigurálása](/sql/linux/sql-server-linux-configure-mssql-conf#msdtc). |
 |**A ML-szolgáltatások végfelhasználói licencszerződései** | Az R-és Python-LICENCSZERZŐDÉSek elfogadása Azure Machine Learning csomagokhoz. Csak SQL Server 2019-es verzióra vonatkozik.|
 |**outboundnetworkaccess** |Engedélyezze a kimenő hálózati hozzáférést [Machine learning Services](/sql/linux/sql-server-linux-setup-machine-learning/) R-, Python-és Java-bővítményekhez.|
 
-Az alábbi minta MSSQL. conf fájl az SQL Edge esetében működik. Az MSSQL. conf fájl formátumával kapcsolatos további információkért lásd az [MSSQL. conf formátumot](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format).
+Az alábbi minta MSSQL. conf fájl az SQL Edge esetében működik. Az MSSQL. conf fájl formátumával kapcsolatos további információkért lásd az [MSSQL. conf formátumot](/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format).
 
 ```ini
 [EULA]
@@ -203,7 +203,7 @@ Ezzel a technikával a Docker-on kívül is megoszthatja és megtekintheti a gaz
 
 ### <a name="use-data-volume-containers"></a>Adatmennyiség-tárolók használata
 
-A második lehetőség egy adatmennyiség-tároló használata. Adatmennyiség-tároló létrehozásához adjon meg egy kötet nevet a paraméterrel rendelkező gazdagép könyvtára helyett `-v` . A következő példa egy **sqlvolume**nevű megosztott adatkötetet hoz létre.
+A második lehetőség egy adatmennyiség-tároló használata. Adatmennyiség-tároló létrehozásához adjon meg egy kötet nevet a paraméterrel rendelkező gazdagép könyvtára helyett `-v` . A következő példa egy **sqlvolume** nevű megosztott adatkötetet hoz létre.
 
 ```bash
 docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge
@@ -230,7 +230,7 @@ Adatmennyiség-tároló eltávolításához használja az `docker volume rm` par
 > Ha törli az adatmennyiség-tárolót, a tárolóban lévő összes Azure SQL Edge-adatbázis *véglegesen* törölve lesz.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Kapcsolódás az Azure SQL Edge-hez](connect.md)
 - [Teljes körű IoT-megoldás kiépítése az SQL Edge használatával](tutorial-deploy-azure-resources.md)

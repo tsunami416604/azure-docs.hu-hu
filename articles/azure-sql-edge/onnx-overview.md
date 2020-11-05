@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 05/19/2020
-ms.openlocfilehash: 47c040b0fad0211af413141a5b16b587d41d3b08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dc3d44ac4396897fd43831d51ee628bb06048cb
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907141"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392061"
 ---
 # <a name="machine-learning-and-ai-with-onnx-in-sql-edge"></a>Gépi tanulás és AI a ONNX az SQL Edge-ben
 
@@ -28,7 +28,7 @@ Ahhoz, hogy a gépi tanulási modellek az Azure SQL Edge-ben is kikövetkeztetve
 
 Modell beszerzése ONNX formátumban:
 
-- **Modell-építési szolgáltatások**: olyan szolgáltatások, mint például a Azure Machine learning és az [Custom Vision Service Azure](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) [automatizált Machine learning szolgáltatása](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) , a betanított modell ONNX-formátumba történő közvetlen exportálásának támogatása.
+- **Modell-építési szolgáltatások** : olyan szolgáltatások, mint például a Azure Machine learning és az [Custom Vision Service Azure](../cognitive-services/custom-vision-service/getting-started-build-a-classifier.md) [automatizált Machine learning szolgáltatása](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) , a betanított modell ONNX-formátumba történő közvetlen exportálásának támogatása.
 
 - [**Meglévő modellek konvertálása és/vagy exportálása**](https://github.com/onnx/tutorials#converting-to-onnx-format): több betanítási keretrendszer (pl. [PyTorch](https://pytorch.org/docs/stable/onnx.html), láncolás és Caffe2) támogatja a natív exportálási funkciókat a ONNX, így a betanított modellt a ONNX formátum egy adott verziójára mentheti. A natív exportálást nem támogató keretrendszerek esetében léteznek különálló ONNX Converter telepíthető csomagok, amelyek lehetővé teszik különböző gépi tanulási keretrendszerekből betanított modellek átalakítását a ONNX formátumba.
 
@@ -36,23 +36,23 @@ Modell beszerzése ONNX formátumban:
    * [PyTorch](http://pytorch.org/docs/master/onnx.html)
    * [Tensorflow](https://github.com/onnx/tensorflow-onnx)
    * [Keras](https://github.com/onnx/keras-onnx)
-   * [Scikit-learn](https://github.com/onnx/sklearn-onnx)
+   * [Scikit – Learn](https://github.com/onnx/sklearn-onnx)
    * [CoreML](https://github.com/onnx/onnxmltools)
     
     A támogatott keretrendszerek és példák teljes listájáért lásd: [Konvertálás ONNX formátumra](https://github.com/onnx/tutorials#converting-to-onnx-format).
 
 ## <a name="limitations"></a>Korlátozások
 
-Jelenleg nem minden ONNX modell támogatott az Azure SQL Edge-ben. A támogatás a **numerikus adattípusú**modellekre korlátozódik:
+Jelenleg nem minden ONNX modell támogatott az Azure SQL Edge-ben. A támogatás a **numerikus adattípusú** modellekre korlátozódik:
 
-- [int és bigint](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql)
-- [valós és lebegőpontos](https://docs.microsoft.com/sql/t-sql/data-types/float-and-real-transact-sql).
+- [int és bigint](/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql)
+- [valós és lebegőpontos](/sql/t-sql/data-types/float-and-real-transact-sql).
   
-A más numerikus típusok a [Cast és a convert](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)paranccsal alakíthatók át támogatott típusokra.
+A más numerikus típusok a [Cast és a convert](/sql/t-sql/functions/cast-and-convert-transact-sql)paranccsal alakíthatók át támogatott típusokra.
 
 A modell bemeneteit strukturálni kell, hogy a modell minden bemenete egy tábla egyetlen oszlopának felel meg. Ha például pandák dataframe használ a modell betanításához, akkor minden bemenetnek külön oszlopnak kell lennie a modellhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az SQL Edge üzembe helyezése Azure Portal](deploy-portal.md)
 - [ONNX-modell üzembe helyezése az Azure SQL Edge-ben ](deploy-onnx.md)

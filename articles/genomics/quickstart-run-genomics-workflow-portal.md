@@ -9,12 +9,12 @@ ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 7720238bb7e2ff133935b9af545628f744d828d1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4beb1c31f34ec4e8d26228cfe4f30f5109a1b60c
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88642316"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394543"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Rövid útmutató: Munkafolyamat futtatása a Microsoft Genomics szolgáltatással
 
@@ -36,7 +36,7 @@ Konfigurálja Genomics-fiókját az alábbi információkkal az előző képen l
  |**Beállítás**          |  **Ajánlott érték**  | **Mező leírása** |
  |:-------------       |:-------------         |:----------            |
  |Előfizetés         | Az Ön előfizetésének neve|Ez az Azure-szolgáltatásokhoz tartozó számlázási egység – Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.azure.com/Subscriptions) ismertető cikket. |      
- |Erőforráscsoport       | MyResourceGroup       |  Az erőforráscsoportok használatával több Azure-erőforrást (Storage-fiók, Genomics-fiók stb.) rendezhet egy csoportba a könnyebb kezelhetőség érdekében. További információkért lásd: [Erőforráscsoportok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups). Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
+ |Erőforráscsoport       | MyResourceGroup       |  Az erőforráscsoportok használatával több Azure-erőforrást (Storage-fiók, Genomics-fiók stb.) rendezhet egy csoportba a könnyebb kezelhetőség érdekében. További információkért lásd: [Erőforráscsoportok](../azure-resource-manager/management/overview.md#resource-groups). Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
  |Fióknév         | MyGenomicsAccount     |Válasszon egyedi fiókazonosítót. Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
  |Hely                   | USA 2. nyugati régiója                    |    A szolgáltatás a következő régiókban érhető el: az USA 2. nyugati régiója, Nyugat-Európa, és Délkelet-Ázsia |
 
@@ -74,7 +74,7 @@ A Microsoft Genomics-ügyfél teszteléséhez töltse le a konfigurációs fájl
 
 ![Microsoft Genomics keresése Azure Portal](./media/quickstart-run-genomics-workflow-portal/genomics-filter-box.png "Microsoft Genomics keresése Azure Portal")
 
-Válassza ki az imént létrehozott genomikai fiókot, navigáljon a **hozzáférési kulcsok**elemre, és töltse le a konfigurációs fájlt.
+Válassza ki az imént létrehozott genomikai fiókot, navigáljon a **hozzáférési kulcsok** elemre, és töltse le a konfigurációs fájlt.
 
 ![Konfigurációs fájl letöltése Microsoft Genomics](./media/quickstart-run-genomics-workflow-portal/genomics-mygenomicsaccount-box.png "Konfigurációs fájl letöltése Microsoft Genomics")
 
@@ -86,7 +86,7 @@ msgen list -f "<full path where you saved the config file>"
 
 ## <a name="create-a-microsoft-azure-storage-account"></a>Microsoft Azure Storage fiók létrehozása 
 A Microsoft Genomics szolgáltatás a bemeneteket az Azure Storage-fiókban tárolt blokkblobok formájában várja. Emellett a kimeneti fájlokat is blokkblobok formájában írja a felhasználó által meghatározott Azure Storage-fiókban lévő tárolóba. A bemenetek és kimenetek különböző tárfiókokban is lehetnek.
-Ha az adatok már egy Azure Storage-fiókban vannak, csak azt kell ellenőriznie, hogy a fiók ugyanazon a helyen található-e, mint a Genomics-fiók. Ellenkező esetben a Microsoft Genomics szolgáltatás futtatásakor a kimenő forgalomért járó költségek merülnek fel. Ha még nem rendelkezik Azure Storage-fiókkal, létre kell hoznia egyet, és fel kell töltenie az adatait. További információt az Azure Storage-fiókokról [itt](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)talál, beleértve a Storage-fiókokat és az általa biztosított szolgáltatásokat. Azure Storage-fiók létrehozásához navigáljon a Azure Portal a [Storage-fiók létrehozásához](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM) .  
+Ha az adatok már egy Azure Storage-fiókban vannak, csak azt kell ellenőriznie, hogy a fiók ugyanazon a helyen található-e, mint a Genomics-fiók. Ellenkező esetben a Microsoft Genomics szolgáltatás futtatásakor a kimenő forgalomért járó költségek merülnek fel. Ha még nem rendelkezik Azure Storage-fiókkal, létre kell hoznia egyet, és fel kell töltenie az adatait. További információt az Azure Storage-fiókokról [itt](../storage/common/storage-account-create.md)talál, beleértve a Storage-fiókokat és az általa biztosított szolgáltatásokat. Azure Storage-fiók létrehozásához navigáljon a Azure Portal a [Storage-fiók létrehozásához](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM) .  
 
 ![Storage-fiók létrehozása lap](./media/quickstart-run-genomics-workflow-portal/genomics-storage-create-blade1.png "Storage-fiók létrehozása lap")
 
@@ -98,9 +98,9 @@ Konfigurálja a Storage-fiókját az alábbi információkkal az előző képen 
  |Erőforráscsoport       | MyResourceGroup       |  A genomikai fiókkal megegyező erőforráscsoportot is kiválaszthatja. Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd: [elnevezési szabályok](/azure/architecture/best-practices/resource-naming) |
  |Tárfiók neve         | MyStorageAccount     |Válasszon egyedi fiókazonosítót. Érvényes nevek: [elnevezési szabályok](/azure/architecture/best-practices/resource-naming) |
  |Hely                  | USA 2. nyugati régiója                  | Használja ugyanazt a helyet, mint a genomikai fiók helye, a kimenő forgalom költségeinek csökkentése és a késés csökkentése érdekében.  | 
- |Teljesítmény                  | Standard                   | Az alapértelmezett beállítás a standard. A standard és a Premium Storage-fiókokkal kapcsolatos további részletekért lásd: [a Microsoft Azure Storage bemutatása](https://docs.microsoft.com/azure/storage/common/storage-introduction)    |
+ |Teljesítmény                  | Standard                   | Az alapértelmezett beállítás a standard. A standard és a Premium Storage-fiókokkal kapcsolatos további részletekért lásd: [a Microsoft Azure Storage bemutatása](../storage/common/storage-introduction.md)    |
  |Fiók altípusa       | BlobStorage       |  A le- és feltöltés a blobtárolók esetében 2–5-ször gyorsabb az általános célú fiókokhoz képest. |
- |Replikáció                  | Helyileg redundáns tárolás                  | A helyileg redundáns tárolással a rendszer abban a régióban lévő adatközpontba replikálja az adatokat, amelyben a tárfiókot létrehozták. További információ: [Azure Storage-replikáció](https://docs.microsoft.com/azure/storage/common/storage-redundancy)    |
+ |Replikáció                  | Helyileg redundáns tárolás                  | A helyileg redundáns tárolással a rendszer abban a régióban lévő adatközpontba replikálja az adatokat, amelyben a tárfiókot létrehozták. További információ: [Azure Storage-replikáció](../storage/common/storage-redundancy.md)    |
  |Hozzáférési szint                  | Gyakori                   | A Gyakori hozzáférés a tárfiókban tárolt objektumok gyakoribb elérésére utal.    |
 
 Ezután válassza a **felülvizsgálat + létrehozás** lehetőséget a Storage-fiók létrehozásához. A genomikai fiók létrehozása során a felső menüsorban az **értesítések** lehetőségre kattintva figyelheti a telepítési folyamatot. 
@@ -112,7 +112,7 @@ A Microsoft Genomics szolgáltatás bemeneti fájlként várja a párosított be
 [https://msgensampledata.blob.core.windows.net/small/chr21_1.fq.gz](https://msgensampledata.blob.core.windows.net/small/chr21_1.fq.gz)
 [https://msgensampledata.blob.core.windows.net/small/chr21_2.fq.gz](https://msgensampledata.blob.core.windows.net/small/chr21_2.fq.gz)
 
-A tárfiókban létre kell hoznia egy blobtárolót a bemeneti adatok számára, valamint egy másikat a kimeneti adatok számára.  Töltse fel a bemeneti adatokat a bemeneti blobtárolóba. Ehhez több eszközt is használhat, beleértve a [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/), a [BlobPorter](https://github.com/Azure/blobporter)vagy a [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). 
+A tárfiókban létre kell hoznia egy blobtárolót a bemeneti adatok számára, valamint egy másikat a kimeneti adatok számára.  Töltse fel a bemeneti adatokat a bemeneti blobtárolóba. Ehhez több eszközt is használhat, beleértve a [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/), a [BlobPorter](https://github.com/Azure/blobporter)vagy a [AzCopy](../storage/common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json). 
 
 ## <a name="run-a-workflow-through-the-microsoft-genomics-service-using-the-msgen-python-client"></a>Munkafolyamat futtatása a Microsoft Genomics szolgáltatás segítségével a Python- `msgen` ügyféllel
 
@@ -123,7 +123,7 @@ Nyissa meg a genomikai fiókjából letöltött *config.txt* fájlt. A megadhat�
 
 Ha a GATK4-t szeretné futtatni, állítsa a paramétert a következőre: `process_name` `gatk4` .
 
-Alapértelmezés szerint a genomikai szolgáltatás a (vagy Ha gVCF kimenetet szeretne, és nem egy VCF kimenetet (a `-emitRefConfidence` GATK 3. x és `emit-ref-confidence` a GATK 4. x verzióban), adja hozzá a `emit_ref_confidence` paramétert a *config.txthoz * , és állítsa be a (z) értékre `gvcf` az előző ábrán látható módon.  Ha vissza szeretné állítani a VCF kimenetét, távolítsa el a *config.txt* fájlból, vagy állítsa a paramétert a következőre: `emit_ref_confidence` `none` . 
+Alapértelmezés szerint a genomikai szolgáltatás a (vagy Ha gVCF kimenetet szeretne, és nem egy VCF kimenetet (a `-emitRefConfidence` GATK 3. x és `emit-ref-confidence` a GATK 4. x verzióban), adja hozzá a `emit_ref_confidence` paramétert a *config.txthoz* , és állítsa be a (z) értékre `gvcf` az előző ábrán látható módon.  Ha vissza szeretné állítani a VCF kimenetét, távolítsa el a *config.txt* fájlból, vagy állítsa a paramétert a következőre: `emit_ref_confidence` `none` . 
 
 `bgzip` a egy olyan eszköz, amely tömöríti a vcf vagy a gvcf fájlt, és `tabix` létrehoz egy indexet a tömörített fájlhoz. Alapértelmezés szerint a genomikai szolgáltatás futtatása `bgzip` `tabix` a ". g. vcf" kimenet után történik, de a nem futtatja ezeket az eszközöket a ". vcf" kimenetnél. A futtatáskor a szolgáltatás ". gz" (bgzip output) és ". TBI" (tabix output) fájlokat hoz létre. Az argumentum egy logikai érték, amely a ". vcf" kimenetnél alapértelmezés szerint hamis értékre van állítva, a ". g. vcf" kimenetnél pedig alapértelmezés szerint igaz. A parancssorban való használathoz adja meg `-bz` vagy `--bgzip-output` a `true` (z) (bgzip és tabix futtatása) vagy `false` . Ha ezt az argumentumot a *config.txt* fájlban szeretné használni, adja hozzá `bgzip_output: true` vagy a `bgzip_output: false` fájlt a fájlhoz.
 
@@ -144,4 +144,4 @@ A munkafolyamat befejezése után megtekintheti az Azure Storage-fiókban lévő
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben a minta bemeneti adatokat feltöltötte az Azure Storage-ba, és elküldte a munkafolyamatot a Microsoft Genomics szolgáltatásnak a `msgen` Python-ügyfélen keresztül. Ha többet szeretne megtudni a Microsoft Genomics szolgáltatással használható bemeneti fájltípusokkal kapcsolatban, tekintse meg a következő lapokat: [párosított FASTQ](quickstart-input-pair-FASTQ.md)  |  [Bam](quickstart-input-BAM.md)  |  [több FASTQ vagy Bam](quickstart-input-multiple.md). Ezt az oktatóanyagot a [Azure Notebooks példán](https://aka.ms/genomicsnotebook) keresztül is felfedezheti, ha letölti a "genomikai oktatóanyag. ipynb" fájlt, és egy jegyzetfüzet-olvasóval, például a [Jupyter](https://docs.microsoft.com/azure/notebooks/tutorial-create-run-jupyter-notebook) -vel nyitja meg a fájlt, és futtatja azt.
+Ebben a cikkben a minta bemeneti adatokat feltöltötte az Azure Storage-ba, és elküldte a munkafolyamatot a Microsoft Genomics szolgáltatásnak a `msgen` Python-ügyfélen keresztül. Ha többet szeretne megtudni a Microsoft Genomics szolgáltatással használható bemeneti fájltípusokkal kapcsolatban, tekintse meg a következő lapokat: [párosított FASTQ](quickstart-input-pair-FASTQ.md)  |  [Bam](quickstart-input-BAM.md)  |  [több FASTQ vagy Bam](quickstart-input-multiple.md). Ezt az oktatóanyagot a [Azure Notebooks példán](https://aka.ms/genomicsnotebook) keresztül is felfedezheti, ha letölti a "genomikai oktatóanyag. ipynb" fájlt, és egy jegyzetfüzet-olvasóval, például a [Jupyter](../notebooks/tutorial-create-run-jupyter-notebook.md) -vel nyitja meg a fájlt, és futtatja azt.

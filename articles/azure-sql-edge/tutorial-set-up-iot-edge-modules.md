@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sourabha, sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 7b2432fda70e8f9a5fa8bc64ede846d977672e9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8c5b20f833ab09463e1ae8b5bd3825c7c23f85e
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886479"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394924"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>IoT Edge modulok és kapcsolatok beállítása
 
@@ -36,31 +36,31 @@ Most a IoT Edge modulban meg kell adnia a tároló hitelesítő adatait.
 
 1. Navigáljon az erőforráscsoporthoz létrehozott IoT hubhoz.
 
-2. Az **automatikus eszközkezelés**területen az **IoT Edge** szakaszban kattintson az **eszköz azonosítója**elemre. Ebben az oktatóanyagban az azonosító a következő: `IronOrePredictionDevice` .
+2. Az **automatikus eszközkezelés** területen az **IoT Edge** szakaszban kattintson az **eszköz azonosítója** elemre. Ebben az oktatóanyagban az azonosító a következő: `IronOrePredictionDevice` .
 
 3. Válassza a **modulok beállítása** szakaszt.
 
-4. A **Container Registry hitelesítő adatok**területen adja meg a következő értékeket:
+4. A **Container Registry hitelesítő adatok** területen adja meg a következő értékeket:
 
    _Mező_|_Érték_
    -------|-------
-   Név|Beállításjegyzék neve
+   Name|Beállításjegyzék neve
    Cím|Bejelentkezési kiszolgáló
    Felhasználónév|Felhasználónév
    Jelszó|Jelszó
   
 ## <a name="deploy-the-data-generator-module"></a>Az adatgenerátor modul üzembe helyezése
 
-1. Az **automatikus eszközkezelés**területen az **IoT Edge** szakaszban kattintson az **eszköz azonosítója**elemre. Ebben az oktatóanyagban az azonosító, majd a set modules ( `IronOrePredictionDevice` **modulok beállítása**) elemre.
+1. Az **automatikus eszközkezelés** területen az **IoT Edge** szakaszban kattintson az **eszköz azonosítója** elemre. Ebben az oktatóanyagban az azonosító, majd a set modules ( `IronOrePredictionDevice` **modulok beállítása** ) elemre.
 
 2.  A **modulok beállítása az eszközön** lapon a **IoT Edge modulok** szakaszban kattintson a **+ Hozzáadás** elemre, és válassza ki **IoT Edge modult**.
 
 3. Adjon meg egy érvényes nevet és rendszerkép-URI-t IoT Edge modulhoz.
-   A rendszerkép URI-ja megtalálható az oktatóanyag első részében létrehozott erőforráscsoport tároló-beállításjegyzékében. Válassza ki a **tárolók** szakaszt a **szolgáltatások**területen. Ebben az oktatóanyagban válassza ki a nevű tárat `silicaprediction` . Válassza ki a megfelelő címkét. A képuri formátuma a következőket eredményezi:
+   A rendszerkép URI-ja megtalálható az oktatóanyag első részében létrehozott erőforráscsoport tároló-beállításjegyzékében. Válassza ki a **tárolók** szakaszt a **szolgáltatások** területen. Ebben az oktatóanyagban válassza ki a nevű tárat `silicaprediction` . Válassza ki a megfelelő címkét. A képuri formátuma a következőket eredményezi:
 
-   *a containerregistry* / bejelentkezési kiszolgálója *tárház neve*:*címke neve*
+   *a containerregistry* / bejelentkezési kiszolgálója *tárház neve* : *címke neve*
 
-   Például:
+   Ilyenek többek között:
 
    ```
    ASEdemocontregistry.azurecr.io/silicaprediction:amd64
@@ -73,11 +73,11 @@ Most a IoT Edge modulban meg kell adnia a tároló hitelesítő adatait.
 
 ## <a name="deploy-the-azure-sql-edge-module"></a>Az Azure SQL Edge-modul üzembe helyezése
 
-1. Az Azure SQL Edge-modul üzembe helyezéséhez kattintson a **+ Hozzáadás** , majd a **piactér modul**elemre. 
+1. Az Azure SQL Edge-modul üzembe helyezéséhez kattintson a **+ Hozzáadás** , majd a **piactér modul** elemre. 
 
-2. A **IoT Edge modul Marketplace** paneljén keressen rá az *Azure SQL Edge* kifejezésre, és válassza az *Azure SQL Edge Developer*szolgáltatást. 
+2. A **IoT Edge modul Marketplace** paneljén keressen rá az *Azure SQL Edge* kifejezésre, és válassza az *Azure SQL Edge Developer* szolgáltatást. 
 
-3. Kattintson az újonnan hozzáadott *Azure SQL Edge* -modulra **IoT Edge modulok** területen az Azure SQL Edge-modul konfigurálásához. A konfigurációs beállításokkal kapcsolatos további információkért lásd: az [Azure SQL Edge üzembe helyezése](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal).
+3. Kattintson az újonnan hozzáadott *Azure SQL Edge* -modulra **IoT Edge modulok** területen az Azure SQL Edge-modul konfigurálásához. A konfigurációs beállításokkal kapcsolatos további információkért lásd: az [Azure SQL Edge üzembe helyezése](./deploy-portal.md).
 
 4. Adja hozzá a `MSSQL_PACKAGE` környezeti változót az *Azure SQL Edge* -modul üzembe helyezéséhez, és adja meg az oktatóanyag első [részének](tutorial-deploy-azure-resources.md) 8. lépésében létrehozott adatbázis-dacpac fájl sas URL-címét.
 
@@ -92,7 +92,7 @@ Most a IoT Edge modulban meg kell adnia a tároló hitelesítő adatait.
    BrokeredEndpoint("/modules/<your_azure_sql_edge_module>/inputs/IronOreMeasures")
    ```
 
-   Például:
+   Ilyenek többek között:
 
    ```
    FROM /messages/modules/ASEDataGenerator/outputs/IronOreMeasures INTO BrokeredEndpoint("/modules/AzureSQLEdge/inputs/IronOreMeasures")
@@ -203,6 +203,6 @@ Most a IoT Edge modulban meg kell adnia a tároló hitelesítő adatait.
 
 Ebben az oktatóanyagban központilag telepítettük az adatgenerátor modult és az SQL Edge-modult. Ezután létrehoztunk egy folyamatos átviteli feladatot az adatgenerációs modul által az SQL-hez generált adatok továbbításához. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [ML modell üzembe helyezése az Azure SQL Edge-ben a ONNX használatával](tutorial-run-ml-model-on-sql-edge.md)

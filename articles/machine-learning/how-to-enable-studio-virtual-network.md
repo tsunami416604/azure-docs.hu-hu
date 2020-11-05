@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 781b37405bebc5ddc3d33cbbc089049b0c0f8ca4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: aca7b7e8590c9c8eb3db987c5d1527d9f135bf3f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325533"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392996"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure Machine Learning Studio használata Azure-beli virtuális hálózaton
 
@@ -97,7 +97,10 @@ Ezek a lépések hozzáadja a munkaterület által felügyelt identitást __olva
 
 ## <a name="technical-notes-for-managed-identity"></a>Technikai megjegyzések a felügyelt identitáshoz
 
-A felügyelt identitásnak a tárolási szolgáltatásokhoz való hozzáférése bizonyos biztonsági szempontokat is érint. Ezek a szempontok egyediek a hozzáférő Storage-fiók típusától. Ez a szakasz az egyes Storage-fióktípus változásait ismerteti.
+A felügyelt identitásnak a tárolási szolgáltatásokhoz való hozzáférése bizonyos biztonsági szempontokat is érint. Ez a szakasz az egyes Storage-fióktípus változásait ismerteti.
+
+> [!IMPORTANT]
+> Ezek a szempontok egyediek a hozzáférő __Storage-fiók típusától__ .
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
@@ -139,7 +142,7 @@ Az alapértelmezett adattárat is felülbírálhatja egy modul alapján. Ez lehe
 1. Válassza a **kimeneti beállítások megadása** lehetőséget.
 1. Új adattárt kell megadnia.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk egy négy részből álló virtuális hálózati sorozat választható részét képezi. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
 

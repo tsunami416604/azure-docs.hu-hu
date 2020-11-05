@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: punagpal
-ms.openlocfilehash: 43b7bcba97617d6931fd5c191e62e833a25bf89d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cae648e3c2bddbafec555621d97575a007cfeb4
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87513373"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394866"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-data-flow"></a>Az FHIR-hez készült Azure IoT-összekötő (előzetes verzió) adatfolyama
 
@@ -26,7 +26,7 @@ A fenti ábrán az Azure IoT Connector az FHIR-hez készült általános adatfor
 Az alábbi szakaszok az Azure IoT-összekötő által az FHIR-hez érkezett kérések különböző szakaszain keresztül haladnak végig.
 
 ## <a name="ingest"></a>Betöltés
-A betöltés az első olyan szakasz, ahol az eszközök az Azure IoT-Összekötőbe érkeznek az FHIR. Az eszközre vonatkozó adatfeldolgozási végpontot egy [Azure Event hub](https://docs.microsoft.com/azure/event-hubs/)tárolja. Az Azure Event hub platform támogatja a nagy léptékű és az átviteli sebességet, és másodpercenként több millió üzenet fogadását és feldolgozását is lehetővé teszi. Emellett lehetővé teszi az Azure IoT Connector számára, hogy a FHIR aszinkron módon használja az üzeneteket, így nem kell megvárnia az eszközök feldolgozásának idejét.
+A betöltés az első olyan szakasz, ahol az eszközök az Azure IoT-Összekötőbe érkeznek az FHIR. Az eszközre vonatkozó adatfeldolgozási végpontot egy [Azure Event hub](../event-hubs/index.yml)tárolja. Az Azure Event hub platform támogatja a nagy léptékű és az átviteli sebességet, és másodpercenként több millió üzenet fogadását és feldolgozását is lehetővé teszi. Emellett lehetővé teszi az Azure IoT Connector számára, hogy a FHIR aszinkron módon használja az üzeneteket, így nem kell megvárnia az eszközök feldolgozásának idejét.
 
 > [!NOTE]
 > Az eszközre jelenleg a JSON az egyetlen támogatott formátum.
@@ -36,7 +36,7 @@ A normalizálás a következő lépés, amelyben az eszközök adatai bekerülne
 
 A normalizálás folyamata nem csupán az adatfeldolgozást egyszerűsíti a későbbi fázisokban, de lehetővé teszi, hogy egy bemeneti üzenetet több normalizált üzenetbe is feldolgozzon. Egy eszköz például több létfontosságú jelet is küldhet a test hőmérsékletének, a pulzusszámának, a vérnyomás és a légzési aránynak egyetlen üzenetben. Ez a bemeneti üzenet négy különálló FHIR-erőforrást hoz létre. Az egyes erőforrások különböző létfontosságú aláírást képviselnek, és a bemeneti üzenet négy különböző normalizált üzenetbe lett kiosztva.
 
-## <a name="group"></a>Group
+## <a name="group"></a>Csoport
 A csoport a következő szakasz, ahol az előző fázisban elérhető normalizált üzenetek három különböző paraméterrel vannak csoportosítva: eszköz identitása, mérték típusa és időszaka.
 
 Az eszköz identitása és a mérési típus csoportosítása lehetővé teszi a [SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData) -mérési típus használatát. Ez a típus tömör módot biztosít a FHIR-ben található eszköz mérési időalapú sorozatának ábrázolására. És az időszak azt szabályozza, hogy az Azure IoT-összekötő által az FHIR számára generált megfigyelési erőforrások milyen késéssel íródnak a FHIR készült Azure API-ban.

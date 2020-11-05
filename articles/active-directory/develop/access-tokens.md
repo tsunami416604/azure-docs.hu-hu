@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: hirsin
-ms.reviewer: hirsin
+ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: ee8ea874ba8133216bf5a28587f841d3b7cfa2ed
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b60be1b3d30ab462f89dd4d72ab67d43393740b8
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740164"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393370"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform hozzáférési jogkivonatok
 
@@ -33,7 +33,7 @@ A következő részekben megtudhatja, hogyan ellenőrizheti és használhatja az
 > [!IMPORTANT]
 > A hozzáférési jogkivonatok létrehozása a jogkivonat *célközönsége* alapján történik, ami azt jelenti, hogy a jogkivonatban lévő hatóköröket birtokló alkalmazás.  Az `accessTokenAcceptedVersion` [alkalmazás jegyzékfájljának](reference-app-manifest.md#manifest-reference) egy erőforrás-beállítása lehetővé teszi, hogy az `2` ügyfél a v 1.0 végpontot hívja meg a v 2.0 hozzáférési jogkivonatok fogadására.  Hasonlóképpen, ezért a hozzáférési jogkivonat [választható jogcímeinek](active-directory-optional-claims.md) az ügyfélhez való módosítása nem változtatja meg a kapott hozzáférési tokent, ha a rendszer jogkivonatot kér `user.read` , amely az erőforrás tulajdonában van.
 >
-> Ugyanezen oknál fogva, miközben az ügyfélalkalmazás egy olyan Microsoft API-val való tesztelése, amely támogatja a személyes fiókot (például hotmail.com vagy outlook.com), azt tapasztalhatja, hogy az ügyfél által fogadott hozzáférési jogkivonat átlátszatlan karakterlánc. Ennek az az oka, hogy az elérni kívánt erőforrás titkosított jogkivonatokat használ, és az ügyfél nem tudja értelmezni.  Ez várható, és nem lehet probléma az alkalmazásban – az ügyfélalkalmazások soha nem rendelkeznek függőséggel a hozzáférési jogkivonat formátumával. 
+> Ugyanezen oknál fogva, miközben az ügyfélalkalmazás egy olyan Microsoft API-val való tesztelése, amely támogatja a személyes fiókot (például hotmail.com vagy outlook.com), azt tapasztalhatja, hogy az ügyfél által fogadott hozzáférési jogkivonat átlátszatlan karakterlánc. Ennek az az oka, hogy az elérni kívánt erőforrás titkosított jogkivonatokat használ, és az ügyfél nem tudja értelmezni.  Ez várható, és nem lehet probléma az alkalmazásban – az ügyfélalkalmazások soha nem rendelkeznek függőséggel a hozzáférési jogkivonat formátumával.
 
 ## <a name="sample-tokens"></a>Mintául szolgáló tokenek
 
@@ -178,7 +178,7 @@ Olyan kódtárakat és kódokat biztosítunk, amelyek bemutatják a jogkivonat-�
 
 ### <a name="validating-the-signature"></a>Az aláírás ellenőrzése
 
-A JWT három szegmenst tartalmaz, amelyek a karakterrel vannak elválasztva `.` . Az első szegmens a **fejléc** , a második a **törzs** , a harmadik pedig az **aláírás** . Az aláírási szegmens használatával ellenőrizheti a jogkivonat hitelességét, hogy az alkalmazás megbízható legyen.
+A JWT három szegmenst tartalmaz, amelyek a karakterrel vannak elválasztva `.` . Az első szegmens a **fejléc** , a második a **törzs** , a harmadik pedig az **aláírás**. Az aláírási szegmens használatával ellenőrizheti a jogkivonat hitelességét, hogy az alkalmazás megbízható legyen.
 
 Az Azure AD által kiállított jogkivonatok az iparági szabványnak megfelelő aszimmetrikus titkosítási algoritmusokkal (például RS256) vannak aláírva. A JWT fejléce a jogkivonat aláírásához használt kulcs-és titkosítási módszerről tartalmaz információkat:
 
@@ -245,7 +245,7 @@ A frissítési tokeneket a rendszer bármikor, különböző okok miatt érvény
 
 ### <a name="token-timeouts"></a>Jogkivonat-időtúllépések
 
-A [jogkivonat-élettartam konfigurációjának](active-directory-configurable-token-lifetimes.md)használatával megváltoztatható a frissítési tokenek élettartama.  Normális és várható, hogy egyes tokenek használata nélkül megy (például a felhasználó nem nyitja meg az alkalmazást 3 hónapig), ezért lejár.  Az alkalmazások olyan forgatókönyveket fognak tapasztalni, amelyekben a bejelentkezési kiszolgáló elutasítja a frissítési jogkivonatot a kora miatt. 
+A [jogkivonat-élettartam konfigurációjának](active-directory-configurable-token-lifetimes.md)használatával megváltoztatható a frissítési tokenek élettartama.  Normális és várható, hogy egyes tokenek használata nélkül megy (például a felhasználó nem nyitja meg az alkalmazást 3 hónapig), ezért lejár.  Az alkalmazások olyan forgatókönyveket fognak tapasztalni, amelyekben a bejelentkezési kiszolgáló elutasítja a frissítési jogkivonatot a kora miatt.
 
 * MaxInactiveTime: Ha a frissítési token nem lett használva a MaxInactiveTime által diktált időn belül, a frissítési token többé nem lesz érvényes.
 * MaxSessionAge: Ha a MaxAgeSessionMultiFactor vagy a MaxAgeSessionSingleFactor értéke nem az alapértelmezett (a visszavonás után) értékre van állítva, akkor az újrahitelesítésre akkor van szükség, amikor a MaxAgeSession * eltelik.
@@ -255,7 +255,7 @@ A [jogkivonat-élettartam konfigurációjának](active-directory-configurable-to
 
 ### <a name="revocation"></a>Visszavont
 
-A frissítési tokeneket a kiszolgáló visszavonhatja a hitelesítő adatok módosítása, illetve a használati vagy rendszergazdai műveletek miatt.  A frissítési tokenek két osztályba sorolhatók – ezek a bizalmas ügyfelek (a jobb szélső oszlop) és a nyilvános ügyfelek számára kiállítottak (az összes többi oszlop).   
+A frissítési tokeneket a kiszolgáló visszavonhatja a hitelesítő adatok módosítása, illetve a használati vagy rendszergazdai műveletek miatt.  A frissítési tokenek két osztályba sorolhatók – ezek a bizalmas ügyfelek (a jobb szélső oszlop) és a nyilvános ügyfelek számára kiállítottak (az összes többi oszlop).
 
 | Módosítás | Jelszó alapú cookie | Jelszó alapú jogkivonat | Nem jelszó alapú cookie | Nem jelszó alapú jogkivonat | Bizalmas ügyfél jogkivonata |
 |---|-----------------------|----------------------|---------------------------|--------------------------|---------------------------|
@@ -275,14 +275,14 @@ A *nem jelszó alapú* bejelentkezés olyan esetben, amikor a felhasználó nem 
 - FIDO2 kulcs
 - SMS
 - Hang
-- PIN kód 
+- PIN kód
 
 > [!NOTE]
 > A Windows 10-es elsődleges frissítési tokenek (PRT) a hitelesítő adatok alapján elkülönülnek. A Windows Hello és a Password például a saját PRT-vel rendelkeznek, és egymástól elszigetelten vannak. Ha a felhasználó Hello hitelesítő adatokkal (PIN-kóddal vagy biometrikus azonosítóval) jelentkezik be, majd módosítja a jelszót, a rendszer visszavonja a korábban beszerzett jelszó-alapú PRT-t. A jelszó megadásával visszaigazolja a régi PRT-t, és egy újat kér.
 >
-> A frissítési tokenek nem lettek érvénytelenítve vagy visszavonva, ha új hozzáférési jogkivonatot és frissítési jogkivonatot kívánnak beolvasni.  Azonban az alkalmazásnak el kell vetnie a régit, amint a használatban van, és lecseréli az újat, mert az új jogkivonat új lejárati ideje van. 
+> A frissítési tokenek nem lettek érvénytelenítve vagy visszavonva, ha új hozzáférési jogkivonatot és frissítési jogkivonatot kívánnak beolvasni.  Azonban az alkalmazásnak el kell vetnie a régit, amint a használatban van, és lecseréli az újat, mert az új jogkivonat új lejárati ideje van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg [ `id_tokens` Az Azure ad-](id-tokens.md)t.
 * További információ az engedélyekről és a hozzájárulásról ( [1.0](../azuread-dev/v1-permissions-consent.md), [v 2.0](v2-permissions-and-consent.md)).

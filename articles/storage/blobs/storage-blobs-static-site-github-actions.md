@@ -9,28 +9,31 @@ ms.reviewer: dineshm
 ms.date: 09/11/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure
-ms.openlocfilehash: 919fa0d7b6dff0361e4439b442bcfe9648ed8677
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7213cea0796197e230cc5914f7cebfac7c69ae49
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776391"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395733"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>GitHub-műveletek munkafolyamatának beállítása a statikus webhely üzembe helyezéséhez az Azure Storage-ban
 
-Ismerkedjen meg a [GitHub-műveletekkel](https://docs.github.com/en/actions) egy olyan munkafolyamattal, amellyel statikus helyet helyezhet üzembe egy Azure Storage-blobon. A GitHub-műveletek munkafolyamatának beállítása után automatikusan üzembe helyezheti a helyet az Azure-ban a GitHubról, ha módosítja a webhely kódját. 
+Ismerkedjen meg a [GitHub-műveletekkel](https://docs.github.com/en/actions) egy olyan munkafolyamat használatával, amely statikus helyet telepít egy Azure Storage-fiókba. A GitHub-műveletek munkafolyamatának beállítása után automatikusan üzembe helyezheti a helyet az Azure-ban a GitHubról, ha módosítja a webhely kódját.
 
 > [!NOTE]
 > Ha [Azure statikus Web Apps](https://docs.microsoft.com/azure/static-web-apps/)használ, nem kell manuálisan beállítania egy GitHub-művelet munkafolyamatot.
-> Az Azure statikus Web Apps automatikusan létrehoz egy GitHub-munkafolyamatot. 
+> Az Azure statikus Web Apps automatikusan létrehoz egy GitHub-műveletek munkafolyamatot. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Egy Azure-előfizetés és egy GitHub-fiók. 
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Egy GitHub-fiók a statikus webhely kódjával. Ha nem rendelkezik GitHub-fiókkal, [regisztráljon ingyenesen](https://github.com/join).  
-- Az Azure Storage-ban üzemeltetett, működő statikus webhely. Ismerje meg, hogyan [tárolhat statikus webhelyeket az Azure Storage-ban](storage-blob-static-website-how-to.md). A statikus webhelynek tartalmaznia kell egy [Azure CDN](static-website-content-delivery-network.md).
+- Egy GitHub-tárház a statikus webhely kódjával. Ha nem rendelkezik GitHub-fiókkal, [regisztráljon ingyenesen](https://github.com/join).  
+- Az Azure Storage-ban üzemeltetett, működő statikus webhely. Ismerje meg, hogyan [tárolhat statikus webhelyeket az Azure Storage-ban](storage-blob-static-website-how-to.md). Ennek a példának a követéséhez [Azure CDN](static-website-content-delivery-network.md)is telepítenie kell.
+
+> [!NOTE]
+> Gyakori, hogy a Content Delivery Network (CDN) használatával csökkentse a késést a felhasználók számára az egész világon, és csökkentse a tranzakciók számát a Storage-fiókba. A statikus tartalom felhőalapú tárolási szolgáltatásba történő üzembe helyezése csökkentheti a költséges számítási példányok szükségességét. További információ: [statikus tartalom üzemeltetési mintája](/azure/architecture/patterns/static-content-hosting).
 
 ## <a name="generate-deployment-credentials"></a>Központi telepítési hitelesítő adatok előállítása
 
@@ -42,7 +45,7 @@ Cserélje le a helyőrzőt az `myStaticSite` Azure Storage-ban üzemeltetett web
    az ad sp create-for-rbac --name {myStaticSite} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} --sdk-auth
 ```
 
-A fenti példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra és az erőforráscsoport nevére. A kimenet egy JSON-objektum, amely a szerepkör-hozzárendelés hitelesítő adatait tartalmazza, amelyek hozzáférést biztosítanak a App Service alkalmazáshoz az alábbihoz hasonló módon. A JSON-objektum másolása később.
+A fenti példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra és az erőforráscsoport nevére. A kimenet egy JSON-objektum, amely a szerepkör-hozzárendelés hitelesítő adatait tartalmazza, és hozzáférést biztosít a Storage-fiókhoz az alábbihoz hasonló módon. A JSON-objektum másolása később.
 
 ```output 
   {
@@ -61,11 +64,11 @@ A fenti példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra é
 
 1. A [githubon](https://github.com/)tallózzon a tárházban.
 
-1. Válassza a **beállítások > titkok > új titok**lehetőséget.
+1. Válassza a **beállítások > titkok > új titok** lehetőséget.
 
-1. Illessze be a teljes JSON-kimenetet az Azure CLI-parancsból a titok érték mezőjébe. Adja meg a titkot a nevet, például: `AZURE_CREDENTIALS` .
+1. Illessze be a teljes JSON-kimenetet az Azure CLI-parancsból a titok érték mezőjébe. Adjon egy nevet a titoknak `AZURE_CREDENTIALS` .
 
-    Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentkezési művelethez tartozó titkos kulcsot használja. Példa:
+    Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentkezési művelethez tartozó titkos kulcsot használja. Ilyenek többek között:
 
     ```yaml
     - uses: azure/login@v1
@@ -77,9 +80,9 @@ A fenti példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra é
 
 1. Nyissa meg a GitHub-tárház **műveleteit** . 
 
-    :::image type="content" source="media/storage-blob-static-website/storage-blob-github-actions-header.png" alt-text="GitHub-műveletek menüelem&quot;:::
+    :::image type="content" source="media/storage-blob-static-website/storage-blob-github-actions-header.png" alt-text="GitHub-műveletek menüelem":::
 
-1. Válassza **a saját munkafolyamat beállítása**lehetőséget. 
+1. Válassza **a saját munkafolyamat beállítása** lehetőséget. 
 
 1. Töröljön mindent a `on:` munkafolyamat-fájl szakasza után. Előfordulhat például, hogy a hátralévő munkafolyamat így néz ki. 
 
@@ -128,7 +131,7 @@ A fenti példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra é
         with:
             azcliversion: 2.0.72
             inlineScript: |
-            az cdn endpoint purge --content-paths  &quot;/*&quot; --profile-name &quot;CDN_PROFILE_NAME&quot; --name &quot;CDN_ENDPOINT&quot; --resource-group &quot;RESOURCE_GROUP&quot;
+            az cdn endpoint purge --content-paths  "/*" --profile-name "CDN_PROFILE_NAME" --name "CDN_ENDPOINT" --resource-group "RESOURCE_GROUP"
     ``` 
 
 1. Fejezze be a munkafolyamatot az Azure kijelentkezéséhez szükséges művelet hozzáadásával. Itt látható a befejezett munkafolyamat. Ekkor megjelenik a fájl a `.github/workflows` tárház mappájában.
@@ -162,7 +165,7 @@ A fenti példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra é
         with:
             azcliversion: 2.0.72
             inlineScript: |
-            az cdn endpoint purge --content-paths  &quot;/*&quot; --profile-name &quot;CDN_PROFILE_NAME&quot; --name &quot;CDN_ENDPOINT&quot; --resource-group &quot;RESOURCE_GROUP"
+            az cdn endpoint purge --content-paths  "/*" --profile-name "CDN_PROFILE_NAME" --name "CDN_ENDPOINT" --resource-group "RESOURCE_GROUP"
             # Azure logout 
         - name: logout
           run: |
@@ -175,98 +178,13 @@ A fenti példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra é
 
 1. Az első eredmény megnyitásával tekintheti meg a munkafolyamat futtatásának részletes naplóit. 
  
-    :::image type="content" source="../media/index/github-actions-run.png" alt-text="GitHub-műveletek menüelem&quot;:::
-
-1. Válassza **a saját munkafolyamat beállítása**lehetőséget. 
-
-1. Töröljön mindent a `on:` munkafolyamat-fájl szakasza után. Előfordulhat például, hogy a hátralévő munkafolyamat így néz ki. 
-
-    ```yaml
-    name: CI
-
-    on:
-    push:
-        branches: [ master ]
-    pull_request:
-        branches: [ master ]
-    ```
-
-1. Nevezze át a munkafolyamatot `Blob storage website CI` , és adja hozzá a pénztári és bejelentkezési műveleteket. Ezek a műveletek kiveszik a helykódot, és a korábban létrehozott GitHub-titok használatával hitelesítik magukat az Azure-ban `AZURE_CREDENTIALS` . 
-
-    ```yaml
-    name: Blob storage website CI
-
-    on:
-    push:
-        branches: [ master ]
-    pull_request:
-        branches: [ master ]
-
-    jobs:
-      build:
-        runs-on: ubuntu-latest
-        steps:            
-        - uses: actions/checkout@v2
-        - uses: azure/login@v1
-          with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-    ```
-
-1. Az Azure CLI művelettel feltöltheti a kódot a blob Storage-ba, és törölheti a CDN-végpontot. A (z) esetében `az storage blob upload-batch` cserélje le a helyőrzőt a Storage-fiók nevére. A szkript feltölti a `$web` tárolóba. A esetében `az cdn endpoint purge` cserélje le a helyőrzőket a CDN-profil nevére, a CDN-végpont nevére és az erőforráscsoporthoz.
-
-    ```yaml
-        - name: Upload to blob storage
-        uses: azure/CLI@v1
-        with:
-            azcliversion: 2.0.72
-            inlineScript: |
-                az storage blob upload-batch --account-name <STORAGE_ACCOUNT_NAME> -d '$web' -s .
-        - name: Purge CDN endpoint
-        uses: azure/CLI@v1
-        with:
-            azcliversion: 2.0.72
-            inlineScript: |
-            az cdn endpoint purge --content-paths  &quot;/*&quot; --profile-name &quot;CDN_PROFILE_NAME&quot; --name &quot;CDN_ENDPOINT&quot; --resource-group &quot;RESOURCE_GROUP&quot;
-    ``` 
-
-1. Fejezze be a munkafolyamatot az Azure kijelentkezéséhez szükséges művelet hozzáadásával. Itt látható a befejezett munkafolyamat. Ekkor megjelenik a fájl a `.github/workflows` tárház mappájában.
-
-    ```yaml
-   name: Blob storage website CI
-
-    on:
-    push:
-        branches: [ master ]
-    pull_request:
-        branches: [ master ]
-
-    jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v2
-        - name: Azure Login
-        uses: azure/login@v1
-        with:
-            creds: ${{ secrets.AZURE_CREDENTIALS }}    
-        - name: Azure CLI script
-        uses: azure/CLI@v1
-        with:
-            azcliversion: 2.0.72
-            inlineScript: |
-                az storage blob upload-batch --account-name <STORAGE_ACCOUNT_NAME> -d '$web' -s .
-        - name: Azure CLI script
-        uses: azure/CLI@v1
-        with:
-            azcliversion: 2.0.72
-            inlineScript: |
-            az cdn endpoint purge --content-paths  &quot;/*&quot; --profile-name &quot;CDN_PROFILE_NAME&quot; --name &quot;CDN_ENDPOINT&quot; --resource-group &quot;RESOURCE_GROUP":::
+    :::image type="content" source="../media/index/github-actions-run.png" alt-text="A GitHub-műveletek futtatásának naplója":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha az Azure-beli statikus webhelyre és-tárházra már nincs szükség, törölje az üzembe helyezett erőforrásokat az erőforráscsoport és a GitHub-tárház törlésével. 
+Ha a statikus webhelyre és a GitHub-tárházra már nincs szükség, távolítsa el az üzembe helyezett erőforrásokat az erőforráscsoport és a GitHub-tárház törlésével. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók az Azure statikus Web Apps](https://docs.microsoft.com/azure/static-web-apps/)

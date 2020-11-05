@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 35985404d5ac97940c324c3ad7f7d46c959b4902
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02f22883a0989714d8b74f778cacf1ba2c65d0b4
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90940668"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392010"
 ---
 # <a name="performance-best-practices-and-configuration-guidelines"></a>A teljesítményre vonatkozó ajánlott eljárások és konfigurációs irányelvek
 
@@ -28,13 +28,13 @@ Az Azure SQL Edge alapértelmezés szerint csak egy tempdb-adatfájlt hoz létre
 
 ### <a name="use-clustered-columnstore-indexes-where-possible"></a>Fürtözött oszlopcentrikus indexek használata, ahol lehetséges
 
-A IoT és az Edge-eszközök általában nagy mennyiségű adat előállítására szolgálnak, amelyeket általában egy kis idő alatt összesítenek az elemzéshez. Az egyes adatsorokat ritkán használják az elemzésekhez. A oszlopcentrikus indexek ideálisak az ilyen nagyméretű adathalmazok tárolásához és lekérdezéséhez. Ez az index az oszlop alapú adattárolást és a lekérdezések feldolgozását használja, hogy a lekérdezési teljesítmény akár 10 alkalommal is elérhető legyen a hagyományos, sorokra épülő tárolón. Akár 10 alkalommal is elérheti az adattömörítést a tömörítetlen adatmérethez képest. További információ: [Oszlopcentrikus indexek](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)
+A IoT és az Edge-eszközök általában nagy mennyiségű adat előállítására szolgálnak, amelyeket általában egy kis idő alatt összesítenek az elemzéshez. Az egyes adatsorokat ritkán használják az elemzésekhez. A oszlopcentrikus indexek ideálisak az ilyen nagyméretű adathalmazok tárolásához és lekérdezéséhez. Ez az index az oszlop alapú adattárolást és a lekérdezések feldolgozását használja, hogy a lekérdezési teljesítmény akár 10 alkalommal is elérhető legyen a hagyományos, sorokra épülő tárolón. Akár 10 alkalommal is elérheti az adattömörítést a tömörítetlen adatmérethez képest. További információ: [Oszlopcentrikus indexek](/sql/relational-databases/indexes/columnstore-indexes-overview)
 
 Emellett az Azure SQL Edge egyéb funkciói, például az adatátviteli és adatmegőrzési előnyök az adatok beszúrását és az adatok eltávolítását ismertető oszlopcentrikus-optimalizálásokból származnak. 
 
 ### <a name="simple-recovery-model"></a>Egyszerű helyreállítási modell
 
-Mivel a tárterület az Edge-eszközökön korlátozható, az Azure SQL Edge összes felhasználói adatbázisa alapértelmezés szerint az egyszerű helyreállítási modellt használja. Az egyszerű helyreállítási modell automatikusan visszaállítja a naplózási helyet, hogy a lemezterület-követelmények kicsik maradjanak, ami lényegében nem szükséges a tranzakciós napló területének kezeléséhez. A korlátozott tárterülettel rendelkező peremhálózati eszközökön ez hasznos lehet. Az egyszerű helyreállítási modellel és más elérhető helyreállítási modellekkel kapcsolatos további információkért lásd: [helyreállítási modellek](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server)
+Mivel a tárterület az Edge-eszközökön korlátozható, az Azure SQL Edge összes felhasználói adatbázisa alapértelmezés szerint az egyszerű helyreállítási modellt használja. Az egyszerű helyreállítási modell automatikusan visszaállítja a naplózási helyet, hogy a lemezterület-követelmények kicsik maradjanak, ami lényegében nem szükséges a tranzakciós napló területének kezeléséhez. A korlátozott tárterülettel rendelkező peremhálózati eszközökön ez hasznos lehet. Az egyszerű helyreállítási modellel és más elérhető helyreállítási modellekkel kapcsolatos további információkért lásd: [helyreállítási modellek](/sql/relational-databases/backup-restore/recovery-models-sql-server)
 
 Az egyszerű helyreállítási modell nem támogatja az olyan műveleteket, mint például a naplók szállítása és az időponthoz tartozó visszaállítások, amelyek a tranzakciónapló biztonsági mentését igénylik.  
 
@@ -56,16 +56,9 @@ Az Azure SQL Edge-beli tranzakció lehet teljesen tartós, a SQL Server alapért
 
 A teljes körű tranzakció-véglegesítés szinkronban van, és a sikeres végrehajtást jelenti, és csak azután küldi vissza a vezérlést az ügyfélnek, miután a tranzakcióhoz tartozó naplóbejegyzéseket lemezre írja. A késleltetett tartós tranzakciós véglegesítés aszinkron módon történik, és a rendszer sikeresen bejelenti a véglegesítés sikerességét, mielőtt a tranzakció rekordjai lemezre íródnak. Ahhoz, hogy a tranzakciók tartósak legyenek, a tranzakciós napló bejegyzéseinek lemezre írása szükséges. A késleltetett tartós tranzakciók tartósak lesznek, ha a tranzakciónapló-bejegyzéseket lemezre ürítik. 
 
-Az üzemelő példányokban, ahol **egyes adatvesztések** tolerálható, illetve a lassú tárolású peremhálózati eszközökön a késleltetett tartósság az adatok betöltését és az adatmegőrzési alapú tisztítás optimalizálására használható. További információ: a [tranzakciók tartósságának szabályozása](https://docs.microsoft.com/sql/relational-databases/logs/control-transaction-durability).
+Az üzemelő példányokban, ahol **egyes adatvesztések** tolerálható, illetve a lassú tárolású peremhálózati eszközökön a késleltetett tartósság az adatok betöltését és az adatmegőrzési alapú tisztítás optimalizálására használható. További információ: a [tranzakciók tartósságának szabályozása](/sql/relational-databases/logs/control-transaction-durability).
 
 
 ### <a name="linux-os-configurations"></a>Linux operációsrendszer-konfigurációk 
 
-Érdemes lehet a következő [Linux operációs rendszer konfigurációs](https://docs.microsoft.com/sql/linux/sql-server-linux-performance-best-practices#linux-os-configuration) beállításait használni az SQL-telepítés legjobb teljesítményének megtapasztalása érdekében.
-
-
-
-
-
-
-
+Érdemes lehet a következő [Linux operációs rendszer konfigurációs](/sql/linux/sql-server-linux-performance-best-practices#linux-os-configuration) beállításait használni az SQL-telepítés legjobb teljesítményének megtapasztalása érdekében.

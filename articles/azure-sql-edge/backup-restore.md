@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: f2cc8901ee3952f7d258d768e175412254ec5d1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 114be810ea50f984c3211291691b4c4dd45ac2c7
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905955"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395240"
 ---
 # <a name="back-up-and-restore-databases-in-azure-sql-edge"></a>Adatbázisok biztonsági mentése és visszaállítása az Azure SQL Edge-ben 
 
@@ -75,9 +75,9 @@ A következő példában a `BACKUP DATABASE` Transact-SQL parancs használatáva
 
 ### <a name="back-up-to-url"></a>Biztonsági mentés az URL-címre
 
-Az Azure SQL Edge a blobok és a Blobok blokkolására is támogatja a biztonsági mentést. További információ: [biztonsági mentés a blob vs oldal blobjának letiltásához](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url#blockbloborpageblob). A következő példában az adatbázis *IronOreSilicaPrediction* biztonsági másolat készül egy blokk-blobba. 
+Az Azure SQL Edge a blobok és a Blobok blokkolására is támogatja a biztonsági mentést. További információ: [biztonsági mentés a blob vs oldal blobjának letiltásához](/sql/relational-databases/backup-restore/sql-server-backup-to-url#blockbloborpageblob). A következő példában az adatbázis *IronOreSilicaPrediction* biztonsági másolat készül egy blokk-blobba. 
 
-1. A Blobok blokkolása érdekében a biztonsági másolatok konfigurálásához először hozzon létre egy közös hozzáférésű aláírási (SAS) tokent, amelynek segítségével SQL Server hitelesítő adatokat hozhat létre az Azure SQL Edge-ben. A parancsfájl egy tárolt hozzáférési házirenddel társított SAS-t hoz létre. További információt [a közös hozzáférésű aláírások, 1. rész: az SAS-modell megismerése című részben](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)talál. A parancsfájl a T-SQL-parancsot is írja a hitelesítő adatok SQL Server való létrehozásához. A következő parancsfájl azt feltételezi, hogy már rendelkezik egy Storage-fiókkal rendelkező Azure-előfizetéssel, valamint a biztonsági mentések tárolására szolgáló tárolóval.
+1. A Blobok blokkolása érdekében a biztonsági másolatok konfigurálásához először hozzon létre egy közös hozzáférésű aláírási (SAS) tokent, amelynek segítségével SQL Server hitelesítő adatokat hozhat létre az Azure SQL Edge-ben. A parancsfájl egy tárolt hozzáférési házirenddel társított SAS-t hoz létre. További információt [a közös hozzáférésű aláírások, 1. rész: az SAS-modell megismerése című részben](../storage/common/storage-sas-overview.md)talál. A parancsfájl a T-SQL-parancsot is írja a hitelesítő adatok SQL Server való létrehozásához. A következő parancsfájl azt feltételezi, hogy már rendelkezik egy Storage-fiókkal rendelkező Azure-előfizetéssel, valamint a biztonsági mentések tárolására szolgáló tárolóval.
 
     ```PowerShell
     # Define global variables for the script  
@@ -133,7 +133,7 @@ Az Azure SQL Edge a blobok és a Blobok blokkolására is támogatja a biztonsá
 
 ## <a name="restore-a-database-in-azure-sql-edge"></a>Adatbázis visszaállítása az Azure SQL Edge-ben
 
-Az Azure SQL Edge-ben egy helyi lemezről, egy hálózati helyről vagy egy Azure Blob Storage-fiókból lehet visszaállítani. A SQL Server visszaállításával és helyreállításával kapcsolatos további információkért tekintse meg a [visszaállítás és helyreállítás áttekintése](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server)című témakört. Az SQL Server egyszerű helyreállítási modelljének áttekintését lásd: az adatbázis-visszaállítások [befejezése (egyszerű helyreállítási modell)](https://docs.microsoft.com/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model).
+Az Azure SQL Edge-ben egy helyi lemezről, egy hálózati helyről vagy egy Azure Blob Storage-fiókból lehet visszaállítani. A SQL Server visszaállításával és helyreállításával kapcsolatos további információkért tekintse meg a [visszaállítás és helyreállítás áttekintése](/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server)című témakört. Az SQL Server egyszerű helyreállítási modelljének áttekintését lásd: az adatbázis-visszaállítások [befejezése (egyszerű helyreállítási modell)](/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model).
 
 > [!IMPORTANT] 
 > Az Azure SQL Edge-ben létrehozott adatbázisok nem állíthatók vissza Microsoft SQL Server vagy Azure SQL-példányon. Emellett a Microsoft SQL Server vagy az Azure SQL-ben létrehozott adatbázis visszaállítható az Azure SQL Edge-ben, ha az adatbázis nem tartalmazza az Azure SQL Edge által nem támogatott szolgáltatásokat. 
@@ -142,7 +142,7 @@ Az Azure SQL Edge-ben egy helyi lemezről, egy hálózati helyről vagy egy Azur
 
 Ez a példa az előző példában létrehozott *IronOreSilicaPrediction* biztonsági mentést használja. Most visszaállíthatja egy másik néven új adatbázisként.
 
-1. Ha az adatbázis biztonságimásolat-fájlja még nem szerepel a tárolóban, a következő paranccsal másolhatja a fájlt a tárolóba. Az alábbi példa azt feltételezi, hogy a biztonságimásolat-fájl megtalálható a helyi gazdagépen, és a rendszer átmásolja a/var/opt/MSSQL/Backup mappába egy *sql1*nevű Azure SQL Edge-tárolóba.
+1. Ha az adatbázis biztonságimásolat-fájlja még nem szerepel a tárolóban, a következő paranccsal másolhatja a fájlt a tárolóba. Az alábbi példa azt feltételezi, hogy a biztonságimásolat-fájl megtalálható a helyi gazdagépen, és a rendszer átmásolja a/var/opt/MSSQL/Backup mappába egy *sql1* nevű Azure SQL Edge-tárolóba.
 
     ```bash
     sudo docker cp IronOrePredictDB.bak sql1:/var/opt/mssql/backup
@@ -180,5 +180,3 @@ WITH MOVE 'IronOreSilicaPrediction' TO '/var/opt/mssql/data/IronOreSilicaPredict
 MOVE 'IronOreSilicaPrediction_log' TO '/var/opt/mssql/data/IronOreSilicaPrediction_Primary_3.ldf',
 STATS = 10;
 ```
-
-

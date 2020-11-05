@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: ff14f8a9f236701889aea95911f2a1e381eabf83
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fce098767fffd36376399bbd9396699e3d9fbfd3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947090"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392078"
 ---
 # <a name="deploy-azure-sql-edge-with-docker"></a>Az Azure SQL Edge üzembe helyezése a Docker-vel
 
@@ -28,7 +28,7 @@ Ez a rendszerkép az Ubuntu 18,04-alapú Azure SQL Edge-t tartalmazza. A szolgá
 - Docker **overlay2** -tároló illesztőprogramja. Ez az alapértelmezett érték a legtöbb felhasználó számára. Ha úgy találja, hogy nem használja ezt a tárolási szolgáltatót, és módosítania kell, tekintse meg a [overlay2 konfigurálásához használható Docker dokumentációjában](https://docs.docker.com/storage/storagedriver/overlayfs-driver/#configure-docker-with-the-overlay-or-overlay2-storage-driver)található utasításokat és figyelmeztetéseket.
 - Legalább 10 GB lemezterület.
 - Legalább 1 GB RAM.
-- [Az Azure SQL Edge hardveres követelményei](https://docs.microsoft.com/azure/azure-sql-edge/features#hardware-support).
+- [Az Azure SQL Edge hardveres követelményei](./features.md#hardware-support).
 
 
 ## <a name="pull-and-run-the-container-image"></a>A tároló rendszerképének lekérése és futtatása
@@ -70,7 +70,7 @@ Az előző parancs lekéri az Azure SQL Edge-tároló legújabb lemezképeit. Az
     | Paraméter | Leírás |
     |-----|-----|
     | **-e "ACCEPT_EULA = Y"** |  Állítsa a **ACCEPT_EULA** változót bármelyik értékre, hogy erősítse meg a [végfelhasználói](https://go.microsoft.com/fwlink/?linkid=2139274)licencszerződés elfogadását. Az Azure SQL Edge-rendszerkép kötelező beállítása. |
-    | **-e "MSSQL_SA_PASSWORD = yourStrong (!) Jelszó** | Adja meg a saját erős jelszót, amely legalább 8 karakterből áll, és megfelel az [Azure SQL Edge jelszavával kapcsolatos követelményeknek](https://docs.microsoft.com/sql/relational-databases/security/password-policy). Az Azure SQL Edge-rendszerkép kötelező beállítása. |
+    | **-e "MSSQL_SA_PASSWORD = yourStrong (!) Jelszó** | Adja meg a saját erős jelszót, amely legalább 8 karakterből áll, és megfelel az [Azure SQL Edge jelszavával kapcsolatos követelményeknek](/sql/relational-databases/security/password-policy). Az Azure SQL Edge-rendszerkép kötelező beállítása. |
     | **– p 1433:1433** | Rendelje le a TCP-portot a gazdagép-környezetben (első érték) a tárolóban található TCP-porttal (második érték). Ebben a példában az Azure SQL Edge figyeli a tárolóban lévő TCP 1433-et, és ez a 1433-es porton keresztül érhető el a gazdagépen. |
     | **--név azuresqledge** | Véletlenszerűen generált helyett adjon meg egyéni nevet a tárolóhoz. Ha egynél több tárolót futtat, ezt a nevet nem használhatja újra. |
     | **d** | A tároló futtatása a háttérben (démon) |
@@ -83,7 +83,7 @@ Az előző parancs lekéri az Azure SQL Edge-tároló legújabb lemezképeit. Az
     sudo docker ps -a
    ```
 
-4. Ha az **állapot** oszlopban a **fel**állapot látható, akkor az Azure SQL Edge fut a tárolóban, és figyeli a **portok** oszlopban megadott portot. Ha az Azure SQL Edge-tároló **állapot** oszlopa **ki**van zárva, tekintse meg az Azure SQL Edge dokumentációjának hibaelhárítási szakaszát.
+4. Ha az **állapot** oszlopban a **fel** állapot látható, akkor az Azure SQL Edge fut a tárolóban, és figyeli a **portok** oszlopban megadott portot. Ha az Azure SQL Edge-tároló **állapot** oszlopa **ki** van zárva, tekintse meg az Azure SQL Edge dokumentációjának hibaelhárítási szakaszát.
 
     Az `-h` (állomásnév) paraméter is hasznos, de ez az oktatóanyag nem használható az egyszerűség kedvéért. Ezzel megváltoztatja a tároló belső nevét egy egyéni értékre. Ezt a nevet fogja látni a következő Transact-SQL-lekérdezésben:
 
@@ -114,7 +114,7 @@ Az **sa** -fiók egy rendszergazda az Azure SQL Edge-példányon, amelyet a rend
 
 ## <a name="connect-to-azure-sql-edge"></a>Kapcsolódás az Azure SQL Edge-hez
 
-A következő lépések az Azure SQL Edge parancssori eszközt, az **Sqlcmd**-t használják a tárolón belül az Azure SQL Edge-hez való kapcsolódáshoz.
+A következő lépések az Azure SQL Edge parancssori eszközt, az **Sqlcmd** -t használják a tárolón belül az Azure SQL Edge-hez való kapcsolódáshoz.
 
 > [!NOTE]
 > a Sqlcmd eszköz nem érhető el az SQL Edge-tárolók ARM64-verzióján belül.

@@ -7,31 +7,29 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.topic: overview
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.workload: identity
-ms.date: 09/22/2020
+ms.date: 11/04/2020
 ms.author: curtand
-ms.reviewer: elkuzmen
+ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fb24d0cd2714969b5a888b1036f524c4c062d76
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 792e8cd1e70f901385ed3b225a753024e06f2df0
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027618"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394594"
 ---
 # <a name="administrative-units-in-azure-active-directory"></a>Felügyeleti egységek a Azure Active Directory
 
 Ez a cikk a Azure Active Directory (Azure AD) felügyeleti egységeit ismerteti. A felügyeleti egység olyan Azure AD-erőforrás, amely más Azure AD-erőforrások tárolója lehet. Egy felügyeleti egység csak felhasználókat és csoportokat tartalmazhat.
 
-A felügyeleti egységek használatával olyan rendszergazdai engedélyeket adhat meg, amelyek az Ön által meghatározott részlegre, régióra vagy a szervezet más szegmensére korlátozódnak. A felügyeleti egységekkel engedélyeket delegálhat a regionális rendszergazdáknak, vagy megadhatja a szabályzatot egy részletességi szinten. A felhasználói fiók rendszergazdája például frissítheti a profil adatait, alaphelyzetbe állíthatja a jelszavakat, és hozzárendelheti a licenceket a felhasználók számára a felügyeleti egységben.
-
-Előfordulhat például, hogy a regionális támogatási szakembereknek delegálja az [ügyfélszolgálati rendszergazda](permissions-reference.md#helpdesk-administrator) szerepkört, amely kizárólag az általa támogatott régióban lévő felhasználók kezelésére korlátozódik.
+A felügyeleti egységek az Ön által definiált szervezet bármely részén korlátozzák a szerepkör engedélyeit. Előfordulhat például, hogy a felügyeleti egységekkel delegálja az [ügyfélszolgálati rendszergazda](permissions-reference.md#helpdesk-administrator) szerepkört a regionális támogatási szakértőknek, így csak az általuk támogatott régióban kezelhetik a felhasználókat.
 
 ## <a name="deployment-scenario"></a>Központi telepítési forgatókönyv
 
-Hasznos lehet az adminisztrációs hatókört olyan szervezeti egységek használatával korlátozni, amelyek bármilyen típusú független részlegből állnak. Vegyünk például egy olyan nagy egyetemet, amely számos autonóm iskola (üzleti iskola, mérnöki iskola stb.) számára készült. Minden iskolában van egy olyan rendszergazda, aki felügyeli a hozzáférést, a felhasználókat, és szabályzatokat állít be az iskolához. 
+Hasznos lehet az adminisztrációs hatókört olyan szervezeti egységek használatával korlátozni, amelyek bármilyen típusú független részlegből állnak. Vegyünk például egy olyan nagy egyetemet, amely számos autonóm iskola (üzleti iskola, mérnöki iskola stb.) számára készült. Minden iskolában van egy olyan rendszergazda, aki felügyeli a hozzáférést, a felhasználókat, és szabályzatokat állít be az iskolához.
 
 A központi rendszergazda:
 
@@ -46,7 +44,7 @@ A felügyeleti egységek használatához prémium szintű Azure Active Directory
 
 ## <a name="manage-administrative-units"></a>Felügyeleti egységek kezelése
 
-A felügyeleti egységeket a Azure Portal, a PowerShell-parancsmagok és a parancsfájlok használatával, vagy Microsoft Graph kezelheti. További információkért lásd:
+A felügyeleti egységeket a Azure Portal, a PowerShell-parancsmagok és a parancsfájlok használatával, vagy Microsoft Graph kezelheti. További információ:
 
 - [Szerepkörök létrehozása, eltávolítása, feltöltése és hozzáadása a felügyeleti egységekhez](admin-units-manage.md): teljes körű útmutató eljárásokat tartalmaz.
 - [Munka a felügyeleti egységekkel](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true): azt ismerteti, hogyan használhatók a felügyeleti egységek a PowerShell használatával.
@@ -54,38 +52,45 @@ A felügyeleti egységeket a Azure Portal, a PowerShell-parancsmagok és a paran
 
 ### <a name="plan-your-administrative-units"></a>A felügyeleti egységek megtervezése
 
-Az Azure AD-erőforrások logikus csoportosításához rendszergazdai egységeket használhat. Egy olyan szervezet esetében például, amelynek az IT-részlege globálisan elszórtan van, érdemes lehet olyan felügyeleti egységeket létrehozni, amelyek meghatározzák ezeket a földrajzi határokat. Egy másik forgatókönyvben, ahol egy többnemzetiségű szervezet különböző *alszervezetekkel* rendelkezik, amelyek a műveleteiben félig autonómok, egy felügyeleti egység az egyes alszervezeteket jelképezheti.
+Az Azure AD-erőforrások logikus csoportosításához rendszergazdai egységeket használhat. Olyan szervezet, amelynek az IT-részlege globálisan elszórtan található, létrehozhat olyan felügyeleti egységeket, amelyek releváns földrajzi határokat határoznak meg. Egy másik forgatókönyvben, ahol egy globális szervezet olyan alszervezetekkel rendelkezik, amelyek a műveleteiben félig autonómok, a felügyeleti egységek az alszervezeteket jelölhetik.
 
 A felügyeleti egységek létrehozási feltételeit a szervezet egyedi követelményei vezérlik. A felügyeleti egységek közösen határozzák meg a szerkezetet Microsoft 365 szolgáltatások között. Javasoljuk, hogy a felügyeleti egységeket a használatuk Microsoft 365-szolgáltatásokban való használatának szem előtt tartásával készítse elő. Ha általános erőforrásokat szeretne hozzárendelni egy felügyeleti egység alatt Microsoft 365, akkor a felügyeleti egységek maximális értékét is elérheti.
 
 A szervezeten belüli felügyeleti egységek létrehozását várhatóan a következő szakaszokon keresztül érheti el:
 
 1. **Kezdeti elfogadás** : a szervezet kezdeti feltételek alapján kezdi meg a felügyeleti egységek létrehozását, és a feltételek finomításakor a felügyeleti egységek száma növekedni fog.
-1. **Metszés** : a feltételek helyes meghatározása után a rendszer törli a már nem szükséges felügyeleti egységeket.
-1. **Stabilizáció** : a szervezeti struktúra jól definiálva van, és a felügyeleti egységek száma nem változik jelentősen a rövid távon.
+1. **Metszés** : a feltételek meghatározása után a rendszer törli a már nem szükséges felügyeleti egységeket.
+1. **Stabilizáció** : a szervezeti struktúra definiálva van, és a felügyeleti egységek száma nem változik jelentősen a rövid távon.
 
 ## <a name="currently-supported-scenarios"></a>Jelenleg támogatott forgatókönyvek
 
-Globális rendszergazdaként vagy Kiemelt szerepkörű rendszergazdaként az Azure AD portálon felügyeleti egységeket hozhat létre, felhasználókat adhat hozzá a felügyeleti egységekhez, majd hozzárendelheti az informatikai munkatársakat a felügyeleti egység hatókörű rendszergazdai szerepköreihez. Felügyeleti egység – a hatókörrel rendelkező rendszergazdák ezt követően a felügyeleti egységben lévő felhasználók alapszintű felügyeletére használhatják a Microsoft 365 felügyeleti központot.
+Globális rendszergazdaként vagy Kiemelt szerepkörű rendszergazdaként az Azure AD-portálon a következőket teheti:
 
-Emellett a felügyeleti egység tagjaiként is hozzáadhat csoportokat. Felügyeleti egység – a hatókörrel rendelkező csoport rendszergazdája a PowerShell, a Microsoft Graph és az Azure AD-portál használatával felügyelheti őket.
+- Felügyeleti egységek létrehozása
+- Felhasználók és csoportok hozzáadása a felügyeleti egységek tagjaihoz
+- Rendelje hozzá a munkatársakat a felügyeleti egységhez – hatókörön belüli rendszergazdai szerepkörökhöz.
 
-A következő táblázatok a felügyeleti egységekre vonatkozó jelenlegi támogatást ismertetik:
+Felügyeleti egység – a hatókörrel rendelkező rendszergazdák a felügyeleti egységben lévő felhasználók alapszintű felügyeletére használhatják a Microsoft 365 felügyeleti központot. A felügyeleti egység hatókörével rendelkező csoport rendszergazdája a PowerShell, a Microsoft Graph és a Microsoft 365 felügyeleti központ használatával kezelheti a csoportokat.
+
+>[!Note]
+>Csak az ebben a részben ismertetett funkciók érhetők el a Microsoft 365 felügyeleti központban. Nem érhetők el szervezeti szintű szolgáltatások a felügyeleti egység hatókörével rendelkező Azure AD-szerepkörhöz.
+
+A következő szakaszok ismertetik a felügyeleti egységek jelenlegi támogatását.
 
 ### <a name="administrative-unit-management"></a>Felügyeleti egység kezelése
 
-| Engedélyek |   Gráf/PowerShell   | Azure AD-portál | Microsoft 365 felügyeleti központ | 
-| -- | -- | -- | -- |
-| Felügyeleti egységek létrehozása és törlése   |    Támogatott    |   Támogatott   |    Nem támogatott | 
-| Felügyeleti egység tagjainak egyenkénti hozzáadása és eltávolítása    |   Támogatott    |   Támogatott   |    Nem támogatott | 
-| Felügyeleti egység tagjainak tömeges hozzáadása és eltávolítása CSV-fájlok használatával   |    Nem támogatott     |  Támogatott   |    Nincs támogatási csomag | 
-| Felügyeleti egység kiosztása – hatókörrel rendelkező rendszergazdák  |     Támogatott    |   Támogatott    |   Nem támogatott | 
-| Felügyeleti egység tagjainak dinamikus hozzáadása és eltávolítása attribútumok alapján | Nem támogatott | Nem támogatott | Nem támogatott 
+| Engedélyek |   Gráf/PowerShell   | Azure AD-portál | Microsoft 365 felügyeleti központ |
+| --- | --- | --- | --- |
+| Felügyeleti egységek létrehozása és törlése   |    Támogatott    |   Támogatott   |    Nem támogatott |
+| Felügyeleti egység tagjainak egyenkénti hozzáadása és eltávolítása    |   Támogatott    |   Támogatott   |    Nem támogatott |
+| Felügyeleti egység tagjainak tömeges hozzáadása és eltávolítása CSV-fájlok használatával   |    Nem támogatott     |  Támogatott   |    Nincs támogatási csomag |
+| Felügyeleti egység kiosztása – hatókörrel rendelkező rendszergazdák  |     Támogatott    |   Támogatott    |   Nem támogatott |
+| Felügyeleti egység tagjainak dinamikus hozzáadása és eltávolítása attribútumok alapján | Nem támogatott | Nem támogatott | Nem támogatott
 
 ### <a name="user-management"></a>Felhasználókezelés
 
 | Engedélyek |   Gráf/PowerShell   | Azure AD-portál | Microsoft 365 felügyeleti központ |
-| -- | -- | -- | -- |
+| --- | --- | --- | --- |
 | Felügyeleti egység – a felhasználói tulajdonságok, jelszavak és licencek hatókörön belüli kezelése   |    Támogatott     |  Támogatott   |   Támogatott |
 | Felügyeleti egység – a felhasználói bejelentkezések hatókörének blokkolása és feloldása    |   Támogatott   |    Támogatott   |    Támogatott |
 | Felügyeleti egység – a felhasználó többtényezős hitelesítési hitelesítő adatainak hatókörön belüli kezelése   |    Támogatott   |   Támogatott   |   Nem támogatott |
@@ -93,14 +98,13 @@ A következő táblázatok a felügyeleti egységekre vonatkozó jelenlegi támo
 ### <a name="group-management"></a>Csoportkezelés
 
 | Engedélyek |   Gráf/PowerShell   | Azure AD-portál | Microsoft 365 felügyeleti központ |
-| -- | -- | -- | -- |
+| --- | --- | --- | --- |
 | Felügyeleti egység – a csoport tulajdonságainak és tagjainak hatókörön belüli kezelése     |  Támogatott   |    Támogatott    |  Nem támogatott |
 | Felügyeleti egység – a csoportos licencelés hatókörön belüli kezelése   |    Támogatott  |    Támogatott   |   Nem támogatott |
 
-
 A felügyeleti egységek hatóköre csak a felügyeleti engedélyekre vonatkozik. Nem akadályozzák meg, hogy a tagok vagy a rendszergazdák az [alapértelmezett felhasználói engedélyeiket](../fundamentals/users-default-permissions.md) használják a felügyeleti egységen kívüli más felhasználók, csoportok vagy erőforrások tallózására. A Microsoft 365 felügyeleti központban a hatókörön kívüli rendszergazda felügyeleti egységeken kívüli felhasználók ki vannak szűrve. Más felhasználók azonban az Azure AD-portálon, a PowerShellben és más Microsoft-szolgáltatásokban is tallózhatók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Felügyeleti egységek kezelése](admin-units-manage.md)
 - [Felhasználók kezelése felügyeleti egységekben](admin-units-add-manage-users.md)

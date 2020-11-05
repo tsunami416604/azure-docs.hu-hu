@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 646ce94587a9aa1bb8fd20a28b84658994b25cf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19dcbbf102a1d8d21f1b14780ea33816a1677c55
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886541"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392027"
 ---
 # <a name="supported-features-of-azure-sql-edge"></a>Az Azure SQL Edge támogatott funkciói 
 
 Az Azure SQL Edge a SQL Database motor legújabb verziójára épül. Támogatja a Linux SQL Server 2019-es verziójában támogatott szolgáltatások egy részhalmazát, valamint néhány olyan funkciót, amely jelenleg nem támogatott, vagy SQL Server 2019-ben érhető el Linux rendszeren (vagy SQL Server Windows rendszeren).
 
-A SQL Server on Linux által támogatott funkciók teljes listáját a [Linuxon futó SQL Server 2019 kiadásait és támogatott funkcióit](https://docs.microsoft.com/sql/linux/sql-server-linux-editions-and-components-2019)ismertető témakörben tekintheti meg. A Windows SQL Server kiadásait és támogatott funkcióit lásd: [SQL Server 2019 (15. x) kiadásai és támogatott szolgáltatásai](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15).
+A SQL Server on Linux által támogatott funkciók teljes listáját a [Linuxon futó SQL Server 2019 kiadásait és támogatott funkcióit](/sql/linux/sql-server-linux-editions-and-components-2019)ismertető témakörben tekintheti meg. A Windows SQL Server kiadásait és támogatott funkcióit lásd: [SQL Server 2019 (15. x) kiadásai és támogatott szolgáltatásai](/sql/sql-server/editions-and-components-of-sql-server-version-15).
 
 ## <a name="azure-sql-edge-editions"></a>Azure SQL Edge-kiadások
 
@@ -110,7 +110,7 @@ Az alábbi lista az Azure SQL Edge által jelenleg nem támogatott Linux-funkci�
 | &nbsp; | Distributed Replay. |
 | **Kezelhetőség** | SQL Server segédprogram-vezérlő pont. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure SQL Edge üzembe helyezése](deploy-portal.md)
 - [Az Azure SQL Edge konfigurálása](configure.md)

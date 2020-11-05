@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 737c7e61a7ae0573ca6de0d6daa8288313f70741
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: cb673efb3e5d14e72e945bcf8c23d57495823720
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201902"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394951"
 ---
 # <a name="securing-azure-sql-edge"></a>Az Azure SQL Edge védelme
 
@@ -34,24 +34,24 @@ A platform biztonságának megvalósítása a jogosulatlan felhasználók a hál
 - Az Azure SQL Edge-hez használt gazdagép-portok meghatározása és korlátozása
 - Annak biztosítása, hogy a megfelelő hozzáférés-vezérlés minden olyan adatköteten érvényesüljenek, amely az Azure SQL Edge-alapú adatmennyiséget tárolja. 
 
-Az Azure SQL Edge hálózati protokollokkal és TDS-végpontokkal kapcsolatos további információkért lásd: [hálózati protokollok és TDS-végpontok](https://docs.microsoft.com//previous-versions/sql/sql-server-2008-r2/ms191220(v=sql.105)).
+Az Azure SQL Edge hálózati protokollokkal és TDS-végpontokkal kapcsolatos további információkért lásd: [hálózati protokollok és TDS-végpontok](//previous-versions/sql/sql-server-2008-r2/ms191220(v=sql.105)).
 
 ## <a name="authentication-and-authorization"></a>Hitelesítés és engedélyezés 
 
 ### <a name="authentication"></a>Hitelesítés  
 A hitelesítés az a folyamat, amellyel a felhasználó igazolni kívánja. Az Azure SQL Edge jelenleg csak a `SQL Authentication` mechanizmust támogatja.
 
-- *SQL-hitelesítés*:
+- *SQL-hitelesítés* :
 
     Az SQL-hitelesítés a felhasználó hitelesítését jelenti, amikor az Azure SQL Edge-hez csatlakozik felhasználónévvel és jelszóval. Az SQL- **rendszergazdai** bejelentkezési jelszót meg kell adni az SQL Edge üzembe helyezése során. Ezt követően további SQL-bejelentkezéseket és felhasználókat hozhat létre a kiszolgáló rendszergazdája, amely lehetővé teszi a felhasználók számára a Felhasználónév és a jelszó használatával történő kapcsolódást.
 
-    A bejelentkezések és a felhasználók SQL Edge-beli létrehozásával és kezelésével kapcsolatos további információkért tekintse meg [a bejelentkezési](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) adatok létrehozása és az [adatbázis-felhasználó létrehozása](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-database-user)című témakört.
+    A bejelentkezések és a felhasználók SQL Edge-beli létrehozásával és kezelésével kapcsolatos további információkért tekintse meg [a bejelentkezési](/sql/relational-databases/security/authentication-access/create-a-login) adatok létrehozása és az [adatbázis-felhasználó létrehozása](/sql/relational-databases/security/authentication-access/create-a-database-user)című témakört.
 
 ### <a name="authorization"></a>Engedélyezés   
 
-Az engedélyezés az Azure SQL Edge-adatbázisban lévő felhasználóhoz rendelt engedélyekre utal, és meghatározza, hogy a felhasználó mit tehet. Az engedélyek szabályozása úgy történik, hogy felhasználói fiókokat ad hozzá az [adatbázis szerepköreihez](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles) , és adatbázis-szintű engedélyeket rendel hozzájuk ezekhez a szerepkörökhöz, vagy ha a felhasználó számára bizonyos [objektum-szintű engedélyeket](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)ad meg. További információ: [bejelentkezések és felhasználók](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage).
+Az engedélyezés az Azure SQL Edge-adatbázisban lévő felhasználóhoz rendelt engedélyekre utal, és meghatározza, hogy a felhasználó mit tehet. Az engedélyek szabályozása úgy történik, hogy felhasználói fiókokat ad hozzá az [adatbázis szerepköreihez](/sql/relational-databases/security/authentication-access/database-level-roles) , és adatbázis-szintű engedélyeket rendel hozzájuk ezekhez a szerepkörökhöz, vagy ha a felhasználó számára bizonyos [objektum-szintű engedélyeket](/sql/relational-databases/security/permissions-database-engine)ad meg. További információ: [bejelentkezések és felhasználók](../azure-sql/database/logins-create-manage.md).
 
-Ajánlott eljárásként hozzon létre egyéni szerepköröket, ha szükséges. Vegyen fel felhasználókat a szerepkörbe a feladat funkciójának végrehajtásához szükséges legalacsonyabb jogosultságokkal. Ne rendeljen engedélyeket közvetlenül a felhasználóknak. A kiszolgálói rendszergazdai fiók tagja a beépített db_owner szerepkörnek, amely kiterjedt engedélyekkel rendelkezik, és csak néhány rendszergazdai feladattal rendelkező felhasználónak kell megadnia. Alkalmazások esetén a [végrehajtás másként](https://docs.microsoft.com/sql/t-sql/statements/execute-as-clause-transact-sql) beállítással adhatja meg a hívott modul végrehajtási környezetét, vagy használjon korlátozott engedélyekkel rendelkező [alkalmazás-szerepköröket](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/application-roles) . Ez a gyakorlat biztosítja, hogy az adatbázishoz csatlakozó alkalmazáshoz az alkalmazás által igényelt legalacsonyabb jogosultságok szükségesek. Az alábbi ajánlott eljárások a feladatok elkülönítését is támogatják.
+Ajánlott eljárásként hozzon létre egyéni szerepköröket, ha szükséges. Vegyen fel felhasználókat a szerepkörbe a feladat funkciójának végrehajtásához szükséges legalacsonyabb jogosultságokkal. Ne rendeljen engedélyeket közvetlenül a felhasználóknak. A kiszolgálói rendszergazdai fiók tagja a beépített db_owner szerepkörnek, amely kiterjedt engedélyekkel rendelkezik, és csak néhány rendszergazdai feladattal rendelkező felhasználónak kell megadnia. Alkalmazások esetén a [végrehajtás másként](/sql/t-sql/statements/execute-as-clause-transact-sql) beállítással adhatja meg a hívott modul végrehajtási környezetét, vagy használjon korlátozott engedélyekkel rendelkező [alkalmazás-szerepköröket](/sql/relational-databases/security/authentication-access/application-roles) . Ez a gyakorlat biztosítja, hogy az adatbázishoz csatlakozó alkalmazáshoz az alkalmazás által igényelt legalacsonyabb jogosultságok szükségesek. Az alábbi ajánlott eljárások a feladatok elkülönítését is támogatják.
 
 ## <a name="database-object-security"></a>Adatbázis-objektum biztonsága
 
@@ -59,8 +59,8 @@ A rendszerbiztonsági tag az SQL Edge elérésére jogosult személyek, csoporto
 
 |További információ|Lásd:|  
 |---------------------------|---------|  
-|Kiszolgáló-és adatbázis-felhasználók, szerepkörök és folyamatok|[Rendszerbiztonsági tag adatbázismotor](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine)|  
-|Kiszolgáló-és adatbázis-objektumok biztonsága|[Biztonságos elemek migrálására](https://docs.microsoft.com/sql/relational-databases/security/securables)|
+|Kiszolgáló-és adatbázis-felhasználók, szerepkörök és folyamatok|[Rendszerbiztonsági tag adatbázismotor](/sql/relational-databases/security/authentication-access/principals-database-engine)|  
+|Kiszolgáló-és adatbázis-objektumok biztonsága|[Biztonságos elemek migrálására](/sql/relational-databases/security/securables)|
 | &nbsp; | &nbsp; |
 
 ### <a name="encryption-and-certificates"></a>Titkosítás és tanúsítványok  
@@ -69,47 +69,46 @@ A titkosítás nem oldja meg a hozzáférés-vezérlési problémákat. Ez azonb
   
 |További információ|Lásd:|  
 |---------------------------|---------|  
-|Biztonságos kapcsolatok megvalósítása|[Kapcsolatok titkosítása](https://docs.microsoft.com/sql/linux/sql-server-linux-encrypted-connections)|  
-|Titkosítási függvények|[Titkosítási függvények &#40;Transact-SQL&#41;](https://docs.microsoft.com/sql/t-sql/functions/cryptographic-functions-transact-sql)|
-|Inaktív adatok titkosítása|[Transzparens adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption)|
-|Always Encrypted|[Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)|
+|Biztonságos kapcsolatok megvalósítása|[Kapcsolatok titkosítása](/sql/linux/sql-server-linux-encrypted-connections)|  
+|Titkosítási függvények|[Titkosítási függvények &#40;Transact-SQL&#41;](/sql/t-sql/functions/cryptographic-functions-transact-sql)|
+|Inaktív adatok titkosítása|[Transzparens adattitkosítás](/sql/relational-databases/security/encryption/transparent-data-encryption)|
+|Always Encrypted|[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)|
 | &nbsp; | &nbsp; |
 
 > [!NOTE]
-> A [SQL Server on Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-security-overview) ismertetett biztonsági korlátozások az Azure SQL Edge-re is érvényesek. 
+> A [SQL Server on Linux](/sql/linux/sql-server-linux-security-overview) ismertetett biztonsági korlátozások az Azure SQL Edge-re is érvényesek. 
 
 
 > [!NOTE]
 > Az Azure SQL Edge nem tartalmazza az MSSQL-conf segédprogramot. Az összes konfigurációt, beleértve a titkosítással kapcsolatos konfigurációt, az [MSSQL. conf fájl](configure.md#configure-by-using-an-mssqlconf-file) vagy [környezeti változók](configure.md#configure-by-using-environment-variables)használatával kell végrehajtani. 
 
 
-Az Azure SQL és a Microsoft SQL Serverhöz hasonlóan az Azure SQL Edge ugyanazt a mechanizmust biztosítja a tanúsítványok létrehozásához és használatához az objektumok és a kapcsolatok biztonságának növelése érdekében. További információ: [create Certificate (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-certificate-transact-sql).
+Az Azure SQL és a Microsoft SQL Serverhöz hasonlóan az Azure SQL Edge ugyanazt a mechanizmust biztosítja a tanúsítványok létrehozásához és használatához az objektumok és a kapcsolatok biztonságának növelése érdekében. További információ: [create Certificate (Transact-SQL)](/sql/t-sql/statements/create-certificate-transact-sql).
 
 
 ## <a name="application-security"></a>Alkalmazások biztonsága
 
 ### <a name="client-programs"></a>Ügyfélalkalmazások
 
-Az Azure SQL Edge biztonsági eljárásai a biztonságos ügyfélalkalmazások írására is használhatók. További információ az ügyfélalkalmazások biztonságossá tételéről a hálózati rétegben: [ügyfél hálózati konfigurációja](https://docs.microsoft.com/sql/database-engine/configure-windows/client-network-configuration).
+Az Azure SQL Edge biztonsági eljárásai a biztonságos ügyfélalkalmazások írására is használhatók. További információ az ügyfélalkalmazások biztonságossá tételéről a hálózati rétegben: [ügyfél hálózati konfigurációja](/sql/database-engine/configure-windows/client-network-configuration).
 
 ### <a name="security-catalog-views-and-functions"></a>A biztonsági katalógus nézetei és funkciói  
 A biztonsági információk több, a teljesítményre és a segédprogramra optimalizált nézetben és funkcióval is elérhetők. A következő táblázat az Azure SQL Edge biztonsági nézeteit és funkcióit ismerteti.  
   
 |Függvények és nézetek|Hivatkozások|  
 |---------------------------|---------|  
-|Biztonsági katalógus nézetei, amelyek az adatbázis-szintű és a kiszolgálói szintű engedélyekkel, a résztvevőkkel, a szerepkörökkel és egyebekkel kapcsolatos információkat adnak vissza. Emellett vannak olyan katalógus-nézetek, amelyek információkat biztosítanak a titkosítási kulcsokról, a tanúsítványokról és a hitelesítő adatokról.|[Biztonsági katalógus nézetei &#40;Transact-SQL&#41;](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/security-catalog-views-transact-sql)|  
-|Biztonsági függvények, amelyek az aktuális felhasználóval, engedélyekkel és sémákkal kapcsolatos információkat adnak vissza.|[Biztonsági függvények &#40;Transact-SQL&#41;](https://docs.microsoft.com/sql/t-sql/functions/security-functions-transact-sql)|  
-|Biztonsági dinamikus felügyeleti nézetek.|[Biztonsággal kapcsolatos dinamikus felügyeleti nézetek és függvények &#40;Transact-SQL&#41;](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/security-related-dynamic-management-views-and-functions-transact-sql)|  
+|Biztonsági katalógus nézetei, amelyek az adatbázis-szintű és a kiszolgálói szintű engedélyekkel, a résztvevőkkel, a szerepkörökkel és egyebekkel kapcsolatos információkat adnak vissza. Emellett vannak olyan katalógus-nézetek, amelyek információkat biztosítanak a titkosítási kulcsokról, a tanúsítványokról és a hitelesítő adatokról.|[Biztonsági katalógus nézetei &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/security-catalog-views-transact-sql)|  
+|Biztonsági függvények, amelyek az aktuális felhasználóval, engedélyekkel és sémákkal kapcsolatos információkat adnak vissza.|[Biztonsági függvények &#40;Transact-SQL&#41;](/sql/t-sql/functions/security-functions-transact-sql)|  
+|Biztonsági dinamikus felügyeleti nézetek.|[Biztonsággal kapcsolatos dinamikus felügyeleti nézetek és függvények &#40;Transact-SQL&#41;](/sql/relational-databases/system-dynamic-management-views/security-related-dynamic-management-views-and-functions-transact-sql)|  
 | &nbsp; | &nbsp; |
 
 ### <a name="auditing"></a>Naplózás 
 
-Az Azure SQL Edge ugyanazokat a naplózási mechanizmusokat biztosítja, mint a SQL Server. További információ: [SQL Server audit (adatbázismotor)](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine).
+Az Azure SQL Edge ugyanazokat a naplózási mechanizmusokat biztosítja, mint a SQL Server. További információ: [SQL Server audit (adatbázismotor)](/sql/relational-databases/security/auditing/sql-server-audit-database-engine).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Első lépések biztonsági funkciókkal](https://docs.microsoft.com/sql/linux/sql-server-linux-security-get-started)
+- [Első lépések biztonsági funkciókkal](/sql/linux/sql-server-linux-security-get-started)
 - [Az Azure SQL Edge futtatása nem legfelső szintű felhasználóként](configure.md#run-azure-sql-edge-as-non-root-user)
-- [IoT Azure Security Center](https://docs.microsoft.com/azure/asc-for-iot/overview)
-
+- [IoT Azure Security Center](../defender-for-iot/overview.md)

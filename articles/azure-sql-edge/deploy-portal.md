@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: f90d84b5897175dbda0a24591893c4e41a06822a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5d7d232ada814d5d3c30e7b012c6289f847d641f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973580"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395087"
 ---
 # <a name="deploy-azure-sql-edge"></a>Az Azure SQL Edge üzembe helyezése 
 
@@ -38,7 +38,7 @@ Az Azure Marketplace egy online alkalmazások és szolgáltatások piaca, ahol a
 
    ![SQL Edge a piactéren](media/deploy-portal/find-offer-marketplace.png)
 
-2. Válassza ki az igényeinek leginkább megfelelő szoftvercsomagot, és kattintson a **Létrehozás**gombra. <br><br>
+2. Válassza ki az igényeinek leginkább megfelelő szoftvercsomagot, és kattintson a **Létrehozás** gombra. <br><br>
 
    ![Válassza ki a megfelelő szoftvercsomagot](media/deploy-portal/pick-correct-plan.png)
 
@@ -50,9 +50,9 @@ Az Azure Marketplace egy online alkalmazások és szolgáltatások piaca, ahol a
    |IoT Hub   |  Azon IoT Hub neve, ahol a IoT Edge eszköz regisztrálva van, majd válassza az "üzembe helyezés eszközre" lehetőséget.|
    |IoT Edge eszköz neve  |  Annak a IoT Edge eszköznek a neve, amelyen az SQL Edge üzembe lett helyezve |
 
-4. A **modulok beállítása az eszközön:** lapon kattintson az Azure SQL Edge-modulra **IoT Edge modulok**területen. Az alapértelmezett modul neve *AzureSQLEdge*értékre van állítva. 
+4. A **modulok beállítása az eszközön:** lapon kattintson az Azure SQL Edge-modulra **IoT Edge modulok** területen. Az alapértelmezett modul neve *AzureSQLEdge* értékre van állítva. 
 
-5. A **IoT Edge-modul frissítése** panelen a *modul beállításai* szakaszban adja meg a *IoT Edge modul nevét*, az *Újraindítási szabályzatot* és a *kívánt állapotot*. 
+5. A **IoT Edge-modul frissítése** panelen a *modul beállításai* szakaszban adja meg a *IoT Edge modul nevét* , az *Újraindítási szabályzatot* és a *kívánt állapotot*. 
 
    > [!IMPORTANT]    
    > Ne módosítsa vagy frissítse a **RENDSZERKÉP URI** -beállításait a modulon.
@@ -106,13 +106,13 @@ Az Azure Marketplace egy online alkalmazások és szolgáltatások piaca, ahol a
    > [!IMPORTANT]    
    > Ne módosítsa a `PlanId` konfiguráció létrehozása beállításban definiált környezeti változót. Ha ez az érték módosul, az Azure SQL Edge-tároló nem fog elindulni. 
    
-8. A **frissítés IoT Edge modul** ablaktáblán kattintson a **frissítés**elemre.
-9. Az **eszközön lévő modulok beállítása** lapon kattintson a **Tovább gombra: útvonalak >** , ha útvonalakat kell meghatároznia az üzemelő példányhoz. Ellenkező esetben kattintson a **felülvizsgálat + létrehozás**gombra. Az útvonalak konfigurálásával kapcsolatos további információkért lásd: [modulok telepítése és útvonalak létrehozása IoT Edgeban](../iot-edge/module-composition.md).
-11. Az **eszközön található modulok beállítása** lapon kattintson a **Létrehozás**gombra.
+8. A **frissítés IoT Edge modul** ablaktáblán kattintson a **frissítés** elemre.
+9. Az **eszközön lévő modulok beállítása** lapon kattintson a **Tovább gombra: útvonalak >** , ha útvonalakat kell meghatároznia az üzemelő példányhoz. Ellenkező esetben kattintson a **felülvizsgálat + létrehozás** gombra. Az útvonalak konfigurálásával kapcsolatos további információkért lásd: [modulok telepítése és útvonalak létrehozása IoT Edgeban](../iot-edge/module-composition.md).
+11. Az **eszközön található modulok beállítása** lapon kattintson a **Létrehozás** gombra.
 
 ## <a name="connect-to-azure-sql-edge"></a>Kapcsolódás az Azure SQL Edge-hez
 
-A következő lépések az Azure SQL Edge parancssori eszközt, az **Sqlcmd**-t használják a tárolón belül az Azure SQL Edge-hez való kapcsolódáshoz.
+A következő lépések az Azure SQL Edge parancssori eszközt, az **Sqlcmd** -t használják a tárolón belül az Azure SQL Edge-hez való kapcsolódáshoz.
 
 > [!NOTE]      
 > Az SQL parancssori eszközök (Sqlcmd-EK) nem érhetők el az Azure SQL Edge-tárolók ARM64-verzióján belül.
@@ -212,7 +212,7 @@ Most futtasson egy lekérdezést a tábla adatainak visszaküldéséhez `Invento
 
 ## <a name="connect-from-outside-the-container"></a>A tárolón kívülről való kapcsolat
 
-SQL-lekérdezéseket kapcsolódhat és futtathat az Azure SQL Edge-példányon minden olyan külső Linux-, Windows-vagy macOS-eszközön, amely támogatja az SQL-kapcsolatokat. Az SQL Edge-tárolón kívülről való csatlakozásról a [csatlakozás és az Azure SQL Edge lekérdezése](https://docs.microsoft.com/azure/azure-sql-edge/connect)című témakörben olvashat bővebben.
+SQL-lekérdezéseket kapcsolódhat és futtathat az Azure SQL Edge-példányon minden olyan külső Linux-, Windows-vagy macOS-eszközön, amely támogatja az SQL-kapcsolatokat. Az SQL Edge-tárolón kívülről való csatlakozásról a [csatlakozás és az Azure SQL Edge lekérdezése](./connect.md)című témakörben olvashat bővebben.
 
 Ebben a rövid útmutatóban egy SQL Edge-modult telepített egy IoT Edge eszközön. 
 

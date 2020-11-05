@@ -1,5 +1,5 @@
 ---
-title: Az Azure IoT-összekötő exportálása a FHIR (előzetes verzió) mérőszámai számára a diagnosztikai beállítások segítségével
+title: Az FHIR-hez készült Azure IoT-összekötő (előzetes verzió) metrikáinak exportálása a diagnosztikai beállításokon keresztül
 description: Ez a cikk bemutatja, hogyan exportálhatja az Azure IoT Connectort a FHIR (előzetes verzió) Mérőszámokhoz a diagnosztikai beállítások segítségével
 services: healthcare-apis
 author: msjasteppe
@@ -8,16 +8,16 @@ ms.subservice: iomt
 ms.topic: how-to
 ms.date: 10/30/2020
 ms.author: jasteppe
-ms.openlocfilehash: 2c10dc05775739a55267dd3766e533b73e12b3a1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5a57b13cdb8c7c1144815543e03b970de32b4369
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322356"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394254"
 ---
-# <a name="export-azure-iot-connector-for-fhir-preview-metrics-through-diagnostic-settings"></a>Az Azure IoT-összekötő exportálása a FHIR (előzetes verzió) mérőszámai számára a diagnosztikai beállítások segítségével
+# <a name="export-azure-iot-connector-for-fhir-preview-metrics-through-diagnostic-settings"></a>Az FHIR-hez készült Azure IoT-összekötő (előzetes verzió) metrikáinak exportálása a diagnosztikai beállításokon keresztül
 
-Ebből a cikkből megtudhatja, hogyan exportálhatja az Azure IoT Connectort az FHIR * mérőszámok naplóiba. A metrikák naplózását lehetővé tevő szolgáltatás a Azure Portal [**diagnosztikai beállításai**](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) . 
+Ebből a cikkből megtudhatja, hogyan exportálhatja az Azure IoT Connectort az FHIR * mérőszámok naplóiba. A metrikák naplózását lehetővé tevő szolgáltatás a Azure Portal [**diagnosztikai beállításai**](../azure-monitor/platform/diagnostic-settings.md) . 
 
 > [!TIP]
 > A naplózási naplózás beállításához kövesse az [Azure API diagnosztikai naplózásának engedélyezése az FHIR és az Azure IoT connectorhoz](enable-diagnostic-logging.md#enable-diagnostic-logging-in-azure-api-for-fhir) című témakör útmutatását.
@@ -48,12 +48,12 @@ Ebből a cikkből megtudhatja, hogyan exportálhatja az Azure IoT Connectort az 
 > [!Note] 
 > Akár 15 percet is igénybe vehet, hogy az első mérőszámok naplói megjelenjenek az Ön által választott adattárban.  
  
-A diagnosztikai naplók használatával kapcsolatos további információkért tekintse meg az [Azure Resource log dokumentációját](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview) .
+A diagnosztikai naplók használatával kapcsolatos további információkért tekintse meg az [Azure Resource log dokumentációját](../azure-monitor/platform/platform-logs-overview.md) .
 
 ## <a name="conclusion"></a>Összegzés 
 A metrikák naplóihoz való hozzáférés elengedhetetlen a figyeléshez és a hibaelhárításhoz.  A FHIR készült Azure IoT Connector lehetővé teszi ezeket a műveleteket a metrikák naplóin keresztül. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a FHIR készült Azure IoT-összekötővel kapcsolatos gyakori kérdéseket.
 

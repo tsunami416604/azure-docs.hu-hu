@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 8a4df7bf-be49-4198-800e-db381cda98f5
 ms.date: 10/30/2020
-ms.openlocfilehash: d97148393d3158e38f9740d4a8f8e17dd04326d5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: cfd465476aa8963de6093bccd5d4821ea2b29338
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135379"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395818"
 ---
 # <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>Vállalati Java-alkalmazások üzembe helyezése az Azure-ban a JBoss EAP használatával Red Hat Enterprise Linux
 
@@ -24,12 +24,12 @@ Ezek a rövid útmutató-sablonok bemutatják, hogyan helyezhet üzembe a [JBoss
 * Aktív előfizetéssel rendelkező Azure-fiók. Azure-előfizetés beszerzéséhez aktiválja az [Azure-krediteket a Visual Studio-előfizetőknek](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) , vagy [hozzon létre ingyen egy fiókot](https://azure.microsoft.com/pricing/free-trial).
 
 * JBoss EAP-telepítés – rendelkeznie kell egy Red Hat-fiókkal, amely a JBoss EAP-re vonatkozó RHSM-jogosultsággal rendelkezik. Ez a jogosultság lehetővé teszi a Red Hat tesztelt és hitelesített JBoss EAP verzió letöltését.  Ha nem rendelkezik EAP-jogosultsággal, a Kezdés előtt szerezzen be egy [JBoss EAP próbaverziós előfizetést](https://access.redhat.com/products/red-hat-jboss-enterprise-application-platform/evaluation) . Új Red Hat-előfizetés létrehozásához nyissa meg a [Red Hat Customer Portalt](https://access.redhat.com/) , és állítson be egy fiókot.
-F
+
 * [Azure Command-Line felület](https://docs.microsoft.com/cli/azure/overview).
 
 * RHEL lehetőségek – válassza az utólagos elszámolású (TB) vagy a saját előfizetés (BYOS) lehetőséget. A BYOS-mel aktiválnia kell a [Red Hat Cloud Access](https://access.redhat.com/) RHEL Gold rendszerképet a gyors üzembe helyezési sablon telepítése előtt.
 
-## <a name="java-ee--jakarata-ee-application-migration"></a>Java EE/Jakarata EE Application Migration
+## <a name="java-ee--jakarta-ee-application-migration"></a>Java EE/Jakarta EE alkalmazás migrálása
 
 ### <a name="migrate-to-jboss-eap"></a>Migrálás a JBoss EAP-re
 A JBoss EAP 7,2 és a 7,3 a Java Enterprise Edition (Java EE) 8 és a Jakarta EE 8 specifikációjának hitelesített implementációja. A JBoss EAP előre konfigurált beállításokat biztosít olyan funkciókhoz, mint például a magas rendelkezésre állás (HA) fürtözés, az üzenetkezelés és az elosztott gyorsítótárazás. Azt is lehetővé teszi, hogy a felhasználók a JBoss EAP által biztosított különféle API-kkal és szolgáltatásokkal írják be, telepítsenek és futtassanak alkalmazásokat.  A JBoss EAP-vel kapcsolatos további információkért tekintse meg a [JBoss eap 7,2 bemutatása](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.2/html-single/introduction_to_jboss_eap/index) vagy a [JBoss EAP 7,3 bemutatása](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.3/html/introduction_to_jboss_eap/index)című témakört.
@@ -86,7 +86,7 @@ Az Azure munkaterhelés-szerkesztő leegyszerűsíti az Azure-ba irányuló hely
 
 ## <a name="server-configuration-choice"></a>Kiszolgáló konfigurációjának választása
 
-A RHEL virtuális gép üzembe helyezéséhez választhat a TB vagy a BYOS között. Az [Azure Marketplace](https://azuremarketplace.microsoft.com) -ről származó rendszerképek alapértelmezése a TB. Helyezzen üzembe egy BYOS-típust RHEL virtuális gépen, ha rendelkezik saját RHEL operációsrendszer-lemezképpel. A virtuális gépek vagy virtuálisgép-méretezési csoport üzembe helyezése előtt győződjön meg arról, hogy a RHSM-fiókja BYOS-jogosultsággal rendelkezik az F Cloud Access használatával.
+A RHEL virtuális gép üzembe helyezéséhez választhat a TB vagy a BYOS között. Az [Azure Marketplace](https://azuremarketplace.microsoft.com) -ről származó rendszerképek alapértelmezése a TB. Helyezzen üzembe egy BYOS-típust RHEL virtuális gépen, ha rendelkezik saját RHEL operációsrendszer-lemezképpel. A virtuális gépek vagy virtuálisgép-méretezési csoport üzembe helyezése előtt győződjön meg arról, hogy a RHSM-fiókja BYOS jogosultsággal rendelkezik a Felhőbeli hozzáférésen keresztül.
 
 A JBoss EAP hatékony felügyeleti képességekkel rendelkezik, valamint funkciókat és API-kat biztosít alkalmazásai számára. Ezek a felügyeleti funkciók attól függően eltérőek, hogy melyik üzemmódot kell használni a JBoss EAP elindításához. Ez a RHEL és a Windows Server rendszeren támogatott. A JBoss EAP önálló kiszolgálói működési módot biztosít a diszkrét példányok kezeléséhez. Emellett felügyelt tartományi működési módot is kínál a példányok csoportjai egyetlen felügyeleti pontról való kezelésére. Megjegyzés: a JBoss EAP által felügyelt tartományok nem támogatottak Microsoft Azureban, mivel a magas rendelkezésre állású (HA) funkciót az Azure infrastruktúra-szolgáltatások felügyelik. Az *EAP_HOME* nevű környezeti változó a JBoss EAP-telepítés elérési útjának jelölésére szolgál.
 
@@ -96,7 +96,7 @@ A **JBoss EAP elindítása önálló kiszolgálóként** – a következő paran
 $EAP_HOME/bin/standalone.sh
 ```
     
-Ez az indítási parancsfájl a EAP_HOME/bin/standalone.conf fájlt használja az alapértelmezett beállítások (például a JVM beállítások) beállításához. A beállítások testreszabhatók ebben a fájlban. A JBoss EAP alapértelmezés szerint a standalone.xml konfigurációs fájl használatával indul el, de más módban is elindítható. Az elérhető önálló konfigurációs fájlokról és azok használatáról az EAP 7,2-hez készült [önálló kiszolgálói konfigurációs](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.2/html/configuration_guide/jboss_eap_management#standalone_server_configuration_files) fájlok, illetve az [EAP 7,3 önálló kiszolgálói konfigurációs fájljai](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.3/html/configuration_guide/jboss_eap_management#standalone_server_configuration_files) című részben olvashat bővebben. Ha a JBoss EAP-t egy másik konfigurációval szeretné elindítani, használja a--Server-config argumentumot. Például:
+Ez az indítási parancsfájl a EAP_HOME/bin/standalone.conf fájlt használja az alapértelmezett beállítások (például a JVM beállítások) beállításához. A beállítások testreszabhatók ebben a fájlban. A JBoss EAP alapértelmezés szerint a standalone.xml konfigurációs fájl használatával indul el, de más módban is elindítható. Az elérhető önálló konfigurációs fájlokról és azok használatáról az EAP 7,2-hez készült [önálló kiszolgálói konfigurációs](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.2/html/configuration_guide/jboss_eap_management#standalone_server_configuration_files) fájlok, illetve az [EAP 7,3 önálló kiszolgálói konfigurációs fájljai](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.3/html/configuration_guide/jboss_eap_management#standalone_server_configuration_files) című részben olvashat bővebben. Ha a JBoss EAP-t egy másik konfigurációval szeretné elindítani, használja a--Server-config argumentumot. Ilyenek többek között:
     
  ```
  $EAP_HOME/bin/standalone.sh --server-config=standalone-full.xml
@@ -120,7 +120,7 @@ Tekintse meg [Red Hat Enterprise Linux díjszabását](https://azure.microsoft.c
 
 #### <a name="using-rhel-os-with-byos-model"></a>A RHEL operációs rendszer használata a BYOS modellel
 
-Ahhoz, hogy a RHEL operációs rendszer BYOS használhassa, érvényes Red Hat-előfizetéssel kell rendelkeznie a RHEL operációs rendszer Azure-ban való használatához. A rövid útmutató telepítése előtt végezze el a következő előfeltételeket:
+Ahhoz, hogy a RHEL operációs rendszer BYOS használhassa, érvényes Red Hat-előfizetéssel kell rendelkeznie a RHEL operációs rendszer Azure-ban való használatához. Az RHEL operációs rendszer BYOS-modellel történő telepítése előtt végezze el a következő előfeltételeket:
 
 1. Győződjön meg arról, hogy rendelkezik a Red Hat-előfizetéséhez csatolt RHEL operációs rendszer-és JBoss EAP-jogosultságokkal.
 2. Engedélyezze az Azure-előfizetés AZONOSÍTÓját a RHEL BYOS-lemezképek használatához. A folyamat befejezéséhez kövesse a [Red Hat előfizetés-kezelési (RHSM) dokumentációját](https://access.redhat.com/documentation/en/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs) , amely a következő lépéseket tartalmazza:
@@ -204,7 +204,7 @@ A RHEL-kombinációhoz tartozó JBoss EAP egyik rövid útmutató-sablonjaival k
 * [JBoss EAP Azure app Service Linux rendszeren](https://docs.microsoft.com/azure/app-service/quickstart-java) QuickStart
 * [A JBoss EAP üzembe helyezése Azure app Service](https://github.com/JasonFreeberg/jboss-on-app-service) oktatóanyagban
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [JBoss EAP 7,2](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/) -ról
 * További információ a [JBoss EAP 7,3](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.3/) -ról

@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 5830cedfdce54c4cd91eb60a5cd2145309e965b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5659ce5fa6f99463f58a33662563d768248fd8cb
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904105"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394900"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>Oktatóanyag: adatok szinkronizálása az SQL Edge-ből a Azure SQL Databasere SQL-adatszinkronizálás használatával
 
@@ -55,7 +55,7 @@ A SQL-adatszinkronizálásról további információt a következő cikkekben ta
 
 * [Ajánlott eljárások](../azure-sql/database/sql-data-sync-best-practices.md) és [az Azure-SQL-adatszinkronizálás kapcsolatos problémák elhárítása](../azure-sql/database/sql-data-sync-troubleshoot.md)
 
-* [SQL-adatszinkronizálás figyelése Azure Monitor naplókkal](../azure-sql/database/sql-data-sync-monitor-sync.md)
+* [SQL-adatszinkronizálás figyelése Azure Monitor naplókkal](../azure-sql/database/monitor-tune-overview.md)
 
 * [A szinkronizálási séma frissítése a Transact-SQL vagy a](../azure-sql/database/sql-data-sync-update-sync-schema.md) [PowerShell használatával](../azure-sql/database/scripts/update-sync-schema-in-sync-group.md)
 

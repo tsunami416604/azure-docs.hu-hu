@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 78dec9180da2a78903ae5d5e87bca515b212f167
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 12635979d90dcc4be5b45bf7d64ceb602119faf7
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87843436"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394764"
 ---
 # <a name="what-is-azure-api-for-fhirreg"></a>Mi az a FHIR készült Azure API &reg; ?
 
@@ -24,7 +24,7 @@ A FHIR készült Azure API gyors adatcserét tesz lehetővé a gyors egészség�
 - Nagy teljesítményű, kis késleltetésű
 - A védett egészségügyi adatokat (PHI) biztonságos kezelése a megfelelő felhőalapú környezetben
 - INTELLIGENS on FHIR mobil-és webes megvalósításokhoz
-- Saját adatai méretezése a szerepköralapú Access Control (RBAC)
+- Saját adatmennyiség szabályozása Role-Based Access Control (RBAC)
 - Naplózási naplók nyomon követése az egyes adattárokban való hozzáféréshez, létrehozáshoz, módosításhoz és olvasáshoz
 
 A FHIR készült Azure API lehetővé teszi, hogy percek alatt hozzon létre és helyezzen üzembe egy FHIR szolgáltatást, hogy kihasználja a felhő rugalmas méretét.  Csak a szükséges átviteli sebességért és tárterületért kell fizetnie. A Power Azure API-t a FHIR-hez készült Azure-szolgáltatások gyors teljesítményre tervezték, függetlenül attól, hogy milyen méretű adatkészleteket kezel.
@@ -53,7 +53,7 @@ A FHIR készült Azure API használata lehetővé teszi a kapcsolódást bármel
 
 ### <a name="control-data-access-at-scale"></a>Az adathozzáférés szabályozása méretezéskor
 
-Ön szabályozhatja az adatait. A szerepköralapú Access Control (RBAC) lehetővé teszi az adatai tárolásának és elérésének kezelését.  A fokozott biztonság és a felügyeleti munkaterhelés csökkentése révén meghatározhatja, hogy ki férhet hozzá a létrehozott adatkészletekhez a környezetéhez létrehozott szerepkör-definíciók alapján.  
+Ön szabályozhatja az adatait. A Role-Based Access Control (RBAC) lehetővé teszi az adatai tárolásának és elérésének kezelését.  A fokozott biztonság és a felügyeleti munkaterhelés csökkentése révén meghatározhatja, hogy ki férhet hozzá a létrehozott adatkészletekhez a környezetéhez létrehozott szerepkör-definíciók alapján.  
 
 ### <a name="audit-logs-and-tracking"></a>Naplók és nyomkövetés naplózása 
 
@@ -86,7 +86,7 @@ Olyan használati esetekhez, amelyek a FHIR-kiszolgáló kiterjesztését vagy t
 
 Az Azure IoT-összekötő a FHIR * szolgáltatáshoz az Azure API választható funkciója, amely lehetővé teszi az orvosi eszközök internetes hálózatáról (IoMT) származó adatok betöltését. Az orvosi eszközök internetes hálózata olyan IoT-eszközök kategóriája, amelyek az egészségügyi & a wellness-és egyéb egészségügyi informatikai rendszerekkel együtt, hálózaton keresztül. Néhány példa a IoMT-eszközökre: fitnesz és klinikai wearables, monitorozási érzékelők, tevékenység-követési funkciók, vagy akár egy intelligens pirula. A FHIR szolgáltatáshoz készült Azure IoT-összekötő lehetővé teszi, hogy gyorsan beállítson egy szolgáltatást a IoMT-alapú Azure API-ba való betöltéséhez a FHIR méretezhető, biztonságos és megfelelő módon.
 
-A FHIR készült Azure IoT-összekötők elfogadják a IoMT-eszközök által küldött JSON-alapú üzeneteket. Ezek az információk először a megfelelő FHIR-alapú [megfigyelési](https://www.hl7.org/fhir/observation.html) erőforrásokra vannak átalakítva, majd a FHIR Azure API-ban is megmaradnak. Az Adatátalakítási logikát az FHIR és a követelmények alapján konfigurált, leképezési sablonokból álló párok határozzák meg. Az eszközökről közvetlenül az Azure IoT Connector FHIR vagy az Azure-beli IoT-megoldásokkal ([azure IoT hub](https://docs.microsoft.com/azure/iot-hub/) és az [Azure IoT Central](https://docs.microsoft.com/azure/iot-central/)) való gördülékenyen használhatók. A FHIR készült Azure IoT-összekötő biztonságos adatfolyamatot biztosít, és lehetővé teszi, hogy az Azure IoT-megoldások kezelhesse a fizikai eszközök kiépítését és karbantartását.
+A FHIR készült Azure IoT-összekötők elfogadják a IoMT-eszközök által küldött JSON-alapú üzeneteket. Ezek az információk először a megfelelő FHIR-alapú [megfigyelési](https://www.hl7.org/fhir/observation.html) erőforrásokra vannak átalakítva, majd a FHIR Azure API-ban is megmaradnak. Az Adatátalakítási logikát az FHIR és a követelmények alapján konfigurált, leképezési sablonokból álló párok határozzák meg. Az eszközökről közvetlenül az Azure IoT Connector FHIR vagy az Azure-beli IoT-megoldásokkal ([azure IoT hub](../iot-hub/index.yml) és az [Azure IoT Central](../iot-central/index.yml)) való gördülékenyen használhatók. A FHIR készült Azure IoT-összekötő biztonságos adatfolyamatot biztosít, és lehetővé teszi, hogy az Azure IoT-megoldások kezelhesse a fizikai eszközök kiépítését és karbantartását.
 
 ### <a name="applications-of-azure-iot-connector-for-fhir-preview"></a>Az Azure IoT Connector for FHIR (előzetes verzió) alkalmazásai
 

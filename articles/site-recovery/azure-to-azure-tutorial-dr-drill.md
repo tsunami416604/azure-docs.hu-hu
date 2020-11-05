@@ -1,58 +1,94 @@
 ---
-title: Azure-beli virtuális gépek vész-helyreállítási részletezésének futtatása Azure Site Recovery
-description: Megtudhatja, hogyan futtathat vész-helyreállítási gyakorlatot egy másodlagos régióban Azure-beli virtuális gépekhez az Azure Site Recovery szolgáltatással.
+title: Oktatóanyag Azure-beli virtuális gépek vész-helyreállítási részletezésének futtatásához Azure Site Recovery
+description: Ebben az oktatóanyagban futtasson egy Azure-beli virtuális gép vész-helyreállítási gyakorlatát egy másik régióba Site Recovery használatával.
 services: site-recovery
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 11/05/2020
 ms.custom: mvc
-ms.openlocfilehash: b2ce157f0f192135ab0507e4aae4c0a282bda1ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7cd1898f27f3b7255009efb40f6bcc8938dbf9e
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76166191"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395600"
 ---
-# <a name="run-a-disaster-recovery-drill-to-a-secondary-region-for-azure-vms"></a>Vész-helyreállítási gyakorlat futtatása Azure-beli virtuális gépek másodlagos régiójába
+# <a name="tutorial-run-a-disaster-recovery-drill-for-azure-vms"></a>Oktatóanyag: vész-helyreállítási részletezés futtatása Azure-beli virtuális gépekhez
 
-Az [Azure Site Recovery](site-recovery-overview.md) szolgáltatás működőképes és elérhető állapotban tartja az üzleti alkalmazásokat a tervezett és nem tervezett leállások idején, így segít a vállalatoknak az üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégia megvalósításában. A Site Recovery felügyeli és koordinálja a helyszíni gépek és az Azure-beli virtuális gépek vészhelyreállítását, beleértve a replikálást, a feladatátvételt és a helyreállítást.
-
-Ez az oktatóanyag azt ismerteti, hogy hogyan hajthat végre vészhelyreállítási próbát egy Azure-beli virtuális gép esetében az egyik Azure-régióból a másikba egy feladatátvételi teszt segítségével. A próba adatveszteség és állásidő nélkül ellenőrzi a replikációs stratégiáját, és nincs hatással az éles környezetre. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Megtudhatja, hogyan futtathat vész-helyreállítási gyakorlatot egy másik Azure-régióba az Azure-beli virtuális gépek [Azure site Recovery](site-recovery-overview.md)használatával történő replikálásához. Ebben a cikkben:
 
 > [!div class="checklist"]
-> * Az előfeltételek ellenőrzése
-> * Feladatátvételi teszt futtatása egyetlen virtuális gép esetén
+> * Előfeltételek ellenőrzése
+> * A részletezés előtt tekintse meg a virtuális gép beállításait
+> * Feladatátvételi teszt futtatása
+> * Tisztítás a részletezés után
+
 
 > [!NOTE]
-> Ez az oktatóanyag segítséget nyújt a vész-helyreállítási gyakorlat végrehajtásához minimális lépésekkel. Ha többet szeretne megtudni a vész-helyreállítási gyakorlattal kapcsolatos különböző funkciókról, tekintse meg az Azure-beli virtuális gépek [replikálásának](azure-to-azure-how-to-enable-replication.md), [hálózatkezelésének](azure-to-azure-about-networking.md), [automatizálásának](azure-to-azure-powershell.md)és [hibaelhárításának](azure-to-azure-troubleshoot-errors.md)dokumentációját.
+> Ez az oktatóanyag minimális lépéseket biztosít a vész-helyreállítási gyakorlat futtatásához. Ha teljes infrastruktúra-tesztelést szeretne végezni, ismerkedjen meg az Azure-beli virtuális gépek [hálózatkezelésével](azure-to-azure-about-networking.md), [automatizálásával](azure-to-azure-powershell.md)és [hibaelhárításával](azure-to-azure-troubleshoot-errors.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzése előtt tekintse át a következő elemeket:
+Az oktatóanyag elindítása előtt engedélyeznie kell a vész-helyreállítást egy vagy több Azure-beli virtuális gépen. Ehhez [végezze el az első oktatóanyagot](azure-to-azure-tutorial-enable-replication.md) ebben a sorozatban.
 
-- A feladatátvételi teszt futtatása előtt javasoljuk, hogy ellenőrizze a virtuális gép tulajdonságait, és győződjön meg róla, hogy az a vész-helyreállításra van konfigurálva. A **Operations**  >  **Disaster Recovery**  >  replikálási és feladatátvételi tulajdonságok megtekintéséhez lépjen a virtuális gép műveleteinek vész-helyreállítási**tulajdonságaira** .
-- **Javasoljuk, hogy a feladatátvételi teszthez a replikáció engedélyezésekor beállított alapértelmezett hálózat helyett használjon egy külön Azure-beli virtuálisgép-hálózatot**.
-- Az egyes hálózati adapterek forrás-hálózati konfigurációjától függően megadhatja az **alhálózatot**, a **magánhálózati IP-címet**, a **nyilvános IP**-címet, a **hálózati biztonsági csoportot**vagy a **Load balancert** úgy, hogy az egyes hálózati adapterekhez a **számítás és a hálózat** feladatátvételi beállításai alatt, a vész-helyreállítási gyakorlat végrehajtása előtt is csatolni lehessen.
+## <a name="verify-vm-settings"></a>Virtuális gép beállításainak ellenőrzése
+
+1. A tárolóban > **replikált elemek** területen válassza ki a virtuális gépet.
+
+    ![A vész-helyreállítási oldal megnyitásának lehetősége a virtuális gép tulajdonságaiban](./media/azure-to-azure-tutorial-dr-drill/vm-settings.png)
+
+2. Az **Áttekintés** lapon győződjön meg arról, hogy a virtuális gép védett és kifogástalan állapotú.
+3. A feladatátvételi teszt futtatásakor ki kell választania egy Azure-beli virtuális hálózatot a célként megadott régióban. A feladatátvételt követően létrehozott Azure-beli virtuális gép ebbe a hálózatba kerül. 
+
+    - Ebben az oktatóanyagban egy meglévő hálózatot választunk a feladatátvételi teszt futtatásakor.
+    - Javasoljuk, hogy válasszon egy nem éles hálózatot a részletezéshez, hogy az IP-címek és a hálózati összetevők továbbra is elérhetők maradjanak az éles hálózatokban.
+   - Előre konfigurálhatja a feladatátvételi teszthez használt hálózati beállításokat is. Az egyes hálózati adapterekhez hozzárendelhető részletes beállítások közé tartozik az alhálózat, a magánhálózati IP-cím, a nyilvános IP-cím, a terheléselosztó és a hálózati biztonsági csoport. Ezt a módszert nem használjuk, de további információért [tekintse át ezt a cikket](azure-to-azure-customize-networking.md#customize-failover-and-test-failover-networking-configurations) .
+
 
 ## <a name="run-a-test-failover"></a>Feladatátvételi teszt futtatása
 
-Ez a példa bemutatja, hogyan használható egy Recovery Services tároló a virtuális gép feladatátvételi tesztje során.
 
-1. Válasszon ki egy tárolót, és lépjen a **védett elemek**  >  **replikált elemek elemre** , és válasszon ki egy virtuális gépet.
-1. A feladatátvételi **teszt**területen válassza ki a feladatátvételhez használandó helyreállítási pontot:
-   - **Legutóbb**: feldolgozza site Recovery összes információját, és megadja a legalacsonyabb RTO (helyreállítási idő célkitűzés).
-   - **Legutóbb feldolgozott**: A virtuális gép feladatait a Site Recovery által feldolgozott legutóbbi helyreállítási pontnak adja át. Megjelenik az időbélyeg. Ezzel a beállítással a rendszer nem tölti le az adatfeldolgozási időt, így alacsony RTO biztosít.
-   - **Legutóbbi alkalmazáskonzisztens**: Ez a beállítás az összes virtuális gép feladatait a legutóbbi alkalmazáskonzisztens helyreállítási pontnak adja át. Megjelenik az időbélyeg.
-   - **Egyéni**: feladatátvétel adott helyreállítási pontra. Az egyéni szolgáltatás csak akkor érhető el, ha egyetlen virtuális gép feladatátvételét hajtja végre, és nem a helyreállítási tervekkel való feladatátvételre.
-1. Válassza ki azt a célként megadott Azure-beli virtuális hálózatot, amelyet a másodlagos régióban található Azure-beli virtuális gépek a feladatátvétel után fognak csatlakozni.
+1. Az **Áttekintés** lapon válassza a **feladatátvételi teszt** lehetőséget.
 
-   > [!NOTE]
-   > Ha a feladatátvételi teszt beállításai előre konfigurálva vannak a replikált elemhez, az Azure-beli virtuális hálózat kiválasztására szolgáló legördülő menü nem látható.
+    
+    ![Feladatátvételi teszt gomb a replikált elemhez](./media/azure-to-azure-tutorial-dr-drill/test-failover-button.png)
 
-1. A feladatátvétel elindításához kattintson **az OK gombra**. A tár előrehaladásának nyomon követéséhez lépjen a **figyelés**  >  **site Recovery feladatok** elemre, és válassza ki a **feladatátvételi teszt** feladatot.
-1. A feladatátvétel befejeződése után a replika Azure-beli virtuális gép megjelenik a Azure Portal **Virtual Machines**. Győződjön meg arról, hogy a virtuális gép fut, megfelelő a méretezése és a megfelelő hálózathoz csatlakozik.
-1. A feladatátvételi teszt során létrehozott virtuális gépek törléséhez válassza a **feladatátvételi teszt** törlése elemet a replikált elemen vagy a helyreállítási terven. A **jegyzetek**területen jegyezze fel és mentse a feladatátvételi teszttel kapcsolatos megfigyeléseket.
+2. A **feladatátvételi teszt** területen válasszon egy helyreállítási pontot. A célként megadott régióban található Azure-beli virtuális gép ebből a helyreállítási pontból származó adatok használatával jön létre.
+  
+   - **Legutóbb feldolgozott** : a site Recovery által feldolgozott legújabb helyreállítási pontot használja. Megjelenik az időbélyeg. A rendszer nem töltött le időt az adatfeldolgozás során, így alacsony helyreállítási időcélkitűzést (RTO) biztosít.
+   -  **Utolsó** : a site Recoveryba elküldett összes adat feldolgozása, hogy minden virtuális gép számára hozzon létre egy helyreállítási pontot, mielőtt a művelet feladatátvételt hajt végre. A a legalacsonyabb helyreállítási időkorlátot (RPO) biztosítja, mivel a feladatátvétel indításakor a rendszer az összes adatSite Recovery replikálja.
+   - **Legújabb alkalmazás-konzisztens** : Ez a beállítás a virtuális gépeket a legújabb, alkalmazás-konzisztens helyreállítási pontra hajtja végre. Megjelenik az időbélyeg.
+   - **Egyéni** : feladatátvétel adott helyreállítási pontra. Az egyéni szolgáltatás csak akkor érhető el, ha egyetlen virtuális gép feladatátvételét hajtja végre, és nem használ helyreállítási tervet.
+
+3. Az **Azure Virtual Network** szolgáltatásban válassza ki azt a célként kijelölt hálózatot, amelyben a feladatátvételt követően létrehozott Azure-beli virtuális gépeket kívánja elhelyezni. Ha lehetséges, válassza ki a nem éles hálózatot, és ne a replikáció engedélyezésekor létrehozott hálózatot.
+
+    ![Feladatátvételi beállítások tesztelése lap](./media/azure-to-azure-tutorial-dr-drill/test-failover-settings.png)    
+
+4. A feladatátvétel elindításához kattintson **az OK gombra**.
+5. Figyelje a feladatátvételi tesztet az értesítésekben.
+
+    ![Értesítés a ](./media/azure-to-azure-tutorial-dr-drill/notification-start-test-failover.png) ![ sikeres előrehaladásról](./media/azure-to-azure-tutorial-dr-drill/notification-finish-test-failover.png)     
+
+
+5. A feladatátvétel befejeződése után a célként megadott régióban létrehozott Azure-beli virtuális gép megjelenik a Azure Portal **Virtual Machines**. Győződjön meg arról, hogy a virtuális gép fut, megfelelően méretezi a hálózatot, és csatlakozik a kiválasztott hálózathoz.
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+1. Az **alapvető** erőforrások lapon válassza a **feladatátvételi teszt törlése** lehetőséget.
+
+    ![Gomb a karbantartási folyamat elindításához](./media/azure-to-azure-tutorial-dr-drill/select-cleanup.png)
+
+2. A **feladatátvételi teszt karbantartási**  >  **megjegyzései** területen jegyezze fel és mentse a feladatátvételi teszttel kapcsolatos megfigyeléseket. 
+3. Válassza a **tesztelés** befejeződött lehetőséget a feladatátvételi teszt során létrehozott virtuális gépek törléséhez.
+
+    ![Lap karbantartási lehetőségekkel](./media/azure-to-azure-tutorial-dr-drill/cleanup-failover.png)
+
+4. Az értesítések karbantartási folyamatának figyelése.
+
+    ![A karbantartási folyamat értesítésének ](./media/azure-to-azure-tutorial-dr-drill/notification-start-cleanup.png) ![ karbantartási sikerességéről szóló értesítés](./media/azure-to-azure-tutorial-dr-drill/notification-finish-cleanup.png)
 
 ## <a name="next-steps"></a>További lépések
+
+Ebben az oktatóanyagban egy vész-helyreállítási részletezést futtatott, amellyel ellenőrizheti, hogy a feladatátvétel a várt módon működik-e. Most kipróbálhatja a teljes feladatátvételt.
 
 > [!div class="nextstepaction"]
 > [Éles feladatátvétel futtatása](azure-to-azure-tutorial-failover-failback.md)
