@@ -4,14 +4,14 @@ ms.service: databox
 ms.topic: include
 ms.date: 08/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 30ca4d330d9b16214396ac81e5ab5722ca0e7569
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b6a6cbf51ef2ff1f1ef53b53a2b84c7a4f9510d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89254294"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376115"
 ---
-1. A [Azure Portal](https://portal.azure.com/)válassza ki a Azure stack Edge-erőforrást, majd lépjen az **Áttekintés**elemre. Az eszköznek online állapotban kell lennie.
+1. A [Azure Portal](https://portal.azure.com/)válassza ki a Azure stack Edge-erőforrást, majd lépjen az **Áttekintés** elemre. Az eszköznek online állapotban kell lennie.
 
 2. Válassza ki a **+ Storage-fiók hozzáadása** lehetőséget az eszköz parancssáv-sávján. 
 
@@ -32,8 +32,8 @@ ms.locfileid: "89254294"
     e. Miután megadta a Storage-fiók összes beállítását, kattintson a **Hozzáadás** gombra a peremhálózati Storage-fiók létrehozásához. A rendszer értesítést küld, ha a peremhálózati Storage-fiók létrehozása sikeres volt. Ekkor megjelenik az új Edge Storage-fiók a Azure Portal a Storage-fiókok listájában. 
 
     
-4. Ha ezt az új Storage-fiókot választja, és a **hozzáférési kulcsok**lehetőségre kattint, megkeresheti a blob Service-végpontot és a hozzá tartozó Storage-fiók nevét. Másolja ezeket az adatokat, mivel ezek az értékek és a hozzáférési kulcsok is segítenek csatlakozni az Edge Storage-fiókhoz.
+4. Ha ezt az új Storage-fiókot választja, és a **hozzáférési kulcsok** lehetőségre kattint, megkeresheti a blob Service-végpontot és a hozzá tartozó Storage-fiók nevét. Másolja ezeket az adatokat, mivel ezek az értékek és a hozzáférési kulcsok is segítenek csatlakozni az Edge Storage-fiókhoz.
 
-    ![Storage-fiók hozzáadása](media/azure-stack-edge-gateway-add-storage-account/add-storage-account-4.png)
+    ![2. Storage-fiók hozzáadása](media/azure-stack-edge-gateway-add-storage-account/add-storage-account-4.png)
 
     A hozzáférési kulcsokat úgy érheti el, ha [a Azure Resource Manager használatával csatlakozik az eszköz helyi API-](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md)khoz. 

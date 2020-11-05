@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: edb6a8e04537a74b7ea7d4c9bd9bd27fdc39e402
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5013f8b7dd88340e397fd3d4d4cd93d4b911fbbb
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88007080"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378227"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Hozzáférési és identitás-beállítások az Azure Kubernetes Service (AKS) szolgáltatáshoz
 
@@ -38,7 +38,7 @@ További információ: RBAC- [hitelesítés használata][kubernetes-rbac].
 
 ### <a name="roles-and-clusterroles"></a>Szerepkörök és ClusterRoles
 
-Mielőtt engedélyeket rendel a felhasználókhoz a Kubernetes RBAC, először az engedélyeket *szerepkörként*kell megadnia. A Kubernetes szerepkörei engedélyeket *biztosítanak* . Nincs a *megtagadási* engedély fogalma.
+Mielőtt engedélyeket rendel a felhasználókhoz a Kubernetes RBAC, először az engedélyeket *szerepkörként* kell megadnia. A Kubernetes szerepkörei engedélyeket *biztosítanak* . Nincs a *megtagadási* engedély fogalma.
 
 A szerepkörök a névtéren belüli engedélyek megadására szolgálnak. Ha engedélyeket kell megadnia a teljes fürtön, vagy az erőforrásokat egy adott névtéren kívül kell megadnia, akkor Ehelyett használhatja a *ClusterRoles*.
 
@@ -46,7 +46,7 @@ A ClusterRole ugyanúgy működik, hogy engedélyeket biztosítson az erőforrá
 
 ### <a name="rolebindings-and-clusterrolebindings"></a>RoleBindings és ClusterRoleBindings
 
-Ha a szerepkörök úgy vannak meghatározva, hogy engedélyeket adjanak az erőforrásoknak, akkor ezeket a Kubernetes RBAC engedélyeket egy *RoleBinding*kell rendelnie. Ha az AK-fürt [integrálva van Azure Active Directoryokkal](#azure-active-directory-integration), a kötések azt ismertetik, hogy az Azure ad-felhasználók hogyan kapnak engedélyeket a fürtön belüli műveletek végrehajtásához: Hogyan [vezérelheti a hozzáférést a fürterőforrások a szerepköralapú hozzáférés-vezérlés és a Azure Active Directory identitások használatával](azure-ad-rbac.md).
+Ha a szerepkörök úgy vannak meghatározva, hogy engedélyeket adjanak az erőforrásoknak, akkor ezeket a Kubernetes RBAC engedélyeket egy *RoleBinding* kell rendelnie. Ha az AK-fürt [integrálva van Azure Active Directoryokkal](#azure-active-directory-integration), a kötések azt ismertetik, hogy az Azure ad-felhasználók hogyan kapnak engedélyeket a fürtön belüli műveletek végrehajtásához: Hogyan [vezérelheti a hozzáférést a fürterőforrások a szerepköralapú hozzáférés-vezérlés és a Azure Active Directory identitások használatával](azure-ad-rbac.md).
 
 A szerepkör-kötések egy adott névtér szerepköreinek hozzárendelésére szolgálnak. Ez a megközelítés lehetővé teszi, hogy logikailag elkülönítse egyetlen AK-beli fürtöt, és a felhasználók csak a hozzárendelt névtérben lévő alkalmazás-erőforrásokat tudják elérni. Ha a szerepköröket a teljes fürtön kell megkötnie, vagy egy adott névtéren kívüli fürt erőforrásaira van szüksége, használhatja a *ClusterRoleBindings*.
 
@@ -101,7 +101,7 @@ Az Azure RBAC egy [Azure Resource Managerra](../azure-resource-manager/managemen
 
  Az Azure RBAC úgy van kialakítva, hogy az Azure-előfizetésen belüli erőforrásokkal működjön, miközben a Kubernetes RBAC úgy van kialakítva, hogy az AK-fürtön belüli Kubernetes 
 
-Az Azure RBAC létrehoz egy szerepkör- *definíciót* , amely az alkalmazandó engedélyeket ismerteti. A felhasználó vagy csoport ezt követően egy adott *hatókörhöz*tartozó *szerepkör-hozzárendeléssel* rendeli hozzá ezt a szerepkör-definíciót, amely lehet önálló erőforrás, erőforráscsoport vagy az előfizetés egésze.
+Az Azure RBAC létrehoz egy szerepkör- *definíciót* , amely az alkalmazandó engedélyeket ismerteti. A felhasználó vagy csoport ezt követően egy adott *hatókörhöz* tartozó *szerepkör-hozzárendeléssel* rendeli hozzá ezt a szerepkör-definíciót, amely lehet önálló erőforrás, erőforráscsoport vagy az előfizetés egésze.
 
 További információ: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?][azure-rbac]
 
@@ -143,7 +143,7 @@ Az AK a következő négy beépített szerepkört biztosítja. Hasonlóak a [Kub
 | Az Azure Kubernetes Service RBAC rendszergazdája  | A rendszergazdai hozzáférés engedélyezése a névtéren belül. Írási/olvasási hozzáférés engedélyezése a névtér (vagy a fürt hatóköre) legtöbb erőforrásához, beleértve a szerepkörök és a szerepkör-kötések létrehozását a névtéren belül. Ez a szerepkör nem engedélyez írási hozzáférést az erőforrás-kvótához vagy magához a névtérhez. |
 | Azure Kubernetes Service RBAC-fürt rendszergazdája  | Lehetővé teszi a felügyelők számára, hogy bármilyen műveletet végezzenek bármilyen erőforráson. Teljes hozzáférést biztosít a fürt összes erőforrásához és az összes névtérhez. |
 
-**Tekintse meg, hogyan használhat Azure RBAC for Kubernetes-hitelesítést [itt](manage-azure-rbac.md).**
+**Ha szeretné megtudni, hogyan engedélyezheti az Azure RBAC az Kubernetes-engedélyezést, [olvassa el itt](manage-azure-rbac.md).**
 
 ## <a name="next-steps"></a>Következő lépések
 

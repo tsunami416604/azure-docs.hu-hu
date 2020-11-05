@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: a6d6ca825a556ea3c98fb94d4becbb75b8f2a7d7
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: dd6e760fe8052463491f249b54c3af3d2636d46d
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93294274"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376884"
 ---
 # <a name="tutorial-for-configuring-theaccesshub-admin-tool-with-azure-active-directory-b2c"></a>Oktatóanyag a TheAccessHub felügyeleti eszköz konfigurálásához Azure Active Directory B2C
 
@@ -52,7 +52,7 @@ A TheAccessHub felügyeleti eszköz az Azure bármely más alkalmazásához haso
 
 ![N8identity architektúra diagramot ábrázoló kép](./media/partner-n8identity/n8identity-architecture-diagram.png)
 
-|Lépés | Leírás |
+|Lépés | Description |
 |:-----| :-----------|
 | 1. | A felhasználó egy bejelentkezési oldalon érkezik. A felhasználók a regisztráció gombra kattintva létrehozhatnak egy új fiókot, és beírhatják az adatokat az oldalra. A Azure AD B2C a felhasználói attribútumokat gyűjti.
 | 2. | Azure AD B2C meghívja a TheAccessHub felügyeleti eszközét, és átadja a felhasználói attribútumokat
@@ -102,7 +102,7 @@ A TheAccessHub-felügyeleti eszköz a címtárhoz való hozzáférésének enged
 
 5. Kövesse az utasításokat, és válassza az **elfogadás** lehetőséget a TheAccessHub felügyeleti eszköz a kért engedélyek megadásához.
 
-## <a name="configure-a-new-csrhelpdesk-user-using-your-enterprise-identity"></a>Új CSR/ügyfélszolgálati felhasználó konfigurálása a vállalati identitás használatával
+## <a name="configure-a-new-csr-user-using-your-enterprise-identity"></a>Új CSR-felhasználó konfigurálása a vállalati identitás használatával
 
 Hozzon létre egy CSR/ügyfélszolgálati felhasználót, aki hozzáfér a TheAccessHub felügyeleti eszközhöz meglévő vállalati Azure Active Directory hitelesítő adataival.
 
@@ -126,7 +126,7 @@ Ha az egyszeri bejelentkezéssel (SSO) szeretné konfigurálni a CSR/segélyszol
 
 6. Válassza a **Küldés** lehetőséget.
 
-## <a name="configure-a-new-csrhelpdesk-user-using-a-new-identity"></a>Új CSR/segélyszolgálat-felhasználó konfigurálása új identitás használatával
+## <a name="configure-a-new-csr-user-using-a-new-identity"></a>Új CSR-felhasználó konfigurálása új identitás használatával
 
 Hozzon létre egy CSR/ügyfélszolgálati felhasználót, aki a TheAccessHub felügyeleti eszközhöz egy új helyi hitelesítő adatokkal fog hozzáférni, amely a TheAccessHub felügyeleti eszközhöz egyedi Ezt elsősorban olyan szervezetek fogják használni, amelyek nem használnak Azure AD-t a vállalatuk számára.
 
@@ -150,7 +150,7 @@ Ha [a CSR/helpdesk](https://youtu.be/iOpOI2OpnLI) felhasználót SSO nélkül sz
 
 7. **Küldés** kiválasztása
 
-## <a name="configure-partitioned-csrhelpdesk-administration"></a>Particionált CSR/ügyfélszolgálati felügyelet konfigurálása
+## <a name="configure-partitioned-csr-administration"></a>Particionált CSR-felügyelet konfigurálása
 
 A TheAccessHub felügyeleti eszközben az ügyfél és a CSR/helpdesk felhasználók felügyeletére vonatkozó engedélyek a szervezeti hierarchia használatával kezelhetők. Az összes munkatárs és ügyfél rendelkezik egy otthoni szervezettel, ahol a lakóhelyük van. Az adott munkatársak vagy munkacsoportok a szervezetek tulajdonosaként rendelhetők el.  A szervezet tulajdonosai kezelhetik (módosíthatják) a munkatársakat és az ügyfeleket a saját szervezeteknél vagy alszervezetekben. Ha több munkatárs számára is lehetővé szeretné tenni a felhasználók felügyeletét, a csoportok számos taggal hozhatók létre. A csoport ezután hozzárendelhető szervezeti tulajdonosként, és az összes csoport tagjai kezelhetik a munkatársaikat és az ügyfeleket a szervezeten belül.
 
@@ -324,7 +324,7 @@ A TheAccessHub felügyeleti eszköz használatával különböző adatbázisokb�
 
 18. Ha az **adatszinkronizálási** rekord 100%-ra változik a betöltési fázisban, a rendszer a betöltéstől kapott összes változást kezdeményezte. Az ügyfeleknek meg kell kezdeniük a Azure AD B2C változásait.
 
-## <a name="synchronize-azure-ad-b2c-customer-data-into-theaccesshub-admin-tool"></a>Azure AD B2C ügyféladatok szinkronizálása a TheAccessHub felügyeleti eszközbe
+## <a name="synchronize-azure-ad-b2c-customer-data"></a>Azure AD B2C ügyféladatok szinkronizálása 
 
 A TheAccessHub felügyeleti eszköz egyszeri vagy folyamatban lévő műveletként szinkronizálhatja a Azure AD B2C összes ügyfelének adatait a TheAccessHub felügyeleti eszközre. Ez biztosítja, hogy a CSR/segélyszolgálat rendszergazdái naprakész ügyfél-információkat kapjanak.
 
@@ -356,7 +356,7 @@ Azure AD B2C adatainak szinkronizálása a TheAccessHub felügyeleti eszközön:
 
 13. Ha az **adatszinkronizálási** rekord 100%-ra változik a betöltési fázisban, a rendszer a betöltéstől kapott összes változást kezdeményezte.
 
-## <a name="configure-azure-ad-b2c-policies-to-call-theaccesshub-admin-tool"></a>Azure AD B2C házirendek konfigurálása a TheAccessHub felügyeleti eszköz meghívásához
+## <a name="configure-azure-ad-b2c-policies"></a>Azure AD B2C házirendek konfigurálása
 
 A TheAccessHub felügyeleti eszköz időnkénti szinkronizálása korlátozva van a Azure AD B2Cával való naprakész állapotának megőrzésére. A TheAccessHub felügyeleti eszköz API-ját és Azure AD B2C szabályzatait kihasználva tájékoztatjuk a TheAccessHub felügyeleti eszköz változásait. Ehhez a megoldáshoz [Azure ad B2C egyéni szabályzatok](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started#:~:text=%20Get%20started%20with%20custom%20policies%20in%20Azure,Experience%20Framework%20applications.%20Azure%20AD%20B2C...%20More%20)technikai ismerete szükséges. A következő szakaszban bemutatunk egy példát a szabályzat lépéseire és egy biztonságos tanúsítványra, amely értesíti az új fiókok TheAccessHub felügyeleti eszközét az Sign-Up egyéni szabályzatokban.
 

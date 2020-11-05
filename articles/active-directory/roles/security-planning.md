@@ -6,20 +6,20 @@ keywords: ''
 author: curtand
 manager: daveba
 ms.author: curtand
-ms.date: 04/30/2020
+ms.date: 11/05/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdf41a16975505b76e4b49fdf4e73faeb187ddfe
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 69428898ca123bf5b5fa96cf041818cc15f5ac40
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376257"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378635"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez
 
@@ -78,7 +78,7 @@ A Azure AD Privileged Identity Management bekapcsolását követően:
 
 2. Válassza ki azt az Azure AD-szervezetet, ahol a Privileged Identity Management szeretné használni, válassza ki a felhasználónevét a Azure Portal jobb felső sarkában.
 
-3. A Azure Portal menüben válassza a **minden szolgáltatás** lehetőséget, és szűrje a **Azure ad Privileged Identity Management**listáját.
+3. A Azure Portal menüben válassza a **minden szolgáltatás** lehetőséget, és szűrje a **Azure ad Privileged Identity Management** listáját.
 
 4. Nyissa meg Privileged Identity Management a **minden szolgáltatás** listából, és rögzítse az irányítópulton.
 
@@ -359,7 +359,7 @@ Az ütemterv 4. fázisát hat hónapon belül és azt meghaladóan kell megvaló
 Az emelt szintű hozzáférés biztonságossá tétele fontos, hogy biztonsági garanciákat hozzon létre üzleti eszközei számára. Azonban egy teljes biztonsági program részeként kell szerepelnie, amely folyamatos biztonsági garanciákat biztosít. A programnak olyan elemeket kell tartalmaznia, mint például a következők:
 
 * Szabályzat
-* Üzemeltetés
+* Műveletek
 * Információbiztonság
 * Kiszolgálók
 * Alkalmazások

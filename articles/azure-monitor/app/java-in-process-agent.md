@@ -1,16 +1,16 @@
 ---
-title: Java-alkalmazások figyelése bármilyen környezetben – Azure Monitor Application Insights
-description: Alkalmazások teljesítményének figyelése bármilyen környezetben futó Java-alkalmazásokhoz az alkalmazás kialakítása nélkül. Elosztott nyomkövetési és alkalmazás-hozzárendelés.
+title: Azure Monitor Application Insights Java
+description: Alkalmazások teljesítményének figyelése bármilyen környezetben futó Java-alkalmazásokhoz programkód módosítása nélkül. Elosztott nyomkövetési és alkalmazás-hozzárendelés.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 1182813c0b79d43c2c264482629ad97f23683a49
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 07be6a4ff08700ee9407fbf39946b7c24abbc01a
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215280"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377037"
 ---
-# <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>A Java Code unapplication monitoring Azure monitor Application Insights – nyilvános előzetes verzió
+# <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>A Java Code unapplication monitoring Azure monitor Application Insights
 
 A Java kód nélküli alkalmazások figyelése az egyszerűségről szól – a kód módosítása nem változik, a Java-ügynök csak néhány konfigurációs módosítással engedélyezhető.
 
@@ -26,15 +26,20 @@ Az 3,0-ügynök támogatja a Java 8-as és újabb verzióit.
 
 **1. Töltse le az ügynököt**
 
-A [applicationinsights-Agent-3.0.0-preview. 7. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.7/applicationinsights-agent-3.0.0-PREVIEW.7.jar) letöltése
+> [!WARNING]
+> **Ha 3,0 előzetes verzióról frissít**
+>
+> Figyelmesen tekintse át az összes [konfigurációs beállítást](./java-standalone-config.md) , mivel a JSON-struktúra teljes mértékben megváltozott, és a fájlneven kívül minden kisbetűt ment.
+
+A [applicationinsights-Agent-3.0.0. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0/applicationinsights-agent-3.0.0.jar) letöltése
 
 **2. irányítsa a JVM az ügynökre**
 
-Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.7.jar` az alkalmazás JVM argumentumai
+Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.0.jar` az alkalmazás JVM argumentumai
 
 A tipikus JVM argumentumok közé tartoznak `-Xmx512m` a és a `-XX:+UseG1GC` . Tehát ha tudja, hol adja hozzá ezeket, akkor már tudja, hová adja hozzá ezt a lehetőséget.
 
-Ha további segítségre van az alkalmazás JVM argumentumok konfigurálásához, tekintse meg a [3,0 előzetes verzió: Tippek a JVM argumentumok frissítéséhez](./java-standalone-arguments.md)című témakört.
+Ha további segítségre van az alkalmazás JVM argumentumok konfigurálásához, tekintse meg a [Tippek a JVM-argumentumok frissítéséhez](./java-standalone-arguments.md)című témakört.
 
 **3. irányítsa az ügynököt a Application Insights erőforrásra**
 
@@ -46,7 +51,7 @@ Mutasson az ügynököt a Application Insights erőforrásra, vagy egy környeze
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
 ```
 
-Vagy hozzon létre egy nevű konfigurációs fájlt `ApplicationInsights.json` , és helyezze ugyanabba a könyvtárba `applicationinsights-agent-3.0.0-PREVIEW.7.jar` , a következő tartalommal:
+Vagy hozzon létre egy nevű konfigurációs fájlt `applicationinsights.json` , és helyezze ugyanabba a könyvtárba `applicationinsights-agent-3.0.0.jar` , a következő tartalommal:
 
 ```json
 {
@@ -70,19 +75,21 @@ Most indítsa el az alkalmazást, és nyissa meg a Application Insights erőforr
 
 ## <a name="configuration-options"></a>Beállítási lehetőségek
 
-A `ApplicationInsights.json` fájlban emellett a következőket is konfigurálhatja:
+A `applicationinsights.json` fájlban emellett a következőket is konfigurálhatja:
 
 * Felhőbeli szerepkör neve
 * Felhőalapú szerepkör-példány
-* Alkalmazásnapló-rögzítés
-* JMX metrikák
-* Mikrométer
-* Szívverés
 * Mintavételezés
+* JMX metrikák
+* Egyéni dimenziók
+* Telemetria processzorok
+* Automatikusan összegyűjtött naplózás
+* Automatikusan összegyűjtött mérőműszer-metrikák (beleértve a Spring boot indítószerkezet metrikáit)
+* Szívverés
 * HTTP-proxy
-* Saját diagnosztika
+* Öndiagnosztika
 
-Tekintse meg a részleteket a [3,0 nyilvános előzetes verzióban: konfigurációs beállítások](./java-standalone-config.md).
+További részletek: [konfigurációs beállítások](./java-standalone-config.md) .
 
 ## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>Az újragyűjtött kérelmek, függőségek, naplók és metrikák
 
@@ -226,9 +233,14 @@ Emellett a Application Insights Java SDK 2. x verzióját is használhatja:
 
 ## <a name="upgrading-from-application-insights-java-sdk-2x"></a>Frissítés Application Insights Java SDK 2. x verzióról
 
-Ha már használja a Application Insights Java SDK 2. x verzióját az alkalmazásban, nem kell eltávolítania. A Java 3,0-ügynök észlelni fogja, és rögzíti és korrelálja a Java SDK 2. x által küldött összes egyéni telemetria, miközben letiltja a Java SDK 2. x által végrehajtott automatikus gyűjtést a duplikált rögzítés megakadályozása érdekében.
+Ha már használja a Application Insights Java SDK 2. x verzióját az alkalmazásban, nem kell eltávolítania.
+A Java 3,0-ügynök észlelni fogja, és rögzíti és korrelálja a Java SDK 2. x által küldött összes egyéni telemetria, miközben letiltja a Java SDK 2. x által végrehajtott automatikus gyűjtést a duplikált telemetria elkerülése érdekében.
 
 Ha Application Insights 2. x ügynököt használta, el kell távolítania a JVM ARG-t, `-javaagent:` amely a 2. x ügynökre mutat.
 
 > [!NOTE]
-> Megjegyzés: a Java SDK 2. x TelemetryInitializers és TelemetryProcessors nem fog futni az 3,0-ügynök használatakor.
+> A Java SDK 2. x TelemetryInitializers és TelemetryProcessors nem fog futni az 3,0-ügynök használata esetén.
+> A korábban megkövetelt használati esetek többsége 3,0-ban oldható meg az [Egyéni dimenziók](./java-standalone-config.md#custom-dimensions) konfigurálásával vagy a [telemetria processzorok](./java-standalone-telemetry-processors.md)konfigurálásával.
+
+> [!NOTE]
+> a 3,0 egyetlen JVM még nem támogatja több rendszerállapotú kulcs használatát.

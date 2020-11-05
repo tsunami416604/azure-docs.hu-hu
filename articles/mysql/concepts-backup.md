@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 00cd5a76a52e1b58bc2f01315dd3a1a859074a58
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 283befd08c7802a9df6d2fca78465d50cfb2ba7b
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348457"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376816"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Biztonsági mentés és visszaállítás Azure Database for MySQL
 
@@ -115,7 +115,12 @@ A kiszolgálót visszaállíthatja egy másik Azure-régióba, ahol a szolgálta
 
 A Geo-visszaállítás az alapértelmezett helyreállítási lehetőség, ha a kiszolgáló nem érhető el, mert a kiszolgálót futtató régióban incidens található. Ha egy adott régióban a nagyméretű incidensek nem állnak rendelkezésre az adatbázis-alkalmazás számára, visszaállíthat egy kiszolgálót a Geo-redundáns biztonsági másolatokból egy másik régióban található kiszolgálóra. A Geo-visszaállítás a kiszolgáló legújabb biztonsági mentését használja. A biztonsági másolat készítése és más régióba való replikálása között késés történt. Ez a késleltetés akár egy óráig is eltarthat, így ha egy katasztrófa következik be, akár egy órányi adatvesztés is lehet.
 
+> [!IMPORTANT]
+>Ha egy újonnan létrehozott kiszolgáló geo-visszaállítást végez, a kezdeti biztonsági mentési szinkronizálás az adatmérettől függően több mint 24 órát is igénybe vehet, a kezdeti teljes pillanatkép-másolási idő sokkal magasabb. A pillanatképek későbbi biztonsági mentései növekményes másolást végeznek, ezért a visszaállítások a kiszolgáló 24 órányi létrehozása után gyorsabbak lesznek. Ha a Geo-visszaállítások kiértékelésével határozza meg a RTO, javasoljuk, hogy a jobb becslések érdekében **csak 24 órányi** kiszolgáló létrehozása után várjon és értékelje ki a Geo-visszaállítást.
+
 A Geo-visszaállítás során a megváltoztatható kiszolgálói konfigurációk közé tartoznak a számítási generáció, a virtuális mag, a biztonsági másolatok megőrzési időtartama és a biztonsági mentési redundancia beállításai. Az árképzési szint (alapszintű, általános célú vagy memória optimalizálása) vagy a tárolási méret módosítása a Geo-visszaállítás során nem támogatott.
+
+A helyreállítás becsült ideje több tényezőtől függ, többek között az adatbázisok méretétől, a tranzakciós napló méretétől, a hálózati sávszélességtől és az azonos régióban lévő adatbázisok teljes számától. A helyreállítási idő általában kevesebb, mint 12 óra.
 
 ### <a name="perform-post-restore-tasks"></a>Visszaállítás utáni feladatok végrehajtása
 

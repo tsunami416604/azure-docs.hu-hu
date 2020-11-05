@@ -1,17 +1,17 @@
 ---
-title: Bármilyen környezetben futó Java-alkalmazások figyelése – Azure Monitor Application Insights
-description: Alkalmazások teljesítményének figyelése bármilyen környezetben futó Java-alkalmazásokhoz a Java önálló ügynökkel az alkalmazás kialakítása nélkül. Elosztott nyomkövetési és alkalmazás-hozzárendelés.
+title: A JVM ARG hozzáadása – Azure Monitor Application Insights Java
+description: A JVM ARG hozzáadása a Azure Monitor Application Insights Javához
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: b1a23c01fdf8a0145c26b709f36709a7b710103f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c9c38d4173413310b715e05c9dcfb9c15be9d4f
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374303"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377633"
 ---
-# <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>A JVM-argumentumok konfigurálása a Java önálló ügynöke Azure Monitor Application Insights
+# <a name="adding-the-jvm-arg-for-azure-monitor-application-insights-java"></a>A JVM ARG hozzáadása a Azure Monitor Application Insights Javához
 
 
 
@@ -170,7 +170,7 @@ Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` a m
 
 ## <a name="websphere-8"></a>WebSphere 8
 
-A felügyeleti konzol megnyitásához nyissa meg a **kiszolgálók > WebSphere Application servers > Application Servers**elemet, válassza ki a megfelelő alkalmazásokat, és kattintson a következőre: 
+A felügyeleti konzol megnyitásához nyissa meg a **kiszolgálók > WebSphere Application servers > Application Servers** elemet, válassza ki a megfelelő alkalmazásokat, és kattintson a következőre: 
 
 ```
 Java and Process Management > Process definition >  Java Virtual Machine

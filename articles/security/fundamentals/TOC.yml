@@ -68,6 +68,8 @@
   items:
     - name: Microsoft Antimalware
       href: antimalware.md
+    - name: Microsoft Antimalware-kódminták
+      href: antimalware-code-samples.md
     - name: Virtuális gépek biztonságának áttekintése
       href: virtual-machines-overview.md
     - name: Ajánlott eljárások IaaS-beli számítási feladatokhoz

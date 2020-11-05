@@ -4,14 +4,18 @@ description: Log4J-vagy Logback-nyomkövetés keresése a Application Insightsba
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: fca5c9b1bde8429d829ab6113804602c8baa2ebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d219f4fcfd22d25babd8c9f6564f8dcd11d3144
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374269"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377921"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Ismerkedjen meg a Java-nyomkövetési naplók Application Insights
+
+> [!IMPORTANT]
+> A Java-alkalmazások figyelésének ajánlott módszere az automatikus kiépítés használata a kód módosítása nélkül. Kérjük, kövesse az [Application Insights Java 3,0-ügynökre](./java-in-process-agent.md)vonatkozó irányelveket.
+
 Ha a nyomkövetéshez Logback vagy Log4J (v 1.2 vagy v 2.0) használ, a nyomkövetési naplókat automatikusan elküldheti Application Insights ahol megtekintheti és megkeresheti őket.
 
 > [!TIP]
@@ -189,7 +193,7 @@ A gyűjtők által küldött kivételek a portálon a kivétel telemetria jelenn
 
 ![A Application Insights portálon nyissa meg a keresést](./media/java-trace-logs/01-diagnostics.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Diagnosztikai keresés][diagnostic]
 
 <!--Link references-->

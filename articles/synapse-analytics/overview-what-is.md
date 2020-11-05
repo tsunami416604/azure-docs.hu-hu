@@ -9,18 +9,18 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 16e13a18f93da9063a7eb08e3a2df27db9e3090f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3043cd5f8cb27197048bd84c7181c2b42c4ad5c9
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321700"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376901"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Mi az Azure szinapszis Analytics (munkaterületek előzetes verziója)?
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
-A nagyvállalati elemzési szolgáltatásnak bármilyen típusú, nyers, finomított vagy nagy teljesítményű adatmennyiségen kell működnie. Ehhez általában a vállalatoknak össze kell fűzve a big data és az adattárház-technológiákat olyan összetett adatfolyamatokban, amelyek a kapcsolati tárolókban és az adattavakban tárolt adatmennyiségek között működnek. Ilyen típusú megoldások, például nehéz felépíteni, karbantartani és biztonságossá tenni a megoldásokat. Az Insight Enteprises szükséges összetettségi késések.
+A nagyvállalati elemzési szolgáltatásnak bármilyen típusú, nyers, finomított vagy nagy teljesítményű adatmennyiségen kell működnie. Ehhez általában a vállalatoknak össze kell fűzve a big data és az adattárház-technológiákat olyan összetett adatfolyamatokban, amelyek a kapcsolati tárolókban és az adattavakban tárolt adatmennyiségek között működnek. Ezeket a megoldásokat nehéz felépíteni, karbantartani és biztonságossá tenni. Az Insight-vállalatok számára szükséges összetettségi késések.
 
 Az **Azure szinapszis** egy integrált elemzési szolgáltatás, amely felgyorsítja az adattárházak és a Big Data rendszerek betekintésének idejét. Az Azure szinapszis a nagyvállalati adattárházban, a big data használt **Spark** -technológiákban, valamint az adatintegrációs és az ETL/elt- **adatcsatornákhoz** használt **SQL** -technológiákat egyesíti. A **szinapszis Studio** egységes felhasználói élményt nyújt a felügyelethez, a monitorozáshoz, a kódoláshoz és a biztonsághoz. A szinapszis szoros integrációt tartalmaz más Azure-szolgáltatásokkal, például a **PowerBI** , a **CosmosDB** és a **AzureML**.
 

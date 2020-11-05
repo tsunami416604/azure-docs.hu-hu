@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 11/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79a5d306643fa9597b30f6941c420c403695c22e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7e1036e63b4fdef241350786fa3a246946a9223c
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424565"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378006"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Összevont biztonsági információk regisztrálása Azure Active Directory – áttekintés
 
@@ -51,14 +51,14 @@ Ha egy adott nyelvet szeretne kényszeríteni, hozzáadhat az `?lng=<language>` 
 
 A kombinált regisztráció a következő hitelesítési módszereket és műveleteket támogatja:
 
-| Metódus | Regisztráció | Módosítás | Törlés |
+| Módszer | Regisztráció | Módosítás | Törlés |
 | --- | --- | --- | --- |
 | Microsoft Authenticator | Igen (legfeljebb 5) | Nem | Igen |
 | Egyéb hitelesítő alkalmazás | Igen (legfeljebb 5) | Nem | Igen |
 | Hardver jogkivonata | Nem | Nem | Igen |
 | Telefon | Igen | Igen | Igen |
 | Másik telefon | Igen | Igen | Igen |
-| Munkahelyi telefon | Nem | Nem | Nem |
+| Munkahelyi telefon | Igen | Igen | Igen |
 | E-mail | Igen | Igen | Igen |
 | Biztonsági kérdések | Igen | Nem | Igen |
 | Alkalmazásjelszavak. | Igen | Nem | Igen |
@@ -140,7 +140,7 @@ Az a felhasználó, aki korábban beállított legalább egy metódust, navigál
 
 Az a felhasználó, aki korábban beállított legalább egy olyan metódust, amelyet Multi-Factor Authentication használhat a alkalmazásban [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) . A felhasználó az aktuális alapértelmezett metódust egy másik alapértelmezett metódusra módosítja. Ha elkészült, a felhasználó az új alapértelmezett metódust látja a biztonsági adatok lapon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként tekintse meg az oktatóanyagokat az [önkiszolgáló jelszó-visszaállítás engedélyezéséhez](tutorial-enable-sspr.md) és az [Azure-multi-Factor Authentication engedélyezéséhez](tutorial-enable-azure-mfa.md).
 

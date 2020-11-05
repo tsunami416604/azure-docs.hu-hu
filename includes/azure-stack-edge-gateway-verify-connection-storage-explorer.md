@@ -4,16 +4,16 @@ ms.service: databox
 ms.topic: include
 ms.date: 12/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 3474a97f4b05fd1f944e18abebcef927232453e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 203c977fe9109cd8b2b6de561e975e20aacf700e
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89087799"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376206"
 ---
 Ha első alkalommal használja a Storage Explorer, a következő lépéseket kell elvégeznie.
 
-1. A felső parancssáv lépjen a **> cél Azure stack API**-k szerkesztése elemre.
+1. A felső parancssáv lépjen a **> cél Azure stack API** -k szerkesztése elemre.
 
     ![Storage Explorer konfigurálása](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-1.png)
 
@@ -24,11 +24,11 @@ Kövesse az alábbi lépéseket a Storage-fiókhoz való kapcsolódáshoz és a 
 
 1. A Storage Explorer területen válassza a Storage-fiókok lehetőséget. Kattintson a jobb gombbal, és válassza a **Kapcsolódás az Azure Storage-hoz** lehetőséget. 
 
-    ![Storage Explorer konfigurálása](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-2.png)
+    ![Storage Explorer 2 konfigurálása](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-2.png)
 
-2. A **Kapcsolódás az Azure Storage-hoz** párbeszédpanelen válassza **a Storage-fiók nevének és kulcsának használata**lehetőséget.
+2. A **Kapcsolódás az Azure Storage-hoz** párbeszédpanelen válassza **a Storage-fiók nevének és kulcsának használata** lehetőséget.
 
-    ![Storage Explorer konfigurálása](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-3.png)
+    ![Storage Explorer 3 konfigurálása](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-3.png)
 
 2. A **kapcsolat neve és kulcsa** párbeszédpanelen hajtsa végre a következő lépéseket:
 
@@ -36,14 +36,14 @@ Kövesse az alábbi lépéseket a Storage-fiókhoz való kapcsolódáshoz és a 
     2. Adja meg az Edge Storage-fiók nevét.
     3. Illessze be az eszköz helyi API-jai által Azure Resource Manager használatával kapott hozzáférési kulcsot.
     4. Válassza a tárolási tartomány lehetőséget **(adja meg az alábbit)** , majd adja meg a blob Service-végpont utótagját a következő formátumban: `<appliance name>.<DNSdomain>` . 
-    5. Az átvitel HTTP *-kapcsolaton*keresztüli **használatának** engedélyezése. 
-    6. Kattintson a **Tovább** gombra.
+    5. Az átvitel HTTP *-kapcsolaton* keresztüli **használatának** engedélyezése. 
+    6. Válassza a **Tovább** gombot.
 
-    ![Storage Explorer konfigurálása](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-4.png)    
+    ![Storage Explorer 4 konfigurálása](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-4.png)    
 
-3. A **kapcsolatok összegzése** párbeszédpanelen tekintse át a megadott adatokat. Kattintson a **Csatlakozás** gombra.
+3. A **kapcsolatok összegzése** párbeszédpanelen tekintse át a megadott adatokat. Válassza a **Kapcsolódás** lehetőséget.
 
-    ![Storage Explorer konfigurálása](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-5.png)
+    ![Storage Explorer 5 konfigurálása](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-5.png)
 
 4. A sikeresen hozzáadott fiók megjelenik a Storage Explorer bal oldali ablaktábláján (külső, egyéb) a nevéhez hozzáfűzve. A tároló megtekintéséhez válassza a **blob-tárolók** lehetőséget.
 
@@ -53,33 +53,33 @@ A következő lépésben ellenőrizheti, hogy az adatátvitel ténylegesen műk�
 
 Az alábbi lépéseket követve töltse be az adatait a peremhálózati Storage-fiókjába az eszközön, és automatikusan a leképezett Azure Storage-fiókba.
 
-1. Válassza ki azt a tárolót, amelyhez be szeretné tölteni az adatait a peremhálózati Storage-fiókban. Válassza a **feltöltés** lehetőséget, majd válassza a **fájlok feltöltése**lehetőséget.
+1. Válassza ki azt a tárolót, amelyhez be szeretné tölteni az adatait a peremhálózati Storage-fiókban. Válassza a **feltöltés** lehetőséget, majd válassza a **fájlok feltöltése** lehetőséget.
 
     ![Adatátvitel ellenőrzése](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-1.png)
 
-2. A **fájlok feltöltése** párbeszédpanelen navigáljon, és válassza ki a feltölteni kívánt fájlokat. Kattintson a **Tovább** gombra.
+2. A **fájlok feltöltése** párbeszédpanelen navigáljon, és válassza ki a feltölteni kívánt fájlokat. Válassza a **Tovább** gombot.
 
-    ![Adatátvitel ellenőrzése](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-2.png)
+    ![Adatátvitel ellenőrzése 2](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-2.png)
 
 3. Ellenőrizze, hogy a fájlok feltöltése megtörtént-e. A feltöltött fájlok megjelennek a tárolóban.
 
-    ![Adatátvitel ellenőrzése](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-3.png)
+    ![Adatátviteli adatok ellenőrzése 3](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-3.png)
 
 4. Ezután csatlakozni fog ahhoz az Azure Storage-fiókhoz, amelyet ehhez a peremhálózati Storage-fiókhoz rendeltek. Az Edge Storage-fiókba feltöltött összes adattal automatikusan fel kell venni az Azure Storage-fiókot. 
     
     Az Azure Storage-fiókhoz tartozó kapcsolati karakterlánc beszerzéséhez nyissa meg az **Azure Storage-fiók > a hozzáférési kulcsokat** , és másolja a kapcsolati karakterláncot.
 
-    ![Adatátvitel ellenőrzése](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-5.png)
+    ![Adatátvitel ellenőrzése 4](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-5.png)
 
     Az Azure Storage-fiókhoz való csatoláshoz használja a kapcsolódási karakterláncot.  
 
-    ![Adatátvitel ellenőrzése](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-4.png)
+    ![Adatátviteli adatok ellenőrzése 5](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-4.png)
 
 
-5. A **kapcsolatok összegzése** párbeszédpanelen tekintse át a megadott adatokat. Kattintson a **Csatlakozás** gombra.
+5. A **kapcsolatok összegzése** párbeszédpanelen tekintse át a megadott adatokat. Válassza a **Kapcsolódás** lehetőséget.
 
-    ![Adatátvitel ellenőrzése](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-6.png)
+    ![Adatátviteli adatok ellenőrzése 6](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-6.png)
 
 6. Látni fogja, hogy a peremhálózati Storage-fiókban feltöltött fájlok átkerültek az Azure Storage-fiókba.
 
-    ![Adatátvitel ellenőrzése](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-7.png)
+    ![Adatátviteli szolgáltatás ellenőrzése 7](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-7.png)

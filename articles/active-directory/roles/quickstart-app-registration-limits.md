@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: quickstart
-ms.date: 08/07/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, devx-track-azurepowershell
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd764417a4598899bf17dc6a00c633f19d64fa6f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4a78296d3fd040b047c2a6cc3761d429883aa9d1
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379196"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378788"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Gyors útmutató: korlátlan alkalmazás-regisztrációk létrehozásának engedélyezése
 
@@ -29,25 +29,25 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 ## <a name="create-a-custom-role-using-the-azure-ad-portal"></a>Egyéni szerepkör létrehozása az Azure AD-portál használatával
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) a Kiemelt szerepkörű rendszergazda vagy a globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
-1. Válassza a **Azure Active Directory**lehetőséget, válassza a **szerepkörök és rendszergazdák**lehetőséget, majd válassza az **új egyéni szerepkör**lehetőséget.
+1. Válassza a **Azure Active Directory** lehetőséget, válassza a **szerepkörök és rendszergazdák** lehetőséget, majd válassza az **új egyéni szerepkör** lehetőséget.
 
     ![Szerepkörök létrehozása vagy szerkesztése a szerepkörök és rendszergazdák lapról](./media/quickstart-app-registration-limits/new-custom-role.png)
 
-1. Az **alapvető beállítások** lapon adja meg az "alkalmazás regisztrációs létrehozója" kifejezést a szerepkör nevéhez, és "korlátlan számú alkalmazás-regisztrációt hozhat létre" a szerepkör leírásához, majd kattintson a **tovább**gombra.
+1. Az **alapvető beállítások** lapon adja meg az "alkalmazás regisztrációs létrehozója" kifejezést a szerepkör nevéhez, és "korlátlan számú alkalmazás-regisztrációt hozhat létre" a szerepkör leírásához, majd kattintson a **tovább** gombra.
 
     ![adja meg az egyéni szerepkör nevét és leírását az alapok lapon](./media/quickstart-app-registration-limits/basics-tab.png)
 
-1. Az **engedélyek** lapon adja meg a "Microsoft. Directory/alkalmazások/létrehozás" kifejezést a keresőmezőbe, majd jelölje be a kívánt engedélyek melletti jelölőnégyzeteket, majd kattintson a **tovább**gombra.
+1. Az **engedélyek** lapon adja meg a "Microsoft. Directory/alkalmazások/létrehozás" kifejezést a keresőmezőbe, majd jelölje be a kívánt engedélyek melletti jelölőnégyzeteket, majd kattintson a **tovább** gombra.
 
     ![Egyéni szerepkör engedélyeinek kiválasztása az engedélyek lapon](./media/quickstart-app-registration-limits/permissions-tab.png)
 
-1. A **felülvizsgálat + létrehozás** lapon tekintse át az engedélyeket, és válassza a **Létrehozás**lehetőséget.
+1. A **felülvizsgálat + létrehozás** lapon tekintse át az engedélyeket, és válassza a **Létrehozás** lehetőséget.
 
 ### <a name="assign-the-role-in-the-azure-ad-portal"></a>A szerepkör kiosztása az Azure AD-portálon
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) a Kiemelt szerepkörű rendszergazda vagy a globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
-1. Válassza a **Azure Active Directory** , majd a **szerepkörök és rendszergazdák**lehetőséget.
-1. Válassza ki az alkalmazás regisztrációjának létrehozója szerepkört, és válassza a **hozzárendelés hozzáadása**elemet.
+1. Válassza a **Azure Active Directory** , majd a **szerepkörök és rendszergazdák** lehetőséget.
+1. Válassza ki az alkalmazás regisztrációjának létrehozója szerepkört, és válassza a **hozzárendelés hozzáadása** elemet.
 1. Válassza ki a kívánt felhasználót, és kattintson a **kiválasztás** gombra a felhasználó szerepkörhöz való hozzáadásához.
 
 Kész! Ebben a rövid útmutatóban sikeresen létrehozott egy egyéni szerepkört, amely korlátlan számú alkalmazás regisztrációját hozza létre, majd hozzárendeli a szerepkört egy felhasználóhoz.

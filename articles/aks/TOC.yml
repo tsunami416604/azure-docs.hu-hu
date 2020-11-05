@@ -59,7 +59,7 @@
           href: ./security-controls-policy.md
     - name: Hálózat
       href: concepts-network.md
-    - name: Storage
+    - name: Tárolás
       href: concepts-storage.md
     - name: Méretezés
       href: concepts-scale.md
@@ -154,6 +154,8 @@
           href: cluster-container-registry-integration.md
         - name: Virtuális csomópontok létrehozása
           items:
+            - name: Virtuális csomópontok használata
+              href: virtual-nodes.md
             - name: Az Azure parancssori felületének használata
               href: virtual-nodes-cli.md
             - name: Az Azure Portal használata

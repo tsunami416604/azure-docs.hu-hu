@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan méretezheti az Azure-ban az erőforrás-webalk
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: d37a33ea575bbb8481d7d50dad8eab0f9ce0899d
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 3662f6007049a5531e11c193adf71e8f8442dcdb
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/05/2020
-ms.locfileid: "93361202"
+ms.locfileid: "93377020"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Ismerkedés az Azure-beli autoskálázással
 Ez a cikk azt ismerteti, hogyan állíthatja be az erőforráshoz tartozó autoskálázási beállításokat a Microsoft Azure Portalban.
@@ -125,13 +125,16 @@ Az elérési útnak egy percen belül kell válaszolnia a 200 és a 299 között
 
 Az állapot-ellenőrzési útvonalnak ellenőriznie kell az alkalmazás kritikus összetevőit. Ha például az alkalmazás egy adatbázistól és egy üzenetkezelő rendszertől függ, az állapot-ellenőrzési végpontnak csatlakoznia kell ezekhez az összetevőkhöz. Ha az alkalmazás nem tud csatlakozni egy kritikus összetevőhöz, az elérési útnak egy 500 szintű választ kell visszaadnia, amely azt jelzi, hogy az alkalmazás nem kifogástalan állapotú.
 
-#### <a name="security"></a>Biztonság 
+#### <a name="security"></a>Biztonsági őr 
 
 A nagyvállalati fejlesztési csapatoknak gyakran kell megfelelniük a kitett API-k biztonsági követelményeinek. Az Healthcheck végpont biztonságossá tételéhez először olyan szolgáltatásokat kell használnia, mint például az [IP-korlátozások](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules), az [ügyféltanúsítványok](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)vagy egy Virtual Network az alkalmazáshoz való hozzáférés korlátozásához. A Healthcheck végpontot úgy is biztonságossá teheti, hogy a `User-Agent` bejövő kérelemnek megfelel `ReadyForRequest/1.0` . A User-Agentt nem lehet meghamisítani, mert a kérést az előző biztonsági funkciók már biztosították.
 
 ### <a name="behavior"></a>Működés
 
 Az állapot-ellenőrzési útvonal megadásakor App Service fogja pingelni az elérési utat az összes példányon. Ha a sikeres válasz kódja 5 pingelés után nem érkezik meg, akkor a példány "nem megfelelő" állapotnak minősül. A nem kifogástalan állapotú példányok kimaradnak a terheléselosztó forgása alól. Megadhatja, hogy a sikertelen pingelések száma az `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` alkalmazás beállításával történjen. Ez az Alkalmazásbeállítások 2 és 10 közötti egész számra állítható be. Ha például ezt a értékre állítja `2` , a rendszer a példányokat két sikertelen pingelés után eltávolítja a terheléselosztó közül. Emellett, ha a vertikális felskálázást végzi, App Service az állapot-ellenőrzési útvonal pingelésével biztosítja, hogy az új példányok készen álljanak a kérelmekre a terheléselosztó hozzáadása előtt.
+
+> [!NOTE]
+> Ne feledje, hogy a terheléselosztó kizárása érdekében a App Service-tervet 2 vagy több példányra kell méretezni. Ha csak 1 példánya van, akkor nem lesz eltávolítva a terheléselosztó közül, még akkor sem, ha az állapota nem megfelelő. 
 
 A fennmaradó kifogástalan állapotú példányok nagyobb terhelést tapasztalhatnak. A fennmaradó példányok túlnyomó számának elkerülése érdekében a példányok több mint fele ki lesz zárva. Ha például egy App Service csomag 4 példányra van kibővítve, és 3 nem kifogástalan állapotú, legfeljebb 2 lesz kizárva a terheléselosztó forgásból. A másik 2 példány (1 kifogástalan és 1 sérült) továbbra is fogadja a kéréseket. Abban a legrosszabb esetben, ha az összes példány állapota nem kifogástalan, a rendszer nem zárja ki az egyiket sem. Ha szeretné felülbírálni ezt a viselkedést, a `WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` és a közötti értékre állíthatja az alkalmazás beállítását `0` `100` . Ha magasabb értékre állítja ezt a beállítást, a rendszer eltávolítja a nem megfelelő állapotú példányokat (az alapértelmezett érték 50).
 

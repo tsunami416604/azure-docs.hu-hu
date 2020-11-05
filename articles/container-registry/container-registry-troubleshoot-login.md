@@ -3,12 +3,12 @@ title: A beállításjegyzékbe való bejelentkezés hibáinak megoldása
 description: Az Azure Container registrybe való bejelentkezés során felmerülő gyakori problémák tünetei, okai és megoldása
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: a00db5cc34da6d90210a22005f33b0ad1bf20f1b
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 5499c64bef8ce36a5f622c4d847b417ef49a5a03
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348899"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379502"
 ---
 # <a name="troubleshoot-registry-login"></a>Beállításjegyzékbeli bejelentkezés – problémamegoldás
 
@@ -98,7 +98,9 @@ Kapcsolódó hivatkozások:
 
 Erősítse meg a hitelesítő adatokhoz társított beállításjegyzék-engedélyeket, például az `AcrPull` Azure-szerepkört a lemezképek a beállításjegyzékből való lekéréséhez, vagy a `AcrPush` lemezképek leküldési szerepköréhez. 
 
-Ha az Azure CLI-vel szeretne hozzáférni egy beállításjegyzékhez a portálon vagy a beállításjegyzék-kezelésben, legalább `Reader` Azure Resource Manager művelet végrehajtásához szükséges szerepkört kell használnia.
+Az Azure CLI-vel a portálon vagy a beállításjegyzék-kezelésben lévő beállításjegyzékhez való hozzáféréshez legalább a `Reader` szerepkör vagy az azzal egyenértékű engedélyek szükségesek Azure Resource Manager műveletek végrehajtásához.
+
+Ha az engedélyei nemrég változnak, hogy lehetővé tegyék a beállításjegyzék hozzáférését a portálon, előfordulhat, hogy egy inkognitóban vagy privát munkamenetet kell kipróbálnia a böngészőben, hogy elkerülje az elavult böngésző gyorsítótárának vagy cookie-jait.
 
 A szerepkör-hozzárendelések hozzáadásához vagy eltávolításához az előfizetés megfelelő jogosultságokkal kell rendelkeznie a beállításjegyzékben.
 

@@ -5,20 +5,20 @@ services: active-directory
 author: markwahl-msft
 manager: daveba
 ms.author: curtand
-ms.date: 11/08/2019
+ms.date: 11/05/2020
 ms.topic: conceptual
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ffcbd77997e230b9b21ed29b47e37236de025f6
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 966d264cc338487dd1a8c04f2efd0825dfccdef0
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376230"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378754"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Vészhelyzeti hozzáférési fiókok kezelése az Azure AD-ben
 
@@ -87,46 +87,46 @@ A szervezeteknek figyelniük kell a bejelentkezési és a naplózási tevékenys
 ### <a name="create-an-alert-rule"></a>Riasztási szabály létrehozása
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) egy olyan fiókkal, amely a megfigyelő közreműködő szerepkörhöz van rendelve Azure monitorban.
-1. Válassza a **minden szolgáltatás**lehetőséget, írja be a "log Analytics" kifejezést a Keresés mezőbe, majd válassza ki **log Analytics munkaterületeket**.
+1. Válassza a **minden szolgáltatás** lehetőséget, írja be a "log Analytics" kifejezést a Keresés mezőbe, majd válassza ki **log Analytics munkaterületeket**.
 1. Jelöljön ki egy munkaterületet.
-1. A munkaterületen válassza a **riasztások**  >  **új riasztási szabály**lehetőséget.
-    1. Az **erőforrás**területen ellenőrizze, hogy az előfizetés az, amelyhez a riasztási szabályt hozzá kívánja rendelni.
-    1. A **feltétel**területen válassza a **Hozzáadás**lehetőséget.
-    1. Válassza az **egyéni naplók keresése** lehetőséget a **jel neve**alatt.
-    1. A **keresési lekérdezés**területen adja meg a következő lekérdezést, szúrja be a két break Glass-fiók objektum-azonosítóit.
+1. A munkaterületen válassza a **riasztások**  >  **új riasztási szabály** lehetőséget.
+    1. Az **erőforrás** területen ellenőrizze, hogy az előfizetés az, amelyhez a riasztási szabályt hozzá kívánja rendelni.
+    1. A **feltétel** területen válassza a **Hozzáadás** lehetőséget.
+    1. Válassza az **egyéni naplók keresése** lehetőséget a **jel neve** alatt.
+    1. A **keresési lekérdezés** területen adja meg a következő lekérdezést, szúrja be a két break Glass-fiók objektum-azonosítóit.
         > [!NOTE]
         > Minden további felvenni kívánt break Glass-fiókhoz adjon hozzá egy másik "vagy UserId = =" ObjectGuid a lekérdezéshez.
 
         ![A break Glass-fiókok objektumazonosítók hozzáadása egy riasztási szabályhoz](./media/security-emergency-access/query-image1.png)
 
-    1. A **riasztási logika**területen adja meg a következőket:
+    1. A **riasztási logika** területen adja meg a következőket:
 
         - A következő alapján: az eredmények száma
         - Operátor: nagyobb, mint
         - Küszöbérték: 0
 
-    1. A **kiértékelve**alapján területen válassza ki azt az **időtartamot (percben)** , ameddig a lekérdezés futtatásának idejét szeretné használni, valamint a **gyakoriságot (percben)** , hogy milyen gyakran szeretné futtatni a lekérdezést. A gyakoriság értéke nem lehet kisebb, mint az időszak.
+    1. A **kiértékelve** alapján területen válassza ki azt az **időtartamot (percben)** , ameddig a lekérdezés futtatásának idejét szeretné használni, valamint a **gyakoriságot (percben)** , hogy milyen gyakran szeretné futtatni a lekérdezést. A gyakoriság értéke nem lehet kisebb, mint az időszak.
 
         ![riasztási logika](./media/security-emergency-access/alert-image2.png)
 
     1. Válassza a **Done** (Kész) lehetőséget. Most már megtekintheti a riasztás becsült havi költségét.
 1. Válassza ki a riasztás által bejelentendő felhasználók műveleti csoportját. Ha létre szeretne hozni egyet, tekintse meg [a műveleti csoport létrehozása](#create-an-action-group)című témakört.
-1. Ha testre szeretné szabni a műveleti csoport tagjainak küldött e-mailes értesítést, a műveletek **testreszabása**területen válassza a műveletek lehetőséget.
-1. A **riasztás részletei**területen adja meg a riasztási szabály nevét, és adjon hozzá egy opcionális leírást.
+1. Ha testre szeretné szabni a műveleti csoport tagjainak küldött e-mailes értesítést, a műveletek **testreszabása** területen válassza a műveletek lehetőséget.
+1. A **riasztás részletei** területen adja meg a riasztási szabály nevét, és adjon hozzá egy opcionális leírást.
 1. Az esemény **súlyossági szintjének** beállítása. Javasoljuk, hogy a kritikus értékre **(0.)** állítsa be.
-1. A **szabály engedélyezése a létrehozáskor**területen hagyja a beállítást **Igen**értékre állítva.
-1. Ha egy ideig ki szeretné kapcsolni a riasztásokat, jelölje be a **riasztások mellőzése** jelölőnégyzetet, és adja meg a várakozási időtartamot a riasztás újbóli kikapcsolása előtt, majd válassza a **Mentés**lehetőséget.
+1. A **szabály engedélyezése a létrehozáskor** területen hagyja a beállítást **Igen** értékre állítva.
+1. Ha egy ideig ki szeretné kapcsolni a riasztásokat, jelölje be a **riasztások mellőzése** jelölőnégyzetet, és adja meg a várakozási időtartamot a riasztás újbóli kikapcsolása előtt, majd válassza a **Mentés** lehetőséget.
 1. Kattintson a **Riasztási szabály létrehozása** lehetőségre.
 
 ### <a name="create-an-action-group"></a>Műveleti csoport létrehozása
 
-1. Válassza **a műveleti csoport létrehozása**lehetőséget.
+1. Válassza **a műveleti csoport létrehozása** lehetőséget.
 
     ![műveleti csoport létrehozása értesítési műveletekhez](./media/security-emergency-access/action-group-image3.png)
 
 1. Adja meg a műveleti csoport nevét és egy rövid nevet.
 1. Ellenőrizze az előfizetést és az erőforráscsoportot.
-1. A művelet típusa területen válassza az **e-mail/SMS/leküldés/hang**lehetőséget.
+1. A művelet típusa területen válassza az **e-mail/SMS/leküldés/hang** lehetőséget.
 1. Adja meg a művelet nevét, például: **globális rendszergazda értesítése**.
 1. Válassza ki a **műveletet** **e-mail/SMS/leküldés/hangként**.
 1. Válassza a **részletek szerkesztése** lehetőséget a konfigurálni kívánt értesítési módszerek kiválasztásához, majd adja meg a szükséges kapcsolattartási adatokat, majd a részletek mentéséhez kattintson **az OK gombra** .

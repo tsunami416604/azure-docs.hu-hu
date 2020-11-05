@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 08/21/2020
 ms.author: sasarava
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18e97aea5c556c4f8e6ff1fb1b91a82da6de1b59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14cfd1aef3a49baa11050293fc216256f33cee7a
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88749357"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376663"
 ---
 # <a name="compatible-operating-systems-for-hana-large-instances"></a>Kompatibilis operációs rendszerek a HANA nagyméretű példányaihoz
 
@@ -39,14 +39,15 @@ ms.locfileid: "88749357"
   | SLES 12 SP4      | Elérhető    | S224oo, S224om, S224ooo, S224oom |
   
 ## <a name="hana-large-instance-type-ii"></a>HANA nagyméretű példány típusa II     
-  |  Operációs rendszer       | Rendelkezésre állás        | Termékváltozatok                                                              |
-  |-------------------------|---------------------|-------------------------------------------------------------------|
-  | SLES 12 SP2             | Többé nem ajánlott | S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm, S960m |
-  | SLES 12 SP3             | Elérhető           | S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm, S960m |
-  | SLES 12 SP4             | Elérhető           | S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm, S960m |
+  |  Operációs rendszer       | Rendelkezésre állás        | Termékváltozatok                                                                     |
+  |-------------------------|---------------------|--------------------------------------------------------------------------|
+  | SLES 12 SP2             | Többé nem ajánlott | S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm, S960m        |
+  | SLES 12 SP3             | Elérhető           | S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm, S960m        |
+  | SLES 12 SP4             | Elérhető           | S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm, S960m        |
   | SLES 12 SP5             | Elérhető           | S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm, S896m, S960m |
   | SLES 15 SP1             | Elérhető           | S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm, S896m, S960m |
-  
+  | RHEL 7,6                | Elérhető           | S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm, S896m, S960m |
+
 ## <a name="related-documents"></a>Kapcsolódó dokumentumok
 
 - További információ az [elérhető SKU](hana-available-skus.md) -ról

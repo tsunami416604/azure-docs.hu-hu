@@ -6,17 +6,20 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: 16f4cfd70cf4dbeaeb1376368787b3fa0e4b9a52
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 434d978f6a228bad9b142738767500d639017032
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994038"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378873"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>A Mikrométer használata az Azure Application Insights Java SDK-val
 
+> [!IMPORTANT]
+> A Java-alkalmazások figyelésének ajánlott módszere az automatikus kiépítés használata a kód módosítása nélkül. Kérjük, kövesse az [Application Insights Java 3,0-ügynökre](./java-in-process-agent.md)vonatkozó irányelveket.
+
 > [!NOTE]
-> A Application Insights Java SDK nem támogatja a Spring webflux használatát. 
+> A Application Insights Java SDK nem támogatja a Spring webflux használatát – a [Application Insights Java 3,0-ügynököt](./java-in-process-agent.md) használja helyette. 
 >
 > A webflux és a Mikrométer is támogatott [Application Insights Java 3,0-ügynökben](./java-on-premises.md) , amely nem igényel rendszerállapotot. 
 

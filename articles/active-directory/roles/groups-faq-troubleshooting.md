@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: article
-ms.date: 08/13/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 837750d7eeef9bc7a133a54b23a0c52c847364eb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0f80f67ac695c17cc760e0e87fb9b11384fb7585
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375993"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377734"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>A felhőbeli csoportokhoz hozzárendelt szerepkörökkel kapcsolatos hibák elhárítása
 
@@ -32,9 +32,9 @@ ms.locfileid: "92375993"
 
 **A:** Alapértelmezés szerint csak a Kiemelt szerepkörű rendszergazdák és a globális rendszergazdák kezelhetik a szerepkörhöz hozzárendelhető csoportok tagságát, de a szerepkörhöz hozzárendelhető csoportok felügyeletét a csoportok tulajdonosainak hozzáadásával is delegálhatja.
 
-**K**: a cégem ügyfélszolgálati rendszergazdája vagyok, de nem tudom frissíteni egy olyan felhasználó jelszavát, aki egy címtár-olvasó. Miért történik ez?
+**K** : a cégem ügyfélszolgálati rendszergazdája vagyok, de nem tudom frissíteni egy olyan felhasználó jelszavát, aki egy címtár-olvasó. Miért történik ez?
 
-**A**: Előfordulhat, hogy a felhasználó egy szerepkör-hozzárendelésre jogosult csoportból kapta meg a címtár-olvasót. A szerepkörhöz hozzárendelhető csoportok összes tagja és tulajdonosa védve van. A védett felhasználók hitelesítő adatainak alaphelyzetbe állításához csak a privilegizált hitelesítő rendszergazda vagy a globális rendszergazdai szerepkör felhasználói módosíthatnak.
+**A** : Előfordulhat, hogy a felhasználó egy szerepkör-hozzárendelésre jogosult csoportból kapta meg a címtár-olvasót. A szerepkörhöz hozzárendelhető csoportok összes tagja és tulajdonosa védve van. A védett felhasználók hitelesítő adatainak alaphelyzetbe állításához csak a privilegizált hitelesítő rendszergazda vagy a globális rendszergazdai szerepkör felhasználói módosíthatnak.
 
 **K:** Nem tudom frissíteni egy felhasználó jelszavát. Nincs hozzárendelve magasabb jogosultsági szintű szerepkör. Mi történik?
 
@@ -71,7 +71,7 @@ Felhasználó | Katalógus tulajdonosa | Csak akkor, ha a csoport tulajdonosa | 
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és nyissa meg **Azure Active Directory**.
 1. Válassza a felhasználók lehetőséget, és nyisson meg egy felhasználói profilt.
-1. Válassza ki a **hozzárendelt szerepkörök**elemet.
+1. Válassza ki a **hozzárendelt szerepkörök** elemet.
 1. Válassza a fogaskerék ikont. Megnyílik egy panel, amely megadhatja ezt az információt. A közvetlen hozzárendelések mellett "Eltávolítás" gomb is található. A közvetett szerepkör-hozzárendelés eltávolításához távolítsa el a felhasználót a szerepkörhöz hozzárendelt csoportból.
 
 **K:** Hogyan a szerepkörhöz hozzárendelhető összes csoportot megtekintheti?
@@ -79,8 +79,8 @@ Felhasználó | Katalógus tulajdonosa | Csak akkor, ha a csoport tulajdonosa | 
 **A:** Kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és nyissa meg **Azure Active Directory**.
-1. Válassza **Groups**  >  **a csoportok minden csoport**elemet.
-1. Válassza a **szűrők hozzáadása**lehetőséget.
+1. Válassza **Groups**  >  **a csoportok minden csoport** elemet.
+1. Válassza a **szűrők hozzáadása** lehetőséget.
 1. Szűrés a **szerepkörhöz rendelhető**.
 
 **K:** Hogyan tudni, hogy melyik szerepkört rendeli hozzá közvetlenül vagy közvetve a résztvevőhöz?
@@ -89,7 +89,7 @@ Felhasználó | Katalógus tulajdonosa | Csak akkor, ha a csoport tulajdonosa | 
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és nyissa meg **Azure Active Directory**.
 1. Válassza a felhasználók lehetőséget, és nyisson meg egy felhasználói profilt.
-1. Válassza a **hozzárendelt szerepkörök**lehetőséget, majd:
+1. Válassza a **hozzárendelt szerepkörök** lehetőséget, majd:
 
     - Prémium szintű Azure AD P1 licenccel rendelkező szervezetek: válassza a fogaskerék ikont. Megnyílik egy panel, amely megadhatja ezt az információt.
     - Prémium szintű Azure AD P2 licencelt szervezeteknél: a **tagság** oszlopban talál közvetlen és örökölt licencelési információkat.
@@ -100,5 +100,5 @@ Felhasználó | Katalógus tulajdonosa | Csak akkor, ha a csoport tulajdonosa | 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez](groups-concept.md)
+- [Felhőbeli csoportok használata a szerepkör-hozzárendelések kezeléséhez](groups-concept.md)
 - [Szerepkörhöz hozzárendelhető csoport létrehozása](groups-create-eligible.md)

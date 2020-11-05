@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f58aaecaa9f8606399b40fdb1d38a274117ec6a2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bc2c42f407ee31a792a6634a813358d428120b46
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375999"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378618"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>Szerepkörhöz rendelt csoport létrehozása Azure Active Directory
 
@@ -27,7 +27,7 @@ Csak az "isAssignableToRole" tulajdonsággal létrehozott, igaz értékre állí
 ## <a name="using-azure-ad-admin-center"></a>Az Azure AD felügyeleti központ használata
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) a Kiemelt szerepkörű rendszergazda vagy a globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
-1. Válassza **Groups**  >  **a csoportok minden**csoport  >  **új csoport**lehetőséget.
+1. Válassza **Groups**  >  **a csoportok minden** csoport  >  **új csoport** lehetőséget.
 
     [![Nyisson meg Azure Active Directory, és hozzon létre egy új csoportot.](./media/groups-create-eligible/new-group.png "Nyisson meg Azure Active Directory, és hozzon létre egy új csoportot.")](./media/groups-create-eligible/new-group.png#<lightbox>)
 
@@ -40,7 +40,7 @@ Csak az "isAssignableToRole" tulajdonsággal létrehozott, igaz értékre állí
 
     [![Vegyen fel tagokat a szerepkörhöz hozzárendelhető csoportba, és rendeljen hozzá szerepköröket.](./media/groups-create-eligible/specify-members.png "Vegyen fel tagokat a szerepkörhöz hozzárendelhető csoportba, és rendeljen hozzá szerepköröket.")](./media/groups-create-eligible/specify-members.png#<lightbox>)
 
-1. A tagok és a tulajdonosok megadása után válassza a **Létrehozás**lehetőséget.
+1. A tagok és a tulajdonosok megadása után válassza a **Létrehozás** lehetőséget.
 
     [![A létrehozás gomb az oldal alján található.](./media/groups-create-eligible/create-button.png "A létrehozás gomb az oldal alján található.")](./media/groups-create-eligible/create-button.png#<lightbox>)
 
@@ -126,6 +126,6 @@ Az ilyen típusú csoportok esetében `isPublic` mindig hamis lesz, és `isSecur
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Szerepkör társítása egy felhőalapú csoporthoz](groups-assign-role.md)
-- [Felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez](groups-concept.md)
+- [Szerepkör hozzárendelése felhőbeli csoporthoz](groups-assign-role.md)
+- [Felhőbeli csoportok használata a szerepkör-hozzárendelések kezeléséhez](groups-concept.md)
 - [A felhőbeli csoportokhoz hozzárendelt szerepkörökkel kapcsolatos hibák elhárítása](groups-faq-troubleshooting.md)

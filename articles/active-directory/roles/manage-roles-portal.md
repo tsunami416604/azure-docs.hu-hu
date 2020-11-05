@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: how-to
-ms.date: 06/15/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85a0618dc5c99b662bbe5520615b5983da5aec91
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 9330c6d34dcf5a799d65ebba176565ff031cb956
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375951"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376782"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Rendszergazdai szerepkörök megtekintése és kiosztása az Azure Active Directoryban
 
@@ -26,7 +26,7 @@ Most már megtekintheti és kezelheti a rendszergazdai szerepkörök összes tag
 
 ## <a name="view-all-roles"></a>Az összes szerepkör megtekintése
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza a **Azure Active Directory**lehetőséget.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza a **Azure Active Directory** lehetőséget.
 
 1. Válassza a **szerepkörök és rendszergazdák** lehetőséget az összes elérhető szerepkör listájának megtekintéséhez.
 
@@ -59,13 +59,13 @@ A szerepkör tagjainak megtekintésekor válassza a **Leírás** lehetőséget a
 
 ## <a name="download-role-assignments"></a>Szerepkör-hozzárendelések letöltése
 
-Egy adott szerepkör összes hozzárendelésének letöltéséhez a **szerepkörök és rendszergazdák** lapon válasszon ki egy szerepkört, majd válassza a **szerepkör-hozzárendelések letöltése**lehetőséget. Egy CSV-fájl, amely felsorolja a szerepkör összes hatókörében lévő hozzárendeléseket.
+Egy adott szerepkör összes hozzárendelésének letöltéséhez a **szerepkörök és rendszergazdák** lapon válasszon ki egy szerepkört, majd válassza a **szerepkör-hozzárendelések letöltése** lehetőséget. Egy CSV-fájl, amely felsorolja a szerepkör összes hatókörében lévő hozzárendeléseket.
 
 ![szerepkör összes hozzárendelésének letöltése](./media/manage-roles-portal/download-role-assignments.png)
 
 ## <a name="assign-a-role"></a>Szerepkör kiosztása
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) globális rendszergazda vagy Kiemelt szerepkörű rendszergazdai jogosultságokkal, és válassza a **Azure Active Directory**lehetőséget.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) globális rendszergazda vagy Kiemelt szerepkörű rendszergazdai jogosultságokkal, és válassza a **Azure Active Directory** lehetőséget.
 
 1. Válassza a **szerepkörök és rendszergazdák** lehetőséget az összes elérhető szerepkör listájának megtekintéséhez.
 

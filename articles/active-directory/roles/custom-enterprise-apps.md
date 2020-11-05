@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99d83005599c59f6a4249014139b594764df8acf
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0932e4b6163264b0b514958e1e898b297e249870
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375281"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378550"
 ---
 # <a name="assign-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>Egyéni szerepkörök hozzárendelésével felügyelheti a vállalati alkalmazásokat Azure Active Directory
 
@@ -46,31 +46,31 @@ A frissítési engedély megadása két lépésben történik:
 > Az egyéni szerepköröket a szervezetre kiterjedő szinten hozzák létre és kezelik, és csak a szervezet áttekintő oldaláról érhetők el.
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) a Kiemelt szerepkörű rendszergazda vagy a szervezet globális rendszergazdai engedélyeivel.
-1. Válassza a **Azure Active Directory**lehetőséget, válassza a **szerepkörök és rendszergazdák**lehetőséget, majd válassza az **új egyéni szerepkör**lehetőséget.
+1. Válassza a **Azure Active Directory** lehetőséget, válassza a **szerepkörök és rendszergazdák** lehetőséget, majd válassza az **új egyéni szerepkör** lehetőséget.
 
     ![Új egyéni szerepkör hozzáadása az Azure AD szerepköreinek listájából](./media/custom-enterprise-apps/new-custom-role.png)
 
-1. Az **alapok** lapon adja meg a "felhasználói és csoportos hozzárendelések kezelése" nevet a szerepkörhöz, valamint a "felhasználói és csoportos hozzárendelések kezelésének engedélyezése" jogosultságot a szerepkör leírásához, majd kattintson a **tovább**gombra.
+1. Az **alapok** lapon adja meg a "felhasználói és csoportos hozzárendelések kezelése" nevet a szerepkörhöz, valamint a "felhasználói és csoportos hozzárendelések kezelésének engedélyezése" jogosultságot a szerepkör leírásához, majd kattintson a **tovább** gombra.
 
     ![Adja meg az egyéni szerepkör nevét és leírását](./media/custom-enterprise-apps/role-name-and-description.png)
 
-1. Az **engedélyek** lapon írja be a "Microsoft. Directory/ServicePrincipals/appRoleAssignedTo/Update" kifejezést a keresőmezőbe, majd jelölje be a kívánt engedélyek melletti jelölőnégyzeteket, majd kattintson a **tovább**gombra.
+1. Az **engedélyek** lapon írja be a "Microsoft. Directory/ServicePrincipals/appRoleAssignedTo/Update" kifejezést a keresőmezőbe, majd jelölje be a kívánt engedélyek melletti jelölőnégyzeteket, majd kattintson a **tovább** gombra.
 
     ![Az engedélyek hozzáadása az egyéni szerepkörhöz](./media/custom-enterprise-apps/role-custom-permissions.png)
 
-1. A **felülvizsgálat + létrehozás** lapon tekintse át az engedélyeket, és válassza a **Létrehozás**lehetőséget.
+1. A **felülvizsgálat + létrehozás** lapon tekintse át az engedélyeket, és válassza a **Létrehozás** lehetőséget.
 
     ![Most létrehozhat egy egyéni szerepkört](./media/custom-enterprise-apps/role-custom-create.png)
 
 ### <a name="assign-the-role-to-a-user-using-the-azure-ad-portal"></a>A szerepkör kiosztása egy felhasználónak az Azure AD-portál használatával
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) a Kiemelt szerepkörű rendszergazda szerepkör engedélyeivel.
-1. Válassza a **Azure Active Directory** , majd a **szerepkörök és rendszergazdák**lehetőséget.
+1. Válassza a **Azure Active Directory** , majd a **szerepkörök és rendszergazdák** lehetőséget.
 1. Válassza ki a **felhasználók és csoportok hozzárendelései szerepkör kezeléséhez szükséges engedélyeket** .
 
     ![Szerepkörök és rendszergazdák megnyitása és az egyéni szerepkör keresése](./media/custom-enterprise-apps/select-custom-role.png)
 
-1. Válassza a **hozzárendelés hozzáadása**lehetőséget, válassza ki a kívánt felhasználót, majd kattintson a **kiválasztás** elemre, és adja hozzá a szerepkör-hozzárendelést a felhasználóhoz.
+1. Válassza a **hozzárendelés hozzáadása** lehetőséget, válassza ki a kívánt felhasználót, majd kattintson a **kiválasztás** elemre, és adja hozzá a szerepkör-hozzárendelést a felhasználóhoz.
 
     ![Hozzárendelés hozzáadása az egyéni szerepkörhöz a felhasználó számára](./media/custom-enterprise-apps/assign-user-to-role.png)
 

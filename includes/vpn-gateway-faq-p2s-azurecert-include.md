@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f322803d3484b4ec2d5449e19d67d75b35d6d92f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ef67580928a45609f50d3fe798eb9d054265c0a
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75752083"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375889"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
@@ -23,7 +23,7 @@ Törölje a jelet a **"kiszolgáló identitásának ellenőrzése a tanúsítvá
 
 A kiszolgáló identitás-ellenőrzésének megkerülése általában nem ajánlott, de az Azure tanúsítványalapú hitelesítés esetében ugyanazt a tanúsítványt használja a rendszer a kiszolgáló érvényesítéséhez a VPN Tunneling Protocol (IKEv2/SSTP) és az EAP protokoll esetében. Mivel a VPN Tunneling protokoll már érvényesíti a kiszolgálói tanúsítványt és a teljes tartománynevet, a rendszer redundánsan ellenőrzi ugyanezt az EAP-ben.
 
-![pont – hely kapcsolat](./media/vpn-gateway-faq-p2s-all-include/servercert.png "Kiszolgálótanúsítvány")
+![pont – hely hitelesítés](./media/vpn-gateway-faq-p2s-all-include/servercert.png "Kiszolgálótanúsítvány")
 
 ### <a name="can-i-use-my-own-internal-pki-root-ca-to-generate-certificates-for-point-to-site-connectivity"></a>Használhatom a saját belső PKI legfelső szintű HITELESÍTÉSSZOLGÁLTATÓját a pont – hely kapcsolatokhoz tartozó tanúsítványok létrehozásához?
 

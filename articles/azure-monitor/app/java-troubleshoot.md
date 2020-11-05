@@ -4,14 +4,18 @@ description: Hibaelhárítási útmutató – élő Java-alkalmazások figyelés
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 4b6a7070b6b1b76a3f763105f4dce795f3e5c4be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d11eaa76f2133b9fdc66ba4e6bc91e2cc38c51c
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372518"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379536"
 ---
-# <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Hibaelhárítás, kérdések és válaszok: Application Insights Java-hoz
+# <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Hibaelhárítás és Q és A for Application Insights for Java SDK
+
+> [!IMPORTANT]
+> A Java-alkalmazások figyelésének ajánlott módszere az automatikus kiépítés használata a kód módosítása nélkül. Kérjük, kövesse az [Application Insights Java 3,0-ügynökre](./java-in-process-agent.md)vonatkozó irányelveket.
+
 [Az Azure Application Insights-][java]mel kapcsolatos kérdések és problémák Java-ban? Íme néhány tipp.
 
 ## <a name="build-errors"></a>Felépítési hibák
@@ -85,7 +89,7 @@ Az XML-metódus használatával újra kell indítania az alkalmazást az érték
 **Hogyan változtathatom meg, hogy a projekt melyik Azure-erőforráshoz küld adatokat?**
 
 * [Szerezze be az új erőforrás rendszerállapot-kulcsát.][java]
-* Ha a Azure Toolkit for Eclipse használatával adta hozzá Application Insights a projekthez, kattintson a jobb gombbal a webes projektre, válassza az **Azure**-t, **konfigurálja a Application Insights**, és módosítsa a kulcsot.
+* Ha a Azure Toolkit for Eclipse használatával adta hozzá Application Insights a projekthez, kattintson a jobb gombbal a webes projektre, válassza az **Azure** -t, **konfigurálja a Application Insights** , és módosítsa a kulcsot.
 * Ha a kialakítási kulcsot környezeti változóként konfigurálta, frissítse a környezeti változó értékét új Rendszerállapotkulcsot.
 * Ellenkező esetben frissítse a kulcsot ApplicationInsights.xml a projekt erőforrások mappájába.
 
@@ -179,7 +183,7 @@ Application Insights használja `org.apache.http` . Ez a névtér alatt Applicat
 >Ha engedélyezi a HIBAKERESÉSi szintű naplózást az alkalmazás összes névterében, a rendszer az összes végrehajtó modult tiszteletben tartja, beleértve a `org.apache.http` nevet is `com.microsoft.applicationinsights.core.dependencies.http` . A Application Insights nem fogja tudni alkalmazni ezeket a hívásokat, mert az Apache Library a napló hívását végzi. A HIBAKERESÉSi szint naplózása jelentős mennyiségű naplófájlt eredményez, és nem ajánlott éles üzemi példányok esetén.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 **Beállítottam Application Insights a Java Server-alkalmazáshoz. Mit tehetek?**
 
 * [Weblapok rendelkezésre állásának monitorozása][availability]

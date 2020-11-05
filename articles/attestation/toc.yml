@@ -13,7 +13,7 @@
       href: quickstart-powershell.md
 - name: Oktatóanyagok
   items:
-    - name: Igazolási szabályzat készítése és aláírása
+    - name: Igazolási szabályzat készítése
       href: author-sign-policy.md
     - name: SGX-igazolási kódminták
       href: /samples/browse/?expanded=azure&terms=attestation
@@ -47,5 +47,7 @@
       href: 'https://www.nuget.org/packages/Microsoft.Azure.DCAP/'
     - name: A Linux Azure DCAP-kódtára
       href: 'https://packages.microsoft.com/ubuntu/18.04/prod/pool/main/a/az-dcap-client/'
+    - name: Problémák elhárítása
+      href: troubleshoot-guide.md
     - name: VBS-igazolási protokoll
       href: virtualization-based-security-protocol.md

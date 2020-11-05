@@ -6,14 +6,14 @@ author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
 ms.date: 04/16/2020
-ms.openlocfilehash: c2d35a6f379b0d7cf3c4c7d61e5e679553e5302f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1afd851f5511ce7b880727c36ffb76a7f4c6d5fe
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326885"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376986"
 ---
-# <a name="java-codeless-application-monitoring-on-premises---azure-monitor-application-insights---public-preview"></a>A Java Code-alapú alkalmazások figyelése helyszíni környezetben – Azure Monitor Application Insights – nyilvános előzetes verzió
+# <a name="java-codeless-application-monitoring-on-premises---azure-monitor-application-insights"></a>A Java Code un-Application monitoring a helyszínen – Azure monitor Application Insights
 
 A Java kód nélküli alkalmazások figyelése az egyszerűségről szól – a kód módosítása nem változik, a Java-ügynök csak néhány konfigurációs módosítással engedélyezhető.
 
@@ -23,7 +23,7 @@ Ha engedélyezve van, a Java-ügynök automatikusan gyűjt számos kérést, fü
 
 Kérjük, kövesse az összes környezet [részletes utasításait](./java-in-process-agent.md) , beleértve a helyszíni környezetet is.
 
- ## <a name="next-steps"></a>További lépések
+ ## <a name="next-steps"></a>Következő lépések
 
 * [A Java-ügynök letöltésére vonatkozó utasítások letöltése](./java-in-process-agent.md)
 * [A JVM argumentumok konfigurálása](https://github.com/microsoft/ApplicationInsights-Java/wiki/3.0-Preview:-Tips-for-updating-your-JVM-args)

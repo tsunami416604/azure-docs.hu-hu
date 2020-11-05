@@ -1,37 +1,31 @@
 ---
-title: A közzétett API-k monitorozása az Azure API Management szolgáltatásban | Microsoft Docs
-description: Az API-k Azure API Management szolgáltatásban való monitorozásához kövesse az oktatóanyag lépéseit.
+title: Oktatóanyag – közzétett API-k monitorozása az Azure API Managementban | Microsoft Docs
+description: Az oktatóanyag lépéseit követve megtudhatja, hogyan használhatók metrikák, riasztások, tevékenység-naplók és erőforrás-naplók az API-k Azure-API Management való figyeléséhez.
 services: api-management
 author: vladvino
-manager: cfowler
 ms.service: api-management
-ms.workload: mobile
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 7080bd98bda5c4280ff7b06b235458bea0e9103c
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 2317e61111c3ad328e8f112e7d9567f3f5d47990
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093582"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379415"
 ---
-# <a name="monitor-published-apis"></a>A közzétett API-k monitorozása
+# <a name="tutorial-monitor-published-apis"></a>Oktatóanyag: közzétett API-k figyelése
 
-Az Azure Monitorral az egyes Azure-erőforrásoktól az Azure-ba érkező metrikákat vagy naplókat jelenítheti meg, kérdezheti le, irányíthatja át, archiválhatja, illetve különböző műveleteket is végezhet velük.
+A Azure Monitor segítségével megjelenítheti, lekérdezheti, átirányíthatja, archiválhatja és elvégezheti az Azure API Management szolgáltatásból származó mérőszámokat vagy naplókat.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Tevékenységnaplók megtekintése
-> * Erőforrás-naplók megtekintése
 > * Az API-k mérőszámainak megtekintése 
-> * Riasztási szabály beállítása a jogosulatlan API-hívások esetére
-
-A következő videó bemutatja, hogyan monitorozhatja az API Managementet az Azure Monitor használatával. 
-
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Monitor-API-Management-with-Azure-Monitor/player]
+> * Riasztási szabály beállítása 
+> * Tevékenységnaplók megtekintése
+> * Erőforrás-naplók engedélyezése és megtekintése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -43,58 +37,70 @@ A következő videó bemutatja, hogyan monitorozhatja az API Managementet az Azu
 
 ## <a name="view-metrics-of-your-apis"></a>Az API-k metrikáinak megtekintése
 
-Az API Management percenként biztosít mérőszámokat, így közel valós idejű képet ad az API-k állapotáról. Az alábbiakban a két leggyakrabban használt mérőszám szerepel. Az összes elérhető metrika listáját a [támogatott mérőszámok](../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice)részben tekintheti meg.
+API Management percenként bocsát ki [metrikákat](../azure-monitor/platform/data-platform-metrics.md) , így közel valós idejű láthatóságot biztosít az API-k állapotáról és állapotáról. A két leggyakrabban használt mérőszám a következő: Az összes elérhető metrika listáját itt tekintheti meg: [támogatott mérőszámok](../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice).
 
-* Kapacitás: segít döntéseket hozni a APIM-szolgáltatások frissítésével/lefokozásával kapcsolatban. A mérőszám percentként keletkezik, és az átjáró a jelentés pillanatában érvényes kapacitását tükrözi. A mérőszám értéke a 0–100 tartományban mozog, és az érték számítása az átjáró erőforrásai, például a processzor és a memória kihasználtsága alapján történik.
-* Kérelmek: segít az APIM-szolgáltatásokon keresztül haladó API-forgalom elemzésében. A metrikát percenként bocsátja ki, és az átjáróra vonatkozó kérelmek számát jelenti, beleértve a válasz kódokat, a helyet, az állomásnevet és a hibákat. 
+* **Kapacitás** – segít döntéseket hozni a APIM-szolgáltatások frissítésével/lefokozásával kapcsolatban. A mérőszám percentként keletkezik, és az átjáró a jelentés pillanatában érvényes kapacitását tükrözi. A mérőszám értéke a 0–100 tartományban mozog, és az érték számítása az átjáró erőforrásai, például a processzor és a memória kihasználtsága alapján történik.
+* **Kérelmek** – segít az API-forgalom elemzésében a API Management szolgáltatásain keresztül. A metrikát percenként bocsátja ki, és az átjáróra vonatkozó kérelmek számát jelenti, beleértve a válasz kódokat, a helyet, az állomásnevet és a hibákat. 
 
 > [!IMPORTANT]
 > A következő metrikák elavultak a május 2019-es verziótól kezdve, és augusztus 2023: az átjáró összes kérelme, sikeres átjáró kérése, jogosulatlan átjáró kérése, sikertelen átjáró kérések, egyéb átjáró kérelmek. Telepítse át a kérelmek metrikáját, amely egyenértékű funkciókat biztosít.
 
-![metrikadiagram](./media/api-management-azure-monitor/apim-monitor-metrics.png)
+:::image type="content" source="media/api-management-howto-use-azure-monitor/apim-monitor-metrics.png" alt-text="A mérőszámok képernyőképe API Management áttekintése":::
 
 A mérőszámok elérése:
 
-1. Válassza a lap alján lévő menü **Metrika** elemét.
+1. A [Azure Portal](https://portal.azure.com)navigáljon a API Management-példányhoz. Az **Áttekintés** oldalon tekintse át az API-k fő mérőszámait.
+1. A metrikák részletes vizsgálatához válassza a lap alján található menü **mérőszámok** elemét.
 
-    ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
+    :::image type="content" source="media/api-management-howto-use-azure-monitor/api-management-metrics-blade.png" alt-text="A figyelés menü metrikák elemének képernyőképe":::
 
-2. A legördülő listából válassza ki a megtekinteni kívánt mérőszámokat. Például: **kérelmek**. 
-3. A diagram az API-hívások teljes számát mutatja,
-4. A diagram a **kérelmek** metrikájának méretei alapján szűrhető. Kattintson például a **szűrő hozzáadása**lehetőségre, válassza a **háttérbeli válasz kódja**lehetőséget, és adja meg a 500 értéket. Most a diagramon az API-háttérbeli sikertelen kérelmek száma látható.   
+1. A legördülő listából válassza ki a megtekinteni kívánt mérőszámokat. Például: **kérelmek**. 
+1. A diagram az API-hívások teljes számát mutatja,
+1. A diagram a **kérelmek** metrikájának méretei alapján szűrhető. Válassza például a **szűrő hozzáadása** lehetőséget, válassza a **háttérbeli válasz kódja kategóriát** , a 500 értéket adja meg értékként. Most a diagramon az API-háttérbeli sikertelen kérelmek száma látható.   
 
-## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>Riasztási szabály beállítása jogosulatlan hívások esetére
+## <a name="set-up-an-alert-rule"></a>Riasztási szabály beállítása 
 
-A mérőszámok és tevékenységnaplók alapján beállíthatja, hogy milyen riasztásokat szeretne kapni. Az Azure Monitor segítségével konfigurálhat riasztásokat, amelyek aktiválása esetén a követező műveletek végrehajtására kerülhet sor:
+A [riasztások](../azure-monitor/platform/alerts-metric-overview.md) a mérőszámok és a tevékenységek naplói alapján is fogadhatók. Azure Monitor lehetővé teszi a [riasztások konfigurálását](../azure-monitor/platform/alerts-metric.md) az alábbi műveletek elvégzéséhez:
 
 * E-mail-értesítés küldése
 * Webhook meghívása
 * Egy Azure Logic App-alkalmazás meghívása
 
-A riasztások konfigurálása:
+Példa riasztási szabály konfigurálása kérelem metrikája alapján:
 
+1. A [Azure Portal](https://portal.azure.com)navigáljon a API Management-példányhoz.
 1. Válassza ki a **riasztások** elemet az oldal alján található menüsorban.
 
-    ![Képernyőkép, amely az oldal alján található menüben jeleníti meg a riasztásokat.](./media/api-management-azure-monitor/alert-menu-item.png)
+    :::image type="content" source="media/api-management-howto-use-azure-monitor/alert-menu-item.png" alt-text="A figyelés menü riasztások lehetőségének képernyőképe":::
 
-2. Kattintson egy **új riasztási szabályra** ehhez a riasztáshoz.
-3. Kattintson a **feltétel hozzáadása**elemre.
-4. Válassza a **metrikák** lehetőséget a jel típusa legördülő listából.
-5. Válassza a **jogosulatlan átjáró kérése** lehetőséget a figyelni kívánt jelként.
+1. Válassza az **+ Új riasztási szabály** lehetőséget.
+1. A **riasztási szabály létrehozása** ablakban **válassza a feltétel elemet**.
+1. A **jel logikai beállítása** ablakban:
+    1. A **jel típusa** mezőben válassza a **metrikák** lehetőséget.
+    1. A **jel neve** mezőben válassza a **kérések** lehetőséget.
+    1. A **dimenziók felosztása** területen, a **dimenzió neve** területen válassza az **átjáró-válasz kódja kategóriát**.
+    1. A **Dimension Values (dimenzió értékek** ) területen válassza az **4xx** lehetőséget, például az illetéktelen vagy érvénytelen kérelmeket.
+    1. A **riasztási logikában** adjon meg egy küszöbértéket, amely után a riasztást aktiválni kell, majd válassza a **kész** lehetőséget.
 
-    ![Képernyőfelvétel: a jel típusa mező és a nem engedélyezett átjáró által kért jel neve.](./media/api-management-azure-monitor/signal-type.png)
+    :::image type="content" source="media/api-management-howto-use-azure-monitor/threshold.png" alt-text="A jel logikai ablakok konfigurálásának képernyőképe":::
 
-6. A **jel logikájának konfigurálása** nézetben adja meg azt a küszöbértéket, amelyet követően a riasztást aktiválni kell, majd kattintson a **kész**gombra.
+1. Válasszon egy meglévő műveleti csoportot, vagy hozzon létre egy újat. A következő példában egy új műveleti csoport jön létre. A rendszer értesítő e-mailt küld admin@contoso.com . 
 
-    ![A jel logikai nézetének konfigurálását bemutató képernyőkép.](./media/api-management-azure-monitor/threshold.png)
+    :::image type="content" source="media/api-management-howto-use-azure-monitor/action-details.png" alt-text="Képernyőkép az új műveleti csoport értesítéseiről":::
 
-7. Válasszon egy meglévő műveleti csoportot, vagy hozzon létre egy újat. Az alábbi példában a rendszer e-mailt küld a rendszergazdáknak. 
+1. Adja meg a riasztási szabály nevét és leírását, és válassza ki a súlyossági szintet. 
+1. Válassza a **Riasztási szabály létrehozása** lehetőséget.
+1. Most tesztelje a riasztási szabályt úgy, hogy az API-kulcs nélkül hívja meg a konferencia API-t. Például:
 
-    ![riasztások](./media/api-management-azure-monitor/action-details.png)
+    ```bash
+    curl GET https://apim-hello-world.azure-api.net/conference/speakers HTTP/1.1 
+    ```
 
-8. Adja meg a riasztási szabály nevét és leírását, és válassza ki a súlyossági szintet. 
-9. Kattintson a **riasztási szabály létrehozása**gombra.
-10. Most próbálja meg a konferencia API-t API-kulcs nélkül meghívni. A rendszer elindítja a riasztást, és e-mailt küld a rendszergazdáknak. 
+    A rendszer a próbaidőszak alapján aktiválja a riasztást, és a rendszer elküldi az e-mailt admin@contoso.com . 
+
+    A riasztások a API Management példány **riasztások** lapján is megjelennek.
+
+    :::image type="content" source="media/api-management-howto-use-azure-monitor/portal-alerts.png" alt-text="A riasztások képernyőképe a portálon":::
 
 ## <a name="activity-logs"></a>Tevékenységnaplók
 
@@ -105,127 +111,104 @@ A tevékenységnaplók betekintést engednek az API Management-szolgáltatásokb
 
 A tevékenységnaplók az API Management szolgáltatásban, az összes Azure-erőforrás naplói pedig az Azure Monitorban érhetők el. 
 
-![tevékenységnaplók](./media/api-management-azure-monitor/apim-monitor-activity-logs.png)
+:::image type="content" source="media/api-management-howto-use-azure-monitor/api-management-activity-logs.png" alt-text="Képernyőfelvétel a tevékenység-naplóról a portálon":::
 
-A tevékenységnaplók megtekintése:
+A tevékenység naplójának megtekintése:
 
-1. Válassza ki az APIM-szolgáltatáspéldányt.
-2. Kattintson a **Tevékenységnapló** gombra.
+1. A [Azure Portal](https://portal.azure.com)navigáljon a API Management-példányhoz.
 
-    ![tevékenységnapló](./media/api-management-azure-monitor/api-management-activity-logs-blade.png)
+1. Válassza a **műveletnapló** lehetőséget.
 
-3. Válassza ki a kívánt szűrési hatókört, és kattintson az **Alkalmaz** elemre.
+    :::image type="content" source="media/api-management-howto-use-azure-monitor/api-management-activity-logs-blade.png" alt-text="Képernyőfelvétel a figyelés menü tevékenység napló eleméről":::
+1. Válassza ki a kívánt szűrési hatókört, majd **alkalmazza** a t.
 
-## <a name="resource-logs"></a>Erőforrás-naplók
+## <a name="resource-logs"></a>Erőforrásnaplók
 
-Az erőforrás-naplók részletes információkat biztosítanak a naplózáshoz és a hibaelhárításhoz fontos műveletekről és hibákról. Az erőforrás-naplók különböznek a tevékenység naplóitól. A tevékenységi naplók betekintést nyújtanak az Azure-erőforrásokon végrehajtott műveletekre. Az erőforrás-naplók betekintést nyújtanak az erőforrás által végrehajtott műveletekre.
+Az erőforrás-naplók részletes információkat biztosítanak a naplózáshoz és a hibaelhárításhoz fontos műveletekről és hibákról. Az erőforrás-naplók különböznek a tevékenység naplóitól. A műveletnapló betekintést nyújt az Azure-erőforrásokon végrehajtott műveletekre. Az erőforrás-naplók betekintést nyújtanak az erőforrás által végrehajtott műveletekre.
 
 Az erőforrás-naplók konfigurálása:
 
-1. Válassza ki az APIM-szolgáltatáspéldányt.
-2. Kattintson a **Diagnosztikai beállítások** elemre.
+1. A [Azure Portal](https://portal.azure.com)navigáljon a API Management-példányhoz.
+2. Válassza a **diagnosztikai beállítások** lehetőséget.
 
-    ![erőforrás-naplók](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
+    :::image type="content" source="media/api-management-howto-use-azure-monitor/api-management-diagnostic-logs-blade.png" alt-text="A figyelés menü diagnosztikai beállítások elemének képernyőképe":::
 
-3. Kattintson a **Diagnosztika bekapcsolása** elemre. Archiválhatja az erőforrás-naplókat a metrikákkal együtt egy Storage-fiókba, továbbíthatja őket egy Event hub-ba, vagy elküldheti azokat Azure Monitor naplókba. 
+1. Válassza a **+ diagnosztikai beállítások hozzáadása** elemet.
+1. Válassza ki a gyűjteni kívánt naplókat vagy metrikákat.
 
-A API Management jelenleg az egyes API-kérésekhez tartozó erőforrás-naplókat (óránként kötegelt feldolgozással) biztosítja, és minden egyes bejegyzés a következő sémával rendelkezik:
+   Archiválhatja az erőforrás-naplókat a metrikákkal együtt egy Storage-fiókba, továbbíthatja őket egy Event hub-ba, vagy elküldheti azokat egy Log Analytics munkaterületre. 
 
-```json
-{  
-    "isRequestSuccess" : "",
-    "time": "",
-    "operationName": "",
-    "category": "",
-    "durationMs": ,
-    "callerIpAddress": "",
-    "correlationId": "",
-    "location": "",
-    "httpStatusCodeCategory": "",
-    "resourceId": "",
-    "properties": {   
-        "method": "", 
-        "url": "", 
-        "clientProtocol": "", 
-        "responseCode": , 
-        "backendMethod": "", 
-        "backendUrl": "", 
-        "backendResponseCode": ,
-        "backendProtocol": "",  
-        "requestSize": , 
-        "responseSize": , 
-        "cache": "", 
-        "cacheTime": "", 
-        "backendTime": , 
-        "clientTime": , 
-        "apiId": "",
-        "operationId": "", 
-        "productId": "", 
-        "userId": "", 
-        "apimSubscriptionId": "", 
-        "backendId": "",
-        "lastError": { 
-            "elapsed" : "", 
-            "source" : "", 
-            "scope" : "", 
-            "section" : "" ,
-            "reason" : "", 
-            "message" : ""
-        } 
-    }      
-}  
+További információ: [diagnosztikai beállítások létrehozása a platform naplófájljainak és metrikáinak különböző célhelyekre küldéséhez](../azure-monitor/platform/diagnostic-settings.md).
+
+## <a name="view-diagnostic-data-in-azure-monitor"></a>Diagnosztikai adatAzure Monitorek megtekintése
+
+Ha engedélyezi a GatewayLogs vagy metrikák gyűjtését egy Log Analytics munkaterületen, eltarthat néhány percig, amíg az adatok megjelennek a Azure Monitorban. Az adatmegjelenítés:
+
+1. A [Azure Portal](https://portal.azure.com)navigáljon a API Management-példányhoz.
+1. A lap alján található menüből válassza a **naplók** lehetőséget.
+
+    :::image type="content" source="media/api-management-howto-use-azure-monitor/logs-menu-item.png" alt-text="Képernyőfelvétel a figyelési menüben található naplók elemről":::
+
+Lekérdezések futtatása az adatmegjelenítéshez. Több [minta lekérdezés](../azure-monitor/log-query/saved-queries.md) van megadva, vagy saját maga futtathatja. A következő lekérdezés például lekéri a legutóbbi 24 órás adatmennyiséget a GatewayLogs táblából:
+
+```kusto
+ApiManagementGatewayLogs
+| where TimeGenerated > ago(1d) 
 ```
 
-| Tulajdonság  | Típus | Leírás |
-| ------------- | ------------- | ------------- |
-| isRequestSuccess | boolean | Akkor igaz, ha a befejezett HTTP-kérelem válaszának állapotkódja a 2xx vagy 3xx tartományon belülre esik. |
-| time | dátum-idő | Időbélyeg, amikor az átjáró megkezdi a kérelem feldolgozását |
-| operationName | sztring | A „Microsoft.ApiManagement/GatewayLogs” állandó érték |
-| category | sztring | A „GatewayLogs” állandó érték |
-| durationMs | egész szám | Az átjárótól kapott kérelemtől számított ezredmásodpercek száma, amíg a rendszer nem küldi el a teljes időpontra vonatkozó választ. Ide tartozik a clienTime, a cacheTime és a backendTime. |
-| callerIpAddress | sztring | Az átjáró közvetlen hívójának IP-címe (közvetítő is lehet) |
-| correlationId | sztring | Az API Management által hozzárendelt HTTP-kérelem egyedi azonosítója |
-| location | sztring | Az Azure-régió neve, ahol a kérelmet feldolgozó átjáró található |
-| httpStatusCodeCategory | sztring | A HTTP-válasz állapotkódjának kategóriája: Sikeres (301 vagy alacsonyabb, 304 vagy 307), Jogosulatlan (401, 403, 429), Hibás (400, 500 és 600 között), Egyéb |
-| resourceId | sztring | A API Management erőforrás-/SUBSCRIPTIONS/ \<subscription> /RESOURCEGROUPS/- \<resource-group> /providers/Microsoft. azonosítója APIMANAGEMENT/SZOLGÁLTATÁS/\<name> |
-| properties | object | Az aktuális kérelem tulajdonságai |
-| method | sztring | A bejövő kérelem HTTP-metódusa |
-| url | sztring | A bejövő kérelem URL-címe |
-| clientProtocol | sztring | A bejövő kérelem HTTP-protokolljának verziója |
-| responseCode | egész szám | Az ügyfélnek küldött HTTP-válasz állapotkódja |
-| backendMethod | sztring | A háttérrendszernek küldött kérelem HTTP-metódusa |
-| backendUrl | sztring | A háttérrendszernek küldött kérelem URL-címe |
-| backendResponseCode | egész szám | A háttérrendszertől érkezett HTTP-válasz kódja |
-| backendProtocol | sztring | A háttérrendszernek küldött kérelem HTTP-protokolljának verziója | 
-| requestSize | egész szám | A kérelem feldolgozása során az ügyféltől érkezett bájtok száma | 
-| responseSize | egész szám | A kérelem feldolgozása során az ügyfélnek küldött bájtok száma | 
-| cache | sztring | Az API Management-gyorsítótár kérelemfeldolgozásban való részvételének állapota (pl. találat, tévesztés, nincs) | 
-| cacheTime | egész szám | Az API Management-gyorsítótár I/O-folyamatával töltött teljes idő ezredmásodpercben (csatlakozás, bájtok küldése és fogadása) | 
-| backendTime | egész szám | A háttérrendszer I/O-folyamatával töltött teljes idő ezredmásodpercben (csatlakozás, bájtok küldése és fogadása) | 
-| clientTime | egész szám | Az ügyfél I/O-folyamatával töltött teljes idő ezredmásodpercben (csatlakozás, bájtok küldése és fogadása) | 
-| apiId | sztring | Az aktuális kérelem API-entitásazonosítója | 
-| operationId | sztring | Az aktuális kérelem műveleti entitásának azonosítója | 
-| productId | sztring | Az aktuális kérelem termékentitásának azonosítója | 
-| userId | sztring | Az aktuális kérelem felhasználói entitásának azonosítója | 
-| apimSubscriptionId | sztring | Az aktuális kérelem előfizetési entitásának azonosítója | 
-| backendId | sztring | Az aktuális kérelem háttérentitásának azonosítója | 
-| LastError | object | A legutóbbi kérelemfeldolgozási hiba | 
-| elapsed | egész szám | Ennyi ezredmásodperc telt el, amikor az átjáró megkapta a kérést, és a hiba bekövetkezésének pillanata | 
-| source | sztring | A hibát okozó házirend vagy belső feldolgozáskezelő neve | 
-| scope | sztring | A hibát okozó házirendet tartalmazó szabályzatdokumentum hatóköre | 
-| section | sztring | A hibát okozó szabályzatot tartalmazó szabályzatdokumentum szakasza | 
-| reason | sztring | A hiba oka | 
-| message | sztring | Hibaüzenet | 
+További információ a API Management erőforrás-naplóinak használatáról:
+
+* Ismerkedjen meg [Azure Monitor log Analyticsval](../azure-monitor/log-query/get-started-portal.md), vagy próbálja ki a [log Analytics bemutató környezetét](https://portal.loganalytics.io/demo).
+
+* [A Azure monitor lévő naplók áttekintése](../azure-monitor/log-query/log-query-overview.md).
+
+A következő JSON a GatewayLogs egy mintául szolgáló bejegyzést jelez egy sikeres API-kéréshez. Részletekért tekintse meg a [séma-referenciát](gateway-log-schema-reference.md). 
+
+```json
+{
+    "Level": 4,
+    "isRequestSuccess": true,
+    "time": "2020-10-14T17:xx:xx.xx",
+    "operationName": "Microsoft.ApiManagement/GatewayLogs",
+    "category": "GatewayLogs",
+    "durationMs": 152,
+    "callerIpAddress": "xx.xx.xxx.xx",
+    "correlationId": "3f06647e-xxxx-xxxx-xxxx-530eb9f15261",
+    "location": "East US",
+    "properties": {
+        "method": "GET",
+        "url": "https://apim-hello-world.azure-api.net/conference/speakers",
+        "backendResponseCode": 200,
+        "responseCode": 200,
+        "responseSize": 41583,
+        "cache": "none",
+        "backendTime": 87,
+        "requestSize": 526,
+        "apiId": "demo-conference-api",
+        "operationId": "GetSpeakers",
+        "apimSubscriptionId": "master",
+        "clientTime": 65,
+        "clientProtocol": "HTTP/1.1",
+        "backendProtocol": "HTTP/1.1",
+        "apiRevision": "1",
+        "clientTlsVersion": "1.2",
+        "backendMethod": "GET",
+        "backendUrl": "https://conferenceapi.azurewebsites.net/speakers"
+    },
+    "resourceId": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/APIM-HELLO-WORLD"
+}
+```
 
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Tevékenységnaplók megtekintése
-> * Erőforrás-naplók megtekintése
 > * Az API-k mérőszámainak megtekintése
-> * Riasztási szabály beállítása a jogosulatlan API-hívások esetére
+> * Riasztási szabály beállítása 
+> * Tevékenységnaplók megtekintése
+> * Erőforrás-naplók engedélyezése és megtekintése
+
 
 Folytassa a következő oktatóanyaggal:
 

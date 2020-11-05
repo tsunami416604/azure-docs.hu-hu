@@ -529,6 +529,8 @@
       items:
         - name: Adatok betöltése SQL-készletekbe másolási tevékenységgel
           href: quickstart-copy-activity-load-sql-pool.md
+        - name: Adatok átalakítása adatfolyamok leképezésével
+          href: quickstart-data-flow.md
     - name: Alapelvek
       items:
         - name: Folyamat és tevékenység

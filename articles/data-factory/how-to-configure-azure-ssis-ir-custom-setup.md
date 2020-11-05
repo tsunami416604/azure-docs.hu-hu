@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 10/13/2020
-ms.openlocfilehash: 021c3705ff96774583438d261f894ff1bc24c21f
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/06/2020
+ms.openlocfilehash: 1885dd76a94a7a4a6b91c67735103350c473ba44
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636323"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378431"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime beállításainak testreszabása
 
@@ -127,7 +127,7 @@ A következő lépések végrehajtásával kiépítheti vagy újrakonfigurálhat
 
 #### <a name="running-cmdkey-command"></a>Cmdkey parancs futtatása
 
-Ha az expressz egyéni telepítéshez a **cmdkey futtatása parancsot** választja, akkor futtathatja a Windows cmdkey parancsot a Azure-SSIS IR. Ehhez adja meg a célként megadott számítógép nevét vagy tartománynevét, felhasználónevét vagy fiókjának nevét, valamint a jelszó vagy a fiók kulcsát az **/Add** , **/User** és **/pass** szövegmezőben. Ez lehetővé teszi az SQL-kiszolgálók,-fájlmegosztás vagy-Azure Files hozzáférési hitelesítő adatainak megőrzését a Azure-SSIS IR. A Azure Fileshoz való hozzáféréshez például megadhatja `YourAzureStorageAccountName.file.core.windows.net` a `azure\YourAzureStorageAccountName` `YourAzureStorageAccountKey` következőt:, és az **/Add** , a **/User** és a **/pass** . Ez hasonló a Windows [cmdkey](/windows-server/administration/windows-commands/cmdkey) parancs helyi gépen való futtatásához. Most már csak egy expressz egyéni telepítő futtatható a cmdkey parancs futtatásához. Ha több cmdkey-parancsot szeretne futtatni, használja helyette a szabványos egyéni telepítést.
+Ha az expressz egyéni telepítéshez a **cmdkey futtatása parancsot** választja, akkor futtathatja a Windows cmdkey parancsot a Azure-SSIS IR. Ehhez adja meg a célként megadott számítógép nevét vagy tartománynevét, felhasználónevét vagy fiókjának nevét, valamint a jelszó vagy a fiók kulcsát az **/Add** , **/User** és **/pass** szövegmezőben. Ez lehetővé teszi az SQL-kiszolgálók,-fájlmegosztás vagy-Azure Files hozzáférési hitelesítő adatainak megőrzését a Azure-SSIS IR. A Azure Fileshoz való hozzáféréshez például megadhatja `YourAzureStorageAccountName.file.core.windows.net` a `azure\YourAzureStorageAccountName` `YourAzureStorageAccountKey` következőt:, és az **/Add** , a **/User** és a **/pass**. Ez hasonló a Windows [cmdkey](/windows-server/administration/windows-commands/cmdkey) parancs helyi gépen való futtatásához. Most már csak egy expressz egyéni telepítő futtatható a cmdkey parancs futtatásához. Ha több cmdkey-parancsot szeretne futtatni, használja helyette a szabványos egyéni telepítést.
 
 #### <a name="adding-environment-variables"></a>Környezeti változók hozzáadása
 
@@ -135,29 +135,29 @@ Ha az expressz egyéni telepítéshez a **környezeti változó hozzáadása** l
 
 #### <a name="installing-azure-powershell"></a>Azure PowerShell telepítése
 
-Ha a **telepítés Azure PowerShell** típusát adja meg az expressz egyéni telepítéshez, akkor az az Module of PowerShellt telepítheti a Azure-SSIS IR. Ehhez írja be az az modul verziószámát (x. y. z), amelyet a [támogatottak listájáról](https://www.powershellgallery.com/stats/packages/Az?groupby=Version)szeretne használni. Ez lehetővé teszi Azure PowerShell parancsmagok/parancsfájlok futtatását a csomagokba az Azure-erőforrások, például a [Azure Analysis Services (AAS)](../analysis-services/analysis-services-powershell.md)kezelésére.
+Ha a **telepítés Azure PowerShell** típusát adja meg az expressz egyéni telepítéshez, akkor az az Module of PowerShellt telepítheti a Azure-SSIS IR. Ehhez írja be az az modul verziószámát (x. y. z), amelyet a [támogatottak listájáról](https://www.powershellgallery.com/packages/az)szeretne használni. Ez lehetővé teszi Azure PowerShell parancsmagok/parancsfájlok futtatását a csomagokba az Azure-erőforrások, például a [Azure Analysis Services (AAS)](../analysis-services/analysis-services-powershell.md)kezelésére.
 
 #### <a name="installing-licensed-components"></a>Licencelt összetevők telepítése
 
 Ha bejelöli a **licencelt összetevő** típusának telepítése az expressz egyéni telepítőhöz lehetőséget, akkor az **összetevő neve** legördülő listában kiválaszthatja az ISV-partnereink integrált összetevőjét:
 
-   * Ha kijelöli a **szoftverével Task Factory** összetevőjét, telepítheti az összetevők szoftverével [-csomagját](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) a Azure-SSIS IR. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **2020.1.3** .
+   * Ha kijelöli a **szoftverével Task Factory** összetevőjét, telepítheti az összetevők szoftverével [-csomagját](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) a Azure-SSIS IR. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **2020.1.3**.
 
-   * Ha a **OH22'S HEDDA választja. I/o** -összetevő, telepítheti a [HEDDA. IO](https://github.com/oh22is/HEDDA.IO/tree/master/SSIS-IR) adatminőség/tisztító összetevő a oh22 a Azure-SSIS IR. Ehhez előre kell megvásárolnia a szolgáltatást. Az aktuálisan integrált verzió a **1.0.14** .
+   * Ha a **OH22'S HEDDA választja. I/o** -összetevő, telepítheti a [HEDDA. IO](https://github.com/oh22is/HEDDA.IO/tree/master/SSIS-IR) adatminőség/tisztító összetevő a oh22 a Azure-SSIS IR. Ehhez előre kell megvásárolnia a szolgáltatást. Az aktuálisan integrált verzió a **1.0.14**.
 
-   * Ha a **oh22's SQLPhonetics.net** összetevőt választja, telepítheti a [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) adatminőség/megfelelő összetevőjét a oh22 a Azure-SSIS IR. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **1.0.45** .
+   * Ha a **oh22's SQLPhonetics.net** összetevőt választja, telepítheti a [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) adatminőség/megfelelő összetevőjét a oh22 a Azure-SSIS IR. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **1.0.45**.
 
-   * Ha a **KINGSWAYSOFT SSIS Integration Toolkit** összetevőjét választja, akkor a [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) -csomagot telepítheti a CRM/ERP/marketing/csoportmunka-alkalmazások, például a Microsoft Dynamics/SharePoint/Project Server, az Oracle/Salesforce marketing Cloud stb. számára a Azure-SSIS IR. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **2020,1** .
+   * Ha a **KINGSWAYSOFT SSIS Integration Toolkit** összetevőjét választja, akkor a [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) -csomagot telepítheti a CRM/ERP/marketing/csoportmunka-alkalmazások, például a Microsoft Dynamics/SharePoint/Project Server, az Oracle/Salesforce marketing Cloud stb. számára a Azure-SSIS IR. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **2020,1**.
 
-   * Ha a **KINGSWAYSOFT SSIS hatékonyságnövelő csomag** összetevőjét választja, akkor a [SSIS hatékonyságnövelő csomagjának](https://www.kingswaysoft.com/products/ssis-productivity-pack) összetevőit telepítheti a KingswaySoft a Azure-SSIS IR. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **20,1** .
+   * Ha a **KINGSWAYSOFT SSIS hatékonyságnövelő csomag** összetevőjét választja, akkor a [SSIS hatékonyságnövelő csomagjának](https://www.kingswaysoft.com/products/ssis-productivity-pack) összetevőit telepítheti a KingswaySoft a Azure-SSIS IR. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **20,1**.
 
-   * Ha kijelöli a **Theobald szoftver xtract** összetevőt, a [xtract az](https://theobald-software.com/en/xtract-is/) SAP-rendszerek (ERP, s/4HANA, BW) összekötői is telepíthetők a Theobald szoftverből a Azure-SSIS IR. Ehhez húzza a & eldobás/Feltöltés lehetőségre a **licencet** , amelyet korábban megvásárolt a licencfájl beviteli mezőjébe. Az aktuálisan integrált verzió a **6.1.1.3** .
+   * Ha kijelöli a **Theobald szoftver xtract** összetevőt, a [xtract az](https://theobald-software.com/en/xtract-is/) SAP-rendszerek (ERP, s/4HANA, BW) összekötői is telepíthetők a Theobald szoftverből a Azure-SSIS IR. Ehhez húzza a & eldobás/Feltöltés lehetőségre a **licencet** , amelyet korábban megvásárolt a licencfájl beviteli mezőjébe. Az aktuálisan integrált verzió a **6.1.1.3**.
 
-   * Ha a **AecorSoft integrációs szolgáltatásának** összetevőjét választja, akkor az Salesforce-hez tartozó Azure-SSIS IR AecorSoft-k [integrációs szolgáltatási](https://www.aecorsoft.com/en/products/integrationservice) csomagját telepítheti az SAP és a rendszerekhez. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **3.0.00** .
+   * Ha a **AecorSoft integrációs szolgáltatásának** összetevőjét választja, akkor az Salesforce-hez tartozó Azure-SSIS IR AecorSoft-k [integrációs szolgáltatási](https://www.aecorsoft.com/en/products/integrationservice) csomagját telepítheti az SAP és a rendszerekhez. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **3.0.00**.
 
-   * Ha a **CDATA SSIS standard csomag** összetevőjét választja, telepítheti a legnépszerűbb [SSIS](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#standard) (például Microsoft SharePoint-összekötők) a legtöbb népszerű összetevőjét a Azure-SSIS IR. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **19,7354** .
+   * Ha a **CDATA SSIS standard csomag** összetevőjét választja, telepítheti a legnépszerűbb [SSIS](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#standard) (például Microsoft SharePoint-összekötők) a legtöbb népszerű összetevőjét a Azure-SSIS IR. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **19,7354**.
 
-   * Ha a **CDATA SSIS kiterjesztett csomag** összetevőjét választja, akkor a [Azure-SSIS IR a CDATA](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#extended) összes összetevője, például a Microsoft Dynamics 365 Business Central-összekötők és az **SSIS standard csomag** egyéb összetevői is telepíthetők a. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **19,7354** . Nagy mérete miatt a telepítés időtúllépésének elkerülése érdekében győződjön meg arról, hogy a Azure-SSIS IR legalább 4 CPU-magot tartalmaz.
+   * Ha a **CDATA SSIS kiterjesztett csomag** összetevőjét választja, akkor a [Azure-SSIS IR a CDATA](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#extended) összes összetevője, például a Microsoft Dynamics 365 Business Central-összekötők és az **SSIS standard csomag** egyéb összetevői is telepíthetők a. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **19,7354**. Nagy mérete miatt a telepítés időtúllépésének elkerülése érdekében győződjön meg arról, hogy a Azure-SSIS IR legalább 4 CPU-magot tartalmaz.
 
 A hozzáadott expressz egyéni telepítések a **Speciális beállítások** lapon jelennek meg. Ha el szeretné távolítani őket, jelölje be a jelölőnégyzeteket, majd válassza a **Törlés** lehetőséget.
 
@@ -289,7 +289,7 @@ A standard egyéni telepítések egyes mintáinak megtekintéséhez és újrafel
 
       * Egy *minta* mappa, amely egy egyéni telepítőt tartalmaz egy alapszintű feladat telepítéséhez a Azure-SSIS IR egyes csomópontjain. A feladat nem csinál semmit, de aludni néhány másodpercig. A mappa egy *Gacutil* mappát is tartalmaz, amelynek teljes tartalma ( *gacutil.exe* , *gacutil.exe.config* és *1033\gacutlrc.dll* ) a tárolóba másolható.
 
-      * Egy *UserScenarios* mappa, amely a valós felhasználói forgatókönyvekben számos egyéni telepítési mintát tartalmaz.
+      * Egy *UserScenarios* mappa, amely a valós felhasználói forgatókönyvekben számos egyéni telepítési mintát tartalmaz. Ha több mintát is szeretne telepíteni a Azure-SSIS IRra, kombinálhatja az egyéni telepítési parancsfájlt ( *Main. cmd* ) egyetlen fájlba, és feltöltheti az összes társított fájllal a tárolóba.
 
         ![A nyilvános előzetes verziójú tároló tartalma](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image11.png)
 

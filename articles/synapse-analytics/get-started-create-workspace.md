@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 10/07/2020
-ms.openlocfilehash: dfa2752be2da0a89c7246241177b3624984fa0d2
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 303ed66b7d268a5bab33d0d857399e907764d152
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342198"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378856"
 ---
 # <a name="creating-a-synapse-workspace"></a>Szinapszis-munkaterület létrehozása
 
@@ -31,7 +31,7 @@ Az oktatóanyag lépéseinek elvégzéséhez hozzáféréssel kell rendelkeznie 
 1. A keresési eredmények között, a **szolgáltatások** területen válassza az **Azure szinapszis Analytics (munkaterületek előzetes verzió)** lehetőséget.
 1. Munkaterület létrehozásához válassza a **Hozzáadás** lehetőséget.
 1. Az **alapvető beállítások** területen adja meg a kívánt **előfizetést** , **erőforráscsoportot** , **régiót** , majd válassza ki a munkaterület nevét. Ebben az oktatóanyagban a **sajátmunkaterület** -t fogjuk használni.
-1. Munkaterület létrehozásához szükség van egy ADLSGEN2-fiókra és egy tárolóra a fiókban. A szinapszis munkaterület ezt a tárolót fogja használni a Spark-naplók és a Spark-táblákra vonatkozó adattárolás alapértelmezett helyeként.
+1. Munkaterület létrehozásához szükség van egy ADLSGEN2-fiókra és egy tárolóra a fiókban. A szinapszis munkaterület ezt a tárolót fogja használni az alapértelmezett helyként a Spark-naplók és-adathalmazok tárolására a Spark-táblákban.
     1. Navigáljon a **2. generációs Data Lake Storage kiválasztásához**. 
     1. Kattintson az **új létrehozása** elemre, és nevezze el **contosolake**.
     1. Kattintson a **fájlrendszer** elemre, és nevezze el a **felhasználókat**. Ekkor létrejön egy **felhasználó** nevű tároló.
@@ -82,7 +82,7 @@ Amikor Spark-tevékenységet hajt végre az Azure Szinapszisban, meg kell adnia 
 
 Minden munkaterülethez **beépített, beépített** készlet tartozik. Ez a készlet nem törölhető. A kiszolgáló nélküli SQL-készlet lehetővé teszi az SQL használatát anélkül, hogy létre kellene hoznia egy kiszolgáló nélküli SQL-készletet az Azure Szinapszisban. A dedikált SQL-készletektől eltérően a kiszolgáló nélküli SQL-készlet számlázása a lekérdezés futtatásához beolvasott adatmennyiségen alapul, nem a lekérdezés végrehajtásához használt erőforrások számától.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Elemzés dedikált SQL-készlet használatával](get-started-analyze-sql-pool.md)

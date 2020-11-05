@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: article
-ms.date: 08/11/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34c3c20b277a768ba27016f1c76bd782ef05dc36
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d014a901791f16ecdcb9c3d5f0858a8626cc1072
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376002"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379077"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez Azure Active Directory (előzetes verzió)
 
@@ -28,7 +28,7 @@ Vegyük például a következő példát: a contoso az Azure AD-szervezetében d
 
 ## <a name="how-this-feature-works"></a>A szolgáltatás működése
 
-Hozzon létre egy új Microsoft 365 vagy biztonsági csoportot az "isAssignableToRole" tulajdonsággal "true" értékre. Ezt a tulajdonságot akkor is engedélyezheti, ha az **Azure ad-szerepköröket a csoporthoz való**bekapcsolásával létrehoz egy csoportot a Azure Portal. Mindkét esetben hozzárendelhet egy vagy több Azure AD-szerepkörhöz a csoportot ugyanúgy, ahogyan a szerepköröket a felhasználókhoz rendeli. Egyetlen Azure AD-szervezetben (bérlőben) legfeljebb 200 szerepkör-hozzárendelhető csoport hozható létre.
+Hozzon létre egy új Microsoft 365 vagy biztonsági csoportot az "isAssignableToRole" tulajdonsággal "true" értékre. Ezt a tulajdonságot akkor is engedélyezheti, ha az **Azure ad-szerepköröket a csoporthoz való** bekapcsolásával létrehoz egy csoportot a Azure Portal. Mindkét esetben hozzárendelhet egy vagy több Azure AD-szerepkörhöz a csoportot ugyanúgy, ahogyan a szerepköröket a felhasználókhoz rendeli. Egyetlen Azure AD-szervezetben (bérlőben) legfeljebb 200 szerepkör-hozzárendelhető csoport hozható létre.
 
 Ha nem szeretné, hogy a csoport tagjai rendelkezzenek állandó hozzáféréssel a szerepkörhöz, használhatja a Azure AD Privileged Identity Management. Rendeljen hozzá egy csoportot egy Azure AD-szerepkör jogosult tagjaként. A csoport minden tagja ezután jogosult a hozzárendelés aktiválására ahhoz a szerepkörhöz, amelyhez a csoport hozzá van rendelve. Ezután aktiválják a szerepkör-hozzárendelést egy rögzített időtartamra.
 
@@ -59,7 +59,7 @@ A következő forgatókönyvek jelenleg nem támogatottak:
 ## <a name="known-issues"></a>Ismert problémák
 
 - A **felügyelt felhasználó bejelentkezési funkciójának szakaszos** bevezetésének engedélyezése nem támogatja a hozzárendelést csoporton keresztül.
-- *Azure ad P2 licenccel rendelkező ügyfelek*esetében: ne rendeljen aktívként egy csoportot az Azure ad és a PRIVILEGED Identity Management (PIM) szolgáltatáson keresztüli szerepkörhöz. Konkrétan ne rendeljen hozzá szerepkört a szerepkörhöz hozzárendelhető csoporthoz, amikor a létrehozása folyamatban van, *és* a PIM használatával később hozzárendel egy szerepkört a csoporthoz. Ez olyan problémákhoz vezet, amelyekben a felhasználók nem látják az aktív szerepkör-hozzárendeléseiket a PIM-ben, és nem tudják eltávolítani a PIM-hozzárendelést. Ez a forgatókönyv nem érinti a jogosult hozzárendeléseket. Ha ezt a hozzárendelést próbálja végrehajtani, előfordulhat, hogy a rendszer váratlan viselkedést lát, például:
+- *Azure ad P2 licenccel rendelkező ügyfelek* esetében: ne rendeljen aktívként egy csoportot az Azure ad és a PRIVILEGED Identity Management (PIM) szolgáltatáson keresztüli szerepkörhöz. Konkrétan ne rendeljen hozzá szerepkört a szerepkörhöz hozzárendelhető csoporthoz, amikor a létrehozása folyamatban van, *és* a PIM használatával később hozzárendel egy szerepkört a csoporthoz. Ez olyan problémákhoz vezet, amelyekben a felhasználók nem látják az aktív szerepkör-hozzárendeléseiket a PIM-ben, és nem tudják eltávolítani a PIM-hozzárendelést. Ez a forgatókönyv nem érinti a jogosult hozzárendeléseket. Ha ezt a hozzárendelést próbálja végrehajtani, előfordulhat, hogy a rendszer váratlan viselkedést lát, például:
   - A szerepkör-hozzárendelés befejezési időpontja helytelenül jelenhet meg.
   - A PIM-portálon a **saját szerepkörök** csak egy szerepkör-hozzárendelést tudnak megjeleníteni, függetlenül attól, hogy a hozzárendelés hány módszerből áll (egy vagy több csoporton és közvetlenül).
 - *Azure ad P2 licenccel rendelkező ügyfeleinknek* Még a csoport törlése után is megjelenik a szerepkör jogosult tagja a PIM felhasználói felületén. Funkcionálisan nincs probléma; Ez csak egy gyorsítótár-probléma a Azure Portalban.  

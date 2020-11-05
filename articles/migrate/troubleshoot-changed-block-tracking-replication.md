@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 2b653a0abbe89686c764a6a0885720cc746975c8
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: da1f7ce1474513fd9de286495f59aca63d8628b6
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314733"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377228"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Az ügynök nélküli VMware VM-áttelepítés replikálási hibáinak elhárítása
 
@@ -29,11 +29,16 @@ Időnként előfordulhat, hogy a replikálási ciklusok egy virtuális gépen si
 A következő lépések segítségével figyelheti a virtuális gépek replikálási állapotát:
 
   1. Nyissa meg a Azure Portal Azure Migrate kiszolgálók lapját.
-  2. Navigáljon a "kiszolgálók replikálása" lapra a kiszolgáló áttelepítésének csempén a "kiszolgálók replikálása" elemre kattintva.
-  3. Ekkor megjelenik a replikáló kiszolgálók listája, valamint további információk, például állapot, állapot, utolsó szinkronizálás időpontja stb. Az Állapot oszlopban a virtuális gép aktuális replikációs állapota látható. Az Állapot oszlopban szereplő "kritikus" vagy "figyelmeztetés" érték általában azt jelzi, hogy a virtuális gép előző replikációs ciklusa meghiúsult. További részletekért kattintson a jobb gombbal a virtuális gépre, és válassza a "hiba részletei" lehetőséget. A hiba részletei lap a hibával kapcsolatos információkat és a hibakeresési útmutató további részleteit tartalmazza. Ekkor megjelenik egy "legutóbbi események" hivatkozás is, amely a virtuális gép események lapjára mutat.
-  4. Kattintson a "legutóbbi események" elemre a virtuális gép előző replikációs ciklusa során fellépő hibák megtekintéséhez. Az Events (események) lapon keresse meg a virtuális gép replikálási ciklusa nem sikerült vagy a lemez replikálási ciklusa nem sikerült.
-  5. Kattintson az eseményre a hiba lehetséges okainak és a javasolt szervizelési lépések megismeréséhez. A hiba elhárításához és javításához használja a megadott információkat.
-    
+  ![1. rendszerkép](./media/troubleshoot-changed-block-tracking-replication/image0.png)
+  1. Navigáljon a "kiszolgálók replikálása" lapra a kiszolgáló áttelepítésének csempén a "kiszolgálók replikálása" elemre kattintva.
+  ![2. rendszerkép](./media/troubleshoot-changed-block-tracking-replication/image1.png)
+  1. Ekkor megjelenik a replikáló kiszolgálók listája, valamint további információk, például állapot, állapot, utolsó szinkronizálás időpontja stb. Az Állapot oszlopban a virtuális gép aktuális replikációs állapota látható. Az Állapot oszlopban szereplő "kritikus" vagy "figyelmeztetés" érték általában azt jelzi, hogy a virtuális gép előző replikációs ciklusa meghiúsult. További részletekért kattintson a jobb gombbal a virtuális gépre, és válassza a "hiba részletei" lehetőséget. A hiba részletei lap a hibával kapcsolatos információkat és a hibakeresési útmutató további részleteit tartalmazza. Ekkor megjelenik egy "legutóbbi események" hivatkozás is, amely a virtuális gép események lapjára mutat.
+  ![3. rendszerkép](./media/troubleshoot-changed-block-tracking-replication/image2.png)
+  1. Kattintson a "legutóbbi események" elemre a virtuális gép előző replikációs ciklusa során fellépő hibák megtekintéséhez. Az Events (események) lapon keresse meg a virtuális gép replikálási ciklusa nem sikerült vagy a lemez replikálási ciklusa nem sikerült.
+  ![4. rendszerkép](./media/troubleshoot-changed-block-tracking-replication/image3.png)
+  1. Kattintson az eseményre a hiba lehetséges okainak és a javasolt szervizelési lépések megismeréséhez. A hiba elhárításához és javításához használja a megadott információkat.
+ ![5. rendszerkép](./media/troubleshoot-changed-block-tracking-replication/image4.png)
+
 ## <a name="common-replication-errors"></a>Gyakori replikációs hibák
 
 Ez a szakasz néhány gyakori hibát ismertet, valamint azt, hogy miként lehet elhárítani őket.
@@ -54,7 +59,7 @@ Amikor a portál létrehozza a Key vaultot, egy felhasználói hozzáférési sz
 
 - A másik eset, ha ez akkor fordulhat elő, amikor egy felhasználó (Felhasználó1) megpróbálta először beállítani a replikálást, és hibát észlelt, de a kulcstartó már létrejött (és a felhasználói hozzáférési házirend megfelelően van hozzárendelve ehhez a felhasználóhoz). Most egy későbbi időpontban egy másik felhasználó (Felhasználó2) megpróbálja beállítani a replikálást, de a felügyelt Storage-fiók konfigurálása vagy az SAS-definíció létrehozása művelet meghiúsul, mert nincs olyan felhasználói hozzáférési házirend, amely a kulcstartó Felhasználó2 tartozik.
 
-**Megoldás**: a probléma megoldásához hozzon létre egy felhasználói hozzáférési szabályzatot a Felhasználó2-hez a kulcstartó-engedélyezési Felhasználó2 engedéllyel a felügyelt Storage-fiók konfigurálásához és a sas-definíciók létrehozásához. A Felhasználó2 az alábbi parancsmagok használatával teheti ezt Azure PowerShell:
+**Megoldás** : a probléma megoldásához hozzon létre egy felhasználói hozzáférési szabályzatot a Felhasználó2-hez a kulcstartó-engedélyezési Felhasználó2 engedéllyel a felügyelt Storage-fiók konfigurálásához és a sas-definíciók létrehozásához. A Felhasználó2 az alábbi parancsmagok használatával teheti ezt Azure PowerShell:
 
 $userPrincipalId = $ (Get-AzureRmADUser-UserPrincipalName "user2_email_address"). ID
 
@@ -134,7 +139,7 @@ Az Azure-ba replikálni próbált összetevő vagy nem válaszol. A lehetséges 
     
     Ez a parancs megkísérli a TCP-kapcsolatokat, és kimenetet ad vissza.
     
-     - A kimenetben keresse meg a "_TcpTestSucceeded_" mezőt. Ha az érték "true" (_igaz_), nincs kapcsolati probléma a Azure Migrate berendezés és a Azure Key Vault között. Ha az érték "false" (hamis), akkor csatlakozási probléma van.
+     - A kimenetben keresse meg a " _TcpTestSucceeded_ " mezőt. Ha az érték "true" ( _igaz_ ), nincs kapcsolati probléma a Azure Migrate berendezés és a Azure Key Vault között. Ha az érték "false" (hamis), akkor csatlakozási probléma van.
     
     **Megoldás:** Ha ez a teszt sikertelen, a Azure Migrate berendezés és a Azure Key Vault között csatlakozási probléma lép fel. A kapcsolódási problémák ellenőrzése érdekében folytassa a helyi hálózati csapattal. Jellemzően előfordulhat, hogy bizonyos tűzfalbeállítások okoznak hibákat.
     
@@ -220,7 +225,7 @@ A lehetséges okok a következők:
     
     Ez a parancs megkísérli a TCP-kapcsolatokat, és kimenetet ad vissza.
     
-    1. A kimenetben keresse meg a "_TcpTestSucceeded_" mezőt. Ha az érték "true" (_igaz_), nincs kapcsolati probléma a Azure Migrate berendezés és a Azure Key Vault között. Ha az érték "false" (hamis), akkor csatlakozási probléma van.
+    1. A kimenetben keresse meg a " _TcpTestSucceeded_ " mezőt. Ha az érték "true" ( _igaz_ ), nincs kapcsolati probléma a Azure Migrate berendezés és a Azure Key Vault között. Ha az érték "false" (hamis), akkor csatlakozási probléma van.
     
     **Megoldás:** Ha ez a teszt sikertelen, a Azure Migrate berendezés és a Azure Key Vault között csatlakozási probléma lép fel. A kapcsolódási problémák ellenőrzése érdekében folytassa a helyi hálózati csapattal. Jellemzően előfordulhat, hogy bizonyos tűzfalbeállítások okoznak hibákat.
     
@@ -271,7 +276,7 @@ Ha több lemezzel rendelkező virtuális géppel rendelkezik, akkor ez a hiba ak
 
 Ez a probléma akkor fordul elő, ha a pillanatkép-létrehozás nem válaszol. Ha ez a probléma bekövetkezik, a pillanatkép létrehozása feladat leáll a 95%-os vagy a 99%-nál. A probléma megoldása érdekében tekintse meg ezt a [VMware kb-ot](https://go.microsoft.com/fwlink/?linkid=2138969) .
 
-### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Hibaüzenet: belső hiba történt. [Nem sikerült összevonni a lemezeket a virtuális gépen _[ok]_]
+### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Hibaüzenet: belső hiba történt. [Nem sikerült összevonni a lemezeket a virtuális gépen _[ok]_ ]
 
 Ha a replikálási ciklus végén összesíti a lemezeket, a művelet sikertelen lesz. Kövesse a [VMware kb](https://go.microsoft.com/fwlink/?linkid=2138970) utasításait a probléma megoldásához szükséges _OK_ kiválasztásával.
 

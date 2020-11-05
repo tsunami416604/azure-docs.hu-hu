@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1aa5671a73c8a4de945a2013d8678d7f0f74625e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4446e5b8abf9ac308a5eb32cadf31eddfcb9d9a1
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097991"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379247"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Egyéni szerepkör létrehozása és társítása Azure Active Directory
 
@@ -31,7 +31,7 @@ Az egyéni szerepkörök az Azure AD Áttekintés lapjának [szerepkörök és r
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>Új egyéni szerepkör létrehozása az alkalmazások regisztrálásához való hozzáférés biztosításához
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) a Kiemelt szerepkörű rendszergazda vagy a globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
-1. Válassza ki **Azure Active Directory**  >  **szerepkörök és rendszergazdák**  >  **új egyéni szerepkört** .
+1. Válassza ki **Azure Active Directory**  >  **szerepkörök és rendszergazdák**  >  **új egyéni szerepkört**.
 
    ![Szerepkörök létrehozása vagy szerkesztése a szerepkörök és rendszergazdák lapról](./media/custom-create/new-custom-role.png)
 

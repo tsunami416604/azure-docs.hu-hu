@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: e3f067647eb7bdb33b06a9ebdefd8fdd0485e4c6
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 0fd2312df31e61ae30f4c3fd04dc0991ac0f4675
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93294259"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376855"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>Oktatóanyag a helyi alkalmazások a rétegek használatával történő védelemének Azure AD B2C bővítéséhez
 
@@ -57,7 +57,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ![A képen egy Azure AD B2C integráció architektúrája látható a rétegek Maverics, hogy lehetővé váljon a hibrid alkalmazásokhoz való hozzáférés](./media/partner-strata/strata-architecture-diagram.png)
 
-| Lépések | Leírás |
+| Lépések | Description |
 |:-------|:---------------|
 | 1. | A felhasználó a helyszíni üzemeltetett alkalmazás elérésére vonatkozó kérést tesz elérhetővé. A Maverics Identity Orchestrator a felhasználó által az alkalmazásnak benyújtott kérelmet.|
 | 2. | A Orchestrator ellenőrzi a felhasználó hitelesítési állapotát. Ha nem kap munkamenet-jogkivonatot, vagy a megadott munkamenet-jogkivonat érvénytelen, a rendszer elküldi a felhasználónak, hogy Azure AD B2C a hitelesítéshez.|
@@ -65,13 +65,11 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 | 4. | A identitásszolgáltató megválaszolja a felhasználót a hitelesítő adatokhoz. A identitásszolgáltató függően előfordulhat, hogy a felhasználó a többtényezős hitelesítés (MFA) használatát igényli.|
 | 5. | A identitásszolgáltató visszaküldi a hitelesítési választ Azure AD B2Cra. Szükség esetén a felhasználó létrehozhat egy helyi fiókot a Azure AD B2C könyvtárban ebben a lépésben.|
 | 6. | Azure AD B2C a Orchestrator alkalmazás regisztrációja során megadott végpontra küldi a felhasználói kérést a Azure AD B2C bérlőben.|
-| 7. | A Orchestrator kiértékeli a hozzáférési házirendeket, és kiszámítja az alkalmazásnak továbbított HTTP-fejlécekben szerepeltetni kívánt attribútum-értékeket. Ebben a lépésben a Orchestrator további attribútum-szolgáltatóknak is meghívhatják a fejléc értékeinek megfelelő beállításához szükséges információk beolvasását.|
-| 8. | A Orchestrator beállítja a fejléc értékeit, és elküldi a kérést az alkalmazásnak.|
-| 9. | A felhasználó most már hitelesítve van, és hozzáfér az alkalmazáshoz.|
+| 7. | A Orchestrator kiértékeli a hozzáférési házirendeket, és kiszámítja az alkalmazásnak továbbított HTTP-fejlécekben szerepeltetni kívánt attribútum-értékeket. Ebben a lépésben a Orchestrator további attribútum-szolgáltatóknak is meghívhatják a fejléc értékeinek megfelelő beállításához szükséges információk beolvasását. A Orchestrator beállítja a fejléc értékeit, és elküldi a kérést az alkalmazásnak.|
+| 8. | A felhasználó most már hitelesítve van, és hozzáfér az alkalmazáshoz.|
 
 ## <a name="get-maverics-identity-orchestrator"></a>Maverics-identitás Orchestrator beolvasása
 
-Ahhoz, hogy a szoftvert használni lehessen a régi helyszíni alkalmazás Azure AD B2Csal való integrálásához, vegye fel a kapcsolatot a [rétegek](https://www.strata.io/contact/)használatába. A szoftver beszerzése után kövesse az alábbi lépéseket a Orchestrator-specifikus előfeltételek meghatározásához, valamint a szükséges telepítési és konfigurációs lépések végrehajtásához.
 
 ## <a name="configure-your-azure-ad-b2c-tenant"></a>Azure AD B2C bérlő konfigurálása
 

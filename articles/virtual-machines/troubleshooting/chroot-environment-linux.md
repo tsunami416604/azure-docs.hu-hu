@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.date: 05/05/2020
 ms.author: kaib
-ms.openlocfilehash: 5d803acc7f2287d0b88791d85fa876f89e4a0955
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 0d8a030061ef6aa848344152edaa3267ad916e2a
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332185"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377938"
 ---
 # <a name="chroot-environment-in-a-linux-rescue-vm"></a>Kromát-környezet Linux rendszerű mentési virtuális gépen
 
@@ -34,7 +34,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
 
    1. A következő parancs használatával érheti el a virtuális gépet root felhasználóként:
 
-      `#sudo su -`
+      `sudo su -`
 
    1. Keresse meg a lemezt a használatával `dmesg` (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a **dmesg-et** használja az **SCSI** -lemezek szűrésére:
 
@@ -53,17 +53,17 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
    1. A kromát-környezet eléréséhez használja az alábbi parancsokat:
 
       ```
-      #mkdir /rescue
-      #mount /dev/sdc1 /rescue
-      #mount /dev/sdc15 /rescue/boot/efi
-      #cd /rescue
+      mkdir /rescue
+      mount /dev/sdc1 /rescue
+      mount /dev/sdc15 /rescue/boot/efi
+      cd /rescue
 
-      #mount -t proc proc proc
-      #mount -t sysfs sys sys/
-      #mount -o bind /dev dev/
-      #mount -o bind /dev/pts dev/pts/
-      #mount -o bind /run run/
-      #chroot /rescue
+      mount -t proc proc proc
+      mount -t sysfs sys sys/
+      mount -o bind /dev dev/
+      mount -o bind /dev/pts dev/pts/
+      mount -o bind /run run/
+      chroot /rescue
       ```
 
    1. A kromát-környezet hibáinak megoldása.
@@ -71,16 +71,16 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
    1. A kromát-környezetből való kilépéshez használja az alábbi parancsokat:
 
       ```
-      #exit
+      exit
 
-      #umount /rescue/proc/
-      #umount /rescue/sys/
-      #umount /rescue/dev/pts
-      #umount /rescue/dev/
-      #umount /rescue/run
-      #cd /
-      #umount /rescue/boot/efi
-      #umount /rescue
+      umount /rescue/proc/
+      umount /rescue/sys/
+      umount /rescue/dev/pts
+      umount /rescue/dev/
+      umount /rescue/run
+      cd /
+      umount /rescue/boot/efi
+      umount /rescue
       ```
 
       > [!NOTE]
@@ -101,7 +101,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
 
    1. A következő parancs használatával érheti el a virtuális gépet root felhasználóként:
 
-      `#sudo su -`
+      `sudo su -`
 
    1. Keresse meg a lemezt a használatával `dmesg` (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a **dmesg-et** használja az **SCSI** -lemezek szűrésére:
 
@@ -120,17 +120,17 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
    1. A kromát-környezet eléréséhez használja az alábbi parancsokat:
 
       ```
-      #mkdir /rescue
-      #mount -o nouuid /dev/sdc2 /rescue
-      #mount -o nouuid /dev/sdc1 /rescue/boot/
-      #cd /rescue
+      mkdir /rescue
+      mount -o nouuid /dev/sdc2 /rescue
+      mount -o nouuid /dev/sdc1 /rescue/boot/
+      cd /rescue
 
-      #mount -t proc proc proc
-      #mount -t sysfs sys sys/
-      #mount -o bind /dev dev/
-      #mount -o bind /dev/pts dev/pts/
-      #mount -o bind /run run/
-      #chroot /rescue
+      mount -t proc proc proc
+      mount -t sysfs sys sys/
+      mount -o bind /dev dev/
+      mount -o bind /dev/pts dev/pts/
+      mount -o bind /run run/
+      chroot /rescue
       ```
 
    1. A kromát-környezet hibáinak megoldása.
@@ -138,16 +138,16 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
    1. A kromát-környezetből való kilépéshez használja az alábbi parancsokat:
 
       ```
-      #exit
+      exit
 
-      #umount /rescue/proc/
-      #umount /rescue/sys/
-      #umount /rescue/dev/pts
-      #umount /rescue/dev/
-      #umount /rescue/run
-      #cd /
-      #umount /rescue/boot/
-      #umount /rescue
+      umount /rescue/proc/
+      umount /rescue/sys/
+      umount /rescue/dev/pts
+      umount /rescue/dev/
+      umount /rescue/run
+      cd /
+      umount /rescue/boot/
+      umount /rescue
       ```
 
       > [!NOTE]
@@ -171,7 +171,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
 
    1. A következő parancs használatával érheti el a virtuális gépet root felhasználóként:
 
-      `#sudo su -`
+      `sudo su -`
 
    1. Keresse meg a lemezt a használatával `dmesg` (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a **dmesg-et** használja az **SCSI** -lemezek szűrésére:
 
@@ -190,9 +190,9 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
    1. A logikai kötet csoport aktiválásához használja a következő parancsot:
 
       ```
-      #vgscan --mknodes
-      #vgchange -ay
-      #lvscan
+      vgscan --mknodes
+      vgchange -ay
+      lvscan
       ```
 
    1. `lsblk`Az LVM-nevek beolvasásához használja a parancsot:
@@ -221,23 +221,23 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
    1. A kromát-környezet eléréséhez használja az alábbi parancsokat:
 
       ```
-      #mkdir /rescue
-      #mount /dev/mapper/rootvg-rootlv /rescue
-      #mount /dev/mapper/rootvg-varlv /rescue/var
-      #mount /dev/mapper/rootvg-homelv /rescue/home
-      #mount /dev/mapper/rootvg-usrlv /rescue/usr
-      #mount /dev/mapper/rootvg-tmplv /rescue/tmp
-      #mount /dev/mapper/rootvg-optlv /rescue/opt
-      #mount /dev/sdc2 /rescue/boot/
-      #mount /dev/sdc1 /rescue/boot/efi
-      #cd /rescue
+      mkdir /rescue
+      mount /dev/mapper/rootvg-rootlv /rescue
+      mount /dev/mapper/rootvg-varlv /rescue/var
+      mount /dev/mapper/rootvg-homelv /rescue/home
+      mount /dev/mapper/rootvg-usrlv /rescue/usr
+      mount /dev/mapper/rootvg-tmplv /rescue/tmp
+      mount /dev/mapper/rootvg-optlv /rescue/opt
+      mount /dev/sdc2 /rescue/boot/
+      mount /dev/sdc1 /rescue/boot/efi
+      cd /rescue
 
-      #mount -t proc proc proc
-      #mount -t sysfs sys sys/
-      #mount -o bind /dev dev/
-      #mount -o bind /dev/pts dev/pts/
-      #mount -o bind /run run/
-      #chroot /rescue
+      mount -t proc proc proc
+      mount -t sysfs sys sys/
+      mount -o bind /dev dev/
+      mount -o bind /dev/pts dev/pts/
+      mount -o bind /run run/
+      chroot /rescue
       ```
 
    1. A kromát-környezet hibáinak megoldása.
@@ -245,22 +245,22 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
    1. A kromát-környezetből való kilépéshez használja az alábbi parancsokat:
 
       ```
-      #exit
+      exit
 
-      #umount /rescue/proc/
-      #umount /rescue/sys/
-      #umount /rescue/dev/pts
-      #umount /rescue/dev/
-      #umount /rescue/run
-      #cd /
-      #umount /rescue/boot/efi
-      #umount /rescue/boot
-      #umount /rescue/home
-      #umount /rescue/var
-      #umount /rescue/usr
-      #umount /rescue/tmp
-      #umount /rescue/opt
-      #umount /rescue
+      umount /rescue/proc/
+      umount /rescue/sys/
+      umount /rescue/dev/pts
+      umount /rescue/dev/
+      umount /rescue/run
+      cd /
+      umount /rescue/boot/efi
+      umount /rescue/boot
+      umount /rescue/home
+      umount /rescue/var
+      umount /rescue/usr
+      umount /rescue/tmp
+      umount /rescue/opt
+      umount /rescue
       ```
 
       > [!NOTE]
@@ -284,7 +284,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
 
    1. A következő parancs használatával érheti el a virtuális gépet root felhasználóként:
 
-      `#sudo su -`
+      `sudo su -`
 
    1. Keresse meg a lemezt a használatával `dmesg` (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a **dmesg-et** használja az **SCSI** -lemezek szűrésére:
 
@@ -303,9 +303,9 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
    1. A logikai kötet csoport aktiválásához használja a következő parancsot:
 
       ```
-      #vgscan --mknodes
-      #vgchange -ay
-      #lvscan
+      vgscan --mknodes
+      vgchange -ay
+      lvscan
       ```
 
    1. `lsblk`Az LVM-nevek beolvasásához használja a parancsot:
@@ -333,22 +333,22 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
    1. A kromát-környezet eléréséhez használja az alábbi parancsokat:
 
       ```
-      #mkdir /rescue
-      #mount /dev/mapper/rootvg-rootlv /rescue
-      #mount /dev/mapper/rootvg-varlv /rescue/var
-      #mount /dev/mapper/rootvg-homelv /rescue/home
-      #mount /dev/mapper/rootvg-usrlv /rescue/usr
-      #mount /dev/mapper/rootvg-tmplv /rescue/tmp
-      #mount /dev/sdc1 /rescue/boot/
-      #mount /dev/sdc15 /rescue/boot/efi
-      #cd /rescue
+      mkdir /rescue
+      mount /dev/mapper/rootvg-rootlv /rescue
+      mount /dev/mapper/rootvg-varlv /rescue/var
+      mount /dev/mapper/rootvg-homelv /rescue/home
+      mount /dev/mapper/rootvg-usrlv /rescue/usr
+      mount /dev/mapper/rootvg-tmplv /rescue/tmp
+      mount /dev/sdc1 /rescue/boot/
+      mount /dev/sdc15 /rescue/boot/efi
+      cd /rescue
 
-      #mount -t proc proc proc
-      #mount -t sysfs sys sys/
-      #mount -o bind /dev dev/
-      #mount -o bind /dev/pts dev/pts/
-      #mount -o bind /run run/
-      #chroot /rescue
+      mount -t proc proc proc
+      mount -t sysfs sys sys/
+      mount -o bind /dev dev/
+      mount -o bind /dev/pts dev/pts/
+      mount -o bind /run run/
+      chroot /rescue
       ```
 
    1. A kromát-környezet hibáinak megoldása.
@@ -356,21 +356,21 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
    1. A kromát-környezetből való kilépéshez használja az alábbi parancsokat:
 
       ```
-      #exit
+      exit
 
-      #umount /rescue/proc/
-      #umount /rescue/sys/
-      #umount /rescue/dev/pts
-      #umount /rescue/dev/
-      #umount /rescue/run
-      #cd /
-      #umount /rescue/boot/efi
-      #umount /rescue/boot
-      #umount /rescue/home
-      #umount /rescue/var
-      #umount /rescue/usr
-      #umount /rescue/tmp
-      #umount /rescue
+      umount /rescue/proc/
+      umount /rescue/sys/
+      umount /rescue/dev/pts
+      umount /rescue/dev/
+      umount /rescue/run
+      cd /
+      umount /rescue/boot/efi
+      umount /rescue/boot
+      umount /rescue/home
+      umount /rescue/var
+      umount /rescue/usr
+      umount /rescue/tmp
+      umount /rescue
       ```
 
       > [!NOTE]
@@ -391,7 +391,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
 
    1. A következő parancs használatával érheti el a virtuális gépet root felhasználóként:
 
-      `#sudo su -`
+      `sudo su -`
 
    1. Keresse meg a lemezt a használatával `dmesg` (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a **dmesg-et** használja az **SCSI** -lemezek szűrésére:
 
@@ -410,18 +410,18 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
    1. A kromát-környezet eléréséhez használja az alábbi parancsokat:
 
       ```
-      #mkdir /rescue
-      #mount -o nouuid /dev/sdc2 /rescue
-      #mount -o nouuid /dev/sdc1 /rescue/boot/
-      #mount /dev/sdc15 /rescue/boot/efi
-      #cd /rescue
+      mkdir /rescue
+      mount -o nouuid /dev/sdc2 /rescue
+      mount -o nouuid /dev/sdc1 /rescue/boot/
+      mount /dev/sdc15 /rescue/boot/efi
+      cd /rescue
 
-      #mount -t proc proc proc
-      #mount -t sysfs sys sys/
-      #mount -o bind /dev dev/
-      #mount -o bind /dev/pts dev/pts/
-      #mount -o bind /run run/
-      ##chroot /rescue
+      mount -t proc proc proc
+      mount -t sysfs sys sys/
+      mount -o bind /dev dev/
+      mount -o bind /dev/pts dev/pts/
+      mount -o bind /run run/
+      chroot /rescue
       ```
 
    1. A kromát-környezet hibáinak megoldása.
@@ -429,17 +429,17 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
    1. A kromát-környezetből való kilépéshez használja az alábbi parancsokat:
 
       ```
-      #exit
+      exit
 
-      #umount /rescue/proc/
-      #umount /rescue/sys/
-      #umount /rescue/dev/pts
-      #umount /rescue/dev/
-      #umount /rescue/run
-      #cd /
-      #umount /rescue/boot/efi
-      #umount /rescue/boot
-      #umount /rescue
+      umount /rescue/proc/
+      umount /rescue/sys/
+      umount /rescue/dev/pts
+      umount /rescue/dev/
+      umount /rescue/run
+      cd /
+      umount /rescue/boot/efi
+      umount /rescue/boot
+      umount /rescue
       ```
 
       > [!NOTE]
@@ -460,7 +460,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
 
    1. A következő parancs használatával érheti el a virtuális gépet root felhasználóként:
 
-      `#sudo su -`
+      `sudo su -`
 
    1. Keresse meg a lemezt a használatával `dmesg` (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a **dmesg-et** használja az **SCSI** -lemezek szűrésére:
 
@@ -479,18 +479,18 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
    1. A kromát-környezet eléréséhez használja az alábbi parancsokat:
 
       ```
-      #mkdir /rescue
-      #mount -o nouuid /dev/sdc4 /rescue
-      #mount -o nouuid /dev/sdc3 /rescue/boot/
-      #mount /dev/sdc2 /rescue/boot/efi
-      #cd /rescue
+      mkdir /rescue
+      mount -o nouuid /dev/sdc4 /rescue
+      mount -o nouuid /dev/sdc3 /rescue/boot/
+      mount /dev/sdc2 /rescue/boot/efi
+      cd /rescue
 
-      #mount -t proc proc proc
-      #mount -t sysfs sys sys/
-      #mount -o bind /dev dev/
-      #mount -o bind /dev/pts dev/pts/
-      #mount -o bind /run run/
-      #chroot /rescue
+      mount -t proc proc proc
+      mount -t sysfs sys sys/
+      mount -o bind /dev dev/
+      mount -o bind /dev/pts dev/pts/
+      mount -o bind /run run/
+      chroot /rescue
       ```
 
    1. A kromát-környezet hibáinak megoldása.
@@ -498,17 +498,17 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a kromát-környezetet a virt
    1. A kromát-környezetből való kilépéshez használja az alábbi parancsokat:
 
       ```
-      #exit
+      exit
 
-      #umount /rescue/proc/
-      #umount /rescue/sys/
-      #umount /rescue/dev/pts
-      #umount /rescue/dev/
-      #umount /rescue/run
-      #cd /
-      #umount /rescue/boot/efi
-      #umount /rescue/boot
-      #umount /rescue
+      umount /rescue/proc/
+      umount /rescue/sys/
+      umount /rescue/dev/pts
+      umount /rescue/dev/
+      umount /rescue/run
+      cd /
+      umount /rescue/boot/efi
+      umount /rescue/boot
+      umount /rescue
       ```
 
       > [!NOTE]

@@ -13,20 +13,26 @@ ms.workload: infrastructure
 ms.date: 03/30/2020
 ms.author: prtyag
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d723e95212e457a81eedf7726bf3c5bd2499643
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8f573f5f00d266fe5d27857cc9e244d136f61a5
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84488885"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379264"
 ---
-# <a name="enable-kdump-service"></a>Kdump szolgáltatás engedélyezése
+# <a name="kdump-for-sap-hana-on-azure-large-instances-hli"></a>SAP HANA on Azure Large Instances Kdump (HLI)
 
-Ez a dokumentum ismerteti a Kdump szolgáltatás Azure HANA nagyméretű példányon való engedélyezésének részleteit (**i és II**típus)
+A kdump konfigurálása és engedélyezése egy olyan lépés, amely szükséges a rendszerösszeomlások hibakereséséhez, amelyek nem egyértelműek.
+Időnként előfordulhat, hogy a rendszer váratlanul leáll, és nem magyarázható hardver-vagy infrastruktúra-probléma.
+Ezekben az esetekben ez lehet operációs rendszer vagy alkalmazási probléma, és a kdump lehetővé teszi a SUSE számára, hogy megtudja, miért összeomlott a rendszer.
+
+## <a name="enable-kdump-service"></a>Kdump szolgáltatás engedélyezése
+
+Ez a dokumentum ismerteti a Kdump szolgáltatás Azure HANA nagyméretű példányon való engedélyezésének részleteit ( **i és II** típus)
 
 ## <a name="supported-skus"></a>Támogatott SKU-i
 
-|  Hana nagyméretű példány típusa   |  Operációs rendszer szállítója   |  Operációs rendszer csomagjának verziója   |  SKU        |
+|  Hana nagyméretű példány típusa   |  Operációs rendszer szállítója   |  Operációs rendszer csomagjának verziója   |  Termékváltozat        |
 |-----------------------------|--------------|-----------------------|-------------|
 |   Típus                    |  SuSE        |   SLES 12 SP3         |  S224m      |
 |   Típus                    |  SuSE        |   SLES 12 SP4         |  S224m      |
@@ -62,6 +68,10 @@ Ez a dokumentum ismerteti a Kdump szolgáltatás Azure HANA nagyméretű példá
 ## <a name="setup-details"></a>Telepítés részletei
 
 - A Kdump engedélyezéséhez szükséges parancsfájl [itt](https://github.com/Azure/sap-hana/blob/master/tools/enable-kdump.sh) található.
+> [!NOTE]
+> Ez a szkript a tesztkörnyezet beállításán alapul, és az ügyfélnek várhatóan kapcsolatba kell lépnie az operációs rendszer gyártójával a további hangolás érdekében.
+> Külön LUN-t kell kiépíteni az új és a meglévő kiszolgálók számára a memóriaképek és szkriptek mentéséhez, és gondoskodni fog arról, hogy a fájlrendszert a LUN-ban konfigurálja.
+> A Microsoft nem felelős a memóriakép elemzéséhez. Az ügyfélnek meg kell nyitnia egy jegyet az operációs rendszer gyártójával, hogy elemezze.
 
 - Futtassa ezt a parancsfájlt a HANA Large-példányon az alábbi parancs használatával
 
@@ -72,7 +82,7 @@ Ez a dokumentum ismerteti a Kdump szolgáltatás Azure HANA nagyméretű példá
     sudo bash enable-kdump.sh
     ```
 
-- Ha a parancs kimenete Kdump sikeresen engedélyezve van, indítsa újra a rendszerét a módosítás alkalmazásához, majd a Kdump engedélyezése sikeresen megtörtént. A módosítások alkalmazásához indítsa újra a rendszerét.
+- Ha a parancs kimenete Kdump sikeresen engedélyezve van, ellenőrizze, hogy a rendszer újraindításával sikeresen alkalmazza-e a módosításokat.
 
 - Ha a parancs kimenete nem tudott végrehajtani bizonyos műveletet, zárja be!!!!,, majd a Kdump szolgáltatás nincs engedélyezve. Tekintse át a [támogatási problémát](#support-issue)ismertető szakaszt.
 
@@ -104,3 +114,6 @@ Ha a parancsfájl hibát jelez, vagy a Kdump nincs engedélyezve, a következő 
 * Operációs rendszer verziója
 
 * Kernel verziója
+
+## <a name="related-documents"></a>Kapcsolódó dokumentumok
+- További tudnivalók a [kdump konfigurálásáról](https://www.suse.com/support/kb/doc/?id=3374462)

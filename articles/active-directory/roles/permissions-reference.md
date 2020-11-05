@@ -7,19 +7,19 @@ manager: daveba
 search.appverid: MET150
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: reference
-ms.date: 09/22/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ece458960002fb6af9e0ef5065e6e926a9fc17d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d55e7f29c9ecefa7cfcf98ef890d9982b044ef30
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376281"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378822"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban
 
@@ -69,7 +69,7 @@ Az ebben a szerepkörben lévő felhasználók létrehozhatnak alkalmazás-regis
 
 ### <a name="authentication-administrator"></a>[Hitelesítés rendszergazdája](#authentication-administrator-permissions)
 
-Az ezzel a szerepkörrel rendelkező felhasználók egyes felhasználók számára megadhatják vagy alaphelyzetbe állíthatják a nem jelszavas hitelesítő adatokat, és az összes felhasználó jelszavait módosíthatják. A hitelesítő rendszergazdák megkövetelhetik, hogy a nem rendszergazdák vagy bizonyos szerepkörökhöz rendelt felhasználók újra regisztráljanak a meglévő, nem jelszóval nem rendelkező hitelesítő adatokkal (például MFA vagy...), és visszavonhatók az MFA-t az **eszközön**, amely a következő bejelentkezéskor az MFA-t kéri. Ezek a műveletek csak azokra a felhasználókra vonatkoznak, akik nem rendszergazdák, vagy akik a következő szerepkörök közül egyet vagy többet rendelnek hozzá:
+Az ezzel a szerepkörrel rendelkező felhasználók egyes felhasználók számára megadhatják vagy alaphelyzetbe állíthatják a nem jelszavas hitelesítő adatokat, és az összes felhasználó jelszavait módosíthatják. A hitelesítő rendszergazdák megkövetelhetik, hogy a nem rendszergazdák vagy bizonyos szerepkörökhöz rendelt felhasználók újra regisztráljanak a meglévő, nem jelszóval nem rendelkező hitelesítő adatokkal (például MFA vagy...), és visszavonhatók az MFA-t az **eszközön** , amely a következő bejelentkezéskor az MFA-t kéri. Ezek a műveletek csak azokra a felhasználókra vonatkoznak, akik nem rendszergazdák, vagy akik a következő szerepkörök közül egyet vagy többet rendelnek hozzá:
 
 * Hitelesítés rendszergazdája
 * Directory-olvasók
@@ -233,7 +233,7 @@ Az ebben a szerepkörben lévő felhasználók beolvashatják a beállításokat
 >- [OneDrive felügyeleti központ](https://admin.onedrive.com/) – a OneDrive felügyeleti központ nem támogatja a globális olvasó szerepkört
 >- [M365 felügyeleti központ](https://admin.microsoft.com/Adminportal/Home#/homepage) – a globális olvasó nem tudja beolvasni az ügyfél kulcstároló-kérelmeit. A M365 felügyeleti központ bal oldali ablaktáblájában nem találja a **Customer kulcstároló-kérelmek** fület a **támogatás** területen.
 >- [Office biztonsági & megfelelőségi központ](https://sip.protection.office.com/homepage) – a globális olvasó nem tudja olvasni az SCC-naplókat, a tartalom keresését vagy a biztonságos pontszám megtekintését.
->- [Teams felügyeleti központ](https://admin.teams.microsoft.com) – a globális olvasó nem tudja beolvasni a **csapatok életciklusát**, az **elemzési & jelentéseket**, az **IP Phone-eszközök kezelését** és az **alkalmazás-katalógust**
+>- [Teams felügyeleti központ](https://admin.teams.microsoft.com) – a globális olvasó nem tudja beolvasni a **csapatok életciklusát** , az **elemzési & jelentéseket** , az **IP Phone-eszközök kezelését** és az **alkalmazás-katalógust**
 >- A [Privileged Access Management (PAM)](/office365/securitycompliance/privileged-access-management-overview) nem támogatja a globális olvasó szerepkört.
 >- [Azure Information Protection](/azure/information-protection/what-is-information-protection) – a globális olvasó csak a [központi jelentéskészítés](/azure/information-protection/reports-aip) esetén támogatott, és ha az Azure ad-szervezet nem az [egyesített címkézési platformon](/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)van.
 >
@@ -311,7 +311,7 @@ Az ebben a szerepkörben lévő felhasználók megtekinthetik az üzenetek és a
 
 Ne használja. Ezt a szerepkört a rendszer automatikusan a kereskedelemből rendeli hozzá, és semmilyen más használatra nem javasolt vagy nem támogatott. A részleteket alább találja.
 
-A modern kereskedelmi felhasználói szerepkör lehetővé teszi, hogy bizonyos felhasználók hozzáférhessenek Microsoft 365 felügyeleti központhoz, és megtekintsék a bal oldali navigációs bejegyzéseket a **Kezdőlap**, a **számlázás**és a **támogatás**számára. Az ezeken a területeken elérhető tartalmakat a felhasználók számára a saját maguk vagy a szervezete számára vásárolt termékek kezeléséhez rendelt [kereskedelmi szerepkörök](../../cost-management-billing/manage/understand-mca-roles.md) szabályozzák. Ilyen lehet például a számlák kifizetése, illetve a számlázási fiókokhoz és a számlázási profilokhoz való hozzáférés. 
+A modern kereskedelmi felhasználói szerepkör lehetővé teszi, hogy bizonyos felhasználók hozzáférhessenek Microsoft 365 felügyeleti központhoz, és megtekintsék a bal oldali navigációs bejegyzéseket a **Kezdőlap** , a **számlázás** és a **támogatás** számára. Az ezeken a területeken elérhető tartalmakat a felhasználók számára a saját maguk vagy a szervezete számára vásárolt termékek kezeléséhez rendelt [kereskedelmi szerepkörök](../../cost-management-billing/manage/understand-mca-roles.md) szabályozzák. Ilyen lehet például a számlák kifizetése, illetve a számlázási fiókokhoz és a számlázási profilokhoz való hozzáférés. 
 
 A modern kereskedelmi felhasználói szerepkörrel rendelkező felhasználók általában rendszergazdai jogosultságokkal rendelkeznek más Microsoft vásárlási rendszerekben, de nem rendelkeznek globális rendszergazdai vagy számlázási rendszergazdai szerepkörökkel a felügyeleti központ eléréséhez. 
 

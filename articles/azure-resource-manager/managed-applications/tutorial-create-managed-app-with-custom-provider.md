@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a92382f397eee5e0315dda73d33f968dafa4b496
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: f327749d1bdfb8cf2cba00cf4c5f68b4b2b77999
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041721"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379553"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Oktatóanyag: felügyelt alkalmazás létrehozása egyéni műveletekkel és erőforrásokkal
 
@@ -41,7 +41,7 @@ Az oktatóanyag elvégzéséhez ismernie kell a következőket:
 
 Ebben az oktatóanyagban egy felügyelt alkalmazást hoz létre, és a felügyelt erőforráscsoport egyéni szolgáltatói példányt, Storage-fiókot és-függvényt fog tartalmazni. Az ebben a példában használt Azure-függvény olyan API-t valósít meg, amely kezeli az egyéni szolgáltatói műveleteket a műveletekhez és az erőforrásokhoz. Az Azure Storage-fiók alapszintű tárolóként használható az egyéni szolgáltatói erőforrások számára.
 
-A felügyelt alkalmazás példányának létrehozásához szükséges felhasználói felület definíciója tartalmazza a `funcname` és a `storagename` bemeneti elemeket. A Storage-fiók nevének és a függvény nevének globálisan egyedinek kell lennie. Alapértelmezés szerint a Function Files a [minta Function csomagból](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip)lesz üzembe helyezve, de módosítható úgy, hogy hozzáad egy bemeneti elemet a csomag hivatkozásához a *createUIDefinition.json* :
+A felügyelt alkalmazás példányának létrehozásához szükséges felhasználói felület definíciója tartalmazza a `funcname` és a `storagename` bemeneti elemeket. A Storage-fiók nevének és a függvény nevének globálisan egyedinek kell lennie. Alapértelmezés szerint a Function Files a [minta Function csomagból](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip)lesz üzembe helyezve, de módosítható úgy, hogy hozzáad egy bemeneti elemet a csomag hivatkozásához a *createUiDefinition.json* :
 
 ```json
 {
@@ -74,7 +74,7 @@ A felügyelt alkalmazás példányának létrehozásához szükséges felhaszná
 }
 ```
 
-és kimenet *createUIDefinition.json* :
+és kimenet *createUiDefinition.json* :
 
 ```json
   "funcname": "[steps('applicationSettings').funcname]",
@@ -82,13 +82,13 @@ A felügyelt alkalmazás példányának létrehozásához szükséges felhaszná
   "zipFileBlobUri": "[steps('applicationSettings').zipFileBlobUri]"
 ```
 
-A minta teljes *createUIDefinition.js* a következő [hivatkozáson található: felhasználói felület elemei összetevők](reference-createuidefinition-artifact.md).
+A minta teljes *createUiDefinition.js* a következő [hivatkozáson található: felhasználói felület elemei összetevők](reference-createuidefinition-artifact.md).
 
 ## <a name="template-with-custom-provider"></a>Sablon egyéni szolgáltatóval
 
-Az egyéni szolgáltatóval felügyelt alkalmazási példány létrehozásához meg kell határoznia a **nyilvános** nevű egyéni szolgáltatói erőforrást, és be kell írnia a **Microsoft. CustomProviders/resourceProviders** nevet a **mainTemplate.js** . Ebben az erőforrásban meg kell határoznia a szolgáltatáshoz tartozó erőforrás-típusokat és műveleteket. Az Azure Function és az Azure Storage-fiók példányainak üzembe helyezéséhez adja meg a Type és a típusú erőforrásokat `Microsoft.Web/sites` `Microsoft.Storage/storageAccounts` .
+Az egyéni szolgáltatóval felügyelt alkalmazási példány létrehozásához meg kell határoznia a **nyilvános** nevű egyéni szolgáltatói erőforrást, és be kell írnia a **Microsoft. CustomProviders/resourceProviders** nevet a **mainTemplate.js**. Ebben az erőforrásban meg kell határoznia a szolgáltatáshoz tartozó erőforrás-típusokat és műveleteket. Az Azure Function és az Azure Storage-fiók példányainak üzembe helyezéséhez adja meg a Type és a típusú erőforrásokat `Microsoft.Web/sites` `Microsoft.Storage/storageAccounts` .
 
-Ebben az oktatóanyagban létre fog hozni egy `users` erőforrás-típust, egy `ping` egyéni műveletet és egy egyéni `users/contextAction` műveletet, amelyet egy egyéni erőforrás kontextusában fog végrehajtani `users` . Minden erőforrástípus és művelet esetében adjon meg egy végpontot, amely a [createUIDefinition.js](#user-interface-definition)által megadott nevű függvényre mutat. A **routingType** megadása az `Proxy,Cache` erőforrástípusok és `Proxy` a műveletek esetében:
+Ebben az oktatóanyagban létre fog hozni egy `users` erőforrás-típust, egy `ping` egyéni műveletet és egy egyéni `users/contextAction` műveletet, amelyet egy egyéni erőforrás kontextusában fog végrehajtani `users` . Minden erőforrástípus és művelet esetében adjon meg egy végpontot, amely a [createUiDefinition.js](#user-interface-definition)által megadott nevű függvényre mutat. A **routingType** megadása az `Proxy,Cache` erőforrástípusok és `Proxy` a műveletek esetében:
 
 ```json
 {
@@ -264,7 +264,7 @@ az managedapp definition create \
 
     ![Engedélyezés hozzáadása](./media/tutorial-create-managed-app-with-custom-provider/add-authorization.png)
 
-5. Válasszon ki egy Azure Active Directory csoportot az erőforrások kezeléséhez, majd kattintson **az OK gombra** .
+5. Válasszon ki egy Azure Active Directory csoportot az erőforrások kezeléséhez, majd kattintson **az OK gombra**.
 
    ![Engedélyezési csoport hozzáadása](./media/tutorial-create-managed-app-with-custom-provider/add-auth-group.png)
 

@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 2f788452455bfbbc47f0a48689ccf3344515fdae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06d5196e612bcf20e11f17634b32db028cd5bc88
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904257"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378091"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Egy Spring Cloud config Server-példány beállítása a szolgáltatáshoz
 
@@ -55,12 +55,12 @@ Ha nyilvános tárházat használ, a konfigurálható tulajdonságok korlátozot
 A nyilvános git-tárház beállításához használt összes konfigurálható tulajdonság a következő táblázatban látható:
 
 > [!NOTE]
-> Kötőjel (-) használata a szavak elkülönítésére az egyetlen jelenleg támogatott elnevezési konvenció. Használhatja például az *alapértelmezett címkét*, de nem *defaultLabel*.
+> Kötőjel (-) használata a szavak elkülönítésére az egyetlen jelenleg támogatott elnevezési konvenció. Használhatja például az *alapértelmezett címkét* , de nem *defaultLabel*.
 
-| Tulajdonság        | Kötelező | Szolgáltatás                                                      |
+| Tulajdonság        | Kötelező | Funkció                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
-| `uri`           | Igen    | A konfigurációs kiszolgálóként használt git-tárház URI-ja a *http://*, a *https://*, a *git@* és a *SSH://* karakterrel kezdődik. |
-| `default-label` | Nem     | A git-tárház alapértelmezett címkéje az adattár *neve*, a *címke neve*vagy a tárház *véglegesítő azonosítója* lehet. |
+| `uri`           | Igen    | A konfigurációs kiszolgálóként használt git-tárház URI-ja a *http://* , a *https://* , a *git@* és a *SSH://* karakterrel kezdődik. |
+| `default-label` | Nem     | A git-tárház alapértelmezett címkéje az adattár *neve* , a *címke neve* vagy a tárház *véglegesítő azonosítója* lehet. |
 | `search-paths`  | Nem     | A git-tárház alkönyvtáraiban való kereséshez használt karakterláncok tömbje. |
 
 ------
@@ -70,17 +70,20 @@ A nyilvános git-tárház beállításához használt összes konfigurálható t
 A privát git-tárház SSH-val történő beállításához használt összes konfigurálható tulajdonság a következő táblázatban látható:
 
 > [!NOTE]
-> Kötőjel (-) használata a szavak elkülönítésére az egyetlen jelenleg támogatott elnevezési konvenció. Használhatja például az *alapértelmezett címkét*, de nem *defaultLabel*.
+> Kötőjel (-) használata a szavak elkülönítésére az egyetlen jelenleg támogatott elnevezési konvenció. Használhatja például az *alapértelmezett címkét* , de nem *defaultLabel*.
 
-| Tulajdonság                   | Kötelező | Szolgáltatás                                                      |
+| Tulajdonság                   | Kötelező | Funkció                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
-| `uri`                      | Igen    | A konfigurációs kiszolgálóként használt git-tárház URI-JÁT *http://*, *https://*, *git@* vagy *SSH://* kell elindítani. |
-| `default-label`            | Nem     | A git-tárház alapértelmezett címkéje az adattár *neve*, a *címke neve*vagy a tárház *véglegesítő azonosítója* lehet. |
+| `uri`                      | Igen    | A konfigurációs kiszolgálóként használt git-tárház URI-JÁT *http://* , *https://* , *git@* vagy *SSH://* kell elindítani. |
+| `default-label`            | Nem     | A git-tárház alapértelmezett címkéje az adattár *neve* , a *címke neve* vagy a tárház *véglegesítő azonosítója* lehet. |
 | `search-paths`             | Nem     | A git-tárház alkönyvtáraiban való kereséshez használt karakterláncok tömbje. |
-| `private-key`              | Nem     | A git-tárház eléréséhez _szükséges_ SSH titkos kulcs, ha az URI *git@* vagy *SSH://*-vel kezdődik. |
+| `private-key`              | Nem     | A git-tárház eléréséhez _szükséges_ SSH titkos kulcs, ha az URI *git@* vagy *SSH://* -vel kezdődik. |
 | `host-key`                 | Nem     | A git-tárház kiszolgálójának gazdagép kulcsa nem tartalmazhatja a által lefedett algoritmus-előtagot `host-key-algorithm` . |
-| `host-key-algorithm`       | Nem     | A host key algoritmusnak *SSH-DSS*, *SSH-RSA*, *ECDSA-SHA2-nistp256*, *ECDSA-SHA2-nistp384*vagy *ECDSA-SHA2-nistp521*értékűnek kell lennie. Csak akkor *szükséges* , ha `host-key` létezik. |
-| `strict-host-key-checking` | Nem     | Azt jelzi, hogy a konfigurációs kiszolgáló példánya nem fog-e elindulni a magánjellegű kihasználása során `host-key` . *Igaznak* kell lennie (alapértelmezett érték) vagy *false (hamis*). |
+| `host-key-algorithm`       | Nem     | A host key algoritmusnak *SSH-DSS* , *SSH-RSA* , *ECDSA-SHA2-nistp256* , *ECDSA-SHA2-nistp384* vagy *ECDSA-SHA2-nistp521* értékűnek kell lennie. Csak akkor *szükséges* , ha `host-key` létezik. |
+| `strict-host-key-checking` | Nem     | Azt jelzi, hogy a konfigurációs kiszolgáló példánya nem fog-e elindulni a magánjellegű kihasználása során `host-key` . *Igaznak* kell lennie (alapértelmezett érték) vagy *false (hamis* ). |
+
+> [!NOTE]
+> `master`Ha nincs megadva, a konfigurációs kiszolgáló (például az om git) alapértelmezett címkeként fog megjelenni. A GitHub azonban a közelmúltban módosította az alapértelmezett ágat `master` `main` . Az Azure Spring Cloud config Server meghibásodásának elkerülése érdekében figyeljen az alapértelmezett címkére, ha a konfigurációs kiszolgálót a GitHub használatával állítja be, különösen az új létrehozott Tárházak esetében.
 
 -----
 
@@ -89,12 +92,12 @@ A privát git-tárház SSH-val történő beállításához használt összes ko
 Az alapszintű hitelesítéssel rendelkező privát git-tárház beállításához használt összes konfigurálható tulajdonság alább látható.
 
 > [!NOTE]
-> Kötőjel (-) használata a szavak elkülönítésére az egyetlen jelenleg támogatott elnevezési konvenció. Használja például az *alapértelmezett-címkét*, ne *defaultLabel*.
+> Kötőjel (-) használata a szavak elkülönítésére az egyetlen jelenleg támogatott elnevezési konvenció. Használja például az *alapértelmezett-címkét* , ne *defaultLabel*.
 
-| Tulajdonság        | Kötelező | Szolgáltatás                                                      |
+| Tulajdonság        | Kötelező | Funkció                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
-| `uri`           | Igen    | A konfigurációs kiszolgálóként használt git-tárház URI-JÁT a *http://*, a *https://*, a *git@* vagy a *SSH://* kell elindítani. |
-| `default-label` | Nem     | A git-tárház alapértelmezett címkéje az adattár *neve*, a *címke neve*vagy a tárház *véglegesítő azonosítója* lehet. |
+| `uri`           | Igen    | A konfigurációs kiszolgálóként használt git-tárház URI-JÁT a *http://* , a *https://* , a *git@* vagy a *SSH://* kell elindítani. |
+| `default-label` | Nem     | A git-tárház alapértelmezett címkéje az adattár *neve* , a *címke neve* vagy a tárház *véglegesítő azonosítója* lehet. |
 | `search-paths`  | Nem     | A git-tárház alkönyvtáraiban való kereséshez használt karakterláncok tömbje. |
 | `username`      | Nem     | A git-tárház kiszolgálójának eléréséhez használt Felhasználónév, amely a git-tárház kiszolgálójának támogatásához _szükséges_ `Http Basic Authentication` . |
 | `password`      | Nem     | A git-tárház kiszolgálójának eléréséhez használt jelszó, amely a git-tárház kiszolgálójának támogatásához _szükséges_ `Http Basic Authentication` . |
@@ -107,22 +110,22 @@ Az alapszintű hitelesítéssel rendelkező privát git-tárház beállításáh
 Az alábbi listában a git-adattárak beállításához használt összes konfigurálható tulajdonság szerepel.
 
 > [!NOTE]
-> Kötőjel (-) használata a szavak elkülönítésére az egyetlen jelenleg támogatott elnevezési konvenció. Használja például az *alapértelmezett-címkét*, ne *defaultLabel*.
+> Kötőjel (-) használata a szavak elkülönítésére az egyetlen jelenleg támogatott elnevezési konvenció. Használja például az *alapértelmezett-címkét* , ne *defaultLabel*.
 
-| Tulajdonság                           | Kötelező         | Szolgáltatás                                                      |
+| Tulajdonság                           | Kötelező         | Funkció                                                      |
 | :--------------------------------- | ---------------- | ------------------------------------------------------------ |
 | `repos`                            | Nem             | Egy adott névvel rendelkező git-tárház beállításait tartalmazó Térkép. |
-| `repos."uri"`                      | Igen bekapcsolva `repos` | A konfigurációs kiszolgálóként használt git-tárház URI-JÁT a *http://*, a *https://*, a *git@* vagy a *SSH://* kell elindítani. |
-| `repos."name"`                     | Igen bekapcsolva `repos` | A git-tárházon azonosítható név, amely csak akkor _szükséges_ , ha `repos` létezik. Például: *Team-A*, *Team-B*. |
+| `repos."uri"`                      | Igen bekapcsolva `repos` | A konfigurációs kiszolgálóként használt git-tárház URI-JÁT a *http://* , a *https://* , a *git@* vagy a *SSH://* kell elindítani. |
+| `repos."name"`                     | Igen bekapcsolva `repos` | A git-tárházon azonosítható név, amely csak akkor _szükséges_ , ha `repos` létezik. Például: *Team-A* , *Team-B*. |
 | `repos."pattern"`                  | Nem             | Az alkalmazás nevének megfeleltetéséhez használt karakterláncok tömbje. Minden mintához használja a `{application}/{profile}` formátumot helyettesítő karakterekkel. |
-| `repos."default-label"`            | Nem             | A git-tárház alapértelmezett címkéje az adattár *neve*, a *címke neve*vagy a tárház *véglegesítő azonosítója* lehet. |
+| `repos."default-label"`            | Nem             | A git-tárház alapértelmezett címkéje az adattár *neve* , a *címke neve* vagy a tárház *véglegesítő azonosítója* lehet. |
 | `repos."search-paths`"             | Nem             | A git-tárház alkönyvtáraiban való kereséshez használt karakterláncok tömbje. |
 | `repos."username"`                 | Nem             | A git-tárház kiszolgálójának eléréséhez használt Felhasználónév, amely a git-tárház kiszolgálójának támogatásához _szükséges_ `Http Basic Authentication` . |
 | `repos."password"`                 | Nem             | A git-tárház kiszolgálójának eléréséhez használt jelszó, amely a git-tárház kiszolgálójának támogatásához _szükséges_ `Http Basic Authentication` . |
-| `repos."private-key"`              | Nem             | A git-tárház eléréséhez _szükséges_ SSH titkos kulcs, ha az URI *git@* vagy *SSH://*-vel kezdődik. |
+| `repos."private-key"`              | Nem             | A git-tárház eléréséhez _szükséges_ SSH titkos kulcs, ha az URI *git@* vagy *SSH://* -vel kezdődik. |
 | `repos."host-key"`                 | Nem             | A git-tárház kiszolgálójának gazdagép kulcsa nem tartalmazhatja a által lefedett algoritmus-előtagot `host-key-algorithm` . |
-| `repos."host-key-algorithm"`       | Nem             | A host key algoritmusnak *SSH-DSS*, *SSH-RSA*, *ECDSA-SHA2-nistp256*, *ECDSA-SHA2-nistp384*vagy *ECDSA-SHA2-nistp521*értékűnek kell lennie. Csak akkor *szükséges* , ha `host-key` létezik. |
-| `repos."strict-host-key-checking"` | Nem             | Azt jelzi, hogy a konfigurációs kiszolgáló példánya nem fog-e elindulni a magánjellegű kihasználása során `host-key` . *Igaznak* kell lennie (alapértelmezett érték) vagy *false (hamis*). |
+| `repos."host-key-algorithm"`       | Nem             | A host key algoritmusnak *SSH-DSS* , *SSH-RSA* , *ECDSA-SHA2-nistp256* , *ECDSA-SHA2-nistp384* vagy *ECDSA-SHA2-nistp521* értékűnek kell lennie. Csak akkor *szükséges* , ha `host-key` létezik. |
+| `repos."strict-host-key-checking"` | Nem             | Azt jelzi, hogy a konfigurációs kiszolgáló példánya nem fog-e elindulni a magánjellegű kihasználása során `host-key` . *Igaznak* kell lennie (alapértelmezett érték) vagy *false (hamis* ). |
 
 ## <a name="attach-your-config-server-repository-to-azure-spring-cloud"></a>A konfigurációs kiszolgáló tárházának csatlakoztatása az Azure Spring Cloud-hoz
 
@@ -134,7 +137,7 @@ Most, hogy a konfigurációs fájlokat egy adattárba menti, hozzá kell csatlak
 
 1. Válassza ki a konfigurálni kívánt szolgáltatást.
 
-1. A szolgáltatás lap bal oldali paneljének **Beállítások**területén válassza a **konfigurációs kiszolgáló** fület.
+1. A szolgáltatás lap bal oldali paneljének **Beállítások** területén válassza a **konfigurációs kiszolgáló** fület.
 
 ![A konfigurációs kiszolgáló ablaka](media/spring-cloud-tutorial-config-server/portal-config-server.png)
 
@@ -142,18 +145,18 @@ Most, hogy a konfigurációs fájlokat egy adattárba menti, hozzá kell csatlak
 
 #### <a name="default-repository"></a>Alapértelmezett adattár
 
-* **Nyilvános adattár**: az **alapértelmezett adattár** szakasz **URI** mezőjébe illessze be a tárház URI-ját.  Állítsa be a **címkét** a **konfigurációra**. Győződjön meg arról, hogy a **hitelesítési** beállítás **nyilvános**, majd válassza az **alkalmaz** a befejezésre lehetőséget. 
+* **Nyilvános adattár** : az **alapértelmezett adattár** szakasz **URI** mezőjébe illessze be a tárház URI-ját.  Állítsa be a **címkét** a **konfigurációra**. Győződjön meg arról, hogy a **hitelesítési** beállítás **nyilvános** , majd válassza az **alkalmaz** a befejezésre lehetőséget. 
 
-* **Privát tárház**: az Azure Spring Cloud támogatja az alapszintű jelszó/jogkivonat-alapú hitelesítést és az SSH-t.
+* **Privát tárház** : az Azure Spring Cloud támogatja az alapszintű jelszó/jogkivonat-alapú hitelesítést és az SSH-t.
 
-    * **Egyszerű hitelesítés**: az **alapértelmezett adattár** szakasz **URI** mezőjébe illessze be a tárház URI-ját, majd válassza a **hitelesítés** ("ceruza" ikon) gombot. A **hitelesítés szerkesztése** ablaktáblán a **Hitelesítés típusa** legördülő listában válassza a **http alapszintű**lehetőséget, majd adja meg felhasználónevét és jelszavát/jogkivonatát az Azure Spring Cloud elérésének biztosításához. Kattintson **az OK gombra**, majd válassza az **alkalmaz** lehetőséget a konfigurációs kiszolgálópéldány beállításának befejezéséhez.
+    * **Egyszerű hitelesítés** : az **alapértelmezett adattár** szakasz **URI** mezőjébe illessze be a tárház URI-ját, majd válassza a **hitelesítés** ("ceruza" ikon) gombot. A **hitelesítés szerkesztése** ablaktáblán a **Hitelesítés típusa** legördülő listában válassza a **http alapszintű** lehetőséget, majd adja meg felhasználónevét és jelszavát/jogkivonatát az Azure Spring Cloud elérésének biztosításához. Kattintson **az OK gombra** , majd válassza az **alkalmaz** lehetőséget a konfigurációs kiszolgálópéldány beállításának befejezéséhez.
 
     ![A hitelesítési panel alapszintű hitelesítésének szerkesztése](media/spring-cloud-tutorial-config-server/basic-auth.png)
     
     > [!CAUTION]
-    > Egyes git-tárház-kiszolgálók, például a GitHub, *személyes jogkivonatot* vagy *hozzáférési tokent*(például jelszót) használnak az **alapszintű hitelesítéshez**. Ezt a tokent használhatja jelszóként az Azure Spring Cloud-ban, mert soha nem jár le. Más git-tárház-kiszolgálók esetében, például a bitbucket és az Azure DevOps esetében a *hozzáférési token* egy vagy két órán belül lejár. Ez azt jelenti, hogy a beállítás nem életképes, ha ezeket az adattár-kiszolgálókat használja az Azure Spring Cloud használatával.
+    > Egyes git-tárház-kiszolgálók, például a GitHub, *személyes jogkivonatot* vagy *hozzáférési tokent* (például jelszót) használnak az **alapszintű hitelesítéshez**. Ezt a tokent használhatja jelszóként az Azure Spring Cloud-ban, mert soha nem jár le. Más git-tárház-kiszolgálók esetében, például a bitbucket és az Azure DevOps esetében a *hozzáférési token* egy vagy két órán belül lejár. Ez azt jelenti, hogy a beállítás nem életképes, ha ezeket az adattár-kiszolgálókat használja az Azure Spring Cloud használatával.
 
-    * **SSH**: az **alapértelmezett adattár** szakasz **URI** mezőjébe illessze be a tárház URI-ját, majd válassza a **hitelesítés** ("ceruza" ikon) gombot. A **hitelesítés szerkesztése** ablaktáblán a **Hitelesítés típusa** legördülő listában válassza az **SSH**lehetőséget, majd adja meg a **titkos kulcsot**. Szükség esetén megadhatja a **gazdagép kulcsát** és a **gazdagép kulcsának algoritmusát**is. Ügyeljen arra, hogy a nyilvános kulcsot a konfigurációs kiszolgáló adattárában is tartalmazza. Kattintson **az OK gombra**, majd válassza az **alkalmaz** lehetőséget a konfigurációs kiszolgálópéldány beállításának befejezéséhez.
+    * **SSH** : az **alapértelmezett adattár** szakasz **URI** mezőjébe illessze be a tárház URI-ját, majd válassza a **hitelesítés** ("ceruza" ikon) gombot. A **hitelesítés szerkesztése** ablaktáblán a **Hitelesítés típusa** legördülő listában válassza az **SSH** lehetőséget, majd adja meg a **titkos kulcsot**. Szükség esetén megadhatja a **gazdagép kulcsát** és a **gazdagép kulcsának algoritmusát** is. Ügyeljen arra, hogy a nyilvános kulcsot a konfigurációs kiszolgáló adattárában is tartalmazza. Kattintson **az OK gombra** , majd válassza az **alkalmaz** lehetőséget a konfigurációs kiszolgálópéldány beállításának befejezéséhez.
 
     ![A hitelesítési ablaktábla SSH-hitelesítésének szerkesztése](media/spring-cloud-tutorial-config-server/ssh-auth.png)
 
@@ -177,7 +180,7 @@ spring:
 
 ```
 
-Válassza a **Beállítások importálása** gombot, majd válassza ki a YAML fájlt a projekt könyvtárából. Válassza az **Importálás**lehetőséget, majd az `async` **értesítések** közül egy művelet jelenik meg. 1-2 perc elteltével a sikeres jelentésnek kell lennie.
+Válassza a **Beállítások importálása** gombot, majd válassza ki a YAML fájlt a projekt könyvtárából. Válassza az **Importálás** lehetőséget, majd az `async` **értesítések** közül egy művelet jelenik meg. 1-2 perc elteltével a sikeres jelentésnek kell lennie.
 
 ![A konfigurációs kiszolgáló értesítései panel](media/spring-cloud-tutorial-config-server/local-yml-success.png)
 
@@ -218,7 +221,7 @@ Az Azure Spring Cloud a nyilvános, SSH által védett vagy HTTP alapszintű hit
 
 1. Válassza ki a konfigurálni kívánt szolgáltatást.
 
-1. A szolgáltatás lap bal oldali paneljének **Beállítások**területén válassza a **konfigurációs kiszolgáló** fület. A korábban létrehozott adattár konfigurálása:
+1. A szolgáltatás lap bal oldali paneljének **Beállítások** területén válassza a **konfigurációs kiszolgáló** fület. A korábban létrehozott adattár konfigurálása:
    - Adja hozzá az előző szakaszban mentett adattár URL-címét.
    - Kattintson a be gombra `Authentication` , és válassza a `HTTP Basic`
    - A __Felhasználónév__ az előző szakaszban mentett Felhasználónév

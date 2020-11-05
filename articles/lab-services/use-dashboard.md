@@ -3,17 +3,17 @@ title: A Azure Lab Services-beli tantermi labor irányítópultjának használat
 description: Megtudhatja, hogyan használhatja az irányítópultot egy osztálytermi laborhoz a Azure Lab Servicesban.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 607a3e7faaae65adb67afc0ab0ffd5698adf4655
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3834e6910faea38e87489d1ad0075d4bd9b8c6c6
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90528261"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376952"
 ---
 # <a name="dashboard-for-classroom-labs"></a>Az osztályterem Labs irányítópultja
 Ez a cikk a Azure Lab Services található osztálytermi labor irányítópult-nézetét ismerteti. 
 
-![A Screen capature a Azure Lab Services található osztálytermi labor irányítópult-nézetét jeleníti meg.](./media/use-dashboard/dashboard.png)
+![Képernyőfelvétel: egy osztálytermi labor irányítópult-nézete Azure Lab Services](./media/use-dashboard/dashboard.png)
 
 ## <a name="costs-and-billing-tile"></a>Költségek és számlázási csempe
 Ez a csempe a következő költségbecslés részleteit tartalmazza:

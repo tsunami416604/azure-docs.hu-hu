@@ -7,16 +7,16 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 10/1/2020
 ms.author: rahugup
-ms.openlocfilehash: 7698e91f008fbed1f314a0cf9d39be6282493688
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 185979fcc0eeaebbe1c3b09d74050e05899737af
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359782"
+ms.locfileid: "93376799"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>VMware virtuális gépek migrálása az Azure-ba (ügynök nélkül) – PowerShell
 
-Ebből a cikkből megtudhatja, hogyan telepítheti át a felderített VMware virtuális gépeket az ügynök nélküli módszerrel a [Azure Migrate: Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool)Azure PowerShell használatával.
+Ebből a cikkből megtudhatja, hogyan telepítheti át a felderített VMware virtuális gépeket az ügynök nélküli módszerrel a [Azure Migrate: Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool)Azure PowerShell használatával. 
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -43,10 +43,10 @@ Az oktatóanyag elkezdése előtt:
 
 ## <a name="install-azure-migrate-powershell-module"></a>Azure Migrate PowerShell-modul telepítése
 
-Azure Migrate PowerShell-modul előzetes verzióban érhető el. A PowerShell-modult a következő parancs használatával kell telepítenie.
+Azure Migrate PowerShell-modul előzetes verzióban érhető el. A PowerShell-modult a következő parancs használatával kell telepítenie. 
 
 ```azurepowershell
-Install-Module -Name Az.Migrate
+Install-Module -Name Az.Migrate 
 ```
 
 ## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Jelentkezzen be Microsoft Azure-előfizetésbe
@@ -85,10 +85,10 @@ $MigrateProject | ConvertTo-JSON
 
 A Azure Migrate egy egyszerűsített [Azure Migrate berendezést](migrate-appliance-architecture.md)használ. Az előfeltételek részeként üzembe helyezte a Azure Migrate készüléket VMware virtuális gépként.
 
-Egy Azure Migrate-projektben egy adott VMware virtuális gép lekéréséhez adja meg a Azure Migrate projekt () `ProjectName` , az Azure Migrate projekt () erőforráscsoport nevét `ResourceGroupName` és a virtuális gép nevét ( `DisplayName` ).
+Egy Azure Migrate-projektben egy adott VMware virtuális gép lekéréséhez adja meg a Azure Migrate projekt () `ProjectName` , az Azure Migrate projekt () erőforráscsoport nevét `ResourceGroupName` és a virtuális gép nevét ( `DisplayName` ). 
 
-> [!IMPORTANT]
-> A virtuális gép neve megkülönbözteti a kis-és nagybetűket, ha a paraméter értékeként használja `DisplayName` .
+> [!NOTE]
+> **A virtuális gép neve ( `DisplayName` ) paraméter értéke megkülönbözteti a kis-és nagybetűket**.
 
 ```azurepowershell
 # Get a specific VMware VM in an Azure Migrate project
@@ -103,9 +103,9 @@ Egy Azure Migrate-projektben található összes VMware virtuális gépet lekér
 
 ```azurepowershell
 # Get all VMware VMs in an Azure Migrate project
-$DiscoveredServers = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName
+$DiscoveredServers = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName 
 ```
-Ha egy Azure Migrate-projektben több készülék is található, a `ProjectName` , a `ResourceGroupName` és a `ApplianceName` paraméterek segítségével lekérheti az összes felderített virtuális gépet egy adott Azure Migrate berendezés használatával.
+Ha egy Azure Migrate-projektben több készülék is található, a `ProjectName` , a `ResourceGroupName` és a `ApplianceName` paraméterek segítségével lekérheti az összes felderített virtuális gépet egy adott Azure Migrate berendezés használatával. 
 
 ```azurepowershell
 # Get all VMware VMs discovered by an Azure Migrate Appliance in an Azure Migrate project
@@ -126,16 +126,16 @@ Mielőtt replikálja az első virtuális gépet a Azure Migrate projektben, futt
 
 > [!NOTE]
 > Egy Azure Migrate projekt csak egy Azure-régióba való áttelepítést támogatja. A parancsfájl futtatása után nem módosíthatja azt a célként megadott régiót, amelyre a VMware virtuális gépeket át szeretné telepíteni.
-> `Initialize-AzMigrateReplicationInfrastructure`Ha új készüléket állít be a Azure Migrate projektben, futtatnia kell a parancsfájlt.
+> `Initialize-AzMigrateReplicationInfrastructure`Ha új készüléket állít be a Azure Migrate projektben, futtatnia kell a parancsfájlt. 
 
-A cikkben inicializáljuk a replikációs infrastruktúrát, hogy a virtuális gépek áttelepíthetők legyenek a `Central US` régióba. [A fájlt letöltheti](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) a GitHub-tárházból, vagy futtathatja a következő kódrészlet használatával.
+A cikkben inicializáljuk a replikációs infrastruktúrát, hogy a virtuális gépek áttelepíthetők legyenek a `Central US` régióba. [A fájlt letöltheti](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) a GitHub-tárházból, vagy futtathatja a következő kódrészlet használatával. 
 
 ```azurepowershell
-# Download the script from Azure Migrate GitHub repository
+# Download the script from Azure Migrate GitHub repository 
 Invoke-WebRequest https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-migrate/migrate-at-scale-vmware-agentles/Initialize-AzMigrateReplicationInfrastructure.ps1 -OutFile .\AzMigrateReplicationinfrastructure.ps1
 
 # Run the script for initializing replication infrastructure for the current Migrate project
-.\AzMigrateReplicationInfrastructure.ps1 -ResourceGroupName $ResourceGroup.ResourceGroupName -ProjectName $MigrateProject.Name -Scenario agentlessVMware -TargetRegion "CentralUS"
+.\AzMigrateReplicationInfrastructure.ps1 -ResourceGroupName $ResourceGroup.ResourceGroupName -ProjectName $MigrateProject.Name -Scenario agentlessVMware -TargetRegion "CentralUS" 
 ```
 
 
@@ -145,22 +145,22 @@ A felderítés és a replikációs infrastruktúra inicializálásának befejez�
 
 A replikálási tulajdonságokat a következőképpen adhatja meg.
 
-- **Cél-előfizetés és erőforráscsoport** – adja meg azt az előfizetést és erőforráscsoportot, amelyre a virtuális gépet át kell telepíteni úgy, hogy a paraméterrel megadja az erőforráscsoport azonosítóját `TargetResourceGroupId` .
-- **Cél virtuális hálózat és alhálózat** – adja meg az Azure-Virtual Network azonosítóját, valamint annak az alhálózatnak a nevét, amelyről a virtuális gépet át kell telepíteni a `TargetNetworkId` és a paraméterek használatával `TargetSubnetName` .
+- **Cél-előfizetés és erőforráscsoport** – adja meg azt az előfizetést és erőforráscsoportot, amelyre a virtuális gépet át kell telepíteni úgy, hogy a paraméterrel megadja az erőforráscsoport azonosítóját `TargetResourceGroupId` . 
+- **Cél virtuális hálózat és alhálózat** – adja meg az Azure-Virtual Network azonosítóját, valamint annak az alhálózatnak a nevét, amelyről a virtuális gépet át kell telepíteni a `TargetNetworkId` és a paraméterek használatával `TargetSubnetName` . 
 - **Cél virtuális gép neve** – adja meg a létrehozandó Azure-beli virtuális gép nevét a `TargetVMName` paraméter használatával.
-- **Cél virtuális gép mérete** – Itt adhatja meg a replikáláshoz használandó Azure-beli virtuális gép méretét `TargetVMSize` paraméter használatával. Ha például egy virtuális gépet át szeretne telepíteni D2_v2 virtuális gépre az Azure-ban, a "Standard_D2_v2" értéket kell megadnia `TargetVMSize` .
+- **Cél virtuális gép mérete** – Itt adhatja meg a replikáláshoz használandó Azure-beli virtuális gép méretét `TargetVMSize` paraméter használatával. Ha például egy virtuális gépet át szeretne telepíteni D2_v2 virtuális gépre az Azure-ban, a "Standard_D2_v2" értéket kell megadnia `TargetVMSize` .  
 - **Licenc** – Azure Hybrid Benefit használata az aktív frissítési garanciával vagy Windows Server-előfizetésekkel rendelkező Windows Server-gépekhez, a paraméter értékeként adja meg a `LicenseType` következőt: "windowsserver". Ellenkező esetben a paraméter értékét állítsa `LicenseType` "NoLicenseType" értékre.
 - **Operációsrendszer-lemez** – Itt adhatja meg annak a lemeznek az egyedi azonosítóját, amely az operációs rendszer rendszerbetöltőjét és a telepítőjét tartalmazta. A használni kívánt lemez a parancsmag használatával beolvasott lemez egyedi azonosító (UUID) tulajdonsága `Get-AzMigrateServer` .
 - **Lemez típusa** – adja meg a paraméter értékét az `DiskType` alábbiak szerint.
-    - A prémium szintű felügyelt lemezek használatához a paraméter értékeként a "Premium_LRS" értéket kell megadnia `DiskType` .
-    - A standard SSD-lemezek használatához a paraméter értékeként a "StandardSSD_LRS" értéket kell megadni `DiskType` .
-    - A standard HDD-lemezek használatához a paraméter értékeként a "Standard_LRS" értéket kell megadni `DiskType` .
-- **Infrastruktúra-redundancia** – az alábbi módon adhatja meg az infrastruktúra-redundancia beállítást.
+    - A prémium szintű felügyelt lemezek használatához a paraméter értékeként a "Premium_LRS" értéket kell megadnia `DiskType` . 
+    - A standard SSD-lemezek használatához a paraméter értékeként a "StandardSSD_LRS" értéket kell megadni `DiskType` . 
+    - A standard HDD-lemezek használatához a paraméter értékeként a "Standard_LRS" értéket kell megadni `DiskType` . 
+- **Infrastruktúra-redundancia** – az alábbi módon adhatja meg az infrastruktúra-redundancia beállítást. 
     - Rendelkezésre állási zóna az áttelepített gép egy adott rendelkezésre állási zónába való rögzítéséhez a régióban. Ezzel a beállítással olyan kiszolgálókat oszthat szét, amelyek több csomópontos alkalmazási szintet alkotnak Availability Zoneson belül. Ez a beállítás csak akkor érhető el, ha az áttelepítéshez kiválasztott cél régió támogatja a Availability Zones. A rendelkezésre állási zónák használatához meg kell adnia a rendelkezésre állási zóna értékét a `TargetAvailabilityZone` paraméterhez.
-    - Rendelkezésre állási csoport, amely az áttelepített gépet egy rendelkezésre állási csoportba helyezi. A választott erőforráscsoport-csoportnak legalább egy rendelkezésre állási készlettel kell rendelkeznie a beállítás használatához. A rendelkezésre állási csoport használatához adja meg a rendelkezésre állási csoport AZONOSÍTÓját a `TargetAvailabilitySet` paraméterhez.
+    - Rendelkezésre állási csoport, amely az áttelepített gépet egy rendelkezésre állási csoportba helyezi. A választott erőforráscsoport-csoportnak legalább egy rendelkezésre állási készlettel kell rendelkeznie a beállítás használatához. A rendelkezésre állási csoport használatához adja meg a rendelkezésre állási csoport AZONOSÍTÓját a `TargetAvailabilitySet` paraméterhez. 
 
 ### <a name="replicate-vms-with-all-disks"></a>Virtuális gépek replikálása az összes lemezzel
-Ebben az oktatóanyagban a felderített virtuális gép összes lemezét replikáljuk, és új nevet kell megadni a virtuális géphez az Azure-ban. A felderített kiszolgáló első lemezét operációsrendszer-lemezként adjuk meg, és az összes lemezt standard HDD-ként migráljuk. Az operációsrendszer-lemez az a lemez, amelyen az operációs rendszer rendszerbetöltője és telepítője található.
+Ebben az oktatóanyagban a felderített virtuális gép összes lemezét replikáljuk, és új nevet kell megadni a virtuális géphez az Azure-ban. A felderített kiszolgáló első lemezét operációsrendszer-lemezként adjuk meg, és az összes lemezt standard HDD-ként migráljuk. Az operációsrendszer-lemez az a lemez, amelyen az operációs rendszer rendszerbetöltője és telepítője található. A parancsmag olyan feladatot ad vissza, amely nyomon követhető a művelet állapotának figyeléséhez. 
 
 ```azurepowershell
 # Retrieve the resource group that you want to migrate to
@@ -183,15 +183,15 @@ Write-Output $MigrateJob.State
 ```
 
 ### <a name="replicate-vms-with-select-disks"></a>Virtuális gépek replikálása a kiválasztott lemezekkel
-A felderített virtuális gép lemezeit szelektíven is replikálhatja a `New-AzMigrateDiskMapping` parancsmag használatával, és biztosíthatja, hogy bemenetként adja meg a `DiskToInclude` paramétert a `New-AzMigrateServerReplication` parancsmagban. A parancsmag használatával is `New-AzMigrateDiskMapping` megadhat különböző céllemez-típusokat a replikálni kívánt egyes lemezekhez.
+A felderített virtuális gép lemezeit szelektíven is replikálhatja a `New-AzMigrateDiskMapping` parancsmag használatával, és biztosíthatja, hogy bemenetként adja meg a `DiskToInclude` paramétert a `New-AzMigrateServerReplication` parancsmagban. A parancsmag használatával is `New-AzMigrateDiskMapping` megadhat különböző céllemez-típusokat a replikálni kívánt egyes lemezekhez. 
 
 Határozza meg a parancsmag következő paramétereinek értékeit `New-AzMigrateDiskMapping` .
 
-- **Beskid** – Itt adhatja meg az áttelepítendő lemez egyedi azonosítóját. A használni kívánt lemez a parancsmag használatával beolvasott lemez egyedi azonosító (UUID) tulajdonsága `Get-AzMigrateServer` .
+- **Beskid** – Itt adhatja meg az áttelepítendő lemez egyedi azonosítóját. A használni kívánt lemez a parancsmag használatával beolvasott lemez egyedi azonosító (UUID) tulajdonsága `Get-AzMigrateServer` .  
 - **IsOSDisk** – az "igaz" értéket kell megadni, ha az áttelepítendő lemez a virtuális gép operációsrendszer-lemeze, más szóval "false".
-- **Lemeztípus** – az Azure-ban használandó lemez típusának megadása.
+- **Lemeztípus** – az Azure-ban használandó lemez típusának megadása. 
 
-A következő példában a rendszer csak a felderített virtuális gép két lemezét replikálja. megadjuk az operációsrendszer-lemezt, és a replikálni kívánt lemezek különböző lemez-típusait használják.
+A következő példában a rendszer csak a felderített virtuális gép két lemezét replikálja. megadjuk az operációsrendszer-lemezt, és a replikálni kívánt lemezek különböző lemez-típusait használják. A parancsmag olyan feladatot ad vissza, amely nyomon követhető a művelet állapotának figyeléséhez. 
 
 ```azurepowershell
 # View disk details of the discovered server
@@ -203,7 +203,7 @@ $OSDisk = New-AzMigrateDiskMapping -DiskID $DiscoveredServer.Disk[0].Uuid -DiskT
 $DataDisk = New-AzMigrateDiskMapping -DiskID $DiscoveredServer.Disk[1].Uuid -DiskType "Premium_LRS" -IsOSDisk "false"
 
 $DisksToReplicate += $OSDisk
-$DisksToReplicate += $DataDisk
+$DisksToReplicate += $DataDisk 
 
 # Retrieve the resource group that you want to migrate to
 $TargetResourceGroup = Get-AzResourceGroup -Name "MyTargetResourceGroup"
@@ -224,7 +224,7 @@ while (($MigrateJob.State -eq "InProgress") -or ($MigrateJob.State -eq "NotStart
 Write-Output $MigrateJob.State
 ```
 
-## <a name="monitor-replication"></a>Replikáció monitorozása
+## <a name="monitor-replication"></a>Replikáció monitorozása 
 
 A replikáció a következőképpen történik:
 
@@ -232,10 +232,10 @@ A replikáció a következőképpen történik:
 - A kezdeti replikálás során létrejön egy virtuális gép pillanatképe. A pillanatképből származó lemezes adatok replikálódnak az Azure-ban található replika által felügyelt lemezekre.
 - A kezdeti replikálás befejeződése után a különbözeti replikáció megkezdődik. A helyszíni lemezek növekményes módosításait a rendszer rendszeres időközönként replikálja az Azure-beli replika-lemezekre.
 
-A replikáció állapotának nyomon követéséhez használja a `Get-AzMigrateServerReplication` parancsmagot.
+A replikáció állapotának nyomon követéséhez használja a `Get-AzMigrateServerReplication` parancsmagot. 
 
 > [!NOTE]
-> A felderített virtuális gép azonosítója és a replikáló virtuális gép azonosítója két különböző egyedi azonosító. Ezek az azonosítók a replikáló kiszolgálók részleteinek beolvasására is használhatók.
+> A felderített virtuális gép azonosítója és a replikáló virtuális gép azonosítója két különböző egyedi azonosító. Ezek az azonosítók a replikáló kiszolgálók részleteinek beolvasására is használhatók.  
 
 ### <a name="monitor-replication-using-discovered-vm-identifier"></a>Replikáció figyelése a felderített virtuális gép azonosítójával
 ```azurepowershell
@@ -250,11 +250,11 @@ $ReplicatingServer = Get-AzMigrateServerReplication -DiscoveredMachineId $Discov
 $ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName | where MachineName -eq $DiscoveredServer.DisplayName
 
 # Retrieve replicating VM details using replicating VM identifier
-$ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $ReplicatingServer.Id
+$ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $ReplicatingServer.Id 
 ```
 
-A kimenetben nyomon követheti az "áttelepítési állapot" és az "áttelepítési állapot leírása" tulajdonságot.
-- A kezdeti replikáláshoz az áttelepítési állapot és az áttelepítési állapot leírása tulajdonságok a "InitialSeedingInProgress" és a "kezdeti replikálás" értékre kerülnek.
+A kimenetben nyomon követheti az "áttelepítési állapot" és az "áttelepítési állapot leírása" tulajdonságot. 
+- A kezdeti replikáláshoz az áttelepítési állapot és az áttelepítési állapot leírása tulajdonságok a "InitialSeedingInProgress" és a "kezdeti replikálás" értékre kerülnek. 
 - A különbözeti replikáció során az áttelepítési állapot és az áttelepítési állapot leírásának tulajdonságai a "replikálás" és a "készen áll az áttelepítésre" értékre kerülnek.
 - Az áttelepítés befejezése után az áttelepítési állapot és az áttelepítési állapot leírása tulajdonságok a "Migrálás sikeres" és az "áttelepített" érték lesz.
 
@@ -313,37 +313,46 @@ A replikáció a következőképpen történik:
 - A kezdeti replikálás során létrejön egy virtuális gép pillanatképe. A pillanatképből származó lemezes adatok replikálódnak az Azure-ban található replika által felügyelt lemezekre.
 - A kezdeti replikálás befejeződése után a különbözeti replikáció megkezdődik. A helyszíni lemezek növekményes módosításait a rendszer rendszeres időközönként replikálja az Azure-beli replika-lemezekre.
 
+## <a name="retrieve-the-status-of-a-job"></a>Feladatok állapotának beolvasása
+
+A feladatok állapotát a parancsmag használatával figyelheti `Get-AzMigrateJob` . 
+
+```azurepowershell
+# Retrieve the updated status for a job
+$job = Get-AzMigrateJob -InputObject $job
+```
+
 ## <a name="update-properties-of-a-replicating-vm"></a>Replikáló virtuális gép tulajdonságainak frissítése
 
-[Azure Migrate: a kiszolgáló áttelepítése](migrate-services-overview.md#azure-migrate-server-migration-tool) lehetővé teszi a replikációs virtuális gép számára, hogy megváltoztassa a cél tulajdonságait, például a név, a méret, az erőforráscsoport, a NIC-konfiguráció és így tovább.
+[Azure Migrate: a kiszolgáló áttelepítése](migrate-services-overview.md#azure-migrate-server-migration-tool) lehetővé teszi a replikációs virtuális gép számára, hogy megváltoztassa a cél tulajdonságait, például a név, a méret, az erőforráscsoport, a NIC-konfiguráció és így tovább. A parancsmag olyan feladatot ad vissza, amely nyomon követhető a művelet állapotának figyeléséhez. 
 
 ```azurepowershell
 # Retrieve the replicating VM details by using the discovered VM identifier
 $ReplicatingServer = Get-AzMigrateServerReplication -DiscoveredMachineId $DiscoveredServer.ID
 
 # View NIC details of the replicating server
-Write-Output $ReplicatingServer.ProviderSpecificDetail.VMNic
+Write-Output $ReplicatingServer.ProviderSpecificDetail.VMNic 
 ```
 A virtuális gépek alábbi tulajdonságai frissíthetők.
 
 - **Virtuális gép neve** – adja meg a létrehozandó Azure-beli virtuális gép nevét a `TargetVMName` paraméter használatával.
-- **Virtuális gép mérete** – Itt adhatja meg a replikáláshoz használandó Azure-beli virtuális gép méretét `TargetVMSize` paraméter használatával. Ha például egy virtuális gépet át szeretne telepíteni D2_v2 virtuális gépre az Azure-ban, a "Standard_D2_v2" értéket kell megadnia `TargetVMSize` .
-- **Virtual Network** – megadhatja az Azure-Virtual Network azonosítóját, amelyet a virtuális gépet a paraméter használatával kell áttelepíteni `TargetNetworkId` .
+- **Virtuális gép mérete** – Itt adhatja meg a replikáláshoz használandó Azure-beli virtuális gép méretét `TargetVMSize` paraméter használatával. Ha például egy virtuális gépet át szeretne telepíteni D2_v2 virtuális gépre az Azure-ban, a "Standard_D2_v2" értéket kell megadnia `TargetVMSize` .  
+- **Virtual Network** – megadhatja az Azure-Virtual Network azonosítóját, amelyet a virtuális gépet a paraméter használatával kell áttelepíteni `TargetNetworkId` . 
 - **Erőforráscsoport** – adja meg annak az erőforráscsoportnek az azonosítóját, amelyet a virtuális gépet át kell telepíteni, ha a paraméterrel megadja az erőforráscsoport azonosítóját `TargetResourceGroupId` .
-- **Hálózati adapter** – a NIC-konfiguráció a parancsmag használatával adható meg `New-AzMigrateNicMapping` . Ezt követően a rendszer beírja az objektumot a `NicToUpdate` parancsmagban lévő paraméterbe `Set-AzMigrateServerReplication` .
+- **Hálózati adapter** – a NIC-konfiguráció a parancsmag használatával adható meg `New-AzMigrateNicMapping` . Ezt követően a rendszer beírja az objektumot a `NicToUpdate` parancsmagban lévő paraméterbe `Set-AzMigrateServerReplication` . 
 
     - **IP-kiosztás módosítása** – ha statikus IP-címet szeretne megadni egy hálózati adapterhez, adja meg a virtuális gép statikus IP-címeként használni kívánt IPv4-címet a `TargetNicIP` paraméter használatával. Egy hálózati adapter IP-címének dinamikus hozzárendeléséhez adja meg az "Auto" értéket a `TargetNicIP` paraméter értékeként.
-    - Használja az "elsődleges", a "másodlagos" vagy a "DoNotCreate" értéket a `TargetNicSelectionType` paraméterhez annak megadásához, hogy a hálózati adapter elsődleges, másodlagos, vagy nem hozható létre az áttelepített virtuális gépen. A virtuális gép elsődleges hálózati adaptere csak egy hálózati adaptert adhat meg.
-    - Ahhoz, hogy elsődleges hálózati adaptert hozzon létre, meg kell adnia a többi olyan hálózati adaptert, amelyeknek másodlagosnak kell lenniük, vagy amelyeket nem kell létrehozni az áttelepített virtuális gépen.
+    - Használja az "elsődleges", a "másodlagos" vagy a "DoNotCreate" értéket a `TargetNicSelectionType` paraméterhez annak megadásához, hogy a hálózati adapter elsődleges, másodlagos, vagy nem hozható létre az áttelepített virtuális gépen. A virtuális gép elsődleges hálózati adaptere csak egy hálózati adaptert adhat meg. 
+    - Ahhoz, hogy elsődleges hálózati adaptert hozzon létre, meg kell adnia a többi olyan hálózati adaptert, amelyeknek másodlagosnak kell lenniük, vagy amelyeket nem kell létrehozni az áttelepített virtuális gépen.  
     - A hálózati adapter alhálózatának módosításához adja meg az alhálózat nevét a `TargetNicSubnet` paraméter használatával.
 
  - **Rendelkezésre állási zóna** – a rendelkezésre állási zónák használatához határozza meg a rendelkezésre állási zóna értékét a `TargetAvailabilityZone` paraméterhez.
  - **Rendelkezésre állási csoport** – a rendelkezésre állási csoport használata esetén adja meg a rendelkezésre állási csoport azonosítóját a `TargetAvailabilitySet` paraméterhez.
 
-A következő példában a hálózati adapter konfigurációját úgy frissítjük, hogy az első NIC-t elsődlegesként és statikus IP-címet rendeli hozzá. elvetjük a második hálózati adaptert az áttelepítéshez, és frissíti a cél virtuális gép nevét és méretét.
+A következő példában a hálózati adapter konfigurációját úgy frissítjük, hogy az első NIC-t elsődlegesként és statikus IP-címet rendeli hozzá. elvetjük a második hálózati adaptert az áttelepítéshez, és frissíti a cél virtuális gép nevét és méretét. 
 
 ```azurepowershell
-# Specify the NIC properties to be updated for a replicating VM.
+# Specify the NIC properties to be updated for a replicating VM. 
 $NicMapping = @()
 $NicMapping1 = New-AzMigrateNicMapping -NicId $ReplicatingServer.ProviderSpecificDetail.VMNic[0].NicId -TargetNicIP "xxx.xxx.xxx.xxx" -TargetNicSelectionType "Primary"
 $NicMapping2 = New-AzMigrateNicMapping -NicId $ReplicatingServer.ProviderSpecificDetail.VMNic[1].NicId -TargetNicSelectionType "DoNotCreate"
@@ -353,6 +362,15 @@ $NicMapping += $NicMapping2
 
 # Update the name, size and NIC configuration of a replicating server
 $UpdateJob = Set-AzMigrateServerReplication -InputObject $ReplicatingServer -TargetVMSize "Standard_DS13_v2" -TargetVMName "MyMigratedVM" -NicToUpdate $NicMapping
+
+# Track job status to check for completion
+while (($UpdateJob.State -eq "InProgress") -or ($UpdateJob.State -eq "NotStarted")){
+        #If the job hasn't completed, sleep for 10 seconds before checking the job status again
+        sleep 10;
+        $UpdateJob = Get-AzMigrateJob -InputObject $UpdateJob
+}
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+Write-Output $UpdateJob.State
 ```
 
 Az Azure Migrate-projektben lévő összes replikálási kiszolgálót listázhatja is, majd a virtuális gép tulajdonságainak replikálásával frissítheti a virtuálisgép-tulajdonságokat.
@@ -362,52 +380,89 @@ Az Azure Migrate-projektben lévő összes replikálási kiszolgálót listázha
 $ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName | where MachineName -eq $DiscoveredServer.DisplayName
 
 # Retrieve replicating VM details using replicating VM identifier
-$ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $ReplicatingServer.Id
+$ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $ReplicatingServer.Id 
 ```
 
 
 ## <a name="run-a-test-migration"></a>Migrálási teszt futtatása
 
-A különbözeti replikáció elkezdése előtt futtathatja a virtuális gépekre vonatkozó tesztelési áttelepítést, mielőtt teljes áttelepítést futtat az Azure-ba. Javasoljuk, hogy az áttelepítés előtt legalább egyszer végezze el a Migrálás tesztelését az egyes gépeken.
+A különbözeti replikáció elkezdése előtt futtathatja a virtuális gépekre vonatkozó tesztelési áttelepítést, mielőtt teljes áttelepítést futtat az Azure-ba. Javasoljuk, hogy az áttelepítés előtt legalább egyszer végezze el a Migrálás tesztelését az egyes gépeken. A parancsmag olyan feladatot ad vissza, amely nyomon követhető a művelet állapotának figyeléséhez. 
 
-- Az áttelepítési teszt futtatása ellenőrzi, hogy az áttelepítés a várt módon fog-e működni. Az áttelepítés tesztelése nem érinti a helyszíni gépet, amely működőképes marad, és folytatja a replikálást.
+- Az áttelepítési teszt futtatása ellenőrzi, hogy az áttelepítés a várt módon fog-e működni. Az áttelepítés tesztelése nem érinti a helyszíni gépet, amely működőképes marad, és folytatja a replikálást. 
 - A tesztelési áttelepítés szimulálja az áttelepítést egy Azure-beli virtuális gép replikálási adataival történő létrehozásával (általában az Azure-előfizetése nem üzemi VNet való áttelepítéssel).
 - A replikált Azure-beli virtuális gép használatával ellenőrizheti az áttelepítést, elvégezheti az alkalmazások tesztelését, és bármilyen problémát megtehet a teljes áttelepítés előtt.
 
 Válassza ki a teszteléshez használni kívánt Azure-Virtual Network a paramétert használó virtuális hálózat AZONOSÍTÓjának megadásával `TestNetworkID` .
 
 ```azurepowershell
-# Retrieve the Azure virtual network created for testing
+# Retrieve the Azure virtual network created for testing 
 $TestVirtualNetwork = Get-AzVirtualNetwork -Name MyTestVirtualNetwork
 
 # Start test migration for a replicating server
 $TestMigrationJob = Start-AzMigrateTestMigration -InputObject $ReplicatingServer -TestNetworkID $TestVirtualNetwork.Id
+
+# Track job status to check for completion
+while (($TestMigrationJob.State -eq "InProgress") -or ($TestMigrationJob.State -eq "NotStarted")){
+        #If the job hasn't completed, sleep for 10 seconds before checking the job status again
+        sleep 10;
+        $TestMigrationJob = Get-AzMigrateJob -InputObject $TestMigrationJob
+}
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+Write-Output $TestMigrationJob.State
 ```
 
-A tesztelés befejezése után törölje az áttelepítési tesztet a `Start-AzMigrateTestMigrationCleanup` parancsmag használatával.
+A tesztelés befejezése után törölje az áttelepítési tesztet a `Start-AzMigrateTestMigrationCleanup` parancsmag használatával. A parancsmag olyan feladatot ad vissza, amely nyomon követhető a művelet állapotának figyeléséhez. 
 
 ```azurepowershell
 # Clean-up test migration for a replicating server
 $CleanupTestMigrationJob = Start-AzMigrateTestMigrationCleanup -InputObject $ReplicatingServer
+
+# Track job status to check for completion
+while (($CleanupTestMigrationJob.State -eq "InProgress") -or ($CleanupTestMigrationJob.State -eq "NotStarted")){
+        #If the job hasn't completed, sleep for 10 seconds before checking the job status again
+        sleep 10;
+        $CleanupTestMigrationJob = Get-AzMigrateJob -InputObject $CleanupTestMigrationJob
+}
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+Write-Output $CleanupTestMigrationJob.State
 ```
 
 ## <a name="migrate-vms"></a>Virtuális gép migrálása
 
-Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, áttelepítheti a replikálási kiszolgálót a következő parancsmag használatával.
+Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, áttelepítheti a replikálási kiszolgálót a következő parancsmag használatával. A parancsmag olyan feladatot ad vissza, amely nyomon követhető a művelet állapotának figyeléséhez. 
+
+Ha nem szeretné kikapcsolni a forráskiszolgáló-kiszolgálót, ne használja a `TurnOffSourceServer` paramétert.
 
 ```azurepowershell
 # Start migration for a replicating server and turn off source server as part of migration
-$MigrateJob = Start-AzMigrateServerMigration -InputObject $ReplicatingServer -TurnOffSourceServer
+$MigrateJob = Start-AzMigrateServerMigration -InputObject $ReplicatingServer -TurnOffSourceServer 
+
+# Track job status to check for completion
+while (($MigrateJob.State -eq "InProgress") -or ($MigrateJob.State -eq "NotStarted")){
+        #If the job hasn't completed, sleep for 10 seconds before checking the job status again
+        sleep 10;
+        $MigrateJob = Get-AzMigrateJob -InputObject $MigrateJob
+}
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+Write-Output $MigrateJob.State
 ```
-Ha nem szeretné kikapcsolni a forráskiszolgáló-kiszolgálót, ne használja a `TurnOffSourceServer` paramétert.
 
 ## <a name="complete-the-migration"></a>Az áttelepítés befejezése
 
-1. Az áttelepítés befejezése után állítsa le a helyszíni gép replikálását, és törölje a replikálási állapotra vonatkozó adatokat a virtuális gép számára a következő parancsmag használatával.
+1. Az áttelepítés befejezése után állítsa le a helyszíni gép replikálását, és törölje a replikálási állapotra vonatkozó adatokat a virtuális gép számára a következő parancsmag használatával. A parancsmag olyan feladatot ad vissza, amely nyomon követhető a művelet állapotának figyeléséhez. 
 
 ```azurepowershell
 # Stop replication for a migrated server
-$StopReplicationJob = Remove-AzMigrateServerReplication -InputObject $ReplicatingServer
+$StopReplicationJob = Remove-AzMigrateServerReplication -InputObject $ReplicatingServer 
+
+# Track job status to check for completion
+while (($StopReplicationJob.State -eq "InProgress") -or ($StopReplicationJob.State -eq "NotStarted")){
+        #If the job hasn't completed, sleep for 10 seconds before checking the job status again
+        sleep 10;
+        $StopReplicationJob = Get-AzMigrateJob -InputObject $StopReplicationJob
+}
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+Write-Output $StopReplicationJob.State
 ```
 
 2. Telepítse az Azure-beli VM [Windows](../virtual-machines/extensions/agent-windows.md) -vagy [Linux](../virtual-machines/extensions/agent-linux.md) -ügynököt az áttelepített gépekre.
@@ -416,7 +471,7 @@ $StopReplicationJob = Remove-AzMigrateServerReplication -InputObject $Replicatin
 5. Az áttelepített Azure virtuálisgép-példány felé irányuló forgalom kivágása.
 6. Távolítsa el a helyszíni virtuális gépeket a helyi virtuálisgép-készletéből.
 7. Távolítsa el a helyszíni virtuális gépeket helyi biztonsági mentésekből.
-8. Frissítse minden belső dokumentációját az Azure virtuális gépek új helyével és IP-címével.
+8. Frissítse minden belső dokumentációját az Azure virtuális gépek új helyével és IP-címével. 
 
 ## <a name="post-migration-best-practices"></a>Az áttelepítés utáni ajánlott eljárások
 

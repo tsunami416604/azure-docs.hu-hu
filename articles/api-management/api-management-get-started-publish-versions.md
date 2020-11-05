@@ -1,28 +1,24 @@
 ---
-title: API-verziók közzététele az Azure API Management szolgáltatással | Microsoft Docs
-description: Az oktatóanyag lépéseit követve megtudhatja, hogyan tehet közzé több verziót az API Management szolgáltatásban.
-services: api-management
-documentationcenter: ''
+title: Oktatóanyag – az API verzióinak közzététele az Azure API Management használatával
+description: Az oktatóanyag lépéseivel megtudhatja, hogyan tehet közzé több API-verziót API Managementban.
 author: vladvino
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 10/30/2020
 ms.author: apimpm
-ms.openlocfilehash: b683910180e597cb8cbfa642bb2d9ac3200b42ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6afa26c65f097683a5b471dc34621cca38c01e6
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86255030"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377398"
 ---
-# <a name="publish-multiple-versions-of-your-api"></a>Az API több verziójának közzététele 
+# <a name="tutorial-publish-multiple-versions-of-your-api"></a>Oktatóanyag: az API több verziójának közzététele 
 
-Előfordulhat, hogy nem célszerű, ha az összes hívó ugyanazt az API-verziót használja. Ha a hívók újabb verzióra szeretnének frissíteni, azt egy könnyen érthető megközelítéssel szeretnék megtenni. Ez az Azure API Management **verziók** szolgáltatásával valósítható meg. További információkért lásd: [Verziók és változatok](https://azure.microsoft.com/blog/versions-revisions/).
+Vannak olyan időpontok, amikor nem praktikus, hogy az API-hívók pontosan ugyanazt a verziót használják. Ha a hívók egy későbbi verzióra szeretnének frissíteni, egy könnyen értelmezhető megközelítést szeretnének. Ahogy az oktatóanyagban is látható, több *verzió* is elérhető az Azure API Managementban. 
+
+A háttérben lásd: [verziók & változatok](https://azure.microsoft.com/blog/versions-revisions/).
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -32,7 +28,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * A verzió hozzáadása egy termékhez
 > * A fejlesztői portál tallózása a verzió megtekintéséhez
 
-![A fejlesztői portálon látható verzió](media/api-management-getstarted-publish-versions/azure_portal.PNG)
+:::image type="content" source="media/api-management-getstarted-publish-versions/azure-portal.png" alt-text="A Azure Portalban látható verzió":::
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,66 +38,69 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="add-a-new-version"></a>Új verzió hozzáadása
 
-![Az API helyi menüje – Verzió hozzáadása](media/api-management-getstarted-publish-versions/AddVersionMenu.png)
+1. A [Azure Portal](https://portal.azure.com)navigáljon a API Management-példányhoz.
+1. Válassza az **API-k** lehetőséget.
+1. Válassza a **Demo Conference API** lehetőséget az API-k listájából. 
+1. Válassza a **bemutató konferencia API** melletti helyi menüt ( **..**.).
+1. Válassza a **verzió hozzáadása** lehetőséget.
 
-1. Válassza a **Demo Conference API** lehetőséget az API-k listájából.
-2. Válassza a mellette lévő helyi menüt (**...**).
-3. Válassza a **+ Verzió hozzáadása** lehetőséget.
+:::image type="content" source="media/api-management-getstarted-publish-versions/add-version-menu.png" alt-text="API-környezet menü – verzió hozzáadása":::
+
 
 > [!TIP]
-> A verziók az új API-k létrehozásakor is engedélyezhetők – válassza az **Új verziót készít az API-ról?** lehetőséget az **API hozzáadása** képernyőn.
+> Új API létrehozásakor a verziók is engedélyezhetők. Az **API hozzáadása** képernyőn válassza az **API verziója lehetőséget?**.
 
 ## <a name="choose-a-versioning-scheme"></a>Verziókezelési séma kiválasztása
 
-Az Azure API Management segítségével meghatározhatja, hogy a hívók hogyan adhassák meg, hogy az API melyik verzióját szeretnék használni. A használandó API-verziót egy **verziókezelési séma** kiválasztásával határozhatja meg. Ez a séma lehet **elérési út, fejléc vagy lekérdezési sztring**. Az alábbi példában az elérési utat használjuk a verziókezelési séma kiválasztására.
+Az Azure API Managementon válassza ki, hogy a hívók hogyan adja meg az API-verziót a *verziószámozási séma* kiválasztásával: **elérési út, fejléc** vagy **lekérdezési karakterlánc**. A következő példában a rendszer az *elérési utat* használja verziószámozási sémaként.
 
-![Verzió hozzáadása képernyő](media/api-management-getstarted-publish-versions/AddVersion.PNG)
+Adja meg az értékeket az alábbi táblázatból. Ezután válassza a **Létrehozás** lehetőséget a verzió létrehozásához.
 
-1. A **verziókezelési sémánál** hagyja bejelölve az **elérési út** beállítást.
-2. Írja be a **demo-conference-api-v1** nevet a **Név** mezőbe.
+:::image type="content" source="media/api-management-getstarted-publish-versions/add-version.png" alt-text="Verzió hozzáadása ablak":::
 
-    > [!NOTE]
-    > A verzió lényegében egy valamely API-változaton alapuló új API. A **Név** az új API neve, amelynek egyedinek kell lennie az API Management-példányban.
 
-3. Írja be a **v1** azonosítót a **Verzióazonosító** mezőbe.
 
-    > [!TIP]
-    > Ha a **fejléc** vagy a **lekérdezési sztring** lehetőséget választja verziókezelési sémaként, meg kell adnia egy további értéket is – a fejléc vagy a lekérdezési sztring paraméterének nevét.
+|Beállítás   |Érték  |Leírás  |
+|---------|---------|---------|
+|**Név**     |  *bemutató-Conference-API-v1*       |  Egyedi név a API Management-példányban.<br/><br/>Mivel a verzió valójában egy API-változaton alapuló új [API, ez](api-management-get-started-revise-api.md)a beállítás az új API neve.   |
+|**Verziószámozási séma**     |  **Elérési út**       |  A hívók határozzák meg az API verzióját.     |
+|**Termékazonosító verziója**     |  *v1*       |  A verzió séma-specifikus jelzője. Az **elérési út** esetében az API URL-címének utótagja. <br/><br/> Ha a **fejléc** vagy a **lekérdezési karakterlánc** van kiválasztva, adjon meg egy további értéket: a fejléc vagy a lekérdezési karakterlánc paraméter nevét.<br/><br/> Megjelenik egy használati példa.        |
+|**Termékek**     |  **Korlátlan**       |  Szükség esetén egy vagy több olyan termékhez, amelyhez az API verziója társítva van. Az API közzétételéhez társítania kell azt egy termékkel. [A verziót később is hozzáadhatja egy termékhez](#add-the-version-to-a-product) .      |
 
-4. Válassza a **Létrehozás** lehetőséget az új verzió beállításához.
-5. Az API listában a **Demo Conference API** alatt most két különböző API látható – az **Eredeti** és a **v1**.
+A verzió létrehozása után már megjelenik a **bemutató konferencia API** alatt az API-listán. Ekkor két API jelenik meg: **eredeti** és **v1**.
 
-    ![Az API alatt listázott verziók az Azure Portalon](media/api-management-getstarted-publish-versions/VersionList.PNG)
+![Az API alatt listázott verziók az Azure Portalon](media/api-management-getstarted-publish-versions/version-list.png)
 
-    > [!Note]
-    > Ha egy verzióval nem rendelkező API-hoz ad hozzá egy verziót, automatikusan létrejön egy **Eredeti** verzió – ez az alapértelmezett URL-címen válaszol. Ez biztosítja, hogy a meglévő hívók kapcsolata ne szakadjon meg az új verzió hozzáadásával. Ha egy új API létrehozásakor engedélyezi a verziókat, nem jön létre Eredeti verzió.
+Most már szerkesztheti és konfigurálhatja a **v1** -et az **EREDETItől** eltérő API-k használatával. Az egyik verzió módosítása nem érinti a másikat.
 
-6. A **v1** most az **Eredeti** API-tól eltérő API-ként szerkeszthető és konfigurálható. Az egyik verzió módosítása nem érinti a másikat.
+> [!Note]
+> Ha egy verziót ad hozzá egy nem verziójú API-hoz, az **eredeti** is automatikusan létrejön. Ez a verzió válaszol az alapértelmezett URL-címre. Az eredeti verzió létrehozása biztosítja, hogy a meglévő hívók ne legyenek megszakítva a verziók hozzáadásának folyamatával. Ha olyan új API-t hoz létre, amelynek verziói engedélyezve vannak az indításkor, az eredeti nincs létrehozva.
 
 ## <a name="add-the-version-to-a-product"></a>A verzió hozzáadása egy termékhez
 
-Ahhoz, hogy a hívók láthassák az új verziót, hozzá kell adni azt egy **termékhez**.
+Ahhoz, hogy a hívók láthassák az új verziót, hozzá kell adni azt egy *termékhez*. Ha még nem adta hozzá a verziót egy termékhez, bármikor hozzáadhatja egy termékhez.
 
-![API Management-termékek](media/api-management-getstarted-publish-versions/08-AddMultipleVersions-03-AddVersionToProduct.png)
+Ha például a verziót szeretné hozzáadni a **korlátlan** termékhez:
+1. A Azure Portal navigáljon a API Management-példányhoz.
+1. Válassza a **termékek**  >  **korlátlan**  >  **API**  >  **+ Hozzáadás** lehetőséget.
+1. Válassza a **bemutató konferencia API** , **v1** verzió elemet.
+1. Kattintson a **Kiválasztás** elemre.
 
-1. Válassza a **Termékek** lehetőséget a klasszikus üzemi modell oldalán.
-2. Válassza a **Korlátlan** lehetőséget.
-3. Válassza az **API-k** lehetőséget.
-4. Válassza a **Hozzáadás** lehetőséget.
-5. Válassza a **Demo Conference API, v1 verzió** elemet.
-6. Kattintson a **Kiválasztás** elemre.
+:::image type="content" source="media/api-management-getstarted-publish-versions/08-add-multiple-versions-03-add-version-product.png" alt-text="Verzió hozzáadása a termékhez":::
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>A fejlesztői portál tallózása a verzió megtekintéséhez
 
+Ha kipróbálta a [fejlesztői portált](api-management-howto-developer-portal-customize.md), Itt láthatja az API-verziókat.
+
 1. A felső menüben kattintson a **Fejlesztői portál** elemre.
-2. Válassza az **API** -k lehetőséget, majd kattintson a **bemutató konferencia API**-ra.
+2. Kattintson az **API-k** elemre, majd válassza a **Demo Conference API** lehetőséget.
 3. Az API neve mellett több verziót tartalmazó legördülő listát kell látnia.
 4. Válassza a **v1** lehetőséget.
 5. Figyelje meg a lista első műveletének **Kérés URL-címe** értékét. Azt mutatja, hogy az API URL-címe tartalmazza a **v1** tagot.
 
 ## <a name="next-steps"></a>További lépések
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Új verzió hozzáadása meglévő API-hoz

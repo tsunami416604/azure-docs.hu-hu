@@ -4,12 +4,12 @@ description: Az alkalmazások teljesítményének figyelése az Azure app Servic
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: e326f9764147b882a5009c53b9f13a3c3bd0bfc1
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: c78a43f9efb263c08dad21218636f21121b9732c
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875605"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377802"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 
@@ -96,11 +96,12 @@ A .NET Core, az önálló üzemelő példányok és a Linux-alapú alkalmazások
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-A app Service webalkalmazás **Beállítások**területén  >  **válassza a Application Insights**  >  **Engedélyezés**lehetőséget. Node.js ügynök-alapú figyelés jelenleg előzetes verzióban érhető el.
+A app Service webalkalmazás **Beállítások** területén  >  **válassza a Application Insights**  >  **Engedélyezés** lehetőséget. Node.js ügynök-alapú figyelés jelenleg előzetes verzióban érhető el.
 
 # <a name="java"></a>[Java](#tab/java)
 
-A Java App Service-alapú webalkalmazások jelenleg nem támogatják az automatikus ügynök/bővítmény alapú figyelést. A Java-alkalmazás figyelésének engedélyezéséhez manuálisan kell megadnia [az alkalmazást](./java-get-started.md).
+Az [Application Insights java 3,0-ügynökkel](./java-in-process-agent.md) kapcsolatos útmutatást követve engedélyezheti a Java-alkalmazások automatikus rendszerállapot-kialakítását a kód módosítása nélkül.
+Az automatikus integráció még nem érhető el App Service számára.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -115,7 +116,7 @@ A Python App Service-alapú webalkalmazások jelenleg nem támogatják az automa
 Az ügyféloldali figyelés ASP.NET. Az ügyféloldali figyelés engedélyezése:
 
 * **Beállítások** **>** **Konfiguráció**
-   * Az Alkalmazásbeállítások területen hozzon létre egy **új alkalmazás-beállítást**:
+   * Az Alkalmazásbeállítások területen hozzon létre egy **új alkalmazás-beállítást** :
 
      Név: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
@@ -127,12 +128,12 @@ Az ügyféloldali figyelés letiltásához távolítsa el a társított kulcs é
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-Az ügyféloldali figyelés **alapértelmezés szerint engedélyezve** van a .net Core-alkalmazások számára az **ajánlott gyűjteménysel**, függetlenül attól, hogy szerepel-e az alkalmazás "APPINSIGHTS_JAVASCRIPT_ENABLED" beállítása.
+Az ügyféloldali figyelés **alapértelmezés szerint engedélyezve** van a .net Core-alkalmazások számára az **ajánlott gyűjteménysel** , függetlenül attól, hogy szerepel-e az alkalmazás "APPINSIGHTS_JAVASCRIPT_ENABLED" beállítása.
 
 Ha valamilyen oknál fogva le szeretné tiltani az ügyféloldali figyelést:
 
 * **Beállítások** **>** **Konfiguráció**
-   * Az Alkalmazásbeállítások területen hozzon létre egy **új alkalmazás-beállítást**:
+   * Az Alkalmazásbeállítások területen hozzon létre egy **új alkalmazás-beállítást** :
 
      név: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
@@ -350,7 +351,8 @@ Ha a frissítés a 2.5.1-nél korábbi verzióról történik, ellenőrizze, hog
 Az alábbiakban részletes hibaelhárítási útmutatót talál az Azure App Services-on futó .NET-és .NET Core-alapú alkalmazások bővítmény-és ügynök-alapú figyeléséhez.
 
 > [!NOTE]
-> A Java-alkalmazások csak az Azure App Serviceson, manuális SDK-alapú rendszerállapoton keresztül támogatottak, ezért az alábbi lépések nem vonatkoznak ezekre a forgatókönyvekre.
+> A Java-alkalmazások figyelésének ajánlott módszere az automatikus kiépítés használata a kód módosítása nélkül. Kérjük, kövesse az [Application Insights Java 3,0-ügynökre](./java-in-process-agent.md)vonatkozó irányelveket.
+
 
 1. Ellenőrizze, hogy az alkalmazást a használatával figyeli-e `ApplicationInsightsAgent` .
     * Győződjön meg arról, hogy az `ApplicationInsightsAgent_EXTENSION_VERSION` alkalmazás beállítása "~ 2" értékre van állítva.

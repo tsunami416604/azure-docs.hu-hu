@@ -4,17 +4,19 @@ description: A Java-webhely kiterjesztett teljesítmény-és használati figyel�
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 9cce87fa742df2e623217b5b0f72ad19814fd3b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e91e0252ac2af02157c30fe025e75b6cfee7de6e
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87371362"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378482"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Függőségek, kifogott kivételek és metódus-végrehajtási idők figyelése Java-webalkalmazásokban
 
+> [!IMPORTANT]
+> A Java-alkalmazások figyelésének ajánlott módszere az automatikus kiépítés használata a kód módosítása nélkül. Kérjük, kövesse az [Application Insights Java 3,0-ügynökre](./java-in-process-agent.md)vonatkozó irányelveket.
 
-Ha a [Java-webalkalmazást Application Insights][java]használatával állította be, a Java-ügynökkel mélyebb elemzéseket kaphat, kód módosítása nélkül:
+Ha a [Java-webalkalmazását Application INSIGHTS SDK-val][java]állította be, a Java-ügynök használatával mélyebb elemzéseket készíthet, kód módosítása nélkül:
 
 * **Függőségek:** Az alkalmazás által más összetevőkre irányuló hívásokkal kapcsolatos információk, beleértve a következőket:
   * Az Apache HttpClient, a OkHttp és a rögzített **http-hívások** rögzítése megtörtént `java.net.HttpURLConnection` .
@@ -90,7 +92,7 @@ Kulcs: `JAVA_OPTS` érték: `-javaagent:D:/home/site/wwwroot/applicationinsights
 A Java-ügynök legújabb verziójáért tekintse meg a kiadásokat [itt](https://github.com/Microsoft/ApplicationInsights-Java/releases
 ). 
 
-Az ügynököt erőforrásként kell csomagolni a projektben úgy, hogy az a D:/Home/site/wwwroot/könyvtárban végződik. A **fejlesztői eszközök**speciális eszközök hibakeresési konzolján ellenőrizheti, hogy az ügynök a megfelelő app Service könyvtárban található-e,  >  **Advanced Tools**  >  **Debug Console** és megvizsgálja a hely könyvtárának tartalmát.    
+Az ügynököt erőforrásként kell csomagolni a projektben úgy, hogy az a D:/Home/site/wwwroot/könyvtárban végződik. A **fejlesztői eszközök** speciális eszközök hibakeresési konzolján ellenőrizheti, hogy az ügynök a megfelelő app Service könyvtárban található-e,  >  **Advanced Tools**  >  **Debug Console** és megvizsgálja a hely könyvtárának tartalmát.    
 
 * Mentse a beállításokat, és indítsa újra az alkalmazást. (Ezek a lépések csak Windows rendszeren futó App Services vonatkoznak.)
 
@@ -114,7 +116,7 @@ Adja hozzá a következőt a AI-Agent.xmlhoz:
 
 Ideális esetben ez az eset, amikor az összes szolgáltatás frissítve lett a W3C protokollt támogató SDK-k újabb verziójára. Javasoljuk, hogy a lehető leghamarabb váltson a W3C-támogatással rendelkező SDK-k újabb verziójára.
 
-Győződjön meg arról, hogy a ** [bejövő](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps) és a kimenő (ügynök) konfigurációk** is pontosan azonosak.
+Győződjön meg arról, hogy a **[bejövő](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps) és a kimenő (ügynök) konfigurációk** is pontosan azonosak.
 
 ## <a name="view-the-data"></a>Az adatok megtekintése
 A Application Insights erőforrásban [a teljesítmény csempén][metrics]a távoli függőségi és metódus-végrehajtási idők szerepelnek.

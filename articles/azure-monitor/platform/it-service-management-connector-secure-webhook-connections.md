@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 64d45861f37e2015b747a4db0feb2d32e68fe893
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 5976b70825ac2854e67ddad968752fc87d9e8cea
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427332"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377139"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Az Azure és a ITSM-eszközök összekapcsolhatók a biztonságos exportálás használatával
 
@@ -28,8 +28,8 @@ A ITSMC a Felhasználónév és a jelszó hitelesítő adatait használja. A biz
 
 A biztonságos exportálási architektúra a következő új képességeket mutatja be:
 
-* **Új műveleti csoport**: a rendszer a ITSM eszközre küld riasztásokat a biztonságos webhook műveleti csoporton keresztül, a ITSMC által használt ITSM-műveleti csoport helyett.
-* **Azure ad-hitelesítés**: a hitelesítés a Felhasználónév/jelszó hitelesítő adatai helyett az Azure ad-n keresztül történik.
+* **Új műveleti csoport** : a rendszer a ITSM eszközre küld riasztásokat a biztonságos webhook műveleti csoporton keresztül, a ITSMC által használt ITSM-műveleti csoport helyett.
+* **Azure ad-hitelesítés** : a hitelesítés a Felhasználónév/jelszó hitelesítő adatai helyett az Azure ad-n keresztül történik.
 
 ## <a name="secure-export-data-flow"></a>Az adatforgalom biztonságos exportálása
 
@@ -49,9 +49,9 @@ A biztonságos exportálási adatfolyam lépései a következők:
 
 Az integráció fő előnyei a következők:
 
-* **Jobb hitelesítés**: az Azure ad biztonságosabb hitelesítést biztosít a ITSMC-ben gyakran előforduló időtúllépések nélkül.
-* **A ITSM eszközben megoldott riasztások: a**metrikus riasztások "tüzelt" és "megoldott" állapotokat valósítanak meg. Ha a feltétel teljesül, a riasztás állapota "tüzelt". Ha a feltétel már nem teljesül, a riasztás állapota "feloldva". A ITSMC-ben a riasztások nem oldhatók fel automatikusan. A biztonságos exportálással a megoldott állapot a ITSM eszközre áramlik, így automatikusan frissül.
-* **[Gyakori riasztási séma](./alerts-common-schema.md)**: a ITSMC a riasztási adatok sémája eltér a riasztás típusa alapján. A biztonságos exportálásnál létezik egy általános séma az összes riasztási típushoz. Ez a közös séma tartalmazza a CI-t az összes riasztási típushoz. Az összes riasztási típus képes lesz a CI és a CMDB kötésére.
+* **Jobb hitelesítés** : az Azure ad biztonságosabb hitelesítést biztosít a ITSMC-ben gyakran előforduló időtúllépések nélkül.
+* **A ITSM eszközben megoldott riasztások: a** metrikus riasztások "tüzelt" és "megoldott" állapotokat valósítanak meg. Ha a feltétel teljesül, a riasztás állapota "tüzelt". Ha a feltétel már nem teljesül, a riasztás állapota "feloldva". A ITSMC-ben a riasztások nem oldhatók fel automatikusan. A biztonságos exportálással a megoldott állapot a ITSM eszközre áramlik, így automatikusan frissül.
+* **[Gyakori riasztási séma](./alerts-common-schema.md)** : a ITSMC a riasztási adatok sémája eltér a riasztás típusa alapján. A biztonságos exportálásnál létezik egy általános séma az összes riasztási típushoz. Ez a közös séma tartalmazza a CI-t az összes riasztási típushoz. Az összes riasztási típus képes lesz a CI és a CMDB kötésére.
 
 Kezdje el használni a ITSM-csatoló eszközt a következő lépésekkel:
 
@@ -60,6 +60,7 @@ Kezdje el használni a ITSM-csatoló eszközt a következő lépésekkel:
 3. Konfigurálja a partneri környezetet. 
 
 A biztonságos exportálás a következő ITSM eszközökkel támogatja a kapcsolatokat:
+* [ServiceNow](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#connect-servicenow-to-azure-monitor)
 * [BMC Helix](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#connect-bmc-helix-to-azure-monitor)
 
 ## <a name="register-with-azure-active-directory"></a>Regisztrálás Azure Active Directory
@@ -67,11 +68,11 @@ A biztonságos exportálás a következő ITSM eszközökkel támogatja a kapcso
 Az alábbi lépéseket követve regisztrálja az alkalmazást az Azure AD-ben:
 
 1. Kövesse az [alkalmazás regisztrálása a Microsoft Identity platformmal](../../active-directory/develop/quickstart-register-app.md)című témakör lépéseit.
-2. Az Azure AD-ben válassza az **alkalmazás közzététele**lehetőséget.
-3. Adja **meg** az **alkalmazás azonosítójának URI**azonosítóját.
+2. Az Azure AD-ben válassza az **alkalmazás közzététele** lehetőséget.
+3. Adja **meg** az **alkalmazás azonosítójának URI** azonosítóját.
 
    [![Képernyőkép az I D-alkalmazás U R I értékének beállításáról.](media/it-service-management-connector-secure-webhook-connections/azure-ad.png)](media/it-service-management-connector-secure-webhook-connections/azure-ad-expand.png#lightbox)
-4. Válassza a **Mentés** lehetőséget.
+4. Válassza a **Save** (Mentés) lehetőséget.
 
 ## <a name="create-a-secure-webhook-action-group"></a>Biztonságos webhook-műveleti csoport létrehozása
 
@@ -82,15 +83,15 @@ A műveleti csoportokkal kapcsolatos további információkért lásd: [művelet
 
 Webhook egy művelethez való hozzáadásához kövesse az alábbi utasításokat a biztonságos webhookhoz:
 
-1. A [Azure Portal](https://portal.azure.com/)keresse meg és válassza a **figyelő**elemet. A **figyelő** ablaktábla egyetlen nézetben összesíti az összes figyelési beállítást és az adatait.
-2. Válassza a **riasztások**  >  **kezelése műveletek**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)keresse meg és válassza a **figyelő** elemet. A **figyelő** ablaktábla egyetlen nézetben összesíti az összes figyelési beállítást és az adatait.
+2. Válassza a **riasztások**  >  **kezelése műveletek** lehetőséget.
 3. Válassza a [műveleti csoport hozzáadása](./action-groups.md#create-an-action-group-by-using-the-azure-portal)lehetőséget, és töltse ki a mezőket.
 4. Írjon be egy nevet a **műveleti csoport neve** mezőbe, és adjon meg egy nevet a **rövid név** mezőben. A rendszer a rövid nevet használja a műveletcsoport teljes neve helyett, amikor értesítéseket küld a csoport használatával.
-5. Válassza a **biztonságos webhook**lehetőséget.
+5. Válassza a **biztonságos webhook** lehetőséget.
 6. Válassza ki az alábbi adatokat:
    1. Válassza ki a regisztrált Azure Active Directory példány objektumazonosítóát.
    2. Az URI esetében illessze be a [ITSM eszköz-környezetből](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#configure-the-partner-environment)másolt webhook URL-címét.
-   3. Állítsa be **az általános riasztási séma engedélyezése** **beállítást igen**értékre. 
+   3. Állítsa be **az általános riasztási séma engedélyezése** **beállítást igen** értékre. 
 
    Az alábbi képen egy minta biztonságos webhook-művelet konfigurációja látható:
 
@@ -101,6 +102,26 @@ Webhook egy művelethez való hozzáadásához kövesse az alábbi utasításoka
 A konfiguráció 2 lépést tartalmaz:
 1. Szerezze be a biztonságos exportálás definíciójának URI azonosítóját.
 2. Definíciók a ITSM eszköz folyamata alapján.
+
+
+### <a name="connect-servicenow-to-azure-monitor"></a>A ServiceNow Azure Monitorhoz való kapcsolódása
+
+A következő szakaszokban részletesen ismertetjük a ServiceNow-termék összekapcsolását és az Azure-beli biztonságos exportálást.
+
+### <a name="prerequisites"></a>Előfeltételek
+
+Győződjön meg arról, hogy teljesítette a következő előfeltételeket:
+
+* Az Azure AD regisztrálva van.
+* A ServiceNow Event Management-ITOM támogatott verziója (Orlando vagy újabb verzió).
+
+### <a name="configure-the-servicenow-connection"></a>A ServiceNow-kapcsolatok konfigurálása
+
+1. használja a <https:// <instance name> . Service-Now.com/API/sn_em_connector/em/inbound_event?Source=azuremonitor hivatkozást a biztonságos exportálás definíciójának URI-ja>.
+
+2. Kövesse az utasításokat a verziónak megfelelően:
+   * [Párizs](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)
+   * [Orlando](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)
 
 ### <a name="connect-bmc-helix-to-azure-monitor"></a>A BMC Helix összekapcsolása Azure Monitor
 
@@ -129,22 +150,25 @@ Győződjön meg arról, hogy teljesítette a következő előfeltételeket:
 
 3. A BMC Helix-kapcsolat konfigurációjának részeként nyissa meg az integrációs BMC-példányt, és kövesse az alábbi utasításokat:
 
-   1. Válassza a **katalógus**lehetőséget.
-   2. Válassza az **Azure-riasztások**lehetőséget.
-   3. Válassza az **Összekötők**lehetőséget.
-   4. Válassza a **konfiguráció**lehetőséget.
+   1. Válassza a **katalógus** lehetőséget.
+   2. Válassza az **Azure-riasztások** lehetőséget.
+   3. Válassza az **Összekötők** lehetőséget.
+   4. Válassza a **konfiguráció** lehetőséget.
    5. Jelölje be az **új kapcsolatok** konfigurációjának hozzáadása elemet.
    6. Adja meg a konfigurációs szakasz információit:
-      - **Név**: hozza létre a sajátját.
-      - **Engedélyezési típus**: **nincs**
-      - **Leírás**: hozza létre a sajátját.
-      - **Webhely**: **felhő**
-      - **Példányok száma**: **2**, az alapértelmezett érték.
-      - **Ellenőrzés**: a használat engedélyezéséhez alapértelmezés szerint ki van választva.
+      - **Név** : hozza létre a sajátját.
+      - **Engedélyezési típus** : **nincs**
+      - **Leírás** : hozza létre a sajátját.
+      - **Webhely** : **felhő**
+      - **Példányok száma** : **2** , az alapértelmezett érték.
+      - **Ellenőrzés** : a használat engedélyezéséhez alapértelmezés szerint ki van választva.
       - Az Azure-bérlő azonosítója és az Azure-alkalmazás azonosítója a korábban megadott alkalmazásból származik.
 
 ![A BMC-konfigurációt megjelenítő képernyőkép.](media/it-service-management-connector-secure-webhook-connections/bmc-configuration.png)
 
-## <a name="next-steps"></a>További lépések
+
+
+
+## <a name="next-steps"></a>Következő lépések
 
 * [ITSM-munkaelemek létrehozása az Azure-riasztásokból](./itsmc-overview.md)

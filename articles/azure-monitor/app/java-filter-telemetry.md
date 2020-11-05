@@ -4,14 +4,17 @@ description: Csökkentse a telemetria forgalmat úgy, hogy kiszűri azokat az es
 ms.topic: conceptual
 ms.date: 3/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: e450cf0de7dce4f626fd41252bfeed5fba294c70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 329f07a530a584a14d5312631ec977773e70af29
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761005"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378193"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Telemetria szűrése a Java-webalkalmazásban
+
+> [!IMPORTANT]
+> A Java-alkalmazások figyelésének ajánlott módszere az automatikus kiépítés használata a kód módosítása nélkül. Kérjük, kövesse az [Application Insights Java 3,0-ügynökre](./java-in-process-agent.md)vonatkozó irányelveket.
 
 A szűrők segítségével kiválaszthatja azt a telemetria, amelyet a [Java-webalkalmazás küld Application Insights](java-get-started.md). Vannak olyan beépített szűrők, amelyeket használhat, és saját egyéni szűrőket is írhat.
 

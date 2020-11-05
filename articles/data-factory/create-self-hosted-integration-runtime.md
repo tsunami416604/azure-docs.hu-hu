@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
-ms.openlocfilehash: 123595bb6cd0112e597b9d958763900e07b9ff38
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 2dc8773dc41493e30f64c0602b4345a9491cd7b7
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633076"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379706"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Helyi integrációs modul létrehozása és konfigurálása
 
@@ -117,7 +117,7 @@ Az alábbiakban az alkalmazás paramétereinek és tulajdonságainak részleteit
 | **Kulcs** "`<AuthenticationKey>`"                                 | Felülírja vagy frissítse az előző hitelesítési kulcsot. Ügyeljen erre a műveletre. A korábbi saját üzemeltetésű IR-csomópont offline állapotba léphet, ha a kulcs egy új integrációs modul. | Nem       |
 | **GenerateBackupFile** "`<filePath>`" "`<password>`"            | Biztonságimásolat-fájl létrehozása az aktuális csomóponthoz. A biztonságimásolat-fájl tartalmazza a csomópont kulcsát és az adattároló hitelesítő adatait. | Nem       |
 | **ImportBackupFile** "`<filePath>`" "`<password>`"              | Állítsa vissza a csomópontot egy biztonságimásolat-fájlból.                          | Nem       |
-| **Újraindítás**                                                     | Indítsa újra a saját üzemeltetésű Integration Runtime Host szolgáltatást.   | Nem       |
+| **Indítsa újra**                                                     | Indítsa újra a saját üzemeltetésű Integration Runtime Host szolgáltatást.   | Nem       |
 | **Kezdés**                                                       | Indítsa el a saját üzemeltetésű Integration Runtime Host szolgáltatást.     | Nem       |
 | **Leállítás**                                                        | Állítsa le a saját üzemeltetésű Integration Runtime Host szolgáltatást.        | Nem       |
 | **StartUpgradeService**                                         | Indítsa el a saját üzemeltetésű Integration Runtime verziófrissítési szolgáltatását.       | Nem       |
@@ -147,7 +147,6 @@ Az alábbiakban a saját üzemeltetésű integrációs modulról történő más
 - A saját üzemeltetésű integrációs modulnak csak egy példányát telepítheti egyetlen gépen is. Ha két, a helyszíni adatforrásokhoz hozzáférő adatfeldolgozóval rendelkezik, használja a saját üzemeltetésű [IR megosztási szolgáltatást](#create-a-shared-self-hosted-integration-runtime-in-azure-data-factory) a saját üzemeltetésű integrációs modul megosztásához, vagy telepítse a saját üzemeltetésű IR-t két helyszíni számítógépre, egyet az egyes adatelőállítók számára.  
 - A saját üzemeltetésű integrációs modulnak nem kell ugyanazon a gépen lennie, mint az adatforrásnak. Azonban a saját üzemeltetésű integrációs modul az adatforráshoz való közelsége csökkenti a saját üzemeltetésű integrációs modul adatforráshoz való csatlakozásának idejét. Javasoljuk, hogy a saját üzemeltetésű integrációs modult olyan gépre telepítse, amely eltér a helyszíni adatforrást üzemeltető gépről. Ha a saját üzemeltetésű Integration Runtime és az adatforrás különböző gépeken található, a saját üzemeltetésű integrációs modul nem versenyez az erőforrások adatforrásával.
 - Több saját üzemeltetésű integrációs modult is használhat különböző gépeken, amelyek ugyanahhoz a helyszíni adatforráshoz csatlakoznak. Ha például két olyan saját üzemeltetésű integrációs modulja van, amely két adat-előállítót szolgál ki, akkor ugyanaz a helyszíni adatforrás regisztrálható mindkét adat-előállítók esetében.
-- Ha már telepítve van egy átjáró a számítógépen egy Power BI-forgatókönyv kiszolgálására, telepítsen egy különálló, saját üzemeltetésű integrációs modult a Data Factory egy másik gépen.
 - Saját üzemeltetésű integrációs modul használata az Azure-beli virtuális hálózaton belüli Adatintegráció támogatásához.
 - Az adatforrást olyan helyszíni adatforrásként kezelheti, amely tűzfal mögött található, még akkor is, ha az Azure ExpressRoute-t használja. A saját üzemeltetésű integrációs modul használatával kapcsolódhat a szolgáltatáshoz az adatforráshoz.
 - Használja a saját üzemeltetésű integrációs modult, még akkor is, ha az adattár a felhőben van egy Azure-beli infrastruktúra-szolgáltatás (IaaS) virtuális gép.
@@ -190,7 +189,7 @@ A saját üzemeltetésű integrációs modult úgy is telepítheti, ha letölt e
 1. Futtassa közvetlenül a felügyelt Identity fájlt, vagy mentse a merevlemezre, és futtassa.
 1. Az **üdvözlő** ablakban válasszon egy nyelvet, és kattintson a **tovább** gombra.
 1. Fogadja el a Microsoft szoftverlicenc-szerződését, és válassza a **tovább** lehetőséget.
-1. Válassza a **mappa** lehetőséget a saját üzemeltetésű integrációs modul telepítéséhez, majd kattintson a **Tovább gombra** .
+1. Válassza a **mappa** lehetőséget a saját üzemeltetésű integrációs modul telepítéséhez, majd kattintson a **Tovább gombra**.
 1. A **telepítésre kész** lapon válassza a **telepítés** lehetőséget.
 1. A telepítés befejezéséhez kattintson a **Befejezés** gombra.
 1. Szerezze be a hitelesítési kulcsot a PowerShell használatával. Íme egy PowerShell-példa a hitelesítési kulcs lekéréséhez:
@@ -240,7 +239,7 @@ Az Integration Runtime-csomópontok közötti kommunikáció biztonságossá té
 
 - A tanúsítványnak nyilvánosan megbízható X509 v3 tanúsítványnak kell lennie. Javasoljuk, hogy használjon egy nyilvános partner hitelesítésszolgáltató (CA) által kiadott tanúsítványokat.
 - Minden Integration Runtime csomópontnak meg kell bíznia a tanúsítványban.
-- Nem javasoljuk a tulajdonos alternatív neve (SAN) tanúsítványait, mert csak az utolsó SAN-objektum van használatban. Az összes többi SAN-elemet figyelmen kívül hagyja a rendszer. Ha például egy SAN-tanúsítvánnyal rendelkezik, amelynek a **node1.domain.contoso.com** és a **node2.domain.contoso.com** , akkor ezt a tanúsítványt csak olyan gépen használhatja, amelynek teljes tartományneve (FQDN) **node2.domain.contoso.com** .
+- Nem javasoljuk a tulajdonos alternatív neve (SAN) tanúsítványait, mert csak az utolsó SAN-objektum van használatban. Az összes többi SAN-elemet figyelmen kívül hagyja a rendszer. Ha például egy SAN-tanúsítvánnyal rendelkezik, amelynek a **node1.domain.contoso.com** és a **node2.domain.contoso.com** , akkor ezt a tanúsítványt csak olyan gépen használhatja, amelynek teljes tartományneve (FQDN) **node2.domain.contoso.com**.
 - A tanúsítvány bármely, a Windows Server 2012 R2 által támogatott kulcstárolót használhat a TLS/SSL-tanúsítványokhoz.
 - A CNG-kulcsokat használó tanúsítványok nem támogatottak.  
 
@@ -360,10 +359,10 @@ Az Integration Runtime Host szolgáltatás automatikusan újraindul a frissítet
 
 Miután regisztrálta a saját üzemeltetésű integrációs modult, ha szeretné megtekinteni vagy frissíteni a proxybeállításokat, használja a Microsoft Integration Runtime Configuration Manager.
 
-1. Nyissa meg **Microsoft Integration Runtime Configuration Manager** .
+1. Nyissa meg **Microsoft Integration Runtime Configuration Manager**.
 1. Válassza a **Settings** (Beállítások) fület.
 1. A **http-proxy** alatt kattintson a **módosítás** hivatkozásra a **http-proxy beállítása** párbeszédpanel megnyitásához.
-1. Kattintson a **Tovább** gombra. Ekkor megjelenik egy figyelmeztetés, amely arra kéri, hogy mentse a proxybeállításokat, és indítsa újra az Integration Runtime Host szolgáltatást.
+1. Válassza a **Tovább** gombot. Ekkor megjelenik egy figyelmeztetés, amely arra kéri, hogy mentse a proxybeállításokat, és indítsa újra az Integration Runtime Host szolgáltatást.
 
 A Configuration Manager eszköz használatával megtekintheti és frissítheti a HTTP-proxyt.
 
@@ -426,7 +425,7 @@ Ha a következőhöz hasonló hibaüzenetek jelennek meg, a valószínű ok a t�
 
 ### <a name="enable-remote-access-from-an-intranet"></a>Távoli hozzáférés engedélyezése intranetről
 
-Ha a PowerShell segítségével titkosítja a hitelesítő adatokat egy hálózati gépről, a saját üzemeltetésű integrációs modul telepítésének helyétől eltérő módon, engedélyezheti a **távelérést az intranetről** lehetőséggel. Ha a PowerShellt a saját üzemeltetésű integrációs modult futtató gépen lévő hitelesítő adatok titkosítására futtatja, akkor nem engedélyezheti a **távelérést az intranetről** .
+Ha a PowerShell segítségével titkosítja a hitelesítő adatokat egy hálózati gépről, a saját üzemeltetésű integrációs modul telepítésének helyétől eltérő módon, engedélyezheti a **távelérést az intranetről** lehetőséggel. Ha a PowerShellt a saját üzemeltetésű integrációs modult futtató gépen lévő hitelesítő adatok titkosítására futtatja, akkor nem engedélyezheti a **távelérést az intranetről**.
 
 Engedélyezze **a távelérést az intranetről** , mielőtt újabb csomópontot ad hozzá a magas rendelkezésre álláshoz és méretezhetőséghez.  
 

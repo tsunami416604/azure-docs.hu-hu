@@ -3,15 +3,17 @@ title: A Java-webalkalmazások teljesítményének monitorozása Linux rendszere
 description: A Java-webhely bővített alkalmazás-teljesítményének figyelése a Application Insights gyűjtött beépülő modullal.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: fd061d6dd1f87456b92a61c9a62caaf3ef3189b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63b64226c9e788e060298050a74d9009c8035b89
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761022"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379009"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>begyűjtve: Linux teljesítmény-metrikák a Application Insights
 
+> [!IMPORTANT]
+> A Java-alkalmazások figyelésének ajánlott módszere az automatikus kiépítés használata a kód módosítása nélkül. Kérjük, kövesse az [Application Insights Java 3,0-ügynökre](./java-in-process-agent.md)vonatkozó irányelveket.
 
 A Linux rendszerbeli teljesítmény-mérőszámok megismeréséhez [Application Insights](./app-insights-overview.md)-ben telepítse a [begyűjtést](https://collectd.org/), valamint a Application Insights beépülő modullal. Ez a nyílt forráskódú megoldás különféle rendszerszintű és hálózati statisztikákat gyűjt.
 

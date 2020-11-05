@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 11/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25161054a53377b9fbbb12621b95dff9c119fa17
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 45851015dd5a845497fb2d09bf1f9fffb9e35a06
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165509"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377751"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Hitelesítési módszerek Azure Active Directory-telefon beállításaiban
 
@@ -23,7 +23,7 @@ A szöveges üzenetekkel történő közvetlen hitelesítéshez beállíthatja [
 
 A felhasználók az Azure Multi-Factor Authentication vagy az önkiszolgáló jelszó-visszaállítás (SSPR) során is ellenőrizhetik magukat mobiltelefon vagy irodai telefon formájában.
 
-A megfelelő működéshez a telefonszámoknak a *+ országhívószám telefonszám*formátumban kell lenniük, például: *+ 1 4251234567*.
+A megfelelő működéshez a telefonszámoknak a *+ országhívószám telefonszám* formátumban kell lenniük, például: *+ 1 4251234567*.
 
 > [!NOTE]
 > Az ország/régió kódja és a telefonszám között szóköz szükséges.
@@ -50,8 +50,6 @@ Ha a SSPR vagy az Azure Multi-Factor Authenticationban telefonhívás-ellenőrz�
 
 ## <a name="office-phone-verification"></a>Irodai telefon ellenőrzése
 
-Az Office Phone-attribútumot az Azure AD rendszergazdája felügyeli, és a felhasználó nem regisztrálhat.
-
 Ha a SSPR vagy az Azure Multi-Factor Authenticationban telefonhívás-ellenőrzést végez, a felhasználó által regisztrált telefonszámra automatikus hanghívás történik. A bejelentkezési folyamat befejezéséhez a rendszer kéri a felhasználótól, hogy adja meg a PIN-kódját, majd a billentyűzetén a # értéket.
 
 ## <a name="troubleshooting-phone-options"></a>Telefonos beállítások hibaelhárítása
@@ -73,7 +71,7 @@ Ha problémák merülnek fel az Azure AD-beli telefonos hitelesítéssel kapcsol
 * Hibás távközlési szolgáltatók, például nem észlelhetők a telefonos eszközök, a DTMF-hangok hiánya, a letiltott hívóazonosító több eszközön, illetve az SMS több eszközön való letiltása.
    * A Microsoft több távközlési szolgáltatót használ a telefonhívások és SMS-üzenetek továbbítására a hitelesítéshez. Ha a fenti problémák bármelyikét látja, akkor a felhasználó öt percen belül legalább ötször megpróbálta használni a metódust, és a felhasználó információi elérhetők a Microsoft ügyfélszolgálatával való kapcsolatfelvételkor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként tekintse meg az önkiszolgáló [jelszó-visszaállítás (SSPR)][tutorial-sspr] és az [Azure multi-Factor Authentication][tutorial-azure-mfa]című oktatóanyagot.
 
@@ -81,7 +79,7 @@ További információ a SSPR fogalmakról: az [Azure ad önkiszolgáló jelszó-
 
 További információ az MFA-fogalmakról: [how Azure multi-Factor Authentication Works][concept-mfa].
 
-További információ a hitelesítési módszerek konfigurálásáról a [Microsoft Graph REST API Beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)használatával.
+További információ a hitelesítési módszerek konfigurálásáról a [Microsoft Graph REST API Beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta&preserve-view=true)használatával.
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: cshoe
-ms.openlocfilehash: aaafe6d4080d85822ec5af9639c27fc8c55c2ce6
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: fd784bb184ff9432efc569ac9fd40de93eec0b53
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287227"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379587"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions megbízható események feldolgozása
 
@@ -50,7 +50,7 @@ A Azure Functions az Event hub-eseményeket az alábbi lépések során használ
 
 Ez a viselkedés a következő fontos pontokat mutatja be:
 
-- *A nem kezelt kivételek miatt elveszítheti az üzeneteket.* A kivételt okozó végrehajtások továbbra is a mutató előrehaladását eredményezik.  Az [újrapróbálkozási szabályzat](./functions-bindings-error-pages.md#retry-policies) beállítása késlelteti a mutatót a teljes újrapróbálkozási házirend kiértékelése után.
+- *A nem kezelt kivételek miatt elveszítheti az üzeneteket.* A kivételt okozó végrehajtások továbbra is a mutató előrehaladását eredményezik.  Az [újrapróbálkozási szabályzat](./functions-bindings-error-pages.md#retry-policies-preview) beállítása késlelteti a mutatót a teljes újrapróbálkozási házirend kiértékelése után.
 - *A függvények legalább egyszeri kézbesítést garantálnak.* Előfordulhat, hogy a kódnak és a függő rendszereknek is [figyelembe kell venniük azt a tényt, hogy ugyanazt az üzenetet kétszer is el lehet fogadni](./functions-idempotent.md).
 
 ## <a name="handling-exceptions"></a>Kivételek kezelése
@@ -59,7 +59,7 @@ Ez a viselkedés a következő fontos pontokat mutatja be:
 
 ### <a name="retry-mechanisms-and-policies"></a>Újrapróbálkozási mechanizmusok és szabályzatok
 
-Bizonyos kivételek átmeneti jellegűek, és nem jelennek meg újra, amikor egy művelet később próbálkozik újra. Ezért az első lépés az, hogy mindig újra kell próbálkoznia a művelettel.  A függvény végrehajtásán belül kihasználhatja a Function app [újrapróbálkozási szabályzatait](./functions-bindings-error-pages.md#retry-policies) vagy a szerzői újrapróbálkozási logikát.
+Bizonyos kivételek átmeneti jellegűek, és nem jelennek meg újra, amikor egy művelet később próbálkozik újra. Ezért az első lépés az, hogy mindig újra kell próbálkoznia a művelettel.  A függvény végrehajtásán belül kihasználhatja a Function app [újrapróbálkozási szabályzatait](./functions-bindings-error-pages.md#retry-policies-preview) vagy a szerzői újrapróbálkozási logikát.
 
 A függvények hibatűrési viselkedésének bemutatása lehetővé teszi az alapszintű és a speciális újrapróbálkozási házirendek definiálását. Létrehozhat például egy olyan szabályzatot, amely a következő szabályok által illusztrált munkafolyamatot követi:
 

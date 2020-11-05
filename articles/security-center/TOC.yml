@@ -223,7 +223,8 @@
         - name: Az SQL-hez készült Azure Defender konfigurálása Azure-beli virtuális gépeken
           href: defender-for-sql-usage.md
           displayName: 'hybrid, arc'
-        - name: Az Information Protection-szabályzat testreszabása
+        - name: Az SQL Information Protection-szabályzat testreszabása
+          displayName: 'sql, database, data discovery'
           href: security-center-info-protection-policy.md
     - name: Az Azure Defender használata tárolóregisztrációs adatbázisokhoz
       items:

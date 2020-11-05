@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23243de192683a4811eb569b17425701381c4cd1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 74ad503374e0148e9813508b6c7f8b21e2dca7a3
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375972"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379162"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>Szerepkör társítása egy csoporthoz Privileged Identity Management használatával
 
@@ -37,7 +37,7 @@ Ez a cikk azt ismerteti, hogyan rendelhet hozzá Azure Active Directory (Azure A
 
     ![Képernyőkép: a "hozzárendelések hozzáadása" lap, amely kiemelve a "szerepkör kiválasztása" és a "tag (ok)" szakaszban látható.](./media/groups-pim-eligible/select-member.png)
 
-1. Válassza ki a kívánt tagsági beállítást. Az aktiválást igénylő szerepkörök esetében válassza a **jogosult**lehetőséget. Alapértelmezés szerint a felhasználó véglegesen jogosult lenne, de a felhasználó jogosultságának kezdési és befejezési idejét is megadhatja. Ha elkészült, kattintson a Mentés és Hozzáadás gombra a szerepkör-hozzárendelés befejezéséhez.
+1. Válassza ki a kívánt tagsági beállítást. Az aktiválást igénylő szerepkörök esetében válassza a **jogosult** lehetőséget. Alapértelmezés szerint a felhasználó véglegesen jogosult lenne, de a felhasználó jogosultságának kezdési és befejezési idejét is megadhatja. Ha elkészült, kattintson a Mentés és Hozzáadás gombra a szerepkör-hozzárendelés befejezéséhez.
 
     ![Válassza ki azt a felhasználót, akihez a szerepkört hozzárendeli](./media/groups-pim-eligible/set-assignment-settings.png)
 
@@ -103,7 +103,7 @@ https://graph.microsoft.com/beta/privilegedAccess/aadroles/roleAssignmentRequest
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez](groups-concept.md)
+- [Felhőbeli csoportok használata a szerepkör-hozzárendelések kezeléséhez](groups-concept.md)
 - [A felhőbeli csoportokhoz hozzárendelt szerepkörökkel kapcsolatos hibák elhárítása](groups-faq-troubleshooting.md)
 - [Az Azure AD rendszergazdai szerepkör beállításainak konfigurálása Privileged Identity Management](../privileged-identity-management/pim-how-to-change-default-settings.md)
 - [Azure-beli erőforrás-szerepkörök kiosztása Privileged Identity Management](../privileged-identity-management/pim-resource-roles-assign-roles.md)

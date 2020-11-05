@@ -6,18 +6,18 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/30/2020
 ms.author: rahugup
-ms.openlocfilehash: 5541d5c3b9beea86f5c76747dd13ffeff1b12d97
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e1b34db7f2473e16d3ebde11376652f654f2f778
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133614"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377955"
 ---
 # <a name="scale-migration-of-vmware-vms"></a>VMware virtuális gépek áttelepítésének skálázása 
 
 Ebből a cikkből megtudhatja, hogyan használhatók a parancsfájlok nagy számú VMware virtuális gép (VM) áttelepítésére az ügynök nélküli módszer használatával. A Migrálás méretezéséhez [Azure Migrate PowerShell-modult](https://aka.ms/azuremigratepowershellvmware)használ. 
 
-A Azure Migrate VMware Migration Automation-parancsfájlok letölthetők a GitHubon elérhető [Azure PowerShell Samples] adattárból https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) . A parancsfájlok használhatók a VMware virtuális gépek Azure-ba történő áttelepítéséhez az ügynök nélküli áttelepítési módszer használatával. Az ezekben a parancsfájlokban használt Azure Migrate PowerShell-parancsokat [itt](https://aka.ms/azuremigratepowershellvmware)dokumentálja.
+A Azure Migrate VMware Migration Automation-parancsfájlok letölthetők a GitHubon elérhető [Azure PowerShell Samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) -tárházban. A parancsfájlok használhatók a VMware virtuális gépek Azure-ba történő áttelepítéséhez az ügynök nélküli áttelepítési módszer használatával. Az ezekben a parancsfájlokban használt Azure Migrate PowerShell-parancsokat [itt](https://aka.ms/azuremigratepowershellvmware)dokumentálja.
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 - Ezek a parancsfájlok támogatják a VMware virtuális gépek összes lemezről történő áttelepítését. Frissítheti a parancsfájlokat, ha szelektíven szeretné replikálni a VMware virtuális géphez csatolt lemezeket. 

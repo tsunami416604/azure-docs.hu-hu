@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: d452070619a8e6284b976ff202d2a86f1ff9312b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1d95459797a32ab3e026ee1c3a2cf93fe6e95cc4
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480734"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378958"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Biztonsági mentés és visszaállítás Azure Database for MariaDB
 
@@ -52,7 +52,7 @@ A biztonsági másolatok hosszú távú megőrzése a 35 napnál hosszabb ideig 
 Azure Database for MariaDB rugalmasságot biztosít a helyileg redundáns vagy geo-redundáns biztonsági mentési tárolók közötti választáshoz a általános célú és a memóriára optimalizált rétegekben. Ha a biztonsági mentések a földrajzilag redundáns biztonsági mentési tárolóban tárolódnak, azok nem csak abban a régióban vannak tárolva, amelyben a kiszolgáló üzemeltetve van, de egy [párosított adatközpontba](../best-practices-availability-paired-regions.md)is replikálódnak. Ez jobb védelmet nyújt, és lehetővé teszi a kiszolgáló egy másik régióban való visszaállítását vészhelyzet esetén. Az alapszintű csomag csak a helyileg redundáns biztonsági mentési tárhelyet kínálja.
 
 #### <a name="moving-from-locally-redundant-to-geo-redundant-backup-storage"></a>Áthelyezés helyileg redundáns biztonsági mentési tárolóba
-A helyileg redundáns vagy geo-redundáns tárterület a biztonsági mentéshez való konfigurálása csak a kiszolgáló létrehozásakor engedélyezett. A kiszolgáló üzembe helyezését követően nem módosítható a biztonsági mentési tár redundáns beállítása. Ahhoz, hogy a biztonsági mentési tárhelyet a helyileg redundáns tárolóból a Geo-redundáns tárolóba helyezze át, egy új kiszolgáló létrehozása és az adatok a [dump és a Restore](howto-migrate-dump-restore.md) használatával történő áttelepítése az egyetlen támogatott lehetőség.
+A helyileg redundáns vagy georedundáns biztonsági mentési tárolás konfigurálása csak a kiszolgáló létrehozása közben engedélyezett. A biztonsági mentési tároló redundanciára vonatkozó beállításait a kiszolgáló üzembe helyezése után már nem lehet módosítani. Ahhoz, hogy a biztonsági mentési tárhelyet a helyileg redundáns tárolóból a Geo-redundáns tárolóba helyezze át, egy új kiszolgáló létrehozása és az adatok a [dump és a Restore](howto-migrate-dump-restore.md) használatával történő áttelepítése az egyetlen támogatott lehetőség.
 
 ### <a name="backup-storage-cost"></a>Biztonsági mentési tárolási díj
 
@@ -90,7 +90,12 @@ A kiszolgálót visszaállíthatja egy másik Azure-régióba, ahol a szolgálta
 
 A Geo-visszaállítás az alapértelmezett helyreállítási lehetőség, ha a kiszolgáló nem érhető el, mert a kiszolgálót futtató régióban incidens található. Ha egy adott régióban a nagyméretű incidensek nem állnak rendelkezésre az adatbázis-alkalmazás számára, visszaállíthat egy kiszolgálót a Geo-redundáns biztonsági másolatokból egy másik régióban található kiszolgálóra. A Geo-visszaállítás a kiszolgáló legújabb biztonsági mentését használja. A biztonsági másolat készítése és más régióba való replikálása között késés történt. Ez a késleltetés akár egy óráig is eltarthat, így ha egy katasztrófa következik be, akár egy órányi adatvesztés is lehet.
 
+> [!IMPORTANT]
+>Ha egy újonnan létrehozott kiszolgáló geo-visszaállítást végez, a kezdeti biztonsági mentési szinkronizálás az adatmérettől függően több mint 24 órát is igénybe vehet, a kezdeti teljes pillanatkép-másolási idő sokkal magasabb. A pillanatképek későbbi biztonsági mentései növekményes másolást végeznek, ezért a visszaállítások a kiszolgáló 24 órányi létrehozása után gyorsabbak lesznek. Ha a Geo-visszaállítások kiértékelésével határozza meg a RTO, javasoljuk, hogy a jobb becslések érdekében **csak 24 órányi** kiszolgáló létrehozása után várjon és értékelje ki a Geo-visszaállítást.
+
 A Geo-visszaállítás során a megváltoztatható kiszolgálói konfigurációk közé tartoznak a számítási generáció, a virtuális mag, a biztonsági másolatok megőrzési időtartama és a biztonsági mentési redundancia beállításai. Az árképzési szint (alapszintű, általános célú vagy memória optimalizálása) vagy a tárolási méret módosítása a Geo-visszaállítás során nem támogatott.
+
+A helyreállítás becsült ideje több tényezőtől függ, többek között az adatbázisok méretétől, a tranzakciós napló méretétől, a hálózati sávszélességtől és az azonos régióban lévő adatbázisok teljes számától. A helyreállítási idő általában kevesebb, mint 12 óra.
 
 ### <a name="perform-post-restore-tasks"></a>Visszaállítás utáni feladatok végrehajtása
 
