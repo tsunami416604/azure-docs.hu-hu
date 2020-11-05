@@ -6,18 +6,18 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 0b1857583696a2a14d6f5d40174c536cf4772845
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 39d9cf9ed87c8a8f45cb2a6239292562035d31e3
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379187"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379638"
 ---
 # <a name="enterprise-application-permissions-for-custom-roles-in-azure-active-directory"></a>Vállalati alkalmazások engedélyei a Azure Active Directory egyéni szerepköreihez
 
@@ -119,7 +119,7 @@ Az alkalmazás-hozzáférés engedélyezésének engedélyezése az üzembe hely
 
 ## <a name="full-list-of-permissions"></a>Engedélyek teljes listája
 
-Engedély | Leírás
+Engedély | Description
 ---------- | -----------
 Microsoft. Directory/applicationPolicies/allProperties/READ | Az alkalmazás-házirendek összes tulajdonságának olvasása.
 Microsoft. Directory/applicationPolicies/allProperties/Update | Az alkalmazás-házirendek összes tulajdonságának frissítése.

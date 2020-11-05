@@ -3,12 +3,12 @@ title: Virtuális gépek jelszavának beállítása Azure Lab Servicesban | Micr
 description: Megtudhatja, hogyan állíthatja be és állíthatja alaphelyzetbe a virtuális gépek (VM) jelszavát a Azure Lab Services osztályterem Labs szolgáltatásban.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 49615b37875b8340f46ed900a1e7144256c7cb7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e24fee26670a664012ec5f0216b0638d6149453f
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334072"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379689"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Virtuális gépek készleteinek létrehozása és kezelése 
 Ez a cikk bemutatja, hogyan végezheti el a következő feladatokat:
@@ -20,9 +20,9 @@ Ez a cikk bemutatja, hogyan végezheti el a következő feladatokat:
 ## <a name="update-the-lab-capacity"></a>A tesztkörnyezet kapacitásának frissítése
 A labor kapacitásának növeléséhez vagy csökkentéséhez (a laborban található virtuális gépek száma) hajtsa végre a következő lépéseket:
 
-1. A **virtuális gép készlete** lapon válassza a **labor kapacitása: &lt; számú &gt; gép**lehetőséget.
+1. A **virtuális gép készlete** lapon válassza a **labor kapacitása: &lt; számú &gt; gép** lehetőséget.
 2. Adja meg a laborban használni kívánt **virtuális gépek új számát** . Ennek a számnak nagyobbnak vagy egyenlőnek kell lennie a laborban regisztrált felhasználók számával. 
-3. Ezután válassza a **Mentés**lehetőséget. 
+3. Ezután válassza a **Mentés** lehetőséget. 
 
     ![Képernyőfelvétel: a "labor Capacity" ablak a "maximális gépek a laborban" és a "Mentés" gomb kiválasztásával.](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
 4. Ha növelte a kapacitást, megtekintheti a létrehozott virtuális gépet vagy virtuális gépeket. Ha nem látja az új virtuális gépet a listában, frissítse a lapot. 
@@ -53,15 +53,14 @@ Hasonlóképpen leállíthat egy vagy több virtuális gépet is, ha az **állap
 > Ha egy oktató bekapcsol egy tanulói virtuális gépet, az nem érinti a tanulóra vonatkozó kvótát. A felhasználóhoz tartozó kvóta meghatározza, hogy a felhasználó számára hány labor óra legyen elérhető az ütemezett osztály időpontján kívül. A kvótákkal kapcsolatos további információkért lásd: [kvóták beállítása a felhasználók](how-to-configure-student-usage.md?#set-quotas-for-users)számára.
 
 ## <a name="reset-vms"></a>Virtuális gépek alaphelyzetbe állítása
+
 Egy vagy több virtuális gép alaphelyzetbe állításához jelölje ki azokat a listában, majd válassza az **Alaphelyzetbe állítás** lehetőséget az eszköztáron. 
 
 ![Kijelölt virtuális gépek alaphelyzetbe állítása](./media/how-to-set-virtual-machine-passwords/reset-vm-button.png)
 
-A **virtuális gép (ek) alaphelyzetbe állítása** párbeszédpanelen válassza az **Alaphelyzetbe állítás**lehetőséget. 
+A **virtuális gép (ek) alaphelyzetbe állítása** párbeszédpanelen válassza az **Alaphelyzetbe állítás** lehetőséget. 
 
 ![Virtuális gép alaphelyzetbe állítása párbeszédpanel](./media/how-to-set-virtual-machine-passwords/reset-vms-dialog.png)
-
-
 
 ## <a name="set-password-for-vms"></a>Virtuális gépek jelszavának beállítása
 A labor tulajdonosa (pedagógus) beállíthatja/alaphelyzetbe állíthatja a virtuális gépek jelszavát a labor létrehozásakor (labor létrehozása varázsló) vagy a labor létrehozása után a **sablon** lapon. 
@@ -76,7 +75,7 @@ Ha engedélyezi vagy letiltja az **azonos jelszó használata az összes virtuá
 ### <a name="reset-password-later"></a>Jelszó alaphelyzetbe állítása később
 
 1. A labor **sablon** lapján válassza a **jelszó alaphelyzetbe állítása** lehetőséget az eszköztáron. 
-1. A **jelszó alaphelyzetbe állítása** párbeszédpanelen adja meg a jelszót, és válassza a **jelszó alaphelyzetbe állítása**lehetőséget.
+1. A **jelszó alaphelyzetbe állítása** párbeszédpanelen adja meg a jelszót, és válassza a **jelszó alaphelyzetbe állítása** lehetőséget.
     
     ![Jelszó beállítása párbeszédpanel](./media/how-to-set-virtual-machine-passwords/set-password.png)
 
@@ -96,7 +95,7 @@ Ha a következő feltételek teljesülnek, a tesztkörnyezet létrehozója (peda
 ## <a name="export-list-of-virtual-machines-to-a-csv-file"></a>Virtuális gépek listájának exportálása CSV-fájlba
 
 1. Váltson a **virtuálisgép-készlet** lapra.
-2. Válassza a **...** (három pont) lehetőséget az eszköztáron, majd válassza a **CSV exportálása**lehetőséget. 
+2. Válassza a **...** (három pont) lehetőséget az eszköztáron, majd válassza a **CSV exportálása** lehetőséget. 
 
     ![Virtuális gépek listájának exportálása](./media/how-to-export-users-virtual-machines-csv/virtual-machines-export-csv.png)
 
