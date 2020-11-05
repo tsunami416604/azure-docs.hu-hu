@@ -147,8 +147,6 @@
       items:
         - name: Közzététel az App Source-ban
           href: howto-get-appsource-certified.md
-        - name: Közzététel az Azure AD alkalmazáskatalógusban
-          href: howto-app-gallery-listing.md
         - name: Közzététel az Office 365 Értékesítői információközpontban
           href: /office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store
     - name: Azure Access Control Service

@@ -582,7 +582,7 @@
     - name: Virtuális gépek védelme
       items:
         - name: Javaslatok
-          href: security-recommendations.md
+          href: ../security-recommendations.md
         - name: Igény szerinti hozzáférés
           href: ../../security-center/security-center-just-in-time.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Bastion használata
@@ -717,7 +717,7 @@
             - name: Ügynök frissítése
               href: ../extensions/update-linux-agent.md
         - name: Spekulatív végrehajtás kockázatának csökkentése
-          href: mitigate-se.md
+          href: ../mitigate-se.md
         - name: Metaadatok monitorozása
           href: instance-metadata-service.md
         - name: Használati metrikák lekérése a REST használatával
@@ -1045,7 +1045,7 @@
         - name: Gyorsított hálózatkezelés használata
           href: ../../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Nyilvános DNS-név hozzárendelése
-          href: portal-create-fqdn.md
+          href: ../create-fqdn.md
         - name: Nem csatolt hálózati adapterek keresése és törlése
           href: find-unattached-nics.md
         - name: DNS feloldása

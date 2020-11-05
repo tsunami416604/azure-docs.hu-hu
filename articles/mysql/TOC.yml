@@ -1,4 +1,4 @@
-- name: Az Azure DB for MySQL dokumentációja
+- name: A MySQL-hez készült Azure Database dokumentációja
   href: index.yml
 - name: Áttekintés
   items:

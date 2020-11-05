@@ -127,6 +127,7 @@
           items:
             - name: Beállítás - Azure Portal
               href: data-box-disk-quickstart-portal.md
+              displayName: 'Azure CLI, az databox job create, create Data Box job'
         - name: Oktatóanyagok
           items:
             - name: 1 – Rendelés
@@ -177,6 +178,7 @@
           items:
             - name: Beállítás - Azure Portal
               href: data-box-heavy-quickstart-portal.md
+              displayName: 'Azure CLI, az databox job create, create Data Box job'
         - name: Oktatóanyagok
           items:
             - name: 1 – Rendelés

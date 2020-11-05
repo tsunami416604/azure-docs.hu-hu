@@ -3,8 +3,10 @@
 - name: Áttekintés
   href: media-services-overview.md
   items:
-    - name: Forgatókönyvek és rendelkezésre állás
+    - name: Gyakori forgatókönyvek
       href: scenarios-and-availability.md
+    - name: Régiónkénti rendelkezésre állás
+      href: availability-regions-v-2.md
     - name: Alapelvek
       href: media-services-concepts.md
 - name: Bevezetés

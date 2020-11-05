@@ -1,18 +1,18 @@
 ---
 title: A foglalási kedvezmények ismertetése – Azure Database for MySQL
 description: Megtudhatja, hogyan alkalmazható foglalási kedvezmény az Azure Database for MySQL-kiszolgálókra.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 5cb4e3dd4145319361a2494ee346c0d2696edf45
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 85a8c59cce74787a7b1723850915ec133b34b3b0
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148299"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240375"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mysql"></a>A foglalási kedvezmény alkalmazása Azure Database for MySQL-re
 
@@ -20,7 +20,7 @@ A foglalási kedvezmény a fenntartott Azure Database for MySQL-kapacitás megv�
 
 ## <a name="how-reservation-discount-is-applied"></a>A foglalási kedvezmény alkalmazása
 
-A foglalási kedvezmény csak akkor érvényes, ha ***folyamatosan igénybe veszi***. Ez azt jelenti, hogy ha nem rendelkezik megfelelő erőforrásokkal egy adott órában, akkor az arra az órára vonatkozó foglalási mennyiség elveszik. A lefoglalt, de fel nem használt órák nem vihetők tovább.</br>
+A foglalási kedvezmény csak akkor érvényes, ha * **folyamatosan igénybe veszi** _. Ez azt jelenti, hogy ha nem rendelkezik megfelelő erőforrásokkal egy adott órában, akkor az arra az órára vonatkozó foglalási mennyiség elveszik. A lefoglalt, de fel nem használt órák nem vihetők tovább.</br>
 
 Egy erőforrás leállításakor a rendszer a foglalási kedvezményt automatikusan a megadott hatókör egy másik egyező erőforrására alkalmazza. Ha nem találhatók egyező erőforrások a megadott hatókörben, akkor a lefoglalt órák elvesznek.
 
@@ -30,15 +30,15 @@ A fenntartott Azure Database for MySQL-kapacitásra érvényes kedvezményt a re
 
 Az alábbi példák bemutatják, hogyan lesz alkalmazva a fenntartott Azure Database for MySQL-kapacitásra érvényes kedvezmény a megvásárolt magok száma alapján, és az alapján, mikor futnak.
 
-**1. példa**: Fenntartott Azure Database for MySQL-kapacitást vásárolt 8 virtuális maghoz. Ha 16 virtuális magos Azure Database for MySQL-kiszolgálót futtat, amely egyezik a foglalás többi attribútumával, a MySQL-kiszolgáló 8 virtuális magjának számításierőforrás-használata után a használatalapú árat kell fizetnie, a foglalási kedvezményt pedig a 8 magos MySQL-kiszolgáló egy órányi számításierőforrás-használatára kapja meg.</br>
+_ **1. példa** : Fenntartott Azure Database for MySQL-kapacitást vásárolt 8 virtuális maghoz. Ha 16 virtuális magos Azure Database for MySQL-kiszolgálót futtat, amely egyezik a foglalás többi attribútumával, a MySQL-kiszolgáló 8 virtuális magjának számításierőforrás-használata után a használatalapú árat kell fizetnie, a foglalási kedvezményt pedig a 8 magos MySQL-kiszolgáló egy órányi számításierőforrás-használatára kapja meg.</br>
 
 A többi példa esetében azt feltételezzük, hogy a fenntartott Azure Database for MySQL-kapacitást egy 16 virtuális magos Azure Database for MySQL-kiszolgálóhoz vásárolta, és a többi foglalási attribútum megegyezik a futó MySQL-kiszolgálókkal.
 
-* **2. példa**: Két 8 virtuális magos Azure Database for MySQL-kiszolgálót futtat egy-egy óráig. A 16 virtuális magos foglalási kedvezményt a rendszer mindkét 8 virtuális magos Azure Database for MySQL-kiszolgáló számításierőforrás-használatára alkalmazza.
+* **2. példa** : Két 8 virtuális magos Azure Database for MySQL-kiszolgálót futtat egy-egy óráig. A 16 virtuális magos foglalási kedvezményt a rendszer mindkét 8 virtuális magos Azure Database for MySQL-kiszolgáló számításierőforrás-használatára alkalmazza.
 
-* **3. példa**: Egy 16 virtuális magos Azure Database for MySQL-kiszolgálót futtat 13:00 órától 13:30-ig. Egy másik 16 virtuális magos Azure Database for MySQL-kiszolgálót 13:30-tól 14:00 óráig futtat. A foglalási kedvezmény mindkettőt fedezi.
+* **3. példa** : Egy 16 virtuális magos Azure Database for MySQL-kiszolgálót futtat 13:00 órától 13:30-ig. Egy másik 16 virtuális magos Azure Database for MySQL-kiszolgálót 13:30-tól 14:00 óráig futtat. A foglalási kedvezmény mindkettőt fedezi.
 
-* **4. példa**: Egy 16 virtuális magos Azure Database for MySQL-kiszolgálót futtat 13:00 órától 13:45-ig. Egy másik 16 virtuális magos Azure Database for MySQL-kiszolgálót 13:30-tól 14:00 óráig futtat. A 15 perces átfedésért használatalapú díjat kell fizetnie. A fennmaradó idő számításierőforrás-használatára érvényes a foglalási kedvezmény.
+* **4. példa** : Egy 16 virtuális magos Azure Database for MySQL-kiszolgálót futtat 13:00 órától 13:45-ig. Egy másik 16 virtuális magos Azure Database for MySQL-kiszolgálót 13:30-tól 14:00 óráig futtat. A 15 perces átfedésért használatalapú díjat kell fizetnie. A fennmaradó idő számításierőforrás-használatára érvényes a foglalási kedvezmény.
 
 Az Azure Reservations számlázási használati jelentésekben történő alkalmazásának megismeréséhez és megtekintéséhez lásd [az Azure Reservations használatát ismertető](./understand-reserved-instance-usage-ea.md) cikket.
 
