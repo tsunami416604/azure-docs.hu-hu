@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: d1ca6d37d6133786aff7ad3156fea2a0c22dfb97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1522bb133c7d8f877a334e47bf7929c533ea3465
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67179183"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376185"
 ---
 #### <a name="to-create-a-cloud-appliance"></a>Felhőalapú berendezés létrehozása
 
@@ -18,7 +18,7 @@ ms.locfileid: "67179183"
     ![StorSimple felhőalapú berendezés létrehozása](./media/storsimple-8000-create-cloud-appliance-u2/sca-create1.png)
 3. A **Felhőalapú berendezés létrehozása** párbeszédpanelen adja meg a következő adatokat.
    
-    ![StorSimple felhőalapú berendezés létrehozása](./media/storsimple-8000-create-cloud-appliance-u2/sca-create2m.png)
+    ![StorSimple – 2. Felhőbeli berendezés létrehozása](./media/storsimple-8000-create-cloud-appliance-u2/sca-create2m.png)
    
    1. **Név** – A felhőalapú berendezés egyedi neve.
    2. **Modell** – Válassza ki a felhőalapú berendezés modelljét. A 8010-es eszköz 30 TB Standard szintű, a 8020-as pedig 64 TB Prémium szintű tárhelyet biztosít. Ha biztonsági mentésekből szeretne elemszintű lekérési forgatókönyveket telepíteni, a 8010-es modellt adja meg. A 8020-as modellel nagy teljesítményű, alacsony késleltetésű munkaterheléseket telepíthet, vagy használhatja vészhelyreállítási másodlagos eszközként.

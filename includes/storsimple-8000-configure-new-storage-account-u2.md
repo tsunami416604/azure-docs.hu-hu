@@ -4,18 +4,18 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: d6bad1ec584b28fee77bc654eba8a2d0c7b5df30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f1c30b303bd1fe02e0685c7d848be92073ca2f6
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67179182"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376064"
 ---
 #### <a name="to-add-a-storage-account-credential-in-the-same-azure-subscription-as-the-storsimple-device-manager-service"></a>Tárfiók hitelesítő adatainak hozzáadása a StorSimple-eszközkezelővel meggyező Azure-előfizetésben
 
 1. Nyissa meg a StorSimple-eszközkezelő szolgáltatást. A **Konfigurálás** szakaszban kattintson a **Tárfiók hitelesítő adatai** elemre.
 
-    ![Tárfiók hitelesítő adatai](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct1.png)
+    ![Nyissa meg a Storage-fiók hitelesítő adatait](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct1.png)
 
 2. A **Tárfiók hitelesítő adatai** panelen kattintson a **+Hozzáadás** elemre.
 
@@ -39,5 +39,5 @@ ms.locfileid: "67179182"
 
 Az újonnan létrehozott tárfiók-hitelesítő adatok megjelennek a **Tárfiók hitelesítő adatai** listában.
 
-![Tárfiók hitelesítő adatainak listája](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct6.png)
+![A Storage-fiók hitelesítő adatainak listázása](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct6.png)
 

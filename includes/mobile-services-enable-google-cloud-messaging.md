@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/06/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: a7d0a899b4a2ef86153e82a4e3f04e7ec430a1bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b32ff0926aa2b797bdb8dfcbb01cf845080a0ce9
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67179711"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376025"
 ---
 1. Lépjen be a [Google Cloud Console](https://console.developers.google.com/cloud-resource-manager) (Google felhőkonzol) felületére, és jelentkezzen be Google-fiókja hitelesítő adataival. 
 2. Kattintson az eszköztár **Create Project** (Projekt létrehozása) gombjára. 
@@ -43,7 +43,7 @@ ms.locfileid: "67179711"
     ![Hitelesítő adatok létrehozásának gombja](./media/mobile-services-enable-google-cloud-messaging/create-credentials-button.png)
 11. Az **Add credentials to your project** (Hitelesítő adatok hozzáadása a projekthez) lapon válassza az **API key** (API-kulcs) hivatkozást. 
 
-    ![Hitelesítő adatok létrehozásának gombja](./media/mobile-services-enable-google-cloud-messaging/api-key-button.png)    
+    ![Hitelesítő adatok hozzáadása](./media/mobile-services-enable-google-cloud-messaging/api-key-button.png)    
 12. Az **API key** lapon válassza a **Create/Save** (Létrehozás/mentés) lehetőséget. Az alábbi példában az **IP addresses** (IP-címek) lehetőséget választottuk, és a **0.0.0.0/0** értéket adtuk meg az engedélyezett IP-címeknek. Önnek a saját környezete követelményeinek megfelelően kell beállítania az API-kulcsok korlátozását. 
 
     ![API-kulcs létrehozására szolgáló gomb](./media/mobile-services-enable-google-cloud-messaging/api-key-create-button.png)

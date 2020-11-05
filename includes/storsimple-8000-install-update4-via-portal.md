@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: a3ccf76b2722c04a9353fcc7020ff1387bc454c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3cfab78ab4bcc92b3e65b5e4fa04a29bf688de0
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67179322"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376277"
 ---
 #### <a name="to-install-an-update-from-the-azure-portal"></a>Frissítés telepítése az Azure Portalról
 
@@ -17,17 +17,17 @@ ms.locfileid: "67179322"
 
     ![Eszköz kiválasztása](./media/storsimple-8000-install-update4-via-portal/update1.png)
 
-2. Navigáljon az **eszközbeállítások**  >  **eszköz frissítései**menüpontra.
+2. Navigáljon az **eszközbeállítások**  >  **eszköz frissítései** menüpontra.
 
     ![Kattintson az eszközök frissítései lehetőségre](./media/storsimple-8000-install-update4-via-portal/update2.png)
 
-2. Megjelenik egy értesítés, ha új frissítések érhetők el. Azt is megteheti, hogy az **eszköz frissítései** panelen a **frissítések keresése**lehetőségre kattint. Létrejön egy feladat, amely megkeresi az elérhető frissítéseket. A feladat sikeres befejezéséről értesítést kap.
+2. Megjelenik egy értesítés, ha új frissítések érhetők el. Azt is megteheti, hogy az **eszköz frissítései** panelen a **frissítések keresése** lehetőségre kattint. Létrejön egy feladat, amely megkeresi az elérhető frissítéseket. A feladat sikeres befejezéséről értesítést kap.
 
-    ![Kattintson az eszközök frissítései lehetőségre](./media/storsimple-8000-install-update4-via-portal/update3.png)
+    ![Kattintson az eszköz frissítései 2](./media/storsimple-8000-install-update4-via-portal/update3.png)
 
-3. Azt javasoljuk, hogy mielőtt alkalmazná a frissítést az eszközön, tekintse át a kibocsátási megjegyzéseket. A frissítések alkalmazásához kattintson a **frissítések telepítése**elemre. A frissítések alkalmazása előtt tekintse át az előfeltételeket a **rendszeres frissítések megerősítése** panelen. Jelölje be a jelölőnégyzetet annak jelzéséhez, hogy készen áll az eszköz frissítésére, majd kattintson a **telepítés**gombra.
+3. Azt javasoljuk, hogy mielőtt alkalmazná a frissítést az eszközön, tekintse át a kibocsátási megjegyzéseket. A frissítések alkalmazásához kattintson a **frissítések telepítése** elemre. A frissítések alkalmazása előtt tekintse át az előfeltételeket a **rendszeres frissítések megerősítése** panelen. Jelölje be a jelölőnégyzetet annak jelzéséhez, hogy készen áll az eszköz frissítésére, majd kattintson a **telepítés** gombra.
 
-    ![Kattintson az eszközök frissítései lehetőségre](./media/storsimple-8000-install-update4-via-portal/update4.png)
+    ![Kattintson az eszköz frissítései 3](./media/storsimple-8000-install-update4-via-portal/update4.png)
 
 6. Megkezdődik az előfeltételek ellenőrzése. Ezekbe az ellenőrzésekbe a következők tartoznak:
    
@@ -45,13 +45,13 @@ ms.locfileid: "67179322"
 
 9. A frissítés elvégzése néhány órát igényel. Válassza ki a frissítési feladatot, és kattintson a **Részletek** gombra, így bármikor megtekintheti a feladat részleteit.
 
-    ![Frissítési feladat létrehozása](./media/storsimple-8000-install-update4-via-portal/update8.png)
+    ![A 2. feladatokhoz tartozó frissítés frissítése](./media/storsimple-8000-install-update4-via-portal/update8.png)
 
-     Nyomon követheti a frissítési feladat előrehaladását az **eszközbeállítások > feladatokból**is. A **feladatok** panelen láthatja a frissítés folyamatát.
+     Nyomon követheti a frissítési feladat előrehaladását az **eszközbeállítások > feladatokból** is. A **feladatok** panelen láthatja a frissítés folyamatát.
 
-     ![Frissítési feladat létrehozása](./media/storsimple-8000-install-update4-via-portal/update7.png)
+     ![3. feladatok létrehozásának frissítése](./media/storsimple-8000-install-update4-via-portal/update7.png)
 
-10. A feladatok befejezése után navigáljon az eszközbeállítások **> eszköz frissítései**elemre. A szoftver verzióját most frissíteni kell.
+10. A feladatok befejezése után navigáljon az eszközbeállítások **> eszköz frissítései** elemre. A szoftver verzióját most frissíteni kell.
 
-   ![Frissítési feladat létrehozása](./media/storsimple-8000-install-update4-via-portal/update9.png)
+   ![4. frissítési feladatok létrehozása](./media/storsimple-8000-install-update4-via-portal/update9.png)
 

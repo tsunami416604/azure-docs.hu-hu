@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: storsimple
 author: alkohli
 ms.service: storsimple
@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 07/18/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 65d5a88f7b5d059deb633f062639e455c64ef2f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ed290e861a0fdebeb76b9e08e62c03eda52be82
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67179643"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376159"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>Frissítések telepítése az Azure Portalon keresztül
 
 1. Nyissa meg a StorSimple-eszközkezelőt, és válassza az **Eszközök** elemet. A szolgáltatáshoz csatlakozó eszközök listájából válassza ki a frissíteni kívánt eszközt, majd kattintson rá.
 
-2. A **Beállítások**területen kattintson az **eszközök frissítései**elemre.  
+2. A **Beállítások** területen kattintson az **eszközök frissítései** elemre.  
 
 3. Megjelenik a szoftverfrissítések elérhetőségét jelző üzenet. A frissítések kereséséhez a **Vizsgálat** gombot is használhatja. Jegyezze fel a futtatott szoftver verzióját. 
 
@@ -27,25 +27,25 @@ ms.locfileid: "67179643"
 
     A rendszer értesítést küld, amikor a vizsgálat elindul, és sikeresen befejeződik.
  
-4. Ha elkészült a frissítések vizsgálata, kattintson a **Frissítések letöltése** gombra. Az **új frissítések**területen tekintse át a kibocsátási megjegyzéseket. Azt is vegye figyelembe, hogy a frissítések letöltése után meg kell erősítenie a telepítést. Kattintson az **OK** gombra.
+4. Ha elkészült a frissítések vizsgálata, kattintson a **Frissítések letöltése** gombra. Az **új frissítések** területen tekintse át a kibocsátási megjegyzéseket. Azt is vegye figyelembe, hogy a frissítések letöltése után meg kell erősítenie a telepítést. Kattintson az **OK** gombra.
 
-    ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate6m.png)
+    ![2. eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate6m.png)
 
     A feltöltés indításáról és sikeres befejezéséről értesítést kap.
 
-5. Az **eszköz frissítései**területen kattintson a **telepítés**elemre.
+5. Az **eszköz frissítései** területen kattintson a **telepítés** elemre.
 
-     ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate11m1.png)
+     ![3. eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate11m1.png)
 
-6. Az **új frissítések**területen a rendszer figyelmezteti, hogy a frissítés megszakadt. Mivel a virtuális tömb egy egyetlen csomóponttal rendelkező eszköz, ezért az eszköz a frissítést követően újraindul. Ez megszakítja a folyamatban lévő I/O-műveleteket. A frissítések telepítéséhez kattintson az **OK** gombra.
+6. Az **új frissítések** területen a rendszer figyelmezteti, hogy a frissítés megszakadt. Mivel a virtuális tömb egy egyetlen csomóponttal rendelkező eszköz, ezért az eszköz a frissítést követően újraindul. Ez megszakítja a folyamatban lévő I/O-műveleteket. A frissítések telepítéséhez kattintson az **OK** gombra.
 
-    ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate12m.png)
+    ![4. eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate12m.png)
 
     A telepítési feladat indításáról értesítést kap.
 
 7.  Miután a telepítési feladatot sikeresen befejeződik, kattintson a **feladatok megtekintése** hivatkozásra. Ez a művelet a **frissítések telepítése** panelre lép. A feladatról részletes információt itt talál. 
 
-    ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate16m1.png)
+    ![5. eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate16m1.png)
 
 8. Ha az 1. verziójú szoftverfrissítési (10.0.10296.0) verziót futtató virtuális tömböt futtat, akkor a 1,1-es frissítés már fut, és készen áll. A hátralévő lépéseket kihagyhatja. 
 

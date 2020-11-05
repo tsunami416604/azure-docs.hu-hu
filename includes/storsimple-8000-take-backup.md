@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 48a3326dbe0e9eed4a5490e720248555586d189c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e923fdf560692c645c8a69e7e26d13f69d6920c
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67179171"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376132"
 ---
 ### <a name="to-take-a-backup"></a>Biztonsági mentés végrehajtása
 
@@ -19,13 +19,13 @@ ms.locfileid: "67179171"
 
 2. A **Biztonsági mentési szabályzat** panelen kattintson a **+ Szabályzat hozzáadása** gombra.
 
-    ![Biztonsági mentési házirend hozzáadása](./media/storsimple-8000-take-backup/step8takebu2.png)
+    ![Backup-Policy 2 hozzáadása](./media/storsimple-8000-take-backup/step8takebu2.png)
 
 3. A **Biztonsági mentési szabályzat létrehozása** panelen adjon egy 3–150 karakter hosszúságú nevet a biztonsági mentési szabályzatnak.
 
 4. Válassza ki a köteteket, amelyekről biztonsági mentést kíván készíteni. Ha egynél több kötetet választ ki, ezeket a köteteket a rendszer egy összeomlásbiztos biztonsági mentésbe csoportosítja.
 
-    ![Biztonsági mentési házirend hozzáadása](./media/storsimple-8000-take-backup/step8takebu4.png)
+    ![Backup-Policy 3 hozzáadása](./media/storsimple-8000-take-backup/step8takebu4.png)
 
 5. Az **Első ütemezés hozzáadása** panelen:
 
@@ -35,11 +35,11 @@ ms.locfileid: "67179171"
     4. Válassza ki a biztonsági házirend indítási időpontját és dátumát.
     5. A biztonsági mentési szabályzat létrehozásához kattintson az **OK** gombra.
 
-        ![Biztonsági mentési házirend hozzáadása](./media/storsimple-8000-take-backup/step8takebu5.png) 
+        ![Backup-Policy 4 hozzáadása](./media/storsimple-8000-take-backup/step8takebu5.png) 
 
 6. A biztonsági mentési szabályzat létrehozásának megkezdéséhez kattintson a **Létrehozás** gombra. A biztonsági mentési szabályzat sikeres létrehozásáról értesítést kap. A biztonsági mentési szabályzatok listája is frissítve lett.
       
-      ![Biztonsági mentési házirend hozzáadása](./media/storsimple-8000-take-backup/step8takebu9.png)
+      ![Backup-Policy 5 hozzáadása](./media/storsimple-8000-take-backup/step8takebu9.png)
       
       Mostantól a biztonsági mentési szabályzat ütemezett biztonsági mentéseket hoz létre a kötetadatokról.
 

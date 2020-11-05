@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: c44effe0bde3c7e880e53706fcb59d91a8605e7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05719d9633429c4b8ee6fee79833f594c94ab23d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67179170"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376213"
 ---
 #### <a name="to-complete-the-minimum-storsimple-device-setup"></a>A minimális StorSimple eszközbeállítás befejezése
 
@@ -30,7 +30,7 @@ ms.locfileid: "67179170"
 
        2. Adja meg a Vezérlő 0 és a Vezérlő 1 fix IP-címét. **A vezérlő fix IP-címeinek az alhálózaton belüli, az eszköz IP-címe alapján elérhető, szabad IP-címeknek kell lenniük.** Ha a DATA 0 adapter az IPv4 használatára van konfigurálva, akkor a fix IP-címeket is IPv4-formátumban kell megadni. Ha IPv6-konfigurációhoz tartozó előtagot adott meg, a fix IP-címek automatikusan ezekbe a mezőkbe lesznek betöltve.
 
-            ![A StorSimple minimális eszközbeállításának hálózati adapterei](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig2.png)
+            ![StorSimple minimális eszköz beállítása hálózati adapterek 2](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig2.png)
 
             A vezérlőhöz tartozó fix IP-címek az eszköz frissítéseinek karbantartásához és szemétgyűjtéshez használatosak. Ezért a fix IP-knek irányíthatóknak kell lenniük, és csatlakoztatva kell lenniük az internethez. A fix vezérlő IP-k irányíthatóságát a [Test-HcsmConnection][Test] parancsmaggal ellenőrizheti. Az alábbi példán olyan, az internetre átirányított fix vezérlő IP-k láthatók, amelyek hozzáférnek a Microsoft Update-kiszolgálókhoz.
 
@@ -38,7 +38,7 @@ ms.locfileid: "67179170"
 
 1. Kattintson az **OK** gombra. Ekkor elkezdődik az eszköz konfigurálása. Az eszköz konfigurálásának befejezéséről a rendszer értesítést küld. Az eszköz **Elérhető** állapotúra vált az **Eszközök** panelen.
 
-    ![A StorSimple minimális eszközbeállításának hálózati adapterei](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig4.png)
+    ![StorSimple minimális eszköz beállítása hálózati adapterek 3](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig4.png)
 
 <!--Link reference-->
 [Test]: https://technet.microsoft.com/library/dn715782(v=wps.630).aspx

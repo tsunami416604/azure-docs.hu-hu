@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 4fc92931979aa367bdead435c3d6fd758d66a397
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89f7be31514f0b78c3bfb3efd6e6aca14658d5cd
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67179194"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376013"
 ---
 #### <a name="to-create-a-manual-backup"></a>Manuális biztonsági mentés létrehozása
 
@@ -21,13 +21,13 @@ ms.locfileid: "67179194"
 
 3. Hajtsa végre a következő lépéseket a **Biztonsági másolat készítése** panelen:
 
-    1. A legördülő menüben válassza ki a megfelelő **pillanatképtípust**: **helyi** vagy **felhőbeli**. Gyors biztonsági mentéshez és visszaállításhoz válassza a helyi pillanatképet, az adatrugalmassághoz pedig a felhőbeli pillanatképet.
+    1. A legördülő menüben válassza ki a megfelelő **pillanatképtípust** : **helyi** vagy **felhőbeli**. Gyors biztonsági mentéshez és visszaállításhoz válassza a helyi pillanatképet, az adatrugalmassághoz pedig a felhőbeli pillanatképet.
 
-        ![Manuális biztonsági mentés létrehozása](./media/storsimple-8000-create-manual-backup/createmanualbu2.png)
+        ![Manuális biztonsági mentés létrehozása 2](./media/storsimple-8000-create-manual-backup/createmanualbu2.png)
 
     2. Kattintson az **OK** gombra a pillanatképet létrehozó feladat elindításához. A feladat sikeres létrejöttét a lap tetején megjelenő értesítés jelzi.
 
-        ![Manuális biztonsági mentés létrehozása](./media/storsimple-8000-create-manual-backup/createmanualbu4.png)
+        ![Manuális biztonsági mentés létrehozása 3](./media/storsimple-8000-create-manual-backup/createmanualbu4.png)
 
     3. A feladat figyeléséhez kattintson az értesítésre. Ezzel továbblép a **Feladatok** panelre, ahol megtekintheti a feladat állapotát.
 

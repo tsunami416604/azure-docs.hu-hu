@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 02274bacb66a33ef54e07bc8113d7db46d4d5296
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3bff61cfbf89aee3566d677ccf593b102cff36d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67179309"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376097"
 ---
 #### <a name="to-add-a-storsimple-backup-policy"></a>StorSimple biztonsági mentési házirend hozzáadása
 
@@ -27,11 +27,11 @@ ms.locfileid: "67179309"
        
    3. Ha köteteket szeretne hozzárendelni ehhez a biztonsági mentési szabályzathoz, válassza a **Kötetek hozzáadása** lehetőséget, majd a kötetek táblázatos listájában a jelölőnégyzet(ek)re kattintva rendeljen hozzá egy vagy több kötetet a biztonsági mentési szabályzathoz.
 
-       ![Biztonsági mentési szabályzat hozzáadása](./media/storsimple-8000-add-backup-policy-u2/addbupol2.png)
+       ![Biztonsági mentési házirend hozzáadása 2](./media/storsimple-8000-add-backup-policy-u2/addbupol2.png)
 
    4. Ha ütemezést szeretne meghatározni a biztonsági mentési szabályzathoz, kattintson az **Első ütemezés** lehetőségre, majd módosítsa a következő paramétereket:
 
-       ![Biztonsági mentési szabályzat hozzáadása](./media/storsimple-8000-add-backup-policy-u2/addbupol3.png)
+       ![Biztonsági mentési szabályzat hozzáadása 3](./media/storsimple-8000-add-backup-policy-u2/addbupol3.png)
 
        1. A **Pillanatkép típusa** területen válassza a **Felhő** vagy a **Helyi** lehetőséget.
 
@@ -45,9 +45,9 @@ ms.locfileid: "67179309"
 
    5. Biztonsági mentési szabályzat létrehozásához kattintson a **Létrehozás** gombra.
 
-       ![Biztonsági mentési szabályzat hozzáadása](./media/storsimple-8000-add-backup-policy-u2/addbupol4.png)
+       ![4. biztonsági mentési szabályzat hozzáadása](./media/storsimple-8000-add-backup-policy-u2/addbupol4.png)
    
    6. A biztonsági mentési szabályzat létrehozásáról értesítést kap. Az újonnan felvett szabályzat megjelenik a **Biztonsági mentési szabályzat** panel táblázatos nézetében.
 
-       ![Biztonsági mentési szabályzat hozzáadása](./media/storsimple-8000-add-backup-policy-u2/addbupol7.png)
+       ![Biztonsági mentési szabályzat hozzáadása 5](./media/storsimple-8000-add-backup-policy-u2/addbupol7.png)
 
