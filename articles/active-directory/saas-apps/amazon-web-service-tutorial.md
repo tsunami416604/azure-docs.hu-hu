@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.author: jeedes
-ms.openlocfilehash: eb784d02ec4c380d72438a1c000290fe3a4eea78
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 764342f237452d9322d44c86ebdb41691b44495d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307509"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360717"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Amazon Web Servicestal (AWS)
 
@@ -27,6 +27,9 @@ Ez az oktatóanyag azt ismerteti, hogyan integrálható Amazon Web Services (AWS
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
+
+> [!Note]
+> Az Azure AD nem támogatja az egyszeri bejelentkezéses integrációt az AWS SSO-vel, ez egy másik termék az AWS-től. Bár az AWS említi [itt](https://docs.aws.amazon.com/singlesignon/latest/userguide/azure-ad-idp.html), az Azure ad azt javasolja, hogy az ügyfelek AWS iam-integrációt használjanak, így jobb biztonsági ellenőrzéseket végezhetnek az egyes fiókokra vonatkozó feltételes hozzáférési szabályzatok használatával, továbbá hatékonyabban irányítják az alkalmazásokat.
 
 ![Az Azure AD és az AWS kapcsolatának ábrája](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
@@ -112,7 +115,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül az AWS-alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
     
-    | Name  | Forrás attribútum  | Névtér |
+    | Név  | Forrás attribútum  | Névtér |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | User. userPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
     | Szerepkör            | User. assignedroles |  `https://aws.amazon.com/SAML/Attributes` |
@@ -343,7 +346,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     b. Adja meg az AWS felhasználói titkot a **titkos jogkivonat** mezőben.
 
-    c. Válassza a **kapcsolatok tesztelése** lehetőséget.
+    c. Válassza a **Kapcsolat tesztelése** lehetőséget.
 
     d. Mentse a beállítást a **Mentés** lehetőség kiválasztásával.
 

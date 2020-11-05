@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 10/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 82dd2f16fa43b52ba4c6dfacd26da5da622523b2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 94074c2c5e11187252084832e5a20a197f6723fd
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321711"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359816"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Kibocsátási megjegyzések – az Azure arc-kompatibilis adatszolgáltatások (előzetes verzió)
 
@@ -66,7 +66,7 @@ Ez a kiadás a következő feltörési változásokat mutatja be:
 
 A nyilvános előzetes verzióban elérhető az Azure arc-kompatibilis adatszolgáltatások. Az arc-kompatibilis adatszolgáltatások lehetővé teszik az adatszolgáltatások bárhol történő kezelését.
 
-- Felügyelt SQL-példány
+- SQL Managed Instance
 - PostgreSQL nagy kapacitású
 
 Útmutatás: [Mi az az Azure arc-kompatibilis adatszolgáltatás?](overview.md)
@@ -90,7 +90,7 @@ A nyilvános előzetes verzióban elérhető az Azure arc-kompatibilis adatszolg
 
 - Az előzetes verzió nem támogatja a PostgreSQL 11-es verziójú motorjának biztonsági mentését és visszaállítását. Ez a művelet csak a PostgreSQL 12-es verziójának biztonsági mentését és visszaállítását támogatja.
 - `azdata arc dc debug copy-logs` a ndoes nem gyűjti a PostgreSQL-naplókat a Windows rendszeren.
-- Ha egy olyan kiszolgálócsoport nevét hozza létre újra, amely csak törölve lett, akkor a rendszer nem tud vagy lefagy. 
+- Ha egy olyan kiszolgálócsoport nevét hozza létre újra, amely csak törölve lett, a művelet sikertelen lehet, vagy nem válaszol. 
    - **Áthidaló megoldás** Ne használja ugyanazt a nevet, amikor újra létrehoz egy erőforráscsoportot, vagy várja meg a korábban törölt kiszolgálócsoport terheléselosztó/külső szolgáltatását. Feltételezve, hogy a törölt kiszolgálócsoport neve `postgres01` és egy névtérben található `arc` , mielőtt újból létrehoz egy azonos nevű számítógépcsoportot, várjon, amíg a nem jelenik meg a `postgres01-external-svc` kubectl parancs kimenetében `kubectl get svc -n arc` .
  - Az Áttekintés lap és a számítási és tárolási konfiguráció oldalának betöltése Azure Data Studio lassú. 
 

@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB Graph-adatbázis regionális végpontjai
 description: Megtudhatja, hogyan csatlakozhat az alkalmazáshoz a legközelebbi gráf-adatbázis-végponthoz
-author: jasonwhowell
-ms.author: jasonh
+author: christopheranderson
+ms.author: chrande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/09/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9350682f7c636979df4dcde0c43a3b4941ad6ebb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3e30252d8f5e80538139f8100f1070385c1b6016
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085768"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361787"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Regionális végpontok Azure Cosmos DB Graph-fiókhoz
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -30,7 +30,7 @@ Az **adattárolásra** vonatkozó követelményt úgy érheti el, ha Cosmos db f
 
 Cosmos DB gráf-adatbázismotor több régióban fut, amelyek mindegyike több fürtöt tartalmaz. Minden fürt több száz gépet tartalmaz. Cosmos DB Graph-fiók DNS CNAME *accountname.Gremlin.Cosmos.Azure.com* feloldja A fürt egy rekordját a DNS-ben. A terheléselosztó egyetlen IP-címe elrejti a belső fürt topológiáját.
 
-A rendszer egy regionális DNS CNAME rekordot hoz létre Cosmos DB gráf-fiók minden régiójához. A regionális végpont formátuma *accountname-Region.Gremlin.Cosmos.Azure.com* . A regionális végpont területi szegmensét az [Azure-régió](https://azure.microsoft.com/global-infrastructure/regions) nevéből származó összes szóköz eltávolításával szerzi be a rendszer. Például a `"East US 2"` `"contoso"` globális adatbázis-fiók régiójának DNS CNAME *contoso-eastus2.Gremlin.Cosmos.Azure.com* kell lennie.
+A rendszer egy regionális DNS CNAME rekordot hoz létre Cosmos DB gráf-fiók minden régiójához. A regionális végpont formátuma *accountname-Region.Gremlin.Cosmos.Azure.com*. A regionális végpont területi szegmensét az [Azure-régió](https://azure.microsoft.com/global-infrastructure/regions) nevéből származó összes szóköz eltávolításával szerzi be a rendszer. Például a `"East US 2"` `"contoso"` globális adatbázis-fiók régiójának DNS CNAME *contoso-eastus2.Gremlin.Cosmos.Azure.com* kell lennie.
 
 A TinkerPop Gremlin-ügyfél egyetlen kiszolgálóval való együttműködésre lett tervezve. Az alkalmazás globális írható DNS CNAME-t használhat az olvasási és írási forgalomhoz. A régiót támogató alkalmazásoknak regionális végpontot kell használniuk az olvasási forgalomhoz. Csak akkor használja a regionális végpontot írási forgalomhoz, ha az adott régió az írások fogadására van konfigurálva. 
 

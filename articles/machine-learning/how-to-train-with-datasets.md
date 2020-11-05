@@ -1,7 +1,7 @@
 ---
 title: Betanítás azureml-adatkészletekkel
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan használhatók az adatkészletek a képzésben
+description: Megtudhatja, hogyan teheti elérhetővé az adatokat a helyi vagy távoli számítási feladatokhoz a Azure Machine Learning adatkészletekkel rendelkező ML-modellek betanításához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,13 +11,13 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 70fd8796eb4d17662697410bf97caee835e998ab
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python, data4ml
+ms.openlocfilehash: bf1dcb34b762c3dcae39316d804b617edbf2302d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311333"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360734"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Betanítás Azure Machine Learning-adatkészletekkel
 

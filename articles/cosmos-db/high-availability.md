@@ -4,15 +4,15 @@ description: Ez a cikk azt ismerteti, hogy a Azure Cosmos DB hogyan biztosít ma
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/13/2020
+ms.date: 11/04/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 2fb8b24d5d44ced8f9e363008354acf5bc2fde40
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 58507703ca3440e73dbc41757e0bc70f56e886c3
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081875"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360156"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Hogyan biztosítja a Azure Cosmos DB magas rendelkezésre állást
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -100,9 +100,7 @@ A rendelkezésre állási zónák támogatásával Azure Cosmos DB biztosítja, 
 
 A zóna-redundancia a [többrégiós írási funkciók replikálásának](how-to-multi-master.md) *kiegészítő* funkciója. A zónák redundancia önmagában nem lehet a regionális rugalmasság elérésére támaszkodni. Ha például regionális kimaradások vagy kis késleltetésű hozzáférés van a régiók között, azt javasoljuk, hogy több írási régióval is rendelkezzen a zóna redundancia mellett.
 
-Ha többrégiós írásokat konfigurál az Azure Cosmos-fiókhoz, külön díj nélkül is dönthet a zóna-redundancia szolgáltatásban. Ellenkező esetben tekintse meg az alábbi megjegyzést a zóna redundancia támogatásának díjszabását illetően. Az Azure Cosmos-fiók meglévő régiójába engedélyezheti a zóna redundanciát, ha eltávolítja a régiót, és újból hozzáadja a zóna redundancia beállítással.
-
-Ez a funkció a következő helyen érhető el: *Egyesült Királyság déli régiója, Délkelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, USA középső régiója, Nyugat-Európa, Nyugat-USA 2, Kelet-Japán, Észak-Európa, Közép-Franciaország, Kelet-Ausztrália, 2. keleti* régió
+Ha többrégiós írásokat konfigurál az Azure Cosmos-fiókhoz, külön díj nélkül is dönthet a zóna-redundancia szolgáltatásban. Ellenkező esetben tekintse meg az alábbi megjegyzést a zóna redundancia támogatásának díjszabását illetően. Az Azure Cosmos-fiók meglévő régiójába engedélyezheti a zóna redundanciát, ha eltávolítja a régiót, és újból hozzáadja a zóna redundancia beállítással. A rendelkezésre állási zónákat támogató régiók listáját a [rendelkezésre állási zónák](../availability-zones/az-region.md) dokumentációjában találja.
 
 A következő táblázat összefoglalja a különböző fiókok konfigurációinak magas rendelkezésre állási képességét:
 

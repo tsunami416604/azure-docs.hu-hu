@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 10/30/2020
+ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 0a97286564f7d2c04268034d6f70b1a178cbb5a5
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 3f3196e775ff9e7d8064559069414952f09a3016
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348338"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360224"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Kereskedelmi Piactéri partner és ügyfél-használati jóváírás
 
@@ -311,10 +311,6 @@ Az ügyfelek nyomon követhetik az egyes erőforrások vagy az ügyfél által m
 **A következő módszer hasonló a rekord digitális partneréhez (DPOR)?**
 
 Ez az új módszer, amellyel az üzembe helyezést és a használatot a partneri megoldáshoz csatlakoztathatja, mechanizmust biztosít a partneri megoldások Azure-beli használatra való összekapcsolásához. A DPOR egy tanácsadó (rendszerintegrátor) vagy egy felügyeleti (felügyelt szolgáltató) partner az ügyfél Azure-előfizetésével való hozzárendelésére szolgál.
-
-**Milyen előnyökkel jár az Azure Storage GUID Generator űrlapjának használata?**
-
-Az Azure Storage GUID Generator űrlapja garantált a szükséges formátumú GUID létrehozásához. Emellett, ha az Azure Storage adatsíkja-követési módszereit használja, a piactér-vezérlési síkok nyomon követéséhez ugyanazt a GUID-t használhatja. Ez lehetővé teszi, hogy kihasználja a partnerek egy egységes GUID azonosítóját, anélkül, hogy külön GUID azonosítókat kellene fenntartania.
 
 **Használhatok privát, egyéni VHD-t az Azure piactéren elérhető megoldási sablonhoz?**
 

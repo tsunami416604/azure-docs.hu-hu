@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan méretezheti az Azure-ban az erőforrás-webalk
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: e0c9770e2065002a4e2acc1198ed096dc588f8e5
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: d37a33ea575bbb8481d7d50dad8eab0f9ce0899d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342215"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361202"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Ismerkedés az Azure-beli autoskálázással
 Ez a cikk azt ismerteti, hogyan állíthatja be az erőforráshoz tartozó autoskálázási beállításokat a Microsoft Azure Portalban.
@@ -141,7 +141,21 @@ Ha egy példány nem kifogástalan állapotú egy órára, az új példánnyal l
 
 Az alkalmazás állapot-ellenőrzési útvonalának megadása után Azure Monitor használatával figyelheti a webhely állapotát. A portál **állapot-ellenőrzési** paneljén kattintson a felső eszköztár **metrikái** elemére. Ekkor megnyílik egy új panel, amelyen megtekintheti a hely korábbi állapotának állapotát, és létrehozhat egy új riasztási szabályt. A helyek figyelésével kapcsolatos további információkért [tekintse meg a következő útmutatót: Azure monitor](../../app-service/web-sites-monitor.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="moving-autoscale-to-a-different-region"></a>Az autoskálázás áthelyezése egy másik régióba
+Ez a szakasz azt ismerteti, hogyan helyezheti át az Azure-beli autoskálázást egy másik régióba ugyanazon előfizetés és erőforráscsoport alatt. Az autoskálázási beállítások áthelyezéséhez REST API használható.
+### <a name="prerequisite"></a>Előfeltétel
+1. Győződjön meg arról, hogy az előfizetés és az erőforráscsoport elérhető, és hogy a forrás-és a célhelyek adatai azonosak.
+1. Győződjön meg arról, hogy az Azure-beli autoskálázás elérhető az [Azure-régióban, ahová át kíván térni](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all).
+
+### <a name="move"></a>Áthelyezés
+A [REST API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings/createorupdate) használatával hozzon létre egy autoskálázási beállítást az új környezetben. A célként megadott régióban létrehozott automatikusan skálázási beállítás a forrás régiójában lévő autoskálázási beállítás másolata lesz.
+
+A forrás régióban az autoscale beállítással létrehozott [diagnosztikai beállítások](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) nem helyezhetők át. A cél régióban újra létre kell hoznia a diagnosztikai beállításokat, miután befejeződött az autosales beállítások létrehozása. 
+
+### <a name="learn-more-about-moving-resources-across-azure-regions"></a>További információ az erőforrások Azure-régiók közötti áthelyezéséről
+Ha többet szeretne megtudni az erőforrások régiók közötti áthelyezéséről és az Azure-beli vész-helyreállításról, olvassa el az [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources) című témakört.
+
+## <a name="next-steps"></a>Következő lépések
 - [Műveletnapló-riasztás létrehozása az összes autoskálázási motor műveleteinek figyeléséhez az előfizetésen](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Műveletnapló-riasztás létrehozása az összes sikertelen, az előfizetésen kívüli méretezési és kibővítő művelet figyeléséhez](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 

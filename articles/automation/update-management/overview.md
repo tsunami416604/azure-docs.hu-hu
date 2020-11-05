@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 36540de8924a1433f16f942d9aedc059efae05de
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 09bd82225fb7d8a6eefe84b5a70660e4553a3070
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348678"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360785"
 ---
 # <a name="update-management-overview"></a>A frissítéskezelés áttekintése
 
@@ -18,6 +18,9 @@ Az Azure-ban, a helyszíni környezetekben és más felhőalapú környezetekben
 
 > [!NOTE]
 > A Update Management konfigurált gépek nem használhatók a Azure Automation egyéni parancsfájljainak futtatásához. Ez a számítógép csak a Microsoft által aláírt frissítési parancsfájlt futtathatja.
+
+> [!NOTE]
+> Jelenleg a Update Management engedélyezése közvetlenül egy ív-kompatibilis kiszolgálóról nem támogatott. A követelmények megismeréséhez és a kiszolgáló engedélyezéséhez lásd: [Update Management engedélyezése az Automation-fiókból](../../automation/update-management/enable-from-automation-account.md) .
 
 Ha az Azure-beli virtuális gépen automatikusan le szeretné tölteni és telepíteni kívánja a *kritikus* és *biztonsági* javításokat, tekintse át a Windows rendszerű virtuális gépekhez készült automatikus virtuálisgép- [javítás](../../virtual-machines/windows/automatic-vm-guest-patching.md)
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f8eae6381a438f6820f525a4d66cb5dc388eefb0
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 929181f9a4d159892956274a7958b1daa95cbc10
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280388"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360071"
 ---
 # <a name="manage-digital-twins"></a>Digitális ikereszközök kezelése
 
@@ -32,7 +32,7 @@ Ez a cikk a digitális ikrek kezelésére koncentrál. Ha a kapcsolatokkal és a
 A kettős létrehozásához használja a `CreateOrReplaceDigitalTwinAsync()` metódust a szolgáltatás ügyfélen, például:
 
 ```csharp
-await client.CreateOrReplaceDigitalTwinAsync("myTwinId", initData);
+await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>("myTwinId", initData);
 ```
 
 Digitális dupla létrehozásához a következőket kell megadnia:
@@ -55,12 +55,7 @@ A Twin-példányok tulajdonságainak inicializálása a Twin létrehozásakor t�
 
 A Twin-létrehozási API egy olyan objektumot fogad el, amely a Twin tulajdonságok érvényes JSON-leírására van szerializálva. Lásd a következő [*fogalmakat: digitális ikrek és a Twin gráf*](concepts-twins-graph.md) a Twin-fájl JSON-formátumának leírásához. 
 
-Először létrehozhat egy adatobjektumot, amely a Twin és a tulajdonságának a következőhöz hasonló értékeit jelöli:
-
-```csharp
-await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(srcId, twin);
-```
-A paramétereket manuálisan vagy egy megadott segítő osztály használatával is létrehozhatja. Íme egy példa.
+Először létrehozhat egy adatobjektumot, amely a Twin és a tulajdonságának értékeit jelöli. A paramétereket manuálisan vagy egy megadott segítő osztály használatával is létrehozhatja. Íme egy példa.
 
 #### <a name="create-twins-using-manually-created-data"></a>Ikrek létrehozása manuálisan létrehozott adatértékek használatával
 

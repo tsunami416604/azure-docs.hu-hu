@@ -1,5 +1,5 @@
 ---
-title: Gyors útmutató – WildFly a CentOS-on
+title: Gyorsútmutató – WildFly a CentOS-en
 description: Java-alkalmazások üzembe helyezése a WildFly a CentOS virtuális gépen
 author: Theresa-Nguyen
 ms.author: bicnguy
@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 7aa21ef8-9cfb-43e0-bfda-3f10a2a2f3ef
 ms.date: 10/23/2020
-ms.openlocfilehash: 875d04751475d1d5236e9f15fbca585cdc9b1ab0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 842913b8e9f83ff3b188976da55aef7c909518ca
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897683"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359918"
 ---
 # <a name="quickstart-wildfly-on-centos-8"></a>Gyors útmutató: WildFly a CentOS 8-on
 
@@ -49,13 +49,15 @@ Ha egy másik megadott konfigurációval szeretné elindítani az önálló Wild
 
 Ha például a Jakarta EE platform 8 és a fürtözési képességek használatát szeretné használni, használja a következő parancsot:
 
-`./standalone.sh --server-config=standalone-full-ha.xml`
+```
+./standalone.sh --server-config=standalone-full-ha.xml
+```
 
 Ha többet szeretne megtudni a konfigurációkról, tekintse meg a [WildFly első lépések útmutatót](https://docs.wildfly.org/18/Getting_Started_Guide.html#wildfly-10-configurations).
 
 ## <a name="licensing-support-and-subscription-notes"></a>Licencelési, támogatási és előfizetési megjegyzések
 
-Az Azure CentOS 8 rendszerképe egy utólagos elszámolású (TB) virtuálisgép-rendszerkép, amely nem igényli a felhasználótól a licenc beszerzését. A virtuális gép első elindításakor a virtuális gép operációs rendszerének licence automatikusan aktiválódik és óradíjat számol fel. Ez a Microsoft Linux rendszerű, óránkénti virtuális gépek díjszabása. A részletekért kattintson a [Linux virtuális gépek díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#linux) lehetőségre. A WildFly ingyenesen letölthető és használható, és nem igényel Red Hat-előfizetést vagy-licencet.
+Az Azure CentOS 8 rendszerképe egy utólagos elszámolású (TB) virtuálisgép-rendszerkép, amely nem igényli a felhasználótól a licenc beszerzését. A virtuális gép első indításakor a virtuális gép operációs rendszerének licence automatikusan aktiválódik és óradíjat számol fel. Ez a Microsoft Linux rendszerű, óránkénti virtuális gépek díjszabása. A részletekért kattintson a [Linux virtuális gépek díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#linux) lehetőségre. A WildFly ingyenesen letölthető és használható, és nem igényel Red Hat-előfizetést vagy-licencet.
 
 ## <a name="how-to-consume"></a>Használat
 
@@ -63,15 +65,23 @@ A sablont a következő három módon telepítheti:
 
 - A PowerShell használata – a sablon üzembe helyezéséhez futtassa a következő parancsokat: (a Azure PowerShell telepítésével és konfigurálásával kapcsolatos információkért tekintse meg [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) .)
 
-    `New-AzResourceGroup -Name <resource-group-name> -Location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment`
+    ```
+    New-AzResourceGroup -Name <resource-group-name> -Location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment
+    ```
 
-    `New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json`
+    ```
+    New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json
+    ```
     
 - Az Azure CLI használata – a sablon üzembe helyezéséhez futtassa a következő parancsokat: (az Azure platformfüggetlen Command-Line felületének telepítésével és konfigurálásával kapcsolatos további információkért tekintse meg az [Azure többplatformos parancssorát](https://docs.microsoft.com/cli/azure/install-azure-cli) ).
 
-    `az group create --name <resource-group-name> --location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment`
+    ```
+    az group create --name <resource-group-name> --location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment
+    ```
 
-    `az group deployment create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json`
+    ```
+    az group deployment create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json
+    ```
 
 - Azure Portal használata – a sablon üzembe helyezéséhez kattintson <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fwildfly-standalone-centos8%2Fazuredeploy.json" target="_blank">ide</a> , és jelentkezzen be a Azure Portalba.
 
@@ -81,7 +91,7 @@ A sablont a következő három módon telepítheti:
 
 ## <a name="resource-links"></a>Erőforrás-hivatkozások
 
-* További információ a [WildFly 18](https://wildfly.org/18) -ról
+* További információ a [WildFly 18](https://docs.wildfly.org/18/) -ról
 * További információ az [Azure-beli Linux-disztribúcióról](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)
 * [Az Azure Java-fejlesztőknek dokumentációja](https://github.com/JasonFreeberg/jboss-on-app-service)
 

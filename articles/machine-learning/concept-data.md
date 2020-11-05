@@ -1,7 +1,7 @@
 ---
 title: Biztonságos adathozzáférés a felhőben
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan kapcsolódhat biztonságosan a Azure Machine Learning adataihoz, és hogyan használhatók az adatkészletek és az adattárolók a ML-feladatokhoz. Az adattárolók egy Azure-Blobból, Azure Data Lake 1. generációs & 2, SQL db és Azure Databricksből származó adatok tárolására használhatók.
+description: Megtudhatja, hogyan csatlakozhat biztonságosan az Azure-beli adattárolóhoz Azure Machine Learning adattárakkal és adatkészletekkel.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: f46222740ad668b8bb6ec9eb85e78efb0f673528
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: devx-track-python, data4ml
+ms.openlocfilehash: 6d8c04e48a3d0009a152830a4ee332cd706c4b2c
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322247"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360173"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Adatelérés védelme Azure Machine Learning
 

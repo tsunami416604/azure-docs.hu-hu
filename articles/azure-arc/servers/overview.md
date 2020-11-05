@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan használhatja az Azure arc-kompatibilis kiszolg
 keywords: Azure Automation, DSC, PowerShell, a kívánt állapot konfigurálása, frissítés kezelése, változások követése, leltár, runbookok, Python, grafikus, hibrid
 ms.date: 11/04/2020
 ms.topic: overview
-ms.openlocfilehash: 2c92d7c73ab17bd5a7bba980e20baa181899eb4e
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: b9d38b2395d922e3e2a7daec654cd73de7267ee1
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349154"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360581"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Mi azok az Azure Arc-kompatibilis kiszolgálók?
 
@@ -32,7 +32,7 @@ Ha a gépet az Azure arc-kompatibilis kiszolgálókhoz kapcsolja, lehetővé tes
 - [Update Management](../../automation/update-management/update-mgmt-overview.md) használata Azure Automation a Windows-és Linux-kiszolgálók operációsrendszer-frissítéseinek kezeléséhez
 
     > [!NOTE]
-    > Jelenleg a kijelölt ív-kompatibilis kiszolgálóról való Update Management engedélyezése nem támogatott. A követelmények megismeréséhez és a kiszolgáló engedélyezéséhez lásd: [Update Management engedélyezése az Automation-fiókból](../../automation/update-management/enable-from-automation-account.md) .
+    > Jelenleg a Update Management engedélyezése közvetlenül egy ív-kompatibilis kiszolgálóról nem támogatott. A követelmények megismeréséhez és a kiszolgáló engedélyezéséhez lásd: [Update Management engedélyezése az Automation-fiókból](../../automation/update-management/enable-from-automation-account.md) .
 
 - Vegye fel a nem Azure-kiszolgálókat a fenyegetések észlelésére, és proaktívan figyelje az esetleges biztonsági fenyegetéseket a [Azure Security Center](../../security-center/security-center-introduction.md)használatával.
 

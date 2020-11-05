@@ -1,7 +1,7 @@
 ---
 title: ML futtatási naplók figyelése és megtekintése & metrikák
 titleSuffix: Azure Machine Learning
-description: Figyelje az Azure ML-kísérleteit, és tekintse meg a futtatási metrikákat a modell létrehozási folyamatának növelése érdekében. A widgetek és a Studio-portál használatával vizsgálja meg a futtatási állapotot és a futtatási rekordok megtekintését.
+description: Figyelje a ML-kísérleteket, és tekintse meg a futtatási metrikákat a Jupyter widgetekkel és a Azure Machine Learning Studióval.
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -11,16 +11,14 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 7929c80f4f90de82c516b746310b5e58819a16bc
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 845160d92100a27c32f16eddcd1f36e9e8624e80
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316677"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360598"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML futtatási naplók és metrikák figyelése és megtekintése
-
-
 
 Ebből a cikkből megtudhatja, hogyan figyelheti Azure Machine Learning futtatásait, és hogyan tekintheti meg a naplókat. Mielőtt megtekinti a naplókat, először engedélyeznie kell azokat. További információ: [a naplózás engedélyezése az Azure ml-képzésekben](how-to-track-experiments.md).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 73373f788a4a87a36a800d69ffcdc646f4cd2084
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66244bd8e24ff62be41df72f7a39c0ce0ed13135
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91249552"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360699"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>A StorSimple Eszközkezelő szolgáltatás üzembe helyezése a StorSimple 8000 Series-eszközökön
 
@@ -58,7 +58,7 @@ Egy szolgáltatás létrehozásához hajtsa végre az alábbi lépéseket.
 Az egyes StorSimple Eszközkezelő szolgáltatásokhoz a következő attribútumok léteznek:
 
 * **Név** – a StorSimple Eszközkezelő szolgáltatáshoz hozzárendelt név a létrehozáskor. **A szolgáltatás neve nem módosítható a szolgáltatás létrehozása után. Ez más entitások, például eszközök, kötetek, kötetek tárolók és biztonsági mentési házirendek esetében is igaz, amelyeket nem lehet átnevezni a Azure Portal.**
-* **Status (állapot** ) – a szolgáltatás állapota, amely lehet **aktív**, **létrehozható**vagy **online**.
+* **Status (állapot** ) – a szolgáltatás állapota, amely lehet **aktív** , **létrehozható** vagy **online**.
 * **Location (hely** ) – az a földrajzi hely, ahol a StorSimple-eszköz telepítve lesz.
 * **Előfizetés** – a szolgáltatáshoz társított számlázási előfizetés.
 
@@ -103,11 +103,11 @@ A szolgáltatás regisztrációs kulcsának újralétrehozásához szükség van
 A szolgáltatás regisztrációs kulcsának újralétrehozásához hajtsa végre az alábbi lépéseket.
 
 ### <a name="to-regenerate-the-service-registration-key"></a>A szolgáltatás regisztrációs kulcsának előállítása
-1. A **StorSimple Eszközkezelő** panelen lépjen a **felügyeleti &gt; ** **kulcsok**elemre.
+1. A **StorSimple Eszközkezelő** panelen lépjen a **felügyeleti &gt;** **kulcsok** elemre.
     
-    ![Kulcsok panel](./media/storsimple-8000-manage-service/regenregkey2.png)
+    ![Ugrás a kulcsok panelre](./media/storsimple-8000-manage-service/regenregkey2.png)
 
-2. A **kulcsok** panelen kattintson az **újragenerálás**elemre.
+2. A **kulcsok** panelen kattintson az **újragenerálás** elemre.
 
     ![Kattintson az újragenerált elemre.](./media/storsimple-8000-manage-service/regenregkey3.png)
 3. A **szolgáltatás regisztrációs kulcsának újragenerálása** panelen tekintse át a kulcsok újragenerálása esetén szükséges műveletet. A szolgáltatásban regisztrált összes további eszköz az új regisztrációs kulcsot használja. A megerősítéshez kattintson az **újbóli létrehozás** gombra. Az újragenerálás befejezése után értesítést kap.
@@ -191,23 +191,23 @@ A Azure Portal csak a 5,0-es vagy újabb frissítést futtató StorSimple-eszkö
 
 | Művelet                                                                                                                       | Támogatott      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
-| Eszköz regisztrálása                                                                                                               | Igen            |
-| Az eszközbeállítások, például az általános, a hálózat és a biztonság konfigurálása                                                                | Igen            |
-| Frissítések vizsgálata, letöltése és telepítése                                                                                             | Igen            |
-| Eszköz inaktiválása                                                                                                               | Igen            |
-| Eszköz törlése                                                                                                                   | Igen            |
-| Mennyiségi tároló létrehozása, módosítása és törlése                                                                                   | Nem             |
-| Kötet létrehozása, módosítása és törlése                                                                                             | Nem             |
-| Biztonsági mentési szabályzat létrehozása, módosítása és törlése                                                                                      | Nem             |
-| Manuális biztonsági mentés készítése                                                                                                            | Nem             |
-| Ütemezett biztonsági mentés készítése                                                                                                         | Nem alkalmazható |
-| Visszaállítás egy biztonságimásolat                                                                                                        | Nem             |
-| Klónozás egy 3,0-es vagy újabb frissítést futtató eszközre <br> A forrásoldali eszköz a 3,0-es frissítés előtti verziót futtatja.                                | Igen            |
-| Klónozás egy, a 3,0-es frissítés előtti verziót futtató eszközre                                                                          | Nem             |
-| Feladatátvétel forrásként szolgáló eszközként <br> (egy, a 3,0-es frissítés előtt futó eszközről egy 3,0-es vagy újabb verziót futtató eszközre)                                                               | Igen            |
-| Feladatátvétel célként megadott eszközként <br> (a 3,0-es frissítés előtti verziót futtató eszközre)                                                                                   | Nem             |
-| Riasztás törlése                                                                                                                  | Igen            |
-| Biztonsági mentési szabályzatok, biztonsági mentési katalógus, kötetek, mennyiségi tárolók, figyelési diagramok, feladatok és a klasszikus portálon létrehozott riasztások megtekintése | Igen            |
+| Eszköz regisztrálása                                                                                                               | Yes            |
+| Az eszközbeállítások, például az általános, a hálózat és a biztonság konfigurálása                                                                | Yes            |
+| Frissítések vizsgálata, letöltése és telepítése                                                                                             | Yes            |
+| Eszköz inaktiválása                                                                                                               | Yes            |
+| Eszköz törlése                                                                                                                   | Yes            |
+| Mennyiségi tároló létrehozása, módosítása és törlése                                                                                   | No             |
+| Kötet létrehozása, módosítása és törlése                                                                                             | No             |
+| Biztonsági mentési szabályzat létrehozása, módosítása és törlése                                                                                      | No             |
+| Manuális biztonsági mentés készítése                                                                                                            | No             |
+| Ütemezett biztonsági mentés készítése                                                                                                         | Nem értelmezhető |
+| Visszaállítás egy biztonságimásolat                                                                                                        | No             |
+| Klónozás egy 3,0-es vagy újabb frissítést futtató eszközre <br> A forrásoldali eszköz a 3,0-es frissítés előtti verziót futtatja.                                | Yes            |
+| Klónozás egy, a 3,0-es frissítés előtti verziót futtató eszközre                                                                          | No             |
+| Feladatátvétel forrásként szolgáló eszközként <br> (egy, a 3,0-es frissítés előtt futó eszközről egy 3,0-es vagy újabb verziót futtató eszközre)                                                               | Yes            |
+| Feladatátvétel célként megadott eszközként <br> (a 3,0-es frissítés előtti verziót futtató eszközre)                                                                                   | No             |
+| Riasztás törlése                                                                                                                  | Yes            |
+| Biztonsági mentési szabályzatok, biztonsági mentési katalógus, kötetek, mennyiségi tárolók, figyelési diagramok, feladatok és a klasszikus portálon létrehozott riasztások megtekintése | Yes            |
 | Az eszközök vezérlőinek be-és kikapcsolása                                                                                              | Igen            |
 
 

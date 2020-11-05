@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 3f1e2e12b7ba0a47c20614065510ffd1ae8bf195
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6508db654cd27ca4b3844f6037f13fb504173e11
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325338"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361165"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Dedukciós Azure Machine Learning-környezet biztonságossá tétele virtuális hálózatokkal
 
@@ -115,35 +115,10 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 A létrehozási folyamat befejezésekor futtathat következtetéseket vagy modell-pontozást egy virtuális hálózat mögötti AK-fürtön. További információ: [üzembe helyezés az AK](how-to-deploy-and-where.md)-ban.
 
-## <a name="secure-vnet-traffic"></a>Biztonságos VNet-forgalom
-
-Az AK-fürt és a virtuális hálózat közötti forgalom elkülönítésére két módszer áll rendelkezésre:
-
-* __Privát AK-fürt__ : Ez a módszer az Azure Private-hivatkozást használja a fürttel való kommunikáció biztonságossá tételéhez üzembe helyezési/felügyeleti műveletekhez.
-* __Belső AK-Load Balancer__ : Ez a módszer konfigurálja a végpontot a központi telepítések számára, hogy a virtuális hálózaton belüli magánhálózati IP-címet használjanak.
-
-> [!WARNING]
-> A belső Load Balancer nem működik a kubenet-t használó AK-fürtökkel. Ha egy belső terheléselosztó és egy privát AK-fürt egyidejű használatát kívánja használni, konfigurálja a privát AK-fürtöt az Azure Container Network Interface (CNI) használatával. További információ: [Az Azure CNI hálózatkezelésének konfigurálása az Azure Kubernetes szolgáltatásban](../aks/configure-azure-cni.md).
-
-### <a name="private-aks-cluster"></a>Privát AK-fürt
-
-Alapértelmezés szerint az AK-fürtök vezérlési síkon vagy API-kiszolgálóval rendelkeznek nyilvános IP-címekkel. Egy privát AK-fürt létrehozásával beállíthatja, hogy az AK privát vezérlési síkot használjon. További információt a [privát Azure Kubernetes Service-fürt létrehozása](../aks/private-clusters.md)című témakörben talál.
-
-Miután létrehozta a privát AK-fürtöt, [csatolja a fürtöt a virtuális hálózathoz](how-to-create-attach-kubernetes.md) Azure Machine Learninghoz való használathoz.
+## <a name="network-contributor-role"></a>Hálózati közreműködő szerepkör
 
 > [!IMPORTANT]
-> Mielőtt egy magánhálózati kapcsolattal rendelkező AK-fürtöt Azure Machine Learning-mel használ, meg kell nyitnia egy támogatási eseményt a funkció engedélyezéséhez. További információ: a [kvóták kezelése és növelése](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
-
-### <a name="internal-aks-load-balancer"></a>Belső AK-Load Balancer
-
-Alapértelmezés szerint az AK-ban üzemelő példányok [nyilvános Load balancert](../aks/load-balancer-standard.md)használnak. Ebből a szakaszból megtudhatja, hogyan konfigurálhatja az AK-t belső terheléselosztó használatára. Egy belső (vagy privát) terheléselosztó akkor használatos, ha csak a magánhálózati IP-címek engedélyezettek a rendszerfelületként. A belső terheléselosztó a virtuális hálózaton belüli forgalom elosztására szolgál.
-
-A privát terheléselosztó úgy van beállítva, hogy az AK-t _belső terheléselosztó_ használatára konfigurálja. 
-
-#### <a name="network-contributor-role"></a>Hálózati közreműködő szerepkör
-
-> [!IMPORTANT]
-> Ha AK-fürtöt hoz létre vagy csatol egy korábban létrehozott virtuális hálózattal, akkor meg kell adnia a szolgáltatásnév (SP) vagy a felügyelt identitást az AK-fürt számára a _hálózati közreműködő_ szerepkört a virtuális hálózatot tartalmazó erőforráscsoporthoz. Ezt a belső terheléselosztó magánhálózati IP-re való módosítása előtt kell elvégezni.
+> Ha AK-fürtöt hoz létre vagy csatol egy korábban létrehozott virtuális hálózattal, akkor meg kell adnia a szolgáltatásnév (SP) vagy a felügyelt identitást az AK-fürt számára a _hálózati közreműködő_ szerepkört a virtuális hálózatot tartalmazó erőforráscsoporthoz.
 >
 > Az identitás hálózati közreműködőként való hozzáadásához kövesse az alábbi lépéseket:
 
@@ -171,6 +146,31 @@ A privát terheléselosztó úgy van beállítva, hogy az AK-t _belső terhelés
     az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
     ```
 A belső terheléselosztó az AK-val való használatáról további információt a [belső Load Balancer használata az Azure Kubernetes szolgáltatással](../aks/internal-lb.md)című témakörben talál.
+
+## <a name="secure-vnet-traffic"></a>Biztonságos VNet-forgalom
+
+Az AK-fürt és a virtuális hálózat közötti forgalom elkülönítésére két módszer áll rendelkezésre:
+
+* __Privát AK-fürt__ : Ez a módszer az Azure Private-hivatkozást használja a fürttel való kommunikáció biztonságossá tételéhez üzembe helyezési/felügyeleti műveletekhez.
+* __Belső AK-Load Balancer__ : Ez a módszer konfigurálja a végpontot a központi telepítések számára, hogy a virtuális hálózaton belüli magánhálózati IP-címet használjanak.
+
+> [!WARNING]
+> A belső Load Balancer nem működik a kubenet-t használó AK-fürtökkel. Ha egy belső terheléselosztó és egy privát AK-fürt egyidejű használatát kívánja használni, konfigurálja a privát AK-fürtöt az Azure Container Network Interface (CNI) használatával. További információ: [Az Azure CNI hálózatkezelésének konfigurálása az Azure Kubernetes szolgáltatásban](../aks/configure-azure-cni.md).
+
+### <a name="private-aks-cluster"></a>Privát AK-fürt
+
+Alapértelmezés szerint az AK-fürtök vezérlési síkon vagy API-kiszolgálóval rendelkeznek nyilvános IP-címekkel. Egy privát AK-fürt létrehozásával beállíthatja, hogy az AK privát vezérlési síkot használjon. További információt a [privát Azure Kubernetes Service-fürt létrehozása](../aks/private-clusters.md)című témakörben talál.
+
+Miután létrehozta a privát AK-fürtöt, [csatolja a fürtöt a virtuális hálózathoz](how-to-create-attach-kubernetes.md) Azure Machine Learninghoz való használathoz.
+
+> [!IMPORTANT]
+> Mielőtt egy magánhálózati kapcsolattal rendelkező AK-fürtöt Azure Machine Learning-mel használ, meg kell nyitnia egy támogatási eseményt a funkció engedélyezéséhez. További információ: a [kvóták kezelése és növelése](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
+
+### <a name="internal-aks-load-balancer"></a>Belső AK-Load Balancer
+
+Alapértelmezés szerint az AK-ban üzemelő példányok [nyilvános Load balancert](../aks/load-balancer-standard.md)használnak. Ebből a szakaszból megtudhatja, hogyan konfigurálhatja az AK-t belső terheléselosztó használatára. Egy belső (vagy privát) terheléselosztó akkor használatos, ha csak a magánhálózati IP-címek engedélyezettek a rendszerfelületként. A belső terheléselosztó a virtuális hálózaton belüli forgalom elosztására szolgál.
+
+A privát terheléselosztó úgy van beállítva, hogy az AK-t _belső terheléselosztó_ használatára konfigurálja. 
 
 #### <a name="enable-private-load-balancer"></a>Privát Load Balancer engedélyezése
 

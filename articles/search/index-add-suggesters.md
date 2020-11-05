@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/21/2020
+ms.date: 11/04/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f8959bf84e2b5629e03c2571fa494b96cec4f8e9
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 8ae25c63e9c6e3bf6ad363cde9eb641703562811
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347641"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360020"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Javaslat létrehozása az automatikus kiegészítés és a javasolt eredmények lekérdezésben való engedélyezéséhez
 
-Az Azure Cognitive Searchban a "keresés a típusban" beállítás egy [keresési indexhez](search-what-is-an-index.md)hozzáadott, **javaslattal** rendelkező konstruktoron keresztül érhető el. A javaslatok két szolgáltatást támogatnak: az *automatikus kiegészítést* , amely egy teljes kifejezésből álló lekérdezés részleges bemenetét fejezi be, és *javaslatokat* tesz arra, hogy egy adott egyezésre mutasson. Az automatikus kiegészítés létrehoz egy lekérdezést. A javaslatok megfelelő dokumentumot hoznak létre.
+Az Azure Cognitive Searchban a "keresés a típusban" beállítás egy [keresési indexhez](search-what-is-an-index.md)hozzáadott, **javaslattal** rendelkező konstruktoron keresztül érhető el. A javaslat két szolgáltatást támogat: az *automatikus kiegészítést* , amely egy teljes kifejezéssel rendelkező lekérdezés részleges bemenetét fejezi be, és *javaslatokat* tesz arra, hogy egy adott egyezésre kattintson. Az automatikus kiegészítés létrehoz egy lekérdezést. A javaslatok megfelelő dokumentumot hoznak létre.
 
 A következő képernyőkép az [első alkalmazás létrehozása a C#-ban](tutorial-csharp-type-ahead-and-suggestions.md) című ábrán látható. Az automatikus kiegészítés egy lehetséges kifejezést is felhasznál, amely a "tw"-t "a" értékkel fejezi ki. A javaslatok a mini keresési eredmények, ahol a Hotel neve a megfelelő szállodai keresési dokumentumot jelöli az indexből. A javaslatok esetében bármilyen olyan mezőt felvehet, amely leíró információkat biztosít.
 
@@ -44,6 +44,8 @@ A javaslatok létrehozásához adjon hozzá egyet egy [index sémához](/rest/ap
 
 + Az alapértelmezett standard Lucene Analyzer ( `"analyzer": null` ) vagy a [Language Analyzer](index-add-language-analyzers.md) (például `"analyzer": "en.Microsoft"` ) használata a mezőben
 
+Ha már meglévő mezők használatával próbál létrehozni egy javaslatot, az API letiltja azt. Az előtagok az indexelés során jönnek létre, ha a két vagy több karakterből álló kombinációk részleges kifejezései a teljes feltételek mellett jogkivonatot kapnak. Mivel a meglévő mezők már jogkivonattal rendelkeznek, újra kell építenie az indexet, ha hozzá kívánja adni őket egy javaslathoz. További információ: [Azure Cognitive Search index újraépítése](search-howto-reindex.md).
+
 ### <a name="choose-fields"></a>Mezők kiválasztása
 
 Bár a javaslatok több tulajdonsággal rendelkeznek, ez elsősorban olyan karakterlánc-mezők gyűjteménye, amelyekhez egy keresési típust engedélyez. Minden indexhez van egy javaslat, így a javaslatok listájának tartalmaznia kell az összes olyan mezőt, amely a javaslatokhoz és az automatikus kiegészítésekhez is hozzájárul a tartalomhoz.
@@ -64,12 +66,6 @@ Az [Egyéni elemzőket](index-add-custom-analyzers.md) vagy [előre definiált e
 
 > [!NOTE]
 > Ha az analizátor korlátozását kell meghoznia, például ha egy kulcsszóra vagy ngram-elemzőre van szüksége bizonyos lekérdezési forgatókönyvekhez, két külön mezőt kell használnia ugyanahhoz a tartalomhoz. Ez lehetővé teszi, hogy az egyik mező legyen egy javaslat, míg a másik egyéni Analyzer-konfigurációval is beállítható.
-
-### <a name="when-to-create-a-suggester"></a>Mikor hozzon létre egy javaslatot
-
-A javaslatok létrehozásához a legjobb idő az, amikor saját maga is létrehozza a mező definícióját.
-
-Ha már meglévő mezők használatával próbál létrehozni egy javaslatot, az API letiltja azt. Az előtagok az indexelés során jönnek létre, ha a két vagy több karakterből álló kombinációk részleges kifejezései a teljes feltételek mellett jogkivonatot kapnak. Mivel a meglévő mezők már jogkivonattal rendelkeznek, újra kell építenie az indexet, ha hozzá kívánja adni őket egy javaslathoz. További információ: [Azure Cognitive Search index újraépítése](search-howto-reindex.md).
 
 ## <a name="create-using-rest"></a>Létrehozás a REST használatával
 

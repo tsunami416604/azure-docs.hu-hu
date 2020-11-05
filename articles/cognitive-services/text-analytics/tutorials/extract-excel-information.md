@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
-ms.openlocfilehash: b67de07777fa3f4f2b6190d8b003eb0495e66d15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 197d28b2ac3d94b6639a6611b2919bdeb2b182e2
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400485"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359901"
 ---
 # <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>Adatok kinyerése az Excelben a Text Analytics és a Power automatizálás használatával 
 
@@ -44,18 +44,16 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 Töltse le a példában szereplő Excel-fájlt a [githubról](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/TextAnalytics/sample-data/ReportedIssues.xlsx). Ezt a fájlt a OneDrive for Business-fiókban kell tárolni.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/example-data.png" alt-text="Példák az Excel-fájlból.&quot;:::
+> :::image type="content" source="../media/tutorials/excel/example-data.png" alt-text="Példák az Excel-fájlból.":::
 
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing" szót fogja keresni a hibák kategorizálása érdekében. 
+A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a "plumbing" szót fogja keresni a hibák kategorizálása érdekében. 
 
 ## <a name="create-a-new-power-automate-workflow"></a>Új automatizálási munkafolyamat létrehozása
 
-Lépjen a [Power automatizáló webhelyre](https://preview.flow.microsoft.com/), és jelentkezzen be. Ezután kattintson a **Létrehozás** és **ütemezett folyamat**elemre.
+Lépjen a [Power automatizáló webhelyre](https://preview.flow.microsoft.com/), és jelentkezzen be. Ezután kattintson a **Létrehozás** és **ütemezett folyamat** elemre.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/flow-creation.png" alt-text="Példák az Excel-fájlból.&quot;:::
-
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing":::
+> :::image type="content" source="../media/tutorials/excel/flow-creation.png" alt-text="A folyamat-létrehozási képernyő.":::
 
 
 Az **ütemezett folyamat összeállítása** lapon inicializálja a folyamatot a következő mezőkkel:
@@ -74,9 +72,7 @@ Az **ütemezett folyamat összeállítása** lapon inicializálja a folyamatot a
 Az Excel-fájlba felvenni kívánt adatokat jelölő változók létrehozása. Kattintson az **új lépés** gombra, és keresse meg az **inicializálás változót**. Négy változó létrehozásához hajtsa végre ezt a négy alkalommal.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/initialize-variables.png" alt-text="Példák az Excel-fájlból.&quot;:::
-
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing":::
+> :::image type="content" source="../media/tutorials/excel/initialize-variables.png" alt-text="Változók inicializálása.":::
 
 Adja hozzá a következő adatokat a létrehozott változókhoz. Ők képviselik az Excel-fájl oszlopait. Ha a változók összecsukva vannak, a rájuk kattintva kibonthatja őket.
 
@@ -88,39 +84,29 @@ Adja hozzá a következő adatokat a létrehozott változókhoz. Ők képviselik
 | 4. változó inicializálása | var_other | Sztring | egyéb | 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/flow-variables.png" alt-text="Példák az Excel-fájlból.&quot;:::
-
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing":::
+> :::image type="content" source="../media/tutorials/excel/flow-variables.png" alt-text="a folyamat változói között található információk":::
 
 ## <a name="read-the-excel-file"></a>Az Excel-fájl olvasása
 
-Kattintson az **új lépés** gombra, és írja be az **Excel**elemet, majd válassza ki a **táblázatban szereplő sorok listáját** a műveletek listájából.
+Kattintson az **új lépés** gombra, és írja be az **Excel** elemet, majd válassza ki a **táblázatban szereplő sorok listáját** a műveletek listájából.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/list-excel-rows.png" alt-text="Példák az Excel-fájlból.&quot;:::
-
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing":::
+> :::image type="content" source="../media/tutorials/excel/list-excel-rows.png" alt-text="Excel-sorok hozzáadása":::
 
 Adja hozzá az Excel-fájlt a folyamathoz a művelet mezőinek kitöltésével. Ez az oktatóanyag megköveteli, hogy a fájl fel legyen töltve a OneDrive for Business szolgáltatásba.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/list-excel-rows-options.png" alt-text="Példák az Excel-fájlból.&quot;:::
-
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing":::
+> :::image type="content" source="../media/tutorials/excel/list-excel-rows-options.png" alt-text="Excel-sorok kitöltése":::
 
 Kattintson az **új lépés** gombra, és adjon hozzá egy **érvényes műveletet az egyes** műveletekhez.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/add-apply-action.png" alt-text="Példák az Excel-fájlból.&quot;:::
+> :::image type="content" source="../media/tutorials/excel/add-apply-action.png" alt-text="Adjon hozzá egy Apply parancsot.":::
 
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing":::
-
-Kattintson az **előző lépés kimenetének kiválasztása**elemre. A megjelenő dinamikus tartalom mezőben válassza az **érték**lehetőséget.
+Kattintson az **előző lépés kimenetének kiválasztása** elemre. A megjelenő dinamikus tartalom mezőben válassza az **érték** lehetőséget.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/select-output.png" alt-text="Példák az Excel-fájlból.&quot;:::
-
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing":::
+> :::image type="content" source="../media/tutorials/excel/select-output.png" alt-text="Válassza ki az Excel-fájl kimenetét.":::
 
 ## <a name="send-a-request-to-the-text-analytics-api"></a>Kérelem küldése a Text Analytics APInak
 
@@ -128,12 +114,12 @@ Ha még nem tette meg, létre kell hoznia egy [text Analytics erőforrást](http
 
 ### <a name="create-a-text-analytics-connection"></a>Text Analytics-kapcsolatok létrehozása
 
-A **minden alkalmazásban**kattintson a **művelet hozzáadása**lehetőségre. Nyissa meg a Text Analytics erőforrás **kulcs és végpont** lapját a Azure Portal, és szerezze be a Text Analytics erőforrás kulcsát és végpontját.
+A **minden alkalmazásban** kattintson a **művelet hozzáadása** lehetőségre. Nyissa meg a Text Analytics erőforrás **kulcs és végpont** lapját a Azure Portal, és szerezze be a Text Analytics erőforrás kulcsát és végpontját.
 
 A folyamat során adja meg az alábbi adatokat egy új Text Analytics-kapcsolatok létrehozásához.
 
 > [!NOTE]
-> Ha már létrehozott egy Text Analytics-kapcsolatot, és módosítani szeretné a kapcsolat adatait, kattintson a jobb felső sarokban található három pontra, majd kattintson az **+ új kapcsolat hozzáadása**lehetőségre.
+> Ha már létrehozott egy Text Analytics-kapcsolatot, és módosítani szeretné a kapcsolat adatait, kattintson a jobb felső sarokban található három pontra, majd kattintson az **+ új kapcsolat hozzáadása** lehetőségre.
 
 | Mező           | Érték                                                                                                             |
 |-----------------|-------------------------------------------------------------------------------------------------------------------|
@@ -142,93 +128,69 @@ A folyamat során adja meg az alábbi adatokat egy új Text Analytics-kapcsolato
 | Webhely URL-címe        | A Text Analytics erőforrás végpontja.                                                       |
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/add-credentials.png" alt-text="Példák az Excel-fájlból.&quot;:::
-
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing":::
+> :::image type="content" source="../media/tutorials/excel/add-credentials.png" alt-text="Text Analytics hitelesítő adatok hozzáadása a folyamathoz.":::
 
 ## <a name="extract-the-excel-content"></a>Excel-tartalom kibontása 
 
-A létrehozást követően keresse meg **text Analytics** és válassza az **entitások**lehetőséget. Ezzel kinyeri az adatokat a probléma Leírás oszlopában.
+A létrehozást követően keresse meg **text Analytics** és válassza az **entitások** lehetőséget. Ezzel kinyeri az adatokat a probléma Leírás oszlopában.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/extract-info.png" alt-text="Példák az Excel-fájlból.&quot;:::
-
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing":::
+> :::image type="content" source="../media/tutorials/excel/extract-info.png" alt-text="Text Analytics entitások hozzáadása.":::
 
 Kattintson a **szövegmezőbe** , és válassza ki a megjelenő dinamikus tartalom ablak **Leírás** elemét. Adja meg `en` a nyelvet. (Kattintson a speciális beállítások megjelenítése elemre, ha nem látja a nyelvet)
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/description-from-dynamic-content.png" alt-text="Példák az Excel-fájlból.&quot;:::
-
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing":::
+> :::image type="content" source="../media/tutorials/excel/description-from-dynamic-content.png" alt-text="Text Analytics beállítások hozzáadása.":::
 
 
 ## <a name="extract-the-person-name"></a>A személy nevének kinyerése
 
-Ezután megtaláljuk a személy entitás típusát a Text Analytics kimenetében. A **hatókörben**kattintson a **művelet hozzáadása**lehetőségre, és hozzon létre egy másikat az **egyes** műveletekhez. Kattintson a szövegmezőbe, majd a megjelenő dinamikus tartalom ablakban válassza az **entitások** lehetőséget.
+Ezután megtaláljuk a személy entitás típusát a Text Analytics kimenetében. A **hatókörben** kattintson a **művelet hozzáadása** lehetőségre, és hozzon létre egy másikat az **egyes** műveletekhez. Kattintson a szövegmezőbe, majd a megjelenő dinamikus tartalom ablakban válassza az **entitások** lehetőséget.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/add-apply-action-2.png" alt-text="Példák az Excel-fájlból.&quot;:::
+> :::image type="content" source="../media/tutorials/excel/add-apply-action-2.png" alt-text="Text Analytics hitelesítő adatok hozzáadása a folyamathoz. 2":::
 
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing":::
-
-Az újonnan létrehozott **alkalmazás minden 2** művelethez kattintson a **művelet hozzáadása**lehetőségre, és adjon hozzá egy **feltétel** vezérlőelemet.
+Az újonnan létrehozott **alkalmazás minden 2** művelethez kattintson a **művelet hozzáadása** lehetőségre, és adjon hozzá egy **feltétel** vezérlőelemet.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/create-condition.png" alt-text="Példák az Excel-fájlból.&quot;:::
-
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing":::
+> :::image type="content" source="../media/tutorials/excel/create-condition.png" alt-text="Text Analytics hitelesítő adatok hozzáadása a folyamathoz. 3":::
 
 A feltétel ablakban kattintson az első szövegmezőre. A dinamikus tartalom ablakban keresse meg az **entitások típust** , és jelölje ki.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/choose-entities-value.png" alt-text="Példák az Excel-fájlból.&quot;:::
-
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing":::
+> :::image type="content" source="../media/tutorials/excel/choose-entities-value.png" alt-text="Text Analytics hitelesítő adatok hozzáadása a folyamathoz. 4":::
 
 Győződjön meg arról, hogy a második mező értéke **egyenlő**. Ezután válassza ki a harmadik mezőt, és keresse meg a `var_person` dinamikus tartalom ablakban. 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/choose-variable-value.png" alt-text="Példák az Excel-fájlból.&quot;:::
+> :::image type="content" source="../media/tutorials/excel/choose-variable-value.png" alt-text="Text Analytics hitelesítő adatok hozzáadása a folyamathoz. 5":::
 
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing":::
-
-A **Ha igen** feltétel mezőben írja be az Excelben a **sor frissítése**lehetőséget.
+A **Ha igen** feltétel mezőben írja be az Excelben a **sor frissítése** lehetőséget.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/yes-column-action.png" alt-text="Példák az Excel-fájlból.&quot;:::
+> :::image type="content" source="../media/tutorials/excel/yes-column-action.png" alt-text="Text Analytics hitelesítő adatok hozzáadása a folyamathoz. 6":::
 
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing":::
-
-Adja meg az Excel-adatokat, és frissítse a **kulcs oszlopot**, a **kulcs értékét** és a **PersonName** mezőt. Ez a művelet hozzáfűzi az API által az Excel-táblázathoz észlelt nevet. 
+Adja meg az Excel-adatokat, és frissítse a **kulcs oszlopot** , a **kulcs értékét** és a **PersonName** mezőt. Ez a művelet hozzáfűzi az API által az Excel-táblázathoz észlelt nevet. 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/yes-column-action-options.png" alt-text="Példák az Excel-fájlból.&quot;:::
-
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing":::
+> :::image type="content" source="../media/tutorials/excel/yes-column-action-options.png" alt-text="Text Analytics hitelesítő adatok hozzáadása a folyamathoz. 7":::
 
 ## <a name="get-the-phone-number"></a>Telefonszám beolvasása
 
 A név gombra kattintva csökkentse a **két művelet hatókörét** . Ezután adjon hozzá egy másikat **az egyes** műveletekhez, mint korábban. a nevet a rendszer **a 3 értékre alkalmazza**. Jelölje ki a szövegmezőt, és adja hozzá az **entitásokat** a művelet kimenetéhez. 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/add-apply-action-3.png" alt-text="Példák az Excel-fájlból.&quot;:::
+> :::image type="content" source="../media/tutorials/excel/add-apply-action-3.png" alt-text="Text Analytics hitelesítő adatok hozzáadása a folyamathoz. 8":::
 
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing":::
-
-A **3. hatókörön**belül adjon hozzá egy **feltétel** vezérlőelemet. Neve **2. feltételnek**számít. Az első szövegmezőben keresse meg és adja hozzá az **entitások típusát** a dinamikus tartalom ablakból. Győződjön meg arról, hogy a középső mező értéke **egyenlő**. Ezután a jobb oldali szövegmezőbe írja be a szöveget `var_phone` . 
+A **3. hatókörön** belül adjon hozzá egy **feltétel** vezérlőelemet. Neve **2. feltételnek** számít. Az első szövegmezőben keresse meg és adja hozzá az **entitások típusát** a dinamikus tartalom ablakból. Győződjön meg arról, hogy a középső mező értéke **egyenlő**. Ezután a jobb oldali szövegmezőbe írja be a szöveget `var_phone` . 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/condition-2-options.png" alt-text="Példák az Excel-fájlból.&quot;:::
-
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing":::
+> :::image type="content" source="../media/tutorials/excel/condition-2-options.png" alt-text="Text Analytics hitelesítő adatok hozzáadása a folyamathoz. 9":::
 
 A **Ha igen** állapotban adja hozzá a **sor frissítése** műveletet. Ezután adja meg a fentiekhez hasonló adatokat az Excel-táblázat telefonszámok oszlopában. Ezzel hozzáfűzi az API által észlelt telefonszámot az Excel-táblázathoz. 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/condition-2-yes-column.png" alt-text="Példák az Excel-fájlból.&quot;:::
-
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing":::
+> :::image type="content" source="../media/tutorials/excel/condition-2-yes-column.png" alt-text="Text Analytics hitelesítő adatok hozzáadása a folyamathoz. 10":::
 
 
 ## <a name="get-the-plumbing-issues"></a>A vízvezetés problémáinak beolvasása
@@ -236,32 +198,32 @@ A problémák nyers szövegben jelennek meg. A személy nevének és telefonszá
 A név elemre kattintva csökkentse a **3** . Ezután hozzon **létre egy másikat a fölérendelt** műveletben. Jelölje ki a szövegmezőt, és adja hozzá az **entitásokat** a művelet kimenetként a dinamikus tartalom ablakból. 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/add-apply-action-4.png" alt-text="Példák az Excel-fájlból.&quot;:::
+> :::image type="content" source="../media/tutorials/excel/add-apply-action-4.png" alt-text="Text Analytics hitelesítő adatok hozzáadása a folyamathoz. 11":::
 
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing" értéket adjuk meg.
+
+Ezután a folyamat azt vizsgálja, hogy az Excel-táblázatból származó probléma leírása tartalmazza-e a "plumbing" szót. Ha igen, a IssueType oszlopban a "plumbing" értéket fogja hozzáadni. Ha nem, akkor a "másik" értéket adjuk meg.
 
 Az **alkalmazás minden 4** műveleten belül adjon hozzá egy **feltétel** vezérlőelemet. Neve **3. feltétel**. Az első szövegmezőben keresse meg és adja hozzá a **leírást** az Excel-fájlból a dinamikus tartalom ablak használatával. Győződjön meg arról, hogy a Center Box azt **tartalmazza**. Ezután a jobb oldali szövegmezőben keresse meg és válassza ki a elemet `var_plumbing` . 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/condition-3-options.png" alt-text="Példák az Excel-fájlból.&quot;:::
+> :::image type="content" source="../media/tutorials/excel/condition-3-options.png" alt-text="Text Analytics hitelesítő adatok hozzáadása a folyamathoz. 12":::
 
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing" címkét fog alkalmazni a sorra.
+
+A **Ha igen** állapotban kattintson a **művelet hozzáadása** lehetőségre, majd válassza **a sor frissítése** lehetőséget. Ezután adja meg a korábban megjelenő adatokat. A IssueType oszlopban válassza a elemet `var_plumbing` . Ez egy "plumbing" címkét fog alkalmazni a sorban.
+
+A **Ha nincs** feltételben kattintson a **művelet hozzáadása** lehetőségre, majd válassza **a sor frissítése** lehetőséget. Ezután adja meg a korábban megjelenő adatokat. A IssueType oszlopban válassza a elemet `var_other` . Ez egy "másik" címkét fog alkalmazni a sorra.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/plumbing-issue-condition.png" alt-text="Példák az Excel-fájlból.&quot;:::
-
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing":::
+> :::image type="content" source="../media/tutorials/excel/plumbing-issue-condition.png" alt-text="Text Analytics hitelesítő adatok hozzáadása a folyamathoz. 13":::
 
 ## <a name="test-the-workflow"></a>A munkafolyamat tesztelése
 
-A képernyő jobb felső sarkában kattintson a **Mentés**, majd a **teszt**elemre. Jelölje be  **az trigger művelet végrehajtása műveletet**. Kattintson a **mentés & teszt**, **folyamat futtatása**, majd a **kész**lehetőségre.
+A képernyő jobb felső sarkában kattintson a **Mentés** , majd a **teszt** elemre. Jelölje be  **az trigger művelet végrehajtása műveletet**. Kattintson a **mentés & teszt** , **folyamat futtatása** , majd a **kész** lehetőségre.
 
 Az Excel-fájl frissülni fog a OneDrive-fiókjában. A következőhöz hasonlóan fog kinézni.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/updated-excel-sheet.png" alt-text="Példák az Excel-fájlból.&quot;:::
-
-A problémák nyers szövegben jelennek meg. A személy nevének és telefonszámának kinyeréséhez a Text Analytics API elnevezett entitás-felismerést fogjuk használni. Ezután a folyamat a leírásban a &quot;plumbing":::
+> :::image type="content" source="../media/tutorials/excel/updated-excel-sheet.png" alt-text="A frissített Excel-táblázat.":::
 
 ## <a name="next-steps"></a>Következő lépések
 

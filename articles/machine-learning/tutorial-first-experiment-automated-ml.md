@@ -10,12 +10,13 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
-ms.openlocfilehash: c3fd4dcfa4c01c39e4e6cab4915de807c3d19ae6
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.custom: automl
+ms.openlocfilehash: 866be6a2449f3b10d200968782b90653e1363906
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913857"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359799"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Oktatóanyag: besorolási modell létrehozása automatizált ML-vel Azure Machine Learning
 
@@ -49,7 +50,7 @@ Az Azure Machine Learning munkaterület a felhőben található alapvető erőfo
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT] 
-> Jegyezze fel a **munkaterületet** és az **előfizetést** . Ezekre azért van szükség, hogy a megfelelő helyen hozza létre a kísérletet. 
+> Jegyezze fel a **munkaterületet** és az **előfizetést**. Ezekre azért van szükség, hogy a megfelelő helyen hozza létre a kísérletet. 
 
 ## <a name="get-started-in-azure-machine-learning-studio"></a>Ismerkedés a Azure Machine Learning Studióval
 
@@ -79,7 +80,7 @@ A kísérlet konfigurálása előtt töltse fel az adatfájlt a munkaterületre 
 
     1. Kattintson a **Next (tovább) gombra** a bal alsó sarokban
 
-    1. Az **adattár és fájl kiválasztása** űrlapon válassza ki az alapértelmezett adattárat, amelyet a rendszer automatikusan beállított a munkaterület létrehozásakor, **workspaceblobstore (Azure Blob Storage)** . Itt töltheti fel az adatfájlt, hogy elérhető legyen a munkaterületen.
+    1. Az **adattár és fájl kiválasztása** űrlapon válassza ki az alapértelmezett adattárat, amelyet a rendszer automatikusan beállított a munkaterület létrehozásakor, **workspaceblobstore (Azure Blob Storage)**. Itt töltheti fel az adatfájlt, hogy elérhető legyen a munkaterületen.
 
     1. Válassza a **Tallózás** lehetőséget.
     
@@ -111,7 +112,7 @@ A kísérlet konfigurálása előtt töltse fel az adatfájlt a munkaterületre 
     
     1. Válassza ki az adatkészletet, amint megjelenik a listában.
     
-    1. Tekintse át az **adatelőnézett**  , és győződjön meg arról, hogy nem tartalmaz **day_of_week** , majd kattintson **az OK gombra** .
+    1. Tekintse át az **adatelőnézett**  , és győződjön meg arról, hogy nem tartalmaz **day_of_week** , majd kattintson **az OK gombra**.
 
     1. Válassza a  **tovább** lehetőséget.
 
@@ -148,10 +149,10 @@ Az adatai betöltését és konfigurálását követően beállíthatja a kísé
 
     1. Válassza a **további konfigurációs beállítások megtekintése** lehetőséget, és töltse fel a mezőket az alábbiak szerint. Ezek a beállítások hatékonyabban szabályozzák a betanítási feladatot. Ellenkező esetben a rendszer az alapértelmezett értékeket a kísérletezés és az adatértékek alapján alkalmazza.
 
-        További &nbsp; konfigurációk|Description|&nbsp;Az &nbsp; oktatóanyag értéke
+        További &nbsp; konfigurációk|Leírás|&nbsp;Az &nbsp; oktatóanyag értéke
         ------|---------|---
         Elsődleges metrika| Az értékelési metrika, amelyet a Machine learning algoritmusa fog mérni.|AUC_weighted
-        A legjobb modell ismertetése| A automatikusan mutatja az automatizált ML által létrehozott legjobb modell magyarázatát.| Engedélyezés
+        A legjobb modell ismertetése| A automatikusan mutatja az automatizált ML által létrehozott legjobb modell magyarázatát.| Bekapcsolás
         Letiltott algoritmusok | A betanítási feladatokból kizárni kívánt algoritmusok| Nincsenek
         Kilépési feltétel| Ha teljesülnek a feltételek, a betanítási feladatok leállnak. |Betanítási &nbsp; feladatok &nbsp; ideje (óra): 1 <br> Metrika &nbsp; pontszámának &nbsp; küszöbértéke: nincs
         Érvényesítés | Válasszon egy több ellenőrzési típust és a tesztek számát.|Érvényesítés típusa:<br>&nbsp;k-szeres &nbsp; keresztek ellenőrzése <br> <br> Érvényességek száma: 2
@@ -214,7 +215,7 @@ Most már rendelkezik egy operatív webszolgáltatással előrejelzések létreh
 
 Folytassa a [**következő lépésekkel**](#next-steps) , ha többet szeretne megtudni az új webszolgáltatás használatáról, és tesztelje a jóslatokat a Power BI beépített Azure Machine learning-támogatásával.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az üzembe helyezési fájlok nagyobb méretűek, mint az adatmennyiség és a kísérlet során használt fájlok. Csak a központi telepítési fájlokat törölje, hogy csökkentse a költségeket a fiókjához, vagy ha meg szeretné őrizni a munkaterületet és a kísérletet. Ellenkező esetben törölje a teljes erőforráscsoportot, ha nem tervezi az egyik fájl használatát.  
 

@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/30/2020
-ms.openlocfilehash: 8a9c022400f739276060c3d8a275d06bc5ea8579
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.date: 11/02/2020
+ms.openlocfilehash: 47aada0abe2520ba81689ca8fa17787fde847d83
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147229"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360248"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Fogadó átalakítás a leképezési adatfolyamban
 
@@ -71,9 +71,11 @@ A következő videó számos különböző fogadó lehetőséget ismertet a szö
 
 **Tempdb használata:** Alapértelmezés szerint a Data Factory globális ideiglenes táblázatot fog használni az adattároláshoz a betöltési folyamat részeként. Azt is megteheti, hogy kijelöli a "TempDB használata" lehetőséget, és ehelyett megkérdezi Data Factory, hogy az ideiglenes tároló táblát egy olyan felhasználói adatbázisban tárolja, amely a fogadóhoz használt adatbázisban található.
 
-![TempDB](media/data-flow/tempdb.png "TempDB")
+![Ideiglenes adatbázis használata](media/data-flow/tempdb.png "Ideiglenes adatbázis használata")
 
 ## <a name="cache-sink"></a>Gyorsítótár fogadója
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4HKt1]
  
 A *gyorsítótár* -fogadó akkor történik meg, amikor egy adatfolyam az adattár helyett a Spark-gyorsítótárba ír egy adatot. Az adatfolyamatok leképezése során a *gyorsítótár-kereséssel* többször is hivatkozhat ezekre az adatfolyamatokra. Ez akkor hasznos, ha egy kifejezés részeként szeretne információkat hivatkozni, de nem szeretné explicit módon csatlakoztatni az oszlopokat. Gyakori példák arra, hogy egy gyorsítótár-fogadó képes legyen a maximális érték megkeresésére egy adattárban, és a hibakódok megfeleltetése egy hibaüzenet-adatbázishoz. 
 
@@ -101,6 +103,11 @@ Ha kikapcsolja az automapping szolgáltatást, a rögzített oszlop alapú hozz�
 Alapértelmezés szerint az determinált sorrendben több mosogatóba történik az adatgyűjtés. A végrehajtó motor párhuzamosan írja az adatelemzési logikát, mivel az átalakítási logika befejeződött, és az egyes futtatások sorrendje eltérő lehet. A fogadó pontos sorrendjének megadásához engedélyezze az **Egyéni fogadó sorrendet** az adatfolyam **általános** lapján. Ha engedélyezve van, a mosogatók egymás után, növekvő sorrendben íródnak.
 
 ![Képernyőkép, amely az egyéni fogadó sorrendet mutatja.](media/data-flow/custom-sink-ordering.png "Képernyőkép, amely az egyéni fogadó sorrendet mutatja.")
+
+> [!NOTE]
+> A [gyorsítótárazott keresések](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-expression-builder#cached-lookup)használatakor győződjön meg arról, hogy a fogadó megrendelése a gyorsítótárazott mosogatók értéke 0.
+
+![Egyéni fogadó rendelés](media/data-flow/cache-2.png "Egyéni fogadó rendelés")
 
 ## <a name="data-preview-in-sink"></a>Az adatelőnézet a fogadóban
 

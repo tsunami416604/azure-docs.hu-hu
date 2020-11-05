@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: f995750c1e009febcb9872c230e22921ff9c50c4
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: 87532876551cacbd4da03b95b10c41600989a947
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186586"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359714"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Ismert problémák a Azure Data Lake Storage Gen2
 
@@ -62,7 +62,7 @@ A nem felügyelt virtuálisgép-lemezek nem támogatottak olyan fiókoknál, ame
 
 ## <a name="support-for-setting-access-control-lists-acls-recursively"></a>Hozzáférés-vezérlési listák (ACL-ek) rekurzív beállításának támogatása
 
-Az ACL-változások rekurzív módon történő alkalmazása a szülő könyvtárból a alárendelt elemekre [nyilvános előzetes](recursive-access-control-lists.md)verzióban érhető el. Ennek a funkciónak a jelenlegi kiadásában a PowerShell, a .NET SDK és a Python SDK használatával is alkalmazhatja az ACL-módosításokat. A támogatás még nem érhető el a Java SDK, az Azure CLI, a Azure Portal vagy a Azure Storage Explorer számára.
+Általánosan elérhető az ACL-változások rekurzív módon történő alkalmazása a szülő könyvtárból alárendelt elemekre. A funkció jelenlegi kiadásában a PowerShell, az Azure CLI, valamint a .NET, a Java és a Python SDK használatával is alkalmazhat ACL-módosításokat. A támogatás még nem érhető el a Azure Portalhoz, vagy Azure Storage Explorer.
 
 <a id="known-issues-tools"></a>
 

@@ -1,7 +1,7 @@
 ---
 title: ML-kísérletek és -metrikák naplózása
 titleSuffix: Azure Machine Learning
-description: Monitorozza az Azure ML-kísérleteket és a futtatási metrikákat a modell-létrehozási folyamat továbbfejlesztése érdekében. Adjon naplózást a betanítási szkripthez a run.log, Run.start_logging vagy ScriptRunConfig paranccsal.
+description: A valós idejű futtatási metrikák figyeléséhez, valamint a hibák és a figyelmeztetések diagnosztizálásához engedélyezze a beléptetést az ML-képzésekben.
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -11,14 +11,14 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 6680bdc525c6f07b8330277056413f886412551b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: deeee689c27008ab71df0a050be3d7a6b5109307
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318426"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361063"
 ---
-# <a name="enable-logging-in-azure-ml-training-runs"></a>Naplózás engedélyezése az Azure ML betanítási futtatásaiban
+# <a name="enable-logging-in-ml-training-runs"></a>A naplózás engedélyezése ML betanítási futtatásokban
 
 
 Az Azure Machine Learning Python SDK az alapértelmezett Python naplózási csomaggal és SDK-specifikus funkciókkal is lehetővé teszi valós idejű információk naplózását. Naplózhat helyben, és elküldheti a naplókat a portálon lévő munkaterületekre.

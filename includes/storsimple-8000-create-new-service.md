@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 88f275016bad72122ebd195449b9af88086bdc7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d47cf21e25c89c20a8baa31a80b867b74ada93df
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87507585"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360696"
 ---
 #### <a name="to-create-a-new-service"></a>Új szolgáltatás létrehozása
 
@@ -19,9 +19,9 @@ ms.locfileid: "87507585"
 
     ![StorSimple-eszközkezelő létrehozása](./media/storsimple-8000-create-new-service/createssdevman1.png)
 
-    _StorSimple fizikai eszközök_ keresése. Válassza ki, majd kattintson a **StorSimple fizikaieszköz-sorozat** lehetőségre, majd kattintson a **Létrehozás** gombra. Azt is megteheti, hogy a Azure Portal kattintson a **+** **tárolás**elemre, majd a **StorSimple fizikai eszköz sorozat**elemre.
+    _StorSimple fizikai eszközök_ keresése. Válassza ki, majd kattintson a **StorSimple fizikaieszköz-sorozat** lehetőségre, majd kattintson a **Létrehozás** gombra. Azt is megteheti, hogy a Azure Portal kattintson a **+** **tárolás** elemre, majd a **StorSimple fizikai eszköz sorozat** elemre.
 
-    ![StorSimple-eszközkezelő létrehozása](./media/storsimple-8000-create-new-service/createssdevman11.png)
+    ![StorSimple létrehozása Eszközkezelő 2](./media/storsimple-8000-create-new-service/createssdevman11.png)
 
 3. Hajtsa végre a következő lépéseket a **StorSimple-eszközkezelő** paneljén:
 
@@ -42,8 +42,8 @@ ms.locfileid: "87507585"
 
    7. A StorSimple-eszközkezelő létrehozásához kattintson a **Létrehozás** gombra.
 
-       ![StorSimple-eszközkezelő létrehozása](./media/storsimple-8000-create-new-service/createssdevman2.png)
+       ![StorSimple létrehozása Eszközkezelő 3](./media/storsimple-8000-create-new-service/createssdevman2.png)
 
 A szolgáltatás létrehozása eltarthat néhány percig. A szolgáltatás sikeres létrehozása után megjelenik egy értesítés, és megnyílik az új szolgáltatás panelje.
 
-![StorSimple-eszközkezelő létrehozása](./media/storsimple-8000-create-new-service/createssdevman5.png)
+![StorSimple létrehozása Eszközkezelő 4](./media/storsimple-8000-create-new-service/createssdevman5.png)

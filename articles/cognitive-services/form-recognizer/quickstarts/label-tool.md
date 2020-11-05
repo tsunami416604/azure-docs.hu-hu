@@ -11,12 +11,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: dokumentumok feldolgozása
-ms.openlocfilehash: 287315440199c4dc3ded1298532167d37d89a877
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5df8ced885768308369599d94c5734fa0620c507
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976147"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360870"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával
 
@@ -29,14 +29,22 @@ Ebben a rövid útmutatóban az űrlap-felismerő REST APIt fogja használni a m
 A rövid útmutató elvégzéséhez a következőket kell tennie:
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" hozzon létre egy űrlap-felismerő erőforrást "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Az Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" hozzon létre egy űrlap-felismerő erőforrást "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Az Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
     * Az alkalmazás az űrlap-felismerő API-hoz való összekapcsolásához szüksége lesz a létrehozott erőforrás kulcsára és végpontra. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
     * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
-* Legalább hat egyforma típusú formátumból álló készlet. Ezeket az adattípusokat fogja használni a modell betanításához és egy űrlap teszteléséhez. Ehhez a rövid útmutatóhoz használhat egy [minta adatkészletet](https://go.microsoft.com/fwlink/?linkid=2090451) ( *sample_data.zip*letöltése és kibontása). Töltse fel a betanítási fájlokat egy blob Storage-tároló gyökerébe egy standard teljesítményű Azure Storage-fiókban.
+* Legalább hat egyforma típusú formátumból álló készlet. Ezeket az adattípusokat fogja használni a modell betanításához és egy űrlap teszteléséhez. Ehhez a rövid útmutatóhoz használhat egy [minta adatkészletet](https://go.microsoft.com/fwlink/?linkid=2090451) ( *sample_data.zip* letöltése és kibontása). Töltse fel a betanítási fájlokat egy blob Storage-tároló gyökerébe egy standard teljesítményű Azure Storage-fiókban.
 
 ## <a name="create-a-form-recognizer-resource"></a>Űrlap-felismerő erőforrás létrehozása
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
+
+## <a name="try-it-out"></a>Próba
+
+Az űrlap-felismerő minta feliratozási eszközének online kipróbálásához lépjen a [FOTT webhelyére](https://fott-preview.azurewebsites.net/).
+
+> [!div class="nextstepaction"]
+> [Űrlap-felismerő minta feliratozási eszköze](https://fott-preview.azurewebsites.net/)
+
 
 ## <a name="set-up-the-sample-labeling-tool"></a>A minta feliratozási eszköz beállítása
 
@@ -122,7 +130,7 @@ Töltse ki a mezőket a következő értékekkel:
 
 * **Megjelenítendő név** – a kapcsolatok megjelenítendő neve.
 * **Leírás** – a projekt leírása.
-* **Sas URL-cím** – az Azure Blob Storage tároló megosztott hozzáférés-aláírási (SAS) URL-címe. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. A lejárati időt állítsa be egy későbbi időpontra, amikor már nem fogja használni a szolgáltatást. Győződjön meg arról, hogy az **olvasási**, **írási**, **törlési**és **listázási** engedélyek be vannak jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A következő formátumban kell lennie: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* **Sas URL-cím** – az Azure Blob Storage tároló megosztott hozzáférés-aláírási (SAS) URL-címe. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása** elemet. A lejárati időt állítsa be egy későbbi időpontra, amikor már nem fogja használni a szolgáltatást. Győződjön meg arról, hogy az **olvasási** , **írási** , **törlési** és **listázási** engedélyek be vannak jelölve, majd kattintson a **Létrehozás** gombra. Ezután másolja az értéket az **URL** szakaszban. A következő formátumban kell lennie: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
 :::image type="content" source="../media/label-tool/connections.png" alt-text="A mintául szolgáló címkéző eszköz csatlakoztatási beállításai.":::
 
@@ -139,7 +147,7 @@ A minta feliratozási eszközben a projektek a konfigurációkat és a beállít
 * **API-kulcs** – az űrlap-felismerő előfizetési kulcsa.
 * **Leírás** – nem kötelező – a projekt leírása
 
-:::image type="content" source="../media/label-tool/new-project.png" alt-text="A mintául szolgáló címkéző eszköz csatlakoztatási beállításai.":::
+:::image type="content" source="../media/label-tool/new-project.png" alt-text="Új projekt lap a minta feliratozási eszközön.":::
 
 ## <a name="label-your-forms"></a>Űrlapok címkézése
 
@@ -155,7 +163,7 @@ Kattintson az OCR futtatása elemre a bal oldali ablaktábla **összes fájlján
 
 Azt is megmutatja, hogy mely táblákat kell automatikusan kibontani. A kibontott táblázat megjelenítéséhez kattintson a dokumentum bal oldalán található tábla/rács ikonra. Ebben a rövid útmutatóban, mivel a táblázat tartalma automatikusan ki van kibontva, a táblázat tartalma nem lesz felcímkézve, hanem az automatikus kivonásra támaszkodik.
 
-:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="A mintául szolgáló címkéző eszköz csatlakoztatási beállításai.":::
+:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="Táblázat vizualizációja a minta címkézési eszközben.":::
 
 ### <a name="apply-labels-to-text"></a>Feliratok alkalmazása szövegre
 
@@ -201,7 +209,7 @@ Ezután létre kell hoznia címkéket (címkéket), és alkalmaznia kell azokat 
 
 ---
 
-:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="A mintául szolgáló címkéző eszköz csatlakoztatási beállításai.":::
+:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="A minta-címkéző eszköz főszerkesztő ablaka.":::
 
 
 Kövesse a fenti lépéseket az űrlapok legalább öt megjelöléséhez.
@@ -256,7 +264,7 @@ Kattintson a vonat ikonra a bal oldali ablaktáblán a képzés lap megnyitásá
 * A címkék és a becsült pontosság a címkén.
 
 
-:::image type="content" source="../media/label-tool/train-screen.png" alt-text="A mintául szolgáló címkéző eszköz csatlakoztatási beállításai.":::
+:::image type="content" source="../media/label-tool/train-screen.png" alt-text="Képzés nézet.":::
 
 A betanítás befejezése után vizsgálja meg az **átlagos pontossági** értéket. Ha alacsony, adjon hozzá további bemeneti dokumentumokat, és ismételje meg a fenti lépéseket. A már címkézett dokumentumok a projekt indexében maradnak.
 
@@ -275,7 +283,7 @@ A Model Compose segítségével akár 100 modellt is létrehozhat egyetlen model
 
 A minta feliratozási eszköz modelljeinek összeállításához kattintson a bal oldalon található Model levélírás (egyesítési nyíl) ikonra. A bal oldalon válassza ki azokat a modelleket, amelyeket össze szeretne állítani. A Arrows ikonnal rendelkező modellek már modellekből állnak. Kattintson a "levélírás" gombra. A felugró ablakban nevezze el az új komponált modellt, majd kattintson a "levélírás" elemre. Ha a művelet befejeződik, az új komponált modellnek szerepelnie kell a listában. 
 
-:::image type="content" source="../media/label-tool/model-compose.png" alt-text="A mintául szolgáló címkéző eszköz csatlakoztatási beállításai.":::
+:::image type="content" source="../media/label-tool/model-compose.png" alt-text="Model komponált UX nézet.":::
 
 ---
 

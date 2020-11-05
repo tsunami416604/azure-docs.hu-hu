@@ -10,13 +10,13 @@ ms.author: nibaccam
 author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
-ms.custom: how-to
-ms.openlocfilehash: a8868b930abe28ed205446df0c6c9b0f111213eb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, data4ml
+ms.openlocfilehash: e97546e678b3b7bf7932600ea53d09557493685c
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312786"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359867"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Kapcsolódás adatkapcsolathoz a Azure Machine Learning Studióval
 
@@ -50,8 +50,6 @@ A Code első használatakor tekintse meg az alábbi cikkeket a [Azure Machine le
 
 [Ezekből az Azure Storage-megoldásokból is létrehozhat adattárakat](how-to-access-data.md#matrix). **A nem támogatott tárolási megoldások esetében** , valamint a kimenő adatforgalomnak a ml-kísérletek során történő mentéséhez az adatait egy támogatott Azure Storage-megoldásba kell [áthelyeznie](how-to-access-data.md#move) . [További információ az](how-to-access-data.md)adattárolók használatáról. 
 
-
-
 Hozzon létre egy új adattárt néhány lépésben a Azure Machine Learning Studióval.
 
 > [!IMPORTANT]
@@ -60,7 +58,7 @@ Hozzon létre egy új adattárt néhány lépésben a Azure Machine Learning Stu
 1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com/).
 1. A **kezelés** **alatt kattintson a** bal oldali ablaktábla adattárolók elemére.
 1. Válassza az **+ új adattár** lehetőséget.
-1. Töltse ki az űrlapot egy új adattárhoz. Az űrlap intelligens módon frissül saját maga, az Azure Storage-típus és a hitelesítési típus választása alapján. Az űrlap feltöltéséhez szükséges hitelesítő adatok megkereséséhez tekintse meg a [tárolási hozzáférés és engedélyek című szakaszt](#access-validation) .
+1. Fejezze be az űrlapot egy új adattár létrehozásához és regisztrálásához. Az űrlap intelligens módon frissül saját maga, az Azure Storage-típus és a hitelesítési típus választása alapján. Az űrlap feltöltéséhez szükséges hitelesítő adatok megkereséséhez tekintse meg a [tárolási hozzáférés és engedélyek című szakaszt](#access-validation) .
 
 Az alábbi példa bemutatja, hogyan néz ki az űrlap az **Azure Blob-adattár** létrehozásakor:
 
@@ -157,11 +155,15 @@ Megtalálhatja a fiók kulcsát, az SAS-tokent és az egyszerű szolgáltatásn�
     * A megfelelő **áttekintő** oldal tartalmazni fogja a szükséges információkat, például a bérlő azonosítóját és az ügyfél-azonosítót.
 
 > [!IMPORTANT]
-> Biztonsági okokból előfordulhat, hogy módosítania kell az Azure Storage-fiókhoz tartozó hozzáférési kulcsokat (a fiók kulcsát vagy SAS-tokenjét). Ha ezt teszi, ügyeljen arra, hogy szinkronizálja az új hitelesítő adatokat a munkaterülettel és a hozzá csatlakoztatott adattárolókkal. Útmutató [a frissített hitelesítő adatok szinkronizálásához](how-to-change-storage-access-key.md).
+> * Ha módosítania kell egy Azure Storage-fiók (fiók vagy SAS-token) hozzáférési kulcsait, akkor ügyeljen arra, hogy szinkronizálja az új hitelesítő adatokat a munkaterülettel és a hozzá csatlakoztatott adattárakkal. Útmutató [a frissített hitelesítő adatok szinkronizálásához](how-to-change-storage-access-key.md). <br> <br>
+> * Ha törli a regisztrációt, és újra regisztrálja az adattárolót ugyanazzal a névvel, és a művelet meghiúsul, előfordulhat, hogy a munkaterület Azure Key Vault nem rendelkezik a helyreállítható törléssel. Alapértelmezés szerint a Soft-delete engedélyezve van a munkaterület által létrehozott Key Vault-példányon, de ez nem engedélyezhető, ha meglévő kulcstartót használt, vagy pedig az október 2020. előtt létrehozott munkaterülettel rendelkezik. További információ a helyreállítható törlés engedélyezéséről: [a meglévő kulcstartó bekapcsolásának bekapcsolása]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault).
 
 ### <a name="permissions"></a>Engedélyek
 
-Az Azure Blob Container és Azure Data Lake 2. generációs tárolók esetében ellenőrizze, hogy a hitelesítési hitelesítő adatai rendelkeznek-e **Storage blob-Adatolvasóval** . További információ a [Storage blob-Adatolvasóról](../role-based-access-control/built-in-roles.md#storage-blob-data-reader). 
+Az Azure Blob Container és Azure Data Lake 2. generációs tárolók esetében ellenőrizze, hogy a hitelesítési hitelesítő adatok rendelkeznek-e a **Storage blob Adatolvasóval** . További információ a [Storage blob-Adatolvasóról](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader). A fiók SAS-tokenje alapértelmezés szerint nem rendelkezik engedélyekkel. 
+* Az adatok **olvasási hozzáféréséhez** a hitelesítő adatoknak legalább listáját és olvasási engedélyeket kell tartalmazniuk a tárolók és objektumok számára. 
+
+* Az **adatírások eléréséhez** írási és hozzáadási engedélyekre is szükség van.
 
 ## <a name="train-with-datasets"></a>Betanítás adathalmazok használatával
 
