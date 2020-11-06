@@ -4,6 +4,10 @@
   items:
     - name: A Lab Services ismertetése
       href: lab-services-overview.md
+- name: Rövid útmutatók
+  items:
+    - name: Bevezetés
+      href: get-started-manage-labs.md
 - name: Oktatóanyagok
   items:
     - name: Tesztkörnyezetfiók beállítása

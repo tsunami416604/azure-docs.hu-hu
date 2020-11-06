@@ -29,6 +29,9 @@
     - name: Adatbázis-sérülés mérséklése
       href: how-to-fix-corrupt-database.md
       displayName: corrupt data
+    - name: Verziókezelési szabályzat
+      href: concepts-version-policy.md
+      displayName: version policy
 - name: Önálló kiszolgáló
   expanded: true
   items:

@@ -179,7 +179,5 @@
       href: ../../virtual-machines/windows/security-baseline.md
     - name: A virtuális hálózatok biztonsági alapkonfigurációja
       href: ../../virtual-network/security-baseline.md
-    - name: A virtuális WAN biztonsági alapkonfigurációja
-      href: ../../virtual-wan/security-baseline.md
     - name: A VPN Gateway biztonsági alapkonfigurációja
       href: ../../vpn-gateway/security-baseline.md

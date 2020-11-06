@@ -307,6 +307,8 @@
           href: cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: Marketplace metering service
       items:
+        - name: Rendellenesség-észlelő szolgáltatás
+          href: partner-center-portal/anomaly-detection-service-for-metered-billing.md
         - name: Hitelesítési stratégiák
           href: partner-center-portal/marketplace-metering-service-authentication.md
         - name: Marketplace metering service API-k

@@ -47,7 +47,7 @@
         - name: Üzembe helyezés a Kubernetesben
           href: deploy-kubernetes.md
         - name: Üzembe helyezés az Azure Data Studióval
-          href: 'https://docs.microsoft.com/sql/azure-data-studio/deploy-azure-sql-edge?toc=/azure/azure-sql-edge/toc.json'
+          href: /sql/azure-data-studio/deploy-azure-sql-edge?toc=%252fazure%252fazure-sql-edge%252ftoc.json
     - name: Gépi tanulás
       items:
         - name: Gépi tanulás és mesterséges intelligencia az ONNX-szel
@@ -91,9 +91,9 @@
         - name: DATE_BUCKET (Transact-SQL)
           href: date-bucket-tsql.md
         - name: FIRST_VALUE (Transact-SQL)
-          href: 'https://docs.microsoft.com/sql/t-sql/functions/first-value-transact-sql?toc=/azure/azure-sql-edge/toc.json'
+          href: /sql/t-sql/functions/first-value-transact-sql?toc=%252fazure%252fazure-sql-edge%252ftoc.json
         - name: LAST_VALUE (Transact-SQL)
-          href: 'https://docs.microsoft.com/sql/t-sql/functions/last-value-transact-sql?toc=/azure/azure-sql-edge/toc.json'
+          href: /sql/t-sql/functions/last-value-transact-sql?toc=%252fazure%252fazure-sql-edge%252ftoc.json
         - name: Adatmegőrzés és -törlés
           items:
             - name: Adatmegőrzés áttekintése
@@ -109,11 +109,11 @@
         - name: Biztonsági áttekintés
           href: security-overview.md
         - name: Biztonsági funkciók
-          href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-security-get-started?toc=/azure/azure-sql-edge/toc.json'
+          href: /sql/linux/sql-server-linux-security-get-started?toc=%252fazure%252fazure-sql-edge%252ftoc.json
         - name: Kapcsolatok titkosítása
-          href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-encrypted-connections?toc=/azure/azure-sql-edge/toc.json'
+          href: /sql/linux/sql-server-linux-encrypted-connections?toc=%252fazure%252fazure-sql-edge%252ftoc.json
         - name: Azure Security Center for IoT
-          href: 'https://docs.microsoft.com/azure/asc-for-iot/overview?toc=/azure/azure-sql-edge/toc.json&bc=/azure/azure-sql-edge/breadcrumb/toc.json'
+          href: ../defender-for-iot/overview.md?bc=%252fazure%252fazure-sql-edge%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fazure-sql-edge%252ftoc.json
 - name: Útmutató
   items:
     - name: Az SQL Edge konfigurálása
@@ -141,7 +141,7 @@
 - name: Referencia
   items:
     - name: Transact-SQL- (T-SQL-) referencia
-      href: 'https://docs.microsoft.com/sql/t-sql/language-reference'
+      href: /sql/t-sql/language-reference
 - name: További források
   items:
     - name: Partnerek

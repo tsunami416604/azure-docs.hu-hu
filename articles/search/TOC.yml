@@ -34,7 +34,7 @@
       href: search-get-started-java.md
     - name: JavaScript
       href: search-get-started-javascript.md
-    - name: Postman
+    - name: REST
       href: search-get-started-postman.md
     - name: PowerShell
       href: search-get-started-powershell.md
@@ -94,6 +94,8 @@
   items:
     - name: Teljes szöveges keresés
       href: search-lucene-query-architecture.md
+    - name: Relevanciapontozás
+      href: index-similarity-and-scoring.md
     - name: Indexelők
       href: search-indexer-overview.md
     - name: MI-bővítés
@@ -294,8 +296,6 @@
       items:
         - name: Munka az eredményül kapott adatokkal
           href: search-pagination-page-layout.md
-        - name: Relevanciapontozás
-          href: index-similarity-and-scoring.md
         - name: Pontozási profilok
           href: index-add-scoring-profiles.md
         - name: Hasonlósági algoritmus

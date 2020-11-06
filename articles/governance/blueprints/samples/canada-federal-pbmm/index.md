@@ -1,14 +1,14 @@
 ---
 title: Canada Federal PBMM-tervminta – Áttekintés
 description: A Canada Federal PBMM-tervminta áttekintése. Ennek a tervmintának a segítségével az ügyfelek felmérhetik a Canada Federal PBMM adott vezérlőit.
-ms.date: 07/31/2020
+ms.date: 11/02/2020
 ms.topic: sample
-ms.openlocfilehash: de45d8dd3834aee3c430ec8eeb66a063e3ad5a83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6da387d6a2e0124a533c1001ab54dc9a9b4364ad
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500095"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420427"
 ---
 # <a name="overview-of-the-canada-federal-pbmm-blueprint-sample"></a>A Canada Federal PBMM-tervminta áttekintése
 

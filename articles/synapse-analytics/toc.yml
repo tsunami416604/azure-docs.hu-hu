@@ -14,8 +14,9 @@
     - name: Kibocsátási megjegyzések
       href: release-notes.md
 - name: Rövid útmutatók
+  expanded: true
   items:
-    - name: Introduction (Bevezetés)
+    - name: Bevezetés
       href: get-started.md
       displayName: 'get, started, quickstart'
     - name: 1. Synapse-munkaterület létrehozása
@@ -170,7 +171,9 @@
           href: sql/overview-features.md
         - name: Erőforrás-felhasználási modellek
           href: sql/resource-consumption-models.md
-        - name: A kiszolgáló nélküli SQL-készletek használatára vonatkozó ajánlott eljárások
+        - name: Feldolgozott adatok
+          href: sql/data-processed.md
+        - name: Az igény szerinti SQL használatára vonatkozó ajánlott eljárások
           href: sql/best-practices-sql-on-demand.md
         - name: A dedikált SQL-készletek használatára vonatkozó ajánlott eljárások
           href: sql/best-practices-sql-pool.md
