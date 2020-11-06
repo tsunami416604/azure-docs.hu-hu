@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 10/29/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c63733a66a2bb4e320a24649dfe82eac259e79ae
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 3ffdeb0add8622e1b9f28f9603dc146b78f742cd
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131105"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043296"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>Azure-előfizetések létrehozása programozott módon, előzetes verziójú API-kkal
 
@@ -45,7 +45,7 @@ Előfizetés létrehozásához tulajdonosi szerepkörrel kell rendelkeznie egy r
 
 Miután hozzáadták Önt egy fióktulajdonoshoz társított regisztrációs fiókhoz, az Azure a fiók és a regisztráció közötti kapcsolat alapján állapítja meg, hogy hová kell kiszámlázni az előfizetési díjakat. A fiókhoz létrehozott minden előfizetést annak az EA-regisztrációnak számláz ki, amelyben a fiók található. Előfizetések létrehozásához meg kell adni a regisztrációs fiókra vonatkozó értékeket, valamint az előfizetés tulajdonosának felhasználói nevét.
 
-A következő parancsok futtatásához be kell jelentkeznie a fióktulajdonos *kezdőkönyvtárába*, amely az a könyvtár, amelyben az előfizetések alapértelmezetten létrejönnek.
+A következő parancsok futtatásához be kell jelentkeznie a fióktulajdonos *kezdőkönyvtárába* , amely az a könyvtár, amelyben az előfizetések alapértelmezetten létrejönnek.
 
 ### <a name="rest"></a>[REST](#tab/rest)
 
@@ -212,7 +212,7 @@ A paraméterek teljes listáját lásd az [az account create](/cli/azure/ext/sub
 ### <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Az Azure Enterprise-előfizetések létrehozási API-jára vonatkozó korlátozások
 
 - Az API-val csak Azure Enterprise-előfizetések hozhatók létre.
-- Egy regisztrációs fiókhoz legfeljebb 2000 előfizetés hozható létre. Ha elérte ezt a mennyiséget, csak az Azure Portalon hozhatók létre előfizetések a fiókhoz. Ha több előfizetést szeretne létrehozni az API-val, hozzon létre egy másik regisztrációs fiókot.
+- Egy regisztrációs fiókhoz legfeljebb 2000 előfizetés hozható létre. Ha elérte ezt a mennyiséget, csak az Azure Portalon hozhatók létre előfizetések a fiókhoz. Ha több előfizetést szeretne létrehozni az API-val, hozzon létre egy másik regisztrációs fiókot. A megszakított, a törölt és az átadott előfizetések is beleszámítanak a 2000-es korlátba.
 - Azok a felhasználók, akik nem fióktulajdonosok, de hozzá lettek adva egy regisztrációs fiókhoz az Azure RBAC használatával, nem hozhatnak létre előfizetéseket az Azure Portalon.
 - Nem választhatja ki, hogy melyik bérlőben szeretné hozni az előfizetést. Az előfizetés mindig a fióktulajdonos otthoni bérlőjében jön létre. Ha másik bérlőbe szeretne áthelyezni egy előfizetést, tekintse meg az [előfizetés bérlőjének módosítását](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md) ismertető cikket.
 
@@ -324,7 +324,7 @@ Az `invoiceSectionDisplayName` tulajdonsággal azonosíthatja azt a számlaszaka
 
 ### <a name="create-a-subscription-for-an-invoice-section"></a>Előfizetés létrehozása számlaszakaszhoz
 
-Az alábbi példa egy *Microsoft Azure-csomag típusú*, *Fejlesztői csapat előfizetés* nevű előfizetést hoz létre a *Fejlesztés* számlaszakaszhoz. Az előfizetés a *Contoso pénzügyi* számlázási profilon lesz kiszámlázva, és a számla *Fejlesztés* szakaszában jelenik meg.
+Az alábbi példa egy *Microsoft Azure-csomag típusú* , *Fejlesztői csapat előfizetés* nevű előfizetést hoz létre a *Fejlesztés* számlaszakaszhoz. Az előfizetés a *Contoso pénzügyi* számlázási profilon lesz kiszámlázva, és a számla *Fejlesztés* szakaszában jelenik meg.
 
 Hajtsa végre a következő kérést, amelyben cserélje le az `<invoiceSectionId>` értéket a második lépésben kimásolt `invoiceSectionId` értékével (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-XXXX-XXX-XXX/invoiceSections/GJGR-XXXX-XXX-XXX```). Adja meg a második lépésben kimásolt `billingProfileId` és `skuId` értéket az API kérelemparamétereiben. Tulajdonosok megadásához tekintse meg a [felhasználói objektumazonosítók lekérésének módját](grant-access-to-create-subscription.md#userObjectId).
 

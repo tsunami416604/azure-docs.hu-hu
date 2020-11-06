@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 11/04/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: fcc7c6ff74e17db2066d97597849c985f5a961e9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 23615daf4a07e02b01bbd5a9cdf57ec9a81a2b76
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76514068"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347394"
 ---
 ::: zone target="docs"
 
@@ -24,7 +24,7 @@ A rövid útmutató az Azure Data Box Disk az Azure Portal használatával való
 
 Részletes üzembehelyezési és nyomkövetési utasítások: [Oktatóanyag: Az Azure Data Box Disk megrendelése](data-box-disk-deploy-ordered.md) című rész lépéseit. 
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F&preserve-view=true).
 
 ::: zone-end
 
@@ -52,11 +52,11 @@ Jelentkezzen be az Azure Portalra a [https://aka.ms/azuredataboxfromdiskdocs](ht
 
 > [!div class="checklist"]
 >
-> - **Előfeltételek áttekintése**: Ellenőrizze a lemezek és a kábelek számát, az operációs rendszert és az egyéb szoftvereket.
-> - **Csatlakoztatás és zárolás feloldása**: Csatlakoztassa az eszközt, és az adatok másolásához oldja fel a lemez zárolását.
+> - **Előfeltételek áttekintése** : Ellenőrizze a lemezek és a kábelek számát, az operációs rendszert és az egyéb szoftvereket.
+> - **Csatlakoztatás és zárolás feloldása** : Csatlakoztassa az eszközt, és az adatok másolásához oldja fel a lemez zárolását.
 > - **Adatmásolás a lemezre és ellenőrzés** Másolja az adatokat a lemezen található, előre létrehozott mappákba.
-> - **Lemezek visszaküldése**: Küldje vissza a lemezeket az Azure-adatközpontba, ahol feltöltik az adatokat a tárfiókjába.
-> - **Az Azure-beli adatok ellenőrzése**: Az adatok forrás-adatkiszolgálóról történő törlése előtt ellenőrizze, hogy fel lettek-e töltve a tárfiókba.
+> - **Lemezek visszaküldése** : Küldje vissza a lemezeket az Azure-adatközpontba, ahol feltöltik az adatokat a tárfiókjába.
+> - **Az Azure-beli adatok ellenőrzése** : Az adatok forrás-adatkiszolgálóról történő törlése előtt ellenőrizze, hogy fel lettek-e töltve a tárfiókba.
 
 ::: zone-end
 
@@ -64,6 +64,8 @@ Jelentkezzen be az Azure Portalra a [https://aka.ms/azuredataboxfromdiskdocs](ht
 ::: zone target="docs"
 
 ## <a name="order"></a>Rendelés
+
+### <a name="portal"></a>[Portál](#tab/azure-portal)
 
 Ez a lépés nagyjából 5 percet vesz igénybe.
 
@@ -73,6 +75,74 @@ Ez a lépés nagyjából 5 percet vesz igénybe.
 4. Adja meg a rendelés részleteit és a szállítási adatokat. Ha a szolgáltatás elérhető az Ön régiójában, adja meg az értesítési e-mail-címeket, tekintse át az összefoglalót, és hozza létre a rendelést.
 
 A rendelés létrehozását követően megtörténik a meghajtók szállításra való előkészítése.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Ezekkel az Azure CLI-parancsokkal Data Box Disk-feladatokat hozhat létre.
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+1. Futtassa az [az group create](/cli/azure/group#az_group_create) parancsot egy erőforráscsoport létrehozásához, vagy használjon egy meglévő erőforráscsoportot:
+
+   ```azurecli
+   az group create --name databox-rg --location westus
+   ```
+
+1. Futtassa az [az storage account create](/cli/azure/storage/account#az_storage_account_create) parancsot egy tárfiók létrehozásához, vagy használjon egy meglévő tárfiókot:
+
+   ```azurecli
+   az storage account create --resource-group databox-rg --name databoxtestsa
+   ```
+
+1. Futtassa az [az databox job create](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_create) parancsot egy DataBoxDisk termékváltozattal rendelkező Data Box-feladat létrehozásához:
+
+   ```azurecli
+   az databox job create --resource-group databox-rg --name databoxdisk-job \
+       --location westus --sku DataBoxDisk --contact-name "Jim Gan" --phone=4085555555 \
+       –-city Sunnyvale --email-list JimGan@contoso.com --street-address1 "1020 Enterprise Way" \
+       --postal-code 94089 --country US --state-or-province CA \
+       --storage-account databoxtestsa --expected-data-size 1
+   ```
+
+1. Futtassa az [az databox job update](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_update) parancsot egy feladat frissítéséhez, mint ebben a példában, amelyben módosítja a kapcsolattartó nevét és e-mail-címét:
+
+   ```azurecli
+   az databox job update -g databox-rg --name databox-job --contact-name "Robert Anic" --email-list RobertAnic@contoso.com
+   ```
+
+   Futtassa az [az databox job show](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_show) parancsot a feladat adatainak lekéréséhez:
+
+   ```azurecli
+   az databox job show --resource-group databox-rg --name databox-job
+   ```
+
+   Futtassa az [az databox job list]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list) parancsot egy erőforráscsoport összes Data Box-feladatának megtekintéséhez:
+
+   ```azurecli
+   az databox job list --resource-group databox-rg
+   ```
+
+   Futtassa az [az databox job cancel](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_cancel) parancsot egy feladat megszakításához:
+
+   ```azurecli
+   az databox job cancel –resource-group databox-rg --name databox-job --reason "Cancel job."
+   ```
+
+   Futtassa az [az databox job delete](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_delete) parancsot egy feladat törléséhez:
+
+   ```azurecli
+   az databox job delete –resource-group databox-rg --name databox-job
+   ```
+
+1. Futtassa az [az databox job list-credentials]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list_credentials) parancsot a Data Box-feladat hitelesítő adatainak listázásához:
+
+   ```azurecli
+   az databox job list-credentials --resource-group "databox-rg" --name "databoxdisk-job"
+   ```
+
+A rendelés létrehozását követően megtörténik az eszköz a szállításra való előkészítése.
+
+---
 
 ## <a name="unpack"></a>Kicsomagolás
 
@@ -100,7 +170,7 @@ Ez a lépés nagyjából 5 percet vesz igénybe.
 
 A művelet végrehajtásának időtartama az adatok mennyiségétől függ.
 
-1. A meghajtó a *PageBlob*, a *BlockBlob*, az *AzureFile*, a *ManagedDisk* és a *DataBoxDiskImport* mappát tartalmazza. A blokkblobokként importálandó adatokat húzással másolja a *BlockBlob* mappába. Hasonlóképpen húzza a VHD/VHDX és hasonló típusú adatokat a *PageBlob* mappába, valamint a megfelelő adatokat az *AzureFile* mappába. Másolja a felügyelt lemezként feltölteni kívánt VHD-kat egy, a *ManagedDisk* mappában található almappába.
+1. A meghajtó a *PageBlob* , a *BlockBlob* , az *AzureFile* , a *ManagedDisk* és a *DataBoxDiskImport* mappát tartalmazza. A blokkblobokként importálandó adatokat húzással másolja a *BlockBlob* mappába. Hasonlóképpen húzza a VHD/VHDX és hasonló típusú adatokat a *PageBlob* mappába, valamint a megfelelő adatokat az *AzureFile* mappába. Másolja a felügyelt lemezként feltölteni kívánt VHD-kat egy, a *ManagedDisk* mappában található almappába.
 
     A rendszer a *BlockBlob* és a *PageBlob* mappa alatt található minden almappához létrehoz egy tárolót az Azure-tárfiókban. Létrejön egy fájlmegosztás egy, az *AzureFile* mappában található almappában.
 
@@ -122,7 +192,7 @@ Ez a lépés kb. 5–7 percet vesz igénybe.
 
 A Data Box Disk szolgáltatás egy e-mail-értesítést küld, és frissíti a rendelés állapotát az Azure Portalon.
 
-## <a name="verify-your-data"></a>Az adatok ellenőrzése
+## <a name="verify-your-data"></a>Adatok ellenőrzése
 
 A művelet végrehajtásának időtartama az adatok mennyiségétől függ.
 

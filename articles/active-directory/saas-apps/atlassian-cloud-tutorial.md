@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 11/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 7690977f23b193bb3ba282df14d348b3fac0ad6b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: fe83a012cac68f705bc9fabc7748f5a7c7c61bbb
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457537"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330532"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>Oktatóanyag: a Atlassian-felhő integrálása Azure Active Directory
 
@@ -50,14 +50,14 @@ A Atlassian Cloud Azure AD-be való integrálásának konfigurálásához hozzá
 
 1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **Atlassian Cloud** kifejezést a keresőmezőbe.
 1. Válassza a **Atlassian Cloud** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Az Azure AD SSO konfigurálása és tesztelése
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Atlassian-felhővel egy **B. Simon**nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Atlassian-felhőben.
+Konfigurálja és tesztelje az Azure AD SSO-t a Atlassian-felhővel egy **B. Simon** nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Atlassian-felhőben.
 
 Az Azure AD SSO Atlassian-felhővel való konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
@@ -71,7 +71,7 @@ Az Azure AD SSO Atlassian-felhővel való konfigurálásához és teszteléséhe
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A Atlassian-felhőben lévő konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
+1. A Atlassian-felhőben lévő konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva.
 
     ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
@@ -106,11 +106,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![SAML-konfiguráció hozzáadása 2](./media/atlassian-cloud-tutorial/add-saml-configuration.png)
 
-1. A Azure Portal a **Atlassian Cloud** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés beállítása**lehetőséget.
+1. A Azure Portal a **Atlassian Cloud** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés beállítása** lehetőséget.
 
    ![egyszeri bejelentkezés beállítása](./media/atlassian-cloud-tutorial/set-up-sso.png)
 
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 
    ![SAML az Azure-ban](./media/atlassian-cloud-tutorial/saml-in-azure.png)
 
@@ -158,7 +158,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
    
 1. A Atlassian Cloud Application egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az attribútum-hozzárendelés szerkesztéséhez kattintson a **Szerkesztés** ikonra. 
 
-   ![attribútumok](./media/atlassian-cloud-tutorial/default-attributes.png)
+   ![attribútumok](./media/atlassian-cloud-tutorial/edit-attribute.png)
    
    1. Attribútum-hozzárendelés egy Microsoft 365 licenccel rendelkező Azure AD-bérlőhöz
       
@@ -166,13 +166,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
       ![attribútumok és jogcímek](./media/atlassian-cloud-tutorial/user-attributes-and-claims.png)
       
-      b. A Atlassian Cloud elvárja, hogy a **NameIdentifier** (**egyedi felhasználói azonosító**) a felhasználó e-mail-címére (**User. e-mail**) legyen leképezve. Szerkessze a **forrás attribútumot** , és változtassa meg a **User. mail**-ben. Mentse a jogcím módosításait.
+      b. A Atlassian Cloud elvárja, hogy a **NameIdentifier** ( **egyedi felhasználói azonosító** ) a felhasználó e-mail-címére ( **User. e-mail** ) legyen leképezve. Szerkessze a **forrás attribútumot** , és változtassa meg a **User. mail** -ben. Mentse a jogcím módosításait.
 
       ![egyedi felhasználói azonosító](./media/atlassian-cloud-tutorial/unique-user-identifier.png)
       
       c. A végső attribútum-hozzárendeléseknek a következőképpen kell kinéznie.
 
-      ![2. rendszerkép](common/default-attributes.png)
+      ![2. rendszerkép](./media/atlassian-cloud-tutorial/default-attributes-1.png)
       
    1. Attribútumok leképezése Microsoft 365 licenc nélküli Azure AD-bérlőhöz 
 
@@ -180,34 +180,34 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
       ![3. rendszerkép](./media/atlassian-cloud-tutorial/email-address.png)
          
-      b. Míg az Azure nem tölti fel a **User. mail** attribútumot az Azure ad-bérlőben létrehozott felhasználók számára Microsoft 365 licencek nélkül, és az e-maileket a **userPrincipalName** attribútumban tárolja az ilyen felhasználók számára. A Atlassian Cloud elvárja, hogy a **NameIdentifier** (**egyedi felhasználói azonosító**) a felhasználó e-mail-címére legyen leképezve (**User. userPrincipalName**).  Szerkessze a **forrás attribútumot**  , és módosítsa a **User. userPrincipalName**értékre. Mentse a jogcím módosításait.
+      b. Míg az Azure nem tölti fel a **User. mail** attribútumot az Azure ad-bérlőben létrehozott felhasználók számára Microsoft 365 licencek nélkül, és az e-maileket a **userPrincipalName** attribútumban tárolja az ilyen felhasználók számára. A Atlassian Cloud elvárja, hogy a **NameIdentifier** ( **egyedi felhasználói azonosító** ) a felhasználó e-mail-címére legyen leképezve ( **User. userPrincipalName** ).  Szerkessze a **forrás attribútumot**  , és módosítsa a **User. userPrincipalName** értékre. Mentse a jogcím módosításait.
 
       ![e-mail beállítása](./media/atlassian-cloud-tutorial/set-email.png)
          
       c. A végső attribútum-hozzárendeléseknek a következőképpen kell kinéznie.
 
-      ![4. rendszerkép](common/default-attributes.png)
+      ![4. rendszerkép](./media/atlassian-cloud-tutorial/default-attributes-2.png)
      
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a Atlassian-felhőhöz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **Atlassian-felhő**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **Atlassian-felhő** elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
@@ -216,11 +216,11 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 Ha engedélyezni szeretné, hogy az Azure AD-felhasználók bejelentkezzenek a Atlassian-felhőbe, a következő módon helyezze üzembe a felhasználói fiókokat manuálisan a Atlassian-felhőben:
 
-1. Az **Adminisztráció** ablaktáblán válassza a **felhasználók**lehetőséget.
+1. Az **Adminisztráció** ablaktáblán válassza a **felhasználók** lehetőséget.
 
     ![A Atlassian Cloud Users hivatkozás](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-14.png)
 
-1. Ha felhasználót szeretne létrehozni a Atlassian-felhőben, válassza a **felhasználó meghívása**lehetőséget.
+1. Ha felhasználót szeretne létrehozni a Atlassian-felhőben, válassza a **felhasználó meghívása** lehetőséget.
 
     ![Atlassian felhőalapú felhasználó létrehozása](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-15.png)
 
@@ -228,7 +228,7 @@ Ha engedélyezni szeretné, hogy az Azure AD-felhasználók bejelentkezzenek a A
 
     ![Atlassian Felhőbeli felhasználó](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-16.png)
 
-1. Ha e-mailben szeretne meghívót küldeni a felhasználónak, válassza a **felhasználók meghívása**lehetőséget. A rendszer elküld egy e-mailes meghívót a felhasználónak, és a meghívót elfogadva a felhasználó aktív a rendszeren.
+1. Ha e-mailben szeretne meghívót küldeni a felhasználónak, válassza a **felhasználók meghívása** lehetőséget. A rendszer elküld egy e-mailes meghívót a felhasználónak, és a meghívót elfogadva a felhasználó aktív a rendszeren.
 
 > [!NOTE]
 > A felhasználókat a **tömeges létrehozás** gomb kiválasztásával is létrehozhatja a **felhasználók** szakaszban.
@@ -250,6 +250,6 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 A Microsoft Access panel használatával bármilyen módban tesztelheti az alkalmazást. Ha a hozzáférési panelen a Atlassian felhő csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie arra a Atlassian-felhőbe, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Atlassian-felhő konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

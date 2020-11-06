@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: a04088fc1074949a1228794c22c1fa65a0b736a7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5685a2553b95308a1c18c3e490737338f609b594
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370045"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330937"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>A hanganyag-létrehozási eszközzel fejlesztheti a szintézist
 
@@ -48,8 +48,8 @@ Az új beszédfelismerési erőforrás üzembe helyezése néhány percet vesz i
  
 ### <a name="step-3---log-into-the-audio-content-creation-with-your-azure-account-and-speech-resource"></a>3. lépés – jelentkezzen be a hangtartalom létrehozására az Azure-fiókkal és a beszédfelismerési erőforrással
 
-1. Az Azure-fiók és a beszédfelismerési erőforrás beszerzése után az első **lépések**lehetőségre kattintva bejelentkezhet a [hangtartalom-létrehozásba](https://aka.ms/audiocontentcreation) .
-2. Ekkor megjelenik a **beszédfelismerési erőforrás** oldala. Válassza ki a használni kívánt beszédfelismerési erőforrást. A hang létrehozásához kattintson **az Ugrás a studióra** elemre. Új beszédfelismerési erőforrás létrehozásához kattintson az **új létrehozása**lehetőségre. Amikor legközelebb bejelentkezik a hangtartalom-létrehozási eszközbe, közvetlenül az aktuális beszédfelismerési erőforrásban található hang-és munkahelyi fájlokra fogunk hivatkozni. 
+1. Az Azure-fiók és a beszédfelismerési erőforrás beszerzése után az első **lépések** lehetőségre kattintva bejelentkezhet a [hangtartalom-létrehozásba](https://aka.ms/audiocontentcreation) .
+2. Ekkor megjelenik a **beszédfelismerési erőforrás** oldala. Válassza ki a használni kívánt beszédfelismerési erőforrást. A hang létrehozásához kattintson **az Ugrás a studióra** elemre. Új beszédfelismerési erőforrás létrehozásához kattintson az **új létrehozása** lehetőségre. Amikor legközelebb bejelentkezik a hangtartalom-létrehozási eszközbe, közvetlenül az aktuális beszédfelismerési erőforrásban található hang-és munkahelyi fájlokra fogunk hivatkozni. 
 3. A beszédfelismerési erőforrást bármikor módosíthatja a **Beállítások** lehetőséggel, amely a felső NAV-ban található.
 
 ## <a name="how-to-use-the-tool"></a>Az eszköz használata
@@ -114,7 +114,7 @@ Miután áttekintette a hangkimenetet, és elégedett a hangolással és a beál
 2. Válassza ki a beállított hang kimeneti formátumát. A támogatott formátumok és mintavételi díjak listája alább található.
 3. A feladat állapotát az **Exportálás feladat** lapon tekintheti meg. Ha a feladat meghiúsul, tekintse meg a teljes jelentés részletes információit tartalmazó oldalt.
 4. Ha a feladat befejeződött, a hang letölthető a **hangkönyvtár** lapon.
-5. Kattintson a **Letöltés**gombra. Most már készen áll az egyéni hangolt hang használatára alkalmazásaiban vagy termékeiben.
+5. Kattintson a **Letöltés** gombra. Most már készen áll az egyéni hangolt hang használatára alkalmazásaiban vagy termékeiben.
 
 **Támogatott hangformátumok**
 
@@ -131,16 +131,16 @@ Ha egynél több felhasználó szeretné használni a hangtartalom létrehozás�
 
 Az alábbi lépéseket követve hozzáadhat egy felhasználót egy beszédfelismerési erőforráshoz, hogy a hangtartalom létrehozását is használhassa.
 
-1. Keresse meg a **kognitív szolgáltatásokat** a Azure Portalban, majd válassza ki azt a beszédfelismerési erőforrást, amelyhez felhasználókat szeretne hozzáadni.
+1. Keresse meg a **kognitív szolgáltatásokat** a [Azure Portalban](https://portal.azure.com/), majd válassza ki azt a beszédfelismerési erőforrást, amelyhez felhasználókat szeretne hozzáadni.
 2. Kattintson a **Hozzáférés-vezérlés (IAM)** elemre. Kattintson a **Szerepkör-hozzárendelések** lapra az előfizetés szerepkör-hozzárendeléseinek megtekintéséhez.
-    :::image source="media/audio-content-creation/access-control-roles.png" alt-text="A szöveg és a beszéd közötti kimenet finomhangolásához szükséges lépések diagramja":::
+    :::image source="media/audio-content-creation/access-control-roles.png" alt-text="Szerepkör-hozzárendelés lap":::
 1. Kattintson a **Hozzáadás** > **Szerepkör-hozzárendelés hozzáadása** lehetőségre a Szerepkör-hozzárendelés hozzáadása szakasz megnyitásához. A szerepkör legördülő listában válassza ki a **kognitív szolgáltatás felhasználói** szerepkörét. Ha meg szeretné adni a beszédfelismerési erőforrás felhasználói tulajdonosát, kiválaszthatja a **tulajdonosi** szerepkört.
 1. A listából válasszon ki egy felhasználót. Ha nem látja a felhasználót a listában, beírhatja a kijelölés szövegmezőbe a megjelenítendő nevek és e-mail-címek kereséséhez. Ha a felhasználó nem ebben a címtárban van, megadhatja a felhasználó [Microsoft-fiókját](https://account.microsoft.com/account) (amely az Azure Active Directory által megbízhatónak számít).
 1. Kattintson a **Mentés** gombra a szerepkör hozzárendeléséhez. Néhány pillanat elteltével a felhasználónak a kognitív szolgáltatás felhasználói szerepköréhez kell rendelnie a beszédfelismerési erőforrás hatókörében.
 
-    :::image source="media/audio-content-creation/add-role-first.png" alt-text="A szöveg és a beszéd közötti kimenet finomhangolásához szükséges lépések diagramja":::
+    :::image source="media/audio-content-creation/add-role-first.png" alt-text="Szerepkör hozzáadása párbeszédpanel":::
 
-1. A hozzáadott felhasználók egy meghívót tartalmazó e-mailt fognak kapni. Miután **Accept invitation**  >  **Az Azure-hoz való csatlakozásra**kattintott a meghívó elfogadása elemre, használhatja a [hangtartalom létrehozását](https://aka.ms/audiocontentcreation).
+1. A hozzáadott felhasználók egy meghívót tartalmazó e-mailt fognak kapni. Miután **Accept invitation**  >  **Az Azure-hoz való csatlakozásra** kattintott a meghívó elfogadása elemre, használhatja a [hangtartalom létrehozását](https://aka.ms/audiocontentcreation).
 
 Azok a felhasználók, akik ugyanabban a beszédfelismerési erőforrásban találhatók, láthatják egymás munkáját a hangtartalom-létrehozási Studióban. Ha azt szeretné, hogy az egyes felhasználók egyedi és privát munkaterülettel rendelkezzenek a hangtartalom létrehozásakor, [hozzon létre egy új beszédfelismerési erőforrást](#step-2---create-a-speech-resource) minden felhasználó számára, és adjon meg minden felhasználónak egyedi hozzáférést a beszédfelismerési erőforráshoz. 
 
@@ -148,21 +148,21 @@ Azok a felhasználók, akik ugyanabban a beszédfelismerési erőforrásban tal�
 1. Keresse meg a **kognitív szolgáltatásokat** a Azure Portalban, válassza ki azt a beszédfelismerési erőforrást, amelyből el szeretné távolítani a felhasználókat.
 2. Kattintson a **Hozzáférés-vezérlés (IAM)** elemre. Kattintson a **szerepkör-hozzárendelések** lapra a beszédfelismerési erőforrás összes szerepkör-hozzárendelésének megtekintéséhez.
 3. Válassza ki az eltávolítani kívánt felhasználókat, majd kattintson **Remove**  >  **az OK eltávolítása gombra**.
-    :::image source="media/audio-content-creation/remove-user.png" alt-text="A szöveg és a beszéd közötti kimenet finomhangolásához szükséges lépések diagramja":::
+    :::image source="media/audio-content-creation/remove-user.png" alt-text="Eltávolítás gomb":::
 
 ### <a name="enable-users-to-grant-access"></a>Hozzáférés engedélyezésének engedélyezése a felhasználók számára
 Ha azt szeretné, hogy az egyik felhasználó hozzáférjen más felhasználókhoz, a felhasználónak a beszédfelismerési erőforrás tulajdonosi szerepkörét kell megadnia, és a felhasználót az Azure címtár-olvasóként kell beállítania. 
 1. Adja hozzá a felhasználót a beszédfelismerési erőforrás tulajdonosához. Lásd: [felhasználók hozzáadása egy beszédfelismerési erőforráshoz](#add-users-to-a-speech-resource).
-    :::image source="media/audio-content-creation/add-role.png" alt-text="A szöveg és a beszéd közötti kimenet finomhangolásához szükséges lépések diagramja":::
-1. Válassza ki a bal felső sarokban található összecsukott menüt. Kattintson a **Azure Active Directory**elemre, majd kattintson a **felhasználók**elemre.
-1. Keresse meg a felhasználó Microsoft-fiók, és lépjen a felhasználó részletes oldalára. Kattintson a **hozzárendelt szerepkörök**elemre.
-1. Kattintson a **hozzárendelések hozzáadása**  ->  **Directory-olvasók**elemre.
+    :::image source="media/audio-content-creation/add-role.png" alt-text="Szerepkör-tulajdonos mező":::
+1. Válassza ki a bal felső sarokban található összecsukott menüt. Kattintson a **Azure Active Directory** elemre, majd kattintson a **felhasználók** elemre.
+1. Keresse meg a felhasználó Microsoft-fiók, és lépjen a felhasználó részletes oldalára. Kattintson a **hozzárendelt szerepkörök** elemre.
+1. Kattintson a **hozzárendelések hozzáadása**  ->  **Directory-olvasók** elemre.
 
 ## <a name="see-also"></a>Lásd még
 
 * [Hosszú hang API](https://aka.ms/long-audio-api)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Speech Studio](https://speech.microsoft.com)

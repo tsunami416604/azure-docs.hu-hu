@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 8cd5969e4362b1581a7b9aebf39f8c6871839918
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: a101afb2089e4ab1fa32bd0668c60b477039b566
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558743"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330580"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Az Azure-hoz csatlakoztatott Video Indexer-fiók létrehozása
 
@@ -82,7 +82,7 @@ Ha *próbaverzióról* *fizetett* video Indexer fiókra vált, az összes videó
         A Media Services-fióknak a Video Indexer-fiókkal megegyező régióval kell rendelkeznie.
 
         > [!NOTE]
-        > Az indexelési időtartam és az alacsony átviteli sebesség minimálisra csökkentése érdekében erősen ajánlott a Media Services-fiókban lévő [fenntartott egységek](../previous/media-services-scale-media-processing-overview.md ) típusának és számának módosítása **10 S3 fenntartott egységre** . [A fenntartott egységek módosításához lásd: a portál használata](../previous/media-services-portal-scale-media-processing.md). A fenntartott egységeket a fiókja terheli, és megtekintheti a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/media-services/#analytics).
+        > Az indexelési időtartam és az alacsony átviteli sebesség minimálisra csökkentése érdekében erősen ajánlott a Media Services-fiókban lévő [fenntartott egységek](../previous/media-services-scale-media-processing-overview.md ) típusának és számának módosítása **10 S3 fenntartott egységre**. [A fenntartott egységek módosításához lásd: a portál használata](../previous/media-services-portal-scale-media-processing.md). A fenntartott egységeket a fiókja terheli, és megtekintheti a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/media-services/#analytics).
     * A kapcsolat manuális konfigurálásához válassza a **váltás manuális konfigurációra** hivatkozásra.
 
         Részletes információk: [Kapcsolódás az Azure-hoz manuálisan](#connect-to-azure-manually-advanced-option) (speciális beállítás) szakasz, amely az alábbiak szerint jelenik meg.
@@ -94,7 +94,7 @@ Ha *próbaverzióról* *fizetett* video Indexer fiókra vált, az összes videó
 1. Győződjön meg arról, hogy a Media Services-fiók folyamatos átviteli végpontja fut, mielőtt le tudja játszani a videókat a Video Indexer webalkalmazásban (a Start gombra, ha a leállított állapotú).
 
 > [!TIP]
-> Ha szeretné, hogy a fiók felhasználóbarát megjelenítést állomásnév, lépjen a **Beállítások menüpontra** .
+> Ha szeretné, hogy a fiók felhasználóbarát megjelenítést állomásnév, lépjen a **Beállítások menüpontra**.
 
 ## <a name="connect-to-azure-manually-advanced-option"></a>Kapcsolódás az Azure-hoz manuálisan (speciális beállítás)
 
@@ -163,7 +163,7 @@ A tartalom importálásának lehetősége a fent ismertetett automatizált és m
 
 Ha később törölni szeretné a fiókot, törölheti a fiókot a Video Indexer webhelyről. A fiók törléséhez a tulajdonosnak kell lennie.
 
-Válassza ki a fiók – > **Beállítások**  ->  **törölje ezt a fiókot** . 
+Válassza ki a fiók – > **Beállítások**  ->  **törölje ezt a fiókot**. 
 
 A fiók 90 nap múlva véglegesen törölve lesz.
 
@@ -184,6 +184,15 @@ A következő Azure Media Services kapcsolódó megfontolások érvényesek:
 * Ha automatikusan csatlakozik, Video Indexer beállítja a Media szolgáltatás **számára fenntartott egységeket** 10 S3 egységre:
 
     ![Media Services fenntartott egységek](./media/create-account/ams-reserved-units.png)
+    
+## <a name="automate-creation-of-the-video-indexer-account"></a>A Video Indexer fiók létrehozásának automatizálása
+
+A fiók létrehozásának automatizálásához a következő két lépésből álló folyamat szükséges:
+ 
+1. A Azure Resource Manager használatával hozzon létre egy Azure Media Services-fiókot és egy Azure AD-alkalmazást.
+
+    Tekintse meg a [Media Services fiók létrehozási sablonjának](https://github.com/Azure-Samples/media-services-v3-arm-templates)példáját.
+1. Hívja [a Create-Account fiókot a Media Services és az Azure ad-alkalmazással](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 0fd2312df31e61ae30f4c3fd04dc0991ac0f4675
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 6276bd0db9bfb93897f7350b87d208ac2951c859
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376855"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330325"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>Oktatóanyag a helyi alkalmazások a rétegek használatával történő védelemének Azure AD B2C bővítéséhez
 
@@ -57,7 +57,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ![A képen egy Azure AD B2C integráció architektúrája látható a rétegek Maverics, hogy lehetővé váljon a hibrid alkalmazásokhoz való hozzáférés](./media/partner-strata/strata-architecture-diagram.png)
 
-| Lépések | Description |
+| Lépések | Leírás |
 |:-------|:---------------|
 | 1. | A felhasználó a helyszíni üzemeltetett alkalmazás elérésére vonatkozó kérést tesz elérhetővé. A Maverics Identity Orchestrator a felhasználó által az alkalmazásnak benyújtott kérelmet.|
 | 2. | A Orchestrator ellenőrzi a felhasználó hitelesítési állapotát. Ha nem kap munkamenet-jogkivonatot, vagy a megadott munkamenet-jogkivonat érvénytelen, a rendszer elküldi a felhasználónak, hogy Azure AD B2C a hitelesítéshez.|
@@ -69,7 +69,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 | 8. | A felhasználó most már hitelesítve van, és hozzáfér az alkalmazáshoz.|
 
 ## <a name="get-maverics-identity-orchestrator"></a>Maverics-identitás Orchestrator beolvasása
-
+Ahhoz, hogy a szoftvert használni lehessen a régi helyszíni alkalmazás Azure AD B2Csal való integrálásához, vegye fel a kapcsolatot a [rétegek](https://www.strata.io/contact/)használatába. A szoftver beszerzése után kövesse az alábbi lépéseket a Orchestrator-specifikus előfeltételek meghatározásához, valamint a szükséges telepítési és konfigurációs lépések végrehajtásához.
 
 ## <a name="configure-your-azure-ad-b2c-tenant"></a>Azure AD B2C bérlő konfigurálása
 
@@ -338,7 +338,7 @@ appgateways:
 
 7. Ekkor meg kell jelennie a kért alkalmazásnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkért tekintse át a következő cikkeket:
 

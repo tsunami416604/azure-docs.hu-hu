@@ -7,15 +7,15 @@ ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 08/20/2020
+ms.topic: how-to
+ms.date: 10/28/2020
 ms.author: banders
-ms.openlocfilehash: c24af5a9fb1367e00d9a014b1e10f750a38ad30b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e380aa1f4d50e6ced34254ceca9d899022142f6d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270899"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911290"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Az Azure számlázási és napi használati adatainak letöltése vagy megtekintése
 
@@ -41,7 +41,7 @@ A legtöbb előfizetés esetében a számláját letöltheti az Azure Portalról
 
     ![A számlázási és a használati lehetőséget megjelenítő képernyőkép](./media/download-azure-invoice-daily-usage-date/billingandusage.png)
 
-3. A PDF formátumú számla letöltéséhez kattintson a Letöltés gombra, majd válassza a **Számla letöltése** lehetőséget. Ha a számla **Nem érhető el**, derítse ki, [miért nem látja a legutóbbi számlázási időszakra vonatkozó számlát](#noinvoice).
+3. A PDF formátumú számla letöltéséhez kattintson a Letöltés gombra, majd válassza a **Számla letöltése** lehetőséget. Ha a számla **Nem érhető el** , derítse ki, [miért nem látja a legutóbbi számlázási időszakra vonatkozó számlát](#noinvoice).
 
     ![A számlázási időszakokat, a letöltési lehetőséget és az egyes számlázási időszakok teljes díját ábrázoló képernyőkép](./media/download-azure-invoice-daily-usage-date/downloadinvoice.png)
 
@@ -81,7 +81,7 @@ További címzetteket is engedélyezhet és konfigurálhat, akik e-mailben megka
 
 ### <a name="get-your-subscriptions-invoices-in-email"></a>Az előfizetése számláinak kérése e-mailben
 
-1. Válassza ki az előfizetését az [Előfizetések lapon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Hagyja jóvá az összes előfizetését. Kattintson a **Számlák**, majd a **Számla küldése e-mailben** parancsra.
+1. Válassza ki az előfizetését az [Előfizetések lapon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Hagyja jóvá az összes előfizetését. Kattintson a **Számlák** , majd a  **Számla küldése e-mailben** parancsra.
 
     ![A jóváhagyási folyamatot ábrázoló képernyőkép](./media/download-azure-invoice-daily-usage-date/invoicesdeeplink01.png)
 
@@ -136,9 +136,7 @@ A használati adatok EA-ügyfélként történő megtekintéséhez és letölté
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Keressen rá a *Költségkezelés + számlázás* kifejezésre.
-
-    ![Képernyőkép az Azure Portal keresőmezőjéről](./media/download-azure-invoice-daily-usage-date/portal-cm-billing-search.png)
-
+1. Ha több számlázási fiókhoz is hozzáféréssel rendelkezik, válassza ki az EA számlázási fiókhoz tartozó számlázási hatókört.
 1. Válassza a **Felhasználás + díjak** lehetőséget.
 1. Válassza ki a **Letöltés** elemet a letölteni kívánt hónapnál.
 
@@ -166,11 +164,7 @@ Letöltheti a jelenlegi számlázási időszak aktuális hónapjának használat
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft-ügyfélszerződéshez való hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolat
-
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A számlájával és a díjakkal kapcsolatos további információkért lásd:
 

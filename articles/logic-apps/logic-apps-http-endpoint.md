@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 08/27/2020
-ms.openlocfilehash: 5032676848536f0b9498cf4beecf86277484a901
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a59b47dadd845f1a522854c503af11c8fff72fd
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230806"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331974"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Logikai alkalmazások hívása, elindítása vagy beágyazása HTTPS-végpontok használatával Azure Logic Apps
 
@@ -23,7 +23,8 @@ Ahhoz, hogy a logikai alkalmazás meghívása egy URL-címen történjen, és k�
 
 Ez a cikk bemutatja, hogyan hozhat létre egy hívható végpontot a logikai alkalmazáshoz a kérelem trigger használatával, és hogyan hívhatja meg a végpontot egy másik logikai alkalmazásból. Minden alapelv azonos módon érvényesül a bejövő kérések fogadására használható egyéb trigger-típusokkal.
 
-A logikai alkalmazáshoz (például [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), korábbi nevén SSL (SSL) vagy [Azure Active Directory nyílt hitelesítéshez (Azure ad OAuth)](../active-directory/develop/index.yml)való bejövő hívások titkosításával, biztonságával és engedélyezésével kapcsolatos információkért lásd: [biztonságos hozzáférés és adathozzáférés a kérelmeken alapuló eseményindítók felé irányuló bejövő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
+
+További információ a biztonságról: hitelesítés és titkosítás a logikai alkalmazásba érkező bejövő hívásokhoz, például [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), korábbi nevén SSL (SSL), [Azure Active Directory nyílt hitelesítés (Azure ad OAuth)](../active-directory/develop/index.yml), a logikai alkalmazás Azure-beli API Management való kimutatása, illetve a bejövő hívásokat kezdeményező IP-címek korlátozása: a [kérelmeken alapuló eseményindítók számára a biztonságos hozzáférés és az adatokhoz való hozzáférés](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,7 +36,7 @@ A logikai alkalmazáshoz (például [Transport Layer Security (TLS)](https://en.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Hozzon létre és nyisson meg egy üres logikai alkalmazást a Logic app Designerben.
 
-1. A keresőmezőbe válassza a **beépített**lehetőséget. A keresőmezőbe írja be `request` szűrőként a kifejezést. Az eseményindítók listából válassza ki, **hogy mikor érkezik HTTP-kérelem**.
+1. A keresőmezőbe válassza a **beépített** lehetőséget. A keresőmezőbe írja be `request` szűrőként a kifejezést. Az eseményindítók listából válassza ki, **hogy mikor érkezik HTTP-kérelem**.
 
    ![A kérelem triggerének megkeresése és kiválasztása](./media/logic-apps-http-endpoint/find-and-select-request-trigger.png)
 
@@ -74,7 +75,7 @@ A logikai alkalmazáshoz (például [Transport Layer Security (TLS)](https://en.
 
    Vagy létrehozhat egy JSON-sémát egy minta hasznos adat biztosításával:
 
-   1. A **kérelem** triggerben válassza a **minta hasznos adatok használata a séma létrehozásához**lehetőséget.
+   1. A **kérelem** triggerben válassza a **minta hasznos adatok használata a séma létrehozásához** lehetőséget.
 
    1. Az **írja be vagy illessze be a minta JSON-adattartalmat** mezőbe írja be a minta hasznos adatait, például:
 
@@ -89,7 +90,7 @@ A logikai alkalmazáshoz (például [Transport Layer Security (TLS)](https://en.
       }
       ```
 
-   1. Ha elkészült, válassza a **kész**lehetőséget.
+   1. Ha elkészült, válassza a **kész** lehetőséget.
 
       A **kérelem törzse JSON-sémája** most már megjeleníti a generált sémát.
 
@@ -109,9 +110,9 @@ A logikai alkalmazáshoz (például [Transport Layer Security (TLS)](https://en.
 
    * Másolja a visszahívási URL-címet a logikai alkalmazás **Áttekintés** paneljéről.
 
-     1. A logikai alkalmazás menüjében válassza az **Áttekintés**lehetőséget.
+     1. A logikai alkalmazás menüjében válassza az **Áttekintés** lehetőséget.
 
-     1. Az **Összefoglalás** szakaszban válassza az **aktiválási előzmények megtekintése**lehetőséget.
+     1. Az **Összefoglalás** szakaszban válassza az **aktiválási előzmények megtekintése** lehetőséget.
 
         ![Végpont URL-címének lekérése Azure Portal](./media/logic-apps-http-endpoint/find-manual-trigger-url.png)
 
@@ -125,7 +126,7 @@ A logikai alkalmazáshoz (például [Transport Layer Security (TLS)](https://en.
 
 Alapértelmezés szerint a kérelem triggere egy POST-kérést vár. Megadhat egy másik módszert a várható értékhez, de csak egyetlen metódust használhat.
 
-1. A kérelem triggerben nyissa meg az **új paraméter hozzáadása** listát, és válassza a **metódus**lehetőséget, amely hozzáadja ezt a tulajdonságot az triggerhez.
+1. A kérelem triggerben nyissa meg az **új paraméter hozzáadása** listát, és válassza a **metódus** lehetőséget, amely hozzáadja ezt a tulajdonságot az triggerhez.
 
    ![A "Method" tulajdonság hozzáadása az aktiváláshoz](./media/logic-apps-http-endpoint/select-add-new-parameter-for-method.png)
 
@@ -153,19 +154,19 @@ Ha a paraméter értékeit a végpont URL-címén keresztül szeretné elfogadni
 
 ### <a name="accept-values-through-get-parameters"></a>Értékek elfogadása a GET paraméterekkel
 
-1. A kérelem triggerben nyissa meg az **új paraméter hozzáadása listát**, adja hozzá a **Method** tulajdonságot az triggerhez, majd válassza a **Get** metódust.
+1. A kérelem triggerben nyissa meg az **új paraméter hozzáadása listát** , adja hozzá a **Method** tulajdonságot az triggerhez, majd válassza a **Get** metódust.
 
    További információ: a [várt kérelem módszerének kiválasztása](#select-method).
 
 1. A kérelem trigger alatt adja meg azt a műveletet, amelyben használni szeretné a paraméter értékét. Ehhez a példához adja hozzá a **Válasz** műveletet.
 
-   1. A kérelem trigger alatt válassza az **új lépés**  >  **művelet hozzáadása**lehetőséget.
+   1. A kérelem trigger alatt válassza az **új lépés**  >  **művelet hozzáadása** lehetőséget.
    
-   1. A **válasszon műveletet**területen, a keresőmezőbe írja be `response` szűrőként a kifejezést. A műveletek listából válassza ki a **Válasz** műveletet.
+   1. A **válasszon műveletet** területen, a keresőmezőbe írja be `response` szűrőként a kifejezést. A műveletek listából válassza ki a **Válasz** műveletet.
 
 1. A `triggerOutputs()` paraméter értékét lekérő kifejezés létrehozásához kövesse az alábbi lépéseket:
 
-   1. Kattintson a válasz tevékenység **törzs** tulajdonságára, hogy megjelenjen a dinamikus tartalom lista, és válassza a **kifejezés**lehetőséget.
+   1. Kattintson a válasz tevékenység **törzs** tulajdonságára, hogy megjelenjen a dinamikus tartalom lista, és válassza a **kifejezés** lehetőséget.
 
    1. A **kifejezés** mezőbe írja be a kifejezést, cserélje `parameter-name` le a paraméter nevét, majd kattintson **az OK gombra**.
 
@@ -216,7 +217,7 @@ Ha a paraméter értékeit a végpont URL-címén keresztül szeretné elfogadni
 
 ### <a name="accept-values-through-a-relative-path"></a>Értékek elfogadása relatív elérési úton
 
-1. A kérelem triggerben nyissa meg az **új paraméter hozzáadása** listát, és válassza a **relatív elérési út**lehetőséget, amely hozzáadja ezt a tulajdonságot az triggerhez.
+1. A kérelem triggerben nyissa meg az **új paraméter hozzáadása** listát, és válassza a **relatív elérési út** lehetőséget, amely hozzáadja ezt a tulajdonságot az triggerhez.
 
    ![A "relatív elérési út" tulajdonság hozzáadása az aktiváláshoz](./media/logic-apps-http-endpoint/select-add-new-parameter-for-relative-path.png)
 
@@ -226,9 +227,9 @@ Ha a paraméter értékeit a végpont URL-címén keresztül szeretné elfogadni
 
 1. A kérelem trigger alatt adja meg azt a műveletet, amelyben használni szeretné a paraméter értékét. Ehhez a példához adja hozzá a **Válasz** műveletet.
 
-   1. A kérelem trigger alatt válassza az **új lépés**  >  **művelet hozzáadása**lehetőséget.
+   1. A kérelem trigger alatt válassza az **új lépés**  >  **művelet hozzáadása** lehetőséget.
 
-   1. A **válasszon műveletet**területen, a keresőmezőbe írja be `response` szűrőként a kifejezést. A műveletek listából válassza ki a **Válasz** műveletet.
+   1. A **válasszon műveletet** területen, a keresőmezőbe írja be `response` szűrőként a kifejezést. A műveletek listából válassza ki a **Válasz** műveletet.
 
 1. A válasz tevékenység **törzs** tulajdonságában adja meg az trigger relatív elérési útján megadott paramétert jelölő tokent.
 
@@ -301,11 +302,11 @@ Ha például további tulajdonságokat (például) ad hozzá `"suite"` a JSON-s�
 
 ## <a name="create-nested-logic-apps"></a>Beágyazott logikai alkalmazások létrehozása
 
-A munkafolyamatokat a logikai alkalmazásban úgy ágyazhatja be, hogy más, a kérelmeket fogadó logikai alkalmazásokat is felvesz. A logikai alkalmazások belefoglalásához kövesse az alábbi lépéseket:
+A munkafolyamatokat a logikai alkalmazásba úgy ágyazhatja be, hogy más, a kérelmeket fogadó logikai alkalmazásokat is felvesz. A logikai alkalmazások belefoglalásához kövesse az alábbi lépéseket:
 
-1. A lépés alatt, ahol másik logikai alkalmazást szeretne meghívni, válassza az **új lépés**  >  **művelet hozzáadása**lehetőséget.
+1. A lépés alatt, ahol másik logikai alkalmazást szeretne meghívni, válassza az **új lépés**  >  **művelet hozzáadása** lehetőséget.
 
-1. A **válasszon műveletet**területen válassza a **beépített**lehetőséget. A keresőmezőbe írja be `logic apps` szűrőként a kifejezést. A műveletek listából válassza ki **a Logic apps munkafolyamatot**.
+1. A **válasszon műveletet** területen válassza a **beépített** lehetőséget. A keresőmezőbe írja be `logic apps` szűrőként a kifejezést. A műveletek listából válassza ki **a Logic apps munkafolyamatot**.
 
    ![Logikai alkalmazás beágyazása az aktuális logikai alkalmazásba](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
 
@@ -359,7 +360,7 @@ A válaszok a következő tulajdonságokkal rendelkeznek:
 | **Törzs** | `body` | Olyan szövegtörzs, amely lehet egy sztring, egy JSON-objektum, vagy akár egy előző lépésben hivatkozott bináris tartalom is. |
 ||||
 
-A válasz művelet JSON-definíciójának és a logikai alkalmazás teljes JSON-definíciójának megtekintéséhez a Logic app Designer eszköztárán válassza a **kód nézet**lehetőséget.
+A válasz művelet JSON-definíciójának és a logikai alkalmazás teljes JSON-definíciójának megtekintéséhez a Logic app Designer eszköztárán válassza a **kód nézet** lehetőséget.
 
 ``` json
 "Response": {
@@ -383,7 +384,7 @@ A válasz művelet JSON-definíciójának és a logikai alkalmazás teljes JSON-
 
 #### <a name="q-what-about-url-security"></a>K: Mi az URL-biztonság?
 
-**A**: az Azure biztonságos módon generálja a logikai alkalmazás visszahívási URL-címeit [közös hozzáférésű aláírás (SAS)](/rest/api/storageservices/delegate-access-with-shared-access-signature)használatával. Ez az aláírás lekérdezési paraméterként halad át, és a logikai alkalmazás futtatása előtt érvényesíteni kell. Az Azure egy titkos kulcs egyedi kombinációjával, a trigger nevével és a végrehajtott művelettel hozza létre az aláírást. Tehát ha valaki hozzáfér a titkos logikai alkalmazás kulcsához, nem tud érvényes aláírást előállítani.
+**A** : az Azure biztonságos módon generálja a logikai alkalmazás visszahívási URL-címeit [közös hozzáférésű aláírás (SAS)](/rest/api/storageservices/delegate-access-with-shared-access-signature)használatával. Ez az aláírás lekérdezési paraméterként halad át, és a logikai alkalmazás futtatása előtt érvényesíteni kell. Az Azure egy titkos kulcs egyedi kombinációjával, a trigger nevével és a végrehajtott művelettel hozza létre az aláírást. Tehát ha valaki hozzáfér a titkos logikai alkalmazás kulcsához, nem tud érvényes aláírást előállítani.
 
 > [!IMPORTANT]
 > A termelési és a magasabb biztonsági rendszerek esetében erősen ajánljuk, hogy a logikai alkalmazás közvetlenül a böngészőből hívja meg a következő okokat:
@@ -391,16 +392,18 @@ A válasz művelet JSON-definíciójának és a logikai alkalmazás teljes JSON-
 > * A megosztott elérési kulcs megjelenik az URL-címben.
 > * A biztonsági tartalmi házirendeket nem kezelheti Azure Logic Apps ügyfelek megosztott tartományai miatt.
 
+További információ a biztonságról: hitelesítés és titkosítás a logikai alkalmazásba érkező bejövő hívásokhoz, például [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), korábbi nevén SSL (SSL), [Azure Active Directory nyílt hitelesítés (Azure ad OAuth)](../active-directory/develop/index.yml), a logikai alkalmazás Azure-beli API Management való kimutatása, illetve a bejövő hívásokat kezdeményező IP-címek korlátozása: a [kérelmeken alapuló eseményindítók számára a biztonságos hozzáférés és az adatokhoz való hozzáférés](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
+
 #### <a name="q-can-i-configure-callable-endpoints-further"></a>K: lehet, hogy a hívható végpontok továbbra is konfigurálhatók?
 
-**A**: igen, a https-végpontok az [Azure API Management](../api-management/api-management-key-concepts.md)segítségével fejlettebb konfigurációt támogatnak. Ezzel a szolgáltatással következetesen kezelheti az összes API-t, beleértve a Logic apps-t, egyéni tartományneveket állíthat be, több hitelesítési módszert használhat, többek között például:
+**A** : igen, a https-végpontok az [Azure API Management](../api-management/api-management-key-concepts.md)segítségével fejlettebb konfigurációt támogatnak. Ezzel a szolgáltatással következetesen kezelheti az összes API-t, beleértve a Logic apps-t, egyéni tartományneveket állíthat be, több hitelesítési módszert használhat, többek között például:
 
 * [A kérelem módszerének módosítása](../api-management/api-management-advanced-policies.md#SetRequestMethod)
 * [A kérelem URL-szegmensének módosítása](../api-management/api-management-transformation-policies.md#RewriteURL)
 * A API Management-tartományok beállítása a [Azure Portal](https://portal.azure.com/)
 * Házirend beállítása az egyszerű hitelesítés kereséséhez
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Bejövő HTTPS-hívások fogadása és válaszadás a Azure Logic Apps használatával](../connectors/connectors-native-reqres.md)
-* [Biztonságos hozzáférés és adatAzure Logic Apps-hozzáférés – hozzáférés bejövő hívásokhoz a kérelmeken alapuló eseményindítók számára](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)
+* [Biztonságos hozzáférés és adatAzure Logic Apps-hozzáférés a kérelmeken alapuló eseményindítók bejövő hívásainak számára](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)

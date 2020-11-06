@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: a3899d9fbf04f9629885ec38f6b0b2bde728561b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 09fc29b54951d2f33acc725c734e01e3d3364ff0
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740141"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331606"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Az egyszeri bejelentkezés és az alkalmazás-védelmi szabályzatok támogatása a fejleszthető mobil alkalmazásokban
 
@@ -30,7 +30,7 @@ Az [egyszeri bejelentkezés (SSO)](../manage-apps/plan-sso-deployment.md) lehet�
 
 Emellett az egyszeri bejelentkezés engedélyezése az alkalmazásban feloldja a modern hitelesítéssel, például a [jelszó nélküli bejelentkezésekkel](../authentication/concept-authentication-passwordless.md)létrehozott új hitelesítési mechanizmusok zárolását. A felhasználónevek és jelszavak a legnépszerűbb támadási vektorok az alkalmazásokkal szemben, és az egyszeri bejelentkezés engedélyezése lehetővé teszi, hogy a feltételes hozzáférés vagy a jelszóval nem rendelkező bejelentkezések, valamint a biztonságosabb hitelesítési mechanizmusok kikényszerítésével enyhítse ezt a kockázatot. Végezetül az egyszeri bejelentkezés engedélyezése is lehetővé teszi [az egyszeri](v2-protocols-oidc.md#single-sign-out)kijelentkezést. Ez olyan helyzetekben hasznos, mint például a megosztott eszközökön használt munkahelyi alkalmazások.
 
-Az [alkalmazás-védelmi szabályzatok (alkalmazás)](/mem/intune/apps/app-protection-policy) gondoskodnak arról, hogy a szervezet adatbiztonsága és a benne lévők biztonságosak maradjanak. Lehetővé teszik a vállalatok számára, hogy egy alkalmazáson belül kezeljék és védjék adataikat, és lehetővé tegyék a vezérlést, hogy ki férhet hozzá az alkalmazáshoz és az adataihoz. Az alkalmazás-védelmi szabályzatok megvalósítása lehetővé teszi az alkalmazás számára a feltételes hozzáférési házirendek által védett erőforrásokhoz való kapcsolódást, valamint az adatok biztonságos átvitelét más védett alkalmazásokba. Az alkalmazás-védelmi szabályzatok által feloldott forgatókönyvek közé tartozik a PIN-kód megkövetelése egy alkalmazás megnyitásához, az alkalmazások közötti adatmegosztás szabályozása, valamint a vállalati alkalmazásadatok személyes tárolóhelyre való mentésének megakadályozása az eszközön.
+Az [alkalmazás-védelmi szabályzatok (alkalmazás)](/mem/intune/apps/app-protection-policy) gondoskodnak arról, hogy a szervezet adatbiztonsága és a benne lévők biztonságosak maradjanak. Lehetővé teszik a vállalatok számára, hogy egy alkalmazáson belül kezeljék és védjék adataikat, és lehetővé tegyék a vezérlést, hogy ki férhet hozzá az alkalmazáshoz és az adataihoz. Az alkalmazás-védelmi szabályzatok megvalósítása lehetővé teszi az alkalmazás számára a feltételes hozzáférési házirendek által védett erőforrásokhoz való kapcsolódást, valamint az adatok biztonságos átvitelét más védett alkalmazásokba. Az alkalmazás-védelmi szabályzatok által feloldott forgatókönyvek közé tartozik a PIN-kód megkövetelése egy alkalmazás megnyitásához, az adatok alkalmazások közötti megosztásának szabályozása, valamint a vállalati alkalmazásadatok személyes tárolóhelyre való mentésének megakadályozása.
 
 ## <a name="implementing-single-sign-on"></a>Egyszeri bejelentkezés megvalósítása
 
@@ -68,7 +68,7 @@ Emellett a hitelesítéshez egy közvetítő alkalmazást kell használnia. A k�
 
 Végül [adja hozzá az INTUNE SDK](/mem/intune/developer/app-sdk-get-started) -t az alkalmazáshoz az alkalmazás-védelmi szabályzatok engedélyezéséhez. Az SDK a legtöbb esetben egy elfogási modellt követ, és automatikusan alkalmazza az alkalmazás-védelmi házirendeket annak meghatározására, hogy az alkalmazás által végzett műveletek engedélyezettek-e vagy sem. Vannak olyan API-k is, amelyekkel manuálisan hívható meg az alkalmazás, ha bizonyos műveletek korlátozásai vannak.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
 - [Azure Active Directory egyszeri bejelentkezéses telepítés megtervezése](../manage-apps/plan-sso-deployment.md)
 - [Útmutató: az SSO konfigurálása macOS és iOS rendszeren](single-sign-on-macos-ios.md)

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.openlocfilehash: dc03f2276af7c5f6121966a52d50e9c1b208d8cb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/05/2020
+ms.openlocfilehash: 331c55a9f7a489aa58f9d3add7303dc18917215d
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094710"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331940"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Biztonságos hozzáférés és az adatAzure Logic Apps
 
@@ -308,28 +308,90 @@ Ha további [hitelesítési protokollokat](../active-directory/develop/authentic
 
 A közös hozzáférésű aláírás (SAS) mellett érdemes lehet kifejezetten korlátozni a logikai alkalmazást meghívó ügyfeleket is. Ha például az [Azure API Management](../api-management/api-management-key-concepts.md)használatával kezeli a kérelem végpontját, akkor a logikai alkalmazás csak az [ön által létrehozott API Management-szolgáltatás](../api-management/get-started-create-service-instance.md)IP-címéről fogadhatja a kérelmeket.
 
+> [!NOTE]
+> A megadott IP-címektől függetlenül továbbra is futtathat egy olyan logikai alkalmazást, amely a [Logic Apps REST API: munkafolyamat-eseményindítók futtatására](/rest/api/logic/workflowtriggers/run) vonatkozó kérelem vagy a API Management használatával futtatja a kérelem-alapú eseményindítót. Ebben a forgatókönyvben azonban továbbra is [hitelesítésre](../active-directory/develop/authentication-vs-authorization.md) van szükség az Azure REST API. Az összes esemény megjelenik az Azure naplóban. Ügyeljen rá, hogy ennek megfelelően állítsa be a hozzáférés-vezérlési házirendeket.
+
+<a name="restrict-inbound-ip-portal"></a>
+
 #### <a name="restrict-inbound-ip-ranges-in-azure-portal"></a>Bejövő IP-címtartományok korlátozása Azure Portal
 
 1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
 1. A logikai alkalmazás menüjében, a **Beállítások** területen válassza a **munkafolyamat-beállítások** elemet.
 
-1. A **hozzáférés-vezérlési konfiguráció**  >  **engedélyezett bejövő IP-címek** területen válassza az **adott IP-címtartományok** lehetőséget.
+1. A **hozzáférés-vezérlési konfiguráció** szakasz **engedélyezett bejövő IP-címek** területén válassza ki a forgatókönyv elérési útját:
 
-1. Amikor megjelenik az **IP-címtartományok az eseményindítók** mezőben, határozza meg az eseményindító által elfogadott IP-címtartományt. Egy érvényes IP-címtartomány a következő formátumokat használja: *x. x. x. x/x* vagy *x. x. x. x-x. x. x. x*
+   * Ha a logikai alkalmazást csak beágyazott logikai alkalmazásként szeretné meghívóként használni a beépített [Azure Logic apps művelettel](../logic-apps/logic-apps-http-endpoint.md), válassza ki a **csak a többi Logic apps** lehetőséget, amely *csak* akkor működik, ha az **Azure Logic apps** művelettel hívja meg a beágyazott logikai alkalmazást.
+   
+     Ez a lehetőség üres tömböt ír a logikai alkalmazás erőforrásaiba, és megköveteli, hogy csak a beépített **Azure Logic apps** műveletet használó szülő logikai alkalmazásokból érkező hívások aktiválják a beágyazott logikai alkalmazást.
 
-   Ha például a logikai alkalmazás csak beágyazott logikai alkalmazásként hívható meg a HTTP-műveleten keresztül, akkor használja a **megadott IP-címtartományok** beállítást (nem az **egyetlen másik Logic apps** kapcsolót), és adja meg a szülő logikai alkalmazás [kimenő IP-címeit](../logic-apps/logic-apps-limits-and-config.md#outbound).
+   * Ha a logikai alkalmazást csak beágyazott alkalmazásként szeretné meghívóként használni a HTTP-művelettel, válassza ki az **adott IP-címtartományok** lehetőséget, *ne* **csak más Logic apps**. Amikor megjelenik az **IP-címtartományok az eseményindítók számára** mezőben, adja meg a szülő logikai alkalmazás [kimenő IP-címeit](../logic-apps/logic-apps-limits-and-config.md#outbound). Egy érvényes IP-címtartomány a következő formátumokat használja: *x. x. x. x/x* vagy *x. x. x. x-x. x. x. x*.
+   
+     > [!NOTE]
+     > Ha az **egyetlen másik Logic apps** lehetőséget és a http-műveletet használja a beágyazott logikai alkalmazás meghívásához, a hívás le lesz tiltva, és "401 jogosulatlan" hibaüzenet jelenik meg.
+        
+   * Olyan esetekben, ahol a más IP-címekről érkező bejövő hívásokat szeretné korlátozni, amikor megjelenik az **IP-címtartományok az eseményindítók számára** mezőben, megadhatja az eseményindító által elfogadott IP-címtartományt. Egy érvényes IP-címtartomány a következő formátumokat használja: *x. x. x. x/x* vagy *x. x. x. x-x. x. x. x*.
 
-   Ahhoz azonban, hogy a logikai alkalmazás csak beágyazott logikai alkalmazásként legyen meghívható a beépített [Azure Logic apps művelettel](../logic-apps/logic-apps-http-endpoint.md), válassza az **egyetlen másik Logic apps** lehetőséget. Ez a lehetőség üres tömböt ír a logikai alkalmazás erőforrásaiba, és megköveteli, hogy csak a többi "szülő" logikai alkalmazástól érkező hívások aktiválják a beágyazott logikai alkalmazást a beépített **Azure Logic apps** művelettel.
-
-   > [!NOTE]
-   > A megadott IP-címektől függetlenül továbbra is futtathat egy olyan logikai alkalmazást, amely a [Logic Apps REST API: munkafolyamat-eseményindítók futtatására](/rest/api/logic/workflowtriggers/run) vonatkozó kérelem vagy a API Management használatával futtatja a kérelem-alapú eseményindítót. Ebben a forgatókönyvben azonban továbbra is [hitelesítésre](../active-directory/develop/authentication-vs-authorization.md) van szükség az Azure REST API. Az összes esemény megjelenik az Azure naplóban. Ügyeljen rá, hogy ennek megfelelően állítsa be a hozzáférés-vezérlési házirendeket.
+1. Ha nem szeretné, hogy a **hívások korlátozása lehetőséggel beolvassa a bemeneti és kimeneti üzeneteket a megadott IP-címekre** , megadhatja azokat az IP-címtartományt a bejövő hívásoknál, amelyek hozzáférhetnek a bemeneti és kimeneti üzenetekhez a futtatási előzményekben.
 
 <a name="restrict-inbound-ip-template"></a>
 
 #### <a name="restrict-inbound-ip-ranges-in-azure-resource-manager-template"></a>Bejövő IP-tartományok korlátozása Azure Resource Manager sablonban
 
-Ha [Resource Manager-sablonok használatával automatizálja a Logic apps üzembe helyezését](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), az *x. x. x. x/x* vagy x. x *. x. x-x.* x. x. x formátumban is megadhatja az IP-tartományokat a `accessControl` szakasz és `triggers` a `actions` logikai alkalmazás erőforrás-definíciójának és szakaszának használatával, például:
+Ha [Resource Manager-sablonok használatával automatizálja a Logic apps üzembe helyezését](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), a szakasz segítségével megadhatja a logikai alkalmazás erőforrás-definíciójában engedélyezett bejövő IP-címtartományt `accessControl` . Ebben a szakaszban a (, `triggers` ) `actions` és a választható `contents` szakaszokat használja, `allowedCallerIpAddresses` Ha a tulajdonságot tartalmazza, `addressRange` és a tulajdonság értékét az *x. x. x. x/x* vagy *x. x. x. x-x. x. x. x* formátumban adja meg az engedélyezett IP-tartományhoz.
+
+* Ha a beágyazott logikai alkalmazás az **egyetlen másik Logic apps** lehetőséget használja, amely csak a Azure Logic apps műveletet használó más logikai alkalmazásokból engedélyezi a bejövő hívásokat, állítsa a `addressRange` tulajdonságot üres tömbre ( **[]** ).
+
+* Ha a beágyazott logikai alkalmazás a **megadott IP-címtartományok** beállítást használja más bejövő hívásokhoz, például a http-műveletet használó más logikai alkalmazásokhoz, állítsa a `addressRange` tulajdonságot az engedélyezett IP-tartományra.
+
+Ez a példa egy beágyazott logikai alkalmazás erőforrás-definícióját mutatja be, amely csak a beépített Azure Logic Apps műveletet használó logikai alkalmazásokból engedélyezi a bejövő hívásokat:
+
+```json
+{
+   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+   "contentVersion": "1.0.0.0",
+   "parameters": {},
+   "variables": {},
+   "resources": [
+      {
+         "name": "[parameters('LogicAppName')]",
+         "type": "Microsoft.Logic/workflows",
+         "location": "[parameters('LogicAppLocation')]",
+         "tags": {
+            "displayName": "LogicApp"
+         },
+         "apiVersion": "2016-06-01",
+         "properties": {
+            "definition": {
+               <workflow-definition>
+            },
+            "parameters": {
+            },
+            "accessControl": {
+               "triggers": {
+                  "allowedCallerIpAddresses": [
+                     {
+                        "addressRange": []
+                     }
+                  ]
+               },
+               "actions": {
+                  "allowedCallerIpAddresses": [
+                     {
+                        "addressRange": []
+                     }
+                  ]
+               }
+            },
+            "endpointsConfiguration": {}
+         }
+      }
+   ],
+   "outputs": {}
+}
+```
+
+Ez a példa egy olyan beágyazott logikai alkalmazás erőforrás-definícióját mutatja be, amely engedélyezi a bejövő hívásokat a HTTP-műveletet használó logikai alkalmazásokból:
 
 ```json
 {
@@ -361,7 +423,11 @@ Ha [Resource Manager-sablonok használatával automatizálja a Logic apps üzemb
                   ]
                },
                "actions": {
-                  "allowedCallerIpAddresses": []
+                  "allowedCallerIpAddresses": [
+                     {
+                        "addressRange": "192.168.12.0/23"
+                     }
+                  ]
                }
             },
             "endpointsConfiguration": {}
@@ -530,7 +596,7 @@ Az alábbi [szempontokat érdemes áttekinteni,](#obfuscation-considerations) ha
 
 <a name="obfuscation-considerations"></a>
 
-#### <a name="considerations-when-securing-inputs-and-outputs"></a>A bemenetek és kimenetek védelmének szempontjai
+#### <a name="considerations-when-securing-inputs-and-outputs"></a>Megfontolandó szempontok a bemenetek és kimenetek biztonságossá tételekor
 
 * Ha eltakarja egy trigger vagy művelet bemeneteit vagy kimeneteit, Logic Apps nem küldi el a védett adatokat az Azure Log Analyticsnak. Emellett nem adhat hozzá [nyomon követett tulajdonságokat](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data) az adott triggerhez vagy művelethez a figyeléshez.
 
@@ -546,7 +612,7 @@ Az alábbi [szempontokat érdemes áttekinteni,](#obfuscation-considerations) ha
 
   ![A legtöbb művelethez bemenetként és alsóbb rétegbeli hatásként biztosított kimenetek](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow.png)
 
-  Az összeállítási, elemzési JSON-és válasz-műveletek csak a **biztonságos bemenetek** beállítással rendelkeznek. Ha be van kapcsolva, a beállítás ezen műveletek kimeneteit is elrejti. Ha ezek a műveletek explicit módon használják a felsőbb rétegbeli biztonságos kimeneteket bemenetként, Logic Apps elrejti ezeket a műveleteket a bemenetek és a kimenetek között, de *nem engedélyezi* ezeket a műveleteket a " **biztonságos bemenetek** " beállításban. Ha egy alsóbb rétegbeli művelet explicit módon felhasználja a rejtett kimeneteket az összeállítás, az elemzés JSON-vagy a válasz-műveletekből bemenetként, Logic Apps *nem rejti el az alsóbb rétegbeli művelet bemeneteit és kimeneteit* .
+  Az összeállítási, elemzési JSON-és válasz-műveletek csak a **biztonságos bemenetek** beállítással rendelkeznek. Ha be van kapcsolva, a beállítás ezen műveletek kimeneteit is elrejti. Ha ezek a műveletek explicit módon használják a felsőbb rétegbeli biztonságos kimeneteket bemenetként, Logic Apps elrejti ezeket a műveleteket a bemenetek és a kimenetek között, de *nem engedélyezi* ezeket a műveleteket a " **biztonságos bemenetek** " beállításban. Ha egy alsóbb rétegbeli művelet explicit módon felhasználja a rejtett kimeneteket az összeállítás, az elemzés JSON-vagy a válasz-műveletekből bemenetként, Logic Apps *nem rejti el az alsóbb rétegbeli művelet bemeneteit és kimeneteit*.
 
   ![Biztonságos kimenetek bemenetként, ha az adott műveletekre gyakorolt hatás van](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow-special.png)
 
@@ -556,7 +622,7 @@ Az alábbi [szempontokat érdemes áttekinteni,](#obfuscation-considerations) ha
 
   ![A legtöbb művelethez kapcsolódó biztonságos bemenetek és alsóbb rétegbeli hatások](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
 
-  Ha az összeállítás, a JSON és a Response művelet explicit módon használja az triggerből vagy a biztonságos bemenetekkel rendelkező műveletből származó látható kimeneteket, Logic Apps elrejti ezeket a műveleteket a bemenetek és kimenetek számára, de *nem engedélyezi* a művelet **biztonságos bevitelének** beállítását. Ha egy alsóbb rétegbeli művelet explicit módon felhasználja a rejtett kimeneteket az összeállítás, az elemzés JSON-vagy a válasz-műveletekből bemenetként, Logic Apps *nem rejti el az alsóbb rétegbeli művelet bemeneteit és kimeneteit* .
+  Ha az összeállítás, a JSON és a Response művelet explicit módon használja az triggerből vagy a biztonságos bemenetekkel rendelkező műveletből származó látható kimeneteket, Logic Apps elrejti ezeket a műveleteket a bemenetek és kimenetek számára, de *nem engedélyezi* a művelet **biztonságos bevitelének** beállítását. Ha egy alsóbb rétegbeli művelet explicit módon felhasználja a rejtett kimeneteket az összeállítás, az elemzés JSON-vagy a válasz-műveletekből bemenetként, Logic Apps *nem rejti el az alsóbb rétegbeli művelet bemeneteit és kimeneteit*.
 
   ![Biztonságos bemenetek és alsóbb rétegbeli hatás az egyes műveletekre](./media/logic-apps-securing-a-logic-app/secure-inputs-flow-special.png)
 
@@ -1080,7 +1146,7 @@ További információt az alábbi témakörökben talál:
 * [Elkülönítés az Azure nyilvános felhőben](../security/fundamentals/isolation-choices.md)
 * [Fokozottan kényes IaaS-alkalmazások biztonsága az Azure-ban](/azure/architecture/reference-architectures/n-tier/high-security-iaas)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Logic Apps Azure biztonsági alapterve](../logic-apps/security-baseline.md)
 * [Üzembe helyezés automatizálása Azure Logic Apps](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

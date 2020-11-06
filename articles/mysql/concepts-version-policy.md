@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 75e24f9437257769a3d9bfd69980a9b8606d0563
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 0670107d84374589aa60cc18f184b9b3d3facce1
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424112"
+ms.locfileid: "94331804"
 ---
 # <a name="azure-database-for-mysql-versioning-policy"></a>Azure Database for MySQL verziószámozási házirend
 
@@ -48,12 +48,13 @@ Az alábbi táblázat a MySQL főverzióinak kivonulási részleteit tartalmazza
 ## <a name="retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql"></a>A kivont MySQL Engine-verziók nem támogatottak Azure Database for MySQL
 
 Ha továbbra is a kivont verziót futtatja, az egyes MySQL-adatbázisok lejárati dátuma után vegye figyelembe a következő korlátozásokat:
-- Mivel a Közösség nem szabadít fel további hibajavításokat vagy biztonsági javításokat, az Azure for MySQL nem javítja a kivont adatbázismotor esetleges hibáit vagy biztonsági problémáit, vagy egyéb esetekben biztonsági intézkedéseket hajt végre a kivont adatbázismotor tekintetében. Az Azure azonban továbbra is rendszeres karbantartást és javítást végez a gazdagép, az operációs rendszer, a tárolók és a szolgáltatásokkal kapcsolatos egyéb összetevők számára.
+- Mivel a Közösség nem szabadít fel semmilyen további hibajavítást vagy biztonsági javítást, Azure Database for MySQL nem fogja feljavítani a kivont adatbázismotor számára az esetleges hibákat vagy biztonsági problémákat, vagy egyéb módon biztonsági intézkedéseket hajt végre a kivont adatbázismotor tekintetében. Az Azure azonban továbbra is rendszeres karbantartást és javítást végez a gazdagép, az operációs rendszer, a tárolók és a szolgáltatásokkal kapcsolatos egyéb összetevők számára.
 - Ha bármilyen támogatási probléma merülhet fel a MySQL-adatbázissal kapcsolatban, előfordulhat, hogy nem tudunk támogatást nyújtani Önnek. Ilyen esetekben frissítenie kell az adatbázist ahhoz, hogy támogatást nyújtson Önnek.
 - Nem fog tudni új adatbázis-kiszolgálókat létrehozni a kivont verzióhoz. Ugyanakkor időponthoz kapcsolódó helyreállításokat is végrehajthat, és a meglévő kiszolgálókhoz olvasási replikákat hozhat létre.
 - A Azure Database for MySQL által fejlesztett új szolgáltatási képességek csak a támogatott adatbázis-kiszolgáló verziók esetében érhetők el.
 - Az üzemidőre vonatkozó SLA-kat kizárólag Azure Database for MySQL szolgáltatással kapcsolatos problémákra, és nem az adatbázismotor által okozott hibák okozta állásidőre alkalmazza a rendszer.  
-- Ha súlyos fenyegetést észlelt a szolgáltatás a kivont adatbázis-verzióban azonosított MySQL adatbázismotor biztonsági rése miatt, az Azure úgy dönthet, hogy leállítja az adatbázis-kiszolgáló számítási csomópontját, hogy először biztonságossá tegye a szolgáltatást. A rendszer a kiszolgáló online állapotba hozása előtt frissíti a kiszolgálót. A frissítési folyamat során a rendszer mindig a szolgáltatásban végzett automatikus biztonsági mentéssel védi az adatokat, amelyek igény szerint visszaállíthatók a régebbi verzióra.
+- Ha súlyos fenyegetést észlelt a szolgáltatás a kivont adatbázis-verzióban azonosított MySQL adatbázismotor biztonsági rése miatt, az Azure úgy dönthet, hogy leállítja az adatbázis-kiszolgáló számítási csomópontját, hogy először biztonságossá tegye a szolgáltatást. A rendszer a kiszolgáló online állapotba hozása előtt frissíti a kiszolgálót. A frissítési folyamat során a rendszer mindig a szolgáltatásban végzett automatikus biztonsági mentéssel védi az adatokat, amelyek igény szerint visszaállíthatók a régebbi verzióra. 
+
 
 
 ## <a name="next-steps"></a>További lépések

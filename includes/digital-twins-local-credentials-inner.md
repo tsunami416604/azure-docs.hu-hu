@@ -5,15 +5,15 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 10/22/2020
 ms.author: baanders
-ms.openlocfilehash: 8bf0590b867d37a22706f679bfbeee2140935637
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 3cb053f9673532ac19e2098678ec341f2f676486
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494703"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94329490"
 ---
-`DefaultAzureCredential`A-ben a minta a helyi környezetben hitelesítő adatokat keres, például egy Azure-bejelentkezést egy helyi [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) -ben vagy a Visual Studio/Visual Studio Code-ban. Ez azt jelenti, hogy **helyileg kell bejelentkeznie az Azure-ba** ezen mechanizmusok egyikével a minta hitelesítő adatainak beállításához.
+`DefaultAzureCredential`A-ben a minta a helyi környezetben hitelesítő adatokat keres, például egy Azure-bejelentkezést egy helyi [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) -ben, illetve a Visual Studióban vagy a Visual Studio Code-ban. Ebből kifolyólag *helyileg kell bejelentkeznie az Azure* -ba ezen mechanizmusok egyikével a minta hitelesítő adatainak beállításához.
 
-Ha a Visual studiót vagy a Visual Studio Code-ot használja a kód futtatásához, győződjön meg arról, hogy a szerkesztőben ugyanazok az Azure-beli hitelesítő adatok vannak bejelentkezve, amelyeket az Azure Digital Twins-példány eléréséhez használni kíván.
+Ha a Visual studiót vagy a Visual Studio Code-ot használja a kód futtatásához, győződjön meg arról, hogy a szerkesztőbe bejelentkezett ugyanazzal az Azure-beli hitelesítő adatokkal, amelyeket használni szeretne az Azure Digital Twins-példányhoz való hozzáféréshez.
 
-Ellenkező esetben [telepítheti a helyi **Azure CLI**](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)-t, elindíthat egy parancssort a gépen, és futtathatja a `az login` parancsot az Azure-fiókba való bejelentkezéshez. Ezt követően a kód mintájának futtatásakor automatikusan be kell jelentkeznie.
+Ellenkező esetben [telepítheti a helyi Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)-t, elindíthat egy parancssort a gépen, és futtathatja a `az login` parancsot az Azure-fiókba való bejelentkezéshez. A bejelentkezést követően a kód mintájának futtatásakor automatikusan be kell jelentkeznie.

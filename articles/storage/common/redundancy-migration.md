@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 286a4f47d542a500fb49f022f3c647088ebad637
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6f5eab8f53fb4c9e15606223707292261b4615e0
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784218"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330291"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Tárfiók replikálási módjának megváltoztatása
 
@@ -128,21 +128,21 @@ Az [Azure-támogatási portálon](https://ms.portal.azure.com/#blade/Microsoft_A
     - **Probléma típusa** : válassza a **technikai** lehetőséget.
     - **Szolgáltatás** : válassza **a saját szolgáltatások és a** **Storage-fiókok kezelése** lehetőséget.
     - **Erőforrás** : válassza ki a ZRS konvertálni kívánt erőforrást.
-3. Kattintson a **Tovább** gombra.
+3. Válassza a **Tovább** gombot.
 4. A **probléma** szakasz a következő értékeket határozza meg:
     - **Súlyosság** : hagyja meg az alapértelmezett értéket.
     - **Probléma típusa** : válassza **Az adatáttelepítés** lehetőséget.
     - **Kategória** : válassza **az áttelepítés a ZRS** lehetőséget.
-    - **Title** : adjon meg egy leíró címet, például **ZRS fiók áttelepítése** .
+    - **Title** : adjon meg egy leíró címet, például **ZRS fiók áttelepítése**.
     - **Részletek** : írja be a **részletek mezőbe a** további részleteket, például a (z) [LRS, GRS] \_ régióból a ZRS-be kíván migrálni \_ .
-5. Kattintson a **Tovább** gombra.
+5. Válassza a **Tovább** gombot.
 6. A kapcsolattartási **adatok** panelen ellenőrizze, hogy helyesek-e a kapcsolattartási adatok.
-7. Kattintson a **Létrehozás** gombra.
+7. Válassza a **Létrehozás** lehetőséget.
 
 A támogatási személy felveszi Önnel a kapcsolatot, és segítséget nyújt a szükséges segítségért.
 
 > [!NOTE]
-> A prémium szintű fájlmegosztás jelenleg nem támogatja az élő áttelepítést. Az adatok manuális másolása és áthelyezése jelenleg nem támogatott.
+> A prémium fájlmegosztás (FileStorage-fiókok) csak a LRS és a ZRS esetében érhető el.
 >
 > A GZRS-tárolási fiókok jelenleg nem támogatják az archiválási szintet. További részletekért tekintse meg az [Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szintet](../blobs/storage-blob-storage-tiers.md) .
 >

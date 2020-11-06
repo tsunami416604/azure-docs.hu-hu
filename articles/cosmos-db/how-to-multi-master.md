@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: mjbrown
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: a2b1ca8434c40eca610f95a3031e677782866e04
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 109ce54b48df0724c0d4ba64c02721088ed7ffad
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342009"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330631"
 ---
 # <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>Többrégiós írások konfigurálása a Azure Cosmos DBt használó alkalmazásokban
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -25,7 +25,7 @@ Ha egy fiók több írási régióval lett létrehozva, akkor az alkalmazásban 
 
 ## <a name="azure-portal"></a><a id="portal"></a> Azure Portal
 
-A következő lépésekkel engedélyezheti a többrégiós írásokat a Azure Portalből:
+A többrégiós írásoknak Azure Portalból való engedélyezéséhez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com/).
 

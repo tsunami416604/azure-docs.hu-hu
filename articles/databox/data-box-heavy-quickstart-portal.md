@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 11/04/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9eda54ad23e06149910fe69ec16588f49829a5a5
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 3a7f9179822720b0e5ffc21bc560b4c6ccad9463
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122823"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347422"
 ---
 ::: zone target = "docs"
 
@@ -60,6 +60,8 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 ## <a name="order"></a>Rendelés
 
+### <a name="portal"></a>[Portál](#tab/azure-portal)
+
 Ez a lépés nagyjából 5 percet vesz igénybe.
 
 1. Hozzon létre egy új Azure Data Box-erőforrást az Azure Portalon.
@@ -68,6 +70,77 @@ Ez a lépés nagyjából 5 percet vesz igénybe.
 4. Adja meg a rendelés részleteit és a szállítási adatokat. Ha a szolgáltatás elérhető az Ön régiójában, adja meg az értesítési e-mail-címeket, tekintse át az összefoglalót, és hozza létre a rendelést.
 
 A rendelés létrehozását követően megtörténik az eszköz a szállításra való előkészítése.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Ezekkel az Azure CLI-parancsokkal Data Box Heavy-feladatokat hozhat létre.
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+1. Futtassa az [az group create](/cli/azure/group#az_group_create) parancsot egy erőforráscsoport létrehozásához, vagy használjon egy meglévő erőforráscsoportot:
+
+   ```azurecli
+   az group create --name databox-rg --location westus 
+   ```
+
+1. Futtassa az [az storage account create](/cli/azure/storage/account#az_storage_account_create) parancsot egy tárfiók létrehozásához, vagy használjon egy meglévő tárfiókot:
+
+   ```azurecli
+   az storage account create --resource-group databox-rg --name databoxtestsa
+   ```
+
+1. Futtassa az [az databox job create](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_create) parancsot egy **--sku** értékű `DataBoxHeavy` paraméterrel rendelkező Data Box-feladat létrehozásához:
+
+   ```azurecli
+   az databox job create --resource-group databox-rg --name databoxheavy-job \
+       --location westus --sku DataBoxHeavy --contact-name "Jim Gan" --phone 4085555555 \
+       --city Sunnyvale --email-list JimGan@contoso.com --street-address1 "1020 Enterprise Way" \
+       --postal-code 94089 --country US --state-or-province CA --storage-account databoxtestsa \
+       --staging-storage-account databoxtestsa --resource-group-for-managed-disk rg-for-md
+   ```
+
+   > [!NOTE]
+   > Győződjön meg arról, hogy az előfizetés támogatja a Data Box Heavyt.
+
+1. Futtassa az [az databox job update](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_update) parancsot egy feladat frissítéséhez, mint ebben a példában, amelyben módosítja a kapcsolattartó nevét és e-mail-címét:
+
+   ```azurecli
+   az databox job update -g databox-rg --name databox-job --contact-name "Robert Anic" --email-list RobertAnic@contoso.com
+   ```
+
+   Futtassa az [az databox job show](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_show) parancsot a feladat adatainak lekéréséhez:
+
+   ```azurecli
+   az databox job show --resource-group databox-rg --name databox-job
+   ```
+
+   Futtassa az [az databox job list]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list) parancsot egy erőforráscsoport összes Data Box-feladatának megtekintéséhez:
+
+   ```azurecli
+   az databox job list --resource-group databox-rg
+   ```
+
+   Futtassa az [az databox job cancel](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_cancel) parancsot egy feladat megszakításához:
+
+   ```azurecli
+   az databox job cancel –resource-group databox-rg --name databox-job --reason "Cancel job."
+   ```
+
+   Futtassa az [az databox job delete](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_delete) parancsot egy feladat törléséhez:
+
+   ```azurecli
+   az databox job delete –resource-group databox-rg --name databox-job
+   ```
+
+1. Futtassa az [az databox job list-credentials]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list_credentials) parancsot a Data Box-feladat hitelesítő adatainak listázásához:
+
+   ```azurecli
+   az databox job list-credentials --resource-group "databox-rg" --name "databoxdisk-job"
+   ```
+
+A rendelés létrehozását követően megtörténik az eszköz a szállításra való előkészítése.
+
+---
 
 ::: zone-end
 

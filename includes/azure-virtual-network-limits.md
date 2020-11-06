@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: networking
 author: anavinahar
 ms.service: networking
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: baf3d02e1c0ecf51ddea043ee560d5054f09d057
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 0d5c9c4a0191c6d5effd8f6067cb6602ed239125
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91936004"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94329493"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Hálózati korlátok – Azure Resource Manager
 A következő korlátozások csak a **Azure Resource Manager** régiónként felügyelt hálózati erőforrások esetében érvényesek. Megtudhatja, hogyan [tekintheti meg az aktuális erőforrás-használatot az előfizetési korlátok](../articles/networking/check-usage-against-limits.md)alapján.
@@ -55,6 +55,7 @@ A következő korlátozások csak a **Azure Resource Manager** régiónként fel
 | Nyilvános IP-címek<sup>1</sup> | 10 alapszintű. | Vegye fel a kapcsolatot az ügyfélszolgálattal. |
 | Statikus nyilvános IP-címek<sup>1</sup> | 10 alapszintű. | Vegye fel a kapcsolatot az ügyfélszolgálattal. |
 | Standard nyilvános IP-címek<sup>1</sup> | 10 | Vegye fel a kapcsolatot az ügyfélszolgálattal. |
+| [Nyilvános IP-címek erőforráscsoport szerint](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md#microsoftnetwork) | 800 | Vegye fel a kapcsolatot az ügyfélszolgálattal. | 
 | Nyilvános IP-előtagok | korlátozott a standard nyilvános IP-címek száma egy előfizetésben | Vegye fel a kapcsolatot az ügyfélszolgálattal. |
 | Nyilvános IP-előtag hossza | /28 | Vegye fel a kapcsolatot az ügyfélszolgálattal. |
 
@@ -106,6 +107,6 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Felhasználó által definiált útvonalak útválasztási táblázatban |400 |400 |
 | Nyilvános IP-címek (dinamikus) |500 |500 |
 | Fenntartott nyilvános IP-címek |500 |500 |
-| Nyilvános virtuális IP-címek száma üzemelő példányonként |5 |Kapcsolatfelvétel a támogatási szolgáltatással |
-| Privát VIP (belső terheléselosztás) üzembe helyezése |1 |1 |
+| Nyilvános IP-cím üzembe helyezése |5 |Kapcsolatfelvétel a támogatási szolgáltatással |
+| Magánhálózati IP-cím (belső terheléselosztás) üzembe helyezése |1 |1 |
 | Végpontok hozzáférés-vezérlési listái (ACL-ek) |50 |50 |

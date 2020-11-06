@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: e7635aad85352887646a1319b4d0bfbf64924bf9
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: a2838e40844b83d1e90789439ce286f2738e22c4
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042909"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331855"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Átirányítási URI (válasz URL-cím) korlátozásai és korlátozásai
 
@@ -62,7 +62,9 @@ A 8,3 és [7,3](https://tools.ietf.org/html/rfc8252#section-7.3), valamint a "lo
 
 Fejlesztési szempontból ez néhány dolgot jelent:
 
-* Ne regisztráljon több átirányítási URI-t, ahol csak a port különbözik. A bejelentkezési kiszolgáló egy tetszőlegesen kiválasztható, és az átirányítási URI-hoz társított viselkedést (például a `web` -, `native` -vagy `spa` -Type átirányítás) használja.
+* Ne regisztráljon több átirányítási URI-t, ahol csak a port különbözik. A bejelentkezési kiszolgáló egy tetszőlegesen kiválasztható, és az átirányítási URI-hoz társított viselkedést (például az a `web` -, `native` -vagy a `spa` -Type átirányítás) használja.
+
+    Ez különösen akkor fontos, ha ugyanazt az alkalmazás-regisztrációban eltérő hitelesítési folyamatokat kíván használni, például az engedélyezési kód engedélyezését és az implicit folyamatot. Ahhoz, hogy az egyes átirányítási URI-k megfelelő válaszait társítsa, a bejelentkezési kiszolgálónak képesnek kell lennie az átirányítási URI-k megkülönböztetésére, és nem teheti meg, ha csak a port különbözik.
 * Ha több átirányítási URI-t kell regisztrálnia a localhost-on a különböző folyamatok teszteléséhez a fejlesztés során, akkor az URI *elérési útja* összetevővel kell megkülönböztetni őket. A nem egyezik például a következővel: `http://127.0.0.1/MyWebApp` `http://127.0.0.1/MyNativeApp` .
 * Az IPv6-visszacsatolási cím ( `[::1]` ) jelenleg nem támogatott.
 * Ha meg szeretné akadályozni, hogy az alkalmazás hibás módon konfigurált tűzfalakkal vagy átnevezett hálózati adapterekkel megszakadjon, a helyett használja az `127.0.0.1` átirányítási URI-ban található IP-szövegkonstans-visszacsatolási címet `localhost` .
@@ -94,6 +96,6 @@ Ebben a megközelítésben:
 > [!WARNING]
 > Ez a módszer lehetővé teszi a feltört ügyfél számára, hogy módosítsa az állapot paraméterében eljuttatott további paramétereket, így átirányítja a felhasználót egy másik URL-címre, amely az RFC 6819-ben leírt [nyílt átirányító fenyegetés](https://tools.ietf.org/html/rfc6819#section-4.2.4) . Ezért az ügyfélnek meg kell védenie ezeket a paramétereket az állapot titkosításával vagy más módon történő ellenőrzésével, például az átirányítási URI-n lévő tartománynév érvényesítésével a tokenen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az alkalmazás-regisztrációs [alkalmazás jegyzékéről](reference-app-manifest.md).

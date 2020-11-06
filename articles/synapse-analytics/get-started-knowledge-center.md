@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: 2857989fb09555ecd808bfdba95bcf58e4444594
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 461fabd0dd9948e8967ac61919f77e3e23a981b9
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93304905"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331957"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>A szinapszis Tudásközpont megismerése
 
@@ -39,7 +39,7 @@ A **Tudásközpont** három dolgot tesz lehetővé:
 
 ## <a name="exploring-blob-storage-with-serverless-sql-pool"></a>BLOB Storage felderítése kiszolgáló nélküli SQL-készlettel
 
-1. A **Tudásbázisban** kattintson a **minták azonnali használata** elemre.
+1. Nyissa meg a **Knowledge centert** , kattintson a **minták azonnali használata** elemre.
 1. **SQL-alapú lekérdezések** kiválasztása 
 1. Kattintson a **minták azonnali használata** elemre.
 1. Ekkor létrejön egy új SQL-szkript.
@@ -47,7 +47,7 @@ A **Tudásközpont** három dolgot tesz lehetővé:
 1. Kattintson a Futtatás elemre. A kiválasztott szöveget fogja futtatni.
 
 ## <a name="loading-more-nyc-taxi-data"></a>A New York-i taxi-adathalmazok betöltése
-1. A **Tudásbázisban** kattintson az **elérhető minták tallózása** elemre. 
+1. Nyissa meg a **Knowledge centert** , kattintson az **elérhető minták tallózása** lehetőségre. 
 1. Válassza a felül található **SQL-parancsfájlok** lapot.
 1. Válassza **a New York taxik-adatkészlet betöltése** lehetőséget.
 1. A **bemenetek** területen válassza **a meglévő készlet kijelölése** lehetőséget, és válassza a **SQLDB1** lehetőséget.
@@ -56,7 +56,7 @@ A **Tudásközpont** három dolgot tesz lehetővé:
 1. Kattintson a **Futtatás** gombra.
 1. Ez több táblát hoz létre a New York-i taxik adataihoz, és betölti azokat a T-SQL COPY paranccsal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerkedés az Azure szinapszis Analytics szolgáltatással](get-started.md)
 * [Munkaterület létrehozása](quickstart-create-workspace.md)

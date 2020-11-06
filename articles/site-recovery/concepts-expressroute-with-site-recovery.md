@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 12bec5af95e7da595d5af09fe9020992b1cf839d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 99fa8d4cf8f48d0fe72da36baef20c83add438c0
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367992"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330257"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure-ExpressRoute Azure Site Recovery
 
@@ -31,7 +31,7 @@ Egy ExpressRoute-áramkörhöz több útválasztási tartomány van társítva. 
 
 Azure Site Recovery lehetővé teszi a vész-helyreállítást és az Azure-ba való áttelepítést helyszíni [Hyper-V virtuális gépek](hyper-v-azure-architecture.md), [VMWare virtuális gépek](vmware-azure-architecture.md)és [fizikai kiszolgálók](physical-azure-architecture.md)számára. A helyszíni és az Azure-beli forgatókönyvek esetében a replikációs adatok küldése és tárolása egy Azure Storage-fiókban történik. A replikáció során nem számítunk fel virtuális gépek díját. Amikor feladatátvételt futtat az Azure-ba, Site Recovery automatikusan létrehozza az Azure IaaS virtuális gépeket.
 
-A Site Recovery egy nyilvános végponton keresztül replikálja az Azure Storage-fiókba vagy a replika felügyelt lemezére a cél Azure-régióban. Ha a ExpressRoute-t Site Recovery replikációs forgalomhoz kívánja használni, használhatja a [Microsoft-társat](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) vagy egy meglévő [nyilvános](../expressroute/about-public-peering.md) (új létrehozási) szolgáltatást. A replikációhoz a Microsoft-társ a javasolt útválasztási tartomány. Vegye figyelembe, hogy a replikálás nem támogatott privát társak esetén.
+A Site Recovery egy nyilvános végponton keresztül replikálja az Azure Storage-fiókba vagy a replika felügyelt lemezére a cél Azure-régióban. Ha a ExpressRoute-t Site Recovery replikációs forgalomhoz kívánja használni, használhatja a [Microsoft-társat](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) vagy egy meglévő [nyilvános](../expressroute/about-public-peering.md) (új létrehozási) szolgáltatást. A replikációhoz a Microsoft-társ a javasolt útválasztási tartomány. Vegye figyelembe, hogy a replikálás csak akkor támogatott, ha [a magánjellegű végpontok engedélyezve vannak a](hybrid-how-to-enable-replication-private-endpoints.md)tárolóban.
 
 Győződjön meg arról, hogy a konfigurációs kiszolgáló [hálózati követelményei](vmware-azure-configuration-server-requirements.md#network-requirements) is teljesülnek. A konfigurációs kiszolgáló a Site Recovery replikáció összehangolása érdekében meghatározott URL-címekhez való kapcsolódást igényel. A ExpressRoute nem használható ehhez a kapcsolathoz. 
 
@@ -58,7 +58,7 @@ Ha már használja a ExpressRoute-t a helyszíni adatközpontból az Azure-beli 
 
 Az Azure-beli virtuális gépeket az [itt](../site-recovery/azure-to-azure-support-matrix.md#region-support)leírtak szerint replikálhatja az adott földrajzi fürtön belüli bármely Azure-régióba. Ha a kiválasztott cél Azure-régió nem a forráshoz tartozó geopolitikai régióban található, akkor előfordulhat, hogy engedélyeznie kell a ExpressRoute Premiumot. További részletekért lásd a [ExpressRoute helyét](../expressroute/expressroute-locations.md) és a [ExpressRoute díjszabását](https://azure.microsoft.com/pricing/details/expressroute/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ az [ExpressRoute-áramkörökről](../expressroute/expressroute-circuit-peerings.md).
 - További információ az [ExpressRoute-útválasztási tartományokról](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
 - További információ a [ExpressRoute helyeiről](../expressroute/expressroute-locations.md).

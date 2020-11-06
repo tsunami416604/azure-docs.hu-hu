@@ -12,18 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 11/05/2020
 ms.author: b-juche
-ms.openlocfilehash: edb084a3539f4ab25f328d4cc59ee4ef3279bf07
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: f4b485e79bfa89fe293c99fc4e84fc8c0729396a
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217048"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331889"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>A NFSv 4.1 Kerberos-titkosítás konfigurálása Azure NetApp Fileshoz
 
 Azure NetApp Files támogatja az NFS-ügyfél titkosítását Kerberos-módban (krb5, krb5i és krb5p) AES-256 titkosítással. Ez a cikk a NFSv 4.1-es kötet Kerberos-titkosítással való használatához szükséges konfigurációkat ismerteti.
+
+## <a name="considerations"></a>Megfontolandó szempontok
+
+* NFSv 4.1 a Kerberos titkosítási kötetek jelenleg nem támogatják a Azure Active Directory Domain Services (AADDS). 
 
 ## <a name="requirements"></a>Követelmények
 
@@ -40,7 +44,7 @@ Az NFSv 4.1-ügyfél titkosítására az alábbi követelmények vonatkoznak:
 
 1.  A NFSv 4.1 kötet létrehozásához kövesse az [NFS-kötet létrehozása a Azure NetApp Files](azure-netapp-files-create-volumes.md) számára című témakör lépéseit.   
 
-    A kötet létrehozása lapon állítsa be az NFS-verziót a **nfsv 4.1**értékre, és állítsa be a Kerberost, hogy **engedélyezve**legyen.
+    A kötet létrehozása lapon állítsa be az NFS-verziót a **nfsv 4.1** értékre, és állítsa be a Kerberost, hogy **engedélyezve** legyen.
 
     > [!IMPORTANT] 
     > A kötet létrehozása után nem módosítható a Kerberos-engedélyezési beállítás.
@@ -61,7 +65,7 @@ Az NFSv 4.1-ügyfél titkosítására az alábbi követelmények vonatkoznak:
 
     A Kerberos megköveteli, hogy legalább egy számítógépfiókot hozzon létre Active Directory. Az Ön által megadott fiókadatok az SMB *-és nfsv 4.1-es Kerberos-* kötetek fiókjainak létrehozására szolgálnak. A rendszer automatikusan létrehozza ezt a gépet a kötet létrehozásakor.
 
-2.  A **Kerberos tartomány**területen adja meg az **ad-kiszolgáló nevét** és a **KDC IP-** címét.
+2.  A **Kerberos tartomány** területen adja meg az **ad-kiszolgáló nevét** és a **KDC IP-** címét.
 
     Az Active Directory-kiszolgáló és a KDC IP-címe lehet ugyanaz a kiszolgáló. Ezek az információk az Azure NetApp Files által használt egyszerű szolgáltatásnév-számítógépfiók létrehozásához használhatók. A számítógépfiók létrehozása után a Azure NetApp Files a DNS-kiszolgálói rekordokat fogja használni a további KDC-kiszolgálók szükség szerinti megkereséséhez. 
 
@@ -170,7 +174,7 @@ A krb5p teljesítményére gyakorolt hatás:
     * A teljes véletlenszerű I/O-érték 65%-kal csökkent a tiszta olvasási munkaterhelések esetében, és az általános hatás 43%-ra csökken, mivel a munkaterhelés a tiszta írásra változik. 
     * A metaadatok maximális munkaterhelése 30%-kal csökkent.
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 * [Gyakori kérdések a Azure NetApp Files](azure-netapp-files-faqs.md)
 * [NFS-kötet létrehozása az Azure NetApp Files számára](azure-netapp-files-create-volumes.md)

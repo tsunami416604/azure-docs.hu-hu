@@ -11,13 +11,13 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/09/2020
-ms.openlocfilehash: 761841c1f2146a33b35cdddc4adc4d3eb1a4b139
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/06/2020
+ms.openlocfilehash: 6b37a0df994546762abbcf3452d8e7b52dec6847
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635286"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331413"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-sql-database-geo-replication-and-failover"></a>Az Azure-SSIS integrációs modul konfigurálása SQL Database geo-replikációval és feladatátvételsel
 
@@ -39,23 +39,26 @@ A SMK nem replikálódik feladatátvételi csoportba. A feladatátvételt követ
 
 1. Futtassa az alábbi parancsot az elsődleges példány SSISDB. Ez a lépés új titkosítási jelszót vesz fel.
 
-    ```sql
-    ALTER MASTER KEY ADD ENCRYPTION BY PASSWORD = 'password'
-    ```
+   ```sql
+   ALTER MASTER KEY ADD ENCRYPTION BY PASSWORD = 'password'
+   ```
 
 2. Hozzon létre egy feladatátvételi csoportot egy SQL felügyelt példányon.
 
 3. Futtassa **sp_control_dbmasterkey_password** a másodlagos példányon az új titkosítási jelszó használatával.
 
-    ```sql
-    EXEC sp_control_dbmasterkey_password @db_name = N'SSISDB',   
-        @password = N'<password>', @action = N'add';  
-    GO
-    ```
+   ```sql
+   EXEC sp_control_dbmasterkey_password @db_name = N'SSISDB', @password = N'<password>', @action = N'add';  
+   GO
+   ```
 
 ### <a name="scenario-1-azure-ssis-ir-is-pointing-to-a-readwrite-listener-endpoint"></a>1. forgatókönyv: a Azure-SSIS IR írási/olvasási figyelő-végpontra mutat
 
-Ha azt szeretné, hogy a Azure-SSIS IR egy írható/olvasható figyelő végpontra mutasson, először az elsődleges kiszolgáló-végpontra kell mutatnia. A SSISDB feladatátvételi csoportban való elhelyezése után az írási/olvasási figyelő végpontra válthat, és újraindíthatja a Azure-SSIS IR.
+Ha azt szeretné, hogy a Azure-SSIS IR egy írható/olvasható figyelő végpontra mutasson, először az elsődleges kiszolgáló-végpontra kell mutatnia. A SSISDB feladatátvételi csoportban való elhelyezése után leállíthatja a Azure-SSIS IR, úgy módosíthatja, hogy az olvasási/írási figyelő végpontra mutasson Azure PowerShell használatával, majd indítsa újra.
+
+```powershell
+Set-AzDataFactoryV2IntegrationRuntime -CatalogServerEndpoint "Azure SQL Managed Instance read/write listener endpoint"
+```
 
 #### <a name="solution"></a>Megoldás
 
@@ -65,12 +68,12 @@ Feladatátvétel esetén hajtsa végre a következő lépéseket:
 
 2. Szerkessze a Azure-SSIS IR új régióval, virtuális hálózattal és közös hozzáférésű aláírással (SAS) kapcsolatos URI-információkkal a másodlagos példány egyéni telepítéséhez. Mivel a Azure-SSIS IR egy olvasási/írási figyelőre mutat, és a végpont átlátszó a Azure-SSIS IR számára, nem kell szerkesztenie a végpontot.
 
-    ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                -VNetId "new VNet" `
-                -Subnet "new subnet" `
-                -SetupScriptContainerSasUri "new custom setup SAS URI"
-    ```
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+      -VNetId "new VNet" `
+      -Subnet "new subnet" `
+      -SetupScriptContainerSasUri "new custom setup SAS URI"
+   ```
 
 3. Indítsa újra a Azure-SSIS IR.
 
@@ -86,35 +89,35 @@ Feladatátvétel esetén hajtsa végre a következő lépéseket:
 
 2. Szerkessze a Azure-SSIS IRt a másodlagos példány új régiójával, végponttal és virtuális hálózati adataival.
 
-    ```powershell
-      Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                    -CatalogServerEndpoint "Azure SQL Database endpoint" `
-                    -CatalogAdminCredential "Azure SQL Database admin credentials" `
-                    -VNetId "new VNet" `
-                    -Subnet "new subnet" `
-                    -SetupScriptContainerSasUri "new custom setup SAS URI"
-        ```
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+      -CatalogServerEndpoint "Azure SQL Database endpoint" `
+      -CatalogAdminCredential "Azure SQL Database admin credentials" `
+      -VNetId "new VNet" `
+      -Subnet "new subnet" `
+      -SetupScriptContainerSasUri "new custom setup SAS URI"
+   ```
 
-3. Restart the Azure-SSIS IR.
+3. Indítsa újra a Azure-SSIS IR.
 
-### Scenario 3: Azure-SSIS IR is pointing to a public endpoint of a SQL Managed Instance
+### <a name="scenario-3-azure-ssis-ir-is-pointing-to-a-public-endpoint-of-a-sql-managed-instance"></a>3. forgatókönyv: Azure-SSIS IR a felügyelt SQL-példányok nyilvános végpontján mutat
 
-This scenario is suitable if the Azure-SSIS IR is pointing to a public endpoint of a Azure SQL Managed Instance and it doesn't join to a virtual network. The only difference from scenario 2 is that you don't need to edit virtual network information for the Azure-SSIS IR after failover.
+Ez a forgatókönyv akkor megfelelő, ha a Azure-SSIS IR egy Azure SQL felügyelt példány nyilvános végpontján mutat, és nem csatlakozik virtuális hálózathoz. Az egyetlen különbség a 2. forgatókönyvtől, hogy nem kell szerkesztenie a Azure-SSIS IR virtuális hálózati adatait a feladatátvételt követően.
 
-#### Solution
+#### <a name="solution"></a>Megoldás
 
-When failover occurs, take the following steps:
+Feladatátvétel esetén hajtsa végre a következő lépéseket:
 
-1. Stop the Azure-SSIS IR in the primary region.
+1. Állítsa le a Azure-SSIS IR az elsődleges régióban.
 
-2. Edit the Azure-SSIS IR with the new region and endpoint information for the secondary instance.
+2. Szerkessze a Azure-SSIS IRt a másodlagos példány új régiójával és végponti adataival.
 
-    ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                -CatalogServerEndpoint "Azure SQL Database server endpoint" `
-                -CatalogAdminCredential "Azure SQL Database server admin credentials" `
-                -SetupScriptContainerSasUri "new custom setup SAS URI"
-    ```
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+      -CatalogServerEndpoint "Azure SQL Database server endpoint" `
+      -CatalogAdminCredential "Azure SQL Database server admin credentials" `
+      -SetupScriptContainerSasUri "new custom setup SAS URI"
+   ```
 
 3. Indítsa újra a Azure-SSIS IR.
 
@@ -133,43 +136,41 @@ Feladatátvétel esetén hajtsa végre az alábbi lépéseket.
 
 2. Futtasson egy tárolt eljárást a metaadatok frissítéséhez a SSISDB-ben, hogy fogadja a és a közötti kapcsolatokat **\<new_data_factory_name\>** **\<new_integration_runtime_name\>** .
    
-    ```sql
-    EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
-    ```
+   ```sql
+   EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
+   ```
 
 3. Hozzon létre egy új, nevű adatelőállítót **\<new_data_factory_name\>** az új régióban.
 
-    ```powershell
-    Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
-                      -Location "new region"`
-                      -Name "<new_data_factory_name>"
-    ```
-    
-    További információ erről a PowerShell-parancsról: [Azure-beli adat-előállító létrehozása a PowerShell használatával](quickstart-create-data-factory-powershell.md).
+   ```powershell
+   Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
+      -Location "new region"`
+      -Name "<new_data_factory_name>"
+   ```
+   
+   További információ erről a PowerShell-parancsról: [Azure-beli adat-előállító létrehozása a PowerShell használatával](quickstart-create-data-factory-powershell.md).
 
 4. Hozzon létre egy új Azure-SSIS IR a nevű új **\<new_integration_runtime_name\>** régióban Azure PowerShell használatával.
 
-    ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
-                                           -DataFactoryName "new data factory name" `
-                                           -Name "<new_integration_runtime_name>" `
-                                           -Description $AzureSSISDescription `
-                                           -Type Managed `
-                                           -Location $AzureSSISLocation `
-                                           -NodeSize $AzureSSISNodeSize `
-                                           -NodeCount $AzureSSISNodeNumber `
-                                           -Edition $AzureSSISEdition `
-                                           -LicenseType $AzureSSISLicenseType `
-                                           -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
-                                           -VnetId "new vnet" `
-                                           -Subnet "new subnet" `
-                                           -CatalogServerEndpoint $SSISDBServerEndpoint `
-                                           -CatalogPricingTier $SSISDBPricingTier
-    ```
-
-    További információ erről a PowerShell-parancsról: [Az Azure-SSIS integrációs modul létrehozása Azure Data Factoryban](create-azure-ssis-integration-runtime.md).
-
-
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
+      -DataFactoryName "new data factory name" `
+      -Name "<new_integration_runtime_name>" `
+      -Description $AzureSSISDescription `
+      -Type Managed `
+      -Location $AzureSSISLocation `
+      -NodeSize $AzureSSISNodeSize `
+      -NodeCount $AzureSSISNodeNumber `
+      -Edition $AzureSSISEdition `
+      -LicenseType $AzureSSISLicenseType `
+      -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
+      -VnetId "new vnet" `
+      -Subnet "new subnet" `
+      -CatalogServerEndpoint $SSISDBServerEndpoint `
+      -CatalogPricingTier $SSISDBPricingTier
+   ```
+   
+   További információ erről a PowerShell-parancsról: [Az Azure-SSIS integrációs modul létrehozása Azure Data Factoryban](create-azure-ssis-integration-runtime.md).
 
 ## <a name="azure-ssis-ir-failover-with-sql-database"></a>Feladatátvétel Azure-SSIS IR SQL Database
 
@@ -180,7 +181,11 @@ Ez a forgatókönyv a következő esetekben alkalmas:
 - A Azure-SSIS IR a feladatátvételi csoport írási/olvasási figyelő-végpontjának mutat.
 - A SQL Database-kiszolgáló *nincs konfigurálva a* virtuális hálózati szolgáltatás végpontjának szabályával.
 
-Ha azt szeretné, hogy a Azure-SSIS IR egy írható/olvasható figyelő végpontra mutasson, először az elsődleges kiszolgáló-végpontra kell mutatnia. Miután a SSISDB egy feladatátvételi csoportba helyezte, átválthat egy írható/olvasható figyelő végpontra, és újraindíthatja a Azure-SSIS IR.
+Ha azt szeretné, hogy a Azure-SSIS IR egy írható/olvasható figyelő végpontra mutasson, először az elsődleges kiszolgáló-végpontra kell mutatnia. A SSISDB feladatátvételi csoportban való elhelyezése után leállíthatja a Azure-SSIS IR, úgy módosíthatja, hogy az olvasási/írási figyelő végpontra mutasson Azure PowerShell használatával, majd indítsa újra.
+
+```powershell
+Set-AzDataFactoryV2IntegrationRuntime -CatalogServerEndpoint "Azure SQL Database read/write listener endpoint"
+```
 
 #### <a name="solution"></a>Megoldás
 
@@ -201,14 +206,14 @@ Feladatátvétel esetén hajtsa végre a következő lépéseket:
 
 2. Szerkessze a Azure-SSIS IRt a másodlagos példány új régiójával, végponttal és virtuális hálózati adataival.
 
-    ```powershell
-      Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                        -CatalogServerEndpoint "Azure SQL Database endpoint" `
-                        -CatalogAdminCredential "Azure SQL Database admin credentials" `
-                        -VNetId "new VNet" `
-                        -Subnet "new subnet" `
-                        -SetupScriptContainerSasUri "new custom setup SAS URI"
-    ```
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+      -CatalogServerEndpoint "Azure SQL Database endpoint" `
+      -CatalogAdminCredential "Azure SQL Database admin credentials" `
+      -VNetId "new VNet" `
+      -Subnet "new subnet" `
+      -SetupScriptContainerSasUri "new custom setup SAS URI"
+   ```
 
 3. Indítsa újra a Azure-SSIS IR.
 
@@ -227,44 +232,43 @@ Feladatátvétel esetén hajtsa végre az alábbi lépéseket.
 
 2. Futtasson egy tárolt eljárást a metaadatok frissítéséhez a SSISDB-ben, hogy fogadja a és a közötti kapcsolatokat **\<new_data_factory_name\>** **\<new_integration_runtime_name\>** .
    
-    ```sql
-    EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
-    ```
+   ```sql
+   EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
+   ```
 
 3. Hozzon létre egy új, nevű adatelőállítót **\<new_data_factory_name\>** az új régióban.
 
-    ```powershell
-    Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
-                         -Location "new region"`
-                         -Name "<new_data_factory_name>"
-    ```
-    
-    További információ erről a PowerShell-parancsról: [Azure-beli adat-előállító létrehozása a PowerShell használatával](quickstart-create-data-factory-powershell.md).
+   ```powershell
+   Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
+      -Location "new region"`
+      -Name "<new_data_factory_name>"
+   ```
+   
+   További információ erről a PowerShell-parancsról: [Azure-beli adat-előállító létrehozása a PowerShell használatával](quickstart-create-data-factory-powershell.md).
 
 4. Hozzon létre egy új Azure-SSIS IR a nevű új **\<new_integration_runtime_name\>** régióban Azure PowerShell használatával.
 
-    ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
-                                           -DataFactoryName "new data factory name" `
-                                           -Name "<new_integration_runtime_name>" `
-                                           -Description $AzureSSISDescription `
-                                           -Type Managed `
-                                           -Location $AzureSSISLocation `
-                                           -NodeSize $AzureSSISNodeSize `
-                                           -NodeCount $AzureSSISNodeNumber `
-                                           -Edition $AzureSSISEdition `
-                                           -LicenseType $AzureSSISLicenseType `
-                                           -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
-                                           -VnetId "new vnet" `
-                                           -Subnet "new subnet" `
-                                           -CatalogServerEndpoint $SSISDBServerEndpoint `
-                                           -CatalogPricingTier $SSISDBPricingTier
-    ```
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
+      -DataFactoryName "new data factory name" `
+      -Name "<new_integration_runtime_name>" `
+      -Description $AzureSSISDescription `
+      -Type Managed `
+      -Location $AzureSSISLocation `
+      -NodeSize $AzureSSISNodeSize `
+      -NodeCount $AzureSSISNodeNumber `
+      -Edition $AzureSSISEdition `
+      -LicenseType $AzureSSISLicenseType `
+      -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
+      -VnetId "new vnet" `
+      -Subnet "new subnet" `
+      -CatalogServerEndpoint $SSISDBServerEndpoint `
+      -CatalogPricingTier $SSISDBPricingTier
+   ```
 
-    További információ erről a PowerShell-parancsról: [Az Azure-SSIS integrációs modul létrehozása Azure Data Factoryban](create-azure-ssis-integration-runtime.md).
+   További információ erről a PowerShell-parancsról: [Az Azure-SSIS integrációs modul létrehozása Azure Data Factoryban](create-azure-ssis-integration-runtime.md).
 
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Vegye figyelembe a Azure-SSIS IR következő konfigurációs beállításait:
 

@@ -6,21 +6,19 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 78fbdbb91925bbe9954cc7a17e194de9c78c6389
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3ada16c98eef516056bd3c139bddc8187fb0fe38
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097345"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330614"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Azure Cosmos-tárolók és-adatbázisok létrehozása az autoscale átviteli sebességgel
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Az Azure Cosmos DB segítségével standard módon (manuálisan) megadott és automatikus skálázással kiosztott átviteli sebességet is beállíthat az adatbázisokhoz és a tárolókhoz. Ez a cikk az automatikus skálázással kiosztott átviteli sebesség előnyeit és használati eseteit ismerteti. 
+Azure Cosmos DB a standard (manuális) vagy az automatikus skálázási átviteli sebesség konfigurálható az adatbázisokon és a tárolókban is. Az automatikus méretezés kiépített átviteli sebessége Azure Cosmos DB lehetővé teszi az **adatbázis vagy tároló átviteli sebességének (ru/s) méretezését automatikusan és azonnal**. Az átviteli sebesség a használat alapján méretezhető, anélkül, hogy ez befolyásolná a munkaterhelés rendelkezésre állását, késését, átviteli sebességét vagy teljesítményét.
 
-Az autoscale kiépített átviteli sebessége kiválóan alkalmas olyan kritikus fontosságú számítási feladatokhoz, amelyek változó vagy kiszámíthatatlan forgalmi mintákkal rendelkeznek, és nagy teljesítményű és méretezhető SLA-kat igényelnek. 
-
-Az Automatikus méretezéssel a Azure Cosmos DB **automatikusan és azonnal átméretezi az adatbázis vagy tároló átviteli sebességét (ru/s)** a használat alapján, anélkül, hogy ez befolyásolná a munkaterhelés rendelkezésre állását, késését, átviteli sebességét vagy teljesítményét. 
+Az autoscale kiépített átviteli sebessége kiválóan alkalmas olyan kritikus fontosságú számítási feladatokhoz, amelyek változó vagy kiszámíthatatlan forgalmi mintákkal rendelkeznek, és nagy teljesítményű és méretezhető SLA-kat igényelnek. Ez a cikk az automatikus skálázással kiosztott átviteli sebesség előnyeit és használati eseteit ismerteti.
 
 ## <a name="benefits-of-autoscale"></a>Az autoscale előnyei
 
@@ -81,7 +79,7 @@ További részletekért tekintse meg ezt a [dokumentációt](how-to-choose-offer
 | **Díjszabás** | A manuálisan kiosztott RU/mp óradíjat kell fizetnie a [Standard (manuális) ru/s](https://azure.microsoft.com/pricing/details/cosmos-db/)óránkénti díjszabás alapján. | A legmagasabb RU/s esetében óránkénti fizetést kell fizetnie, a rendszer pedig az órán belül felskálázást. <br/><br/> Az egyszeri írási régió fiókjai esetében óradíjban kell fizetnie az RU/s esetében, az [autoscale ru/s](https://azure.microsoft.com/pricing/details/cosmos-db/)óradíjat használva. <br/><br/>Több írási régióval rendelkező fiókok esetében az autoskálázás díjmentes. Az óránkénti átviteli sebességért kell fizetnie, ugyanazzal a [többrégiós írási ru/s](https://azure.microsoft.com/pricing/details/cosmos-db/)óradíjat használva. |
 | **Legmegfelelőbb a számítási feladatok típusaihoz** |  Kiszámítható és stabil számítási feladatok|   Kiszámíthatatlan és változó számítási feladatok  |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse át az [autoscale – gyakori kérdések](autoscale-faq.md)című szakaszt.
 * Megtudhatja, hogyan [választhat a manuális és az automatikus skálázási sebesség közül](how-to-choose-offer.md).

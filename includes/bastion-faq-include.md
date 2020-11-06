@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 10/26/2020
+ms.date: 11/05/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 95c55f92304ddd3ec2b3d44d4f07fb64ab815c6d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a38c4bb18e16a814b626a6941d626b66311cd8ea
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755693"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94329526"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>Mely régiók érhetők el?
 
@@ -88,3 +88,7 @@ A munkamenetet csak a Azure Portal kezdeményezheti. Jelentkezzen be a Azure Por
 ### <a name="how-do-i-handle-deployment-failures"></a><a name="udr"></a>Hogyan kezeli az üzembe helyezési hibákat?
 
 Tekintse át a hibaüzeneteket, és szükség szerint [küldjön egy támogatási kérést a Azure Portal](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) . Az üzembe helyezési hibák az [Azure-előfizetések korlátozásait, kvótáit és megkötéseit](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)okozhatják. Az ügyfelek az előfizetések által engedélyezett nyilvános IP-címek számának korlátozásával járhatnak, ami miatt az Azure Bastion üzembe helyezése sikertelen lesz.
+
+### <a name="how-do-i-incorporate-azure-bastion-in-my-dr-plan"></a><a name="dr"></a>Hogyan az Azure Bastion-t a saját DR-tervében?
+
+Mivel az Azure Bastion egy Azure-régióhoz van társítva, és az virtuális hálózatok-ben vagy a virtuális hálózatok-ben van üzembe helyezve, Ön felelős az Azure Bastion vész-helyreállítási (DR) hely VNet való üzembe helyezésében. Ha egy Azure-régió meghibásodása esetén feladatátvételi műveletet hajt végre a virtuális gépek számára, akkor a DR régióban üzembe helyezett Azure-beli megerősített gazdagép használatával csatlakozhat a DR régióban üzembe helyezett virtuális gépekhez.

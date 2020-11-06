@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 09/01/2020
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 3a195f9dd74353734ff65f0d5f210d861fa29a26
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6f16e4b1f9728ae8d9cb36ab442603083e83eb92
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632583"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331379"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Az Azure Data Factory hibaelhárítása
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -522,79 +522,30 @@ A következő táblázat a Azure Batchra vonatkozik.
  
 ## <a name="hdinsight"></a>HDInsight
 
-### <a name="error-code-200"></a>Hibakód: 200
-
-- **Üzenet** : `Unexpected error happened: '%error;'.`
-
-- **OK** : belső szolgáltatási probléma van.
-
-- **Javaslat** : további segítségért forduljon az ADF-támogatáshoz.
-
-### <a name="error-code-201"></a>Hibakód: 201
-
-- **Üzenet** : `JobType %jobType; is not found.`
-
-- **OK** : Az ADF nem támogatja az új feladattípust.
-
-- **Javaslat** : további segítségért forduljon az ADF támogatási csapatához.
-
-### <a name="error-code-202"></a>Hibakód: 202
-
-- **Üzenet** : `Failed to create on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
-
-- **OK** : a hibaüzenet tartalmazza a hibák részleteit.
-
-- **Javaslat** : a hibaüzenet részleteinek segítséget nyújtanak a probléma megoldásában. Ha nincs elegendő információ, további segítségért forduljon az ADF-támogatáshoz.
-
-### <a name="error-code-203"></a>Hibakód: 203
-
-- **Üzenet** : `Failed to delete on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
-
-- **OK** : a hibaüzenet tartalmazza a hibák részleteit.
-
-- **Javaslat** : a hibaüzenet részleteinek segítséget nyújtanak a probléma megoldásában. Ha nincs elegendő információ, további segítségért forduljon az ADF-támogatáshoz.
-
-### <a name="error-code-204"></a>Hibakód: 204
-
-- **Üzenet** : `The resumption token is missing for runId '%runId;'.`
-
-- **OK** : belső szolgáltatási probléma van.
-
-- **Javaslat** : további segítségért forduljon az ADF-támogatáshoz.
-
-### <a name="error-code-205"></a>Hibakód: 205
-
-- **Üzenet** : `Failed to prepare cluster for LinkedService '%linkedServiceName;', the current resource status is '%status;'.`
-
-- **OK** : hiba történt a HDI igény szerinti fürt létrehozásakor.
-
-- **Javaslat** : további segítségért forduljon az ADF-támogatáshoz.
-
 ### <a name="error-code-206"></a>Hibakód: 206
 
-- **Üzenet** : `The batch ID for Spark job is invalid. Please retry your job, and if the problem persists, contact the ADF support for further assistance.`
+- **Üzenet** : `The batch ID for Spark job is invalid. Please retry your job.`
 
 - **OK** : a hibát okozó szolgáltatás belső hibába ütközött.
 
-- **Javaslat** : Ez a probléma átmeneti lehet. Próbálja megismételni a feladatot, és ha nem szűnik meg a probléma, további segítségért forduljon az ADF-támogatáshoz.
+- **Javaslat** : Ez a probléma átmeneti lehet. Némi várakozás után próbálja megismételni a feladatot.
 
 ### <a name="error-code-207"></a>Hibakód: 207
 
-- **Üzenet** : `Could not determine the region from the provided storage account. Please try using another primary storage account for the on demand HDI or contact ADF support team and provide the activity run ID.`
+- **Üzenet** : `Could not determine the region from the provided storage account. Please try using another primary storage account for the on demand HDI.`
 
 - **OK** : belső hiba történt a régió elsődleges Storage-fiókból való megállapítására tett kísérlet során.
 
-- **Javaslat** : próbálkozzon egy másik tárolóval. Ha ez a lehetőség nem elfogadható megoldás, további segítségért forduljon az ADF támogatási csapatához.
+- **Javaslat** : próbálkozzon egy másik tárolóval. 
 
 ### <a name="error-code-208"></a>Hibakód: 208
 
-- **Üzenet** : `Service Principal or the MSI authenticator are not instantiated. Please consider providing a Service Principal in the HDI on demand linked service which has permissions to create an HDInsight cluster in the provided subscription and try again. In case if this is not an acceptable solution, contact ADF support team for further assistance.`
+- **Üzenet** : `Service Principal or the MSI authenticator are not instantiated. Please consider providing a Service Principal in the HDI on demand linked service which has permissions to create an HDInsight cluster in the provided subscription and try again.`
 
 - **OK** : belső hiba történt a szolgáltatásnév beolvasására tett kísérlet során vagy az MSI-hitelesítés példányának létrehozásakor.
 
 - **Javaslat** : érdemes megfontolni egy egyszerű szolgáltatásnév biztosítását, amely jogosult a HDInsight-fürt létrehozására a megadott előfizetésben, majd próbálkozzon újra. Ellenőrizze, hogy az [Identitások kezelése helyesen van](../hdinsight/hdinsight-managed-identities.md)-e beállítva.
 
-   Ha ez a lehetőség nem elfogadható megoldás, további segítségért forduljon az ADF támogatási csapatához.
 
 ### <a name="error-code-2300"></a>Hibakód: 2300
 
@@ -612,7 +563,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 - **Javaslat** : a probléma lehet általános HDInsight-kapcsolat vagy hálózati kapcsolat. Először ellenőrizze, hogy a HDInsight Ambari felhasználói felülete elérhető-e bármely böngészőből. Ezután győződjön meg arról, hogy a hitelesítő adatai még érvényesek.
    
-   Ha saját üzemeltetésű integrált futtatókörnyezetet (IR) használ, hajtsa végre ezt a lépést abban a virtuális gépről vagy gépen, ahol a saját üzemeltetésű IR telepítve van. Ezután próbálja meg újra elküldeni a feladatot Data Factory újra. Ha továbbra sem sikerül, forduljon a Data Factory csapatához.
+   Ha saját üzemeltetésű integrált futtatókörnyezetet (IR) használ, hajtsa végre ezt a lépést abban a virtuális gépről vagy gépen, ahol a saját üzemeltetésű IR telepítve van. Ezután próbálja meg újra elküldeni a feladatot Data Factory újra.
 
    További információkért olvassa el a [Ambari webes felhasználói felületét](../hdinsight/hdinsight-hadoop-manage-ambari.md#ambari-web-ui).
 
@@ -1009,7 +960,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 - **OK** : Ez a probléma a hálózati kapcsolat, a DNS-hiba, a kiszolgálói tanúsítvány érvényesítése vagy időtúllépés miatt fordul elő.
 
-- **Javaslat** : Ellenőrizze, hogy a elérni kívánt végpont válaszol-e a kérelmekre. Használhat olyan eszközöket is, mint a **Hegedűs vagy a Poster** .
+- **Javaslat** : Ellenőrizze, hogy a elérni kívánt végpont válaszol-e a kérelmekre. Használhat olyan eszközöket is, mint a **Hegedűs vagy a Poster**.
 
 ### <a name="error-code-2108"></a>Hibakód: 2108
 
@@ -1032,7 +983,7 @@ A **Hegedűs** használata a figyelt webalkalmazás http-munkamenetének létreh
 
 1. Ha az alkalmazás TLS/SSL-tanúsítványokat használ, adja hozzá a Hegedűs tanúsítványát az eszközhöz.
 
-   Ugrás: az **eszközök**  >  a **Hegedűs beállításai**  >  **https**  >  - **műveletekkel**  >  **exportálják a főtanúsítványt az asztalra** .
+   Ugrás: az **eszközök**  >  a **Hegedűs beállításai**  >  **https**  >  - **műveletekkel**  >  **exportálják a főtanúsítványt az asztalra**.
 
 1. Kapcsolja ki a rögzítést a **fájl**  >  **rögzítési forgalmának** kikapcsolásával. Vagy nyomja le az **F12** billentyűt.
 
@@ -1054,12 +1005,12 @@ A **Hegedűs** használata a figyelt webalkalmazás http-munkamenetének létreh
 
 További információ: [Bevezetés a Hegedűs](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler)használatába.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="activity-stuck-issue"></a>A tevékenység beragadt probléma
 Ha azt tapasztalja, hogy a tevékenység sokkal hosszabb ideig fut, mint a normál Futtatás, és alig van előrehaladás, előfordulhat, hogy elakad. Megpróbálkozhat a megszakítással, és újra megtekintheti, hogy segít-e a szolgáltatás. Ha ez egy másolási tevékenység, megismerheti a teljesítmény figyelését és a hibaelhárítást a [másolási tevékenység teljesítményének hibaelhárítása](copy-activity-performance-troubleshooting.md)során. Ha ez egy adatfolyam, tanulja meg az [Adatáramlások teljesítményének](concepts-data-flow-performance.md) és hangolási útmutatójának feltérképezését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További hibaelhárítási segítségért próbálja ki ezeket az erőforrásokat:
 

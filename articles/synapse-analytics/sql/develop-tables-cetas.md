@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d0805aaf694f1569e613ab74135c95e454adbdc0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: df0198ba77e1661bb18aa72285e100ca070966a8
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315063"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331736"
 ---
 # <a name="cetas-with-synapse-sql"></a>CETAS a szinapszis SQL-sel
 
@@ -68,7 +68,7 @@ Annak a külső adatforrás-objektumnak a nevét adja meg, amely a külső adatt
 
 FILE_FORMAT = *external_file_format_name*
 
-Megadja a külső fájlformátum objektumának nevét, amely a külső adatfájl formátumát tartalmazza. Külső fájlformátum létrehozásához használja a [create External File Format (Transact-SQL) formátumot](develop-tables-external-tables.md#create-external-file-format). Jelenleg csak a FORMAT_TYPE = parketta és a FORMAT_TYPE = DELIMITEDTEXT külső fájlformátumok támogatottak.
+Megadja a külső fájlformátum objektumának nevét, amely a külső adatfájl formátumát tartalmazza. Külső fájlformátum létrehozásához használja a [create External File Format (Transact-SQL) formátumot](develop-tables-external-tables.md#create-external-file-format). Jelenleg csak a FORMAT_TYPE = parketta és a FORMAT_TYPE = DELIMITEDTEXT külső fájlformátumok támogatottak. A DELIMITEDTEXT formátumra vonatkozó GZip-tömörítés nem támogatott.
 
 *<common_table_expression>*
 
@@ -144,33 +144,31 @@ A CETAS a következő SQL-adattípusokkal rendelkező eredményhalmaz tárolás�
 - varbinary
 - char
 - varchar
+- NCHAR
+- nvarchar
+- smalldate
 - dátum
-- time
+- dátum/idő
 - datetime2
+- DateTimeOffset
+- time
 - tizedes tört
 - numerikus
 - float
 - valós szám
 - bigint
-- int
-- smallint
 - tinyint
+- smallint
+- int
+- bigint
 - bit
-
-> [!NOTE]
-> A LOBs nem használható a CETAS.
-
-A következő adattípusok nem használhatók a CETAS kiválasztása részben:
-
-- NCHAR
-- nvarchar
-- dátum/idő
-- idő adattípusúra
-- DateTimeOffset
 - pénzt
 - túlcsordulási
 - uniqueidentifier
 
-## <a name="next-steps"></a>Következő lépések
+> [!NOTE]
+> Az 1 MB-nál nagyobb LOBs nem használhatók a CETAS.
+
+## <a name="next-steps"></a>További lépések
 
 Próbálja meg Apache Spark lekérdezését [Az Azure szinapszis külső tábláihoz](develop-storage-files-spark-tables.md).
